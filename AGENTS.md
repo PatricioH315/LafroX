@@ -59,6 +59,57 @@ Conforme al Capítulo 17 del caso, el trabajo de traducción exige:
 - Dimensionamiento explícito de la volumetría de sistema (numeral 14.2), con método y supuestos; celdas vacías = dimensionamiento no realizado.
 - Criterios de aceptación del **Capítulo 18** (retiro sanitario < 2 h, 100 % lote, registro continuo de temperatura, OTIF con meta, preventa con stock/crédito, cero pedidos perdidos/duplicados, ruta automática < 20 min).
 
+### Sección de reglas de negocio (del informe)
+
+El informe final debe contener una **sección propia dedicada a las reglas de negocio** (no como un catálogo auxiliar, sino como capítulo visible de la propuesta). Debe recoger cada regla que la solución debe respetar y que el caso no explicita, en el formato: qué se captura, en qué punto del proceso, por quién y con qué consecuencia si se incumple. Al menos:
+
+- Asignación y reserva de stock (cuándo se compromete: toma, confirmación o preparación; regla ante doble compromiso — decisión 16.1 #8).
+- Política de crédito y comportamiento de pago del cliente (lo que el preventista debe ver y las consultas registradas).
+- Excursión de temperatura: qué la constituye, quién decide y si el sistema bloquea el despacho automáticamente (decisión 16.1 #4).
+- Reintento de entrega / local cerrado: qué se hace y quién decide (decisión 16.1 #3).
+- Tratamiento de devoluciones en el momento de la entrega y su efecto sobre el documento tributario emitido (decisión 16.1 #12).
+- Control de envases retornables: 68.000 canastillos y 9.400 pallets, pérdida estimada 14 % anual (decisión 16.1 #10).
+- Cambio de precio entre toma de pedido y despacho (decisión 16.1 #9).
+- Definición unívoca de "entrega cumplida" (completa/parcial) y de la métrica OTIF (decisión 16.1 #1).
+
+Cada regla debe trazar su origen al caso (párrafo, entrevista, indicador o decisión 16.1) y a los requisitos RF/RNF que la implementan, así como su efecto en arquitectura y EDT.
+
+## Inconsistencias detectadas en las Bases (resolver en consultas)
+
+Las siguientes incoherencias existen entre los documentos rectores. **No corregirlas unilateralmente en la propuesta**: cada una es candidata a **consulta al mandante (Art. 43.3)**, declaración de supuesto, o decisión fundada. El proponente que las detecte y las resuelva explícitamente es evaluado favorablemente (el caso premia identificar vacíos no listados). Clasificación por gravedad:
+
+### Alta — afectan diseño o puntaje
+
+1. **Número de instalaciones.** El caso §8 dice "la red de **cinco** instalaciones"; la Tabla 14.1 y RT-21.16 dicen **seis** ("Seis instalaciones en cuatro regiones"). Prevalecería `6` (la fuente mayor y las dos menciones técnicas); confirmar en consulta.
+2. **Ponderación T-21 no suma 100%.** La columna "Ponderación" del Formulario T-21 (Bases Admin §1807) suma **98%**, pese a que la fila TOTAL declara **100%**. Impacta el cálculo del puntaje técnico. Verificar si faltó un 2% en algún subdocumento (p.ej. Subdoc 14 "Ventajas" de 3% o el transversal).
+3. **Número de ambientes obligatorios.** El Art. 24° (Bases Admin) y E-25/H3 enumeran **cuatro** ambientes; el Art. 3° y las Transversales (§4.1, RT-04.01) exigen **cinco** (incluye el ambiente de Recuperación ante Desastres como 5º). Prevalecen las Transversales (5 ambientes + DR); dejar consistente la propuesta.
+4. **Códigos RT mal mapeados en la tabla del Caso Cap. 15.** El apartado "Valores para el Caso 02" referencia códigos que no coinciden con la materia en las Transversales:
+   - Red inalámbrica/estudio de sitio: el caso cita **RT-03.24** pero el correcto es **RT-03.23** (RT-03.24 es "Deseable": QoS/priorización).
+   - Sincronización tras reconexión: el caso cita **RT-03.13** pero el correcto es **RT-03.12** (RT-03.13 es "funciones no disponibles en modo desconectado").
+   - Retención de datos históricos/auditoría: el caso cita **RT-05.10** pero el correcto es **RT-16.10** (RT-05.10 es "Deseable": catálogo de datos/linaje).
+   - Tipología del emplazamiento on-premise: el caso cita **RT-06.01**, que en transversales es "espacio de uso exclusivo/aislado", no tipología.
+   → En la Matriz de Cumplimiento T-12 responder contra el **código correcto del documento transversal**, usar la materia del caso como valor y, si va a consulta, señalar el desajuste.
+
+### Media — afectan presentación/plan
+
+5. **"Instalaciones" vs "conductores/camiones".** El caso §2.4 habla de ≈84 conductores propios y peonetas; la Tabla 14.1 fila "Conductores" anota "42 propios" (que es el número de **camiones**, §2.3). Ratios de totales ≈200 vs ≈244 según se lea. Aclarar en supuestos: camiones ≠ conductores.
+6. **T-22 vs entregables del Cap. 17.1.** El Formulario T-22 (contenido de informes) no menciona explícitamente "registro de reglas de negocio", "registro de supuestos" ni "matriz de trazabilidad" que el caso exige producir (17.1). Resolver ubicándolos donde el T-22 sí los abriga: el registro de reglas/apoyos en el "esquema de solución y alcance" (Informe 1, Subdoc 3) y el catálogo con trazabilidad como base del Subdoc 3/5; mantener el registro de reglas de negocio como capítulo de apoyo en el informe.
+7. **Fechas de calendario.** (a) El período de registro (Formulario T-20, 14–17 ago) termina **antes** de la publicación de las bases (19 ago); (b) el Informe 1 coincide con la publicación del Acta de Respuestas el 07-09; (c) el Informe 3 y la Presentación 3 caen el mismo día (13-11), en apariencia contra el Art. 45 ("informe con anterioridad a la presentación"). No alterar el cronograma; confirmar fechas en consulta.
+
+### Baja — terminología
+
+8. **Identificador de documentos.** Las Bases del caso se citan como "FEP01.26" / "FEP02.26" (caso y transversales) mientras el identificador oficial del llamado es **TFEP-01/2026**. Estandarizar a `TFEP-01/2026` en la propuesta.
+9. **Desconexión: "2 horas" vs "turno de 14 h".** El relato (§6, §8) refiere cortes de "hasta dos horas"; la restricción del Cap. 10 y RT-03.10 exige operar un **turno completo de 14 h** sin señal en contingencia. Escenarios distintos: usar 2 h como nominal y 14 h como contingencia de diseño; documentar ambos.
+
+### Valores verificados consistentes (usar tal cual)
+
+- 14.200 clientes / 31.000 pedidos-mes / 260.000 líneas / 2,4 M unidades-mes.
+- Entregas ≈1.400 normal y ≈2.600 peak septiembre; km ≈420.000; documentos tributarios ≈34.000.
+- Envases 68.000 canastillos y 9.400 pallets (14 % pérdida anual); preventistas 62; personal CD 310.
+- Ventana crítica de despacho 05:30–07:00 con cero indisponibilidad; cutover on-premise 24 h (RT-03.10).
+- Prueba de DR semestral (Art. 20) coherente con RT-07.07 (dos veces al año).
+- Percentil 95 en tiempos de respuesta (RT-09.01) coherente entre Admin/Transversales/Caso.
+
 ## Verificación
 
 No hay build, test ni lint (solo markdown y Excel). La "verificación" del trabajo es la coherencia entre documentos: respetar la precedencia, trazabilidad de requerimientos (requisito RT → módulo → entregable) y consistencia de cifras/plazos con el cronograma obligatorio y con la volumetría del caso.
