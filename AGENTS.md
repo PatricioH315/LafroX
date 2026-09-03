@@ -34,7 +34,7 @@ Regla de precedencia: el caso puede **endurecer** un requisito transversal, nunc
 - **5 innovaciones obligatorias** (Cap. 5 Bases Admin), una por tipo, trazables con arquitectura, EDT y flujo de caja.
 - **La operación es dispersa y de terreno**: preventa, reparto, preparación y recepción ocurren en la calle y en el local del cliente, no en oficinas. 62 preventistas, ~200 conductores, 14.200 puntos de entrega, rutas rurales sin cobertura y almacenes sin internet.
 - **El perfil de carga no es plano**: preparación nocturna (22:00–06:00), despacho concentrado en la ventana 05:30–07:00, y septiembre casi duplica el volumen durante tres semanas. Un dimensionamiento basado en promedio está equivocado.
-- El problema del caso **no es un sistema legado único**: es un tejido de sistemas (ERP con una preventa de un proveedor desaparecido, WMS de 2013, planillas, papel) más 14.200 puntos de entrega con 12,4 % de discrepancia de inventario y 82,4 % de entregas completas y a tiempo. Trazabilidad sanitaria, OTIF y costo de servir son los ejes de negocio.
+- El problema del caso **no es un sistema legado único**: es un tejido de sistemas (ERP con una preventa de un proveedor desaparecido, WMS de 2013, planillas, papel) más 14.200 puntos de entrega. La diferencia del conteo cíclico de inventario es de **2,3 %** del valor contado y la merma por vencimiento de **1,7 %**, con **82,4 %** de entregas completas y a tiempo. Trazabilidad sanitaria, OTIF y costo de servir son los ejes de negocio.
 
 ## Carpetas
 
