@@ -140,7 +140,22 @@ Skills de trabajo previstas para este proyecto (versión en `.opencode/skills/` 
 
 ## Materias a investigar (numeral 16.2 del caso)
 
-Estándares GS1; intercambio electrónico con cadenas de retail en Chile; documentos tributarios electrónicos (guía de despacho, factura, acuse de recibo); Reglamento Sanitario de los Alimentos y cadena de frío; OTIF/fill rate/costo de servir; ruteo de vehículos con ventanas de tiempo; preparación de pedidos y asignación de ubicaciones; pronóstico de demanda con estacionalidad; régimen de jornada de conductores; logística inversa; y modelos de atención al canal tradicional.
+**El caso es Logística (distribuidora de consumo masivo), no retail.** El término "retail" aparece en este caso únicamente en un punto: las cadenas de supermercados que son **cliente** del canal moderno de Puelche (con las que se intercambia mensajería electrónica EDI). El giro y el problema del caso son de logística: trazabilidad de lote, cadena de frío, preventa, reparto y costeo logístico.
+
+La lista de investigación se toma literal del numeral 16.2 del caso:
+
+1. Estándares GS1: identificación de productos, de unidades logísticas y de ubicaciones; simbología de códigos de barras; y estándares de trazabilidad de eventos en la cadena de suministro.
+2. Intercambio electrónico de datos con cadenas de retail (clientes) en Chile: qué mensajes se exigen, en qué formato y a través de qué intermediarios.
+3. Documentos tributarios electrónicos: guía de despacho electrónica, factura, nota de crédito, acuse de recibo y sus efectos legales.
+4. Reglamento Sanitario de los Alimentos: almacenamiento, transporte, control de temperatura, registro y retiro de producto.
+5. Cadena de frío: rangos por tipo de producto, concepto de excursión térmica, criterios de aceptación/rechazo y tecnologías de registro continuo.
+6. Indicadores logísticos: OTIF, fill rate, perfect order, costo de servir y costo por entrega (definición y cálculo sin ambigüedad).
+7. Ruteo de vehículos con capacidad y ventanas de tiempo: formulación, métodos y limitaciones frente al conocimiento local del planificador.
+8. Estrategias de preparación de pedidos y asignación de ubicaciones en bodega: olas, zonas, lotes y criterios por rotación.
+9. Pronóstico de demanda en consumo masivo con estacionalidad fuerte y promociones, y su articulación con inventario y nivel de servicio.
+10. Régimen de jornada de los trabajadores del transporte y control de horas de conducción y descanso.
+11. Logística inversa: devoluciones, mermas y gestión de activos retornables.
+12. Modelos de atención al canal tradicional: preventa, autoventa, autoatención digital y efectos sobre el costo de servir.
 
 ## Renderizado de diagramas
 
