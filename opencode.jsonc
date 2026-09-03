@@ -1,0 +1,29 @@
+# opencode.jsonc — Configuración local de opencode
+
+# Este archivo configura opencode a nivel de repositorio: skills del proyecto,
+# plugin de activación y (opcional) MCP de Jira Cloud.
+
+{
+  // Skills versionadas en el repo. opencode las detecta al clonar y quedan
+  // disponibles en `skill`, sin depender de la config global de cada máquina.
+  "skill": {
+    "directory": ".opencode/skills"
+  },
+
+  // Plugin que refuerza la activación del skill orquestador `licitacion-workflow`
+  // inyectándola en el prompt de sistema.
+  "plugin": [
+    ".opencode/plugins/activar-skills.ts"
+  ],
+
+  // MCP de Jira Cloud (opcional). Desactivado por defecto; no interfiere si no
+  // hay cuenta. Actívalo y autentica para gestionar tareas (ver AGENTS.md).
+  "mcp": {
+    "jira": {
+      "type": "remote",
+      "enabled": false,
+      "url": "https://mcp.atlassian.com/v1/mcp/authv2",
+      "tools": true
+    }
+  }
+}

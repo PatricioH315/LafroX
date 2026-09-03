@@ -1,0 +1,11 @@
+# Dependencias y sesiones locales de opencode (no se versionan)
+node_modules/
+opencode-loop/
+
+# Archivos temporales y de sistema
+.DS_Store
+Thumbs.db
+*.log
+
+# Archivos en tránsito (aún no consolidados en las carpetas definitivas)
+_staging/
