@@ -1,0 +1,199 @@
+% ============================================================
+%  INFORME CORPORATIVO — LafroX
+%  Propuesta de Solución — Distribuidora Puelche S.A.
+%  Informe 1 — Presentación Preparatoria (Formulario T-22)
+%  Subdocumentos: 1, 2, 3, 4.1, 4.2, 5 y 13
+%  Compilar con: pdflatex
+% ============================================================
+\documentclass[11pt,a4paper,oneside]{report}
+
+% ------------------------------------------------------------
+%  Paquetes
+% ------------------------------------------------------------
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish,es-tabla]{babel}
+\usepackage{lmodern}
+\usepackage{mathptmx}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{geometry}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{hhline}
+\usepackage{caption}
+\usepackage[hidelinks]{hyperref}
+
+% ------------------------------------------------------------
+%  Configuración del documento
+% ------------------------------------------------------------
+\geometry{a4paper, top=2.8cm, bottom=2.8cm, left=2.8cm, right=2.5cm}
+
+% ------------------------------------------------------------
+%  Paleta corporativa LafroX
+% ------------------------------------------------------------
+\definecolor{lafroxVioleta}{HTML}{4A2C7A}
+\definecolor{lafroxAzul}{HTML}{1F3A5F}
+\definecolor{lafroxGrato}{HTML}{5B6770}
+\definecolor{lafroxClaro}{HTML}{F4F2F7}
+\definecolor{lafroxAcento}{HTML}{C9A227}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=lafroxAzul,
+  urlcolor=lafroxAzul,
+  citecolor=lafroxAzul
+}
+
+% ------------------------------------------------------------
+%  Encabezados y secciones
+% ------------------------------------------------------------
+\titleformat{\chapter}[display]
+  {\normalfont\huge\bfseries\color{lafroxVioleta}}
+  {\filright\Large\color{lafroxAzul}\chaptertitlename\ \thechapter}
+  {8pt}
+  {\filright}
+  [\vspace{2pt}{\color{lafroxAcento}\rule{\textwidth}{1pt}}]
+
+\titleformat{\section}
+  {\normalfont\Large\bfseries\color{lafroxAzul}}
+  {\thesection}{0.8em}{}
+\titleformat{\subsection}
+  {\normalfont\large\bfseries\color{lafroxGrato}}
+  {\thesubsection}{0.8em}{}
+\titleformat{\subsubsection}
+  {\normalfont\normalsize\bfseries\color{lafroxGrato}}
+  {\thesubsubsection}{0.8em}{}
+
+\titlespacing*{\chapter}{0pt}{-30pt}{20pt}
+\titlespacing*{\section}{0pt}{16pt}{8pt}
+\titlespacing*{\subsection}{0pt}{12pt}{6pt}
+
+% ------------------------------------------------------------
+%  Encabezado y pie de página
+% ------------------------------------------------------------
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\color{lafroxGrato}\textbf{LafroX} -- Propuesta Solución Puelche}
+\fancyhead[R]{\small\color{lafroxGrato}\thepage}
+\renewcommand{\headrulewidth}{0.6pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{lafroxVioleta}\leaders\hrule height \headrulewidth\hfill}}
+\fancypagestyle{plain}{%
+  \fancyhf{}
+  \fancyfoot[C]{\small\color{lafroxGrato}\thepage}
+  \renewcommand{\headrulewidth}{0pt}
+}
+
+% ------------------------------------------------------------
+%  Opciones de tablas
+% ------------------------------------------------------------
+\captionsetup{labelfont={bf,color=lafroxAzul},font=small,skip=6pt}
+
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+
+\setlist[itemize]{itemsep=2pt, topsep=4pt}
+\setlist[enumerate]{itemsep=2pt, topsep=4pt}
+
+% Comando para marcador pendiente (versión temprana del documento)
+\newcommand{\pendiente}{{\color{lafroxAcento}\textbf{[PENDIENTE]}}}
+
+% ------------------------------------------------------------
+%  Portada
+% ------------------------------------------------------------
+\newcommand{\portada}{%
+\begin{titlepage}
+  \thispagestyle{empty}
+  \noindent
+  \begin{minipage}[t][\textheight][t]{\textwidth}
+    \centering
+    \vspace*{1.2cm}
+    {\color{lafroxVioleta}\rule{\textwidth}{2pt}}\\[0.4cm]
+    {\color{lafroxVioleta}\rule{\textwidth}{0.6pt}}\\[1.2cm]
+
+    {\Huge\bfseries\color{lafroxVioleta} LAFROX}\\[0.5cm]
+    {\Large\color{lafroxAzul} Ingeniería de Software y Consultoría Tecnológica}\\[0.2cm]
+    {\large\color{lafroxGrato} Arquitecturas resilientes para cadenas de suministro críticas}\\[1.0cm]
+
+    {\color{lafroxVioleta}\rule{0.5\textwidth}{1pt}}\\[1.0cm]
+
+    {\Huge\bfseries\color{lafroxAzul} Informe 1}\\[0.6cm]
+    {\Large\bfseries Presentación Preparatoria -- Propuesta de Solución}\\[0.4cm]
+    {\large Distribuidora Puelche S.A.}\\[1.0cm]
+
+    {\large\itshape\color{lafroxGrato}
+      Modernización de la operación logística y cadena de frío\\[0.3cm]
+      Informe 1 -- Formulario T-22}\\[1.6cm]
+
+    {\color{lafroxVioleta}\rule{0.5\textwidth}{1pt}}\\[1.0cm]
+
+    {\large\color{lafroxGrato} Preparado por:}\\[0.3cm]
+    {\Large\bfseries\color{lafroxVioleta} Equipo LafroX}\\[1.0cm]
+
+    {\large\color{lafroxGrato} Documento de trabajo -- versión temprana}\\[0.3cm]
+    {\large\color{lafroxGrato} 2026}\\[0.4cm]
+
+    \vfill
+    {\color{lafroxVioleta}\rule{\textwidth}{0.6pt}}\\[0.3cm]
+    {\color{lafroxVioleta}\rule{\textwidth}{2pt}}\\[0.2cm]
+    \centering
+    {\small\color{lafroxGrato} Documento confidencial -- uso exclusivo del proceso de licitación}
+  \end{minipage}
+\end{titlepage}
+}
+
+% ------------------------------------------------------------
+%  Inicio del documento
+% ------------------------------------------------------------
+\begin{document}
+
+\portada
+
+\pagenumbering{roman}
+\tableofcontents
+\thispagestyle{empty}
+\clearpage
+
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+% Resumen del alcance de la entrega (Informe 1)
+\chapter*{Informe 1 -- Presentación Preparatoria}
+\addcontentsline{toc}{chapter}{Informe 1 -- Presentación Preparatoria}
+\markboth{Informe 1}{}
+Este documento corresponde al \textbf{Informe 1} (entregable de la presentación
+preparatoria 1, Formulario T-20), elaborado conforme al \textbf{Formulario T-22} de las
+Bases Administrativas. Contiene los subdocumentos de la Propuesta Técnica exigidos para
+esta instancia: 1 (Presentación de la empresa), 2 (Problema y necesidad), 3 (Esquema de
+solución y alcance), 4.1 (Arquitectura lógica), 4.2 (Arquitectura física), 5 (Modelo y
+gestión de datos) y 13 (Innovaciones).
+
+Las celdas o secciones aún no definidas se marcan con \pendiente{} para su completamiento
+posterior. El índice del Informe 1 es:
+
+\begin{itemize}
+  \item 1 Presentación de la empresa (sección \ref{sec:empresa})
+  \item 2 Presentación del problema y de la necesidad (sección \ref{sec:problema})
+  \item 3 Esquema de solución y alcance (sección \ref{sec:solucion})
+  \item 4 Arquitectura lógica de la solución (sección \ref{sec:arqlogica})
+  \item 5 Arquitectura física de la solución (sección \ref{sec:arqfisica})
+  \item 6 Modelo y gestión de datos (sección \ref{sec:datos})
+  \item 7 Cartera de innovaciones (sección \ref{sec:innovaciones})
+\end{itemize}
+
+% ================= SE CARGAN LAS SECCIONES =================
+\input{01_presentacion_empresa/presentacion_empresa.tex}
+\input{02_problema_necesidad/problema_necesidad.tex}
+\input{03_esquema_solucion_alcance/esquema_solucion_alcance.tex}
+\input{04_arquitectura_logica/arquitectura_logica.tex}
+\input{05_arquitectura_fisica/arquitectura_fisica.tex}
+\input{06_modelo_datos/modelo_datos.tex}
+\input{07_innovaciones/innovaciones.tex}
+
+\end{document}

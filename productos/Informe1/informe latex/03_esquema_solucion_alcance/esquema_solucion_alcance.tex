@@ -1,0 +1,163 @@
+% ============================================================
+%  3. ESQUEMA DE SOLUCIÓN Y ALCANCE  (Subdocumento 3 — Formulario T-12)
+%  Informe 1 — Esquema de solución y del alcance
+%  Fuente: Informe (1).md (Solución propuesta y Alcances)
+% ============================================================
+\chapter{Esquema de Solución y Alcance}
+\label{sec:solucion}
+
+\section{Lo que haremos en el proyecto}
+
+La solución propuesta para la Distribuidora Puelche S.A. consiste en la modernización
+integral de la operación logística de la cadena de frío, la trazabilidad sanitaria y la
+gestión de preventa y reparto, sobre una plataforma digital de misión crítica de
+carácter obligatoriamente híbrido. La implantación se estructura en dos etapas alineadas
+con las restricciones operacionales y de cronograma del caso.
+
+La estrategia de la solución se funda en cinco ejes coherentes con el problema
+diagnosticado:
+
+\begin{enumerate}
+  \item \textbf{Operación desconectada (\emph{offline-first}) como regla de diseño:}
+        ante la ausencia de cobertura en rutas rurales, cámaras de congelado y cortes de
+        enlace, toda capacidad crítica opera localmente y sincroniza de forma
+        determinista al recuperar conectividad.
+  \item \textbf{Trazabilidad lote-a-lote desde el origen:} el registro estructurado del
+        lote en el punto de recepción, el monitoreo continuo de temperatura y la
+        consulta de clientes afectados habilitan la respuesta a retiros sanitarios en
+        horas, no en días.
+  \item \textbf{Preventa y reparto con información en el punto de decisión:} stock,
+        crédito, deuda vencida e historial disponibles en terreno para evitar el quiebre
+        del 7,8\,\% y los bloqueos sin notificación.
+  \item \textbf{Planificación algorítmica y costeo por hecho:} motor de ruteo que
+        resguarda el conocimiento crítico del planificador y costeo de servir por
+        cliente y por entrega construido desde los hechos operacionales.
+  \item \textbf{Obtención del apoyo de los involucrados clave:} incorporación temprana
+        del sindicato de conductores, del equipo de TI (4 personas) y de los operadores
+        de bodega mediante validación en marcha blanca y capacitación compatible con la
+        operación real.
+\end{enumerate}
+
+\subsection{Fechas e hitos relevantes}
+
+La planificación del proyecto se estructura en torno a hitos de negocio y ventanas de
+congelamiento obligatorias (Restricción R-10: sin intervención del 1 al 25 de
+septiembre, todo diciembre y los primeros tres días hábiles de cada mes).
+
+\begin{table}[htbp]
+\centering
+\small
+\caption{Hitos de fechas relevantes}
+\label{tab:hitos}
+\begin{tabularx}{\textwidth}{@{}L{4.2cm}L{8.5cm}L{3cm}@{}}
+\toprule
+\textbf{Hito} & \textbf{Fecha / Descripción} & \textbf{Origen} \\
+\midrule
+PEAK de pedidos &
+Septiembre: el volumen se duplica durante 3 semanas (cuáles); es el período de mayor
+exigencia del año y condiciona las ventanas de congelamiento &
+Cap 13.2 \\
+\addlinespace
+Ventanas de congelamiento &
+1 al 25 de septiembre, todo diciembre y primeros tres días hábiles de cada mes &
+Restricción R-10 \\
+\addlinespace
+Marcha blanca Etapa 1 &
+Mes 13 en adelante; solapamiento con el desarrollo de la Etapa 2 (meses 13--15) &
+BA Art. 17.2 \\
+\bottomrule
+\end{tabularx}
+\vspace{4pt}
+{\small\color{lafroxGrato}\pendiente{} Completar los hitos restantes del cronograma
+(ventanas de congelamiento, marcha blanca, puesta en producción, 56 meses
+contractuales).}
+\end{table}
+
+\section{Alcance de la Etapa 1 (meses 1--12)}
+
+\subsection{Alcance funcional del proyecto (Etapa 1) — Lo que hará}
+
+\begin{enumerate}
+  \item Registrar y monitorear de forma automática temperaturas de cámara de frío y de
+        camiones con cámaras de frío.
+  \item Parametrizar reglas de excursión térmica, alertar y bloqueo configurable.
+  \item Registro obligatorio y estructurado del lote en punto de recepción.
+  \item Consulta de qué clientes recibieron un lote determinado.
+  \item La app del preventista mostrará stock disponible, crédito y deuda vencida, e
+        historial de compra.
+  \item Enviar el pedido una sola vez con reintento controlado en zonas sin señal.
+  \item Informar al preventista y al cliente de forma inmediata el bloqueo por crédito,
+        sin depender de revisión manual.
+  \item Hoja de \emph{picking} digital operable con guantes dentro de la cámara de frío.
+  \item Generar guía de despacho electrónico con acuse de recibo.
+  \item Registrar el cobro en efectivo en el momento en que se realice por el conductor
+        o preventista.
+  \item Registro de canastillos y \emph{pallets} entregados y recibidos por el cliente.
+\end{enumerate}
+
+\section{Alcance de la Etapa 2}
+
+\subsection{Alcance funcional del proyecto (Etapa 2) — Lo que haremos}
+
+\begin{enumerate}
+  \item Motor de ruteo con restricciones de capacidad y ventanas horarias que propone la
+        ruta y permite corregirla.
+  \item Modelo de costeo por cliente y por entrega, construido desde el hecho:
+        kilómetro recorrido, tiempo de descarga, tamaño del pedido, frecuencia de visita
+        y entregas.
+  \item Recepción de pedidos por vía electrónica estructurada, con aviso de despacho
+        anticipado para el canal moderno.
+  \item Sugerencias de reposición y compras basadas en la venta real, estacionalidad,
+        promociones comprometidas y plazo de los proveedores.
+\end{enumerate}
+
+\subsection{Lo que no haremos (exclusiones del alcance)}
+
+Lo siguiente no formará parte del alcance funcional de la primera ni de la segunda
+etapa:
+
+\begin{itemize}
+  \item El reemplazo del sistema de gestión empresarial ni de ninguno de sus módulos, ni
+        la emisión de documentos tributarios electrónicos (lo realiza el ERP).
+  \item La administración de remuneraciones ni de recursos humanos, que residen en el
+        sistema de gestión.
+  \item Un sistema de punto de venta para el local del cliente, sin perjuicio del canal
+        de autoatención que la solución deba ofrecerle.
+  \item El comercio electrónico dirigido al consumidor final.
+\end{itemize}
+
+\section{Enfoque para la obtención del apoyo de los involucrados clave}
+
+La estrategia de adopción se orienta a los grupos de interés que condicionan el éxito de
+la operación (detalle en capítulo de innovaciones y en la justificación con grupos
+clave):
+
+\begin{itemize}
+  \item \textbf{Sindicato de conductores:} resolver la objeción a cámaras en cabina y
+        control de jornada por GPS (Restricción R-11), proponiendo mecanismos de
+        geolocalización exclusiva para control operativo y logístico (tiempos de
+        arribo), no para supervisión de jornada.
+  \item \textbf{Equipo de TI del cliente (4 personas):} todo lo que requiera un
+        administrador dedicado se ofrece como servicio y costeado (Restricción R-08).
+  \item \textbf{Bodega (turno de noche, rotación 38\,\%):} soluciones que no requieran
+        entrenamiento prolongado (Restricción R-09), hardware \emph{rugged} operable con
+        guantes a $-$22\,°C y validación en marcha blanca.
+  \item \textbf{Transportistas externos:} mecanismos ágiles de incorporación de
+        conductores que rotan sin aviso (Restricción R-06).
+\end{itemize}
+
+\section{Enlace al catálogo de requerimientos}
+
+El alcance funcional se despliega en el catálogo de requerimientos funcionales (RF),
+no funcionales (RNF) y de bases, trazable a su origen en el caso:
+
+\begin{itemize}
+  \item Requerimientos funcionales: \emph{Requerimientos LOGISTICA -- Consolidado de
+        Requerimientos Funcionales}.
+  \item Requerimientos no funcionales: \emph{Requerimientos LOGISTICA -- Requerimientos
+        NO Funcionales}.
+  \item Requerimientos de bases: \emph{Requerimientos LOGISTICA -- Requerimientos de
+        bases}.
+  \item Planilla consolidada:
+        \url{https://docs.google.com/spreadsheets/d/19HYOFHX_maoNcECLjazVm9j3hZP-iplyxgyHAy7HDuo}
+\end{itemize}

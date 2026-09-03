@@ -9,12 +9,23 @@ Todo el trabajo se desarrolla en **español** (idioma oficial de la licitación)
 ## Identidad del proponente
 
 - **Empresa proponente:** *(pendiente de definir — usar en columna B de la planilla de consultas, nomenclatura de archivos Art. 43.3, y en todos los documentos/sobres)*.
-- **Equipo:** *(pendiente de definir — integrantes del grupo)*.
+- **Equipo de trabajo (roles asignados):**
+  | Rol | Nombre |
+  |---|---|
+  | Jefe de Proyecto | Alex Aravena |
+  | Arquitecto de Solución | Bastián Trejo |
+  | Encargado de Seguridad de la Información | Álvaro Catalán |
+  | Líder de Datos | Leandro Chamorro |
+  | Líder de Desarrollo | *(pendiente)* |
+  | Líder de Calidad | *(pendiente)* |
+  | Líder de Operación / SRE | *(pendiente)* |
+  | Líder de Implantación y Gestión del Cambio | *(pendiente)* |
+- *Fuente: `_staging/Hoja de calculo ... actores y roles de lafrox.csv` (rol, nombre, certificaciones, dedicación, meses de participación). Las columnas de Certificaciones/Dedicación/Meses quedan por llenar.*
 
 ## Protocolo de sesión (importante)
 
-- El usuario opera este proyecto bajo el nombre **lafrox**.
-- **Cada respuesta final** de texto del asistente debe comenzar con el encabezado `## lafrox`. Esto permite identificar dónde termina una respuesta y dónde inicia una nueva sesión. Aplica a todo mensaje visible, no a las salidas de herramientas.
+- El usuario opera este proyecto bajo el nombre **LafroX**.
+- **Cada respuesta final** de texto del asistente debe comenzar con el encabezado `## LafroX`. Esto permite identificar dónde termina una respuesta y dónde inicia una nueva sesión. Aplica a todo mensaje visible, no a las salidas de herramientas.
 - El archivo `compct/CONTEXTO_SESION.md` es la fuente completa de este protocolo. Si no aparece el encabezado, el usuario debe asumir que la respuesta está incompleta o que se inició una sesión nueva.
 
 ## Fuentes y precedencia

@@ -1,0 +1,178 @@
+% ============================================================
+%  5. ARQUITECTURA FÍSICA DE LA SOLUCIÓN  (Subdocumento 4.2 — Formulario T-11)
+%  Informe 1 — Arquitectura física
+%  a) Arquitectura Física · b) Tecnologías de software · c) Implementos a proveer
+%  d) Data Center primario · e) Data Center secundario
+% ============================================================
+\chapter{Arquitectura Física de la Solución}
+\label{sec:arqfisica}
+
+Este capítulo describe la arquitectura física de la solución, incluido el modelo de
+emplazamiento híbrido obligatorio, las tecnologías de software, el equipamiento a
+proveer, y las especificaciones de los data centers primario y secundario. El detalle se
+complementa en el Formulario T-11.
+
+\section{Modelo de emplazamiento híbrido}
+
+La solución es obligatoriamente híbrida (nube pública regional + componentes
+\emph{on-premise} críticos), conforme al Artículo 16° de las Bases Administrativas y a
+RT-03.01. El modelo de emplazamiento componente por componente es:
+
+\begin{table}[htbp]
+\centering
+\small
+\caption{Modelo de emplazamiento híbrido}
+\label{tab:emplazamiento}
+\begin{tabularx}{\textwidth}{@{}L{5.4cm}L{4.6cm}X@{}}
+\toprule
+\textbf{Componente} & \textbf{Emplazamiento} & \textbf{Justificación} \\
+\midrule
+Recepción, \emph{picking} y carga
+(CD Talca y Concepción) &
+On-premise, con réplica a nube &
+Debe continuar operando durante un corte del enlace (Restricción N° 2 del Caso);
+ambiente de bodega con montacargas y cámara de congelado a $-$22\,°C sin cobertura de
+señal. \\
+\addlinespace
+Plataformas de \emph{cross-docking}
+(Curicó, Chillán, Los Ángeles) &
+Gabinete de borde; conectividad exclusiva por red móvil &
+Sin almacenamiento propio, ventana de operación de tres horas, sin fibra óptica
+disponible. \\
+\addlinespace
+Preventa y reparto (dispositivos
+móviles de terreno) &
+Aplicación \emph{offline-first}, sincronización diferida a nube &
+Deben operar un turno completo sin señal, en rutas rurales de hasta 240 km
+(Restricción N° 3 del Caso). \\
+\addlinespace
+Trazabilidad de lote, cadena de frío,
+analítica, portal, componentes de IA &
+Nube pública (región Chile o Sudamérica) &
+Volumen variable y sin acoplamiento a equipamiento físico; elasticidad estacional
+durante el \emph{peak} de septiembre. \\
+\addlinespace
+Telemetría de los 42 camiones propios &
+Se integra desde la plataforma del proveedor externo que ya la provee &
+Fuente existente a preservar; los 54 camiones de transportistas no están cubiertos y se
+incorporan mediante mecanismo a definir con cada empresa (Decisión N° 5). \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{Tecnologías de software}
+
+Las tecnologías de software se eligen bajo el criterio de neutralidad tecnológica y
+vigencia de soporte por los 56 meses contractuales (Restricción R-29):
+
+\begin{table}[htbp]
+\centering
+\small
+\caption{Tecnologías de software propuestas}
+\label{tab:software}
+\begin{tabularx}{\textwidth}{@{}L{5.2cm}X@{}}
+\toprule
+\textbf{Componente} & \textbf{Tecnología propuesta} \\
+\midrule
+Proveedor de nube pública &
+AWS (región Chile o Sudamérica), socio AWS Partner Network (APN), regiones primaria y
+secundaria (RT-03.01). \\
+\addlinespace
+Computación de aplicación &
+Microservicios sobre AWS Fargate y Amazon ECS, con despliegue \emph{canary} y
+azul-verde (RT-04.06/04.07). \\
+\addlinespace
+Base transaccional &
+Motor relacional con soporte ACID y alta disponibilidad multi-AZ (RT-05.02), separado del
+almacén analítico. \\
+\addlinespace
+Base de datos móvil local &
+SQLCipher (AES-256) con almacenamiento encriptado en disco para operación
+\emph{offline-first}. \\
+\addlinespace
+Datos analíticos &
+Almacén analítico para OTIF, \emph{fill rate} y costo de servir (RT-05.05/05.29). \\
+\addlinespace
+Ingesta de telemetría IoT &
+Ingesta masiva en tiempo real (Amazon Kinesis) para sensores de temperatura de cadena de
+frío. \\
+\addlinespace
+Seguridad &
+TLS 1.3, WAF gestionado, cifrado en reposo y a nivel de campo AES-256, gestor de llaves
+(KMS) (RT-11.08/11.10). \\
+\addlinespace
+Observabilidad &
+APM y observabilidad (Datadog/CloudWatch) integrados al NOC 24/7. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{Equipamiento a proveer (hardware y software)}
+
+\begin{itemize}
+  \item \textbf{Terminales de terreno:} dispositivos móviles \emph{rugged} aptos para
+        operatoria a $-$22\,°C, lluvia y una sola mano, con pantalla de alto contraste y
+        funcionalidad \emph{offline-first} (RT-17.01; Restricción N° 7).
+  \item \textbf{Hojas de \emph{picking} digital:} dispositivos con pantalla operable con
+        guantes dentro de la cámara de congelado.
+  \item \textbf{Termógrafos vehiculares inalámbricos:} conectados al motor de reglas en
+        la nube para alertas de excursión térmica en tiempo real.
+  \item \textbf{Sensores IoT de cámara:} captura automática y continua de temperatura.
+  \item \textbf{Equipamiento del recinto técnico:} racks independientes de servidores y
+        comunicaciones (RT-06.05), fuentes de poder redundantes (RT-08.04), conmutadores
+        de núcleo y balanceadores en alta disponibilidad (RT-08.03).
+\end{itemize}
+
+\section{Data center primario (site principal on-premise)}
+
+El recinto técnico principal se habilita en las instalaciones del CLIENTE (CD Talca),
+con un nivel de disponibilidad de infraestructura del 99,95\,\% (RT-06.01):
+
+\begin{itemize}
+  \item \textbf{Energía:} UPS con autonomía mínima de 30 minutos a plena carga
+        (RT-06.07), generación autónoma de 24 horas continuas (RT-06.08), instalación
+        eléctrica independiente según NCh Elec. 2777 (RT-06.09).
+  \item \textbf{Climatización:} precisión redundante N+1 con control de temperatura y
+        humedad (RT-06.13), monitoreo en línea de temperatura, humedad y agua
+        (RT-06.14).
+  \item \textbf{Incendios:} detección temprana por aspiración AnaLASER (RT-06.16),
+        extinción automática con agente limpio FM-200 (RT-06.17), extintores portátiles y
+        monitoreo integrado (RT-06.18/06.19).
+  \item \textbf{Seguridad física:} control de acceso biométrico por biometría facial con
+        AFIS como respaldo (RT-06.20), bitácora auditable (RT-06.21), estación de
+        enrolamiento y acceso de una persona a la vez con verificación previa
+        (RT-06.22/06.23), videovigilancia IP con retención de 30 días (RT-06.24).
+  \item \textbf{Rutas de comunicaciones:} doble acometida con ingreso al edificio por
+        puntos físicos separados (RT-06.32).
+\end{itemize}
+
+\section{Data center secundario y recuperación ante desastres}
+
+Se habilita un sitio secundario en dependencias distintas, con replicación en línea para
+producción (RT-07.01):
+
+\begin{itemize}
+  \item \textbf{Modalidad:} activo-pasivo declarado y justificado frente al costo, al RTO
+        comprometido y a la complejidad operacional (RT-07.01), a distancia suficiente
+        para no verse afectado por el mismo evento (RT-07.02).
+  \item \textbf{RTO/RPO:} RTO máximo de 4 horas y RPO máximo de 15 minutos para servicios
+        críticos (RT-07.04), con replicación continua y alertamiento del retraso
+        (RT-07.03).
+  \item \textbf{Pruebas:} conmutación real al menos dos veces al año con medición del RTO
+        y RPO efectivos (RT-07.07).
+  \item \textbf{Respaldos 3-2-1-0:} tres copias, dos medios, una fuera de sitio, una
+        inmutable, cero errores de verificación (RT-07.09), cifrados en reposo y tránsito
+        con clave gestionada independiente (RT-07.10), copias inmutables protegidas contra
+        borrado (RT-07.11), prueba de restauración mensual (RT-07.12).
+\end{itemize}
+
+\section{Niveles de servicio de infraestructura}
+
+La infraestructura debe sostener los niveles de disponibilidad del Capítulo 7 y el
+compromiso contractual del Artículo 78° (transacción de negocio crítica de extremo a
+extremo $\geq$ 99,9\,\%).
+
+\vspace{4pt}
+{\small\color{lafroxGrato}\pendiente{} Completar el Formulario T-11 con el detalle
+especificado: dimensionamiento por componente, especificaciones de implementos, planos
+del recinto y cálculo de capacidad.}

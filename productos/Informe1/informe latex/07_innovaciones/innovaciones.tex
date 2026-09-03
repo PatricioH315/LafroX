@@ -1,0 +1,230 @@
+% ============================================================
+%  7. CARTERA DE CINCO INNOVACIONES  (Subdocumento 13 — Formulario T-19)
+%  Informe 1 — Innovaciones
+%  Fuente: BA Art. 28°-30°; BTT Cap. 26 (RT-26.01 a RT-26.08)
+% ============================================================
+\chapter{Cartera de Innovaciones}
+\label{sec:innovaciones}
+
+La licitación exige exactamente cinco innovaciones obligatorias, una por cada tipo del
+Artículo 28° de las Bases Administrativas, pertinentes a la industria de distribución de
+consumo masivo y a los problemas concretos de Puelche (RT-26.01 a RT-26.08). Cada ficha
+desarrolla los siete elementos del Artículo 29° y se ajusta al Formulario T-19. No se
+presentan como enunciados, sino con su idea, tecnología, alcance, forma de implementación
+y resultados esperados.
+
+A continuación se presenta cada innovación con sus campos clave. \pendiente{} — La
+valorización económica (inversión, costo operacional y beneficio) y el mes exacto del
+cronograma se complementarán en el Informe 3 junto con el flujo de caja (Entregable 2.7).
+
+\section{Innovación 1 — Producto o servicio}
+
+\begin{table}[htbp]
+\centering
+\small
+\caption{Innovación 1: Ficha resumen}
+\label{tab:inn1}
+\begin{tabularx}{\textwidth}{@{}L{5.2cm}X@{}}
+\toprule
+\textbf{Nombre} &
+\textbf{Certificado de trazabilidad lote-a-lote autoconsultable por el cliente} \\
+\addlinespace
+\textbf{Problema u oportunidad} &
+El retiro sanitario de marzo de 2026 tardó nueve días y una estimación no certera
+(fuente: Caso 02). El canal moderno y el proveedor de lácteos exigen evidencia exacta de
+adónde llegó cada lote. Hoy no existe respuesta inmediata ni consultable. \\
+\addlinespace
+\textbf{Tecnología que la sustenta} &
+Motor de trazabilidad GSM estándar GS1 (GTIN/SSC/GLN) sobre los datos capturados en
+recepción, integrado a la app del cliente tradicional y al portal del canal moderno. \\
+\addlinespace
+\textbf{Nivel de madurez} &
+GS1 en trazabilidad sanitaria: práctica consolidada en la industria alimentaria; la
+innovación consiste en exponerla como servicio autoconsultable al cliente en su
+\emph{offline-first}. \\
+\addlinespace
+\textbf{Incorporación (arquitectura/EDT/mes)} &
+Capa de servicios de negocio (módulo Trazabilidad y Retiros) y capa de presentación
+(autoatención); \pendiente{} paquete EDT y mes. \\
+\addlinespace
+\textbf{Indicador} &
+Tiempo de respuesta a un retiro sanitario $\leq$ 2 horas con evidencia exacta
+(línea base: 9 días, estimación inexacta) (RT-26.05). \\
+\addlinespace
+\textbf{Riesgo / mitigación / contingencia} &
+Adopción por clientes sin internet (tradicional). Mitigación: canal autoatención con
+operador. Contingencia: reporte por QR en la guía digital. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{Innovación 2 — Proceso}
+
+\begin{table}[htbp]
+\centering
+\small
+\caption{Innovación 2: Ficha resumen}
+\label{tab:inn2}
+\begin{tabularx}{\textwidth}{@{}L{5.2cm}X@{}}
+\toprule
+\textbf{Nombre} &
+\textbf{Digitalización del \emph{picking} y del conteo cíclico operable a $-$22\,°C} \\
+\addlinespace
+\textbf{Problema u oportunidad} &
+El turno de noche (120 personas, rotación 38\,\%) usa hoja de \emph{picking} impresa y
+conteo en planilla; los faltantes se registran sin causa y la transcripción manual
+introduce errores (diferencia de conteo 2,3\,\%). \\
+\addlinespace
+\textbf{Tecnología que la sustenta} &
+Dispositivos \emph{rugged} y escáneres con pantalla operable con guantes, captura digital
+en el punto de conteo con registro de causa de faltante, operación sin señal dentro de la
+cámara (Restricción N° 7). \\
+\addlinespace
+\textbf{Nivel de madurez} &
+Hardware industrial \emph{rugged} y escaneo en bodega: consolidados; la innovación es
+llevarlos al ambiente de congelado extremo con captura estructurada de causa. \\
+\addlinespace
+\textbf{Incorporación (arquitectura/EDT/mes)} &
+Capa de servicios (módulo Gestión de Bodega y \emph{Picking}) y capa de borde; \pendiente{}
+paquete EDT y mes. \\
+\addlinespace
+\textbf{Indicador} &
+Diferencias de conteo $\leq$ 1\,\% y 100\,\% de faltantes con causa registrada
+(línea base: 2,3\,\% sin causa) \\
+\addlinespace
+\textbf{Riesgo / mitigación / contingencia} &
+Rechazo del turno de noche por complejidad (Restricción R-09). Mitigación: entrenamiento
+mínimo y validación en marcha blanca. Contingencia: soporte presencial en bodega durante
+la Etapa 1. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{Innovación 3 — Tecnológica o de arquitectura}
+
+\begin{table}[htbp]
+\centering
+\small
+\caption{Innovación 3: Ficha resumen}
+\label{tab:inn3}
+\begin{tabularx}{\textwidth}{@{}L{5.2cm}X@{}}
+\toprule
+\textbf{Nombre} &
+\textbf{Sincronización \emph{offline-first} con resolución determinista de conflictos} \\
+\addlinespace
+\textbf{Problema u oportunidad} &
+La app 2016 no envía pedidos o los duplica al recuperar cobertura (``pasa todas las
+semanas''), sin deduplicación ni resolución determinista. \\
+\addlinespace
+\textbf{Tecnología que la sustenta} &
+Patrón \emph{offline-first} con base local encriptada (SQLCipher/AES-256), colas con
+reintento, deduplicación por idempotencia y resolución de conflictos por
+\emph{timestamp} (RT-02.06/02.07, RT-03.12). \\
+\addlinespace
+\textbf{Nivel de madurez y fuentes} &
+\textit{Offline-first} es un patrón maduro en aplicaciones móviles; se cita en APA:
+Burckhardt (2020); por confirmar. \pendiente{} escala y fuentes completas (RT-26.03). \\
+\addlinespace
+\textbf{Incorporación (arquitectura/EDT/mes)} &
+Capa de integración y eventos; \pendiente{} paquete EDT y mes. \\
+\addlinespace
+\textbf{Indicador} &
+0 pedidos no enviados ni duplicados en sincronización (verificable en marcha blanca en
+rutas sin señal) (RT-26.08). \\
+\addlinespace
+\textbf{Riesgo / mitigación / contingencia} &
+Complejidad de la resolución de conflictos. Mitigación: pruebas en laboratorio Edge con
+jaulas de Faraday. Contingencia: pre-asignación por cuota ante condiciones límite. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{Innovación 4 — Modelo de negocio o de contratación}
+
+\begin{table}[htbp]
+\centering
+\small
+\caption{Innovación 4: Ficha resumen}
+\label{tab:inn4}
+\begin{tabularx}{\textwidth}{@{}L{5.2cm}X@{}}
+\toprule
+\textbf{Nombre} &
+\textbf{Modelo de servicios gestionados para el costo de servir por entrega} \\
+\addlinespace
+\textbf{Problema u oportunidad} &
+El costo logístico se prorratea por zona desde 2016, sin vigencia técnica; no existe costo
+de servir por cliente ni por entrega. \\
+\addlinespace
+\textbf{Tecnología que la sustenta} &
+Modelo de costeo construido desde el hecho (kilómetro, tiempo de descarga, tamaño de
+pedido, frecuencia), con servicios gestionados que liberan al equipo de TI de 4 personas
+(Restricción R-08): todo lo que requiera administrador dedicado se ofrece como servicio
+y costeado. \\
+\addlinespace
+\textbf{Nivel de madurez} &
+Costeo analítico y \emph{managed services}: modelos consolidados en la industria; la
+innovación es exponerlos como esquema de contratación por servicio en el flujo de caja. \\
+\addlinespace
+\textbf{Incorporación (arquitectura/EDT/mes)} &
+Capa analítica (módulo Costeo) y modelo de operación/soporte; \pendiente{} paquete EDT y
+mes. \\
+\addlinespace
+\textbf{Indicador} &
+Costo de servir calculado por entrega para el 100\,\% de los clientes; consumo del
+servicio sin dedicar personal de TI del CLIENTE. \\
+\addlinespace
+\textbf{Riesgo / mitigación / contingencia} &
+Subestimación del costo operacional. Mitigación: modelo de costos operacionales
+detallado. Contingencia: optimizaciones de eficiencia previstas en el tiempo. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{Innovación 5 — Experiencia de usuario, sostenibilidad o impacto social}
+
+\begin{table}[htbp]
+\centering
+\small
+\caption{Innovación 5: Ficha resumen}
+\label{tab:inn5}
+\begin{tabularx}{\textwidth}{@{}L{5.2cm}X@{}}
+\toprule
+\textbf{Nombre} &
+\textbf{Prueba de entrega digital accesible e inclusiva en el canal tradicional} \\
+\addlinespace
+\textbf{Problema u oportunidad} &
+El receptor habitual es una persona natural sin firma electrónica, muchas veces sin saber
+firmar (Decisión D15); el cliente no puede exigirse dispositivos ni internet (Restricción
+N° 5 / R-05). \\
+\addlinespace
+\textbf{Tecnología que la sustenta} &
+PoD digital que combina fotografía georreferenciada con marca de tiempo, nombre en texto
+y captura de firma en pantalla, con alternativa accesible, articulada con la guía de
+despacho electrónica y su acuse de recibo (RT-16.18, Ley 19.799). \\
+\addlinespace
+\textbf{Nivel de madurez} &
+PoD móvil: práctica madura en reparto; la innovación es su diseño inclusivo y legalmente
+validado para el cliente tradicional sin medios electrónicos. \\
+\addlinespace
+\textbf{Incorporación (arquitectura/EDT/mes)} &
+Capa de servicios (módulo Entrega y Prueba de Entrega) y capa de presentación (app de
+reparto); \pendiente{} paquete EDT y mes. \\
+\addlinespace
+\textbf{Indicador} &
+100\,\% de entregas con PoD digital válida y sin rechazo por accesibilidad; conformidad
+WCAG 2.2 AA y validez legal del acuse. \\
+\addlinespace
+\textbf{Riesgo / mitigación / contingencia} &
+Rechazo o dificultad del receptor. Mitigación: opción de fotografía + nombre en texto.
+Contingencia: impresora de respaldo en el vehículo. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{Traza de las innovaciones con la arquitectura}
+
+Conforme a RT-26.01, cada innovación se ubica en la arquitectura, se vincula a los
+paquetes de la EDT y al mes del cronograma. En la versión final se completará la tabla de
+traza con la EDT y el cronograma del Informe 2, y la valorización económica con el flujo
+de caja del Informe 3. Al menos la innovación 3 (sincronización \emph{offline-first}) es
+verificable durante la marcha blanca de la Etapa 1, valorada por RT-26.08.

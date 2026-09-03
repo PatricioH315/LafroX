@@ -1,0 +1,108 @@
+% ============================================================
+%  4. ARQUITECTURA LÓGICA DE LA SOLUCIÓN  (Subdocumento 4.1)
+%  Informe 1 — Arquitectura lógica
+%  Detalle de módulos y capas, propia de la solución Puelche
+% ============================================================
+\chapter{Arquitectura Lógica de la Solución}
+\label{sec:arqlogica}
+
+Este capítulo presenta la arquitectura lógica de la solución, distinta de la explicación
+del alcance y del diagrama de solución. Describe cada módulo y cada capa con el detalle
+suficiente para comprender cómo se compone la plataforma, evidenciando el carácter
+híbrido exigido en el Artículo 16° de las Bases Administrativas.
+
+\section{Esquema general de la solución}
+
+La solución se estructura en una \textbf{arquitectura de ocho capas} que organiza la
+separación de responsabilidades desde la presentación hasta la observabilidad, con un
+\emph{bus} de integración y eventos que desacopla los módulos de negocio. Cada capa es
+propia de la solución planteada para Puelche, no un diagrama genérico.
+
+\begin{table}[htbp]
+\centering
+\small
+\caption{Arquitectura de ocho capas y su aplicación en la distribuidora}
+\label{tab:capas}
+\begin{tabularx}{\textwidth}{@{}L{4.2cm}X@{}}
+\toprule
+\textbf{Capa} & \textbf{Aplicación en distribuidora} \\
+\midrule
+Presentación &
+Portal de administración (Talca/Concepción); app móvil de preventa; app de reparto;
+app de recepción y \emph{picking} en bodega; autoatención de clientes, transportistas
+y proveedores. \\
+\addlinespace
+Borde y exposición &
+CDN + WAF gestionado para el portal público y las interfaces de programación expuestas
+a proveedores y cadenas; terminación TLS 1.3. \\
+\addlinespace
+Puerta de enlace de servicios &
+Punto único de publicación de las interfaces de pedidos, crédito, trazabilidad, entrega
+e intercambio con cadenas. \\
+\addlinespace
+Servicios de negocio &
+Módulos sin estado: preventa; planificación de rutas; gestión de bodega y \emph{picking};
+trazabilidad y retiros; cadena de frío; entrega y prueba de entrega; cobranza y efectivo;
+devoluciones y envases; costeo; reposición y compras. \\
+\addlinespace
+Integración y eventos &
+Bus de mensajería que desacopla preventa, crédito, bodega, ruta, reparto y facturación;
+colas con reintento para dispositivos sin señal. \\
+\addlinespace
+Datos &
+Base transaccional (pedidos, stock, trazabilidad de lote, temperatura, prueba de entrega)
+separada del almacén analítico (OTIF, \emph{fill rate}, costo de servir). \\
+\addlinespace
+Seguridad transversal &
+Identidad federada, cifrado en tránsito y en reposo, cifrado a nivel de campo para datos
+comerciales, de pago y de geolocalización. \\
+\addlinespace
+Observabilidad transversal &
+Métricas, registros y trazas correlacionados de Talca, Concepción, las tres plataformas
+de \emph{cross-docking} y los dispositivos de terreno. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{Modelo de dominio de negocio}
+
+El modelo de dominio se organiza por agregados desacoplados por el \emph{bus} de eventos,
+permitiendo que cada proceso evolucione de forma independiente. Los agregados principales
+son: \textbf{Pedido}, \textbf{Stock}, \textbf{Lote}, \textbf{Ruta}, \textbf{Entrega},
+\textbf{Temperatura/Excursión}, \textbf{Cobro}, \textbf{Envase retornable} y
+\textbf{Costo de servir}. La separación transaccional/analítica garantiza que la captura
+en el punto del hecho no degrade el desempeño operacional (RT-05.05/05.29).
+
+\section{Decisiones lógicas clave}
+
+\begin{itemize}
+  \item \textbf{Estilo arquitectónico:} \emph{monolito modular} evolutivo sobre
+        microservicios acotados para los módulos de mayor escalabilidad estacional
+        (RT-02.02), balanceando mantenibilidad y elasticidad durante el \emph{peak} de
+        septiembre.
+  \item \textbf{Reserva de stock y conflictos:} reserva efectiva al sincronizar con el
+        servidor central; en \emph{offline} el stock es indicativo y los conflictos se
+        resuelven por \emph{timestamp} (Decisión D8), con deduplicación determinista
+        (RT-02.06/02.07).
+  \item \textbf{Operación desconectada:} las funciones críticas operan un turno completo
+        (14 h) y el CD un mínimo de 24 h sin enlace (RT-03.10/03.12/03.13).
+  \item \textbf{Integración con el ERP:} capa anticorrupción (RT-05.20) para convivir
+        con el ERP y el WMS 2013 sin ``dos verdades'' (Restricción R-04).
+  \item \textbf{Canal moderno:} mensajería electrónica estructurada sin integración
+        punto a punto por cadena (RT-05.23).
+  \item \textbf{Registros de decisiones de arquitectura} (ADR) documentados (RT-02.04).
+\end{itemize}
+
+\section{Identificación del punto único de falla principal}
+
+El análisis identifica como componente de mayor saturación en el \emph{peak} de
+septiembre el motor de sincronización del \emph{bus} de eventos entre los dispositivos de
+terreno y la nube (RT-02.11). Este se dimensiona de forma elástica y se somete a pruebas
+de carga estacionales para garantizar la indisponibilidad cero de la ventana de despacho
+matutino (05:30--07:00). El detalle del dimensionamiento y la estrategia de resiliencia se
+desarrolla en la arquitectura física (capítulo siguiente).
+
+\vspace{4pt}
+{\small\color{lafroxGrato}\pendiente{} Incorporar el esquema lógico (diagrama de
+capas), el diagrama de contexto y el mapeo de módulos a los agregados de dominio en la
+versión final.}
