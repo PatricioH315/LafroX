@@ -59,9 +59,9 @@ Conforme al Capítulo 17 del caso, el trabajo de traducción exige:
 - Dimensionamiento explícito de la volumetría de sistema (numeral 14.2), con método y supuestos; celdas vacías = dimensionamiento no realizado.
 - Criterios de aceptación del **Capítulo 18** (retiro sanitario < 2 h, 100 % lote, registro continuo de temperatura, OTIF con meta, preventa con stock/crédito, cero pedidos perdidos/duplicados, ruta automática < 20 min).
 
-### Sección de reglas de negocio (del informe)
+### Reglas de negocio (dentro del registro de requerimientos — Cap. 17.1)
 
-El informe final debe contener una **sección propia dedicada a las reglas de negocio** (no como un catálogo auxiliar, sino como capítulo visible de la propuesta). Debe recoger cada regla que la solución debe respetar y que el caso no explicita, en el formato: qué se captura, en qué punto del proceso, por quién y con qué consecuencia si se incumple. Al menos:
+Las reglas de negocio **no van como capítulo aparte del informe** (el T-22 no las pide como sección independiente). Van **dentro del registro de requerimientos del Cap. 17.1** —es decir, dentro del catálogo de requerimientos y su apoyo en el "esquema de solución y alcance" (Informe 1, Subdoc 3)—, como lo exige formalmente el caso. Cada regla se registra con el formato: qué se captura, en qué punto del proceso, por quién y con qué consecuencia si se incumple. Al menos:
 
 - Asignación y reserva de stock (cuándo se compromete: toma, confirmación o preparación; regla ante doble compromiso — decisión 16.1 #8).
 - Política de crédito y comportamiento de pago del cliente (lo que el preventista debe ver y las consultas registradas).
@@ -93,7 +93,7 @@ Las siguientes incoherencias existen entre los documentos rectores. **No corregi
 ### Media — afectan presentación/plan
 
 5. **"Instalaciones" vs "conductores/camiones".** El caso §2.4 habla de ≈84 conductores propios y peonetas; la Tabla 14.1 fila "Conductores" anota "42 propios" (que es el número de **camiones**, §2.3). Ratios de totales ≈200 vs ≈244 según se lea. Aclarar en supuestos: camiones ≠ conductores.
-6. **T-22 vs entregables del Cap. 17.1.** El Formulario T-22 (contenido de informes) no menciona explícitamente "registro de reglas de negocio", "registro de supuestos" ni "matriz de trazabilidad" que el caso exige producir (17.1). Resolver ubicándolos donde el T-22 sí los abriga: el registro de reglas/apoyos en el "esquema de solución y alcance" (Informe 1, Subdoc 3) y el catálogo con trazabilidad como base del Subdoc 3/5; mantener el registro de reglas de negocio como capítulo de apoyo en el informe.
+6. **T-22 vs entregables del Cap. 17.1.** El Formulario T-22 (contenido de informes) no menciona explícitamente "registro de reglas de negocio", "registro de supuestos" ni "matriz de trazabilidad" que el caso exige producir (17.1). No crear capítulos extra en el informe: esos entregables **viven dentro del registro de requerimientos del Cap. 17.1** y se reflejan como apoyo en el "esquema de solución y alcance" (Informe 1, Subdoc 3) y en el Subdoc 5 (modelo y gestión de datos), donde el T-22 sí los abriga. Si el cliente espera verlos como ítem propio en algún informe, confirmarlo en consulta.
 7. **Fechas de calendario.** (a) El período de registro (Formulario T-20, 14–17 ago) termina **antes** de la publicación de las bases (19 ago); (b) el Informe 1 coincide con la publicación del Acta de Respuestas el 07-09; (c) el Informe 3 y la Presentación 3 caen el mismo día (13-11), en apariencia contra el Art. 45 ("informe con anterioridad a la presentación"). No alterar el cronograma; confirmar fechas en consulta.
 
 ### Baja — terminología
