@@ -61,7 +61,7 @@ pilares operativos de alto impacto:
         estrategias de optimización respetan las directrices, incentivos y metas de la
         Estrategia Nacional de Movilidad Sostenible (ENMS) de Chile.
   \item \textbf{Eficiencia energética y \emph{cloud} verde:} priorizamos el despliegue
-        de nuestras soluciones en centros de datos de hiperescala (AWS/Azure) con
+        de nuestras soluciones en AWS (región Chile o Sudamérica), con
         certificaciones internacionales de carbono neutralidad y energía 100\,\%
         renovable. El diseño de nuestro software utiliza arquitecturas \emph{serverless}
         optimizadas que demandan recursos solo bajo demanda real, evitando el consumo
@@ -156,28 +156,30 @@ estándares internacionales:
         del almacenamiento encriptado local (SQLCipher, AES-256) y la robustez de los
         algoritmos de sincronización asíncrona y resolución de conflictos.
   \item \textbf{Plataforma de despliegue elástico y segregación de ambientes:}
-        infraestructura CI/CD automatizada sobre AWS Fargate y Amazon ECS, con cuatro
-        entornos independientes y securizados mediante WAF: DEV, QA, STG y PROD.
+        infraestructura CI/CD automatizada sobre AWS Fargate y Amazon ECS, con cinco
+        entornos independientes y securizados mediante WAF: DEV, QA, STG, PROD y DR
+        (Recuperación ante Desastres), conforme a las Bases Técnicas Transversales.
   \item \textbf{Consola NOC y observabilidad activa:} central de monitoreo 24/7 con
-        herramientas de APM y observabilidad (Datadog/CloudWatch), respaldando un
-        compromiso de RTO de 30 minutos y RPO de 5 minutos ante desastres de
-        infraestructura.
+        herramientas de APM y observabilidad (Datadog/CloudWatch), respaldando los
+        compromisos de recuperación ante desastres (RT-07.04): RTO máximo de 4 horas y
+        RPO máximo de 15 minutos para los servicios críticos.
 \end{itemize}
 
 \section{Estructura del Equipo de Trabajo y Gobernanza}
 
 LafroX fundamenta su ventaja competitiva en no tercerizar jamás la ingeniería de sus
-soluciones. El proyecto está liderado por un grupo multidisciplinario de ocho
-Ingenieros Civiles Informáticos con certificaciones internacionales de clase mundial:
+soluciones. El proyecto está liderado por un grupo multidisciplinario de ocho Ingenieros
+Civiles Informáticos con certificaciones internacionales de clase mundial, organizado
+según la gobernanza declarada en la oferta:
 
 \begin{table}[htbp]
 \centering
 \small
 \caption{Roles estratégicos y credenciales del equipo de trabajo}
 \label{tab:equipo}
-\begin{tabularx}{\textwidth}{@{}L{4.6cm}L{5.4cm}X@{}}
+\begin{tabularx}{\textwidth}{@{}L{4.6cm}L{4.6cm}X@{}}
 \toprule
-\textbf{Rol estratégico} & \textbf{Ingenieros asignados} & \textbf{Función principal} \\
+\textbf{Rol estratégico} & \textbf{Ingeniero asignado} & \textbf{Función principal} \\
 \midrule
 Gobernanza y jefatura de proyecto &
 Alex Aravena (PM) \newline PMP (PMI), CSM &
@@ -185,24 +187,39 @@ Cumplimiento del cronograma maestro, mitigación de la matriz de riesgos, gesti�
 presupuesto y comunicación con el Comité Ejecutivo del Mandante. \\
 \addlinespace
 Arquitectura de soluciones (Cloud \& Edge) &
-Tomás Pérez, Álvaro Catalán \newline AWS Certified SA -- Professional &
+Bastián Trejo \newline AWS Certified Solutions Architect -- Professional &
 Diseño conceptual y detallado de la topología lógica-física distribuida, integración
 con bases de datos y ERP legados, gobierno de datos y resiliencia en escenarios sin red. \\
 \addlinespace
-Ingeniería backend e integración &
-Leandro Chamorro, Bastián Trejo \newline CKAD &
+Seguridad de la información &
+Álvaro Catalán \newline CISSP, CEH &
+Auditorías de seguridad y penetración, implementación del SGSI, canalizaciones CI/CD
+seguras y cumplimiento de protección de datos personales. \\
+\addlinespace
+Líder de datos &
+Leandro Chamorro \newline CKAD &
+Gobernanza y modelado de datos, diccionario de datos, integración e interoperabilidad
+(OpenAPI/AsyncAPI) y capa analítica. \\
+\addlinespace
+Líder de desarrollo &
+Tomás Pérez \newline CKAD &
 Desarrollo del catálogo de microservicios, parametrización de motores de reglas de
 negocio y optimización de bases de datos relacionales y NoSQL. \\
 \addlinespace
-Desarrollo frontend y movilidad (offline-first) &
-Maximiliano Miño, Guillermo Castillo \newline Mobile UI/UX Specialist &
-Diseño e implementación de interfaces de usuario y lógica y bases de datos locales
-móviles encriptadas para personal de terreno y conductores. \\
+Líder de calidad &
+Maximiliano Miño \newline \pendiente{} &
+Aseguramiento de la calidad, pruebas de integración, automatización de pruebas y
+validación de criterios de aceptación. \\
 \addlinespace
-Ciberseguridad, QA e infraestructura &
-Patricio Henríquez \newline CISSP, CEH &
-Auditorías de seguridad y penetración, implementación de canalizaciones CI/CD,
-simulación de pérdida de red y cumplimiento de protección de datos personales. \\
+Líder de operación / SRE &
+Guillermo Castillo \newline \pendiente{} &
+Operación de la plataforma, observabilidad, gestión de incidentes y continuidad
+operacional (SLO/SLA). \\
+\addlinespace
+Líder de implantación y gestión del cambio &
+Patricio Henríquez \newline \pendiente{} &
+Plan de implantación, capacitación, gestión del cambio y adopción en terreno
+(preventa, reparto y bodega). \\
 \bottomrule
 \end{tabularx}
 \end{table}

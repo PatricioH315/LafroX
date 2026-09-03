@@ -1,0 +1,148 @@
+﻿% ============================================================
+%  CAPÍTULO 2 — PROBLEMA Y NECESIDAD (Subdoc. 2)
+%  Contenido: contexto, necesidad, procesos AS-IS, análisis
+% ============================================================
+%  FUENTES:
+%  - Subdoc. 2 (Bases_Administrativas.md §1539-1545) + T-22 (§1839).
+%  - Narrativa del problema: íntegramente del Caso_02_Logistica.md (C),
+%    Título II (proceso actual) y Título III (voces de actores).
+%      Retiro sanitario: C §66, §182, §362, §428.
+%      Cadena de frío/rechazo: C §250, §335, §338.
+%      Conteo cíclico 2,3% / merma 1,7%: C §190, §242.
+%      Envases 68.000/9.400 pallets/14%: C §244, §323.
+%      OTIF 82,4% -> sobre 95%: C §301, §906.
+%      Costos: C §333 ($31M), §250 ($21M), §234 ($4,2M/mes).
+%  - Criterios de aceptación (retiro <2h, 100% lote, etc.): C Cap. 18 §897-918.
+%  - Supuestos y 16 decisiones del 16.1: C §861+.
+%  - APA 7.ª ed. exigida en AA §1545 y §1842.
+%  Ver FUENTES.md para el detalle completo.
+\chapter{Problema y Necesidad (Subdoc.\ 2)}
+
+\nota{Este capítulo es el corazón de la propuesta. Aquí se demuestra que entendiste el problema de Puelche mejor que nadie. No basta resumir el caso; hay que interpretarlo, estructurarlo y revelar las consecuencias que el caso solo insinúa. El evaluador busca ver que puedes traducir narrativa en problemas concretos, medibles y priorizados. Las reglas de precedencia (Art.\ 5°) y las inconsistencias detectadas están en \texttt{AGENTS.md}.}
+
+% -----------------------------------------------------------
+\section{Contextualización del Entorno}
+% -----------------------------------------------------------
+
+\nota{Presentar el contexto macro del proyecto: la industria de distribución de consumo masivo en Chile, las tendencias de digitalización en logística, la presión regulatoria sanitaria (ISP, Ley 20.644), y la competencia. No es un resumen del caso; es la \"foto amplia\" que justifica por qué esta licitación existe.}
+
+\subsection{El detonante: el retiro sanitario de marzo de 2026}
+\nota{Narrar el evento que inicia la crisis: 14.200 llamadas, 4.800 kg recuperados, \$31M de pérdida directa, rechazo de food service por sospecha de ruptura de cadena de frío (\$21M). El caso dice que \"la estimación no era suficiente\" para la autoridad.}
+
+\subsection{Las presiones externas que transforman la crisis en amenaza estrategica}
+\nota{Identificar 3-5 presiones: competidor nacional con mejor informacion, ISP con fiscalizacion activa, food service exigiendo trazabilidad, aliados exigiendo PEDIDOS 100\% completos, rotacion de conductores (35\% en 18 meses), COSTO de no hacer nada (merma 1,7\%, OTIF 82,4\%, 4,2M/mes en diferencias de rendicion).}
+
+\subsection{Metas convocantes de la licitación}
+\nota{Citar las 4 metas del Caso Cap. 18 como objetivos que la propuesta debe cumplir: (1) retiro sanitario < 2h, 100\% del lote; (2) registro continuo de temperatura; (3) OTIF con meta; (4) preventa con stock y crédito; (5) cero pedidos perdidos/duplicados; (6) ruta automática < 20 min.}
+
+% -----------------------------------------------------------
+\section{Marco Legal y Regulatorio}
+% -----------------------------------------------------------
+
+\nota{Enmarcar el problema en la legislación chilena e internacional. No es un capítulo de derecho; es un capítulo que demuestra que la propuesta no dejará al cliente expuesto a multas o cierres. Citar leyes concretas y su impacto en el proyecto.}
+
+\subsection{Marco legal nacional}
+\nota{Ley 20.644 (trazabilidad), Ley 18.256 y su reglamento (SAG, cadena de frio), Ley 20.388 (reclamos del consumidor), DL 3.500 (FONASA/ISAPRE si aplica a conductores), Ley 20.900 (proteccion de datos personales y ciberseguridad), Ley 21.526 (fintech si hay pagos), Ley 20.644 (Ley de Transito, normativa de transporte de carga).}
+
+\subsection{Estándares internacionales y marcos de referencia}
+\nota{GS1 (estándares de identificación y trazabilidad), ISO 22000/ISO 28000 (seguridad en la cadena de suministro), GAMP 5 si aplica, frameworks de referencia como ITIL o COBIT para gestión de TI. Mencionar solo los que sean relevantes y que la propuesta efectivamente use.}
+
+% -----------------------------------------------------------
+\section{Modelo Operativo Actual (Procesos AS-IS)}
+% -----------------------------------------------------------
+
+\nota{Este es el subtítulo más extenso del capítulo. Describir cada proceso actual de Puelche tal como opera HOY, tal como lo describe el caso. No es un resumen; es una descripción técnica del flujo de información y materia. Usar el vocabulario del caso. Incluir diagramas de flujo AS-IS (formato Mermaid o PlantUML) para los procesos críticos.}
+
+\subsection{Abastecimiento y recepción de mercadería}
+\nota{Flujo desde que el bodeguero recibe mercadería hasta que queda ingresada en el ERP. El caso describe: 350SKUs, planillas impresas, contingencia manual, lote sin rastrear, vencimiento sin alerta. Incluir un diagrama de flujo AS-IS de la recepción.}
+
+\subsection{Almacenamiento e inventario}
+\nota{Distribución por temperatura (ambiente 65\%, refrigerados 20\%, congelados 15\%), conteo cíclico nocturno sobre 3.400 posiciones/mes con planillas, ajuste al cierre del mes sin investigación de causa, diferencia promedio 2,3\% del valor contado. Merma por vencimiento 1,7\%.}
+
+\subsection{Preventa y toma de pedidos}
+\nota{62 preventistas, 80\% con Windows Mobile y Pocket PC 2003, app de 2009 de proveedor desaparecido, sin conexión 6-8 horas/día, respuesta en 24-72h. 25\% con cuadernos. Stock=20\% del total, crédito manual para el 75\%.}
+
+\subsection{Planificación de rutas}
+\nota{Basada en memoria del jefe de despacho, Google Maps manual, 1.200 despachos/día, stockout 2,3\%. Optimización por conocimiento tácito, no por herramienta.}
+
+\subsection{Preparación de pedidos y carga}
+\nota{Ciclo nocturno 22:00-06:00, recepción 06:00-11:00, preparación 15:00-23:00. 350 SKUs, 120 pedidos por ciclo nocturno. Salida 05:00. Incluir diagrama de flujo del ciclo operativo diario.}
+
+\subsection{Transporte, entrega y cobro}
+\nota{200 camiones, 4.200 despachos/día, rutas de 12-14 horas, chofer-cobrador con \$180M en efectivo, afirmación de entrega por papel, rendición al día siguiente, diferencias promedio \$4,2M/mes sin investigación.}
+
+\subsection{Devoluciones, mermas y activos retornables}
+\nota{14\% de pérdida anual de envases retornables (68.000 canastillos + 9.400 pallets), devolución sin registro estructurado, conductores que autorizan descuentos por su cuenta.}
+
+\subsection{Síntesis de ineficiencias estructurales del modelo AS-IS}
+\nota{Resumir en una tabla o lista las ineficiencias críticas: (1) planillas como sistema de registro, (2) información que viaja en papel, (3) costos de servir no medidos, (4) retiro sanitario que toma días, (5) control de inventario por diferencias al cierre, (6) prevención sin stock/credito en tiempo real, (7) efectivo sin control, (8) envases sin rastrear.}
+
+% -----------------------------------------------------------
+\section{Diagnóstico de Ineficiencias}
+% -----------------------------------------------------------
+
+\nota{Estructurar el diagnóstico como una tabla que cruce: proceso afectado, tipo de ineficiencia (tecnológica, organizacional, de datos), impacto cuantificado cuando sea posible, y urgencia (crítica/alta/media/baja). El evaluador busca ver que puedes priorizar problemas, no solo listarlos.}
+
+\begin{tabularx}{\textwidth}{|L{2.8cm}|L{3.5cm}|L{2.5cm}|X|}
+\hline
+\rowcolor{lafroxClaro}
+\textbf{Proceso} & \textbf{Ineficiencia} & \textbf{Impacto} & \textbf{Urgencia} \\
+\hline
+Retiro sanitario & Sin trazabilidad lote-a-lote & 21M+ pérdida, cierre potencial & Crítica \\
+\hline
+Preventa & Sin stock/credito en tiempo real & Pedidos incompletos, 82,4\% OTIF & Crítica \\
+\hline
+Cobro en ruta & Efectivo sin control & 4,2M/mes sin investigación & Alta \\
+\hline
+Inventario & Planillas, ajuste al cierre & 2,3\% diferencia, 1,7\% merma & Alta \\
+\hline
+Envases & Sin rastreo individual & 14\% pérdida anual & Alta \\
+\hline
+\end{tabularx}
+
+% -----------------------------------------------------------
+\section{Análisis de Impacto}
+% -----------------------------------------------------------
+
+\subsection{Impacto financiero directo}
+\nota{Sumar las pérdidas cuantificables del caso: \$31M (retiro sanitario) + \$21M (rechazo cadena de frío) + \$4,2M/mes (diferencias de rendición) + 14\% de envases + 1,7\% de mermas. Estimar el costo de no hacer nada a 12 y 24 meses.}
+
+\subsection{Impacto operacional}
+\nota{Describir las consecuencias no monetarias: demora de 3 semanas para encontrar una guía, 6-8 horas sin información del preventista, 25\% de preventistas sin registro, rotación de conductores 35\% en 18 meses, captura de conocimiento tácito del jefe de despacho.}
+
+\subsection{Impacto regulatorio y comercial}
+\nota{Consecuencias de no resolver: fiscalización del ISP, pérdida de clientes food service, impossibilidad de acceder a licitaciones publicas con trazabilidad insuficiente, perdida competitiva frente al competidor que sí tiene mejor información.}
+
+% -----------------------------------------------------------
+\section{Actores Afectados}
+% -----------------------------------------------------------
+
+\nota{Identificar y describir cada rol afectado por el problema, tal como aparecen en el Caso Título III: gerente de operaciones, jefe de bodega, jefe de despacho, gerente comercial, jefe de tesorería, conductores/preventistas, autoridad sanitaria, clientes food service. Describir qué le duele a cada uno.}
+
+\begin{tabularx}{\textwidth}{|L{2.5cm}|L{4cm}|X|}
+\hline
+\rowcolor{lafroxClaro}
+\textbf{Rol} & \textbf{Dolor principal} & \textbf{Necesidad insatisfecha} \\
+\hline
+Gerente de operaciones & No sabe cuántas entregas llegan completas & Visibilidad en tiempo real \\
+\hline
+Jefe de bodega & Conteo manual, merma sin investigación & Control automático de inventario \\
+\hline
+Jefe de despacho & Rutas por memoria, stockout 2,3\% & Planificación optimizada \\
+\hline
+Gerente comercial & Competidor tiene mejor info & Costo de servir medido \\
+\hline
+Jefe de tesorería & \$4,2M/mes sin explicación & Rendición automática \\
+\hline
+Conductores & Cuadernos, cobro en efectivo & Herramienta simple de registro \\
+\hline
+Clientes food service & Sin evidencia de cadena de frío & Trazabilidad certificada \\
+\hline
+\end{tabularx}
+
+% -----------------------------------------------------------
+\section{Registro de Supuestos del Caso}
+% -----------------------------------------------------------
+
+\nota{Lista de supuestos implícitos del caso que la propuesta asume como ciertos. Por ejemplo: (1) la empresa tiene conectividad 4G en la mayoría de las rutas; (2) los conductores y preventistas aceptarán capacitación; (3) el ERP existente tiene API o base de datos accesible; (4) el wMS de 2013 almacena datos rastreables; (5) el 15\% de las congeladas puede tener registro térmico; (6) los 200 camiones tienen espacio para dispositivos; (7) la autoridad sanitaria no exigirá fechas específicas de cumplimiento más allá de lo licitado.}
+\pendiente

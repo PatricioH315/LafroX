@@ -7,5 +7,19 @@ opencode-loop/
 Thumbs.db
 *.log
 
+# Artefactos de compilación LaTeX (no se versionan)
+*.aux
+*.out
+*.toc
+*.fdb_latexmk
+*.bbl
+*.blg
+*.lof
+*.lot
+
 # Archivos en tránsito (aún no consolidados en las carpetas definitivas)
 _staging/
+
+# Auditoría de integridad del caso: herramienta interna de control (no se versiona)
+AUDITORIA.md
+**/auditoria*.md

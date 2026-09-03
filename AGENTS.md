@@ -16,11 +16,11 @@ Todo el trabajo se desarrolla en **español** (idioma oficial de la licitación)
   | Arquitecto de Solución | Bastián Trejo |
   | Encargado de Seguridad de la Información | Álvaro Catalán |
   | Líder de Datos | Leandro Chamorro |
-  | Líder de Desarrollo | *(pendiente)* |
-  | Líder de Calidad | *(pendiente)* |
-  | Líder de Operación / SRE | *(pendiente)* |
-  | Líder de Implantación y Gestión del Cambio | *(pendiente)* |
-- *Fuente: `_staging/Hoja de calculo ... actores y roles de lafrox.csv` (rol, nombre, certificaciones, dedicación, meses de participación). Las columnas de Certificaciones/Dedicación/Meses quedan por llenar.*
+  | Líder de Desarrollo | Tomás Pérez |
+  | Líder de Calidad | Maximiliano Miño |
+  | Líder de Operación / SRE | Guillermo Castillo |
+  | Líder de Implantación y Gestión del Cambio | Patricio Henríquez |
+- *Fuente: `TrabajosAnteriores/Equipo_y_roles_lafrox.csv` (rol, nombre, certificaciones, dedicación, meses de participación). Las columnas de Dedicación/Meses quedan por llenar.*
 
 ## Protocolo de sesión (importante)
 

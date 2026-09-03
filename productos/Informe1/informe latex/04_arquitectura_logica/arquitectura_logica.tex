@@ -18,6 +18,10 @@ separación de responsabilidades desde la presentación hasta la observabilidad,
 \emph{bus} de integración y eventos que desacopla los módulos de negocio. Cada capa es
 propia de la solución planteada para Puelche, no un diagrama genérico.
 
+\diagrama{arq_logica_capas.png}{Arquitectura lógica de ocho capas de la solución}{fig:arqlogica_capas}
+
+\diagrama{arq_contexto.png}{Diagrama de contexto de la solución Puelche}{fig:arq_contexto}
+
 \begin{table}[htbp]
 \centering
 \small
@@ -72,6 +76,8 @@ son: \textbf{Pedido}, \textbf{Stock}, \textbf{Lote}, \textbf{Ruta}, \textbf{Entr
 \textbf{Temperatura/Excursión}, \textbf{Cobro}, \textbf{Envase retornable} y
 \textbf{Costo de servir}. La separación transaccional/analítica garantiza que la captura
 en el punto del hecho no degrade el desempeño operacional (RT-05.05/05.29).
+
+\diagrama{arq_dominio_agregados.png}{Mapeo de módulos de negocio a agregados de dominio}{fig:arq_dominio_agregados}
 
 \section{Decisiones lógicas clave}
 

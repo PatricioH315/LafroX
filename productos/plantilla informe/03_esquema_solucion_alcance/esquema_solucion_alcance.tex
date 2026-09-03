@@ -1,0 +1,125 @@
+﻿% ============================================================
+%  CAPÍTULO 3 — ESQUEMA DE SOLUCIÓN Y ALCANCE (Subdoc. 3)
+%  Contenido: propuesta, componentes, alcance, exclusiones
+% ============================================================
+%  FUENTES:
+%  - Subdoc. 3 (Bases_Administrativas.md §1547-1554) + T-22 (§1840).
+%  - Cap. 17.1 del Caso (C §811-835): de la necesidad al requerimiento.
+%      Catálogo RF/RNF, registro de supuestos, reglas de negocio, matriz: C §815-823.
+%      Reglas de negocio viven DENTRO del registro 17.1 (no capítulo aparte).
+%  - Criterios de aceptación del alcance (C Cap. 18 §897-918 y §931).
+%  - Componentes <-> RT: C Cap. 15 (RT-03.10, RT-03.13, RT-02.01, RT-05.10, RT-06.01).
+%    NOTA: validar códigos contra transversales (ver GG "Inconsistencias");
+%    no inventar RT que la solución no cubra.
+%  Ver FUENTES.md para el detalle completo.
+\chapter{Esquema de Solución y Alcance (Subdoc.\ 3)}
+
+\nota{Aquí se responde la pregunta central de la licitación: ¿qué vas a entregar y por qué esta combinación de componentes es la mejor para resolver los problemas del Cap. 2? El evaluador busca ver coherencia entre lo que identificaste como problema y lo que propones como solución. Cada componente del esquema debe responder a al menos un problema del Cap. 2. Este capítulo NO es una especificación técnica detallada; eso va en los Cap. 4 y 5. Aquí es la visión de negocio y alcance.}
+
+% -----------------------------------------------------------
+\section{Visión General de la Solución}
+% -----------------------------------------------------------
+
+\nota{Describir en 1 página (máximo 2) la propuesta de alto nivel: qué sistema se construye, cómo se integra con lo existente, y por qué esta arquitectura es la correcta para el contexto de Puelche. No entrar en detalles técnicos; esto es la \"elevator pitch\" del proyecto.}
+
+\pendiente
+
+% -----------------------------------------------------------
+\section{Componentes del Esquema de Solución}
+% -----------------------------------------------------------
+
+\nota{Listar y describir cada componente/módulo del sistema propuesto. Para cada uno: qué hace, a qué problema del Cap. 2 responde, y qué requisitos RT (Cap. 15 del caso) habilita. Idealmente 6-10 componentes, cada uno en su propia subsección.}
+
+\subsection{Componente 1: Motor de Trazabilidad Lote-a-Lote}
+\nota{Sistema que permite rastrear cada lote desde recepción hasta entrega al cliente, incluyendo cadena de frío. Responde al problema del retiro sanitario de marzo 2026 y al Art. 7.1 de las Bases Técnicas Transversales. Debe habilitar: retiro sanitario < 2h del 100\% del lote, registro continuo de temperatura, y trazabilidad completa.}
+
+\pendiente
+
+\subsection{Componente 2: Gestión Inteligente de Inventario}
+\nota{Sistema que reemplaza el conteo cíclico manual por control automático. Responde al problema de las 3.400 posiciones/mes en planillas, la diferencia promedio del 2,3\% y la merma del 1,7\%. Debe integrarse con el ERP existente y el WMS de 2013.}
+
+\pendiente
+
+\subsection{Componente 3: Preventa Móvil con Stock y Crédito en Tiempo Real}
+\nota{Aplicación móvil para los 62 preventistas que reemplaza el Windows Mobile/Pocket PC 2003 y los cuadernos. Debe funcionar sin conexión (mínimo un turno completo de 14 horas), sincronizar al reconectar, y mostrar stock y crédito en tiempo real.}
+
+\pendiente
+
+\subsection{Componente 4: Planificación Automática de Rutas}
+\nota{Sistema que reemplaza la planificación manual del jefe de despacho. Debe generar rutas optimizadas en < 20 minutos (RT-02.01, RT-02.04), considerando capacidad del vehículo, ventana horaria del cliente, y condiciones de tránsito.}
+
+\pendiente
+
+\subsection{Componente 5: Control de Rendición y Cobro en Ruta}
+\nota{Sistema que elimina las diferencias de \$4,2M/mes en la rendición de efectivo. Debe registrar automáticamente cobros, descuentos y devoluciones, y cerrar la rendición al final del turno.}
+
+\pendiente
+
+\subsection{Componente 6: Panel de Costo de Servir}
+\nota{Dashboard que calcula y muestra el costo real de servir a cada cliente, por zona, por ruta. Responde a la necesidad del gerente comercial de \"saber cuánto cuesta cada entrega\".}
+
+\pendiente
+
+\subsection{Componente 7: Gestión de Envases Retornables}
+\nota{Sistema que controla los 68.000 canastillos y 9.400 pallets, reduciendo la pérdida del 14\% anual. Debe permitir rastreo por unidad o por saldo por cliente.}
+
+\pendiente
+
+% -----------------------------------------------------------
+\section{Esquema de Integración con Sistemas Existentes}
+% -----------------------------------------------------------
+
+\nota{Diagrama de alto nivel que muestra cómo el sistema propuesto se conecta con el ERP, el WMS de 2013, y la app de preventa (migrada o reemplazada). Indicar qué datos fluyen, en qué dirección, y con qué frecuencia. La capacidad de \"no romper lo que funciona\" es clave para el evaluador.}
+
+\pendiente
+
+% -----------------------------------------------------------
+\section{Alcance del Proyecto}
+% -----------------------------------------------------------
+
+\nota{Definir con precisión qué está incluido y qué no. El evaluador busca ver que entiendes los límites. Ser explícito sobre: (1) número de usuarios; (2) número de dispositivos; (3) número de bodegas; (4) cobertura geográfica; (5) período de operación cubierto.}
+
+\subsection{Inclusiones}
+\nota{Lista cerrada de lo que SÍ se entregará: componentes, formación, documentación, soporte post-implementación, etc.}
+
+\pendiente
+
+\subsection{Exclusiones}
+\nota{Lista cerrada de lo que NO está incluido: reemplazo del ERP, desarrollo de hardware propio, conectividad de los clientes, etc.}
+
+\pendiente
+
+% -----------------------------------------------------------
+\section{Requisitos Regulatorios Aplicables (RT) que Habilita}
+% -----------------------------------------------------------
+
+\nota{Tabla que cruza cada componente propuesto con los requisitos transversales (RT) del Cap. 15 del caso que habilita. Solo incluir los RT que son directamente respondidos por la solución. No inventar RT que la solución no cubre.}
+
+\begin{tabularx}{\textwidth}{|L{3.5cm}|L{2cm}|X|}
+\hline
+\rowcolor{lafroxClaro}
+\textbf{Componente} & \textbf{RT} & \textbf{Relación} \\
+\hline
+Trazabilidad lote-a-lote & RT-03.13 & Retiro sanitario < 2h \\
+\hline
+Gestión de inventario & RT-03.10 & Operación desconectada \\
+\hline
+Preventa móvil & RT-02.01 & Ruta automática < 20 min \\
+\hline
+Planificación de rutas & RT-02.01 & Asignación eficiente \\
+\hline
+Control de rendición & RT-03.12 & Replicación a nuevas unidades \\
+\hline
+Costo de servir & RT-05.10 & Analítica de gestión \\
+\hline
+Envases retornables & RT-06.01 & Control de activos \\
+\hline
+\end{tabularx}
+
+% -----------------------------------------------------------
+\section{Supuestos y Dependencias de la Solución}
+% -----------------------------------------------------------
+
+\nota{Listar los supuestos técnicos que deben cumplirse para que la solución funcione: conectividad 4G, API del ERP, compatibilidad del WMS, cooperación de los usuarios en capacitación, plazos de entrega de hardware, etc. Si alguno no se cumple, la propuesta se modifica.}
+
+\pendiente

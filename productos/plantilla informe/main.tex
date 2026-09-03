@@ -1,0 +1,228 @@
+﻿% ============================================================
+%  PLANTILLA ESQUELETO — Informe 1
+%  Formulario T-22: Informe y Presentación 1
+%  Subdocumentos: 1, 2, 3, 4.1, 4.2, 5 y 13
+%  Compilar con: pdflatex
+% ============================================================
+\documentclass[11pt,a4paper,oneside]{report}
+
+% ------------------------------------------------------------
+%  Paquetes
+% ------------------------------------------------------------
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish,es-tabla]{babel}
+\usepackage{lmodern}
+\usepackage{mathptmx}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{geometry}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{hhline}
+\usepackage{caption}
+\usepackage[table]{xcolor}
+\usepackage[hidelinks]{hyperref}
+
+% ------------------------------------------------------------
+%  Configuración del documento
+% ------------------------------------------------------------
+\geometry{a4paper, top=2.8cm, bottom=2.8cm, left=2.8cm, right=2.5cm}
+
+% ------------------------------------------------------------
+%  Paleta corporativa LafroX
+% ------------------------------------------------------------
+\definecolor{lafroxVioleta}{HTML}{4A2C7A}
+\definecolor{lafroxAzul}{HTML}{1F3A5F}
+\definecolor{lafroxGrato}{HTML}{5B6770}
+\definecolor{lafroxClaro}{HTML}{F4F2F7}
+\definecolor{lafroxAcento}{HTML}{C9A227}
+\definecolor{lafroxBg}{HTML}{F7F5FA}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=lafroxAzul,
+  urlcolor=lafroxAzul,
+  citecolor=lafroxAzul
+}
+
+% ------------------------------------------------------------
+%  Encabezados y secciones
+% ------------------------------------------------------------
+\titleformat{\chapter}[display]
+  {\normalfont\huge\bfseries\color{lafroxVioleta}}
+  {\filright\Large\color{lafroxAzul}\chaptertitlename\ \thechapter}
+  {8pt}
+  {\filright}
+  [\vspace{2pt}{\color{lafroxAcento}\rule{\textwidth}{1pt}}]
+
+\titleformat{\section}
+  {\normalfont\Large\bfseries\color{lafroxAzul}}
+  {\thesection}{0.8em}{}
+\titleformat{\subsection}
+  {\normalfont\large\bfseries\color{lafroxGrato}}
+  {\thesubsection}{0.8em}{}
+\titleformat{\subsubsection}
+  {\normalfont\normalsize\bfseries\color{lafroxGrato}}
+  {\thesubsubsection}{0.8em}{}
+
+\titlespacing*{\chapter}{0pt}{-30pt}{20pt}
+\titlespacing*{\section}{0pt}{16pt}{8pt}
+\titlespacing*{\subsection}{0pt}{12pt}{6pt}
+
+% ------------------------------------------------------------
+%  Encabezado y pie de página
+% ------------------------------------------------------------
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\color{lafroxGrato}\textbf{LafroX} -- Informe 1}
+\fancyhead[R]{\small\color{lafroxGrato}\thepage}
+\renewcommand{\headrulewidth}{0.6pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{lafroxVioleta}\leaders\hrule height \headrulewidth\hfill}}
+\fancypagestyle{plain}{%
+  \fancyhf{}
+  \fancyfoot[C]{\small\color{lafroxGrato}\thepage}
+  \renewcommand{\headrulewidth}{0pt}
+}
+
+% ------------------------------------------------------------
+%  Opciones de tablas
+% ------------------------------------------------------------
+\captionsetup{labelfont={bf,color=lafroxAzul},font=small,skip=6pt}
+
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+
+\setlist[itemize]{itemsep=2pt, topsep=4pt}
+\setlist[enumerate]{itemsep=2pt, topsep=4pt}
+
+% Comando para marcador pendiente
+\newcommand{\pendiente}{{\color{lafroxAcento}\textbf{[PENDIENTE]}}}
+
+% Comando para nota de orientación (instrucciones dentro del documento)
+\newcommand{\nota}[1]{%
+  \par\vspace{4pt}%
+  {\small\color{lafroxGrato}\textit{#1}}%
+  \par\vspace{6pt}%
+}
+
+% Comando para bloque de instrucciones
+\begin{document}
+
+% ------------------------------------------------------------
+%  Portada
+% ------------------------------------------------------------
+\begin{titlepage}
+  \thispagestyle{empty}
+  \noindent
+  \begin{minipage}[t][\textheight][t]{\textwidth}
+    \centering
+    \vspace*{1.2cm}
+    {\color{lafroxVioleta}\rule{\textwidth}{2pt}}\\[0.4cm]
+    {\color{lafroxVioleta}\rule{\textwidth}{0.6pt}}\\[1.2cm]
+
+    {\Huge\bfseries\color{lafroxVioleta} LAFROX}\\[0.5cm]
+    {\Large\color{lafroxAzul} Propuesta de Solución --- Distribuidora Puelche S.A.}\\[0.3cm]
+    {\large\color{lafroxGrato} Licitación N° TFEP-01/2026 --- Caso 02 Logística}\\[1.0cm]
+
+    {\color{lafroxVioleta}\rule{\textwidth}{0.6pt}}\\[0.6cm]
+
+    {\LARGE\bfseries\color{lafroxVioleta} INFORME 1}\\[0.3cm]
+    {\Large\color{lafroxAzul} Presentación Preparatoria}\\[0.2cm]
+    {\normalsize\color{lafroxGrato} Formulario T-22 --- Subdocumentos 1, 2, 3, 4.1, 4.2, 5 y 13}\\[1.5cm]
+
+    {\color{lafroxVioleta}\rule{\textwidth}{0.6pt}}\\[1.2cm]
+
+    {\normalsize\color{lafroxGrato}
+    \begin{tabular}{ll}
+      \textbf{Asignatura:} & Taller de Formulación de Proyectos Informáticos (ICI-5444) \\
+      \textbf{Unidad:} & Escuela de Informática, PUCV \\
+      \textbf{Profesor:} & Antonio Moya Villegas \\
+      \textbf{Fecha de entrega:} & 07 de septiembre de 2026 \\
+    \end{tabular}
+    }\\[1.2cm]
+
+    {\color{lafroxVioleta}\rule{\textwidth}{2pt}}
+  \end{minipage}
+\end{titlepage}
+
+% ------------------------------------------------------------
+%  Índice general
+% ------------------------------------------------------------
+\tableofcontents
+\newpage
+
+% ============================================================
+%  CAPÍTULO 1 — PRESENTACIÓN DE LA EMPRESA (Subdoc. 1)
+% ============================================================
+\input{01_presentacion_empresa/presentacion_empresa}
+
+% ============================================================
+%  CAPÍTULO 2 — PROBLEMA Y NECESIDAD (Subdoc. 2)
+% ============================================================
+\input{02_problema_necesidad/problema_necesidad}
+
+% ============================================================
+%  CAPÍTULO 3 — ESQUEMA DE SOLUCIÓN Y ALCANCE (Subdoc. 3)
+% ============================================================
+\input{03_esquema_solucion_alcance/esquema_solucion_alcance}
+
+% ============================================================
+%  CAPÍTULO 4 — ARQUITECTURA LÓGICA (Subdoc. 4.1)
+% ============================================================
+\input{04_arquitectura_logica/arquitectura_logica}
+
+% ============================================================
+%  CAPÍTULO 5 — ARQUITECTURA FÍSICA (Subdoc. 4.2)
+% ============================================================
+\input{05_arquitectura_fisica/arquitectura_fisica}
+
+% ============================================================
+%  CAPÍTULO 6 — MODELO Y GESTIÓN DE DATOS (Subdoc. 5)
+% ============================================================
+\input{06_modelo_datos/modelo_datos}
+
+% ============================================================
+%  CAPÍTULO 7 — INNOVACIONES (Subdoc. 13)
+% ============================================================
+\input{07_innovaciones/innovaciones}
+
+% ============================================================
+%  ANEXO — MATRIZ DE TRAZABILIDAD INFORME 1
+% ============================================================
+\chapter{Anexo: Matriz de Trazabilidad del Informe 1}
+\nota{Tabla que cruza cada sección del Informe 1 con el subdoc. correspondiente, los requisitos RT que aborda, y el formulario T-22 que la cubre. Entregable de coherencia interna.}
+
+\begin{tabularx}{\textwidth}{|L{3.5cm}|C{1.5cm}|L{5cm}|X|}
+\hline
+\rowcolor{lafroxClaro}
+\textbf{Sección del Informe} & \textbf{Subdoc.} & \textbf{RT relevantes} & \textbf{Cubierta en T-22} \\
+\hline
+Presentación de la empresa & 1 & --- & Sí (Informe 1) \\
+\hline
+Problema y necesidad & 2 & --- & Sí (Informe 1) \\
+\hline
+Esquema de solución y alcance & 3 & RT-03.10, RT-03.12, RT-03.13 & Sí (Informe 1) \\
+\hline
+Arquitectura lógica & 4.1 & RT-02.xx, RT-03.xx & Sí (Informe 1) \\
+\hline
+Arquitectura física & 4.2 & RT-06.xx, RT-07.xx & Sí (Informe 1) \\
+\hline
+Modelo de datos & 5 & RT-05.xx & Sí (Informe 1) \\
+\hline
+Innovaciones & 13 & --- & Sí (Informe 1) \\
+\hline
+\end{tabularx}
+
+\vfill
+\begin{center}
+\small\color{lafroxGrato}\textit{Fin del Informe 1 --- Plantilla Esqueleto LafroX}
+\end{center}
+
+\end{document}

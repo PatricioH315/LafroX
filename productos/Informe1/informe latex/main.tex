@@ -105,6 +105,40 @@
 \newcommand{\pendiente}{{\color{lafroxAcento}\textbf{[PENDIENTE]}}}
 
 % ------------------------------------------------------------
+%  Diagramas
+%  Fuente de las imágenes: carpeta Diagramas/ (ver AGENTS.md).
+%  Convención: la fuente textual del diagrama vive en los .md;
+%  el PNG/SVG/PDF exportado se guarda en Diagramas/.
+%  \diagrama{archivo}{título}{label}: incluye la figura si el
+%  archivo existe; si no, muestra un marcador [PENDIENTE] para
+%  que el documento compile mientras llegan los diagramas.
+% ------------------------------------------------------------
+\graphicspath{{Diagramas/}}
+
+\newcommand{\diagrama}[3]{%
+  \begin{figure}[htbp]%
+    \centering%
+    \IfFileExists{\detokenize{#1}}{%
+      \includegraphics[width=\textwidth,keepaspectratio]{\detokenize{#1}}%
+    }{%
+      \fbox{%
+        \begin{minipage}{0.9\textwidth}%
+          \centering
+          \vspace{12pt}
+          {\color{lafroxAcento}\textbf{[PENDIENTE]}}\\[4pt]
+          {\itshape Diagrama pendiente de incorporar}\\[10pt]
+          {\small\bfseries\color{lafroxAzul} #2}\\[4pt]
+          {\footnotesize\color{lafroxGrato} Archivo esperado: \texttt{\detokenize{Diagramas/#1}}}\\
+          \vspace{12pt}%
+        \end{minipage}%
+      }%
+    }%
+    \caption{#2}%
+    \label{\detokenize{#3}}%
+  \end{figure}%
+}
+
+% ------------------------------------------------------------
 %  Portada
 % ------------------------------------------------------------
 \newcommand{\portada}{%

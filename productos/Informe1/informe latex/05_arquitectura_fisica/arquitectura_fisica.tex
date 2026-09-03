@@ -18,6 +18,8 @@ La solución es obligatoriamente híbrida (nube pública regional + componentes
 \emph{on-premise} críticos), conforme al Artículo 16° de las Bases Administrativas y a
 RT-03.01. El modelo de emplazamiento componente por componente es:
 
+\diagrama{arq_fisica_emplazamiento.png}{Modelo de emplazamiento híbrido (nube + on-premise + borde)}{fig:arqfisica_emplazamiento}
+
 \begin{table}[htbp]
 \centering
 \small
@@ -54,8 +56,10 @@ durante el \emph{peak} de septiembre. \\
 \addlinespace
 Telemetría de los 42 camiones propios &
 Se integra desde la plataforma del proveedor externo que ya la provee &
-Fuente existente a preservar; los 54 camiones de transportistas no están cubiertos y se
-incorporan mediante mecanismo a definir con cada empresa (Decisión N° 5). \\
+Fuente existente a preservar. En cuanto a la \emph{gestión de entregas}, la plataforma
+sí cubre la totalidad de las ruteadas (42 propios y 54 de transportistas); la
+\emph{telemetría vehicular} de los 54 camiones de transportistas se incorpora mediante
+mecanismo a definir con cada empresa (Decisión N° 5). \\
 \bottomrule
 \end{tabularx}
 \end{table}
@@ -127,6 +131,8 @@ APM y observabilidad (Datadog/CloudWatch) integrados al NOC 24/7. \\
 
 El recinto técnico principal se habilita en las instalaciones del CLIENTE (CD Talca),
 con un nivel de disponibilidad de infraestructura del 99,95\,\% (RT-06.01):
+
+\diagrama{arq_data_center.png}{Disposición del recinto técnico (data center primario) en CD Talca}{fig:arqfisica_datacenter}
 
 \begin{itemize}
   \item \textbf{Energía:} UPS con autonomía mínima de 30 minutos a plena carga

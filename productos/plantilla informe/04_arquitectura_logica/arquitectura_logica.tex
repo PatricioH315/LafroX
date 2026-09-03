@@ -1,0 +1,130 @@
+﻿% ============================================================
+%  CAPÍTULO 4 — ARQUITECTURA LÓGICA (Subdoc. 4.1)
+%  Contenido: capas, módulos, tecnologías, patrones, BD
+% ============================================================
+%  FUENTES:
+%  - Subdoc. 4 (Bases_Administrativas.md §1556-1565) + T-22 (§1841).
+%      Lógica: capas, módulos, límites, interfaces (§1558).
+%      Integración: servicios, contratos, mensajería, versionado (§1560).
+%      Seguridad Zero Trust (§1561); decisiones registradas (§1564).
+%      Prohibido diagramas genéricos (§1565).
+%  - Híbrido obligatorio (AA Art. 16° y §1841).
+%  - Operación desconectada 14h/24h (C §731, RT-03.10).
+%  - Volumetría del caso (C Tabla 14.1: 350 SKUs, 14.200 clientes, 31.000 pedidos-mes).
+%  Ver FUENTES.md para el detalle completo.
+\chapter{Arquitectura Lógica (Subdoc.\ 4.1)}
+
+\nota{Este capítulo describe CÓMO se construye la solución a nivel lógico: capas, módulos, tecnologías, patrones de diseño, bases de datos y lenguajes de programación. NO describe hardware ni infraestructura física (eso va en Cap. 5). El evaluador busca ver dominio técnico, coherencia con los componentes del Cap. 3, y que las tecnologías elegidas son apropiadas para el contexto (costo, madurez, ecosistema de talento en Chile).}
+
+% -----------------------------------------------------------
+\section{Visión General de la Arquitectura}
+% -----------------------------------------------------------
+
+\nota{Describir el estilo arquitectónico elegido (por ejemplo: arquitectura por capas, microservicios, o híbrida) y por qué es el correcto para este proyecto. Justificar la decisión: si es por capas, porque la empresa tiene equipo pequeño y necesita simplicidad; si es microservicios, porque los componentes son independientes y escalan por separado. Incluir un diagrama de alto nivel (Mermaid) que muestre las capas principales.}
+
+\pendiente
+
+% -----------------------------------------------------------
+\section{Capas de la Arquitectura}
+% -----------------------------------------------------------
+
+\nota{Describir cada capa de la arquitectura: presentación, lógica de negocio, acceso a datos, e integración. Para cada capa: qué responsabilidad tiene, qué tecnologías la implementan, y cómo se comunica con la capa adyacente.}
+
+\subsection{Capa de Presentación}
+\nota{Interfaces de usuario: app móvil (preventistas/conductores), dashboard web (gerencia, bodega), portal de clientes (si aplica). Tecnologías: React Native o Flutter para móvil, React/Angular para web. Justificar la selección según el ecosistema de talento disponible.}
+
+\pendiente
+
+\subsection{Capa de Lógica de Negocio}
+\nota{Motor de reglas de negocio: trazabilidad, cálculo de costo de servir, optimización de rutas, gestión de inventario, control de rendición. Tecnologías: Python (FastAPI/Django), Node.js (NestJS), o Java (Spring Boot). Justificar según el dominio y el equipo.}
+
+\pendiente
+
+\subsection{Capa de Acceso a Datos}
+\nota{ORMs, patrones de acceso, caching. Tecnologías: SQLAlchemy (Python), TypeORM (Node), o JPA (Java). Incluir justificación de por qué se usa el patrón elegido (Active Record vs Data Mapper, etc.).}
+
+\pendiente
+
+\subsection{Capa de Integración}
+\nota{Cómo se conecta con el ERP existente, el WMS de 2013, y servicios externos (APIs de mapas, SMS, correo). Patrones: ETL batch, webhooks, cola de mensajes. Tecnologías: Apache Kafka/RabbitMQ para eventos, REST/GraphQL para APIs síncronas.}
+
+\pendiente
+
+% -----------------------------------------------------------
+\section{Módulos Funcionales}
+% -----------------------------------------------------------
+
+\nota{Detalle técnico de cada módulo funcional del Cap. 3: qué hace internamente, qué datos maneja, qué APIs expone, y cómo interactúa con otros módulos. Usar un formato consistente para cada módulo: nombre, responsabilidad, API pública (endpoints o eventos), dependencias, y notas de implementación.}
+
+\subsection{Módulo de Trazabilidad}
+\nota{Registrar cada evento del ciclo de vida de un lote: recepción, almacenamiento, preparación, carga, tránsito, entrega. Cada evento tiene timestamp, ubicación GPS, responsable, y condición (temperatura si aplica). API: consulta de lote por código, historial completo, alertas de excursión térmica.}
+
+\pendiente
+
+\subsection{Módulo de Gestión de Inventario}
+\nota{Reemplazo del conteo cíclico manual: conteo por dispositivos móviles con código de barras/QR, diferencias automáticas, alertas de vencimiento, rotación ABC. Integración con el WMS existente vía API o ETL.}
+
+\pendiente
+
+\subsection{Módulo de Preventa Móvil}
+\nota{Aplicación offline-first: catálogo de productos, stock en tiempo real, crédito del cliente, toma de pedidos, firma digital, geolocalización. Sincronización diferida cuando hay conectividad. Almacenamiento local: SQLite o Realm.}
+
+\pendiente
+
+\subsection{Módulo de Planificación de Rutas}
+\nota{Algoritmo de optimización de rutas: vehicle routing problem (VRP) con ventanas de tiempo, capacidad del vehículo, y restricciones de zona. API de mapas: Google Directions, OSRM, o Valhalla (open source). Tiempo objetivo: < 20 minutos para 4.200 despachos.}
+
+\pendiente
+
+\subsection{Módulo de Rendición y Cobro}
+\nota{Registro de cobros en efectivo, transferencia, cheque, descuento autorizado, devolución. Cierre automático al final del turno. Conciliación con el ERP. Alertas por diferencias > umbral.}
+
+\pendiente
+
+\subsection{Módulo de Dashboard de Costo de Servir}
+\nota{Cálculo del costo real por entrega: combustible, tiempo de conductor, distancia, peso/volumen, zona. Dashboard con filtros por cliente, zona, período, ruta. Exportación a Excel/PDF. Integración con datos del ERP.}
+
+\pendiente
+
+% -----------------------------------------------------------
+\section{Modelo de Datos Conceptual}
+% -----------------------------------------------------------
+
+\nota{Diagrama entitéd-relación (ER) de alto nivel que muestre las entidades principales: Lote, Producto, Cliente, Pedido, Ruta, Entrega, Temperatura, Envase, Conductor, Vehículo, Preventista, Rendición. No incluir todos los atributos; solo las relaciones clave. Usar Mermaid ER diagram. Incluir una tabla resumen de las entidades más importantes con su propósito.}
+
+\pendiente
+
+% -----------------------------------------------------------
+\section{Tecnologías Seleccionadas}
+% -----------------------------------------------------------
+
+\nota{Tabla consolidada de todas las tecnologías usadas en la arquitectura, con justificación de cada una. Incluir: lenguaje, framework, base de datos, cola de mensajes, API de mapas, herramienta de build, plataforma de despliegue. Para cada una, justificar con al menos un criterio: madurez, costo, talento disponible en Chile, licencia, rendimiento.}
+
+\begin{tabularx}{\textwidth}{|L{2.5cm}|L{3cm}|X|}
+\hline
+\rowcolor{lafroxClaro}
+\textbf{Capa} & \textbf{Tecnología} & \textbf{Justificación} \\
+\hline
+Backend & \pendiente & \\
+\hline
+Frontend web & \pendiente & \\
+\hline
+Móvil & \pendiente & \\
+\hline
+Base de datos & \pendiente & \\
+\hline
+Cola de mensajes & \pendiente & \\
+\hline
+API de mapas & \pendiente & \\
+\hline
+Integración ERP & \pendiente & \\
+\hline
+\end{tabularx}
+
+% -----------------------------------------------------------
+\section{Patrones de Diseño y Buenas Prácticas}
+% -----------------------------------------------------------
+
+\nota{Describir los patrones de diseño que se usarán: Repository, Unit of Work, CQRS si aplica, Event Sourcing para trazabilidad, Clean Architecture o Hexagonal si se usa. También: versionado de APIs, manejo de errores, logging, seguridad por capas. No es un catálogo académico; es un inventario de lo que efectivamente se aplicará.}
+
+\pendiente

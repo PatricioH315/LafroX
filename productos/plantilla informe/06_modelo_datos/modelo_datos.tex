@@ -1,0 +1,108 @@
+﻿% ============================================================
+%  CAPÍTULO 6 — MODELO Y GESTIÓN DE DATOS (Subdoc. 5)
+%  Contenido: datos maestros, migración, analítica, gobernanza
+% ============================================================
+%  FUENTES:
+%  - Subdoc. 5 (Bases_Administrativas.md §1567-1574) asignado al Informe 1
+%    por T-22 §1844.
+%      dominio de información (§1569); motor/paradigma + teorema CAP (§1570);
+%      migración/saneamiento/validación (§1571); desempeño (§1572);
+%      separación transaccional/analítico (§1573); calidad/retención (§1574).
+%  - Retención de datos: C §734 (RT-05.10/correcto RT-16.10).
+%      doc tributarios 6 años; trazabilidad vida útil+6m (mín 5 años);
+%      temperatura 5 años; evidencia entrega 6 años; geolocalización 12 meses.
+%  - Volumetría: C Tabla 14.1 §688-689 (~34.000 doc/año, 3.400 posiciones/mes).
+%  - Planillas/cuadernos deben desaparecer: C §269.
+%  Ver FUENTES.md para el detalle completo.
+\chapter{Modelo y Gestión de Datos (Subdoc.\ 5)}
+
+\nota{Este capítulo describe QUÉ datos maneja el sistema, CÓMO se almacenan, CÓMO se migran desde los sistemas actuales, y CÓMO se usa la información para generar valor (analítica). El evaluador busca ver que entiendes que los datos son el activo más valioso del proyecto y que tienes un plan concreto para migrarlos, limpiarlos, gobernarlos y explotarlos.}
+
+% -----------------------------------------------------------
+\section{Inventario de Datos del Negocio}
+% -----------------------------------------------------------
+
+\nota{Categorizar todos los datos relevantes del caso. Para cada categoría: fuente actual (ERP, WMS, planillas, cuadernos), formato, volumen estimado, calidad actual, y criticidad para el proyecto.}
+
+\subsection{Datos Maestros}
+\nota{Productos (350 SKUs), clientes (14.200), rutas, conductores (200), preventistas (62), vehículos, ubicaciones geográficas. Fuente: ERP. Calidad: variable, algunos campos incompletos.}
+
+\pendiente
+
+\subsection{Datos Transaccionales}
+\nota{Pedidos, entregas, cobros, devoluciones, rendiciones, trazabilidad de lotes. Fuente: ERP, WMS, planillas. Volumen alto (~34.000 documentos tributarios/mes, 1.200 despachos/día). Calidad: inconsistente entre áreas.}
+
+\pendiente
+
+\subsection{Datos de Sensórica}
+\nota{Temperatura de cadena de frío (si se implementa el IoT), ubicación GPS de vehículos, lecturas de sensores de inventario. Fuente: dispositivos nuevos. Formato: series de tiempo. Volumen: alto (lecturas cada 5-15 minutos).}
+
+\pendiente
+
+\subsection{Datos de Control}
+\nota{Rendiciones de efectivo, descuentos autorizados, incidentes, reclamos. Fuente: cuadernos, correos, llamadas telefónicas. Calidad: pobre, dispersa, sin registro estructurado.}
+
+\pendiente
+
+% -----------------------------------------------------------
+\section{Modelo de Datos Físico}
+% -----------------------------------------------------------
+
+\nota{Diagrama entitéd-relación detallado (no conceptual como en Cap. 4) con tablas, columnas, tipos de datos, claves primarias y foráneas. Incluir: Lote, Producto, Cliente, Pedido, DetallePedido, Entrega, Ruta, Parada, Rendicion, Cobro, Envase, SensorTemperatura, ExcursionTermica, etc. No necesariamente todas las columnas; las más relevantes.}
+
+\pendiente
+
+% -----------------------------------------------------------
+\section{Estrategia de Migración de Datos}
+% -----------------------------------------------------------
+
+\nota{Plan concreto para migrar los datos desde el ERP, el WMS de 2013, y los registros en papel (planillas, cuadernos) hacia el nuevo sistema. Las planillas y cuadernos deben \"desaparecer como sistema de registro\" (Caso Cap. 7). La migración es un riesgo crítico; el evaluador busca ver que lo tienes planeado.}
+
+\subsection{Fuentes y estado de calidad}
+\nota{Para cada fuente: qué datos tiene, en qué formato, qué tan completos y correctos están, y qué limpieza se requiere antes de migrar. El WMS de 2013 puede tener datos en formato propietario o anticuado.}
+
+\pendiente
+
+\subsection{Proceso de migración ETL}
+\nota{Herramienta de migración (Apache Airflow, Talend, o script personalizado), transformaciones necesarias (mapeo de códigos, estandarización de direcciones, deduplicación de clientes), validación post-migración, y plan de rollback si algo falla.}
+
+\pendiente
+
+\subsection{Migración de datos en papel}
+\nota{Los 14.200 puntos de entrega, las rutas del jefe de despacho, y el conocimiento tácito del equipo deben digitalizarse. Proceso: digitalización de guías, captura de rutas en dispositivos GPS durante 2-4 semanas, entrevistas con conductores para validar datos de entrega.}
+
+\pendiente
+
+% -----------------------------------------------------------
+\section{Analítica e Inteligencia de Negocio}
+% -----------------------------------------------------------
+
+\nota{Describir cómo los datos se transforman en información accionable. Incluir: dashboards operativos (retiro sanitario, inventario, OTIF), reportes de gestión (costo de servir, mermas, rendimiento de rutas), y analítica predictiva (demanda, rotura de stock, excursiones térmicas).}
+
+\subsection{Dashboard Operativo}
+\nota{Vista en tiempo real: estado de entregas del día, alertas de cadena de frío, nivel de inventario por bodega, alertas de vencimiento. Usuario: gerente de operaciones, jefe de bodega.}
+
+\pendiente
+
+\subsection{Dashboard de Costo de Servir}
+\nota{Cálculo del costo real por cliente, por zona, por ruta. Incluye: combustible, tiempo de conductor, distance, peso/volumen, número de paradas, y costo de incidentes (rechazos, devoluciones). Usuario: gerente comercial, jefe de tesorería.}
+
+\pendiente
+
+\subsection{Reportes de Cumplimiento}
+\nota{Reportes para la autoridad sanitaria: trazabilidad de lotes, registros de temperatura, evidencia de retiro sanitario. Formato: PDF estructurado o portal web. Frecuencia: bajo demanda o mensual.}
+
+\pendiente
+
+\subsection{Analítica Predictiva (futuro)}
+\nota{Modelos predictivos que se pueden construir con los datos recolectados: predicción de demanda por cliente y zona, anticipación de vencimientos, detección de patrones de merma, optimización predictiva de rutas. Esto es \"futuro\" pero debe estar planteado en la arquitectura de datos.}
+
+\pendiente
+
+% -----------------------------------------------------------
+\section{Gobernanza y Calidad de Datos}
+% -----------------------------------------------------------
+
+\nota{Políticas de calidad: quién es dueño de cada dato, cómo se validan las actualizaciones, cómo se manejan los duplicados, cuánto tiempo se retienen los datos, y cómo se protegen (cifrado, anonimización si es necesario). Alinear con Ley 20.900 (protección de datos personales) y con ISO 27001 si aplica.}
+
+\pendiente
