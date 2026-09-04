@@ -6,8 +6,10 @@
 {
   // Skills versionadas en el repo. opencode las detecta al clonar y quedan
   // disponibles en `skill`, sin depender de la config global de cada máquina.
-  "skill": {
-    "directory": ".opencode/skills"
+  "skills": {
+    "paths": [
+      ".opencode/skills"
+    ]
   },
 
   // Plugin que refuerza la activación del skill orquestador `licitacion-workflow`
