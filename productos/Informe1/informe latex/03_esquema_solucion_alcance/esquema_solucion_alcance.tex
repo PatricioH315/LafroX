@@ -1,48 +1,48 @@
+﻿% ============================================================
+%  3. ESQUEMA DE SOLUCIÃ“N Y ALCANCE  (Subdocumento 3 â€” Formulario T-12)
+%  Informe 1 â€” Esquema de soluciÃ³n y del alcance
+%  Fuente: Informe (1).md (SoluciÃ³n propuesta y Alcances)
 % ============================================================
-%  3. ESQUEMA DE SOLUCIÓN Y ALCANCE  (Subdocumento 3 — Formulario T-12)
-%  Informe 1 — Esquema de solución y del alcance
-%  Fuente: Informe (1).md (Solución propuesta y Alcances)
-% ============================================================
-\chapter{Esquema de Solución y Alcance}
+\chapter{Esquema de SoluciÃ³n y Alcance}
 \label{sec:solucion}
 
 \section{Lo que haremos en el proyecto}
 
-La solución propuesta para la Distribuidora Puelche S.A. consiste en la modernización
-integral de la operación logística de la cadena de frío, la trazabilidad sanitaria y la
-gestión de preventa y reparto, sobre una plataforma digital de misión crítica de
-carácter obligatoriamente híbrido. La implantación se estructura en dos etapas alineadas
+La soluciÃ³n propuesta para la Distribuidora Puelche S.A. consiste en la modernizaciÃ³n
+integral de la operaciÃ³n logÃ­stica de la cadena de frÃ­o, la trazabilidad sanitaria y la
+gestiÃ³n de preventa y reparto, sobre una plataforma digital de misiÃ³n crÃ­tica de
+carÃ¡cter obligatoriamente hÃ­brido. La implantaciÃ³n se estructura en dos etapas alineadas
 con las restricciones operacionales y de cronograma del caso.
 
-La estrategia de la solución se funda en cinco ejes coherentes con el problema
+La estrategia de la soluciÃ³n se funda en cinco ejes coherentes con el problema
 diagnosticado:
 
 \begin{enumerate}
-  \item \textbf{Operación desconectada (\emph{offline-first}) como regla de diseño:}
-        ante la ausencia de cobertura en rutas rurales, cámaras de congelado y cortes de
-        enlace, toda capacidad crítica opera localmente y sincroniza de forma
+  \item \textbf{OperaciÃ³n desconectada (\emph{offline-first}) como regla de diseÃ±o:}
+        ante la ausencia de cobertura en rutas rurales, cÃ¡maras de congelado y cortes de
+        enlace, toda capacidad crÃ­tica opera localmente y sincroniza de forma
         determinista al recuperar conectividad.
   \item \textbf{Trazabilidad lote-a-lote desde el origen:} el registro estructurado del
-        lote en el punto de recepción, el monitoreo continuo de temperatura y la
+        lote en el punto de recepciÃ³n, el monitoreo continuo de temperatura y la
         consulta de clientes afectados habilitan la respuesta a retiros sanitarios en
-        horas, no en días.
-  \item \textbf{Preventa y reparto con información en el punto de decisión:} stock,
-        crédito, deuda vencida e historial disponibles en terreno para evitar el quiebre
-        del 7,8\,\% y los bloqueos sin notificación.
-  \item \textbf{Planificación algorítmica y costeo por hecho:} motor de ruteo que
-        resguarda el conocimiento crítico del planificador y costeo de servir por
+        horas, no en dÃ­as.
+  \item \textbf{Preventa y reparto con informaciÃ³n en el punto de decisiÃ³n:} stock,
+        crÃ©dito, deuda vencida e historial disponibles en terreno para evitar el quiebre
+        del 7,8\,\% y los bloqueos sin notificaciÃ³n.
+  \item \textbf{PlanificaciÃ³n algorÃ­tmica y costeo por hecho:} motor de ruteo que
+        resguarda el conocimiento crÃ­tico del planificador y costeo de servir por
         cliente y por entrega construido desde los hechos operacionales.
-  \item \textbf{Obtención del apoyo de los involucrados clave:} incorporación temprana
+  \item \textbf{ObtenciÃ³n del apoyo de los involucrados clave:} incorporaciÃ³n temprana
         del sindicato de conductores, del equipo de TI (4 personas) y de los operadores
-        de bodega mediante validación en marcha blanca y capacitación compatible con la
-        operación real.
+        de bodega mediante validaciÃ³n en marcha blanca y capacitaciÃ³n compatible con la
+        operaciÃ³n real.
 \end{enumerate}
 
 \subsection{Fechas e hitos relevantes}
 
-La planificación del proyecto se estructura en torno a hitos de negocio y ventanas de
-congelamiento obligatorias (Restricción R-10: sin intervención del 1 al 25 de
-septiembre, todo diciembre y los primeros tres días hábiles de cada mes).
+La planificaciÃ³n del proyecto se estructura en torno a hitos de negocio y ventanas de
+congelamiento obligatorias (RestricciÃ³n R-10: sin intervenciÃ³n del 1 al 25 de
+septiembre, todo diciembre y los primeros tres dÃ­as hÃ¡biles de cada mes).
 
 \begin{table}[htbp]
 \centering
@@ -51,16 +51,16 @@ septiembre, todo diciembre y los primeros tres días hábiles de cada mes).
 \label{tab:hitos}
 \begin{tabularx}{\textwidth}{@{}L{4.2cm}L{8.5cm}L{3cm}@{}}
 \toprule
-\textbf{Hito} & \textbf{Fecha / Descripción} & \textbf{Origen} \\
+\textbf{Hito} & \textbf{Fecha / DescripciÃ³n} & \textbf{Origen} \\
 \midrule
 PEAK de pedidos &
-Septiembre: el volumen se duplica durante 3 semanas (cuáles); es el período de mayor
-exigencia del año y condiciona las ventanas de congelamiento &
+Septiembre: el volumen se duplica durante 3 semanas (cuÃ¡les); es el perÃ­odo de mayor
+exigencia del aÃ±o y condiciona las ventanas de congelamiento &
 Cap 13.2 \\
 \addlinespace
 Ventanas de congelamiento &
-1 al 25 de septiembre, todo diciembre y primeros tres días hábiles de cada mes &
-Restricción R-10 \\
+1 al 25 de septiembre, todo diciembre y primeros tres dÃ­as hÃ¡biles de cada mes &
+RestricciÃ³n R-10 \\
 \addlinespace
 Marcha blanca Etapa 1 &
 Mes 13 en adelante; solapamiento con el desarrollo de la Etapa 2 (meses 13--15) &
@@ -69,27 +69,27 @@ BA Art. 17.2 \\
 \end{tabularx}
 \vspace{4pt}
 {\small\color{lafroxGrato}\pendiente{} Completar los hitos restantes del cronograma
-(ventanas de congelamiento, marcha blanca, puesta en producción, 56 meses
+(ventanas de congelamiento, marcha blanca, puesta en producciÃ³n, 56 meses
 contractuales).}
 \end{table}
 
 \section{Alcance de la Etapa 1 (meses 1--15)}
 
-\subsection{Alcance funcional del proyecto (Etapa 1) — Lo que hará}
+\subsection{Alcance funcional del proyecto (Etapa 1) â€” Lo que harÃ¡}
 
 \begin{enumerate}
-  \item Registrar y monitorear de forma automática temperaturas de cámara de frío y de
-        camiones con cámaras de frío.
-  \item Parametrizar reglas de excursión térmica, alertar y bloqueo configurable.
-  \item Registro obligatorio y estructurado del lote en punto de recepción.
-  \item Consulta de qué clientes recibieron un lote determinado.
-  \item La app del preventista mostrará stock disponible, crédito y deuda vencida, e
+  \item Registrar y monitorear de forma automÃ¡tica temperaturas de cÃ¡mara de frÃ­o y de
+        camiones con cÃ¡maras de frÃ­o.
+  \item Parametrizar reglas de excursiÃ³n tÃ©rmica, alertar y bloqueo configurable.
+  \item Registro obligatorio y estructurado del lote en punto de recepciÃ³n.
+  \item Consulta de quÃ© clientes recibieron un lote determinado.
+  \item La app del preventista mostrarÃ¡ stock disponible, crÃ©dito y deuda vencida, e
         historial de compra.
-  \item Enviar el pedido una sola vez con reintento controlado en zonas sin señal.
-  \item Informar al preventista y al cliente de forma inmediata el bloqueo por crédito,
-        sin depender de revisión manual.
-  \item Hoja de \emph{picking} digital operable con guantes dentro de la cámara de frío.
-  \item Generar guía de despacho electrónico con acuse de recibo.
+  \item Enviar el pedido una sola vez con reintento controlado en zonas sin seÃ±al.
+  \item Informar al preventista y al cliente de forma inmediata el bloqueo por crÃ©dito,
+        sin depender de revisiÃ³n manual.
+  \item Hoja de \emph{picking} digital operable con guantes dentro de la cÃ¡mara de frÃ­o.
+  \item Generar guÃ­a de despacho electrÃ³nico con acuse de recibo.
   \item Registrar el cobro en efectivo en el momento en que se realice por el conductor
         o preventista.
   \item Registro de canastillos y \emph{pallets} entregados y recibidos por el cliente.
@@ -97,58 +97,293 @@ contractuales).}
 
 \section{Alcance de la Etapa 2}
 
-\subsection{Alcance funcional del proyecto (Etapa 2) — Lo que haremos}
+\subsection{Alcance funcional del proyecto (Etapa 2) â€” Lo que haremos}
 
 \begin{enumerate}
   \item Motor de ruteo con restricciones de capacidad y ventanas horarias que propone la
         ruta y permite corregirla.
   \item Modelo de costeo por cliente y por entrega, construido desde el hecho:
-        kilómetro recorrido, tiempo de descarga, tamaño del pedido, frecuencia de visita
+        kilÃ³metro recorrido, tiempo de descarga, tamaÃ±o del pedido, frecuencia de visita
         y entregas.
-  \item Recepción de pedidos por vía electrónica estructurada, con aviso de despacho
+  \item RecepciÃ³n de pedidos por vÃ­a electrÃ³nica estructurada, con aviso de despacho
         anticipado para el canal moderno.
-  \item Sugerencias de reposición y compras basadas en la venta real, estacionalidad,
+  \item Sugerencias de reposiciÃ³n y compras basadas en la venta real, estacionalidad,
         promociones comprometidas y plazo de los proveedores.
 \end{enumerate}
 
 \subsection{Lo que no haremos (exclusiones del alcance)}
 
-Lo siguiente no formará parte del alcance funcional de la primera ni de la segunda
+Lo siguiente no formarÃ¡ parte del alcance funcional de la primera ni de la segunda
 etapa:
 
 \begin{itemize}
-  \item El reemplazo del sistema de gestión empresarial ni de ninguno de sus módulos, ni
-        la emisión de documentos tributarios electrónicos (lo realiza el ERP).
-  \item La administración de remuneraciones ni de recursos humanos, que residen en el
-        sistema de gestión.
+  \item El reemplazo del sistema de gestiÃ³n empresarial ni de ninguno de sus mÃ³dulos, ni
+        la emisiÃ³n de documentos tributarios electrÃ³nicos (lo realiza el ERP).
+  \item La administraciÃ³n de remuneraciones ni de recursos humanos, que residen en el
+        sistema de gestiÃ³n.
   \item Un sistema de punto de venta para el local del cliente, sin perjuicio del canal
-        de autoatención que la solución deba ofrecerle.
-  \item El comercio electrónico dirigido al consumidor final.
+        de autoatenciÃ³n que la soluciÃ³n deba ofrecerle.
+  \item El comercio electrÃ³nico dirigido al consumidor final.
 \end{itemize}
 
-\section{Enfoque para la obtención del apoyo de los involucrados clave}
+\section{Enfoque para la obtenciÃ³n del apoyo de los involucrados clave}
 
-La estrategia de adopción se orienta a los grupos de interés que condicionan el éxito de
-la operación (detalle en capítulo de innovaciones y en la justificación con grupos
+La estrategia de adopciÃ³n se orienta a los grupos de interÃ©s que condicionan el Ã©xito de
+la operaciÃ³n (detalle en capÃ­tulo de innovaciones y en la justificaciÃ³n con grupos
 clave):
 
 \begin{itemize}
-  \item \textbf{Sindicato de conductores:} resolver la objeción a cámaras en cabina y
-        control de jornada por GPS (Restricción R-11), proponiendo mecanismos de
-        geolocalización exclusiva para control operativo y logístico (tiempos de
-        arribo), no para supervisión de jornada.
+  \item \textbf{Sindicato de conductores:} resolver la objeciÃ³n a cÃ¡maras en cabina y
+        control de jornada por GPS (RestricciÃ³n R-11), proponiendo mecanismos de
+        geolocalizaciÃ³n exclusiva para control operativo y logÃ­stico (tiempos de
+        arribo), no para supervisiÃ³n de jornada.
   \item \textbf{Equipo de TI del cliente (4 personas):} todo lo que requiera un
-        administrador dedicado se ofrece como servicio y costeado (Restricción R-08).
-  \item \textbf{Bodega (turno de noche, rotación 38\,\%):} soluciones que no requieran
-        entrenamiento prolongado (Restricción R-09), hardware \emph{rugged} operable con
-        guantes a $-$22\,°C y validación en marcha blanca.
-  \item \textbf{Transportistas externos:} mecanismos ágiles de incorporación de
-        conductores que rotan sin aviso (Restricción R-06).
+        administrador dedicado se ofrece como servicio y costeado (RestricciÃ³n R-08).
+  \item \textbf{Bodega (turno de noche, rotaciÃ³n 38\,\%):} soluciones que no requieran
+        entrenamiento prolongado (RestricciÃ³n R-09), hardware \emph{rugged} operable con
+        guantes a $-$22\,Â°C y validaciÃ³n en marcha blanca.
+  \item \textbf{Transportistas externos:} mecanismos Ã¡giles de incorporaciÃ³n de
+        conductores que rotan sin aviso (RestricciÃ³n R-06).
 \end{itemize}
 
-\section{Enlace al catálogo de requerimientos}
+\section{Reglas de negocio}
 
-El alcance funcional se despliega en el catálogo de requerimientos funcionales (RF),
+Conforme al CapÃ­tulo 17.1 del caso, el proyecto mantiene un \textbf{registro de reglas de
+negocio}: las reglas de la industria que la soluciÃ³n debe respetar y que el caso no
+explÃ­cita como requerimiento formal. Cada regla indica quÃ© se captura, en quÃ© punto del
+proceso, por quiÃ©n, con quÃ© consecuencia si se incumple, el origen en el caso y el
+requerimiento RF/RNF que la implementa. Las reglas se derivan de las decisiones del
+numeral 16.1 ya resueltas (vÃ©ase el registro de supuestos), de modo que no contradicen la
+arquitectura ni el alcance propuestos.
+
+\begin{table}[htbp]
+\centering
+\small
+\caption{Trazabilidad de reglas de negocio}
+\label{tab:reglas_resumen}
+\begin{tabularx}{\textwidth}{@{}L{1.3cm}L{4.1cm}L{1.3cm}L{7.2cm}@{}}
+\toprule
+\textbf{CÃ³digo} & \textbf{Regla} & \textbf{DecisiÃ³n} & \textbf{RF/RNF principal} \\
+\midrule
+RNG-01 & Reserva de stock (orden de confirmaciÃ³n) & D8 & RF-03.03, RF-02.05 \\
+RNG-02 & Stock disponible vs.\ comprometido / en trÃ¡nsito & D8 & RF-02.05, RF-02.06 \\
+RNG-03 & PolÃ­tica de crÃ©dito en preventa & D8/D40 & RF-03.04--03.10 \\
+RNG-04 & ExcursiÃ³n tÃ©rmica y disposiciÃ³n & D4 & RF-09.05--09.07, RF-01.11 \\
+RNG-05 & Local cerrado / reintento & D3 & RF-06.04, RF-04.07 \\
+RNG-06 & Devoluciones y efecto sobre documento tributario & D12 & RF-06.03, RF-08.01/08.02 \\
+RNG-07 & Control de envases retornables & D10 & RF-08.03/08.04/08.06 \\
+RNG-08 & Cambio de precio (toma vs.\ despacho) & D9 & RF-03.11--03.13 \\
+RNG-09 & Entrega cumplida / OTIF y Fill Rate & D1 & RF-11.03, RF-11.04 \\
+RNG-10 & FEFO y vida Ãºtil remanente & --- & RF-05.05, RF-02.09 \\
+RNG-11 & Maestro de productos y cÃ³digos GS1 & D11 & RF-01.10, RF-12.03/12.06 \\
+RNG-12 & SincronizaciÃ³n y resoluciÃ³n de conflictos & RT-03.12 & RF-02.05, RF-03.16/17 \\
+RNG-13 & SecuenciaciÃ³n tÃ©rmica / validaciÃ³n por zona & --- & RF-05.04, RF-01.11/01.08 \\
+RNG-14 & Capacidad del vehÃ­culo y carga inversa & --- & RF-04.03/04.05, RF-05.07 \\
+\bottomrule
+\end{tabularx}
+\vspace{4pt}
+{\small\color{lafroxGrato}\pendiente{} Completar el detalle de cada regla en el
+registro de requerimientos del Cap.\ 17.1.}
+\end{table}
+
+\subsubsection{Reglas de inventario y stock}
+
+\begin{table}[htbp]
+\centering
+\small
+\begin{tabularx}{\textwidth}{@{}L{2.4cm}L{8.3cm}L{4.2cm}@{}}
+\toprule
+\textbf{RNG-01} \textbar{} AsignaciÃ³n y reserva de stock &
+\textbf{QuÃ©:} el momento en que el stock se compromete y el orden ante pedidos que
+compten por el mismo producto. \textbf{Punto:} al confirmar el pedido en el sistema de
+gestiÃ³n. \textbf{Por quiÃ©n:} sistema en la confirmaciÃ³n; el preventista gatilla; el jefe
+de bodega administra. \textbf{Regla:} reserva por orden de llegada; el segundo
+confirmado queda con quiebre parcial registrado. \textbf{Consecuencia:} doble compromiso
+de stock, quiebres de despacho y OTIF caÃ­do. &
+\textbf{Origen:} Cap.\ 16.1 D8. \textbf{RF:} RF-03.03, RF-02.05, RF-05.03. \\
+\addlinespace
+\textbf{RNG-02} \textbar{} Stock disponible vs.\ comprometido y en trÃ¡nsito &
+\textbf{QuÃ©:} definiciÃ³n de stock disponible y tratamiento del inventario en trÃ¡nsito.
+\textbf{Punto:} consulta de stock (preventa) y consolidaciÃ³n multi-sitio (bodega).
+\textbf{Por quiÃ©n:} sistema; preventista y jefe de bodega. \textbf{Regla:} disponible =
+fÃ­sico -- comprometido; el stock en trÃ¡nsito no suma hasta la recepciÃ³n confirmada; en
+offline el dato es indicativo con antigÃ¼edad, y los conflictos se resuelven por orden
+cronolÃ³gico. \textbf{Consecuencia:} sobreventa o venta de inventario en trÃ¡nsito. &
+\textbf{Origen:} Cap.\ 2.3, D8; RT-03.12. \textbf{RF:} RF-02.05, RF-02.06, RF-03.02. \\
+\addlinespace
+\textbf{RNG-10} \textbar{} FEFO y vida Ãºtil remanente &
+\textbf{QuÃ©:} orden de salida del inventario y alerta por vencimiento. \textbf{Punto:}
+asignaciÃ³n de picking y alarma de vida Ãºtil. \textbf{Por quiÃ©n:} sistema dirige; el
+preparador confirma; el jefe de bodega gestiona alertas. \textbf{Regla:} salida
+estrictamente FEFO con bitÃ¡cora de excepciÃ³n; alerta al superar el umbral de vida Ãºtil
+remanente (p.\,ej.\ 30 dÃ­as). \textbf{Consecuencia:} vencimiento en almacÃ©n y merma. &
+\textbf{Origen:} Cap.\ 4.8, 9.10. \textbf{RF:} RF-05.05, RF-02.09, RF-05.03. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsubsection{Reglas de crÃ©dito}
+
+\begin{table}[htbp]
+\centering
+\small
+\begin{tabularx}{\textwidth}{@{}L{2.4cm}L{8.3cm}L{4.2cm}@{}}
+\toprule
+\textbf{RNG-03} \textbar{} PolÃ­tica de crÃ©dito en preventa &
+\textbf{QuÃ©:} lÃ­mite de crÃ©dito del cliente y comportamiento ante su superaciÃ³n.
+\textbf{Punto:} toma de pedido (en lÃ­nea y offline). \textbf{Por quiÃ©n:} el preventista
+consulta; el supervisor de crÃ©dito autoriza excepciones; el sistema aplica bloqueos.
+\textbf{Regla:} superar el lÃ­mite dispara alerta; superar el 110\,\% bloquea el envÃ­o;
+toda excepciÃ³n se autoriza de forma registrada; en offline la excepciÃ³n queda
+aprobada a la sincronizaciÃ³n con respaldo presencial. \textbf{Consecuencia:} ventas a
+clientes morosos y descuadre. &
+\textbf{Origen:} Cap.\ 16.1 D8/D40. \textbf{RF:} RF-03.04/03.05, RF-03.08,
+RF-03.09, RF-03.10. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsubsection{Reglas de calidad y cadena de frÃ­o}
+
+\begin{table}[htbp]
+\centering
+\small
+\begin{tabularx}{\textwidth}{@{}L{2.4cm}L{8.3cm}L{4.2cm}@{}}
+\toprule
+\textbf{RNG-04} \textbar{} ExcursiÃ³n tÃ©rmica y disposiciÃ³n &
+\textbf{QuÃ©:} quÃ© constituye una excursiÃ³n y quiÃ©n decide la disposiciÃ³n. \textbf{Punto:}
+transporte y cÃ¡maras; bloqueo de despacho. \textbf{Por quiÃ©n:} jefa de calidad define
+parÃ¡metros; el sistema alerta; el conductor decide la disposiciÃ³n final. \textbf{Regla:}
+excursiÃ³n por parÃ¡metros configurables (tiempo y grados); alerta en tiempo real; el
+bloqueo del despacho NO es automÃ¡tico (el sistema habilita y el conductor decide);
+monitorear $\neq$ decidir (HACCP/GDP). \textbf{Consecuencia:} riesgo sanitario y retiro. &
+\textbf{Origen:} Cap.\ 16.1 D4, Cap.\ 10; RT-17.06. \textbf{RF:} RF-09.05, RF-09.06,
+RF-09.07, RF-01.11. \\
+\addlinespace
+\textbf{RNG-13} \textbar{} SecuenciaciÃ³n tÃ©rmica y validaciÃ³n por zona &
+\textbf{QuÃ©:} orden de recolecciÃ³n y validaciÃ³n de zona tÃ©rmica. \textbf{Punto:} picking
+y putaway. \textbf{Por quiÃ©n:} sistema secuencia; preparador confirma; operador valida.
+\textbf{Regla:} misiÃ³n secuenciada seco $\rightarrow$ refrigerado $\rightarrow$ congelado;
+se recoge el 100\,\% de ambiente seco antes de liberar cÃ¡maras; validation por
+compatibilidad tÃ©rmica en putaway (un congelado no se ubica fuera de zona congelada).
+\textbf{Consecuencia:} ruptura de cadena de frÃ­o y rechazo. &
+\textbf{Origen:} Cap.\ 4.5, 2.3. \textbf{RF:} RF-05.04, RF-01.11, RF-01.08. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsubsection{Reglas de reparto y entrega}
+
+\begin{table}[htbp]
+\centering
+\small
+\begin{tabularx}{\textwidth}{@{}L{2.4cm}L{8.3cm}L{4.2cm}@{}}
+\toprule
+\textbf{RNG-05} \textbar{} Reintento de entrega / local cerrado &
+\textbf{QuÃ©:} conducta ante un local cerrado en la ventana comprometida. \textbf{Punto:}
+la entrega. \textbf{Por quiÃ©n:} el conductor reporta; el sistema reagenda
+automÃ¡ticamente; el planificador administra. \textbf{Regla:} si el local estÃ¡ cerrado, se
+registra el envÃ­o fallido y se reagenda a la ventana siguiente registrada; el conductor
+no decide por su cuenta; si persiste, los productos regresan al almacÃ©n.
+\textbf{Consecuencia:} reentregas y OTIF bajo. &
+\textbf{Origen:} Cap.\ 16.1 D3. \textbf{RF:} RF-06.04, RF-04.07, RF-04.06. \\
+\addlinespace
+\textbf{RNG-09} \textbar{} Entrega cumplida / OTIF y Fill Rate &
+\textbf{QuÃ©:} criterio de entrega cumplida y mÃ©tricas de servicio. \textbf{Punto:}
+mediciÃ³n diaria del servicio. \textbf{Por quiÃ©n:} gerente comercial; sistema registra el
+POD; jefa de calidad. \textbf{Regla:} la entrega parcial NO cuenta como cumplida (In-Full
+= 100\,\%); On-Time = fecha y ventana pactada; Fill Rate = unidades entregadas vs.\
+pedidas; Perfect Order contra la orden original; la parcial queda como desvÃ­o auditado.
+\textbf{Consecuencia:} imposibilidad de acordar el estado real del servicio. &
+\textbf{Origen:} Cap.\ 16.1 D1; Cap.\ 14.2. \textbf{RF:} RF-11.03, RF-11.04. \\
+\addlinespace
+\textbf{RNG-14} \textbar{} Capacidad del vehÃ­culo y carga inversa &
+\textbf{QuÃ©:} lÃ­mites de capacidad y orden de carga. \textbf{Punto:} planificaciÃ³n de
+rutas y carga del camiÃ³n. \textbf{Por quiÃ©n:} planificador; sistema bloquea; cargador
+ejecuta. \textbf{Regla:} no se asigna lÃ­nea que exceda peso/volumen nominal; no se admite
+cadena de frÃ­o en vehÃ­culo seco; la carga se dirige en secuencia inversa a la ruta y al
+completar se verifica que todos los bultos fueron escaneados. \textbf{Consecuencia:}
+sobrecarga, rechazo y pÃ©rdida de tiempo de descarga. &
+\textbf{Origen:} Cap.\ 4.4--4.5. \textbf{RF:} RF-04.03, RF-04.05, RF-05.07. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsubsection{Reglas de devoluciones, envases y maestros}
+
+\begin{table}[htbp]
+\centering
+\small
+\begin{tabularx}{\textwidth}{@{}L{2.4cm}L{8.3cm}L{4.2cm}@{}}
+\toprule
+\textbf{RNG-06} \textbar{} Devoluciones y efecto sobre documento tributario &
+\textbf{QuÃ©:} la devoluciÃ³n en la entrega y su efecto tributario. \textbf{Punto:} POD y
+destino en el andÃ©n de retorno. \textbf{Por quiÃ©n:} conductor registra; jefe de bodega
+decide el destino; finanzas ejecuta la nota de crÃ©dito. \textbf{Regla:} se registra en el
+POD (total/parcial, con SKU, cantidad y motivo), operando offline; el destino se decide
+en el andÃ©n y se transmite al ERP; el efecto sobre el DTE se resuelve con nota de crÃ©dito
+del ERP (que no se reemplaza), con retenciÃ³n legal. \textbf{Consecuencia:} descuadre
+contable y pÃ©rdida de trazabilidad. &
+\textbf{Origen:} Cap.\ 16.1 D12; RT-16.14. \textbf{RF:} RF-06.03, RF-08.01, RF-08.02;
+RNF-08.02. \\
+\addlinespace
+\textbf{RNG-07} \textbar{} Control de envases retornables &
+\textbf{QuÃ©:} mecanismo de control del parque retornable. \textbf{Punto:} cada entrega
+(descuento) y devoluciÃ³n (suma). \textbf{Por quiÃ©n:} conductor captura; el sistema lleva
+la cuenta corriente por cliente; el preventista recibe alertas. \textbf{Regla:} control
+por saldo por cliente (no por unidad identificada); se alerta al superar el umbral y se
+reporta la pÃ©rdida por cliente, tipo y zona. \textbf{Consecuencia:} pÃ©rdida no controlada
+del parque. &
+\textbf{Origen:} Cap.\ 16.1 D10; Cap.\ 14.1. \textbf{RF:} RF-08.03, RF-08.04, RF-08.06,
+RF-06.09. \\
+\addlinespace
+\textbf{RNG-08} \textbar{} Cambio de precio (toma vs.\ despacho) &
+\textbf{QuÃ©:} precio aplicable cuando cambia entre toma y despacho. \textbf{Punto:}
+facturaciÃ³n / despacho de la lÃ­nea. \textbf{Por quiÃ©n:} administrador comercial configura
+la excepciÃ³n; el sistema aplica el por defecto; el cliente recibe la alerta.
+\textbf{Regla:} por defecto se cobra el precio vigente al despacho; solo con excepciÃ³n
+explÃ­cita se respeta el precio de la toma; sin excepciÃ³n y con cambio, se alerta al
+cliente antes de o con la facturaciÃ³n. \textbf{Consecuencia:} reclamos y litigios de
+facturaciÃ³n. &
+\textbf{Origen:} Cap.\ 16.1 D9. \textbf{RF:} RF-03.11, RF-03.12, RF-03.13. \\
+\addlinespace
+\textbf{RNG-11} \textbar{} Maestro de productos y cÃ³digos GS1 &
+\textbf{QuÃ©:} quÃ© maestro manda ante cambios de cÃ³digo y cÃ³mo se resuelven los cÃ³digos de
+cadenas. \textbf{Punto:} ficha de producto y recepciÃ³n EDI. \textbf{Por quiÃ©n:}
+administrador de catÃ¡logo; sistema resuelve equivalencias; operador de excepciones EDI.
+\textbf{Regla:} prevalece el maestro interno; la ficha es la Ãºnica fuente autorizada con
+historial de cambios; todo cÃ³digo externo se resuelve por tabla de equivalencias por
+cadena; lo no resuelto queda en bandeja de excepciones. \textbf{Consecuencia:} producto
+duplicado o pedidos EDI rechazados. &
+\textbf{Origen:} Cap.\ 16.1 D11; Cap.\ 16.2 (GS1). \textbf{RF:} RF-01.10, RF-12.03,
+RF-12.06. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsubsection{Reglas de integraciÃ³n y sincronizaciÃ³n}
+
+\begin{table}[htbp]
+\centering
+\small
+\begin{tabularx}{\textwidth}{@{}L{2.4cm}L{8.3cm}L{4.2cm}@{}}
+\toprule
+\textbf{RNG-12} \textbar{} Enlace, sincronizaciÃ³n y resoluciÃ³n de conflictos &
+\textbf{QuÃ©:} comportamiento tras la reconexiÃ³n y el criterio de resoluciÃ³n de
+conflictos. \textbf{Punto:} toda operaciÃ³n desconectada (CD 24 h, terreno 14 h) y su
+reconciliaciÃ³n. \textbf{Por quiÃ©n:} sistema de sincronizaciÃ³n automÃ¡tica; bitÃ¡cora
+auditable. \textbf{Regla:} al restablecer el enlace, sincronizaciÃ³n automÃ¡tica con
+reconciliaciÃ³n determinista y bitÃ¡cora auditable; en terreno (14 h) el dato offline es
+indicativo con antigÃ¼edad y se valida contra el servidor al reconectar.
+\textbf{Consecuencia:} pedidos perdidos o duplicados y quiebres no reconciliados. &
+\textbf{Origen:} RT-03.12; Cap.\ 10. \textbf{RF:} RF-02.05, RF-03.16/17; RNF-13.01/13.02. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{Enlace al catÃ¡logo de requerimientos}
+
+El alcance funcional se despliega en el catÃ¡logo de requerimientos funcionales (RF),
 no funcionales (RNF) y de bases, trazable a su origen en el caso:
 
 \begin{itemize}
@@ -158,6 +393,28 @@ no funcionales (RNF) y de bases, trazable a su origen en el caso:
         NO Funcionales}.
   \item Requerimientos de bases: \emph{Requerimientos LOGISTICA -- Requerimientos de
         bases}.
-  \item Planilla consolidada:
+\item Planilla consolidada:
         \url{https://docs.google.com/spreadsheets/d/19HYOFHX_maoNcECLjazVm9j3hZP-iplyxgyHAy7HDuo}
 \end{itemize}
+
+\section{Cat\'alogos de requerimientos}
+
+Esta secci\'on consolida los cat\'alogos completos de requerimientos funcionales
+(RF), no funcionales (RNF) y de bases (RT) del proyecto, seg\'un el registro de
+requerimientos del cap\'itulo 17.1 del caso. Cada requerimiento lista su
+identificador, t\'itulo, actor, descripci\'on, prioridad y origen.
+
+\subsection{Requerimientos funcionales (RF)}
+\input{03_esquema_solucion_alcance/catalogos/cat_rf}
+
+\subsection{Requerimientos no funcionales (RNF)}
+\input{03_esquema_solucion_alcance/catalogos/cat_rnf}
+
+\subsection{Requerimientos de bases (RT)}
+
+\subsubsection{Requerimientos funcionales de bases}
+\input{03_esquema_solucion_alcance/catalogos/cat_bases_rf}
+
+\subsubsection{Requerimientos no funcionales de bases}
+\input{03_esquema_solucion_alcance/catalogos/cat_bases_rnf}
+

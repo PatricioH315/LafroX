@@ -127,27 +127,48 @@ No hay build, test ni lint (solo markdown y Excel). La "verificación" del traba
 
 ## Skills y su activación
 
-Las skills se cargan con la herramienta `skill`. El skill **`licitacion-workflow`** (`.opencode/skills/licitacion-workflow/`) es el orquestador: **cárgalo al iniciar cualquier avance de la propuesta**; indica qué skill activar en cada fase.
+Las skills se cargan con la herramienta `skill`. El skill **`licitacion-workflow`** (`.opencode/skills/licitacion-workflow/`) es el orquestador: **cárgalo al iniciar cualquier avance de la propuesta**; indica qué skill activar en cada fase. Los skills de trabajo viven en `.opencode/skills/` (todos creados, versionables).
 
-Skills de trabajo previstas para este proyecto (versión en `.opencode/skills/` cuando se definan):
+Skill **orquestador** (cargar siempre):
+
+| Skill | Uso |
+|---|---|
+| `licitacion-workflow` | Orquestación del flujo: qué skill activar en cada fase y qué entregable producir |
+
+Skill **de trabajo** (activados por fase, ver el flujo abajo):
 
 | Skill | Uso en la propuesta |
 |---|---|
-| `licitacion-workflow` | Orquestación: qué skill activar en cada fase (cargar siempre) |
-| `xlsx` | Requerimientos/volumetría, oferta económica (CLP/UF/USD) y flujo de caja (Excel) |
+| `xlsx` | Requerimientos/volumetría, oferta económica (CLP/UF/USD) y flujo de caja (Excel/CSV) |
 | `docx` | Llenar formularios/plantillas oficiales (.docx) de los sobres |
 | `pptx` | Las 3 presentaciones preparatorias |
-| `pdf-handling` | Conformar/exportar la propuesta final en PDF |
-| `architecture-diagrams` | Diagramas de arquitectura (lógica/física/datos/seguridad/despliegue) |
+| `pdf-handling` | Compilar LaTeX (main.tex) y conformar/exportar la propuesta en PDF |
+| `architecture-diagrams` | Diagramas de arquitectura (lógica/física/datos/seguridad/despliegue) y su auditoría |
 | `cloud-architecture` | Justificar la arquitectura híbrida nube+on-premise (RT-03) |
 | `sre-practices` | Disponibilidad 99,9 %, RTO/RPO, SLOs, observabilidad |
 | `project-estimation` | Estimación de esfuerzo y desglose por rol (nivelación T-15) |
-| `legal-risk-assessment` / `risk-assessment` | Evaluación de riesgos contractuales y técnicos |
+| `risk-assessment` | Riesgos técnicos, de desarrollo e implantación (T-16) |
+| `legal-risk-assessment` | Riesgos contractuales y legales (Bases, sobres, precedencia) |
 | `deep-research` | Investigar lo que el caso no explica (normativa, estándares GS1, mercado) |
 | `technical-writing` | Redacción de documentos técnicos extensos |
 | `mermaid-diagrams` | Diagramas en Markdown (`mermaid`) que GitHub renderiza nativo |
 | `plantuml-diagrams` | Diagramas UML/C4 formales (.puml) renderizados a PNG/SVG vía Kroki |
-| `jira-workflow` | Integración opcional con Jira Cloud |
+| `jira-workflow` | Integración opcional con Jira Cloud (no creado aún) |
+
+### Workflow por fase (cómo se combinan los skills)
+
+Este flujo lo coordina `licitacion-workflow`; aquí el resumen para AGENTS.md:
+
+| Fase | Actividad | Skills a cargar |
+|---|---|---|
+| 0 · Preparación | Leer AGENTS.md, CONTEXTO_SESION, AUDITORIA, Bases; fijar estado | `licitacion-workflow` |
+| 1 · Comprensión del caso | Problema/necesidad; investigar numeral 16.2 | `deep-research`, `technical-writing` |
+| 2 · Requerimientos (Cap 17.1) | Catálogos RF/RNF/Bases, supuestos D1–D40, reglas de negocio, trazabilidad | `xlsx`, `technical-writing` |
+| 3 · Arquitectura | Lógica/física/datos, híbrido, modelo de datos | `architecture-diagrams`, `mermaid-diagrams`, `plantuml-diagrams`, `cloud-architecture`, `sre-practices` |
+| 4 · Planificación y riesgos | EDT, cronograma 56 meses, equipo, planes | `project-estimation`, `risk-assessment`, `legal-risk-assessment` |
+| 5 · Oferta económica | Curva S, costos, VAN/TIR, innovaciones, flujo de caja | `xlsx`, `technical-writing`, `pdf-handling` |
+| 6 · Presentaciones (T-22) | Informes 1/2/3 + PPT | `pptx`, `technical-writing`, `docx`, `pdf-handling` |
+| Transversal · Formularios y PDF | Formularios de sobres, exportación | `docx`, `pdf-handling`, `architecture-diagrams` |
 
 ## Materias a investigar (numeral 16.2 del caso)
 
@@ -179,3 +200,15 @@ Regla de selección:
 | Interactivo/animado | `architecture-diagrams` | HTML en navegador | screenshot → PNG |
 
 Convención: la **fuente de los diagramas es texto** dentro de los `.md` de la propuesta (versionable). Los **PNG/SVG/PDF exportados** se guardan en `Diagramas/`. Usar Mermaid por defecto; reservar PlantUML para UML/C4 formal.
+
+### Política de fuente de verdad tecnológica (auditoría de diagramas)
+
+Al auditar los diagramas y documentos de arquitectura que se suban, aplica este criterio definido por LafroX (2026-09-03):
+
+- **La auditoría se contrasta SOLO contra los archivos principales** (Bases, `Requerimientos/`, `_staging/` y fuentes primarias de arquitectura y del caso). **Nunca contra el informe LaTeX ni ninguno de sus derivados** (PDF, capítulos compilados, tablas/catálogos generados): el informe es un artefacto de salida, no autoridad. Si el informe y una fuente principal divergen, manda la fuente principal.
+- **Consistencia entre arquitecturas:** la coherencia a validar es **lógica ↔ física** (y ambas contra requerimientos y el caso), no contra doc. compilados.
+
+- **Si el stack del diagrama es aplicable al caso** (cumple lo innegociable: híbrido, offline de primera clase, Zero Trust, multi-zona IaC, sin vendor lock-in, mantenible por equipo TI de 4 personas, cronograma 56 meses) **y no interfiere con los demás puntos del caso**, se **adopta como fuente de verdad tecnológica** (se adapta el resto de la propuesta a él), aunque difiera del informe/premisas previas.
+- **Si hay muchas contradicciones**, se **deja tal y como está**, se marca como divergente y se **revisa por separado** (no se fuerza a reconciliar contra otra fuente).
+- La tecnología es **neutral** frente a las restricciones del caso (volumetría, trazabilidad, ventana de despacho, cronograma, indicadores). Una diferencia de stack (p.ej. Keycloak/Aurora, Laravel/AWS, 6 vs 8 capas) es una contradicción **entre artefactos internos**, no contra las Bases, salvo que incumpla un RT obligatorio expreso.
+- Estado vigente al 2026-09-03: la **arquitectura lógica (`04`/`05`: Keycloak, Laravel, MariaDB/PostgreSQL, Flutter, K8s)** se **adopta como base tecnológica de la propuesta**. La arquitectura física e informe LaTeX (AWS: Cognito/Aurora/DynamoDB/Redshift) quedan **en revisión por separado** por divergencia de stack y de capas (6 vs 8).
