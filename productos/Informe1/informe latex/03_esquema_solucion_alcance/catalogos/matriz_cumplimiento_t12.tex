@@ -1,0 +1,399 @@
+% ============================================================
+%  Matriz de Cumplimiento Técnico y Trazabilidad (Formulario T-12)
+%  Cobertura: 374 RT (cap. 2-26) de Bases_Tecnicas_Transversales.md
+%  Generado a partir de las Bases. No editar a mano.
+% ============================================================
+\begin{small}
+\begin{longtable}{@{}p{1.35cm} p{1.15cm} p{1.15cm} p{4.6cm} p{2.35cm} p{3.8cm}@{}}
+\caption{Matriz de Cumplimiento Técnico y Trazabilidad (Formulario T-12)\label{tab:t12}}\\
+\toprule
+\textbf{Código} & \textbf{Carácter} & \textbf{Cumple} & \textbf{Componente / práctica (nombre y versión)} & \textbf{Sección de la Oferta Técnica} & \textbf{Evidencia de verificación} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Código} & \textbf{Carácter} & \textbf{Cumple} & \textbf{Componente / práctica (nombre y versión)} & \textbf{Sección de la Oferta Técnica} & \textbf{Evidencia de verificación} \\
+\midrule
+\endhead
+\bottomrule
+\endlastfoot
+\textbf{RT-02.01} & \textbf{Obl.} & \textbf{Cumple} & Arquitectura l\'ogica de 8 capas (Presentaci\'on→Observabilidad) del diagrama \ref{fig:arqlogica_capas} & I1 §4.1 & Diagrama de arquitectura l\'ogica + documento ISO/IEC/IEEE 42010 (Sobre N$^{\circ}$2) \\
+\textbf{RT-02.02} & \textbf{Obl.} & \textbf{Cumple} & Monolito modular evolutivo con microservicios acotados (preventa, ruteo, trazabilidad, costeo) & I1 §4.1 §Dec. l\'ogicas & Documento de arquitectura + ADR \\
+\textbf{RT-02.03} & \textbf{Obl.} & \textbf{Cumple} & 5 vistas: l\'ogica, procesos, despliegue, datos y seguridad & I1 §4.1 · §5 · §6 & Documento de arquitectura ISO/IEC/IEEE 42010 (RT-02.03, Checklist C) \\
+\textbf{RT-02.04} & \textbf{Obl.} & \textbf{Cumple} & Registro ADR fechado con alternativas y criterio de decisi\'on & I1 §4.1 §Dec. l\'ogicas & Registro ADR (entregable contractual, actualizable) \\
+\textbf{RT-02.05} & \textbf{Obl.} & \textbf{Cumple} & Servicios de negocio sin estado; estado en almacenes externos (BD transaccional + cach\'e) & I1 §4.1 · §5.2 & Diagrama de capas + ADR \\
+\textbf{RT-02.06} & \textbf{Obl.} & \textbf{Cumple} & Idempotencia en escrituras con clave declarada (deduplicaci\'on de pedidos RF-03.17) & I1 §4.1 §Reserva & ADR de idempotencia + pruebas de deduplicaci\'on \\
+\textbf{RT-02.07} & \textbf{Obl.} & \textbf{Cumple} & Flujos de eventos con entrega al-menos-una-vez y deduplicaci\'on en consumidor (bus) & I1 §4.1 §Integraci\'on & ADR + cat\'alogo de eventos \\
+\textbf{RT-02.08} & \textbf{Obl.} & \textbf{Cumple} & Patrones de resiliencia: reintento exponencial, cortacircuito, mamparo, timeouts expl\'icitos & I1 §5.2 · §5.6 & ADR + pruebas de resiliencia/inyecci\'on de fallas (Cap. 20) \\
+\textbf{RT-02.09} & \textbf{Obl.} & \textbf{Cumple} & Degradaci\'on elegante: modo reducido offline-first sin falla total (14 h terreno, 24 h CD) & I1 §4.1 · §5.1 & RNF-13.01/13.02 + pruebas de degradaci\'on \\
+\textbf{RT-02.10} & \textbf{Obl.} & \textbf{Cumple} & Escalamiento horizontal autom\'atico de aplicaci\'on e integraci\'on (Fargate/ECS autoscaling) & I1 §5.2 & Informe de capacidad T-11 + autoscaling IaC \\
+\textbf{RT-02.11} & \textbf{Obl.} & \textbf{Cumple} & SPOF declarado: motor de sincronizaci\'on del bus; mitigado con elasticidad y pruebas de carga estacionales & I1 §4.1 §SPOF & Declaraci\'on de SPOF + plan de mitigaci\'on \\
+\textbf{RT-02.12} & \textbf{Según caso} & \textbf{Cumple} & Topolog\'ia multi-sitio configurable (RF-02.01): 6 sitios, 4 regiones & I1 §3.2 \'Epica 2 & Cat\'alogo RF-02.01 + ADR \\
+\textbf{RT-02.13} & \textbf{Obl.} & \textbf{Cumple} & Modelo de dominio por agregados (Pedido, Stock, Lote, Ruta, Entrega, Temperatura, Cobro, Envase, Costo) & I1 §4.1 §Modelo dominio & Diagrama de dominio + diccionario de entidades \\
+\textbf{RT-02.14} & \textbf{Des.} & \textbf{Cumple} & Patrones evolutivos: capa anticorrupci\'on frente a ERP/WMS 2013 (RT-05.20), abstracci\'on de proveedores & I1 §4.1 · §6.5 & ADR + diagrama de integraci\'on \\
+\textbf{RT-03.01} & \textbf{Obl.} & \textbf{Cumple} & AWS con regi\'on primaria y secundaria en Chile o Sudam\'erica (socio APN) & I1 §5.1 & Tabla de emplazamiento (T-11) + declaraci\'on de regi\'on \\
+\textbf{RT-03.02} & \textbf{Obl.} & \textbf{Cumple} & Componentes cr\'iticos en 2 AZ como m\'inimo (AWS multi-AZ) & I1 §5.2 & Diagrama f\'isico + configuraci\'on IaC \\
+\textbf{RT-03.03} & \textbf{Obl.} & \textbf{Cumple} & Infraestructura como c\'odigo (Terraform/CloudFormation) versionada en repo del CLIENTE & I1 §5.2 & Repositorio IaC + revisi\'on CI \\
+\textbf{RT-03.04} & \textbf{Obl.} & \textbf{Cumple} & Red segmentada: subredes privadas para app/datos; borde \'unico; datos sin alcance desde Internet & I1 §5.2 & Diagrama de red + reglas de seguridad \\
+\textbf{RT-03.05} & \textbf{Obl.} & \textbf{Cumple} & Preferencia por servicios administrados (RDS/Aurora, ECS, KMS) con excepciones justificadas & I1 §5.2 & Tabla de emplazamiento (col. justificaci\'on) \\
+\textbf{RT-03.06} & \textbf{Obl.} & \textbf{Cumple} & FinOps: etiquetado por ambiente/m\'odulo/CC; presupuestos con alertas; reporte mensual & I1 §5.2 & Reporte FinOps mensual (fase Operaci\'on) \\
+\textbf{RT-03.07} & \textbf{Obl.} & \textbf{Cumple} & Estrategia de reversibilidad y mitigaci\'on de vendor lock-in con portabilidad declarada & I1 §5.2 & Documento de reversibilidad (RT-03.07) \\
+\textbf{RT-03.08} & \textbf{Des.} & \textbf{Cumple} & Compromiso de capacidad / planes de ahorro (Saving Plans) para carga estable & I1 §5.2 & Oferta Econ\'omica + estructura de costos \\
+\textbf{RT-03.09} & \textbf{Des.} & \textbf{Cumple} & Contenedores administrados (Fargate) para perfil variable vs. comparativa de costo & I1 §5.2 & ADR + an\'alisis comparativo de costo \\
+\textbf{RT-03.10} & \textbf{Obl.} & \textbf{Cumple} & On-premise aut\'onomo 24 h continuas ante p\'erdida de enlace (CD Talca/Concepci\'on) & I1 §3.1 · §5.1 & RNF-13.01 + restricci\'on N$^{\circ}$2 del Caso \\
+\textbf{RT-03.11} & \textbf{Obl.} & \textbf{Cumple} & Registro local de transacciones cr\'iticas sin p\'erdida durante desconexi\'on (SQLCipher) & I1 §5.1 · §5.2 & RNF-13.01 + pruebas offline \\
+\textbf{RT-03.12} & \textbf{Obl.} & \textbf{Cumple} & Sincronizaci\'on autom\'atica con reconciliaci\'on determinista y bit\'acora auditable al reconectar & I1 §5.2 · RNG-12 & RNG-12 (registro de reglas) + pruebas de sync \\
+\textbf{RT-03.13} & \textbf{Obl.} & \textbf{Cumple} & Declaraci\'on de funciones no disponibles en modo desconectado y supleci\'on manual & I1 §3.2 & RNF-13.02 (declaraci\'on) \\
+\textbf{RT-03.14} & \textbf{Obl.} & \textbf{Cumple} & Equipos on-premise redundantes; RAID 10 declarado y justificado & I1 §5.4 & RNF-13.03/13.04/13.05 + especificaci\'on T-11 \\
+\textbf{RT-03.15} & \textbf{Obl.} & \textbf{Cumple} & Endurecimiento CIS Benchmarks con gesti\'on centralizada de parches & I1 §5.4 & RNF-13.06 + baseline CIS \\
+\textbf{RT-03.16} & \textbf{Obl.} & \textbf{Cumple} & Monitoreo unificado on-premise+nube (Datadog/CloudWatch) en la misma plataforma & I1 §5.2 · §3.1 & RF-16.01 + dashboard NOC \\
+\textbf{RT-03.17} & \textbf{Obl.} & \textbf{Cumple} & Enlace redundante on-premise→nube con caminos/proveedores distintos y conmutaci\'on $\leq$5 min & I1 §5.4 & RNF-13.07 + diagrama de red \\
+\textbf{RT-03.18} & \textbf{Obl.} & \textbf{Cumple} & Gesti\'on remota y centralizada de dispositivos: inventario, firmware, borrado remoto (MDM) & I1 §5.3 & Inventario de flota + pol\'itica MDM \\
+\textbf{RT-03.19} & \textbf{Des.} & \textbf{Cumple} & Procesamiento en borde: filtrado/agregaci\'on local de sensores y telemetr\'ia & I1 §5.1 & ADR + diagrama de borde (innovaci\'on) \\
+\textbf{RT-03.20} & \textbf{Obl.} & \textbf{Cumple} & Dimensionamiento de ancho de banda por sitio en r\'egimen normal y peak, justificado & I1 §5.1 & RNF-13.08 + c\'alculo de capacidad T-11 \\
+\textbf{RT-03.21} & \textbf{Obl.} & \textbf{Cumple} & Enlace privado cifrado (AWS Direct Connect / VPN IPsec) seg\'un criticidad & I1 §5.2 & Diagrama de red + ADR \\
+\textbf{RT-03.22} & \textbf{Obl.} & \textbf{Cumple} & Acceso remoto Zero Trust con verificaci\'on de postura (NIST SP 800-207) & I1 §5.2 & Documento de seguridad + ZTNA \\
+\textbf{RT-03.23} & \textbf{Según caso} & \textbf{Cumple} & Estudio de cobertura WLAN en sitios incluye interior de c\'amaras de fr\'io; soluci\'on con AP reforzados & I1 §5.1 & RNF-13.09 + estudio de sitio (RT-03.23 correcto) \\
+\textbf{RT-03.24} & \textbf{Des.} & \textbf{Cumple} & Priorizaci\'on de tr\'afico operacional cr\'itico (QoS) vs. administrativo & I1 §5.2 & Documento de red (RT-03.24) \\
+\textbf{RT-04.01} & \textbf{Obl.} & \textbf{Cumple} & Cinco ambientes DEV, QA, PREPROD, PROD y DR habilitados & I1 §5.2 (DevSecOps) · H3 & Hito H3 (E-25) \\
+\textbf{RT-04.02} & \textbf{Obl.} & \textbf{Cumple} & PREPROD equivalente a PROD salvo diferencias de costo justificadas & I1 §5.2 (DevSecOps) · H3 & Informe comparativo PREPROD vs PROD \\
+\textbf{RT-04.03} & \textbf{Obl.} & \textbf{Cumple} & Git con ramas protegidas, revisi\'on por pares y sin escritura directa a main & I1 §5.2 (DevSecOps) · H3 & Pol\'itica de repositorio + m\'etricas \\
+\textbf{RT-04.04} & \textbf{Obl.} & \textbf{Cumple} & Trazabilidad requerimiento→incidencia→cambio→prueba→deploy & I1 §5.2 (DevSecOps) · H3 & Traza en herramienta de gesti\'on \\
+\textbf{RT-04.05} & \textbf{Obl.} & \textbf{Cumple} & CI: build, UT, SAST, SCA, escaneo de secretos e im\'agenes, bloqueo autom\'atico & I1 §5.2 (DevSecOps) · H3 & Pipeline CI (definici\'on) \\
+\textbf{RT-04.06} & \textbf{Obl.} & \textbf{Cumple} & Despliegue automatizado y reproducible con reversi\'on autom\'atica & I1 §5.2 (DevSecOps) · H3 & Pipeline CD + runbooks \\
+\textbf{RT-04.07} & \textbf{Obl.} & \textbf{Cumple} & Despliegues canary y azul-verde sin interrupci\'on, demostrado en PREPROD & I1 §5.2 (DevSecOps) · H3 & Evidencia de despliegue (Cap. 20) \\
+\textbf{RT-04.08} & \textbf{Obl.} & \textbf{Cumple} & Configuraci\'on externalizada por ambiente; promoci\'on sin recompilaci\'on & I1 §5.2 (DevSecOps) · H3 & Configuraci\'on DR/12factor \\
+\textbf{RT-04.09} & \textbf{Obl.} & \textbf{Cumple} & Secretos en gestor (KMS/Secrets Manager) con rotaci\'on y auditor\'ia & I1 §5.2 (DevSecOps) · H3 & Pol\'itica de secretos \\
+\textbf{RT-04.10} & \textbf{Obl.} & \textbf{Cumple} & Migraciones de esquema versionadas, reversibles y automatizadas & I1 §5.2 (DevSecOps) · H3 & Migraciones SQL versionadas \\
+\textbf{RT-04.11} & \textbf{Obl.} & \textbf{Cumple} & Cobertura de pruebas $\geq$70 \% en l\'ogica de negocio (umbral bloqueante) & I1 §5.2 (DevSecOps) · H3 & Reporte de cobertura CI \\
+\textbf{RT-04.12} & \textbf{Obl.} & \textbf{Cumple} & M\'etricas DORA: frecuencia, tiempo a prod, tasa de fallos, tiempo de restauraci\'on & I1 §5.2 (DevSecOps) · H3 & Reporte operacional \\
+\textbf{RT-04.13} & \textbf{Des.} & \textbf{Cumple} & Apagado/reducci\'on de ambientes no productivos fuera de horario & I1 §5.2 (DevSecOps) · H3 & Pol\'itica de ambientes + ahorro costos \\
+\textbf{RT-04.14} & \textbf{Des.} & \textbf{Cumple} & Ambientes ef\'imeros por rama/incidencia & I1 §5.2 (DevSecOps) · H3 & Pipeline CI/CD \\
+\textbf{RT-05.01} & \textbf{Obl.} & \textbf{Cumple} & Modelo de datos + diccionario (nombre, tipo, dominio, obligatoriedad, propietario, sensibilidad) & I1 §6.1 & Diccionario de datos + modelo ER \\
+\textbf{RT-05.02} & \textbf{Obl.} & \textbf{Cumple} & Paradigma relacional ACID multi-AZ (transaccional) + anal\'itico separado; decisi\'on CAP documentada & I1 §6.2 & ADR + justificaci\'on de motor \\
+\textbf{RT-05.03} & \textbf{Obl.} & \textbf{Cumple} & Trazabilidad por operaci\'on: qui\'en, qu\'e, cu\'ando, dispositivo, valores antes/despu\'es & I1 §6.3 & RF-17.04 (auditor\'ia inalterable) \\
+\textbf{RT-05.04} & \textbf{Obl.} & \textbf{Cumple} & Calidad de datos ISO/IEC 25012 con validaci\'on en captura y tablero de calidad & I1 §6.3 & RF-05.01/04 (informe de calidad) \\
+\textbf{RT-05.05} & \textbf{Obl.} & \textbf{Cumple} & Separaci\'on transaccional/anal\'itica sin degradaci\'on de la operaci\'on & I1 §6.2 & Diagrama de datos + SLOs \\
+\textbf{RT-05.06} & \textbf{Obl.} & \textbf{Cumple} & Exportaci\'on total de datos en formatos abiertos, sin costo ni intervenci\'on & I1 §6.3 & Procedimiento de exportaci\'on \\
+\textbf{RT-05.07} & \textbf{Obl.} & \textbf{Cumple} & Pol\'itica de retenci\'on/archivado/eliminaci\'on por dominio (trazabilidad 5 a, DTE 6 a) & I1 §6.3 & RNF-01.02/08.02/09.02 + RNG \\
+\textbf{RT-05.08} & \textbf{Obl.} & \textbf{Cumple} & Datos personales seg\'un Art. 85$^{\circ}$ BA: seudonimizaci\'on/cifrado a nivel de campo & I1 §6.3 & Clasificaci\'on de datos sensibles \\
+\textbf{RT-05.09} & \textbf{Obl.} & \textbf{Cumple} & Estrategia MDM: maestro de productos \'unico con equivalencias por cadena & I1 §6.3 · RNG-11 & RNG-11 + RF-01.10/12.03 \\
+\textbf{RT-05.10} & \textbf{Des.} & \textbf{Cumple} & Cat\'alogo de datos con linaje automatizado de indicadores & I1 §6.6 & Cat\'alogo de datos + linaje \\
+\textbf{RT-05.11} & \textbf{Obl.} & \textbf{Cumple} & Plan de migraci\'on: alcance, origen, volumen, transformaci\'on, calidad, ejecuci\'on, reversi\'on & I1 §6.4 & Plan de migraci\'on + Decisi\'on 32 \\
+\textbf{RT-05.12} & \textbf{Obl.} & \textbf{Cumple} & Perfilado y saneamiento previo con informe de defectos y decisi\'on por defecto & I1 §6.4 & Informe de perfilado \\
+\textbf{RT-05.13} & \textbf{Obl.} & \textbf{Cumple} & Al menos 2 ensayos completos de migraci\'on en PREPROD & I1 §6.4 & Acta de ensayos + medici\'on de tiempos \\
+\textbf{RT-05.14} & \textbf{Obl.} & \textbf{Cumple} & Conciliaci\'on cuantitativa: recuentos, sumas de control y muestreo dirigido & I1 §6.4 & Informe de conciliaci\'on \\
+\textbf{RT-05.15} & \textbf{Según caso} & \textbf{Cumple} & Hist\'oricos no migrados accesibles en repositorio de consulta (5 a\~nos por caso; ventas/pedidos 3 a) & I1 §6.4 & RT-05.15 + RNF-01.02 \\
+\textbf{RT-05.16} & \textbf{Obl.} & \textbf{Cumple} & Documentaci\'on OpenAPI 3.1 (s\'incrono) y AsyncAPI 2.6+ (eventos) generada desde c\'odigo & I1 §6.5 & Cat\'alogo de API + contrato \\
+\textbf{RT-05.17} & \textbf{Obl.} & \textbf{Cumple} & Contratos versionados sem\'anticamente con obsolescencia de preaviso $\geq$6 meses & I1 §6.5 & Pol\'itica de versionado de API \\
+\textbf{RT-05.18} & \textbf{Obl.} & \textbf{Cumple} & Autenticaci\'on entre sistemas OAuth 2.1 (client credentials) o mTLS & I1 §6.5 & Configuraci\'on de seguridad de API \\
+\textbf{RT-05.19} & \textbf{Obl.} & \textbf{Cumple} & Identificador de correlaci\'on com\'un en toda integraci\'on (entrada/salida) & I1 §6.5 & RF-16.01 (trazas correlacionadas) \\
+\textbf{RT-05.20} & \textbf{Obl.} & \textbf{Cumple} & Capa anticorrupci\'on frente a ERP y WMS 2013 sin doble verdad (R-04) & I1 §4.1 · §6.5 & ADR + diagrama de integraci\'on \\
+\textbf{RT-05.21} & \textbf{Obl.} & \textbf{Cumple} & Por integraci\'on: modo s\'incrono/as\'incrono, volumen, ventana y comportamiento ante falla & I1 §6.5 & Matriz de integraciones \\
+\textbf{RT-05.22} & \textbf{Obl.} & \textbf{Cumple} & Carga/descarga masiva en formatos abiertos con validaci\'on e informe de errores & I1 §6.5 & Funcionalidad de carga masiva + pruebas \\
+\textbf{RT-05.23} & \textbf{Según caso} & \textbf{Cumple} & Est\'andares sectoriales: GS1 (GTIN/lote/SSCC/EPCIS) y EDI con cadenas & I1 §3.2 · §6.5 & RF-01.06/01.07/09.01 + RF-12.x (EDI) \\
+\textbf{RT-05.24} & \textbf{Des.} & \textbf{Cumple} & Portal de desarrolladores con documentaci\'on y ambiente de prueba & I1 §6.5 & Portal de API \\
+\textbf{RT-05.25} & \textbf{Obl.} & \textbf{Cumple} & Capa anal\'itica con tableros OTIF, fill rate, costo de servir & I1 §6.6 & RF-11.01-11.08 + tableros \\
+\textbf{RT-05.26} & \textbf{Obl.} & \textbf{Cumple} & Filtros por per\'iodo/unidad/dimensiones con drill-down a la transacci\'on & I1 §6.6 & RF-11.06 + demo de tablero \\
+\textbf{RT-05.27} & \textbf{Obl.} & \textbf{Cumple} & Autoservicio de informes con modelo sem\'antico documentado & I1 §6.6 & Herramienta BI + modelo sem\'antico \\
+\textbf{RT-05.28} & \textbf{Obl.} & \textbf{Cumple} & Exportaci\'on en formatos abiertos y env\'io programado por calendario & I1 §6.6 & RF-16.02 (exportaci\'on) + scheduler \\
+\textbf{RT-05.29} & \textbf{Según caso} & \textbf{Cumple} & Latencia m\'axima anal\'itica: OTIF calculado diario (caso) $\leq$4 h por defecto & I1 §6.6 & SLO anal\'itico + prueba de latencia \\
+\textbf{RT-05.30} & \textbf{Des.} & \textbf{Cumple} & Anal\'itica predictiva: pron\'ostico de demanda con estacionalidad y promociones & I1 §6.6 · Innovaci\'on & Innovaci\'on RF-... (ficha T-19) \\
+\textbf{RT-06.01} & \textbf{Obl.} & \textbf{Cumple} & Sala t\'ecnica de uso exclusivo y aislada en CD Talca & I1 §5.4 & Plano del recinto (T-11) \\
+\textbf{RT-06.02} & \textbf{Obl.} & \textbf{Cumple} & Blindaje perimetral de muros no estructurales con material y resistencia declarados & I1 §5.4 & Especificaci\'on t\'ecnica del recinto \\
+\textbf{RT-06.03} & \textbf{Obl.} & \textbf{Cumple} & Plano de distribuci\'on con zonas separadas (generadores, bater\'ias, climatizaci\'on, racks) & I1 §5.4 & Plano DT (T-11) \\
+\textbf{RT-06.04} & \textbf{Obl.} & \textbf{Cumple} & Piso t\'ecnico, canalizaci\'on, cableado y etiquetado conforme a norma, con certificaci\'on de enlace & I1 §5.4 & Certificado de enlaces (test) \\
+\textbf{RT-06.05} & \textbf{Obl.} & \textbf{Cumple} & Racks de servidores independientes de los de comunicaciones; ocupaci\'on y margen proyectados & I1 §5.3 · §5.4 & Plano de racks + ocupaci\'on \\
+\textbf{RT-06.06} & \textbf{Obl.} & \textbf{Cumple} & Obra civil de separaci\'on a cargo del CLIENTE; especificaci\'on y coordinaci\'on del PROPONENTE & I1 §5.4 & Especificaci\'on de obra + Plan de coordinaci\'on \\
+\textbf{RT-06.07} & \textbf{Obl.} & \textbf{Cumple} & UPS con autonom\'ia $\geq$30 min a plena carga & I1 §5.4 & Especificaci\'on UPS (T-11) \\
+\textbf{RT-06.08} & \textbf{Obl.} & \textbf{Cumple} & Generaci\'on aut\'onoma $\geq$24 h con estanque y contrato de reabastecimiento & I1 §5.4 & Especificaci\'on generador + contrato \\
+\textbf{RT-06.09} & \textbf{Obl.} & \textbf{Cumple} & Instalaci\'on el\'ectrica independiente conforme a NCh Elec. 2777 & I1 §5.4 & Certificado NCh Elec. 2777 \\
+\textbf{RT-06.10} & \textbf{Obl.} & \textbf{Cumple} & Revisi\'on y medici\'on semestral de instalaciones el\'ectricas con informe al CLIENTE & I1 §5.4 & Informe semestral el\'ectrico \\
+\textbf{RT-06.11} & \textbf{Obl.} & \textbf{Cumple} & Carga proyectada en kW, factor de potencia y PUE estimado declarados & I1 §5.4 & Ficha de capacidad del recinto \\
+\textbf{RT-06.12} & \textbf{Des.} & \textbf{Cumple} & Redundancia de alimentaci\'on (tendencia N+1/2N) & I1 §5.4 & Especificaci\'on el\'ectrica \\
+\textbf{RT-06.13} & \textbf{Obl.} & \textbf{Cumple} & Climatizaci\'on de precisi\'on N+1 con control de temperatura y humedad & I1 §5.4 & Especificaci\'on HVAC (T-11) \\
+\textbf{RT-06.14} & \textbf{Obl.} & \textbf{Cumple} & Monitoreo en l\'inea de temperatura, humedad y agua con alerta a observabilidad & I1 §5.4 & RF-16.01 + sensor\'ia del recinto \\
+\textbf{RT-06.15} & \textbf{Des.} & \textbf{Cumple} & Estrategia de contenci\'on de pasillo fr\'io/caliente & I1 §5.4 & Especificaci\'on HVAC \\
+\textbf{RT-06.16} & \textbf{Obl.} & \textbf{Cumple} & Detecci\'on temprana por aspiraci\'on tipo AnaLASER & I1 §5.4 & Especificaci\'on + certificado \\
+\textbf{RT-06.17} & \textbf{Obl.} & \textbf{Cumple} & Extinci\'on autom\'atica con agente limpio FM-200 (UL, NFPA) & I1 §5.4 & Certificado FM-200/NFPA \\
+\textbf{RT-06.18} & \textbf{Obl.} & \textbf{Cumple} & Extintores port\'atiles habilitados con mantenci\'on y certificaci\'on vigente & I1 §5.4 & Certificado de extintores \\
+\textbf{RT-06.19} & \textbf{Obl.} & \textbf{Cumple} & Detecci\'on/extinci\'on integradas al monitoreo en l\'inea y NOC & I1 §5.4 & RF-16.01 + dashboard \\
+\textbf{RT-06.20} & \textbf{Obl.} & \textbf{Cumple} & Control de acceso biom\'etrico facial con AFIS de respaldo & I1 §5.4 & Especificaci\'on + certificado \\
+\textbf{RT-06.21} & \textbf{Obl.} & \textbf{Cumple} & Bit\'acora auditable de ingresos con persona, fecha, hora y motivo & I1 §5.4 & Bit\'acora + retenci\'on declarada \\
+\textbf{RT-06.22} & \textbf{Obl.} & \textbf{Cumple} & Estaci\'on de enrolamiento (con opci\'on fuera del recinto) previa al pasillo de control & I1 §5.4 & Plano + acta de dise\~no \\
+\textbf{RT-06.23} & \textbf{Obl.} & \textbf{Cumple} & Acceso final de una persona a la vez con nueva verificaci\'on & I1 §5.4 & Especificaci\'on de port\'on/vest\'ibulo \\
+\textbf{RT-06.24} & \textbf{Obl.} & \textbf{Cumple} & Videovigilancia IP en l\'inea, 30 d\'ias de visualizaci\'on, respaldo recuperable & I1 §5.4 & Sistema CCTv + retenci\'on \\
+\textbf{RT-06.25} & \textbf{Obl.} & \textbf{Cumple} & Procedimiento de acceso de terceros con acompa\~namiento y registro & I1 §5.4 & Procedimiento de seguridad f\'isica \\
+\textbf{RT-06.26} & \textbf{Obl.} & \textbf{Cumple} & Custodia de medios de respaldo en lugar aparte/transportable + alternativa superior justificada & I1 §5.4 & Pol\'itica de custodia de medios \\
+\textbf{RT-06.27} & \textbf{Obl.} & \textbf{Cumple} & Recinto de custodia con condiciones de luminosidad, humedad y ventilaci\'on controladas & I1 §5.4 & Especificaci\'on del recinto de custodia \\
+\textbf{RT-06.28} & \textbf{Obl.} & \textbf{Cumple} & Inventario de medios con rotaci\'on, verificaci\'on de legibilidad y registro de movimientos & I1 §5.4 & Inventario + procedimiento \\
+\textbf{RT-06.29} & \textbf{Obl.} & \textbf{Cumple} & Espacio f\'isico de operaci\'on con estaciones de trabajo, telefon\'ia e Internet & I1 §5.4 & Plano del \'area de operaci\'on \\
+\textbf{RT-06.30} & \textbf{Obl.} & \textbf{Cumple} & Espacio de operaci\'on separado de la sala de equipos & I1 §5.4 & Plano del \'area de operaci\'on \\
+\textbf{RT-06.31} & \textbf{Obl.} & \textbf{Cumple} & Uso de instalaciones sanitarias/emergencia existentes declarado & I1 §5.4 & Declaraci\'on de uso de instalaciones \\
+\textbf{RT-06.32} & \textbf{Obl.} & \textbf{Cumple} & Acceso a redes por rutas f\'isicas distintas e ingreso en puntos separados & I1 §5.4 & Diagrama de rutas de comunicaciones \\
+\textbf{RT-06.33} & \textbf{Obl.} & \textbf{Cumple} & Conectividad, seguridad y canalizaciones provistas por el PROPONENTE & I1 §5.4 & Acuerdo de conectividad \\
+\textbf{RT-06.34} & \textbf{Des.} & \textbf{Cumple} & Especificaciones superiores a las exigidas, fundamentadas & I1 §5.4 & Mejoras declaradas \\
+\textbf{RT-07.01} & \textbf{Obl.} & \textbf{Cumple} & Modalidad activo-pasivo declarada y justificada (costo, RTO, complejidad) & I1 §5.5 & ADR + documento DR \\
+\textbf{RT-07.02} & \textbf{Obl.} & \textbf{Cumple} & Sitio secundario a distancia suficiente con an\'alisis de amenazas comunes & I1 §5.5 & An\'alisis de amenazas + distancia \\
+\textbf{RT-07.03} & \textbf{Obl.} & \textbf{Cumple} & Replicaci\'on continua con medici\'on y alerta de retraso & I1 §5.5 & Dashboard de replicaci\'on (RF-16.01) \\
+\textbf{RT-07.04} & \textbf{Obl.} & \textbf{Cumple} & RTO $\leq$4 h y RPO $\leq$15 min para servicios cr\'iticos & I1 §5.5 & RNF-20.06 + prueba DR \\
+\textbf{RT-07.05} & \textbf{Obl.} & \textbf{Cumple} & Procedimiento de conmutaci\'on documentado y automatizado (transferencia de conocimiento) & I1 §5.5 & Runbook DR \\
+\textbf{RT-07.06} & \textbf{Obl.} & \textbf{Cumple} & Procedimiento de retorno al primario con reconciliaci\'on de datos & I1 §5.5 & Runbook de retorno \\
+\textbf{RT-07.07} & \textbf{Obl.} & \textbf{Cumple} & Prueba DR semestral real con medici\'on RTO/RPO e informe (coherencia Art. 20) & I1 §5.5 & Informe de prueba DR (2x/a\~no) \\
+\textbf{RT-07.08} & \textbf{Des.} & \textbf{Cumple} & Conmutaci\'on autom\'atica con criterio de disparo y anti-conmutaci\'on innecesaria & I1 §5.5 & Runbook + pruebas \\
+\textbf{RT-07.09} & \textbf{Obl.} & \textbf{Cumple} & Respaldo 3-2-1-0 (tres copias, dos medios, una fuera de sitio, inmutable, cero errores) & I1 §5.5 & RNF-20.07 + pol\'itica de respaldo \\
+\textbf{RT-07.10} & \textbf{Obl.} & \textbf{Cumple} & Respaldos cifrados en reposo/tr\'ansito con claves independientes & I1 §5.5 & Configuraci\'on KMS + respaldo \\
+\textbf{RT-07.11} & \textbf{Obl.} & \textbf{Cumple} & Copias inmutables protegidas contra borrado/modificaci\'on & I1 §5.5 & Configuraci\'on de inmutabilidad \\
+\textbf{RT-07.12} & \textbf{Obl.} & \textbf{Cumple} & Prueba de restauraci\'on mensual con medici\'on de tiempo & I1 §5.5 & Acta de restauraci\'on mensual \\
+\textbf{RT-07.13} & \textbf{Obl.} & \textbf{Cumple} & Frecuencia, retenci\'on y RTO de restauraci\'on por dominio & I1 §5.5 & Tabla de respaldo por dominio \\
+\textbf{RT-07.14} & \textbf{Des.} & \textbf{Cumple} & Restauraci\'on granular (registro/tabla/m\'odulo/sistema) & I1 §5.5 & Runbook de restauraci\'on granular \\
+\textbf{RT-08.01} & \textbf{Obl.} & \textbf{Cumple} & Especificaci\'on de c\'omputo con marca/modelo de ref., CPU, memoria, storage, interfaces y consumo & I1 §5.3 & Especificaci\'on T-11 + c\'alculo de dimensionamiento \\
+\textbf{RT-08.02} & \textbf{Obl.} & \textbf{Cumple} & Almacenamiento redundante con tolerancia a falla de discos y monitoreo predictivo & I1 §5.3 & Especificaci\'on storage (RAID) \\
+\textbf{RT-08.03} & \textbf{Obl.} & \textbf{Cumple} & Conmutadores de n\'ucleo, cortafuegos y balanceadores en HA sin SPOF & I1 §5.3 & Diagrama de red + config HA \\
+\textbf{RT-08.04} & \textbf{Obl.} & \textbf{Cumple} & Fuentes de poder redundantes y circuitos el\'ectricos distintos & I1 §5.4 & Especificaci\'on el\'ectrica \\
+\textbf{RT-08.05} & \textbf{Obl.} & \textbf{Cumple} & Margen de crecimiento declarado como \% sobre carga proyectada + procedimiento de ampliaci\'on & I1 §5.3 & C\'alculo de capacidad + margen \\
+\textbf{RT-08.06} & \textbf{Obl.} & \textbf{Cumple} & Equipamiento nuevo, sin uso previo, con garant\'ia de f\'abrica desde recepci\'on & I1 §5.3 & Declaraci\'on + garant\'ias \\
+\textbf{RT-08.07} & \textbf{Obl.} & \textbf{Cumple} & Estaciones de trabajo operaci\'on/administraci\'on con monitores duales & I1 §5.3 & Especificaci\'on de puestos (T-11) \\
+\textbf{RT-08.08} & \textbf{Obl.} & \textbf{Cumple} & Ergonom\'ia NCh 2527 y certificaci\'on de eficiencia energ\'etica & I1 §5.3 & Certificaciones de equipos \\
+\textbf{RT-08.09} & \textbf{Obl.} & \textbf{Cumple} & Estaciones gestionadas centralizadamente: cifrado de disco, control de medios, EDR, parches & I1 §5.3 & Pol\'itica MDM/endpoint \\
+\textbf{RT-08.10} & \textbf{Obl.} & \textbf{Cumple} & Especificaci\'on de dispositivos de terreno con marca, modelo, cantidad y costo unitario & I1 §5.3 & RNF-23.01 + T-11 \\
+\textbf{RT-08.11} & \textbf{Obl.} & \textbf{Cumple} & Condiciones de uso reales: intemperie, \$-\$22$^{\circ}$C, guantes, luminosidad, bater\'ia por turno & I1 §5.3 & RNF-23.02 + especificaci\'on \\
+\textbf{RT-08.12} & \textbf{Obl.} & \textbf{Cumple} & Grado IP y resistencia a ca\'idas declarados y coherentes con el entorno & I1 §5.3 & RNF-23.02 + fichas de dispositivo \\
+\textbf{RT-08.13} & \textbf{Obl.} & \textbf{Cumple} & Ciclo de vida del dispositivo, repuestos y reposici\'on en 56 meses & I1 §5.3 & RNF-23.03 + plan de reposici\'on \\
+\textbf{RT-08.14} & \textbf{Obl.} & \textbf{Cumple} & Gesti\'on de flota integrada a pol\'itica centralizada (RT-03.18) & I1 §5.3 & MDM + inventario \\
+\textbf{RT-08.15} & \textbf{Des.} & \textbf{Cumple} & Unidad de muestra por tipo para pruebas de aceptaci\'on previa a compra masiva & I1 §5.3 & Plan de pruebas de dispositivos \\
+\textbf{RT-08.16} & \textbf{Obl.} & \textbf{Cumple} & Plan de ciclo de vida: recepci\'on, servicio, mantenci\'on, actualizaci\'on, retiro, disposici\'on & I1 §5.3 & Plan de ciclo de vida \\
+\textbf{RT-08.17} & \textbf{Obl.} & \textbf{Cumple} & Borrado seguro y verificable de medios con certificado al CLIENTE & I1 §5.3 & Certificado de sanitizaci\'on \\
+\textbf{RT-08.18} & \textbf{Obl.} & \textbf{Cumple} & Disposici\'on final con gestor autorizado y certificado & I1 §5.3 & Certificado de disposici\'on \\
+\textbf{RT-08.19} & \textbf{Des.} & \textbf{Cumple} & Estrategia de reacondicionamiento/extensi\'on de vida \'util cuantificada & I1 §5.3 & Propuesta de sostenibilidad \\
+\textbf{RT-09.01} & \textbf{Obl.} & \textbf{Cumple} & C\'alculo de capacidad con supuestos de usuarios concurrentes, TPS y crecimiento (volumetr\'ia caso) & I1 §5.1 & RNF-19.01 + T-11 \\
+\textbf{RT-09.02} & \textbf{Según caso} & \textbf{Cumple} & Soporta volumetr\'ia del caso: 31.000 pedidos/mes, 260.000 l\'ineas, peak 2,6x septiembre; p95 & I1 §5.1 & RNF-19.02 + c\'alculo \\
+\textbf{RT-09.03} & \textbf{Obl.} & \textbf{Cumple} & Crecimiento 3x la volumetr\'ia inicial en 3 a\~nos sin redise\~no & I1 §5.1 & RNF-19.02 + margen de capacidad \\
+\textbf{RT-09.04} & \textbf{Obl.} & \textbf{Cumple} & Escalado horizontal autom\'atico con tiempo de reacci\'on y sin p\'erdida de transacciones & I1 §5.2 & Autoscaling IaC + RNF-19.02 \\
+\textbf{RT-09.05} & \textbf{Obl.} & \textbf{Cumple} & Cuello de botella declarado (motor de sincronizaci\'on) con detecci\'on y resoluci\'on & I1 §4.1 §SPOF & RNF-19.03 + ADR \\
+\textbf{RT-09.06} & \textbf{Obl.} & \textbf{Cumple} & Pruebas de carga en PREPROD a 1,5x peak y estr\'es hasta el punto de quiebre & I1 §5.2 · Cap. 20 & RNF-19.04 + informe de pruebas \\
+\textbf{RT-09.07} & \textbf{Obl.} & \textbf{Cumple} & Informe de pruebas con curva de respuesta, saturaci\'on, consumo y comportamiento post-peak & I1 §5.2 & Informe de pruebas de carga \\
+\textbf{RT-09.08} & \textbf{Obl.} & \textbf{Cumple} & Degradaci\'on controlada: encolamiento, l\'imite de tasa y mensaje expl\'icito, sin p\'erdida silenciosa & I1 §5.2 & Pruebas de degradaci\'on + ADR \\
+\textbf{RT-09.09} & \textbf{Obl.} & \textbf{Cumple} & Gesti\'on de capacidad con proyecci\'on trimestral, alertas y propuesta de ajuste & I1 §5.1 & Reporte trimestral de capacidad \\
+\textbf{RT-09.10} & \textbf{Des.} & \textbf{Cumple} & Pruebas de carga automatizadas peri\'odicas en CI & I1 §5.2 & Pipeline de pruebas de carga \\
+\textbf{RT-10.01} & \textbf{Obl.} & \textbf{Cumple} & Disponibilidad $\geq$99,9 \% mensual para servicios cr\'iticos (transacci\'on extremo a extremo) & I1 §5.6 & RNF-20.01 + SLOs \\
+\textbf{RT-10.02} & \textbf{Obl.} & \textbf{Cumple} & Clasificaci\'on de servicios por criticidad (cr\'itico/medio/bajo) con justificaci\'on & I1 §5.6 & RNF-20.02 + matriz de servicios \\
+\textbf{RT-10.03} & \textbf{Obl.} & \textbf{Cumple} & Plan de continuidad ISO 22301 con BIA, escenarios y procedimientos manuales & I1 §5.5 & RNF-20.03 + plan BCM \\
+\textbf{RT-10.04} & \textbf{Obl.} & \textbf{Cumple} & Continuidad TIC ISO/IEC 27031 articulada con DR & I1 §5.5 & Plan de continuidad TIC \\
+\textbf{RT-10.05} & \textbf{Según caso} & \textbf{Cumple} & Mantenimientos fuera de ventana cr\'itica (05:30–07:00) y congelamientos (R-10) & I1 §3 hitos & Pol\'itica de mantenimiento + R-10 \\
+\textbf{RT-10.06} & \textbf{Obl.} & \textbf{Cumple} & Despliegue sin interrupci\'on; ventanas programadas excepcionales y justificadas & I1 §5.2 & Pol\'itica de despliegue \\
+\textbf{RT-10.07} & \textbf{Obl.} & \textbf{Cumple} & Pruebas de resiliencia con inyecci\'on de fallas antes de cada paso a prod y semestral & I1 §5.6 · Cap. 20 & RNF-20.04 + informe de caos \\
+\textbf{RT-10.08} & \textbf{Obl.} & \textbf{Cumple} & Comportamiento documentado por dependencia externa (no responde, error, lentitud) & I1 §6.5 & RNF-20.05 + matriz de dependencias \\
+\textbf{RT-10.09} & \textbf{Des.} & \textbf{Cumple} & Presupuesto de error por servicio cr\'itico vinculado al ritmo de despliegue & I1 §5.2 & Presupuestos de error + SLOs \\
+\textbf{RT-11.01} & \textbf{Obl.} & \textbf{Cumple} & Modelo Zero Trust (NIST SP 800-207): verificaci\'on expl\'icita, privilegio m\'inimo, presumir compromiso & I1 §5.2 & Documento de seguridad + ZTNA \\
+\textbf{RT-11.02} & \textbf{Obl.} & \textbf{Cumple} & Modelado de amenazas por componente e integraci\'on (STRIDE) & I1 §5.2 & Informe de modelado de amenazas \\
+\textbf{RT-11.03} & \textbf{Obl.} & \textbf{Cumple} & Clasificaci\'on de informaci\'on por sensibilidad con controles diferenciados & I1 §5.2 & RF-14.01 + matriz de clasificaci\'on \\
+\textbf{RT-11.04} & \textbf{Obl.} & \textbf{Cumple} & Programa de vulnerabilidades: cr\'iticas $\leq$7 d, altas $\leq$15 d, medias $\leq$30 d & I1 §5.2 & Pol\'itica de remediaci\'on + reporte \\
+\textbf{RT-11.05} & \textbf{Obl.} & \textbf{Cumple} & Matriz de controles trazable a ISO/IEC 27001/27002 con implementaci\'on y evidencia & I1 §5.2 & RF-14.02 + matriz ISO 27k \\
+\textbf{RT-11.06} & \textbf{Obl.} & \textbf{Cumple} & Controles ISO/IEC 27017 (nube) y 27018 (datos personales) & I1 §5.2 & Certificados/informe de aplicabilidad \\
+\textbf{RT-11.07} & \textbf{Obl.} & \textbf{Cumple} & Publicaci\'on solo por capa de borde: CDN + WAF gestionado + DDoS L3/L4/L7 & I1 §4.1 · §5.2 & Configuraci\'on de borde \\
+\textbf{RT-11.08} & \textbf{Obl.} & \textbf{Cumple} & TLS 1.3, sin TLS 1.0/1.1, HSTS con precarga, rotaci\'on automatizada de certificados & I1 §5.2 & RNF-14.01 + config de certificados \\
+\textbf{RT-11.09} & \textbf{Obl.} & \textbf{Cumple} & Cifrado en reposo total con KMS, rotaci\'on declarada y segregaci\'on de custodia & I1 §5.2 & RNF-14.02 + pol\'itica KMS \\
+\textbf{RT-11.10} & \textbf{Según caso} & \textbf{Cumple} & Cifrado a nivel de campo para datos comerciales, de pago y geolocalizaci\'on (AES-256) & I1 §5.2 & Configuraci\'on de cifrado de campo \\
+\textbf{RT-11.11} & \textbf{Obl.} & \textbf{Cumple} & Gateway con autenticaci\'on, autorizaci\'on, cuotas, l\'imites de tasa, validaci\'on de esquema & I1 §4.1 · §5.2 & Configuraci\'on API Gateway \\
+\textbf{RT-11.12} & \textbf{Obl.} & \textbf{Cumple} & Protecci\'on anti-bot con reto progresivo sin degradar accesibilidad & I1 §5.2 & Configuraci\'on WAF + pruebas \\
+\textbf{RT-11.13} & \textbf{Obl.} & \textbf{Cumple} & Declaraci\'on de superficie de exposici\'on: dominios, puertos y servicios alcanzables & I1 §5.2 & RF-14.03 + documento de superficie \\
+\textbf{RT-11.14} & \textbf{Obl.} & \textbf{Cumple} & Registro centralizado e inalterable: 12 meses en l\'inea + 24 en archivo & I1 §5.2 & RNF-14.04 + retenci\'on SIEM \\
+\textbf{RT-11.15} & \textbf{Obl.} & \textbf{Cumple} & SIEM con casos de uso espec\'ificos del negocio (trazabilidad de lote, inventario) & I1 §5.2 & RNF-14.04 + casos de uso \\
+\textbf{RT-11.16} & \textbf{Obl.} & \textbf{Cumple} & EDR en puntos finales y cargas de trabajo nube+on-premise 24x7 & I1 §5.2 & RNF-14.05 + config EDR \\
+\textbf{RT-11.17} & \textbf{Obl.} & \textbf{Cumple} & SOC 24x7 propio/subcontratado con ubicaci\'on, dotaci\'on y procedimientos & I1 §5.2 & Ficha del SOC \\
+\textbf{RT-11.18} & \textbf{Obl.} & \textbf{Cumple} & Plan de respuesta a incidentes con escalamiento y comunicaci\'on al CLIENTE $\leq$2 h (cr\'itico) & I1 §5.2 & RF-14.04 + plan de respuesta \\
+\textbf{RT-11.19} & \textbf{Obl.} & \textbf{Cumple} & Notificaci\'on de brecha $\leq$24 h con informe preliminar y RCA en 5 d\'ias h\'abiles & I1 §5.2 & RF-14.05 + procedimiento \\
+\textbf{RT-11.20} & \textbf{Obl.} & \textbf{Cumple} & Pentest por tercero independiente anual y antes de cada paso a producci\'on & I1 §5.2 & RNF-14.06 + informe de pentest \\
+\textbf{RT-11.21} & \textbf{Des.} & \textbf{Cumple} & Ejercicios de simulaci\'on de incidente con el CLIENTE (anual) & I1 §5.2 & Simulaci\'on + acta \\
+\textbf{RT-11.22} & \textbf{Obl.} & \textbf{Cumple} & CI con SAST, SCA, DAST y escaneo de im\'agenes; bloqueo ante hallazgos cr\'iticos & I1 §5.2 & RNF-14.07 + pipeline \\
+\textbf{RT-11.23} & \textbf{Obl.} & \textbf{Cumple} & SBOM CycloneDX/SPDX por versi\'on entregada & I1 §5.2 & RNF-14.08 + archivos SBOM \\
+\textbf{RT-11.24} & \textbf{Obl.} & \textbf{Cumple} & Firma y verificaci\'on de artefactos conforme SLSA nivel 3 & I1 §5.2 & RNF-14.09 + evidencia SLSA \\
+\textbf{RT-11.25} & \textbf{Obl.} & \textbf{Cumple} & Prohibici\'on de datos productivos en ambientes no productivos sin anonimizaci\'on & I1 §5.2 & RNF-14.10 + pol\'itica de datos \\
+\textbf{RT-11.26} & \textbf{Obl.} & \textbf{Cumple} & Proceso de aprobaci\'on de dependencias: licencia, mantenci\'on, sin vulnerabilidades & I1 §5.2 & Pol\'itica de dependencias \\
+\textbf{RT-11.27} & \textbf{Obl.} & \textbf{Cumple} & Devs sin acceso interactivo a PROD; accesos excepcionales temporales y grabados & I1 §5.2 & Pol\'itica de acceso + PAM \\
+\textbf{RT-11.28} & \textbf{Des.} & \textbf{Cumple} & Marco OWASP SAMM con evaluaci\'on inicial y reevaluaci\'on anual & I1 §5.2 & Informe SAMM \\
+\textbf{RT-12.01} & \textbf{Obl.} & \textbf{Cumple} & Identidad centralizada con OIDC/OAuth 2.1 (y SAML 2.0 si el CLIENTE lo exige) + LDAP & I1 §5.2 & RF-15.01 + config IdP \\
+\textbf{RT-12.02} & \textbf{Obl.} & \textbf{Cumple} & SSO en todos los m\'odulos con cierre de sesi\'on propagado & I1 §5.2 & RF-15.02 + prueba SSO \\
+\textbf{RT-12.03} & \textbf{Obl.} & \textbf{Cumple} & MFA para administradores, accesos privilegiados y exteriores (FIDO2/llaves) & I1 §5.2 & RF-15.03 + config MFA \\
+\textbf{RT-12.04} & \textbf{Des.} & \textbf{Cumple} & Factores resistentes a suplantaci\'on (FIDO2/passkeys) para administradores & I1 §5.2 & RF-15.03 + registro FIDO \\
+\textbf{RT-12.05} & \textbf{Obl.} & \textbf{Cumple} & RBAC + ABAC donde el proceso lo exija, con matriz de segregaci\'on de funciones & I1 §5.2 & RF-15.04 + matriz SoD \\
+\textbf{RT-12.06} & \textbf{Obl.} & \textbf{Cumple} & Elevaci\'on temporal PAM a demanda con aprobaci\'on y grabaci\'on de sesi\'on & I1 §5.2 & Pol\'itica PAM \\
+\textbf{RT-12.07} & \textbf{Obl.} & \textbf{Cumple} & Pol\'itica de sesi\'on: duraci\'on, inactividad, renovaci\'on, revocaci\'on, concurrentes & I1 §5.2 & RNF-15.01 + config de sesi\'on \\
+\textbf{RT-12.08} & \textbf{Obl.} & \textbf{Cumple} & Credenciales de sesi\'on firmadas y de vida breve con refresco rotatorio & I1 §5.2 & RNF-15.02 + config OIDC \\
+\textbf{RT-12.09} & \textbf{Obl.} & \textbf{Cumple} & Auditor\'ia del ciclo de vida de identidad con no repudio y retenci\'on declarada & I1 §5.2 & RNF-15.03 + auditor\'ia \\
+\textbf{RT-12.10} & \textbf{Obl.} & \textbf{Cumple} & Aprovisionamiento/desaprovisionamiento automatizado, baja $\leq$24 h & I1 §5.2 & RF-15.05 + integraci\'on RR.HH. \\
+\textbf{RT-12.11} & \textbf{Según caso} & \textbf{Cumple} & Autenticaci\'on adaptada al terreno: OTP, terminales rugged compartidos, sin correo personal & I1 §5.3 & RF-06.06 + perfil operacional \\
+\textbf{RT-12.12} & \textbf{Según caso} & \textbf{Cumple} & Registro y recuperaci\'on autoservida para externos (clientes, transportistas, proveedores) & I1 §3.2 \'Epica 12 & RF-12.x (portales) + flujo de registro \\
+\textbf{RT-12.13} & \textbf{Obl.} & \textbf{Cumple} & Cuenta de emergencia con custodia, control y auditor\'ia declarados & I1 §5.2 & Procedimiento de acceso de emergencia \\
+\textbf{RT-13.01} & \textbf{Obl.} & \textbf{Cumple} & WCAG 2.2 AA en todas las interfaces con verificaci\'on automatizada y manual & I1 §4.1 · §3 & Informe de conformidad WCAG + pruebas \\
+\textbf{RT-13.02} & \textbf{Obl.} & \textbf{Cumple} & Dise\~no responsivo escritorio/tableta/tel\'efono con adaptaci\'on inteligente & I1 §4.1 & Prototipo (Cap. 25) + pruebas \\
+\textbf{RT-13.03} & \textbf{Obl.} & \textbf{Cumple} & Investigaci\'on con usuarios reales, prototipado y pruebas de usabilidad documentadas & I1 §3 · trabajo UX & Informe de usabilidad + hallazgos \\
+\textbf{RT-13.04} & \textbf{Obl.} & \textbf{Cumple} & Indicadores de usabilidad: tiempo, pasos, tasa de error, tiempo de aprendizaje por perfil & I1 §3 & RF-13.04 (m\'etricas) \\
+\textbf{RT-13.05} & \textbf{Obl.} & \textbf{Cumple} & Funcionalidad principal en $\leq$3 interacciones desde la pantalla del perfil & I1 §4.1 & Pruebas de recorrido \\
+\textbf{RT-13.06} & \textbf{Obl.} & \textbf{Cumple} & Retroalimentaci\'on visual clara, errores comprensibles, sin mensajes t\'ecnicos & I1 §4.1 & Prototipo + pauta UX \\
+\textbf{RT-13.07} & \textbf{Obl.} & \textbf{Cumple} & Soporte a baja alfabetizaci\'on: contraste, targets 44x44 px, iconos+texto, flujos guiados & I1 §4.1 & Prototipo (RF-13.07) \\
+\textbf{RT-13.08} & \textbf{Según caso} & \textbf{Cumple} & Interfaces de terreno con guantes, intemperie y sin conexi\'on & I1 §5.3 & Pruebas en terreno + fichas de UX \\
+\textbf{RT-13.09} & \textbf{Obl.} & \textbf{Cumple} & Sistema de dise\~no documentado (paleta acotada, $\leq$2 familias, \'iconos, ret\'icula) & I1 §4.1 & Design System + tokens \\
+\textbf{RT-13.10} & \textbf{Obl.} & \textbf{Cumple} & Matriz de navegadores/versiones soportadas y pol\'itica de actualizaci\'on & I1 §4.1 & Matriz de soporte \\
+\textbf{RT-13.11} & \textbf{Obl.} & \textbf{Cumple} & Navegaci\'on \'integra por teclado con orden de foco l\'ogico y atajos & I1 §4.1 & Pruebas de accesibilidad \\
+\textbf{RT-13.12} & \textbf{Des.} & \textbf{Cumple} & Modo oscuro, personalizaci\'on y multi-idioma cuando aplique & I1 §4.1 & Prototipo + design tokens \\
+\textbf{RT-14.01} & \textbf{Obl.} & \textbf{Cumple} & Observabilidad unificada nube+on-premise con OpenTelemetry e ID de transacci\'on & I1 §5.2 · §3.1 & RF-16.01 + dashboards \\
+\textbf{RT-14.02} & \textbf{Obl.} & \textbf{Cumple} & Acceso permanente del CLIENTE a tableros operacionales y de negocio & I1 §3.1 · §6.6 & RF-16.02 + acceso demo \\
+\textbf{RT-14.03} & \textbf{Obl.} & \textbf{Cumple} & SLI medidos sobre experiencia real del usuario (p95), sint\'eticos solo complemento & I1 §5.6 & RNF-16.01 + metodolog\'ia SLO \\
+\textbf{RT-14.04} & \textbf{Obl.} & \textbf{Cumple} & Alertamiento por s\'intomas de negocio con supresi\'on de ruido y escalamiento autom\'atico & I1 §3.1 · §5.2 & RF-16.03 + cat\'alogo de alertas \\
+\textbf{RT-14.05} & \textbf{Obl.} & \textbf{Cumple} & Libro de operaci\'on y gu\'ias de resoluci\'on con automatizaci\'on progresiva & I1 §5.2 & RNF-16.02 + runbooks \\
+\textbf{RT-14.06} & \textbf{Obl.} & \textbf{Cumple} & RCA tras incidente cr\'itico en 5 d\'ias h\'abiles con seguimiento de acciones & I1 §3.1 & RF-16.04 + proceso RCA \\
+\textbf{RT-14.07} & \textbf{Obl.} & \textbf{Cumple} & Logs sin datos sensibles ni credenciales; acceso controlado y auditado & I1 §5.2 & RNF-16.03 + pol\'itica de logs \\
+\textbf{RT-14.08} & \textbf{Obl.} & \textbf{Cumple} & Retenci\'on de m\'etricas/registros/trazas con costo en l\'inea vs archivo & I1 §5.2 & Tabla de retenci\'on + costo \\
+\textbf{RT-14.09} & \textbf{Des.} & \textbf{Cumple} & Detecci\'on proactiva de anomal\'ias por comportamiento hist\'orico & I1 §5.2 & Modelo de anomal\'ias + alertas \\
+\textbf{RT-15.01} & \textbf{Obl.} & \textbf{Cumple} & Dimensionamiento ajustado a demanda real con factor de utilizaci\'on declarado & I1 §5.1 & C\'alculo de capacidad + utilizaci\'on \\
+\textbf{RT-15.02} & \textbf{Obl.} & \textbf{Cumple} & Apagado/reducci\'on de ambientes no productivos fuera de horario & I1 §5.2 & Pol\'itica de ambientes \\
+\textbf{RT-15.03} & \textbf{Obl.} & \textbf{Cumple} & Huella de carbono anual estimada con metodolog\'ia declarada & I1 §5.2 & Informe de huella de carbono \\
+\textbf{RT-15.04} & \textbf{Obl.} & \textbf{Cumple} & PUE del recinto e intensidad de carbono de la regi\'on de nube declarados & I1 §5.4 · §5.2 & Ficha de sostenibilidad \\
+\textbf{RT-15.05} & \textbf{Des.} & \textbf{Cumple} & Regi\'on de nube de menor intensidad de carbono si latencia/regulaci\'on lo permiten & I1 §5.2 & An\'alisis comparativo de regi\'on \\
+\textbf{RT-15.06} & \textbf{Des.} & \textbf{Cumple} & Metas de reducci\'on de consumo con medici\'on y reporte anual & I1 §5.2 & Reporte anual de energ\'ia \\
+\textbf{RT-15.07} & \textbf{Obl.} & \textbf{Cumple} & Certificaciones con copia y c\'odigo de verificaci\'on & Sobre N$^{\circ}$1 & Copia de certificados vigentes \\
+\textbf{RT-15.08} & \textbf{Obl.} & \textbf{Cumple} & Personal certificado efectivamente asignado con dedicaci\'on declarada & Sobre N$^{\circ}$1/N$^{\circ}$2 & T-15 (nivelaci\'on por rol) \\
+\textbf{RT-15.09} & \textbf{Obl.} & \textbf{Cumple} & Vigencia y reposici\'on de certificaciones durante el Contrato (Art. 76$^{\circ}$ BA) & I1 §3 · contrato & Compromiso contractual + plan de reposici\'on \\
+\textbf{RT-16.01} & \textbf{Obl.} & \textbf{Cumple} & M\'odulo de administraci\'on de usuarios, roles y permisos sin intervenci\'on del ADJUDICATARIO & I1 §3.1 · RF-17.01 & RF-17.01 (+ demo) \\
+\textbf{RT-16.02} & \textbf{Obl.} & \textbf{Cumple} & Parametrizaci\'on de reglas de negocio desde interfaz con control de versiones & I1 §3.1 · RF-17.02 & RF-17.02 + historial de cambios \\
+\textbf{RT-16.03} & \textbf{Obl.} & \textbf{Cumple} & Aprobaci\'on de 2.º perfil para par\'ametros con impacto operacional & I1 §3.1 · RF-17.03 & RF-17.03 + auditor\'ia \\
+\textbf{RT-16.04} & \textbf{Obl.} & \textbf{Cumple} & Declaraci\'on de qu\'e es parametrizable y qu\'e requiere desarrollo & I1 §3.1 & Cat\'alogo de parametrizaci\'on \\
+\textbf{RT-16.05} & \textbf{Des.} & \textbf{Cumple} & Ambiente de simulaci\'on para probar cambios de par\'ametros & I1 §3.x & Ambiente QA/simulaci\'on \\
+\textbf{RT-16.06} & \textbf{Obl.} & \textbf{Cumple} & Registro de auditor\'ia con persona, fecha/hora, origen, valores antes/despu\'es & I1 §3.1 · RF-17.04 & RF-17.04 + muestra de auditor\'ia \\
+\textbf{RT-16.07} & \textbf{Obl.} & \textbf{Cumple} & Auditor\'ia inalterable no modificable por ning\'un perfil & I1 §3.1 · RF-17.04 & RF-17.04 + WORM \\
+\textbf{RT-16.08} & \textbf{Obl.} & \textbf{Cumple} & Consulta y exportaci\'on de auditor\'ia desde interfaz sin acceso a BD & I1 §3.1 · RF-17.05 & RF-17.05 + demo \\
+\textbf{RT-16.09} & \textbf{Según caso} & \textbf{Cumple} & Consultas a informaci\'on sensible registradas (no solo modificaciones) & I1 §3.1 & RF-16.09 (registro de consultas) \\
+\textbf{RT-16.10} & \textbf{Según caso} & \textbf{Cumple} & Retenci\'on de auditor\'ia: 5 a\~nos por caso (RNF-17.01) & I1 §6.3 & RNF-17.01 + pol\'itica de retenci\'on \\
+\textbf{RT-16.11} & \textbf{Obl.} & \textbf{Cumple} & Flujos de trabajo con estados, responsables, plazos, escalamiento y delegaci\'on & I1 §3.1 · RF-17.06 & RF-17.06 + demo de flujo \\
+\textbf{RT-16.12} & \textbf{Obl.} & \textbf{Cumple} & Flujos configurables por el CLIENTE sin desarrollo (responsables, plazos, aprobaciones) & I1 §3.1 · RF-17.06 & RF-17.06 + cat\'alogo de flujos \\
+\textbf{RT-16.13} & \textbf{Obl.} & \textbf{Cumple} & Bandeja de tareas unificada con priorizaci\'on y alerta de vencimiento & I1 §3.1 · RF-17.07 & RF-17.07 + demo \\
+\textbf{RT-16.14} & \textbf{Des.} & \textbf{Cumple} & Motor de reglas sin recompilaci\'on con trazabilidad por transacci\'on & I1 §3.1 & RNG + motor de reglas \\
+\textbf{RT-16.15} & \textbf{Obl.} & \textbf{Cumple} & Gesti\'on documental con versionado, metadatos, acceso, b\'usqueda y previsualizaci\'on & I1 §3.1 · RF-17.08 & RF-17.08 + demo \\
+\textbf{RT-16.16} & \textbf{Obl.} & \textbf{Cumple} & Documentos cifrados con integridad y retenci\'on seg\'un pol\'itica & I1 §3.1 · RF-17.08 & RF-17.08 + cifrado KMS \\
+\textbf{RT-16.17} & \textbf{Según caso} & \textbf{Cumple} & Firma electr\'onica Ley 19.799 con firma avanzada para GDE/acuse/contrato & I1 §3.1 · RF-18.01 & RF-18.01 + evidencia de firma \\
+\textbf{RT-16.18} & \textbf{Según caso} & \textbf{Cumple} & Sello de tiempo y conservaci\'on de evidencia posterior al vencimiento del certificado & I1 §3.1 & RF-18.01 + TSA \\
+\textbf{RT-16.19} & \textbf{Obl.} & \textbf{Cumple} & Generaci\'on de documentos desde plantillas administrables (formato abierto) & I1 §3.1 · RF-17.09 & RF-17.09 + demo \\
+\textbf{RT-16.20} & \textbf{Obl.} & \textbf{Cumple} & Notificaciones multicanal: correo, in-app y SMS/mensajer\'ia & I1 §3.1 · RF-17.10 & RF-17.10 + configuraci\'on de canales \\
+\textbf{RT-16.21} & \textbf{Obl.} & \textbf{Cumple} & Plantillas de notificaci\'on administrables y versionadas & I1 §3.1 & RF-17.10 + gesti\'on de plantillas \\
+\textbf{RT-16.22} & \textbf{Obl.} & \textbf{Cumple} & Preferencias de canal/frecuencia por usuario respetando obligatorias & I1 §3.1 · RF-18.02 & RF-18.02 + demo \\
+\textbf{RT-16.23} & \textbf{Obl.} & \textbf{Cumple} & Env\'io as\'incrono con reintento, deduplicaci\'on y registro de entrega/apertura/error & I1 §3.1 · RF-18.03 & RF-18.03 + cola de notificaci\'on \\
+\textbf{RT-16.24} & \textbf{Obl.} & \textbf{Cumple} & Proveedor de cada canal, costo unitario, volumen y tratamiento en Oferta Econ\'omica & Oferta Econ\'omica & Cuadro de costos de canal \\
+\textbf{RT-16.25} & \textbf{Obl.} & \textbf{Cumple} & Cumplimiento de normativa de comunicaciones con baja disponible & I1 §3.1 & Pol\'itica de comunicaciones \\
+\textbf{RT-16.26} & \textbf{Des.} & \textbf{Cumple} & Canales conversacionales con respuesta desde el canal & I1 §3.1 & Innovaci\'on/opcional \\
+\textbf{RT-16.27} & \textbf{Obl.} & \textbf{Cumple} & B\'usqueda global con texto completo, tolerancia a errores y filtros facetados & I1 §3.1 · RF-17.11 & RF-17.11 + demo \\
+\textbf{RT-16.28} & \textbf{Obl.} & \textbf{Cumple} & Listados ordenables/filtrables/paginados/exportables con filtro aplicado & I1 §3.1 · RF-17.12 & RF-17.12 + demo \\
+\textbf{RT-16.29} & \textbf{Obl.} & \textbf{Cumple} & Exportaciones de gran volumen as\'incronas con notificaci\'on & I1 §3.1 & RNF-17.02 + demo \\
+\textbf{RT-16.30} & \textbf{Obl.} & \textbf{Cumple} & Toda exportaci\'on sensible registrada en auditor\'ia & I1 §3.1 & Auditor\'ia de exportaciones \\
+\textbf{RT-16.31} & \textbf{Según caso} & \textbf{Cumple} & Portal p\'ublico con cat\'alogo (sin precios/stock) y contacto, sin autenticaci\'on & I1 §3.2 \'Epica 12 & RF-17.13 + demo \\
+\textbf{RT-16.32} & \textbf{Obl.} & \textbf{Cumple} & Autoatenci\'on para consultas frecuentes (evita contacto telef\'onico) & I1 §3.2 \'Epica 12 & Portal de clientes + autoatenci\'on \\
+\textbf{RT-16.33} & \textbf{Obl.} & \textbf{Cumple} & Estimaci\'on de reducci\'on de atenci\'on asistida por autoatenci\'on con indicador & I1 §3.2 & RF-16.33 + meta de reducci\'on \\
+\textbf{RT-16.34} & \textbf{Obl.} & \textbf{Cumple} & Portal p\'ublico aislado de servicios transaccionales con cach\'e & I1 §3.2 & RNF-17.03 + prueba de picos \\
+\textbf{RT-17.01} & \textbf{Según caso} & \textbf{Cumple} & App m\'ovil offline-first para preventa/reparto/bodega con sync diferida & I1 §3.2 \'Epicas 3/5/6 & RF-03.x, RF-05.x, RF-06.x \\
+\textbf{RT-17.02} & \textbf{Obl.} & \textbf{Cumple} & App nativa declarada y justificada (desconexi\'on, perif\'ericos, mantenci\'on) & I1 §3.2 & RF-03.x + ADR m\'ovil \\
+\textbf{RT-17.03} & \textbf{Obl.} & \textbf{Cumple} & Soporte de SO vigente + 2 anteriores con pol\'itica de actualizaci\'on & I1 §3.2 & Ficha de compatibilidad \\
+\textbf{RT-17.04} & \textbf{Obl.} & \textbf{Cumple} & Distribuci\'on por tiendas oficiales / UEM con firma e integridad & I1 §5.3 & Pol\'itica de distribuci\'on MDM/UEM \\
+\textbf{RT-17.05} & \textbf{Obl.} & \textbf{Cumple} & Datos del dispositivo cifrados (SQLCipher) con borrado remoto y bloqueo & I1 §5.2 · §5.3 & SQLCipher AES-256 + borrado remoto \\
+\textbf{RT-17.06} & \textbf{Según caso} & \textbf{Cumple} & Perif\'ericos integrados: c\'amara, lector GS1, NFC, GPS, impresora t\'ermica, balanza & I1 §3.2 · §5.3 & RF-01.06/01.07 + especificaci\'on de dispositivos \\
+\textbf{RT-17.07} & \textbf{Obl.} & \textbf{Cumple} & Optimizaci\'on de consumo de datos/bater\'ia con estimaci\'on por turno & I1 §3.2 & RF-03.x + medici\'on de consumo \\
+\textbf{RT-17.08} & \textbf{Des.} & \textbf{Cumple} & Interfaz para dispositivos de bajo costo / generaciones anteriores & I1 §3.2 & Modo ligero de la app \\
+\textbf{RT-18.01} & \textbf{Obl.} & \textbf{Cumple} & Declaraci\'on de cada componente de IA: prop\'osito, modelo/proveedor, versi\'on, ubicaci\'on & I1 §7 (Innovaci\'on) & Fichas T-19 de innovaciones IA \\
+\textbf{RT-18.02} & \textbf{Obl.} & \textbf{Cumple} & Garant\'ia contractual: datos del CLIENTE no usados para entrenamiento de terceros & I1 §7 & Cl\'ausula contractual + ficha \\
+\textbf{RT-18.03} & \textbf{Obl.} & \textbf{Cumple} & L\'imites de uso, validaci\'on humana previa y procedimiento de supervisi\'on & I1 §7 & Ficha T-19 + dise\~no de supervisi\'on \\
+\textbf{RT-18.04} & \textbf{Obl.} & \textbf{Cumple} & Riesgos de sesgo/alucinaci\'on/fuga evaluados seg\'un NIST AI RMF 1.0 e ISO/IEC 42001 & I1 §7 & Evaluaci\'on de riesgos de IA \\
+\textbf{RT-18.05} & \textbf{Obl.} & \textbf{Cumple} & Registro de interacciones relevantes de IA para auditor\'ia y trazabilidad & I1 §7 & Auditor\'ia de IA + log \\
+\textbf{RT-18.06} & \textbf{Obl.} & \textbf{Cumple} & Componente desactivable sin afectar la operaci\'on; procedimiento manual de respaldo & I1 §7 & Dise\~no de feature flag + runbook \\
+\textbf{RT-18.07} & \textbf{Obl.} & \textbf{Cumple} & Indicaci\'on expresa de generaci\'on/sugerencia autom\'atica con nivel de confianza & I1 §7 & UI de IA + especificaci\'on \\
+\textbf{RT-18.08} & \textbf{Obl.} & \textbf{Cumple} & Modelos predictivos con variables, m\'etrica, l\'inea base, reentrenamiento y deriva & I1 §7 & Ficha t\'ecnica del modelo + plan de ML \\
+\textbf{RT-18.09} & \textbf{Obl.} & \textbf{Cumple} & Responsabilidad \'integra del ADJUDICATARIO por resultados de IA (Art. 86$^{\circ}$ BA) & I1 §7 & Compromiso contractual \\
+\textbf{RT-18.10} & \textbf{Des.} & \textbf{Cumple} & Automatizaci\'on RPA en back office con ahorro cuantificado & I1 §7 & Innovaci\'on RPA + T-19 \\
+\textbf{RT-19.01} & \textbf{Obl.} & \textbf{Cumple} & Oficina de gesti\'on con metodolog\'ia PMBOK + pr\'acticas \'agiles justificadas & I2 (Plan de proyecto) & Plan de proyecto + metodolog\'ia \\
+\textbf{RT-19.02} & \textbf{Obl.} & \textbf{Cumple} & Jefe de Proyecto con dedicaci\'on exclusiva en implementaci\'on & I2 & T-15 (nivelaci\'on) \\
+\textbf{RT-19.03} & \textbf{Obl.} & \textbf{Cumple} & Procedimiento formal de control de cambios (Art. 72$^{\circ}$ BA) & I2 & Procedimiento + registro de cambios \\
+\textbf{RT-19.04} & \textbf{Obl.} & \textbf{Cumple} & Gesti\'on de riesgos ISO 31000 con registro vivo y planes de mitigaci\'on & I2 (T-16) & Registro de riesgos (T-16) \\
+\textbf{RT-19.05} & \textbf{Obl.} & \textbf{Cumple} & Espacio colaborativo con documentaci\'on, entregables, actas y riesgos actualizados & I2 & Espacio colaborativo + demo \\
+\textbf{RT-19.06} & \textbf{Obl.} & \textbf{Cumple} & Informe mensual de avance con cronograma, avance f\'isico/financiero y riesgos & I2/I3 (informes) & Informe mensual (m\'etricas) \\
+\textbf{RT-19.07} & \textbf{Obl.} & \textbf{Cumple} & Medici\'on con valor ganado (CPI/SPI), sin \% cualitativo & I2 & Reporte EVM + cuadro de control \\
+\textbf{RT-19.08} & \textbf{Obl.} & \textbf{Cumple} & Tablero de estado del proyecto accesible en cualquier momento & I2 & Tablero PM + demo \\
+\textbf{RT-19.09} & \textbf{Obl.} & \textbf{Cumple} & Actas de comit\'es (Art. 71$^{\circ}$ BA) en 2 d\'ias h\'abiles con acuerdos y responsables & I2 & Modelo de acta + repositorio \\
+\textbf{RT-19.10} & \textbf{Obl.} & \textbf{Cumple} & Desviaci\'on >10 \% en hito comunicada en 5 d\'ias h\'abiles con plan de recuperaci\'on & I2 & Procedimiento + ejemplo \\
+\textbf{RT-20.01} & \textbf{Obl.} & \textbf{Cumple} & Plan de implantaci\'on por sitio y perfil coherente con cronograma Art. 17$^{\circ}$ & I2 (T-18) & Plan de implantaci\'on (T-18) \\
+\textbf{RT-20.02} & \textbf{Obl.} & \textbf{Cumple} & Paso a producci\'on gradual y reversible con criterio de olas y reversi\'on & I2 & Plan de olas + runbook de reversi\'on \\
+\textbf{RT-20.03} & \textbf{Obl.} & \textbf{Cumple} & Marcha blanca coexistente con operaci\'on vigente, conciliaci\'on diaria sin doble digito & I3 & Plan de marcha blanca + conciliaci\'on \\
+\textbf{RT-20.04} & \textbf{Obl.} & \textbf{Cumple} & Indicadores diarios de marcha blanca con umbrales de avance (Art. 17.3 BA) & I3 & RF-11.x (OTIF) + umbrales \\
+\textbf{RT-20.05} & \textbf{Obl.} & \textbf{Cumple} & Acompa\~namiento en terreno en olas con dotaci\'on decreciente seg\'un adopci\'on & I3 & Plan de acompa\~namiento + dotaci\'on \\
+\textbf{RT-20.06} & \textbf{Obl.} & \textbf{Cumple} & Per\'iodo de estabilizaci\'on con atenci\'on reforzada tras cada paso a producci\'on & I3 & Plan de estabilizaci\'on \\
+\textbf{RT-20.07} & \textbf{Obl.} & \textbf{Cumple} & Definici\'on de terminado acordada que incluya c\'odigo, pruebas, doc, seguridad, deploy & I2 & DoD + checklist \\
+\textbf{RT-20.08} & \textbf{Obl.} & \textbf{Cumple} & Protocolo de aceptaci\'on de hitos conforme Formulario T-17 & I2/I3 & Formularios T-17 firmados \\
+\textbf{RT-21.01} & \textbf{Obl.} & \textbf{Cumple} & NOC 24x7x365 con ubicaci\'on, dotaci\'on por turno y procedimientos & I3 (Operaci\'on) & RNF-21.01 + ficha NOC \\
+\textbf{RT-21.02} & \textbf{Obl.} & \textbf{Cumple} & Gerente de servicio dedicado como contraparte permanente & I3 & RNF-21.02 (designaci\'on) \\
+\textbf{RT-21.03} & \textbf{Obl.} & \textbf{Cumple} & Especialistas por tecnolog\'ia nominados con dedicaci\'on & I3 & T-15 + nominaciones \\
+\textbf{RT-21.04} & \textbf{Obl.} & \textbf{Cumple} & Procedimientos de operaci\'on documentados y ejecutables por CLIENTE & I3 & Runbooks + transferencia \\
+\textbf{RT-21.05} & \textbf{Obl.} & \textbf{Cumple} & Centro de atenci\'on (CC) propio o subcontratado de nivel acreditado & I3 & Ficha del CC \\
+\textbf{RT-21.06} & \textbf{Obl.} & \textbf{Cumple} & 80 \% antes de 20 s, FCR $\geq$70 \%, abandono $\leq$5 \% & I3 & RNF-21.03 + SLAs de atenci\'on \\
+\textbf{RT-21.07} & \textbf{Según caso} & \textbf{Cumple} & Atenci\'on 08:00–20:00 h\'abil, ampliada a 24x7 para cr\'iticos y ventana 05:30–07:00 & I3 & RNF-21.04 + horarios \\
+\textbf{RT-21.08} & \textbf{Obl.} & \textbf{Cumple} & Orientaci\'on funcional desde preguntas simples a complejas & I3 & Guiones CC + base de conocimiento \\
+\textbf{RT-21.09} & \textbf{Obl.} & \textbf{Cumple} & Registro hist\'orico de soporte con an\'alisis de tendencia mensual & I3 & Reporte mensual de soporte \\
+\textbf{RT-21.10} & \textbf{Obl.} & \textbf{Cumple} & Proceso de aprendizaje del CC con base de conocimiento & I3 & Base de conocimiento (RT-22.08) \\
+\textbf{RT-21.11} & \textbf{Obl.} & \textbf{Cumple} & Capacitaci\'on en l\'inea en autoformaci\'on con registro de avance & I3 & LMS + reporte de avance \\
+\textbf{RT-21.12} & \textbf{Des.} & \textbf{Cumple} & Espacios de interacci\'on entre entidades/usuarios & I3 & Comunidad de usuarios \\
+\textbf{RT-21.13} & \textbf{Obl.} & \textbf{Cumple} & Indicadores clave de soporte abiertos al CLIENTE & I3 & Dashboard de soporte \\
+\textbf{RT-21.14} & \textbf{Obl.} & \textbf{Cumple} & Dimensionamiento del CC con Erlang C o teor\'ia de colas & I3 & RNF-21.05 + modelo Erlang (volumen de contactos) \\
+\textbf{RT-21.15} & \textbf{Obl.} & \textbf{Cumple} & Canal \'unico de ticketing con ciclo completo hasta cierre & I3 & RNF-21.06 + ITSM \\
+\textbf{RT-21.16} & \textbf{Según caso} & \textbf{Cumple} & Traslado de niveles 2/3 a Curic\'o, Chill\'an y Los \'Angeles sin alterar el resto & I3 & RNF-21.07 + plan de desplazamiento \\
+\textbf{RT-21.17} & \textbf{Obl.} & \textbf{Cumple} & Cierre de ticket con confirmaci\'on de usuario o plazo autom\'atico & I3 & Proceso ITSM \\
+\textbf{RT-21.18} & \textbf{Obl.} & \textbf{Cumple} & Reporte mensual de niveles de servicio de atenci\'on por severidad & I3 & Reporte SLA mensual \\
+\textbf{RT-21.19} & \textbf{Obl.} & \textbf{Cumple} & Bolsa anual de mantenci\'on evolutiva con composici\'on y procedimiento & Oferta Econ\'omica & RNF-21.08 + bolsa de horas \\
+\textbf{RT-21.20} & \textbf{Obl.} & \textbf{Cumple} & Mantenci\'on evolutiva con mismo est\'andar de calidad, pruebas y seguridad & I3 & Proceso de mantenci\'on \\
+\textbf{RT-21.21} & \textbf{Obl.} & \textbf{Cumple} & Registro de deuda t\'ecnica cuantificado con fracci\'on de capacidad & I3 & Backlog de deuda t\'ecnica \\
+\textbf{RT-21.22} & \textbf{Obl.} & \textbf{Cumple} & Actualizaciones de componentes planificadas anualmente con reversi\'on & I3 & RNF-21.09 + calendario anual \\
+\textbf{RT-22.01} & \textbf{Obl.} & \textbf{Cumple} & Plan de capacitaci\'on por perfil (usuarios, avanzados, administradores, TI, soporte) & I3 & RNF-22.01 + plan de capacitaci\'on \\
+\textbf{RT-22.02} & \textbf{Obl.} & \textbf{Cumple} & Modalidades: presencial por sitio, en l\'inea, autoformaci\'on, acompa\~namiento & I3 & Matriz de modalidades por sitio \\
+\textbf{RT-22.03} & \textbf{Obl.} & \textbf{Cumple} & Material en espa\~nol, editable y de propiedad del CLIENTE & I3 & RNF-22.02 + materiales \\
+\textbf{RT-22.04} & \textbf{Según caso} & \textbf{Cumple} & Capacitaci\'on sin afectar operaci\'on: por turnos, peaks y ventana 05:30–07:00 & I3 & RNF-22.03 + calendario \\
+\textbf{RT-22.05} & \textbf{Obl.} & \textbf{Cumple} & Evaluaci\'on y certificaci\'on de administradores/TI como condici\'on de marcha blanca & I3 & RNF-22.04 + certificados \\
+\textbf{RT-22.06} & \textbf{Obl.} & \textbf{Cumple} & $\geq$2 jornadas anuales de actualizaci\'on y capacitaci\'on de personal nuevo sin costo & I3 & RNF-22.05 + cronograma \\
+\textbf{RT-22.07} & \textbf{Obl.} & \textbf{Cumple} & Acompa\~namiento/mentor\'ia al equipo TI $\geq$6 meses post producci\'on E2 & I3 & RNF-22.06 + plan de mentor\'ia \\
+\textbf{RT-22.08} & \textbf{Obl.} & \textbf{Cumple} & Base de conocimiento mantenida con m\'etricas de uso y utilidad & I3 & RT-22.08 + dashboard de KM \\
+\textbf{RT-22.09} & \textbf{Des.} & \textbf{Cumple} & Ambiente permanente de entrenamiento con datos ficticios & I3 & Ambiente de entrenamiento QA \\
+\textbf{RT-23.01} & \textbf{Obl.} & \textbf{Cumple} & Web corporativa con giro, trayectoria $\geq$3 a\~nos, misi\'on, visi\'on, valores y certificaciones & Sobre N$^{\circ}$1 & Sitio web corporativo + declaraci\'on jurada \\
+\textbf{RT-23.02} & \textbf{Obl.} & \textbf{Cumple} & Portafolio de proyectos 5 a\~nos con m\'etricas verificables y testimonios autorizados & Sobre N$^{\circ}$1 & Sitio web + casos \\
+\textbf{RT-23.03} & \textbf{Obl.} & \textbf{Cumple} & Organigrama, perfiles de directores y curr\'iculos del equipo clave & Sobre N$^{\circ}$1 & Sitio web + CVs \\
+\textbf{RT-23.04} & \textbf{Obl.} & \textbf{Cumple} & Capacidades t\'ecnicas, stack, alianzas APN y metodolog\'ias certificadas & Sobre N$^{\circ}$1 & Sitio web + alianzas \\
+\textbf{RT-23.05} & \textbf{Obl.} & \textbf{Cumple} & Sitio accesible WCAG 2.2 AA, responsivo, TLS v\'alido & Sobre N$^{\circ}$1 & Auditor\'ia web + certificado TLS \\
+\textbf{RT-23.06} & \textbf{Obl.} & \textbf{Cumple} & Sitio activo durante todo el proceso de licitaci\'on & Sobre N$^{\circ}$1 & Monitoreo de disponibilidad \\
+\textbf{RT-23.07} & \textbf{Des.} & \textbf{Cumple} & Material educativo digital (webinars, art\'iculos, recursos) & Sobre N$^{\circ}$1 & Sitio web \\
+\textbf{RT-23.08} & \textbf{Des.} & \textbf{Cumple} & Demo en l\'inea / recorrido virtual / portal de soporte & Sobre N$^{\circ}$1 & Prototipos/sitio \\
+\textbf{RT-23.09} & \textbf{Des.} & \textbf{Cumple} & M\'etricas de disponibilidad y desempe\~no p\'ublicas & Sobre N$^{\circ}$1 & Status page \\
+\textbf{RT-23.10} & \textbf{Des.} & \textbf{Cumple} & Calculadora de ROI pertinente a la industria & Sobre N$^{\circ}$1 & Herramienta web \\
+\textbf{RT-24.01} & \textbf{Obl.} & \textbf{Cumple} & Equipo clave individualmente, medio cuerpo, $\geq$10 s, vestimenta formal & Propuesta final & Video MP4 H.264 1080p $\leq$5 min \\
+\textbf{RT-24.02} & \textbf{Obl.} & \textbf{Cumple} & Nombre, cargo, a\~nos de experiencia y especializaci\'on en pantalla por integrante & Propuesta final & Video (segmento equipo) \\
+\textbf{RT-24.03} & \textbf{Des.} & \textbf{Cumple} & Certificaciones principales mostradas en pantalla & Propuesta final & Video \\
+\textbf{RT-24.04} & \textbf{Obl.} & \textbf{Cumple} & Fondo, iluminaci\'on y encuadre consistentes en todas las tomas & Propuesta final & Video \\
+\textbf{RT-24.05} & \textbf{Obl.} & \textbf{Cumple} & Paleta, tipograf\'ia y marca consistentes; logo en todas las escenas; contacto & Propuesta final & Video \\
+\textbf{RT-24.06} & \textbf{Obl.} & \textbf{Cumple} & Niveles de volumen normalizados sin variaciones bruscas & Propuesta final & Video \\
+\textbf{RT-25.01} & \textbf{Obl.} & \textbf{Cumple} & Navegaci\'on intuitiva $\leq$3 interacciones para funcionalidad principal & Informe 3 & Prototipo interactivo \\
+\textbf{RT-25.02} & \textbf{Obl.} & \textbf{Cumple} & Retroalimentaci\'on, estados de carga y manejo elegante de errores & Informe 3 & Prototipo \\
+\textbf{RT-25.03} & \textbf{Obl.} & \textbf{Cumple} & WCAG 2.2 AA: contraste, targets 44x44, teclado, textos alternativos & Informe 3 & Prototipo + check WCAG \\
+\textbf{RT-25.04} & \textbf{Obl.} & \textbf{Cumple} & Responsivo en 1920x1080, 1366x768, 768x1024 y 375x812 & Informe 3 & Prototipo multi-resoluci\'on \\
+\textbf{RT-25.05} & \textbf{Obl.} & \textbf{Cumple} & Sistema de dise\~no: $\leq$5 colores, $\leq$2 familias, iconograf\'ia, ret\'icula, componentes & Informe 3 & Design tokens + librer\'ia \\
+\textbf{RT-25.06} & \textbf{Obl.} & \textbf{Cumple} & Entrega como enlace navegable sin instalaci\'on & Informe 3 & Link del prototipo \\
+\textbf{RT-25.07} & \textbf{Obl.} & \textbf{Cumple} & Acceso garantizado $\geq$6 meses desde la entrega & Informe 3 & Acuerdo de disponibilidad \\
+\textbf{RT-25.08} & \textbf{Obl.} & \textbf{Cumple} & Navegaci\'on completa, simulaci\'on de ingreso, transiciones y validaciones & Informe 3 & Prototipo high-fidelity \\
+\textbf{RT-25.09} & \textbf{Obl.} & \textbf{Cumple} & Arquitectura de informaci\'on: mapa del sitio, taxonom\'ia y navegaci\'on & Informe 3 & Documento de AA \\
+\textbf{RT-25.10} & \textbf{Des.} & \textbf{Cumple} & Exportaci\'on a documento interactivo para revisi\'on offline & Informe 3 & PDF interactivo \\
+\textbf{RT-26.01} & \textbf{Obl.} & \textbf{Cumple} & Cada innovaci\'on ubicada en la arquitectura: capa, componentes e interfaces & I1 §7 (Innovaciones) & Fichas T-19 + diagramas \\
+\textbf{RT-26.02} & \textbf{Obl.} & \textbf{Cumple} & Cada innovaci\'on identifica paquetes EDT y mes del cronograma & I1 §7 + EDT & Fichas T-19 + EDT \\
+\textbf{RT-26.03} & \textbf{Obl.} & \textbf{Cumple} & Innovaciones tecnol\'ogicas con nivel de madurez (escala) y fuentes APA 7.ª & I1 §7 & Fichas T-19 + referencias APA \\
+\textbf{RT-26.04} & \textbf{Obl.} & \textbf{Cumple} & Riesgo de adopci\'on, probabilidad, impacto, mitigaci\'on y contingencia por innovaci\'on & I1 §7 & Fichas + matriz de riesgo \\
+\textbf{RT-26.05} & \textbf{Obl.} & \textbf{Cumple} & Indicador de verificaci\'on con l\'inea base, meta y momento; impacto en inversi\'on/costo/beneficio & I1 §7 & Fichas T-19 + Oferta Econ\'omica \\
+\textbf{RT-26.06} & \textbf{Obl.} & \textbf{Cumple} & Innovaciones IA cumplen \'integramente Cap. 18 & I1 §7 & Fichas + RT-18.x \\
+\textbf{RT-26.07} & \textbf{Obl.} & \textbf{Cumple} & Innovaciones que alteran seguridad con modelado de amenazas propio & I1 §7 & Modelado de amenazas por innovaci\'on \\
+\textbf{RT-26.08} & \textbf{Des.} & \textbf{Cumple} & Al menos una innovaci\'on verificable en marcha blanca de la Etapa 1 (antes mes 16) & I1 §7 & Innovaci\'on monitorizada E1 \\
+\end{longtable}
+\end{small}
+
+\vspace{2pt}
+{\small\color{lafroxGrato}La matriz cubre la totalidad de los requisitos codificados de las Bases Técnicas Transversales (Anexo A: 374 códigos RT) y responde contra el código correcto del documento transversal. Los casos '\textbf{Según caso}' aplican los valores del Caso 02 (Logística). Las secciones citadas corresponden al Informe 1 (I1) y a los informes y formularios posteriores de la Oferta Técnica.}
+
+% Fin de la matriz T-12 — 374 RT

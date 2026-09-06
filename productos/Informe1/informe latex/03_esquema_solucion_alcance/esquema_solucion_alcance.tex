@@ -54,7 +54,7 @@ septiembre, todo diciembre y los primeros tres dÃ­as hÃ¡biles de cada mes).
 \textbf{Hito} & \textbf{Fecha / DescripciÃ³n} & \textbf{Origen} \\
 \midrule
 PEAK de pedidos &
-Septiembre: el volumen se duplica durante 3 semanas (cuÃ¡les); es el perÃ­odo de mayor
+Septiembre: el volumen se duplica durante 3 semanas; es el perÃ­odo de mayor
 exigencia del aÃ±o y condiciona las ventanas de congelamiento &
 Cap 13.2 \\
 \addlinespace
@@ -62,68 +62,127 @@ Ventanas de congelamiento &
 1 al 25 de septiembre, todo diciembre y primeros tres dÃ­as hÃ¡biles de cada mes &
 RestricciÃ³n R-10 \\
 \addlinespace
+Desarrollo Etapa 1 &
+Meses 1--12: levantamiento y lÃ­nea base de alcance, diseÃ±o de arquitectura, construcciÃ³n, integraciones, migraciÃ³n de datos, ambientes DEV, QA, PREPROD y PROD, pruebas integrales, pruebas de seguridad y certificaciÃ³n &
+BA Art. 17.1 \\
+\addlinespace
 Marcha blanca Etapa 1 &
-Mes 13 en adelante; solapamiento con el desarrollo de la Etapa 2 (meses 13--15) &
-BA Art. 17.2 \\
+Meses 13--15: operaciÃ³n supervisada con datos y usuarios reales, con plan de reversiÃ³n activo y mediciÃ³n diaria de indicadores &
+BA Art. 17.1 \\
+\addlinespace
+ProducciÃ³n Etapa 1 &
+Mes 16: la Etapa 1 pasa a producciÃ³n y se convierte en el sistema de registro oficial del alcance comprometido &
+BA Art. 17.1 \\
+\addlinespace
+Desarrollo Etapa 2 &
+Meses 13--18: segundo alcance funcional en paralelo con la marcha blanca y la estabilizaciÃ³n de la Etapa 1; cierre del desarrollo en el mes 18 inclusive &
+BA Art. 17.1 \\
+\addlinespace
+Marcha blanca Etapa 2 &
+Meses 19--20: operaciÃ³n supervisada de la Etapa 2 conviviendo con la Etapa 1 en producciÃ³n, con integridad de datos entre ambos alcances &
+BA Art. 17.1 \\
+\addlinespace
+ProducciÃ³n Etapa 2 &
+Mes 21: la Etapa 2 pasa a producciÃ³n y se acepta el PROYECTO de implementaciÃ³n &
+BA Art. 17.1 \\
+\addlinespace
+OperaciÃ³n &
+Meses 21--56: 36 meses continuos de soporte y operaciÃ³n de la plataforma bajo los niveles de servicio del Art. 78 &
+BA Art. 17.1 \\
 \bottomrule
 \end{tabularx}
-\vspace{4pt}
-{\small\color{lafroxGrato}\pendiente{} Completar los hitos restantes del cronograma
-(ventanas de congelamiento, marcha blanca, puesta en producciÃ³n, 56 meses
-contractuales).}
 \end{table}
 
-\section{Alcance de la Etapa 1 (meses 1--15)}
+\section{Alcance de la Etapa 1 (meses 1--12)}
+
+La Etapa 1 implementa el \textbf{primer alcance funcional y de infraestructura del PROYECTO}, de primera prioridad conforme a las Bases Técnicas del caso (BA Art.\ 15.1): comprende la \textbf{plataforma híbrida completa}, la \textbf{seguridad}, la \textbf{observabilidad}, las \textbf{integraciones críticas} y la funcionalidad que el caso declara urgente (Cap.\ 13.1). Su desarrollo ocurre entre los \textbf{meses 1 y 12}; le siguen la marcha blanca (meses 13--15) y la producción desde el \textbf{mes 16} (BA Art.\ 17.1).
+
+\subsection{Alcance de infraestructura y plataforma (la base que reutiliza todo el PROYECTO)}
+
+\begin{itemize}
+  \item \textbf{Plataforma híbrida completa}: nube pública multi-zona (región primaria y secundaria declaradas) más componentes \emph{on-premise} en los seis sitios, definida como código (IaC), versionada y reproducible en su totalidad.
+  \item \textbf{Seguridad integral}: identidad centralizada con SSO (RF-15.01--15.02), MFA para administradores y acceso externo (RF-15.03), RBAC y segregación de funciones (RF-15.04), cero confianza (\emph{Zero Trust}), matriz de controles trazable a ISO/IEC~27001 (RF-14.02, del catálogo de seguridad), plan de respuesta a incidentes y notificación de brechas (RF-14.04--14.05, del catálogo de seguridad).
+  \item \textbf{Observabilidad unificada} nube + \emph{on-premise} con NOC 24$\times$7$\times$365, alertamiento por síntomas de negocio y análisis de causa raíz (RF-16.01--16.04).
+  \item \textbf{Ambientes y continuidad}: habilitación de los cinco ambientes exigidos (DEV, QA, PREPROD, PROD y el ambiente de Recuperación ante Desastres, conforme a RT-04.01); recuperación ante desastres con RTO $\leq$ 4~h y RPO $\leq$ 15~min (RNF-20.06) y respaldo 3-2-1-1-0 (RNF-20.07).
+  \item \textbf{Plataforma transversal de gestión}: administración de usuarios, parametrización de reglas con aprobación de dos perfiles, registro de auditoría inalterable, flujos de trabajo y bandeja de tareas, gestión documental y notificaciones multicanal (RF-17.01--17.13).
+  \item \textbf{Firma electrónica avanzada} (Ley 19.799) para los actos que el caso exige (RF-18.01, RT-16.17--16.18).
+  \item \textbf{Integraciones críticas}: ERP y emisión de documentos tributarios (no se reemplazan), maestro de productos y servicios de DTE, mediante capa anticorrupción (RT-05.20).
+\end{itemize}
 
 \subsection{Alcance funcional del proyecto (Etapa 1) â€” Lo que harÃ¡}
 
-\begin{enumerate}
-  \item Registrar y monitorear de forma automÃ¡tica temperaturas de cÃ¡mara de frÃ­o y de
-        camiones con cÃ¡maras de frÃ­o.
-  \item Parametrizar reglas de excursiÃ³n tÃ©rmica, alertar y bloqueo configurable.
-  \item Registro obligatorio y estructurado del lote en punto de recepciÃ³n.
-  \item Consulta de quÃ© clientes recibieron un lote determinado.
-  \item La app del preventista mostrarÃ¡ stock disponible, crÃ©dito y deuda vencida, e
-        historial de compra.
-  \item Enviar el pedido una sola vez con reintento controlado en zonas sin seÃ±al.
-  \item Informar al preventista y al cliente de forma inmediata el bloqueo por crÃ©dito,
-        sin depender de revisiÃ³n manual.
-  \item Hoja de \emph{picking} digital operable con guantes dentro de la cÃ¡mara de frÃ­o.
-  \item Generar guÃ­a de despacho electrÃ³nico con acuse de recibo.
-  \item Registrar el cobro en efectivo en el momento en que se realice por el conductor
-        o preventista.
-  \item Registro de canastillos y \emph{pallets} entregados y recibidos por el cliente.
-\end{enumerate}
+La funcionalidad de \textbf{primera prioridad} definida en el caso (Cap.\ 13.1) que se entrega en la Etapa 1:
 
-\section{Alcance de la Etapa 2}
+\begin{itemize}
+  \item \textbf{Abastecimiento y Recepción} (Épica 1, RF-01.01--01.11): validación contra OC, registro obligatorio del lote (AI~10) y del vencimiento, no conformidades con cuarentena automática, lectura GS1 y etiquetado SSCC, fichas de producto, compatibilidad térmica en \emph{putaway} e integración de la recepción con el ERP.
+  \item \textbf{Gestión de Almacén e Inventario} (Épica 2, RF-02.01--02.10): topología multi-sitio configurable, consolidación de stock multi-nodo, \emph{slotting} por rotación, conteo cíclico ciego, cálculo de stock disponible para la venta, inventario en tránsito, gestión FEFO con alertas de vida útil y ficha de trazabilidad de lote. \textbf{Reemplaza el WMS de 2013} (Decisión 14, Cap.\ 16.1).
+  \item \textbf{Trazabilidad y Cadena de Frío} (Épica 9, RF-09.01--09.09): trazabilidad \emph{forward} y \emph{backward} por lote bajo el estándar GS1~EPCIS, registro continuo de temperaturas de cámaras y camiones con equipo de frío, excursiones térmicas con alerta y disposición configurable, registro de lotes con control sanitario y generación del cumplimiento de cadena de frío.
+  \item \textbf{Preventa Móvil} (Épica 3, RF-03.01--03.16): aplicación nativa \emph{offline-first} para los 62 preventistas (turno completo de 14~h sin señal), consulta de stock, crédito y deuda vencida en línea y sin conectividad, reserva de stock al confirmar, promociones, ventana de entrega comprometible, pedido con identificador único y descarte de duplicados al sincronizar.
+  \item \textbf{Preparación de Pedidos (\emph{Picking}) y Carga} (Épica 5, RF-05.01--05.07): misiones de \emph{picking}, validación por escaneo GS1 con confirmación $\leq$ 1~s operable con guantes a $-22$\,°C, motivo obligatorio de faltante, asignación FEFO, secuenciación térmica, envío de la preparación al ERP y carga dirigida inversa a la ruta.
+  \item \textbf{Transporte, Entrega y Prueba de Entrega} (Épica 6, RF-06.01--06.13): confirmación de bultos, firma digital o evidencia alternativa (QR, o fotografía con nombre del receptor sin conectividad), rechazo de productos, local cerrado con reagendamiento automático, registro de recaudación en ruta, autenticación del conductor externo por OTP, captura y saldo de envases retornables y sincronización del 100\,\% al reconectar.
+  \item \textbf{Control de efectivo y cobranza en ruta} (Épica 7): rendición digital individual por camión (RF-07.02), causales tipificadas de descuadre con bloqueo del cierre (RF-07.03), alerta y bloqueo de crédito en preventa (RF-07.05), cobro con POS móvil (RF-07.06) y abonos parciales en la entrega (RF-07.10).
+  \item \textbf{Logística inversa en ruta y en góndola} (Épica 8): devoluciones en la entrega (RF-08.01), destino de los productos devueltos en el andén (RF-08.02), cuenta corriente de envases retornables por cliente (RF-08.03), alertas por exceso de envases (RF-08.04) y registro de mermas por vencimiento en góndola (RF-08.05).
+  \item \textbf{Núcleo del motor de ruteo} (Épica 4): asignación y secuenciación automática que codifica el conocimiento del planificador (RF-04.01), ajuste manual y recálculo de ETA (RF-04.02, RF-04.04) y parametrización de ventanas horarias por cliente (RF-04.07), para resguardar la continuidad operacional ante la jubilación del planificador (Decisión 16).
+\end{itemize}
+
+\subsection{Alcance operacional de la Etapa 1}
+
+\begin{itemize}
+  \item \textbf{Usuarios}: 62 preventistas, $\sim$200 conductores, 310 personas del centro de distribución, planificadores, calidad, administración y gerencia; integración con el ERP y la emisión de DTE.
+  \item \textbf{Dispositivos}: terminales \emph{rugged} para bodega, preventa y reparto; escáneres GS1; impresoras térmicas Bluetooth; sensores de temperatura de cámaras y de camiones.
+  \item \textbf{Instalaciones}: los seis sitios en cuatro regiones (centro de distribución en Talca con sala técnica secundaria de respaldo, el centro de distribución de Concepción, las tres plataformas de \emph{cross-docking} y el borde operacional del CD).
+  \item \textbf{Cobertura geográfica}: centro-sur de Chile; 14.200 puntos de entrega, incluidas las rutas rurales sin cobertura que operan \emph{offline}.
+  \item \textbf{Período cubierto}: desarrollo entre los meses 1--12; marcha blanca meses 13--15; producción desde el mes 16.
+\end{itemize}
+
+\section{Alcance de la Etapa 2 (meses 13--18)}
+
+La Etapa 2 implementa el \textbf{segundo alcance funcional} definido en las Bases Técnicas del caso (BA Art.\ 15.1), \textbf{construido sobre la plataforma y los módulos de la Etapa 1 sin rehacer su arquitectura}. Su desarrollo ocurre entre los \textbf{meses 13 y 18 inclusive}, en paralelo con la marcha blanca y la estabilización de la Etapa 1 (BA Art.\ 17.2); le siguen la marcha blanca (meses 19--20) y la producción en el \textbf{mes 21}, sin degradar la disponibilidad, el desempeño ni la integridad de los datos de la Etapa 1.
 
 \subsection{Alcance funcional del proyecto (Etapa 2) â€” Lo que haremos}
 
-\begin{enumerate}
-  \item Motor de ruteo con restricciones de capacidad y ventanas horarias que propone la
-        ruta y permite corregirla.
-  \item Modelo de costeo por cliente y por entrega, construido desde el hecho:
-        kilÃ³metro recorrido, tiempo de descarga, tamaÃ±o del pedido, frecuencia de visita
-        y entregas.
-  \item RecepciÃ³n de pedidos por vÃ­a electrÃ³nica estructurada, con aviso de despacho
-        anticipado para el canal moderno.
-  \item Sugerencias de reposiciÃ³n y compras basadas en la venta real, estacionalidad,
-        promociones comprometidas y plazo de los proveedores.
-\end{enumerate}
+\begin{itemize}
+  \item \textbf{Canal Moderno (EDI) y Portales} (Épica 12, RF-12.01--12.30): recepción y validación del pedido electrónico, resolución de códigos contra el maestro mediante equivalencias por cadena (RF-12.03), bandeja de excepciones (RF-12.06), confirmación o rechazo a la cadena, aviso de despacho anticipado (RF-12.09), planificación de la llegada dentro de la ventana de 30 minutos (RF-12.10), evidencia y acuse de recibo digital del canal moderno (RF-12.12--12.13), portal de clientes con registro, autenticación y consulta de entregas, documentos tributarios y estado de cuenta, portal de transportistas y portal de proveedores. La integración es configurable para nuevas cadenas (RNF-12.02) y queda en producción antes de enero de 2029 (RNF-12.01).
+  \item \textbf{Analítica y Costo de Servir} (Épica 11, RF-11.01--11.08): OTIF unificado calculado a diario (RF-11.03), \emph{Fill Rate} y \emph{Perfect Order} medidos con el POD móvil (RF-11.04), costo de servir por entrega y por cliente construido desde los hechos operacionales (RF-11.02, RF-04.08), ocupación de flota (RF-11.05), tablero operacional en tiempo real (RF-11.06), liquidación y cierre comercial por camión (RF-11.07) y segmentación de clientes por rentabilidad neta (RF-11.08).
+  \item \textbf{Ruteo ampliado} (Épica 4): bloqueo por exceso de capacidad (RF-04.03), restricción por requisito de cadena de frío (RF-04.05), notificación de hora estimada de llegada al cliente (RF-04.06) y cálculo integral del costo de la entrega realizada (RF-04.08).
+  \item \textbf{Gestión de Flota y Telemetría} (Épica 14, RF-14.01--14.06 del catálogo funcional, sin colisión con las RF-14.* de seguridad): telemetría de camiones propios, ruta planificada vs.\ real, alerta de desviación, geocercas de llegada/salida y vinculación conductor--camión por viaje, respetando el acuerdo sindical y la privacidad del conductor (Decisión 13).
+  \item \textbf{Tesorería y gestión de cartera} (Épica 7): consola de gestión de la cartera de crédito (RF-07.04), estado de cuenta en el portal de clientes (RF-07.07), validación en tesorería de los pagos web (RF-07.08), interfaz asíncrona de cobranzas hacia el ERP (RF-07.09) y cobranza presencial de facturas (RF-07.11).
+  \item \textbf{Envases y mermas (analítica)} (Épica 8, RF-08.06--08.07): reporte de pérdida de envases retornables por cliente, tipo y zona, e integración de devoluciones y mermas al costo de servir.
+\end{itemize}
+
+\subsection{Justificación del reparto entre Etapas}
+
+El reparto entre la Etapa 1 y la Etapa 2 (caso Cap.\ 17.1, \$843) se justifica por las dependencias técnicas, el riesgo, los hitos externos y la capacidad de absorción del CLIENTE:
+
+\begin{itemize}
+  \item \textbf{Dependencias técnicas}: la trazabilidad lote-a-lote exige que la recepción, el almacén/inventario, el \emph{picking} y la entrega (POD) capturen y consulten el mismo lote; la Etapa 1 los agrupa para que el ciclo completo madure junto.
+  \item \textbf{Urgencia y riesgo con fecha conocida}: la trazabilidad es la habilitación comercial ante proveedores y autoridad sanitaria, y la jubilación del planificador obliga a codificar su conocimiento en el motor de ruteo durante la Etapa 1 (Decisión 16; Cap.\ 13.1--13.2).
+  \item \textbf{Preferencia declarada del comité} (Cap.\ 13.1): la preventa y la entrega con evidencia digital se incorporan en la Etapa 1 para no seguir perdiendo clientes; la optimización de rutas y el costo de servir se completan en la Etapa 2.
+  \item \textbf{Hitos externos} (Cap.\ 13.2): el canal moderno debe estar en producción antes de enero de 2029; con la producción de la Etapa 2 en el mes 21 queda holgado, por lo que se incorpora en la Etapa 2.
+  \item \textbf{Capacidad de absorción y cronograma} (BA Art.\ 17): el segundo alcance se construye sobre la misma plataforma, lo que permite el solapamiento obligatorio de los meses 13--15 sin degradar los niveles de servicio y con una única fuente de verdad para los datos compartidos (BA Art.\ 17.2).
+  \item \textbf{Criterio de asignación}: lo que depende del dato de terreno (preventa, POD, control de efectivo) entra con la Etapa 1; lo analítico y de integración externa (costo de servir, EDI, telemetría) entra con la Etapa 2, alimentándose de los datos que la Etapa 1 ya produce.
+\end{itemize}
 
 \subsection{Lo que no haremos (exclusiones del alcance)}
 
-Lo siguiente no formarÃ¡ parte del alcance funcional de la primera ni de la segunda
-etapa:
+Lo siguiente \textbf{no formará parte} del alcance funcional de la primera ni de la segunda etapa:
 
 \begin{itemize}
-  \item El reemplazo del sistema de gestiÃ³n empresarial ni de ninguno de sus mÃ³dulos, ni
-        la emisiÃ³n de documentos tributarios electrÃ³nicos (lo realiza el ERP).
-  \item La administraciÃ³n de remuneraciones ni de recursos humanos, que residen en el
-        sistema de gestiÃ³n.
+  \item El reemplazo del sistema de gestión empresarial (ERP) ni de ninguno de sus módulos,
+        ni la emisión de los documentos tributarios electrónicos (los emite el ERP, con el
+        que la solución se integra mediante capa anticorrupción).
+  \item La administración de remuneraciones ni de recursos humanos, que residen en el
+        sistema de gestión.
   \item Un sistema de punto de venta para el local del cliente, sin perjuicio del canal
-        de autoatenciÃ³n que la soluciÃ³n deba ofrecerle.
-  \item El comercio electrÃ³nico dirigido al consumidor final.
+        de autoatención que la solución ofrece.
+  \item El comercio electrónico dirigido al consumidor final.
+  \item La conectividad ni los sistemas de información de los puntos de entrega
+        (clientes); la solución opera \emph{offline} cuando la red no está disponible.
+  \item El desarrollo o la fabricación de hardware propio: los dispositivos se adquieren
+        estándar (tipo \emph{rugged}).
+  \item La obra civil y la infraestructura de climatización o de energía de los recintos
+        del CLIENTE, salvo la adecuación física de la sala técnica declarada en el padrón
+        de emplazamiento (Decisión 29).
 \end{itemize}
 
 \section{Enfoque para la obtenciÃ³n del apoyo de los involucrados clave}
