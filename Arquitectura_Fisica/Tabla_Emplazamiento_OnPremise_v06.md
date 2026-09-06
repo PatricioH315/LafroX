@@ -1,7 +1,7 @@
 # Arquitectura Física — Componente On-Premise
 ## Distribuidora Puelche S.A. — Caso 02 Logística
 
-> **Nota de alcance:** Este documento cubre exclusivamente el segmento **On-Premise** de la arquitectura híbrida exigida por el Artículo 16°. La contraparte AWS es el documento `Propuesta_Arquitectura_Cloud_Caso02_CLAUDE_v2.md`; la integración entre ambos segmentos se definió al consolidar ambas piezas (ver Sección 3 — Referencias Cruzadas y los reencuadres A-04/A-05/A-01/A-02/D-05). 
+> **Nota de alcance (v07):** Este documento es la **tabla de emplazamiento de la solución completa** exigida por el Artículo 16° y el capítulo 3.1 de las Transversales: asigna **cada componente** de la arquitectura física híbrida a **nube, on-premise o híbrido**, con justificación por criterio del Art. 16.2 (latencia, criticidad operacional, volumen de datos, restricciones regulatorias, disponibilidad de conectividad y costo total de propiedad). La **Sección 1.0** es la **tabla maestra** de **35 componentes** (23 del dominio on-premise/híbrido, Bloques A–F + 12 servicios del dominio nube pura, serie N-01…N-12). El detalle profundo del dominio AWS está en `Propuesta_Arquitectura_Cloud_Caso02_CLAUDE_v2.md` (v3.6), el detalle on-premise en los Bloques A–F y `Dimensionamiento_Infraestructura_OnPremise_v05.md`, y la integración entre ambos segmentos en `Arquitectura_Fisica_Hibrida_Consolidada_Caso02_v02.md` (fuente única consolidada). 
 >
 > **Versión 05 — Cambios respecto de la v04:**
 > 1. **IdP alineado con la Arquitectura Lógica v1 (D6, 2026-09-04):** A-05 pasa de *"caché offline de Amazon Cognito"* a **Caché local de autenticación del IdP Keycloak (Modelo B de identidad)**. La autoridad única de identidad vive en **Keycloak IdP maestro (ECS/Fargate, nube)**; el componente on-premise es una **caché local de solo lectura con TTL 8 h** para sostener la autonomía 24 h de los CD y los 14 h de terreno (RT-03.10). Cognito queda **descartado como dependencia** (solo alternativa). *Reconciliación resuelta en `Propuesta_Arquitectura_Cloud_Caso02_CLAUDE_v2.md` **v3.6** (Modelo B en §3.3/§3.5/§5.4/§7.3/§7.10/L-02/Apéndice C) y consolidada en `Arquitectura_Fisica_Hibrida_Consolidada_Caso02_v02.md`.*
@@ -20,12 +20,67 @@
 > 1. **RT-06.26 (custodia de medios de respaldo del sitio primario)** cumplido en **D-05**: se declara el **servicio de custodia de medios en un medio físico transportable a otro lugar** cuando el CLIENTE lo determine, complementaria (no sustituida) por la pierna inmutable S3 — detalle en Tabla v06 D-05 y Sala v02 §4.5.
 > 2. **RT-06.27 (condiciones ambientales del recinto de custodia)** cumplido en **Sala v02** (§4.5, recinto de 10 m²): luminosidad LED sin UV, humedad 40–60 %, ventilación forzada y 18–27 °C.
 > 3. **RT-08.15 (unidad de muestra por tipo de dispositivo para pruebas de aceptación del CLIENTE)** cumplido en **Sección 4.3** de este documento: 1 unidad de cada tipo de dispositivo, sin cargo, para pruebas de aceptación antes de la compra masiva.
+>
+> **Versión 07 — Tabla de emplazamiento de la solución completa (Art. 16° y Cap. 3.1 Transversales):**
+> 1. **Alcance ampliado a toda la arquitectura física híbrida:** nueva **Sección 1.0 — Tabla maestra de emplazamiento**, que asigna los **35 componentes** de la solución (11 on-premise puros + 12 híbridos con pieza en ambos dominios + 12 servicios de nube pura, serie N-01…N-12) con justificación por criterio del Art. 16.2. La carga principal vive en la nube (Art. 16.1); el dominio on-premise concentra la operación de cámara/terreno que exige latencia < 1 s y autonomía sin señal (RT-03.10).
+> 2. **Nuevo BLOQUE N — Dominio Nube Pura (AWS):** justificación Art. 16.2/16.3 por servicio administrado (elasticidad, Multi-AZ, administrados, FinOps, reversibilidad), con referencias a `Propuesta_Arquitectura_Cloud_Caso02_CLAUDE_v2.md` (v3.6).
+> 3. **Colisión de IDs resuelta:** los portales de canal moderno, anteriormente C-05/C-06/C-07 en el Consolidado (colisionaban con la balanza C-05 de los Bloques B–F), se renumeran a **N-01/N-02/N-03** (serie Nube/DMZ) en `Arquitectura_Fisica_Hibrida_Consolidada_Caso02_v02.md`.
+> 4. **Bibliografía ampliada (Sección 3):** Cloud v3.6 (referencia del dominio nube) y Consolidado v02 (referencia de integración), además de T-12 (matriz de cumplimiento del Subdocumento 3).
 
 ---
 
 ## SECCIÓN 1 — TABLA DE EMPLAZAMIENTO
 
 *Justificación componente por componente conforme al Artículo 16°, numeral 16.2, y al capítulo 3.1 de las Bases Técnicas Transversales.*
+
+### Sección 1.0 — Tabla maestra de emplazamiento de la solución completa (nube + on-premise)
+
+*Asignación componente por componente conforme a los Art. 16.1–16.2 y a la tabla de criterios del Cap. 3.1 de las Transversales. Siglas: LAT (latencia), CRIT (criticidad operacional), VOL (volumen de datos local), CONN (disponibilidad de conectividad), TCO (costo total de propiedad), HW (acoplamiento físico), REG (residencia/restricción regulatoria). Total: **35 componentes** — 11 on-premise puros, 12 híbridos con pieza en ambos dominios y 12 servicios de nube pura. El veredicto de la Sección 2 corresponde a la instancia operativa principal; el detalle por instancia es el de esta sección.*
+
+**a) Dominio on-premise / híbrido — Bloques A–F (23 componentes)**
+
+| ID | Componente | Emplazamiento | Instancia nube | Instancia on-premise | Criterio dominante (Art. 16.2) | Referencia |
+|---|---|---|---|---:|---|---|
+| A-01 | Motor WMS (recepción, picking FEFO, misiones RF, despacho, SSCC GS1) | **HÍBRIDO** | Módulo `wms_only` en Aurora: réplica de continuidad (DMS CDC, RPO ≤ 15 min) | VM-01 Talca (maestro) · VM-C01 Concepción (edge autónoma) · E-01 cross-docks (mini-WMS) | LAT + CONN: operación sin señal en cámara; autonomía 24 h (RT-03.10) | BLOQUE A (A-01); Dim §1.3; Cloud §3.1 |
+| A-02 | BD transaccional WMS (PostgreSQL + PostGIS) | **HÍBRIDO** | Aurora: OLTP de los módulos cloud + réplica DRP del WMS (la serie de tiempo consolidada vive en OLAP/S3, no en Aurora) | VM-02 Talca (8 vCPU/32 GB, 1,5 TB, RAID 10 — RT-03.14) · VM-C02 Concepción · BD local cross-dock | CRIT + LAT: escritura local sin pérdida; tolerancia a falla de disco | BLOQUE A (A-02); Dim §1.3 |
+| A-03 | Broker de colas offline (RabbitMQ) | **HÍBRIDO** | SQS FIFO (reconciliación/ERP) + EventBridge (eventos de negocio) | VM-03 Talca (≈ 3 M mensajes) · VM-C04 Concepción · broker E-01 | CONN: encolado local durante cortes + reconciliación determinista (RT-03.12) | BLOQUE A (A-03); Consolidado §3.4 |
+| A-04 | Capa anticorrupción ERP (frontera) | **HÍBRIDO** | Worker `celery-erp-sync` en ECS (eventos → ERP por VPN saliente) | VM-04 Talca | CRIT + LAT: ERP local sin modificar; latencia síncrona < 50 ms | BLOQUE A (A-04); Consolidado §3.4 |
+| A-05 | IdP Keycloak — autoridad única (nube) + caché local | **HÍBRIDO** | **Keycloak IdP maestro** en ECS Fargate (2 tareas Multi-AZ, backend Aurora) — Modelo B (D6) | VM-05 Talca + VM-C03 Concepción: caché local de solo lectura TTL 8 h | CRIT + CONN: login offline 24 h CD / 14 h terreno (RT-03.10) sin maestro local | BLOQUE A (A-05); Cloud §3.3/§5.4; Consolidado C6 |
+| B-01 | Sensores IoT de temperatura (Ebyte ME31) | **ON-PREMISE** | — | 28 puntos en cámara −22 °C (≈ 7 módulos Modbus RTU/TCP) | LAT + HW: lectura continua 30 s sin señal; bus industrial | BLOQUE B (B-01) |
+| B-02 | Gateway IoT + Greengrass (ADAM-6000) | **ON-PREMISE** | Gestión/OTA/flota desde AWS IoT Core | Gateway en Talca y Concepción | LAT + CONN: edge real-time + buffer 14 h; gestionado desde nube | BLOQUE B (B-02); Cloud §3.4 |
+| B-03 | Termógrafos de camión (Onset CX450) | **HÍBRIDO** | AWS IoT Core: `fn-iot-validator` + alerta SNS < 5 s | 18 dispositivos + backhaul BLE | LAT + CONN: registro local durante ruta sin señal + validación cloud | BLOQUE B (B-03); Cloud §3.2 |
+| C-01 | App de preventa offline (Zebra EC55) | **HÍBRIDO** | API Gateway + módulos Django cloud (pedidos/crédito/catálogo) | App SQLite offline-first (62 + reserva 20 %) | LAT: lógica local < 1,5 s; sincro deduplicada < 10 min | BLOQUE C (C-01); Sec. 4 ítem 1 |
+| C-02 | App de repartidor offline (TC58e + ZQ620 Plus + PAX A920 Pro) | **HÍBRIDO** | API Gateway + módulos POD/ERP events | App completa offline 14 h (POD foto/firma, cobros) | CONN + CRIT: 14 h sin señal (RNF-06.02) + sincro < 10 min | BLOQUE C (C-02); Sec. 4 ítems 2–5 |
+| C-03 | Terminales de bodega (MC9400 Cold Storage) | **ON-PREMISE** | — | 144 Talca · 30 Concepción | CONN: sin señal en cámara −22 °C | BLOQUE C (C-03); Sec. 4 ítem 6 |
+| C-04 | Impresoras de andén (ZT411) | **ON-PREMISE** | — | 4 Talca · 2 Concepción | LAT: periférico local (SSCC) | BLOQUE C (C-04); Sec. 4 ítem 7 |
+| C-05 | Balanza de recepción (Dibal BEV) | **ON-PREMISE** | — | 2 Talca · 1 Concepción | LAT + HW: pesaje local; control de merma | BLOQUE C (C-05); Sec. 4 ítem 8 |
+| D-01 | Firewall/UTM + Customer Gateway | **HÍBRIDO** | VGW (Site-to-Site VPN IPsec, 2 túneles) | HA A/P Talca + borde Concepción (NGFW) | CONN: VPN + failover WAN tri-camino < 30 s (RT-03.17) | BLOQUE D (D-01); Cloud §2.4 |
+| D-02 | Switching core/borde con VLANs | **ON-PREMISE** | — | Stack MLAG Talca (2× Catalyst 9300) · core borde Concepción (1×) · switch compacto cross-dock (×3) | LAT + CRIT: segmentación local (RT-03.23) | BLOQUE D (D-02); Dim §4.1; T-11 C14/C15 |
+| D-03 | Enlace WAN primario (fibra) | **ON-PREMISE** | — (terminación de la VPN en la nube) | Contrato de conectividad | CONN: camino principal de la VPN | BLOQUE D (D-03) |
+| D-04 | Enlace WAN respaldo (LTE) | **ON-PREMISE** | — | Contrato con 2 proveedores; dual en cross-docks | CONN: camino/proveedor distinto + failover automático | BLOQUE D (D-04) |
+| D-05 | Respaldo local WORM (recuperación rápida) | **HÍBRIDO** | S3 Object Lock / Backup Vault (pierna inmutable) | NAS Synology WORM local (RTO 4 h) | TCO + REG: RNF-20.07 3-2-1-1-0; custodia RT-06.26 | BLOQUE D (D-05); Sala §4.5 |
+| D-06 | Enlace WAN satelital (Starlink Enterprise) | **ON-PREMISE** | — | 5 kits (2 CDs respaldo + 3 cross-docks principal) | CONN: caminos/proveedores distintos (RT-03.17); cierra brecha Los Ángeles 03:00–05:00 | BLOQUE D (D-06); Sec. 4 ítem 12 |
+| E-01 | Mini-WMS cross-docking + scanner DS2208 | **ON-PREMISE** | — (visibilidad cloud diferida) | Mini-PC ARK-2250/NUC (contenedor) ×3 + 2× DS2208 por plataforma | CRIT + CONN: ventana de 3 h 100 % local (RT-03.10/RT-03.11) | BLOQUE E (E-01); Sec. 4 ítem 9 |
+| F-01 | Telemetría OTel (ADOT) + agente SSM | **HÍBRIDO** | CloudWatch / X-Ray / AMP / Grafana OSS (sa-east-1) | VM-06 · VM-C04 · contenedor cross-dock (buffer en disco 24 h) | CRIT: observabilidad unificada sin puntos ciegos (RT-03.16/RF-16.01) | BLOQUE F (F-01) |
+| F-02 | Gestión centralizada de parches (Ansible) | **ON-PREMISE** | — (SSM complementa inventario) | VM de gestión (CIS Benchmarks) | TCO + REG: endurecimiento centralizado (RT-03.15/RNF-13.06) | BLOQUE F (F-02) |
+| F-03 | Agente EDR / gestión de endpoints | **HÍBRIDO** | Consola centralizada / SIEM (Security Lake) | Agentes en todos los nodos (WMS, edge, cross-dock, estaciones) | REG + CRIT: cobertura 24×7 (RNF-14.05, RNF-23.04) | BLOQUE F (F-03) |
+
+**b) Dominio nube pura — servicios administrados (N-01…N-12, 12 componentes)**
+
+| ID | Componente | Emplazamiento | Instancia nube | Instancia on-premise | Criterio dominante (Art. 16.2) | Referencia |
+|---|---|---|---|---:|---|---|
+| N-01 | Portal de Clientes (catálogo RF-12.14, autoatención RF-12.15–12.18/12.25–12.29, pago RF-12.30, cobranza RF-07.07/07.08) | **NUBE** | S3+CloudFront+WAF → API Gateway → Fargate `portal` → Aurora (DMZ pública) | — | REG + CRIT: canal moderno con pago Transbank; sin modo offline (RT-03.13) | Consolidado §3.7 (N-01, C15) |
+| N-02 | Portal de Transportistas (RF-12.19–12.21, OTP RF-06.08) | **NUBE** | SPA Angular + módulos Django (DMZ pública) | — | REG: OTP de un solo uso para externos; sin datos locales | Consolidado §3.7 (N-02, C15) |
+| N-03 | Portal de Proveedores (RF-12.22–12.24: OC, recepciones, devoluciones) | **NUBE** | SPA Angular + módulos Django (DMZ pública) | — | REG + CRIT: B2B sin acoplamiento físico (HW = No) | Consolidado §3.7 (N-03, C15) |
+| N-04 | Plataforma de aplicación cloud (monolito Django + workers Celery) | **NUBE** | ECS Fargate, 2→6 tareas peak (2 vCPU/4 GB), Multi-AZ | — | CRIT + TCO: carga principal en nube (Art. 16.1); elasticidad septiembre | Cloud §3.1/§3.5 |
+| N-05 | Base de datos administrada cloud | **NUBE** | Aurora PostgreSQL Multi-AZ (OLTP cloud + réplica DRP + backend Keycloak; la serie de tiempo consolidada vive en OLAP/S3) | — | CRIT + LAT: failover < 30 s automático; PITR 35 días | Cloud §4.2 |
+| N-06 | Datastore IoT raw | **NUBE** | DynamoDB (TTL 30 días) | — | VOL + TCO: escrituras serverless < 10 ms p99; retención acotada | Cloud §4.2 |
+| N-07 | Caché cloud (stock/crédito/sesiones) | **NUBE** | ElastiCache for Redis | — | LAT: preventa < 2 s sobre caché | Cloud §4.2 |
+| N-08 | Ingesta y validación IoT cloud | **NUBE** | AWS IoT Core (MQTT/OTA/flota Greengrass) + Lambda (`fn-iot-validator`, `fn-document-signer`) | — | VOL + CRIT: eventos máquina a máquina administrados | Cloud §3.2/§3.4 |
+| N-09 | Mensajería cloud (colas + bus de eventos + alertas) | **NUBE** | SQS FIFO + EventBridge + SNS | — | VOL + CRIT: orden y durabilidad de la reconciliación | Cloud §3 |
+| N-10 | Plataforma analítica / OLAP | **NUBE** | S3 (lake 5 años) + Glue + Redshift Serverless + QuickSight | — | VOL + TCO: separación OLTP/OLAP; BI self-service | Cloud §4.3 |
+| N-11 | Respaldo inmutable y DRP en región secundaria | **NUBE** | S3 Object Lock / Backup Vault + Aurora Global + DynamoDB GT + S3 CRR (us-east-1) | — | REG + CRIT: RTO ≤ 4 h / RPO ≤ 15 min; Art. 20/RT-07.07 | Cloud §6.2/§6.3 |
+| N-12 | Seguridad y gobierno de plataforma | **NUBE** | KMS, Secrets Manager, IAM, WAF, Shield Advanced, GuardDuty, Security Hub, Inspector, Macie, Security Lake, CloudWatch, CloudTrail, Config, AWS Backup, Control Tower/Organizations, Cost Explorer/Budgets | — | REG + TCO: servicios administrados, Zero Trust, IaC, FinOps (Art. 16.3) | Cloud §5/§7.1 |
 
 ### Sección 1.1 — Funciones NO disponibles en modo desconectado (RT-03.13)
 
@@ -72,8 +127,8 @@ Justificación: El turno de picking nocturno (22:00–06:00) involucra 120 perso
 **Relación con el WMS en nube (Aurora):** Este WMS on-premise es el **maestro de la operación de bodega** (recepción, preparación, despacho) y la única instancia que garantiza la autonomía de 24 h (RT-03.10). La capa **Aurora PostgreSQL en la nube NO duplica ni sustituye al WMS**: actúa como **réplica de continuidad/DRP** de este WMS y como OLTP de los procesos que sí corren en nube (preventa, reparto, BI). El flujo bodega↔nube se sincroniza vía el broker A-03 y la VPN, garantizando que si Talca cae, la nube mantiene la última imagen del WMS para recuperación (ver DRP on-premise→nube y la prueba DR semestral en Dimensionamiento v05 §1.2.4).
 **Tipología de sitios declarada (Cap. 6.1, Bases Técnicas Transversales; RT-06.01 del caso):**
 - **CD Talca:** Sala Técnica Secundaria — cómputo, almacenamiento y telecomunicaciones sustantivos. La sala actual de 25 m² NO cumple el Cap. 6; se habilitará el recinto según **Sala_Servidores_OnPremise_v02** (RT-06.01 a RT-06.24 aplican proporcionalmente a la tipología).
-- **CD Concepción:** Gabinete de Borde Operacional — instancia WMS edge + switch + firewall + **enlaces fibra (D-03) + Starlink respaldo (D-06) + LTE (D-04) satelital/terrestre**. Garantiza 24 h de autonomía independiente de Talca.
-- **Plataformas Cross-Docking (Curicó, Chillán, Los Ángeles):** Gabinete de Borde Operacional (ver E-01) con **enlace Starlink principal (D-06) + LTE dual respaldo (2 proveedores)** (RT-03.17).
+- **CD Concepción:** Gabinete de borde — servidor de cómputo local (WMS en modo reducido + caché de identidad) + switch + firewall + **enlaces fibra (D-03) + Starlink respaldo (D-06) + LTE (D-04) satelital/terrestre**. Garantiza 24 h de autonomía independiente de Talca.
+- **Plataformas Cross-Docking (Curicó, Chillán, Los Ángeles):** Gabinete de borde (ver E-01) con **enlace Starlink principal (D-06) + LTE dual respaldo (2 proveedores)** (RT-03.17).
 
 ---
 
@@ -89,7 +144,7 @@ Justificación: El turno de picking nocturno (22:00–06:00) involucra 120 perso
 | TCO | CAPEX en discos SSD NVMe; PostgreSQL sin licencia propietaria; sin egress cost |
 | HW | No directamente (interfaz a través del motor WMS) |
 
-Justificación: RT-03.11 exige registro continuo sin pérdida en desconectado. **RT-03.14** (código real del Cap. 3 del transversal) exige tolerancia a falla de al menos un disco; la declaración del nivel RAID se hace en el Dimensionamiento v05 §1.2.2 (**RAID 10 + Hot-Spare**; se descartan RAID 5/6 sin paridad de escritura). Esta BD local es el "sistema de verdad" de bodega durante la desconexión; su **réplica de DRP vive en Aurora (nube)** (ver A-01), la cual se mantiene al día vía streaming del log WAL a través de la VPN (RPO ≤ 15 min).
+Justificación: RT-03.11 exige registro continuo sin pérdida en desconectado. **RT-03.14** (código real del Cap. 3 del transversal) exige tolerancia a falla de al menos un disco; la declaración del nivel RAID se hace en el Dimensionamiento v05 §1.2.2 (**RAID 10 + Hot-Spare**; se descartan RAID 5/6 sin paridad de escritura). Esta BD local es el "sistema de verdad" de bodega durante la desconexión; su **réplica de DRP vive en Aurora (nube)** (ver A-01), la cual se mantiene al día vía AWS DMS CDC sobre el WAL lógico (`wal_level=logical`) a través de la VPN (RPO ≤ 15 min).
 **Esquema físico de almacenamiento aprobado:**
 | Capa | RAID | Discos | Descripción |
 |---|---|---|---|
@@ -299,7 +354,7 @@ Justificación: El pesaje de recepción se integra al Módulo M1 (RF-01.01) para
 | TCO | CAPEX nuevo — la sala actual de Talca (25 m², acceso por llave) no cumple RT-06.20 (biometría facial) ni RT-06.16 (detección AnaLASER). Adecuación física en Sala_Servidores_OnPremise_v02 |
 | HW | No (dispositivo inline de red) |
 
-Justificación: RT-03.17 / RNF-13.07 exige enlace redundante con caminos físicos y proveedores distintos y conmutación automática ≤ 5 min (en este caso < 30 s). El firewall gestiona las zonas de red (pública, DMZ, aplicación, datos, gestión), controla el failover WAN y cifra el túnel VPN/IPsec hacia la nube. El firewall actúa como **Customer Gateway** de la conexión **AWS Site-to-Site VPN**. Se configuran túneles IPsec redundantes hacia el Virtual Private Gateway en la VPC de AWS: túnel primario sobre el enlace de fibra óptica (D-03) y túnel secundario sobre el **enlace satelital Starlink (D-06)**; un tercer camino LTE (D-04) queda disponible como alterno vía **SD-WAN multi-WAN** (3 tecnologías/proveedores distintos). La conmutación entre caminos es automática mediante BGP/BFD. Todo el tráfico de la VPN está cifrado con IKEv2/AES-256, sin puertos entrantes públicos adicionales (modelo Zero Trust).
+Justificación: RT-03.17 / RNF-13.07 exige enlace redundante con caminos físicos y proveedores distintos y conmutación automática < 30 s (el RT-03.17 exige ≤ 5 min; se cumple con margen). El firewall gestiona las zonas de red (pública, DMZ, aplicación, datos, gestión), controla el failover WAN y cifra el túnel VPN/IPsec hacia la nube. El firewall actúa como **Customer Gateway** de la conexión **AWS Site-to-Site VPN**. Se configuran túneles IPsec redundantes hacia el Virtual Private Gateway en la VPC de AWS: túnel primario sobre el enlace de fibra óptica (D-03) y túnel secundario sobre el **enlace satelital Starlink (D-06)**; un tercer camino LTE (D-04) queda disponible como alterno vía **SD-WAN multi-WAN** (3 tecnologías/proveedores distintos). La conmutación entre caminos es automática mediante BGP/BFD. Todo el tráfico de la VPN está cifrado con IKEv2/AES-256, sin puertos entrantes públicos adicionales (modelo Zero Trust).
 
 ---
 
@@ -363,7 +418,7 @@ Justificación: RT-03.17 / RNF-13.07 exige caminos físicos y proveedores **dist
 | TCO | Medio — NAS/appliance con almacenamiento WORM o soporte de Object Lock; retención 30 días |
 | HW | Sí — NAS dedicado con soporte WORM, dimensionado en Dimensionamiento v05 §1.2.4 |
 
-Justificación: RNF-20.07 exige la política de respaldo **3-2-1-1-0** bajo un **esquema único declarado en el consolidado de la arquitectura híbrida**: (3 copias) datos activos + snapshot local + backup S3; (2 medios) BD/postgres y S3; (1 fuera de sitio) réplica cross-region en us-east-1; **(1 inmutable)** **S3 Object Lock + Backup Vault Lock en la nube** (ni siquiera el root las elimina); (0 errores) verificación mensual de restauración **más prueba DR semestral declarada** (Valor: RT-06.10 del transversal y Art. 20 de las Bases Administrativas). **D-05 NO cuenta como la pierna "1 inmutable"** — esa es responsabilidad del Object Lock en la nube; D-05 es la **copia local de recuperación rápida** (con WORM local como refuerzo adicional), que permite restaurar el WMS en ≤ 4 h (RNF-20.06) sin depender del enlace WAN. RPO ≤ 15 min mediante streaming del log de PostgreSQL (WAL) hacia la nube antes de la copia local.
+Justificación: RNF-20.07 exige la política de respaldo **3-2-1-1-0** bajo un **esquema único declarado en el consolidado de la arquitectura híbrida**: (3 copias) datos activos + snapshot local + backup S3; (2 medios) BD/postgres y S3; (1 fuera de sitio) réplica cross-region en us-east-1; **(1 inmutable)** **S3 Object Lock + Backup Vault Lock en la nube** (ni siquiera el root las elimina); (0 errores) verificación mensual de restauración **más prueba DR semestral declarada** (Valor: RT-06.10 del transversal y Art. 20 de las Bases Administrativas). **D-05 NO cuenta como la pierna "1 inmutable"** — esa es responsabilidad del Object Lock en la nube; D-05 es la **copia local de recuperación rápida** (con WORM local como refuerzo adicional), que permite restaurar el WMS en ≤ 4 h (RNF-20.06) sin depender del enlace WAN. RPO ≤ 15 min mediante AWS DMS CDC del WAL lógico de PostgreSQL (wal_level=logical) hacia la nube antes de la copia local.
 
 **RT-06.26 — custodia de medios de respaldo del sitio primario (servicio de custodia y transporte físico):** la pierna S3/Aurora **no basta**; sobre D-05 se declara el **servicio de custodia de los medios de respaldo del sitio primario en un medio físico transportable a otro lugar cuando el CLIENTE lo determine**. La copia de D-05 se materializa además en un **medio físico transportable cifrado** (disco extraíble/nube local, conforme RT-07.10/RT-11.09) que rota semanalmente (RT-06.28) y se traslada desde el recinto de custodia de la Sala (Sala v02 §4.5) hacia una **bóveda de custodia externa** (otro lugar geográfico) mediante **servicio de custodia/transporte acreditado**, con cadena de custodia y bitácora de entrada/salida (RT-06.28). El **recinto de custodia de 10 m²** cumple las condiciones ambientales del **RT-06.27** (luminosidad LED sin UV, humedad 40–60 %, ventilación forzada, 18–27 °C). La pierna inmutable S3 (Object Lock) es complementaria y no reemplaza este medio físico transportable.
 
@@ -451,6 +506,27 @@ Justificación: RNF-14.05 exige EDR en todos los endpoints (servidores WMS, nodo
 
 ---
 
+### BLOQUE N — DOMINIO NUBE PURA (AWS)
+
+*Servicios administrados (serie N-01…N-12) sin instancia local: su emplazamiento es **NUBE** por aplicación del Art. 16.1 (carga principal en nube pública) y de los criterios del Art. 16.2/16.3 (elasticidad, despliegue Multi-AZ, gestión administrada, FinOps y reversibilidad); ninguno exige acoplamiento físico (HW = No) ni residencia de datos restringida. Operación, dimensionamiento y costos en `Propuesta_Arquitectura_Cloud_Caso02_CLAUDE_v2.md` (v3.6); integración y costuras con el dominio on-premise en `Arquitectura_Fisica_Hibrida_Consolidada_Caso02_v02.md`.*
+
+| ID | Servicio | Emplazamiento | Criterios Art. 16.2 aplicados | Exigencia Art. 16.3 cubierta | Referencia |
+|---|---|---|---|---:|---|
+| N-01 | Portal de Clientes (S3+CloudFront+WAF → API GW → Fargate `portal` → Aurora) | NUBE | REG, CRIT | Administrado; borde público aislado de los datos (RT-03.04) | Cloud v3.6 §2; Consolidado C15 |
+| N-02 | Portal de Transportistas (SPA Angular, OTP de un solo uso RF-06.08) | NUBE | REG, CRIT | Administrado; RBAC por rol (Keycloak) | Cloud v3.6 §2; Consolidado C15 |
+| N-03 | Portal de Proveedores (OC, recepciones, devoluciones) | NUBE | REG, CRIT | Administrado; Zero Trust | Cloud v3.6 §2; Consolidado C15 |
+| N-04 | ECS Fargate — monolito Django + workers Celery | NUBE | CRIT, TCO | Multi-AZ (RT-03.02); IaC (RT-03.03); 2→6 tareas en peak | Cloud v3.6 §3.1/§3.5 |
+| N-05 | Aurora PostgreSQL (OLTP cloud + réplica DRP + Keycloak; serie temporal consolidada en OLAP/S3) | NUBE | CRIT, LAT | Administrado; failover < 30 s; PITR 35 días | Cloud v3.6 §4.2 |
+| N-06 | DynamoDB (IoT raw, TTL 30 días) | NUBE | VOL, TCO | Serverless (RT-03.09) | Cloud v3.6 §4.2 |
+| N-07 | ElastiCache for Redis (stock/crédito/sesiones) | NUBE | LAT, TCO | Administrado | Cloud v3.6 §4.2 |
+| N-08 | AWS IoT Core + Lambda (ingesta MQTT/OTA, `fn-iot-validator`, `fn-document-signer`) | NUBE | VOL, CRIT | Administrado; gestión del edge (B-02/B-03) | Cloud v3.6 §3.2/§3.4 |
+| N-09 | SQS FIFO + EventBridge + SNS | NUBE | VOL, CRIT | Administrado; orden/duración de la reconciliación | Cloud v3.6 §3 |
+| N-10 | S3 (lake) + Glue + Redshift Serverless + QuickSight | NUBE | VOL, TCO | Serverless (RT-03.09); separación OLTP/OLAP | Cloud v3.6 §4.3 |
+| N-11 | S3 Object Lock / Backup Vault + DRP us-east-1 (Aurora Global, DynamoDB GT, S3 CRR) | NUBE | REG, CRIT | RPO ≤ 15 min / RTO ≤ 4 h; Art. 20/RT-07.07 | Cloud v3.6 §6.2/§6.3 |
+| N-12 | Seguridad y gobierno de plataforma (KMS, Secrets, IAM, WAF, Shield, GuardDuty, Security Hub, Inspector, Macie, Security Lake, CloudWatch, CloudTrail, Config, AWS Backup, Control Tower/Org, FinOps) | NUBE | REG, TCO | Administrados (RT-03.05); IaC/FinOps (RT-03.06) | Cloud v3.6 §5/§7.1 |
+
+---
+
 ## SECCIÓN 2 — RESUMEN EJECUTIVO
 
 | ID | Componente | Veredicto | Criterio dominante |
@@ -478,8 +554,22 @@ Justificación: RNF-14.05 exige EDR en todos los endpoints (servidores WMS, nodo
 | F-01 | OTel (ADOT) + SSM Agent | ON-PREMISE | RF-16.01, Zero Trust |
 | F-02 | Gestión de parches | ON-PREMISE | RNF-13.06, CIS |
 | F-03 | Agente EDR endpoints | ON-PREMISE | RNF-14.05, 24x7 |
+| N-01 | Portal de Clientes (DMZ pública) | NUBE | Canal moderno + pago; sin offline (RT-03.13) |
+| N-02 | Portal de Transportistas (DMZ pública) | NUBE | OTP a externos (RF-06.08) |
+| N-03 | Portal de Proveedores (DMZ pública) | NUBE | OC/recepciones B2B |
+| N-04 | ECS Fargate — monolito + workers | NUBE | Carga principal en nube; elasticidad |
+| N-05 | Aurora PostgreSQL — OLTP/DRP cloud | NUBE | Administrado; failover < 30 s |
+| N-06 | DynamoDB — IoT raw | NUBE | Serverless; TTL 30 días |
+| N-07 | ElastiCache Redis — caché cloud | NUBE | Latencia de preventa < 2 s |
+| N-08 | IoT Core + Lambda — ingesta/validación | NUBE | Eventos M2M administrados |
+| N-09 | SQS FIFO + EventBridge + SNS | NUBE | Orden/duración de la reconciliación |
+| N-10 | S3 + Glue + Redshift + QuickSight | NUBE | OLAP/BI; lake 5 años |
+| N-11 | S3 Object Lock + DRP us-east-1 | NUBE | RTO ≤ 4 h / RPO ≤ 15 min |
+| N-12 | Seguridad y gobierno de plataforma | NUBE | Administrados; IaC; FinOps |
 
-**20 ON-PREMISE + 3 HÍBRIDOS (B-03, C-01, C-02) = 23 componentes totales** *(corrige la métrica "17 + 4" de la v04; incluye las filas nuevas C-05 Balanza Dibal BEV y D-06 Enlace WAN satelital Starlink)*
+**Dominio on-premise/híbrido: 20 ON-PREMISE + 3 HÍBRIDOS (B-03, C-01, C-02) = 23 componentes** *(corrige la métrica "17 + 4" de la v04; incluye las filas nuevas C-05 Balanza Dibal BEV y D-06 Enlace WAN satelital Starlink)* — veredicto por la instancia operativa principal.
+**Dominio nube pura: 12 servicios (N-01…N-12).**
+**Total solución híbrida (Art. 16°) = 35 componentes** (11 on-premise puros + 12 híbridos con pieza en ambos dominios + 12 nube pura), clasificación estricta por instancia en la **Sección 1.0 — Tabla maestra**. La **carga principal vive en la nube (Art. 16.1)**: canal moderno, OLTP cloud, ingesta IoT, analítica y respaldo inmutable; el dominio on-premise concentra la operación de cámara/terreno que exige latencia < 1 s y autonomía sin señal (RT-03.10).
 
 ---
 
@@ -487,7 +577,7 @@ Justificación: RNF-14.05 exige EDR en todos los endpoints (servidores WMS, nodo
 
 | Exigencia | Donde se cumple en este documento |
 |---|---|
-| **Art. 16.2** — Justificación 6 criterios | Columnas LAT/CRIT/VOL/CONN/TCO/HW |
+| **Art. 16.1/16.2** — Solución híbrida (carga principal en nube) con justificación componente por componente (6 criterios) | Sección 1.0 (tabla maestra) + columnas LAT/CRIT/VOL/CONN/TCO/HW de los Bloques A–F + Cloud v3.6 §7.1 |
 | **RT-02.11** — SPOF declarados | Sección 4 (SPOF) + nota de quórum clúster 3 nodos (A-02) |
 | **RT-03.16 / RF-16.01** — Monitoreo | F-01 (OTel/ADOT + SSM Agent; Capa 8) |
 | **RT-03.17 / RNF-13.07** — Enlace red. | D-03 (fibra) + **D-06 (satelital Starlink)** + D-04 (LTE, 2 proveedores; dual en cross-dock) + D-01 (VPN IPsec BGP / SD-WAN multi-WAN) |
@@ -506,6 +596,14 @@ Justificación: RNF-14.05 exige EDR en todos los endpoints (servidores WMS, nodo
 | **RT-08.15** — Unidad por tipo de dispositivo para pruebas de aceptación del CLIENTE | Sección 4.3 (1 unidad por tipo, sin cargo, antes de la compra masiva) |
 | **RT-06.26** — Custodia de medios de respaldo del sitio primario | D-05 (servicio de custodia/transporte de medio físico transportable) + Sala v02 §4.5 (recinto de custodia) |
 | **RT-06.27** — Condiciones ambientales del recinto de custodia | Sala v02 §4.5 (recinto de 10 m²: luminosidad, humedad 40–60 %, ventilación, 18–27 °C) |
+| **Art. 16.3** — Nube: región, Multi-AZ, administrados, IaC, FinOps, reversibilidad | BLOQUE N (N-04…N-12); Cloud v3.6 §1.2/§4.5/§4.6/§5/§6.1 |
+| **Art. 16.4** — On-premise: autonomía ≥ 24 h, sincronización, RAID, CIS, enlace redundante | Bloques A–F (A-01/A-02/A-03, D-01/D-03/D-04/D-06) + Sala v02 |
+| **RT-03.01** — Proveedor, región primaria y secundaria | BLOQUE N; Cloud v3.6 §1.2 (AWS, sa-east-1 / us-east-1 DRP) |
+| **RT-03.02** — Multi-AZ para componentes con HA | N-04/N-05/N-06/N-08/N-09; Cloud v3.6 §6.1 |
+| **RT-03.04** — Segmentación por capas | N-01…N-03 (DMZ) + D-02 (VLAN, RT-03.23); Cloud v3.6 §2 |
+| **RT-03.05** — Servicios administrados preferentes | N-04…N-12 (todas las N) |
+| **RT-03.07** — Reversibilidad / desbloqueo por proveedor | N-12; Cloud v3.6 §4.6 |
+| **RT-03.09** — Cómputo serverless para carga variable | N-06/N-08/N-10; Cloud v3.6 §3.2/§4.3 |
 
 ---
 
@@ -517,8 +615,8 @@ Justificación: RNF-14.05 exige EDR en todos los endpoints (servidores WMS, nodo
 |---|---|---|---|---|
 | 1 | Preventa | Terminal móvil de preventa | 62 + reserva 20 % | **Zebra EC55** | ≈ USD 1.200 |
 | 2 | Reparto — conductores propios | Terminal rugosa de reparto | 42 + reserva | **Zebra TC58e** (5G, SE55, batería ext. 7.000 mAh, BT 5.3 + BLE, GPS L1/L5, IP65/68, Android 13→17) | ≈ USD 1.400 |
-| 3 | Cabina de despacho | Impresora térmica portátil de cabina | Por camión con app reparto | **Zebra ZQ620 Plus** (3", ZPL/EPL/CPCL, Link-OS, IP54, batería PowerPrecision+ 3.250 mAh) | ≈ USD 700 |
-| 4 | Cabina de despacho | POS móvil Bluetooth | Por camión (cobranza tarjeta) | **PAX A920 Pro** (Android 14, PCI PTS 7.x, EMV L1/L2, impresora integrada 80 mm/s, PAXSTORE) | ≈ USD 600 |
+| 3 | Cabina de despacho | Impresora térmica portátil de cabina | ≈ 200 (1 por conductor) | **Zebra ZQ620 Plus** (3", ZPL/EPL/CPCL, Link-OS, IP54, batería PowerPrecision+ 3.250 mAh) | ≈ USD 700 |
+| 4 | Cabina de despacho | POS móvil Bluetooth | ≈ 200 (1 por conductor) | **PAX A920 Pro** (Android 14, PCI PTS 7.x, EMV L1/L2, impresora integrada 80 mm/s, PAXSTORE) | ≈ USD 600 |
 | 5 | Reparto — conductores externos (~160) | Terminal de reparto (parque único con ítem 2) | ~160 + reserva | **Zebra TC58e** (idéntico al ítem 2) | ≈ USD 1.400 |
 | 6 | Bodega −22 °C | Terminal RF (pool) | Talca 144 (120 + 20 %) · Concepción 30 | **Zebra MC9400 Cold Storage (Freezer)** (−30 °C, SE58 ~100 pies, batería freezer 5.000 mAh, pistol grip, Android 13→18, Wi-Fi 6E) | ≈ USD 4.500 |
 | 7 | Andén | Impresora térmica de andén | 4 Talca · 2 Concepción | **Zebra ZT411** (ZPL II + XML-Enabled; 203 dpi; 14 ips; Ethernet; Print DNA) | ≈ USD 2.300 |
@@ -584,7 +682,7 @@ Justificación: RNF-14.05 exige EDR en todos los endpoints (servidores WMS, nodo
 
 ---
 
-*Versión 05 — Alineación con la Arquitectura Lógica v1 (D6/D7/D9): IdP Keycloak Modelo B (autoridad única en nube + caché local TTL 8 h); conteo corregido 19 + 3 = 22 (incluye fila C-05 Balanza Dibal BEV); dispositivos de terreno definidos (EC55, TC58e, ZQ620 Plus, PAX A920 Pro, MC9400 Cold Storage, ZT411, Dibal BEV, DS2208, Ebyte ME31, Onset CX450); citas RT-03.14/RT-03.23 verificadas en el transversal; referencias a la Sala de Servidores (Sala_Servidores_OnPremise_v02) y al Dimensionamiento v05 (clúster de 3 nodos, DR semestral, LTE dual en cross-docking). Reconciliación de IdP **cerrada**: el documento cloud pasó a Modelo B en su **v3.6** (§3.3/§3.5/§5.4/§7.3/§7.10/L-02/Apéndice C) y el consolidado quedó en `Arquitectura_Fisica_Hibrida_Consolidada_Caso02_v02.md`.*
+*Versión 05 — Alineación con la Arquitectura Lógica v1 (D6/D7/D9): IdP Keycloak Modelo B (autoridad única en nube + caché local TTL 8 h); conteo corregido 20 + 3 = 23 (incluye fila C-05 Balanza Dibal BEV); dispositivos de terreno definidos (EC55, TC58e, ZQ620 Plus, PAX A920 Pro, MC9400 Cold Storage, ZT411, Dibal BEV, DS2208, Ebyte ME31, Onset CX450); citas RT-03.14/RT-03.23 verificadas en el transversal; referencias a la Sala de Servidores (Sala_Servidores_OnPremise_v02) y al Dimensionamiento v05 (clúster de 3 nodos, DR semestral, LTE dual en cross-docking). Reconciliación de IdP **cerrada**: el documento cloud pasó a Modelo B en su **v3.6** (§3.3/§3.5/§5.4/§7.3/§7.10/L-02/Apéndice C) y el consolidado quedó en `Arquitectura_Fisica_Hibrida_Consolidada_Caso02_v02.md`.*
 
 *Versión 06 — Corrección de brechas de la Matriz de Cumplimiento BTT (on-premise): **RT-03.13** declarado (Sección 1.1 — matriz de funciones no disponibles en modo desconectado con procedimiento manual); **RT-08.10** cumplido (Sección 4 — costo unitario estimado USD referencial por dispositivo, con accesorios y consumibles); **RT-08.13** y **§ 8.4** cumplidos (Secciones 4.1 y 4.2 — ciclo de vida, repuestos y plan de reposición de 56 meses; garantías 24×7/4 h, 24 h horario hábil, stock ≥ 10 % en Chile, reemplazo crítico ≤ 4 h y 10 % en sitio precargado). Referencias cruzadas actualizadas a Sala v02 y Dimensionamiento v05.*
 

@@ -106,8 +106,8 @@ El módulo de BI/Analítica se materializa en los siguientes componentes de la a
 | Componente | Ubicación | Tecnología | Responsabilidad |
 |------------|-----------|------------|-----------------|
 | **Motor OLAP / Warehouse** | Cloud (AWS) | Amazon Redshift Serverless | Almacenamiento analítico desacoplado de OLTP. Consolida datos de Aurora PostgreSQL vía DMS CDC. Alimenta RF-11.01–RF-11.08 |
-| **Motor transaccional fuente** | Cloud (AWS) | Amazon Aurora PostgreSQL (PostGIS + TimescaleDB) | Base OLTP de donde se extraen los datos hacia Redshift. Contiene datos de preventa, reparto, cobranza, bodega |
-| **Motor transaccional fuente (on-prem)** | On-Premise (VM-01, Talca) | PostgreSQL + PostGIS + TimescaleDB (local) | WMS de bodega. Sincroniza con Aurora vía DMS CDC (RPO ≤ 15 min) |
+| **Motor transaccional fuente** | Cloud (AWS) | Amazon Aurora PostgreSQL (PostGIS) | Base OLTP de donde se extraen los datos hacia Redshift. Contiene datos de preventa, reparto, cobranza, bodega |
+| **Motor transaccional fuente (on-prem)** | On-Premise (Talca) | PostgreSQL + PostGIS (local) | WMS de bodega. Sincroniza con Aurora vía DMS CDC (RPO ≤ 15 min) |
 | **Capa de procesamiento analítico** | Cloud (AWS) | Celery workers (Django) + Redshift SQL | Cálculo de OTIF (RF-11.03), Fill Rate (RF-11.04), Costo de Servir (RF-11.02), Ocupación de Flota (RF-11.05), Segmentación (RF-11.08) |
 | **Distribución de reportes** | Cloud (AWS) | Celery Beat + SES (correo) + S3 (almacenamiento PDF/XLSX) | RF-11.01: reportes automáticos semanales/mensuales |
 | **Tablero operacional** | Cloud (AWS) | Grafana (autoservicio) o Angular SPA | RF-11.06: tablero de control en tiempo real. RF-16.02: acceso del cliente. RF-16.03: alertas de negocio |
@@ -227,7 +227,7 @@ Las alertas por síntomas de negocio se distinguen de las alertas de infraestruc
 | Fill Rate mensual < meta | < 97% (configurable) | Redshift (mv_fill_rate) | Alerta gerente comercial |
 | Costo de servir > umbral | > $X por entrega (configurable) | Redshift (mv_costo_servir) | Alerta gerente finanzas |
 | Ocupación de flota < umbral | < 65% (configurable) | Redshift (mv_ocupacion_flota) | Alerta planificador de rutas |
-| Excursión térmica en tránsito | > umbral por tipo producto | IoT/DynamoDB + TimescaleDB | Alerta conductor + calidad |
+| Excursión térmica en tránsito | > umbral por tipo producto | IoT/DynamoDB + SNS (Lambda validador) | Alerta conductor + calidad |
 | Crédito de cliente excedido | Deuda + pedido > cupo | Aurora PostgreSQL (OLTP) | Bloqueo en app de preventa |
 | Envases retornables excedidos | Saldo > umbral configurable | Aurora PostgreSQL (OLTP) | Alerta preventista |
 
@@ -254,7 +254,7 @@ Las Bases exigen tableros con las siguientes capacidades:
 | Avance de rutas | Pedidos completados / total, % avance por ruta | Aurora PostgreSQL (OLTP) | Tiempo real (< 1 min) |
 | Entregas cumplidas | % OTIF del día, entregas a tiempo vs atrasadas | Redshift (mv_otif_diario) | ≤ 5 min |
 | Devoluciones en tránsito | Cantidad de devoluciones, productos devueltos | Aurora PostgreSQL (OLTP) | Tiempo real |
-| Alertas cadena de frío | Excursiones térmicas activas, historial 24h | DynamoDB (IoT) + TimescaleDB | Tiempo real |
+| Alertas cadena de frío | Excursiones térmicas activas, historial 24h | DynamoDB (IoT) + SNS (Lambda validador) | Tiempo real |
 | Recaudación del día | Monto recaudado en efectivo, cheques, transferencias | Aurora PostgreSQL (cobranza) | Tiempo real |
 
 ### 7.2 Tablero gerencial (RF-11.01)

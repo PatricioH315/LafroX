@@ -66,7 +66,7 @@
 | ID | Descripción | Cumple | Componente | Sección | Hueco / Observación |
 |---|---|---|---|---|---|
 | RT-03.01 | Proveedor, región primaria y secundaria declaradas | ✅ | AWS sa-east-1 + us-east-1; on-premise Talca | Cloud §3.1 | — |
-| RT-03.02 | HA en ≥ 2 AZ | ✅ | Aurxo/Aurora Multi-AZ, ECS Multi-AZ | Cloud §3.5 | — |
+| RT-03.02 | HA en ≥ 2 AZ | ✅ | Aurora Multi-AZ, ECS Multi-AZ | Cloud §3.5 | — |
 | RT-03.03 | Infraestructura como código versionada | ✅ | Terraform/CDK en repo del CLIENTE | Cloud §3.3 | — |
 | RT-03.04 | Red segmentada por capas, subredes privadas | ✅ | VPC, subredes privadas, DMZ | Cloud §3.4 | — |
 | RT-03.05 | Servicios administrados priorizados | ✅ | Aurora, S3, ECS Fargate | Cloud §3.2 | — |
@@ -84,7 +84,7 @@
 | RT-03.17 | Enlace redundante con caminos y proveedores distintos | ✅ | **3 tecnologías por CD: fibra D-03 → satelital Starlink D-06 → LTE D-04 (SD-WAN multi-WAN, < 30 s)**; cross-docks: Starlink principal + LTE dual | Tabla D-03/D-04/**D-06**/E-01; Dim §3.6/§3.7; cotización Starlink | — |
 | RT-03.18 | Gestión remota y centralizada de dispositivos de borde | ✅ | MDM/MAM, SSM, Greengrass | Tabla C; Dim §1.4 | — |
 | RT-03.19 | Procesamiento en el borde valorado | ✅ | Greengrass B-02 + mini-WMS E-01 | Tabla B-02/E-01 | — |
-| RT-03.20 | Ancho de banda dimensionado por sitio | ✅ | Tabla por sitio normal/peak (septiembre) + **camino satelital 1 TB (CDs) / 500 GB (cross-docks)** | Dim §3.7; T-11 C10/C11/C24 | — |
+| RT-03.20 | Ancho de banda dimensionado por sitio | ✅ | Tabla por sitio normal/peak (septiembre) + **camino satelital 1 TB (CDs) / 500 GB (cross-docks)** | Dim §3.7; T-11 C10/C11/C27 | — |
 | RT-03.21 | Enlace privado dedicado o VPN para nube | ✅ | AWS Site-to-Site VPN IPsec IKEv2 BGP | Tabla D-01; Dim §3.6 | — |
 | RT-03.22 | Acceso remoto con VPN/ZTNA | ✅ | AWS Verified Access + túnel de malla | Cloud §5.1 + §7.5 (v3.6) | — |
 | RT-03.23 | Red inalámbrica segmentada por tipo de dispositivo | ✅ | VLANs (IoT, Bodega, Gestión, Servidores) | Tabla D-02 (mapeo verificado) | — |
@@ -119,7 +119,7 @@
 |---|---|---|---|---|---|
 | RT-06.01 | Espacio de uso exclusivo aislado (tipología) | ✅ | Sala Técnica Secundaria Talca habilitada a nuevo | Sala §8 (RT-06.01); Tabla A-01 (tipología) | Nota mapeo: caso cita RT-06.01 como tipología; transversal lo usa para exclusividad/aislamiento |
 | RT-06.02 | Muros no estructurales con blindaje perimetral | ✅ | Recinto de sala (cerramiento perimetral, puertas controladas) | Sala §2/§3 (catch-all §8) | Declarar material/planeamiento en detalle de obra |
-| RT-06.03 | Plano de distribución interna con zonas | ✅ | Plano de zonificación (13 recintos, 3 líneas) | Sala §3.2 (RT-06.03) | — |
+| RT-06.03 | Plano de distribución interna con zonas | ✅ | Plano de zonificación (14 recintos, 3 líneas) | Sala §3.2 (RT-06.03) | — |
 | RT-06.04 | Piso técnico, canalización y cableado certificado | ✅ | Piso técnico 40 cm, Cat 6A + OM4 certificado | Sala §6.4 | — |
 | RT-06.05 | Racks de servidores independientes de comunicaciones | ✅ | R01 vs R02, ocupación/margen por rack | Sala §6.1/§6.2 (RT-06.05) | — |
 | RT-06.06 | Obra civil de separación: cargo del CLIENTE, especificación del PROPONENTE | ✅ | Especificación en Sala v02; cargo declarado | Sala §2; Tabla A-01 (TCO) | Declarar plazo de obra civil en Carta Gantt |
@@ -150,7 +150,7 @@
 | RT-06.31 | Sanitarias, zonas de emergencia y áreas exteriores existentes | ✅ | Baños existentes del edificio en uso | Sala §8 (RT-06.31) | — |
 | RT-06.32 | Rutas físicas distintas con ingreso en extremos distintos | ✅ | MMR con 2 ductos (fibra + LTE) + **antena Starlink en techumbre con canalización protegida (RT-06.32)** | Sala §6.4/§2; Dim §4.1 (D-06) | — |
 | RT-06.33 | Conectividad, canalizaciones y ductos provistos | ✅ | Cableado certificado + ductos de operadores | Sala §6.4 | — |
-| RT-06.34 | Especificaciones nuevas o mejores valoradas | ✅ | TIER II, PUE 1,7, AnaLASER, CCTV 30 días, **camino satelital Starlink (D-06) en los 5 sitios** | Sala (mejoras declaradas); T-11 C24 | Deseable (valorado) |
+| RT-06.34 | Especificaciones nuevas o mejores valoradas | ✅ | TIER II, PUE 1,7, AnaLASER, CCTV 30 días, **camino satelital Starlink (D-06) en los 5 sitios** | Sala (mejoras declaradas); T-11 C27 | Deseable (valorado) |
 
 ---
 
@@ -160,7 +160,7 @@
 |---|---|---|---|---|---|
 | RT-07.01 | Modalidad activo/pasivo(activo) declarada y justificada | ✅ | Talca activo · Aurora pasiva promueble · Concepción activa autónoma | Dim §5.1 | — |
 | RT-07.02 | Distancia del sitio secundario + amenazas comunes | ✅ | ~2.300 km (nube) y ~250-400 km (Concepción); análisis de amenazas | Dim §5.2; Cloud §7 | — |
-| RT-07.03 | Replicación continua con medición y alerta de retraso | ✅ | WAL streaming → Aurora; alarmas lag 5/15 min | Dim §5.3 | — |
+| RT-07.03 | Replicación continua con medición y alerta de retraso | ✅ | DMS CDC (WAL lógico) → Aurora; alarmas lag 5/15 min | Dim §5.3 | — |
 | RT-07.04 | RTO ≤ 4 h y RPO ≤ 15 min | ✅ | DRP documentado | Dim §5.6; Cloud §7 | — |
 | RT-07.05 | Procedimiento de conmutación documentado y automatizado | ✅ | Runbook de conmutación (6 pasos, semiautomático) | Dim §5.4 | — |
 | RT-07.06 | Procedimiento de retorno con reconciliación | ✅ | Failback con ventanilla de escritura única + reconciliación | Dim §5.5; Cloud §7 | — |
@@ -184,14 +184,14 @@
 | RT-08.03 | Conmutadores, firewalls y balanceadores en HA | ✅ | Stack/MLAG + clúster A/P sin SPOF; **SD-WAN multi-WAN (D-01) sobre 3 enlaces (D-03/D-06/D-04)** | Dim §3.8 | — |
 | RT-08.04 | Fuentes redundantes y circuitos eléctricos distintos | ✅ | Doble fuente + PDU A/B por rack | Sala §6.2; Dim §3.8 | — |
 | RT-08.05 | Margen de crecimiento declarado y procedimiento de ampliación | ✅ | 47 % vCPU / 73 % RAM / 68 % Ceph + procedimiento | Dim §6.2 | — |
-| RT-08.06 | Equipamiento nuevo, sin uso previo, garantía de fábrica | ✅ | Declaración + garantías (server 5 años, OneCare) incluye **5 kits Starlink nuevos** | Dim §6.3; Tabla §4.2; T-11 C24 | — |
+| RT-08.06 | Equipamiento nuevo, sin uso previo, garantía de fábrica | ✅ | Declaración + garantías (server 5 años, OneCare) incluye **5 kits Starlink nuevos** | Dim §6.3; Tabla §4.2; T-11 C27 | — |
 | RT-08.07 | Estaciones de trabajo especificadas | ✅ | 5 Talca + 3 Concepción (PC + 2×24") | Dim §4.2 | — |
 | RT-08.08 | Ergonomía NCh 2527 y equipos certificados | ✅ | Ergonomía + Energy Star + 80 Plus Gold | Dim §6.4 | Declarar informe NCh 2527 junto al mobiliario |
 | RT-08.09 | Estaciones gestionadas con cifrado y control de extraíbles | ✅ | EDR + Ansible, whitelist USB, MAM | Dim §6.5 (RT-08.09) | — |
 | RT-08.10 | Dispositivos de terreno con marca, modelo, cantidad, costo | ✅ | Parque completo + USD referencial + accesorios/consumibles | Tabla §4 (RT-08.10) | — |
 | RT-08.11 | Especificación según condiciones reales de uso | ✅ | Freezer, IP, caídas, batería, 5G | Tabla §4 (MC9400/TC58e/EC55) | — |
 | RT-08.12 | Grado de protección IP y resistencia a caídas declarados | ✅ | IP65/68, IP67, 2,4 m, −30 °C | Tabla §4 | — |
-| RT-08.13 | Ciclo de vida, repuestos y reposición en 56 meses | ✅ | Plan por dispositivo + stock seco 10 % + **reposición Starlink 15 %/56 meses** | Tabla §4.1 (RT-08.13); T-11 C24 | — |
+| RT-08.13 | Ciclo de vida, repuestos y reposición en 56 meses | ✅ | Plan por dispositivo + stock seco 10 % + **reposición Starlink 15 %/56 meses** | Tabla §4.1 (RT-08.13); T-11 C27 | — |
 | RT-08.14 | Integración a la gestión centralizada de flota | ✅ | MDM/MAM + RT-03.18 en terminales | Tabla §4 (C-01/C-02/C-03) | — |
 | RT-08.15 | Unidad de cada tipo para pruebas de aceptación | ✅ | Sección 4.3: 1 unidad por tipo, sin cargo, antes de la compra masiva (Etapa 1 mes 16 / Etapa 2 mes 21), acta Art. 18 | Tabla v06 §4.3 | **CERRADO (v06c)** — Deseable cumplido |
 | RT-08.16 | Plan de ciclo de vida del equipamiento | ✅ | Plan por etapas (recepción → disposición) | Dim §6.7 | — |

@@ -26,7 +26,7 @@ Es la **fuente única consolidada** de la arquitectura física híbrida. Los doc
 | **Autoridad única de identidad (Modelo B)** | Keycloak IdP maestro en nube (authority única, escrituras); caché local A-05 de solo lectura (TTL 8 h) para la operación offline (24 h CD · 14 h terreno). Sin maestro on-premise ni promoción local. | D6 Arquitectura Lógica v1, RT-03.10, RNF-13.01 |
 | **Autonomía local 24 h** | Cada CD (Talca, Concepción, cross-dock) opera su broker de colas RabbitMQ (A-03) y sus bases PostgreSQL locales cuando el enlace WAN no está disponible. | RNF-13.01, RT-03.10 |
 | **Zero Trust end-to-end** | Sin conexiones entrantes a la red on-premise salvo dos excepciones controladas por la VPN (DMS→PostgreSQL y celery-erp-sync→ACL; ver D-AL-05). Todo lo demás es tráfico iniciado desde adentro. | Cloud v3.6 §5, On-prem v05 §3 |
-| **Durabilidad y retención** | Telemetría 5 años (DynamoDB 30 días → TimescaleDB + S3 raw 5 años); documentos 6 años; auditoría 7 años; logs de seguridad 12 meses en línea + 24 en archivo. | RT-05.10, RT-16.10, Art. 21.3 |
+| **Durabilidad y retención** | Telemetría 5 años (DynamoDB 30 días → S3 raw 5 años + consolidado OLAP S3 Parquet/Redshift 5 años); documentos 6 años; auditoría 7 años; logs de seguridad 12 meses en línea + 24 en archivo. | RT-05.10, RT-16.10, Art. 21.3 |
 | **Disponibilidad y DRP** | SLA ≥ 99,9 % capa cloud central; DRP global RTO ≤ 4 h / RPO ≤ 15 min; DRP local (Talca → Concepción) para la capa logística. | BTT Cap. 10, Art. 20 |
 
 ---
@@ -38,7 +38,7 @@ Es la **fuente única consolidada** de la arquitectura física híbrida. Los doc
 | ID | Componente | Emplazamiento | Instancia nube | Instancia on-premise |
 |---|---|---|---|---|
 | A-01 | Motor WMS (recepción, picking FEFO, misiones RF, despacho, SSCC GS1) | **On-premise (maestro)** + nube (DRP) | Módulo `wms_only` en Aurora como réplica de continuidad (DMS CDC) | **VM-01** Talca (maestro, 8 vCPU/16 GB), **VM-C01** Concepción (edge autónoma), **E-01** cross-docks (mini-WMS, contenedor Docker ~1 vCPU/2 GB) |
-| A-02 | Base de datos transaccional WMS (PostgreSQL + PostGIS + TimescaleDB) | **On-premise** + nube (réplica/OLTP cloud) | Aurora PostgreSQL: OLTP de módulos cloud + réplica DRP del WMS | **VM-02** Talca (8 vCPU/32 GB, 1,5 TB), **VM-C02** Concepción, BD local cross-dock |
+| A-02 | Base de datos transaccional WMS (PostgreSQL + PostGIS) | **On-premise** + nube (réplica/OLTP cloud) | Aurora PostgreSQL: OLTP de módulos cloud + réplica DRP del WMS | **VM-02** Talca (8 vCPU/32 GB, 1,5 TB), **VM-C02** Concepción, BD local cross-dock |
 | A-03 | Broker de colas offline (RabbitMQ) | **On-premise** (+ nube coordinada) | SQS FIFO (reconciliación/ERP) + EventBridge (eventos de negocio) | **VM-03** Talca (capacidad ~3 M mensajes), **VM-C04** Concepción, broker cross-dock (E-01) |
 | A-04 | Capa anticorrupción (ACL) de acceso al ERP | **On-premise** | `celery-erp-sync` (cloud) consume contratos OpenAPI vía la ACL por VPN | **VM-04** Talca |
 | A-05 | Keycloak — IdP maestro (nube) + caché local | **Híbrido** | **Keycloak IdP maestro** en ECS Fargate (1 vCPU/2 GB, 2 tareas Multi-AZ en peak, backend Aurora) — autoridad única (todas las escrituras) | **VM-05** Talca + **VM-C03** Concepción: **caché local de solo lectura TTL 8 h** (validación local de firma OIDC; sin escrituras; Modelo B, D6) |
@@ -58,7 +58,7 @@ Es la **fuente única consolidada** de la arquitectura física híbrida. Los doc
 | C-01 | App preventa (62 preventistas) | **Híbrido** (offline-first) | API Gateway + módulos Django (pedidos, crédito, catálogo) | App móvil con SQLite local y sync deduplicado |
 | C-02 | App repartidor/~200 conductores | **Híbrido** (offline-first, 14 h) | API Gateway + módulos (POD, sincro, ERP events) | App móvil; punto de venta portátil; control de devoluciones |
 | C-03 | Terminales de bodega y cámara | **On-premise** | — | 144 dotación Talca (120 simultáneos + 20 % reserva) + 30 dotación Concepción (25 simultáneos + 20 % reserva); terminales RF rugosas −22 °C |
-| C-04 | Impresoras de andén (SSCC) | **On-premise** | — | 2 en Talca, 1 Concepción, 1 por cross-dock |
+| C-04 | Impresoras de andén (SSCC) | **On-premise** | — | 4 Talca (2 recepción + 2 despacho) · 2 Concepción |
 
 ### 3.4 Red y emplazamiento
 
@@ -83,20 +83,20 @@ Es la **fuente única consolidada** de la arquitectura física híbrida. Los doc
 | Servicio AWS | Uso | Justificación Art. 16.2/16.3 |
 |---|---|---|
 | ECS Fargate (monolito Django + workers Celery) | Carga principal: 2 vCPU/4 GB base, auto-escalado (peak septiembre hasta 3×) | Servicio administrado: sin nodos a operar; FinOps por vCPU/RAM |
-| Aurora PostgreSQL | OLTP cloud + réplica DRP + TimescaleDB + Keycloak backend (maestro) | Multi-AZ, failover < 30 s, PITR 35 días |
+| Aurora PostgreSQL | OLTP cloud + réplica DRP + Keycloak backend (maestro) | Multi-AZ, failover < 30 s, PITR 35 días |
 | DynamoDB | Solo IoT raw (30 días TTL) | Escrituras < 10 ms p99, serverless |
 | S3 / Redshift / QuickSight | Data lake analítico 5 años + BI | Almacenamiento y analítica administrados |
 | AWS IoT Core + Greengrass | Orquestación edge, ingesta MQTT, OTA | Gestión de flota administrada |
 | SQS FIFO + EventBridge | Colas de trabajo Celery + bus de eventos/alertas | Durabilidad y orden en reconciliación |
 | S3 Object Lock / GuardDuty / Security Lake / WAF / Shield Advanced | Inmutabilidad documental, detección, SIEM, WAF, DDoS | Cumplimiento y seguridad administrados |
 
-### 3.7 Canal moderno — portales web en DMZ pública (C-05…C-07)
+### 3.7 Canal moderno — portales web en DMZ pública (N-01…N-03)
 
 | ID | Componente | Emplazamiento | Instancia nube | Instancia on-premise |
 |---|---|---|---|---|
-| C-05 | Portal de Clientes (catálogo público RF-12.14 + autoatención RF-12.15–12.18 y 12.25–12.29 + pago RF-12.30 + cobranza RF-07.07/07.08) | **DMZ pública** (cloud) | S3 + CloudFront + WAF → API Gateway → ECS Fargate tarea `portal` (misma imagen Django: módulos catálogo/pedidos/estado/DTE/saldo/cuentas + módulo `integraciones` → Transbank) → Aurora; estáticos en S3 | — (sin modo offline: RT-03.13) |
-| C-06 | Portal de Transportistas (RF-12.19–12.21; OTP de un solo uso para conductores, RF-06.08) | **DMZ pública** (cloud) | Misma SPA Angular + módulos Django; OTP sin cuenta corporativa | — |
-| C-07 | Portal de Proveedores (RF-12.22–12.24: OC, recepciones, devoluciones, notas de crédito) | **DMZ pública** (cloud) | Misma SPA Angular + módulos Django | — |
+| N-01 | Portal de Clientes (catálogo público RF-12.14 + autoatención RF-12.15–12.18 y 12.25–12.29 + pago RF-12.30 + cobranza RF-07.07/07.08) | **DMZ pública** (cloud) | S3 + CloudFront + WAF → API Gateway → ECS Fargate tarea `portal` (misma imagen Django: módulos catálogo/pedidos/estado/DTE/saldo/cuentas + módulo `integraciones` → Transbank) → Aurora; estáticos en S3 | — (sin modo offline: RT-03.13) |
+| N-02 | Portal de Transportistas (RF-12.19–12.21; OTP de un solo uso para conductores, RF-06.08) | **DMZ pública** (cloud) | Misma SPA Angular + módulos Django; OTP sin cuenta corporativa | — |
+| N-03 | Portal de Proveedores (RF-12.22–12.24: OC, recepciones, devoluciones, notas de crédito) | **DMZ pública** (cloud) | Misma SPA Angular + módulos Django | — |
 
 > **Modelo de entrada:** una sola SPA Angular (90 % UI común, §8 doc lógico) servida por **subdominios `*.puelche.cl`**; el **rol Keycloak** (`cliente`, `transportista`, `proveedor`, `invitado`) decide las vistas y los endpoints del API Gateway (RBAC), no hay despliegues separados por portal. Las consolas internas no pasan por esta DMZ (entrada intranet/VPN).
 
@@ -135,7 +135,7 @@ flowchart LR
         PROD["VPC Prod 10.101.0.0/16 — ALB · ECS Fargate · Aurora · DynamoDB · SQS FIFO · EventBridge · IoT Core · S3 · Keycloak IdP maestro"]
         REDSHIFT["S3 + Redshift (OLAP, 5 años)"]
         DR["VPC DR us-east-1 — Aurora Global / DynamoDB GT / S3 CRR"]
-        DMZ["DMZ Pública — CloudFront + WAF → API Gateway → Fargate Portal (C-05/06/07)"]
+        DMZ["DMZ Pública — CloudFront + WAF → API Gateway → Fargate Portal (N-01/N-02/N-03)"]
     end
     INT["Internet — Clientes canal moderno · Transportistas · Proveedores"]
 
@@ -163,7 +163,7 @@ flowchart LR
 | Concepción | 10.2.x.x | Misma segmentación VLAN |
 | Cross-dockings | 10.3.x.x – 10.5.x.x | Red plana simplificada + SSM/IoT outbound |
 | VPC Hub (sa-east-1) | 10.100.0.0/16 | Transit Gateway, adjuntos de VPN |
-| VPC Prod (sa-east-1) | 10.101.0.0/16 | Multi-AZ (a/b): subredes públicas DMZ 10.101.1.0/24 (az1) y 10.101.2.0/24 (az2) — ALB/WAF/CloudFront origin/NAT GW, portal C-05/06/07 · subredes app y datos |
+| VPC Prod (sa-east-1) | 10.101.0.0/16 | Multi-AZ (a/b): subredes públicas DMZ 10.101.1.0/24 (az1) y 10.101.2.0/24 (az2) — ALB/WAF/CloudFront origin/NAT GW, portal N-01/N-02/N-03 · subredes app y datos |
 | VPC PreProd | 10.102.0.0/16 | Pre-Producción |
 | VPC QA | 10.103.0.0/16 | Calidad |
 | VPC Dev | 10.104.0.0/16 | Desarrollo |
@@ -208,7 +208,7 @@ flowchart LR
 | C12 — DRP local | Talca → Concepción | Sync WMS (8080/5432) | Aurora (opcional) | Promoción controlada de VM-C01 (procedimiento de 5 pasos). La identidad **no requiere conmutación local**: el maestro está en la nube y las cachés A-05/VM-C03 siguen validando firmas (DRP de identidad = misma autoridad en nube) | RTO +1–2 h | Concepción ya opera autónoma |
 | C13 — Cross-dock → consolidado | E-01 | HTTPS 443 + MQTTS 8883 (**Starlink D-06 principal, LTE dual respaldo**) y AMQPS 5671 (→ Talca) | SQS FIFO / IoT Core / SSM | Eventos críticos directos a SQS/IoT; detalle del mini-WMS a Talca | < 10 min | Buffer local en cross-dock |
 | C14 — Notificaciones al negocio | — | — | EventBridge → SNS/API SII/EDI retail | Alertas de frío < 5 s; DTE; EDI a cadenas de retail | — | Reintento con backoff |
-| C15 — Portal web DMZ (C-05/06/07) | Stock/crédito/cobranza desde red Puelche (vía API Gateway) | HTTPS 443 | S3+CloudFront+WAF → API Gateway → tarea `portal` | Sesión OIDC Keycloak por rol (MFA TOTP/OTP, Art. 22°); sin datos locales (RT-03.13) | Online (sin modo offline) | Reintento del navegador; sin modo degradado |
+| C15 — Portal web DMZ (N-01/N-02/N-03) | Stock/crédito/cobranza desde red Puelche (vía API Gateway) | HTTPS 443 | S3+CloudFront+WAF → API Gateway → tarea `portal` | Sesión OIDC Keycloak por rol (MFA TOTP/OTP, Art. 22°); sin datos locales (RT-03.13) | Online (sin modo offline) | Reintento del navegador; sin modo degradado |
 | C16 — Pago Transbank (RF-12.30) | Saldo/contrato del cliente en módulos cloud | HTTPS 443 (salida DMZ) | Módulo `integraciones` Django → Webpay (certificados SUSCERTIF) | Idempotencia por `transaction_id`; pedido confirmado (RF-12.15) + sesión activa (RF-12.26); registro de confirmación/rechazo | Síncrono | Reintento con backoff; estado persistido en el portal |
 
 ---
@@ -225,7 +225,7 @@ flowchart LR
 
 **Sincronización de identidad (sin conexiones entrantes):** el maestro (nube) publica el **Realm Puelche cifrado a S3** (export/import, outbound) y las cachés locales A-05/VM-C03 lo importan para mantenerse **Δ ≤ 8 h (TTL)**. Aprovisionamiento/desaprovisionamiento por API/SCIM disparado por eventos EventBridge en **≤ 24 h** (RT-12.10/RT-15.05). La misma clave de firma JWT y el mismo dominio `puelche.cl` se mantienen en cachés y maestro; las altas, bajas y roles se propagan **desde el maestro hacia las cachés, nunca a la inversa**.
 
-**Portales de entidad externa (C-05/C-06/C-07):** una sola SPA Angular servida por subdominios `*.puelche.cl` (`portal.puelche.cl`, `transportistas.puelche.cl`, `proveedores.puelche.cl`); el **rol del token Keycloak** decide vistas y endpoints (RBAC). Todo acceso externo con MFA (Art. 22°): TOTP/SMS para roles corporativos (`cliente`, `proveedor`, `transportista`) y **OTP de un solo uso** para conductores externos (RF-06.08), sin cuenta corporativa. El portal de clientes **no opera offline** (RT-03.13): el autoservicio exige conexión a la DMZ.
+**Portales de entidad externa (N-01/N-02/N-03):** una sola SPA Angular servida por subdominios `*.puelche.cl` (`portal.puelche.cl`, `transportistas.puelche.cl`, `proveedores.puelche.cl`); el **rol del token Keycloak** decide vistas y endpoints (RBAC). Todo acceso externo con MFA (Art. 22°): TOTP/SMS para roles corporativos (`cliente`, `proveedor`, `transportista`) y **OTP de un solo uso** para conductores externos (RF-06.08), sin cuenta corporativa. El portal de clientes **no opera offline** (RT-03.13): el autoservicio exige conexión a la DMZ.
 
 **Estrategia de tokens unificada:** id_token 1 h · access_token 30 min · refresh_token 30 días · **token offline con TTL por perfil de actor**: **8 h** turno nocturno de bodega (RNF-13.01) y **14 h turno completo de reparto / jornada de preventa** (RNF-06.02). El token offline se **renueva al inicio de turno en cobertura** o contra la **caché local A-05 (VM-05/VM-C03)** en el CD (validación de firma offline), de modo que la ventana offline siempre cubre la jornada completa aunque el dispositivo no vuelva a ver señal (sin autenticación en la ruta).
 
@@ -242,7 +242,7 @@ flowchart LR
 | Bodega (inventario, SSCC) | PostgreSQL WMS (A-02) | on-premise Talca (+ Concepción) | PITR; respaldo 3-2-1-1-0 |
 | OLTP cloud (pedidos, preventa, reparto, trazabilidad) | Aurora PostgreSQL | cloud | PITR 35 días; dump diario cifrado |
 | IoT raw (lecturas de temperatura) | DynamoDB | cloud | TTL 30 días (después de consolidar) |
-| Consolidado analítico de temperatura | TimescaleDB (en Aurora) | cloud | 5 años |
+| Consolidado analítico de temperatura | S3 Parquet (`s3-analytics-parquet`) + Redshift Serverless | cloud | 5 años |
 | Trazabilidad por envío de temperatura | GSI por `shipment_id` en DynamoDB + S3 raw | cloud | 5 años (S3); 35 días el GSI |
 | OLAP / BI | S3 Data Lake + Redshift + QuickSight | cloud | 5 años |
 | Documentos tributarios (DTE) | S3 Object Lock + Aurora (metadatos) + firma Ley 19.799 | cloud | 6 años |
@@ -286,7 +286,7 @@ flowchart LR
 
 **On-premise en el modelo de ambientes:** el despliegue on-premise es **producción** (imagen `wms_only`); la misma imagen pasa por los ambientes cloud (Dev→QA→PreProd) antes de su cutover en Talca (ventana de 24 h, RT-03.10). No se mantienen ambientes on-premise separados; la paridad la garantiza la imagen única y el IaC (Terraform/CloudFormation) versionado.
 
-**Portal web (C-05/06/07):** la SPA Angular se publica **por ambiente** en S3+CloudFront (bucket + distribución por cuenta AWS); el backend `portal` es la misma imagen Django del ambiente. El portal entra a producción con el **hito de enero 2029 (RNF-12.01)** siguiendo el mismo pipeline Dev→QA→PreProd→Prod.
+**Portal web (N-01/N-02/N-03):** la SPA Angular se publica **por ambiente** en S3+CloudFront (bucket + distribución por cuenta AWS); el backend `portal` es la misma imagen Django del ambiente. El portal entra a producción con el **hito de enero 2029 (RNF-12.01)** siguiendo el mismo pipeline Dev→QA→PreProd→Prod.
 
 ---
 
@@ -343,13 +343,13 @@ flowchart LR
 
 **D-AL-13 — Logs de seguridad.** 12 meses en línea + 24 en archivo (36 meses totales), superando los mínimos de Art. 21.3 y RT-11.14. Auditoría de negocio 7 años.
 
-**D-AL-14 — Retención de telemetría.** 5 años: DynamoDB (TTL 30 días) → TimescaleDB consolidado + S3 raw (5 años). Coherente con RT-05.10/RT-16.10.
+**D-AL-14 — Retención de telemetría.** 5 años: DynamoDB (TTL 30 días) → S3 raw (5 años) + consolidado analítico OLAP (S3 Parquet/Redshift, 5 años). Coherente con RT-05.10/RT-16.10.
 
 **D-AL-15 — Respaldo 3-2-1-1-0 único.** D-05 (RTO local 4 h) + pierna inmutable nube (S3 Object Lock / Backup Vault Lock), con prueba de restauración semestral.
 
-**D-AL-16 — Fuente única consolidada.** Este documento (v02.0) prevalece como arquitectura física híbrida; los documentos de origen quedan alineados a él (Cloud v3.6, Dim v05, Tabla v06, Sala v02). Empresa proponente pendiente de definir (nomenclatura Art. 43.3).
+**D-AL-16 — Fuente única consolidada.** Este documento (v02.0) prevalece como arquitectura física híbrida; los documentos de origen quedan alineados a él (Cloud v3.6, Dim v05, Tabla v06, Sala v02). Empresa proponente pendiente de definir (nomenclatura Art. 43.3). **Serie de portales de canal moderno** (antes C-05/C-06/C-07, en colisión con la balanza C-05 de la Tabla v06) **renumerada a N-01…N-03** (serie Nube/DMZ), conforme a la expansión de la Tabla v06 (v07, Sección 1.0 — tabla maestra de emplazamiento).
 
-**D-AL-17 — Portal de canal moderno en DMZ pública.** Los portales de Clientes (C-05, RF-12.14–12.18, 12.25–12.30 y cobranza RF-07.07/07.08), Transportistas (C-06, RF-12.19–12.21, OTP RF-06.08) y Proveedores (C-07, RF-12.22–12.24) son **una sola SPA Angular** servida por subdominios `*.puelche.cl` (CloudFront+WAF → API Gateway → tarea Fargate `portal` de la misma imagen Django), con **RBAC por rol en Keycloak**; entrada intranet/VPN para las consolas internas. El pago de autoservicio usa **Transbank Webpay** (módulo `integraciones`, idempotencia por `transaction_id`) — RF-12.30. **Sin modo offline** (RT-03.13); entra con el hito de enero 2029 (RNF-12.01); no abre conexiones entrantes al on-premise (solo lectura de stock/crédito/cobranza vía API Gateway, costura C15).
+**D-AL-17 — Portal de canal moderno en DMZ pública.** Los portales de Clientes (N-01, RF-12.14–12.18, 12.25–12.30 y cobranza RF-07.07/07.08), Transportistas (N-02, RF-12.19–12.21, OTP RF-06.08) y Proveedores (N-03, RF-12.22–12.24) son **una sola SPA Angular** servida por subdominios `*.puelche.cl` (CloudFront+WAF → API Gateway → tarea Fargate `portal` de la misma imagen Django), con **RBAC por rol en Keycloak**; entrada intranet/VPN para las consolas internas. El pago de autoservicio usa **Transbank Webpay** (módulo `integraciones`, idempotencia por `transaction_id`) — RF-12.30. **Sin modo offline** (RT-03.13); entra con el hito de enero 2029 (RNF-12.01); no abre conexiones entrantes al on-premise (solo lectura de stock/crédito/cobranza vía API Gateway, costura C15).
 
 **D-AL-19 — Redundancia WAN satelital (Starlink D-06).** Con base en la `Cotizacion_Starlink_Sucursales_56meses` (05-09-2026) se incorpora el **camino satelital en los 5 sitios**: en los CDs (Talca y Concepción) como respaldo automático de la fibra (**cierra la brecha RNF-13.07 de Concepción**), y en las **3 cross-docks** como **enlace principal** (elimina la dependencia exclusiva de la red móvil; Los Ángeles tiene intermitencia 03:00–05:00, su ventana operacional). Los caminos WAN quedan en **3 tecnologías/proveedores distintos** (fibra D-03 → satelital D-06 → LTE D-04) gestionados con **SD-WAN multi-WAN** en D-01 y firewall de borde; en cross-docks el router del kit maneja la conmutación a LTE dual. Precio, planes (1 TB CD / 500 GB cross-dock) y reposición 15 %/56 meses según cotización (RT-08.13); MTU túnel 1.436.
 

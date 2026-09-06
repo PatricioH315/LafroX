@@ -110,7 +110,7 @@ Se despliegan **3 servidores físicos idénticos** en configuración clúster N+
 | ID | Nombre / Rol | vCPU | RAM | Disco raíz | Disco datos | Criterio de tamaño |
 |---|---|---|---|---|---|---|
 | VM-01 | **WMS Core** (motor WMS: recepción, picking FEFO, misiones RF, despacho, SSCC GS1) | 8 | 16 GB | 40 GB | 100 GB | 120 terminales concurrentes; ~20 TPS en picking; sin estado persistente propio |
-| VM-02 | **PostgreSQL — BD Transaccional (maestro de bodega)** (inventario, lotes, posiciones, SSCC, trazabilidad 5 años; réplica DRP hacia Amazon Aurora vía WAL streaming, RPO ≤ 15 min) | 8 | 32 GB | 40 GB | 1.500 GB | shared_buffers = 8 GB; effective_cache_size = 24 GB; 105 TPS × 8 E/S = 840 IOPS → NVMe RAID 10 entrega > 100.000 IOPS |
+| VM-02 | **PostgreSQL — BD Transaccional (maestro de bodega)** (inventario, lotes, posiciones, SSCC, trazabilidad 5 años; réplica DRP hacia Amazon Aurora vía AWS DMS CDC (WAL lógico, wal_level=logical), RPO ≤ 15 min) | 8 | 32 GB | 40 GB | 1.500 GB | shared_buffers = 8 GB; effective_cache_size = 24 GB; 105 TPS × 8 E/S = 840 IOPS → NVMe RAID 10 entrega > 100.000 IOPS |
 | VM-03 | **RabbitMQ — Broker de colas offline** (encolado 24 h sin WAN) | 4 | 8 GB | 30 GB | 200 GB | 24 h × 35 TPS × 3.600 s = ~3 M mensajes; 200 GB >> (< 1 KB/msj) |
 | VM-04 | **ACL ERP — Frontera única de integración** (adaptador WMS/cloud–ERP 2017; encolado offline) | 4 | 4 GB | 30 GB | 20 GB | Única vía hacia el ERP 2017; los servicios cloud (svc-erp-integration) lo consumen vía VPN, nunca directo |
 | VM-05 | **Keycloak Local Auth Cache / Offline Proxy (A-05, Modelo B D6)** (caché local de identidades/tokens del IdP Keycloak; TTL 8 h; solo lectura; SSO para 120 operarios) | 4 | 4 GB | 30 GB | 20 GB | Caché de tokens JWT emitidos por Keycloak (maestro en nube) con validación local de firma; 120 operarios concurrentes; TTL 8 h = turno; autoridad única de identidad en nube |
@@ -135,7 +135,7 @@ Dispositivo dedicado, físicamente independiente del clúster de producción. Es
 | **Tipo** | NAS rack 2U (ej. Synology RS1221RP+ — 12 bahías, 2U —, QNAP TS-873AeU-RP) |
 | **Capacidad bruta** | 4 × HDD SATA 4 TB en RAID 6 → 8 TB útiles (tolera 2 discos caídos) |
 | **Refuerzo de integridad** | WORM local como refuerzo adicional (retención 30 días); no sustituye la pierna inmutable de nube |
-| **Protocolo de respaldo** | WAL streaming de PostgreSQL (RPO ≤ 15 min) + respaldo completo diario en ventana 02:00–04:00 |
+| **Protocolo de respaldo** | AWS DMS CDC del WAL lógico de PostgreSQL hacia Aurora (RPO ≤ 15 min) + archivo continuo de WAL local para PITR + respaldo completo diario en ventana 02:00–04:00 |
 | **Conectividad** | 2 × 1GbE en VLAN-Servidores; acceso restringido a VM-02 y sistema de backup |
 | **Verificación de restauración** | Prueba mensual automatizada en entorno pre-producción — "0 errores" (RNF-20.07) |
 | **RTO objetivo** | ≤ 4 h restauración completa desde NAS local, independiente de WAN (RNF-20.06) |
@@ -223,7 +223,7 @@ Un nodo por plataforma: **Curicó, Chillán, Los Ángeles**. Sin hipervisor — 
 | **UPS** | Mini-UPS interna o UPS de riel DIN ≥ 30 min (RT-06.07); alimenta también el router Starlink del gabinete |
 | **Gestión remota** | SSM Agent vía VPN Starlink/LTE (Zero Trust — sin puertos entrantes) |
 
-> **Justificación de red redundante (RT-03.17 / RNF-13.07 en sitios solo-móvil):** en las plataformas de cross-docking no existe fibra (Cap. 6) y la red móvil es intermitente (Los Ángeles pierde señal entre 03:00–05:00, exactamente su ventana operacional). Para satisfacer RT-03.17 (caminos físicos y **proveedores distintos** con conmutación automática) se incorpora el **kit Starlink fijo (D-06) como enlace principal satelital** conectado por ethernet al switch compacto del gabinete, con el **módulo 4G Cat-12 LTE dual (2 proveedores) del mini-PC como respaldo automático**: la conmutación del satelital al LTE ocurre en < 5 min (objetivo < 30 s para la ventana operacional) y la operación del turno de 3 h es 100 % local (RT-03.10/RT-03.11), por lo que el enlace solo sostiene la sincronización diferida. Esta es la mitigación formal del SPOF de enlace declarado en Tabla v06 §4 y resuelve el caso crítico de Los Ángeles descrito en la Cotización Starlink.
+> **Justificación de red redundante (RT-03.17 / RNF-13.07 en sitios solo-móvil):** en las plataformas de cross-docking no existe fibra (Cap. 6) y la red móvil es intermitente (Los Ángeles pierde señal entre 03:00–05:00, exactamente su ventana operacional). Para satisfacer RT-03.17 (caminos físicos y **proveedores distintos** con conmutación automática) se incorpora el **kit Starlink fijo (D-06) como enlace principal satelital** conectado por ethernet al switch compacto del gabinete, con el **módulo 4G Cat-12 LTE dual (2 proveedores) del mini-PC como respaldo automático**: la conmutación del satelital al LTE es automática en < 30 s (el RT-03.17 exige ≤ 5 min; se cumple con margen para la ventana operacional) y la operación del turno de 3 h es 100 % local (RT-03.10/RT-03.11), por lo que el enlace solo sostiene la sincronización diferida. Esta es la mitigación formal del SPOF de enlace declarado en Tabla v06 §4 y resuelve el caso crítico de Los Ángeles descrito en la Cotización Starlink.
 
 **Software en nodo edge (contenedores):**
 
@@ -598,6 +598,7 @@ Con esta configuración quedan eliminados los puntos únicos de falla en el per�
 | CD Talca | **Kit Starlink fijo (respaldo D-06)** | 1 | Starlink Enterprise fijo (estándar/alto rendimiento): antena techumbre + router, plan 1 TB prioritario (Cotización Starlink) |
 | CD Concepción | Servidor borde compacto | 1 | Dell R250 / HPE DL20 Gen11 |
 | CD Concepción | Firewall de borde | 1 | FortiGate 40F o similar |
+| CD Concepción | Switch core de borde | 1 | Cisco Catalyst 9300-48P o equiv. (2° nodo del core 2+1, ver T-11 C14) |
 | CD Concepción | AP Wi-Fi 6E industrial | 3 | Cisco Catalyst 9115 |
 | CD Concepción | Gateway IoT + Greengrass | 1 | Ídem Talca |
 | CD Concepción | **Kit Starlink fijo (respaldo D-06)** | 1 | Ídem Talca (cierra RNF-13.07) |
@@ -616,8 +617,8 @@ Con esta configuración quedan eliminados los puntos únicos de falla en el per�
 | Talca / Concepción | Balanza recepción | 2 / 1 | **Dibal BEV** (ME + DMI-610 Inox) |
 | Preventa | Terminal preventa | 62 + 20 % | **Zebra EC55** |
 | Reparto | Terminal reparto (parque único: propios + externos) | 42 + ~160 + reserva | **Zebra TC58e** (5G, SE55, bat. 7.000 mAh) |
-| Cabina | Impresora térmica portátil | Por camión | **Zebra ZQ620 Plus** |
-| Cabina | POS móvil Bluetooth | Por camión | **PAX A920 Pro** |
+| Cabina | Impresora térmica portátil | ≈ 200 (1 por conductor) | **Zebra ZQ620 Plus** |
+| Cabina | POS móvil Bluetooth | ≈ 200 (1 por conductor) | **PAX A920 Pro** |
 | Cross-Docking (×3) | Escáner de mano GS1 | 6 (2/sitio) | **Zebra DS2208** |
 | Cámaras (IoT) | Sensor de temperatura (módulo 4 canales) | 7 módulos (28 puntos) | **Ebyte ME31-XDXX0400** |
 | Frío en ruta | Termógrafo de camión | 18 | **Onset InTemp CX450** |
@@ -638,6 +639,8 @@ Con esta configuración quedan eliminados los puntos únicos de falla en el per�
 | VM-C03 | Concepción | **Keycloak Auth Cache (réplica local, Modelo B)** | 2 | 4 GB | 20 GB |
 | VM-C04 | Concepción | OTel (ADOT) + RabbitMQ | 2 | 4 GB | 50 GB |
 | **TOTAL** | | | **42 vCPU** | **92 GB** | **2.760 GB** |
+
+> *Nota: el cuadro de VMs cubre Talca y Concepción (42 vCPU / 92 GB). Los 3 mini-PC de las cross-docks NO son VMs: corren contenedores Docker y se inventarían en §4.1 (y sus recursos ya están incluidos en los totales de §1.5).*
 
 ---
 
@@ -667,7 +670,7 @@ Se declara análisis formal de amenazas comunes: **no existe un evento único qu
 
 ### 5.3 Replicación con medición y alerta de retraso (RT-07.03)
 
-- **Mecanismo:** streaming del log WAL de PostgreSQL de VM-02 (Talca) hacia la réplica Aurora (RPO ≤ 15 min), vía VPN IKEv2/AES-256 (3.6); replicación Ceph síncrona intra-clúster (1.2.5).
+- **Mecanismo:** AWS DMS CDC lee el WAL lógico (`wal_level=logical`) de PostgreSQL de VM-02 (Talca) y aplica los cambios en la réplica Aurora (RPO ≤ 15 min), vía VPN IKEv2/AES-256 (3.6); replicación Ceph síncrona intra-clúster (1.2.5).
 - **Medición y alertamiento:** se miden continuamente el **lag de replicación** (bytes y segundos) y el estado del WAL; **alerta automática al NOC y al Jefe de TI** si el lag supera los **5 minutos** (umbral intermedio) o los **15 minutos** (RPO declarado, alarma prioridad alta). Métrica expuesta en Prometheus/Grafana y correlacionada en la plataforma OTel (F-01).
 - El repliegue del retardo a cero se verifica en la prueba DR semestral (5.6).
 
@@ -714,11 +717,11 @@ La clave de respaldo es **independiente de las claves de cifrado de datos de pro
 
 | Dominio de datos | Frecuencia de respaldo | Retención | Tiempo de restauración objetivo |
 |---|---|---|---|
-| BD transaccional WMS (inventario, lotes, trazabilidad) | WAL continuo (RPO ≤ 15 min) + completo diario 02:00–04:00 | 30 días en D-05 · 6 años tributario (RNF-01.02) / 5 años sanitario (RNF-09.02) en nube | ≤ 4 h (restauración completa) · ≤ 1 h (PITR) |
+| BD transaccional WMS (inventario, lotes, trazabilidad) | DMS CDC (RPO ≤ 15 min) + archivo de WAL local + completo diario 02:00–04:00 | 30 días en D-05 · 6 años tributario (RNF-01.02) / 5 años sanitario (RNF-09.02) en nube | ≤ 4 h (restauración completa) · ≤ 1 h (PITR) |
 | Broker de colas / mensajes | Completo diario en ventana de mantenimiento | 30 días | ≤ 4 h |
 | Configuración de red/seguridad (VLANs, firewall, túneles) | Completo semanal (export) | 12 meses | ≤ 2 h |
 | Logs y auditoría | Streaming continuo a SIEM/bucket | 12 meses en línea + 24 meses archivados (RT-11.14) | ≤ 4 h |
-| Telemetría IoT (cadena de frío) | Continuo (buffer 14 h) + diario | 2 años (Autoridad Sanitaria) | ≤ 4 h |
+| Telemetría IoT (cadena de frío) | Continuo (buffer 14 h) + diario | 5 años (RNF-09.02 — trazabilidad de frío) | ≤ 4 h |
 | POD (foto/firma), documentos tributarios | Sincronización diaria a nube | Según normativa DTE/contable | ≤ 4 h |
 
 ### 5.9 Restauración granular (RT-07.14 — Deseable)
@@ -1058,7 +1061,7 @@ Además de alertas de infraestructura, se definen **alertas por síntomas de neg
 | Métricas (Prometheus/AMP) | 13 meses | — | OPEX de almacenamiento de métricas en el paquete de observabilidad |
 | Logs (SIEM/bucket) | 12 meses | 24 meses (objeto) | OPEX S3 incluido en el costo de nube + NAS para archivo local |
 | Trazas (OTel/X-Ray) | 90 días | 12 meses | Incluido en el paquete Sigv4/otlp |
-| Evidencia sanitaria (frío) | 2 años | — | Cumplimiento sanitario (5.8) |
+| Evidencia sanitaria (frío) | 5 años (S3 raw + consolidado OLAP) | — | RNF-09.02 / RT-05.10 (5.8, 15) |
 
 La política de retención se reporta al CLIENTE y su cumplimiento se audita en las pruebas DR/auditorías anuales.
 
@@ -1099,13 +1102,13 @@ El cálculo de capacidad está declarado en §1 de este documento: carga de dise
 
 | Recurso | Diseño (3.900 entregas/día) | 3× volumetría (7.800 entregas/día) | Sustento |
 |---|---|---|---|
-| vCPU clúster Talca | 30 / 64 = **47 %** (N+1) | ~90 asignadas → ampliación según el procedimiento RT-08.05: adición de vCPU dentro del físico existente y, al acercarse al margen, **inserción del 4º servidor idéntico** (rack R04 de crecimiento, §1.5) elevando el pool a 96 threads + N+1 real; el 4º nodo mantiene la misma arquitectura (no es rediseño) | §1.2.3 / §5.6 |
+| vCPU clúster Talca | 30 / 64 = **47 %** (N+1) | ~90 asignadas → ampliación según el procedimiento RT-08.05: adición de vCPU dentro del físico existente y, al acercarse al margen, **inserción del 4º servidor idéntico** (rack R04 de crecimiento, Sala §6.2) elevando el pool a 96 threads + N+1 real; el 4º nodo mantiene la misma arquitectura (no es rediseño) | §1.2.3 / §5.6 |
 | RAM | 68 / 256 = **27 %** | ~205 GB → dentro de los 384 GB físicos | §1.2.3 |
 | Pool Ceph (réplica 2) | 32 % utilizado | ≤ 96 % de 5,76 TB → ampliación por adición de OSD/NVMe, sin rediseño | §1.2.3 |
-| Enlace Talca | 20→50 Mbps | 50 / 100 Mbps (contrato escalonado del equipamiento §5.5) | §5.5 |
+| Enlace Talca | 20→50 Mbps | 50 / 100 Mbps (contrato escalonado de los enlaces §3.7) | §3.7 |
 | TPS VM-02 | ~105 | ~315 (8 TPS/vCPU → 39 TPS/vCPU) | §1.2.4 |
 
-La solución soporta 3× la volumetría inicial **sin rediseño de arquitectura** (misma topología de clúster, mismas VLAN, mismo esquema de réplica): el crecimiento se absorbe con ampliación dentro del margen físico y con el contrato escalonado de los enlaces (§5.5, RT-08.05).
+La solución soporta 3× la volumetría inicial **sin rediseño de arquitectura** (misma topología de clúster, mismas VLAN, mismo esquema de réplica): el crecimiento se absorbe con ampliación dentro del margen físico y con el contrato escalonado de los enlaces (§3.7, RT-08.05).
 
 ### 10.4 Escalamiento horizontal y automático (RT-09.04 — OBL)
 
@@ -1121,7 +1124,7 @@ La solución soporta 3× la volumetría inicial **sin rediseño de arquitectura*
 |---|---|---|---|
 | **VM-02 PostgreSQL (escritura/commit OLTP)** | Todo el picking (22:00–06:00) y el despacho massivo (05:30–07:00, 2.600/3.900 eventos) pasan por el maestro: es el único punto de escritura; a 3× carga, los commits (8 IOPS/tx ≈ 2.500 IOPS en peak 3×) degradan antes que CPU/disco (NVMe entrega > 100.000 IOPS, §1.2.4) | OTel/Prometheus: **p95 de escritura transaccional > 800 ms** (umbral 9.1) o commit ×3 sobre base; cola de espera de procesos Backend > 5–10; IO wait > 15 % sostenido; eventos alertados al NOC (parte 9) y al tablero del CLIENTE | 1) Escala vertical dentro del margen N+1 (8→12 vCPU, 32→64 GB); 2) **particionado mensual** de transacciones de bodega y **PgBouncer** (pool de conexiones, evita churn); 3) réplica de solo-lectura para consultas; 4) si el margen se agota: **4º nodo / sharding** y muerte del pico de despacho |
 | **VM-01 WMS Core (CPU)** | Segundo en saturar: el motor WMS procesa las líneas de pick del CD | p95 tiempo de confirmación de línea > 1 s; CPU > 70 % sostenido 2 semanas | Escala vertical hasta el margen; reparto de olas de picking y arraigado de réplica de lectura |
-| **Enlace WAN D-03/D-04 (Talca 20/50 Mbps)** | A 3× carga, la ventana de sincronización 17:00–20:00 (broker + IoT + WAL AMQP) puede acercar el enlace al 70–80 % | Utilización del enlace > 70 % sostenida en la ventana (SNMP/Telemetry del router, §5.5); backlog del broker creciendo hacia el 17:00 | QoS priorizando broker crítico y WAL; colas diferidas fuera de la ventana; escalado a **50/100 Mbps** (contrato escalonado §5.5) |
+| **Enlace WAN D-03/D-04 (Talca 20/50 Mbps)** | A 3× carga, la ventana de sincronización 17:00–20:00 (broker + IoT + WAL AMQP) puede acercar el enlace al 70–80 % | Utilización del enlace > 70 % sostenida en la ventana (SNMP/Telemetry del router, §3.7); backlog del broker creciendo hacia el 17:00 | QoS priorizando broker crítico y WAL; colas diferidas fuera de la ventana; escalado a **50/100 Mbps** (contrato escalonado §3.7) |
 | **Wi-Fi 6E bodega (6 AP)** | A 3× con 405+ terminales simultáneos por turno, airtime > 50 % en los puntos de congestión | Análisis del airtime (controlador WLC), tasa de reintentos y latencia por AP | 7º AP en la zona de mayor densidad; banda de retorno cableada |
 
 > **Prueba que lo verifica:** la curva de RT-09.07 debe mostrar el **punto de quiebre** del comienzo de saturación coincidente con la escritura transaccional de VM-02 (confirmación con la prueba de estrés de 10.6). Las pruebas de carga/estrés y el acta de resultados se integran al **Formulario T-13 (Plan de Pruebas y Validación)**.
