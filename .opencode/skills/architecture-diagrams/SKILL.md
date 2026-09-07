@@ -60,3 +60,15 @@ fuente de verdad tecnológica (ver `AGENTS.md`):
   (Keycloak OIDC/MFA, mTLS) · multi-zona IaC (Terraform/K8s) · sin vendor lock-in ·
   disponibilidad (RTO/RPO definidos, prueba DR semestral) · ventana 05:30–07:00
   con cero indisponibilidad.
+
+## Mapa arquitectónico interactivo (2026-09-07)
+
+- Artefacto: `Diagramas/arq_mapa_hibrido.html` — mapa híbrido auto-contenido con zoom al DC
+  (última milla → nube AWS sa-east-1/DR us-east-1 → WAN 3 caminos → CD Talca → sala blanca
+  R01–R04 → borde Concepción/cross-docks). Preview: `arq_mapa_hibrido_preview.png`.
+- Para iterar con Open Design (instalado en `C:\Users\henri\AppData\Local\open-design`,
+  Node 24 portable en `Programs\node24`): daemon `http://127.0.0.1:7456`, UI web
+  `http://localhost:5173`, con el agente opencode como motor de diseño.
+- Zoom por doble-clic (data-zx/zy/zw/zh), tooltips por id (objeto `meta`), leyenda de
+  zonas RT-06.03. Antes de regenerar, confirmar stack consolidado del Subdoc 4
+  (Django/AWS/Keycloak/Kotlin/Angular; no Laravel/Flutter — quedaron descartados).
