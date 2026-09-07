@@ -1,18 +1,19 @@
 # T-12 — Matriz de Cumplimiento Técnico y Trazabilidad
-## Arkhx — Arquitectura Física Híbrida · Caso 02 Logística (Puelche S.A.)
+## LafroX — Arquitectura Física Híbrida · Caso 02 Logística (Puelche S.A.)
 
 > **Alcance:** requisitos transversales de arquitectura física/híbrida (Cap. 02, 03, 04, 06, 07, 08, 09, 10, 11, 12, 14, 15 de las Bases Técnicas Transversales). Columnas conforme al Formulario T-12 (Bases Administrativas §1704-1716): `ID requerimiento | Descripción | Cumple | Componente que lo satisface | Sección de la propuesta`, más `Hueco / Observación` para la auditoría interna.
 >
 > **Fuentes de verificación (versiones vigentes):**
-> - `Arquitectura_Fisica/Propuesta_Arquitectura_Cloud_Caso02_CLAUDE_v2.md` — Cloud v3.6 (en adelante «Cloud §n»)
-> - `Arquitectura_Fisica/Sala_Servidores_OnPremise_v02.md` — Sala v02 (en adelante «Sala §n»)
-> - `Arquitectura_Fisica/Dimensionamiento_Infraestructura_OnPremise_v05.md` — Dim v05 (en adelante «Dim §n»)
-> - `Arquitectura_Fisica/Tabla_Emplazamiento_OnPremise_v06.md` — Tabla v06 (en adelante «Tabla §n»)
-> - `Arquitectura_Fisica/Arquitectura_Fisica_Hibrida_Consolidada_Caso02_v02.md` — Consolidado v02
-> - `Arquitectura_Fisica/Cotizacion_Starlink_Sucursales_56meses.docx.md` — Cotización Starlink (05-09-2026, 56 meses, 5 kits)
-> - `Arquitectura_Fisica/Justificacion_Modulo_BI_Analitica.md` — BI
+> - `Consolidado_Arquitectura_Fis_Log/Propuesta_Arquitectura_Cloud_Caso02_CLAUDE_v2.md` — Cloud v3.6 (en adelante «Cloud §n»)
+> - `Consolidado_Arquitectura_Fis_Log/Sala_Servidores_OnPremise_v02.md` — Sala v02 (en adelante «Sala §n»)
+> - `Consolidado_Arquitectura_Fis_Log/Dimensionamiento_Infraestructura_OnPremise_v05.md` — Dim v05 (en adelante «Dim §n»)
+> - `Consolidado_Arquitectura_Fis_Log/Tabla_Emplazamiento_OnPremise_v06.md` — Tabla v06 (en adelante «Tabla §n»)
+> - `Consolidado_Arquitectura_Fis_Log/Arquitectura_Fisica_Hibrida_Consolidada_Caso02_v02.md` — Consolidado v02
+> - `Arquitectura_Logica_v6-1.md` v6.2 — arquitectura lógica vigente (D1–D15), en adelante «Lógica v6.2»
+> - `Arquitectura_de_Integracion_v01.md` y `Arquitectura_de_Seguridad_v01.md` — vistas de integración y seguridad (Subdoc 4, apartados 3 y 4)
+> - La justificación del módulo de BI y analítica vive en Cloud v3.6 §4.3 y en Lógica v6.2 §10.9 (no existe un documento separado)
 >
-> **Estado:** auditoría exhaustiva (05-09-2026) tras la actualización de la arquitectura on-premise (Sala v02, Dim v05, Tabla v06) e integración del **enlace satelital Starlink (D-06)** en los 5 sitios fijos.
+> **Estado:** auditoría exhaustiva (05-09-2026) tras la actualización de la arquitectura on-premise (Sala v02, Dim v05, Tabla v06) e integración del **enlace satelital Starlink (D-06)** en los 5 sitios con cómputo. **Actualizada el 06-09-2026** con el cierre de la auditoría de coherencia del Subdocumento 4: puerta de enlace unificada en Amazon API Gateway (ADR-13), observabilidad de plataforma única (ADR-14), gestión de secretos en servicio administrado (ADR-15), **MDM declarado como componente N-13** (cierra RT-03.18 con emplazamiento, no solo con mención) y retención respondida contra **RT-16.10**.
 
 ---
 
@@ -81,8 +82,8 @@
 | RT-03.14 | Equipos críticos redundantes; almacenamiento tolerante a disco | ✅ | Clúster 3 nodos + RAID 10 + Ceph; quórum propio | Dim §1.2.2/§1.2.5; Tabla A-02 | — |
 | RT-03.15 | Endurecimiento CIS + gestión centralizada de parches | ✅ | Ansible F-02 + CIS Benchmarks | Tabla F-02 | — |
 | RT-03.16 | Monitoreo on-premise integrado a la plataforma de nube | ✅ | OTel ADOT + CloudWatch/X-Ray/AMP | Tabla F-01 | — |
-| RT-03.17 | Enlace redundante con caminos y proveedores distintos | ✅ | **3 tecnologías por CD: fibra D-03 → satelital Starlink D-06 → LTE D-04 (SD-WAN multi-WAN, < 30 s)**; cross-docks: Starlink principal + LTE dual | Tabla D-03/D-04/**D-06**/E-01; Dim §3.6/§3.7; cotización Starlink | — |
-| RT-03.18 | Gestión remota y centralizada de dispositivos de borde | ✅ | MDM/MAM, SSM, Greengrass | Tabla C; Dim §1.4 | — |
+| RT-03.17 | Enlace redundante con caminos y proveedores distintos | ✅ | **3 tecnologías por CD: fibra D-03 → satelital Starlink D-06 → LTE D-04 (SD-WAN multi-WAN, < 30 s)**; cross-docks: Starlink principal + LTE dual | Tabla D-03/D-04/**D-06**/E-01; Dim §3.6/§3.7; T-11 C27 | — |
+| RT-03.18 | Gestión remota y centralizada de dispositivos de borde | ✅ | **N-13 — MDM gestionado (Android Enterprise / Zebra DNA)** + SSM (servidores) + Greengrass (borde IoT) | Tabla v06 §1.0(b) N-13; Lógica v6.2 §11.7; ADR-15; T-11 B11 | Componente con emplazamiento declarado desde el 06-09-2026 |
 | RT-03.19 | Procesamiento en el borde valorado | ✅ | Greengrass B-02 + mini-WMS E-01 | Tabla B-02/E-01 | — |
 | RT-03.20 | Ancho de banda dimensionado por sitio | ✅ | Tabla por sitio normal/peak (septiembre) + **camino satelital 1 TB (CDs) / 500 GB (cross-docks)** | Dim §3.7; T-11 C10/C11/C27 | — |
 | RT-03.21 | Enlace privado dedicado o VPN para nube | ✅ | AWS Site-to-Site VPN IPsec IKEv2 BGP | Tabla D-01; Dim §3.6 | — |
@@ -293,7 +294,7 @@
 
 | ID | Descripción | Cumple | Componente | Sección | Hueco / Observación |
 |---|---|---|---|---|---|
-| RT-14.01 | Observabilidad unificada nube + on-premise (OTel, correlación por ID) | ✅ | ADOT + CloudWatch/X-Ray/AMP + Prometheus/Grafana/Loki | Tabla F-01; Cloud §8 | — |
+| RT-14.01 | Observabilidad unificada nube + on-premise (OTel, correlación por ID) | ✅ | **Plataforma única**: ADOT on-premise (buffer 24 h) → AMP + CloudWatch Logs + X-Ray + Grafana OSS (ADR-14) | Tabla F-01; Cloud §8 | — |
 | RT-14.02 | Acceso del CLIENTE a tableros con datos reales y exportación | ✅ | Grafana + cuentas federadas Keycloak | Cloud §8; Dim §9.8 | — |
 | RT-14.03 | SLI sobre experiencia real (no solo sintética) | ✅ | P95 e2e, sync, serialización, DAT/RUM | Dim §9.9 | — |
 | RT-14.04 | Alertamiento por síntomas de negocio | ✅ | OTIF/bloqueos/colas/devoluciones/discrepancias | Dim §9.10 | — |
@@ -301,7 +302,7 @@
 | RT-14.06 | RCA obligatorio en incidentes críticos (≤ 5 días hábiles) | ✅ | RCA con 5 Why + seguimiento | Dim §9.12; Cloud §5.4 | — |
 | RT-14.07 | Logs sin datos sensibles ni credenciales, acceso auditado | ✅ | Masking/seudonimización + acceso por rol | Dim §9.13 | — |
 | RT-14.08 | Retención de métricas/logs/trazas y costo asociado | ✅ | Tabla on-line/archivo + costo | Dim §9.14 | — |
-| RT-14.09 | Detección proactiva de anomalías (valorado) | ✅ | ML sobre series de tiempo en observabilidad | Dim §9.15 | Deseable (valorado) |
+| RT-14.09 | Detección proactiva de anomalías (valorado) | ✅ | Baselines estadísticos sobre series de tiempo (ingesta IoT, TPS, latencias, OTIF) — Prometheus/PromQL + Grafana, **sin modelos de IA/ML** | Dim §9.15 | Deseable (valorado) |
 
 ---
 
@@ -337,6 +338,17 @@
 **Huecos pendientes:**
 - **❌ (2):** RT-09.06 y RT-09.07 (pruebas de carga 1,5× peak con informe y curva de saturación) → se cierran en el **T-13 (Plan de Pruebas, Subdoc 9)**.
 - **⚠️ (13):** 04.04/04.08/04.12/04.14 (proceso de desarrollo); 09.10 (Deseable: carga en CI); 11.05/11.17/11.26/11.28 (matriz ISO/SOC/dependencias/SAMM); 15.06-15.09 (metas de reducción y certificaciones de la empresa proponente).
-- **Reconciliación pendiente:** ~~Cloud §3.3/§5.4 aún declara Keycloak maestro en VM-05 (on-premise)~~ **RESUELTO**: el documento cloud pasó a Modelo B en su **v3.6** (§3.3, §3.5, §5.4, §7.3, §7.10, L-02, Apéndice C) — Keycloak maestro en nube (ECS/Fargate), caché local A-05 de solo lectura TTL 8 h (VM-05/VM-C03), sin maestro on-premise ni promoción local. Queda consolidado en `Arquitectura_Fisica_Hibrida_Consolidada_Caso02_v02.md` (D-AL-18).
+- **Reconciliación pendiente:** ~~Cloud §3.3/§5.4 aún declara Keycloak maestro en VM-05 (on-premise)~~ **RESUELTO**: el documento cloud pasó a Modelo B en su **v3.6** (§3.3, §3.5, §5.4, §7.3, §7.10, L-02, Apéndice C) — Keycloak maestro en nube (ECS/Fargate), caché local A-05 de solo lectura TTL 8 h (VM-05/VM-C03), sin maestro on-premise ni promoción local. Queda consolidado en `Arquitectura_Fisica_Hibrida_Consolidada_Caso02_v02.md` (**D-AL-18**, redactada el 06-09-2026 — el registro saltaba de D-AL-17 a D-AL-19 y esta referencia quedaba rota).
 
-*Documento T-12_ArqFisica · v05-09-2026 · Arkhx — Caso 02 Logística.*
+**Cierre de la auditoría de coherencia del Subdocumento 4 (06-09-2026).** Se resolvieron las divergencias entre la arquitectura lógica y la física que afectaban a esta matriz:
+
+| Hallazgo | Resolución | Efecto en el T-12 |
+|---|---|---|
+| Puerta de enlace declarada como Kong en tres ADR | **Amazon API Gateway** (D8 · **ADR-13**) | RT-11.11, RT-05.16/05.18 quedan sustentados por un único componente coherente en lógica, física y costo |
+| Prometheus/Grafana/Loki on-premise sin VM dimensionada | **Plataforma única**: ADOT con buffer de 24 h → AMP, CloudWatch, X-Ray, Grafana OSS (**ADR-14**) | RT-03.16 y RT-14.01–14.09 se responden con «la misma plataforma que la nube», como exige el Art. 16.4 |
+| HashiCorp Vault sin emplazamiento físico | **Secrets Manager + SSM** en N-12 (**ADR-15**) | Art. 21.4 y RT-04.09 sustentados por un componente emplazado y costeado (Art. 16.2) |
+| MDM mencionado sin componente | **N-13** en la tabla de emplazamiento y en el T-11 B11 | RT-03.18 y RT-08.14 dejan de apoyarse en una mención genérica |
+| Retención citada contra RT-05.10 | Se responde contra **RT-16.10** | Corrige el mapeo del Cap. 15 del caso; el desajuste se eleva como consulta (Art. 43.3) |
+| «Flutter» en el dimensionamiento on-premise | **Kotlin (Android nativo)**, conforme a ADR-07 | RT-13.08 y RT-17.01 quedan sustentados por un solo marco de desarrollo |
+
+*Documento T-12_ArqFisica · v05-09-2026 · LafroX — Caso 02 Logística.*

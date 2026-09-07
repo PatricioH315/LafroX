@@ -57,7 +57,7 @@ El dimensionamiento se deriva de la **volumetría real del Caso (Tabla 14.1 / Ca
 | Documentos tributarios | ≈ 34.000 / mes |
 | Camiones con cadena de frío | 18 |
 | Puntos de medición de temperatura | 28 (≈ 7 módulos Ebyte de 4 canales) |
-| Sitios on-premise | 5 (Talca, Concepción, Curicó, Chillán, Los Ángeles) |
+| Sitios on-premise con cómputo | **5** (Talca, Concepción, Curicó, Chillán, Los Ángeles) — de las **6 instalaciones** que declaran la Tabla 14.1 y RT-21.16; la 6.ª es la casa matriz de Talca, sin nodo propio |
 
 > **Nota de coherencia (instalaciones):** la Tabla 14.1 y RT-21.16 reportan **6 instalaciones** (7 a tres años); el despliegue físico ubica cómputo en los **5 sitios on-premise** listados + borde en terreno (calle y 14.200 puntos). La divergencia 5/6 (Tabla 14.1 vs §8 del Caso) está declarada en las consultas al mandante (Art. 43.3) y no altera el dimensionamiento: el cómputo se emplaza en los 5 sitios, la 6.ª instalación es de red/almacenamiento sin nodo de cómputo propio.
 
@@ -230,7 +230,7 @@ En nube el equivalente es Aurora (writer + readers); EventBridge/SQS absorben el
 
 | Prueba | Carga | Escenario |
 |---|---|---|
-| Carga (RNF-19.04) | **1,5 × peak = 5.850 entregas/día ≈ 160 TPS sostenidos** | Pre-Producción, perfiles horarios reales (pick nocturno, despacho, preventa) |
+| Carga (RNF-19.04) | **1,5 × la carga de diseño = 5.850 entregas/día ≈ 160 TPS sostenidos** (carga de diseño = peak 2.600 × 1,5 = 3.900; la prueba la vuelve a multiplicar por 1,5) | Pre-Producción, perfiles horarios reales (pick nocturno, despacho, preventa) |
 | Estrés | Incremento hasta el **punto de quiebre ≥ 3×** | Curva de tiempo de respuesta vs carga |
 | Informe de carga (RT-09.07) | Curvas, saturación, recursos (CPU/RAM/IOPS/enlace/colas) | Insumo al hito de producción (mes 16) y a la actualización de capacidad (RT-09.09, §11) |
 
@@ -280,6 +280,6 @@ Herramientas: **k6/Gatling** + drivers a medida contra las APIs (svc-erp-integra
 2. `Bases_Tecnicas_Transversales.md` — RT-09.01…09.09, RT-03.20, RT-15.01.
 3. `Dimensionamiento_Infraestructura_OnPremise_v05.md` — premisas §1.1, clúster §1.2, ancho de banda §3.7, crecimiento y pruebas §10.
 4. `Propuesta_Arquitectura_Cloud_Caso02_CLAUDE_v2.md` v3.6 — §3.2/§3.5 (sizing y auto-scaling), §4.5 (FinOps).
-5. `Tabla_Emplazamiento_OnPremise_v06.md` — §1.0 (componentes C1…C6, 35 ítemes) y §4 (dispositivos).
+5. `Tabla_Emplazamiento_OnPremise_v06.md` — §1.0 (tabla maestra de emplazamiento, **36 componentes**: A-01…F-03 y N-01…N-13) y §4 (dispositivos de terreno).
 6. `Registro_Decisiones_Arquitectura_ADR_v01.md` — ADR-01/04/10/12.
 7. `Arquitectura_de_Despliegue_v01.md` — ambientes (5), redes y HA con los que este documento es consistente.

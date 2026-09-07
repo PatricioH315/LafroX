@@ -1,14 +1,30 @@
-# Arquitectura Lógica v6 — Documento Unificado (Puelche S.A. · Caso 2 Logística)
+# Arquitectura Lógica v6.2 — Documento Unificado (Puelche S.A. · Caso 2 Logística)
 
-> **Documento único de la capa lógica (v6).** Unifica en un solo archivo todo el contenido relevante de la arquitectura lógica de los documentos `00` → `08` **más las correcciones de la auditoría T-7/T-21/T-22 (2026-09-04)**, **el cierre de brechas frente a los RT de las Bases Técnicas Transversales (v3, 2026-09-05)**, **la resolución íntegra de los hallazgos de la auditoría v3 (2026-09-05)** **y la auditoría BA v4 (2026-09-05, H1 traza documental resuelto)**: contexto y cifras, marco normativo, referencia metodológica, actores, modelo de **8 capas (RT-02.01)**, módulos M1–M12, datos, seguridad y observabilidad transversales, stack de herramientas, decisiones (D1–D12), notas (N1–N5), supuestos (S01–S30), flujos críticos, diagramas C4, trazabilidad y pendientes.
+> **Cambios v6.1 → v6.2 (2026-09-06, alineación íntegra lógica ↔ física — auditoría del Subdocumento 4).** Esta versión cierra **todas** las divergencias detectadas entre la vista lógica y la vista física, sin cambiar ninguna decisión de negocio y sin introducir componentes nuevos que no tengan emplazamiento declarado:
 >
-> **Vigencia:** 2026-09-05 (v6). **Supera a `Arquitectura_Logica_v5.5.md`** (conservado para trazabilidad) y a las versiones anteriores (v5, v5.1, v4, v3, v2, v1, consolidaciones `08`/`07`). Los documentos `00`–`08` se mantienen como **fuentes de trazabilidad** (cada sección indica su origen).
+> 1. **Gestión de secretos (SEC-01, hallazgo A3):** se elimina **HashiCorp Vault** —que no tenía emplazamiento físico— y se adopta **AWS Secrets Manager + SSM Parameter Store** con consumo saliente desde los nodos on-premise por VPC Endpoint. Afecta §4, §4.2, §8.7, §9.6, §11, §11.6, §11.8, §13, §18.5 y D13.
+> 2. **Observabilidad (hallazgo A4):** se elimina el conjunto **Prometheus/Grafana/Loki autoadministrado on-premise** —sin VM dimensionada ni retención sostenible en VM-06— y se declara **una sola plataforma** (RT-03.16 y Art. 16.4 exigen «la misma plataforma que la nube, sin puntos ciegos»): colectores **ADOT** on-premise con buffer en disco de 24 h que exportan a **AMP (compatible Prometheus) · CloudWatch Logs · X-Ray**, con tableros en **Grafana OSS** en sa-east-1. Afecta §4, §12, §12.3, §13, §18.2 y D9.
+> 3. **Duración del token de acceso (hallazgo A5):** `access_token` pasa de 15 a **30 min**, valor prevalente de la fuente física (D-AL-07). §11.4.
+> 4. **Borde on-premise (hallazgo C6):** la Capa 2 deja de declarar «WAF on-premise»; el ingreso por centro de distribución es el **firewall/UTM con IPS (D-01)**. §4, §6, §13.
+> 5. **Contenedores on-premise:** se elimina **K3s**; el on-premise corre **Docker/Docker Compose** sobre el clúster Proxmox, coherente con la física y con un equipo de TI de 4 personas. §13.
+> 6. **Trazas, caché y CI:** se elimina **Jaeger** (queda X-Ray), se elimina el **Redis local** (la caché es N-07 ElastiCache en nube; la sesión sin conexión la sostiene la caché A-05) y se unifica el pipeline en **GitLab CI con etapa de construcción hermética en AWS CodeBuild** (procedencia SLSA 3). §12, §13.
+> 7. **Gestión de dispositivos (RT-03.18):** el **MDM** pasa de mención transversal a **componente con emplazamiento declarado (N-13, servicio gestionado en nube)**, incorporado también a la tabla de emplazamiento y al T-11. §11.7, §13.
+> 8. **Código de retención corregido (hallazgo D4):** la retención de auditoría se responde contra **RT-16.10**, no contra RT-05.10 (que es «catálogo de datos con linaje», Deseable). §10.8, §11, D1, S14.
+> 9. **Instalaciones (hallazgo B1):** se declara la lectura única — **6 instalaciones**, de las cuales **5 alojan cómputo**; la sexta es la casa matriz/oficinas de Talca, sin nodo propio. §0.2, §8.1, §8.4.
+> 10. **Supuesto camión ≠ conductor (hallazgo D3):** se declara S31 con la derivación que reconcilia el §2.3, el §2.4 y la Tabla 14.1 del caso.
+> 11. **Decisiones nuevas registradas:** **D13** (secretos), **D14** (observabilidad unificada) y **D15** (MDM como servicio gestionado), con alternativa evaluada y criterio, conforme al apartado 7 del Subdocumento 4 y a RT-02.04.
+
+> **Documento único de la capa lógica (v6.1).** Unifica en un solo archivo todo el contenido relevante de la arquitectura lógica de los documentos `00` → `08` **más las correcciones de la auditoría T-7/T-21/T-22 (2026-09-04)**, **el cierre de brechas frente a los RT de las Bases Técnicas Transversales (v3, 2026-09-05)**, **la resolución íntegra de los hallazgos de la auditoría v3 (2026-09-05)** **y la auditoría BA v4 (2026-09-05, H1 traza documental resuelto)**: contexto y cifras, marco normativo, referencia metodológica, actores, modelo de **8 capas (RT-02.01)**, módulos M1–M12, datos, seguridad y observabilidad transversales, stack de herramientas, decisiones (D1–D12), notas (N1–N5), supuestos (S01–S30), flujos críticos, diagramas C4, trazabilidad y pendientes.
 >
-> **Cambios v1→v2 (2026-09-04):** ADR fechados con alternativa evaluada/criterio (§14) · límites de contexto y dependencias inter-módulo (§8.4) · dimensionamiento lógico (§8.5) · TOGAF + ISO/IEC 42010 declarados (§1, §4.3, §19) · NIST SP 800-207 + STRIDE (§11) · vista de procesos formal (§17) · bitácora de reconciliación (Art. 16.4, §9.1) · gobierno de la capa de integración (§9.4) · diagramas de datos/integración/seguridad (§18.3–18.5). Detalle: registro de auditorías en `_staging/`.
+> **Vigencia:** 2026-09-06 (**v6.2**). Supera a la v6.1 y a todas las versiones anteriores (v6, v5.5, v5, v5.1, v4, v3, v2, v1, consolidaciones `08`/`07`). Los documentos `00`–`08` se mantienen como **fuentes de trazabilidad** (cada sección indica su origen).
 >
-> **Cambios v2→v3 (2026-09-05, auditoría de cumplimiento RT de las Bases Técnicas Transversales — Caps. 2, 3, 5, 9, 10, 12, 14, 16, 17 y 18):** RT-02.13 modelo de dominio canónico con eventos (§8.6) · RT-02.11 SPOF declarados y mitigados (§8.7) · RT-03.13 funciones no disponibles offline + procedimiento manual (§9.5) · contratos formales OpenAPI 3.1 / AsyncAPI 2.6, obsolescencia 6 meses, OAuth 2.1/mTLS y capa anticorrupción sobre ERP/WMS (§9.6) · matriz de integraciones con modo/volumen/ventana/comportamiento (§9.7) · carga y descarga masiva (§9.8) · posición CAP declarada (§10.4) · diccionario de datos (§10.5) · calidad ISO/IEC 25012 (§10.6) · MDM de datos maestros (§10.7) · retención/eliminación/Art. 85/exportabilidad (§10.8) · analítica con latencia ≤ 4 h, autoservicio y drill-down (§10.9) · identidad completa RBAC+ABAC, sesiones, aprovisionamiento, perfil de terreno, break-glass y MDM de dispositivos (§11.1–11.7) · tablero del mandante, alertas por síntomas y retención de observabilidad (§12.1–12.3) · desempeño 3×, cuello de botella, degradación controlada y clasificación de servicios (§17A) · módulos transversales RT-16.x: parametrización, workflows, GED/firma, notificaciones, búsqueda, autoatención (§17B) · movilidad RT-17.x (§17C) · RT-18: sin IA, declaración fundada (§17D). Detalle: `_staging/Auditoria_RT_BTT_Logica_v3.md` (auditoría de cumplimiento) y **Anexo A** (matriz RT→sección integrada).
+> **Decisiones vigentes: D1–D15** (D9 superada por D14, conservada por trazabilidad). **Supuestos: S01–S31.** **Notas: N1–N5.**
 >
-> **Cambios v3→v4 (2026-09-05 — auditoría `_staging/Auditoria_RT_BTT_Logica_v3.md`, 0 bloqueante):** se resuelven **todos** los hallazgos EN CAMINO con compromisos numéricos del Cap. 15 integrados en el diseño y decisiones del caso 16.1 tomadas y fundadas:
+> **Cambios v1→v2 (2026-09-04):** ADR fechados con alternativa evaluada/criterio (§14) · límites de contexto y dependencias inter-módulo (§8.4) · dimensionamiento lógico (§8.5) · TOGAF + ISO/IEC 42010 declarados (§1, §4.3, §19) · NIST SP 800-207 + STRIDE (§11) · vista de procesos formal (§17) · bitácora de reconciliación (Art. 16.4, §9.1) · gobierno de la capa de integración (§9.4) · diagramas de datos/integración/seguridad (§18.3–18.5). Detalle: registro de auditorías.
+>
+> **Cambios v2→v3 (2026-09-05, auditoría de cumplimiento RT de las Bases Técnicas Transversales — Caps. 2, 3, 5, 9, 10, 12, 14, 16, 17 y 18):** RT-02.13 modelo de dominio canónico con eventos (§8.6) · RT-02.11 SPOF declarados y mitigados (§8.7) · RT-03.13 funciones no disponibles offline + procedimiento manual (§9.5) · contratos formales OpenAPI 3.1 / AsyncAPI 2.6, obsolescencia 6 meses, OAuth 2.1/mTLS y capa anticorrupción sobre ERP/WMS (§9.6) · matriz de integraciones con modo/volumen/ventana/comportamiento (§9.7) · carga y descarga masiva (§9.8) · posición CAP declarada (§10.4) · diccionario de datos (§10.5) · calidad ISO/IEC 25012 (§10.6) · MDM de datos maestros (§10.7) · retención/eliminación/Art. 85/exportabilidad (§10.8) · analítica con latencia ≤ 4 h, autoservicio y drill-down (§10.9) · identidad completa RBAC+ABAC, sesiones, aprovisionamiento, perfil de terreno, break-glass y MDM de dispositivos (§11.1–11.7) · tablero del mandante, alertas por síntomas y retención de observabilidad (§12.1–12.3) · desempeño 3×, cuello de botella, degradación controlada y clasificación de servicios (§17A) · módulos transversales RT-16.x: parametrización, workflows, GED/firma, notificaciones, búsqueda, autoatención (§17B) · movilidad RT-17.x (§17C) · RT-18: sin IA, declaración fundada (§17D). Detalle: auditoría de cumplimiento RT (v3) y **Anexo A** (matriz RT→sección integrada).
+>
+> **Cambios v3→v4 (2026-09-05 — auditoría de cumplimiento RT v3, 0 bloqueante):** se resuelven **todos** los hallazgos EN CAMINO con compromisos numéricos del Cap. 15 integrados en el diseño y decisiones del caso 16.1 tomadas y fundadas:
 
 > - **Sync tras reconexión (RT-03.12 / caso RT-03.13):** ≤10 min en reparto · ≤2 h en CD, con particionado/reanudación, dedupe y reconciliación determinista (§9.1, §9.5, §9.8).
 > - **Latencias analíticas (RT-05.29):** operación del día ≤5 min · cierre comercial ≤2 h · gestión ≤4 h, alimentadas por eventos (Capa 5) (§10.4, §10.6, §10.9).
@@ -17,17 +33,17 @@
 > - **RTO/RPO (Art. 20 / RT-07.04):** RPO ≤15 min · RTO ≤4 h, ventana crítica 05:30–07:00 en cero indisponibilidad (§8.7, S27).
 > - **STRIDE por componente + matriz de controles ISO/IEC 27001:2022 / 27002** (§11.8) · **contratos de la API de negocio** (S28, §9.6) · **históricos ERP/WMS consultables** (RT-05.15, §10.8) · **traza documental** (matriz RT integrada en Anexo A; H1 de referencias de auditoría resuelto en v5, más abajo).
 >
-> **Cambios v4→v5 (2026-09-05 — auditoría `_staging/Auditoria_BA_Logica_v4.md`, 0 bloqueante):** se resuelve **H1 (traza documental)**: las referencias a `_staging/Auditoria_Arquitectura_Logica_v3.md` (inexistente) se corrigen, apuntando a la auditoría existente `_staging/Auditoria_RT_BTT_Logica_v3.md` y a la nueva auditoría BA de esta versión. Sin cambios de diseño ni contenido: pendientes declarados en §20 (innovaciones RT-26.01 y alineación con la arquitectura física, fuera del alcance de la lógica hasta que existan).
+> **Cambios v4→v5 (2026-09-05 — auditoría BA lógica v4, 0 bloqueante):** se resuelve **H1 (traza documental)**: las referencias a `Auditoria_Arquitectura_Logica_v3.md` (inexistente) se corrigen, apuntando a la **matriz del Anexo A** (única fuente de traza RT lógica). Sin cambios de diseño ni contenido: pendientes declarados en §20 (innovaciones RT-26.01 y alineación con la arquitectura física, fuera del alcance de la lógica hasta que existan).
 
 > **Cambios v5→v5.1 (2026-09-05 — alineación con la arquitectura física, hallazgos A1/A2 de la auditoría lógica↔física):** las apps de campo (preventa/reparto) pasan de **Flutter** a **Kotlin nativo (Android)** (ADR-07 de la física: SQLite/Room + Zebra DataWedge sobre parque Zebra) y la puerta de enlace (Capa 3) pasa de **Kong** a **Amazon API Gateway**, como está desplegada en la física (Despliegue v01 · Cloud v3.6 · Tabla v06). Kong queda solo como alternativa open source.
 >
-> **Cambios v5.1→v5.5 (2026-09-05 — auditoría de cumplimiento con los requisitos de arquitectura lógica de las Bases Administrativas, Subdoc 4):** resuelve **H1** (tabla §20: versión vigente declarada como "v4 (este)" → **v5.5**, con cadena de superados v5/v4/v3/v2/v1) · **H2** (Anexo A: **RT-04.01** "5 ambientes + DR" sin trazar en la matriz → fila añadida; ya declarado en §1 principio 6, §13 y §18.9) · **H3** (N1: supuesto de **5 sitios** (2 CD + 3 CDK) declarado explícitamente **candidata a consulta Art. 43.3** por la inconsistencia caso §8 (5) vs Tabla 14.1/RT-21.16 (6), con topología parametrizable RF-02.02/RT-02.12). Sin cambios de diseño ni contenido. Detalle: `_staging/Auditoria_BA_Logica_v5.md` (veredicto: CUMPLE; 0 bloqueantes; observación H4 sobre registros de auditorías previas no presentes en el repo).
+> **Cambios v5.1→v5.5 (2026-09-05 — auditoría de cumplimiento con los requisitos de arquitectura lógica de las Bases Administrativas, Subdoc 4):** resuelve **H1** (tabla §20: versión vigente declarada como "v4 (este)" → **v5.5**, con cadena de superados v5/v4/v3/v2/v1) · **H2** (Anexo A: **RT-04.01** "5 ambientes + DR" sin trazar en la matriz → fila añadida; ya declarado en §1 principio 6, §13 y §18.9) · **H3** (N1: supuesto de **5 sitios** (2 CD + 3 CDK) declarado explícitamente **candidata a consulta Art. 43.3** por la inconsistencia caso §8 (5) vs Tabla 14.1/RT-21.16 (6), con topología parametrizable RF-02.02/RT-02.12). Sin cambios de diseño ni contenido. Detalle: auditoría BA lógica **v5** (veredicto: CUMPLE; 0 bloqueantes; observación H4 sobre registros de auditorías previas no presentes en el repo).
 >
 > **Actualización (2026-09-05 — alineación con la arquitectura física, D2):** la **serie de tiempo consolidada** deja de proponerse como extensión transaccional de PostgreSQL sobre Aurora y pasa a **OLAP por diseño**: DynamoDB raw (TTL 30 d) → Glue → S3 Parquet (5 años inmutable) → Redshift Serverless (consulta/QuickSight). D2 actualizada; S15 ahora decide solo la **granularidad de agregación** (no el motor); S17/S18 y los diagramas §18 ajustados; control `grep -i timescale` en el repo: **0 resultados**. On-prem queda PostgreSQL + PostGIS.
 >
 > **v5.5.1 (2026-09-05): cifra TPS unificada con la física — ~35 TPS base / ~105 TPS ráfaga (35×3) / ≤130 TPS transitorio (hallazgo M2).**
 >
-> **Cambios v5.5.1→v6 (2026-09-05 — promoción formal a v6):** el documento unificado se promueve a **v6** (archivo `Arquitectura_Logica_v6.md`), consolidando la actualización D2 (serie de tiempo a **OLAP por diseño**) y la unificación TPS con la física (v5.5.1). Sin cambios de contenido; cadena de superados y tabla §20 actualizadas.
+> **Cambios v5.5.1→v6 (2026-09-05 — promoción formal a v6):** el documento unificado se promueve a **v6** (posteriormente renombrado a `Arquitectura_Logica_v6-1.md`), consolidando la actualización D2 (serie de tiempo a **OLAP por diseño**) y la unificación TPS con la física (v5.5.1). Sin cambios de contenido; cadena de superados y tabla §20 actualizadas.
 
 > **Actualización de diagramas (2026-09-05):** set completo de la arquitectura lógica en §18 (13 diagramas): contexto revisado (Keycloak interno en Capa 7), contenedores 8 capas, módulos M1–M12 con dependencias, actores → superficies, vista de procesos (5 secuencias), datos, integración, seguridad y ubicación lógica híbrida. **La fuente canónica de los diagramas es el texto Mermaid de este documento (§18);** los SVG/PNG se exportan a `Diagramas/` para el informe (AGENTS).
 >
@@ -63,7 +79,9 @@
 | Envases retornables | 68.000 canastillos y 9.400 pallets (pérdida estimada 14 % anual) |
 | Conteo cíclico / merma | Diferencia 2,3 % del valor contado · merma por vencimiento 1,7 % |
 | OTIF base | 82,4 % de entregas completas y a tiempo |
-| Ventana crítica | Despacho 05:30–07:00 con **cero indisponibilidad** (96 camiones) |
+| Ventana crítica | Despacho 05:30–07:00 con **cero indisponibilidad** (96 camiones: 42 propios + 54 de transportistas) |
+| **Instalaciones a cubrir** | **6** (Tabla 14.1 y RT-21.16), de las cuales **5 alojan cómputo**: CD Talca, CD Concepción y las 3 plataformas de cross-docking (Curicó, Chillán, Los Ángeles). La sexta es la **casa matriz y oficinas de Talca**, contigua al CD (§2.1 y Cap. 3 del caso), que se sirve de la red y de los sistemas del CD y **no lleva nodo de cómputo propio**. Proyección del caso a 3 años: 7 instalaciones, absorbidas por parametrización (RT-02.12). *Lectura declarada: el §8 del caso menciona «cinco instalaciones»; prevalece el 6 de la Tabla 14.1 y de RT-21.16, y la divergencia se eleva como consulta (Art. 43.3) sin alterar el dimensionamiento.* |
+| **Personas de terreno y bodega** | 62 preventistas · **42 conductores propios** (uno por camión propio) y ≈160 conductores de transportistas · ~120 preparadores concurrentes en el turno nocturno · 310 personas de CD · **4 personas en el área de TI** (ver **S31** sobre camión ≠ conductor) |
 
 ### 0.3 Dolencias centrales que la propuesta debe resolver
 
@@ -104,9 +122,21 @@ Principios rectores (no negociables):
 6. **5 innovaciones obligatorias** (Cap. 5 BA) y **5 ambientes + DR** (RT-04.01).
 7. **Equipo TI pequeño (4 personas)** — todo componente administrable por el equipo de Puelche o por soporte del adjudicatario en los 56 meses.
 8. **Consistente con la misma licitación de "Pancho" pero NO copiado** — misma estructura de capas, contenido 100 % re-mapeado a Logística.
-9. **Marco de gobierno arquitectónico: TOGAF declarado, descripción conforme a ISO/IEC/IEEE 42010** (glosario BA) — vistas lógica (§4–§12), de procesos (§17), de datos (§10), de seguridad (§11) y de despliegue (física, pendiente); **ADR fechado y fundado** (§14, RT-02.04).
+9. **Marco de gobierno arquitectónico: TOGAF declarado, descripción conforme a ISO/IEC/IEEE 42010** (glosario BA) — **las seis vistas exigidas están completas**: lógica (§4–§12), de procesos (§17), de datos (§10), de seguridad (`Arquitectura_de_Seguridad_v01.md`, apoyada en §11), de **integración** (`Arquitectura_de_Integracion_v01.md`, apoyada en §9) y de **despliegue/física** (`Arquitectura_de_Despliegue_v01.md` + `Arquitectura_Fisica_Hibrida_Consolidada_Caso02_v02.md`); **ADR fechado y fundado** (§14, RT-02.04).
 
-**Inconsistencias detectadas en las Bases (a resolver en consultas, no unilateralmente):** instalaciones 5 vs 6 (§8 vs Tabla 14.1/RT-21.16); ponderación T-21 suma 98 %; ambientes 4 vs 5 (Art. 24 vs Transversales → prevalecen 5 + DR); códigos RT mal mapeados en la tabla del Caso Cap. 15 (RT-03.24→03.23, RT-03.13→03.12, RT-05.10→16.10, RT-06.01 tipología); instalaciones vs conductores/camiones (42 propios = camiones, ≈84 personas §2.4); T-22 vs entregables Cap. 17.1 (viven dentro del registro de requerimientos); fechas de calendario T-20/T-22; identificador TFEP-01/2026; desconexión 2 h (nominal) vs turno 14 h (contingencia).
+**Inconsistencias detectadas en las Bases (se elevan como consulta al mandante conforme al Art. 43.3, sin corregirlas unilateralmente; cada una tiene además una lectura declarada para poder diseñar):**
+
+| Inconsistencia | Lectura declarada por LafroX |
+|---|---|
+| Instalaciones: 5 (§8 del caso) vs 6 (Tabla 14.1 y RT-21.16) | **6 instalaciones, 5 con cómputo** (§0.2). Prevalece la fuente mayor y las dos menciones técnicas |
+| Ponderación del Formulario T-21 suma 98 %, no 100 % | Sin efecto en el diseño; se consulta por el 2 % faltante |
+| Ambientes: 4 (Art. 24) vs 5 (Art. 3 y Transversales §4.1/RT-04.01) | **5 ambientes**, con Recuperación ante Desastres como quinto (RT-04.01 prevalece) |
+| Códigos RT mal mapeados en la tabla del Cap. 15 del caso | Se responde en el T-12 contra el **código correcto del transversal**: **RT-03.24 → RT-03.23** (red inalámbrica), **RT-03.13 → RT-03.12** (sincronización tras reconexión), **RT-05.10 → RT-16.10** (retención de auditoría), y RT-06.01 se lee como exclusividad/aislamiento, no como tipología |
+| Camiones vs conductores: 42 propios (Tabla 14.1) vs 84 personas (§2.4) | **S31**: los 84 son 42 conductores + 42 peonetas, una tripulación por camión. El terminal se asigna por tripulación |
+| T-22 no menciona los entregables del Cap. 17.1 | Viven **dentro del registro de requerimientos**, no como capítulo aparte |
+| Fechas de calendario T-20/T-22 solapadas | Sin alterar el cronograma; se consultan |
+| Identificador «FEP01.26/FEP02.26» vs TFEP-01/2026 | Se estandariza a **TFEP-01/2026** |
+| Desconexión: «hasta dos horas» (§6, §8) vs turno de 14 h (Cap. 10 y RT-03.10) | **2 h como nominal, 14 h como contingencia de diseño**; ambos documentados |
 
 ---
 
@@ -193,8 +223,8 @@ La solución se organiza en las **ocho capas de existencia obligatoria** del num
 
 ```
 ┌───────────────────────────────────────────────────────────────┐
-│ 8 · OBSERVABILIDAD TRANSVERSAL     OTel · Prom/Grafana/Loki    │
-│ 7 · SEGURIDAD TRANSVERSAL          Keycloak + Vault + KMS      │
+│ 8 · OBSERVABILIDAD TRANSVERSAL     OTel/ADOT · AMP·CW·X-Ray    │
+│ 7 · SEGURIDAD TRANSVERSAL       Keycloak + Secrets Mgr + KMS   │
 │ 6 · DATOS (híbrida)                PG+PostGIS·Aurora·DynamoDB· │
 │     S3 Parquet·Glue·Redshift·Redis                            │
 │ 5 · INTEGRACIÓN Y EVENTOS          RabbitMQ·SQS·EventBridge    │
@@ -208,13 +238,13 @@ La solución se organiza en las **ocho capas de existencia obligatoria** del num
 | Capa | Rol en Puelche | Componentes principales | Exigencias del numeral 2.1 |
 |---|---|---|---|
 | **1. Presentación** | Superficies de los 11 actores | Apps móviles **offline-first** (Kotlin/Android) · portales web (Angular) · consolas back-office · HHT con escáner GS1 | Adaptativo, accesible y **sin lógica de negocio**; ninguna interfaz accede directo a la BD |
-| **2. Borde y exposición** | Único punto de entrada público, terminación de cifrado y borde IoT | **CloudFront** CDN · **WAF + Shield** · ALB/HAProxy · **TLS 1.3** · ingreso on-prem por CD con IPS/WAF · **IoT Greengrass** | CDN, WAF gestionado, DDoS L3/L4/L7, TLS 1.3 |
+| **2. Borde y exposición** | Único punto de entrada público, terminación de cifrado y borde IoT | **CloudFront** CDN · **WAF + Shield** · **ALB** · **TLS 1.3** · ingreso on-prem por CD con **firewall/UTM con IPS (D-01)** · **IoT Greengrass** | CDN, WAF gestionado, DDoS L3/L4/L7, TLS 1.3 |
 | **3. Puerta de enlace de servicios** | Publicación y gobierno de APIs de negocio y de sync offline | **Amazon API Gateway** (OIDC/Keycloak) en nube · validación de esquema · rate limiting · cuotas · versionado | Validación de esquema, inspección de carga útil, trazabilidad por transacción, catálogo de servicios |
 | **4. Servicios de negocio** | Lógica de los **12 módulos** con límites de contexto explícitos | Monolito modular **Django** (M1–M12) **stateless** + workers extraíbles (EDI, Telemetría, Sync) | Sin estado, despliegue independiente de los críticos, contratos versionados retro-compatibles |
 | **5. Integración y eventos** | Comunicación asíncrona, desacoplamiento y orquestación | **RabbitMQ** (on-prem) + **SQS FIFO/EventBridge** (nube) · DLQ · retry · dedupe · sync offline idempotente | Bus con persistencia, cola de mensajes fallidos, reintento y deduplicación |
 | **6. Datos** | Persistencia transaccional, analítica, documental y archivos (la serie de tiempo consolidada es dato analítico OLAP) | **PostgreSQL+PostGIS** on-prem por sitio · **Aurora** nube · **DynamoDB** IoT (raw, TTL 30 d) · **Redis** · **S3 Parquet** (raw 5 años inmutable) · **AWS Glue** · **Redshift Serverless** | Separación transaccional/analítica, cifrado en reposo, respaldo y retención declarados |
-| **7. Seguridad transversal** | Identidad, autorización, secretos, cifrado, auditoría y detección | **Keycloak** (OIDC/MFA/SSO/OTP) · **Vault** + Secrets Manager · **KMS** · mTLS · auditoría inmutable · GuardDuty/Security Hub | Aplicada a todas las capas, no como perímetro único |
-| **8. Observabilidad transversal** | Métricas, registros y trazas distribuidas correlacionadas | **OpenTelemetry** · Prometheus/Grafana/Loki (on-prem) · CloudWatch/X-Ray/AMP (nube) · RUM apps campo | Instrumentación OTel, cobertura nube + on-prem sin puntos ciegos |
+| **7. Seguridad transversal** | Identidad, autorización, secretos, cifrado, auditoría y detección | **Keycloak** (OIDC/MFA/SSO/OTP) · **AWS Secrets Manager + SSM Parameter Store** (D13) · **KMS** · mTLS · auditoría inmutable · GuardDuty/Security Hub | Aplicada a todas las capas, no como perímetro único |
+| **8. Observabilidad transversal** | Métricas, registros y trazas distribuidas correlacionadas | **OpenTelemetry**: colectores **ADOT** on-prem (buffer en disco 24 h) → **AMP** (compatible Prometheus) · **CloudWatch Logs** · **X-Ray** · tableros **Grafana OSS** (sa-east-1) · RUM apps campo (D14) | Instrumentación OTel; **una sola plataforma** para nube y on-premise, sin puntos ciegos (RT-03.16, Art. 16.4) |
 
 ### 4.1 Mapeo del modelo anterior (6 capas → 8 capas)
 
@@ -237,7 +267,7 @@ La solución se organiza en las **ocho capas de existencia obligatoria** del num
 | Negocio → Integración | 4 → 5 | Mensajería asíncrona (AMQP 0.9.1 / SQS API), DLQ, retry |
 | Negocio → Datos | 4 → 6 | ORM/GeoDjango (PostGIS); escrituras por aplicación, nunca desde la UI |
 | Borde IoT → Integración/Datos | 2 → 5/6 | MQTT/TLS → Greengrass → raw DynamoDB (TTL 30 d) → Glue → S3 Parquet → Redshift (OLAP) |
-| Seguridad → todas | 7 → 1..6 | OIDC/mTLS; secretos en Vault/Secrets Manager; KMS para cifrado en reposo |
+| Seguridad → todas | 7 → 1..6 | OIDC/mTLS; secretos en **Secrets Manager/SSM** (consumo saliente por VPC Endpoint desde on-premise); KMS para cifrado en reposo |
 | Observabilidad → todas | 8 → 1..6 | OTel spans/traces con `transaction_id`; push métricas/logs |
 
 ### 4.3 Cumplimiento RT-02.x (mapa para el T-12)
@@ -246,7 +276,7 @@ La solución se organiza en las **ocho capas de existencia obligatoria** del num
 |---|---|---|
 | RT-02.01 (8 capas + diagrama) | Este documento (§4 + §4.2) + §18 (C4) | ☑ |
 | RT-02.02 (modular, despliegue independiente de críticos) | §8.2 (workers extraíbles EDI/Telemetría/Sync) | ☑ |
-| RT-02.03 (vistas ISO/IEC 42010) | Lógica (este doc), procesos (§17), datos (§10), seguridad (§11); física pendiente · marco de gobierno **TOGAF declarado** (§1 #9, §19) | ☑/parcial (solo falta la vista física) |
+| RT-02.03 (vistas ISO/IEC 42010) | Lógica (este doc), procesos (§17), datos (§10), seguridad (`Arquitectura_de_Seguridad_v01.md`), **integración** (`Arquitectura_de_Integracion_v01.md`) y **física/despliegue** (`Arquitectura_Fisica_Hibrida_Consolidada_Caso02_v02.md` + `Arquitectura_de_Despliegue_v01.md`) · marco de gobierno **TOGAF declarado** (§1 #9, §19) | ☑ **completo (v6.2)** |
 | RT-02.04 (ADR fechado) | §14 (D1–D12) — registro vivo | ☑ |
 | RT-02.05 (negocio sin estado) | §8.2 | ☑ |
 | RT-02.06 (idempotencia) | §9.1, §8 (regla de oro UUID) | ☑ |
@@ -299,7 +329,7 @@ La solución se organiza en las **ocho capas de existencia obligatoria** del num
 | **CDN (CloudFront)** | Distribución de contenido estático de portales y catálogo público | CDN |
 | **WAF gestionado** | Filtrado de tráfico en el borde (OWASP Top 10 + reglas custom por API) | WAF gestionado |
 | **Shield / protección DDoS** | Mitigación en capas 3, 4 y 7 | Protección DDoS L3/L4/L7 |
-| **ALB / HAProxy** | Balanceo y terminación de **TLS 1.3** hacia el Gateway | Terminación de cifrado TLS 1.3 |
+| **ALB** (nube) · **firewall/UTM con IPS D-01** (on-premise) | Balanceo y terminación de **TLS 1.3** hacia el Gateway; el ingreso a la red de cada centro de distribución termina en el par de firewall en HA activo-pasivo | Terminación de cifrado TLS 1.3 |
 | **Ingreso on-prem por CD** | Único punto de entrada local (IPS/WAF de sitio) para consolas y tráfico de bodega | Borde también del lado on-premise |
 | **AWS IoT Greengrass** | Borde IoT en terreno/almacenes: recolecta sensores de frío y telemetría, filtra y **bufferiza** durante cortes, reenvía al volver cobertura (MQTT/TLS) | — |
 | **Dispositivos offline (borde delgado)** | Apps de preventa/reparto: cola local de eventos cifrada que se entrega por el Gateway al reconectar | — |
@@ -320,7 +350,7 @@ La solución se organiza en las **ocho capas de existencia obligatoria** del num
 | **Versionado** | Contratos versionados `/v1`; **compatibilidad hacia atrás** (RT-02.02) |
 | **Inspección de carga útil** | **Validación de esquema** (OpenAPI) y saneamiento de payload (anti-inyección) |
 | **Trazabilidad por transacción** | Asigna `transaction_id` a cada llamada; lo propaga a Capa 8 |
-| **Observabilidad de APIs** | Métricas de latencia/error/volumen por ruta en Grafana (Capa 8) |
+| **Observabilidad de APIs** | Métricas de latencia, error y volumen por ruta en los tableros Grafana OSS de la Capa 8 (alimentados por AMP/CloudWatch) |
 
 > **Sync offline formalizado:** la sincronización de preventa/reparto y misiones de picking **es tráfico de API de primera clase**: entra por el Gateway, valida esquema y deduplica (RT-02.06). Cierra el diseño offline-first sin romper el modelo de 8 capas.
 
@@ -350,7 +380,7 @@ La solución se organiza en las **ocho capas de existencia obligatoria** del num
 
 ### 8.2 Stateless (RT-02.05) y estilo modular (RT-02.02)
 
-- **Sin estado:** sesiones en **Keycloak/Cookie y Redis**; estado de proceso (pedidos, misiones, órdenes) en BD y colas de la Capa 6/5, **nunca en memoria del proceso**.
+- **Sin estado:** sesiones en **Keycloak/Cookie y Redis (ElastiCache, N-07)**; en operación desconectada la sesión la sostiene la **caché local del IdP (A-05, TTL 8 h)**, no un Redis on-premise. Estado de proceso (pedidos, misiones, órdenes) en BD y colas de la Capa 6/5, **nunca en memoria del proceso**.
 - **Monolito modular Django:** todos los módulos en una base de código, separados por apps/contextos. **Equipo TI de 4 personas, 14.200 clientes y ~31.000 pedidos/mes no justifican microservicios** (§2.3 de las Transversales lo desalienta expresamente) — S01.
 - **Despliegue independiente de los críticos (RT-02.02):** los componentes críticos se empaquetan y escalan por separado como *workers/procesos desacoplados*: **Sync-offline**, **EDI (AS2)**, **Telemetría** y **colas de integración**. La modularidad permite **extraer** estas apps del monolito si el volumen lo exige.
 
@@ -444,11 +474,11 @@ RT-02.11 exige **declarar** los SPOF (no omitirlos) y su mitigación. No todo SP
 | 2 | **Gateway (AWS API Gateway)** | Capa 3 | Multi-AZ administrado (RT-02.10); timeouts por integración (RT-02.08); mamparos (§9.3) | WAF + ALB |
 | 3 | **PostgreSQL maestro por sitio** | Capa 6 on-prem | **Autonomía 24 h**: el CD sigue operando sin nube; réplica de continuidad + WAL; PITR 35 días en nube; reconciliación idempotente y auditada (Art. 16.4, §9.1) | 2 réplicas + respaldo WAL |
 | 4 | **Mensajería on-prem (RabbitMQ)** | Capa 5 | Colas durables + DLQ; si la cola cae, los **buffers locales de terreno retienen** (UUID) y sincronizan al recuperar (§9.1) | VM redundante |
-| 5 | **M11 EDI / AS2** | Capa 5 | DLQ + reintentos; **bandeja de excepciones** operada por actor canónico (RF-12.05); acuerdo de niveles con cadenas (ventana 30 min, RF-12.10) | Colas durables + certificados rotados (Vault) |
+| 5 | **M11 EDI / AS2** | Capa 5 | DLQ + reintentos; **bandeja de excepciones** operada por actor canónico (RF-12.05); acuerdo de niveles con cadenas (ventana 30 min, RF-12.10) | Colas durables + certificados rotados en **Secrets Manager** |
 | 6 | **Planificador de rutas (conocimiento humano)** | Capa 4 (M4) | **Riesgo de conocimiento clave** (§0.4, se jubila en 2 años): ruteo automático < 20 min (Cap. 18) + el planificador valida como actor canónico; matriz de conocimiento cruzado antes de su retiro | M4 + capacitación |
 | 7 | **SII / Transbank / GIS (terceros)** | Capas 3/5 | SPOF **externos declarados** (RT-02.11 lo permite): cortacircuitos + colas + degradación elegante (§9.3); POS con **doble captura offline** y rendición posterior (RF-07.06/12) | No aplica (terceros) |
 
-> **Regla SPOF:** los SPOF **críticos** (1–3) tienen redundancia real; los **no críticos** (4–7) se mitigan con colas, cortacircuitos o **procedimiento manual declarado** (RT-03.13 → §9.5). **RTO/RPO comprometido (Art. 20 BA / RT-07.04, v4): RPO ≤ 15 min · RTO ≤ 4 h** sobre el conjunto de la solución, respaldado por replicación continua (CDC/WAL, §10.3, §10.1), Aurora **PITR 35 días** y **DRP us-east-1** (S16); la **ventana 05:30–07:00 opera en cero indisponibilidad** (diseño activo-activo, no depende de la recuperación) y se ejecuta **drill de DR semestral** (Art. 20 / RT-07.07). El detalle físico de respaldos se cierra en S27 (física).
+> **Regla SPOF:** los SPOF **críticos** (1–3) tienen redundancia real; los **no críticos** (4–7) se mitigan con colas, cortacircuitos o **procedimiento manual declarado** (RT-03.13 → §9.5). **RTO/RPO comprometido (Art. 20 BA / RT-07.04, v4): RPO ≤ 15 min · RTO ≤ 4 h** sobre el conjunto de la solución, respaldado por replicación continua (CDC/WAL, §10.3, §10.1), Aurora **PITR 35 días** y **DRP us-east-1** (S16); la **ventana 05:30–07:00 opera en cero indisponibilidad** por diseño **activo-activo intra-región (2 AZ en sa-east-1)** — no porque el DR esté activo: el **DRP us-east-1 es activo-pasivo con promoción manual** y **drill semestral (Art. 20 / RT-07.07)**. El detalle físico de respaldos se cierra en S27 (física).
 
 ---
 
@@ -519,7 +549,7 @@ RT-03.13 exige declarar **qué no está disponible offline** y el **procedimient
 |---|---|
 | **RT-05.16** — contratos API formales | API de negocio (Capas 3/4): **OpenAPI 3.1** (REST síncrona) por módulo; eventos (Capa 5): **AsyncAPI 2.6** con JSON Schema versionados; cada contrato con `x-owner` (módulo dueño), semver y estado (draft/stable/deprecated); catálogo servido por el **API Registry** (Amazon API Gateway + portal de desarrolladores interno) |
 | **RT-05.17** — obsolescencia | **6 meses de aviso mínimo** antes de deprecar una versión; **doble versión concurrente** durante la migración; cambio disruptivo requiere aprobación del Comité de Arquitectura (§9.4); el registro de deprecaciones es público al equipo |
-| **RT-05.18** — autenticación OAuth 2.1 / mTLS | Superficies: **OAuth 2.1** con PKCE; servicio a servicio: **mTLS** (microsegmentación §11); tokens cortos firmados por Keycloak; máquina a máquina con client credentials y secretos rotados en Vault |
+| **RT-05.18** — autenticación OAuth 2.1 / mTLS | Superficies: **OAuth 2.1** con PKCE; servicio a servicio: **mTLS** (microsegmentación §11); tokens cortos firmados por Keycloak; máquina a máquina con client credentials y secretos rotados en **Secrets Manager** (D13) |
 | **RT-05.20** — anticorrupción (ERP 2017 / WMS 2013) | **Capa anticorrupción (ACL)** frente a los legados sin documentación: adaptadores por contrato OpenAPI (de Puelche), mapeo de datos con trazabilidad de excepciones y **estrangulamiento** — las capacidades del ERP 2017 se absorben de a una en M1/M5/M7/M11; el **WMS 2013 se absorbe en M2/M5 (decisión 16.1 #14 / S29, v4)**; tabla "capacidad absorbida" en la matriz de trazabilidad (Cap. 17.1) |
 
 > **Régimen de versionado:** semver estricto (`major.minor.patch`); `major` = breaking (requiere aviso 6 meses), `minor` = aditivo, `patch` = corrección. Toda integración entra por el **gobierno de la capa (§9.4)** con pruebas de contrato consumidor-proveedor.
@@ -569,7 +599,7 @@ RT-05.22 exige definir el mecanismo de carga/descarga masiva (catálogo inicial,
 | **Nube (OLTP cloud + réplica/DRP del maestro de bodega)** | Preventa, reparto, BI + réplica/DRP del maestro on-premise (CDC sobre WAL lógico) | **Amazon Aurora PostgreSQL** (no es segundo WMS: réplica/DRP + OLTP cloud) |
 | **Ingesta IoT / telemetría en frío** | Lecturas de sensores y termógrafos (cadena de frío, −22 °C offline) | **Amazon DynamoDB** (raw, **TTL 30 días** — N3) + **AWS IoT Greengrass** en borde |
 | **Serie consolidada (OLAP)** | Telemetría camiones, series de temperatura (consolidado 5 años) | **S3 Parquet (s3-analytics-parquet) ← AWS Glue ← DynamoDB raw (TTL 30 d)** · consulta **Redshift Serverless** (QuickSight) |
-| **Cache / sesiones** | Stock caliente, precios, sesiones SSO, sync offline | **Redis** (ElastiCache nube + local) |
+| **Cache / sesiones** | Stock caliente, precios, sesiones SSO, sync offline | **Redis — Amazon ElastiCache (N-07, nube)**. Sin instancia on-premise: la caché de turno vive en el dispositivo y la sesión sin conexión en A-05 |
 | **Documentos / adjuntos** | POD firmado, DTE, comprobantes, evidencia QR | **Amazon S3** (object storage/data lake) + caché local |
 | **Analítica / BI (consolidada nube)** | OTIF, costo de servir, BI/gerencia, históricos (5 años) | **Amazon Redshift Serverless** (OLAP), alimentado desde **S3 → Glue (ETL) — nunca directo a Aurora** (S19) |
 
@@ -592,12 +622,12 @@ RT-05.22 exige definir el mecanismo de carga/descarga masiva (catálogo inicial,
 | 11 | **BD_EDI_CANALMODERNO** | Canal moderno EDI | Pedidos EDI (AS2/API), excepciones, ASN, acuses, integración cadenas | M11 (RF-12) |
 | 12 | **BD_BI_GERENCIA** *(analítica nube)* | Analítica / reportes | OTIF, costo de servir, ocupación de flota, segmentación, tableros | M10 (RF-11) |
 | 13 | **BD_MAILS_NOTIF** | Notificaciones / mensajería | Colas de avisos (SMS/WhatsApp/push), bitácora de envío | M4, M6, M12 (RF-04.06) |
-| 14 | **REDIS_SESIONES_CACHE** *(Redis)* | Cache / sesiones | Stock caliente, precios, sesiones SSO, sincronización offline | Capa 4 / Capa 6 apoyo |
+| 14 | **REDIS_SESIONES_CACHE** *(Redis — ElastiCache N-07, solo nube)* | Cache / sesiones | Stock caliente, precios, sesiones SSO, sincronización offline | Capa 4 / Capa 6 apoyo |
 | 15 | **S3_DOCS** *(S3)* | Documentos / adjuntos | POD firmado, DTE, comprobantes, evidencia QR | M6, M7, portales |
 
 ### 10.3 Retención, respaldo y replicación
 
-- **Retención (RT-05.10 del caso):** registros de temperatura y trazabilidad de lote **5 años** · evidencia de entrega **6 años** · **geolocalización de personas 12 meses** · DTE 6 años.
+- **Retención (valores del Cap. 15 del caso; el caso los rotula RT-05.10, pero el código transversal correcto es **RT-16.10** — RT-05.10 es «catálogo de datos con linaje», Deseable):** registros de temperatura y trazabilidad de lote **5 años** · evidencia de entrega **6 años** · **geolocalización de personas 12 meses** · DTE 6 años. El desajuste de códigos se responde en el T-12 contra RT-16.10 y se eleva como consulta al mandante (Art. 43.3).
 - **Respaldo declarado:** Aurora **PITR 35 días** · S3 versionado/Intelligent-Tiering · PostgreSQL on-prem con respaldo diario + WAL.
 - **Replicación / parametrización multi-sitio (RT-02.12):** nuevo CD se incorpora por **parametrización topológica** (RF-02.02) sin rediseño: una instancia PostgreSQL por sitio espeja la plantilla del cluster.
 
@@ -703,7 +733,7 @@ Aplicada a **todas** las capas, no como perímetro único.
 | **Identidad** | **Keycloak** (OIDC/SAML, SSO, MFA) — IdP maestro en ECS/Fargate; perfiles por actor (11 canónicos) | Autenticación de todas las superficies (Capa 1); **caché local on-prem TTL 8 h** para autonomía 24 h sin señal |
 | **Acceso externo** | **OTP de un solo uso** sin cuenta corporativa | Conductor externo (RF-06.08, portal transportistas) |
 | **App offline** | Token corto + **pinning/MDM opcional**; datos locales cifrados; borrado remoto | Preventa y reparto en terreno sin señal (RF-03.16/06.12) |
-| **Secretos** | **HashiCorp Vault** (on-prem) + **AWS Secrets Manager/SSM** (nube); **rotación automática** | Credenciales ERP, AS2/EDI (certificados), SII, Transbank |
+| **Secretos** | **AWS Secrets Manager + SSM Parameter Store** (nube), con **rotación automática** y consumo **saliente** desde los nodos on-premise por VPC Endpoint (**D13**; sin gestor de secretos autoadministrado on-premise) | Credenciales ERP, AS2/EDI (certificados), SII, Transbank |
 | **Cifrado** | En tránsito **TLS 1.3 / mTLS** · en reposo **KMS** por BD/objeto | Todas las capas |
 | **Microsegmentación** | mTLS entre servicios; sin confianza implícita en red interna; WAF en borde | Cliente web ↔ API de negocio ↔ datos |
 | **Auditoría** | **Registros inmutables** (RT-16.07), trazabilidad de acciones por actor | Cumplimiento y trazabilidad sanitaria (RF-09) |
@@ -738,7 +768,10 @@ Detalla el dominio Identidad de §11 (RT-12.x, hasta ahora solo declarado). Mode
 
 ### 11.4 Sesiones web y refresh de tokens (RT-12.12 · v3)
 
-- **Access token corto (15 min)** + **refresh token rotativo** con familia y revocación: cada uso de refresh emite uno nuevo e invalida el anterior (reuso detectado = posible robo → reautenticación).
+- **Estrategia de tokens unificada (valor único de la propuesta, alineado con D-AL-07):** `id_token` **1 h** · **`access_token` 30 min** · `refresh_token` **30 días, rotativo** con familia y revocación: cada uso de refresh emite uno nuevo e invalida el anterior (reúso detectado = posible robo → reautenticación). *(Hasta v6.1 esta sección declaraba 15 min, en contradicción con la fuente física; corregido en v6.2.)*
+- **Token de operación sin conexión, con TTL por perfil de actor:** **8 h** en el turno nocturno de bodega (RNF-13.01) y **14 h** en el turno completo de reparto y en la jornada de preventa (RNF-06.02). Se renueva al inicio de turno con cobertura o contra la caché local A-05, de modo que la ventana sin señal cubre siempre la jornada completa.
+- **Identificador de sesión fuera de la URL** (Art. 22): el token viaja en cabecera, nunca en la ruta de la dirección web.
+- **Control de sesiones concurrentes:** una sesión activa por actor de terreno; se deniega el inicio concurrente del mismo preventista o conductor en otro dispositivo, con opción de invalidar la anterior.
 - Inactividad: cierre a los **30 min** en portales de bodega/consolas; a los **60 min** en superficies de lectura (BI).
 - **Cierre global de sesión** (un botón de administración) para contingencia de dispositivo perdido/comprometido.
 
@@ -750,7 +783,7 @@ Detalla el dominio Identidad de §11 (RT-12.x, hasta ahora solo declarado). Mode
 
 ### 11.6 Cuenta de emergencia (break-glass) (RT-12.13 · v3)
 
-- Cuenta **fuera de banda** (bóveda física + secreto en Vault con sello de doble firma) para contingencia de indisponibilidad del IdP.
+- Cuenta **fuera de banda**, custodiada en **sobre sellado con doble firma en la bóveda física de la sala** (recinto de custodia, Sala v02 §4.5) — deliberadamente **fuera de todo sistema en línea**, para que siga siendo utilizable cuando el IdP o el enlace no estén disponibles. Su existencia y su rotación se registran en Secrets Manager como metadato, nunca el secreto.
 - Activación: procedimiento escrito, **notificación inmediata a TI y gerencia**, registro en cadena de custodia (RT-16.07); uso solo en la ventana de contingencia; **rotación de credenciales post-uso**.
 - La **caché local TTL 8 h** (§8.7 #1) reduce la probabilidad de requerirla; se prueba **dos veces al año** (junto con el drill de DR, Art. 20 / RT-07.07).
 
@@ -765,7 +798,7 @@ RT-03.18 exige gestión de dispositivos finales. Enrolamiento, política y contr
 | **Monitoreo** | Estado de sync, batería, versiones de app; alertas en Capa 8 (dispositivo perdido, storage bajo, sync fallido recurrente) |
 | **Seguridad** | **Borrado remoto selectivo** (RF-03.16/06.12): datos de la app y caché, sin tocar la información personal del dispositivo; revocación de tokens al borrar |
 | **Inventario** | Registro de dispositivos (IMEI/serial), asignación y estado; soporta el dimensionamiento (§8.5: 62 preventistas · ~120 preparadores · ~200 conductores) |
-| **Coexistencia** | MDM opcional (Android Enterprise o equivalente) **como servicio gestionado** — el equipo TI es de 4 personas (§1 #7), no se administra localmente |
+| **Emplazamiento** | **N-13 — MDM gestionado (Android Enterprise / Zebra DNA, SaaS)**, componente con emplazamiento declarado en `Tabla_Emplazamiento_OnPremise_v06.md` §1.0(b) y en el T-11 (**D15**). No es opcional: **RT-03.18 es Obligatorio**. No se administra localmente — el equipo de TI del CLIENTE es de 4 personas (§1 #7) |
 
 ### 11.8 Modelado STRIDE por componente y matriz de controles ISO/IEC 27001:2022 (RT-11.02/11.05 · v4)
 
@@ -778,7 +811,7 @@ RT-03.18 exige gestión de dispositivos finales. Enrolamiento, política y contr
 | API de negocio (Django) | Spoofing · Tampering · Info disclosure · Elevation | OAuth 2.1/mTLS (§9.6) · ORM + validación (injection) · RBAC+ABAC (§11.1) · cifrado de sensibles en reposo | SAST/DAST en pipeline |
 | Colas / eventos (RabbitMQ/SQS/EventBridge) | Tampering de mensajes · Repudiation | mTLS + firma de eventos · bitácora de reconciliación (Art. 16.4) | Pruebas de contrato + auditoría |
 | BD (PostgreSQL/Aurora/Redshift/S3) | Info disclosure · Tampering | KMS + cifrado en reposo · retención/exportación (§10.8) · auditoría de acceso (RT-16.09) | Controles de acceso + revisión de cifrado |
-| ERP 2017 / SII / Transbank / EDI-AS2 | Spoofing · Tampering de datos intercambiados · Repudio de transacciones | mTLS/certificados Vault (§11) · ACL (§9.6) · firmas/checksum en mensajes y exportaciones (§9.8) | Pruebas de falla por integración (§9.7) |
+| ERP 2017 / SII / Transbank / EDI-AS2 | Spoofing · Tampering de datos intercambiados · Repudio de transacciones | mTLS con certificados gestionados en **Secrets Manager/ACM** (§11) · ACL (§9.6) · firmas/checksum en mensajes y exportaciones (§9.8) | Pruebas de falla por integración (§9.7) |
 | Telemetría / IoT (Greengrass → DynamoDB) | Spoofing de sensores · Tampering de lecturas | Certificados de dispositivo + borde autenticado · series inmutables | Rol de dispositivo + revisión |
 
 **RT-11.05 — matriz de controles ISO/IEC 27001:2022/27002 (Anexo A):** el catálogo de controles del SGSI se mapea a los dominios de esta capa; abajo los controles Aplicados a la solución, detallados en el plan de seguridad (entregable de T-16 / Art. 21):
@@ -808,14 +841,17 @@ Capa nueva del modelo de 8 capas: formaliza métricas, registros y trazas con co
 | Dominio | Componente | Detalle |
 |---|---|---|
 | **Instrumentación** | **OpenTelemetry** (SDK en Django, apps Kotlin, API Gateway, RabbitMQ/SQS, Greengrass) | Trazas y métricas nativas; spans con `transaction_id` propagado desde la Capa 3 |
-| **Métricas** | **Prometheus** (on-prem) + **CloudWatch/AMP** (nube) | SLO/SLI de los ejes de negocio: OTIF, ventana 05:30–07:00 con cero indisponibilidad, tasa de sync offline, p95 de respuesta (RT-09.01) |
-| **Registros** | **Loki** (+ CloudWatch Logs) | Logs centralizados de nube y on-prem, **sin puntos ciegos** |
-| **Trazas** | **X-Ray** / Jaeger | Trazas distribuidas correlacionadas extremo a extremo (Capa 1 → 2 → 3 → 4 → 5/6) |
+| **Recolección on-premise** | **Colector ADOT** (F-01: VM-06 Talca, VM-C04 Concepción, contenedor en cross-dock) con **buffer en disco de 24 h** | Único punto de salida de la telemetría on-premise; sostiene la autonomía de 24 h sin perder señal de observabilidad |
+| **Métricas** | **Amazon Managed Service for Prometheus (AMP)** — compatible Prometheus/PromQL — + **CloudWatch** | SLO/SLI de los ejes de negocio: OTIF, ventana 05:30–07:00 con cero indisponibilidad, tasa de sync offline, p95 de respuesta (RT-09.01). Retención 13 meses |
+| **Registros** | **CloudWatch Logs** (+ archivo en S3) | Logs centralizados de nube y on-prem, **sin puntos ciegos**; 12 meses en línea + 24 en archivo |
+| **Trazas** | **AWS X-Ray** | Trazas distribuidas correlacionadas extremo a extremo (Capa 1 → 2 → 3 → 4 → 5/6). Retención 30 días |
 | **RUM / apps de campo** | Instrumentación de experiencia real | Detección de fallos de sincronización offline y degradación de apps Kotlin |
-| **Alertas** | Grafana Alerting → notificaciones | Integra con RF-09.05 (excursión térmica) y el "Sistema de monitoreo" (actor no-humano) |
-| **Dashboard operacional** | Grafana / BI operacional | Unifica flota, cadena de frío, sync y OTIF para Jefe de TI y Jefa de calidad |
+| **Alertas** | Reglas de alerta en **AMP/Alertmanager** y alarmas CloudWatch → **SNS/PagerDuty** | Integra con RF-09.05 (excursión térmica) y el "Sistema de monitoreo" (actor no-humano) |
+| **Dashboard operacional** | **Grafana OSS** autoadministrado en sa-east-1 (Amazon Managed Grafana no está disponible en la región) | Unifica flota, cadena de frío, sync y OTIF para Jefe de TI y Jefa de calidad |
 
-> **Decisión D9 (2026-09-04):** la observabilidad se construye sobre **OpenTelemetry** (estándar neutral, aplicable a nube + on-prem). Prometheus/Grafana/Loki on-prem + CloudWatch/X-Ray/AMP en nube, correlación por `transaction_id`.
+> **Decisión D14 (2026-09-06, reemplaza a D9):** la observabilidad se construye sobre **OpenTelemetry** y sobre **una sola plataforma**. El on-premise **emite** (colectores ADOT con buffer de 24 h) y la nube **almacena, correlaciona y presenta** (AMP, CloudWatch Logs, X-Ray, Grafana OSS), con correlación por `transaction_id`. *Alternativa evaluada: un conjunto Prometheus + Grafana + Loki autoadministrado en cada centro de distribución — **rechazada** porque constituye una segunda plataforma de observabilidad (RT-03.16 y Art. 16.4 exigen «la misma plataforma que la nube»), porque no tiene VM dimensionada (VM-06 es de 2 vCPU / 4 GB / 50 GB) y porque su operación recae sobre un equipo de TI de 4 personas.*
+>
+> **Qué se ve durante un corte de enlace.** Es la contrapartida honesta de esta decisión y se declara como tal (RT-03.13): mientras dura el corte, los **tableros centralizados no están disponibles**. Lo que sí opera es (a) el **buffer de 24 h** en disco, que garantiza que no se pierde ninguna métrica, registro ni traza y que el hueco se cierra al reconectar; (b) las **alarmas locales del propio equipamiento** —excursión térmica con señal acústica y luminosa en bodega, sensores de sala al DCIM/BMS (RT-06.14), alarmas del hipervisor y del firewall—, que son las que efectivamente detienen un despacho; y (c) el **bloqueo de despacho por excursión, que es 100 % local** y no depende de ningún tablero. Ninguna decisión de la ventana crítica 05:30–07:00 depende de la observabilidad centralizada.
 
 ### 12.1 Tableros para el CLIENTE — la observabilidad se comparte (RT-14.02 · v3)
 
@@ -843,7 +879,7 @@ RT-14.02 exige que la información de la operación esté disponible para el **c
 | Práctica | Detalle |
 |---|---|
 | **Estructura** | Logs **estructurados** (JSON, `transaction_id` propagado desde Capa 3); sin stdout ad-hoc; esquema por servicio |
-| **Correlación** | Métricas + trazas + logs correlacionados por `transaction_id` (D9, OTel); la ventana crítica tiene **dashboards en vivo** |
+| **Correlación** | Métricas + trazas + logs correlacionados por `transaction_id` (**D14**, OTel); la ventana crítica tiene **tableros en vivo** mientras hay enlace. Durante un corte rigen el buffer de 24 h y las alarmas locales del equipamiento (D14) |
 | **Retención (RT-14.07/08)** | **Métricas: 13 meses** (ciclo anual completo, incluido peak septiembre) · **trazas: 30 días** · **logs: 12 meses caliente + 24 meses archivo** (investigación y cumplimiento); geolocalización de personas: 12 meses (Ley 21.719) — la observabilidad **distingue datos técnicos de datos personales** |
 | **Integridad** | **Firma y control de acceso a los registros** (RT-16.07): los registros de auditoría son inmutables; rotación y respaldo declarados (S3/objeto frío) |
 | **Anonimización** | PII en logs se **enmascara por defecto** (RUT, teléfono); des-enmascarar requiere motivo y queda auditado |
@@ -852,7 +888,7 @@ RT-14.02 exige que la información de la operación esté disponible para el **c
 
 ## 13. Stack de herramientas consolidado (origen: `08` §11, `04`/`05`; fuente única de decisión)
 
-> Sustituye el detalle disperso de `04`/`05`. Toda herramienta se justifica contra un RT, una decisión (S16–S20 / D8–D9) o una nota (N1–N5).
+> Sustituye el detalle disperso de `04`/`05`. Toda herramienta se justifica contra un RT, una decisión (S16–S20 / D8–D9 / **D13–D15**) o una nota (N1–N5), **y debe tener un componente con emplazamiento declarado en la vista física** (regla de coherencia v6.2, ver nota al pie de la tabla).
 
 | Capa / Componente | Herramienta decidida | Alternativa sólida | Justificación principal |
 |---|---|---|---|
@@ -860,27 +896,31 @@ RT-14.02 exige que la información de la operación esté disponible para el **c
 | **Frontend web (portales + consolas)** | **Angular** + Tailwind CSS | React/Next.js | Framework corporativo (TypeScript), OIDC directo (Keycloak), portales con 90 % UI común, LTS Google |
 | **Apps de campo (preventa/reparto)** | **Kotlin (Android nativo)** | Flutter · React Native | Nativo del parque Zebra/Android (EC55 · TC58e · MC9400), escáner GS1 vía **Zebra DataWedge**, SQLite/Room offline, acceso nativo a GPS/POS/térmica; un solo SO objetivo (ADR-07) |
 | **Borde / CDN / WAF (Capa 2)** | **CloudFront + WAF + Shield** + ALB (nube) · ingreso on-prem con IPS/WAF | Cloudflare · Akamai | CDN, DDoS L3/L4/L7 y TLS 1.3 gestionados; evita fricción de operación al equipo de 4 |
-| **API Gateway (Capa 3)** | **AWS API Gateway** | Kong Gateway | **D8 (2026-09-05)**: administrado (sin nodo a operar — equipo TI de 4), WAF/throttling/cuotas integrados, OIDC con Keycloak, trazabilidad por transacción; coherente con la física |
+| **Puerta de enlace de servicios (Capa 3)** | **Amazon API Gateway** | Kong Gateway (open source, autoalojado) | **D8 (2026-09-05)**: administrado (sin nodo a operar — equipo TI de 4), WAF/throttling/cuotas integrados, OIDC con Keycloak, trazabilidad por transacción; coherente con la física |
 | **BD transaccional** | **PostgreSQL + PostGIS** | MariaDB · MySQL | GIS (rutas/geocercas), JSONB (pedidos offline, EDI), madurez OLTP |
 | **BD nube (OLTP + DRP)** | **Amazon Aurora PostgreSQL** | RDS estándar | Compatible PostgreSQL, multi-AZ, failover < 30 s, PITR 35 días |
 | **Ingesta IoT / frío** | **Amazon DynamoDB** (+ Greengrass borde) | Cassandra | Escrituras serverless < 10 ms p99, TTL nativo (**raw 30 días**, N3) |
 | **Serie consolidada (OLAP)** | **S3 Parquet + AWS Glue + Redshift Serverless** | InfluxDB · motores de series dedicados | OLAP por diseño: DynamoDB raw → Glue → S3 Parquet → Redshift; no motor transaccional ni extensión de PostgreSQL (D2) |
-| **Cache / sesiones** | **Redis** (Amazon ElastiCache + local) | Memcached | Cache stock/precios/sesiones SSO, colas ligeras |
+| **Cache / sesiones** | **Redis** — Amazon ElastiCache (N-07, **solo nube**) | Memcached | Cache stock/precios/sesiones SSO. Sin instancia on-premise: la operación desconectada se sostiene con la caché de turno del dispositivo y la caché A-05 del IdP |
 | **Mensajería asíncrona (Capa 5)** | **RabbitMQ** (on-prem) + **SQS FIFO/EventBridge** (nube) | Kafka (solo si eventos masivos) | Colas con retry/DLQ; SQS gestionado para reconciliación/ERP |
 | **Analítica / BI** | **S3 Data Lake + Redshift Serverless** (+ Glue ETL) | MariaDB analítico | OLAP histórico sin degradar OLTP (S19) |
 | **Objetos / documentos** | **Amazon S3** (+ Intelligent-Tiering, Object Lock) | — | POD, DTE, evidencia QR, data lake raw (Parquet) |
-| **IAM / Seguridad (Capa 7)** | **Keycloak** (OIDC/SAML, SSO, MFA) — IdP maestro + **Vault** (secretos) + **KMS** | Amazon Cognito · Auth0 | Open source sin lock-in, perfiles por actor, OTP externos (D6); secretos con rotación automática |
-| **Observabilidad (Capa 8)** | **OpenTelemetry** + Prometheus/Grafana/Loki + CloudWatch/X-Ray/AMP | Datadog · New Relic | **D9**: estándar neutral, cobertura nube + on-prem sin puntos ciegos |
-| **Contenedores / orquestación** | Docker · **ECS Fargate** (nube) · K3s/Docker Compose (CD) | EKS · Nomad | Fargate: sin nodos a operar, FinOps por vCPU/RAM — clave para equipo de 4 (N2) |
+| **IAM / Identidad (Capa 7)** | **Keycloak** (OIDC/SAML, SSO, MFA) — IdP maestro en nube + caché local A-05 | Amazon Cognito · Auth0 | Open source sin lock-in, perfiles por actor, OTP externos (D6) |
+| **Gestión de secretos (Capa 7)** | **AWS Secrets Manager + SSM Parameter Store** | HashiCorp Vault autoadministrado | **D13 (2026-09-06)**: servicio administrado con rotación automática, sin VM ni licencia adicional y sin operación local para un equipo de 4 (Art. 16.3); los nodos on-premise lo consumen por VPC Endpoint **saliente**, coherente con Zero Trust |
+| **Observabilidad (Capa 8)** | **OpenTelemetry/ADOT** (emisión on-prem, buffer 24 h) + **AMP · CloudWatch Logs · X-Ray · Grafana OSS** (plataforma única en nube) | Prometheus/Grafana/Loki autoadministrado on-prem · Datadog · New Relic | **D14**: una sola plataforma para nube y on-premise (RT-03.16, Art. 16.4); AMP es compatible Prometheus, de modo que las reglas y consultas PromQL se conservan sin lock-in |
+| **Gestión de dispositivos de terreno (RT-03.18)** | **MDM gestionado — Android Enterprise / Zebra DNA (N-13, SaaS)** | MDM autoalojado on-premise | **D15**: enrolamiento, política, modo quiosco, actualización y borrado remoto selectivo sobre un parque 100 % Android/Zebra; servicio gestionado porque el equipo de TI del CLIENTE es de 4 personas |
+| **Contenedores / orquestación** | Docker · **ECS Fargate** (nube) · **Docker Compose** sobre el clúster Proxmox y los mini-PC de cross-docking (on-premise) | EKS · K3s · Nomad | Fargate: sin nodos a operar, FinOps por vCPU/RAM (N2). **On-premise no se opera Kubernetes**: 10 VM y 3 contenedores de borde no lo justifican y su operación excede a un equipo de 4 |
 | **Infraestructura como Código** | **Terraform** (multi-zona) + Ansible | Pulumi · CloudFormation | Define zonas, redes y segmentación Zero Trust por código; multi-proveedor |
-| **CI/CD** | GitHub Actions / GitLab CI | Jenkins | Entrega de los 12 módulos con pruebas automáticas |
+| **CI/CD** | **GitLab CI** como orquestador del pipeline (repositorio del CLIENTE, RT-03.03) + **AWS CodeBuild** para la etapa de construcción hermética con procedencia **SLSA 3** y firma Sigstore/cosign | GitHub Actions · Jenkins | Entrega de los 12 módulos con pruebas automáticas y compuertas de seguridad (Art. 21.4); la construcción hermética es la que sostiene la declaración de RT-11.24 |
 | **Búsqueda de catálogo** | **OpenSearch** | Elasticsearch | Historial EDI y catálogo de productos |
 | **Documentación API** | OpenAPI / Swagger | Postman Collections | Contratos de integración explícitos (Capa 3) |
 | **Testing** | pytest (backend) · Playwright (web) | Cypress | Cobertura de los 12 módulos |
 
 **Servicios AWS consumidos (resumen):** CloudFront · WAF+Shield · ALB · API Gateway · Aurora · ElastiCache · DynamoDB · S3 · Redshift Serverless · ECS Fargate · Route 53 · Secrets Manager/SSM · KMS · IAM+Organizations · CloudWatch/X-Ray/AMP · Transit Gateway/VPC Peering · SQS · AWS Backup · GuardDuty/Security Hub · CloudTrail · SES/SNS · IoT Core+Greengrass.
 
-> **Nota de coherencia de stack reconciliada (2026-09-04, actualizada 2026-09-05):** lógica y física usan **Django · AWS · Aurora · ECS Fargate · Redis · Keycloak · Angular · AWS API Gateway · Kotlin (Android)** — no hay divergencia de stack. **Laravel fue descartado por decisión del equipo (2026-09-04)** (no queda como opción) y **Cognito quedó solo como alternativa**; **Flutter y Kong quedaron fuera por alineación con la física (2026-09-05, hallazgos A1/A2)**.
+> **Nota de coherencia de stack reconciliada (2026-09-04 · 2026-09-05 · cerrada 2026-09-06):** lógica y física usan **Django · AWS · Aurora · ECS Fargate · Redis (ElastiCache) · Keycloak · Angular · Amazon API Gateway · Kotlin (Android) · Secrets Manager/SSM · ADOT+AMP/CloudWatch/X-Ray/Grafana OSS · Docker/Docker Compose on-premise** — **no queda ninguna divergencia de stack entre las dos vistas**. Quedaron fuera, con su motivo declarado: **Laravel** (descartado por decisión del equipo, 2026-09-04), **Cognito** (solo alternativa, D6), **Flutter** y **Kong** (alineación con la física, 2026-09-05), y **HashiCorp Vault**, **Prometheus/Grafana/Loki autoadministrado on-premise**, **K3s**, **Jaeger** y **Redis local** (alineación con la física, 2026-09-06 — ninguno tenía emplazamiento físico ni dimensionamiento declarado, ver D13, D14 y §13).
+>
+> **Regla que gobierna esta tabla desde v6.2:** *ninguna herramienta puede figurar en el stack lógico si no tiene un componente con emplazamiento declarado en `Tabla_Emplazamiento_OnPremise_v06.md` §1.0.* Es la traducción operativa del Art. 16.2 —que exige justificar el emplazamiento componente por componente— y del Art. 16.4 in fine, que califica de **incoherencia grave** la divergencia entre arquitectura lógica, física y costo.
 
 ---
 
@@ -888,7 +928,7 @@ RT-14.02 exige que la información de la operación esté disponible para el **c
 
 | # | Decisión | Detalle / trazabilidad |
 |---|---|---|
-| D1 | **Telemetría: uso operativo, no control de jornada** *(2026-09-02)* | Integra fuente existente (L268, L594, RT-17.06). Excluidos: cámaras en cabina y control de jornada (L577). Resguardos Ley 21.719 (RT-05.10 · RT-11.10 · RT-16.09). **RF-14.02→supuesto, 14.05→exclusión, 14.09→eliminado.** *Alternativa evaluada: control de jornada/cámaras (rechazada por objeción sindical L577 y por el alcance operativo RT-17.06).* |
+| D1 | **Telemetría: uso operativo, no control de jornada** *(2026-09-02)* | Integra fuente existente (L268, L594, RT-17.06). Excluidos: cámaras en cabina y control de jornada (L577). Resguardos Ley 21.719 (RT-16.10 · RT-11.10 · RT-16.09). **RF-14.02→supuesto, 14.05→exclusión, 14.09→eliminado.** *Alternativa evaluada: control de jornada/cámaras (rechazada por objeción sindical L577 y por el alcance operativo RT-17.06).* |
 | D2 | **Serie consolidada en OLAP (S3/Glue/Redshift) por diseño** *(actualizada 2026-09-05)* | La serie de tiempo **consolidada** (telemetría y temperatura, retención 5 años) es **dato analítico OLAP**, no motor transaccional ni extensión de PostgreSQL: **DynamoDB raw (TTL 30 d) → AWS Glue → S3 Parquet → Redshift Serverless** (QuickSight). *Alternativa evaluada: InfluxDB / motores de series dedicados (rechazados: Aurora/RDS administrados no soportan la extensión y no se opera un motor extra).* |
 | D3 | **Modelo de actores: 11 canónicos** *(2026-09-01)* | La arquitectura se construye sobre los 11 canónicos (Capa 1); A1–A16 documentados pero NO integrados (S06/S07). *Alternativa evaluada: set ampliado de 27 actores (A1–A16 + canónicos, propuesta 2026-09-03) — rechazado por roles traslapados; todo RF queda cubierto con 11.* |
 | D4 | **Nube AWS + PostgreSQL/Redis (2026-09-02)** | Nube **AWS** multi-AZ (sa-east-1, DRP us-east-1); BD **PostgreSQL + PostGIS** y **Redis** (ElastiCache); **Aurora** para OLTP nube/réplica DRP; DynamoDB IoT; S3+Redshift BI (S16/S17). |
@@ -896,10 +936,13 @@ RT-14.02 exige que la información de la operación esté disponible para el **c
 | D6 | **IAM Keycloak (2026-09-04)** | Keycloak como identidad de negocio (**IdP maestro en ECS/Fargate**); Cognito solo alternativa (`05` §7). On-prem: **caché local offline TTL 8 h** (Modelo B de identidad). |
 | D7 | **Híbrido obligatorio + multi-zona + IaC + Zero Trust** *(2026-09-02)* | Bases (Art. 16). On-prem por sitio con autonomía 24 h (RT-03.10: 24 h CD · 14 h terreno). *Alternativa evaluada: solo-nube o solo-on-prem (rechazada por inadmisión contractual, Art. 16).* |
 | D8 | **Amazon API Gateway — Capa 3 (actualizada 2026-09-05)** | **Nueva por reformulación 8 capas (RT-02.01); alineada con la física (hallazgo A2).** **Amazon API Gateway** administrado en nube: OIDC con Keycloak, rate limiting, cuotas, versionado, validación de esquema y **trazabilidad por transacción**. Alternativa open source: Kong. |
-| D9 | **Observabilidad OpenTelemetry — Capa 8 (2026-09-04)** | **Nueva por reformulación 8 capas (RT-02.01).** OTel como estándar; Prometheus/Grafana/Loki on-prem + CloudWatch/X-Ray/AMP nube; correlación por `transaction_id`; RUM apps campo. Alternativa: Datadog/New Relic (descartados por lock-in y costo en equipo de 4). |
+| D9 | **Observabilidad OpenTelemetry — Capa 8 (2026-09-04)** | **Superada por D14 (2026-09-06).** Se conserva por trazabilidad: fijó OTel como estándar y la correlación por `transaction_id`; su parte de plataforma (Prometheus/Grafana/Loki on-prem) quedó sin emplazamiento y fue reemplazada. |
 | D10 | **WMS 2013 se absorbe en M2/M5** *(2026-09-05)* | Decisión 16.1 #14 / S29: **estrangulamiento por capacidades** (recepción GS1, slotting, misiones HHT, conteo cíclico), retiro en Etapa 1; maestros de bodega migrados a la BD on-prem (§10.1). *Alternativas evaluadas: mantener+integrar (rechazada: sin documentación de interfaces, sin GS1/SSCC, sin offline) y reemplazo por WMS de terceros (rechazada: riesgo de implantación y lock-in).* |
 | D11 | **Unidad de trazabilidad sanitaria = lote del proveedor + SSCC** *(2026-09-05)* | Decisión 16.1 #2: identidad = **lote GS1 (GTIN + lote + vencimiento)**; la **unidad logística (SSCC)** se enlaza en cada movimiento interno; trazabilidad evento a evento (EPCIS) y **retiro < 2 h** (§8.6, §17D). *Alternativas evaluadas: caja/pallet como identidad (rechazadas por volumetría y captura real), SSCC individual puro como identidad (rechazado por costo de etiquetado).* |
 | D12 | **Envases retornables = control por saldo por cliente** *(2026-09-05)* | Decisión 16.1 #10: **cuenta corriente por cliente** en M8 (RF-08) con cargo/abono por entrega y devolución y **KPI de reposición** (68.000 canastillos, 9.400 pallets, merma 14 %). *Alternativa evaluada: control por unidad identificada (rechazada: parque sin etiquetar, costo de marcado/lectura inviable en operación).* |
+| **D13** | **Gestión de secretos en servicio administrado** *(2026-09-06 — resolución SEC-01)* | Los secretos de integración (ERP, AS2/EDI, SII, Transbank) y las credenciales de servicio viven en **AWS Secrets Manager + SSM Parameter Store**, con rotación automática; los nodos on-premise los consumen por **VPC Endpoint saliente**, sin abrir puertos entrantes (Art. 21). El secreto de la cuenta de emergencia queda **fuera de línea**, en sobre sellado con doble firma en el recinto de custodia (§11.6). *Alternativa evaluada: **HashiCorp Vault autoadministrado on-premise** — rechazada porque exigía una VM adicional con su alta disponibilidad, respaldo, sellado, licencia y operación local sobre un equipo de TI de 4 personas, contra la preferencia por servicios administrados del Art. 16.3; y porque, tal como estaba declarada, **no tenía emplazamiento físico**, lo que incumple el Art. 16.2.* |
+| **D14** | **Observabilidad de plataforma única** *(2026-09-06 — reemplaza a D9)* | **OpenTelemetry** como estándar de instrumentación; **colectores ADOT on-premise con buffer en disco de 24 h** que exportan a una **única plataforma en nube**: **AMP** (compatible Prometheus/PromQL), **CloudWatch Logs**, **X-Ray** y tableros **Grafana OSS** en sa-east-1. Durante un corte, el buffer garantiza que no se pierde telemetría y las decisiones críticas —bloqueo por excursión térmica— siguen siendo locales. *Alternativa evaluada: conjunto **Prometheus + Grafana + Loki autoadministrado por centro de distribución** — rechazada porque constituye una segunda plataforma de observabilidad (RT-03.16 y Art. 16.4 exigen la misma que la nube, sin puntos ciegos), porque no tenía VM dimensionada y porque su operación excede al equipo de 4. Alternativa evaluada: Datadog o New Relic — rechazadas por lock-in y costo.* |
+| **D15** | **MDM como servicio gestionado, con emplazamiento declarado** *(2026-09-06)* | La gestión de dispositivos de borde y terreno que exige **RT-03.18 (Obligatorio)** se materializa en un **componente con emplazamiento propio: N-13, MDM gestionado (Android Enterprise / Zebra DNA, SaaS)**, con enrolamiento, política, modo quiosco, actualización de aplicación y de caché de turno, inventario por IMEI/serie y **borrado remoto selectivo**. *Alternativa evaluada: MDM autoalojado on-premise — rechazada por la misma razón que D13 (operación local sobre un equipo de 4) y porque el parque es 100 % Android/Zebra, donde el ecosistema gestionado es el camino nativo.* Hasta v6.1 el MDM se mencionaba de forma transversal **sin componente ni emplazamiento**; desde v6.2 figura en la tabla de emplazamiento y en el T-11. |
 
 ---
 
@@ -907,7 +950,7 @@ RT-14.02 exige que la información de la operación esté disponible para el **c
 
 | # | Nota | Detalle |
 |---|---|---|
-| **N1** | **Sitios = 2 CD + 3 cross-dockings** | El caso (L20/L128-130) define **2 centros de distribución (Talca, Concepción) + 3 plataformas de cross-docking (Curicó, Chillán, Los Ángeles)**. Aplicado en capas 4/6/8, diagramas y maqueta. **Supuesto declarado (candidata a consulta Art. 43.3):** existe inconsistencia en las Bases — el caso §8 habla de "red de cinco instalaciones" mientras la Tabla 14.1 y RT-21.16 mencionan **seis** instalaciones en cuatro regiones; se adopta el detalle operativo del caso (5 sitios: 2 CD + 3 CDK) como línea base de diseño y se deja la topología **parametrizable** (RF-02.02, RT-02.12) por si la consulta confirma 6. |
+| **N1** | **6 instalaciones, de las cuales 5 alojan cómputo** *(actualizada 2026-09-06)* | El caso define **2 centros de distribución (Talca, Concepción) + 3 plataformas de cross-docking (Curicó, Chillán, Los Ángeles)** como los sitios donde ocurre la operación logística, y la Tabla 14.1 junto a RT-21.16 declaran **6 instalaciones en cuatro regiones**. **Lectura declarada:** las 6 son los 5 sitios operacionales **más la casa matriz y oficinas de Talca** (§2.1 y Cap. 3 del caso), contigua al CD principal; esa sexta instalación se sirve de la red y de los sistemas del CD y **no lleva nodo de cómputo propio**. Por eso el stock multi-sitio de M2 y la topología de datos se declaran sobre **5 sitios**, mientras la cobertura de red, soporte y traslados (RT-21.16) se declara sobre **6**. La divergencia con el §8 del caso («red de cinco instalaciones») se eleva como **consulta (Art. 43.3)** y la topología queda **parametrizable** (RF-02.02, RT-02.12) para admitir la séptima instalación proyectada a 3 años y el eventual CD de Los Lagos hacia 2030. |
 | **N2** | **Cómputo nube = ECS Fargate** | Se adopta **Amazon ECS Fargate** (monolito Django + workers + Keycloak), coherente con D6. EKS queda solo como alternativa. |
 | **N3** | **DynamoDB = raw TTL 30 días** | DynamoDB es **ingesta raw con TTL 30 días** (GSI por `shipment_id` para consultas de flota); el consolidado de 5 años vive en la **capa OLAP**: S3 Parquet (s3-analytics-parquet) ← AWS Glue ← DynamoDB raw, consultado con **Redshift Serverless** (RT-05.10). S3 raw sigue **5 años inmutable**; retención de trazabilidad de frío = 5 años en ambas piernas (on-prem PostgreSQL + nube S3/Redshift). |
 | **N4** | **Redistribución de la antigua capa 4 (Cache/Offline/Mensajería)** | **Nueva por reformulación 8 capas.** Mensajería asíncrona → **Capa 5**; Redis cache/sesiones → **Capa 6**; buffers offline de apps → **Capa 1/2** (borde delgado con sync idempotente por Capa 3). |
@@ -941,7 +984,7 @@ Estados: **Decisión confirmada** · **Supuesto declarado** · **Exclusión decl
 | S11 | **RF-14.02 → Supuesto declarado**: telemetría a los 54 camiones externos fuera del alcance comprometido (requiere acuerdo con cada transportista, L655/L875) | Supuesto declarado |
 | S12 | **RF-14.05 → Exclusión declarada**: NO se registra tiempo de conducción/descanso desde GPS (control de jornada objetado, L577) | Exclusión declarada |
 | S13 | **RF-14.09 → Eliminado**: consumo de combustible no calculable con la fuente (solo posición/velocidad) y roza dimensión mecánica excluida (L594); kilometraje absorbido por RF-14.06 | Eliminado |
-| S14 | **Geolocalización de personas** con menor privilegio: retención 12 meses (RT-05.10), cifrado a nivel de campo (RT-11.10), registro de consultas (RT-16.09), Ley 21.719 | Supuesto de diseño |
+| S14 | **Geolocalización de personas** con menor privilegio: retención 12 meses (**RT-16.10**; el caso lo rotula RT-05.10), cifrado a nivel de campo (RT-11.10), registro de consultas (RT-16.09), Ley 21.719. **Queda excluida de la replicación transfronteriza a us-east-1** (Art. 23, ver `Arquitectura_de_Seguridad_v01.md` §10) | Supuesto de diseño |
 | S15 | **Dimensión de muestreo de telemetría** a definir → decide la **granularidad de agregación en Glue/Redshift**; no decide el motor (D2) | Pendiente / a validar |
 
 ### 16.3 Datos y nube (S16–S20)
@@ -968,12 +1011,13 @@ Estados: **Decisión confirmada** · **Supuesto declarado** · **Exclusión decl
 | S28 | **Contratos de la API de negocio**: OpenAPI 3.1 / AsyncAPI 2.6 por módulo con dueño, semver y obsolescencia 6 meses (§9.6); esquema por módulo en §8.4 | Decisión confirmada (v4) |
 | S29 | **WMS 2013 se absorbe en M2/M5** (decisión 16.1 #14: el Cap. 19 delega al PROPONENTE — no requiere consulta al mandante; fundada en §9.6) | Decisión confirmada (v4) |
 | S30 | **Plan de gestión del cambio** para telemetría con el sindicato (aceptación del alcance operativo) | Pendiente / a validar |
+| **S31** | **Camión ≠ conductor — reconciliación de la dotación de reparto (2026-09-06).** El caso ofrece tres cifras que parecen contradictorias: **42 camiones propios** (§2.3), **84 «conductores propios y peonetas»** (§2.4) y **«Conductores (42 propios y ≈160 de terceros) ≈ 200»** (Tabla 14.1). Se declara la lectura que las reconcilia sin residuo: los 84 del §2.4 son **una tripulación por camión — 42 conductores más 42 peonetas** —, lo que coincide exactamente con los 42 camiones propios del §2.3 y con los 42 conductores propios de la Tabla 14.1. **Consecuencia de diseño:** el terminal de reparto se asigna **por tripulación (una por vehículo)**, no por persona; el peoneta no porta terminal propio porque manipula carga y opera a una mano junto al conductor (Cap. 3 y RT-13.08). El parque queda por tanto en **42 + reserva** para conductores propios y **≈160 + reserva** para externos, tal como está dimensionado | **Supuesto declarado** · se eleva como consulta al mandante (Art. 43.3) para confirmar la composición de los 84 y el criterio de asignación; si el CLIENTE exigiera un terminal por persona, el parque propio sube de 42 a 84 y el impacto se traslada a la oferta económica |
 
 ---
 
 ## 17. Vista de procesos (ISO/IEC/IEEE 42010) — flujos críticos de referencia (origen: `08` §13)
 
-> **Vista de procesos (RT-02.03):** flujos end-to-end que cruzan capas y módulos; cada uno nombra su punto de entrada, las capas que atraviesa y su salida/actor. Complementa las vistas lógica (§4–§12), de datos (§10), de seguridad (§11) y de despliegue (física pendiente).
+> **Vista de procesos (RT-02.03):** flujos end-to-end que cruzan capas y módulos; cada uno nombra su punto de entrada, las capas que atraviesa y su salida/actor. Complementa las vistas lógica (§4–§12), de datos (§10), de seguridad, de integración y de despliegue/física, todas disponibles como documentos propios desde v6.2.
 
 1. **Preventa offline → venta:** preventista toma pedido sin señal (RF-03.02, Capa 1) → app genera UUID (RF-03.16) → **sync por Gateway** (Capa 2→3) → dedupe (RF-03.17) → reserva stock (RF-03.03) → valida crédito (RF-03.08/09, Capa 4).
 2. **Reparto → POD → rendición:** conductor entrega, captura firma/QR (RF-06.02/11), cobra POS (RF-07.06) sin señal (RF-06.12) → sincroniza turno (RF-06.07, Capa 3) → gerente de finanzas liquida (RF-07.02) → **colas** ERP (RF-07.09, Capa 5).
@@ -1165,10 +1209,10 @@ flowchart TB
         DB6[("Redis<br/>cache + sesiones")]
     end
     subgraph L7["Capa 7 · Seguridad transversal"]
-        S["Keycloak · Vault · KMS<br/>mTLS · auditoría · detección"]
+        S["Keycloak · Secrets Manager/SSM · KMS<br/>mTLS · auditoría · detección"]
     end
     subgraph L8["Capa 8 · Observabilidad transversal"]
-        O["OTel · Prometheus/Grafana/Loki<br/>CloudWatch/X-Ray/AMP · RUM"]
+        O["OTel/ADOT (buffer 24 h)<br/>AMP · CloudWatch · X-Ray · Grafana OSS · RUM"]
     end
     L1 --> L2
     L2 --> L3
@@ -1245,7 +1289,7 @@ flowchart TB
     K --> G["API Gateway (Capa 3) — scopes por actor"]
     G --> M["M1–M12 (Capa 4)"]
     LC["Caché local on-prem TTL 8 h<br/>autonomía 24 h (Modelo B)"] -.-> K
-    V["Vault + Secrets Manager<br/>rotación automática"] -.-> M
+    V["Secrets Manager + SSM<br/>rotación automática"] -.-> M
     KMS["KMS — cifrado en reposo"] -.-> D["Capa 6 (datos)"]
     A["Auditoría inmutable (RT-16.07)"] -.-> M
     GD["GuardDuty · Security Hub · STRIDE<br/>Zero Trust (NIST SP 800-207)"] -.-> B
@@ -1539,7 +1583,7 @@ flowchart TB
 |---|---|
 | Híbrido cloud + on-premise obligatorio | BD on-prem por CD (maestro de bodega, sucesor del WMS 2013, v4) + analítica/objetos en nube AWS (Capa 6) |
 | Multi-zona e IaC | Amazon ECS Fargate multi-AZ + Terraform (AWS y on-prem) |
-| Zero Trust | Keycloak OIDC/MFA + mTLS + Vault + AWS WAF/IAM/KMS + segmentación por IaC |
+| Zero Trust | Keycloak OIDC/MFA + mTLS + Secrets Manager/SSM + AWS WAF/IAM/KMS + segmentación por IaC |
 | Sin vendor lock-in | Núcleo open source (Django, Angular, PostgreSQL, Redis, RabbitMQ, **Keycloak**) portable; apps de campo **Kotlin nativo Android**; AWS aporta servicios gestionados (incl. API Gateway) sin amarrar el núcleo |
 | Descripción de arquitectura (ISO/IEC/IEEE 42010) y marco de gobierno | **TOGAF** declarado (§1 #9); vistas lógica, de procesos (§17), de datos (§10), de seguridad (§11); **ADR fechado y fundado** (§14 → RT-02.04) |
 | Mantenible 56 meses por equipo pequeño | Monolito modular + LTS + documentación OpenAPI + servicios AWS gestionados |
@@ -1549,7 +1593,7 @@ flowchart TB
 | RT-03.13 / RT-05.x / RT-10.08 (modo desconectado, contratos, datos, integraciones) | §9.5 (offline + procedimiento manual) · §9.6 (OpenAPI 3.1 / AsyncAPI 2.6, obsolescencia, OAuth 2.1/mTLS, ACL) · §9.7 (matriz de integraciones) · §9.8 (carga masiva) · §10.4–10.9 (CAP, diccionario, calidad 25012, MDM, retención/Art. 85, analítica) |
 | RT-12.x / RT-14.x / RT-03.18 (identidad, observabilidad, dispositivos) | §11.1–11.7 (RBAC+ABAC, sesiones, aprovisionamiento, terreno, externos, break-glass, MDM) · §12.1–12.3 (tablero del mandante, alertas por síntomas, retención de observabilidad) |
 | RT-09.x / RT-10.02 / RT-16.x / RT-17.x / RT-18 (desempeño, transversales, movilidad, IA) | §17A (3×, cuello de botella, degradación controlada, clasificación de servicios) · §17B (RT-16.x: parametrización, workflows, GED/firma, notificaciones, búsqueda, autoatención) · §17C (RT-17.x movilidad) · §17D (sin IA — N/A fundado) |
-| Cumplimiento RT detallado (matriz RT → estado → dónde) | **Anexo A de este documento** (matriz integrada RT→sección); auditorías de control: `_staging/Auditoria_RT_BTT_Logica_v3.md` y `_staging/Auditoria_BA_Logica_v4.md` |
+| Cumplimiento RT detallado (matriz RT → estado → dónde) | **Anexo A de este documento** (matriz integrada RT→sección) — única fuente de traza RT lógica |
 
 **Trazabilidad módulo ↔ actor ↔ RF:** el cuadro de §8.1 es la columna vertebral — todo RF cae en un módulo y todo módulo tiene al menos un actor canónico responsable (`04`/`08`); alimenta la **matriz de trazabilidad del Cap. 17**. Los 12 módulos son trazables a los 138 RF.
 
@@ -1559,8 +1603,8 @@ flowchart TB
 
 | Documento | Rol |
 |---|---|
-| **`Arquitectura_Logica_v6.md` (este)** | **Documento unificado de la capa lógica v6** — referencia de lectura única (00→08 + auditoría T-7/T-21/T-22 + cierre de RT de las BTT + **resolución de la auditoría v3** + resolución de la auditoría BA v4 (H1) + alineación con la física v5.1 (A1/A2) + auditoría BA lógica v5.5 (H1–H3) + **serie de tiempo a OLAP por diseño (D2)** + **unificación TPS con la física** (v5.5.1: ~35 base / ~105 ráfaga 35×3 / ≤130 transitorio)) |
-| `Arquitectura_Logica_v5.5.md` | Unificado v5.5 (00→08 + cierre de RT de las BTT + resolución de la auditoría v3 + auditoría BA v4 + alineación con la física v5.1 (A1/A2) + auditoría BA lógica H1–H3) — **superado por v6**, conservado para trazabilidad |
+| **`Arquitectura_Logica_v6-1.md` (este)** | **Documento unificado de la capa lógica v6.2** — referencia de lectura única. Incorpora la **alineación íntegra lógica ↔ física del 2026-09-06** (D13, D14, D15, S31, N1 actualizada). Fuentes previas: 00→08 + auditoría T-7/T-21/T-22 + cierre de RT de las BTT + resolución de la auditoría v3 + resolución de la auditoría BA v4 (H1) + alineación con la física v5.1 (A1/A2) + auditoría BA lógica v5.5 (H1–H3) + **serie de tiempo a OLAP por diseño (D2)** + **unificación TPS con la física** (v5.5.1: ~35 base / ~105 ráfaga 35×3 / ≤130 transitorio)) |
+| `Arquitectura_Logica_v5.5.md` | Unificado v5.5 (00→08 + cierre de RT de las BTT + resolución de la auditoría v3 + auditoría BA v4 + alineación con la física v5.1 (A1/A2) + auditoría BA lógica H1–H3) — **superado por v6.1**, conservado para trazabilidad |
 | `Arquitectura_Logica_v5.md` | Unificado v5 (00→08 + cierre de RT de las BTT + resolución de la auditoría v3 + auditoría BA v4) — **superado por v5.5**, conservado para trazabilidad |
 | `Arquitectura_Logica_v4.md` | Unificado v4 (00→08 + cierre de RT de las BTT) — **superado por v5**, conservado para trazabilidad |
 | `Arquitectura_Logica_v3.md` | Unificado v3 (00→08 + auditoría T-7/T-21/T-22) — **superado por v4**, conservado para trazabilidad |
@@ -1575,35 +1619,38 @@ flowchart TB
 - [x] Modelo de 8 capas (RT-02.01) alineado + diagramas (2026-09-04) · **set completo: 13 diagramas (§18)** — **fuente canónica: bloques Mermaid de este documento**; exportados SVG/PNG a `Diagramas/` para el informe (AGENTS).
 - [x] Alineación N1–N3 en `04`/`05` (2 CD + 3 CDK · ECS Fargate · DynamoDB TTL 30 d) (2026-09-04).
 - [x] Coherencia de stack reconciliada (Laravel descartado · Keycloak · ECS Fargate) (2026-09-04).
-- [x] **Auditoría contra T-7 / T-21 / T-22 + Bases Administrativas (2026-09-04)** → correcciones aplicadas: ADR fechados con alternativa/criterio (§14) · límites de contexto y dependencias inter-módulo (§8.4) · dimensionamiento lógico (§8.5) · TOGAF + ISO 42010 declarados (§1 #9, §19) · NIST SP 800-207 + STRIDE (§11) · vista de procesos formal (§17) · bitácora de reconciliación (§9.1) · gobierno de la capa de integración (§9.4) · set completo de diagramas: contexto, contenedores, módulos, actores→superficies, procesos, datos, integración, seguridad y ubicación (§18.1–18.9). Detalle: registro de auditorías en `_staging/`.
-- [x] **Auditoría de cumplimiento RT de las Bases Técnicas Transversales (2026-09-05)** → **v3 creada**: RT-02.11 SPOF (§8.7) · RT-02.13 modelo de dominio (§8.6) · RT-03.13 offline + procedimiento manual (§9.5) · contratos e integraciones (§9.6–9.8) · datos completos CAP/diccionario/calidad/MDM/retención/analítica (§10.4–10.9) · identidad completa (§11.1–11.7) · observabilidad con tablero del mandante (§12.1–12.3) · desempeño/transversales/movilidad/sin IA (§17A–17D). Detalle: auditoría `_staging/Auditoria_RT_BTT_Logica_v3.md` y matriz RT en el **Anexo A**.
+- [x] **Auditoría contra T-7 / T-21 / T-22 + Bases Administrativas (2026-09-04)** → correcciones aplicadas: ADR fechados con alternativa/criterio (§14) · límites de contexto y dependencias inter-módulo (§8.4) · dimensionamiento lógico (§8.5) · TOGAF + ISO 42010 declarados (§1 #9, §19) · NIST SP 800-207 + STRIDE (§11) · vista de procesos formal (§17) · bitácora de reconciliación (§9.1) · gobierno de la capa de integración (§9.4) · set completo de diagramas: contexto, contenedores, módulos, actores→superficies, procesos, datos, integración, seguridad y ubicación (§18.1–18.9). Detalle: registro de auditorías.
+- [x] **Auditoría de cumplimiento RT de las Bases Técnicas Transversales (2026-09-05)** → **v3 creada**: RT-02.11 SPOF (§8.7) · RT-02.13 modelo de dominio (§8.6) · RT-03.13 offline + procedimiento manual (§9.5) · contratos e integraciones (§9.6–9.8) · datos completos CAP/diccionario/calidad/MDM/retención/analítica (§10.4–10.9) · identidad completa (§11.1–11.7) · observabilidad con tablero del mandante (§12.1–12.3) · desempeño/transversales/movilidad/sin IA (§17A–17D). Detalle: auditoría de cumplimiento RT v3 y matriz RT en el **Anexo A**.
 - [x] **Auditoría v3 (2026-09-05) resuelta en v4** → compromisos numéricos del Cap. 15 (sync ≤10 min / ≤2 h §9.1·§9.5·§9.8; latencias 5/2/4 h §10.9; P95 1/1,5/2/2 s §17A) · decisiones 16.1 #2 (trazabilidad lote+SSCC, §8.6), #10 (envases saldo por cliente, §8.6) y #14 (WMS absorción en M2/M5, §9.6) · RTO/RPO 15 min / 4 h (§8.7, S27) · STRIDE + controles ISO/IEC 27001 (§11.8) · contratos de la API de negocio (S28, §9.6) · históricos ERP/WMS consultables (RT-05.15, §10.8) · matriz RT integrada (Anexo A).
-- [x] **Auditoría BA lógica v4 (2026-09-05) resuelta en v5 (H1: traza documental)** → veredicto 0 bloqueantes; se corrigen las 6 referencias a `_staging/Auditoria_Arquitectura_Logica_v3.md` (inexistente), apuntando a las auditorías existentes `_staging/Auditoria_RT_BTT_Logica_v3.md` y `_staging/Auditoria_BA_Logica_v4.md`. Sin cambios de diseño. Detalle: `_staging/Auditoria_BA_Logica_v4.md`.
-- [ ] **Alinear la física consolidada con la decisión lógica de Keycloak** (IdP maestro en ECS/Fargate; VM-05 = caché offline 8 h) — hallazgo de la auditoría; la física del `_staging` dice "master on-prem" (Informe 1 vence 07-09).
+- [x] **Auditoría BA lógica v4 (2026-09-05) resuelta en v5 (H1: traza documental)** → veredicto 0 bloqueantes; se corrigen las 6 referencias a `Auditoria_Arquitectura_Logica_v3.md` (inexistente), apuntando a la **matriz del Anexo A** como única fuente de traza RT lógica. Sin cambios de diseño.
+- [x] **Alinear la física consolidada con la decisión lógica de Keycloak** (IdP maestro en ECS/Fargate; VM-05 = caché offline 8 h) — **cerrado**: el documento de nube pasó a Modelo B en su v3.6 y quedó consolidado en D-AL-01/D-AL-02/D-AL-18.
+- [x] **Auditoría de coherencia del Subdocumento 4 (2026-09-06) resuelta en v6.2** → **cero divergencias lógica ↔ física**: SEC-01 resuelta con Secrets Manager/SSM (**D13**), observabilidad de plataforma única (**D14**, reemplaza a D9), MDM con emplazamiento propio N-13 (**D15**), `access_token` unificado en 30 min, borde on-premise declarado como firewall/UTM con IPS, eliminación de K3s, Jaeger y Redis local, pipeline unificado en GitLab CI + CodeBuild, retención respondida contra RT-16.10, lectura única de 6 instalaciones con 5 nodos de cómputo (N1) y supuesto **S31** (camión ≠ conductor). Detalle: `AUDITORIA_Coherencia_Subdoc4_v01.md`.
+- [x] **Vistas ISO/IEC/IEEE 42010 completas (RT-02.03)** — se incorporan como documentos propios la vista de **integración** (`Arquitectura_de_Integracion_v01.md`) y la de **seguridad** (`Arquitectura_de_Seguridad_v01.md`), que faltaban en el Subdocumento 4.
+- [ ] **Completar el numeral 14.2 del caso** (volumetría de sistema): 9 dimensiones sin estimar y 3 parciales. Es el pendiente de mayor impacto en la evaluación, porque el caso declara que las celdas vacías se evalúan como dimensionamiento no realizado.
 - [x] RTO/RPO (S27): **confirmado en v4 — RPO ≤ 15 min · RTO ≤ 4 h** (§8.7; Art. 20 / RT-07.04).
 - [x] Contratos de la API de negocio (S28): **cerrado en v4** — OpenAPI 3.1 / AsyncAPI 2.6 por módulo, dueño, semver y obsolescencia 6 meses (§9.6); matriz formal con la trazabilidad del Cap. 17.1.
 - [x] WMS 2013 (S29): **decisión tomada en v4** — absorción en M2/M5 fundada (§9.6); no requiere consulta al mandante (Cap. 19 delega al PROPONENTE).
-- [x] **Promoción a v6 (2026-09-05):** archivo renombrado a `Arquitectura_Logica_v6.md`; consolida la actualización D2 (serie de tiempo a **OLAP por diseño**) y la unificación TPS con la física (v5.5.1). Sin cambios de contenido; tabla §20 y encabezado actualizados.
+- [x] **Promoción a v6 (2026-09-05) y renombrado a v6.1:** archivo `Arquitectura_Logica_v6-1.md`; consolida la actualización D2 (serie de tiempo a **OLAP por diseño**) y la unificación TPS con la física (v5.5.1). Sin cambios de contenido; tabla §20 y encabezado actualizados.
 - [ ] Plan de gestión del cambio de telemetría con el sindicato (S30).
 - [ ] Pasar a PDF (texto) + XLSX (tablas) si se requiere formato derivado.
 
 ---
 
-*Documento unificado de la capa lógica **v6** — 2026-09-05 · Supera a `Arquitectura_Logica_v5.5.md`; incorpora la alineación con la arquitectura física (v5.1, A1/A2), la serie de tiempo a **OLAP por diseño** (D2) y la unificación TPS con la física (v5.5.1). Ver auditorías en `_staging/`.*
-*Actualización 2026-09-05: set completo de 13 diagramas (§18) — fuente canónica Mermaid en este documento; exportados a `Diagramas/` para el informe (AGENTS).*
+*Documento unificado de la capa lógica **v6.1** — 2026-09-05 · Supera a `Arquitectura_Logica_v5.5.md`; incorpora la alineación con la arquitectura física (v5.1, A1/A2), la serie de tiempo a **OLAP por diseño** (D2) y la unificación TPS con la física (v5.5.1). Ver auditorías.*
+*Actualización 2026-09-05: set completo de 13 diagramas (§18) — fuente canónica Mermaid en este documento; exportados a `Diagramas/` para el informe (AGENTS). Promoción a **v6.1** (archivo `Arquitectura_Logica_v6-1.md`) sin cambios de contenido.*
 
 ---
 
 ## Anexo A — Matriz de cumplimiento RT → sección (integra la traza documental que v3 remitía a archivos inexistentes; H1)
 
-> Esta matriz es **la fuente de la traza RT de la capa lógica** (T-12). Estado: **C** = Completo · **D** = Deseable adoptado. Las auditorías de control están en `_staging/Auditoria_RT_BTT_Logica_v3.md` (RT BTT v3) y `_staging/Auditoria_BA_Logica_v4.md` (BA lógica v4).
+> Esta matriz es **la fuente de la traza RT de la capa lógica** (T-12). Estado: **C** = Completo · **D** = Deseable adoptado. La acreditación queda integrada en esta matriz (única fuente de traza RT lógica).
 
 | RT (BTT) | Materia | Estado | Dónde en v6 |
 |---|---|---|---|
 | RT-02.01 | Modelo de 8 capas | **C** | §2, §18.1–18.9 |
 | RT-02.02 | Modular, límites de contexto, evolución aditiva | **C** | §8.1–8.4, §9.4 |
 | RT-02.03 | Vista de procesos | **C** | §17 |
-| RT-02.04 | ADR fechado/fundado | **C** | §14 (D1–D12) |
+| RT-02.04 | ADR fechado/fundado | **C** | §14 (**D1–D15**) |
 | RT-02.05 | Servicios de negocio stateless | **C** | §8.2 |
 | RT-02.06 | Idempotencia | **C** | §9.1 |
 | RT-02.07 | Eventos ≥1 vez + dedupe + orden | **C** | §9.1 |
@@ -1617,7 +1664,7 @@ flowchart TB
 | RT-03.10 | Autonomía offline 24 h CD / 14 h terreno | **C** | §6, §9.5, §17C |
 | RT-03.12 | Sync + reconciliación determinista + bitácora | **C** | §9.1 — **≤10 min reparto / ≤2 h CD (v4)** |
 | RT-03.13 | No disponible offline + procedimiento manual | **C** | §9.5 |
-| RT-03.18 | MDM dispositivos | **C** | §11.7 |
+| RT-03.18 | MDM dispositivos | **C** | §11.7 — componente **N-13** con emplazamiento declarado (D15) |
 | RT-04.01 | 5 ambientes + DR | **C** | §1 (principio 6), §13, §18.9 — **detalle de despliegue en la física** |
 | RT-05.01 | Diccionario de datos | **C** | §10.5 |
 | RT-05.02 | Posición CAP | **C** | §10.4 |
@@ -1649,3 +1696,7 @@ flowchart TB
 | RT-18 | Sin IA (N/A fundado) | **C** | §17D |
 
 **Caso 02 — decisiones del num. 16.1 resueltas en v4:** #2 trazabilidad = lote GS1 + SSCC (§8.6) · #10 envases = saldo por cliente (§8.6) · #14 WMS 2013 = absorción en M2/M5 (§9.6). Resto de decisiones del numeral en el registro de decisiones del Cap. 17.1.
+
+---
+
+*Documento unificado de la capa lógica **v6.2** — 2026-09-06. Cierra la auditoría de coherencia del Subdocumento 4: **no queda ninguna divergencia entre la arquitectura lógica y la arquitectura física**. Toda herramienta declarada en el stack (§13) tiene un componente con emplazamiento justificado en `Tabla_Emplazamiento_OnPremise_v06.md` §1.0, conforme al Art. 16.2 y al Art. 16.4 in fine.*

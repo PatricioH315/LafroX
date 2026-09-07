@@ -53,6 +53,7 @@ Cada instalación dispone de **caminos físicamente independientes** con **conmu
 | Fibra (D-03) | Talca, Concepción | Enlace principal en los 2 CD |
 | Starlink Enterprise LEO (D-06) | 3 cross-docks (Curicó, Chillán, Los Ángeles) + respaldo en los 2 CD | Principal en cross-docks (cubre Los Ángeles 03:00–05:00 sin torres 4G); respaldo automático en CDs |
 | LTE dual 4G Cat-12 (D-04) | Todos | 2 proveedores móviles distintos; tercer camino independiente |
+| **AWS Direct Connect** (complemento activable, D-AL-20) | Talca | **Camino dedicado opcional**, terminado en el par de firewall D-01 mediante un VIF dedicado o alojado sobre la fibra D-03, **sin hardware adicional**. **No reemplaza** los tres caminos SD-WAN: aporta capacidad dedicada para la réplica DMS CDC, la telemetría y los sincronismos por lote. Mientras el CLIENTE no lo contrate, **la VPN IPsec sostiene por sí sola** el RPO ≤ 15 min, el RTO ≤ 4 h y el SLA ≥ 99,9 % |
 
 SD-WAN con políticas centralizadas y BGP; los cross-docks salen **directo por Starlink a SQS/IoT/SSM** (configuración crítica) y sincronizan detalle a Talca por AMQPS entre brokers (C-13). La pérdida total del enlace se cubre con la **autonomía local 24 h** (CD) / **14 h** (terreno) — RT-03.10, RNF-13.01.
 
@@ -102,7 +103,7 @@ Todo el tráfico on-premise → nube es **outbound** (HTTPS/443, MQTTS/8883) sin
 
 | Componente | AZ primaria | AZ secundaria | Failover automático |
 |---|---|---|---|
-| Aurora PostgreSQL | sa-east-1a (Writer) | sa-east-1b (Reader/Failover) | < 30 s |
+| Aurora PostgreSQL | sa-east-1a (Writer) | sa-east-1b / sa-east-1c (2 Readers/Failover) | < 30 s |
 | DynamoDB | Multi-AZ nativo | — | Transparente |
 | EventBridge | 3 brokers en 3 AZ | — | Reelección de líder |
 | ECS Fargate | sa-east-1a | sa-east-1b | Application Auto Scaling re-scheduling |
@@ -138,6 +139,7 @@ VMs dimensionadas con headroom ×1,5 (RNF-19.04) para tolerar **3.900 entregas/d
 - **Procedimiento:** decisión de failover **manual con disparador declarado** (health check de la región primaria < 5 min) y protección contra conmutación innecesaria (confirmación SNS + autorización); pasos 4–7 **automatizados por AWS Systems Manager Automation** (promoción Aurora 15–20 min, escalado ECS, actualización DNS 45–60 min). El RTO se cumple porque la réplica es legible y la región DR está "caliente" (escalable < 30 min a carga completa).
 - **Retorno (failback):** procedimiento documentado en 6 pasos — re-sincronización con catch-up verificado, reconciliación de transacciones de la contingencia contra la bitácora (RT-03.12), transferencia de eventos pendientes, conmutación coordinada de DNS, validación funcional e informe con tiempo real.
 - **Pruebas:** conmutación real **≥ 2 veces/año** con informe de RTO/RPO efectivos y plan de corrección de brechas (RT-07.07, Art. 20).
+- **Residencia y transferencia internacional de datos (Art. 23 · Ley 21.719):** la replicación hacia us-east-1 constituye una **transferencia internacional de datos personales** y se rige por los resguardos declarados en `Arquitectura_de_Seguridad_v01.md` §10: cifrado con CMK gestionada por el CLIENTE, acuerdo de tratamiento con cláusulas de transferencia, **minimización** (la región secundaria no se explota analíticamente, solo sostiene continuidad), **exclusión de los datos de geolocalización de personas de la replicación transfronteriza** —permanecen solo en sa-east-1 con retención de 12 meses— y registro en el inventario de tratamientos. La residencia queda **sujeta a aprobación expresa del CLIENTE**; si no la aprueba, la alternativa declarada es la **continuidad intrarregional dentro de sa-east-1** (tercera AZ ampliada + respaldo inmutable regional — no es un segundo sitio geográfico ni usa Talca/Concepción para la carga cloud; AWS no tiene región en Chile), que cubre falla de AZ y corrupción de datos pero **degrada el RTO ante una caída de toda la región sa-east-1** (24–72 h desde el respaldo inmutable; **alternativa D del ADR-09**).
 
 ### 4.2 DRP local (Talca → Concepción)
 
@@ -211,6 +213,7 @@ Vault Lock con enfriamiento de 3 días y retención mínima de 1 año; una vez b
 | RT-10.01 | Disponibilidad e2e ≥ 99,9 % mensual sobre la transacción crítica |
 | RNF-20.06 / 20.07 | RTO ≤ 4 h / RPO ≤ 15 min · respaldo 3-2-1-1-0 |
 | Art. 21 | Zero Trust: solo outbound, sin conexiones entrantes (salvo D-AL-05) |
+| **Art. 23 / Ley 21.719** | Residencia declarada, base de licitud y resguardos de la transferencia internacional a us-east-1, con exclusión de la geolocalización de personas (§4.1; detalle en `Arquitectura_de_Seguridad_v01.md` §10) |
 
 ---
 

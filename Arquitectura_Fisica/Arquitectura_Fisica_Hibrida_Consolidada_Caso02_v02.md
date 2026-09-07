@@ -9,7 +9,9 @@
 
 ## 1. Objetivo y lectura del documento
 
-Este documento consolida en **una sola arquitectura física** los dos dominios que operan como sistema único: la **carga principal en nube pública AWS** (Art. 16 de las Bases Administrativas) y los **componentes on-premise** que distribuyen la operación de la Distribuidora Puelche S.A. en los **5 sitios fijos** de la red: Talca (CD), Concepción (CD) y las **3 plataformas cross-docking** (Curicó, Chillán, Los Ángeles).
+Este documento consolida en **una sola arquitectura física** los dos dominios que operan como sistema único: la **carga principal en nube pública AWS** (Art. 16 de las Bases Administrativas) y los **componentes on-premise** que distribuyen la operación de la Distribuidora Puelche S.A.
+
+**Lectura única de la red de instalaciones (alineada con el plan de capacidad §2.1 y con N1 de la lógica v6.2):** el caso declara **6 instalaciones** (Tabla 14.1 y RT-21.16, «seis instalaciones en cuatro regiones»), de las cuales **5 alojan cómputo**: Talca (CD), Concepción (CD) y las **3 plataformas de cross-docking** (Curicó, Chillán, Los Ángeles). La **sexta** es la casa matriz y oficinas de Talca, contigua al CD principal (§2.1 y Cap. 3 del caso): se sirve de la red y de los sistemas del CD y **no lleva nodo de cómputo propio**, pero sí cuenta para cobertura de red, soporte y traslados (RT-21.16). El §8 del caso menciona «cinco instalaciones»; prevalecen la Tabla 14.1 y RT-21.16, y la divergencia se eleva como consulta al mandante (Art. 43.3) sin alterar el dimensionamiento. La proyección del caso a tres años es de **7 instalaciones**, absorbidas por parametrización (RT-02.12).
 
 Es la **fuente única consolidada** de la arquitectura física híbrida. Los documentos de origen —`Propuesta_Arquitectura_Cloud_Caso02_CLAUDE_v2.md` (v3.6), `Dimensionamiento_Infraestructura_OnPremise_v05.md` (v05), `Tabla_Emplazamiento_OnPremise_v06.md` (v06) y `Sala_Servidores_OnPremise_v02.md` (v02)— se declaran alineados por referencia a este documento; cualquier divergencia se resuelve con este archivo. En particular, la **identidad** se rige por el **Modelo B** (decisión D6 de la Arquitectura Lógica v1): autoridad única de identidad en el **Keycloak IdP maestro (ECS/Fargate, nube)**, con **caché local de solo lectura A-05 (TTL 8 h)** en VM-05 (Talca) y VM-C03 (Concepción). No existe un maestro on-premise ni promoción local a escritura.
 
@@ -26,7 +28,7 @@ Es la **fuente única consolidada** de la arquitectura física híbrida. Los doc
 | **Autoridad única de identidad (Modelo B)** | Keycloak IdP maestro en nube (authority única, escrituras); caché local A-05 de solo lectura (TTL 8 h) para la operación offline (24 h CD · 14 h terreno). Sin maestro on-premise ni promoción local. | D6 Arquitectura Lógica v1, RT-03.10, RNF-13.01 |
 | **Autonomía local 24 h** | Cada CD (Talca, Concepción, cross-dock) opera su broker de colas RabbitMQ (A-03) y sus bases PostgreSQL locales cuando el enlace WAN no está disponible. | RNF-13.01, RT-03.10 |
 | **Zero Trust end-to-end** | Sin conexiones entrantes a la red on-premise salvo dos excepciones controladas por la VPN (DMS→PostgreSQL y celery-erp-sync→ACL; ver D-AL-05). Todo lo demás es tráfico iniciado desde adentro. | Cloud v3.6 §5, On-prem v05 §3 |
-| **Durabilidad y retención** | Telemetría 5 años (DynamoDB 30 días → S3 raw 5 años + consolidado OLAP S3 Parquet/Redshift 5 años); documentos 6 años; auditoría 7 años; logs de seguridad 12 meses en línea + 24 en archivo. | RT-05.10, RT-16.10, Art. 21.3 |
+| **Durabilidad y retención** | Telemetría 5 años (DynamoDB 30 días → S3 raw 5 años + consolidado OLAP S3 Parquet/Redshift 5 años); trazabilidad sanitaria de lote vida útil + 6 meses con mínimo de 5 años; documentos 6 años; evidencia de entrega 6 años; **geolocalización de personas 12 meses**; auditoría 7 años; logs de seguridad 12 meses en línea + 24 en archivo. | **RT-16.10** (el caso lo rotula RT-05.10), Art. 21.3, Cap. 15 del caso |
 | **Disponibilidad y DRP** | SLA ≥ 99,9 % capa cloud central; DRP global RTO ≤ 4 h / RPO ≤ 15 min; DRP local (Talca → Concepción) para la capa logística. | BTT Cap. 10, Art. 20 |
 
 ---
@@ -59,6 +61,7 @@ Es la **fuente única consolidada** de la arquitectura física híbrida. Los doc
 | C-02 | App repartidor/~200 conductores | **Híbrido** (offline-first, 14 h) | API Gateway + módulos (POD, sincro, ERP events) | App móvil; punto de venta portátil; control de devoluciones |
 | C-03 | Terminales de bodega y cámara | **On-premise** | — | 144 dotación Talca (120 simultáneos + 20 % reserva) + 30 dotación Concepción (25 simultáneos + 20 % reserva); terminales RF rugosas −22 °C |
 | C-04 | Impresoras de andén (SSCC) | **On-premise** | — | 4 Talca (2 recepción + 2 despacho) · 2 Concepción |
+| C-05 | Balanza de recepción (control de merma) | **On-premise** | — | Dibal BEV: 2 Talca · 1 Concepción; periférico local del proceso de recepción (M1) |
 
 ### 3.4 Red y emplazamiento
 
@@ -70,6 +73,12 @@ Es la **fuente única consolidada** de la arquitectura física híbrida. Los doc
 | D-05 | NAS de respaldo (WORM) | **On-premise + nube** | Pierna inmutable en S3 (Object Lock / Backup Vault Lock) | Synology WORM-30d (RTO local 4 h) |
 | D-06 | Enlace WAN satelital (Starlink Enterprise) | **On-premise** | — | 5 kits (antena techumbre + router): respaldo automático de CDs (cierra brecha RNF-13.07 en Concepción) y **enlace principal** de las 3 cross-docks (RT-03.17); plan priorizado 1 TB / 500 GB |
 
+### 3.4 bis Plataformas de cross-docking
+
+| ID | Componente | Emplazamiento | Instancia nube | Instancia on-premise |
+|---|---|---|---|---|
+| E-01 | Mini-WMS de cross-docking + escáner GS1 | **On-premise** | — (visibilidad diferida en nube; eventos críticos directos a SQS/IoT) | Mini-PC industrial ×3 (Curicó, Chillán, Los Ángeles) con contenedor Docker (~1 vCPU / 2 GB), broker RabbitMQ local y 2 escáneres DS2208 por plataforma. Ventana de operación de 3 h **100 % local** (RT-03.10/03.11) |
+
 ### 3.5 Resiliencia, observabilidad y seguridad
 
 | ID | Componente | Emplazamiento | Instancia nube | Instancia on-premise |
@@ -77,6 +86,8 @@ Es la **fuente única consolidada** de la arquitectura física híbrida. Los doc
 | F-01 | Emisores de telemetría (ADOT) + agente de gestión (SSM) | **On-premise** (emisor) + **nube** (plataforma) | CloudWatch, X-Ray, AMP, Grafana OSS (sa-east-1), SSM Endpoint regional | VM-06 (Talca), VM-C04 (Concepción), contenedor cross-dock |
 | F-02 | Orquestador de parches (Ansible) | **On-premise** | — | VM gestión; política de parcheo mensual |
 | F-03 | EDR en endpoints | **On-premise + nube** | Consola EDR cloud (SIEM) | Agentes en todos los nodos on-premise |
+
+> **Nota de completitud del inventario (2026-09-06).** Esta sección enumera los componentes del dominio on-premise e híbrido y los servicios administrados de nube en forma resumida. El **inventario canónico y completo —36 componentes con su criterio de emplazamiento del Art. 16.2 (LAT, CRIT, VOL, CONN, TCO, HW, REG)— es `Tabla_Emplazamiento_OnPremise_v06.md` §1.0**, que incluye los identificadores N-01 a **N-13** del dominio de nube pura. Este documento prevalece en materia de **arquitectura** (topología, costuras, identidad, HA/DRP, ambientes); la tabla de emplazamiento prevalece en materia de **inventario y justificación componente por componente**.
 
 ### 3.6 Dominio cloud (servicios administrados)
 
@@ -89,6 +100,9 @@ Es la **fuente única consolidada** de la arquitectura física híbrida. Los doc
 | AWS IoT Core + Greengrass | Orquestación edge, ingesta MQTT, OTA | Gestión de flota administrada |
 | SQS FIFO + EventBridge | Colas de trabajo Celery + bus de eventos/alertas | Durabilidad y orden en reconciliación |
 | S3 Object Lock / GuardDuty / Security Lake / WAF / Shield Advanced | Inmutabilidad documental, detección, SIEM, WAF, DDoS | Cumplimiento y seguridad administrados |
+| **Secrets Manager + SSM Parameter Store** (D13 · ADR-15) | Custodia y rotación automática de secretos de integración (ERP, AS2/EDI, SII, Transbank) y credenciales de servicio; consumo **saliente** desde on-premise por VPC Endpoint | Servicio administrado con rotación nativa: cumple el Art. 21.4 sin agregar una VM ni un procedimiento de desellado manual a un equipo de 4 |
+| **AMP + CloudWatch + X-Ray + Grafana OSS** (D14 · ADR-14) | Plataforma **única** de observabilidad para nube y on-premise; el on-premise solo emite (colectores ADOT, buffer 24 h) | Art. 16.4 y RT-03.16 exigen «la misma plataforma que la nube, sin puntos ciegos»; AMP es compatible con Prometheus/PromQL, sin lock-in |
+| **N-13 — MDM gestionado** (Android Enterprise / Zebra DNA, SaaS) (D15) | Enrolamiento, política, modo quiosco, actualización de aplicación y de caché de turno, inventario por IMEI/serie y **borrado remoto selectivo** del parque de terreno | **RT-03.18 es Obligatorio**; el parque es 100 % Android/Zebra y el equipo de TI del CLIENTE es de 4 personas |
 
 ### 3.7 Canal moderno — portales web en DMZ pública (N-01…N-03)
 
@@ -298,11 +312,11 @@ flowchart LR
 | Art. 21.2 — TLS/HSTS | TLS 1.3 mínimo + HSTS con precarga (§6) |
 | Art. 21.3 — SIEM/logs | Security Lake + 6 casos de uso; logs 12+24 meses (§7) |
 | Art. 22° — MFA | Todo acceso externo; factor de posesión + PIN en terreno (§6) |
-| Art. 16.1/16.2 + RT-21.16 | 6 instalaciones + **3 cross-docks** (§3, §4) |
+| Art. 16.1/16.2 + RT-21.16 | **6 instalaciones**, de las cuales **5 alojan cómputo** (2 CD + 3 cross-docking); la 6.ª es la casa matriz de Talca, sin nodo propio (§1, §3, §4) |
 | RT-04.01 — 5 ambientes | §10 |
 | RT-03.12 — reconexión sincronizada | Costuras C4/C7/C10: deduplicación idempotente, < 10 min |
 | RT-03.10 — 14 h offline / cutover 24 h | C7/C10 + caché A-05 (C6) + procedimiento de cutover (§8) |
-| RT-05.10 / RT-16.10 — retención | §7 |
+| **RT-16.10** — retención de datos históricos y de auditoría | §7. *(El Cap. 15 del caso rotula esta materia como RT-05.10; el código transversal correcto es **RT-16.10** —RT-05.10 es «catálogo de datos con linaje», Deseable—. Se responde contra RT-16.10 en el T-12 y el desajuste se eleva como consulta, Art. 43.3.)* |
 | RT-06.01 — tipología on-prem | Sala Técnica Secundaria (Talca, Doc. Sala v02), Gabinete Borde (Concepción/cross-dock) |
 | RT-11.14 / RT-11.15 — logs y SIEM | §7, §9 |
 | RT-12.01 — identidad centralizada (Modelo B) | Keycloak IdP maestro en nube + caché local A-05 TTL 8 h (§6, C6) |
@@ -311,7 +325,7 @@ flowchart LR
 | RT-15.05 — aprovisionamiento ≤ 24 h | C6 (§6) |
 | BTT Cap. 10 — SLA 99,9 %, RTO/RPO | §8 |
 | BTT Cap. 12 — identidad (RT-12.11) | PIN 6 dígitos + facial; dispositivo compartido; offline (§6) |
-| Caso Cap. 17.4 Puntos 1–11 | C7/C10/C11/C14 + GSI `shipment_id` (Punto 6) |
+| **Caso Cap. 17.4 — los 13 puntos** | Mapa completo y verificado en `Propuesta_Arquitectura_Cloud_Caso02_CLAUDE_v2.md` §7.13. Aporte de este documento: **punto 1** (emplazamiento componente por componente, §3 y Tabla v06 §1.0) · **punto 2** (autonomía y reconciliación, C1–C5) · **punto 3** (terreno sin señal, C10) · **punto 4** (cámara −22 °C, C7) · **punto 5** (ERP y DTE, C5 y C14) · **punto 7** (trazabilidad de lote con GSI `shipment_id`, §7) · **punto 8** (evidencia de entrega, §7) · **punto 11** (separación OLTP/OLAP, §7) · **punto 13** (peak de septiembre, §8) |
 
 ---
 
@@ -323,7 +337,7 @@ flowchart LR
 
 **D-AL-03 — Transporte broker → nube.** El envío del buffer RabbitMQ a la nube lo ejecuta un **shipper en VM-03 (modo `wms_only`)** hacia **SQS FIFO por HTTPS/443 (VPC Endpoint SQS/PrivateLink)**. Se corrigió el flujo on-premise “Sync broker → nube” (Antes: “SQS / Amazon MQ AWS — AMQPS 5671”; Ahora: “SQS FIFO — HTTPS 443”) y la fila de VLAN 20. **AMQPS 5671 queda reservado a brokers on-premise↔on-premise** (cross-dock → Talca).
 
-**D-AL-04 — Cross-docks independientes.** E-01 envía eventos críticos **directo a SQS/IoT/SSM por Starlink (D-06) con respaldo automático LTE/4G dual (outbound)**; el detalle del mini-WMS se sincroniza a Talca por AMQPS. Lo crítico no depende de Talca. La selección del camino Starlink/LTE la hace el router del kit D-06 (SD-WAN de borde); los kits se incorporan con la cotización Starlink 56 meses (05-09-2026) y resuelven la intermitencia de señal de Los Ángeles entre 03:00–05:00.
+**D-AL-04 — Cross-docks independientes.** E-01 envía eventos críticos **directo a SQS/IoT/SSM por Starlink (D-06) con respaldo automático LTE/4G dual (outbound)**; el detalle del mini-WMS se sincroniza a Talca por AMQPS. Lo crítico no depende de Talca. La selección del camino Starlink/LTE la hace el router del kit D-06 (SD-WAN de borde); los kits se incorporan según los planes y precios **declarados en la propia oferta** (T-11 C27, 56 meses) y resuelven la intermitencia de señal de Los Ángeles entre 03:00–05:00.
 
 **D-AL-05 — Flujos entrantes por VPN (excepciones al Zero Trust).** Solo dos: AWS DMS → PostgreSQL on-premise (TCP 5432, replicación CDC) y `celery-erp-sync` → ACL (HTTPS 443). Ambos únicamente desde la VPC sobre el túnel IPsec autenticado.
 
@@ -351,7 +365,15 @@ flowchart LR
 
 **D-AL-17 — Portal de canal moderno en DMZ pública.** Los portales de Clientes (N-01, RF-12.14–12.18, 12.25–12.30 y cobranza RF-07.07/07.08), Transportistas (N-02, RF-12.19–12.21, OTP RF-06.08) y Proveedores (N-03, RF-12.22–12.24) son **una sola SPA Angular** servida por subdominios `*.puelche.cl` (CloudFront+WAF → API Gateway → tarea Fargate `portal` de la misma imagen Django), con **RBAC por rol en Keycloak**; entrada intranet/VPN para las consolas internas. El pago de autoservicio usa **Transbank Webpay** (módulo `integraciones`, idempotencia por `transaction_id`) — RF-12.30. **Sin modo offline** (RT-03.13); entra con el hito de enero 2029 (RNF-12.01); no abre conexiones entrantes al on-premise (solo lectura de stock/crédito/cobranza vía API Gateway, costura C15).
 
-**D-AL-19 — Redundancia WAN satelital (Starlink D-06).** Con base en la `Cotizacion_Starlink_Sucursales_56meses` (05-09-2026) se incorpora el **camino satelital en los 5 sitios**: en los CDs (Talca y Concepción) como respaldo automático de la fibra (**cierra la brecha RNF-13.07 de Concepción**), y en las **3 cross-docks** como **enlace principal** (elimina la dependencia exclusiva de la red móvil; Los Ángeles tiene intermitencia 03:00–05:00, su ventana operacional). Los caminos WAN quedan en **3 tecnologías/proveedores distintos** (fibra D-03 → satelital D-06 → LTE D-04) gestionados con **SD-WAN multi-WAN** en D-01 y firewall de borde; en cross-docks el router del kit maneja la conmutación a LTE dual. Precio, planes (1 TB CD / 500 GB cross-dock) y reposición 15 %/56 meses según cotización (RT-08.13); MTU túnel 1.436.
+**D-AL-18 — Cierre del Modelo B de identidad en la fuente consolidada.** La contradicción histórica entre la decisión lógica (Keycloak maestro en nube) y el documento de nube (que hasta la v3.5 declaraba el maestro en VM-05, on-premise) queda **cerrada**: la v3.6 del documento de nube adoptó el Modelo B en §3.3, §3.5, §5.4, §7.3, §7.10, L-02 y Apéndice C, y este consolidado lo fija como arquitectura vigente en §6, C6, D-AL-01 y D-AL-02 — **Keycloak IdP maestro en ECS Fargate (autoridad única de escrituras) y cachés locales de solo lectura A-05/VM-C03 con TTL 8 h, sin maestro on-premise ni promoción local**. Es la decisión que el T-12 referencia al declarar cerrada la reconciliación de identidad. *(Esta decisión existía en los hechos pero faltaba en la numeración: el registro saltaba de D-AL-17 a D-AL-19.)*
+
+**D-AL-19 — Redundancia WAN satelital (Starlink D-06).** Para cerrar la brecha de redundancia WAN se incorpora el **camino satelital en los 5 sitios**: en los CDs (Talca y Concepción) como respaldo automático de la fibra (**cierra la brecha RNF-13.07 de Concepción**), y en las **3 cross-docks** como **enlace principal** (elimina la dependencia exclusiva de la red móvil; Los Ángeles tiene intermitencia 03:00–05:00, su ventana operacional). Los caminos WAN quedan en **3 tecnologías/proveedores distintos** (fibra D-03 → satelital D-06 → LTE D-04) gestionados con **SD-WAN multi-WAN** en D-01 y firewall de borde; en cross-docks el router del kit maneja la conmutación a LTE dual. Precio, planes (1 TB CD / 500 GB cross-dock) y reposición 15 %/56 meses **declarados en la oferta** (T-11 C27 · T-12 RT-08.13); MTU túnel 1.436.
+
+---
+
+**D-AL-20 — Camino dedicado complementario (AWS Direct Connect).** Se incorpora **AWS Direct Connect como complemento activable por el CLIENTE**, terminado en el par de firewall D-01 mediante un VIF dedicado o alojado sobre la fibra D-03, **sin hardware adicional**. **No reemplaza** los tres caminos SD-WAN (fibra D-03 → satelital D-06 → LTE D-04) ni la salida directa de las cross-docks (D-AL-04): aporta capacidad dedicada para la réplica DMS CDC, la telemetría y los sincronismos por lote. Mientras no se contrate, **la VPN IPsec sostiene por sí sola** el RPO ≤ 15 min, el RTO ≤ 4 h y el SLA ≥ 99,9 %. Alineado con Cloud v3.6 §2.4, Dimensionamiento v05 §3.6/§3.7/§4.1, Tabla v06 (D-01) y Sala v02 §7 (alineación INC-02, 06-09-2026).
+
+**D-AL-21 — Componentes incorporados por la auditoría del Subdocumento 4 (06-09-2026).** Tres decisiones de la arquitectura lógica carecían de componente físico y quedan emplazadas: **(a)** la gestión de secretos pasa de un gestor autoalojado sin VM a **Secrets Manager + SSM** (D13 · ADR-15); **(b)** la observabilidad pasa de un conjunto Prometheus/Grafana/Loki autoadministrado por sitio —sin VM dimensionada y contrario a la exigencia de plataforma única del Art. 16.4 y RT-03.16— a **emisión ADOT con buffer de 24 h hacia AMP/CloudWatch/X-Ray/Grafana OSS** (D14 · ADR-14); **(c)** la gestión de dispositivos que exige **RT-03.18 (Obligatorio)** deja de ser una mención transversal y se declara como componente **N-13, MDM gestionado** (D15). Los tres quedan reflejados en §3.6, en `Tabla_Emplazamiento_OnPremise_v06.md` §1.0(b) y en el T-11.
 
 ---
 
@@ -363,7 +385,11 @@ flowchart LR
 | `Dimensionamiento_Infraestructura_OnPremise_v05.md` | v05 | Dominio on-premise, dimensionamiento y flujos (fuente) |
 | `Tabla_Emplazamiento_OnPremise_v06.md` | v06 | Emplazamiento A-01…F-03, Modelo B de identidad (fuente) |
 | `Sala_Servidores_OnPremise_v02.md` | v02 | Sala Técnica Secundaria (Talca) y Gabinete Borde (Concepción) |
-| `Cotizacion_Starlink_Sucursales_56meses.docx.md` | 05-09-2026 | Kit Starlink Enterprise (D-06): precios, planes de datos y reposición 56 meses (fuente RT-08.13) |
-| `04_Maqueta_Arquitectura_Logica_Puelche.md` / `05_Herramientas_Sugeridas.md` | — | Arquitectura lógica (nombres de módulos, decisión RabbitMQ, D6 Keycloak Modelo B) |
+| `Arquitectura_Logica_v6-1.md` | **v6.2** | **Arquitectura lógica vigente** — 8 capas, módulos M1–M12, límites de contexto, stack y decisiones D1–D15 (D6 Keycloak Modelo B, D13 secretos, D14 observabilidad, D15 MDM) |
+| `Arquitectura_de_Integracion_v01.md` | v01 | Vista de integración — catálogo de 15 integraciones, contratos, mensajería, versionado y gobierno (Subdoc 4, apartado 3) |
+| `Arquitectura_de_Seguridad_v01.md` | v01 | Vista de seguridad — Zero Trust, capa expuesta, identidad, cifrado, controles y residencia de datos (Subdoc 4, apartado 4) |
+| `Arquitectura_de_Despliegue_v01.md` | v01 | Vista de despliegue — ambientes, redes, HA, DRP y respaldos (Subdoc 4, apartado 5) |
+| `Dimensionamiento_y_Plan_de_Capacidad_v01.md` | v01 | Dimensionamiento y plan de capacidad (Subdoc 4, apartado 6) |
+| `Registro_Decisiones_Arquitectura_ADR_v01.md` | **v02** | Decisiones registradas ADR-01 a ADR-15 (Subdoc 4, apartado 7) |
 | `Bases/Bases_Administrativas.md`, `Bases/Bases_Tecnicas_Transversales.md`, `Bases/Caso_02_Logistica.md` | — | Documentos rectores (precedencia) |
 | `Requerimientos/decisiones.md` | D1–D40 | Decisión técnica Keycloak (D6 Modelo B): interna, no se registra en decisiones formales |

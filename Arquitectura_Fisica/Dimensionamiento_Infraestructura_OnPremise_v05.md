@@ -26,7 +26,7 @@
 > **Cambios clave v05 → v06 (cierre del Cap. 9 — Desempeño, capacidad y escalabilidad):**
 > 1. **Nueva PARTE 10** que declara el capítulo 9 completo (RT-09.01 a RT-09.10): capacidad de diseño (RT-09.01), concurrencia con umbrales p95 (RT-09.02), **crecimiento 3× sin rediseño en 3 años** (RT-09.03), escalamiento horizontal ≤ 15 min sin pérdida (RT-09.04), **primer cuello de botella = escritura transaccional de VM-02 PostgreSQL** con detección y resolución (RT-09.05), pruebas de carga/estrés 1,5× peak en Preproducción integradas al **Formulario T-13** (RT-09.06/09.07), degradación controlada (RT-09.08), gestión trimestral de capacidad (RT-09.09) y carga automatizada en CI (RT-09.10, Deseable).
 >
-> **Cambios clave v06 → v07 (incorporación de enlace satelital Starlink en los 5 sitios fijos — Cotización Starlink 56 meses, 05-09-2026):**
+> **Cambios clave v06 → v07 (incorporación de enlace satelital Starlink en los 5 sitios fijos — D-06, planes y reposición declarados en la oferta, 05-09-2026):**
 > 1. **Nuevo camino WAN D-06 (Starlink)** en los **5 sitios on-premise**: en los CDs (Talca y Concepción) opera como **respaldo automático** preferente (fibra D-03 → Starlink → LTE D-04, SD-WAN), **cerrando la brecha de Concepción (RNF-13.07** — "nuevo enlace requerido" §3.7); en las **3 plataformas de cross-docking** (Curicó, Chillán, Los Ángeles) pasa a ser el **enlace principal**, resolviendo la intermitencia de señal móvil de Los Ángeles entre 03:00–05:00 (exactamente su ventana operacional) que dejaba a la plataforma sin cobertura en plena operación.
 > 2. **SD-WAN multi-WAN** sobre el clúster de firewalls D-01 (Talca) y el firewall de borde (Concepción): 3 interfaces WAN (fibra D-03 + Starlink D-06 + LTE D-04) con selección automática de camino y conmutación < 30 s; en los cross-docks el kit Starlink se conecta al switch compacto/mini-PC y el módulo 4G Cat-12 del mini-PC conserva el **LTE dual (2 proveedores)** como respaldo automático (RT-03.17).
 > 3. **Inventario actualizado (§4.1):** 5 kits Starlink fijos (1 Talca, 1 Concepción, 3 cross-docks) con plan de datos priorizado (1 TB Talca/Concepción · 500 GB cross-docks) y reposición de hardware del 15 % durante los 56 meses (RT-08.13); kits energizados desde PDU-B en Talca (RT-08.04) y mini-UPS en los cross-docks; antena en techumbre con ingreso por canalización protegida (RT-06.32).
@@ -52,7 +52,7 @@
 | Entregas / día (peak septiembre) | 2.600 |
 | Camiones con cadena de frío | 18 |
 | Puntos de medición de temperatura (Talca + Concepción) | 28 (≈ 7 módulos Ebyte de 4 canales) |
-| Sitios on-premise | 5 (Talca, Concepción, Curicó, Chillán, Los Ángeles) |
+| Sitios on-premise con cómputo | **5** (Talca, Concepción, Curicó, Chillán, Los Ángeles) — de las **6 instalaciones** que declaran la Tabla 14.1 y RT-21.16; la 6.ª es la casa matriz de Talca, sin nodo propio |
 
 **Carga de diseño:** Se dimensiona al **peak de septiembre (2.600 entregas/día)** multiplicado por el factor de seguridad **×1,5** (RNF-19.04), es decir, la infraestructura debe tolerar 3.900 entregas/día sin degradación.
 
@@ -223,7 +223,7 @@ Un nodo por plataforma: **Curicó, Chillán, Los Ángeles**. Sin hipervisor — 
 | **UPS** | Mini-UPS interna o UPS de riel DIN ≥ 30 min (RT-06.07); alimenta también el router Starlink del gabinete |
 | **Gestión remota** | SSM Agent vía VPN Starlink/LTE (Zero Trust — sin puertos entrantes) |
 
-> **Justificación de red redundante (RT-03.17 / RNF-13.07 en sitios solo-móvil):** en las plataformas de cross-docking no existe fibra (Cap. 6) y la red móvil es intermitente (Los Ángeles pierde señal entre 03:00–05:00, exactamente su ventana operacional). Para satisfacer RT-03.17 (caminos físicos y **proveedores distintos** con conmutación automática) se incorpora el **kit Starlink fijo (D-06) como enlace principal satelital** conectado por ethernet al switch compacto del gabinete, con el **módulo 4G Cat-12 LTE dual (2 proveedores) del mini-PC como respaldo automático**: la conmutación del satelital al LTE es automática en < 30 s (el RT-03.17 exige ≤ 5 min; se cumple con margen para la ventana operacional) y la operación del turno de 3 h es 100 % local (RT-03.10/RT-03.11), por lo que el enlace solo sostiene la sincronización diferida. Esta es la mitigación formal del SPOF de enlace declarado en Tabla v06 §4 y resuelve el caso crítico de Los Ángeles descrito en la Cotización Starlink.
+> **Justificación de red redundante (RT-03.17 / RNF-13.07 en sitios solo-móvil):** en las plataformas de cross-docking no existe fibra (Cap. 6) y la red móvil es intermitente (Los Ángeles pierde señal entre 03:00–05:00, exactamente su ventana operacional). Para satisfacer RT-03.17 (caminos físicos y **proveedores distintos** con conmutación automática) se incorpora el **kit Starlink fijo (D-06) como enlace principal satelital** conectado por ethernet al switch compacto del gabinete, con el **módulo 4G Cat-12 LTE dual (2 proveedores) del mini-PC como respaldo automático**: la conmutación del satelital al LTE es automática en < 30 s (el RT-03.17 exige ≤ 5 min; se cumple con margen para la ventana operacional) y la operación del turno de 3 h es 100 % local (RT-03.10/RT-03.11), por lo que el enlace solo sostiene la sincronización diferida. Esta es la mitigación formal del SPOF de enlace declarado en Tabla v06 §4 y resuelve el caso crítico de Los Ángeles.
 
 **Software en nodo edge (contenedores):**
 
@@ -327,7 +327,7 @@ Un nodo por plataforma: **Curicó, Chillán, Los Ángeles**. Sin hipervisor — 
 | **Batería** | 4.180 mAh |
 | **Sistema / soporte** | Android 14 · **8 años de soporte LifeGuard** (cubre 56 meses del contrato con holgura) |
 | **Cámara** | Sí (RF-01.04: fotos de producto/promociones) |
-| **App** | App Preventa Flutter offline-first (C-01) |
+| **App** | App Preventa Kotlin (Android nativo) offline-first (C-01) — ADR-07 |
 
 ---
 
@@ -342,7 +342,7 @@ Un nodo por plataforma: **Curicó, Chillán, Los Ángeles**. Sin hipervisor — 
 | **Conectividad** | **BT 5.3 + BLE secundario** (sincro termógrafo B-03) · **GPS dual L1/L5** |
 | **Protección** | **IP65/68** · caídas 2,4 m |
 | **Sistema** | Android 13→17 (soporte extendido) |
-| **App** | App Reparto Flutter offline-first (C-02) — POD foto/firma, QR, cobranza, devoluciones |
+| **App** | App Reparto Kotlin (Android nativo) offline-first (C-02) — ADR-07 — POD foto/firma, QR, cobranza, devoluciones |
 
 | Atributo | Especificación mínima — Impresora de cabina |
 |---|---|
@@ -462,7 +462,7 @@ Un nodo por plataforma: **Curicó, Chillán, Los Ángeles**. Sin hipervisor — 
 | VLAN ID | Nombre | Función |
 |---|---|---|
 | **VLAN 11** | `MGT-CONCEP` | Gestión fuera de banda (IPMI, switch, firewall de borde) |
-| **VLAN 21** | `SRV-CONCEP` | VMs WMS Edge, PostgreSQL local, Keycloak Auth Cache (réplica), OTel/ADOT |
+| **VLAN 21** | `SRV-CONCEP` | VMs WMS Edge, PostgreSQL local, Keycloak Local Auth Cache (caché de solo lectura, Modelo B), OTel/ADOT |
 | **VLAN 31** | `OPS-CONCEP` | Terminales MC9400, impresoras y balanza de andén |
 | **VLAN 41** | `WKS-CONCEP` | Estaciones de trabajo |
 | **VLAN 51** | `IOT-CONCEP` | Gateway IoT local (módulos Ebyte) |
@@ -507,6 +507,8 @@ Red plana simplificada (gabinete de borde operacional, volumen reducido):
 
 Cada CD (Talca y Concepción) establece una **AWS Site-to-Site VPN** con **2 túneles IPsec activos** hacia el Virtual Private Gateway (VGW) de AWS, conforme a RNF-13.07. El **SD-WAN del firewall (D-01)** selecciona el camino activo entre **fibra (D-03), Starlink (D-06) y LTE (D-04)**; los dos túneles activos corren sobre los dos mejores caminos del momento (fibra + Starlink) y el tercero queda disponible como camino alterno sin pérdida de sesión.
 
+> **Complemento dedicado — AWS Direct Connect (INC-02 resuelta):** la nube reserva **Direct Connect** como complemento / mayor ancho de banda (Cloud v3.6 §2.4, diagrama VGW "Site-to-Site VPN IPsec / Direct Connect"). El extremo **customer-side se termina on-premise en el clúster de firewalls D-01** (D-01a/D-01b, Customer Gateway) mediante un **VIF dedicado/hosted** sobre la fibra D-03, sin hardware adicional: usa el puerto de enrutador del firewall como terminación física del servicio. Se activa solo si el CLIENTE contrata la LOA/AWS (vínculo Direct Connect a la VPC con los mismos prefijos); mientras tanto, la VPN IPsec **sostiene por sí sola los RPO ≤ 15 min / RTO ≤ 4 h y el SLO e2e ≥ 99,9 %** declarados. El Direct Connect **no reemplaza** los 3 caminos SD-WAN (D-03/D-06/D-04) ni la salida directa de los cross-docks (D-AL-04); se ofrece como camino dedicado de alta capacidad para DMS CDC, OTel y sincronismos batch.
+
 ```
 CD Talca                                     AWS Region
 ──────────────────────────                   ──────────────────────
@@ -540,7 +542,7 @@ IP pública Starlink    BGP failover < 30 s
 
 | Flujo | Origen | Destino | Protocolo |
 |---|---|---|---|
-| Sync broker → nube | VM-03 SRV-TALCA | SQS / Amazon MQ AWS | AMQPS 5671 |
+| Sync broker → nube | VM-03 SRV-TALCA | **SQS FIFO — HTTPS 443 (VPC Endpoint SQS / PrivateLink)** | HTTPS 443 |
 | Telemetría OTel | VM-06 SRV-TALCA | CloudWatch / X-Ray / AMP | HTTPS 443 |
 | Greengrass Core → IoT Core | IOT-TALCA Gateway | AWS IoT Core | MQTTS 8883 |
 | SSM Agent (gestión remota) | Todos los nodos | SSM Endpoint (regional) | HTTPS 443 saliente |
@@ -560,9 +562,9 @@ IP pública Starlink    BGP failover < 30 s
 | **CD Concepción — Starlink respaldo (D-06)** | **Plan 1 TB prioritario**; conmutación automática al caer D-03 | Ídem | **Cierra la brecha de Concepción (RNF-13.07)**: antes "nuevo enlace requerido" — actualmente sin respaldo; el satelital provee el respaldo automático sin depender de nueva obra móvil (RT-03.17) |
 | **CD Concepción — LTE terciario (D-04)** | 3 Mbps | 5 Mbps | Camino alterno sobre red móvil (proveedor distinto a D-03) |
 | **Cross-Docking (c/u) — Starlink principal (D-06)** | **Plan 500 GB prioritario** | Ídem | Enlace principal satelital: resuelve la intermitencia de señal móvil de **Los Ángeles entre 03:00–05:00** (ventana operacional) y la dependencia exclusiva de red móvil en Curicó/Chillán; sync ventana 3 h + manifiesto pre-cargado |
-| **Cross-Docking (c/u) — LTE dual respaldo** | 2 Mbps (LTE 4G) | 5 Mbps (LTE 4G) | Respaldo automático del módulo 4G Cat-12 del mini-PC (**2 proveedores, conmutación automática — RT-03.17** y cotización Starlink) |
+| **Cross-Docking (c/u) — LTE dual respaldo** | 2 Mbps (LTE 4G) | 5 Mbps (LTE 4G) | Respaldo automático del módulo 4G Cat-12 del mini-PC (**2 proveedores, conmutación automática — RT-03.17**) |
 
-> **Fuente del nuevo camino:** `Cotizacion_Starlink_Sucursales_56meses.docx.md` (05-09-2026). Con el satelital, el hueco histórico de Concepción ("nuevo enlace requerido") y el caso crítico de Los Ángeles quedan cubiertos por enlace físico independiente de la red móvil/terrestre.
+> **Sustento del camino:** planes de datos priorizados (1 TB CDs · 500 GB cross-docks) y reposición de hardware 15 %/56 meses **declarados en la oferta** (T-11 C27 · T-12 RT-08.13, 05-09-2026). Con el satelital, el hueco histórico de Concepción ("nuevo enlace requerido") y el caso crítico de Los Ángeles quedan cubiertos por enlace físico independiente de la red móvil/terrestre. **Direct Connect (complemento, INC-02):** si el CLIENTE lo contrata, el VIF dedicado termina en el clúster D-01 y aporta un camino de alta capacidad para DMS CDC y sincronismos batch; el ancho de banda base anterior (D-03/D-06/D-04) ya cubre RPO ≤ 15 min / RTO ≤ 4 h **sin depender de él**.
 
 ---
 
@@ -595,7 +597,7 @@ Con esta configuración quedan eliminados los puntos únicos de falla en el per�
 | CD Talca | Firewall UTM / Customer GW — clúster HA Activo/Pasivo | 2 | FortiGate 60F HA A/P / Palo Alto PA-220 A/P o equiv. |
 | CD Talca | AP Wi-Fi 6E industrial (bodega) | 6 | Cisco Catalyst 9115 / Aruba AP-515 |
 | CD Talca | Gateway IoT + Greengrass | 1 | Advantech ADAM-6000 + Greengrass Core |
-| CD Talca | **Kit Starlink fijo (respaldo D-06)** | 1 | Starlink Enterprise fijo (estándar/alto rendimiento): antena techumbre + router, plan 1 TB prioritario (Cotización Starlink) |
+| CD Talca | **Kit Starlink fijo (respaldo D-06)** | 1 | Starlink Enterprise fijo (estándar/alto rendimiento): antena techumbre + router, plan 1 TB prioritario (declarado en la oferta) |
 | CD Concepción | Servidor borde compacto | 1 | Dell R250 / HPE DL20 Gen11 |
 | CD Concepción | Firewall de borde | 1 | FortiGate 40F o similar |
 | CD Concepción | Switch core de borde | 1 | Cisco Catalyst 9300-48P o equiv. (2° nodo del core 2+1, ver T-11 C14) |
@@ -606,19 +608,19 @@ Con esta configuración quedan eliminados los puntos únicos de falla en el per�
 | Cross-Docking (×3) | Switch compacto | 3 | Netgear GS308E o similar |
 | Cross-Docking (×3) | **Kit Starlink fijo (enlace principal D-06)** | 3 | Ídem; plan 500 GB prioritario; antena techumbre + router → switch compacto |
 
-> **Nota enlaces WAN consolidados (D-03/D-06/D-04):** fibra primaria en CDs (D-03) + satelital Starlink (D-06) como respaldo automático de CDs y principal de cross-docks + LTE (D-04) como camino alterno/terciario (dual 2 proveedores en cross-docks). Detalle de ancho de banda en §3.7. Los **5 kits Starlink** (2 CDs + 3 cross-docks) se incorporan al inventario de HW según la Cotización Starlink 05-09-2026 y se respaldan en el plan de reposición (§6.3, RT-08.13: reposición de hardware 15 % / 56 meses).
+> **Nota enlaces WAN consolidados (D-03/D-06/D-04):** fibra primaria en CDs (D-03) + satelital Starlink (D-06) como respaldo automático de CDs y principal de cross-docks + LTE (D-04) como camino alterno/terciario (dual 2 proveedores en cross-docks). Detalle de ancho de banda en §3.7. Los **5 kits Starlink** (2 CDs + 3 cross-docks) se incorporan al inventario de HW (planes y reposición **declarados en la oferta**, 05-09-2026) y se respaldan en el plan de reposición (§6.3, RT-08.13: reposición de hardware 15 % / 56 meses). **Direct Connect (AWS, complemento activable — INC-02):** servicio de conectividad dedicada terminado on-premise en el clúster D-01 (VIF dedicado/hosted, sin hardware adicional — usa el puerto de enrutador del firewall); se declara como componente de red **activable por el CLIENTE** (costo OPEX AWS asociado a la cuenta), documentado en §3.6 y §3.7.
 
 ### 4.2 Dispositivos de Terreno (Tabla v06 §4)
 
 | Sitio | Elemento | Cant. | Modelo de referencia |
 |---|---|---|---|
-| Talca + Concepción | Terminal rugoso picking (freezer) | 144 Talca + 30 Concepción | **Zebra MC9400 Cold Storage (Freezer)** |
+| Talca + Concepción | Terminal rugoso picking (freezer) | 144 Talca + 30 Concepción (25 + 20 %) | **Zebra MC9400 Cold Storage (Freezer)** |
 | Talca / Concepción | Impresora térmica andén | 4 / 2 | **Zebra ZT411** |
 | Talca / Concepción | Balanza recepción | 2 / 1 | **Dibal BEV** (ME + DMI-610 Inox) |
 | Preventa | Terminal preventa | 62 + 20 % | **Zebra EC55** |
 | Reparto | Terminal reparto (parque único: propios + externos) | 42 + ~160 + reserva | **Zebra TC58e** (5G, SE55, bat. 7.000 mAh) |
-| Cabina | Impresora térmica portátil | ≈ 200 (1 por conductor) | **Zebra ZQ620 Plus** |
-| Cabina | POS móvil Bluetooth | ≈ 200 (1 por conductor) | **PAX A920 Pro** |
+| Cabina | Impresora térmica portátil | ≈ 202 (1 por conductor; 42 propios + ~160 externos) | **Zebra ZQ620 Plus** |
+| Cabina | POS móvil Bluetooth | ≈ 202 (1 por conductor; 42 propios + ~160 externos) | **PAX A920 Pro** |
 | Cross-Docking (×3) | Escáner de mano GS1 | 6 (2/sitio) | **Zebra DS2208** |
 | Cámaras (IoT) | Sensor de temperatura (módulo 4 canales) | 7 módulos (28 puntos) | **Ebyte ME31-XDXX0400** |
 | Frío en ruta | Termógrafo de camión | 18 | **Onset InTemp CX450** |
@@ -636,7 +638,7 @@ Con esta configuración quedan eliminados los puntos únicos de falla en el per�
 | VM-06 | Talca | OTel Collector (ADOT) + SSM Agent | 2 | 4 GB | 50 GB |
 | VM-C01 | Concepción | WMS Edge | 4 | 8 GB | 300 GB |
 | VM-C02 | Concepción | PostgreSQL local | 4 | 8 GB | 500 GB |
-| VM-C03 | Concepción | **Keycloak Auth Cache (réplica local, Modelo B)** | 2 | 4 GB | 20 GB |
+| VM-C03 | Concepción | **Keycloak Local Auth Cache / Offline Proxy (caché de solo lectura TTL 8 h, Modelo B)** | 2 | 4 GB | 20 GB |
 | VM-C04 | Concepción | OTel (ADOT) + RabbitMQ | 2 | 4 GB | 50 GB |
 | **TOTAL** | | | **42 vCPU** | **92 GB** | **2.760 GB** |
 
@@ -671,7 +673,7 @@ Se declara análisis formal de amenazas comunes: **no existe un evento único qu
 ### 5.3 Replicación con medición y alerta de retraso (RT-07.03)
 
 - **Mecanismo:** AWS DMS CDC lee el WAL lógico (`wal_level=logical`) de PostgreSQL de VM-02 (Talca) y aplica los cambios en la réplica Aurora (RPO ≤ 15 min), vía VPN IKEv2/AES-256 (3.6); replicación Ceph síncrona intra-clúster (1.2.5).
-- **Medición y alertamiento:** se miden continuamente el **lag de replicación** (bytes y segundos) y el estado del WAL; **alerta automática al NOC y al Jefe de TI** si el lag supera los **5 minutos** (umbral intermedio) o los **15 minutos** (RPO declarado, alarma prioridad alta). Métrica expuesta en Prometheus/Grafana y correlacionada en la plataforma OTel (F-01).
+- **Medición y alertamiento:** se miden continuamente el **lag de replicación** (bytes y segundos) y el estado del WAL; **alerta automática al NOC y al Jefe de TI** si el lag supera los **5 minutos** (umbral intermedio) o los **15 minutos** (RPO declarado, alarma prioridad alta). Métrica expuesta en AMP (compatible Prometheus) y presentada en los tableros Grafana OSS, correlacionada en la plataforma OTel única (F-01 · ADR-14).
 - El repliegue del retardo a cero se verifica en la prueba DR semestral (5.6).
 
 ### 5.4 Procedimiento de conmutación documentado y automatizado (RT-07.05)
@@ -1039,7 +1041,7 @@ SLIs **sobre experiencias reales** (percentil 95, RT-09.01) y no solo sintética
 
 ### 9.10 Alertamiento por síntomas de negocio (RT-14.04)
 
-Además de alertas de infraestructura, se definen **alertas por síntomas de negocio**: OTIF por debajo de meta por turno, bloqueos de despacho por excursión térmica, colas broker acumuladas > umbral (indicia de pérdida de sincronización), devoluciones anómalas, conteo cíclico discrepante. Reglas en Prometheus/Alertmanager y alarmas a NOC + Jefe de TI on-call con prioridad según impacto (S §4.4).
+Además de alertas de infraestructura, se definen **alertas por síntomas de negocio**: OTIF por debajo de meta por turno, bloqueos de despacho por excursión térmica, colas broker acumuladas > umbral (indicia de pérdida de sincronización), devoluciones anómalas, conteo cíclico discrepante. Reglas de alerta en AMP/Alertmanager y alarmas CloudWatch dirigidas al NOC + Jefe de TI on-call con prioridad según impacto (S §4.4).
 
 ### 9.11 Libro de operación y guías de resolución (RT-14.05)
 
@@ -1058,7 +1060,7 @@ Además de alertas de infraestructura, se definen **alertas por síntomas de neg
 
 | Tipo | En línea | Archivado | Costo declarado |
 |---|---|---|---|
-| Métricas (Prometheus/AMP) | 13 meses | — | OPEX de almacenamiento de métricas en el paquete de observabilidad |
+| Métricas (AMP, compatible Prometheus) | 13 meses | — | OPEX de almacenamiento de métricas en el paquete de observabilidad |
 | Logs (SIEM/bucket) | 12 meses | 24 meses (objeto) | OPEX S3 incluido en el costo de nube + NAS para archivo local |
 | Trazas (OTel/X-Ray) | 90 días | 12 meses | Incluido en el paquete Sigv4/otlp |
 | Evidencia sanitaria (frío) | 5 años (S3 raw + consolidado OLAP) | — | RNF-09.02 / RT-05.10 (5.8, 15) |
@@ -1067,7 +1069,7 @@ La política de retención se reporta al CLIENTE y su cumplimiento se audita en 
 
 ### 9.15 Detección proactiva de anomalías (RT-14.09 — Deseable)
 
-Se propone detección proactiva de anomalías con modelado estadístico/ML de series de tiempo (ingesta IoT, TPS, latencias, OTIF) sobre el stack de observabilidad, con alertas de desviación temprana — complementaria a los umbrales estáticos de 9.10.
+Se propone detección proactiva de anomalías mediante **baselines estadísticos de comportamiento histórico** sobre las series de tiempo (ingesta IoT, TPS, latencias, OTIF) en el stack de observabilidad — ventanas móviles, percentiles y desviación estándar configurados como reglas — con alertas de desviación temprana, complementaria a los umbrales estáticos de 9.10. **No se incorporan modelos de IA/ML** (alineación con la Arquitectura Lógica §17D — RT-18 N/A).
 
 ---
 
@@ -1131,9 +1133,9 @@ La solución soporta 3× la volumetría inicial **sin rediseño de arquitectura*
 
 ### 10.6 Pruebas de carga y estrés (RT-09.06 / RT-09.07 — OBL)
 
-- **Carga (RNF-19.04):** sobre **Preproducción**, **1,5 × peak = 5.850 entregas/día** equivalente (~160 TPS sostenidos), con los perfiles horarios reales (picking nocturno, despacho 05:30–07:00, preventa diurna).
+- **Carga (RNF-19.04):** sobre **Preproducción**, **1,5 × la carga de diseño = 5.850 entregas/día** equivalente (~160 TPS sostenidos; la carga de diseño es 2.600 × 1,5 = 3.900, y la prueba la vuelve a multiplicar por 1,5), con los perfiles horarios reales (picking nocturno, despacho 05:30–07:00, preventa diurna).
 - **Estrés:** incremento progresivo hasta identificar el **punto de quiebre** (objetivo: igual o superior a 3× la volumetría, 10.3).
-- **Informe de carga (RT-09.07):** curva de tiempo de respuesta vs carga, punto de saturación, consumo de recursos (CPU/RAM/IOPS/enlace/colas) y comportamiento durante/después del peak — insumo para el hito de producción (mes 16) y para la actualización semestral de capacidad (RT-09.09).
+- **Informe de carga (RT-09.07):** curva de tiempo de respuesta vs carga, punto de saturación, consumo de recursos (CPU/RAM/IOPS/enlace/colas) y comportamiento durante/después del peak — insumo para el hito de producción (mes 16) y para la actualización trimestral de capacidad (RT-09.09).
 - Programas de pruebas con **k6/Gatling + custom drivers** contra las APIs (svc-erp-integration, svc-broker), replicadas en Preproducción. Cortes de prueba: Etapa 1 (mes 13), Etapa 2 (mes 19) y re-ejecución trimestral (10.9). **Calendario e hitos formales en el Formulario T-13.**
 
 ### 10.7 Degradación controlada (RT-09.08 — OBL)
@@ -1164,3 +1166,5 @@ Se propone como valor la automatización de pruebas de carga en el pipeline de i
 *Versión 06 — Cierre del capítulo 9 (Desempeño, capacidad y escalabilidad): nueva **PARTE 10** que declara RT-09.01 (cálculo de capacidad trazado a §1), RT-09.02 (concurrencia con umbrales p95), **RT-09.03 (crecimiento 3× sin rediseño en 3 años**, vCPU 47 %→ margen dentro del físico, enlace 50/100 Mbps escalonado), RT-09.04 (escalamiento horizontal ≤ 15 min de reacción, colas persistentes sin pérdida), **RT-09.05 (primer cuello de botella = escritura transaccional de VM-02 PostgreSQL en ventana 05:30–07:00 y drenaje del broker**, con detección OTel/Prometheus y resolución: PgBouncer + particionado + réplica de lectura + 4º nodo; luego VM-01 WMS, enlace D-03 y Wi-Fi), RT-09.06/09.07 (pruebas de carga 1,5× peak = 5.850 entregas/día y estrés hasta el punto de quiebre, informadas en el **Formulario T-13**), RT-09.08 (degradación controlada: encolamiento + rate limiting + mensaje explícito), RT-09.09 (gestión trimestral con alerta 70 %/2 semanas) y RT-09.10 (Deseable: carga automatizada en CI con k6). Referencias cruzadas a Tabla v06 y Sala v02.*
 
 *Versión 07 — Ajuste de especificación del sensor IoT B-01 (alineado con Tabla v06 §2.8, nota 06d): módulo Ebyte **ME31-XDXX0400** (4 canales PT100 2/3 hilos por módulo, sonda 3 hilos con compensación de cable, exactitud ±0,5 % ± 1 °C ≈ ±1,1 °C a −22 °C) en lugar de ME31-XDXX0800-485 (8 canales); 28 puntos ≈ **7 módulos** (antes 4); protocolo **RS-485/Modbus RTU + Modbus TCP (Ethernet)**; VLAN 50 IOT-TALCA y fila de sensores en §1.5/tabla resumen actualizadas.*
+
+*Versión 08 — Alineación de incoherencias con la nube (06-09-2026, INC-02/03/08 resueltas y ajuste de parque de dispositivos): (1) **INC-02** — **AWS Direct Connect** incorporado como complemento dedicado (terminación customer-side en el clúster D-01, VIF dedicado/hosted, activable por el CLIENTE) en §3.6, §3.7 y §4.1, coherente con Cloud v3.6 §2.4; (2) **INC-03** — fila "Sync broker → nube" corregida a **SQS FIFO — HTTPS 443 (VPC Endpoint SQS / PrivateLink)**, alineada con D-AL-03 y Despliegue v01; (3) **INC-08** — terminología Keycloak unificada a "caché local de solo lectura TTL 8 h" (VLAN 21 y fila VM-C03, Modelo B — D6); (4) **dispositivos** — ZQ620 Plus y PAX A920 Pro ajustados a **≈ 202 (42 propios + ~160 externos)** y MC9400 Concepción declarado como **30 (25 + 20 %)**, consistentes con Tabla v06.*

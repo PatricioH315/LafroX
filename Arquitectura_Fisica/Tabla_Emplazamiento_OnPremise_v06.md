@@ -1,7 +1,7 @@
 # Arquitectura Física — Componente On-Premise
 ## Distribuidora Puelche S.A. — Caso 02 Logística
 
-> **Nota de alcance (v07):** Este documento es la **tabla de emplazamiento de la solución completa** exigida por el Artículo 16° y el capítulo 3.1 de las Transversales: asigna **cada componente** de la arquitectura física híbrida a **nube, on-premise o híbrido**, con justificación por criterio del Art. 16.2 (latencia, criticidad operacional, volumen de datos, restricciones regulatorias, disponibilidad de conectividad y costo total de propiedad). La **Sección 1.0** es la **tabla maestra** de **35 componentes** (23 del dominio on-premise/híbrido, Bloques A–F + 12 servicios del dominio nube pura, serie N-01…N-12). El detalle profundo del dominio AWS está en `Propuesta_Arquitectura_Cloud_Caso02_CLAUDE_v2.md` (v3.6), el detalle on-premise en los Bloques A–F y `Dimensionamiento_Infraestructura_OnPremise_v05.md`, y la integración entre ambos segmentos en `Arquitectura_Fisica_Hibrida_Consolidada_Caso02_v02.md` (fuente única consolidada). 
+> **Nota de alcance (v07):** Este documento es la **tabla de emplazamiento de la solución completa** exigida por el Artículo 16° y el capítulo 3.1 de las Transversales: asigna **cada componente** de la arquitectura física híbrida a **nube, on-premise o híbrido**, con justificación por criterio del Art. 16.2 (latencia, criticidad operacional, volumen de datos, restricciones regulatorias, disponibilidad de conectividad y costo total de propiedad). La **Sección 1.0** es la **tabla maestra** de **36 componentes** (23 del dominio on-premise/híbrido, Bloques A–F + 13 servicios del dominio nube pura, serie N-01…N-13). El detalle profundo del dominio AWS está en `Propuesta_Arquitectura_Cloud_Caso02_CLAUDE_v2.md` (v3.6), el detalle on-premise en los Bloques A–F y `Dimensionamiento_Infraestructura_OnPremise_v05.md`, y la integración entre ambos segmentos en `Arquitectura_Fisica_Hibrida_Consolidada_Caso02_v02.md` (fuente única consolidada). 
 >
 > **Versión 05 — Cambios respecto de la v04:**
 > 1. **IdP alineado con la Arquitectura Lógica v1 (D6, 2026-09-04):** A-05 pasa de *"caché offline de Amazon Cognito"* a **Caché local de autenticación del IdP Keycloak (Modelo B de identidad)**. La autoridad única de identidad vive en **Keycloak IdP maestro (ECS/Fargate, nube)**; el componente on-premise es una **caché local de solo lectura con TTL 8 h** para sostener la autonomía 24 h de los CD y los 14 h de terreno (RT-03.10). Cognito queda **descartado como dependencia** (solo alternativa). *Reconciliación resuelta en `Propuesta_Arquitectura_Cloud_Caso02_CLAUDE_v2.md` **v3.6** (Modelo B en §3.3/§3.5/§5.4/§7.3/§7.10/L-02/Apéndice C) y consolidada en `Arquitectura_Fisica_Hibrida_Consolidada_Caso02_v02.md`.*
@@ -22,7 +22,7 @@
 > 3. **RT-08.15 (unidad de muestra por tipo de dispositivo para pruebas de aceptación del CLIENTE)** cumplido en **Sección 4.3** de este documento: 1 unidad de cada tipo de dispositivo, sin cargo, para pruebas de aceptación antes de la compra masiva.
 >
 > **Versión 07 — Tabla de emplazamiento de la solución completa (Art. 16° y Cap. 3.1 Transversales):**
-> 1. **Alcance ampliado a toda la arquitectura física híbrida:** nueva **Sección 1.0 — Tabla maestra de emplazamiento**, que asigna los **35 componentes** de la solución (11 on-premise puros + 12 híbridos con pieza en ambos dominios + 12 servicios de nube pura, serie N-01…N-12) con justificación por criterio del Art. 16.2. La carga principal vive en la nube (Art. 16.1); el dominio on-premise concentra la operación de cámara/terreno que exige latencia < 1 s y autonomía sin señal (RT-03.10).
+> 1. **Alcance ampliado a toda la arquitectura física híbrida:** nueva **Sección 1.0 — Tabla maestra de emplazamiento**, que asigna los **36 componentes** de la solución (11 on-premise puros + 12 híbridos con pieza en ambos dominios + 13 servicios de nube pura, serie N-01…N-13) con justificación por criterio del Art. 16.2. La carga principal vive en la nube (Art. 16.1); el dominio on-premise concentra la operación de cámara/terreno que exige latencia < 1 s y autonomía sin señal (RT-03.10).
 > 2. **Nuevo BLOQUE N — Dominio Nube Pura (AWS):** justificación Art. 16.2/16.3 por servicio administrado (elasticidad, Multi-AZ, administrados, FinOps, reversibilidad), con referencias a `Propuesta_Arquitectura_Cloud_Caso02_CLAUDE_v2.md` (v3.6).
 > 3. **Colisión de IDs resuelta:** los portales de canal moderno, anteriormente C-05/C-06/C-07 en el Consolidado (colisionaban con la balanza C-05 de los Bloques B–F), se renumeran a **N-01/N-02/N-03** (serie Nube/DMZ) en `Arquitectura_Fisica_Hibrida_Consolidada_Caso02_v02.md`.
 > 4. **Bibliografía ampliada (Sección 3):** Cloud v3.6 (referencia del dominio nube) y Consolidado v02 (referencia de integración), además de T-12 (matriz de cumplimiento del Subdocumento 3).
@@ -35,7 +35,7 @@
 
 ### Sección 1.0 — Tabla maestra de emplazamiento de la solución completa (nube + on-premise)
 
-*Asignación componente por componente conforme a los Art. 16.1–16.2 y a la tabla de criterios del Cap. 3.1 de las Transversales. Siglas: LAT (latencia), CRIT (criticidad operacional), VOL (volumen de datos local), CONN (disponibilidad de conectividad), TCO (costo total de propiedad), HW (acoplamiento físico), REG (residencia/restricción regulatoria). Total: **35 componentes** — 11 on-premise puros, 12 híbridos con pieza en ambos dominios y 12 servicios de nube pura. El veredicto de la Sección 2 corresponde a la instancia operativa principal; el detalle por instancia es el de esta sección.*
+*Asignación componente por componente conforme a los Art. 16.1–16.2 y a la tabla de criterios del Cap. 3.1 de las Transversales. Siglas: LAT (latencia), CRIT (criticidad operacional), VOL (volumen de datos local), CONN (disponibilidad de conectividad), TCO (costo total de propiedad), HW (acoplamiento físico), REG (residencia/restricción regulatoria). Total: **36 componentes** — 11 on-premise puros, 12 híbridos con pieza en ambos dominios y **13 servicios de nube pura** (N-13, MDM, incorporado el 2026-09-06 al cerrar la auditoría del Subdocumento 4: RT-03.18 es Obligatorio y hasta entonces la gestión de dispositivos se mencionaba sin componente ni emplazamiento). El veredicto de la Sección 2 corresponde a la instancia operativa principal; el detalle por instancia es el de esta sección.*
 
 **a) Dominio on-premise / híbrido — Bloques A–F (23 componentes)**
 
@@ -65,7 +65,7 @@
 | F-02 | Gestión centralizada de parches (Ansible) | **ON-PREMISE** | — (SSM complementa inventario) | VM de gestión (CIS Benchmarks) | TCO + REG: endurecimiento centralizado (RT-03.15/RNF-13.06) | BLOQUE F (F-02) |
 | F-03 | Agente EDR / gestión de endpoints | **HÍBRIDO** | Consola centralizada / SIEM (Security Lake) | Agentes en todos los nodos (WMS, edge, cross-dock, estaciones) | REG + CRIT: cobertura 24×7 (RNF-14.05, RNF-23.04) | BLOQUE F (F-03) |
 
-**b) Dominio nube pura — servicios administrados (N-01…N-12, 12 componentes)**
+**b) Dominio nube pura — servicios administrados (N-01…N-13, 13 componentes)**
 
 | ID | Componente | Emplazamiento | Instancia nube | Instancia on-premise | Criterio dominante (Art. 16.2) | Referencia |
 |---|---|---|---|---:|---|---|
@@ -80,7 +80,8 @@
 | N-09 | Mensajería cloud (colas + bus de eventos + alertas) | **NUBE** | SQS FIFO + EventBridge + SNS | — | VOL + CRIT: orden y durabilidad de la reconciliación | Cloud §3 |
 | N-10 | Plataforma analítica / OLAP | **NUBE** | S3 (lake 5 años) + Glue + Redshift Serverless + QuickSight | — | VOL + TCO: separación OLTP/OLAP; BI self-service | Cloud §4.3 |
 | N-11 | Respaldo inmutable y DRP en región secundaria | **NUBE** | S3 Object Lock / Backup Vault + Aurora Global + DynamoDB GT + S3 CRR (us-east-1) | — | REG + CRIT: RTO ≤ 4 h / RPO ≤ 15 min; Art. 20/RT-07.07 | Cloud §6.2/§6.3 |
-| N-12 | Seguridad y gobierno de plataforma | **NUBE** | KMS, Secrets Manager, IAM, WAF, Shield Advanced, GuardDuty, Security Hub, Inspector, Macie, Security Lake, CloudWatch, CloudTrail, Config, AWS Backup, Control Tower/Organizations, Cost Explorer/Budgets | — | REG + TCO: servicios administrados, Zero Trust, IaC, FinOps (Art. 16.3) | Cloud §5/§7.1 |
+| N-12 | Seguridad y gobierno de plataforma (incluye **gestión de secretos**: Secrets Manager + SSM Parameter Store con rotación automática, consumida por los nodos on-premise vía VPC Endpoint **saliente** — D13/ADR-15) | **NUBE** | KMS, **Secrets Manager**, **SSM Parameter Store**, IAM, WAF, Shield Advanced, GuardDuty, Security Hub, Inspector, Macie, Security Lake, CloudWatch, CloudTrail, Config, AWS Backup, Control Tower/Organizations, Cost Explorer/Budgets | — | REG + TCO: servicios administrados, Zero Trust, IaC, FinOps (Art. 16.3); un gestor de secretos autoalojado exigiría VM, alta disponibilidad y desellado manual sobre un equipo de 4 | Cloud §5/§7.1; Seguridad v01 §5.3 |
+| **N-13** | **Gestión de dispositivos de borde y terreno (MDM)** — enrolamiento, política, modo quiosco, actualización de aplicación y de caché de turno, inventario por IMEI/serie y **borrado remoto selectivo** | **NUBE** | **Android Enterprise / Zebra DNA (SaaS gestionado)**, integrado con Keycloak (enrolamiento contra el usuario) y con la Capa 8 (estado de sincronización, batería, versión) | — (agente en el dispositivo; sin infraestructura on-premise) | REG + TCO + CRIT: **RT-03.18 es Obligatorio**; el parque es 100 % Android/Zebra (EC55, TC58e, MC9400) y el equipo de TI del CLIENTE es de 4 personas, por lo que se descarta un MDM autoalojado | D15 · ADR-15; Lógica v6.2 §11.7; Sec. 4 y 4.1 |
 
 ### Sección 1.1 — Funciones NO disponibles en modo desconectado (RT-03.13)
 
@@ -93,7 +94,7 @@
 | **WMS bodega (A-01/A-02)** | Recepción, preparación, despacho, conteo cíclico y trazabilidad local contra BD local (RT-03.10/03.11) | Sincronización con ERP maestro (A-04), maestro de productos recién actualizado desde nube, BI/dashboards cloud | Cambios de maestro se aplican al reconectar con reconciliación determinista de stock (RT-03.12); si la dirección lo exige durante la contingencia, se lleva reporte manual de operación en planilla (caso extremo documentado) |
 | **Autenticación (A-05)** | Login/SSO offline con caché TTL 8 h (validación local de firma OIDC) | Alta/baja de usuarios, cambio de roles/permisos, reset de contraseña, re-registro MFA, OTP nuevo para externos | El administrador local habilita acceso temporal de emergencia registrado en bitácora; altas/bajas y roles se sincronizan desde Keycloak al recuperar el enlace (RF-15.05 ≤ 24 h) |
 | **Cadena de frío (B-01/B-02)** | Lectura continua cada 30 s, detección de excursión y bloqueo de despacho 100 % local, buffer offline 14 h | Alerta externa (SMS/email a la Autoridad Sanitaria) y telegestión remota desde nube | La excursión la decide el sistema local (alarma acústica/luz y sensor RT-06.14 en el NOC) y el Jefe de TI on-call 24×7; el bloqueo de despacho es local y no depende de la alerta remota |
-| **Observabilidad (F-01)** | Métricas, logs y trazas bufferizadas en disco durante el corte | Dashboards centralizados en nube (CloudWatch/AMP) durante el corte | El NOC on-premise (Prometheus/Grafana/Loki local) mantiene la vista completa; el envío diferido cierra el hueco al reconectar (RT-03.16) |
+| **Observabilidad (F-01)** | Métricas, logs y trazas **bufferizadas en disco 24 h** por el colector ADOT — no se pierde ninguna señal | **Tableros centralizados** (Grafana OSS, AMP, CloudWatch, X-Ray) durante el corte; correlación y consulta histórica | Durante el corte rigen las **alarmas locales del propio equipamiento**: excursión térmica con señal acústica y luminosa en bodega, sensores de sala al DCIM/BMS (RT-06.14), alarmas del hipervisor y del firewall, y el **bloqueo de despacho por frío, que es 100 % local**. El envío diferido cierra el hueco al reconectar (RT-03.16). **Ninguna decisión de la ventana crítica 05:30–07:00 depende de la observabilidad centralizada** (D14 · ADR-14) |
 | **Cross-docking (E-01)** | Ventana de 3 h 100 % local: recepción, desconsolidación, validación de frío, re-despacho | Visibilidad global en nube, planificación central de rutas, sincronización con WMS maestro (diferida) | Operación según papeleta generada al inicio del turno; sincronización diferida al reconectar con reconciliación (RT-03.11) |
 
 ### Criterios de evaluación
@@ -425,7 +426,7 @@ Justificación: RNF-20.07 exige la política de respaldo **3-2-1-1-0** bajo un *
 ---
 
 **D-06 — Enlace WAN satelital (Starlink Enterprise fijo) — NUEVO**
-*(Respaldo automático de los CDs Talca y Concepción; enlace principal de las 3 plataformas de cross-docking; 5 kits — Cotización Starlink 56 meses, 05-09-2026)*
+*(Respaldo automático de los CDs Talca y Concepción; enlace principal de las 3 plataformas de cross-docking; 5 kits — planes y reposición declarados en la oferta, 05-09-2026)*
 
 | Criterio | Evaluación |
 |---|---|
@@ -465,14 +466,14 @@ Justificación: El nodo actúa como un Mini-WMS con motor de datos ligero embebi
 
 | Criterio | Evaluación |
 |---|---|
-| Emplazamiento | ON-PREMISE (agente) + NUBE (plataforma centralizada: Prometheus/Grafana/Loki on-prem + CloudWatch / X-Ray / AMP en nube) |
+| Emplazamiento | ON-PREMISE (**solo emisión**: colector ADOT con buffer en disco de 24 h) + NUBE (**plataforma única**: AMP, CloudWatch Logs, X-Ray y tableros Grafana OSS en sa-east-1) — ADR-14 |
 | CRIT | ALTO — sin él hay puntos ciegos prohibidos por RT-03.16 y RF-16.01 |
 | VOL | Moderado — métricas, logs y trazas de todos los nodos on-premise |
 | CONN | Buffer en disco local durante cortes; envío diferido; SSM Agent conecta sin puertos entrantes abiertos (Zero Trust) |
 | TCO | Bajo — ADOT y SSM Agent son abiertos / incluidos en AWS |
 | HW | No |
 
-Justificación: **D9 (Arquitectura Lógica v1)** y RF-16.01/RT-03.16 exigen observabilidad unificada nube + on-premise sobre **OpenTelemetry**. **ADOT (AWS Distro for OpenTelemetry)** se instala en cada VM y nodo edge; instrumenta WMS, BD, broker, gateway IoT y red. Durante la pérdida de enlace, el collector bufferiza en disco y envía al recuperar; el stack on-prem es **Prometheus/Grafana/Loki**, con exportadores a CloudWatch/X-Ray/AMP en nube y correlación por `transaction_id`. El **AWS SSM Agent** permite gestión remota (parches, comandos) sin abrir puertos entrantes.
+Justificación: **D14 (Arquitectura Lógica v6.2 · ADR-14)** y RF-16.01/RT-03.16 exigen observabilidad unificada nube + on-premise sobre **OpenTelemetry**, y tanto RT-03.16 como el **Art. 16.4** exigen que sea **la misma plataforma que la nube, sin puntos ciegos**. **ADOT (AWS Distro for OpenTelemetry)** se instala en cada VM y nodo de borde; instrumenta WMS, BD, broker, gateway IoT y red. El on-premise **solo emite**: durante la pérdida de enlace el colector bufferiza **24 h en disco** —la misma autonomía comprometida del CD (RT-03.10)— y envía al recuperar, de modo que un corte no deja hueco en la serie. La plataforma es **única y vive en nube**: métricas en **AMP** (compatible Prometheus/PromQL, 13 meses), registros en **CloudWatch Logs** (12 meses en línea + 24 en archivo), trazas en **X-Ray** (30 días) y tableros en **Grafana OSS** autoadministrado en sa-east-1, todo correlacionado por `transaction_id`. *Se descartó un conjunto Prometheus/Grafana/Loki autoadministrado por sitio: constituye una segunda plataforma —contra RT-03.16 y Art. 16.4—, no tenía VM dimensionada (VM-06 es de 2 vCPU / 4 GB / 50 GB) y su operación excede a un equipo de TI de 4 personas.* Durante un corte, lo que sostiene la operación son las **alarmas locales del propio equipamiento** (excursión térmica acústica y luminosa, sensores de sala al DCIM/BMS por RT-06.14, alarmas del hipervisor y del firewall) y el **bloqueo de despacho por frío, que es 100 % local**: ninguna decisión de la ventana 05:30–07:00 depende de la observabilidad centralizada. El **AWS SSM Agent** permite gestión remota (parches, comandos) sin abrir puertos entrantes.
 
 ---
 
@@ -508,7 +509,7 @@ Justificación: RNF-14.05 exige EDR en todos los endpoints (servidores WMS, nodo
 
 ### BLOQUE N — DOMINIO NUBE PURA (AWS)
 
-*Servicios administrados (serie N-01…N-12) sin instancia local: su emplazamiento es **NUBE** por aplicación del Art. 16.1 (carga principal en nube pública) y de los criterios del Art. 16.2/16.3 (elasticidad, despliegue Multi-AZ, gestión administrada, FinOps y reversibilidad); ninguno exige acoplamiento físico (HW = No) ni residencia de datos restringida. Operación, dimensionamiento y costos en `Propuesta_Arquitectura_Cloud_Caso02_CLAUDE_v2.md` (v3.6); integración y costuras con el dominio on-premise en `Arquitectura_Fisica_Hibrida_Consolidada_Caso02_v02.md`.*
+*Servicios administrados (serie N-01…N-13) sin instancia local: su emplazamiento es **NUBE** por aplicación del Art. 16.1 (carga principal en nube pública) y de los criterios del Art. 16.2/16.3 (elasticidad, despliegue Multi-AZ, gestión administrada, FinOps y reversibilidad); ninguno exige acoplamiento físico (HW = No) ni residencia de datos restringida. Operación, dimensionamiento y costos en `Propuesta_Arquitectura_Cloud_Caso02_CLAUDE_v2.md` (v3.6); integración y costuras con el dominio on-premise en `Arquitectura_Fisica_Hibrida_Consolidada_Caso02_v02.md`.*
 
 | ID | Servicio | Emplazamiento | Criterios Art. 16.2 aplicados | Exigencia Art. 16.3 cubierta | Referencia |
 |---|---|---|---|---:|---|
@@ -530,7 +531,7 @@ Justificación: RNF-14.05 exige EDR en todos los endpoints (servidores WMS, nodo
 ## SECCIÓN 2 — RESUMEN EJECUTIVO
 
 | ID | Componente | Veredicto | Criterio dominante |
-|---|---|---|:---:|---|
+|---|---|---|---|
 | A-01 | Motor WMS on-premise | ON-PREMISE | Latencia < 1 s + sin señal cámara |
 | A-02 | BD transaccional WMS | ON-PREMISE | Escritura local + RAID 10 (RT-03.14) |
 | A-03 | Broker de colas offline | ON-PREMISE | Encolado + reconciliación |
@@ -544,7 +545,7 @@ Justificación: RNF-14.05 exige EDR en todos los endpoints (servidores WMS, nodo
 | C-03 | Terminales bodega (MC9400 Cold Storage) | ON-PREMISE | Sin señal + -22°C |
 | C-04 | Impresoras andén (ZT411) | ON-PREMISE | Periférico local |
 | C-05 | Balanza recepción (Dibal BEV) | ON-PREMISE | Local M1, merma |
-| D-01 | Firewall/UTM + Cust GW | ON-PREMISE | VPN IPsec + failover WAN |
+| D-01 | Firewall/UTM + Cust GW | ON-PREMISE | VPN IPsec + **Direct Connect (complemento, VIF en D-01 — activable)** + failover WAN |
 | D-02 | Switch core con VLANs | ON-PREMISE | Segmentación (RT-03.23) |
 | D-03 | Enlace WAN primario | ON-PREMISE | VPN + sincronización |
 | D-04 | Enlace WAN respaldo | ON-PREMISE | Proveedor distinto + failover |
@@ -568,8 +569,8 @@ Justificación: RNF-14.05 exige EDR en todos los endpoints (servidores WMS, nodo
 | N-12 | Seguridad y gobierno de plataforma | NUBE | Administrados; IaC; FinOps |
 
 **Dominio on-premise/híbrido: 20 ON-PREMISE + 3 HÍBRIDOS (B-03, C-01, C-02) = 23 componentes** *(corrige la métrica "17 + 4" de la v04; incluye las filas nuevas C-05 Balanza Dibal BEV y D-06 Enlace WAN satelital Starlink)* — veredicto por la instancia operativa principal.
-**Dominio nube pura: 12 servicios (N-01…N-12).**
-**Total solución híbrida (Art. 16°) = 35 componentes** (11 on-premise puros + 12 híbridos con pieza en ambos dominios + 12 nube pura), clasificación estricta por instancia en la **Sección 1.0 — Tabla maestra**. La **carga principal vive en la nube (Art. 16.1)**: canal moderno, OLTP cloud, ingesta IoT, analítica y respaldo inmutable; el dominio on-premise concentra la operación de cámara/terreno que exige latencia < 1 s y autonomía sin señal (RT-03.10).
+**Dominio nube pura: 13 servicios (N-01…N-13).**
+**Total solución híbrida (Art. 16°) = 36 componentes** (11 on-premise puros + 12 híbridos con pieza en ambos dominios + 13 nube pura), clasificación estricta por instancia en la **Sección 1.0 — Tabla maestra**. La **carga principal vive en la nube (Art. 16.1)**: canal moderno, OLTP cloud, ingesta IoT, analítica y respaldo inmutable; el dominio on-premise concentra la operación de cámara/terreno que exige latencia < 1 s y autonomía sin señal (RT-03.10).
 
 ---
 
@@ -579,8 +580,10 @@ Justificación: RNF-14.05 exige EDR en todos los endpoints (servidores WMS, nodo
 |---|---|
 | **Art. 16.1/16.2** — Solución híbrida (carga principal en nube) con justificación componente por componente (6 criterios) | Sección 1.0 (tabla maestra) + columnas LAT/CRIT/VOL/CONN/TCO/HW de los Bloques A–F + Cloud v3.6 §7.1 |
 | **RT-02.11** — SPOF declarados | Sección 4 (SPOF) + nota de quórum clúster 3 nodos (A-02) |
-| **RT-03.16 / RF-16.01** — Monitoreo | F-01 (OTel/ADOT + SSM Agent; Capa 8) |
-| **RT-03.17 / RNF-13.07** — Enlace red. | D-03 (fibra) + **D-06 (satelital Starlink)** + D-04 (LTE, 2 proveedores; dual en cross-dock) + D-01 (VPN IPsec BGP / SD-WAN multi-WAN) |
+| **RT-03.16 / RF-16.01** — Monitoreo en la **misma plataforma** que la nube, sin puntos ciegos | F-01: colectores **ADOT** con buffer en disco de 24 h que emiten a la **plataforma única** en nube (AMP · CloudWatch Logs · X-Ray · Grafana OSS). No se opera una segunda plataforma on-premise — **D14 · ADR-14** |
+| **RT-03.18 / RT-08.14** — Gestión remota y centralizada de dispositivos | **N-13** (MDM gestionado): enrolamiento, política, modo quiosco, actualización, inventario y borrado remoto selectivo — **D15 · ADR-15**; parque en Sec. 4 |
+| **Art. 21.4 / RT-04.09** — Gestor de secretos con rotación automática | **N-12** (Secrets Manager + SSM), consumido de forma **saliente** desde on-premise por VPC Endpoint; cuenta de emergencia **fuera de línea** en el recinto de custodia (RT-06.26/06.27) — **D13 · ADR-15** |
+| **RT-03.17 / RNF-13.07** — Enlace red. | D-03 (fibra) + **D-06 (satelital Starlink)** + D-04 (LTE, 2 proveedores; dual en cross-dock) + D-01 (VPN IPsec BGP / SD-WAN multi-WAN + **Direct Connect complementario, VIF en D-01**) |
 | **RT-03.19** — Procesamiento en borde | B-02 (Greengrass Core) + E-01 (mini-WMS) |
 | **RT-03.14 / RT-03.23** — Citas verificadas | A-02 (RAID 10, tolerancia a disco) · D-02 (segmentación inalámbrica) |
 | **RF-15.01 a 15.05 / D6 (Arquitectura Lógica v1)** — Identidad | A-05 — **Caché local del IdP Keycloak (Modelo B, autoridad única en nube, TTL 8 h)** |
@@ -612,19 +615,21 @@ Justificación: RNF-14.05 exige EDR en todos los endpoints (servidores WMS, nodo
 > Lista de dispositivos del proponente (sujeto a ajustes de cantidad según turnos y reservas; detalle de nodos y servidores en **Dimensionamiento_Infraestructura_OnPremise_v05**).
 
 | Ítem | Caso de uso | Dispositivo | Cantidad base | Modelo | Costo unitario estimado (USD ref.) |
-|---|---|---|---|---|
+|---|---|---|---|---|---|
 | 1 | Preventa | Terminal móvil de preventa | 62 + reserva 20 % | **Zebra EC55** | ≈ USD 1.200 |
-| 2 | Reparto — conductores propios | Terminal rugosa de reparto | 42 + reserva | **Zebra TC58e** (5G, SE55, batería ext. 7.000 mAh, BT 5.3 + BLE, GPS L1/L5, IP65/68, Android 13→17) | ≈ USD 1.400 |
-| 3 | Cabina de despacho | Impresora térmica portátil de cabina | ≈ 200 (1 por conductor) | **Zebra ZQ620 Plus** (3", ZPL/EPL/CPCL, Link-OS, IP54, batería PowerPrecision+ 3.250 mAh) | ≈ USD 700 |
-| 4 | Cabina de despacho | POS móvil Bluetooth | ≈ 200 (1 por conductor) | **PAX A920 Pro** (Android 14, PCI PTS 7.x, EMV L1/L2, impresora integrada 80 mm/s, PAXSTORE) | ≈ USD 600 |
+| 2 | Reparto — conductores propios | Terminal rugosa de reparto | **42 + reserva** (uno por tripulación; ver S31) | **Zebra TC58e** (5G, SE55, batería ext. 7.000 mAh, BT 5.3 + BLE, GPS L1/L5, IP65/68, Android 13→17) | ≈ USD 1.400 |
+| 3 | Cabina de despacho | Impresora térmica portátil de cabina | ≈ 202 (1 por conductor; 42 propios + ~160 externos) | **Zebra ZQ620 Plus** (3", ZPL/EPL/CPCL, Link-OS, IP54, batería PowerPrecision+ 3.250 mAh) | ≈ USD 700 |
+| 4 | Cabina de despacho | POS móvil Bluetooth | ≈ 202 (1 por conductor; 42 propios + ~160 externos) | **PAX A920 Pro** (Android 14, PCI PTS 7.x, EMV L1/L2, impresora integrada 80 mm/s, PAXSTORE) | ≈ USD 600 |
 | 5 | Reparto — conductores externos (~160) | Terminal de reparto (parque único con ítem 2) | ~160 + reserva | **Zebra TC58e** (idéntico al ítem 2) | ≈ USD 1.400 |
-| 6 | Bodega −22 °C | Terminal RF (pool) | Talca 144 (120 + 20 %) · Concepción 30 | **Zebra MC9400 Cold Storage (Freezer)** (−30 °C, SE58 ~100 pies, batería freezer 5.000 mAh, pistol grip, Android 13→18, Wi-Fi 6E) | ≈ USD 4.500 |
+| 6 | Bodega −22 °C | Terminal RF (pool) | Talca 144 (120 + 20 %) · Concepción 30 (25 + 20 %) | **Zebra MC9400 Cold Storage (Freezer)** (−30 °C, SE58 ~100 pies, batería freezer 5.000 mAh, pistol grip, Android 13→18, Wi-Fi 6E) | ≈ USD 4.500 |
 | 7 | Andén | Impresora térmica de andén | 4 Talca · 2 Concepción | **Zebra ZT411** (ZPL II + XML-Enabled; 203 dpi; 14 ips; Ethernet; Print DNA) | ≈ USD 2.300 |
 | 8 | Recepción | Balanza de recepción | 2 Talca · 1 Concepción | **Dibal BEV** (plataforma ME + DMI-610 Inox; doble RS-232, Ethernet; 6.000 divisiones) | ≈ USD 1.800 |
 | 9 | Cross-docking | Scanner de mano GS1 | 6 (2 × plataforma) | **Zebra DS2208** (1D/2D + GS1 DataBar; PRZM; USB/RS-232/KBW; garantía 60 meses) | ≈ USD 180 |
 | 10 | Cámaras (IoT) | Sensor IoT de temperatura | 28 puntos ≈ 7 módulos | **Ebyte ME31-XDXX0400** (4 canales PT100 2/3 hilos/módulo; ±0,5 % ± 1 °C ≈ ±1,1 °C a −22 °C; RS-485/Modbus RTU + Modbus TCP; 1 Hz; −40…+85 °C; riel DIN) | ≈ USD 700 (módulo de 4 canales con sondas) |
 | 11 | Cadena de frío en ruta | Termógrafo de camión | 18 (camiones con frío) | **Onset InTemp CX450** (BLE; −30…+70 °C ±0,5 °C; 103.400 mediciones; NIST 2 ptos; GDP/GMP) | ≈ USD 150 |
-| 12 | Enlace satelital WAN (D-06) | Kit Starlink Enterprise fijo (antena + router) | 5 (2 CDs + 3 cross-docks) | **Starlink Enterprise** (activación Business/Enterprise, plan priorizado 1 TB CDs / 500 GB cross-docks; cotización 56 meses adjunta) | Ver cotización Starlink (incluye instalación en techumbre) |
+| 12 | Enlace satelital WAN (D-06) | Kit Starlink Enterprise fijo (antena + router) | 5 (2 CDs + 3 cross-docks) | **Starlink Enterprise** (activación Business/Enterprise, plan priorizado 1 TB CDs / 500 GB cross-docks; planes y precios declarados en la oferta T-11 C27) | Ver T-11 C27 / T-12 RT-08.13 (incluye instalación en techumbre) |
+
+> **Supuesto S31 — camión ≠ conductor (declarado el 2026-09-06, candidato a consulta Art. 43.3).** El caso ofrece tres cifras que parecen contradictorias: **42 camiones propios** (§2.3), **84 «conductores propios y peonetas»** (§2.4) y **«Conductores (42 propios y ≈160 de terceros) ≈ 200»** (Tabla 14.1). Se declara la lectura que las reconcilia sin residuo: los 84 son **una tripulación por camión — 42 conductores más 42 peonetas**, lo que coincide exactamente con los 42 camiones del §2.3 y con los 42 conductores propios de la Tabla 14.1. **Criterio de asignación adoptado:** el terminal de reparto, la impresora de cabina y el POS se asignan **por tripulación (uno por vehículo)**, no por persona — el peoneta manipula carga y opera junto al conductor, que es quien porta el dispositivo (Cap. 3 y RT-13.08). Por eso los ítems 2, 3 y 4 quedan en 42 propios y ≈160 externos. **Si el CLIENTE exigiera un terminal por persona**, el parque propio sube de 42 a 84 unidades por ítem y el impacto —del orden de USD 113.000 de CAPEX antes de reservas— se traslada a la oferta económica.
 
 > **Accesorios y consumibles declarados (RT-08.10):** cradle/multi-slot y baterías de repuesto por terminal (EC55, TC58e, MC9400), cabezal térmico y rollos para ZT411/ZQ620, papel papel térmico de 3" y 4" (consumible), rótulos ZD labels, cables USB/RS-232 y fuente para DS2208, sondas PT100 de repuesto para ME31 (4 canales reemplazables por módulo) y certificados NIST de recalibración anual para CX450. Los valores son referenciales de mercado (USD, 2026), sujetos a cotización formal; su compra es de cargo del CLIENTE conforme al Art. 14.2.
 
@@ -644,7 +649,7 @@ Justificación: RNF-14.05 exige EDR en todos los endpoints (servidores WMS, nodo
 | Zebra DS2208 | 5 años (garantía 60 meses incluida) | Cable y pie de apoyo en stock; garantía del fabricante cubre los 56 meses | Reemplazo 1:1 dentro de garantía; reposición al mes 52 |
 | Ebyte ME31 + sondas PT100 | 5–7 años | Módulos ME31 y sondas PT100 en bodega | Reposición de módulo/sonda por canal según resultado de calibración anual (RT-03.18/19) |
 | Onset InTemp CX450 | 5 años (reutilizable) | — (dispositivo cerrado; recalibración NIST anual) | Recalibración NIST anual; reemplazo ante falla de registro con stock seco 10 % |
-| **Starlink Enterprise (D-06)** | 5+ años (HW satelital fijo) | Antena y router con reemplazo vía proveedor Starlink (soporte Enterprise) | **Reposición de hardware 15 % / 56 meses** conforme a la cotización comercial (RT-08.13); plan de datos activo durante todo el Contrato |
+| **Starlink Enterprise (D-06)** | 5+ años (HW satelital fijo) | Antena y router con reemplazo vía proveedor Starlink (soporte Enterprise) | **Reposición de hardware 15 % / 56 meses** conforme a la oferta declarada en T-11 C27 / T-12 RT-08.13; plan de datos activo durante todo el Contrato |
 
 ### Sección 4.2 — Garantías y niveles de reemplazo (§ 8.4 de las Transversales)
 
@@ -692,3 +697,5 @@ Justificación: RNF-14.05 exige EDR en todos los endpoints (servidores WMS, nodo
 *Versión 06d — Integración del enlace satelital Starlink (Cotización 05-09-2026): nuevo componente **D-06** (5 kits; respaldo automático de Talca/Concepción cerrando la brecha RNF-13.07 y enlace principal de las 3 cross-docks), SD-WAN multi-WAN tri-camino en D-01, LTE como camino terciario en CDs y respaldo del satelital en cross-docks, conteo 20+3=23 y trazabilidad RT-03.17/RNF-13.07/RT-08.10/RT-08.13 actualizada. Coherente con Dimensionamiento v05, Sala v02 y Consolidado v02.*
 
 *Versión 06d — Ajuste de especificación del sensor IoT B-01 (alineado con Dimensionamiento v05 §2.8): módulo Ebyte **ME31-XDXX0400** (4 canales PT100 2/3 hilos por módulo, sonda 3 hilos con compensación de cable, exactitud ±0,5 % ± 1 °C ≈ ±1,1 °C a −22 °C) en lugar de ME31-XDXX0800-485 (8 canales); 28 puntos ≈ **7 módulos** (antes 4); protocolo **RS-485/Modbus RTU + Modbus TCP**; maestro del Gateway B-02 sobre los módulos Ebyte B-01; costo unitario referencia actualizado en Sección 4.*
+
+*Versión 06e — Alineación de incoherencias con la nube (06-09-2026): (1) **INC-02** — **Direct Connect** incorporado como complemento en D-01 (VIF dedicado en el clúster de firewalls, activable por el CLIENTE) y en la trazabilidad RT-03.17/RNF-13.07, coherente con Cloud v3.6 y Dimensionamiento v05; (2) **parque de dispositivos** — ZQ620 Plus (ítem 3) y PAX A920 Pro (ítem 4) ajustados a **≈ 202 (1 por conductor; 42 propios + ~160 externos)** y MC9400 Concepción (ítem 6) declarado como **30 (25 + 20 %)**, consistentes con la tabla de dispositivos y Dimensionamiento v05.*

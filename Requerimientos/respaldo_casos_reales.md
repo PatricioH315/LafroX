@@ -101,7 +101,7 @@
 - **Por qué respalda:** hay obligación de lote en el rótulo y de control de temperatura (refuerza D4), pero no mandato de trazabilidad electrónica → fundamentar la trazabilidad en benchmarks FSMA/Costco + D.S. 977/96, no en una ley chilena que no existe.
 
 ### Verificación Ley 21.719 (transversal)
-- **Caso (norma):** La **Ley 21.719** (prom. 25-nov-2024, vigencia diferida 01-dic-2026) "Regula la protección y el tratamiento de los datos personales y crea la Agencia de Protección de Datos Personales", reformando la Ley 19.628. NO es ley de jornada ni de trazabilidad (la de jornada es la Ley 21.561).
+- **Caso (norma):** La **Ley 21.719** (prom. 25-nov-2024, vigencia diferida 01-dic-2026) "Regula la protección y el tratamiento de los datos personales y crea la Agencia de Protección de Datos Personales", reformando la Ley 19.628. NO es ley de jornada ni de trazabilidad (la de jornada es la Ley 21.561). **Estado 2026-09:** el Gobierno presentó el **Boletín N° 18.623-07** (Mensaje N° 110-374, 31-ago-2026; urgencia 01-sep-2026) que **posterga la vigencia al 01-dic-2027**, sube a 5 los consejeros de la Agencia y amplía la primera amonestación a todos los responsables. **Aún es proyecto de ley**; mientras no se publique rige el calendario 01-dic-2026. La propuesta debe ser robusta a ambas fechas (la operación cae dentro del régimen de cualquier forma).
   - **Fuente:** Diario Oficial 13-dic-2024 ; BCN Ley Chile #1209272 ; LLM UC (2025)
 - **Por qué respalda:** D6/D34/RNF-07.02 y `Informe.md` ya la usan como protección de datos personales (correcto). No citarla como jornada ni trazabilidad. *(Precisión añadida en lista de normativa.)*
 
@@ -197,7 +197,7 @@
 ## Notas de rigor
 - **Sesgo de vendor:** casos como iFactory, IoT-WorkS, osapiens, eBest, Cleverence, Drivin, SQM (referencial para FCR) son *case studies de proveedores*; usarlos como evidencia de práctica dominante, no como dato regulatorio o precio.
 - **Fuentes regulatorias primarias:** FDA, CDC, EUR-Lex, GS1 US, SII, Diario Oficial/BCN, minsal.cl deben preferirse cuando se cita una norma.
-- **Fechas a vigilar:** vigencia Ley 21.719 (01-dic-2026), postergación FSMA 204 (20-jul-2028), Res. Ex. 91/2026 SII (01/11/2026), fin soporte SAP WM (31-12-2025).
+- **Fechas a vigilar:** vigencia Ley 21.719 (01-dic-2026; **seguir Boletín N° 18.623-07 — postergación a 01-dic-2027 en trámite, aún no publicado**), postergación FSMA 204 (20-jul-2028), Res. Ex. 91/2026 SII (01/11/2026), fin soporte SAP WM (31-12-2025).
 
 ## Matriz de cobertura
 | Decisión | Respaldo |

@@ -345,14 +345,16 @@ Empalme único (distribuidora) → Tablero general → ATS/TTA (transferencia) �
 | Carga térmica y clima | kW y configuración | **≈ 3,6 kW — 2 unidades de precisión (≈12.000 BTU/h c/u) en N+1**, con free cooling |
 | Temperatura y humedad | °C y % HR | **18–27 °C y 40–60 % HR** en la toma de aire de los equipos (ASHRAE TC 9.9) |
 | Nivel de disponibilidad objetivo | TIER y % | **Infraestructura del recinto: TIER II (99,741 %)**; **compromiso contractual e2e de la transacción crítica: ≥ 99,9 % mensual (RT-10.01)** |
-| Enlaces | Mbps y proveedores | **Fibra 50 Mbps (D-03) · Starlink respaldo automático plan 1 TB (D-06) · LTE 10 Mbps terciario (D-04) — 3 caminos/proveedores distintos, conmutación < 30 s** (2 ductos MMR + antena Starlink en techumbre) |
+| Enlaces | Mbps y proveedores | **Fibra 50 Mbps (D-03) · Starlink respaldo automático plan 1 TB (D-06) · LTE 10 Mbps terciario (D-04) — 3 caminos/proveedores distintos, conmutación < 30 s** · **Direct Connect AWS (complemento dedicado, terminación en el clúster D-01 — activable)** (2 ductos MMR + antena Starlink en techumbre) |
 | RTO y RPO | horas | **RTO 4 h · RPO 15 min** (alineado con Dimensionamiento v05 y cloud) |
 | Puertas controladas | cantidad | **12 puertas** (4 líneas de acceso; incluye recinto de custodia de medios) |
 | CCTV | cámaras y retención | **7 cámaras IP, grabación ≥ 30 días en línea + respaldo secundario auditable (RT-06.24)** |
 
 ---
 
-## 8. Cumplimiento de requisitos del Cap. 6 (RT-06.01 a RT-06.24)
+## 8. Cumplimiento de requisitos del Cap. 6 (RT-06.01 a RT-06.34)
+
+> El Capítulo 6 de las Bases Técnicas Transversales comprende **34 requisitos (RT-06.01 a RT-06.34)**. Esta sección detalla los de mayor sustancia de obra y de operación; **la respuesta uno a uno de los 34 está en la matriz T-12** (`T-12_ArqFisica.md`, Capítulo 06), que es el formulario que el mandante revisa. *(Hasta el 2026-09-06 el título de esta sección decía «RT-06.01 a RT-06.24», lo que subdeclaraba la cobertura real del documento.)*
 
 | Requisito | Estado | Cómo se cumple |
 |---|---|---|
@@ -383,3 +385,5 @@ Empalme único (distribuidora) → Tablero general → ATS/TTA (transferencia) �
 *Versión 02 — Corrección de brechas de la Matriz de Cumplimiento BTT (on-premise): generador con estanque **24 h** y contrato de reabastecimiento (RT-06.08); autonomía de UPS **≥ 30 min a plena carga** (RT-06.07); **factor de potencia ≥ 0,95** y PUE con medición (RT-06.11); **sensores ambientales en línea** de temperatura, humedad y agua (RT-06.14); **extintores por recinto** ABC/CO₂ (RT-06.18); acceso a la sala **una persona a la vez** con re-verificación biométrica (RT-06.23); inventario de medios con rotación y registro de movimientos (RT-06.28); uso declarado de instalaciones sanitarias existentes (RT-06.31); **disponibilidad e2e ≥ 99,9 % mensual sobre la transacción crítica** (RT-10.01), distinta de la clasificación TIER II del recinto. Referencias cruzadas actualizadas a Tabla v06 y Dimensionamiento v05.*
 
 *Versión 03 — Cierre de pendientes de la Matriz (RT-06.26/RT-06.27): recinto de **custodia de medios de respaldo de 10 m²** incorporado al programa de recintos (14 recintos, 2ª línea); servicio de custodia de medios del sitio primario en **medio físico transportable a otro lugar** cuando el CLIENTE lo determine (cuando la custodia externa opera con bóveda bajo contrato y bitácora RT-06.28); condiciones ambientales del recinto (luminosidad LED sin UV, humedad 40–60 %, ventilación forzada, 18–27 °C) declaradas en §4.5; puertas controladas pasan de 11 a **12** y CCTV de 6 a **7** (cubre la puerta del recinto de custodia); superficie del programa ≈ **173 m²**. Referencias cruzadas a Tabla v06 (D-05) y Dimensionamiento v05 (NAS D-05).*
+
+*Versión 04 — Alineación INC-02 con la nube (06-09-2026): fila **Enlaces** del §7 declara **AWS Direct Connect como complemento dedicado** (terminación en el clúster D-01, VIF dedicado/hosted, activable por el CLIENTE) junto a los 3 caminos WAN (D-03/D-06/D-04); coherente con Cloud v3.6 §2.4, Tabla v06 (D-01) y Dimensionamiento v05 §3.6/§3.7.*

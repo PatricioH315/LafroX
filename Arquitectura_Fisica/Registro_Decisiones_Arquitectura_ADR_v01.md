@@ -4,13 +4,15 @@
 
 | Atributo | Valor |
 |---|---|
-| Documento | ADR-01 … ADR-12 (formato MADR) |
-| Versión | v01 |
+| Documento | ADR-01 … **ADR-15** (formato MADR) |
+| Versión | **v02** |
 | Estado | En revisión interna — decisiones **Aprobadas** |
-| Fecha | 2026-09-05 |
+| Fecha | 2026-09-05 · **actualizado 2026-09-06** |
 | Autor | Arquitecto de Solución (LafroX) |
 | Marco de referencia | TOGAF · ISO/IEC/IEEE 42010 (RT-02.03) · Arquitecturas limpias |
-| Documentos de origen | `Arquitectura_Logica_v2.md` (decisiones D1–D9), `Requerimientos/decisiones.md` (40 decisiones), `Tabla_Emplazamiento_OnPremise_v06.md`, `Propuesta_Arquitectura_Cloud_Caso02_CLAUDE_v2.md` (v3.6), `Arquitectura_Fisica_Hibrida_Consolidada_Caso02_v02.md`, `Dimensionamiento_Infraestructura_OnPremise_v05.md` |
+| Documentos de origen | **`Arquitectura_Logica_v6-1.md` v6.2 (decisiones D1–D15)**, `Requerimientos/decisiones.md` (40 decisiones), `Tabla_Emplazamiento_OnPremise_v06.md`, `Propuesta_Arquitectura_Cloud_Caso02_CLAUDE_v2.md` (v3.6), `Arquitectura_Fisica_Hibrida_Consolidada_Caso02_v02.md`, `Dimensionamiento_Infraestructura_OnPremise_v05.md` |
+
+> **Cambios v01 → v02 (2026-09-06, cierre de la auditoría del Subdocumento 4).** (1) Se corrigen las cinco menciones a **Kong** en ADR-01, ADR-06 y ADR-11: la puerta de enlace decidida es **Amazon API Gateway** (D8, actualizada el 2026-09-05 para alinearse con la vista física). (2) Se incorporan **ADR-13 (puerta de enlace de servicios)**, **ADR-14 (plataforma de observabilidad)** y **ADR-15 (gestión de secretos)**, que existían como decisiones lógicas sin ADR propio, incumpliendo el apartado 7 del Subdocumento 4 y RT-02.04. (3) Se reapunta el documento de origen a la lógica vigente **v6.2** (antes citaba `Arquitectura_Logica_v2.md`, inexistente).
 | Empresa proponente | *Pendiente de definir (nomenclatura Art. 43.3)* |
 
 > **Finalidad.** Cada ADR fundamenta y defiende una elección arquitectónica clave con el mismo rigor que un informe de ingeniería: contexto cuantificado desde el caso, alternativas reales de mercado evaluadas, criterio de selección técnico-económico (TCO, equipo de TI de 4 personas del CLIENTE, latencia, resiliencia), decisión precisa y sus trade-offs con mitigaciones. La **trazabilidad normativa** usa códigos exactos de las Bases Técnicas Transversales (RT-cc.nn), de las Bases Administrativas (BA Art. n°) y de los capítulos del Caso 02, y se enlaza con las decisiones de la Arquitectura Lógica v1 (Dn) y del registro de decisiones del caso (Decisión 16.1 N°).
@@ -33,6 +35,9 @@
 | [ADR-10](#adr-10--almacenamiento-on-premise-y-niveles-raid) | Almacenamiento on-premise y niveles RAID | Aprobado | Decisión 16.1 N° 28 |
 | [ADR-11](#adr-11--integración-b2b--edi-con-supermercados) | Integración B2B/EDI: hub GS1 con capa anticorrupción | Aprobado | RF-12 · RF-01.10 |
 | [ADR-12](#adr-12--absorción-del-peak-de-septiembre-y-perfil-no-plano) | Absorción del peak de septiembre (cómputo elástico) | Aprobado | Decisión 16.1 N° 30 |
+| [ADR-13](#adr-13--puerta-de-enlace-de-servicios-amazon-api-gateway) | Puerta de enlace de servicios: Amazon API Gateway | Aprobado | D8 (AL v6.2) |
+| [ADR-14](#adr-14--plataforma-de-observabilidad-única-otel--amp--cloudwatch--x-ray) | Observabilidad: plataforma única con emisión on-premise | Aprobado | D14 (AL v6.2) |
+| [ADR-15](#adr-15--gestión-de-secretos-servicio-administrado-en-lugar-de-gestor-autoalojado) | Gestión de secretos: servicio administrado | Aprobado | D13 (AL v6.2) · SEC-01 |
 
 ---
 
@@ -40,7 +45,7 @@
 
 - **Estado:** Aprobado
 - **Fecha:** 2026-09-05
-- **Decisiones relacionadas:** D5 (Arquitectura Lógica v1, 2026-09-03, confirmada 09-04); D8 (Kong Gateway); D9 (OpenTelemetry).
+- **Decisiones relacionadas:** D5 (Arquitectura Lógica, 2026-09-03, confirmada 09-04); **D8 (Amazon API Gateway, actualizada 2026-09-05 — ver ADR-13)**; **D14 (observabilidad de plataforma única, 2026-09-06 — ver ADR-14)**.
 - **Trazabilidad normativa:** BTT **RT-02.02** (arquitectura modular, fronteras explícitas, despliegue independiente de componentes críticos) · BTT **§2.3** (la **sofisticación no reemplaza la pertinencia**: microservicios sin volumen que los justifique = error de ingeniería) · **RT-02.01** (8 capas) · **RT-02.03** (ISO/IEC/IEEE 42010) · **RT-09.05** (cuello de botella) · **BA Art. 16** (híbrido) · Caso 02 Cap. 14.2/15 (volumetría) · **RNF-19.01–04** (capacidad, escalado, cuello de botella, pruebas 1,5×).
 
 ### 1. Contexto y Problema
@@ -49,7 +54,7 @@ La carga del caso es transaccional y concentrada, pero **no plana**: ~31.000 ped
 ### 2. Alternativas Evaluadas
 | Alternativa | Descripción | Soporte a escala (~105 TPS) | Equipo de 4 TI | Complejidad de operación | Rechazo/Aceptación |
 |---|---|---|---|---|---|
-| **A. Monolito modular (Django 5.x LTS, Python 3.12)** | Único despliegue de proceso con módulos internos (apps Django por dominio: WMS, preventa, distribución, trazabilidad, portal), API Gateway Kong en frontera, workers Celery para asincronía | Suficiente: 6 tareas Fargate en peak absorben 105 TPS con headroom ×1,5 | 1 framework, 1 lenguaje, 1 artefacto CI/CD; curva de reposición corta | Baja: un despliegue por ambiente, rollback simple, observabilidad OTel única | **Ganadora** |
+| **A. Monolito modular (Django 5.x LTS, Python 3.12)** | Único despliegue de proceso con módulos internos (apps Django por dominio: WMS, preventa, distribución, trazabilidad, portal), **Amazon API Gateway** en la frontera (ADR-13), workers Celery para asincronía | Suficiente: 6 tareas Fargate en peak absorben 105 TPS con headroom ×1,5 | 1 framework, 1 lenguaje, 1 artefacto CI/CD; curva de reposición corta | Baja: un despliegue por ambiente, rollback simple, observabilidad OTel única | **Ganadora** |
 | **B. Microservicios en Kubernetes (EKS)** | 20+ servicios acoplados a lo operacional (bodega, reparto, preventa, telemetría, facturación), mesh Istio, 3+ nodos por AZ | Sobra capacidad operativa para 105 TPS | Inviable: cluster operado por 4 personas (9–13 planos de control, versionado de contratos, backing services por dominio) | Alta: 2-3 SRE dedicados, curva de despliegue semanal, lock-in de operadores | Rechazada (BTT §2.3: volumen no la justifica) |
 | **C. Monolito "clásico" sin límites de módulos (refactor del WMS 2013)** | Continuidad sobre el monolito actual sin fronteras de contexto ni despliegue independiente | Cumple hoy, no escala a multi-sitio | N/D (proveedor desaparecido, sin soporte) | Alta (deuda estructural) | Rechazada (viola RT-02.02) |
 
@@ -61,7 +66,7 @@ La carga del caso es transaccional y concentrada, pero **no plana**: ~31.000 ped
 - **Latencia/resiliencia:** el monolito modular en nube + borde local (ADR-03) cumple RNF-05.01 (≤1 s) y RNF-02.01 (24 h) porque lo que corre local es el mismo kernel WMS; particionar en servicios no aporta resiliencia adicional y añade saltos de red.
 
 ### 4. Decisión Adoptada
-**Monolito modular en **Django 5.x LTS** sobre **Python 3.12**, con apps Django por dominio y límites de contexto explícitos (fundamentos de DDD y módulos de la Arquitectura Lógica v1), desplegado en **ECS Fargate** (tarea `web` + tarea `portal` + workers Celery), con **Kong API Gateway** (D8), observabilidad **OpenTelemetry** (D9) y borde local por sitio (ADR-03). Los módulos **críticos** (WMS offline, shipper de reconciliación, workers ERp-sync, tarea portal) se despliegan **de forma independiente** en procesos separados, satisfaciendo RT-02.02 sin adoptar microservicios.
+**Monolito modular en **Django 5.x LTS** sobre **Python 3.12**, con apps Django por dominio y límites de contexto explícitos (fundamentos de DDD y módulos de la Arquitectura Lógica v1), desplegado en **ECS Fargate** (tarea `web` + tarea `portal` + workers Celery), con **Amazon API Gateway** (D8 · ADR-13), observabilidad **OpenTelemetry sobre plataforma única en nube** (D14 · ADR-14) y borde local por sitio (ADR-03). Los módulos **críticos** (WMS offline, shipper de reconciliación, workers ERp-sync, tarea portal) se despliegan **de forma independiente** en procesos separados, satisfaciendo RT-02.02 sin adoptar microservicios.
 
 ### 5. Consecuencias, Trade-offs y Mitigaciones
 | Consecuencia | Trade-off | Mitigación |
@@ -98,11 +103,11 @@ La operación depende del enlace de datos en horarios en que no existe plan manu
 - **Riesgo funcional:** el único escenario que B no resuelve —señal móvil intermitente en Los Ángeles 03:00–05:00— es el que el caso declara crítico. La alternativa A aporta un **camino físicamente independiente de las torres 4G** (constelación LEO) y de las trincheras de fibra.
 - **RT-03.17/RNF-13.07:** conmutación automática ≤ 5 min por diseño SD-WAN (detección de pérdida < 5 s, failover < 30 s según práctica de diseño del sitio); la redundancia de caminos es de física distinta (fibra → satelital → LTE), no solo de proveedor.
 - **Ventana crítica (RT-10.05):** el despacho 05:30–07:00 no depende de un único medio; el tri-camino convive con la autonomía local de 24 h (RNF-13.01) para el caso de pérdida total (RT-03.10).
-- **TCO:** la cotización Starlink (5 sitios, 56 meses) es **USD ~58.236**; frente a LTE puro que **no cumple el requisito**, el costo se justifica como prima de resiliencia del servicio crítico (costo de un día sin despacho >> costo del enlace). FinOps: CAPEX unitario bajo ($350.000 CLP/kit), reposición 15 % por ciclo de vida (RT-08.13).
+- **TCO:** la oferta Starlink (5 sitios, 56 meses) es **USD ~58.236**; frente a LTE puro que **no cumple el requisito**, el costo se justifica como prima de resiliencia del servicio crítico (costo de un día sin despacho >> costo del enlace). FinOps: CAPEX unitario bajo ($350.000 CLP/kit), reposición 15 % por ciclo de vida (RT-08.13).
 - **Equipo de 4 TI:** Starlink Enterprise gestionado (cero mantención de infraestructura de radio), SD-WAN con políticas centralizadas; sin ingeniería de redes satelitales in-house.
 
 ### 4. Decisión Adoptada
-**Tri-camino WAN por sitio con SD-WAN:** (1) fibra (enlace principal en Talca y Concepción), (2) **Starlink Enterprise LEO** —principal en los 3 cross-docks (Curicó, Chillán, Los Ángeles) y respaldo automático en los 2 CD— y (3) **LTE dual** (2 proveedores) con módulo 4G Cat-12. Conmutación automática < 30 s entre caminos, documentada en `Tabla_Emplazamiento_OnPremise_v06 §D-03/D-04/D-06` y cotizada en `Cotizacion_Starlink_Sucursales_56meses`. Los cross-docks salen por Starlink directo a SQS/IoT/SSM (configuración crítica) y sincronizan detalle a Talca por AMQPS entre brokers (RT-03.11).
+**Tri-camino WAN por sitio con SD-WAN:** (1) fibra (enlace principal en Talca y Concepción), (2) **Starlink Enterprise LEO** —principal en los 3 cross-docks (Curicó, Chillán, Los Ángeles) y respaldo automático en los 2 CD— y (3) **LTE dual** (2 proveedores) con módulo 4G Cat-12. Conmutación automática < 30 s entre caminos, documentada en `Tabla_Emplazamiento_OnPremise_v06 §D-03/D-04/D-06` y con planes/precios **declarados en la oferta** (T-11 C27 · T-12 RT-08.13). Los cross-docks salen por Starlink directo a SQS/IoT/SSM (configuración crítica) y sincronizan detalle a Talca por AMQPS entre brokers (RT-03.11).
 
 ### 5. Consecuencias, Trade-offs y Mitigaciones
 | Consecuencia | Trade-off | Mitigación |
@@ -132,7 +137,7 @@ Tres hechos confluyen: (a) el Art. 16 exige **carga principal en nube pública +
 | **C. Solo on-premise (WMS maestro + todo local)** | Centro de datos propio con todo el cómputo | Sí | Sí | No (no es híbrida) | **Inadmisible** (BA Art. 16) |
 
 ### 3. Criterio de Selección y Justificación Técnica-Económica
-- **Cumplimiento normativo:** solo A satisface Art. 16 en sus cuatro numerales (16.1 híbrido, 16.2 justificación por componente, 16.3 exigencias de nube, 16.4 exigencias on-premise). Tabla maestra de emplazamiento en `Tabla_Emplazamiento_OnPremise_v06 §1.0` (35 componentes).
+- **Cumplimiento normativo:** solo A satisface Art. 16 en sus cuatro numerales (16.1 híbrido, 16.2 justificación por componente, 16.3 exigencias de nube, 16.4 exigencias on-premise). Tabla maestra de emplazamiento en `Tabla_Emplazamiento_OnPremise_v06 §1.0` (36 componentes).
 - **Latencia (RNF-05.01):** el borde local ejecuta la confirmación de picking en el propio sitio; la alternativa nube añade ≥40–80 ms RTT y procesamiento remoto, por encima del umbral de 1 s en la cámara.
 - **Autonomía (RNF-02.01/RT-03.10):** el diseño del caso exige supervivencia sin enlace; el maestro local con réplica cloud (DMS CDC, RPO ≤ 15 min) da continuidad (ADR-09) sin depender de la WAN durante el corte.
 - **TCO/equipo:** el cómputo local se acota a lo imprescindible (23 componentes on-premise/híbrido), el resto se delega a servicios administrados AWS (ADR-12) — menor costo fijo que un DC propio y menor riesgo que una operación 100 % nube.
@@ -248,7 +253,7 @@ La operación exige autenticación **incluso sin enlace**: la bodega trabaja 24 
 - **Autonomía (RT-03.10/RNF-13.01):** la caché local (A-05: VM-05 Talca, VM-C03 Concepción) valida localmente la **firma OIDC** y mantiene sesiones hasta 24 h CD / 14 h terreno; el token offline se renueva al inicio del turno en cobertura, de modo que la ventana offline siempre cubre la jornada (8 h bodega / 14 h reparto-preventa) **sin autenticación en ruta**.
 - **Autoridad única (D6):** todas las escrituras viven en el IdP maestro de la nube; los cambios de alta/baja/roles se propagan por **export/import del Realm cifrado vía S3 (outbound)** con Δ ≤ 8 h (TTL) y baja efectiva SCIM ≤ 24 h (RT-12.10). No existe maestro local a promover ⇒ **DR de identidad = misma autoridad en nube** (no depende de switchover).
 - **Externos (RT-12.11/12.12):** OTP de un solo uso para conductores (RF-06.08, ≤ 2 min, sin correo) y credencial inicial en sesión de dotación; MFA para todo acceso externo y privilegiado (Art. 22).
-- **Equipo de 4 TI:** Keycloak administrado (Fargate) + federación OIDC con Kong; sin sincronización de directorio propietario.
+- **Equipo de 4 TI:** Keycloak administrado (Fargate) + federación OIDC con **Amazon API Gateway** (ADR-13); sin sincronización de directorio propietario.
 
 ### 4. Decisión Adoptada
 **Modelo B de identidad (D6):** **Keycloak IdP maestro en AWS (ECS Fargate, 2 tareas Multi-AZ, backend Aurora)** con **caché local de solo lectura TTL 8 h** en VM-05/VM-C03 y **offline access tokens por perfil** (8 h bodega, 14 h reparto/preventa). Sincronización del Realm cifrado por S3 (outbound, Zero Trust); MFA OIDC para externos; OTP para conductores externos. Reconciliado en `Cloud v3.6 §3.3/§5.4/§7.3` y `Consolidado §5/D-AL-01/02`.
@@ -352,6 +357,7 @@ La ventana de despacho (05:30–07:00) no admite plan manual; una falla mayor de
 | **A. Activo-pasivo warm standby multi-región (Aurora réplica DRP + DMS CDC)** | RTO ≤ 4 h / RPO ≤ 15 min | Media: promote documentado, pruebas semestrales | Réplica + DRP regional (us-east-1) | Sí | **Ganadora** |
 | **B. Activo-activo (multi-maestro)** | RPO ~0 | Alta: conflictos de escritura y reconciliación continua entre nodos | 2× infraestructura transaccional + reconciliación | Justificable pero no necesario al volumen | Rechazada (costo/complejidad desproporcionados, RT-07.01) |
 | **C. Backup en frío (bajo demanda)** | RTO > 24 h (restauración completa) | Baja | Baja | No cumple RTO ≤ 4 h | Rechazada |
+| **D. Continuidad intrarregional en sa-east-1 (sin us-east-1)** | Falla de AZ o corrupción: RTO ≤ 4 h / RPO ≤ 15 min (multi-AZ + CDC) · **caída de toda la región sa-east-1: RTO 24–72 h** desde respaldo inmutable (S3 Object Lock/Backup Vault) | Media: restauración y rehidratación; cada 6–12 meses requiere prueba real | Réplica y respaldo solo dentro de sa-east-1; menor costo de salida que A | No cumple RTO ≤ 4 h ante falla regional (RNF-20.06) | **Contingencia condicionada**: solo si el CLIENTE rechaza la transferencia internacional (Art. 23) — no sustituye a A como plan base |
 
 ### 3. Criterio de Selección y Justificación Técnica-Económica
 - **RTO/RPO (RNF-20.06):** la réplica continua (DMS CDC) y la réplica de Aurora (WAL) mantienen RPO ≤ 15 min; el promote a la región DRP (us-east-1) más el DRP local Talca→Concepción (procedimiento documentado de 5 pasos, RTO +1–2 h) cumplen los cuatros horas.
@@ -359,9 +365,10 @@ La ventana de despacho (05:30–07:00) no admite plan manual; una falla mayor de
 - **Pruebas (RT-07.07/Art. 20):** conmutación real semestral con informe de RTO/RPO efectivos y plan de corrección de brechas; consistente con la retención sanitaria y la operación continua.
 - **Identidad (ADR-06):** el DR de identidad no exige conmutación local (el maestro está en la nube y las cachés A-05 siguen validando firmas): se elimina una clase entera de riesgos de DR.
 - **Respaldo 3-2-1-1-0 (RNF-20.07):** copia primaria on-premise + réplica local (Concepción) + pierna cloud (S3 Object Lock/Backup Vault, inmutable) + offsite + prueba mensual de restauración y retención legal (ADR-04).
+- **Falla de AZ vs. caída de región (alternativa D):** si el CLIENTE no aprueba la transferencia a us-east-1 (Art. 23, `Arquitectura_de_Seguridad_v01.md` §10), la postura mínima es la continuidad intrarregional en sa-east-1: uso de la tercera AZ (sa-east-1a/1b/1c) y respaldo inmutable regional, que mantiene RTO ≤ 4 h / RPO ≤ 15 min ante **falla de una zona de disponibilidad o corrupción de datos** — lo que el multi-AZ ya brinda —, pero **no ante una caída de toda la región sa-east-1**, escenario en que la reconstrucción desde el respaldo inmutable toma **24–72 h** e incumple RNF-20.06. Esta alternativa **no usa los sitios on-premise del CLIENTE** para la carga cloud (Talca/Concepción alojan solo el dominio on-premise, con su DRP local RTO +1–2 h); y es precisamente esta degradación la que motiva solicitar la aprobación de us-east-1 con resguardos, conforme al Art. 23.
 
 ### 4. Decisión Adoptada
-**DR activo-pasivo warm standby multi-región:** replicación continua del WMS (VM-02) hacia **Aurora (ACM us-east-1 global replica)** con DMS CDC, RPO ≤ 15 min y RTO ≤ 4 h; **DRP local** Talca→Concepción (VM-C01/VM-C02) con RTO +1–2 h para la bodega; pruebas reales **2×/año** (RT-07.07) y respaldo **3-2-1-1-0** admitido por S3 Object Lock. Documentado en `Cloud v3.6 §6` y `Consolidado §8`.
+**DR activo-pasivo warm standby multi-región:** replicación continua del WMS (VM-02) hacia **Aurora (ACM us-east-1 global replica)** con DMS CDC, RPO ≤ 15 min y RTO ≤ 4 h; **DRP local** Talca→Concepción (VM-C01/VM-C02) con RTO +1–2 h para la bodega; pruebas reales **2×/año** (RT-07.07) y respaldo **3-2-1-1-0** admitido por S3 Object Lock. Documentado en `Cloud v3.6 §6` y `Consolidado §8`. **Si el CLIENTE no aprueba la transferencia internacional (Art. 23), rige la alternativa D** (§2): continuidad intrarregional en sa-east-1 con tercera AZ y respaldo inmutable, aceptando el RTO de 24–72 h ante caída de toda la región, que es el impacto evaluado en §3.
 
 ### 5. Consecuencias, Trade-offs y Mitigaciones
 | Consecuencia | Trade-off | Mitigación |
@@ -432,7 +439,7 @@ Los supermercados del canal moderno (p.ej. Walmart, Cencosud, SMU) exigen interc
 - **Estandarización (Cap. 16.2):** el caso exige estándares GS1; el hub declara un modelo canónico (EANCOM D.01B/GS1 XML para pedidos/despachos/facturas, EPCIS para eventos de trazabilidad) y mapea cada cadena contra el modelo, no contra el ERP.
 - **Esfuerzo marginal:** una cadena nueva se agrega por **configuración de perfil** (equivalencias GTIN, RF-12.03) y pruebas de conexión, no por código; el hub centraliza la validación, el retry y la auditoría.
 - **Aislamiento del ERP (ACL A-04):** el ERP (que no se reemplaza, ADR-08) queda detrás de la capa anticorrupción: `celery-erp-sync` lee contratos OpenAPI del ERP y publica notificaciones por SQS; **nunca hay escritura directa** desde una cadena al ERP (Zero Trust, BA Art. 21).
-- **Plazo contractual:** el canal moderno (incluido EDI) entra en producción antes del **hito enero 2029** (RNF-12.01), por lo que la Etapa 2 concentra portal+EDI detrás de la misma API gateway (Kong) y del hub.
+- **Plazo contractual:** el canal moderno (incluido EDI) entra en producción antes del **hito enero 2029** (RNF-12.01), por lo que la Etapa 2 concentra portal y EDI detrás de la misma puerta de enlace (**Amazon API Gateway**, ADR-13) y del hub.
 - **Equipo de 4 TI:** el hub EDI se aloja como módulo del monolito (ADR-01) en la DMZ de AWS (N-01…N-03) con servicios administrados (API Gateway, SQS, EventBridge), sin adaptadores propietarios por cadena.
 
 ### 4. Decisión Adoptada
@@ -485,12 +492,119 @@ El perfil de carga no es plano: preventa 09:00–18:00, preparación 22:00–06:
 
 ---
 
+# ADR-13 — Puerta de Enlace de Servicios: Amazon API Gateway
+
+- **Estado:** Aprobado
+- **Fecha:** 2026-09-05 (formalizado como ADR el 2026-09-06)
+- **Decisión relacionada:** D8 (Arquitectura Lógica v6.2, Capa 3).
+- **Trazabilidad normativa:** **BA Art. 21.2** (puerta de enlace con autenticación, autorización, cuotas, límites de tasa, validación de esquema e inspección de carga útil) · **RT-02.01** (capa 3 del modelo de referencia) · **RT-11.11** · **RT-05.16/05.18** (contratos y OAuth 2.1/mTLS) · **RT-02.02** (contratos versionados retro-compatibles) · Art. 16.3 (preferencia por servicios administrados).
+
+### 1. Contexto y Problema
+La Capa 3 es el punto por donde entra **todo**: las APIs de negocio, la sincronización diferida de preventa y reparto —que es tráfico de primera clase, no un anexo— y los tres portales de la DMZ. El Art. 21.2 no pide «un gateway»: pide autenticación, autorización, cuotas, límites de tasa, validación de esquema e inspección de carga útil, todo en el borde. Y el CLIENTE opera con **4 personas de TI**: cualquier componente que haya que parchar, dimensionar y sostener 24×7 compite con la operación.
+
+### 2. Alternativas Evaluadas
+| Alternativa | Operación | Integración con el borde | Cuotas y esquema | Costo para un equipo de 4 | Veredicto |
+|---|---|---|---|---|---|
+| **A. Amazon API Gateway (administrado)** | Cero nodos que operar; escala con la carga | Nativa con CloudFront, WAF, Shield y ALB; autorizador OIDC contra Keycloak | Validación de esquema OpenAPI, cuotas y límites por cliente y por ruta, trazabilidad por transacción | Nulo en operación; costo por invocación declarado en FinOps | **Ganadora** |
+| **B. Kong Gateway (open source, autoalojado)** | Nodos propios con alta disponibilidad, parches y versiones a cargo del equipo | Requiere integrar manualmente con WAF/ALB | Equivalente vía plugins | Alto: un componente crítico más en la ruta de la venta, operado por 4 personas | Rechazada |
+| **C. Sin puerta de enlace, exponiendo el ALB directo a los módulos** | Mínima | — | No cumple Art. 21.2 (sin cuotas ni validación de esquema en el borde) | — | Rechazada (incumplimiento normativo) |
+
+### 3. Criterio de Selección y Justificación Técnica-Económica
+- **Cumplimiento literal del Art. 21.2** sin desarrollo propio: autenticación OIDC, autorización por rol, cuotas y límites de tasa por cliente, validación de esquema e inspección de carga útil son capacidades nativas.
+- **Equipo de 4 personas (Cap. 2.4 del caso):** la alternativa B agrega un componente crítico en la ruta de la venta que hay que dimensionar, parchar y recuperar. En la ventana de despacho 05:30–07:00, con indisponibilidad cero comprometida, ese es exactamente el riesgo que no conviene asumir.
+- **Coherencia con la vista física:** el documento de nube, el consolidado híbrido, la tabla de emplazamiento y el de despliegue ya declaran Amazon API Gateway; mantener Kong en el registro de decisiones habría dejado una contradicción entre la arquitectura lógica, la física y el costo, que el **Art. 16.4 in fine** califica de incoherencia grave.
+- **Reversibilidad (Art. 16.3):** los contratos son **OpenAPI 3.1 y AsyncAPI 2.6**, estándares abiertos; la lógica de negocio vive en Django, no en el gateway. Migrar a Kong u otro gateway no exige reescribir servicios, solo reconfigurar rutas y autorizadores. La dependencia es de configuración, no de código, y así queda declarada en la matriz de reversibilidad.
+
+### 4. Decisión Adoptada
+**Amazon API Gateway** como Capa 3 única, con autorizador OIDC contra el Keycloak maestro, validación de esquema OpenAPI, cuotas y límites de tasa por actor y por ruta, versionado `/v{major}` y asignación de `transaction_id` propagado a la Capa 8. **Kong Gateway queda declarado como alternativa open source evaluada y no adoptada.**
+
+### 5. Consecuencias, Trade-offs y Mitigaciones
+| Consecuencia | Trade-off | Mitigación |
+|---|---|---|
+| Dependencia de un servicio del proveedor de nube | Menor portabilidad del borde | Contratos en estándares abiertos; la lógica no vive en el gateway (§4.6 de reversibilidad) |
+| Costo por invocación en el peak de septiembre | Gasto variable | Cuotas por actor y límites declarados; modelado en FinOps con el peak de 105 TPS |
+| Los portales entran en enero de 2029 | La configuración crece en la Etapa 2 | Mismo gateway, rutas nuevas por configuración; sin componente adicional |
+
+---
+
+# ADR-14 — Plataforma de Observabilidad Única: OTel + AMP + CloudWatch + X-Ray
+
+- **Estado:** Aprobado
+- **Fecha:** 2026-09-06
+- **Decisión relacionada:** D14 (Arquitectura Lógica v6.2, Capa 8); reemplaza la parte de plataforma de D9.
+- **Trazabilidad normativa:** **BA Art. 16.4** («monitoreo del componente on-premise integrado a la misma plataforma de observabilidad que la nube, sin puntos ciegos») · **RT-03.16** (idéntica exigencia) · **RT-14.01 a RT-14.09** · **RT-09.01** (medición p95) · Art. 16.3 (servicios administrados).
+
+### 1. Contexto y Problema
+La observabilidad tiene que cubrir dos dominios muy distintos —una nube elástica y cinco sitios que pueden quedar 24 h sin enlace— y hacerlo **sin puntos ciegos**. La versión anterior de la arquitectura lógica declaraba un conjunto **Prometheus + Grafana + Loki autoadministrado en cada centro de distribución**, además de la plataforma en nube. Al contrastarlo con la vista física aparecieron dos problemas: ese conjunto **no tenía máquina virtual dimensionada** —VM-06 es de 2 vCPU, 4 GB y 50 GB, insuficiente para sostener Prometheus, Loki y Grafana con 13 meses de métricas— y, más de fondo, **constituye una segunda plataforma de observabilidad**, que es justamente lo que el Art. 16.4 y RT-03.16 prohíben al exigir «la misma».
+
+### 2. Alternativas Evaluadas
+| Alternativa | ¿Una sola plataforma? | Qué se ve durante un corte de 24 h | Operación | Veredicto |
+|---|---|---|---|---|
+| **A. Emisión on-premise (ADOT, buffer 24 h) → plataforma única en nube (AMP, CloudWatch, X-Ray, Grafana OSS)** | **Sí** | Sin tableros centralizados; alarmas locales del equipamiento y bloqueo de frío 100 % local; **cero pérdida de telemetría** gracias al buffer | Nula on-premise | **Ganadora** |
+| **B. Prometheus + Grafana + Loki autoalojado por sitio, además de la nube** | No: dos plataformas | Tableros locales completos | Dos plataformas que parchar, dimensionar y correlacionar, sobre un equipo de 4; requiere VM adicional no dimensionada | Rechazada (incumple RT-03.16 y Art. 16.4; sin emplazamiento) |
+| **C. Datadog o New Relic** | Sí | Depende del enlace igual que A | Menor, pero con lock-in y costo por host y por volumen | Rechazada (lock-in y costo) |
+
+### 3. Criterio de Selección y Justificación Técnica-Económica
+- **La norma pide una plataforma, no dos.** Es el criterio decisivo: el Art. 16.4 y RT-03.16 usan la palabra «misma».
+- **«Sin puntos ciegos» se resuelve con el buffer, no con una segunda plataforma.** El colector ADOT retiene 24 h en disco —exactamente la autonomía comprometida del centro de distribución— de modo que un corte no produce un hueco en la serie: produce un retraso que se cierra al reconectar.
+- **Ninguna decisión crítica depende de un tablero.** El bloqueo de despacho por excursión térmica es local (decisión 16.1 N° 4), la alarma de cámara es acústica y luminosa, y los sensores de sala reportan al DCIM/BMS (RT-06.14). Lo que se pierde durante el corte es visibilidad agregada, no capacidad de operar.
+- **Sin lock-in real:** **AMP es compatible con Prometheus y PromQL**, de modo que las reglas de alerta y las consultas son portables; la instrumentación es **OpenTelemetry**, estándar neutral; y Grafana es **OSS**. Se conserva el ecosistema Prometheus/Grafana sin operar sus servidores.
+- **Equipo de 4 personas:** no se le entrega al CLIENTE una plataforma de observabilidad que mantener además del negocio.
+
+### 4. Decisión Adoptada
+**Instrumentación OpenTelemetry** en todos los componentes; **colectores ADOT on-premise (F-01: VM-06 Talca, VM-C04 Concepción, contenedor en cross-docking) con buffer en disco de 24 h**; **plataforma única en nube**: métricas en **AMP** (13 meses), registros en **CloudWatch Logs** (12 meses en línea + 24 en archivo), trazas en **X-Ray** (30 días), tableros en **Grafana OSS** autoadministrado en sa-east-1 y alertas por AMP/Alertmanager y CloudWatch hacia SNS y PagerDuty. **Se declara expresamente qué no está disponible durante un corte** (RT-03.13), y se declara que ninguna decisión de la ventana 05:30–07:00 depende de ello.
+
+### 5. Consecuencias, Trade-offs y Mitigaciones
+| Consecuencia | Trade-off | Mitigación |
+|---|---|---|
+| Sin tableros centralizados durante un corte de enlace | Menor visibilidad agregada en contingencia | Buffer de 24 h sin pérdida; alarmas locales del equipamiento; bloqueo de frío local; declaración formal en la matriz RT-03.13 |
+| Dependencia de servicios del proveedor de nube | Portabilidad | AMP compatible con Prometheus/PromQL, OTel como instrumentación y Grafana OSS: el ecosistema es portable |
+| El buffer de 24 h consume disco en VM-06 y VM-C04 | Capacidad local | Dimensionado en el plan de capacidad; el corte de referencia es de 24 h (RT-03.10) |
+
+---
+
+# ADR-15 — Gestión de Secretos: Servicio Administrado en lugar de Gestor Autoalojado
+
+- **Estado:** Aprobado
+- **Fecha:** 2026-09-06
+- **Decisión relacionada:** D13 (Arquitectura Lógica v6.2, Capa 7); resolución **SEC-01** de `Arquitectura_de_Seguridad_v01.md` §5.3.
+- **Trazabilidad normativa:** **BA Art. 21.4** («prohibición absoluta de credenciales, claves o secretos embebidos… uso obligatorio de un gestor de secretos con rotación automática») · **Art. 21.2** (gestión de claves con separación de funciones) · **Art. 16.2** (justificación de emplazamiento componente por componente) · **Art. 16.3** (servicios administrados) · **Art. 21** (Zero Trust) · RT-04.09 · RT-11.09.
+
+### 1. Contexto y Problema
+La solución necesita custodiar secretos de peso: credenciales del ERP de 2017, certificados AS2 y EDI de cada cadena de supermercados, credenciales del SII y de Transbank, y las credenciales de servicio entre módulos. El Art. 21.4 exige un gestor con rotación automática. La arquitectura lógica declaraba **HashiCorp Vault on-premise**, pero al contrastarla con la vista física apareció el problema real: **Vault no existía en ninguna vista física** —no tenía máquina virtual entre las diez del dimensionamiento, no figuraba en el inventario del consolidado, ni en la tabla de emplazamiento, ni en el T-11—. Un componente de seguridad sin emplazamiento justificado **incumple el Art. 16.2** y, al no estar costeado, cae en la incoherencia grave del Art. 16.4 in fine.
+
+### 2. Alternativas Evaluadas
+| Alternativa | Emplazamiento y costo | Operación para 4 personas | Zero Trust | Rotación automática | Veredicto |
+|---|---|---|---|---|---|
+| **A. AWS Secrets Manager + SSM Parameter Store** | Servicio administrado, sin VM ni licencia; costo por secreto declarable en FinOps | Nula: no se parcha ni se sella | Consumo **saliente** desde on-premise por VPC Endpoint; ningún puerto entrante | Nativa | **Ganadora** |
+| **B. HashiCorp Vault autoalojado en Talca** | VM adicional con alta disponibilidad, respaldo, procedimiento de sellado y desellado, y licencia empresarial si se requiere alta disponibilidad | Alta: el desellado tras un reinicio es un procedimiento manual crítico que puede caer a las 3 de la mañana | Equivalente | Sí, con configuración propia | Rechazada |
+| **C. Secretos en variables de entorno o en la configuración del despliegue** | — | — | — | — | Rechazada: **prohibición absoluta** del Art. 21.4 |
+
+### 3. Criterio de Selección y Justificación Técnica-Económica
+- **El componente debe existir en la vista física.** Es la razón inmediata: lo declarado no estaba emplazado ni costeado. Cualquiera de las dos salidas corregía el defecto, pero solo una lo hacía sin agregar infraestructura.
+- **Equipo de 4 personas (Cap. 2.4):** el modo sellado de Vault tras un reinicio exige intervención humana con custodios. En una operación cuya ventana crítica es de 05:30 a 07:00 y cuyo turno de preparación es nocturno, introducir un componente que puede requerir desellado manual de madrugada es un riesgo operacional que no compra nada.
+- **Zero Trust intacto:** los nodos on-premise consumen secretos por **VPC Endpoint saliente**, coherente con la regla de que no se abren puertos entrantes salvo las dos excepciones D-AL-05.
+- **La contingencia no depende de la nube.** El secreto de la **cuenta de emergencia** queda deliberadamente **fuera de línea**, en sobre sellado con doble firma en el recinto de custodia de la sala (RT-06.26/06.27): es la única credencial que debe seguir siendo utilizable cuando no hay ni IdP ni enlace, y por eso no vive en ningún sistema.
+- **Separación de funciones (Art. 21.2):** quien administra la plataforma no administra las claves maestras; la política se expresa en IAM y queda auditada en CloudTrail.
+
+### 4. Decisión Adoptada
+**AWS Secrets Manager** para secretos con rotación (credenciales del ERP, SII, Transbank y certificados AS2/EDI) y **SSM Parameter Store** para parámetros de configuración no sensibles, con consumo **saliente** desde los nodos on-premise por VPC Endpoint, rotación automática, y **cifrado con CMK de KMS bajo separación de funciones**. **HashiCorp Vault queda declarado como alternativa evaluada y no adoptada.** La cuenta de emergencia se custodia fuera de línea.
+
+### 5. Consecuencias, Trade-offs y Mitigaciones
+| Consecuencia | Trade-off | Mitigación |
+|---|---|---|
+| Los nodos on-premise requieren enlace para obtener un secreto nuevo | Dependencia de la nube para la rotación | Los secretos en uso se cachean en memoria por el proceso durante la autonomía de 24 h; ninguna rotación se programa dentro de la ventana crítica ni de un corte |
+| Dependencia de un servicio del proveedor de nube | Portabilidad | Los secretos son datos, no lógica; la exportación está cubierta por la declaración de reversibilidad (Art. 16.3) |
+| Costo por secreto y por rotación | Gasto variable | Volumen acotado (integraciones del catálogo, 15 entradas) y declarado en FinOps |
+
+---
+
 ## Matriz de trazabilidad (ADR → normativa → decisión → documento)
 
 | ADR | RT / RNF clave | BA / Caso | Decisión relacionada | Documento que la materializa |
 |---|---|---|---|---|
-| ADR-01 | RT-02.02 · §2.3 · RT-09.05 · RNF-19.01–04 | Art. 16 | D5 | Arquitectura_Logica_v2 · Cloud v3.6 §1.1/§3.5 |
-| ADR-02 | RT-03.17 · RT-03.10 · RNF-13.01/13.07/13.08 · RT-10.05 | §6.12/§8 (caso) | Decisión 16.1 N° 26 | Tabla v06 §D-03/D-04/D-06 · Cotización Starlink |
+| ADR-01 | RT-02.02 · §2.3 · RT-09.05 · RNF-19.01–04 | Art. 16 | D5 | Arquitectura_Logica_v6-1 (v6.2) · Cloud v3.6 §1.1/§3.5 |
+| ADR-02 | RT-03.17 · RT-03.10 · RNF-13.01/13.07/13.08 · RT-10.05 | §6.12/§8 (caso) | Decisión 16.1 N° 26 | Tabla v06 §D-03/D-04/D-06 · T-11 C27 |
 | ADR-03 | Art. 16.1–16.4 · RT-03.01/03.02/03.10 · RNF-02.01/05.01/05.02 | Art. 16 BA | D7 · Decisión 16.1 N° 17 | Tabla v06 §1.0 · Cloud v3.6 §1 |
 | ADR-04 | RT-05.02 · RT-05.15 · RNF-09.01/09.02/11.02 | Cap. 16.1 N° 18/35 · D.S. 977/96 | D2/D4 | Cloud v3.6 §4 · decisiones.md N° 18/35 |
 | ADR-05 | RT-02.06/02.07 · RT-03.10/03.12 · RNF-07.01/13.01 | Art. 21 (Zero Trust) | D4 · D-AL-03 | Cloud v3.6 §3.1/§7.9 · Consolidado §3.4 |
@@ -499,8 +613,11 @@ El perfil de carga no es plano: preventa 09:00–18:00, preparación 22:00–06:
 | ADR-08 | RT-05.11–05.15 · RT-03.10 · RNF-02.01 | Cap. 16.1 N° 14 | Decisión 16.1 N° 14 | decisiones.md N° 14 · Informe 1 |
 | ADR-09 | RT-07.01/07.07 · RNF-20.06/20.07 | Art. 20 BA | Decisión 16.1 N° 27 | Cloud v3.6 §6 · Consolidado §8 |
 | ADR-10 | RT-03.14 · RNF-13.03/13.04/13.05 | Cap. 16.1 N° 28 | Decisión 16.1 N° 28 | Dimensionamiento v05 §1.2.4 · Tabla v06 §A-02 |
-| ADR-11 | RT-05.23 · RT-16.16/16.17 · RNF-12.01 · RF-12.03/12.06/12.13 | Cap. 16.2 GS1 | RF-12 · RF-01.10 | Arquitectura_Logica_v2 (módulo integraciones/EDI) |
+| ADR-11 | RT-05.23 · RT-16.16/16.17 · RNF-12.01 · RF-12.03/12.06/12.13 | Cap. 16.2 GS1 | RF-12 · RF-01.10 | Arquitectura_Logica_v6-1 (v6.2, M11) · Arquitectura_de_Integracion_v01 §7 |
 | ADR-12 | RT-09.05 · RT-03.06/03.08/03.09 · RNF-19.01–04 | Cap. 14.2/15 · RT-10.05 | Decisión 16.1 N° 30 | Cloud v3.6 §3.5 · Dimensionamiento v05 §1 |
+| **ADR-13** | RT-02.01 · RT-11.11 · RT-05.16/05.18 · RT-02.02 | Art. 21.2 · Art. 16.3 | D8 (AL v6.2) | Arquitectura_Logica_v6-1 §7 · Arquitectura_de_Integracion_v01 §4 · Cloud v3.6 §2.3 |
+| **ADR-14** | RT-03.16 · RT-14.01–14.09 · RT-09.01 | **Art. 16.4** · Art. 16.3 | D14 (AL v6.2, reemplaza D9) | Arquitectura_Logica_v6-1 §12 · Consolidado §9 · Tabla v06 F-01 |
+| **ADR-15** | RT-04.09 · RT-11.09 · RT-03.15 | **Art. 21.4** · Art. 21.2 · **Art. 16.2** · Art. 16.3 | D13 (AL v6.2) · SEC-01 | Arquitectura_de_Seguridad_v01 §5.3 · Arquitectura_Logica_v6-1 §11 |
 
 ---
 
@@ -508,10 +625,10 @@ El perfil de carga no es plano: preventa 09:00–18:00, preparación 22:00–06:
 1. Bases Administrativas (TFEP-01/2026) — Art. 16 (híbrido), Art. 20 (DR), Art. 21–22 (seguridad/MFA).
 2. Bases Técnicas Transversales — RT-02.xx, RT-03.xx, RT-05.xx, RT-07.xx, RT-09.xx, RT-10.xx, RT-12.xx, RT-13.xx, RT-16.xx.
 3. Caso 02 Logística — Cap. 6, 9, 10, 14.2, 15, 16.1 (40 decisiones), 16.2 (materias a investigar), 17, 18.
-4. `Arquitectura_Logica_v2.md` — decisiones D1–D9 (vigentes 2026-09-04).
+4. `Arquitectura_Logica_v6-1.md` **v6.2** — decisiones **D1–D15** (vigentes 2026-09-06).
 5. `Requerimientos/decisiones.md` — Registro de decisiones del caso (N° 1–40).
 6. `Tabla_Emplazamiento_OnPremise_v06.md` (v07) — Sección 1.0 tabla maestra, Bloques A–F y N, Sección 4 dispositivos.
 7. `Propuesta_Arquitectura_Cloud_Caso02_CLAUDE_v2.md` (v3.6) — dimensionamiento, costos, justificaciones Art. 16 (matriz §7.1).
 8. `Arquitectura_Fisica_Hibrida_Consolidada_Caso02_v02.md` — fuente única consolidada.
 9. `Dimensionamiento_Infraestructura_OnPremise_v05.md` — TPS, RAID, capacidad.
-10. `Cotizacion_Starlink_Sucursales_56meses.docx.md` — conectividad satelital 56 meses.
+10. `T-11` C27 — kit Starlink D-06: planes (1 TB CD / 500 GB cross-dock) y reposición 15 %/56 meses declarados en la oferta.
