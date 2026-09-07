@@ -1,4 +1,4 @@
-﻿# Subdocumento 4.2.d-e — Especificaciones Data Center Primario y Secundario
+# Subdocumento 4.2.d-e — Especificaciones Data Center Primario y Secundario
 **Propuesta técnica TFEP-01/2026 — Caso 02 Logística — LafroX**
 *Referencia: T-21 §4.2 (d) DC Primario · (e) DC Secundario — RT-06 / RT-07 BTT*
 
@@ -6,7 +6,7 @@
 
 ## Mapa de sitios on-premise
 
-`mermaid
+```mermaid
 graph TD
     subgraph "SITIO PRINCIPAL — CD TALCA (Sala técnica secundaria)"
         ST["🏢 Sala técnica secundaria\n32 m² sala blanca\n+141 m² recintos apoyo\nTIER II · 99,95%"]
@@ -35,7 +35,7 @@ graph TD
     ST <-->|"Starlink + LTE dual"| XD3
     NOC --- ST
     GEN --- ST
-`
+```
 
 ---
 
@@ -127,7 +127,7 @@ Ver: Diagramas/RT-06_DataCenter/DC02_Cadena_Electrica.png
 
 ### A.7 Seguridad física y control de acceso (RT-06.20 a RT-06.25)
 
-`mermaid
+```mermaid
 flowchart LR
     EXT([Exterior]) -->|"Credencial provisional\nRegistro guardia"| L1
     subgraph L1 ["1.ª LÍNEA — Apoyo"]
@@ -152,7 +152,7 @@ flowchart LR
         NOC2["NOC\nVentana interior"]
     end
     style L3 fill:#E8F5E9,stroke:#1B5E20,stroke-width:2px
-`
+```
 
 | RT | Respuesta |
 |---|---|
@@ -187,7 +187,7 @@ flowchart LR
 
 ### A.10 Rutas de comunicaciones (RT-06.32 a RT-06.34)
 
-`mermaid
+```mermaid
 graph LR
     F["Fibra óptica\n50 Mbps · Camino 1\nDucto Norte"] --> MMR["MMR\n2 ductos\nindependientes"]
     L["LTE 4G/5G\n10 Mbps · Camino 2\nDucto Sur"] --> MMR
@@ -195,7 +195,7 @@ graph LR
     MMR --> SW["R02 Switch core\n+ Firewall HA"]
     SW -->|"Direct Connect / VPN"| AWS["☁️ AWS DR"]
     SW --> SB["Sala blanca\nR01 R03 R04"]
-`
+```
 
 | RT | Respuesta |
 |---|---|
@@ -274,14 +274,14 @@ Site DR: **AWS São Paulo** (>2.800 km de Talca) como región primaria de DR. Am
 
 ### B.3 Replicación continua (RT-07.03)
 
-`mermaid
+```mermaid
 flowchart LR
     DB_P["MariaDB/PostgreSQL\non-premise Talca"] -->|"AWS DMS / CDC\nDirect Connect 50 Mbps"| RDS_P["Aurora multi-AZ\nRegión primaria"]
     RDS_P -->|"Réplica asíncrona\nlag < 5 min · alerta si >5 min"| RDS_S["Aurora Replica\nRegión DR (São Paulo)"]
     RDS_P --> S3["S3 Object Lock\nCross-Region"]
     style RDS_S fill:#FFF9C4
     style S3 fill:#C8E6C9
-`
+```
 
 Alerta NOC si lag >5 min; escalamiento a JP si lag >15 min (umbral RPO).
 
@@ -294,7 +294,7 @@ Alerta NOC si lag >5 min; escalamiento a JP si lag >15 min (umbral RPO).
 
 ### B.5–B.6 Conmutación y retorno (RT-07.05 / RT-07.06)
 
-`mermaid
+```mermaid
 sequenceDiagram
     participant NOC as NOC Talca
     participant AUTO as Terraform/Ansible
@@ -311,11 +311,11 @@ sequenceDiagram
     AUTO->>DR: Sincronización inversa (reconciliación)
     AUTO->>NOC: Retorno a site primario
     NOC->>CLI: Confirmación retorno
-`
+```
 
 ### B.7 Respaldos 3-2-1-0 (RT-07.09 a RT-07.14)
 
-`mermaid
+```mermaid
 graph TD
     SRC["Datos producción"] -->|"Copia 1 · inmutable"| S3I["S3 Object Lock WORM\nAES-256 KMS · retención RT-05.10\nProtegida vs credenciales admin"]
     SRC -->|"Copia 2 · cross-region"| S3CR["S3 Cross-Region Replication\nRegión DR"]
@@ -327,7 +327,7 @@ graph TD
     style S3I fill:#FFF9C4
     style S3CR fill:#C8E6C9
     style NAS fill:#BBDEFB
-`
+```
 
 **Política de retención por dominio:**
 
@@ -371,4 +371,5 @@ graph TD
 
 ---
 *Fuente: BTT §6-7 · Caso_02 §15 · Diagramas en Diagramas/RT-06_DataCenter/*
-*Este Markdown es fuente de verdad del §4.2.d-e. El LaTeX rquitectura_fisica.tex lo referencia, no lo reemplaza.*
+*Este Markdown es fuente de verdad del §4.2.d-e. El LaTeX arquitectura_fisica.tex lo referencia, no lo reemplaza.*
+
