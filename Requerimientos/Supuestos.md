@@ -1,6 +1,6 @@
 # Supuestos del proyecto — caso Caso 02 · Logística (Distribuidora Puelche S.A.)
 
-Registro de trabajo de `Recursos externos`. El registro oficial de supuestos del contrato vive en el registro de requerimientos del Cap. 17.1 (no como capítulo aparte del informe); este documento es la fuente de evaluación y redacción de los supuestos antes de consolidarlos allí.
+Registro de trabajo de supuestos. El registro oficial de supuestos del contrato vive en el registro de requerimientos del Cap. 17.1 (no como capítulo aparte del informe); este documento es la fuente de evaluación y redacción de los supuestos antes de consolidarlos allí.
 
 Convención: cada supuesto declara **origen** (caso/decisión/RT) y **consecuencia si es incorrecto**. Los supuestos marcados como **Corregido** o **Ajustado** pasan a redacción conforme a las decisiones 16.1 ya tomadas en `Requerimientos/decisiones.md` (que es la fuente que prevalece para la conducta del sistema).
 

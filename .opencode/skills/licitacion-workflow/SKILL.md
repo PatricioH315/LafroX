@@ -16,6 +16,33 @@ coherente con las Bases, el caso y el cronograma obligatorio de 56 meses.
 **Regla de oro:** al comenzar cualquier sesión/avance, cargar este skill.
 Él decide el siguiente skill a activar según la fase en curso.
 
+## Base canónica: la Entrega 1 (verificar antes de cualquier avance)
+
+**`Entrega 1/` es el punto de partida obligatorio de la Entrega 2.** Es el registro congelado
+de lo entregado el 07-09-2026, extraído de `productos/Informe 1 Entrega 1.docx`.
+
+| Carpeta | Rol | Se edita |
+|---|---|---|
+| `Entrega 1/` | registro de lo entregado — subdocs 1, 2, 3, 4.1, 4.2, 5, 13 | **no, nunca** |
+| `Entrega 2/` | entregable en construcción (Informe 2, 05-10-2026) | **sí, aquí se trabaja** |
+
+Antes de redactar o modificar cualquier subdocumento:
+
+1. **Leer la línea base** en `Entrega 1/<NN_subdoc>/texto/` y `.../tablas/`. Nunca partir de cero
+   ni de otra fuente si el subdocumento ya existe ahí.
+2. **Escribir el cambio en `Entrega 2/<NN_subdoc>/`**, jamás en `Entrega 1/`.
+3. **Registrar el cambio** en `Entrega 2/00_trazabilidad_observaciones/tablas/Trazabilidad_Observaciones_Informe1.xlsx`
+   con la observación que lo motiva y la sección modificada. Sin esa fila, el T-22 lo lee como
+   observación no atendida (Art. 45).
+4. Ante duda sobre **qué se entregó**, manda `Entrega 1/` y su origen, el `.docx`. Lo que no está
+   en el `.docx` es material de trabajo, no entregable.
+
+Subdocumentos **nuevos** del Informe 2 (sin línea base porque el Informe 1 no los cubría):
+`07_metodologias` (6), `08_plan_trabajo_edt` (7), `09_plan_riesgos` (8), `10_plan_calidad` (9).
+Pesan en conjunto **41 %** de la ponderación del Informe 2 (T-21).
+
+**El proyecto LaTeX fue retirado por desactualizado.** No reintroducirlo ni usarlo como fuente.
+
 ## Cómo se leen los documentos rectores (precedencia)
 
 Precedencia estricta (Art. 5° de las Bases Administrativas):

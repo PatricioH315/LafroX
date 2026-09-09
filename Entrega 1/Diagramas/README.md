@@ -43,10 +43,13 @@ Es un hallazgo relevante para la Entrega 2: los subdocumentos 4.2 (d) y (e) —
 se sustentaron sin incorporar ninguno de los planos ya elaborados.
 
 
-## Coherencia con el proyecto LaTeX
+## Sobre el proyecto LaTeX (retirado)
 
-`productos/Informe1/informe latex/` **no refleja este entregable**: sus macros `\diagrama{}`
-invocan 8 archivos, de los cuales 5 no existen en el repositorio
-(`as_is_preventa_reparto.png`, `as_is_preparacion_despacho.png`, `arq_fisica_emplazamiento.png`,
-`modelo_datos_er.png`, `DC06_Plano_DataCenter_Primario_Blueprint.svg`) y se renderizan como
-`[PENDIENTE]`. La fuente de verdad de lo entregado es el `.docx`, no el LaTeX.
+`productos/Informe1/informe latex/` **no reflejaba este entregable** y fue **retirado del
+repositorio por obsoleto**: sus macros `\diagrama{}` invocaban 8 archivos, de los cuales 5 no
+existen (`as_is_preventa_reparto.png`, `as_is_preparacion_despacho.png`,
+`arq_fisica_emplazamiento.png`, `modelo_datos_er.png`, `DC06_Plano_DataCenter_Primario_Blueprint.svg`)
+y se renderizaban como `[PENDIENTE]`.
+
+La **fuente de verdad de lo entregado es el `.docx`**, no el LaTeX. Queda en el historial de git
+(commit `6a4a00d` y tag `respaldo/pre-consolidacion-2026-09-08/datacenter`) por si hiciera falta.

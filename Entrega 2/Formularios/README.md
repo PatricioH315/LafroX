@@ -4,7 +4,7 @@
 
 
 Los formularios **no se duplican** en esta carpeta: los que ya existen viven en `productos/`
-y en `Arquitectura_Fisica/`. Esta tabla es el índice de control.
+y en `Arquitectura/fisica/`. Esta tabla es el índice de control.
 
 
 | Formulario | Contenido | Subdoc. | ¿Informe 2? | Dónde está hoy |
@@ -12,7 +12,7 @@ y en `Arquitectura_Fisica/`. Esta tabla es el índice de control.
 | **T-6** | Presentación de la empresa | 1 | Sí | — |
 | **T-9** | Metodología de gestión de proyectos | 6 | Sí | **Por construir** |
 | **T-10** | Metodología de desarrollo de software | 6 | Sí | **Por construir** |
-| **T-11** | Especificaciones técnicas ofertadas | 4.2 | Sí | Borrador en `Arquitectura_Fisica/T-11_Especificaciones_Tecnicas_Ofertadas.md` |
+| **T-11** | Especificaciones técnicas ofertadas | 4.2 | Sí | Borrador en `Arquitectura/fisica/T-11_Especificaciones_Tecnicas_Ofertadas.md` |
 | **T-12** | Matriz de cumplimiento técnico (todos los RT) | 3 | Sí | `productos/Formulario_T-12_Matriz_Cumplimiento_TFEP-01-2026.xlsx` y 2 versiones previas |
 | **T-13** | Plan de pruebas | 9 | Sí | **Por construir** |
 | **T-14** | Plan de trabajo | 7 | Sí | **Por construir** |
