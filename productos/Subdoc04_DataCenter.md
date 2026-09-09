@@ -53,7 +53,7 @@ graph TD
 
 ### A.2 Plano de distribución interna (RT-06.03)
 
-Ver: Diagramas/RT-06_DataCenter/DC01a_Plano_Distribucion.png
+Ver: Diagramas/RT-06_DataCenter/DC06_Plano_DataCenter_Primario_Blueprint.svg
 
 **7 zonas separadas por peligro (RT-06.03):**
 
