@@ -114,6 +114,19 @@ Es la **fuente única consolidada** de la arquitectura física híbrida. Los doc
 
 > **Modelo de entrada:** una sola SPA Angular (90 % UI común, §8 doc lógico) servida por **subdominios `*.puelche.cl`**; el **rol Keycloak** (`cliente`, `transportista`, `proveedor`, `invitado`) decide las vistas y los endpoints del API Gateway (RBAC), no hay despliegues separados por portal. Las consolas internas no pasan por esta DMZ (entrada intranet/VPN).
 
+### 3.8 Back-office web — superficies internas (consolas y administración)
+
+Superficies de escritorio del personal interno (planificación, calidad, gerencia y administración de TI). Son una **SPA Angular interna** servida por la **tarea `web` de ECS Fargate (nube)** con subdominio `web.puelche.cl`, **entrada exclusiva por intranet/VPN** (nunca por la DMZ pública), autenticación **SSO Keycloak (MFA)** y **RBAC por rol** que decide las vistas. Ninguna de estas consolas cuelga del Portal WMS de bodega (M1/M2/M5): cada una pertenece a su módulo y lectura su propia base.
+
+| Superficie | Actor canónico | Módulo | Dato que muestra / edita | Base de datos física | Acceso |
+|---|---|---|---|---|---|
+| **Consola de planificación de rutas** | Planificador de rutas (RF-04) | M4 | Secuenciación, ventanas, capacidad, cadena de frío | **BD_RUTAS** (PostGIS) → on-prem **VM-02** + réplica **Aurora** | intranet/VPN → task `web` |
+| **Consola de calidad / trazabilidad** | Jefa de calidad (RF-09) | M9 | Lotes, sensores de frío, excursiones térmicas, control sanitario | **BD_CALIDAD_TRAZABILIDAD** → on-prem **VM-02** + **DynamoDB** (sensores raw) | intranet/VPN → task `web` |
+| **Tableros BI / gerencia** | Gerente comercial y de finanzas (RF-11) | M10 | OTIF, costo de servir, ocupación de flota, segmentación | **BD_BI_GERENCIA** → **Redshift Serverless (N-10)** (nunca Aurora directo) | intranet/VPN → **QuickSight** (cuentas federadas Keycloak) |
+| **Portal de administración TI** | Jefe de TI | transversal | Administración de la plataforma: usuarios, roles, parámetros | **BD_MAESTROS_CONF** + **BD_GOBIERNO_ACCESO** → **Aurora** (Keycloak) | intranet/VPN → task `web` (Django admin) |
+
+> **Nota de aplicación:** el back-office **no se instala** en las VM on-premise: corre como **web (SPA Angular)** en la nube (`web` Fargate) y QuickSight (N-10), accesible por navegador desde la PC del usuario vía **intranet/VPN** (Seguridad v01 §2.2, RT-03.22). Los datos de bodega (VM-02) llegan a la nube por la **costura C2** (DMS CDC → Aurora, RPO ≤ 15 min). Correlacionado 1:1 con la lógica §5.1 y §10.2.
+
 ---
 
 ## 4. Topología de red consolidada
