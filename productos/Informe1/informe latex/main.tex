@@ -112,13 +112,16 @@
 %  \diagrama{archivo}{título}{label}: incluye la figura si el
 %  archivo existe; si no, muestra un marcador [PENDIENTE] para
 %  que el documento compile mientras llegan los diagramas.
+%  Nota: \IfFileExists NO consulta \graphicspath, por lo que la
+%  comprobación usa \diagramasdir (misma ruta que \graphicspath).
 % ------------------------------------------------------------
-\graphicspath{{Diagramas/}}
+\newcommand{\diagramasdir}{../../../Diagramas/}
+\graphicspath{{\diagramasdir}}
 
 \newcommand{\diagrama}[3]{%
   \begin{figure}[htbp]%
     \centering%
-    \IfFileExists{\detokenize{#1}}{%
+    \IfFileExists{\diagramasdir #1}{%
       \includegraphics[width=\textwidth,keepaspectratio]{\detokenize{#1}}%
     }{%
       \fbox{%
@@ -128,7 +131,7 @@
           {\color{lafroxAcento}\textbf{[PENDIENTE]}}\\[4pt]
           {\itshape Diagrama pendiente de incorporar}\\[10pt]
           {\small\bfseries\color{lafroxAzul} #2}\\[4pt]
-          {\footnotesize\color{lafroxGrato} Archivo esperado: \texttt{\detokenize{Diagramas/#1}}}\\
+          {\footnotesize\color{lafroxGrato} Archivo esperado: \texttt{\detokenize{\diagramasdir #1}}}\\
           \vspace{12pt}%
         \end{minipage}%
       }%

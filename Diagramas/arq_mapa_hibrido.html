@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mapa Arquitectónico Híbrido — Distribuidora Puelche S.A. (TFEP-01/2026 · Caso 02)</title>
+<style>
+  :root{
+    --ink:#1F4E79; --ink2:#2E6DA4; --line:#9db7cf; --grid:#dbe7f1;
+    --cloud:#e2efda; --wan:#e4dfec; --edge:#fbe2d5; --work:#f6f6f6;
+    --gen:#fbe2d5; --bat:#f8cbad; --clim:#ddebf7; --serv:#d6e7f5; --comm:#e2efda; --resp:#e4dfec;
+    --shadow:0 2px 6px rgba(31,78,121,.12);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html,body{height:100%; overflow:hidden; font-family:'Segoe UI',system-ui,sans-serif; background:#dfe9f2; color:#1a2733;}
+  #topbar{
+    position:fixed; inset:0 0 auto 0; height:52px; z-index:40;
+    display:flex; align-items:center; gap:14px; padding:0 16px;
+    background:linear-gradient(90deg,#12385c,#1f4e79); color:#fff;
+    box-shadow:0 2px 8px rgba(0,0,0,.25);
+  }
+  #topbar .title strong{font-size:15px; letter-spacing:.2px;}
+  #topbar .sub{font-size:11px; opacity:.82;}
+  #controls{margin-left:auto; display:flex; gap:8px;}
+  #controls button{
+    border:1px solid rgba(255,255,255,.35); background:rgba(255,255,255,.12); color:#fff;
+    border-radius:6px; width:34px; height:30px; font-size:16px; cursor:pointer; line-height:1;
+  }
+  #controls button:hover{background:rgba(255,255,255,.28);}
+  #view{position:fixed; inset:52px 0 0 0; overflow:hidden; cursor:grab; touch-action:none;
+        background-color:#dfe9f2; background-image:radial-gradient(#b7cada 1px, transparent 1px);
+        background-size:26px 26px;}
+  #view.grabbing{cursor:grabbing;}
+  #world{position:absolute; left:0; top:0; width:3400px; height:2200px; transform-origin:0 0;
+         background:rgba(255,255,255,.45); transition:transform .45s cubic-bezier(.22,.61,.36,1);}
+  #links{position:absolute; left:0; top:0; overflow:visible; pointer-events:none;}
+  #links path{fill:none; stroke:#2e6da4; stroke-width:5; opacity:.55; stroke-linecap:round;}
+  #links path.ct{margin:0;}
+  .svg-dot{fill:#2e6da4; opacity:.6;}
+  .zone-label{position:absolute; font-size:13px; font-weight:700; letter-spacing:2.5px; color:#6b87a1;
+              text-transform:uppercase; pointer-events:none;}
+  .card{position:absolute; background:#fff; border:2px solid var(--ink2); border-radius:10px;
+        padding:10px 12px; box-shadow:var(--shadow); transition:box-shadow .15s; font-size:12px;}
+  .card.zone-serv,.card.zone-clim,.card.zone-bat,.card.zone-gen,.card.zone-work,
+  .card.zone-comm,.card.zone-resp{border-width:1.5px; min-height:34px;}
+  .card:hover{box-shadow:0 6px 16px rgba(31,78,121,.3); z-index:5;}
+  .card h3,.frame h3{font-size:13px; color:var(--ink); margin-bottom:5px; line-height:1.2;}
+  .frame{border:2.5px dashed #7fa6c9; border-radius:14px; background:rgba(255,255,255,.35); padding:10px;}
+  .frame>h3{display:inline-block; background:var(--ink); color:#fff; font-size:12px; padding:3px 10px;
+            border-radius:6px; letter-spacing:.6px;}
+  .frame.cloud{background:rgba(226,239,218,.25);}
+  .chips{display:flex; flex-wrap:wrap; gap:5px;}
+  .chip{background:#eef3f8; border:1px solid #c6d6e6; border-radius:999px; padding:2px 9px; font-size:10.5px; color:#1f3b58;}
+  .chip b{color:var(--ink);}
+  .tier{display:inline-block; font-size:10px; font-weight:700; padding:1px 7px; border-radius:4px; color:#fff;}
+  .t-c{background:#548235;} .t-s{background:#2e75b6;} .t-g{background:#8a5700;} .t-b{background:#a4262c;} .t-p{background:#7030a0;}
+  .rack{position:absolute; width:110px; border:1.5px solid #1f4e79; border-radius:7px; background:#fff;
+        padding:5px 6px; font-size:9.8px; color:#244a70;}
+  .rack h4{font-size:11px; color:#fff; background:#2e75b6; border-radius:4px; padding:1px 5px; margin-bottom:4px; text-align:center;}
+  .rack .u{display:flex; justify-content:space-between; border-bottom:1px dotted #c2d3e4; padding:1px 0;}
+  .rack .u span:last-child{color:#5b6f85;}
+  #tooltip{
+    position:fixed; z-index:60; display:none; max-width:320px; background:#0f2c47; color:#fff;
+    border-radius:8px; padding:9px 11px; font-size:11.5px; line-height:1.45;
+    box-shadow:0 8px 24px rgba(0,0,0,.4); pointer-events:none;
+  }
+  #tooltip b{color:#ffd966;}
+  #legend{
+    position:fixed; left:14px; bottom:14px; z-index:40; background:rgba(255,255,255,.92);
+    border:1px solid #b7cada; border-radius:8px; padding:8px 10px; font-size:10.5px; width:212px;
+    box-shadow:var(--shadow);
+  }
+  #legend h5{margin-bottom:5px; color:var(--ink); font-size:11px;}
+  #legend .li{display:flex; align-items:center; gap:6px; margin:2px 0;}
+  #legend .sw{width:12px; height:12px; border:1px solid #7f97ad; border-radius:2px; flex:none;}
+  #hint{
+    position:fixed; right:14px; bottom:14px; z-index:40; background:rgba(255,255,255,.9);
+    border:1px solid #b7cada; border-radius:8px; padding:7px 10px; font-size:10.5px; color:#33506e;
+    box-shadow:var(--shadow);
+  }
+  .tag{font-size:9.5px;}
+</style>
+</head>
+<body>
+
+<div id="topbar">
+  <div class="title"><strong>MAPA ARQUITECTÓNICO HÍBRIDO</strong></div>
+  <div class="sub">Distribuidora Puelche S.A. · Licitación TFEP-01/2026 · Caso 02 — Logística · Infraestructura On-Premise + Borde + Nube (Subdoc 4 · v6.2)</div>
+  <div id="controls">
+    <button id="zin" title="Acercar">+</button>
+    <button id="zout" title="Alejar">−</button>
+    <button id="zhome" title="Vista general" style="font-size:13px;">⌂</button>
+  </div>
+</div>
+
+<div id="view">
+  <div id="world">
+
+    <svg id="links" width="3400" height="2200">
+      <path d="M 1065 210 L 1750 700"/>
+      <path d="M 1065 210 L 400 500"/>
+      <path d="M 400 660 L 1065 730"/>
+      <path d="M 1065 730 L 1900 590"/>
+      <path d="M 1900 590 L 1900 1560"/>
+      <path d="M 400 660 L 2620 410"/>
+      <path d="M 1900 590 L 2450 1740"/>
+      <path d="M 400 660 L 400 1560"/>
+      <circle class="svg-dot" cx="1065" cy="730" r="14"/>
+      <circle class="svg-dot" cx="1900" cy="590" r="14"/>
+      <circle class="svg-dot" cx="400" cy="660" r="14"/>
+      <circle class="svg-dot" cx="1900" cy="1560" r="14"/>
+      <circle class="svg-dot" cx="2450" cy="1740" r="14"/>
+    </svg>
+
+    <!-- ══════════ 1 · ÚLTIMA MILLA ══════════ -->
+    <div class="zone-label" style="left:150px; top:32px;">Última milla — terreno</div>
+    <div class="frame" id="lastmile" data-zx="120" data-zy="70" data-zw="1760" data-zh="150"
+         style="left:140px; top:70px; width:1760px; height:140px;">
+      <h3>ÚLTIMA MILLA · FUERA DEL CD — 62 preventistas · ~200 conductores · 14.200 puntos de entrega</h3>
+      <div class="chips" style="margin-top:9px;">
+        <span class="chip"><b>Despacho 05:30–07:00</b> — zero indisponibilidad</span>
+        <span class="chip"><b>Apps móviles offline-first</b> (Kotlin) — turno 14 h sin señal (RT-03.10)</span>
+        <span class="chip"><b>31.000 pedidos-mes</b> · 260.000 líneas · 2,4 M unidades</span>
+        <span class="chip"><b>Retiro sanitario &lt; 2 h</b> — trazabilidad de lote (GS1)</span>
+        <span class="chip"><b>32.000 DTEs</b> (guías/facturas) con firma electrónica</span>
+        <span class="chip"><b>IoT</b>: sensores de cadena de frío en vehículos (RS-485/Modbus)</span>
+        <span class="chip"><b>Starlink de repuesto</b> en camiones (D-06)</span>
+      </div>
+    </div>
+
+    <!-- ══════════ 2 · NUBE AWS ══════════ -->
+    <div class="zone-label" style="left:150px; top:300px;">Nube pública — AWS (Art. 16 híbrido)</div>
+    <div class="frame cloud" id="nube" data-zx="140" data-zy="340" data-zw="740" data-zh="700"
+         style="left:140px; top:340px; width:740px; height:700px;">
+      <h3 style="background:#548235;">NUBE PÚBLICA — AWS</h3>
+      <div class="card" id="sa" data-zx="150" data-zy="400" data-zw="350" data-zh="420"
+           style="left:160px; top:400px; width:330px; height:auto;">
+        <h3>sa-east-1 — PRIMARIA <span class="tier t-s">PROD</span></h3>
+        <div class="chips">
+          <span class="chip"><b>EKS / K8s</b> multi-zona · IaC Terraform</span>
+          <span class="chip"><b>Django APIs</b> · 12 módulos M1–M12</span>
+          <span class="chip"><b>Keycloak</b> OIDC + MFA (Zero Trust)</span>
+          <span class="chip"><b>Aurora</b> analítica · <b>S3</b> data lake</span>
+          <span class="chip"><b>Redis</b> · <b>RabbitMQ/MQTT</b></span>
+          <span class="chip"><b>Prometheus/Grafana</b> observabilidad</span>
+        </div>
+        <p class="tag" style="margin-top:6px;">Residencia de datos en Chile: Art. 23 BA · Ley 21.719</p>
+      </div>
+      <div class="card" id="dr" data-zx="520" data-zy="400" data-zw="330" data-zh="420"
+           style="left:525px; top:400px; width:325px; height:auto;">
+        <h3>us-east-1 — RECUPERACIÓN <span class="tier t-p">DR</span></h3>
+        <div class="chips">
+          <span class="chip"><b>Warm standby</b> · Aurora réplica WAL</span>
+          <span class="chip"><b>RPO 15 min</b> · <b>RTO 4 h</b> (RT-07.04)</span>
+          <span class="chip"><b>Prueba DR semestral</b> (Art. 20 · RT-07.07)</span>
+          <span class="chip"><b>S3 inmutable</b> — copia 3-2-1-1-0</span>
+        </div>
+      </div>
+      <p class="tag" style="position:absolute; left:160px; bottom:6px; width:600px;">
+        Nube analítica y DR · la carga crítica y de terreno queda on-premise/borde (híbrido obligatorio, Art. 16 BA).</p>
+    </div>
+
+    <!-- ══════════ 3 · WAN ══════════ -->
+    <div class="frame" id="wan" data-zx="880" data-zy="540" data-zw="600" data-zh="420"
+         style="left:900px; top:540px; width:580px; height:410px;">
+      <h3 style="background:#7030a0;">RED WAN — CONECTIVIDAD (3 caminos + Direct Connect)</h3>
+      <div class="chips" style="margin-top:11px;">
+        <span class="chip"><b>Fibra 50 Mbps</b> (D-03) — principal</span>
+        <span class="chip"><b>Starlink 1 TB</b> (D-06) — redundancia</span>
+        <span class="chip"><b>LTE 10 Mbps</b> (D-04) — respaldo</span>
+        <span class="chip"><b>Conmutación &lt; 30 s</b> (RT-03.17)</span>
+        <span class="chip"><b>VPN IPsec/BGP</b> — Zero Trust, solo saliente HTTPS</span>
+      </div>
+      <p class="tag" style="margin-top:10px;">Direct Connect (AWS) activable como 4º camino — INC-02 cerrada.
+        Conmutación automática probada; sin SPOF (RT-08.03).</p>
+    </div>
+
+    <!-- ══════════ 4 · CD TALCA ══════════ -->
+    <div class="frame" id="cd" data-zx="1500" data-zy="240" data-zw="1860" data-zh="1400"
+         style="left:1500px; top:240px; width:1860px; height:1390px; border-color:#1f4e79;">
+      <h3 style="background:#1f4e79;">CD TALCA — INSTALACIÓN ON-PREMISE · SALA TÉCNICA SECUNDARIA (RT-06.03/06.05)</h3>
+
+      <!-- 1ª línea -->
+      <div class="zone-label" style="left:1525px; top:322px;">1ª línea · recepción y apoyo</div>
+      <div class="card zone-work" style="left:1530px; top:345px; width:250px;">Control de acceso y custodia · 10 m² — guardia, CCTV, registro</div>
+      <div class="card zone-work" style="left:1530px; top:405px; width:250px;">Sala de reuniones · 14 m² — proveedores, auditorías</div>
+      <div class="card zone-work" style="left:1530px; top:465px; width:250px;">Taller / reparación · 12 m² — antiestática, fuera de la sala</div>
+      <div class="card zone-work" style="left:1530px; top:525px; width:250px;">Bodega de insumos · 10 m² — cartón queda fuera</div>
+
+      <!-- 2ª línea -->
+      <div class="zone-label" style="left:1805px; top:322px;">2ª línea · zona técnica</div>
+      <div class="card zone-gen"  id="acom"   style="left:1810px; top:345px; width:200px;">Acometida eléctrica · 10 m² — empalme, tablero, ATS</div>
+      <div class="card zone-comm" id="mmr"    style="left:1810px; top:405px; width:200px;">MMR comunicaciones · 10 m² — 2 ductos + Starlink</div>
+      <div class="card zone-bat"  id="ups"    style="left:1810px; top:465px; width:200px;">UPS 6 kVA N+1 + baterías · 14 m² — ≥30 min (RT-06.07)</div>
+      <div class="card zone-clim" id="clima"  style="left:1810px; top:525px; width:200px;">Climatización · 12 m² — 2 CRAC N+1 + free cooling</div>
+      <div class="card zone-work" id="ext"    style="left:1810px; top:585px; width:200px;">Extinción FM-200 · 5 m² — pegada a la sala</div>
+      <div class="card zone-resp" id="cust"   style="left:1810px; top:645px; width:200px;">Custodia de medios · 10 m² — RT-06.26/27</div>
+
+      <!-- Esclusa -->
+      <div class="card zone-work" style="left:2030px; top:380px; width:120px; text-align:center; font-weight:700;">
+        ESCLUSA 3ª LÍNEA<br><span class="tier t-g" style="margin-top:4px;">2FA + antipassback</span>
+      </div>
+
+      <!-- Sala blanca -->
+      <div class="frame" id="sala" data-zx="2180" data-zy="360" data-zw="360" data-zh="430"
+           style="left:2180px; top:360px; width:360px; height:430px; border-color:#2e75b6; background:#eaf4fb;">
+        <h3 style="background:#2e75b6;">SALA BLANCA · 32 m² · TIER II 99,741 %</h3>
+        <p class="tag" style="margin:5px 0;">Piso técnico 40 cm · pasillo frío confinado 1,2 m · filas enfrentadas</p>
+        <div class="rack" id="r01" data-zx="2180" data-zy="360" data-zw="180" data-zh="220" style="left:2195px; top:430px;">
+          <h4>R01 · SERVIDORES</h4>
+          <div class="u"><span>U42–U40</span><span>patch + org.</span></div>
+          <div class="u"><span>U29–U27</span><span>NODO-1/2/3</span></div>
+          <div class="u"><span>U25</span><span>Gateway IoT</span></div>
+          <div class="u"><span>U24–U23</span><span>NAS D-05 (2U)</span></div>
+          <div class="u"><span>U22</span><span>KVM</span></div>
+          <div class="u"><span>U39–31 · U21–1</span><span>reserva</span></div>
+        </div>
+        <div class="rack" id="r02" data-zx="2360" data-zy="360" data-zw="180" data-zh="220" style="left:2355px; top:430px;">
+          <h4>R02 · RED/SEG.</h4>
+          <div class="u"><span>U42–U40</span><span>patch</span></div>
+          <div class="u"><span>U39–U38</span><span>core #1/#2</span></div>
+          <div class="u"><span>U36–U35</span><span>FW HA</span></div>
+          <div class="u"><span>U34</span><span>gestión</span></div>
+          <div class="u"><span>U33–U1</span><span>reserva</span></div>
+        </div>
+        <div class="rack" id="r03" data-zx="2180" data-zy="580" data-zw="180" data-zh="190" style="left:2195px; top:640px;">
+          <h4>R03 · HDA/RESP.</h4>
+          <div class="u"><span>U42–U41</span><span>patch OM4</span></div>
+          <div class="u"><span>U40–U39</span><span>patch Cat6A</span></div>
+          <div class="u"><span>U38–U37</span><span>org.</span></div>
+          <div class="u"><span>U36–U1</span><span>reserva ~30%</span></div>
+        </div>
+        <div class="rack" id="r04" data-zx="2360" data-zy="580" data-zw="180" data-zh="190" style="left:2355px; top:640px;">
+          <h4>R04 · CRECIM.</h4>
+          <div class="u"><span>U42–U41</span><span>base</span></div>
+          <div class="u"><span>U40–U1</span><span>100% libre</span></div>
+        </div>
+      </div>
+
+      <!-- NOC -->
+      <div class="card zone-comm" id="noc" style="left:2180px; top:830px; width:360px;">
+        NOC — monitoreo · 14 m² — DCIM/BMS, bitácora · <b>ventana interior</b> a la sala
+      </div>
+
+      <!-- Generador -->
+      <div class="card zone-gen" id="gen" style="left:2280px; top:260px; width:250px;">
+        PATIO GENERADOR · 20 m² — generador 12 kVA · estanque 24 h (RT-06.08) · prueba mensual
+      </div>
+
+      <p class="tag" style="position:absolute; left:2180px; top:900px; width:500px;">
+        Rampa de acceso al piso técnico · sala de 25→32 m² conforme al programa real · 7 cámaras IP · 12 puertas controladas · 4 líneas de acceso (la 4ª protege el gabinete en el borde).</p>
+    </div>
+
+    <!-- ══════════ 5 · BORDE ══════════ -->
+    <div class="zone-label" style="left:1750px; top:1600px;">Sitio secundario · borde operacional</div>
+    <div class="frame" id="borde" data-zx="1500" data-zy="1640" data-zw="1860" data-zh="520"
+         style="left:1500px; top:1650px; width:1860px; height:480px; border-color:rgba(138,87,0,.55);">
+      <h3 style="background:#8a5700;">GABINETES DE BORDE — §6.1 + RT-06.01 + T-21 4.2.e</h3>
+      <div class="card zone-comm" id="conc" data-zx="1525" data-zy="1700" data-zw="560" data-zh="290" style="left:1530px; top:1700px; width:560px;">
+        <h3>CD CONCEPCIÓN · gabinete 12U — ACTIVO AUTÓNOMA</h3>
+        <div class="chips">
+          <span class="chip">C3 servidor borde R250 — WMS reducido</span>
+          <span class="chip">C13 firewall 40F SD-WAN</span>
+          <span class="chip">C14 switch core</span>
+          <span class="chip">D-06 router Starlink</span>
+          <span class="chip">UPS interna ≥ 30 min</span>
+        </div>
+      </div>
+      <div class="card zone-comm" id="xd" data-zx="2110" data-zy="1700" data-zw="580" data-zh="290" style="left:2110px; top:1700px; width:580px;">
+        <h3>CROSS-DOCKS ×3 — Curicó · Chillán · Los Ángeles (gabinete 12U)</h3>
+        <div class="chips">
+          <span class="chip">C4 mini-PC industrial — mini-WMS</span>
+          <span class="chip">C15 switch 8p gestionable</span>
+          <span class="chip">D-06 Starlink + LTE dual automático</span>
+          <span class="chip">UPS interna + supresor</span>
+        </div>
+      </div>
+      <div class="chips" style="margin-top:14px;">
+        <span class="chip"><b>1 · Protección eléctrica</b> — UPS + tierra A/B</span>
+        <span class="chip"><b>2 · Control de acceso físico</b> — cerradura registrada</span>
+        <span class="chip"><b>3 · Monitoreo remoto</b> — T/HR + apertura → NOC (DCIM)</span>
+        <span class="chip"><b>4 · Condiciones ambientales</b> — 18–27 °C · 40–60 % HR</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div id="tooltip"></div>
+
+<div id="legend">
+  <h5>Zonas RT-06.03 (separación por peligro)</h5>
+  <div class="li"><span class="sw" style="background:#fbe2d5"></span>Generadores (patio exterior)</div>
+  <div class="li"><span class="sw" style="background:#f8cbad"></span>Baterías (recinto propio)</div>
+  <div class="li"><span class="sw" style="background:#ddebf7"></span>Climatización / servidores</div>
+  <div class="li"><span class="sw" style="background:#e2efda"></span>Comunicaciones (MMR · NOC)</div>
+  <div class="li"><span class="sw" style="background:#f6f6f6"></span>Trabajo / recepción</div>
+  <div class="li"><span class="sw" style="background:#e4dfec"></span>Respaldo (custodia de medios)</div>
+  <div class="li"><span class="sw" style="background:#e2efda"></span>Borde operacional §6.1</div>
+</div>
+
+<div id="hint">Doble clic en una zona → zoom<br>Rueda para acercar/alejar · Arrastra para mover</div>
+
+<script>
+(function(){
+  const world=document.getElementById('world'), view=document.getElementById('view');
+  const tip=document.getElementById('tooltip');
+  let s=1, tx=0, ty=0, dragging=false, sx=0, sy=0, ox=0, oy=0;
+
+  function apply(){ world.style.transform='translate('+tx+'px,'+ty+'px) scale('+s+')'; }
+
+  function fit(rect,pad){
+    const vw=view.clientWidth, vh=view.clientHeight;
+    let z=Math.min((vw-pad)/rect.w,(vh-pad)/rect.h);
+    z=Math.min(z,3.2); z=Math.max(z,.08);
+    tx=(vw-rect.w*z)/2-rect.x*z;
+    ty=(vh-rect.h*z)/2-rect.y*z;
+    s=z; apply();
+  }
+
+  function zoomAt(fx,fy,dz){
+    const ns=Math.min(4,Math.max(.08,s*dz));
+    const wx=(fx-tx)/s, wy=(fy-ty)/s;
+    s=ns; tx=fx-wx*s; ty=fy-wy*s; apply();
+  }
+
+  view.addEventListener('wheel',e=>{
+    e.preventDefault();
+    const r=view.getBoundingClientRect();
+    zoomAt(e.clientX-r.left,e.clientY-r.top, e.deltaY<0?1.18:.85);
+  },{passive:false});
+
+  view.addEventListener('pointerdown',e=>{
+    dragging=true; view.classList.add('grabbing');
+    sx=e.clientX; sy=e.clientY; ox=tx; oy=ty; view.setPointerCapture(e.pointerId);
+  });
+  view.addEventListener('pointermove',e=>{
+    if(dragging){ tx=ox+(e.clientX-sx); ty=oy+(e.clientY-sy); apply(); }
+  });
+  view.addEventListener('pointerup',()=>{ dragging=false; view.classList.remove('grabbing'); });
+
+  const targets={};
+  document.querySelectorAll('[data-zx]').forEach(el=>{
+    targets[el.id]=el;
+  });
+  function zoomTo(el){
+    const r=el.getBoundingClientRect(), v=view.getBoundingClientRect();
+    const x=el.dataset.zx*1, y=el.dataset.zy*1, w=el.dataset.zw*1, h=el.dataset.zh*1;
+    fit({x,y,w,h},80);
+  }
+  document.querySelectorAll('[data-zx]').forEach(el=>{
+    el.addEventListener('dblclick',ev=>{ ev.stopPropagation(); zoomTo(el); });
+    el.addEventListener('pointerover',()=>{ el.style.outline='3px solid rgba(255,215,0,.9)'; });
+    el.addEventListener('pointerout',()=>{ el.style.outline=''; });
+  });
+  view.addEventListener('dblclick',ev=>{
+    if(ev.target===view||ev.target===world) fit({x:0,y:0,w:3400,h:2200},40);
+  });
+
+  const meta={
+    lastmile:'<b>Última milla</b> — terreno. 62 preventistas, ~200 conductores, 14.200 puntos.<br>Ventana de despacho 05:30–07:00 con cero indisponibilidad. Offline 14 h (RT-03.10): apps móviles offline-first (Kotlin). Cutover on-premise 24 h.',
+    nube:'<b>Nube pública AWS</b> — analítica, autenticación y DR. Híbrido obligatorio (Art. 16). s<br>PRIMARIA sa-east-1 (EKS, Django 12 módulos, Keycloak OIDC/MFA, Aurora, S3, Redis/RabbitMQ).<br>DR us-east-1 warm standby · RPO 15 min · RTO 4 h · prueba semestral (RT-07.07).',
+    sa:'<b>sa-east-1 PRIMARIA</b> — EKS multi-zona (IaC Terraform), Django APIs (12 módulos M1–M12), Keycloak OIDC+MFA (Zero Trust), Aurora analítica + S3 data lake, Redis, RabbitMQ/MQTT, Prometheus/Grafana. Residencia de datos en Chile (Art. 23 · Ley 21.719).',
+    dr:'<b>us-east-1 DR</b> — warm standby. Aurora réplica por WAL con RPO 15 min y RTO 4 h (RT-07.04). Prueba de DR semestral (Art. 20 BA · RT-07.07). Copia 3-2-1-1-0 con pierna S3 inmutable.',
+    wan:'<b>Red WAN</b> — 3 caminos distintos: Fibra 50 Mbps (D-03), Starlink 1 TB (D-06), LTE 10 Mbps (D-04). Conmutación &lt; 30 s (RT-03.17). Direct Connect activable (INC-02). VPN IPsec/BGP, Zero Trust, solo saliente HTTPS. Sin SPOF (RT-08.03).',
+    cd:'<b>CD TALCA — on-premise</b> — sala técnica secundaria. 3 líneas de acceso (la última 2FA+antipassback), 14 recintos, sala blanca 32 m² con R01–R04, NOC con ventana, generador 12 kVA/24 h. Nivel TIER II (99,741 %).',
+    acom:'Acometida eléctrica 10 m² — empalme, tablero general, ATS. Cadena de 7 eslabones hasta el servidor. PUE objetivo 1,7.',
+    mmr:'MMR comunicaciones 10 m² — 2 ductos (fibra + LTE) + antena Starlink, antes de la 3ª línea.',
+    ups:'Sala UPS + baterías 14 m² — UPS 6 kVA doble conversión N+1, autonomía ≥30 min (RT-06.07), ventilación H₂, bypass manual. Generador toma en 8–15 s.',
+    clima:'Climatización 12 m² — 2 CRAC de precisión (~12.000 BTU/h c/u) N+1 con free cooling. Rango ASHRAE 18–27 °C · 40–60 % HR en la toma de aire.',
+    ext:'Extinción 5 m² — FM-200, NFPA 75/2001, pegada a la sala (cañería corta).',
+    cust:'Custodia de medios 10 m² — RT-06.26/27. LED sin UV, 40–60 % HR, 18–27 °C. Acceso solo custodio.',
+    sala:'<b>Sala blanca 32 m²</b> — 2 filas enfrentadas (2+2 racks), pasillo frío confinado 1,2 m, pasillos calientes 0,9 m, piso técnico 40 cm con rampa. Ocupación ~29 % (R01) y reserva 20–30 % por rack (RT-06.05).',
+    r01:'<b>R01 · servidores y almacenamiento</b> — patch U42–U40, reserva U39–U31, NODO-1/2/3 U29–U27 (altura del pecho), Gateway IoT U25, NAS D-05 U24–23, KVM U22, reserva U21–U1, PDU A/B opuestos. ~12 U de 42.',
+    r02:'<b>R02 · comunicaciones y seguridad</b> (independiente de servidores, RT-06.05) — patch, core L3 #1/#2 (MLAG), firewall HA U36–35, gestión U34, reserva.',
+    r03:'<b>R03 · HDA + respaldo</b> — patch fibra OM4 + Cat6A certificado, organizadores, reserva ~30 %. Nomenclatura R01-U38-P12.',
+    r04:'<b>R04 · crecimiento</b> — gabinete de crecimiento 3 años, 100 % libre con tapas ciegas.',
+    noc:'<b>NOC 14 m²</b> — DCIM/BMS: energía, clima, red, cámaras, alarmas. Bitácora. Ventana interior para ver la sala sin entrar.',
+    gen:'<b>Patio generador 20 m²</b> — generador 12 kVA con estanque 24 h (RT-06.08), contención de derrames, prueba mensual con carga, contrato de reabastecimiento. Zona GENERADORES (RT-06.03).',
+    borde:'<b>Borde operacional</b> — gabinete de borde Concepción (activo autónoma) + cross-docks ×3. Los 4 requisitos §6.1: protección eléctrica, control de acceso físico, monitoreo remoto y condiciones ambientales.',
+    conc:'<b>CD Concepción · gabinete 12U (activo autónoma)</b> — C3 servidor borde R250 (WMS reducido), C13 firewall 40F SD-WAN, C14 switch core, D-06 router Starlink, UPS interna ≥30 min.',
+    xd:'<b>Cross-docks ×3</b> (Curicó · Chillán · Los Ángeles) — C4 mini-PC industrial (mini-WMS), C15 switch 8p gestionable, D-06 Starlink con LTE dual automático, UPS interna + supresor. Rango industrial −40…60 °C.'
+  };
+
+  const els=document.querySelectorAll('[id]');
+  els.forEach(el=>{
+    if(meta[el.id]) {
+      el.style.cursor='pointer';
+      el.addEventListener('pointermove',e=>{
+        tip.style.display='block';
+        tip.style.left=(e.clientX+14)+'px'; tip.style.top=(e.clientY+14)+'px';
+        tip.innerHTML=meta[el.id];
+      });
+      el.addEventListener('pointerleave',()=>{ tip.style.display='none'; });
+    }
+  });
+
+  document.getElementById('zin').onclick=()=>zoomAt(view.clientWidth/2,view.clientHeight/2,1.25);
+  document.getElementById('zout').onclick=()=>zoomAt(view.clientWidth/2,view.clientHeight/2,.8);
+  document.getElementById('zhome').onclick=()=>fit({x:60,y:40,w:3300,h:2140},30);
+
+  fit({x:60,y:40,w:3300,h:2140},30);
+})();
+</script>
+</body>
+</html>
