@@ -9,7 +9,7 @@
 > - `Consolidado_Arquitectura_Fis_Log/Dimensionamiento_Infraestructura_OnPremise_v05.md` — Dim v05 (en adelante «Dim §n»)
 > - `Consolidado_Arquitectura_Fis_Log/Tabla_Emplazamiento_OnPremise_v06.md` — Tabla v06 (en adelante «Tabla §n»)
 > - `Consolidado_Arquitectura_Fis_Log/Arquitectura_Fisica_Hibrida_Consolidada_Caso02_v02.md` — Consolidado v02
-> - `Arquitectura_Logica_v6-1.md` v6.2 — arquitectura lógica vigente (D1–D15), en adelante «Lógica v6.2»
+> - `Arquitectura_Logica_v6-2.md` v6.2 — arquitectura lógica vigente (D1–D15), en adelante «Lógica v6.2»
 > - `Arquitectura_de_Integracion_v01.md` y `Arquitectura_de_Seguridad_v01.md` — vistas de integración y seguridad (Subdoc 4, apartados 3 y 4)
 > - La justificación del módulo de BI y analítica vive en Cloud v3.6 §4.3 y en Lógica v6.2 §10.9 (no existe un documento separado)
 >

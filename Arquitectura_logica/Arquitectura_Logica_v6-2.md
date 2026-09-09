@@ -43,7 +43,7 @@
 >
 > **v5.5.1 (2026-09-05): cifra TPS unificada con la física — ~35 TPS base / ~105 TPS ráfaga (35×3) / ≤130 TPS transitorio (hallazgo M2).**
 >
-> **Cambios v5.5.1→v6 (2026-09-05 — promoción formal a v6):** el documento unificado se promueve a **v6** (posteriormente renombrado a `Arquitectura_Logica_v6-1.md`), consolidando la actualización D2 (serie de tiempo a **OLAP por diseño**) y la unificación TPS con la física (v5.5.1). Sin cambios de contenido; cadena de superados y tabla §20 actualizadas.
+> **Cambios v5.5.1→v6 (2026-09-05 — promoción formal a v6):** el documento unificado se promueve a **v6** (posteriormente renombrado a `Arquitectura_Logica_v6-2.md`), consolidando la actualización D2 (serie de tiempo a **OLAP por diseño**) y la unificación TPS con la física (v5.5.1). Sin cambios de contenido; cadena de superados y tabla §20 actualizadas.
 
 > **Actualización de diagramas (2026-09-05):** set completo de la arquitectura lógica en §18 (13 diagramas): contexto revisado (Keycloak interno en Capa 7), contenedores 8 capas, módulos M1–M12 con dependencias, actores → superficies, vista de procesos (5 secuencias), datos, integración, seguridad y ubicación lógica híbrida. **La fuente canónica de los diagramas es el texto Mermaid de este documento (§18);** los SVG/PNG se exportan a `Diagramas/` para el informe (AGENTS).
 >
@@ -299,10 +299,11 @@ La solución se organiza en las **ocho capas de existencia obligatoria** del num
 |---|---|---|
 | **App Preventa** (móvil offline) | Preventista | Pedidos, stock, crédito, promos, sincronización diferida (RF-03.x) |
 | **App Reparto** (móvil offline) | Conductores propios y externos | Entregas, POD, QR, firma, cobranza, envases, devoluciones (RF-06.x, RF-08.x) |
+| **Portal WMS (bodega)** | Preparador / Jefe de TI | Operación de bodega: recepción, inventario, preparación/picking — **web interna** (M1/M2/M5, BD_INVENTARIO + BD_PREPARACION; sirve estaciones de trabajo en CD) |
 | **Consola/estación de planificación** | Planificador de rutas | Secuenciación y modificación de rutas (RF-04) |
 | **Consola de calidad** | Jefa de calidad | Trazabilidad, sensores, excursiones térmicas (RF-09) |
 | **Tableros BI / consola de gerencia** | Gerente comercial y de finanzas | OTIF, costo de servir, ocupación de flota (RF-11) |
-| **Portal de Administración TI** | Jefe de TI | Configuración topológica, usuarios, parámetros (RF-02.01) |
+| **Portal de Administración TI** | Jefe de TI | Administración de la plataforma: usuarios, roles y parámetros (transversal) |
 | **Portal de Clientes** | Canal tradicional y moderno | Estado de cuenta, entregas, documentos tributarios, autoservicio (RF-12.15–12.18) |
 | **Portal Público (catálogo)** | Usuario no autenticado | Catálogo consultable sin login (RF-12.14) |
 | **Portal de Transportistas** | Empresa transportista / conductores externos | Rutas asignadas, documentación, confirmación (RF-12.19–12.21) |
@@ -313,6 +314,7 @@ La solución se organiza en las **ocho capas de existencia obligatoria** del num
 - **Sin lógica de negocio:** las apps de campo mantienen **foto local de datos de lectura** (stock, precios, crédito, rutas) y **captura local de eventos** (pedidos, POD, firmas); las **reglas** (crédito, promociones, FEFO, secuenciación térmica) se evalúan siempre en la Capa 4.
 - **Escritura idempotente:** todo evento generado offline lleva **UUID** y se envía por Gateway con deduplicación en el servidor (RT-02.06, RF-03.17).
 - **Sin acceso directo a datos:** ninguna interfaz se conecta a la Capa 6; todo consumo es por API vía Capa 3.
+- **Superficies web (back-office y bodega)** — no son apps instaladas: son **SPA Angular en el navegador**, servidas **por la nube** (`web` Fargate y QuickSight N-10) y accesibles por **intranet/VPN** (nunca por la DMZ pública). El **Portal WMS** (bodega M1/M2/M5) se sirve por la misma task `web` y se consume desde las estaciones de trabajo de los CD; las consolas de planificación (M4), calidad (M9), gerencia (M10, QuickSight) y administración TI (Django admin) conforman el **back-office web**, cada una con su BD (§10.2). Correlacionado 1:1 con la física Consolidada §3.8.
 
 ### 5.3 Frameworks (justificación en §13)
 
@@ -1603,7 +1605,7 @@ flowchart TB
 
 | Documento | Rol |
 |---|---|
-| **`Arquitectura_Logica_v6-1.md` (este)** | **Documento unificado de la capa lógica v6.2** — referencia de lectura única. Incorpora la **alineación íntegra lógica ↔ física del 2026-09-06** (D13, D14, D15, S31, N1 actualizada). Fuentes previas: 00→08 + auditoría T-7/T-21/T-22 + cierre de RT de las BTT + resolución de la auditoría v3 + resolución de la auditoría BA v4 (H1) + alineación con la física v5.1 (A1/A2) + auditoría BA lógica v5.5 (H1–H3) + **serie de tiempo a OLAP por diseño (D2)** + **unificación TPS con la física** (v5.5.1: ~35 base / ~105 ráfaga 35×3 / ≤130 transitorio)) |
+| **`Arquitectura_Logica_v6-2.md` (este)** | **Documento unificado de la capa lógica v6.2** — referencia de lectura única. Incorpora la **alineación íntegra lógica ↔ física del 2026-09-06** (D13, D14, D15, S31, N1 actualizada). Fuentes previas: 00→08 + auditoría T-7/T-21/T-22 + cierre de RT de las BTT + resolución de la auditoría v3 + resolución de la auditoría BA v4 (H1) + alineación con la física v5.1 (A1/A2) + auditoría BA lógica v5.5 (H1–H3) + **serie de tiempo a OLAP por diseño (D2)** + **unificación TPS con la física** (v5.5.1: ~35 base / ~105 ráfaga 35×3 / ≤130 transitorio)) |
 | `Arquitectura_Logica_v5.5.md` | Unificado v5.5 (00→08 + cierre de RT de las BTT + resolución de la auditoría v3 + auditoría BA v4 + alineación con la física v5.1 (A1/A2) + auditoría BA lógica H1–H3) — **superado por v6.1**, conservado para trazabilidad |
 | `Arquitectura_Logica_v5.md` | Unificado v5 (00→08 + cierre de RT de las BTT + resolución de la auditoría v3 + auditoría BA v4) — **superado por v5.5**, conservado para trazabilidad |
 | `Arquitectura_Logica_v4.md` | Unificado v4 (00→08 + cierre de RT de las BTT) — **superado por v5**, conservado para trazabilidad |
@@ -1630,14 +1632,14 @@ flowchart TB
 - [x] RTO/RPO (S27): **confirmado en v4 — RPO ≤ 15 min · RTO ≤ 4 h** (§8.7; Art. 20 / RT-07.04).
 - [x] Contratos de la API de negocio (S28): **cerrado en v4** — OpenAPI 3.1 / AsyncAPI 2.6 por módulo, dueño, semver y obsolescencia 6 meses (§9.6); matriz formal con la trazabilidad del Cap. 17.1.
 - [x] WMS 2013 (S29): **decisión tomada en v4** — absorción en M2/M5 fundada (§9.6); no requiere consulta al mandante (Cap. 19 delega al PROPONENTE).
-- [x] **Promoción a v6 (2026-09-05) y renombrado a v6.1:** archivo `Arquitectura_Logica_v6-1.md`; consolida la actualización D2 (serie de tiempo a **OLAP por diseño**) y la unificación TPS con la física (v5.5.1). Sin cambios de contenido; tabla §20 y encabezado actualizados.
+- [x] **Promoción a v6 (2026-09-05) y renombrado a v6.1:** archivo `Arquitectura_Logica_v6-2.md`; consolida la actualización D2 (serie de tiempo a **OLAP por diseño**) y la unificación TPS con la física (v5.5.1). Sin cambios de contenido; tabla §20 y encabezado actualizados.
 - [ ] Plan de gestión del cambio de telemetría con el sindicato (S30).
 - [ ] Pasar a PDF (texto) + XLSX (tablas) si se requiere formato derivado.
 
 ---
 
 *Documento unificado de la capa lógica **v6.1** — 2026-09-05 · Supera a `Arquitectura_Logica_v5.5.md`; incorpora la alineación con la arquitectura física (v5.1, A1/A2), la serie de tiempo a **OLAP por diseño** (D2) y la unificación TPS con la física (v5.5.1). Ver auditorías.*
-*Actualización 2026-09-05: set completo de 13 diagramas (§18) — fuente canónica Mermaid en este documento; exportados a `Diagramas/` para el informe (AGENTS). Promoción a **v6.1** (archivo `Arquitectura_Logica_v6-1.md`) sin cambios de contenido.*
+*Actualización 2026-09-05: set completo de 13 diagramas (§18) — fuente canónica Mermaid en este documento; exportados a `Diagramas/` para el informe (AGENTS). Promoción a **v6.1** (archivo `Arquitectura_Logica_v6-2.md`) sin cambios de contenido.*
 
 ---
 

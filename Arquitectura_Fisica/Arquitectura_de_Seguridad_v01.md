@@ -10,7 +10,7 @@
 | Estado | En revisión interna |
 | Autor | Encargado de Seguridad de la Información (LafroX), con el Arquitecto de Solución |
 | Marco | BA Art. 21 (seguridad y ciberseguridad) · Art. 22 (identidad, acceso y sesiones) · Art. 23 (datos y residencia) · Art. 16.3/16.4 · BTT Cap. 11 (RT-11.01–11.28), Cap. 12 (RT-12.01–12.13), RT-03.15/03.18/03.22, RT-16.07/16.09 · NIST SP 800-207 · ISO/IEC 27001:2022 · STRIDE · Ley 21.719 · Ley 19.799 |
-| Fuentes | `Arquitectura_Logica_v6-1.md` (§11 Capa 7), `Propuesta_Arquitectura_Cloud_Caso02_CLAUDE_v2.md` v3.6 (§5, §7.9, §7.10), `Dimensionamiento_Infraestructura_OnPremise_v05.md` (PARTE 8 y PARTE 9), `Arquitectura_Fisica_Hibrida_Consolidada_Caso02_v02.md` (§6), `Sala_Servidores_OnPremise_v02.md` (§4), `Registro_Decisiones_Arquitectura_ADR_v01.md` (ADR-03/06/07) |
+| Fuentes | `Arquitectura_Logica_v6-2.md` (§11 Capa 7), `Propuesta_Arquitectura_Cloud_Caso02_CLAUDE_v2.md` v3.6 (§5, §7.9, §7.10), `Dimensionamiento_Infraestructura_OnPremise_v05.md` (PARTE 8 y PARTE 9), `Arquitectura_Fisica_Hibrida_Consolidada_Caso02_v02.md` (§6), `Sala_Servidores_OnPremise_v02.md` (§4), `Registro_Decisiones_Arquitectura_ADR_v01.md` (ADR-03/06/07) |
 
 > **Finalidad.** Este documento responde el apartado 4 del Subdocumento 4 — **Arquitectura de seguridad: modelo Zero Trust, capa expuesta, identidad, cifrado y controles** — y constituye la **vista de seguridad** (ISO/IEC/IEEE 42010, RT-02.03) de la arquitectura híbrida.
 >
@@ -266,7 +266,7 @@ El caso lo declara exigible para cuatro conjuntos de datos. Aplicación declarad
 
 > **SEC-01 — resuelta y aplicada (2026-09-06).** Se adoptó la alternativa (A): **Secrets Manager + SSM Parameter Store**, formalizada en **ADR-15** y en **D13** de la arquitectura lógica v6.2, y propagada a §11, §11.6, §9.6 y §13 de la lógica, a **N-12** de la tabla de emplazamiento y a la línea **B12** del T-11. El texto original de la decisión se conserva a continuación como fundamento.
 >
-> *(Planteamiento original.)* `Arquitectura_Logica_v6-1.md` declara **HashiCorp Vault on-premise** como gestor de secretos de la Capa 7, pero Vault **no tiene emplazamiento físico**: no figura en las 10 máquinas virtuales del dimensionamiento on-premise, ni en el inventario del consolidado físico, ni en la tabla de emplazamiento, ni en el T-11. Alternativas evaluadas: **(A)** eliminar Vault y usar Secrets Manager/SSM con consumo saliente —menor superficie, servicio administrado (Art. 16.3), sin carga para un equipo de 4 personas, sin nueva máquina virtual ni licencia—; **(B)** incorporar una máquina virtual Vault en Talca con su alta disponibilidad, respaldo, sellado y costo, y declararla en el T-11 y en el dimensionamiento. **Este documento adopta la alternativa (A)**; si LafroX ratifica, debe corregirse `Arquitectura_Logica_v6-1.md` §11, §11.6, §9.6 y §13. Si se prefiere (B), debe incorporarse el componente a la arquitectura física, al T-11 y al dimensionamiento. **No es admisible dejarlo como está**: un componente de seguridad sin emplazamiento incumple el Art. 16.2.
+> *(Planteamiento original.)* `Arquitectura_Logica_v6-2.md` declara **HashiCorp Vault on-premise** como gestor de secretos de la Capa 7, pero Vault **no tiene emplazamiento físico**: no figura en las 10 máquinas virtuales del dimensionamiento on-premise, ni en el inventario del consolidado físico, ni en la tabla de emplazamiento, ni en el T-11. Alternativas evaluadas: **(A)** eliminar Vault y usar Secrets Manager/SSM con consumo saliente —menor superficie, servicio administrado (Art. 16.3), sin carga para un equipo de 4 personas, sin nueva máquina virtual ni licencia—; **(B)** incorporar una máquina virtual Vault en Talca con su alta disponibilidad, respaldo, sellado y costo, y declararla en el T-11 y en el dimensionamiento. **Este documento adopta la alternativa (A)**; si LafroX ratifica, debe corregirse `Arquitectura_Logica_v6-2.md` §11, §11.6, §9.6 y §13. Si se prefiere (B), debe incorporarse el componente a la arquitectura física, al T-11 y al dimensionamiento. **No es admisible dejarlo como está**: un componente de seguridad sin emplazamiento incumple el Art. 16.2.
 
 ---
 
@@ -497,7 +497,7 @@ La seguridad física del sitio primario se detalla en `Sala_Servidores_OnPremise
 
 ## Referencias
 
-1. `Arquitectura_Logica_v6-1.md` — Capa 7 (§11 a §11.8), Capa 8 (§12).
+1. `Arquitectura_Logica_v6-2.md` — Capa 7 (§11 a §11.8), Capa 8 (§12).
 2. `Propuesta_Arquitectura_Cloud_Caso02_CLAUDE_v2.md` v3.6 — §5 (seguridad, identidad y cumplimiento), §5.6 (declaraciones específicas), §7.9 y §7.10.
 3. `Dimensionamiento_Infraestructura_OnPremise_v05.md` — PARTE 8 (seguridad on-premise) y PARTE 9 (identidad, accesos y observabilidad).
 4. `Arquitectura_Fisica_Hibrida_Consolidada_Caso02_v02.md` — §6 (identidad y seguridad unificadas), D-AL-01, D-AL-02, D-AL-05, D-AL-07, D-AL-13.

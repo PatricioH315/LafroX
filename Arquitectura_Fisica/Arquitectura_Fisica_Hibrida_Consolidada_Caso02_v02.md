@@ -385,7 +385,7 @@ flowchart LR
 | `Dimensionamiento_Infraestructura_OnPremise_v05.md` | v05 | Dominio on-premise, dimensionamiento y flujos (fuente) |
 | `Tabla_Emplazamiento_OnPremise_v06.md` | v06 | Emplazamiento A-01…F-03, Modelo B de identidad (fuente) |
 | `Sala_Servidores_OnPremise_v02.md` | v02 | Sala Técnica Secundaria (Talca) y Gabinete Borde (Concepción) |
-| `Arquitectura_Logica_v6-1.md` | **v6.2** | **Arquitectura lógica vigente** — 8 capas, módulos M1–M12, límites de contexto, stack y decisiones D1–D15 (D6 Keycloak Modelo B, D13 secretos, D14 observabilidad, D15 MDM) |
+| `Arquitectura_Logica_v6-2.md` | **v6.2** | **Arquitectura lógica vigente** — 8 capas, módulos M1–M12, límites de contexto, stack y decisiones D1–D15 (D6 Keycloak Modelo B, D13 secretos, D14 observabilidad, D15 MDM) |
 | `Arquitectura_de_Integracion_v01.md` | v01 | Vista de integración — catálogo de 15 integraciones, contratos, mensajería, versionado y gobierno (Subdoc 4, apartado 3) |
 | `Arquitectura_de_Seguridad_v01.md` | v01 | Vista de seguridad — Zero Trust, capa expuesta, identidad, cifrado, controles y residencia de datos (Subdoc 4, apartado 4) |
 | `Arquitectura_de_Despliegue_v01.md` | v01 | Vista de despliegue — ambientes, redes, HA, DRP y respaldos (Subdoc 4, apartado 5) |

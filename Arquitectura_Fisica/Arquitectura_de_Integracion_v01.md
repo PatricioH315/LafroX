@@ -10,7 +10,7 @@
 | Estado | En revisión interna |
 | Autor | Arquitecto de Solución (LafroX) |
 | Marco | BA Art. 16.4 (bitácora de reconciliación) · Art. 19 (acoplamiento débil) · Art. 21 (Zero Trust) · Art. 23 (OpenAPI/AsyncAPI, versionado y obsolescencia) · BTT RT-02.06–02.09/02.14 · RT-03.11/03.12/03.13 · RT-05.16–05.23 · RT-10.08 |
-| Fuentes | `Arquitectura_Logica_v6-1.md` (§8.4, §9.1–§9.8), `Arquitectura_Fisica_Hibrida_Consolidada_Caso02_v02.md` (§5, costuras C1–C16), `Tabla_Emplazamiento_OnPremise_v06.md` (A-03/A-04, N-08/N-09), `Propuesta_Arquitectura_Cloud_Caso02_CLAUDE_v2.md` v3.6, `Registro_Decisiones_Arquitectura_ADR_v01.md` (ADR-05/08/11) |
+| Fuentes | `Arquitectura_Logica_v6-2.md` (§8.4, §9.1–§9.8), `Arquitectura_Fisica_Hibrida_Consolidada_Caso02_v02.md` (§5, costuras C1–C16), `Tabla_Emplazamiento_OnPremise_v06.md` (A-03/A-04, N-08/N-09), `Propuesta_Arquitectura_Cloud_Caso02_CLAUDE_v2.md` v3.6, `Registro_Decisiones_Arquitectura_ADR_v01.md` (ADR-05/08/11) |
 
 > **Finalidad.** Este documento responde el apartado 3 del Subdocumento 4 — **Arquitectura de integración: servicios, contratos, mensajería, versionado y gobierno** — y constituye la **vista de integración** (ISO/IEC/IEEE 42010, RT-02.03) de la arquitectura híbrida. No introduce cifras nuevas: consolida en una sola vista lo declarado en la Arquitectura Lógica v6.1 (Capa 5) y en las costuras C1–C16 de la fuente física única.
 >
@@ -254,7 +254,7 @@ La vista de integración y la vista física describen los mismos puntos de conta
 
 ## 11. Funciones que no operan sin conexión (RT-03.13)
 
-La declaración formal que exige RT-03.13 vive en `Tabla_Emplazamiento_OnPremise_v06.md` §1.1 y en `Arquitectura_Logica_v6-1.md` §9.5. Desde la vista de integración la regla es una sola:
+La declaración formal que exige RT-03.13 vive en `Tabla_Emplazamiento_OnPremise_v06.md` §1.1 y en `Arquitectura_Logica_v6-2.md` §9.5. Desde la vista de integración la regla es una sola:
 
 > **Lo transaccional crítico de terreno y de bodega opera sin conexión (14 h en terreno, 24 h en el centro de distribución). Lo que depende de la nube o de un tercero degrada con procedimiento manual declarado y sin pérdida de datos.**
 
@@ -303,7 +303,7 @@ Ninguna función de la ventana crítica de despacho (05:30–07:00) depende de u
 
 ## Referencias
 
-1. `Arquitectura_Logica_v6-1.md` — Capa 5 (§9.1–§9.8), límites de contexto (§8.4), modelo de dominio (§8.6).
+1. `Arquitectura_Logica_v6-2.md` — Capa 5 (§9.1–§9.8), límites de contexto (§8.4), modelo de dominio (§8.6).
 2. `Arquitectura_Fisica_Hibrida_Consolidada_Caso02_v02.md` — costuras C1–C16 (§5) y topología (§4).
 3. `Tabla_Emplazamiento_OnPremise_v06.md` — A-03 (broker), A-04 (ACL), N-08 y N-09 (IoT y mensajería en nube), §1.1 (funciones sin conexión).
 4. `Propuesta_Arquitectura_Cloud_Caso02_CLAUDE_v2.md` v3.6 — §3 (cómputo y colas) y §7 (matriz de justificación).

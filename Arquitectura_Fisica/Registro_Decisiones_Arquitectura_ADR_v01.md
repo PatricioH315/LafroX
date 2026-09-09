@@ -10,7 +10,7 @@
 | Fecha | 2026-09-05 · **actualizado 2026-09-06** |
 | Autor | Arquitecto de Solución (LafroX) |
 | Marco de referencia | TOGAF · ISO/IEC/IEEE 42010 (RT-02.03) · Arquitecturas limpias |
-| Documentos de origen | **`Arquitectura_Logica_v6-1.md` v6.2 (decisiones D1–D15)**, `Requerimientos/decisiones.md` (40 decisiones), `Tabla_Emplazamiento_OnPremise_v06.md`, `Propuesta_Arquitectura_Cloud_Caso02_CLAUDE_v2.md` (v3.6), `Arquitectura_Fisica_Hibrida_Consolidada_Caso02_v02.md`, `Dimensionamiento_Infraestructura_OnPremise_v05.md` |
+| Documentos de origen | **`Arquitectura_Logica_v6-2.md` v6.2 (decisiones D1–D15)**, `Requerimientos/decisiones.md` (40 decisiones), `Tabla_Emplazamiento_OnPremise_v06.md`, `Propuesta_Arquitectura_Cloud_Caso02_CLAUDE_v2.md` (v3.6), `Arquitectura_Fisica_Hibrida_Consolidada_Caso02_v02.md`, `Dimensionamiento_Infraestructura_OnPremise_v05.md` |
 
 > **Cambios v01 → v02 (2026-09-06, cierre de la auditoría del Subdocumento 4).** (1) Se corrigen las cinco menciones a **Kong** en ADR-01, ADR-06 y ADR-11: la puerta de enlace decidida es **Amazon API Gateway** (D8, actualizada el 2026-09-05 para alinearse con la vista física). (2) Se incorporan **ADR-13 (puerta de enlace de servicios)**, **ADR-14 (plataforma de observabilidad)** y **ADR-15 (gestión de secretos)**, que existían como decisiones lógicas sin ADR propio, incumpliendo el apartado 7 del Subdocumento 4 y RT-02.04. (3) Se reapunta el documento de origen a la lógica vigente **v6.2** (antes citaba `Arquitectura_Logica_v2.md`, inexistente).
 | Empresa proponente | *Pendiente de definir (nomenclatura Art. 43.3)* |
@@ -625,7 +625,7 @@ La solución necesita custodiar secretos de peso: credenciales del ERP de 2017, 
 1. Bases Administrativas (TFEP-01/2026) — Art. 16 (híbrido), Art. 20 (DR), Art. 21–22 (seguridad/MFA).
 2. Bases Técnicas Transversales — RT-02.xx, RT-03.xx, RT-05.xx, RT-07.xx, RT-09.xx, RT-10.xx, RT-12.xx, RT-13.xx, RT-16.xx.
 3. Caso 02 Logística — Cap. 6, 9, 10, 14.2, 15, 16.1 (40 decisiones), 16.2 (materias a investigar), 17, 18.
-4. `Arquitectura_Logica_v6-1.md` **v6.2** — decisiones **D1–D15** (vigentes 2026-09-06).
+4. `Arquitectura_Logica_v6-2.md` **v6.2** — decisiones **D1–D15** (vigentes 2026-09-06).
 5. `Requerimientos/decisiones.md` — Registro de decisiones del caso (N° 1–40).
 6. `Tabla_Emplazamiento_OnPremise_v06.md` (v07) — Sección 1.0 tabla maestra, Bloques A–F y N, Sección 4 dispositivos.
 7. `Propuesta_Arquitectura_Cloud_Caso02_CLAUDE_v2.md` (v3.6) — dimensionamiento, costos, justificaciones Art. 16 (matriz §7.1).
