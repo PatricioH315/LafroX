@@ -299,10 +299,11 @@ La solución se organiza en las **ocho capas de existencia obligatoria** del num
 |---|---|---|
 | **App Preventa** (móvil offline) | Preventista | Pedidos, stock, crédito, promos, sincronización diferida (RF-03.x) |
 | **App Reparto** (móvil offline) | Conductores propios y externos | Entregas, POD, QR, firma, cobranza, envases, devoluciones (RF-06.x, RF-08.x) |
+| **Portal WMS (bodega)** | Preparador / Jefe de TI | Operación de bodega: recepción, inventario, preparación/picking — **web interna** (M1/M2/M5, BD_INVENTARIO + BD_PREPARACION; sirve estaciones de trabajo en CD) |
 | **Consola/estación de planificación** | Planificador de rutas | Secuenciación y modificación de rutas (RF-04) |
 | **Consola de calidad** | Jefa de calidad | Trazabilidad, sensores, excursiones térmicas (RF-09) |
 | **Tableros BI / consola de gerencia** | Gerente comercial y de finanzas | OTIF, costo de servir, ocupación de flota (RF-11) |
-| **Portal de Administración TI** | Jefe de TI | Configuración topológica, usuarios, parámetros (RF-02.01) |
+| **Portal de Administración TI** | Jefe de TI | Administración de la plataforma: usuarios, roles y parámetros (transversal) |
 | **Portal de Clientes** | Canal tradicional y moderno | Estado de cuenta, entregas, documentos tributarios, autoservicio (RF-12.15–12.18) |
 | **Portal Público (catálogo)** | Usuario no autenticado | Catálogo consultable sin login (RF-12.14) |
 | **Portal de Transportistas** | Empresa transportista / conductores externos | Rutas asignadas, documentación, confirmación (RF-12.19–12.21) |
@@ -313,6 +314,7 @@ La solución se organiza en las **ocho capas de existencia obligatoria** del num
 - **Sin lógica de negocio:** las apps de campo mantienen **foto local de datos de lectura** (stock, precios, crédito, rutas) y **captura local de eventos** (pedidos, POD, firmas); las **reglas** (crédito, promociones, FEFO, secuenciación térmica) se evalúan siempre en la Capa 4.
 - **Escritura idempotente:** todo evento generado offline lleva **UUID** y se envía por Gateway con deduplicación en el servidor (RT-02.06, RF-03.17).
 - **Sin acceso directo a datos:** ninguna interfaz se conecta a la Capa 6; todo consumo es por API vía Capa 3.
+- **Superficies web (back-office y bodega)** — no son apps instaladas: son **SPA Angular en el navegador**, servidas **por la nube** (`web` Fargate y QuickSight N-10) y accesibles por **intranet/VPN** (nunca por la DMZ pública). El **Portal WMS** (bodega M1/M2/M5) se sirve por la misma task `web` y se consume desde las estaciones de trabajo de los CD; las consolas de planificación (M4), calidad (M9), gerencia (M10, QuickSight) y administración TI (Django admin) conforman el **back-office web**, cada una con su BD (§10.2). Correlacionado 1:1 con la física Consolidada §3.8.
 
 ### 5.3 Frameworks (justificación en §13)
 
