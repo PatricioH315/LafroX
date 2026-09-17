@@ -1,59 +1,122 @@
 %% ============================================================================
-%%  lafrox-portada.tex -- Portada corporativa LafroX, variante "banda diagonal"
+%%  lafrox-portada.tex -- Caratula de oferta LafroX, variante "banda de cabecera"
 %%
 %%  Se carga automaticamente desde lafrox.cls. Define:
-%%      \portadalafrox      portada completa a sangre (folio 1)
+%%      \portadalafrox        caratula completa (folio 1)
 %%      \contraportadalafrox  cierre opcional con el equipo y la declaracion
 %%
-%%  Toda la geometria esta parametrizada al final del archivo: para mover la
-%%  diagonal basta cambiar \LFXbandaAlto, \LFXbandaCimaX y \LFXbandaBaseX.
+%%  QUE CAMBIO EN LA v2.2 Y POR QUE
+%%  -------------------------------
+%%  Hasta la v2.1 la portada era una cuna diagonal a sangre que recorria la
+%%  pagina completa y sobre la cual iba TODO el texto en negativo. Se veia
+%%  bien, pero fallaba como caratula de licitacion por tres razones:
+%%
+%%   1. Jerarquia invertida. Los 38 pt se los llevaba "PROPUESTA TECNICA"
+%%      --la etiqueta mas generica posible, todos los oferentes entregan
+%%      una-- y el identificador de la licitacion iba en 9,5 pt gris. La
+%%      caratula es un instrumento de IDENTIFICACION, no una tapa de marca:
+%%      manda el numero de licitacion, el objeto, el sobre y el proponente.
+%%
+%%   2. No se puede firmar sobre tinta casi negra. El Art. 40.2 exige firma
+%%      COMPLETA en la caratula, y el Sobre N. 1 se entrega fisico, foliado
+%%      y firmado. Una firma de lapiz sobre #141414 es ilegible. Por eso el
+%%      tercio inferior de la pagina queda ahora en blanco, sin excepcion:
+%%      es zona de firma y de folio, no zona de arte.
+%%
+%%   3. El folio dependia de la geometria del arte. Iba en blanco sobre la
+%%      diagonal exterior, que alcanzaba el margen derecho por 0,02 de ancho
+%%      de papel. La falta de foliacion es causal de EXCLUSION (Art. 40.1):
+%%      no puede depender de un parametro de diseno.
+%%
+%%  La banda diagonal se conserva, pero como cabecera: mismo lenguaje visual
+%%  (diagonal, escalones de gris, monocroma estricta), una fraccion del area.
+%%
+%%  BLOQUE DEL ART. 49.1
+%%  --------------------
+%%  Las Bases fijan literalmente lo que debe leerse en la caratula:
+%%      LICITACION N. TFEP-01/2026
+%%      Proyecto de Plataforma Digital de Mision Critica -- Caso [N. y nombre]
+%%      SOBRE N. x: [contenido]
+%%      [Nombre del Proponente]
+%%      [Nombre del Representante Legal]
+%%      [Correo electronico y telefono del Representante]
+%%  Los seis elementos estan abajo, en ese orden. Si se quita uno, la
+%%  caratula deja de cumplir. Las claves que los alimentan (objeto, sobre,
+%%  correo, telefono) se definen en lafrox.cls seccion 6.
+%%
+%%  Monocroma estricta. Ningun matiz: negro, grises neutros y blanco.
 %% ============================================================================
 
-% ---- Parametros de la banda (fracciones del papel) -------------------------
-\def\LFXbandaAlto{0.575}     % altura de la banda
-\def\LFXbandaCimaX{0.34}     % ancho de la banda en el borde superior
-\def\LFXbandaBaseX{0.82}     % ancho de la banda en su borde inferior
+% ---- Parametros de la banda de cabecera (fracciones del papel) -------------
+%  La banda cruza el ancho completo y su borde inferior es diagonal: mas baja
+%  a la derecha que a la izquierda. Para abrir o cerrar la diagonal basta
+%  cambiar estos dos valores.
+%
+%  NO subir \LFXbandaIzqY por encima de ~0.19: el bloque de identificacion
+%  empieza en 0.228 y se montaria sobre los escalones de gris.
+\def\LFXbandaIzqY{0.150}    % altura de la banda en el borde izquierdo
+\def\LFXbandaDerY{0.088}    % altura de la banda en el borde derecho
 
 % ---- Utilidades de posicionamiento ----------------------------------------
 %  \LFXen{fraccion x}{fraccion y}  -> coordenada respecto del vertice sup. izq.
 %  Las llaves y el * son indispensables: sin ellas, una expresion como
-%  0.34+0.095 se lee como "0.34 pt mas 0.095 anchos de papel".
+%  0.17+0.013 se lee como "0.17 pt mas 0.013 anchos de papel".
 \newcommand{\LFXen}[2]{%
   ([xshift={(#1)*\paperwidth},yshift={-(#2)*\paperheight}]current page.north west)}
 
 % ---- Reticula horizontal de la portada ------------------------------------
 %  \LFXmi y \LFXmd son las fracciones de papel que corresponden a los
 %  margenes REALES del bloque de texto. Se calculan, no se escriben a mano:
-%  asi el titulo, la reticula de datos y el pie academico de la portada caen
-%  exactamente sobre los mismos margenes que cualquier pagina de contenido, y
-%  siguen cayendo ahi si manana se cambia \geometry.
+%  asi la caratula cae exactamente sobre los mismos margenes que cualquier
+%  pagina de contenido, y sigue cayendo ahi si manana se cambia \geometry.
 %
-%  La banda diagonal NO usa estas fracciones: es arte a sangre y va de borde
-%  a borde a proposito.
-%  \LFXmc es el inicio de la segunda columna de la reticula de datos, y
-%  \LFXcolportada su ancho: dos columnas de 0,46 del bloque de texto con un
-%  canal de 0,08 entre ellas. Antes eran 0,375 del ANCHO DE PAPEL cada una,
-%  que sumadas se salian del margen derecho.
-\newcommand{\LFXcolportada}{0.46\textwidth}
+%  La banda NO usa estas fracciones: es arte a sangre y va de borde a borde a
+%  proposito.
 \newcommand{\LFXcalcularmargenes}{%
   \pgfmathsetmacro{\LFXmi}{(1in+\oddsidemargin+\hoffset)/\paperwidth}%
   \pgfmathsetmacro{\LFXmd}{(1in+\oddsidemargin+\hoffset+\textwidth)/\paperwidth}%
-  \pgfmathsetmacro{\LFXmc}{(1in+\oddsidemargin+\hoffset+0.54*\textwidth)/\paperwidth}%
 }
 
-% ---- Marca: archivo de logo si existe, monograma tipografico si no --------
+% ---- Estado del documento, derivado de la opcion de clase ------------------
+%  Va en el bloque de control documental y repetido en la banda. Un documento
+%  de licitacion declara de si mismo en que estado esta; eso es justamente lo
+%  que lo hace parecer --y ser-- un documento de licitacion.
+\ifLFX@borrador
+  \newcommand{\LFXestadodoc}{Borrador de trabajo}
+\else
+  \newcommand{\LFXestadodoc}{Versión final para entrega}
+\fi
+
+% ---- Marca en negativo: va dentro de la banda oscura -----------------------
+%  ATENCION: si se define la clave \LFXlogo, el archivo debe ser una version
+%  en NEGATIVO (trazo claro). Un logo normal, de trazo oscuro, desaparece
+%  sobre la banda.
 \newcommand{\LFXmarcaportada}{%
   \ifx\LFXlogo\@empty
     \begin{tikzpicture}[baseline=0pt]
       \node[anchor=west,inner sep=0pt] (mono) at (0,0)
-        {\lafroxmonograma[11mm]};
+        {\lafroxmonogramaneg[11mm]};
       \node[anchor=west,inner sep=0pt,align=left] at ([xshift=3.4mm]mono.east)
         {\sffamily\bfseries\fontsize{17pt}{17pt}\selectfont
-         \color{lafroxVioleta}\LFXempresa};
+         \color{white}\LFXempresa};
     \end{tikzpicture}%
   \else
     \includegraphics[height=13mm]{\LFXlogo}%
   \fi}
+
+% ---- Campo rotulado: rotulo pequeno arriba, valor debajo -------------------
+%  Es la unidad de composicion de los bloques de identificacion y de control.
+%  \begin{tabular}[t] y no minipage: una minipage de ancho natural no existe,
+%  y aqui los campos se reparten con \hfill segun su ancho real.
+\newcommand{\LFXcampoportada}[2]{%
+  \begin{tabular}[t]{@{}l@{}}
+    {\color{lafroxGris}\LFXrotulo{#1}}\\[4pt]
+    {\fontsize{10pt}{13.5pt}\selectfont\color{lafroxTinta}#2}
+  \end{tabular}}
+
+% ---- Filete separador de ancho de caja -------------------------------------
+\newcommand{\LFXfileteportada}[1]{%
+  \draw[lafroxLinea,line width=0.5pt] \LFXen{\LFXmi}{#1} -- \LFXen{\LFXmd}{#1};}
 
 % ============================================================================
 %  \portadalafrox
@@ -66,95 +129,149 @@
   \null
   \begin{tikzpicture}[remember picture,overlay]
 
-    % --- Fondo -------------------------------------------------------------
-    \fill[lafroxBg]
-      (current page.south west) rectangle (current page.north east);
+    % --- Banda de cabecera -------------------------------------------------
+    %  El resto del papel queda en blanco a proposito. No agregar fondo
+    %  \lafroxBg: el bloque de firma tiene que quedar sobre papel limpio.
+    \fill[lafroxBanda]
+      \LFXen{0}{0}              --
+      \LFXen{1}{0}              --
+      \LFXen{1}{\LFXbandaDerY}  --
+      \LFXen{0}{\LFXbandaIzqY}  -- cycle;
 
-    % --- Diagonales de profundidad (detras de la banda principal) ----------
-    \fill[lafroxAcento]
-      \LFXen{\LFXbandaCimaX+0.105}{0}      --
-      \LFXen{\LFXbandaCimaX+0.135}{0}      --
-      \LFXen{\LFXbandaBaseX+0.135}{\LFXbandaAlto} --
-      \LFXen{\LFXbandaBaseX+0.105}{\LFXbandaAlto} -- cycle;
-    \fill[lafroxAzul]
-      \LFXen{\LFXbandaCimaX}{0}            --
-      \LFXen{\LFXbandaCimaX+0.095}{0}      --
-      \LFXen{\LFXbandaBaseX+0.095}{\LFXbandaAlto} --
-      \LFXen{\LFXbandaBaseX}{\LFXbandaAlto} -- cycle;
+    % --- Escalones de gris que acompanan el filo de la banda ---------------
+    \fill[lafroxBandaB]
+      \LFXen{0}{\LFXbandaIzqY}        --
+      \LFXen{1}{\LFXbandaDerY}        --
+      \LFXen{1}{\LFXbandaDerY+0.013}  --
+      \LFXen{0}{\LFXbandaIzqY+0.013}  -- cycle;
+    \fill[lafroxBandaC]
+      \LFXen{0}{\LFXbandaIzqY+0.022}  --
+      \LFXen{1}{\LFXbandaDerY+0.022}  --
+      \LFXen{1}{\LFXbandaDerY+0.028}  --
+      \LFXen{0}{\LFXbandaIzqY+0.028}  -- cycle;
 
-    % --- Banda principal ---------------------------------------------------
-    \fill[lafroxVioleta]
-      \LFXen{0}{0}                          --
-      \LFXen{\LFXbandaCimaX}{0}             --
-      \LFXen{\LFXbandaBaseX}{\LFXbandaAlto} --
-      \LFXen{0}{\LFXbandaAlto}              -- cycle;
-
-    % --- Marca, arriba a la derecha sobre el fondo claro -------------------
-    \node[anchor=north east,inner sep=0pt] at \LFXen{\LFXmd}{0.072}
+    % --- Marca y estado, dentro de la banda --------------------------------
+    \node[anchor=north west,inner sep=0pt] at \LFXen{\LFXmi}{0.050}
       {\LFXmarcaportada};
-    \node[anchor=north east,inner sep=0pt] at \LFXen{\LFXmd}{0.140}
-      {\sffamily\fontsize{9pt}{11pt}\selectfont\color{lafroxGris}\LFXcaso};
+    \node[anchor=north east,inner sep=0pt] at \LFXen{\LFXmd}{0.056}
+      {\color{lafroxSobre}\LFXrotulo{\LFXestadodoc}};
 
-    % --- Titulo en negativo, dentro de la banda ----------------------------
-    %  Dos nodos y no uno con \\: dentro de un nodo TikZ el salto de linea
-    %  reinicia el tamano de fuente y la segunda linea sale minuscula.
-    \node[anchor=north west,inner sep=0pt] at \LFXen{\LFXmi}{0.250}
-      {\sffamily\bfseries\fontsize{9.5pt}{12pt}\selectfont
-       \color{lafroxAcento}\LFXlicitacion};
+    % ======================================================================
+    %  1-3. Licitacion, objeto y caso  (Art. 49.1, lineas 1 y 2)
+    %  Aqui manda el identificador del proceso: es el dato con el que el
+    %  evaluador ordena las ofertas sobre el escritorio.
+    % ======================================================================
+    \node[anchor=north west,inner sep=0pt] at \LFXen{\LFXmi}{0.228}
+      {\color{lafroxGris}\LFXrotulo{Licitación pública}};
+    \node[anchor=north west,inner sep=0pt] at \LFXen{\LFXmi}{0.248}
+      {\sffamily\bfseries\fontsize{21pt}{25pt}\selectfont
+       \color{lafroxFuerte}\LFXlicitacion};
+    \node[anchor=north west,inner sep=0pt] at \LFXen{\LFXmi}{0.296}
+      {\sffamily\fontsize{12.5pt}{16pt}\selectfont
+       \color{lafroxTinta}\LFXobjeto};
+    \node[anchor=north west,inner sep=0pt] at \LFXen{\LFXmi}{0.322}
+      {\sffamily\fontsize{10.5pt}{14pt}\selectfont
+       \color{lafroxGris}\LFXcaso};
 
-    \node[anchor=north west,inner sep=0pt] at \LFXen{\LFXmi}{0.295}
-      {\sffamily\bfseries\fontsize{38pt}{38pt}\selectfont\color{white}
-       PROPUESTA};
-    \node[anchor=north west,inner sep=0pt] at \LFXen{\LFXmi}{0.360}
-      {\sffamily\bfseries\fontsize{38pt}{38pt}\selectfont\color{white}
-       TÉCNICA};
+    \LFXfileteportada{0.356}
 
-    \draw[lafroxAcento,line width=3pt]
-      \LFXen{\LFXmi}{0.455} -- \LFXen{\LFXmi+0.13}{0.455};
+    % ======================================================================
+    %  4. Sobre y documento  (Art. 49.1, linea 3)
+    %  El sello del sobre va en negativo: es el unico elemento de la mitad
+    %  inferior con tinta plena, y marca de que pieza de la oferta se trata.
+    % ======================================================================
+    \node[anchor=north west,inner xsep=8pt,inner ysep=6pt,fill=lafroxBanda]
+      at \LFXen{\LFXmi}{0.376}
+      {\fontsize{8.5pt}{10pt}\selectfont
+       \addfontfeature{LetterSpace=12}\intermedium
+       \color{white}\LFXsobre};
 
-    \node[anchor=north west,inner sep=0pt] at \LFXen{\LFXmi}{0.478}
-      {\sffamily\fontsize{12.5pt}{16pt}\selectfont\color{white}
-       Presentada a \textbf{\LFXcliente}};
-
-    % --- Identificacion del documento, bajo la banda -----------------------
-    \node[anchor=north west,inner sep=0pt,align=left] at \LFXen{\LFXmi}{0.625}
-      {\sffamily\bfseries\fontsize{23pt}{25pt}\selectfont
-       \color{lafroxVioleta}\LFXsubtitulo};
-    \node[anchor=north west,inner sep=0pt,align=left] at \LFXen{\LFXmi}{0.685}
+    %  El titulo se toma de \LFXdocumento y NO va cableado: hasta la v2.1
+    %  decia "PROPUESTA TECNICA" a mano, de modo que la portada mentia si la
+    %  clase se usaba para la Oferta Economica o para un anexo.
+    \node[anchor=north west,inner sep=0pt] at \LFXen{\LFXmi}{0.430}
+      {\sffamily\bfseries\fontsize{31pt}{34pt}\selectfont
+       \color{lafroxFuerte}\LFXdocumento};
+    \node[anchor=north west,inner sep=0pt] at \LFXen{\LFXmi}{0.486}
+      {\sffamily\fontsize{16pt}{20pt}\selectfont
+       \color{lafroxTinta}\LFXsubtitulo};
+    \node[anchor=north west,inner sep=0pt] at \LFXen{\LFXmi}{0.516}
       {\sffamily\fontsize{9.5pt}{13pt}\selectfont\color{lafroxGris}
        \LFXalcance\ \textperiodcentered\ \LFXformulario};
 
-    \draw[lafroxLinea,line width=0.7pt]
-      \LFXen{\LFXmi}{0.735} -- \LFXen{\LFXmd}{0.735};
+    \LFXfileteportada{0.552}
 
-    % --- Retícula de datos de la oferta ------------------------------------
-    \node[anchor=north west,inner sep=0pt] at \LFXen{\LFXmi}{0.760}
-      {\begin{minipage}{\LFXcolportada}
-         \sffamily\fontsize{8.5pt}{13pt}\selectfont
-         \color{lafroxGris}\raggedright
-         \textcolor{lafroxAzul}{\bfseries Proponente}\\
-         \LFXempresa\ \textperiodcentered\ RUT \LFXrut\\[5pt]
-         \textcolor{lafroxAzul}{\bfseries Representante}\\
-         \LFXrepresentante\ \textperiodcentered\ \LFXcargo
+    % ======================================================================
+    %  5-6. Mandante, proponente y representante  (Art. 49.1, lineas 4 a 6)
+    %  El mandante se rotula como tal y no como parte de una frase: en una
+    %  caratula real va con formalidad al menos igual que la del oferente.
+    % ======================================================================
+    \node[anchor=north west,inner sep=0pt] at \LFXen{\LFXmi}{0.570}
+      {\begin{minipage}[t]{0.44\textwidth}
+         \sffamily\raggedright
+         {\color{lafroxGris}\LFXrotulo{Mandante}}\\[4pt]
+         {\fontsize{11pt}{14pt}\selectfont\intersemibold
+          \color{lafroxTinta}\LFXcliente}\\[13pt]
+         {\color{lafroxGris}\LFXrotulo{Proponente}}\\[4pt]
+         {\fontsize{11pt}{14pt}\selectfont\intersemibold
+          \color{lafroxTinta}\LFXempresa}\\[1pt]
+         {\fontsize{9.5pt}{13pt}\selectfont\color{lafroxTinta}
+          RUT \LFXrut\\ \LFXdomicilio}
        \end{minipage}};
 
-    \node[anchor=north west,inner sep=0pt] at \LFXen{\LFXmc}{0.760}
-      {\begin{minipage}{\LFXcolportada}
-         \sffamily\fontsize{8.5pt}{13pt}\selectfont
-         \color{lafroxGris}\raggedright
-         \textcolor{lafroxAzul}{\bfseries Fecha de presentación}\\
-         \LFXfecha\ \textperiodcentered\ versión \LFXversion\\[5pt]
-         \textcolor{lafroxAzul}{\bfseries Firma del representante}\\
-         \textcolor{lafroxLinea}{\rule{4.2cm}{0.5pt}}
+    \node[anchor=north west,inner sep=0pt] at \LFXen{\LFXmi+0.390}{0.570}
+      {\begin{minipage}[t]{0.44\textwidth}
+         \sffamily\raggedright
+         {\color{lafroxGris}\LFXrotulo{Representante legal}}\\[4pt]
+         {\fontsize{11pt}{14pt}\selectfont\intersemibold
+          \color{lafroxTinta}\LFXrepresentante}\\[1pt]
+         {\fontsize{9.5pt}{13pt}\selectfont\color{lafroxTinta}
+          \LFXcargo\\ \LFXcorreo\\ \LFXtelefono}
        \end{minipage}};
 
-    % --- Pie academico -----------------------------------------------------
-    \draw[lafroxVioleta,line width=1.1pt]
-      \LFXen{\LFXmi}{0.900} -- \LFXen{\LFXmd}{0.900};
-    \node[anchor=north west,inner sep=0pt,align=left] at \LFXen{\LFXmi}{0.912}
-      {\sffamily\fontsize{7.5pt}{10.5pt}\selectfont\color{lafroxGris}
-       \LFXasignatura\ \textperiodcentered\ \LFXunidad\\
-       Profesor: \LFXprofesor};
+    \LFXfileteportada{0.714}
+
+    % ======================================================================
+    %  Control documental
+    %  El total de folios sale de \pageref{LastPage} (paquete lastpage):
+    %  declararlo en la caratula permite detectar un PDF truncado antes de
+    %  que lo detecte el evaluador, y la foliacion es excluyente (Art. 40.1).
+    % ======================================================================
+    \node[anchor=north west,inner sep=0pt] at \LFXen{\LFXmi}{0.732}
+      {\begin{minipage}{\textwidth}
+         \sffamily
+         \LFXcampoportada{Versión}{\LFXversion}\hfill
+         \LFXcampoportada{Fecha de emisión}{\LFXfecha}\hfill
+         \LFXcampoportada{Estado}{\LFXestadodoc}\hfill
+         \LFXcampoportada{Total de folios}{\pageref{LastPage}}%
+       \end{minipage}};
+
+    \LFXfileteportada{0.802}
+
+    % ======================================================================
+    %  Firma completa del representante  (Art. 40.2)
+    %  Sobre papel blanco y con los datos BAJO la linea, para que la firma
+    %  sea atribuible. No mover este bloque sobre la banda ni agregarle
+    %  fondo: se firma con lapiz.
+    % ======================================================================
+    \node[anchor=north west,inner sep=0pt] at \LFXen{\LFXmi}{0.820}
+      {\begin{minipage}[t]{0.52\textwidth}
+         \sffamily\raggedright
+         {\color{lafroxGris}\LFXrotulo{Firma del representante legal}}\\[34pt]
+         {\color{lafroxTinta}\rule{6.4cm}{0.5pt}}\\[4pt]
+         {\fontsize{9.5pt}{13pt}\selectfont\color{lafroxTinta}
+          \intersemibold\LFXrepresentante\\
+          \normalfont\sffamily\LFXcargo\ \textperiodcentered\ \LFXempresa}
+       \end{minipage}};
+
+    % --- Nomenclatura del archivo, a la altura del folio -------------------
+    %  Art. 50.3: un archivo mal nominado se considera NO PRESENTADO. Va al
+    %  pie izquierdo, emparejado con el folio del pie derecho, que es donde
+    %  un codigo de archivo se busca. Antes tenia bloque propio y empujaba la
+    %  firma sobre el pie.
+    \node[anchor=base west,inner sep=0pt] at \LFXen{\LFXmi}{0.9565}
+      {\ttfamily\fontsize{8pt}{10pt}\selectfont
+       \color{lafroxGris}\LFXnomenclatura};
 
   \end{tikzpicture}
   \clearpage
@@ -163,26 +280,40 @@
 % ============================================================================
 %  \contraportadalafrox -- cierre institucional (opcional)
 %  Uso: \contraportadalafrox{tabla de equipo o texto libre}
+%
+%  Mantiene la banda superior de la caratula, con la misma diagonal, para que
+%  las dos tapas se lean como un par.
 % ============================================================================
 \newcommand{\contraportadalafrox}[1]{%
   \clearpage
-  \thispagestyle{lfxportada}%
+  \thispagestyle{lfxcierre}%
+  \LFXcalcularmargenes
   \null
   \begin{tikzpicture}[remember picture,overlay]
-    \fill[lafroxVioleta]
-      (current page.north west) rectangle
-      ([yshift=-0.30\paperheight]current page.north east);
-    \fill[lafroxAcento]
-      ([yshift=-0.30\paperheight]current page.north west) rectangle
-      ([yshift=-0.305\paperheight]current page.north east);
-    \node[anchor=north west,inner sep=0pt,align=left] at \LFXen{\LFXmi}{0.115}
+    \fill[lafroxBanda]
+      \LFXen{0}{0}                   --
+      \LFXen{1}{0}                   --
+      \LFXen{1}{0.230}               --
+      \LFXen{0}{0.296}               -- cycle;
+    \fill[lafroxBandaB]
+      \LFXen{0}{0.296}               --
+      \LFXen{1}{0.230}               --
+      \LFXen{1}{0.243}               --
+      \LFXen{0}{0.309}               -- cycle;
+    \node[anchor=north west,inner sep=0pt,align=left] at \LFXen{\LFXmi}{0.110}
       {\sffamily\bfseries\fontsize{26pt}{29pt}\selectfont\color{white}
        \LFXempresa};
-    \node[anchor=north west,inner sep=0pt,align=left] at \LFXen{\LFXmi}{0.200}
-      {\sffamily\fontsize{10.5pt}{14pt}\selectfont\color{lafroxClaro}
-       \LFXdocumento\ \textperiodcentered\ \LFXsubtitulo\\
+    %  Dos nodos y no uno con \\: dentro de un nodo TikZ el salto de linea
+    %  reinicia los ajustes de fuente Y DE COLOR, de modo que la segunda
+    %  linea volvia a \lafroxTinta y quedaba negro sobre negro, ilegible.
+    %  Es el mismo motivo por el que el titular de la portada usa dos nodos.
+    \node[anchor=north west,inner sep=0pt] at \LFXen{\LFXmi}{0.190}
+      {\sffamily\fontsize{10.5pt}{14pt}\selectfont\color{lafroxSobre}
+       \LFXdocumento\ \textperiodcentered\ \LFXsubtitulo};
+    \node[anchor=north west,inner sep=0pt] at \LFXen{\LFXmi}{0.212}
+      {\sffamily\fontsize{10.5pt}{14pt}\selectfont\color{lafroxSobre}
        \LFXlicitacion\ \textperiodcentered\ \LFXcaso};
   \end{tikzpicture}
-  \vspace*{0.24\paperheight}
+  \vspace*{0.26\paperheight}
   #1
   \clearpage}

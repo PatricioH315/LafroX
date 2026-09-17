@@ -4,3 +4,9 @@
 *.xdv
 *.run.xml
 *.bcf
+*.fdb_latexmk
+
+# El PDF del esqueleto es un artefacto: cambia en cada compilacion del informe
+# y no aporta nada versionado. demo.pdf SI se versiona --- es el catalogo
+# visual de la plantilla y se revisa en el repositorio.
+main.pdf

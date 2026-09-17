@@ -8,7 +8,9 @@
 %%
 %%  Tema: minimalista. Tipografia Inter en todo el documento, sin filetes
 %%  decorativos, sin rellenos de color en las tablas y sin filas cebra. El
-%%  unico elemento expresivo es la portada, que conserva su banda diagonal.
+%%  unico elemento expresivo es la caratula, que conserva la banda diagonal
+%%  reducida a cabecera (v2.2): el tercio inferior queda en blanco porque es
+%%  zona de firma y de folio, no zona de arte.
 %%
 %%  Cumplimiento formal cableado en la clase (Bases Administrativas, Art. 40):
 %%    40.1  Foliacion correlativa, sin saltos, extremo inferior derecho
@@ -17,7 +19,7 @@
 %%    40.4  Carta u oficio vertical; cuerpo >= 11 pt; tablas y figuras >= 9 pt
 %% ============================================================================
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{lafrox}[2026/09/17 v2.1 Clase corporativa LafroX, tema minimalista]
+\ProvidesClass{lafrox}[2026/09/17 v2.2 Clase corporativa LafroX, tema minimalista]
 
 % ---------------------------------------------------------------------------
 %  1. OPCIONES DE CLASE
@@ -74,20 +76,31 @@
 % ---------------------------------------------------------------------------
 %  3. PALETA
 %
-%  Casi monocroma. El violeta es el unico acento del cuerpo del documento;
-%  el oro queda reservado a la portada y no aparece en ninguna pagina de
-%  contenido. No hay colores semanticos de severidad ni de estado.
+%  Monocroma estricta: negro y grises neutros, sin matiz. No hay violeta, oro
+%  ni azul, y tampoco colores semanticos de severidad o de estado. En un
+%  documento de licitacion esas distinciones van en palabras y en columnas de
+%  tabla, no en color.
+%
+%  Los grises son neutros de verdad (R=G=B): el gris anterior tiraba a azul y
+%  se leia como color, no como tinta rebajada.
 % ---------------------------------------------------------------------------
 \RequirePackage[table,dvipsnames]{xcolor}
 
-\definecolor{lafroxVioleta}{HTML}{2B1A4D}  % acento
-\definecolor{lafroxAzul}   {HTML}{1B3050}  % secundario (portada)
-\definecolor{lafroxAcento} {HTML}{B8901F}  % oro: SOLO portada
-\definecolor{lafroxTinta}  {HTML}{17171E}  % cuerpo de texto
-\definecolor{lafroxGris}   {HTML}{5B646E}  % texto secundario
-\definecolor{lafroxLinea}  {HTML}{C9C6D1}  % filetes de tabla
-\definecolor{lafroxTenue}  {HTML}{D8D5DF}  % filetes de encabezado y pie
-\definecolor{lafroxBg}     {HTML}{F5F4F8}  % fondo de portada
+\definecolor{lafroxTinta}  {HTML}{111111}  % cuerpo de texto
+\definecolor{lafroxFuerte} {HTML}{000000}  % titulares y numeracion
+\definecolor{lafroxGris}   {HTML}{5F5F5F}  % texto secundario sobre claro
+\definecolor{lafroxLinea}  {HTML}{C7C7C7}  % filetes de tabla
+\definecolor{lafroxTenue}  {HTML}{DCDCDC}  % filetes de encabezado y pie
+%  RESERVADO, sin uso desde la v2.2: la caratula ya no lleva fondo, es papel
+%  blanco. Se conserva por si un anexo necesita una zona tramada.
+\definecolor{lafroxBg}     {HTML}{F4F4F4}
+%  Escalones de la banda de cabecera, de dentro hacia fuera. Sobre ellos el
+%  texto va en blanco o en \lafroxSobre: es el unico lugar del documento
+%  donde la tinta se invierte.
+\definecolor{lafroxBanda}  {HTML}{141414}  % banda principal
+\definecolor{lafroxBandaB} {HTML}{3C3C3C}  % diagonal de profundidad, interior
+\definecolor{lafroxBandaC} {HTML}{606060}  % diagonal de profundidad, exterior
+\definecolor{lafroxSobre}  {HTML}{9A9A9A}  % texto secundario sobre la banda
 
 % ---------------------------------------------------------------------------
 %  4. TIPOGRAFIA
@@ -158,6 +171,10 @@
 \RequirePackage{pdflscape}
 \RequirePackage{eso-pic}
 \RequirePackage{ragged2e}
+%  lastpage: el total de folios del bloque de control documental de la
+%  portada. El Art. 40.1 hace excluyente la foliacion, y declarar el total en
+%  la caratula permite al evaluador detectar de inmediato un PDF truncado.
+\RequirePackage{lastpage}
 
 % Listas: tres niveles, marcas discretas en gris, sangria regular.
 \setlist{itemsep=3pt,topsep=6pt,parsep=0pt}
@@ -191,10 +208,15 @@
   formulario/.store in     = \LFXformulario,
   fecha/.store in          = \LFXfecha,
   version/.store in        = \LFXversion,
-  asignatura/.store in     = \LFXasignatura,
-  unidad/.store in         = \LFXunidad,
-  profesor/.store in       = \LFXprofesor,
   logo/.store in           = \LFXlogo,
+  %  Claves exigidas por el Art. 49.1 (bloque que debe leerse en la caratula)
+  %  y por los Arts. 39 y 50.3. Sin ellas la portada no identifica la oferta.
+  objeto/.store in         = \LFXobjeto,
+  sobre/.store in          = \LFXsobre,
+  domicilio/.store in      = \LFXdomicilio,
+  correo/.store in         = \LFXcorreo,
+  telefono/.store in       = \LFXtelefono,
+  nomenclatura/.store in   = \LFXnomenclatura,
 }
 \newcommand{\datoslafrox}[1]{\pgfkeys{/lafrox/.cd,#1}}
 
@@ -215,10 +237,15 @@
   formulario    = {Formulario T-22},
   fecha         = {05 de octubre de 2026},
   version       = {1.0},
-  asignatura    = {Taller de Formulación de Proyectos Informáticos (ICI-5444)},
-  unidad        = {Escuela de Informática, PUCV},
-  profesor      = {Antonio Moya Villegas},
   logo          = {},
+  objeto        = {Proyecto de Plataforma Digital de Misión Crítica},
+  sobre         = {Sobre N.\textdegree{} 2 --- Oferta Técnica},
+  %  El domicilio se constituye en Valparaíso por exigencia del Art. 39.
+  %  PROVISIONAL: confirmar con la identidad definitiva del PROPONENTE.
+  domicilio     = {Av. Brasil 2241, Valparaíso},
+  correo        = {contacto@lafrox.cl},
+  telefono      = {+56 32 250 4100},
+  nomenclatura  = {SOBRE2\_LAFROX\_OFERTA\_TECNICA\_20261005.ZIP},
 }
 
 % Monograma tipografico: marca provisional mientras no exista archivo de logo.
@@ -237,8 +264,8 @@
     \begin{scope}
       \clip[rounded corners=0.09\LFXmonolado]
         (0,0) rectangle (\LFXmonolado,\LFXmonolado);
-      \fill[lafroxVioleta] (0,0) rectangle (\LFXmonolado,\LFXmonolado);
-      \fill[lafroxAcento]  (0,0) rectangle (\LFXmonolado,0.15\LFXmonolado);
+      \fill[lafroxFuerte] (0,0) rectangle (\LFXmonolado,\LFXmonolado);
+      \fill[lafroxBandaC]  (0,0) rectangle (\LFXmonolado,0.15\LFXmonolado);
     \end{scope}
     \node[anchor=center,inner sep=0pt]
       at (0.5\LFXmonolado,0.57\LFXmonolado)
@@ -247,10 +274,31 @@
   \end{tikzpicture}%
 }
 
+% Monograma en negativo, para la banda oscura de la portada.
+%  Se invierte por completo: chip blanco con las iniciales en el gris de la
+%  banda. El monograma normal (relleno negro) desaparece sobre la banda.
+\newcommand{\lafroxmonogramaneg}[1][12mm]{%
+  \setlength{\LFXmonolado}{#1}%
+  \setlength{\LFXmonofont}{0.42\LFXmonolado}%
+  \begin{tikzpicture}
+    \useasboundingbox (0,0) rectangle (\LFXmonolado,\LFXmonolado);
+    \begin{scope}
+      \clip[rounded corners=0.09\LFXmonolado]
+        (0,0) rectangle (\LFXmonolado,\LFXmonolado);
+      \fill[white] (0,0) rectangle (\LFXmonolado,\LFXmonolado);
+      \fill[lafroxSobre] (0,0) rectangle (\LFXmonolado,0.15\LFXmonolado);
+    \end{scope}
+    \node[anchor=center,inner sep=0pt]
+      at (0.5\LFXmonolado,0.57\LFXmonolado)
+      {\intersemibold\fontsize{\LFXmonofont}{\LFXmonofont}\selectfont
+       \color{lafroxBanda}LX};
+  \end{tikzpicture}%
+}
+
 % Bloque de marca: monograma + razon social
 \newcommand{\lafroxmarca}[1][9mm]{%
   \raisebox{-0.22\height}{\lafroxmonograma[#1]}\hspace{2.2mm}%
-  {\intersemibold\color{lafroxVioleta}\LFXempresa}%
+  {\intersemibold\color{lafroxFuerte}\LFXempresa}%
 }
 
 % ---------------------------------------------------------------------------
@@ -264,14 +312,14 @@
   {\normalfont\raggedright}
   {\color{lafroxGris}\LFXrotulo{\chaptertitlename\ \thechapter}}
   {12pt}
-  {\intersemibold\fontsize{25pt}{28pt}\selectfont\color{lafroxVioleta}}
+  {\intersemibold\fontsize{25pt}{28pt}\selectfont\color{lafroxFuerte}}
 
 \titleformat{\section}
   {\intersemibold\fontsize{15pt}{18pt}\selectfont\color{lafroxTinta}}
-  {\textcolor{lafroxVioleta}{\thesection}}{0.6em}{}
+  {\textcolor{lafroxFuerte}{\thesection}}{0.6em}{}
 \titleformat{\subsection}
   {\intersemibold\fontsize{12pt}{15pt}\selectfont\color{lafroxTinta}}
-  {\textcolor{lafroxVioleta}{\thesubsection}}{0.6em}{}
+  {\textcolor{lafroxFuerte}{\thesubsection}}{0.6em}{}
 \titleformat{\subsubsection}
   {\intermedium\fontsize{11pt}{14pt}\selectfont\color{lafroxGris}}
   {\thesubsubsection}{0.6em}{}
@@ -285,7 +333,10 @@
 \titlespacing*{\paragraph}    {0pt}{10pt}{0pt}
 
 \setcounter{secnumdepth}{3}
-\setcounter{tocdepth}{2}
+% tocdepth = 3 (no 2): el Art. 40.4 exige "indice detallado con numeracion
+% de paginas" y el Art. 5.3 manda la lectura mas exigente ante ambiguedad.
+% Debe igualar secnumdepth para que el indice llegue hasta subsubsection.
+\setcounter{tocdepth}{3}
 
 % ---------------------------------------------------------------------------
 %  8. ENCABEZADO Y PIE  (Art. 40.1 foliacion + Art. 40.2 media firma)
@@ -319,7 +370,22 @@
   \renewcommand{\arraystretch}{1}%
 }
 
-\newcommand{\LFXfolio}{Folio}
+% Rotulo que antecede al numero de pagina.
+%  VACIO por omision: el Art. 40.1 exige que la pagina este NUMERADA, no que
+%  lleve la palabra "Folio". En un informe preparatorio (Art. 45 - T-22) el
+%  numero solo se lee mejor y no compite con el resto del pie.
+%
+%  Para el Sobre N. 1, que va fisico y con el indice A-5 declarando folio de
+%  inicio y de termino por documento, el rotulo si ayuda a que el numero se
+%  lea como folio y no como un numero cualquiera. Ahi se recupera con:
+%      \renewcommand{\LFXfolio}{Folio}
+\newcommand{\LFXfolio}{}
+
+%  El espacio va DENTRO del condicional: con el rotulo vacio, un
+%  "\LFXfolio\ \thepage" dejaria el numero corrido un espacio a la derecha y
+%  desalineado respecto del filete de media firma que tiene encima.
+\newcommand{\LFXfoliotexto}{%
+  \ifx\LFXfolio\@empty\else\LFXfolio\ \fi\thepage}
 
 \newcommand{\LFXpiederecho}{%
   \begingroup\LFXpiebase
@@ -330,7 +396,7 @@
         Media firma --- \LFXrepresentante}\\[5pt]
     \fi
     {\intermedium\fontsize{9pt}{11pt}\selectfont\color{lafroxTinta}%
-      \LFXfolio\ \thepage}
+      \LFXfoliotexto}
   \end{tabular}%
   \endgroup
 }
@@ -369,22 +435,38 @@
   \renewcommand{\headrule}{}
 }
 
-% Pie solo con folio, para la portada
-\newcommand{\LFXpiefolio}{%
+% Pie solo con folio, en el color que se le indique.
+%  El color queda como parametro por si una pieza futura necesita el pie en
+%  negativo. Desde la v2.2 ni la portada ni la contraportada lo usan: ambas
+%  tintan solo la cabecera y dejan el pie sobre papel blanco, que es la unica
+%  forma de que el folio sobreviva a una fotocopia (Art. 40.1, excluyente).
+\newcommand{\LFXpiefolioen}[1]{%
   \begingroup\LFXpiebase
-  {\intermedium\fontsize{9pt}{11pt}\selectfont\color{lafroxTinta}%
-    \LFXfolio\ \thepage}%
+  {\intermedium\fontsize{9pt}{11pt}\selectfont\color{#1}%
+    \LFXfoliotexto}%
   \endgroup
 }
 
 % Portada: sin encabezado, pero CON folio (no se admiten paginas sin numerar).
 %  Aqui va el folio solo, sin la zona de media firma: el Art. 40.2 pide media
-%  firma en cada pagina y firma COMPLETA en la caratula, y esa la aporta la
-%  linea "Firma del representante" de la propia portada. Repetir la media
-%  firma, ademas, chocaba con el bloque academico del pie de la portada.
+%  firma en cada pagina y firma COMPLETA en la caratula, y esa la aporta el
+%  bloque de firma de la propia portada.
+%  Folio en TINTA: desde la v2.2 la banda ocupa solo la cabecera y el pie
+%  queda sobre papel blanco. Antes iba en blanco sobre la cuna, y su
+%  legibilidad dependia de que la diagonal exterior alcanzara el margen
+%  derecho -- un folio ilegible es causal de exclusion (Art. 40.1), asi que
+%  no debe depender de la geometria del arte.
 \fancypagestyle{lfxportada}{%
   \fancyhf{}
-  \fancyfoot[R]{\LFXpiefolio}
+  \fancyfoot[R]{\LFXpiefolioen{lafroxTinta}}
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\headrule}{}
+}
+
+% Contraportada: mismo pie desnudo, pero en tinta -- ahi el fondo es claro.
+\fancypagestyle{lfxcierre}{%
+  \fancyhf{}
+  \fancyfoot[R]{\LFXpiefolioen{lafroxTinta}}
   \renewcommand{\headrulewidth}{0pt}
   \renewcommand{\headrule}{}
 }
@@ -393,13 +475,21 @@
 \renewcommand{\chaptermark}[1]{\markboth{#1}{}}
 \pagenumbering{arabic}
 
-% Marca de agua de borrador, al fondo y muy tenue
+% Marca de agua de borrador, al fondo y muy tenue.
+%  Se salta el folio 1. Mientras la portada fue una cuna oscura a sangre la
+%  marca era invisible ahi; desde la v2.2 la caratula es clara y la diagonal
+%  cruzaba justo el bloque de identificacion del Art. 49.1, que es el que
+%  tiene que leerse sin estorbo. El estado ya se declara dos veces en la
+%  propia caratula (rotulo de la banda y campo "Estado"), asi que no se
+%  pierde el aviso de borrador.
 \ifLFX@borrador
   \AddToShipoutPictureBG{%
-    \put(\LenToUnit{0.5\paperwidth},\LenToUnit{0.42\paperheight}){%
-      \makebox(0,0){\rotatebox{54}{%
-        \intersemibold\fontsize{74pt}{74pt}\selectfont
-        \color{lafroxVioleta!10}BORRADOR}}}}
+    \ifnum\value{page}>1
+      \put(\LenToUnit{0.5\paperwidth},\LenToUnit{0.42\paperheight}){%
+        \makebox(0,0){\rotatebox{54}{%
+          \intersemibold\fontsize{74pt}{74pt}\selectfont
+          \color{lafroxFuerte!10}BORRADOR}}}%
+    \fi}
 \fi
 
 % ---------------------------------------------------------------------------
@@ -434,7 +524,7 @@
 
 \captionsetup{
   font={footnotesize,color=lafroxGris},
-  labelfont={color=lafroxVioleta},
+  labelfont={color=lafroxFuerte},
   labelsep=quad, skip=7pt,
   justification=raggedright, singlelinecheck=false}
 \captionsetup[table]{position=top,skip=6pt}
@@ -491,15 +581,15 @@
 \NewDocumentEnvironment{tablalarga}{m m m m +b}
   {\begin{tablalafrox}{#1}{#2}{#3}{#4}#5\end{tablalafrox}}{}
 
-% Referencia a planilla externa -- convencion de Entrega 2/
-%   \tablaref{7}{Volumetria de despacho}{05_arquitectura_fisica/tablas/Dim.xlsx!Despacho}
+% Referencia a planilla externa -- convencion NN_subdocumento/entrega_N/tablas/
+%   \tablaref{7}{Volumetria de despacho}{04_arquitectura/entrega_2/tablas/Dim.xlsx!Despacho}
 %  Sin relleno ni marco: un filete tenue arriba y el dato. Varias referencias
 %  seguidas forman una lista con una sola linea entre cada par, no dos.
 \newcommand{\tablaref}[3]{%
   \par\addvspace{11pt}%
   \noindent{\color{lafroxLinea}\rule{\textwidth}{0.4pt}}\par
   \vspace{5pt}%
-  \noindent{\intersemibold\color{lafroxVioleta}Tabla #1}%
+  \noindent{\intersemibold\color{lafroxFuerte}Tabla #1}%
   \quad{\color{lafroxTinta}#2}\par
   \vspace{2pt}%
   \noindent{\fontsize{8.5pt}{10.5pt}\selectfont\color{lafroxGris}%
@@ -538,7 +628,7 @@
     \par\addvspace{7pt}%
     \begingroup
     \setlength{\leftskip}{1.1em}%
-    \noindent\llap{\textcolor{lafroxVioleta!40}{%
+    \noindent\llap{\textcolor{lafroxFuerte!40}{%
       \vrule width 1.5pt height 0.82em depth 0.25em}\hspace{0.9em}}%
     {\fontsize{8.5pt}{11pt}\selectfont\color{lafroxGris}#1}%
     \par\endgroup\addvspace{9pt}%
@@ -557,13 +647,49 @@
 \newenvironment{anexohorizontal}{\begin{landscape}}{\end{landscape}}
 
 % ---------------------------------------------------------------------------
+% 11 bis. SUBDOCUMENTOS EN CARPETA PROPIA
+%
+%  Cada subdocumento del T-7 vive en su carpeta, autocontenido, y main.tex lo
+%  llama por el nombre de la carpeta. Mover la carpeta y cambiar la ruta en la
+%  llamada es TODO lo que hace falta para reubicarlo: nada dentro del capitulo
+%  conoce donde esta montado.
+%
+%      NN_nombre/
+%        contenido.tex     <- el \chapter y el texto
+%        figuras/          <- imagenes del capitulo
+%        tablas/           <- fragmentos .tex, si el capitulo se parte
+%
+%  En main.tex:              \subdocumento{07_plan_trabajo_edt}
+%  Dentro de contenido.tex:  \parte{tablas/catalogo_rf}
+%                            \figuralafrox{0.9}{figuras/edt.png}{...}{...}
+%
+%  Se usa \import y no \input: con \input, un \input anidado dentro del
+%  capitulo se resuelve desde la carpeta de main.tex y no desde la del
+%  capitulo, de modo que mover la carpeta rompe las rutas internas --- que es
+%  exactamente lo que esta estructura existe para evitar.
+\RequirePackage{import}
+
+%  \graphicspath se fija DENTRO del grupo, asi que vale solo mientras dura la
+%  importacion y dos capitulos pueden tener cada uno su figuras/x.png sin
+%  pisarse. Las figuras se componen al construir la caja, dentro del grupo,
+%  aunque el flotante se despache paginas despues.
+\newcommand{\subdocumento}[1]{%
+  \begingroup
+  \graphicspath{{#1/}{#1/figuras/}{#1/diagramas/}}%
+  \import{#1/}{contenido.tex}%
+  \endgroup}
+
+%  Fragmento interno de un subdocumento, relativo a SU carpeta. Sin extension.
+\newcommand{\parte}[1]{\subimport{}{#1.tex}}
+
+% ---------------------------------------------------------------------------
 % 12. PAGINAS PRELIMINARES
 % ---------------------------------------------------------------------------
 %  Indice sin guias de puntos: la alineacion del numero de folio a la derecha
 %  basta, y los puntos son ruido.
 \titlecontents{chapter}[0pt]
   {\addvspace{13pt}\intersemibold\color{lafroxTinta}}
-  {\textcolor{lafroxVioleta}{\thecontentslabel}\enspace}{}
+  {\textcolor{lafroxFuerte}{\thecontentslabel}\enspace}{}
   {\normalfont\color{lafroxGris}\hfill\contentspage}
 \titlecontents{section}[1.5em]
   {\addvspace{3pt}\color{lafroxTinta}}
@@ -573,10 +699,18 @@
   {\fontsize{9.5pt}{12pt}\selectfont\color{lafroxGris}}
   {\thecontentslabel\enspace}{}
   {\hfill\contentspage}
+% Cuarto nivel: mismo lenguaje que subsection, un punto mas chico y mas
+% sangria. Necesario porque tocdepth=3 lo activa (ver seccion 7) y sin este
+% \titlecontents, book/report caeria en \l@subsubsection con guias de puntos
+% -- justo lo que este indice evita en los demas niveles.
+\titlecontents{subsubsection}[5.2em]
+  {\fontsize{9pt}{11.5pt}\selectfont\color{lafroxGris}}
+  {\thecontentslabel\enspace}{}
+  {\hfill\contentspage}
 
 % Titulo de pagina preliminar, mismo lenguaje que el de capitulo
 \newcommand{\LFXtitulopreliminar}[1]{%
-  {\intersemibold\fontsize{25pt}{28pt}\selectfont\color{lafroxVioleta}#1}%
+  {\intersemibold\fontsize{25pt}{28pt}\selectfont\color{lafroxFuerte}#1}%
   \par\vspace{22pt}}
 
 % Indice general (Art. 40.4: indice detallado con folios)
@@ -657,7 +791,7 @@
 \RequirePackage[hidelinks,bookmarksnumbered]{hyperref}
 \hypersetup{
   colorlinks=true,
-  linkcolor=lafroxVioleta, urlcolor=lafroxVioleta, citecolor=lafroxVioleta,
+  linkcolor=lafroxFuerte, urlcolor=lafroxFuerte, citecolor=lafroxFuerte,
   pdftitle={\LFXdocumento\ --- \LFXsubtitulo},
   pdfauthor={\LFXempresa},
   pdfsubject={\LFXlicitacion\ --- \LFXcaso},

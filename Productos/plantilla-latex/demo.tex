@@ -17,18 +17,28 @@
 %  Metadatos de la oferta. Editar solo aqui: portada, encabezados, pies y
 %  metadatos del PDF se alimentan de estas claves.
 % ---------------------------------------------------------------------------
+%  Las claves objeto, sobre, domicilio, correo, telefono y nomenclatura
+%  alimentan el bloque que el Art. 49.1 exige leer en la caratula. Si se
+%  omiten, la clase usa sus valores por defecto (seccion 6 de lafrox.cls),
+%  que son PROVISIONALES mientras no se fije la identidad del PROPONENTE.
 \datoslafrox{
   empresa       = LafroX SpA,
   rut           = 77.418.902-K,
+  domicilio     = {Av. Brasil 2241, Valparaíso},
   representante = Alex Aravena,
   cargo         = Jefe de Proyecto y Apoderado,
+  correo        = contacto@lafrox.cl,
+  telefono      = +56 32 250 4100,
   cliente       = Distribuidora Puelche S.A.,
+  objeto        = Proyecto de Plataforma Digital de Misión Crítica,
+  sobre         = Sobre N.\textdegree{} 2 --- Oferta Técnica,
   documento     = Propuesta Técnica,
   subtitulo     = Muestrario de plantilla,
   alcance       = Catálogo de componentes,
-  formulario    = Clase \texttt{lafrox} v2.1,
+  formulario    = Clase \texttt{lafrox} v2.2,
   fecha         = 17 de septiembre de 2026,
-  version       = 2.1,
+  version       = 2.2,
+  nomenclatura  = SOBRE2\_LAFROX\_OFERTA\_TECNICA\_20261005.ZIP,
 }
 
 \begin{document}
@@ -182,11 +192,12 @@ misma; sólo cambia el número de filas:
 
 \section{Referencias a planillas externas}
 
-La Entrega 2 guarda las tablas grandes como planillas, una hoja por tabla. En
-el documento va la referencia, no la tabla volcada a mano:
+Cada subdocumento guarda las tablas grandes como planillas, una hoja por
+tabla, dentro de su carpeta \texttt{entrega\_N/tablas/}. En el documento va la
+referencia, no la tabla volcada a mano:
 
 \tablaref{7}{Volumetría de despacho por ventana horaria}%
-  {Entrega 2/05\_arquitectura\_fisica/tablas/Dimensionamiento.xlsx!Despacho}
+  {04\_arquitectura/entrega\_2/tablas/arquitectura\_fisica\_Dimensionamiento.xlsx!Despacho}
 
 \tablaref{12}{Matriz de cumplimiento técnico RT-01 a RT-13}%
   {Productos/Formulario\_T-12\_Matriz\_Cumplimiento\_TFEP-01-2026.xlsx!T-12}
@@ -226,10 +237,36 @@ el documento va la referencia, no la tabla volcada a mano:
        & \texttt{\textbackslash indicelafrox} \\
   40.4 & Referencias en norma APA 7.ª ed.
        & Opción \texttt{[apa]} (\texttt{biblatex-apa}) \\
+  40.2 & Firma \emph{completa} en la carátula
+       & Bloque de firma de la portada, sobre papel blanco \\
+  49.1 & Bloque de identificación que debe leerse en la carátula
+       & Claves \texttt{objeto}, \texttt{sobre}, \texttt{correo} y
+         \texttt{telefono} de \texttt{\textbackslash datoslafrox} \\
+  50.3 & Nomenclatura del archivo
+       & Clave \texttt{nomenclatura}, al pie de la carátula \\
 \end{tablalafrox}
 
 \nota{La opción \texttt{[borrador]} con la que se compiló este muestrario
-imprime la marca de agua diagonal. Quítala --- o usa \texttt{[final]} --- para
-la versión que se presenta.}
+imprime la marca de agua diagonal desde el folio 2. La carátula queda limpia a
+propósito: la diagonal cruzaba el bloque de identificación del Art. 49.1, y el
+estado del documento ya se declara dos veces en ella. Quita la opción --- o usa
+\texttt{[final]} --- para la versión que se presenta.}
+
+% ---------------------------------------------------------------------------
+%  Cierre institucional. Comparte la diagonal de la carátula para que las dos
+%  tapas se lean como un par.
+\contraportadalafrox{%
+  \begin{tablalafrox}{Equipo de trabajo del PROPONENTE}{tab:equipo}%
+    {Y L{6.2cm}}%
+    {\cab{Rol} & \cab{Nombre}}
+    Jefe de Proyecto                        & Alex Aravena       \\
+    Arquitecto de Solución                  & Bastián Trejo      \\
+    Encargado de Seguridad de la Información & Álvaro Catalán    \\
+    Líder de Datos                          & Leandro Chamorro   \\
+    Líder de Desarrollo                     & Tomás Pérez        \\
+    Líder de Calidad                        & Maximiliano Miño   \\
+    Líder de Operación / SRE                & Guillermo Castillo \\
+    Líder de Implantación y Gestión del Cambio & Patricio Henríquez \\
+  \end{tablalafrox}}
 
 \end{document}
