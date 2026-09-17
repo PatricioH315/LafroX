@@ -20,7 +20,7 @@ Todo el trabajo se desarrolla en **español** (idioma oficial de la licitación)
   | Líder de Calidad | Maximiliano Miño |
   | Líder de Operación / SRE | Guillermo Castillo |
   | Líder de Implantación y Gestión del Cambio | Patricio Henríquez |
-- *Fuente: `TrabajosAnteriores/Equipo_y_roles_lafrox.csv` (rol, nombre, certificaciones, dedicación, meses de participación). Las columnas de Dedicación/Meses quedan por llenar.*
+- *Fuente: `Trabajos Anteriores/Equipo_y_roles_lafrox.csv` (rol, nombre, certificaciones, dedicación, meses de participación). Las columnas de Dedicación/Meses quedan por llenar.*
 
 ## Protocolo de sesión (importante)
 
@@ -49,33 +49,37 @@ Regla de precedencia: el caso puede **endurecer** un requisito transversal, nunc
 
 ## Base canónica de trabajo (leer antes de tocar cualquier entregable)
 
-**`Entrega 1/` es la base canónica sobre la que se construye la Entrega 2.** No es un archivo
-histórico: es el punto de partida obligatorio.
+**El repositorio se organiza por los 14 subdocumentos del Formulario T-7**, no por entregas. Cada
+carpeta `NN_...` en la raíz es un subdocumento (numeración exacta del T-7) y adentro conviven las
+iteraciones como subcarpetas `entrega_1/`, `entrega_2/`, etc.
 
-- `Entrega 1/` — **registro congelado** de lo efectivamente entregado el 07-09-2026, extraído de
-  `productos/Informe 1 Entrega 1.docx`. Contiene los subdocumentos 1, 2, 3, 4.1, 4.2, 5 y 13, cada
-  uno con `texto/` (narrativa `.md`) y `tablas/` (planillas `.xlsx`, una hoja por tabla), más las 15
-  imágenes del documento en `Entrega 1/Diagramas/`. **No se edita nunca.**
-- `Entrega 2/` — **documento de trabajo**. Nació como copia exacta de la Entrega 1 y es donde ocurre
-  todo cambio. Agrega los subdocumentos 6, 7, 8 y 9 (metodologías, plan de trabajo/EDT, riesgos y
-  calidad), que el Informe 1 no cubría, y `00_trazabilidad_observaciones/` para la tabla
-  observación → respuesta → sección que exige el Art. 45.
+- `entrega_1/` (dentro de cada subdocumento que corresponda) — **registro congelado** de lo
+  efectivamente entregado el 07-09-2026, extraído de `Productos/Informe 1 Entrega 1.docx`. El
+  Informe 1 cubrió los subdocumentos 1, 2, 3, 4 (lógica y física), 5 (modelo de datos) y 13
+  (innovaciones), cada uno con `texto/` (narrativa `.md`) y `tablas/` (planillas `.xlsx`, una hoja
+  por tabla). Los 15 diagramas del `.docx` viven en `Diagramas/` en la raíz. **`entrega_1/` no se
+  edita nunca.**
+- `entrega_2/` (dentro de cada subdocumento) — **documento de trabajo** para el Informe 2
+  (05-10-2026). Nació como copia exacta de `entrega_1/` en los subdocs que ya existían y añade los
+  subdocs 6, 7, 8 y 9 (metodologías, plan de trabajo/EDT, riesgos y calidad).
+- `00_trazabilidad_observaciones/` en la raíz — bitácora observación → respuesta → sección que exige
+  el Art. 45 · T-22, más los manifiestos de extracción y los historiales de cada entrega.
 
 **Reglas de uso:**
 
-1. Todo trabajo para la Entrega 2 **parte del contenido de la Entrega 1**, no de cero y no de otra
-   fuente. Si un subdocumento ya existe en `Entrega 1/`, se toma su versión como línea base y se
-   modifica en `Entrega 2/`.
+1. Todo trabajo para la Entrega 2 **parte del contenido de `entrega_1/`** del mismo subdocumento, no
+   de cero y no de otra fuente. Si un subdocumento ya tiene `entrega_1/`, ese es su línea base.
 2. **Toda modificación respecto de la Entrega 1 debe quedar registrada** en
-   `Entrega 2/00_trazabilidad_observaciones/tablas/Trazabilidad_Observaciones_Informe1.xlsx`, con la
+   `00_trazabilidad_observaciones/tablas/Trazabilidad_Observaciones_Informe1.xlsx`, con la
    observación que la motiva y la sección modificada. Un cambio sin fila en esa tabla se lee como
    observación no atendida (Art. 45 · T-22).
-3. Ante discrepancia entre `Entrega 1/` y cualquier otro documento del repositorio sobre **qué se
+3. Ante discrepancia entre `entrega_1/` y cualquier otro documento del repositorio sobre **qué se
    entregó**, manda la Entrega 1 (y su origen, el `.docx`).
 4. Para decidir **qué contenido conservar**, el criterio es el `.docx` de la Entrega 1. Lo que no
    esté ahí es material de trabajo, no entregable.
-5. `Entrega 1/Diagramas/` y `Entrega 2/Diagramas/` son duplicados deliberados: cada entrega es
-   autocontenida y la Entrega 1 conserva su estado aunque la Entrega 2 reemplace diagramas.
+5. Los 15 diagramas del `.docx` viven en `Diagramas/` en la raíz junto con el material de trabajo
+   del repo. La deduplicación entre `entrega_1/` y `entrega_2/` es deliberada: los diagramas del
+   Informe 1 son la línea base y `entrega_2/` los referencia por nombre desde la biblioteca única.
 
 **El proyecto LaTeX fue retirado** (`productos/Informe1/informe latex/`): estaba desactualizado
 respecto del entregable e invocaba 5 diagramas inexistentes. No reintroducirlo ni tomarlo como
@@ -83,29 +87,27 @@ fuente. Queda en el historial (commit `6a4a00d`, tag `respaldo/pre-consolidacion
 
 ## Carpetas
 
-- `Entrega 1/` — registro congelado del Informe 1 (ver arriba). **Solo lectura.**
-- `Entrega 2/` — entregable en construcción para el Informe 2 (05-10-2026). **Aquí se trabaja.**
+**Subdocumentos T-7** (uno por carpeta, con numeración exacta del Formulario T-7):
+
+- `01_presentacion_empresa/` · `02_problema_necesidad/` · `03_esquema_solucion_alcance/` · `04_arquitectura/` (lógica **y** física en un solo subdoc, según T-7) · `05_modelo_datos/` · `06_metodologias/` · `07_plan_trabajo_edt/` · `08_plan_riesgos/` · `09_plan_calidad/` · `10_operacion_niveles_servicio/` · `11_planes_operacion/` · `12_equipo_subcontrataciones/` · `13_innovaciones/` · `14_ventajas_beneficios_consolidacion/`.
+- Cada subdocumento tiene un `README.md` con el detalle que exige el T-7 y las subcarpetas `entrega_1/` (congelada) y/o `entrega_2/` (trabajo) donde vive su contenido.
+
+**Transversales**:
+
+- `00_trazabilidad_observaciones/` — bitácora de observaciones y respuestas entre entregas (T-22 · Art. 45), manifiestos de extracción del `.docx` e historiales de cada entrega. **Aquí se registra todo cambio** entre `entrega_1/` y `entrega_2/`.
 - `Bases/` — documentos rectores (ver precedencia arriba). `Bases/pdf/` guarda los originales.
-- `Requerimientos/` — catálogos RF/RNF/bases (`.csv`), decisiones, reglas de negocio, supuestos y
-  justificaciones. Es la fuente de los catálogos que se vuelcan al subdocumento 3.
+- `Requerimientos/` — catálogos RF/RNF/bases (`.csv`), decisiones, reglas de negocio, supuestos y justificaciones. Es la fuente de los catálogos que se vuelcan al subdocumento 3.
 - `Arquitectura/` — documentos fuente de arquitectura, **no entregables**:
   - `Arquitectura/logica/` — arquitectura lógica vigente (`Arquitectura_Logica_v6-2.md`).
-  - `Arquitectura/fisica/` — física consolidada, despliegue, integración, seguridad, dimensionamiento,
-    sala de servidores, tabla de emplazamiento, ADR, BI, T-11, T-12 y el data center (`Subdoc04_DataCenter.md`).
-- `Diagramas/` — biblioteca de diagramas del repositorio (fuentes `.drawio` y exportados `.png`),
-  incluida `RT-06_DataCenter/`. **Ojo:** nada de esta carpeta llegó al Informe 1 entregado; los
-  diagramas del entregable viven en `Entrega 1/Diagramas/` y `Entrega 2/Diagramas/`.
-- `rubricas/` — rúbricas de calificación por entregable e instrucciones globales de evaluación.
-- `productos/` — salidas entregables y formularios: el `.docx` de la Entrega 1 (fuente de verdad),
-  planillas T-12, registro de decisiones y la plantilla de informe.
-- `TrabajosAnteriores/` — propuestas y respaldos previos. Solo sirven de **referencia de forma**,
-  no de contenido.
-- `compct/` — contexto de sesión y protocolo de identidad (`CONTEXTO_SESION.md`). Define el
-  encabezado `## LafroX` que debe comenzar cada respuesta final.
-- `.opencode/` — configuración local de opencode: skills versionadas (`.opencode/skills/`), plugin de
-  activación y dependencias. `node_modules/` y `opencode-loop/` no se versionan (ver `.gitignore`).
-- `_staging/` — archivos en tránsito, **no versionado** (`.gitignore`). Nada de aquí es fuente:
-  cuando un archivo se consolida, se mueve a su carpeta definitiva.
+  - `Arquitectura/fisica/` — física consolidada, despliegue, integración, seguridad, dimensionamiento, sala de servidores, tabla de emplazamiento, ADR, BI, T-11, T-12 y el data center (`Subdoc04_DataCenter.md`).
+- `Diagramas/` — biblioteca única de diagramas del repositorio: los **15 diagramas del `.docx` de la Entrega 1** (prefijos `ARQL-` y `ARQF-`) más las fuentes `.drawio` y `.png` de trabajo, incluida `RT-06_DataCenter/`. Los subdocumentos referencian los diagramas por nombre desde aquí.
+- `Formularios/` — formularios técnicos y económicos (T-8, T-9, T-10, T-13, T-14, T-19, T-21, etc.).
+- `Rúbricas/` — rúbricas de calificación por entregable e instrucciones globales de evaluación.
+- `Productos/` — salidas entregables y auxiliares: `.docx` de la Entrega 1 (fuente de verdad), planillas T-12, registro de decisiones, plantilla de informe, la presentación PDF y su narración .mp3.
+- `Trabajos Anteriores/` — propuestas y respaldos previos. Solo sirven de **referencia de forma**, no de contenido.
+- `compct/` — contexto de sesión y protocolo de identidad (`CONTEXTO_SESION.md`). Define el encabezado `## LafroX` que debe comenzar cada respuesta final.
+- `.opencode/` — configuración local de opencode: skills versionadas (`.opencode/skills/`), plugin de activación y dependencias. `node_modules/` y `opencode-loop/` no se versionan (ver `.gitignore`).
+- `_staging/` — archivos en tránsito, **no versionado** (`.gitignore`). Nada de aquí es fuente: cuando un archivo se consolida, se mueve a su carpeta definitiva.
 
 ## Traza del proyecto (lo que produce el proponente)
 
@@ -211,7 +213,7 @@ Este flujo lo coordina `licitacion-workflow`; aquí el resumen para AGENTS.md:
 
 | Fase | Actividad | Skills a cargar |
 |---|---|---|
-| 0 · Preparación | Leer AGENTS.md, CONTEXTO_SESION, Bases y **la línea base en `Entrega 1/`**; fijar estado | `licitacion-workflow` |
+| 0 · Preparación | Leer AGENTS.md, CONTEXTO_SESION, Bases y **la línea base en los `entrega_1/` de cada subdocumento**; fijar estado | `licitacion-workflow` |
 | 1 · Comprensión del caso | Problema/necesidad; investigar numeral 16.2 | `deep-research`, `technical-writing` |
 | 2 · Requerimientos (Cap 17.1) | Catálogos RF/RNF/Bases, supuestos D1–D40, reglas de negocio, trazabilidad | `xlsx`, `technical-writing` |
 | 3 · Arquitectura | Lógica/física/datos, híbrido, modelo de datos | `architecture-diagrams`, `mermaid-diagrams`, `plantuml-diagrams`, `cloud-architecture`, `sre-practices` |
