@@ -1,0 +1,184 @@
+% ------------------------------------------------------------------
+%  Trazabilidad normativa y referencias cruzadas
+%  Fragmento del Subdocumento 4.2, traido desde contenido.tex con
+%  \parte{partes/15_n_trazabilidad}. Las rutas son relativas a la carpeta del
+%  subdocumento, nunca a la de main.tex.
+% ------------------------------------------------------------------
+
+\chapter{Trazabilidad normativa y referencias cruzadas}
+\label{sec:n-trazabilidad-normativa-y-referencias-cru}
+
+Esta sección es el punto único de trazabilidad del subdocumento. La tabla maestra de apertura asigna cada sección de este documento a los requisitos de las Bases que aborda y al resumen de cómo los cumple; las tablas por vista que siguen detallan el aporte de cada decisión de arquitectura y el requisito satisfecho, sin repetir la referencia dentro del cuerpo de las secciones.
+
+\section{Tabla maestra de trazabilidad}
+
+\begin{tablalafrox}{Trazabilidad de las secciones de este documento}{tab:t39}%
+  {F{0.30} Y F{0.24} G{0.14}}%
+  {\cab{Sección de este documento} & \cab{Requisitos que aborda} & \cab{Resumen de cumplimiento} & \cab{ADR}}
+  Visión general de la arquitectura física & Art. 16\textdegree{} & Declara el modelo de despliegue híbrido obligatorio y los principios que gobiernan el diseño. & ADR-03, ADR-06 \\
+  Modelo de emplazamiento híbrido & Art. 16\textdegree{} \textperiodcentered{} RT-03.10 \textperiodcentered{} RT-03.14 \textperiodcentered{} RT-03.22 & Asigna cada componente a nube, on-premise o híbrido y enumera las instalaciones de la red. & ADR-03 \\
+  Tecnologías de software ofertadas & RT-03.05 \textperiodcentered{} RT-03.07 \textperiodcentered{} RT-07.02/07.03/07.04 & Declara el stack ofertado, su portabilidad y el mecanismo de réplica del WMS local. & ADR-01, ADR-04 \\
+  Implementos a proveer: hardware y software & Art. 14.2 \textperiodcentered{} RT-08.03 \textperiodcentered{} RT-08.10 \textperiodcentered{} RT-08.13 \textperiodcentered{} RT-08.15 & Inventario ofertado con cantidades, características y justificación por componente. & ADR-10 \\
+  Especificaciones del sitio principal on-premise (CD Talca) & RT-06.01 a RT-06.34 \textperiodcentered{} numerales 6.1 y 7.2 & Sala técnica principal con redundancia N+1 y disponibilidad de infraestructura de 99,95 \% por componente. & --- \\
+  Especificaciones del sitio secundario y de la recuperación ante desastres & numeral 7.1 \textperiodcentered{} RT-07.02 \textperiodcentered{} RT-03.10 & CD Concepción en modo reducido y región secundaria us-east-1 con RTO/RPO declarados. & ADR-09 \\
+  Niveles de servicio de infraestructura & Art. 78\textdegree{} \textperiodcentered{} RT-10.01 \textperiodcentered{} RT-10.02 & Nivel de servicio de extremo a extremo $\geq$ 99,9 \% mensual, penalizable, sobre la transacción crítica. & --- \\
+  Operación desconectada & RT-03.10 a RT-03.13 \textperiodcentered{} RNF-06.02 & Autonomía de 24 h en el centro de distribución y 14 h en terreno, con sincronización y reconciliación determinista. & ADR-03, ADR-05 \\
+  Arquitectura de integración & RT-05.16 a RT-05.23 \textperiodcentered{} RT-02.06/02.07 & Contratos formales, mensajería asíncrona y capa anticorrupción del legado. & ADR-05, ADR-08, ADR-11 \\
+  Arquitectura de seguridad & Art. 21\textdegree{} a Art. 23\textdegree{} \textperiodcentered{} RT-11.02 a RT-11.27 \textperiodcentered{} RT-12.01 a RT-12.13 & Zero Trust, identidad, cifrado, detección y evidencia, y régimen de datos personales. & ADR-06, ADR-13, ADR-14, ADR-15 \\
+  Arquitectura de despliegue & RT-04.01 a RT-04.13 \textperiodcentered{} RT-03.17 \textperiodcentered{} RT-07.07 & Ambientes, redes, alta disponibilidad, recuperación ante desastres y respaldo 3-2-1-0. & ADR-09, ADR-10 \\
+  Dimensionamiento y plan de capacidad & RT-09.01 a RT-09.09 \textperiodcentered{} RNF-19.04 \textperiodcentered{} RT-15.01 & Volumetría, TPS de diseño, dimensionamiento on-premise y nube, y plan de crecimiento 3$\times$. & ADR-01, ADR-04, ADR-10, ADR-12 \\
+  Capa analítica: emplazamiento y dimensionamiento & RT-05.25 a RT-05.30 \textperiodcentered{} Art. 25\textdegree{} & Capa analítica separada de la transaccional, tableros y alertamiento por síntomas de negocio. & ADR-04 \\
+  Registro de decisiones de arquitectura & RT-02.04 & Quince decisiones con contexto cuantificado, alternativas, criterio y consecuencias. & Todos \\
+\end{tablalafrox}
+
+\section{Arquitectura de integración}
+\label{sub:apartado-h-arquitectura-de-integracion}
+
+\paragraph{Referencias cruzadas.}
+\begin{tablalafrox}{Arquitectura de integración \textperiodcentered{} Aporte de cada decisión de arquitectura a esta vista}{tab:t40}%
+  {G{0.10} Y}%
+  {\cab{ADR} & \cab{Aporte a la vista de integración}}
+  ADR-01 & Monolito modular: los módulos se comunican por eventos internos; EDI, telemetría y sincronización son workers extraíbles \\
+  ADR-05 & Mensajería asíncrona: RabbitMQ local con buffer de 24 h más SQS FIFO y EventBridge en nube \\
+  ADR-06 & Identidad: el maestro publica hacia las cachés (INT-13), nunca a la inversa \\
+  ADR-08 & WMS de 2013: absorción por estrangulamiento detrás de la ACL, con reversión azul-verde \\
+  ADR-11 & Hub EDI GS1 centralizado con capa anticorrupción; una cadena nueva se agrega por configuración \\
+  ADR-12 & El peak de septiembre se absorbe con elasticidad de los consumidores de cola, no con más integraciones \\
+\end{tablalafrox}
+
+\paragraph{Trazabilidad normativa.}
+\begin{tablalafrox}{Arquitectura de integración \textperiodcentered{} Requisitos satisfechos y dónde se resuelven}{tab:t41}%
+  {F{0.26} Y}%
+  {\cab{Requisito} & \cab{Cómo se cumple}}
+  BA Art. 16.4 & Bitácora de reconciliación auditable de cada decisión de conflicto (principios de integración, mensajería) \\
+  BA Art. 19 & Acoplamiento débil por eventos; dependencias síncronas acotadas y con timeout (principios de integración, catálogo de servicios de integración) \\
+  BA Art. 21 & Zero Trust: tráfico saliente; validación de esquema e inspección de carga útil en la puerta de enlace (principios de integración, contratos) \\
+  BA Art. 23 & OpenAPI 3.1 y AsyncAPI con versionado semántico y obsolescencia con preaviso de seis meses (contratos, versionado y política de obsolescencia) \\
+  RT-02.06 & Idempotencia con UUID y ventana de deduplicación documentada (principios de integración, mensajería) \\
+  RT-02.07 & Entrega al menos una vez, deduplicación y orden por partición (mensajería) \\
+  RT-02.08 / RT-02.09 & Reintento con retroceso, cortacircuitos, mamparos, timeout obligatorio y degradación elegante (mensajería) \\
+  RT-02.14 & Capa anticorrupción y estrangulamiento del legado (capa anticorrupción y estrangulamiento del legado) \\
+  RT-03.11 / RT-03.12 & Registro local íntegro y reconciliación determinista con bitácora (mensajería, funciones que no operan sin conexión) \\
+  RT-03.13 & Declaración de funciones no disponibles sin conexión y procedimiento manual (funciones que no operan sin conexión) \\
+  RT-05.16 & Contratos formales OpenAPI 3.1 y AsyncAPI 2.6 con dueño y estado (contratos) \\
+  RT-05.17 & Obsolescencia con seis meses de preaviso y doble versión concurrente (versionado y política de obsolescencia) \\
+  RT-05.18 & OAuth 2.1 con PKCE en superficies y mTLS entre servicios (contratos) \\
+  RT-05.20 & Capa anticorrupción frente al ERP de 2017 y al WMS de 2013 (capa anticorrupción y estrangulamiento del legado) \\
+  RT-05.21 & Matriz de integraciones con modo, volumen y ventana (catálogo de servicios de integración) \\
+  RT-05.22 & Carga y descarga masiva con volumen, frecuencia y control de calidad (carga y descarga masiva de datos) \\
+  RT-05.23 & Estándares sectoriales: GS1 (EANCOM, GS1 XML, EPCIS) y formato de la autoridad tributaria (integraciones externas: plataforma y terceros) \\
+  RT-10.08 & Comportamiento ante falla declarado por integración y verificado con inyección de fallas (catálogo de servicios de integración, gobierno de la capa de integración) \\
+  Caso Cap. 17.4, puntos 5, 6, 8 y 10 & Integración con el ERP y con los documentos tributarios (integraciones externas, capa anticorrupción y estrangulamiento del legado); destino del WMS de 2013 (capa anticorrupción y estrangulamiento del legado); evidencia de entrega articulada con la guía electrónica (INT-07); canal moderno sin una integración por cadena (capa anticorrupción y estrangulamiento del legado) \\
+\end{tablalafrox}
+
+\section{Arquitectura de seguridad}
+\label{sub:apartado-i-arquitectura-de-seguridad}
+
+\paragraph{Referencias cruzadas.}
+\begin{tablalafrox}{Arquitectura de seguridad \textperiodcentered{} Aporte de cada decisión de arquitectura a esta vista}{tab:t60}%
+  {G{0.10} Y}%
+  {\cab{ADR} & \cab{Aporte a la vista de seguridad}}
+  ADR-03 & Modelo híbrido: define qué queda expuesto y qué no; el on-premise no publica servicios \\
+  ADR-06 & Identidad híbrida Modelo B: autoridad única en nube y cachés de solo lectura; el DRP de identidad no requiere conmutación \\
+  ADR-07 & Movilidad nativa Android: habilita cifrado local, MDM y borrado remoto selectivo en el parque de terreno \\
+  ADR-09 & Recuperación ante desastres multi-región: origina la materia de transferencia internacional de la subsección de datos personales, residencia y transferencia internacional \\
+  ADR-11 & Hub EDI con capa anticorrupción: ninguna cadena externa alcanza el ERP \\
+  ADR-13 & Puerta de enlace Amazon API Gateway: concentra autenticación OIDC, cuotas, límites de tasa, validación de esquema e inspección de carga útil (Art. 21.2) en un único punto administrado \\
+  ADR-14 & Observabilidad de plataforma única: sostiene la detección y la evidencia de la subsección de detección, respuesta y evidencia sin operar una segunda plataforma on-premise \\
+  ADR-15 & Gestión de secretos en servicio administrado (SEC-01, cifrado a nivel de campo y gestión de secretos) --- adoptada y propagada el 2026-09-06 \\
+\end{tablalafrox}
+
+\paragraph{Trazabilidad normativa.}
+\begin{tablalafrox}{Arquitectura de seguridad \textperiodcentered{} Requisitos satisfechos y dónde se resuelven}{tab:t61}%
+  {F{0.26} Y}%
+  {\cab{Requisito} & \cab{Cómo se cumple}}
+  BA Art. 21.1 & Zero Trust NIST SP 800-207 (modelo Zero Trust); STRIDE por componente e integración (modelado de amenazas STRIDE); clasificación de la información (clasificación de la información); plazos de remediación 7/15/30 días (detección, respuesta y evidencia) \\
+  BA Art. 21.2 & Capa expuesta con CDN, WAF y Shield; TLS 1.3 con HSTS; cifrado en reposo con KMS y separación de funciones; puerta de enlace con cuotas, esquema y carga útil; protección de bots (capa expuesta, cifrado y gestión de claves) \\
+  BA Art. 21.3 & Registro centralizado e inalterable con 12 + 24 meses; SIEM con casos de uso del negocio; EDR en ambos dominios; respuesta en 2 h; brechas en 24 h; pentest anual y previo a producción (detección, respuesta y evidencia) \\
+  BA Art. 21.4 & SAST, DAST, SCA y escaneo de imágenes con bloqueo; SBOM CycloneDX; SLSA 3; sin secretos embebidos; sin datos productivos en ambientes no productivos (seguridad del ciclo de desarrollo) \\
+  BA Art. 22 & Identidad centralizada con OIDC/OAuth 2.1 y LDAP; SSO con cierre propagado; MFA; FIDO2; RBAC y ABAC con segregación de funciones; PAM; política de sesión completa; auditoría de identidad; baja $\leq$ 24 h; perfil operacional de terreno (identidad, acceso y sesiones) \\
+  BA Art. 23 & Residencia declarada, transferencia internacional con base de licitud y resguardos, retención por categoría, eliminación segura y exportabilidad (datos personales, residencia y transferencia internacional) \\
+  RT-11.02 & Modelado STRIDE por componente e integración (modelado de amenazas STRIDE) \\
+  RT-11.03 & Clasificación en cuatro niveles con controles diferenciados (clasificación de la información) \\
+  RT-11.04 & Programa de vulnerabilidades con plazos y verificación de corrección (detección, respuesta y evidencia) \\
+  RT-11.05 & Matriz de controles ISO/IEC 27001:2022 (matriz de controles ISO/IEC 27001:2022) \\
+  RT-11.08 / RT-11.09 & TLS 1.3 con gestión de certificados; cifrado en reposo con KMS y rotación (cifrado y gestión de claves) \\
+  RT-11.10 & Cifrado a nivel de campo para los cuatro conjuntos que fija el Cap. 15 del caso (cifrado a nivel de campo) \\
+  RT-11.11 & Puerta de enlace con autenticación, cuotas, límites, esquema e inspección de carga útil (capa expuesta) \\
+  RT-11.13 & Superficie de exposición completa por zona y sitio (superficie de exposición completa) \\
+  RT-11.14 / RT-11.15 / RT-11.17 & Eventos inalterables con retención; SIEM; SOC 24$\times$7 (detección, respuesta y evidencia) \\
+  RT-11.18 / RT-11.19 / RT-11.20 / RT-11.21 & Plan de respuesta, notificación de brechas, pentest independiente y simulacros con el CLIENTE (detección, respuesta y evidencia) \\
+  RT-11.22 a RT-11.27 & Seguridad del ciclo de desarrollo (seguridad del ciclo de desarrollo) \\
+  RT-12.01 a RT-12.13 & Identidad, acceso y sesiones completos (identidad, acceso y sesiones) \\
+  RT-03.15 & Endurecimiento CIS con gestión centralizada de parches (detección, respuesta y evidencia, F-02) \\
+  RT-03.18 & MDM de dispositivos de borde y terreno (gestión de dispositivos) \\
+  RT-03.22 & Acceso remoto con confianza cero y verificación de postura; sin servicios internos expuestos (zonas y flujos, superficie de exposición completa) \\
+  RT-16.07 / RT-16.09 & Registro inalterable y registro de consultas a información sensible (cifrado a nivel de campo, detección, respuesta y evidencia) \\
+  Caso Cap. 15 (RT-11.10, RT-12.11, RT-12.12, RT-16.09) & Cifrado a nivel de campo (cifrado a nivel de campo); autenticación con guantes, a una mano y en dispositivos compartidos (autenticación en el perfil operacional de terreno); usuarios externos (federación, SSO y factores; autorización); registro de consultas (cifrado a nivel de campo) \\
+  Caso Cap. 17.4, puntos 3 y 9 & Operación de un turno completo sin señal con autenticación local (modelo de identidad, autenticación en el perfil operacional de terreno); incorporación de conductores de terceros con OTP y sin cuenta corporativa (federación, SSO y factores) \\
+\end{tablalafrox}
+
+\section{Arquitectura de despliegue}
+\label{sub:apartado-j-arquitectura-de-despliegue}
+
+\paragraph{Referencias cruzadas.}
+\begin{tablalafrox}{Arquitectura de despliegue \textperiodcentered{} Aporte de cada decisión de arquitectura a esta vista}{tab:t70}%
+  {G{0.10} Y}%
+  {\cab{ADR} & \cab{Aporte a la vista de despliegue}}
+  ADR-03 & Modelo híbrido: borde operacional on-premise + carga principal en nube (justificación Art. 16) \\
+  ADR-05 & Capa de mensajería RabbitMQ local + SQS/EventBridge (buffer offline, Zero Trust outbound) \\
+  ADR-09 & DR warm standby activo-pasivo multi-región (RTO/RPO, pruebas 2$\times$/año) \\
+  ADR-10 & Almacenamiento on-premise y niveles RAID (RAID 10 / RAID 6, RT-03.14) \\
+  ADR-12 & Cómputo elástico y absorción del peak de septiembre (escala predictiva + reactiva) \\
+\end{tablalafrox}
+
+\paragraph{Trazabilidad normativa.}
+\begin{tablalafrox}{Arquitectura de despliegue \textperiodcentered{} Requisitos satisfechos y dónde se resuelven}{tab:t71}%
+  {F{0.26} Y}%
+  {\cab{Requisito} & \cab{Cómo se cumple}}
+  RT-04.01 & 5 ambientes habilitados (hito H3) \\
+  RT-04.02 & PreProd = Prod en topología, versiones y configuración \\
+  RT-04.05/04.06 & CI con gates de seguridad y despliegue automatizado con reversión \\
+  RT-04.07 & Azul-verde/canario demostrado en PreProd \\
+  RT-04.08/04.09 & Configuración por ambiente y secretos con rotación \\
+  RT-03.01/03.02 & AWS sa-east-1 primaria/us-east-1 DRP; Multi-AZ en componentes críticos \\
+  RT-03.03 & IaC 100 \% versionado en el repositorio del CLIENTE \\
+  RT-03.10 & Autonomía 24 h / 14 h sin enlace \\
+  RT-03.12 & Sincronización automática y reconciliación determinista al reconectar \\
+  RT-03.14 & RAID declarado y justificado frente a alternativas \\
+  RT-03.17 & Enlace redundante, caminos/proveedores distintos, conmutación $<$ 30 s \\
+  RT-07.07 / Art. 20 & Pruebas de DR reales $\geq$ 2 veces/año con medición de RTO/RPO \\
+  RT-10.01 & Disponibilidad e2e $\geq$ 99,9 \% mensual sobre la transacción crítica \\
+  RNF-20.06 / 20.07 & RTO $\leq$ 4 h / RPO $\leq$ 15 min \textperiodcentered{} respaldo 3-2-1-0 \\
+  Art. 21 & Zero Trust: solo outbound, sin conexiones entrantes (salvo D-AL-05) \\
+  Art. 23 / Ley 21.719 & Residencia declarada, base de licitud y resguardos de la transferencia internacional a us-east-1, con exclusión de la geolocalización de personas (DRP nube; detalle en la sección de arquitectura de seguridad de este documento, subsección de datos personales, residencia y transferencia internacional) \\
+\end{tablalafrox}
+
+\section{Dimensionamiento y plan de capacidad}
+\label{sub:apartado-k-dimensionamiento-y-plan-de-capa}
+
+\paragraph{Referencias cruzadas.}
+\begin{tablalafrox}{Dimensionamiento y plan de capacidad \textperiodcentered{} Aporte de cada decisión de arquitectura a esta vista}{tab:t87}%
+  {G{0.10} Y}%
+  {\cab{ADR} & \cab{Aporte a la vista de capacidad}}
+  ADR-01 & Monolito modular: el peak se absorbe con réplicas de la misma imagen (2$\rightarrow$6 Fargate) \\
+  ADR-04 & Persistencia políglota: DynamoDB On-Demand (IoT) + Aurora (OLTP) + OLAP S3/Redshift (series consolidadas) \\
+  ADR-10 & Almacenamiento on-premise: RAID 10 NVMe $>$ 100.000 IOPS, pool Ceph 5,76 TB \\
+  ADR-12 & Absorción del peak de septiembre con cómputo elástico (escala predictiva + reactiva) \\
+\end{tablalafrox}
+
+\paragraph{Trazabilidad normativa.}
+\begin{tablalafrox}{Dimensionamiento y plan de capacidad \textperiodcentered{} Requisitos satisfechos y dónde se resuelven}{tab:t88}%
+  {F{0.22} Y}%
+  {\cab{Requisito} & \cab{Cómo se cumple}}
+  RT-09.01 & Cálculo de capacidad con supuestos (volumetría de referencia y concurrencia y TPS de diseño); umbrales p95 (umbrales de desempeño) y Tabla 15 \\
+  RT-09.02 & Perfil de carga no plano como base del diseño (criterios y método de dimensionamiento) \\
+  RT-09.03 & 3$\times$ en 3 años sin rediseño (plan de capacidad y crecimiento) \\
+  RT-09.04 & Escalado horizontal automático con umbrales y límites (dimensionamiento nube) \\
+  RT-09.05 & Primer cuello de botella declarado y mitigado (primer cuello de botella) \\
+  RT-09.06 / 09.07 & Pruebas de carga/estrés 1,5$\times$ peak en PreProd + informe de carga (pruebas de carga y estrés, T-13) \\
+  RT-09.08 & Degradación controlada por servicio (degradación controlada) \\
+  RT-09.09 & Gestión trimestral de capacidad con alertas anticipadas y propuesta de ajuste (actualización del plan de capacidad) \\
+  RT-15.01 & Sin capacidad ociosa financiada (auto-scaling + escala vertical dentro del margen) \\
+  RNF-19.04 & Pruebas 1,5$\times$ peak (pruebas de carga y estrés) y carga de diseño 3.900 entregas/día (concurrencia y TPS de diseño) \\
+\end{tablalafrox}

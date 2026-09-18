@@ -1,0 +1,53 @@
+% ------------------------------------------------------------------
+%  Especificaciones del sitio principal on-premise (CD Talca)
+%  Fragmento del Subdocumento 4.2, traido desde contenido.tex con
+%  \parte{partes/05_d_sitio_principal}. Las rutas son relativas a la carpeta del
+%  subdocumento, nunca a la de main.tex.
+% ------------------------------------------------------------------
+
+\chapter{Especificaciones del sitio principal on-premise (CD Talca)}
+\label{sec:d-especificaciones-del-sitio-principal-on-}
+
+\paragraph{Tipología declarada (numeral 6.1 de las Transversales): sala técnica principal.}
+El CD Talca aloja el núcleo del componente on-premise ---motor WMS, base transaccional del maestro de bodega, broker de colas, capa anticorrupción del ERP, caché de identidad, telemetría y respaldo local---, es decir cómputo, almacenamiento y procesamiento sustantivos en instalaciones del CLIENTE. Por eso se le aplican íntegramente los requisitos RT-06.01 a RT-06.34, y no el régimen proporcional de una sala de sitio.
+
+\textbf{Disponibilidad de infraestructura comprometida: 99,95 \% mensual}, conforme al numeral 6.1 y a la tabla del numeral 7.2 de las Transversales, medida por componente: energía del recinto, climatización, red y comunicaciones, servidores y cómputo, y motor de base de datos. El compromiso se sostiene con redundancia N+1 en energía y climatización, doble acometida con transferencia automática, generación autónoma propia y monitoreo continuo con alertamiento; no se invoca ninguna clasificación de instalación de tercero, porque las Bases no exigen certificación de nivel sino el cumplimiento verificable de cada requisito técnico individual. Este valor es el nivel de la infraestructura del recinto y es distinto del compromiso contractual penalizable del Artículo 78\textdegree{}, que recae sobre la transacción de negocio de extremo a extremo ($\geq$ 99,9 \% mensual, RT-10.01).
+
+El programa arquitectónico considera $\approx$ 173 m\textsuperscript{2} y 14 recintos: sala blanca de 32 m\textsuperscript{2}, NOC de 14 m\textsuperscript{2}, sala de sistemas de alimentación ininterrumpida y baterías, sala de climatización, sala de extinción, distribuidor principal y acometidas, recinto de custodia de medios de 10 m\textsuperscript{2}, patio de generador y recintos de apoyo. La disposición interna, la separación de zonas y la elevación de gabinetes constan en los planos del recinto que acompañan a esta parte (RT-06.03 y RT-06.05).
+
+\figuralafrox{0.94}{DC01a_Plano_Distribucion.png}{Plano de distribución interna del recinto técnico, con la separación de las zonas de generador, baterías, climatización, servidores, comunicaciones y custodia de medios (RT-06.03)}{fig:dc-distribucion}
+
+Energía: UPS doble conversión on-line 6 kVA con configuración N+1 y banco VRLA con autonomía $\geq$ 30 min a plena carga (RT-06.07); grupo electrógeno de 12 kVA con estanque para 24 h y contrato de reabastecimiento (RT-06.08); transferencia automática red$\leftrightarrow$generador con prueba mensual con carga real (RT-06.10); PDU verticales A/B por gabinete con medidor (RT-08.04); factor de potencia $\geq$ 0,95 (RT-06.11).
+
+\figuralafrox{0.94}{DC02_Cadena_Electrica.png}{Cadena eléctrica del recinto: acometida, transferencia automática, generación autónoma, alimentación ininterrumpida y distribución A/B por gabinete (RT-06.07 a RT-06.12)}{fig:dc-electrica}
+
+Climatización: 2 CRAC de precisión $\approx$ 12.000 BTU/h en N+1, con free cooling, pasillo frío confinado y rango ASHRAE TC 9.9 de 18--27 \textdegree{}C y 40--60 \% HR medido a la toma de aire del equipo (RT-06.13 y RT-06.14); PUE de diseño 1,7 con medición continua en 2 puntos y reporte trimestral.
+
+Incendios: detección temprana por aspiración AnaLASER (RT-06.16); extinción con agente limpio FM-200 conforme NFPA 75/2001 con botón de aborto (RT-06.17); extintores ABC y CO\textsubscript{2} por recinto (RT-06.18).
+
+Seguridad física: 4 capas de acceso con biometría facial y resguardo AFIS, esclusa antipassback y bitácora electrónica, una persona a la vez y acompañada (RT-06.20, RT-06.21 y RT-06.23); 12 puertas controladas y 7 cámaras IP con retención $\geq$ 30 días integradas al control de acceso (RT-06.24); NOC de 14 m\textsuperscript{2} contiguo a la sala con ventana interior (\guillemotleft{}ver sin entrar\guillemotright{}, RT-06.29/30); sensores ambientales DCIM/BMS (RT-06.14).
+
+Custodia de medios (RT-06.26/27/28): recinto de 10 m\textsuperscript{2} en la segunda línea, sin luz UV ($\leq$ 300 lux), 40--60 \% HR, ventilación forzada y 18--27 \textdegree{}C; medio cifrado transportable rotado semanalmente a bóveda externa bajo custodia acreditada con cadena de custodia y bitácora; la pierna inmutable S3 es complementaria, no la reemplaza.
+
+Cableado y comunicaciones: cableado estructurado Cat6A F/UTP + fibra OM4 certificado enlace por enlace (RT-06.04) sobre piso técnico de 40 cm, jerarquía ANSI/TIA-942 ENI$\rightarrow$MDA$\rightarrow$HDA$\rightarrow$ZDA$\rightarrow$EDA, con dos ductos de ingreso independientes (RT-06.32); 4 racks 42U en gabinete de servidores y comunicaciones separados (RT-06.05), con el cuarto (R04) reservado al crecimiento a 3 años.
+
+\figuralafrox{0.86}{DC03b_Elevacion_Racks_RT0605.png}{Elevación de los cuatro gabinetes, con la ocupación proyectada de cada uno y el margen de crecimiento reservado en R04 (RT-06.05)}{fig:dc-racks}
+
+Los componentes de sala ofertados se detallan a continuación:
+
+\begin{tablalafrox}{Componentes de sala del sitio principal (CD Talca)}{tab:t27}%
+  {F{0.21} Y F{0.21} G{0.08} Y}%
+  {\cab{Componente} & \cab{Producto ofertado} & \cab{Ubicación} & \cab{Cant.} & \cab{Justificación}}
+  D1 --- UPS & Doble conversión on-line 6 kVA, N+1, banco VRLA $\geq$ 30 min & Sala de UPS/baterías (2\textordfeminine{} línea) & 1 & Sin parpadeo entre la caída de red y la partida del generador; autonomía $\geq$ 30 min a plena carga (RT-06.07). \\
+  D2 --- Generador & Grupo electrógeno 12 kVA, estanque 24 h + contratos de reabastecimiento & Patio generador (exterior) & 1 & Asume TI y clima en 8--15 s; el estanque garantiza 24 h (RT-06.08). \\
+  D3 --- ATS/TTA + tablero & Transferencia automática red$\leftrightarrow$generador + protecciones selectivas & Acometida (accesible desde fuera) & 1 & Transferencia automática con prueba mensual con carga real y termografía periódica (RT-06.10). \\
+  D4 --- Climatización & 2 CRAC de precisión $\approx$ 12.000 BTU/h, N+1, free cooling, 18--27 \textdegree{}C / 40--60 \% HR & Sala de climatización & 2 & Rango ASHRAE en toma de aire del equipo (RT-06.13 y RT-06.14); redundancia N+1 y pasillo frío confinado. \\
+  D5 --- PDU racks & 2 PDU verticales A/B por gabinete, con medidor & 4 racks sala & 4 $\times$ 2 & Dos caminos eléctricos independientes por gabinete (RT-08.04); el medidor es el denominador del PUE. \\
+  D6 --- Detección de incendios & Detección por aspiración AnaLASER o equivalente & Sala blanca & 1 & Detección temprana antes de llama visible (RT-06.16). \\
+  D7 --- Extinción & FM-200 o equivalente, NFPA 75/2001, botón de aborto & Sala blanca & 1 & Agente limpio sobre equipos energizados (RT-06.17) y extintores ABC/CO\textsubscript{2} por recinto (RT-06.18). \\
+  D8 --- Seguridad física & Biometría facial + resguardo AFIS, esclusa, bitácora electrónica & Acceso a la sala (4 capas) & 1 & Doble factor con re-verificación biométrica y antipassback (RT-06.20, RT-06.21 y RT-06.23). \\
+  D9 --- Videovigilancia & 7 cámaras IP, retención $\geq$ 30 días + respaldo auditable & Sala + perímetro & 7 & Cobertura de cada puerta controlada; \guillemotleft{}la puerta marca el video\guillemotright{} (RT-06.24). \\
+  D10 --- Recinto de custodia & Sala de custodia 10 m\textsuperscript{2}: LED sin UV $\leq$ 300 lux, 40--60 \% HR, ventilación forzada, 18--27 \textdegree{}C & Sala --- 2\textordfeminine{} línea & 1 & Medios de respaldo en condiciones que no degradan el soporte (RT-06.27), accesible sin cruzar la sala blanca (RT-06.26). \\
+  D11 --- Gabinetes & 4 racks 42U (R01 servidores, R02 red, R03 HDA/respaldo, R04 crecimiento) & Sala blanca & 4 & Servidores y comunicaciones separados (RT-06.05); el rack R04 absorbe el crecimiento a 3 años sin obras. \\
+  D12 --- Cableado estructurado & Cat 6A + fibra OM4 certificado por enlace; piso técnico 40 cm & Sala & 1 & Normativa por enlace (RT-06.04) y recorridos máximos/mínimos verificados para enlaces de 10 GbE. \\
+\end{tablalafrox}

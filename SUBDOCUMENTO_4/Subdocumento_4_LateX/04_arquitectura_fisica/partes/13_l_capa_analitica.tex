@@ -1,0 +1,267 @@
+% ------------------------------------------------------------------
+%  Capa analítica: emplazamiento y dimensionamiento
+%  Fragmento del Subdocumento 4.2, traido desde contenido.tex con
+%  \parte{partes/13_l_capa_analitica}. Las rutas son relativas a la carpeta del
+%  subdocumento, nunca a la de main.tex.
+% ------------------------------------------------------------------
+
+\chapter{Capa analítica: emplazamiento y dimensionamiento}
+\label{sec:l-capa-analitica-emplazamiento-y-dimension}
+
+Complemento de la sección de dimensionamiento y plan de capacidad --- Emplazamiento y dimensionamiento de la capa analítica. La capa analítica no es una funcionalidad añadida por iniciativa de la propuesta: es un componente exigido por el numeral 5.4 de las Transversales (RT-05.25 a RT-05.30: capa analítica separada de la transaccional, tableros operacionales y de gestión con filtros por período y unidad organizacional, desagregación hasta el hecho y latencia máxima declarada) y por el Capítulo 18 del caso, que fija OTIF, fill rate y costo de servir como criterios de aceptación. Esta sección declara con qué componentes se materializa, dónde se emplazan y cómo se garantiza que ninguna consulta analítica degrade la operación.
+
+Alcance de lo que no se propone. Conforme a la decisión de diseño sobre analítica avanzada del registro de decisiones, la solución \textbf{no incorpora inteligencia artificial ni analítica predictiva} en el alcance contratado, y lo declara de forma fundada como permite el Capítulo 18 de las Transversales (RT-18.01). La capa analítica se entrega preparada ---lago de datos en formato columnar y almacén analítico--- para incorporarlas cuando el CLIENTE alcance la madurez de datos que hoy no tiene: el caso parte de un 41 \% de recepciones sin registro de lote y un 2,3 \% de diferencia de inventario, y predecir sobre esa base produce confianza injustificada. El ruteo se resuelve con optimización determinística, auditable y corregible por el planificador, que es lo que pide el criterio de aceptación N\textdegree{} 7 del caso.
+
+\section{Fundamento normativo}
+\label{sub:2-fundamento-normativo}
+
+\subsection{Exigencias de las Bases Técnicas Transversales}
+
+\begin{tablalafrox}{Bases Técnicas Transversales (RT)}{tab:t89}%
+  {G{0.11} Y G{0.15} F{0.26}}%
+  {\cab{ID RT} & \cab{Requerimiento} & \cab{Tipo} & \cab{Naturaleza}}
+  RT-05.25 & Capa analítica con tableros operacionales y de gestión & Obligatorio & Estructura de plataforma \\
+  RT-05.26 & Tableros con filtros por período, unidad organizacional y drill-down & Obligatorio & Estructura de plataforma \\
+  RT-14.02 & Acceso propio y permanente a tableros operacionales y de negocio & Obligatorio & Observabilidad \\
+  RT-14.03 & SLA/SLO medidos sobre experiencia real del usuario (P95) & Obligatorio & Observabilidad \\
+  RT-14.04 & Alertamiento basado en síntomas de negocio & Obligatorio & Observabilidad \\
+\end{tablalafrox}
+
+El numeral 5.4 de las Transversales hace de la capa analítica un componente obligatorio y no una funcionalidad adicional: RT-05.25 a RT-05.28 son obligatorios y RT-05.29 fija la latencia máxima según el caso. La analítica predictiva de RT-05.30 es deseable y esta propuesta la declina de forma fundada, conforme a RT-18.01.
+
+\subsection{Exigencias del Caso 02}
+
+El caso define tres indicadores estratégicos que requieren procesamiento analítico continuo:
+
+\begin{tablalafrox}{Caso 02 --- Distribuidora Puelche S.A.}{tab:t90}%
+  {Y G{0.18} F{0.25} G{0.19}}%
+  {\cab{Indicador} & \cab{Estado actual} & \cab{Meta} & \cab{Fuente en Caso}}
+  OTIF (entregas completas y a tiempo) & 82,4 \% & $>$ 95 \% & Cap. 4.1 y 7.1 \\
+  Fill rate & 91,3 \% & $>$ 97 \% & Cap. 4.1 \\
+  Costo de servir por cliente & Desconocido & Calcular y gestionar & Cap. 7.2 y 9.8 \\
+\end{tablalafrox}
+
+Las tres exigencias no son una lectura de la propuesta: están en boca de quienes las van a usar.
+
+\begin{cita}{Gerente comercial --- Caso 02, Cap. 7.1}
+Mi indicador principal es el OTIF.
+\end{cita}
+
+\begin{cita}{Gerente de finanzas --- Caso 02, Cap. 7.2}
+El costo de servir es mi obsesión. Si no sabemos cuánto nos cuesta llegar a cada local, ¿cómo vamos a decidir a quién priorizar?
+\end{cita}
+
+\begin{cita}{Gerente de finanzas --- Caso 02, Cap. 9.8}
+Necesito saber el costo de servir por cliente y por entrega.
+\end{cita}
+
+Estos indicadores no pueden calcularse sin un componente de analítica que consolide datos transaccionales de múltiples módulos (preventa, transporte, cobranza, telemetría, bodega) y los presente de forma consumible por los gerentes.
+
+\section{Requerimientos que dependen de la capa analítica}
+\label{sub:3-requerimientos-que-dependen-de-la-capa-a}
+
+Los requerimientos que esta capa satisface están fichados en el catálogo del subdocumento 3; aquí se listan agrupados por procedencia, para dejar constancia de que ninguno queda sin componente que lo sostenga.
+
+\paragraph{Propios del módulo (Épica 11).}
+\begin{tablalafrox}{Requerimientos propios del módulo (Épica 11)}{tab:t91}%
+  {G{0.09} F{0.21} F{0.21} Y F{0.21}}%
+  {\cab{ID RF} & \cab{Nombre} & \cab{Actor(es) principal(es)} & \cab{Descripción} & \cab{Origen}}
+  RF-11.01 & Distribución Automática de Reportes Ejecutivos & Gerente de Finanzas, Gerente Comercial, Jefa de Calidad & Programar y distribuir vía correo reportes ejecutivos consolidados (PDF/XLSX) con periodicidad semanal y mensual, desglosando OTIF, Fill Rate, Merma por vencimiento y Costo de Servir por zona y canal & Cap. 7.1, 7.2, 9.8 \\
+  RF-11.02 & Cálculo del Costo de Servir por Entrega y Cliente & Gerente de Finanzas, Gerente Comercial & Calcular Costo de Servir real por entrega y cliente, imputando costos directos de transporte (combustible, peajes, tiempo de conducción/descarga) e indirectos prorrateados (bodega, administración) & Cap. 4.4, 7.2, 9.8 \\
+  RF-11.03 & Cálculo Diario Unificado del Indicador OTIF & Gerente Comercial, Jefa de Calidad, Conductores & Calcular diariamente OTIF por cliente, ruta, zona y total consolidado. On-Time = cumplimiento de fecha/ventana horaria. In-Full = 100\% de ítems y unidades pedidas. Obligar registro de causal tipificada ante desvíos & Cap. 7.1, 9.1 \\
+  RF-11.04 & Medición de Fill Rate y Perfect Order con POD Móvil & Gerente Comercial, Conductores & Calcular automáticamente Fill Rate (unidades entregadas vs pedidas) e índice de Perfect Order contrastando orden original contra datos de entrega física confirmados en dispositivo móvil & Cap. 7.1, 9.4 \\
+  RF-11.05 & Monitoreo y Alerta de Ocupación de Flota & Planificador de rutas, Gerente Comercial & Calcular diariamente utilización de capacidad volumétrica (m\textsuperscript{3}) y peso (kg) por viaje, alertando camiones con ocupación inferior al umbral configurable ($<$ 65\%) & Cap. 4.4, 7.2 \\
+  RF-11.06 & Tablero de Control Operacional en Tiempo Real & Gerente Comercial, Gerente de Finanzas, Jefa de Calidad & Tablero de Control que consolide avance de rutas de despacho, \% entregas cumplidas, devoluciones en tránsito, alertas de cadena de frío y monto recaudado en efectivo & RT-05.29, Cap. 9.1, 9.6 \\
+  RF-11.07 & Liquidación y Cierre Comercial por Camión & Cajero Liquidador, Conductores, Gerente de Finanzas & Procesar automáticamente la liquidación y cierre comercial por camión al retornar a base, consolidando documentos tributarios, devoluciones, cobranzas y balance de envases retornables & RT-05.29 \\
+  RF-11.08 & Segmentación de Clientes por Rentabilidad Neta & Gerente Comercial, Preventista, Gerente de Finanzas & Segmentar mensualmente la cartera en matrices de rentabilidad neta (margen comercial vs costo de servir real), sugiriendo ajustes de frecuencia o umbrales mínimos de compra para clientes no rentables & Cap. 7.2, 9.8 \\
+\end{tablalafrox}
+
+\paragraph{No funcionales del módulo.}
+\begin{tablalafrox}{Requerimientos no funcionales del módulo}{tab:t92}%
+  {G{0.12} F{0.26} Y G{0.12}}%
+  {\cab{ID RNF} & \cab{Nombre} & \cab{Descripción} & \cab{Prioridad}}
+  RNF-11.01 & Latencia de despliegue de indicadores operacionales & Desplegar indicadores del día con latencia $\leq$ 5 min desde recepción en backend central & Muy Alta \\
+  RNF-11.02 & Desacople OLAP/BI vs OLTP & Desacoplar procesamiento analítico del motor transaccional, garantizando cero degradación en tiempos de respuesta de bodega (picking $\leq$ 1s) y preventa ($\leq$ 1.5s) & Alta \\
+\end{tablalafrox}
+
+\paragraph{Requisitos transversales vinculados.}
+\begin{tablalafrox}{Requerimientos transversales vinculados al módulo}{tab:t93}%
+  {G{0.11} F{0.23} F{0.23} Y G{0.15}}%
+  {\cab{ID RF} & \cab{Nombre} & \cab{Actor(es)} & \cab{Descripción} & \cab{RT de origen}}
+  RF-16.02 & Acceso del CLIENTE a tableros operacionales y de negocio & Cliente & Acceso propio y permanente a tableros operacionales y de negocio con datos en tiempo real y capacidad de exportación & RT-14.02 \\
+  RF-16.03 & Alertamiento basado en síntomas de negocio & Equipo de operaciones & Alertas por síntomas de negocio (OTIF bajo, pedidos no preparados), no solo umbrales de infraestructura. Con supresión de ruido, agrupación, escalamiento y turnos de disponibilidad & RT-14.04 \\
+  RF-17.12 & Listados ordenables, filtrables, paginados y exportables & Persona usuaria interna & Listados ordenables, filtrables, paginados y exportables en formatos abiertos, con filtro aplicado reflejado en exportación & RT-16.28 \\
+  RNF-16.01 & SLA/SLO medidos sobre experiencia real del usuario & Equipo de operaciones & Indicadores de nivel de servicio medidos sobre experiencia real (P95), no sobre pruebas sintéticas & RT-14.03 \\
+\end{tablalafrox}
+
+\paragraph{De otras épicas, con dependencia de esta capa.}
+\begin{tablalafrox}{Requerimientos de otras épicas con dependencia del módulo BI}{tab:t94}%
+  {G{0.11} F{0.26} Y Y}%
+  {\cab{ID RF} & \cab{Épica} & \cab{Nombre} & \cab{Dependencia con BI}}
+  RF-04.08 & Planificación de Rutas & Cálculo integral del costo de entrega realizada & Alimenta RF-11.02 (costo de servir) con costo calculado por ruta \\
+  RF-06.07 & Transporte/POD & Sincronización de registros de turno (reporte de cierre) & Alimenta RF-11.07 (liquidación por camión) con datos de cierre \\
+  RF-07.02 & Cobranza & Rendición Digital Individual de Efectivo & Alimenta RF-11.07 con cuadratura de cobranza \\
+  RF-07.07 & Cobranza & Consulta de Estado de Cuenta en Portal & Consumida por RF-16.02 (tableros para clientes) \\
+  RF-08.06 & Logística Inversa & Reporte de Pérdida de Envases Retornables & Alimenta RF-11.02 (costo de servir) con costo de envases perdidos \\
+  RF-08.07 & Logística Inversa & Integración de Devoluciones y Mermas al Costo de Servir & Alimenta RF-11.02 con componente de devoluciones/mermas \\
+  RF-09.05 & Trazabilidad & Alerta de excursiones térmicas & Consumida por RF-11.06 (tablero operacional) y RF-16.03 (alertas) \\
+  RF-14.06 & Telemetría & Integración de telemetría con costo de servir & Alimenta RF-11.02 con km reales y tiempo de viaje por entrega \\
+  RF-14.09 & Telemetría & Reportes de kilometraje y consumo & Consumida por RF-11.01 (reportes ejecutivos) y RF-11.02 (costo de servir) \\
+  RF-02.07 & Almacén & Consulta de nivel de ocupación por zona & Consumida por RF-11.06 (tablero operacional) \\
+  RF-03.08 & Preventa & Alerta por superación del límite de crédito & Consumida por RF-16.03 (alertas de negocio) \\
+\end{tablalafrox}
+
+\section{Mapeo de requerimientos a componentes de arquitectura}
+\label{sub:4-mapeo-de-requerimientos-a-componentes-de}
+
+\subsection{Componentes de la capa analítica}
+
+El módulo de BI/Analítica se materializa en los siguientes componentes de la arquitectura:
+
+\begin{tablalafrox}{Componentes del módulo BI}{tab:t95}%
+  {F{0.24} F{0.23} F{0.24} Y}%
+  {\cab{Componente} & \cab{Ubicación} & \cab{Tecnología} & \cab{Responsabilidad}}
+  Motor OLAP / Warehouse & Cloud (AWS) & Amazon Redshift Serverless & Almacenamiento analítico desacoplado de OLTP. Consolida datos de Aurora PostgreSQL vía DMS CDC. Alimenta RF-11.01--RF-11.08 \\
+  Motor transaccional fuente & Cloud (AWS) & Amazon Aurora PostgreSQL (PostGIS) & Base OLTP de donde se extraen los datos hacia Redshift. Contiene datos de preventa, reparto, cobranza, bodega \\
+  Motor transaccional fuente (on-prem) & On-Premise (Talca) & PostgreSQL + PostGIS (local) & WMS de bodega. Sincroniza con Aurora vía DMS CDC (RPO $\leq$ 15 min) \\
+  Capa de procesamiento analítico & Cloud (AWS) & Celery workers (Django) + Redshift SQL & Cálculo de OTIF (RF-11.03), Fill Rate (RF-11.04), Costo de Servir (RF-11.02), Ocupación de Flota (RF-11.05), Segmentación (RF-11.08) \\
+  Distribución de reportes & Cloud (AWS) & Celery Beat + SES (correo) + S3 (almacenamiento PDF/XLSX) & RF-11.01: reportes automáticos semanales/mensuales \\
+  Tablero operacional & Cloud (AWS) & Grafana (autoservicio) o Angular SPA & RF-11.06: tablero de control en tiempo real. RF-16.02: acceso del cliente. RF-16.03: alertas de negocio \\
+  Sistema de alertas & Cloud (AWS) & CloudWatch + SNS + Celery & RF-16.03: alertamiento por síntomas de negocio. RF-11.05: alertas de ocupación \\
+  Portal de autoatención cliente & Cloud (AWS) & Angular SPA + API Gateway & RF-16.02: tableros para clientes con datos en tiempo real y exportación \\
+  Caché de indicadores & Cloud (AWS) & Amazon ElastiCache (Redis) & RNF-11.01: latencia $\leq$ 5 min para despliegue de indicadores \\
+\end{tablalafrox}
+
+\subsection{Flujo de datos analíticos}
+
+En texto, el flujo de datos analíticos es: fuentes transaccionales (Preventa App, Bodega WMS, Transporte GPS y Cobranza App) $\rightarrow$ motor transaccional Aurora PostgreSQL (Preventa, Inventario, Transporte y Cobranza, cada dominio OLTP) $\rightarrow$ DMS CDC (extracción continua e incremental) $\rightarrow$ motor analítico Redshift Serverless (dimensiones Tiempo, Cliente, Ruta, Producto, Vehículo y Zona; hechos fact\_entregas, fact\_costos y fact\_inventario; vistas materializadas mv\_otif\_diario, mv\_costo\_servir, mv\_fill\_rate, mv\_ocupacion\_flota y mv\_rentabilidad\_cliente) $\rightarrow$ dos salidas: Tablero Gerencial (Grafana/Angular --- RF-11.06 operacional, RF-16.02 para el cliente, RF-16.03 alertas) y Distribución por correo (SES + Celery Beat --- informes semanal y mensual, RF-11.01).
+
+\subsection{Justificación del desacople entre lo analítico y lo transaccional}
+
+El RNF-11.02 exige que las consultas analíticas no degraden los tiempos de respuesta transaccionales. Esto se resuelve mediante:
+
+\begin{itemize}
+  \item \textbf{Motor separado.} Redshift Serverless es un sistema OLAP independiente de Aurora PostgreSQL (OLTP). Las cargas analíticas corren en un clúster dedicado con recursos aislados.
+  \item \textbf{Extracción asíncrona.} DMS CDC copia cambios de Aurora $\rightarrow$ Redshift sin bloquear transacciones OLTP. La extracción es incremental y continua.
+  \item \textbf{Vistas materializadas pre-calculadas.} Los indicadores (OTIF, Fill Rate, Costo de Servir) se calculan como vistas materializadas en Redshift, que se refrescan periódicamente (cada 5--15 min según RNF-11.01). Las consultas de tablero leen de estas vistas, no de tablas crudas.
+  \item \textbf{Caché Redis para tableros.} Los resultados de consultas frecuentes se cachean en ElastiCache Redis, reduciendo aún más la carga sobre Redshift para dashboards de alta concurrencia.
+  \item \textbf{Resultado.} Picking en bodega mantiene latencia $\leq$ 1s y preventa $\leq$ 1.5s (RF de bodega/preventa) mientras los gerentes consultan tableros analíticos simultáneamente.
+\end{itemize}
+
+\section{Componente de costo de servir}
+\label{sub:5-componente-de-costo-de-servir}
+
+El cálculo del Costo de Servir (RF-11.02) es el requerimiento analítico más complejo del módulo, ya que consolida datos de 4 fuentes distintas:
+
+\begin{tablalafrox}{Componente de Costo de Servir}{tab:t96}%
+  {F{0.24} F{0.24} F{0.24} Y}%
+  {\cab{Componente de costo} & \cab{Fuente de datos} & \cab{Módulo productor} & \cab{Fórmula simplificada}}
+  Combustible devengado & Telemetría GPS (litros/km) & Telemetría (Épica 14) & km recorridos $\times$ precio litro $\times$ rendimiento vehicular \\
+  Peajes & Registro de viaje & Transporte (Épica 6) & Monto real de peajes por viaje \\
+  Tiempo de conducción & Telemetría GPS (horas) & Telemetría (Épica 14) & Horas de conducción $\times$ costo hora conductor \\
+  Tiempo de descarga & App móvil de reparto & Transporte (Épica 6) & Minutos de descarga $\times$ costo hora \\
+  Costo de bodega (prorrateo) & WMS & Almacén (Épica 2) & Costo total bodega $\div$ volumen almacenado $\times$ volumen cliente \\
+  Costo administrativo (prorrateo) & Facturación ERP & Administración & Costo fijo administrativo $\div$ N pedidos $\times$ pedidos cliente \\
+  Costo de devoluciones/mermas & Logística inversa & Logística Inversa (Épica 8) & Costo de envases perdidos + productos dañados \\
+  Costo de mermas por vencimiento & Inventario & Almacén (Épica 2) & Valor de producto vencido imputado al cliente \\
+\end{tablalafrox}
+
+La fórmula de rentabilidad neta resultante (RF-11.08):
+
+Margen neto = Ingreso por venta $-$ Costo de mercadería $-$ Costo de servir real
+
+Donde el Costo de servir real = $\Sigma$(componentes anteriores) por cliente y por entrega.
+
+\section{Componente de alertas de negocio}
+\label{sub:6-componente-de-alertas-de-negocio}
+
+Las alertas por síntomas de negocio se distinguen de las alertas de infraestructura en que miden impacto al negocio, no estado de servidores:
+
+\begin{tablalafrox}{Componente de Alertas de Negocio (RF-16.03)}{tab:t97}%
+  {F{0.24} F{0.24} Y F{0.24}}%
+  {\cab{Síntoma de negocio} & \cab{Umbral configurable} & \cab{Fuente de datos} & \cab{Acción}}
+  OTIF diario $<$ meta & $<$ 95\% (configurable) & Redshift (mv\_otif\_diario) & Notificación gerente comercial + calidad \\
+  Fill Rate mensual $<$ meta & $<$ 97\% (configurable) & Redshift (mv\_fill\_rate) & Alerta gerente comercial \\
+  Costo de servir $>$ umbral & $>$ \$X por entrega (configurable) & Redshift (mv\_costo\_servir) & Alerta gerente finanzas \\
+  Ocupación de flota $<$ umbral & $<$ 65\% (configurable) & Redshift (mv\_ocupacion\_flota) & Alerta planificador de rutas \\
+  Excursión térmica en tránsito & $>$ umbral por tipo producto & IoT/DynamoDB + SNS (Lambda validador) & Alerta conductor + calidad \\
+  Crédito de cliente excedido & Deuda + pedido $>$ cupo & Aurora PostgreSQL (OLTP) & Bloqueo en app de preventa \\
+  Envases retornables excedidos & Saldo $>$ umbral configurable & Aurora PostgreSQL (OLTP) & Alerta preventista \\
+\end{tablalafrox}
+
+\section{Requerimientos de tableros (RT-05.25, RT-05.26)}
+\label{sub:7-requerimientos-de-tableros-rt-05-25-rt-0}
+
+Las Bases exigen tableros con las siguientes capacidades:
+
+\begin{tablalafrox}{Requerimientos de tableros (RT-05.25, RT-05.26)}{tab:t98}%
+  {F{0.26} G{0.11} Y}%
+  {\cab{Capacidad exigida} & \cab{RT} & \cab{Implementación}}
+  Tableros operacionales y de gestión & RT-05.25 & Dashboards separados: operacional (tiempo real, RF-11.06) y estratégico (periódico, RF-11.01) \\
+  Filtros por período & RT-05.26 & Filtros de rango de fechas en Grafana/Angular (hoy, semana, mes, trimestre, año) \\
+  Filtros por unidad organizacional & RT-05.26 & Filtros por zona, ruta, sucursal, cliente, canal de comercialización \\
+  Drill-down & RT-05.26 & Navegación de resumen $\rightarrow$ detalle: total $\rightarrow$ zona $\rightarrow$ ruta $\rightarrow$ cliente $\rightarrow$ entrega individual \\
+  Datos en tiempo real & RT-14.02 & Actualización cada $\leq$ 5 min (RNF-11.01) vía Redis cache + Redshift refresh \\
+  Acceso del cliente & RT-14.02 & Portal web Angular con autenticación Keycloak, RF-16.02 \\
+  Exportación & RT-16.28 & Descarga en PDF, XLSX, CSV con filtros aplicados, RF-17.12 \\
+\end{tablalafrox}
+
+\subsection{Tablero operacional (RF-11.06)}
+
+\begin{tablalafrox}{Tablero operacional (RF-11.06)}{tab:t99}%
+  {F{0.24} Y F{0.24} F{0.24}}%
+  {\cab{Panel} & \cab{Indicadores mostrados} & \cab{Fuente} & \cab{Frecuencia actualización}}
+  Avance de rutas & Pedidos completados / total, \% avance por ruta & Aurora PostgreSQL (OLTP) & Tiempo real ($<$ 1 min) \\
+  Entregas cumplidas & \% OTIF del día, entregas a tiempo vs atrasadas & Redshift (mv\_otif\_diario) & $\leq$ 5 min \\
+  Devoluciones en tránsito & Cantidad de devoluciones, productos devueltos & Aurora PostgreSQL (OLTP) & Tiempo real \\
+  Alertas cadena de frío & Excursiones térmicas activas, historial 24h & DynamoDB (IoT) + SNS (Lambda validador) & Tiempo real \\
+  Recaudación del día & Monto recaudado en efectivo, cheques, transferencias & Aurora PostgreSQL (cobranza) & Tiempo real \\
+\end{tablalafrox}
+
+\subsection{Tablero gerencial (RF-11.01)}
+
+\begin{tablalafrox}{Tablero gerencial (RF-11.01)}{tab:t100}%
+  {F{0.24} F{0.24} Y F{0.24}}%
+  {\cab{Reporte} & \cab{Periodicidad} & \cab{Indicadores} & \cab{Destinatarios}}
+  Reporte semanal ejecutivo & Cada lunes 06:00 AM & OTIF semanal, Fill Rate, Costo de Servir por zona, devoluciones & Gerente Comercial, Jefa de Calidad \\
+  Reporte mensual ejecutivo & Día 2 de cada mes & OTIF mensual, Fill Rate, Merma por vencimiento, Costo de Servir por zona y canal, rentabilidad por cliente & Gerente Comercial, Gerente de Finanzas, Jefa de Calidad \\
+\end{tablalafrox}
+
+\section{Cumplimiento de Bases Administrativas}
+\label{sub:8-cumplimiento-de-bases-administrativas}
+
+\begin{tablalafrox}{Exigencias de las Bases Administrativas que esta capa satisface}{tab:t101}%
+  {Y G{0.14} Y}%
+  {\cab{Exigencia} & \cab{Dónde se exige} & \cab{Cómo se satisface}}
+  Separación entre el almacenamiento transaccional y el analítico, con una capa analítica que no degrade el desempeño de la operación & Art. 23\textdegree{} & Almacén analítico alimentado por extracción incremental, sin consulta alguna contra el transaccional en vivo (subsección de justificación del desacople entre lo analítico y lo transaccional) \\
+  Capacidad de exportar la totalidad de la información del CLIENTE en formatos abiertos, en cualquier momento del Contrato y sin costo adicional & Art. 23\textdegree{} \textperiodcentered{} RT-05.06 & Todo informe y tablero es exportable en formatos abiertos, con el modelo semántico documentado para que el CLIENTE construya sus propios informes (RT-05.27 y RT-05.28) \\
+  Tableros operacionales y de negocio disponibles para el CLIENTE, con indicadores medidos sobre la experiencia real de la persona usuaria & Art. 25\textdegree{} \textperiodcentered{} RT-14.02 & Tres niveles de tablero ---operacional, gerencial y del mandante---; el del mandante en solo lectura y con auditoría de consultas (subsección de requerimientos de tableros) \\
+  Alertamiento basado en síntomas de negocio y no solo en umbrales de infraestructura, con supresión de ruido y escalamiento & Art. 25\textdegree{} \textperiodcentered{} RT-14.03 & Componente de alertas de negocio sobre OTIF, fill rate, excursión térmica y descuadre de rendición (subsección de componente de alertas de negocio) \\
+  Gestión de la capacidad con proyección trimestral de crecimiento y alerta anticipada de agotamiento & Art. 25\textdegree{} \textperiodcentered{} RT-09.09 & Revisión trimestral del consumo real contra el proyectado, con aviso al 70 \% de ocupación (la sección de dimensionamiento y plan de capacidad, subsección de actualización del plan de capacidad) \\
+  Analítica predictiva pertinente al proceso del caso & RT-05.30, deseable & No se propone en el alcance contratado, con declaración fundada conforme a RT-18.01; la capa queda preparada para incorporarla cuando el CLIENTE alcance la madurez de datos \\
+\end{tablalafrox}
+
+\section{Cobertura y cierre}
+\label{sub:9-cobertura-y-cierre}
+
+\paragraph{Conteo por origen normativo.}
+\begin{tablalafrox}{Conteo por origen}{tab:t102}%
+  {F{0.26} Y}%
+  {\cab{Fuente} & \cab{Cantidad de RF/RNF que alimentan al módulo BI}}
+  Épica 11 (propios) & 8 RF + 2 RNF = 10 \\
+  Transversales (Bases) & 3 RF + 1 RNF = 4 \\
+  Otras épicas (dependencias) & 11 RF \\
+  Total & 25 requerimientos \\
+\end{tablalafrox}
+
+\paragraph{Conteo por tipo de requerimiento.}
+\begin{tablalafrox}{Conteo por tipo de requerimiento}{tab:t103}%
+  {Y G{0.11}}%
+  {\cab{Tipo} & \cab{Cantidad}}
+  Requerimientos funcionales (RF) & 22 \\
+  Requerimientos no funcionales (RNF) & 3 \\
+  Total & 25 \\
+\end{tablalafrox}
+
+\paragraph{Cierre.}
+Veinticinco requerimientos de la propuesta dependen de esta capa y son trazables a su origen normativo. Sin ella no hay forma de medir los tres compromisos que el caso convierte en criterio de aceptación ---OTIF por sobre 95 \%, fill rate por sobre 97 \% y costo de servir conocido y gestionable por cliente y por entrega---, y por eso su emplazamiento y su dimensionamiento forman parte de esta parte física y no de una fase posterior.
