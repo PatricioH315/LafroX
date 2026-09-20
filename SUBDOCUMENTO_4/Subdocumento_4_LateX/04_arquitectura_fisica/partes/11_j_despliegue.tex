@@ -170,15 +170,13 @@ El maestro vive en la nube (Multi-AZ) con réplica DR us-east-1; las cachés loc
 
 Esquema único para toda la arquitectura híbrida (nube + on-premise):
 
-\begin{tablalafrox}{Respaldos --- esquema 3-2-1-0 (RNF-20.07)}{tab:t68}%
-  {F{0.26} Y}%
-  {\cab{Pierna} & \cab{Implementación}}
-  3 copias de los datos & (1) Datos activos sa-east-1 + WMS activo Talca; (2) Snapshot automatizado Aurora + respaldo local on-premise (D-05); (3) Backup exportado a S3 \\
-  2 medios & PostgreSQL/Aurora y S3 (almacenamiento de objetos) \\
-  1 copia fuera del sitio & S3 Cross-Region Replication $\rightarrow$ bucket en us-east-1 \\
-  1 copia inmutable & S3 Object Lock (WORM, Compliance Mode) + AWS Backup Vault Lock (ni el root puede eliminarla); s3-documents-legal y s3-audit-logs en Compliance, no Governance \\
-  0 errores & Restore testing automatizado mensual (Lambda) + verificación de restauración local + prueba DR semestral \\
-\end{tablalafrox}
+\begin{itemize}
+  \item \textbf{3 copias de los datos.} (1) Datos activos sa-east-1 + WMS activo Talca; (2) Snapshot automatizado Aurora + respaldo local on-premise (D-05); (3) Backup exportado a S3.
+  \item \textbf{2 medios.} PostgreSQL/Aurora y S3 (almacenamiento de objetos).
+  \item \textbf{1 copia fuera del sitio.} S3 Cross-Region Replication $\rightarrow$ bucket en us-east-1.
+  \item \textbf{1 copia inmutable.} S3 Object Lock (WORM, Compliance Mode) + AWS Backup Vault Lock (ni el root puede eliminarla); s3-documents-legal y s3-audit-logs en Compliance, no Governance.
+  \item \textbf{0 errores.} Restore testing automatizado mensual (Lambda) + verificación de restauración local + prueba DR semestral.
+\end{itemize}
 
 D-05 (NAS local con WORM) es la copia local de recuperación rápida y NO cuenta como la pierna inmutable; permite restaurar el WMS en $\leq$ 4 h (RNF-20.06) sin depender del enlace WAN. RPO $\leq$ 15 min por AWS DMS CDC del WAL lógico (wal\_level=logical) hacia la nube antes de la copia local.
 

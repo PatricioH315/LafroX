@@ -21,6 +21,19 @@
 %
 \documentclass[carta,firma,borrador]{lafrox}
 
+% Numeración de tablas y figuras continua en todo el documento: la primera
+% tabla es "Tabla 1", la segunda "Tabla 2", etc. La clase deriva de report,
+% que numera por capítulo (\thechapter.\arabic); se quita el reseteo por
+% capítulo y se pasa a contador corrido. Las listas de tablas y figuras
+% (\listadetablaslafrox/\listadefiguraslafrox) y los rótulos de continuación
+% de tablalafrox se alimentan solos de \thetable y \thefigure.
+\makeatletter
+\@removefromreset{table}{chapter}
+\@removefromreset{figure}{chapter}
+\makeatother
+\renewcommand{\thetable}{\arabic{table}}
+\renewcommand{\thefigure}{\arabic{figure}}
+
 % Listas de figuras y tablas con el lenguaje visual del índice general.
 % El formato de entrada replica \indicelafrox de lafrox.cls; las entradas
 % (figure/table) se componen con \caption, así que los archivos .lof y .lot
@@ -34,6 +47,7 @@
   {\textcolor{lafroxGris}{Tabla \thecontentslabel\enspace}}{}
   {\normalfont\color{lafroxGris}\hfill\contentspage}
 
+\makeatletter
 \newcommand{\listadefiguraslafrox}{%
   \phantomsection\addcontentsline{toc}{chapter}{Lista de figuras}%
   \LFXtitulopreliminar{Lista de figuras}%
@@ -44,6 +58,7 @@
   \LFXtitulopreliminar{Lista de tablas}%
   \@starttoc{lot}%
   \clearpage}
+\makeatother
 
 % ---------------------------------------------------------------------------
 %  Metadatos de la oferta. Se editan SOLO aquí: carátula, encabezados, pies y

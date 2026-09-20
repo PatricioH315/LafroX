@@ -15,18 +15,16 @@ Por qué la integración es una capa de primera clase en Puelche. El caso no des
 \section{Principios de integración}
 \label{sub:1-principios-de-integracion}
 
-\begin{tablalafrox}{Principios de integración}{tab:t30}%
-  {G{0.10} F{0.26} Y F{0.26}}%
-  {\cab{\#} & \cab{Principio} & \cab{Declaración} & \cab{Base}}
-  1 & Contrato antes que conexión & Ninguna integración existe sin contrato publicado (OpenAPI 3.1 o AsyncAPI 2.6), dueño declarado y versión semántica. Una integración sin contrato no entra al catálogo y no se despliega. & Art. 23 \textperiodcentered{} RT-05.16 \\
-  2 & Asíncrono por defecto, síncrono por excepción & Toda dependencia entre módulos se modela como evento por la Capa 5. Solo las lecturas críticas de la venta (disponibilidad de stock, crédito del cliente) y los actos de fe pública (DTE al SII, autorización de pago) son síncronas, y siempre con timeout explícito. & Art. 19 \textperiodcentered{} RT-02.07/02.08 \\
-  3 & Idempotencia universal & Toda escritura originada en terreno o en bodega lleva UUID de cliente y ventana de deduplicación documentada. El servidor es la fuente de verdad y resuelve conflictos por regla de negocio, nunca por marca de tiempo ciega. & RT-02.06 \textperiodcentered{} S26 \\
-  4 & Bitácora de reconciliación auditable & Toda decisión de reconciliación registra qué transacción, qué conflicto, qué regla se aplicó, quién la aplicó y cuándo. Es un entregable auditable ante el mandante, no un registro técnico. & Art. 16.4 \textperiodcentered{} RT-03.12 \\
-  5 & El legado nunca se escribe directo & El ERP de 2017 se toca solo a través de la capa anticorrupción A-04. Ninguna cadena de supermercados, ningún portal y ningún módulo escribe al ERP. & RT-05.20 \textperiodcentered{} ADR-11 \\
-  6 & Zero Trust también en la integración & Todo tráfico on-premise $\rightarrow$ nube es saliente (HTTPS/443, MQTTS/8883). Las dos únicas excepciones entrantes están declaradas y acotadas (D-AL-05). & Art. 21 \textperiodcentered{} D-AL-05 \\
-  7 & Toda integración declara cómo falla & Cada entrada del catálogo declara su comportamiento ante falla ---reintentar, degradar, diferir o suplir con procedimiento manual--- y se verifica con inyección de fallas. & RT-10.08 \textperiodcentered{} RT-09.08 \\
-  8 & Ninguna integración interrumpe la ventana crítica & Cargas masivas, reprocesos y despliegues de conectores se ejecutan fuera de 05:30--07:00 de lunes a sábado. & RT-10.05 (caso) \\
-\end{tablalafrox}
+\begin{enumerate}
+  \item \textbf{Contrato antes que conexión} (Art. 23 \textperiodcentered{} RT-05.16). Ninguna integración existe sin contrato publicado (OpenAPI 3.1 o AsyncAPI 2.6), dueño declarado y versión semántica. Una integración sin contrato no entra al catálogo y no se despliega.
+  \item \textbf{Asíncrono por defecto, síncrono por excepción} (Art. 19 \textperiodcentered{} RT-02.07/02.08). Toda dependencia entre módulos se modela como evento por la Capa 5. Solo las lecturas críticas de la venta (disponibilidad de stock, crédito del cliente) y los actos de fe pública (DTE al SII, autorización de pago) son síncronas, y siempre con timeout explícito.
+  \item \textbf{Idempotencia universal} (RT-02.06 \textperiodcentered{} S26). Toda escritura originada en terreno o en bodega lleva UUID de cliente y ventana de deduplicación documentada. El servidor es la fuente de verdad y resuelve conflictos por regla de negocio, nunca por marca de tiempo ciega.
+  \item \textbf{Bitácora de reconciliación auditable} (Art. 16.4 \textperiodcentered{} RT-03.12). Toda decisión de reconciliación registra qué transacción, qué conflicto, qué regla se aplicó, quién la aplicó y cuándo. Es un entregable auditable ante el mandante, no un registro técnico.
+  \item \textbf{El legado nunca se escribe directo} (RT-05.20 \textperiodcentered{} ADR-11). El ERP de 2017 se toca solo a través de la capa anticorrupción A-04. Ninguna cadena de supermercados, ningún portal y ningún módulo escribe al ERP.
+  \item \textbf{Zero Trust también en la integración} (Art. 21 \textperiodcentered{} D-AL-05). Todo tráfico on-premise $\rightarrow$ nube es saliente (HTTPS/443, MQTTS/8883). Las dos únicas excepciones entrantes están declaradas y acotadas (D-AL-05).
+  \item \textbf{Toda integración declara cómo falla} (RT-10.08 \textperiodcentered{} RT-09.08). Cada entrada del catálogo declara su comportamiento ante falla ---reintentar, degradar, diferir o suplir con procedimiento manual--- y se verifica con inyección de fallas.
+  \item \textbf{Ninguna integración interrumpe la ventana crítica} (RT-10.05, caso). Cargas masivas, reprocesos y despliegues de conectores se ejecutan fuera de 05:30--07:00 de lunes a sábado.
+\end{enumerate}
 
 \section{Vista de integración}
 \label{sub:2-vista-de-integracion}
@@ -50,8 +48,8 @@ El catálogo es el registro único de integraciones. Cada entrada tiene identifi
 \subsection{Integraciones internas --- superficies y plano híbrido}
 
 \begin{tablalafrox}{Integraciones internas --- superficies y plano híbrido}{tab:t31}%
-  {G{0.07} F{0.14} F{0.14} F{0.14} G{0.09} F{0.14} Y}%
-  {\cab{ID} & \cab{Integración} & \cab{Modo} & \cab{Contrato} & \cab{Módulo dueño} & \cab{Ventana crítica} & \cab{Comportamiento ante falla (RT-10.08)}}
+  {G{0.06} F{0.12} F{0.12} F{0.14} G{0.08} F{0.12} Y}%
+  {\cab{ID} & \cab{Integración} & \cab{Modo} & \cab{Contrato} & \cab{Módulo} & \cab{Ventana crítica} & \cab{Comportamiento ante falla (RT-10.08)}}
   INT-01 & App Preventa $\leftrightarrow$ plataforma (pedidos, stock, crédito, promociones, precios) & Síncrono para lectura + sincronización diferida idempotente para escritura & OpenAPI 3.1 /v1/preventa y /v1/sync & M3 & 09:00--18:00 & Caché de turno (saldo, stock, tarifa; TTL 8 h); el pedido se toma sin conexión y se confirma en la sincronización; no se pierde \\
   INT-02 & App Reparto $\leftrightarrow$ plataforma (POD, entregas, devoluciones, cobranza, envases) & Sincronización diferida idempotente por lotes & OpenAPI 3.1 /v1/reparto y /v1/sync & M6, M7, M8 & 05:30--07:00 y 17:00--20:00 & Turno completo de 14 h sin señal; sincronización $\leq$ 10 min al reconectar (RT-03.12); acuse por lote (RF-06.07) \\
   INT-03 & Broker on-premise $\rightarrow$ nube (reconciliación del WMS) & Asíncrono & AsyncAPI 2.6 \textperiodcentered{} SQS FIFO, MessageGroupId = sitio & M2, M5 & 22:00--06:00 & Buffer RabbitMQ 24 h; publicación cronológica al reconectar; el CD queda sincronizado $\leq$ 2 h tras un corte de 24 h \\
@@ -65,8 +63,8 @@ El catálogo es el registro único de integraciones. Cada entrada tiene identifi
 \subsection{Integraciones externas --- plataforma y terceros}
 
 \begin{tablalafrox}{Integraciones externas --- plataforma y terceros}{tab:t32}%
-  {G{0.07} F{0.13} F{0.13} F{0.13} F{0.13} F{0.13} Y}%
-  {\cab{ID} & \cab{Sistema} & \cab{Modo} & \cab{Contrato / estándar} & \cab{Volumen declarado} & \cab{Ventana crítica} & \cab{Comportamiento ante falla (RT-10.08)}}
+  {G{0.05} F{0.11} F{0.11} F{0.13} F{0.12} F{0.11} Y}%
+  {\cab{ID} & \cab{Sistema} & \cab{Modo} & \cab{Contrato / estándar} & \cab{Volumen} & \cab{Ventana crítica} & \cab{Comportamiento ante falla (RT-10.08)}}
   INT-06 & ERP 2017 (catálogo, stock valorizado, cobranzas, contabilidad) & Asíncrono por colas + síncrono solo lecturas & OpenAPI 3.1 de Puelche expuesto por la ACL (A-04); el ERP no publica contrato propio & $\approx$ 34.000 DTE/mes; cobranzas por turno & Cierre contable diario y primeros tres días hábiles del mes & Cortacircuito: preventa y reparto no se degradan; las colas retienen hasta 24 h; el desajuste se declara en la bitácora del Art. 16.4 \\
   INT-07 & SII --- DTE, guía de despacho electrónica y acuse de recibo & Síncrono por la puerta de enlace & Formato de la autoridad tributaria (RT-05.23); firma conforme a la Ley 19.799 & $\approx$ 34.000 documentos/mes; pico en 05:30--07:00 & Emisión por turno & La entrega no se detiene: evidencia local (firma, QR, fotografía) y timbre diferido con folio reservado por dispositivo; reintento con retroceso exponencial --- cero guías de papel (RF-06.02) \\
   INT-08 & Cadenas de supermercados --- canal moderno & Asíncrono (AS2) + API síncrona selectiva & EANCOM D.01B / GS1 XML (pedido, aviso de despacho, factura) y EPCIS para eventos de trazabilidad & 500 puntos de entrega del canal moderno & Ventana de 30 min (RF-12.10); hito enero de 2029 (RNF-12.01) & DLQ y bandeja de excepciones operada por un actor canónico (RF-12.05/12.06); alternativa manual declarada por acuerdo con cada cadena \\
@@ -114,7 +112,7 @@ Los contratos se declaran por dimensión:
 Los eventos son el vocabulario del sistema. Se nombran en pasado, son inmutables y llevan event\_id (UUID), occurred\_at, site\_id y transaction\_id.
 
 \begin{tablalafrox}{Eventos canónicos del dominio}{tab:t34}%
-  {F{0.21} G{0.11} F{0.21} F{0.20} Y}%
+  {F{0.18} G{0.09} F{0.18} F{0.17} Y}%
   {\cab{Evento} & \cab{Productor} & \cab{Consumidores} & \cab{Clave de partición} & \cab{Por qué existe (origen en el caso)}}
   RecepcionConfirmada & M1 & M2, M9, ACL $\rightarrow$ ERP & site\_id & Origen de la trazabilidad de lote (Cap. 9.5: retiro sanitario en menos de 2 h) \\
   StockReservado / ReservaLiberada & M2 & M3, M5 & sku\_id & Resuelve el doble compromiso de stock (decisión 16.1 N\textdegree{} 8) \\
@@ -205,29 +203,25 @@ La política de versionado y obsolescencia se declara en siete reglas:
 \section{Gobierno de la capa de integración (Art. 19 \textperiodcentered{} RT-05.16 \textperiodcentered{} Cap. 14 BTT)}
 \label{sub:9-gobierno-de-la-capa-de-integracion-art-1}
 
-\begin{tablalafrox}{Gobierno de la capa de integración (Art. 19 \textperiodcentered{} RT-05.16 \textperiodcentered{} Cap. 14 BTT)}{tab:t38}%
-  {F{0.26} Y F{0.26}}%
-  {\cab{Mecanismo} & \cab{Cómo opera} & \cab{Responsable}}
-  Catálogo único versionado & Toda integración vive en el catálogo con dueño, contrato, versión, estado y comportamiento ante falla. Lo que no está en el catálogo no se despliega. & Arquitecto de Solución \\
-  Comité de Arquitectura & Aprueba altas de integración y cambios major, con cadencia declarada en el plan de gobierno del proyecto. & Arquitecto de Solución, Jefe de Proyecto y Jefe de TI del CLIENTE \\
-  Pruebas de contrato consumidor-proveedor & Cada integración tiene pruebas de contrato en el pipeline; un cambio que rompe a un consumidor registrado bloquea el despliegue de forma automática. & Líder de Desarrollo y Líder de Calidad \\
-  Pruebas de falla por integración & Inyección de fallas (RT-10.07) por integración durante la marcha blanca: se verifica que el comportamiento declarado en el catálogo sea el comportamiento real. & Líder de Calidad y Líder de Operación \\
-  Observabilidad por integración & Latencia, tasa de error, volumen y profundidad de DLQ por integración, correlacionados por transaction\_id (Capa 8). Toda DLQ tiene dueño y alerta. & Líder de Operación / SRE \\
-  Bandeja de excepciones de negocio & Lo que falla y afecta a un tercero (EDI, DTE) no muere en una cola técnica: aparece en una bandeja operada por un actor canónico con responsabilidad declarada (RF-12.05/12.06). & Jefe de TI y responsable del canal moderno \\
-  Traspaso al equipo de cuatro personas & El CLIENTE opera con 4 personas de TI. El catálogo, las guías de resolución y la bandeja de excepciones son los artefactos que hacen operable esta capa sin el proponente. & Líder de Implantación y Gestión del Cambio \\
-\end{tablalafrox}
+\begin{itemize}
+  \item \textbf{Catálogo único versionado} (Arquitecto de Solución). Toda integración vive en el catálogo con dueño, contrato, versión, estado y comportamiento ante falla. Lo que no está en el catálogo no se despliega.
+  \item \textbf{Comité de Arquitectura} (Arquitecto de Solución, Jefe de Proyecto y Jefe de TI del CLIENTE). Aprueba altas de integración y cambios major, con cadencia declarada en el plan de gobierno del proyecto.
+  \item \textbf{Pruebas de contrato consumidor-proveedor} (Líder de Desarrollo y Líder de Calidad). Cada integración tiene pruebas de contrato en el pipeline; un cambio que rompe a un consumidor registrado bloquea el despliegue de forma automática.
+  \item \textbf{Pruebas de falla por integración} (Líder de Calidad y Líder de Operación). Inyección de fallas (RT-10.07) por integración durante la marcha blanca: se verifica que el comportamiento declarado en el catálogo sea el comportamiento real.
+  \item \textbf{Observabilidad por integración} (Líder de Operación / SRE). Latencia, tasa de error, volumen y profundidad de DLQ por integración, correlacionados por transaction\_id (Capa 8). Toda DLQ tiene dueño y alerta.
+  \item \textbf{Bandeja de excepciones de negocio} (Jefe de TI y responsable del canal moderno). Lo que falla y afecta a un tercero (EDI, DTE) no muere en una cola técnica: aparece en una bandeja operada por un actor canónico con responsabilidad declarada (RF-12.05/12.06).
+  \item \textbf{Traspaso al equipo de cuatro personas} (Líder de Implantación y Gestión del Cambio). El CLIENTE opera con 4 personas de TI. El catálogo, las guías de resolución y la bandeja de excepciones son los artefactos que hacen operable esta capa sin el proponente.
+\end{itemize}
 
 \section{Carga y descarga masiva de datos (RT-05.22)}
 \label{sub:10-carga-y-descarga-masiva-de-datos-rt-05-}
 
-\begin{tablalafrox}{Carga y descarga masiva de datos (RT-05.22)}{tab:t39}%
-  {F{0.26} Y Y}%
-  {\cab{Escenario} & \cab{Mecanismo} & \cab{Control y auditoría}}
-  Carga inicial de maestros e históricos (ERP y WMS) & Proceso ETL por lotes con inserción idempotente por UUID, en ventana sin operación & Conteo previo y posterior por lote, conciliación de totales y bitácora de carga (quién, cuándo, lote, resultado); los rechazados van a cuarentena con reproceso \\
-  Descarga regulatoria (traza de lote, temperaturas, DTE, geolocalización) & Exportación asíncrona a CSV o Parquet, firmada y con suma de verificación & Registro de la extracción (solicitante, filtro, resultado) y control de acceso a datos sensibles (RT-16.09) \\
-  Sincronización masiva de turno (terreno) & Sincronizadores con partición y reanudación más deduplicación; los medios van a S3 por objeto & Nivel de servicio comprometido: turno completo $\leq$ 10 min; métricas de sincronización en la Capa 8 \\
-  Interfaces periódicas con terceros & Colas con batch\_id y confirmación por lote & Monitoreo de DLQ y acuse por lote en la bandeja de excepciones \\
-\end{tablalafrox}
+\begin{itemize}
+  \item \textbf{Carga inicial de maestros e históricos (ERP y WMS).} Proceso ETL por lotes con inserción idempotente por UUID, en ventana sin operación. Control: conteo previo y posterior por lote, conciliación de totales y bitácora de carga (quién, cuándo, lote, resultado); los rechazados van a cuarentena con reproceso.
+  \item \textbf{Descarga regulatoria (traza de lote, temperaturas, DTE, geolocalización).} Exportación asíncrona a CSV o Parquet, firmada y con suma de verificación. Control: registro de la extracción (solicitante, filtro, resultado) y control de acceso a datos sensibles (RT-16.09).
+  \item \textbf{Sincronización masiva de turno (terreno).} Sincronizadores con partición y reanudación más deduplicación; los medios van a S3 por objeto. Control: nivel de servicio comprometido: turno completo $\leq$ 10 min; métricas de sincronización en la Capa 8.
+  \item \textbf{Interfaces periódicas con terceros.} Colas con batch\_id y confirmación por lote. Control: monitoreo de DLQ y acuse por lote en la bandeja de excepciones.
+\end{itemize}
 
 Regla: ninguna carga masiva se ejecuta dentro de la ventana crítica 05:30--07:00, y toda carga queda registrada y es auditable.
 

@@ -38,28 +38,27 @@ Subdocumento_4_LateX/
 
 Nada dentro de `04_arquitectura_fisica/` conoce dónde está montado: no hay rutas con `../` ni desde la raíz del repositorio. Para reubicar el capítulo basta mover la carpeta y cambiar la ruta en `main.tex`.
 
-### Los dieciséis fragmentos
+### Los quince fragmentos
 
 | Archivo | Apartado | Tablas |
 |---|---|---|
-| `00_como_leer.tex` | Cómo leer esta parte | 1 |
 | `01_vision_general.tex` | Visión general de la arquitectura física | — |
 | `02_a_emplazamiento.tex` | (a) Modelo de emplazamiento híbrido | 1 |
-| `03_b_tecnologias.tex` | (b) Tecnologías de software ofertadas | 1 |
+| `03_b_tecnologias.tex` | (b) Tecnologías de software ofertadas | — |
 | `04_c_implementos.tex` | (c) Implementos a proveer | 4 |
 | `05_d_sitio_principal.tex` | (d) Sitio principal on-premise (CD Talca) | 1 |
 | `06_e_sitio_secundario.tex` | (e) Sitio secundario y recuperación ante desastres | 1 |
 | `07_f_niveles_servicio.tex` | (f) Niveles de servicio de infraestructura | — |
 | `08_g_operacion_desconectada.tex` | (g) Operación desconectada | 1 |
-| `09_h_integracion.tex` | (h) Arquitectura de integración | 9 |
-| `10_i_seguridad.tex` | (i) Arquitectura de seguridad | 14 |
-| `11_j_despliegue.tex` | (j) Arquitectura de despliegue | 8 |
-| `12_k_dimensionamiento.tex` | (k) Dimensionamiento y plan de capacidad | 16 |
-| `13_l_capa_analitica.tex` | (l) Capa analítica | 15 |
-| `14_m_decisiones_adr.tex` | (m) Registro de decisiones de arquitectura | 32 |
-| `15_n_trazabilidad.tex` | (n) Trazabilidad normativa consolidada | 8 |
+| `09_h_integracion.tex` | (h) Arquitectura de integración | 6 |
+| `10_i_seguridad.tex` | (i) Arquitectura de seguridad | 6 |
+| `11_j_despliegue.tex` | (j) Arquitectura de despliegue | 7 |
+| `12_k_dimensionamiento.tex` | (k) Dimensionamiento y plan de capacidad | 13 |
+| `13_l_capa_analitica.tex` | (l) Capa analítica | 7 |
+| `14_m_decisiones_adr.tex` | (m) Registro de decisiones de arquitectura | — |
+| `15_n_trazabilidad.tex` | (n) Trazabilidad normativa consolidada | — |
 
-**112 tablas** en total, todas compuestas en el documento.
+**47 tablas** en total. Las tablas etiqueta-definición, los ADR y los conteos se convirtieron en viñetas o prosa para mejorar la lectura; las tablas con datos matriciales (multi-columna) se conservan.
 
 ---
 

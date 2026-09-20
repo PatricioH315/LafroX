@@ -138,14 +138,15 @@
 %  cantidades tienen que alinearse verticalmente.
 \newcommand{\LFXcuerpotabla}{%
   \fontsize{9.5pt}{12.5pt}\selectfont
-  \addfontfeature{Numbers=Monospaced}}
+  \ifdefined\addfontfeature\addfontfeature{Numbers=Monospaced}\fi
+}
 \newcommand{\LFXcuerpofigura}{\fontsize{9pt}{11.5pt}\selectfont}
 
 % Rotulo pequeno en mayusculas con interletraje abierto. Es el unico recurso
 % "grafico" que se permite en los titulares del tema minimalista.
 \newcommand{\LFXrotulo}[1]{%
   {\fontsize{7.5pt}{9pt}\selectfont
-   \addfontfeature{}\intermedium
+   \ifdefined\addfontfeature\addfontfeature{}\fi\intermedium
    \MakeUppercase{#1}}}
 
 % ---------------------------------------------------------------------------
@@ -527,7 +528,7 @@
   labelfont={color=lafroxFuerte},
   labelsep=quad, skip=7pt,
   justification=raggedright, singlelinecheck=false}
-\captionsetup[table]{position=top,skip=6pt}
+\captionsetup[table]{position=below,skip=6pt}
 
 % Celda de cabecera: peso, no color de fondo.
 \newcommand{\cab}[1]{{\intersemibold\color{lafroxTinta}#1}}
@@ -556,22 +557,17 @@
   \LFXcuerpotabla
   \setlength{\LTpre}{12pt}\setlength{\LTpost}{16pt}%
   \begin{xltabular}{\textwidth}{#3}
-    \caption{#1}\label{#2}\\[2pt]
     \toprule #4 \\ \midrule
     \endfirsthead
-    % Los rotulos van en una caja de ancho cero: si midieran su texto real,
-    % longtable ensancharia la primera columna de TODA la tabla para caberlos.
     \multicolumn{1}{@{}l@{}}{\makebox[0pt][l]{%
       \fontsize{8pt}{9pt}\selectfont\color{lafroxGris}%
       Tabla \thetable\ --- continuación}}\\[3pt]
     \toprule #4 \\ \midrule
     \endhead
     \midrule
-    \multicolumn{1}{@{}l@{}}{\makebox[0pt][l]{%
-      \fontsize{8pt}{9pt}\selectfont\color{lafroxGris}%
-      continúa en la página siguiente}}\\
     \endfoot
     \bottomrule
+    \caption{#1}\label{#2}\\
     \endlastfoot
     #5
   \end{xltabular}%
