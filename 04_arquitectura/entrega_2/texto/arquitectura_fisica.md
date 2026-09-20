@@ -42,14 +42,14 @@ La red on-premise se compone de seis instalaciones (Tabla 14.1 y RT-21.16):
 
 - **Cross-docking de Curicó, Chillán y Los Ángeles.** nodo de cómputo industrial (E-01) con mini-WMS y broker local, enlace principal Starlink (D-06) y respaldo LTE dual (2 proveedores).
 
-- **Casa matriz y oficinas centrales (Talca).** sin nodo de cómputo propio; acceso a la nube para administración, planificación y portal de clientes (RT-03.22).
+- **Casa matriz y oficinas centrales (Talca).** sin nodo de cómputo propio; acceso a la nube para administración, planificación y portal de clientes.
 
-La proyección a 3 años (RT-02.12) incorpora una séptima instalación; el gabinete de crecimiento de la sala (R04) absorbe esa expansión sin obras adicionales en el sitio principal.
+La proyección a 3 años incorpora una séptima instalación; el gabinete de crecimiento de la sala (R04) absorbe esa expansión sin obras adicionales en el sitio principal.
 
 
 ## Tecnologías de software ofertadas
 
-Las tecnologías se eligen bajo los criterios de neutralidad tecnológica, soporte vigente por los 56 meses contractuales (RT-03.05) y preferencia por servicios administrados y componentes de código abierto con estándares abiertos (RT-03.07), de modo que el CLIENTE conserve la reversibilidad de la solución:
+Las tecnologías se eligen bajo los criterios de neutralidad tecnológica, soporte vigente por los 56 meses contractuales y preferencia por servicios administrados y componentes de código abierto con estándares abiertos, de modo que el CLIENTE conserve la reversibilidad de la solución:
 
 
 > **Tabla 22** — Tecnologías de Software a Utilizar · 15 filas · ver planilla del subdocumento
@@ -62,7 +62,7 @@ El ERP de 2017 no se reemplaza ni se modifica (Cap. 10 del caso): permanece como
 
 ## Implementos a proveer: hardware y software
 
-El inventario ofertado se agrupa en infraestructura de cómputo y almacenamiento, red y seguridad, dispositivos de terreno y operación, y componentes de sala. Son especificaciones que el CLIENTE adquiere y el adjudicatario instala, integra y mantiene (Art. 14.2). Las cantidades y justificaciones de cada fila se referencian al Formulario T-11.
+El inventario ofertado se agrupa en infraestructura de cómputo y almacenamiento, red y seguridad, dispositivos de terreno y operación, y componentes de sala. Son especificaciones que el CLIENTE adquiere y el adjudicatario instala, integra y mantiene. Las cantidades y justificaciones de cada fila se referencian al Formulario T-11.
 
 
 ### Infraestructura de cómputo y almacenamiento
@@ -97,19 +97,19 @@ Gateway IoT + Greengrass (B-02): 2 unidades (Talca y Concepción), ADAM-6000, co
 
 **Disponibilidad de infraestructura comprometida: 99,95 % mensual**, conforme al numeral 6.1 y a la tabla del numeral 7.2 de las Transversales, medida por componente: energía del recinto, climatización, red y comunicaciones, servidores y cómputo, y motor de base de datos. El compromiso se sostiene con redundancia N+1 en energía y climatización, doble acometida con transferencia automática, generación autónoma propia y monitoreo continuo con alertamiento; no se invoca ninguna clasificación de instalación de tercero, porque las Bases no exigen certificación de nivel sino el cumplimiento verificable de cada requisito técnico individual. Este valor es el nivel de la infraestructura del recinto y es distinto del compromiso contractual penalizable del Artículo 78°, que recae sobre la transacción de negocio de extremo a extremo (≥ 99,9 % mensual, RT-10.01).
 
-El programa arquitectónico considera ≈ 173 m² y 14 recintos: sala blanca de 32 m², NOC de 14 m², sala de sistemas de alimentación ininterrumpida y baterías, sala de climatización, sala de extinción, distribuidor principal y acometidas, recinto de custodia de medios de 10 m², patio de generador y recintos de apoyo. La disposición interna, la separación de zonas y la elevación de gabinetes constan en los planos del recinto que acompañan a esta parte (RT-06.03 y RT-06.05).
+El programa arquitectónico propuesto considera ≈ 173 m² y 14 recintos: sala blanca de 32 m², NOC de 14 m², sala de sistemas de alimentación ininterrumpida y baterías, sala de climatización, sala de extinción, distribuidor principal y acometidas, recinto de custodia de medios de 10 m², patio de generador y recintos de apoyo. La disposición interna, la separación de zonas y la elevación de gabinetes constan en los planos del recinto que acompañan a esta parte.
 
-Energía: UPS doble conversión on-line 6 kVA con configuración N+1 y banco VRLA con autonomía ≥ 30 min a plena carga (RT-06.07); grupo electrógeno de 12 kVA con estanque para 24 h y contrato de reabastecimiento (RT-06.08); transferencia automática red↔generador con prueba mensual con carga real (RT-06.10); PDU verticales A/B por gabinete con medidor (RT-08.04); factor de potencia ≥ 0,95 (RT-06.11).
+Energía: UPS doble conversión on-line 6 kVA con configuración N+1 y banco VRLA con autonomía ≥ 30 min a plena carga; grupo electrógeno de 12 kVA con estanque para 24 h y contrato de reabastecimiento; transferencia automática red↔generador con prueba mensual con carga real; PDU verticales A/B por gabinete con medidor; factor de potencia ≥ 0,95.
 
-Climatización: 2 CRAC de precisión ≈ 12.000 BTU/h en N+1, con free cooling, pasillo frío confinado y rango ASHRAE TC 9.9 de 18–27 °C y 40–60 % HR medido a la toma de aire del equipo (RT-06.13 y RT-06.14); PUE de diseño 1,7 con medición continua en 2 puntos y reporte trimestral.
+Climatización: 2 CRAC de precisión ≈ 12.000 BTU/h en N+1, con free cooling, pasillo frío confinado y rango ASHRAE TC 9.9 de 18–27 °C y 40–60 % HR medido a la toma de aire del equipo; PUE objetivo de diseño 1,7 (valor conservador para sala de servidores pequeña con climatización de precisión N+1) con medición continua en 2 puntos y reporte trimestral.
 
-Incendios: detección temprana por aspiración AnaLASER (RT-06.16); extinción con agente limpio FM-200 conforme NFPA 75/2001 con botón de aborto (RT-06.17); extintores ABC y CO₂ por recinto (RT-06.18).
+Incendios: detección temprana por aspiración AnaLASER; extinción con agente limpio FM-200 conforme NFPA 75/2001 con botón de aborto; extintores ABC y CO₂ por recinto.
 
-Seguridad física: 4 capas de acceso con biometría facial y resguardo AFIS, esclusa antipassback y bitácora electrónica, una persona a la vez y acompañada (RT-06.20, RT-06.21 y RT-06.23); 12 puertas controladas y 7 cámaras IP con retención ≥ 30 días integradas al control de acceso (RT-06.24); NOC de 14 m² contiguo a la sala con ventana interior («ver sin entrar», RT-06.29/30); sensores ambientales DCIM/BMS (RT-06.14).
+Seguridad física: 4 capas de acceso con biometría facial y resguardo AFIS, esclusa antipassback y bitácora electrónica, una persona a la vez y acompañada; 12 puertas controladas y 7 cámaras IP con retención ≥ 30 días integradas al control de acceso; NOC de 14 m² contiguo a la sala con ventana interior («ver sin entrar»); sensores ambientales DCIM/BMS.
 
-Custodia de medios (RT-06.26/27/28): recinto de 10 m² en la segunda línea, sin luz UV (≤ 300 lux), 40–60 % HR, ventilación forzada y 18–27 °C; medio cifrado transportable rotado semanalmente a bóveda externa bajo custodia acreditada con cadena de custodia y bitácora; la pierna inmutable S3 es complementaria, no la reemplaza.
+Custodia de medios: recinto de 10 m² en la segunda línea, sin luz UV (≤ 300 lux), 40–60 % HR, ventilación forzada y 18–27 °C; medio cifrado transportable rotado semanalmente a bóveda externa bajo custodia acreditada con cadena de custodia y bitácora; la pierna inmutable S3 es complementaria, no la reemplaza.
 
-Cableado y comunicaciones: cableado estructurado Cat6A F/UTP + fibra OM4 certificado enlace por enlace (RT-06.04) sobre piso técnico de 40 cm, jerarquía ANSI/TIA-942 ENI→MDA→HDA→ZDA→EDA, con dos ductos de ingreso independientes (RT-06.32); 4 racks 42U en gabinete de servidores y comunicaciones separados (RT-06.05), con el cuarto (R04) reservado al crecimiento a 3 años.
+Cableado y comunicaciones: cableado estructurado Cat6A F/UTP + fibra OM4 certificado enlace por enlace sobre piso técnico de 40 cm, jerarquía ANSI/TIA-942 ENI→MDA→HDA→ZDA→EDA, con dos ductos de ingreso independientes; 4 racks 42U en gabinete de servidores y comunicaciones separados, con el cuarto (R04) reservado al crecimiento a 3 años.
 
 Los componentes de sala ofertados se detallan a continuación:
 
@@ -122,17 +122,17 @@ Los componentes de sala ofertados se detallan a continuación:
 **Cómo se satisface el numeral 7.1.** Las Transversales exigen un sitio secundario en dependencias distintas del principal, en modalidad activo-activo o activo-pasivo, con replicación en línea del ambiente de producción y características tecnológicas equivalentes a las del sitio principal en lo que respecta a los servicios críticos. La solución lo satisface con dos sitios secundarios, uno por cada dominio del despliegue híbrido, porque la carga crítica vive en ambos:
 
 - **Para el componente on-premise, el CD Concepción.** Es una dependencia física distinta, a 340 km del extremo opuesto de la red y sin amenazas comunes con Talca, y opera el motor de almacenes en modo reducido con su propia base local y autonomía de 24 horas. No es un sitio en espera: opera de forma autónoma todos los días y asume la carga de bodega de Talca mediante promoción controlada.
-- **Para la carga principal en nube, la región AWS us-east-1.** Aloja la réplica pasiva promovible del núcleo transaccional, a ≈ 7.700 km de la región primaria y ≈ 8.500 km de Talca, sin amenazas comunes (RT-07.02).
+- **Para la carga principal en nube, la región AWS us-east-1.** Aloja la réplica pasiva promovible del núcleo transaccional, a ≈ 7.700 km de la región primaria y ≈ 8.500 km de Talca, sin amenazas comunes.
 
 **Modalidad declarada y justificada (RT-07.01): activo-pasiva en caliente.** La modalidad activo-activo duplicaría la infraestructura transaccional y obligaría a reconciliar escrituras concurrentes entre regiones, sin mejorar el objetivo de recuperación comprometido; el análisis completo está en el ADR-09. La región secundaria mantiene una réplica reducida pero funcional de la plataforma, escalable a carga completa en menos de 30 minutos:
 
-- **RTO/RPO.** RTO ≤ 4 h y RPO ≤ 15 min para los servicios críticos (RT-07.04); la réplica Aurora Global mantiene un retraso típico < 1 s, alarmado a los 5 y 15 min (RT-07.03) y la replicación S3 CRR con RTC cumple un RPO < 15 min.
+- **RTO/RPO.** RTO ≤ 4 h y RPO ≤ 15 min para los servicios críticos; la réplica Aurora Global mantiene un retraso típico < 1 s, alarmado a los 5 y 15 min, y la replicación S3 CRR (copia entre regiones) con RTC (control de tiempo de replicación) cumple un RPO < 15 min.
 
-- **Conmutación/retorno.** failover en 8 pasos semiautomáticos (detección Route 53 < 5 min, promoción Aurora, escalado ECS Fargate, DNS, validación) con los pasos 4–7 automatizados mediante AWS Systems Manager Automation (RT-07.08); retorno (failback) en 6 pasos con reconciliación determinista de las transacciones generadas durante la contingencia (RT-07.05 y RT-07.06).
+- **Conmutación/retorno.** failover en 8 pasos semiautomáticos (detección Route 53 < 5 min, promoción Aurora, escalado ECS Fargate, DNS, validación) con los pasos 4–7 automatizados mediante AWS Systems Manager Automation; retorno (failback) en 6 pasos con reconciliación determinista de las transacciones generadas durante la contingencia.
 
-- **Pruebas.** conmutación real dos veces al año (semestral, Art. 20 / RT-07.07) midiendo RTO y RPO efectivos con informe al CLIENTE, junto con la restauración mensual verificada con cero errores (3-2-1-0, RNF-20.07).
+- **Pruebas.** conmutación real dos veces al año midiendo RTO y RPO efectivos con informe al CLIENTE, junto con la restauración mensual verificada con cero errores (esquema 3-2-1-0).
 
-- **Respaldos 3-2-1-0 (esquema único nube + on-premise).** la pierna «1 inmutable» vive en la nube (S3 Object Lock en modo Compliance + AWS Backup Vault Lock, RT-07.09 y RT-07.11); el NAS on-premise (D-05, WORM local + clave CMK independiente) es la copia local de recuperación rápida (RTO 4 h, RNF-20.06); la bóveda de custodia física externa completa la copia offsite (RT-06.26 y RT-06.28).
+- **Respaldos 3-2-1-0 (esquema único nube + on-premise).** la pierna «1 inmutable» vive en la nube (S3 Object Lock en modo Compliance + AWS Backup Vault Lock); el NAS on-premise (D-05, WORM local + clave CMK independiente) es la copia local de recuperación rápida (RTO 4 h); la bóveda de custodia física externa completa la copia offsite.
 
 Los componentes del sitio secundario se detallan a continuación:
 
@@ -142,7 +142,7 @@ Los componentes del sitio secundario se detallan a continuación:
 
 ## Niveles de servicio de infraestructura
 
-La infraestructura sostiene los niveles de disponibilidad del Capítulo 7 y el compromiso contractual del Artículo 78° (transacción de negocio crítica de extremo a extremo ≥ 99,9 %). La clasificación por servicio (RT-10.02) y su error budget son:
+La infraestructura sostiene los niveles de disponibilidad del Capítulo 7 y el compromiso contractual del Artículo 78° (transacción de negocio crítica de extremo a extremo ≥ 99,9 %). La clasificación por servicio y su error budget son:
 
 - **Crítico (≥ 99,9 %).** transacción de terreno de extremo a extremo (pedido→entrega→POD) y WMS on-premise (picking/recepción), por detener preventa, reparto y facturación y por la ventana nocturna sin contingencia.
 
@@ -152,20 +152,20 @@ La infraestructura sostiene los niveles de disponibilidad del Capítulo 7 y el c
 
 - **Bajo.** notificaciones y comunicaciones (disponibles en colas).
 
-La cadena de disponibilidad queda declarada y medible en sus cuatro tramos —nube, sala técnica, borde operacional y terreno—: la infraestructura del recinto se compromete en 99,95 % mensual por componente (numerales 6.1 y 7.2), la nube en la disponibilidad multizona del proveedor, el borde y el terreno en su autonomía declarada (24 h en el centro de distribución y 14 h en terreno, RT-03.10). Sobre esa cadena, el único compromiso que se mide y se penaliza es el del Artículo 78°: ≥ 99,9 % mensual de la transacción de negocio crítica de extremo a extremo (RT-10.01, menos de 8,76 h al año).
+La cadena de disponibilidad queda declarada y medible en sus cuatro tramos —nube, sala técnica, borde operacional y terreno—: la infraestructura del recinto se compromete en 99,95 % mensual por componente (numerales 6.1 y 7.2), la nube en la disponibilidad multizona del proveedor, el borde y el terreno en su autonomía declarada (24 h en el centro de distribución y 14 h en terreno). Sobre esa cadena, el único compromiso que se mide y se penaliza es el del Artículo 78°: ≥ 99,9 % mensual de la transacción de negocio crítica de extremo a extremo (menos de 8,76 h al año).
 
 
 ## Operación desconectada
 
 
-> **Tabla 29** — Operación Desconectada (RT-03.10 a RT-03.13) · 4 filas · ver planilla del subdocumento
+> **Tabla 29** — Operación desconectada · 4 filas · ver planilla del subdocumento
 
 
 ## Arquitectura de integración
 
 Registro único de las integraciones de la solución: servicios, contratos, mensajería, versionado y gobierno. El marco normativo de este apartado se resume en la tabla de apertura de esta parte y se cita código por código en cada subsección.
 
-Por qué la integración es una capa de primera clase en Puelche. El caso no describe un sistema legado único que reemplazar: describe un tejido de sistemas —ERP de 2017 sin documentación de interfaces, WMS de 2013 con proveedor desaparecido, una preventa cuyo proveedor ya no existe, planillas y papel— más 14.200 puntos de entrega, 10 empresas transportistas y un hito externo contractual (enero de 2029, condiciones comerciales de la principal cadena de supermercados). El riesgo de este proyecto no está en construir módulos: está en las costuras.
+El riesgo principal del caso está en las costuras entre sistemas legados sin documentación de interfaces, no en los módulos nuevos.
 
 
 ### Principios de integración
@@ -223,14 +223,14 @@ El total en régimen es de ≈ 150.000 mensajes al día, dominado por las dos se
 ### Contratos
 
 
-> **Tabla 33** — 4. Contratos (RT-05.16 · RT-05.18 · Art. 23) · 5 filas · ver planilla del subdocumento
+> **Tabla 33** — 4. Contratos de integración · 5 filas · ver planilla del subdocumento
 
 Los contratos se declaran por dimensión:
 
 - **API síncrona.** OpenAPI 3.1 por módulo, con ruta /v{major}/.... Metadatos obligatorios: x-owner (módulo dueño), x-version (semver), x-status (draft, stable, deprecated) y x-sunset (fecha de retiro).
 - **Eventos.** AsyncAPI 2.6 con JSON Schema versionado por evento. Cada evento declara productor único, consumidores registrados, clave de partición y política de reintento.
 - **Autenticación.** Superficies: OAuth 2.1 con PKCE. Servicio a servicio: mTLS. Máquina a máquina: credenciales de cliente con secreto de rotación automática. Todos los tokens los firma Keycloak (Capa 7).
-- **Validación.** Validación de esquema e inspección de carga útil en la puerta de enlace (Art. 21.2), antes de alcanzar la Capa 4. Un mensaje que no valida no entra: se rechaza con causa y queda registrado.
+- **Validación.** Validación de esquema e inspección de carga útil en la puerta de enlace, antes de alcanzar la Capa 4. Un mensaje que no valida no entra: se rechaza con causa y queda registrado.
 - **Trazabilidad.** Todo llamado y todo evento propaga transaction_id (OpenTelemetry) desde la Capa 3 hasta la Capa 6. Es la clave con la que se reconstruye una operación de extremo a extremo, conforme al Art. 23: quién, qué, cuándo, desde dónde y con qué valores anteriores y posteriores.
 
 
@@ -245,14 +245,14 @@ Los eventos son el vocabulario del sistema. Se nombran en pasado, son inmutables
 ### Mensajería
 
 
-> **Tabla 35** — 5. Mensajería (RT-02.06 · RT-02.07 · ADR-05) · 4 filas · ver planilla del subdocumento
+> **Tabla 35** — 5. Mensajería (ADR-05) · 4 filas · ver planilla del subdocumento
 
 Garantías declaradas:
 
 - **Entrega al menos una vez**, con deduplicación en el consumidor. No se promete entrega exactamente una vez: se promete idempotencia verificable.
 - **Orden por partición, no orden global.** La partición es el sitio o la entidad de negocio, según el evento.
 - **DLQ por cola** con retención declarada, monitoreada por el equipo de operación y con bandeja de excepciones cuando el mensaje afecta a un tercero (EDI, DTE).
-- **Reintento con retroceso exponencial y variación aleatoria**; cortacircuitos sobre ERP, SII y Transbank; mamparos por integración: un fallo del ERP no degrada la preventa.
+- **Reintento con retroceso exponencial y variación aleatoria**; cortacircuitos sobre ERP, SII y Transbank; mamparos (aislamiento de fallos entre componentes) por integración: un fallo del ERP no degrada la preventa.
 - **Reconciliación determinista:** al reconectar, el conflicto de stock se resuelve por la regla de reserva declarada, nunca por marca de tiempo, y la decisión queda en la bitácora del Art. 16.4.
 
 
@@ -277,50 +277,31 @@ Estrangulamiento del WMS de 2013 (ADR-08). El WMS se reemplaza en la Etapa 1 por
 Hub EDI GS1 (ADR-11). Una cadena nueva se incorpora por configuración de perfil (equivalencias GTIN por cadena, RF-12.03), no por desarrollo. El hub mapea cada cadena contra un modelo canónico GS1, no contra el ERP: es exactamente lo que evita construir una integración distinta por cada cadena (Cap. 17.4, punto 10 del caso).
 
 
-### Versionado y política de obsolescencia
+### Versionado, gobierno y evolución
 
+Versionado semántico estricto (major/minor/patch) con evolución aditiva, preaviso mínimo de 6 meses antes de retirar una versión y doble versión concurrente durante migración. Los cambios disruptivos (major) requieren aprobación del Comité de Arquitectura. No se publica ni retira versiones en septiembre, diciembre ni los tres primeros días hábiles del mes (Cap. 13.2). Las especificaciones de cadenas de supermercados y del SII se versionan como perfiles del hub EDI.
 
-> **Tabla 37** — 8. Versionado y política de obsolescencia (RT-05.17 · Art. 23) · 7 filas · ver planilla del subdocumento
-
-La política de versionado y obsolescencia se declara en siete reglas:
-
-- **Versionado semántico estricto.** major.minor.patch. major = cambio disruptivo; minor = aditivo y retro-compatible; patch = corrección.
-- **Evolución aditiva primero.** Un campo se agrega, nunca cambia de significado. Un campo que deja de usarse se marca deprecated antes de retirarse.
-- **Preaviso mínimo de 6 meses.** Ninguna versión se retira antes de seis meses de aviso formal (Art. 23 y RT-05.17). El registro de deprecaciones es visible para todo el equipo y para el CLIENTE.
-- **Doble versión concurrente.** Durante la migración conviven v{n} y v{n+1}; el consumidor migra en su ventana, no en la del proveedor.
-- **Aprobación de cambios disruptivos.** Un major requiere aprobación del Comité de Arquitectura y plan de migración con los consumidores identificados uno a uno.
-- **Congelamientos del caso.** No se publica ni se retira ninguna versión en septiembre, en diciembre ni en los tres primeros días hábiles del mes (Cap. 13.2 del caso).
-- **Contratos que no controla el proponente.** Las especificaciones de cada cadena de supermercados y del SII las fija la contraparte: se versionan como perfiles del hub y se prueban contra el banco de pruebas de cada contraparte antes de activarse.
-
-
-### Gobierno de la capa de integración
-
-
-> **Tabla 38** — 9. Gobierno de la capa de integración (Art. 19 · RT-05.16 · Cap. 14 BTT) · 7 filas · ver planilla del subdocumento
+Gobierno: catálogo único versionado (toda integración con dueño, contrato, versión y comportamiento ante falla); pruebas de contrato en el pipeline (un cambio que rompe a un consumidor bloquea el despliegue); observabilidad por integración (latencia, error, DLQ, correlación por transaction_id); y bandeja de excepciones de negocio para lo que afecta a terceros (EDI, DTE — RF-12.05/12.06). El catálogo, las guías de resolución y la bandeja son los artefactos que hacen operable esta capa por el equipo de 4 personas del CLIENTE.
 
 
 ### Carga y descarga masiva de datos
 
 
-> **Tabla 39** — 10. Carga y descarga masiva de datos (RT-05.22) · 4 filas · ver planilla del subdocumento
+> **Tabla 39** — 10. Carga y descarga masiva de datos · 4 filas · ver planilla del subdocumento
 
 Regla: ninguna carga masiva se ejecuta dentro de la ventana crítica 05:30–07:00, y toda carga queda registrada y es auditable.
 
 
 ### Funciones que no operan sin conexión
 
-La declaración formal de funciones no disponibles en modo desconectado que exige RT-03.13 se detalla por componente en la tabla de emplazamiento de esta parte y se resume en la arquitectura lógica (Subdocumento 4.1). Desde la vista de integración la regla es una sola:
+La declaración formal de funciones no disponibles en modo desconectado se detalla por componente en la tabla de emplazamiento de esta parte y se resume en la arquitectura lógica (Subdocumento 4.1). Desde la vista de integración la regla es una sola:
 
 - Lo transaccional crítico de terreno y de bodega opera sin conexión (14 h en terreno, 24 h en el centro de distribución). Lo que depende de la nube o de un tercero degrada con procedimiento manual declarado y sin pérdida de datos.
 - Ninguna función de la ventana crítica de despacho (05:30–07:00) depende de una integración externa: el DTE se timbra de forma diferida con folio reservado, el cobro se captura como pendiente, la excursión térmica se detecta y bloquea localmente, y la ruta ya está cargada en el dispositivo.
 
 ## Arquitectura de seguridad
 
-Arquitectura de seguridad de la solución: modelo Zero Trust, capa expuesta, identidad y accesos, cifrado y controles. Es autocontenida: los valores que declara se sostienen en los componentes especificados en las secciones anteriores de este capítulo (modelo de emplazamiento, tecnologías ofertadas, implementos y sitios principal y secundario).
-
-Es además el documento de seguridad del subdocumento: es autocontenido y los valores aquí declarados no son nuevos salvo donde se indica expresamente (consolidan lo comprometido en este mismo Subdocumento 4.2).
-
-Por qué la seguridad de Puelche no es la de una oficina. El perímetro de esta solución no es un edificio: son 62 preventistas de pie en la puerta de un almacén, ~200 conductores —de los cuales ~160 no son trabajadores de la compañía y rotan sin aviso—, dispositivos compartidos entre turnos en una cámara a −22 °C, un turno de preparación con 38 % de rotación anual y 14.200 puntos de entrega. Un modelo de seguridad basado en la red corporativa aquí no protege nada. Por eso el modelo es Zero Trust y por eso la identidad es la pieza central.
+Arquitectura de seguridad de la solución: modelo Zero Trust, capa expuesta, identidad y accesos, cifrado y controles. El perímetro de esta solución no es un edificio corporativo sino un entorno distribuido con alta rotación de personal externo y dispositivos compartidos en terreno, por lo que el modelo es Zero Trust y la identidad es la pieza central.
 
 
 ### Principios rectores
@@ -344,7 +325,7 @@ En texto, las zonas y su flujo son: la zona pública (clientes del canal moderno
 
 Reglas de zona declaradas:
 
-- La única exposición pública es la DMZ en nube (CloudFront → WAF → API Gateway). Las consolas internas no pasan por ahí: entran por intranet o VPN (RT-03.22).
+- La única exposición pública es la DMZ en nube (CloudFront → WAF → API Gateway). Las consolas internas no pasan por ahí: entran por intranet o VPN.
 - La zona de datos no tiene salida a internet y se consume por VPC Endpoints/PrivateLink.
 - Desde la zona on-premise no se acepta ninguna conexión entrante salvo las dos excepciones D-AL-05.
 - La zona de terreno no tiene perímetro: se protege con identidad, cifrado local, MDM y borrado remoto.
@@ -353,13 +334,13 @@ Reglas de zona declaradas:
 ### Capa expuesta
 
 
-> **Tabla 44** — 3. Capa expuesta (Art. 21.2 · RT-11.11/11.13) · 8 filas · ver planilla del subdocumento
+> **Tabla 44** — 3. Capa expuesta · 8 filas · ver planilla del subdocumento
 
 
 #### Superficie de exposición completa
 
 
-> **Tabla 45** — 3.1 Superficie de exposición completa (RT-11.13) · 8 filas · ver planilla del subdocumento
+> **Tabla 45** — 3.1 Superficie de exposición completa · 8 filas · ver planilla del subdocumento
 
 Regla declarada: ningún nodo on-premise abre puertos entrantes. Toda gestión remota entra por el agente SSM sobre HTTPS saliente o por la VPN, nunca por un puerto publicado.
 
@@ -387,7 +368,7 @@ Inicio de sesión único para todos los módulos y cierre de sesión propagado (
 
 MFA obligatoria para administradores, accesos privilegiados y todo acceso desde fuera de la red corporativa.
 
-Factores resistentes a la suplantación: FIDO2/WebAuthn (claves de acceso) disponible y preferente para perfiles administradores, además de TOTP (RT-12.04, deseable, se supera el mínimo).
+Factores resistentes a la suplantación: FIDO2/WebAuthn (claves de acceso) disponible y preferente para perfiles administradores, además de TOTP (se supera el mínimo exigido).
 
 Acceso de conductores externos: OTP de un solo uso por operación, sin cuenta corporativa (RF-06.08). Es la respuesta al hecho de que ~160 conductores no son trabajadores de la compañía y rotan sin aviso.
 
@@ -395,30 +376,30 @@ Acceso de conductores externos: OTP de un solo uso por operación, sin cuenta co
 #### Autorización: RBAC más ABAC
 
 
-> **Tabla 47** — 4.3 Autorización: RBAC más ABAC (RT-12.05) · 4 filas · ver planilla del subdocumento
+> **Tabla 47** — 4.3 Autorización: RBAC más ABAC · 4 filas · ver planilla del subdocumento
 
 El control de acceso se resuelve en cuatro capas:
 
 - **RBAC.** Roles derivados de los 11 actores canónicos del modelo lógico. Los permisos viven en Keycloak.
 - **ABAC.** Atributos de contexto que acotan el rol: instalación asignada, horario de turno (el despacho solo es válido en su ventana), dispositivo provisto y enrolado por MDM. Las políticas se aplican en la Capa 4.
-- **Segregación de funciones (RT-12.06).** Conciliación ≠ aprobación (M10); detección de excursión térmica ≠ decisión de bloqueo (M9); rendición ≠ cierre contable (M7). Nadie que genera un control lo ejecuta. La matriz completa se declara en el registro de requerimientos (Cap. 17.1).
-- **Aislamiento de externos (RT-12.11).** Cada proveedor ve solo sus órdenes de compra y documentos; cada transportista solo sus rutas asignadas. No hay visibilidad cruzada.
+- **Segregación de funciones.** Conciliación ≠ aprobación (M10); detección de excursión térmica ≠ decisión de bloqueo (M9); rendición ≠ cierre contable (M7). Nadie que genera un control lo ejecuta. La matriz completa se declara en el registro de requerimientos (Cap. 17.1).
+- **Aislamiento de externos.** Cada proveedor ve solo sus órdenes de compra y documentos; cada transportista solo sus rutas asignadas. No hay visibilidad cruzada.
 
 
 #### Política de sesión
 
 
-> **Tabla 48** — 4.4 Política de sesión (Art. 22 · RT-12.07 · RT-12.08) · 11 filas · ver planilla del subdocumento
+> **Tabla 48** — 4.4 Política de sesión · 11 filas · ver planilla del subdocumento
 
-La política de sesión se declara en cinco términos conforme a RT-12.07:
+La política de sesión se declara en cinco términos:
 
-- **Duración máxima.** La credencial de acceso dura 30 minutos, valor único de la propuesta que rige para todos los perfiles (D-AL-07); la credencial de identidad vive 1 hora. En operación desconectada la sesión no depende del IdP sino de la caché local (A-05): el token de turno cubre 8 horas en el centro de distribución (RNF-13.01) y 14 horas en terreno (RNF-06.02), de modo que la ventana sin enlace nunca queda descubierta (ADR-06).
+- **Duración máxima.** La credencial de acceso dura 30 minutos, valor único de la propuesta que rige para todos los perfiles (D-AL-07); la credencial de identidad vive 1 hora. En operación desconectada la sesión no depende del IdP sino de la caché local (A-05): el token de turno cubre 8 horas en el centro de distribución y 14 horas en terreno, de modo que la ventana sin enlace nunca queda descubierta (ADR-06).
 - **Caducidad por inactividad.** 30 minutos en consolas de bodega y back-office y 60 minutos en superficies de solo lectura; una pantalla de consulta no obliga a reautenticarse cada media hora.
 - **Renovación de la credencial de sesión.** Por credencial de refresco rotatoria de 30 días: cada uso emite una nueva e invalida la anterior, y el reúso detectado invalida la familia completa y fuerza la reautenticación.
 - **Revocación inmediata.** El cierre global de sesión desde el panel de administración corta una sesión ante la pérdida o el compromiso de un dispositivo, y la baja de una identidad revoca sus credenciales vigentes.
 - **Control de sesiones concurrentes.** Una sola sesión activa por actor de terreno: se deniega el inicio simultáneo del mismo preventista o conductor en otro dispositivo, con opción de invalidar la anterior.
 
-La elevación temporal de privilegios no excede las 2 horas y exige justificación, aprobación de un segundo perfil y registro auditado. Conforme a RT-12.08, las credenciales están firmadas y son de vida breve, la credencial de refresco es rotatoria y ningún identificador de sesión viaja en la ruta de la dirección web; el token se envía siempre en la cabecera de la petición. El registro, la verificación de identidad y la recuperación de acceso autoservido de personas usuarias externas (RT-12.12) se cubren con el mecanismo declarado en la subsección de federación.
+La elevación temporal de privilegios no excede las 2 horas y exige justificación, aprobación de un segundo perfil y registro auditado. Las credenciales están firmadas y son de vida breve, la credencial de refresco es rotatoria y ningún identificador de sesión viaja en la ruta de la dirección web; el token se envía siempre en la cabecera de la petición. El registro, la verificación de identidad y la recuperación de acceso autoservido de personas usuarias externas se cubren con el mecanismo declarado en la subsección de federación.
 
 
 #### Autenticación en el perfil operacional de terreno
@@ -434,7 +415,7 @@ El caso fija condiciones que descartan la contraseña como mecanismo de terreno:
 #### Gestión de dispositivos
 
 
-> **Tabla 49** — 4.6 Gestión de dispositivos (MDM — RT-03.18) · 6 filas · ver planilla del subdocumento
+> **Tabla 49** — 4.6 Gestión de dispositivos (MDM) · 6 filas · ver planilla del subdocumento
 
 La gestión de dispositivos se declara en seis capacidades:
 
@@ -449,14 +430,14 @@ La gestión de dispositivos se declara en seis capacidades:
 #### Ciclo de vida de la identidad
 
 - Aprovisionamiento ≤ 24 h desde el alta en recursos humanos o en el proveedor: cuenta, permisos por rol canónico y dispositivo enrolado.
-- Baja efectiva en ≤ 24 h desde la desvinculación (Art. 22): revocación de tokens, borrado remoto del dispositivo y revocación de accesos externos.
+- Baja efectiva en ≤ 24 h desde la desvinculación: revocación de tokens, borrado remoto del dispositivo y revocación de accesos externos.
 - Flujo desatendido y auditable, con aprobación del jefe de área, bitácora de aprovisionamiento y revisión semestral de accesos (certificación de identidades).
 - Auditoría de identidad con no repudio: creación, modificación, elevación y baja de cuentas, con la retención declarada en la detección, respuesta y evidencia.
 
 
 #### Accesos privilegiados y cuenta de emergencia
 
-- **PAM con acceso a demanda:** sin acceso interactivo permanente a producción. La operación excepcional se hace just-in-time por AWS Systems Manager Session Manager, con MFA, aprobación y sesión grabada (RT-11.27).
+- **PAM con acceso a demanda:** sin acceso interactivo permanente a producción. La operación excepcional se hace just-in-time por AWS Systems Manager Session Manager, con MFA, aprobación y sesión grabada.
 - **Cuenta de emergencia (break-glass):** fuera de banda, custodiada en bóveda física con doble firma, para contingencia de indisponibilidad del IdP. Su activación exige procedimiento escrito, notificación inmediata a TI y a la gerencia, registro en cadena de custodia y rotación de credenciales tras el uso. Se prueba dos veces al año junto con el simulacro de recuperación ante desastres.
 
 
@@ -474,7 +455,7 @@ El cifrado en tránsito se declara por trayecto:
 - **Servicio a servicio.** mTLS (microsegmentación; sin confianza implícita en la red interna).
 - **On-premise ↔ nube.** IPsec/IKEv2 con AES-256-GCM, BGP, MTU 1436, dos túneles.
 - **Borde IoT → nube.** MQTTS 8883 con certificado X.509 por dispositivo.
-- **Respaldos y replicación.** TLS 1.3 en tránsito (RT-07.10).
+- **Respaldos y replicación.** TLS 1.3 en tránsito.
 
 
 #### En reposo
@@ -482,7 +463,7 @@ El cifrado en tránsito se declara por trayecto:
 
 > **Tabla 51** — 5.2 En reposo · 6 filas · ver planilla del subdocumento
 
-Rotación y custodia: claves de datos con rotación anual o ante revocación o compromiso; claves maestras según el calendario del proveedor; rotación en línea, sin degradación del servicio. Los respaldos conservan la versión de clave necesaria para una restauración auditable. Separación de funciones en la custodia de claves (Art. 21.2): quien administra la plataforma no administra las claves maestras.
+Rotación y custodia: claves de datos con rotación anual o ante revocación o compromiso; claves maestras según el calendario del proveedor; rotación en línea, sin degradación del servicio. Los respaldos conservan la versión de clave necesaria para una restauración auditable. Separación de funciones en la custodia de claves: quien administra la plataforma no administra las claves maestras.
 
 
 #### Cifrado a nivel de campo
@@ -490,30 +471,30 @@ Rotación y custodia: claves de datos con rotación anual o ante revocación o c
 El caso lo declara exigible para cuatro conjuntos de datos. Aplicación declarada:
 
 
-> **Tabla 52** — 5.3 Cifrado a nivel de campo (RT-11.10 — Según caso) · 4 filas · ver planilla del subdocumento
+> **Tabla 52** — 5.3 Cifrado a nivel de campo · 4 filas · ver planilla del subdocumento
 
 El cifrado a nivel de campo se declara por conjunto de datos:
 
-- **Comportamiento de pago y antecedentes comerciales del cliente.** Cifrado a nivel de campo con clave en KMS; acceso restringido por rol y registro de consultas (RT-16.09).
+- **Comportamiento de pago y antecedentes comerciales del cliente.** Cifrado a nivel de campo con clave en KMS; acceso restringido por rol y registro de consultas.
 - **Datos de geolocalización de personas.** Cifrado a nivel de campo, retención 12 meses y registro de consultas. La visibilidad de flota es operativa y no se desliza a control de jornada (D1, objeción sindical L577).
 - **Medios de pago electrónicos.** El PAN no se almacena: tokenización en la pasarela; el terminal POS es PCI PTS 7.x.
 - **RUT de clientes en bases y registros.** Pseudonimización mediante cifrado a nivel de campo (pgcrypto con clave en KMS).
 
-Gestión de secretos. Los secretos de integración (credenciales del ERP, certificados AS2/EDI, credenciales del SII y de Transbank) se administran en AWS Secrets Manager y SSM Parameter Store, con rotación automática y consumo desde los nodos on-premise por VPC Endpoint saliente, coherente con el principio 4. Prohibición absoluta de secretos embebidos en código, imágenes o archivos de configuración (Art. 21.4).
+Gestión de secretos. Los secretos de integración (credenciales del ERP, certificados AS2/EDI, credenciales del SII y de Transbank) se administran en AWS Secrets Manager y SSM Parameter Store, con rotación automática y consumo desde los nodos on-premise por VPC Endpoint saliente, coherente con el principio 4. Prohibición absoluta de secretos embebidos en código, imágenes o archivos de configuración.
 
-Gestor de secretos: servicio administrado, no componente autoalojado. La decisión está fundada en el ADR-15 y su emplazamiento es el componente N-12 de la tabla de emplazamiento. Se descartó un gestor autoalojado on-premise porque habría exigido una máquina virtual adicional en Talca con su alta disponibilidad, respaldo, procedimiento de sellado y licencia, sumando superficie de administración a un equipo de cuatro personas sin beneficio funcional frente al servicio administrado (Art. 16.3). Todo componente de seguridad de esta arquitectura tiene emplazamiento declarado, como exige el Art. 16.2.
+Gestor de secretos: servicio administrado, no componente autoalojado. La decisión está fundada en el ADR-15 y su emplazamiento es el componente N-12 de la tabla de emplazamiento. Se descartó un gestor autoalojado on-premise porque habría exigido una máquina virtual adicional en Talca con su alta disponibilidad, respaldo, procedimiento de sellado y licencia, sumando superficie de administración a un equipo de cuatro personas sin beneficio funcional frente al servicio administrado. Todo componente de seguridad de esta arquitectura tiene emplazamiento declarado.
 
 
 ### Clasificación de la información y controles por nivel
 
 
-> **Tabla 53** — 6. Clasificación de la información y controles por nivel (RT-11.03) · 4 filas · ver planilla del subdocumento
+> **Tabla 53** — 6. Clasificación de la información y controles por nivel · 4 filas · ver planilla del subdocumento
 
 
 ### Detección, respuesta y evidencia
 
 
-> **Tabla 54** — 7. Detección, respuesta y evidencia (Art. 21.3 · RT-11.14 a RT-11.21) · 11 filas · ver planilla del subdocumento
+> **Tabla 54** — 7. Detección, respuesta y evidencia · 11 filas · ver planilla del subdocumento
 
 
 ### Modelado de amenazas STRIDE
@@ -521,102 +502,49 @@ Gestor de secretos: servicio administrado, no componente autoalojado. La decisi�
 Cada componente y cada integración externa modela sus amenazas antes de implementarse.
 
 
-> **Tabla 55** — 8. Modelado de amenazas STRIDE (Art. 21.1 · RT-11.02) · 9 filas · ver planilla del subdocumento
+> **Tabla 55** — 8. Modelado de amenazas STRIDE · 9 filas · ver planilla del subdocumento
 
 
 ### Seguridad del ciclo de desarrollo
 
 
-> **Tabla 56** — 9. Seguridad del ciclo de desarrollo (Art. 21.4 · RT-11.22 a RT-11.27) · 6 filas · ver planilla del subdocumento
+> **Tabla 56** — 9. Seguridad del ciclo de desarrollo · 6 filas · ver planilla del subdocumento
 
 
 ### Datos personales, residencia y transferencia internacional
 
 
-> **Tabla 57** — 10. Datos personales, residencia y transferencia internacional (Art. 23 · Ley 21.719) · 12 filas · ver planilla del subdocumento
+> **Tabla 57** — 10. Datos personales, residencia y transferencia internacional · 12 filas · ver planilla del subdocumento
 
 Dos de los resguardos de esta tabla son decisiones de diseño y no solo cláusulas contractuales, y se propagan a la sección de arquitectura de despliegue de este documento y a la arquitectura lógica (Subdocumento 4.1): la minimización, por la que la región secundaria sostiene continuidad y no se explota analíticamente, y la exclusión de los datos de geolocalización de personas de la replicación transfronteriza. La decisión de no replicar la geolocalización de personas tiene además un fundamento del caso: la geolocalización de personas es el dato con la objeción sindical explícita (Restricción no negociable N° 10, Cap. 10 del caso) y con la retención más corta (12 meses); mantenerlo en una sola jurisdicción reduce la superficie legal sin afectar la continuidad, porque no es un dato necesario para reanudar la operación.
 
 
-#### Protocolo ARCOP — derechos de los titulares
+#### Derechos de los titulares, política de privacidad y EIPD
 
-Declaración de cumplimiento de los derechos de los titulares sobre los datos personales tratados por la solución:
+**Derechos ARCOP (Ley 21.719).** Acceso, rectificación, supresión, oposición, portabilidad y bloqueo temporal; canal único (correo dedicado + formulario web), plazo de 30 días prorrogable una vez (Art. 11); contraparte: Encargado de Seguridad (BA Art. 27°); bitácora de solicitudes auditada.
 
-- **Derechos cubiertos:** acceso, rectificación, cancelación (supresión), oposición, portabilidad y bloqueo temporal. Instrumentación: acceso y portabilidad por la vía de la exportabilidad (RT-05.06, en formato abierto CSV o JSON y con diccionario); rectificación y supresión por el ciclo de vida de datos (RT-05.07 y RT-05.08) con trazabilidad de cada cambio; bloqueo temporal conforme a la ley en caso de impugnación del titular.
-- **Canal único:** correo dedicado y formulario web con acuse de recibo, publicados en la política de privacidad. Ningún otro canal inicia el plazo de respuesta.
-- **Plazo:** respuesta en 30 días corridos, prorrogables una sola vez por 30 más, con aviso al titular (Art. 11 de la Ley 21.719).
-- **Verificación de identidad:** autenticación del titular o su representante (documento de identidad / poder), proporcional al riesgo del dato (reforzada para geolocalización y datos sensibles); registro de cada verificación.
-- **Contraparte responsable (BA Art. 27°):** el Encargado de Seguridad de la Información coordina la recepción y respuesta de solicitudes y su registro; es la contraparte única e identificable ante los titulares y ante el CLIENTE.
-- **Registro:** bitácora de solicitudes ARCOP (qué derecho, quién, cuándo, resolución y plazo real), conservada conforme a la retención de auditoría y disponible para la Agencia de Protección de Datos Personales.
+**Política de privacidad.** Aviso informativo a titulares (clientes y trabajadores) con: responsable (Distribuidora Puelche S.A.), datos tratados por categoría, finalidades, base de licitud por tratamiento, destinatarios y transferencias, retención por categoría y derechos. Versión preliminar anexada al Informe 1.
 
+**EIPD (BA Art. 27°).** Evaluación de impacto obligatoria por tratamiento masivo (14.200 clientes) y monitoreo sistemático (GPS de ~260 trabajadores). Versión final antes de producción, revisión anual.
 
-#### Política de Privacidad — versión preliminar
-
-Documento de referencia del aviso informativo a titulares (clientes y trabajadores); versión preliminar anexable al Informe 1:
-
-- **Responsable:** Distribuidora Puelche S.A. (CLIENTE), con el proponente como encargado del tratamiento (cláusulas de tratamiento de datos, BA). Residencia primaria: Chile y AWS sa-east-1.
-- **Datos tratados:** identificación y contacto de clientes (14.200 puntos, mayoría personas naturales); comportamiento de pago e historial crediticio del canal tradicional; datos laborales de trabajadores; geolocalización de preventistas (62) y conductores (~200) con finalidad exclusivamente operativa (rutas, verificación de entrega, costo de servir) — sin control de jornada ni cámaras en cabina (Decisión N° 13 del registro; objeción sindical: Restricción no negociable N° 10 del Cap. 10 del caso).
-- **Finalidades:** operación comercial y logística (preventa, reparto, facturación), trazabilidad sanitaria obligatoria (D.S. 977/96), seguridad de la información y continuidad (DR/DRP), cumplimiento normativo.
-- **Base de licitud:** por tratamiento, según la tabla de bases de licitud de este mismo apartado (artículos 12 y 13 de la Ley N.° 21.719): geolocalización de trabajadores por ejecución del contrato de trabajo e interés legítimo del empleador (no consentimiento, por desequilibrio; test de proporcionalidad en la tabla de bases de licitud); clientes por ejecución de contrato e interés legítimo; obligaciones legales (DTE, trazabilidad sanitaria) por obligación legal; conductores externos por consentimiento del titular. Donde aplique consentimiento, será expreso, informado, específico y revocable, con registro de la revocación.
-- **Destinatarios y transferencias:** AWS (encargado, ISO/IEC 27018) y subencargados declarados (BA 73.4); transferencia internacional a us-east-1 solo bajo los resguardos del Art. 23; la geolocalización de personas excluida de la replicación transfronteriza.
-- **Retención y eliminación por categoría:** geolocalización 12 meses; trazabilidad sanitaria 5 años; documentos tributarios 6 años; eliminación certificada al término del contrato (Art. 85 BA).
-- **Derechos del titular:** acceso, rectificación, supresión, oposición, portabilidad y bloqueo temporal; cómo ejercerlos, en el protocolo de derechos de los titulares (canal dedicado y plazo de 30 días, prorrogable una sola vez por otros 30).
-- **Seguridad:** medidas declaradas en este documento — cifrado a nivel de campo (RT-11.10), RBAC/ABAC, registro de consultas a datos sensibles (RT-16.09), Zero Trust (NIST SP 800-207).
-- **Brechas:** notificación al CLIENTE en ≤ 24 h (RT-11.19); el CLIENTE, como responsable, cumple la notificación ante la Agencia de Protección de Datos Personales y los titulares afectados.
-- **Portales de canal moderno (N-01/N-02/N-03) y cookies:** no se instrumentan cookies de terceros ni analítica de seguimiento; en caso de solicitarse, se implementará un banner de consentimiento de cookies conforme a la Ley 21.719 y un aviso específico del portal.
-
-
-#### Evaluación de Impacto sobre Protección de Datos (EIPD) — alcance preliminar
-
-- **Procedencia:** BA Art. 27° (evaluación de impacto "cuando corresponda") y Ley 21.719 (tratamientos de alto riesgo). El caso la gatilla: tratamiento masivo de datos personales (14.200 clientes) y monitoreo sistemático de personas (GPS de ~260 trabajadores).
-- **Alcance (criterios):** finalidad, base de licitud, categorías (incluidas sensibles: geolocalización, comportamiento de pago), destinatarios, transferencias internacionales (us-east-1), retención por categoría, medidas de seguridad y riesgos para los titulares (vigilancia de trabajadores, acceso indebido a historial crediticio, exposición de geolocalización).
-- **Tratamientos incluidos:** preventa/reparto (geolocalización); gestión de crédito y cobranza (comportamiento de pago); trazabilidad sanitaria lote→cliente (D.S. 977/96); POD (firma/foto); analítica y observabilidad con datos personales.
-- **Resultado comprometido:** EIPD según metodología reconocida (p.ej. ISO/IEC 29134 / CNIL PIA): documento de riesgos y controles y veredicto de proporcionalidad; versión final antes de la entrada en producción y actualización ante cualquier cambio de tratamiento.
-- **Entregable:** documento formal del proyecto, con versión preliminar anexada al Informe 1 y revisión anual durante la operación.
-
-
-#### Vigencia y seguimiento normativo
-
-La Ley 21.719 entra en vigencia el 01-dic-2026 (Diario Oficial 13-dic-2024; vacancia de 2 años). El 31-ago-2026 el Gobierno ingresó el Boletín N° 18.623-07 (Mensaje N° 110-374, urgencia 01-sep-2026), que postergaría su entrada en vigencia al 01-dic-2027, aumenta a 5 los consejeros de la Agencia y amplía la primera amonestación a todos los responsables. Al cierre de esta versión es proyecto de ley, aún no publicado: mientras tanto rige el calendario 01-dic-2026. La propuesta es robusta a ambas fechas por diseño: se alinea contra el articulado completo ya publicado y la operación (contrato de 56 meses) cae dentro del régimen cualquiera sea la fecha; ninguno de los controles de este apartado depende de la fecha de vigencia.
-
+**Vigencia.** La Ley 21.719 rige desde el 01-dic-2026; un proyecto de ley (Boletín 18.623-07) postergaría la vigencia al 01-dic-2027. La propuesta es robusta a ambas fechas por diseño.
 
 #### Base de licitud por tratamiento
 
-Cierre de la decisión de base de licitud. La regla general de la ley es el consentimiento (Art. 12), salvo que concurra alguna de las bases distintas al consentimiento (Art. 13): ejecución de contrato, obligación legal, interés vital o interés legítimo del responsable. Cada tratamiento del caso declara su base, su fundamento y sus garantías:
+Cada tratamiento declara su base de licitud conforme a los Art. 12 (consentimiento) y 13 (bases distintas) de la Ley 21.719:
 
+> **Tabla 58** — Base de licitud por tratamiento (Ley 21.719, Art. 12 y 13) · 7 filas · ver planilla del subdocumento
 
-> **Tabla 58** — 10.5 Base de licitud por tratamiento (Ley 21.719, Art. 12 y 13) · 7 filas · ver planilla del subdocumento
+Garantías transversales: RAT como entregable del proyecto (ISO 5.31/5.34); geolocalización y comportamiento de pago tratados como sensibles (cifrado de campo + registro de consultas); consentimiento expreso, informado y revocable donde aplique; eliminación certificada al término del contrato (Art. 85 BA).
 
-Garantías transversales de esta tabla:
+### Controles ISO/IEC 27001:2022
 
-- **RAT (registro de actividades de tratamiento):** entregable del proyecto; cada fila se formaliza con finalidad, categorías, plazos, destinatarios y medidas (controles ISO 5.31 y 5.34).
-- **Sensibilidad:** geolocalización y comportamiento de pago se tratan como categorías sensibles que el caso identifica (RT-05.08/RT-11.10), con cifrado de campo y registro de consultas; la geolocalización se apoya en la excepción laboral/contractual de la ley, no en un consentimiento general.
-- **Consentimiento donde aplique (uso no contractual de clientes, conductores externos):** expreso, informado, específico y revocable, con registro de la revocación.
-- **Menores de edad:** la solución no trata datos de NNA; si un cliente resultara menor de 14 años, el consentimiento corresponderá a padres o representantes, y entre 14 y 18 al titular con asistencia, conforme la ley.
-- **Ciclo de vida:** eliminación certificada al término del contrato (Art. 85) y retención por categoría.
-
-
-### Matriz de controles ISO/IEC 27001:2022
-
-Referencia única de controles para toda la solución, nube y on-premise. El dimensionamiento on-premise se apoya en esta matriz.
-
-
-> **Tabla 59** — 11. Matriz de controles ISO/IEC 27001:2022 (RT-11.05) · 18 filas · ver planilla del subdocumento
+La solución se alinea con 18 controles del Anexo A de ISO/IEC 27001:2022 que cubren: control de acceso e identidades, seguridad en nube e incidentes, cumplimiento legal y privacidad, respaldo y capacidad, redes y vulnerabilidades, autenticación segura, cifrado y enmascaramiento, registro y SIEM, desarrollo seguro y separación de ambientes. Cada control se evidencia con su configuración, procedimiento o artefacto correspondiente, documentados en las subsecciones anteriores de este capítulo. El dimensionamiento on-premise se apoya en esta alineación.
 
 
 ### Seguridad física
 
-Seguridad física del sitio principal, en complemento de sus especificaciones de obra:
-
-Cuatro capas de acceso hasta la sala blanca, con biometría facial (AFIS de respaldo) y esclusa con antipassback; acceso de a una persona con reverificación (RT-06.23).
-
-CCTV IP con retención ≥ 30 días y respaldo en medio secundario auditable, cubriendo cada puerta controlada (RT-06.24).
-
-Recinto de custodia de medios de 10 m² con condiciones ambientales declaradas, e inventario con rotación y registro de todo movimiento (RT-06.26 a RT-06.28).
-
-Acceso de terceros (fabricantes, mantenedores, auditores) con acompañamiento obligatorio y registro (RT-06.25).
-
-Control de dispositivos extraíbles en los nodos on-premise y borrado seguro verificable de los medios que salen de servicio.
+Los controles de seguridad física (cuatro capas de acceso, biometría, CCTV ≥ 30 días, custodia de medios y control de acceso de terceros) se detallan en la sección del sitio principal de este subdocumento.
 
 ## Arquitectura de despliegue
 
@@ -625,22 +553,22 @@ Arquitectura de seguridad de la solución: modelo Zero Trust, capa expuesta, ide
 
 ### Ambientes de despliegue
 
-Los cinco ambientes obligatorios del numeral 4.1 de las Bases Técnicas Transversales están habilitados como condición del hito H3 (RT-04.01), aislados entre sí mediante cuentas AWS separadas bajo una organización centralizada de AWS Control Tower (aislamiento estricto + SCP):
+Los cinco ambientes obligatorios del numeral 4.1 de las Bases Técnicas Transversales están habilitados como condición del hito H3, aislados entre sí mediante cuentas AWS separadas bajo una organización centralizada de AWS Control Tower (aislamiento estricto + SCP):
 
 
-> **Tabla 62** — 1. Ambientes de despliegue (RT-04.01) · 5 filas · ver planilla del subdocumento
+> **Tabla 62** — 1. Ambientes de despliegue · 5 filas · ver planilla del subdocumento
 
 Reglas que gobiernan el modelo de ambientes:
 
-- **Paridad Pre-Producción = Producción (RT-04.02).** topología, versiones de componentes y configuración equivalentes; las diferencias por costo se declaran y justifican una a una.
-- **On-premise como producción (RT-04.01/RT-03.10).** el despliegue on-premise es producción con la imagen única wms_only; esa misma imagen recorre Dev→QA→PreProd en la nube antes del cutover en Talca (ventana de 24 h) y en Concepción. No se mantienen ambientes on-premise separados — la paridad la garantizan la imagen única y el IaC versionado (RT-03.03).
-- **Entrega continua (RT-04.05).** el pipeline CI ejecuta compilación, pruebas unitarias, análisis estático, análisis de composición, escaneo de secretos y escaneo de imágenes de contenedor, con bloqueo automático del despliegue ante hallazgos críticos o altos (RT-11.22).
-- **Despliegue sin interrupción (RT-04.07).** estrategia azul-verde con canario en etapas, demostrada en PreProducción antes de cada paso a producción; reversión automatizada (RT-04.06).
-- **Configuración externalizada (RT-04.08).** un mismo artefacto se promueve QA→PreProd→Prod sin recompilación; los secretos viven en gestor de secretos con rotación automática (RT-04.09), sin credenciales embebidas.
-- **Datos no productivos (RT-11.25).** Dev, QA y PreProd usan datos sintéticos generados desde la volumetría del Cap. 14 del caso; las plantillas próximas a producción pasan por anonimización/seudonimización verificable (Amazon Macie).
-- **Sin acceso interactivo a producción (RT-11.27).** los despliegues son exclusivamente por pipeline; el acceso administrativo excepcional es just-in-time vía AWS Systems Manager Session Manager con MFA, aprobación y sesión grabada.
-- **Reducción de ambientes no productivos fuera de horario (RT-04.13).** Dev/QA/PreProd se apagan o reducen fuera del horario de uso, con el ahorro reflejado en la estructura de costos.
-- **Portal web (N-01/N-02/N-03).** la SPA Angular se publica por ambiente en S3+CloudFront (bucket y distribución por cuenta AWS) y su backend es la misma imagen Django del ambiente; entra a producción con el hito de enero 2029 (RNF-12.01).
+- **Paridad Pre-Producción = Producción.** topología, versiones de componentes y configuración equivalentes; las diferencias por costo se declaran y justifican una a una.
+- **On-premise como producción.** el despliegue on-premise es producción con la imagen única wms_only; esa misma imagen recorre Dev→QA→PreProd en la nube antes del cutover en Talca (ventana de 24 h) y en Concepción. No se mantienen ambientes on-premise separados — la paridad la garantizan la imagen única y el IaC versionado.
+- **Entrega continua.** el pipeline CI ejecuta compilación, pruebas unitarias, análisis estático, análisis de composición, escaneo de secretos y escaneo de imágenes de contenedor, con bloqueo automático del despliegue ante hallazgos críticos o altos.
+- **Despliegue sin interrupción.** estrategia azul-verde con canario (despliegue gradual a un porcentaje pequeño de tráfico) en etapas, demostrada en PreProducción antes de cada paso a producción; reversión automatizada.
+- **Configuración externalizada.** un mismo artefacto se promueve QA→PreProd→Prod sin recompilación; los secretos viven en gestor de secretos con rotación automática, sin credenciales embebidas.
+- **Datos no productivos.** Dev, QA y PreProd usan datos sintéticos generados desde la volumetría del Cap. 14 del caso; las plantillas próximas a producción pasan por anonimización/seudonimización verificable (Amazon Macie).
+- **Sin acceso interactivo a producción.** los despliegues son exclusivamente por pipeline; el acceso administrativo excepcional es just-in-time vía AWS Systems Manager Session Manager con MFA, aprobación y sesión grabada.
+- **Reducción de ambientes no productivos fuera de horario.** Dev/QA/PreProd se apagan o reducen fuera del horario de uso, con el ahorro reflejado en la estructura de costos.
+- **Portal web (N-01/N-02/N-03).** la SPA Angular se publica por ambiente en S3+CloudFront (bucket y distribución por cuenta AWS) y su backend es la misma imagen Django del ambiente; entra a producción con el hito de enero 2029.
 
 
 ### Redes (topología, segmentación y conectividad)
@@ -651,9 +579,9 @@ Reglas que gobiernan el modelo de ambientes:
 Cada instalación dispone de caminos físicamente independientes con conmutación automática en < 30 s (el requisito exige ≤ 5 min declarados; el diseño opera en < 30 s):
 
 
-> **Tabla 63** — 2.1 WAN — tri-camino con SD-WAN (RT-03.17) · 4 filas · ver planilla del subdocumento
+> **Tabla 63** — 2.1 WAN — tri-camino con SD-WAN · 4 filas · ver planilla del subdocumento
 
-SD-WAN con políticas centralizadas y BGP; los cross-docks salen directo por Starlink a SQS/IoT/SSM (configuración crítica) y sincronizan detalle a Talca por AMQPS entre brokers (C-13). La pérdida total del enlace se cubre con la autonomía local 24 h (CD) / 14 h (terreno) — RT-03.10, RNF-13.01.
+SD-WAN con políticas centralizadas y BGP; los cross-docks salen directo por Starlink a SQS/IoT/SSM (configuración crítica) y sincronizan detalle a Talca por AMQPS entre brokers (C-13). La pérdida total del enlace se cubre con la autonomía local 24 h (CD) / 14 h (terreno).
 
 
 #### VPN Site-to-Site (costura C1)
@@ -668,7 +596,7 @@ Protocolo: IPsec/IKEv2, AES-256-GCM, BGP, MTU 1436; 2 túneles (activo + standby
 
 > **Tabla 64** — 2.3 Segmentación de red (sin solapamiento) · 5 filas · ver planilla del subdocumento
 
-Modelo Hub-and-Spoke con VPC de tránsito central: la comunicación cross-VPC pasa por el Transit Gateway (inspección) y los servicios AWS (S3, SQS, DynamoDB, KMS, SSM) se consumen por VPC Endpoints/PrivateLink sin tráfico por internet (RT-03.03).
+Modelo Hub-and-Spoke con VPC de tránsito central: la comunicación cross-VPC pasa por el Transit Gateway (inspección) y los servicios AWS (S3, SQS, DynamoDB, KMS, SSM) se consumen por VPC Endpoints/PrivateLink sin tráfico por internet.
 
 
 #### Zero Trust — flujos permitidos
@@ -676,12 +604,12 @@ Modelo Hub-and-Spoke con VPC de tránsito central: la comunicación cross-VPC pa
 Todo el tráfico on-premise → nube es outbound (HTTPS/443, MQTTS/8883) sin conexiones entrantes salvo las dos excepciones controladas D-AL-05 sobre túnel IPsec autenticado:
 
 
-> **Tabla 65** — 2.4 Zero Trust — flujos permitidos (BA Art. 21) · 9 filas · ver planilla del subdocumento
+> **Tabla 65** — 2.4 Zero Trust — flujos permitidos · 9 filas · ver planilla del subdocumento
 
 
 #### Capa pública (DMZ) y DNS
 
-Primera línea: CloudFront + AWS WAF v2 (OWASP Top 10 + reglas personalizadas) + Shield Advanced; autenticación API Gateway con Keycloak OIDC, cuotas por cliente y validación de esquema (RT-11.11).
+Primera línea: CloudFront + AWS WAF v2 (OWASP Top 10 + reglas personalizadas) + Shield Advanced; autenticación API Gateway con Keycloak OIDC, cuotas por cliente y validación de esquema.
 
 DNS: Route 53 con health checks activos; routing por latencia en operación normal y failover automático hacia us-east-1 en contingencia.
 
@@ -694,7 +622,7 @@ DNS: Route 53 con health checks activos; routing por latencia en operación norm
 
 > **Tabla 66** — 3.1 Capa cloud (sa-east-1) — Multi-AZ · 7 filas · ver planilla del subdocumento
 
-Nivel de servicio de extremo a extremo sobre la transacción crítica de negocio: ≥ 99,9 % mensual (RT-10.01, menos de 8,76 h al año). Es el compromiso contractual penalizable del Artículo 78° y es distinto de la disponibilidad de la infraestructura del recinto (99,95 % por componente, numerales 6.1 y 7.2), que es un medio para alcanzarlo.
+Nivel de servicio de extremo a extremo sobre la transacción crítica de negocio: ≥ 99,9 % mensual (menos de 8,76 h al año). Es el compromiso contractual penalizable del Artículo 78° y es distinto de la disponibilidad de la infraestructura del recinto (99,95 % por componente, numerales 6.1 y 7.2), que es un medio para alcanzarlo.
 
 
 #### Capa on-premise
@@ -702,25 +630,25 @@ Nivel de servicio de extremo a extremo sobre la transacción crítica de negocio
 
 > **Tabla 67** — 3.2 Capa on-premise · 7 filas · ver planilla del subdocumento
 
-VMs dimensionadas con headroom ×1,5 (RNF-19.04) para tolerar 3.900 entregas/día en el peak de septiembre. SPOF declarados y mitigados (RT-02.11): periféricos de andén (respaldo manual), clúster Talca sin SPOF estructural, Concepción nodo único (autonomía 24 h + DRP), cross-dock mini-PC único (ventana de 3 h + sincronización diferida).
+VMs dimensionadas con headroom ×1,5 para tolerar 3.900 entregas/día en el peak de septiembre. SPOF declarados y mitigados: periféricos de andén (respaldo manual), clúster Talca sin SPOF estructural, Concepción nodo único (autonomía 24 h + DRP), cross-dock mini-PC único (ventana de 3 h + sincronización diferida).
 
 
 ### Recuperación ante desastres
 
 
-#### DRP nube (sa-east-1 → us-east-1) — activo-pasivo warm standby
+#### DRP nube (sa-east-1 → us-east-1) — activo-pasivo warm standby (réplica pasiva lista para promover en minutos)
 
 Mecanismo: Aurora Global Database (réplica us-east-1, lag < 1 s) · DynamoDB Global Tables · S3 CRR (RTC < 15 min) · AWS DMS CDC del PostgreSQL WMS on-premise (lee wal_level=logical; si la VPN cae, encola y reanuda sin pérdida).
 
-Objetivos: RTO ≤ 4 h / RPO ≤ 15 min (RNF-20.06); RPO declarado de mensajes no críticos ≤ 24 h, reducido a ≤ 15 min para los críticos con patrón outbox dual-write.
+Objetivos: RTO ≤ 4 h / RPO ≤ 15 min; RPO declarado de mensajes no críticos ≤ 24 h, reducido a ≤ 15 min para los críticos con patrón outbox dual-write (escritura simultánea en BD y cola para garantizar consistencia).
 
 Modalidad justificada (RT-07.01): activo-pasivo; activo-activo duplicaría la infraestructura transaccional (~105 TPS peak) con reconciliación de doble escritura sin beneficio frente al RTO comprometido.
 
 Procedimiento: decisión de failover manual con disparador declarado (health check de la región primaria < 5 min) y protección contra conmutación innecesaria (confirmación SNS + autorización); pasos 4–7 automatizados por AWS Systems Manager Automation (promoción Aurora 15–20 min, escalado ECS, actualización DNS 45–60 min). El RTO se cumple porque la réplica es legible y la región DR está "caliente" (escalable < 30 min a carga completa).
 
-Retorno (failback): procedimiento documentado en 6 pasos — re-sincronización con catch-up verificado, reconciliación de transacciones de la contingencia contra la bitácora (RT-03.12), transferencia de eventos pendientes, conmutación coordinada de DNS, validación funcional e informe con tiempo real.
+Retorno (failback): procedimiento documentado en 6 pasos — re-sincronización con catch-up verificado, reconciliación de transacciones de la contingencia contra la bitácora, transferencia de eventos pendientes, conmutación coordinada de DNS, validación funcional e informe con tiempo real.
 
-Pruebas: conmutación real ≥ 2 veces/año con informe de RTO/RPO efectivos y plan de corrección de brechas (RT-07.07, Art. 20).
+Pruebas: conmutación real ≥ 2 veces/año con informe de RTO/RPO efectivos y plan de corrección de brechas.
 
 Residencia y transferencia internacional de datos (Art. 23 · Ley 21.719): la replicación hacia us-east-1 constituye una transferencia internacional de datos personales y se rige por los resguardos declarados en la arquitectura de seguridad: cifrado con CMK gestionada por el CLIENTE, acuerdo de tratamiento con cláusulas de transferencia, minimización (la región secundaria no se explota analíticamente, solo sostiene continuidad), exclusión de los datos de geolocalización de personas de la replicación transfronteriza —permanecen solo en sa-east-1 con retención de 12 meses— y registro en el inventario de tratamientos. La residencia queda sujeta a aprobación expresa del CLIENTE; si no la aprueba, la alternativa declarada es la continuidad intrarregional dentro de sa-east-1 (tercera AZ ampliada + respaldo inmutable regional — no es un segundo sitio geográfico ni usa Talca/Concepción para la carga cloud; AWS no tiene región en Chile), que cubre falla de AZ y corrupción de datos pero degrada el RTO ante una caída de toda la región sa-east-1 (24–72 h desde el respaldo inmutable; alternativa D del ADR-09).
 
@@ -742,18 +670,18 @@ El maestro vive en la nube (Multi-AZ) con réplica DR us-east-1; las cachés loc
 Esquema único para toda la arquitectura híbrida (nube + on-premise):
 
 
-> **Tabla 68** — 5. Respaldos — esquema 3-2-1-0 (RNF-20.07) · 5 filas · ver planilla del subdocumento
+> **Tabla 68** — 5. Respaldos — esquema 3-2-1-0 · 5 filas · ver planilla del subdocumento
 
-D-05 (NAS local con WORM) es la copia local de recuperación rápida y NO cuenta como la pierna inmutable; permite restaurar el WMS en ≤ 4 h (RNF-20.06) sin depender del enlace WAN. RPO ≤ 15 min por AWS DMS CDC del WAL lógico (wal_level=logical) hacia la nube antes de la copia local.
+D-05 (NAS local con WORM) es la copia local de recuperación rápida y NO cuenta como la pierna inmutable; permite restaurar el WMS en ≤ 4 h sin depender del enlace WAN. RPO ≤ 15 min por AWS DMS CDC del WAL lógico (registro de escritura anticipada que permite replicar cambios en tiempo real, wal_level=logical) hacia la nube antes de la copia local.
 
-Custodia física (RT-06.26/06.27/06.28): medio de respaldo transportable, cifrado y rotado semanal (RT-07.10), trasladado bajo custodia acreditada a bóveda externa distinta del sitio primario; la pierna inmutable S3 es complementaria, no reemplaza la custodia física.
+Custodia física: medio de respaldo transportable, cifrado y rotado semanal, trasladado bajo custodia acreditada a bóveda externa distinta del sitio primario; la pierna inmutable S3 es complementaria, no reemplaza la custodia física.
 
 Plan AWS Backup:
 
 
-> **Tabla 69** — 5. Respaldos — esquema 3-2-1-0 (RNF-20.07) · 6 filas · ver planilla del subdocumento
+> **Tabla 69** — 5. Respaldos — esquema 3-2-1-0 · 6 filas · ver planilla del subdocumento
 
-Vault Lock con enfriamiento de 3 días y retención mínima de 1 año; una vez bloqueado, ni la cuenta raíz puede eliminar respaldos. Retención sanitaria: trazabilidad 5 años + vida útil (D.S. 977/96), consistente con el lago analítico S3 y el repositorio de datos históricos (RT-05.15).
+Vault Lock con enfriamiento de 3 días y retención mínima de 1 año; una vez bloqueado, ni la cuenta raíz puede eliminar respaldos. Retención sanitaria: trazabilidad 5 años + vida útil (D.S. 977/96), consistente con el lago analítico S3 y el repositorio de datos históricos.
 
 ## Dimensionamiento y plan de capacidad
 
@@ -762,18 +690,18 @@ Volúmenes, concurrencia, crecimiento y umbrales de desempeño. Cierra las dieci
 
 ### Criterios y método de dimensionamiento
 
-El dimensionamiento se deriva de la volumetría real del Caso (Tabla 14.1 / Cap. 14 y 15), no de promedios genéricos, dado el perfil de carga no plano (RT-09.02):
+El dimensionamiento se deriva de la volumetría real del Caso (Tabla 14.1 / Cap. 14 y 15), no de promedios genéricos, dado el perfil de carga no plano:
 
 
-> **Tabla 72** — 1. Criterios y método de dimensionamiento (RT-09.01, RT-09.02) · 5 filas · ver planilla del subdocumento
+> **Tabla 72** — 1. Criterios y método de dimensionamiento · 5 filas · ver planilla del subdocumento
 
 Reglas que gobiernan el dimensionamiento:
 
-- **Carga de diseño (RNF-19.04).** peak de septiembre (2.600 entregas/día) × 1,5 = 3.900 entregas/día toleradas sin degradación.
+- **Carga de diseño.** peak de septiembre (2.600 entregas/día) × 1,5 = 3.900 entregas/día toleradas sin degradación.
 - **Transacciones por segundo de diseño.** ráfaga de 3 veces el régimen, unas 105 transacciones por segundo, según se deriva más abajo en la concurrencia.
-- **Crecimiento (RT-09.03).** la solución soporta tres veces la volumetría inicial sin rediseño en tres años, con la misma topología, según detalla el plan de capacidad.
-- **Umbrales (RT-09.01).** percentil 95 en toda medición, con un umbral declarado por cada operación.
-- **Sin capacidad ociosa financiada (RT-15.01).** el cómputo elástico en nube escala automática (ADR-12); el on-premise se dimensiona al margen útil sin sobrecompra.
+- **Crecimiento.** la solución soporta tres veces la volumetría inicial sin rediseño en tres años, con la misma topología, según detalla el plan de capacidad.
+- **Umbrales.** percentil 95 en toda medición, con un umbral declarado por cada operación.
+- **Sin capacidad ociosa financiada.** el cómputo elástico en nube escala automática (ADR-12); el on-premise se dimensiona al margen útil sin sobrecompra.
 - **Coherencia interna.** los totales de esta parte concuerdan con la Tabla 14.1 (volumetría) y con el dimensionamiento on-premise y de nube de esta misma sección, y con los ADR (ADR-01, 04, 10, 12 y Decisiones N° 28 y N° 30 del registro de decisiones (Subdocumento 3)).
 
 
@@ -793,7 +721,7 @@ Nota de coherencia (instalaciones): la Tabla 14.1 y RT-21.16 reportan 6 instalac
 
 > **Tabla 74** — 2.2 Proyección a 3 años (Caso 02) · 8 filas · ver planilla del subdocumento
 
-Los recursos se dimensionan, además, para 3× la volumetría inicial sin rediseño (RT-09.03): la proyección real del Caso a 3 años (+16–19 %) queda muy por debajo del límite de diseño, dejando margen ante crecimiento mayor al modelado (ADR-12).
+Los recursos se dimensionan, además, para 3× la volumetría inicial sin rediseño: la proyección real del Caso a 3 años (+16–19 %) queda muy por debajo del límite de diseño, dejando margen ante crecimiento mayor al modelado.
 
 
 #### Volumetría de sistema del numeral 14.2 — las dieciséis dimensiones
@@ -862,13 +790,13 @@ Máquinas virtuales del clúster de Talca, con las familias declaradas más arri
 #### Almacenamiento
 
 
-> **Tabla 80** — 4.3 Almacenamiento (ADR-10, RT-03.14) · 4 filas · ver planilla del subdocumento
+> **Tabla 80** — 4.3 Almacenamiento · 4 filas · ver planilla del subdocumento
 
 
 #### Ancho de banda WAN por sitio
 
 
-> **Tabla 81** — 4.4 Ancho de banda WAN por sitio (RT-03.20 / RNF-13.08) · 3 filas · ver planilla del subdocumento
+> **Tabla 81** — 4.4 Ancho de banda WAN por sitio · 3 filas · ver planilla del subdocumento
 
 Estos valores son los mismos que declara la arquitectura de despliegue al describir las redes, con red privada virtual doble por centro de distribución.
 
@@ -876,12 +804,12 @@ Estos valores son los mismos que declara la arquitectura de despliegue al descri
 ### Dimensionamiento nube
 
 
-> **Tabla 82** — 5. Dimensionamiento nube (ADR-12) · 9 filas · ver planilla del subdocumento
+> **Tabla 82** — 5. Dimensionamiento nube · 9 filas · ver planilla del subdocumento
 
-Escalado automático (RT-09.04):
+Escalado automático:
 
 - **Predictivo + reactivo (ADR-12).** pre-warm en agosto de las tareas ECS, concurrencia reservada Lambda y EventBridge; reactivo con Target Tracking en < 2 min · aprovisionamiento en < 3 min · cooldown 60 s.
-- **Serverless-first.** DynamoDB On-Demand, Lambda y EventBridge escalan sin configuración adicional; la capacidad se paga por uso (sin capacidad ociosa financiada, RT-15.01).
+- **Serverless-first.** DynamoDB On-Demand, Lambda y EventBridge escalan sin configuración adicional; la capacidad se paga por uso (sin capacidad ociosa financiada).
 
 
 ### Plan de capacidad y crecimiento 3× sin rediseño
@@ -889,7 +817,7 @@ Escalado automático (RT-09.04):
 El crecimiento se absorbe con el mismo diseño (sin cambio de topología, VLAN, réplica ni nube):
 
 
-> **Tabla 83** — 6. Plan de capacidad y crecimiento 3× sin rediseño (RT-09.03) · 5 filas · ver planilla del subdocumento
+> **Tabla 83** — 6. Plan de capacidad y crecimiento 3× sin rediseño · 5 filas · ver planilla del subdocumento
 
 En nube, el 3× se absorbe por auto-scaling (Fargate 2→6, Celery 2→4, Lambda hasta 500, Aurora xlarge + readers), sin rediseño arquitectónico — misma decisión ADR-12 que fija el límite de elasticidad del peak.
 
@@ -897,7 +825,7 @@ En nube, el 3× se absorbe por auto-scaling (Fargate 2→6, Celery 2→4, Lambda
 ### Umbrales de desempeño
 
 
-> **Tabla 84** — 7. Umbrales de desempeño (RT-09.01 — Tabla 15, percentil p95) · 7 filas · ver planilla del subdocumento
+> **Tabla 84** — 7. Umbrales de desempeño (percentil p95) · 7 filas · ver planilla del subdocumento
 
 Los umbrales se verifican con monitoreo OTel/Prometheus (CloudWatch) y se verifican en preproducción con las pruebas de carga y estrés.
 
@@ -907,7 +835,7 @@ Los umbrales se verifican con monitoreo OTel/Prometheus (CloudWatch) y se verifi
 VM-02 (PostgreSQL — escritura transaccional del maestro de bodega) se satura primero a medida que crece la carga: todo el picking (22:00–06:00) y el despacho masivo (05:30–07:00) pasan por el único punto de escritura.
 
 
-> **Tabla 85** — 8. Primer cuello de botella (RT-09.05) · 1 fila · ver planilla del subdocumento
+> **Tabla 85** — 8. Primer cuello de botella · 1 fila · ver planilla del subdocumento
 
 En nube el equivalente es Aurora (writer + readers); EventBridge/SQS absorben el pico de sincronización 17:00–20:00 (ADR-05).
 
@@ -916,7 +844,7 @@ En nube el equivalente es Aurora (writer + readers); EventBridge/SQS absorben el
 
 Enlace WAN: QoS prioriza broker/WAL; colas diferidas fuera de la ventana; conmutación SD-WAN < 30 s entre fibra/Starlink/LTE.
 
-Offline: buffers RabbitMQ de 24 h (RNF-13.01) y buffers OTel de 24 h; reconciliación cronológica e idempotente al reconectar (RT-03.12).
+Offline: buffers RabbitMQ de 24 h y buffers OTel de 24 h; reconciliación cronológica e idempotente al reconectar.
 
 Nube: throttling en API Gateway, timeouts y reintentos con backoff en Celery, DLQ para tareas fallidas.
 
@@ -924,24 +852,24 @@ Nube: throttling en API Gateway, timeouts y reintentos con backoff en Celery, DL
 ### Pruebas de carga y estrés
 
 
-> **Tabla 86** — 10. Pruebas de carga y estrés (RT-09.06 / RT-09.07 — T-13) · 3 filas · ver planilla del subdocumento
+> **Tabla 86** — 10. Pruebas de carga y estrés · 3 filas · ver planilla del subdocumento
 
 Herramientas: k6/Gatling + drivers a medida contra las APIs (svc-erp-integration, svc-broker). Cortes: Etapa 1 (mes 13), Etapa 2 (mes 19), re-ejecución trimestral. Calendario e hitos formales en el Formulario T-13.
 
 
 ### Actualización del plan de capacidad
 
-Gestión de capacidad durante la Operación con proyección trimestral de crecimiento (RT-09.09): consumo real vs. proyectado (vCPU/RAM/almacenamiento/enlace/colas/TPS), con alertas anticipadas de agotamiento al 70 % / 2 semanas y propuesta de ajuste de dimensionamiento y de costo.
+Gestión de capacidad durante la Operación con proyección trimestral de crecimiento: consumo real vs. proyectado (vCPU/RAM/almacenamiento/enlace/colas/TPS), con alertas anticipadas de agotamiento al 70 % / 2 semanas y propuesta de ajuste de dimensionamiento y de costo.
 
-Ventana de ampliación conforme al procedimiento RT-08.05 (adición de vCPU/OSD dentro del físico; contrato escalonado de enlaces; 4.º nodo al acercarse al margen). La revisión se apoya en el informe de carga (RT-09.07) como insumo del hito de producción (mes 16).
+Ventana de ampliación conforme al procedimiento de ampliación (adición de vCPU/OSD dentro del físico; contrato escalonado de enlaces; 4.º nodo al acercarse al margen). La revisión se apoya en el informe de carga como insumo del hito de producción (mes 16).
 
 En nube, la revisión de costos del dimensionamiento elástico evalúa umbrales Target Tracking y concurrencia reservada con al menos 30 días antes del peak de septiembre.
 
 ## Capa analítica: emplazamiento y dimensionamiento
 
-Complemento del apartado 6 — Emplazamiento y dimensionamiento de la capa analítica. La capa analítica no es una funcionalidad añadida por iniciativa de la propuesta: es un componente exigido por el numeral 5.4 de las Transversales (RT-05.25 a RT-05.30: capa analítica separada de la transaccional, tableros operacionales y de gestión con filtros por período y unidad organizacional, desagregación hasta el hecho y latencia máxima declarada) y por el Capítulo 18 del caso, que fija OTIF, fill rate y costo de servir como criterios de aceptación. Este apartado declara con qué componentes se materializa, dónde se emplazan y cómo se garantiza que ninguna consulta analítica degrade la operación.
+Complemento del apartado 6 — Emplazamiento y dimensionamiento de la capa analítica. La capa analítica no es una funcionalidad añadida por iniciativa de la propuesta: es un componente exigido por el numeral 5.4 de las Transversales (capa analítica separada de la transaccional, tableros operacionales y de gestión con filtros por período y unidad organizacional, desagregación hasta el hecho y latencia máxima declarada) y por el Capítulo 18 del caso, que fija OTIF, fill rate y costo de servir como criterios de aceptación. Este apartado declara con qué componentes se materializa, dónde se emplazan y cómo se garantiza que ninguna consulta analítica degrade la operación.
 
-Alcance de lo que no se propone. Conforme a la decisión de diseño sobre analítica avanzada del registro de decisiones, la solución **no incorpora inteligencia artificial ni analítica predictiva** en el alcance contratado, y lo declara de forma fundada como permite el Capítulo 18 de las Transversales (RT-18.01). La capa analítica se entrega preparada —lago de datos en formato columnar y almacén analítico— para incorporarlas cuando el CLIENTE alcance la madurez de datos que hoy no tiene: el caso parte de un 41 % de recepciones sin registro de lote y un 2,3 % de diferencia de inventario, y predecir sobre esa base produce confianza injustificada. El ruteo se resuelve con optimización determinística, auditable y corregible por el planificador, que es lo que pide el criterio de aceptación N° 7 del caso.
+Alcance de lo que no se propone. Conforme a la decisión de diseño sobre analítica avanzada del registro de decisiones, la solución **no incorpora inteligencia artificial ni analítica predictiva** en el alcance contratado, y lo declara de forma fundada como permite el Capítulo 18 de las Transversales. La capa analítica se entrega preparada —lago de datos en formato columnar y almacén analítico— para incorporarlas cuando el CLIENTE alcance la madurez de datos que hoy no tiene: el caso parte de un 41 % de recepciones sin registro de lote y un 2,3 % de diferencia de inventario, y predecir sobre esa base produce confianza injustificada. El ruteo se resuelve con optimización determinística, auditable y corregible por el planificador, que es lo que pide el criterio de aceptación N° 7 del caso.
 
 
 ### Fundamento normativo
@@ -962,43 +890,12 @@ El caso define tres indicadores estratégicos que requieren procesamiento analí
 
 > **Tabla 90** — 2.2 Caso 02 — Distribuidora Puelche S.A. · 3 filas · ver planilla del subdocumento
 
-Citas textuales del caso que respaldan la exigencia:
-
-"Mi indicador principal es el OTIF" — Nelson, Gerente Comercial (Cap. 7.1)
-
-"El costo de servir es mi obsesión. Si no sabemos cuánto nos cuesta llegar a cada local, ¿cómo vamos a decidir a quién priorizar?" — Gerente de Finanzas (Cap. 7.2)
-
-"Necesito saber el costo de servir por cliente y por entrega" — Gerente de Finanzas (Cap. 9.8)
-
 Estos indicadores no pueden calcularse sin un componente de analítica que consolide datos transaccionales de múltiples módulos (preventa, transporte, cobranza, telemetría, bodega) y los presente de forma consumible por los gerentes.
 
 
 ### Requerimientos que dependen de la capa analítica
 
-Los requerimientos que esta capa satisface están fichados en el catálogo del subdocumento 3; aquí se listan agrupados por procedencia, para dejar constancia de que ninguno queda sin componente que lo sostenga.
-
-**Propios del módulo (Épica 11).**
-
-
-> **Tabla 91** — 3.1 Requerimientos propios del módulo (Épica 11) · 8 filas · ver planilla del subdocumento
-
-
-**No funcionales del módulo.**
-
-
-> **Tabla 92** — 3.2 Requerimientos no funcionales del módulo · 2 filas · ver planilla del subdocumento
-
-
-**Requisitos transversales vinculados.**
-
-
-> **Tabla 93** — 3.3 Requerimientos transversales vinculados al módulo · 4 filas · ver planilla del subdocumento
-
-
-**De otras épicas, con dependencia de esta capa.**
-
-
-> **Tabla 94** — 3.4 Requerimientos de otras épicas con dependencia del módulo BI · 11 filas · ver planilla del subdocumento
+En total 25 requerimientos alimentan este módulo, todos fichados en el catálogo del Subdocumento 3: 10 propios de la Épica 11 (RF-11.01 a RF-11.08 + RNF-11.01 latencia ≤ 5 min + RNF-11.02 desacople OLAP/OLTP), 4 transversales (RF-16.02 tableros del CLIENTE, RF-16.03 alertas de negocio, RF-17.12 exportación, RNF-16.01 SLA P95) y 11 de otras épicas que producen o consumen datos analíticos (costos de ruta, cierre de turno, rendición, excursión térmica, envases, kilometraje, ocupación de zona y alerta de crédito).
 
 
 ### Mapeo de requerimientos a componentes de arquitectura
@@ -1017,15 +914,9 @@ El módulo de BI/Analítica se materializa en los siguientes componentes de la a
 En texto, el flujo de datos analíticos es: fuentes transaccionales (Preventa App, Bodega WMS, Transporte GPS y Cobranza App) → motor transaccional Aurora PostgreSQL (Preventa, Inventario, Transporte y Cobranza, cada dominio OLTP) → DMS CDC (extracción continua e incremental) → motor analítico Redshift Serverless (dimensiones Tiempo, Cliente, Ruta, Producto, Vehículo y Zona; hechos fact_entregas, fact_costos y fact_inventario; vistas materializadas mv_otif_diario, mv_costo_servir, mv_fill_rate, mv_ocupacion_flota y mv_rentabilidad_cliente) → dos salidas: Tablero Gerencial (Grafana/Angular — RF-11.06 operacional, RF-16.02 para el cliente, RF-16.03 alertas) y Distribución por correo (SES + Celery Beat — informes semanal y mensual, RF-11.01).
 
 
-#### Justificación del desacople entre lo analítico y lo transaccional
+#### Desacople OLAP/OLTP
 
-El RNF-11.02 exige que las consultas analíticas no degraden los tiempos de respuesta transaccionales. Esto se resuelve mediante:
-
-- **Motor separado.** Redshift Serverless es un sistema OLAP independiente de Aurora PostgreSQL (OLTP). Las cargas analíticas corren en un clúster dedicado con recursos aislados.
-- **Extracción asíncrona.** DMS CDC copia cambios de Aurora → Redshift sin bloquear transacciones OLTP. La extracción es incremental y continua.
-- **Vistas materializadas pre-calculadas.** Los indicadores (OTIF, Fill Rate, Costo de Servir) se calculan como vistas materializadas en Redshift, que se refrescan periódicamente (cada 5–15 min según RNF-11.01). Las consultas de tablero leen de estas vistas, no de tablas crudas.
-- **Caché Redis para tableros.** Los resultados de consultas frecuentes se cachean en ElastiCache Redis, reduciendo aún más la carga sobre Redshift para dashboards de alta concurrencia.
-- **Resultado.** Picking en bodega mantiene latencia ≤ 1s y preventa ≤ 1.5s (RF de bodega/preventa) mientras los gerentes consultan tableros analíticos simultáneamente.
+Redshift Serverless (OLAP) opera independiente de Aurora PostgreSQL (OLTP); DMS CDC extrae cambios de forma incremental y continua sin bloquear transacciones. Los indicadores se calculan como vistas materializadas en Redshift (refresco cada 5–15 min) y se cachean en ElastiCache Redis para tableros de alta concurrencia. Resultado: picking mantiene ≤ 1s y preventa ≤ 1.5s mientras los gerentes consultan tableros simultáneamente.
 
 
 ### Componente de costo de servir
@@ -1055,7 +946,7 @@ Las alertas por síntomas de negocio se distinguen de las alertas de infraestruc
 Las Bases exigen tableros con las siguientes capacidades:
 
 
-> **Tabla 98** — 7. Requerimientos de tableros (RT-05.25, RT-05.26) · 7 filas · ver planilla del subdocumento
+> **Tabla 98** — 7. Requerimientos de tableros · 7 filas · ver planilla del subdocumento
 
 
 #### Tablero operacional
@@ -1066,8 +957,7 @@ Las Bases exigen tableros con las siguientes capacidades:
 
 #### Tablero gerencial
 
-
-> **Tabla 100** — 7.2 Tablero gerencial (RF-11.01) · 2 filas · ver planilla del subdocumento
+Distribución automática de dos reportes ejecutivos: semanal (OTIF, Fill Rate, Costo de Servir por zona, devoluciones) y mensual (los anteriores más merma por vencimiento, rentabilidad por cliente y desglose por canal). Destinatarios configurables; distribución por correo vía SES + Celery Beat (PDF/XLSX).
 
 
 ### Cumplimiento de Bases Administrativas
@@ -1090,9 +980,7 @@ Las Bases exigen tableros con las siguientes capacidades:
 > **Tabla 103** — 9.2 Conteo por tipo de requerimiento · 3 filas · ver planilla del subdocumento
 
 
-**Cierre.**
-
-Veinticinco requerimientos de la propuesta dependen de esta capa y son trazables a su origen normativo. Sin ella no hay forma de medir los tres compromisos que el caso convierte en criterio de aceptación —OTIF por sobre 95 %, fill rate por sobre 97 % y costo de servir conocido y gestionable por cliente y por entrega—, y por eso su emplazamiento y su dimensionamiento forman parte de esta parte física y no de una fase posterior.
+En total, 25 requerimientos alimentan al módulo BI: 10 propios de la Épica 11 (8 RF + 2 RNF), 4 transversales (3 RF + 1 RNF) y 11 RF de otras épicas. Todos son trazables a su origen normativo.
 
 
 
@@ -1161,7 +1049,7 @@ Registro consolidado de las quince decisiones de arquitectura que condicionan es
 
 **Decisión adoptada.** Reemplazo total en Etapa 1 por módulo WMS del monolito (ADR-01), desplegado en Talca (maestro), Concepción (edge) y cross-docks (mini-WMS E-01). Migración por dominio, oleadas por sitio, plan de reversión azul-verde.
 
-**Alternativas descartadas.** *Mantener e integrar*: proveedor desaparecido, sin soporte ni roadmap; no soporta multi-sitio, picking FEFO, SSCC GS1 ni conteo cíclico ciego. *Extender a otros sitios*: arrastra riesgo de soporte inexistente en ventana crítica 05:30–07:00.
+**Alternativas descartadas.** *Mantener e integrar*: proveedor desaparecido, sin soporte ni roadmap; no soporta multi-sitio, picking FEFO (primero en expirar, primero en salir), SSCC GS1 ni conteo cíclico ciego. *Extender a otros sitios*: arrastra riesgo de soporte inexistente en ventana crítica 05:30–07:00.
 
 **Criterio de selección.** Requisitos funcionales (RF-02.x) que el WMS 2013 no contempla; riesgo operacional inaceptable de sistema sin soporte; TCO amortizado con reducción de conteo 2,3 %→~0,3 % y merma 1,7 %→<1 %; reversión garantizada por despliegue azul-verde. Trazabilidad: RT-05.11–15 · RT-03.10 · RNF-02.01/05.01 · Caso 16.1 N° 14. Relacionada: Decisión 16.1 N° 14 (delegada por el CLIENTE).
 

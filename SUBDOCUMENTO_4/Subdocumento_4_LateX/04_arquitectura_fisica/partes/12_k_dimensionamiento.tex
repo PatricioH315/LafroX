@@ -10,10 +10,10 @@
 
 Volúmenes, concurrencia, crecimiento y umbrales de desempeño. Cierra las dieciséis dimensiones del numeral 14.2 del caso con su valor, su método y su supuesto.
 
-\section{Criterios y método de dimensionamiento (RT-09.01, RT-09.02)}
+\section{Criterios y método de dimensionamiento}
 \label{sub:1-criterios-y-metodo-de-dimensionamiento-r}
 
-El dimensionamiento se deriva de la volumetría real del Caso (Tabla 14.1 / Cap. 14 y 15), no de promedios genéricos, dado el perfil de carga no plano (RT-09.02):
+El dimensionamiento se deriva de la volumetría real del Caso (Tabla 14.1 / Cap. 14 y 15), no de promedios genéricos, dado el perfil de carga no plano:
 
 \begin{itemize}
   \item \textbf{Preventa:} 09:00--18:00 (62 preventistas con EC55).
@@ -26,18 +26,20 @@ El dimensionamiento se deriva de la volumetría real del Caso (Tabla 14.1 / Cap.
 Reglas que gobiernan el dimensionamiento:
 
 \begin{itemize}
-  \item \textbf{Carga de diseño (RNF-19.04).} peak de septiembre (2.600 entregas/día) $\times$ 1,5 = 3.900 entregas/día toleradas sin degradación.
+  \item \textbf{Carga de diseño.} peak de septiembre (2.600 entregas/día) $\times$ 1,5 = 3.900 entregas/día toleradas sin degradación.
   \item \textbf{TPS de diseño.} burst $\times$3 $\rightarrow$ \textasciitilde{}105 TPS (ver la subsección de concurrencia y TPS de diseño).
-  \item \textbf{Crecimiento (RT-09.03, obligatorio).} la solución soporta 3$\times$ la volumetría inicial en 3 años sin rediseño (misma topología, subsección de plan de capacidad y crecimiento). El margen físico resultante es exigencia normativa, no capacidad ociosa financiada (RT-15.01).
-  \item \textbf{Umbrales (RT-09.01).} percentil p95 en toda medición (Tabla 15), con umbrales por operación (subsección de umbrales de desempeño).
-  \item \textbf{Sin capacidad ociosa financiada (RT-15.01).} el cómputo elástico en nube escala automática (ADR-12); el on-premise se dimensiona al margen útil sin sobrecompra.
-  \item \textbf{Coherencia interna.} los totales de esta parte concuerdan con la Tabla 14.1 (volumetría) y con el dimensionamiento de esta sección (subsección de dimensionamiento on-premise y subsección de dimensionamiento nube) y los ADR (ADR-01, 04, 10, 12 y Decisiones N\textdegree{} 28 y N\textdegree{} 30 del registro de decisiones (Subdocumento 3)).
+  \item \textbf{Crecimiento obligatorio.} la solución soporta 3$\times$ la volumetría inicial en 3 años sin rediseño (misma topología). El margen físico resultante es exigencia normativa, no capacidad ociosa financiada.
+  \item \textbf{Umbrales.} percentil p95 en toda medición (Tabla 15), con umbrales por operación.
+  \item \textbf{Sin capacidad ociosa financiada.} el cómputo elástico en nube escala automática (ADR-12); el on-premise se dimensiona al margen útil sin sobrecompra.
+  \item \textbf{Coherencia interna.} los totales de esta parte concuerdan con la Tabla 14.1 (volumetría), el dimensionamiento de esta sección y los ADR (ADR-01, 04, 10, 12).
 \end{itemize}
 
 \section{Volumetría de referencia (Tabla 14.1 Caso 02)}
 \label{sub:2-volumetria-de-referencia-tabla-14-1-caso}
 
 \subsection{Valores base de dimensionamiento}
+
+Los valores base de dimensionamiento se consolidan en la Tabla~\ref{tab:t73}:
 
 \begin{tablalafrox}{Valores base de dimensionamiento}{tab:t73}%
   {F{0.26} Y}%
@@ -61,6 +63,8 @@ Nota de coherencia (instalaciones): la Tabla 14.1 y RT-21.16 reportan 6 instalac
 
 \subsection{Proyección a 3 años (Caso 02)}
 
+La proyección a 3 años por magnitud se presenta en la Tabla~\ref{tab:t74}:
+
 \begin{tablalafrox}{Proyección a 3 años (Caso 02)}{tab:t74}%
   {Y F{0.24} G{0.14} G{0.12}}%
   {\cab{Magnitud} & \cab{Base (año 0)} & \cab{Año 3} & \cab{Variación}}
@@ -78,9 +82,9 @@ Los recursos se dimensionan, además, para 3$\times$ la volumetría inicial sin 
 
 \subsection{Volumetría de sistema del numeral 14.2 --- las dieciséis dimensiones}
 
-El numeral 14.2 del caso entrega dieciséis dimensiones a estimar y advierte que un dimensionamiento basado en el promedio diario estará equivocado. Las dieciséis se declaran a continuación con su valor, su método y el supuesto que las sostiene. Ninguna queda sin valor.
+El numeral 14.2 del caso entrega dieciséis dimensiones a estimar y advierte que un dimensionamiento basado en el promedio diario estará equivocado. Las dieciséis se declaran en la Tabla~\ref{tab:t72} con su valor, su método y el supuesto que las sostiene. Ninguna queda sin valor.
 
-\begin{tablalafrox}{Volumetría de sistema del numeral 14.2: las dieciséis dimensiones con su método y su supuesto}{tab:volumetria-142}%
+\begin{tablalafrox}{Volumetría de sistema del numeral 14.2: las dieciséis dimensiones con su método y su supuesto}{tab:t72}%
   {F{0.26} F{0.26} Y}%
   {\cab{Dimensión del numeral 14.2} & \cab{Valor declarado} & \cab{Método y supuesto}}
   Transacciones por segundo en régimen normal & $\approx$ 35 TPS & Suma de flujos concurrentes de la peor ventana: 20 TPS de confirmación de preparación, 8 TPS de preventa y 7 TPS de movimientos y sincronización (subsección de TPS estimados) \\
@@ -98,7 +102,7 @@ El numeral 14.2 del caso entrega dieciséis dimensiones a estimar y advierte que
   Volumen de datos generado por un dispositivo de reparto en un turno completo sin señal & $\approx$ 8--12 MB por turno & Ruta del día, maestro acotado de productos y precios, evidencia de entrega comprimida de $\approx$ 30 entregas y cola de escrituras pendientes \\
   Tiempo de sincronización de la flota al regresar al centro de distribución & 100 \% dentro de la ventana de retorno 17:00--20:00, por lotes de $\leq$ 10 min & $\approx$ 200 dispositivos $\times$ 10 MB ($\approx$ 2 GB/día; $\approx$ 6 GB y $\approx$ 8 Mbps de punta en el 3$\times$ de RT-09.03), con sincronización particionada y reanudable por lotes \\
   Contactos mensuales a la mesa de ayuda & $\approx$ 620/mes en régimen \textperiodcentered{} $\approx$ 1.500/mes en marcha blanca & 620 personas usuarias internas $\times$ 1,0 contacto/mes en operación estabilizada, con factor 2,5 durante las oleadas de puesta en producción y +40 \% en el peak de septiembre. Los clientes del canal tradicional no entran por esta mesa: se atienden por autoatención \\
-  Dotación de la mesa de ayuda y del equipo de operación & Mesa: 7 personas \textperiodcentered{} Operación: NOC y confiabilidad como servicio gestionado & Erlang C sobre la hora punta: $\approx$ 5 contactos/h con tiempo medio de operación de 8 min dan una intensidad de 0,67 Erlang, y 2 agentes cumplen el objetivo de 80 \% atendido en 20 s. A eso se suman la cobertura de la ventana 05:30--07:00 y del turno nocturno de bodega, el segundo nivel y la supervisión: 3 agentes diurnos, 1 nocturno, 1 supervisor y 2 especialistas de segundo nivel \\
+  Dotación de la mesa de ayuda y del equipo de operación & Mesa: 7 personas \textperiodcentered{} Operación: NOC y confiabilidad como servicio gestionado & Erlang C sobre la hora punta (supuesto de diseño; los parámetros se calibrarán con datos de operación en el hito H5): $\approx$ 5 contactos/h con tiempo medio de operación de 8 min dan una intensidad de 0,67 Erlang, y 2 agentes cumplen el objetivo de 80 \% atendido en 20 s. A eso se suman la cobertura de la ventana 05:30--07:00 y del turno nocturno de bodega, el segundo nivel y la supervisión: 3 agentes diurnos, 1 nocturno, 1 supervisor y 2 especialistas de segundo nivel \\
 \end{tablalafrox}
 
 Dos lecturas se desprenden de la tabla y gobiernan el diseño. La primera: el volumen de mensajes está dominado por las dos series de tiempo ---trazabilidad y telemetría, $\approx$ 112.000 de los $\approx$ 150.000 mensajes diarios--- que por diseño no atraviesan la base transaccional. La segunda: la ventana crítica de despacho no es la de mayor carga, sino la de menor tolerancia a la indisponibilidad; el dimensionamiento del cómputo se rige por la preparación nocturna y el peak de septiembre, y el de la resiliencia por la ventana de despacho.
@@ -107,6 +111,8 @@ Dos lecturas se desprenden de la tabla y gobiernan el diseño. La primera: el vo
 \label{sub:3-concurrencia-y-tps-de-diseno}
 
 \subsection{Usuarios y terminales concurrentes}
+
+La concurrencia por rol y dispositivo se detalla en la Tabla~\ref{tab:t75}:
 
 \begin{tablalafrox}{Usuarios y terminales concurrentes}{tab:t75}%
   {F{0.26} F{0.26} Y}%
@@ -121,6 +127,8 @@ Dos lecturas se desprenden de la tabla y gobiernan el diseño. La primera: el vo
 \end{tablalafrox}
 
 \subsection{TPS estimados (peor ventana)}
+
+Los TPS estimados en la peor ventana se derivan en la Tabla~\ref{tab:t76}:
 
 \begin{tablalafrox}{TPS estimados (peor ventana)}{tab:t76}%
   {F{0.26} Y G{0.11}}%
@@ -138,6 +146,8 @@ El burst $\times$3 absorbe el peak de septiembre y las ráfagas de la ventana de
 
 \subsection{Cómputo --- CD Talca (clúster N+1, 3 nodos Proxmox/Ceph)}
 
+El cómputo del clúster y su utilización N+1 se resumen en la Tabla~\ref{tab:t77}:
+
 \begin{tablalafrox}{Cómputo --- CD Talca (clúster N+1, 3 nodos Proxmox/Ceph)}{tab:t77}%
   {F{0.24} G{0.10} Y F{0.24}}%
   {\cab{Recurso} & \cab{Asignado} & \cab{Físico (clúster)} & \cab{Utilización N+1}}
@@ -146,9 +156,9 @@ El burst $\times$3 absorbe el peak de septiembre y las ráfagas de la ventana de
   Almacenamiento (pool Ceph, réplica 2) & 1.890 GB & 5,76 TB útiles (12 OSDs, RAID 10 NVMe) & 32 \% \\
 \end{tablalafrox}
 
-VMs del clúster Talca (familias declaradas en la subsección de dimensionamiento on-premise de esta sección):
+Las VMs del clúster Talca (familias declaradas en la subsección de dimensionamiento on-premise de esta sección) se especifican en la Tabla~\ref{tab:t78}:
 
-\begin{tablalafrox}{Dimensionamiento y plan de capacidad \textperiodcentered{} Cómputo --- CD Talca (clúster N+1, 3 nodos Proxmox/Ceph)}{tab:t78}%
+\begin{tablalafrox}{VMs del clúster CD Talca (N+1, 3 nodos Proxmox/Ceph)}{tab:t78}%
   {G{0.10} Y G{0.10} G{0.15} G{0.15}}%
   {\cab{VM} & \cab{Rol} & \cab{vCPU} & \cab{RAM} & \cab{Disco datos}}
   VM-01 & WMS Core (picking FEFO, misiones RF, despacho, SSCC GS1) & 8 & 16 GB & 100 GB \\
@@ -166,9 +176,11 @@ VMs del clúster Talca (familias declaradas en la subsección de dimensionamient
   \item \textbf{Plataformas de cross-docking (E-01):} Mini-PC industrial (Advantech ARK-2250 / NUC Pro 12). Rol: Mini-WMS E-01 + router Starlink (enlace principal) + LTE dual de respaldo.
 \end{itemize}
 
-\subsection{Almacenamiento (ADR-10, RT-03.14)}
+\subsection{Almacenamiento}
 
-\begin{tablalafrox}{Almacenamiento (ADR-10, RT-03.14)}{tab:t80}%
+El esquema de almacenamiento y su capacidad útil se detallan en la Tabla~\ref{tab:t80}:
+
+\begin{tablalafrox}{Almacenamiento}{tab:t80}%
   {F{0.26} Y F{0.26}}%
   {\cab{Capa} & \cab{Esquema} & \cab{Capacidad útil}}
   BD transaccional + pool de datos & Ceph réplica 2 sobre RAID 10 NVMe ($\approx$ 4$\times$ factor de compra) & 5,76 TB pool (margen 68 \% a 5 años) \\
@@ -177,9 +189,11 @@ VMs del clúster Talca (familias declaradas en la subsección de dimensionamient
   IOPS VM-02 & 105 TPS $\times$ 8 E/S = 840 IOPS requeridas & NVMe RAID 10 $>$ 100.000 IOPS, cumple \\
 \end{tablalafrox}
 
-\subsection{Ancho de banda WAN por sitio (RT-03.20 / RNF-13.08)}
+\subsection{Ancho de banda WAN por sitio}
 
-\begin{tablalafrox}{Ancho de banda WAN por sitio (RT-03.20 / RNF-13.08)}{tab:t81}%
+El ancho de banda por sitio se declara en la Tabla~\ref{tab:t81}:
+
+\begin{tablalafrox}{Ancho de banda WAN por sitio}{tab:t81}%
   {F{0.26} F{0.26} F{0.21} Y}%
   {\cab{Sitio} & \cab{Régimen normal} & \cab{Peak septiembre} & \cab{Respaldo (autoconmutación $<$ 30 s)}}
   CD Talca (D-03/D-06/D-04) & 20 Mbps fibra & 50 Mbps & Starlink 1 TB (50--100 Mbps) \textperiodcentered{} LTE 5$\rightarrow$10 Mbps \\
@@ -189,10 +203,12 @@ VMs del clúster Talca (familias declaradas en la subsección de dimensionamient
 
 Cohesión con la vista de despliegue: estos valores son los mismos que declara la sección de arquitectura de despliegue (red privada virtual IPsec doble por centro de distribución).
 
-Justificación (RT-03.20): el régimen lo manda la sincronización de flota dentro de la ventana de retorno ($\approx$ 2 GB/día; $\approx$ 4--5 Mbps a la carga 3$\times$ de RT-09.03) más la evidencia de entrega, los DTE y la telemetría ($\approx$ 1--2 Mbps; peak sept. $\approx$ 312 MB/h $\approx$ 0,7 Mbps), con margen de diseño. El peak de 50 Mbps en Talca cubre el respaldo completo semanal a la nube ($\approx$ 40 $\rightarrow$ 120 GB en ventana nocturna, $\approx$ 40 Mbps) simultáneo a la ráfaga de septiembre. Los valores están escalados al crecimiento 3$\times$ sin rediseño que exige RT-09.03, no a la demanda promedio.
+Justificación: el régimen lo manda la sincronización de flota dentro de la ventana de retorno ($\approx$ 2 GB/día; $\approx$ 4--5 Mbps a la carga 3$\times$ de RT-09.03) más la evidencia de entrega, los DTE y la telemetría ($\approx$ 1--2 Mbps; peak sept. $\approx$ 312 MB/h $\approx$ 0,7 Mbps), con margen de diseño. El peak de 50 Mbps en Talca cubre el respaldo completo semanal a la nube ($\approx$ 40 $\rightarrow$ 120 GB en ventana nocturna, $\approx$ 40 Mbps) simultáneo a la ráfaga de septiembre. Los valores están escalados al crecimiento 3$\times$ sin rediseño, no a la demanda promedio.
 
 \section{Dimensionamiento nube (ADR-12)}
 \label{sub:5-dimensionamiento-nube-adr-12}
+
+El dimensionamiento en nube por componente se resume en la Tabla~\ref{tab:t82}:
 
 \begin{tablalafrox}{Dimensionamiento nube (ADR-12)}{tab:t82}%
   {Y F{0.24} F{0.24} F{0.24}}%
@@ -215,12 +231,12 @@ Escalado automático (RT-09.04):
   \item \textbf{Serverless-first.} DynamoDB On-Demand, Lambda y EventBridge escalan sin configuración adicional; la capacidad se paga por uso (sin capacidad ociosa, RT-15.01 --- FinOps Cloud del Subdocumento 4.1).
 \end{itemize}
 
-\section{Plan de capacidad y crecimiento 3$\times$ sin rediseño (RT-09.03)}
+\section{Plan de capacidad y crecimiento 3$\times$ sin rediseño}
 \label{sub:6-plan-de-capacidad-y-crecimiento-3-sin-re}
 
-El crecimiento se absorbe con el mismo diseño (sin cambio de topología, VLAN, réplica ni nube):
+El crecimiento se absorbe con el mismo diseño (sin cambio de topología, VLAN, réplica ni nube), como se detalla en la Tabla~\ref{tab:t83}:
 
-\begin{tablalafrox}{Plan de capacidad y crecimiento 3$\times$ sin rediseño (RT-09.03)}{tab:t83}%
+\begin{tablalafrox}{Plan de capacidad y crecimiento 3$\times$ sin rediseño}{tab:t83}%
   {F{0.24} F{0.24} F{0.24} Y}%
   {\cab{Recurso} & \cab{Diseño (3.900 entregas/día)} & \cab{3$\times$ (7.800 entregas/día)} & \cab{Acción declarada}}
   vCPU clúster Talca & 30 / 64 = 47 \% (N+1) & \textasciitilde{}90 asignadas & Ampliación RT-08.05; al acercarse al margen, inserción del 4.\textordmasculine{} servidor idéntico (rack R04 de crecimiento de la sala técnica principal) $\rightarrow$ 96 threads + N+1 real \\
@@ -232,10 +248,12 @@ El crecimiento se absorbe con el mismo diseño (sin cambio de topología, VLAN, 
 
 En nube, el 3$\times$ se absorbe por auto-scaling (Fargate 2$\rightarrow$6, Celery 2$\rightarrow$4, Lambda hasta 500, Aurora xlarge + readers), sin rediseño arquitectónico --- misma decisión ADR-12 que fija el límite de elasticidad del peak.
 
-\section{Umbrales de desempeño (RT-09.01 --- Tabla 15, percentil p95)}
+\section{Umbrales de desempeño (percentil p95)}
 \label{sub:7-umbrales-de-desempeno-rt-09-01-tabla-15-}
 
-\begin{tablalafrox}{Umbrales de desempeño (RT-09.01 --- Tabla 15, percentil p95)}{tab:t84}%
+Los umbrales de desempeño por operación se fijan en la Tabla~\ref{tab:t84}:
+
+\begin{tablalafrox}{Umbrales de desempeño (percentil p95)}{tab:t84}%
   {Y G{0.17}}%
   {\cab{Operación} & \cab{Umbral (p95)}}
   Confirmación de una línea de preparación de pedidos (picking) & $\leq$ 1 s \\
@@ -249,28 +267,30 @@ En nube, el 3$\times$ se absorbe por auto-scaling (Fargate 2$\rightarrow$6, Cele
 
 Los umbrales se verifican con monitoreo OTel/Prometheus (CloudWatch) y se prueban en Pre-Producción (subsección de pruebas de carga y estrés).
 
-\section{Primer cuello de botella (RT-09.05)}
+\section{Primer cuello de botella}
 \label{sub:8-primer-cuello-de-botella-rt-09-05}
 
 VM-02 (PostgreSQL --- escritura transaccional del maestro de bodega) se satura primero a medida que crece la carga: todo el picking (22:00--06:00) y el despacho masivo (05:30--07:00) pasan por el único punto de escritura.
 
-\textbf{Detección:} p95 de escritura $>$ 800 ms; commit $\times$3 sobre la base; IO wait $>$ 15 \%; cola Backend $>$ 5--10. \textbf{Mitigación:} 1) escala vertical 8$\rightarrow$12 vCPU / 32$\rightarrow$64 GB (margen N+1); 2) particionado mensual + PgBouncer; 3) réplica de solo lectura; 4) 4.\textordmasculine{} nodo / sharding al agotar margen.
+\textbf{Detección:} p95 de escritura $>$ 800 ms; commit $\times$3 sobre la base; IO wait $>$ 15 \%; cola Backend $>$ 5--10. \textbf{Mitigación:} 1) escala vertical 8$\rightarrow$12 vCPU / 32$\rightarrow$64 GB (margen N+1); 2) particionado mensual + PgBouncer (pooler de conexiones); 3) réplica de solo lectura; 4) 4.\textordmasculine{} nodo / sharding al agotar margen.
 
 En nube el equivalente es Aurora (writer + readers); EventBridge/SQS absorben el pico de sincronización 17:00--20:00 (ADR-05).
 
-\section{Degradación controlada (RT-09.08)}
+\section{Degradación controlada}
 \label{sub:9-degradacion-controlada-rt-09-08}
 
 Enlace WAN: QoS prioriza broker/WAL; colas diferidas fuera de la ventana; conmutación SD-WAN $<$ 30 s entre fibra/Starlink/LTE.
 
-Offline: buffers RabbitMQ de 24 h (RNF-13.01) y buffers OTel de 24 h; reconciliación cronológica e idempotente al reconectar (RT-03.12).
+Offline: buffers RabbitMQ de 24 h y buffers OTel de 24 h; reconciliación cronológica e idempotente al reconectar.
 
 Nube: throttling en API Gateway, timeouts y reintentos con backoff en Celery, DLQ para tareas fallidas.
 
-\section{Pruebas de carga y estrés (RT-09.06 / RT-09.07 --- T-13)}
+\section{Pruebas de carga y estrés}
 \label{sub:10-pruebas-de-carga-y-estres-rt-09-06-rt-0}
 
-\begin{tablalafrox}{Pruebas de carga y estrés (RT-09.06 / RT-09.07 --- T-13)}{tab:t86}%
+Las pruebas de carga y estrés se definen en la Tabla~\ref{tab:t86}:
+
+\begin{tablalafrox}{Pruebas de carga y estrés}{tab:t86}%
   {F{0.26} Y Y}%
   {\cab{Prueba} & \cab{Carga} & \cab{Escenario}}
   Carga (RNF-19.04) & 1,5 $\times$ la carga de diseño = 5.850 entregas/día $\approx$ 160 TPS sostenidos (carga de diseño = peak 2.600 $\times$ 1,5 = 3.900; la prueba la vuelve a multiplicar por 1,5) & Pre-Producción, perfiles horarios reales (pick nocturno, despacho, preventa) \\
@@ -280,11 +300,11 @@ Nube: throttling en API Gateway, timeouts y reintentos con backoff en Celery, DL
 
 Herramientas: k6/Gatling + drivers a medida contra las APIs (svc-erp-integration, svc-broker). Cortes: Etapa 1 (mes 13), Etapa 2 (mes 19), re-ejecución trimestral. Calendario e hitos formales en el Formulario T-13.
 
-\section{Actualización del plan de capacidad (RT-09.09)}
+\section{Actualización del plan de capacidad}
 \label{sub:11-actualizacion-del-plan-de-capacidad-rt-}
 
-Gestión de capacidad durante la Operación con proyección trimestral de crecimiento (RT-09.09): consumo real vs. proyectado (vCPU/RAM/almacenamiento/enlace/colas/TPS), con alertas anticipadas de agotamiento al 70 \% / 2 semanas y propuesta de ajuste de dimensionamiento y de costo.
+Gestión de capacidad durante la Operación con proyección trimestral de crecimiento: consumo real vs. proyectado (vCPU/RAM/almacenamiento/enlace/colas/TPS), con alertas anticipadas de agotamiento al 70 \% / 2 semanas y propuesta de ajuste de dimensionamiento y de costo.
 
-Ventana de ampliación conforme al procedimiento RT-08.05 (adición de vCPU/OSD dentro del físico; contrato escalonado de enlaces; 4.\textordmasculine{} nodo al acercarse al margen). La revisión se apoya en el informe de carga (RT-09.07) como insumo del hito de producción (mes 16).
+Ventana de ampliación: adición de vCPU/OSD dentro del físico, contrato escalonado de enlaces, 4.\textordmasculine{} nodo al acercarse al margen. La revisión se apoya en el informe de carga como insumo del hito de producción (mes 16).
 
-Nube: revisión de costos de nube (la subsección de dimensionamiento nube de esta sección) --- evaluar umbrales Target Tracking y concurrencia reservada con al menos 30 días antes del peak de septiembre.
+Nube: revisión de costos de nube --- evaluar umbrales Target Tracking y concurrencia reservada con al menos 30 días antes del peak de septiembre.

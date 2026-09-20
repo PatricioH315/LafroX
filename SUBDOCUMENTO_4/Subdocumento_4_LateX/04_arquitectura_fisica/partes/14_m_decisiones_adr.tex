@@ -15,7 +15,7 @@ Registro consolidado de las quince decisiones de arquitectura que condicionan es
 
 \textbf{Decisión adoptada.} Monolito modular Django 5.x LTS / Python 3.12, desplegado en ECS Fargate con apps por dominio y límites de contexto DDD. Módulos críticos (WMS offline, shipper, workers, portal) en procesos separados.
 
-\textbf{Alternativas descartadas.} \emph{Microservicios EKS}: volumen (\textasciitilde{}105 TPS) dos órdenes bajo el umbral que los justifica; 4 personas no operan 9--13 componentes de plano de control; TCO +USD 40--70 K / 56 m. \emph{Monolito clásico WMS 2013}: sin fronteras de módulo, proveedor desaparecido; viola RT-02.02.
+\textbf{Alternativas descartadas.} \emph{Microservicios EKS}: volumen (\textasciitilde{}105 TPS) dos órdenes bajo el umbral que los justifica; 4 personas no operan 9--13 componentes de plano de control; TCO estimado en +USD 40--70 K / 56 m (estimación interna basada en la operación de EKS con el equipo del CLIENTE). \emph{Monolito clásico WMS 2013}: sin fronteras de módulo, proveedor desaparecido; viola RT-02.02.
 
 \textbf{Criterio de selección.} Pertinencia al volumen real (BTT §2.3); operabilidad por 4 personas; TCO 56 meses; despliegue independiente sin particionar el dominio. Normativa: RT-02.01/02.02/02.03, RT-09.05, BA Art.~16, RNF-19.01--04. Relacionada: D5, D8, D14 (Arq. Lógica).
 
@@ -26,7 +26,7 @@ Registro consolidado de las quince decisiones de arquitectura que condicionan es
 
 \textbf{Alternativas descartadas.} \emph{Fibra + LTE puro}: no resuelve Los Ángeles 03:00--05:00 (torre 4G falla en la ventana) ni Concepción sin respaldo. \emph{VSAT GEO}: latencia 500--700 ms RTT; penaliza RNF-05.01 y costo superior.
 
-\textbf{Criterio de selección.} Cobertura de ventana crítica 05:30--07:00 con caminos de física distinta; TCO USD \textasciitilde{}58 K / 56 m justificado como prima de resiliencia; cero mantención de radio para 4 personas. Normativa: RT-03.10/03.17, RT-10.05, RNF-13.01/13.07/13.08. Relacionada: Decisión 16.1 N\textdegree{} 26.
+\textbf{Criterio de selección.} Cobertura de ventana crítica 05:30--07:00 con caminos de física distinta; TCO estimado en USD \textasciitilde{}58 K / 56 m (basado en precio público del kit y suscripción Business), justificado como prima de resiliencia; cero mantención de radio para el equipo reducido del CLIENTE. Normativa: RT-03.10/03.17, RT-10.05, RNF-13.01/13.07/13.08. Relacionada: Decisión 16.1 N\textdegree{} 26.
 
 \section{ADR-03 \textperiodcentered{} Modelo de despliegue híbrido}
 \label{sub:adr-03}
@@ -44,14 +44,14 @@ Registro consolidado de las quince decisiones de arquitectura que condicionan es
 
 \textbf{Alternativas descartadas.} \emph{Motor único relacional}: no escala ingesta IoT sin degradar picking (RNF-11.02). \emph{InfluxDB}: segundo motor exótico a operar; serie de tiempo cabe en capa OLAP. \emph{DynamoDB para todo}: no ofrece ACID cross-tabla para reconciliación determinista.
 
-\textbf{Criterio de selección.} Posición CAP declarada por dominio (RT-05.02); 3 motores administrados operables por 4 personas; retención sanitaria D.S.~977/96 con inmutabilidad; RPO $\leq$ 15 min por réplica Aurora. Normativa: RT-05.01/05.02/05.11--15, RNF-09.01/09.02/11.02. Relacionada: D2, D4, Decisión 16.1 N\textdegree{} 18.
+\textbf{Criterio de selección.} Posición CAP declarada por dominio (RT-05.02); 3 motores administrados operables por el equipo de TI del CLIENTE; retención sanitaria D.S.~977/96 con inmutabilidad; RPO $\leq$ 15 min por réplica Aurora. Normativa: RT-05.01/05.02/05.11--15, RNF-09.01/09.02/11.02. Relacionada: D2, D4, Decisión 16.1 N\textdegree{} 18.
 
 \section{ADR-05 \textperiodcentered{} Mensajería asíncrona}
 \label{sub:adr-05}
 
 \textbf{Decisión adoptada.} RabbitMQ local por sitio (buffer 24 h) + shipper idempotente $\rightarrow$ SQS FIFO (VPC Endpoint outbound) + EventBridge (eventos de negocio) + IoT Core MQTT (ingesta edge).
 
-\textbf{Alternativas descartadas.} \emph{REST síncrono}: no sobrevive corte a mitad de ventana; rompe reconciliación. \emph{Kafka/MSK}: operar clústeres en 5 sitios es desproporcionado para 4 personas y 105 TPS.
+\textbf{Alternativas descartadas.} \emph{REST síncrono}: no sobrevive corte a mitad de ventana; rompe reconciliación. \emph{Kafka/MSK}: operar clústeres en 5 sitios es desproporcionado para el equipo disponible y 105 TPS.
 
 \textbf{Criterio de selección.} Resiliencia offline (buffer local + reproducción idempotente); reconciliación determinista RT-03.12; Zero Trust (todo outbound); TCO proporcional al volumen. Normativa: RT-02.06/02.07, RT-03.10/03.12, RNF-07.01/13.01, BA Art.~21. Relacionada: D4.
 
@@ -62,7 +62,7 @@ Registro consolidado de las quince decisiones de arquitectura que condicionan es
 
 \textbf{Alternativas descartadas.} \emph{IdP solo nube}: paraliza bodega ante corte. \emph{AD maestro local}: duplica administración, crea maestro a promover en DR. \emph{Keycloak maestro local}: nube no puede autenticar si el enlace cae.
 
-\textbf{Criterio de selección.} Autonomía offline sin maestro local a promover; autoridad única en nube; OTP sin correo para externos (RT-12.12); MFA Art.~22; operado por 4 personas sin directorio propietario. Normativa: RT-12.10/12.11/12.12, RT-03.10, RNF-13.01, BA Art.~22, RF-15.01--05, RF-06.08. Relacionada: D6, Decisión 16.1 N\textdegree{} 34.
+\textbf{Criterio de selección.} Autonomía offline sin maestro local a promover; autoridad única en nube; OTP sin correo para externos (RT-12.12); MFA Art.~22; operado por el equipo reducido del CLIENTE sin directorio propietario. Normativa: RT-12.10/12.11/12.12, RT-03.10, RNF-13.01, BA Art.~22, RF-15.01--05, RF-06.08. Relacionada: D6, Decisión 16.1 N\textdegree{} 34.
 
 \section{ADR-07 \textperiodcentered{} Movilidad de terreno}
 \label{sub:adr-07}
@@ -78,7 +78,7 @@ Registro consolidado de las quince decisiones de arquitectura que condicionan es
 
 \textbf{Decisión adoptada.} Reemplazo total en Etapa 1 por módulo WMS del monolito (ADR-01): Talca maestro, Concepción edge, cross-docks mini-WMS E-01. Migración por dominio, oleadas por sitio, reversión azul-verde.
 
-\textbf{Alternativas descartadas.} \emph{Mantener e integrar}: proveedor desaparecido, sin soporte; no soporta multi-sitio, picking FEFO, SSCC GS1 ni conteo cíclico ciego. \emph{Extender a otros sitios}: arrastra riesgo de soporte inexistente en ventana crítica.
+\textbf{Alternativas descartadas.} \emph{Mantener e integrar}: proveedor desaparecido, sin soporte; no soporta multi-sitio, picking FEFO (primero en expirar, primero en salir), SSCC GS1 ni conteo cíclico ciego. \emph{Extender a otros sitios}: arrastra riesgo de soporte inexistente en ventana crítica.
 
 \textbf{Criterio de selección.} Requisitos RF-02.x que el WMS 2013 no contempla; riesgo operacional inaceptable; TCO amortizado con reducción conteo 2,3\,\%$\rightarrow$\textasciitilde{}0,3\,\% y merma 1,7\,\%$\rightarrow$$<$1\,\%; reversión azul-verde garantizada. Normativa: RT-05.11--15, RT-03.10, RNF-02.01/05.01, Caso 16.1 N\textdegree{} 14. Relacionada: Decisión 16.1 N\textdegree{} 14 (delegada por el CLIENTE).
 
@@ -123,7 +123,7 @@ Registro consolidado de las quince decisiones de arquitectura que condicionan es
 
 \textbf{Decisión adoptada.} Amazon API Gateway como Capa 3 única: autorizador OIDC (Keycloak), validación de esquema OpenAPI, cuotas y límites de tasa por actor/ruta, versionado /v\{major\}, propagación de transaction\_id a Capa 8.
 
-\textbf{Alternativas descartadas.} \emph{Kong autoadministrado}: agrega componente crítico a parchar en ruta de la venta; riesgo en ventana 05:30--07:00 con 4 personas. \emph{Desarrollo propio (middleware Django)}: sin cuotas/rate-limit nativos; viola Art.~21.2.
+\textbf{Alternativas descartadas.} \emph{Kong autoadministrado}: agrega componente crítico a parchar en ruta de la venta; riesgo en ventana 05:30--07:00 con el equipo disponible. \emph{Desarrollo propio (middleware Django)}: sin cuotas/rate-limit nativos; viola Art.~21.2.
 
 \textbf{Criterio de selección.} Cumplimiento literal Art.~21.2 sin desarrollo propio; servicio administrado para 4 personas; coherencia entre vistas (Art.~16.4); reversibilidad por contratos OpenAPI/AsyncAPI estándar. Normativa: BA Art.~21.2, RT-02.01/02.02, RT-11.11, RT-05.16/05.18, Art.~16.3. Relacionada: D8.
 
@@ -134,7 +134,7 @@ Registro consolidado de las quince decisiones de arquitectura que condicionan es
 
 \textbf{Alternativas descartadas.} \emph{Prometheus+Grafana+Loki local + cloud}: dos plataformas (viola Art.~16.4 y RT-03.16); VM-06 sin capacidad. \emph{Solo CloudWatch}: pierde compatibilidad PromQL/Grafana y portabilidad de reglas.
 
-\textbf{Criterio de selección.} Art.~16.4 y RT-03.16 piden una plataforma; buffer ADOT resuelve «sin puntos ciegos» durante corte; ninguna decisión 05:30--07:00 depende de tablero; sin lock-in (OTel + AMP portables); 4 personas no operan servidores de observabilidad. Normativa: BA Art.~16.4, RT-03.16, RT-14.01--09, RT-09.01. Relacionada: D14.
+\textbf{Criterio de selección.} Art.~16.4 y RT-03.16 piden una plataforma; buffer ADOT resuelve «sin puntos ciegos» durante corte; ninguna decisión 05:30--07:00 depende de tablero; sin lock-in (OTel + AMP portables); el equipo del CLIENTE no opera servidores de observabilidad. Normativa: BA Art.~16.4, RT-03.16, RT-14.01--09, RT-09.01. Relacionada: D14.
 
 \section{ADR-15 \textperiodcentered{} Gestión de secretos}
 \label{sub:adr-15}
@@ -143,4 +143,4 @@ Registro consolidado de las quince decisiones de arquitectura que condicionan es
 
 \textbf{Alternativas descartadas.} \emph{HashiCorp Vault autoadministrado}: modo sellado tras reinicio exige intervención humana de madrugada; agrega infraestructura. \emph{Sin gestor centralizado}: prohibido por Art.~21.4.
 
-\textbf{Criterio de selección.} Servicio administrado para 4 personas sin desellado manual; Zero Trust (consumo outbound); separación de funciones Art.~21.2 vía IAM/CloudTrail; contingencia offline independiente de la nube. Normativa: BA Art.~21.4/21.2, Art.~16.2/16.3, RT-04.09, RT-11.09. Relacionada: D13, SEC-01.
+\textbf{Criterio de selección.} Servicio administrado sin desellado manual; Zero Trust (consumo outbound); separación de funciones Art.~21.2 vía IAM/CloudTrail; contingencia offline independiente de la nube. Normativa: BA Art.~21.4/21.2, Art.~16.2/16.3, RT-04.09, RT-11.09. Relacionada: D13, SEC-01.

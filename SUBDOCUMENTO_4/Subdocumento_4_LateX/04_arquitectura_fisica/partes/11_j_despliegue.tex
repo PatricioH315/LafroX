@@ -10,12 +10,12 @@
 
 Arquitectura de despliegue de la solución: ambientes, redes y segmentación, alta disponibilidad, recuperación ante desastres y respaldos. Es autocontenida: los valores que declara se sostienen en los componentes especificados en las secciones anteriores de este capítulo.
 
-\section{Ambientes de despliegue (RT-04.01)}
+\section{Ambientes de despliegue}
 \label{sub:1-ambientes-de-despliegue-rt-04-01}
 
-Los cinco ambientes obligatorios del numeral 4.1 de las Bases Técnicas Transversales están habilitados como condición del hito H3 (RT-04.01), aislados entre sí mediante cuentas AWS separadas bajo una organización centralizada de AWS Control Tower (aislamiento estricto + SCP):
+Los cinco ambientes obligatorios están habilitados como condición del hito H3, aislados entre sí mediante cuentas AWS separadas bajo una organización centralizada de AWS Control Tower (aislamiento estricto + SCP), que se listan en la Tabla~\ref{tab:t62}:
 
-\begin{tablalafrox}{Ambientes de despliegue (RT-04.01)}{tab:t62}%
+\begin{tablalafrox}{Ambientes de despliegue}{tab:t62}%
   {F{0.26} G{0.14} G{0.18} G{0.12} Y}%
   {\cab{Ambiente} & \cab{Cuenta AWS} & \cab{VPC} & \cab{Región} & \cab{Uso}}
   Desarrollo & Cuenta 1 & 10.104.0.0/16 & sa-east-1 & Integración continua, pruebas unitarias automáticas \\
@@ -28,25 +28,25 @@ Los cinco ambientes obligatorios del numeral 4.1 de las Bases Técnicas Transver
 Reglas que gobiernan el modelo de ambientes:
 
 \begin{itemize}
-  \item \textbf{Paridad Pre-Producción = Producción (RT-04.02).} topología, versiones de componentes y configuración equivalentes; las diferencias por costo se declaran y justifican una a una.
-  \item \textbf{On-premise como producción (RT-04.01/RT-03.10).} el despliegue on-premise es producción con la imagen única wms\_only; esa misma imagen recorre Dev$\rightarrow$QA$\rightarrow$PreProd en la nube antes del cutover en Talca (ventana de 24 h) y en Concepción. No se mantienen ambientes on-premise separados --- la paridad la garantizan la imagen única y el IaC versionado (RT-03.03).
-  \item \textbf{Entrega continua (RT-04.05).} el pipeline CI ejecuta compilación, pruebas unitarias, análisis estático, análisis de composición, escaneo de secretos y escaneo de imágenes de contenedor, con bloqueo automático del despliegue ante hallazgos críticos o altos (RT-11.22).
-  \item \textbf{Despliegue sin interrupción (RT-04.07).} estrategia azul-verde con canario en etapas, demostrada en PreProducción antes de cada paso a producción; reversión automatizada (RT-04.06).
-  \item \textbf{Configuración externalizada (RT-04.08).} un mismo artefacto se promueve QA$\rightarrow$PreProd$\rightarrow$Prod sin recompilación; los secretos viven en gestor de secretos con rotación automática (RT-04.09), sin credenciales embebidas.
-  \item \textbf{Datos no productivos (RT-11.25).} Dev, QA y PreProd usan datos sintéticos generados desde la volumetría del Cap. 14 del caso; las plantillas próximas a producción pasan por anonimización/seudonimización verificable (Amazon Macie).
-  \item \textbf{Sin acceso interactivo a producción (RT-11.27).} los despliegues son exclusivamente por pipeline; el acceso administrativo excepcional es just-in-time vía AWS Systems Manager Session Manager con MFA, aprobación y sesión grabada.
-  \item \textbf{Reducción de ambientes no productivos fuera de horario (RT-04.13).} Dev/QA/PreProd se apagan o reducen fuera del horario de uso, con el ahorro reflejado en la estructura de costos.
-  \item \textbf{Portal web (N-01/N-02/N-03).} la SPA Angular se publica por ambiente en S3+CloudFront (bucket y distribución por cuenta AWS) y su backend es la misma imagen Django del ambiente; entra a producción con el hito de enero 2029 (RNF-12.01).
+  \item \textbf{Paridad Pre-Producción = Producción.} topología, versiones de componentes y configuración equivalentes; las diferencias por costo se declaran y justifican una a una.
+  \item \textbf{On-premise como producción.} el despliegue on-premise es producción con la imagen única wms\_only; esa misma imagen recorre Dev$\rightarrow$QA$\rightarrow$PreProd en la nube antes del cutover en Talca (ventana de 24 h) y en Concepción. No se mantienen ambientes on-premise separados --- la paridad la garantizan la imagen única y el IaC versionado.
+  \item \textbf{Entrega continua.} el pipeline CI ejecuta compilación, pruebas unitarias, análisis estático, análisis de composición, escaneo de secretos y escaneo de imágenes de contenedor, con bloqueo automático del despliegue ante hallazgos críticos o altos.
+  \item \textbf{Despliegue sin interrupción.} estrategia azul-verde con canario (despliegue gradual a un porcentaje pequeño de tráfico) en etapas, demostrada en PreProducción antes de cada paso a producción; reversión automatizada.
+  \item \textbf{Configuración externalizada.} un mismo artefacto se promueve QA$\rightarrow$PreProd$\rightarrow$Prod sin recompilación; los secretos viven en gestor de secretos con rotación automática, sin credenciales embebidas.
+  \item \textbf{Datos no productivos.} Dev, QA y PreProd usan datos sintéticos generados desde la volumetría del Cap. 14 del caso; las plantillas próximas a producción pasan por anonimización/seudonimización verificable (Amazon Macie).
+  \item \textbf{Sin acceso interactivo a producción.} los despliegues son exclusivamente por pipeline; el acceso administrativo excepcional es just-in-time vía AWS Systems Manager Session Manager con MFA, aprobación y sesión grabada.
+  \item \textbf{Reducción de ambientes no productivos fuera de horario.} Dev/QA/PreProd se apagan o reducen fuera del horario de uso, con el ahorro reflejado en la estructura de costos.
+  \item \textbf{Portal web (N-01/N-02/N-03).} la SPA Angular se publica por ambiente en S3+CloudFront (bucket y distribución por cuenta AWS) y su backend es la misma imagen Django del ambiente; entra a producción con el hito de enero 2029.
 \end{itemize}
 
 \section{Redes (topología, segmentación y conectividad)}
 \label{sub:2-redes-topologia-segmentacion-y-conectivi}
 
-\subsection{WAN --- tri-camino con SD-WAN (RT-03.17)}
+\subsection{WAN --- tri-camino con SD-WAN}
 
-Cada instalación dispone de caminos físicamente independientes con conmutación automática en $<$ 30 s (el requisito exige $\leq$ 5 min declarados; el diseño opera en $<$ 30 s):
+Cada instalación dispone de caminos físicamente independientes con conmutación automática en $<$ 30 s (el requisito exige $\leq$ 5 min declarados; el diseño opera en $<$ 30 s), que se detallan en la Tabla~\ref{tab:t63}:
 
-\begin{tablalafrox}{WAN --- tri-camino con SD-WAN (RT-03.17)}{tab:t63}%
+\begin{tablalafrox}{WAN --- tri-camino con SD-WAN}{tab:t63}%
   {F{0.26} F{0.26} Y}%
   {\cab{Camino} & \cab{Sitios} & \cab{Rol}}
   Fibra (D-03) & Talca, Concepción & Enlace principal en los 2 CD \\
@@ -55,7 +55,7 @@ Cada instalación dispone de caminos físicamente independientes con conmutació
   AWS Direct Connect (complemento activable, D-AL-20) & Talca & Camino dedicado opcional, terminado en el par de firewall D-01 mediante un VIF dedicado o alojado sobre la fibra D-03, sin hardware adicional. No reemplaza los tres caminos SD-WAN: aporta capacidad dedicada para la réplica DMS CDC, la telemetría y los sincronismos por lote. Mientras el CLIENTE no lo contrate, la VPN IPsec sostiene por sí sola el RPO $\leq$ 15 min, el RTO $\leq$ 4 h y el SLA $\geq$ 99,9 \% \\
 \end{tablalafrox}
 
-SD-WAN con políticas centralizadas y BGP; los cross-docks salen directo por Starlink a SQS/IoT/SSM (configuración crítica) y sincronizan detalle a Talca por AMQPS entre brokers (C-13). La pérdida total del enlace se cubre con la autonomía local 24 h (CD) / 14 h (terreno) --- RT-03.10, RNF-13.01.
+SD-WAN con políticas centralizadas y BGP; los cross-docks salen directo por Starlink a SQS/IoT/SSM (configuración crítica) y sincronizan detalle a Talca por AMQPS entre brokers (C-13). La pérdida total del enlace se cubre con la autonomía local 24 h (CD) / 14 h (terreno).
 
 \subsection{VPN Site-to-Site (costura C1)}
 
@@ -64,6 +64,8 @@ Extremos: D-01 Firewall/UTM (HA activo-pasivo) $\rightarrow$ Customer Gateway en
 Protocolo: IPsec/IKEv2, AES-256-GCM, BGP, MTU 1436; 2 túneles (activo + standby). Conmutación $<$ 30 s sobre los tres caminos.
 
 \subsection{Segmentación de red (sin solapamiento)}
+
+La segmentación de red sin solapamiento se define en la Tabla~\ref{tab:t64}:
 
 \begin{tablalafrox}{Segmentación de red (sin solapamiento)}{tab:t64}%
   {G{0.19} F{0.26} Y}%
@@ -77,11 +79,11 @@ Protocolo: IPsec/IKEv2, AES-256-GCM, BGP, MTU 1436; 2 túneles (activo + standby
 
 Modelo Hub-and-Spoke con VPC de tránsito central: la comunicación cross-VPC pasa por el Transit Gateway (inspección) y los servicios AWS (S3, SQS, DynamoDB, KMS, SSM) se consumen por VPC Endpoints/PrivateLink sin tráfico por internet (RT-03.03).
 
-\subsection{Zero Trust --- flujos permitidos (BA Art. 21)}
+\subsection{Zero Trust --- flujos permitidos}
 
-Todo el tráfico on-premise $\rightarrow$ nube es outbound (HTTPS/443, MQTTS/8883) sin conexiones entrantes salvo las dos excepciones controladas D-AL-05 sobre túnel IPsec autenticado:
+Todo el tráfico on-premise $\rightarrow$ nube es outbound (HTTPS/443, MQTTS/8883) sin conexiones entrantes salvo las dos excepciones controladas D-AL-05 sobre túnel IPsec autenticado; los flujos permitidos se listan en la Tabla~\ref{tab:t65}:
 
-\begin{tablalafrox}{Zero Trust --- flujos permitidos (BA Art. 21)}{tab:t65}%
+\begin{tablalafrox}{Zero Trust --- flujos permitidos}{tab:t65}%
   {Y F{0.26} F{0.26}}%
   {\cab{Flujo} & \cab{Protocolo} & \cab{Destino}}
   Broker (shipper VM-03) $\rightarrow$ SQS FIFO & HTTPS 443 (VPC Endpoint SQS/PrivateLink) & AWS \\
@@ -97,7 +99,7 @@ Todo el tráfico on-premise $\rightarrow$ nube es outbound (HTTPS/443, MQTTS/888
 
 \subsection{Capa pública (DMZ) y DNS}
 
-Primera línea: CloudFront + AWS WAF v2 (OWASP Top 10 + reglas personalizadas) + Shield Advanced; autenticación API Gateway con Keycloak OIDC, cuotas por cliente y validación de esquema (RT-11.11).
+Primera línea: CloudFront + AWS WAF v2 (OWASP Top 10 + reglas personalizadas) + Shield Advanced; autenticación API Gateway con Keycloak OIDC, cuotas por cliente y validación de esquema.
 
 DNS: Route 53 con health checks activos; routing por latencia en operación normal y failover automático hacia us-east-1 en contingencia.
 
@@ -105,6 +107,8 @@ DNS: Route 53 con health checks activos; routing por latencia en operación norm
 \label{sub:3-alta-disponibilidad}
 
 \subsection{Capa cloud (sa-east-1) --- Multi-AZ}
+
+La capa cloud y su estrategia Multi-AZ se resumen en la Tabla~\ref{tab:t66}:
 
 \begin{tablalafrox}{Capa cloud (sa-east-1) --- Multi-AZ}{tab:t66}%
   {F{0.22} F{0.25} F{0.25} Y}%
@@ -118,9 +122,11 @@ DNS: Route 53 con health checks activos; routing por latencia en operación norm
   NAT Gateway & sa-east-1a & sa-east-1b (independiente) & Routing automático \\
 \end{tablalafrox}
 
-Nivel de servicio de extremo a extremo sobre la transacción crítica de negocio: $\geq$ 99,9 \% mensual (RT-10.01, menos de 8,76 h al año). Es el compromiso contractual penalizable del Artículo 78\textdegree{} y es distinto de la disponibilidad de la infraestructura del recinto (99,95 \% por componente, numerales 6.1 y 7.2), que es un medio para alcanzarlo.
+Nivel de servicio de extremo a extremo sobre la transacción crítica de negocio: $\geq$ 99,9 \% mensual (menos de 8,76 h al año). Es el compromiso contractual penalizable y es distinto de la disponibilidad de la infraestructura del recinto (99,95 \% por componente), que es un medio para alcanzarlo.
 
 \subsection{Capa on-premise}
+
+La capa on-premise y su diseño por capa se resumen en la Tabla~\ref{tab:t67}:
 
 \begin{tablalafrox}{Capa on-premise}{tab:t67}%
   {G{0.19} Y F{0.26}}%
@@ -136,24 +142,24 @@ Nivel de servicio de extremo a extremo sobre la transacción crítica de negocio
 
 VMs dimensionadas con headroom $\times$1,5 (RNF-19.04) para tolerar 3.900 entregas/día en el peak de septiembre. SPOF declarados y mitigados (RT-02.11): periféricos de andén (respaldo manual), clúster Talca sin SPOF estructural, Concepción nodo único (autonomía 24 h + DRP), cross-dock mini-PC único (ventana de 3 h + sincronización diferida).
 
-\section{Recuperación ante desastres (BA Art. 20 \textperiodcentered{} RT-07.07 \textperiodcentered{} RNF-20.06)}
+\section{Recuperación ante desastres}
 \label{sub:4-recuperacion-ante-desastres-ba-art-20-rt}
 
-\subsection{DRP nube (sa-east-1 $\rightarrow$ us-east-1) --- activo-pasivo warm standby}
+\subsection{DRP nube (sa-east-1 $\rightarrow$ us-east-1) --- activo-pasivo warm standby (réplica pasiva lista para promover en minutos)}
 
 Mecanismo: Aurora Global Database (réplica us-east-1, lag $<$ 1 s) \textperiodcentered{} DynamoDB Global Tables \textperiodcentered{} S3 CRR (RTC $<$ 15 min) \textperiodcentered{} AWS DMS CDC del PostgreSQL WMS on-premise (lee wal\_level=logical; si la VPN cae, encola y reanuda sin pérdida).
 
-Objetivos: RTO $\leq$ 4 h / RPO $\leq$ 15 min (RNF-20.06); RPO declarado de mensajes no críticos $\leq$ 24 h, reducido a $\leq$ 15 min para los críticos con patrón outbox dual-write.
+Objetivos: RTO $\leq$ 4 h / RPO $\leq$ 15 min; RPO declarado de mensajes no críticos $\leq$ 24 h, reducido a $\leq$ 15 min para los críticos con patrón outbox dual-write (escritura simultánea en BD y cola para garantizar consistencia).
 
-Modalidad justificada (RT-07.01): activo-pasivo; activo-activo duplicaría la infraestructura transaccional (\textasciitilde{}105 TPS peak) con reconciliación de doble escritura sin beneficio frente al RTO comprometido.
+Modalidad justificada: activo-pasivo; activo-activo duplicaría la infraestructura transaccional (\textasciitilde{}105 TPS peak) con reconciliación de doble escritura sin beneficio frente al RTO comprometido (ADR-09).
 
 Procedimiento: decisión de failover manual con disparador declarado (health check de la región primaria $<$ 5 min) y protección contra conmutación innecesaria (confirmación SNS + autorización); pasos 4--7 automatizados por AWS Systems Manager Automation (promoción Aurora 15--20 min, escalado ECS, actualización DNS 45--60 min). El RTO se cumple porque la réplica es legible y la región DR está "caliente" (escalable $<$ 30 min a carga completa).
 
 Retorno (failback): procedimiento documentado en 6 pasos --- re-sincronización con catch-up verificado, reconciliación de transacciones de la contingencia contra la bitácora (RT-03.12), transferencia de eventos pendientes, conmutación coordinada de DNS, validación funcional e informe con tiempo real.
 
-Pruebas: conmutación real $\geq$ 2 veces/año con informe de RTO/RPO efectivos y plan de corrección de brechas (RT-07.07, Art. 20).
+Pruebas: conmutación real $\geq$ 2 veces/año con informe de RTO/RPO efectivos y plan de corrección de brechas.
 
-Residencia y transferencia internacional de datos (Art. 23 \textperiodcentered{} Ley 21.719): la replicación hacia us-east-1 constituye una transferencia internacional de datos personales y se rige por los resguardos declarados en la sección de arquitectura de seguridad de este documento, en la subsección de datos personales, residencia y transferencia internacional: cifrado con CMK gestionada por el CLIENTE, acuerdo de tratamiento con cláusulas de transferencia, minimización (la región secundaria no se explota analíticamente, solo sostiene continuidad), exclusión de los datos de geolocalización de personas de la replicación transfronteriza ---permanecen solo en sa-east-1 con retención de 12 meses--- y registro en el inventario de tratamientos. La residencia queda sujeta a aprobación expresa del CLIENTE; si no la aprueba, la alternativa declarada es la continuidad intrarregional dentro de sa-east-1 (tercera AZ ampliada + respaldo inmutable regional --- no es un segundo sitio geográfico ni usa Talca/Concepción para la carga cloud; AWS no tiene región en Chile), que cubre falla de AZ y corrupción de datos pero degrada el RTO ante una caída de toda la región sa-east-1 (24--72 h desde el respaldo inmutable; alternativa D del ADR-09).
+Residencia y transferencia internacional de datos: la replicación hacia us-east-1 constituye una transferencia internacional de datos personales y se rige por los resguardos declarados en la sección de arquitectura de seguridad de este documento, en la subsección de datos personales, residencia y transferencia internacional: cifrado con CMK gestionada por el CLIENTE, acuerdo de tratamiento con cláusulas de transferencia, minimización (la región secundaria no se explota analíticamente, solo sostiene continuidad), exclusión de los datos de geolocalización de personas de la replicación transfronteriza ---permanecen solo en sa-east-1 con retención de 12 meses--- y registro en el inventario de tratamientos. La residencia queda sujeta a aprobación expresa del CLIENTE; si no la aprueba, la alternativa declarada es la continuidad intrarregional dentro de sa-east-1 (tercera AZ ampliada + respaldo inmutable regional --- no es un segundo sitio geográfico ni usa Talca/Concepción para la carga cloud; AWS no tiene región en Chile), que cubre falla de AZ y corrupción de datos pero degrada el RTO ante una caída de toda la región sa-east-1 (24--72 h desde el respaldo inmutable; alternativa D del ADR-09).
 
 \subsection{DRP local (Talca $\rightarrow$ Concepción)}
 
@@ -165,7 +171,7 @@ Identidad sin conmutación local: el maestro Keycloak está en la nube y las cac
 
 El maestro vive en la nube (Multi-AZ) con réplica DR us-east-1; las cachés locales son de solo lectura. No existe maestro local a promover, por lo que la identidad no depende del switchover.
 
-\section{Respaldos --- esquema 3-2-1-0 (RNF-20.07)}
+\section{Respaldos --- esquema 3-2-1-0}
 \label{sub:5-respaldos-esquema-3-2-1-0-rnf-20-07}
 
 Esquema único para toda la arquitectura híbrida (nube + on-premise):
@@ -178,16 +184,16 @@ Esquema único para toda la arquitectura híbrida (nube + on-premise):
   \item \textbf{0 errores.} Restore testing automatizado mensual (Lambda) + verificación de restauración local + prueba DR semestral.
 \end{itemize}
 
-D-05 (NAS local con WORM) es la copia local de recuperación rápida y NO cuenta como la pierna inmutable; permite restaurar el WMS en $\leq$ 4 h (RNF-20.06) sin depender del enlace WAN. RPO $\leq$ 15 min por AWS DMS CDC del WAL lógico (wal\_level=logical) hacia la nube antes de la copia local.
+D-05 (NAS local con WORM) es la copia local de recuperación rápida y NO cuenta como la pierna inmutable; permite restaurar el WMS en $\leq$ 4 h sin depender del enlace WAN. RPO $\leq$ 15 min por AWS DMS CDC del WAL lógico (wal\_level=logical) hacia la nube antes de la copia local.
 
-Custodia física (RT-06.26/06.27/06.28): medio de respaldo transportable, cifrado y rotado semanal (RT-07.10), trasladado bajo custodia acreditada a bóveda externa distinta del sitio primario; la pierna inmutable S3 es complementaria, no reemplaza la custodia física.
+Custodia física: medio de respaldo transportable, cifrado y rotado semanal, trasladado bajo custodia acreditada a bóveda externa distinta del sitio primario; la pierna inmutable S3 es complementaria, no reemplaza la custodia física.
 
-Plan AWS Backup:
+El plan AWS Backup se detalla en la Tabla~\ref{tab:t69}:
 
-\begin{tablalafrox}{Arquitectura de despliegue \textperiodcentered{} Respaldos --- esquema 3-2-1-0 (RNF-20.07)}{tab:t69}%
+\begin{tablalafrox}{Respaldos --- esquema 3-2-1-0}{tab:t69}%
   {F{0.24} Y F{0.24} F{0.24}}%
   {\cab{Recurso} & \cab{Frecuencia} & \cab{Retención} & \cab{Destino}}
-  Aurora PostgreSQL & Diario + PITR continuo & 35 días & Backup Vault (cifrado CMK) \\
+  Aurora PostgreSQL & Diario + PITR (restauración a un instante específico) continuo & 35 días & Backup Vault (cifrado CMK) \\
   DynamoDB & Diario (On-Demand) & 35 días & Backup Vault \\
   EFS & Diario & 30 días & Backup Vault \\
   EBS & Diario (snapshots) & 14 días & Backup Vault \\
@@ -195,4 +201,4 @@ Plan AWS Backup:
   Logs de seguridad/auditoría & Continuo & 7 años (Object Lock) & S3 archivo \\
 \end{tablalafrox}
 
-Vault Lock con enfriamiento de 3 días y retención mínima de 1 año; una vez bloqueado, ni la cuenta raíz puede eliminar respaldos. Retención sanitaria: trazabilidad 5 años + vida útil (D.S. 977/96), consistente con el lago analítico S3 y el repositorio de datos históricos (RT-05.15).
+Vault Lock con enfriamiento de 3 días y retención mínima de 1 año; una vez bloqueado, ni la cuenta raíz puede eliminar respaldos. Retención sanitaria: trazabilidad 5 años + vida útil, consistente con el lago analítico S3 y el repositorio de datos históricos.

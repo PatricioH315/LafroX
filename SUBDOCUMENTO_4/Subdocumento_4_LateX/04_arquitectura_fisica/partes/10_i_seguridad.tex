@@ -8,11 +8,7 @@
 \chapter{Arquitectura de seguridad}
 \label{sec:i-arquitectura-de-seguridad}
 
-Arquitectura de seguridad de la solución: modelo Zero Trust, capa expuesta, identidad y accesos, cifrado y controles. Es autocontenida: los valores que declara se sostienen en los componentes especificados en las secciones anteriores de este capítulo (modelo de emplazamiento, tecnologías ofertadas, implementos y sitios principal y secundario).
-
-Es además el documento de seguridad del subdocumento: es autocontenido y los valores aquí declarados no son nuevos salvo donde se indica expresamente (consolidan lo comprometido en este mismo Subdocumento 4.2).
-
-Por qué la seguridad de Puelche no es la de una oficina. El perímetro de esta solución no es un edificio: son 62 preventistas de pie en la puerta de un almacén, \textasciitilde{}200 conductores ---de los cuales \textasciitilde{}160 no son trabajadores de la compañía y rotan sin aviso---, dispositivos compartidos entre turnos en una cámara a $-$22 \textdegree{}C, un turno de preparación con 38 \% de rotación anual y 14.200 puntos de entrega. Un modelo de seguridad basado en la red corporativa aquí no protege nada. Por eso el modelo es Zero Trust y por eso la identidad es la pieza central.
+Arquitectura de seguridad de la solución: modelo Zero Trust, capa expuesta, identidad y accesos, cifrado y controles. El perímetro de esta solución no es un edificio corporativo sino un entorno distribuido con alta rotación de personal externo y dispositivos compartidos en terreno, por lo que el modelo es Zero Trust y la identidad es la pieza central.
 
 \section{Principios rectores}
 \label{sub:1-principios-rectores}
@@ -28,20 +24,8 @@ Por qué la seguridad de Puelche no es la de una oficina. El perímetro de esta 
   \item \textbf{Evidencia inalterable} (Art. 21.3 \textperiodcentered{} RT-11.14 \textperiodcentered{} RT-16.07). Todo evento de seguridad y toda acción de negocio quedan en un registro inalterable y con retención declarada; ni un administrador puede modificarlo.
 \end{enumerate}
 
-\section{Modelo Zero Trust aplicado (Art. 21.1 \textperiodcentered{} NIST SP 800-207)}
+\section{Modelo Zero Trust aplicado}
 \label{sub:2-modelo-zero-trust-aplicado-art-21-1-nist}
-
-\subsection{Los siete principios de NIST SP 800-207 en Puelche}
-
-\begin{itemize}
-  \item \textbf{Todo recurso de datos y servicio de cómputo es un recurso a proteger.} Los 12 módulos, las 15 integraciones del catálogo, las bases on-premise y en nube, el borde IoT y los HHT de bodega están inventariados como recursos con dueño y clasificación.
-  \item \textbf{Toda comunicación se asegura sin importar la ubicación de red.} TLS 1.3 entre superficies y borde; mTLS servicio a servicio; IPsec/IKEv2 con AES-256-GCM en la VPN; MQTTS con X.509 por dispositivo en el borde IoT.
-  \item \textbf{El acceso se concede por sesión.} Tokens de vida breve firmados por Keycloak; el token de terreno se emite por turno, no de forma permanente.
-  \item \textbf{El acceso lo determina una política dinámica.} RBAC por los 11 actores canónicos más ABAC por atributos de contexto: instalación asignada, horario de turno y dispositivo provisto (verificado por MDM).
-  \item \textbf{Se vigila la integridad y postura de todos los activos.} EDR en todos los nodos on-premise y estaciones (F-03); MDM con postura y estado de sincronización en los dispositivos de terreno (subsección de gestión de dispositivos); escaneo semanal de vulnerabilidades.
-  \item \textbf{La autenticación y autorización son dinámicas y estrictamente aplicadas antes de conceder acceso.} Autenticación en la puerta de enlace (OIDC), autorización en la Capa 4; elevación temporal de privilegios con aprobación y grabación.
-  \item \textbf{Se recolecta el máximo de información para mejorar la postura.} SIEM (Security Lake) con casos de uso del proceso logístico, no solo de infraestructura; correlación por transaction\_id en la Capa 8.
-\end{itemize}
 
 \subsection{Zonas y flujos}
 
@@ -56,7 +40,7 @@ Reglas de zona declaradas:
   \item La zona de terreno no tiene perímetro: se protege con identidad, cifrado local, MDM y borrado remoto.
 \end{itemize}
 
-\section{Capa expuesta (Art. 21.2 \textperiodcentered{} RT-11.11/11.13)}
+\section{Capa expuesta}
 \label{sub:3-capa-expuesta-art-21-2-rt-11-11-11-13}
 
 \begin{itemize}
@@ -70,7 +54,9 @@ Reglas de zona declaradas:
   \item \textbf{Superficie de exposición declarada} (RT-11.13). Inventario completo de servicios, protocolos y puertos por sitio y por zona (subsección de superficie de exposición).
 \end{itemize}
 
-\subsection{Superficie de exposición completa (RT-11.13)}
+\subsection{Superficie de exposición completa}
+
+La superficie de exposición completa por sitio y zona se declara en la Tabla~\ref{tab:t45}:
 
 \begin{tablalafrox}{Superficie de exposición completa (RT-11.13)}{tab:t45}%
   {F{0.25} Y Y F{0.25}}%
@@ -87,7 +73,7 @@ Reglas de zona declaradas:
 
 Regla declarada: ningún nodo on-premise abre puertos entrantes. Toda gestión remota entra por el agente SSM sobre HTTPS saliente o por la VPN, nunca por un puerto publicado.
 
-\section{Identidad, acceso y sesiones (Art. 22 \textperiodcentered{} BTT Cap. 12 \textperiodcentered{} ADR-06)}
+\section{Identidad, acceso y sesiones (ADR-06)}
 \label{sub:4-identidad-acceso-y-sesiones-art-22-btt-c}
 
 \subsection{Modelo de identidad (Modelo B)}
@@ -104,7 +90,7 @@ Esta decisión resuelve un problema real del caso: el centro de distribución de
 
 Sincronización sin conexiones entrantes: el maestro publica el Realm cifrado a S3 y las cachés lo importan (INT-13, saliente). Las altas, bajas y roles se propagan desde el maestro hacia las cachés, nunca a la inversa. Revocación: $\Delta$ $\leq$ 8 h por TTL y $<$ 24 h por SCIM; para identidades de alta sensibilidad la baja se refuerza con el bloqueo del terminal por MDM.
 
-\subsection{Federación, SSO y factores (Art. 22)}
+\subsection{Federación, SSO y factores}
 
 OpenID Connect y OAuth 2.1, con SAML 2.0 disponible si la integración con el CLIENTE lo requiere; integración con el directorio corporativo por LDAP.
 
@@ -112,32 +98,32 @@ Inicio de sesión único para todos los módulos y cierre de sesión propagado (
 
 MFA obligatoria para administradores, accesos privilegiados y todo acceso desde fuera de la red corporativa.
 
-Factores resistentes a la suplantación: FIDO2/WebAuthn (claves de acceso) disponible y preferente para perfiles administradores, además de TOTP (RT-12.04, deseable, se supera el mínimo).
+Factores resistentes a la suplantación: FIDO2/WebAuthn (claves de acceso) disponible y preferente para perfiles administradores, además de TOTP (se supera el mínimo exigido).
 
 Acceso de conductores externos: OTP de un solo uso por operación, sin cuenta corporativa (RF-06.08). Es la respuesta al hecho de que \textasciitilde{}160 conductores no son trabajadores de la compañía y rotan sin aviso.
 
-\subsection{Autorización: RBAC más ABAC (RT-12.05)}
+\subsection{Autorización: RBAC más ABAC}
 
 El control de acceso se resuelve en cuatro capas:
 
 \begin{itemize}
   \item \textbf{RBAC.} Roles derivados de los 11 actores canónicos del modelo lógico. Los permisos viven en Keycloak.
   \item \textbf{ABAC.} Atributos de contexto que acotan el rol: instalación asignada, horario de turno (el despacho solo es válido en su ventana), dispositivo provisto y enrolado por MDM. Las políticas se aplican en la Capa 4.
-  \item \textbf{Segregación de funciones (RT-12.06).} Conciliación $\neq$ aprobación (M10); detección de excursión térmica $\neq$ decisión de bloqueo (M9); rendición $\neq$ cierre contable (M7). Nadie que genera un control lo ejecuta. La matriz completa se declara en el registro de requerimientos (Cap. 17.1).
-  \item \textbf{Aislamiento de externos (RT-12.11).} Cada proveedor ve solo sus órdenes de compra y documentos; cada transportista solo sus rutas asignadas. No hay visibilidad cruzada.
+  \item \textbf{Segregación de funciones.} Conciliación $\neq$ aprobación (M10); detección de excursión térmica $\neq$ decisión de bloqueo (M9); rendición $\neq$ cierre contable (M7). Nadie que genera un control lo ejecuta. La matriz completa se declara en el registro de requerimientos (Cap. 17.1).
+  \item \textbf{Aislamiento de externos.} Cada proveedor ve solo sus órdenes de compra y documentos; cada transportista solo sus rutas asignadas. No hay visibilidad cruzada.
 \end{itemize}
 
-\subsection{Política de sesión (Art. 22 \textperiodcentered{} RT-12.07 \textperiodcentered{} RT-12.08)}
+\subsection{Política de sesión}
 
-La política de sesión se declara en cinco términos. La duración máxima de la credencial de acceso es de 30 minutos, valor único de la propuesta que rige para todos los perfiles (D-AL-07), mientras la credencial de identidad vive 1 hora. La caducidad por inactividad es de 30 minutos en consolas de bodega y back-office y de 60 minutos en superficies de solo lectura, de modo que una pantalla de consulta no obliga a reautenticarse cada media hora. La renovación es por credencial de refresco rotatoria de 30 días: cada uso emite una nueva e invalida la anterior, y el reúso detectado invalida la familia completa y fuerza la reautenticación.
+\begin{itemize}
+  \item \textbf{Duración.} Credencial de acceso: 30 min (D-AL-07); credencial de identidad: 1 h. Caducidad por inactividad: 30 min en consolas, 60 min en solo lectura.
+  \item \textbf{Renovación.} Credencial de refresco rotatoria de 30 días; el reúso detectado invalida la familia completa.
+  \item \textbf{Revocación.} Cierre global inmediato desde el panel; baja de identidad revoca credenciales vigentes. Una sola sesión activa por actor de terreno.
+  \item \textbf{Operación desconectada.} Token de turno de 8 h (bodega) o 14 h (terreno), validado contra la caché local A-05 sin depender del IdP (ADR-06).
+  \item \textbf{Elevación temporal.} Máximo 2 h, con justificación, aprobación y registro auditado.
+\end{itemize}
 
-La revocación es inmediata: el cierre global de sesión desde el panel de administración corta una sesión ante la pérdida o el compromiso de un dispositivo, y la baja de una identidad revoca sus credenciales vigentes. El control de sesiones concurrentes admite una sola sesión activa por actor de terreno: se deniega el inicio simultáneo del mismo preventista o conductor en otro dispositivo, con opción de invalidar la anterior. La elevación temporal de privilegios no excede las 2 horas y exige justificación, aprobación de un segundo perfil y registro auditado.
-
-La política respeta RT-12.08: las credenciales están firmadas y son de vida breve, la credencial de refresco es rotatoria y ningún identificador de sesión viaja en la ruta de la dirección web; el token se envía siempre en la cabecera de la petición.
-
-En operación desconectada la sesión no depende del IdP sino de la caché local (A-05): el token de turno cubre 8 horas en el centro de distribución (RNF-13.01) y 14 horas en terreno (RNF-06.02). La renovación ocurre al inicio de turno con cobertura o contra la caché local, de modo que la ventana sin enlace nunca queda descubierta aunque el dispositivo no vuelva a ver señal (ADR-06).
-
-\subsection{Autenticación en el perfil operacional de terreno (RT-12.11/12.10 --- Según caso)}
+\subsection{Autenticación en terreno}
 
 El caso fija condiciones que descartan la contraseña como mecanismo de terreno: guantes térmicos a $-$22 \textdegree{}C, uso a una mano durante la descarga, uso de pie y a la intemperie en la puerta del local, dispositivos compartidos entre turnos en bodega y 38 \% de rotación anual en preparación. La respuesta declarada:
 
@@ -148,36 +134,22 @@ El caso fija condiciones que descartan la contraseña como mecanismo de terreno:
   \item Los datos locales están cifrados y admiten borrado remoto selectivo (RF-03.16/06.12): se borra la aplicación y su caché, no la información personal del dispositivo.
 \end{itemize}
 
-\subsection{Gestión de dispositivos (MDM --- RT-03.18)}
+\subsection{Gestión de dispositivos (MDM)}
 
-La gestión de dispositivos se declara en seis capacidades:
+MDM como servicio gestionado (Android Enterprise o equivalente), operable por las 4 personas de TI del CLIENTE. Capacidades: enrolamiento por perfil de rol, cifrado local y PIN obligatorios, modo quiosco, postura y monitoreo (sincronización, batería, versión), borrado remoto selectivo con revocación de tokens e inventario por IMEI/serie.
 
-\begin{itemize}
-  \item \textbf{Enrolamiento.} Alta del dispositivo contra el usuario antes del turno; perfil por rol (preventista, preparador, conductor).
-  \item \textbf{Configuración.} Cifrado local obligatorio, PIN obligatorio, bloqueo de pantalla, modo quiosco (aplicación única), actualización de aplicación y de caché de turno.
-  \item \textbf{Postura y monitoreo.} Estado de sincronización, batería, versión de aplicación; alertas por dispositivo perdido, almacenamiento bajo o fallo recurrente de sincronización.
-  \item \textbf{Seguridad.} Borrado remoto selectivo con revocación de tokens.
-  \item \textbf{Inventario.} Registro por IMEI/serie, asignación y estado.
-  \item \textbf{Operación.} MDM como servicio gestionado (Android Enterprise o equivalente): el equipo de TI del CLIENTE es de 4 personas y no administra la plataforma localmente.
-\end{itemize}
+\subsection{Ciclo de vida de la identidad}
 
-\subsection{Ciclo de vida de la identidad (RT-12.09 \textperiodcentered{} RT-15.05)}
+Aprovisionamiento $\leq$ 24 h desde el alta (cuenta, permisos, dispositivo); baja efectiva $\leq$ 24 h desde la desvinculación con revocación de tokens y borrado remoto. Flujo desatendido y auditable con revisión semestral de accesos.
+
+\subsection{Accesos privilegiados y cuenta de emergencia}
 
 \begin{itemize}
-  \item Aprovisionamiento $\leq$ 24 h desde el alta en recursos humanos o en el proveedor: cuenta, permisos por rol canónico y dispositivo enrolado.
-  \item Baja efectiva en $\leq$ 24 h desde la desvinculación (Art. 22): revocación de tokens, borrado remoto del dispositivo y revocación de accesos externos.
-  \item Flujo desatendido y auditable, con aprobación del jefe de área, bitácora de aprovisionamiento y revisión semestral de accesos (certificación de identidades).
-  \item Auditoría de identidad con no repudio: creación, modificación, elevación y baja de cuentas, con retención declarada (subsección de detección y respuesta).
-\end{itemize}
-
-\subsection{Accesos privilegiados y cuenta de emergencia (RT-12.06 \textperiodcentered{} RT-12.13)}
-
-\begin{itemize}
-  \item \textbf{PAM con acceso a demanda:} sin acceso interactivo permanente a producción. La operación excepcional se hace just-in-time por AWS Systems Manager Session Manager, con MFA, aprobación y sesión grabada (RT-11.27).
+  \item \textbf{PAM con acceso a demanda:} sin acceso interactivo permanente a producción. La operación excepcional se hace just-in-time por AWS Systems Manager Session Manager, con MFA, aprobación y sesión grabada.
   \item \textbf{Cuenta de emergencia (break-glass):} fuera de banda, custodiada en bóveda física con doble firma, para contingencia de indisponibilidad del IdP. Su activación exige procedimiento escrito, notificación inmediata a TI y a la gerencia, registro en cadena de custodia y rotación de credenciales tras el uso. Se prueba dos veces al año junto con el simulacro de recuperación ante desastres.
 \end{itemize}
 
-\section{Cifrado y gestión de claves (Art.~21.2 · RT-11.08 a 11.10)}
+\section{Cifrado y gestión de claves}
 \label{sub:5-cifrado-y-gestion-de-claves-art-21-2-rt-}
 
 \subsection{En tránsito}
@@ -189,12 +161,14 @@ El cifrado en tránsito se declara por trayecto:
   \item \textbf{Servicio a servicio.} mTLS (microsegmentación; sin confianza implícita en la red interna).
   \item \textbf{On-premise $\leftrightarrow$ nube.} IPsec/IKEv2 con AES-256-GCM, BGP, MTU 1436, dos túneles.
   \item \textbf{Borde IoT $\rightarrow$ nube.} MQTTS 8883 con certificado X.509 por dispositivo.
-  \item \textbf{Respaldos y replicación.} TLS 1.3 en tránsito (RT-07.10).
+  \item \textbf{Respaldos y replicación.} TLS 1.3 en tránsito.
 \end{itemize}
 
 \subsection{En reposo}
 
-\begin{tablalafrox}{En reposo}{tab:t51}%
+El cifrado en reposo por componente se declara en la Tabla~\ref{tab:t51}:
+
+\begin{tablalafrox}{Cifrado en reposo por componente}{tab:t51}%
   {F{0.26} F{0.26} Y}%
   {\cab{Elemento} & \cab{Cifrado} & \cab{Gestión de claves}}
   Almacenamiento del clúster (OSD Ceph / RAID 10) & LUKS/dm-crypt o NVMe con autocifrado & CMK dedicada on-premise (o HSM de borde), custodiada y respaldada \\
@@ -205,27 +179,29 @@ El cifrado en tránsito se declara por trayecto:
   Terminales de terreno & Cifrado del dispositivo (Android FBE) y aplicación en entorno aislado & MDM (subsección de gestión de dispositivos) \\
 \end{tablalafrox}
 
-Rotación y custodia: claves de datos con rotación anual o ante revocación o compromiso; claves maestras según el calendario del proveedor; rotación en línea, sin degradación del servicio. Los respaldos conservan la versión de clave necesaria para una restauración auditable. Separación de funciones en la custodia de claves (Art. 21.2): quien administra la plataforma no administra las claves maestras.
+Rotación y custodia: claves de datos con rotación anual o ante revocación o compromiso; claves maestras según el calendario del proveedor; rotación en línea, sin degradación del servicio. Los respaldos conservan la versión de clave necesaria para una restauración auditable. Separación de funciones en la custodia de claves: quien administra la plataforma no administra las claves maestras.
 
-\subsection{Cifrado a nivel de campo (RT-11.10 --- Según caso)}
+\subsection{Cifrado a nivel de campo}
 
 El caso lo declara exigible para cuatro conjuntos de datos. Aplicación declarada:
 
 El cifrado a nivel de campo se declara por conjunto de datos:
 
 \begin{itemize}
-  \item \textbf{Comportamiento de pago y antecedentes comerciales del cliente.} Cifrado a nivel de campo con clave en KMS; acceso restringido por rol y registro de consultas (RT-16.09).
+  \item \textbf{Comportamiento de pago y antecedentes comerciales del cliente.} Cifrado a nivel de campo con clave en KMS; acceso restringido por rol y registro de consultas.
   \item \textbf{Datos de geolocalización de personas.} Cifrado a nivel de campo, retención 12 meses y registro de consultas. La visibilidad de flota es operativa y no se desliza a control de jornada (D1, objeción sindical L577).
   \item \textbf{Medios de pago electrónicos.} El PAN no se almacena: tokenización en la pasarela; el terminal POS es PCI PTS 7.x.
   \item \textbf{RUT de clientes en bases y registros.} Pseudonimización mediante cifrado a nivel de campo (pgcrypto con clave en KMS).
 \end{itemize}
 
-Gestión de secretos. Los secretos de integración (credenciales del ERP, certificados AS2/EDI, credenciales del SII y de Transbank) se administran en AWS Secrets Manager y SSM Parameter Store, con rotación automática y consumo desde los nodos on-premise por VPC Endpoint saliente, coherente con el principio 4. Prohibición absoluta de secretos embebidos en código, imágenes o archivos de configuración (Art. 21.4).
+Gestión de secretos. Los secretos de integración (credenciales del ERP, certificados AS2/EDI, credenciales del SII y de Transbank) se administran en AWS Secrets Manager y SSM Parameter Store, con rotación automática y consumo desde los nodos on-premise por VPC Endpoint saliente, coherente con el principio 4. Prohibición absoluta de secretos embebidos en código, imágenes o archivos de configuración.
 
-Gestor de secretos: servicio administrado, no componente autoalojado. La decisión está fundada en el ADR-15 y su emplazamiento es el componente N-12 de la tabla de emplazamiento. Se descartó un gestor autoalojado on-premise porque habría exigido una máquina virtual adicional en Talca con su alta disponibilidad, respaldo, procedimiento de sellado y licencia, sumando superficie de administración a un equipo de cuatro personas sin beneficio funcional frente al servicio administrado (Art. 16.3). Todo componente de seguridad de esta arquitectura tiene emplazamiento declarado, como exige el Art. 16.2.
+Gestor de secretos: servicio administrado, no componente autoalojado. La decisión está fundada en el ADR-15 y su emplazamiento es el componente N-12 de la tabla de emplazamiento. Se descartó un gestor autoalojado on-premise porque habría exigido una máquina virtual adicional en Talca con su alta disponibilidad, respaldo, procedimiento de sellado y licencia, sumando superficie de administración a un equipo de cuatro personas sin beneficio funcional frente al servicio administrado. Todo componente de seguridad de esta arquitectura tiene emplazamiento declarado.
 
-\section{Clasificación de la información y controles por nivel (RT-11.03)}
+\section{Clasificación de la información y controles por nivel}
 \label{sub:6-clasificacion-de-la-informacion-y-contro}
+
+La clasificación de la información y los controles por nivel se detallan en la Tabla~\ref{tab:t53}:
 
 \begin{tablalafrox}{Clasificación de la información y controles por nivel (RT-11.03)}{tab:t53}%
   {G{0.17} Y Y}%
@@ -236,7 +212,7 @@ Gestor de secretos: servicio administrado, no componente autoalojado. La decisi�
   Público & Catálogo público de productos sin precios (RT-16.30) & Sin controles de confidencialidad; sí integridad y disponibilidad \\
 \end{tablalafrox}
 
-\section{Detección, respuesta y evidencia (Art. 21.3 \textperiodcentered{} RT-11.14 a RT-11.21)}
+\section{Detección, respuesta y evidencia}
 \label{sub:7-deteccion-respuesta-y-evidencia-art-21-3}
 
 \begin{itemize}
@@ -253,26 +229,12 @@ Gestor de secretos: servicio administrado, no componente autoalojado. La decisi�
   \item \textbf{Simulacros con el CLIENTE.} Ejercicios de incidente conjuntos, coordinados con el simulacro semestral de recuperación ante desastres (Art. 20).
 \end{itemize}
 
-\section{Modelado de amenazas STRIDE (Art. 21.1 \textperiodcentered{} RT-11.02)}
+\section{Modelado de amenazas}
 \label{sub:8-modelado-de-amenazas-stride-art-21-1-rt-}
 
-Cada componente y cada integración externa modela sus amenazas antes de implementarse.
+Cada componente y cada integración externa modela sus amenazas STRIDE antes de implementarse. El modelado se ejecuta en la fase de diseño detallado de cada hito y se documenta como entregable de seguridad del proyecto, conforme a RT-11.02.
 
-\begin{tablalafrox}{Modelado de amenazas STRIDE (Art. 21.1 \textperiodcentered{} RT-11.02)}{tab:t55}%
-  {F{0.25} Y Y F{0.25}}%
-  {\cab{Componente o integración} & \cab{Amenazas STRIDE relevantes} & \cab{Mitigación diseñada} & \cab{Verificación}}
-  Apps de terreno (Kotlin, sin conexión) & Suplantación de usuario o dispositivo \textperiodcentered{} alteración de datos locales \textperiodcentered{} repudio de operaciones \textperiodcentered{} denegación por buffer sin control & PIN o biometría más MDM (subsección de gestión de dispositivos); cifrado local y buffer de escrituras inmutable; buffer acotado con monitoreo & Pruebas de seguridad de aplicación y revisión semestral \\
-  Puerta de enlace (API Gateway) & Suplantación de llamadas \textperiodcentered{} denegación de servicio & OIDC con PKCE, límites de tasa, WAF y CDN en el borde, limitación exponencial & Pruebas de carga y abuso en marcha blanca \\
-  API de negocio (Django, M1--M12) & Suplantación \textperiodcentered{} alteración \textperiodcentered{} divulgación \textperiodcentered{} elevación de privilegios & OAuth 2.1 y mTLS, ORM con validación de entrada, RBAC más ABAC, cifrado de datos sensibles & SAST y DAST en el pipeline \\
-  Colas y eventos (RabbitMQ, SQS, EventBridge) & Alteración de mensajes \textperiodcentered{} repudio & mTLS, firma de eventos, bitácora de reconciliación (Art. 16.4) & Pruebas de contrato y auditoría \\
-  Bases de datos (PostgreSQL, Aurora, Redshift, S3) & Divulgación \textperiodcentered{} alteración & KMS y cifrado en reposo, política de retención y eliminación, auditoría de acceso (RT-16.09) & Control de accesos y revisión de cifrado \\
-  ERP 2017, SII, Transbank, EDI/AS2 & Suplantación \textperiodcentered{} alteración de datos intercambiados \textperiodcentered{} repudio de transacciones & mTLS con certificados gestionados, capa anticorrupción, firmas y sumas de verificación en mensajes y exportaciones & Pruebas de falla por integración \\
-  Telemetría e IoT (Greengrass $\rightarrow$ DynamoDB) & Suplantación de sensores \textperiodcentered{} alteración de lecturas & Certificado X.509 por dispositivo, borde autenticado, series inmutables & Rol de dispositivo y revisión periódica \\
-  Portales de la DMZ (N-01, N-02, N-03) & Suplantación de cliente externo \textperiodcentered{} abuso automatizado \textperiodcentered{} divulgación entre entidades & OIDC por rol, MFA y OTP, WAF con reglas propias, protección de bots, aislamiento estricto por entidad & Pentest previo a producción \\
-  Sala técnica y acceso físico & Acceso físico no autorizado \textperiodcentered{} sustracción de medios & Cuatro capas de acceso, biometría facial, esclusa con antipassback, CCTV $\geq$ 30 días, custodia de medios & Auditoría física y bitácora \\
-\end{tablalafrox}
-
-\section{Seguridad del ciclo de desarrollo (Art. 21.4 \textperiodcentered{} RT-11.22 a RT-11.27)}
+\section{Seguridad del ciclo de desarrollo}
 \label{sub:9-seguridad-del-ciclo-de-desarrollo-art-21}
 
 \begin{itemize}
@@ -284,7 +246,7 @@ Cada componente y cada integración externa modela sus amenazas antes de impleme
   \item \textbf{Acceso a producción.} Sin acceso interactivo: los despliegues son exclusivamente por pipeline; la excepción es just-in-time con MFA, aprobación y grabación de sesión.
 \end{itemize}
 
-\section{Datos personales, residencia y transferencia internacional (Art. 23 \textperiodcentered{} Ley 21.719)}
+\section{Datos personales, residencia y transferencia internacional}
 \label{sub:10-datos-personales-residencia-y-transfere}
 
 \begin{itemize}
@@ -304,115 +266,40 @@ Cada componente y cada integración externa modela sus amenazas antes de impleme
 
 Dos de los resguardos de esta tabla son decisiones de diseño y no solo cláusulas contractuales, y se propagan a la sección de arquitectura de despliegue de este capítulo y a la arquitectura lógica (Subdocumento 4.1): la minimización, por la que la región secundaria sostiene continuidad y no se explota analíticamente, y la exclusión de los datos de geolocalización de personas de la replicación transfronteriza. La decisión (d) tiene además un fundamento del caso: la geolocalización de personas es el dato con la objeción sindical explícita (Restricción no negociable N\textdegree{} 10, Cap. 10 del caso) y con la retención más corta (12 meses); mantenerlo en una sola jurisdicción reduce la superficie legal sin afectar la continuidad, porque no es un dato necesario para reanudar la operación.
 
-\subsection{Protocolo ARCOP --- derechos de los titulares (Ley 21.719)}
+\subsection{Derechos de los titulares, política de privacidad y EIPD}
 
-Declaración de cumplimiento de los derechos de los titulares sobre los datos personales tratados por la solución:
+\textbf{Derechos ARCOP (Ley 21.719).} Acceso, rectificación, supresión, oposición, portabilidad y bloqueo temporal; canal único (correo dedicado + formulario web), plazo de 30 días prorrogable una vez (Art. 11); contraparte: Encargado de Seguridad (BA Art. 27\textdegree{}); bitácora de solicitudes auditada.
 
-\begin{itemize}
-  \item \textbf{Derechos cubiertos:} acceso, rectificación, cancelación (supresión), oposición, portabilidad y bloqueo temporal. Instrumentación: acceso y portabilidad vía exportabilidad (RT-05.06, formato abierto CSV/JSON con diccionario, según la lógica del modelo de datos del Subdocumento 4.1); rectificación y supresión vía ciclo de vida de datos (RT-05.07/05.08) con trazabilidad de cada cambio; bloqueo temporal conforme a la ley en caso de impugnación del titular.
-  \item \textbf{Canal único:} correo dedicado y formulario web con acuse de recibo, publicados en la política de privacidad (subsección de política de privacidad). Ningún otro canal inicia el plazo de respuesta.
-  \item \textbf{Plazo:} respuesta en 30 días corridos, prorrogables una sola vez por 30 más, con aviso al titular (Art. 11 de la Ley 21.719).
-  \item \textbf{Verificación de identidad:} autenticación del titular o su representante (documento de identidad / poder), proporcional al riesgo del dato (reforzada para geolocalización y datos sensibles); registro de cada verificación.
-  \item \textbf{Contraparte responsable (BA Art. 27\textdegree{}):} el Encargado de Seguridad de la Información coordina la recepción y respuesta de solicitudes y su registro; es la contraparte única e identificable ante los titulares y ante el CLIENTE.
-  \item \textbf{Registro:} bitácora de solicitudes ARCOP (qué derecho, quién, cuándo, resolución y plazo real), conservada conforme a la retención de auditoría (subsección de datos personales) y disponible para la Agencia de Protección de Datos Personales.
-\end{itemize}
+\textbf{Política de privacidad.} Aviso informativo a titulares (clientes y trabajadores) con: responsable (Distribuidora Puelche S.A.), datos tratados por categoría, finalidades, base de licitud por tratamiento, destinatarios y transferencias (Art. 23), retención por categoría y derechos. Versión preliminar anexada al Informe 1.
 
-\subsection{Política de Privacidad --- versión preliminar (aviso al titular, Ley 21.719)}
+\textbf{EIPD (BA Art. 27\textdegree{}).} Evaluación de impacto obligatoria por tratamiento masivo (14.200 clientes) y monitoreo sistemático (GPS de \textasciitilde{}260 trabajadores). Versión final antes de producción, revisión anual.
 
-Documento de referencia del aviso informativo a titulares (clientes y trabajadores); versión preliminar anexable al Informe 1:
-
-\begin{itemize}
-  \item \textbf{Responsable:} Distribuidora Puelche S.A. (CLIENTE), con el proponente como encargado del tratamiento (cláusulas de tratamiento de datos, BA). Residencia primaria: Chile y AWS sa-east-1.
-  \item \textbf{Datos tratados:} identificación y contacto de clientes (14.200 puntos, mayoría personas naturales); comportamiento de pago e historial crediticio del canal tradicional; datos laborales de trabajadores; geolocalización de preventistas (62) y conductores (\textasciitilde{}200) con finalidad exclusivamente operativa (rutas, verificación de entrega, costo de servir) --- sin control de jornada ni cámaras en cabina (Decisión N\textdegree{} 13 del registro; objeción sindical: Restricción no negociable N\textdegree{} 10 del Cap. 10 del caso).
-  \item \textbf{Finalidades:} operación comercial y logística (preventa, reparto, facturación), trazabilidad sanitaria obligatoria (D.S. 977/96), seguridad de la información y continuidad (DR/DRP), cumplimiento normativo.
-  \item \textbf{Base de licitud:} por tratamiento, según la tabla de la subsección de base de licitud (Art. 12/13 de la Ley 21.719): geolocalización de trabajadores por ejecución del contrato de trabajo e interés legítimo del empleador (no consentimiento, por desequilibrio; test de proporcionalidad en la subsección de base de licitud); clientes por ejecución de contrato e interés legítimo; obligaciones legales (DTE, trazabilidad sanitaria) por obligación legal; conductores externos por consentimiento del titular. Donde aplique consentimiento, será expreso, informado, específico y revocable, con registro de la revocación.
-  \item \textbf{Destinatarios y transferencias:} AWS (encargado, ISO/IEC 27018) y subencargados declarados (BA 73.4); transferencia internacional a us-east-1 solo bajo los resguardos del Art. 23 (subsección de datos personales); geolocalización de personas excluida de la replicación transfronteriza.
-  \item \textbf{Retención y eliminación:} por categoría (subsección de datos personales): geolocalización 12 meses; trazabilidad sanitaria 5 años; documentos tributarios 6 años; eliminación certificada al término del contrato (Art. 85 BA).
-  \item \textbf{Derechos del titular:} acceso, rectificación, supresión, oposición, portabilidad y bloqueo temporal; cómo ejercerlos en (subsección de protocolo ARCOP) (canal dedicado, plazo 30 + 30 días).
-  \item \textbf{Seguridad:} medidas declaradas en este documento --- cifrado a nivel de campo (RT-11.10), RBAC/ABAC, registro de consultas a datos sensibles (RT-16.09), Zero Trust (NIST SP 800-207).
-  \item \textbf{Brechas:} notificación al CLIENTE en $\leq$ 24 h (RT-11.19); el CLIENTE, como responsable, cumple la notificación ante la Agencia de Protección de Datos Personales y los titulares afectados.
-  \item \textbf{Portales de canal moderno (N-01/N-02/N-03) y cookies:} no se instrumentan cookies de terceros ni analítica de seguimiento; en caso de solicitarse, se implementará un banner de consentimiento de cookies conforme a la Ley 21.719 y un aviso específico del portal.
-\end{itemize}
-
-\subsection{Evaluación de Impacto sobre Protección de Datos (EIPD) --- alcance preliminar}
-
-\begin{itemize}
-  \item \textbf{Procedencia:} BA Art. 27\textdegree{} (evaluación de impacto "cuando corresponda") y Ley 21.719 (tratamientos de alto riesgo). El caso la gatilla: tratamiento masivo de datos personales (14.200 clientes) y monitoreo sistemático de personas (GPS de \textasciitilde{}260 trabajadores).
-  \item \textbf{Alcance (criterios):} finalidad, base de licitud, categorías (incluidas sensibles: geolocalización, comportamiento de pago), destinatarios, transferencias internacionales (us-east-1), retención por categoría, medidas de seguridad (subsección de datos personales) y riesgos para los titulares (vigilancia de trabajadores, acceso indebido a historial crediticio, exposición de geolocalización).
-  \item \textbf{Tratamientos incluidos:} preventa/reparto (geolocalización); gestión de crédito y cobranza (comportamiento de pago); trazabilidad sanitaria lote$\rightarrow$cliente (D.S. 977/96); POD (firma/foto); analítica y observabilidad con datos personales.
-  \item \textbf{Resultado comprometido:} EIPD según metodología reconocida (p.ej. ISO/IEC 29134 / CNIL PIA): documento de riesgos y controles y veredicto de proporcionalidad; versión final antes de la entrada en producción y actualización ante cualquier cambio de tratamiento.
-  \item \textbf{Entregable:} documento formal del proyecto, con versión preliminar anexada al Informe 1 y revisión anual durante la operación.
-\end{itemize}
-
-\subsection{Vigencia y seguimiento normativo}
-
-La Ley 21.719 entra en vigencia el 01-dic-2026 (Diario Oficial 13-dic-2024; vacancia de 2 años). El 31-ago-2026 el Gobierno ingresó el Boletín N\textdegree{} 18.623-07 (Mensaje N\textdegree{} 110-374, urgencia 01-sep-2026), que postergaría su entrada en vigencia al 01-dic-2027, aumenta a 5 los consejeros de la Agencia y amplía la primera amonestación a todos los responsables. Al cierre de esta versión es proyecto de ley, aún no publicado: mientras tanto rige el calendario 01-dic-2026. La propuesta es robusta a ambas fechas por diseño: se alinea contra el articulado completo ya publicado y la operación (contrato de 56 meses) cae dentro del régimen cualquiera sea la fecha; ninguno de los controles de esta subsección de datos personales depende de la fecha de vigencia.
+\textbf{Vigencia.} La Ley 21.719 rige desde el 01-dic-2026; un proyecto de ley (Boletín 18.623-07) postergaría la vigencia al 01-dic-2027. La propuesta es robusta a ambas fechas por diseño.
 
 \subsection{Base de licitud por tratamiento (Ley 21.719, Art. 12 y 13)}
 
-Cierre de la decisión de base de licitud. La regla general de la ley es el consentimiento (Art. 12), salvo que concurra alguna de las bases distintas al consentimiento (Art. 13): ejecución de contrato, obligación legal, interés vital o interés legítimo del responsable. Cada tratamiento del caso declara su base, su fundamento y sus garantías:
+Cada tratamiento declara su base de licitud conforme a los Art. 12 (consentimiento) y 13 (bases distintas) de la Ley 21.719, resumida en la Tabla~\ref{tab:t58}:
 
 \begin{tablalafrox}{Base de licitud por tratamiento (Ley 21.719, Art. 12 y 13)}{tab:t58}%
-  {F{0.20} F{0.14} F{0.20} Y}%
-  {\cab{Tratamiento} & \cab{Datos} & \cab{Base de licitud} & \cab{Fundamento y garantías}}
-  Geolocalización de trabajadores (62 preventistas + \textasciitilde{}200 conductores) & geolocalización (tratada como sensible por RT-11.10) & Ejecución del contrato de trabajo + interés legítimo del empleador (Art. 13) & No se usa consentimiento por desequilibrio empleador--trabajador. Minimización (D1): finalidad exclusivamente operativa, sin control de jornada ni cámaras en cabina (objeción sindical L577), retención 12 meses, cifrado a nivel de campo (RT-11.10), registro de consultas (RT-16.09), excluida de la réplica transfronteriza (subsección de datos personales). Test de proporcionalidad documentado e información previa a los trabajadores (aviso (subsección de política de privacidad)) \\
-  Comportamiento de pago e historial crediticio (canal tradicional) & financieros/comerciales & Ejecución de contrato (venta a crédito) + interés legítimo (gestión de riesgo crediticio) (Art. 13) & Datos derivados de la relación comercial (Decisión 16.1 N\textdegree{} 8/9); no requieren consentimiento para la operación de crédito; cifrado a nivel de campo y acceso restringido a crédito/cobranza (RBAC/ABAC) \\
-  Datos laborales de trabajadores (RUT, cuenta, perfil) & recursos humanos & Cumplimiento de obligación legal + ejecución del contrato de trabajo & Cláusula de protección de datos en contratos de trabajo (Art. 154 bis Código del Trabajo); acceso restringido a RRHH; retención según la ley \\
-  Clientes --- identificación y contacto (preventa, DTE, portal canal moderno) & básicos de identificación & Ejecución de contrato + cumplimiento de obligación legal (DTE/SII) & Necesarios a la preventa, facturación y autoservicio; no se usan para marketing sin consentimiento del titular \\
-  POD --- firma/foto de entrega & imagen/firma & Ejecución de contrato (evidencia de entrega) (Art. 13) & Retención 6 años; acceso acotado a operación y reclamos; minimización (un solo fin) \\
-  Conductores externos (\textasciitilde{}160, personal de terceros) & identificación, OTP, geolocalización si aplica & Consentimiento del titular vinculado a la relación contractual con la empresa de transporte (Art. 12) & Personal que no es trabajador del CLIENTE; datos mínimos y OTP sin cuenta corporativa (RF-06.08); los terminales TC58e son del parque único; borrado al término de la operación (Art. 85 BA) \\
-  Videovigilancia on-premise (CCTV, seguridad física y sala técnica de Sala de Servidores v02) & imágenes & Interés legítimo (seguridad de las instalaciones) + obligación de seguridad física RT-06.24 & Aviso de videovigilancia a personal y visitantes en el sitio; retención $\geq$ 30 días; acceso restringido y auditado \\
+  {F{0.22} F{0.18} Y}%
+  {\cab{Tratamiento} & \cab{Base de licitud} & \cab{Garantías clave}}
+  Geolocalización de trabajadores (262) & Ejecución contrato + interés legítimo (Art. 13) & No consentimiento (desequilibrio); finalidad operativa, sin control de jornada (L577); cifrado de campo, retención 12 m, excluida de réplica transfronteriza \\
+  Comportamiento de pago / crédito & Ejecución contrato + interés legítimo & Cifrado de campo; acceso restringido a crédito/cobranza \\
+  Datos laborales & Obligación legal + ejecución contrato & Art. 154 bis CT; acceso restringido a RRHH \\
+  Clientes (preventa, DTE, portal) & Ejecución contrato + obligación legal & Sin marketing sin consentimiento \\
+  POD (firma/foto) & Ejecución contrato & Retención 6 años; acceso acotado \\
+  Conductores externos (\textasciitilde{}160) & Consentimiento del titular (Art. 12) & Datos mínimos + OTP; borrado al término (Art. 85 BA) \\
+  CCTV on-premise & Interés legítimo + RT-06.24 & Aviso en sitio; retención $\geq$ 30 días \\
 \end{tablalafrox}
 
-Garantías transversales de esta tabla:
+Garantías transversales: RAT como entregable del proyecto (ISO 5.31/5.34); geolocalización y comportamiento de pago tratados como sensibles (cifrado de campo + registro de consultas); consentimiento expreso, informado y revocable donde aplique; eliminación certificada al término del contrato (Art. 85 BA).
 
-\begin{itemize}
-  \item \textbf{RAT (registro de actividades de tratamiento):} entregable del proyecto; cada fila se formaliza con finalidad, categorías, plazos, destinatarios y medidas (subsección de datos personales, control ISO 5.31/5.34).
-  \item \textbf{Sensibilidad:} geolocalización y comportamiento de pago se tratan como categorías sensibles que el caso identifica (RT-05.08/RT-11.10), con cifrado de campo y registro de consultas; la geolocalización se apoya en la excepción laboral/contractual de la ley, no en un consentimiento general.
-  \item \textbf{Consentimiento donde aplique (uso no contractual de clientes, conductores externos):} expreso, informado, específico y revocable, con registro de la revocación.
-  \item \textbf{Menores de edad:} la solución no trata datos de NNA; si un cliente resultara menor de 14 años, el consentimiento corresponderá a padres o representantes, y entre 14 y 18 al titular con asistencia, conforme la ley.
-  \item \textbf{Ciclo de vida:} eliminación certificada al término del contrato (Art. 85 BA) y retención por categoría (subsección de datos personales).
-\end{itemize}
-
-\section{Matriz de controles ISO/IEC 27001:2022 (RT-11.05)}
+\section{Controles ISO/IEC 27001:2022}
 \label{sub:11-matriz-de-controles-iso-iec-27001-2022-}
 
-Referencia única de controles para toda la solución, nube y on-premise. El dimensionamiento on-premise de la sección de dimensionamiento y plan de capacidad se apoya en esta matriz.
+La solución se alinea con 18 controles del Anexo A de ISO/IEC 27001:2022 que cubren: control de acceso e identidades (5.15--5.20), seguridad en nube e incidentes (5.23/5.24), cumplimiento legal y privacidad (5.31/5.34), respaldo y capacidad (7.10/7.11), redes y vulnerabilidades (7.12/8.8), autenticación segura (8.5), cifrado y enmascaramiento (8.11), registro y SIEM (8.15/8.16), desarrollo seguro (8.25/8.28) y separación de ambientes (8.31). Cada control se evidencia con su configuración, procedimiento o artefacto correspondiente, documentados en las subsecciones anteriores de este capítulo. El dimensionamiento on-premise se apoya en esta alineación.
 
-\begin{tablalafrox}{Matriz de controles ISO/IEC 27001:2022 (RT-11.05)}{tab:t59}%
-  {Y Y F{0.26}}%
-  {\cab{Control (Anexo A)} & \cab{Aplicación en Puelche} & \cab{Evidencia}}
-  5.7 Inteligencia de amenazas & Casos de uso del SIEM alimentados con contexto del sector logístico & Catálogo de detecciones \\
-  5.15 Control de acceso & RBAC más ABAC sobre los 11 actores canónicos (subsección de autorización) & Políticas de Keycloak y de la Capa 4 \\
-  5.16 Gestión de acceso privilegiado & PAM just-in-time y break-glass (subsección de accesos privilegiados) & Procedimiento escrito y sesiones grabadas \\
-  5.17 / 5.18 Autenticación y gestión de identidades & OIDC, OAuth 2.1, MFA, aprovisionamiento y baja $\leq$ 24 h (subsección de ciclo de vida de la identidad) & Keycloak y MDM \\
-  5.19 / 5.20 Relaciones con proveedores & OTP para conductores externos, aislamiento por proveedor (subsección de autorización) & Contratos y mecanismo OTP \\
-  5.23 / 5.24 Seguridad en la nube y gestión de incidentes & Multi-AZ, GuardDuty, WAF, IAM, KMS, IaC; plan de respuesta (subsección de detección y respuesta) & Configuración de cuentas y plan de incidentes \\
-  5.31 / 5.34 Cumplimiento legal y privacidad & Ley 21.719, Ley 19.799, residencia y transferencia (subsección de datos personales) &   Inventario de tratamientos, protocolo ARCOP y política de privacidad (subsección de protocolo ARCOP y subsección de política de privacidad) \\
-  6.8 Notificación de eventos de seguridad & Canal declarado y plazos de 2 h y 24 h (subsección de detección y respuesta) & Registro de notificaciones \\
-  7.10 / 7.11 Respaldo y capacidad & Aurora con PITR de 35 días, WAL on-premise, CDC; RPO 15 min y RTO 4 h & Simulacro semestral (Art. 20) \\
-  7.12 / 8.8 Redes y vulnerabilidades & Microsegmentación con mTLS, parches por Ansible, escaneo semanal (subsección de detección y respuesta) & Plan de parches e informes de escaneo \\
-  8.5 Autenticación segura & MFA, FIDO2 para administradores, PIN más posesión en terreno (subsección de federación y factores, subsección de autenticación de terreno) & Configuración del IdP \\
-  8.10 Eliminación de la información & Retención y eliminación certificada por categoría (subsección de datos personales) & Registro inalterable \\
-  8.11 Enmascaramiento de datos & Cifrado a nivel de campo de geolocalización y antecedentes comerciales (subsección de cifrado a nivel de campo) & Inventario de campos cifrados \\
-  8.15 / 8.16 Registro, monitoreo y SIEM & Registros inalterables y alertas por síntomas de negocio (subsección de detección y respuesta) & Capa 8 y correlación por transaction\_id \\
-  8.17 Sincronización de relojes & NTP en borde, on-premise y nube & Configuración y verificación \\
-  8.23 Auditoría de registros & Revisión periódica por el Encargado de Seguridad (RT-16.09) & Procedimiento de auditoría \\
-  8.25 / 8.28 Desarrollo seguro y codificación segura & SAST, DAST, SCA, SBOM, SLSA 3 (subsección de seguridad del ciclo de desarrollo) & Pipeline y repositorio \\
-  8.31 Separación de ambientes & Cinco cuentas AWS aisladas con SCP (RT-04.01) & Organización de cuentas \\
-\end{tablalafrox}
-
-\section{Seguridad física (BTT Cap. 6)}
+\section{Seguridad física}
 \label{sub:12-seguridad-fisica-btt-cap-6}
 
-Seguridad física del sitio principal, en complemento de las especificaciones del sitio principal de este capítulo:
-
-Cuatro capas de acceso hasta la sala blanca, con biometría facial (AFIS de respaldo) y esclusa con antipassback; acceso de a una persona con reverificación (RT-06.23).
-
-CCTV IP con retención $\geq$ 30 días y respaldo en medio secundario auditable, cubriendo cada puerta controlada (RT-06.24).
-
-Recinto de custodia de medios de 10 m\textsuperscript{2} con condiciones ambientales declaradas, e inventario con rotación y registro de todo movimiento (RT-06.26 a RT-06.28).
-
-Acceso de terceros (fabricantes, mantenedores, auditores) con acompañamiento obligatorio y registro (RT-06.25).
-
-Control de dispositivos extraíbles en los nodos on-premise y borrado seguro verificable de los medios que salen de servicio.
+Los controles de seguridad física (cuatro capas de acceso, biometría, CCTV $\geq$ 30 días, custodia de medios y control de acceso de terceros) se detallan en la sección del sitio principal de este subdocumento (RT-06.20 a RT-06.28). Se complementan con control de dispositivos extraíbles en los nodos on-premise y borrado seguro verificable de los medios que salen de servicio.

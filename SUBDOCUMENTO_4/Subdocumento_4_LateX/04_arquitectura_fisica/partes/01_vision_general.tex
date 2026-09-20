@@ -8,7 +8,7 @@
 \chapter{Visión general de la arquitectura física}
 \label{sec:vision-general-de-la-arquitectura-fisica}
 
-La arquitectura física materializa el despliegue híbrido obligatorio del Artículo 16\textdegree{} de las Bases Administrativas: la carga principal corre en nube pública AWS, con la región primaria en sa-east-1 (São Paulo, Brasil) y la recuperación ante desastres en us-east-1 (Norte de Virginia, EE. UU.); los componentes on-premise garantizan la continuidad de la operación de bodega, plataformas y terreno durante cortes del enlace.
+La arquitectura física materializa el despliegue híbrido obligatorio del Artículo 16\textdegree{} de las Bases Administrativas. La carga principal corre en nube pública AWS, con la región primaria en sa-east-1 (São Paulo, Brasil) y la recuperación ante desastres en us-east-1 (Norte de Virginia, EE. UU.). Los componentes on-premise garantizan la continuidad de la operación de bodega, plataformas y terreno durante cortes del enlace.
 
 La red de instalaciones de la solución son seis instalaciones en cuatro regiones, de las cuales cinco alojan cómputo ---el CD Talca (sala técnica principal), el CD Concepción (gabinete de borde) y las tres plataformas de cross-docking de Curicó, Chillán y Los Ángeles--- y la sexta es la casa matriz y oficinas centrales de Talca, contigua al CD principal, que no procesa operación logística y consume la nube a través del portal, el BI y el back office. El caso menciona \guillemotleft{}cinco instalaciones\guillemotright{} en un pasaje; prevalecen la Tabla 14.1 y las Bases Técnicas Transversales, y la divergencia se eleva como consulta al mandante (Art. 43.3) sin alterar el dimensionamiento. La proyección del caso a tres años incorpora una séptima instalación, absorbida por parametrización y por el gabinete de crecimiento de la sala (R04) sin obras adicionales.
 
@@ -16,11 +16,11 @@ Los principios que gobiernan el diseño son los siguientes:
 
 \begin{itemize}
   \item \textbf{Carga principal en nube.} el núcleo transaccional de preventa, reparto y canal moderno, la analítica, la integración y el almacenamiento consolidado se ejecutan en AWS sa-east-1, con escalado elástico para el peak de septiembre.
-  \item \textbf{Autonomía on-premise de primera clase.} cada centro de distribución opera su WMS, su base PostgreSQL local y su broker de colas por 24 horas sin enlace; el terreno de preventa y reparto opera la jornada completa (14 horas) sin señal, con la sesión de usuario sostenida por la caché local de identidad.
+  \item \textbf{Autonomía on-premise de primera clase.} la autonomía por sitio (24 h en CD, 14 h en terreno, 3 h en cross-docking) se detalla en la sección de operación desconectada de este subdocumento.
   \item \textbf{Cero indisponibilidad en la ventana crítica de despacho (05:30--07:00).} todas las decisiones de esa ventana son locales, sin dependencia de la observabilidad centralizada ni del enlace WAN.
-  \item \textbf{Autoridad única de identidad (ADR-06).} Keycloak IdP maestro en ECS/Fargate (nube) y cachés locales de solo lectura con TTL de 8 horas en VM-05 (Talca) y VM-C03 (Concepción); no existe maestro on-premise ni promoción local a escritura.
-  \item \textbf{Zero Trust de extremo a extremo (NIST SP 800-207).} sin conexiones entrantes a la red on-premise salvo dos excepciones controladas por la VPN (DMS$\rightarrow$PostgreSQL y celery-erp-sync$\rightarrow$ACL, D-AL-05); todo lo demás es tráfico iniciado desde adentro.
-  \item \textbf{Caminos WAN redundantes en tres tecnologías.} fibra + satelital Starlink + LTE por centro, con proveedores y medios distintos y conmutación automática en menos de 30 segundos.
+  \item \textbf{Autoridad única de identidad (ADR-06).} el modelo de identidad Keycloak se describe en la sección de seguridad de este subdocumento.
+  \item \textbf{Zero Trust de extremo a extremo (NIST SP 800-207).} sin conexiones entrantes a la red on-premise salvo las dos excepciones declaradas en la sección de seguridad (D-AL-05); todo lo demás es tráfico iniciado desde adentro.
+  \item \textbf{Caminos WAN redundantes en tres tecnologías.} fibra + satelital Starlink + LTE por centro, con conmutación automática (ver sección de despliegue WAN).
   \item \textbf{Respaldo único 3-2-1-0.} datos activos + copia local de recuperación rápida (NAS D-05) + pierna inmutable en la nube (S3 Object Lock / Backup Vault Lock) + réplica en región secundaria + cero errores de restauración, con pruebas semestrales.
 \end{itemize}
 

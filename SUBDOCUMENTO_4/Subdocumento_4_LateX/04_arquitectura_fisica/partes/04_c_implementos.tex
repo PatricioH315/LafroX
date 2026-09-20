@@ -13,17 +13,21 @@ El inventario ofertado se agrupa en infraestructura de cómputo y almacenamiento
 \section{Infraestructura de cómputo y almacenamiento}
 \label{sub:c-1-infraestructura-de-computo-y-almacenam}
 
+La infraestructura de cómputo y almacenamiento ofertada se detalla en la Tabla~\ref{tab:t23}:
+
 \begin{tablalafrox}{Infraestructura de cómputo y almacenamiento}{tab:t23}%
   {F{0.21} Y F{0.21} G{0.08} Y}%
   {\cab{Componente} & \cab{Producto ofertado} & \cab{Ubicación} & \cab{Cant.} & \cab{Justificación}}
   C1 --- Servidor hipervisor (clúster) & Dell PowerEdge R6615 / HPE DL325 Gen11 --- EPYC 9124 16c, 128 GB DDR5 ECC, RAID 1 SO + RAID 10 (4 $\times$ NVMe 1,92 TB + Hot-Spare), 2 $\times$ 10GbE, dual PSU 1+1 & CD Talca (Rack R01) & 3 & Cada nodo entrega el mismo cómputo y almacenamiento: N+1 según RT-08.03 y Ceph con discos NVMe en RAID 10 supera los IOPS del peak de septiembre. \\
   C2 --- NAS respaldo local & NAS/WORM local cifrado (LUKS/SED) --- copia rápida 3-2-1-0 & CD Talca (Rack R01) & 1 & Copia local de recuperación rápida: restauración del WMS en $\leq$ 4 h sin depender del enlace (RNF-20.06), complementando ---sin reemplazar--- la pierna inmutable en nube. \\
   C3 --- Servidor de borde Concepción & Dell R250 / HPE DL20 Gen11 --- Xeon E-2300 6c, 32 GB, RAID 10 (4 $\times$ NVMe 960 GB + Hot-Spare) & CD Concepción (gabinete) & 1 & Sostiene el WMS en modo reducido 24 h de operación autónoma (12 vCPU y 24 GB dimensionados para el volumen de Concepción), con doble fuente. \\
-  C4 --- Nodo de cómputo de cross-docking & Mini-PC industrial Advantech ARK-2250 / NUC Pro 12 --- i5/i7 12\textordfeminine{} gen, 16 GB, NVMe 512 GB, 4G Cat-12 LTE dual SIM & Curicó, Chillán, Los Ángeles & 3 & Opera en naves sin climatización certificada (hasta 60 \textdegree{}C en verano) y sin fibra (RT-03.17); enlace principal Starlink por ethernet con respaldo LTE dual de dos proveedores y conmutación automática en menos de 30 s. \\
+  C4 --- Nodo de cómputo de cross-docking & Mini-PC industrial Advantech ARK-2250 / NUC Pro 12 --- i5/i7 12\textordfeminine{} gen, 16 GB, NVMe 512 GB, 4G Cat-12 LTE dual SIM & Curicó, Chillán, Los Ángeles & 3 & Opera en naves sin climatización certificada (supuesto conservador de hasta 50 \textdegree{}C en verano bajo techumbre de zinc) y sin fibra (RT-03.17); enlace principal Starlink por ethernet con respaldo LTE dual de dos proveedores y conmutación automática en menos de 30 s. \\
 \end{tablalafrox}
 
 \section{Red y seguridad}
 \label{sub:c-2-red-y-seguridad}
+
+Los componentes de red y seguridad ofertados se detallan en la Tabla~\ref{tab:t24}:
 
 \begin{tablalafrox}{Red y seguridad}{tab:t24}%
   {F{0.19} F{0.19} F{0.19} F{0.16} Y}%
@@ -44,6 +48,8 @@ El inventario ofertado se agrupa en infraestructura de cómputo y almacenamiento
 \section{Dispositivos de terreno y operación}
 \label{sub:c-3-dispositivos-de-terreno-y-operacion}
 
+Los dispositivos de terreno y operación ofertados se detallan en la Tabla~\ref{tab:t25}:
+
 \begin{tablalafrox}{Dispositivos de terreno y operación}{tab:t25}%
   {F{0.19} F{0.19} F{0.19} F{0.16} Y}%
   {\cab{Componente} & \cab{Producto ofertado} & \cab{Ubicación} & \cab{Cant.} & \cab{Justificación}}
@@ -55,16 +61,18 @@ El inventario ofertado se agrupa en infraestructura de cómputo y almacenamiento
   C21 --- Impresora térmica andén & Zebra ZT411 (203 dpi, 14 ips, Ethernet, ZPL) & Talca (4: 2 recepción + 2 despacho) \textperiodcentered{} Concepción (2) & 6 & Etiquetas SSCC GS1-128 impresas en el andén al armar la unidad logística (RF-01.07), con resolución garantizada a lo largo de la cadena (RT-05.23). \\
   C22 --- Balanza recepción & Dibal BEV (plataforma ME + DMI-610 Inox, doble RS-232/Ethernet) & Talca (2) \textperiodcentered{} Concepción (1) & 3 & Captura en línea del peso de recepción hacia el WMS (RF-01.01), sin digitación manual, con grado industrial y calibración certificada. \\
   C23 --- Escáner GS1 cross-dock & Zebra DS2208 (1D/2D + GS1 DataBar, garantía 60 meses) & Curicó, Chillán, Los Ángeles & 6 (2 $\times$ plataforma) & Lectura de códigos GS1 de última generación en desconsolidación y re-despacho; dos unidades por plataforma cubren dos muelles simultáneos. \\
-  C24 --- Sensor IoT temperatura & Módulo Ebyte ME31-XDXX0400 (4 canales PT100, Modbus RTU/TCP, $-$40\dots{}+85 \textdegree{}C) + sondas 3 hilos --- 28 puntos & Talca, Concepción, cámaras, camiones & 7 módulos & 28 puntos de medición alimentan el registro continuo de cadena de frío; exactitud $\pm$1,1 \textdegree{}C a $-$22 \textdegree{}C distingue excursión térmica real de fluctuación del sensor. \\
+  C24 --- Sensor IoT temperatura & Módulo Ebyte ME31-XDXX0400 (4 canales PT100, Modbus RTU/TCP, $-$40\dots{}+85 \textdegree{}C) + sondas 3 hilos --- 28 puntos & Talca, Concepción, cámaras, camiones & 7 módulos & 28 puntos de medición alimentan el registro continuo de cadena de frío; exactitud $\pm$1,1 \textdegree{}C a $-$22 \textdegree{}C (valor calculado a partir del rango del sensor) distingue excursión térmica real de fluctuación del instrumento. \\
   C25 --- Termógrafo de camión & Onset InTemp CX450 (BLE, $-$30\dots{}+70 \textdegree{}C $\pm$0,5 \textdegree{}C, NIST 2 ptos) & Camiones con frío & 18 & Registrador independiente calibrado contra patrón NIST en dos puntos; el dato aterriza en el sistema por Bluetooth al volver al centro. \\
   C26 --- Estaciones de trabajo & PC i5/i7, 16 GB, SSD NVMe 512 cifrado + 2 $\times$ 24" (NCh 2527) & Talca (5) \textperiodcentered{} Concepción (3) & 8 & Puestos de despacho, administración, planificación, calidad y TI (RNF-23.04): disco cifrado gestionado desde el EDR y doble monitor (RT-08.08). \\
-  C27 --- Kit Starlink fijo (enlace satelital D-06) & Starlink Enterprise fijo (antena en techumbre + router) --- 1 TB (CDs) / 500 GB (cross-docks), 56 meses & CD Talca (respaldo) \textperiodcentered{} CD Concepción (respaldo) \textperiodcentered{} Curicó, Chillán, Los Ángeles (principal) & 5 & Tercer camino WAN en los CDs (fibra $\rightarrow$ satelital $\rightarrow$ LTE) cerrando la brecha de Concepción (RNF-13.07); enlace principal en los cross-docks para la ventana de 3 h, eliminando la dependencia exclusiva de red móvil (RT-08.13, RT-06.32); reposición de hardware 15 \% en 56 meses. \\
+  C27 --- Kit Starlink fijo (enlace satelital D-06) & Starlink Enterprise fijo (antena en techumbre + router) --- 1 TB (CDs) / 500 GB (cross-docks), 56 meses & CD Talca (respaldo) \textperiodcentered{} CD Concepción (respaldo) \textperiodcentered{} Curicó, Chillán, Los Ángeles (principal) & 5 & Tercer camino WAN en los CDs (fibra $\rightarrow$ satelital $\rightarrow$ LTE) cerrando la brecha de Concepción (RNF-13.07); enlace principal en los cross-docks para la ventana de 3 h, eliminando la dependencia exclusiva de red móvil (RT-08.13, RT-06.32); reposición de hardware estimada en 15 \% en 56 meses (supuesto conservador basado en la vida útil declarada por el fabricante). \\
 \end{tablalafrox}
 
 Gateway IoT + Greengrass (B-02): 2 unidades (Talca y Concepción), ADAM-6000, con runtime AWS IoT Greengrass Core embebido para detección de excursión y buffer local de 14 h.
 
 \section{Resumen del inventario ofertado}
 \label{sub:c-4-resumen-del-inventario-ofertado}
+
+El inventario ofertado se resume en la Tabla~\ref{tab:t26}:
 
 \begin{tablalafrox}{Resumen del inventario ofertado}{tab:t26}%
   {Y F{0.22}}%

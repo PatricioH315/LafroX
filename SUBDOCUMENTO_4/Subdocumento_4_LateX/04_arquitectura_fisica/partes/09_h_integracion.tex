@@ -10,7 +10,7 @@
 
 Registro único de las integraciones de la solución: servicios, contratos, mensajería, versionado y gobierno. El marco normativo de esta sección se resume en la tabla de apertura de esta parte y se cita código por código en cada subsección.
 
-Por qué la integración es una capa de primera clase en Puelche. El caso no describe un sistema legado único que reemplazar: describe un tejido de sistemas ---ERP de 2017 sin documentación de interfaces, WMS de 2013 con proveedor desaparecido, una preventa cuyo proveedor ya no existe, planillas y papel--- más 14.200 puntos de entrega, 10 empresas transportistas y un hito externo contractual (enero de 2029, condiciones comerciales de la principal cadena de supermercados). El riesgo de este proyecto no está en construir módulos: está en las costuras.
+El riesgo principal del caso está en las costuras entre sistemas legados sin documentación de interfaces, no en los módulos nuevos.
 
 \section{Principios de integración}
 \label{sub:1-principios-de-integracion}
@@ -40,12 +40,14 @@ En texto, la vista de integración se organiza en cuatro dominios con tráfico s
 
 El flujo del tráfico: el terreno llama a la puerta de enlace (API Gateway); los HHT y el WMS publican al broker (A-03); el cross-dock (E-01) publica sus eventos críticos directo a SQS FIFO y solo el detalle del mini-WMS viaja a Talca --- lo crítico no depende de Talca (D-AL-04); Greengrass envía por IoT Core; y la Capa 4 consume las colas y alcanza el ERP únicamente a través de la capa anticorrupción (A-04), con una sola puerta hacia el legado. Las flechas desde el dominio on-premise hacia la nube son todas salientes.
 
-\section{Catálogo de servicios de integración (RT-05.16 \textperiodcentered{} RT-05.21)}
+\section{Catálogo de servicios de integración}
 \label{sub:3-catalogo-de-servicios-de-integracion-rt-}
 
 El catálogo es el registro único de integraciones. Cada entrada tiene identificador estable, módulo dueño, contrato, versión y comportamiento ante falla. Vive versionado junto al código y se publica en el portal interno de desarrolladores servido por Amazon API Gateway (Capa 3).
 
 \subsection{Integraciones internas --- superficies y plano híbrido}
+
+Las integraciones internas se detallan en la Tabla~\ref{tab:t31}:
 
 \begin{tablalafrox}{Integraciones internas --- superficies y plano híbrido}{tab:t31}%
   {G{0.06} F{0.12} F{0.12} F{0.14} G{0.08} F{0.12} Y}%
@@ -62,6 +64,8 @@ El catálogo es el registro único de integraciones. Cada entrada tiene identifi
 
 \subsection{Integraciones externas --- plataforma y terceros}
 
+Las integraciones externas se detallan en la Tabla~\ref{tab:t32}:
+
 \begin{tablalafrox}{Integraciones externas --- plataforma y terceros}{tab:t32}%
   {G{0.05} F{0.11} F{0.11} F{0.13} F{0.12} F{0.11} Y}%
   {\cab{ID} & \cab{Sistema} & \cab{Modo} & \cab{Contrato / estándar} & \cab{Volumen} & \cab{Ventana crítica} & \cab{Comportamiento ante falla (RT-10.08)}}
@@ -75,9 +79,9 @@ El catálogo es el registro único de integraciones. Cada entrada tiene identifi
 \end{tablalafrox}
 
 \paragraph{Número de integraciones y volumen de mensajes por integración (numeral 14.2).}
-Se declaran 15 integraciones: 8 internas y 7 externas. El volumen se deriva de la volumetría del caso sobre 25 días hábiles al mes, con el peak de septiembre al doble:
+Se declaran 15 integraciones: 8 internas y 7 externas. El volumen se deriva de la volumetría del caso sobre 25 días hábiles al mes, con el peak de septiembre al doble, y se desglosa en la Tabla~\ref{tab:t33}:
 
-\begin{tablalafrox}{Volumen de mensajes por integración, derivado de la volumetría del caso}{tab:mensajes-integracion}%
+\begin{tablalafrox}{Volumen de mensajes por integración, derivado de la volumetría del caso}{tab:t33}%
   {F{0.26} F{0.26} F{0.21} Y}%
   {\cab{Integración} & \cab{Volumen en régimen} & \cab{Peak septiembre} & \cab{Derivación}}
   Capa anticorrupción del ERP (asíncrona) & $\approx$ 4.700 mensajes/día & $\approx$ 9.400 & 1.240 pedidos + 46 recepciones + 1.400 preparaciones + 1.400 evidencias de entrega + $\approx$ 600 recaudaciones \\
@@ -94,7 +98,7 @@ Se declaran 15 integraciones: 8 internas y 7 externas. El volumen se deriva de l
 
 El total en régimen es de $\approx$ 150.000 mensajes al día, dominado por las dos series de tiempo ---trazabilidad y telemetría--- que por diseño no atraviesan la base transaccional: entran por el borde y se consolidan en la capa analítica (ADR-04). Las cinco integraciones restantes del catálogo son de configuración y administración, con volumen despreciable frente a estas cifras.
 
-\section{Contratos (RT-05.16 \textperiodcentered{} RT-05.18 \textperiodcentered{} Art. 23)}
+\section{Contratos de integración}
 \label{sub:4-contratos-rt-05-16-rt-05-18-art-23}
 
 Los contratos se declaran por dimensión:
@@ -109,7 +113,7 @@ Los contratos se declaran por dimensión:
 
 \subsection{Eventos canónicos del dominio}
 
-Los eventos son el vocabulario del sistema. Se nombran en pasado, son inmutables y llevan event\_id (UUID), occurred\_at, site\_id y transaction\_id.
+Los eventos son el vocabulario del sistema. Se nombran en pasado, son inmutables y llevan event\_id (UUID), occurred\_at, site\_id y transaction\_id. El catálogo de eventos canónicos del dominio se presenta en la Tabla~\ref{tab:t34}:
 
 \begin{tablalafrox}{Eventos canónicos del dominio}{tab:t34}%
   {F{0.18} G{0.09} F{0.18} F{0.17} Y}%
@@ -126,8 +130,10 @@ Los eventos son el vocabulario del sistema. Se nombran en pasado, son inmutables
   DesviacionDeRutaDetectada & M12 & M10, M9 & ruta\_id & Costo de servir; no control de jornada (D1) \\
 \end{tablalafrox}
 
-\section{Mensajería (RT-02.06 \textperiodcentered{} RT-02.07 \textperiodcentered{} ADR-05)}
+\section{Mensajería (ADR-05)}
 \label{sub:5-mensajeria-rt-02-06-rt-02-07-adr-05}
+
+Los planos de mensajería y su emplazamiento se describen en la Tabla~\ref{tab:t35}:
 
 \begin{tablalafrox}{Mensajería (RT-02.06 \textperiodcentered{} RT-02.07 \textperiodcentered{} ADR-05)}{tab:t35}%
   {F{0.24} F{0.24} F{0.24} Y}%
@@ -144,14 +150,14 @@ Garantías declaradas:
   \item \textbf{Entrega al menos una vez}, con deduplicación en el consumidor. No se promete entrega exactamente una vez: se promete idempotencia verificable.
   \item \textbf{Orden por partición, no orden global.} La partición es el sitio o la entidad de negocio, según el evento.
   \item \textbf{DLQ por cola} con retención declarada, monitoreada por el equipo de operación y con bandeja de excepciones cuando el mensaje afecta a un tercero (EDI, DTE).
-  \item \textbf{Reintento con retroceso exponencial y variación aleatoria}; cortacircuitos sobre ERP, SII y Transbank; mamparos por integración: un fallo del ERP no degrada la preventa.
+  \item \textbf{Reintento con retroceso exponencial y variación aleatoria}; cortacircuitos sobre ERP, SII y Transbank; mamparos (aislamiento de fallos entre componentes) por integración: un fallo del ERP no degrada la preventa.
   \item \textbf{Reconciliación determinista:} al reconectar, el conflicto de stock se resuelve por la regla de reserva declarada, nunca por marca de tiempo, y la decisión queda en la bitácora del Art. 16.4.
 \end{itemize}
 
 \section{Costuras híbridas --- amarre con la arquitectura física}
 \label{sub:6-costuras-hibridas-amarre-con-la-arquitec}
 
-La vista de integración y la vista física describen los mismos puntos de contacto. Esta tabla es el amarre entre ambas y se lee junto a la subsección de costuras híbridas de este mismo Subdocumento.
+La vista de integración y la vista física describen los mismos puntos de contacto y se amarran en la Tabla~\ref{tab:t36}, que se lee junto a la subsección de costuras híbridas de este mismo Subdocumento.
 
 \begin{tablalafrox}{Costuras híbridas --- amarre con la arquitectura física}{tab:t36}%
   {Y F{0.24} F{0.24} F{0.24}}%
@@ -170,7 +176,7 @@ La vista de integración y la vista física describen los mismos puntos de conta
   C16 --- Pago Transbank & INT-09 & API de la pasarela & Módulo integraciones $\leftrightarrow$ Webpay \\
 \end{tablalafrox}
 
-\section{Capa anticorrupción y estrangulamiento del legado (RT-05.20 \textperiodcentered{} RT-02.14 \textperiodcentered{} ADR-08 \textperiodcentered{} ADR-11)}
+\section{Capa anticorrupción y estrangulamiento del legado}
 \label{sub:7-capa-anticorrupcion-y-estrangulamiento-d}
 
 Frontera única del ERP (A-04). El ERP de 2017 no tiene documentación de interfaces. En vez de descubrir su forma real dentro de cada módulo, se levanta una sola frontera: la ACL expone hacia adentro un contrato OpenAPI 3.1 propio de Puelche y absorbe hacia afuera la forma del ERP. Consecuencias:
@@ -185,35 +191,14 @@ Estrangulamiento del WMS de 2013 (ADR-08). El WMS se reemplaza en la Etapa 1 por
 
 Hub EDI GS1 (ADR-11). Una cadena nueva se incorpora por configuración de perfil (equivalencias GTIN por cadena, RF-12.03), no por desarrollo. El hub mapea cada cadena contra un modelo canónico GS1, no contra el ERP: es exactamente lo que evita construir una integración distinta por cada cadena (Cap. 17.4, punto 10 del caso).
 
-\section{Versionado y política de obsolescencia (RT-05.17 \textperiodcentered{} Art. 23)}
+\section{Versionado, gobierno y evolución}
 \label{sub:8-versionado-y-politica-de-obsolescencia-r}
 
-La política de versionado y obsolescencia se declara en siete reglas:
+Versionado semántico estricto (major/minor/patch) con evolución aditiva, preaviso mínimo de 6 meses antes de retirar una versión (RT-05.17) y doble versión concurrente durante migración. Los cambios disruptivos (major) requieren aprobación del Comité de Arquitectura. No se publica ni retira versiones en septiembre, diciembre ni los tres primeros días hábiles del mes (Cap. 13.2). Las especificaciones de cadenas de supermercados y del SII se versionan como perfiles del hub EDI.
 
-\begin{itemize}
-  \item \textbf{Versionado semántico estricto.} major.minor.patch. major = cambio disruptivo; minor = aditivo y retro-compatible; patch = corrección.
-  \item \textbf{Evolución aditiva primero.} Un campo se agrega, nunca cambia de significado. Un campo que deja de usarse se marca deprecated antes de retirarse.
-  \item \textbf{Preaviso mínimo de 6 meses.} Ninguna versión se retira antes de seis meses de aviso formal (Art. 23 y RT-05.17). El registro de deprecaciones es visible para todo el equipo y para el CLIENTE.
-  \item \textbf{Doble versión concurrente.} Durante la migración conviven v\{n\} y v\{n+1\}; el consumidor migra en su ventana, no en la del proveedor.
-  \item \textbf{Aprobación de cambios disruptivos.} Un major requiere aprobación del Comité de Arquitectura y plan de migración con los consumidores identificados uno a uno.
-  \item \textbf{Congelamientos del caso.} No se publica ni se retira ninguna versión en septiembre, en diciembre ni en los tres primeros días hábiles del mes (Cap. 13.2 del caso).
-  \item \textbf{Contratos que no controla el proponente.} Las especificaciones de cada cadena de supermercados y del SII las fija la contraparte: se versionan como perfiles del hub y se prueban contra el banco de pruebas de cada contraparte antes de activarse.
-\end{itemize}
+Gobierno: catálogo único versionado (toda integración con dueño, contrato, versión y comportamiento ante falla); pruebas de contrato en el pipeline (un cambio que rompe a un consumidor bloquea el despliegue); observabilidad por integración (latencia, error, DLQ, correlación por transaction\_id); y bandeja de excepciones de negocio para lo que afecta a terceros (EDI, DTE --- RF-12.05/12.06). El catálogo, las guías de resolución y la bandeja son los artefactos que hacen operable esta capa por el equipo de 4 personas del CLIENTE.
 
-\section{Gobierno de la capa de integración (Art. 19 \textperiodcentered{} RT-05.16 \textperiodcentered{} Cap. 14 BTT)}
-\label{sub:9-gobierno-de-la-capa-de-integracion-art-1}
-
-\begin{itemize}
-  \item \textbf{Catálogo único versionado} (Arquitecto de Solución). Toda integración vive en el catálogo con dueño, contrato, versión, estado y comportamiento ante falla. Lo que no está en el catálogo no se despliega.
-  \item \textbf{Comité de Arquitectura} (Arquitecto de Solución, Jefe de Proyecto y Jefe de TI del CLIENTE). Aprueba altas de integración y cambios major, con cadencia declarada en el plan de gobierno del proyecto.
-  \item \textbf{Pruebas de contrato consumidor-proveedor} (Líder de Desarrollo y Líder de Calidad). Cada integración tiene pruebas de contrato en el pipeline; un cambio que rompe a un consumidor registrado bloquea el despliegue de forma automática.
-  \item \textbf{Pruebas de falla por integración} (Líder de Calidad y Líder de Operación). Inyección de fallas (RT-10.07) por integración durante la marcha blanca: se verifica que el comportamiento declarado en el catálogo sea el comportamiento real.
-  \item \textbf{Observabilidad por integración} (Líder de Operación / SRE). Latencia, tasa de error, volumen y profundidad de DLQ por integración, correlacionados por transaction\_id (Capa 8). Toda DLQ tiene dueño y alerta.
-  \item \textbf{Bandeja de excepciones de negocio} (Jefe de TI y responsable del canal moderno). Lo que falla y afecta a un tercero (EDI, DTE) no muere en una cola técnica: aparece en una bandeja operada por un actor canónico con responsabilidad declarada (RF-12.05/12.06).
-  \item \textbf{Traspaso al equipo de cuatro personas} (Líder de Implantación y Gestión del Cambio). El CLIENTE opera con 4 personas de TI. El catálogo, las guías de resolución y la bandeja de excepciones son los artefactos que hacen operable esta capa sin el proponente.
-\end{itemize}
-
-\section{Carga y descarga masiva de datos (RT-05.22)}
+\section{Carga y descarga masiva de datos}
 \label{sub:10-carga-y-descarga-masiva-de-datos-rt-05-}
 
 \begin{itemize}
@@ -225,7 +210,7 @@ La política de versionado y obsolescencia se declara en siete reglas:
 
 Regla: ninguna carga masiva se ejecuta dentro de la ventana crítica 05:30--07:00, y toda carga queda registrada y es auditable.
 
-\section{Funciones que no operan sin conexión (RT-03.13)}
+\section{Funciones que no operan sin conexión}
 \label{sub:11-funciones-que-no-operan-sin-conexion-rt}
 
 La declaración formal de funciones no disponibles en modo desconectado que exige RT-03.13 se detalla por componente en la tabla de emplazamiento de esta parte y se resume en la arquitectura lógica (Subdocumento 4.1). Desde la vista de integración la regla es una sola:
