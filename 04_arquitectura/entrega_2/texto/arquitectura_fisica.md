@@ -16,7 +16,7 @@ Cuatro decisiones estructurales se desprenden de ahí y se desarrollan en las se
 - Cada sitio dispone de tres caminos de comunicación de tecnologías y proveedores distintos —fibra, satelital y red móvil— con conmutación automática en menos de treinta segundos.
 - El respaldo es uno solo para los dos dominios: copia local de recuperación rápida, copia inmutable en la nube, réplica en la región secundaria y custodia física externa.
 
-La arquitectura se describe conforme a la norma ISO/IEC/IEEE 42010 sobre el marco TOGAF, y es coherente con la arquitectura lógica de la parte 4.1: las mismas capas, los mismos módulos y el mismo conjunto de tecnologías. La correspondencia entre cada requisito de las Bases y el lugar preciso de este capítulo donde se resuelve está en la última sección, Trazabilidad normativa; el pronunciamiento formal sobre la totalidad de los requisitos se entrega en el Formulario T-12.
+La arquitectura se describe conforme a la norma ISO/IEC/IEEE 42010 sobre el marco TOGAF, y es coherente con la arquitectura lógica de la parte 4.1: las mismas capas, los mismos módulos y el mismo conjunto de tecnologías. La correspondencia entre cada requisito de las Bases y el lugar preciso de este capítulo donde se resuelve consta en la planilla de trazabilidad normativa que acompaña a esta parte; el pronunciamiento formal sobre la totalidad de los requisitos se entrega en el Formulario T-12.
 
 
 ## Modelo de emplazamiento híbrido
@@ -140,21 +140,6 @@ Los componentes del sitio secundario se detallan a continuación:
 > **Tabla 28** — Especificaciones del sitio secundario y de la recuperación ante desastres · 5 filas · ver planilla del subdocumento
 
 
-## Niveles de servicio de infraestructura
-
-La infraestructura sostiene los niveles de disponibilidad del Capítulo 7 y el compromiso contractual del Artículo 78° (transacción de negocio crítica de extremo a extremo ≥ 99,9 %). La clasificación por servicio y su error budget son:
-
-- **Crítico (≥ 99,9 %).** transacción de terreno de extremo a extremo (pedido→entrega→POD) y WMS on-premise (picking/recepción), por detener preventa, reparto y facturación y por la ventana nocturna sin contingencia.
-
-- **Alto (≥ 99 %).** portal de clientes (stock, crédito, estado de cuenta) y telemetría IoT de cadena de frío en línea.
-
-- **Medio.** BI/analítica (reportes diferibles, latencia ≤ 4 h).
-
-- **Bajo.** notificaciones y comunicaciones (disponibles en colas).
-
-La cadena de disponibilidad queda declarada y medible en sus cuatro tramos —nube, sala técnica, borde operacional y terreno—: la infraestructura del recinto se compromete en 99,95 % mensual por componente (numerales 6.1 y 7.2), la nube en la disponibilidad multizona del proveedor, el borde y el terreno en su autonomía declarada (24 h en el centro de distribución y 14 h en terreno). Sobre esa cadena, el único compromiso que se mide y se penaliza es el del Artículo 78°: ≥ 99,9 % mensual de la transacción de negocio crítica de extremo a extremo (menos de 8,76 h al año).
-
-
 ## Operación desconectada
 
 
@@ -202,22 +187,7 @@ El catálogo es el registro único de integraciones. Cada entrada tiene identifi
 
 > **Tabla 32** — 3.2 Integraciones externas — plataforma y terceros · 7 filas · ver planilla del subdocumento
 
-**Número de integraciones y volumen de mensajes por integración (numeral 14.2).** Se declaran 15 integraciones: 8 internas y 7 externas. El volumen se deriva de la volumetría del caso sobre 25 días hábiles al mes, con el peak de septiembre al doble:
-
-| Integración | Volumen en régimen | Peak septiembre | Derivación |
-|---|---|---|---|
-| Capa anticorrupción del ERP (asíncrona) | ≈ 4.700 mensajes/día | ≈ 9.400 | 1.240 pedidos + 46 recepciones + 1.400 preparaciones + 1.400 evidencias de entrega + ≈ 600 recaudaciones |
-| Documentos tributarios y acuse (SII, síncrona) | ≈ 2.700 mensajes/día | ≈ 5.400 | 34.000 documentos/mes más su acuse, sobre 25 días |
-| Eventos de trazabilidad GS1 EPCIS | ≈ 52.000 eventos/día | ≈ 104.000 | 260.000 líneas/mes × 5 eventos de ciclo, sobre 25 días |
-| Telemetría de cadena de frío (IoT Core) | ≈ 13.200 mensajes/día | sin variación | 46 fuentes (28 puntos de cámara + 18 termógrafos) × 1 muestra cada 5 min |
-| Telemetría de flota | ≈ 60.500 mensajes/día | ≈ 72.000 | 42 camiones propios × 1 posición cada 30 s durante 12 h de ruta |
-| Sincronización de terreno (colas de dispositivo) | ≈ 13.000 escrituras/día | ≈ 26.000 | 1.240 pedidos + 1.400 evidencias + 10.400 confirmaciones de preparación |
-| Intercambio electrónico con el canal moderno (Etapa 2) | ≈ 550 mensajes/día | ≈ 1.100 | 136 pedidos/día × 4 mensajes (pedido, confirmación, aviso de despacho, acuse) |
-| Notificaciones multicanal | ≈ 2.800 mensajes/día | ≈ 5.600 | hora estimada de llegada y acuse por entrega |
-| Autorización de pago (POS móvil) | ≈ 500 mensajes/día | ≈ 1.000 | fracción del canal tradicional que migra de efectivo a pago electrónico |
-| Servicio de mapas y geocodificación | ≈ 200 llamadas/día | ≈ 400 | una corrida de ruteo por zona más recálculos por incidencia |
-
-El total en régimen es de ≈ 150.000 mensajes al día, dominado por las dos series de tiempo —trazabilidad y telemetría— que por diseño no atraviesan la base transaccional: entran por el borde y se consolidan en la capa analítica (ADR-04). Las cinco integraciones restantes del catálogo son de configuración y administración, con volumen despreciable frente a estas cifras.
+Se declaran 15 integraciones: 8 internas y 7 externas, con un total en régimen de ≈ 150.000 mensajes al día dominado por las dos series de tiempo —trazabilidad y telemetría— que por diseño no atraviesan la base transaccional: entran por el borde y se consolidan en la capa analítica (ADR-04). El desglose por integración, con volumen en régimen, peak de septiembre y derivación, está en la sección de dimensionamiento de esta parte.
 
 
 ### Contratos
@@ -497,19 +467,6 @@ Gestor de secretos: servicio administrado, no componente autoalojado. La decisi�
 > **Tabla 54** — 7. Detección, respuesta y evidencia · 11 filas · ver planilla del subdocumento
 
 
-### Modelado de amenazas STRIDE
-
-Cada componente y cada integración externa modela sus amenazas antes de implementarse.
-
-
-> **Tabla 55** — 8. Modelado de amenazas STRIDE · 9 filas · ver planilla del subdocumento
-
-
-### Seguridad del ciclo de desarrollo
-
-
-> **Tabla 56** — 9. Seguridad del ciclo de desarrollo · 6 filas · ver planilla del subdocumento
-
 
 ### Datos personales, residencia y transferencia internacional
 
@@ -537,18 +494,13 @@ Cada tratamiento declara su base de licitud conforme a los Art. 12 (consentimien
 
 Garantías transversales: RAT como entregable del proyecto (ISO 5.31/5.34); geolocalización y comportamiento de pago tratados como sensibles (cifrado de campo + registro de consultas); consentimiento expreso, informado y revocable donde aplique; eliminación certificada al término del contrato (Art. 85 BA).
 
-### Controles ISO/IEC 27001:2022
-
-La solución se alinea con 18 controles del Anexo A de ISO/IEC 27001:2022 que cubren: control de acceso e identidades, seguridad en nube e incidentes, cumplimiento legal y privacidad, respaldo y capacidad, redes y vulnerabilidades, autenticación segura, cifrado y enmascaramiento, registro y SIEM, desarrollo seguro y separación de ambientes. Cada control se evidencia con su configuración, procedimiento o artefacto correspondiente, documentados en las subsecciones anteriores de este capítulo. El dimensionamiento on-premise se apoya en esta alineación.
-
-
 ### Seguridad física
 
 Los controles de seguridad física (cuatro capas de acceso, biometría, CCTV ≥ 30 días, custodia de medios y control de acceso de terceros) se detallan en la sección del sitio principal de este subdocumento.
 
 ## Arquitectura de despliegue
 
-Arquitectura de seguridad de la solución: modelo Zero Trust, capa expuesta, identidad y accesos, cifrado y controles. Es autocontenida: los valores que declara se sostienen en los componentes especificados en las secciones anteriores de este capítulo (modelo de emplazamiento, tecnologías ofertadas, implementos y sitios principal y secundario).
+Ambientes, redes, alta disponibilidad, recuperación ante desastres y respaldos. Es autocontenida: los valores que declara se sostienen en los componentes especificados en las secciones anteriores de este capítulo (modelo de emplazamiento, tecnologías ofertadas, implementos y sitios principal y secundario).
 
 
 ### Ambientes de despliegue
@@ -867,121 +819,14 @@ En nube, la revisión de costos del dimensionamiento elástico evalúa umbrales 
 
 ## Capa analítica: emplazamiento y dimensionamiento
 
-Complemento del apartado 6 — Emplazamiento y dimensionamiento de la capa analítica. La capa analítica no es una funcionalidad añadida por iniciativa de la propuesta: es un componente exigido por el numeral 5.4 de las Transversales (capa analítica separada de la transaccional, tableros operacionales y de gestión con filtros por período y unidad organizacional, desagregación hasta el hecho y latencia máxima declarada) y por el Capítulo 18 del caso, que fija OTIF, fill rate y costo de servir como criterios de aceptación. Este apartado declara con qué componentes se materializa, dónde se emplazan y cómo se garantiza que ninguna consulta analítica degrade la operación.
+La capa analítica es un componente exigido por el numeral 5.4 de las Transversales y por el Capítulo 18 del caso (OTIF, fill rate y costo de servir como criterios de aceptación). Desde la vista física, su emplazamiento y dimensionamiento son los siguientes:
 
-Alcance de lo que no se propone. Conforme a la decisión de diseño sobre analítica avanzada del registro de decisiones, la solución **no incorpora inteligencia artificial ni analítica predictiva** en el alcance contratado, y lo declara de forma fundada como permite el Capítulo 18 de las Transversales. La capa analítica se entrega preparada —lago de datos en formato columnar y almacén analítico— para incorporarlas cuando el CLIENTE alcance la madurez de datos que hoy no tiene: el caso parte de un 41 % de recepciones sin registro de lote y un 2,3 % de diferencia de inventario, y predecir sobre esa base produce confianza injustificada. El ruteo se resuelve con optimización determinística, auditable y corregible por el planificador, que es lo que pide el criterio de aceptación N° 7 del caso.
 
+> **Tabla 95** — Componentes del módulo BI · 9 filas · ver planilla del subdocumento
 
-### Fundamento normativo
+El desacople OLAP/OLTP se materializa con Redshift Serverless (OLAP) operando independiente de Aurora PostgreSQL (OLTP); DMS CDC extrae cambios de forma incremental y continua sin bloquear transacciones. Los indicadores se calculan como vistas materializadas en Redshift (refresco cada 5–15 min) y se cachean en ElastiCache Redis para tableros de alta concurrencia. Resultado: picking mantiene ≤ 1 s y preventa ≤ 1,5 s mientras los gerentes consultan tableros simultáneamente.
 
-
-#### Exigencias de las Bases Técnicas Transversales
-
-
-> **Tabla 89** — 2.1 Bases Técnicas Transversales (RT) · 5 filas · ver planilla del subdocumento
-
-El numeral 5.4 de las Transversales hace de la capa analítica un componente obligatorio y no una funcionalidad adicional: RT-05.25 a RT-05.28 son obligatorios y RT-05.29 fija la latencia máxima según el caso. La analítica predictiva de RT-05.30 es deseable y esta propuesta la declina de forma fundada, conforme a RT-18.01.
-
-
-#### Exigencias del Caso 02
-
-El caso define tres indicadores estratégicos que requieren procesamiento analítico continuo:
-
-
-> **Tabla 90** — 2.2 Caso 02 — Distribuidora Puelche S.A. · 3 filas · ver planilla del subdocumento
-
-Estos indicadores no pueden calcularse sin un componente de analítica que consolide datos transaccionales de múltiples módulos (preventa, transporte, cobranza, telemetría, bodega) y los presente de forma consumible por los gerentes.
-
-
-### Requerimientos que dependen de la capa analítica
-
-En total 25 requerimientos alimentan este módulo, todos fichados en el catálogo del Subdocumento 3: 10 propios de la Épica 11 (RF-11.01 a RF-11.08 + RNF-11.01 latencia ≤ 5 min + RNF-11.02 desacople OLAP/OLTP), 4 transversales (RF-16.02 tableros del CLIENTE, RF-16.03 alertas de negocio, RF-17.12 exportación, RNF-16.01 SLA P95) y 11 de otras épicas que producen o consumen datos analíticos (costos de ruta, cierre de turno, rendición, excursión térmica, envases, kilometraje, ocupación de zona y alerta de crédito).
-
-
-### Mapeo de requerimientos a componentes de arquitectura
-
-
-#### Componentes de la capa analítica
-
-El módulo de BI/Analítica se materializa en los siguientes componentes de la arquitectura:
-
-
-> **Tabla 95** — 4.1 Componentes del módulo BI · 9 filas · ver planilla del subdocumento
-
-
-#### Flujo de datos analíticos
-
-En texto, el flujo de datos analíticos es: fuentes transaccionales (Preventa App, Bodega WMS, Transporte GPS y Cobranza App) → motor transaccional Aurora PostgreSQL (Preventa, Inventario, Transporte y Cobranza, cada dominio OLTP) → DMS CDC (extracción continua e incremental) → motor analítico Redshift Serverless (dimensiones Tiempo, Cliente, Ruta, Producto, Vehículo y Zona; hechos fact_entregas, fact_costos y fact_inventario; vistas materializadas mv_otif_diario, mv_costo_servir, mv_fill_rate, mv_ocupacion_flota y mv_rentabilidad_cliente) → dos salidas: Tablero Gerencial (Grafana/Angular — RF-11.06 operacional, RF-16.02 para el cliente, RF-16.03 alertas) y Distribución por correo (SES + Celery Beat — informes semanal y mensual, RF-11.01).
-
-
-#### Desacople OLAP/OLTP
-
-Redshift Serverless (OLAP) opera independiente de Aurora PostgreSQL (OLTP); DMS CDC extrae cambios de forma incremental y continua sin bloquear transacciones. Los indicadores se calculan como vistas materializadas en Redshift (refresco cada 5–15 min) y se cachean en ElastiCache Redis para tableros de alta concurrencia. Resultado: picking mantiene ≤ 1s y preventa ≤ 1.5s mientras los gerentes consultan tableros simultáneamente.
-
-
-### Componente de costo de servir
-
-El cálculo del Costo de Servir (RF-11.02) es el requerimiento analítico más complejo del módulo, ya que consolida datos de 4 fuentes distintas:
-
-
-> **Tabla 96** — 5. Componente de Costo de Servir · 8 filas · ver planilla del subdocumento
-
-La fórmula de rentabilidad neta resultante (RF-11.08):
-
-Margen neto = Ingreso por venta − Costo de mercadería − Costo de servir real
-
-Donde el Costo de servir real = Σ(componentes anteriores) por cliente y por entrega.
-
-
-### Componente de alertas de negocio
-
-Las alertas por síntomas de negocio se distinguen de las alertas de infraestructura en que miden impacto al negocio, no estado de servidores:
-
-
-> **Tabla 97** — 6. Componente de Alertas de Negocio (RF-16.03) · 7 filas · ver planilla del subdocumento
-
-
-### Requerimientos de tableros
-
-Las Bases exigen tableros con las siguientes capacidades:
-
-
-> **Tabla 98** — 7. Requerimientos de tableros · 7 filas · ver planilla del subdocumento
-
-
-#### Tablero operacional
-
-
-> **Tabla 99** — 7.1 Tablero operacional (RF-11.06) · 5 filas · ver planilla del subdocumento
-
-
-#### Tablero gerencial
-
-Distribución automática de dos reportes ejecutivos: semanal (OTIF, Fill Rate, Costo de Servir por zona, devoluciones) y mensual (los anteriores más merma por vencimiento, rentabilidad por cliente y desglose por canal). Destinatarios configurables; distribución por correo vía SES + Celery Beat (PDF/XLSX).
-
-
-### Cumplimiento de Bases Administrativas
-
-
-> **Tabla 101** — 8. Cumplimiento de Bases Administrativas · 3 filas · ver planilla del subdocumento
-
-
-### Cobertura y cierre
-
-**Conteo por origen normativo.**
-
-
-> **Tabla 102** — 9.1 Conteo por origen · 4 filas · ver planilla del subdocumento
-
-
-**Conteo por tipo de requerimiento.**
-
-
-> **Tabla 103** — 9.2 Conteo por tipo de requerimiento · 3 filas · ver planilla del subdocumento
-
-
-En total, 25 requerimientos alimentan al módulo BI: 10 propios de la Épica 11 (8 RF + 2 RNF), 4 transversales (3 RF + 1 RNF) y 11 RF de otras épicas. Todos son trazables a su origen normativo.
-
+El dimensionamiento de la capa analítica en nube está incluido en la tabla de dimensionamiento nube de esta parte. La solución **no incorpora inteligencia artificial ni analítica predictiva** en el alcance contratado: el caso parte de un 41 % de recepciones sin registro de lote y predecir sobre esa base produce confianza injustificada. La capa se entrega preparada —lago de datos en formato columnar y almacén analítico— para incorporarlas cuando el CLIENTE alcance la madurez de datos necesaria.
 
 
 ## Registro de decisiones de arquitectura

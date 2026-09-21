@@ -229,23 +229,6 @@ La clasificación de la información y los controles por nivel se detallan en la
   \item \textbf{Simulacros con el CLIENTE.} Ejercicios de incidente conjuntos, coordinados con el simulacro semestral de recuperación ante desastres (Art. 20).
 \end{itemize}
 
-\section{Modelado de amenazas}
-\label{sub:8-modelado-de-amenazas-stride-art-21-1-rt-}
-
-Cada componente y cada integración externa modela sus amenazas STRIDE antes de implementarse. El modelado se ejecuta en la fase de diseño detallado de cada hito y se documenta como entregable de seguridad del proyecto, conforme a RT-11.02.
-
-\section{Seguridad del ciclo de desarrollo}
-\label{sub:9-seguridad-del-ciclo-de-desarrollo-art-21}
-
-\begin{itemize}
-  \item \textbf{Análisis en el pipeline.} SAST, análisis de composición de software, DAST y escaneo de imágenes de contenedor, con bloqueo automático del despliegue ante hallazgos críticos o altos.
-  \item \textbf{SBOM por versión.} Inventario de componentes en CycloneDX, generado en el pipeline y entregado al CLIENTE junto con cada versión liberada.
-  \item \textbf{Firma de artefactos y procedencia.} Imágenes OCI y SBOM firmados con Sigstore/cosign; construcción hermética con procedencia SLSA nivel 3, verificada antes de cada despliegue.
-  \item \textbf{Secretos.} Prohibición absoluta de credenciales embebidas; gestor de secretos con rotación automática (subsección de cifrado a nivel de campo).
-  \item \textbf{Datos no productivos.} Desarrollo, calidad y preproducción operan con datos sintéticos derivados de la volumetría del Cap. 14; las plantillas cercanas a producción pasan por anonimización o seudonimización verificable.
-  \item \textbf{Acceso a producción.} Sin acceso interactivo: los despliegues son exclusivamente por pipeline; la excepción es just-in-time con MFA, aprobación y grabación de sesión.
-\end{itemize}
-
 \section{Datos personales, residencia y transferencia internacional}
 \label{sub:10-datos-personales-residencia-y-transfere}
 
@@ -293,11 +276,6 @@ Cada tratamiento declara su base de licitud conforme a los Art. 12 (consentimien
 \end{tablalafrox}
 
 Garantías transversales: RAT como entregable del proyecto (ISO 5.31/5.34); geolocalización y comportamiento de pago tratados como sensibles (cifrado de campo + registro de consultas); consentimiento expreso, informado y revocable donde aplique; eliminación certificada al término del contrato (Art. 85 BA).
-
-\section{Controles ISO/IEC 27001:2022}
-\label{sub:11-matriz-de-controles-iso-iec-27001-2022-}
-
-La solución se alinea con 18 controles del Anexo A de ISO/IEC 27001:2022 que cubren: control de acceso e identidades (5.15--5.20), seguridad en nube e incidentes (5.23/5.24), cumplimiento legal y privacidad (5.31/5.34), respaldo y capacidad (7.10/7.11), redes y vulnerabilidades (7.12/8.8), autenticación segura (8.5), cifrado y enmascaramiento (8.11), registro y SIEM (8.15/8.16), desarrollo seguro (8.25/8.28) y separación de ambientes (8.31). Cada control se evidencia con su configuración, procedimiento o artefacto correspondiente, documentados en las subsecciones anteriores de este capítulo. El dimensionamiento on-premise se apoya en esta alineación.
 
 \section{Seguridad física}
 \label{sub:12-seguridad-fisica-btt-cap-6}

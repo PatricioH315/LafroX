@@ -9,7 +9,7 @@ Puntero rápido para quienes usan Claude Code con este repositorio.
 3. **Precedencia** (Art. 5° Bases Administrativas): `Bases_Administrativas.md` > `Bases_Tecnicas_Transversales.md` > `Caso_02_Logistica.md`. El caso puede endurecer requisitos transversales, nunca rebajarlos.
 4. **Cronograma 56 meses innegociable** y **despliegue híbrido obligatorio** (nube + on-premise). No se aceptan propuestas solo-nube ni solo-on-premise.
 5. **Estructura por subdocumento (T-7)**: el repositorio se organiza según los **14 subdocumentos** del Formulario T-7, no por entregas. Cada carpeta `NN_...` es un subdocumento y adentro conviven `entrega_1/` (congelada), `entrega_2/` (en construcción), etc.
-6. **Snapshots congelados**: cualquier `entrega_1/` es el registro del Informe 1 entregado el 07-09-2026 y **no se edita**. El trabajo ocurre en `entrega_2/` y todo cambio se registra en `00_trazabilidad_observaciones/` (Art. 45). El criterio de qué se conserva es `Productos/Informe 1 Entrega 1.docx`. El proyecto LaTeX fue retirado por desactualizado: no reintroducirlo ni usarlo como fuente.
+6. **Snapshots congelados**: cualquier `entrega_1/` es el registro del Informe 1 entregado el 07-09-2026 y **no se edita**. El trabajo ocurre en `entrega_2/` y todo cambio se registra en `00_trazabilidad_observaciones/` (Art. 45). El criterio de qué se conserva es `Productos/Informe 1 Entrega 1.docx`. 
 7. **Caso 02 — Logística (Distribuidora Puelche S.A.)**: el caso NO es una especificación de requerimientos. Traducir su narrativa en alcance, arquitectura, plan y estrategia es exactamente lo evaluado. Ejes: trazabilidad sanitaria, OTIF y costo de servir.
 
 ## Estructura
