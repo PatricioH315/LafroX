@@ -1,0 +1,107 @@
+% ------------------------------------------------------------------
+%  Implementos a proveer: hardware y software
+%  Fragmento del Subdocumento 4.2, traido desde contenido.tex con
+%  \parte{partes/04_c_implementos}. Las rutas son relativas a la carpeta del
+%  subdocumento, nunca a la de main.tex.
+% ------------------------------------------------------------------
+
+\chapter{Implementos a proveer: hardware y software}
+\label{sec:c-implementos-a-proveer-hardware-y-softwar}
+
+El inventario ofertado se agrupa en infraestructura de cómputo y almacenamiento, red y seguridad, dispositivos de terreno y operación, y componentes de sala. Son especificaciones que el CLIENTE adquiere y el adjudicatario instala, integra y mantiene (Art. 14.2). Las cantidades y justificaciones de cada fila se referencian al Formulario T-11.
+
+\section{Infraestructura de cómputo y almacenamiento}
+\label{sub:c-1-infraestructura-de-computo-y-almacenam}
+
+La infraestructura de cómputo y almacenamiento ofertada se detalla en la Tabla~\ref{tab:t23}:
+
+\begin{tablalafrox}{Infraestructura de cómputo y almacenamiento}{tab:t23}%
+  {F{0.21} Y F{0.21} G{0.08} Y}%
+  {\cab{Componente} & \cab{Producto ofertado} & \cab{Ubicación} & \cab{Cant.} & \cab{Justificación}}
+  C1 --- Servidor hipervisor (clúster) & Dell PowerEdge R6615 / HPE DL325 Gen11 --- EPYC 9124 16c, 128 GB DDR5 ECC, RAID 1 SO + RAID 10 (4 $\times$ NVMe 1,92 TB + Hot-Spare), 2 $\times$ 10GbE, dual PSU 1+1 & CD Talca (Rack R01) & 3 & Cada nodo entrega el mismo cómputo y almacenamiento: N+1 según RT-08.03 y Ceph con discos NVMe en RAID 10 supera los IOPS del peak de septiembre. \\
+  C2 --- NAS respaldo local & NAS/WORM local cifrado (LUKS/SED) --- copia rápida 3-2-1-0 & CD Talca (Rack R01) & 1 & Copia local de recuperación rápida: restauración del WMS en $\leq$ 4 h sin depender del enlace (RNF-20.06), complementando ---sin reemplazar--- la pierna inmutable en nube. \\
+  C3 --- Servidor de borde Concepción & Dell R250 / HPE DL20 Gen11 --- Xeon E-2300 6c, 32 GB, RAID 10 (4 $\times$ NVMe 960 GB + Hot-Spare) & CD Concepción (gabinete) & 1 & Sostiene el WMS en modo reducido 24 h de operación autónoma (12 vCPU y 24 GB dimensionados para el volumen de Concepción), con doble fuente. \\
+  C4 --- Nodo de cómputo de cross-docking & Mini-PC industrial Advantech ARK-2250 / NUC Pro 12 --- i5/i7 12\textordfeminine{} gen, 16 GB, NVMe 512 GB, 4G Cat-12 LTE dual SIM & Curicó, Chillán, Los Ángeles & 3 & Opera en naves sin climatización certificada (supuesto conservador de hasta 50 \textdegree{}C en verano bajo techumbre de zinc) y sin fibra (RT-03.17); enlace principal Starlink por ethernet con respaldo LTE dual de dos proveedores y conmutación automática en menos de 30 s. \\
+\end{tablalafrox}
+
+\section{Red y seguridad}
+\label{sub:c-2-red-y-seguridad}
+
+Los componentes de red y seguridad ofertados se detallan en la Tabla~\ref{tab:t24}:
+
+\begin{tablalafrox}{Red y seguridad}{tab:t24}%
+  {F{0.19} F{0.19} F{0.19} F{0.16} Y}%
+  {\cab{Componente} & \cab{Producto ofertado} & \cab{Ubicación} & \cab{Cant.} & \cab{Justificación}}
+  C5 --- Firewall UTM / Customer Gateway & Clúster HA Activo/Passivo --- FortiGate 60F o Palo Alto PA-220, con sincronización de sesiones (D-01) & CD Talca (Rack R02) & 2 & Sin equipos únicos de perímetro (RT-08.03): la pasiva asume direcciones y túneles en menos de 30 s, en circuitos eléctricos distintos (RT-08.04). Punto de terminación de la Site-to-Site VPN y del Direct Connect activable. \\
+  C6 --- Switch core L3 & Stack/MLAG --- Cisco Catalyst 9300-48P o equivalente (D-02), plano de distribución único & CD Talca (Rack R02) & 2 & Un único plano de distribución: la falla de un miembro no interrumpe el tráfico (RT-08.03). \\
+  C7 --- Switch de gestión & 1 $\times$ L2 (VLAN MGT) + consola KVM & CD Talca (Rack R02) & 1 & Puertos de administración (IPMI/iDRAC) aislados en VLAN dedicada con MFA; operación y recuperación incluso con la red de producción caída. \\
+  C8 --- Red de distribución horizontal (HDA) & Patch panels fibra OM4 + Cat6A certificado & CD Talca (Rack R03) & 1 & Cableado certificado enlace por enlace (RT-06.04) con dos ductos de ingreso independientes a la sala (RT-06.32). \\
+  C9 --- WLAN industrial & AP Wi-Fi 6E industriales VLAN-Operaciones + estudio de cobertura en bodega y cámara & CD Talca + Concepción (bodegas) & 2 redes (6+3 AP) & 120 (Talca) y 30 (Concepción) terminales rugosos simultáneos; segmentación por tipo de dispositivo (RT-03.23) y verificación de cobertura dentro de las cámaras donde opera el picking (RT-03.24$\rightarrow$RT-03.23). \\
+  C10 --- Enlace primario & Fibra óptica simétrica --- Talca 20$\rightarrow$50 Mbps \textperiodcentered{} Concepción 10$\rightarrow$20 Mbps & CD Talca \textperiodcentered{} CD Concepción & 2 & Dimensionado (RT-03.20) sobre evidencia, DTE y telemetría ($\approx$ 1--2 Mbps; peak sept. $\approx$ 312 MB/h $\approx$ 0,7 Mbps), sincronización de flota en la ventana de retorno ($\approx$ 2 GB/día; $\approx$ 4--5 Mbps a 3$\times$ de RT-09.03) y respaldo semanal a la nube ($\approx$ 40 $\rightarrow$ 120 GB, $\approx$ 40 Mbps en ventana nocturna); valores escalados al crecimiento 3$\times$ sin rediseño que exige RT-09.03. Respaldo escalonado sin obra adicional. El camino satelital Starlink (D-06) actúa como respaldo preferente. \\
+  C11 --- Enlace respaldo & LTE empresarial (SIM dedicada) --- Talca 5$\rightarrow$10 Mbps \textperiodcentered{} Concepción 3$\rightarrow$5 Mbps \textperiodcentered{} Cross-docks 2$\rightarrow$5 Mbps (dual, 2 proveedores) & CD Talca \textperiodcentered{} CD Concepción \textperiodcentered{} Curicó, Chillán, Los Ángeles & 5 & Continuidad sin un solo camino ni proveedor (RT-03.17) con conmutación automática en menos de 30 s; en los CDs queda como camino terciario tras fibra y Starlink; en los cross-docks es el respaldo automático del satelital. \\
+  C12 --- VPN & AWS Site-to-Site VPN IPsec IKEv2 AES-256-GCM + BGP & Talca y Concepción $\rightarrow$ sa-east-1 & 2 túneles/CD & Túneles IPsec con cifrado de grado comercial y enrutamiento dinámico para replicar base, sincronizar broker y transmitir telemetría sin degradar la operación (RT-03.21); MTU de túnel 1.436 bytes. \\
+  C13 --- Firewall de borde (CD Concepción) & FortiGate 40F o equivalente --- Customer Gateway + SD-WAN & CD Concepción (gabinete) & 1 & Customer Gateway del túnel hacia AWS y failover entre fibra, Starlink y LTE en menos de 30 s (RT-08.03, RT-03.17). \\
+  C14 --- Switch core de borde (CD Concepción) & Cisco Catalyst 9300 o equivalente --- capa de distribución & CD Concepción (gabinete) & 1 & Sostiene localmente la red de bodega del sitio secundario durante 24 h de autonomía sin depender del sitio principal (RT-08.03). \\
+  C15 --- Switch compacto cross-docking & Netgear GS308E o equivalente --- 8 puertos Gigabit gestionable & Curicó, Chillán, Los Ángeles & 3 & Equipo compacto y pasivo para nave industrial sin sala técnica: interconecta mini-PC, router Starlink, escáneres DS2208 y terminales (RT-03.17). \\
+\end{tablalafrox}
+
+\section{Dispositivos de terreno y operación}
+\label{sub:c-3-dispositivos-de-terreno-y-operacion}
+
+Los dispositivos de terreno y operación ofertados se detallan en la Tabla~\ref{tab:t25}:
+
+\begin{tablalafrox}{Dispositivos de terreno y operación}{tab:t25}%
+  {F{0.19} F{0.19} F{0.19} F{0.16} Y}%
+  {\cab{Componente} & \cab{Producto ofertado} & \cab{Ubicación} & \cab{Cant.} & \cab{Justificación}}
+  C16 --- Terminal preventa & Zebra EC55 (Android, IP67, guantes, lector 2D SE4100) & Preventistas (5 regiones) & 62 + 20 \% reserva & Opera sin señal, resiste la jornada con una carga, funciona con guantes y su luminosidad es legible a pleno sol (RT-08.11). \\
+  C17 --- Terminal reparto & Zebra TC58e (5G, SE55, batería 7.000 mAh, GPS L1/L5, IP65/68, $-$30 \textdegree{}C) & Conductores propios (42) + externos ($\approx$ 160) & $\approx$ 200 + reserva & Un solo modelo para propios y externos: mismo repuesto, capacitación e integración (sección de Emplazamiento de este documento). \\
+  C18 --- Impresora cabina & Zebra ZQ620 Plus (3", ZPL, IP54, Link-OS) & Portátil --- 1 por conductor repartidor & $\approx$ 200 & Evidencia de entrega y comprobantes impresos en cabina, no en bodega; diseñada para vehículo con batería de reemplazo. \\
+  C19 --- POS móvil & PAX A920 Pro (Android 14, PCI PTS 7.x, EMV L1/L2) & Portátil --- 1 por conductor repartidor & $\approx$ 200 & Cobranza con tarjeta en el domicilio del cliente: acreditado PCI PTS y certificado EMV, integrado vía Bluetooth con la aplicación de reparto. \\
+  C20 --- Terminal RF congelado & Zebra MC9400 Cold Storage Freezer ($-$30 \textdegree{}C, SE58 100 pies, batería freezer 5.000 mAh, Wi-Fi 6E) & Talca 144 (120+20 \%) \textperiodcentered{} Concepción 30 & 174 & Picking de la cámara a $-$22 \textdegree{}C con guantes gruesos: certificado para cámara frigorífica, lectura a distancia y batería con recambio en caliente (RT-08.11, RT-08.12 y RT-13.08). \\
+  C21 --- Impresora térmica andén & Zebra ZT411 (203 dpi, 14 ips, Ethernet, ZPL) & Talca (4: 2 recepción + 2 despacho) \textperiodcentered{} Concepción (2) & 6 & Etiquetas SSCC GS1-128 impresas en el andén al armar la unidad logística (RF-01.07), con resolución garantizada a lo largo de la cadena (RT-05.23). \\
+  C22 --- Balanza recepción & Dibal BEV (plataforma ME + DMI-610 Inox, doble RS-232/Ethernet) & Talca (2) \textperiodcentered{} Concepción (1) & 3 & Captura en línea del peso de recepción hacia el WMS (RF-01.01), sin digitación manual, con grado industrial y calibración certificada. \\
+  C23 --- Escáner GS1 cross-dock & Zebra DS2208 (1D/2D + GS1 DataBar, garantía 60 meses) & Curicó, Chillán, Los Ángeles & 6 (2 $\times$ plataforma) & Lectura de códigos GS1 de última generación en desconsolidación y re-despacho; dos unidades por plataforma cubren dos muelles simultáneos. \\
+  C24 --- Sensor IoT temperatura & Módulo Ebyte ME31-XDXX0400 (4 canales PT100, Modbus RTU/TCP, $-$40\dots{}+85 \textdegree{}C) + sondas 3 hilos --- 28 puntos & Talca, Concepción, cámaras, camiones & 7 módulos & 28 puntos de medición alimentan el registro continuo de cadena de frío; exactitud $\pm$1,1 \textdegree{}C a $-$22 \textdegree{}C (valor calculado a partir del rango del sensor) distingue excursión térmica real de fluctuación del instrumento. \\
+  C25 --- Termógrafo de camión & Onset InTemp CX450 (BLE, $-$30\dots{}+70 \textdegree{}C $\pm$0,5 \textdegree{}C, NIST 2 ptos) & Camiones con frío & 18 & Registrador independiente calibrado contra patrón NIST en dos puntos; el dato aterriza en el sistema por Bluetooth al volver al centro. \\
+  C26 --- Estaciones de trabajo & PC i5/i7, 16 GB, SSD NVMe 512 cifrado + 2 $\times$ 24" (NCh 2527) & Talca (5) \textperiodcentered{} Concepción (3) & 8 & Puestos de despacho, administración, planificación, calidad y TI (RNF-23.04): disco cifrado gestionado desde el EDR y doble monitor (RT-08.08). \\
+  C27 --- Kit Starlink fijo (enlace satelital D-06) & Starlink Enterprise fijo (antena en techumbre + router) --- 1 TB (CDs) / 500 GB (cross-docks), 56 meses & CD Talca (respaldo) \textperiodcentered{} CD Concepción (respaldo) \textperiodcentered{} Curicó, Chillán, Los Ángeles (principal) & 5 & Tercer camino WAN en los CDs (fibra $\rightarrow$ satelital $\rightarrow$ LTE) cerrando la brecha de Concepción (RNF-13.07); enlace principal en los cross-docks para la ventana de 3 h, eliminando la dependencia exclusiva de red móvil (RT-08.13, RT-06.32); reposición de hardware estimada en 15 \% en 56 meses (supuesto conservador basado en la vida útil declarada por el fabricante). \\
+\end{tablalafrox}
+
+Gateway IoT + Greengrass (B-02): 2 unidades (Talca y Concepción), ADAM-6000, con runtime AWS IoT Greengrass Core embebido para detección de excursión y buffer local de 14 h.
+
+\section{Resumen del inventario ofertado}
+\label{sub:c-4-resumen-del-inventario-ofertado}
+
+El inventario ofertado se resume en la Tabla~\ref{tab:t26}:
+
+\begin{tablalafrox}{Resumen del inventario ofertado}{tab:t26}%
+  {Y F{0.22}}%
+  {\cab{Familia} & \cab{Cantidad}}
+  Servidores hipervisor clúster (Talca) & 3 \\
+  NAS respaldo local (D-05) & 1 \\
+  Servidor de borde Concepción & 1 \\
+  Mini-PC industrial cross-docking & 3 \\
+  Kit Starlink fijo WAN satelital (D-06) & 5 \\
+  Estaciones de trabajo & 8 \\
+  Terminales preventa Zebra EC55 & 62 + 20 \% \\
+  Terminales reparto Zebra TC58e & $\approx$ 200 + reserva \\
+  Impresoras cabina ZQ620 Plus & $\approx$ 200 \\
+  POS PAX A920 Pro & $\approx$ 200 \\
+  Terminales RF Zebra MC9400 Cold Storage & 174 \\
+  Impresoras térmicas andén ZT411 & 6 \\
+  Balanzas Dibal BEV & 3 \\
+  Escáneres GS1 DS2208 & 6 \\
+  Sensores IoT Ebyte ME31 & 28 puntos ($\approx$ 7 módulos) \\
+  Termógrafos Onset CX450 & 18 \\
+  Firewalls UTM & 2 HA + 1 borde \\
+  Switch core L3 stack/MLAG & 2 + 1 core \\
+  AP Wi-Fi 6E industrial & 6 + 3 \\
+  Switch compacto cross-docking & 3 \\
+  Gateway IoT + Greengrass (B-02) & 2 \\
+  UPS 6 kVA N+1 & 1 \\
+  Generador 12 kVA estanque 24 h & 1 \\
+  CRAC de precisión N+1 & 2 \\
+  Cámaras IP $\geq$ 30 días & 7 \\
+  Racks 42U & 4 \\
+  Nube AWS (Aurora, ECS, S3, WAF, IoT, BI) & 1 solución, 2 regiones \\
+\end{tablalafrox}

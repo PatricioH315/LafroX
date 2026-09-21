@@ -1,0 +1,20 @@
+% ------------------------------------------------------------------
+%  Operación desconectada
+%  Fragmento del Subdocumento 4.2, traido desde contenido.tex con
+%  \parte{partes/08_g_operacion_desconectada}. Las rutas son relativas a la carpeta del
+%  subdocumento, nunca a la de main.tex.
+% ------------------------------------------------------------------
+
+\chapter{Operación desconectada}
+\label{sec:g-operacion-desconectada}
+
+La operación desconectada por ámbito se resume en la Tabla~\ref{tab:t29}:
+
+\begin{tablalafrox}{Operación desconectada}{tab:t29}%
+  {F{0.26} F{0.26} Y}%
+  {\cab{Ámbito} & \cab{Autonomía} & \cab{Cobertura}}
+  Centro de distribución (CD Talca y Concepción) & $\geq$ 24 h & Recepción, preparación, despacho, conteo cíclico y trazabilidad contra la BD local; reconciliación determinista al reconectar (RT-03.12). \\
+  Terreno (preventa y reparto) & 14 h (turno completo) & Toma de pedido, entrega, POD, devoluciones y cobros contra caché local y buffer idempotente (RNF-06.02, RT-03.10); sesión sostenida por caché de identidad A-05 (TTL 8 h para bodega, 14 h para reparto/preventa). \\
+  Cross-docking & Ventana de 3 h 100 \% local & Recepción, desconsolidación, validación de frío y re-despacho (RT-03.10/03.11). \\
+  Sincronización al reconectar & Flota $\leq$ 10 min \textperiodcentered{} CDs $\leq$ 2 h & Vuelco en orden estricto, deduplicación idempotente y reconciliación determinista (RT-03.12, RT-03.13, RNF-07.01). \\
+\end{tablalafrox}

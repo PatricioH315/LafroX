@@ -1,0 +1,283 @@
+% ------------------------------------------------------------------
+%  Arquitectura de seguridad
+%  Fragmento del Subdocumento 4.2, traido desde contenido.tex con
+%  \parte{partes/10_i_seguridad}. Las rutas son relativas a la carpeta del
+%  subdocumento, nunca a la de main.tex.
+% ------------------------------------------------------------------
+
+\chapter{Arquitectura de seguridad}
+\label{sec:i-arquitectura-de-seguridad}
+
+Arquitectura de seguridad de la solución: modelo Zero Trust, capa expuesta, identidad y accesos, cifrado y controles. El perímetro de esta solución no es un edificio corporativo sino un entorno distribuido con alta rotación de personal externo y dispositivos compartidos en terreno, por lo que el modelo es Zero Trust y la identidad es la pieza central.
+
+\section{Principios rectores}
+\label{sub:1-principios-rectores}
+
+\begin{enumerate}
+  \item \textbf{Zero Trust conforme a NIST SP 800-207} (Art. 21.1). Verificación explícita de cada solicitud, privilegio mínimo y presunción de compromiso. La red interna no confiere confianza.
+  \item \textbf{Seguridad desde el diseño y por defecto} (Art. 21.1 \textperiodcentered{} RT-11.02). Modelado de amenazas STRIDE documentado por cada componente y por cada integración externa, antes de implementar.
+  \item \textbf{La identidad es el perímetro} (Art. 22 \textperiodcentered{} RT-12.01 \textperiodcentered{} ADR-06). Autoridad única de identidad (Keycloak, Modelo B); toda decisión de acceso se toma sobre el token, no sobre la dirección de red de origen.
+  \item \textbf{Sin conexiones entrantes al on-premise} (Art. 21 \textperiodcentered{} D-AL-05 \textperiodcentered{} RT-11.13). Todo tráfico on-premise $\rightarrow$ nube es saliente. Las dos únicas excepciones (DMS $\rightarrow$ PostgreSQL y celery-erp-sync $\rightarrow$ ACL) están declaradas, acotadas al túnel IPsec autenticado y auditadas.
+  \item \textbf{Cifrado en tránsito y en reposo sin excepciones} (Art. 21.2 \textperiodcentered{} RT-11.08/11.09). TLS 1.3 mínimo con HSTS; cifrado en reposo del 100 \% de los datos con claves gestionadas en KMS/HSM y separación de funciones en su custodia.
+  \item \textbf{La seguridad no puede detener la ventana crítica} (RT-10.05, caso \textperiodcentered{} RT-03.10). Ningún control de seguridad puede introducir una dependencia en línea dentro de 05:30--07:00 ni en las 14 h de terreno sin señal. La autenticación de terreno se resuelve sin red por diseño.
+  \item \textbf{Operable por cuatro personas} (Art. 16.3 \textperiodcentered{} Cap. 2.4 del caso). El CLIENTE tiene 4 personas de TI. Se privilegian servicios administrados y un SOC contratado 24$\times$7 por sobre plataformas que exijan operación local especializada.
+  \item \textbf{Evidencia inalterable} (Art. 21.3 \textperiodcentered{} RT-11.14 \textperiodcentered{} RT-16.07). Todo evento de seguridad y toda acción de negocio quedan en un registro inalterable y con retención declarada; ni un administrador puede modificarlo.
+\end{enumerate}
+
+\section{Modelo Zero Trust aplicado}
+\label{sub:2-modelo-zero-trust-aplicado-art-21-1-nist}
+
+\subsection{Zonas y flujos}
+
+En texto, las zonas y su flujo son: la zona pública (clientes del canal moderno, transportistas $\approx$160 conductores y 180 proveedores) ingresa únicamente por la DMZ en nube (CloudFront + AWS WAF v2 + Shield Advanced $\rightarrow$ Amazon API Gateway con OIDC, cuotas, esquema y validación de carga útil); la zona de aplicación (ECS Fargate M1--M12 + workers y Keycloak IdP maestro como autoridad única) sirve a las zonas de datos (Aurora PostgreSQL, DynamoDB y S3 con Object Lock, en subredes privadas sin salida); la zona on-premise (VLAN 10 MGT \textperiodcentered{} 20 SRV \textperiodcentered{} 30 OPS \textperiodcentered{} 40 WKS \textperiodcentered{} 50 IOT, firewall D-01 UTM en HA como Customer Gateway y caché Keycloak de solo lectura TTL 8 h) conecta con la nube por VPN/IPsec saliente; y la zona de terreno (apps Kotlin offline-first + MDM; HHT compartidos en cámara a $-$22 \textdegree{}C) no tiene perímetro.
+
+Reglas de zona declaradas:
+
+\begin{itemize}
+  \item La única exposición pública es la DMZ en nube (CloudFront $\rightarrow$ WAF $\rightarrow$ API Gateway). Las consolas internas no pasan por ahí: entran por intranet o VPN (RT-03.22).
+  \item La zona de datos no tiene salida a internet y se consume por VPC Endpoints/PrivateLink.
+  \item Desde la zona on-premise no se acepta ninguna conexión entrante salvo las dos excepciones D-AL-05.
+  \item La zona de terreno no tiene perímetro: se protege con identidad, cifrado local, MDM y borrado remoto.
+\end{itemize}
+
+\section{Capa expuesta}
+\label{sub:3-capa-expuesta-art-21-2-rt-11-11-11-13}
+
+\begin{itemize}
+  \item \textbf{Publicación exclusiva por capa de borde} (Art. 21.2). CloudFront (CDN) como único origen público; los orígenes están restringidos y no se alcanzan directamente.
+  \item \textbf{WAF con reglas gestionadas y personalizadas} (Art. 21.2). AWS WAF v2: conjunto gestionado OWASP Top 10 más reglas propias por API (límites de tamaño, patrones de la operación logística).
+  \item \textbf{Protección DDoS en capas 3, 4 y 7} (Art. 21.2). AWS Shield Advanced con respuesta gestionada.
+  \item \textbf{TLS 1.3 y prohibición de TLS 1.0/1.1} (Art. 21.2 \textperiodcentered{} RT-11.08). TLS 1.3 mínimo, conjuntos de cifrado modernos con AEAD, HSTS con precarga; deshabilitados RC4 y CBC sin AEAD.
+  \item \textbf{Gestión automatizada de certificados} (RT-11.08). Inventario centralizado, renovación automática y alerta anticipada a 30 días del vencimiento; revisión de cadenas en la prueba semestral.
+  \item \textbf{Puerta de enlace con controles completos} (Art. 21.2 \textperiodcentered{} RT-11.11). API Gateway con autenticación OIDC, autorización por rol, cuotas y límites de tasa por cliente, validación de esquema e inspección de carga útil.
+  \item \textbf{Protección contra bots y abuso automatizado} (Art. 21.2). Reto progresivo en los puntos de entrada públicos (catálogo público y portales), sin degradar la accesibilidad.
+  \item \textbf{Superficie de exposición declarada} (RT-11.13). Inventario completo de servicios, protocolos y puertos por sitio y por zona (subsección de superficie de exposición).
+\end{itemize}
+
+\subsection{Superficie de exposición completa}
+
+La superficie de exposición completa por sitio y zona se declara en la Tabla~\ref{tab:t45}:
+
+\begin{tablalafrox}{Superficie de exposición completa (RT-11.13)}{tab:t45}%
+  {F{0.25} Y Y F{0.25}}%
+  {\cab{Zona / sitio} & \cab{Servicios expuestos} & \cab{Protocolos y puertos} & \cab{¿Alcanzable desde internet?}}
+  DMZ pública en nube & Portales N-01, N-02 y N-03 sobre *.puelche.cl; catálogo público & 443/TCP (HTTPS, TLS 1.3) & Sí, por CloudFront con WAF y Shield \\
+  Zona de aplicación en nube & ECS Fargate, Keycloak maestro & Solo desde el ALB y la puerta de enlace; sin dirección pública & No \\
+  Zona de datos en nube & Aurora, DynamoDB, S3 & Solo por VPC Endpoint/PrivateLink & No \\
+  Talca --- red interna & Portal WMS, API WMS, PostgreSQL, caché LDAPS, broker AMQP, gestión SSH & 443, 8080, 5432, 636, 5671--5672, 22 (VLAN MGT con MFA) & No --- solo por VPN Zero Trust \\
+  Talca --- borde & Clúster de firewall en HA (Customer Gateway) & IPsec 500/4500 UDP & Solo terminación IPsec; ningún otro servicio \\
+  Talca / Concepción --- IoT & Greengrass hacia IoT Core & MQTTS 8883 saliente & No; sin puertos entrantes \\
+  Concepción y cross-docking & Gabinete de borde (mini-PC) & IPsec 500/4500 UDP; SSM 443 saliente & Solo por VPN IPsec / SSM \\
+  Estaciones de trabajo & --- & 443 saliente por proxy & No \\
+\end{tablalafrox}
+
+Regla declarada: ningún nodo on-premise abre puertos entrantes. Toda gestión remota entra por el agente SSM sobre HTTPS saliente o por la VPN, nunca por un puerto publicado.
+
+\section{Identidad, acceso y sesiones (ADR-06)}
+\label{sub:4-identidad-acceso-y-sesiones-art-22-btt-c}
+
+\subsection{Modelo de identidad (Modelo B)}
+
+Autoridad única en nube, cachés locales de solo lectura. El Keycloak IdP maestro vive en ECS Fargate (sa-east-1, Multi-AZ, respaldo en Aurora) y concentra todas las escrituras: altas, bajas, cambios de rol, políticas y revocaciones. En VM-05 (Talca) y VM-C03 (Concepción) operan cachés locales de solo lectura con TTL de 8 h que validan la firma OIDC de forma local. No existe un maestro on-premise ni promoción local a escritura.
+
+Esta decisión resuelve un problema real del caso: el centro de distribución debe autenticar durante 24 h sin enlace y el terreno durante 14 h sin señal, pero un segundo maestro on-premise habría creado dos fuentes de verdad de identidad y un procedimiento de conmutación con riesgo de divergencia. Con el Modelo B, el DRP de identidad es la misma autoridad en nube: no hay nada que promover.
+
+\begin{itemize}
+  \item \textbf{Keycloak IdP maestro (nube) --- autoridad única, todas las escrituras.} Integración LDAP/SCIM con el directorio corporativo del CLIENTE por VPN saliente; MFA para todo acceso externo.
+  \item \textbf{Caché local Talca (A-05, VM-05) --- solo lectura, TTL 8 h.} Validación local de firma y emisión de sesiones sin conexión; sostiene 24 h de centro de distribución y 14 h de terreno.
+  \item \textbf{Caché local Concepción (VM-C03) --- solo lectura, TTL 8 h.} Ídem para el centro de distribución de borde.
+\end{itemize}
+
+Sincronización sin conexiones entrantes: el maestro publica el Realm cifrado a S3 y las cachés lo importan (INT-13, saliente). Las altas, bajas y roles se propagan desde el maestro hacia las cachés, nunca a la inversa. Revocación: $\Delta$ $\leq$ 8 h por TTL y $<$ 24 h por SCIM; para identidades de alta sensibilidad la baja se refuerza con el bloqueo del terminal por MDM.
+
+\subsection{Federación, SSO y factores}
+
+OpenID Connect y OAuth 2.1, con SAML 2.0 disponible si la integración con el CLIENTE lo requiere; integración con el directorio corporativo por LDAP.
+
+Inicio de sesión único para todos los módulos y cierre de sesión propagado (back-channel logout).
+
+MFA obligatoria para administradores, accesos privilegiados y todo acceso desde fuera de la red corporativa.
+
+Factores resistentes a la suplantación: FIDO2/WebAuthn (claves de acceso) disponible y preferente para perfiles administradores, además de TOTP (se supera el mínimo exigido).
+
+Acceso de conductores externos: OTP de un solo uso por operación, sin cuenta corporativa (RF-06.08). Es la respuesta al hecho de que \textasciitilde{}160 conductores no son trabajadores de la compañía y rotan sin aviso.
+
+\subsection{Autorización: RBAC más ABAC}
+
+El control de acceso se resuelve en cuatro capas:
+
+\begin{itemize}
+  \item \textbf{RBAC.} Roles derivados de los 11 actores canónicos del modelo lógico. Los permisos viven en Keycloak.
+  \item \textbf{ABAC.} Atributos de contexto que acotan el rol: instalación asignada, horario de turno (el despacho solo es válido en su ventana), dispositivo provisto y enrolado por MDM. Las políticas se aplican en la Capa 4.
+  \item \textbf{Segregación de funciones.} Conciliación $\neq$ aprobación (M10); detección de excursión térmica $\neq$ decisión de bloqueo (M9); rendición $\neq$ cierre contable (M7). Nadie que genera un control lo ejecuta. La matriz completa se declara en el registro de requerimientos (Cap. 17.1).
+  \item \textbf{Aislamiento de externos.} Cada proveedor ve solo sus órdenes de compra y documentos; cada transportista solo sus rutas asignadas. No hay visibilidad cruzada.
+\end{itemize}
+
+\subsection{Política de sesión}
+
+\begin{itemize}
+  \item \textbf{Duración.} Credencial de acceso: 30 min (D-AL-07); credencial de identidad: 1 h. Caducidad por inactividad: 30 min en consolas, 60 min en solo lectura.
+  \item \textbf{Renovación.} Credencial de refresco rotatoria de 30 días; el reúso detectado invalida la familia completa.
+  \item \textbf{Revocación.} Cierre global inmediato desde el panel; baja de identidad revoca credenciales vigentes. Una sola sesión activa por actor de terreno.
+  \item \textbf{Operación desconectada.} Token de turno de 8 h (bodega) o 14 h (terreno), validado contra la caché local A-05 sin depender del IdP (ADR-06).
+  \item \textbf{Elevación temporal.} Máximo 2 h, con justificación, aprobación y registro auditado.
+\end{itemize}
+
+\subsection{Autenticación en terreno}
+
+El caso fija condiciones que descartan la contraseña como mecanismo de terreno: guantes térmicos a $-$22 \textdegree{}C, uso a una mano durante la descarga, uso de pie y a la intemperie en la puerta del local, dispositivos compartidos entre turnos en bodega y 38 \% de rotación anual en preparación. La respuesta declarada:
+
+\begin{itemize}
+  \item El operador autentica con conexión al inicio de turno (PIN de 6 dígitos o biometría del dispositivo) y descarga un token cifrado de vida acotada al turno.
+  \item Durante el turno el PIN desbloquea el token local; no autentica contra el IdP por transacción. No hay dependencia de red en la ruta.
+  \item El dispositivo es un factor de posesión enrolado por MDM; el PIN es el segundo factor. Esto satisface la MFA del Art. 22 sin exigir un segundo dispositivo a alguien que trabaja con guantes.
+  \item Los datos locales están cifrados y admiten borrado remoto selectivo (RF-03.16/06.12): se borra la aplicación y su caché, no la información personal del dispositivo.
+\end{itemize}
+
+\subsection{Gestión de dispositivos (MDM)}
+
+MDM como servicio gestionado (Android Enterprise o equivalente), operable por las 4 personas de TI del CLIENTE. Capacidades: enrolamiento por perfil de rol, cifrado local y PIN obligatorios, modo quiosco, postura y monitoreo (sincronización, batería, versión), borrado remoto selectivo con revocación de tokens e inventario por IMEI/serie.
+
+\subsection{Ciclo de vida de la identidad}
+
+Aprovisionamiento $\leq$ 24 h desde el alta (cuenta, permisos, dispositivo); baja efectiva $\leq$ 24 h desde la desvinculación con revocación de tokens y borrado remoto. Flujo desatendido y auditable con revisión semestral de accesos.
+
+\subsection{Accesos privilegiados y cuenta de emergencia}
+
+\begin{itemize}
+  \item \textbf{PAM con acceso a demanda:} sin acceso interactivo permanente a producción. La operación excepcional se hace just-in-time por AWS Systems Manager Session Manager, con MFA, aprobación y sesión grabada.
+  \item \textbf{Cuenta de emergencia (break-glass):} fuera de banda, custodiada en bóveda física con doble firma, para contingencia de indisponibilidad del IdP. Su activación exige procedimiento escrito, notificación inmediata a TI y a la gerencia, registro en cadena de custodia y rotación de credenciales tras el uso. Se prueba dos veces al año junto con el simulacro de recuperación ante desastres.
+\end{itemize}
+
+\section{Cifrado y gestión de claves}
+\label{sub:5-cifrado-y-gestion-de-claves-art-21-2-rt-}
+
+\subsection{En tránsito}
+
+El cifrado en tránsito se declara por trayecto:
+
+\begin{itemize}
+  \item \textbf{Superficies públicas y portales.} TLS 1.3 con HSTS y precarga; TLS 1.0/1.1 deshabilitados.
+  \item \textbf{Servicio a servicio.} mTLS (microsegmentación; sin confianza implícita en la red interna).
+  \item \textbf{On-premise $\leftrightarrow$ nube.} IPsec/IKEv2 con AES-256-GCM, BGP, MTU 1436, dos túneles.
+  \item \textbf{Borde IoT $\rightarrow$ nube.} MQTTS 8883 con certificado X.509 por dispositivo.
+  \item \textbf{Respaldos y replicación.} TLS 1.3 en tránsito.
+\end{itemize}
+
+\subsection{En reposo}
+
+El cifrado en reposo por componente se declara en la Tabla~\ref{tab:t51}:
+
+\begin{tablalafrox}{Cifrado en reposo por componente}{tab:t51}%
+  {F{0.26} F{0.26} Y}%
+  {\cab{Elemento} & \cab{Cifrado} & \cab{Gestión de claves}}
+  Almacenamiento del clúster (OSD Ceph / RAID 10) & LUKS/dm-crypt o NVMe con autocifrado & CMK dedicada on-premise (o HSM de borde), custodiada y respaldada \\
+  NAS de respaldo D-05 & LUKS/SED & CMK independiente de la de producción (RT-07.10) \\
+  PostgreSQL on-premise & Cifrado del sistema de archivos subyacente & CMK dedicada \\
+  Aurora, DynamoDB, S3 & SSE-KMS & AWS KMS con CMK y rotación anual \\
+  Estaciones de trabajo & BitLocker/LUKS gestionado & Servidor de claves corporativo \\
+  Terminales de terreno & Cifrado del dispositivo (Android FBE) y aplicación en entorno aislado & MDM (subsección de gestión de dispositivos) \\
+\end{tablalafrox}
+
+Rotación y custodia: claves de datos con rotación anual o ante revocación o compromiso; claves maestras según el calendario del proveedor; rotación en línea, sin degradación del servicio. Los respaldos conservan la versión de clave necesaria para una restauración auditable. Separación de funciones en la custodia de claves: quien administra la plataforma no administra las claves maestras.
+
+\subsection{Cifrado a nivel de campo}
+
+El caso lo declara exigible para cuatro conjuntos de datos. Aplicación declarada:
+
+El cifrado a nivel de campo se declara por conjunto de datos:
+
+\begin{itemize}
+  \item \textbf{Comportamiento de pago y antecedentes comerciales del cliente.} Cifrado a nivel de campo con clave en KMS; acceso restringido por rol y registro de consultas.
+  \item \textbf{Datos de geolocalización de personas.} Cifrado a nivel de campo, retención 12 meses y registro de consultas. La visibilidad de flota es operativa y no se desliza a control de jornada (D1, objeción sindical L577).
+  \item \textbf{Medios de pago electrónicos.} El PAN no se almacena: tokenización en la pasarela; el terminal POS es PCI PTS 7.x.
+  \item \textbf{RUT de clientes en bases y registros.} Pseudonimización mediante cifrado a nivel de campo (pgcrypto con clave en KMS).
+\end{itemize}
+
+Gestión de secretos. Los secretos de integración (credenciales del ERP, certificados AS2/EDI, credenciales del SII y de Transbank) se administran en AWS Secrets Manager y SSM Parameter Store, con rotación automática y consumo desde los nodos on-premise por VPC Endpoint saliente, coherente con el principio 4. Prohibición absoluta de secretos embebidos en código, imágenes o archivos de configuración.
+
+Gestor de secretos: servicio administrado, no componente autoalojado. La decisión está fundada en el ADR-15 y su emplazamiento es el componente N-12 de la tabla de emplazamiento. Se descartó un gestor autoalojado on-premise porque habría exigido una máquina virtual adicional en Talca con su alta disponibilidad, respaldo, procedimiento de sellado y licencia, sumando superficie de administración a un equipo de cuatro personas sin beneficio funcional frente al servicio administrado. Todo componente de seguridad de esta arquitectura tiene emplazamiento declarado.
+
+\section{Clasificación de la información y controles por nivel}
+\label{sub:6-clasificacion-de-la-informacion-y-contro}
+
+La clasificación de la información y los controles por nivel se detallan en la Tabla~\ref{tab:t53}:
+
+\begin{tablalafrox}{Clasificación de la información y controles por nivel (RT-11.03)}{tab:t53}%
+  {G{0.17} Y Y}%
+  {\cab{Nivel} & \cab{Ejemplos en Puelche} & \cab{Controles mínimos}}
+  Restringido & Claves KMS/HSM, credenciales de servicio, firma privada de DTE, claves de respaldo & PAM (subsección de accesos privilegiados), break-glass (subsección de accesos privilegiados), KMS/HSM, cifrado a nivel de campo \\
+  Confidencial & Base del WMS (inventario, clientes, trazabilidad de lote), evidencia de entrega, tokens, auditoría, antecedentes comerciales, geolocalización de personas & Cifrado en reposo, TLS 1.3, RBAC más ABAC, registro de consultas (RT-16.09) \\
+  Interno & Registros de operación, métricas, configuraciones & Acceso por rol y retención declarada \\
+  Público & Catálogo público de productos sin precios (RT-16.30) & Sin controles de confidencialidad; sí integridad y disponibilidad \\
+\end{tablalafrox}
+
+\section{Detección, respuesta y evidencia}
+\label{sub:7-deteccion-respuesta-y-evidencia-art-21-3}
+
+\begin{itemize}
+  \item \textbf{Registro centralizado e inalterable.} Todos los eventos de seguridad (autenticación, cambios de configuración, accesos, EDR, firewall, DCIM) se centralizan con ingesta continua. Inalterabilidad por sellado en modo solo-anexado y S3 Object Lock: ni un administrador modifica un evento sellado.
+  \item \textbf{Retención de eventos de seguridad.} 12 meses en línea + 24 meses en archivo recuperable (36 meses en total), por sobre el mínimo del Art. 21.3 y de RT-11.14.
+  \item \textbf{Auditoría de negocio.} 7 años en audit\_log (eventos de EventBridge), con no repudio.
+  \item \textbf{SIEM con casos de uso del negocio.} Security Lake con 6 casos de uso propios de la operación logística: alerta nocturna fuera de patrón, acceso remoto anómalo, MFA en TI en la sombra, exfiltración de datos de stock, escalada de privilegios y respuesta a incidente reglamentario. No son casos genéricos de infraestructura (Art. 21.3).
+  \item \textbf{EDR en nube y on-premise.} Agentes en todos los nodos on-premise, estaciones y cargas en nube, con consola centralizada integrada al SIEM.
+  \item \textbf{SOC 24$\times$7.} Cobertura contractual de ambos dominios con dotación mínima declarada (un analista de primer nivel por turno más segundo nivel de guardia) y catálogo de procedimientos.
+  \item \textbf{Gestión de vulnerabilidades.} Plazos contractuales: crítica 7 días (CVSS $\geq$ 9,0 o explotación activa), alta 15 días (7,0--8,9), media 30 días (4,0--6,9). Escaneo automatizado semanal, escaneo externo trimestral y verificación de corrección por reexploración; trazabilidad reportada trimestralmente al CLIENTE.
+  \item \textbf{Respuesta a incidentes.} Plan con fases, roles, clasificación y escalamiento; comunicación al CLIENTE en $\leq$ 2 h desde la detección de un incidente de severidad crítica.
+  \item \textbf{Notificación de brechas.} Notificación al CLIENTE en $\leq$ 24 h desde la detección con informe preliminar, y análisis de causa raíz dentro de los 5 días hábiles siguientes.
+  \item \textbf{Pruebas de intrusión.} Anuales por un tercero independiente del adjudicatario y previas a cada paso a producción, con entrega íntegra del informe y plan de remediación con plazos.
+  \item \textbf{Simulacros con el CLIENTE.} Ejercicios de incidente conjuntos, coordinados con el simulacro semestral de recuperación ante desastres (Art. 20).
+\end{itemize}
+
+\section{Datos personales, residencia y transferencia internacional}
+\label{sub:10-datos-personales-residencia-y-transfere}
+
+\begin{itemize}
+  \item \textbf{Residencia primaria.} Toda la operación productiva reside en AWS sa-east-1 (São Paulo). El dominio on-premise reside en las instalaciones del CLIENTE en Chile.
+  \item \textbf{Región secundaria.} us-east-1 (Norte de Virginia, EE. UU.), exclusivamente como ambiente de recuperación ante desastres (quinto ambiente, RT-04.01).
+  \item \textbf{Transferencia internacional.} La replicación hacia us-east-1 (Aurora Global Database, DynamoDB Global Tables y S3 Cross-Region Replication) constituye una transferencia internacional de datos personales en el sentido de la Ley 21.719 y debe contar con base de licitud y resguardos, conforme exige el Art. 23.
+  \item \textbf{Resguardos declarados.} (a) Cifrado en reposo con CMK gestionada por el CLIENTE y en tránsito extremo a extremo; (b) acuerdo de tratamiento de datos con el proveedor de nube con cláusulas de transferencia; (c) minimización: la región secundaria no se usa para explotación analítica ni para consultas de negocio, solo para continuidad; (d) los datos de geolocalización de personas quedan excluidos de la replicación transfronteriza y se conservan solo en sa-east-1 con retención de 12 meses; (e) registro de la transferencia en el inventario de tratamientos.
+  \item \textbf{Aprobación del CLIENTE.} La residencia y la transferencia quedan sujetas a aprobación expresa del CLIENTE (Art. 23). Si el CLIENTE no aprueba la transferencia a us-east-1, la alternativa declarada es la continuidad intrarregional en sa-east-1 ---entendida como no salir de la región AWS sa-east-1 (São Paulo, Brasil), la única con los servicios requeridos; AWS no posee región dentro de Chile, por lo que esta alternativa no es un segundo sitio geográfico ni usa los sitios on-premise del CLIENTE (Talca/Concepción solo sostienen el dominio on-premise y su DRP local con RTO +1--2 h, ADR-09)---: ampliación a la tercera zona de disponibilidad (sa-east-1a/1b/1c) más respaldo inmutable regional (S3 Object Lock / Backup Vault, esquema 3-2-1-0). Cubre falla de zona de disponibilidad y corrupción de datos (RTO $\leq$ 4 h / RPO $\leq$ 15 min), que es lo que ya provee el multi-AZ, pero no una caída de toda la región sa-east-1: en ese escenario la reconstrucción desde el respaldo inmutable toma 24--72 h, incumpliendo RNF-20.06. Esta degradación es el impacto sobre el objetivo de recuperación, cuantificado en la alternativa D del ADR-09 --- y es la razón por la que el plan base solicita la aprobación del CLIENTE para us-east-1 con los resguardos del Art. 23.
+  \item \textbf{Retención por categoría.} Documentos tributarios y su respaldo: 6 años \textperiodcentered{} trazabilidad sanitaria de lote: vida útil del producto más 6 meses, con mínimo de 5 años \textperiodcentered{} registros de temperatura: 5 años \textperiodcentered{} evidencia de entrega: 6 años \textperiodcentered{} geolocalización de personas: 12 meses \textperiodcentered{} eventos de seguridad: 12 meses en línea más 24 en archivo \textperiodcentered{} auditoría de negocio: 7 años.
+  \item \textbf{Eliminación segura.} Procedimiento verificable de eliminación al vencimiento, con registro inalterable; borrado seguro de medios que salen de servicio y disposición final con gestor autorizado.
+  \item \textbf{Exportabilidad.} Capacidad de exportar la totalidad de la información del CLIENTE en formatos abiertos y documentados, en cualquier momento del contrato y sin costo adicional.
+  \item \textbf{Derechos de los titulares (ARCOP).} Acceso, rectificación, cancelación/supresión, oposición, portabilidad y bloqueo temporal; respuesta en 30 días corridos prorrogables 30; canal único, verificación de identidad y registro de cada solicitud (subsección de protocolo ARCOP).
+  \item \textbf{Base de licitud.} Resuelta por tratamiento en la subsección de base de licitud (Ley 21.719, Art. 12/13): geolocalización de trabajadores y POD por ejecución del contrato de trabajo + interés legítimo del empleador (no consentimiento, por desequilibrio; test de proporcionalidad documentado); clientes y crédito por ejecución de contrato + interés legítimo; DTE/RSA por obligación legal; conductores externos por consentimiento del titular; CCTV por interés legítimo (seguridad); formalizada en el RAT (entregable).
+  \item \textbf{Política de privacidad / aviso al titular.} Aviso informativo para clientes y trabajadores (qué se trata, con qué fin, base de licitud, derechos y cómo ejercerlos); versión preliminar anexable al Informe 1 (subsección de política de privacidad).
+  \item \textbf{Evaluación de Impacto (EIPD).} Obligatoria por tratamientos de alto riesgo (monitoreo sistemático de personas); entregable del proyecto con alcance preliminar (subsección de evaluación de impacto) y versión final antes de producción.
+\end{itemize}
+
+Dos de los resguardos de esta tabla son decisiones de diseño y no solo cláusulas contractuales, y se propagan a la sección de arquitectura de despliegue de este capítulo y a la arquitectura lógica (Subdocumento 4.1): la minimización, por la que la región secundaria sostiene continuidad y no se explota analíticamente, y la exclusión de los datos de geolocalización de personas de la replicación transfronteriza. La decisión (d) tiene además un fundamento del caso: la geolocalización de personas es el dato con la objeción sindical explícita (Restricción no negociable N\textdegree{} 10, Cap. 10 del caso) y con la retención más corta (12 meses); mantenerlo en una sola jurisdicción reduce la superficie legal sin afectar la continuidad, porque no es un dato necesario para reanudar la operación.
+
+\subsection{Derechos de los titulares, política de privacidad y EIPD}
+
+\textbf{Derechos ARCOP (Ley 21.719).} Acceso, rectificación, supresión, oposición, portabilidad y bloqueo temporal; canal único (correo dedicado + formulario web), plazo de 30 días prorrogable una vez (Art. 11); contraparte: Encargado de Seguridad (BA Art. 27\textdegree{}); bitácora de solicitudes auditada.
+
+\textbf{Política de privacidad.} Aviso informativo a titulares (clientes y trabajadores) con: responsable (Distribuidora Puelche S.A.), datos tratados por categoría, finalidades, base de licitud por tratamiento, destinatarios y transferencias (Art. 23), retención por categoría y derechos. Versión preliminar anexada al Informe 1.
+
+\textbf{EIPD (BA Art. 27\textdegree{}).} Evaluación de impacto obligatoria por tratamiento masivo (14.200 clientes) y monitoreo sistemático (GPS de \textasciitilde{}260 trabajadores). Versión final antes de producción, revisión anual.
+
+\textbf{Vigencia.} La Ley 21.719 rige desde el 01-dic-2026; un proyecto de ley (Boletín 18.623-07) postergaría la vigencia al 01-dic-2027. La propuesta es robusta a ambas fechas por diseño.
+
+\subsection{Base de licitud por tratamiento (Ley 21.719, Art. 12 y 13)}
+
+Cada tratamiento declara su base de licitud conforme a los Art. 12 (consentimiento) y 13 (bases distintas) de la Ley 21.719, resumida en la Tabla~\ref{tab:t58}:
+
+\begin{tablalafrox}{Base de licitud por tratamiento (Ley 21.719, Art. 12 y 13)}{tab:t58}%
+  {F{0.22} F{0.18} Y}%
+  {\cab{Tratamiento} & \cab{Base de licitud} & \cab{Garantías clave}}
+  Geolocalización de trabajadores (262) & Ejecución contrato + interés legítimo (Art. 13) & No consentimiento (desequilibrio); finalidad operativa, sin control de jornada (L577); cifrado de campo, retención 12 m, excluida de réplica transfronteriza \\
+  Comportamiento de pago / crédito & Ejecución contrato + interés legítimo & Cifrado de campo; acceso restringido a crédito/cobranza \\
+  Datos laborales & Obligación legal + ejecución contrato & Art. 154 bis CT; acceso restringido a RRHH \\
+  Clientes (preventa, DTE, portal) & Ejecución contrato + obligación legal & Sin marketing sin consentimiento \\
+  POD (firma/foto) & Ejecución contrato & Retención 6 años; acceso acotado \\
+  Conductores externos (\textasciitilde{}160) & Consentimiento del titular (Art. 12) & Datos mínimos + OTP; borrado al término (Art. 85 BA) \\
+  CCTV on-premise & Interés legítimo + RT-06.24 & Aviso en sitio; retención $\geq$ 30 días \\
+\end{tablalafrox}
+
+Garantías transversales: RAT como entregable del proyecto (ISO 5.31/5.34); geolocalización y comportamiento de pago tratados como sensibles (cifrado de campo + registro de consultas); consentimiento expreso, informado y revocable donde aplique; eliminación certificada al término del contrato (Art. 85 BA).
+
+\section{Seguridad física}
+\label{sub:12-seguridad-fisica-btt-cap-6}
+
+Los controles de seguridad física (cuatro capas de acceso, biometría, CCTV $\geq$ 30 días, custodia de medios y control de acceso de terceros) se detallan en la sección del sitio principal de este subdocumento (RT-06.20 a RT-06.28). Se complementan con control de dispositivos extraíbles en los nodos on-premise y borrado seguro verificable de los medios que salen de servicio.

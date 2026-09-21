@@ -1,0 +1,34 @@
+% ------------------------------------------------------------------
+%  Tecnologías de software ofertadas
+%  Fragmento del Subdocumento 4.2, traido desde contenido.tex con
+%  \parte{partes/03_b_tecnologias}. Las rutas son relativas a la carpeta del
+%  subdocumento, nunca a la de main.tex.
+% ------------------------------------------------------------------
+
+\chapter{Tecnologías de software ofertadas}
+\label{sec:b-tecnologias-de-software-ofertadas}
+
+Las tecnologías se eligen bajo los criterios de neutralidad tecnológica, soporte vigente por los 56 meses contractuales y preferencia por servicios administrados y componentes de código abierto con estándares abiertos, de modo que el CLIENTE conserve la reversibilidad de la solución:
+
+\begin{itemize}
+  \item \textbf{B1 --- Aplicación.} Django monolito modular (Python) + Celery sobre AWS ECS Fargate (2--6 tareas con escala automática). La misma imagen se reutiliza en modo wms\_only dentro del ambiente on-premise.
+  \item \textbf{B2 --- BD transaccional nube (maestro).} Amazon Aurora PostgreSQL en sa-east-1 (Multi-AZ), con réplica pasiva promueble en us-east-1 para recuperación ante desastres (RTO $\leq$ 4 h / RPO $\leq$ 15 min).
+  \item \textbf{B3 --- BD transaccional on-premise.} PostgreSQL 16 (VM-02 Talca / VM-C02 Concepción): sistema de verdad de la bodega durante cortes de enlace, con flujo continuo hacia la réplica en nube por AWS DMS CDC sobre el WAL lógico (registro de escritura anticipada que permite replicar cambios en tiempo real) (RPO $\leq$ 15 min).
+  \item \textbf{B4 --- Broker de mensajería.} RabbitMQ local (colas offline por sitio) + SQS FIFO en nube (reconciliación) + EventBridge (eventos): cada sitio absorbe hasta 24 h de operación sin enlace con vuelco en orden estricto e idempotencia (D-AL-03).
+  \item \textbf{B5 --- Identidad (IdP maestro).} Keycloak en ECS/Fargate (OIDC/OAuth 2.1, MFA, SSO), autoridad única en sa-east-1 con cachés locales de solo lectura (ADR-06); el modelo completo se describe en la sección de seguridad.
+  \item \textbf{B6 --- Telemetría IoT.} AWS IoT Core + Greengrass v2 + sensores Ebyte ME31 (B-01/B-02): registro continuo de cadena de frío con decisión de bloqueo por excursión térmica 100 \% en el borde.
+  \item \textbf{B7 --- Observabilidad.} Plataforma única: instrumentación OpenTelemetry con colectores ADOT on-premise (VM-06, VM-C04, cross-dock; buffer en disco 24 h) que emiten a AMP (Prometheus), CloudWatch Logs, X-Ray y tableros Grafana OSS en sa-east-1 (ADR-14); sin herramientas duplicadas por ambiente.
+  \item \textbf{B8 --- Virtualización on-premise.} Proxmox VE/KVM + Ceph (12 OSD, réplica 2, 3 monitores): tolera la pérdida de cualquier nodo con quórum real; respaldo único 3-2-1-0 con NAS D-05 y pierna inmutable en nube.
+  \item \textbf{B9 --- Orquestación de contenedores de borde.} Docker/Docker Compose + WMS en modo reducido (mini-WMS) en los 3 cross-docking (E-01) y en el borde de Concepción: instalación y parcheo sin dependencia de la red, con paridad de versiones.
+  \item \textbf{B10 --- Gestión y configuración.} Ansible (F-02, parches/CIS) + Terraform/CDK IaC (multi-zona): configuración declarada como código versionado en el repositorio del CLIENTE.
+  \item \textbf{B11 --- Gestión de dispositivos de terreno (MDM).} N-13 --- Android Enterprise / Zebra DNA (servicio gestionado): enrolamiento por IMEI contra el usuario, política (cifrado local, PIN, modo quiosco), actualización Over-The-Air de la aplicación y de la caché de turno, inventario del parque y borrado remoto selectivo; sin infraestructura on-premise (equipo de TI de 4 personas).
+  \item \textbf{B12 --- Gestión de secretos.} AWS Secrets Manager + SSM Parameter Store (N-12): rotación automática, sin credenciales embebidas; consumo saliente por VPC Endpoint desde los nodos on-premise (ADR-15); credencial de emergencia en sobre sellado en el recinto de custodia.
+  \item \textbf{B13 --- Seguridad lógica.} WAF v2 + Shield + API Gateway + SIEM/Security Lake + EDR (F-03) + Macie: superficie expuesta mínima y detección concentrada en un solo registro, bajo política Zero Trust.
+  \item \textbf{B14 --- Analítica / BI.} Redshift Serverless (OLAP, 5 años) + QuickSight: separación OLTP/OLAP con latencia máxima de 4 h para los tableros del CLIENTE.
+  \item \textbf{B15 --- Licenciamiento.} Servicios AWS por servicio + OSS sin licencia (Keycloak, PostgreSQL, Proxmox VE, RabbitMQ): reversibilidad y ausencia de dependencia propietaria.
+\end{itemize}
+
+\section{Integración con el ERP y documentos tributarios}
+\label{sub:integracion-con-el-erp-y-documentos-tribut}
+
+El ERP de 2017 no se reemplaza ni se modifica (Cap. 10 del caso): permanece como única fuente de verdad tributaria. La solución entrega los datos de operación a través de la capa anticorrupción (ACL, VM-04) y el ERP emite los documentos tributarios (guía de despacho electrónica, factura, boleta y nota de crédito con folios SII), con acuse de recibo con efectos legales ---una sola verdad, un solo emisor. El acceso desde la nube a este ERP ocurre únicamente vía la ACL (celery-erp-sync $\rightarrow$ ACL, nunca escritura directa).

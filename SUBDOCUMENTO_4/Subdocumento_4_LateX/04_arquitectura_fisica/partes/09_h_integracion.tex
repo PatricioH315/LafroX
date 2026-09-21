@@ -1,0 +1,221 @@
+% ------------------------------------------------------------------
+%  Arquitectura de integración
+%  Fragmento del Subdocumento 4.2, traido desde contenido.tex con
+%  \parte{partes/09_h_integracion}. Las rutas son relativas a la carpeta del
+%  subdocumento, nunca a la de main.tex.
+% ------------------------------------------------------------------
+
+\chapter{Arquitectura de integración}
+\label{sec:h-arquitectura-de-integracion}
+
+Registro único de las integraciones de la solución: servicios, contratos, mensajería, versionado y gobierno. El marco normativo de esta sección se resume en la tabla de apertura de esta parte y se cita código por código en cada subsección.
+
+El riesgo principal del caso está en las costuras entre sistemas legados sin documentación de interfaces, no en los módulos nuevos.
+
+\section{Principios de integración}
+\label{sub:1-principios-de-integracion}
+
+\begin{enumerate}
+  \item \textbf{Contrato antes que conexión} (Art. 23 \textperiodcentered{} RT-05.16). Ninguna integración existe sin contrato publicado (OpenAPI 3.1 o AsyncAPI 2.6), dueño declarado y versión semántica. Una integración sin contrato no entra al catálogo y no se despliega.
+  \item \textbf{Asíncrono por defecto, síncrono por excepción} (Art. 19 \textperiodcentered{} RT-02.07/02.08). Toda dependencia entre módulos se modela como evento por la Capa 5. Solo las lecturas críticas de la venta (disponibilidad de stock, crédito del cliente) y los actos de fe pública (DTE al SII, autorización de pago) son síncronas, y siempre con timeout explícito.
+  \item \textbf{Idempotencia universal} (RT-02.06 \textperiodcentered{} S26). Toda escritura originada en terreno o en bodega lleva UUID de cliente y ventana de deduplicación documentada. El servidor es la fuente de verdad y resuelve conflictos por regla de negocio, nunca por marca de tiempo ciega.
+  \item \textbf{Bitácora de reconciliación auditable} (Art. 16.4 \textperiodcentered{} RT-03.12). Toda decisión de reconciliación registra qué transacción, qué conflicto, qué regla se aplicó, quién la aplicó y cuándo. Es un entregable auditable ante el mandante, no un registro técnico.
+  \item \textbf{El legado nunca se escribe directo} (RT-05.20 \textperiodcentered{} ADR-11). El ERP de 2017 se toca solo a través de la capa anticorrupción A-04. Ninguna cadena de supermercados, ningún portal y ningún módulo escribe al ERP.
+  \item \textbf{Zero Trust también en la integración} (Art. 21 \textperiodcentered{} D-AL-05). Todo tráfico on-premise $\rightarrow$ nube es saliente (HTTPS/443, MQTTS/8883). Las dos únicas excepciones entrantes están declaradas y acotadas (D-AL-05).
+  \item \textbf{Toda integración declara cómo falla} (RT-10.08 \textperiodcentered{} RT-09.08). Cada entrada del catálogo declara su comportamiento ante falla ---reintentar, degradar, diferir o suplir con procedimiento manual--- y se verifica con inyección de fallas.
+  \item \textbf{Ninguna integración interrumpe la ventana crítica} (RT-10.05, caso). Cargas masivas, reprocesos y despliegues de conectores se ejecutan fuera de 05:30--07:00 de lunes a sábado.
+\end{enumerate}
+
+\section{Vista de integración}
+\label{sub:2-vista-de-integracion}
+
+En texto, la vista de integración se organiza en cuatro dominios con tráfico saliente desde el terreno y el on-premise hacia la nube:
+
+\begin{itemize}
+  \item \textbf{Terreno (offline-first).} C-01 App Preventa (62 preventistas), C-02 App Reparto (\textasciitilde{}200 conductores) y C-03 HHT bodega (120 concurrentes).
+  \item \textbf{On-premise (5 sitios con cómputo).} A-01 Motor WMS (M1, M2 y M5 en modo wms\_only), A-03 RabbitMQ (buffer 24 h), A-04 capa anticorrupción (frontera única del ERP), B-02 Greengrass (buffer 14 h) y E-01 mini-WMS cross-dock (ventana de 3 h).
+  \item \textbf{Nube AWS sa-east-1.} Amazon API Gateway (Capa 3), Capa 4 con M1--M12 en Django + workers Celery, N-09 SQS FIFO, N-09 EventBridge, M11 Hub EDI GS1 (EANCOM \textperiodcentered{} GS1 XML \textperiodcentered{} EPCIS) y N-08 IoT Core.
+  \item \textbf{Terceros.} ERP 2017 (sin documentación de interfaces), SII (DTE y guía electrónica), cadenas de supermercados (hito enero 2029), Transbank Webpay/POS, GIS/mapas y notificaciones.
+\end{itemize}
+
+El flujo del tráfico: el terreno llama a la puerta de enlace (API Gateway); los HHT y el WMS publican al broker (A-03); el cross-dock (E-01) publica sus eventos críticos directo a SQS FIFO y solo el detalle del mini-WMS viaja a Talca --- lo crítico no depende de Talca (D-AL-04); Greengrass envía por IoT Core; y la Capa 4 consume las colas y alcanza el ERP únicamente a través de la capa anticorrupción (A-04), con una sola puerta hacia el legado. Las flechas desde el dominio on-premise hacia la nube son todas salientes.
+
+\section{Catálogo de servicios de integración}
+\label{sub:3-catalogo-de-servicios-de-integracion-rt-}
+
+El catálogo es el registro único de integraciones. Cada entrada tiene identificador estable, módulo dueño, contrato, versión y comportamiento ante falla. Vive versionado junto al código y se publica en el portal interno de desarrolladores servido por Amazon API Gateway (Capa 3).
+
+\subsection{Integraciones internas --- superficies y plano híbrido}
+
+Las integraciones internas se detallan en la Tabla~\ref{tab:t31}:
+
+\begin{tablalafrox}{Integraciones internas --- superficies y plano híbrido}{tab:t31}%
+  {G{0.06} F{0.12} F{0.12} F{0.14} G{0.08} F{0.12} Y}%
+  {\cab{ID} & \cab{Integración} & \cab{Modo} & \cab{Contrato} & \cab{Módulo} & \cab{Ventana crítica} & \cab{Comportamiento ante falla (RT-10.08)}}
+  INT-01 & App Preventa $\leftrightarrow$ plataforma (pedidos, stock, crédito, promociones, precios) & Síncrono para lectura + sincronización diferida idempotente para escritura & OpenAPI 3.1 /v1/preventa y /v1/sync & M3 & 09:00--18:00 & Caché de turno (saldo, stock, tarifa; TTL 8 h); el pedido se toma sin conexión y se confirma en la sincronización; no se pierde \\
+  INT-02 & App Reparto $\leftrightarrow$ plataforma (POD, entregas, devoluciones, cobranza, envases) & Sincronización diferida idempotente por lotes & OpenAPI 3.1 /v1/reparto y /v1/sync & M6, M7, M8 & 05:30--07:00 y 17:00--20:00 & Turno completo de 14 h sin señal; sincronización $\leq$ 10 min al reconectar (RT-03.12); acuse por lote (RF-06.07) \\
+  INT-03 & Broker on-premise $\rightarrow$ nube (reconciliación del WMS) & Asíncrono & AsyncAPI 2.6 \textperiodcentered{} SQS FIFO, MessageGroupId = sitio & M2, M5 & 22:00--06:00 & Buffer RabbitMQ 24 h; publicación cronológica al reconectar; el CD queda sincronizado $\leq$ 2 h tras un corte de 24 h \\
+  INT-04 & Cross-dock $\rightarrow$ Talca (detalle del mini-WMS) & Asíncrono broker a broker & AsyncAPI 2.6 \textperiodcentered{} AMQPS 5671 & M2 & 03:00--06:00 & Ventana de 3 h 100 \% local; los eventos críticos van directo a SQS y no dependen de Talca (D-AL-04) \\
+  INT-05 & Borde IoT $\rightarrow$ nube (cadena de frío) & Asíncrono, al menos una vez & AsyncAPI 2.6 \textperiodcentered{} MQTTS 8883 con X.509 por dispositivo & M9, M12 & 24$\times$7 & Buffer Greengrass 14 h; la detección de excursión y el bloqueo de despacho son 100 \% locales y no dependen de la nube \\
+  INT-12 & Réplica WMS $\rightarrow$ Aurora (continuidad) & Asíncrono CDC & WAL lógico (wal\_level=logical) por AWS DMS & M2 & continua & Excepción entrante declarada (D-AL-05); si la VPN cae, DMS encola en origen y reanuda sin pérdida --- RPO $\leq$ 15 min \\
+  INT-13 & Identidad: maestro $\rightarrow$ cachés locales & Asíncrono (importación del Realm cifrado por S3, saliente) & Exportación/importación de Realm Keycloak & Capa 7 & 24$\times$7 & $\Delta$ $\leq$ 8 h por TTL y $\leq$ 24 h por SCIM; sin conexiones entrantes hacia Keycloak \\
+  INT-14 & Observabilidad on-premise $\rightarrow$ plataforma & Asíncrono (OTLP) & OpenTelemetry & Capa 8 & 24$\times$7 & Buffer en disco 24 h; el envío diferido cierra el hueco al reconectar \\
+\end{tablalafrox}
+
+\subsection{Integraciones externas --- plataforma y terceros}
+
+Las integraciones externas se detallan en la Tabla~\ref{tab:t32}:
+
+\begin{tablalafrox}{Integraciones externas --- plataforma y terceros}{tab:t32}%
+  {G{0.05} F{0.11} F{0.11} F{0.13} F{0.12} F{0.11} Y}%
+  {\cab{ID} & \cab{Sistema} & \cab{Modo} & \cab{Contrato / estándar} & \cab{Volumen} & \cab{Ventana crítica} & \cab{Comportamiento ante falla (RT-10.08)}}
+  INT-06 & ERP 2017 (catálogo, stock valorizado, cobranzas, contabilidad) & Asíncrono por colas + síncrono solo lecturas & OpenAPI 3.1 de Puelche expuesto por la ACL (A-04); el ERP no publica contrato propio & $\approx$ 34.000 DTE/mes; cobranzas por turno & Cierre contable diario y primeros tres días hábiles del mes & Cortacircuito: preventa y reparto no se degradan; las colas retienen hasta 24 h; el desajuste se declara en la bitácora del Art. 16.4 \\
+  INT-07 & SII --- DTE, guía de despacho electrónica y acuse de recibo & Síncrono por la puerta de enlace & Formato de la autoridad tributaria (RT-05.23); firma conforme a la Ley 19.799 & $\approx$ 34.000 documentos/mes; pico en 05:30--07:00 & Emisión por turno & La entrega no se detiene: evidencia local (firma, QR, fotografía) y timbre diferido con folio reservado por dispositivo; reintento con retroceso exponencial --- cero guías de papel (RF-06.02) \\
+  INT-08 & Cadenas de supermercados --- canal moderno & Asíncrono (AS2) + API síncrona selectiva & EANCOM D.01B / GS1 XML (pedido, aviso de despacho, factura) y EPCIS para eventos de trazabilidad & 500 puntos de entrega del canal moderno & Ventana de 30 min (RF-12.10); hito enero de 2029 (RNF-12.01) & DLQ y bandeja de excepciones operada por un actor canónico (RF-12.05/12.06); alternativa manual declarada por acuerdo con cada cadena \\
+  INT-09 & Transbank Webpay y POS móvil & Síncrono por la puerta de enlace & API de la pasarela; idempotencia por transaction\_id & $\approx$ 1.400 entregas/día ($\approx$ 2.600 en el peak); $\approx$ 11.800 cobros en efectivo/mes & 05:30--07:00 & Doble captura sin conexión: el POS registra la transacción como pendiente para autorización diferida; si no procede, efectivo o giro a crédito con firma. El cobro nunca se pierde \\
+  INT-10 & GIS, mapas, ETA y geocercas & Síncrono por la puerta de enlace & API del proveedor GIS & Planificación diaria de $\approx$ 96 camiones & Planificación previa al despacho & Caché de mapas por zona en el dispositivo; degradación a ruta sin conexión con la secuencia ya cargada (M4); la entrega no se pierde \\
+  INT-11 & Notificaciones --- correo, aplicación, mensajería instantánea y SMS & Asíncrono por colas & API del proveedor de notificaciones & Avisos de despacho y de llegada por turno & Previo a la entrega & Cola local con entrega diferida; el canal se elige por cliente, porque buena parte del canal tradicional no usa correo (RT-16.21) \\
+  INT-15 & Telemetría de flota existente (camiones propios) & Asíncrono, solo lectura & API de la fuente existente (RT-17.06) & 42 vehículos propios; $\approx$ 420.000 km/mes & Operación diurna & Degrada a ruta planificada sin posición real; no se usa para control de jornada (D1, objeción sindical L577) \\
+\end{tablalafrox}
+
+\paragraph{Número de integraciones y volumen de mensajes por integración (numeral 14.2).}
+Se declaran 15 integraciones: 8 internas y 7 externas. El volumen se deriva de la volumetría del caso sobre 25 días hábiles al mes, con el peak de septiembre al doble, y se desglosa en la Tabla~\ref{tab:t33}:
+
+\begin{tablalafrox}{Volumen de mensajes por integración, derivado de la volumetría del caso}{tab:t33}%
+  {F{0.26} F{0.26} F{0.21} Y}%
+  {\cab{Integración} & \cab{Volumen en régimen} & \cab{Peak septiembre} & \cab{Derivación}}
+  Capa anticorrupción del ERP (asíncrona) & $\approx$ 4.700 mensajes/día & $\approx$ 9.400 & 1.240 pedidos + 46 recepciones + 1.400 preparaciones + 1.400 evidencias de entrega + $\approx$ 600 recaudaciones \\
+  Documentos tributarios y acuse (SII, síncrona) & $\approx$ 2.700 mensajes/día & $\approx$ 5.400 & 34.000 documentos/mes más su acuse, sobre 25 días \\
+  Eventos de trazabilidad GS1 EPCIS & $\approx$ 52.000 eventos/día & $\approx$ 104.000 & 260.000 líneas/mes $\times$ 5 eventos de ciclo, sobre 25 días \\
+  Telemetría de cadena de frío (IoT Core) & $\approx$ 13.200 mensajes/día & sin variación & 46 fuentes (28 puntos de cámara + 18 termógrafos) $\times$ 1 muestra cada 5 min \\
+  Telemetría de flota & $\approx$ 60.500 mensajes/día & $\approx$ 72.000 & 42 camiones propios $\times$ 1 posición cada 30 s durante 12 h de ruta \\
+  Sincronización de terreno (colas de dispositivo) & $\approx$ 13.000 escrituras/día & $\approx$ 26.000 & 1.240 pedidos + 1.400 evidencias + 10.400 confirmaciones de preparación \\
+  Intercambio electrónico con el canal moderno (Etapa 2) & $\approx$ 550 mensajes/día & $\approx$ 1.100 & 136 pedidos/día $\times$ 4 mensajes (pedido, confirmación, aviso de despacho, acuse) \\
+  Notificaciones multicanal & $\approx$ 2.800 mensajes/día & $\approx$ 5.600 & hora estimada de llegada y acuse por entrega \\
+  Autorización de pago (POS móvil) & $\approx$ 500 mensajes/día & $\approx$ 1.000 & fracción del canal tradicional que migra de efectivo a pago electrónico \\
+  Servicio de mapas y geocodificación & $\approx$ 200 llamadas/día & $\approx$ 400 & una corrida de ruteo por zona más recálculos por incidencia \\
+\end{tablalafrox}
+
+El total en régimen es de $\approx$ 150.000 mensajes al día, dominado por las dos series de tiempo ---trazabilidad y telemetría--- que por diseño no atraviesan la base transaccional: entran por el borde y se consolidan en la capa analítica (ADR-04). Las cinco integraciones restantes del catálogo son de configuración y administración, con volumen despreciable frente a estas cifras.
+
+\section{Contratos de integración}
+\label{sub:4-contratos-rt-05-16-rt-05-18-art-23}
+
+Los contratos se declaran por dimensión:
+
+\begin{itemize}
+  \item \textbf{API síncrona.} OpenAPI 3.1 por módulo, con ruta /v\{major\}/.... Metadatos obligatorios: x-owner (módulo dueño), x-version (semver), x-status (draft, stable, deprecated) y x-sunset (fecha de retiro).
+  \item \textbf{Eventos.} AsyncAPI 2.6 con JSON Schema versionado por evento. Cada evento declara productor único, consumidores registrados, clave de partición y política de reintento.
+  \item \textbf{Autenticación.} Superficies: OAuth 2.1 con PKCE. Servicio a servicio: mTLS. Máquina a máquina: credenciales de cliente con secreto de rotación automática. Todos los tokens los firma Keycloak (Capa 7).
+  \item \textbf{Validación.} Validación de esquema e inspección de carga útil en la puerta de enlace (Art. 21.2), antes de alcanzar la Capa 4. Un mensaje que no valida no entra: se rechaza con causa y queda registrado.
+  \item \textbf{Trazabilidad.} Todo llamado y todo evento propaga transaction\_id (OpenTelemetry) desde la Capa 3 hasta la Capa 6. Es la clave con la que se reconstruye una operación de extremo a extremo, conforme al Art. 23: quién, qué, cuándo, desde dónde y con qué valores anteriores y posteriores.
+\end{itemize}
+
+\subsection{Eventos canónicos del dominio}
+
+Los eventos son el vocabulario del sistema. Se nombran en pasado, son inmutables y llevan event\_id (UUID), occurred\_at, site\_id y transaction\_id. El catálogo de eventos canónicos del dominio se presenta en la Tabla~\ref{tab:t34}:
+
+\begin{tablalafrox}{Eventos canónicos del dominio}{tab:t34}%
+  {F{0.18} G{0.09} F{0.18} F{0.17} Y}%
+  {\cab{Evento} & \cab{Productor} & \cab{Consumidores} & \cab{Clave de partición} & \cab{Por qué existe (origen en el caso)}}
+  RecepcionConfirmada & M1 & M2, M9, ACL $\rightarrow$ ERP & site\_id & Origen de la trazabilidad de lote (Cap. 9.5: retiro sanitario en menos de 2 h) \\
+  StockReservado / ReservaLiberada & M2 & M3, M5 & sku\_id & Resuelve el doble compromiso de stock (decisión 16.1 N\textdegree{} 8) \\
+  PedidoConfirmado & M3, M11 & M4, M5, M7 & pedido\_id & Une preventa y canal moderno en un único flujo \\
+  MisionPreparada & M5 & M6, ACL $\rightarrow$ ERP & pedido\_id & Cierra el ciclo de bodega a andén \\
+  EntregaRegistrada & M6 & M7, M8, M10, SII & entrega\_id & Define \guillemotleft{}entrega cumplida\guillemotright{} y alimenta el OTIF (decisión 16.1 N\textdegree{} 1) \\
+  DevolucionRegistrada & M8 & M2, M7, M10 & entrega\_id & Efecto sobre el documento tributario ya emitido (decisión 16.1 N\textdegree{} 12) \\
+  EnvaseMovido & M8 & M2, M10 & cliente\_id & 68.000 canastillos y 9.400 pallets con 14 \% de pérdida anual (decisión 16.1 N\textdegree{} 10) \\
+  ExcursionTermicaDetectada & M9 (borde) & M5 (bloqueo), M10, alertas & shipment\_id & Alerta en menos de 5 s; el bloqueo de despacho es local (decisión 16.1 N\textdegree{} 4) \\
+  RendicionCerrada & M7 & M10, ACL $\rightarrow$ ERP & conductor\_id & Control del efectivo que hoy circula en ruta \\
+  DesviacionDeRutaDetectada & M12 & M10, M9 & ruta\_id & Costo de servir; no control de jornada (D1) \\
+\end{tablalafrox}
+
+\section{Mensajería (ADR-05)}
+\label{sub:5-mensajeria-rt-02-06-rt-02-07-adr-05}
+
+Los planos de mensajería y su emplazamiento se describen en la Tabla~\ref{tab:t35}:
+
+\begin{tablalafrox}{Mensajería (RT-02.06 \textperiodcentered{} RT-02.07 \textperiodcentered{} ADR-05)}{tab:t35}%
+  {F{0.24} F{0.24} F{0.24} Y}%
+  {\cab{Plano} & \cab{Tecnología} & \cab{Emplazamiento} & \cab{Rol}}
+  Buffer local de sitio & RabbitMQ (A-03) & VM-03 Talca ($\approx$ 3 M mensajes) \textperiodcentered{} VM-C04 Concepción \textperiodcentered{} broker en E-01 & Sostiene la autonomía de 24 h del centro de distribución. Es lo que permite que la bodega reciba, prepare y despache con el enlace caído. \\
+  Trabajo y reconciliación & SQS FIFO (N-09) & Nube & Orden garantizado por partición (MessageGroupId = sitio) y deduplicación; alimenta a celery-reconciliation y celery-erp-sync. \\
+  Bus de eventos de negocio & EventBridge (N-09) & Nube & Coreografía entre módulos y disparo de alertas y notificaciones. Un módulo publica; los interesados se suscriben. \\
+  Transporte hacia la nube & Shipper en VM-03 (modo wms\_only) & On-premise $\rightarrow$ nube & HTTPS 443 sobre VPC Endpoint SQS/PrivateLink (D-AL-03). AMQPS 5671 queda reservado a broker con broker on-premise. \\
+\end{tablalafrox}
+
+Garantías declaradas:
+
+\begin{itemize}
+  \item \textbf{Entrega al menos una vez}, con deduplicación en el consumidor. No se promete entrega exactamente una vez: se promete idempotencia verificable.
+  \item \textbf{Orden por partición, no orden global.} La partición es el sitio o la entidad de negocio, según el evento.
+  \item \textbf{DLQ por cola} con retención declarada, monitoreada por el equipo de operación y con bandeja de excepciones cuando el mensaje afecta a un tercero (EDI, DTE).
+  \item \textbf{Reintento con retroceso exponencial y variación aleatoria}; cortacircuitos sobre ERP, SII y Transbank; mamparos (aislamiento de fallos entre componentes) por integración: un fallo del ERP no degrada la preventa.
+  \item \textbf{Reconciliación determinista:} al reconectar, el conflicto de stock se resuelve por la regla de reserva declarada, nunca por marca de tiempo, y la decisión queda en la bitácora del Art. 16.4.
+\end{itemize}
+
+\section{Costuras híbridas --- amarre con la arquitectura física}
+\label{sub:6-costuras-hibridas-amarre-con-la-arquitec}
+
+La vista de integración y la vista física describen los mismos puntos de contacto y se amarran en la Tabla~\ref{tab:t36}, que se lee junto a la subsección de costuras híbridas de este mismo Subdocumento.
+
+\begin{tablalafrox}{Costuras híbridas --- amarre con la arquitectura física}{tab:t36}%
+  {Y F{0.24} F{0.24} F{0.24}}%
+  {\cab{Costura física} & \cab{Integración lógica} & \cab{Contrato} & \cab{Extremos}}
+  C1 --- VPN corporativa & portadora de INT-06 e INT-12 & IPsec/IKEv2, BGP, MTU 1436 & D-01 $\leftrightarrow$ VGW \\
+  C2 --- Réplica WMS $\rightarrow$ Aurora & INT-12 & WAL lógico / DMS CDC & VM-02 $\leftrightarrow$ Aurora \\
+  C4 --- Broker $\rightarrow$ SQS FIFO & INT-03 & AsyncAPI 2.6 & VM-03 $\leftrightarrow$ N-09 \\
+  C5 --- ERP por la ACL & INT-06 & OpenAPI 3.1 de Puelche & VM-04 $\leftrightarrow$ celery-erp-sync \\
+  C6 --- Identidad & INT-13 & Realm cifrado por S3 & Keycloak maestro $\leftrightarrow$ A-05 / VM-C03 \\
+  C7 --- IoT Greengrass & INT-05 & MQTTS 8883, X.509 & B-02 $\leftrightarrow$ N-08 \\
+  C8 --- Observabilidad & INT-14 & OTLP & F-01 $\leftrightarrow$ CloudWatch / X-Ray / AMP \\
+  C10 --- Apps de terreno & INT-01 / INT-02 & OpenAPI 3.1 & C-01 / C-02 $\leftrightarrow$ Capa 3 \\
+  C13 --- Cross-dock & INT-04 & AsyncAPI 2.6 / AMQPS & E-01 $\leftrightarrow$ VM-03 y $\leftrightarrow$ N-09 \\
+  C14 --- Notificaciones y EDI & INT-08 / INT-11 & GS1 / API de notificaciones & EventBridge $\leftrightarrow$ terceros \\
+  C15 --- Portales de la DMZ & INT-01 (lectura de stock, crédito y cobranza) & OpenAPI 3.1 & N-01/N-02/N-03 $\leftrightarrow$ Capa 3 \\
+  C16 --- Pago Transbank & INT-09 & API de la pasarela & Módulo integraciones $\leftrightarrow$ Webpay \\
+\end{tablalafrox}
+
+\section{Capa anticorrupción y estrangulamiento del legado}
+\label{sub:7-capa-anticorrupcion-y-estrangulamiento-d}
+
+Frontera única del ERP (A-04). El ERP de 2017 no tiene documentación de interfaces. En vez de descubrir su forma real dentro de cada módulo, se levanta una sola frontera: la ACL expone hacia adentro un contrato OpenAPI 3.1 propio de Puelche y absorbe hacia afuera la forma del ERP. Consecuencias:
+
+\begin{itemize}
+  \item El conocimiento del ERP queda concentrado y documentado en un solo componente, no disperso en doce módulos.
+  \item Ningún módulo, portal ni cadena de supermercados escribe al ERP: celery-erp-sync publica notificaciones por SQS y lee contratos por la ACL.
+  \item Cuando una capacidad del ERP se absorbe en la plataforma, se retira de la ACL sin tocar a los consumidores.
+\end{itemize}
+
+Estrangulamiento del WMS de 2013 (ADR-08). El WMS se reemplaza en la Etapa 1 por los módulos M1, M2 y M5 del monolito. Durante la coexistencia el legado queda detrás de la misma ACL, con una tabla de \guillemotleft{}capacidad absorbida\guillemotright{} ---recepción GS1, slotting, misiones de picking con HHT, conteo cíclico--- que se vacía ola a ola por sitio, con estrategia azul-verde y plan de reversión.
+
+Hub EDI GS1 (ADR-11). Una cadena nueva se incorpora por configuración de perfil (equivalencias GTIN por cadena, RF-12.03), no por desarrollo. El hub mapea cada cadena contra un modelo canónico GS1, no contra el ERP: es exactamente lo que evita construir una integración distinta por cada cadena (Cap. 17.4, punto 10 del caso).
+
+\section{Versionado, gobierno y evolución}
+\label{sub:8-versionado-y-politica-de-obsolescencia-r}
+
+Versionado semántico estricto (major/minor/patch) con evolución aditiva, preaviso mínimo de 6 meses antes de retirar una versión (RT-05.17) y doble versión concurrente durante migración. Los cambios disruptivos (major) requieren aprobación del Comité de Arquitectura. No se publica ni retira versiones en septiembre, diciembre ni los tres primeros días hábiles del mes (Cap. 13.2). Las especificaciones de cadenas de supermercados y del SII se versionan como perfiles del hub EDI.
+
+Gobierno: catálogo único versionado (toda integración con dueño, contrato, versión y comportamiento ante falla); pruebas de contrato en el pipeline (un cambio que rompe a un consumidor bloquea el despliegue); observabilidad por integración (latencia, error, DLQ, correlación por transaction\_id); y bandeja de excepciones de negocio para lo que afecta a terceros (EDI, DTE --- RF-12.05/12.06). El catálogo, las guías de resolución y la bandeja son los artefactos que hacen operable esta capa por el equipo de 4 personas del CLIENTE.
+
+\section{Carga y descarga masiva de datos}
+\label{sub:10-carga-y-descarga-masiva-de-datos-rt-05-}
+
+\begin{itemize}
+  \item \textbf{Carga inicial de maestros e históricos (ERP y WMS).} Proceso ETL por lotes con inserción idempotente por UUID, en ventana sin operación. Control: conteo previo y posterior por lote, conciliación de totales y bitácora de carga (quién, cuándo, lote, resultado); los rechazados van a cuarentena con reproceso.
+  \item \textbf{Descarga regulatoria (traza de lote, temperaturas, DTE, geolocalización).} Exportación asíncrona a CSV o Parquet, firmada y con suma de verificación. Control: registro de la extracción (solicitante, filtro, resultado) y control de acceso a datos sensibles (RT-16.09).
+  \item \textbf{Sincronización masiva de turno (terreno).} Sincronizadores con partición y reanudación más deduplicación; los medios van a S3 por objeto. Control: nivel de servicio comprometido: turno completo $\leq$ 10 min; métricas de sincronización en la Capa 8.
+  \item \textbf{Interfaces periódicas con terceros.} Colas con batch\_id y confirmación por lote. Control: monitoreo de DLQ y acuse por lote en la bandeja de excepciones.
+\end{itemize}
+
+Regla: ninguna carga masiva se ejecuta dentro de la ventana crítica 05:30--07:00, y toda carga queda registrada y es auditable.
+
+\section{Funciones que no operan sin conexión}
+\label{sub:11-funciones-que-no-operan-sin-conexion-rt}
+
+La declaración formal de funciones no disponibles en modo desconectado que exige RT-03.13 se detalla por componente en la tabla de emplazamiento de esta parte y se resume en la arquitectura lógica (Subdocumento 4.1). Desde la vista de integración la regla es una sola:
+
+\begin{itemize}
+  \item Lo transaccional crítico de terreno y de bodega opera sin conexión (14 h en terreno, 24 h en el centro de distribución). Lo que depende de la nube o de un tercero degrada con procedimiento manual declarado y sin pérdida de datos.
+  \item Ninguna función de la ventana crítica de despacho (05:30--07:00) depende de una integración externa: el DTE se timbra de forma diferida con folio reservado, el cobro se captura como pendiente, la excursión térmica se detecta y bloquea localmente, y la ruta ya está cargada en el dispositivo.
+\end{itemize}

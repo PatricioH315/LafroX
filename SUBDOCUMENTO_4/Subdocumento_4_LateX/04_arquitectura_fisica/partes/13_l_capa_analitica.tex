@@ -1,0 +1,29 @@
+% ------------------------------------------------------------------
+%  Capa analítica: emplazamiento y dimensionamiento
+%  Fragmento del Subdocumento 4.2, traido desde contenido.tex con
+%  \parte{partes/13_l_capa_analitica}. Las rutas son relativas a la carpeta del
+%  subdocumento, nunca a la de main.tex.
+% ------------------------------------------------------------------
+
+\chapter{Capa analítica: emplazamiento y dimensionamiento}
+\label{sec:l-capa-analitica-emplazamiento-y-dimension}
+
+La capa analítica es un componente exigido por el numeral 5.4 de las Transversales y por el Capítulo 18 del caso (OTIF, fill rate y costo de servir como criterios de aceptación). Desde la vista física, su emplazamiento y dimensionamiento son los siguientes:
+
+\begin{tablalafrox}{Componentes del módulo BI}{tab:t95}%
+  {F{0.24} F{0.23} F{0.24} Y}%
+  {\cab{Componente} & \cab{Ubicación} & \cab{Tecnología} & \cab{Responsabilidad}}
+  Motor OLAP / Warehouse & Cloud (AWS) & Amazon Redshift Serverless & Almacenamiento analítico desacoplado de OLTP. Consolida datos de Aurora PostgreSQL vía DMS CDC. Alimenta RF-11.01--RF-11.08 \\
+  Motor transaccional fuente & Cloud (AWS) & Amazon Aurora PostgreSQL (PostGIS) & Base OLTP de donde se extraen los datos hacia Redshift. Contiene datos de preventa, reparto, cobranza, bodega \\
+  Motor transaccional fuente (on-prem) & On-Premise (Talca) & PostgreSQL + PostGIS (local) & WMS de bodega. Sincroniza con Aurora vía DMS CDC (RPO $\leq$ 15 min) \\
+  Capa de procesamiento analítico & Cloud (AWS) & Celery workers (Django) + Redshift SQL & Cálculo de OTIF (RF-11.03), Fill Rate (RF-11.04), Costo de Servir (RF-11.02), Ocupación de Flota (RF-11.05), Segmentación (RF-11.08) \\
+  Distribución de reportes & Cloud (AWS) & Celery Beat + SES (correo) + S3 (almacenamiento PDF/XLSX) & RF-11.01: reportes automáticos semanales/mensuales \\
+  Tablero operacional & Cloud (AWS) & Grafana (autoservicio) o Angular SPA & RF-11.06: tablero de control en tiempo real. RF-16.02: acceso del cliente. RF-16.03: alertas de negocio \\
+  Sistema de alertas & Cloud (AWS) & CloudWatch + SNS + Celery & RF-16.03: alertamiento por síntomas de negocio. RF-11.05: alertas de ocupación \\
+  Portal de autoatención cliente & Cloud (AWS) & Angular SPA + API Gateway & RF-16.02: tableros para clientes con datos en tiempo real y exportación \\
+  Caché de indicadores & Cloud (AWS) & Amazon ElastiCache (Redis) & RNF-11.01: latencia $\leq$ 5 min para despliegue de indicadores \\
+\end{tablalafrox}
+
+El desacople OLAP/OLTP se materializa con Redshift Serverless (OLAP) operando independiente de Aurora PostgreSQL (OLTP); DMS CDC extrae cambios de forma incremental y continua sin bloquear transacciones. Los indicadores se calculan como vistas materializadas en Redshift (refresco cada 5--15 min) y se cachean en ElastiCache Redis para tableros de alta concurrencia. Resultado: picking mantiene $\leq$ 1s y preventa $\leq$ 1.5s mientras los gerentes consultan tableros simultáneamente.
+
+El dimensionamiento de la capa analítica en nube está incluido en la tabla de dimensionamiento nube de esta parte. La solución \textbf{no incorpora inteligencia artificial ni analítica predictiva} en el alcance contratado: el caso parte de un 41\,\% de recepciones sin registro de lote y predecir sobre esa base produce confianza injustificada. La capa se entrega preparada ---lago de datos en formato columnar y almacén analítico--- para incorporarlas cuando el CLIENTE alcance la madurez de datos necesaria.

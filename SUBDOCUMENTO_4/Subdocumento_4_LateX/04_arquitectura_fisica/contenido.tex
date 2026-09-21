@@ -1,0 +1,45 @@
+%% ============================================================================
+%%  04_arquitectura_fisica/contenido.tex
+%%
+%%  Subdocumento 4.2 del Formulario T-7 --- Arquitectura física y de despliegue.
+%%  Se monta desde main.tex con  \subdocumento{04_arquitectura_fisica}.
+%%
+%%  La carpeta es autocontenida:
+%%    partes/    las secciones, una por archivo, traídas con \parte{}
+%%    figuras/   el modelo de emplazamiento y los planos del recinto
+%%
+%%  Ninguna ruta de aquí sube con ../ ni parte de la raíz del repositorio, de
+%%  modo que mover la carpeta no rompe nada.
+%%
+%%  NUMERACIÓN. Cada pieza es un capítulo de la clase: capítulos 1..15,
+%%  secciones x.y y subsecciones x.y.z. El título de la parte no numera: es
+%%  un rótulo de apertura, de modo que ninguna sección del documento arrastra
+%%  el prefijo "1." de una sección contenedora. La losa (a)-(n) fue eliminada;
+%%  los títulos de las piezas nombran su contenido y las referencias internas
+%%  citan por nombre de sección, no por símbolo §.
+%% ============================================================================
+
+\phantomsection
+\addcontentsline{toc}{chapter}{Arquitectura física y de despliegue de la solución}
+\label{cap:arquitectura-fisica}
+\LFXtitulopreliminar{Arquitectura física y de despliegue de la solución}
+
+\nota{Parte 4.2 del subdocumento 4. La arquitectura lógica es la parte 4.1 y se
+entrega por separado; ambas comparten el registro de decisiones y la volumetría,
+y se leen juntas.}
+
+\parte{partes/01_vision_general}
+\parte{partes/02_a_emplazamiento}
+\parte{partes/03_b_tecnologias}
+\parte{partes/04_c_implementos}
+\parte{partes/05_d_sitio_principal}
+\parte{partes/06_e_sitio_secundario}
+\parte{partes/07_f_niveles_servicio}
+\parte{partes/08_g_operacion_desconectada}
+\parte{partes/09_h_integracion}
+\parte{partes/10_i_seguridad}
+\parte{partes/11_j_despliegue}
+\parte{partes/12_k_dimensionamiento}
+\parte{partes/13_l_capa_analitica}
+\parte{partes/14_m_decisiones_adr}
+\parte{partes/15_n_trazabilidad}

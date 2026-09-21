@@ -1,0 +1,112 @@
+%% ============================================================================
+%%  main.tex -- Armado del Subdocumento 4.2 (Arquitectura física y de despliegue)
+%%
+%%  Este archivo no contiene texto de la propuesta: solo metadatos y el orden
+%%  de los subdocumentos. Todo el contenido vive en carpetas, una por
+%%  subdocumento del Formulario T-7.
+%%
+%%  Compilar:  latexmk main.tex        (LuaLaTeX, forzado en latexmkrc)
+%%  Limpiar:   latexmk -c
+%%
+%%  ESTADO. Aquí está montado únicamente el subdocumento 4.2. Las llamadas de
+%%  los demás quedan comentadas: al incorporar cada carpeta, basta descomentar
+%%  su línea en el orden que corresponda. La numeración de capítulos, figuras
+%%  y tablas se recalcula sola.
+%% ============================================================================
+
+% Opciones: borrador | final | firma | sinfirma | carta | oficio | apa | sinnotas
+%
+%   borrador  marca de agua y notas de trabajo visibles (revisión interna)
+%   final     sin marca de agua y con las \nota{} apagadas (versión a entregar)
+%
+\documentclass[carta,firma]{lafrox}
+
+% Numeración de tablas y figuras continua en todo el documento: la primera
+% tabla es "Tabla 1", la segunda "Tabla 2", etc. La clase deriva de report,
+% que numera por capítulo (\thechapter.\arabic); se quita el reseteo por
+% capítulo y se pasa a contador corrido. Las listas de tablas y figuras
+% (\listadetablaslafrox/\listadefiguraslafrox) y los rótulos de continuación
+% de tablalafrox se alimentan solos de \thetable y \thefigure.
+\makeatletter
+\@removefromreset{table}{chapter}
+\@removefromreset{figure}{chapter}
+\makeatother
+\renewcommand{\thetable}{\arabic{table}}
+\renewcommand{\thefigure}{\arabic{figure}}
+
+% Listas de figuras y tablas con el lenguaje visual del índice general.
+% El formato de entrada replica \indicelafrox de lafrox.cls; las entradas
+% (figure/table) se componen con \caption, así que los archivos .lof y .lot
+% se generan solos.
+\titlecontents{figure}[0pt]
+  {\addvspace{6pt}\color{lafroxTinta}}
+  {\textcolor{lafroxGris}{Figura \thecontentslabel\enspace}}{}
+  {\normalfont\color{lafroxGris}\hfill\contentspage}
+\titlecontents{table}[0pt]
+  {\addvspace{6pt}\color{lafroxTinta}}
+  {\textcolor{lafroxGris}{Tabla \thecontentslabel\enspace}}{}
+  {\normalfont\color{lafroxGris}\hfill\contentspage}
+
+\makeatletter
+\newcommand{\listadefiguraslafrox}{%
+  \phantomsection\addcontentsline{toc}{chapter}{Lista de figuras}%
+  \LFXtitulopreliminar{Lista de figuras}%
+  \@starttoc{lof}%
+  \clearpage}
+\newcommand{\listadetablaslafrox}{%
+  \phantomsection\addcontentsline{toc}{chapter}{Lista de tablas}%
+  \LFXtitulopreliminar{Lista de tablas}%
+  \@starttoc{lot}%
+  \clearpage}
+\makeatother
+
+% ---------------------------------------------------------------------------
+%  Metadatos de la oferta. Se editan SOLO aquí: carátula, encabezados, pies y
+%  metadatos del PDF se alimentan de estas claves. Las que no se declaran
+%  toman el valor por defecto de lafrox.cls.
+%
+%  PENDIENTE antes de entregar: confirmar la razón social, el RUT y el
+%  domicilio definitivos del proponente (Art. 39 y 43.3).
+% ---------------------------------------------------------------------------
+\datoslafrox{
+  documento  = Propuesta Técnica,
+  subtitulo  = Subdocumento 4 --- Arquitectura de la solución,
+  alcance    = Parte 4.2 --- Arquitectura física y de despliegue,
+  formulario = {Formularios T-7 y T-21},
+  fecha      = 05 de octubre de 2026,
+  version    = 2.0,
+}
+
+\begin{document}
+
+\portadalafrox
+\indicelafrox
+\listadefiguraslafrox
+\listadetablaslafrox
+
+% ---------------------------------------------------------------------------
+%  SUBDOCUMENTOS DEL FORMULARIO T-7
+%
+%  El orden de estas llamadas ES el orden del informe.
+%  El Informe 2 (T-22, 05-10-2026) cubre los subdocumentos 1 a 9 y el 13.
+% ---------------------------------------------------------------------------
+
+% \subdocumento{01_presentacion_empresa}
+% \subdocumento{02_problema_necesidad}
+% \subdocumento{03_esquema_solucion_alcance}
+% \subdocumento{04_arquitectura_logica}      % parte 4.1
+\subdocumento{04_arquitectura_fisica}        % parte 4.2
+% \subdocumento{05_modelo_datos}
+% \subdocumento{06_metodologias}
+% \subdocumento{07_plan_trabajo_edt}
+% \subdocumento{08_plan_riesgos}
+% \subdocumento{09_plan_calidad}
+% \subdocumento{13_innovaciones}
+
+%  Subdocumentos 10, 11, 12 y 14: entran en la propuesta final.
+% \subdocumento{10_operacion_niveles_servicio}
+% \subdocumento{11_planes_operacion}
+% \subdocumento{12_equipo_subcontrataciones}
+% \subdocumento{14_ventajas_beneficios_consolidacion}
+
+\end{document}
