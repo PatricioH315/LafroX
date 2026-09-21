@@ -311,7 +311,8 @@
 % ---------------------------------------------------------------------------
 \titleformat{\chapter}[display]
   {\normalfont\raggedright}
-  {\color{lafroxGris}\LFXrotulo{\chaptertitlename\ \thechapter}}
+  {\intersemibold\fontsize{11pt}{13pt}\selectfont\color{lafroxFuerte}%
+   \MakeUppercase{\chaptertitlename\ \thechapter}}
   {12pt}
   {\intersemibold\fontsize{25pt}{28pt}\selectfont\color{lafroxFuerte}}
 
