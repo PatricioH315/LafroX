@@ -18,7 +18,7 @@ La capa analítica es un componente exigido por el numeral 5.4 de las Transversa
   Motor transaccional fuente (on-prem) & On-Premise (Talca) & PostgreSQL + PostGIS (local) & WMS de bodega. Sincroniza con Aurora vía DMS CDC (RPO $\leq$ 15 min) \\
   Capa de procesamiento analítico & Cloud (AWS) & Celery workers (Django) + Redshift SQL & Cálculo de OTIF (RF-11.03), Fill Rate (RF-11.04), Costo de Servir (RF-11.02), Ocupación de Flota (RF-11.05), Segmentación (RF-11.08) \\
   Distribución de reportes & Cloud (AWS) & Celery Beat + SES (correo) + S3 (almacenamiento PDF/XLSX) & RF-11.01: reportes automáticos semanales/mensuales \\
-  Tablero operacional & Cloud (AWS) & Grafana (autoservicio) o Angular SPA & RF-11.06: tablero de control en tiempo real. RF-16.02: acceso del cliente. RF-16.03: alertas de negocio \\
+  Tablero operacional & Cloud (AWS) & CloudWatch Dashboards + Angular SPA & RF-11.06: tablero de control en tiempo real. RF-16.02: acceso del cliente. RF-16.03: alertas de negocio \\
   Sistema de alertas & Cloud (AWS) & CloudWatch + SNS + Celery & RF-16.03: alertamiento por síntomas de negocio. RF-11.05: alertas de ocupación \\
   Portal de autoatención cliente & Cloud (AWS) & Angular SPA + API Gateway & RF-16.02: tableros para clientes con datos en tiempo real y exportación \\
   Caché de indicadores & Cloud (AWS) & Amazon ElastiCache (Redis) & RNF-11.01: latencia $\leq$ 5 min para despliegue de indicadores \\

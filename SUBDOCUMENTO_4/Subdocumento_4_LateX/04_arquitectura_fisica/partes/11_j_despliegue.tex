@@ -87,7 +87,7 @@ Todo el tráfico on-premise $\rightarrow$ nube es outbound (HTTPS/443, MQTTS/888
   {Y F{0.26} F{0.26}}%
   {\cab{Flujo} & \cab{Protocolo} & \cab{Destino}}
   Broker (shipper VM-03) $\rightarrow$ SQS FIFO & HTTPS 443 (VPC Endpoint SQS/PrivateLink) & AWS \\
-  Telemetría ADOT $\rightarrow$ CloudWatch/AMP & HTTPS 443 & AWS \\
+  Telemetría ADOT $\rightarrow$ CloudWatch & HTTPS 443 & AWS \\
   Greengrass $\rightarrow$ IoT Core & MQTTS 8883 (X.509) & AWS \\
   SSM Agent (todos los nodos) & HTTPS 443 saliente & SSM Endpoint regional \\
   Sync WMS Concepción $\rightarrow$ Talca & TCP 8080 / 5432 & SRV-TALCA (on-prem) \\
@@ -115,7 +115,6 @@ La capa cloud y su estrategia Multi-AZ se resumen en la Tabla~\ref{tab:t66}:
   {\cab{Componente} & \cab{AZ primaria} & \cab{AZ secundaria} & \cab{Failover automático}}
   Aurora PostgreSQL & sa-east-1a (Writer) & sa-east-1b / sa-east-1c (2 Readers/Failover) & $<$ 30 s \\
   DynamoDB & Multi-AZ nativo & --- & Transparente \\
-  EventBridge & 3 brokers en 3 AZ & --- & Reelección de líder \\
   ECS Fargate & sa-east-1a & sa-east-1b & Application Auto Scaling re-scheduling \\
   ElastiCache Redis & sa-east-1a (Primary) & sa-east-1b (Replica) & $<$ 60 s \\
   ALB & sa-east-1a & sa-east-1b & Transparente \\
@@ -171,8 +170,8 @@ Identidad sin conmutación local: el maestro Keycloak está en la nube y las cac
 
 El maestro vive en la nube (Multi-AZ) con réplica DR us-east-1; las cachés locales son de solo lectura. No existe maestro local a promover, por lo que la identidad no depende del switchover.
 
-\section{Respaldos --- esquema 3-2-1-0}
-\label{sub:5-respaldos-esquema-3-2-1-0-rnf-20-07}
+\section{Respaldos --- esquema 3-2-1-1-0}
+\label{sub:5-respaldos-esquema-3-2-1-1-0-rnf-20-07}
 
 Esquema único para toda la arquitectura híbrida (nube + on-premise):
 
@@ -190,7 +189,7 @@ Custodia física: medio de respaldo transportable, cifrado y rotado semanal, tra
 
 El plan AWS Backup se detalla en la Tabla~\ref{tab:t69}:
 
-\begin{tablalafrox}{Respaldos --- esquema 3-2-1-0}{tab:t69}%
+\begin{tablalafrox}{Respaldos --- esquema 3-2-1-1-0}{tab:t69}%
   {F{0.24} Y F{0.24} F{0.24}}%
   {\cab{Recurso} & \cab{Frecuencia} & \cab{Retención} & \cab{Destino}}
   Aurora PostgreSQL & Diario + PITR (restauración a un instante específico) continuo & 35 días & Backup Vault (cifrado CMK) \\

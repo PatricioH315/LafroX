@@ -21,15 +21,49 @@ La arquitectura se describe conforme a la norma ISO/IEC/IEEE 42010 sobre el marc
 
 ## Modelo de emplazamiento híbrido
 
-
-> **Tabla 21** — Modelo de Emplazamiento Híbrido · 6 filas · ver planilla del subdocumento
-
-La justificación componente por componente conforme a los criterios del Art. 16.2 (latencia, criticidad operacional, volumen de datos, restricciones regulatorias, disponibilidad de conectividad y costo total de propiedad) se desarrolla en la tabla de emplazamiento componente por componente que acompaña a esta parte: 36 componentes, 11 on-premise puros, 12 híbridos con pieza en ambos dominios y 13 servicios administrados de nube pura (serie N-01…N-13).
+La solución se despliega en dos dominios —nube pública y on-premise— conectados por túneles VPN cifrados, con la premisa de que cada dominio puede operar de forma independiente cuando el enlace no está disponible.
 
 
-![Modelo de Emplazamiento Híbrido](../Diagramas/ARQF-01_Modelo_emplazamiento_hibrido.png)
+### Dominio nube (AWS sa-east-1)
 
-Figura 15. Modelo de Emplazamiento Híbrido.
+La nube concentra la carga principal de la solución. Todos los servicios se despliegan en al menos dos zonas de disponibilidad dentro de la región sa-east-1, de modo que la caída de un centro de datos de AWS no interrumpe la operación. La aplicación Django corre en contenedores ECS Fargate y atiende los procesos de preventa, reparto, canal moderno y el portal de clientes. Aurora PostgreSQL almacena la base de datos transaccional maestra y recibe en tiempo real las transacciones que se originan en las bodegas a través del servicio de replicación DMS CDC.
+
+Todo el tráfico externo ingresa por API Gateway, donde WAF v2 valida las solicitudes y Shield protege contra ataques de denegación de servicio, antes de que el tráfico alcance la aplicación. Cuando las bodegas reconectan tras un corte de enlace, las transacciones pendientes llegan a la cola SQS FIFO, que las procesa en el orden exacto en que ocurrieron y sin duplicados. Cuando la aplicación registra un hecho relevante —una entrega confirmada, una excursión térmica o un pedido del canal moderno—, Celery despacha las tareas derivadas: enviar la notificación al cliente, actualizar los tableros analíticos, emitir el documento tributario al SII y, en la etapa de cadenas de supermercados, transmitir el acuse por EDI.
+
+La telemetría de cadena de frío llega desde los gateways Greengrass en las bodegas hasta IoT Core en la nube. La capa analítica se apoya en Redshift Serverless para consultas históricas de hasta 5 años, y QuickSight publica los tableros de gestión del CLIENTE. La observabilidad se consolida en CloudWatch, que recibe logs, métricas y trazas tanto de los servicios en nube como de los colectores on-premise cuando estos disponen de enlace, y expone los tableros de operación sin infraestructura adicional que mantener. La identidad la gobierna Keycloak, que corre como servicio maestro en Fargate y distribuye las credenciales hacia las cachés locales de cada sitio. Una réplica pasiva de la infraestructura crítica en us-east-1 sostiene la recuperación ante desastres.
+
+
+### Dominio on-premise (5 sitios con cómputo)
+
+Cada centro de distribución mantiene su propia pila local: la misma aplicación Django corre en modo WMS contra una base PostgreSQL 16 local, un broker RabbitMQ que encola las transacciones y una caché de Keycloak que sostiene la sesión de los operarios. En CD Talca, un clúster Proxmox VE de 3 nodos con almacenamiento Ceph aloja las VMs (VM-01 a VM-06); en CD Concepción, un servidor de borde replica la misma pila en formato reducido (VM-C01 a VM-C04). Los tres cross-docking (Curicó, Chillán y Los Ángeles) operan con un mini-PC industrial que corre un mini-WMS en Docker. La capa anticorrupción del ERP (VM-04, Talca) es la única puerta hacia el sistema legado. Los gateways IoT Greengrass procesan la cadena de frío en el borde, con detección de excursión térmica y bloqueo de despacho 100 % local. Un NAS cifrado (D-05) guarda la pierna local de respaldo 3-2-1-1-0.
+
+
+### Conexión entre dominios
+
+Los dos dominios se conectan mediante túneles VPN IPsec Site-to-Site cifrados con AES-256-GCM, terminados en firewalls FortiGate o Palo Alto en el lado on-premise y en AWS VPN Gateway en el lado nube, con enrutamiento dinámico BGP. Cada centro de distribución dispone de tres caminos WAN independientes —fibra óptica, enlace satelital Starlink y red móvil LTE de dos proveedores— con conmutación automática en menos de 30 segundos si uno falla. El tráfico entre dominios es siempre saliente desde el on-premise hacia la nube, y se organiza en seis flujos:
+
+- **Datos transaccionales.** La base PostgreSQL local replica continuamente sus cambios hacia Aurora en la nube a través de DMS CDC, con un objetivo de pérdida de datos de 15 minutos o menos.
+- **Eventos de bodega.** Las transacciones del WMS se encolan en RabbitMQ local y, al disponer de enlace, se vuelcan en orden cronológico a SQS FIFO en la nube para su reconciliación.
+- **Telemetría de cadena de frío.** Los sensores alimentan al gateway Greengrass en el borde, que procesa las alertas localmente y reenvía los registros a IoT Core en la nube por MQTTS.
+- **Observabilidad.** Los colectores ADOT locales almacenan métricas y trazas en disco durante un máximo de 24 horas y las envían a CloudWatch en la nube cuando el enlace está disponible.
+- **Identidad.** Keycloak maestro en la nube exporta las credenciales de forma cifrada a través de S3, y las cachés locales de cada sitio las importan para sostener las sesiones de los operarios sin depender del enlace.
+- **Terreno.** Los terminales móviles se comunican con API Gateway en la nube cuando tienen señal; cuando no la tienen, operan contra su buffer local y sincronizan al reconectar de forma idempotente.
+
+Cuando el enlace cae, cada sitio sigue operando con su pila local: la bodega contra PostgreSQL y RabbitMQ locales, el terreno contra su caché de turno, y el cross-docking contra su mini-WMS. Al reconectar, la sincronización es determinista y no genera duplicados. El detalle de la autonomía por ámbito se desarrolla en la sección de operación desconectada de este mismo capítulo.
+
+
+### Emplazamiento componente por componente
+
+> **Tabla 21a** — Emplazamiento: componentes de nube pura (servicios administrados AWS sa-east-1) · 14 filas · ver planilla del subdocumento
+
+> **Tabla 21b** — Emplazamiento: componentes on-premise · 11 filas · ver planilla del subdocumento
+
+> **Tabla 21c** — Emplazamiento: componentes híbridos · 7 filas · ver planilla del subdocumento
+
+
+![Diagrama de arquitectura física de la solución](../Diagramas/ARQF-01_Modelo_emplazamiento_hibrido.png)
+
+Figura 15. Diagrama de arquitectura física de la solución.
 
 
 ### Instalaciones de la red on-premise
@@ -130,9 +164,9 @@ Los componentes de sala ofertados se detallan a continuación:
 
 - **Conmutación/retorno.** failover en 8 pasos semiautomáticos (detección Route 53 < 5 min, promoción Aurora, escalado ECS Fargate, DNS, validación) con los pasos 4–7 automatizados mediante AWS Systems Manager Automation; retorno (failback) en 6 pasos con reconciliación determinista de las transacciones generadas durante la contingencia.
 
-- **Pruebas.** conmutación real dos veces al año midiendo RTO y RPO efectivos con informe al CLIENTE, junto con la restauración mensual verificada con cero errores (esquema 3-2-1-0).
+- **Pruebas.** conmutación real dos veces al año midiendo RTO y RPO efectivos con informe al CLIENTE, junto con la restauración mensual verificada con cero errores (esquema 3-2-1-1-0).
 
-- **Respaldos 3-2-1-0 (esquema único nube + on-premise).** la pierna «1 inmutable» vive en la nube (S3 Object Lock en modo Compliance + AWS Backup Vault Lock); el NAS on-premise (D-05, WORM local + clave CMK independiente) es la copia local de recuperación rápida (RTO 4 h); la bóveda de custodia física externa completa la copia offsite.
+- **Respaldos 3-2-1-1-0 (esquema único nube + on-premise).** la pierna «1 inmutable» vive en la nube (S3 Object Lock en modo Compliance + AWS Backup Vault Lock); el NAS on-premise (D-05, WORM local + clave CMK independiente) es la copia local de recuperación rápida (RTO 4 h); la bóveda de custodia física externa completa la copia offsite.
 
 Los componentes del sitio secundario se detallan a continuación:
 
@@ -617,12 +651,12 @@ Identidad sin conmutación local: el maestro Keycloak está en la nube y las cac
 El maestro vive en la nube (Multi-AZ) con réplica DR us-east-1; las cachés locales son de solo lectura. No existe maestro local a promover, por lo que la identidad no depende del switchover.
 
 
-### Respaldos — esquema 3-2-1-0
+### Respaldos — esquema 3-2-1-1-0
 
 Esquema único para toda la arquitectura híbrida (nube + on-premise):
 
 
-> **Tabla 68** — 5. Respaldos — esquema 3-2-1-0 · 5 filas · ver planilla del subdocumento
+> **Tabla 68** — 5. Respaldos — esquema 3-2-1-1-0 · 5 filas · ver planilla del subdocumento
 
 D-05 (NAS local con WORM) es la copia local de recuperación rápida y NO cuenta como la pierna inmutable; permite restaurar el WMS en ≤ 4 h sin depender del enlace WAN. RPO ≤ 15 min por AWS DMS CDC del WAL lógico (registro de escritura anticipada que permite replicar cambios en tiempo real, wal_level=logical) hacia la nube antes de la copia local.
 
@@ -631,7 +665,7 @@ Custodia física: medio de respaldo transportable, cifrado y rotado semanal, tra
 Plan AWS Backup:
 
 
-> **Tabla 69** — 5. Respaldos — esquema 3-2-1-0 · 6 filas · ver planilla del subdocumento
+> **Tabla 69** — 5. Respaldos — esquema 3-2-1-1-0 · 6 filas · ver planilla del subdocumento
 
 Vault Lock con enfriamiento de 3 días y retención mínima de 1 año; una vez bloqueado, ni la cuenta raíz puede eliminar respaldos. Retención sanitaria: trazabilidad 5 años + vida útil (D.S. 977/96), consistente con el lago analítico S3 y el repositorio de datos históricos.
 
@@ -779,7 +813,7 @@ En nube, el 3× se absorbe por auto-scaling (Fargate 2→6, Celery 2→4, Lambda
 
 > **Tabla 84** — 7. Umbrales de desempeño (percentil p95) · 7 filas · ver planilla del subdocumento
 
-Los umbrales se verifican con monitoreo OTel/Prometheus (CloudWatch) y se verifican en preproducción con las pruebas de carga y estrés.
+Los umbrales se verifican con monitoreo CloudWatch y se prueban en preproducción con las pruebas de carga y estrés.
 
 
 ### Primer cuello de botella
@@ -900,7 +934,7 @@ Registro consolidado de las quince decisiones de arquitectura que condicionan es
 
 ### ADR-09 · Estrategia DR
 
-**Decisión adoptada.** Activo-pasivo warm standby multi-región: réplica continua DMS CDC + Aurora WAL hacia us-east-1; DRP local Talca→Concepción (RTO +1–2 h); pruebas reales 2×/año; respaldo 3-2-1-0 con S3 Object Lock.
+**Decisión adoptada.** Activo-pasivo warm standby multi-región: réplica continua DMS CDC + Aurora WAL hacia us-east-1; DRP local Talca→Concepción (RTO +1–2 h); pruebas reales 2×/año; respaldo 3-2-1-1-0 con S3 Object Lock.
 
 **Alternativas descartadas.** *Activo-activo*: duplica infraestructura transaccional y exige reconciliación de doble escritura para ~105 TPS sin beneficio medible frente al RTO comprometido. *Backup + restore frío*: RTO 24–72 h, incumple RNF-20.06. *Solo intrarregional (sin us-east-1)*: mantiene RTO ≤ 4 h ante falla de AZ pero no ante caída de toda la región; se declara como postura mínima si el CLIENTE no aprueba Art. 23.
 
@@ -940,11 +974,11 @@ Registro consolidado de las quince decisiones de arquitectura que condicionan es
 
 ### ADR-14 · Plataforma de observabilidad
 
-**Decisión adoptada.** Plataforma única en nube: instrumentación OpenTelemetry, colectores ADOT on-premise con buffer 24 h en disco, métricas en AMP (13 meses), logs en CloudWatch (12+24 meses), trazas en X-Ray (30 d), tableros Grafana OSS.
+**Decisión adoptada.** Plataforma única en nube: instrumentación OpenTelemetry, colectores ADOT on-premise con buffer 24 h en disco, logs en CloudWatch Logs (12+24 meses), métricas en CloudWatch Metrics (13 meses) y trazas en CloudWatch con retención declarada. Tableros nativos de CloudWatch para operación.
 
-**Alternativas descartadas.** *Prometheus+Grafana+Loki autoadministrado local + plataforma cloud*: constituye dos plataformas (viola Art. 16.4 y RT-03.16 que exigen «la misma»); VM-06 no tiene capacidad para sostenerlo. *Solo CloudWatch nativo*: pierde compatibilidad PromQL/Grafana y portabilidad de reglas de alerta.
+**Alternativas descartadas.** *Prometheus+Grafana+Loki autoadministrado local + plataforma cloud*: constituye dos plataformas (viola Art. 16.4 y RT-03.16 que exigen «la misma»); VM-06 no tiene capacidad para sostenerlo. *AMP + X-Ray + Grafana*: cuatro servicios de observabilidad para un equipo de 4 personas; complejidad operativa desproporcionada sin ganancia funcional sobre CloudWatch nativo.
 
-**Criterio de selección.** Art. 16.4 y RT-03.16 piden una plataforma, no dos; buffer ADOT resuelve «sin puntos ciegos» durante corte; ninguna decisión de la ventana 05:30–07:00 depende de un tablero; sin lock-in (OTel + AMP/PromQL + Grafana OSS portables); 4 personas no operan servidores de observabilidad. Trazabilidad: BA Art. 16.4 · RT-03.16 · RT-14.01–09 · RT-09.01 · Art. 16.3. Relacionada: D14 (Arq. Lógica).
+**Criterio de selección.** Art. 16.4 y RT-03.16 piden una plataforma, no dos; buffer ADOT resuelve «sin puntos ciegos» durante corte; ninguna decisión de la ventana 05:30–07:00 depende de un tablero; CloudWatch es nativo de AWS y no requiere infraestructura adicional; 4 personas no operan servidores de observabilidad. Trazabilidad: BA Art. 16.4 · RT-03.16 · RT-14.01–09 · RT-09.01 · Art. 16.3. Relacionada: D14 (Arq. Lógica).
 
 ### ADR-15 · Gestión de secretos
 

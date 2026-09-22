@@ -246,7 +246,7 @@
   domicilio     = {Av. Brasil 2241, Valparaíso},
   correo        = {contacto@lafrox.cl},
   telefono      = {+56 32 250 4100},
-  nomenclatura  = {SOBRE2\_LAFROX\_OFERTA\_TECNICA\_20261005.ZIP},
+  nomenclatura  = {},
 }
 
 % Monograma tipografico: marca provisional mientras no exista archivo de logo.

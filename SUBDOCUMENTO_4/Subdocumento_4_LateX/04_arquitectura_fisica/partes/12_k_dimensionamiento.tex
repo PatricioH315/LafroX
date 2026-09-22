@@ -219,7 +219,6 @@ El dimensionamiento en nube por componente se resume en la Tabla~\ref{tab:t82}:
   Aurora PostgreSQL (writer \newline reader) & db.r6g.large $\times$ 2 AZ & db.r6g.xlarge + 2 readers & CPU $>$ 60 \% / Conexiones $>$ 80 \% \\
   ElastiCache Redis & cache.r6g.large & cache.r6g.xlarge & Memoria $>$ 75 \% (stock/crédito $<$ 2 s) \\
   DynamoDB (telemetría IoT cruda) & On-demand & On-demand & Sin gestión de capacidad \\
-  Amazon EventBridge & Serverless & Serverless & Escala con el evento \\
   AWS IoT Core (MQTT) & \textasciitilde{}270 dispositivos & \textasciitilde{}300+ & Concurrencia de terreno \\
   Keycloak IdP maestro (Fargate) & 1 tarea 1 vCPU / 2 GB & 2 tareas (Multi-AZ) & CPU $>$ 60 \% \\
 \end{tablalafrox}
@@ -227,8 +226,8 @@ El dimensionamiento en nube por componente se resume en la Tabla~\ref{tab:t82}:
 Escalado automático (RT-09.04):
 
 \begin{itemize}
-  \item \textbf{Predictivo + reactivo (ADR-12).} pre-warm en agosto de las tareas ECS, concurrencia reservada Lambda y EventBridge; reactivo con Target Tracking en $<$ 2 min \textperiodcentered{} aprovisionamiento en $<$ 3 min \textperiodcentered{} cooldown 60 s.
-  \item \textbf{Serverless-first.} DynamoDB On-Demand, Lambda y EventBridge escalan sin configuración adicional; la capacidad se paga por uso (sin capacidad ociosa, RT-15.01 --- FinOps Cloud del Subdocumento 4.1).
+  \item \textbf{Predictivo + reactivo (ADR-12).} pre-warm en agosto de las tareas ECS, concurrencia reservada Lambda; reactivo con Target Tracking en $<$ 2 min \textperiodcentered{} aprovisionamiento en $<$ 3 min \textperiodcentered{} cooldown 60 s.
+  \item \textbf{Serverless-first.} DynamoDB On-Demand y Lambda escalan sin configuración adicional; la capacidad se paga por uso (sin capacidad ociosa, RT-15.01 --- FinOps Cloud del Subdocumento 4.1).
 \end{itemize}
 
 \section{Plan de capacidad y crecimiento 3$\times$ sin rediseño}
@@ -265,7 +264,7 @@ Los umbrales de desempeño por operación se fijan en la Tabla~\ref{tab:t84}:
   Búsqueda con criterios compuestos & $\leq$ 3 s \\
 \end{tablalafrox}
 
-Los umbrales se verifican con monitoreo OTel/Prometheus (CloudWatch) y se prueban en Pre-Producción (subsección de pruebas de carga y estrés).
+Los umbrales se verifican con monitoreo CloudWatch y se prueban en Pre-Producción (subsección de pruebas de carga y estrés).
 
 \section{Primer cuello de botella}
 \label{sub:8-primer-cuello-de-botella-rt-09-05}
@@ -274,7 +273,7 @@ VM-02 (PostgreSQL --- escritura transaccional del maestro de bodega) se satura p
 
 \textbf{Detección:} p95 de escritura $>$ 800 ms; commit $\times$3 sobre la base; IO wait $>$ 15 \%; cola Backend $>$ 5--10. \textbf{Mitigación:} 1) escala vertical 8$\rightarrow$12 vCPU / 32$\rightarrow$64 GB (margen N+1); 2) particionado mensual + PgBouncer (pooler de conexiones); 3) réplica de solo lectura; 4) 4.\textordmasculine{} nodo / sharding al agotar margen.
 
-En nube el equivalente es Aurora (writer + readers); EventBridge/SQS absorben el pico de sincronización 17:00--20:00 (ADR-05).
+En nube el equivalente es Aurora (writer + readers); SQS FIFO absorbe el pico de sincronización 17:00--20:00 (ADR-05).
 
 \section{Degradación controlada}
 \label{sub:9-degradacion-controlada-rt-09-08}

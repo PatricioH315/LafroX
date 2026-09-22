@@ -49,7 +49,7 @@ Registro consolidado de las quince decisiones de arquitectura que condicionan es
 \section{ADR-05 \textperiodcentered{} Mensajería asíncrona}
 \label{sub:adr-05}
 
-\textbf{Decisión adoptada.} RabbitMQ local por sitio (buffer 24 h) + shipper idempotente $\rightarrow$ SQS FIFO (VPC Endpoint outbound) + EventBridge (eventos de negocio) + IoT Core MQTT (ingesta edge).
+\textbf{Decisión adoptada.} RabbitMQ local por sitio (buffer 24 h) + shipper idempotente $\rightarrow$ SQS FIFO (VPC Endpoint outbound) + Celery workers (tareas derivadas de eventos) + IoT Core MQTT (ingesta edge).
 
 \textbf{Alternativas descartadas.} \emph{REST síncrono}: no sobrevive corte a mitad de ventana; rompe reconciliación. \emph{Kafka/MSK}: operar clústeres en 5 sitios es desproporcionado para el equipo disponible y 105 TPS.
 
@@ -85,7 +85,7 @@ Registro consolidado de las quince decisiones de arquitectura que condicionan es
 \section{ADR-09 \textperiodcentered{} Estrategia DR}
 \label{sub:adr-09}
 
-\textbf{Decisión adoptada.} Activo-pasivo warm standby multi-región: DMS CDC + Aurora WAL hacia us-east-1; DRP local Talca$\rightarrow$Concepción (RTO +1--2 h); pruebas 2$\times$/año; respaldo 3-2-1-0 con S3 Object Lock.
+\textbf{Decisión adoptada.} Activo-pasivo warm standby multi-región: DMS CDC + Aurora WAL hacia us-east-1; DRP local Talca$\rightarrow$Concepción (RTO +1--2 h); pruebas 2$\times$/año; respaldo 3-2-1-1-0 con S3 Object Lock.
 
 \textbf{Alternativas descartadas.} \emph{Activo-activo}: duplica infraestructura y exige reconciliación de doble escritura sin beneficio medible. \emph{Backup + restore frío}: RTO 24--72 h, incumple RNF-20.06. \emph{Solo intrarregional}: postura mínima si CLIENTE no aprueba Art.~23; aceptando RTO 24--72 h ante caída de región.
 
@@ -130,11 +130,11 @@ Registro consolidado de las quince decisiones de arquitectura que condicionan es
 \section{ADR-14 \textperiodcentered{} Plataforma de observabilidad}
 \label{sub:adr-14}
 
-\textbf{Decisión adoptada.} Plataforma única en nube: instrumentación OTel, colectores ADOT on-premise con buffer 24 h, métricas en AMP (13 meses), logs en CloudWatch (12+24 m), trazas X-Ray (30 d), tableros Grafana OSS.
+\textbf{Decisión adoptada.} Plataforma única en nube: instrumentación OTel, colectores ADOT on-premise con buffer 24 h, logs en CloudWatch Logs (12+24 m), métricas en CloudWatch Metrics (13 meses) y trazas en CloudWatch con retención declarada. Tableros nativos de CloudWatch para operación.
 
-\textbf{Alternativas descartadas.} \emph{Prometheus+Grafana+Loki local + cloud}: dos plataformas (viola Art.~16.4 y RT-03.16); VM-06 sin capacidad. \emph{Solo CloudWatch}: pierde compatibilidad PromQL/Grafana y portabilidad de reglas.
+\textbf{Alternativas descartadas.} \emph{Prometheus+Grafana+Loki local + cloud}: dos plataformas (viola Art.~16.4 y RT-03.16); VM-06 sin capacidad. \emph{AMP + X-Ray + Grafana}: cuatro servicios de observabilidad para un equipo de 4 personas; complejidad operativa desproporcionada sin ganancia funcional sobre CloudWatch nativo.
 
-\textbf{Criterio de selección.} Art.~16.4 y RT-03.16 piden una plataforma; buffer ADOT resuelve «sin puntos ciegos» durante corte; ninguna decisión 05:30--07:00 depende de tablero; sin lock-in (OTel + AMP portables); el equipo del CLIENTE no opera servidores de observabilidad. Normativa: BA Art.~16.4, RT-03.16, RT-14.01--09, RT-09.01. Relacionada: D14.
+\textbf{Criterio de selección.} Art.~16.4 y RT-03.16 piden una plataforma; buffer ADOT resuelve «sin puntos ciegos» durante corte; ninguna decisión 05:30--07:00 depende de tablero; CloudWatch es nativo de AWS y no requiere infraestructura adicional; el equipo del CLIENTE no opera servidores de observabilidad. Normativa: BA Art.~16.4, RT-03.16, RT-14.01--09, RT-09.01. Relacionada: D14.
 
 \section{ADR-15 \textperiodcentered{} Gestión de secretos}
 \label{sub:adr-15}

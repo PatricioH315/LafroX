@@ -34,7 +34,7 @@ En texto, la vista de integración se organiza en cuatro dominios con tráfico s
 \begin{itemize}
   \item \textbf{Terreno (offline-first).} C-01 App Preventa (62 preventistas), C-02 App Reparto (\textasciitilde{}200 conductores) y C-03 HHT bodega (120 concurrentes).
   \item \textbf{On-premise (5 sitios con cómputo).} A-01 Motor WMS (M1, M2 y M5 en modo wms\_only), A-03 RabbitMQ (buffer 24 h), A-04 capa anticorrupción (frontera única del ERP), B-02 Greengrass (buffer 14 h) y E-01 mini-WMS cross-dock (ventana de 3 h).
-  \item \textbf{Nube AWS sa-east-1.} Amazon API Gateway (Capa 3), Capa 4 con M1--M12 en Django + workers Celery, N-09 SQS FIFO, N-09 EventBridge, M11 Hub EDI GS1 (EANCOM \textperiodcentered{} GS1 XML \textperiodcentered{} EPCIS) y N-08 IoT Core.
+  \item \textbf{Nube AWS sa-east-1.} Amazon API Gateway (Capa 3), Capa 4 con M1--M12 en Django + workers Celery, N-09 SQS FIFO, M11 Hub EDI GS1 (EANCOM \textperiodcentered{} GS1 XML \textperiodcentered{} EPCIS) y N-08 IoT Core.
   \item \textbf{Terceros.} ERP 2017 (sin documentación de interfaces), SII (DTE y guía electrónica), cadenas de supermercados (hito enero 2029), Transbank Webpay/POS, GIS/mapas y notificaciones.
 \end{itemize}
 
@@ -140,7 +140,7 @@ Los planos de mensajería y su emplazamiento se describen en la Tabla~\ref{tab:t
   {\cab{Plano} & \cab{Tecnología} & \cab{Emplazamiento} & \cab{Rol}}
   Buffer local de sitio & RabbitMQ (A-03) & VM-03 Talca ($\approx$ 3 M mensajes) \textperiodcentered{} VM-C04 Concepción \textperiodcentered{} broker en E-01 & Sostiene la autonomía de 24 h del centro de distribución. Es lo que permite que la bodega reciba, prepare y despache con el enlace caído. \\
   Trabajo y reconciliación & SQS FIFO (N-09) & Nube & Orden garantizado por partición (MessageGroupId = sitio) y deduplicación; alimenta a celery-reconciliation y celery-erp-sync. \\
-  Bus de eventos de negocio & EventBridge (N-09) & Nube & Coreografía entre módulos y disparo de alertas y notificaciones. Un módulo publica; los interesados se suscriben. \\
+  Tareas derivadas de eventos & Celery workers (Fargate) & Nube & Cada evento de negocio despacha tareas asíncronas: notificaciones, actualización analítica, emisión de DTE y transmisión EDI. \\
   Transporte hacia la nube & Shipper en VM-03 (modo wms\_only) & On-premise $\rightarrow$ nube & HTTPS 443 sobre VPC Endpoint SQS/PrivateLink (D-AL-03). AMQPS 5671 queda reservado a broker con broker on-premise. \\
 \end{tablalafrox}
 
@@ -168,10 +168,10 @@ La vista de integración y la vista física describen los mismos puntos de conta
   C5 --- ERP por la ACL & INT-06 & OpenAPI 3.1 de Puelche & VM-04 $\leftrightarrow$ celery-erp-sync \\
   C6 --- Identidad & INT-13 & Realm cifrado por S3 & Keycloak maestro $\leftrightarrow$ A-05 / VM-C03 \\
   C7 --- IoT Greengrass & INT-05 & MQTTS 8883, X.509 & B-02 $\leftrightarrow$ N-08 \\
-  C8 --- Observabilidad & INT-14 & OTLP & F-01 $\leftrightarrow$ CloudWatch / X-Ray / AMP \\
+  C8 --- Observabilidad & INT-14 & OTLP & F-01 $\leftrightarrow$ CloudWatch \\
   C10 --- Apps de terreno & INT-01 / INT-02 & OpenAPI 3.1 & C-01 / C-02 $\leftrightarrow$ Capa 3 \\
   C13 --- Cross-dock & INT-04 & AsyncAPI 2.6 / AMQPS & E-01 $\leftrightarrow$ VM-03 y $\leftrightarrow$ N-09 \\
-  C14 --- Notificaciones y EDI & INT-08 / INT-11 & GS1 / API de notificaciones & EventBridge $\leftrightarrow$ terceros \\
+  C14 --- Notificaciones y EDI & INT-08 / INT-11 & GS1 / API de notificaciones & Celery workers $\leftrightarrow$ terceros \\
   C15 --- Portales de la DMZ & INT-01 (lectura de stock, crédito y cobranza) & OpenAPI 3.1 & N-01/N-02/N-03 $\leftrightarrow$ Capa 3 \\
   C16 --- Pago Transbank & INT-09 & API de la pasarela & Módulo integraciones $\leftrightarrow$ Webpay \\
 \end{tablalafrox}
