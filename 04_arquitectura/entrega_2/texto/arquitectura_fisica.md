@@ -40,7 +40,7 @@ Cada centro de distribución mantiene su propia pila local: la misma aplicación
 
 ### Conexión entre dominios
 
-Los dos dominios se conectan mediante túneles VPN IPsec Site-to-Site cifrados con AES-256-GCM, terminados en firewalls FortiGate o Palo Alto en el lado on-premise y en AWS VPN Gateway en el lado nube, con enrutamiento dinámico BGP. Cada centro de distribución dispone de tres caminos WAN independientes —fibra óptica, enlace satelital Starlink y red móvil LTE de dos proveedores— con conmutación automática en menos de 30 segundos si uno falla. El tráfico entre dominios es siempre saliente desde el on-premise hacia la nube, y se organiza en seis flujos:
+Los dos dominios se conectan mediante túneles VPN IPsec Site-to-Site cifrados, terminados en firewalls FortiGate o Palo Alto en el lado on-premise y en AWS VPN Gateway en el lado nube, con enrutamiento dinámico BGP. Cada centro de distribución dispone de tres caminos WAN independientes —fibra óptica, enlace satelital Starlink y red móvil LTE de dos proveedores— con conmutación automática en menos de 30 segundos si uno falla. El tráfico entre dominios es siempre saliente desde el on-premise hacia la nube, y se organiza en seis flujos:
 
 - **Datos transaccionales.** La base PostgreSQL local replica continuamente sus cambios hacia Aurora en la nube a través de DMS CDC, con un objetivo de pérdida de datos de 15 minutos o menos.
 - **Eventos de bodega.** Las transacciones del WMS se encolan en RabbitMQ local y, al disponer de enlace, se vuelcan en orden cronológico a SQS FIFO en la nube para su reconciliación.
@@ -457,7 +457,7 @@ El cifrado en tránsito se declara por trayecto:
 
 - **Superficies públicas y portales.** TLS 1.3 con HSTS y precarga; TLS 1.0/1.1 deshabilitados.
 - **Servicio a servicio.** mTLS (microsegmentación; sin confianza implícita en la red interna).
-- **On-premise ↔ nube.** IPsec/IKEv2 con AES-256-GCM, BGP, MTU 1436, dos túneles.
+- **On-premise ↔ nube.** IPsec/IKEv2 cifrado, BGP, MTU 1436, dos túneles.
 - **Borde IoT → nube.** MQTTS 8883 con certificado X.509 por dispositivo.
 - **Respaldos y replicación.** TLS 1.3 en tránsito.
 
@@ -574,7 +574,7 @@ SD-WAN con políticas centralizadas y BGP; los cross-docks salen directo por Sta
 
 Extremos: D-01 Firewall/UTM (HA activo-pasivo) → Customer Gateway en cada CD; extremo cloud VGW del VPC Hub.
 
-Protocolo: IPsec/IKEv2, AES-256-GCM, BGP, MTU 1436; 2 túneles (activo + standby). Conmutación < 30 s sobre los tres caminos.
+Protocolo: IPsec/IKEv2 cifrado, BGP, MTU 1436; 2 túneles (activo + standby). Conmutación < 30 s sobre los tres caminos.
 
 
 #### Segmentación de red (sin solapamiento)

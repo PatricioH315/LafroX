@@ -27,7 +27,7 @@ Cada centro de distribución mantiene su propia pila local: la misma aplicación
 \section{Conexión entre dominios}
 \label{sub:conexion-entre-dominios}
 
-Los dos dominios se conectan mediante túneles VPN IPsec Site-to-Site cifrados con AES-256-GCM, terminados en firewalls FortiGate o Palo Alto en el lado on-premise y en AWS VPN Gateway en el lado nube, con enrutamiento dinámico BGP. Cada centro de distribución dispone de tres caminos WAN independientes ---fibra óptica, enlace satelital Starlink y red móvil LTE de dos proveedores--- con conmutación automática en menos de 30 segundos si uno falla. El tráfico entre dominios es siempre saliente desde el on-premise hacia la nube, y se organiza en seis flujos:
+Los dos dominios se conectan mediante túneles VPN IPsec Site-to-Site cifrados, terminados en firewalls FortiGate o Palo Alto en el lado on-premise y en AWS VPN Gateway en el lado nube, con enrutamiento dinámico BGP. Cada centro de distribución dispone de tres caminos WAN independientes ---fibra óptica, enlace satelital Starlink y red móvil LTE de dos proveedores--- con conmutación automática en menos de 30 segundos si uno falla. El tráfico entre dominios es siempre saliente desde el on-premise hacia la nube, y se organiza en seis flujos:
 
 \begin{itemize}
   \item \textbf{Datos transaccionales.} La base PostgreSQL local replica continuamente sus cambios hacia Aurora en la nube a través de DMS CDC, con un objetivo de pérdida de datos de 15 minutos o menos.
@@ -87,7 +87,7 @@ Las tablas~\ref{tab:t21a},~\ref{tab:t21b} y~\ref{tab:t21c} justifican la decisi�
   H-03 & Celery (workers async) & Fargate: reconciliación, ERP-sync, notificaciones & VM-01 / VM-C01: workers de bodega & Criticidad: las tareas de bodega no dependen de la nube; la reconciliación sí la requiere. \\
   H-04 & OpenTelemetry (observabilidad) & CloudWatch & Colectores ADOT con buffer 24 h & Conectividad: la telemetría se difiere sin pérdida y se consolida en CloudWatch al reconectar. \\
   H-05 & EDR (detección en endpoint) & Consola de gestión y correlación & Agentes en cada VM y estación & Seguridad: visibilidad de amenazas en ambos dominios con respuesta centralizada. \\
-  H-06 & Site-to-Site VPN IPsec & AWS VPN Gateway (2 túneles/CD) & FortiGate/PA: Customer Gateway & Conectividad: enlace cifrado AES-256-GCM con BGP; SD-WAN multi-camino. \\
+  H-06 & Site-to-Site VPN IPsec & AWS VPN Gateway (2 túneles/CD) & FortiGate/PA: Customer Gateway & Conectividad: enlace cifrado con BGP; SD-WAN multi-camino. \\
   H-07 & Ansible + Terraform/CDK (IaC) & Terraform/CDK: infraestructura AWS & Ansible: configuración, parches y CIS en 5 sitios & Costo: infraestructura declarada como código sin licencia de plataforma de gestión. \\
 \end{tablalafrox}
 
