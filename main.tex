@@ -1,0 +1,32 @@
+% !TeX program = lualatex
+% Raíz de compilación del preliminar 4.1 (arquitectura lógica).
+\makeatletter
+\def\input@path{{Productos/plantilla-latex/}}
+\makeatother
+\documentclass[carta,firma,borrador]{lafrox}
+\datoslafrox{
+  documento = {Propuesta Técnica},
+  subtitulo = {Subdocumento 4.1},
+  alcance = {Arquitectura lógica -- Versión preliminar},
+  formulario = {Formulario T-22},
+  fecha = {22 de septiembre de 2026},
+  version = {0.1 preliminar},
+  nomenclatura = {main.pdf},
+}
+\hypersetup{pdftitle={Subdocumento 4.1 -- Arquitectura lógica -- Preliminar}}
+\captionsetup{hypcap=false}
+\graphicspath{{Diagramas/}}
+% Índices complementarios locales: la clase compartida se mantiene intacta.
+\makeatletter
+\newcommand{\listalocal}[2]{%
+  \phantomsection\addcontentsline{toc}{chapter}{#1}%
+  \noindent\LFXtitulopreliminar{#1}\@starttoc{#2}\clearpage}
+\makeatother
+\begin{document}
+\portadalafrox
+\indicelafrox
+\listalocal{Lista de tablas}{lot}
+\listalocal{Lista de figuras}{lof}
+\setcounter{chapter}{3}
+\input{04_arquitectura/entrega_2/latex/subdoc_4.1.tex}
+\end{document}
