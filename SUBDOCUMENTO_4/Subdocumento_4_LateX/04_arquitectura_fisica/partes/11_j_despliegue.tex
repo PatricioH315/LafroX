@@ -42,26 +42,25 @@ Reglas que gobiernan el modelo de ambientes:
 \section{Redes (topología, segmentación y conectividad)}
 \label{sub:2-redes-topologia-segmentacion-y-conectivi}
 
-\subsection{WAN --- tri-camino con SD-WAN}
+\subsection{WAN --- doble camino con conmutación automática}
 
-Cada instalación dispone de caminos físicamente independientes con conmutación automática en $<$ 30 s (el requisito exige $\leq$ 5 min declarados; el diseño opera en $<$ 30 s), que se detallan en la Tabla~\ref{tab:t63}:
+Cada instalación dispone de dos caminos físicamente independientes con conmutación automática en $<$ 30 s (el requisito exige $\leq$ 5 min declarados; el diseño opera en $<$ 30 s), que se detallan en la Tabla~\ref{tab:t63}:
 
-\begin{tablalafrox}{WAN --- tri-camino con SD-WAN}{tab:t63}%
+\begin{tablalafrox}{WAN --- doble camino por sitio}{tab:t63}%
   {F{0.26} F{0.26} Y}%
   {\cab{Camino} & \cab{Sitios} & \cab{Rol}}
   Fibra (D-03) & Talca, Concepción & Enlace principal en los 2 CD \\
-  Starlink Enterprise LEO (D-06) & 3 cross-docks (Curicó, Chillán, Los Ángeles) + respaldo en los 2 CD & Principal en cross-docks (cubre Los Ángeles 03:00--05:00 sin torres 4G); respaldo automático en CDs \\
-  LTE dual 4G Cat-12 (D-04) & Todos & 2 proveedores móviles distintos; tercer camino independiente \\
-  AWS Direct Connect (complemento activable, D-AL-20) & Talca & Camino dedicado opcional, terminado en el par de firewall D-01 mediante un VIF dedicado o alojado sobre la fibra D-03, sin hardware adicional. No reemplaza los tres caminos SD-WAN: aporta capacidad dedicada para la réplica DMS CDC, la telemetría y los sincronismos por lote. Mientras el CLIENTE no lo contrate, la VPN IPsec sostiene por sí sola el RPO $\leq$ 15 min, el RTO $\leq$ 4 h y el SLA $\geq$ 99,9 \% \\
+  Starlink Enterprise LEO (D-06) & 3 cross-docks (Curicó, Chillán, Los Ángeles) & Enlace principal en cross-docks, que operan en naves industriales sin cobertura de fibra \\
+  LTE empresarial 4G Cat-12 (D-04) & Todos & Respaldo en todos los sitios; conmutación automática al caer el enlace principal \\
 \end{tablalafrox}
 
-SD-WAN con políticas centralizadas y BGP; los cross-docks salen directo por Starlink a SQS/IoT/SSM (configuración crítica) y sincronizan detalle a Talca por AMQPS entre brokers (C-13). La pérdida total del enlace se cubre con la autonomía local 24 h (CD) / 14 h (terreno).
+Los cross-docks salen directo por Starlink a SQS/IoT/SSM y sincronizan detalle a Talca por AMQPS entre brokers (C-13). La pérdida total del enlace se cubre con la autonomía local de 24 h (CD) / 14 h (terreno), por lo que la redundancia de conectividad reduce la frecuencia de desconexión pero no es condición para operar.
 
 \subsection{VPN Site-to-Site (costura C1)}
 
 Extremos: D-01 Firewall/UTM (HA activo-pasivo) $\rightarrow$ Customer Gateway en cada CD; extremo cloud VGW del VPC Hub.
 
-Protocolo: IPsec/IKEv2 cifrado, BGP, MTU 1436; 2 túneles (activo + standby). Conmutación $<$ 30 s sobre los tres caminos.
+Protocolo: IPsec/IKEv2 cifrado, BGP, MTU 1436; 2 túneles (activo + standby). Conmutación $<$ 30 s entre los dos caminos del sitio.
 
 \subsection{Segmentación de red (sin solapamiento)}
 
@@ -133,7 +132,7 @@ La capa on-premise y su diseño por capa se resumen en la Tabla~\ref{tab:t67}:
   Cómputo & Clúster virtualizado 3 nodos con replicación síncrona Ceph (factor 2, quórum propio) & La sección de dimensionamiento y plan de capacidad de este documento; elimina el SPOF de un par sin quórum \\
   Almacenamiento & RAID 10 (BD transaccional NVMe, IOPS $>$ 100 k) y RAID 6 con hot-spare (evidencia/logs) & ADR-10 \textperiodcentered{} RT-03.14/RNF-13.04/13.05 \\
   Red & Par de firewall UTM (HA A/P), 2 switches core + switch de gestión & RNF-13.03 \\
-  WAN & Tri-camino fibra + Starlink + LTE (SD-WAN) & RT-03.17 \\
+  WAN & Doble camino fibra/Starlink + LTE & RT-03.17 \\
   Energía & UPS doble conversión 6 kVA N+1 ($\geq$ 30 min a plena carga, RT-06.07) + generador 12 kVA estanque 24 h (RT-06.08) + ATS & Sala de Servidores v02, sección de energía \\
   Clima & Clima de precisión N+1 ASHRAE TC 9.9, PUE de diseño 1,7 & Sala de Servidores v02, sección de climatización \\
   Recinto & Sala mediana, 4 gabinetes; disponibilidad de infraestructura de 99,95 \% por componente & Numerales 6.1 y 7.2 de las Transversales; sección de sitio principal (CD Talca) \\

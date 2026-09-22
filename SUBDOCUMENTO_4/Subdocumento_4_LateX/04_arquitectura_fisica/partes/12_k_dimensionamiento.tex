@@ -173,7 +173,7 @@ Las VMs del clúster Talca (familias declaradas en la subsección de dimensionam
 
 \begin{itemize}
   \item \textbf{CD Concepción (C3):} 12 vCPU / 24 GB / RAID 10 (4$\times$NVMe 960 GB + hot-spare). Rol: WMS en modo reducido 24 h sin enlace (RNF-13.01).
-  \item \textbf{Plataformas de cross-docking (E-01):} Mini-PC industrial (Advantech ARK-2250 / NUC Pro 12). Rol: Mini-WMS E-01 + router Starlink (enlace principal) + LTE dual de respaldo.
+  \item \textbf{Plataformas de cross-docking (E-01):} Mini-PC industrial (Advantech ARK-2250 / NUC Pro 12). Rol: Mini-WMS E-01 + router Starlink (enlace principal) + LTE de respaldo.
 \end{itemize}
 
 \subsection{Almacenamiento}
@@ -196,9 +196,9 @@ El ancho de banda por sitio se declara en la Tabla~\ref{tab:t81}:
 \begin{tablalafrox}{Ancho de banda WAN por sitio}{tab:t81}%
   {F{0.26} F{0.26} F{0.21} Y}%
   {\cab{Sitio} & \cab{Régimen normal} & \cab{Peak septiembre} & \cab{Respaldo (autoconmutación $<$ 30 s)}}
-  CD Talca (D-03/D-06/D-04) & 20 Mbps fibra & 50 Mbps & Starlink 1 TB (50--100 Mbps) \textperiodcentered{} LTE 5$\rightarrow$10 Mbps \\
-  CD Concepción & 10 Mbps fibra & 20 Mbps & Starlink 1 TB \textperiodcentered{} LTE 3$\rightarrow$5 Mbps \\
-  Cross-docking ($\times$3) & Starlink 500 GB principal & Ídem & LTE dual 2$\rightarrow$5 Mbps (2 proveedores) \\
+  CD Talca (D-03/D-04) & 20 Mbps fibra & 50 Mbps & LTE 5$\rightarrow$10 Mbps \\
+  CD Concepción & 10 Mbps fibra & 20 Mbps & LTE 3$\rightarrow$5 Mbps \\
+  Cross-docking ($\times$3) & Starlink 500 GB principal & Ídem & LTE 2$\rightarrow$5 Mbps \\
 \end{tablalafrox}
 
 Cohesión con la vista de despliegue: estos valores son los mismos que declara la sección de arquitectura de despliegue (red privada virtual IPsec doble por centro de distribución).
@@ -278,7 +278,7 @@ En nube el equivalente es Aurora (writer + readers); SQS FIFO absorbe el pico de
 \section{Degradación controlada}
 \label{sub:9-degradacion-controlada-rt-09-08}
 
-Enlace WAN: QoS prioriza broker/WAL; colas diferidas fuera de la ventana; conmutación SD-WAN $<$ 30 s entre fibra/Starlink/LTE.
+Enlace WAN: QoS prioriza broker/WAL; colas diferidas fuera de la ventana; conmutación automática $<$ 30 s entre los dos caminos del sitio.
 
 Offline: buffers RabbitMQ de 24 h y buffers OTel de 24 h; reconciliación cronológica e idempotente al reconectar.
 

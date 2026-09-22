@@ -13,7 +13,7 @@ Cuatro decisiones estructurales se desprenden de ahí y se desarrollan en las se
 
 - La identidad tiene una autoridad única en la nube y cachés locales de solo lectura. No existe un segundo maestro on-premise que haya que promover, de modo que un corte prolongado nunca abre la posibilidad de dos verdades de identidad.
 - Ningún nodo on-premise acepta conexiones entrantes. Todo el tráfico se inicia desde adentro hacia la nube, con dos excepciones controladas que viajan por el túnel cifrado.
-- Cada sitio dispone de tres caminos de comunicación de tecnologías y proveedores distintos —fibra, satelital y red móvil— con conmutación automática en menos de treinta segundos.
+- Cada sitio dispone de dos caminos de comunicación independientes —fibra y LTE en los centros de distribución, Starlink y LTE en los cross-docking— con conmutación automática en menos de treinta segundos.
 - El respaldo es uno solo para los dos dominios: copia local de recuperación rápida, copia inmutable en la nube, réplica en la región secundaria y custodia física externa.
 
 La arquitectura se describe conforme a la norma ISO/IEC/IEEE 42010 sobre el marco TOGAF, y es coherente con la arquitectura lógica de la parte 4.1: las mismas capas, los mismos módulos y el mismo conjunto de tecnologías. La correspondencia entre cada requisito de las Bases y el lugar preciso de este capítulo donde se resuelve consta en la planilla de trazabilidad normativa que acompaña a esta parte; el pronunciamiento formal sobre la totalidad de los requisitos se entrega en el Formulario T-12.
@@ -40,7 +40,7 @@ Cada centro de distribución mantiene su propia pila local: la misma aplicación
 
 ### Conexión entre dominios
 
-Los dos dominios se conectan mediante túneles VPN IPsec Site-to-Site cifrados, terminados en firewalls FortiGate o Palo Alto en el lado on-premise y en AWS VPN Gateway en el lado nube, con enrutamiento dinámico BGP. Cada centro de distribución dispone de tres caminos WAN independientes —fibra óptica, enlace satelital Starlink y red móvil LTE de dos proveedores— con conmutación automática en menos de 30 segundos si uno falla. El tráfico entre dominios es siempre saliente desde el on-premise hacia la nube, y se organiza en seis flujos:
+Los dos dominios se conectan mediante túneles VPN IPsec Site-to-Site cifrados, terminados en firewalls de borde en el lado on-premise y en AWS VPN Gateway en el lado nube, con enrutamiento dinámico BGP que conmuta automáticamente entre enlaces en menos de 30 segundos. Los centros de distribución disponen de fibra óptica como enlace principal y LTE empresarial como respaldo; los cross-docking, que operan en naves industriales sin cobertura de fibra, usan Starlink como enlace principal y LTE como respaldo. El tráfico entre dominios es siempre saliente desde el on-premise hacia la nube, y se organiza en seis flujos:
 
 - **Datos transaccionales.** La base PostgreSQL local replica continuamente sus cambios hacia Aurora en la nube a través de DMS CDC, con un objetivo de pérdida de datos de 15 minutos o menos.
 - **Eventos de bodega.** Las transacciones del WMS se encolan en RabbitMQ local y, al disponer de enlace, se vuelcan en orden cronológico a SQS FIFO en la nube para su reconciliación.
@@ -560,21 +560,21 @@ Reglas que gobiernan el modelo de ambientes:
 ### Redes (topología, segmentación y conectividad)
 
 
-#### WAN — tri-camino con SD-WAN
+#### WAN — doble camino con conmutación automática
 
 Cada instalación dispone de caminos físicamente independientes con conmutación automática en < 30 s (el requisito exige ≤ 5 min declarados; el diseño opera en < 30 s):
 
 
-> **Tabla 63** — 2.1 WAN — tri-camino con SD-WAN · 4 filas · ver planilla del subdocumento
+> **Tabla 63** — 2.1 WAN — doble camino por sitio · 3 filas · ver planilla del subdocumento
 
-SD-WAN con políticas centralizadas y BGP; los cross-docks salen directo por Starlink a SQS/IoT/SSM (configuración crítica) y sincronizan detalle a Talca por AMQPS entre brokers (C-13). La pérdida total del enlace se cubre con la autonomía local 24 h (CD) / 14 h (terreno).
+Los cross-docks salen directo por Starlink a SQS/IoT/SSM y sincronizan detalle a Talca por AMQPS entre brokers (C-13). La pérdida total del enlace se cubre con la autonomía local de 24 h (CD) / 14 h (terreno), por lo que la redundancia de conectividad reduce la frecuencia de desconexión pero no es condición para operar.
 
 
 #### VPN Site-to-Site (costura C1)
 
 Extremos: D-01 Firewall/UTM (HA activo-pasivo) → Customer Gateway en cada CD; extremo cloud VGW del VPC Hub.
 
-Protocolo: IPsec/IKEv2 cifrado, BGP, MTU 1436; 2 túneles (activo + standby). Conmutación < 30 s sobre los tres caminos.
+Protocolo: IPsec/IKEv2 cifrado, BGP, MTU 1436; 2 túneles (activo + standby). Conmutación < 30 s entre los dos caminos del sitio.
 
 
 #### Segmentación de red (sin solapamiento)
@@ -828,7 +828,7 @@ En nube el equivalente es Aurora (writer + readers); EventBridge/SQS absorben el
 
 ### Degradación controlada
 
-Enlace WAN: QoS prioriza broker/WAL; colas diferidas fuera de la ventana; conmutación SD-WAN < 30 s entre fibra/Starlink/LTE.
+Enlace WAN: QoS prioriza broker/WAL; colas diferidas fuera de la ventana; conmutación automática < 30 s entre los dos caminos del sitio.
 
 Offline: buffers RabbitMQ de 24 h y buffers OTel de 24 h; reconciliación cronológica e idempotente al reconectar.
 
@@ -878,11 +878,11 @@ Registro consolidado de las quince decisiones de arquitectura que condicionan es
 
 ### ADR-02 · Conectividad WAN
 
-**Decisión adoptada.** Tri-camino por sitio con SD-WAN: fibra + Starlink LEO + LTE dual (2 proveedores). Starlink principal en cross-docks, respaldo en CDs. Conmutación automática < 30 s.
+**Decisión adoptada.** Doble camino por sitio: fibra + LTE en los centros de distribución, Starlink + LTE en los cross-docking. Conmutación automática < 30 s.
 
-**Alternativas descartadas.** *Fibra + LTE puro*: no resuelve Los Ángeles 03:00–05:00 (torre 4G falla en la ventana de operación) ni Concepción sin respaldo. *VSAT GEO*: latencia 500–700 ms RTT; penaliza RNF-05.01 y costo superior.
+**Alternativas descartadas.** *Fibra en cross-docks*: naves industriales sin cobertura de fibra; costo de obra desproporcionado. *VSAT GEO*: latencia 500–700 ms RTT; penaliza RNF-05.01 y costo superior. *Tri-camino (fibra + Starlink + LTE)*: tercer camino no aporta disponibilidad significativa dado que cada sitio opera autónomamente ante pérdida total de enlace (24 h CD, 14 h terreno).
 
-**Criterio de selección.** Cobertura de la ventana crítica 05:30–07:00 con caminos de física distinta; TCO USD ~58 K / 56 meses justificado como prima de resiliencia (costo de un día sin despacho >> costo del enlace); cero mantención de radio para 4 personas. Trazabilidad: RT-03.10/03.17 · RT-10.05 · RNF-13.01/13.07/13.08 · Caso Cap. 6.12/8. Relacionada: Decisión 16.1 N° 26.
+**Criterio de selección.** Dos caminos de física distinta satisfacen RT-03.17 sin punto único de fallo; la autonomía local cubre la pérdida total de enlace, por lo que un tercer camino es innecesario; cero mantención de radio para 4 personas. Trazabilidad: RT-03.10/03.17 · RT-10.05 · RNF-13.01/13.07/13.08 · Caso Cap. 6.12/8. Relacionada: Decisión 16.1 N° 26.
 
 ### ADR-03 · Modelo de despliegue híbrido
 

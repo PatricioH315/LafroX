@@ -22,11 +22,11 @@ Registro consolidado de las quince decisiones de arquitectura que condicionan es
 \section{ADR-02 \textperiodcentered{} Conectividad WAN}
 \label{sub:adr-02}
 
-\textbf{Decisión adoptada.} Tri-camino por sitio con SD-WAN: fibra + Starlink LEO + LTE dual (2 proveedores). Starlink principal en cross-docks, respaldo en CDs. Conmutación automática $<$ 30 s.
+\textbf{Decisión adoptada.} Doble camino por sitio: fibra + LTE en los centros de distribución, Starlink + LTE en los cross-docking. Conmutación automática $<$ 30 s.
 
-\textbf{Alternativas descartadas.} \emph{Fibra + LTE puro}: no resuelve Los Ángeles 03:00--05:00 (torre 4G falla en la ventana) ni Concepción sin respaldo. \emph{VSAT GEO}: latencia 500--700 ms RTT; penaliza RNF-05.01 y costo superior.
+\textbf{Alternativas descartadas.} \emph{Fibra en cross-docks}: naves industriales sin cobertura de fibra; costo de obra desproporcionado. \emph{VSAT GEO}: latencia 500--700 ms RTT; penaliza RNF-05.01 y costo superior. \emph{Tri-camino (fibra + Starlink + LTE)}: tercer camino no aporta disponibilidad significativa dado que cada sitio opera autónomamente ante pérdida total de enlace (24 h CD, 14 h terreno).
 
-\textbf{Criterio de selección.} Cobertura de ventana crítica 05:30--07:00 con caminos de física distinta; TCO estimado en USD \textasciitilde{}58 K / 56 m (basado en precio público del kit y suscripción Business), justificado como prima de resiliencia; cero mantención de radio para el equipo reducido del CLIENTE. Normativa: RT-03.10/03.17, RT-10.05, RNF-13.01/13.07/13.08. Relacionada: Decisión 16.1 N\textdegree{} 26.
+\textbf{Criterio de selección.} Dos caminos de física distinta satisfacen RT-03.17 sin punto único de fallo; la autonomía local cubre la pérdida total de enlace, por lo que un tercer camino es innecesario; cero mantención de radio para el equipo de 4 personas del CLIENTE. Normativa: RT-03.10/03.17, RT-10.05, RNF-13.01/13.07/13.08. Relacionada: Decisión 16.1 N\textdegree{} 26.
 
 \section{ADR-03 \textperiodcentered{} Modelo de despliegue híbrido}
 \label{sub:adr-03}
