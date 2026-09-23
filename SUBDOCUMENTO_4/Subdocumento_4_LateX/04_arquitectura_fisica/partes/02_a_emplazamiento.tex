@@ -8,7 +8,7 @@
 \chapter{Modelo de emplazamiento híbrido}
 \label{sec:a-modelo-de-emplazamiento-hibrido}
 
-La solución se despliega en dos dominios ---nube pública y on-premise--- conectados por túneles VPN cifrados, con la premisa de que cada dominio puede operar de forma independiente cuando el enlace no está disponible.
+La solución se despliega en dos dominios, la nube pública y el on-premise, conectados por túneles VPN cifrados. Cada dominio puede operar de forma independiente cuando el enlace no está disponible.
 
 \section{Dominio nube (AWS sa-east-1)}
 \label{sub:dominio-nube}
@@ -27,23 +27,36 @@ Cada centro de distribución mantiene su propia pila local: la misma aplicación
 \section{Conexión entre dominios}
 \label{sub:conexion-entre-dominios}
 
-Los dos dominios se conectan mediante túneles VPN IPsec Site-to-Site cifrados, terminados en firewalls de borde en el lado on-premise y en AWS VPN Gateway en el lado nube, con enrutamiento dinámico BGP que conmuta automáticamente entre enlaces en menos de 30 segundos. Los centros de distribución disponen de fibra óptica como enlace principal y LTE empresarial como respaldo; los cross-docking, que operan en naves industriales sin cobertura de fibra, usan Starlink como enlace principal y LTE como respaldo. El tráfico entre dominios es siempre saliente desde el on-premise hacia la nube, y se organiza en seis flujos:
+Los dos dominios se conectan mediante túneles VPN IPsec Site-to-Site cifrados, terminados en firewalls de borde en el lado on-premise y en AWS VPN Gateway en el lado nube, con enrutamiento dinámico BGP que conmuta automáticamente entre enlaces en menos de 30 segundos. Los centros de distribución disponen de fibra óptica como enlace principal y LTE empresarial como respaldo; los cross-docking, que operan en naves industriales sin cobertura de fibra, usan Starlink como enlace principal y LTE como respaldo.
+
+\subsection{Flujos entre nube y on-premise}
+
+Por diseño Zero Trust, las conexiones entre los dos dominios fijos, la nube y el on-premise, se inician siempre desde el on-premise hacia la nube. Existen dos excepciones declaradas a esta regla. La primera es DMS, que lee el registro de escritura anticipada de PostgreSQL para replicar los cambios hacia Aurora. La segunda es celery-erp-sync, que consulta la capa anticorrupción del ERP. Ambas conexiones viajan por el mismo túnel IPsec autenticado y quedan auditadas. Los datos, en cambio, fluyen en ambos sentidos según lo requiere cada flujo:
 
 \begin{itemize}
-  \item \textbf{Datos transaccionales.} La base PostgreSQL local replica continuamente sus cambios hacia Aurora en la nube a través de DMS CDC, con un objetivo de pérdida de datos de 15 minutos o menos.
-  \item \textbf{Eventos de bodega.} Las transacciones del WMS se encolan en RabbitMQ local y, al disponer de enlace, se vuelcan en orden cronológico a SQS FIFO en la nube para su reconciliación.
-  \item \textbf{Telemetría de cadena de frío.} Los sensores alimentan al gateway Greengrass en el borde, que procesa las alertas localmente y reenvía los registros a IoT Core en la nube por MQTTS.
-  \item \textbf{Observabilidad.} Los colectores ADOT locales almacenan métricas y trazas en disco durante un máximo de 24 horas y las envían a CloudWatch en la nube cuando el enlace está disponible.
-  \item \textbf{Identidad.} Keycloak maestro en la nube exporta las credenciales de forma cifrada a través de S3, y las cachés locales de cada sitio las importan para sostener las sesiones de los operarios sin depender del enlace.
-  \item \textbf{Terreno.} Los terminales móviles se comunican con API Gateway en la nube cuando tienen señal; cuando no la tienen, operan contra su buffer local y sincronizan al reconectar de forma idempotente.
+  \item \textbf{Datos transaccionales:} la base PostgreSQL local replica continuamente sus cambios hacia Aurora en la nube a través de DMS CDC, con un objetivo de pérdida de datos de 15 minutos o menos.
+  \item \textbf{Eventos de bodega:} las transacciones del WMS se encolan en RabbitMQ local y, al disponer de enlace, se vuelcan en orden cronológico a SQS FIFO en la nube para su reconciliación.
+  \item \textbf{Telemetría de cadena de frío en bodega:} los sensores Ebyte ME31 instalados en las cámaras de frío del CD alimentan al gateway Greengrass en el borde, que procesa las alertas localmente y reenvía los registros a IoT Core en la nube por MQTTS.
+  \item \textbf{Observabilidad:} los colectores ADOT locales almacenan métricas y trazas en disco durante un máximo de 24 horas y las envían a CloudWatch en la nube cuando el enlace está disponible.
+  \item \textbf{Identidad:} Keycloak maestro en la nube exporta las credenciales de forma cifrada a través de S3, y las cachés locales de cada sitio las importan para sostener las sesiones de los operarios sin depender del enlace.
 \end{itemize}
 
-Cuando el enlace cae, cada sitio sigue operando con su pila local: la bodega contra PostgreSQL y RabbitMQ locales, el terreno contra su caché de turno, y el cross-docking contra su mini-WMS. Al reconectar, la sincronización es determinista y no genera duplicados. El detalle de la autonomía por ámbito se desarrolla en la sección de operación desconectada de este mismo capítulo.
+\subsection{Flujos desde el terreno}
+
+El terreno agrupa los flujos que se originan físicamente fuera del centro de distribución y fuera de la nube. Son tres:
+
+\begin{itemize}
+  \item \textbf{Preventa en calle:} los preventistas usan terminales Zebra EC55, equipos industriales con SIM 4G/LTE empresarial y lector GS1 integrado. Se comunican directamente con API Gateway en la nube a través de la red celular del operador, sin atravesar la red del centro de distribución. Cuando no hay señal, operan contra su buffer local de turno y sincronizan al reconectar de forma idempotente.
+  \item \textbf{Reparto en calle:} los conductores usan terminales Zebra TC58e, también con SIM 4G/LTE empresarial. Se comunican directamente con API Gateway por la red celular durante los turnos de reparto (14 h) y, cuando pierden señal en zonas rurales, operan contra su caché local y sincronizan al reconectar.
+  \item \textbf{Termógrafos de camión:} los termógrafos Onset InTemp CX450, calibrados contra patrón NIST, registran la temperatura del compartimento refrigerado de forma independiente y sin conexión a red durante toda la ruta. Al regresar el camión al centro de distribución, los datos se descargan por Bluetooth al gateway local del sitio y desde ahí se envían a IoT Core en la nube.
+\end{itemize}
+
+Cuando el enlace WAN cae, cada dominio sigue operando con su pila local: la bodega contra PostgreSQL y RabbitMQ locales, el terreno de calle contra su caché de turno, y el cross-docking contra su mini-WMS. Al reconectar, la sincronización es determinista y no genera duplicados. El detalle de la autonomía por ámbito se desarrolla en la sección de operación desconectada de este mismo capítulo.
 
 \section{Emplazamiento componente por componente}
 \label{sub:emplazamiento-componente-por-componente}
 
-Las tablas~\ref{tab:t21a},~\ref{tab:t21b} y~\ref{tab:t21c} justifican la decisión de emplazamiento de cada componente conforme a los seis criterios del Art. 16.2: latencia tolerada, criticidad operacional, volumen de datos, restricciones regulatorias, disponibilidad de conectividad y costo total de propiedad. El criterio dominante se indica al inicio de cada justificación.
+Las tablas~\ref{tab:t21a},~\ref{tab:t21b} y~\ref{tab:t21c} justifican la decisión de emplazamiento de cada componente conforme a los seis criterios del Art. 16.2: latencia tolerada, criticidad operacional, volumen de datos, restricciones regulatorias, disponibilidad de conectividad y costo total de propiedad. El criterio dominante se indica al inicio de cada justificación. Estas tablas responden a la pregunta \emph{dónde} vive cada componente y \emph{por qué}; el equipamiento físico ofertado (marca, modelo y cantidad) se detalla en el capítulo de implementos, y la infraestructura de sala del CD Talca (energía, clima, seguridad física y cableado) en el capítulo del sitio principal.
 
 \begin{tablalafrox}{Emplazamiento: componentes de nube pura (servicios administrados AWS sa-east-1)}{tab:t21a}%
   {G{0.06} F{0.22} Y}%
@@ -99,10 +112,10 @@ Las tablas~\ref{tab:t21a},~\ref{tab:t21b} y~\ref{tab:t21c} justifican la decisi�
 La red on-premise se compone de seis instalaciones (Tabla 14.1 y RT-21.16):
 
 \begin{itemize}
-  \item \textbf{CD Talca (sala técnica principal, sala blanca de 32 m\textsuperscript{2}).} clúster WMS de 3 nodos, base transaccional on-premise (PostgreSQL 16, VM-02), broker local RabbitMQ (VM-03), capa anticorrupción del ERP (VM-04), caché de identidad (VM-05), telemetría (VM-06), respaldo NAS (D-05) y componentes de sala (UPS N+1, generador 12 kVA con estanque 24 h, clima N+1, seguridad física).
-  \item \textbf{CD Concepción (9.000 m\textsuperscript{2}, gabinete de borde).} servidor de borde con el WMS en modo reducido (VM-C01), base local (VM-C02), caché de identidad (VM-C03), broker + telemetría (VM-C04) y Gateway IoT Greengrass (B-02); opera 24 h de forma autónoma e independiente de Talca.
-  \item \textbf{Cross-docking de Curicó, Chillán y Los Ángeles.} nodo de cómputo industrial (E-01) con mini-WMS y broker local, enlace principal Starlink (D-06) y respaldo LTE dual (2 proveedores).
-  \item \textbf{Casa matriz y oficinas centrales (Talca).} sin nodo de cómputo propio; acceso a la nube para administración, planificación y portal de clientes (RT-03.22).
+  \item \textbf{CD Talca (sala técnica principal, sala blanca de 32 m\textsuperscript{2}):} clúster WMS de 3 nodos, base transaccional on-premise (PostgreSQL 16, VM-02), broker local RabbitMQ (VM-03), capa anticorrupción del ERP (VM-04), caché de identidad (VM-05), telemetría (VM-06), respaldo NAS (D-05) y componentes de sala (UPS N+1, generador 12 kVA con estanque 24 h, clima N+1, seguridad física).
+  \item \textbf{CD Concepción (9.000 m\textsuperscript{2}, gabinete de borde):} servidor de borde con el WMS en modo reducido (VM-C01), base local (VM-C02), caché de identidad (VM-C03), broker + telemetría (VM-C04) y Gateway IoT Greengrass (B-02); opera 24 h de forma autónoma e independiente de Talca.
+  \item \textbf{Cross-docking de Curicó, Chillán y Los Ángeles:} nodo de cómputo industrial (E-01) con mini-WMS y broker local, enlace principal Starlink (D-06) y respaldo LTE dual (2 proveedores).
+  \item \textbf{Casa matriz y oficinas centrales (Talca):} sin nodo de cómputo propio; acceso a la nube para administración, planificación y portal de clientes (RT-03.22).
 \end{itemize}
 
 La proyección a 3 años (RT-02.12) incorpora una séptima instalación; el gabinete de crecimiento de la sala (R04) absorbe esa expansión sin obras adicionales en el sitio principal.

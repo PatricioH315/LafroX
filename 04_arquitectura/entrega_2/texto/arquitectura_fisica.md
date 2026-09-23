@@ -13,7 +13,7 @@ Cuatro decisiones estructurales se desprenden de ahí y se desarrollan en las se
 
 - La identidad tiene una autoridad única en la nube y cachés locales de solo lectura. No existe un segundo maestro on-premise que haya que promover, de modo que un corte prolongado nunca abre la posibilidad de dos verdades de identidad.
 - Ningún nodo on-premise acepta conexiones entrantes. Todo el tráfico se inicia desde adentro hacia la nube, con dos excepciones controladas que viajan por el túnel cifrado.
-- Cada sitio dispone de dos caminos de comunicación independientes —fibra y LTE en los centros de distribución, Starlink y LTE en los cross-docking— con conmutación automática en menos de treinta segundos.
+- Cada sitio dispone de dos caminos de comunicación independientes, con conmutación automática en menos de treinta segundos. En los centros de distribución se combina fibra óptica y LTE, y en los cross-docking, Starlink y LTE.
 - El respaldo es uno solo para los dos dominios: copia local de recuperación rápida, copia inmutable en la nube, réplica en la región secundaria y custodia física externa.
 
 La arquitectura se describe conforme a la norma ISO/IEC/IEEE 42010 sobre el marco TOGAF, y es coherente con la arquitectura lógica de la parte 4.1: las mismas capas, los mismos módulos y el mismo conjunto de tecnologías. La correspondencia entre cada requisito de las Bases y el lugar preciso de este capítulo donde se resuelve consta en la planilla de trazabilidad normativa que acompaña a esta parte; el pronunciamiento formal sobre la totalidad de los requisitos se entrega en el Formulario T-12.
@@ -21,7 +21,7 @@ La arquitectura se describe conforme a la norma ISO/IEC/IEEE 42010 sobre el marc
 
 ## Modelo de emplazamiento híbrido
 
-La solución se despliega en dos dominios —nube pública y on-premise— conectados por túneles VPN cifrados, con la premisa de que cada dominio puede operar de forma independiente cuando el enlace no está disponible.
+La solución se despliega en dos dominios, la nube pública y el on-premise, conectados por túneles VPN cifrados. Cada dominio puede operar de forma independiente cuando el enlace no está disponible.
 
 
 ### Dominio nube (AWS sa-east-1)
@@ -40,19 +40,33 @@ Cada centro de distribución mantiene su propia pila local: la misma aplicación
 
 ### Conexión entre dominios
 
-Los dos dominios se conectan mediante túneles VPN IPsec Site-to-Site cifrados, terminados en firewalls de borde en el lado on-premise y en AWS VPN Gateway en el lado nube, con enrutamiento dinámico BGP que conmuta automáticamente entre enlaces en menos de 30 segundos. Los centros de distribución disponen de fibra óptica como enlace principal y LTE empresarial como respaldo; los cross-docking, que operan en naves industriales sin cobertura de fibra, usan Starlink como enlace principal y LTE como respaldo. El tráfico entre dominios es siempre saliente desde el on-premise hacia la nube, y se organiza en seis flujos:
+Los dos dominios se conectan mediante túneles VPN IPsec Site-to-Site cifrados, terminados en firewalls de borde en el lado on-premise y en AWS VPN Gateway en el lado nube, con enrutamiento dinámico BGP que conmuta automáticamente entre enlaces en menos de 30 segundos. Los centros de distribución disponen de fibra óptica como enlace principal y LTE empresarial como respaldo; los cross-docking, que operan en naves industriales sin cobertura de fibra, usan Starlink como enlace principal y LTE como respaldo.
 
-- **Datos transaccionales.** La base PostgreSQL local replica continuamente sus cambios hacia Aurora en la nube a través de DMS CDC, con un objetivo de pérdida de datos de 15 minutos o menos.
-- **Eventos de bodega.** Las transacciones del WMS se encolan en RabbitMQ local y, al disponer de enlace, se vuelcan en orden cronológico a SQS FIFO en la nube para su reconciliación.
-- **Telemetría de cadena de frío.** Los sensores alimentan al gateway Greengrass en el borde, que procesa las alertas localmente y reenvía los registros a IoT Core en la nube por MQTTS.
-- **Observabilidad.** Los colectores ADOT locales almacenan métricas y trazas en disco durante un máximo de 24 horas y las envían a CloudWatch en la nube cuando el enlace está disponible.
-- **Identidad.** Keycloak maestro en la nube exporta las credenciales de forma cifrada a través de S3, y las cachés locales de cada sitio las importan para sostener las sesiones de los operarios sin depender del enlace.
-- **Terreno.** Los terminales móviles se comunican con API Gateway en la nube cuando tienen señal; cuando no la tienen, operan contra su buffer local y sincronizan al reconectar de forma idempotente.
+#### Flujos entre nube y on-premise
 
-Cuando el enlace cae, cada sitio sigue operando con su pila local: la bodega contra PostgreSQL y RabbitMQ locales, el terreno contra su caché de turno, y el cross-docking contra su mini-WMS. Al reconectar, la sincronización es determinista y no genera duplicados. El detalle de la autonomía por ámbito se desarrolla en la sección de operación desconectada de este mismo capítulo.
+Por diseño Zero Trust, las conexiones entre los dos dominios fijos, la nube y el on-premise, se inician siempre desde el on-premise hacia la nube. Existen dos excepciones declaradas a esta regla. La primera es DMS, que lee el registro de escritura anticipada de PostgreSQL para replicar los cambios hacia Aurora. La segunda es celery-erp-sync, que consulta la capa anticorrupción del ERP. Ambas conexiones viajan por el mismo túnel IPsec autenticado y quedan auditadas. Los datos, en cambio, fluyen en ambos sentidos según lo requiere cada flujo:
+
+- **Datos transaccionales:** la base PostgreSQL local replica continuamente sus cambios hacia Aurora en la nube a través de DMS CDC, con un objetivo de pérdida de datos de 15 minutos o menos.
+- **Eventos de bodega:** las transacciones del WMS se encolan en RabbitMQ local y, al disponer de enlace, se vuelcan en orden cronológico a SQS FIFO en la nube para su reconciliación.
+- **Telemetría de cadena de frío en bodega:** los sensores Ebyte ME31 instalados en las cámaras de frío del CD alimentan al gateway Greengrass en el borde, que procesa las alertas localmente y reenvía los registros a IoT Core en la nube por MQTTS.
+- **Observabilidad:** los colectores ADOT locales almacenan métricas y trazas en disco durante un máximo de 24 horas y las envían a CloudWatch en la nube cuando el enlace está disponible.
+- **Identidad:** Keycloak maestro en la nube exporta las credenciales de forma cifrada a través de S3, y las cachés locales de cada sitio las importan para sostener las sesiones de los operarios sin depender del enlace.
+
+#### Flujos desde el terreno
+
+El terreno agrupa los flujos que se originan físicamente fuera del centro de distribución y fuera de la nube. Son tres:
+
+- **Preventa en calle:** los preventistas usan terminales Zebra EC55, equipos industriales con SIM 4G/LTE empresarial y lector GS1 integrado. Se comunican directamente con API Gateway en la nube a través de la red celular del operador, sin atravesar la red del centro de distribución. Cuando no hay señal, operan contra su buffer local de turno y sincronizan al reconectar de forma idempotente.
+- **Reparto en calle:** los conductores usan terminales Zebra TC58e, también con SIM 4G/LTE empresarial. Se comunican directamente con API Gateway por la red celular durante los turnos de reparto (14 h) y, cuando pierden señal en zonas rurales, operan contra su caché local y sincronizan al reconectar.
+- **Termógrafos de camión:** los termógrafos Onset InTemp CX450, calibrados contra patrón NIST, registran la temperatura del compartimento refrigerado de forma independiente y sin conexión a red durante toda la ruta. Al regresar el camión al centro de distribución, los datos se descargan por Bluetooth al gateway local del sitio y desde ahí se envían a IoT Core en la nube.
+
+Cuando el enlace WAN cae, cada dominio sigue operando con su pila local: la bodega contra PostgreSQL y RabbitMQ locales, el terreno de calle contra su caché de turno, y el cross-docking contra su mini-WMS. Al reconectar, la sincronización es determinista y no genera duplicados. El detalle de la autonomía por ámbito se desarrolla en la sección de operación desconectada de este mismo capítulo.
 
 
 ### Emplazamiento componente por componente
+
+Las tablas 21a, 21b y 21c justifican la decisión de emplazamiento de cada componente conforme a los seis criterios del Art. 16.2: latencia tolerada, criticidad operacional, volumen de datos, restricciones regulatorias, disponibilidad de conectividad y costo total de propiedad. El criterio dominante se indica al inicio de cada justificación. Estas tablas responden a la pregunta *dónde* vive cada componente y *por qué*; el equipamiento físico ofertado (marca, modelo y cantidad) se detalla en el capítulo de implementos, y la infraestructura de sala del CD Talca (energía, clima, seguridad física y cableado) en el capítulo del sitio principal.
+
 
 > **Tabla 21a** — Emplazamiento: componentes de nube pura (servicios administrados AWS sa-east-1) · 14 filas · ver planilla del subdocumento
 
@@ -70,13 +84,13 @@ Figura 15. Diagrama de arquitectura física de la solución.
 
 La red on-premise se compone de seis instalaciones (Tabla 14.1 y RT-21.16):
 
-- **CD Talca (sala técnica principal, sala blanca de 32 m²).** clúster WMS de 3 nodos, base transaccional on-premise (PostgreSQL 16, VM-02), broker local RabbitMQ (VM-03), capa anticorrupción del ERP (VM-04), caché de identidad (VM-05), telemetría (VM-06), respaldo NAS (D-05) y componentes de sala (UPS N+1, generador 12 kVA con estanque 24 h, clima N+1, seguridad física).
+- **CD Talca (sala técnica principal, sala blanca de 32 m²):** clúster WMS de 3 nodos, base transaccional on-premise (PostgreSQL 16, VM-02), broker local RabbitMQ (VM-03), capa anticorrupción del ERP (VM-04), caché de identidad (VM-05), telemetría (VM-06), respaldo NAS (D-05) y componentes de sala (UPS N+1, generador 12 kVA con estanque 24 h, clima N+1, seguridad física).
 
-- **CD Concepción (9.000 m², gabinete de borde).** servidor de borde con el WMS en modo reducido (VM-C01), base local (VM-C02), caché de identidad (VM-C03), broker + telemetría (VM-C04) y Gateway IoT Greengrass (B-02); opera 24 h de forma autónoma e independiente de Talca.
+- **CD Concepción (9.000 m², gabinete de borde):** servidor de borde con el WMS en modo reducido (VM-C01), base local (VM-C02), caché de identidad (VM-C03), broker + telemetría (VM-C04) y Gateway IoT Greengrass (B-02); opera 24 h de forma autónoma e independiente de Talca.
 
-- **Cross-docking de Curicó, Chillán y Los Ángeles.** nodo de cómputo industrial (E-01) con mini-WMS y broker local, enlace principal Starlink (D-06) y respaldo LTE dual (2 proveedores).
+- **Cross-docking de Curicó, Chillán y Los Ángeles:** nodo de cómputo industrial (E-01) con mini-WMS y broker local, enlace principal Starlink (D-06) y respaldo LTE dual (2 proveedores).
 
-- **Casa matriz y oficinas centrales (Talca).** sin nodo de cómputo propio; acceso a la nube para administración, planificación y portal de clientes.
+- **Casa matriz y oficinas centrales (Talca):** sin nodo de cómputo propio; acceso a la nube para administración, planificación y portal de clientes.
 
 La proyección a 3 años incorpora una séptima instalación; el gabinete de crecimiento de la sala (R04) absorbe esa expansión sin obras adicionales en el sitio principal.
 
@@ -96,7 +110,7 @@ El ERP de 2017 no se reemplaza ni se modifica (Cap. 10 del caso): permanece como
 
 ## Implementos a proveer: hardware y software
 
-El inventario ofertado se agrupa en infraestructura de cómputo y almacenamiento, red y seguridad, dispositivos de terreno y operación, y componentes de sala. Son especificaciones que el CLIENTE adquiere y el adjudicatario instala, integra y mantiene. Las cantidades y justificaciones de cada fila se referencian al Formulario T-11.
+El inventario ofertado se agrupa en infraestructura de cómputo y almacenamiento, red y seguridad, dispositivos de terreno y operación. Son especificaciones de equipamiento físico (marca, modelo y cantidad) que el CLIENTE adquiere y el adjudicatario instala, integra y mantiene. Las cantidades y justificaciones de cada fila se referencian al Formulario T-11. La decisión de emplazamiento de cada componente (dónde vive y por qué, según Art. 16.2) se declara en el capítulo de emplazamiento; los componentes de infraestructura de sala del CD Talca (UPS, generador, climatización, seguridad física y gabinetes) se declaran en el capítulo del sitio principal.
 
 
 ### Infraestructura de cómputo y almacenamiento
@@ -145,33 +159,22 @@ Custodia de medios: recinto de 10 m² en la segunda línea, sin luz UV (≤ 300 
 
 Cableado y comunicaciones: cableado estructurado Cat6A F/UTP + fibra OM4 certificado enlace por enlace sobre piso técnico de 40 cm, jerarquía ANSI/TIA-942 ENI→MDA→HDA→ZDA→EDA, con dos ductos de ingreso independientes; 4 racks 42U en gabinete de servidores y comunicaciones separados, con el cuarto (R04) reservado al crecimiento a 3 años.
 
-Los componentes de sala ofertados se detallan a continuación:
+Los componentes de infraestructura de sala del CD Talca (UPS, generador, transferencia automática, climatización, seguridad física, extinción, cableado y gabinetes) se detallan a continuación. El equipamiento de cómputo, red y comunicaciones que se aloja en estos gabinetes (servidores, switches, firewalls, WLAN, terminales) se declara en el capítulo de implementos.
 
 
 > **Tabla 27** — Especificaciones del sitio principal on-premise (CD Talca) · 12 filas · ver planilla del subdocumento
 
 
-## Especificaciones del sitio secundario y de la recuperación ante desastres
+## Especificaciones del sitio secundario
 
 **Cómo se satisface el numeral 7.1.** Las Transversales exigen un sitio secundario en dependencias distintas del principal, en modalidad activo-activo o activo-pasivo, con replicación en línea del ambiente de producción y características tecnológicas equivalentes a las del sitio principal en lo que respecta a los servicios críticos. La solución lo satisface con dos sitios secundarios, uno por cada dominio del despliegue híbrido, porque la carga crítica vive en ambos:
 
-- **Para el componente on-premise, el CD Concepción.** Es una dependencia física distinta, a 340 km del extremo opuesto de la red y sin amenazas comunes con Talca, y opera el motor de almacenes en modo reducido con su propia base local y autonomía de 24 horas. No es un sitio en espera: opera de forma autónoma todos los días y asume la carga de bodega de Talca mediante promoción controlada.
-- **Para la carga principal en nube, la región AWS us-east-1.** Aloja la réplica pasiva promovible del núcleo transaccional, a ≈ 7.700 km de la región primaria y ≈ 8.500 km de Talca, sin amenazas comunes.
+- **Para el componente on-premise, el CD Concepción:** es una dependencia física distinta, a 340 km del extremo opuesto de la red y sin amenazas comunes con Talca, y opera el motor de almacenes en modo reducido con su propia base local y autonomía de 24 horas. No es un sitio en espera: opera de forma autónoma todos los días y asume la carga de bodega de Talca mediante promoción controlada.
+- **Para la carga principal en nube, la región AWS us-east-1:** aloja la réplica pasiva promovible del núcleo transaccional, a ≈ 7.700 km de la región primaria y ≈ 8.500 km de Talca, sin amenazas comunes.
 
-**Modalidad declarada y justificada (RT-07.01): activo-pasiva en caliente.** La modalidad activo-activo duplicaría la infraestructura transaccional y obligaría a reconciliar escrituras concurrentes entre regiones, sin mejorar el objetivo de recuperación comprometido; el análisis completo está en el ADR-09. La región secundaria mantiene una réplica reducida pero funcional de la plataforma, escalable a carga completa en menos de 30 minutos:
+El mecanismo de recuperación ante desastres (modalidad activo-pasiva, RTO ≤ 4 h, RPO ≤ 15 min), el procedimiento de conmutación y retorno, las pruebas semestrales, la tabla de componentes de la réplica y el esquema de respaldos 3-2-1-1-0 se declaran en el capítulo de arquitectura de despliegue.
 
-- **RTO/RPO.** RTO ≤ 4 h y RPO ≤ 15 min para los servicios críticos; la réplica Aurora Global mantiene un retraso típico < 1 s, alarmado a los 5 y 15 min, y la replicación S3 CRR (copia entre regiones) con RTC (control de tiempo de replicación) cumple un RPO < 15 min.
-
-- **Conmutación/retorno.** failover en 8 pasos semiautomáticos (detección Route 53 < 5 min, promoción Aurora, escalado ECS Fargate, DNS, validación) con los pasos 4–7 automatizados mediante AWS Systems Manager Automation; retorno (failback) en 6 pasos con reconciliación determinista de las transacciones generadas durante la contingencia.
-
-- **Pruebas.** conmutación real dos veces al año midiendo RTO y RPO efectivos con informe al CLIENTE, junto con la restauración mensual verificada con cero errores (esquema 3-2-1-1-0).
-
-- **Respaldos 3-2-1-1-0 (esquema único nube + on-premise).** la pierna «1 inmutable» vive en la nube (S3 Object Lock en modo Compliance + AWS Backup Vault Lock); el NAS on-premise (D-05, WORM local + clave CMK independiente) es la copia local de recuperación rápida (RTO 4 h); la bóveda de custodia física externa completa la copia offsite.
-
-Los componentes del sitio secundario se detallan a continuación:
-
-
-> **Tabla 28** — Especificaciones del sitio secundario y de la recuperación ante desastres · 5 filas · ver planilla del subdocumento
+El gabinete de borde con que se habilitan el sitio secundario on-premise y las tres plataformas de cross-docking se muestra en la figura correspondiente.
 
 
 ## Operación desconectada
@@ -182,126 +185,44 @@ Los componentes del sitio secundario se detallan a continuación:
 
 ## Arquitectura de integración
 
-Registro único de las integraciones de la solución: servicios, contratos, mensajería, versionado y gobierno. El marco normativo de este apartado se resume en la tabla de apertura de esta parte y se cita código por código en cada subsección.
-
-El riesgo principal del caso está en las costuras entre sistemas legados sin documentación de interfaces, no en los módulos nuevos.
-
-
-### Principios de integración
-
-
-> **Tabla 30** — 1. Principios de integración · 8 filas · ver planilla del subdocumento
+Vista física de las integraciones: emplazamiento de las superficies, mensajería y costuras con la arquitectura lógica. El catálogo de integraciones, los principios, los contratos, los eventos canónicos, la capa anticorrupción y el versionado se declaran en la arquitectura lógica (Subdocumento 4.1). El volumen de mensajes por integración se declara en el capítulo de dimensionamiento (Tabla 33).
 
 
 ### Vista de integración
 
-En texto, la vista de integración se organiza en cuatro dominios con tráfico saliente desde el terreno y el on-premise hacia la nube:
+La vista de integración se organiza en cuatro dominios físicos:
 
-- **Terreno (offline-first).** C-01 App Preventa (62 preventistas), C-02 App Reparto (~200 conductores) y C-03 HHT bodega (120 concurrentes).
-- **On-premise (5 sitios con cómputo).** A-01 Motor WMS (M1, M2 y M5 en modo wms_only), A-03 RabbitMQ (buffer 24 h), A-04 capa anticorrupción (frontera única del ERP), B-02 Greengrass (buffer 14 h) y E-01 mini-WMS cross-dock (ventana de 3 h).
-- **Nube AWS sa-east-1.** Amazon API Gateway (Capa 3), Capa 4 con M1–M12 en Django + workers Celery, N-09 SQS FIFO, N-09 EventBridge, M11 Hub EDI GS1 (EANCOM · GS1 XML · EPCIS) y N-08 IoT Core.
-- **Terceros.** ERP 2017 (sin documentación de interfaces), SII (DTE y guía electrónica), cadenas de supermercados (hito enero 2029), Transbank Webpay/POS, GIS/mapas y notificaciones.
+- **Terreno (offline-first):** C-01 App Preventa (62 preventistas), C-02 App Reparto (≈200 conductores) y C-03 HHT bodega (120 concurrentes).
+- **On-premise (5 sitios con cómputo):** A-01 Motor WMS (M1, M2 y M5 en modo wms_only), A-03 RabbitMQ (buffer 24 h), A-04 capa anticorrupción (frontera única del ERP), B-02 Greengrass (buffer 14 h) y E-01 mini-WMS cross-dock (ventana de 3 h).
+- **Nube AWS sa-east-1:** Amazon API Gateway (Capa 3), Capa 4 con M1–M12 en Django + workers Celery, N-09 SQS FIFO, M11 Hub EDI GS1 (EANCOM, GS1 XML y EPCIS) y N-08 IoT Core.
+- **Terceros:** ERP 2017 (sin documentación de interfaces), SII (DTE y guía electrónica), cadenas de supermercados (hito enero 2029), Transbank Webpay/POS, GIS/mapas y notificaciones.
 
-El flujo del tráfico: el terreno llama a la puerta de enlace (API Gateway); los HHT y el WMS publican al broker (A-03); el cross-dock (E-01) publica sus eventos críticos directo a SQS FIFO y solo el detalle del mini-WMS viaja a Talca — lo crítico no depende de Talca (D-AL-04); Greengrass envía por IoT Core; y la Capa 4 consume las colas y alcanza el ERP únicamente a través de la capa anticorrupción (A-04), con una sola puerta hacia el legado. Las flechas desde el dominio on-premise hacia la nube son todas salientes.
-
-
-### Catálogo de servicios de integración
-
-El catálogo es el registro único de integraciones. Cada entrada tiene identificador estable, módulo dueño, contrato, versión y comportamiento ante falla. Vive versionado junto al código y se publica en el portal interno de desarrolladores servido por Amazon API Gateway (Capa 3).
+Flujo del tráfico entre estos dominios: el terreno de calle llama directo a la puerta de enlace (API Gateway) por la red celular, sin pasar por el on-premise; los HHT de bodega se comunican por WLAN local con el WMS del sitio; el WMS publica al broker local (A-03) que reenvía a SQS FIFO en la nube; el cross-dock (E-01) publica sus eventos críticos directo a SQS FIFO y solo el detalle del mini-WMS viaja a Talca, de modo que lo crítico no depende de Talca (D-AL-04); Greengrass envía por IoT Core; y la Capa 4 consume las colas y alcanza el ERP únicamente a través de la capa anticorrupción (A-04), con una sola puerta hacia el legado.
 
 
-#### Integraciones internas — superficies y plano híbrido
+### Mensajería (ADR-05)
+
+Los planos de mensajería y su emplazamiento físico se describen en la Tabla 35.
 
 
-> **Tabla 31** — 3.1 Integraciones internas — superficies y plano híbrido · 8 filas · ver planilla del subdocumento
+> **Tabla 35** — Mensajería: planos y emplazamiento físico · 4 filas · ver planilla del subdocumento
 
 
-#### Integraciones externas — plataforma y terceros
+### Costuras híbridas: amarre con la arquitectura física
+
+La vista de integración y la vista física describen los mismos puntos de contacto. La Tabla 36 amarra ambas: cada costura física se cruza con la integración lógica que la usa, su contrato y sus extremos.
 
 
-> **Tabla 32** — 3.2 Integraciones externas — plataforma y terceros · 7 filas · ver planilla del subdocumento
-
-Se declaran 15 integraciones: 8 internas y 7 externas, con un total en régimen de ≈ 150.000 mensajes al día dominado por las dos series de tiempo —trazabilidad y telemetría— que por diseño no atraviesan la base transaccional: entran por el borde y se consolidan en la capa analítica (ADR-04). El desglose por integración, con volumen en régimen, peak de septiembre y derivación, está en la sección de dimensionamiento de esta parte.
-
-
-### Contratos
-
-
-> **Tabla 33** — 4. Contratos de integración · 5 filas · ver planilla del subdocumento
-
-Los contratos se declaran por dimensión:
-
-- **API síncrona.** OpenAPI 3.1 por módulo, con ruta /v{major}/.... Metadatos obligatorios: x-owner (módulo dueño), x-version (semver), x-status (draft, stable, deprecated) y x-sunset (fecha de retiro).
-- **Eventos.** AsyncAPI 2.6 con JSON Schema versionado por evento. Cada evento declara productor único, consumidores registrados, clave de partición y política de reintento.
-- **Autenticación.** Superficies: OAuth 2.1 con PKCE. Servicio a servicio: mTLS. Máquina a máquina: credenciales de cliente con secreto de rotación automática. Todos los tokens los firma Keycloak (Capa 7).
-- **Validación.** Validación de esquema e inspección de carga útil en la puerta de enlace, antes de alcanzar la Capa 4. Un mensaje que no valida no entra: se rechaza con causa y queda registrado.
-- **Trazabilidad.** Todo llamado y todo evento propaga transaction_id (OpenTelemetry) desde la Capa 3 hasta la Capa 6. Es la clave con la que se reconstruye una operación de extremo a extremo, conforme al Art. 23: quién, qué, cuándo, desde dónde y con qué valores anteriores y posteriores.
-
-
-#### Eventos canónicos del dominio
-
-Los eventos son el vocabulario del sistema. Se nombran en pasado, son inmutables y llevan event_id (UUID), occurred_at, site_id y transaction_id.
-
-
-> **Tabla 34** — 4.1 Eventos canónicos del dominio · 10 filas · ver planilla del subdocumento
-
-
-### Mensajería
-
-
-> **Tabla 35** — 5. Mensajería (ADR-05) · 4 filas · ver planilla del subdocumento
-
-Garantías declaradas:
-
-- **Entrega al menos una vez**, con deduplicación en el consumidor. No se promete entrega exactamente una vez: se promete idempotencia verificable.
-- **Orden por partición, no orden global.** La partición es el sitio o la entidad de negocio, según el evento.
-- **DLQ por cola** con retención declarada, monitoreada por el equipo de operación y con bandeja de excepciones cuando el mensaje afecta a un tercero (EDI, DTE).
-- **Reintento con retroceso exponencial y variación aleatoria**; cortacircuitos sobre ERP, SII y Transbank; mamparos (aislamiento de fallos entre componentes) por integración: un fallo del ERP no degrada la preventa.
-- **Reconciliación determinista:** al reconectar, el conflicto de stock se resuelve por la regla de reserva declarada, nunca por marca de tiempo, y la decisión queda en la bitácora del Art. 16.4.
-
-
-### Costuras híbridas — amarre con la arquitectura física
-
-La vista de integración y la vista física describen los mismos puntos de contacto. Esta tabla es el amarre entre ambas vistas: cada costura aparece aquí con su contraparte física.
-
-
-> **Tabla 36** — 6. Costuras híbridas — amarre con la arquitectura física · 12 filas · ver planilla del subdocumento
-
-
-### Capa anticorrupción y estrangulamiento del legado
-
-Frontera única del ERP (A-04). El ERP de 2017 no tiene documentación de interfaces. En vez de descubrir su forma real dentro de cada módulo, se levanta una sola frontera: la ACL expone hacia adentro un contrato OpenAPI 3.1 propio de Puelche y absorbe hacia afuera la forma del ERP. Consecuencias:
-
-- El conocimiento del ERP queda concentrado y documentado en un solo componente, no disperso en doce módulos.
-- Ningún módulo, portal ni cadena de supermercados escribe al ERP: celery-erp-sync publica notificaciones por SQS y lee contratos por la ACL.
-- Cuando una capacidad del ERP se absorbe en la plataforma, se retira de la ACL sin tocar a los consumidores.
-
-Estrangulamiento del WMS de 2013 (ADR-08). El WMS se reemplaza en la Etapa 1 por los módulos M1, M2 y M5 del monolito. Durante la coexistencia el legado queda detrás de la misma ACL, con una tabla de «capacidad absorbida» —recepción GS1, slotting, misiones de picking con HHT, conteo cíclico— que se vacía ola a ola por sitio, con estrategia azul-verde y plan de reversión.
-
-Hub EDI GS1 (ADR-11). Una cadena nueva se incorpora por configuración de perfil (equivalencias GTIN por cadena, RF-12.03), no por desarrollo. El hub mapea cada cadena contra un modelo canónico GS1, no contra el ERP: es exactamente lo que evita construir una integración distinta por cada cadena (Cap. 17.4, punto 10 del caso).
-
-
-### Versionado, gobierno y evolución
-
-Versionado semántico estricto (major/minor/patch) con evolución aditiva, preaviso mínimo de 6 meses antes de retirar una versión y doble versión concurrente durante migración. Los cambios disruptivos (major) requieren aprobación del Comité de Arquitectura. No se publica ni retira versiones en septiembre, diciembre ni los tres primeros días hábiles del mes (Cap. 13.2). Las especificaciones de cadenas de supermercados y del SII se versionan como perfiles del hub EDI.
-
-Gobierno: catálogo único versionado (toda integración con dueño, contrato, versión y comportamiento ante falla); pruebas de contrato en el pipeline (un cambio que rompe a un consumidor bloquea el despliegue); observabilidad por integración (latencia, error, DLQ, correlación por transaction_id); y bandeja de excepciones de negocio para lo que afecta a terceros (EDI, DTE — RF-12.05/12.06). El catálogo, las guías de resolución y la bandeja son los artefactos que hacen operable esta capa por el equipo de 4 personas del CLIENTE.
+> **Tabla 36** — Costuras híbridas: amarre con la arquitectura física · 12 filas · ver planilla del subdocumento
 
 
 ### Carga y descarga masiva de datos
 
 
-> **Tabla 39** — 10. Carga y descarga masiva de datos · 4 filas · ver planilla del subdocumento
+> **Tabla 39** — Carga y descarga masiva de datos · 4 filas · ver planilla del subdocumento
 
 Regla: ninguna carga masiva se ejecuta dentro de la ventana crítica 05:30–07:00, y toda carga queda registrada y es auditable.
 
-
-### Funciones que no operan sin conexión
-
-La declaración formal de funciones no disponibles en modo desconectado se detalla por componente en la tabla de emplazamiento de esta parte y se resume en la arquitectura lógica (Subdocumento 4.1). Desde la vista de integración la regla es una sola:
-
-- Lo transaccional crítico de terreno y de bodega opera sin conexión (14 h en terreno, 24 h en el centro de distribución). Lo que depende de la nube o de un tercero degrada con procedimiento manual declarado y sin pérdida de datos.
-- Ninguna función de la ventana crítica de despacho (05:30–07:00) depende de una integración externa: el DTE se timbra de forma diferida con folio reservado, el cobro se captura como pendiente, la excursión térmica se detecta y bloquea localmente, y la ruta ya está cargada en el dispositivo.
 
 ## Arquitectura de seguridad
 
@@ -562,10 +483,7 @@ Reglas que gobiernan el modelo de ambientes:
 
 #### WAN — doble camino con conmutación automática
 
-Cada instalación dispone de caminos físicamente independientes con conmutación automática en < 30 s (el requisito exige ≤ 5 min declarados; el diseño opera en < 30 s):
-
-
-> **Tabla 63** — 2.1 WAN — doble camino por sitio · 3 filas · ver planilla del subdocumento
+Cada instalación dispone de dos caminos físicamente independientes con conmutación automática en < 30 s: fibra óptica más LTE empresarial en los CDs (Talca y Concepción), y Starlink más LTE empresarial en los cross-docks (Curicó, Chillán y Los Ángeles). El requisito exige ≤ 5 min declarados; el diseño opera en < 30 s. Los anchos de banda por sitio, en régimen y en peak, se declaran en la sección de dimensionamiento (Tabla 81).
 
 Los cross-docks salen directo por Starlink a SQS/IoT/SSM y sincronizan detalle a Talca por AMQPS entre brokers (C-13). La pérdida total del enlace se cubre con la autonomía local de 24 h (CD) / 14 h (terreno), por lo que la redundancia de conectividad reduce la frecuencia de desconexión pero no es condición para operar.
 
@@ -850,18 +768,6 @@ Gestión de capacidad durante la Operación con proyección trimestral de crecim
 Ventana de ampliación conforme al procedimiento de ampliación (adición de vCPU/OSD dentro del físico; contrato escalonado de enlaces; 4.º nodo al acercarse al margen). La revisión se apoya en el informe de carga como insumo del hito de producción (mes 16).
 
 En nube, la revisión de costos del dimensionamiento elástico evalúa umbrales Target Tracking y concurrencia reservada con al menos 30 días antes del peak de septiembre.
-
-## Capa analítica: emplazamiento y dimensionamiento
-
-La capa analítica es un componente exigido por el numeral 5.4 de las Transversales y por el Capítulo 18 del caso (OTIF, fill rate y costo de servir como criterios de aceptación). Desde la vista física, su emplazamiento y dimensionamiento son los siguientes:
-
-
-> **Tabla 95** — Componentes del módulo BI · 9 filas · ver planilla del subdocumento
-
-El desacople OLAP/OLTP se materializa con Redshift Serverless (OLAP) operando independiente de Aurora PostgreSQL (OLTP); DMS CDC extrae cambios de forma incremental y continua sin bloquear transacciones. Los indicadores se calculan como vistas materializadas en Redshift (refresco cada 5–15 min) y se cachean en ElastiCache Redis para tableros de alta concurrencia. Resultado: picking mantiene ≤ 1 s y preventa ≤ 1,5 s mientras los gerentes consultan tableros simultáneamente.
-
-El dimensionamiento de la capa analítica en nube está incluido en la tabla de dimensionamiento nube de esta parte. La solución **no incorpora inteligencia artificial ni analítica predictiva** en el alcance contratado: el caso parte de un 41 % de recepciones sin registro de lote y predecir sobre esa base produce confianza injustificada. La capa se entrega preparada —lago de datos en formato columnar y almacén analítico— para incorporarlas cuando el CLIENTE alcance la madurez de datos necesaria.
-
 
 ## Registro de decisiones de arquitectura
 

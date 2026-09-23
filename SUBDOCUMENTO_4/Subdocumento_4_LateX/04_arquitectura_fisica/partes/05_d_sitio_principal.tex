@@ -9,7 +9,7 @@
 \label{sec:d-especificaciones-del-sitio-principal-on-}
 
 \paragraph{Tipología declarada (numeral 6.1 de las Transversales): sala técnica principal.}
-El CD Talca aloja el núcleo del componente on-premise ---motor WMS, base transaccional del maestro de bodega, broker de colas, capa anticorrupción del ERP, caché de identidad, telemetría y respaldo local---, es decir cómputo, almacenamiento y procesamiento sustantivos en instalaciones del CLIENTE. Por eso se le aplican íntegramente los requisitos RT-06.01 a RT-06.34, y no el régimen proporcional de una sala de sitio.
+El CD Talca aloja el núcleo del componente on-premise, es decir cómputo, almacenamiento y procesamiento sustantivos en instalaciones del CLIENTE. Concentra el motor WMS, la base transaccional del maestro de bodega, el broker de colas, la capa anticorrupción del ERP, la caché de identidad, la telemetría y el respaldo local. Por eso se le aplican íntegramente los requisitos RT-06.01 a RT-06.34, y no el régimen proporcional de una sala de sitio.
 
 \textbf{Disponibilidad de infraestructura comprometida: 99,95 \% mensual}, conforme al numeral 6.1 y a la tabla del numeral 7.2 de las Transversales, medida por componente: energía del recinto, climatización, red y comunicaciones, servidores y cómputo, y motor de base de datos. El compromiso se sostiene con redundancia N+1 en energía y climatización, doble acometida con transferencia automática, generación autónoma propia y monitoreo continuo con alertamiento; no se invoca ninguna clasificación de instalación de tercero, porque las Bases no exigen certificación de nivel sino el cumplimiento verificable de cada requisito técnico individual. Este valor es el nivel de la infraestructura del recinto y es distinto del compromiso contractual penalizable del Artículo 78\textdegree{}, que recae sobre la transacción de negocio de extremo a extremo ($\geq$ 99,9 \% mensual, RT-10.01).
 
@@ -33,7 +33,7 @@ Cableado y comunicaciones: cableado estructurado Cat6A F/UTP + fibra OM4 certifi
 
 \figuralafrox{0.86}{DC03b_Elevacion_Racks_RT0605.png}{Elevación de los cuatro gabinetes, con la ocupación proyectada de cada uno y el margen de crecimiento reservado en R04}{fig:dc-racks}
 
-Los componentes de sala ofertados se detallan en la Tabla~\ref{tab:t27}:
+Los componentes de infraestructura de sala del CD Talca (UPS, generador, transferencia automática, climatización, seguridad física, extinción, cableado y gabinetes) se detallan en la Tabla~\ref{tab:t27}. El equipamiento de cómputo, red y comunicaciones que se aloja en estos gabinetes (servidores, switches, firewalls, WLAN, terminales) se declara en el capítulo de implementos:
 
 \begin{tablalafrox}{Componentes de sala del sitio principal (CD Talca)}{tab:t27}%
   {F{0.21} Y F{0.21} G{0.08} Y}%

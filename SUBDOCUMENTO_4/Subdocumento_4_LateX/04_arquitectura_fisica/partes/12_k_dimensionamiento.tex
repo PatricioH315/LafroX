@@ -97,7 +97,7 @@ El numeral 14.2 del caso entrega dieciséis dimensiones a estimar y advierte que
   Volumen anual de almacenamiento de evidencia de entrega, firmas y fotografías & $\approx$ 100 GB/año & 420.000 entregas al año $\times$ $\approx$ 230 KB por entrega (una firma de $\approx$ 30 KB más una a dos fotografías comprimidas de $\approx$ 200 KB), más la evidencia de las $\approx$ 900 devoluciones mensuales. Con retención de 6 años y almacenamiento por niveles, $\approx$ 600 GB al término del contrato \\
   Volumen anual de almacenamiento de series de temperatura y de posicionamiento & $\approx$ 3,3 GB/año en crudo \textperiodcentered{} $\approx$ 0,8 GB/año consolidado & Temperatura: 46 fuentes $\times$ 1 muestra cada 5 min $\times$ 365 días. Posicionamiento: 42 camiones $\times$ 1 posición cada 30 s $\times$ 12 h $\times$ 300 días. El crudo vive 30 días con expiración automática y la serie consolidada se conserva en formato columnar comprimido: 5 años para temperatura y 12 meses para geolocalización de personas \\
   Volumen total de datos históricos a migrar & $\approx$ 30 GB de datos estructurados & Maestros completos (14.200 clientes, 8.400 productos, 180 proveedores), ventas y pedidos de 3 años ($\approx$ 9,4 millones de líneas $\times$ $\approx$ 1 KB), movimientos de inventario de 2 años ($\approx$ 3,4 millones $\times$ $\approx$ 0,5 KB), trazabilidad sanitaria de 5 años y cuentas por cobrar vivas más 2 años. El histórico documental permanece en el sistema de gestión, que sigue siendo la fuente tributaria \\
-  Número de integraciones y volumen de mensajes por integración & 15 integraciones \textperiodcentered{} $\approx$ 150.000 mensajes/día & Desglose por integración en la sección de arquitectura de integración, derivado de la volumetría del caso sobre 25 días hábiles \\
+  Número de integraciones y volumen de mensajes por integración & 15 integraciones \textperiodcentered{} $\approx$ 150.000 mensajes/día & Desglose por integración en la Tabla~\ref{tab:t33} de esta parte, derivado de la volumetría del caso sobre 25 días hábiles \\
   Ancho de banda requerido por sitio, en régimen y en peak & Talca 20$\rightarrow$50 Mbps \textperiodcentered{} Concepción 10$\rightarrow$20 Mbps \textperiodcentered{} cross-docking por enlace satelital & Dimensionado sobre la sincronización de flota en la ventana de retorno y el respaldo semanal a la nube, escalado al 3$\times$ de RT-09.03, con conmutación automática en menos de 30 s (subsección de ancho de banda WAN por sitio) \\
   Volumen de datos generado por un dispositivo de reparto en un turno completo sin señal & $\approx$ 8--12 MB por turno & Ruta del día, maestro acotado de productos y precios, evidencia de entrega comprimida de $\approx$ 30 entregas y cola de escrituras pendientes \\
   Tiempo de sincronización de la flota al regresar al centro de distribución & 100 \% dentro de la ventana de retorno 17:00--20:00, por lotes de $\leq$ 10 min & $\approx$ 200 dispositivos $\times$ 10 MB ($\approx$ 2 GB/día; $\approx$ 6 GB y $\approx$ 8 Mbps de punta en el 3$\times$ de RT-09.03), con sincronización particionada y reanudable por lotes \\
@@ -105,7 +105,28 @@ El numeral 14.2 del caso entrega dieciséis dimensiones a estimar y advierte que
   Dotación de la mesa de ayuda y del equipo de operación & Mesa: 7 personas \textperiodcentered{} Operación: NOC y confiabilidad como servicio gestionado & Erlang C sobre la hora punta (supuesto de diseño; los parámetros se calibrarán con datos de operación en el hito H5): $\approx$ 5 contactos/h con tiempo medio de operación de 8 min dan una intensidad de 0,67 Erlang, y 2 agentes cumplen el objetivo de 80 \% atendido en 20 s. A eso se suman la cobertura de la ventana 05:30--07:00 y del turno nocturno de bodega, el segundo nivel y la supervisión: 3 agentes diurnos, 1 nocturno, 1 supervisor y 2 especialistas de segundo nivel \\
 \end{tablalafrox}
 
-Dos lecturas se desprenden de la tabla y gobiernan el diseño. La primera: el volumen de mensajes está dominado por las dos series de tiempo ---trazabilidad y telemetría, $\approx$ 112.000 de los $\approx$ 150.000 mensajes diarios--- que por diseño no atraviesan la base transaccional. La segunda: la ventana crítica de despacho no es la de mayor carga, sino la de menor tolerancia a la indisponibilidad; el dimensionamiento del cómputo se rige por la preparación nocturna y el peak de septiembre, y el de la resiliencia por la ventana de despacho.
+Dos lecturas se desprenden de la tabla y gobiernan el diseño. La primera: el volumen de mensajes está dominado por las dos series de tiempo, la trazabilidad y la telemetría, que suman $\approx$ 112.000 de los $\approx$ 150.000 mensajes diarios y que por diseño no atraviesan la base transaccional. La segunda: la ventana crítica de despacho no es la de mayor carga, sino la de menor tolerancia a la indisponibilidad; el dimensionamiento del cómputo se rige por la preparación nocturna y el peak de septiembre, y el de la resiliencia por la ventana de despacho.
+
+\subsection{Volumen de mensajes por integración}
+
+El desglose por integración, derivado de la volumetría del caso sobre 25 días hábiles al mes con el peak de septiembre al doble, se presenta en la Tabla~\ref{tab:t33}. Esta tabla sustenta el dimensionamiento de red, colas y almacenamiento de series de tiempo, y es referenciada por la vista de integración de este mismo subdocumento.
+
+\begin{tablalafrox}{Volumen de mensajes por integración, derivado de la volumetría del caso}{tab:t33}%
+  {F{0.26} F{0.26} F{0.21} Y}%
+  {\cab{Integración} & \cab{Volumen en régimen} & \cab{Peak septiembre} & \cab{Derivación}}
+  Capa anticorrupción del ERP (asíncrona) & $\approx$ 4.700 mensajes/día & $\approx$ 9.400 & 1.240 pedidos + 46 recepciones + 1.400 preparaciones + 1.400 evidencias de entrega + $\approx$ 600 recaudaciones \\
+  Documentos tributarios y acuse (SII, síncrona) & $\approx$ 2.700 mensajes/día & $\approx$ 5.400 & 34.000 documentos/mes más su acuse, sobre 25 días \\
+  Eventos de trazabilidad GS1 EPCIS & $\approx$ 52.000 eventos/día & $\approx$ 104.000 & 260.000 líneas/mes $\times$ 5 eventos de ciclo, sobre 25 días \\
+  Telemetría de cadena de frío (IoT Core) & $\approx$ 13.200 mensajes/día & sin variación & 46 fuentes (28 puntos de cámara + 18 termógrafos) $\times$ 1 muestra cada 5 min \\
+  Telemetría de flota & $\approx$ 60.500 mensajes/día & $\approx$ 72.000 & 42 camiones propios $\times$ 1 posición cada 30 s durante 12 h de ruta \\
+  Sincronización de terreno (colas de dispositivo) & $\approx$ 13.000 escrituras/día & $\approx$ 26.000 & 1.240 pedidos + 1.400 evidencias + 10.400 confirmaciones de preparación \\
+  Intercambio electrónico con el canal moderno (Etapa 2) & $\approx$ 550 mensajes/día & $\approx$ 1.100 & 136 pedidos/día $\times$ 4 mensajes (pedido, confirmación, aviso de despacho, acuse) \\
+  Notificaciones multicanal & $\approx$ 2.800 mensajes/día & $\approx$ 5.600 & hora estimada de llegada y acuse por entrega \\
+  Autorización de pago (POS móvil) & $\approx$ 500 mensajes/día & $\approx$ 1.000 & fracción del canal tradicional que migra de efectivo a pago electrónico \\
+  Servicio de mapas y geocodificación & $\approx$ 200 llamadas/día & $\approx$ 400 & una corrida de ruteo por zona más recálculos por incidencia \\
+\end{tablalafrox}
+
+El total en régimen es de $\approx$ 150.000 mensajes al día. Las cinco integraciones restantes del catálogo son de configuración y administración, con volumen despreciable frente a estas cifras.
 
 \section{Concurrencia y TPS de diseño}
 \label{sub:3-concurrencia-y-tps-de-diseno}

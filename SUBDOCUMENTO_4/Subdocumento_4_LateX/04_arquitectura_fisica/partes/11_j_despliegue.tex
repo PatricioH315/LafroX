@@ -44,15 +44,7 @@ Reglas que gobiernan el modelo de ambientes:
 
 \subsection{WAN --- doble camino con conmutación automática}
 
-Cada instalación dispone de dos caminos físicamente independientes con conmutación automática en $<$ 30 s (el requisito exige $\leq$ 5 min declarados; el diseño opera en $<$ 30 s), que se detallan en la Tabla~\ref{tab:t63}:
-
-\begin{tablalafrox}{WAN --- doble camino por sitio}{tab:t63}%
-  {F{0.26} F{0.26} Y}%
-  {\cab{Camino} & \cab{Sitios} & \cab{Rol}}
-  Fibra (D-03) & Talca, Concepción & Enlace principal en los 2 CD \\
-  Starlink Enterprise LEO (D-06) & 3 cross-docks (Curicó, Chillán, Los Ángeles) & Enlace principal en cross-docks, que operan en naves industriales sin cobertura de fibra \\
-  LTE empresarial 4G Cat-12 (D-04) & Todos & Respaldo en todos los sitios; conmutación automática al caer el enlace principal \\
-\end{tablalafrox}
+Cada instalación dispone de dos caminos físicamente independientes con conmutación automática en $<$ 30 s: fibra óptica más LTE empresarial en los CDs (Talca y Concepción), y Starlink más LTE empresarial en los cross-docks (Curicó, Chillán y Los Ángeles). El requisito exige $\leq$ 5 min declarados; el diseño opera en $<$ 30 s. Los anchos de banda por sitio, en régimen y en peak, se declaran en la sección de dimensionamiento (Tabla~\ref{tab:t81}).
 
 Los cross-docks salen directo por Starlink a SQS/IoT/SSM y sincronizan detalle a Talca por AMQPS entre brokers (C-13). La pérdida total del enlace se cubre con la autonomía local de 24 h (CD) / 14 h (terreno), por lo que la redundancia de conectividad reduce la frecuencia de desconexión pero no es condición para operar.
 
@@ -157,7 +149,7 @@ Retorno (failback): procedimiento documentado en 6 pasos --- re-sincronización 
 
 Pruebas: conmutación real $\geq$ 2 veces/año con informe de RTO/RPO efectivos y plan de corrección de brechas.
 
-Residencia y transferencia internacional de datos: la replicación hacia us-east-1 constituye una transferencia internacional de datos personales y se rige por los resguardos declarados en la sección de arquitectura de seguridad de este documento, en la subsección de datos personales, residencia y transferencia internacional: cifrado con CMK gestionada por el CLIENTE, acuerdo de tratamiento con cláusulas de transferencia, minimización (la región secundaria no se explota analíticamente, solo sostiene continuidad), exclusión de los datos de geolocalización de personas de la replicación transfronteriza ---permanecen solo en sa-east-1 con retención de 12 meses--- y registro en el inventario de tratamientos. La residencia queda sujeta a aprobación expresa del CLIENTE; si no la aprueba, la alternativa declarada es la continuidad intrarregional dentro de sa-east-1 (tercera AZ ampliada + respaldo inmutable regional --- no es un segundo sitio geográfico ni usa Talca/Concepción para la carga cloud; AWS no tiene región en Chile), que cubre falla de AZ y corrupción de datos pero degrada el RTO ante una caída de toda la región sa-east-1 (24--72 h desde el respaldo inmutable; alternativa D del ADR-09).
+Residencia y transferencia internacional de datos: la replicación hacia us-east-1 constituye una transferencia internacional de datos personales y se rige por los resguardos declarados en la sección de arquitectura de seguridad de este documento, en la subsección de datos personales, residencia y transferencia internacional: cifrado con CMK gestionada por el CLIENTE, acuerdo de tratamiento con cláusulas de transferencia, minimización (la región secundaria no se explota analíticamente, solo sostiene continuidad), exclusión de los datos de geolocalización de personas de la replicación transfronteriza (permanecen solo en sa-east-1 con retención de 12 meses) y registro en el inventario de tratamientos. La residencia queda sujeta a aprobación expresa del CLIENTE. Si no la aprueba, la alternativa declarada es la continuidad intrarregional dentro de sa-east-1, que consiste en una tercera AZ ampliada más respaldo inmutable regional. Esta alternativa no es un segundo sitio geográfico ni usa Talca o Concepción para la carga cloud, ya que AWS no tiene región en Chile. Cubre falla de AZ y corrupción de datos, pero degrada el RTO ante una caída de toda la región sa-east-1 a 24--72 h desde el respaldo inmutable (alternativa D del ADR-09).
 
 \subsection{DRP local (Talca $\rightarrow$ Concepción)}
 
