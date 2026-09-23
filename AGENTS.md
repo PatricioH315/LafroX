@@ -81,9 +81,6 @@ iteraciones como subcarpetas `entrega_1/`, `entrega_2/`, etc.
    del repo. La deduplicación entre `entrega_1/` y `entrega_2/` es deliberada: los diagramas del
    Informe 1 son la línea base y `entrega_2/` los referencia por nombre desde la biblioteca única.
 
-**El proyecto LaTeX fue retirado** (`productos/Informe1/informe latex/`): estaba desactualizado
-respecto del entregable e invocaba 5 diagramas inexistentes. No reintroducirlo ni tomarlo como
-fuente. Queda en el historial (commit `6a4a00d`, tag `respaldo/pre-consolidacion-2026-09-08/datacenter`).
 
 ## Carpetas
 

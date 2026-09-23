@@ -8,7 +8,7 @@
 \chapter{Arquitectura de seguridad}
 \label{sec:i-arquitectura-de-seguridad}
 
-Para la solución de la arquitectura de seguridad se usara el modelo Zero Trust, capa expuesta, identidad y accesos, cifrado y controles, esto debido a que el perímetro de esta solución no es un edificio corporativo sino un entorno distribuido con alta rotación de personal externo y dispositivos compartidos en terreno.
+Para la solución de la arquitectura de seguridad se usará el modelo Zero Trust, capa expuesta, identidad y accesos, cifrado y controles, esto debido a que el perímetro de esta solución no es un edificio corporativo sino un entorno distribuido con alta rotación de personal externo y dispositivos compartidos en terreno.
 
 \section{Principios rectores}
 \label{sub:1-principios-rectores}
@@ -17,7 +17,7 @@ Para la solución de la arquitectura de seguridad se usara el modelo Zero Trust,
   \item \textbf{Zero Trust conforme a NIST SP 800-207}. Verificación explícita de cada solicitud, privilegio mínimo y presunción de compromiso. La red interna no confiere confianza.
   \item \textbf{Seguridad desde el diseño y por defecto}. Modelado de amenazas STRIDE documentado por cada componente y por cada integración externa, antes de implementar.
   \item \textbf{La identidad es el perímetro}. Autoridad única de identidad mediante Keycloak y toda decisión de acceso se toma sobre el token, no sobre la dirección de red de origen.
-  \item \textbf{Sin conexiones entrantes al on-premise}. Todo tráfico desde on-premise hacia la nube es saliente. Las dos únicas excepciones es desde DMS hacia PostgreSQL y de celery-erp-sync hacias ACL que están declaradas, acotadas al túnel IPsec autenticado y auditadas.
+  \item \textbf{Sin conexiones entrantes al on-premise}. Todo tráfico desde on-premise hacia la nube es saliente. Las dos únicas excepciones son desde DMS hacia PostgreSQL y de celery-erp-sync hacia ACL que están declaradas, acotadas al túnel IPsec autenticado y auditadas.
   \item \textbf{Cifrado en tránsito y en reposo sin excepciones}. TLS 1.3 mínimo cifrado en reposo del 100 \% de los datos con claves gestionadas en KMS/HSM y separación de funciones en su custodia.
   \item \textbf{La seguridad no puede detener la ventana crítica}. Ningún control de seguridad puede introducir una dependencia en línea dentro de 05:30 hasta las 07:00 ni en las 14 h de terreno sin señal. La autenticación de terreno se resuelve sin red por diseño.
   \item \textbf{Operable por cuatro personas}. El CLIENTE tiene 4 personas de TI, por lo que se privilegian servicios administrados y un SOC contratado 24/7 por sobre plataformas que exijan operación local especializada.
@@ -29,12 +29,12 @@ Para la solución de la arquitectura de seguridad se usara el modelo Zero Trust,
 
 \subsection{Zonas y flujos}
 
-En el texto las zonas y su flujo son la zona pública como los clientes del canal moderno, transportistas app para 160 conductores y 180 proveedores que ingresan únicamente por la DMZ en nube en CloudFront mas AWS WAF v2 mas Shield Advanced hacia el Amazon API Gateway con OIDC, cuotas, esquema y validación de carga útil, para la zona de aplicación se usa ECS Fargate M1--M12 mas workers y Keycloak IdP maestro como autoridad única que sirve a las zonas de datos como Aurora PostgreSQL, DynamoDB y S3 con Object Lock, en subredes privadas sin salida, para la zona on-premise se usa VLAN 10 MGT, 20 SRV, 30 OPS, 40 WKS, 50 IOT, firewall D-01 UTM en HA como Customer Gateway y caché Keycloak de solo lectura TTL 8 h que se conecta con la nube por VPN/IPsec saliente, por ultimo para la zona de terreno se usa apps Kotlin offline-first mas MDM; HHT compartidos en cámara a $-$22 \textdegree{}C que no tiene perímetro.
+En el texto las zonas y su flujo son la zona pública como los clientes del canal moderno, transportistas app para 160 conductores y 180 proveedores que ingresan únicamente por la DMZ en nube en CloudFront más AWS WAF v2 más Shield Advanced hacia el Amazon API Gateway con OIDC, cuotas, esquema y validación de carga útil, para la zona de aplicación se usa ECS Fargate M1--M12 más workers y Keycloak IdP maestro como autoridad única que sirve a las zonas de datos como Aurora PostgreSQL, DynamoDB y S3 con Object Lock, en subredes privadas sin salida, para la zona on-premise se usa VLAN 10 MGT, 20 SRV, 30 OPS, 40 WKS, 50 IOT, firewall D-01 UTM en HA como Customer Gateway y caché Keycloak de solo lectura TTL 8 h que se conecta con la nube por VPN/IPsec saliente, por ultimo para la zona de terreno se usa apps Kotlin offline-first más MDM; HHT compartidos en cámara a $-$22 \textdegree{}C que no tiene perímetro.
 
 Reglas de zona declaradas:
 
 \begin{itemize}
-  \item La única exposición pública es la DMZ en nube ya sea CloudFront hacie el WAF y hacia el API Gateway. Las consolas internas no pasan por ahí, por lo que entran por intranet o VPN.
+  \item La única exposición pública es la DMZ en nube ya sea CloudFront hacia el WAF y hacia el API Gateway. Las consolas internas no pasan por ahí, por lo que entran por intranet o VPN.
   \item La zona de datos no tiene salida a internet y se consume por VPC Endpoints o PrivateLink.
   \item Desde la zona on-premise no se acepta ninguna conexión entrante salvo las dos excepciones D-AL-05.
   \item La zona de terreno no tiene perímetro, por lo que se protege con identidad, cifrado local, MDM y borrado remoto.
@@ -45,12 +45,21 @@ Reglas de zona declaradas:
 
 \begin{itemize}
   \item \textbf{Publicación exclusiva por capa de borde}. CloudFront como único origen público ya que los orígenes están restringidos y no se alcanzan directamente.
-  \item \textbf{WAF con reglas gestionadas y personalizadas}. se usara AWS WAF v2 que es un conjunto gestionado OWASP que contiene Top 10 más reglas propias por API.
+  \item \textbf{WAF con reglas gestionadas y personalizadas}. se usará AWS WAF v2 que es un conjunto gestionado OWASP que contiene Top 10 más reglas propias por API.
   \item \textbf{Protección DDoS en capas 3, 4 y 7}. AWS Shield Advanced con respuesta gestionada.
   \item \textbf{Gestión automatizada de certificados}. Inventario centralizado, renovación automática y alerta anticipada a 30 días del vencimiento.
   \item \textbf{Puerta de enlace con controles completos}. API Gateway con autenticación OIDC, autorización por rol, cuotas y límites de tasa por cliente, validación de esquema e inspección de carga útil.
   \item \textbf{Protección contra bots y abuso automatizado}. Reto progresivo en los puntos de entrada públicos sin degradar la accesibilidad.
   \item \textbf{Superficie de exposición declarada}. Inventario completo de servicios, protocolos, puertos por sitio y por zona.
+\end{itemize}
+
+\section{Desarrollo seguro y cadena de suministro}
+
+\begin{itemize}
+  \item \textbf{Matriz de controles.} Matriz trazable con control, implementación concreta y evidencia.
+  \item \textbf{Firma y procedencia.} Artefactos firmados y verificados.
+  \item \textbf{Entornos de prueba.} Prohibido el uso de datos productivos reales sin anonimización.
+  \item \textbf{Dependencias de terceros.} Proceso de aprobación con criterios de licencia, mantenimiento activo y ausencia de vulnerabilidades conocidas.
 \end{itemize}
 
 \subsection{Superficie de exposición completa}
@@ -63,7 +72,7 @@ Reglas de zona declaradas:
   Zona de datos en nube & Aurora, DynamoDB, y S3 & Solo por VPC Endpoint y PrivateLink & No \\
   Talca (red interna) & Portal WMS, API WMS, PostgreSQL, broker AMQP y gestión SSH & HTTPS, TCP, 636 & No, solo por VPN Zero Trust \\
   Talca (borde) & Clúster de firewall en HA & IPsec 500/4500 UDP & Solo terminación IPsec \\
-  Talca (Concepción) & Greengrass hacia IoT Core & No; sin puertos entrantes \\
+  Talca (Concepción) & Greengrass hacia IoT Core & HTTPS saliente & No; sin puertos entrantes \\
   Concepción y cross-docking & Gabinete de borde (mini-PC) & IPsec 500/4500 UDP & Solo por VPN IPsec \\
   Estaciones de trabajo & NA & HTTPS saliente por proxy & No \\
 \end{tablalafrox}
@@ -84,21 +93,29 @@ Como autoridad única en nube y cachés locales de solo lectura el Keycloak IdP 
 
 \subsection{Federación, SSO y factores}
 
-MFA obligatoria para administradores, accesos privilegiados y todo acceso desde fuera de la red corporativa.
-
-Acceso de conductores externos: OTP de un solo uso por operación, sin cuenta corporativa. Es la respuesta al hecho de que app 160 conductores no son trabajadores de la compañía y rotan sin aviso.
+\begin{itemize}
+  \item \textbf{SSO con cierre propagado.} Inicio de sesión único para todos los módulos con cierre de sesión propagado a todos en tiempo real.
+  \item \textbf{Factores.} MFA obligatoria para administradores, privilegios y todo acceso externo.
+  \item \textbf{RBAC + ABAC.} Control por roles complementado con atributos donde el proceso lo exija.
+  \item \textbf{Credenciales firmadas y de vida breve.} Sin identificadores de sesión en la URL.
+  \item \textbf{Ciclo de vida auditado.} Creación, modificación, elevación, bloqueo y baja de cuentas.
+  \item \textbf{Aprovisionamiento automatizado.} Alta/baja ligadas al ciclo laboral.
+  \item \textbf{Perfil operacional.} Autenticación adecuada al caso: guantes térmicos, uso a una mano, dispositivos compartidos y sin correo electrónico.
+\end{itemize}
 
 \subsection{Política de sesión}
 
 \begin{itemize}
-  \item \textbf{Duración.} Para la credencial de acceso cuenta con 30 minutos, para la credencial de identidad cuenta con  1 hora.
-  \item \textbf{Renovación.} Credencial de refresco rotatoria de 30 días.
-  \item \textbf{Operación desconectada.} Token de turno de 8 horas paral la bodega o 14 horas para terreno.
+  \item \textbf{Duración.} La credencial de acceso dura 30 minutos y la credencial de identidad dura 1 hora.
+  \item \textbf{Renovación.} Credencial de refresco rotatoria por 30 días.
+  \item \textbf{Inactividad.} Caducidad por inactividad según perfil.
+  \item \textbf{Revocación y concurrencia.} Revocación inmediata ante baja, compromiso o suspensión.
+  \item \textbf{Operación desconectada.} Token de turno de 8 horas en bodega o 14 horas en terreno, válido sin red.
 \end{itemize}
 
 \subsection{Autenticación en terreno}
 
-las condiciones estipuladas son los guantes térmicos a $-$22 \textdegree{}C, uso a una mano durante la descarga, uso de pie y a la intemperie en la puerta del local, dispositivos compartidos entre turnos en bodega y 38 \% de rotación anual en preparación. Por lo que declaramos:
+Las condiciones estipuladas son los guantes térmicos a $-$22 \textdegree{}C, uso a una mano durante la descarga, uso de pie y a la intemperie en la puerta del local, dispositivos compartidos entre turnos en bodega y 38 \% de rotación anual en preparación. Por lo que declaramos:
 
 \begin{itemize}
   \item El operador autentica con conexión al inicio de turno ya sea con un PIN de 6 dígitos y descarga un token cifrado de vida acotada al turno.
@@ -115,8 +132,11 @@ las condiciones estipuladas son los guantes térmicos a $-$22 \textdegree{}C, us
 El cifrado en tránsito se declara por trayecto:
 
 \begin{itemize}
-  \item \textbf{On-premise desde o hacia la nube.} IPsec/IKEv2 cifrado, BGP, MTU 1436.
-  \item \textbf{Respaldos y replicación.} TLS 1.3 en tránsito.
+  \item \textbf{TLS 1.3 mínimo y obligatorio.} Prohibición expresa de TLS 1.0 y 1.1, conjuntos de cifrado modernos y HSTS con precarga en las superficies web.
+  \item \textbf{Tráfico interno cifrado.} Capa de aplicación hacia la base de datos, broker y caché, mediante mTLS o cifrado nativo del protocolo.
+  \item \textbf{On-premise desde o hacia la nube.} IPsec/IKEv2 cifrado, BGP y MTU 1436.
+  \item \textbf{Respaldos y replicación.} TLS 1.3 en tránsito, incluida la replicación hacia us-east-1.
+  \item \textbf{Gestión de certificados.} Inventario centralizado, renovación automática y alerta anticipada a 30 días del vencimiento.
 \end{itemize}
 
 \subsection{En reposo}
@@ -150,10 +170,10 @@ El cifrado a nivel de campo se declara por conjunto de datos:
 \begin{tablalafrox}{Clasificación de la información y controles por nivel (RT-11.03)}{tab:t53}%
   {G{0.17} Y Y}%
   {\cab{Nivel} & \cab{Ejemplos en Puelche} & \cab{Controles mínimos}}
-  Restringido & Claves KMS/HSM, credenciales de servicio y firma privada de DTE & KMS/HSM y cifrado a nivel de campo \\
-  Confidencial & Base del WMS  & Cifrado en reposo \\
-  Interno & Registros de operación, métricas y configuraciones & Acceso por rol \\
-  Público & Catálogo público de productos sin precios & Sin controles de confidencialidad \\
+  Restringido & Claves KMS/HSM, credenciales de servicio y firma privada de DTE & Cifrado a nivel de campo, KMS/HSM, MFA, acceso nominativo con aprobación y registro de consultas \\
+  Confidencial & Base del WMS  & Cifrado en reposo y a nivel de campo, RBAC/ABAC, registro de consultas, retención declarada \\
+  Interno & Registros de operación, métricas y configuraciones & Acceso por rol y segregación de funciones \\
+  Público & Catálogo público de productos sin precios & Sin controles de confidencialidad, integridad vía CI/CD \\
 \end{tablalafrox}
 
 \section{Detección, respuesta y evidencia}
@@ -167,7 +187,8 @@ El cifrado a nivel de campo se declara por conjunto de datos:
   \item \textbf{EDR en nube y on-premise.} Agentes en todos los nodos on-premise, estaciones y cargas en nube.
   \item \textbf{SOC 24/7.} Cobertura contractual de ambos dominios con dotación mínima declarada.
   \item \textbf{Gestión de vulnerabilidades.} Plazos contractuales con crítica de 7 días, alta de 15 días, media de 30 días.
-  \item \textbf{Notificación de brechas.} Notificación al CLIENTE en menos de 24 horas desde la detección con informe preliminar.
+  \item \textbf{Respuesta a incidentes.} Plan con clasificación, cadena de escalamiento, plazos y responsables.
+  \item \textbf{Simulación de incidentes.} Ejercicios al menos una vez al año con participación del CLIENTE.
   \item \textbf{Pruebas de intrusión.} Anuales por un tercero independiente del adjudicatario y previas a cada paso a producción.
 \end{itemize}
 
@@ -178,7 +199,7 @@ El cifrado a nivel de campo se declara por conjunto de datos:
   \item \textbf{Residencia primaria.} Toda la operación productiva reside en AWS sa-east-1. El dominio on-premise reside en las instalaciones del CLIENTE en Chile.
   \item \textbf{Región secundaria.} us-east-1 es exclusivamente como ambiente de recuperación ante desastres.
   \item \textbf{Transferencia internacional.} La replicación hacia us-east-1 constituye una transferencia internacional de datos personales en el sentido de la Ley 21.719.
-  \item \textbf{Resguardos declarados.} Se cuenta con un cifrado en reposo con CMK gestionada por el CLIENTE y en tránsito extremo a extremo, luego un acuerdo de tratamiento de datos con el proveedor de nube con cláusulas de transferencia, luego la minimización que la región secundaria no se usa para explotación analítica ni para consultas de negocio, solo para continuidad, luego los datos de geolocalización de personas quedan excluidos de la replicación transfronteriza y se conservan solo en sa-east-1 con retención de 12 meses y por ultimo el registro de la transferencia en el inventario de tratamientos.
+  \item \textbf{Resguardos declarados.} Se cuenta con un cifrado en reposo con CMK gestionada por el CLIENTE y en tránsito extremo a extremo, luego un acuerdo de tratamiento de datos con el proveedor de nube con cláusulas de transferencia, luego la minimización que la región secundaria no se usa para explotación analítica ni para consultas de negocio, solo para continuidad, luego los datos de geolocalización de personas quedan excluidos de la replicación transfronteriza y se conservan solo en sa-east-1 con retención de 12 meses y por último el registro de la transferencia en el inventario de tratamientos.
   \item \textbf{Aprobación del CLIENTE.} Si el CLIENTE no aprueba la transferencia a us-east-1, la alternativa declarada es la continuidad intrarregional en sa-east-1 entendida como no salir de la región AWS sa-east-1.
   \item \textbf{Eliminación segura.} Procedimiento verificable de eliminación al vencimiento, con registro inalterable.
   \item \textbf{Exportabilidad.} Capacidad de exportar la totalidad de la información del CLIENTE en formatos abiertos y documentados, en cualquier momento del contrato y sin costo adicional.
@@ -199,11 +220,11 @@ Dos de los resguardos de esta tabla son decisiones de diseño y no solo cláusul
 \begin{tablalafrox}{Base de licitud por tratamiento (Ley 21.719, Art. 12 y 13)}{tab:t58}%
   {F{0.22} F{0.18} Y}%
   {\cab{Tratamiento} & \cab{Base de licitud} & \cab{Garantías clave}}
-  Geolocalización de trabajadores & Ejecución contrato mas interés legítimo &  finalidad operativa, sin control de jornada y cifrado de campo \\
-  Comportamiento de pago / crédito & Ejecución contrato mas interés legítimo & Cifrado de campo con  acceso restringido \\
-  Datos laborales & Obligación legal mas ejecución contrato & acceso restringido a RRHH \\
-  Clientes como preventa, DTE y portal & Ejecución contrato mas obligación legal & Sin marketing sin consentimiento \\
+  Geolocalización de trabajadores & Ejecución contrato más interés legítimo &  finalidad operativa, sin control de jornada y cifrado de campo \\
+  Comportamiento de pago / crédito & Ejecución contrato más interés legítimo & Cifrado de campo con  acceso restringido \\
+  Datos laborales & Obligación legal más ejecución contrato & acceso restringido a RRHH \\
+  Clientes como preventa, DTE y portal & Ejecución contrato más obligación legal & Sin marketing sin consentimiento \\
  firma y foto & Ejecución contrato & Retención 6 años \\
-  Conductores externos  & Consentimiento del titular & Datos mínimos mas OTP \\
+  Conductores externos  & Consentimiento del titular & Datos mínimos más OTP \\
 \end{tablalafrox}
 

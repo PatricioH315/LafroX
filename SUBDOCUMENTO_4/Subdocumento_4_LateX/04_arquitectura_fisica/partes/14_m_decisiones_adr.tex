@@ -31,7 +31,7 @@ Registro consolidado de las quince decisiones de arquitectura que condicionan es
 \section{ADR-03 \textperiodcentered{} Modelo de despliegue híbrido}
 \label{sub:adr-03}
 
-\textbf{Decisión adoptada.} Borde operacional on-premise (WMS maestro Talca, edge Concepción, mini-WMS cross-docks) + carga principal en AWS. 11 componentes on-prem, 12 híbridos, 13 nube pura.
+\textbf{Decisión adoptada.} Borde operacional on-premise (WMS maestro Talca, edge Concepción, WMS en cross-docks) + carga principal en AWS. 11 componentes on-prem, 12 híbridos, 13 nube pura.
 
 \textbf{Alternativas descartadas.} \emph{Solo nube}: inadmisible (Art.~16); sin enlace la bodega muere en minutos; picking en cámara $-$22\,\textdegree{}C inviable con RTT 40--80 ms. \emph{Solo on-premise}: inadmisible (Art.~16).
 
@@ -76,7 +76,7 @@ Registro consolidado de las quince decisiones de arquitectura que condicionan es
 \section{ADR-08 \textperiodcentered{} Destino del WMS legado 2013}
 \label{sub:adr-08}
 
-\textbf{Decisión adoptada.} Reemplazo total en Etapa 1 por módulo WMS del monolito (ADR-01): Talca maestro, Concepción edge, cross-docks mini-WMS E-01. Migración por dominio, oleadas por sitio, reversión azul-verde.
+\textbf{Decisión adoptada.} Reemplazo total en Etapa 1 por módulo WMS del monolito (ADR-01): Talca maestro, Concepción edge, cross-docks sobre E-01. Migración por dominio, oleadas por sitio, reversión azul-verde.
 
 \textbf{Alternativas descartadas.} \emph{Mantener e integrar}: proveedor desaparecido, sin soporte; no soporta multi-sitio, picking FEFO (primero en expirar, primero en salir), SSCC GS1 ni conteo cíclico ciego. \emph{Extender a otros sitios}: arrastra riesgo de soporte inexistente en ventana crítica.
 
