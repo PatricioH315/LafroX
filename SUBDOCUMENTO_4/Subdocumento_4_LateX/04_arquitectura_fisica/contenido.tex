@@ -28,32 +28,37 @@
 entrega por separado; ambas comparten el registro de decisiones y la volumetría,
 y se leen juntas.}
 
+\renewcommand{\thechapter}{4.\arabic{chapter}}
+
 \parte{partes/01_vision_general}
 
 % --- 4.2 Arquitectura física (índice obligatorio, aclaraciones sección 11) ---
-%  02_0 abre el capítulo con número "4.2"; sus secciones quedan 4.2.1 a 4.2.5.
-%  4.2.5 (implementos) va al final porque resume lo anterior y remite al T-11.
+%  02_0 abre el capítulo con número "4.2"; sus secciones quedan 4.2.1 a 4.2.6.
+%  El cuerpo sigue el orden del índice: emplazamiento, servicios, despliegue,
+%  conexiones y dimensionamiento. El despliegue es la sección 4.2.3 (11_j);
+%  implementos (4.2.6) va al final del bloque porque resume lo anterior y remite
+%  a la especificación fila por fila del Anexo 4.A (Formulario T-11).
 \parte{partes/02_0_arquitectura_fisica}
 \parte{partes/02_a_emplazamiento}      % 4.2.1
 \parte{partes/02_b_servicios_nube}     % 4.2.2
-\parte{partes/02_c_conexiones}         % 4.2.3
-\parte{partes/12_k_dimensionamiento}   % 4.2.4
-\parte{partes/04_c_implementos}        % 4.2.5
-\renewcommand{\thechapter}{\arabic{chapter}}
+\parte{partes/11_j_despliegue}         % 4.2.3
+\parte{partes/02_c_conexiones}         % 4.2.4
+\parte{partes/12_k_dimensionamiento}   % 4.2.5
+\parte{partes/04_c_implementos}        % 4.2.6
 \let\LFXcuerpotabla\LFXcuerpotablaorig   % tablas sin guiones solo en 4.2 y el anexo
 % --- fin del bloque 4.2 ---
 
-\parte{partes/03_b_tecnologias}
-\parte{partes/05_d_sitio_principal}
-\parte{partes/06_e_sitio_secundario}
+\parte{partes/05_d_sitio_principal}    % data center --- sitio principal
+\parte{partes/06_e_sitio_secundario}   % data center --- sitio secundario
 % 07_f_niveles_servicio: cubierto en el sitio principal (99,95 % por componente) y en alta disponibilidad (>= 99,9 % transacción crítica)
 % 08_g_operacion_desconectada: absorbido en 4.2.1 (autonomía sin enlace, tab:t29)
-\parte{partes/09_h_integracion}
-\parte{partes/10_i_seguridad}
-\parte{partes/11_j_despliegue}
-% 13_l_capa_analitica: eliminado. La capa analítica pertenece a arquitectura lógica (Subdocumento 4.1); sus componentes físicos están en la tabla de emplazamiento de nube pura (tab:t21a, N-10)
+% \parte{partes/09_h_integracion}
+% \parte{partes/10_i_seguridad}
+% 13_l_capa_analitica: eliminado. La capa analítica pertenece a arquitectura lógica (Subdocumento 4.1); sus componentes físicos están en la síntesis de emplazamiento (tab:t21) y en los apartados de componentes de nube pura (N-04, N-06, N-08, N-10)
+\parte{partes/03_b_tecnologias}
 \parte{partes/14_m_decisiones_adr}
 % 15_n_trazabilidad: la trazabilidad código por código se responde en el Formulario T-12 (Subdocumento 3); las referencias cruzadas están dentro de cada apartado
 
-% Anexo provisorio: el Formulario T-11 se entregará como archivo propio.
+% Anexo provisorio: el Formulario T-11 se entrega como el Anexo 4.A y podrá
+% entregarse como archivo propio.
 \parte{partes/15_anexo_t11}

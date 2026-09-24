@@ -1,425 +1,208 @@
 % ------------------------------------------------------------------
-%  Arquitectura de despliegue --- VERSION FINAL v04
+%  Arquitectura de despliegue
 %  Fragmento del Subdocumento 4.2, traido desde contenido.tex con
-%  \parte{partes/11_j_despliegue}. Reemplaza a partes/11_j_despliegue.tex.
+%  \parte{partes/11_j_despliegue}. Las rutas son relativas a la carpeta del
+%  subdocumento, nunca a la de main.tex.
 %
-%  Contenido de la v02 (base a6c04a4, sin datos supuestos), ajustado a las
-%  reglas de tablas del cuerpo del subdocumento:
-%   - tabla solo para datos comparados en varias dimensiones; lo explicativo
-%     va en texto (v02 tenia 19 tablas; quedan 16: 3 pasan a texto y el
-%     resto se depura);
-%   - celdas de una frase como maximo; maximo cinco columnas;
-%   - sin columnas repetidas, vacias o no comentadas;
-%   - cifras alineadas a la derecha (columna H de la clase);
-%   - cada tabla titulada con su fuente, citada antes y analizada despues;
-%   - ningun titulo seguido directamente de una tabla.
-%  La clase no tiene campo de fuente para tablas: la fuente va al final del
-%  titulo de cada tabla.
+%  v05 -- reestructurada como informe (base c2ac90c, 23-09-2026). Mismos datos
+%  y decisiones de la version vigente; cambia la organizacion y la redaccion.
+%  v06 -- demotada de capitulo a seccion 4.2.3 dentro del capitulo 4.2 cuando
+%  el cuerpo se reordeno a emplazamiento, servicios, despliegue, conexiones y
+%  dimensionamiento. Complementa, sin repetir, la seccion de conexiones y
+%  puntos de falla (sec:4-2-4-conexiones). Usa \fuente{}, definido en
+%  02_0_arquitectura_fisica.
 % ------------------------------------------------------------------
 
-\chapter{Arquitectura de despliegue}
-\label{sec:j-arquitectura-de-despliegue}
+\section{Arquitectura de despliegue}
+\label{sec:4-2-3-despliegue}
 
-Arquitectura de despliegue de la solución: ambientes, redes y segmentación, alta disponibilidad, recuperación ante desastres y respaldos. Es autocontenida: los valores que declara se sostienen en los componentes especificados en las secciones anteriores de este capítulo.
+La arquitectura física describe qué componentes existen, dónde viven y cómo se conectan. Esta sección describe cómo esa solución se pone en marcha y se mantiene en operación durante los 56 meses del contrato: por qué ambientes pasa un cambio antes de llegar a las bodegas y a la calle, sobre qué red se despliega, cómo sigue operando cuando algo falla y cómo se recupera cuando se pierde un sitio completo o se daña un dato. Los puntos de falla de cada conexión y de cada equipo, con su resolución inmediata, ya están declarados en la sección de conexiones y contingencia (Tablas~\ref{tab:fallas-sitios} y~\ref{tab:fallas-nube}); aquí se describen los mecanismos que sostienen esa continuidad y cómo se verifican.
 
-Tres mecanismos distintos atienden tres amenazas distintas y ninguno sustituye a otro: la \textbf{alta disponibilidad} cubre la falla de un componente dentro del sitio o de la región; la \textbf{recuperación ante desastres} cubre la pérdida de un sitio o de una región completa; y el \textbf{respaldo} cubre el daño al dato ---eliminación accidental, corrupción o cifrado malicioso---. Esta sección los declara y los dimensiona por separado.
+Esos mecanismos son tres y no se sustituyen entre sí. La alta disponibilidad responde a la falla de un componente sin que la operación lo note. La recuperación ante desastres responde a la pérdida de un sitio o de una región completa. El respaldo responde al daño del dato, sea un borrado accidental, una corrupción o un cifrado malicioso, frente a los cuales las réplicas no protegen, porque replican el daño con la misma fidelidad que una escritura legítima.
 
-\section{Ambientes de despliegue}
+\subsection{Ambientes y ciclo de entrega}
 \label{sub:1-ambientes-de-despliegue-rt-04-01}
 
-Los cinco ambientes obligatorios están habilitados como condición del hito H3, aislados entre sí mediante cuentas AWS separadas bajo una organización centralizada de AWS Control Tower (aislamiento estricto + SCP). La organización incorpora además las cuentas de gestión, de archivo de registros y de auditoría propias de AWS Control Tower, que no constituyen ambientes de despliegue. Cada ambiente ocupa una cuenta propia y un bloque de direccionamiento exclusivo, según la Tabla~\ref{tab:t62}:
+Un cambio de código recorre cuatro ambientes antes de llegar a la operación. Se construye y se prueba de forma unitaria en Desarrollo, se valida funcionalmente en Calidad y se ensaya en Pre-Producción, donde además ocurren la marcha blanca y las pruebas de aceptación y de carga. Solo entonces se promueve a Producción, sin recompilar, de modo que el artefacto que llega a producción es el mismo que se probó. Un quinto ambiente, en la región us-east-1, sostiene la recuperación ante desastres (RT-04.01). La Tabla~\ref{tab:t62} muestra cada ambiente con su bloque de direccionamiento, su región y su función.
 
-\begin{tablalafrox}{Ambientes de despliegue. Fuente: elaboración propia sobre RT-04.01}{tab:t62}%
-  {F{0.28} F{0.18} F{0.12} Y}%
-  {\cab{Ambiente} & \cab{VPC} & \cab{Región} & \cab{Uso}}
-  Desarrollo & 10.104.0.0/16 & sa-east-1 & Integración continua y pruebas unitarias \\
-  Calidad (QA) & 10.103.0.0/16 & sa-east-1 & Pruebas funcionales, DAST y SAST \\
+\begin{tablalafrox}{Ambientes de despliegue}{tab:t62}%
+  {F{0.28} F{0.20} F{0.15} Y}%
+  {\cab{Ambiente} & \cab{VPC} & \cab{Región} & \cab{Función}}
+  Desarrollo & 10.104.0.0/16 & sa-east-1 & Construcción y pruebas unitarias \\
+  Calidad & 10.103.0.0/16 & sa-east-1 & Pruebas funcionales, DAST y SAST \\
   Pre-Producción & 10.102.0.0/16 & sa-east-1 & Marcha blanca, aceptación y carga \\
-  Producción & 10.101.0.0/16 & sa-east-1 & Operación real, Multi-AZ \\
-  Recuperación ante Desastres & 10.201.0.0/16 & us-east-1 & 5.\textordmasculine{} ambiente obligatorio (RT-04.01) \\
+  Producción & 10.101.0.0/16 & sa-east-1 & Operación, en varias zonas \\
+  Recuperación ante desastres & 10.201.0.0/16 & us-east-1 & Réplica en caliente \\
 \end{tablalafrox}
+\fuente{elaboración propia sobre RT-04.01 y el numeral 4.1 de las Bases Técnicas Transversales.}
 
-Los cinco bloques no se solapan entre sí ni con los de los sitios on-premise (Tabla~\ref{tab:t64}), y todos los ambientes residen en la región primaria salvo el de recuperación, único en us-east-1. Pre-Producción concentra la marcha blanca y las pruebas de carga, por lo que es el ambiente cuya equivalencia con Producción se exige en detalle.
+Cada ambiente reside en una cuenta AWS propia, bajo una organización de AWS Control Tower cuyas políticas de control de servicio impiden que un error o un acceso indebido en un ambiente alcance a otro; la organización incorpora además sus cuentas de gestión, de archivo de registros y de auditoría. Los bloques de direccionamiento no se solapan entre sí ni con los de los sitios on-premise, y solo el ambiente de recuperación reside fuera de la región primaria. Los cinco ambientes están habilitados como condición del hito H3.
 
-Reglas que gobiernan el modelo de ambientes:
+Las bodegas no tienen ambientes propios de prueba, y no los necesitan. El on-premise es producción: la imagen wms\_only que corre en los centros de distribución es la misma que recorrió Desarrollo, Calidad y Pre-Producción en la nube, y la infraestructura de cada sitio se declara como código versionado. Lo que se ensayó en la nube es, por lo tanto, lo que se instala en Talca y en Concepción, dentro de la ventana de 24 horas del cutover.
 
-\begin{itemize}
-  \item \textbf{Paridad Pre-Producción = Producción (RT-04.02).} topología, versiones de componentes y configuración equivalentes, con las dos únicas diferencias que se declaran en la subsección siguiente.
-  \item \textbf{On-premise como producción.} el despliegue on-premise es producción con la imagen única wms\_only; esa misma imagen recorre Dev$\rightarrow$QA$\rightarrow$PreProd en la nube antes del cutover en Talca (ventana de 24 h) y en Concepción. No se mantienen ambientes on-premise separados: la paridad la garantizan la imagen única y el IaC versionado.
-  \item \textbf{Gobierno del repositorio (RT-04.03, RT-04.04).} control de versiones con ramas protegidas, revisión obligatoria por pares y prohibición de escritura directa sobre la rama principal, con trazabilidad entre requerimiento, incidencia, cambio de código, prueba y despliegue. Su desarrollo corresponde al plan de calidad (Subdocumento 9).
-  \item \textbf{Entrega continua (RT-04.05, RT-04.11).} el pipeline CI ejecuta compilación, pruebas unitarias, análisis estático, análisis de composición, escaneo de secretos, escaneo de imágenes de contenedor y medición de cobertura de pruebas de la lógica de negocio, con bloqueo automático del despliegue ante hallazgos críticos o altos y ante cobertura inferior al 70 \%.
-  \item \textbf{Migraciones de esquema (RT-04.10).} versionadas, reversibles y ejecutadas por el pipeline, con estrategia de expandir y contraer: la migración de un release solo agrega estructuras, de modo que la versión anterior y la nueva de la aplicación conviven sobre el mismo esquema durante el despliegue; la eliminación de estructuras obsoletas se ejecuta en un release posterior. Es la condición que permite que la reversión del código no exija revertir el esquema. Su desarrollo corresponde al plan de calidad (Subdocumento 9).
-  \item \textbf{Despliegue sin interrupción (RT-04.07, RT-10.06).} estrategia azul-verde con canario (despliegue gradual a un porcentaje pequeño de tráfico) en etapas, demostrada en PreProducción antes de cada paso a producción; reversión automatizada. La puesta en producción avanza por proceso, por sitio o por zona comercial, nunca como un evento único que afecte simultáneamente a la bodega, la preventa, el reparto y la facturación (Caso, Cap. 13.3).
-  \item \textbf{Configuración externalizada (RT-04.08, RT-04.09).} un mismo artefacto se promueve QA$\rightarrow$PreProd$\rightarrow$Prod sin recompilación; los secretos viven en AWS Secrets Manager y SSM Parameter Store (N-09, ADR-15) con rotación automática, sin credenciales embebidas.
-  \item \textbf{Datos no productivos.} Dev, QA y PreProd usan datos sintéticos generados desde la volumetría del Cap. 14 del caso; las plantillas próximas a producción pasan por anonimización y seudonimización, verificadas con Amazon Macie.
-  \item \textbf{Sin acceso interactivo a producción.} los despliegues son exclusivamente por pipeline; el acceso administrativo excepcional es just-in-time vía AWS Systems Manager Session Manager con MFA, aprobación y sesión grabada.
-  \item \textbf{Reducción de ambientes no productivos fuera de horario (RT-04.13).} Dev/QA/PreProd se apagan o reducen fuera del horario de uso, con el ahorro reflejado en la estructura de costos. Las prácticas FinOps (RT-03.06) se declaran en la Subparte 4.1.
-  \item \textbf{Portales de clientes, transportistas y proveedores.} la SPA Angular se publica por ambiente en S3+CloudFront (bucket y distribución por cuenta AWS) y su backend es la misma imagen Django del ambiente; entra a producción con el hito de enero 2029.
-\end{itemize}
+Pre-Producción es equivalente a Producción en topología, versiones, configuración y dimensionamiento (RT-04.02), con dos diferencias: se reduce o apaga fuera del horario de uso, con el ahorro reflejado en la estructura de costos, y trabaja con datos sintéticos generados desde la volumetría del caso, cuya anonimización se verifica con Amazon Macie. Durante las pruebas de carga y estrés de la Tabla~\ref{tab:t86} opera con el dimensionamiento completo de Producción.
 
-\subsection{Diferencias entre Pre-Producción y Producción}
+El paso de un ambiente a otro lo controla el pipeline de integración continua. Cada cambio se compila y pasa por pruebas unitarias, análisis estático, análisis de composición, escaneo de secretos y de imágenes de contenedor y medición de cobertura, y el pipeline bloquea el despliegue ante un hallazgo crítico o alto o ante una cobertura de la lógica de negocio inferior al 70 \% (RT-04.05, RT-04.11). La configuración se externaliza por ambiente y los secretos se gestionan en AWS Secrets Manager con rotación automática (ADR-15). Las migraciones de base de datos siguen la estrategia de expandir y contraer: cada versión solo agrega estructuras, de modo que la versión anterior y la nueva de la aplicación funcionan sobre el mismo esquema durante el despliegue, y las estructuras obsoletas se eliminan en una versión posterior (RT-04.10). El gobierno del repositorio, con ramas protegidas y revisión obligatoria por pares, y la trazabilidad desde el requerimiento hasta el despliegue se desarrollan en el plan de calidad (Subdocumento 9). A Producción no se llega de otra forma: el acceso administrativo excepcional es temporal, mediante AWS Systems Manager Session Manager, con MFA, aprobación previa y sesión grabada.
 
-RT-04.02 exige equivalencia en topología, versiones y configuración, y que toda diferencia que subsista por costo se declare y se justifique. Pre-Producción difiere de Producción en solo dos aspectos. El primero es la disponibilidad horaria: Producción opera en forma continua, mientras Pre-Producción se reduce o apaga fuera del horario de uso, con el ahorro reflejado en la estructura de costos (RT-04.13). El segundo son los datos: Pre-Producción opera con datos sintéticos generados desde la volumetría del Cap. 14 del caso, para no exponer datos personales fuera de producción. En todo lo demás, incluido el dimensionamiento de la Tabla~\ref{tab:t82}, es igual a Producción, y durante las pruebas de carga y estrés de la Tabla~\ref{tab:t86}, que se ejecutan con 1,5 veces la carga de diseño (RT-09.06), opera con el dimensionamiento completo de Producción.
+Los portales de clientes, transportistas y proveedores siguen el mismo ciclo: su aplicación web se publica por ambiente en S3 y CloudFront, con la imagen de aplicación del mismo ambiente como backend, y entra a producción con el hito de enero de 2029.
 
-\subsection{Calendario de despliegue}
+\subsubsection{Liberación y reversión}
 
-El caso fija ventanas en las que está prohibido intervenir los sistemas y ventanas operacionales que el despliegue debe proteger. La Tabla~\ref{tab:jd02} cruza cada período con lo que admite: si se puede desplegar y si se tolera indisponibilidad programada.
+Cada versión se libera con estrategia azul-verde: la versión nueva se despliega junto a la vigente y recibe tráfico de forma gradual, en etapas de canario, después de haberse demostrado el mismo procedimiento en Pre-Producción (RT-04.07). La puesta en producción avanza por proceso, por sitio o por zona comercial, nunca como un evento único que afecte a la vez a la bodega, la preventa, el reparto y la facturación (Caso, Cap. 13.3).
 
-\begin{tablalafrox}{Calendario de despliegue. Fuente: Caso 02, Cap. 10 (restricción 8) y Cap. 13.3; RT-10.05 y RT-10.06}{tab:jd02}%
-  {F{0.34} F{0.28} Y}%
+Mientras dura el canario, la versión anterior permanece desplegada, por lo que revertir es devolverle el tráfico, sin recompilar ni volver a desplegar. La reversión es automática y se dispara cuando el percentil 95 de una transacción supera su umbral comprometido (Tabla~\ref{tab:t84}) o cuando la versión nueva registra más errores que la estable en la misma ventana de observación. No se pierde ninguna transacción confirmada: las operaciones en curso quedan en los buffers locales, 24 horas por sitio en el broker y la caché de turno en los dispositivos, y se reprocesan de forma idempotente contra la versión restituida. El esquema tampoco se revierte, porque la migración de la versión solo agregó estructuras. Lo que se pierde es la versión, no la operación. El tiempo efectivo de reversión se mide en cada ensayo en Pre-Producción, con un máximo contractual de 4 horas (Art. 78.3).
+
+Si la falla de un despliegue se manifestara durante la ventana de despacho, la bodega y el reparto continuarían con su operación local (Tabla~\ref{tab:t29}) mientras se revierte, sin detener la salida de los camiones (Caso, Cap. 17.6).
+
+\subsubsection{Calendario y cadencia}
+
+El calendario de Puelche limita cuándo se puede intervenir la plataforma. El caso prohíbe intervenir los sistemas en septiembre y en diciembre y durante el cierre contable de cada mes, y exige indisponibilidad cero en la ventana de despacho (Caso, Cap. 10, restricción 8). La Tabla~\ref{tab:jd02} cruza cada período con lo que admite.
+
+\begin{tablalafrox}{Ventanas de despliegue}{tab:jd02}%
+  {F{0.36} F{0.26} Y}%
   {\cab{Período} & \cab{Despliegue} & \cab{Indisponibilidad programada}}
   1 al 25 de septiembre & No & No \\
   Todo diciembre & No & No \\
-  Tres primeros días hábiles de cada mes & No & No \\
-  05:30--07:00, lunes a sábado & No & No; tolerancia cero \\
-  22:00--06:00, preparación nocturna & Sí, sin interrupción & No \\
+  Tres primeros días hábiles del mes & No & No \\
+  05:30--07:00, lunes a sábado & No & No \\
+  22:00--06:00, preparación de pedidos & Sí, sin interrupción & No \\
   08:00--18:00, recepción de proveedores & Sí, sin interrupción & No \\
-  Resto del calendario & Sí, sin interrupción & Solo excepcional, con aviso previo de 10 días hábiles \\
+  Resto del calendario & Sí, sin interrupción & Excepcional, con aviso de 10 días hábiles \\
 \end{tablalafrox}
+\fuente{Caso, Cap. 10 (restricción 8), Cap. 13.3 y Cap. 15 (valor de RT-10.05); RT-10.06.}
 
-Ningún período admite indisponibilidad programada salvo el resto del calendario, y solo por excepción: el despliegue sin interrupción es la regla y no una capacidad opcional. En las ventanas de preparación nocturna y de recepción, toda intervención en bodega considera el turno de noche (Caso, Cap. 13.3). De doce meses, aproximadamente diez admiten despliegue, y de cada mes desplegable se excluyen además sus tres primeros días hábiles: la frecuencia de despliegue comprometida (Tabla~\ref{tab:jd03}) se deriva de ese margen.
+El despliegue sin interrupción es, por lo tanto, la regla y no una capacidad opcional: solo fuera de las ventanas protegidas se admite una indisponibilidad programada, y únicamente por excepción. En la ventana nocturna, además, toda intervención en bodega considera el turno de preparación. Descontados los congelamientos, quedan unos diez meses desplegables al año, de los que se excluyen los tres primeros días hábiles de cada mes. Sobre ese margen se fija una cadencia quincenal de despliegue y un tiempo de hasta cinco días hábiles desde que se confirma un cambio de código hasta que llega a producción, compatible con el plazo de siete días para remediar una vulnerabilidad crítica que declara la arquitectura de seguridad. La tasa de cambios fallidos no supera el 5 \% de los despliegues del mes y el tiempo de restauración no supera 4 horas, conforme al Artículo 78.3 (RT-04.12). Las correcciones de incidentes críticos usan el mismo pipeline, con prioridad y fuera de la cadencia quincenal, dentro del plazo de resolución de 4 horas.
 
-\subsection{Reversión de un paso a producción fallido}
-
-La reversión es un cambio de enrutamiento del balanceador hacia la versión anterior, que en la estrategia azul-verde permanece desplegada durante la etapa de canario; no requiere recompilar ni redesplegar. Se dispara automáticamente cuando, durante el canario, el percentil 95 de una transacción supera el umbral comprometido en la Tabla~\ref{tab:t84}, o cuando la tasa de error de la versión nueva supera la de la versión estable medida en la misma ventana de observación.
-
-\textbf{En cuánto tiempo.} El tiempo efectivo de reversión se mide en cada ensayo en Pre-Producción exigido por RT-04.07 y se reporta como tiempo de restauración del servicio (Tabla~\ref{tab:jd03}), cuyo máximo contractual es de 4 horas (Art. 78.3).
-
-\textbf{Qué se pierde.} Ninguna transacción confirmada. Las operaciones en curso quedan retenidas en los buffers locales ---24 h por sitio en el broker y la caché de turno en los dispositivos de terreno--- y se reprocesan contra la versión restituida con sincronización idempotente y determinista. El esquema no se revierte, porque la migración del release es solo aditiva. Lo que se pierde es el release, no la operación.
-
-\textbf{Si la falla se manifiesta en la ventana 05:30--07:00.} El calendario prohíbe desplegar en esa ventana. Si un despliegue anterior manifiesta su falla dentro de ella, la bodega y el reparto continúan con su autonomía local (Tabla~\ref{tab:t29}) y la reversión se ejecuta sin detener el despacho (Caso, Cap. 17.6).
-
-\subsection{Métricas del proceso de despliegue}
-
-RT-04.12 exige declarar y medir cuatro indicadores; dos de ellos son además contractuales conforme al Artículo 78.3. La Tabla~\ref{tab:jd03} fija el compromiso de cada uno y el dato que lo sostiene:
-
-\begin{tablalafrox}{Métricas del proceso de despliegue. Fuente: RT-04.12; Art. 78.3 de las Bases Administrativas; elaboración propia}{tab:jd03}%
-  {F{0.36} H{0.18} Y}%
-  {\cab{Indicador} & \cab{Compromiso} & \cab{Fundamento}}
-  Frecuencia de despliegue & Quincenal & Calendario de la Tabla~\ref{tab:jd02} \\
-  Tiempo desde el compromiso de código hasta producción & $\leq$ 5 días hábiles & Plazo de 7 días de remediación de vulnerabilidades críticas \\
-  Tasa de cambios fallidos en producción & $\leq$ 5 \% mensual & Art. 78.3 \\
-  Tiempo de restauración del servicio & $\leq$ 4 h & Art. 78.3 \\
-\end{tablalafrox}
-
-Los dos indicadores contractuales se comprometen en el valor que fija el Artículo 78.3, y los otros dos se derivan de restricciones ya declaradas ---el calendario y el plazo de remediación de vulnerabilidades de la arquitectura de seguridad--- y no de una aspiración de método. Los cuatro se miden sobre la plataforma de observabilidad y se reportan en el informe mensual de nivel de servicio (Art. 79). Las correcciones de incidentes de severidad crítica siguen el mismo pipeline, con prioridad y fuera de la cadencia quincenal, dentro del tiempo máximo de resolución de 4 horas del Artículo 78.2.
-
-\section{Redes (topología, segmentación y conectividad)}
+\subsection{Red de despliegue}
 \label{sub:2-redes-topologia-segmentacion-y-conectivi}
 
-\subsection{WAN --- doble camino con conmutación automática}
+La sección de conexiones describe los caminos entre los sitios, el terreno y la nube, y su conmutación (Figura~\ref{fig:conexiones} y Tabla~\ref{tab:conexiones}). El despliegue agrega tres definiciones sobre esa red: dónde llegan los túneles, cómo se reparte el direccionamiento y cómo se dirige el tráfico entre regiones.
 
-Cada instalación dispone de dos caminos físicamente independientes con conmutación automática en $<$ 30 s: fibra óptica más LTE empresarial en los CDs (Talca y Concepción), y Starlink más LTE empresarial en los cross-docks (Curicó, Chillán y Los Ángeles) (ADR-02). El requisito exige $\leq$ 5 min declarados; el diseño opera en $<$ 30 s. Los anchos de banda por sitio, en régimen y en peak, se declaran en la sección de dimensionamiento (Tabla~\ref{tab:t81}). En el CD Talca el acceso de comunicaciones ingresa por dos ductos independientes (RT-06.32).
+Los túneles VPN de Talca y de Concepción terminan en el VPN Gateway adjunto a la VPC de Producción. Es la única VPC con enlace hacia los sitios, coherente con que el on-premise es producción: Desarrollo, Calidad y Pre-Producción no tienen conectividad con las bodegas, de modo que un error en un ambiente de prueba no puede alcanzarlas. El direccionamiento se asigna sin solapamiento, según la Tabla~\ref{tab:t64}.
 
-Los cross-docks salen directo por Starlink a SQS/IoT/SSM y sincronizan detalle a Talca por AMQPS entre brokers (costura C13, Tabla~\ref{tab:t36}). La pérdida total del enlace se cubre con la autonomía local de 24 h (CD) / 14 h (terreno), por lo que la redundancia de conectividad reduce la frecuencia de desconexión pero no es condición para operar.
-
-\textbf{Punto único de falla declarado (RT-02.11).} En Los Ángeles la señal móvil es intermitente en la madrugada, que es justamente su ventana de operación (Caso, Cap. 6). En ese tramo el respaldo LTE no es un camino confiable y el enlace Starlink opera como camino único. Se mitiga con la autonomía local del nodo de cómputo: la ventana de 3 h del cross-dock es 100 \% local (Tabla~\ref{tab:t29}) y la sincronización hacia Talca es diferida.
-
-\subsection{VPN Site-to-Site (costura C1)}
-
-Extremos: en el lado on-premise, el par de firewall de Talca (D-01, HA activo-pasivo) y el firewall de borde de Concepción, como Customer Gateway de cada CD; en el lado nube, AWS VPN Gateway adjunto a la VPC de Producción, con 2 túneles por CD (H-06).
-
-Protocolo: IPsec/IKEv2 cifrado, BGP, MTU 1436; 2 túneles (activo + standby). Conmutación $<$ 30 s entre los dos caminos del sitio (RT-03.21). En Talca, ante falla del firewall activo, el pasivo asume las direcciones y los túneles en menos de 30 s, alimentado desde un circuito eléctrico distinto.
-
-\subsection{Segmentación de red (sin solapamiento)}
-
-El direccionamiento de los sitios y de la VPC de Producción se asigna sin solapamiento, según la Tabla~\ref{tab:t64}; las VPC de los demás ambientes constan en la Tabla~\ref{tab:t62}.
-
-\begin{tablalafrox}{Segmentación de red sin solapamiento. Fuente: elaboración propia; RT-02.12 y RT-03.04}{tab:t64}%
-  {F{0.30} F{0.26} Y}%
+\begin{tablalafrox}{Direccionamiento y segmentación}{tab:t64}%
+  {F{0.30} F{0.27} Y}%
   {\cab{Dominio} & \cab{Bloque} & \cab{Segmentación}}
-  Talca & 10.1.0.0/16 & VLAN 10 MGT, 20 SRV, 30 OPS, 40 WKS y 50 IOT \\
+  Talca & 10.1.0.0/16 & VLAN de gestión, servidores, operación, estaciones e IoT \\
   Concepción & 10.2.0.0/16 & Mismas VLAN que Talca \\
-  Cross-docks & 10.3.0.0/16 a 10.5.0.0/16 & Red plana con salida a SSM e IoT \\
-  Sitio adicional (RT-02.12) & 10.6.0.0/16 & Reservado; VLAN estándar al incorporarse \\
-  VPC Producción: DMZ pública & 10.101.1.0/24 y 10.101.2.0/24 & Una subred por zona: balanceador, origen CloudFront, NAT y portales \\
-  VPC Producción: aplicación y datos & Subredes privadas de 10.101.0.0/16 & Sin exposición a Internet; VPN Gateway de los CD \\
+  Cross-docking & 10.3.0.0/16 a 10.5.0.0/16 & Red plana con salida a SSM e IoT \\
+  Sitio adicional previsto & 10.6.0.0/16 & Reservado \\
+  VPC Producción, zona pública & 10.101.1.0/24 y 10.101.2.0/24 & Balanceador, origen de CloudFront, NAT y portales \\
+  VPC Producción, zona privada & Resto de 10.101.0.0/16 & Aplicación, datos y VPN Gateway \\
 \end{tablalafrox}
+\fuente{elaboración propia; RT-02.12 y RT-03.04.}
 
-Cada sitio con cómputo tiene un bloque propio y el sitio previsto hacia 2030 ya tiene el suyo reservado, de modo que su incorporación es una parametrización del IaC y no un rediseño. En la nube solo la DMZ es pública: la aplicación y los datos residen en subredes privadas y consumen los servicios AWS (S3, SQS, DynamoDB, KMS, SSM) por VPC Endpoints/PrivateLink sin tráfico por internet, de modo que ningún componente de datos es alcanzable desde Internet (RT-03.04). La conectividad con el on-premise termina en la VPC de Producción, coherente con que el on-premise es producción: los ambientes no productivos no tienen enlace con los sitios.
+Cada sitio con cómputo dispone de un bloque propio, y el centro de distribución que Puelche evalúa abrir hacia 2030 ya tiene el suyo reservado, de modo que su incorporación es una parametrización de la infraestructura como código y no un rediseño (RT-02.12). En la nube, solo la zona pública expone servicios: la aplicación y los datos residen en subredes privadas y consumen los servicios de AWS por VPC Endpoints, sin tráfico por Internet, por lo que ningún componente de datos es alcanzable desde fuera (RT-03.04).
 
-\subsection{Zero Trust --- flujos permitidos}
+El tráfico de los usuarios externos entra por CloudFront y por la capa de protección descrita en la arquitectura de seguridad. Entre regiones, Route 53 opera con enrutamiento de conmutación por falla y verificaciones de salud activas: sa-east-1 recibe todo el tráfico en operación normal y la conmutación hacia us-east-1 es automática ante falla, coherente con la modalidad activo-pasiva del ADR-09.
 
-Todo el tráfico on-premise $\rightarrow$ nube es outbound (HTTPS/443, MQTTS/8883) sin conexiones entrantes, salvo las dos excepciones declaradas en la arquitectura de seguridad, ambas sobre el túnel IPsec autenticado. Los flujos permitidos, con su protocolo y destino, se listan en la Tabla~\ref{tab:t65}:
+La red también debe devolver a la normalidad a un sitio que operó desconectado. El compromiso es resincronizar la flota en hasta 10 minutos y un centro de distribución en hasta 2 horas después de un corte de 24 horas (Tabla~\ref{tab:t29}). Tomando como cota el volumen transaccional anual de toda la solución, unos 375 GB (Tabla~\ref{tab:t72}), atribuido a un solo centro de distribución y duplicado por el peak de septiembre, un corte de 24 horas acumula unos 2,1 GB. La evidencia de entrega no se suma, porque el terreno la envía por la red celular sin pasar por el centro de distribución. Con los anchos de banda de la Tabla~\ref{tab:t81}, ese volumen se drena en unos 14 minutos por la fibra de Talca y en 27 por la de Concepción; aun por los enlaces LTE de respaldo tarda 55 minutos en Talca y 1 hora y 31 minutos en Concepción, dentro del compromiso de 2 horas en todos los casos. Al reconectar, la calidad de servicio prioriza el broker y el registro de escritura anticipada sobre la telemetría.
 
-\begin{tablalafrox}{Flujos permitidos entre dominios. Fuente: elaboración propia sobre el emplazamiento y la arquitectura de seguridad de este documento}{tab:t65}%
-  {Y F{0.28} F{0.22}}%
-  {\cab{Flujo} & \cab{Protocolo} & \cab{Destino}}
-  Broker (shipper VM-03) $\rightarrow$ SQS FIFO & HTTPS 443 por VPC Endpoint & AWS \\
-  Telemetría ADOT $\rightarrow$ CloudWatch & HTTPS 443 & AWS \\
-  Greengrass $\rightarrow$ IoT Core & MQTTS 8883 con X.509 & AWS \\
-  SSM Agent (todos los nodos) & HTTPS 443 saliente & SSM Endpoint regional \\
-  Caché Keycloak VM-05/VM-C03 $\rightarrow$ S3 (import Realm) & HTTPS 443 por VPC Endpoint & AWS (objeto cifrado) \\
-  Sync WMS Concepción $\rightarrow$ Talca & TCP 8080 / 5432 con TLS sobre VPN IPsec & SRV-TALCA (on-prem) \\
-  Sync cross-dock $\rightarrow$ Talca (broker a broker) & AMQPS 5671 & SRV-TALCA (on-prem) \\
-  Excepción: AWS DMS $\rightarrow$ PostgreSQL WMS (CDC) & TCP 5432 sobre VPN & VM-02 SRV-TALCA \\
-  Excepción: celery-erp-sync $\rightarrow$ ACL ERP & HTTPS 443 sobre VPN & VM-04 SRV-TALCA \\
-\end{tablalafrox}
-
-De los nueve flujos, cinco salen del on-premise hacia la nube, dos conectan sitios on-premise entre sí y dos son las excepciones entrantes, que viajan por el túnel IPsec autenticado. Ninguno circula sin cifrado, conforme al principio de cifrado en tránsito sin excepciones de la arquitectura de seguridad. El acceso remoto de las personas trabajadoras del CLIENTE se rige por el mismo modelo de confianza cero (RT-03.22).
-
-\subsection{Capa pública (DMZ) y DNS}
-
-Primera línea: CloudFront + AWS WAF v2 (OWASP Top 10 + reglas personalizadas) + Shield Advanced; autenticación API Gateway con Keycloak OIDC, cuotas por cliente y validación de esquema.
-
-DNS: Route 53 con enrutamiento de conmutación por falla y verificaciones de salud activas: la región primaria sa-east-1 recibe todo el tráfico en operación normal y la conmutación hacia us-east-1 es automática ante falla, coherente con la modalidad activo-pasiva del ADR-09.
-
-\subsection{Autonomía y resincronización tras un corte}
-
-Cada ámbito mantiene autonomía local con su propia base de datos, broker y caché de identidad (RT-03.10, RT-03.11): 24 h en centro de distribución, 14 h de turno completo en terreno y 3 h 100 \% locales en cross-dock (Tabla~\ref{tab:t29}). Al reconectar, la sincronización es automática, idempotente y determinista, con reconciliación de conflictos y bitácora auditable (RT-03.12), en $\leq$ 10 min para la flota y $\leq$ 2 h para un centro de distribución tras un corte de 24 h. La sincronización tras la reconexión se responde contra RT-03.12, que es el código transversal que la regula; el Cap. 15 del caso la cita como RT-03.13, que en las Transversales corresponde a la declaración de funciones no disponibles sin conexión.
-
-El compromiso de 2 h se verifica con los volúmenes declarados en la sección de dimensionamiento. Como cota superior se toma el volumen anual de almacenamiento transaccional de toda la solución ($\approx$ 375 GB/año, Tabla~\ref{tab:t72}), se atribuye íntegro a un solo centro de distribución y se duplica por el peak de septiembre, lo que da $\approx$ 2,1 GB acumulados en 24 h. La evidencia de entrega no se incluye, porque los dispositivos de terreno se comunican con la nube por la red celular sin atravesar el centro de distribución. El tiempo de drenaje de ese volumen por cada enlace consta en la Tabla~\ref{tab:jd04}:
-
-\begin{tablalafrox}{Drenaje del acumulado de 24 h en el peak de septiembre. Fuente: elaboración propia con los volúmenes y enlaces de la sección de dimensionamiento}{tab:jd04}%
-  {Y H{0.18} H{0.22}}%
-  {\cab{Escenario de retorno} & \cab{Enlace} & \cab{Tiempo de drenaje}}
-  Talca por fibra & 20 Mbps & $\approx$ 14 min \\
-  Talca por LTE de respaldo & 5 Mbps & $\approx$ 55 min \\
-  Concepción por fibra & 10 Mbps & $\approx$ 27 min \\
-  Concepción por LTE de respaldo & 3 Mbps & $\approx$ 1 h 31 min \\
-\end{tablalafrox}
-
-Aun en el escenario más desfavorable ---Concepción de regreso por su enlace de respaldo en el peak, con el volumen de toda la solución atribuido a ese sitio--- el acumulado se drena dentro del compromiso de 2 h. Al restablecerse el enlace, la calidad de servicio prioriza el broker y el registro de escritura anticipada, y las colas diferidas se vacían fuera de la ventana crítica.
-
-\section{Alta disponibilidad}
+\subsection{Alta disponibilidad}
 \label{sub:3-alta-disponibilidad}
 
-\subsection{Clasificación de servicios por criticidad}
+No todos los servicios necesitan el mismo nivel de continuidad. El Artículo 78 fija cuatro niveles de servicio, y la solución asigna cada servicio a uno según el efecto de su indisponibilidad sobre la operación (RT-10.02), como muestra la Tabla~\ref{tab:jd05}.
 
-RT-10.02 exige clasificar cada servicio y aplicarle el nivel de servicio del Artículo 78.2. La Tabla~\ref{tab:jd05} asigna cada servicio a su nivel, con la disponibilidad y el plazo de resolución que le corresponden:
-
-\begin{tablalafrox}{Clasificación de servicios por criticidad. Fuente: Art. 78.1 y 78.2 de las Bases Administrativas; RT-10.02; Caso 02, RT-09.01}{tab:jd05}%
-  {F{0.11} H{0.15} H{0.13} Y}%
+\begin{tablalafrox}{Clasificación de servicios por nivel de servicio}{tab:jd05}%
+  {F{0.12} H{0.18} H{0.14} Y}%
   {\cab{Nivel} & \cab{Disponibilidad} & \cab{Resolución} & \cab{Servicios}}
-  Crítico & 99,9 \% & 4 h & Preparación y despacho \textperiodcentered{} registro de entrega \textperiodcentered{} toma de pedido \textperiodcentered{} consulta de stock y crédito \textperiodcentered{} bloqueo por excursión térmica \textperiodcentered{} identidad \\
-  Alto & 99,5 \% & 8 h & Planificación de rutas \textperiodcentered{} cobranza y rendición \textperiodcentered{} integración con el ERP \textperiodcentered{} documentos tributarios \textperiodcentered{} registro de temperatura \textperiodcentered{} evidencia de entrega \\
-  Medio & 99,0 \% & 24 h & Portales \textperiodcentered{} notificaciones \textperiodcentered{} canal moderno \textperiodcentered{} consultas de geolocalización \textperiodcentered{} registros de auditoría y seguridad \\
-  Bajo & 98,0 \% & 48 h & Analítica y tableros \textperiodcentered{} reportería \\
+  Crítico & 99,9 \% & 4 h & Preparación y despacho, entrega, toma de pedido, consulta de stock y crédito, bloqueo por excursión térmica e identidad \\
+  Alto & 99,5 \% & 8 h & Planificación de rutas, cobranza y rendición, integración con el ERP, documentos tributarios, registro de temperatura y evidencia de entrega \\
+  Medio & 99,0 \% & 24 h & Portales, notificaciones, canal moderno, consultas de geolocalización y registros de auditoría y seguridad \\
+  Bajo & 98,0 \% & 48 h & Analítica, tableros y reportería \\
 \end{tablalafrox}
+\fuente{Art. 78.1 y 78.2 de las Bases Administrativas; transacciones críticas según el Caso, Cap. 15 (RT-09.01).}
 
-La clasificación aplica las definiciones de severidad del Artículo 78.1. Son críticos los servicios cuya falla detiene un proceso de negocio sin alternativa operativa: los cuatro primeros son las transacciones operacionales críticas que fija el caso (RT-09.01), la ventana de despacho no admite ejecución manual (Caso, Cap. 10, restricción 1), el bloqueo por excursión es exigencia sanitaria y sin identidad no opera ningún otro servicio. Los altos tienen una alternativa operativa costosa: la ruta puede planificarse a mano en 3,5 h (Caso, Cap. 18, criterio 7), la cola hacia el ERP retiene 24 h y el bloqueo de despacho por excursión opera localmente aunque el registro central no esté disponible. Los medios tienen alternativa disponible, y los bajos no impiden operar, coherente con la latencia de 4 h admitida para los indicadores de gestión (Caso, Cap. 15, RT-05.29). Del cuadro se sigue que el compromiso penalizable del 99,9 \% recae sobre seis servicios, todos ejecutados en el on-premise o con un camino local en el dispositivo, lo que ordena el resto de esta sección.
+Son críticos los servicios cuya falla detiene un proceso de negocio sin alternativa: la preparación, la entrega, la toma de pedido y la consulta de stock y crédito son las transacciones operacionales críticas que fija el caso, la ventana de despacho no admite ejecución manual, el bloqueo por excursión térmica responde a una exigencia sanitaria y sin identidad no opera ningún otro servicio. Los servicios altos tienen una alternativa costosa, como planificar la ruta a mano en 3,5 horas o retener en cola hasta 24 horas las transacciones hacia el ERP; los medios tienen una alternativa disponible, y los bajos no impiden operar. La consecuencia para la arquitectura es directa: el compromiso penalizable del 99,9 \% recae sobre seis servicios, y todos se ejecutan en el on-premise o tienen un camino local en el dispositivo.
 
-\subsection{Capa cloud (sa-east-1) --- Multi-AZ}
+Esa es la razón por la que el 99,9 \% de extremo a extremo no depende de multiplicar las disponibilidades de la infraestructura. El numeral 7.2 de las Transversales fija un mínimo de 99,95 \% mensual para la energía, la climatización, la red, el cómputo, la base de datos y los portales, pero esos valores son pisos por subsistema y su producto en serie quedaría por debajo del 99,9 \%. El compromiso se sostiene en la redundancia interna de cada subsistema y en la ruta que sigue cada transacción. La confirmación de preparación, la más estricta, se ejecuta contra la base local del centro de distribución y no atraviesa la WAN ni la nube; descansa sobre energía y climatización en N+1, un par de firewall en alta disponibilidad, dos switches en stack, un clúster de tres nodos N+1 y almacenamiento Ceph sobre RAID 10, con un solo elemento en serie, la instancia de escritura VM-02, que se reinicia en otro nodo del clúster (Tabla~\ref{tab:fallas-sitios}). Las transacciones de terreno, por su parte, tienen dos caminos en paralelo: la nube y la caché de turno del dispositivo.
 
-La distribución por zona de disponibilidad de los servicios en nube y su tiempo de conmutación se resumen en la Tabla~\ref{tab:t66}:
+En la nube, todos los servicios con requisito de alta disponibilidad operan en al menos dos zonas (RT-03.02). Aurora mantiene su escritor en sa-east-1a y dos lectores en sa-east-1b y sa-east-1c, y conmuta en menos de 30 segundos; ElastiCache mantiene primario y réplica en dos zonas y conmuta en menos de 60 segundos; las tareas de ECS Fargate se distribuyen en dos zonas y se reprograman solas ante la pérdida de una; y DynamoDB, el balanceador y los NAT Gateway son multizona por diseño. Ninguna conmutación supera un minuto. Ante el peak de septiembre, el escalamiento automático y la degradación controlada del apartado de dimensionamiento sostienen los umbrales de desempeño sin intervención.
 
-\begin{tablalafrox}{Distribución Multi-AZ en sa-east-1. Fuente: elaboración propia}{tab:t66}%
-  {F{0.22} F{0.24} F{0.22} Y}%
-  {\cab{Componente} & \cab{AZ primaria} & \cab{AZ secundaria} & \cab{Conmutación automática}}
-  Aurora PostgreSQL & sa-east-1a (escritor) & sa-east-1b y sa-east-1c (lectores) & $<$ 30 s \\
-  DynamoDB & Multi-AZ nativo & --- & Transparente \\
-  ECS Fargate & sa-east-1a y sa-east-1b & --- & Reprogramación automática de tareas \\
-  ElastiCache Redis & sa-east-1a (primario) & sa-east-1b (réplica) & $<$ 60 s \\
-  ALB & sa-east-1a & sa-east-1b & Transparente \\
-  NAT Gateway & sa-east-1a & sa-east-1b & Enrutamiento automático \\
-\end{tablalafrox}
-
-Todos los componentes con requisito de alta disponibilidad operan en al menos dos zonas (RT-03.02) y ninguna conmutación supera un minuto; la base de datos, único componente con escritor único, conmuta en menos de 30 segundos. Sobre esa base se compromete el nivel de servicio de extremo a extremo de la transacción crítica de negocio: $\geq$ 99,9 \% mensual, menos de 8,76 h al año, que es el compromiso contractual penalizable (Art. 78) y es distinto de la disponibilidad de la infraestructura del recinto, que es un medio para alcanzarlo.
-
-\subsection{Niveles de servicio de la infraestructura}
-
-El numeral 7.2 de las Transversales fija una disponibilidad mensual mínima de 99,95 \% para la energía del recinto, la climatización, la red y las comunicaciones, los servidores y el cómputo, el motor de base de datos, y el portal y los canales de atención. Se sostiene con redundancia N+1 en energía y climatización, doble acometida con transferencia automática, generación autónoma propia y monitoreo continuo con alertamiento, sin invocar clasificaciones de instalación de terceros, porque las Bases exigen el cumplimiento verificable de cada requisito y no una certificación de nivel.
-
-\subsection{Cómo se sostiene el 99,9 \% de extremo a extremo}
-
-Los valores del numeral 7.2 son mínimos por subsistema. El objetivo de extremo a extremo no se obtiene multiplicándolos ---su producto, con los subsistemas en serie, quedaría por debajo del 99,9 \%---, sino de la redundancia interna de cada subsistema, que lo hace operar por sobre su mínimo. Dos estructuras lo sostienen:
-
-\begin{itemize}
-  \item \textbf{Transacciones de bodega.} La confirmación de preparación de pedidos, la más estricta ($\leq$ 1 s, Tabla~\ref{tab:t84}) y la que ocurre en la ventana de tolerancia cero, se ejecuta contra la base local del centro de distribución y no atraviesa la WAN ni la nube. Su ruta física descansa en elementos redundantes ---energía N+1, climatización N+1, par de firewall en HA, dos switches core en stack, clúster de 3 nodos N+1 y almacenamiento Ceph réplica 2 sobre RAID 10---, con un único elemento en serie: la instancia de escritura VM-02, que se reinicia en otro nodo del clúster ante la falla del suyo y cuya mitigación progresiva se declara en la sección de primer cuello de botella.
-  \item \textbf{Transacciones de terreno.} La toma de pedido, el registro de entrega y la consulta de stock y crédito disponen de dos caminos en paralelo: la nube y la caché de turno del dispositivo. Cuando la nube no responde, la transacción se completa contra la caché y se sincroniza al reconectar.
-\end{itemize}
-
-La disponibilidad efectiva se mide sobre la plataforma de observabilidad y se reporta mensualmente (Art. 79), y el comportamiento ante la falla de cada elemento se verifica con las pruebas de resiliencia de la Tabla~\ref{tab:jd07}.
-
-\subsection{Capa on-premise}
-
-En el on-premise, el cómputo corre sobre un clúster virtualizado de tres nodos con replicación síncrona Ceph de factor 2 y quórum propio, que elimina el punto único de falla de un par sin quórum. El almacenamiento combina RAID 10 NVMe para la base transaccional, con más de 100.000 IOPS, y RAID 6 con disco de reserva para evidencia y registros (ADR-10, RT-03.14). La red se apoya en un par de firewall UTM en alta disponibilidad activo-pasivo, dos switches core y uno de gestión; la WAN, en el doble camino del ADR-02. La sala técnica principal de Talca, con sala blanca de 32 m\textsuperscript{2} y cuatro gabinetes, dispone de UPS de doble conversión de 6 kVA en N+1 con autonomía de al menos 30 minutos a plena carga (RT-06.07), generador de 12 kVA con estanque de 24 h (RT-06.08), transferencia automática y climatización de precisión N+1 con PUE de diseño de 1,7, según la sección del sitio principal. Las VMs se dimensionan con un margen de $\times$1,5 (RNF-19.04) para tolerar 3.900 entregas diarias en el peak de septiembre.
-
-Puntos únicos de falla declarados y mitigados (RT-02.11): periféricos de andén (respaldo manual); instancia de escritura VM-02 (reinicio en otro nodo del clúster y plan de mitigación del primer cuello de botella); Concepción, con nodo y firewall de borde únicos (autonomía 24 h + DRP local); cross-dock con mini-PC único (ventana de 3 h + sincronización diferida); y Los Ángeles con camino Starlink único en su ventana de operación (ventana 100 \% local + sincronización diferida).
-
-\subsection{Escalamiento y degradación controlada}
-
-El escalamiento en nube es predictivo y reactivo, con seguimiento de objetivo en $<$ 2 min, aprovisionamiento en $<$ 3 min y enfriamiento de 60 s (RT-09.04, ADR-12). Superada la capacidad, la solución degrada de forma controlada (RT-09.08): en el enlace WAN, la calidad de servicio prioriza broker y WAL y la conmutación entre caminos ocurre en $<$ 30 s; sin conexión, los buffers de 24 h del broker y del colector de telemetría sostienen la operación con reconciliación cronológica e idempotente; en nube, la puerta de enlace limita la tasa y los workers aplican tiempos de espera, reintentos con retroceso y colas de mensajes fallidos.
-
-\subsection{Pruebas de resiliencia con inyección de fallas}
-
-RT-10.07 exige inyección controlada de fallas antes de cada paso a producción y al menos una vez por semestre durante la Operación. La Tabla~\ref{tab:jd07} cruza cada falla que enumera el requisito con el mecanismo que responde y el criterio con que se verifica:
-
-\begin{tablalafrox}{Pruebas de resiliencia por inyección de fallas. Fuente: RT-10.07 y RT-10.08; elaboración propia}{tab:jd07}%
-  {F{0.24} Y F{0.26}}%
-  {\cab{Falla inyectada} & \cab{Mecanismo que responde} & \cab{Criterio verificable}}
-  Caída de instancia & Reprogramación de tareas Fargate; reinicio de VMs en los nodos restantes & Sin pérdida de transacciones en curso \\
-  Caída de zona & Conmutación de Aurora y de ElastiCache & $<$ 30 s y $<$ 60 s \\
-  Caída del ERP & Aislamiento tras la capa anticorrupción & Cola retiene hasta 24 h \\
-  Pérdida de ambos caminos WAN & Autonomía local del sitio & 24 h; resincronización $\leq$ 2 h \\
-  Latencia elevada & Tiempos de espera, reintentos y limitación de tasa & Operación no bloqueada \\
-  Saturación de disco & Alerta anticipada de capacidad & 70 \% de ocupación \\
-\end{tablalafrox}
-
-Cada falla tiene un mecanismo automático y un criterio cuantificable, de modo que la prueba no evalúa si el sistema resiste, sino si cumple un valor declarado. Las pruebas se ejecutan sobre Pre-Producción antes de cada paso a producción, y al menos una vez por semestre durante la Operación sobre el ambiente productivo, fuera de la ventana crítica de despacho y de los períodos de congelamiento. Cada ejecución produce un informe con el comportamiento observado frente al declarado y el plan de corrección de las desviaciones.
-
-\section{Recuperación ante desastres}
+\subsection{Recuperación ante desastres}
 \label{sub:4-recuperacion-ante-desastres-ba-art-20-rt}
 
-\subsection{Modalidad, objetivos y mecanismo por dominio de datos}
+La recuperación ante desastres es activo-pasiva en caliente (ADR-09): la región us-east-1 mantiene una réplica reducida pero funcional de la plataforma, escalable a carga completa en menos de 30 minutos, que se promueve solo cuando se pierde la región primaria. Los objetivos son un RTO de hasta 4 horas y un RPO de hasta 15 minutos para los servicios críticos (RT-07.04). Cada dominio de datos alcanza ese RPO con su propio mecanismo de replicación, como muestra la Tabla~\ref{tab:jd08}.
 
-Modalidad activo-pasiva en caliente (RT-07.01, ADR-09): activo-activo duplicaría la infraestructura transaccional (\textasciitilde{}105 TPS peak) con reconciliación de doble escritura sin beneficio frente al RTO comprometido. La región secundaria mantiene una réplica reducida pero funcional de la plataforma, escalable a carga completa en menos de 30 minutos. Objetivos: RTO $\leq$ 4 h y RPO $\leq$ 15 min para los servicios críticos (RT-07.04). El mecanismo que sostiene el RPO de cada dominio consta en la Tabla~\ref{tab:jd08}:
-
-\begin{tablalafrox}{Mecanismo de replicación y RPO por dominio de datos. Fuente: ADR-09; elaboración propia}{tab:jd08}%
-  {F{0.30} Y H{0.22}}%
+\begin{tablalafrox}{Replicación y RPO por dominio de datos}{tab:jd08}%
+  {F{0.28} Y H{0.20}}%
   {\cab{Dominio} & \cab{Mecanismo} & \cab{RPO}}
   Transaccional en nube & Aurora Global Database hacia us-east-1 & $<$ 1 s \\
-  Telemetría IoT & DynamoDB Global Tables & Continuo \\
-  Objetos: evidencia, documentos y respaldos & S3 Cross-Region Replication con control de tiempo & $<$ 15 min \\
-  WMS on-premise & AWS DMS CDC sobre el WAL lógico, por la VPN & $\leq$ 15 min con enlace \\
-  Mensajes críticos & Patrón outbox con escritura en base y cola & $\leq$ 15 min \\
+  Telemetría & DynamoDB Global Tables & Continuo \\
+  Evidencia, documentos y respaldos & Replicación de S3 entre regiones con control de tiempo & $<$ 15 min \\
+  WMS on-premise & AWS DMS sobre el registro de escritura anticipada, por la VPN & $\leq$ 15 min con enlace \\
+  Mensajes críticos & Patrón outbox en base y cola & $\leq$ 15 min \\
   Mensajes no críticos & Cola con reposición diferida & $\leq$ 24 h \\
 \end{tablalafrox}
+\fuente{elaboración propia a partir del ADR-09.}
 
-Todos los dominios críticos cumplen el RPO de 15 minutos mediante un mecanismo continuo; el único cuyo RPO depende de una condición externa es el WMS on-premise, porque su réplica viaja por la WAN. Si caen los dos caminos WAN, DMS encola en origen y reanuda sin pérdida de datos, pero la réplica en nube queda desactualizada durante el corte: el RPO de ese dominio pasa a ser la duración del corte, acotada por la autonomía local de 24 h. El retraso de replicación se mide de forma continua y se alarma a los 5 y a los 15 minutos (RT-07.03). Restablecido cualquier camino, la réplica alcanza el RPO comprometido dentro de la resincronización de $\leq$ 2 h.
+Todos los dominios críticos se replican de forma continua. El único cuyo RPO depende de una condición externa es el WMS on-premise, porque su réplica viaja por la WAN: si un sitio pierde sus dos caminos, AWS DMS encola los cambios en origen y los entrega sin pérdida al reconectar, pero mientras dure el corte la réplica en nube queda desactualizada, hasta un máximo de 24 horas. Por eso el retraso de replicación se mide de forma continua y genera alarma a los 5 y a los 15 minutos (RT-07.03).
 
-\subsection{Procedimiento de conmutación}
+\subsubsection{Conmutación y retorno}
 
-La conmutación separa lo automático de lo manual según su reversibilidad: el enrutamiento se conmuta automáticamente, porque vuelve solo si la verificación de salud se recupera; la promoción de la base de datos requiere decisión humana, porque rompe la replicación y obliga a reconciliar en el retorno. La secuencia de ocho pasos consta en la Tabla~\ref{tab:jd09}:
+La conmutación de región separa lo reversible de lo irreversible. El enrutamiento se conmuta de forma automática, porque si la región primaria se recupera el tráfico vuelve solo. La promoción de la base de datos, en cambio, rompe la replicación y obliga a reconciliar al volver, por lo que exige la autorización del CLIENTE. La Tabla~\ref{tab:jd09} muestra la secuencia completa.
 
-\begin{tablalafrox}{Secuencia de conmutación regional. Fuente: elaboración propia sobre ADR-09}{tab:jd09}%
-  {H{0.07} Y F{0.26} H{0.13}}%
+\begin{tablalafrox}{Secuencia de conmutación de región}{tab:jd09}%
+  {H{0.08} Y F{0.26} H{0.15}}%
   {\cab{Paso} & \cab{Acción} & \cab{Ejecución} & \cab{Tiempo}}
   1 & Detección por verificación de salud de la región primaria & Route 53 & $<$ 5 min \\
-  2 & Conmutación del enrutamiento hacia us-east-1 & Automática, Route 53 & --- \\
-  3 & Confirmación y autorización de la promoción & Manual: SNS y CLIENTE & --- \\
+  2 & Conmutación del enrutamiento hacia us-east-1 & Automática & --- \\
+  3 & Confirmación y autorización de la promoción & CLIENTE, con aviso por SNS & --- \\
   4 & Promoción de Aurora en us-east-1 & Systems Manager Automation & 15--20 min \\
   5 & Escalado de ECS a carga completa & Systems Manager Automation & $<$ 30 min \\
-  6 & Actualización DNS & Systems Manager Automation & 45--60 min \\
-  7 & Reconexión del broker y sincronización diferida del borde & Systems Manager Automation & --- \\
+  6 & Actualización de DNS & Systems Manager Automation & 45--60 min \\
+  7 & Reconexión del broker y sincronización del borde & Systems Manager Automation & --- \\
   8 & Validación funcional de extremo a extremo & Operación & --- \\
 \end{tablalafrox}
+\fuente{elaboración propia a partir del ADR-09.}
 
-Los pasos con tiempo declarado suman, en el peor caso y ejecutados en serie, cerca de 2 horas más el tiempo de decisión, dentro del RTO de 4 horas; el RTO se cumple porque la réplica es legible y la región de recuperación está en caliente. De la tabla se sigue también que solo un paso requiere intervención humana, el tercero, y que la protección contra conmutaciones innecesarias recae precisamente en él.
+Los pasos con tiempo declarado suman, en el peor caso y ejecutados en serie, cerca de 2 horas más el tiempo de la decisión, dentro del RTO de 4 horas. Solo el tercer paso requiere intervención humana, y es ahí donde reside la protección contra una conmutación innecesaria. Como los pasos cuarto a séptimo están automatizados, el equipo de tecnologías de información de Puelche, de cuatro personas, puede ejecutar el procedimiento tras la transferencia de conocimiento (RT-07.05), con el acompañamiento del servicio de operación del adjudicatario.
 
-\textbf{Ejecutabilidad por el CLIENTE (RT-07.05).} El procedimiento está documentado y automatizado en sus pasos 4 a 7; la decisión y la autorización corresponden al CLIENTE, cuya área de tecnologías de información es de cuatro personas (Caso, Cap. 10, restricción 9). El procedimiento es ejecutable por su personal tras la transferencia de conocimiento, que se valida en los ensayos semestrales, y el acompañamiento técnico forma parte del servicio gestionado de NOC y confiabilidad declarado en el dimensionamiento de la operación.
+El retorno a la región primaria sigue seis pasos: resincronización con verificación de alcance, reconciliación de las transacciones de la contingencia contra la bitácora, transferencia de los eventos pendientes, conmutación coordinada del DNS, validación funcional e informe con el tiempo real empleado (RT-07.06).
 
-\textbf{Retorno (failback, RT-07.06):} procedimiento documentado en 6 pasos --- re-sincronización con catch-up verificado, reconciliación de transacciones de la contingencia contra la bitácora (RT-03.12), transferencia de eventos pendientes, conmutación coordinada de DNS, validación funcional e informe con tiempo real.
+\subsubsection{Sitios secundarios y amenazas comunes}
 
-\textbf{Pruebas (RT-07.07):} conmutación real $\geq$ 2 veces/año con informe de RTO/RPO efectivos y plan de corrección de brechas. El cumplimiento del RPO y del RTO en cada prueba semestral es del 100 \% (Art. 78.3).
+La solución tiene dos sitios secundarios, uno por dominio: el CD Concepción para el on-premise y la región us-east-1 para la nube. Talca y Concepción, separados por unos 250 a 400 km según el análisis de emplazamiento, comparten dos amenazas: un terremoto o maremoto de zona costera y un corte de la malla eléctrica nacional. La distancia disponible dentro del área de operación de Puelche, que abarca 340 km entre sus extremos (RT-21.16), no neutraliza esa exposición. La mitiga, primero, la independencia operacional de ambos sitios, que operan 24 horas sin depender el uno del otro, Talca con generación propia y Concepción con alimentación protegida en su gabinete de borde; y, segundo, la nube, que está a unos 2.300 km de Talca y no comparte esas amenazas. Ante un evento que afecte a los dos centros, el dato transaccional permanece en la región primaria con su RPO de 15 minutos: la bodega se detiene por la indisponibilidad física de los recintos, no por pérdida de información. La región de recuperación, a unos 7.700 km de la primaria, completa la independencia del dominio en nube (RT-07.02).
 
-\subsection{Emplazamiento de los sitios secundarios y amenazas comunes}
+Cuando la contingencia afecta solo a la bodega de Talca, el DRP local promueve el WMS de Concepción (VM-C01) en cinco pasos, con un RTO adicional de 1 a 2 horas. La identidad no necesita conmutación en ningún escenario: su autoridad reside en la nube y las cachés locales son de solo lectura, de modo que no existe un maestro local que promover (ADR-06).
 
-RT-07.02 exige declarar la distancia y el análisis de amenazas comunes considerado. La Tabla~\ref{tab:jd10} lo presenta para cada par de sitios:
+\subsubsection{Operación durante una contingencia regional}
 
-\begin{tablalafrox}{Distancia y amenazas comunes entre sitios. Fuente: análisis de emplazamiento del proponente; RT-21.16}{tab:jd10}%
-  {F{0.36} H{0.18} Y}%
-  {\cab{Par de sitios} & \cab{Distancia} & \cab{Amenazas comunes}}
-  Talca $\leftrightarrow$ Concepción & $\approx$ 250--400 km & Terremoto o maremoto de zona costera \textperiodcentered{} corte de la malla eléctrica nacional \\
-  Talca $\leftrightarrow$ región primaria sa-east-1 & $\approx$ 2.300 km & Sin eventos sísmicos ni eléctricos en común \\
-  Región primaria $\leftrightarrow$ us-east-1 & $\approx$ 7.700 km & Sin amenazas comunes \\
-  Talca $\leftrightarrow$ us-east-1 & $\approx$ 8.500 km & Sin amenazas comunes \\
-\end{tablalafrox}
+Mientras la región primaria no está disponible, la bodega y el terreno siguen operando contra sus bases locales y sus dispositivos, y los servicios en nube vuelven con la promoción de la réplica. Dos capacidades quedan fuera hasta el retorno, por diseño: la analítica, porque la región secundaria no se explota analíticamente, y las consultas sobre datos de geolocalización de personas, que no se replican fuera de sa-east-1 conforme a los resguardos de residencia y transferencia internacional declarados en la arquitectura de seguridad. Ninguna de las dos es un servicio crítico, y ambas se restituyen al volver a la región primaria.
 
-El único par que comparte amenazas es el on-premise: Talca y Concepción están expuestos a los mismos eventos, y esa dependencia no se resuelve con la distancia disponible dentro del área de operación del CLIENTE, cuya red abarca 340 km entre sus extremos (RT-21.16). La cobertura combina dos medidas. La primera es la independencia operacional: cada sitio opera de forma autónoma 24 h sin dependencia de red del otro, Talca con generación propia con estanque de 24 h y Concepción con alimentación protegida en su gabinete de borde. La segunda es la nube: ante un evento que afecte simultáneamente a ambos centros, el dato transaccional permanece en la región primaria con un RPO de $\leq$ 15 min, y la operación de bodega se suspende por la indisponibilidad física de los recintos, no por pérdida de información.
+La réplica que sostiene todo lo anterior se compone de la base Aurora promovible en us-east-1, alimentada por AWS DMS; de las copias inmutables en ambas regiones; de la bóveda física externa; de la copia local D-05 en Talca; y del procedimiento de conmutación y retorno. Se reparte en dos dominios y cuatro ubicaciones, de modo que la pérdida de una sola no deja al dato sin copia.
 
-\subsection{Componentes del sitio secundario y de la réplica}
-
-Los componentes que sostienen la recuperación, su ubicación y el requisito que atienden se detallan en la Tabla~\ref{tab:t28}:
-
-\begin{tablalafrox}{Componentes del sitio secundario y de la réplica. Fuente: elaboración propia}{tab:t28}%
-  {F{0.24} Y F{0.17} F{0.18}}%
-  {\cab{Componente} & \cab{Producto ofertado} & \cab{Ubicación} & \cab{Requisito}}
-  E1 --- Réplica DRP Aurora & Aurora PostgreSQL pasiva promovible + AWS DMS CDC & AWS us-east-1 & RT-07.02 \textperiodcentered{} RT-07.03 \\
-  E2 --- Respaldos inmutables & S3 Object Lock + Backup Vault Lock & sa-east-1 y us-east-1 & RT-07.09 \textperiodcentered{} RT-07.11 \\
-  E3 --- Bóveda externa física & Custodia acreditada con medio cifrado rotado semanalmente & Fuera de Talca & RT-06.26 \textperiodcentered{} RT-06.28 \\
-  E4 --- Copia local de recuperación rápida & NAS D-05 con WORM y cifrado independiente & CD Talca & RNF-20.06 \textperiodcentered{} RNF-20.07 \\
-  E5 --- Conmutación y retorno & Runbook de 8 pasos (Tabla~\ref{tab:jd09}) y retorno en 6 & Talca y AWS & RT-07.05 a RT-07.07 \\
-\end{tablalafrox}
-
-La réplica se reparte entre dos dominios y cuatro ubicaciones: us-east-1 aloja la base promovible y la copia inmutable replicada, Talca conserva la copia de recuperación rápida y una bóveda externa guarda el medio físico. La pérdida de una sola ubicación no deja al dato sin copia, y la restauración del WMS no depende del enlace. La réplica se ensaya dos veces al año y se verifica mensualmente con cero errores.
-
-\subsection{Capacidades durante una contingencia regional}
-
-Dos resguardos declarados tienen por efecto que no todas las capacidades operen igual en contingencia: la región secundaria no se explota analíticamente, y los datos de geolocalización de personas no se replican fuera de sa-east-1. La Tabla~\ref{tab:jd11} indica el estado de cada capacidad durante una contingencia regional:
-
-\begin{tablalafrox}{Capacidades durante una contingencia regional. Fuente: elaboración propia sobre los resguardos de la arquitectura de seguridad}{tab:jd11}%
-  {F{0.36} F{0.18} Y}%
-  {\cab{Capacidad} & \cab{Estado} & \cab{Fundamento}}
-  Recepción, preparación, despacho y conteo en bodega & Normal & Se ejecutan contra la base local \\
-  Preventa y reparto en terreno & Normal & Caché y buffer de turno en el dispositivo \\
-  Backend de terreno, portales e integraciones & Tras la promoción & Réplica en caliente, dentro del RTO \\
-  Consultas sobre geolocalización de personas & No disponible & Dato no replicado fuera de sa-east-1 \\
-  Analítica y tableros de gestión & No disponible & Región secundaria sin explotación analítica \\
-\end{tablalafrox}
-
-Ningún servicio clasificado como crítico (Tabla~\ref{tab:jd05}) depende de los dos resguardos: las capacidades que quedan fuera son de nivel medio y bajo. Al retornar al sitio principal, ambas se restituyen desde la región primaria sin pérdida de información.
-
-\subsection{Residencia y transferencia internacional de datos}
-
-La replicación hacia us-east-1 constituye una transferencia internacional de datos personales y se rige por los resguardos declarados en la sección de arquitectura de seguridad de este documento, en la subsección de datos personales, residencia y transferencia internacional: cifrado con CMK gestionada por el CLIENTE, acuerdo de tratamiento con cláusulas de transferencia, minimización (la región secundaria no se explota analíticamente, solo sostiene continuidad), exclusión de los datos de geolocalización de personas de la replicación transfronteriza (permanecen solo en sa-east-1 con retención de 12 meses) y registro en el inventario de tratamientos. La residencia queda sujeta a aprobación expresa del CLIENTE. Si no la aprueba, la alternativa declarada es la continuidad intrarregional dentro de sa-east-1, que consiste en una tercera AZ ampliada más respaldo inmutable regional. Esta alternativa no es un segundo sitio geográfico ni usa Talca o Concepción para la carga cloud, ya que AWS no tiene región en Chile. Cubre falla de AZ y corrupción de datos, pero degrada el RTO ante una caída de toda la región sa-east-1 a 24--72 h desde el respaldo inmutable (alternativa D del ADR-09).
-
-\subsection{DRP local (Talca $\rightarrow$ Concepción)}
-
-Promoción controlada del WMS edge (VM-C01) mediante procedimiento de 5 pasos; Concepción ya opera autónoma (latencia $\leq$ 1 s de picking, RNF-05.01). RTO +1--2 h para la bodega.
-
-Identidad sin conmutación local: el maestro Keycloak está en la nube y las cachés VM-05/VM-C03 siguen validando firmas offline --- el DRP de identidad es la misma autoridad en nube, sin promoción local a maestro (elimina una clase entera de riesgos de DR).
-
-\subsection{DRP de la identidad (ADR-06)}
-
-El maestro vive en la nube (Multi-AZ) con réplica DR us-east-1; las cachés locales son de solo lectura. No existe maestro local a promover, por lo que la identidad no depende del switchover.
-
-\section{Respaldos --- esquema 3-2-1-1-0}
+\subsection{Respaldos}
 \label{sub:5-respaldos-esquema-3-2-1-1-0-rnf-20-07}
 
-Esquema único para toda la arquitectura híbrida (nube + on-premise):
+El respaldo protege contra lo que las réplicas replican: un dato borrado por error, corrompido o cifrado de forma maliciosa. La solución aplica un esquema 3-2-1-1-0 único para la nube y el on-premise. Mantiene tres copias ---los datos activos, las instantáneas de Aurora junto con la copia local D-05, y el respaldo exportado a S3--- en dos medios, base de datos y almacenamiento de objetos. Una copia está fuera del sitio, replicada a us-east-1, y otra es inmutable, en S3 Object Lock en modo Compliance con AWS Backup Vault Lock. El cero corresponde a los errores de restauración, que se verifican cada mes.
 
-\begin{itemize}
-  \item \textbf{3 copias de los datos.} (1) Datos activos sa-east-1 + WMS activo Talca; (2) Snapshot automatizado Aurora + respaldo local on-premise (D-05); (3) Backup exportado a S3.
-  \item \textbf{2 medios.} PostgreSQL/Aurora y S3 (almacenamiento de objetos).
-  \item \textbf{1 copia fuera del sitio.} S3 Cross-Region Replication $\rightarrow$ bucket en us-east-1.
-  \item \textbf{1 copia inmutable.} S3 Object Lock (WORM, Compliance Mode) + AWS Backup Vault Lock (ni el root puede eliminarla); s3-documents-legal y s3-audit-logs en Compliance, no Governance.
-  \item \textbf{0 errores.} Restore testing automatizado mensual (Lambda) + verificación de restauración local + prueba DR semestral.
-\end{itemize}
+La copia inmutable es el control frente a un ataque con credenciales administrativas comprometidas: en modo Compliance, ni un administrador ni la cuenta raíz pueden borrarla ni modificarla durante su retención, y el bloqueo de la bóveda, con 3 días de enfriamiento y un año de retención mínima, impide eliminar los respaldos una vez activado (RT-07.11). La copia local D-05 cumple otra función: es la copia de recuperación rápida, cifrada con una clave independiente de la de producción, que permite restaurar el WMS en hasta 4 horas sin depender del enlace (RT-07.10), y por eso no se cuenta como la copia inmutable. Un medio físico cifrado se rota además cada semana a una bóveda externa, conforme a la custodia de medios del sitio principal.
 
-La pierna inmutable es el control frente al cifrado malicioso con credenciales administrativas comprometidas (RT-07.11): en modo Compliance, ni un administrador ni la cuenta raíz pueden eliminar o modificar las copias durante su período de retención.
+La Tabla~\ref{tab:jd12} muestra, para cada dominio de datos, con qué frecuencia se respalda, cuánto tiempo se retiene y en cuánto tiempo se restaura por completo.
 
-D-05 (NAS local con WORM) es la copia local de recuperación rápida y NO cuenta como la pierna inmutable; permite restaurar el WMS en $\leq$ 4 h sin depender del enlace WAN, con cifrado independiente del de producción (RT-07.10). RPO $\leq$ 15 min por AWS DMS CDC del WAL lógico (wal\_level=logical) hacia la nube antes de la copia local.
-
-Custodia física: medio de respaldo transportable, cifrado y rotado semanal, trasladado bajo custodia acreditada a bóveda externa distinta del sitio primario; la pierna inmutable S3 es complementaria, no reemplaza la custodia física.
-
-\subsection{Frecuencia, retención y restauración por dominio de datos}
-
-RT-07.13 exige declarar, por dominio de datos, la frecuencia de respaldo, la retención y el tiempo estimado de restauración completa. Los tres valores de cada dominio constan en la Tabla~\ref{tab:jd12}:
-
-\begin{tablalafrox}{Respaldo y restauración por dominio de datos. Fuente: RT-07.13; Art. 78.2 de las Bases Administrativas; Caso 02, Cap. 15 y Cap. 18}{tab:jd12}%
-  {Y F{0.28} H{0.17} H{0.15}}%
+\begin{tablalafrox}{Respaldo y restauración por dominio de datos}{tab:jd12}%
+  {Y F{0.30} H{0.16} H{0.17}}%
   {\cab{Dominio} & \cab{Frecuencia} & \cab{Retención} & \cab{Restauración}}
-  Transaccional de bodega & Continua (CDC) y copia local D-05 & 35 días & $\leq$ 4 h \\
-  Transaccional en nube & Diaria y PITR continua & 35 días & $\leq$ 4 h \\
-  Identidad & Diaria y PITR continua & 35 días & $\leq$ 4 h \\
-  Trazabilidad sanitaria de lote & Continua & Vida útil + 5 años & $<$ 2 h \\
-  Registros de temperatura & Diaria (crudo) y continua (consolidado) & 5 años & $\leq$ 8 h \\
+  Transaccional de bodega & Continua y copia local D-05 & 35 días & $\leq$ 4 h \\
+  Transaccional en nube & Diaria y recuperación continua & 35 días & $\leq$ 4 h \\
+  Identidad & Diaria y recuperación continua & 35 días & $\leq$ 4 h \\
+  Trazabilidad sanitaria & Continua & Vida útil + 5 años & $<$ 2 h \\
+  Registros de temperatura & Diaria y continua & 5 años & $\leq$ 8 h \\
   Evidencia de entrega & Continua con versionado & 6 años & $\leq$ 8 h \\
   Respaldo de documentos tributarios & Continua con versionado & 6 años & $\leq$ 8 h \\
   Geolocalización de personas & Continua & 12 meses & $\leq$ 24 h \\
   Registros de seguridad y auditoría & Continua & 7 años & $\leq$ 24 h \\
 \end{tablalafrox}
+\fuente{RT-07.13; Art. 78.2 de las Bases Administrativas; retenciones del Caso, Cap. 15, y retiro sanitario del Caso, Cap. 18.}
 
-Cada tiempo de restauración es el plazo de resolución del Artículo 78.2 que corresponde a la criticidad del servicio que usa el dato (Tabla~\ref{tab:jd05}), con una excepción más exigente: la trazabilidad sanitaria se restaura en menos de 2 h, porque el retiro sanitario debe responderse en ese plazo (Caso, Cap. 18, criterio 1). El transaccional de bodega se restituye desde la copia local D-05, sin depender del enlace. Las retenciones cumplen o superan las del Cap. 15 del caso; la de trazabilidad supera el mínimo de vida útil más 6 meses, con 5 años. La restauración es además granular (RT-07.14): la recuperación a un instante específico de Aurora sobre una instancia temporal permite restituir un registro, una tabla, un módulo o el sistema completo sin intervenir el ambiente productivo, y cada reincorporación queda registrada en la bitácora de auditoría.
+Cada tiempo de restauración corresponde al plazo de resolución que el Artículo 78.2 asigna a la criticidad del servicio que usa el dato, con una excepción más exigente: la trazabilidad sanitaria se restaura en menos de 2 horas, porque ese es el plazo en que Puelche debe responder un retiro sanitario (Caso, Cap. 18). Las retenciones cumplen o superan las del caso. La restauración, además, puede ser parcial: la recuperación de Aurora a un instante específico, sobre una instancia temporal, permite restituir un registro, una tabla, un módulo o el sistema completo sin intervenir el ambiente productivo (RT-07.14).
 
-\subsection{Plan AWS Backup}
+AWS Backup materializa esas frecuencias sobre los recursos de la plataforma: respalda Aurora a diario con recuperación continua a un instante específico y DynamoDB a diario, ambos con 35 días de retención; EFS con 30 días y EBS con 14; los documentos legales en S3 de forma continua, con versionado y Object Lock durante 6 años y réplica entre regiones; y los registros de seguridad y auditoría durante 7 años bajo Object Lock.
 
-El plan de AWS Backup por recurso de infraestructura, que materializa la tabla anterior, se detalla en la Tabla~\ref{tab:t69}:
+\subsection{Verificación de la continuidad}
+\label{sub:6-verificacion-de-la-continuidad}
 
-\begin{tablalafrox}{Plan AWS Backup por recurso. Fuente: elaboración propia}{tab:t69}%
-  {F{0.24} Y H{0.18} F{0.22}}%
-  {\cab{Recurso} & \cab{Frecuencia} & \cab{Retención} & \cab{Destino}}
-  Aurora PostgreSQL & Diaria y PITR continua & 35 días & Backup Vault cifrado CMK \\
-  DynamoDB & Diaria (On-Demand) & 35 días & Backup Vault \\
-  EFS & Diaria & 30 días & Backup Vault \\
-  EBS & Diaria (snapshots) & 14 días & Backup Vault \\
-  S3 documentos legales & Continua (versioning + Object Lock) & 6 años & S3 + réplica CRR \\
-  Logs de seguridad y auditoría & Continua & 7 años & S3 archivo, Object Lock \\
-\end{tablalafrox}
+Los mecanismos anteriores se verifican con pruebas periódicas; no se dan por supuestos. Antes de cada paso a producción, y al menos una vez por semestre durante la Operación, se inyectan de forma controlada las fallas que enumera RT-10.07 ---caída de una instancia, de una zona o de una dependencia externa, latencia elevada y saturación de disco--- y se comprueba que cada una produzca la resolución declarada en las Tablas~\ref{tab:fallas-sitios} y~\ref{tab:fallas-nube}. La recuperación ante desastres se ensaya dos veces al año con conmutación real, y el RTO y el RPO efectivamente alcanzados deben cumplir el compromiso en el 100 \% de los ensayos (RT-07.07, Art. 78.3). Los respaldos se restauran cada mes sobre una muestra representativa, con medición del tiempo real de restauración (RT-07.12). Todas estas pruebas se programan fuera de la ventana de despacho y de los períodos de congelamiento, y cada una produce un informe con las desviaciones encontradas y su plan de corrección.
 
-Los recursos transaccionales conservan 35 días para la recuperación operativa, mientras los documentos legales y los registros de auditoría se retienen por plazos legales bajo Object Lock. Todos los destinos son bóvedas cifradas o almacenamiento inmutable: con el bloqueo de la bóveda, de 3 días de enfriamiento y retención mínima de 1 año, ni la cuenta raíz puede eliminar respaldos. La retención sanitaria de trazabilidad de 5 años más la vida útil es consistente con el lago analítico S3 y el repositorio de datos históricos (RT-16.10).
-
-\subsection{Distinción entre réplica y respaldo}
-
-Las réplicas ---Aurora Global Database, DynamoDB Global Tables, S3 Cross-Region Replication y la replicación Ceph del clúster--- protegen frente a la pérdida de una instancia, de un nodo o de una región, no frente al daño lógico del dato: una eliminación accidental o un cifrado malicioso se replican con la misma fidelidad que una escritura legítima. El respaldo, y en particular su pierna inmutable, es el único control frente a ese escenario.
+La disponibilidad efectiva de cada servicio, las métricas del proceso de despliegue y el resultado de estas pruebas se miden sobre la plataforma de observabilidad y se entregan en el informe mensual de nivel de servicio (Art. 79). Es ahí donde el CLIENTE puede comprobar que lo que declara esta sección se cumple.

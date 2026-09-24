@@ -9,7 +9,7 @@
 % ------------------------------------------------------------------
 
 \section{Dimensionamiento y plan de capacidad}
-\label{sec:4-2-4-dimensionamiento}
+\label{sec:4-2-5-dimensionamiento}
 
 Esta sección deriva la capacidad de la solución desde la volumetría del caso, declara las dieciséis dimensiones que el numeral 14.2 pide estimar, dimensiona el cómputo, el almacenamiento y los enlaces en ambos dominios, y fija el plan para crecer tres veces sin rediseño. El caso advierte que un dimensionamiento basado en el promedio diario estará equivocado, porque la carga no es plana (Caso, Cap. 14.2). Por eso cada valor se calcula sobre la ventana en que ocurre, y cuando se adopta un supuesto se declara junto a su fundamento.
 
@@ -47,9 +47,9 @@ La Tabla~\ref{tab:t73} reúne los valores que entrega el CLIENTE y que sirven de
   Puntos de medición de temperatura & 28, en 7 módulos de 4 canales \\
   Instalaciones & 6, de las cuales 5 alojan cómputo \\
 \end{tablalafrox}
-\fuente{Caso, Cap. 2.2, Cap. 2.3 y Tabla 14.1; los puntos de medición son de elaboración propia.}
+\fuente{Caso, Cap. 2.2, Cap. 2.3 y Tabla 14.1; tipología del cómputo según RT-06.01; los puntos de medición son de elaboración propia.}
 
-De estos valores, el que gobierna el dimensionamiento no es el número de clientes sino la relación entre el día normal y el peak: 2.600 entregas frente a 1.400 son 1,86 veces más carga durante las tres primeras semanas de septiembre. La sexta instalación, la casa matriz de Talca, no aloja cómputo, por lo que el dimensionamiento del on-premise se calcula sobre cinco sitios.
+De estos valores, el que gobierna el dimensionamiento no es el número de clientes sino la relación entre el día normal y el peak: 2.600 entregas frente a 1.400 son 1,86 veces más carga durante las tres primeras semanas de septiembre. El dimensionamiento del on-premise se calcula sobre los cinco recintos que alojan cómputo (RT-06.01): los centros de distribución de Talca y Concepción y las tres plataformas de cross-docking de Curicó, Chillán y Los Ángeles. La sexta instalación que declara la volumetría no se identifica en la operación descrita por el caso; esa divergencia se registra como consulta al mandante (Art. 43.3) y como supuesto, sin alterar los valores de la Tabla~\ref{tab:t73}.
 
 La Tabla~\ref{tab:t74} muestra la proyección del caso a tres años.
 
@@ -150,7 +150,7 @@ El enlace de cada centro de distribución transporta la replicación de la base,
   {\cab{Sitio} & \cab{Régimen} & \cab{Peak} & \cab{Respaldo}}
   CD Talca & 20 Mbps por fibra & 50 Mbps & LTE de 5 a 10 Mbps \\
   CD Concepción & 10 Mbps por fibra & 20 Mbps & LTE de 3 a 5 Mbps \\
-  Cross-docking, cada uno & Starlink, plan de 500 GB & Ídem & LTE de 2 a 5 Mbps, dos proveedores \\
+  Cross-docking, cada uno & Starlink, plan de 500 GB & Igual al régimen & LTE de 2 a 5 Mbps, dos proveedores \\
 \end{tablalafrox}
 \fuente{elaboración propia.}
 

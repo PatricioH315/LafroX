@@ -7,7 +7,7 @@
 %  NUMERACION. El índice obligatorio (aclaraciones, sección 11) numera este
 %  contenido como 4.2 y sus subtítulos como 4.2.X. El capítulo toma el número
 %  "4.2" solo mientras dura; contenido.tex restituye la numeración arábiga al
-%  cerrar el bloque 4.2.5.
+%  cerrar el bloque 4.2.
 % ------------------------------------------------------------------
 
 % Línea de fuente bajo tablas y figuras (aclaraciones, secciones 4 y 5).
@@ -31,12 +31,12 @@
     \LFXcuerpotablaorig\hyphenpenalty=10000\exhyphenpenalty=10000\relax}
 \fi
 
-\renewcommand{\thechapter}{4.2}
+% \renewcommand{\thechapter}{4.2}
 \chapter{Arquitectura física}
 \label{cap:4-2-arquitectura-fisica}
 
-La arquitectura física declara dónde vive cada componente de la solución, qué servicios se contratan en la nube, cómo se conectan los sitios entre sí y con la nube, qué ocurre cuando falla cada conexión y cuánta capacidad se provee. Responde al Artículo 16 de las Bases Administrativas: la carga principal corre en nube pública y los componentes on-premise sostienen lo que no puede depender de un enlace.
+La arquitectura física declara dónde vive cada componente de la solución, qué servicios se contratan en la nube, cómo se conectan los sitios entre sí y con la nube, qué ocurre cuando falla cada conexión y cuánta capacidad se provee.  
 
 La correspondencia con la arquitectura lógica (Subdocumento 4.1) es total porque ambas usan el mismo catálogo de componentes, con los mismos identificadores: A-01 a A-05 para el núcleo de bodega, B-01 a B-03 para la cadena de frío, C-01 a C-05 para los dispositivos de operación, D-01 a D-06 para la red, E-01 para los cross-docking, F-01 a F-03 para observabilidad y seguridad de los nodos, y N-01 a N-13 para la nube. Un componente que aparece en una vista aparece con el mismo nombre en la otra.
 
-Este capítulo se ordena en cinco partes. La sección~\ref{sec:4-2-1-emplazamiento} justifica el emplazamiento de cada componente conforme a los criterios del Artículo 16.2. La sección~\ref{sec:4-2-2-servicios-nube} enumera los servicios contratados en la plataforma de nube. La sección~\ref{sec:4-2-3-conexiones} describe las conexiones, sus puntos de falla y la contingencia de cada uno. La sección~\ref{sec:4-2-4-dimensionamiento} deriva el dimensionamiento y el plan de capacidad desde la volumetría del caso. La sección~\ref{sec:4-2-5-implementos} resume el equipamiento a proveer, cuyo detalle se entrega en el Formulario T-11, que acompaña a esta parte como anexo. Los ambientes, las redes, la alta disponibilidad, la recuperación ante desastres y los respaldos se desarrollan en el capítulo de arquitectura de despliegue, y las especificaciones de los sitios principal y secundario en los capítulos correspondientes.
+Este capítulo se ordena en seis partes. La sección~\ref{sec:4-2-1-emplazamiento} justifica el emplazamiento de cada componente conforme a los criterios del Artículo 16.2. La sección~\ref{sec:4-2-2-servicios-nube} enumera los servicios contratados en la plataforma de nube. La sección~\ref{sec:4-2-3-despliegue} describe cómo la solución se pone en marcha y se mantiene en operación: ambientes y ciclo de entrega, red de despliegue, alta disponibilidad, recuperación ante desastres, respaldos y su verificación. La sección~\ref{sec:4-2-4-conexiones} describe las conexiones, sus puntos de falla y la contingencia de cada uno. La sección~\ref{sec:4-2-5-dimensionamiento} deriva el dimensionamiento y el plan de capacidad desde la volumetría del caso. La sección~\ref{sec:4-2-6-implementos} resume el equipamiento a proveer, cuyo detalle se entrega en el Anexo 4.A (Formulario T-11), que acompaña a esta parte como anexo. Las especificaciones de los sitios principal y secundario se desarrollan en los capítulos correspondientes al cierre de esta parte.

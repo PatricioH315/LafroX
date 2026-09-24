@@ -9,7 +9,7 @@
 % ------------------------------------------------------------------
 
 \section{Conexiones, puntos de falla y contingencia}
-\label{sec:4-2-3-conexiones}
+\label{sec:4-2-4-conexiones}
 
 Esta sección describe cómo se conectan los sitios, el terreno y la nube, identifica cada punto donde esa conexión o su infraestructura puede fallar, y declara cómo se resuelve cada falla o, cuando no se resuelve de forma automática, cuál es la contingencia. Su punto de partida es el caso: la conectividad actual de Puelche se corta con frecuencia y en algunos lugares no existe (Caso, Cap. 6), por lo que la solución no puede suponer un enlace disponible y debe decir, para cada conexión, qué pasa cuando no lo está.
 
@@ -91,24 +91,24 @@ Cada conexión se apoya en equipos del sitio que también pueden fallar. La Tabl
 \begin{tablalafrox}{Puntos de falla en los sitios y en los enlaces}{tab:fallas-sitios}%
   {F{0.24} Y Y}%
   {\cab{Punto de falla} & \cab{Resolución} & \cab{Contingencia}}
-  Fibra de un centro de distribución & BGP conmuta los túneles al LTE en menos de 30 s. & Si cae también el LTE, el sitio opera 24 h con su base, su broker y su caché de identidad. \\
-  Starlink de un cross-docking & El LTE de dos proveedores toma el tráfico en menos de 30 s. & La ventana de 3 h opera 100\,\% en local y sincroniza al reconectar. \\
-  Enlace de Los Ángeles en la madrugada & Starlink queda como camino único, porque la red móvil es intermitente a esa hora. & La ventana de operación es íntegramente local, por lo que el corte no la detiene. \\
-  Firewall de Talca & La unidad pasiva del par asume las direcciones y los túneles en menos de 30 s. & El sitio opera 24 h sin enlace. \\
-  Firewall de Concepción & Es un equipo único y se repone. & Concepción opera 24 h sin enlace mientras se reemplaza. \\
-  Nodo del clúster de Talca & Las VM se reinician en los dos nodos restantes, con sus datos replicados por Ceph. & Si fallan dos nodos, el DRP local promueve el WMS de Concepción en 1 a 2 h. \\
-  Instancia de escritura VM-02 & Se reinicia en otro nodo del clúster. & D-05 restaura la base en hasta 4 h sin depender del enlace. \\
-  Disco de un servidor & El RAID 10 reconstruye sobre el disco de repuesto en caliente. & Ceph conserva una segunda copia en otro nodo. \\
-  Miembro del stack de switches de Talca & El otro miembro mantiene el tráfico. & Se repone sin corte. \\
-  Servidor de borde de Concepción & RAID 10 con repuesto en caliente y doble fuente cubren las fallas más probables. & La pila se restaura en un equipo de reemplazo desde la réplica en Aurora. \\
-  Mini-PC de un cross-docking & Es un equipo único y se repone. & Los eventos críticos ya están en SQS FIFO y el detalle en Talca, desde donde se resincroniza el equipo nuevo. \\
-  Periféricos de andén & No tienen redundancia. & Respaldo manual de la operación del andén. \\
-  Energía de la sala de Talca & El UPS N+1 cubre 30 min y el generador toma la carga en 8 a 15 s. & El estanque cubre 24 h y hay contrato de reabastecimiento. \\
-  Climatización de la sala de Talca & La segunda unidad de precisión, en N+1, sostiene la temperatura. & Alerta de los sensores ambientales al monitoreo. \\
+  Fibra de un centro de distribución & BGP conmuta los túneles al LTE en menos de 30 s. & Si cae también el LTE, operación local 24 h. \\
+  Starlink de un cross-docking & El LTE de dos proveedores toma el tráfico en menos de 30 s. & La ventana de 3 h opera 100\,\% local y sincroniza al reconectar. \\
+  Enlace de Los Ángeles en la madrugada & Starlink queda como camino único, porque la red móvil falla a esa hora. & La ventana de madrugada opera íntegramente local. \\
+  Firewall de Talca & La unidad pasiva asume las direcciones y los túneles en menos de 30 s. & Operación local 24 h sin enlace. \\
+  Firewall de Concepción & Equipo único; se repone. & Concepción opera 24 h sin enlace mientras se reemplaza. \\
+  Nodo del clúster de Talca & Las VM se reinician en los nodos restantes, con sus datos replicados por Ceph. & Ante un segundo nodo, el DRP local promueve el WMS de Concepción en 1 a 2 h. \\
+  Instancia de escritura VM-02 & Se reinicia en otro nodo del clúster. & D-05 restaura la base en hasta 4 h sin enlace. \\
+  Disco de un servidor & El RAID 10 reconstruye sobre el repuesto en caliente. & Ceph conserva una segunda copia en otro nodo. \\
+  Miembro del stack de switches de Talca & El otro miembro mantiene el tráfico. & Reposición sin corte. \\
+  Servidor de borde de Concepción & RAID 10 y doble fuente cubren las fallas probables. & La pila se restaura desde la réplica en Aurora. \\
+  Mini-PC de un cross-docking & Equipo único; se repone. & El nuevo equipo se resincroniza desde Talca y SQS FIFO. \\
+  Periféricos de andén & Sin redundancia. & Respaldo manual de la operación del andén. \\
+  Energía de la sala de Talca & UPS N+1 de 30 min y generador que toma carga en 8 a 15 s. & Estanque de 24 h y contrato de reabastecimiento. \\
+  Climatización de la sala de Talca & Segunda unidad de precisión en N+1. & Alerta del monitoreo de los sensores ambientales. \\
 \end{tablalafrox}
 \fuente{elaboración propia; puntos únicos de falla declarados conforme a RT-02.11.}
 
-La tabla muestra que los puntos únicos de falla que quedan están donde la redundancia no compensa su costo: el firewall y el servidor de Concepción, el mini-PC de cada cross-docking y los periféricos de andén. En los tres primeros casos la contingencia es la misma autonomía que ya existe para los cortes de enlace, y ningún punto único de falla está en la ruta de la ventana de despacho de Talca, que tiene redundancia en cada capa. Los mecanismos de alta disponibilidad que sostienen estas resoluciones se desarrollan en el capítulo de arquitectura de despliegue.
+La tabla muestra que los puntos únicos de falla que quedan están donde la redundancia no compensa su costo: el firewall y el servidor de Concepción, el mini-PC de cada cross-docking y los periféricos de andén. En los tres primeros casos la contingencia es la misma autonomía que ya existe para los cortes de enlace, y ningún punto único de falla está en la ruta de la ventana de despacho de Talca, que tiene redundancia en cada capa. Los mecanismos de alta disponibilidad que sostienen estas resoluciones se desarrollan en la sección de arquitectura de despliegue.
 
 \subsection{Puntos de falla en la nube, el terreno y las integraciones}
 
@@ -118,9 +118,9 @@ La Tabla~\ref{tab:fallas-nube} completa el recorrido con los puntos de falla que
   {F{0.24} Y Y}%
   {\cab{Punto de falla} & \cab{Resolución} & \cab{Contingencia}}
   Zona de disponibilidad de sa-east-1 & Aurora conmuta en menos de 30 s, ElastiCache en menos de 60 s y Fargate reprograma las tareas. & La operación continúa en las zonas restantes. \\
-  Región sa-east-1 completa & Route 53 redirige el tráfico y, con autorización del CLIENTE, se promueve la réplica en us-east-1. & RTO de 4 h y RPO de 15 min; la bodega y el terreno siguen operando en local. \\
-  Túnel VPN durante la replicación & DMS encola los cambios en el origen. & Reanuda sin pérdida al reconectar; la réplica queda desactualizada mientras dure el corte. \\
-  IdP maestro o enlace de identidad & Las cachés de solo lectura validan las sesiones localmente. & Token de turno de 8 h en bodega y 14 h en terreno, y cuenta de emergencia en sobre sellado (ADR-15). \\
+  Región sa-east-1 completa & Route 53 redirige el tráfico y, con autorización del CLIENTE, se promueve la réplica en us-east-1. & RTO de 4 h y RPO de 15 min; la bodega y el terreno operan en local. \\
+  Túnel VPN durante la replicación & DMS encola los cambios en el origen. & Reanuda sin pérdida al reconectar; la réplica queda desactualizada durante el corte. \\
+  IdP maestro o enlace de identidad & Las cachés de solo lectura validan las sesiones localmente. & Token de turno de 8 h en bodega y 14 h en terreno; cuenta de emergencia sellada (ADR-15). \\
   Señal móvil en ruta & La aplicación opera contra el almacén local del dispositivo. & Sincroniza al reconectar dentro de los 10 min de la Tabla~\ref{tab:t29}. \\
   ERP legado & La capa anticorrupción retiene las transacciones en cola hasta 24 h. & El ERP no se modifica; las transacciones se entregan al recuperarse. \\
   Excursión térmica sin enlace & El gateway bloquea el despacho en menos de 5 s en el borde. & Buffer de 14 h y alerta al reconectar. \\
