@@ -43,7 +43,7 @@ La Tabla~\ref{tab:t73} reúne los valores que entrega el CLIENTE y que sirven de
   Entregas en día hábil de peak de septiembre & 2.600 \\
   Kilómetros recorridos & 420.000 al mes \\
   Documentos tributarios & 34.000 al mes \\
-  Camiones propios con equipo de frío & 18 \\
+  Camiones con equipo de frío & 28: 18 propios y 10 de transportistas \\
   Puntos de medición de temperatura & 28, en 7 módulos de 4 canales \\
   Instalaciones & 6, de las cuales 5 alojan cómputo \\
 \end{tablalafrox}
@@ -78,7 +78,7 @@ La preparación nocturna mueve 260.000 líneas al mes; en 25 días hábiles son 
   {\cab{Flujo} & \cab{Cálculo} & \cab{TPS}}
   Confirmación de preparación & 120 terminales $\times$ 1 confirmación cada 6 s & 20 \\
   Registro de preventa & 62 preventistas $\times$ 1 línea cada 8 s & 8 \\
-  Movimientos, sincronización y telemetría & Supuesto que cubre el vuelco de los brokers y los 73.700 mensajes diarios de telemetría & 7 \\
+  Movimientos, sincronización y telemetría & Supuesto que cubre el vuelco de los brokers y los 76.600 mensajes diarios de telemetría & 7 \\
   Régimen normal & 20 + 8 + 7 & 35 \\
   Diseño en peak de septiembre & 35 $\times$ 3 & 105 \\
 \end{tablalafrox}
@@ -113,7 +113,7 @@ El almacenamiento se calcula por tipo de dato, porque cada uno tiene su propio r
 \begin{itemize}
   \item \textbf{Transaccional:} se estima en 375 GB por año entre el maestro de bodega y el transaccional en nube. A cinco años suma cerca de 1,9 TB, del mismo orden que los 1.890 GB asignados al clúster de Talca.
   \item \textbf{Evidencia de entrega:} 1.400 entregas diarias en 300 días hábiles son 420.000 entregas al año. Con una firma de 30 KB y una o dos fotografías de 200 KB, cada entrega ocupa unos 230 KB, lo que da 420.000 $\times$ 230 KB $\approx$ 97 GB, unos 100 GB al año. Con la retención de 6 años suman unos 600 GB, en almacenamiento por niveles.
-  \item \textbf{Series de temperatura y de posicionamiento:} 46 fuentes de temperatura, 28 puntos de cámara y 18 termógrafos, con una muestra cada 5 minutos, generan 4,84 millones de registros al año; 42 camiones con una posición cada 30 segundos durante 12 horas y 300 días generan 18,1 millones. Con unos 145 bytes por registro, los 22,9 millones suman 3,3 GB en crudo al año, que en formato columnar comprimido quedan en unos 0,8 GB. El crudo vive 30 días; la serie consolidada se conserva 5 años para temperatura y 12 meses para geolocalización de personas.
+  \item \textbf{Series de temperatura y de posicionamiento:} 56 fuentes de temperatura, 28 puntos de cámara y 28 termógrafos, con una muestra cada 5 minutos, generan 5,89 millones de registros al año; 42 camiones con una posición cada 30 segundos durante 12 horas y 300 días generan 18,1 millones. Con unos 145 bytes por registro, los 24 millones suman 3,5 GB en crudo al año, que en formato columnar comprimido quedan en unos 0,9 GB. El crudo vive 30 días; la serie consolidada se conserva 5 años para temperatura y 12 meses para geolocalización de personas.
   \item \textbf{Datos históricos a migrar:} unos 30 GB estructurados. Solo las ventas y pedidos de tres años son 9,4 millones de líneas de 1 KB, 9,4 GB, y los movimientos de inventario de dos años son 3,4 millones de registros de 0,5 KB, 1,7 GB; el resto corresponde a los maestros, a cinco años de trazabilidad sanitaria y a las cuentas por cobrar vivas. El histórico documental permanece en el ERP, que sigue siendo la fuente tributaria.
 \end{itemize}
 
@@ -129,7 +129,7 @@ La solución tiene 15 integraciones. La Tabla~\ref{tab:t33} deriva el volumen de
   ERP por la capa anticorrupción & 4.700 & 9.400 & 1.240 pedidos, 46 recepciones, 1.400 preparaciones, 1.400 entregas y 600 recaudaciones \\
   Documentos tributarios y acuse & 2.700 & 5.400 & 34.000 documentos al mes y su acuse, en 25 días \\
   Trazabilidad GS1 EPCIS & 52.000 & 104.000 & 260.000 líneas al mes $\times$ 5 eventos, en 25 días \\
-  Telemetría de cadena de frío & 13.200 & 13.200 & 46 fuentes $\times$ 288 muestras diarias \\
+  Telemetría de cadena de frío & 16.100 & 16.100 & 56 fuentes $\times$ 288 muestras diarias \\
   Telemetría de flota & 60.500 & 72.000 & 42 camiones $\times$ 120 posiciones por hora $\times$ 12 h \\
   Sincronización de terreno & 13.000 & 26.000 & 1.240 pedidos, 1.400 entregas y 10.400 confirmaciones \\
   Intercambio con el canal moderno & 550 & 1.100 & 136 pedidos diarios $\times$ 4 mensajes \\
@@ -139,7 +139,7 @@ La solución tiene 15 integraciones. La Tabla~\ref{tab:t33} deriva el volumen de
 \end{tablalafrox}
 \fuente{elaboración propia a partir de la Tabla 14.1 del caso.}
 
-El total en régimen es de unos 150.000 mensajes al día. Dos series de tiempo, la trazabilidad y la telemetría, aportan unos 126.000 de ellos, y ninguna atraviesa la base transaccional. Las cinco integraciones restantes del catálogo son de configuración y administración, con volumen despreciable frente a estas cifras.
+El total en régimen es de unos 153.000 mensajes al día. Dos series de tiempo, la trazabilidad y la telemetría, aportan unos 129.000 de ellos, y ninguna atraviesa la base transaccional. Las cinco integraciones restantes del catálogo son de configuración y administración, con volumen despreciable frente a estas cifras.
 
 \subsection{Ancho de banda, dispositivos de reparto y sincronización}
 
@@ -177,7 +177,7 @@ La Tabla~\ref{tab:t72} reúne el valor declarado para cada dimensión del numera
   Dispositivos de terreno simultáneos & 270, hasta 300 & Usuarios y concurrencia \\
   Almacenamiento transaccional anual & 375 GB & Almacenamiento \\
   Evidencia de entrega anual & 100 GB & Almacenamiento \\
-  Series de temperatura y posición anuales & 3,3 GB en crudo y 0,8 GB consolidados & Almacenamiento \\
+  Series de temperatura y posición anuales & 3,5 GB en crudo y 0,9 GB consolidados & Almacenamiento \\
   Datos históricos a migrar & 30 GB & Almacenamiento \\
   Integraciones y mensajes & 15 integraciones y 150.000 mensajes al día & Integraciones \\
   Ancho de banda por sitio & Talca 20 a 50 Mbps y Concepción 10 a 20 Mbps & Ancho de banda \\

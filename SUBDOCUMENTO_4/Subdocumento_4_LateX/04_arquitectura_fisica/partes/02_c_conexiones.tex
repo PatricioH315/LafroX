@@ -56,14 +56,14 @@ Los dos dominios fijos, la nube y el on-premise, se conectan por túneles VPN IP
     % Sincronizaciones y descargas locales
     \draw[interna] (con.south) -- ++(0,-0.4) -| node[rotulo, below=1pt, pos=0.25] {TCP 8080 y 5432} (tal.south);
     \draw[interna] (cdk.south) -- ++(0,-0.95) -| node[rotulo, below=1pt, pos=0.25] {AMQPS 5671 entre brokers} ([xshift=0.45cm]tal.south west);
-    \draw[interna] (cam.south) -- ++(0,-0.4) -| node[rotulo, below=1pt, pos=0.25] {Bluetooth al regresar} ([xshift=-0.45cm]con.south east);
+    \draw[interna] (cam.south) -- ++(0,-0.4) -| node[rotulo, below=1pt, pos=0.25] {BLE con terminal\\y Bluetooth al volver} ([xshift=-0.45cm]con.south east);
   \end{tikzpicture}
   \caption{Conexiones entre los sitios, el terreno y la nube}
   \label{fig:conexiones}
   \fuentefigura{elaboración propia.}
 \end{figure}
 
-La figura distingue dos tipos de conexión. Las líneas continuas son conexiones hacia la nube, y todas se inician desde el sitio o desde el dispositivo, sin puertos abiertos hacia el on-premise. Las únicas excepciones son la réplica de AWS DMS, que lee el registro de escritura de PostgreSQL en VM-02, y el worker celery-erp-sync, que consulta la capa anticorrupción en VM-04; ambas entran por el túnel IPsec autenticado y quedan auditadas. Las líneas discontinuas son sincronizaciones entre sitios o descargas locales, que no dependen de la nube: Concepción sincroniza con Talca por la VPN, los cross-docking envían a Talca el detalle de su WMS entre brokers, y los termógrafos descargan su registro por Bluetooth al gateway del centro de distribución cuando el camión vuelve. Los eventos críticos de los cross-docking van directo a SQS FIFO, de modo que la operación de esas plataformas no depende de Talca.
+La figura distingue dos tipos de conexión. Las líneas continuas son conexiones hacia la nube, y todas se inician desde el sitio o desde el dispositivo, sin puertos abiertos hacia el on-premise. Las únicas excepciones son la réplica de AWS DMS, que lee el registro de escritura de PostgreSQL en VM-02, y el worker celery-erp-sync, que consulta la capa anticorrupción en VM-04; ambas entran por el túnel IPsec autenticado y quedan auditadas. Las líneas discontinuas son sincronizaciones entre sitios o descargas locales, que no dependen de la nube: Concepción sincroniza con Talca por la VPN, los cross-docking envían a Talca el detalle de su WMS entre brokers, y los termógrafos sincronizan por Bluetooth con el terminal del conductor durante la ruta —que alerta la excursión térmica en el momento y la reenvía a la nube cuando recupera cobertura— y descargan el registro completo al gateway del centro de distribución cuando el camión vuelve. Los eventos críticos de los cross-docking van directo a SQS FIFO, de modo que la operación de esas plataformas no depende de Talca.
 
 La Tabla~\ref{tab:conexiones} resume cada conexión con su medio, su camino alternativo y el tiempo de conmutación entre ambos.
 
@@ -76,7 +76,7 @@ La Tabla~\ref{tab:conexiones} resume cada conexión con su medio, su camino alte
   Concepción con Talca & TCP 8080 y 5432 con TLS sobre la VPN & Operación autónoma & No aplica \\
   Cross-docking con Talca & AMQPS 5671 entre brokers & Envío diferido & No aplica \\
   Terreno con la nube & Red celular del operador, HTTPS & Almacén local del dispositivo & No aplica \\
-  Termógrafos con el sitio & Bluetooth al regresar al centro de distribución & Registro interno del termógrafo & No aplica \\
+  Termógrafos con el terminal y con el sitio & BLE con el terminal del conductor en ruta; Bluetooth al regresar al centro de distribución & Registro interno del termógrafo & No aplica \\
   Usuarios externos con los portales & Internet, HTTPS por CloudFront & Ninguno: el autoservicio requiere conexión & No aplica \\
   Región primaria con la secundaria & Replicación nativa de Aurora, DynamoDB y S3 & Respaldo inmutable & Promoción autorizada \\
 \end{tablalafrox}
