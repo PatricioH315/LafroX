@@ -58,7 +58,7 @@ Registro consolidado de las quince decisiones de arquitectura que condicionan es
 \section{ADR-06 \textperiodcentered{} Identidad híbrida (Modelo B)}
 \label{sub:adr-06}
 
-\textbf{Decisión adoptada.} Keycloak IdP maestro en AWS (ECS Fargate, 2 tareas Multi-AZ, backend Aurora) + caché local solo lectura (TTL 8 h) en Talca y Concepción. Tokens offline por perfil (8 h bodega, 14 h reparto). OTP para conductores externos.
+\textbf{Decisión adoptada.} Keycloak IdP maestro en AWS (ECS Fargate, 2 tareas Multi-AZ, backend Aurora) + caché local solo lectura (TTL 24 h, igual a la autonomía del CD) en Talca, Concepción y los cross-docking. Tokens offline por perfil (8 h bodega, 14 h reparto). OTP para conductores externos.
 
 \textbf{Alternativas descartadas.} \emph{IdP solo nube}: paraliza bodega ante corte. \emph{AD maestro local}: duplica administración, crea maestro a promover en DR. \emph{Keycloak maestro local}: nube no puede autenticar si el enlace cae.
 
@@ -94,7 +94,7 @@ Registro consolidado de las quince decisiones de arquitectura que condicionan es
 \section{ADR-10 \textperiodcentered{} Almacenamiento on-premise y RAID}
 \label{sub:adr-10}
 
-\textbf{Decisión adoptada.} RAID 10 NVMe para BD transaccional del WMS (VM-02); RAID 6 con hot-spare para evidencia POD, logs y rollups; hipervisor Ceph N+1.
+\textbf{Decisión adoptada.} RAID 10 NVMe en los nodos del clúster de Talca y en el servidor de Concepción; RAID 6 en el NAS de respaldo local D-05; la evidencia de entrega vive en S3; hipervisor Ceph N+1.
 
 \textbf{Alternativas descartadas.} \emph{RAID 5}: probabilidad de URE durante rebuild en discos 8--16 TB; solo tolera 1 fallo. \emph{RAID 1 puro para todo}: sobre-costo 50\,\% aplicado a datos no críticos sin beneficio proporcional.
 

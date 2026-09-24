@@ -217,7 +217,7 @@ Con un nodo caído, el clúster todavía usa menos de la mitad de su cómputo y 
 \end{tablalafrox}
 \fuente{elaboración propia.}
 
-VM-02 concentra casi la mitad de la memoria y el 80 \% del disco, porque es el único punto de escritura del maestro de bodega; es también el primer cuello de botella, como se explica más adelante. El servidor de borde de Concepción ofrece 12 vCPU y 24 GB de memoria sobre discos NVMe en RAID 10 con repuesto en caliente, suficientes para el WMS de un sitio de la mitad de tamaño que Talca durante 24 horas sin enlace. En cada cross-docking, el mini-PC industrial ejecuta el WMS, su base y su broker en contenedores, y conecta el router de Starlink y el LTE de respaldo.
+VM-02 concentra casi la mitad de la memoria y el 80 \% del disco, porque es el único punto de escritura del maestro de bodega; es también el primer cuello de botella, como se explica más adelante. El servidor de Concepción es del mismo modelo que los nodos de Talca: 32 hilos y 128 GB de memoria sobre discos NVMe en RAID 10 con repuesto en caliente. Su propia bodega, de la mitad de tamaño que Talca, usa una fracción de esa capacidad; el resto permite asumir el WMS y la base de Talca (VM-01 y VM-02, 16 vCPU, 48 GB y 1,6 TB) cuando el DRP local los promueve. En cada cross-docking, el mini-PC industrial ejecuta el WMS, su base y su broker en contenedores, detrás del firewall compacto que termina Starlink, el LTE de respaldo y la VPN.
 
 La Tabla~\ref{tab:t80} verifica el almacenamiento y el rendimiento de la base transaccional.
 
@@ -247,8 +247,8 @@ La Tabla~\ref{tab:t82} declara la capacidad base y la de peak de cada servicio d
   Aurora PostgreSQL & db.r6g.large en 2 zonas & db.r6g.xlarge y 2 lectores & CPU sobre 60 \% \\
   ElastiCache & cache.r6g.large & cache.r6g.xlarge & Memoria sobre 75 \% \\
   DynamoDB & Bajo demanda & Bajo demanda & Sin gestión de capacidad \\
-  IoT Core & 270 dispositivos & 300 dispositivos & Concurrencia de terreno \\
-  Keycloak & 1 tarea & 2 tareas en 2 zonas & CPU sobre 60 \% \\
+  IoT Core & 2 gateways y 28 termógrafos & Igual a la base & Sin gestión de capacidad \\
+  Keycloak & 2 tareas en 2 zonas & 4 tareas en 2 zonas & CPU sobre 60 \% \\
 \end{tablalafrox}
 \fuente{elaboración propia; decisión ADR-12.}
 
@@ -311,11 +311,11 @@ Los valores de esta sección se verifican con pruebas en Pre-Producción, que op
   {\cab{Prueba} & \cab{Carga} & \cab{Resultado esperado}}
   Carga & 1,5 veces la carga de diseño: 5.850 entregas diarias, unas 160 TPS sostenidas & Umbrales de la Tabla~\ref{tab:t84} cumplidos con perfiles horarios reales \\
   Estrés & Incremento hasta el punto de quiebre, al menos 3 veces & Curva de tiempo de respuesta frente a la carga \\
-  Informe de carga & Curvas, saturación y uso de CPU, memoria, disco, enlace y colas & Insumo del hito de producción del mes 16 \\
+  Informe de carga & Curvas, saturación y uso de CPU, memoria, disco, enlace y colas & Insumo de los hitos de producción de los meses 16 y 21 \\
 \end{tablalafrox}
 \fuente{elaboración propia.}
 
-La prueba de carga multiplica por 1,5 una carga de diseño que ya incluía ese margen, de modo que 105 $\times$ 1,5 $\approx$ 160 transacciones por segundo verifican la solución por encima de cualquier volumen que el caso proyecta. Las pruebas usan k6 y Gatling con controladores propios contra las API de integración y del broker, se ejecutan al cierre de la Etapa 1 (mes 13) y de la Etapa 2 (mes 19), y se repiten cada trimestre. Su calendario formal está en el Formulario T-13.
+La prueba de carga multiplica por 1,5 una carga de diseño que ya incluía ese margen, de modo que 105 $\times$ 1,5 $\approx$ 160 transacciones por segundo verifican la solución por encima de cualquier volumen que el caso proyecta. Las pruebas usan k6 y Gatling con controladores propios contra las API de integración y del broker, se ejecutan al cierre del desarrollo de la Etapa 1 (mes 12) y de la Etapa 2 (mes 18), antes de cada marcha blanca, y se repiten cada trimestre. Su calendario formal está en el Formulario T-13.
 
 \subsection{Actualización del plan de capacidad}
 

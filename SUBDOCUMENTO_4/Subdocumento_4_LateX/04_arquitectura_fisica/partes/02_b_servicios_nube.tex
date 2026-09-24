@@ -27,9 +27,9 @@ La Tabla~\ref{tab:servicios-nube} agrupa los servicios contratados por la funci�
   Internet de las cosas & IoT Core, IoT Greengrass & N-08, B-02, B-03 & sa-east-1 y borde \\
   Analítica & S3, Glue, Redshift Serverless, QuickSight & N-10 & sa-east-1 \\
   Respaldo y recuperación & AWS Backup, S3 Object Lock, replicación de S3 entre regiones & N-11, D-05 & sa-east-1 y us-east-1 \\
-  Red y conectividad & VPC, Transit Gateway, Site-to-Site VPN, NAT Gateway, VPC Endpoints & D-01 & sa-east-1 y us-east-1 \\
+  Red y conectividad & VPC, VPN Gateway, Site-to-Site VPN, NAT Gateway, VPC Endpoints & D-01 & sa-east-1 y us-east-1 \\
   Identidad, claves y secretos & KMS, Secrets Manager, Parameter Store, IAM Identity Center & A-05, N-12 & sa-east-1 y us-east-1 \\
-  Detección y cumplimiento & Security Lake, GuardDuty, Security Hub, Inspector, Macie, CloudTrail, Config & N-12, F-03 & sa-east-1 \\
+  Detección y cumplimiento & Security Lake, GuardDuty, Security Hub, Inspector, Macie, CloudTrail, Config & N-12, F-03 & sa-east-1; CloudTrail, GuardDuty y Config también en us-east-1 \\
   Operación y gobierno & CloudWatch, Systems Manager, Control Tower, Organizations, Cost Explorer, Budgets & F-01, F-02, N-12 & sa-east-1 \\
   Construcción y registro de imágenes & CodeBuild, Elastic Container Registry & N-04, A-01 & sa-east-1 \\
   Servicios de terceros en nube & Android Enterprise y Zebra DNA; consola del EDR & N-13, F-03 & Servicio gestionado \\
@@ -40,7 +40,7 @@ La tabla deja ver que la solución no opera servidores en la nube: todo el cómp
 
 \subsection{Región secundaria y residencia de los datos}
 
-La región us-east-1 no es una segunda producción. Solo contiene la réplica de Aurora mediante Aurora Global Database, la réplica de DynamoDB mediante Global Tables, la copia de los buckets de S3, las copias de AWS Backup y una réplica reducida de ECS que escala a carga completa en menos de 30 minutos durante una conmutación (ADR-09). Dos capacidades quedan fuera de esa región por diseño: la analítica, porque la región secundaria no se explota analíticamente, y los datos de geolocalización de personas, que no se replican fuera de sa-east-1 conforme a los resguardos de la arquitectura de seguridad. Así, la transferencia internacional de datos que exige la continuidad queda acotada a lo estrictamente necesario para reanudar la operación.
+La región us-east-1 no es una segunda producción. Solo contiene la réplica de Aurora mediante Aurora Global Database, la réplica de las tablas de temperatura de DynamoDB mediante Global Tables, la copia de los buckets de S3 salvo el de geolocalización, las copias de AWS Backup y una réplica reducida de ECS que escala a carga completa en menos de 30 minutos durante una conmutación (ADR-09). Dos capacidades quedan fuera de esa región por diseño: la analítica, porque la región secundaria no se explota analíticamente, y los datos de geolocalización de personas, que no se replican fuera de sa-east-1 conforme a los resguardos de la arquitectura de seguridad. Así, la transferencia internacional de datos que exige la continuidad queda acotada a lo estrictamente necesario para reanudar la operación.
 
 \subsection{Servicios que no se contratan}
 
