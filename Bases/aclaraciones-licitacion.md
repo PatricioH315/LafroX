@@ -1,5 +1,7 @@
 # Aclaraciones de la Licitación
 
+Este comunicado aclara el índice obligatorio de los subdocumentos de la Oferta Técnica y las reglas de forma con que debe desarrollarse cada uno. Su propósito es precisar qué contenido corresponde a cada capítulo, en qué archivo va y cómo debe presentarse. Complementa el Formulario T-7 y el Formulario T-21 de las Bases Administrativas; no los reemplaza. En cada instancia se entregan solo los subdocumentos que exige el Formulario T-22 para esa instancia; el índice siguiente rige para todos ellos.
+
 ## 1. Archivos y nomenclatura
 
 Cada capítulo constituye un subdocumento independiente. Sus anexos y los formularios asociados se entregan en archivos separados del subdocumento:
