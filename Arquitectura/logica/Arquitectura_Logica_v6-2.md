@@ -1,4 +1,12 @@
-# Arquitectura Lógica v6.2 — Documento Unificado (Puelche S.A. · Caso 2 Logística)
+# Arquitectura Lógica v6.3 — Documento Unificado (Puelche S.A. · Caso 2 Logística)
+
+> **Cambios v6.2 → v6.3 (2026-09-24 — coherencia lógica interna, solo capa lógica).** Corrección de coherencia interna en la capa lógica, **sin cambios de diseño ni de física**:
+>
+> 1. **Nomenclatura de eventos §8.6 alineada a PascalCase**, con mapeo explícito a los **10 eventos canónicos de integración** (dos niveles: dominio/entidad → canónico, §8.6).
+> 2. **Referencias S28 corregidas** hacia §9.6 y la matriz del Cap. 17.1 (§16.4, §9.6) — ya no apuntan a §8.4 (tabla de límites de contexto).
+> 3. **Columna de IDs INT-01…INT-15 y fila de telemetría (INT-15)** en la matriz de integraciones §9.7.
+> 4. **Volumetría de mensajería por integración (~150.000 msg/día en régimen)** añadida a §9.7 (cierre parcial del numeral 14.2).
+> 5. **Diagrama §18.4 enriquecido** con capa anticorrupción (ACL) y eventos canónicos.
 
 > **Cambios v6.1 → v6.2 (2026-09-06, alineación íntegra lógica ↔ física — auditoría del Subdocumento 4).** Esta versión cierra **todas** las divergencias detectadas entre la vista lógica y la vista física, sin cambiar ninguna decisión de negocio y sin introducir componentes nuevos que no tengan emplazamiento declarado:
 >
@@ -16,7 +24,7 @@
 
 > **Documento único de la capa lógica (v6.1).** Unifica en un solo archivo todo el contenido relevante de la arquitectura lógica de los documentos `00` → `08` **más las correcciones de la auditoría T-7/T-21/T-22 (2026-09-04)**, **el cierre de brechas frente a los RT de las Bases Técnicas Transversales (v3, 2026-09-05)**, **la resolución íntegra de los hallazgos de la auditoría v3 (2026-09-05)** **y la auditoría BA v4 (2026-09-05, H1 traza documental resuelto)**: contexto y cifras, marco normativo, referencia metodológica, actores, modelo de **8 capas (RT-02.01)**, módulos M1–M12, datos, seguridad y observabilidad transversales, stack de herramientas, decisiones (D1–D12), notas (N1–N5), supuestos (S01–S30), flujos críticos, diagramas C4, trazabilidad y pendientes.
 >
-> **Vigencia:** 2026-09-06 (**v6.2**). Supera a la v6.1 y a todas las versiones anteriores (v6, v5.5, v5, v5.1, v4, v3, v2, v1, consolidaciones `08`/`07`). Los documentos `00`–`08` se mantienen como **fuentes de trazabilidad** (cada sección indica su origen).
+> **Vigencia:** 2026-09-24 (**v6.3**). Supera a la v6.2 y a todas las versiones anteriores (v6.1, v6, v5.5, v5, v5.1, v4, v3, v2, v1, consolidaciones `08`/`07`). Los documentos `00`–`08` se mantienen como **fuentes de trazabilidad** (cada sección indica su origen).
 >
 > **Decisiones vigentes: D1–D15** (D9 superada por D14, conservada por trazabilidad). **Supuestos: S01–S31.** **Notas: N1–N5.**
 >
@@ -426,21 +434,25 @@ La solución se organiza en las **ocho capas de existencia obligatoria** del num
 
 ### 8.6 Modelo de dominio — entidades, relaciones y eventos canónicos (RT-02.13 · v3)
 
-RT-02.13 exige el modelo de dominio de la solución (entidades del negocio, sus relaciones y eventos), hasta ahora solo prometido en la matriz de trazabilidad. Este es el **modelo canónico** que alimenta la matriz formal del Cap. 17.1 y los contratos AsyncAPI (§9.6).
+RT-02.13 exige el modelo de dominio de la solución (entidades del negocio, sus relaciones y eventos), hasta ahora solo prometido en la matriz de trazabilidad. Este es el **modelo canónico** que alimenta la matriz formal del Cap. 17.1 y los contratos AsyncAPI (§9.6). Los eventos de la tabla se expresan en **PascalCase** (verbo en participio + sustantivo, p. ej. `ClienteCreado`) y constituyen el **Nivel 1** del modelo de eventos: evento de **dominio/entidad** de **granularidad fina**, fuente de la bitácora de reconciliación (§9.1) y de los esquemas AsyncAPI por módulo (§9.6).
 
 | Entidad | Atributos clave | Eventos de dominio (idempotentes, §9.1) | Guardada en |
 |---|---|---|---|
-| **Cliente** | RUT, razón social, canal (tradicional/food/cadena), crédito (RF-03.08/09), georreferencia, bloqueo | `cliente.creado` · `cliente.actualizado` · `cliente.bloqueo.cambiado` | BD_CLIENTES (PostgreSQL) |
-| **Pedido** | UUID, preventista, cliente, líneas (SKU/cantidad/precio), estado (tomado→confirmado→preparado→despachado→entregado→rendido), osatura de stock | `pedido.tomado` · `pedido.confirmado` · `pedido.prepLinea.asignada` · `pedido.despachado` · `entrega.evidenciada` | BD_PEDIDOS_VENTAS |
-| **Línea de pedido** | SKU, cantidad, lote asignado, ubicación de preparación, merma/vencimiento | `linea.lote.asignado` · `linea.merma.registrada` | BD_PEDIDOS_VENTAS + BD_BODEGA |
-| **SKU / Producto** | GTIN/GS1, unidad, refrigerado/congelado, rangos térmicos (RF-09.01), vida útil | `producto.catalogado` · `producto.precio.cambiado` (regla 16.1 #9) | BD_CATALOGO |
-| **Lote** | N° lote GS1 (GTIN + lote + vencimiento FEFO + temperatura), **unidad de trazabilidad sanitaria (decisión 16.1 #2, v4)** — identidad primaria del retiro; vinculado a **unidad logística SSCC** por movimiento interno | `lote.recibido` · `lote.bloqueado` (RF-09.07) · `lote.retiroSanitario.iniciado` · `unidadLogistica.enlazada` | BD_TRAZABILIDAD (S3 raw 5 años + OLAP Redshift) |
-| **Misión de preparación** | HHT, oleada, ubicación, unidades, estado (descargada→ejecutada→cerrada) | `mision.asignada` · `mision.ejecutada` · `mision.cerrada` | BD_BODEGA |
-| **Ruta / viaje** | Planificador, vehículo, conductor, ventanas, secuencia de entregas, geocercas (RF-14.08) | `ruta.planificada` · `ruta.enCamino` · `desviacion.detectada` (RF-14.04) | BD_RUTAS_GEO |
-| **Entrega** | Pedido, viaje, POD (firma/QR), foto, documentos DTE, efectivo (RF-06.02/11, RF-07.06) | `entrega.evidenciada` · `entrega.reintento` (decisión 16.1 #3) · `entrega.rendicion.aprobada` | BD_ENTREGAS + S3_DOCS |
-| **Documento tributario** | Factura/boleta/guía, folio SII, acuse (RF-12.13), nota de crédito | `dtc.emitido` · `dtc.acusado` · `dtc.nc.emitida` | BD_DTE + S3_DOCS |
-| **Envase retornable** | Canastillo/pallet, cliente, saldo, pérdida 14 % (decisión 16.1 #10) | `envase.entregado` · `envase.devuelto` · `envase.merma.registrada` | BD_INVENTARIO |
-| **Sensor / registro térmico** | Dispositivo, lote/posición, temperatura, excursión (RF-09.03/05/07) | `temperatura.registrada` · `excursion.detectada` · `despacho.bloqueado` | BD_TRAZABILIDAD (series) |
+| **Cliente** | RUT, razón social, canal (tradicional/food/cadena), crédito (RF-03.08/09), georreferencia, bloqueo | `ClienteCreado` · `ClienteActualizado` · `BloqueoDeClienteCambiado` | BD_CLIENTES (PostgreSQL) |
+| **Pedido** | UUID, preventista, cliente, líneas (SKU/cantidad/precio), estado (tomado→confirmado→preparado→despachado→entregado→rendido), osatura de stock | `PedidoTomado` · `PedidoConfirmado` · `LineaDePreparacionAsignada` · `PedidoDespachado` · `EntregaEvidenciada` | BD_PEDIDOS_VENTAS |
+| **Línea de pedido** | SKU, cantidad, lote asignado, ubicación de preparación, merma/vencimiento | `LoteAsignadoALinea` · `MermaDeLineaRegistrada` | BD_PEDIDOS_VENTAS + BD_BODEGA |
+| **SKU / Producto** | GTIN/GS1, unidad, refrigerado/congelado, rangos térmicos (RF-09.01), vida útil | `ProductoCatalogado` · `PrecioDeProductoCambiado` (regla 16.1 #9) | BD_CATALOGO |
+| **Lote** | N° lote GS1 (GTIN + lote + vencimiento FEFO + temperatura), **unidad de trazabilidad sanitaria (decisión 16.1 #2, v4)** — identidad primaria del retiro; vinculado a **unidad logística SSCC** por movimiento interno | `LoteRecibido` · `LoteBloqueado` (RF-09.07) · `RetiroSanitarioIniciado` · `UnidadLogisticaEnlazada` | BD_TRAZABILIDAD (S3 raw 5 años + OLAP Redshift) |
+| **Misión de preparación** | HHT, oleada, ubicación, unidades, estado (descargada→ejecutada→cerrada) | `MisionAsignada` · `MisionEjecutada` · `MisionCerrada` | BD_BODEGA |
+| **Ruta / viaje** | Planificador, vehículo, conductor, ventanas, secuencia de entregas, geocercas (RF-14.08) | `RutaPlanificada` · `RutaEnCamino` · `DesviacionDeRutaDetectada` (RF-14.04) | BD_RUTAS_GEO |
+| **Entrega** | Pedido, viaje, POD (firma/QR), foto, documentos DTE, efectivo (RF-06.02/11, RF-07.06) | `EntregaEvidenciada` · `ReintentoDeEntregaRegistrado` (decisión 16.1 #3) · `RendicionDeEntregaAprobada` | BD_ENTREGAS + S3_DOCS |
+| **Documento tributario** | Factura/boleta/guía, folio SII, acuse (RF-12.13), nota de crédito | `DteEmitido` · `DteAcusado` · `NotaDeCreditoEmitida` | BD_DTE + S3_DOCS |
+| **Envase retornable** | Canastillo/pallet, cliente, saldo, pérdida 14 % (decisión 16.1 #10) | `EnvaseEntregado` · `EnvaseDevuelto` · `MermaDeEnvaseRegistrada` | BD_INVENTARIO |
+| **Sensor / registro térmico** | Dispositivo, lote/posición, temperatura, excursión (RF-09.03/05/07) | `TemperaturaRegistrada` · `ExcursionTermicaDetectada` · `DespachoBloqueado` | BD_TRAZABILIDAD (series) |
+
+> **Dos niveles de eventos (mapeo al catálogo de integración):**
+> - **Nivel 1 — evento de dominio/entidad:** la tabla anterior (granularidad fina); alimenta la bitácora de reconciliación (§9.1) y los esquemas AsyncAPI por módulo (§9.6).
+> - **Nivel 2 — evento canónico de integración:** los **10 eventos que cruzan la frontera de módulos** según §9.4/§9.6 (catálogo del entregable §4.2.5.1), con su origen en el Nivel 1: `RecepcionConfirmada` ← `LoteRecibido` (M1, calidad según RF-09.07 / decisión 16.1 #4) · `StockReservado`/`ReservaLiberada` ← regla de reserva derivada de `PedidoConfirmado` (§9.1, decisión 16.1 #8) · `PedidoConfirmado` ← `PedidoConfirmado` · `MisionPreparada` ← `MisionAsignada` + `MisionEjecutada` (M5) · `EntregaRegistrada` ← `EntregaEvidenciada` (M6) · `DevolucionRegistrada` ← evento de devolución en ruta de M8 (RF-08) · `EnvaseMovido` ← `EnvaseEntregado`/`EnvaseDevuelto` (M8) · `ExcursionTermicaDetectada` ← `ExcursionTermicaDetectada` (M9) · `RendicionCerrada` ← `RendicionDeEntregaAprobada` (M7) · `DesviacionDeRutaDetectada` ← `DesviacionDeRutaDetectada` (M12).
 
 > Los eventos usan **verbos en pasado** y son la base de los esquemas AsyncAPI (§9.6); toda escritura offline es idempotente (UUID, RT-02.06). El detalle por entidad (atributos completos y cardinalidades) se cierra en la matriz de trazabilidad del Cap. 17.1 (S28).
 
@@ -557,22 +569,42 @@ RT-03.13 exige declarar **qué no está disponible offline** y el **procedimient
 > **Régimen de versionado:** semver estricto (`major.minor.patch`); `major` = breaking (requiere aviso 6 meses), `minor` = aditivo, `patch` = corrección. Toda integración entra por el **gobierno de la capa (§9.4)** con pruebas de contrato consumidor-proveedor.
 
 > **Decisión WMS 2013 (16.1 #14 / S29, v4):** el WMS 2013 **se absorbe en M2 (inventario/recepción) y M5 (preparación/picking)** mediante **estrangulamiento por capacidades** (recepción GS1, slotting, misiones de picking con HHT, conteo cíclico), retirándolo al cierre de la Etapa 1. Justificación fundada: sin documentación de interfaces (mismo déficit que el ERP), no soporta GS1/SSCC ni el **modo offline de la cámara −22 °C**, y su integración persistente encarece la operación sin aportar trazabilidad; los maestros de bodega (SKU, ubicaciones, saldos) se **migran a la BD on-prem del maestro de bodega (§10.1)** con carga verificada (§9.8). El Cap. 19 del caso **delega la decisión al PROPONENTE** — se declara **tomada y fundada** (no requiere consulta al mandante).
-> **Contratos de la API de negocio (S28, v4):** OpenAPI 3.1 (síncrona) y AsyncAPI 2.6 (eventos) por módulo con `x-owner`, semver y fecha de obsolescencia — esquema por módulo en §8.4; la **matriz formal de contratos** (consumidor, versión, SLA de integración, ventana de obsolescencia) se cierra con la trazabilidad del Cap. 17.1 a partir de este catálogo.
+> **Contratos de la API de negocio (S28, v4):** OpenAPI 3.1 (síncrona) y AsyncAPI 2.6 (eventos) por módulo con `x-owner`, semver y fecha de obsolescencia — límites de contexto por módulo en §8.4; los contratos formales y sus esquemas se definen en esta subsección (§9.6) y se cierran en la matriz del Cap. 17.1 a partir de este catálogo.
 
 ### 9.7 Matriz de integraciones — modo, volumen, ventana y comportamiento ante falla (RT-05.21 + RT-10.08 · v3)
 
 RT-05.21 exige la matriz de integraciones; RT-10.08, el comportamiento ante falla de cada una. Complementa §9.2 (protocolo) con **volumetría, ventana y comportamiento declarados**.
 
-| Integración | Modo | Volumen crítico | Ventana crítica | Comportamiento ante falla (RT-10.08) |
-|---|---|---|---|---|
-| ERP 2017 (catálogo, stock, cobranzas) | Asíncrona (colas) + síncrona solo lecturas | ~34.000 DTE/mes; cobranzas por turno | Cierre contable diario | **Cortacircuitos**: preventa/reparto no se degradan (§9.3); colas retienen; desajuste declarado en bitácora (Art. 16.4) |
-| WMS 2013 → **absorción en M2/M5** (decisión 16.1 #14 / S29, v4) | Asíncrona (colas) / API solo en coexistencia (Etapa 1) | Misiones de picking nocturno (~120 HHT) | 22:00–06:00 | Fallo del legado → **modo local de bodega** (autonomía 24 h) y absorción adelantada de capacidades; reconciliación auditada |
-| SII (DTE) | Síncrona (Gateway) | ~34.000 docs/mes; pico 05:30–07:00 | Emisión por turno | **No se detiene la entrega**: evidencia local + timbre diferido (§9.5); reintentos con backoff |
-| EDI cadenas (AS2/API) | Asíncrona (colas) | Canal moderno; pico 2029 | Ventana 30 min (RF-12.10) | DLQ + bandeja de excepciones (§8.7 #5); fallback manual declarado (RF-12) |
-| GIS / mapas / ETA | Síncrona (Gateway) | Rutas y geocercas | Planificación diaria | **Caché de mapas por zona** en dispositivos; degradación a ruta offline con secuencia cargada (M4); sin pérdida de la función de entrega |
-| Transbank (POS) | Síncrona (Gateway) | ~1.400 entregas/día | Ventana crítica 05:30–07:00 | **Doble captura offline**: cobro en el POS local, rendición al reconectar (RF-07.06/12); el cobro nunca se pierde |
-| Notificaciones | Asíncrona (colas) | Avisos por turno | Pre-entrega / alertas | Cola local + entrega diferida (§9.5) |
-| Keycloak (OIDC) | Síncrona | Todos los inicios de sesión | 24×7 | **Caché local TTL 8 h** (§8.7 #1, §11) — la operación no se detiene sin nube |
+| ID | Integración | Modo | Volumen crítico | Ventana crítica | Comportamiento ante falla (RT-10.08) |
+|---|---|---|---|---|---|
+| **INT-06** | ERP 2017 (catálogo, stock, cobranzas) | Asíncrona (colas) + síncrona solo lecturas | ~34.000 DTE/mes; cobranzas por turno | Cierre contable diario | **Cortacircuitos**: preventa/reparto no se degradan (§9.3); colas retienen; desajuste declarado en bitácora (Art. 16.4) |
+| **INT-03** | WMS 2013 → **absorción en M2/M5** (decisión 16.1 #14 / S29, v4) | Asíncrona (colas) / API solo en coexistencia (Etapa 1) | Misiones de picking nocturno (~120 HHT) | 22:00–06:00 | Fallo del legado → **modo local de bodega** (autonomía 24 h) y absorción adelantada de capacidades; reconciliación auditada |
+| **INT-07** | SII (DTE) | Síncrona (Gateway) | ~34.000 docs/mes; pico 05:30–07:00 | Emisión por turno | **No se detiene la entrega**: evidencia local + timbre diferido (§9.5); reintentos con backoff |
+| **INT-08** | EDI cadenas (AS2/API) | Asíncrona (colas) | Canal moderno; pico 2029 | Ventana 30 min (RF-12.10) | DLQ + bandeja de excepciones (§8.7 #5); fallback manual declarado (RF-12) |
+| **INT-10** | GIS / mapas / ETA | Síncrona (Gateway) | Rutas y geocercas | Planificación diaria | **Caché de mapas por zona** en dispositivos; degradación a ruta offline con secuencia cargada (M4); sin pérdida de la función de entrega |
+| **INT-09** | Transbank (POS) | Síncrona (Gateway) | ~1.400 entregas/día | Ventana crítica 05:30–07:00 | **Doble captura offline**: cobro en el POS local, rendición al reconectar (RF-07.06/12); el cobro nunca se pierde |
+| **INT-11** | Notificaciones | Asíncrona (colas) | Avisos por turno | Pre-entrega / alertas | Cola local + entrega diferida (§9.5) |
+| **INT-13** | Keycloak (OIDC) | Síncrona | Todos los inicios de sesión | 24×7 | **Caché local TTL 8 h** (§8.7 #1, §11) — la operación no se detiene sin nube |
+| **INT-15** | Telemetría de flota (solo lectura) | Asíncrona (solo lectura) | ~42 vehículos; ≈ 60.500 msg/día | Operación diurna | **Degradación a ruta planificada sin posición real** ante fallo (D1, no control de jornada) |
+
+> **Total: 15 integraciones (INT-01…INT-15)** conforme al catálogo §9.4 / entregable §4.5. La matriz lista las **externas de negocio**, la **identidad (INT-13)** y la **telemetría (INT-15)**; las integraciones **internas (INT-01…INT-05)** viven en el catálogo de §9.4/§9.6 y quedan fuera de esta matriz.
+
+**Volumetría de mensajería por integración (régimen nominal):** el total en régimen es **≈ 150.000 mensajes/día**, dominado por trazabilidad y telemetría (series de tiempo que **no atraviesan la base transaccional**: entran por el borde y consolidan en la capa analítica, ADR-04). Desglose conforme al entregable §4.5, Tabla 8:
+
+| Integración | Volumen régimen | Peak septiembre | Derivación |
+|---|---|---|---|
+| Capa anticorrupción ERP (asíncrona) | ≈ 4.700 msg/día | ≈ 9.400 | 1.240 pedidos + 46 recepciones + 1.400 preparaciones + 1.400 evidencias + ≈ 600 recaudaciones |
+| Documentos tributarios y acuse (SII, síncrona) | ≈ 2.700 msg/día | ≈ 5.400 | 34.000 docs/mes + acuse, sobre 25 días |
+| Eventos trazabilidad GS1 EPCIS | ≈ 52.000 eventos/día | ≈ 104.000 | 260.000 líneas/mes × 5 eventos ciclo, sobre 25 días |
+| Telemetría cadena frío (IoT Core) | ≈ 13.200 msg/día | sin variación | 46 fuentes (28 cámaras + 18 termógrafos) × 1 muestra/5 min |
+| Telemetría flota | ≈ 60.500 msg/día | ≈ 72.000 | 42 camiones × 1 posición/30 s durante 12 h ruta |
+| Sync terreno (colas dispositivo) | ≈ 13.000 escrituras/día | ≈ 26.000 | 1.240 pedidos + 1.400 evidencias + 10.400 confirmaciones prep. |
+| EDI canal moderno (Etapa 2) | ≈ 550 msg/día | ≈ 1.100 | 136 pedidos/día × 4 mensajes (pedido, confirmación, aviso, acuse) |
+| Notificaciones multicanal | ≈ 2.800 msg/día | ≈ 5.600 | hora estimada llegada y acuse por entrega |
+| Autorización pago (POS móvil) | ≈ 500 msg/día | ≈ 1.000 | fracción canal tradicional que migra efectivo a electrónico |
+| Servicio mapas y geocodificación | ≈ 200 llamadas/día | ≈ 400 | una corrida ruteo por zona + recálculos incidencia |
+
+> Esta subsección **cierra la dimensión de mensajería de integración del numeral 14.2 del caso** (cierre parcial del hallazgo D1); las demás dimensiones de volumetría siguen pendientes en §20.
 
 > **Regla única (RT-10.08):** toda integración declara su comportamiento ante falla (retry / degradar / diferir / manual) en el contrato; la matriz vive en el catálogo de §9.4 y se verifica con **pruebas de falla por integración** en las marchas blancas.
 
@@ -1010,7 +1042,7 @@ Estados: **Decisión confirmada** · **Supuesto declarado** · **Exclusión decl
 | S25 | **Volumetría operativa**: 14.200 clientes, 31.000 pedidos/mes → 260.000 líneas/mes, ~35 TPS base · ~105 TPS de diseño (35×3, ventana 05:30–07:00 y peak septiembre) · ≤130 TPS transitorio (sync offline/EDI), 62 preventistas, 42 propios + ~160 externos, ~120 preparadores | Supuesto de diseño |
 | S26 | **Maestro de datos por CD con reconciliación en nube**; venta con stock en tiempo real o foto local; idempotencia resuelve conflictos | Supuesto de diseño |
 | S27 | **RTO/RPO comprometidos: RPO ≤ 15 min · RTO ≤ 4 h** (Art. 20 / RT-07.04); ventana 05:30–07:00 en cero indisponibilidad (§8.7) | Decisión confirmada (v4) |
-| S28 | **Contratos de la API de negocio**: OpenAPI 3.1 / AsyncAPI 2.6 por módulo con dueño, semver y obsolescencia 6 meses (§9.6); esquema por módulo en §8.4 | Decisión confirmada (v4) |
+| S28 | **Contratos de la API de negocio**: OpenAPI 3.1 / AsyncAPI 2.6 por módulo con dueño, semver y obsolescencia 6 meses (§9.6); límites de contexto por módulo en §8.4; los contratos formales y sus esquemas se definen en §9.6 y se cierran en la matriz del Cap. 17.1 | Decisión confirmada (v4) |
 | S29 | **WMS 2013 se absorbe en M2/M5** (decisión 16.1 #14: el Cap. 19 delega al PROPONENTE — no requiere consulta al mandante; fundada en §9.6) | Decisión confirmada (v4) |
 | S30 | **Plan de gestión del cambio** para telemetría con el sindicato (aceptación del alcance operativo) | Pendiente / a validar |
 | **S31** | **Camión ≠ conductor — reconciliación de la dotación de reparto (2026-09-06).** El caso ofrece tres cifras que parecen contradictorias: **42 camiones propios** (§2.3), **84 «conductores propios y peonetas»** (§2.4) y **«Conductores (42 propios y ≈160 de terceros) ≈ 200»** (Tabla 14.1). Se declara la lectura que las reconcilia sin residuo: los 84 del §2.4 son **una tripulación por camión — 42 conductores más 42 peonetas** —, lo que coincide exactamente con los 42 camiones propios del §2.3 y con los 42 conductores propios de la Tabla 14.1. **Consecuencia de diseño:** el terminal de reparto se asigna **por tripulación (una por vehículo)**, no por persona; el peoneta no porta terminal propio porque manipula carga y opera a una mano junto al conductor (Cap. 3 y RT-13.08). El parque queda por tanto en **42 + reserva** para conductores propios y **≈160 + reserva** para externos, tal como está dimensionado | **Supuesto declarado** · se eleva como consulta al mandante (Art. 43.3) para confirmar la composición de los 84 y el criterio de asignación; si el CLIENTE exigiera un terminal por persona, el parque propio sube de 42 a 84 y el impacto se traslada a la oferta económica |
@@ -1264,12 +1296,17 @@ flowchart LR
 
 ### 18.4 Diagrama de integración (vista de integración — Capa 5 / externos)
 
+**ACL y eventos canónicos:** el ERP 2017 se integra **solo a través de la capa anticorrupción (ACL)** (RT-05.20, §9.6) antes de tocar Capa 3/5; los módulos se acoplan por los **10 eventos canónicos** del catálogo (§9.6, entregable §4.2.5.1) transportados por la Capa 5.
+
 ```mermaid
 flowchart LR
-    EXT["Externos:<br/>ERP · SII/DTE · EDI cadenas · GIS · POS/Transbank · Notificaciones · Telemetría<br/>(WMS 2013: absorción en M2/M5, v4)"]
+    EXT["Externos:<br/>SII/DTE · EDI cadenas · GIS · POS/Transbank · Notificaciones · Telemetría<br/>(WMS 2013: absorción en M2/M5, v4)"]
+    ERP["ERP 2017<br/>(sin interfaces documentadas)"]
+    ACL["Capa anticorrupción (ACL)<br/>frontera única del ERP · OpenAPI Puelche · estrangulamiento (RT-05.20)"]
     subgraph CAP5["Capa 5 · Asíncrono"]
         RQ[("RabbitMQ on-prem<br/>retry + DLQ")]
         SQ[("SQS FIFO + EventBridge nube")]
+        EV["Eventos canónicos<br/>RecepcionConfirmada · StockReservado · PedidoConfirmado · MisionPreparada<br/>EntregaRegistrada · DevolucionRegistrada · EnvaseMovido · ExcursionTermicaDetectada<br/>RendicionCerrada · DesviacionDeRutaDetectada"]
     end
     subgraph CAP3["Capa 3 · Síncrono (timeout explícito)"]
         G["AWS API Gateway<br/>OIDC · rate limit · versionado"]
@@ -1277,6 +1314,9 @@ flowchart LR
     M["M1–M12 (Capa 4)"]
     EXT --- CAP5
     EXT --- CAP3
+    ERP --> ACL
+    ACL --> CAP5
+    ACL --> CAP3
     RQ --> M
     SQ --> M
     G --> M
@@ -1605,7 +1645,7 @@ flowchart TB
 
 | Documento | Rol |
 |---|---|
-| **`Arquitectura_Logica_v6-2.md` (este)** | **Documento unificado de la capa lógica v6.2** — referencia de lectura única. Incorpora la **alineación íntegra lógica ↔ física del 2026-09-06** (D13, D14, D15, S31, N1 actualizada). Fuentes previas: 00→08 + auditoría T-7/T-21/T-22 + cierre de RT de las BTT + resolución de la auditoría v3 + resolución de la auditoría BA v4 (H1) + alineación con la física v5.1 (A1/A2) + auditoría BA lógica v5.5 (H1–H3) + **serie de tiempo a OLAP por diseño (D2)** + **unificación TPS con la física** (v5.5.1: ~35 base / ~105 ráfaga 35×3 / ≤130 transitorio)) |
+| **`Arquitectura_Logica_v6-2.md` (este)** | **Documento unificado de la capa lógica v6.3** — referencia de lectura única. Incorpora la **alineación íntegra lógica ↔ física del 2026-09-06** (D13, D14, D15, S31, N1 actualizada) y la **coherencia lógica interna resuelta el 2026-09-24** (eventos §8.6 en PascalCase con mapeo canónico · IDs INT-01…15 y telemetría en §9.7 · volumetría de mensajería §9.7 · diagrama §18.4 con ACL). Fuentes previas: 00→08 + auditoría T-7/T-21/T-22 + cierre de RT de las BTT + resolución de la auditoría v3 + resolución de la auditoría BA v4 (H1) + alineación con la física v5.1 (A1/A2) + auditoría BA lógica v5.5 (H1–H3) + **serie de tiempo a OLAP por diseño (D2)** + **unificación TPS con la física** (v5.5.1: ~35 base / ~105 ráfaga 35×3 / ≤130 transitorio)) |
 | `Arquitectura_Logica_v5.5.md` | Unificado v5.5 (00→08 + cierre de RT de las BTT + resolución de la auditoría v3 + auditoría BA v4 + alineación con la física v5.1 (A1/A2) + auditoría BA lógica H1–H3) — **superado por v6.1**, conservado para trazabilidad |
 | `Arquitectura_Logica_v5.md` | Unificado v5 (00→08 + cierre de RT de las BTT + resolución de la auditoría v3 + auditoría BA v4) — **superado por v5.5**, conservado para trazabilidad |
 | `Arquitectura_Logica_v4.md` | Unificado v4 (00→08 + cierre de RT de las BTT) — **superado por v5**, conservado para trazabilidad |
@@ -1628,6 +1668,7 @@ flowchart TB
 - [x] **Alinear la física consolidada con la decisión lógica de Keycloak** (IdP maestro en ECS/Fargate; VM-05 = caché offline 8 h) — **cerrado**: el documento de nube pasó a Modelo B en su v3.6 y quedó consolidado en D-AL-01/D-AL-02/D-AL-18.
 - [x] **Auditoría de coherencia del Subdocumento 4 (2026-09-06) resuelta en v6.2** → **cero divergencias lógica ↔ física**: SEC-01 resuelta con Secrets Manager/SSM (**D13**), observabilidad de plataforma única (**D14**, reemplaza a D9), MDM con emplazamiento propio N-13 (**D15**), `access_token` unificado en 30 min, borde on-premise declarado como firewall/UTM con IPS, eliminación de K3s, Jaeger y Redis local, pipeline unificado en GitLab CI + CodeBuild, retención respondida contra RT-16.10, lectura única de 6 instalaciones con 5 nodos de cómputo (N1) y supuesto **S31** (camión ≠ conductor). Detalle: `AUDITORIA_Coherencia_Subdoc4_v01.md`.
 - [x] **Vistas ISO/IEC/IEEE 42010 completas (RT-02.03)** — se incorporan como documentos propios la vista de **integración** (`Arquitectura_de_Integracion_v01.md`) y la de **seguridad** (`Arquitectura_de_Seguridad_v01.md`), que faltaban en el Subdocumento 4.
+- [x] **Coherencia lógica interna (2026-09-24) resuelta en v6.3** — eventos §8.6 renombrados a **PascalCase** con mapeo explícito a los **10 eventos canónicos de integración** (dos niveles, §8.6) · referencias S28 corregidas (§16.4/§9.6) · matriz §9.7 con **IDs INT-01…INT-15** y fila de **telemetría (INT-15)** · **volumetría de mensajería por integración (~150.000 msg/día régimen)** en §9.7 · diagrama §18.4 con **ACL y eventos canónicos**. El **numeral 14.2 queda parcialmente cerrado** (solo la dimensión de mensajería de integración del hallazgo D1; las demás dimensiones de volumetría siguen pendientes).
 - [ ] **Completar el numeral 14.2 del caso** (volumetría de sistema): 9 dimensiones sin estimar y 3 parciales. Es el pendiente de mayor impacto en la evaluación, porque el caso declara que las celdas vacías se evalúan como dimensionamiento no realizado.
 - [x] RTO/RPO (S27): **confirmado en v4 — RPO ≤ 15 min · RTO ≤ 4 h** (§8.7; Art. 20 / RT-07.04).
 - [x] Contratos de la API de negocio (S28): **cerrado en v4** — OpenAPI 3.1 / AsyncAPI 2.6 por módulo, dueño, semver y obsolescencia 6 meses (§9.6); matriz formal con la trazabilidad del Cap. 17.1.
@@ -1640,6 +1681,7 @@ flowchart TB
 
 *Documento unificado de la capa lógica **v6.1** — 2026-09-05 · Supera a `Arquitectura_Logica_v5.5.md`; incorpora la alineación con la arquitectura física (v5.1, A1/A2), la serie de tiempo a **OLAP por diseño** (D2) y la unificación TPS con la física (v5.5.1). Ver auditorías.*
 *Actualización 2026-09-05: set completo de 13 diagramas (§18) — fuente canónica Mermaid en este documento; exportados a `Diagramas/` para el informe (AGENTS). Promoción a **v6.1** (archivo `Arquitectura_Logica_v6-2.md`) sin cambios de contenido.*
+*Actualización 2026-09-24: **v6.3** — coherencia lógica interna (eventos PascalCase §8.6 · S28 §16.4/§9.6 · IDs INT §9.7 · volumetría §9.7 · ACL/eventos §18.4).*
 
 ---
 
@@ -1701,4 +1743,4 @@ flowchart TB
 
 ---
 
-*Documento unificado de la capa lógica **v6.2** — 2026-09-06. Cierra la auditoría de coherencia del Subdocumento 4: **no queda ninguna divergencia entre la arquitectura lógica y la arquitectura física**. Toda herramienta declarada en el stack (§13) tiene un componente con emplazamiento justificado en `Tabla_Emplazamiento_OnPremise_v06.md` §1.0, conforme al Art. 16.2 y al Art. 16.4 in fine.*
+*Documento unificado de la capa lógica **v6.3** — 2026-09-24. Cierra la coherencia lógica interna del 2026-09-24 (eventos §8.6 en PascalCase con mapeo a los eventos canónicos · IDs INT-01…15 y telemetría en §9.7 · volumetría de mensajería §9.7 · diagrama §18.4 con ACL) y mantiene la auditoría de coherencia del Subdocumento 4: **no queda ninguna divergencia entre la arquitectura lógica y la arquitectura física**. Toda herramienta declarada en el stack (§13) tiene un componente con emplazamiento justificado en `Tabla_Emplazamiento_OnPremise_v06.md` §1.0, conforme al Art. 16.2 y al Art. 16.4 in fine.*
