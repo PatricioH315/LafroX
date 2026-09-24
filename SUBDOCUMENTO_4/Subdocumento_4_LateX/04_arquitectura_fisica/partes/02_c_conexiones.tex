@@ -1,0 +1,132 @@
+% ------------------------------------------------------------------
+%  4.2.3 Conexiones, puntos de falla y contingencia
+%  Fragmento del Subdocumento 4.2, traido desde contenido.tex con
+%  \parte{partes/02_c_conexiones}. Las rutas son relativas a la carpeta del
+%  subdocumento, nunca a la de main.tex.
+%
+%  Coherente con la arquitectura de despliegue (puntos únicos de falla,
+%  RT-02.11) y con la autonomía declarada en 4.2.1 (Tabla t29).
+% ------------------------------------------------------------------
+
+\section{Conexiones, puntos de falla y contingencia}
+\label{sec:4-2-3-conexiones}
+
+Esta sección describe cómo se conectan los sitios, el terreno y la nube, identifica cada punto donde esa conexión o su infraestructura puede fallar, y declara cómo se resuelve cada falla o, cuando no se resuelve de forma automática, cuál es la contingencia. Su punto de partida es el caso: la conectividad actual de Puelche se corta con frecuencia y en algunos lugares no existe (Caso, Cap. 6), por lo que la solución no puede suponer un enlace disponible y debe decir, para cada conexión, qué pasa cuando no lo está.
+
+\subsection{Conexiones entre sitios, terreno y nube}
+
+Los dos dominios fijos, la nube y el on-premise, se conectan por túneles VPN IPsec que terminan en el firewall de cada centro de distribución (D-01) y en el VPN Gateway de AWS, con enrutamiento dinámico BGP. Cada sitio tiene dos caminos físicamente independientes: fibra y LTE en los centros de distribución, y Starlink y LTE de dos proveedores en los cross-docking, que no tienen fibra (ADR-02). El terreno no pasa por los sitios: los terminales de preventa y de reparto hablan directamente con API Gateway por la red celular del operador. La Figura~\ref{fig:conexiones} muestra esas conexiones.
+
+\begin{figure}[htbp]
+  \centering
+  \LFXcuerpofigura
+  \begin{tikzpicture}[
+      nodo/.style={draw=lafroxGris, line width=0.5pt, rounded corners=1.5pt,
+                   inner sep=4pt, align=center},
+      sitio/.style={nodo, text width=2.55cm, minimum height=1.25cm},
+      flecha/.style={-{latex}, line width=0.6pt, color=lafroxTinta},
+      interna/.style={-{latex}, line width=0.6pt, color=lafroxGris, dashed},
+      rotulo/.style={fill=white, inner sep=1.5pt, align=center}]
+    % Usuarios externos
+    \node[nodo, text width=3.9cm] (usr) at (10.7,0.45)
+      {Usuarios externos: clientes, transportistas y proveedores};
+    % Región primaria
+    \draw[lafroxTinta, line width=0.6pt, rounded corners=2pt] (0,-1.3) rectangle (12.2,-3.4);
+    \node[anchor=north west, font=\intersemibold, inner sep=0pt] at (0.15,-1.45) {AWS sa-east-1};
+    \node[nodo, text width=2.2cm] (vgw)  at (1.75,-2.6) {VPN Gateway};
+    \node[nodo, text width=2.6cm] (vpce) at (4.95,-2.6) {VPC Endpoints de SQS, IoT Core y SSM};
+    \node[nodo, text width=2.0cm] (apig) at (8.0,-2.6) {API Gateway};
+    \node[nodo, text width=2.0cm] (cf)   at (10.7,-2.6) {CloudFront y WAF};
+    % Región secundaria
+    \draw[lafroxTinta, line width=0.6pt, rounded corners=2pt] (12.75,-1.3) rectangle (15.7,-3.4);
+    \node[align=center] (us) at (14.22,-2.35) {\intersemibold AWS us-east-1\\recuperación\\y réplica};
+    \draw[flecha] (12.2,-2.35) -- (12.75,-2.35);
+    % Sitios y terreno
+    \node[sitio] (tal) at (1.45,-6.4)  {\intersemibold CD Talca\\\normalfont D-01 en par};
+    \node[sitio] (con) at (4.55,-6.4)  {\intersemibold CD Concepción\\\normalfont D-01 de borde};
+    \node[sitio] (cdk) at (7.65,-6.4)  {\intersemibold Cross-docking\\\normalfont E-01, tres sitios};
+    \node[sitio] (ter) at (10.75,-6.4) {\intersemibold Terreno\\\normalfont C-01 y C-02};
+    \node[sitio] (cam) at (13.85,-6.4) {\intersemibold Camiones\\\normalfont B-03};
+    % Enlaces hacia la nube
+    \draw[flecha] (usr) -- node[rotulo, left=3pt, pos=0.3] {HTTPS} (cf);
+    \draw[flecha] (tal.north) -- node[rotulo, pos=0.5] {fibra D-03\\LTE D-04\\IPsec} (vgw.south);
+    \draw[flecha] (con.north) -- node[rotulo, pos=0.5] {fibra D-03\\LTE D-04\\IPsec} (vgw.south east);
+    \draw[flecha] (cdk.north) -- node[rotulo, pos=0.5] {Starlink D-06\\LTE D-04\\HTTPS, MQTTS} (vpce.south);
+    \draw[flecha] (ter.north) -- node[rotulo, pos=0.5] {red celular\\HTTPS} (apig.south);
+    % Sincronizaciones y descargas locales
+    \draw[interna] (con.south) -- ++(0,-0.4) -| node[rotulo, below=1pt, pos=0.25] {TCP 8080 y 5432} (tal.south);
+    \draw[interna] (cdk.south) -- ++(0,-0.95) -| node[rotulo, below=1pt, pos=0.25] {AMQPS 5671 entre brokers} ([xshift=0.45cm]tal.south west);
+    \draw[interna] (cam.south) -- ++(0,-0.4) -| node[rotulo, below=1pt, pos=0.25] {Bluetooth al regresar} ([xshift=-0.45cm]con.south east);
+  \end{tikzpicture}
+  \caption{Conexiones entre los sitios, el terreno y la nube}
+  \label{fig:conexiones}
+  \fuentefigura{elaboración propia.}
+\end{figure}
+
+La figura distingue dos tipos de conexión. Las líneas continuas son conexiones hacia la nube, y todas se inician desde el sitio o desde el dispositivo, sin puertos abiertos hacia el on-premise. Las únicas excepciones son la réplica de AWS DMS, que lee el registro de escritura de PostgreSQL en VM-02, y el worker celery-erp-sync, que consulta la capa anticorrupción en VM-04; ambas entran por el túnel IPsec autenticado y quedan auditadas. Las líneas discontinuas son sincronizaciones entre sitios o descargas locales, que no dependen de la nube: Concepción sincroniza con Talca por la VPN, los cross-docking envían a Talca el detalle de su WMS entre brokers, y los termógrafos descargan su registro por Bluetooth al gateway del centro de distribución cuando el camión vuelve. Los eventos críticos de los cross-docking van directo a SQS FIFO, de modo que la operación de esas plataformas no depende de Talca.
+
+La Tabla~\ref{tab:conexiones} resume cada conexión con su medio, su camino alternativo y el tiempo de conmutación entre ambos.
+
+\begin{tablalafrox}{Conexiones de la solución y su camino alternativo}{tab:conexiones}%
+  {F{0.24} Y F{0.24} F{0.16}}%
+  {\cab{Conexión} & \cab{Medio y protocolo} & \cab{Camino alternativo} & \cab{Conmutación}}
+  CD Talca con la nube & Fibra D-03, túneles IPsec con BGP & LTE D-04 & Menos de 30 s \\
+  CD Concepción con la nube & Fibra D-03, túneles IPsec con BGP & LTE D-04 & Menos de 30 s \\
+  Cross-docking con la nube & Starlink D-06, HTTPS y MQTTS salientes & LTE D-04 de dos proveedores & Menos de 30 s \\
+  Concepción con Talca & TCP 8080 y 5432 con TLS sobre la VPN & Operación autónoma & No aplica \\
+  Cross-docking con Talca & AMQPS 5671 entre brokers & Envío diferido & No aplica \\
+  Terreno con la nube & Red celular del operador, HTTPS & Almacén local del dispositivo & No aplica \\
+  Termógrafos con el sitio & Bluetooth al regresar al centro de distribución & Registro interno del termógrafo & No aplica \\
+  Usuarios externos con los portales & Internet, HTTPS por CloudFront & Ninguno: el autoservicio requiere conexión & No aplica \\
+  Región primaria con la secundaria & Replicación nativa de Aurora, DynamoDB y S3 & Respaldo inmutable & Promoción autorizada \\
+\end{tablalafrox}
+\fuente{elaboración propia; conectividad actual según el caso (Caso, Cap. 6) y decisión ADR-02.}
+
+Solo tres conexiones tienen un segundo camino de red, y son las que unen un sitio con la nube. Las demás no lo necesitan porque su alternativa no es otro enlace sino la operación sin conexión: Concepción opera sin Talca, el terreno opera sin señal y el termógrafo guarda su propio registro. Por eso la redundancia de enlaces reduce la frecuencia de las desconexiones, pero no es condición para operar. El portal de clientes es la única conexión sin alternativa, y eso es deliberado: el autoservicio no se ofrece sin conexión (RT-03.13).
+
+\subsection{Puntos de falla en los sitios y en los enlaces}
+
+Cada conexión se apoya en equipos del sitio que también pueden fallar. La Tabla~\ref{tab:fallas-sitios} recorre esos puntos de falla, desde el enlace hasta la energía del recinto, e indica para cada uno el mecanismo que la resuelve y la contingencia si ese mecanismo no basta.
+
+\begin{tablalafrox}{Puntos de falla en los sitios y en los enlaces}{tab:fallas-sitios}%
+  {F{0.24} Y Y}%
+  {\cab{Punto de falla} & \cab{Resolución} & \cab{Contingencia}}
+  Fibra de un centro de distribución & BGP conmuta los túneles al LTE en menos de 30 s. & Si cae también el LTE, el sitio opera 24 h con su base, su broker y su caché de identidad. \\
+  Starlink de un cross-docking & El LTE de dos proveedores toma el tráfico en menos de 30 s. & La ventana de 3 h opera 100\,\% en local y sincroniza al reconectar. \\
+  Enlace de Los Ángeles en la madrugada & Starlink queda como camino único, porque la red móvil es intermitente a esa hora. & La ventana de operación es íntegramente local, por lo que el corte no la detiene. \\
+  Firewall de Talca & La unidad pasiva del par asume las direcciones y los túneles en menos de 30 s. & El sitio opera 24 h sin enlace. \\
+  Firewall de Concepción & Es un equipo único y se repone. & Concepción opera 24 h sin enlace mientras se reemplaza. \\
+  Nodo del clúster de Talca & Las VM se reinician en los dos nodos restantes, con sus datos replicados por Ceph. & Si fallan dos nodos, el DRP local promueve el WMS de Concepción en 1 a 2 h. \\
+  Instancia de escritura VM-02 & Se reinicia en otro nodo del clúster. & D-05 restaura la base en hasta 4 h sin depender del enlace. \\
+  Disco de un servidor & El RAID 10 reconstruye sobre el disco de repuesto en caliente. & Ceph conserva una segunda copia en otro nodo. \\
+  Miembro del stack de switches de Talca & El otro miembro mantiene el tráfico. & Se repone sin corte. \\
+  Servidor de borde de Concepción & RAID 10 con repuesto en caliente y doble fuente cubren las fallas más probables. & La pila se restaura en un equipo de reemplazo desde la réplica en Aurora. \\
+  Mini-PC de un cross-docking & Es un equipo único y se repone. & Los eventos críticos ya están en SQS FIFO y el detalle en Talca, desde donde se resincroniza el equipo nuevo. \\
+  Periféricos de andén & No tienen redundancia. & Respaldo manual de la operación del andén. \\
+  Energía de la sala de Talca & El UPS N+1 cubre 30 min y el generador toma la carga en 8 a 15 s. & El estanque cubre 24 h y hay contrato de reabastecimiento. \\
+  Climatización de la sala de Talca & La segunda unidad de precisión, en N+1, sostiene la temperatura. & Alerta de los sensores ambientales al monitoreo. \\
+\end{tablalafrox}
+\fuente{elaboración propia; puntos únicos de falla declarados conforme a RT-02.11.}
+
+La tabla muestra que los puntos únicos de falla que quedan están donde la redundancia no compensa su costo: el firewall y el servidor de Concepción, el mini-PC de cada cross-docking y los periféricos de andén. En los tres primeros casos la contingencia es la misma autonomía que ya existe para los cortes de enlace, y ningún punto único de falla está en la ruta de la ventana de despacho de Talca, que tiene redundancia en cada capa. Los mecanismos de alta disponibilidad que sostienen estas resoluciones se desarrollan en el capítulo de arquitectura de despliegue.
+
+\subsection{Puntos de falla en la nube, el terreno y las integraciones}
+
+La Tabla~\ref{tab:fallas-nube} completa el recorrido con los puntos de falla que están fuera de los sitios: la nube, el terreno y los sistemas de terceros.
+
+\begin{tablalafrox}{Puntos de falla en la nube, el terreno y las integraciones}{tab:fallas-nube}%
+  {F{0.24} Y Y}%
+  {\cab{Punto de falla} & \cab{Resolución} & \cab{Contingencia}}
+  Zona de disponibilidad de sa-east-1 & Aurora conmuta en menos de 30 s, ElastiCache en menos de 60 s y Fargate reprograma las tareas. & La operación continúa en las zonas restantes. \\
+  Región sa-east-1 completa & Route 53 redirige el tráfico y, con autorización del CLIENTE, se promueve la réplica en us-east-1. & RTO de 4 h y RPO de 15 min; la bodega y el terreno siguen operando en local. \\
+  Túnel VPN durante la replicación & DMS encola los cambios en el origen. & Reanuda sin pérdida al reconectar; la réplica queda desactualizada mientras dure el corte. \\
+  IdP maestro o enlace de identidad & Las cachés de solo lectura validan las sesiones localmente. & Token de turno de 8 h en bodega y 14 h en terreno, y cuenta de emergencia en sobre sellado (ADR-15). \\
+  Señal móvil en ruta & La aplicación opera contra el almacén local del dispositivo. & Sincroniza al reconectar dentro de los 10 min de la Tabla~\ref{tab:t29}. \\
+  ERP legado & La capa anticorrupción retiene las transacciones en cola hasta 24 h. & El ERP no se modifica; las transacciones se entregan al recuperarse. \\
+  Excursión térmica sin enlace & El gateway bloquea el despacho en menos de 5 s en el borde. & Buffer de 14 h y alerta al reconectar. \\
+  SII, cadenas o notificaciones & Reintento con espera creciente y cola de mensajes fallidos. & Reproceso desde la cola al recuperarse el tercero. \\
+  Carga del peak de septiembre & Escalado automático de Fargate, Celery y Aurora (ADR-12). & Limitación de tasa en API Gateway. \\
+\end{tablalafrox}
+\fuente{elaboración propia a partir de los registros de decisión ADR-02, ADR-06, ADR-09, ADR-12 y ADR-15.}
+
+Ninguna de estas fallas detiene la bodega ni el terreno. La peor de ellas, la pérdida de toda la región primaria, deja sin servicio a los portales y a la analítica hasta la promoción de la réplica, pero la preparación, el despacho y la entrega siguen operando contra sus bases locales y sus dispositivos, porque ninguna de esas transacciones depende de la nube para confirmarse.

@@ -1,135 +1,185 @@
 % ------------------------------------------------------------------
-%  Modelo de emplazamiento híbrido
+%  4.2.1 Emplazamiento de cada componente
 %  Fragmento del Subdocumento 4.2, traido desde contenido.tex con
 %  \parte{partes/02_a_emplazamiento}. Las rutas son relativas a la carpeta del
 %  subdocumento, nunca a la de main.tex.
+%
+%  El catálogo de componentes es el mismo de la arquitectura lógica v6.2 y de
+%  la tabla maestra de emplazamiento v06 (36 componentes: 13 en nube, 11
+%  on-premise y 12 híbridos, conforme al ADR-03).
 % ------------------------------------------------------------------
 
-\chapter{Modelo de emplazamiento híbrido}
-\label{sec:a-modelo-de-emplazamiento-hibrido}
+\section{Emplazamiento de cada componente}
+\label{sec:4-2-1-emplazamiento}
 
-La solución se despliega en dos dominios, la nube pública y el on-premise, conectados por túneles VPN cifrados. Cada dominio puede operar de forma independiente cuando el enlace no está disponible.
+El emplazamiento de cada componente se decide con los seis criterios del Artículo 16.2 de las Bases Administrativas: latencia tolerada, criticidad operacional, volumen de datos, restricciones regulatorias, disponibilidad de conectividad y costo total de propiedad. En este caso la conectividad y la latencia pesan más que en una operación de oficina, porque el caso describe una red que se corta: la fibra de Talca tiene en promedio cuatro cortes al año de hasta seis horas, Concepción no tiene respaldo, los cross-docking solo tienen red móvil y en Los Ángeles la señal es intermitente justo en su ventana de madrugada, las cámaras no tienen cobertura en su interior y hay rutas sin señal durante dos horas o durante el turno completo (Caso, Cap. 6).
 
-\section{Dominio nube (AWS sa-east-1)}
-\label{sub:dominio-nube}
+De esos hechos se desprende la regla que ordena todo el emplazamiento: lo que debe funcionar sin enlace vive en el sitio, y lo que escala, se comparte o está expuesto a Internet vive en la nube. Los 36 componentes del catálogo se reparten en 13 de nube pura, 11 on-premise y 12 híbridos, que tienen una parte en cada dominio (ADR-03). Los identificadores son los mismos de la arquitectura lógica.
 
-La nube concentra la carga principal de la solución. Todos los servicios se despliegan en al menos dos zonas de disponibilidad dentro de la región sa-east-1, de modo que la caída de un centro de datos de AWS no interrumpe la operación. La aplicación Django corre en contenedores ECS Fargate y atiende los procesos de preventa, reparto, canal moderno y el portal de clientes. Aurora PostgreSQL almacena la base de datos transaccional maestra y recibe en tiempo real las transacciones que se originan en las bodegas a través del servicio de replicación DMS CDC.
+\subsection{Instalaciones y dominios}
 
-Todo el tráfico externo ingresa por API Gateway, donde WAF v2 valida las solicitudes y Shield protege contra ataques de denegación de servicio, antes de que el tráfico alcance la aplicación. Cuando las bodegas reconectan tras un corte de enlace, las transacciones pendientes llegan a la cola SQS FIFO, que las procesa en el orden exacto en que ocurrieron y sin duplicados. Cuando la aplicación registra un hecho relevante una entrega confirmada, una excursión térmica o un pedido del canal moderno, Celery despacha las tareas derivadas: enviar la notificación al cliente, actualizar los tableros analíticos, emitir el documento tributario al SII y, en la etapa de cadenas de supermercados, transmitir el acuse por EDI.
+La solución cubre las seis instalaciones que declara la volumetría del caso (Caso, Tabla 14.1), más la calle y los 14.200 puntos de entrega. Cinco de ellas alojan cómputo. El CD Talca es la sala técnica principal: un clúster de tres nodos con Proxmox VE y almacenamiento Ceph aloja las máquinas virtuales VM-01 a VM-06. El CD Concepción opera con un servidor de borde que replica la misma pila en formato reducido, en las máquinas VM-C01 a VM-C04. Las plataformas de cross-docking de Curicó, Chillán y Los Ángeles operan cada una con un mini-PC industrial que ejecuta el WMS en contenedores. La sexta instalación, la casa matriz de Talca, no aloja cómputo y usa la nube a través de los portales y del back-office. La séptima instalación que proyecta el caso a tres años se incorpora parametrizando la infraestructura como código y ocupando el gabinete de crecimiento R04 de la sala principal, sin obras adicionales (RT-02.12).
 
-La telemetría de cadena de frío llega desde los gateways Greengrass en las bodegas hasta IoT Core en la nube. La capa analítica se apoya en Redshift Serverless para consultas históricas de hasta 5 años, y QuickSight publica los tableros de gestión del CLIENTE. La observabilidad se consolida en CloudWatch, que recibe logs, métricas y trazas tanto de los servicios en nube como de los colectores on-premise cuando estos disponen de enlace, y expone los tableros de operación sin infraestructura adicional que mantener. La identidad la gobierna Keycloak, que corre como servicio maestro en Fargate y distribuye las credenciales hacia las cachés locales de cada sitio. Una réplica pasiva de la infraestructura crítica en us-east-1 sostiene la recuperación ante desastres.
+En la nube, la región primaria es sa-east-1 y cada servicio se despliega en al menos dos zonas de disponibilidad. La región us-east-1 solo aloja la recuperación ante desastres. La Figura~\ref{fig:emplazamiento-dominios} ubica cada componente en su sitio.
 
-\section{Dominio on-premise (5 sitios con cómputo)}
-\label{sub:dominio-onpremise}
+\begin{figure}[htbp]
+  \centering
+  \LFXcuerpofigura
+  \begin{tikzpicture}[
+      caja/.style={draw=lafroxGris, line width=0.5pt, rounded corners=1.5pt,
+                   inner sep=4pt, align=left, anchor=north west},
+      titulo/.style={font=\intersemibold, anchor=north west, inner sep=0pt}]
+    % Columna nube
+    \node[titulo] at (0,0) {Nube AWS};
+    \node[caja, text width=4.75cm] (sa) at (0,-0.5) {%
+      \textbf{sa-east-1}, dos zonas o más\\[2pt]
+      N-01 a N-03 Portales\\
+      N-04 Plataforma de aplicación\\
+      N-05 Base de datos en nube\\
+      N-06 Telemetría cruda\\
+      N-07 Caché\\
+      N-08 Ingesta de IoT\\
+      N-09 Mensajería\\
+      N-10 Plataforma analítica\\
+      N-12 Seguridad y gobierno\\
+      N-13 Gestión de dispositivos\\[3pt]
+      Parte en nube de los híbridos};
+    \node[caja, text width=4.75cm, below=5pt of sa.south west, anchor=north west] (us) {%
+      \textbf{us-east-1}, recuperación\\[2pt]
+      N-11 Respaldo inmutable y réplica};
+    % Columna on-premise
+    \node[titulo] at (5.25,0) {On-premise};
+    \node[caja, text width=5.3cm] (tal) at (5.25,-0.5) {%
+      \textbf{CD Talca}, sala técnica principal\\[2pt]
+      Máquinas VM-01 a VM-06\\
+      con A-01 a A-05 y F-01\\
+      Red: D-01 en par, D-02 a D-05\\
+      Frío: B-01 y B-02\\
+      Bodega: C-03 a C-05\\
+      Gestión: F-02 y F-03};
+    \node[caja, text width=5.3cm, below=5pt of tal.south west, anchor=north west] (con) {%
+      \textbf{CD Concepción}, gabinete de borde\\[2pt]
+      Máquinas VM-C01 a VM-C04\\
+      con A-01 a A-03, A-05 y F-01\\
+      Red: D-01 a D-04\\
+      Frío: B-01 y B-02\\
+      Bodega: C-03 a C-05\\
+      Gestión: F-03};
+    \node[caja, text width=5.3cm, below=5pt of con.south west, anchor=north west] (cdk) {%
+      \textbf{Cross-docking}, tres sitios\\[2pt]
+      Mini-PC E-01\\
+      con A-01, A-02 y A-03\\
+      Red: D-02, D-04 y D-06\\
+      Gestión: F-01 y F-03};
+    \node[caja, text width=5.3cm, below=5pt of cdk.south west, anchor=north west] (cm) {%
+      \textbf{Casa matriz}, Talca\\[2pt]
+      Sin cómputo; usa la nube};
+    % Columna terreno
+    \node[titulo] at (11.05,0) {Terreno};
+    \node[caja, text width=4.4cm] (calle) at (11.05,-0.5) {%
+      \textbf{Calle}\\[2pt]
+      C-01 App de preventa\\
+      \quad 62 terminales EC55\\
+      C-02 App de reparto\\
+      \quad 200 terminales TC58e};
+    \node[caja, text width=4.4cm, below=5pt of calle.south west, anchor=north west] (cam) {%
+      \textbf{Camiones de frío}\\[2pt]
+      B-03 Termógrafos, 18};
+    \node[caja, text width=4.4cm, below=5pt of cam.south west, anchor=north west] (pts) {%
+      \textbf{Locales de clientes}\\[2pt]
+      14.200 puntos de entrega};
+  \end{tikzpicture}
+  \caption{Ubicación de los componentes por dominio y por sitio}
+  \label{fig:emplazamiento-dominios}
+  \fuentefigura{elaboración propia a partir del catálogo de componentes de la arquitectura lógica y de la volumetría del caso (Caso, Tabla 14.1).}
+\end{figure}
 
-Cada centro de distribución mantiene su propia pila local: la misma aplicación Django corre en modo WMS contra una base PostgreSQL 16 local, un broker RabbitMQ que encola las transacciones y una caché de Keycloak que sostiene la sesión de los operarios. En CD~Talca, un clúster Proxmox VE de 3 nodos con almacenamiento Ceph aloja las VMs (VM-01 a VM-06); en CD~Concepción, un servidor de borde replica la misma pila en formato reducido (VM-C01 a VM-C04). Los tres cross-docking (Curicó, Chillán y Los Ángeles) operan con un mini-PC industrial que corre el WMS en Docker. La capa anticorrupción del ERP (VM-04, Talca) es la única puerta hacia el sistema legado. Los gateways IoT Greengrass procesan la cadena de frío en el borde, con detección de excursión térmica y bloqueo de despacho 100\,\% local. Un NAS cifrado (D-05) guarda la pierna local de respaldo 3-2-1-1-0.
+La figura muestra que ninguna instalación depende de otra para operar. Talca y Concepción tienen cada uno su WMS, su base, su broker y su caché de identidad; los cross-docking reúnen esas mismas funciones en un solo equipo; y el terreno lleva su propio almacén local en el dispositivo. La nube concentra lo que es común a todos los sitios: los portales, el transaccional compartido, la analítica y los servicios de seguridad. Los doce componentes híbridos aparecen en los dos dominios porque cada uno tiene una parte que debe seguir operando en el sitio y otra que consolida en la nube.
 
-\section{Conexión entre dominios}
-\label{sub:conexion-entre-dominios}
+\subsection{Componentes de nube pura}
 
-Los dos dominios se conectan mediante túneles VPN IPsec Site-to-Site cifrados, terminados en firewalls de borde en el lado on-premise y en AWS VPN Gateway en el lado nube, con enrutamiento dinámico BGP que conmuta automáticamente entre enlaces en menos de 30 segundos. Los centros de distribución disponen de fibra óptica como enlace principal y LTE empresarial como respaldo; los cross-docking, que operan en naves industriales sin cobertura de fibra, usan Starlink como enlace principal y LTE como respaldo.
+La Tabla~\ref{tab:t21a} justifica los trece componentes que viven solo en la nube. La columna Criterio indica cuál de los seis criterios del Artículo 16.2 determina el emplazamiento, y la justificación explica qué hace el componente y por qué vive donde vive.
 
-\subsection{Flujos entre nube y on-premise}
-
-Por diseño Zero Trust, las conexiones entre los dos dominios fijos, la nube y el on-premise, se inician siempre desde el on-premise hacia la nube. Existen dos excepciones declaradas a esta regla. La primera es DMS, que lee el registro de escritura anticipada de PostgreSQL para replicar los cambios hacia Aurora. La segunda es celery-erp-sync, que consulta la capa anticorrupción del ERP. Ambas conexiones viajan por el mismo túnel IPsec autenticado y quedan auditadas. Los datos, en cambio, fluyen en ambos sentidos según lo requiere cada flujo:
-
-\begin{itemize}
-  \item \textbf{Datos transaccionales:} la base PostgreSQL local replica continuamente sus cambios hacia Aurora en la nube a través de DMS CDC, con un objetivo de pérdida de datos de 15 minutos o menos.
-  \item \textbf{Eventos de bodega:} las transacciones del WMS se encolan en RabbitMQ local y, al disponer de enlace, se vuelcan en orden cronológico a SQS FIFO en la nube para su reconciliación.
-  \item \textbf{Telemetría de cadena de frío en bodega:} los sensores Ebyte ME31 instalados en las cámaras de frío del CD alimentan al gateway Greengrass en el borde, que procesa las alertas localmente y reenvía los registros a IoT Core en la nube por MQTTS.
-  \item \textbf{Observabilidad:} los colectores ADOT locales almacenan métricas y trazas en disco durante un máximo de 24 horas y las envían a CloudWatch en la nube cuando el enlace está disponible.
-  \item \textbf{Identidad:} Keycloak maestro en la nube exporta las credenciales de forma cifrada a través de S3, y las cachés locales de cada sitio las importan para sostener las sesiones de los operarios sin depender del enlace.
-\end{itemize}
-
-\subsection{Flujos desde el terreno}
-
-El terreno agrupa los flujos que se originan físicamente fuera del centro de distribución y fuera de la nube. Son tres:
-
-\begin{itemize}
-  \item \textbf{Preventa en calle:} los preventistas usan terminales Zebra EC55, equipos industriales con SIM 4G/LTE empresarial y lector GS1 integrado. Se comunican directamente con API Gateway en la nube a través de la red celular del operador, sin atravesar la red del centro de distribución. Cuando no hay señal, operan contra su almacén local de turno y sincronizan al reconectar de forma idempotente.
-  \item \textbf{Reparto en calle:} los conductores usan terminales Zebra TC58e, también con SIM 4G/LTE empresarial. Se comunican directamente con API Gateway por la red celular durante los turnos de reparto y, cuando pierden señal en zonas rurales, operan contra su almacén local y sincronizan al reconectar.
-  \item \textbf{Termógrafos de camión:} los termógrafos Onset InTemp CX450, calibrados contra patrón NIST, registran la temperatura del compartimento refrigerado de forma independiente y sin conexión a red durante toda la ruta. Al regresar el camión al centro de distribución, los datos se descargan por Bluetooth al gateway local del sitio y desde ahí se envían a IoT Core en la nube.
-\end{itemize}
-
-Cuando el enlace WAN cae, cada dominio sigue operando con su pila local: la bodega contra PostgreSQL y RabbitMQ locales, el terreno de calle contra su almacén local, y el cross-docking contra su WMS local. Al reconectar, la sincronización es determinista y no genera duplicados. El detalle de la autonomía por ámbito se desarrolla en la sección de operación desconectada de este mismo capítulo.
-
-\section{Emplazamiento componente por componente}
-\label{sub:emplazamiento-componente-por-componente}
-
-Las tablas~\ref{tab:t21a},~\ref{tab:t21b} y~\ref{tab:t21c} justifican la decisión de emplazamiento de cada componente conforme a los seis criterios del Art. 16.2: latencia tolerada, criticidad operacional, volumen de datos, restricciones regulatorias, disponibilidad de conectividad y costo total de propiedad. El criterio dominante se indica al inicio de cada justificación. Estas tablas responden a la pregunta \emph{dónde} vive cada componente y \emph{por qué}; el equipamiento físico ofertado (marca, modelo y cantidad) se detalla en el capítulo de implementos, y la infraestructura de sala del CD Talca (energía, clima, seguridad física y cableado) en el capítulo del sitio principal.
-
-\begin{tablalafrox}{Emplazamiento: componentes de nube pura (servicios administrados AWS sa-east-1)}{tab:t21a}%
-  {G{0.06} F{0.22} Y}%
-  {\cab{ID} & \cab{Componente} & \cab{Justificación}}
-  N-01 & ECS Fargate (cómputo de contenedores) & Costo: escala de 2 a 6 tareas en el peak de septiembre sin aprovisionar servidores permanentes; sin equipamiento propio que mantener. \\
-  N-02 & Aurora PostgreSQL (BD maestra transaccional) & Criticidad: Multi-AZ automático con réplica DR en us-east-1 (RTO $\leq$ 4 h, RPO $\leq$ 15 min); escalado de almacenamiento sin intervención. \\
-  N-03 & S3 (almacenamiento de objetos) & Volumen y regulatorio: POD, DTE, trazabilidad y pierna inmutable 3-2-1-1-0 crecen sin límite; Object Lock para retención legal. \\
-  N-04 & SQS FIFO (cola de reconciliación) & Costo: orden garantizado por partición y deduplicación nativa sin broker propio que operar. \\
-  N-05 & DMS CDC (replicación continua) & Volumen: replicación del WAL lógico on-premise $\rightarrow$ Aurora sin desarrollo propio; RPO $\leq$ 15 min sostenido. \\
-  N-06 & API Gateway (punto de entrada REST) & Regulatorio: cumple Art. 21.2 (validación de esquema, autenticación, cuotas y throttling en el borde) sin desarrollo propio. \\
-  N-07 & WAF v2 + Shield (seguridad perimetral) & Regulatorio y costo: reglas gestionadas anti-DDoS y OWASP requeridas por Art. 21.2, sin equipo dedicado ni appliance. \\
-  N-08 & IoT Core (ingesta de telemetría) & Volumen: 13.200 mensajes/día de cadena de frío con MQTTS nativo y escalado automático. \\
-  N-09 & Secrets Manager + SSM (secretos y configuración) & Regulatorio: cumple RT-04.09 (gestor de secretos con rotación automática, sin credenciales embebidas); consumo saliente por VPC Endpoint. \\
-  N-10 & CloudWatch (observabilidad nube) & Costo: recepción de logs, métricas y trazas on-premise vía ADOT y correlación nativa con servicios AWS, sin operar clúster de monitoreo. \\
-  N-11 & Security Lake + Macie (SIEM y clasificación) & Regulatorio: correlación centralizada de eventos de seguridad y detección automática de PII/PCI para auditoría. \\
-  N-12 & Redshift Serverless + QuickSight (analítica y BI) & Volumen y costo: 5 años de datos OLAP separados de la BD transaccional; tableros para el CLIENTE sin licencia de BI. \\
-  N-13 & MDM Android Enterprise / Zebra DNA (gestión móvil) & Conectividad y costo: gestión remota de 462+ dispositivos sin infraestructura propia; compatible con un equipo de TI de 4 personas. \\
+\begin{tablalafrox}{Emplazamiento de los componentes de nube pura}{tab:t21a}%
+  {G{0.085} F{0.20} F{0.17} Y}%
+  {\cab{ID} & \cab{Componente} & \cab{Criterio} & \cab{Justificación}}
+  N-01 & Portal de Clientes & Regulación & Atiende el catálogo, la autoatención y el pago de los clientes desde Internet, por lo que se publica solo en la DMZ de la nube y ningún tráfico externo llega a los sitios del CLIENTE. \\
+  N-02 & Portal de Transportistas & Regulación & Los conductores externos entran con una clave de un solo uso y sin cuenta corporativa (RF-06.08), y ese acceso se resuelve en la DMZ de la nube. \\
+  N-03 & Portal de Proveedores & Regulación & Los 180 proveedores consultan órdenes de compra, recepciones y devoluciones desde Internet, aislados de la red de bodega. \\
+  N-04 & Plataforma de aplicación & Costo & El monolito Django y sus workers Celery corren en ECS Fargate y escalan de 2 a 6 tareas en el peak de septiembre, sin servidores permanentes que mantener. \\
+  N-05 & Base de datos en nube & Criticidad & Aurora PostgreSQL guarda el transaccional de los módulos en nube y la réplica del WMS, conmuta entre zonas en menos de 30 s y se replica a us-east-1. \\
+  N-06 & Telemetría cruda & Volumen & DynamoDB recibe las lecturas de temperatura sin gestión de capacidad y las expira a los 30 días, cuando ya están consolidadas en la capa analítica. \\
+  N-07 & Caché & Latencia & ElastiCache mantiene en memoria el stock, el crédito y las sesiones para que la consulta de preventa responda en menos de 2 s. \\
+  N-08 & Ingesta de IoT & Volumen & IoT Core y Lambda reciben los 13.200 mensajes diarios de cadena de frío por MQTTS, validan cada lectura y gestionan los gateways del borde. \\
+  N-09 & Mensajería & Criticidad & SQS FIFO recibe la reconciliación de los sitios en orden y sin duplicados, y SNS difunde las alertas de excursión térmica. \\
+  N-10 & Plataforma analítica & Volumen y costo & S3, Glue, Redshift Serverless y QuickSight conservan 5 años de datos separados del transaccional y publican los tableros del CLIENTE. \\
+  N-11 & Respaldo inmutable y réplica & Regulación & S3 Object Lock, AWS Backup y la réplica en us-east-1 guardan la copia que ni un administrador puede borrar y sostienen el RTO de 4 h y el RPO de 15 min. \\
+  N-12 & Seguridad y gobierno & Regulación & KMS, Secrets Manager, WAF, Shield, Security Lake y CloudWatch cumplen los controles del Artículo 21 como servicios que un equipo de TI de cuatro personas puede operar. \\
+  N-13 & Gestión de dispositivos & Costo & Android Enterprise y Zebra DNA gestionan como servicio los 462 dispositivos del parque, con borrado remoto selectivo y sin infraestructura en los sitios (RT-03.18). \\
 \end{tablalafrox}
+\fuente{elaboración propia; criterios según el Art. 16.2 de las Bases Administrativas.}
 
-\begin{tablalafrox}{Emplazamiento: componentes on-premise}{tab:t21b}%
-  {G{0.06} F{0.22} Y}%
-  {\cab{ID} & \cab{Componente} & \cab{Justificación}}
-  L-01 & Proxmox VE/KVM (virtualización, 3 nodos Talca) & Criticidad: el hipervisor de la bodega no depende de la nube; clúster N+1 opera 24 h sin enlace. \\
-  L-02 & Ceph (almacenamiento distribuido, 12 OSD) & Criticidad: réplica 2 tolera falla de disco sin detener la bodega; almacenamiento local para VMs y datos del WMS. \\
-  L-03 & PostgreSQL 16 (BD bodega, VM-02 / VM-C02) & Latencia y criticidad: picking en cámara a $-$22\,\textdegree{}C exige respuesta local; la bodega opera 24 h sin enlace; réplica a Aurora vía DMS CDC. \\
-  L-04 & RabbitMQ (broker local, VM-03 / VM-C04 / E-01) & Conectividad: buffer de 24 h que absorbe cortes del enlace; vuelco cronológico e idempotente al reconectar. \\
-  L-05 & ACL ERP (capa anticorrupción, VM-04) & Criticidad: el ERP de 2017 es la fuente única de la información contable y tributaria; reside en la red local sin exposición externa, y la ACL es su única puerta de entrada. \\
-  L-06 & NAS D-05 (respaldo local cifrado) & Conectividad: restauración rápida del WMS en $\leq$ 4 h sin depender del enlace; pierna local de la regla 3-2-1-1-0. \\
-  L-07 & Docker/Compose en borde (WMS del cross-dock, E-01) & Conectividad: cross-docking sin fibra; ventana de 3 h 100\,\% local; instalación y parcheo sin dependencia de red. \\
-  L-08 & Greengrass v2 (runtime IoT, B-02) & Latencia: detección de excursión térmica y bloqueo de despacho en $<$ 5 s, 100\,\% en el borde; buffer de 14 h. \\
-  L-09 & ADOT Collector (telemetría, VM-06 / VM-C04) & Conectividad: colector local con buffer en disco de 24 h; consolida y envía a la nube al reconectar. \\
-  L-10 & Firewall UTM (perímetro, D-01 / C13) & Criticidad: terminación de la VPN, segmentación de red y conmutación automática entre enlaces; HA activo/pasivo en Talca. \\
-  L-11 & WLAN Wi-Fi 6E industrial (bodegas) & Latencia: cobertura local en bodega y cámara de frío para 150 terminales RF simultáneos con respuesta $\leq$ 1 s en picking, sin depender del enlace WAN. \\
+La tabla muestra que ningún componente de nube pura participa en las transacciones que el caso exige resolver sin enlace: la confirmación de preparación, el despacho y el registro de entrega se ejecutan en el sitio o en el dispositivo. Lo que sube a la nube lo hace por tres razones. Los portales y la gestión de identidades externas lo hacen por regulación, porque el Artículo 21 impide exponer los sitios a Internet. La plataforma de aplicación, la analítica y la telemetría lo hacen por volumen y costo, porque su carga varía con la estación y se paga por uso. Y la seguridad y el respaldo lo hacen porque un equipo de TI de cuatro personas no puede operar esos controles en sus propios servidores.
+
+\subsection{Componentes on-premise}
+
+La Tabla~\ref{tab:t21b} justifica los once componentes que viven solo en las instalaciones del CLIENTE.
+
+\begin{tablalafrox}{Emplazamiento de los componentes on-premise}{tab:t21b}%
+  {G{0.085} F{0.20} F{0.17} Y}%
+  {\cab{ID} & \cab{Componente} & \cab{Criterio} & \cab{Justificación}}
+  B-01 & Sensores de temperatura & Latencia & Los 28 puntos de medición de las cámaras se leen por Modbus en el mismo sitio, porque dentro de la cámara no hay señal y la lectura no puede esperar al enlace. \\
+  B-02 & Gateway IoT & Latencia & Los gateways de Talca y Concepción detectan la excursión térmica y bloquean el despacho en menos de 5 s, con un buffer de 14 h si cae el enlace. \\
+  C-03 & Terminales de bodega & Conectividad & Los 174 terminales MC9400 trabajan en la cámara a $-$22\,\textdegree{}C, sin señal móvil, contra el WMS del sitio por la red inalámbrica de la bodega. \\
+  C-04 & Impresoras de andén & Latencia & Las seis impresoras ZT411 imprimen la etiqueta SSCC en el andén al armar la unidad logística, sin salir de la red local. \\
+  C-05 & Balanzas de recepción & Latencia & Las tres balanzas envían el peso de recepción al WMS del sitio en línea, sin digitación y sin depender del enlace. \\
+  D-02 & Switching & Criticidad & Los switches de cada sitio segmentan la red local por VLAN (RT-03.23) y la mantienen operativa aunque caiga la WAN. \\
+  D-03 & Enlace de fibra & Conectividad & Es el camino principal de la VPN en Talca y Concepción, con 20 y 10 Mbps en régimen. \\
+  D-04 & Enlace LTE & Conectividad & Respalda la fibra en los CD y, con dos proveedores, respalda a Starlink en los cross-docking, con conmutación en menos de 30 s. \\
+  D-06 & Enlace satelital & Conectividad & Starlink es el camino principal de los cross-docking, que no tienen fibra y cuya red móvil falla en la madrugada de Los Ángeles. \\
+  E-01 & WMS de cross-docking & Criticidad & El mini-PC de cada plataforma opera 100\,\% en local la ventana de 3 h de recepción, desconsolidación y re-despacho, con su propio broker y su propia base. \\
+  F-02 & Gestión de parches & Costo & Ansible aplica los parches y las líneas base CIS a los nodos de los cinco sitios por la red de gestión, sin licencia de plataforma. \\
 \end{tablalafrox}
+\fuente{elaboración propia; criterios según el Art. 16.2 de las Bases Administrativas.}
 
-\begin{tablalafrox}{Emplazamiento: componentes híbridos (presencia en nube y on-premise)}{tab:t21c}%
-  {G{0.06} F{0.16} F{0.16} F{0.16} Y}%
-  {\cab{ID} & \cab{Componente} & \cab{Nube} & \cab{On-premise} & \cab{Justificación}}
-  H-01 & Django (aplicación core) & ECS Fargate: preventa, reparto, portal, canal moderno & VM-01, VM-C01, E-01: WMS bodega (modo wms\_only) & Criticidad: la bodega opera localmente contra la BD local; el resto escala en nube. \\
-  H-02 & Keycloak (identidad) & Maestro en Fargate: OIDC, MFA, SSO & Cachés solo lectura: VM-05, VM-C03 & Conectividad: la sesión sobrevive cortes con TTL de 8 h (bodega) y 14 h (terreno). \\
-  H-03 & Celery (workers async) & Fargate: reconciliación, ERP-sync, notificaciones & VM-01 / VM-C01: workers de bodega & Criticidad: las tareas de bodega no dependen de la nube; la reconciliación sí la requiere. \\
-  H-04 & OpenTelemetry (observabilidad) & CloudWatch & Colectores ADOT con buffer 24 h & Conectividad: la telemetría se difiere sin pérdida y se consolida en CloudWatch al reconectar. \\
-  H-05 & EDR (detección en endpoint) & Consola de gestión y correlación & Agentes en cada VM y estación & Regulatorio: cumple RT-11.16 (detección en cargas de trabajo tanto en nube como on-premise) con respuesta centralizada. \\
-  H-06 & Site-to-Site VPN IPsec & AWS VPN Gateway (2 túneles/CD) & Firewall de borde: Customer Gateway & Conectividad: enlace cifrado con BGP; conmutación automática entre enlaces. \\
-  H-07 & Ansible + Terraform/CDK (IaC) & Terraform/CDK: infraestructura AWS & Ansible: configuración, parches y CIS en 5 sitios & Costo: infraestructura declarada como código sin licencia de plataforma de gestión. \\
+En el on-premise dominan la latencia y la conectividad. Los sensores, las impresoras, las balanzas y los terminales de cámara son periféricos que trabajan donde está la mercadería, y ninguno puede depender de un enlace que el caso describe como intermitente. Los tres enlaces y el switching tampoco podrían emplazarse en otro lugar: son la infraestructura que conecta el sitio con la nube y sostiene su red interna cuando esa conexión falla.
+
+\subsection{Componentes híbridos}
+
+La Tabla~\ref{tab:t21c} justifica los doce componentes que tienen una parte en cada dominio. Para cada uno, la justificación explica qué parte vive en el sitio, qué parte vive en la nube y por qué se reparten así.
+
+\begin{tablalafrox}{Emplazamiento de los componentes híbridos}{tab:t21c}%
+  {G{0.085} F{0.20} F{0.17} Y}%
+  {\cab{ID} & \cab{Componente} & \cab{Criterio} & \cab{Justificación}}
+  A-01 & Motor WMS & Latencia & Corre en VM-01, VM-C01 y E-01 porque la confirmación de preparación debe responder en 1 s sin depender del enlace, y su réplica en Aurora sostiene la continuidad. \\
+  A-02 & Base transaccional del WMS & Criticidad & PostgreSQL 16 en VM-02 y VM-C02 es el registro de la bodega durante un corte, y DMS replica sus cambios a Aurora con un RPO de 15 min. \\
+  A-03 & Broker de colas & Conectividad & RabbitMQ en VM-03, VM-C04 y E-01 guarda hasta 24 h de transacciones sin enlace y las entrega en orden a SQS FIFO, donde Celery las reconcilia. \\
+  A-04 & Capa anticorrupción del ERP & Criticidad & Corre en VM-04 junto al ERP de 2017, que no se modifica, y el worker celery-erp-sync de la nube la consulta por la VPN como única puerta al legado. \\
+  A-05 & Identidad & Conectividad & El IdP maestro Keycloak corre en Fargate y sus cachés de solo lectura en VM-05 y VM-C03 validan las sesiones de bodega sin enlace. \\
+  B-03 & Termógrafos de camión & Conectividad & Los 18 termógrafos registran la temperatura durante toda la ruta sin señal y la descargan por Bluetooth al gateway al volver, para que IoT Core la valide. \\
+  C-01 & App de preventa & Conectividad & Toma pedidos contra el almacén local del terminal cuando no hay señal y sincroniza con API Gateway al reconectar, sin duplicar pedidos. \\
+  C-02 & App de reparto & Conectividad & Registra entregas, evidencia y cobros durante 14 h sin señal y los sincroniza con la nube al recuperar cobertura. \\
+  D-01 & Firewall y Customer Gateway & Criticidad & El par de Talca y el firewall de Concepción terminan los túneles IPsec hacia el VPN Gateway de AWS y conmutan de enlace en menos de 30 s. \\
+  D-05 & Respaldo local & Conectividad & El NAS WORM de Talca restaura el WMS en 4 h sin depender del enlace, y su complemento inmutable vive en S3 Object Lock. \\
+  F-01 & Telemetría de observabilidad & Conectividad & Los colectores ADOT de VM-06, VM-C04 y E-01 guardan hasta 24 h de métricas y trazas en disco y las envían a CloudWatch al reconectar. \\
+  F-03 & Detección en endpoints & Regulación & Los agentes EDR de cada nodo y estación reportan a una consola central, lo que cumple RT-11.16 en nube y on-premise con una sola respuesta. \\
 \end{tablalafrox}
+\fuente{elaboración propia; criterios según el Art. 16.2 de las Bases Administrativas.}
 
-\figuralafrox{0.92}{ARQF-01_Modelo_emplazamiento_hibrido.png}{Diagrama de arquitectura física de la solución}{fig:emplazamiento}
+Los componentes híbridos siguen todos el mismo patrón: la parte que atiende la operación queda en el sitio y la parte que consolida queda en la nube, unidas por un mecanismo que tolera el corte. En el núcleo de bodega ese mecanismo es la réplica por DMS y las colas; en el terreno, el almacén local del dispositivo; y en la observabilidad, el buffer en disco de los colectores. Por eso la conectividad es el criterio dominante en siete de los doce: cada uno existe en dos lugares precisamente porque el enlace entre ellos no es confiable.
 
-\section{Instalaciones de la red on-premise}
-\label{sub:instalaciones-de-la-red-on-premise}
+\subsection{Autonomía de cada ámbito sin enlace}
 
-La red on-premise se compone de seis instalaciones (Tabla 14.1 y RT-21.16):
+El emplazamiento anterior se verifica en lo que cada ámbito puede hacer cuando pierde el enlace. La Tabla~\ref{tab:t29} declara esa autonomía y el tiempo en que cada ámbito vuelve a quedar sincronizado.
 
-\begin{itemize}
-  \item \textbf{CD Talca (sala técnica principal, sala blanca de 32 m\textsuperscript{2}):} clúster WMS de 3 nodos, base transaccional on-premise (PostgreSQL 16, VM-02), broker local RabbitMQ (VM-03), capa anticorrupción del ERP (VM-04), caché de identidad (VM-05), telemetría (VM-06), respaldo NAS (D-05) y componentes de sala (UPS N+1, generador 12 kVA con estanque 24 h, clima N+1, seguridad física).
-  \item \textbf{CD Concepción (9.000 m\textsuperscript{2}, gabinete de borde):} servidor de borde con el WMS (VM-C01), base local (VM-C02), caché de identidad (VM-C03), broker + telemetría (VM-C04) y Gateway IoT Greengrass (B-02); opera 24 h de forma autónoma e independiente de Talca.
-  \item \textbf{Cross-docking de Curicó, Chillán y Los Ángeles:} nodo de cómputo industrial (E-01) con WMS y broker locales, enlace principal Starlink (D-06) y respaldo LTE dual (2 proveedores).
-  \item \textbf{Casa matriz y oficinas centrales (Talca):} sin nodo de cómputo propio; acceso a la nube para administración, planificación y portal de clientes (RT-03.22).
-\end{itemize}
-
-La proyección a 3 años (RT-02.12) incorpora una séptima instalación; el gabinete de crecimiento de la sala (R04) absorbe esa expansión sin obras adicionales en el sitio principal.
-
-\section{Operación desconectada}
-\label{sub:operacion-desconectada}
-
-El modelo híbrido garantiza que ningún proceso operacional se detenga por pérdida del enlace WAN. Cada ámbito mantiene autonomía local con su propia base de datos, broker de mensajería y caché de identidad; al reconectar, la sincronización es idempotente y determinista, sin pérdida ni duplicación de transacciones. La Tabla~\ref{tab:t29} resume la autonomía por ámbito:
-
-\begin{tablalafrox}{Operación desconectada}{tab:t29}%
+\begin{tablalafrox}{Autonomía por ámbito ante la pérdida del enlace}{tab:t29}%
   {F{0.22} F{0.18} Y}%
-  {\cab{Ámbito} & \cab{Autonomía} & \cab{Cobertura funcional}}
-  Centro de distribución (CD Talca y Concepción) & $\geq$ 24 h & Recepción, preparación, despacho, conteo cíclico y trazabilidad contra la BD local; reconciliación determinista al reconectar (RT-03.12). \\
-  Terreno (preventa y reparto) & 14 h (turno completo) & Toma de pedido, entrega, POD, devoluciones y cobros contra caché local y buffer idempotente (RNF-06.02, RT-03.10); sesión sostenida por caché de identidad A-05 (TTL 8 h bodega, 14 h reparto/preventa). \\
-  Cross-docking & 3 h 100\,\% local & Recepción, desconsolidación, validación de frío y re-despacho (RT-03.10/03.11). \\
-  Sincronización al reconectar & Flota $\leq$ 10 min; CDs $\leq$ 2 h & Vuelco en orden estricto, deduplicación idempotente y reconciliación determinista (RT-03.12, RT-03.13, RNF-07.01). \\
+  {\cab{Ámbito} & \cab{Autonomía} & \cab{Operación que se mantiene}}
+  Centro de distribución & 24 h o más & Recepción, preparación, despacho, conteo cíclico y trazabilidad contra la base local, con reconciliación determinista al reconectar (RT-03.12). \\
+  Terreno & 14 h, un turno completo & Toma de pedido, entrega, evidencia, devoluciones y cobros contra el almacén local del dispositivo (RT-03.10). \\
+  Cross-docking & 3 h, 100\,\% local & Recepción, desconsolidación, validación de frío y re-despacho (RT-03.11). \\
+  Sincronización al reconectar & Flota en 10 min; centro de distribución en 2 h & Vuelco en orden estricto, sin duplicados y con reconciliación determinista (RT-03.13, RNF-07.01). \\
 \end{tablalafrox}
+\fuente{elaboración propia a partir de los compromisos de operación desconectada del caso (Caso, Cap. 6).}
+
+La autonomía de cada ámbito cubre el corte más largo que describe el caso para ese lugar. Las seis horas del peor corte de fibra de Talca quedan dentro de las 24 horas del centro de distribución, y la ruta rural que recupera cobertura solo al regresar queda dentro del turno de 14 horas del terreno. Los tiempos de sincronización se sostienen con los enlaces dimensionados en la sección~\ref{sec:4-2-4-dimensionamiento}, y lo que ocurre ante cada falla se desarrolla en la sección~\ref{sec:4-2-3-conexiones}.

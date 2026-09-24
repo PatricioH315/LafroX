@@ -8,7 +8,7 @@
 \chapter{Arquitectura de seguridad}
 \label{sec:i-arquitectura-de-seguridad}
 
-Para la solución de la arquitectura de seguridad se usará el modelo Zero Trust, capa expuesta, identidad y accesos, cifrado y controles, esto debido a que el perímetro de esta solución no es un edificio corporativo sino un entorno distribuido con alta rotación de personal externo y dispositivos compartidos en terreno.
+Esta solución de seguridad se estructura sobre: Zero Trust, capa expuesta, identidad y accesos, cifrado y controles, esto debido a que el perímetro de esta solución no es un edificio corporativo sino un entorno distribuido con alta rotación de personal externo y dispositivos compartidos en terreno.
 
 \section{Principios rectores}
 \label{sub:1-principios-rectores}
@@ -17,8 +17,8 @@ Para la solución de la arquitectura de seguridad se usará el modelo Zero Trust
   \item \textbf{Zero Trust conforme a NIST SP 800-207}. Verificación explícita de cada solicitud, privilegio mínimo y presunción de compromiso. La red interna no confiere confianza.
   \item \textbf{Seguridad desde el diseño y por defecto}. Modelado de amenazas STRIDE documentado por cada componente y por cada integración externa, antes de implementar.
   \item \textbf{La identidad es el perímetro}. Autoridad única de identidad mediante Keycloak y toda decisión de acceso se toma sobre el token, no sobre la dirección de red de origen.
-  \item \textbf{Sin conexiones entrantes al on-premise}. Todo tráfico desde on-premise hacia la nube es saliente. Las dos únicas excepciones son desde DMS hacia PostgreSQL y de celery-erp-sync hacia ACL que están declaradas, acotadas al túnel IPsec autenticado y auditadas.
-  \item \textbf{Cifrado en tránsito y en reposo sin excepciones}. TLS 1.3 mínimo cifrado en reposo del 100 \% de los datos con claves gestionadas en KMS/HSM y separación de funciones en su custodia.
+  \item \textbf{Sin conexiones entrantes al on-premise}. Todo tráfico desde on-premise hacia la nube es saliente. Las dos únicas excepciones son las conexiones entrantes de DMS hacia PostgreSQL y de celery-erp-sync hacia ACL, declaradas, acotadas al túnel IPsec autenticado y auditadas.
+  \item \textbf{Cifrado en tránsito y en reposo sin excepciones}. TLS 1.3 mínimo para el transito, cifrado en reposo del 100 \% de los datos con claves gestionadas en KMS/HSM y separación de funciones en su custodia.
   \item \textbf{La seguridad no puede detener la ventana crítica}. Ningún control de seguridad puede introducir una dependencia en línea dentro de 05:30 hasta las 07:00 ni en las 14 h de terreno sin señal. La autenticación de terreno se resuelve sin red por diseño.
   \item \textbf{Operable por cuatro personas}. El CLIENTE tiene 4 personas de TI, por lo que se privilegian servicios administrados y un SOC contratado 24/7 por sobre plataformas que exijan operación local especializada.
   \item \textbf{Evidencia inalterable}. Todo evento de seguridad y toda acción de negocio quedan en un registro inalterable y con retención declarada; ni un administrador puede modificarlo.
@@ -29,7 +29,7 @@ Para la solución de la arquitectura de seguridad se usará el modelo Zero Trust
 
 \subsection{Zonas y flujos}
 
-En el texto las zonas y su flujo son la zona pública como los clientes del canal moderno, transportistas app para 160 conductores y 180 proveedores que ingresan únicamente por la DMZ en nube en CloudFront más AWS WAF v2 más Shield Advanced hacia el Amazon API Gateway con OIDC, cuotas, esquema y validación de carga útil, para la zona de aplicación se usa ECS Fargate M1--M12 más workers y Keycloak IdP maestro como autoridad única que sirve a las zonas de datos como Aurora PostgreSQL, DynamoDB y S3 con Object Lock, en subredes privadas sin salida, para la zona on-premise se usa VLAN 10 MGT, 20 SRV, 30 OPS, 40 WKS, 50 IOT, firewall D-01 UTM en HA como Customer Gateway y caché Keycloak de solo lectura TTL 8 h que se conecta con la nube por VPN/IPsec saliente, por ultimo para la zona de terreno se usa apps Kotlin offline-first más MDM; HHT compartidos en cámara a $-$22 \textdegree{}C que no tiene perímetro.
+En el texto las zonas y su flujo son la zona pública como los clientes del canal moderno, transportistas para los 160 conductores y 180 proveedores que ingresan únicamente por la DMZ en nube en CloudFront más AWS WAF v2 más Shield Advanced hacia el Amazon API Gateway con OIDC, cuotas, esquema y validación de carga útil, para la zona de aplicación se usa ECS Fargate más workers y Keycloak IdP maestro como autoridad única que sirve a las zonas de datos como Aurora PostgreSQL, DynamoDB y S3 con Object Lock, en subredes privadas sin salida, para la zona on-premise se usa VLAN 10 MGT, 20 SRV, 30 OPS, 40 WKS, 50 IOT, firewall D-01 UTM en HA como Customer Gateway y caché Keycloak de solo lectura TTL 8 h que se conecta con la nube por VPN/IPsec saliente, por último para la zona de terreno se usa apps Kotlin offline-first más MDM; HHT compartidos en cámara a $-$22 \textdegree{}C que no tiene perímetro.
 
 Reglas de zona declaradas:
 
@@ -67,17 +67,17 @@ Reglas de zona declaradas:
 \begin{tablalafrox}{Superficie de exposición completa (RT-11.13)}{tab:t45}%
   {F{0.25} Y Y F{0.25}}%
   {\cab{Zona / sitio} & \cab{Servicios expuestos} & \cab{Protocolos y puertos} & \cab{¿Alcanzable desde internet?}}
-  DMZ pública en nube & Portales N-01, N-02 y N-03 sobre puelche & TCP, HTTPS y TLS & Sí, por CloudFront con WAF y Shield \\
+  DMZ pública en nube & Portales N-01, N-02 y N-03 sobre Puelche & HTTPS (TLS 1.3) & Sí, por CloudFront con WAF y Shield \\
   Zona de aplicación en nube & ECS Fargate y Keycloak maestro & Solo desde el ALB y la puerta de enlace & No \\
-  Zona de datos en nube & Aurora, DynamoDB, y S3 & Solo por VPC Endpoint y PrivateLink & No \\
-  Talca (red interna) & Portal WMS, API WMS, PostgreSQL, broker AMQP y gestión SSH & HTTPS, TCP, 636 & No, solo por VPN Zero Trust \\
+  Zona de datos en nube & Aurora, DynamoDB y S3 & Solo por VPC Endpoint y PrivateLink & No \\
+  Talca (red interna) & Portal WMS, API WMS, PostgreSQL, broker AMQP y gestión SSM & HTTPS (TCL 1.3), TCP & No, solo por VPN Zero Trust \\
   Talca (borde) & Clúster de firewall en HA & IPsec 500/4500 UDP & Solo terminación IPsec \\
-  Talca (Concepción) & Greengrass hacia IoT Core & HTTPS saliente & No; sin puertos entrantes \\
+  Concepción (borde) & Greengrass hacia IoT Core (MQTT saliente) & MQTTS 8883 (X.509) & No; sin puertos entrantes \\
   Concepción y cross-docking & Gabinete de borde (mini-PC) & IPsec 500/4500 UDP & Solo por VPN IPsec \\
-  Estaciones de trabajo & NA & HTTPS saliente por proxy & No \\
+  Estaciones de trabajo & NA & MQTTS 8883 (X.509) por proxy & No \\
 \end{tablalafrox}
 
-Regla declarada: ningún nodo on-premise abre puertos entrantes. Toda gestión remota entra por el agente SSM sobre HTTPS saliente o por la VPN, nunca por un puerto publicado.
+Regla declarada: ningún nodo on-premise abre puertos entrantes. Toda gestión remota entra por el agente SSM sobre MQTTS 8883 (X.509) o por la VPN, nunca por un puerto publicado.
 
 \section{Identidad, acceso y sesiones}
 \label{sub:4-identidad-acceso-y-sesiones}
@@ -110,12 +110,12 @@ Como autoridad única en nube y cachés locales de solo lectura el Keycloak IdP 
   \item \textbf{Renovación.} Credencial de refresco rotatoria por 30 días.
   \item \textbf{Inactividad.} Caducidad por inactividad según perfil.
   \item \textbf{Revocación y concurrencia.} Revocación inmediata ante baja, compromiso o suspensión.
-  \item \textbf{Operación desconectada.} Token de turno de 8 horas en bodega o 14 horas en terreno, válido sin red.
+  \item \textbf{Operación desconectada.} Token de turno de 8 horas en bodega o 14 horas en terreno que son preventa y reparto.
 \end{itemize}
 
 \subsection{Autenticación en terreno}
 
-Las condiciones estipuladas son los guantes térmicos a $-$22 \textdegree{}C, uso a una mano durante la descarga, uso de pie y a la intemperie en la puerta del local, dispositivos compartidos entre turnos en bodega y 38 \% de rotación anual en preparación. Por lo que declaramos:
+Las condiciones estipuladas son los guantes térmicos a $-$22 \textdegree{}C, operación a una mano durante la descarga, uso de pie y a la intemperie en la puerta del local, dispositivos compartidos entre turnos en bodega y 38 \% de rotación anual en preparación.
 
 \begin{itemize}
   \item El operador autentica con conexión al inicio de turno ya sea con un PIN de 6 dígitos y descarga un token cifrado de vida acotada al turno.
@@ -209,8 +209,6 @@ El cifrado a nivel de campo se declara por conjunto de datos:
 Dos de los resguardos de esta tabla son decisiones de diseño y no solo cláusulas contractuales, y se propagan a la sección de arquitectura de despliegue de este capítulo y a la arquitectura lógica, por la que la región secundaria sostiene continuidad y no se explota analíticamente, y la exclusión de los datos de geolocalización de personas de la replicación transfronteriza.
 
 \subsection{Derechos de los titulares, política de privacidad y EIPD}
-
-\textbf{Derechos ARCOP.} Acceso, rectificación, supresión, oposición, portabilidad y bloqueo temporal.
 
 \textbf{EIPD.} Evaluación de impacto obligatoria por tratamiento masivo con 14.200 clientes y con monitoreo sistemático.
 \textbf{Vigencia.} La Ley 21.719 rige desde el 01 de diciembre de 2026 y un proyecto de ley del Boletín 18.623-07 postergaría la vigencia al 01 de diciembre de 2027.

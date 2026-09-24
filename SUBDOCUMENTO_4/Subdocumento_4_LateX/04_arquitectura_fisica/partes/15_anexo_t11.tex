@@ -1,0 +1,134 @@
+% ------------------------------------------------------------------
+%  Anexo --- Formulario T-11: Especificaciones técnicas ofertadas
+%  Fragmento del Subdocumento 4.2, traido desde contenido.tex con
+%  \parte{partes/15_anexo_t11}. Capítulo provisorio: el formulario se
+%  entregará como archivo propio (aclaraciones, sección 1).
+%
+%  Columnas oficiales del formulario (Bases Administrativas, Formulario T-11):
+%  Componente | Producto / servicio ofertado | Ubicación / Lugar | Cantidad |
+%  Justificación. Sin precios (Art. 50.2).
+% ------------------------------------------------------------------
+
+\chapter*{Anexo --- Formulario T-11: Especificaciones técnicas ofertadas}
+\phantomsection
+\addcontentsline{toc}{chapter}{Anexo --- Formulario T-11: Especificaciones técnicas ofertadas}
+\markboth{Anexo --- Formulario T-11}{Anexo --- Formulario T-11}
+\label{anexo:t11}
+
+Este formulario detalla los componentes de infraestructura, plataforma, licenciamiento y hardware especificados para la solución, con su ubicación, su cantidad y su justificación, conforme al Formulario T-11 de las Bases Administrativas. Su resumen y análisis están en la sección~\ref{sec:4-2-5-implementos}, y los servicios de nube se agrupan por función en la sección~\ref{sec:4-2-2-servicios-nube}. El equipamiento físico lo adquiere el CLIENTE, y el adjudicatario lo especifica, instala, integra y mantiene (Art. 14.2).
+
+\section*{Infraestructura de cómputo y almacenamiento}
+
+La Tabla~\ref{tab:t23} detalla los servidores y el almacenamiento de respaldo de los cinco sitios con cómputo.
+
+\begin{tablalafrox}{Formulario T-11: infraestructura de cómputo y almacenamiento}{tab:t23}%
+  {F{0.17} Y F{0.16} G{0.13} Y}%
+  {\cab{Componente} & \cab{Producto ofertado} & \cab{Ubicación} & \cab{Cant.} & \cab{Justificación}}
+  C1 --- Servidor del clúster & Dell PowerEdge R6615 o HPE DL325 Gen11: EPYC 9124 de 16 núcleos, 128 GB DDR5 ECC, RAID 1 para el sistema y RAID 10 con 4 NVMe de 1,92 TB y repuesto en caliente, 2 puertos de 10 GbE y doble fuente & CD Talca, gabinete R01 & 3 & Tres nodos iguales dejan capacidad para todas las máquinas virtuales si falla uno (RT-08.03), y los discos NVMe en RAID 10 superan con holgura las operaciones de disco del peak de septiembre. \\
+  C2 --- NAS de respaldo local & NAS con bloqueo de escritura WORM y cifrado de disco & CD Talca, gabinete R01 & 1 & Es la copia local de recuperación rápida del esquema 3-2-1-1-0: restaura el WMS en hasta 4 h sin depender del enlace (RNF-20.06), y complementa la copia inmutable en nube sin reemplazarla. \\
+  C3 --- Servidor de borde de Concepción & Dell R250 o HPE DL20 Gen11: Xeon E-2300 de 6 núcleos, 32 GB y RAID 10 con 4 NVMe de 960 GB y repuesto en caliente & CD Concepción, gabinete de borde & 1 & Sostiene el WMS con 24 h de operación autónoma, con 12 vCPU y 24 GB asignados para el volumen de Concepción y doble fuente. \\
+  C4 --- Nodo de cross-docking & Mini-PC industrial Advantech ARK-2250 o NUC Pro 12: i5 o i7 de 12.ª generación, 16 GB, NVMe de 512 GB y módem LTE Cat-12 con doble SIM & Curicó, Chillán y Los Ángeles & 3 & Opera en naves sin climatización, con un supuesto de diseño de hasta 50\,\textdegree{}C en verano, y sin fibra (RT-03.17); usa Starlink por Ethernet como enlace principal y LTE de dos proveedores como respaldo, con conmutación en menos de 30 s. \\
+\end{tablalafrox}
+
+\section*{Red y seguridad}
+
+La Tabla~\ref{tab:t24} detalla los equipos de red, los enlaces y la VPN.
+
+\begin{tablalafrox}{Formulario T-11: red y seguridad}{tab:t24}%
+  {F{0.17} Y F{0.16} G{0.13} Y}%
+  {\cab{Componente} & \cab{Producto ofertado} & \cab{Ubicación} & \cab{Cant.} & \cab{Justificación}}
+  C5 --- Firewall y Customer Gateway & Clúster activo/pasivo de firewalls UTM de grado empresarial con sincronización de sesiones, D-01 & CD Talca, gabinete R02 & 2 & El sitio principal no admite un perímetro de equipo único (RT-08.03): la unidad pasiva asume direcciones y túneles en menos de 30 s, en circuitos eléctricos distintos (RT-08.04). Es el punto de terminación de la VPN Site-to-Site. \\
+  C6 --- Switch core & Cisco Catalyst 9300-48P o equivalente en stack, D-02 & CD Talca, gabinete R02 & 2 & Los dos equipos forman un único plano de distribución, de modo que la falla de uno no interrumpe el tráfico (RT-08.03). \\
+  C7 --- Switch de gestión & Switch de capa 2 para la VLAN de gestión y consola KVM & CD Talca, gabinete R02 & 1 & Aísla los puertos de administración de los servidores en una VLAN dedicada con MFA, y permite recuperar los equipos aunque la red de producción esté caída. \\
+  C8 --- Distribución horizontal & Paneles de fibra OM4 y cobre Cat6A certificado & CD Talca, gabinete R03 & 1 & Cableado certificado enlace por enlace (RT-06.04), con dos ductos de ingreso independientes a la sala (RT-06.32). \\
+  C9 --- Red inalámbrica industrial & Puntos de acceso Wi-Fi 6E industriales en la VLAN de operaciones, con estudio de cobertura en bodega y cámara & Bodegas de Talca y Concepción & 9 & Da cobertura a 120 terminales en Talca y 30 en Concepción, con segmentación por tipo de dispositivo y cobertura verificada dentro de las cámaras (RT-03.23). \\
+  C10 --- Enlace principal & Fibra óptica simétrica: Talca de 20 a 50 Mbps y Concepción de 10 a 20 Mbps, D-03 & CD Talca y CD Concepción & 2 & Dimensionado sobre la replicación de la base, el vuelco de los brokers y la telemetría, de unos 0,2 Mbps en promedio, y sobre el respaldo semanal a la nube, de 40 a 120 GB en la ventana nocturna, unos 33 Mbps (RT-03.20); los valores cubren el crecimiento de 3 veces sin rediseño (RT-09.03). \\
+  C11 --- Enlace de respaldo & LTE empresarial con SIM dedicada: Talca de 5 a 10 Mbps, Concepción de 3 a 5 Mbps y cross-docking de 2 a 5 Mbps con dos proveedores, D-04 & CD Talca, CD Concepción y los tres cross-docking & 5 & Evita depender de un solo camino o proveedor (RT-03.17), con conmutación en menos de 30 s: en los centros de distribución respalda a la fibra y en los cross-docking respalda a Starlink. \\
+  C12 --- VPN & AWS Site-to-Site VPN IPsec IKEv2 con BGP & Talca y Concepción hacia sa-east-1 & 2 túneles por CD & Replica la base, sincroniza los brokers y transmite telemetría cifrado y con enrutamiento dinámico (RT-03.21), con una MTU de túnel de 1.436 bytes. \\
+  C13 --- Firewall de borde & Firewall de borde de grado empresarial, D-01 & CD Concepción, gabinete de borde & 1 & Es el Customer Gateway del túnel hacia AWS y conmuta entre fibra y LTE en menos de 30 s (RT-08.03, RT-03.17). \\
+  C14 --- Switch de borde & Cisco Catalyst 9300 o equivalente, D-02 & CD Concepción, gabinete de borde & 1 & Sostiene la red de bodega del sitio secundario durante 24 h de autonomía, sin depender del sitio principal (RT-08.03). \\
+  C15 --- Switch de cross-docking & Netgear GS308E o equivalente, de 8 puertos Gigabit gestionables, D-02 & Curicó, Chillán y Los Ángeles & 3 & Equipo compacto para una nave sin sala técnica: conecta el mini-PC, el router Starlink, los escáneres y los terminales. \\
+\end{tablalafrox}
+
+\section*{Dispositivos de terreno y de operación}
+
+La Tabla~\ref{tab:t25} detalla los dispositivos que usan las personas en la calle, en la bodega y en la cadena de frío.
+
+\begin{tablalafrox}{Formulario T-11: dispositivos de terreno y de operación}{tab:t25}%
+  {F{0.17} Y F{0.16} G{0.13} Y}%
+  {\cab{Componente} & \cab{Producto ofertado} & \cab{Ubicación} & \cab{Cant.} & \cab{Justificación}}
+  C16 --- Terminal de preventa & Zebra EC55: Android, IP67, uso con guantes y lector 2D SE4100 & Preventistas en cinco regiones & 62 más 20 \% & Opera sin señal, dura la jornada con una carga, funciona con guantes y su pantalla se lee a pleno sol (RT-08.11). \\
+  C17 --- Terminal de reparto & Zebra TC58e: 5G, lector SE55, batería de 7.000 mAh, GPS L1/L5, IP65/68 y $-$30\,\textdegree{}C & 42 conductores propios y cerca de 160 externos & 200 más reserva & Un solo modelo para conductores propios y externos: mismo repuesto, misma capacitación y misma integración. \\
+  C18 --- Impresora de cabina & Zebra ZQ620 Plus: 3 pulgadas, ZPL, IP54 y Link-OS & Una por conductor & 200 & Imprime la evidencia de entrega y los comprobantes en la cabina, con batería de reemplazo. \\
+  C19 --- Terminal de pago & PAX A920 Pro: Android 14, PCI PTS 7.x y EMV L1/L2 & Una por conductor & 200 & Cobra con tarjeta en el local del cliente con certificación PCI PTS y EMV, integrado por Bluetooth con la aplicación de reparto. \\
+  C20 --- Terminal de cámara & Zebra MC9400 Cold Storage Freezer: $-$30\,\textdegree{}C, lector SE58 de 100 pies, batería de 5.000 mAh y Wi-Fi 6E & Talca 144 y Concepción 30 & 174 & Prepara pedidos en la cámara a $-$22\,\textdegree{}C con guantes gruesos, lee a distancia y recambia la batería en caliente (RT-08.11, RT-08.12, RT-13.08). \\
+  C21 --- Impresora de andén & Zebra ZT411: 203 dpi, 14 ips, Ethernet y ZPL & Talca 4 y Concepción 2 & 6 & Imprime la etiqueta SSCC GS1-128 al armar la unidad logística (RF-01.07), legible a lo largo de toda la cadena (RT-05.23). \\
+  C22 --- Balanza de recepción & Dibal BEV con plataforma ME e indicador DMI-610 inoxidable, RS-232 y Ethernet & Talca 2 y Concepción 1 & 3 & Captura el peso de recepción en línea hacia el WMS (RF-01.01), sin digitación, con calibración certificada. \\
+  C23 --- Escáner de cross-docking & Zebra DS2208: 1D, 2D y GS1 DataBar, garantía de 60 meses & Curicó, Chillán y Los Ángeles & 6 & Lee los códigos GS1 en la desconsolidación y el re-despacho; dos por plataforma cubren dos muelles simultáneos. \\
+  C24 --- Sensor de temperatura & Módulo Ebyte ME31-XDXX0400: 4 canales PT100, Modbus RTU/TCP, de $-$40 a +85\,\textdegree{}C, con sondas de 3 hilos & Cámaras de Talca y Concepción & 7 módulos, 28 puntos & Alimenta el registro continuo de la cadena de frío, con una exactitud de $\pm$1,1\,\textdegree{}C a $-$22\,\textdegree{}C que distingue una excursión real de la variación del instrumento. \\
+  C25 --- Termógrafo de camión & Onset InTemp CX450: Bluetooth, de $-$30 a +70\,\textdegree{}C con $\pm$0,5\,\textdegree{}C y calibración NIST en dos puntos & Camiones propios con equipo de frío & 18 & Registra la temperatura del transporte de forma independiente y la descarga al sistema por Bluetooth al volver al centro. \\
+  C26 --- Estación de trabajo & PC i5 o i7, 16 GB, SSD NVMe de 512 GB cifrado y 2 monitores de 24 pulgadas & Talca 5 y Concepción 3 & 8 & Puestos de despacho, administración, planificación, calidad y TI (RNF-23.04), con disco cifrado gestionado desde el EDR y doble monitor (RT-08.08). \\
+  C27 --- Kit satelital & Starlink Enterprise fijo, antena en techumbre y router, plan de 500 GB por 56 meses, D-06 & Curicó, Chillán y Los Ángeles & 3 & Es el enlace principal de los cross-docking, que no tienen fibra, con LTE como respaldo automático (RT-03.17, RT-08.13); reposición de hardware estimada en 15 \% durante el contrato. \\
+  C28 --- Gateway IoT & Advantech ADAM-6000 con AWS IoT Greengrass Core, B-02 & CD Talca y CD Concepción & 2 & Detecta la excursión térmica y bloquea el despacho en el borde, con un buffer local de 14 h si cae el enlace. \\
+\end{tablalafrox}
+
+\section*{Infraestructura de la sala técnica de Talca}
+
+La Tabla~\ref{tab:t27} detalla la infraestructura de la sala técnica principal. Las especificaciones del recinto se desarrollan en el capítulo del sitio principal.
+
+\begin{tablalafrox}{Formulario T-11: infraestructura de la sala técnica de Talca}{tab:t27}%
+  {F{0.17} Y F{0.16} G{0.13} Y}%
+  {\cab{Componente} & \cab{Producto ofertado} & \cab{Ubicación} & \cab{Cant.} & \cab{Justificación}}
+  D1 --- UPS & Doble conversión en línea de 6 kVA, N+1, con banco VRLA de 30 min o más & Sala de UPS y baterías & 1 & Sin interrupción entre la caída de la red y la partida del generador, con 30 min o más a plena carga (RT-06.07). \\
+  D2 --- Generador & Grupo electrógeno de 12 kVA con estanque para 24 h y contrato de reabastecimiento & Patio del generador & 1 & Toma la carga de TI y clima en 8 a 15 s, y el estanque garantiza 24 h (RT-06.08). \\
+  D3 --- Transferencia automática & Transferencia red-generador con tablero de protecciones selectivas & Acometida, accesible desde el exterior & 1 & Se prueba cada mes con carga real y admite termografía periódica (RT-06.10). \\
+  D4 --- Climatización & 2 unidades de precisión de 12.000 BTU/h en N+1, con free cooling, de 18 a 27\,\textdegree{}C y de 40 a 60 \% HR & Sala de climatización & 2 & Mantiene el rango ASHRAE en la toma de aire del equipo (RT-06.13, RT-06.14), con pasillo frío confinado. \\
+  D5 --- Distribución eléctrica & 2 PDU verticales A/B por gabinete, con medidor & Cuatro gabinetes de la sala & 8 & Dos caminos eléctricos por gabinete (RT-08.04); el medidor es el denominador del PUE. \\
+  D6 --- Detección de incendio & Detección por aspiración AnaLASER o equivalente & Sala blanca & 1 & Detecta antes de que exista llama visible (RT-06.16). \\
+  D7 --- Extinción & FM-200 o equivalente según NFPA 75 y 2001, con botón de aborto & Sala blanca & 1 & Agente limpio sobre equipos energizados (RT-06.17), y extintores ABC y CO\textsubscript{2} por recinto (RT-06.18). \\
+  D8 --- Control de acceso & Biometría facial con resguardo AFIS, esclusa y bitácora electrónica & Acceso a la sala, en cuatro capas & 1 & Doble factor con reverificación biométrica y antipassback (RT-06.20, RT-06.21, RT-06.23). \\
+  D9 --- Videovigilancia & Cámaras IP con retención de 30 días o más y respaldo auditable & Sala y perímetro & 7 & Cubre cada puerta controlada e integra el video con el control de acceso (RT-06.24). \\
+  D10 --- Recinto de custodia & Sala de 10 m\textsuperscript{2} con iluminación LED sin UV de hasta 300 lux, 40 a 60 \% HR, ventilación forzada y 18 a 27\,\textdegree{}C & Segunda línea de la sala & 1 & Conserva los medios de respaldo sin degradarlos (RT-06.27), con acceso sin cruzar la sala blanca (RT-06.26). \\
+  D11 --- Gabinetes & 4 racks de 42U: R01 servidores, R02 red, R03 distribución y respaldo, R04 crecimiento & Sala blanca & 4 & Separa servidores y comunicaciones (RT-06.05); R04 absorbe el crecimiento a tres años sin obras. \\
+  D12 --- Cableado estructurado & Cat6A y fibra OM4 certificados por enlace, sobre piso técnico de 40 cm & Sala & 1 & Cumple la norma por enlace (RT-06.04) con recorridos verificados para 10 GbE. \\
+\end{tablalafrox}
+
+\section*{Plataforma de nube y servicios gestionados}
+
+La Tabla~\ref{tab:t11-nube} detalla los servicios contratados en la plataforma de nube y en servicios gestionados de terceros, ordenados por componente del catálogo.
+
+\begin{tablalafrox}{Formulario T-11: plataforma de nube y servicios gestionados}{tab:t11-nube}%
+  {F{0.17} Y F{0.16} G{0.13} Y}%
+  {\cab{Componente} & \cab{Servicio ofertado} & \cab{Ubicación} & \cab{Cant.} & \cab{Justificación}}
+  N-01 a N-03 --- Portales & S3, CloudFront, AWS WAF, API Gateway y la tarea portal en ECS Fargate & sa-east-1, DMZ pública & 1 aplicación para 3 portales & Publica los portales de clientes, transportistas y proveedores sin exponer los sitios del CLIENTE (RT-03.04). \\
+  N-04 --- Plataforma de aplicación & ECS Fargate, Application Load Balancer, Elastic Container Registry y CodeBuild & sa-east-1 en 2 zonas; réplica reducida en us-east-1 & 2 a 6 tareas y 2 a 4 workers & Ejecuta el monolito Django y los workers Celery con escalado automático para el peak de septiembre (ADR-01, ADR-12). \\
+  N-05 --- Base de datos en nube & Aurora PostgreSQL con Aurora Global Database y AWS DMS & sa-east-1 y us-east-1 & 1 clúster & Transaccional de los módulos en nube y réplica del WMS, con conmutación entre zonas en menos de 30 s y RPO de 15 min (ADR-04, ADR-09). \\
+  N-06 --- Telemetría cruda & DynamoDB bajo demanda con Global Tables & sa-east-1 y us-east-1 & 1 tabla por serie & Recibe las lecturas de IoT sin gestión de capacidad y las expira a los 30 días (ADR-04). \\
+  N-07 --- Caché & ElastiCache for Redis con primario y réplica & sa-east-1 en 2 zonas & 1 clúster & Responde la consulta de stock y crédito de preventa en menos de 2 s. \\
+  N-08 --- Ingesta de IoT & IoT Core, Lambda e IoT Greengrass & sa-east-1 y gateways de borde & 2 gateways y 18 termógrafos & Recibe, valida y alerta la telemetría de cadena de frío, y gestiona la flota de gateways. \\
+  N-09 --- Mensajería & SQS FIFO y SNS & sa-east-1 & 1 cola por sitio & Reconcilia los sitios en orden y sin duplicados, y difunde las alertas de frío (ADR-05). \\
+  N-10 --- Plataforma analítica & S3, Glue, Redshift Serverless y QuickSight & sa-east-1 & 1 lago de 5 años & Separa la analítica del transaccional y publica los tableros del CLIENTE. \\
+  N-11 --- Respaldo y réplica & AWS Backup con Vault Lock, S3 Object Lock y replicación de S3 entre regiones & sa-east-1 y us-east-1 & 1 política & Mantiene la copia inmutable del esquema 3-2-1-1-0 y la réplica de recuperación (ADR-09). \\
+  N-12 --- Seguridad y gobierno & KMS, Secrets Manager, Parameter Store, IAM Identity Center, Shield Advanced, GuardDuty, Security Hub, Inspector, Macie, Security Lake, CloudTrail, Config, CloudWatch, Systems Manager, Control Tower, Organizations, Cost Explorer y Budgets & sa-east-1; claves y secretos también en us-east-1 & 5 cuentas & Cumple los controles del Artículo 21 y el gobierno de costos como servicios administrados (ADR-14, ADR-15). \\
+  D-01 --- Red en nube y terminación de la VPN & VPC, Transit Gateway, Site-to-Site VPN, NAT Gateway, VPC Endpoints y Route 53 & sa-east-1 y us-east-1 & 2 túneles por CD & Conecta los sitios con la nube sin tráfico de datos por Internet (RT-03.03, RT-03.04). \\
+  N-13 --- Gestión de dispositivos & Android Enterprise y Zebra DNA como servicio gestionado & Servicio en nube y agente en el dispositivo & 462 dispositivos & Enrola, configura, actualiza y borra de forma selectiva el parque de terreno y de bodega (RT-03.18). \\
+  F-03 --- Detección en endpoints & Consola EDR gestionada y agentes & Servicio en nube y agente en cada nodo y estación & 1 por endpoint & Detecta y responde en nube y on-premise desde una sola consola (RT-11.16). \\
+\end{tablalafrox}
+
+\section*{Software de base y licenciamiento}
+
+La Tabla~\ref{tab:t11-software} detalla el software que opera sobre el equipamiento y la plataforma anteriores.
+
+\begin{tablalafrox}{Formulario T-11: software de base y licenciamiento}{tab:t11-software}%
+  {F{0.17} Y F{0.16} G{0.13} Y}%
+  {\cab{Componente} & \cab{Producto ofertado} & \cab{Ubicación} & \cab{Cant.} & \cab{Justificación}}
+  Aplicación & Monolito modular en Django y Python con workers Celery, en una imagen única con modo wms\_only & Nube, VM-01, VM-C01 y E-01 & 1 imagen & Una sola base de código para nube y sitios, con paridad de versiones (ADR-01). \\
+  Aplicación de terreno & Aplicación nativa Android en Kotlin, con SQLite y Zebra DataWedge & EC55, TC58e y MC9400 & 1 artefacto para 3 perfiles & Controla los periféricos industriales y opera un turno completo sin señal (ADR-07). \\
+  Base de datos & PostgreSQL 16 con PostGIS, código abierto & VM-02, VM-C02 y los tres E-01 & 5 instancias & Registro de la bodega durante los cortes, replicado a Aurora por DMS. \\
+  Broker & RabbitMQ, código abierto & VM-03, VM-C04 y los tres E-01 & 5 instancias & Buffer de 24 h por sitio con vuelco ordenado a SQS FIFO (ADR-05). \\
+  Identidad & Keycloak, código abierto & Fargate, VM-05 y VM-C03 & 1 maestro y 2 cachés & Autoridad única en nube con cachés de solo lectura (ADR-06). \\
+  Virtualización & Proxmox VE con Ceph, código abierto & Clúster de Talca & 1 clúster de 3 nodos & Tolera la pérdida de un nodo sin detener la bodega. \\
+  Contenedores de borde & Docker y Docker Compose, código abierto & Concepción y los tres cross-docking & 4 sitios & Instalación y parcheo sin dependencia de la red. \\
+  Observabilidad de sitio & AWS Distro for OpenTelemetry y agente SSM & VM-06, VM-C04 y los tres E-01 & 5 colectores & Buffer de 24 h y envío a CloudWatch al reconectar (ADR-14). \\
+  Configuración & Ansible y Terraform con CDK, código abierto & Repositorio del CLIENTE & 1 repositorio & Infraestructura y configuración declaradas como código versionado. \\
+\end{tablalafrox}

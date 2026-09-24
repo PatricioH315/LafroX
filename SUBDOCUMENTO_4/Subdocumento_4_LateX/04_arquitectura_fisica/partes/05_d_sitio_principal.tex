@@ -33,21 +33,4 @@ Cableado y comunicaciones: cableado estructurado Cat6A F/UTP + fibra OM4 certifi
 
 \figuralafrox{0.86}{DC03b_Elevacion_Racks_RT0605.png}{Elevación de los cuatro gabinetes, con la ocupación proyectada de cada uno y el margen de crecimiento reservado en R04}{fig:dc-racks}
 
-Los componentes de infraestructura de sala del CD Talca (UPS, generador, transferencia automática, climatización, seguridad física, extinción, cableado y gabinetes) se detallan en la Tabla~\ref{tab:t27}. El equipamiento de cómputo, red y comunicaciones que se aloja en estos gabinetes (servidores, switches, firewalls, WLAN, terminales) se declara en el capítulo de implementos:
-
-\begin{tablalafrox}{Componentes de sala del sitio principal (CD Talca)}{tab:t27}%
-  {F{0.21} Y F{0.21} G{0.08} Y}%
-  {\cab{Componente} & \cab{Producto ofertado} & \cab{Ubicación} & \cab{Cant.} & \cab{Justificación}}
-  D1 --- UPS & Doble conversión on-line 6 kVA, N+1, banco VRLA $\geq$ 30 min & Sala de UPS/baterías (2\textordfeminine{} línea) & 1 & Sin parpadeo entre la caída de red y la partida del generador; autonomía $\geq$ 30 min a plena carga (RT-06.07). \\
-  D2 --- Generador & Grupo electrógeno 12 kVA, estanque 24 h + contratos de reabastecimiento & Patio generador (exterior) & 1 & Asume TI y clima en 8--15 s; el estanque garantiza 24 h (RT-06.08). \\
-  D3 --- ATS/TTA + tablero & Transferencia automática red$\leftrightarrow$generador + protecciones selectivas & Acometida (accesible desde fuera) & 1 & Transferencia automática con prueba mensual con carga real y termografía periódica (RT-06.10). \\
-  D4 --- Climatización & 2 CRAC de precisión $\approx$ 12.000 BTU/h, N+1, free cooling, 18--27 \textdegree{}C / 40--60 \% HR & Sala de climatización & 2 & Rango ASHRAE en toma de aire del equipo (RT-06.13 y RT-06.14); redundancia N+1 y pasillo frío confinado. \\
-  D5 --- PDU racks & 2 PDU verticales A/B por gabinete, con medidor & 4 racks sala & 4 $\times$ 2 & Dos caminos eléctricos independientes por gabinete (RT-08.04); el medidor es el denominador del PUE. \\
-  D6 --- Detección de incendios & Detección por aspiración AnaLASER o equivalente & Sala blanca & 1 & Detección temprana antes de llama visible (RT-06.16). \\
-  D7 --- Extinción & FM-200 o equivalente, NFPA 75/2001, botón de aborto & Sala blanca & 1 & Agente limpio sobre equipos energizados (RT-06.17) y extintores ABC/CO\textsubscript{2} por recinto (RT-06.18). \\
-  D8 --- Seguridad física & Biometría facial + resguardo AFIS, esclusa, bitácora electrónica & Acceso a la sala (4 capas) & 1 & Doble factor con re-verificación biométrica y antipassback (RT-06.20, RT-06.21 y RT-06.23). \\
-  D9 --- Videovigilancia & 7 cámaras IP, retención $\geq$ 30 días + respaldo auditable & Sala + perímetro & 7 & Cobertura de cada puerta controlada; \guillemotleft{}la puerta marca el video\guillemotright{} (RT-06.24). \\
-  D10 --- Recinto de custodia & Sala de custodia 10 m\textsuperscript{2}: LED sin UV $\leq$ 300 lux, 40--60 \% HR, ventilación forzada, 18--27 \textdegree{}C & Sala --- 2\textordfeminine{} línea & 1 & Medios de respaldo en condiciones que no degradan el soporte (RT-06.27), accesible sin cruzar la sala blanca (RT-06.26). \\
-  D11 --- Gabinetes & 4 racks 42U (R01 servidores, R02 red, R03 HDA/respaldo, R04 crecimiento) & Sala blanca & 4 & Servidores y comunicaciones separados (RT-06.05); el rack R04 absorbe el crecimiento a 3 años sin obras. \\
-  D12 --- Cableado estructurado & Cat 6A + fibra OM4 certificado por enlace; piso técnico 40 cm & Sala & 1 & Normativa por enlace (RT-06.04) y recorridos máximos/mínimos verificados para enlaces de 10 GbE. \\
-\end{tablalafrox}
+Los componentes de infraestructura de sala del CD Talca (UPS, generador, transferencia automática, climatización, seguridad física, extinción, cableado y gabinetes) se detallan en la Tabla~\ref{tab:t27} del Formulario T-11, que acompaña a esta parte como anexo. El equipamiento de cómputo, red y comunicaciones que se aloja en estos gabinetes se resume en la sección~\ref{sec:4-2-5-implementos}.
