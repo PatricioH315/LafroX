@@ -816,14 +816,25 @@ El diagrama general permite ubicar los componentes y las trece vistas por perfil
 La Figura~\ref{fig:arql-2} presenta esta vista completa de la solución. La vista del preventista sigue un pedido desde la captura local de M3 hasta la validación de stock y crédito.
 
 \begin{center}
-  \includegraphics[width=0.96\linewidth,height=0.72\textheight,keepaspectratio]{Diagramas/arquitectura_logica_actual/ARQL-02_Preventista.png}
+  \includegraphics[width=0.96\linewidth,height=0.72\textheight,keepaspectratio]{arquitectura_logica_actual/ARQL-01_Vision_general.png}
+  \captionof{figure}{Diagrama general de la arquitectura lógica}
+  \label{fig:arql-1}
+\end{center}
+
+En este diagrama se muestra la arquitectura de la solución completa, descrita anteriormente, donde se presentan las 8 capas en conjunto (desde la capa de presentación hasta las capas transversales). donde adicionalmente se puede visualizar las interacciones entre los usuarios a sus respectivos módulos funcionales (M1 a M12), adicionalmente de ver cómo se interactúa con el resto de las capas junto a las tecnologías que se utilizan respectivamente tanto en la nube como on-premise.
+
+\end{anexohorizontal}
+\clearpage
+\begin{anexohorizontal}
+\subsection{Diagrama del preventista de la arquitectura lógica}
+
+\begin{center}
+  \includegraphics[width=0.96\linewidth,height=0.72\textheight,keepaspectratio]{arquitectura_logica_actual/ARQL-02_Preventista.png}
   \captionof{figure}{Diagrama del preventista de la arquitectura lógica}
   \label{fig:arql-2}
 \end{center}
 
-{\footnotesize Fuente: elaboración propia de LafroX.\par}
-
-La fotografía local permite trabajar sin señal, mientras la reserva definitiva permanece en M2.
+Este diagrama representa el flujo del preventista dentro de la arquitectura lógica, quien interactúa a través de la aplicación móvil (Kotlin) dedicada a los preventistas. por otro lado se destaca su conexión con los módulos M3, dedicado a las funcionalidades que el preventista va a acceder dentro del sistema
 
 \end{anexohorizontal}
 \clearpage
@@ -838,9 +849,7 @@ La Figura~\ref{fig:arql-3} presenta esta vista completa de la solución. La vist
   \label{fig:arql-3}
 \end{center}
 
-{\footnotesize Fuente: elaboración propia de LafroX.\par}
-
-El POD permanece asociado a la guía ya emitida y a la identidad de quien efectuó la entrega.
+En este caso se muestra la interacción en el conductor que le trabaja a la empresa de puelche en sí. donde se enfoca en su relación/interacción entre los módulos M6 y M7, mostrando cómo registra pruebas de entrega, cobros de ruta y devoluciones, para posteriormente sincronizar esta información de vuelta a los sistemas centrales.
 
 \end{anexohorizontal}
 \clearpage
@@ -855,9 +864,7 @@ La Figura~\ref{fig:arql-4} presenta esta vista completa de la solución. La vist
   \label{fig:arql-4}
 \end{center}
 
-{\footnotesize Fuente: elaboración propia de LafroX.\par}
-
-La sustitución de conductor exige una nueva asignación; una cuenta compartida rompería la cadena de evidencia.
+Similar al diagrama anterior correspondiente al del conductor propio, este diagrama detalla el flujo para el conductor externo propio dispositivo (BYOD) con autenticación mediante OTP donde interactúa con el módulo M6, asegurando que las funcionalidades se realicen bajo los mismos estándares de seguridad y trazabilidad que el personal interno.
 
 \end{anexohorizontal}
 \clearpage
@@ -872,9 +879,7 @@ La Figura~\ref{fig:arql-5} presenta esta vista completa de la solución. La vist
   \label{fig:arql-5}
 \end{center}
 
-{\footnotesize Fuente: elaboración propia de LafroX.\par}
-
-La evidencia se captura en el lugar de entrega y luego se sincroniza con su pedido y documento.
+Ilustra cómo interactúa el cliente de canal tradicional, principalmente a través de portales web. El diagrama muestra su conexión con la capa de presentación y cómo su información fluye hacia los módulos de preventa (M3), además de reflejar las notificaciones multicanal (SMS/WhatsApp) gestionadas por la plataforma.
 
 \end{anexohorizontal}
 \clearpage
@@ -889,9 +894,7 @@ La Figura~\ref{fig:arql-6} presenta esta vista completa de la solución. La vist
   \label{fig:arql-6}
 \end{center}
 
-{\footnotesize Fuente: elaboración propia de LafroX.\par}
-
-M11 gobierna el contrato con cada cadena y evita que una diferencia de formato contamine los módulos de venta.
+Describe la integración B2B con clientes del canal moderno (supermercados). Se destaca el uso del Hub EDI GS1 (Módulo M11) en la capa de integración, el cual procesa mensajes (EANCOM, GS1 XML) de forma asíncrona y se comunica con los módulos de preventa (M3) y reparto (M6), interactuando también con las bases de datos transaccionales correspondientes.
 
 \end{anexohorizontal}
 \clearpage
@@ -906,9 +909,7 @@ La Figura~\ref{fig:arql-7} presenta esta vista completa de la solución. La vist
   \label{fig:arql-7}
 \end{center}
 
-{\footnotesize Fuente: elaboración propia de LafroX.\par}
-
-El portal administra vínculos y rutas, pero no le otorga acceso al inventario ni a datos de otros transportistas.
+Muestra el acceso del transportista a través del portal web específico para su perfil. Se detalla su interacción con el módulo M6, reflejando el flujo de datos hacia las bases de datos de rutas y telemetría.
 
 \end{anexohorizontal}
 \clearpage
@@ -923,9 +924,7 @@ La Figura~\ref{fig:arql-8} presenta esta vista completa de la solución. La vist
   \label{fig:arql-8}
 \end{center}
 
-{\footnotesize Fuente: elaboración propia de LafroX.\par}
-
-El lote del proveedor se captura al recibir y alimenta la trazabilidad que consulta M9.
+Representa la vista del proveedor, interactuando mediante el portal web. El flujo principal se dirige al módulo de Recepción (M1), permitiéndole consultar órdenes, recepciones y lotes, integrándose a su vez con la capa anticorrupción (ACL) para reflejar los datos provenientes del ERP.
 
 \end{anexohorizontal}
 \clearpage
@@ -940,9 +939,7 @@ La Figura~\ref{fig:arql-9} presenta esta vista completa de la solución. La vist
   \label{fig:arql-9}
 \end{center}
 
-{\footnotesize Fuente: elaboración propia de LafroX.\par}
-
-La secuencia se conserva localmente durante un corte y publica eventos al reconciliar.
+Ilustra la operación del preparador de bodega utilizando terminales HHT. Destaca su interacción directa con los servicios para las misiones de preparación (M5), asegurando la continuidad operativa (24h de autonomía) incluso ante cortes de enlace externo.
 
 \end{anexohorizontal}
 \clearpage
@@ -957,9 +954,7 @@ La Figura~\ref{fig:arql-10} presenta esta vista completa de la solución. La vis
   \label{fig:arql-10}
 \end{center}
 
-{\footnotesize Fuente: elaboración propia de LafroX.\par}
-
-M9 detecta la excursión; la autorización de liberar producto permanece bajo responsabilidad de Calidad.
+Muestra el perfil de la Jefa de Calidad, cuyo trabajo se centra en el módulo de Calidad y Trazabilidad (M9) a través de la consola web. la capacidad de interactuar con el módulo de revision de mercancia M1 evidenciado la funcionalidad clave de trazabilidad en el sistema
 
 \end{anexohorizontal}
 \clearpage
@@ -974,9 +969,7 @@ La Figura~\ref{fig:arql-11} presenta esta vista completa de la solución. La vis
   \label{fig:arql-11}
 \end{center}
 
-{\footnotesize Fuente: elaboración propia de LafroX.\par}
-
-El tablero M10 consulta datos consolidados y no escribe sobre las transacciones originales.
+Detalla el acceso del Gerente Comercial a los tableros gerenciales mediante la consola de BI. Su interacción principal es con el módulo BI/Gerencia (M10), el cual extrae información de la base de datos analítica (Redshift) para visualizar métricas clave como OTIF, fill rate y costo de servir, sin afectar el rendimiento transaccional.
 
 \end{anexohorizontal}
 \clearpage
@@ -991,9 +984,7 @@ La Figura~\ref{fig:arql-12} presenta esta vista completa de la solución. La vis
   \label{fig:arql-12}
 \end{center}
 
-{\footnotesize Fuente: elaboración propia de LafroX.\par}
-
-M7 conserva la rendición individual y M10 calcula el costo sin alterar el registro tributario del ERP.
+Representa la vista del Gerente de Finanzas, interactuando con los módulos de Cobranza/Rendición (M7) a través de la consola correspondiente. El diagrama muestra el flujo hacia la base de datos de finanzas, facilitando el seguimiento de ingresos y rendiciones.
 
 \end{anexohorizontal}
 \clearpage
@@ -1008,9 +999,7 @@ La Figura~\ref{fig:arql-13} presenta esta vista completa de la solución. La vis
   \label{fig:arql-13}
 \end{center}
 
-{\footnotesize Fuente: elaboración propia de LafroX.\par}
-
-La propuesta automática conserva las excepciones y decisiones del planificador para transferir su conocimiento.
+Muestra la operación del planificador utilizando su consola web específica. El foco principal está en el módulo de Planificación de Rutas (M4), evidenciando su interacción con el servicio externo GIS (Capa 3) para geocodificación y cálculo de ETA, y su relación con los módulos de inventario y preventa para secuenciar las entregas.
 
 \end{anexohorizontal}
 \clearpage
@@ -1025,9 +1014,7 @@ La Figura~\ref{fig:arql-14} presenta esta vista completa de la solución. La vis
   \label{fig:arql-14}
 \end{center}
 
-{\footnotesize Fuente: elaboración propia de LafroX.\par}
-
-La operación técnica se apoya en trazas y alertas, mientras cada módulo conserva el dueño de sus reglas de negocio.
+Ilustra la visión integral que tiene el Gerente de TI, accediendo a través de la consola de administración. El diagrama muestra su capacidad para interactuar con todos los módulos de negocio (M1 a M12), la capa de integración, y las bases de datos de gobierno y control de acceso (Keycloak), reflejando su rol en la gestión técnica y monitoreo de la plataforma.
 
 \end{anexohorizontal}
 
