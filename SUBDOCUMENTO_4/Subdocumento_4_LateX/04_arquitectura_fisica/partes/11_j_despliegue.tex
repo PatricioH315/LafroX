@@ -56,12 +56,12 @@ Si la falla de un despliegue se manifestara durante la ventana de despacho, la b
 
 \subsubsection{Calendario y cadencia}
 
-El calendario de Puelche limita cuándo se puede intervenir la plataforma. El caso prohíbe intervenir los sistemas en septiembre y en diciembre y durante el cierre contable de cada mes, y exige indisponibilidad cero en la ventana de despacho (Caso, Cap. 10, restricción 8). La Tabla~\ref{tab:jd02} cruza cada período con lo que admite.
+El calendario de Puelche limita cuándo se puede intervenir la plataforma. El caso prohíbe intervenir los sistemas entre el 1 y el 25 de septiembre, en diciembre y durante el cierre contable de cada mes, prohíbe el paso a producción en todo septiembre y en diciembre, y exige indisponibilidad cero en la ventana de despacho (Caso, Cap. 10, restricción 8, y Cap. 13.3). La Tabla~\ref{tab:jd02} cruza cada período con lo que admite.
 
 \begin{tablalafrox}{Ventanas de despliegue}{tab:jd02}%
   {F{0.36} F{0.26} Y}%
   {\cab{Período} & \cab{Despliegue} & \cab{Indisponibilidad programada}}
-  1 al 25 de septiembre & No & No \\
+  Todo septiembre; sin intervención alguna del 1 al 25 & No & No \\
   Todo diciembre & No & No \\
   Tres primeros días hábiles del mes & No & No \\
   05:30--07:00, lunes a sábado & No & No \\
@@ -78,23 +78,23 @@ El despliegue sin interrupción es, por lo tanto, la regla y no una capacidad op
 
 La sección de conexiones describe los caminos entre los sitios, el terreno y la nube, y su conmutación (Figura~\ref{fig:conexiones} y Tabla~\ref{tab:conexiones}). El despliegue agrega tres definiciones sobre esa red: dónde llegan los túneles, cómo se reparte el direccionamiento y cómo se dirige el tráfico entre regiones.
 
-Los túneles VPN de los cinco sitios terminan en el VPN Gateway adjunto a la VPC de Producción, que también enruta entre ellos. Es la única VPC con enlace hacia los sitios, coherente con que el on-premise es producción: Desarrollo, Calidad y Pre-Producción no tienen conectividad con las bodegas, de modo que un error en un ambiente de prueba no puede alcanzarlas. El direccionamiento se asigna sin solapamiento, según la Tabla~\ref{tab:t64}.
+Los túneles VPN de los cinco sitios terminan en un Transit Gateway en sa-east-1, que enruta entre ellos y los une solo a la VPC de Producción. Es la única VPC con enlace hacia los sitios, coherente con que el on-premise es producción: Desarrollo, Calidad y Pre-Producción no tienen conectividad con las bodegas, de modo que un error en un ambiente de prueba no puede alcanzarlas. El direccionamiento se asigna sin solapamiento, según la Tabla~\ref{tab:t64}.
 
 \begin{tablalafrox}{Direccionamiento y segmentación}{tab:t64}%
   {F{0.30} F{0.27} Y}%
   {\cab{Dominio} & \cab{Bloque} & \cab{Segmentación}}
   Talca & 10.1.0.0/16 & VLAN de gestión, servidores, operación, estaciones e IoT \\
   Concepción & 10.2.0.0/16 & Mismas VLAN que Talca \\
-  Cross-docking & 10.3.0.0/16 a 10.5.0.0/16 & Red plana tras el firewall del sitio, por la VPN \\
+  Cross-docking & 10.3.0.0/16 a 10.5.0.0/16 & VLAN de gestión y de operación tras el firewall del sitio, por la VPN \\
   Sitio adicional previsto & 10.6.0.0/16 & Reservado \\
   VPC Producción, zona pública & 10.101.1.0/24 y 10.101.2.0/24 & Balanceador, origen de CloudFront, NAT y portales \\
-  VPC Producción, zona privada & Resto de 10.101.0.0/16 & Aplicación, datos y VPN Gateway \\
+  VPC Producción, zona privada & Resto de 10.101.0.0/16 & Aplicación, datos y adjunto del Transit Gateway \\
 \end{tablalafrox}
 \fuente{elaboración propia; RT-02.12 y RT-03.04.}
 
 Cada sitio con cómputo dispone de un bloque propio, y el centro de distribución que Puelche evalúa abrir hacia 2030 ya tiene el suyo reservado, de modo que su incorporación es una parametrización de la infraestructura como código y no un rediseño (RT-02.12). En la nube, solo la zona pública expone servicios: la aplicación y los datos residen en subredes privadas y consumen los servicios de AWS por VPC Endpoints, sin tráfico por Internet, por lo que ningún componente de datos es alcanzable desde fuera (RT-03.04).
 
-El tráfico de los usuarios externos entra por CloudFront y por la capa de protección descrita en la arquitectura de seguridad. Entre regiones, Route 53 opera con enrutamiento de conmutación por falla y verificaciones de salud activas: sa-east-1 recibe todo el tráfico en operación normal y la conmutación hacia us-east-1 es automática ante falla, coherente con la modalidad activo-pasiva del ADR-09.
+El tráfico de los usuarios externos entra por CloudFront y por la capa de protección descrita en la arquitectura de seguridad. Entre regiones, Route 53 opera con enrutamiento de conmutación por falla y verificaciones de salud activas: sa-east-1 recibe todo el tráfico en operación normal y la conmutación hacia us-east-1 es automática ante falla, coherente con la modalidad activo-pasiva del ADR-09. Para esa conmutación, la conexión Site-to-Site VPN de los sitios hacia la VPC de recuperación en us-east-1 está declarada como código y se activa en el paso de reconexión del broker (Tabla~\ref{tab:jd09}).
 
 La red también debe devolver a la normalidad a un sitio que operó desconectado. El compromiso es resincronizar la flota en hasta 10 minutos y un centro de distribución en hasta 2 horas después de un corte de 24 horas (Tabla~\ref{tab:t29}). Tomando como cota el volumen transaccional anual de toda la solución, unos 375 GB (Tabla~\ref{tab:t72}), atribuido a un solo centro de distribución y duplicado por el peak de septiembre, un corte de 24 horas acumula unos 2,1 GB. La evidencia de entrega no se suma, porque el terreno la envía por la red celular sin pasar por el centro de distribución. Con los anchos de banda de la Tabla~\ref{tab:t81}, ese volumen se drena en unos 14 minutos por la fibra de Talca y en 27 por la de Concepción; aun por los enlaces LTE de respaldo tarda 55 minutos en Talca y 1 hora y 31 minutos en Concepción, dentro del compromiso de 2 horas en todos los casos. Al reconectar, la calidad de servicio prioriza el broker y el registro de escritura anticipada sobre la telemetría.
 
@@ -113,11 +113,11 @@ No todos los servicios necesitan el mismo nivel de continuidad. El Artículo 78 
 \end{tablalafrox}
 \fuente{Art. 78.1 y 78.2 de las Bases Administrativas; transacciones críticas según el Caso, Cap. 15 (RT-09.01).}
 
-Son críticos los servicios cuya falla detiene un proceso de negocio sin alternativa: la preparación, la entrega, la toma de pedido y la consulta de stock y crédito son las transacciones operacionales críticas que fija el caso, la ventana de despacho no admite ejecución manual, el bloqueo por excursión térmica responde a una exigencia sanitaria y sin identidad no opera ningún otro servicio. Los servicios altos tienen una alternativa costosa, como planificar la ruta a mano en 3,5 horas o retener en cola hasta 24 horas las transacciones hacia el ERP; los medios tienen una alternativa disponible, y los bajos no impiden operar. La consecuencia para la arquitectura es directa: el compromiso penalizable del 99,9 \% recae sobre seis servicios, y todos se ejecutan en el on-premise o tienen un camino local en el dispositivo.
+Son críticos los servicios cuya falla detiene un proceso de negocio sin alternativa: la preparación, la entrega, la toma de pedido y la consulta de stock y crédito son las transacciones operacionales críticas que fija el caso, la ventana de despacho no admite ejecución manual, el bloqueo por excursión térmica responde a una exigencia sanitaria y sin identidad no opera ningún otro servicio. Los servicios altos tienen una alternativa costosa, como planificar la ruta a mano en 3,5 horas o retener en cola hasta 24 horas las transacciones hacia el ERP; los medios tienen una alternativa disponible, y los bajos no impiden operar. La consecuencia para la arquitectura es directa: el compromiso penalizable del 99,9 \% recae sobre seis servicios, y cinco de ellos se ejecutan en el on-premise o tienen un camino local en el dispositivo. La excepción es la consulta de stock y crédito, que se atiende desde la nube (Tabla~\ref{tab:t84}) y se sostiene con la base y la caché distribuidas en varias zonas.
 
 Esa es la razón por la que el 99,9 \% de extremo a extremo no depende de multiplicar las disponibilidades de la infraestructura. El numeral 7.2 de las Transversales fija un mínimo de 99,95 \% mensual para la energía, la climatización, la red, el cómputo, la base de datos y los portales, pero esos valores son pisos por subsistema y su producto en serie quedaría por debajo del 99,9 \%. El compromiso se sostiene en la redundancia interna de cada subsistema y en la ruta que sigue cada transacción. La confirmación de preparación, la más estricta, se ejecuta contra la base local del centro de distribución y no atraviesa la WAN ni la nube; descansa sobre energía y climatización en N+1, un par de firewall en alta disponibilidad, dos switches en stack, un clúster de tres nodos N+1 y almacenamiento Ceph sobre RAID 10, con un solo elemento en serie, la instancia de escritura VM-02, que se reinicia en otro nodo del clúster (Tabla~\ref{tab:fallas-sitios}). Las transacciones de terreno, por su parte, tienen dos caminos en paralelo: la nube y la caché de turno del dispositivo.
 
-En la nube, todos los servicios con requisito de alta disponibilidad operan en al menos dos zonas (RT-03.02). Aurora mantiene su escritor y una réplica en otra zona, a la que conmuta en menos de 30 segundos, y suma dos lectores en el peak de septiembre; ElastiCache mantiene primario y réplica en dos zonas y conmuta en menos de 60 segundos; las tareas de ECS Fargate se distribuyen en dos zonas y se reprograman solas ante la pérdida de una; y DynamoDB, el balanceador y los NAT Gateway son multizona por diseño. Ninguna conmutación supera un minuto. Ante el peak de septiembre, el escalamiento automático y la degradación controlada del apartado de dimensionamiento sostienen los umbrales de desempeño sin intervención.
+En la nube, todos los servicios con requisito de alta disponibilidad operan en al menos dos zonas (RT-03.02). Aurora escribe en sa-east-1a y mantiene lectores en sa-east-1b y sa-east-1c, a los que conmuta en menos de 30 segundos; ElastiCache mantiene primario y réplica entre sa-east-1a y sa-east-1b y conmuta en menos de 60 segundos; las tareas de ECS Fargate se distribuyen en dos zonas y se reprograman solas ante la pérdida de una; y DynamoDB, el balanceador y los NAT Gateway son multizona por diseño. Ninguna conmutación supera un minuto. Ante el peak de septiembre, el escalamiento automático y la degradación controlada del apartado de dimensionamiento sostienen los umbrales de desempeño sin intervención.
 
 \subsection{Recuperación ante desastres}
 \label{sub:4-recuperacion-ante-desastres-ba-art-20-rt}
@@ -170,7 +170,7 @@ Cuando la contingencia afecta solo a la bodega de Talca, el DRP local promueve e
 
 Mientras la región primaria no está disponible, la bodega y el terreno siguen operando contra sus bases locales y sus dispositivos, y los servicios en nube vuelven con la promoción de la réplica. Dos capacidades quedan fuera hasta el retorno, por diseño: la analítica, porque la región secundaria no se explota analíticamente, y las consultas sobre datos de geolocalización de personas, que no se replican fuera de sa-east-1 conforme a los resguardos de residencia y transferencia internacional declarados en la arquitectura de seguridad. Ninguna de las dos es un servicio crítico, y ambas se restituyen al volver a la región primaria.
 
-La réplica que sostiene todo lo anterior se compone de la base Aurora promovible en us-east-1, alimentada por AWS DMS; de las copias inmutables en ambas regiones; de la bóveda física externa; de la copia local D-05 en Talca; y del procedimiento de conmutación y retorno. Se reparte en dos dominios y cuatro ubicaciones, de modo que la pérdida de una sola no deja al dato sin copia.
+La réplica que sostiene todo lo anterior se compone de la base Aurora promovible en us-east-1, alimentada por Aurora Global Database desde la región primaria, que a su vez recibe el WMS de los sitios por AWS DMS; de las copias inmutables en ambas regiones; de la bóveda física externa; de la copia local D-05 en Talca; y del procedimiento de conmutación y retorno. Se reparte en dos dominios y cuatro ubicaciones, de modo que la pérdida de una sola no deja al dato sin copia.
 
 \subsection{Respaldos}
 \label{sub:5-respaldos-esquema-3-2-1-1-0-rnf-20-07}
@@ -198,7 +198,7 @@ La Tabla~\ref{tab:jd12} muestra, para cada dominio de datos, con qué frecuencia
 
 Cada tiempo de restauración corresponde al plazo de resolución que el Artículo 78.2 asigna a la criticidad del servicio que usa el dato, con una excepción más exigente: la trazabilidad sanitaria se restaura en menos de 2 horas, porque ese es el plazo en que Puelche debe responder un retiro sanitario (Caso, Cap. 18). Las retenciones cumplen o superan las del caso. La restauración, además, puede ser parcial: la recuperación de Aurora a un instante específico, sobre una instancia temporal, permite restituir un registro, una tabla, un módulo o el sistema completo sin intervenir el ambiente productivo (RT-07.14).
 
-AWS Backup materializa esas frecuencias sobre los recursos de la plataforma: respalda Aurora a diario con recuperación continua a un instante específico y DynamoDB a diario, ambos con 35 días de retención; EFS con 30 días y EBS con 14; los documentos legales en S3 de forma continua, con versionado y Object Lock durante 6 años y réplica entre regiones; y los registros de seguridad y auditoría durante 7 años bajo Object Lock.
+AWS Backup materializa esas frecuencias sobre los recursos de la plataforma: respalda Aurora a diario con recuperación continua a un instante específico y DynamoDB a diario, ambos con 35 días de retención; los documentos legales en S3 de forma continua, con versionado y Object Lock durante 6 años y réplica entre regiones; y los registros de seguridad y auditoría durante 7 años bajo Object Lock.
 
 \subsection{Verificación de la continuidad}
 \label{sub:6-verificacion-de-la-continuidad}

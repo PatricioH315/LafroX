@@ -112,7 +112,7 @@ Registro consolidado de las quince decisiones de arquitectura que condicionan es
 \section{ADR-12 \textperiodcentered{} Absorción del peak de septiembre}
 \label{sub:adr-12}
 
-\textbf{Decisión adoptada.} Cómputo elástico: Fargate 2$\rightarrow$6, Celery 2$\rightarrow$4, Lambda 100$\rightarrow$500, Aurora large$\rightarrow$xlarge +2 readers, DynamoDB on-demand. Escala predictiva + reactiva. Base con Savings Plan, peak con cómputo efímero.
+\textbf{Decisión adoptada.} Cómputo elástico: Fargate 2$\rightarrow$6, Celery 2$\rightarrow$4, Lambda 100$\rightarrow$500, Aurora large$\rightarrow$xlarge (escritor y 2 lectores en 3 zonas), DynamoDB on-demand. Escala predictiva + reactiva. Base con Savings Plan, peak con cómputo efímero.
 
 \textbf{Alternativas descartadas.} \emph{Capacidad fija al peak}: paga 12 meses la capacidad de 3 semanas. \emph{Solo escala reactiva}: burst predecible de septiembre; la reactiva sola introduce lag en ventana crítica.
 

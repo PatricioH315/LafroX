@@ -1,21 +1,29 @@
 % ------------------------------------------------------------------
-%  Especificaciones del sitio secundario
+%  4.3.2 Data center secundario
 %  Fragmento del Subdocumento 4.2, traido desde contenido.tex con
 %  \parte{partes/06_e_sitio_secundario}. Las rutas son relativas a la carpeta del
 %  subdocumento, nunca a la de main.tex.
+%
+%  Alineado al texto de la sección 4.3.2 (Tabla 4.3-3) y al Formulario T-11
+%  de data center (gabinete de borde del CD Concepción).
 % ------------------------------------------------------------------
 
-\chapter{Especificaciones del sitio secundario}
+\section{Data center secundario}
 \label{sec:e-especificaciones-del-sitio-secundario-y-}
 
 \paragraph{Cómo se satisface el numeral 7.1.}
-Las Transversales exigen un sitio secundario en dependencias distintas del principal, en modalidad activo-activo o activo-pasivo, con replicación en línea del ambiente de producción y características tecnológicas equivalentes a las del sitio principal en lo que respecta a los servicios críticos. La solución lo satisface con dos sitios secundarios, uno por cada dominio del despliegue híbrido, porque la carga crítica vive en ambos:
+Las Transversales exigen un sitio secundario en dependencias distintas del principal, en modalidad activo-activo o activo-pasivo, con replicación en línea del ambiente de producción y características tecnológicas equivalentes a las del sitio principal en lo que respecta a los servicios críticos. La modalidad declarada es activo-pasiva en caliente (ADR-09). Frente al activo-activo, evita duplicar la infraestructura y reconciliar escrituras dobles entre sitios sin beneficio medible para el volumen del caso; frente a la recuperación en frío desde respaldos, cuyo tiempo de 24 a 72 horas incumpliría el RTO de 4 horas, sostiene los objetivos de continuidad (RT-07.01, RT-07.04). La solución tiene dos sitios de recuperación, uno por cada dominio del despliegue híbrido, como muestra la Tabla~\ref{tab:dc-sitios}.
 
-\begin{itemize}
-  \item \textbf{Para el componente on-premise, el CD Concepción:} es una dependencia física distinta, a 340 km del extremo opuesto de la red y sin amenazas comunes con Talca, y opera el motor de almacenes con su propia base local y autonomía de 24 horas. No es un sitio en espera: opera de forma autónoma todos los días y asume la carga de bodega de Talca mediante promoción controlada.
-  \item \textbf{Para la carga principal en nube, la región AWS us-east-1:} aloja la réplica pasiva promovible del núcleo transaccional, a $\approx$ 7.700 km de la región primaria y $\approx$ 8.500 km de Talca, sin amenazas comunes.
-\end{itemize}
+\begin{tablalafrox}{Sitios de recuperación: distancia y amenazas comunes}{tab:dc-sitios}%
+  {F{0.20} F{0.13} F{0.20} Y}%
+  {\cab{Sitio de recuperación} & \cab{Dominio} & \cab{Distancia declarada} & \cab{Análisis de amenazas comunes}}
+  Región AWS us-east-1 & Nube & $\approx$ 7.700 km de la región primaria sa-east-1 & Continente distinto: no depende de la sismicidad ni de la malla eléctrica chilena, y no comparte eventos de fuerza mayor con el sitio principal. \\
+  CD Concepción, gabinete de borde & On-premise & $\approx$ 250 a 400 km del CD Talca & Comparte con Talca la sismicidad de zona costera y el corte de la malla eléctrica nacional. La exposición se mitiga con la operación autónoma de 24 horas de cada sitio, con su alimentación protegida, y con el dominio en nube, que no comparte esas amenazas. \\
+\end{tablalafrox}
+\fuente{elaboración propia (RT-07.02).}
 
-El mecanismo de recuperación ante desastres (modalidad activo-pasiva, RTO $\leq$ 4 h, RPO $\leq$ 15 min), el procedimiento de conmutación y retorno, las pruebas semestrales, la tabla de componentes de la réplica y el esquema de respaldos 3-2-1-1-0 se declaran en la sección de arquitectura de despliegue.
+\paragraph{Región us-east-1.} Aloja la réplica pasiva promovible del núcleo transaccional: Aurora mediante Aurora Global Database, las tablas de temperatura de DynamoDB mediante Global Tables, la copia de los buckets de S3, las copias de AWS Backup y una réplica reducida de la plataforma de aplicación que escala a carga completa durante una conmutación. La analítica y los datos de geolocalización de personas quedan fuera de esa región por diseño (sección~\ref{sec:4-2-2-servicios-nube}).
 
-El gabinete de borde con que se habilitan el sitio secundario on-premise y las tres plataformas de cross-docking es el equipo C/D del Anexo 4.A (Formulario T-11); su emplazamiento y sus características se detallan en la tabla de emplazamiento de la sección~\ref{sec:4-2-1-emplazamiento}.
+\paragraph{CD Concepción.} No es un sitio en espera: opera de forma autónoma todos los días, con la tipología de gabinete de borde que fija el caso (RT-06.01), y ante una contingencia que afecte solo a la bodega de Talca asume esa carga mediante la promoción controlada de su motor de almacenes, con un RTO adicional de 1 a 2 horas. Su equivalencia con el sitio principal en los servicios críticos es de pila: ejecuta el mismo motor WMS, la misma base PostgreSQL, el mismo broker, la misma caché de identidad y el mismo colector, sobre un servidor de borde dimensionado a su bodega. El gabinete se especifica conforme a la tipología de borde del numeral 6.1: alimentación protegida con UPS para la autonomía declarada, climatización de precisión acorde al equipamiento, y control de acceso y monitoreo remoto integrados al NOC. Los gabinetes de borde de los tres cross-docking no forman parte del sitio de recuperación. Todos se detallan en la Tabla~\ref{tab:t27b} del Anexo 4.A (Formulario T-11).
+
+El mecanismo de recuperación ante desastres (modalidad activo-pasiva, RTO $\leq$ 4 h, RPO $\leq$ 15 min), el procedimiento de conmutación y retorno, las pruebas semestrales, la replicación por dominio de datos y el esquema de respaldos 3-2-1-1-0 se declaran en la sección de arquitectura de despliegue (sección~\ref{sec:4-2-3-despliegue}).

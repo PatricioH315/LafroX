@@ -22,7 +22,7 @@ De esos hechos se desprende la regla que ordena todo el emplazamiento: lo que de
 
 \subsection{Instalaciones y dominios}
 
-La solución cubre las seis instalaciones que declara la volumetría del caso (Caso, Tabla 14.1), más la calle y los 14.200 puntos de entrega. El cómputo on-premise se despliega en los cinco recintos que la operación nombra y a los que se asigna tipología (RT-06.01): el CD Talca es la sala técnica principal, con un clúster de tres nodos con Proxmox VE y almacenamiento Ceph que aloja las máquinas virtuales VM-01 a VM-06; el CD Concepción opera con un servidor del mismo modelo que los nodos de Talca, con Proxmox VE, que replica la misma pila en las máquinas VM-C01 a VM-C04; y las plataformas de cross-docking de Curicó, Chillán y Los Ángeles operan cada una con un mini-PC industrial que ejecuta el WMS en contenedores. La volumetría declara seis instalaciones (Tabla 14.1) y RT-21.16 señala «seis instalaciones en cuatro regiones», mientras que el §8 del caso habla de una «red de cinco instalaciones»; el relato no identifica la sexta, por lo que esa divergencia se registra como consulta al mandante (Art. 43.3) y como supuesto, sin afectar el dimensionamiento, que se calcula sobre los cinco recintos que alojan cómputo. La séptima instalación que proyecta el caso a tres años se incorpora parametrizando la infraestructura como código y ocupando el gabinete de crecimiento R04 de la sala principal, sin obras adicionales (RT-02.12).
+La solución cubre las seis instalaciones que declara la volumetría del caso (Caso, Tabla 14.1), más la calle y los 14.200 puntos de entrega. El cómputo on-premise se despliega en los cinco recintos que la operación nombra y a los que se asigna tipología (RT-06.01): el CD Talca es la sala técnica secundaria que fija el caso, con un clúster de tres nodos con Proxmox VE y almacenamiento Ceph que aloja las máquinas virtuales VM-01 a VM-06; el CD Concepción opera en un gabinete de borde, con un servidor de borde con Proxmox VE que replica la misma pila en las máquinas VM-C01 a VM-C04; y las plataformas de cross-docking de Curicó, Chillán y Los Ángeles operan cada una en un gabinete de borde, con un mini-PC industrial que ejecuta el WMS en contenedores. La volumetría declara seis instalaciones (Tabla 14.1) y RT-21.16 señala «seis instalaciones en cuatro regiones», mientras que el §8 del caso habla de una «red de cinco instalaciones»; el relato no identifica la sexta, por lo que esa divergencia se registra como consulta al mandante (Art. 43.3) y como supuesto, sin afectar el dimensionamiento, que se calcula sobre los cinco recintos que alojan cómputo. La séptima instalación que proyecta el caso a tres años se incorpora parametrizando la infraestructura como código, sobre el bloque de direccionamiento ya reservado (Tabla~\ref{tab:t64}), sin obras en la sala de Talca (RT-02.12).
 
 En la nube, la región primaria es sa-east-1 y cada servicio se despliega en al menos dos zonas de disponibilidad. La región us-east-1 solo aloja la recuperación ante desastres. La Figura~\ref{fig:emplazamiento-dominios} ubica cada componente en su sitio.
 
@@ -54,7 +54,7 @@ En la nube, la región primaria es sa-east-1 y cada servicio se despliega en al 
     % Columna on-premise
     \node[titulo] at (5.25,0) {On-premise};
     \node[caja, text width=5.3cm] (tal) at (5.25,-0.5) {%
-      \textbf{CD Talca}, sala técnica principal\\[2pt]
+      \textbf{CD Talca}, sala técnica secundaria\\[2pt]
       Máquinas VM-01 a VM-06\\
       con A-01 a A-05 y F-01\\
       Red: D-01 en par, D-02 a D-05\\
@@ -136,7 +136,7 @@ Los trece componentes de nube pura viven solo en la nube. La justificación de c
   \item \textbf{N-10 Plataforma analítica} (volumen y costo): S3, Glue, Redshift Serverless y QuickSight conservan 5 años de datos separados del transaccional y publican los tableros del CLIENTE.
   \item \textbf{N-11 Respaldo inmutable y réplica} (regulación): S3 Object Lock, AWS Backup y la réplica en us-east-1 guardan la copia que ni un administrador puede borrar y sostienen el RTO de 4 h y el RPO de 15 min.
   \item \textbf{N-12 Seguridad y gobierno} (regulación): KMS, Secrets Manager, WAF, Shield, Security Lake y CloudWatch cumplen los controles del Artículo 21 como servicios que un equipo de TI de cuatro personas puede operar.
-  \item \textbf{N-13 Gestión de dispositivos} (costo): Android Enterprise y Zebra DNA gestionan como servicio los 462 dispositivos del parque, con borrado remoto selectivo y sin infraestructura en los sitios (RT-03.18).
+  \item \textbf{N-13 Gestión de dispositivos} (costo): Android Enterprise y Zebra DNA gestionan como servicio el parque de terminales de preventa, reparto y cámara, con borrado remoto selectivo y sin infraestructura en los sitios (RT-03.18).
 \end{itemize}
 
 Ningún componente de nube pura participa en las transacciones que el caso exige resolver sin enlace: la confirmación de preparación, el despacho y el registro de entrega se ejecutan en el sitio o en el dispositivo. Lo que sube a la nube lo hace por tres razones. Los portales y la gestión de identidades externas lo hacen por regulación, porque el Artículo 21 impide exponer los sitios a Internet. La plataforma de aplicación, la analítica y la telemetría lo hacen por volumen y costo, porque su carga varía con la estación y se paga por uso. Y la seguridad y el respaldo lo hacen porque un equipo de TI de cuatro personas no puede operar esos controles en sus propios servidores.
@@ -174,7 +174,7 @@ Los doce componentes híbridos tienen una parte en cada dominio. Para cada uno, 
   \item \textbf{B-03 Termógrafos de camión} (conectividad): los 28 termógrafos —18 en los camiones propios y 10 en los de los transportistas— registran la temperatura durante toda la ruta sin señal y sincronizan por Bluetooth con el terminal del conductor, que alerta la excursión térmica en el momento y la reenvía a la nube cuando recupera cobertura; al volver el camión, el registro completo se descarga al gateway para que IoT Core la valide.
   \item \textbf{C-01 App de preventa} (conectividad): toma pedidos contra el almacén local del terminal cuando no hay señal y sincroniza con API Gateway al reconectar, sin duplicar pedidos.
   \item \textbf{C-02 App de reparto} (conectividad): registra entregas, evidencia y cobros durante 14 h sin señal y los sincroniza con la nube al recuperar cobertura.
-  \item \textbf{D-01 Firewall y Customer Gateway} (criticidad): el par de Talca, el firewall de Concepción y el firewall compacto de cada cross-docking terminan los túneles IPsec hacia el VPN Gateway de AWS y conmutan de enlace en menos de 30 s.
+  \item \textbf{D-01 Firewall y Customer Gateway} (criticidad): el par de Talca, el firewall de Concepción y el firewall compacto de cada cross-docking terminan los túneles IPsec hacia el Transit Gateway de AWS y conmutan de enlace en menos de 30 s.
   \item \textbf{D-05 Respaldo local} (conectividad): el NAS WORM de Talca restaura el WMS en 4 h sin depender del enlace, y su complemento inmutable vive en S3 Object Lock.
   \item \textbf{F-01 Telemetría de observabilidad} (conectividad): los colectores ADOT de VM-06, VM-C04 y E-01 guardan hasta 24 h de métricas y trazas en disco y las envían a CloudWatch al reconectar.
   \item \textbf{F-03 Detección en endpoints} (regulación): los agentes EDR de cada nodo y estación reportan a una consola central, lo que cumple RT-11.16 en nube y on-premise con una sola respuesta.
@@ -189,9 +189,9 @@ El emplazamiento anterior se verifica en lo que cada ámbito puede hacer cuando 
 \begin{tablalafrox}{Autonomía por ámbito ante la pérdida del enlace}{tab:t29}%
   {F{0.26} F{0.30} Y}%
   {\cab{Ámbito} & \cab{Autonomía sin enlace} & \cab{Norma de operación}}
-  Centro de distribución y Concepción & 24 h o más & RT-03.12, reconciliación determinista \\
+  Centros de distribución de Talca y Concepción & 24 h o más & RT-03.10 y RT-03.12, reconciliación determinista \\
   Terreno & 14 h, un turno completo & RT-03.10 \\
-  Cross-docking & 3 h, 100\,\% local & RT-03.11 \\
+  Cross-docking & 24 h o más; la ventana de 3 h opera 100\,\% local & RT-03.10 y RT-03.11 \\
   Sincronización al reconectar & CD en 2 h; flota en 10 min & RT-03.13 y RNF-07.01 \\
 \end{tablalafrox}
 \fuente{elaboración propia a partir de los compromisos de operación desconectada del caso (Caso, Cap. 6).}

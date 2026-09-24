@@ -1,5 +1,5 @@
 % ------------------------------------------------------------------
-%  4.2.3 Conexiones, puntos de falla y contingencia
+%  4.2.4 Conexiones, puntos de falla y contingencia
 %  Fragmento del Subdocumento 4.2, traido desde contenido.tex con
 %  \parte{partes/02_c_conexiones}. Las rutas son relativas a la carpeta del
 %  subdocumento, nunca a la de main.tex.
@@ -15,7 +15,7 @@ Esta sección describe cómo se conectan los sitios, el terreno y la nube, ident
 
 \subsection{Conexiones entre sitios, terreno y nube}
 
-Los dos dominios fijos, la nube y el on-premise, se conectan por túneles VPN IPsec que terminan en el firewall de cada sitio (D-01) y en el VPN Gateway de AWS, con enrutamiento dinámico BGP; el mismo VPN Gateway enruta entre los sitios, de modo que Concepción y los cross-docking alcanzan Talca sin exponerla a Internet. Cada sitio tiene dos caminos físicamente independientes: fibra y LTE en los centros de distribución, y Starlink y LTE de dos proveedores en los cross-docking, que no tienen fibra (ADR-02). El terreno no pasa por los sitios: los terminales de preventa y de reparto hablan directamente con API Gateway por la red celular del operador. La Figura~\ref{fig:conexiones} muestra esas conexiones.
+Los dos dominios fijos, la nube y el on-premise, se conectan por túneles VPN IPsec que terminan en el firewall de cada sitio (D-01) y en el Transit Gateway de AWS en sa-east-1, con enrutamiento dinámico BGP; el mismo Transit Gateway enruta entre los sitios, de modo que Concepción y los cross-docking alcanzan Talca sin exponerla a Internet. Cada sitio tiene dos caminos físicamente independientes: fibra y LTE en los centros de distribución, y Starlink y LTE de dos proveedores en los cross-docking, que no tienen fibra (ADR-02). El terreno no pasa por los sitios: los terminales de preventa y de reparto hablan directamente con API Gateway por la red celular del operador. La Figura~\ref{fig:conexiones} muestra esas conexiones.
 
 \begin{figure}[htbp]
   \centering
@@ -33,7 +33,7 @@ Los dos dominios fijos, la nube y el on-premise, se conectan por túneles VPN IP
     % Región primaria
     \draw[lafroxTinta, line width=0.6pt, rounded corners=2pt] (0,-1.3) rectangle (12.2,-3.4);
     \node[anchor=north west, font=\intersemibold, inner sep=0pt] at (0.15,-1.45) {AWS sa-east-1};
-    \node[nodo, text width=2.2cm] (vgw)  at (1.75,-2.6) {VPN Gateway};
+    \node[nodo, text width=2.2cm] (vgw)  at (1.75,-2.6) {Transit Gateway};
     \node[nodo, text width=2.6cm] (vpce) at (4.95,-2.6) {VPC Endpoints de SQS, IoT Core y SSM};
     \node[nodo, text width=2.0cm] (apig) at (8.0,-2.6) {API Gateway};
     \node[nodo, text width=2.0cm] (cf)   at (10.7,-2.6) {CloudFront y WAF};
@@ -100,7 +100,7 @@ Cada conexión se apoya en equipos del sitio que también pueden fallar. La Tabl
   Instancia de escritura VM-02 & Se reinicia en otro nodo del clúster. & D-05 restaura la base en hasta 4 h sin enlace. \\
   Disco de un servidor & El RAID 10 reconstruye sobre el repuesto en caliente. & Ceph conserva una segunda copia en otro nodo. \\
   Miembro del stack de switches de Talca & El otro miembro mantiene el tráfico. & Reposición sin corte. \\
-  Servidor de borde de Concepción & RAID 10 y doble fuente cubren las fallas probables. & La pila se restaura desde la réplica en Aurora. \\
+  Servidor de borde de Concepción & RAID 10 con repuesto en caliente cubre la falla de disco; ante la falla del equipo, se repone. & La pila se restaura desde la réplica en Aurora. \\
   Mini-PC de un cross-docking & Equipo único; se repone. & El nuevo equipo se resincroniza desde Talca y SQS FIFO. \\
   Firewall de un cross-docking & Equipo único; se repone. & La ventana de 3 h opera 100\,\% local y sincroniza al reconectar. \\
   Periféricos de andén & Sin redundancia por equipo. & La etiqueta se emite en otra de las impresoras del centro de distribución. \\

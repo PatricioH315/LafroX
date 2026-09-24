@@ -1,5 +1,5 @@
 % ------------------------------------------------------------------
-%  4.2.4 Dimensionamiento y plan de capacidad
+%  4.2.5 Dimensionamiento y plan de capacidad
 %  Fragmento del Subdocumento 4.2, traido desde contenido.tex con
 %  \parte{partes/12_k_dimensionamiento}. Las rutas son relativas a la carpeta
 %  del subdocumento, nunca a la de main.tex.
@@ -121,7 +121,7 @@ El dato que más crece no es el transaccional sino la evidencia de entrega, y po
 
 \subsection{Integraciones y volumen de mensajes}
 
-La solución tiene 15 integraciones. La Tabla~\ref{tab:t33} deriva el volumen de las diez que mueven mensajes, sobre 25 días hábiles al mes y con el peak de septiembre al doble.
+La solución tiene 15 integraciones. La Tabla~\ref{tab:t33} deriva el volumen de las diez que mueven mensajes, sobre 25 días hábiles al mes y con el peak de septiembre al doble en los flujos que siguen a los pedidos y a las entregas; la telemetría depende del número de fuentes y de las horas de ruta, no del volumen de entregas.
 
 \begin{tablalafrox}{Volumen de mensajes por integración}{tab:t33}%
   {F{0.28} H{0.17} H{0.13} Y}%
@@ -150,11 +150,11 @@ El enlace de cada centro de distribución transporta la replicación de la base,
   {\cab{Sitio} & \cab{Régimen} & \cab{Peak} & \cab{Respaldo}}
   CD Talca & 20 Mbps por fibra & 50 Mbps & LTE de 5 a 10 Mbps \\
   CD Concepción & 10 Mbps por fibra & 20 Mbps & LTE de 3 a 5 Mbps \\
-  Cross-docking, cada uno & Starlink, plan de 500 GB & Igual al régimen & LTE de 2 a 5 Mbps, dos proveedores \\
+  Cross-docking, cada uno & Hasta 2 Mbps por Starlink, plan de 500 GB al mes & Hasta 5 Mbps & LTE de 2 a 5 Mbps, dos proveedores \\
 \end{tablalafrox}
 \fuente{elaboración propia.}
 
-El peak lo fija el respaldo. El respaldo semanal a la nube pesa hoy unos 40 GB y llega a 120 GB con el crecimiento de 3 veces; transmitido en la ventana nocturna de 8 horas exige 120 GB $\times$ 8 / 28.800 s $\approx$ 33 Mbps, que caben en los 50 Mbps de Talca junto con el tráfico de régimen. La replicación y los brokers, en cambio, son pequeños: aun atribuyendo a un solo sitio el volumen transaccional anual completo, duplicado por el peak, suman unos 2,1 GB al día, 0,2 Mbps en promedio. Por eso el régimen de 20 Mbps deja holgura para las consolas web del personal del sitio, y el LTE de respaldo alcanza para la replicación y los brokers, aunque no para el respaldo semanal, que se difiere hasta que vuelve la fibra.
+El peak lo fija el respaldo. El respaldo semanal a la nube pesa hoy unos 40 GB y llega a 120 GB con el crecimiento de 3 veces; transmitido en la ventana nocturna de 8 horas exige 120 GB $\times$ 8 / 28.800 s $\approx$ 33 Mbps, que caben en los 50 Mbps de Talca junto con el tráfico de régimen. La replicación y los brokers, en cambio, son pequeños: aun atribuyendo a un solo sitio el volumen transaccional anual completo, duplicado por el peak, suman unos 2,1 GB al día, 0,2 Mbps en promedio. Por eso el régimen de 20 Mbps deja holgura para las consolas web del personal del sitio, y el LTE de respaldo alcanza para la replicación y los brokers, aunque no para el respaldo semanal, que se difiere hasta que vuelve la fibra. En los cross-docking la demanda queda acotada por su respaldo: como el LTE de 2 a 5 Mbps debe sostener la ventana de 3 horas cuando cae Starlink (Tabla~\ref{tab:fallas-sitios}), el tráfico de régimen se fija en hasta 2 Mbps y el de peak en hasta 5 Mbps; los 500 GB del plan son el volumen mensual contratado, no el ancho de banda.
 
 Un dispositivo de reparto genera entre 8 y 12 MB en un turno sin señal. En el peak, 2.600 entregas repartidas en 96 camiones son unas 27 por ruta, que se redondean a 30; con 230 KB de evidencia cada una suman 6,9 MB, a los que se agregan la ruta del día, el maestro acotado de productos y precios y la cola de escrituras pendientes. Al recuperar cobertura, 10 MB se sincronizan en 10 $\times$ 8 / 0,2 = 400 s, menos de 7 minutos, aun con apenas 0,2 Mbps efectivos de red celular, lo que sostiene el objetivo de 10 minutos por dispositivo de la Tabla~\ref{tab:t29}. La flota completa, unos 200 dispositivos de 10 MB, suma 2 GB en la ventana de 17:00 a 20:00, apenas 1,5 Mbps agregados en la entrada de la nube.
 
@@ -179,8 +179,8 @@ La Tabla~\ref{tab:t72} reúne el valor declarado para cada dimensión del numera
   Evidencia de entrega anual & 100 GB & Almacenamiento \\
   Series de temperatura y posición anuales & 3,5 GB en crudo y 0,9 GB consolidados & Almacenamiento \\
   Datos históricos a migrar & 30 GB & Almacenamiento \\
-  Integraciones y mensajes & 15 integraciones y 150.000 mensajes al día & Integraciones \\
-  Ancho de banda por sitio & Talca 20 a 50 Mbps y Concepción 10 a 20 Mbps & Ancho de banda \\
+  Integraciones y mensajes & 15 integraciones y 153.000 mensajes al día & Integraciones \\
+  Ancho de banda por sitio & Talca 20 a 50 Mbps, Concepción 10 a 20 Mbps y cada cross-docking hasta 2 a 5 Mbps & Ancho de banda \\
   Datos de un dispositivo de reparto por turno & 8 a 12 MB & Ancho de banda \\
   Sincronización de la flota & 10 min por dispositivo & Ancho de banda \\
   Contactos mensuales a la mesa & 620 en régimen y 1.550 en marcha blanca & Mesa de ayuda \\
@@ -197,13 +197,13 @@ El clúster de Talca tiene tres nodos iguales, de modo que la pérdida de cualqu
 \begin{tablalafrox}{Utilización del clúster de Talca con un nodo caído}{tab:t77}%
   {F{0.24} H{0.13} Y F{0.24}}%
   {\cab{Recurso} & \cab{Asignado} & \cab{Físico en el clúster} & \cab{Utilización N+1}}
-  vCPU & 30 & 96 hilos, 3 nodos de 32 & 30 de 64, 47 \% \\
+  vCPU & 30 & 192 hilos, 3 nodos de 64 & 30 de 128, 23 \% \\
   Memoria & 68 GB & 384 GB, 3 nodos de 128 & 68 de 256, 27 \% \\
-  Almacenamiento Ceph & 1.890 GB & 5,76 TB útiles & 33 \% \\
+  Almacenamiento Ceph & 1.890 GB & 5,76 TB útiles & 1.890 de 3.840 GB, 49 \% \\
 \end{tablalafrox}
 \fuente{elaboración propia.}
 
-Con un nodo caído, el clúster todavía usa menos de la mitad de su cómputo y poco más de un cuarto de su memoria. La capacidad de almacenamiento resulta de tres nodos con cuatro discos NVMe de 1,92 TB en RAID 10, 3,84 TB por nodo, y de la réplica 2 de Ceph: 3 $\times$ 3,84 / 2 = 5,76 TB. La Tabla~\ref{tab:t78} muestra cómo se reparten los recursos asignados entre las seis máquinas virtuales.
+Con un nodo caído, el clúster todavía usa menos de un cuarto de su cómputo, poco más de un cuarto de su memoria y la mitad de su almacenamiento. Cada nodo es un servidor de rack de 2U con dos procesadores de 16 núcleos, 64 hilos en total (Anexo 4.A, C1). La capacidad de almacenamiento resulta de tres nodos con cuatro discos NVMe de 1,92 TB en RAID 10, 3,84 TB por nodo, y de la réplica 2 de Ceph: 3 $\times$ 3,84 / 2 = 5,76 TB, que con un nodo caído baja a 2 $\times$ 3,84 / 2 = 3,84 TB. La Tabla~\ref{tab:t78} muestra cómo se reparten los recursos asignados entre las seis máquinas virtuales.
 
 \begin{tablalafrox}{Máquinas virtuales del clúster de Talca}{tab:t78}%
   {G{0.10} Y H{0.10} H{0.14} H{0.16}}%
@@ -217,7 +217,7 @@ Con un nodo caído, el clúster todavía usa menos de la mitad de su cómputo y 
 \end{tablalafrox}
 \fuente{elaboración propia.}
 
-VM-02 concentra casi la mitad de la memoria y el 80 \% del disco, porque es el único punto de escritura del maestro de bodega; es también el primer cuello de botella, como se explica más adelante. El servidor de Concepción es del mismo modelo que los nodos de Talca: 32 hilos y 128 GB de memoria sobre discos NVMe en RAID 10 con repuesto en caliente. Su propia bodega, de la mitad de tamaño que Talca, usa una fracción de esa capacidad; el resto permite asumir el WMS y la base de Talca (VM-01 y VM-02, 16 vCPU, 48 GB y 1,6 TB) cuando el DRP local los promueve. En cada cross-docking, el mini-PC industrial ejecuta el WMS, su base y su broker en contenedores, detrás del firewall compacto que termina Starlink, el LTE de respaldo y la VPN.
+VM-02 concentra casi la mitad de la memoria y el 80 \% del disco, porque es el único punto de escritura del maestro de bodega; es también el primer cuello de botella, como se explica más adelante. El servidor de borde de Concepción, un Dell R250 o HPE DL20 Gen11 con procesador Xeon E-2300, 32 GB de memoria y discos NVMe en RAID 10 con repuesto en caliente, se dimensiona a su propia bodega, de la mitad de tamaño que Talca y sin congelado, sin sobrecompra. Ante una contingencia que afecte solo a Talca, el DRP local promueve el motor de almacenes de Concepción, que ya opera todos los días, con un RTO adicional de 1 a 2 horas. En cada cross-docking, el mini-PC industrial ejecuta el WMS, su base y su broker en contenedores, detrás del firewall compacto que termina Starlink, el LTE de respaldo y la VPN.
 
 La Tabla~\ref{tab:t80} verifica el almacenamiento y el rendimiento de la base transaccional.
 
@@ -225,14 +225,14 @@ La Tabla~\ref{tab:t80} verifica el almacenamiento y el rendimiento de la base tr
   {F{0.30} Y F{0.28}}%
   {\cab{Aspecto} & \cab{Cálculo} & \cab{Resultado}}
   Ocupación inicial del pool & 1.890 GB de 5.760 GB & 33 \% \\
-  Ocupación con crecimiento de 3 veces & 1.890 GB $\times$ 3 = 5.670 GB & Requiere el cuarto nodo \\
-  Pool con el cuarto nodo & 4 $\times$ 3,84 TB / 2 = 7,68 TB & 74 \% \\
+  Ocupación con crecimiento de 3 veces & 1.890 GB $\times$ 3 = 5.670 GB & Requiere ampliar los discos \\
+  Pool con 8 NVMe por nodo & 3 $\times$ 7,68 TB / 2 = 11,52 TB & 49 \%; 74 \% con un nodo caído \\
   Respaldo local D-05 & NAS en RAID 6 con 4 discos de 4 TB & 8 TB útiles \\
   Operaciones de disco de VM-02 & 105 TPS $\times$ 8 operaciones por transacción & 840 IOPS frente a más de 100.000 \\
 \end{tablalafrox}
 \fuente{elaboración propia.}
 
-El almacenamiento no es el límite del clúster en régimen, pero sí con el crecimiento de 3 veces: 5.670 GB llenarían el 98 \% del pool de tres nodos, por encima del umbral en que Ceph deja de aceptar escrituras con seguridad. El cuarto nodo, que el plan de capacidad incorpora de todos modos por cómputo, eleva el pool a 7,68 TB y deja la ocupación en 74 \%. En rendimiento de disco la holgura es de dos órdenes de magnitud.
+El almacenamiento no es el límite del clúster en régimen, pero sí con el crecimiento de 3 veces: 5.670 GB llenarían el 98 \% del pool de tres nodos, por encima del umbral en que Ceph deja de aceptar escrituras con seguridad. La ampliación se hace dentro de los mismos nodos: pasar de cuatro a ocho discos NVMe de 1,92 TB por nodo eleva el pool a 11,52 TB y deja la ocupación en 49 \%, y en 74 \% con un nodo caído. En rendimiento de disco la holgura es de dos órdenes de magnitud.
 
 \subsection{Dimensionamiento en nube}
 
@@ -244,7 +244,7 @@ La Tabla~\ref{tab:t82} declara la capacidad base y la de peak de cada servicio d
   ECS Fargate, aplicación Django & 2 tareas & 6 tareas & CPU sobre 70 \% \\
   ECS Fargate, workers Celery & 2 tareas & 4 tareas & Profundidad de cola \\
   Lambda de validación y firma & 100 concurrentes & 500 reservadas & Eventos de IoT Core y S3 \\
-  Aurora PostgreSQL & db.r6g.large en 2 zonas & db.r6g.xlarge y 2 lectores & CPU sobre 60 \% \\
+  Aurora PostgreSQL & db.r6g.large, escritor y 2 lectores en 3 zonas & db.r6g.xlarge, escritor y 2 lectores & CPU sobre 60 \% \\
   ElastiCache & cache.r6g.large & cache.r6g.xlarge & Memoria sobre 75 \% \\
   DynamoDB & Bajo demanda & Bajo demanda & Sin gestión de capacidad \\
   IoT Core & 2 gateways y 28 termógrafos & Igual a la base & Sin gestión de capacidad \\
@@ -261,15 +261,15 @@ El crecimiento se absorbe con el mismo diseño, sin cambiar la topología, las V
 \begin{tablalafrox}{Plan de capacidad para el crecimiento de 3 veces}{tab:t83}%
   {F{0.22} F{0.20} F{0.20} Y}%
   {\cab{Recurso} & \cab{Diseño} & \cab{Con 3 veces} & \cab{Acción}}
-  vCPU del clúster & 30 de 64, 47 \% & 90 asignadas & Cuarto servidor idéntico en el gabinete R04: 96 hilos con N+1 \\
-  Memoria & 68 de 256 GB, 27 \% & 205 GB & Cabe en los 256 GB con N+1, 80 \% \\
-  Pool Ceph & 1.890 de 5.760 GB & 5.670 GB & El cuarto nodo lleva el pool a 7,68 TB, 74 \% \\
+  vCPU del clúster & 30 de 128, 23 \% & 90 asignadas & Caben en los 128 hilos con N+1, 70 \%, sin sobresuscripción \\
+  Memoria & 68 de 256 GB, 27 \% & 205 GB & Ampliación de 128 a 256 GB por nodo: 205 de 512 GB con N+1, 40 \% \\
+  Pool Ceph & 1.890 de 5.760 GB & 5.670 GB & Ocho NVMe por nodo llevan el pool a 11,52 TB, 49 \% \\
   Enlaces de Talca y Concepción & 20 y 10 Mbps & 50 y 20 Mbps & Contrato escalonado de los enlaces \\
   TPS de VM-02 & 105 & 315 & Escala de 8 a 12 vCPU y de 32 a 64 GB, con particionado mensual \\
 \end{tablalafrox}
 \fuente{elaboración propia.}
 
-El cuarto servidor es la única compra adicional que exige el crecimiento de 3 veces, y resuelve a la vez el cómputo y el almacenamiento. Como el gabinete R04 de la sala técnica está reservado para ese crecimiento, la ampliación no requiere obras. En nube, el mismo factor se absorbe con el escalado automático de la Tabla~\ref{tab:t82}, sin cambios de arquitectura.
+El crecimiento de 3 veces no exige servidores adicionales: se absorbe agregando discos y memoria dentro de los tres nodos, que quedan con el cómputo en el umbral de alerta del 70 \% y con la memoria y el almacenamiento bajo la mitad. Como esa ampliación cabe en el margen de crecimiento del 20 \% que reservan los racks y la carga eléctrica de la sala, no requiere obras. En nube, el mismo factor se absorbe con el escalado automático de la Tabla~\ref{tab:t82}, sin cambios de arquitectura.
 
 \subsection{Umbrales de desempeño}
 
@@ -296,7 +296,7 @@ Las cuatro primeras operaciones son las que fija el caso, y tres de ellas se res
 
 \subsection{Primer cuello de botella}
 
-El primer recurso que se satura al crecer la carga es VM-02, la base transaccional del maestro de bodega, porque toda la preparación nocturna y todo el despacho pasan por su único punto de escritura. Se detecta cuando el percentil 95 de escritura supera 800 ms, cuando el tiempo de confirmación se triplica, cuando la espera de disco supera 15 \% o cuando la cola de conexiones supera entre 5 y 10. La mitigación es progresiva: primero, escalar VM-02 de 8 a 12 vCPU y de 32 a 64 GB dentro del margen N+1; luego, particionar las tablas por mes y agregar un gestor de conexiones; después, una réplica de solo lectura para las consultas; y por último, el cuarto nodo o la partición de la base al agotar el margen. En nube, el equivalente es Aurora, que escala con lectores, y SQS FIFO absorbe el pico de sincronización de las 17:00 a las 20:00 (ADR-05).
+El primer recurso que se satura al crecer la carga es VM-02, la base transaccional del maestro de bodega, porque toda la preparación nocturna y todo el despacho pasan por su único punto de escritura. Se detecta cuando el percentil 95 de escritura supera 800 ms, cuando el tiempo de confirmación se triplica, cuando la espera de disco supera 15 \% o cuando la cola de conexiones supera entre 5 y 10. La mitigación es progresiva: primero, escalar VM-02 de 8 a 12 vCPU y de 32 a 64 GB dentro del margen N+1; luego, particionar las tablas por mes y agregar un gestor de conexiones; después, una réplica de solo lectura para las consultas; y por último, la partición de la base o un nodo adicional al agotar el margen. En nube, el equivalente es Aurora, que escala con lectores, y SQS FIFO absorbe el pico de sincronización de las 17:00 a las 20:00 (ADR-05).
 
 \subsection{Degradación controlada}
 
@@ -319,4 +319,4 @@ La prueba de carga multiplica por 1,5 una carga de diseño que ya incluía ese m
 
 \subsection{Actualización del plan de capacidad}
 
-Durante la operación, la capacidad se revisa cada trimestre comparando el consumo real con el proyectado en cómputo, memoria, almacenamiento, enlace, colas y transacciones por segundo. Una alerta anticipada se dispara cuando un recurso alcanza el 70 \% o cuando la tendencia indica que se agotará en dos semanas, y cada alerta produce una propuesta de ajuste de dimensionamiento y de costo. La ampliación sigue el orden de la Tabla~\ref{tab:t83}: vCPU y discos dentro del equipamiento físico, contrato escalonado de enlaces y, al acercarse al margen, el cuarto nodo. En nube, los umbrales del escalado automático y la concurrencia reservada se revisan al menos 30 días antes de cada peak de septiembre.
+Durante la operación, la capacidad se revisa cada trimestre comparando el consumo real con el proyectado en cómputo, memoria, almacenamiento, enlace, colas y transacciones por segundo. Una alerta anticipada se dispara cuando un recurso alcanza el 70 \% o cuando la tendencia indica que se agotará en dos semanas, y cada alerta produce una propuesta de ajuste de dimensionamiento y de costo. La ampliación sigue el orden de la Tabla~\ref{tab:t83}: vCPU, memoria y discos dentro del equipamiento físico, contrato escalonado de enlaces y, al agotar el margen, un nodo adicional. En nube, los umbrales del escalado automático y la concurrencia reservada se revisan al menos 30 días antes de cada peak de septiembre.

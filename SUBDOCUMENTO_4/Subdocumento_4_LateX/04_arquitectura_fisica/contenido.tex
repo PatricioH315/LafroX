@@ -31,6 +31,7 @@ y se leen juntas.}
 \renewcommand{\thechapter}{4.\arabic{chapter}}
 
 \parte{partes/01_vision_general}
+\setcounter{chapter}{1}   % la visión general no numera (4.1 es la arquitectura lógica); la física abre como 4.2
 
 % --- 4.2 Arquitectura física (índice obligatorio, aclaraciones sección 11) ---
 %  02_0 abre el capítulo con número "4.2"; sus secciones quedan 4.2.1 a 4.2.6.
@@ -48,8 +49,9 @@ y se leen juntas.}
 \let\LFXcuerpotabla\LFXcuerpotablaorig   % tablas sin guiones solo en 4.2 y el anexo
 % --- fin del bloque 4.2 ---
 
-\parte{partes/05_d_sitio_principal}    % data center --- sitio principal
-\parte{partes/06_e_sitio_secundario}   % data center --- sitio secundario
+% --- 4.3 Data center: primario (4.3.1) y secundario (4.3.2) ---
+\parte{partes/05_d_sitio_principal}    % 4.3 y 4.3.1 data center primario
+\parte{partes/06_e_sitio_secundario}   % 4.3.2 data center secundario
 % 07_f_niveles_servicio: cubierto en el sitio principal (99,95 % por componente) y en alta disponibilidad (>= 99,9 % transacción crítica)
 % 08_g_operacion_desconectada: absorbido en 4.2.1 (autonomía sin enlace, tab:t29)
 % \parte{partes/09_h_integracion}
