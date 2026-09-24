@@ -6,7 +6,7 @@ Puntero rápido para quienes usan Claude Code con este repositorio.
 
 1. **Fuente de verdad**: los documentos de `Bases/` (todas las decisiones se derivan de ahí). Lee primero `AGENTS.md`.
 2. **Idioma**: todo el trabajo es documentación tipo oferta en **español**.
-3. **Precedencia** (Art. 5° Bases Administrativas): `Bases_Administrativas.md` > `Bases_Tecnicas_Transversales.md` > `Caso_02_Logistica.md`. El caso puede endurecer requisitos transversales, nunca rebajarlos.
+3. **Precedencia**: `aclaraciones-licitacion.md` > `Bases_Administrativas.md` > `Bases_Tecnicas_Transversales.md` > `Caso_02_Logistica.md`. Las Aclaraciones de la Licitación (nueva base) modifican y aclaran las demás bases; prevalecen en materias formales, estructura, redacción, diagramas, tablas, referencias, uso de IA, innovaciones e índice obligatorio. El caso puede endurecer requisitos transversales, nunca rebajarlos.
 4. **Cronograma 56 meses innegociable** y **despliegue híbrido obligatorio** (nube + on-premise). No se aceptan propuestas solo-nube ni solo-on-premise.
 5. **Estructura por subdocumento (T-7)**: el repositorio se organiza según los **14 subdocumentos** del Formulario T-7, no por entregas. Cada carpeta `NN_...` es un subdocumento y adentro conviven `entrega_1/` (congelada), `entrega_2/` (en construcción), etc.
 6. **Snapshots congelados**: cualquier `entrega_1/` es el registro del Informe 1 entregado el 07-09-2026 y **no se edita**. El trabajo ocurre en `entrega_2/` y todo cambio se registra en `00_trazabilidad_observaciones/` (Art. 45). El criterio de qué se conserva es `Productos/Informe 1 Entrega 1.docx`. 
@@ -23,7 +23,7 @@ Cada subdocumento contiene un `README.md` con lo que exige T-7 y `entrega_1/entr
 **Transversales**:
 
 - `00_trazabilidad_observaciones/` — bitácora de observaciones y respuestas entre entregas + manifiestos de extracción.
-- `Bases/` — documentos rectores.
+- `Bases/` — documentos rectores: `aclaraciones-licitacion.md` (nueva, prevalece en forma/presentación), `Bases_Administrativas.md`, `Bases_Tecnicas_Transversales.md`, `Caso_02_Logistica.md`.
 - `Requerimientos/` — catálogos RF/RNF, decisiones, reglas de negocio y supuestos.
 - `Arquitectura/logica/` y `Arquitectura/fisica/` — documentos fuente de arquitectura (no entregables).
 - `Diagramas/` — biblioteca completa (los 15 diagramas del Informe 1 más el material de trabajo).

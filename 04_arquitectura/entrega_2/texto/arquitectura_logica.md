@@ -24,6 +24,23 @@ Los principios que gobiernan el diseño son los siguientes:
 
 La descripción sigue el marco TOGAF declarado y la organización de vistas de ISO/IEC/IEEE 42010. Este documento desarrolla la vista lógica y sus relaciones con procesos, datos, seguridad e integración. La vista de despliegue/física se mantiene en su documento específico; aquí no se declara su validación. Las decisiones se documentan mediante registros de decisión arquitectónica (ADR) fechados y fundamentados, conforme a RT-02.04.
 
+### 4.1.1  Principios de Integración
+
+La integración no es un apéndice: es el tejido que sostiene la operación distribuida de Puelche. El riesgo principal del caso está en las costuras entre sistemas legados sin documentación de interfaces, no en los módulos nuevos. Los siguientes ocho principios gobiernan cada decisión de integración y se trazan a la normativa y a los componentes que los implementan:
+
+| Nº | Principio | Base normativa | Componente / Regla / Decisión que lo implementa |
+|---|---|---|---|
+| 1 | **Contrato antes que conexión.** Ninguna integración existe sin contrato publicado (OpenAPI 3.1 o AsyncAPI 2.6), dueño declarado y versión semántica. Una integración sin contrato no entra al catálogo y no se despliega. | Art. 23 · RT-05.16 | ACL (A-04), Hub EDI GS1, OpenAPI 3.1/AsyncAPI 2.6 por módulo, Catálogo §3 |
+| 2 | **Asíncrono por defecto, síncrono por excepción.** Toda dependencia entre módulos se modela como evento por la Capa 5. Solo las lecturas críticas de la venta (disponibilidad de stock, crédito del cliente) y los actos de fe pública (DTE al SII, autorización de pago) son síncronas, y siempre con timeout explícito. | Art. 19 · RT-02.07/02.08 | Capa 5: RabbitMQ, SQS FIFO, EventBridge; lecturas críticas vía Capa 3 con timeout |
+| 3 | **Idempotencia universal.** Toda escritura originada en terreno o en bodega lleva UUID de cliente y ventana de deduplicación documentada. El servidor es la fuente de verdad y resuelve conflictos por regla de negocio, nunca por marca de tiempo ciega. | RT-02.06 · S26 | UUID en toda escritura offline, deduplicación en Gateway y Capa 4, regla S26 |
+| 4 | **Bitácora de reconciliación auditable.** Toda decisión de reconciliación registra qué transacción, qué conflicto, qué regla se aplicó, quién la aplicó y cuándo. Es un entregable auditable ante el mandante, no un registro técnico. | Art. 16.4 · RT-03.12 | Regla de reserva (D8), bitácora Art. 16.4, no timestamp ciego |
+| 5 | **El legado nunca se escribe directo.** El ERP de 2017 se toca solo a través de la capa anticorrupción A-04. Ningún módulo, portal ni cadena de supermercados escribe al ERP. | RT-05.20 · ADR-11 | ACL (A-04) frontera única ERP, celery-erp-sync → ACL → ERP |
+| 6 | **Zero Trust también en la integración.** Todo tráfico on-premise → nube es saliente (HTTPS/443, MQTTS/8883). Las dos únicas excepciones entrantes están declaradas y acotadas (D-AL-05). | Art. 21 · D-AL-05 | Tráfico saliente únicamente, 2 excepciones D-AL-05 controladas |
+| 7 | **Toda integración declara cómo falla.** Cada entrada del catálogo declara su comportamiento ante falla —reintentar, degradar, diferir o suplir con procedimiento manual— y se verifica con inyección de fallas. | RT-10.08 · RT-09.08 | Catálogo 15 integraciones (INT-01 a INT-15) con comportamiento ante falla por entrada |
+| 8 | **Ninguna integración interrumpe la ventana crítica.** Cargas masivas, reprocesos y despliegues de conectores se ejecutan fuera de 05:30–07:00 de lunes a sábado. | RT-10.05 (caso) | Ventana 05:30–07:00 protegida; colas y workers absorben picos fuera de ventana |
+
+Estos principios se materializan en la Capa 5 (§ 4.2.5), el Catálogo de integraciones (§ 4.2.5.1), la Mensajería (§ 4.2.5.2), las Costuras híbridas (§ 4.2.5.3), la Capa anticorrupción (§ 4.2.5.4), el Gobierno y versionado (§ 4.2.5.5) y la Carga/descarga masiva (§ 4.2.5.6).
+
 El núcleo de negocio reúne 12 módulos en un monolito modular Django, con Python 3.12 como línea base de la propuesta. Esta organización mantiene separados los dominios sin imponer al equipo TI la operación de numerosos microservicios. Para 14.200 clientes y unos 31.000 pedidos mensuales, se privilegia esa simplicidad operativa, en línea con el numeral 2.3 de las Bases Técnicas Transversales. Los procesos de sincronización, EDI y telemetría pueden ejecutarse como trabajadores independientes cuando su carga lo requiera (RT-02.02). Se conserva la ejecución en contenedores: ECS Fargate en nube y Docker Compose sobre el entorno Proxmox local, sin desarrollar aquí su dimensionamiento físico.
 
 La volumetría operativa que condiciona el dimensionamiento es la siguiente: 14.200 clientes activos, 8.400 SKU (que pasan a aproximadamente 9.500), 31.000 pedidos mensuales con 260.000 líneas y 2,4 millones de unidades, aproximadamente 1.400 entregas diarias habituales con peak de septiembre de 2.600 entregas (volumen casi duplicado durante tres semanas), 96 camiones en la ventana crítica de despacho (42 propios y 54 de transportistas externos), 62 preventistas, aproximadamente 200 conductores, 120 preparadores nocturnos y 310 personas de centro de distribución. El diseño se dimensiona contra el pico de septiembre en la ventana de 05:30 a 07:00, nunca contra el promedio, y declara explícitamente los puntos únicos de falla (SPOF) con su mitigación conforme a RT-02.11.
@@ -97,6 +114,101 @@ El ERP de 2017 se conserva como única fuente de verdad tributaria y único emis
 
 La integración con las cadenas del canal moderno se resuelve con un Hub EDI centralizado GS1 en nube (EANCOM, GS1 XML y EPCIS), con conector configurable por cadena, tabla de equivalencias GTIN (RF-12.03), bandeja de excepciones (RF-12.06) y Capa Anticorrupción hacia el ERP y la GDE. El hub mapea cada cadena contra un modelo canónico GS1, no contra el ERP; AS2 es uno de los transportes del hub. El canal moderno queda operativo ≤ enero 2029.
 
+#### 4.2.5.1  Eventos Canónicos del Dominio
+
+Los eventos son el vocabulario del sistema. Se nombran en pasado, son inmutables y llevan `event_id` (UUID), `occurred_at`, `site_id` y `transaction_id`. El catálogo de eventos canónicos del dominio se presenta en la Tabla 1. Cada evento declara productor único, consumidores registrados, clave de partición y política de reintento, y su origen se traza a un requisito del caso o a una decisión del numeral 16.1.
+
+| Evento | Productor | Consumidores | Clave de partición | Origen en el caso / Decisión |
+|---|---|---|---|---|
+| RecepcionConfirmada | M1 | M2, M9, ACL→ERP | site_id | Cap. 9.5: retiro sanitario < 2 h |
+| StockReservado / ReservaLiberada | M2 | M3, M5 | sku_id | Decisión 16.1 #8: doble compromiso stock |
+| PedidoConfirmado | M3, M11 | M4, M5, M7 | pedido_id | Une preventa y canal moderno en un flujo |
+| MisionPreparada | M5 | M6, ACL→ERP | pedido_id | Cierra ciclo bodega a andén |
+| EntregaRegistrada | M6 | M7, M8, M10, SII | entrega_id | Decisión 16.1 #1: entrega cumplida / OTIF |
+| DevolucionRegistrada | M8 | M2, M7, M10 | entrega_id | Decisión 16.1 #12: efecto sobre DTE emitido |
+| EnvaseMovido | M8 | M2, M10 | cliente_id | Decisión 16.1 #10: 68.000 canastillos, 9.400 pallets, 14% pérdida |
+| ExcursionTermicaDetectada | M9 (borde) | M5 (bloqueo), M10, alertas | shipment_id | Decisión 16.1 #4: bloqueo local < 5 s |
+| RendicionCerrada | M7 | M10, ACL→ERP | conductor_id | Control efectivo que circula en ruta |
+| DesviacionDeRutaDetectada | M12 | M10, M9 | ruta_id | Costo servir; no control jornada (D1) |
+
+*Tabla 1. Eventos canónicos del dominio*
+
+Los esquemas AsyncAPI 2.6 versionados por evento viven en el Catálogo (§ 4.2.5.1 del catálogo) y la trazabilidad `transaction_id` recorre extremo a extremo (§ 4.6, patrón Correlación).
+
+#### 4.2.5.2  Contratos de Integración
+
+Los contratos se declaran por dimensión, con metadatos obligatorios y reglas de validación que el Gateway aplica antes de alcanzar la Capa 4:
+
+| Dimensión | Definición |
+|---|---|
+| **API síncrona** | OpenAPI 3.1 por módulo, ruta `/v{major}/...`. Metadatos obligatorios: `x-owner` (módulo dueño), `x-version` (semver), `x-status` (`draft`, `stable`, `deprecated`), `x-sunset` (fecha retiro). |
+| **Eventos** | AsyncAPI 2.6 con JSON Schema versionado por evento. Cada evento declara productor único, consumidores registrados, clave de partición y política de reintento. |
+| **Autenticación** | Superficies: OAuth 2.1 con PKCE. Servicio a servicio: mTLS. Máquina a máquina: credenciales de cliente con secreto de rotación automática. Todos los tokens los firma Keycloak (Capa 7). |
+| **Validación** | Validación de esquema e inspección de carga útil en la puerta de enlace (Art. 21.2), antes de alcanzar la Capa 4. Un mensaje que no valida no entra: se rechaza con causa y queda registrado. |
+| **Trazabilidad** | Todo llamado y todo evento propaga `transaction_id` (OpenTelemetry) desde la Capa 3 hasta la Capa 6. Es la clave con la que se reconstruye una operación de extremo a extremo, conforme al Art. 23: quién, qué, cuándo, desde dónde y con qué valores anteriores y posteriores. |
+
+#### 4.2.5.3  Capa Anticorrupción y Estrangulamiento del Legado
+
+**Frontera única del ERP (A-04).** El ERP de 2017 no tiene documentación de interfaces. En vez de descubrir su forma real dentro de cada módulo, se levanta una sola frontera: la ACL expone hacia adentro un contrato OpenAPI 3.1 propio de Puelche y absorbe hacia afuera la forma del ERP. Consecuencias:
+
+- El conocimiento del ERP queda concentrado y documentado en un solo componente, no disperso en doce módulos.
+- Ningún módulo, portal ni cadena de supermercados escribe al ERP: `celery-erp-sync` publica notificaciones por SQS y lee contratos por la ACL.
+- Cuando una capacidad del ERP se absorbe en la plataforma, se retira de la ACL sin tocar a los consumidores.
+
+**Estrangulamiento del WMS de 2013 (ADR-08, Decisión 16.1 #14).** El WMS se reemplaza en la Etapa 1 por los módulos M1, M2 y M5 del monolito. Durante la coexistencia el legado queda detrás de la misma ACL, con una tabla de "capacidad absorbida" —recepción GS1, *slotting*, misiones de picking con HHT, conteo cíclico— que se vacía ola a ola por sitio, con estrategia azul-verde y plan de reversión.
+
+| Capacidad WMS 2013 | Módulo | Ola | Estrategia / Reversión |
+|---|---|---|---|
+| Recepción GS1 | M1 | 1 | Azul-verde / feature flag (reversión inmediata) |
+| Slotting / ubicaciones | M2 | 1–2 | Azul-verde / feature flag |
+| Misiones picking HHT | M5 | 2 | Azul-verde / feature flag |
+| Conteo cíclico | M2 | 2–3 | Paralelo + comparación / feature flag |
+
+*Tabla 2. Capacidad absorbida del WMS 2013 por ola y sitio*
+
+No se mantiene el WMS 2013 como sistema operativo en producción tras la Etapa 1. La ACL garantiza que ningún módulo, portal ni cadena escribe al ERP/WMS legado directamente.
+
+**Hub EDI GS1 (ADR-11).** Una cadena nueva se incorpora por configuración de perfil (equivalencias GTIN por cadena, RF-12.03), no por desarrollo. El hub mapea cada cadena contra un modelo canónico GS1, no contra el ERP: es exactamente lo que evita construir una integración distinta por cada cadena (Cap. 17.4, punto 10 del caso).
+
+#### 4.2.5.4  Versionado y Gobierno de Integración
+
+**Reglas de versionado semántico**
+
+| Regla | Definición |
+|---|---|
+| Semver estricto | `major.minor.patch`. `major` = cambio disruptivo; `minor` = aditivo y retro-compatible; `patch` = corrección. |
+| Evolución aditiva primero | Un campo se agrega, nunca cambia de significado. Un campo que deja de usarse se marca `deprecated` antes de retirarse. |
+| Preaviso mínimo 6 meses | Ninguna versión se retira antes de seis meses de aviso formal (Art. 23 · RT-05.17). Registro de deprecaciones visible para todo el equipo y el CLIENTE. |
+| Doble versión concurrente | Durante la migración conviven `v{n}` y `v{n+1}`; el consumidor migra en su ventana, no en la del proveedor. |
+| Aprobación cambios disruptivos | Un `major` requiere aprobación del Comité de Arquitectura y plan de migración con consumidores identificados uno a uno. |
+| Congelamientos del caso | No se publica ni retira ninguna versión en septiembre, diciembre ni los tres primeros días hábiles del mes (Cap. 13.2 caso). |
+| Contratos de terceros | Especificaciones de cadenas y SII se versionan como perfiles del Hub EDI (ADR-11). |
+
+**Mecanismos de gobierno de la capa de integración**
+
+| Mecanismo | Cómo opera | Responsable / Artefacto |
+|---|---|---|
+| Catálogo único versionado | Toda integración: dueño, contrato, versión, estado, comportamiento ante falla. Lo que no está en el catálogo no se despliega. | Arquitecto Solución / Catálogo (portal API Gateway) |
+| Comité Arquitectura | Aprueba altas y cambios `major`; cadencia declarada en plan gobierno. | Arq. Sol., Jefe Proy., Jefe TI Cliente / Actas |
+| Pruebas contrato consumidor-proveedor | Pipeline: cambio que rompe consumidor registrado bloquea despliegue automáticamente. | Líder Desarrollo, Líder Calidad / Pipeline CI/CD |
+| Pruebas falla por integración | Inyección fallas (RT-10.07) en marcha blanca; verifica comportamiento catálogo. | Líder Calidad, Líder Operación / Evidencia marcha blanca |
+| Observabilidad por integración | Latencia, error, volumen, DLQ por integración, correlación `transaction_id` (Capa 8). | Líder Operación/SRE / Tableros Grafana OSS |
+| Bandeja excepciones negocio | EDI/DTE → bandeja operada por actor canónico (RF-12.05/12.06). | Jefe TI, Responsable Canal Moderno / Bandeja operativa |
+| Traspaso equipo 4 personas | Catálogo, guías resolución, bandeja = artefactos operables sin proponente. | Líder Implantación/Gestión Cambio / Documentación traspaso |
+
+#### 4.2.5.5  Carga y Descarga Masiva de Datos
+
+| Escenario | Mecanismo | Control y auditoría |
+|---|---|---|
+| Carga inicial maestros/históricos (ERP, WMS) | ETL por lotes, inserción idempotente por UUID, ventana sin operación | Conteo previo/posterior por lote, conciliación totales, bitácora carga (quién, cuándo, lote, resultado); rechazados → cuarentena + reproceso |
+| Descarga regulatoria (traza lote, temperaturas, DTE, geo) | Exportación asíncrona CSV/Parquet, firmada, checksum | Registro extracción (solicitante, filtro, resultado); control acceso datos sensibles (RT-16.09) |
+| Sincronización masiva turno (terreno) | Sincronizadores con partición + reanudación + deduplicación; medios a S3 por objeto | Nivel servicio: turno completo ≤ 10 min; métricas sync en Capa 8 |
+| Interfaces periódicas con terceros | Colas con `batch_id` + confirmación por lote | Monitoreo DLQ + acuse por lote en bandeja excepciones |
+
+*Tabla 3. Escenarios de carga y descarga masiva (RT-05.22)*
+
+**Regla transversal:** ninguna carga masiva se ejecuta dentro de la ventana crítica 05:30–07:00, y toda carga queda registrada y es auditable.
+
 ### 4.2.6  Capa de Acceso a Datos (Capa 6)
 
 La capa de datos distingue quién conserva la información operativa, quién la consolida y quién la consulta para análisis. Esta separación evita que una caída del enlace detenga la bodega o que una consulta gerencial compita con el despacho. La revisión 67 diferencia los siguientes roles lógicos por sitio:
@@ -161,9 +273,51 @@ Durante un corte de enlace, el sitio no depende de los tableros centralizados pa
 
 ## 4.3  Módulos Funcionales
 
-Los 12 módulos M1–M12 separan responsabilidades de negocio y conservan su trazabilidad a los requerimientos funcionales. Los seis descritos a continuación permiten seguir el recorrido principal de la operación: conocer el lote, disponer de stock, tomar el pedido, organizar la ruta, rendir el cobro y medir el resultado.
+Los 12 módulos M1–M12 separan responsabilidades de negocio y conservan su trazabilidad a los requerimientos funcionales. La Tabla 4 presenta la descripción completa de cada módulo con su contexto delimitado, dependencias y acoplamiento.
 
-### 4.3.1  Módulo de Trazabilidad
+| Módulo | Épica / RF | Funciones críticas | Actor responsable | Contexto delimitado | Qué NO le pertenece | Consume de | Publica hacia | Acoplamiento |
+|---|---|---|---|---|---|---|---|---|
+| M1 Recepción | RF-01 | Validación vs OC, lote/venc, SSCC, cuarentena, GS1, integración ERP | Preparador / Jefe TI | Entrada mercadería, lote, SSCC, cuarentena, GS1 | No asigna stock a venta ni arma pedidos | ERP (colas), M2 (ubicación) | M2 (evento), ERP | Bajo (eventos) |
+| M2 Inventario | RF-02 | Stock multi-sitio (2 CD+3 CDK), slotting, conteo ciego, FEFO, disponibilidad | Preparador, Jefa Calidad | Stock multi-sitio, slotting, conteo ciego, FEFO, disp. | No decide crédito ni rutas | M1, M5 | M3/M4/M5 (disp. Capa 3) | Bajo (lecturas+eventos) |
+| M3 Preventa | RF-03 | Pedido, reserva stock, promos, precios, crédito, ID único offline, dedupe | **Preventista** | Pedido, reserva, promos, precios, crédito | No emite guías ni arma rutas | M2 (stock), M7 (crédito) | M5 (pedido), M6 (guía) | Medio (reserva+eventos) |
+| M4 Planificación Rutas | RF-04 | Secuenciación auto, ventanas, capacidad, cadena frío, bloqueo cap., costo entrega | **Planificador** | Secuenciación, ventanas, capacidad, cadena frío | No ejecuta entrega ni liquida cobros | M2/M3 (pedidos), GIS | M6 (rutas/vent.), M12 (desvío) | Bajo (eventos) |
+| M5 Preparación | RF-05 | Misiones picking, GS1, faltantes con motivo, secuenc. térmica, FEFO, carga dirigida | **Preparador** | Misiones picking, GS1, faltantes, térmica, FEFO | No gestiona flota ni clientes | M3 (pedidos), M2 (ubic.) | M6 (unidad prep.), ERP | Bajo (eventos) |
+| M6 Reparto/Entrega | RF-06 | POD digital, QR, local cerrado+reagenda, cobranza, envases, comprobante, OTP | **Conductores**, Cliente | POD, QR, local cerrado, cobranza, devol., OTP | No liquida ni define crédito | M4 (rutas), M7 (cobranza) | M7 (rendición), M8 (dev.), SII | Medio (transacc. ruta) |
+| M7 Cobranza/Rendición | RF-07 | Rendición digital, causales descuadre, cartera crédito, POS, interfaz cobr.→ERP | **Gerente Finanzas**, Conductor | Rendición, cartera, costo servir, POS | No planifica rutas | M6 (rendición), POS | ERP (colas), M10 (BI) | Bajo (eventos) |
+| M8 Devoluciones/Envases | RF-08 | Devoluciones ruta, cuenta corriente envases, mermas a costo servir | Conductor, Gerente Com. | Devoluciones ruta, cta. cte. envases, mermas | No arma pedidos | M6 (devoluciones) | M2 (stock), M10 (mermas) | Bajo (eventos) |
+| M9 Calidad/Trazabilidad | RF-09 | Trazabilidad fwd/bwd, sensores frío, excursiones, control sanitario, bloqueo | **Jefa Calidad** | Lotes, sensores, excursiones, retiro sanitario | No ejecuta venta | Sensores (Capa 2), M2/M5 | M5 (bloqueo), M10 (BI) | Bajo (eventos+bloqueo) |
+| M10 BI/Gerencia | RF-11 | OTIF, fill rate, costo servir, ocupación flota, tablero real-time, segmentación | **Gerente Com., Finanzas** | OTIF, costo servir, tableros, segmentación | No escribe transacciones | M1–M9 (eventos), Capa 6 | Gerencia (tableros) | Solo lectura |
+| M11 EDI Canal Moderno | RF-12 | Pedido EDI (AS2/API), validación, excepciones, ASN, ventana 30 min, acuse | **Cliente Canal Mod.**, Jefe TI | Pedido EDI, AS2/API, excepciones, ASN, acuse | No gestiona transporte | Cadenas (EDI/API), M3 | M3 (pedido EDI), M6, cadenas | Medio (trazabilidad) |
+| M12 Telemetría/Flota | RF-14 | Integración fuente exist., ruta plan vs real, geocercas, desviaciones, costo servir | **Gerente Com./Jefa Cal.** | Ruta plan vs real, geocercas, ETA, km | No control jornada ni cámaras (D1) | GPS/telemet. (Capa 2), M4 | M10 (costo servir), M9 (frío) | Bajo (solo lectura) |
+
+*Tabla 4. Descripción completa de los 12 módulos funcionales*
+
+Los límites de contexto y dependencias inter-módulo se detallan en § 4.3.1 (Mapa formal de límites de contexto). Cada módulo traza sus RF a la matriz de trazabilidad (Cap. 17.1) y sus eventos canónicos a la Tabla 1.
+
+### 4.3.1  Mapa Formal de Límites de Contexto (Context Mapping)
+
+El modelo de dominios se organiza mediante *bounded contexts* explícitos. La Tabla 5 define la relación entre contextos siguiendo los patrones de DDD: *Customer/Supplier*, *Conformist*, *Anticorruption Layer*, *Shared Kernel*, *Open Host Service* y *Published Language*.
+
+| Contexto (Módulo) | Patrón relación | Contexto relacionado | Contrato / Interfaz | Decisión / ADR |
+|---|---|---|---|---|
+| Recepción (M1) | Anticorruption Layer | ERP 2017 | OpenAPI 3.1 (ACL) | ADR-11, Dec 16.1#14 |
+| Inventario (M2) | Open Host Service | Preventa (M3), Preparación (M5), Planificación (M4) | OpenAPI 3.1 /v1/inventario | RT-02.12, S26 |
+| Preventa (M3) | Customer/Supplier | Inventario (M2), Cobranza (M7) | OpenAPI 3.1 /v1/preventa, /v1/sync | S26, RT-03.12 |
+| Planificación Rutas (M4) | Conformist | Inventario (M2), Preventa (M3), GIS externo | OpenAPI 3.1 /v1/rutas | RT-02.10 |
+| Preparación (M5) | Customer/Supplier | Inventario (M2), Reparto (M6), ERP | AsyncAPI (MisionPreparada), OpenAPI 3.1 (ACL) | ADR-08 |
+| Reparto/Entrega (M6) | Customer/Supplier | Planificación (M4), Cobranza (M7), Devoluciones (M8) | OpenAPI 3.1 /v1/reparto, /v1/sync | Dec 16.1#1, #3 |
+| Cobranza/Rendición (M7) | Anticorruption Layer | ERP 2017 | OpenAPI 3.1 (ACL), SQS | ADR-11, INT-06 |
+| Devoluciones/Envases (M8) | Shared Kernel | Inventario (M2), Cobranza (M7) | Eventos (EnvaseMovido, DevolucionRegistrada) | Dec 16.1#10, #12 |
+| Calidad/Trazabilidad (M9) | Customer/Supplier | Inventario (M2), Preparación (M5), Sensores (Capa 2) | Eventos (ExcursionTermicaDetectada), OpenAPI 3.1 | Dec 16.1#4 |
+| BI/Gerencia (M10) | Published Language | M1–M9, Capa 6 (Redshift) | AsyncAPI (EventBridge), consultas SQL | RT-05.27, RT-05.29 |
+| EDI Canal Moderno (M11) | Open Host Service | Cadenas (AS2/API), Preventa (M3), Reparto (M6) | EANCOM/GS1 XML/EPCIS, AS2, OpenAPI 3.1 | ADR-11, RT-05.23 |
+| Telemetría/Flota (M12) | Conformist | Planificación (M4), GPS externo, Calidad (M9) | API fuente existente, Eventos (DesviacionDeRutaDetectada) | D1, RT-17.06 |
+
+*Tabla 5. Mapa de límites de contexto (Context Mapping)*
+
+El diagrama de contextos (Mermaid) se referencia en § 4.7 / Diagramas. Cada relación declara dueño del contrato, versión y comportamiento ante falla en el Catálogo (§ 4.5).
+
+### 4.3.2  Módulo de Trazabilidad
 
 El módulo de trazabilidad resuelve el problema central que motivó la licitación: la incapacidad de responder en tiempo real ante un retiro sanitario. En marzo de 2026, un retiro preventivo de queso fresco tomó 9 días en resolverse de forma inexacta, generando pérdidas de $31 millones, la apertura de un sumario sanitario y la suspensión como distribuidor autorizado por un proveedor clave por seis meses.
 
@@ -261,7 +415,57 @@ Los eventos usan verbos en pasado y son la base de los esquemas AsyncAPI. Toda e
 
 El almacenamiento se distribuye en quince dominios lógicos: BD_INVENTARIO, BD_PREVENTA, BD_RUTAS (PostGIS), BD_PREPARACION, BD_REPARTO, BD_COBRANZA_FINANZAS, BD_MAESTROS_CONF, BD_GOBIERNO_ACCESO, BD_CALIDAD_TRAZABILIDAD, BD_TELEMETRIA, BD_EDI_CANALMODERNO, BD_BI_GERENCIA, BD_MAILS_NOTIF, REDIS_SESIONES_CACHE y S3_DOCS. El dominio de telemetría conserva la ingesta raw en DynamoDB y su serie consolidada en S3 Parquet y Redshift, procesada con Glue. Esta separación incluye bases transaccionales, almacenes analíticos, caché y objetos; no representa quince servidores físicos ni quince motores de base de datos independientes.
 
-## 4.5  Tecnologías Seleccionadas
+## 4.5  Catálogo de Interfaces
+
+El catálogo es el registro único de integraciones. Cada entrada tiene identificador estable, módulo dueño, contrato, versión, estado y comportamiento ante falla. Vive versionado junto al código y se publica en el portal interno de desarrolladores servido por Amazon API Gateway (Capa 3). Se declaran 15 integraciones: 8 internas y 7 externas.
+
+### 4.5.1  Integraciones internas — superficies y plano híbrido
+
+| ID | Integración | Modo | Contrato | Módulo | Ventana crítica | Comportamiento ante falla (RT-10.08) |
+|---|---|---|---|---|---|---|
+| INT-01 | App Preventa ↔ plataforma (pedidos, stock, crédito, promos, precios) | Síncrono lectura + sync diferida idempotente escritura | OpenAPI 3.1 /v1/preventa, /v1/sync | M3 | 09:00–18:00 | Caché turno (saldo, stock, tarifa; TTL 8 h); pedido sin conexión se confirma en sync; no se pierde |
+| INT-02 | App Reparto ↔ plataforma (POD, entregas, devoluciones, cobranza, envases) | Sync diferida idempotente por lotes | OpenAPI 3.1 /v1/reparto, /v1/sync | M6, M7, M8 | 05:30–07:00, 17:00–20:00 | Turno 14 h sin señal; sync ≤ 10 min al reconectar (RT-03.12); acuse por lote (RF-06.07) |
+| INT-03 | Broker on-premise → nube (reconciliación WMS) | Asíncrono | AsyncAPI 2.6 SQS FIFO, MessageGroupId = sitio | M2, M5 | 22:00–06:00 | Buffer RabbitMQ 24 h; publicación cronológica al reconectar; CD sincronizado ≤ 2 h tras corte 24 h |
+| INT-04 | Cross-dock → Talca (detalle mini-WMS) | Asíncrono broker a broker | AsyncAPI 2.6 AMQPS 5671 | M2 | 03:00–06:00 | Ventana 3 h 100% local; eventos críticos directo a SQS, no dependen Talca (D-AL-04) |
+| INT-05 | Borde IoT → nube (cadena de frío) | Asíncrono, al menos una vez | AsyncAPI 2.6 MQTTS 8883 con X.509 por dispositivo | M9, M12 | 24×7 | Buffer Greengrass 14 h; detección excursión y bloqueo despacho 100% locales |
+| INT-12 | Réplica WMS → Aurora (continuidad) | Asíncrono CDC | WAL lógico (wal_level=logical) por AWS DMS | M2 | continua | Excepción entrante D-AL-05; si VPN cae, DMS encola en origen y reanuda sin pérdida — RPO ≤ 15 min |
+| INT-13 | Identidad: maestro → cachés locales | Asíncrono (importación Realm cifrado S3, saliente) | Exportación/importación Realm Keycloak | Capa 7 | 24×7 | Δ ≤ 8 h por TTL y ≤ 24 h por SCIM; sin conexiones entrantes a Keycloak |
+| INT-14 | Observabilidad on-premise → plataforma | Asíncrono (OTLP) | OpenTelemetry | Capa 8 | 24×7 | Buffer disco 24 h; envío diferido cierra hueco al reconectar |
+
+*Tabla 6. Integraciones internas — superficies y plano híbrido*
+
+### 4.5.2  Integraciones externas — plataforma y terceros
+
+| ID | Sistema | Modo | Contrato / estándar | Volumen | Ventana crítica | Comportamiento ante falla (RT-10.08) |
+|---|---|---|---|---|---|---|
+| INT-06 | ERP 2017 (catálogo, stock valorizado, cobranzas, contabilidad) | Asíncrono colas + síncrono solo lecturas | OpenAPI 3.1 Puelche (ACL); ERP sin contrato propio | ≈ 34.000 DTE/mes; cobranzas/turno | Cierre contable diario, 3 primeros días hábiles mes | Cortacircuito: preventa/reparto no se degradan; colas retienen 24 h; desajuste en bitácora Art. 16.4 |
+| INT-07 | SII — DTE, guía despacho electrónica, acuse recibo | Síncrono por puerta enlace | Formato autoridad tributaria (RT-05.23); firma Ley 19.799 | ≈ 34.000 docs/mes; pico 05:30–07:00 | Emisión por turno | Entrega no se detiene: evidencia local (firma, QR, foto) + timbre diferido folio reservado; reintento exponencial — cero guías papel (RF-06.02) |
+| INT-08 | Cadenas supermercados — canal moderno | Asíncrono (AS2) + API síncrona selectiva | EANCOM D.01B / GS1 XML (pedido, aviso despacho, factura) + EPCIS trazabilidad | 500 puntos canal moderno | Ventana 30 min (RF-12.10); hito ene 2029 (RNF-12.01) | DLQ + bandeja excepciones actor canónico (RF-12.05/06); alternativa manual por acuerdo cada cadena |
+| INT-09 | Transbank Webpay y POS móvil | Síncrono por puerta enlace | API pasarela; idempotencia transaction_id | ≈ 1.400 entregas/día (2.600 peak); 11.800 cobros efectivo/mes | 05:30–07:00 | Doble captura sin conexión: POS registra pendiente autorización diferida; si no procede, efectivo o giro crédito con firma. Cobro nunca se pierde |
+| INT-10 | GIS, mapas, ETA, geocercas | Síncrono por puerta enlace | API proveedor GIS | Planificación diaria ≈ 96 camiones | Planificación previa despacho | Caché mapas por zona en dispositivo; degradación a ruta offline con secuencia cargada (M4); entrega no se pierde |
+| INT-11 | Notificaciones — correo, app, mensajería, SMS | Asíncrono por colas | API proveedor notificaciones | Avisos despacho y llegada por turno | Previo a entrega | Cola local entrega diferida; canal se elige por cliente (canal tradicional no usa correo, RT-16.21) |
+| INT-15 | Telemetría flota existente (camiones propios) | Asíncrono, solo lectura | API fuente existente (RT-17.06) | 42 vehículos; ≈ 420.000 km/mes | Operación diurna | Degrada a ruta planificada sin posición real; no control jornada (D1, objeción sindical L577) |
+
+*Tabla 7. Integraciones externas — plataforma y terceros*
+
+**Volumen de mensajes por integración (numeral 14.2).** El total en régimen es ≈ 150.000 mensajes/día, dominado por trazabilidad y telemetría (series de tiempo que no atraviesan base transaccional: entran por borde y consolidan en capa analítica, ADR-04). Las cinco integraciones restantes son de configuración y administración, con volumen despreciable.
+
+| Integración | Volumen régimen | Peak septiembre | Derivación |
+|---|---|---|---|
+| Capa anticorrupción ERP (asíncrona) | ≈ 4.700 msg/día | ≈ 9.400 | 1.240 pedidos + 46 recepciones + 1.400 preparaciones + 1.400 evidencias + ≈ 600 recaudaciones |
+| Documentos tributarios y acuse (SII, síncrona) | ≈ 2.700 msg/día | ≈ 5.400 | 34.000 docs/mes + acuse, sobre 25 días |
+| Eventos trazabilidad GS1 EPCIS | ≈ 52.000 eventos/día | ≈ 104.000 | 260.000 líneas/mes × 5 eventos ciclo, sobre 25 días |
+| Telemetría cadena frío (IoT Core) | ≈ 13.200 msg/día | sin variación | 46 fuentes (28 cámaras + 18 termógrafos) × 1 muestra/5 min |
+| Telemetría flota | ≈ 60.500 msg/día | ≈ 72.000 | 42 camiones × 1 posición/30s durante 12 h ruta |
+| Sync terreno (colas dispositivo) | ≈ 13.000 escrituras/día | ≈ 26.000 | 1.240 pedidos + 1.400 evidencias + 10.400 confirmaciones prep. |
+| EDI canal moderno (Etapa 2) | ≈ 550 msg/día | ≈ 1.100 | 136 pedidos/día × 4 mensajes (pedido, confirmación, aviso, acuse) |
+| Notificaciones multicanal | ≈ 2.800 msg/día | ≈ 5.600 | hora estimada llegada y acuse por entrega |
+| Autorización pago (POS móvil) | ≈ 500 msg/día | ≈ 1.000 | fracción canal tradicional que migra efectivo a electrónico |
+| Servicio mapas y geocodificación | ≈ 200 llamadas/día | ≈ 400 | una corrida ruteo por zona + recálculos incidencia |
+
+*Tabla 8. Volumen de mensajes por integración (derivado volumetría caso)*
+
+## 4.6  Tecnologías Seleccionadas
 
 A continuación se resume la tecnología de cada capa y su justificación principal:
 

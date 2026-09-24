@@ -30,13 +30,14 @@ Todo el trabajo se desarrolla en **español** (idioma oficial de la licitación)
 
 ## Fuentes y precedencia
 
-Los tres documentos de `Bases/` son la fuente de verdad. Orden de precedencia estricto (Art. 5° de las Bases Administrativas):
+Los **cuatro** documentos de `Bases/` son la fuente de verdad. Orden de precedencia estricto:
 
-1. `Bases/Bases_Administrativas.md` — reglas del proceso y del contrato: participación, cronograma obligatorio de 56 meses, modelo de despliegue híbrido, hitos, formularios/sobres, evaluación y las 5 innovaciones obligatorias.
-2. `Bases/Bases_Tecnicas_Transversales.md` — requisitos técnicos comunes a las 13 industrias, codificados como **RT-CC.NN** (Obligatorio / Deseable / Según caso). Deben responderse uno a uno en el **Formulario T-12**.
-3. `Bases/Caso_02_Logistica.md` — el caso en sí. **No es una especificación de requerimientos**: traducir su narrativa (dolores, contradicciones, vacíos) en alcance, arquitectura, plan y estrategia es exactamente lo que se evalúa.
+1. `Bases/aclaraciones-licitacion.md` — **nueva base rectora** que modifica y aclara las demás bases. Establece reglas de estructura, redacción, diagramas, tablas, referencias, uso de IA, innovaciones, índice obligatorio por capítulo y régimen de sanciones. **Prevalece sobre las demás bases en materias formales y de presentación.**
+2. `Bases/Bases_Administrativas.md` — reglas del proceso y del contrato: participación, cronograma obligatorio de 56 meses, modelo de despliegue híbrido, hitos, formularios/sobres, evaluación y las 5 innovaciones obligatorias.
+3. `Bases/Bases_Tecnicas_Transversales.md` — requisitos técnicos comunes a las 13 industrias, codificados como **RT-CC.NN** (Obligatorio / Deseable / Según caso). Deben responderse uno a uno en el **Formulario T-12**.
+4. `Bases/Caso_02_Logistica.md` — el caso en sí. **No es una especificación de requerimientos**: traducir su narrativa (dolores, contradicciones, vacíos) en alcance, arquitectura, plan y estrategia es exactamente lo que se evalúa.
 
-Regla de precedencia: el caso puede **endurecer** un requisito transversal, nunca **rebajarlo**. Un requisito marcado "Según caso" se completa con la volumetría/valores del Capítulo 15 del caso (si el caso no lo define, rige el valor por defecto del transversal).
+Regla de precedencia: el caso puede **endurecer** un requisito transversal, nunca **rebajarlo**. Un requisito marcado "Según caso" se completa con la volumetría/valores del Capítulo 15 del caso (si el caso no lo define, rige el valor por defecto del transversal). **Las Aclaraciones de la Licitación prevalecen en materias formales, de estructura y de presentación.**
 
 ## Reglas que condicionan todo el diseño
 
@@ -95,7 +96,7 @@ fuente. Queda en el historial (commit `6a4a00d`, tag `respaldo/pre-consolidacion
 **Transversales**:
 
 - `00_trazabilidad_observaciones/` — bitácora de observaciones y respuestas entre entregas (T-22 · Art. 45), manifiestos de extracción del `.docx` e historiales de cada entrega. **Aquí se registra todo cambio** entre `entrega_1/` y `entrega_2/`.
-- `Bases/` — documentos rectores (ver precedencia arriba). `Bases/pdf/` guarda los originales.
+- `Bases/` — documentos rectores (ver precedencia arriba). `Bases/pdf/` guarda los originales. **Ahora incluye `aclaraciones-licitacion.md` (nueva base rectora que modifica y aclara las demás; prevalece en forma/presentación).**
 - `Requerimientos/` — catálogos RF/RNF/bases (`.csv`), decisiones, reglas de negocio, supuestos y justificaciones. Es la fuente de los catálogos que se vuelcan al subdocumento 3.
 - `Arquitectura/` — documentos fuente de arquitectura, **no entregables**:
   - `Arquitectura/logica/` — arquitectura lógica vigente (`Arquitectura_Logica_v6-2.md`).
