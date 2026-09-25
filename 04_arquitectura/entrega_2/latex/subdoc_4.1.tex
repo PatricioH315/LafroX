@@ -147,7 +147,7 @@ Los módulos evitan estado durable en memoria y pueden crecer por réplicas o po
 
 La capa de integración conecta la nueva operación con sistemas que Puelche ya utiliza. Sus límites son especialmente importantes ante el ERP de 2017 sin interfaces documentadas y el WMS de 2013. También concentra el intercambio con cadenas del canal moderno, los servicios de pago, los mapas y la telemetría, de modo que un cambio externo no obligue a modificar cada módulo de negocio.
 
-RabbitMQ conserva las colas de integración local. En nube, SQS FIFO ordena los mensajes de reconciliación dentro de cada grupo y SNS difunde eventos y alertas. El orden no se presume global ni se atribuye a toda la cadena de eventos. Los consumidores aplican deduplicación, reintentos con espera creciente y una cola de mensajes fallidos (DLQ), con intervención trazable cuando el procesamiento no puede completarse (RT-02.07).
+RabbitMQ conserva las colas de integración local. En nube, SQS FIFO ordena los mensajes de reconciliación dentro de cada grupo y SNS difunde eventos y alertas. Los avisos al cliente se entregan mediante SNS o la API del proveedor de notificaciones (INT-11). El orden no se presume global ni se atribuye a toda la cadena de eventos. Los consumidores aplican deduplicación, reintentos con espera creciente y una cola de mensajes fallidos (DLQ), con intervención trazable cuando el procesamiento no puede completarse (RT-02.07).
 
 Las APIs de la plataforma reciben solicitudes por la Capa 3. Los servicios de negocio invocan sus adaptadores de integración cuando necesitan consultar pagos o mapas, con tiempo máximo de espera explícito (RT-02.08). Los intercambios diferidos con ERP, EDI, telemetría y notificaciones utilizan colas y reintentos. La emisión tributaria se canaliza por el ERP mediante la ACL; no se crea un segundo emisor de documentos ante el SII.
 
@@ -374,6 +374,8 @@ M12 Flota / RF-14 & Ruta real y desviación. & GPS a M4/M10. & Planificador; flo
 
 Cada módulo tiene un dueño de negocio y una vía explícita para colaborar con los demás.
 
+La correspondencia con los identificadores físicos se detalla en el Anexo 4.A (Formulario T-11) de 4.2: N-04 ejecuta los módulos M1--M12 en nube; A-01 ejecuta M1, M2 y M5 como WMS local sobre A-02 (base transaccional), con A-03 (RabbitMQ), A-04 (ACL del ERP) y A-05 (identidad local) como apoyos. M9 utiliza B-02 (gateways de frío) y N-08 (ingesta IoT); M10 utiliza N-10 (analítica). N-09 proporciona SQS FIFO y SNS a los flujos asíncronos; N-01 a N-03 publican los portales y N-13 gestiona los terminales de bodega y terreno. Estos códigos identifican componentes de despliegue, no módulos de negocio adicionales.
+
 El reparto evita que M6 emita DTE o que M10 escriba pedidos. M1 y M5 entregan datos al ERP únicamente por la capa anticorrupción. M11 entra en la Etapa 2 sin cambiar el dueño de la reserva de stock, que sigue siendo M2. Los límites y dependencias se precisan en el mapa siguiente.
 
 La Tabla~\ref{tab:traza-logica} hace visible el paso del requerimiento al componente y a la capa que lo realiza. Es una síntesis de los dominios, no una sustitución del catálogo requisito por requisito del Formulario T-12; allí se debe conservar también origen, etapa, prueba y criterio de aceptación de cada RF y RNF.
@@ -586,7 +588,7 @@ INT-07 & Emisor DTE del ERP y SII & ACL/M5 & Guía y estado tributario. & Bloque
 INT-08 & Cadenas modernas & M11 & Perfil EDI por cadena. & Bandeja y aviso acordado. \\
 INT-09 & Pasarela de pago & M7 & Autorización con clave única. & Efectivo o crédito aprobado. \\
 INT-10 & Mapas y geocodificación & M4 & API proveedor. & Ruta precargada. \\
-INT-11 & Avisos al cliente & M11 & API de notificación. & Reintento por canal acordado. \\
+INT-11 & Avisos al cliente & Workers Celery (N-04) & SNS o API del proveedor de notificaciones. & Reintento por canal acordado. \\
 INT-15 & Telemetría existente & M12 & API de solo lectura. & Ruta planificada sin posición. \\
 \end{tablalafrox}
 
@@ -642,7 +644,7 @@ A continuación se resume la tecnología de cada capa y su justificación princi
   \item \textbf{CI/CD.} GitLab CI como orquestador + AWS CodeBuild para construcción hermética con procedencia SLSA 3.
 \end{itemize}
 
-Los servicios AWS consumidos incluyen: CloudFront, WAF+Shield, ALB, API Gateway, Aurora, ElastiCache, DynamoDB, S3, Redshift Serverless, ECS Fargate, Route 53, Secrets Manager/SSM, KMS, IAM+Organizations, CloudWatch, Transit Gateway/VPC Peering, SQS, SNS, AWS Backup, GuardDuty/Security Hub, CloudTrail, SES e IoT Core+Greengrass.
+Los servicios AWS consumidos incluyen: CloudFront, WAF+Shield, ALB, API Gateway, Aurora, ElastiCache, DynamoDB, S3, Redshift Serverless, ECS Fargate, Route 53, Secrets Manager/SSM, KMS, IAM+Organizations, CloudWatch, Transit Gateway, SQS, SNS, AWS Backup, GuardDuty/Security Hub, CloudTrail e IoT Core+Greengrass.
 
 La selección no descansa en una lista de marcas. PostgreSQL/PostGIS se prefiere a MariaDB por la combinación de transacciones y consultas geográficas del dominio de rutas y sitios; la prueba de aceptación debe cubrir consultas espaciales y migración de datos. Keycloak se prefiere a un proveedor de identidad exclusivamente en nube porque permite administrar el ciclo de vida común de personal propio y externo sin trasladar la autorización de negocio fuera de M1--M12; su capacidad de relevo local sigue sujeta a la prueba de 24 horas. Amazon API Gateway se prefiere a un gateway autoadministrado por la carga de operación de cuatro personas, pero su costo y límites de cuota deben verificarse contra el pico. RabbitMQ local más SQS FIFO se prefiere a una sola cola central porque conserva el trabajo del sitio sin enlace; los consumidores deben probar deduplicación y orden por partición, no asumir orden global. Angular se mantiene para los portales por reutilización de componentes y contratos TypeScript, mientras que React es una alternativa viable si el equipo demuestra igual accesibilidad y mantenibilidad. Estas comparaciones explican el criterio funcional de 4.1.1; los costos, el emplazamiento y la redundancia se comprueban en 4.2 y en el registro ADR.
 
