@@ -212,7 +212,7 @@ Con un nodo caído, el clúster todavía usa menos de un cuarto de su cómputo, 
   VM-02 & Base transaccional del WMS & 8 & 32 GB & 1.500 GB \\
   VM-03 & Broker de colas & 4 & 8 GB & 200 GB \\
   VM-04 & Capa anticorrupción del ERP & 4 & 4 GB & 20 GB \\
-  VM-05 & Caché de identidad & 4 & 4 GB & 20 GB \\
+  VM-05 & Caché de identidad y verificador local & 4 & 4 GB & 20 GB \\
   VM-06 & Colector de observabilidad y agente SSM & 2 & 4 GB & 50 GB \\
 \end{tablalafrox}
 \fuente{elaboración propia.}
@@ -226,7 +226,7 @@ Concepción se dimensiona por su carga real y no como copia de Talca. Sus 30 ter
   {\cab{VM} & \cab{Rol} & \cab{vCPU} & \cab{Memoria} & \cab{Disco}}
   VM-C01 & Motor WMS & 2 & 4 GB & 50 GB \\
   VM-C02 & Base transaccional del WMS & 2 & 8 GB & 750 GB \\
-  VM-C03 & Caché de identidad & 2 & 2 GB & 10 GB \\
+  VM-C03 & Caché de identidad y verificador local & 2 & 2 GB & 10 GB \\
   VM-C04 & Broker de colas y colector de observabilidad & 2 & 3 GB & 125 GB \\
   \textbf{Total} & & \textbf{8} & \textbf{17 GB} & \textbf{935 GB} \\
 \end{tablalafrox}

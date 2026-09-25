@@ -140,7 +140,7 @@ La Tabla~\ref{tab:t11-software} detalla el software que opera sobre el equipamie
   Aplicación de terreno & Aplicación nativa Android en Kotlin, con SQLite y Zebra DataWedge & EC55, TC58e y MC9400 & 1 artefacto para 3 perfiles & Controla los periféricos industriales y opera un turno completo sin señal (ADR-07). \\
   Base de datos & PostgreSQL 16 con PostGIS, código abierto & VM-02, VM-C02 y los tres E-01 & 5 instancias & Registro de la bodega durante los cortes, replicado a Aurora por DMS. \\
   Broker & RabbitMQ, código abierto & VM-03, VM-C04 y los tres E-01 & 5 instancias & Buffer de 24 h por sitio con vuelco ordenado a SQS FIFO (ADR-05). \\
-  Identidad & Keycloak, código abierto & Fargate, VM-05, VM-C03 y los tres E-01 & 1 maestro y 5 cachés & Autoridad única en nube con cachés de solo lectura (ADR-06). \\
+  Identidad & Keycloak, código abierto, con verificador local de relevo de turno & Fargate, VM-05, VM-C03 y los tres E-01 & 1 maestro, 5 cachés y 5 verificadores & Autoridad única en nube con cachés de solo lectura; el verificador local valida el manifiesto de turno firmado y el segundo factor local, el PIN personal, en los relevos sin enlace (ADR-06). \\
   Virtualización & Proxmox VE con Ceph, código abierto & Clúster de Talca y servidor de Concepción & 1 clúster de 3 nodos y 1 nodo & Tolera la pérdida de un nodo sin detener la bodega. \\
   Contenedores de borde & Docker y Docker Compose, código abierto & Los tres cross-docking & 3 sitios & Instalación y parcheo sin dependencia de la red. \\
   Observabilidad de sitio & AWS Distro for OpenTelemetry y agente SSM & VM-06, VM-C04 y los tres E-01 & 5 colectores & Buffer de 24 h y envío a CloudWatch al reconectar (ADR-14). \\

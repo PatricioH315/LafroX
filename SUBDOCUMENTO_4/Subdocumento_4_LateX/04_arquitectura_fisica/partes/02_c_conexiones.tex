@@ -121,7 +121,7 @@ La Tabla~\ref{tab:fallas-nube} completa el recorrido con los puntos de falla que
   Zona de disponibilidad de sa-east-1 & Aurora conmuta en menos de 30 s, ElastiCache en menos de 60 s y Fargate reprograma las tareas. & La operación continúa en las zonas restantes. \\
   Región sa-east-1 completa & Route 53 redirige el tráfico y, con autorización del CLIENTE, se promueve la réplica en us-east-1. & RTO de 4 h y RPO de 15 min; la bodega y el terreno operan en local. \\
   Túnel VPN durante la replicación & DMS encola los cambios en el origen. & Reanuda sin pérdida al reconectar; la réplica queda desactualizada durante el corte. \\
-  IdP maestro o enlace de identidad & Las cachés de solo lectura validan las sesiones localmente. & Token de turno de 8 h en bodega y 14 h en terreno; cuenta de emergencia sellada (ADR-15). \\
+  IdP maestro o enlace de identidad & Las cachés de solo lectura validan las sesiones localmente, y el verificador local habilita los relevos de turno con el manifiesto firmado y el PIN personal. & Token de turno de 8 h en bodega y 14 h en terreno; cuenta de emergencia sellada (ADR-15). \\
   Señal móvil en ruta & La aplicación opera contra el almacén local del dispositivo. & Sincroniza al reconectar dentro de los 10 min de la Tabla~\ref{tab:t29}. \\
   ERP legado & La capa anticorrupción retiene las transacciones en cola hasta 24 h. & El ERP no se modifica; las transacciones se entregan al recuperarse. \\
   Excursión térmica sin enlace & El gateway bloquea el despacho en menos de 5 s en el borde. & Buffer de 24 h y alerta al reconectar. \\

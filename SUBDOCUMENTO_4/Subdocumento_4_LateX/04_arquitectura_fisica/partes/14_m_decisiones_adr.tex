@@ -58,7 +58,7 @@ Registro consolidado de las quince decisiones de arquitectura que condicionan es
 \section{ADR-06 \textperiodcentered{} Identidad híbrida (Modelo B)}
 \label{sub:adr-06}
 
-\textbf{Decisión adoptada.} Keycloak IdP maestro en AWS (ECS Fargate, 2 tareas Multi-AZ, backend Aurora) + caché local solo lectura (TTL 24 h, igual a la autonomía del CD) en Talca, Concepción y los cross-docking. Tokens offline por perfil (8 h bodega, 14 h reparto). OTP para conductores externos.
+\textbf{Decisión adoptada.} Keycloak IdP maestro en AWS (ECS Fargate, 2 tareas Multi-AZ, backend Aurora) + caché local solo lectura (TTL 24 h, igual a la autonomía del CD) en Talca, Concepción y los cross-docking, con un verificador local en el mismo nodo que, en cada relevo de turno sin enlace, valida el manifiesto de turno firmado por Keycloak y un segundo factor local: el PIN personal sobre el terminal enrolado por MDM. Tokens offline por perfil (8 h bodega, 14 h reparto). OTP para conductores externos.
 
 \textbf{Alternativas descartadas.} \emph{IdP solo nube}: paraliza bodega ante corte. \emph{AD maestro local}: duplica administración, crea maestro a promover en DR. \emph{Keycloak maestro local}: nube no puede autenticar si el enlace cae.
 
