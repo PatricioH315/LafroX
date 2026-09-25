@@ -98,9 +98,9 @@ Cada conexión se apoya en equipos del sitio que también pueden fallar. La Tabl
   Firewall de Concepción & Equipo único; se repone. & Concepción opera 24 h sin enlace mientras se reemplaza. \\
   Nodo del clúster de Talca & Las VM se reinician en los nodos restantes, con sus datos replicados por Ceph. & Ante un segundo nodo, el DRP local promueve el WMS de Concepción en 1 a 2 h. \\
   Instancia de escritura VM-02 & Se reinicia en otro nodo del clúster. & D-05 restaura la base en hasta 4 h sin enlace. \\
-  Disco de un servidor & El RAID 10 reconstruye sobre el repuesto en caliente. & Ceph conserva una segunda copia en otro nodo. \\
+  Disco de un nodo de Talca & El RAID 10 reconstruye sobre el repuesto en caliente. & Ceph conserva una segunda copia en otro nodo. \\
   Miembro del stack de switches de Talca & El otro miembro mantiene el tráfico. & Reposición sin corte. \\
-  Servidor de borde de Concepción & RAID 10 con repuesto en caliente cubre la falla de disco; ante la falla del equipo, se repone. & La pila se restaura desde la réplica en Aurora. \\
+  Servidor de borde de Concepción & El RAID 10 tolera la falla de un disco; el equipo tiene fuente única y, ante su falla, se repone. & La pila se restaura desde la réplica en Aurora. \\
   Mini-PC de un cross-docking & Equipo único; se repone. & El nuevo equipo se resincroniza desde Talca y SQS FIFO. \\
   Firewall de un cross-docking & Equipo único; se repone. & La ventana de 3 h opera 100\,\% local y sincroniza al reconectar. \\
   Periféricos de andén & Sin redundancia por equipo. & La etiqueta se emite en otra de las impresoras del centro de distribución. \\
@@ -109,7 +109,7 @@ Cada conexión se apoya en equipos del sitio que también pueden fallar. La Tabl
 \end{tablalafrox}
 \fuente{elaboración propia; puntos únicos de falla declarados conforme a RT-02.11.}
 
-La tabla muestra que los puntos únicos de falla que quedan están donde la redundancia no compensa su costo: el firewall y el servidor de Concepción, el firewall y el mini-PC de cada cross-docking y los periféricos de andén. En los cuatro primeros casos la contingencia es la misma autonomía que ya existe para los cortes de enlace. En la ruta de la ventana de despacho de Talca quedan dos elementos sin duplicar: la instancia de escritura VM-02, que se reinicia en otro nodo del clúster, y cada impresora de andén, cuya etiqueta puede emitir otra de las impresoras del centro de distribución; el resto de esa ruta tiene redundancia en cada capa. Los mecanismos de alta disponibilidad que sostienen estas resoluciones se desarrollan en la sección de arquitectura de despliegue.
+La tabla muestra que los puntos únicos de falla que quedan están donde la redundancia no compensa su costo: el firewall y el servidor de Concepción, el firewall y el mini-PC de cada cross-docking y los periféricos de andén. En los cuatro primeros casos la contingencia es la misma autonomía que ya existe para los cortes de enlace. El firewall y el servidor de Concepción y el firewall, el mini-PC y el switch de cada cross-docking operan, además, con fuente única; la excepción a RT-08.04 se declara con el mismo fundamento (RT-02.11). En la ruta de la ventana de despacho de Talca quedan dos elementos sin duplicar: la instancia de escritura VM-02, que se reinicia en otro nodo del clúster, y cada impresora de andén, cuya etiqueta puede emitir otra de las impresoras del centro de distribución; el resto de esa ruta tiene redundancia en cada capa. Los mecanismos de alta disponibilidad que sostienen estas resoluciones se desarrollan en la sección de arquitectura de despliegue.
 
 \subsection{Puntos de falla en la nube, el terreno y las integraciones}
 

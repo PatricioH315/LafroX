@@ -94,7 +94,7 @@ Registro consolidado de las quince decisiones de arquitectura que condicionan es
 \section{ADR-10 \textperiodcentered{} Almacenamiento on-premise y RAID}
 \label{sub:adr-10}
 
-\textbf{Decisión adoptada.} RAID 10 NVMe en los nodos del clúster de Talca y en el servidor de Concepción; RAID 6 en el NAS de respaldo local D-05; la evidencia de entrega vive en S3; hipervisor Ceph N+1.
+\textbf{Decisión adoptada.} RAID 10 NVMe en los nodos del clúster de Talca y RAID 10 sobre las cuatro bahías del servidor de Concepción; RAID 6 en el NAS de respaldo local D-05; la evidencia de entrega vive en S3; hipervisor Ceph N+1.
 
 \textbf{Alternativas descartadas.} \emph{RAID 5}: probabilidad de URE durante rebuild en discos 8--16 TB; solo tolera 1 fallo. \emph{RAID 1 puro para todo}: sobre-costo 50\,\% aplicado a datos no críticos sin beneficio proporcional.
 

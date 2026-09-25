@@ -25,7 +25,7 @@ El proveedor de nube es Amazon Web Services, con los servicios contratados en cu
 \paragraph{Tipología declarada (numeral 6.1 de las Transversales): sala técnica secundaria.}
 El caso fija para el CD Talca una sala técnica secundaria, dimensionada para sostener recepción, preparación y despacho durante un corte, y advierte que la sala actual de 25 m\textsuperscript{2} no cumple el Capítulo 6 de las Transversales (Caso, Cap. 15, RT-06.01). Conforme al numeral 6.1, a este sitio no se aplica íntegramente la serie RT-06.01 a RT-06.24, que corresponde a la sala técnica principal, sino el subconjunto dimensionado al sitio: energía, climatización, control de acceso, detección de incendio y monitoreo. Como el mismo numeral penaliza por igual sobredimensionar y subdimensionar, la superficie de la sala queda determinada por el equipamiento real que aloja y por los cálculos eléctrico y térmico siguientes, y se fija en el plano de distribución interna del recinto (RT-06.03).
 
-La sala aloja el clúster de tres nodos con redundancia N+1 que ejecuta el motor WMS y el borde operacional del CD, la NAS local de recuperación rápida y el par de firewalls de la frontera del sitio.
+La sala aloja el clúster de tres nodos con redundancia N+1 que ejecuta el motor WMS y el borde operacional del CD, la NAS local de recuperación rápida, el par de firewalls de la frontera del sitio y los conmutadores de núcleo y de gestión.
 
 \textbf{Disponibilidad de infraestructura comprometida: 99,95 \% mensual} por componente: energía del recinto, climatización, red y comunicaciones, servidores y cómputo, y motor de base de datos (numeral 7.2 de las Transversales). Se sostiene con redundancia N+1 en energía y climatización, generación autónoma propia y monitoreo continuo con alertamiento. No se invoca una clasificación de instalación de terceros: los niveles del numeral 7.2 son un medio, y el compromiso que se mide y se penaliza es el de la transacción de negocio de extremo a extremo ($\geq$ 99,9 \% mensual; Art. 78\textdegree{}; RT-10.01).
 
@@ -41,13 +41,15 @@ La carga eléctrica se proyecta sobre la potencia de placa de los equipos que el
   Nodo del clúster, servidor de rack de 2U y doble procesador & 3 & 1.600 W (2 fuentes de 800 W) & 4.800 W \\
   NAS local & 1 & 400 W & 400 W \\
   Firewall del perímetro del sitio & 2 & 150 W & 300 W \\
-  \textbf{Carga TI base} & & & \textbf{5.500 W} \\
-  Margen de crecimiento a tres años (20 \%, RT-06.05) & & & + 1.100 W \\
-  \textbf{Carga TI de diseño} & & & \textbf{6.600 W} \\
+  Switch de núcleo en stack, sin PoE & 2 & 150 W & 300 W \\
+  Switch de gestión & 1 & 50 W & 50 W \\
+  \textbf{Carga TI base} & & & \textbf{5.850 W} \\
+  Margen de crecimiento a tres años (20 \%, RT-06.05) & & & + 1.170 W \\
+  \textbf{Carga TI de diseño} & & & \textbf{7.020 W} \\
 \end{tablalafrox}
 \fuente{elaboración propia; potencia de placa según la ficha técnica del equipamiento declarado en el Anexo 4.A (RT-06.11).}
 
-Con un factor de potencia de 0,95, la potencia aparente de diseño es 6,6 / 0,95 $\approx$ 6,9 kVA; al 80 \% de utilización se requieren 6,9 / 0,8 $\approx$ 8,7 kVA, por lo que se selecciona un UPS modular de 10 kVA, en N+1 y con bypass de mantenimiento. La PUE estimada de diseño es 1,5: a la carga TI de 6,6 kW se suman la climatización de precisión, $\approx$ 2,3 kW, la iluminación y el apoyo, $\approx$ 0,6 kW, y las pérdidas de conversión del UPS, $\approx$ 0,55 kW, lo que da $\approx$ 10 kW y 10 / 6,6 $\approx$ 1,5. El numerador se mide en el tablero general del recinto y el denominador a la salida de las PDU de los racks, con medición semestral e informe (RT-06.10, RT-15.04). El generador sostiene la carga total del sitio, $\approx$ 10 kW, por lo que se selecciona un grupo electrógeno de 15 kVA.
+Con un factor de potencia de 0,95, la potencia aparente de diseño es 7,0 / 0,95 $\approx$ 7,4 kVA; al 80 \% de utilización se requieren 7,4 / 0,8 $\approx$ 9,2 kVA, por lo que se selecciona un UPS modular de 10 kVA, en N+1 y con bypass de mantenimiento. La PUE estimada de diseño es 1,5: a la carga TI de 7,0 kW se suman la climatización de precisión, la iluminación y el apoyo y las pérdidas de conversión del UPS, lo que da una carga del sitio de $\approx$ 10,4 kW y una PUE de 10,4 / 7,0 $\approx$ 1,5. El numerador se mide en el tablero general del recinto y el denominador a la salida de las PDU de los racks, con medición semestral e informe (RT-06.10, RT-15.04). El generador sostiene la carga total del sitio, $\approx$ 10,4 kW, por lo que se selecciona un grupo electrógeno de 15 kVA.
 
 \subsection{Climatización y carga térmica}
 
@@ -56,13 +58,13 @@ Cada kW eléctrico que consume el equipamiento se disipa como $\approx$ 1 kW de 
 \begin{tablalafrox}{Carga térmica sensible proyectada del recinto}{tab:dc-termica}%
   {Y F{0.26}}%
   {\cab{Origen del calor} & \cab{Potencia equivalente}}
-  Carga TI de diseño & 6.600 W \\
-  Pérdidas de conversión del UPS, con eficiencia $\approx$ 0,92 & $\approx$ 550 W \\
-  \textbf{Carga térmica sensible de diseño} & \textbf{$\approx$ 7,2 kW} \\
+  Carga TI de diseño & 7.020 W \\
+  Pérdidas de conversión del UPS, con eficiencia $\approx$ 0,92 & $\approx$ 610 W \\
+  \textbf{Carga térmica sensible de diseño} & \textbf{$\approx$ 7,6 kW} \\
 \end{tablalafrox}
 \fuente{elaboración propia (RT-06.11, RT-06.13).}
 
-Sobre esa carga se instalan dos unidades de climatización de precisión de 10 kW ($\approx$ 34.000 BTU/h) cada una, en N+1 (RT-06.13): ante la pérdida de una, la restante cubre la carga de diseño con holgura (7,2 kW $<$ 10 kW), con temperatura y humedad relativa dentro de los rangos que recomienda el fabricante del equipamiento. La temperatura, la humedad y la presencia de agua se monitorean en línea, con alertamiento integrado a la plataforma de observabilidad (RT-06.14); no se declara una plataforma de terceros de gestión del recinto, porque las Bases no la exigen y el monitoreo en línea con su alertamiento satisface RT-06.14 y RT-06.19.
+Sobre esa carga se instalan dos unidades de climatización de precisión de 10 kW ($\approx$ 34.000 BTU/h) cada una, en N+1 (RT-06.13): ante la pérdida de una, la restante cubre la carga de diseño con holgura (7,6 kW $<$ 10 kW), con temperatura y humedad relativa dentro de los rangos que recomienda el fabricante del equipamiento. La temperatura, la humedad y la presencia de agua se monitorean en línea, con alertamiento integrado a la plataforma de observabilidad (RT-06.14); no se declara una plataforma de terceros de gestión del recinto, porque las Bases no la exigen y el monitoreo en línea con su alertamiento satisface RT-06.14 y RT-06.19.
 
 \subsection{Racks, cableado y comunicaciones}
 
