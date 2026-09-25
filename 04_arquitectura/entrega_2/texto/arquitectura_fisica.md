@@ -588,28 +588,29 @@ Arquitectura de despliegue de la solución: ambientes, redes y segmentación, al
 
 ### Ambientes de despliegue
 
-Los cinco ambientes obligatorios están habilitados como condición del hito H3, aislados entre sí mediante cuentas AWS separadas bajo una organización centralizada de AWS Control Tower (aislamiento estricto + SCP), que se listan en la Tabla 62:
+Un cambio recorre tres ambientes antes de llegar a Producción: Desarrollo, QA y Preproducción. La marcha blanca de cada etapa ocurre ya en Producción, porque es operación supervisada con datos y usuarios reales en paralelo con la operación vigente. Un quinto ambiente, de Recuperación ante Desastres, sostiene la continuidad (RT-04.01): reside en us-east-1 para el dominio de nube, mientras que la recuperación del dominio on-premise la asume el CD Concepción, que forma parte de Producción. Los cinco ambientes están habilitados como condición del hito H3, aislados entre sí mediante cuentas AWS separadas bajo una organización centralizada de AWS Control Tower (aislamiento estricto + SCP), que se listan en la Tabla 62:
 
 **Tabla 62** — Ambientes de despliegue
 
 | Ambiente | Cuenta AWS | VPC | Región | Uso |
 |---|---|---|---|---|
 | Desarrollo | Cuenta 1 | 10.104.0.0/16 | sa-east-1 | Integración continua, pruebas unitarias automáticas |
-| Calidad (QA) | Cuenta 2 | 10.103.0.0/16 | sa-east-1 | Pruebas funcionales, estáticas, DAST/SAST |
-| Pre-Producción | Cuenta 3 | 10.102.0.0/16 | sa-east-1 | Marcha blanca, pruebas de aceptación y de carga |
-| Producción | Cuenta 4 | 10.101.0.0/16 | sa-east-1 | Operación real (Multi-AZ) |
-| Recuperación ante Desastres | Cuenta 5 | 10.201.0.0/16 | us-east-1 | 5.º ambiente obligatorio (RT-04.01) |
+| QA | Cuenta 2 | 10.103.0.0/16 | sa-east-1 | Pruebas funcionales, de integración y de regresión; análisis dinámico |
+| Preproducción | Cuenta 3 | 10.102.0.0/16 | sa-east-1 | Aceptación, carga, resiliencia y ensayo del paso a producción |
+| Producción | Cuenta 4 | 10.101.0.0/16 | sa-east-1 | Operación real (Multi-AZ), con los sitios on-premise; marcha blanca |
+| Recuperación ante Desastres | Cuenta 5 | 10.201.0.0/16 | us-east-1 | Réplica en caliente del dominio de nube (RT-04.01) |
 
 Reglas que gobiernan el modelo de ambientes:
 
-- **Paridad Pre-Producción = Producción.** topología, versiones de componentes y configuración equivalentes; las diferencias por costo se declaran y justifican una a una.
-- **On-premise como producción.** el despliegue on-premise es producción con la imagen única wms_only; esa misma imagen recorre Dev→QA→PreProd en la nube antes del cutover en Talca (ventana de 24 h) y en Concepción. No se mantienen ambientes on-premise separados — la paridad la garantizan la imagen única y el IaC versionado.
+- **Paridad Preproducción = Producción (RT-04.02).** versiones, configuración, dimensionamiento y topología de nube equivalentes. Diferencias declaradas: (1) se reduce o apaga fuera del horario de uso; (2) trabaja con datos sintéticos, con anonimización verificada con Amazon Macie (RT-11.25); (3) el sitio on-premise se emula en su propia VPC, con la misma imagen wms_only, el mismo broker y el mismo verificador local, sin túnel hacia las bodegas. Como la emulación no reproduce el hardware, la primera instalación de cada versión en los centros de distribución avanza sitio por sitio.
+- **Desarrollo y QA.** aislados y reconstruibles desde código; Desarrollo con datos sintéticos o anonimizados y QA con datos de prueba controlados y versionados, restituidos a un estado conocido antes de cada ciclo de pruebas.
+- **On-premise como producción.** el despliegue on-premise es producción con la imagen única wms_only; esa misma imagen recorre Desarrollo→QA→Preproducción en la nube antes del cutover en Talca (ventana de 24 h) y en Concepción. No se mantienen ambientes on-premise separados — la paridad la garantizan la imagen única y el IaC versionado.
 - **Entrega continua.** el pipeline CI ejecuta compilación, pruebas unitarias, análisis estático, análisis de composición, escaneo de secretos y escaneo de imágenes de contenedor, con bloqueo automático del despliegue ante hallazgos críticos o altos.
-- **Despliegue sin interrupción.** estrategia azul-verde con canario (despliegue gradual a un porcentaje pequeño de tráfico) en etapas, demostrada en PreProducción antes de cada paso a producción; reversión automatizada.
-- **Configuración externalizada.** un mismo artefacto se promueve QA→PreProd→Prod sin recompilación; los secretos viven en gestor de secretos con rotación automática, sin credenciales embebidas.
-- **Datos no productivos.** Dev, QA y PreProd usan datos sintéticos generados desde la volumetría del Cap. 14 del caso; las plantillas próximas a producción pasan por anonimización/seudonimización verificable (Amazon Macie).
+- **Despliegue sin interrupción.** estrategia azul-verde con canario (despliegue gradual a un porcentaje pequeño de tráfico) en etapas, demostrada en Preproducción antes de cada paso a producción; reversión automatizada.
+- **Configuración externalizada.** un mismo artefacto se promueve QA→Preproducción→Producción sin recompilación; los secretos viven en gestor de secretos con rotación automática, sin credenciales embebidas.
+- **Datos no productivos.** Desarrollo, QA y Preproducción usan datos sintéticos generados desde la volumetría del Cap. 14 del caso; las plantillas próximas a producción pasan por anonimización/seudonimización verificable (Amazon Macie).
 - **Sin acceso interactivo a producción.** los despliegues son exclusivamente por pipeline; el acceso administrativo excepcional es just-in-time vía AWS Systems Manager Session Manager con MFA, aprobación y sesión grabada.
-- **Reducción de ambientes no productivos fuera de horario.** Dev/QA/PreProd se apagan o reducen fuera del horario de uso, con el ahorro reflejado en la estructura de costos.
+- **Reducción de ambientes no productivos fuera de horario.** Desarrollo, QA y Preproducción se apagan o reducen fuera del horario de uso, con el ahorro reflejado en la estructura de costos (RT-15.02, RT-04.13).
 - **Portal web (N-01/N-02/N-03).** la SPA Angular se publica por ambiente en S3+CloudFront (bucket y distribución por cuenta AWS) y su backend es la misma imagen Django del ambiente; entra a producción con el hito de enero 2029.
 
 
@@ -1030,7 +1031,7 @@ Los umbrales de desempeño por operación se fijan en la Tabla 84:
 | Navegación entre vistas ya cargadas | ≤ 1 s |
 | Búsqueda con criterios compuestos | ≤ 3 s |
 
-Los umbrales se verifican con monitoreo CloudWatch y se prueban en Pre-Producción (subsección de pruebas de carga y estrés).
+Los umbrales se verifican con monitoreo CloudWatch y se prueban en Preproducción (subsección de pruebas de carga y estrés).
 
 ### Primer cuello de botella
 
@@ -1056,7 +1057,7 @@ Las pruebas de carga y estrés se definen en la Tabla 86:
 
 | Prueba | Carga | Escenario |
 |---|---|---|
-| Carga (RNF-19.04) | 1,5 × la carga de diseño = 5.850 entregas/día ≈ 160 TPS sostenidos (carga de diseño = peak 2.600 × 1,5 = 3.900; la prueba la vuelve a multiplicar por 1,5) | Pre-Producción, perfiles horarios reales (pick nocturno, despacho, preventa) |
+| Carga (RNF-19.04) | 1,5 × la carga de diseño = 5.850 entregas/día ≈ 160 TPS sostenidos (carga de diseño = peak 2.600 × 1,5 = 3.900; la prueba la vuelve a multiplicar por 1,5) | Preproducción, perfiles horarios reales (pick nocturno, despacho, preventa) |
 | Estrés | Incremento hasta el punto de quiebre ≥ 3× | Curva de tiempo de respuesta vs carga |
 | Informe de carga (RT-09.07) | Curvas, saturación, recursos (CPU/RAM/IOPS/enlace/colas) | Insumo al hito de producción (mes 16) y a la actualización de capacidad (RT-09.09, subsección de actualización del plan de capacidad) |
 
