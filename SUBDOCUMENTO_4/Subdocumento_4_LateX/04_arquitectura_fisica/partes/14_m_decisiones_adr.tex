@@ -26,7 +26,7 @@ Registro consolidado de las quince decisiones de arquitectura que condicionan es
 
 \textbf{Alternativas descartadas.} \emph{Fibra en cross-docks}: naves industriales sin cobertura de fibra; costo de obra desproporcionado. \emph{VSAT GEO}: latencia 500--700 ms RTT; penaliza RNF-05.01 y costo superior. \emph{Tri-camino (fibra + Starlink + LTE)}: tercer camino no aporta disponibilidad significativa dado que cada sitio opera autónomamente ante pérdida total de enlace (24 h CD, 14 h terreno).
 
-\textbf{Criterio de selección.} Dos caminos de física distinta satisfacen RT-03.17 sin punto único de fallo; la autonomía local cubre la pérdida total de enlace, por lo que un tercer camino es innecesario; cero mantención de radio para el equipo de 4 personas del CLIENTE. Normativa: RT-03.10/03.17, RT-10.05, RNF-13.01/13.07/13.08. Relacionada: Decisión 16.1 N\textdegree{} 26.
+\textbf{Criterio de selección.} Dos caminos de física distinta satisfacen RT-03.17 sin punto único de fallo; la autonomía local cubre la pérdida total de enlace, por lo que un tercer camino es innecesario; cero mantención de radio para el equipo de 4 personas del CLIENTE. Normativa: RT-03.10/03.17, RT-10.05, RNF-13.01/13.07/13.08. Relacionada: Decisión N\textdegree{} 26 del registro de decisiones.
 
 \section{ADR-03 \textperiodcentered{} Modelo de despliegue híbrido}
 \label{sub:adr-03}
@@ -35,7 +35,7 @@ Registro consolidado de las quince decisiones de arquitectura que condicionan es
 
 \textbf{Alternativas descartadas.} \emph{Solo nube}: inadmisible (Art.~16); sin enlace la bodega muere en minutos; picking en cámara $-$22\,\textdegree{}C inviable con RTT 40--80 ms. \emph{Solo on-premise}: inadmisible (Art.~16).
 
-\textbf{Criterio de selección.} Único modelo que satisface Art.~16 en sus 4 numerales; latencia $\leq$ 1 s en cámara resuelta localmente; autonomía 24 h CD / 14 h terreno; TCO contenido con servicios administrados AWS. Normativa: BA Art.~16.1--16.4, RT-03.01/03.02/03.10/03.19, RNF-02.01/05.01/05.02. Relacionada: D7, Decisión 16.1 N\textdegree{} 17.
+\textbf{Criterio de selección.} Único modelo que satisface Art.~16 en sus 4 numerales; latencia $\leq$ 1 s en cámara resuelta localmente; autonomía 24 h CD / 14 h terreno; TCO contenido con servicios administrados AWS. Normativa: BA Art.~16.1--16.4, RT-03.01/03.02/03.10/03.19, RNF-02.01/05.01/05.02. Relacionada: D7, Decisión N\textdegree{} 17 del registro de decisiones.
 
 \section{ADR-04 \textperiodcentered{} Persistencia políglota}
 \label{sub:adr-04}
@@ -44,7 +44,7 @@ Registro consolidado de las quince decisiones de arquitectura que condicionan es
 
 \textbf{Alternativas descartadas.} \emph{Motor único relacional}: no escala ingesta IoT sin degradar picking (RNF-11.02). \emph{InfluxDB}: segundo motor exótico a operar; serie de tiempo cabe en capa OLAP. \emph{DynamoDB para todo}: no ofrece ACID cross-tabla para reconciliación determinista.
 
-\textbf{Criterio de selección.} Posición CAP declarada por dominio (RT-05.02); 3 motores administrados operables por el equipo de TI del CLIENTE; retención sanitaria D.S.~977/96 con inmutabilidad; RPO $\leq$ 15 min por réplica Aurora. Normativa: RT-05.01/05.02/05.11--15, RNF-09.01/09.02/11.02. Relacionada: D2, D4, Decisión 16.1 N\textdegree{} 18.
+\textbf{Criterio de selección.} Posición CAP declarada por dominio (RT-05.02); 3 motores administrados operables por el equipo de TI del CLIENTE; retención sanitaria D.S.~977/96 con inmutabilidad; RPO $\leq$ 15 min por réplica Aurora. Normativa: RT-05.01/05.02/05.11--15, RNF-09.01/09.02/11.02. Relacionada: D2, D4, Decisión N\textdegree{} 18 del registro de decisiones.
 
 \section{ADR-05 \textperiodcentered{} Mensajería asíncrona}
 \label{sub:adr-05}
@@ -62,7 +62,7 @@ Registro consolidado de las quince decisiones de arquitectura que condicionan es
 
 \textbf{Alternativas descartadas.} \emph{IdP solo nube}: paraliza bodega ante corte. \emph{AD maestro local}: duplica administración, crea maestro a promover en DR. \emph{Keycloak maestro local}: nube no puede autenticar si el enlace cae.
 
-\textbf{Criterio de selección.} Autonomía offline sin maestro local a promover; autoridad única en nube; OTP sin correo para externos (RT-12.12); MFA Art.~22; operado por el equipo reducido del CLIENTE sin directorio propietario. Normativa: RT-12.10/12.11/12.12, RT-03.10, RNF-13.01, BA Art.~22, RF-15.01--05, RF-06.08. Relacionada: D6, Decisión 16.1 N\textdegree{} 34.
+\textbf{Criterio de selección.} Autonomía offline sin maestro local a promover; autoridad única en nube; OTP sin correo para externos (RT-12.12); MFA Art.~22; operado por el equipo reducido del CLIENTE sin directorio propietario. Normativa: RT-12.10/12.11/12.12, RT-03.10, RNF-13.01, BA Art.~22, RF-15.01--05, RF-06.08. Relacionada: D6, Decisión N\textdegree{} 34 del registro de decisiones.
 
 \section{ADR-07 \textperiodcentered{} Movilidad de terreno}
 \label{sub:adr-07}
@@ -71,7 +71,7 @@ Registro consolidado de las quince decisiones de arquitectura que condicionan es
 
 \textbf{Alternativas descartadas.} \emph{PWA}: no controla SDK Zebra de forma fiable ni persiste turno completo sin capa nativa. \emph{Híbrida Flutter}: runtime intermedio degrada interacción con periféricos industriales.
 
-\textbf{Criterio de selección.} Control nativo de periféricos (DataWedge intents); offline total 14 h con sincro $<$ 10 min; UI para guantes $-$22\,\textdegree{}C, una mano, lluvia; curva de aprendizaje $\leq$ 2 h; un artefacto para 3 perfiles. Normativa: RT-13.08, RT-12.11, RT-03.19, RNF-05.02/05.03/06.01, RF-06.11--13. Relacionada: Decisión de proyecto N\textdegree{} 19.
+\textbf{Criterio de selección.} Control nativo de periféricos (DataWedge intents); offline total 14 h con sincro $<$ 10 min; UI para guantes $-$22\,\textdegree{}C, una mano, lluvia; curva de aprendizaje $\leq$ 2 h; un artefacto para 3 perfiles. Normativa: RT-13.08, RT-12.11, RT-03.19, RNF-05.02/05.03/06.01, RF-06.11--13. Relacionada: Decisión N\textdegree{} 19 del registro de decisiones.
 
 \section{ADR-08 \textperiodcentered{} Destino del WMS legado 2013}
 \label{sub:adr-08}
@@ -89,7 +89,7 @@ Registro consolidado de las quince decisiones de arquitectura que condicionan es
 
 \textbf{Alternativas descartadas.} \emph{Activo-activo}: duplica infraestructura y exige reconciliación de doble escritura sin beneficio medible. \emph{Backup + restore frío}: RTO 24--72 h, incumple RNF-20.06. \emph{Solo intrarregional}: postura mínima si CLIENTE no aprueba Art.~23; aceptando RTO 24--72 h ante caída de región.
 
-\textbf{Criterio de selección.} RTO $\leq$ 4 h / RPO $\leq$ 15 min; proporcionalidad al volumen; DR de identidad resuelto en nube (ADR-06); pruebas semestrales reales. Normativa: RT-07.01/07.07, RNF-20.06/20.07, BA Art.~20. Relacionada: Decisión 16.1 N\textdegree{} 27.
+\textbf{Criterio de selección.} RTO $\leq$ 4 h / RPO $\leq$ 15 min; proporcionalidad al volumen; DR de identidad resuelto en nube (ADR-06); pruebas semestrales reales. Normativa: RT-07.01/07.07, RNF-20.06/20.07, BA Art.~20. Relacionada: Decisión N\textdegree{} 27 del registro de decisiones.
 
 \section{ADR-10 \textperiodcentered{} Almacenamiento on-premise y RAID}
 \label{sub:adr-10}
@@ -98,7 +98,7 @@ Registro consolidado de las quince decisiones de arquitectura que condicionan es
 
 \textbf{Alternativas descartadas.} \emph{RAID 5}: probabilidad de URE durante rebuild en discos 8--16 TB; solo tolera 1 fallo. \emph{RAID 1 puro para todo}: sobre-costo 50\,\% aplicado a datos no críticos sin beneficio proporcional.
 
-\textbf{Criterio de selección.} IOPS deterministas en ventana de despacho ($>$100 K vs. \textasciitilde{}840 necesarios); tolerancia a fallo de disco (RNF-13.04) con justificación (RNF-13.05); TCO contenido con RAID 10 solo en lo transaccional. Normativa: RT-03.14, RNF-13.03/13.04/13.05. Relacionada: Decisión 16.1 N\textdegree{} 28.
+\textbf{Criterio de selección.} IOPS deterministas en ventana de despacho ($>$100 K vs. \textasciitilde{}840 necesarios); tolerancia a fallo de disco (RNF-13.04) con justificación (RNF-13.05); TCO contenido con RAID 10 solo en lo transaccional. Normativa: RT-03.14, RNF-13.03/13.04/13.05. Relacionada: Decisión N\textdegree{} 28 del registro de decisiones.
 
 \section{ADR-11 \textperiodcentered{} Integración B2B/EDI canal moderno}
 \label{sub:adr-11}
@@ -116,7 +116,7 @@ Registro consolidado de las quince decisiones de arquitectura que condicionan es
 
 \textbf{Alternativas descartadas.} \emph{Capacidad fija al peak}: paga 12 meses la capacidad de 3 semanas. \emph{Solo escala reactiva}: burst predecible de septiembre; la reactiva sola introduce lag en ventana crítica.
 
-\textbf{Criterio de selección.} Perfil no plano al peak $\times$1,5 (RNF-19.04); cuello de botella identificado (RT-09.05); FinOps (RT-03.06): base reservada + peak efímero; congelamiento 1--25 sept y diciembre (RT-10.05). Normativa: RT-09.05, RT-03.06/03.08/03.09, RNF-19.01--04, RT-10.05. Relacionada: Decisión 16.1 N\textdegree{} 30.
+\textbf{Criterio de selección.} Perfil no plano al peak $\times$1,5 (RNF-19.04); cuello de botella identificado (RT-09.05); FinOps (RT-03.06): base reservada + peak efímero; congelamiento 1--25 sept y diciembre (RT-10.05). Normativa: RT-09.05, RT-03.06/03.08/03.09, RNF-19.01--04, RT-10.05. Relacionada: Decisión N\textdegree{} 30 del registro de decisiones.
 
 \section{ADR-13 \textperiodcentered{} Puerta de enlace de servicios}
 \label{sub:adr-13}
