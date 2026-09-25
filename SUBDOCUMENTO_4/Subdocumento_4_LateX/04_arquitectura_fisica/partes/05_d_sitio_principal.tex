@@ -51,7 +51,7 @@ La carga eléctrica se proyecta sobre la potencia de placa de los equipos que el
 
 Los nodos, la NAS y los firewalls se cuentan por la potencia de placa de sus fuentes. Los conmutadores se cuentan por su consumo sin PoE, porque en ellos la fuente no mide la carga del equipo: de los 715 W de la fuente del Catalyst 9300-48P, 437 W son presupuesto de PoE según la ficha del fabricante, y su calculadora de potencia da unos 128 W sin PoE, que se redondean a 150 W.
 
-Con un factor de potencia de 0,95, la potencia aparente de diseño es 7,0 / 0,95 $\approx$ 7,4 kVA; al 80 \% de utilización se requieren 7,4 / 0,8 $\approx$ 9,2 kVA, por lo que se selecciona un UPS modular de 10 kVA, en N+1 y con bypass de mantenimiento. La PUE estimada de diseño es 1,5: a la carga TI de 7,0 kW se suman la climatización de precisión, la iluminación y el apoyo y las pérdidas de conversión del UPS, lo que da una carga del sitio de $\approx$ 10,4 kW y una PUE de 10,4 / 7,0 $\approx$ 1,5. El numerador se mide en el tablero general del recinto y el denominador a la salida de las PDU de los racks, con medición semestral e informe (RT-06.10, RT-15.04). El generador sostiene la carga total del sitio, $\approx$ 10,4 kW, por lo que se selecciona un grupo electrógeno de 15 kVA.
+Con un factor de potencia de 0,95, la potencia aparente de diseño es 7,0 / 0,95 $\approx$ 7,4 kVA; al 80 \% de utilización se requieren 7,4 / 0,8 $\approx$ 9,2 kVA, por lo que se selecciona un UPS modular de 10 kVA, en N+1 y con bypass de mantenimiento. La PUE estimada de diseño es 1,5: a la carga TI de 7,0 kW se suman la climatización de precisión, $\approx$ 2,3 kW, la iluminación y el apoyo, $\approx$ 0,6 kW, y las pérdidas de conversión del UPS, $\approx$ 0,55 kW, lo que da una carga del sitio de $\approx$ 10,4 kW y una PUE de 10,4 / 7,0 $\approx$ 1,5. El numerador se mide en el tablero general del recinto y el denominador a la salida de las PDU de los racks, con medición semestral e informe (RT-06.10, RT-15.04). El generador sostiene la carga total del sitio, $\approx$ 10,4 kW, por lo que se selecciona un grupo electrógeno de 15 kVA.
 
 \subsection{Climatización y carga térmica}
 
@@ -60,7 +60,7 @@ Cada kW eléctrico que consume el equipamiento se disipa como $\approx$ 1 kW de 
 \begin{tablalafrox}{Carga térmica sensible proyectada del recinto}{tab:dc-termica}%
   {Y F{0.26}}%
   {\cab{Origen del calor} & \cab{Potencia equivalente}}
-  Carga TI de diseño & 7.020 W \\
+  Carga TI de diseño & 7.000 W \\
   Pérdidas de conversión del UPS, con eficiencia $\approx$ 0,92 & $\approx$ 610 W \\
   \textbf{Carga térmica sensible de diseño} & \textbf{$\approx$ 7,6 kW} \\
 \end{tablalafrox}
@@ -71,6 +71,8 @@ Sobre esa carga se instalan dos unidades de climatización de precisión de 10 k
 \subsection{Racks, cableado y comunicaciones}
 
 Dos racks de 42U separan servidores y comunicaciones (RT-06.05): R01 aloja los tres nodos y la NAS, y R02 los firewalls y los conmutadores. La ocupación proyectada reserva un margen de crecimiento del 20 \% a tres años, coherente con la reserva de la carga eléctrica de la Tabla~\ref{tab:dc-carga}. El cableado estructurado Cat6A y la fibra OM4 se certifican enlace por enlace sobre piso técnico (RT-06.04), y el acceso a las redes de comunicaciones ingresa al edificio por dos ductos independientes (RT-06.32).
+
+El cómputo corre sobre el clúster de tres nodos con redundancia N+1 y almacenamiento distribuido que tolera la pérdida de un nodo con quórum real. El almacenamiento local combina un nivel para la base transaccional, en RAID 10 bajo Ceph, y otro para el respaldo local, la NAS D-05 en RAID 6, con el nivel RAID justificado frente a las alternativas (RT-03.14; ADR-10). La instancia de escritura VM-02 es el punto único declarado, y se mitiga con su reinicio en otro nodo del clúster.
 
 \subsection{Incendio, seguridad física y custodia de medios}
 
