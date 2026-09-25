@@ -19,7 +19,7 @@
 | Extinción | Agente limpio tipo FM-200 o equivalente, con aprobación UL, botón de aborto y extintores portátiles habilitados | Sala de servidores y comunicaciones | 1 | Extinción automática sobre equipos energizados conforme a RT-06.17 y extintores con mantención vigente (RT-06.18). No se cita edición específica de norma externa |
 | Control de acceso | Biometría facial con AFIS como respaldo, esclusa antipassback con nueva verificación, bitácora electrónica y estación de enrolamiento interna y externa | Acceso del recinto técnico | 1 | RT-06.20 a RT-06.23; bitácora auditable conservada ≥ 5 años (RT-06.21; RT-16.10) |
 | Videovigilancia | Cámaras IP con imágenes en línea ≥ 30 días y respaldo recuperable | Recinto y perímetro | Según plano RT-06.03 | Cubre el acceso y el perímetro del recinto, integrada al monitoreo (RT-06.24) |
-| Gabinetes | R01 servidores (3 nodos + NAS) y R02 comunicaciones (2 firewalls + 2 conmutadores + 1 switch de gestión), 42U, con margen de crecimiento del 20 % | Sala de servidores y comunicaciones | 2 | Racks de servidores independientes de los racks de comunicaciones (RT-06.05); margen a tres años coherente con la reserva eléctrica de la Tabla 4.3-1 (Figura 4.3-2) |
+| Gabinetes | R01 servidores (3 nodos 2U en U18–U23, NAS 2U en U1–U2, KVM 1U en U24, paneles OM4/Cat6A en U40–U42) y R02 comunicaciones (bandeja del operador con ONT de fibra y router LTE, 2U en U31–U32; 2 firewalls 1U en U33–U34; switch de gestión 1U en U35; organizadores 1U en U36 y U39; 2 conmutadores de núcleo 1U en U37–U38; ODF y paneles en U40–U42), 42U | Sala de servidores y comunicaciones | 2 | Racks de servidores independientes de los racks de comunicaciones (RT-06.05); ocupación proyectada R01 y R02 de 12U/42U (29 %) cada uno, con 30U libres por rack para el margen de crecimiento a tres años, coherente con la reserva eléctrica del 20 % de la Tabla 4.3-1 (Figura 4.3-2) |
 | Piso técnico y cableado | Cableado Cat6A y fibra OM4 certificados por enlace, sobre piso técnico | Sala | 1 | Cumple la norma por enlace (RT-06.04) con recorridos verificados para 10 GbE |
 
 ## Data Center Secundario — gabinete de borde del CD Concepción
@@ -45,4 +45,6 @@
 - **D7 Extinción:** retirar la edición de NFPA ("NFPA 75 y 2001") → solo RT-06.17.
 - **D11 Gabinetes:** 4 racks (R01–R04) → **2 racks: R01 servidores, R02 comunicaciones**, con margen de crecimiento del 20 % dentro de los racks (RT-06.05, Figura 4.3-2).
 - **D5 PDU:** 4 gabinetes / 8 PDU → **2 racks / 4 PDU**.
-- Verificar D8/D9/D10 coherentes con el plano RT-06.03 (Figura 4.3-1) cuando esté dibujado.
+- **C7 Switch de gestión:** la consola KVM se declara en "gabinete R02" → **R01** (la Figura 4.3-2 la ubica en R01, U24). El switch de gestión permanece en R02.
+- **C8 Distribución horizontal:** "gabinete R03" → **racks R01 y R02** (los paneles de fibra OM4 y cobre Cat6A están en ambos gabinetes según la Figura 4.3-2; R03 no existe en el diseño vigente).
+- Verificar D8/D9/D10 coherentes con el plano RT-06.03 (Figura 4.3-1).
