@@ -49,6 +49,8 @@ La carga eléctrica se proyecta sobre la potencia de placa de los equipos que el
 \end{tablalafrox}
 \fuente{elaboración propia; potencia de placa según la ficha técnica del equipamiento declarado en el Anexo 4.A (RT-06.11).}
 
+Los nodos, la NAS y los firewalls se cuentan por la potencia de placa de sus fuentes. Los conmutadores se cuentan por su consumo sin PoE, porque en ellos la fuente no mide la carga del equipo: de los 715 W de la fuente del Catalyst 9300-48P, 437 W son presupuesto de PoE según la ficha del fabricante, y su calculadora de potencia da unos 128 W sin PoE, que se redondean a 150 W.
+
 Con un factor de potencia de 0,95, la potencia aparente de diseño es 7,0 / 0,95 $\approx$ 7,4 kVA; al 80 \% de utilización se requieren 7,4 / 0,8 $\approx$ 9,2 kVA, por lo que se selecciona un UPS modular de 10 kVA, en N+1 y con bypass de mantenimiento. La PUE estimada de diseño es 1,5: a la carga TI de 7,0 kW se suman la climatización de precisión, la iluminación y el apoyo y las pérdidas de conversión del UPS, lo que da una carga del sitio de $\approx$ 10,4 kW y una PUE de 10,4 / 7,0 $\approx$ 1,5. El numerador se mide en el tablero general del recinto y el denominador a la salida de las PDU de los racks, con medición semestral e informe (RT-06.10, RT-15.04). El generador sostiene la carga total del sitio, $\approx$ 10,4 kW, por lo que se selecciona un grupo electrógeno de 15 kVA.
 
 \subsection{Climatización y carga térmica}

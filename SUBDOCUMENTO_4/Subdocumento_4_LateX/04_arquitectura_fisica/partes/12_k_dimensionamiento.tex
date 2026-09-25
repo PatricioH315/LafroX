@@ -49,7 +49,7 @@ La Tabla~\ref{tab:t73} reúne los valores que entrega el CLIENTE y que sirven de
 \end{tablalafrox}
 \fuente{Caso, Cap. 2.2, Cap. 2.3 y Tabla 14.1; tipología del cómputo según RT-06.01; los puntos de medición son de elaboración propia.}
 
-De estos valores, el que gobierna el dimensionamiento no es el número de clientes sino la relación entre el día normal y el peak: 2.600 entregas frente a 1.400 son 1,86 veces más carga durante las tres primeras semanas de septiembre. El dimensionamiento del on-premise se calcula sobre los cinco recintos que alojan cómputo (RT-06.01): los centros de distribución de Talca y Concepción y las tres plataformas de cross-docking de Curicó, Chillán y Los Ángeles. La sexta instalación que declara la volumetría no se identifica en la operación descrita por el caso; esa divergencia se registra como consulta al mandante (Art. 43.3) y como supuesto, sin alterar los valores de la Tabla~\ref{tab:t73}.
+De estos valores, el que gobierna el dimensionamiento no es el número de clientes sino la relación entre el día normal y el peak: 2.600 entregas frente a 1.400 son 1,86 veces más carga durante las tres primeras semanas de septiembre. El dimensionamiento del on-premise se calcula sobre los cinco recintos que alojan cómputo (RT-06.01): los centros de distribución de Talca y Concepción y las tres plataformas de cross-docking de Curicó, Chillán y Los Ángeles. La sexta instalación es la casa matriz de Talca, contigua al centro de distribución principal (Caso, Cap. 2.3), que aloja oficinas y no requiere cómputo propio.
 
 La Tabla~\ref{tab:t74} muestra la proyección del caso a tres años.
 
@@ -217,7 +217,22 @@ Con un nodo caído, el clúster todavía usa menos de un cuarto de su cómputo, 
 \end{tablalafrox}
 \fuente{elaboración propia.}
 
-VM-02 concentra casi la mitad de la memoria y el 80 \% del disco, porque es el único punto de escritura del maestro de bodega; es también el primer cuello de botella, como se explica más adelante. El servidor de borde de Concepción, un Dell R250 o HPE DL20 Gen11 con procesador Xeon E-2300, 32 GB de memoria, RAID 10 sobre sus cuatro bahías, sin repuesto en caliente, y fuente única, se dimensiona a su propia bodega, de la mitad de tamaño que Talca y sin congelado, sin sobrecompra. Ante una contingencia que afecte solo a Talca, el DRP local promueve el motor de almacenes de Concepción, que ya opera todos los días, con un RTO adicional de 1 a 2 horas. En cada cross-docking, el mini-PC industrial ejecuta el WMS, su base y su broker en contenedores, detrás del firewall compacto que termina Starlink, el LTE de respaldo y la VPN.
+VM-02 concentra casi la mitad de la memoria y el 80 \% del disco, porque es el único punto de escritura del maestro de bodega; es también el primer cuello de botella, como se explica más adelante. El servidor de borde de Concepción, un Dell R250 o HPE DL20 Gen11 con procesador Xeon E-2300, 32 GB de memoria, RAID 10 sobre sus cuatro bahías, sin repuesto en caliente, y fuente única, se dimensiona a su propia bodega, de la mitad de tamaño que Talca y sin congelado, sin sobrecompra. Ante una contingencia que afecte solo a Talca, el DRP local promueve el motor de almacenes de Concepción, que ya opera todos los días, con un RTO adicional de 1 a 2 horas.
+
+Concepción se dimensiona por su carga real y no como copia de Talca. Sus 30 terminales de cámara, confirmando una línea cada 6 segundos, generan 5 transacciones por segundo, un cuarto de las 20 de Talca (Tabla~\ref{tab:t76}); por eso el cómputo y la memoria de cada máquina virtual se fijan en un cuarto de los de su par en Talca, con un mínimo de 2 vCPU, y el disco en la mitad, porque su bodega tiene la mitad de la superficie. La Tabla~\ref{tab:t79} muestra el resultado; los supuestos se declaran para que el CLIENTE pueda recalcularlo. En cada cross-docking, el mini-PC industrial ejecuta el WMS, su base y su broker en contenedores, detrás del firewall compacto que termina Starlink, el LTE de respaldo y la VPN.
+
+\begin{tablalafrox}{Máquinas virtuales del servidor de Concepción}{tab:t79}%
+  {G{0.13} Y H{0.10} H{0.14} H{0.16}}%
+  {\cab{VM} & \cab{Rol} & \cab{vCPU} & \cab{Memoria} & \cab{Disco}}
+  VM-C01 & Motor WMS & 2 & 4 GB & 50 GB \\
+  VM-C02 & Base transaccional del WMS & 2 & 8 GB & 750 GB \\
+  VM-C03 & Caché de identidad & 2 & 2 GB & 20 GB \\
+  VM-C04 & Broker de colas y colector de observabilidad & 2 & 4 GB & 125 GB \\
+  \textbf{Total} & & \textbf{8} & \textbf{18 GB} & \textbf{945 GB} \\
+\end{tablalafrox}
+\fuente{elaboración propia; supuesto de carga proporcional a los terminales de cámara y de disco proporcional a la superficie de bodega (Caso, Cap. 2.3).}
+
+El servidor de Concepción, con un Xeon E-2300 de 8 núcleos y 16 hilos, como el E-2378, queda con 8 de 16 hilos (50 \%) y 18 de 32 GB (56 \%), lo que deja memoria para el hipervisor. Su RAID 10 de cuatro discos SSD de 1,92 TB entrega 3,84 TB útiles, ocupados al 25 \%. Con el crecimiento de 3 veces, la memoria se amplía hasta 128 GB, el máximo del mismo equipo (54 GB, 42 \%) y el disco llega al 74 \%; el cómputo pasa a 24 vCPU sobre 16 hilos, una sobresuscripción de 1,5 que se acepta porque la carga resultante, 15 transacciones por segundo, sigue por debajo de las 20 que hoy atiende Talca con 16 vCPU entre el motor WMS y la base.
 
 La Tabla~\ref{tab:t80} verifica el almacenamiento y el rendimiento de la base transaccional.
 
