@@ -1,0 +1,23 @@
+digraph DominioTrazabilidad {
+  graph [rankdir=LR, bgcolor="white", pad="0.28", nodesep="0.52", ranksep="0.75", splines=polyline, label="MODELO CONCEPTUAL | pedido, lote, entrega y evidencia", labelloc=t, fontname="Arial", fontsize=21, fontcolor="#17304D"];
+  node [shape=record, style="filled", color="#1E4C70", fillcolor="#EEF5F8", fontname="Arial", fontsize=16, margin="0.14,0.11", penwidth=1.5];
+  edge [color="#315E77", fontname="Arial", fontsize=12, arrowsize=0.85, penwidth=1.5];
+
+  cliente [label="{Cliente|cliente_id\ncanal}"];
+  pedido [label="{Pedido|pedido_id\nestado}"];
+  linea [label="{Linea de pedido|linea_id\nGTIN + cantidad}"];
+  lote [label="{Lote|GTIN + lote proveedor\nvencimiento}"];
+  movimiento [label="{Movimiento GS1|evento_id\nsitio + SSCC}"];
+  entrega [label="{Entrega|entrega_id\npedido_id + receptor}"];
+  pod [label="{POD|evidencia_id\nfirma / QR / foto}"];
+  guia [label="{Guia electronica|folio ERP\nestado}"];
+
+  cliente -> pedido [label="1 a muchos"];
+  pedido -> linea [label="1 a muchas"];
+  linea -> lote [label="asignacion por lote"];
+  lote -> movimiento [label="1 a muchos"];
+  pedido -> entrega [label="0 a muchas"];
+  entrega -> pod [label="0 a muchas"];
+  entrega -> guia [label="referencia folio"];
+  movimiento -> entrega [label="destino trazable", constraint=false];
+}

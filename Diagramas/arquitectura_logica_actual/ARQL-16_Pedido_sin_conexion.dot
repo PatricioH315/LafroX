@@ -1,0 +1,19 @@
+digraph PedidoSinConexion {
+  graph [rankdir=TB, bgcolor="white", pad="0.25", nodesep="0.25", ranksep="0.32", splines=polyline, label="PEDIDO SIN CONEXIÓN | captura, sincronización y decisión", labelloc=t, fontname="Arial", fontsize=21, fontcolor="#17304D"];
+  node [shape=box, style="rounded,filled", color="#1E4C70", fillcolor="#EEF5F8", fontname="Arial", fontsize=16, margin="0.20,0.16", penwidth=1.5];
+  edge [color="#315E77", fontname="Arial", fontsize=12, arrowsize=0.85, penwidth=1.5];
+
+  a [label="1 | Dispositivo M3\ncopia de lectura fechada\ny turno autorizado"];
+  b [label="2 | Cola local cifrada\npedido + UUID\nestado PENDIENTE", fillcolor="#FFF3DD", color="#AC7737"];
+  c [label="3 | Vuelve la cobertura\nCloudFront / Gateway\n/sync/v1"];
+  d [label="4 | M3 Preventa\ndeduplica UUID\ny valida credito"];
+  e [label="5 | M2 Inventario\nreserva stock real\no aplica regla de conflicto"];
+  f [label="6 | Resultado durable\nCONFIRMADO o EXCEPCION\ncon regla y motivo", fillcolor="#E5F2E8", color="#407553"];
+  g [label="7 | M5 Preparacion\nsolo recibe pedido\nconfirmado"];
+
+  a -> b [label="hasta 14 h sin señal"];
+  b -> c [label="reintento con el mismo UUID"];
+  c -> d -> e -> f;
+  f -> g [label="si confirmado"];
+  f -> b [label="si falta acuse: conserva evento", color="#AE5A30", constraint=false];
+}
