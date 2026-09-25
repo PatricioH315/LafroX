@@ -4,14 +4,14 @@
 %  \parte{partes/04_c_implementos}. Las rutas son relativas a la carpeta del
 %  subdocumento, nunca a la de main.tex.
 %
-%  Resumen y análisis; el detalle fila por fila vive en el Anexo 4.A
-%  (Formulario T-11, partes/15_anexo_t11).
+%  Resumen y análisis; el detalle fila por fila vive en el Formulario T-11
+%  (Formulario T-11, archivo propio LAFROX-Formulario-T-11.tex).
 % ------------------------------------------------------------------
 
 \section{Especificaciones Implementos a proveer (Hardware y Software)}
 \label{sec:4-2-6-implementos}
 
-Esta sección resume y analiza el equipamiento y el software que la solución requiere en las instalaciones del CLIENTE, en el terreno y en la plataforma de nube. El detalle de cada elemento, con su producto ofertado, su ubicación, su cantidad y su justificación, se entrega en el Anexo 4.A (Formulario T-11), que acompaña a esta parte como anexo. El equipamiento físico lo adquiere el CLIENTE, y el adjudicatario lo especifica, instala, integra y mantiene durante el contrato (Art. 14.2).
+Esta sección resume y analiza el equipamiento y el software que la solución requiere en las instalaciones del CLIENTE, en el terreno y en la plataforma de nube. El detalle de cada elemento, con su producto ofertado, su ubicación, su cantidad y su justificación, se entrega en el Formulario T-11, que acompaña a este subdocumento como archivo propio. El equipamiento físico lo adquiere el CLIENTE, y el adjudicatario lo especifica, instala, integra y mantiene durante el contrato (Art. 14.2).
 
 \subsection{Síntesis del equipamiento por familia}
 
@@ -29,7 +29,7 @@ La Tabla~\ref{tab:t26} agrupa el equipamiento en ocho familias, con sus cantidad
   Cadena de frío & 7 módulos de sensores con 28 puntos, 2 gateways IoT y 28 termógrafos & CD, cámaras y camiones \\
   Puestos, sala técnica y gabinetes de borde & 8 estaciones de trabajo; la infraestructura de la sala de Talca: UPS, generador, 2 unidades de clima de precisión, 2 gabinetes y cámaras según plano; y los gabinetes de borde de Concepción y de los tres cross-docking & Talca, Concepción y cross-docking \\
 \end{tablalafrox}
-\fuente{elaboración propia; detalle en el Anexo 4.A (Formulario T-11).}
+\fuente{elaboración propia; detalle en el Formulario T-11.}
 
 Más de nueve de cada diez unidades están en el terreno y en la bodega, no en la sala técnica: son unos 860 dispositivos de trabajo frente a unos 60 equipos de cómputo, red, sala técnica y gabinetes de borde. Esa proporción refleja el caso, donde la operación ocurre en la calle, en la cámara y en el andén, y explica por qué la gestión de dispositivos (N-13) es un componente con emplazamiento propio y no un accesorio.
 
@@ -41,4 +41,4 @@ En la sala técnica el criterio es la redundancia sin sobrecompra. Los tres serv
 
 \subsection{Software y licenciamiento}
 
-El software de base es de código abierto en todos los componentes que el adjudicatario opera: PostgreSQL, RabbitMQ, Keycloak, Proxmox VE, Ceph y Docker, además de la aplicación, escrita en Django y Python y, en el terreno, en Kotlin. Los únicos elementos con suscripción son los servicios de la plataforma de nube, descritos en la sección~\ref{sec:4-2-2-servicios-nube}, la gestión de dispositivos y los agentes de detección en endpoints. Esta composición mantiene la reversibilidad de la solución y evita que el CLIENTE quede atado a un licenciamiento propietario. El Anexo 4.A (Formulario T-11) detalla, además del equipamiento, cada servicio de nube y cada componente de software con su cantidad y su justificación.
+El software de base es de código abierto en todos los componentes que el adjudicatario opera: PostgreSQL, RabbitMQ, Keycloak, Proxmox VE, Ceph y Docker, además de la aplicación, escrita en Django y Python; los portales, en Angular y TypeScript; y, en el terreno, en Kotlin. Los únicos elementos con suscripción son los servicios de la plataforma de nube, descritos en la sección~\ref{sec:4-2-2-servicios-nube}, la gestión de dispositivos, los agentes de detección en endpoints y el orquestador de integración continua GitLab CI. Esta composición mantiene la reversibilidad de la solución y evita que el CLIENTE quede atado a un licenciamiento propietario. El Formulario T-11 detalla, además del equipamiento, cada servicio de nube y cada componente de software con su cantidad y su justificación.

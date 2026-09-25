@@ -5,7 +5,7 @@
 %  subdocumento, nunca a la de main.tex.
 %
 %  El cuerpo presenta la síntesis por función; el listado servicio por
-%  servicio va en el Anexo 4.A (Formulario T-11). Sin montos (Art. 50.2).
+%  servicio va en el Formulario T-11. Sin montos (Art. 50.2).
 % ------------------------------------------------------------------
 
 \section{Servicios contratados en la plataforma de nube}
@@ -15,7 +15,7 @@ La plataforma de nube es Amazon Web Services. Todos los servicios se contratan e
 
 \subsection{Servicios por función}
 
-La Tabla~\ref{tab:servicios-nube} agrupa los servicios contratados por la función que cumplen en la arquitectura y los asocia a los componentes del catálogo que los usan. El listado servicio por servicio, con su justificación y su cantidad, se entrega en el Anexo 4.A (Formulario T-11).
+La Tabla~\ref{tab:servicios-nube} agrupa los servicios contratados por la función que cumplen en la arquitectura y los asocia a los componentes del catálogo que los usan. El listado servicio por servicio, con su justificación y su cantidad, se entrega en el Formulario T-11.
 
 \begin{tablalafrox}{Servicios contratados en la plataforma de nube, por función}{tab:servicios-nube}%
   {F{0.21} Y F{0.19} F{0.17}}%
@@ -36,11 +36,11 @@ La Tabla~\ref{tab:servicios-nube} agrupa los servicios contratados por la funci�
 \end{tablalafrox}
 \fuente{elaboración propia a partir del catálogo de componentes y de los registros de decisión ADR-01 a ADR-15.}
 
-La tabla deja ver que la solución no opera servidores en la nube: todo el cómputo corre en contenedores administrados o en funciones, y todos los datos viven en motores administrados. Las únicas piezas de software que el adjudicatario mantiene sobre esa plataforma son la aplicación Django y el IdP Keycloak, ambos desplegados como contenedores que se promueven por el pipeline. Los servicios de detección, cumplimiento y gobierno se concentran en la región primaria porque vigilan la operación productiva, mientras que los datos operacionales y el respaldo tienen presencia en las dos regiones porque son lo que la recuperación ante desastres debe restituir.
+La tabla deja ver que la solución no opera servidores en la nube: todo el cómputo corre en contenedores administrados o en funciones, y todos los datos viven en motores administrados. Las únicas piezas de software que el adjudicatario mantiene sobre esa plataforma son la aplicación Django, cuyos portales web se construyen en Angular y se publican como contenido estático en S3 y CloudFront, y el IdP Keycloak; ambas se promueven por el pipeline. Los servicios de detección, cumplimiento y gobierno se concentran en la región primaria porque vigilan la operación productiva, mientras que los datos operacionales y el respaldo tienen presencia en las dos regiones porque son lo que la recuperación ante desastres debe restituir.
 
 \subsection{Región secundaria y residencia de los datos}
 
-La región us-east-1 no es una segunda producción. Solo contiene la réplica de Aurora mediante Aurora Global Database, la réplica de las tablas de temperatura de DynamoDB mediante Global Tables, la copia de los buckets de S3 salvo el de geolocalización, las copias de AWS Backup y una réplica reducida de ECS que escala a carga completa en menos de 30 minutos durante una conmutación (ADR-09). Dos capacidades quedan fuera de esa región por diseño: la analítica, porque la región secundaria no se explota analíticamente, y los datos de geolocalización de personas, que no se replican fuera de sa-east-1 conforme a los resguardos de la arquitectura de seguridad. Así, la transferencia internacional de datos que exige la continuidad queda acotada a lo estrictamente necesario para reanudar la operación.
+La región us-east-1 no es una segunda producción. Solo contiene la réplica de Aurora mediante Aurora Global Database, la réplica de las tablas de temperatura de DynamoDB mediante Global Tables, la copia de los buckets de S3 salvo el de geolocalización, las copias de AWS Backup y una réplica reducida de ECS que escala a carga completa en menos de 30 minutos durante una conmutación (ADR-09). Dos capacidades quedan fuera de esa región por diseño: la analítica, porque la región secundaria no se explota analíticamente, y los datos de geolocalización de personas, que no se replican fuera de sa-east-1 conforme a los resguardos de la arquitectura de seguridad (apartado 4.1). Así, la transferencia internacional de datos que exige la continuidad queda acotada a lo estrictamente necesario para reanudar la operación.
 
 \subsection{Servicios que no se contratan}
 

@@ -40,7 +40,7 @@ Registro consolidado de las quince decisiones de arquitectura que condicionan es
 \section{ADR-04 \textperiodcentered{} Persistencia políglota}
 \label{sub:adr-04}
 
-\textbf{Decisión adoptada.} PostgreSQL+PostGIS (transaccional WMS, CP), Aurora (OLTP cloud + DRP), DynamoDB (IoT raw, AP, TTL 30 d), S3+Redshift Serverless (OLAP + series de temperatura), S3 Object Lock/Glacier (retención legal 5 años).
+\textbf{Decisión adoptada.} PostgreSQL+PostGIS (transaccional WMS, CP), Aurora (OLTP cloud + DRP), DynamoDB (IoT raw, AP, TTL 30 d), S3+Redshift Serverless (OLAP + series de temperatura), S3 Object Lock/Glacier (retención legal por dominio de datos, de 5 a 7 años según la tabla de respaldos).
 
 \textbf{Alternativas descartadas.} \emph{Motor único relacional}: no escala ingesta IoT sin degradar picking (RNF-11.02). \emph{InfluxDB}: segundo motor exótico a operar; serie de tiempo cabe en capa OLAP. \emph{DynamoDB para todo}: no ofrece ACID cross-tabla para reconciliación determinista.
 
@@ -85,9 +85,9 @@ Registro consolidado de las quince decisiones de arquitectura que condicionan es
 \section{ADR-09 \textperiodcentered{} Estrategia DR}
 \label{sub:adr-09}
 
-\textbf{Decisión adoptada.} Activo-pasivo warm standby multi-región: DMS CDC + Aurora WAL hacia us-east-1; DRP local Talca$\rightarrow$Concepción (RTO +1--2 h); pruebas 2$\times$/año; respaldo 3-2-1-1-0 con S3 Object Lock.
+\textbf{Decisión adoptada.} Activo-pasivo warm standby multi-región: DMS CDC desde los sitios hacia Aurora y Aurora Global Database hacia us-east-1; DRP local Talca$\rightarrow$Concepción (RTO +1--2 h); pruebas 2$\times$/año; respaldo 3-2-1-1-0 con S3 Object Lock.
 
-\textbf{Alternativas descartadas.} \emph{Activo-activo}: duplica infraestructura y exige reconciliación de doble escritura sin beneficio medible. \emph{Backup + restore frío}: RTO 24--72 h, incumple RNF-20.06. \emph{Solo intrarregional}: postura mínima si CLIENTE no aprueba Art.~23; aceptando RTO 24--72 h ante caída de región.
+\textbf{Alternativas descartadas.} \emph{Activo-activo}: duplica infraestructura y exige reconciliación de doble escritura sin beneficio medible. \emph{Backup + restore frío}: RTO 24--72 h, incumple RNF-20.06. \emph{Solo intrarregional}: degrada el objetivo de continuidad, porque ante la caída de la región el RTO sería de 24 a 72 h; se descarta y la recuperación en us-east-1 queda declarada de forma incondicional.
 
 \textbf{Criterio de selección.} RTO $\leq$ 4 h / RPO $\leq$ 15 min; proporcionalidad al volumen; DR de identidad resuelto en nube (ADR-06); pruebas semestrales reales. Normativa: RT-07.01/07.07, RNF-20.06/20.07, Art.~20. Relacionada: Decisión N\textdegree{} 27 del registro de decisiones.
 
@@ -121,7 +121,7 @@ Registro consolidado de las quince decisiones de arquitectura que condicionan es
 \section{ADR-13 \textperiodcentered{} Puerta de enlace de servicios}
 \label{sub:adr-13}
 
-\textbf{Decisión adoptada.} Amazon API Gateway como Capa 3 única: autorizador OIDC (Keycloak), validación de esquema OpenAPI, cuotas y límites de tasa por actor/ruta, versionado /v\{major\}, propagación de transaction\_id a Capa 8.
+\textbf{Decisión adoptada.} Amazon API Gateway como Capa 3 en la nube, complementada en cada sitio por la puerta de API local del WMS para operar sin enlace: autorizador OIDC (Keycloak), validación de esquema OpenAPI, cuotas y límites de tasa por actor/ruta, versionado /v\{major\}, propagación de transaction\_id a Capa 8.
 
 \textbf{Alternativas descartadas.} \emph{Kong autoadministrado}: agrega componente crítico a parchar en ruta de la venta; riesgo en ventana 05:30--07:00 con el equipo disponible. \emph{Desarrollo propio (middleware Django)}: sin cuotas/rate-limit nativos; viola Art.~21.2.
 
