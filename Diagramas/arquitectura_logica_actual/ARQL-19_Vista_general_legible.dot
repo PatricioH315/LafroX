@@ -1,0 +1,18 @@
+digraph VistaGeneral {
+  graph [rankdir=TB, bgcolor="white", pad="0.28", nodesep="0.38", ranksep="0.36", splines=polyline, label="ARQUITECTURA LÓGICA PUELCHE | ocho capas", labelloc=t, fontname="Arial", fontsize=22, fontcolor="#17304D"];
+  node [shape=box, style="rounded,filled", color="#1E4C70", fillcolor="#EEF5F8", fontname="Arial", fontsize=16, margin="0.19,0.13", penwidth=1.5];
+  edge [color="#315E77", fontname="Arial", fontsize=12, arrowsize=0.85, penwidth=1.5];
+
+  presentacion [label="1 | PRESENTACIÓN\nKotlin de terreno y bodega; portales Angular\ncaptura local cuando no hay señal"];
+  borde [label="2 | BORDE Y EXPOSICIÓN\nCloudFront / WAF como entrada pública\nacceso local del CD sin nube"];
+  gateway [label="3 | PUERTAS DE SERVICIO\nAPI Gateway para nube; API local para CD\nautenticación, esquema, cuota y trazas"];
+  negocio [label="4 | NEGOCIO\nM1-M3 recepción, stock y preventa; M4-M6 rutas y entrega\nM7-M9 rendición, devolución y calidad; M10-M12 BI, EDI y flota"];
+  integracion [label="5 | INTEGRACIÓN Y EVENTOS\nRabbitMQ local; SQS / EventBridge; ACL hacia ERP\ncontratos OpenAPI / AsyncAPI y reintentos"];
+  datos [label="6 | DATOS\nPostgreSQL local y nube; S3 / Redshift para análisis\ncopia cifrada y cola durable en dispositivo"];
+  seguridad [label="7 | SEGURIDAD TRANSVERSAL\nKeycloak; verificador local; autorización por módulo\ncifrado, bloqueo sanitario y auditoría", fillcolor="#FFF3DD", color="#AC7737"];
+  observabilidad [label="8 | OBSERVABILIDAD TRANSVERSAL\nmétricas, registros y trazas correlacionadas\nbuffer local y alertas de negocio", fillcolor="#E5F2E8", color="#407553"];
+
+  presentacion -> borde -> gateway -> negocio -> integracion -> datos;
+  negocio -> seguridad [style=dashed, label="cada acceso"];
+  negocio -> observabilidad [style=dashed, label="cada operacion"];
+}

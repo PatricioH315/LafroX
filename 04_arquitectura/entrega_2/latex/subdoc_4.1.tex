@@ -79,31 +79,21 @@ Las ocho capas separan la interacción con las personas, las reglas de negocio y
 
 Las capas 7 y 8 atraviesan las demás; no duplican reglas de negocio.
 
-La Figura~\ref{fig:arql-1} presenta el recorrido completo desde los actores hasta los módulos y los datos. Primero se leen las entradas de la capa 1 y la exposición de las capas 2 y 3; después, las decisiones de M1--M12 en la capa 4 y los intercambios de la capa 5. Seguridad y observabilidad atraviesan esas rutas y no sustituyen al dueño de cada dato.
-
-\clearpage
-\begin{anexohorizontal}
-\subsubsection{Diagrama general de la arquitectura lógica}
-
-La Figura~\ref{fig:arql-1} reúne las ocho capas, los doce módulos y sus canales principales antes de recorrer las responsabilidades por capa.
+La Figura~\ref{fig:arql-1} presenta el recorrido completo desde las personas hasta los módulos y los datos. Primero se leen las entradas de la capa 1 y la exposición de las capas 2 y 3; después, las decisiones de M1--M12 en la capa 4 y los intercambios de la capa 5. Seguridad y observabilidad atraviesan esas rutas y no sustituyen al dueño de cada dato.
 
 \begin{center}
-  \includegraphics[width=0.96\linewidth,height=0.72\textheight,keepaspectratio]{Diagramas/arquitectura_logica_actual/ARQL-01_Vision_general.png}
-  \captionof{figure}{Diagrama general de la arquitectura lógica}
+  \includegraphics[width=0.98\linewidth,height=0.68\textheight,keepaspectratio]{Diagramas/arquitectura_logica_actual/ARQL-19_Vista_general_legible.png}
+  \captionof{figure}{Vista general legible de las ocho capas lógicas}
   \label{fig:arql-1}
 \end{center}
 
 {\footnotesize Fuente: elaboración propia de LafroX.\par}
 
-La separación entre captura, regla de negocio e integración explica por qué una interrupción de enlace no debe borrar el trabajo local. Las vistas por actor desarrollan después los recorridos que la figura general solo ubica.
-
-\end{anexohorizontal}
-
-\clearpage
+La vista separa la entrada pública de la puerta local que sostiene el CD, y sitúa seguridad y observabilidad como responsabilidades transversales. La secuencia de un pedido, el acceso durante un corte y la relación entre lote y entrega se detallan en figuras específicas más adelante.
 
 \subsubsection{Capa de presentación}
 
-La capa de presentación reúne las herramientas que utiliza cada persona para trabajar: aplicaciones móviles que pueden operar sin conexión y portales web servidos desde la nube. Las Figuras~\ref{fig:arql-2}--\ref{fig:arql-9} recorren la captura de preventa, reparto, clientes, transportistas, proveedores y preparación; las Figuras~\ref{fig:arql-10}--\ref{fig:arql-14} muestran las decisiones de calidad, gerencia, rutas y TI. Los permisos se asignan mediante una matriz de roles y atributos; un perfil de interacción no implica por sí solo un rol de autorización distinto ni acceso a todas las funciones mostradas.
+La capa de presentación reúne las herramientas que utiliza cada persona para trabajar: aplicaciones móviles que pueden operar sin conexión y portales web servidos desde la nube. Preventistas, conductores y preparadores capturan hechos operativos; clientes, transportistas y proveedores consultan únicamente sus datos autorizados; Calidad, gerencias, planificación y TI toman decisiones desde consolas especializadas. Los permisos se asignan mediante una matriz de roles y atributos: un perfil de interacción no implica por sí solo acceso a todas las funciones del módulo.
 
 Las aplicaciones de campo (preventa y reparto) se construyen en Kotlin nativo para Android, decisión alineada con el ecosistema del parque de dispositivos Zebra (EC55, TC58e, MC9400) desplegado en los centros de distribución y con las condiciones de operación del terreno. La app de preventa mantiene una foto local de datos de lectura (stock, precios, crédito, promociones) y captura local de eventos (pedidos, identificadores únicos UUID); la app de reparto gestiona la entrega, la prueba de entrega digital (POD con firma, código QR y fotografía), la cobranza en ruta y el control de envases retornables. Ambas aplicaciones operan con datos locales cifrados y sincronizan de forma idempotente por medio del API Gateway cuando se recupera la conectividad.
 
@@ -132,6 +122,18 @@ Amazon API Gateway concentra la publicación de servicios detrás de la entrada 
 La capa publica dos conjuntos de APIs: las de negocio (\texttt{/v1}) y las de sincronización offline (\texttt{/sync/v1}). El Gateway aplica los controles de entrada y enruta las solicitudes. El servicio de negocio valida el contenido y garantiza la idempotencia de cada escritura mediante su UUID, una ventana de deduplicación documentada y el registro persistente del resultado (RT-02.06).
 
 El ingreso por API Gateway corresponde a los servicios en nube. Durante una interrupción del enlace, la bodega utiliza los servicios de su sitio sin depender del Gateway remoto. Los terminales sin cobertura conservan sus eventos y los entregan al servicio local cuando recuperan comunicación; la reconciliación con la nube ocurre al restablecerse el enlace externo. Los contratos y las reglas de validación se mantienen en ambos recorridos.
+
+La bodega dispone además de una puerta de API \emph{local}, acotada a la red del sitio y a M1, M2, M5 y la función local de bloqueo de M9. Los 120 terminales no llaman a Amazon API Gateway durante un corte: el verificador local valida la autorización de turno y la puerta local aplica esquema, límites de tasa, tamaño de carga, UUID y registro de auditoría antes de entregar una orden al módulo correspondiente. Este control no publica una segunda entrada en internet ni emite identidades nuevas. La Figura~\ref{fig:arql-17} separa los dos recorridos y muestra cómo se conserva el trabajo hasta la reconexión.
+
+\begin{center}
+  \includegraphics[width=0.96\linewidth,height=0.72\textheight,keepaspectratio]{Diagramas/arquitectura_logica_actual/ARQL-17_Acceso_local_24h.png}
+  \captionof{figure}{Identidad y puerta de API local durante un corte de 24 horas}
+  \label{fig:arql-17}
+\end{center}
+
+{\footnotesize Fuente: elaboración propia de LafroX.\par}
+
+El manifiesto firmado llega antes del corte; en cada relevo se verifica una identidad personal y un segundo factor local. El permiso queda limitado a funciones de bodega, mientras los eventos y la bitácora se envían después con su identificador original. La prueba debe iniciar el corte antes de dos relevos sucesivos y medir vencimiento, denegación, reintentos y recuperación; una caché de ocho horas por sí sola no acredita las 24 horas de autonomía.
 
 \subsubsection{Capa de lógica de negocio (Capa 4)}
 
@@ -168,7 +170,7 @@ DevolucionRegistrada & M8 & M2, M7, M10 & entrega\_id & Decisión 16.1 \#12: efe
 EnvaseMovido & M8 & M2, M10 & cliente\_id & Decisión 16.1 \#10: 68.000 canastillos, 9.400 pallets, 14\% pérdida \\
 ExcursionTermicaDetectada & M9 (borde) & M5 (bloqueo), M10, alertas & shipment\_id & Decisión 16.1 \#4: bloqueo local < 5 s \\
 RendicionCerrada & M7 & M10, ACL$\rightarrow$ERP & conductor\_id & Control efectivo que circula en ruta \\
-DesviacionDeRutaDetectada & M12 & M10, M9 & ruta\_id & Costo servir; no control jornada (D1) \\
+DesviacionDeRutaDetectada & M12 & M10, M9 & ruta\_id & Costo de servir; no control de jornada. \\
 \end{tablalafrox}
 
 {\footnotesize Fuente: elaboración propia de LafroX a partir de Caso 02, flujos operativos y numeral 16.1.\par}
@@ -176,6 +178,31 @@ DesviacionDeRutaDetectada & M12 & M10, M9 & ruta\_id & Costo servir; no control 
 Cada evento conserva productor único y clave de orden para evitar ambigüedad al reintentar.
 
 Los esquemas AsyncAPI 2.6 versionados por evento se gobiernan desde el Catálogo de interfaces (\S~\ref{sec:catalogo-interfaces}); \texttt{transaction\_id} conserva la correlación entre los módulos consumidores.
+
+\paragraph{Orquestación y coreografía.}
+M3 coordina de manera síncrona la confirmación de un pedido y solicita a M2 una reserva: necesita una respuesta única y visible para el preventista. Cuando el pedido queda confirmado, publica \texttt{PedidoConfirmado}; M5, M4 y M10 reaccionan cada uno a ese hecho mediante su propio consumidor. Esa coreografía evita que M3 conozca el horario de preparación o el esquema analítico. La publicación se registra junto con el cambio de estado mediante una bandeja transaccional de salida (\textit{outbox}); el consumidor confirma su progreso solo después de persistir su resultado. Si falla un consumidor, la cola reintenta y termina en una bandeja de excepción, sin deshacer a ciegas el pedido ya confirmado.
+
+El despacho tiene una coordinación distinta: M5 no libera la carga hasta recibir el resultado de M9 sobre el lote y la guía emitida por el ERP a través de la ACL. Una excursión térmica bloquea localmente la salida aun con el enlace caído; solo Calidad puede liberar el lote tras evaluación registrada. El conductor informa la incidencia y conserva la carga, pero no aprueba su liberación sanitaria. Las Figuras~\ref{fig:arql-15} y \ref{fig:arql-16} recorren el pedido con y sin conexión y hacen visible dónde cambia una captura pendiente a una operación confirmada.
+
+\begin{center}
+  \includegraphics[width=0.96\linewidth,height=0.75\textheight,keepaspectratio]{Diagramas/arquitectura_logica_actual/ARQL-15_Pedido_con_conexion.png}
+  \captionof{figure}{Secuencia lógica del pedido con conexión}
+  \label{fig:arql-15}
+\end{center}
+
+{\footnotesize Fuente: elaboración propia de LafroX.\par}
+
+Con conexión, M2 devuelve una reserva explícita y M5 no comienza a preparar un pedido rechazado. La carga preparada sigue retenida si M9 informa un bloqueo o si el ERP no devuelve la guía electrónica. El flujo dibuja esos dos retornos porque un pedido confirmado no autoriza por sí mismo la salida física.
+
+\begin{center}
+  \includegraphics[width=0.96\linewidth,height=0.75\textheight,keepaspectratio]{Diagramas/arquitectura_logica_actual/ARQL-16_Pedido_sin_conexion.png}
+  \captionof{figure}{Secuencia lógica del pedido capturado sin conexión}
+  \label{fig:arql-16}
+\end{center}
+
+{\footnotesize Fuente: elaboración propia de LafroX.\par}
+
+Sin conexión, la aplicación conserva la intención de compra, no una reserva firme. El mismo UUID viaja en todos los reintentos; M3 y M2 producen un resultado durable con la regla y la causal de excepción. Si se pierde el acuse de respuesta, el dispositivo conserva el evento y pregunta por ese UUID antes de eliminarlo. Solo un pedido confirmado alimenta M5, lo que permite explicar al cliente un faltante sin duplicar la venta.
 
 \paragraph{Contratos de integración.}
 \label{subsubsec:contratos-integracion}
@@ -197,7 +224,7 @@ Los eventos se describen en AsyncAPI 2.6 con productor único, consumidores, cla
 
 \textbf{Estrangulamiento del WMS de 2013 (ADR-08, Decisión 16.1 \#14).} El WMS se reemplaza en la Etapa 1 por los módulos M1, M2 y M5 del monolito. Durante la coexistencia el legado queda detrás de la misma ACL. La Tabla~\ref{tab:capacidad-wms} indica qué capacidad se absorbe en cada ola y cómo se revierte por sitio.
 
-\begin{tablalafrox}{Capacidad absorbida del WMS 2013 por ola y sitio}{tab:capacidad-wms}{F{0.22} F{0.12} F{0.15} F{0.18} Y}{\cab{Capacidad WMS 2013} & \cab{Módulo} & \cab{Ola} & \cab{Estrategia / Reversión}}
+\begin{tablalafrox}{Capacidad absorbida del WMS 2013 por ola y sitio}{tab:capacidad-wms}{F{0.28} F{0.14} F{0.15} Y}{\cab{Capacidad WMS 2013} & \cab{Módulo} & \cab{Ola} & \cab{Estrategia / Reversión}}
 Recepción GS1 & M1 & 1 & Azul-verde / feature flag (reversión inmediata) \\
 Slotting / ubicaciones & M2 & 1--2 & Azul-verde / feature flag \\
 Misiones picking HHT & M5 & 2 & Azul-verde / feature flag \\
@@ -217,7 +244,7 @@ No se mantiene el WMS 2013 como sistema operativo en producción tras la Etapa 1
 
 Los contratos siguen versiones \texttt{major.minor.patch}. Un cambio aditivo conserva compatibilidad; retirar un campo exige marcarlo como obsoleto y anunciar la fecha de salida con al menos seis meses de anticipación. Dos versiones pueden convivir mientras migran los consumidores identificados. Un cambio incompatible requiere aprobación del Comité de Arquitectura, pruebas de contrato y plan de reversión. Los perfiles de cadenas se versionan sin alterar el vocabulario común del hub; los cambios de interfaces tributarias se gestionan en la ACL, no como perfiles EDI. La Tabla~\ref{tab:gobierno-integracion} asigna dueño y evidencia a cada mecanismo de gobierno.
 
-\begin{tablalafrox}{Mecanismos de gobierno de la capa de integración}{tab:gobierno-integracion}{F{0.18} F{0.38} F{0.18} Y}{\cab{Mecanismo} & \cab{Cómo opera} & \cab{Responsable / Artefacto}}
+\begin{tablalafrox}{Mecanismos de gobierno de la capa de integración}{tab:gobierno-integracion}{F{0.23} F{0.44} Y}{\cab{Mecanismo} & \cab{Cómo opera} & \cab{Responsable / Artefacto}}
 Catálogo único versionado & Toda integración: dueño, contrato, versión, estado, comportamiento ante falla. Lo que no está en el catálogo no se despliega. & Arquitecto Solución / Catálogo (portal API Gateway) \\
 Comité Arquitectura & Aprueba altas y cambios \texttt{major}; cadencia declarada en plan gobierno. & Arq. Sol., Jefe Proy., Jefe TI Cliente / Actas \\
 Pruebas contrato consumidor-proveedor & Pipeline: cambio que rompe consumidor registrado bloquea despliegue automáticamente. & Líder Desarrollo, Líder Calidad / Pipeline CI/CD \\
@@ -236,7 +263,7 @@ El catálogo y las pruebas hacen visible quién responde cuando un contrato camb
 
 Las importaciones históricas y las extracciones regulatorias utilizan contratos distintos de la operación diaria. La Tabla~\ref{tab:carga-masiva} compara su mecanismo, la prueba de integridad y el tratamiento de rechazos; ninguna carga masiva desplaza la preparación durante la ventana crítica de despacho.
 
-\begin{tablalafrox}{Escenarios de carga y descarga masiva (RT-05.22)}{tab:carga-masiva}{F{0.20} F{0.35} F{0.25} Y}{\cab{Escenario} & \cab{Mecanismo} & \cab{Control y auditoría}}
+\begin{tablalafrox}{Escenarios de carga y descarga masiva (RT-05.22)}{tab:carga-masiva}{F{0.24} F{0.34} Y}{\cab{Escenario} & \cab{Mecanismo} & \cab{Control y auditoría}}
 Carga inicial maestros/históricos (ERP, WMS) & ETL por lotes, inserción idempotente por UUID, ventana sin operación & Conteo previo/posterior por lote, conciliación totales, bitácora carga (quién, cuándo, lote, resultado); rechazados $\rightarrow$ cuarentena + reproceso \\
 Descarga regulatoria (traza lote, temperaturas, DTE, geo) & Exportación asíncrona CSV/Parquet, firmada, checksum & Registro extracción (solicitante, filtro, resultado); control acceso datos sensibles (RT-16.09) \\
 Sincronización masiva turno (terreno) & Sincronizadores con partición + reanudación + deduplicación; medios a S3 por objeto & Nivel servicio: turno completo $\leq$ 10 min; métricas sync en Capa 8 \\
@@ -286,7 +313,7 @@ La identidad central utiliza OIDC, SSO y MFA. El rol se complementa con atributo
 
 En conexión, el token de acceso dura como máximo 30 minutos; la inactividad cierra la sesión administrativa a los 15 minutos y las demás a los 30. La credencial de refresco es rotatoria, se invalida ante baja o sospecha de compromiso y no supera 24 horas para acceso ordinario ni 8 horas para privilegios. El cierre de sesión se propaga a los servicios conectados y se impide la concurrencia no autorizada para cuentas compartibles por riesgo. Ninguna credencial se transporta en la URL. Estas duraciones no renuevan ni alargan una autorización offline; responden a los controles de RT-12.07--12.08.
 
-La credencial de turno dura hasta 8 horas en bodega y hasta 14 horas en terreno. Antes del corte, Keycloak firma un manifiesto de turnos y permisos con vigencia suficiente para 24 horas de continuidad local. La caché de identidad, de solo lectura y TTL de 8 horas, valida firmas y datos ya recibidos: no crea personas, no cambia roles ni se convierte en autoridad maestra. Al relevarse un turno sin enlace, un verificador del sitio comprueba el manifiesto, una credencial personal preinscrita y un segundo factor local compatible con guantes; limita el acceso a M1, M2 y M5, bloquea intentos repetidos y registra cada decisión. El dispositivo compartido identifica el contexto, pero no sustituye la identidad personal del operario. Los detalles de lectores, claves y alojamiento pertenecen a 4.2.
+La credencial de turno dura hasta 8 horas en bodega y hasta 14 horas en terreno. Mientras existe enlace, Keycloak renueva al menos cada hora un manifiesto firmado con los turnos y permisos preinscritos para una ventana de 26 horas; así, incluso si el corte comienza justo antes de la renovación siguiente, quedan al menos 25 horas de verificación local. La caché de identidad, de solo lectura y TTL de 8 horas, conserva datos recibidos, pero no emite sesiones ni determina por sí sola la autonomía. Al relevarse un turno sin enlace, un verificador del sitio comprueba la firma y vigencia del manifiesto, una credencial personal preinscrita y un segundo factor local compatible con guantes; limita el acceso a M1, M2, M5 y a las acciones autorizadas de M9, bloquea intentos repetidos y registra cada decisión. El dispositivo compartido identifica el contexto, pero no sustituye la identidad personal del operario. Los detalles de lectores, claves y alojamiento pertenecen a 4.2.
 
 La revocación es inmediata en los servicios conectados. Durante una desconexión no se promete revocación remota instantánea: el permiso local expira al terminar su turno, no se amplía sin enlace y la incidencia se marca para revisar operaciones al reconectar. Una baja conocida localmente bloquea de inmediato la credencial en ese sitio; el verificador sincroniza las revocaciones y auditorías al restablecerse el enlace. Se ensayan dos relevos dentro de 24 horas, vencimiento, pérdida de dispositivo y recuperación del enlace. La cuenta de emergencia exige doble autorización, alcance acotado, custodia fuera de banda, registro y rotación posterior; no reemplaza la autenticación ordinaria de todos los operarios (RT-03.10 y RT-12.13).
 
@@ -326,21 +353,21 @@ Durante un corte de enlace, el sitio no depende de los tableros centralizados pa
 \subsection{Módulos funcionales y límites de contexto}
 \label{sec:modulos-funcionales}
 
-Los doce módulos M1--M12 separan decisiones de negocio y conservan su trazabilidad a los requerimientos. La Tabla~\ref{tab:modulos-funcionales} sirve como mapa breve: identifica el dato o acto que cada módulo gobierna y el contrato por el que coopera con otros. El detalle de los módulos críticos se desarrolla inmediatamente después.
+Los doce módulos M1--M12 separan decisiones de negocio y conservan su trazabilidad a los requerimientos. La Tabla~\ref{tab:modulos-funcionales} identifica responsabilidad, intercambio, actor principal y etapa. Un actor puede participar en varios módulos sin convertirse en propietario de sus datos. El detalle de los módulos críticos se desarrolla inmediatamente después.
 
-\begin{tablalafrox}{Responsabilidad y contrato principal de los doce módulos}{tab:modulos-funcionales}{F{0.19} F{0.31} F{0.28} Y}{\cab{Módulo / RF} & \cab{Responsabilidad propia} & \cab{Contrato principal} & \cab{Etapa}}
-M1 Recepción / RF-01 & Lote y recepción GS1. & Evento a M2; ACL con ERP. & 1 \\
-M2 Inventario / RF-02 & Stock, reserva, ubicación, FEFO. & Consulta a M3/M5; eventos. & 1 \\
-M3 Preventa / RF-03 & Pedido y precio informado. & Reserva en M2; sync de terreno. & 1 \\
-M4 Rutas / RF-04 & Secuencia y restricciones. & Ruta aprobada a M6. & 1 \\
-M5 Preparación / RF-05 & Misión y carga confirmada. & Evento a M6; guía vía ACL. & 1 \\
-M6 Reparto / RF-06 & Entrega y POD. & Evento a M7/M8; sync. & 1 \\
-M7 Rendición / RF-07 & Cobro y descuadre. & ACL hacia ERP; evento a M10. & 1 \\
-M8 Devoluciones / RF-08 & Retorno y saldo envases. & Evento a M2/M7. & 1 \\
-M9 Calidad / RF-09 & Lote, frío y bloqueo. & Bloqueo a M5; evento a M10. & 1 \\
-M10 Analítica / RF-11 & OTIF y costo de servir. & Consumo de eventos, solo lectura. & 1 \\
-M11 Canal moderno / RF-12 & Pedido EDI y excepciones. & Contrato por cadena y M3. & 2 \\
-M12 Flota / RF-14 & Ruta real y desviación. & Lectura GPS a M4/M10. & 1 \\
+\begin{tablalafrox}{Módulos, responsabilidades e interlocutores}{tab:modulos-funcionales}{F{0.18} F{0.23} F{0.24} F{0.23} Y}{\cab{Módulo / RF} & \cab{Responsabilidad} & \cab{Interfaz principal} & \cab{Actor principal} & \cab{Etapa}}
+M1 Recepción / RF-01 & Lote y recepción GS1. & Evento a M2; ACL con ERP. & Recepcionista; proveedor. & 1 \\
+M2 Inventario / RF-02 & Stock, reserva y FEFO. & Consulta de M3/M5. & Jefatura de bodega. & 1 \\
+M3 Preventa / RF-03 & Pedido y precio informado. & Reserva en M2; sincronización. & Preventista. & 1 \\
+M4 Rutas / RF-04 & Secuencia y restricciones. & Ruta aprobada a M6. & Planificador. & 1 \\
+M5 Preparación / RF-05 & Misión y carga confirmada. & Evento a M6; guía vía ACL. & Preparador; jefatura. & 1 \\
+M6 Reparto / RF-06 & Entrega y POD. & Evento a M7/M8. & Conductor propio o externo. & 1 \\
+M7 Rendición / RF-07 & Cobro y descuadre. & ACL al ERP; evento a M10. & Conductor; Tesorería. & 1 \\
+M8 Devoluciones / RF-08 & Retorno y saldo de envases. & Evento a M2/M7. & Conductor; bodega. & 1 \\
+M9 Calidad / RF-09 & Lote, frío y bloqueo. & Bloqueo a M5; alerta. & Jefatura de Calidad. & 1 \\
+M10 Analítica / RF-11 & OTIF y costo de servir. & Consume eventos sin escribir. & Gerencias. & 1 \\
+M11 Canal moderno / RF-12 & Pedido EDI y excepciones. & Contrato por cadena; M3. & Cadena; equipo comercial. & 2 \\
+M12 Flota / RF-14 & Ruta real y desviación. & GPS a M4/M10. & Planificador; flota. & 1 \\
 \end{tablalafrox}
 
 {\footnotesize Fuente: elaboración propia de LafroX a partir de Caso 02, requerimientos funcionales y alcance del capítulo 3.\par}
@@ -349,24 +376,45 @@ Cada módulo tiene un dueño de negocio y una vía explícita para colaborar con
 
 El reparto evita que M6 emita DTE o que M10 escriba pedidos. M1 y M5 entregan datos al ERP únicamente por la capa anticorrupción. M11 entra en la Etapa 2 sin cambiar el dueño de la reserva de stock, que sigue siendo M2. Los límites y dependencias se precisan en el mapa siguiente.
 
+La Tabla~\ref{tab:traza-logica} hace visible el paso del requerimiento al componente y a la capa que lo realiza. Es una síntesis de los dominios, no una sustitución del catálogo requisito por requisito del Formulario T-12; allí se debe conservar también origen, etapa, prueba y criterio de aceptación de cada RF y RNF.
+
+\begin{tablalafrox}{Trazabilidad funcional de la arquitectura lógica}{tab:traza-logica}{F{0.16} F{0.26} F{0.26} Y}{\cab{Requisito} & \cab{Responsable} & \cab{Capas implicadas} & \cab{Evidencia verificable}}
+RF-01 & M1 Recepción & 1, 4, 5 y 6 & Lote GS1 recibido y publicado. \\
+RF-02 & M2 Inventario & 4, 5 y 6 & Reserva y FEFO por sitio. \\
+RF-03 & M3 Preventa & 1, 3, 4 y 6 & Pedido único tras reconexión. \\
+RF-04 & M4 Rutas & 1, 4 y 5 & Ruta revisada en menos de 20 min. \\
+RF-05 & M5 Preparación & 1, 4, 5 y 6 & Lectura y carga por lote. \\
+RF-06 & M6 Reparto & 1, 4, 5 y 6 & POD unido a entrega. \\
+RF-07 & M7 Rendición & 1, 4 y 5 & Descuadre y aprobación segregados. \\
+RF-08 & M8 Devoluciones & 1, 4, 5 y 6 & Saldo y causal conciliados. \\
+RF-09 & M9 Calidad & 2, 4, 5 y 6 & Bloqueo y liberación por Calidad. \\
+RF-11 & M10 Analítica & 4, 5 y 6 & OTIF y costo trazables al evento. \\
+RF-12 & M11 Canal moderno & 3, 4 y 5 & Pedido EDI normalizado. \\
+RF-14 & M12 Flota & 2, 4 y 5 & Ruta real correlacionada. \\
+\end{tablalafrox}
+
+{\footnotesize Fuente: elaboración propia de LafroX a partir del catálogo funcional del caso y las responsabilidades definidas en la Tabla~\ref{tab:modulos-funcionales}.\par}
+
+La trazabilidad transversal se prueba sobre esos mismos recorridos: RT-03.10/12/13 en M1, M3, M5 y M6 con 24 horas en sitio y 14 horas en terreno; RT-02.06 mediante UUID y resultado persistente en M2/M3/M6; RT-02.13 mediante el modelo de dominio; y RT-11/12 mediante autorización y auditoría en cada cruce. El entorno de prueba y el caso de aceptación deben reproducir la falla, no limitarse a una marca de cumplimiento.
+
 \subsubsection{Mapa de límites de contexto}
 \label{subsec:limites-contexto}
 
-El modelo de dominios se organiza mediante \textit{bounded contexts} explícitos. La Tabla~\ref{tab:context-mapping} define la relación entre contextos siguiendo los patrones de DDD: \textit{Customer/Supplier}, \textit{Conformist}, \textit{Anticorruption Layer}, \textit{Shared Kernel}, \textit{Open Host Service} y \textit{Published Language}.
+El modelo de dominios se organiza mediante límites de contexto explícitos. La Tabla~\ref{tab:context-mapping} indica qué módulo entrega información, qué módulo la recibe y dónde se traduce un modelo ajeno. El uso de un vocabulario publicado o de una capa anticorrupción evita que un cambio en el ERP o en una cadena comercial reescriba las reglas de stock y pedido.
 
-\begin{tablalafrox}{Mapa de límites de contexto (Context Mapping)}{tab:context-mapping}{F{0.12} F{0.18} F{0.18} F{0.20} F{0.20} Y}{\cab{Contexto (Módulo)} & \cab{Patrón relación} & \cab{Contexto relacionado} & \cab{Contrato / Interfaz} & \cab{Decisión / ADR}}
-Recepción (M1) & Anticorruption Layer & ERP 2017 & OpenAPI 3.1 (ACL) & ADR-11 \\
-Inventario (M2) & Open Host Service & Preventa (M3), Preparación (M5), Planificación (M4) & OpenAPI 3.1 /v1/inventario & RT-02.12, S26 \\
-Preventa (M3) & Customer/Supplier & Inventario (M2), Cobranza (M7) & OpenAPI 3.1 /v1/preventa, /v1/sync & S26, RT-03.12 \\
-Planificación Rutas (M4) & Conformist & Inventario (M2), Preventa (M3), GIS externo & OpenAPI 3.1 /v1/rutas & RT-02.10 \\
-Preparación (M5) & Customer/Supplier & Inventario (M2), Reparto (M6), ERP & AsyncAPI (MisionPreparada), OpenAPI 3.1 (ACL) & ADR-08 \\
-Reparto/Entrega (M6) & Customer/Supplier & Planificación (M4), Cobranza (M7), Devoluciones (M8) & OpenAPI 3.1 /v1/reparto, /v1/sync & Dec 16.1\#1, #3 \\
-Cobranza/Rendición (M7) & Anticorruption Layer & ERP 2017 & OpenAPI 3.1 (ACL), SQS & ADR-11, INT-06 \\
-Devoluciones/Envases (M8) & Shared Kernel & Inventario (M2), Cobranza (M7) & Eventos (EnvaseMovido, DevolucionRegistrada) & Dec 16.1\#10, #12 \\
-Calidad/Trazabilidad (M9) & Customer/Supplier & Inventario (M2), Preparación (M5), Sensores (Capa 2) & Eventos (ExcursionTermicaDetectada), OpenAPI 3.1 & Dec 16.1\#4 \\
-BI/Gerencia (M10) & Published Language & M1--M9, Capa 6 (Redshift) & AsyncAPI (EventBridge), consultas SQL & RT-05.27, RT-05.29 \\
-EDI Canal Moderno (M11) & Open Host Service & Cadenas (AS2/API), Preventa (M3), Reparto (M6) & EANCOM/GS1 XML/EPCIS, AS2, OpenAPI 3.1 & ADR-11, RT-05.23 \\
-Telemetría/Flota (M12) & Conformist & Planificación (M4), GPS externo, Calidad (M9) & API fuente existente, Eventos (DesviacionDeRutaDetectada) & D1, RT-17.06 \\
+\begin{tablalafrox}{Mapa de límites de contexto}{tab:context-mapping}{F{0.17} F{0.20} F{0.27} F{0.22} Y}{\cab{Dueño} & \cab{Relación} & \cab{Interlocutor} & \cab{Contrato} & \cab{Límite}}
+M1 Recepción & Traducción por ACL & ERP 2017 & Recepción validada. & ERP no escribe lote. \\
+M2 Inventario & Servicio publicado & M3, M4 y M5 & Consulta y reserva. & M2 decide stock. \\
+M3 Preventa & Cliente de M2 & M2 y M7 & Pedido y sincronización. & No aprueba crédito local. \\
+M4 Rutas & Adapta fuente & M3, M6 y GIS & Ruta aprobada. & GIS no decide ruta. \\
+M5 Preparación & Proveedor de evento & M2, M6 y ACL & Misión preparada. & No emite guía. \\
+M6 Reparto & Proveedor de evento & M4, M7 y M8 & Entrega registrada. & No liquida cobro. \\
+M7 Rendición & Traducción por ACL & M6 y ERP & Rendición aprobada. & ERP sigue tributario. \\
+M8 Devoluciones & Lenguaje publicado & M2 y M7 & Devolución y envase. & No ajusta DTE. \\
+M9 Calidad & Proveedor de bloqueo & M1, M5 y sensores & Lote bloqueado. & Calidad libera. \\
+M10 Analítica & Consumidor de eventos & M1--M9 y M12 & Indicadores consolidados. & Solo lectura. \\
+M11 Canal moderno & Traducción EDI & Cadena, M3 y ACL & Pedido normalizado. & M3 gobierna pedido. \\
+M12 Flota & Adapta telemetría & GPS, M4 y M10 & Ruta observada. & No registra entrega. \\
 \end{tablalafrox}
 
 {\footnotesize Fuente: elaboración propia de LafroX a partir de Caso 02 y responsabilidades de M1--M12 definidas en esta sección.\par}
@@ -381,7 +429,7 @@ El módulo de trazabilidad resuelve el problema central que motivó la licitaci�
 
 La unidad de trazabilidad sanitaria es el lote del proveedor, identificado por el producto (GTIN) y el número de lote. El vencimiento y los registros de temperatura se conservan como atributos asociados; FEFO es la regla de rotación por vencimiento, no parte del identificador. Cada movimiento vincula el lote con la unidad logística identificada mediante SSCC. Esta organización permite seguir el producto aunque cambie de caja o pallet. Como el 41\% de las recepciones carece de lote registrado, la captura en recepción es obligatoria para sostener la trazabilidad (RF-01).
 
-La trazabilidad forward/backward se implementa evento a evento conforme al estándar GS1 EPCIS, permitiendo al sistema responder en menos de 2 horas ante un retiro sanitario (Cap. 18), con identificación precisa de los lotes y puntos de entrega afectados. Los registros de temperatura se capturan de forma continua por sensores IoT en cámaras y vehículos, con alerta automática ante excursiones fuera de rango (RF-09.03/05) y bloqueo del despacho cuando se detecta una excursión térmica (RF-09.07). El módulo integra sensores de frío (Greengrass, Capa 2), inventario (M2), preparación (M5) y la capa de observabilidad (Capa 8), con evidencia de cumplimiento exportable.
+La trazabilidad forward/backward se implementa evento a evento conforme al estándar GS1 EPCIS, permitiendo al sistema responder en menos de 2 horas ante un retiro sanitario (Cap. 18), con identificación precisa de los lotes y puntos de entrega afectados. Los registros de temperatura se capturan de forma continua por sensores IoT en cámaras y vehículos. Una lectura fuera del rango configurado genera alerta y retención preventiva automática de la carga en M5, también sin enlace (RF-09.03/05/07); el sistema registra umbral, duración, sensor y lote. La jefatura de Calidad evalúa la excursión y es la única que autoriza una liberación trazada o dispone rechazo. El conductor no puede levantar el bloqueo. M9 integra sensores de frío (Greengrass, Capa 2), inventario (M2), preparación (M5) y observabilidad (Capa 8), con evidencia exportable de la decisión.
 
 \subsubsection{Módulo de inventario (M2)}
 
@@ -418,7 +466,7 @@ El módulo de planificación de rutas automatiza un proceso que actualmente depe
   \item \textbf{Costo de entrega.} Alimenta el cálculo del costo de servir por cliente, uno de los ejes de evaluación del caso.
 \end{itemize}
 
-La Figura~\ref{fig:arql-13} sigue al planificador desde las restricciones hasta la revisión humana de la ruta. La propuesta automática no convierte sus excepciones en reglas opacas: se conservan para transferencia de conocimiento y prueba de aceptación.
+La propuesta automática no convierte las excepciones del planificador en reglas opacas: M4 conserva restricción, motivo de ajuste y autor de la ruta aprobada para transferir conocimiento y comprobar el criterio de aceptación.
 
 \subsubsection{Módulo de rendición y cobro (M7)}
 
@@ -441,27 +489,27 @@ La información es de solo lectura para la analítica, sin acceder al transaccio
 
 El módulo no incorpora inteligencia artificial ni analítica predictiva. Se prioriza la calidad de la captura y la disponibilidad de indicadores verificables, dado que el caso informa un 41 \% de recepciones sin lote registrado. La incorporación futura de capacidades predictivas requerirá una decisión expresa del CLIENTE y la definición de su alcance.
 
-Las Figuras~\ref{fig:arql-11} y \ref{fig:arql-12} separan el consumo comercial y financiero del dato: ambos consultan indicadores, pero solo Finanzas participa en la aprobación de diferencias de rendición.
+Comercial y Finanzas consultan indicadores sobre el mismo modelo semántico, pero solo Finanzas participa en la aprobación de diferencias de rendición; M10 no recibe permiso para modificar cobros.
 
 \subsubsection{Recepción, preparación, reparto y servicios asociados}
 
 \textbf{M1 Recepción} compara lo recibido con la orden de compra, identifica GTIN, lote, vencimiento y SSCC, y registra cuarentena cuando falta evidencia o hay una diferencia. Publica \texttt{RecepcionConfirmada} para que M2 ubique el stock; no lo reserva para venta. La información del ERP entra y sale exclusivamente por la capa anticorrupción.
 
-La Figura~\ref{fig:arql-8} ubica al proveedor en la recepción, sin darle acceso a las reglas internas de inventario.
+El proveedor consulta el estado de su orden y de la recepción; no accede a las reglas internas de inventario ni confirma unilateralmente un lote.
 
 \textbf{M5 Preparación} toma pedidos confirmados y ubicaciones de M2, aplica FEFO y genera misiones verificables con lectura GS1. Conserva localmente cada lectura y la causal de faltante. Una carga no se libera por el mero hecho de estar preparada: la solicitud de guía electrónica se cursa al ERP por la ACL y la salida queda condicionada a su confirmación o a la contingencia tributaria aprobada.
 
-La Figura~\ref{fig:arql-9} muestra el trabajo del preparador y por qué la misión local no puede depender de la respuesta del enlace externo para conservar cada lectura.
+El preparador confirma cada lectura en el servicio local; la pérdida del enlace externo no borra la misión ni convierte una carga preparada en una salida autorizada.
 
 \textbf{M6 Reparto y entrega} recibe de M4 la ruta y de M5 la carga liberada. El conductor registra receptor, cantidad recibida, rechazos y POD en el dispositivo aun sin señal. M6 no liquida cobros ni emite documentos tributarios; publica el resultado para M7 y M8 y mantiene visible el estado pendiente de sincronización.
 
-Las Figuras~\ref{fig:arql-3}--\ref{fig:arql-5} distinguen el conductor propio, el externo y el cliente tradicional. La evidencia cambia de autor según la asignación del turno, pero el almacén no necesita instalar una aplicación para confirmar la recepción.
+El conductor propio y el externo utilizan el mismo contrato de entrega con identidades personales distintas. La evidencia queda ligada al turno y al receptor, sin exigir que el almacén instale una aplicación.
 
 \textbf{M8 Devoluciones y envases} separa la mercadería que regresa de los activos retornables. Cada devolución conserva cantidad, lote, causal y vínculo con la entrega; el ajuste tributario se solicita al ERP por la ACL. Los canastillos y pallets se controlan por saldo de cliente y movimientos firmados, sujetos a conciliación en la rendición.
 
 \textbf{M11 Canal moderno} recibe pedidos mediante contratos EDI configurados por cadena, traduce códigos a un vocabulario común y envía el pedido normalizado a M3. Las diferencias de formato y equivalencias van a una bandeja de excepciones; M11 no se convierte en un segundo dueño del pedido ni del inventario.
 
-La Figura~\ref{fig:arql-6} recorre el intercambio con la cadena. La Figura~\ref{fig:arql-7} separa el portal del transportista del registro personal de cada conductor que ejecuta M6.
+La cadena intercambia pedidos por el hub EDI; el transportista consulta y asigna viajes desde su portal. Ninguno de esos canales reemplaza el registro personal del conductor que ejecuta M6.
 
 \textbf{M12 Telemetría y flota} consume la fuente de posicionamiento existente de los vehículos propios, compara ruta planificada con recorrido y entrega kilómetros a M10 para costo de servir. No incorpora cámaras de cabina ni usa la posición para controlar la jornada laboral. Su falla degrada la visibilidad de ruta, no la captura de entregas de M6.
 
@@ -483,6 +531,20 @@ Las entidades principales son:
   \item \textbf{Envase retornable.} Canastillo o pallet, cliente, saldo y pérdida estimada del 14\% anual (decisión 16.1 \#10). Control por cuenta corriente por cliente, no por unidad identificada.
   \item \textbf{Sensor / registro térmico.} Dispositivo, lote o posición, temperatura y excursión térmica.
 \end{itemize}
+
+La Figura~\ref{fig:arql-18} dibuja las relaciones mínimas necesarias para responder dos preguntas del caso: de qué lote provino una unidad entregada y a qué clientes llegó un lote que debe retirarse. No pretende ser el diccionario de datos del capítulo 5.
+
+\begin{anexohorizontal}
+\begin{center}
+  \includegraphics[width=0.96\linewidth,height=0.67\textheight,keepaspectratio]{Diagramas/arquitectura_logica_actual/ARQL-18_Dominio_trazabilidad.png}
+  \captionof{figure}{Modelo conceptual del pedido, el lote y la entrega}
+  \label{fig:arql-18}
+\end{center}
+
+{\footnotesize Fuente: elaboración propia de LafroX.\par}
+
+La línea de pedido se asigna a un lote identificado por GTIN y lote del proveedor; los movimientos con SSCC conservan la cadena de custodia hasta la entrega. La entrega vincula la evidencia de recepción y el folio de la guía que el ERP emitió antes del traslado. Un pedido aún puede no tener entrega, y una entrega puede registrar más de una evidencia o un rechazo parcial: esas cardinalidades y estados se concretan en el capítulo 5 sin perder el identificador de origen.
+\end{anexohorizontal}
 
 Los eventos usan verbos en pasado y son la base de los esquemas AsyncAPI. Toda escritura offline es idempotente por UUID (RT-02.06).
 
@@ -586,6 +648,14 @@ La selección no descansa en una lista de marcas. PostgreSQL/PostGIS se prefiere
 
 El núcleo utiliza tecnologías con alternativas de despliegue como Django, Angular, PostgreSQL, RabbitMQ y Keycloak. Eso facilita la portabilidad, pero no elimina la dependencia de los servicios administrados de AWS. La reversibilidad debe documentar contratos, exportación de datos y sustitución de adaptadores, junto con el esfuerzo de migración exigido por RT-03.07.
 
+\subsection{Ambientes del ciclo de vida y promoción de componentes}
+
+Los cinco ambientes del RT-04.01 cumplen propósitos distintos. En \textbf{Desarrollo}, el equipo construye las aplicaciones Django y Kotlin, los contratos y las migraciones con datos sintéticos o anonimizados; las pruebas unitarias no necesitan conectarse al ERP real. En \textbf{QA}, se despliegan M1--M12, el verificador local y los adaptadores simulados para ensayar integración, regresión, idempotencia y fallas de enlace con datos controlados. En \textbf{Preproducción}, el mismo artefacto y las mismas versiones de contratos se ensayan con topología equivalente a producción y volumen representativo de septiembre; se prueban los 120 terminales, el relevo de turnos, la emisión de guía por el ERP y la reconciliación. Toda diferencia de escala o configuración se declara antes de aceptar el ensayo, conforme a RT-04.02.
+
+En \textbf{Producción}, los módulos sirven datos reales con acceso restringido y auditado; los desarrolladores no corrigen transacciones directamente. El ambiente de \textbf{Recuperación ante desastres} conserva la versión compatible de los componentes y permite ensayar conmutación y retorno al menos dos veces al año, sin presumir que una réplica remota contiene eventos aún no enviados desde un sitio aislado. Los cinco deben estar operativos en el hito H3; su emplazamiento, capacidad y segregación de redes se demuestran en 4.2, no mediante el simple nombre del ambiente.
+
+La promoción conserva la identidad del artefacto y la versión de esquema desde QA hasta producción. La revisión por pares, pruebas de contrato OpenAPI/AsyncAPI, análisis estático, composición de dependencias, secretos e imágenes bloquean un despliegue defectuoso (RT-04.03--04.05). Cada cambio registra requisito, commit, prueba, aprobación y despliegue; una migración incompatible con los eventos pendientes se detiene o conserva un lector de la versión anterior. La recuperación ante desastres verifica además la lectura de datos y mensajes generados durante la contingencia antes del retorno al primario.
+
 \subsection{Patrones de diseño y continuidad}
 
 La arquitectura aplica un conjunto de patrones de diseño que responden a las restricciones específicas de la operación de Puelche:
@@ -608,26 +678,30 @@ La arquitectura aplica un conjunto de patrones de diseño que responden a las re
 
 \textbf{Separación transaccional y analítica.} Los tableros consultan Redshift Serverless, no el transaccional en vivo. Los eventos incrementales permiten mantener las latencias de hasta 5 minutos para operación, 2 horas para cierre comercial y 4 horas para gestión. Las tareas pesadas se programan fuera de la ventana crítica, sin detener la actualización incremental necesaria para el tablero operacional. No se incluye IA ni analítica predictiva en este alcance.
 
+\subsubsection{SOLID aplicado a los contratos de negocio}
+
+La responsabilidad única se comprueba en el flujo de un pedido: M3 captura y confirma el pedido, M2 decide si reserva stock, M5 ejecuta la preparación y la ACL traduce hacia el ERP. Ninguno de esos componentes puede asumir la decisión del otro por compartir un proceso Django. Para extender el canal moderno, M11 incorpora un adaptador por cadena bajo un contrato publicado; M3 no se modifica para aprender un nuevo formato EDI. Esa es la aplicación concreta del principio abierto/cerrado.
+
+Un adaptador nuevo sustituye a uno anterior solo si conserva las respuestas, errores e idempotencia exigidos por el contrato versionado: las pruebas de contrato verifican esa sustitución. Las interfaces se separan por capacidad y autorización ---consulta de stock, reserva, recepción de POD y liberación sanitaria--- para que un cliente de lectura no reciba por accidente una operación de escritura. Finalmente, M3, M5 y M7 dependen de puertos de negocio para inventario, documentos y mensajería, no de llamadas directas al SDK de una nube o a tablas del ERP. En QA se sustituyen esos puertos por dobles de prueba; en producción los adaptadores implementan el contrato. Estas pruebas dan contenido verificable a sustitución, segregación de interfaces e inversión de dependencias, en vez de presentar SOLID como una lista de siglas.
+
 \subsection{Registro de decisiones de arquitectura}
 \label{sec:adr}
 
-El registro ADR fechado forma parte de la evidencia contractual de RT-02.04. La Tabla~\ref{tab:adr} orienta la lectura de las decisiones de esta vista; el registro completo conserva fecha, contexto, alternativas descartadas, criterio y consecuencias. Debe adjuntarse al Subdocumento 4, no sustituirse por esta síntesis.
+Las decisiones lógicas principales se registran aquí con identificador estable y fecha de consolidación 24 de septiembre de 2026. La Tabla~\ref{tab:adr} presenta la opción adoptada, la alternativa real, el criterio y su consecuencia operativa. El contexto de cada una se desarrolla en las secciones de tecnologías, continuidad, integración y seguridad; así RT-02.04 puede revisarse sin depender de un archivo no incorporado.
 
-\begin{tablalafrox}{Decisiones arquitectónicas que sustentan la vista lógica}{tab:adr}{F{0.12} F{0.35} F{0.31} Y}{\cab{ADR} & \cab{Elección} & \cab{Alternativa descartada} & \cab{Criterio}}
-ADR-01 & Django modular con workers separables. & Microservicio por dominio. & Operación de equipo pequeño. \\
-ADR-05 & RabbitMQ local y eventos ordenados en nube. & Broker solo en nube. & Autonomía de cada sitio. \\
-ADR-06 & Keycloak central con verificación local acotada. & Identidad exclusivamente remota. & Acceso durante interrupciones. \\
-ADR-07 & Kotlin nativo en terreno. & Aplicación web móvil. & Captura y operación sin señal. \\
-ADR-08 & Sustitución gradual del WMS 2013. & Corte único de todos los sitios. & Reversibilidad de cada ola. \\
-ADR-11 & Hub EDI con vocabulario canónico. & Conector específico por cadena. & Gobierno de contratos. \\
-ADR-12 & Consumidores elásticos de eventos. & Capacidad fija de septiembre todo el año. & Perfil estacional de carga. \\
+\begin{tablalafrox}{Registro de decisiones de la vista lógica}{tab:adr}{F{0.11} F{0.24} F{0.24} F{0.20} Y}{\cab{ADR} & \cab{Decisión} & \cab{Alternativa} & \cab{Criterio} & \cab{Consecuencia}}
+ADR-01 & Django modular; workers separables. & Microservicio por dominio. & Cuatro personas TI; carga del caso. & Un despliegue base; límites probados. \\
+ADR-05 & RabbitMQ local más cola de nube. & Broker solo en nube. & Sitio sin enlace 24 h. & Reconciliación y doble operación. \\
+ADR-06 & Keycloak y verificador local. & Identidad solo remota. & Relevo durante corte. & Revocación remota diferida. \\
+ADR-07 & Kotlin nativo en terreno. & Aplicación web móvil. & Zebra y captura sin señal. & Clientes Android de terreno y bodega mantenibles. \\
+ADR-08 & Sustituir WMS por olas. & Corte simultáneo de sitios. & Reversión por capacidad. & Coexistencia y conciliación temporal. \\
+ADR-11 & Hub EDI canónico. & Conector aislado por cadena. & Contratos gobernables. & Tabla de equivalencias versionada. \\
+ADR-12 & Consumidores elásticos de eventos. & Capacidad fija para septiembre. & Pico estacional de tres semanas. & Prueba de cola y tiempo de drenaje. \\
 \end{tablalafrox}
 
-{\footnotesize Fuente: elaboración propia de LafroX a partir de Registro de Decisiones de Arquitectura ADR, 2026.\par}
+{\footnotesize Fuente: elaboración propia de LafroX a partir del caso 02 y Bases Técnicas Transversales, RT-02.04.\par}
 
-La fecha y las consecuencias completas se verifican en el registro adjunto.
-
-El registro adjunto contiene fechas y análisis íntegro. La identidad todavía requiere demostrar el relevo de turnos del centro de distribución durante 24 horas sin enlace; citar ADR-06 no resuelve por sí solo esa prueba.
+Las consecuencias se convierten en pruebas: ADR-01 exige verificar límites de módulo; ADR-05, persistencia y deduplicación tras un corte; ADR-06, dos relevos de turno sin IdP; ADR-08, reversión de una ola sin duplicar stock; y ADR-12, drenaje de la cola bajo el pico de septiembre. Una elección no se acredita solo por figurar en la tabla.
 
 \subsection{Puntos únicos de falla y riesgos residuales}
 \label{sec:spof}
@@ -651,7 +725,7 @@ La dependencia del ERP y del SII no es aceptable para un nuevo despacho sin el m
 \subsection{Comparación de alternativas arquitectónicas}
 \label{sec:alternativas-arquitectonicas}
 
-La comparación considera la carga real, la continuidad desconectada, la reversión y la dotación que deberá operar la solución. La Tabla~\ref{tab:alternativas} resume cuatro elecciones lógicas; el ADR conserva el análisis de costo, operación y consecuencias.
+La comparación considera la carga real, la continuidad desconectada, la reversión y la dotación que deberá operar la solución. La Tabla~\ref{tab:alternativas} resume cuatro elecciones lógicas; el registro de decisiones precedente explicita su criterio y consecuencia operativa. La evaluación económica pertenece a los apartados de costos, no a esta vista lógica.
 
 \begin{tablalafrox}{Alternativas lógicas y criterio de selección}{tab:alternativas}{F{0.18} F{0.27} F{0.27} Y}{\cab{Decisión} & \cab{Seleccionada} & \cab{Alternativa viable} & \cab{Criterio decisivo}}
 Núcleo negocio & Django modular, workers extraíbles. & Servicios separados por dominio. & Menor carga operativa con 31.000 pedidos/mes. \\
@@ -714,10 +788,10 @@ La copia de stock, crédito y precios lleva fecha de actualización; al superar 
 Toda reconciliación se resuelve por regla de negocio declarada, nunca por la sola marca de tiempo. La clave UUID generada por el cliente se conserva en todos los reintentos y el resultado se retiene para deduplicación durante 30 días; un lote más antiguo se aísla para revisión antes de admitir una nueva escritura. El resultado incluye identificador, versión, regla aplicada, actor y fecha. La Tabla~\ref{tab:reglas-reconciliacion} muestra los conflictos de negocio principales.
 
 \begin{tablalafrox}{Reglas de reconciliación y bitácora Art. 16.4}{tab:reglas-reconciliacion}{F{0.16} F{0.24} F{0.18} F{0.18} Y}{\cab{Conflicto} & \cab{Regla de resolución} & \cab{Dónde se ejecuta} & \cab{Bitácora Art. 16.4} & \cab{Dec. / ADR}}
-Doble reserva stock (preventa offline vs online) & Reserva en servidor (M2) gana; offline pendiente validación; si ambos offline $\rightarrow$ primera confirmada al sync gana, segunda $\rightarrow$ ReservaLiberada + notificación & Capa 4 (M2) + M3 sync & Qué transacción, stock, regla (reserva servidor), quién (sistema), cuándo & Dec 16.1\#8, S26, RT-02.06 \\
-Pedido duplicado (reenvío offline) & UUID idempotente: servidor registra event\_id procesado; reenvío $\rightarrow$ 200 OK sin reprocesar & Capa 3 (Gateway) + Capa 4 (dedup) & transaction\_id, event\_id, decisión (ya procesado) & RT-02.06, S26 \\
-Entrega offline vs cancelación back-office & Entrega offline gana si ya hay POD (firma/QR/foto); back-office ve estado "entregado" y no cancela & Capa 4 (M6) & entrega\_id, evidencia POD, decisión (entrega prevalece) & Dec 16.1\#1, RF-06.02 \\
-Excursión térmica detectada offline & Bloqueo local inmediato (M5 + sensor Greengrass); despacho no sale; evento en cola local & Capa 2 (Greengrass) + Capa 4 (M9/M5) & shipment\_id, sensor, temp, umbral, decisión (bloqueo), <5s & Dec 16.1\#4, RT-03.13 \\
+Doble reserva stock (preventa offline vs online) & M2 confirma una sola reserva; la otra queda en excepción con aviso, sin resolver por la última marca de tiempo. & Capa 4 (M2/M3) & Pedido, stock, regla, resultado y hora. & Decisión 16.1\#8; RT-02.06 \\
+Pedido duplicado (reenvío offline) & M3 conserva el UUID y devuelve el resultado ya persistido, sin volver a reservar ni cobrar. & Capa 4 (M3) & transaction\_id, event\_id y resultado anterior. & RT-02.06 \\
+Entrega offline vs cancelación back-office & M6 aísla el conflicto: compara estado y evidencia; un supervisor resuelve antes de ajustar cobro o DTE. & Capa 4 (M6/M7) & Entrega, cancelación, POD y decisión motivada. & Decisión 16.1\#1 \\
+Excursión térmica detectada offline & M9 bloquea localmente la salida; solo Calidad libera tras evaluación. & Capas 2 y 4 (M9/M5) & Sensor, umbral, lote, bloqueo y liberación. & Decisión 16.1\#4 \\
 Rendición conductor offline vs ERP caído & Rendición local completa; RendicionCerrada en cola local (RabbitMQ 24h); celery-erp-sync reintenta con cortacircuito & Capa 4 (M7) + Capa 5 (RabbitMQ) + ACL & conductor\_id, monto, causal descuadre, reintentos ERP & INT-06, RT-10.08 \\
 Conflicto envases (conductor devuelve vs cliente niega) & Cuenta corriente por cliente (saldo, no unidad); registro EnvaseMovido con firma/QR conductor; disputa $\rightarrow$ bandeja excepciones & Capa 4 (M8) & cliente\_id, tipo envase, firma/QR, decisión (saldo actualizado) & Dec 16.1\#10 \\
 Cambio de precio entre captura y confirmación & M3 conserva la tarifa mostrada; si cambió antes de confirmar, solicita aceptación o autorización comercial, sin cambiar silenciosamente el pedido & M3 + M7 & pedido\_id, tarifa inicial y vigente, respuesta del cliente & Dec 16.1\#9 \\
@@ -805,218 +879,6 @@ La lógica adopta seis instalaciones en total, de las cuales cinco son sitios lo
 Los cortes frecuentes de dos horas descritos en la operación son el escenario ordinario. Los límites de diseño son más exigentes: un turno de 14 horas en terreno y 24 horas en cada centro de distribución. No se reduce la autonomía porque el incidente más común sea más corto.
 
 El relevo de turnos sin IdP, la autorización tributaria de salida y el tratamiento de una pérdida de sitio antes de replicar son condiciones de aceptación abiertas. Cada una tiene un responsable y una prueba; por ello la arquitectura no afirma continuidad completa ni RPO incondicional mientras no se acrediten.
-
-\subsection{Diagramas de la arquitectura lógica}
-
-El diagrama general permite ubicar los componentes y las trece vistas por perfil muestran los canales de preventa, reparto, clientes, transportistas, proveedores, bodega, calidad, gerencias, planificación y administración TI. Su contenido se interpreta con las responsabilidades y contratos definidos en este apartado 4.1.
-
-\begin{anexohorizontal}
-\subsubsection{Diagrama del preventista de la arquitectura lógica}
-
-La Figura~\ref{fig:arql-2} presenta esta vista completa de la solución. La vista del preventista sigue un pedido desde la captura local de M3 hasta la validación de stock y crédito.
-
-\begin{center}
-  \includegraphics[width=0.96\linewidth,height=0.72\textheight,keepaspectratio]{arquitectura_logica_actual/ARQL-01_Vision_general.png}
-  \captionof{figure}{Diagrama general de la arquitectura lógica}
-  \label{fig:arql-1}
-\end{center}
-
-En este diagrama se muestra la arquitectura de la solución completa, descrita anteriormente, donde se presentan las 8 capas en conjunto (desde la capa de presentación hasta las capas transversales). donde adicionalmente se puede visualizar las interacciones entre los usuarios a sus respectivos módulos funcionales (M1 a M12), adicionalmente de ver cómo se interactúa con el resto de las capas junto a las tecnologías que se utilizan respectivamente tanto en la nube como on-premise.
-
-\end{anexohorizontal}
-\clearpage
-\begin{anexohorizontal}
-\subsection{Diagrama del preventista de la arquitectura lógica}
-
-\begin{center}
-  \includegraphics[width=0.96\linewidth,height=0.72\textheight,keepaspectratio]{arquitectura_logica_actual/ARQL-02_Preventista.png}
-  \captionof{figure}{Diagrama del preventista de la arquitectura lógica}
-  \label{fig:arql-2}
-\end{center}
-
-Este diagrama representa el flujo del preventista dentro de la arquitectura lógica, quien interactúa a través de la aplicación móvil (Kotlin) dedicada a los preventistas. por otro lado se destaca su conexión con los módulos M3, dedicado a las funcionalidades que el preventista va a acceder dentro del sistema
-
-\end{anexohorizontal}
-\clearpage
-\begin{anexohorizontal}
-\subsubsection{Diagrama del conductor propio de la arquitectura lógica}
-
-La Figura~\ref{fig:arql-3} presenta esta vista completa de la solución. La vista del conductor propio muestra ruta, entrega, evidencia y rendición a través de M6, M7 y M8.
-
-\begin{center}
-  \includegraphics[width=0.96\linewidth,height=0.72\textheight,keepaspectratio]{Diagramas/arquitectura_logica_actual/ARQL-03_Conductor_propio.png}
-  \captionof{figure}{Diagrama del conductor propio de la arquitectura lógica}
-  \label{fig:arql-3}
-\end{center}
-
-En este caso se muestra la interacción en el conductor que le trabaja a la empresa de puelche en sí. donde se enfoca en su relación/interacción entre los módulos M6 y M7, mostrando cómo registra pruebas de entrega, cobros de ruta y devoluciones, para posteriormente sincronizar esta información de vuelta a los sistemas centrales.
-
-\end{anexohorizontal}
-\clearpage
-\begin{anexohorizontal}
-\subsubsection{Diagrama del conductor externo de la arquitectura lógica}
-
-La Figura~\ref{fig:arql-4} presenta esta vista completa de la solución. La vista del conductor externo añade la vinculación entre transportista, persona, dispositivo y turno.
-
-\begin{center}
-  \includegraphics[width=0.96\linewidth,height=0.72\textheight,keepaspectratio]{Diagramas/arquitectura_logica_actual/ARQL-04_Conductor_externo.png}
-  \captionof{figure}{Diagrama del conductor externo de la arquitectura lógica}
-  \label{fig:arql-4}
-\end{center}
-
-Similar al diagrama anterior correspondiente al del conductor propio, este diagrama detalla el flujo para el conductor externo propio dispositivo (BYOD) con autenticación mediante OTP donde interactúa con el módulo M6, asegurando que las funcionalidades se realicen bajo los mismos estándares de seguridad y trazabilidad que el personal interno.
-
-\end{anexohorizontal}
-\clearpage
-\begin{anexohorizontal}
-\subsubsection{Diagrama del cliente canal tradicional de la arquitectura lógica}
-
-La Figura~\ref{fig:arql-5} presenta esta vista completa de la solución. La vista del cliente tradicional presenta la entrega asistida por el conductor, sin exigir una aplicación al almacén.
-
-\begin{center}
-  \includegraphics[width=0.96\linewidth,height=0.72\textheight,keepaspectratio]{Diagramas/arquitectura_logica_actual/ARQL-05_Cliente_canal_tradicional.png}
-  \captionof{figure}{Diagrama del cliente canal tradicional de la arquitectura lógica}
-  \label{fig:arql-5}
-\end{center}
-
-Ilustra cómo interactúa el cliente de canal tradicional, principalmente a través de portales web. El diagrama muestra su conexión con la capa de presentación y cómo su información fluye hacia los módulos de preventa (M3), además de reflejar las notificaciones multicanal (SMS/WhatsApp) gestionadas por la plataforma.
-
-\end{anexohorizontal}
-\clearpage
-\begin{anexohorizontal}
-\subsubsection{Diagrama del cliente canal moderno de la arquitectura lógica}
-
-La Figura~\ref{fig:arql-6} presenta esta vista completa de la solución. La vista del canal moderno recorre el pedido EDI, las excepciones y el aviso de despacho.
-
-\begin{center}
-  \includegraphics[width=0.96\linewidth,height=0.72\textheight,keepaspectratio]{Diagramas/arquitectura_logica_actual/ARQL-06_Cliente_canal_moderno.png}
-  \captionof{figure}{Diagrama del cliente canal moderno de la arquitectura lógica}
-  \label{fig:arql-6}
-\end{center}
-
-Describe la integración B2B con clientes del canal moderno (supermercados). Se destaca el uso del Hub EDI GS1 (Módulo M11) en la capa de integración, el cual procesa mensajes (EANCOM, GS1 XML) de forma asíncrona y se comunica con los módulos de preventa (M3) y reparto (M6), interactuando también con las bases de datos transaccionales correspondientes.
-
-\end{anexohorizontal}
-\clearpage
-\begin{anexohorizontal}
-\subsubsection{Diagrama del transportista de la arquitectura lógica}
-
-La Figura~\ref{fig:arql-7} presenta esta vista completa de la solución. La vista del transportista muestra el portal de asignación y seguimiento de sus conductores.
-
-\begin{center}
-  \includegraphics[width=0.96\linewidth,height=0.72\textheight,keepaspectratio]{Diagramas/arquitectura_logica_actual/ARQL-07_Transportista.png}
-  \captionof{figure}{Diagrama del transportista de la arquitectura lógica}
-  \label{fig:arql-7}
-\end{center}
-
-Muestra el acceso del transportista a través del portal web específico para su perfil. Se detalla su interacción con el módulo M6, reflejando el flujo de datos hacia las bases de datos de rutas y telemetría.
-
-\end{anexohorizontal}
-\clearpage
-\begin{anexohorizontal}
-\subsubsection{Diagrama del proveedor de la arquitectura lógica}
-
-La Figura~\ref{fig:arql-8} presenta esta vista completa de la solución. La vista del proveedor sigue la orden de compra y la recepción asociada a M1.
-
-\begin{center}
-  \includegraphics[width=0.96\linewidth,height=0.72\textheight,keepaspectratio]{Diagramas/arquitectura_logica_actual/ARQL-08_Proveedor.png}
-  \captionof{figure}{Diagrama del proveedor de la arquitectura lógica}
-  \label{fig:arql-8}
-\end{center}
-
-Representa la vista del proveedor, interactuando mediante el portal web. El flujo principal se dirige al módulo de Recepción (M1), permitiéndole consultar órdenes, recepciones y lotes, integrándose a su vez con la capa anticorrupción (ACL) para reflejar los datos provenientes del ERP.
-
-\end{anexohorizontal}
-\clearpage
-\begin{anexohorizontal}
-\subsubsection{Diagrama del preparador de la arquitectura lógica}
-
-La Figura~\ref{fig:arql-9} presenta esta vista completa de la solución. La vista del preparador une misión de picking, lectura GS1 y confirmación de carga en M5.
-
-\begin{center}
-  \includegraphics[width=0.96\linewidth,height=0.72\textheight,keepaspectratio]{Diagramas/arquitectura_logica_actual/ARQL-09_Preparador.png}
-  \captionof{figure}{Diagrama del preparador de la arquitectura lógica}
-  \label{fig:arql-9}
-\end{center}
-
-Ilustra la operación del preparador de bodega utilizando terminales HHT. Destaca su interacción directa con los servicios para las misiones de preparación (M5), asegurando la continuidad operativa (24h de autonomía) incluso ante cortes de enlace externo.
-
-\end{anexohorizontal}
-\clearpage
-\begin{anexohorizontal}
-\subsubsection{Diagrama de la jefa de calidad de la arquitectura lógica}
-
-La Figura~\ref{fig:arql-10} presenta esta vista completa de la solución. La vista de Calidad muestra el lote, la temperatura y el bloqueo de despacho.
-
-\begin{center}
-  \includegraphics[width=0.96\linewidth,height=0.72\textheight,keepaspectratio]{Diagramas/arquitectura_logica_actual/ARQL-10_Jefa_de_calidad.png}
-  \captionof{figure}{Diagrama de la jefa de calidad de la arquitectura lógica}
-  \label{fig:arql-10}
-\end{center}
-
-Muestra el perfil de la Jefa de Calidad, cuyo trabajo se centra en el módulo de Calidad y Trazabilidad (M9) a través de la consola web. la capacidad de interactuar con el módulo de revision de mercancia M1 evidenciado la funcionalidad clave de trazabilidad en el sistema
-
-\end{anexohorizontal}
-\clearpage
-\begin{anexohorizontal}
-\subsubsection{Diagrama del gerente comercial de la arquitectura lógica}
-
-La Figura~\ref{fig:arql-11} presenta esta vista completa de la solución. La vista comercial recorre pedidos, nivel de servicio y segmentación de clientes.
-
-\begin{center}
-  \includegraphics[width=0.96\linewidth,height=0.72\textheight,keepaspectratio]{Diagramas/arquitectura_logica_actual/ARQL-11_Gerente_comercial.png}
-  \captionof{figure}{Diagrama del gerente comercial de la arquitectura lógica}
-  \label{fig:arql-11}
-\end{center}
-
-Detalla el acceso del Gerente Comercial a los tableros gerenciales mediante la consola de BI. Su interacción principal es con el módulo BI/Gerencia (M10), el cual extrae información de la base de datos analítica (Redshift) para visualizar métricas clave como OTIF, fill rate y costo de servir, sin afectar el rendimiento transaccional.
-
-\end{anexohorizontal}
-\clearpage
-\begin{anexohorizontal}
-\subsubsection{Diagrama del gerente de finanzas de la arquitectura lógica}
-
-La Figura~\ref{fig:arql-12} presenta esta vista completa de la solución. La vista de Finanzas relaciona cobro, rendición y costo de servir.
-
-\begin{center}
-  \includegraphics[width=0.96\linewidth,height=0.72\textheight,keepaspectratio]{Diagramas/arquitectura_logica_actual/ARQL-12_Gerente_finanzas.png}
-  \captionof{figure}{Diagrama del gerente de finanzas de la arquitectura lógica}
-  \label{fig:arql-12}
-\end{center}
-
-Representa la vista del Gerente de Finanzas, interactuando con los módulos de Cobranza/Rendición (M7) a través de la consola correspondiente. El diagrama muestra el flujo hacia la base de datos de finanzas, facilitando el seguimiento de ingresos y rendiciones.
-
-\end{anexohorizontal}
-\clearpage
-\begin{anexohorizontal}
-\subsubsection{Diagrama del planificador de rutas de la arquitectura lógica}
-
-La Figura~\ref{fig:arql-13} presenta esta vista completa de la solución. La vista de planificación une restricciones, secuencia propuesta y revisión humana de M4.
-
-\begin{center}
-  \includegraphics[width=0.96\linewidth,height=0.72\textheight,keepaspectratio]{Diagramas/arquitectura_logica_actual/ARQL-13_Planificador_de_rutas.png}
-  \captionof{figure}{Diagrama del planificador de rutas de la arquitectura lógica}
-  \label{fig:arql-13}
-\end{center}
-
-Muestra la operación del planificador utilizando su consola web específica. El foco principal está en el módulo de Planificación de Rutas (M4), evidenciando su interacción con el servicio externo GIS (Capa 3) para geocodificación y cálculo de ETA, y su relación con los módulos de inventario y preventa para secuenciar las entregas.
-
-\end{anexohorizontal}
-\clearpage
-\begin{anexohorizontal}
-\subsubsection{Diagrama del gerente de TI de la arquitectura lógica}
-
-La Figura~\ref{fig:arql-14} presenta esta vista completa de la solución. La vista de TI muestra identidad, contratos, observabilidad y administración de la solución.
-
-\begin{center}
-  \includegraphics[width=0.96\linewidth,height=0.72\textheight,keepaspectratio]{Diagramas/arquitectura_logica_actual/ARQL-14_Gerente_TI.png}
-  \captionof{figure}{Diagrama del gerente de TI de la arquitectura lógica}
-  \label{fig:arql-14}
-\end{center}
-
-Ilustra la visión integral que tiene el Gerente de TI, accediendo a través de la consola de administración. El diagrama muestra su capacidad para interactuar con todos los módulos de negocio (M1 a M12), la capa de integración, y las bases de datos de gobierno y control de acceso (Keycloak), reflejando su rol en la gestión técnica y monitoreo de la plataforma.
-
-\end{anexohorizontal}
 
 \clearpage
 \section*{Referencias}

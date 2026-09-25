@@ -1,0 +1,20 @@
+digraph AccesoLocal {
+  graph [rankdir=TB, bgcolor="white", pad="0.25", nodesep="0.25", ranksep="0.32", splines=polyline, label="BODEGA SIN NUBE | identidad y API local durante 24 horas", labelloc=t, fontname="Arial", fontsize=21, fontcolor="#17304D"];
+  node [shape=box, style="rounded,filled", color="#1E4C70", fillcolor="#EEF5F8", fontname="Arial", fontsize=16, margin="0.20,0.16", penwidth=1.5];
+  edge [color="#315E77", fontname="Arial", fontsize=12, arrowsize=0.85, penwidth=1.5];
+
+  idp [label="Keycloak conectado\npreinscribe personal y turnos\nrenueva manifiesto cada hora", fillcolor="#E7EAF8", color="#526190"];
+  hht [label="120 terminales HHT\ncredencial personal +\nsegundo factor local"];
+  verifier [label="Verificador del sitio\nfirma, vigencia, rol, turno\ny bloqueos conocidos"];
+  proxy [label="Puerta API local\nesquema, cuota, tasa,\nidentificador y auditoria"];
+  modules [label="M1 / M2 / M5 / M9\nrecepcion, stock, preparacion\ny bloqueo local", fillcolor="#E5F2E8", color="#407553"];
+  queue [label="Cola local durable\neventos y bitacora\nhasta reconexion", fillcolor="#FFF3DD", color="#AC7737"];
+  sync [label="Nube al reconectar\nsincroniza eventos,\nrevocaciones y auditoria"];
+
+  idp -> verifier [label="antes del corte"];
+  hht -> verifier [label="cada relevo"];
+  verifier -> proxy [label="permiso acotado"];
+  proxy -> modules [label="solo funcion autorizada"];
+  modules -> queue -> sync;
+  verifier -> hht [label="rechazo o vencimiento", color="#AE5A30", constraint=false];
+}

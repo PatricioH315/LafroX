@@ -1,0 +1,19 @@
+digraph PedidoConConexion {
+  graph [rankdir=TB, bgcolor="white", pad="0.25", nodesep="0.25", ranksep="0.32", splines=polyline, label="PEDIDO CON CONEXIÓN | secuencia lógica", labelloc=t, fontname="Arial", fontsize=22, fontcolor="#17304D"];
+  node [shape=box, style="rounded,filled", color="#1E4C70", fillcolor="#EEF5F8", fontname="Arial", fontsize=16, margin="0.20,0.16", penwidth=1.5];
+  edge [color="#315E77", fontname="Arial", fontsize=12, arrowsize=0.85, penwidth=1.5];
+
+  a [label="1 | Preventista\nM3 captura pedido\nUUID y precio ofrecido"];
+  b [label="2 | Entrada publica\nCloudFront / WAF\nAPI Gateway"];
+  c [label="3 | M3 Preventa\nvalida identidad,\nprecio y credito"];
+  d [label="4 | M2 Inventario\nconfirma reserva\npor sitio y lote"];
+  e [label="5 | M5 Preparacion\nmisiones GS1\ny carga verificada"];
+  f [label="6 | M9 Calidad\nconfirma que el lote\nno esta bloqueado"];
+  g [label="7 | ACL y ERP\nguia electronica\nantes de la salida"];
+  h [label="8 | M6 Reparto\nrecibe carga liberada\ny registra entrega"];
+
+  a -> b -> c -> d -> e -> f -> g -> h;
+  d -> c [label="reserva rechazada: excepcion", color="#AE5A30", constraint=false];
+  f -> e [label="excursion: carga retenida", color="#AE5A30", constraint=false];
+  g -> e [label="sin guia: no se despacha", color="#AE5A30", constraint=false];
+}
