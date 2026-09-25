@@ -1,0 +1,51 @@
+%  Origen: 05_modelo_datos/entrega_2/tablas/modelo_datos.xlsx
+%  Hojas "Retención, archivado y eliminación" (periodos e implementacion).
+%  El codigo transversal correcto es RT-16.10; el caso lo rotula RT-05.10.
+
+\begin{tablalafrox}{Períodos mínimos de retención por clase de dato (RT-16.10)}%
+  {tab:retencion-periodos}%
+  {Y L{5.8cm}}%
+  {\cab{Clase de dato} & \cab{Retención mínima}}
+  Documentos tributarios y su respaldo, incluida la guía de despacho
+    electrónica & 6 años, plazo legal tributario \\
+  Registros sanitarios y trazabilidad de lote
+    & Vida útil del producto más seis meses, con mínimo de 5 años \\
+  Registros de temperatura & 5 años \\
+  Evidencia de entrega: prueba de entrega, firma, fotografía y código QR
+    & 6 años \\
+  Geolocalización de personas
+    & 12 meses (Ley 21.719, RT-11.10), excluida de la replicación
+      transfronteriza \\
+  Eventos de seguridad & 12 meses en línea más 24 meses en archivo \\
+  Auditoría de negocio & 7 años \\
+\end{tablalafrox}
+
+\begin{tablalafrox}{Implementación de la retención y de la inmutabilidad}%
+  {tab:retencion-implementacion}%
+  {L{3.2cm} Y L{3.6cm}}%
+  {\cab{Clase} & \cab{Medio} & \cab{Mecanismo}}
+  Documentos tributarios, guías y facturas
+    & Almacenamiento de objetos con bloqueo en modo cumplimiento por seis años,
+      con traslado a archivo profundo desde el segundo año; los metadatos
+      ---folio, fecha, estado y referencias--- quedan en el transaccional.
+    & Sin posibilidad de eliminación prematura \\
+  Traza de lote y temperatura
+    & \texttt{BD\_CALIDAD\_TRAZABILIDAD} en PostgreSQL, más Parquet inmutable a
+      cinco años y consulta analítica.
+    & Registros inmutables (RT-16.07) \\
+  Prueba de entrega
+    & Almacenamiento de objetos con bloqueo por seis años.
+    & Registros inmutables (RT-16.07) \\
+  Telemetría en bruto
+    & Vencimiento automático a 30 días, con consolidación previa en Parquet.
+    & Vencimiento automático de partición \\
+  Geolocalización de personas
+    & Región única, con cifrado a nivel de campo (RT-11.10).
+    & Retención de 12 meses y eliminación certificada al vencimiento \\
+  Respaldos
+    & Recuperación a un punto en el tiempo de 35 días en nube; respaldo diario
+      más registro de escritura en el PostgreSQL on-premise; esquema 3-2-1-1-0
+      con almacenamiento local, copia inmutable en nube y réplica en una
+      segunda región.
+    & Pruebas semestrales (Artículo 20\textsuperscript{o}, RT-07.07) \\
+\end{tablalafrox}

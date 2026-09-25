@@ -1,0 +1,34 @@
+%  Origen: 05_modelo_datos/entrega_2/tablas/modelo_datos.xlsx
+%  Hoja "Calidad de datos (RT-05.04)". Marco ISO/IEC 25012.
+
+\begin{tablalafrox}{Calidad de datos: característica, regla y punto de
+  verificación}%
+  {tab:calidad-datos}%
+  {L{3.0cm} Y L{3.8cm}}%
+  {\cab{Característica} & \cab{Regla aplicada en Puelche} &
+   \cab{Dónde se verifica}}
+  Exactitud
+    & Conteo cíclico con diferencia que baja del 2,3~\% a menos del 1~\%, y
+      conciliación de saldos por centro de distribución.
+    & Módulos de inventario y preparación, en el proceso cíclico \\
+  Completitud
+    & Todo pedido y toda entrega con identificador único y estado; cero
+      pedidos perdidos o duplicados.
+    & Sincronización de terreno, con deduplicación \\
+  Consistencia
+    & Reglas de negocio únicas ---crédito, excursión y precio--- aplicadas en
+      el servidor, con bitácora de reconciliación.
+    & Capa de servicios de negocio y capa de observabilidad \\
+  Puntualidad
+    & Sincronización de turno en diez minutos o menos; analítica del día en
+      cinco minutos, cierre en dos horas y gestión en cuatro.
+    & Objetivos de nivel de servicio en la capa de observabilidad \\
+  Integridad referencial
+    & Claves foráneas y eventos canónicos, con validación en la capa
+      anticorrupción de las integraciones.
+    & Controles de integridad y pruebas de contrato \\
+  Trazabilidad
+    & Toda escritura con actor, equipo, dispositivo y marca de tiempo, y lote
+      GS1 completo (RT-05.03).
+    & Registros inmutables (RT-16.07) \\
+\end{tablalafrox}

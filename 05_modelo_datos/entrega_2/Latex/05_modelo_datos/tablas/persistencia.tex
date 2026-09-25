@@ -1,0 +1,51 @@
+%  Origen: 05_modelo_datos/entrega_2/tablas/modelo_datos.xlsx
+%  Hoja "S5.2 Motor y Paradigma de Persistencia por Dominio (CAP)".
+
+\begin{tablalafrox}{Motor, paradigma y posición CAP por clase de dato}%
+  {tab:persistencia-cap}%
+  {L{2.7cm} L{3.4cm} L{3.0cm} Y}%
+  {\cab{Clase de dato} & \cab{Motor} & \cab{Posición CAP} &
+   \cab{Justificación de negocio}}
+  Stock y crédito: reserva y validación
+    & PostgreSQL on-premise y Aurora en nube
+    & Consistencia fuerte en la ruta síncrona; sin conexión, el preventista usa
+      la caché de turno y la reserva se confirma al sincronizar
+    & El doble compromiso de stock es el riesgo principal declarado en la
+      decisión 16.1 N.\textdegree\,8. La regla se aplica en el servidor y no
+      por marca de tiempo del dispositivo. \\
+  Pedidos, entregas, prueba de entrega y cobros
+    & Aurora y PostgreSQL
+    & Disponibilidad con identificador único y deduplicación: la escritura sin
+      conexión no se pierde, se reconcilia
+    & El terreno opera hasta 14 horas sin señal (RT-03.10). Exigir consistencia
+      fuerte en terreno equivale a dejar de operar. \\
+  Trazabilidad de lote y temperatura
+    & PostgreSQL más Parquet y Redshift
+    & Disponibilidad con orden garantizado por partición y deduplicación
+    & El registro continuo es evidencia legal; el orden por lote se preserva y
+      la lectura consolidada ocurre en el servidor. \\
+  Ingesta de telemetría en bruto
+    & DynamoDB
+    & Disponibilidad con consistencia eventual y vencimiento a 30 días
+    & Escritura masiva de baja latencia que no debe saturar el transaccional
+      (RNF-11.02). \\
+  Serie de tiempo consolidada
+    & Parquet sobre S3 y Redshift Serverless
+    & Disponibilidad columnar
+    & Retención sanitaria de cinco años, compresión y consulta por rango, sin
+      incorporar un segundo motor que operar. \\
+  Configuración y parámetros
+    & PostgreSQL (\texttt{BD\_MAESTROS\_CONF})
+    & Consistencia fuerte: una única versión vigente por topología (RT-02.12)
+    & Un parámetro divergente corrompe el inventario; se versiona y se aprueba
+      por dos perfiles. \\
+  Analítica
+    & Redshift Serverless
+    & Eventual por diseño, dada la separación transaccional y analítica
+    & Los tableros leen del almacén con latencias comprometidas, nunca del
+      transaccional en vivo. \\
+  Notificaciones
+    & Colas de mensajería
+    & Disponibilidad
+    & Asíncrono por diseño: entrega diferida sin pérdida. \\
+\end{tablalafrox}

@@ -1,0 +1,24 @@
+%  Origen: 05_modelo_datos/entrega_2/tablas/modelo_datos.xlsx
+%  Hoja "Alcance y volúmenes por migrar".
+
+\begin{tablalafrox}{Alcance y volumen de la migración de datos históricos}%
+  {tab:migracion}%
+  {L{5.0cm} L{3.2cm} Y}%
+  {\cab{Dato histórico} & \cab{Volumen a migrar} &
+   \cab{Retención posterior}}
+  Maestros de clientes, productos y proveedores & Completos
+    & Vigentes, más consulta histórica \\
+  Ventas y pedidos & 3 años
+    & Consulta de solo lectura durante el contrato \\
+  Inventario y movimientos & 2 años
+    & Consulta de solo lectura durante el contrato \\
+  Trazabilidad sanitaria & 5 años
+    & Consulta de solo lectura; el piso lo fija el Reglamento Sanitario de los
+      Alimentos \\
+  Cuentas por cobrar & Saldos vivos más 2 años
+    & Consulta de solo lectura durante el contrato \\
+  Maestros de bodega del sistema de 2013: SKU, ubicaciones y saldos & Completos
+    & Migrados a la base on-premise del maestro de bodega; los históricos del
+      ERP y del sistema de almacenes quedan consultables en modo solo lectura
+      durante todo el contrato \\
+\end{tablalafrox}

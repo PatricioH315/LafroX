@@ -1,0 +1,35 @@
+%  Origen: 05_modelo_datos/entrega_2/tablas/modelo_datos.xlsx
+%  Hoja "S5.5 Separación Transaccional / Analítica".
+
+\begin{tablalafrox}{Separación transaccional y analítica: exigencia y
+  cumplimiento}%
+  {tab:separacion}%
+  {L{4.6cm} Y}%
+  {\cab{Exigencia} & \cab{Cumplimiento}}
+  RT-05.05, separación
+    & La analítica nunca lee del transaccional: el almacén analítico es la
+      única vía de acceso del módulo de inteligencia de negocio, alimentado por
+      eventos incrementales desde la capa de integración. Los procesos de flujo
+      se ejecutan fuera de la ventana crítica. \\
+  RT-05.26, modelo dimensional
+    & Hechos ---ventas, entregas, stock y costo de servir--- y dimensiones
+      ---cliente, SKU, tiempo, ruta y canal--- en esquema estrella sobre la
+      capa columnar. \\
+  RT-05.29, latencia
+    & Operación del día en cinco minutos o menos, mediante flujo de eventos
+      hacia la tabla de agregados; cierre comercial en dos horas o menos tras
+      el retorno del último camión; y gestión en cuatro horas o menos. Si el
+      capítulo 15 no fija valor, rige el tope transversal de cuatro horas. \\
+  RT-05.27, autoservicio
+    & Inteligencia de negocio de autoservicio con modelo semántico en lenguaje
+      de negocio ---OTIF, fill rate y costo por entrega---, para gerencia y
+      jefaturas, con aislamiento y auditoría de consultas. \\
+  RT-05.28, informes y exportación
+    & Informes programables diarios, semanales y mensuales, más exportación
+      asíncrona firmada con suma de verificación desde el portal, y descarga
+      regulatoria con registro del solicitante. \\
+  RT-05.29, descenso al detalle
+    & Descenso hasta la línea de pedido y el lote, lo que completa la
+      resolución de la trazabilidad sanitaria exigida para el retiro en menos
+      de dos horas. \\
+\end{tablalafrox}

@@ -1,0 +1,30 @@
+%  Origen: 05_modelo_datos/entrega_2/tablas/modelo_datos.xlsx
+%  Hoja "S5.9 Diccionario de Datos y Catálogo de Activos".
+
+\begin{tablalafrox}{Campos del diccionario de datos (RT-05.01)}%
+  {tab:diccionario}%
+  {L{5.0cm} Y}%
+  {\cab{Campo} & \cab{Contenido}}
+  Base lógica y objeto
+    & Base \texttt{BD\_*}, tabla o vista, y esquema \\
+  Definición de negocio
+    & Significado en la operación de Puelche, trazable al requerimiento
+      funcional que lo origina \\
+  Tipo, longitud, nulos y claves
+    & Perfil técnico del atributo \\
+  Linaje y origen
+    & Si el dato nace en el transaccional, en la integración o en la analítica
+      (RT-05.10) \\
+  Dueño del dato
+    & Módulo responsable, trazable a la matriz del capítulo 17.1 \\
+  Reglas
+    & Regla de negocio asociada: crédito, excursión térmica, envases o FEFO \\
+  Retención
+    & Según S\,5.6: cinco años para traza y temperatura, seis para prueba de
+      entrega y documentos tributarios, doce meses para geolocalización \\
+  Calidad
+    & Regla y umbral de calidad conforme a ISO/IEC 25012 (RT-05.04) \\
+  Sensibilidad
+    & Si constituye dato personal bajo las leyes 19.628 y 21.719, con cifrado a
+      nivel de campo cuando corresponde (RT-11.10) \\
+\end{tablalafrox}

@@ -1,0 +1,86 @@
+%  Origen: 05_modelo_datos/entrega_2/tablas/modelo_datos.xlsx
+%  Hojas "Entornos de datos" y "Bases-almacenes lógicos con nombre".
+
+\begin{tablalafrox}{Entornos de datos: contenido y tecnología}%
+  {tab:entornos-datos}%
+  {L{4.1cm} Y L{4.3cm}}%
+  {\cab{Entorno} & \cab{Contenido} & \cab{Tecnología}}
+  On-premise por sitio \newline (2 CD y 3 cross-docking)
+    & Transaccional de bodega y operación local ---recepción, inventario y
+      preparación--- y maestro de bodega, sucesor del sistema de 2013, con
+      autonomía de 24 horas.
+    & PostgreSQL con PostGIS local por sitio, con réplica de continuidad. \\
+  Nube: transaccional y réplica del maestro de bodega
+    & Preventa, reparto e inteligencia de negocio, más la réplica y
+      recuperación del maestro on-premise por captura de cambios.
+    & Amazon Aurora PostgreSQL, como réplica y transaccional de nube; no es un
+      segundo sistema de almacenes. \\
+  Ingesta de telemetría en frío
+    & Lecturas de sensores y termógrafos de cadena de frío, incluida la captura
+      a $-$22\,°C sin conexión.
+    & Amazon DynamoDB para el dato en bruto, con vencimiento a 30 días, y AWS
+      IoT Greengrass en el borde. \\
+  Serie consolidada
+    & Telemetría de camiones y series de temperatura consolidadas a cinco años.
+    & Parquet sobre S3, alimentado por AWS Glue desde el dato en bruto, y
+      consulta con Redshift Serverless. \\
+  Caché y sesiones
+    & Stock caliente, precios, sesiones de inicio único y sincronización sin
+      conexión.
+    & Redis sobre Amazon ElastiCache. La caché de turno vive en el dispositivo
+      y la sesión sin conexión, en el borde. \\
+  Documentos y adjuntos
+    & Prueba de entrega firmada, documentos tributarios, comprobantes y
+      evidencia por código QR.
+    & Amazon S3 con bloqueo de objeto, más caché local. \\
+  Analítica consolidada
+    & OTIF, costo de servir, reportes de gerencia e históricos.
+    & Amazon Redshift Serverless, alimentado desde S3 mediante Glue; nunca
+      directo contra el transaccional. \\
+\end{tablalafrox}
+
+\begin{tablalafrox}{Las quince bases lógicas del modelo (bases lógicas, no
+  servidores)}%
+  {tab:bases-logicas}%
+  {C{0.9cm} L{5.1cm} L{2.9cm} Y}%
+  {\cab{N.\textdegree} & \cab{Base} & \cab{Dominio} & \cab{Contenido}}
+   1 & \texttt{BD\_INVENTARIO} & Almacén e inventario
+     & Recepción, ubicaciones, stock por posición, asignación de ubicación,
+       conteo y lotes \\
+   2 & \texttt{BD\_PREVENTA} & Venta y pedidos
+     & Preventistas, pedidos sin conexión con identificador único, stock y
+       crédito, promociones \\
+   3 & \texttt{BD\_RUTAS} (PostGIS) & Planificación y geocercas
+     & Rutas, secuenciación, ventanas, capacidad, geometrías y geocercas \\
+   4 & \texttt{BD\_PREPARACION} & Bodega y picking
+     & Misiones de picking, escaneo GS1, faltantes y secuenciación térmica \\
+   5 & \texttt{BD\_REPARTO} & Despacho y entrega
+     & Guías, prueba de entrega, códigos QR, firmas, estados y devoluciones en
+       ruta \\
+   6 & \texttt{BD\_COBRANZA\_FINANZAS} & Cobranza y cartera
+     & Rendición, cartera de crédito, causales de descuadre, pagos y costo de
+       servir \\
+   7 & \texttt{BD\_MAESTROS\_CONF} & Maestros y configuración
+     & Catálogo de productos, clientes, bodegas, usuarios y parámetros \\
+   8 & \texttt{BD\_GOBIERNO\_ACCESO} & Seguridad e identidad
+     & Roles, permisos, sesiones, auditoría de acceso y claves de un solo uso \\
+   9 & \texttt{BD\_CALIDAD\_TRAZABILIDAD} & Calidad y trazabilidad
+     & Lotes, sensores de frío, excursiones, trazabilidad bidireccional y
+       control sanitario \\
+  10 & \texttt{BD\_TELEMETRIA} (analítica) & Flota y series de tiempo
+     & Posición y velocidad, eventos de ruta y series de temperatura \\
+  11 & \texttt{BD\_EDI\_CANALMODERNO} & Canal moderno
+     & Pedidos electrónicos, excepciones, avisos de despacho, acuses e
+       integración con cadenas \\
+  12 & \texttt{BD\_BI\_GERENCIA} & Analítica y reportes
+     & OTIF, costo de servir, ocupación de flota, segmentación y tableros \\
+  13 & \texttt{BD\_MAILS\_NOTIF} & Notificaciones
+     & Colas de aviso por mensajería, correo y notificación push, con bitácora
+       de envío \\
+  14 & \texttt{REDIS\_SESIONES\_CACHE} & Caché y sesiones
+     & Stock caliente, precios, sesiones de inicio único y sincronización sin
+       conexión \\
+  15 & \texttt{S3\_DOCS} & Documentos y adjuntos
+     & Prueba de entrega firmada, documentos tributarios, comprobantes y
+       evidencia por código QR \\
+\end{tablalafrox}

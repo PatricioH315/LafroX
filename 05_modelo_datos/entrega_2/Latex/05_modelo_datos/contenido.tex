@@ -1,0 +1,549 @@
+%% ============================================================================
+%%  05_modelo_datos/contenido.tex
+%%
+%%  Subdocumento 5 del Formulario T-7 — Modelo y gestión de datos.
+%%
+%%  Estructura:
+%%    5.1  Modelo — Dominios de información y modelo de datos por dominio.
+%%    5.2  Gestión de datos — Motor, paradigma, separación OLTP/OLAP, calidad.
+%%    5.3  Estrategia de migración — Saneamiento, validación y conciliación.
+%%    5.4  Estrategia de desempeño — Indexación, particionamiento, caché.
+%%
+%%  Las secciones complementarias (trazabilidad, GS1/EDI, diccionario y
+%%  evidencia de entrega) se conservan en el orden original como 5.5 a 5.8.
+%%
+%%  Tablas: 05_modelo_datos/tablas/*.tex (fragmentos traídos con \parte{}).
+%% ============================================================================
+
+%  El número de capítulo se ancla al número de subdocumento del T-7.
+\setcounter{chapter}{4}
+\chapter{Modelo y gestión de datos}
+\label{cap:datos}
+
+% ── Texto de introducción ────────────────────────────────────────────────────
+
+Este capítulo, define cómo se organiza, almacena, migra y optimiza la
+información que la operación de Puelche produce, consume y conserva.  Su
+alcance cubre desde la volumetría de partida ---14.200 clientes, 31.000
+pedidos mensuales con 260.000 líneas y 2,4 millones de unidades, 1.400
+entregas diarias con un pico de septiembre cercano a 2.600--- hasta la
+política de eliminación segura al término del contrato.
+
+La arquitectura de datos se describe conforme a ISO/IEC/IEEE 42010, en
+coherencia con la arquitectura lógica y con la arquitectura física del
+Subdocumento~4, y responde a los requisitos del capítulo 15 del caso y a las
+Bases Técnicas Transversales.
+
+\begin{description}
+\item[Sección 5.1 Modelo.] Presenta los dominios de información, los entornos de
+  datos y las quince bases lógicas que sostienen la operación, con su relación
+  con los doce módulos funcionales de la arquitectura lógica.
+
+\item[Sección 5.2 Gestión de datos.] Justifica la selección de motor y paradigma de
+  persistencia por dominio, conforme al teorema CAP, declara la separación
+  entre almacenamiento transaccional y analítico (RT-05.05), y establece las
+  políticas de calidad, retención, archivado y eliminación segura.
+
+\item[Sección 5.3 Estrategia de migración.] Desarrolla la migración, saneamiento,
+  validación y conciliación de los datos históricos procedentes del ERP de 2017,
+  el sistema de almacenes de 2013 y las planillas, con volúmenes y ventanas de
+  corte compatibles con el cronograma del Artículo 17.
+
+\item[Sección 5.4 Estrategia de desempeño.] Fundamenta la indexación,
+  particionamiento, caché y optimización de consultas en la volumetría del
+  caso, con foco en la ventana crítica de despacho de 05:30 a 07:00.
+\end{description}
+
+El diccionario de datos detallado ---con nombre, tipo, dominio de valores,
+obligatoriedad, dueño y sensibilidad por atributo--- se entrega como anexo
+(RT-05.01).  Las secciones complementarias de trazabilidad sanitaria
+(sección 5.5), estándares GS1 e intercambio electrónico (sección 5.6), diccionario y
+catálogo (sección 5.7), y evidencia de entrega digital (sección 5.8) completan el
+capítulo.
+
+\nota{La política de retención se declara contra RT-16.10. El capítulo 15 del
+caso la rotula RT-05.10, que en las Bases Técnicas Transversales corresponde a
+catálogo de datos y linaje y es deseable, no obligatorio. El desajuste se
+responde en el Formulario T-12 contra el código correcto y se eleva como
+consulta conforme al Artículo 43.3. Ver sección 5.2.3.}
+
+
+% ============================================================================
+%  5.1  MODELO — DOMINIOS DE INFORMACIÓN
+% ============================================================================
+\section{Modelo: dominios de información y modelo de datos por dominio}
+\label{sec:modelo-dominios}
+
+El dominio de información cubre la totalidad de los datos que produce la
+operación: preventa y pedidos, inventario y bodega en dos centros de
+distribución y tres plataformas de cross-docking, preparación, reparto y
+entregas, cobranza y cartera, trazabilidad sanitaria y cadena de frío,
+telemetría de flota, canal moderno, documentos tributarios, analítica de
+gestión y datos maestros.
+
+La volumetría de referencia proviene de la Tabla 14.1 y del capítulo 15 del
+caso: 14.200 clientes; 31.000 pedidos al mes, con 260.000 líneas y 2,4
+millones de unidades; 180 proveedores; unos 34.000 documentos tributarios
+mensuales; 9.500 SKU proyectados a tres años; telemetría de 28 sensores y 18
+termógrafos; y del orden de 1.400 entregas diarias, con un peak de septiembre
+cercano a 2.600.
+
+
+% ── 5.1.1  Entornos de datos ─────────────────────────────────────────────────
+\subsection{Entornos de datos}
+\label{sec:entornos-datos}
+
+\parte{tablas/entornos}
+
+La topología es multisitio por parametrización (RF-02.02, RT-02.12): cada
+centro informa su stock al consolidado y un sitio nuevo se incorpora
+replicando la plantilla del clúster, sin rediseñar el modelo de datos.  El
+emplazamiento híbrido ---on-premise para bodega y nube para preventa, reparto
+y analítica--- se describe en la arquitectura física del Subdocumento~4; la
+separación de roles lógicos por sitio se detalla en la Capa~6 de la
+arquitectura lógica.
+
+% ── 5.1.2  Modelo de datos conceptual por dominio ────────────────────────────
+\subsection{Modelo de datos conceptual por dominio}
+\label{sec:modelo-conceptual}
+
+El modelo de datos se fundamenta en las entidades de negocio canónicas
+definidas en la arquitectura lógica, organizadas en quince bases lógicas.
+Las entidades principales y sus eventos se resumen a continuación; el
+diccionario completo por atributo se entrega como anexo (RT-05.01).
+
+\begin{description}
+\item[Cliente.] RUT, razón social, canal (tradicional, food service, cadenas),
+  crédito, georreferencia y estado de bloqueo.  Eventos: creación,
+  actualización y cambio de bloqueo.
+
+\item[Pedido.] Identificador UUID, preventista, cliente, líneas de detalle
+  (SKU, cantidad, precio) y ciclo de vida (tomado $\to$ confirmado $\to$
+  preparado $\to$ despachado $\to$ entregado $\to$ rendido).  Eventos: toma,
+  confirmación, asignación de línea, despacho y evidencia de entrega.
+
+\item[SKU / Producto.] Codificación GTIN/GS1, unidad, clasificación de
+  temperatura, rangos térmicos (RF-09.01) y vida útil.
+
+\item[Lote.] Unidad de trazabilidad sanitaria, vinculada al lote del
+  proveedor (GS1: GTIN + lote + vencimiento) y enlazada a la unidad logística
+  SSCC en cada movimiento interno.  Eventos: recepción, bloqueo, inicio de
+  retiro sanitario y enlace con unidad logística.
+
+\item[Misión de preparación.] HHT, oleada, ubicación, unidades y ciclo de vida
+  (descargada $\to$ ejecutada $\to$ cerrada).
+
+\item[Ruta / viaje.] Planificador, vehículo, conductor, ventanas, secuencia de
+  entregas y geocercas.
+
+\item[Entrega.] Pedido, viaje, prueba de entrega (POD: firma, QR, fotografía),
+  documentos DTE y efectivo.  Eventos: evidencia, reintento y aprobación de
+  rendición.
+
+\item[Documento tributario.] Factura, boleta, guía de despacho, folio del SII
+  y acuse.
+
+\item[Envase retornable.] Canastillo o pallet, cliente, saldo y pérdida
+  estimada del 14\,\% anual (decisión 16.1 N.\textdegree\,10).  Control por
+  cuenta corriente por cliente, no por unidad identificada.
+
+\item[Sensor / registro térmico.] Dispositivo, lote o posición, temperatura y
+  excursión térmica.
+\end{description}
+
+Los eventos usan verbos en pasado, son inmutables y constituyen la base de los
+esquemas AsyncAPI 2.6 de la capa de integración.  Toda escritura sin conexión
+es idempotente por UUID (RT-02.06).
+
+El almacenamiento se distribuye en quince dominios lógicos, cada uno con un
+propietario funcional trazable a los módulos M1--M12 de la arquitectura
+lógica.  Esta separación incluye bases transaccionales, almacenes analíticos,
+caché y objetos; no representa quince servidores físicos ni quince motores de
+base de datos independientes.
+
+
+% ============================================================================
+%  5.2  GESTIÓN DE DATOS
+% ============================================================================
+\section{Gestión de datos}
+\label{sec:gestion-datos}
+
+% ── 5.2.1  Motor y paradigma de persistencia por dominio ─────────────────────
+\subsection{Motor y paradigma de persistencia por dominio}
+\label{sec:motor-paradigma}
+
+La justificación de paradigma y motor responde a RT-05.02.  El punto de
+partida es que la operación impone cuatro exigencias incompatibles entre sí,
+cada una con una posición distinta en el triángulo del teorema CAP:
+
+\begin{enumerate}
+\item \textbf{Transaccional de bodega y preventa} (stock, crédito, reservas):
+  exige consistencia fuerte y reconciliación determinista después de un corte.
+  Posición CAP: \emph{CP} ---consistencia y tolerancia a partición--- con
+  disponibilidad local garantizada por autonomía de 24 horas.
+
+\item \textbf{Ingesta de sensores y termógrafos} de cadena de frío: escritura
+  masiva de baja latencia sobre datos volátiles que no deben saturar el motor
+  transaccional (RNF-11.02).  Posición CAP: \emph{AP} ---disponibilidad y
+  tolerancia a partición, con consistencia eventual.
+
+\item \textbf{Serie de tiempo consolidada} de temperatura y telemetría:
+  analítica columnar con retención de cinco años y consulta por rango.
+  Posición CAP: \emph{AP} columnar.
+
+\item \textbf{Evidencia documental} ---prueba de entrega y documentos
+  tributarios---: inmutabilidad legal durante seis años, con bloqueo de objeto
+  en modo cumplimiento (RT-16.07).  Posición: \emph{CP} con disponibilidad
+  provista por replicación de objetos.
+\end{enumerate}
+
+Ningún motor único cubre las cuatro posiciones del teorema CAP sin sacrificar
+desempeño (RT-05.02).  Por eso la decisión de arquitectura ADR-04 establece
+persistencia políglota por dominio, declarando motor y posición CAP para cada
+clase de dato.  La decisión general es disponibilidad con consistencia eventual
+reconciliada, y consistencia fuerte únicamente donde el negocio la exige.
+
+\parte{tablas/persistencia}
+
+La elección de motor por dominio corresponde a la decisión 16.1
+N.\textdegree\,18.  El volumen total es manejable en PostgreSQL con índices y
+PostGIS para georreferencia; el motor clave-valor absorbe el pico de ingesta
+IoT; y la serie consolidada vive en la capa analítica, sin añadir un motor de
+series dedicado.  Se descartó InfluxDB precisamente por eso: sería un segundo
+motor que operar con un equipo de TI de cuatro personas.  Las alternativas
+evaluadas y su fundamento constan en ADR-04.
+
+El modelo materializa además el despliegue híbrido del Artículo
+16\textsuperscript{o}.  El maestro de bodega vive on-premise, con PostgreSQL y
+PostGIS por sitio y autonomía de 24 horas sin enlace (RT-03.10), y se replica
+por captura de cambios sobre el registro de escritura anticipada hacia la
+instancia de nube, que concentra el transaccional de preventa, reparto, canal
+moderno e inteligencia de negocio.  El terreno opera sin red de primera clase:
+las aplicaciones mantienen una fotografía local de los datos de lectura
+---stock, precios, crédito y rutas--- y un búfer de escrituras idempotente que
+se concilia al reconectar (RT-03.12), sin perder ni duplicar pedidos.  El
+detalle del dimensionamiento de la infraestructura de cada motor se documenta
+en la arquitectura física del Subdocumento~4.
+
+
+% ── 5.2.2  Separación transaccional y analítica ─────────────────────────────
+\subsection{Separación entre almacenamiento transaccional y analítico}
+\label{sec:separacion-oltp-olap}
+
+RT-05.05 es obligatorio: el almacenamiento transaccional y el analítico están
+separados por diseño, y ninguna consulta analítica puede degradar la operación.
+
+\parte{tablas/separacion}
+
+El flujo de datos hacia la capa analítica es unidireccional: los eventos
+incrementales de la capa de integración alimentan el almacén analítico
+(Redshift Serverless sobre S3 Parquet, procesado con AWS Glue), y los procesos
+de flujo pesado se ejecutan fuera de la ventana crítica de 05:30 a 07:00.
+Los tableros del módulo de inteligencia de negocio (M10) consultan
+exclusivamente la capa analítica, nunca el transaccional en vivo.
+
+El modelo dimensional se estructura en hechos ---ventas, entregas, stock y
+costo de servir--- y dimensiones ---cliente, SKU, tiempo, ruta y canal--- en
+esquema estrella sobre la capa columnar, con descenso hasta la línea de pedido
+y el lote para la trazabilidad sanitaria completa (RT-05.29).
+
+Las latencias comprometidas ---operación del día en cinco minutos o menos,
+cierre comercial en dos horas y gestión en cuatro--- se verifican como
+objetivos de nivel de servicio en la capa de observabilidad y se prueban con
+carga de ventana durante la marcha blanca.
+
+
+% ── 5.2.3  Calidad, retención, archivado y eliminación ──────────────────────
+\subsection{Calidad de datos, retención, archivado y eliminación segura}
+\label{sec:calidad-retencion}
+
+\subsubsection{Calidad de datos}
+
+\parte{tablas/calidad}
+
+Las reglas de calidad se declaran en el diccionario (RT-05.01) y se monitorean
+con controles automáticos de duplicados, saltos de secuencia y totales de
+conciliación, conforme al marco ISO/IEC 25012.  El incumplimiento genera una
+tarea en el flujo de excepciones y el tablero de calidad queda disponible para
+el CLIENTE (RT-05.04).
+
+\subsubsection{Retención, archivado y eliminación}
+
+\parte{tablas/retencion}
+
+La eliminación segura (RT-05.07) sigue un procedimiento verificable al
+vencimiento del plazo, con registro inalterable (RT-16.07), borrado seguro de
+los medios que salen de servicio y disposición final a través de un gestor
+autorizado.
+
+La exportabilidad (RT-05.06) garantiza que la totalidad de la información del
+CLIENTE se exporte en formatos abiertos y documentados ---CSV, JSON y Parquet
+con su diccionario---, en cualquier momento del contrato, sin costo y sin
+intervención del proponente.  Al término del contrato, el Artículo
+85\textsuperscript{o} y RT-05.08 obligan a entregar copia íntegra en formato
+interoperable con diccionario y a eliminar de forma certificada los datos del
+mandante, con el directorio de tratamiento actualizado y auditoría.
+
+
+% ============================================================================
+%  5.3  ESTRATEGIA DE MIGRACIÓN
+% ============================================================================
+\section{Estrategia de migración}
+\label{sec:migracion}
+
+La migración cubre los datos históricos de tres fuentes legadas: el ERP de
+2017, el sistema de almacenes de 2013 y las planillas de operación.  Los
+volúmenes y la retención posterior se resumen en la tabla siguiente.
+
+\parte{tablas/migracion}
+
+\subsection{Metodología de migración}
+\label{sec:migracion-metodologia}
+
+\begin{description}
+
+\item[Perfilado y saneamiento previo (RT-05.12).] Etapa de perfilado sobre los
+datos de origen con informe de defectos y decisión sobre cada uno: corregir,
+aceptar con registro o excluir.  Los casos esperados están declarados: clientes
+duplicados por RUT, campos de lote en texto libre o vacíos ---el retiro de
+marzo mostró un 41~\% de recepciones sin lote---, equivalencias de maestro
+entre cadenas y saldos de envases sin control previo.
+
+\item[Reglas de transformación y carga verificada.] Los datos maestros se
+cargan con validación en el punto de captura y conciliación por recuentos.  La
+carga transaccional inicial se hace por olas y por sitio, con estrategia azul y
+verde y plan de reversión.
+
+\item[Dos ensayos completos sobre preproducción (RT-05.13).] Con medición del
+tiempo total y del resultado de la conciliación: un ensayo y un reensayo tras
+la corrección.
+
+\item[Conciliación cuantitativa (RT-05.14).] Recuentos, sumas de control y
+muestreo dirigido.  Toda diferencia queda explicada y registrada en la bitácora
+de reconciliación.  La reposición del conteo cíclico apuntala la exactitud del
+stock migrado, con meta de bajar la diferencia del 2,3~\% actual a menos del
+1~\%.
+
+\item[Históricos no migrados (RT-05.15).] Quedan accesibles en un repositorio
+de consulta de solo lectura durante el período de retención, sin depender del
+sistema legado, y exportables bajo el régimen del Artículo 85\textsuperscript{o}
+en formato interoperable con su diccionario.
+
+\item[Coexistencia con el sistema de almacenes de 2013.] El legado queda detrás
+de la misma capa anticorrupción (ADR-11, A-04), con una tabla de capacidad
+absorbida ---recepción GS1, asignación de ubicación, misiones con terminal
+portátil y conteo cíclico--- que se vacía ola a ola por sitio, con plan de
+reversión y retiro al cierre de la Etapa 1.
+
+\end{description}
+
+\subsection{Ventanas de corte y compatibilidad con el cronograma}
+\label{sec:migracion-ventanas}
+
+La migración se ejecuta conforme a las etapas del Artículo 17: la Etapa~1
+comprende los meses 1--15, con producción en el mes 16; la Etapa~2, los
+meses 13--20, con producción en el mes 21.  Las cargas masivas se programan
+fuera de la ventana crítica de 05:30 a 07:00, con estrategia azul-verde por
+sitio que permite la reversión sin pérdida de operación.  Los dos ensayos de
+preproducción deben completarse antes del corte y su resultado ---tiempo total
+y tasa de conciliación--- se documenta como criterio de aceptación del paso a
+producción.
+
+La coexistencia con los legados durante la transición se gobierna por la capa
+anticorrupción, que traduce los contratos de la solución al formato del
+legado sin reemplazarlo ni modificar su código.  La tabla de capacidad
+absorbida se vacía ola a ola por sitio, de modo que el riesgo de la migración
+se acota a un dominio funcional y a una instalación a la vez.
+
+
+% ============================================================================
+%  5.4  ESTRATEGIA DE DESEMPEÑO
+% ============================================================================
+\section{Estrategia de desempeño}
+\label{sec:desempeno}
+
+La estrategia de desempeño se fundamenta en la volumetría del caso: 31.000
+pedidos mensuales, 260.000 líneas, 2,4 millones de unidades, 1.400 entregas
+diarias ---con un peak de septiembre de 2.600--- y un dimensionamiento del
+orden de 105 transacciones por segundo de base, con margen de crecimiento a
+tres años (RT-09.03).  El diseño se dimensiona contra el pico de septiembre en
+la ventana de 05:30 a 07:00, nunca contra el promedio.
+
+\subsection{Indexación}
+\label{sec:indexacion}
+
+Las tablas transaccionales llevan claves foráneas completas.  Existen índices
+por lote GS1 ---identificador de producto, lote y vencimiento---, por unidad
+logística y por identificador de despacho: es la estructura que sostiene el
+retiro sanitario en menos de dos horas.  Las geometrías, rutas y geocercas
+usan índices espaciales GiST.  La trazabilidad hacia adelante y hacia atrás se
+apoya en índices compuestos sobre la base de calidad y trazabilidad.
+
+Las réplicas de solo lectura atienden las consultas de negocio sin competir con
+la escritura del maestro (RT-09.05).  En la capa analítica, la distribución se
+hace por clave de negocio ---ruta o lote--- con compresión columnar sobre los
+hechos de ventas, entregas, stock y costo de servir, y sus dimensiones de
+cliente, SKU, tiempo, ruta y canal.
+
+\subsection{Particionamiento}
+\label{sec:particionamiento}
+
+Las transacciones de bodega ---recepción, misiones y despacho--- se particionan
+por mes en el PostgreSQL on-premise.  Es el primer remedio declarado ante el
+cuello de botella de escritura de la ventana 05:30--07:00, dentro de una
+progresión explícita: escala vertical, luego particionado con agrupador de
+conexiones, luego réplica de lectura y finalmente un cuarto nodo o
+fragmentación.
+
+La mensajería garantiza orden por partición, con clave de agrupación por sitio
+o entidad, lo que permite reconciliar entre sitios y ordenar los eventos de
+trazabilidad (RT-02.07).  La sincronización de terreno usa partición y
+reanudación por bloques para cumplir los diez minutos de turno y las dos horas
+del centro de distribución tras reconectar.
+
+La telemetría en bruto se retiene 30 días por vencimiento automático de
+partición; la serie consolidada se particiona por mes en almacenamiento
+columnar, con cinco años de retención.  El concentrador de intercambio
+electrónico particiona por cadena, mediante perfiles de configuración y no
+mediante desarrollo.
+
+\subsection{Caché}
+\label{sec:cache}
+
+La caché en memoria (Redis sobre Amazon ElastiCache) mantiene stock caliente,
+precios y sesiones de inicio único para sostener la consulta de stock y crédito
+bajo dos segundos en preventa (RT-09.01), con patrón de lectura diferida y
+regeneración transparente en menos de quince minutos ante una pérdida.
+
+En el dispositivo, la caché de turno se precarga al inicio ---saldo, stock y
+tarifa, RT-17.03--- y sostiene el turno completo sin señal dentro de un consumo
+objetivo de entre 8 y 12 MB.  La identidad se cachea localmente con vigencia de
+8 horas en bodega y 14 horas en reparto, para que la autenticación no dependa
+de la red.  Los tableros se cachean en las consolas locales de contingencia
+(RT-03.13).
+
+\subsection{Optimización operacional}
+\label{sec:optimizacion}
+
+El agrupador de conexiones (PgBouncer) y la pregeneración nocturna de
+documentos de despacho y de validaciones por lote de crédito y stock descargan
+la ventana crítica.  Los umbrales de RT-09.01 se verifican bajo carga de
+ventana durante la marcha blanca: confirmación de línea de picking en un
+segundo o menos, registro de entrega en dos segundos, línea de preventa en
+1,5 segundos y consulta de stock o crédito en dos segundos, todos en percentil
+95, frente al dimensionamiento declarado.
+
+La progresión de escalado está documentada: escala vertical del nodo PostgreSQL,
+luego particionado con agrupador de conexiones, luego réplica de lectura y
+finalmente fragmentación.  Cada escalón tiene un umbral de activación medido
+en la capa de observabilidad, de modo que el equipo TI de cuatro personas
+dispone de un camino predecible para absorber el crecimiento.
+
+
+% ============================================================================
+%  SECCIONES COMPLEMENTARIAS (5.5 – 5.8)
+% ============================================================================
+
+\section{Trazabilidad sanitaria y retiro en menos de dos horas}
+\label{sec:trazabilidad}
+
+\subsection{Unidad de trazabilidad}
+
+La identidad primaria de la trazabilidad es el lote del proveedor en estándar
+GS1: identificador de producto, número de lote y fecha de vencimiento, con los
+rangos térmicos asociados.  La unidad logística se enlaza al lote en cada
+movimiento interno ---recepción, ubicación, picking y unidad de despacho---.
+
+Se descartaron la caja y el pallet como identidad primaria por dos razones.  La
+primera es de volumen: 9.500 SKU y 2,4 millones de unidades al mes.  La segunda
+es de diagnóstico: el 41~\% de las recepciones del producto retirado no tenía
+lote, de modo que el problema es la captura y no el nivel de agregación.  Por
+eso la recepción exige la lectura del lote del proveedor, el 100~\% de las
+recepciones de productos que lo requieren registra el lote, y la etiqueta de
+unidad logística se imprime al armar el pallet.
+
+\subsection{Modelo de eventos}
+
+La trazabilidad se registra evento a evento conforme a GS1 EPCIS (RT-05.23).
+Cada movimiento ---recibido, ubicado, preparado, despachado, entregado---
+genera un evento idempotente con actor, equipo o dispositivo, marca de tiempo y
+valores anteriores y posteriores (RT-05.03), conservado como registro inmutable
+(RT-16.07).
+
+La bidireccionalidad es completa.  Hacia adelante, desde un lote del proveedor
+se responde con evidencia, y no con estimación, a qué clientes llegó, en qué
+fecha, en qué cantidad y con qué documento tributario.  Hacia atrás, desde una
+unidad en el local del cliente se llega a la recepción que la originó.  La
+analítica permite descender hasta la línea de pedido y el lote (RT-05.29).
+
+El retiro sanitario en menos de dos horas ---frente a los nueve días con
+resultado estimado de la situación actual--- se resuelve recorriendo la base de
+calidad y trazabilidad con índices por lote y unidad logística sobre la fuente
+de verdad consolidada, con objetivo de nivel de servicio comprometido y
+evidencia exportable ante la autoridad.  A ello se suma el registro continuo de
+temperatura en cámaras y vehículos, con detección de excursión en el borde y
+regla escrita de bloqueo.
+
+\subsection{Gobernanza}
+
+Los eventos se publican por la capa de integración, con orden por partición y
+deduplicación, y alimentan la lectura consolidada en el servidor.  La bitácora
+de auditoría registra toda operación con quién, qué, cuándo, con qué
+dispositivo y con qué valores previos y posteriores, lo que sostiene tanto la
+trazabilidad del dato de negocio como la del lote.  La matriz de trazabilidad
+del capítulo 17.1 conserva la relación entre origen, requerimiento, componente
+y prueba de cada dato.
+
+\section{Estándares GS1, intercambio electrónico y formato tributario}
+\label{sec:estandares}
+
+\parte{tablas/estandares}
+
+La integración sigue el principio de asíncrono por defecto y síncrono por
+excepción.  Lo síncrono se restringe a los actos que lo exigen ---emisión
+tributaria, autorización de pago y lecturas críticas de stock o crédito---,
+siempre con tiempo de espera explícito; todo lo demás circula por colas con
+cola de mensajes fallidos y reintentos.  Los perfiles y contratos por
+contraparte se versionan y se prueban contra el banco de pruebas de cada una.
+
+\section{Diccionario de datos y catálogo de activos}
+\label{sec:diccionario}
+
+RT-05.01 es obligatorio: el diccionario se documenta por base lógica con
+formato estándar.
+
+\parte{tablas/diccionario}
+
+El diccionario se publica en el catálogo de datos con versionado, alimenta la
+matriz de trazabilidad del capítulo 17.1, habilita el linaje sobre la capa
+analítica y acompaña la copia íntegra interoperable que exige el Artículo
+85\textsuperscript{o} al término del contrato.  El detalle de cada atributo
+---nombre, tipo, dominio de valores, obligatoriedad, propietario y
+sensibilidad--- queda cerrado en el entregable formal del diccionario, previo a
+producción.
+
+\section{Evidencia de entrega digital y acuse de recibo}
+\label{sec:evidencia}
+
+Esta sección responde al criterio 8 del capítulo 18 ---prueba de entrega
+digital disponible el mismo día, frente a los doce días que hoy toma resolver
+un reclamo con guía de papel---, a RT-16.14 ---el receptor habitual es una
+persona natural sin firma electrónica avanzada--- y a la decisión de diseño
+16.1 N.\textdegree\,15, que pregunta cómo se prueba la entrega cuando quien
+recibe no es el titular, no sabe firmar en pantalla o se niega a hacerlo.
+
+\parte{tablas/evidencia}
+
+La evidencia capturada ---firma, fotografías y código QR--- se conserva con
+bloqueo de objeto y retención de seis años, de forma inmutable (RT-16.07), y se
+articula con la guía de despacho electrónica y su acuse de recibo.  El acuse de
+recibo de las mercaderías es el documento que da mérito ejecutivo a la factura,
+de modo que la solución no puede comprometer sus efectos legales.
+
+La firma se aplica conforme a la Ley 19.799 y a RT-16.17 y RT-16.18, con
+verificación de validez del certificado al momento de firmar, sello de tiempo y
+evidencia verificable después del vencimiento.  La evidencia local se captura
+sin conexión, el documento se timbra al sincronizar con folio reservado por
+dispositivo (RT-03.12) y el acuse se envía al cliente el mismo día, con
+confirmación por al menos tres canales (RT-16.08).  En el canal moderno el acuse
+es digital, dentro de la ventana acordada.

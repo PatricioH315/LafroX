@@ -1,0 +1,34 @@
+%  Origen: 05_modelo_datos/entrega_2/tablas/modelo_datos.xlsx
+%  Hoja "S5.8 Estándares GS1, EDI y Formato de la Autoridad Tributaria".
+
+\begin{tablalafrox}{Estándares sectoriales y su uso concreto en la solución}%
+  {tab:estandares-gs1}%
+  {L{4.3cm} Y}%
+  {\cab{Estándar o formato} & \cab{Uso en la solución}}
+  GS1, identificación
+    & Identificador de producto para el catálogo único con sus rangos
+      térmicos; identificador de unidad logística en la etiqueta impresa en
+      andén; e identificador de ubicación para las seis instalaciones de la red
+      y los puntos de entrega del canal moderno. \\
+  GS1, simbologías
+    & Códigos de barras de una y dos dimensiones bajo GS1 DataBar y GS1-128,
+      leídos con terminales y escáneres industriales, con resolución
+      garantizada a lo largo de toda la cadena. \\
+  GS1, trazabilidad de eventos
+    & EPCIS para los eventos de trazabilidad hacia adelante y hacia atrás,
+      intercambiados a través del concentrador de intercambio electrónico. \\
+  Intercambio electrónico con cadenas
+    & EANCOM D.01B o GS1 XML para pedido, aviso de despacho, factura y acuse,
+      a través de un concentrador centralizado con modelo canónico y capa
+      anticorrupción (ADR-11). Una cadena nueva se incorpora configurando su
+      perfil y sus equivalencias de código, no desarrollando. La ventana
+      comprometida es de 30 minutos, el aviso de despacho viaja antes del
+      despacho y las excepciones se operan desde una bandeja dedicada. \\
+  Formato de la autoridad tributaria
+    & Documentos tributarios, guía de despacho electrónica y acuse de recibo en
+      el formato y con la firma que la autoridad exige, conforme a la Ley
+      19.799, con sello de tiempo y evidencia verificable aun vencido el
+      certificado (RT-16.18). Sin conexión, el timbre se difiere con folio
+      reservado por dispositivo: la entrega no se detiene y no se emite guía de
+      papel. \\
+\end{tablalafrox}
