@@ -138,6 +138,7 @@ La Tabla~\ref{tab:t11-software} detalla el software que opera sobre el equipamie
   {\cab{Componente} & \cab{Producto ofertado} & \cab{Ubicación} & \cab{Cant.} & \cab{Justificación}}
   Aplicación & Monolito modular en Django y Python con workers Celery, en una imagen única con modo wms\_only & Nube, VM-01, VM-C01 y E-01 & 1 imagen & Una sola base de código para nube y sitios, con paridad de versiones (ADR-01). \\
   Aplicación de terreno & Aplicación nativa Android en Kotlin, con SQLite y Zebra DataWedge & EC55, TC58e y MC9400 & 1 artefacto para 3 perfiles & Controla los periféricos industriales y opera un turno completo sin señal (ADR-07). \\
+  Portales web & Angular con TypeScript y Tailwind CSS, código abierto & S3 y CloudFront, por ambiente & 1 aplicación para 3 portales & Publica los portales de clientes, transportistas y proveedores con la identidad OIDC de Keycloak y reutiliza componentes y contratos TypeScript. \\
   Base de datos & PostgreSQL 16 con PostGIS, código abierto & VM-02, VM-C02 y los tres E-01 & 5 instancias & Registro de la bodega durante los cortes, replicado a Aurora por DMS. \\
   Broker & RabbitMQ, código abierto & VM-03, VM-C04 y los tres E-01 & 5 instancias & Buffer de 24 h por sitio con vuelco ordenado a SQS FIFO (ADR-05). \\
   Identidad & Keycloak, código abierto, con verificador local de relevo de turno & Fargate, VM-05, VM-C03 y los tres E-01 & 1 maestro, 5 cachés y 5 verificadores & Autoridad única en nube con cachés de solo lectura; el verificador local valida el manifiesto de turno firmado y el segundo factor local, el PIN personal, en los relevos sin enlace (ADR-06). \\
@@ -145,4 +146,5 @@ La Tabla~\ref{tab:t11-software} detalla el software que opera sobre el equipamie
   Contenedores de borde & Docker y Docker Compose, código abierto & Los tres cross-docking & 3 sitios & Instalación y parcheo sin dependencia de la red. \\
   Observabilidad de sitio & AWS Distro for OpenTelemetry y agente SSM & VM-06, VM-C04 y los tres E-01 & 5 colectores & Buffer de 24 h y envío a CloudWatch al reconectar (ADR-14). \\
   Configuración & Ansible y Terraform con CDK, código abierto & Repositorio del CLIENTE & 1 repositorio & Infraestructura y configuración declaradas como código versionado. \\
+  Integración y entrega continuas & GitLab CI como orquestador y AWS CodeBuild para la construcción & Pipeline del repositorio del CLIENTE; construcción en sa-east-1 & 1 pipeline & Compila, prueba y escanea con bloqueo automático (RT-04.05) y construye cada imagen de forma hermética, con procedencia SLSA nivel 3. \\
 \end{tablalafrox}

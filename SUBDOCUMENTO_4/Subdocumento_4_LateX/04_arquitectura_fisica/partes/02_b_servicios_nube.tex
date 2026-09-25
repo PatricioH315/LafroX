@@ -36,7 +36,7 @@ La Tabla~\ref{tab:servicios-nube} agrupa los servicios contratados por la funci�
 \end{tablalafrox}
 \fuente{elaboración propia a partir del catálogo de componentes y de los registros de decisión ADR-01 a ADR-15.}
 
-La tabla deja ver que la solución no opera servidores en la nube: todo el cómputo corre en contenedores administrados o en funciones, y todos los datos viven en motores administrados. Las únicas piezas de software que el adjudicatario mantiene sobre esa plataforma son la aplicación Django y el IdP Keycloak, ambos desplegados como contenedores que se promueven por el pipeline. Los servicios de detección, cumplimiento y gobierno se concentran en la región primaria porque vigilan la operación productiva, mientras que los datos operacionales y el respaldo tienen presencia en las dos regiones porque son lo que la recuperación ante desastres debe restituir.
+La tabla deja ver que la solución no opera servidores en la nube: todo el cómputo corre en contenedores administrados o en funciones, y todos los datos viven en motores administrados. Las únicas piezas de software que el adjudicatario mantiene sobre esa plataforma son la aplicación Django y el IdP Keycloak, ambos desplegados como contenedores, y los portales en Angular, publicados como contenido estático en S3 y CloudFront; los tres se promueven por el pipeline. Los servicios de detección, cumplimiento y gobierno se concentran en la región primaria porque vigilan la operación productiva, mientras que los datos operacionales y el respaldo tienen presencia en las dos regiones porque son lo que la recuperación ante desastres debe restituir.
 
 \subsection{Región secundaria y residencia de los datos}
 

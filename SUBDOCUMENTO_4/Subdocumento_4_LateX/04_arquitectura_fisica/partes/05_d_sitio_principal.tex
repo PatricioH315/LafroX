@@ -57,7 +57,7 @@ Los servicios contratados en la plataforma de nube se agrupan por la función qu
   \item Servicios de terceros en nube: Android Enterprise, Zebra DNA y consola del EDR.
 \end{itemize}
 
-La solución no opera servidores en la nube ya que el cómputo corre en contenedores administrados y todos los datos viven en motores administrados. Las únicas piezas de software que el adjudicatario mantiene sobre la plataforma son la aplicación Django y el IdP Keycloak. El Registro de Decisiones de la Arquitectura descarta de forma expresa los servicios que nunca aparecen en la arquitectura (como ejemplo no se contrata EKS ni MSK, no se contratan servicios de observabilidad fuera de CloudWatch) y fija la gestión de secretos con AWS Secrets Manager y SSM Parameter Store.
+La solución no opera servidores en la nube ya que el cómputo corre en contenedores administrados y todos los datos viven en motores administrados. Las únicas piezas de software que el adjudicatario mantiene sobre la plataforma son la aplicación Django, los portales en Angular y el IdP Keycloak. El Registro de Decisiones de la Arquitectura descarta de forma expresa los servicios que nunca aparecen en la arquitectura (como ejemplo no se contrata EKS ni MSK, no se contratan servicios de observabilidad fuera de CloudWatch) y fija la gestión de secretos con AWS Secrets Manager y SSM Parameter Store.
 
 \subsection{Sitio on-premise: CD Talca (sala técnica secundaria)}
 
