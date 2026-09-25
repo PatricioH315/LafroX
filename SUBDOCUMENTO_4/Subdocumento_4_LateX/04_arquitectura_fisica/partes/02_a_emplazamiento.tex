@@ -100,6 +100,36 @@ En la nube, la región primaria es sa-east-1 y cada servicio se despliega en al 
 
 La figura muestra que ninguna instalación depende de otra para operar. Talca y Concepción tienen cada uno su WMS, su base, su broker y su caché de identidad; los cross-docking reúnen esas mismas funciones en un solo equipo; y el terreno lleva su propio almacén local en el dispositivo. La nube concentra lo que es común a todos los sitios: los portales, el transaccional compartido, la analítica y los servicios de seguridad. Los doce componentes híbridos aparecen en los dos dominios porque cada uno tiene una parte que debe seguir operando en el sitio y otra que consolida en la nube.
 
+\subsection{Correspondencia con la arquitectura lógica}
+
+La Tabla~\ref{tab:mapeo-logica} asocia cada módulo y cada capa transversal de la arquitectura lógica (apartado 4.1) con el componente físico que lo ejecuta y con el lugar donde corre. Es la traza que permite seguir una responsabilidad lógica hasta su emplazamiento.
+
+\begin{tablalafrox}{Correspondencia entre la arquitectura lógica y la física}{tab:mapeo-logica}%
+  {F{0.28} Y F{0.24}}%
+  {\cab{Módulo o capa (4.1)} & \cab{Componente físico (4.2)} & \cab{Dónde se ejecuta}}
+  M1 Recepción & A-01 y A-02, con C-03 y C-05 & Sitio \\
+  M2 Inventario & A-01 y A-02 en el sitio; N-04 y N-05 para el consolidado & Sitio y nube \\
+  M3 Preventa & C-01 en el terminal; N-04, N-05 y N-07 & Terreno y nube \\
+  M4 Rutas & N-04 y N-05 & Nube \\
+  M5 Preparación & A-01 y A-02, con C-03 y C-04 & Sitio \\
+  M6 Reparto & C-02 en el terminal; N-04 y N-05, con la evidencia en S3 & Terreno y nube \\
+  M7 Rendición & C-02; N-04; A-04 hacia el ERP & Terreno, nube y VM-04 \\
+  M8 Devoluciones & C-02; N-04; A-01 en la recepción del retorno & Terreno, nube y sitio \\
+  M9 Calidad & B-01, B-02 con el bloqueo en el borde y B-03; N-06 y N-08 & Sitio, camiones y nube \\
+  M10 Analítica & N-10 & Nube \\
+  M11 Canal moderno & N-04 con el hub EDI; A-04 & Nube y VM-04 \\
+  M12 Flota & N-04 y N-06, con la API del proveedor de telemetría & Nube \\
+  Capa 1, portales & N-01 a N-03 & Nube \\
+  Capas 2 y 3, entrada y puerta de enlace & CloudFront, WAF y API Gateway (N-01 a N-03 y N-12); puerta de API local en A-01 & Nube y sitio \\
+  Capa 5, integración y eventos & A-03; N-09; A-04 & Sitio y nube \\
+  Capa 6, datos & A-02; N-05, N-06, N-07, N-10 y N-11 & Sitio y nube \\
+  Capa 7, seguridad e identidad & A-05 con el verificador local; F-03; N-12 & Nube y sitio \\
+  Capa 8, observabilidad & F-01 y CloudWatch (N-12) & Sitio y nube \\
+\end{tablalafrox}
+\fuente{elaboración propia a partir de los módulos y capas de la arquitectura lógica (apartado 4.1) y del catálogo de componentes de esta parte.}
+
+La tabla muestra la regla del emplazamiento aplicada a la lógica. M1, M2 y M5, junto con el bloqueo de M9, tienen su parte operativa en el sitio, porque son las funciones que el caso exige sostener sin enlace; los demás módulos corren en la nube dentro del monolito (N-04), y el terreno conserva su captura en el terminal. El monolito es una sola imagen: en la nube corre completo y en los sitios, en modo wms\_only.
+
 \subsection{Síntesis del emplazamiento por dominio y criterio}
 
 La Tabla~\ref{tab:t21} resume cómo se distribuyen los 36 componentes entre los tres dominios y los seis criterios del Artículo 16.2 que deciden cada emplazamiento. La justificación de cada componente, con su producto, su ubicación, su cantidad y su fundamento, se detalla en el Anexo 4.A (Formulario T-11), que acompaña a esta parte como anexo, y se recorre dominio por dominio en los apartados siguientes.
@@ -166,7 +196,7 @@ En el on-premise dominan la latencia y la conectividad. Los sensores, las impres
 Los doce componentes híbridos tienen una parte en cada dominio. Para cada uno, la justificación explica qué parte vive en el sitio, qué parte vive en la nube y por qué se reparten así:
 
 \begin{itemize}
-  \item \textbf{A-01 Motor WMS} (latencia): corre en VM-01, VM-C01 y E-01 porque la confirmación de preparación debe responder en 1 s sin depender del enlace, y su réplica en Aurora sostiene la continuidad.
+  \item \textbf{A-01 Motor WMS} (latencia): corre en VM-01, VM-C01 y E-01 porque la confirmación de preparación debe responder en 1 s sin depender del enlace, y su réplica en Aurora sostiene la continuidad. El mismo motor expone la puerta de API local de la bodega, que durante un corte valida el esquema, la tasa, el UUID y la auditoría de las solicitudes de los terminales sin pasar por API Gateway.
   \item \textbf{A-02 Base transaccional del WMS} (criticidad): PostgreSQL 16 en VM-02 y VM-C02 es el registro de la bodega durante un corte, y DMS replica sus cambios a Aurora con un RPO de 15 min.
   \item \textbf{A-03 Broker de colas} (conectividad): RabbitMQ en VM-03, VM-C04 y E-01 guarda hasta 24 h de transacciones sin enlace y las entrega en orden a SQS FIFO, donde Celery las reconcilia.
   \item \textbf{A-04 Capa anticorrupción del ERP} (criticidad): corre en VM-04 junto al ERP de 2017, que no se modifica, y el worker celery-erp-sync de la nube la consulta por la VPN como única puerta al legado.

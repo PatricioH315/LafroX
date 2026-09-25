@@ -307,7 +307,7 @@ La Tabla~\ref{tab:t84} fija el umbral de respuesta, en percentil 95, de cada ope
 \end{tablalafrox}
 \fuente{Caso, Cap. 15, RT-09.01, para las cuatro primeras filas; Bases Técnicas Transversales, numeral 9.1, para las demás.}
 
-Las cuatro primeras operaciones son las que fija el caso, y tres de ellas se resuelven sin atravesar la WAN: la confirmación de preparación contra la base local del sitio y los dos registros de terreno contra el almacén local del dispositivo. La consulta de stock y crédito es la única que depende de la nube, y por eso se atiende desde la caché. Los umbrales se miden con CloudWatch y se verifican en Pre-Producción con las pruebas de carga.
+Las cuatro primeras operaciones son las que fija el caso, y tres de ellas se resuelven sin atravesar la WAN: la confirmación de preparación contra la base local del sitio y los dos registros de terreno contra el almacén local del dispositivo. La consulta de stock y crédito es la única que depende de la nube, y por eso se atiende desde la caché. Los umbrales se miden con CloudWatch y se verifican en Preproducción con las pruebas de carga.
 
 \subsection{Primer cuello de botella}
 
@@ -321,7 +321,7 @@ Cuando la carga o la red exceden lo previsto, la solución degrada en orden y si
 
 \subsection{Pruebas de carga y estrés}
 
-Los valores de esta sección se verifican con pruebas en Pre-Producción, que opera con el dimensionamiento completo de Producción durante esas pruebas. La Tabla~\ref{tab:t86} declara las tres pruebas.
+Los valores de esta sección se verifican con pruebas en Preproducción, que opera con el dimensionamiento completo de Producción durante esas pruebas. La Tabla~\ref{tab:t86} declara las tres pruebas.
 
 \begin{tablalafrox}{Pruebas de carga y estrés}{tab:t86}%
   {F{0.24} Y Y}%

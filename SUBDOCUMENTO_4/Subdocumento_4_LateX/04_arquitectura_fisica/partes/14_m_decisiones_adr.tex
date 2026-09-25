@@ -15,9 +15,9 @@ Registro consolidado de las quince decisiones de arquitectura que condicionan es
 
 \textbf{Decisión adoptada.} Monolito modular Django 5.x LTS / Python 3.12, desplegado en ECS Fargate con apps por dominio y límites de contexto DDD. Módulos críticos (WMS offline, shipper, workers, portal) en procesos separados.
 
-\textbf{Alternativas descartadas.} \emph{Microservicios EKS}: volumen (\textasciitilde{}105 TPS) dos órdenes bajo el umbral que los justifica; 4 personas no operan 9--13 componentes de plano de control; TCO estimado en +USD 40--70 K / 56 m (estimación interna basada en la operación de EKS con el equipo del CLIENTE). \emph{Monolito clásico WMS 2013}: sin fronteras de módulo, proveedor desaparecido; viola RT-02.02.
+\textbf{Alternativas descartadas.} \emph{Microservicios EKS}: volumen (\textasciitilde{}105 TPS) dos órdenes bajo el umbral que los justifica; 4 personas no operan 9--13 componentes de plano de control; mayor costo total de propiedad durante los 56 meses, por operar un plano de control que el volumen no necesita. \emph{Monolito clásico WMS 2013}: sin fronteras de módulo, proveedor desaparecido; viola RT-02.02.
 
-\textbf{Criterio de selección.} Pertinencia al volumen real (BTT §2.3); operabilidad por 4 personas; TCO 56 meses; despliegue independiente sin particionar el dominio. Normativa: RT-02.01/02.02/02.03, RT-09.05, BA Art.~16, RNF-19.01--04. Relacionada: D5, D8, D14 (Arq. Lógica).
+\textbf{Criterio de selección.} Pertinencia al volumen real (numeral 2.3 de las Bases Técnicas Transversales); operabilidad por 4 personas; TCO 56 meses; despliegue independiente sin particionar el dominio. Normativa: RT-02.01/02.02/02.03, RT-09.05, Art.~16, RNF-19.01--04.
 
 \section{ADR-02 \textperiodcentered{} Conectividad WAN}
 \label{sub:adr-02}
@@ -35,7 +35,7 @@ Registro consolidado de las quince decisiones de arquitectura que condicionan es
 
 \textbf{Alternativas descartadas.} \emph{Solo nube}: inadmisible (Art.~16); sin enlace la bodega muere en minutos; picking en cámara $-$22\,\textdegree{}C inviable con RTT 40--80 ms. \emph{Solo on-premise}: inadmisible (Art.~16).
 
-\textbf{Criterio de selección.} Único modelo que satisface Art.~16 en sus 4 numerales; latencia $\leq$ 1 s en cámara resuelta localmente; autonomía 24 h CD / 14 h terreno; TCO contenido con servicios administrados AWS. Normativa: BA Art.~16.1--16.4, RT-03.01/03.02/03.10/03.19, RNF-02.01/05.01/05.02. Relacionada: D7, Decisión N\textdegree{} 17 del registro de decisiones.
+\textbf{Criterio de selección.} Único modelo que satisface Art.~16 en sus 4 numerales; latencia $\leq$ 1 s en cámara resuelta localmente; autonomía 24 h CD / 14 h terreno; TCO contenido con servicios administrados AWS. Normativa: Art.~16.1--16.4, RT-03.01/03.02/03.10/03.19, RNF-02.01/05.01/05.02. Relacionada: Decisión N\textdegree{} 17 del registro de decisiones.
 
 \section{ADR-04 \textperiodcentered{} Persistencia políglota}
 \label{sub:adr-04}
@@ -44,7 +44,7 @@ Registro consolidado de las quince decisiones de arquitectura que condicionan es
 
 \textbf{Alternativas descartadas.} \emph{Motor único relacional}: no escala ingesta IoT sin degradar picking (RNF-11.02). \emph{InfluxDB}: segundo motor exótico a operar; serie de tiempo cabe en capa OLAP. \emph{DynamoDB para todo}: no ofrece ACID cross-tabla para reconciliación determinista.
 
-\textbf{Criterio de selección.} Posición CAP declarada por dominio (RT-05.02); 3 motores administrados operables por el equipo de TI del CLIENTE; retención sanitaria D.S.~977/96 con inmutabilidad; RPO $\leq$ 15 min por réplica Aurora. Normativa: RT-05.01/05.02/05.11--15, RNF-09.01/09.02/11.02. Relacionada: D2, D4, Decisión N\textdegree{} 18 del registro de decisiones.
+\textbf{Criterio de selección.} Posición CAP declarada por dominio (RT-05.02); 3 motores administrados operables por el equipo de TI del CLIENTE; retención sanitaria D.S.~977/96 con inmutabilidad; RPO $\leq$ 15 min por réplica Aurora. Normativa: RT-05.01/05.02/05.11--15, RNF-09.01/09.02/11.02. Relacionada: Decisión N\textdegree{} 18 del registro de decisiones.
 
 \section{ADR-05 \textperiodcentered{} Mensajería asíncrona}
 \label{sub:adr-05}
@@ -53,7 +53,7 @@ Registro consolidado de las quince decisiones de arquitectura que condicionan es
 
 \textbf{Alternativas descartadas.} \emph{REST síncrono}: no sobrevive corte a mitad de ventana; rompe reconciliación. \emph{Kafka/MSK}: operar clústeres en 5 sitios es desproporcionado para el equipo disponible y 105 TPS.
 
-\textbf{Criterio de selección.} Resiliencia offline (buffer local + reproducción idempotente); reconciliación determinista RT-03.12; Zero Trust (todo outbound); TCO proporcional al volumen. Normativa: RT-02.06/02.07, RT-03.10/03.12, RNF-07.01/13.01, BA Art.~21. Relacionada: D4.
+\textbf{Criterio de selección.} Resiliencia offline (buffer local + reproducción idempotente); reconciliación determinista RT-03.12; Zero Trust (todo outbound); TCO proporcional al volumen. Normativa: RT-02.06/02.07, RT-03.10/03.12, RNF-07.01/13.01, Art.~21.
 
 \section{ADR-06 \textperiodcentered{} Identidad híbrida (Modelo B)}
 \label{sub:adr-06}
@@ -62,7 +62,7 @@ Registro consolidado de las quince decisiones de arquitectura que condicionan es
 
 \textbf{Alternativas descartadas.} \emph{IdP solo nube}: paraliza bodega ante corte. \emph{AD maestro local}: duplica administración, crea maestro a promover en DR. \emph{Keycloak maestro local}: nube no puede autenticar si el enlace cae.
 
-\textbf{Criterio de selección.} Autonomía offline sin maestro local a promover; autoridad única en nube; OTP sin correo para externos (RT-12.12); MFA Art.~22; operado por el equipo reducido del CLIENTE sin directorio propietario. Normativa: RT-12.10/12.11/12.12, RT-03.10, RNF-13.01, BA Art.~22, RF-15.01--05, RF-06.08. Relacionada: D6, Decisión N\textdegree{} 34 del registro de decisiones.
+\textbf{Criterio de selección.} Autonomía offline sin maestro local a promover; autoridad única en nube; OTP sin correo para externos (RT-12.12); MFA Art.~22; operado por el equipo reducido del CLIENTE sin directorio propietario. Normativa: RT-12.10/12.11/12.12, RT-03.10, RNF-13.01, Art.~22, RF-15.01--05, RF-06.08. Relacionada: Decisión N\textdegree{} 34 del registro de decisiones.
 
 \section{ADR-07 \textperiodcentered{} Movilidad de terreno}
 \label{sub:adr-07}
@@ -89,7 +89,7 @@ Registro consolidado de las quince decisiones de arquitectura que condicionan es
 
 \textbf{Alternativas descartadas.} \emph{Activo-activo}: duplica infraestructura y exige reconciliación de doble escritura sin beneficio medible. \emph{Backup + restore frío}: RTO 24--72 h, incumple RNF-20.06. \emph{Solo intrarregional}: postura mínima si CLIENTE no aprueba Art.~23; aceptando RTO 24--72 h ante caída de región.
 
-\textbf{Criterio de selección.} RTO $\leq$ 4 h / RPO $\leq$ 15 min; proporcionalidad al volumen; DR de identidad resuelto en nube (ADR-06); pruebas semestrales reales. Normativa: RT-07.01/07.07, RNF-20.06/20.07, BA Art.~20. Relacionada: Decisión N\textdegree{} 27 del registro de decisiones.
+\textbf{Criterio de selección.} RTO $\leq$ 4 h / RPO $\leq$ 15 min; proporcionalidad al volumen; DR de identidad resuelto en nube (ADR-06); pruebas semestrales reales. Normativa: RT-07.01/07.07, RNF-20.06/20.07, Art.~20. Relacionada: Decisión N\textdegree{} 27 del registro de decisiones.
 
 \section{ADR-10 \textperiodcentered{} Almacenamiento on-premise y RAID}
 \label{sub:adr-10}
@@ -125,7 +125,7 @@ Registro consolidado de las quince decisiones de arquitectura que condicionan es
 
 \textbf{Alternativas descartadas.} \emph{Kong autoadministrado}: agrega componente crítico a parchar en ruta de la venta; riesgo en ventana 05:30--07:00 con el equipo disponible. \emph{Desarrollo propio (middleware Django)}: sin cuotas/rate-limit nativos; viola Art.~21.2.
 
-\textbf{Criterio de selección.} Cumplimiento literal Art.~21.2 sin desarrollo propio; servicio administrado para 4 personas; coherencia entre vistas (Art.~16.4); reversibilidad por contratos OpenAPI/AsyncAPI estándar. Normativa: BA Art.~21.2, RT-02.01/02.02, RT-11.11, RT-05.16/05.18, Art.~16.3. Relacionada: D8.
+\textbf{Criterio de selección.} Cumplimiento literal Art.~21.2 sin desarrollo propio; servicio administrado para 4 personas; coherencia entre vistas (Art.~16.4); reversibilidad por contratos OpenAPI/AsyncAPI estándar. Normativa: Art.~21.2, RT-02.01/02.02, RT-11.11, RT-05.16/05.18, Art.~16.3.
 
 \section{ADR-14 \textperiodcentered{} Plataforma de observabilidad}
 \label{sub:adr-14}
@@ -134,7 +134,7 @@ Registro consolidado de las quince decisiones de arquitectura que condicionan es
 
 \textbf{Alternativas descartadas.} \emph{Prometheus+Grafana+Loki local + cloud}: dos plataformas (viola Art.~16.4 y RT-03.16); VM-06 sin capacidad. \emph{AMP + X-Ray + Grafana}: cuatro servicios de observabilidad para un equipo de 4 personas; complejidad operativa desproporcionada sin ganancia funcional sobre CloudWatch nativo.
 
-\textbf{Criterio de selección.} Art.~16.4 y RT-03.16 piden una plataforma; buffer ADOT resuelve «sin puntos ciegos» durante corte; ninguna decisión 05:30--07:00 depende de tablero; CloudWatch es nativo de AWS y no requiere infraestructura adicional; el equipo del CLIENTE no opera servidores de observabilidad. Normativa: BA Art.~16.4, RT-03.16, RT-14.01--09, RT-09.01. Relacionada: D14.
+\textbf{Criterio de selección.} Art.~16.4 y RT-03.16 piden una plataforma; buffer ADOT resuelve «sin puntos ciegos» durante corte; ninguna decisión 05:30--07:00 depende de tablero; CloudWatch es nativo de AWS y no requiere infraestructura adicional; el equipo del CLIENTE no opera servidores de observabilidad. Normativa: Art.~16.4, RT-03.16, RT-14.01--09, RT-09.01.
 
 \section{ADR-15 \textperiodcentered{} Gestión de secretos}
 \label{sub:adr-15}
@@ -143,4 +143,4 @@ Registro consolidado de las quince decisiones de arquitectura que condicionan es
 
 \textbf{Alternativas descartadas.} \emph{HashiCorp Vault autoadministrado}: modo sellado tras reinicio exige intervención humana de madrugada; agrega infraestructura. \emph{Sin gestor centralizado}: prohibido por Art.~21.4.
 
-\textbf{Criterio de selección.} Servicio administrado sin desellado manual; Zero Trust (consumo outbound); separación de funciones Art.~21.2 vía IAM/CloudTrail; contingencia offline independiente de la nube. Normativa: BA Art.~21.4/21.2, Art.~16.2/16.3, RT-04.09, RT-11.09. Relacionada: D13, SEC-01.
+\textbf{Criterio de selección.} Servicio administrado sin desellado manual; Zero Trust (consumo outbound); separación de funciones Art.~21.2 vía IAM/CloudTrail; contingencia offline independiente de la nube. Normativa: Art.~21.4/21.2, Art.~16.2/16.3, RT-04.09, RT-11.09.
