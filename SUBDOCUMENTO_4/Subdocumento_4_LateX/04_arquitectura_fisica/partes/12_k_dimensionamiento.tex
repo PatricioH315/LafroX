@@ -203,7 +203,7 @@ El clúster de Talca tiene tres nodos iguales, de modo que la pérdida de cualqu
 \end{tablalafrox}
 \fuente{elaboración propia.}
 
-Con un nodo caído, el clúster todavía usa menos de un cuarto de su cómputo, poco más de un cuarto de su memoria y la mitad de su almacenamiento. Cada nodo es un servidor de rack de 2U con dos procesadores de 16 núcleos, 64 hilos en total (Anexo 4.A, C1). La capacidad de almacenamiento resulta de tres nodos con cuatro discos NVMe de 1,92 TB en RAID 10, 3,84 TB por nodo, y de la réplica 2 de Ceph: 3 $\times$ 3,84 / 2 = 5,76 TB, que con un nodo caído baja a 2 $\times$ 3,84 / 2 = 3,84 TB. La Tabla~\ref{tab:t78} muestra cómo se reparten los recursos asignados entre las seis máquinas virtuales.
+Con un nodo caído, el clúster todavía usa menos de un cuarto de su cómputo, poco más de un cuarto de su memoria y la mitad de su almacenamiento. Cada nodo es un servidor de rack de 2U con dos procesadores de 16 núcleos, 64 hilos en total (Formulario T-11, C1). La capacidad de almacenamiento resulta de tres nodos con cuatro discos NVMe de 1,92 TB en RAID 10, 3,84 TB por nodo, y de la réplica 2 de Ceph: 3 $\times$ 3,84 / 2 = 5,76 TB, que con un nodo caído baja a 2 $\times$ 3,84 / 2 = 3,84 TB. La Tabla~\ref{tab:t78} muestra cómo se reparten los recursos asignados entre las seis máquinas virtuales.
 
 \begin{tablalafrox}{Máquinas virtuales del clúster de Talca}{tab:t78}%
   {G{0.10} Y H{0.10} H{0.14} H{0.16}}%

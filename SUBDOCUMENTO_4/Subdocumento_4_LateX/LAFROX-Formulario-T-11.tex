@@ -1,21 +1,42 @@
-% ------------------------------------------------------------------
-%  Anexo 4.A --- Formulario T-11: Especificaciones técnicas ofertadas
-%  Fragmento del Subdocumento 4.2, traido desde contenido.tex con
-%  \parte{partes/15_anexo_t11}. Capítulo provisorio: el formulario se
-%  entregará como archivo propio (aclaraciones, sección 1).
-%
-%  Columnas oficiales del formulario (Bases Administrativas, Formulario T-11):
-%  Componente | Producto / servicio ofertado | Ubicación / Lugar | Cantidad |
-%  Justificación. Sin precios (Art. 50.2).
-% ------------------------------------------------------------------
+%% ============================================================================
+%%  LAFROX-Formulario-T-11.tex
+%%
+%%  Formulario T-11: Especificaciones técnicas ofertadas. Archivo propio, separado
+%%  del Subdocumento 4 (aclaraciones, sección 1: un formulario por archivo).
+%%  Se compila por sí solo:  latexmk LAFROX-Formulario-T-11.tex
+%%
+%%  Columnas oficiales (Bases Administrativas, Formulario T-11): Componente |
+%%  Producto / servicio ofertado | Ubicación / Lugar | Cantidad | Justificación.
+%%  Sin precios (Art. 50.2).
+%% ============================================================================
+\documentclass[carta,firma]{lafrox}
 
-\chapter*{Anexo 4.A --- Formulario T-11: Especificaciones técnicas ofertadas}
-\phantomsection
-\addcontentsline{toc}{chapter}{Anexo 4.A --- Formulario T-11: Especificaciones técnicas ofertadas}
-\markboth{Anexo 4.A --- Formulario T-11}{Anexo 4.A --- Formulario T-11}
-\label{anexo:t11}
+\makeatletter
+\@removefromreset{table}{chapter}
+\makeatother
+\renewcommand{\thetable}{\arabic{table}}
 
-Este formulario detalla los componentes de infraestructura, plataforma, licenciamiento y hardware especificados para la solución, con su ubicación, su cantidad y su justificación, conforme al Formulario T-11 de las Bases Administrativas. Su resumen y análisis están en la sección~\ref{sec:4-2-6-implementos}, y los servicios de nube se agrupan por función en la sección~\ref{sec:4-2-2-servicios-nube}. El equipamiento físico lo adquiere el CLIENTE, y el adjudicatario lo especifica, instala, integra y mantiene (Art. 14.2).
+% Tablas sin palabras cortadas (aclaraciones, sección 5).
+\let\LFXcuerpotablaorig\LFXcuerpotabla
+\renewcommand{\LFXcuerpotabla}{%
+  \LFXcuerpotablaorig\hyphenpenalty=10000\exhyphenpenalty=10000\relax}
+
+\datoslafrox{
+  documento  = Propuesta Técnica,
+  subtitulo  = Formulario T-11 --- Especificaciones técnicas ofertadas,
+  alcance    = {Subdocumento 4 --- Arquitectura lógica y física de la solución},
+  formulario = {Formulario T-11},
+  fecha      = 05 de octubre de 2026,
+  version    = 2.0,
+}
+
+\begin{document}
+\portadalafrox
+
+\chapter*{Formulario T-11: Especificaciones técnicas ofertadas}
+\markboth{Formulario T-11}{Formulario T-11}
+
+Este formulario detalla los componentes de infraestructura, plataforma, licenciamiento y hardware especificados para la solución, con su ubicación, su cantidad y su justificación, conforme al Formulario T-11 de las Bases Administrativas. Acompaña al Subdocumento 4 (Arquitectura lógica y física de la solución): su resumen y análisis están en el apartado 4.2.6 de ese subdocumento, y los servicios de nube se agrupan por función en su apartado 4.2.2. El equipamiento físico lo adquiere el CLIENTE, y el adjudicatario lo especifica, instala, integra y mantiene (Art. 14.2).
 
 \section*{Infraestructura de cómputo y almacenamiento}
 
@@ -26,7 +47,7 @@ La Tabla~\ref{tab:t23} detalla los servidores y el almacenamiento de respaldo de
   {\cab{Componente} & \cab{Producto ofertado} & \cab{Ubicación} & \cab{Cant.} & \cab{Justificación}}
   C1 --- Servidor del clúster & Servidor de rack de 2U y doble procesador, Dell PowerEdge R7625 o HPE DL385 Gen11: 2 EPYC 9124 de 16 núcleos, 128 GB DDR5 ECC ampliables, RAID 1 para el sistema y RAID 10 con 4 NVMe de 1,92 TB y repuesto en caliente, con bahías para duplicar los discos, 2 puertos de 10 GbE y 2 fuentes de 800 W & CD Talca, gabinete R01 & 3 & Tres nodos iguales dejan capacidad para todas las máquinas virtuales si falla uno (RT-03.14), con doble fuente en circuitos distintos (RT-08.04), y los discos NVMe en RAID 10 superan con holgura las operaciones de disco del peak de septiembre; el crecimiento de 3 veces se absorbe agregando discos y memoria en el mismo nodo. \\
   C2 --- NAS de respaldo local & NAS con bloqueo de escritura WORM y cifrado de disco & CD Talca, gabinete R01 & 1 & Es la copia local de recuperación rápida del esquema 3-2-1-1-0: restaura el WMS en hasta 4 h sin depender del enlace (RNF-20.06), y complementa la copia inmutable en nube sin reemplazarla. \\
-  C3 --- Servidor de Concepción & Dell PowerEdge R250 con Xeon E-2300 de 8 núcleos y 16 hilos (por ejemplo, E-2378) o HPE ProLiant DL20 Gen11 con Xeon E-2400 de 8 núcleos y 16 hilos (por ejemplo, E-2478); 32 GB ampliables a 128 GB; RAID 10 sobre las 4 bahías con discos SSD de 1,92 TB (sin repuesto en caliente) & CD Concepción, gabinete de borde & 1 & Sostiene el WMS de Concepción con 24 h de operación autónoma y la promoción controlada de su motor de almacenes ante una contingencia de Talca (RNF-02.01, RT-07.02), dimensionado a su propia bodega (Tabla~\ref{tab:t79}). Fuente única declarada como punto único de falla aceptado (RT-02.11). \\
+  C3 --- Servidor de Concepción & Dell PowerEdge R250 con Xeon E-2300 de 8 núcleos y 16 hilos (por ejemplo, E-2378) o HPE ProLiant DL20 Gen11 con Xeon E-2400 de 8 núcleos y 16 hilos (por ejemplo, E-2478); 32 GB ampliables a 128 GB; RAID 10 sobre las 4 bahías con discos SSD de 1,92 TB (sin repuesto en caliente) & CD Concepción, gabinete de borde & 1 & Sostiene el WMS de Concepción con 24 h de operación autónoma y la promoción controlada de su motor de almacenes ante una contingencia de Talca (RNF-02.01, RT-07.02), dimensionado a su propia bodega según la tabla de máquinas virtuales de Concepción del Subdocumento 4 (apartado 4.2.5). Fuente única declarada como punto único de falla aceptado (RT-02.11). \\
   C4 --- Nodo de cross-docking & Mini-PC industrial Advantech ARK-2250 o equivalente de rango industrial: Intel Core i5 o i7, 16 GB y NVMe de 512 GB & Curicó, Chillán y Los Ángeles & 3 & Opera en naves sin climatización, con un supuesto de diseño de hasta 50\,\textdegree{}C en verano, y sin fibra (RT-03.17); se conecta a la nube y a Talca a través del firewall del sitio (C15b). Alimentación de entrada única: punto único de falla aceptado (RT-02.11), cubierto por la operación local de la ventana. \\
 \end{tablalafrox}
 
@@ -76,7 +97,7 @@ La Tabla~\ref{tab:t25} detalla los dispositivos que usan las personas en la call
 
 \section*{Infraestructura de la sala técnica de Talca}
 
-La Tabla~\ref{tab:t27} detalla la infraestructura de la sala técnica secundaria del CD Talca. Las especificaciones y los cálculos eléctrico y térmico del recinto se desarrollan en el capítulo de data center primario y secundario.
+La Tabla~\ref{tab:t27} detalla la infraestructura de la sala técnica secundaria del CD Talca. Las especificaciones y los cálculos eléctrico y térmico del recinto se desarrollan en el apartado 4.3.1 del Subdocumento 4.
 
 \begin{tablalafrox}{Formulario T-11: infraestructura de la sala técnica de Talca}{tab:t27}%
   {F{0.17} Y F{0.16} G{0.13} Y}%
@@ -123,7 +144,7 @@ La Tabla~\ref{tab:t11-nube} detalla los servicios contratados en la plataforma d
   N-08 --- Ingesta de IoT & IoT Core, Lambda e IoT Greengrass & sa-east-1 y gateways de borde & 2 gateways y 28 termógrafos & Recibe, valida y alerta la telemetría de cadena de frío, y gestiona la flota de gateways. \\
   N-09 --- Mensajería & SQS FIFO y SNS & sa-east-1 & 1 cola por sitio & Reconcilia los sitios en orden y sin duplicados, y difunde las alertas de frío (ADR-05). \\
   N-10 --- Plataforma analítica & S3, Glue, Redshift Serverless y QuickSight & sa-east-1 & 1 lago de 5 años & Separa la analítica del transaccional y publica los tableros del CLIENTE. \\
-  N-11 --- Respaldo y réplica & AWS Backup con Vault Lock, S3 Object Lock y replicación de S3 entre regiones & sa-east-1 y us-east-1 & 1 política & Mantiene la copia inmutable del esquema 3-2-1-1-0 y la réplica de recuperación (ADR-09). La frecuencia, la retención y el tiempo de restauración por dominio de datos (RT-07.13) son los de la Tabla~\ref{tab:jd12}. \\
+  N-11 --- Respaldo y réplica & AWS Backup con Vault Lock, S3 Object Lock y replicación de S3 entre regiones & sa-east-1 y us-east-1 & 1 política & Mantiene la copia inmutable del esquema 3-2-1-1-0 y la réplica de recuperación (ADR-09). La frecuencia, la retención y el tiempo de restauración por dominio de datos (RT-07.13) son los de la tabla de respaldo y restauración por dominio de datos del Subdocumento 4 (apartado 4.2.3). \\
   N-12 --- Seguridad y gobierno & KMS, Secrets Manager, Parameter Store, IAM Identity Center, Shield Advanced, GuardDuty, Security Hub, Inspector, Macie, Security Lake, CloudTrail, Config, CloudWatch, Systems Manager, Control Tower, Organizations, Cost Explorer y Budgets & sa-east-1; claves, secretos, CloudTrail, GuardDuty y Config también en us-east-1 & 8 cuentas: 5 ambientes, gestión, archivo de registros y auditoría & Cumple los controles del Artículo 21 y el gobierno de costos como servicios administrados (ADR-14, ADR-15). \\
   D-01 --- Red en nube y terminación de la VPN & VPC, Transit Gateway, Site-to-Site VPN, NAT Gateway, VPC Endpoints y Route 53 & sa-east-1 y us-east-1 & 2 túneles por sitio & Conecta los sitios con la nube sin tráfico de datos por Internet (RT-03.03, RT-03.04). \\
   N-13 --- Gestión de dispositivos & Android Enterprise y Zebra DNA como servicio gestionado & Servicio en nube y agente en el dispositivo & Parque de EC55, TC58e y MC9400 de la Tabla~\ref{tab:t25} & Enrola, configura, actualiza y borra de forma selectiva el parque de terreno y de bodega (RT-03.18). \\
@@ -149,3 +170,5 @@ La Tabla~\ref{tab:t11-software} detalla el software que opera sobre el equipamie
   Configuración & Ansible y Terraform con CDK, código abierto & Repositorio del CLIENTE & 1 repositorio & Infraestructura y configuración declaradas como código versionado. \\
   Integración y entrega continuas & GitLab CI como orquestador y AWS CodeBuild para la construcción & Pipeline del repositorio del CLIENTE; construcción en sa-east-1 & 1 pipeline & Compila, prueba y escanea con bloqueo automático (RT-04.05) y construye cada imagen de forma hermética, con procedencia SLSA nivel 3. \\
 \end{tablalafrox}
+
+\end{document}
