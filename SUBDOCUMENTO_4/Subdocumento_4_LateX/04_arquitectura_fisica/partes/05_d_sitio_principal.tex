@@ -4,82 +4,130 @@
 %  \parte{partes/05_d_sitio_principal}. Las rutas son relativas a la carpeta del
 %  subdocumento, nunca a la de main.tex.
 %
-%  Alineado al texto de la sección 4.3.1 y al Formulario T-11 de data center
-%  (sala técnica secundaria de Talca, cálculos RT-06.11).
+%  Texto literal de «4.3 completo sin imagenes_v2.md» (carpeta 4.3/), solo
+%  convertido a LaTeX. Las tablas de este capítulo se numeran 4.3-1 a 4.3-6,
+%  como las cita el texto; la numeración corrida se restituye al cierre de
+%  06_e_sitio_secundario.tex.
 % ------------------------------------------------------------------
 
 \chapter{Data center primario y secundario}
 \label{cap:4-3-data-center}
 
-Este capítulo especifica los dos data center de la solución. El primario concentra la operación productiva en dos dominios que se exigen mutuamente por el carácter híbrido obligatorio del despliegue (Art. 16.1): la región primaria de la nube, sa-east-1, y la sala técnica del CD Talca. El secundario sostiene la continuidad cuando el primario no está disponible, con la región us-east-1 para la nube y el gabinete de borde del CD Concepción para el on-premise. El detalle componente por componente se entrega en el Anexo 4.A (Formulario T-11).
+% Numeración propia de las tablas del capítulo 4.3 (Tabla 4.3-1 ... 4.3-6)
+\ifdefined\LFXtablaprevia\else\newcounter{LFXtablaprevia}\fi
+\setcounter{LFXtablaprevia}{\value{table}}
+\let\LFXthetableorig\thetable
+\renewcommand{\thetable}{4.3-\arabic{table}}
+\setcounter{table}{0}
 
-\section{Data center primario}
+\section{Data Center Primario}
 \label{sec:d-especificaciones-del-sitio-principal-on-}
 
-\subsection{Nube: proveedor, región y zonas de disponibilidad}
+El Data Center Primario concentra la operación productiva de la solución en dos dominios que se exigen mutuamente por el carácter híbrido obligatorio del despliegue (Bases Administrativas, Art. 16.1), para la región primaria de la nube en sa-east-1 ubicada en São Paulo en Brasil y para la sala técnica secundaria on-premise del centro de distribución de Talca, tipología que el propio caso fija (RT-06.01 del caso, numeral 6.1 de las Transversales). Ambos dominios se especifican en esta sección como que un centro de datos no es solo donde están los servidores, sino donde se garantizan sin interrupción las condiciones que sostienen la operación, la energía acondicionada, el clima controlado, la conectividad, la seguridad física y el monitoreo permanente con procedimiento escrito.
 
-El proveedor de nube es Amazon Web Services, con los servicios contratados en cuentas del CLIENTE bajo AWS Control Tower (sección~\ref{sec:4-2-2-servicios-nube}). La región primaria es sa-east-1 (São Paulo, Brasil), que satisface la presencia de región en Sudamérica que exige RT-03.01, y todo componente con requisito de alta disponibilidad se despliega en al menos dos zonas (RT-03.02). Aurora PostgreSQL escribe en sa-east-1a y lee en sa-east-1b y sa-east-1c, con conmutación automática; DynamoDB es multizona de forma nativa; y ECS Fargate, ElastiCache, el balanceador de aplicación y los NAT Gateway operan entre sa-east-1a y sa-east-1b. La base de datos es el único componente con escritor único, y conmuta de forma automática entre zonas.
+La sección declara que para cada dominio el proveedor, la región y las zonas de disponibilidad, los servicios contratados y el sitio on-premise deben contar con los objetivos de continuidad verificables que los gobiernan como la disponibilidad de infraestructura de 99,95 \% mensual por componente (numeral 7.2 de las Transversales) y para los servicios críticos un RTO $\leq$ 4 h y RPO $\leq$ 15 min (RT-07.04), sobre los que se sostiene el compromiso contractual penalizable de $\geq$ 99,9 \% mensual de la transacción de negocio de extremo a extremo (Bases Administrativas, Art. 78.2; RT-10.01). El desglose servicio por servicio y componente por componente se entrega en el Formulario T-11.
 
-\subsection{Sitio on-premise: tipología y alcance}
+\subsection{Proveedor}
 
-\paragraph{Tipología declarada (numeral 6.1 de las Transversales): sala técnica secundaria.}
-El caso fija para el CD Talca una sala técnica secundaria, dimensionada para sostener recepción, preparación y despacho durante un corte, y advierte que la sala actual de 25 m\textsuperscript{2} no cumple el Capítulo 6 de las Transversales (Caso, Cap. 15, RT-06.01). Conforme al numeral 6.1, a este sitio no se aplica íntegramente la serie RT-06.01 a RT-06.24, que corresponde a la sala técnica principal, sino el subconjunto dimensionado al sitio: energía, climatización, control de acceso, detección de incendio y monitoreo. Como el mismo numeral penaliza por igual sobredimensionar y subdimensionar, la superficie de la sala queda determinada por el equipamiento real que aloja y por los cálculos eléctrico y térmico siguientes, y se fija en el plano de distribución interna del recinto (RT-06.03).
+Para la nube en Amazon Web Services todos los servicios se contratan en cuentas del CLIENTE, que son organizadas bajo AWS Control Tower con una cuenta por ambiente de modo que la propiedad de los datos y de la infraestructura es del CLIENTE desde el primer día. La selección de servicios sigue tres reglas que son preferir el servicio administrado cuando existe porque el área de TI del CLIENTE es de cuatro personas (Caso 02, Cap. 10, Restricción N.º 9), preferir servicios compatibles con estándares abiertos para que salir de la plataforma no exija reescribir la solución y contratar en la región secundaria solo lo que la recuperación ante desastres necesita. AWS satisface el requisito de presencia de región o zona en Chile o en Sudamérica (RT-03.01; Bases Administrativas, Art. 16.2) con la región primaria sa-east-1. El cumplimiento de los estándares y marcos de referencia del Artículo 4.3 de las Bases Administrativas entre ellos ISO/IEC 27017 (nube) e ISO/IEC 27018 (datos personales en nube) se logra acreditar mediante la matriz de controles de seguridad (RT-11.05) y no se repite en esta sección.
 
-La sala aloja el clúster de tres nodos con redundancia N+1 que ejecuta el motor WMS y el borde operacional del CD, la NAS local de recuperación rápida, el par de firewalls de la frontera del sitio y los conmutadores de núcleo y de gestión.
+Para el On-premise en la infraestructura de las instalaciones del CLIENTE en el CD de Talca el caso exige cómputo, almacenamiento y procesamiento on-premise en las instalaciones del CLIENTE para sostener recepción, preparación y despacho durante un corte de enlace (Caso 02, RT-06.01 y RT-03.10), por lo que obliga a la modalidad híbrida (Bases Administrativas, Art. 16.1). Por ese alcance se necesita un cómputo local para la continuidad de un sitio operacional sin albergar el núcleo, por lo que el sitio adopta la tipología de \textbf{sala técnica secundaria o de sitio} del numeral 6.1 de las Transversales, con disponibilidad de infraestructura de 99,95 \% (numeral 7.2) y el dimensionamiento proporcional al equipamiento real.
 
-\textbf{Disponibilidad de infraestructura comprometida: 99,95 \% mensual} por componente: energía del recinto, climatización, red y comunicaciones, servidores y cómputo, y motor de base de datos (numeral 7.2 de las Transversales). Se sostiene con redundancia N+1 en energía y climatización, generación autónoma propia y monitoreo continuo con alertamiento. No se invoca una clasificación de instalación de terceros: los niveles del numeral 7.2 son un medio, y el compromiso que se mide y se penaliza es el de la transacción de negocio de extremo a extremo ($\geq$ 99,9 \% mensual; Art. 78\textdegree{}; RT-10.01).
+\subsection{Región y zonas de disponibilidad}
 
-\subsection{Energía y carga eléctrica}
+La región primaria de la nube es en sa-east-1 ubicada en São Paulo en Brasil, por lo que todo componente con requisito de alta disponibilidad se despliega en al menos dos zonas de disponibilidad y no se acepta un diseño en una sola zona (RT-03.02). La distribución por zona de la solución es la siguiente, la base de datos Aurora PostgreSQL se escribe en sa-east-1a y se lee en sa-east-1b y sa-east-1c con conmutación automática, para DynamoDB se opera Multi-AZ de forma nativa y transparente, para ECS Fargate, ElastiCache Redis, el balanceador de aplicación y el NAT Gateway operan entre sa-east-1a y sa-east-1b con conmutación automática. El único componente con escritor único es la base de datos que conmuta de forma automática entre las zonas. Este diseño sostiene el compromiso de extremo a extremo de $\geq$ 99,9 \% mensual de la transacción crítica (Bases Administrativas, Art. 78.2; RT-10.01) y la conmutación se verifica en las pruebas de resiliencia por inyección de fallas de la arquitectura de despliegue (RT-10.07).
 
-La cadena eléctrica va del empalme al tablero general, la transferencia automática, el UPS, la PDU del rack, la fuente del equipo y el servidor. El UPS es de doble conversión en línea, en N+1, con autonomía de 30 minutos o más a plena carga (RT-06.07); la generación autónoma cubre 24 horas continuas, con estanque dimensionado y contrato de reabastecimiento declarado (RT-06.08); la instalación eléctrica es independiente de la del resto del edificio y cumple la normativa eléctrica chilena vigente, incluida la NCh Elec. 2777 (RT-06.09); y se revisa y mide cada semestre, con informe al CLIENTE (RT-06.10).
+\subsection{Servicios contratados en la región primaria}
 
-La carga eléctrica se proyecta sobre la potencia de placa de los equipos que el Formulario T-11 declara para el recinto, como muestra la Tabla~\ref{tab:dc-carga}.
+Los servicios contratados en la plataforma de nube se agrupan por la función que cumplen en la arquitectura como el listado servicio por servicio con su justificación y su cantidad, además se entrega en el Formulario T-11. En la región primaria se concentran la operación productiva, la analítica y los servicios de detección, cumplimiento y gobierno:
 
-\begin{tablalafrox}{Carga eléctrica de TI proyectada del recinto}{tab:dc-carga}%
+\begin{itemize}
+  \item Borde público: Route 53, CloudFront, AWS WAF, Shield Advanced y API Gateway.
+  \item Cómputo de aplicación: ECS Fargate, Application Load Balancer y Lambda.
+  \item Datos operacionales: Aurora PostgreSQL, Database Migration Service, DynamoDB y ElastiCache.
+  \item Mensajería: SQS FIFO y SNS.
+  \item Internet de las cosas: IoT Core e IoT Greengrass.
+  \item Analítica: S3, Glue, Redshift Serverless y QuickSight.
+  \item Respaldo y recuperación: AWS Backup, S3 Object Lock y replicación de S3 entre regiones.
+  \item Red y conectividad: VPC, Transit Gateway, Site-to-Site VPN, NAT Gateway y VPC Endpoints.
+  \item Identidad, claves y secretos: KMS, Secrets Manager, Parameter Store e IAM Identity Center.
+  \item Detección y cumplimiento: Security Lake, GuardDuty, Security Hub, Inspector, Macie, CloudTrail y Config.
+  \item Operación y gobierno: CloudWatch, Systems Manager, Control Tower, Organizations, Cost Explorer y Budgets.
+  \item Construcción y registro de imágenes: CodeBuild y Elastic Container Registry.
+  \item Servicios de terceros en nube: Android Enterprise, Zebra DNA y consola del EDR.
+\end{itemize}
+
+La solución no opera servidores en la nube ya que el cómputo corre en contenedores administrados y todos los datos viven en motores administrados. Las únicas piezas de software que el adjudicatario mantiene sobre la plataforma son la aplicación Django y el IdP Keycloak. El Registro de Decisiones de la Arquitectura descarta de forma expresa los servicios que nunca aparecen en la arquitectura (como ejemplo no se contrata EKS ni MSK, no se contratan servicios de observabilidad fuera de CloudWatch) y fija la gestión de secretos con AWS Secrets Manager y SSM Parameter Store.
+
+\subsection{Sitio on-premise: CD Talca (sala técnica secundaria)}
+
+Para la tipología y alcance, en el caso se fija para el CD de Talca una sala técnica secundaria que es ``dimensionada para sostener recepción, preparación y despacho durante un corte'', y advierte que la sala actual de 25 m\textsuperscript{2} no cumple el Capítulo 6 del documento transversal (Caso 02, RT-06.01). Conforme a la tipología del numeral 6.1 de las Transversales, a este sitio no se aplica íntegramente la serie RT-06.01 a RT-06.24 (que corresponde a la sala técnica principal), sino el subconjunto dimensionado al sitio como la energía, climatización, control de acceso, detección de incendio y monitoreo. El numeral 6.1 de las Transversales exige declarar la tipología y justificar el dimensionamiento y advierte que ``sobredimensionar el recinto es tan penalizado como subdimensionarlo: ambos revelan que el cálculo de capacidad no se hizo''. La superficie proyectada de la sala queda determinada por el equipamiento real que debe alojar y por los cálculos eléctrico y térmico (RT-06.11) que son desarrollados a continuación y se fija en el plano de distribución interna (RT-06.03, Figura 4.3-1).
+
+Para el equipamiento que la sala debe alojar el sitio aloja el núcleo del componente on-premise en el motor WMS y el borde operacional del CD (Registro de Decisiones, Decisión 17) sobre un clúster virtualizado de tres nodos con redundancia N+1 que tolera la pérdida de cualquier nodo manteniendo quórum, también una NAS local con el respaldo de recuperación rápida y los dos firewalls de la frontera del sitio. El listado completo de componentes de sala (UPS, generador, climatización, seguridad física, extinción, cableado y gabinetes) y del equipamiento de cómputo y red que alojan los gabinetes se entrega en el Formulario T-11, la ocupación por rack y el margen de crecimiento se declaran según RT-06.05 (Figura 4.3-2).
+
+Para la disponibilidad y la redundancia la disponibilidad de infraestructura comprometida es del 99,95 \% mensual por componente en energía del recinto, climatización, red y comunicaciones, servidores y cómputo, y motor de base de datos (numeral 7.2 de las Transversales). Además se sostiene con redundancia N+1 en energía y climatización (RT-06.12 deseable para alimentación; RT-06.13 obligatorio para clima), con facturación de generación autónoma y con monitoreo continuo con alertamiento. No se invoca una clasificación de instalación de terceros (ejemplo un nivel TIER certificado), por lo que los niveles de disponibilidad de infraestructura del numeral 7.2 son un medio, no un fin y el compromiso que se mide y se penaliza es el de la transacción de negocio de extremo a extremo (Artículo 78\textdegree{} de las Bases Administrativas; RT-10.01).
+
+Para la energía la cadena eléctrica se ordena empalme hacia el tablero general hacia la transferencia automática hacia el UPS luego el PDU del rack luego la fuente del equipo y por último al servidor que consta de UPS de doble conversión on-line en configuración N+1 con autonomía mínima de 30 minutos a plena carga (RT-06.07), la generación autónoma para un rango mínimo de 24 horas continuas con estanque de combustible dimensionado y contrato de reabastecimiento declarado (RT-06.08), la instalación eléctrica independiente de la del resto del edificio y conforme a la normativa eléctrica chilena vigente, incluida la NCh Elec. 2777 (RT-06.09) y la revisión y medición semestral con informe entregable al CLIENTE (RT-06.10).
+
+Para el cálculo de carga eléctrica (RT-06.11) la carga se proyecta sobre los equipos que el Formulario T-11 declara para el recinto, usando su potencia de placa (suma de las fuentes del equipo, que es el valor con que se dimensiona el UPS), proyectada por equipo en la Tabla 4.3-1:
+
+\begin{tablalafrox}{Carga eléctrica de TI proyectada del recinto (RT-06.11)}{tab:4-3-1}%
   {Y H{0.12} F{0.26} H{0.14}}%
   {\cab{Equipo (Formulario T-11)} & \cab{Cantidad} & \cab{Potencia de placa por unidad} & \cab{Subtotal}}
-  Nodo del clúster, servidor de rack de 2U y doble procesador & 3 & 1.600 W (2 fuentes de 800 W) & 4.800 W \\
+  Nodo de cómputo del clúster (servidor rack 2U, doble procesador) & 3 & 1.600 W (2 fuentes de 800 W) & 4.800 W \\
   NAS local & 1 & 400 W & 400 W \\
   Firewall del perímetro del sitio & 2 & 150 W & 300 W \\
-  Switch de núcleo en stack, sin PoE & 2 & 150 W & 300 W \\
+  Conmutador de núcleo (switch core) & 2 & 150 W & 300 W \\
   Switch de gestión & 1 & 50 W & 50 W \\
   \textbf{Carga TI base} & & & \textbf{5.850 W} \\
   Margen de crecimiento a tres años (20 \%, RT-06.05) & & & + 1.170 W \\
-  \textbf{Carga TI de diseño} & & & \textbf{7.020 W} \\
+  \textbf{Carga TI de diseño} & & & \textbf{7.020 W $\approx$ 7,0 kW} \\
 \end{tablalafrox}
-\fuente{elaboración propia; potencia de placa según la ficha técnica del equipamiento declarado en el Anexo 4.A (RT-06.11).}
+\fuente{elaboración propia a partir de las fichas técnicas del equipamiento declarado en el Formulario T-11, con el margen de crecimiento a tres años de RT-06.05.}
 
-Los nodos, la NAS y los firewalls se cuentan por la potencia de placa de sus fuentes. Los conmutadores se cuentan por su consumo sin PoE, porque en ellos la fuente no mide la carga del equipo: de los 715 W de la fuente del Catalyst 9300-48P, 437 W son presupuesto de PoE según la ficha del fabricante, y su calculadora de potencia da unos 128 W sin PoE, que se redondean a 150 W.
+El factor de potencia declarado es de 0,95, por lo que la potencia aparente de diseño es 7,0 kW $\div$ 0,95 $\approx$ 7,4 kVA. El UPS se dimensiona al 80 \% de utilización: 7,4 kVA $\div$ 0,8 $\approx$ 9,2 kVA, por lo que se selecciona un UPS modular de 10 kVA, doble conversión on-line, en configuración N+1 y con bypass de mantenimiento (RT-06.12, deseable, y RT-06.07). La PUE estimada de diseño es 1,5 que es derivada del desglose proyectado de consumo del recinto con la carga TI 7,0 kW, climatización de precisión $\approx$ 2,3 kW, iluminación y apoyo $\approx$ 0,6 kW y pérdidas de conversión del UPS $\approx$ 0,55 kW con un total de $\approx$ 10,4 kW y luego 10,4 $\div$ 7,0 $\approx$ 1,5. Los puntos de medición se declaran (numerador: tablero general del recinto y denominador: salida de las PDU de los racks) con medición semestral e informe entregable (RT-06.10), además el PUE del recinto on-premise se declara conforme a RT-15.04 junto con la intensidad de carbono de la región de nube. La carga total que debe sostener el generador es la carga del sitio $\approx$ 10,4 kW, por lo que se selecciona un grupo electrógeno de 15 kVA con estanque dimensionado a 24 horas continuas y contrato de reabastecimiento declarado (RT-06.08).
 
-Con un factor de potencia de 0,95, la potencia aparente de diseño es 7,0 / 0,95 $\approx$ 7,4 kVA; al 80 \% de utilización se requieren 7,4 / 0,8 $\approx$ 9,2 kVA, por lo que se selecciona un UPS modular de 10 kVA, en N+1 y con bypass de mantenimiento. La PUE estimada de diseño es 1,5: a la carga TI de 7,0 kW se suman la climatización de precisión, $\approx$ 2,3 kW, la iluminación y el apoyo, $\approx$ 0,6 kW, y las pérdidas de conversión del UPS, $\approx$ 0,55 kW, lo que da una carga del sitio de $\approx$ 10,4 kW y una PUE de 10,4 / 7,0 $\approx$ 1,5. El numerador se mide en el tablero general del recinto y el denominador a la salida de las PDU de los racks, con medición semestral e informe (RT-06.10, RT-15.04). El generador sostiene la carga total del sitio, $\approx$ 10,4 kW, por lo que se selecciona un grupo electrógeno de 15 kVA.
+\textbf{[FIGURA 4.3-1 --- Plano de distribución interna del recinto técnico del CD Talca (RT-06.03).]}
 
-\subsection{Climatización y carga térmica}
+\begin{itemize}
+  \item \textbf{Ubicación exacta:} aquí, al cierre del cálculo de carga eléctrica. La cita se hace en el párrafo de Tipología (``\ldots se fija en el plano de distribución interna (RT-06.03, Figura 4.3-1)'') y este párrafo no puede existir sin el plano.
+  \item \textbf{Qué debe mostrar:} el plano de distribución interna del recinto con la separación de las zonas de generadores, baterías, climatización, servidores, comunicaciones, trabajo y respaldo (RT-06.03), dimensionado al equipamiento real del sitio (clúster de 3 nodos + NAS + 2 firewalls), con los accesos del personal autorizado, del proveedor de fibra y del proveedor de climatización.
+  \item \textbf{Fuente de la figura:} elaboración propia; cumple RT-06.03. La revisión del Informe 1 penalizó la ausencia de este plano.
+  \item \textbf{Estado:} por dibujar.
+\end{itemize}
 
-Cada kW eléctrico que consume el equipamiento se disipa como $\approx$ 1 kW de calor sensible, por lo que la carga térmica se dimensiona sobre la carga TI de diseño más las pérdidas de conversión del UPS (Tabla~\ref{tab:dc-termica}).
+El plano ordena el recinto en profundidad progresiva y los generadores quedan en el exterior junto a la acometida luego las zonas de baterías/UPS y de climatización y al final la sala de servidores y comunicaciones con los puestos de trabajo y el área de respaldo. La separación física de generadores y baterías respecto del área de servidores evita que una falla de energía o de clima contamine el cómputo y deja al proveedor de fibra y al de climatización sin cruzar la última línea del recinto.
 
-\begin{tablalafrox}{Carga térmica sensible proyectada del recinto}{tab:dc-termica}%
+Para la climatización de precisión en la operación continua es redundante en configuración N+1, con control de temperatura y de humedad relativa dentro de los rangos que recomienda el fabricante del equipamiento (RT-06.13).
+
+Para el cálculo de carga térmica (RT-06.11 y RT-06.13) físicamente cada kW eléctrico consumido por el equipamiento se disipa como aproximadamente 1 kW de calor sensible ($\approx$ 3.412 BTU/h), por lo que la carga térmica se dimensiona sobre la carga TI de diseño más las pérdidas de conversión del UPS, como resume la Tabla 4.3-2:
+
+\begin{tablalafrox}{Carga térmica sensible proyectada del recinto (RT-06.11)}{tab:4-3-2}%
   {Y F{0.26}}%
   {\cab{Origen del calor} & \cab{Potencia equivalente}}
   Carga TI de diseño & 7.000 W \\
-  Pérdidas de conversión del UPS, con eficiencia $\approx$ 0,92 & $\approx$ 610 W \\
+  Pérdidas de conversión del UPS (eficiencia $\approx$ 0,92) & $\approx$ 610 W \\
   \textbf{Carga térmica sensible de diseño} & \textbf{$\approx$ 7,6 kW} \\
 \end{tablalafrox}
-\fuente{elaboración propia (RT-06.11, RT-06.13).}
+\fuente{elaboración propia a partir de la carga TI de diseño (Tabla 4.3-1) y de la eficiencia declarada del UPS.}
 
-Sobre esa carga se instalan dos unidades de climatización de precisión de 10 kW ($\approx$ 34.000 BTU/h) cada una, en N+1 (RT-06.13): ante la pérdida de una, la restante cubre la carga de diseño con holgura (7,6 kW $<$ 10 kW), con temperatura y humedad relativa dentro de los rangos que recomienda el fabricante del equipamiento. La temperatura, la humedad y la presencia de agua se monitorean en línea, con alertamiento integrado a la plataforma de observabilidad (RT-06.14); no se declara una plataforma de terceros de gestión del recinto, porque las Bases no la exigen y el monitoreo en línea con su alertamiento satisface RT-06.14 y RT-06.19.
+Sobre esa carga se instalan dos unidades de climatización de precisión en configuración N+1 (RT-06.13), cada una con capacidad de enfriamiento de 10 kW ($\approx$ 34.000 BTU/h) que cuenta con la pérdida de la unidad mayor, ya que la restante cubre la carga de diseño (7,6 kW $<$ 10 kW) con holgura y la temperatura y la humedad relativa se controlan dentro de los rangos del fabricante del equipamiento (RT-06.13). No se declaran equipos ni potencias sin el cálculo que los respalde (Aclaración 2.3).
 
-\subsection{Racks, cableado y comunicaciones}
+\textbf{[FIGURA 4.3-2 --- Diagrama de racks: distribución y ocupación proyectada (RT-06.05).]}
 
-Dos racks de 42U separan servidores y comunicaciones (RT-06.05): R01 aloja los tres nodos y la NAS, y R02 los firewalls y los conmutadores. La ocupación proyectada reserva un margen de crecimiento del 20 \% a tres años, coherente con la reserva de la carga eléctrica de la Tabla~\ref{tab:dc-carga}. El cableado estructurado Cat6A y la fibra OM4 se certifican enlace por enlace sobre piso técnico (RT-06.04), y el acceso a las redes de comunicaciones ingresa al edificio por dos ductos independientes (RT-06.32).
+\begin{itemize}
+  \item \textbf{Ubicación exacta:} aquí, al cierre del cálculo de carga térmica. La cita se hace en el párrafo de Equipamiento (``\ldots la ocupación por rack y el margen de crecimiento se declaran según RT-06.05 (Figura 4.3-2)'').
+  \item \textbf{Qué debe mostrar:} los racks de servidores independientes de los racks de equipos de comunicación (RT-06.05), con la ocupación proyectada de cada rack ---servidores y NAS, y firewalls y conmutadores--- y su margen de crecimiento a tres años, para el equipamiento real del sitio.
+  \item \textbf{Fuente de la figura:} elaboración propia; cumple RT-06.05. La revisión del Informe 1 penalizó la ausencia de este diagrama.
+  \item \textbf{Estado:} por dibujar.
+\end{itemize}
 
-El cómputo corre sobre el clúster de tres nodos con redundancia N+1 y almacenamiento distribuido que tolera la pérdida de un nodo con quórum real. El almacenamiento local combina un nivel para la base transaccional, en RAID 10 bajo Ceph, y otro para el respaldo local, la NAS D-05 en RAID 6, con el nivel RAID justificado frente a las alternativas (RT-03.14; ADR-10). La instancia de escritura VM-02 es el punto único declarado, y se mitiga con su reinicio en otro nodo del clúster.
+Los racks de servidores son independientes de los racks de equipos de comunicación (RT-06.05). La ocupación proyectada reserva margen de crecimiento a tres años, coherente con el 20 \% de reserva de la carga eléctrica (Tabla 4.3-1), de modo que la ocupación declarada y su margen quedan fijados en la figura y en el Formulario T-11.
 
-\subsection{Incendio, seguridad física y custodia de medios}
+Para la protección contra incendios se realiza una detección temprana por aspiración de aire con tecnología láser, tipo AnaLASER (RT-06.16) y extinción automática con agente limpio tipo FM-200 con aprobación UL e instalación conforme a norma NFPA, con botón de aborto (RT-06.17) y un sistema secundario de extintores portátiles habilitados con mantención y certificación vigentes (RT-06.18). El sistema de detección y extinción se integra al monitoreo en línea y notifica al NOC y a la contraparte del CLIENTE (RT-06.19). No se cita una edición específica de la norma NFPA ya que el requisito se cumple conforme a RT-06.17 y la norma externa no se invoca como fuente.
 
-La detección temprana es por aspiración de aire con tecnología láser, tipo AnaLASER (RT-06.16); la extinción es automática con agente limpio tipo FM-200 con aprobación UL, instalación conforme a norma NFPA y botón de aborto (RT-06.17); hay extintores portátiles habilitados con mantención vigente (RT-06.18); y la detección y la extinción se integran al monitoreo en línea, con aviso al NOC y a la contraparte del CLIENTE (RT-06.19).
+Para el control de acceso y seguridad física el ingreso se controla con seguridad física y control de acceso biométrico basado principalmente en biometría facial con AFIS como respaldo (RT-06.20) y todo ingreso y egreso queda registrado en una bitácora auditable con identificación, fecha, hora y motivo (RT-06.21), entre el acceso principal y el término del pasillo de la zona de control se dispone un espacio para la atención de personas en proceso de enrolamiento (RT-06.22) y además se habilita una estación de enrolamiento fuera de las instalaciones del recinto técnico, al término del pasillo se instala un acceso que impide el paso de más de una persona a la vez con nueva verificación de identidad previa al ingreso (RT-06.23) y el recinto cuenta con videovigilancia y monitoreo IP con imágenes en línea disponibles al menos los últimos 30 días y respaldo recuperable (RT-06.24). La bitácora auditable se conserva por un período de retención no inferior a cinco años coherente con el piso que las Bases fijan para la retención de la auditoría del proyecto (RT-16.10).
 
-El ingreso se controla con biometría facial, con AFIS como respaldo (RT-06.20); todo ingreso y egreso queda en una bitácora auditable, conservada al menos cinco años (RT-06.21, RT-16.10); entre el acceso principal y el término del pasillo hay un espacio para el enrolamiento, además de una estación de enrolamiento fuera del recinto técnico (RT-06.22); al término del pasillo, un acceso impide el paso de más de una persona a la vez, con nueva verificación de identidad (RT-06.23); y el recinto cuenta con videovigilancia IP con imágenes en línea de al menos 30 días y respaldo recuperable, con las cámaras que fija el plano (RT-06.24).
+Para el monitoreo del sitio se monitorean en línea la temperatura, la humedad y la presencia de agua con alertamiento integrado a la plataforma de observabilidad (RT-06.14) y el estado de los puntos controlados del recinto converge en la plataforma de monitoreo con destinatario, canal, tiempo de respuesta y procedimiento escrito (RT-06.19). La observabilidad reutiliza el mecanismo del sitio on-premise hacia la nube que define el capítulo de despliegue. La convergencia en un solo tablero es la plataforma de observabilidad del sitio por lo que no se declara una plataforma DCIM/BMS de terceros porque las Bases no la exigen y RT-06.14 y RT-06.19 se satisfacen con el monitoreo en línea y su alertamiento integrado.
 
-Los medios de respaldo se conservan en un recinto de custodia con iluminación sin UV de hasta 300 lux, 40 a 60 \% de humedad relativa, ventilación forzada y 18 a 27\,\textdegree{}C (RT-06.27). Un medio cifrado transportable se rota cada semana a una bóveda externa bajo custodia acreditada, con cadena de custodia y bitácora (RT-06.26); la copia inmutable en S3 lo complementa, no lo reemplaza.
-
-Los componentes de infraestructura de la sala del CD Talca se detallan en la Tabla~\ref{tab:t27} del Anexo 4.A (Formulario T-11), y el equipamiento de cómputo, red y comunicaciones que alojan sus racks se resume en la sección~\ref{sec:4-2-6-implementos}.
+Para el cómputo almacenado onsite el cómputo corre sobre un clúster virtualizado de tres nodos con redundancia N+1 y almacenamiento distribuido que tolera la pérdida de al menos un nodo con quórum real, el almacenamiento local combina un nivel para la base transaccional y otro para el respaldo local (NAS D-05, RAID 6) con nivel RAID declarado y justificado frente a las alternativas (RT-03.14; Registro de Decisiones, Decisión 28). La instancia de escritura es el punto único declarado y se mitiga con reinicio en otro nodo del clúster.
