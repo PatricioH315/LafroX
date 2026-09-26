@@ -49,7 +49,7 @@
 | RT-02.02 | Arquitectura modular, límites de contexto y acoplamiento débil | ✅ | Microservicios cloud + módulos on-premise | Cloud §3; Tabla Bloques A-F | — |
 | RT-02.03 | Descripción según ISO/IEC/IEEE 42010 con vistas | ✅ | Documento de arquitectura | Cloud §1 (v3.6) | — |
 | RT-02.04 | Registro de decisiones de arquitectura (ADR) fechado | ✅ | Decisiones D1-D9 | Arquitectura Lógica v1 / Consolidado | — |
-| RT-02.05 | Capa de negocio sin estado; sesión/proceso en almacenes | ✅ | Monolito Django stateless; Redis/BD | Cloud §3.1 | — |
+| RT-02.05 | Capa de negocio sin estado; sesión/proceso en almacenes | ✅ | Monolito Laravel stateless (perfiles PHP-FPM y CLI); Redis central solo como caché, estado en la BD | Cloud §3.1 | — |
 | RT-02.06 | Escrituras idempotentes con clave de idempotencia | ✅ | Broker A-03 + deduplicación RF-03.17 | Tabla A-03; RF-03.16/17 | — |
 | RT-02.07 | Flujos de eventos al menos una vez + deduplicación | ✅ | RabbitMQ A-03 | Tabla A-03; Dim §1.2 | — |
 | RT-02.08 | Patrones de resiliencia demostrables | ✅ | Fargate/ECS + clúster 3 nodos | Cloud §3.2; Dim §1 | — |
@@ -160,7 +160,7 @@
 | ID | Descripción | Cumple | Componente | Sección | Hueco / Observación |
 |---|---|---|---|---|---|
 | RT-07.01 | Modalidad activo/pasivo(activo) declarada y justificada | ✅ | Talca activo · Aurora pasiva promueble · Concepción activa autónoma | Dim §5.1 | — |
-| RT-07.02 | Distancia del sitio secundario + amenazas comunes | ✅ | ~2.300 km (nube) y ~250-400 km (Concepción); análisis de amenazas | Dim §5.2; Cloud §7 | — |
+| RT-07.02 | Distancia del sitio secundario + amenazas comunes | ✅ | ~2.750 km (nube) y ≈ 200 km en línea recta (250 km por carretera) (Concepción); análisis de amenazas | Dim §5.2; Cloud §7 | — |
 | RT-07.03 | Replicación continua con medición y alerta de retraso | ✅ | DMS CDC (WAL lógico) → Aurora; alarmas lag 5/15 min | Dim §5.3 | — |
 | RT-07.04 | RTO ≤ 4 h y RPO ≤ 15 min | ✅ | DRP documentado | Dim §5.6; Cloud §7 | — |
 | RT-07.05 | Procedimiento de conmutación documentado y automatizado | ✅ | Runbook de conmutación (6 pasos, semiautomático) | Dim §5.4 | — |
@@ -274,7 +274,7 @@
 
 | ID | Descripción | Cumple | Componente | Sección | Hueco / Observación |
 |---|---|---|---|---|---|
-| RT-12.01 | Identidad centralizada con OIDC/OAuth 2.1 + LDAP | ✅ | Keycloak (Modelo B: autoridad en nube, caché local TTL 8 h) | Cloud §5.4 (RT-12.01) y §3.3 (v3.6); Tabla A-05 | Alineado: Cloud v3.6 + Tabla v06 (maestro en nube, caché local A-05 TTL 8 h, D6) |
+| RT-12.01 | Identidad centralizada con OIDC/OAuth 2.1 + LDAP | ✅ | Keycloak (Modelo B: autoridad en nube, caché local de 24 h y verificador local; validación JWT OIDC en Laravel) | Cloud §5.4 (RT-12.01) y §3.3 (v3.6); Tabla A-05 | Alineado: Tabla v06 y 14_m_decisiones_adr.tex (maestro en nube, caché local A-05 de 24 h, verificador local, D6) |
 | RT-12.02 | SSO con cierre de sesión propagado | ✅ | Keycloak back-channel logout | Cloud §5.4 (RT-12.02) | — |
 | RT-12.03 | MFA obligatoria (admins, acceso remoto, privilegiado) | ✅ | TOTP/FIDO2 + OTP externos | Cloud §5.4; Dim §9.2 | — |
 | RT-12.04 | Factores resistentes a suplantación tipo FIDO2/passkeys | ✅ | WebAuthn/passkeys para administradores | Cloud §5.4 (v3.6) | Deseable |
@@ -284,7 +284,7 @@
 | RT-12.08 | Credenciales firmadas de vida breve con refresco rotatorio | ✅ | JWT corta vida + refresh con rotación | Cloud §5.4 (RT-12.08); Dim §9.4 | — |
 | RT-12.09 | Auditoría del ciclo de vida de la identidad con no repudio | ✅ | SIEM + CloudTrail + Keycloak events | Cloud §5.4 (RT-12.09); Dim §9.5 | — |
 | RT-12.10 | Aprovisionamiento/desaprovisionamiento SCIM ≤ 24 h | ✅ | SCIM + MDM + baja ≤ 24 h | Dim §9.6 | — |
-| RT-12.11 | Autenticación adaptada al perfil de terreno (guantes, compartidos, sin correo) | ✅ | TTL 8 h + OTP offline + terminales con guantes | Tabla A-05; C-01/C-02; Dim §9.3 | — |
+| RT-12.11 | Autenticación adaptada al perfil de terreno (guantes, compartidos, sin correo) | ✅ | Credencial de turno de 8 h (bodega) y 14 h (terreno) + verificador local con PIN + OTP para externos + terminales con guantes | Tabla A-05; C-01/C-02; Dim §9.3 | — |
 | RT-12.12 | Usuarios externos con registro/verificación/recuperación autoservidos | ✅ | Portal autoservido (OTP + verificación) | Cloud §5.4 (v3.6) | — |
 | RT-12.13 | Cuenta de emergencia (break-glass) con custodia, control y auditoría | ✅ | Custodia compartida + rotación + auditoría | Cloud §5.4 (v3.6); Dim §9.7 | — |
 

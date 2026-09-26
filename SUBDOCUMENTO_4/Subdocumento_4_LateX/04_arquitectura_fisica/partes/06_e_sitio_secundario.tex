@@ -35,9 +35,8 @@ La solución tiene dos sitios de recuperación, uno por dominio en coherencia co
   {F{0.20} F{0.14} F{0.20} Y}%
   {\cab{Sitio de recuperación} & \cab{Dominio que restituye} & \cab{Distancia declarada} & \cab{Análisis de amenazas comunes}}
   Región AWS us-east-1 & Nube & $\approx$ 7.700 km de la región primaria sa-east-1 & Continente distinto y sin dependencia de la sismicidad ni de la malla eléctrica chilena y no comparte eventos de fuerza mayor con el sitio principal (RT-07.02) \\
-  CD Concepción (gabinete de borde) & On-premise & $\approx$ 250 a 400 km del CD Talca & Comparte con Talca la sismicidad de zona costera y el corte de la malla eléctrica nacional, también la exposición se mitiga con la independencia operacional de ambos sitios (operación autónoma 24 horas y alimentación protegida) y porque el dominio en nube no comparte esas amenazas (RT-07.02) \\
+  CD Concepción (gabinete de borde) & On-premise & $\approx$ 200 km del CD Talca en línea recta, 250 km por carretera & Comparte con Talca la sismicidad de zona costera y el corte de la malla eléctrica nacional, también la exposición se mitiga con la independencia operacional de ambos sitios (operación autónoma 24 horas y alimentación protegida) y porque el dominio en nube no comparte esas amenazas (RT-07.02) \\
 \end{tablalafrox}
-\fuente{elaboración propia a partir de las declaraciones de los sitios de recuperación y del análisis de amenazas comunes de RT-07.02.}
 
 Para el Sitio de recuperación en nube la elección de la región us-east-1 y la habilitación de la recuperación ante desastres quedan declaradas de forma incondicional, ya que la transferencia internacional de datos personales que la continuidad exige se trata con los resguardos de la arquitectura de seguridad, acuerdo de tratamiento con el proveedor de nube, cifrado en reposo y en tránsito extremo a extremo, minimización (la región secundaria no se explota analíticamente ni se usa para consultas de negocio, solo para continuidad) y exclusión de los datos de geolocalización de personas de la replicación transfronteriza, que permanecen solo en sa-east-1 y se registra en el inventario de tratamientos. En consecuencia los objetivos de RTO y RPO no quedan supeditados a una aprobación futura (RT-07.04) ya que la alternativa de continuidad ``solo intrarregional'' de la propuesta observada se descarta porque degradaba el objetivo de continuidad.
 
@@ -58,9 +57,8 @@ La replicación de datos es continua hacia el sitio de recuperación en nube con
   WMS on-premise (PostgreSQL de Talca) & AWS DMS por la VPN sobre el registro de escritura anticipada & $\leq$ 15 min con enlace \\
   Mensajes críticos & Patrón outbox en base y cola & $\leq$ 15 min \\
 \end{tablalafrox}
-\fuente{elaboración propia a partir de los mecanismos de replicación de la arquitectura de despliegue de este subdocumento.}
 
-Todos los dominios críticos se replican de forma continua. El único dominio cuyo retraso de replicación depende de una condición externa es la réplica del WMS on-premise ya que viaja por la WAN, en caso de que un sitio pierde simultáneamente sus dos caminos de enlace, el AWS DMS encola los cambios en origen y los entrega sin pérdida al reconectar, luego la base local permanece autoritativa durante el corte por lo que no hay pérdida de información y el retraso se mide de forma continua con alertas a los 5 y a los 15 minutos (RT-07.03).
+Todos los dominios críticos se replican de forma continua. El único dominio cuyo retraso de replicación depende de una condición externa es la réplica del WMS on-premise ya que viaja por la WAN, en caso de que un sitio pierde simultáneamente sus dos caminos de enlace, el AWS DMS encola los cambios en origen y los entrega sin pérdida al reconectar, luego la base local permanece autoritativa durante el corte por lo que no hay pérdida de información y el retraso se mide de forma continua con alertas a los 5 y a los 15 minutos (RT-07.03). Durante ese corte la copia remota del WMS queda desactualizada hasta un máximo de 24 horas, por lo que el RPO remoto de 15 minutos de esa réplica rige solo con enlace; el registro que el corte obliga a retener está dimensionado en la arquitectura de despliegue.
 
 \subsection{RPO y RTO}
 
@@ -74,9 +72,8 @@ Los objetivos de continuidad de los servicios críticos son RTO $\leq$ 4 horas y
   Transacción de negocio crítica de extremo a extremo & Disponibilidad mensual & $\geq$ 99,9 \% & Bases Administrativas, Art. 78.2; RT-10.01 \\
   Infraestructura por componente & Disponibilidad mensual & 99,95 \% & Numeral 7.2 de las Transversales \\
 \end{tablalafrox}
-\fuente{elaboración propia a partir de los requisitos citados en la columna Fuente de la propia tabla.}
 
-Estos objetivos se declaran \textbf{sin condiciones} ya que no dependen de aprobaciones ni de la reconexión de enlaces ni de otros eventos futuros del CLIENTE (RT-07.04). El RPO de la sección anterior se verifica en las pruebas de recuperación (RT-07.07) que miden el RTO y el RPO efectivamente alcanzados.
+Estos objetivos se declaran \textbf{sin condiciones} ya que no dependen de aprobaciones ni de otros eventos futuros del CLIENTE (RT-07.04). La única precisión corresponde a la réplica remota del WMS durante un corte de enlace: mientras el sitio está aislado su base local es la fuente autoritativa y no pierde información, pero la copia en la nube no puede actualizarse hasta que el enlace vuelve, como se indicó en la replicación. El RPO de la sección anterior se verifica en las pruebas de recuperación (RT-07.07) que miden el RTO y el RPO efectivamente alcanzados.
 
 \subsection{Procedimiento de conmutación}
 
@@ -94,7 +91,6 @@ El procedimiento de conmutación está documentado, automatizado en la mayor med
   7 & Reconexión del broker y sincronización del borde & Systems Manager Automation & --- \\
   8 & Validación funcional de extremo a extremo & Operación & --- \\
 \end{tablalafrox}
-\fuente{elaboración propia a partir del procedimiento de conmutación exigido por RT-07.05.}
 
 Los pasos con tiempo declarado suman y en el peor caso y ejecutados en serie cerca de 2 horas más el tiempo de la decisión dentro del RTO de 4 horas (RT-07.04). Solo el tercer paso requiere intervención humana y es ahí donde reside la protección contra una conmutación innecesaria (RT-07.08, deseable). Como los pasos cuarto a séptimo están automatizados el equipo de tecnologías de información del CLIENTE de cuatro personas puede ejecutar el procedimiento tras la transferencia de conocimiento (RT-07.05; Caso 02, Cap. 10, Restricción N.º 9), con el acompañamiento del servicio de operación del proyecto.
 

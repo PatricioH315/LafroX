@@ -95,7 +95,6 @@ En la nube, la región primaria es sa-east-1 y cada servicio se despliega en al 
   \end{tikzpicture}
   \caption{Ubicación de los componentes por dominio y por sitio}
   \label{fig:emplazamiento-dominios}
-  \fuentefigura{elaboración propia a partir del catálogo de componentes de la arquitectura lógica y de la volumetría del caso (Caso, Tabla 14.1).}
 \end{figure}
 
 La figura muestra que ninguna instalación depende de otra para operar. Talca y Concepción tienen cada uno su WMS, su base, su broker y su caché de identidad; los cross-docking reúnen esas mismas funciones en un solo equipo; y el terreno lleva su propio almacén local en el dispositivo. La nube concentra lo que es común a todos los sitios: los portales, el transaccional compartido, la analítica y los servicios de seguridad. Los doce componentes híbridos aparecen en los dos dominios porque cada uno tiene una parte que debe seguir operando en el sitio y otra que consolida en la nube.
@@ -110,14 +109,14 @@ La Tabla~\ref{tab:mapeo-logica} asocia cada módulo y cada capa transversal de l
   M1 Recepción & A-01 y A-02, con C-03 y C-05 & Sitio \\
   M2 Inventario & A-01 y A-02 en el sitio; N-04 y N-05 para el consolidado & Sitio y nube \\
   M3 Preventa & C-01 en el terminal; N-04, N-05 y N-07 & Terreno y nube \\
-  M4 Rutas & N-04 y N-05 & Nube \\
+  M4 Rutas & N-04 y N-05; motor de optimización en su propio contenedor & Nube \\
   M5 Preparación & A-01 y A-02, con C-03 y C-04 & Sitio \\
   M6 Reparto & C-02 en el terminal; N-04 y N-05, con la evidencia en S3 & Terreno y nube \\
   M7 Rendición & C-02; N-04; A-04 hacia el ERP & Terreno, nube y VM-04 \\
   M8 Devoluciones & C-02; N-04; A-01 en la recepción del retorno & Terreno, nube y sitio \\
   M9 Calidad & B-01, B-02 con el bloqueo en el borde y B-03; N-06 y N-08 & Sitio, camiones y nube \\
   M10 Analítica & N-10 & Nube \\
-  M11 Canal moderno & N-04 con el hub EDI; A-04 & Nube y VM-04 \\
+  M11 Canal moderno & N-04 con el perfil EDI y el transporte AS2; A-04 & Nube y VM-04 \\
   M12 Flota & N-04 y N-06, con la API del proveedor de telemetría & Nube \\
   Capa 1, portales & N-01 a N-03 & Nube \\
   Capas 2 y 3, entrada y puerta de enlace & CloudFront, WAF y API Gateway (N-01 a N-03 y N-12); puerta de API local en A-01 & Nube y sitio \\
@@ -126,9 +125,8 @@ La Tabla~\ref{tab:mapeo-logica} asocia cada módulo y cada capa transversal de l
   Capa 7, seguridad e identidad & A-05 con el verificador local; F-03; N-12 & Nube y sitio \\
   Capa 8, observabilidad & F-01 y CloudWatch (N-12) & Sitio y nube \\
 \end{tablalafrox}
-\fuente{elaboración propia a partir de los módulos y capas de la arquitectura lógica (apartado 4.1) y del catálogo de componentes de esta parte.}
 
-La tabla muestra la regla del emplazamiento aplicada a la lógica. M1, M2 y M5, junto con el bloqueo de M9, tienen su parte operativa en el sitio, porque son las funciones que el caso exige sostener sin enlace; los demás módulos corren en la nube dentro del monolito (N-04), y el terreno conserva su captura en el terminal. El monolito es una sola imagen: en la nube corre completo y en los sitios, en modo wms\_only.
+La tabla muestra la regla del emplazamiento aplicada a la lógica. M1, M2 y M5, junto con el bloqueo de M9, tienen su parte operativa en el sitio, porque son las funciones que el caso exige sostener sin enlace; los demás módulos corren en la nube dentro del monolito (N-04), y el terreno conserva su captura en el terminal. El monolito es un solo artefacto PHP 8.5 con Laravel 13, construido una vez por versión con sus dependencias fijadas en \texttt{composer.lock}, que se ejecuta en perfiles separados según el lugar y la función: en la nube, los perfiles de API, de consumo de reconciliación, de trabajos y de planificación; en los sitios, el perfil \texttt{wms\_only}, limitado a M1, M2, M5 y al bloqueo de M9, y el shipper que vacía el broker local hacia la nube. Los perfiles comparten la misma revisión de código y de esquema, pero tienen permisos, concurrencia y escalado propios, como se detalla en la arquitectura de despliegue. Las dos excepciones con runtime propio son el motor de optimización de rutas de M4 y el transporte AS2 de M11, que se aíslan tras un contrato versionado porque su equivalencia en PHP no está demostrada (ADR-01).
 
 \subsection{Síntesis del emplazamiento por dominio y criterio}
 
@@ -145,7 +143,6 @@ La Tabla~\ref{tab:t21} resume cómo se distribuyen los 36 componentes entre los 
   Costo total de propiedad & 3\textsuperscript{*} & 1 & --- & 4 \\
   \textbf{Total de componentes} & \textbf{13} & \textbf{11} & \textbf{12} & \textbf{36} \\
 \end{tablalafrox}
-\fuente{elaboración propia; criterios conforme al Art. 16.2 de las Bases Administrativas.}
 
 El emplazamiento no obedece a una preferencia sino a cuatro hechos del caso. La conectividad decide once componentes y domina el on-premise y los híbridos, porque el caso describe enlaces que se cortan y terreno sin señal. La regulación decide seis y domina la nube pura, porque el Artículo 21 impide exponer los sitios a Internet y separa los públicos externos en la DMZ. El costo y el volumen concentran en la nube lo que escala y se paga por uso, y la latencia y la criticidad dejan en el sitio lo que debe responder sin enlace. La columna Total suma 37 en las filas de criterios porque la plataforma analítica (N-10) se contabiliza en los dos criterios que deciden su emplazamiento, volumen de datos y costo total de propiedad; la fila final suma los 36 componentes efectivos.
 
@@ -157,12 +154,12 @@ Los trece componentes de nube pura viven solo en la nube. La justificación de c
   \item \textbf{N-01 Portal de Clientes} (regulación): atiende el catálogo, la autoatención y el pago de los clientes desde Internet, por lo que se publica solo en la DMZ de la nube y ningún tráfico externo llega a los sitios del CLIENTE.
   \item \textbf{N-02 Portal de Transportistas} (regulación): los conductores externos entran con una clave de un solo uso y sin cuenta corporativa (RF-06.08), y ese acceso se resuelve en la DMZ de la nube.
   \item \textbf{N-03 Portal de Proveedores} (regulación): los 180 proveedores consultan órdenes de compra, recepciones y devoluciones desde Internet, aislados de la red de bodega.
-  \item \textbf{N-04 Plataforma de aplicación} (costo): el monolito Django y sus workers Celery corren en ECS Fargate y escalan de 2 a 6 tareas en el peak de septiembre, sin servidores permanentes que mantener.
+  \item \textbf{N-04 Plataforma de aplicación} (costo): el monolito Laravel corre en ECS Fargate en perfiles separados ---API con PHP-FPM detrás del balanceador, consumidor de reconciliación, trabajos y planificador--- que escalan cada uno por su propia señal en el peak de septiembre, sin servidores permanentes que mantener. En la misma plataforma corre, en un contenedor propio, el motor de optimización de rutas de M4, y el transporte AS2 del hub EDI de M11 se contrata como servicio administrado (AWS Transfer Family), ambos tras un contrato versionado (ADR-01, ADR-11).
   \item \textbf{N-05 Base de datos en nube} (criticidad): Aurora PostgreSQL guarda el transaccional de los módulos en nube y la réplica del WMS, conmuta entre zonas en menos de 30 s y se replica a us-east-1.
   \item \textbf{N-06 Telemetría cruda} (volumen): DynamoDB recibe las lecturas de temperatura sin gestión de capacidad y las expira a los 30 días, cuando ya están consolidadas en la capa analítica.
   \item \textbf{N-07 Caché} (latencia): ElastiCache mantiene en memoria el stock, el crédito y las sesiones para que la consulta de preventa responda en menos de 2 s.
   \item \textbf{N-08 Ingesta de IoT} (volumen): IoT Core y Lambda reciben los 16.100 mensajes diarios de cadena de frío por MQTTS, validan cada lectura y gestionan los gateways del borde.
-  \item \textbf{N-09 Mensajería} (criticidad): SQS FIFO recibe la reconciliación de los sitios en orden y sin duplicados, y SNS difunde las alertas de excursión térmica.
+  \item \textbf{N-09 Mensajería} (criticidad): una cola SQS FIFO recibe la reconciliación de los sitios como sobres JSON versionados, en orden por grupo y sin duplicados; otras colas SQS, separadas de esa, transportan los trabajos internos de Laravel; y SNS difunde las alertas de excursión térmica.
   \item \textbf{N-10 Plataforma analítica} (volumen y costo): S3, Glue, Redshift Serverless y QuickSight conservan 5 años de datos separados del transaccional y publican los tableros del CLIENTE.
   \item \textbf{N-11 Respaldo inmutable y réplica} (regulación): S3 Object Lock, AWS Backup y la réplica en us-east-1 guardan la copia que ni un administrador puede borrar y sostienen el RTO de 4 h y el RPO de 15 min.
   \item \textbf{N-12 Seguridad y gobierno} (regulación): KMS, Secrets Manager, WAF, Shield, Security Lake y CloudWatch cumplen los controles del Artículo 21 como servicios que un equipo de TI de cuatro personas puede operar.
@@ -196,10 +193,10 @@ En el on-premise dominan la latencia y la conectividad. Los sensores, las impres
 Los doce componentes híbridos tienen una parte en cada dominio. Para cada uno, la justificación explica qué parte vive en el sitio, qué parte vive en la nube y por qué se reparten así:
 
 \begin{itemize}
-  \item \textbf{A-01 Motor WMS} (latencia): corre en VM-01, VM-C01 y E-01 porque la confirmación de preparación debe responder en 1 s sin depender del enlace, y su réplica en Aurora sostiene la continuidad. El mismo motor expone la puerta de API local de la bodega, que durante un corte valida el esquema, la tasa, el UUID y la auditoría de las solicitudes de los terminales sin pasar por API Gateway.
-  \item \textbf{A-02 Base transaccional del WMS} (criticidad): PostgreSQL 16 en VM-02 y VM-C02 es el registro de la bodega durante un corte, y DMS replica sus cambios a Aurora con un RPO de 15 min.
-  \item \textbf{A-03 Broker de colas} (conectividad): RabbitMQ en VM-03, VM-C04 y E-01 guarda hasta 24 h de transacciones sin enlace y las entrega en orden a SQS FIFO, donde Celery las reconcilia.
-  \item \textbf{A-04 Capa anticorrupción del ERP} (criticidad): corre en VM-04 junto al ERP de 2017, que no se modifica, y el worker celery-erp-sync de la nube la consulta por la VPN como única puerta al legado.
+  \item \textbf{A-01 Motor WMS} (latencia): el perfil \texttt{wms\_only} del artefacto Laravel, con su servidor web y PHP-FPM, corre en VM-01, VM-C01 y E-01 porque la confirmación de preparación debe responder en 1 s sin depender del enlace, y su réplica en Aurora sostiene la continuidad. El mismo motor expone la puerta de API local de la bodega, que durante un corte valida el esquema, la tasa, el UUID y la auditoría de las solicitudes de los terminales sin pasar por API Gateway.
+  \item \textbf{A-02 Base transaccional del WMS} (criticidad): PostgreSQL 16 en VM-02 y VM-C02 es el registro de la bodega durante un corte, y DMS replica sus cambios a Aurora para continuidad y lectura, con un RPO de 15 min mientras hay enlace.
+  \item \textbf{A-03 Broker de colas} (conectividad): RabbitMQ en VM-03, VM-C04 y E-01 guarda hasta 24 h de eventos sin enlace, con mensajes persistentes y confirmación de publicación; el shipper, un proceso PHP con el adaptador AMQP \texttt{php-amqplib}, los publica como sobres JSON en SQS FIFO y solo los retira del broker cuando SQS confirma la recepción.
+  \item \textbf{A-04 Capa anticorrupción del ERP} (criticidad): corre en VM-04 junto al ERP de 2017, que no se modifica, y el trabajador Laravel \texttt{erp-sync} de la nube la consulta por la VPN como única puerta al legado, con una clave idempotente por operación para que un reintento no emita un segundo documento tributario.
   \item \textbf{A-05 Identidad} (conectividad): el IdP maestro Keycloak corre en Fargate y sus cachés de solo lectura en VM-05, VM-C03 y E-01 validan las sesiones de bodega y de cross-docking sin enlace; en el mismo nodo, un verificador local habilita cada relevo de turno durante un corte con el manifiesto de turno firmado y un segundo factor local, el PIN personal.
   \item \textbf{B-03 Termógrafos de camión} (conectividad): los 28 termógrafos —18 en los camiones propios y 10 en los de los transportistas— registran la temperatura durante toda la ruta sin señal y sincronizan por Bluetooth con el terminal del conductor, que alerta la excursión térmica en el momento y la reenvía a la nube cuando recupera cobertura; al volver el camión, el mismo terminal descarga el registro completo y lo envía a la nube para que IoT Core lo valide.
   \item \textbf{C-01 App de preventa} (conectividad): toma pedidos contra el almacén local del terminal cuando no hay señal y sincroniza con API Gateway al reconectar, sin duplicar pedidos.
@@ -224,7 +221,6 @@ El emplazamiento anterior se verifica en lo que cada ámbito puede hacer cuando 
   Cross-docking & 24 h o más; la ventana de 3 h opera 100\,\% local & RT-03.10 y RT-03.11 \\
   Sincronización al reconectar & CD en 2 h; flota en 10 min & RT-03.13 y RNF-07.01 \\
 \end{tablalafrox}
-\fuente{elaboración propia a partir de los compromisos de operación desconectada del caso (Caso, Cap. 6).}
 
 Durante la autonomía, cada ámbito mantiene su operación completa contra sus datos locales. El centro de distribución sigue con recepción, preparación, despacho, conteo cíclico y trazabilidad contra la base local (RT-03.12). El terreno sigue con toma de pedido, entrega, evidencia, devoluciones y cobros contra el almacén local del dispositivo (RT-03.10). El cross-docking mantiene recepción, desconsolidación, validación de frío y re-despacho (RT-03.11). Al reconectar, el vuelco ocurre en orden estricto, sin duplicados y con reconciliación determinista (RT-03.13, RNF-07.01).
 

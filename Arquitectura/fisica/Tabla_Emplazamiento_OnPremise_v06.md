@@ -1,6 +1,8 @@
 # Arquitectura Física — Componente On-Premise
 ## Distribuidora Puelche S.A. — Caso 02 Logística
 
+> **Actualización 25-09-2026 — backend Laravel.** Las filas de A-04, A-05, C-01, N-02, N-03 y N-04 se alinearon con la arquitectura lógica en Laravel 13 / PHP 8.5 y con la identidad vigente (caché de 24 h y verificador local). Las notas de versión anteriores se conservan como historial.
+
 > **Nota de alcance (v07):** Este documento es la **tabla de emplazamiento de la solución completa** exigida por el Artículo 16° y el capítulo 3.1 de las Transversales: asigna **cada componente** de la arquitectura física híbrida a **nube, on-premise o híbrido**, con justificación por criterio del Art. 16.2 (latencia, criticidad operacional, volumen de datos, restricciones regulatorias, disponibilidad de conectividad y costo total de propiedad). La **Sección 1.0** es la **tabla maestra** de **36 componentes** (23 del dominio on-premise/híbrido, Bloques A–F + 13 servicios del dominio nube pura, serie N-01…N-13). El detalle profundo del dominio AWS está en `Propuesta_Arquitectura_Cloud_Caso02_CLAUDE_v2.md` (v3.6), el detalle on-premise en los Bloques A–F y `Dimensionamiento_Infraestructura_OnPremise_v05.md`, y la integración entre ambos segmentos en `Arquitectura_Fisica_Hibrida_Consolidada_Caso02_v02.md` (fuente única consolidada). 
 >
 > **Versión 05 — Cambios respecto de la v04:**
@@ -44,12 +46,12 @@
 | A-01 | Motor WMS (recepción, picking FEFO, misiones RF, despacho, SSCC GS1) | **HÍBRIDO** | Módulo `wms_only` en Aurora: réplica de continuidad (DMS CDC, RPO ≤ 15 min) | VM-01 Talca (maestro) · VM-C01 Concepción (edge autónoma) · E-01 cross-docks (mini-WMS) | LAT + CONN: operación sin señal en cámara; autonomía 24 h (RT-03.10) | BLOQUE A (A-01); Dim §1.3; Cloud §3.1 |
 | A-02 | BD transaccional WMS (PostgreSQL + PostGIS) | **HÍBRIDO** | Aurora: OLTP de los módulos cloud + réplica DRP del WMS (la serie de tiempo consolidada vive en OLAP/S3, no en Aurora) | VM-02 Talca (8 vCPU/32 GB, 1,5 TB, RAID 10 — RT-03.14) · VM-C02 Concepción · BD local cross-dock | CRIT + LAT: escritura local sin pérdida; tolerancia a falla de disco | BLOQUE A (A-02); Dim §1.3 |
 | A-03 | Broker de colas offline (RabbitMQ) | **HÍBRIDO** | SQS FIFO (reconciliación/ERP) + EventBridge (eventos de negocio) | VM-03 Talca (≈ 3 M mensajes) · VM-C04 Concepción · broker E-01 | CONN: encolado local durante cortes + reconciliación determinista (RT-03.12) | BLOQUE A (A-03); Consolidado §3.4 |
-| A-04 | Capa anticorrupción ERP (frontera) | **HÍBRIDO** | Worker `celery-erp-sync` en ECS (eventos → ERP por VPN saliente) | VM-04 Talca | CRIT + LAT: ERP local sin modificar; latencia síncrona < 50 ms | BLOQUE A (A-04); Consolidado §3.4 |
-| A-05 | IdP Keycloak — autoridad única (nube) + caché local | **HÍBRIDO** | **Keycloak IdP maestro** en ECS Fargate (2 tareas Multi-AZ, backend Aurora) — Modelo B (D6) | VM-05 Talca + VM-C03 Concepción: caché local de solo lectura TTL 8 h | CRIT + CONN: login offline 24 h CD / 14 h terreno (RT-03.10) sin maestro local | BLOQUE A (A-05); Cloud §3.3/§5.4; Consolidado C6 |
+| A-04 | Capa anticorrupción ERP (frontera) | **HÍBRIDO** | Trabajador Laravel `erp-sync` en ECS (eventos → ERP por VPN, con clave idempotente por operación) | VM-04 Talca | CRIT + LAT: ERP local sin modificar; latencia síncrona < 50 ms | BLOQUE A (A-04); Consolidado §3.4 |
+| A-05 | IdP Keycloak — autoridad única (nube) + caché local | **HÍBRIDO** | **Keycloak IdP maestro** en ECS Fargate (2 tareas Multi-AZ, backend Aurora) — Modelo B (D6) | VM-05 Talca + VM-C03 Concepción + E-01: caché local de solo lectura de 24 h y verificador local de relevo (credencial de turno de 8 h en bodega) | CRIT + CONN: login offline 24 h CD / 14 h terreno (RT-03.10) sin maestro local | BLOQUE A (A-05); Cloud §3.3/§5.4; Consolidado C6 |
 | B-01 | Sensores IoT de temperatura (Ebyte ME31) | **ON-PREMISE** | — | 28 puntos en cámara −22 °C (≈ 7 módulos Modbus RTU/TCP) | LAT + HW: lectura continua 30 s sin señal; bus industrial | BLOQUE B (B-01) |
 | B-02 | Gateway IoT + Greengrass (ADAM-6000) | **ON-PREMISE** | Gestión/OTA/flota desde AWS IoT Core | Gateway en Talca y Concepción | LAT + CONN: edge real-time + buffer 14 h; gestionado desde nube | BLOQUE B (B-02); Cloud §3.4 |
 | B-03 | Termógrafos de camión (Onset CX450) | **HÍBRIDO** | AWS IoT Core: `fn-iot-validator` + alerta SNS < 5 s | 18 dispositivos + backhaul BLE | LAT + CONN: registro local durante ruta sin señal + validación cloud | BLOQUE B (B-03); Cloud §3.2 |
-| C-01 | App de preventa offline (Zebra EC55) | **HÍBRIDO** | API Gateway + módulos Django cloud (pedidos/crédito/catálogo) | App SQLite offline-first (62 + reserva 20 %) | LAT: lógica local < 1,5 s; sincro deduplicada < 10 min | BLOQUE C (C-01); Sec. 4 ítem 1 |
+| C-01 | App de preventa offline (Zebra EC55) | **HÍBRIDO** | API Gateway + perfil de API Laravel en la nube (pedidos/crédito/catálogo) | App SQLite offline-first (62 + reserva 20 %) | LAT: lógica local < 1,5 s; sincro deduplicada < 10 min | BLOQUE C (C-01); Sec. 4 ítem 1 |
 | C-02 | App de repartidor offline (TC58e + ZQ620 Plus + PAX A920 Pro) | **HÍBRIDO** | API Gateway + módulos POD/ERP events | App completa offline 14 h (POD foto/firma, cobros) | CONN + CRIT: 14 h sin señal (RNF-06.02) + sincro < 10 min | BLOQUE C (C-02); Sec. 4 ítems 2–5 |
 | C-03 | Terminales de bodega (MC9400 Cold Storage) | **ON-PREMISE** | — | 144 Talca · 30 Concepción | CONN: sin señal en cámara −22 °C | BLOQUE C (C-03); Sec. 4 ítem 6 |
 | C-04 | Impresoras de andén (ZT411) | **ON-PREMISE** | — | 4 Talca · 2 Concepción | LAT: periférico local (SSCC) | BLOQUE C (C-04); Sec. 4 ítem 7 |
@@ -70,9 +72,9 @@
 | ID | Componente | Emplazamiento | Instancia nube | Instancia on-premise | Criterio dominante (Art. 16.2) | Referencia |
 |---|---|---|---|---:|---|---|
 | N-01 | Portal de Clientes (catálogo RF-12.14, autoatención RF-12.15–12.18/12.25–12.29, pago RF-12.30, cobranza RF-07.07/07.08) | **NUBE** | S3+CloudFront+WAF → API Gateway → Fargate `portal` → Aurora (DMZ pública) | — | REG + CRIT: canal moderno con pago Transbank; sin modo offline (RT-03.13) | Consolidado §3.7 (N-01, C15) |
-| N-02 | Portal de Transportistas (RF-12.19–12.21, OTP RF-06.08) | **NUBE** | SPA Angular + módulos Django (DMZ pública) | — | REG: OTP de un solo uso para externos; sin datos locales | Consolidado §3.7 (N-02, C15) |
-| N-03 | Portal de Proveedores (RF-12.22–12.24: OC, recepciones, devoluciones) | **NUBE** | SPA Angular + módulos Django (DMZ pública) | — | REG + CRIT: B2B sin acoplamiento físico (HW = No) | Consolidado §3.7 (N-03, C15) |
-| N-04 | Plataforma de aplicación cloud (monolito Django + workers Celery) | **NUBE** | ECS Fargate, 2→6 tareas peak (2 vCPU/4 GB), Multi-AZ | — | CRIT + TCO: carga principal en nube (Art. 16.1); elasticidad septiembre | Cloud §3.1/§3.5 |
+| N-02 | Portal de Transportistas (RF-12.19–12.21, OTP RF-06.08) | **NUBE** | SPA Angular + perfil de API Laravel (DMZ pública) | — | REG: OTP de un solo uso para externos; sin datos locales | Consolidado §3.7 (N-02, C15) |
+| N-03 | Portal de Proveedores (RF-12.22–12.24: OC, recepciones, devoluciones) | **NUBE** | SPA Angular + perfil de API Laravel (DMZ pública) | — | REG + CRIT: B2B sin acoplamiento físico (HW = No) | Consolidado §3.7 (N-03, C15) |
+| N-04 | Plataforma de aplicación cloud (monolito Laravel en perfiles de API, consumo, trabajos y planificador) | **NUBE** | ECS Fargate, API 2→4 tareas peak (techo 8; 1 vCPU/2 GB), consumidor y trabajos 2→4, planificador 1, Multi-AZ | — | CRIT + TCO: carga principal en nube (Art. 16.1); elasticidad septiembre | Cloud §3.1/§3.5 |
 | N-05 | Base de datos administrada cloud | **NUBE** | Aurora PostgreSQL Multi-AZ (OLTP cloud + réplica DRP + backend Keycloak; la serie de tiempo consolidada vive en OLAP/S3) | — | CRIT + LAT: failover < 30 s automático; PITR 35 días | Cloud §4.2 |
 | N-06 | Datastore IoT raw | **NUBE** | DynamoDB (TTL 30 días) | — | VOL + TCO: escrituras serverless < 10 ms p99; retención acotada | Cloud §4.2 |
 | N-07 | Caché cloud (stock/crédito/sesiones) | **NUBE** | ElastiCache for Redis | — | LAT: preventa < 2 s sobre caché | Cloud §4.2 |
@@ -92,7 +94,7 @@
 | **Preventa (C-01)** | Toma de pedido, precios y crédito cacheados, ID único offline, deduplicación (RF-03.16/17) | Validación de crédito en tiempo real contra backend, promociones/precios recién publicados en nube, consulta de stock global | El preventista emplea la lista de precios y saldo de crédito del caché del turno (TTL 8 h, A-05); pedido sobre saldo cacheado → coordinación telefónica con oficina de crédito con evento en bitácora; al reconectar el sistema valida y marca discrepancias para revisión (RF-03.17) |
 | **Reparto y cobranza (C-02)** | Entrega, POD (foto firma), devoluciones, cobro en efectivo, actualización local de ruta | Autorización de tarjeta en línea (auth de la pasarela) y validación antifraude; preconciliación en nube | El POS captura la transacción como *pending* para autorización diferida al reconectar; si no procede, cobro en efectivo o giro a crédito con firma del cliente y nota de envío manual; conciliación en base al reconectar (RNF-07.01 ≤ 10 min) |
 | **WMS bodega (A-01/A-02)** | Recepción, preparación, despacho, conteo cíclico y trazabilidad local contra BD local (RT-03.10/03.11) | Sincronización con ERP maestro (A-04), maestro de productos recién actualizado desde nube, BI/dashboards cloud | Cambios de maestro se aplican al reconectar con reconciliación determinista de stock (RT-03.12); si la dirección lo exige durante la contingencia, se lleva reporte manual de operación en planilla (caso extremo documentado) |
-| **Autenticación (A-05)** | Login/SSO offline con caché TTL 8 h (validación local de firma OIDC) | Alta/baja de usuarios, cambio de roles/permisos, reset de contraseña, re-registro MFA, OTP nuevo para externos | El administrador local habilita acceso temporal de emergencia registrado en bitácora; altas/bajas y roles se sincronizan desde Keycloak al recuperar el enlace (RF-15.05 ≤ 24 h) |
+| **Autenticación (A-05)** | Operación offline de 24 h: caché de identidad de 24 h que no emite sesiones, credencial de turno de hasta 8 h y relevos habilitados por el verificador local con manifiesto firmado y PIN personal | Alta/baja de usuarios, cambio de roles/permisos, reset de contraseña, re-registro MFA, OTP nuevo para externos | El administrador local habilita acceso temporal de emergencia registrado en bitácora; altas/bajas y roles se sincronizan desde Keycloak al recuperar el enlace (RF-15.05 ≤ 24 h) |
 | **Cadena de frío (B-01/B-02)** | Lectura continua cada 30 s, detección de excursión y bloqueo de despacho 100 % local, buffer offline 14 h | Alerta externa (SMS/email a la Autoridad Sanitaria) y telegestión remota desde nube | La excursión la decide el sistema local (alarma acústica/luz y sensor RT-06.14 en el NOC) y el Jefe de TI on-call 24×7; el bloqueo de despacho es local y no depende de la alerta remota |
 | **Observabilidad (F-01)** | Métricas, logs y trazas **bufferizadas en disco 24 h** por el colector ADOT — no se pierde ninguna señal | **Tableros centralizados** (Grafana OSS, AMP, CloudWatch, X-Ray) durante el corte; correlación y consulta histórica | Durante el corte rigen las **alarmas locales del propio equipamiento**: excursión térmica con señal acústica y luminosa en bodega, sensores de sala al DCIM/BMS (RT-06.14), alarmas del hipervisor y del firewall, y el **bloqueo de despacho por frío, que es 100 % local**. El envío diferido cierra el hueco al reconectar (RT-03.16). **Ninguna decisión de la ventana crítica 05:30–07:00 depende de la observabilidad centralizada** (D14 · ADR-14) |
 | **Cross-docking (E-01)** | Ventana de 3 h 100 % local: recepción, desconsolidación, validación de frío, re-despacho | Visibilidad global en nube, planificación central de rutas, sincronización con WMS maestro (diferida) | Operación según papeleta generada al inicio del turno; sincronización diferida al reconectar con reconciliación (RT-03.11) |
@@ -197,7 +199,7 @@ Justificación: El ERP de 2017 (sistema de gestión) no tiene documentación té
 | LAT | < 200 ms (validación de firma y sesión local) |
 | CRIT | CRITICO — sin él, los 120 operarios de picking no pueden hacer login durante un corte de WAN, deteniendo la operación nocturna |
 | VOL | Bajo — tokens JWT y caché de identidades (texto compacto) |
-| CONN | Funciona sin WAN (TTL 8 h = turno nocturno completo); sincroniza altas/bajas y roles al recuperar el enlace |
+| CONN | Funciona sin WAN durante 24 h (caché de 24 h; credencial de turno de 8 h y relevos por el verificador local); sincroniza altas/bajas y roles al recuperar el enlace |
 | TCO | Bajo — caché offline del IdP **Keycloak** (open source, sin costo de licencia de identidad); VM en el hipervisor de Talca y réplica en Concepción |
 | HW | No |
 
@@ -516,7 +518,7 @@ Justificación: RNF-14.05 exige EDR en todos los endpoints (servidores WMS, nodo
 | N-01 | Portal de Clientes (S3+CloudFront+WAF → API GW → Fargate `portal` → Aurora) | NUBE | REG, CRIT | Administrado; borde público aislado de los datos (RT-03.04) | Cloud v3.6 §2; Consolidado C15 |
 | N-02 | Portal de Transportistas (SPA Angular, OTP de un solo uso RF-06.08) | NUBE | REG, CRIT | Administrado; RBAC por rol (Keycloak) | Cloud v3.6 §2; Consolidado C15 |
 | N-03 | Portal de Proveedores (OC, recepciones, devoluciones) | NUBE | REG, CRIT | Administrado; Zero Trust | Cloud v3.6 §2; Consolidado C15 |
-| N-04 | ECS Fargate — monolito Django + workers Celery | NUBE | CRIT, TCO | Multi-AZ (RT-03.02); IaC (RT-03.03); 2→6 tareas en peak | Cloud v3.6 §3.1/§3.5 |
+| N-04 | ECS Fargate — monolito Laravel (perfiles de API, consumo, trabajos y planificador) | NUBE | CRIT, TCO | Multi-AZ (RT-03.02); IaC (RT-03.03); API 2→4 tareas en peak, techo 8 | Cloud v3.6 §3.1/§3.5 |
 | N-05 | Aurora PostgreSQL (OLTP cloud + réplica DRP + Keycloak; serie temporal consolidada en OLAP/S3) | NUBE | CRIT, LAT | Administrado; failover < 30 s; PITR 35 días | Cloud v3.6 §4.2 |
 | N-06 | DynamoDB (IoT raw, TTL 30 días) | NUBE | VOL, TCO | Serverless (RT-03.09) | Cloud v3.6 §4.2 |
 | N-07 | ElastiCache for Redis (stock/crédito/sesiones) | NUBE | LAT, TCO | Administrado | Cloud v3.6 §4.2 |
@@ -536,7 +538,7 @@ Justificación: RNF-14.05 exige EDR en todos los endpoints (servidores WMS, nodo
 | A-02 | BD transaccional WMS | ON-PREMISE | Escritura local + RAID 10 (RT-03.14) |
 | A-03 | Broker de colas offline | ON-PREMISE | Encolado + reconciliación |
 | A-04 | Capa anticorrupción ERP (frontera) | ON-PREMISE | ERP local + latencia síncrona |
-| A-05 | Caché autenticación local (IdP Keycloak, Modelo B) | ON-PREMISE | Login offline 24 h (TTL 8 h) |
+| A-05 | Caché autenticación local (IdP Keycloak, Modelo B) | ON-PREMISE | Operación offline 24 h (caché de 24 h; credencial de turno de 8 h) |
 | B-01 | Sensores IoT temperatura (Ebyte ME31) | ON-PREMISE | Sin señal + Modbus RTU industrial |
 | B-02 | Gateway IoT + Greengrass | ON-PREMISE | Edge computing + buffer |
 | B-03 | Termógrafos camión (Onset CX450) | HIBRIDO | Hardware local + sincro nube |
@@ -586,7 +588,7 @@ Justificación: RNF-14.05 exige EDR en todos los endpoints (servidores WMS, nodo
 | **RT-03.17 / RNF-13.07** — Enlace red. | D-03 (fibra) + **D-06 (satelital Starlink)** + D-04 (LTE, 2 proveedores; dual en cross-dock) + D-01 (VPN IPsec BGP / SD-WAN multi-WAN + **Direct Connect complementario, VIF en D-01**) |
 | **RT-03.19** — Procesamiento en borde | B-02 (Greengrass Core) + E-01 (mini-WMS) |
 | **RT-03.14 / RT-03.23** — Citas verificadas | A-02 (RAID 10, tolerancia a disco) · D-02 (segmentación inalámbrica) |
-| **RF-15.01 a 15.05 / D6 (Arquitectura Lógica v1)** — Identidad | A-05 — **Caché local del IdP Keycloak (Modelo B, autoridad única en nube, TTL 8 h)** |
+| **RF-15.01 a 15.05 / D6 (Arquitectura Lógica v1)** — Identidad | A-05 — **Caché local del IdP Keycloak (Modelo B, autoridad única en nube, caché de 24 h y verificador local)** |
 | **D7 / D9 (Arquitectura Lógica v1)** — Híbrido obligatorio + OTel | Componentes on-premise + F-01 (Capa 8) |
 | **RNF-13.01** — Autonomía 24 h | A-01, A-02, A-03, A-05, E-01, B-02 |
 | **RNF-14.05 / RNF-23.04** — EDR | F-03 (Agente EDR en servidores y estaciones) |

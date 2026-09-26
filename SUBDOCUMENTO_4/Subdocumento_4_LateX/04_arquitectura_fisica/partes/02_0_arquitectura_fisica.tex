@@ -1,26 +1,14 @@
 % ------------------------------------------------------------------
-%  4.2 Arquitectura física --- cabecera del capítulo
+%  4.2 Arquitectura física --- título e introducción
 %  Fragmento del Subdocumento 4.2, traido desde contenido.tex con
 %  \parte{partes/02_0_arquitectura_fisica}. Las rutas son relativas a la
 %  carpeta del subdocumento, nunca a la de main.tex.
 %
 %  NUMERACION. El índice obligatorio (aclaraciones, sección 11) numera este
-%  contenido como 4.2 y sus subtítulos como 4.2.X. El capítulo toma el número
-%  "4.2" solo mientras dura; contenido.tex restituye la numeración arábiga al
-%  cerrar el bloque 4.2.
+%  contenido como 4.2 y sus subtítulos como 4.2.X. El título se imprime como
+%  "4.2 Arquitectura física", sin el rótulo "Capítulo" (formato definido en
+%  contenido.tex). La antigua "Visión general" es ahora esta introducción.
 % ------------------------------------------------------------------
-
-% Línea de fuente bajo tablas y figuras (aclaraciones, secciones 4 y 5).
-% Cuerpo de 9 pt: el mínimo del Art. 40.4.
-% \fuente va después de una tabla; \fuentefigura, dentro del entorno figure,
-% después del \caption.
-\providecommand{\fuente}[1]{%
-  \par\vspace{-6pt}%
-  {\fontsize{9pt}{11pt}\selectfont\color{lafroxGris}Fuente: #1}%
-  \par\addvspace{8pt}}
-\providecommand{\fuentefigura}[1]{%
-  \par\vspace{3pt}%
-  {\raggedright\fontsize{9pt}{11pt}\selectfont\color{lafroxGris}Fuente: #1\par}}
 
 % Tablas sin palabras cortadas (aclaraciones, sección 5: "sin palabras
 % cortadas por columnas angostas"). Rige desde aquí hasta el final del
@@ -31,12 +19,18 @@
     \LFXcuerpotablaorig\hyphenpenalty=10000\exhyphenpenalty=10000\relax}
 \fi
 
-% \renewcommand{\thechapter}{4.2}
 \chapter{Arquitectura física}
 \label{cap:4-2-arquitectura-fisica}
 
-La arquitectura física declara dónde vive cada componente de la solución, qué servicios se contratan en la nube, cómo se conectan los sitios entre sí y con la nube, qué ocurre cuando falla cada conexión y cuánta capacidad se provee.  
+La arquitectura física declara dónde vive cada componente de la solución, qué servicios se contratan en la nube, cómo se conectan los sitios entre sí y con la nube, qué ocurre cuando falla cada conexión y cuánta capacidad se provee.
+
+Esa arquitectura materializa el despliegue híbrido obligatorio del Artículo 16\textdegree{} de las Bases Administrativas. La carga principal corre en nube pública AWS, con la región primaria en sa-east-1 (São Paulo, Brasil) y la recuperación ante desastres en us-east-1 (Norte de Virginia, EE. UU.), y los componentes on-premise garantizan la continuidad de la operación de bodega, plataformas y terreno durante los cortes del enlace. La solución cubre las seis instalaciones en cuatro regiones que declara el caso, cinco de ellas con cómputo; la séptima que proyecta el caso a tres años se agrega por parametrización, sin cambios de desarrollo ni crecimiento de servidores en el CD Talca. Dos principios gobiernan el diseño:
+
+\begin{itemize}
+  \item \textbf{Carga principal en nube:} el núcleo transaccional de preventa, reparto y canal moderno, la analítica, la integración y el almacenamiento consolidado se ejecutan en AWS sa-east-1, con escalado elástico para el peak de septiembre.
+  \item \textbf{Autonomía total de la operación de bodega:} la preparación, el despacho, la recepción y el conteo corren siempre contra los servidores del centro de distribución, no contra la nube, de modo que la conexión a Internet no interviene en la operación de bodega.
+\end{itemize}
 
 La correspondencia con la arquitectura lógica (apartado 4.1) se declara módulo por módulo en la Tabla~\ref{tab:mapeo-logica}, que asocia cada módulo y cada capa transversal al componente físico que lo ejecuta. Los componentes físicos usan un catálogo único: A-01 a A-05 para el núcleo de bodega, B-01 a B-03 para la cadena de frío, C-01 a C-05 para los dispositivos de operación, D-01 a D-06 para la red, E-01 para los cross-docking, F-01 a F-03 para observabilidad y seguridad de los nodos, y N-01 a N-13 para la nube. Los módulos y las capas conservan en esta parte los mismos nombres que en la arquitectura lógica.
 
-Este capítulo se ordena en seis partes. La sección~\ref{sec:4-2-1-emplazamiento} justifica el emplazamiento de cada componente conforme a los criterios del Artículo 16.2. La sección~\ref{sec:4-2-2-servicios-nube} enumera los servicios contratados en la plataforma de nube. La sección~\ref{sec:4-2-3-despliegue} describe cómo la solución se pone en marcha y se mantiene en operación: ambientes y ciclo de entrega, red de despliegue, alta disponibilidad, recuperación ante desastres, respaldos y su verificación. La sección~\ref{sec:4-2-4-conexiones} describe las conexiones, sus puntos de falla y la contingencia de cada uno. La sección~\ref{sec:4-2-5-dimensionamiento} deriva el dimensionamiento y el plan de capacidad desde la volumetría del caso. La sección~\ref{sec:4-2-6-implementos} resume el equipamiento a proveer, cuyo detalle se entrega en el Formulario T-11, que acompaña a este subdocumento como archivo propio. Las especificaciones del data center primario y del secundario se desarrollan en el capítulo~\ref{cap:4-3-data-center}, a continuación de esta parte.
+Este apartado se ordena en seis partes. La sección~\ref{sec:4-2-1-emplazamiento} justifica el emplazamiento de cada componente conforme a los criterios del Artículo 16.2. La sección~\ref{sec:4-2-2-servicios-nube} enumera los servicios contratados en la plataforma de nube. La sección~\ref{sec:4-2-3-despliegue} describe cómo la solución se pone en marcha y se mantiene en operación: ambientes y ciclo de entrega, red de despliegue, alta disponibilidad, recuperación ante desastres, respaldos y su verificación. La sección~\ref{sec:4-2-4-conexiones} describe las conexiones, sus puntos de falla y la contingencia de cada uno. La sección~\ref{sec:4-2-5-dimensionamiento} deriva el dimensionamiento y el plan de capacidad desde la volumetría del caso. La sección~\ref{sec:4-2-6-implementos} resume el equipamiento a proveer, cuyo detalle se entrega en el Formulario T-11. Las especificaciones del data center primario y del secundario se desarrollan en el apartado~\ref{cap:4-3-data-center}, a continuación de este.

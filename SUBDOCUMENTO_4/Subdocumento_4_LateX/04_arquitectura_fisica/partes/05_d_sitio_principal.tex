@@ -45,7 +45,8 @@ Los servicios contratados en la plataforma de nube se agrupan por la función qu
   \item Borde público: Route 53, CloudFront, AWS WAF, Shield Advanced y API Gateway.
   \item Cómputo de aplicación: ECS Fargate, Application Load Balancer y Lambda.
   \item Datos operacionales: Aurora PostgreSQL, Database Migration Service, DynamoDB y ElastiCache.
-  \item Mensajería: SQS FIFO y SNS.
+  \item Mensajería: SQS FIFO para la reconciliación, SQS para los trabajos de la aplicación y SNS.
+  \item Integración B2B: AWS Transfer Family con AS2.
   \item Internet de las cosas: IoT Core e IoT Greengrass.
   \item Analítica: S3, Glue, Redshift Serverless y QuickSight.
   \item Respaldo y recuperación: AWS Backup, S3 Object Lock y replicación de S3 entre regiones.
@@ -57,7 +58,7 @@ Los servicios contratados en la plataforma de nube se agrupan por la función qu
   \item Servicios de terceros en nube: Android Enterprise, Zebra DNA, consola del EDR y GitLab CI.
 \end{itemize}
 
-La solución no opera servidores en la nube ya que el cómputo corre en contenedores administrados y todos los datos viven en motores administrados. Las únicas piezas de software que el adjudicatario mantiene sobre la plataforma son la aplicación Django y el IdP Keycloak. El Registro de Decisiones de la Arquitectura descarta de forma expresa los servicios que nunca aparecen en la arquitectura (como ejemplo no se contrata EKS ni MSK, no se contratan servicios de observabilidad fuera de CloudWatch) y fija la gestión de secretos con AWS Secrets Manager y SSM Parameter Store.
+La solución no opera servidores en la nube ya que el cómputo corre en contenedores administrados y todos los datos viven en motores administrados. Las piezas de software que el adjudicatario mantiene sobre la plataforma son la aplicación Laravel con sus perfiles de ejecución, el motor de optimización de rutas y el IdP Keycloak. El Registro de Decisiones de la Arquitectura descarta de forma expresa los servicios que nunca aparecen en la arquitectura (como ejemplo no se contrata EKS ni MSK, no se contratan servicios de observabilidad fuera de CloudWatch) y fija la gestión de secretos con AWS Secrets Manager y SSM Parameter Store.
 
 \subsection{Sitio on-premise: CD Talca (sala técnica secundaria)}
 
@@ -83,11 +84,10 @@ Para el cálculo de carga eléctrica (RT-06.11) la carga se proyecta sobre los e
   Margen de crecimiento a tres años (20 \%, RT-06.05) & & & + 1.170 W \\
   \textbf{Carga TI de diseño} & & & \textbf{7.020 W $\approx$ 7,0 kW} \\
 \end{tablalafrox}
-\fuente{elaboración propia a partir de las fichas técnicas del equipamiento declarado en el Formulario T-11, con el margen de crecimiento a tres años de RT-06.05.}
 
 El factor de potencia declarado es de 0,95, por lo que la potencia aparente de diseño es 7,0 kW $\div$ 0,95 $\approx$ 7,4 kVA. El UPS se dimensiona al 80 \% de utilización: 7,4 kVA $\div$ 0,8 $\approx$ 9,2 kVA, por lo que se selecciona un UPS modular de 10 kVA, doble conversión on-line, en configuración N+1 y con bypass de mantenimiento (RT-06.12, deseable, y RT-06.07). La PUE estimada de diseño es 1,5 que es derivada del desglose proyectado de consumo del recinto con la carga TI 7,0 kW, climatización de precisión $\approx$ 2,3 kW, iluminación y apoyo $\approx$ 0,6 kW y pérdidas de conversión del UPS $\approx$ 0,55 kW con un total de $\approx$ 10,4 kW y luego 10,4 $\div$ 7,0 $\approx$ 1,5. Los puntos de medición se declaran (numerador: tablero general del recinto y denominador: salida de las PDU de los racks) con medición semestral e informe entregable (RT-06.10), además el PUE del recinto on-premise se declara conforme a RT-15.04 junto con la intensidad de carbono de la región de nube. La carga total que debe sostener el generador es la carga del sitio $\approx$ 10,4 kW, por lo que se selecciona un grupo electrógeno de 15 kVA con estanque dimensionado a 24 horas continuas y contrato de reabastecimiento declarado (RT-06.08).
 
-\textbf{Figura 4.3-1 --- Distribución interna del recinto técnico del CD Talca por zonas y líneas de acceso (RT-06.03). Fuente: elaboración propia.}
+\textbf{Figura 4.3-1 --- Distribución interna del recinto técnico del CD Talca por zonas y líneas de acceso (RT-06.03).}
 
 [Insertar aquí la Figura 4.3-1]
 
@@ -104,11 +104,10 @@ Para el cálculo de carga térmica (RT-06.11 y RT-06.13) físicamente cada kW el
   Pérdidas de conversión del UPS (eficiencia $\approx$ 0,92) & $\approx$ 610 W \\
   \textbf{Carga térmica sensible de diseño} & \textbf{$\approx$ 7,6 kW} \\
 \end{tablalafrox}
-\fuente{elaboración propia a partir de la carga TI de diseño (Tabla 4.3-1) y de la eficiencia declarada del UPS.}
 
 Sobre esa carga se instalan dos unidades de climatización de precisión en configuración N+1 (RT-06.13), cada una con capacidad de enfriamiento de 10 kW ($\approx$ 34.000 BTU/h) que cuenta con la pérdida de la unidad mayor, ya que la restante cubre la carga de diseño (7,6 kW $<$ 10 kW) con holgura y la temperatura y la humedad relativa se controlan dentro de los rangos del fabricante del equipamiento (RT-06.13). No se declaran equipos ni potencias sin el cálculo que los respalde (Aclaración 2.3). La consola KVM y el equipo de acceso del operador (ONT de fibra y router LTE) suman en conjunto menos de 0,1 kW y quedan cubiertos por el margen de diseño del 20 \% de la Tabla 4.3-1, sin alterar el dimensionamiento del UPS (10 kVA) ni del generador (15 kVA).
 
-\textbf{Figura 4.3-2 --- Diagrama de racks: distribución y ocupación proyectada (RT-06.05). Fuente: elaboración propia.}
+\textbf{Figura 4.3-2 --- Diagrama de racks: distribución y ocupación proyectada (RT-06.05).}
 
 [Insertar aquí la Figura 4.3-2]
 
@@ -118,6 +117,6 @@ Para la protección contra incendios se realiza una detección temprana por aspi
 
 Para el control de acceso y seguridad física el ingreso se controla con seguridad física y control de acceso biométrico basado principalmente en biometría facial con AFIS como respaldo (RT-06.20) y todo ingreso y egreso queda registrado en una bitácora auditable con identificación, fecha, hora y motivo (RT-06.21), entre el acceso principal y el término del pasillo de la zona de control se dispone un espacio para la atención de personas en proceso de enrolamiento (RT-06.22) y además se habilita una estación de enrolamiento fuera de las instalaciones del recinto técnico, al término del pasillo se instala un acceso que impide el paso de más de una persona a la vez con nueva verificación de identidad previa al ingreso (RT-06.23) y el recinto cuenta con videovigilancia y monitoreo IP con imágenes en línea disponibles al menos los últimos 30 días y respaldo recuperable (RT-06.24). Las instalaciones sanitarias, las zonas de seguridad ante emergencia y las áreas exteriores existentes en el edificio del CLIENTE se utilizan y no se implementan nuevamente dentro del recinto (RT-06.31). La bitácora auditable se conserva por un período de retención no inferior a cinco años coherente con el piso que las Bases fijan para la retención de la auditoría del proyecto (RT-16.10).
 
-Para el monitoreo del sitio se monitorean en línea la temperatura, la humedad y la presencia de agua con alertamiento integrado a la plataforma de observabilidad (RT-06.14) y el estado de los puntos controlados del recinto converge en la plataforma de monitoreo con destinatario, canal, tiempo de respuesta y procedimiento escrito (RT-06.19). La observabilidad reutiliza el mecanismo del sitio on-premise hacia la nube que define el capítulo de despliegue. La convergencia en un solo tablero es la plataforma de observabilidad del sitio por lo que no se declara una plataforma DCIM/BMS de terceros porque las Bases no la exigen y RT-06.14 y RT-06.19 se satisfacen con el monitoreo en línea y su alertamiento integrado.
+Para el monitoreo del sitio se monitorean en línea la temperatura, la humedad y la presencia de agua con alertamiento integrado a la plataforma de observabilidad (RT-06.14) y el estado de los puntos controlados del recinto converge en la plataforma de monitoreo con destinatario, canal, tiempo de respuesta y procedimiento escrito (RT-06.19). La observabilidad reutiliza el mecanismo del sitio on-premise hacia la nube que define la arquitectura de despliegue (apartado 4.2.3). La convergencia en un solo tablero es la plataforma de observabilidad del sitio por lo que no se declara una plataforma DCIM/BMS de terceros porque las Bases no la exigen y RT-06.14 y RT-06.19 se satisfacen con el monitoreo en línea y su alertamiento integrado.
 
 Para el cómputo almacenado onsite el cómputo corre sobre un clúster virtualizado de tres nodos con redundancia N+1 y almacenamiento distribuido que tolera la pérdida de al menos un nodo con quórum real, el almacenamiento local combina un nivel para la base transaccional y otro para el respaldo local (NAS D-05, RAID 6) con nivel RAID declarado y justificado frente a las alternativas (RT-03.14; Registro de Decisiones, Decisión 28). La instancia de escritura es el punto único declarado y se mitiga con reinicio en otro nodo del clúster.

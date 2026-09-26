@@ -8,16 +8,20 @@
 \chapter{Registro de decisiones de arquitectura}
 \label{sec:m-registro-de-decisiones-de-arquitectura}
 
-Registro consolidado de las quince decisiones de arquitectura que condicionan esta propuesta. Es entregable contractual conforme a RT-02.04 y se mantiene actualizado durante toda la ejecución. Para cada decisión se indica la alternativa escogida, las alternativas descartadas con el motivo de rechazo, y el criterio de selección. Todas las decisiones fueron aprobadas entre el 05 y el 06 de septiembre de 2026; el ADR-06 se complementó el 25 de septiembre de 2026 con el verificador local de relevo de turno. Este es el registro único del Subdocumento 4: la arquitectura lógica (4.1) cita estas mismas decisiones por su número.
+Registro consolidado de las quince decisiones de arquitectura que condicionan esta propuesta. Es entregable contractual conforme a RT-02.04 y se mantiene actualizado durante toda la ejecución. Para cada decisión se indica la alternativa escogida, las alternativas descartadas con el motivo de rechazo, y el criterio de selección; las decisiones reformuladas para el backend Laravel agregan sus consecuencias y la evidencia que deberá confirmarlas. ADR-01, ADR-05, ADR-11, ADR-12 y ADR-14 quedan en estado \emph{propuesta} hasta su aprobación por el equipo; en ADR-04, ADR-06, ADR-08 y ADR-13 se ajustó la implementación sin cambiar la decisión. Este es el registro único del Subdocumento 4: la arquitectura lógica (4.1) cita estas mismas decisiones por su número.
 
 \section{ADR-01 \textperiodcentered{} Estilo arquitectónico}
 \label{sub:adr-01}
 
-\textbf{Decisión adoptada.} Monolito modular Django 5.x LTS / Python 3.12, desplegado en ECS Fargate con apps por dominio y límites de contexto DDD. Módulos críticos (WMS offline, shipper, workers, portal) en procesos separados.
+\textbf{Decisión adoptada.} Monolito modular en Laravel 13 sobre PHP 8.5, con los módulos M1--M12 separados por espacios de nombres PSR-4 y dependencias fijadas por \texttt{composer.lock}. Un solo artefacto, construido una vez por versión, se ejecuta en perfiles separados: API y \texttt{wms\_only} con PHP-FPM, y shipper, consumidor de reconciliación, trabajos y planificador como procesos PHP de línea de comandos. El motor de optimización de rutas de M4 y el transporte AS2 de M11 quedan fuera del artefacto, tras un contrato versionado. Estado: propuesta.
 
-\textbf{Alternativas descartadas.} \emph{Microservicios EKS}: volumen (\textasciitilde{}105 TPS) dos órdenes bajo el umbral que los justifica; 4 personas no operan 9--13 componentes de plano de control; mayor costo total de propiedad durante los 56 meses, por operar un plano de control que el volumen no necesita. \emph{Monolito clásico WMS 2013}: sin fronteras de módulo, proveedor desaparecido; viola RT-02.02.
+\textbf{Alternativas descartadas.} \emph{Monolito modular en Django y Python 3.12}: técnicamente viable con los mismos contratos, pero la arquitectura lógica adopta Laravel y mantener ambos runtimes obligaría a operar dos cadenas de construcción, de dependencias y de parches. \emph{Microservicios en EKS}: el volumen de unos 105 TPS está dos órdenes bajo el umbral que los justifica, cuatro personas no operan un plano de control y el costo total de propiedad en 56 meses sube sin beneficio. \emph{Monolito clásico del WMS de 2013}: sin fronteras de módulo y con el proveedor desaparecido; incumple RT-02.02. \emph{Traducir a PHP el ruteo y el AS2 sin prueba}: la equivalencia de un solver o de un conector no se deduce del cambio de lenguaje, por eso ambos se aíslan.
 
-\textbf{Criterio de selección.} Pertinencia al volumen real (numeral 2.3 de las Bases Técnicas Transversales); operabilidad por 4 personas; TCO 56 meses; despliegue independiente sin particionar el dominio. Normativa: RT-02.01/02.02/02.03, RT-09.05, Art.~16, RNF-19.01--04.
+\textbf{Criterio de selección.} Coherencia con la arquitectura lógica (4.1); pertinencia al volumen real (numeral 2.3 de las Bases Técnicas Transversales); operabilidad por cuatro personas; despliegue y escalado independiente por perfil sin particionar el dominio. Normativa: RT-02.01/02.02/02.03, RT-09.05, Art.~16, RNF-19.01--04.
+
+\textbf{Consecuencias.} La imagen incluye PHP-FPM, el intérprete de línea de comandos y las extensiones declaradas en la arquitectura de despliegue; el pipeline agrega \texttt{composer audit}, PHPUnit, PHPStan/Larastan y Pint; el dimensionamiento de los perfiles se recalcula para PHP en lugar de trasladar los valores anteriores. El motor de ruteo agrega una imagen propia al pipeline y una tarea de Fargate bajo demanda.
+
+\textbf{Evidencia exigida.} Pruebas de paridad de contratos, datos y colas; prueba de carga por perfil; y, para el motor de ruteo, la generación de rutas de toda la operación en menos de 20 minutos (Caso, Cap. 18), que es condición de aceptación del motor que se seleccione.
 
 \section{ADR-02 \textperiodcentered{} Conectividad WAN}
 \label{sub:adr-02}
@@ -40,7 +44,7 @@ Registro consolidado de las quince decisiones de arquitectura que condicionan es
 \section{ADR-04 \textperiodcentered{} Persistencia políglota}
 \label{sub:adr-04}
 
-\textbf{Decisión adoptada.} PostgreSQL+PostGIS (transaccional WMS, CP), Aurora (OLTP cloud + DRP), DynamoDB (IoT raw, AP, TTL 30 d), S3+Redshift Serverless (OLAP + series de temperatura), S3 Object Lock/Glacier (retención legal por dominio de datos, de 5 a 7 años según la tabla de respaldos).
+\textbf{Decisión adoptada.} PostgreSQL+PostGIS (transaccional WMS, CP), Aurora (OLTP cloud + DRP), DynamoDB (IoT raw, AP, TTL 30 d), S3+Redshift Serverless (OLAP + series de temperatura), S3 Object Lock/Glacier (retención legal por dominio de datos, de 5 a 7 años según la tabla de respaldos). La aplicación accede a PostgreSQL con PDO y el Query Builder de Laravel; las consultas geográficas de M4 usan SQL PostGIS parametrizado sobre índices espaciales GiST, y el esquema evoluciona con migraciones Laravel aditivas. La réplica DMS del WMS alimenta solo un esquema de réplica de lectura; el estado central se actualiza por los eventos de reconciliación, con una clave de origen única por evento.
 
 \textbf{Alternativas descartadas.} \emph{Motor único relacional}: no escala ingesta IoT sin degradar picking (RNF-11.02). \emph{InfluxDB}: segundo motor exótico a operar; serie de tiempo cabe en capa OLAP. \emph{DynamoDB para todo}: no ofrece ACID cross-tabla para reconciliación determinista.
 
@@ -49,16 +53,20 @@ Registro consolidado de las quince decisiones de arquitectura que condicionan es
 \section{ADR-05 \textperiodcentered{} Mensajería asíncrona}
 \label{sub:adr-05}
 
-\textbf{Decisión adoptada.} RabbitMQ local por sitio (buffer 24 h) + shipper idempotente $\rightarrow$ SQS FIFO (VPC Endpoint outbound) + Celery workers (tareas derivadas de eventos) + IoT Core MQTT (ingesta edge).
+\textbf{Decisión adoptada.} RabbitMQ local por sitio, con colas durables, mensajes persistentes y confirmación de publicación, como buffer de 24 h. Un shipper PHP con el adaptador AMQP \texttt{php-amqplib} publica cada evento como sobre JSON canónico y versionado en una cola SQS FIFO de reconciliación, por HTTPS hacia un VPC Endpoint, y solo retira el mensaje local cuando SQS confirma la recepción. Un consumidor PHP dedicado lee esa cola con el SDK de AWS, valida el esquema del sobre, lo aplica y confirma solo después de persistir el resultado. Los trabajos internos de Laravel usan colas SQS distintas, de modo que ningún sobre externo llega al deserializador de trabajos del framework. IoT Core MQTT mantiene la ingesta del borde. Estado: propuesta.
 
-\textbf{Alternativas descartadas.} \emph{REST síncrono}: no sobrevive corte a mitad de ventana; rompe reconciliación. \emph{Kafka/MSK}: operar clústeres en 5 sitios es desproporcionado para el equipo disponible y 105 TPS.
+\textbf{Alternativas descartadas.} \emph{REST síncrono}: no sobrevive un corte a mitad de ventana y rompe la reconciliación. \emph{Kafka/MSK}: operar clústeres en cinco sitios es desproporcionado para el equipo disponible y 105 TPS. \emph{Una sola cola SQS para eventos y trabajos}: acopla el formato externo al serializador del framework e impide versionar el sobre. \emph{Redis y Horizon en los sitios}: agregan un tercer motor local sin mejorar la durabilidad que ya dan PostgreSQL y RabbitMQ. \emph{Workers Celery}: correspondían al backend Django y se retiran con él.
 
-\textbf{Criterio de selección.} Resiliencia offline (buffer local + reproducción idempotente); reconciliación determinista RT-03.12; Zero Trust (todo outbound); TCO proporcional al volumen. Normativa: RT-02.06/02.07, RT-03.10/03.12, RNF-07.01/13.01, Art.~21.
+\textbf{Criterio de selección.} Resiliencia offline (buffer local y reproducción idempotente); reconciliación determinista (RT-03.12); independencia del formato respecto del lenguaje; Zero Trust (todo saliente); costo total proporcional al volumen. Normativa: RT-02.06/02.07, RT-03.10/03.12, RNF-07.01/13.01, Art.~21.
+
+\textbf{Consecuencias.} La cola FIFO agrupa el orden por sitio y agregado de negocio, deduplica por el identificador del evento, usa una visibilidad de 60 s, cinco intentos antes de la cola de mensajes fallidos y una retención de 4 días; la base central guarda la clave de origen de cada evento aplicado para impedir su doble aplicación. El consumidor acepta la versión vigente del sobre y la anterior. Las alarmas vigilan la edad del mensaje más antiguo, la profundidad por grupo y los mensajes fallidos.
+
+\textbf{Evidencia exigida.} Prueba de corte de 24 h por sitio con drenaje completo sin pérdida ni duplicados, dentro de las 2 h comprometidas; prueba de mensajes duplicados, fuera de orden y de versión desconocida.
 
 \section{ADR-06 \textperiodcentered{} Identidad híbrida (Modelo B)}
 \label{sub:adr-06}
 
-\textbf{Decisión adoptada.} Keycloak IdP maestro en AWS (ECS Fargate, 2 tareas Multi-AZ, backend Aurora) + caché local solo lectura (TTL 24 h, igual a la autonomía del CD) en Talca, Concepción y los cross-docking, con un verificador local en el mismo nodo que, en cada relevo de turno sin enlace, valida el manifiesto de turno firmado por Keycloak y un segundo factor local: el PIN personal sobre el terminal enrolado por MDM. Tokens offline por perfil (8 h bodega, 14 h reparto). OTP para conductores externos.
+\textbf{Decisión adoptada.} Keycloak IdP maestro en AWS (ECS Fargate, 2 tareas Multi-AZ, backend Aurora) + caché local solo lectura (TTL 24 h, igual a la autonomía del CD) en Talca, Concepción y los cross-docking, con un verificador local en el mismo nodo que, en cada relevo de turno sin enlace, valida el manifiesto de turno firmado por Keycloak y un segundo factor local: el PIN personal sobre el terminal enrolado por MDM. La caché de 24 h y la credencial de turno cumplen propósitos distintos: la caché conserva los datos de identidad y de turno recibidos y no emite sesiones, mientras que la credencial de turno ---hasta 8 h en bodega y 14 h en reparto--- limita cuánto dura el acceso de una persona; así, un corte de 24 h cubre dos relevos en bodega, cada uno habilitado por el verificador. Durante el corte no se promete revocación remota inmediata. El backend Laravel valida los JWT OIDC de Keycloak ---firma con las claves publicadas, emisor, audiencia, vencimiento y alcance--- y aplica políticas por recurso, turno, ruta, sitio y empresa; no se incorpora Sanctum ni Passport como segundo emisor de identidades. OTP para conductores externos.
 
 \textbf{Alternativas descartadas.} \emph{IdP solo nube}: paraliza bodega ante corte. \emph{AD maestro local}: duplica administración, crea maestro a promover en DR. \emph{Keycloak maestro local}: nube no puede autenticar si el enlace cae.
 
@@ -76,7 +84,7 @@ Registro consolidado de las quince decisiones de arquitectura que condicionan es
 \section{ADR-08 \textperiodcentered{} Destino del WMS legado 2013}
 \label{sub:adr-08}
 
-\textbf{Decisión adoptada.} Reemplazo total en Etapa 1 por módulo WMS del monolito (ADR-01): Talca maestro, Concepción edge, cross-docks sobre E-01. Migración por dominio, oleadas por sitio, reversión azul-verde.
+\textbf{Decisión adoptada.} Reemplazo total en Etapa 1 por módulo WMS del monolito (ADR-01): Talca maestro, Concepción edge, cross-docks sobre E-01. Migración por dominio, oleadas por sitio, reversión azul-verde. Durante la coexistencia cada operación tiene un único escritor autorizado, de modo que el WMS de 2013 y el nuevo nunca escriben a la vez stock, cobros o documentos tributarios; la reversión devuelve el tráfico al escritor anterior solo tras detener el nuevo y conciliar los pendientes.
 
 \textbf{Alternativas descartadas.} \emph{Mantener e integrar}: proveedor desaparecido, sin soporte; no soporta multi-sitio, picking FEFO (primero en expirar, primero en salir), SSCC GS1 ni conteo cíclico ciego. \emph{Extender a otros sitios}: arrastra riesgo de soporte inexistente en ventana crítica.
 
@@ -103,34 +111,40 @@ Registro consolidado de las quince decisiones de arquitectura que condicionan es
 \section{ADR-11 \textperiodcentered{} Integración B2B/EDI canal moderno}
 \label{sub:adr-11}
 
-\textbf{Decisión adoptada.} Hub EDI centralizado GS1 (EANCOM/GS1 XML + EPCIS) en nube, con conector configurable por cadena, equivalencias GTIN (RF-12.03), bandeja de excepciones (RF-12.06) y ACL hacia ERP/GDE. Canal moderno operativo $\leq$ enero 2029.
+\textbf{Decisión adoptada.} Hub EDI centralizado GS1 (EANCOM/GS1 XML + EPCIS) en nube, con conector configurable por cadena, equivalencias GTIN (RF-12.03), bandeja de excepciones (RF-12.06) y ACL hacia ERP/GDE. La transformación y las reglas corren en el perfil EDI de Laravel; el transporte AS2 lo presta AWS Transfer Family, que firma, cifra, gestiona los certificados y emite y recibe los acuses MDN, y entrega los mensajes al perfil EDI por un contrato versionado. Canal moderno operativo $\leq$ enero 2029. Estado: propuesta.
 
-\textbf{Alternativas descartadas.} \emph{Punto-a-punto por cadena}: multiplica adaptadores; mantenimiento desproporcionado ante cambios de cadena. \emph{EDI delegado al ERP}: expone frontera frágil; viola Zero Trust (escritura directa desde cadena).
+\textbf{Alternativas descartadas.} \emph{Punto-a-punto por cadena}: multiplica adaptadores; mantenimiento desproporcionado ante cambios de cadena. \emph{EDI delegado al ERP}: expone frontera frágil; viola Zero Trust (escritura directa desde cadena). \emph{Conector AS2 en una biblioteca PHP}: no hay una implementación validada contra las cadenas; se mantiene como alternativa solo si supera las mismas pruebas de interoperabilidad.
 
-\textbf{Criterio de selección.} Estandarización GS1 (Cap.~16.2); esfuerzo marginal por cadena nueva; aislamiento ERP por ACL (Zero Trust); plazo enero 2029. Normativa: RT-05.23, RT-16.16/16.17, RNF-12.01, RF-12.03/12.06. Relacionada: RF-12, RF-01.10.
+\textbf{Criterio de selección.} Estandarización GS1 (Cap.~16.2); esfuerzo marginal por cadena nueva; aislamiento ERP por ACL (Zero Trust); transporte AS2 administrado para un equipo de cuatro personas; plazo enero 2029. Normativa: RT-05.23, RT-16.16/16.17, RNF-12.01, RF-12.03/12.06. Relacionada: RF-12, RF-01.10.
+
+\textbf{Evidencia exigida.} Prueba de interoperabilidad AS2 con cada cadena ---firma, cifrado, certificados y MDN--- antes de habilitarla, como condición de aceptación del canal moderno.
 
 \section{ADR-12 \textperiodcentered{} Absorción del peak de septiembre}
 \label{sub:adr-12}
 
-\textbf{Decisión adoptada.} Cómputo elástico: Fargate 2$\rightarrow$6, Celery 2$\rightarrow$4, Lambda 100$\rightarrow$500, Aurora large$\rightarrow$xlarge (escritor y 2 lectores en 3 zonas), DynamoDB on-demand. Escala predictiva + reactiva. Base con Savings Plan, peak con cómputo efímero.
+\textbf{Decisión adoptada.} Cómputo elástico con escalado independiente por perfil: API con PHP-FPM de 2 a 4 tareas en el peak y techo de 8, por procesos ocupados sobre 70 \%; consumidor de reconciliación de 2 a 4 tareas, por la edad del mensaje más antiguo; trabajos de 2 a 4 tareas, por la profundidad de cada cola, con \texttt{erp-sync} fijo en 2 procesos para no saturar el ERP; planificador en una sola tarea. Lambda 100$\rightarrow$500, Aurora large$\rightarrow$xlarge (escritor y 2 lectores en 3 zonas), DynamoDB bajo demanda. Escala predictiva y reactiva. Base con Savings Plans, peak con cómputo efímero. Estado: propuesta.
 
-\textbf{Alternativas descartadas.} \emph{Capacidad fija al peak}: paga 12 meses la capacidad de 3 semanas. \emph{Solo escala reactiva}: burst predecible de septiembre; la reactiva sola introduce lag en ventana crítica.
+\textbf{Alternativas descartadas.} \emph{Capacidad fija al peak}: paga 12 meses la capacidad de 3 semanas. \emph{Solo escala reactiva}: el peak de septiembre es predecible y la reactiva sola introduce retardo en la ventana crítica. \emph{Trasladar las cifras del backend anterior (6 tareas de aplicación y 4 de workers Celery)}: eran supuestos de otro runtime y no valen para PHP-FPM.
 
-\textbf{Criterio de selección.} Perfil no plano al peak $\times$1,5 (RNF-19.04); cuello de botella identificado (RT-09.05); FinOps (RT-03.06): base reservada + peak efímero; congelamiento 1--25 sept y diciembre (RT-10.05). Normativa: RT-09.05, RT-03.06/03.08/03.09, RNF-19.01--04, RT-10.05. Relacionada: Decisión N\textdegree{} 30 del registro de decisiones.
+\textbf{Criterio de selección.} Perfil no plano al peak $\times$1,5 (RNF-19.04); cuello de botella identificado (RT-09.05); FinOps (RT-03.06): base reservada y peak efímero; congelamiento del 1 al 25 de septiembre y de diciembre (RT-10.05). Normativa: RT-09.05, RT-03.06/03.08/03.09, RNF-19.01--04, RT-10.05. Relacionada: Decisión N\textdegree{} 30 del registro de decisiones.
+
+\textbf{Consecuencias.} El número de tareas se deriva de dos supuestos declarados en el dimensionamiento ---50 ms de CPU y 150 ms de residencia por solicitud--- y no de una medición; las conexiones a PostgreSQL quedan acotadas por el número de procesos de cada perfil.
+
+\textbf{Evidencia exigida.} Prueba de carga en Preproducción que mida el consumo real por solicitud y por sobre, la saturación de PHP-FPM, las conexiones, la edad de las colas y el rendimiento del ERP; si difieren de los supuestos, se recalculan tareas y procesos antes del paso a producción.
 
 \section{ADR-13 \textperiodcentered{} Puerta de enlace de servicios}
 \label{sub:adr-13}
 
 \textbf{Decisión adoptada.} Amazon API Gateway como Capa 3 en la nube, complementada en cada sitio por la puerta de API local del WMS para operar sin enlace: autorizador OIDC (Keycloak), validación de esquema OpenAPI, cuotas y límites de tasa por actor/ruta, versionado /v\{major\}, propagación de transaction\_id a Capa 8.
 
-\textbf{Alternativas descartadas.} \emph{Kong autoadministrado}: agrega componente crítico a parchar en ruta de la venta; riesgo en ventana 05:30--07:00 con el equipo disponible. \emph{Desarrollo propio (middleware Django)}: sin cuotas/rate-limit nativos; viola Art.~21.2.
+\textbf{Alternativas descartadas.} \emph{Kong autoadministrado}: agrega componente crítico a parchar en ruta de la venta; riesgo en ventana 05:30--07:00 con el equipo disponible. \emph{Desarrollo propio (middleware de la aplicación)}: sin cuotas ni límites de tasa administrados en el borde; viola Art.~21.2. La validación del token en el backend Laravel complementa a la puerta de enlace y no la reemplaza (ADR-06).
 
 \textbf{Criterio de selección.} Cumplimiento literal Art.~21.2 sin desarrollo propio; servicio administrado para 4 personas; coherencia entre vistas (Art.~16.4); reversibilidad por contratos OpenAPI/AsyncAPI estándar. Normativa: Art.~21.2, RT-02.01/02.02, RT-11.11, RT-05.16/05.18, Art.~16.3.
 
 \section{ADR-14 \textperiodcentered{} Plataforma de observabilidad}
 \label{sub:adr-14}
 
-\textbf{Decisión adoptada.} Plataforma única en nube: instrumentación OTel, colectores ADOT on-premise con buffer 24 h, logs en CloudWatch Logs (12+24 m), métricas en CloudWatch Metrics (13 meses) y trazas en CloudWatch con retención declarada. Tableros nativos de CloudWatch para operación.
+\textbf{Decisión adoptada.} Plataforma única en nube: instrumentación con OpenTelemetry para PHP y Laravel y para las aplicaciones Kotlin, con el \texttt{transaction\_id} propagado por HTTP, RabbitMQ, SQS y la capa anticorrupción; métricas propias por perfil (procesos PHP-FPM ocupados, reinicios, profundidad y edad de cola por grupo, mensajes fallidos, latencia del ERP y de escritura de VM-02); colectores ADOT on-premise con buffer 24 h, logs en CloudWatch Logs (12+24 m), métricas en CloudWatch Metrics (13 meses) y trazas en CloudWatch con retención declarada. Tableros nativos de CloudWatch para operación. Estado: propuesta.
 
 \textbf{Alternativas descartadas.} \emph{Prometheus+Grafana+Loki local + cloud}: dos plataformas (viola Art.~16.4 y RT-03.16); VM-06 sin capacidad. \emph{AMP + X-Ray + Grafana}: cuatro servicios de observabilidad para un equipo de 4 personas; complejidad operativa desproporcionada sin ganancia funcional sobre CloudWatch nativo.
 
