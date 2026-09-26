@@ -17,13 +17,13 @@ Cronograma de 56 meses innegociable (Art. 17): La arquitectura contempla Etapa 1
 
 Zero Trust y multi-zona (NIST SP 800-207):  Identidad central en OIDC/MFA, microsegmentación con mTLS, infraestructura como código y sin confianza implícita en la red interna.
 
-Cinco ambientes obligatorios incluyendo Recuperación ante Desastres (RT-04.01): El quinto ambiente es DRP en la región us-east-1 de AWS, con prueba semestral (Art. 20 / RT-07.07).
+Cinco ambientes obligatorios incluyendo Recuperación ante Desastres (RT-04.01): El quinto ambiente es DRP; su región, copias, mecanismos de respaldo y pruebas de recuperación se especifican en 4.2, con prueba semestral (Art. 20 / RT-07.07).
 
 Equipo TI pequeño (4 personas): Todo componente debe ser administrable por el equipo de Puelche o por soporte del adjudicatario durante los 56 meses de contrato.
 
 La arquitectura se describe conforme al marco TOGAF declarado, con descripción conforme a ISO/IEC/IEEE 42010. Las seis vistas exigidas están completas: lógica (este documento), de procesos, de datos, de seguridad, de integración y de despliegue/física. Las decisiones de diseño se registran como ADR fechados y fundados, conforme a RT-02.04.
 
-La solución se apoya en un monolito modular Django (Python 3.12) que encapsula los 12 módulos de negocio, desplegado en Amazon ECS Fargate en nube y Docker/Docker Compose sobre el clúster Proxmox en los centros de distribución on-premise. Esta elección responde a una decisión de diseño explícita: un equipo de 4 personas, 14.200 clientes y aproximadamente 31.000 pedidos mensuales no justifican la complejidad operativa de microservicios, conforme a la recomendación del numeral 2.3 de las Bases Técnicas Transversales. La modularidad del monolito permite extraer componentes críticos (sincronización offline, EDI, telemetría) como workers independientes si el volumen lo exige, preservando la capacidad de escalado modular sin rediseño arquitectónico (RT-02.02).
+La solución se apoya en un monolito modular Laravel 13 sobre PHP 8.5 que encapsula los 12 módulos de negocio, desplegado en Amazon ECS Fargate en nube y Docker/Docker Compose sobre el clúster Proxmox en los centros de distribución on-premise. Esta elección responde a una decisión de diseño explícita: un equipo de 4 personas, 14.200 clientes y aproximadamente 31.000 pedidos mensuales no justifican la complejidad operativa de microservicios, conforme a la recomendación del numeral 2.3 de las Bases Técnicas Transversales. La modularidad del monolito permite ejecutar sincronización offline, EDI y telemetría como procesos/trabajadores separables con escalado independiente, preservando la capacidad de escalado modular sin rediseño arquitectónico (RT-02.02).
 
 La volumetría operativa que condiciona el dimensionamiento es la siguiente: 14.200 clientes activos, 8.400 SKU (que pasan a aproximadamente 9.500), 31.000 pedidos mensuales con 260.000 líneas y 2,4 millones de unidades, aproximadamente 1.400 entregas diarias habituales con peak de septiembre de 2.600 entregas (volumen casi duplicado durante tres semanas), 96 camiones en la ventana crítica de despacho (42 propios y 54 de transportistas externos), 62 preventistas, aproximadamente 200 conductores, 120 preparadores nocturnos y 310 personas de centro de distribución. El diseño se dimensiona contra el pico de septiembre en la ventana de 05:30 a 07:00, nunca contra el promedio, y declara explícitamente los puntos únicos de falla (SPOF) con su mitigación conforme a RT-02.11.
 
@@ -54,11 +54,11 @@ CDN (Amazon CloudFront): distribución de contenido estático de portales y cat�
 
 WAF gestionado (AWS WAF + Shield): filtrado de tráfico con reglas OWASP Top 10 y reglas personalizadas por API; protección contra denegación de servicio en capas 3, 4 y 7.
 
-Balanceador de carga (ALB): terminación de TLS 1.3 y balanceo hacia el API Gateway en nube.
+Balanceador de carga (ALB): recibe la integración privada desde API Gateway y distribuye el tráfico hacia los servicios privados.
 
 Ingreso on-premise por centro de distribución: firewall/UTM con IPS (D-01) como único punto de entrada local, en configuración activo-pasivo de alta disponibilidad.
 
-AWS IoT Greengrass: borde IoT en terreno y almacenes para la recolección de datos de sensores de frío y telemetría de camiones, con buffer de reenvío y persistencia local durante cortes de conectividad.
+AWS IoT Greengrass: borde IoT únicamente en dos gateways industriales, uno en el CD Talca y otro en el CD Concepción, para sensores de cámara; los termógrafos de camiones registran localmente y comunican alertas por BLE al terminal del conductor.
 
 
 ### 4.2.3  Capa de Puerta de Enlace de Servicios (Capa 3)
@@ -70,7 +70,7 @@ La capa publica dos conjuntos de APIs: las de negocio (`/v1`) y las de sincroniz
 
 ### 4.2.4  Capa de Lógica de Negocio (Capa 4)
 
-La capa de servicios de negocio encapsula los 12 módulos funcionales de la solución (M1–M12), implementados como un monolito modular Django con cada módulo separado por apps y contextos. Los módulos son stateless (RT-02.05): el estado de proceso reside en las bases de datos y colas de la capa de datos y de integración, nunca en memoria del proceso.
+La capa de servicios de negocio encapsula los 12 módulos funcionales de la solución (M1–M12), implementados como un monolito modular Laravel 13/PHP 8.5, con cada módulo separado por contexto, espacio de nombres, servicios de aplicación, reglas de dominio y adaptadores propios. Los módulos son stateless (RT-02.05): el estado de proceso reside en las bases de datos y colas de la capa de datos y de integración, nunca en memoria del proceso.
 
 Los componentes críticos se empaquetan y escalan por separado como workers o procesos desacoplados: sincronización offline, EDI (AS2) y telemetría. Esta modularidad permite extraer estos workers del monolito si el volumen lo requiere, preservando la capacidad de escalado independiente de los servicios críticos (RT-02.02).
 
@@ -81,7 +81,7 @@ El escalado horizontal se ejecuta en nube mediante ECS Fargate con autoscaling p
 
 La capa de integración es de primera clase en la arquitectura, distinción relevante por cuanto el caso Puelche se resuelve principalmente en las integraciones: un ERP implantado en 2017 sin documentación de interfaces, un WMS de 2013, integración EDI con cadenas de retail desde enero 2029, facturación electrónica ante el SII, GPS/telemetría de flota y sensores de frío.
 
-La mensajería asíncrona se distribuye entre RabbitMQ en cada sitio on-premise (integraciones locales: cobranzas a ERP, preparación a ERP, EDI, telemetría) y Amazon SQS FIFO con EventBridge en nube (reconciliación y eventos cross-sitio, con orden garantizado por partición). Toda cola incluye reintento con retroceso exponencial, cola de mensajes fallidos (DLQ) y deduplicación en el consumidor (RT-02.07).
+La mensajería asíncrona se distribuye entre RabbitMQ en cada sitio on-premise y, en nube, SQS FIFO para reconciliación, colas SQS separadas para trabajos Laravel y SNS para difusión y alertas. El shipper usa sobres JSON y un consumidor PHP dedicado; toda cola incluye reintento con retroceso exponencial, cola de mensajes fallidos (DLQ) y deduplicación en el consumidor (RT-02.07).
 
 Las conexiones con sistemas externos se clasifican en síncronas y asíncronas. Las síncronas (SII/facturación, Transbank/POS, GIS/mapas) pasan por el API Gateway (Capa 3) con timeout explícito obligatorio (RT-02.08). Las asíncronas (ERP, EDI AS2, telemetría, notificaciones) pasan por colas (Capa 5) con DLQ y reintento. Esta clasificación define el contrato y el comportamiento ante falla de cada integración.
 
@@ -90,9 +90,9 @@ Las conexiones con sistemas externos se clasifican en síncronas y asíncronas. 
 
 La capa de datos es híbrida por diseño, coherente con la naturaleza de la operación y con el despliegue obligatorio en dos ambientes:
 
-On-premise por sitio (2 centros de distribución + 3 plataformas de cross-docking): PostgreSQL con PostGIS como base transaccional de bodega y operación local, constituyendo el maestro de bodega con autonomía de 24 horas. Cada sitio mantiene una réplica y respaldo con WAL.
+On-premise por sitio (2 centros de distribución + 3 plataformas de cross-docking): PostgreSQL con PostGIS como base transaccional de bodega y operación local, con rol diferenciado: Talca maestro, Concepción `wms_only` y cross-docks mini-WMS con buffer acotado. DMS replica el WMS local mientras existe enlace.
 
-Nube: Amazon Aurora PostgreSQL como réplica/DRP del maestro de bodega y como OLTP de preventa y reparto; Amazon DynamoDB para ingesta IoT de sensores de frío (raw con TTL de 30 días); Amazon S3 y Redshift Serverless para la serie consolidada OLAP (S3 Parquet ← AWS Glue ← DynamoDB raw); Redis (Amazon ElastiCache) para cache de stock caliente, precios y sesiones SSO; y S3 como almacén de documentos (POD firmado, DTE, comprobantes, evidencia QR).
+Nube: Amazon Aurora PostgreSQL para OLTP central y recuperación, con Amazon DynamoDB para ingesta IoT de sensores de frío (raw con TTL de 30 días); Amazon S3 y Redshift Serverless para la serie consolidada OLAP (S3 Parquet ← AWS Glue ← DynamoDB raw); Redis (Amazon ElastiCache) para lecturas autorizadas de stock, precios y sesiones; y S3 como almacén de documentos (POD firmado, DTE, comprobantes, evidencia QR). La topología de replicación y recuperación se especifica en 4.2.
 
 La separación transaccional/analítica es estricta: la analítica no lee del transaccional para evitar degradar la ventana crítica de despacho. Las latencias comprometidas son: operación del día ≤ 5 minutos, cierre comercial ≤ 2 horas, gestión ≤ 4 horas.
 
@@ -101,7 +101,7 @@ La separación transaccional/analítica es estricta: la analítica no lee del tr
 
 La seguridad se aplica transversalmente a todas las capas, no como perímetro único. Sus dominios principales son:
 
-Identidad y acceso: Keycloak como proveedor de identidad (IdP) maestro en ECS/Fargate con OIDC, SSO, MFA y perfiles por cada uno de los 11 actores canónicos. Caché local on-premise con TTL de 8 horas que sostiene la autonomía de 24 horas en centro de distribución y 14 horas en terreno.
+Identidad y acceso: Keycloak como proveedor de identidad (IdP) maestro en nube con OIDC, SSO, MFA y perfiles por cada uno de los 11 actores canónicos. Las credenciales duran 8 horas en bodega y 14 horas en terreno; la caché local de identidad, de solo lectura, tiene TTL de 24 horas y el verificador local valida el manifiesto firmado y el PIN personal.
 
 Gestión de secretos: AWS Secrets Manager y SSM Parameter Store con rotación automática. Los nodos on-premise los consumen por VPC Endpoint saliente, sin abrir puertos entrantes (D13).
 
@@ -122,9 +122,9 @@ La identidad y acceso se modela con RBAC por rol canónico complementado con ABA
 
 La capa de observabilidad formaliza métricas, registros y trazas distribuidas con correlación en nube y on-premise, sobre una sola plataforma conforme a RT-03.16 y Art. 16.4.
 
-La instrumentación se basa en OpenTelemetry (SDK en Django, apps Kotlin, API Gateway, RabbitMQ/SQS, Greengrass) con trazas y métricas nativas y spans correlacionados por `transaction_id` propagado desde la Capa 3.
+La instrumentación se basa en OpenTelemetry para PHP/Laravel y apps Kotlin, junto con los registros y métricas de API Gateway, RabbitMQ, SQS y Greengrass; los spans se correlacionan mediante `transaction_id` propagado desde la Capa 3.
 
-En on-premise, los colectores ADOT (con buffer en disco de 24 horas) recolectan la telemetría local y la exportan a la plataforma centralizada en nube: Amazon Managed Service for Prometheus (AMP) compatible con PromQL para métricas, Amazon CloudWatch Logs para registros (12 meses en línea + 24 meses en archivo), AWS X-Ray para trazas distribuidas (30 días de retención) y Grafana OSS autoadministrado en sa-east-1 para tableros operacionales unificados.
+En on-premise, los colectores ADOT, con buffer en disco de 24 horas, recolectan la telemetría local y la exportan a la plataforma única Amazon CloudWatch: Logs conserva los registros técnicos 12 meses en línea y 24 meses en archivo; Metrics conserva las métricas 13 meses; las trazas y los tableros operacionales también se alojan en CloudWatch.
 
 Los tableros se estructuran en tres niveles: operacional (para el equipo de TI y SRE), gerencial (para la gerencia y jefes) y del mandante (para Puelche, solo lectura con auditoría de consultas, conforme a RT-14.02). Las alertas se formulan por síntomas de negocio, no por causas técnicas, con ventanas de evaluación para evitar falsos positivos y escalamiento por criticidad.
 
@@ -142,7 +142,7 @@ El módulo de trazabilidad resuelve el problema central que motivó la licitaci�
 
 El módulo implementa la unidad de trazabilidad sanitaria definida como el lote del proveedor conforme al estándar GS1 (GTIN + lote + vencimiento FEFO + temperatura), decisión fundamentada en la decisión 16.1 #2 (v4). La identidad primaria se enlaza a la unidad logística SSCC en cada movimiento interno de Puelche. Se descartan caja y pallet como identidad primaria debido a la volumetría (aproximadamente 9.500 SKU, 2,4 millones de unidades mensuales) y por el estado real de la captura (41% de recepciones sin lote registrado): el problema no es el nivel de agregación, sino la captura; por eso la recepción exige lectura del lote del proveedor (RF-01).
 
-La trazabilidad forward/backward se implementa evento a evento conforme al estándar GS1 EPCIS, permitiendo al sistema responder en menos de 2 horas ante un retiro sanitario (Cap. 18), con identificación precisa de los lotes y puntos de entrega afectados. Los registros de temperatura se capturan de forma continua por sensores IoT en cámaras y vehículos, con alerta automática ante excursiones fuera de rango (RF-09.03/05) y bloqueo del despacho cuando se detecta una excursión térmica (RF-09.07). El módulo integra sensores de frío (Greengrass, Capa 2), inventario (M2), preparación (M5) y la capa de observabilidad (Capa 8), con evidencia de cumplimiento exportable.
+La trazabilidad forward/backward se implementa evento a evento conforme al estándar GS1 EPCIS, permitiendo al sistema responder en menos de 2 horas ante un retiro sanitario (Cap. 18), con identificación precisa de los lotes y puntos de entrega afectados. Los registros de temperatura se capturan de forma continua en 28 puntos de cámara y 28 termógrafos (18 en camiones propios y 10 en camiones refrigerados de transportistas), con alerta automática y bloqueo preventivo local ante excursiones fuera de rango (RF-09.03/05/07). El módulo integra sensores de frío mediante los dos gateways Greengrass, termógrafos mediante el terminal del conductor, inventario (M2), preparación (M5) y la capa de observabilidad (Capa 8), con evidencia exportable.
 
 
 ### 4.3.2  Módulo de Gestión de Inventario
@@ -243,7 +243,7 @@ El almacenamiento se distribuye en quince bases de datos lógicas con nombre, se
 
 A continuación se resume la tecnología de cada capa y su justificación principal:
 
-Backend (12 módulos): Django (Python 3.12) como monolito modular. GeoDjango/PostGIS de primer nivel para el caso GIS-fuerte, un solo lenguaje, administración integrada y LTS de 56 meses.
+Backend (12 módulos): Laravel 13 sobre PHP 8.5 como monolito modular, con Composer, contextos M1–M12 y PostgreSQL/PostGIS; M4 usa repositorios espaciales con SQL parametrizado vía PDO/Query Builder.
 
 Frontend web (portales y consolas): Angular con Tailwind CSS. Framework corporativo con TypeScript, soporte OIDC directo con Keycloak y LTS de Google.
 
@@ -255,37 +255,37 @@ Puerta de enlace de servicios (Capa 3): Amazon API Gateway. Servicio administrad
 
 Base de datos transaccional: PostgreSQL + PostGIS on-premise por sitio (maestro de bodega, autonomía 24 horas).
 
-Base de datos nube (OLTP + DRP): Amazon Aurora PostgreSQL. Compatible con PostgreSQL, multi-AZ, failover en menos de 30 segundos, PITR de 35 días.
+Base de datos nube (OLTP + recuperación): Amazon Aurora PostgreSQL, con despliegue Multi-AZ y PITR propuesto de 35 días; los tiempos de conmutación y restauración se verifican contra los objetivos RTO/RPO.
 
-Ingesta IoT / frío: Amazon DynamoDB con AWS IoT Greengrass en borde. Escrituras serverless con TTL nativo (raw 30 días).
+Ingesta IoT / frío: Amazon DynamoDB e IoT Core reciben las lecturas; Greengrass corre solo en los dos gateways Moxa de Talca y Concepción. Escrituras serverless con TTL nativo (raw 30 días).
 
 Serie consolidada (OLAP): S3 Parquet + AWS Glue + Redshift Serverless. OLAP por diseño: DynamoDB raw → Glue → S3 Parquet → Redshift, sin motor de series adicional.
 
-Cache / sesiones: Amazon ElastiCache (Redis). Sin instancia on-premise: la operación desconectada se sostiene con la caché de turno del dispositivo y la caché del IdP (TTL 8 horas).
+Cache / sesiones: Redis acelera las lecturas centrales; no se exige Redis en cada sitio. La operación desconectada se sostiene con la copia cifrada de lectura y la cola de escrituras pendientes del dispositivo; la caché local de identidad es de solo lectura y tiene TTL de 24 horas.
 
-Mensajería asíncrona (Capa 5): RabbitMQ en on-premise + SQS FIFO y EventBridge en nube.
+Mensajería asíncrona (Capa 5): RabbitMQ en on-premise mediante adaptador AMQP; SQS FIFO con sobre JSON y consumidor PHP para reconciliación, colas SQS separadas para trabajos Laravel y SNS para difusión y alertas en nube.
 
 Analítica / BI: S3 Data Lake + Redshift Serverless + Glue ETL. OLAP histórico sin degradar OLTP.
 
 Objetos / documentos: Amazon S3 con Intelligent-Tiering y Object Lock.
 
-IAM / Identidad (Capa 7): Keycloak (OIDC, SAML, SSO, MFA) como IdP maestro en ECS/Fargate con caché local on-premise.
+IAM / Identidad (Capa 7): Keycloak (OIDC, SAML, SSO, MFA) como IdP maestro en nube, con caché local de solo lectura de TTL 24 horas y verificador local con manifiesto firmado y PIN personal.
 
-Gestión de secretos (Capa 7): AWS Secrets Manager + SSM Parameter Store con rotación automática (D13).
+Gestión de secretos (Capa 7): AWS Secrets Manager + SSM Parameter Store con rotación automática y cuenta de emergencia fuera de banda con doble autorización y registro de uso (D13).
 
-Observabilidad (Capa 8): OpenTelemetry/ADOT (emisión on-premise, buffer 24 horas) + AMP + CloudWatch Logs + X-Ray + Grafana OSS (plataforma única en nube, D14).
+Observabilidad (Capa 8): OpenTelemetry para PHP/Laravel y colectores ADOT on-premise con buffer de 24 horas; plataforma única Amazon CloudWatch para logs (12 meses en línea + 24 en archivo), métricas (13 meses), trazas y tableros (ADR-14).
 
 Gestión de dispositivos (RT-03.18): MDM gestionado (Android Enterprise / Zebra DNA, SaaS) como componente con emplazamiento propio (N-13, D15).
 
-Contenedores / orquestación: Docker + ECS Fargate en nube; Docker Compose sobre Proxmox en on-premise.
+Contenedores / orquestación: imagen PHP 8.5 con servidor HTTP/PHP-FPM para APIs y procesos PHP CLI separados para colas y programación; Docker + ECS Fargate en nube, perfil `wms_only` sobre Proxmox en Talca y Concepción, y Docker Compose en los mini-PC de cross-docking.
 
 Infraestructura como Código: Terraform (multi-zona) + Ansible.
 
-CI/CD: GitLab CI como orquestador + AWS CodeBuild para construcción hermética con procedencia SLSA 3.
+CI/CD: GitLab CI como orquestador + AWS CodeBuild para construcción hermética con procedencia SLSA 3; Composer audit, PHPUnit, PHPStan/Larastan, Laravel Pint, swagger-php y validación AsyncAPI en la puerta de calidad.
 
-Los servicios AWS consumidos incluyen: CloudFront, WAF+Shield, ALB, API Gateway, Aurora, ElastiCache, DynamoDB, S3, Redshift Serverless, ECS Fargate, Route 53, Secrets Manager/SSM, KMS, IAM+Organizations, CloudWatch/X-Ray/AMP, Transit Gateway/VPC Peering, SQS, AWS Backup, GuardDuty/Security Hub, CloudTrail, SES/SNS e IoT Core+Greengrass.
+Los servicios AWS consumidos incluyen: CloudFront, WAF+Shield, ALB, API Gateway, Aurora, ElastiCache, DynamoDB, S3, Redshift Serverless, ECS Fargate, Route 53, Secrets Manager/SSM, KMS, IAM+Organizations, CloudWatch, Transit Gateway, SQS, SNS, AWS Backup, GuardDuty/Security Hub, CloudTrail e IoT Core+Greengrass.
 
-El núcleo de la plataforma se compone de software de código abierto (Django, Angular, PostgreSQL, Redis, RabbitMQ, Keycloak) portable y sin lock-in de proveedor, coherente con las exigencias de mantenibilidad por un equipo pequeño durante los 56 meses de contrato.
+El núcleo de la plataforma se compone de software portable (Laravel/PHP, Angular/TypeScript, Kotlin, PostgreSQL/PostGIS, Redis, RabbitMQ, Keycloak, Docker, Proxmox y `php-amqplib`) y adaptadores para reducir el lock-in de proveedor, coherente con las exigencias de mantenibilidad por un equipo pequeño durante los 56 meses de contrato.
 
 
 ## 4.6  Patrones de Diseño y Buenas Prácticas
@@ -294,7 +294,7 @@ La arquitectura aplica un conjunto de patrones de diseño que responden a las re
 
 Offline-first con sincronización idempotente. Toda escritura desde un dispositivo sin conexión lleva un UUID único y se envía por el API Gateway al reconectar. El servidor deduplica (RT-02.06) y resuelve los conflictos de stock por regla de negocio, no por marca de tiempo ciega (S26). Este patrón es la piedra angular del diseño: previene la pérdida de transacciones y la duplicación de pedidos, que eran fallas recurrentes en la operación actual.
 
-Servicios stateless con estado en almacenes externos. Los módulos de negocio (Capa 4) no mantienen estado en memoria; las sesiones se almacenan en Keycloak/Cookie y Redis (ElastiCache), y en operación desconectada la sesión la sostiene la caché local del IdP con TTL de 8 horas (A-05). Este patrón habilita el escalado horizontal en ECS Fargate y la resiliencia ante fallos de un nodo individual.
+Servicios stateless con estado en almacenes externos. Los módulos de negocio (Capa 4) no mantienen estado en memoria; las sesiones utilizan los mecanismos de identidad definidos y Redis (ElastiCache), y en operación desconectada la identidad se verifica con la caché local de solo lectura con TTL de 24 horas, el manifiesto firmado y el PIN personal (A-05). Este patrón habilita el escalado horizontal en ECS Fargate y la resiliencia ante fallos de un nodo individual.
 
 Degradación elegante sin pérdida silenciosa. Cuando un componente no responde, la operación continúa en modo reducido informado a la persona usuaria ("modo offline"). Ninguna degradación produce pérdida de una transacción de venta o entrega: si una escritura no llega al servidor, queda en el buffer local del dispositivo, visible como pendiente y reconciliada en la sincronización posterior (RT-02.09). La clasificación de servicios (RT-10.02) distingue cuatro niveles de criticidad: crítico (despacho 05:30–07:00), alto (preventa, rutas, DTE), medio (EDI, notificaciones, BI) y bajo (reportes ad-hoc).
 

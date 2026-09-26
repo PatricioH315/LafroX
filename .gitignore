@@ -23,3 +23,6 @@ _staging/
 # Auditoría de integridad del caso: herramienta interna de control (no se versiona)
 AUDITORIA.md
 **/auditoria*.md
+
+# Logs de ejecución del plugin codex-flow (no se versionan)
+.codex-flow/

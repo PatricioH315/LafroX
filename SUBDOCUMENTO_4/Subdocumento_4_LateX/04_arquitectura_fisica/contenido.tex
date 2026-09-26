@@ -1,3 +1,4 @@
+% !TeX root = ../main.tex
 %% ============================================================================
 %%  04_arquitectura_fisica/contenido.tex
 %%
@@ -19,15 +20,6 @@
 %%  citan por nombre de sección, no por símbolo §.
 %% ============================================================================
 
-\phantomsection
-\addcontentsline{toc}{chapter}{Arquitectura física y de despliegue de la solución}
-\label{cap:arquitectura-fisica}
-\LFXtitulopreliminar{Arquitectura física y de despliegue de la solución}
-
-\nota{Apartados 4.2 y 4.3 del Subdocumento 4. La arquitectura lógica es el
-apartado 4.1 del mismo subdocumento; ambas comparten el registro de decisiones y
-la volumetría, y se leen juntas.}
-
 \renewcommand{\thechapter}{4.\arabic{chapter}}
 \setcounter{chapter}{1}   % 4.1 es la arquitectura lógica; la física abre como 4.2
 
@@ -40,18 +32,19 @@ la volumetría, y se leen juntas.}
   {\thechapter}{0.45em}{}
 
 % --- 4.2 Arquitectura física (índice obligatorio, aclaraciones sección 11) ---
-%  02_0 abre el capítulo con número "4.2"; sus secciones quedan 4.2.1 a 4.2.6.
-%  El cuerpo sigue el orden del índice: emplazamiento, servicios, despliegue,
-%  conexiones y dimensionamiento. El despliegue es la sección 4.2.3 (11_j);
-%  implementos (4.2.6) va al final del bloque porque resume lo anterior y remite
-%  a la especificación fila por fila del Formulario T-11 (archivo propio).
+%  02_0 abre el apartado con número "4.2". El índice obligatorio fija 4.2.1 =
+%  "Especificaciones Implementos a proveer (Hardware y Software)"; los
+%  contenidos de 4.2 (emplazamiento, servicios, despliegue, conexiones y
+%  dimensionamiento) siguen como 4.2.2 a 4.2.6 (aclaraciones, sección 2).
+%  Las etiquetas de sección no llevan número, así las referencias no dependen
+%  del orden.
 \parte{partes/02_0_arquitectura_fisica}
-\parte{partes/02_a_emplazamiento}      % 4.2.1
-\parte{partes/02_b_servicios_nube}     % 4.2.2
-\parte{partes/11_j_despliegue}         % 4.2.3
-\parte{partes/02_c_conexiones}         % 4.2.4
-\parte{partes/12_k_dimensionamiento}   % 4.2.5
-\parte{partes/04_c_implementos}        % 4.2.6
+\parte{partes/04_c_implementos}        % 4.2.1 (título obligatorio)
+\parte{partes/02_a_emplazamiento}      % 4.2.2
+\parte{partes/02_b_servicios_nube}     % 4.2.3
+\parte{partes/11_j_despliegue}         % 4.2.4
+\parte{partes/02_c_conexiones}         % 4.2.5
+\parte{partes/12_k_dimensionamiento}   % 4.2.6
 \let\LFXcuerpotabla\LFXcuerpotablaorig   % tablas sin guiones solo en 4.2
 % --- fin del bloque 4.2 ---
 
@@ -73,3 +66,5 @@ la volumetría, y se leen juntas.}
 \renewcommand{\LFXcuerpotabla}{%   % el anexo no corta en guiones explícitos (RT-02.11, cross-docking)
   \LFXcuerpotablaorig\exhyphenpenalty=10000\relax}
 \parte{partes/15_anexo_t11}
+% Anexo 4.B: memoria de cálculo del dimensionamiento, después del T-11.
+\parte{partes/16_anexo_4b_memoria_calculo}
