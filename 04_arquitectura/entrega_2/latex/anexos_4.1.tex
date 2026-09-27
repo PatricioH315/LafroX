@@ -1,0 +1,253 @@
+% !TeX program = lualatex
+% Anexos independientes del Subdocumento 4.1.
+\makeatletter
+\def\input@path{{../../../Productos/plantilla-latex/}{Productos/plantilla-latex/}}
+\makeatother
+\documentclass[carta,firma]{lafrox}
+\datoslafrox{
+  documento = {Propuesta Técnica},
+  subtitulo = {Anexos del Subdocumento 4.1},
+  alcance = {Arquitectura lógica},
+  formulario = {Formulario T-22},
+  fecha = {25 de septiembre de 2026},
+  version = {},
+  nomenclatura = {anexos\_4.1.pdf},
+}
+\hypersetup{pdftitle={Anexos del Subdocumento 4.1 -- Arquitectura lógica}}
+\usepackage{etoolbox}
+\patchcmd{\portadalafrox}{\LFXcampoportada{Versión}{\LFXversion}}{\LFXcampoportada{Documento}{Anexos 4.1}}{}{\PackageError{anexos41}{No se pudo ajustar la portada}{Revisar la plantilla}}
+\patchcmd{\LFXpieizquierdo}{\textperiodcentered\ v\LFXversion}{}{}{\PackageError{anexos41}{No se pudo ajustar el pie}{Revisar la plantilla}}
+\captionsetup{hypcap=false}
+\begin{document}
+\portadalafrox
+\indicelafrox
+\setcounter{chapter}{4}
+\renewcommand{\thetable}{A.\arabic{table}}
+\chapter*{Anexos del Subdocumento 4.1}
+\addcontentsline{toc}{chapter}{Anexos del Subdocumento 4.1}
+Estos anexos reúnen los catálogos y matrices de detalle citados en el apartado 4.1. El cuerpo principal conserva la explicación de las decisiones y sus consecuencias operativas.
+
+\section*{Anexo 4.1-A --- Catálogo de eventos canónicos}
+\addcontentsline{toc}{section}{Anexo 4.1-A --- Catálogo de eventos canónicos}
+El detalle de catálogo de eventos canónicos se presenta a continuación.
+
+\begin{tablalafrox}{Eventos canónicos del dominio}{tab:eventos-canonicos}{F{0.16} F{0.08} F{0.18} F{0.15} Y}{\cab{Evento} & \cab{Productor} & \cab{Consumidores} & \cab{Clave de partición} & \cab{Origen en el caso / Decisión}}
+RecepcionConfirmada & M1 & M2, M9, ACL$\rightarrow$ERP & site\_id & Cap. 9.5: retiro sanitario < 2 h \\
+StockReservado / ReservaLiberada & M2 & M3, M5 & sku\_id & Decisión 16.1 N\textdegree{} 8: doble compromiso stock \\
+PedidoConfirmado & M3 & M4, M5, M7, M11 & pedido\_id & M11 traduce la entrada EDI; M3 confirma el pedido \\
+MisionPreparada & M5 & M6, ACL$\rightarrow$ERP & pedido\_id & Cierra ciclo bodega a andén \\
+EntregaRegistrada & M6 & M7, M8, M10, ACL & entrega\_id & Decisión 16.1 N\textdegree{} 1: entrega cumplida / OTIF \\
+DevolucionRegistrada & M8 & M2, M7, M10 & entrega\_id & Decisión 16.1 N\textdegree{} 12: efecto sobre DTE emitido \\
+EnvaseMovido & M8 & M2, M10 & cliente\_id & Decisión 16.1 N\textdegree{} 10: 68.000 canastillos, 9.400 pallets, 14\% pérdida \\
+ExcursionTermicaDetectada & M9 (borde) & M5 (bloqueo), M10, alertas & shipment\_id & Decisión 16.1 N\textdegree{} 4: bloqueo local < 5 s \\
+RendicionCerrada & M7 & M10, ACL$\rightarrow$ERP & conductor\_id & Control efectivo que circula en ruta \\
+DesviacionDeRutaDetectada & M12 & M10, M9 & ruta\_id & Costo de servir; no control de jornada. \\
+\end{tablalafrox}
+
+{\footnotesize Fuente: elaboración propia de LafroX a partir de Caso 02, flujos operativos y numeral 16.1.\par}
+
+\section*{Anexo 4.1-B --- Gobierno de la integración}
+\addcontentsline{toc}{section}{Anexo 4.1-B --- Gobierno de la integración}
+El detalle de gobierno de la integración se presenta a continuación.
+
+\begin{tablalafrox}{Mecanismos de gobierno de la capa de integración}{tab:gobierno-integracion}{F{0.23} F{0.44} Y}{\cab{Mecanismo} & \cab{Cómo opera} & \cab{Responsable / Artefacto}}
+Catálogo único versionado & Toda integración: dueño, contrato, versión, estado, comportamiento ante falla. Lo que no está en el catálogo no se despliega. & Arquitecto Solución / Catálogo (portal API Gateway) \\
+Comité Arquitectura & Aprueba altas y cambios \texttt{major}; cadencia declarada en plan gobierno. & Arq. Sol., Jefe Proy., Jefe TI Cliente / Actas \\
+Pruebas contrato consumidor-proveedor & Pipeline: cambio que rompe consumidor registrado bloquea despliegue automáticamente. & Líder Desarrollo, Líder Calidad / Pipeline CI/CD \\
+Pruebas falla por integración & Inyección fallas (RT-10.07) en marcha blanca; verifica comportamiento catálogo. & Líder Calidad, Líder Operación / Evidencia marcha blanca \\
+Observabilidad por integración & Latencia, error, volumen, DLQ por integración, correlación \texttt{transaction\_id} (Capa 8). & Líder Operación/SRE / tableros de CloudWatch \\
+Bandeja excepciones negocio & EDI/DTE $\rightarrow$ bandeja operada por actor canónico (RF-12.05/12.06). & Jefe TI, Responsable Canal Moderno / Bandeja operativa \\
+Traspaso equipo 4 personas & Catálogo, guías resolución, bandeja = artefactos operables sin proponente. & Líder Implantación/Gestión Cambio / Documentación traspaso \\
+\end{tablalafrox}
+
+{\footnotesize Fuente: elaboración propia de LafroX a partir de Bases Técnicas Transversales, RT-02 y RT-05.\par}
+
+\section*{Anexo 4.1-C --- Escenarios de carga masiva}
+\addcontentsline{toc}{section}{Anexo 4.1-C --- Escenarios de carga masiva}
+El detalle de escenarios de carga masiva se presenta a continuación.
+
+\begin{tablalafrox}{Escenarios de carga y descarga masiva (RT-05.22)}{tab:carga-masiva}{F{0.24} F{0.34} Y}{\cab{Escenario} & \cab{Mecanismo} & \cab{Control y auditoría}}
+Carga inicial maestros/históricos (ERP, WMS) & ETL por lotes, inserción idempotente por UUID, ventana sin operación & Conteo previo/posterior por lote, conciliación totales, bitácora carga (quién, cuándo, lote, resultado); rechazados $\rightarrow$ cuarentena + reproceso \\
+Descarga regulatoria (traza lote, temperaturas, DTE, geo) & Exportación asíncrona CSV/Parquet, firmada, checksum & Registro extracción (solicitante, filtro, resultado); control acceso datos sensibles (RT-16.09) \\
+Sincronización masiva turno (terreno) & Sincronizadores con partición + reanudación + deduplicación; medios a S3 por objeto & Nivel servicio: turno completo $\leq$ 10 min; métricas sync en Capa 8 \\
+Interfaces periódicas con terceros & Colas con \texttt{batch\_id} + confirmación por lote & Monitoreo DLQ + acuse por lote en bandeja excepciones \\
+\end{tablalafrox}
+
+{\footnotesize Fuente: elaboración propia de LafroX a partir de Bases Técnicas Transversales, RT-05.22.\par}
+
+\section*{Anexo 4.1-D --- Matriz de los doce módulos}
+\addcontentsline{toc}{section}{Anexo 4.1-D --- Matriz de los doce módulos}
+El detalle de matriz de los doce módulos se presenta a continuación.
+
+\begin{tablalafrox}{Módulos, responsabilidades e interlocutores}{tab:modulos-funcionales}{F{0.18} F{0.23} F{0.24} F{0.23} Y}{\cab{Módulo / RF} & \cab{Responsabilidad} & \cab{Interfaz principal} & \cab{Actor principal} & \cab{Etapa}}
+M1 Recepción / RF-01 & Lote y recepción GS1. & Evento a M2; ACL con ERP. & Recepcionista; proveedor. & 1 \\
+M2 Inventario / RF-02 & Stock, reserva y FEFO. & Consulta de M3/M5. & Jefatura de bodega. & 1 \\
+M3 Preventa / RF-03 & Pedido y precio informado. & Reserva en M2; sincronización. & Preventista. & 1 \\
+M4 Rutas / RF-04 & Secuencia y restricciones. & Ruta aprobada a M6. & Planificador. & 1 \\
+M5 Preparación / RF-05 & Misión y carga confirmada. & Evento a M6; guía vía ACL. & Preparador; jefatura. & 1 \\
+M6 Reparto / RF-06 & Entrega y POD. & Evento a M7/M8. & Conductor propio o externo. & 1 \\
+M7 Rendición / RF-07 & Cobro y descuadre. & ACL al ERP; evento a M10. & Conductor; Tesorería. & 1 \\
+M8 Devoluciones / RF-08 & Retorno y saldo de envases. & Evento a M2/M7. & Conductor; bodega. & 1 \\
+M9 Calidad / RF-09 & Lote, frío y bloqueo. & Bloqueo a M5; alerta. & Jefatura de Calidad. & 1 \\
+M10 Analítica / RF-11 & OTIF y costo de servir. & Consume eventos sin escribir. & Gerencias. & 1 \\
+M11 Canal moderno / RF-12 & Pedido EDI y excepciones. & Contrato por cadena; M3. & Cadena; equipo comercial. & 2 \\
+M12 Flota / RF-14 & Ruta real y desviación. & GPS a M4/M10. & Planificador; flota. & 1 \\
+\end{tablalafrox}
+
+{\footnotesize Fuente: elaboración propia de LafroX a partir de Caso 02, requerimientos funcionales y alcance del capítulo 3.\par}
+
+\section*{Anexo 4.1-E --- Trazabilidad funcional}
+\addcontentsline{toc}{section}{Anexo 4.1-E --- Trazabilidad funcional}
+El detalle de trazabilidad funcional se presenta a continuación.
+
+\begin{tablalafrox}{Trazabilidad funcional de la arquitectura lógica}{tab:traza-logica}{F{0.16} F{0.26} F{0.26} Y}{\cab{Requisito} & \cab{Responsable} & \cab{Capas implicadas} & \cab{Evidencia verificable}}
+RF-01 & M1 Recepción & 1, 4, 5 y 6 & Lote GS1 recibido y publicado. \\
+RF-02 & M2 Inventario & 4, 5 y 6 & Reserva y FEFO por sitio. \\
+RF-03 & M3 Preventa & 1, 3, 4 y 6 & Pedido único tras reconexión. \\
+RF-04 & M4 Rutas & 1, 4 y 5 & Ruta revisada en menos de 20 min. \\
+RF-05 & M5 Preparación & 1, 4, 5 y 6 & Lectura y carga por lote. \\
+RF-06 & M6 Reparto & 1, 4, 5 y 6 & POD unido a entrega. \\
+RF-07 & M7 Rendición & 1, 4 y 5 & Descuadre y aprobación segregados. \\
+RF-08 & M8 Devoluciones & 1, 4, 5 y 6 & Saldo y causal conciliados. \\
+RF-09 & M9 Calidad & 2, 4, 5 y 6 & Bloqueo y liberación por Calidad. \\
+RF-11 & M10 Analítica & 4, 5 y 6 & OTIF y costo trazables al evento. \\
+RF-12 & M11 Canal moderno & 3, 4 y 5 & Pedido EDI normalizado. \\
+RF-14 & M12 Flota & 2, 4 y 5 & Ruta real correlacionada. \\
+\end{tablalafrox}
+
+{\footnotesize Fuente: elaboración propia de LafroX a partir del catálogo funcional del caso y las responsabilidades definidas en la Tabla~\ref{tab:modulos-funcionales}.\par}
+
+\section*{Anexo 4.1-F --- Mapa de límites de contexto}
+\addcontentsline{toc}{section}{Anexo 4.1-F --- Mapa de límites de contexto}
+El detalle de mapa de límites de contexto se presenta a continuación.
+
+\begin{tablalafrox}{Mapa de límites de contexto}{tab:context-mapping}{F{0.17} F{0.20} F{0.27} F{0.22} Y}{\cab{Dueño} & \cab{Relación} & \cab{Interlocutor} & \cab{Contrato} & \cab{Límite}}
+M1 Recepción & Traducción por ACL & ERP 2017 & Recepción validada. & ERP no escribe lote. \\
+M2 Inventario & Servicio publicado & M3, M4 y M5 & Consulta y reserva. & M2 decide stock. \\
+M3 Preventa & Cliente de M2 & M2 y M7 & Pedido y sincronización. & No aprueba crédito local. \\
+M4 Rutas & Adapta fuente & M3, M6 y GIS & Ruta aprobada. & GIS no decide ruta. \\
+M5 Preparación & Proveedor de evento & M2, M6 y ACL & Misión preparada. & No emite guía. \\
+M6 Reparto & Proveedor de evento & M4, M7 y M8 & Entrega registrada. & No liquida cobro. \\
+M7 Rendición & Traducción por ACL & M6 y ERP & Rendición aprobada. & ERP sigue tributario. \\
+M8 Devoluciones & Lenguaje publicado & M2 y M7 & Devolución y envase. & No ajusta DTE. \\
+M9 Calidad & Proveedor de bloqueo & M1, M5 y sensores & Lote bloqueado. & Calidad libera. \\
+M10 Analítica & Consumidor de eventos & M1--M9 y M12 & Indicadores consolidados. & Solo lectura. \\
+M11 Canal moderno & Traducción EDI & Cadena, M3 y ACL & Pedido normalizado. & M3 gobierna pedido. \\
+M12 Flota & Adapta telemetría & GPS, M4 y M10 & Ruta observada. & No registra entrega. \\
+\end{tablalafrox}
+
+{\footnotesize Fuente: elaboración propia de LafroX a partir de Caso 02 y responsabilidades de M1--M12 definidas en esta sección.\par}
+
+\section*{Anexo 4.1-G --- Catálogo de interfaces internas}
+\addcontentsline{toc}{section}{Anexo 4.1-G --- Catálogo de interfaces internas}
+El detalle de catálogo de interfaces internas se presenta a continuación.
+
+\begin{tablalafrox}{Integraciones internas: dueño, contrato y continuidad}{tab:catalogo-internas}{F{0.09} F{0.29} F{0.16} F{0.24} Y}{\cab{ID} & \cab{Intercambio} & \cab{Dueño} & \cab{Contrato} & \cab{Falla}}
+INT-01 & Pedido preventa y consulta. & M3 & API negocio y sync. & Captura local pendiente. \\
+INT-02 & Entrega, POD y cobro. & M6/M7/M8 & API sync por lote. & Cola en dispositivo. \\
+INT-03 & Eventos bodega a nube. & M2/M5 & Eventos por sitio. & Broker local 24 h. \\
+INT-04 & Detalle cross-dock a Talca. & M2 & Evento de inventario. & Buffer y reconciliación. \\
+INT-05 & Eventos de temperatura. & M9 & Evento de excursión. & Bloqueo local. \\
+INT-12 & Cambios de datos a réplica. & M2 & CDC de bodega. & Desfase medido; reanudar. \\
+INT-13 & Identidad a sitio. & Seguridad & Políticas firmadas. & Asignaciones vigentes. \\
+INT-14 & Métricas y trazas. & Operación & OTLP. & Buffer local. \\
+\end{tablalafrox}
+
+{\footnotesize Fuente: elaboración propia de LafroX a partir de Diseño lógico LafroX, con base en RT-02.06 y RT-03.12.\par}
+
+\section*{Anexo 4.1-H --- Catálogo de interfaces externas}
+\addcontentsline{toc}{section}{Anexo 4.1-H --- Catálogo de interfaces externas}
+El detalle de catálogo de interfaces externas se presenta a continuación.
+
+\begin{tablalafrox}{Integraciones externas y respuesta ante falla}{tab:catalogo-externas}{F{0.09} F{0.27} F{0.18} F{0.24} Y}{\cab{ID} & \cab{Tercero} & \cab{Dueño interno} & \cab{Contrato} & \cab{Falla}}
+INT-06 & ERP 2017 & ACL/M7 & Adaptador versionado. & Cola; sin escritura directa. \\
+INT-07 & Emisor DTE del ERP y SII & ACL/M5 & Guía y estado tributario. & Bloquear nueva salida afectada. \\
+INT-08 & Cadenas modernas & M11 & Perfil EDI por cadena. & Bandeja y aviso acordado. \\
+INT-09 & Pasarela de pago & M7 & Autorización con clave única. & Efectivo o crédito aprobado. \\
+INT-10 & Mapas y geocodificación & M4 & API proveedor. & Ruta precargada. \\
+INT-11 & Avisos al cliente & Trabajador Laravel de notificaciones & SNS o API del proveedor de notificaciones. & Reintento por canal acordado. \\
+INT-15 & Telemetría existente & M12 & API de solo lectura. & Ruta planificada sin posición. \\
+\end{tablalafrox}
+
+{\footnotesize Fuente: elaboración propia de LafroX a partir de Caso 02 y Bases Técnicas Transversales, RT-05.\par}
+
+\section*{Anexo 4.1-I --- Volumen de mensajes}
+\addcontentsline{toc}{section}{Anexo 4.1-I --- Volumen de mensajes}
+El detalle de volumen de mensajes se presenta a continuación.
+
+\begin{tablalafrox}{Volumen de mensajes por integración (derivado volumetría caso)}{tab:volumen-mensajes}{F{0.26} F{0.26} F{0.21} Y}{\cab{Integración} & \cab{Volumen régimen} & \cab{Peak septiembre} & \cab{Derivación}}
+Capa anticorrupción ERP (asíncrona) & $\approx$ 4.700 msg/día & $\approx$ 9.400 & 1.240 pedidos + 46 recepciones + 1.400 preparaciones + 1.400 evidencias + $\approx$ 600 recaudaciones \\
+Documentos tributarios y acuse (SII, síncrona) & $\approx$ 2.700 msg/día & $\approx$ 5.400 & 34.000 docs/mes + acuse, sobre 25 días \\
+Eventos trazabilidad GS1 EPCIS & $\approx$ 52.000 eventos/día & $\approx$ 104.000 & 260.000 líneas/mes $\times$ 5 eventos ciclo, sobre 25 días \\
+Telemetría cadena frío (IoT Core) & $\approx$ 16.100 msg/día & sin variación & 56 fuentes (28 puntos de cámara + 28 termógrafos) $\times$ 288 muestras diarias \\
+Telemetría flota & $\approx$ 60.500 msg/día & $\approx$ 72.000 & 42 camiones $\times$ 1 posición/30s durante 12 h ruta \\
+Sync terreno (colas dispositivo) & $\approx$ 13.000 escrituras/día & $\approx$ 26.000 & 1.240 pedidos + 1.400 evidencias + 10.400 confirmaciones prep. \\
+EDI canal moderno (Etapa 2) & $\approx$ 550 msg/día & $\approx$ 1.100 & 136 pedidos/día $\times$ 4 mensajes (pedido, confirmación, aviso, acuse) \\
+Notificaciones multicanal & $\approx$ 2.800 msg/día & $\approx$ 5.600 & hora estimada llegada y acuse por entrega \\
+Autorización pago (POS móvil) & $\approx$ 500 msg/día & $\approx$ 1.000 & fracción canal tradicional que migra efectivo a electrónico \\
+Servicio mapas y geocodificación & $\approx$ 200 llamadas/día & $\approx$ 400 & una corrida ruteo por zona + recálculos incidencia \\
+\end{tablalafrox}
+
+{\footnotesize Fuente: elaboración propia de LafroX a partir de Caso 02, numeral 14.1; cálculos indicados en la columna de derivación.\par}
+
+\section*{Anexo 4.1-J --- Funciones sin conexión}
+\addcontentsline{toc}{section}{Anexo 4.1-J --- Funciones sin conexión}
+El detalle de funciones sin conexión se presenta a continuación.
+
+\begin{tablalafrox}{Funciones sin conexión y procedimiento de continuidad}{tab:funciones-offline}{F{0.24} F{0.16} F{0.26} Y}{\cab{Función} & \cab{Estado} & \cab{Continuidad local} & \cab{Al reconectar}}
+Pedido preventa & Captura 14 h & Precio y stock informativos; pedido pendiente. & M2 valida reserva y crédito. \\
+Entrega y POD & Captura 14 h & Evidencia cifrada y cola persistente. & M6 confirma o abre excepción. \\
+Recepción y preparación & Opera 24 h & Registro GS1 y bloqueo térmico local. & Eventos a nube y conciliación. \\
+Cobro en efectivo & Captura 14 h & Comprobante y custodia según política. & M7 rinde y concilia. \\
+Autorización POS & No disponible & Efectivo o crédito autorizado; sin cargo presunto. & Autorizar una sola vez. \\
+Nueva guía electrónica & No disponible & M5 retiene la salida afectada; escalar. & ERP emite antes de liberar. \\
+Ruteo y mapas en línea & No disponible & Usar secuencia y mapas precargados. & Recalcular cambios pendientes. \\
+EDI de supermercados & No disponible & Registrar incidente y aviso acordado con cadena. & Cola y bandeja de excepciones. \\
+Tablero central & No disponible & Alarmas y bitácora local sostienen despacho. & Reponer telemetría y estado. \\
+\end{tablalafrox}
+
+{\footnotesize Fuente: elaboración propia de LafroX a partir de Bases Técnicas Transversales, RT-03.10 y RT-03.13.\par}
+
+\section*{Anexo 4.1-K --- Reglas de reconciliación}
+\addcontentsline{toc}{section}{Anexo 4.1-K --- Reglas de reconciliación}
+El detalle de reglas de reconciliación se presenta a continuación.
+
+\begin{tablalafrox}{Reglas de reconciliación y bitácora Art. 16.4}{tab:reglas-reconciliacion}{F{0.16} F{0.24} F{0.18} F{0.18} Y}{\cab{Conflicto} & \cab{Regla de resolución} & \cab{Dónde se ejecuta} & \cab{Bitácora Art. 16.4} & \cab{Dec. / ADR}}
+Doble reserva stock (preventa offline vs online) & M2 confirma una sola reserva; la otra queda en excepción con aviso, sin resolver por la última marca de tiempo. & Capa 4 (M2/M3) & Pedido, stock, regla, resultado y hora. & Decisión 16.1 N\textdegree{} 8; RT-02.06 \\
+Pedido duplicado (reenvío offline) & M3 conserva el UUID y devuelve el resultado ya persistido, sin volver a reservar ni cobrar. & Capa 4 (M3) & transaction\_id, event\_id y resultado anterior. & RT-02.06 \\
+Entrega offline vs cancelación back-office & M6 aísla el conflicto: compara estado y evidencia; un supervisor resuelve antes de ajustar cobro o DTE. & Capa 4 (M6/M7) & Entrega, cancelación, POD y decisión motivada. & Decisión 16.1 N\textdegree{} 1 \\
+Excursión térmica detectada offline & M9 bloquea localmente la salida; solo Calidad libera tras evaluación. & Capas 2 y 4 (M9/M5) & Sensor, umbral, lote, bloqueo y liberación. & Decisión 16.1 N\textdegree{} 4 \\
+Rendición conductor offline vs ERP caído & M7 conserva la captura en el dispositivo hasta reconexión; el sitio retiene sus propios eventos en RabbitMQ; \texttt{erp-sync} reintenta con cortacircuito & Capa 1 (dispositivo) + Capa 4 (M7) + Capa 5 + ACL & conductor\_id, monto, causal descuadre, reintentos ERP & INT-06, RT-10.08 \\
+Conflicto envases (conductor devuelve vs cliente niega) & Cuenta corriente por cliente (saldo, no unidad); registro EnvaseMovido con firma/QR conductor; disputa $\rightarrow$ bandeja excepciones & Capa 4 (M8) & cliente\_id, tipo envase, firma/QR, decisión (saldo actualizado) & Decisión 16.1 N\textdegree{} 10 \\
+Cambio de precio entre captura y confirmación & M3 conserva la tarifa mostrada; si cambió antes de confirmar, solicita aceptación o autorización comercial, sin cambiar silenciosamente el pedido & M3 + M7 & pedido\_id, tarifa inicial y vigente, respuesta del cliente & Decisión 16.1 N\textdegree{} 9 \\
+Devolución tras guía emitida & M8 conserva cantidad, lote y causal; el ERP decide y emite el documento tributario posterior mediante ACL & M8 + ACL & entrega\_id, guía original, devolución, documento resultante & Decisión 16.1 N\textdegree{} 12 \\
+\end{tablalafrox}
+
+{\footnotesize Fuente: elaboración propia de LafroX a partir de Caso 02, decisiones 16.1, y RT-03.12.\par}
+
+\section*{Anexo 4.1-L --- Decisiones del numeral 16.1}
+\addcontentsline{toc}{section}{Anexo 4.1-L --- Decisiones del numeral 16.1}
+El detalle de decisiones del numeral 16.1 se presenta a continuación.
+
+\begin{tablalafrox}{Decisiones de diseño del numeral 16.1}{tab:16-decisiones}{F{0.05} F{0.29} F{0.42} Y}{\cab{Nº} & \cab{Pregunta del caso} & \cab{Regla o componente propuesto} & \cab{Validación}}
+1 & Entrega parcial e indicador de servicio & M6 distingue entregado completo, parcial y no entregado; M10 calcula OTIF por pedido completo y ventana acordada. & Criterio comercial \\
+2 & Unidad de trazabilidad sanitaria & M9 traza GTIN y lote proveedor; M1/M5 vinculan cada movimiento a SSCC. & Unidad con Calidad \\
+3 & Local cerrado y responsable del reintento & M6 registra causal y evidencia; la regla de reintento se parametriza y supervisa por Operaciones. & Plazo y autoridad \\
+4 & Excursión térmica, decisión y bloqueo & M9 aplica umbral por producto; M5 bloquea localmente y Calidad autoriza liberar o descartar. & Umbrales con Calidad \\
+5 & Identidad y sustitución de conductor externo & Portal Transportistas registra vínculo empresa--conductor--turno; OTP inicial y revocación al cambio; M6 conserva autor de cada POD. & Procedimiento transportista \\
+6 & Efectivo y riesgo del dinero en ruta & M7 conserva cobro y rendición individual con causal de diferencia; Puelche define custodia y límite por turno. & Política de Tesorería \\
+7 & Costo de servir y clientes no rentables & M10 calcula costo por entrega con ruta, tiempo, devoluciones y envases; Comercial decide medidas, no el algoritmo. & Criterio comercial \\
+8 & Dos preventistas comprometen el mismo stock & M2 confirma reserva central; M3 deja pendiente el pedido sin conexión y comunica rechazo o sustitución al sincronizar. & Prioridad comercial \\
+9 & Precio cambia antes del despacho & M3 conserva precio informado y versión de tarifa; una diferencia genera revalidación y aviso antes de confirmar. & Política de precios \\
+10 & Control de envases retornables & M8 registra saldo por cliente, tipo y movimiento con evidencia; se concilia en la rendición. & Modalidad de cargo \\
+11 & Maestro de productos ante cambios del proveedor & M1 ingresa equivalencia GTIN/formato; el maestro autorizado se sincroniza mediante ACL con ERP y preserva historial. & Dueño del maestro \\
+12 & Devolución y DTE ya emitido & M8 registra devolución y causal; ACL solicita al ERP el documento tributario que corresponda, enlazado al original. & Regla tributaria \\
+13 & Objeción sindical a cámaras y geolocalización & M12 usa telemetría de flota para ruta y costo; excluye cámaras en cabina y control de jornada por GPS. & Gestión laboral \\
+14 & Destino del WMS 2013 & M1, M2 y M5 reemplazan sus capacidades en Etapa 1 por sitio y ola, con reversión controlada (ADR-08). & Corte por sitio \\
+15 & Receptor distinto, imposibilidad o negativa a firmar & M6 identifica receptor y causal; conserva QR, fotografía o constancia de negativa según política, sin equiparar automáticamente POD con acuse tributario. & Validez de evidencia \\
+16 & Conocimiento concentrado del planificador & M4 guarda restricciones, excepciones y decisiones del planificador; la transición incluye transferencia y prueba de rutas. & Aceptación Operaciones \\
+\end{tablalafrox}
+
+{\footnotesize Fuente: elaboración propia de LafroX a partir de Caso 02, numeral 16.1.\par}
+
+\end{document}
