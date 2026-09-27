@@ -79,14 +79,23 @@ Las ocho capas separan la interacción con las personas, las reglas de negocio y
 
 Las capas 7 y 8 atraviesan las demás; no duplican reglas de negocio.
 
-La Figura~\ref{fig:arql-1} presenta el recorrido completo desde las personas hasta los módulos y los datos. Primero se leen las entradas de la capa 1 y la exposición de las capas 2 y 3; después, las decisiones de M1--M12 en la capa 4 y los intercambios de la capa 5. Seguridad y observabilidad atraviesan esas rutas y no sustituyen al dueño de cada dato.
+La Figura~\ref{fig:arql-general-completa} presenta la arquitectura lógica completa: relaciona los actores y sus aplicaciones con los módulos M1--M12, las integraciones y los almacenes de datos. Permite reconocer las ocho capas y las tecnologías que sostienen cada responsabilidad. La Figura~\ref{fig:arql-1}, presentada a continuación, resume ese conjunto para facilitar la lectura de los recorridos principales.
 
-La vista separa la entrada pública de la puerta local que sostiene el CD, y sitúa seguridad y observabilidad como responsabilidades transversales. La secuencia de un pedido, el acceso durante un corte y la relación entre lote y entrega se detallan en figuras específicas más adelante.
+Primero se leen las entradas de la capa 1 y la exposición de las capas 2 y 3; después, las decisiones de M1--M12 en la capa 4 y los intercambios de la capa 5. Seguridad y observabilidad atraviesan esas rutas y no sustituyen al dueño de cada dato. La vista resumida explicita la puerta local que sostiene el CD durante un corte. Las vigencias de identidad y los recorridos desconectados se precisan en los apartados de seguridad y acceso local.
+
+\clearpage
+\begin{center}
+  \includegraphics[width=\linewidth,height=0.83\textheight,keepaspectratio]{Diagramas/arquitectura_logica_actual/cambios laravel/ARQL-01_Vision_general.png}
+  \captionof{figure}{Vista general completa de la arquitectura lógica}
+  \label{fig:arql-general-completa}
+\end{center}
+
+{\footnotesize Fuente: elaboración propia de LafroX.\par}
 
 \clearpage
 \begin{center}
   \includegraphics[width=0.98\linewidth,height=0.83\textheight,keepaspectratio]{Diagramas/arquitectura_logica_actual/ARQL-19_Vista_general_legible.pdf}
-  \captionof{figure}{Vista general legible de las ocho capas lógicas}
+  \captionof{figure}{Vista resumida de las ocho capas lógicas}
   \label{fig:arql-1}
 \end{center}
 

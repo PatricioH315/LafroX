@@ -10,7 +10,8 @@ El documento LaTeX vigente describe el monolito modular Laravel 13 / PHP 8.5. Lo
 
 ## Diagramas generales
 
-- La Figura 4.1 del cuerpo usa `Diagramas/arquitectura_logica_actual/ARQL-19_Vista_general_legible.pdf`. Su fuente editable es el archivo `.dot` del mismo nombre.
+- La Figura 4.1 presenta primero la vista completa de Tomás: `Diagramas/arquitectura_logica_actual/cambios laravel/ARQL-01_Vision_general.png`.
+- La Figura 4.2 presenta después la síntesis `Diagramas/arquitectura_logica_actual/ARQL-19_Vista_general_legible.pdf`. Su fuente editable es el archivo `.dot` del mismo nombre. Las dos figuras se complementan y se muestran en páginas independientes.
 - La lámina detallada `ARQL-20_Arquitectura_logica_Laravel.pdf` muestra actores, M1–M12, integración, datos, seguridad y observabilidad. Se conserva también en SVG y PNG; su fuente editable es `ARQL-20_Arquitectura_logica_Laravel.dot`.
 
 ## Consistencia pendiente de consolidación
