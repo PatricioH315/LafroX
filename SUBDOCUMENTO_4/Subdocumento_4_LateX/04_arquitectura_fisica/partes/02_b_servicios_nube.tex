@@ -1,3 +1,4 @@
+% !TeX root = ../../main.tex
 % ------------------------------------------------------------------
 %  4.2.2 Servicios contratados en la plataforma de nube
 %  Fragmento del Subdocumento 4.2, traido desde contenido.tex con
@@ -9,9 +10,9 @@
 % ------------------------------------------------------------------
 
 \section{Servicios contratados en la plataforma de nube}
-\label{sec:4-2-2-servicios-nube}
+\label{sec:servicios-nube}
 
-La plataforma de nube es Amazon Web Services. Todos los servicios se contratan en cuentas del CLIENTE, organizadas bajo AWS Control Tower con una cuenta por ambiente, de modo que la propiedad de los datos y de la infraestructura es del CLIENTE desde el primer día. La selección sigue tres reglas: preferir el servicio administrado cuando existe, porque el área de TI del CLIENTE es de cuatro personas (Caso, Cap. 2.4); preferir servicios compatibles con estándares abiertos, para que salir de la plataforma no exija reescribir la solución; y contratar en la región secundaria solo lo que la recuperación ante desastres necesita.
+La plataforma de nube es Amazon Web Services. Todos los servicios se contratan en cuentas del CLIENTE, organizadas bajo AWS Control Tower con una cuenta por ambiente, de modo que la propiedad de los datos y de la infraestructura es del CLIENTE desde el primer día. La selección sigue tres reglas: preferir el servicio administrado cuando existe, porque el área de TI del CLIENTE es de cuatro personas; preferir servicios compatibles con estándares abiertos, para que salir de la plataforma no exija reescribir la solución; y contratar en la región secundaria solo lo que la recuperación ante desastres necesita.
 
 \subsection{Servicios por función}
 
@@ -23,7 +24,8 @@ La Tabla~\ref{tab:servicios-nube} agrupa los servicios contratados por la funci�
   Entrada pública y borde & Route 53, CloudFront, AWS WAF, Shield Advanced, API Gateway & N-01, N-02, N-03, N-12 & Global y sa-east-1 \\
   Cómputo de aplicación & ECS Fargate, Application Load Balancer, Lambda & N-04, N-08, A-05 & sa-east-1 y us-east-1 \\
   Datos operacionales & Aurora PostgreSQL, Database Migration Service, DynamoDB, ElastiCache & N-05, A-02, N-06, N-07 & sa-east-1 y us-east-1 \\
-  Mensajería & SQS FIFO, SNS & N-09, A-03 & sa-east-1 \\
+  Mensajería & SQS FIFO para la reconciliación, SQS para los trabajos de Laravel, SNS & N-09, A-03 & sa-east-1 \\
+  Integración B2B & AWS Transfer Family con AS2 & N-04 (M11) & sa-east-1 \\
   Internet de las cosas & IoT Core, IoT Greengrass & N-08, B-02, B-03 & sa-east-1 y borde \\
   Analítica & S3, Glue, Redshift Serverless, QuickSight & N-10 & sa-east-1 \\
   Respaldo y recuperación & AWS Backup, S3 Object Lock, replicación de S3 entre regiones & N-11, D-05 & sa-east-1 y us-east-1 \\
@@ -34,18 +36,17 @@ La Tabla~\ref{tab:servicios-nube} agrupa los servicios contratados por la funci�
   Construcción y registro de imágenes & CodeBuild, Elastic Container Registry & N-04, A-01 & sa-east-1 \\
   Servicios de terceros en nube & Android Enterprise y Zebra DNA; consola del EDR & N-13, F-03 & Servicio gestionado \\
 \end{tablalafrox}
-\fuente{elaboración propia a partir del catálogo de componentes y de los registros de decisión ADR-01 a ADR-15.}
 
-La tabla deja ver que la solución no opera servidores en la nube: todo el cómputo corre en contenedores administrados o en funciones, y todos los datos viven en motores administrados. Las únicas piezas de software que el adjudicatario mantiene sobre esa plataforma son la aplicación Django, cuyos portales web se construyen en Angular y se publican como contenido estático en S3 y CloudFront, y el IdP Keycloak; ambas se promueven por el pipeline. Los servicios de detección, cumplimiento y gobierno se concentran en la región primaria porque vigilan la operación productiva, mientras que los datos operacionales y el respaldo tienen presencia en las dos regiones porque son lo que la recuperación ante desastres debe restituir.
+La tabla deja ver que la solución no opera servidores en la nube: todo el cómputo corre en contenedores administrados o en funciones, y todos los datos viven en motores administrados. Las piezas de software que el adjudicatario mantiene sobre esa plataforma son la aplicación Laravel, con sus perfiles de API, consumo, trabajos y planificación; los portales web, construidos en Angular y publicados como contenido estático en S3 y CloudFront; el motor de optimización de rutas de M4, en su propio contenedor; y el IdP Keycloak. Todas se promueven por el mismo pipeline. Las colas se separan por formato: la cola FIFO de reconciliación solo transporta los sobres JSON versionados que publican los sitios, y los trabajos internos de Laravel usan colas SQS distintas, de modo que un mensaje externo nunca llega al deserializador de trabajos del framework. ElastiCache conserva únicamente su papel de caché y no se usa como cola. Los servicios de detección, cumplimiento y gobierno se concentran en la región primaria porque vigilan la operación productiva, mientras que los datos operacionales y el respaldo tienen presencia en las dos regiones porque son lo que la recuperación ante desastres debe restituir.
 
 \subsection{Región secundaria y residencia de los datos}
 
-La región us-east-1 no es una segunda producción. Solo contiene la réplica de Aurora mediante Aurora Global Database, la réplica de las tablas de temperatura de DynamoDB mediante Global Tables, la copia de los buckets de S3 salvo el de geolocalización, las copias de AWS Backup y una réplica reducida de ECS que escala a carga completa en menos de 30 minutos durante una conmutación (ADR-09). Dos capacidades quedan fuera de esa región por diseño: la analítica, porque la región secundaria no se explota analíticamente, y los datos de geolocalización de personas, que no se replican fuera de sa-east-1 conforme a los resguardos de la arquitectura de seguridad (apartado 4.1). Así, la transferencia internacional de datos que exige la continuidad queda acotada a lo estrictamente necesario para reanudar la operación.
+La región us-east-1 no es una segunda producción. Solo contiene la réplica de Aurora mediante Aurora Global Database, la réplica de las tablas de temperatura de DynamoDB mediante Global Tables, la copia de los buckets de S3 salvo el de geolocalización, las copias de AWS Backup y una réplica reducida de ECS que escala a carga completa en menos de 30 minutos durante una conmutación. Dos capacidades quedan fuera de esa región por diseño: la analítica, porque la región secundaria no se explota analíticamente, y los datos de geolocalización de personas, que no se replican fuera de sa-east-1 conforme a los resguardos de la arquitectura de seguridad (apartado 4.1). Así, la transferencia internacional de datos que exige la continuidad queda acotada a lo estrictamente necesario para reanudar la operación.
 
 \subsection{Servicios que no se contratan}
 
-Los registros de decisión descartan de forma expresa varios servicios de la misma plataforma, y ninguno de ellos aparece en la arquitectura. No se contrata un clúster de Kubernetes (EKS), porque el volumen de alrededor de 105 transacciones por segundo no justifica su plano de control (ADR-01). No se contrata Kafka administrado (MSK), porque RabbitMQ en cada sitio y SQS FIFO en la nube resuelven el orden y la durabilidad con menos operación (ADR-05). No se contratan servicios de trazas y métricas separados de CloudWatch, porque las Bases piden una sola plataforma de observabilidad para nube y on-premise (ADR-14, RT-03.16). Y no se autoaloja un gestor de secretos, porque Secrets Manager rota las credenciales sin el desellado manual que exigiría uno propio (ADR-15).
+Los registros de decisión descartan de forma expresa varios servicios y productos, y ninguno de ellos aparece en la arquitectura. No se instala Redis ni Laravel Horizon en los sitios, porque la continuidad local descansa en PostgreSQL y RabbitMQ, y un tercer motor por sitio agregaría operación sin beneficio. No se contrata un clúster de Kubernetes (EKS), porque el volumen de alrededor de 105 transacciones por segundo no justifica su plano de control. No se contrata Kafka administrado (MSK), porque RabbitMQ en cada sitio y SQS FIFO en la nube resuelven el orden y la durabilidad con menos operación. No se contratan servicios de trazas y métricas separados de CloudWatch, porque las Bases piden una sola plataforma de observabilidad para nube y on-premise. Y no se autoaloja un gestor de secretos, porque Secrets Manager rota las credenciales sin el desellado manual que exigiría uno propio.
 
 \subsection{Modelo de contratación}
 
-Los servicios se contratan por uso, con la capacidad base comprometida mediante Savings Plans y el peak de septiembre cubierto con capacidad efímera que se libera al terminar (ADR-12). Los ambientes de Desarrollo, QA y Preproducción se reducen o apagan fuera del horario de uso. La reversibilidad está asegurada por la elección de servicios: Aurora es compatible con PostgreSQL, los datos analíticos se guardan en formato Parquet, y Keycloak, Django y RabbitMQ son de código abierto, de modo que la solución puede trasladarse a otra plataforma sin reescribir la aplicación. Los montos de estos servicios se declaran en la Oferta Económica y no en este documento (Art. 50.2).
+Los servicios se contratan por uso, con la capacidad base comprometida mediante Savings Plans y el peak de septiembre cubierto con capacidad efímera que se libera al terminar. Los ambientes de Desarrollo, QA y Preproducción se reducen o apagan fuera del horario de uso. La reversibilidad está asegurada por la elección de servicios: Aurora es compatible con PostgreSQL, los datos analíticos se guardan en formato Parquet, y Keycloak, Laravel, PostgreSQL y RabbitMQ son de código abierto, de modo que la solución puede trasladarse a otra plataforma sin reescribir la aplicación. Los montos de estos servicios se declaran en la Oferta Económica y no en este documento.
