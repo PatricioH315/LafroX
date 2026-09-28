@@ -60,7 +60,7 @@ La replicación de datos es continua hacia el sitio de recuperación en nube con
   Mensajes no críticos & Cola con reposición diferida & $\leq$ 24 h \\
 \end{tablalafrox}
 
-Todos los dominios críticos se replican de forma continua. El único dominio cuyo retraso de replicación depende de una condición externa es la réplica del WMS on-premise ya que viaja por la WAN, en caso de que un sitio pierde simultáneamente sus dos caminos de enlace, el AWS DMS encola los cambios en origen y los entrega sin pérdida al reconectar, luego la base local permanece autoritativa durante el corte por lo que no hay pérdida de información y el retraso se mide de forma continua con alertas a los 5 y a los 15 minutos. Durante ese corte la copia remota del WMS queda desactualizada hasta un máximo de 24 horas, por lo que el RPO remoto de 15 minutos de esa réplica rige solo con enlace; el registro que el corte obliga a retener está dimensionado en la arquitectura de despliegue.
+Todos los dominios críticos se replican de forma continua. El único dominio cuyo retraso de replicación depende de una condición externa es la réplica del WMS de Talca, ya que viaja por la WAN. Si Talca pierde simultáneamente sus dos caminos de enlace, el registro de escritura de VM-02 retiene los cambios que AWS DMS leerá al reconectar; la base local permanece autoritativa durante el corte y el retraso se mide de forma continua con alertas a los 5 y a los 15 minutos. Durante ese corte la copia remota del WMS queda desactualizada hasta un máximo de 24 horas, por lo que el RPO remoto de 15 minutos de esa réplica rige solo con enlace; el registro que el corte obliga a retener está dimensionado en la arquitectura de despliegue.
 
 \subsection{RPO y RTO}
 

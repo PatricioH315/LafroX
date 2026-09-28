@@ -94,7 +94,7 @@ Registro consolidado de las quince decisiones de arquitectura que condicionan es
 \section{ADR-09 \textperiodcentered{} Estrategia DR}
 \label{sub:adr-09}
 
-\textbf{Decisión adoptada.} Activo-pasivo warm standby multi-región: DMS CDC desde los sitios hacia Aurora y Aurora Global Database hacia us-east-1; DRP local Talca$\rightarrow$Concepción (RTO +1--2 h); pruebas 2$\times$/año; respaldo 3-2-1-1-0 con S3 Object Lock.
+\textbf{Decisión adoptada.} Activo-pasivo warm standby multi-región: DMS CDC desde VM-02 de Talca hacia Aurora y Aurora Global Database hacia us-east-1; los demás sitios sincronizan eventos por colas. DRP local Talca$\rightarrow$Concepción (RTO +1--2 h); pruebas 2$\times$/año; respaldo 3-2-1-1-0 con S3 Object Lock.
 
 \textbf{Alternativas descartadas.} \emph{Activo-activo}: duplica infraestructura y exige reconciliación de doble escritura sin beneficio medible. \emph{Backup + restore frío}: RTO de 24 a 72 h, que no cumple el objetivo de 4 h. \emph{Solo intrarregional}: degrada el objetivo de continuidad, porque ante la caída de la región el RTO sería de 24 a 72 h; se descarta y la recuperación en us-east-1 queda declarada de forma incondicional.
 
@@ -123,7 +123,7 @@ Registro consolidado de las quince decisiones de arquitectura que condicionan es
 \section{ADR-12 \textperiodcentered{} Absorción del peak de septiembre}
 \label{sub:adr-12}
 
-\textbf{Decisión adoptada.} Cómputo elástico con escalado independiente por perfil: API con PHP-FPM de 2 a 4 tareas en el peak y techo de 8, por procesos ocupados sobre 70 \%; consumidor de reconciliación de 2 a 4 tareas, por la edad del mensaje más antiguo; trabajos de 2 a 4 tareas, por la profundidad de cada cola, con \texttt{erp-sync} fijo en 2 procesos para no saturar el ERP; planificador en una sola tarea. Lambda 100$\rightarrow$500, Aurora large$\rightarrow$xlarge (escritor y 2 lectores en 3 zonas), DynamoDB bajo demanda. Escala predictiva y reactiva. Base con Savings Plans, peak con cómputo efímero. Estado: propuesta.
+\textbf{Decisión adoptada.} Cómputo elástico con escalado independiente por perfil: API con PHP-FPM de 2 a 4 tareas en el peak y techo de 8, por procesos ocupados sobre 70 \%; consumidor de reconciliación de 2 a 4 tareas, por la edad del mensaje más antiguo; trabajos de 2 a 4 tareas, por la profundidad de cada cola, con \texttt{erp-sync} fijo en 2 procesos para no saturar el ERP; planificador en una sola tarea. Lambda 100$\rightarrow$500, Aurora large$\rightarrow$xlarge (escritor en sa-east-1a y un lector promovible en sa-east-1b), DynamoDB bajo demanda. Escala predictiva y reactiva. Base con Savings Plans, peak con cómputo efímero. Estado: propuesta.
 
 \textbf{Alternativas descartadas.} \emph{Capacidad fija al peak}: paga 12 meses la capacidad de 3 semanas. \emph{Solo escala reactiva}: el peak de septiembre es predecible y la reactiva sola introduce retardo en la ventana crítica. \emph{Trasladar las cifras del backend anterior (6 tareas de aplicación y 4 de workers Celery)}: eran supuestos de otro runtime y no valen para PHP-FPM.
 
