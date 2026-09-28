@@ -20,9 +20,9 @@ Este archivo mantiene el contexto mínimo y vigente para trabajar en la rama `br
 
 ## Objetivo vigente
 
-Este repositorio es una base documental exclusivamente Markdown para crear, mantener y revisar los Subdocumentos 1 y 2. Incluye sus anexos, el Formulario T-6, las Bases rectoras, los catálogos originales de requerimientos y el prompt de revisión.
+Este repositorio es una base documental exclusivamente Markdown para crear, mantener y revisar los Subdocumentos 1, 2 y 3. Incluye sus anexos, los Formularios T-6 y T-12, las Bases rectoras, los catálogos originales de requerimientos y el prompt de revisión.
 
-No contiene arquitectura, subdocumentos 3–14, históricos, binarios, plantillas LaTeX ni el consolidado activo del Subdocumento 3. Una referencia a esos materiales identifica una dependencia futura; no demuestra que el material esté disponible.
+No contiene arquitectura, subdocumentos 4–14, históricos, binarios, plantillas LaTeX ni herramientas de generación. Una referencia a esos materiales identifica una dependencia futura; no demuestra que el material esté disponible.
 
 ## Fuentes de verdad y precedencia
 
@@ -38,7 +38,7 @@ El caso puede endurecer un requisito transversal, pero no rebajarlo. Ante una co
 - Las cuatro Bases son copias íntegras de las fuentes del repositorio LafroX al momento de crear este repositorio.
 - El Subdocumento 1, su anexo y el Formulario T-6 están convertidos a Markdown y permanecen en archivos separados.
 - El Subdocumento 2 y sus anexos están convertidos a Markdown y permanecen en archivos separados.
-- Hay siete figuras transcritas como descripciones textuales: un organigrama y seis procesos AS-IS.
+- Hay diez figuras transcritas como descripciones textuales: un organigrama, seis procesos AS-IS y tres esquemas del Subdocumento 3.
 - `Requerimientos/Consolidado_RF.md` contiene 134 registros provenientes del CSV original.
 - `Requerimientos/Consolidado_RNF.md` contiene 24 registros provenientes del CSV original.
 - `Requerimientos/Requerimientos_Bases.md` conserva las 61 filas físicas y las dos familias de columnas del CSV original.
@@ -71,4 +71,8 @@ Antes de afirmar un dato, requisito, estado o decisión:
 
 **Completado:** importación de los 17 documentos Markdown a `branch-md`, preservando el contenido documental e incorporando la prohibición explícita de trabajar en LaTeX. La comparación con `tablas_anexo` del Subdocumento 3 detectó diferencias de cantidades, nombres y códigos; los catálogos Markdown no se sustituyeron.
 
-**Siguiente paso:** continuar la revisión o edición de los Subdocumentos 1 y 2 usando únicamente las fuentes incluidas. Cualquier incorporación de arquitectura o de los Subdocumentos 3–14 requiere ampliar expresamente el alcance.
+**Siguiente paso:** continuar la revisión o edición de los Subdocumentos 1, 2 y 3 usando únicamente las fuentes incluidas. Cualquier incorporación de arquitectura o de los Subdocumentos 4–14 requiere ampliar expresamente el alcance.
+
+## Última actualización: incorporación del Subdocumento 3
+
+Petición vigente: trasladar todo el material relevante del Subdocumento 3 en exactamente tres documentos Markdown, conservando sus errores. Se incorporaron cuerpo, anexos 3.A–3.K, las 14 tablas de la colección complementaria `tablas_anexo`, tres figuras transcritas y T-12. El T-12 mantiene 174 RF, 90 RNF y 374 RT. La colección complementaria conserva 90 RF y 40 RNF aunque anuncia 91 y 41. Estas versiones no fueron reconciliadas ni sustituyen los CSV convertidos en `Requerimientos/`. Próximo paso: revisión del contenido si el usuario la solicita; no dar por corregidas las discrepancias.

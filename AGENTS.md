@@ -11,7 +11,7 @@
 
 ## Proyecto
 
-La rama `branch-md` de este repositorio contiene material exclusivamente Markdown para preparar los Subdocumentos 1 y 2 de la propuesta técnica de LafroX para la licitación ficticia TFEP-01/2026, Caso 02 — Logística.
+La rama `branch-md` de este repositorio contiene material exclusivamente Markdown para preparar los Subdocumentos 1, 2 y 3 de la propuesta técnica de LafroX para la licitación ficticia TFEP-01/2026, Caso 02 — Logística.
 
 ## Protocolo de sesión
 
@@ -35,7 +35,7 @@ El caso puede endurecer un requisito transversal, pero no rebajarlo. No inventar
 - Mantener separados subdocumentos, anexos y formularios.
 - Preservar exactamente los títulos obligatorios de las Aclaraciones.
 - Mantener terminología y cifras consistentes entre los documentos.
-- No incorporar contenido de arquitectura ni de los Subdocumentos 3–14 hasta que se amplíe expresamente el alcance.
+- No incorporar contenido de arquitectura ni de los Subdocumentos 4–14 hasta que se amplíe expresamente el alcance.
 - Las figuras se representan mediante descripciones textuales estructuradas; no afirmar que sustituyen la revisión visual del PDF final.
 - Los catálogos de `Requerimientos/` provienen de los tres CSV originales y conservan sus vacíos. No completarlos sin evidencia.
 - Toda referencia a un documento ausente se trata como dependencia futura, no como enlace roto ni evidencia disponible.
@@ -44,3 +44,7 @@ El caso puede endurecer un requisito transversal, pero no rebajarlo. No inventar
 ## Identidad
 
 El proponente es LafroX. Todo trabajo y toda respuesta asociada al proyecto debe identificarse con `LafroX`.
+
+## Subdocumento 3: conservación de versiones
+
+El usuario autorizó incorporar el Subdocumento 3 incluso con errores en los requerimientos. Los tres archivos de su carpeta contienen cuerpo, anexos y T-12. En los anexos, la colección `tablas_anexo` se conserva como material complementario separado de las tablas vigentes. No armonizar ni reemplazar los catálogos originales sin una instrucción posterior. Leer fuentes LaTeX del repositorio de origen exclusivamente para convertirlas a Markdown está permitido por esta petición; no se crean, editan ni compilan archivos LaTeX.

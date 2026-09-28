@@ -5,9 +5,9 @@
 ## Material disponible en esta edición
 
 - Bases rectoras en `Bases/`.
-- Subdocumentos 1 y 2, anexos y Formulario T-6 en sus carpetas.
+- Subdocumentos 1, 2 y 3, anexos y Formularios T-6 y T-12 en sus carpetas.
 - Catálogos fuente convertidos a Markdown en `Requerimientos/`.
-- No están incluidos los subdocumentos 3–14, arquitectura, formularios posteriores ni PDF finales. Todo control que dependa de ellos debe marcarse **No verificable con el material recibido**, sin inferir incumplimiento.
+- No están incluidos los subdocumentos 4–14, arquitectura independiente, demás formularios ni PDF finales. Todo control que dependa de ellos debe marcarse **No verificable con el material recibido**, sin inferir incumplimiento.
 
 ## Comprobaciones reservadas para el PDF final
 
