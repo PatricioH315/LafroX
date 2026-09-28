@@ -47,6 +47,43 @@ El paso de un ambiente a otro lo controla el pipeline de integración continua: 
 
 Los portales de clientes, transportistas y proveedores siguen el mismo ciclo: su aplicación web, construida en Angular con TypeScript y Tailwind CSS, se publica por ambiente en S3 y CloudFront, con la imagen de aplicación del mismo ambiente como backend, y entra a producción con el hito de enero de 2029. La aplicación de terreno, un solo artefacto para los tres perfiles, la instala y actualiza la gestión de dispositivos (N-13) en la ventana dominical, de forma escalonada (Anexo 4.B, sección 4.B.5).
 
+Las Figuras~\ref{fig:amb-desarrollo} a~\ref{fig:amb-recuperacion} muestran cada ambiente con su cuenta, su red, sus servicios y la cadena de entrega que lo alimenta.
+
+\begin{landscape}
+\begin{figure}[p]
+  \centering
+  \includegraphics[width=\linewidth,height=0.4\textheight,keepaspectratio]{ambientes/amb_desarrollo}
+  \caption{Ambiente de Desarrollo}
+  \label{fig:amb-desarrollo}
+
+  \vspace{10pt}
+  \includegraphics[width=\linewidth,height=0.4\textheight,keepaspectratio]{ambientes/amb_qa}
+  \caption{Ambiente de QA}
+  \label{fig:amb-qa}
+\end{figure}
+
+\begin{figure}[p]
+  \centering
+  \includegraphics[width=\linewidth,height=0.9\textheight,keepaspectratio]{ambientes/amb_preproduccion}
+  \caption{Ambiente de Preproducción}
+  \label{fig:amb-preproduccion}
+\end{figure}
+
+\begin{figure}[p]
+  \centering
+  \includegraphics[width=\linewidth,height=0.9\textheight,keepaspectratio]{ambientes/amb_produccion}
+  \caption{Ambiente de Producción}
+  \label{fig:amb-produccion}
+\end{figure}
+
+\begin{figure}[p]
+  \centering
+  \includegraphics[width=\linewidth,height=0.9\textheight,keepaspectratio]{ambientes/amb_recuperacion}
+  \caption{Ambiente de Recuperación ante Desastres}
+  \label{fig:amb-recuperacion}
+\end{figure}
+\end{landscape}
+
 \subsubsection{Artefacto y perfiles de ejecución}
 
 La aplicación se construye una sola vez por versión como una imagen PHP 8.5 con Laravel 13 que contiene el código, el \texttt{vendor} resuelto desde \texttt{composer.lock}, PHP-FPM, el intérprete de línea de comandos y las extensiones que la solución usa: \texttt{pdo\_pgsql}, \texttt{mbstring}, \texttt{intl}, \texttt{openssl}, \texttt{opcache}, \texttt{curl} para el SDK de AWS, \texttt{sockets} para el adaptador AMQP \texttt{php-amqplib}, la extensión de OpenTelemetry y \texttt{pcntl}, que solo usan los procesos de línea de comandos para terminar de forma ordenada al recibir la señal de detención. Un servidor web liviano acompaña a PHP-FPM en los perfiles HTTP. La misma imagen corre en todos los ambientes y en todos los sitios; lo que cambia es el perfil con que arranca, como muestra la Tabla~\ref{tab:perfiles}.
