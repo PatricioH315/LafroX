@@ -13,6 +13,9 @@
 %  puntos de falla (sec:conexiones).
 % ------------------------------------------------------------------
 
+% Mini título de cada ambiente: sin número, no entra al índice.
+\providecommand{\minititulo}[1]{\par\addvspace{8pt}\noindent{\intersemibold\color{lafroxTinta}#1}\par\nopagebreak\addvspace{2pt}}
+
 \section{Arquitectura de despliegue}
 \label{sec:despliegue}
 
@@ -23,7 +26,7 @@ Esos mecanismos son tres y no se sustituyen entre sí. La alta disponibilidad re
 \subsection{Ambientes y ciclo de entrega}
 \label{sub:1-ambientes-de-despliegue-rt-04-01}
 
-Un cambio recorre tres ambientes antes de llegar a Producción: Desarrollo, QA y Preproducción. Se construye y se prueba de forma unitaria en Desarrollo, se valida en QA con pruebas funcionales, de integración y de regresión automatizadas, y se ensaya en Preproducción, donde ocurren las pruebas de aceptación, de carga y de resiliencia y el ensayo del paso a producción. Solo entonces se promueve a Producción, sin recompilar, de modo que el artefacto que llega a producción es el mismo que se probó. La marcha blanca de cada etapa ocurre ya en Producción, porque es operación supervisada con datos y usuarios reales en paralelo con la operación vigente. Un quinto ambiente, de Recuperación ante Desastres, sostiene la continuidad: reside en la región us-east-1 para el dominio de nube, mientras que la recuperación del dominio on-premise la asume el CD Concepción, que forma parte de Producción, como se describe en la recuperación ante desastres de esta sección. La Tabla~\ref{tab:t62} muestra cada ambiente con su bloque de direccionamiento, su región y su función.
+Un cambio recorre tres ambientes antes de llegar a Producción: Desarrollo, QA y Preproducción. Se construye y se prueba de forma unitaria en Desarrollo, se valida en QA con pruebas funcionales, de integración y de regresión automatizadas, y se ensaya en Preproducción, donde ocurren las pruebas de aceptación, de carga y de resiliencia y el ensayo del paso a producción. Solo entonces se promueve a Producción, sin recompilar, de modo que el artefacto que llega a producción es el mismo que se probó. La Tabla~\ref{tab:t62} muestra cada ambiente con su bloque de direccionamiento, su región y su función.
 
 \begin{tablalafrox}{Ambientes de despliegue}{tab:t62}%
   {F{0.28} F{0.20} F{0.15} Y}%
@@ -37,52 +40,59 @@ Un cambio recorre tres ambientes antes de llegar a Producción: Desarrollo, QA y
 
 Cada ambiente reside en una cuenta AWS propia, bajo una organización de AWS Control Tower cuyas políticas de control de servicio impiden que un error o un acceso indebido en un ambiente alcance a otro; la organización incorpora además sus cuentas de gestión, de archivo de registros y de auditoría. Los bloques de direccionamiento no se solapan entre sí ni con los de los sitios on-premise, y solo el ambiente de recuperación reside fuera de la región primaria. Los cinco ambientes quedan habilitados y operativos en el hito H3 del Formulario E-25, en el mes 6 del contrato, antes de la primera marcha blanca (RT-04.01).
 
-Desarrollo y QA son aislados y se reconstruyen desde código. Desarrollo trabaja con datos sintéticos o anonimizados, y QA con un juego de datos de prueba controlado y versionado que se restituye a un estado conocido antes de cada ciclo de pruebas. Ningún ambiente no productivo recibe datos productivos sin anonimización o seudonimización verificable. Desarrollo, QA y Preproducción se reducen o apagan fuera del horario de uso, con el ahorro reflejado en la estructura de costos.
+Ningún ambiente no productivo recibe datos productivos sin anonimización o seudonimización verificable. Desarrollo, QA y Preproducción se reducen o apagan fuera del horario de uso, con el ahorro reflejado en la estructura de costos.
 
 Las bodegas no tienen ambientes propios de prueba, y no los necesitan. El on-premise es producción: la imagen wms\_only que corre en los centros de distribución es la misma que recorrió Desarrollo, QA y Preproducción en la nube, y la infraestructura de cada sitio se declara como código versionado. Lo que se ensayó en la nube es, por lo tanto, lo que se instala en Talca y en Concepción, dentro de la ventana de 24 horas del cutover. QA y Preproducción ensayan esa imagen con el verificador local de identidad y la puerta de API local del WMS, con adaptadores simulados del ERP, y reproducen el corte de enlace y el relevo de turno antes de cada paso a producción.
-
-Preproducción es equivalente a Producción en versiones, configuración, dimensionamiento y topología de nube (RT-04.02). Las diferencias que subsisten se declaran y se justifican, y son tres. Primero, se reduce o apaga fuera del horario de uso, por costo. Segundo, trabaja con datos sintéticos generados desde la volumetría del caso, cuya anonimización se verifica con Amazon Macie, porque no se admiten datos productivos reales fuera de Producción sin anonimización verificable. Tercero, el sitio on-premise se emula dentro de su propia VPC, con la misma imagen wms\_only, el mismo broker y el mismo verificador local, pero sin túnel hacia las bodegas, para que un ensayo no pueda alcanzar la operación real. La emulación reproduce la topología del sitio y no su hardware; por eso la primera instalación de cada versión en los centros de distribución avanza sitio por sitio, como se describe en la liberación, y los terminales, los periféricos y la emisión de guías con el ERP real se comprueban en el sitio piloto y en la marcha blanca de cada etapa, ya en Producción. Durante las pruebas de carga y estrés de la Tabla~\ref{tab:t86} opera con el dimensionamiento completo de Producción.
 
 El paso de un ambiente a otro lo controla el pipeline de integración continua: GitLab CI, contratado por suscripción (apartado 4.2.1.3), lo orquesta y AWS CodeBuild construye cada imagen de forma hermética, con procedencia SLSA nivel 3. Cada cambio instala las dependencias exactamente como las fija \texttt{composer.lock} y pasa por \texttt{composer audit}, las pruebas PHPUnit, el análisis estático con PHPStan y Larastan, el formato con Laravel Pint, las pruebas de contrato contra OpenAPI 3.1 y AsyncAPI 2.6, el escaneo de secretos y de imágenes de contenedor y la medición de cobertura; el pipeline bloquea el despliegue ante un hallazgo crítico o alto, ante un contrato público roto sin versión nueva o ante una cobertura de la lógica de negocio inferior al 70 \%. La imagen aprobada se firma, se publica en Elastic Container Registry y se promueve por su digest, de modo que ningún ambiente recompila; CodeBuild y Elastic Container Registry forman parte de la plataforma de aplicación (N-04) en sa-east-1 y sirven también al motor WMS de los sitios (A-01), como muestra la Tabla~\ref{tab:servicios-nube}. El paso a Producción no requiere intervención manual: la promoción es automática una vez que la versión supera los controles del pipeline y el ensayo en Preproducción (RT-04.06), dentro de las ventanas de despliegue de la Tabla~\ref{tab:jd02}. La configuración se externaliza por ambiente y los secretos se gestionan en AWS Secrets Manager con rotación automática; la imagen no contiene secretos ni el archivo de entorno (RT-04.08 y RT-04.09). Las migraciones de base de datos son migraciones Laravel basales y aditivas, versionadas junto con el código, que siguen la estrategia de expandir y contraer: se ejecutan de forma automatizada como un paso único del despliegue antes de cambiar el tráfico, cada versión solo agrega estructuras, de modo que la versión anterior y la nueva de la aplicación funcionan sobre el mismo esquema durante el despliegue, y las estructuras obsoletas se eliminan en una versión posterior. Cada migración declara además su reversión, de modo que el esquema puede volver a la versión anterior (RT-04.10). El gobierno del repositorio, con ramas protegidas y revisión obligatoria por pares, y la trazabilidad desde el requerimiento hasta el despliegue se desarrollan en el plan de calidad (Subdocumento 9). A Producción no se llega de otra forma: los desarrolladores no tienen acceso interactivo directo a ese ambiente, cuyo acceso es restringido y auditado, y el acceso administrativo excepcional es temporal, mediante AWS Systems Manager Session Manager, con MFA, aprobación previa y sesión grabada.
 
 Los portales de clientes, transportistas y proveedores siguen el mismo ciclo: su aplicación web, construida en Angular con TypeScript y Tailwind CSS, se publica por ambiente en S3 y CloudFront, con la imagen de aplicación del mismo ambiente como backend, y entra a producción con el hito de enero de 2029. La aplicación de terreno, un solo artefacto para los tres perfiles, la instala y actualiza la gestión de dispositivos (N-13) en la ventana dominical, de forma escalonada (Anexo 4.B, sección 4.B.5).
 
-Las Figuras~\ref{fig:amb-desarrollo} a~\ref{fig:amb-recuperacion} muestran cada ambiente con su cuenta, su red, sus servicios y la cadena de entrega que lo alimenta.
+\minititulo{Desarrollo}
 
-\begin{landscape}
-\begin{figure}[p]
-  \centering
-  \includegraphics[width=\linewidth,height=0.4\textheight,keepaspectratio]{ambientes/amb_desarrollo}
-  \caption{Ambiente de Desarrollo}
-  \label{fig:amb-desarrollo}
+Desarrollo es aislado y se reconstruye desde código. En él se construye y se prueba de forma unitaria cada cambio, con datos sintéticos o anonimizados, como muestra la Figura~\ref{fig:amb-desarrollo}.
 
-  \vspace{10pt}
-  \includegraphics[width=\linewidth,height=0.4\textheight,keepaspectratio]{ambientes/amb_qa}
-  \caption{Ambiente de QA}
-  \label{fig:amb-qa}
-\end{figure}
+\figuralafrox{1}{ambientes/amb_desarrollo}{Ambiente de Desarrollo}{fig:amb-desarrollo}
 
-\begin{figure}[p]
-  \centering
-  \includegraphics[width=\linewidth,height=0.9\textheight,keepaspectratio]{ambientes/amb_preproduccion}
-  \caption{Ambiente de Preproducción}
-  \label{fig:amb-preproduccion}
-\end{figure}
+\minititulo{QA}
+
+QA también es aislado y se reconstruye desde código. Valida cada cambio con pruebas funcionales, de integración y de regresión automatizadas, con un juego de datos de prueba controlado y versionado que se restituye a un estado conocido antes de cada ciclo de pruebas, como muestra la Figura~\ref{fig:amb-qa}.
+
+\figuralafrox{1}{ambientes/amb_qa}{Ambiente de QA}{fig:amb-qa}
+
+\minititulo{Preproducción}
+
+Preproducción es equivalente a Producción en versiones, configuración, dimensionamiento y topología de nube (RT-04.02). Las diferencias que subsisten se declaran y se justifican, y son tres. Primero, se reduce o apaga fuera del horario de uso, por costo. Segundo, trabaja con datos sintéticos generados desde la volumetría del caso, cuya anonimización se verifica con Amazon Macie, porque no se admiten datos productivos reales fuera de Producción sin anonimización verificable. Tercero, el sitio on-premise se emula dentro de su propia VPC, con la misma imagen wms\_only, el mismo broker y el mismo verificador local, pero sin túnel hacia las bodegas, para que un ensayo no pueda alcanzar la operación real. La emulación reproduce la topología del sitio y no su hardware; por eso la primera instalación de cada versión en los centros de distribución avanza sitio por sitio, como se describe en la liberación, y los terminales, los periféricos y la emisión de guías con el ERP real se comprueban en el sitio piloto y en la marcha blanca de cada etapa, ya en Producción. Durante las pruebas de carga y estrés de la Tabla~\ref{tab:t86} opera con el dimensionamiento completo de Producción. La Figura~\ref{fig:amb-preproduccion} muestra el ambiente.
 
 \begin{figure}[p]
   \centering
-  \includegraphics[width=\linewidth,height=0.9\textheight,keepaspectratio]{ambientes/amb_produccion}
-  \caption{Ambiente de Producción}
-  \label{fig:amb-produccion}
+  \rotatebox{90}{\begin{minipage}{0.95\textheight}
+    \centering
+    \includegraphics[width=\linewidth]{ambientes/amb_preproduccion}
+    \caption{Ambiente de Preproducción}
+    \label{fig:amb-preproduccion}
+  \end{minipage}}
 \end{figure}
+
+\minititulo{Producción}
+
+Producción opera en varias zonas, con los sitios on-premise (Tabla~\ref{tab:t62}). La marcha blanca de cada etapa ocurre ya en Producción, porque es operación supervisada con datos y usuarios reales en paralelo con la operación vigente. La Figura~\ref{fig:amb-produccion} muestra el ambiente con los sitios on-premise.
 
 \begin{figure}[p]
   \centering
-  \includegraphics[width=\linewidth,height=0.9\textheight,keepaspectratio]{ambientes/amb_recuperacion}
-  \caption{Ambiente de Recuperación ante Desastres}
-  \label{fig:amb-recuperacion}
+  \rotatebox{90}{\begin{minipage}{0.95\textheight}
+    \centering
+    \includegraphics[width=\linewidth]{ambientes/amb_produccion}
+    \caption{Ambiente de Producción}
+    \label{fig:amb-produccion}
+  \end{minipage}}
 \end{figure}
-\end{landscape}
+
+\minititulo{Recuperación ante Desastres}
+
+Un quinto ambiente, de Recuperación ante Desastres, sostiene la continuidad: reside en la región us-east-1 para el dominio de nube, mientras que la recuperación del dominio on-premise la asume el CD Concepción, que forma parte de Producción, como se describe en la recuperación ante desastres de esta sección. La Figura~\ref{fig:amb-recuperacion} muestra ambos dominios.
+
+\figuralafrox{1}{ambientes/amb_recuperacion}{Ambiente de Recuperación ante Desastres}{fig:amb-recuperacion}
 
 \subsubsection{Artefacto y perfiles de ejecución}
 
