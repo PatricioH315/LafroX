@@ -741,7 +741,7 @@ Esquema único para toda la arquitectura híbrida (nube + on-premise):
 - **2 medios.** PostgreSQL/Aurora y S3 (almacenamiento de objetos).
 - **1 copia fuera del sitio.** S3 Cross-Region Replication → bucket en us-east-1.
 - **1 copia inmutable.** S3 Object Lock (WORM, Compliance Mode) + AWS Backup Vault Lock (ni el root puede eliminarla); s3-documents-legal y s3-audit-logs en Compliance, no Governance.
-- **0 errores.** Restore testing automatizado mensual (Lambda) + verificación de restauración local + prueba DR semestral.
+- **0 errores.** Restore testing mensual automatizado con AWS Backup + verificación de restauración local + prueba DR semestral.
 
 
 D-05 (NAS local con WORM) es la copia local de recuperación rápida y NO cuenta como la pierna inmutable; permite restaurar el WMS en ≤ 4 h sin depender del enlace WAN. RPO ≤ 15 min por AWS DMS CDC del WAL lógico (wal_level=logical) hacia la nube antes de la copia local.
@@ -986,7 +986,6 @@ El dimensionamiento en nube por componente se resume en la Tabla 82:
 |---|---|---|---|
 | ECS Fargate, perfil de API PHP-FPM (tareas 1 vCPU / 2 GB) | 2 | 4; techo 8 | Procesos PHP-FPM ocupados > 70 % |
 | ECS Fargate, consumidor de reconciliación y trabajos de Laravel (1 vCPU / 2 GB) | 2 + 2 | 4 + 4; erp-sync fijo en 2 procesos | Edad del mensaje más antiguo / profundidad de cada cola |
-| AWS Lambda (fn-iot-validator, fn-document-signer) | 100 concurrencias | 500 (reserva) | Eventos IoT Core / S3 |
 | Aurora PostgreSQL (writer / reader) | db.r6g.large × 2 AZ | db.r6g.xlarge + 2 readers | CPU > 60 % / Conexiones > 80 % |
 | ElastiCache Redis | cache.r6g.large | cache.r6g.xlarge | Memoria > 75 % (stock/crédito < 2 s) |
 | DynamoDB (telemetría IoT cruda) | On-demand | On-demand | Sin gestión de capacidad |
@@ -995,8 +994,8 @@ El dimensionamiento en nube por componente se resume en la Tabla 82:
 
 Escalado automático (RT-09.04):
 
-- **Predictivo + reactivo (ADR-12).** pre-warm en agosto de las tareas ECS, concurrencia reservada Lambda; reactivo con Target Tracking en < 2 min · aprovisionamiento en < 3 min · cooldown 60 s.
-- **Serverless-first.** DynamoDB On-Demand y Lambda escalan sin configuración adicional; la capacidad se paga por uso (sin capacidad ociosa, RT-15.01 — FinOps Cloud del Subdocumento 4.1).
+- **Predictivo + reactivo (ADR-12).** pre-warm en agosto de las tareas ECS; reactivo con Target Tracking en < 2 min · aprovisionamiento en < 3 min · cooldown 60 s.
+- **Serverless-first.** DynamoDB On-Demand e IoT Core escalan sin configuración adicional; la capacidad se paga por uso (sin capacidad ociosa, RT-15.01 — FinOps Cloud del Subdocumento 4.1).
 
 
 ### Plan de capacidad y crecimiento 3× sin rediseño
@@ -1013,7 +1012,7 @@ El crecimiento se absorbe con el mismo diseño (sin cambio de topología, VLAN, 
 | Enlace Talca / Concepción | 20→50 / 10→20 Mbps | 50 / 100 Mbps | Contrato escalonado de enlaces |
 | TPS VM-02 | \~105 | \~315 | Escala vertical 8→12 vCPU (32→64 GB) + particionado mensual |
 
-En nube, el 3× se absorbe con el escalado independiente de los perfiles (API hasta 8 tareas, consumidor y trabajos hasta 4, Lambda hasta 500, Aurora xlarge + readers), sin rediseño arquitectónico — misma decisión ADR-12. El número de tareas es una estimación con supuestos declarados que la prueba de carga debe confirmar.
+En nube, el 3× se absorbe con el escalado independiente de los perfiles (API hasta 8 tareas, consumidor y trabajos hasta 4, Aurora xlarge + readers), sin rediseño arquitectónico — misma decisión ADR-12. El número de tareas es una estimación con supuestos declarados que la prueba de carga debe confirmar.
 
 ### Umbrales de desempeño (percentil p95)
 
@@ -1069,7 +1068,7 @@ Gestión de capacidad durante la Operación con proyección trimestral de crecim
 
 Ventana de ampliación: adición de vCPU/OSD dentro del físico, contrato escalonado de enlaces, 4.º nodo al acercarse al margen. La revisión se apoya en el informe de carga como insumo del hito de producción (mes 16).
 
-Nube: revisión de costos de nube — evaluar umbrales Target Tracking y concurrencia reservada con al menos 30 días antes del peak de septiembre.
+Nube: revisión de costos de nube — evaluar umbrales Target Tracking con al menos 30 días antes del peak de septiembre.
 
 ## Registro de decisiones de arquitectura
 
@@ -1175,7 +1174,7 @@ Registro consolidado de las quince decisiones de arquitectura que condicionan es
 
 ### ADR-12 · Absorción del peak de septiembre
 
-**Decisión adoptada.** Cómputo elástico con escalado independiente por perfil: API PHP-FPM 2→4 tareas (techo 8) por procesos ocupados > 70 %; consumidor de reconciliación 2→4 por edad del mensaje más antiguo; trabajos 2→4 por profundidad de cola, con erp-sync fijo en 2 procesos; planificador en 1 tarea. Lambda 100→500, Aurora large→xlarge +2 readers, DynamoDB on-demand. Escala predictiva + reactiva. Base con Savings Plan, peak con cómputo efímero. Estado: propuesta.
+**Decisión adoptada.** Cómputo elástico con escalado independiente por perfil: API PHP-FPM 2→4 tareas (techo 8) por procesos ocupados > 70 %; consumidor de reconciliación 2→4 por edad del mensaje más antiguo; trabajos 2→4 por profundidad de cola, con erp-sync fijo en 2 procesos; planificador en 1 tarea. Aurora large→xlarge +2 readers, DynamoDB on-demand. Escala predictiva + reactiva. Base con Savings Plan, peak con cómputo efímero. Estado: propuesta.
 
 **Alternativas descartadas.** *Capacidad fija al peak*: paga 12 meses la capacidad de 3 semanas. *Solo escala reactiva*: burst predecible de septiembre; la reactiva sola introduce lag en ventana crítica. *Trasladar las cifras del backend anterior (6 tareas de aplicación y 4 de workers Celery)*: eran supuestos de otro runtime.
 

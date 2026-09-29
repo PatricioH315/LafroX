@@ -9,14 +9,21 @@
 \chapter{Registro de decisiones de arquitectura}
 \label{sec:m-registro-de-decisiones-de-arquitectura}
 
-Registro consolidado de las quince decisiones de arquitectura que condicionan esta propuesta. Es entregable contractual y se mantiene actualizado durante toda la ejecución. Para cada decisión se indica la alternativa escogida, las alternativas descartadas con el motivo de rechazo, y el criterio de selección; las decisiones reformuladas para el backend Laravel agregan sus consecuencias y la evidencia que deberá confirmarlas. ADR-01, ADR-05, ADR-11, ADR-12 y ADR-14 quedan en estado \emph{propuesta} hasta su aprobación por el equipo; en ADR-04, ADR-06, ADR-08 y ADR-13 se ajustó la implementación sin cambiar la decisión. Este es el registro único del Subdocumento 4: la arquitectura lógica (4.1) cita estas mismas decisiones por su número.
+Registro consolidado de las dieciséis decisiones de arquitectura que condicionan la solución. Para cada decisión se declara la elección, las alternativas descartadas y el criterio de selección; cuando corresponde, se exige evidencia verificable.
 
 \section{ADR-01 \textperiodcentered{} Estilo arquitectónico}
 \label{sub:adr-01}
 
-\textbf{Decisión adoptada.} Monolito modular en Laravel 13 sobre PHP 8.5, con los módulos M1--M12 separados por espacios de nombres PSR-4 y dependencias fijadas por \texttt{composer.lock}. Un solo artefacto, construido una vez por versión, se ejecuta en perfiles separados: API y \texttt{wms\_only} con PHP-FPM, y shipper, consumidor de reconciliación, trabajos y planificador como procesos PHP de línea de comandos. El motor de optimización de rutas de M4 y el transporte AS2 de M11 quedan fuera del artefacto, tras un contrato versionado. Estado: propuesta.
+\textbf{Decisión adoptada.} Monolito modular en Laravel 13 sobre PHP 8.5, con los módulos M1--M12 separados por espacios de nombres PSR-4 y dependencias fijadas por \texttt{composer.lock}. Un solo artefacto, construido una vez por versión, se ejecuta en perfiles separados: API y \texttt{wms\_only} con PHP-FPM, y shipper, consumidor de reconciliación, trabajos y planificador como procesos PHP de línea de comandos. El motor de optimización de rutas de M4 y el transporte AS2 de M11 quedan fuera del artefacto, tras un contrato versionado.
 
-\textbf{Alternativas descartadas.} \emph{Monolito modular en Django y Python 3.12}: técnicamente viable con los mismos contratos, pero la arquitectura lógica adopta Laravel y mantener ambos runtimes obligaría a operar dos cadenas de construcción, de dependencias y de parches. \emph{Microservicios en EKS}: el volumen de unos 105 TPS está dos órdenes bajo el umbral que los justifica, cuatro personas no operan un plano de control y el costo total de propiedad en 56 meses sube sin beneficio. \emph{Monolito clásico del WMS de 2013}: sin fronteras de módulo y con el proveedor desaparecido, lo que impide desplegar los módulos por separado. \emph{Traducir a PHP el ruteo y el AS2 sin prueba}: la equivalencia de un solver o de un conector no se deduce del cambio de lenguaje, por eso ambos se aíslan.
+\textbf{Alternativas descartadas:}
+
+\begin{itemize}
+  \item \emph{Monolito modular en Django y Python 3.12}: técnicamente viable con los mismos contratos, pero la arquitectura lógica adopta Laravel y mantener ambos runtimes obligaría a operar dos cadenas de construcción, de dependencias y de parches.
+  \item \emph{Microservicios en EKS}: el caso no exige desplegar ni escalar cada módulo por separado, cuatro personas no operan un plano de control y el costo total de propiedad en 56 meses sube sin beneficio.
+  \item \emph{Monolito clásico del WMS de 2013}: sin fronteras de módulo y con el proveedor desaparecido, lo que impide desplegar los módulos por separado.
+  \item \emph{Traducir a PHP el ruteo y el AS2 sin prueba}: la equivalencia de un solver o de un conector no se deduce del cambio de lenguaje, por eso ambos se aíslan.
+\end{itemize}
 
 \textbf{Criterio de selección.} Coherencia con la arquitectura lógica (4.1); pertinencia al volumen real; operabilidad por cuatro personas; despliegue y escalado independiente por perfil sin particionar el dominio.
 
@@ -29,7 +36,13 @@ Registro consolidado de las quince decisiones de arquitectura que condicionan es
 
 \textbf{Decisión adoptada.} Doble camino por sitio: fibra + LTE en los centros de distribución, Starlink + LTE en los cross-docking. Conmutación automática $<$ 30 s.
 
-\textbf{Alternativas descartadas.} \emph{Fibra en cross-docks}: naves industriales sin cobertura de fibra; costo de obra desproporcionado. \emph{VSAT GEO}: latencia 500--700 ms RTT; penaliza el tiempo de respuesta y cuesta más. \emph{Tri-camino (fibra + Starlink + LTE)}: tercer camino no aporta disponibilidad significativa dado que cada sitio opera autónomamente ante pérdida total de enlace (24 h CD, 14 h terreno).
+\textbf{Alternativas descartadas:}
+
+\begin{itemize}
+  \item \emph{Fibra en cross-docks}: naves industriales sin cobertura de fibra; costo de obra desproporcionado.
+  \item \emph{VSAT GEO}: latencia 500--700 ms RTT; penaliza el tiempo de respuesta y cuesta más.
+  \item \emph{Tri-camino (fibra + Starlink + LTE)}: tercer camino no aporta disponibilidad significativa dado que cada sitio opera autónomamente ante pérdida total de enlace (24 h CD, 14 h terreno).
+\end{itemize}
 
 \textbf{Criterio de selección.} Dos caminos de física distinta evitan el punto único de falla; la autonomía local cubre la pérdida total de enlace, por lo que un tercer camino es innecesario; cero mantención de radio para el equipo de 4 personas del CLIENTE.
 
@@ -38,7 +51,7 @@ Registro consolidado de las quince decisiones de arquitectura que condicionan es
 
 \textbf{Decisión adoptada.} Borde operacional on-premise (WMS maestro Talca, edge Concepción, WMS en cross-docks) + carga principal en AWS. 11 componentes on-prem, 12 híbridos, 13 nube pura.
 
-\textbf{Alternativas descartadas.} \emph{Solo nube}: inadmisible; sin enlace la bodega muere en minutos; picking en cámara $-$22\,\textdegree{}C inviable con RTT 40--80 ms. \emph{Solo on-premise}: inadmisible.
+\textbf{Alternativas descartadas:} \emph{Solo nube}: inadmisible; sin enlace la bodega muere en minutos; picking en cámara $-$22\,\textdegree{}C inviable con RTT 40--80 ms; \emph{Solo on-premise}: inadmisible.
 
 \textbf{Criterio de selección.} Único modelo que cumple el despliegue híbrido obligatorio; latencia $\leq$ 1 s en cámara resuelta localmente; autonomía 24 h CD / 14 h terreno; TCO contenido con servicios administrados AWS.
 
@@ -47,16 +60,39 @@ Registro consolidado de las quince decisiones de arquitectura que condicionan es
 
 \textbf{Decisión adoptada.} PostgreSQL+PostGIS (transaccional WMS, CP), Aurora (OLTP cloud + DRP), DynamoDB (IoT raw, AP, TTL 30 d), S3+Redshift Serverless (OLAP + series de temperatura), S3 Object Lock/Glacier (retención legal por dominio de datos, de 5 a 7 años según la tabla de respaldos). La aplicación accede a PostgreSQL con PDO y el Query Builder de Laravel; las consultas geográficas de M4 usan SQL PostGIS parametrizado sobre índices espaciales GiST, y el esquema evoluciona con migraciones Laravel aditivas. La réplica DMS del WMS alimenta solo un esquema de réplica de lectura; el estado central se actualiza por los eventos de reconciliación, con una clave de origen única por evento.
 
-\textbf{Alternativas descartadas.} \emph{Motor único relacional}: no escala ingesta IoT sin degradar picking. \emph{InfluxDB}: segundo motor exótico a operar; serie de tiempo cabe en capa OLAP. \emph{DynamoDB para todo}: no ofrece ACID cross-tabla para reconciliación determinista.
+\textbf{Alternativas descartadas:}
+
+\begin{itemize}
+  \item \emph{Motor único relacional}: no escala ingesta IoT sin degradar picking.
+  \item \emph{InfluxDB}: segundo motor exótico a operar; serie de tiempo cabe en capa OLAP.
+  \item \emph{DynamoDB para todo}: no ofrece ACID cross-tabla para reconciliación determinista.
+\end{itemize}
 
 \textbf{Criterio de selección.} Posición CAP declarada por dominio; 3 motores administrados operables por el equipo de TI del CLIENTE; retención sanitaria D.S.~977/96 con inmutabilidad; RPO $\leq$ 15 min por réplica Aurora.
 
 \section{ADR-05 \textperiodcentered{} Mensajería asíncrona}
 \label{sub:adr-05}
 
-\textbf{Decisión adoptada.} RabbitMQ local por sitio, con colas durables, mensajes persistentes y confirmación de publicación, como buffer de 24 h. Un shipper PHP con el adaptador AMQP \texttt{php-amqplib} publica cada evento como sobre JSON canónico y versionado en una cola SQS FIFO de reconciliación, por HTTPS hacia un VPC Endpoint, y solo retira el mensaje local cuando SQS confirma la recepción. Un consumidor PHP dedicado lee esa cola con el SDK de AWS, valida el esquema del sobre, lo aplica y confirma solo después de persistir el resultado. Los trabajos internos de Laravel usan colas SQS distintas, de modo que ningún sobre externo llega al deserializador de trabajos del framework. IoT Core MQTT mantiene la ingesta del borde. Estado: propuesta.
+\textbf{Decisión adoptada.} La cadena de eventos sigue cuatro pasos:
 
-\textbf{Alternativas descartadas.} \emph{REST síncrono}: no sobrevive un corte a mitad de ventana y rompe la reconciliación. \emph{Kafka/MSK}: operar clústeres en cinco sitios es desproporcionado para el equipo disponible y 105 TPS. \emph{Una sola cola SQS para eventos y trabajos}: acopla el formato externo al serializador del framework e impide versionar el sobre. \emph{Redis y Horizon en los sitios}: agregan un tercer motor local sin mejorar la durabilidad que ya dan PostgreSQL y RabbitMQ. \emph{Workers Celery}: correspondían al backend Django y se retiran con él.
+\begin{enumerate}
+  \item Publicación local: RabbitMQ opera por sitio con colas durables, mensajes persistentes y confirmación de publicación, como buffer de 24 h.
+  \item Envío del shipper: un proceso PHP con el adaptador AMQP \texttt{php-amqplib} publica cada evento como sobre JSON canónico y versionado en una cola SQS FIFO de reconciliación, por HTTPS hacia un VPC Endpoint, y solo retira el mensaje local cuando SQS confirma la recepción.
+  \item Consumo: un proceso PHP dedicado lee esa cola con el SDK de AWS y valida el esquema del sobre.
+  \item Confirmación: el consumidor aplica el sobre y confirma solo después de persistir el resultado.
+\end{enumerate}
+
+Los trabajos internos de Laravel usan colas SQS distintas, de modo que ningún sobre externo llega al deserializador de trabajos del framework. IoT Core MQTT mantiene la ingesta del borde.
+
+\textbf{Alternativas descartadas:}
+
+\begin{itemize}
+  \item \emph{REST síncrono}: no sobrevive un corte a mitad de ventana y rompe la reconciliación.
+  \item \emph{Kafka/MSK}: operar clústeres en cinco sitios es desproporcionado para el equipo disponible y para el volumen de mensajes del caso.
+  \item \emph{Una sola cola SQS para eventos y trabajos}: acopla el formato externo al serializador del framework e impide versionar el sobre.
+  \item \emph{Redis y Horizon en los sitios}: agregan un tercer motor local sin mejorar la durabilidad que ya dan PostgreSQL y RabbitMQ.
+  \item \emph{Workers Celery}: correspondían al backend Django y se retiran con él.
+\end{itemize}
 
 \textbf{Criterio de selección.} Resiliencia offline (buffer local y reproducción idempotente); reconciliación determinista; independencia del formato respecto del lenguaje; Zero Trust (todo saliente); costo total proporcional al volumen.
 
@@ -67,9 +103,15 @@ Registro consolidado de las quince decisiones de arquitectura que condicionan es
 \section{ADR-06 \textperiodcentered{} Identidad híbrida (Modelo B)}
 \label{sub:adr-06}
 
-\textbf{Decisión adoptada.} Keycloak IdP maestro en AWS (ECS Fargate, 2 tareas Multi-AZ, backend Aurora) + caché local solo lectura (TTL 24 h, igual a la autonomía del CD) en Talca, Concepción y los cross-docking, con un verificador local en el mismo nodo que, en cada relevo de turno sin enlace, valida el manifiesto de turno firmado por Keycloak y un segundo factor local: el PIN personal sobre el terminal enrolado por MDM. La caché de 24 h y la credencial de turno cumplen propósitos distintos: la caché conserva los datos de identidad y de turno recibidos y no emite sesiones, mientras que la credencial de turno ---hasta 8 h en bodega y 14 h en reparto--- limita cuánto dura el acceso de una persona; así, un corte de 24 h cubre dos relevos en bodega, cada uno habilitado por el verificador. Durante el corte no se promete revocación remota inmediata. El backend Laravel valida los JWT OIDC de Keycloak ---firma con las claves publicadas, emisor, audiencia, vencimiento y alcance--- y aplica políticas por recurso, turno, ruta, sitio y empresa; no se incorpora Sanctum ni Passport como segundo emisor de identidades. OTP para conductores externos.
+\textbf{Decisión adoptada.} Keycloak IdP maestro en AWS (ECS Fargate, 2 tareas Multi-AZ, backend Aurora) + caché local solo lectura (TTL 24 h, igual a la autonomía del CD) en Talca, Concepción y los cross-docking, con un verificador local en el mismo nodo que, en cada relevo de turno sin enlace, valida el manifiesto de turno firmado por Keycloak y un segundo factor local: el PIN personal sobre el terminal enrolado por MDM. Con enlace, Keycloak renueva el manifiesto al menos cada hora para una ventana de 26 h, de modo que un corte iniciado justo antes de una renovación conserva al menos 25 h de verificación local. La caché de 24 h y la credencial de turno cumplen propósitos distintos: la caché conserva los datos de identidad y de turno recibidos y no emite sesiones, mientras que la credencial de turno ---hasta 8 h en bodega y 14 h en reparto--- limita cuánto dura el acceso de una persona; así, un corte de 24 h cubre dos relevos en bodega, cada uno habilitado por el verificador. Durante el corte no se promete revocación remota inmediata. El backend Laravel valida los JWT OIDC de Keycloak ---firma con las claves publicadas, emisor, audiencia, vencimiento y alcance--- y aplica políticas por recurso, turno, ruta, sitio y empresa; no se incorpora Sanctum ni Passport como segundo emisor de identidades. OTP para conductores externos.
 
-\textbf{Alternativas descartadas.} \emph{IdP solo nube}: paraliza bodega ante corte. \emph{AD maestro local}: duplica administración, crea maestro a promover en DR. \emph{Keycloak maestro local}: nube no puede autenticar si el enlace cae.
+\textbf{Alternativas descartadas:}
+
+\begin{itemize}
+  \item \emph{IdP solo nube}: paraliza bodega ante corte.
+  \item \emph{AD maestro local}: duplica administración, crea maestro a promover en DR.
+  \item \emph{Keycloak maestro local}: nube no puede autenticar si el enlace cae.
+\end{itemize}
 
 \textbf{Criterio de selección.} Autonomía offline sin maestro local a promover; autoridad única en nube; OTP sin correo para externos; autenticación multifactor; operado por el equipo reducido del CLIENTE sin directorio propietario.
 
@@ -78,7 +120,7 @@ Registro consolidado de las quince decisiones de arquitectura que condicionan es
 
 \textbf{Decisión adoptada.} App nativa Android Kotlin para preventa, reparto y picking. SQLite/Room, SDK Zebra DataWedge (GS1 + QR), impresión BT (ZQ620), POS PAX. Dispositivos Rugged: EC55, TC58e, MC9400 Cold Storage.
 
-\textbf{Alternativas descartadas.} \emph{PWA}: no controla SDK Zebra de forma fiable ni persiste turno completo sin capa nativa. \emph{Híbrida Flutter}: runtime intermedio degrada interacción con periféricos industriales.
+\textbf{Alternativas descartadas:} \emph{PWA}: no controla SDK Zebra de forma fiable ni persiste turno completo sin capa nativa; \emph{Híbrida Flutter}: runtime intermedio degrada interacción con periféricos industriales.
 
 \textbf{Criterio de selección.} Control nativo de periféricos (DataWedge intents); offline total 14 h con sincro $<$ 10 min; UI para guantes $-$22\,\textdegree{}C, una mano, lluvia; curva de aprendizaje $\leq$ 2 h; un artefacto para 3 perfiles.
 
@@ -87,7 +129,7 @@ Registro consolidado de las quince decisiones de arquitectura que condicionan es
 
 \textbf{Decisión adoptada.} Reemplazo total en Etapa 1 por módulo WMS del monolito: Talca maestro, Concepción edge, cross-docks sobre E-01. Migración por dominio, oleadas por sitio, reversión azul-verde. Durante la coexistencia cada operación tiene un único escritor autorizado, de modo que el WMS de 2013 y el nuevo nunca escriben a la vez stock, cobros o documentos tributarios; la reversión devuelve el tráfico al escritor anterior solo tras detener el nuevo y conciliar los pendientes.
 
-\textbf{Alternativas descartadas.} \emph{Mantener e integrar}: proveedor desaparecido, sin soporte; no soporta multi-sitio, picking FEFO (primero en expirar, primero en salir), SSCC GS1 ni conteo cíclico ciego. \emph{Extender a otros sitios}: arrastra riesgo de soporte inexistente en ventana crítica.
+\textbf{Alternativas descartadas:} \emph{Mantener e integrar}: proveedor desaparecido, sin soporte; no soporta multi-sitio, picking FEFO (primero en expirar, primero en salir), SSCC GS1 ni conteo cíclico ciego; \emph{Extender a otros sitios}: arrastra riesgo de soporte inexistente en ventana crítica.
 
 \textbf{Criterio de selección.} Funciones de bodega que el WMS de 2013 no contempla; riesgo operacional inaceptable; TCO amortizado con reducción conteo 2,3\,\%$\rightarrow$\textasciitilde{}0,3\,\% y merma 1,7\,\%$\rightarrow$$<$1\,\%; reversión azul-verde garantizada.
 
@@ -96,7 +138,13 @@ Registro consolidado de las quince decisiones de arquitectura que condicionan es
 
 \textbf{Decisión adoptada.} Activo-pasivo warm standby multi-región: DMS CDC desde VM-02 de Talca hacia Aurora y Aurora Global Database hacia us-east-1; los demás sitios sincronizan eventos por colas. DRP local Talca$\rightarrow$Concepción (RTO +1--2 h); pruebas 2$\times$/año; respaldo 3-2-1-1-0 con S3 Object Lock.
 
-\textbf{Alternativas descartadas.} \emph{Activo-activo}: duplica infraestructura y exige reconciliación de doble escritura sin beneficio medible. \emph{Backup + restore frío}: RTO de 24 a 72 h, que no cumple el objetivo de 4 h. \emph{Solo intrarregional}: degrada el objetivo de continuidad, porque ante la caída de la región el RTO sería de 24 a 72 h; se descarta y la recuperación en us-east-1 queda declarada de forma incondicional.
+\textbf{Alternativas descartadas:}
+
+\begin{itemize}
+  \item \emph{Activo-activo}: duplica infraestructura y exige reconciliación de doble escritura sin beneficio medible.
+  \item \emph{Backup + restore frío}: exige reconstruir la plataforma y restaurar los datos antes de operar, lo que no es compatible con el RTO de 4 h.
+  \item \emph{Solo intrarregional}: degrada el objetivo de continuidad, porque ante la caída de la región la recuperación dependería de reconstruir la plataforma desde respaldos; se descarta y la recuperación en us-east-1 queda declarada de forma incondicional.
+\end{itemize}
 
 \textbf{Criterio de selección.} RTO $\leq$ 4 h / RPO $\leq$ 15 min; proporcionalidad al volumen; DR de identidad resuelto en nube; pruebas semestrales reales.
 
@@ -105,27 +153,49 @@ Registro consolidado de las quince decisiones de arquitectura que condicionan es
 
 \textbf{Decisión adoptada.} RAID 10 NVMe en los nodos del clúster de Talca y RAID 10 sobre las cuatro bahías del servidor de Concepción; RAID 6 en el NAS de respaldo local D-05; la evidencia de entrega vive en S3; clúster Proxmox VE con almacenamiento Ceph en N+1.
 
-\textbf{Alternativas descartadas.} \emph{RAID 5}: probabilidad de URE durante rebuild en discos 8--16 TB; solo tolera 1 fallo. \emph{RAID 1 puro para todo}: sobre-costo 50\,\% aplicado a datos no críticos sin beneficio proporcional.
+\textbf{Alternativas descartadas:} \emph{RAID 5}: probabilidad de URE durante rebuild en discos 8--16 TB; solo tolera 1 fallo; \emph{RAID 1 puro para todo}: sobre-costo 50\,\% aplicado a datos no críticos sin beneficio proporcional.
 
 \textbf{Criterio de selección.} IOPS deterministas en ventana de despacho ($>$100 K vs. \textasciitilde{}840 necesarios); tolerancia a fallo de disco con justificación; TCO contenido con RAID 10 solo en lo transaccional.
 
 \section{ADR-11 \textperiodcentered{} Integración B2B/EDI canal moderno}
 \label{sub:adr-11}
 
-\textbf{Decisión adoptada.} Hub EDI centralizado GS1 (EANCOM/GS1 XML + EPCIS) en nube, con conector configurable por cadena, equivalencias GTIN, bandeja de excepciones y ACL hacia ERP/GDE. La transformación y las reglas corren en el perfil EDI de Laravel; el transporte AS2 lo presta AWS Transfer Family, que firma, cifra, gestiona los certificados y emite y recibe los acuses MDN, y entrega los mensajes al perfil EDI por un contrato versionado. Canal moderno operativo $\leq$ enero 2029. Estado: propuesta.
+\textbf{Decisión adoptada.} Hub EDI centralizado GS1 (EANCOM/GS1 XML + EPCIS) en nube, con conector configurable por cadena, equivalencias GTIN, bandeja de excepciones y ACL hacia ERP/GDE; la transformación y las reglas corren en el perfil EDI de Laravel. Canal moderno operativo $\leq$ enero 2029. El transporte AS2 usa OpenAS2, de licencia BSD, corre en un contenedor propio de ECS Fargate tras un Network Load Balancer con paso TLS directo en TCP 443: TLS 1.3 termina en el contenedor. El grupo de seguridad admite solo las IP registradas de cada cadena; el transporte firma y cifra mensajes, administra certificados por cadena y acuses MDN, y entrega al perfil EDI por contrato versionado. Los certificados se guardan en Secrets Manager (sección~\ref{sub:adr-15}).
 
-\textbf{Alternativas descartadas.} \emph{Punto-a-punto por cadena}: multiplica adaptadores; mantenimiento desproporcionado ante cambios de cadena. \emph{EDI delegado al ERP}: expone frontera frágil; viola Zero Trust (escritura directa desde cadena). \emph{Conector AS2 en una biblioteca PHP}: no hay una implementación validada contra las cadenas; se mantiene como alternativa solo si supera las mismas pruebas de interoperabilidad.
+\textbf{Alternativas descartadas:}
 
-\textbf{Criterio de selección.} Estandarización GS1; esfuerzo marginal por cadena nueva; aislamiento ERP por ACL (Zero Trust); transporte AS2 administrado para un equipo de cuatro personas; plazo enero 2029.
+\begin{itemize}
+  \item \emph{Punto a punto por cadena}: multiplica adaptadores y su mantenimiento.
+  \item \emph{EDI delegado al ERP}: expone una frontera frágil y permite escritura directa desde la cadena, contra Zero Trust.
+  \item \emph{AWS Transfer Family}: su servidor AS2 recibe por HTTP en TCP 5080 y no satisface TLS 1.3 en tránsito (RT-11.08).
+  \item \emph{Biblioteca PHP para AS2}: carece de implementación validada con las cadenas.
+\end{itemize}
 
-\textbf{Evidencia exigida.} Prueba de interoperabilidad AS2 con cada cadena ---firma, cifrado, certificados y MDN--- antes de habilitarla, como condición de aceptación del canal moderno.
+\textbf{Criterio de selección.} Estandarización GS1, esfuerzo marginal por cadena nueva, aislamiento del ERP por la ACL, TLS 1.3 verificable y plazo de enero de 2029; el contenedor propio es la excepción a la preferencia por servicios administrados (RT-03.05) necesaria para cumplir RT-11.08.
+
+\textbf{Evidencia exigida.} Prueba de interoperabilidad por cadena con TLS 1.3, firma, cifrado, certificado y MDN antes de habilitarla.
 
 \section{ADR-12 \textperiodcentered{} Absorción del peak de septiembre}
 \label{sub:adr-12}
 
-\textbf{Decisión adoptada.} Cómputo elástico con escalado independiente por perfil: API con PHP-FPM de 2 a 4 tareas en el peak y techo de 8, por procesos ocupados sobre 70 \%; consumidor de reconciliación de 2 a 4 tareas, por la edad del mensaje más antiguo; trabajos de 2 a 4 tareas, por la profundidad de cada cola, con \texttt{erp-sync} fijo en 2 procesos para no saturar el ERP; planificador en una sola tarea. Lambda 100$\rightarrow$500, Aurora large$\rightarrow$xlarge (escritor en sa-east-1a y un lector promovible en sa-east-1b), DynamoDB bajo demanda. Escala predictiva y reactiva. Base con Savings Plans, peak con cómputo efímero. Estado: propuesta.
+\textbf{Decisión adoptada.} El cómputo elástico escala de forma independiente por perfil:
 
-\textbf{Alternativas descartadas.} \emph{Capacidad fija al peak}: paga 12 meses la capacidad de 3 semanas. \emph{Solo escala reactiva}: el peak de septiembre es predecible y la reactiva sola introduce retardo en la ventana crítica. \emph{Trasladar las cifras del backend anterior (6 tareas de aplicación y 4 de workers Celery)}: eran supuestos de otro runtime y no valen para PHP-FPM.
+\begin{itemize}
+  \item API con PHP-FPM: de 2 a 4 tareas en el peak y techo de 8, por procesos ocupados sobre 70 \%.
+  \item Consumidor de reconciliación: de 2 a 4 tareas, por la edad del mensaje más antiguo.
+  \item Trabajos: de 2 a 4 tareas, por la profundidad de cada cola, con \texttt{erp-sync} fijo en 2 procesos para no saturar el ERP.
+  \item Planificador: una sola tarea.
+\end{itemize}
+
+Escala de forma predictiva y reactiva el cómputo elástico. Aurora pasa de large a xlarge (escritor en sa-east-1a y un lector promovible en sa-east-1b), y DynamoDB opera bajo demanda. La capacidad \emph{Base} se contrata mediante Savings Plans y el peak se cubre con cómputo efímero.
+
+\textbf{Alternativas descartadas:}
+
+\begin{itemize}
+  \item \emph{Capacidad fija al peak}: paga 12 meses la capacidad de 3 semanas.
+  \item \emph{Solo escala reactiva}: el peak de septiembre es predecible y la reactiva sola introduce retardo en la ventana crítica.
+  \item \emph{Trasladar las cifras del backend anterior (6 tareas de aplicación y 4 de workers Celery)}: eran supuestos de otro runtime y no valen para PHP-FPM.
+\end{itemize}
 
 \textbf{Criterio de selección.} Perfil no plano al peak $\times$1,5; cuello de botella identificado; FinOps: base reservada y peak efímero; congelamiento del 1 al 25 de septiembre y de diciembre.
 
@@ -136,26 +206,45 @@ Registro consolidado de las quince decisiones de arquitectura que condicionan es
 \section{ADR-13 \textperiodcentered{} Puerta de enlace de servicios}
 \label{sub:adr-13}
 
-\textbf{Decisión adoptada.} Amazon API Gateway como Capa 3 en la nube, complementada en cada sitio por la puerta de API local del WMS para operar sin enlace: autorizador OIDC (Keycloak), validación de esquema OpenAPI, cuotas y límites de tasa por actor/ruta, versionado /v\{major\}, propagación de transaction\_id a Capa 8.
+\textbf{Decisión adoptada.} Amazon API Gateway aloja dos API REST. La regional pública solo admite CloudFront: este agrega un encabezado de origen secreto exigido por el WAF regional y el endpoint predeterminado execute-api está deshabilitado. La privada solo admite el endpoint de interfaz execute-api de la VPC de Producción mediante política \texttt{aws:SourceVpce}. En las rutas protegidas, ambas usan la única función Lambda como autorizador de JWT de Keycloak (firma con claves publicadas, emisor, audiencia y vencimiento), modelos de validación de solicitud, planes de uso con cuotas y límites de tasa, inspección WAF e integración privada por VPC Link hacia el ALB privado. Laravel valida reglas de negocio y autorización por recurso; cada sitio mantiene la puerta de API local del WMS.
 
-\textbf{Alternativas descartadas.} \emph{Kong autoadministrado}: agrega componente crítico a parchar en ruta de la venta; riesgo en ventana 05:30--07:00 con el equipo disponible. \emph{Desarrollo propio (middleware de la aplicación)}: sin cuotas ni límites de tasa administrados en el borde, que las Bases exigen. La validación del token en el backend Laravel complementa a la puerta de enlace y no la reemplaza.
+\textbf{Alternativas descartadas:}
 
-\textbf{Criterio de selección.} Cumple la exigencia de puerta de enlace sin desarrollo propio; servicio administrado para 4 personas; coherencia entre vistas; reversibilidad por contratos OpenAPI/AsyncAPI estándar.
+\begin{itemize}
+  \item \emph{Kong autoadministrado}: agrega un componente crítico que parchar en la ruta de la venta.
+  \item \emph{HTTP API con autorizador JWT nativo}: no ofrece API privada ni validación de modelos de solicitud.
+  \item \emph{Validación del token solo en Laravel}: la puerta no autentica e incumple RT-11.11.
+\end{itemize}
+
+\textbf{Criterio de selección.} Autenticación y validación en la puerta, separación de entradas pública y privada y acceso restringido al origen.
+
+\textbf{Evidencia exigida.} Prueba de acceso directo denegado al origen público y a la API privada fuera del endpoint autorizado.
 
 \section{ADR-14 \textperiodcentered{} Plataforma de observabilidad}
 \label{sub:adr-14}
 
-\textbf{Decisión adoptada.} Plataforma única en nube: instrumentación con OpenTelemetry para PHP y Laravel y para las aplicaciones Kotlin, con el \texttt{transaction\_id} propagado por HTTP, RabbitMQ, SQS y la capa anticorrupción; métricas propias por perfil (procesos PHP-FPM ocupados, reinicios, profundidad y edad de cola por grupo, mensajes fallidos, latencia del ERP y de escritura de VM-02); colectores ADOT on-premise con buffer 24 h, logs en CloudWatch Logs (12+24 m), métricas en CloudWatch Metrics (13 meses) y trazas en CloudWatch con retención declarada. Tableros nativos de CloudWatch para operación. Estado: propuesta.
+\textbf{Decisión adoptada.} Plataforma única en nube: instrumentación con OpenTelemetry para PHP y Laravel y para las aplicaciones Kotlin, con el \texttt{transaction\_id} propagado por HTTP, RabbitMQ, SQS y la capa anticorrupción; métricas propias por perfil (procesos PHP-FPM ocupados, reinicios, profundidad y edad de cola por grupo, mensajes fallidos, latencia del ERP y de escritura de VM-02); colectores ADOT on-premise con buffer 24 h, logs en CloudWatch Logs (12+24 m), métricas en CloudWatch Metrics (13 meses) y trazas en CloudWatch con retención declarada. Tableros nativos de CloudWatch para operación.
 
-\textbf{Alternativas descartadas.} \emph{Prometheus+Grafana+Loki local + cloud}: dos plataformas, cuando las Bases piden una sola; VM-06 sin capacidad. \emph{AMP + X-Ray + Grafana}: cuatro servicios de observabilidad para un equipo de 4 personas; complejidad operativa desproporcionada sin ganancia funcional sobre CloudWatch nativo.
+\textbf{Alternativas descartadas:} \emph{Prometheus+Grafana+Loki local + cloud}: dos plataformas, cuando las Bases piden una sola; VM-06 sin capacidad; \emph{AMP + X-Ray + Grafana}: cuatro servicios de observabilidad para un equipo de 4 personas; complejidad operativa desproporcionada sin ganancia funcional sobre CloudWatch nativo.
 
 \textbf{Criterio de selección.} Las Bases piden una sola plataforma de observabilidad; buffer ADOT resuelve «sin puntos ciegos» durante corte; ninguna decisión 05:30--07:00 depende de tablero; CloudWatch es nativo de AWS y no requiere infraestructura adicional; el equipo del CLIENTE no opera servidores de observabilidad.
 
 \section{ADR-15 \textperiodcentered{} Gestión de secretos}
 \label{sub:adr-15}
 
-\textbf{Decisión adoptada.} AWS Secrets Manager (secretos con rotación: ERP, SII, Transbank, certificados AS2/EDI) + SSM Parameter Store (config no sensible). Consumo outbound por VPC Endpoint. Cifrado CMK KMS, separación de funciones. Cuenta de emergencia en sobre sellado offline.
+\textbf{Decisión adoptada.} AWS Secrets Manager (secretos con rotación: ERP, SII, Transbank, certificados AS2/EDI) + SSM Parameter Store (config no sensible). Consumo outbound por VPC Endpoint. Cifrado CMK KMS, separación de funciones. Cuenta de último recurso con credenciales en sobre sellado fuera de línea.
 
-\textbf{Alternativas descartadas.} \emph{HashiCorp Vault autoadministrado}: modo sellado tras reinicio exige intervención humana de madrugada; agrega infraestructura. \emph{Sin gestor centralizado}: las Bases lo prohíben.
+\textbf{Alternativas descartadas:} \emph{HashiCorp Vault autoadministrado}: modo sellado tras reinicio exige intervención humana de madrugada; agrega infraestructura; \emph{Sin gestor centralizado}: las Bases lo prohíben.
 
 \textbf{Criterio de selección.} Servicio administrado sin desellado manual; Zero Trust (consumo outbound); separación de funciones vía IAM y CloudTrail; contingencia offline independiente de la nube.
+
+\section{ADR-16 \textperiodcentered{} Acceso de personas internas y remotas}
+\label{sub:adr-16}
+
+\textbf{Decisión adoptada.} AWS Verified Access protege por aplicación las consolas internas y la administración de Keycloak para oficina y trabajo remoto. Usa Keycloak con MFA como proveedor de confianza OIDC de usuario y CrowdStrike Falcon (F-03) como proveedor de postura de dispositivo; AWS WAF se asocia a la instancia. Su destino es el ALB privado del frontend Angular en Fargate, que reenvía llamadas a la API REST privada por el endpoint execute-api.
+
+\textbf{Alternativas descartadas:} \emph{Client VPN}: concede acceso de red y requiere un manejador de conexión adicional para verificar postura; \emph{Solo VPN de sitio}: no cubre el trabajo remoto de RT-03.22 y confía en la ubicación de red.
+
+\textbf{Criterio de selección.} Acceso por aplicación con identidad, MFA y postura para ambos orígenes, conforme a RT-03.22, RT-11.01 y RT-12.03.
+
+\textbf{Evidencia exigida.} Pruebas de acceso con MFA y postura válida e inválida desde oficina y trabajo remoto.
