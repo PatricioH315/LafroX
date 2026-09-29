@@ -36,7 +36,19 @@ La cadena evita mezclar decisiones de diseño con hechos del CLIENTE. En particu
 \subsection{Perfil de carga y regímenes de diseño}
 \label{sec:dimensionamiento-regimenes}
 
-El Caso, Anexo B.1 distribuye la operación entre preparación de 22:00 a 06:00, cross-docking de 03:00 a 05:00, despacho de 05:30 a 07:00, reparto de 07:00 a 19:00, recepción de proveedores de 08:00 a 18:00, preventa de 09:00 a 18:00 y sincronización de 17:00 a 20:00. El perfil de 24 horas de la Figura~\ref{fig:dimensionamiento-perfil} muestra las tasas totales calculadas para esas superposiciones.
+El Caso, Anexo B.1 distribuye la operación en estas ventanas:
+
+\begin{itemize}
+  \item Preparación de 22:00 a 06:00.
+  \item Cross-docking de 03:00 a 05:00.
+  \item Despacho de 05:30 a 07:00.
+  \item Reparto de 07:00 a 19:00.
+  \item Recepción de proveedores de 08:00 a 18:00.
+  \item Preventa de 09:00 a 18:00.
+  \item Sincronización de 17:00 a 20:00.
+\end{itemize}
+
+El perfil de 24 horas de la Figura~\ref{fig:dimensionamiento-perfil} muestra las tasas totales calculadas para esas superposiciones.
 
 \begin{figure}[htbp]
   \centering
@@ -119,7 +131,15 @@ La dimensión 4, «Personas usuarias registradas, internas y externas», es 15.1
 
 La operación sin portal, que carga la Wi-Fi y los sitios, llega a 342 personas o equipos concurrentes durante el día. Los seis del cross-docking son personas con escáner, dos por plataforma, como parámetro de diseño. Los 96 equipos de reparto equivalen a 96 conductores en ruta; la dimensión 5 se expresa en personas o sesiones y no en camiones. La cota extrema del portal se conserva como prueba separada. La dimensión 6, «Dispositivos de terreno en operación simultánea», es 62 preventistas + 96 equipos de reparto = 158.
 
-La cantidad a proveer se informa aparte: 132 terminales de bodega en Talca, 66 en Concepción, 69 terminales de preventa, 106 terminales de reparto, 106 impresoras de cabina, 106 terminales de pago, 6 escáneres de cross-docking y 28 termógrafos. En Talca todos los terminales de bodega son aptos para {$-$}22\,\textdegree{}C porque la misma cuadrilla prepara el frío al final del turno; Concepción no tiene congelado.
+La cantidad a proveer se informa aparte, por ámbito:
+
+\begin{itemize}
+  \item Bodega: 132 terminales en Talca y 66 en Concepción.
+  \item Terreno: 69 terminales de preventa, 106 terminales de reparto, 106 impresoras de cabina y 106 terminales de pago.
+  \item Cross-docking y frío: 6 escáneres de cross-docking y 28 termógrafos.
+\end{itemize}
+
+En Talca todos los terminales de bodega son aptos para {$-$}22\,\textdegree{}C porque la misma cuadrilla prepara el frío al final del turno; Concepción no tiene congelado.
 
 \subsection{Almacenamiento, retención y migración: dimensiones 7--10}
 \label{sec:dimensionamiento-almacenamiento}
@@ -214,7 +234,15 @@ La nube escala automáticamente dentro del techo declarado; nodos, almacenamient
 \subsection{Cuello de botella, umbrales y degradación controlada}
 \label{sec:dimensionamiento-cuello}
 
-El primer candidato es la emisión de guías del ERP. En el peak se emiten unos 2.852 documentos tributarios electrónicos (DTE) al día. Si se reparten entre 22:00 y 05:30, el máximo es 9,47 segundos por guía; si se concentran en las últimas 3,5 horas, 4,42 segundos; si permanecen en la ventana actual de despacho, 1,89 segundos. La solución emite la guía cuando confirma la carga, durante la noche. Se detectan guías aún no emitidas frente a la hora de salida de cada camión y se prioriza la cola, sin crear un segundo emisor: el ERP conserva la responsabilidad tributaria y la guía acompaña el traslado. Como el caso no documenta las interfaces del ERP y encarga levantarlas en los primeros meses (Caso, Cap. 5), el tiempo real por guía se mide en ese levantamiento; si superara los 4,42 segundos, las cargas se cierran por camión en el orden de salida, para que la emisión empiece antes.
+El primer candidato es la emisión de guías del ERP. En el peak se emiten unos 2.852 documentos tributarios electrónicos (DTE) al día. El tiempo disponible por guía depende de la ventana:
+
+\begin{itemize}
+  \item Entre 22:00 y 05:30: máximo de 9,47 segundos por guía.
+  \item En las últimas 3,5 horas: máximo de 4,42 segundos por guía.
+  \item En la ventana actual de despacho: máximo de 1,89 segundos por guía.
+\end{itemize}
+
+La solución emite la guía cuando confirma la carga, durante la noche. Se detectan guías aún no emitidas frente a la hora de salida de cada camión y se prioriza la cola, sin crear un segundo emisor: el ERP conserva la responsabilidad tributaria y la guía acompaña el traslado. Como el caso no documenta las interfaces del ERP y encarga levantarlas en los primeros meses (Caso, Cap. 5), el tiempo real por guía se mide en ese levantamiento; si superara los 4,42 segundos, las cargas se cierran por camión en el orden de salida, para que la emisión empiece antes.
 
 La Tabla~\ref{tab:t84} fija los umbrales de respuesta que se observan en percentil 95.
 
@@ -248,7 +276,7 @@ La prueba RT-09.06 carga una sola vez 1,5 × la dimensión 3, es decir, 21,99 TP
   Ventana dominical & Respaldo y actualizaciones & Tandas por sitio y enlace & Cada tanda cabe \\
 \end{tablalafrox}
 
-La prueba de carga conserva tasas por lugar, percentil 95, utilización, colas, errores y comportamiento durante el drenaje. Los parámetros confirmados se actualizan en la revisión trimestral de capacidad.
+La prueba de carga conserva tasas por lugar, percentil 95, utilización, colas, errores y comportamiento durante el drenaje; incluye la concurrencia de oficina y trabajo remoto por Verified Access, la API privada, el inicio de sesión y los tableros. Los parámetros confirmados se actualizan en la revisión trimestral de capacidad.
 
 \subsection{Síntesis de las dieciséis dimensiones del numeral 14.2}
 \label{sec:dimensionamiento-sintesis}

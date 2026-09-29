@@ -32,4 +32,63 @@ Esa arquitectura materializa el despliegue híbrido obligatorio del Artículo 16
   \item \textbf{Autonomía total de la operación de bodega:} la preparación, el despacho, la recepción y el conteo corren siempre contra los servidores del centro de distribución, no contra la nube, de modo que la conexión a Internet no interviene en la operación de bodega.
 \end{itemize}
 
-Este apartado se ordena en seis partes. La sección~\ref{sec:implementos} resume y analiza el equipamiento y el software que se proveen; su especificación elemento por elemento está en el Formulario T-11, que acompaña a este subdocumento como archivo propio (LAFROX-Formulario-T-11). La sección~\ref{sec:emplazamiento} justifica dónde vive cada componente, en la nube o en las instalaciones, conforme a los criterios del Artículo 16.2. La sección~\ref{sec:servicios-nube} presenta los servicios contratados en la plataforma de nube. La sección~\ref{sec:despliegue} describe cómo la solución se pone en marcha y se mantiene en operación: ambientes y ciclo de entrega, red de despliegue, alta disponibilidad, recuperación ante desastres, respaldos y su verificación. La sección~\ref{sec:conexiones} describe las conexiones, sus puntos de falla y la contingencia de cada uno. La sección~\ref{sec:dimensionamiento} deriva el dimensionamiento y el plan de capacidad desde la volumetría del caso. Las especificaciones del data center primario y del secundario se desarrollan en el apartado~\ref{cap:4-3-data-center}, a continuación de este.
+La Figura~\ref{fig:vista-general} presenta la vista general de la arquitectura física híbrida. Su recorrido por bloques permite situar los componentes y sus conexiones antes de examinar cada parte de la solución.
+
+\begin{landscape}
+\begin{figure}[p]
+  \centering
+  \includegraphics[width=\linewidth,height=0.85\textheight,keepaspectratio]{figuras/Arquitectura_Fisica_General.jpg}
+  \caption{Vista general de la arquitectura física híbrida}
+  \label{fig:vista-general}
+  \par\small Autoría: LafroX.
+\end{figure}
+\end{landscape}
+
+\section*{Vista general de la nube}
+
+Los portales y los terminales de terreno acceden por CloudFront a la API pública; la oficina y el trabajo remoto usan Verified Access. Las bodegas operan contra su WMS local y las cadenas de supermercados intercambian mensajes por el canal AS2. Los recorridos y controles de entrada se detallan en la sección~\ref{sec:conexiones}.
+
+En AWS sa-east-1, los componentes se distribuyen y cumplen estas funciones:
+
+\begin{itemize}
+  \item ECS Fargate, Keycloak y Redis se distribuyen entre sa-east-1a y sa-east-1b.
+  \item Aurora PostgreSQL tiene su escritor en sa-east-1a y un lector promovible en sa-east-1b, tal como se detalla en la sección~\ref{sec:despliegue}.
+  \item AWS DMS copia los cambios del PostgreSQL de Talca (VM-02) a un esquema de réplica de solo lectura en Aurora.
+  \item El estado central se actualiza por separado mediante los eventos de reconciliación que llegan por SQS FIFO.
+  \item Fuera de la VPC de producción, IoT Core atiende la integración de sensores.
+  \item DynamoDB, SQS FIFO, Glue y S3 apoyan la persistencia y el intercambio de datos.
+  \item Redshift y QuickSight sirven la analítica.
+  \item ECR suministra las imágenes de Fargate.
+  \item CloudWatch concentra el monitoreo.
+\end{itemize}
+
+Los servicios contratados y su alta disponibilidad se desarrollan en las secciones~\ref{sec:servicios-nube} y~\ref{sec:despliegue}.
+
+La región us-east-1 recibe réplicas de Aurora PostgreSQL, DynamoDB y S3 para recuperación ante desastres. La vista general representa esas copias de datos; la réplica reducida de aplicación, su escalamiento y el procedimiento de conmutación se detallan en las secciones~\ref{cap:4-3-data-center} y~\ref{sec:despliegue}.
+
+\section*{Vista general de las instalaciones}
+
+La VPC Hub enlaza la nube con los sitios mediante Transit Gateway y VPN Site-to-Site. El equipamiento se distribuye por ámbito:
+
+\begin{itemize}
+  \item \textbf{CD Talca:} la sala técnica reúne fibra con respaldo LTE, firewalls en par activo/pasivo, switching y máquinas virtuales para WMS, PostgreSQL, RabbitMQ, integración con el ERP, caché de Keycloak y ADOT con SSM. También comprende respaldo NAS WORM, equipos de bodega y sensores de cadena de frío conectados por gateway IoT mediante MQTTS, con bloqueo de despacho.
+  \item \textbf{CD Concepción:} dispone de fibra y LTE, firewall, switch y un servidor Proxmox de nodo único con WMS, PostgreSQL, caché de Keycloak, RabbitMQ, shipper y ADOT, además de bodega y cadena de frío.
+  \item \textbf{Cross-docking:} emplean Starlink, LTE de doble SIM y un mini-PC industrial con Docker para WMS, PostgreSQL, RabbitMQ, caché de identidad y ADOT, junto con escáneres GS1.
+\end{itemize}
+
+El CD (Talca), el de Concepción y los cross-docking disponen de estos componentes. Estos sostienen la operación local durante una interrupción del enlace. El emplazamiento, las condiciones de los centros de datos y las conexiones se precisan en las secciones~\ref{sec:emplazamiento},~\ref{cap:4-3-data-center} y~\ref{sec:conexiones}.
+
+La bodega confirma sus operaciones contra el WMS del sitio. Talca replica los cambios de VM-02 a Aurora por DMS; Concepción y los cross-docking envían sus eventos por colas. Si cae el enlace, las bases y los brokers locales permiten seguir operando y entregan los eventos retenidos al reconectar. En conjunto, la figura muestra cómo se mantiene la operación local mientras la nube concentra los servicios comunes, la consolidación de datos y la recuperación.
+
+Este apartado se ordena en seis partes:
+
+\begin{itemize}
+  \item Sección~\ref{sec:implementos}: equipamiento y software provistos, resumidos y analizados; el detalle elemento por elemento figura en el Formulario T-11, que acompaña a este subdocumento como archivo propio (LAFROX-Formulario-T-11).
+  \item Sección~\ref{sec:emplazamiento}: ubicación de cada componente en la nube o en las instalaciones según el Artículo 16.2.
+  \item Sección~\ref{sec:servicios-nube}: servicios contratados en la plataforma de nube.
+  \item Sección~\ref{sec:despliegue}: puesta en marcha y operación, ambientes y ciclo de entrega, red de despliegue, alta disponibilidad, recuperación ante desastres, respaldos y verificación.
+  \item Sección~\ref{sec:conexiones}: conexiones, puntos de falla y contingencia de cada uno.
+  \item Sección~\ref{sec:dimensionamiento}: dimensionamiento y plan de capacidad derivados de la volumetría del caso.
+\end{itemize}
+
+Las especificaciones del data center primario y del secundario se desarrollan en el apartado~\ref{cap:4-3-data-center}, a continuación de este.

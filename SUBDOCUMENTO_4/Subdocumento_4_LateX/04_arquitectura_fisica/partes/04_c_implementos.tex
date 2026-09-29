@@ -33,12 +33,35 @@ La Tabla~\ref{tab:t26} agrupa el equipamiento en ocho familias, con sus cantidad
 
 Más de nueve de cada diez unidades están en el terreno y en la bodega, no en la sala técnica: son unos 860 dispositivos de trabajo frente a unos 60 equipos de cómputo, red, sala técnica y gabinetes de borde. Esa proporción refleja el caso, donde la operación ocurre en la calle, en la cámara y en el andén, y explica por qué la gestión de dispositivos (N-13) es un componente con emplazamiento propio y no un accesorio.
 
+Se proveen ocho estaciones nuevas para despacho, administración, planificación, calidad y TI. Los equipos existentes de los usuarios de oficina se incorporan a la gestión central con CrowdStrike Falcon, cifrado de disco, parches y control de extraíbles como condición de acceso por Verified Access (sección~\ref{sub:adr-16}).
+
 \subsection{Criterios de selección}
 
-Cada familia se especifica contra una condición del caso que el equipamiento de oficina no resiste. Los 174 terminales de cámara están certificados para trabajar a $-$30\,\textdegree{}C con guantes gruesos y batería de recambio en caliente, porque la preparación de congelados ocurre a $-$22\,\textdegree{}C; su número cubre los 120 preparadores simultáneos de Talca con 20 \% de reserva por la rotación de 38 \%, más 30 en Concepción. Los terminales de terreno operan un turno completo sin señal, a una mano y bajo sol directo. Los mini-PC de los cross-docking son de rango industrial, porque las naves no tienen climatización y el supuesto de diseño es de hasta 50\,\textdegree{}C bajo la techumbre en verano. Los 28 termógrafos cubren los 18 camiones propios y los 10 refrigerados de los transportistas que declara el caso, porque el instrumento viaja con la carga y su registro ampara la cadena de frío aun cuando el vehículo no sea del CLIENTE; están calibrados contra un patrón NIST en dos puntos, porque su registro es la prueba de la cadena de frío ante un cliente o ante la autoridad sanitaria.
+Cada familia se especifica contra una condición del caso que el equipamiento de oficina no resiste:
 
-En la sala técnica el criterio es la redundancia sin sobrecompra. Los tres servidores del clúster son idénticos, de modo que la pérdida de cualquiera deja capacidad para todas las máquinas virtuales, y el crecimiento de 3 veces se absorbe agregando discos y memoria en los mismos nodos, dentro del margen de crecimiento de los racks. El servidor de Concepción se dimensiona a su propia bodega, sin sobrecompra. Los firewalls de Talca van en par, y los de Concepción y de cada cross-docking son únicos, porque en esos sitios la contingencia ante la falla es la misma autonomía que cubre los cortes de enlace.
+\begin{itemize}
+  \item Los 174 terminales de cámara están certificados para trabajar a $-$30\,\textdegree{}C con guantes gruesos y batería de recambio en caliente, porque la preparación de congelados ocurre a $-$22\,\textdegree{}C. Su número cubre los 120 preparadores simultáneos de Talca con 20 \% de reserva por la rotación de 38 \%, más 30 en Concepción.
+  \item Los terminales de terreno operan un turno completo sin señal, a una mano y bajo sol directo.
+  \item Los mini-PC de los cross-docking son de rango industrial, porque las naves no tienen climatización y el supuesto de diseño es de hasta 50\,\textdegree{}C bajo la techumbre en verano.
+  \item Los 28 termógrafos cubren los 18 camiones propios y los 10 refrigerados de los transportistas que declara el caso, porque el instrumento viaja con la carga y su registro ampara la cadena de frío aun cuando el vehículo no sea del CLIENTE. Están calibrados contra un patrón NIST en dos puntos, porque su registro es la prueba de la cadena de frío ante un cliente o ante la autoridad sanitaria.
+\end{itemize}
+
+En la sala técnica se aplica redundancia sin sobrecompra:
+
+\begin{itemize}
+  \item Talca: los tres servidores del clúster son idénticos, de modo que la pérdida de cualquiera deja capacidad para todas las máquinas virtuales; el crecimiento de 3 veces se absorbe agregando discos y memoria en los mismos nodos, dentro del margen de crecimiento de los racks, y los firewalls van en par.
+  \item Concepción: el servidor se dimensiona a su propia bodega, sin sobrecompra.
+  \item Concepción y cada cross-docking: los firewalls son únicos porque su falla deja al sitio sin enlace, lo que cubre la autonomía local mientras el equipo se repone.
+\end{itemize}
 
 \subsection{Software y licenciamiento}
 
-El software de base es de código abierto en todos los componentes que el adjudicatario opera: PostgreSQL con PostGIS, RabbitMQ, Keycloak, Proxmox VE, Ceph y Docker, además de la aplicación, escrita en PHP 8.5 con Laravel 13 y sus dependencias fijadas por Composer, y del motor de optimización de rutas; los portales, en Angular y TypeScript; y, en el terreno, en Kotlin. Las dependencias de PHP se revisan en cada construcción con \texttt{composer audit} y su licencia se verifica contra una lista de licencias admitidas antes de incorporarlas. Los únicos elementos con suscripción son los servicios de la plataforma de nube, descritos en la sección~\ref{sec:servicios-nube}, la gestión de dispositivos, los agentes de detección en endpoints y el orquestador de integración continua GitLab CI. Esta composición mantiene la reversibilidad de la solución y evita que el CLIENTE quede atado a un licenciamiento propietario.
+El software de base que opera el adjudicatario es de código abierto y se organiza así:
+
+\begin{itemize}
+  \item PostgreSQL con PostGIS, RabbitMQ, Keycloak, Proxmox VE, Ceph y Docker sostienen la plataforma, junto con el motor de optimización de rutas.
+  \item La aplicación está escrita en PHP 8.5 con Laravel 13 y sus dependencias fijadas por Composer. Las dependencias de PHP se revisan en cada construcción con \texttt{composer audit} y su licencia se verifica contra una lista de licencias admitidas antes de incorporarlas.
+  \item Los portales usan Angular y TypeScript; las aplicaciones de terreno usan Kotlin.
+\end{itemize}
+
+Los únicos elementos con suscripción son los servicios de la plataforma de nube, descritos en la sección~\ref{sec:servicios-nube}, la gestión de dispositivos, los agentes de detección en endpoints y el orquestador de integración continua GitLab CI. Esta composición mantiene la reversibilidad de la solución y evita que el CLIENTE quede atado a un licenciamiento propietario.

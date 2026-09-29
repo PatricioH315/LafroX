@@ -1,5 +1,7 @@
 # Registro de Decisiones de Arquitectura (ADR)
 
+> **Actualización 25-09-2026 — backend Laravel.** La arquitectura lógica (4.1) adoptó Laravel 13 sobre PHP 8.5. ADR-01, ADR-05, ADR-11, ADR-12 y ADR-14 se reformularon y quedan en estado *propuesta*; ADR-04, ADR-06, ADR-08 y ADR-13 ajustaron su implementación. El texto vigente es el de `SUBDOCUMENTO_4/Subdocumento_4_LateX/04_arquitectura_fisica/partes/14_m_decisiones_adr.tex`. Las secciones de este archivo que describen Django, workers Celery o una caché de identidad de 8 h quedan como registro histórico de la evaluación anterior y no rigen.
+
 ## Distribuidora Puelche S.A. — Licitación TFEP-01/2026 (Caso 02 — Logística)
 
 | Atributo | Valor |
@@ -23,20 +25,20 @@
 
 | ADR | Título | Estado | Decisión relacionada |
 |---|---|---|---|
-| [ADR-01](#adr-01--estilo-arquitectónico-monolito-modular-vs-microservicios) | Estilo arquitectónico: monolito modular (Django 5.x LTS / Python 3.12) | Aprobado | D5 (AL v1) |
+| [ADR-01](#adr-01--estilo-arquitectónico-monolito-modular-vs-microservicios) | Estilo arquitectónico: monolito modular (Laravel 13 / PHP 8.5; Django queda como alternativa descartada) | Propuesta | D5 (AL v1) |
 | [ADR-02](#adr-02--conectividad-y-redundancia-wan-starlink-leo--sd-wan) | Conectividad y redundancia WAN: Starlink LEO + SD-WAN | Aprobado | Decisión 16.1 N° 26 |
 | [ADR-03](#adr-03--modelo-de-despliegue-híbrido-borde-operacional-on-premise--nube-aws) | Modelo de despliegue híbrido (Art. 16) | Aprobado | D7 (AL v1) · Decisión 16.1 N° 17 |
 | [ADR-04](#adr-04--persistencia-políglota-por-dominio) | Persistencia políglota por dominio (CAP) | Aprobado | D2/D4 (AL v1) · Decisión 16.1 N° 18 |
-| [ADR-05](#adr-05--mensajería-asíncrona-broker-local--colas-nube) | Mensajería asíncrona: RabbitMQ local + SQS FIFO/EventBridge | Aprobado | D4 (AL v1) |
+| [ADR-05](#adr-05--mensajería-asíncrona-broker-local--colas-nube) | Mensajería asíncrona: RabbitMQ local + SQS FIFO con sobre JSON y colas separadas para trabajos Laravel | Propuesta | D4 (AL v1) |
 | [ADR-06](#adr-06--identidad-y-autenticación-híbrida-modelo-b) | Identidad híbrida (Modelo B): Keycloak | Aprobado | D6 (AL v1) · Decisión 16.1 N° 34 |
 | [ADR-07](#adr-07--estrategia-de-movilidad-de-terreno-nativa-android) | Movilidad de terreno: nativa Android (Kotlin) | Aprobado | decisiones.md N° 19 |
 | [ADR-08](#adr-08--destino-del-wms-legado-de-2013) | Destino del WMS legado de 2013 | Aprobado | Decisión 16.1 N° 14 |
 | [ADR-09](#adr-09--estrategia-de-recuperación-ante-desastres-dr) | DR: activo-pasivo warm standby multi-región | Aprobado | Decisión 16.1 N° 27 |
 | [ADR-10](#adr-10--almacenamiento-on-premise-y-niveles-raid) | Almacenamiento on-premise y niveles RAID | Aprobado | Decisión 16.1 N° 28 |
-| [ADR-11](#adr-11--integración-b2b--edi-con-supermercados) | Integración B2B/EDI: hub GS1 con capa anticorrupción | Aprobado | RF-12 · RF-01.10 |
-| [ADR-12](#adr-12--absorción-del-peak-de-septiembre-y-perfil-no-plano) | Absorción del peak de septiembre (cómputo elástico) | Aprobado | Decisión 16.1 N° 30 |
+| [ADR-11](#adr-11--integración-b2b--edi-con-supermercados) | Integración B2B/EDI: hub GS1 con capa anticorrupción y AS2 en AWS Transfer Family | Propuesta | RF-12 · RF-01.10 |
+| [ADR-12](#adr-12--absorción-del-peak-de-septiembre-y-perfil-no-plano) | Absorción del peak de septiembre (cómputo elástico por perfil PHP) | Propuesta | Decisión 16.1 N° 30 |
 | [ADR-13](#adr-13--puerta-de-enlace-de-servicios-amazon-api-gateway) | Puerta de enlace de servicios: Amazon API Gateway | Aprobado | D8 (AL v6.2) |
-| [ADR-14](#adr-14--plataforma-de-observabilidad-única-otel--amp--cloudwatch--x-ray) | Observabilidad: plataforma única con emisión on-premise | Aprobado | D14 (AL v6.2) |
+| [ADR-14](#adr-14--plataforma-de-observabilidad-única-otel--amp--cloudwatch--x-ray) | Observabilidad: plataforma única con emisión on-premise (OpenTelemetry PHP) | Propuesta | D14 (AL v6.2) |
 | [ADR-15](#adr-15--gestión-de-secretos-servicio-administrado-en-lugar-de-gestor-autoalojado) | Gestión de secretos: servicio administrado | Aprobado | D13 (AL v6.2) · SEC-01 |
 
 ---

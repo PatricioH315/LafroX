@@ -20,15 +20,15 @@ La solución se despliega en dos dominios, la nube pública y el on-premise, con
 
 ### Dominio nube (AWS sa-east-1)
 
-La nube concentra la carga principal de la solución. Todos los servicios se despliegan en al menos dos zonas de disponibilidad dentro de la región sa-east-1, de modo que la caída de un centro de datos de AWS no interrumpe la operación. La aplicación Django corre en contenedores ECS Fargate y atiende los procesos de preventa, reparto, canal moderno y el portal de clientes. Aurora PostgreSQL almacena la base de datos transaccional maestra y recibe en tiempo real las transacciones que se originan en las bodegas a través del servicio de replicación DMS CDC.
+La nube concentra la carga principal de la solución. Todos los servicios se despliegan en al menos dos zonas de disponibilidad dentro de la región sa-east-1, de modo que la caída de un centro de datos de AWS no interrumpe la operación. La aplicación Laravel 13 sobre PHP 8.5 corre en contenedores ECS Fargate, en perfiles separados de API, consumo de reconciliación, trabajos y planificación, y atiende los procesos de preventa, reparto, canal moderno y el portal de clientes. Aurora PostgreSQL almacena la base de datos transaccional maestra: recibe por DMS una réplica de lectura del WMS de cada bodega, para continuidad y consulta, y actualiza el estado central con los eventos de reconciliación que publican los sitios.
 
-Todo el tráfico externo ingresa por API Gateway, donde WAF v2 valida las solicitudes y Shield protege contra ataques de denegación de servicio, antes de que el tráfico alcance la aplicación. Cuando las bodegas reconectan tras un corte de enlace, las transacciones pendientes llegan a la cola SQS FIFO, que las procesa en el orden exacto en que ocurrieron y sin duplicados. Cuando la aplicación registra un hecho relevante una entrega confirmada, una excursión térmica o un pedido del canal moderno, Celery despacha las tareas derivadas: enviar la notificación al cliente, actualizar los tableros analíticos, emitir el documento tributario al SII y, en la etapa de cadenas de supermercados, transmitir el acuse por EDI.
+Todo el tráfico externo ingresa por API Gateway, donde WAF v2 valida las solicitudes y Shield protege contra ataques de denegación de servicio, antes de que el tráfico alcance la aplicación. Cuando las bodegas reconectan tras un corte de enlace, el shipper de cada sitio publica los eventos pendientes como sobres JSON versionados en la cola SQS FIFO de reconciliación, que los entrega en orden dentro de cada grupo y sin duplicados a un consumidor PHP dedicado. Cuando la aplicación registra un hecho relevante ---una entrega confirmada, una excursión térmica o un pedido del canal moderno---, despacha trabajos de Laravel en colas SQS separadas: enviar la notificación al cliente, actualizar los tableros analíticos, pedir al ERP, a través del trabajador erp-sync y la capa anticorrupción, la emisión del documento tributario y, en la etapa de cadenas de supermercados, transmitir el acuse por EDI.
 
 La telemetría de cadena de frío llega desde los gateways Greengrass en las bodegas hasta IoT Core en la nube. La capa analítica se apoya en Redshift Serverless para consultas históricas de hasta 5 años, y QuickSight publica los tableros de gestión del CLIENTE. La observabilidad se consolida en CloudWatch, que recibe logs, métricas y trazas tanto de los servicios en nube como de los colectores on-premise cuando estos disponen de enlace, y expone los tableros de operación sin infraestructura adicional que mantener. La identidad la gobierna Keycloak, que corre como servicio maestro en Fargate y distribuye las credenciales hacia las cachés locales de cada sitio. Una réplica pasiva de la infraestructura crítica en us-east-1 sostiene la recuperación ante desastres.
 
 ### Dominio on-premise
 
-Cada centro de distribución mantiene su propia pila local: la misma aplicación Django corre en modo WMS contra una base PostgreSQL 16 local, un broker RabbitMQ que encola las transacciones y una caché de Keycloak que sostiene la sesión de los operarios. En CD Talca, un clúster Proxmox VE de 3 nodos con almacenamiento Ceph aloja las VMs (VM-01 a VM-06); en CD Concepción, un servidor de borde replica la misma pila en formato reducido (VM-C01 a VM-C04). Los tres cross-docking (Curicó, Chillán y Los Ángeles) operan con un mini-PC industrial que corre el WMS en Docker. La capa anticorrupción del ERP (VM-04, Talca) es la única puerta hacia el sistema legado. Los gateways IoT Greengrass procesan la cadena de frío en el borde, con detección de excursión térmica y bloqueo de despacho 100 % local. Un NAS cifrado (D-05) guarda la pierna local de respaldo 3-2-1-1-0.
+Cada centro de distribución mantiene su propia pila local: la misma aplicación Laravel corre en el perfil wms_only contra una base PostgreSQL 16 local, un broker RabbitMQ que encola los eventos y una caché de Keycloak con el verificador local de relevo de turno. En CD Talca, un clúster Proxmox VE de 3 nodos con almacenamiento Ceph aloja las VMs (VM-01 a VM-06); en CD Concepción, un servidor de borde replica la misma pila en formato reducido (VM-C01 a VM-C04). Los tres cross-docking (Curicó, Chillán y Los Ángeles) operan con un mini-PC industrial que corre el WMS en Docker Compose. La capa anticorrupción del ERP (VM-04, Talca) es la única puerta hacia el sistema legado. Los gateways IoT Greengrass procesan la cadena de frío en el borde, con detección de excursión térmica y bloqueo de despacho 100 % local. Un NAS cifrado (D-05) guarda la pierna local de respaldo 3-2-1-1-0.
 
 ### Conexión entre dominios
 
@@ -36,7 +36,7 @@ Los dos dominios se conectan mediante túneles VPN IPsec Site-to-Site cifrados, 
 
 #### Flujos entre nube y on-premise
 
-Por diseño Zero Trust, las conexiones entre los dos dominios fijos, la nube y el on-premise, se inician siempre desde el on-premise hacia la nube. Existen dos excepciones declaradas a esta regla. La primera es DMS, que lee el registro de escritura anticipada de PostgreSQL para replicar los cambios hacia Aurora. La segunda es celery-erp-sync, que consulta la capa anticorrupción del ERP. Ambas conexiones viajan por el mismo túnel IPsec autenticado y quedan auditadas. Los datos, en cambio, fluyen en ambos sentidos según lo requiere cada flujo:
+Por diseño Zero Trust, las conexiones entre los dos dominios fijos, la nube y el on-premise, se inician siempre desde el on-premise hacia la nube. Existen dos excepciones declaradas a esta regla. La primera es DMS, que lee el registro de escritura anticipada de PostgreSQL para replicar los cambios hacia Aurora. La segunda es el trabajador Laravel erp-sync, que consulta la capa anticorrupción del ERP. Ambas conexiones viajan por el mismo túnel IPsec autenticado y quedan auditadas. Los datos, en cambio, fluyen en ambos sentidos según lo requiere cada flujo:
 
 - **Datos transaccionales:** la base PostgreSQL local replica continuamente sus cambios hacia Aurora en la nube a través de DMS CDC, con un objetivo de pérdida de datos de 15 minutos o menos.
 - **Eventos de bodega:** las transacciones del WMS se encolan en RabbitMQ local y, al disponer de enlace, se vuelcan en orden cronológico a SQS FIFO en la nube para su reconciliación.
@@ -64,7 +64,7 @@ Las tablas 21a, 21b y 21c justifican la decisión de emplazamiento de cada compo
 
 | ID | Componente | Criterio | Justificación |
 |---|---|---|---|
-| N-01 | ECS Fargate | Costo | Ejecuta la aplicación en contenedores y escala de 2 a 6 tareas en el peak de septiembre, sin mantener servidores permanentes ni equipamiento propio. |
+| N-01 | ECS Fargate | Costo | Ejecuta los perfiles de la aplicación Laravel en contenedores; cada perfil escala por su propia señal (la API de 2 a 4 tareas en el peak de septiembre, con techo de 8), sin mantener servidores permanentes ni equipamiento propio. |
 | N-02 | Aurora PostgreSQL | Criticidad | Es la base transaccional maestra: opera en varias zonas de disponibilidad, se replica a us-east-1 con RTO ≤ 4 h y RPO ≤ 15 min, y amplía su almacenamiento sin intervención. |
 | N-03 | Amazon S3 | Volumen y regulación | Guarda las evidencias de entrega, los DTE, la trazabilidad y la copia inmutable del respaldo, que crecen sin límite; Object Lock asegura la retención legal. |
 | N-04 | SQS FIFO | Costo | Recibe la reconciliación de las bodegas en orden por sitio y sin duplicados, sin un broker propio que operar. |
@@ -98,9 +98,9 @@ Las tablas 21a, 21b y 21c justifican la decisión de emplazamiento de cada compo
 
 | ID | Componente | Nube | On-premise | Criterio | Justificación |
 |---|---|---|---|---|---|
-| H-01 | Django | ECS Fargate: preventa, reparto, portal y canal moderno | VM-01, VM-C01 y E-01: WMS de bodega en modo wms_only | Criticidad | La bodega opera contra su base local; el resto de los procesos escala en la nube. |
-| H-02 | Keycloak | Maestro en Fargate con OIDC, MFA y SSO | Cachés de solo lectura en VM-05 y VM-C03 | Conectividad | La sesión sobrevive a los cortes: 8 h en bodega y 14 h en terreno. |
-| H-03 | Celery | Fargate: reconciliación, sincronización con el ERP y notificaciones | VM-01 y VM-C01: workers de bodega | Criticidad | Las tareas de bodega no dependen de la nube; solo la reconciliación la requiere. |
+| H-01 | Aplicación Laravel | ECS Fargate: perfiles de API, consumo de reconciliación, trabajos y planificador para preventa, reparto, portal y canal moderno | VM-01, VM-C01 y E-01: WMS de bodega en el perfil wms_only; shipper en VM-03, VM-C04 y E-01 | Criticidad | La bodega opera contra su base local; el resto de los procesos escala en la nube, cada perfil por su propia señal. |
+| H-02 | Keycloak | Maestro en Fargate con OIDC, MFA y SSO | Cachés de solo lectura de 24 h y verificador local de relevo en VM-05, VM-C03 y E-01 | Conectividad | La operación sobrevive a un corte de 24 h: la credencial de turno dura hasta 8 h en bodega y 14 h en terreno, y cada relevo sin enlace lo habilita el verificador con el manifiesto firmado y el PIN personal. |
+| H-03 | Colas y trabajos | Fargate: consumidor PHP de la cola SQS FIFO de reconciliación y trabajos de Laravel (notificaciones, erp-sync y EDI) en colas SQS separadas | VM-03, VM-C04 y E-01: RabbitMQ y shipper PHP con php-amqplib | Criticidad | Las tareas de bodega no dependen de la nube; solo la reconciliación la requiere, y el formato externo nunca llega al deserializador de trabajos. |
 | H-04 | OpenTelemetry | CloudWatch | Colectores ADOT con buffer de 24 h | Conectividad | La telemetría se difiere sin pérdida y se consolida en CloudWatch al reconectar. |
 | H-05 | EDR | Consola de gestión y correlación | Agentes en cada VM y estación | Regulación | Cumple RT-11.16: detecta amenazas en las cargas de nube y on-premise con una respuesta centralizada. |
 | H-06 | VPN IPsec Site-to-Site | AWS VPN Gateway con 2 túneles por CD | Firewall de borde como Customer Gateway | Conectividad | Cifra el enlace entre dominios, enruta con BGP y conmuta en forma automática entre enlaces. |
@@ -131,7 +131,7 @@ El modelo híbrido garantiza que ningún proceso operacional se detenga por pér
 | Ámbito | Autonomía | Cobertura funcional |
 |---|---|---|
 | Centro de distribución (CD Talca y Concepción) | ≥ 24 h | Recepción, preparación, despacho, conteo cíclico y trazabilidad contra la BD local; reconciliación determinista al reconectar (RT-03.12). |
-| Terreno (preventa y reparto) | 14 h (turno completo) | Toma de pedido, entrega, POD, devoluciones y cobros contra caché local y buffer idempotente (RNF-06.02, RT-03.10); sesión sostenida por caché de identidad A-05 (TTL 8 h bodega, 14 h reparto/preventa). |
+| Terreno (preventa y reparto) | 14 h (turno completo) | Toma de pedido, entrega, POD, devoluciones y cobros contra caché local y buffer idempotente (RNF-06.02, RT-03.10); sesión sostenida por la credencial de turno (hasta 8 h en bodega y 14 h en reparto y preventa); en bodega, la caché de identidad A-05 (24 h) y el verificador local habilitan los relevos sin enlace. |
 | Cross-docking | 3 h 100 % local | Recepción, desconsolidación, validación de frío y re-despacho (RT-03.10/03.11). |
 | Sincronización al reconectar | Flota ≤ 10 min; CDs ≤ 2 h | Vuelco en orden estricto, deduplicación idempotente y reconciliación determinista (RT-03.12, RT-03.13, RNF-07.01). |
 
@@ -139,10 +139,10 @@ El modelo híbrido garantiza que ningún proceso operacional se detenga por pér
 
 Las tecnologías se eligen bajo los criterios de neutralidad tecnológica, soporte vigente por los 56 meses contractuales y preferencia por servicios administrados y componentes de código abierto con estándares abiertos, de modo que el CLIENTE conserve la reversibilidad de la solución:
 
-- **B1 — Aplicación.** Django monolito modular (Python) + Celery sobre AWS ECS Fargate (2–6 tareas con escala automática). La misma imagen se reutiliza en modo wms_only dentro del ambiente on-premise.
+- **B1 — Aplicación.** Monolito modular Laravel 13 sobre PHP 8.5, con dependencias fijadas por composer.lock, en ECS Fargate con perfiles separados de API (PHP-FPM, 2 a 4 tareas y techo de 8), consumo de reconciliación, trabajos y planificador. La misma imagen se ejecuta en el perfil wms_only dentro del ambiente on-premise. El motor de optimización de rutas de M4 corre en un contenedor propio y el transporte AS2 lo presta AWS Transfer Family, ambos tras un contrato versionado.
 - **B2 — BD transaccional nube (maestro).** Amazon Aurora PostgreSQL en sa-east-1 (Multi-AZ), con réplica pasiva promueble en us-east-1 para recuperación ante desastres (RTO ≤ 4 h / RPO ≤ 15 min).
 - **B3 — BD transaccional on-premise.** PostgreSQL 16 (VM-02 Talca / VM-C02 Concepción): sistema de verdad de la bodega durante cortes de enlace, con flujo continuo hacia la réplica en nube por AWS DMS CDC sobre el WAL lógico (registro de escritura anticipada que permite replicar cambios en tiempo real) (RPO ≤ 15 min).
-- **B4 — Broker de mensajería.** RabbitMQ local (colas offline por sitio) + SQS FIFO en nube (reconciliación): cada sitio absorbe hasta 24 h de operación sin enlace con vuelco en orden estricto e idempotencia (D-AL-03). Las tareas derivadas de cada evento las despacha Celery desde el monolito.
+- **B4 — Broker de mensajería.** RabbitMQ local (colas offline por sitio, mensajes persistentes y confirmación de publicación) + SQS FIFO en nube (reconciliación con sobres JSON versionados): cada sitio absorbe hasta 24 h de operación sin enlace con vuelco en orden por grupo e idempotencia (D-AL-03). Las tareas derivadas de cada evento son trabajos de Laravel en colas SQS separadas de la de reconciliación.
 - **B5 — Identidad (IdP maestro).** Keycloak en ECS/Fargate (OIDC/OAuth 2.1, MFA, SSO), autoridad única en sa-east-1 con cachés locales de solo lectura (ADR-06); el modelo completo se describe en la sección de seguridad.
 - **B6 — Telemetría IoT.** AWS IoT Core + Greengrass v2 + sensores Ebyte ME31 (B-01/B-02): registro continuo de cadena de frío con decisión de bloqueo por excursión térmica 100 % en el borde.
 - **B7 — Observabilidad.** Plataforma única: instrumentación OpenTelemetry con colectores ADOT on-premise (VM-06, VM-C04, cross-dock; buffer en disco 24 h) que emiten a CloudWatch (logs, métricas y trazas) en sa-east-1 (ADR-14); sin herramientas duplicadas por ambiente ni infraestructura de monitoreo que operar.
@@ -158,7 +158,7 @@ Las tecnologías se eligen bajo los criterios de neutralidad tecnológica, sopor
 
 ### Integración con el ERP y documentos tributarios
 
-El ERP de 2017 no se reemplaza ni se modifica (Cap. 10 del caso): permanece como única fuente de verdad tributaria. La solución entrega los datos de operación a través de la capa anticorrupción (ACL, VM-04) y el ERP emite los documentos tributarios (guía de despacho electrónica, factura, boleta y nota de crédito con folios SII), con acuse de recibo con efectos legales —una sola verdad, un solo emisor. El acceso desde la nube a este ERP ocurre únicamente vía la ACL (celery-erp-sync → ACL, nunca escritura directa).
+El ERP de 2017 no se reemplaza ni se modifica (Cap. 10 del caso): permanece como única fuente de verdad tributaria. La solución entrega los datos de operación a través de la capa anticorrupción (ACL, VM-04) y el ERP emite los documentos tributarios (guía de despacho electrónica, factura, boleta y nota de crédito con folios SII), con acuse de recibo con efectos legales —una sola verdad, un solo emisor. El acceso desde la nube a este ERP ocurre únicamente vía la ACL (erp-sync → ACL, con clave idempotente por operación y nunca escritura directa).
 
 ## Implementos a proveer: hardware y software
 
@@ -333,7 +333,7 @@ La vista de integración se organiza en cuatro dominios físicos:
 
 - **Terreno (offline-first):** C-01 App Preventa (62 preventistas), C-02 App Reparto (≈200 conductores) y C-03 HHT bodega (120 concurrentes).
 - **On-premise (5 sitios con cómputo):** A-01 Motor WMS (M1, M2 y M5 en modo wms_only), A-03 RabbitMQ (buffer 24 h), A-04 capa anticorrupción (frontera única del ERP), B-02 Greengrass (buffer 14 h) y E-01 WMS del cross-dock (ventana de 3 h).
-- **Nube AWS sa-east-1:** Amazon API Gateway (Capa 3), Capa 4 con M1–M12 en Django + workers Celery, N-09 SQS FIFO, M11 Hub EDI GS1 (EANCOM, GS1 XML y EPCIS) y N-08 IoT Core.
+- **Nube AWS sa-east-1:** Amazon API Gateway (Capa 3), Capa 4 con M1–M12 en Laravel con perfiles de API, consumo y trabajos, N-09 SQS FIFO de reconciliación y colas de trabajos, M11 Hub EDI GS1 (EANCOM, GS1 XML y EPCIS) con transporte AS2 en AWS Transfer Family y N-08 IoT Core.
 - **Terceros:** ERP 2017 (sin documentación de interfaces), SII (DTE y guía electrónica), cadenas de supermercados (hito enero 2029), Transbank Webpay/POS, GIS/mapas y notificaciones.
 
 
@@ -348,9 +348,9 @@ Los planos de mensajería y su emplazamiento físico se describen en la Tabla 35
 | Plano | Tecnología | Emplazamiento | Rol |
 |---|---|---|---|
 | Buffer local de sitio | RabbitMQ (A-03) | VM-03 Talca (≈ 3 M mensajes) · VM-C04 Concepción · broker en E-01 | Sostiene la autonomía de 24 h del centro de distribución. Es lo que permite que la bodega reciba, prepare y despache con el enlace caído. |
-| Trabajo y reconciliación | SQS FIFO (N-09) | Nube | Orden garantizado por partición (MessageGroupId = sitio) y deduplicación; alimenta a celery-reconciliation y celery-erp-sync. |
-| Tareas derivadas de eventos | Celery workers (Fargate) | Nube | Cada evento de negocio despacha tareas asíncronas: notificaciones, actualización analítica, emisión de DTE y transmisión EDI. |
-| Transporte hacia la nube | Shipper en VM-03 (modo wms_only) | On-premise → nube | HTTPS 443 sobre VPC Endpoint SQS/PrivateLink (D-AL-03). AMQPS 5671 queda reservado a broker con broker on-premise. |
+| Reconciliación | SQS FIFO (N-09) | Nube | Sobres JSON versionados; orden garantizado por grupo (sitio y agregado de negocio) y deduplicación por el identificador del evento; los lee el consumidor PHP de reconciliación, que confirma solo tras persistir. |
+| Tareas derivadas de eventos | Trabajos de Laravel en colas SQS separadas (Fargate) | Nube | Cada evento de negocio despacha trabajos asíncronos: notificaciones, actualización analítica, solicitud de DTE al ERP por erp-sync y transmisión EDI. |
+| Transporte hacia la nube | Shipper PHP en VM-03, VM-C04 y E-01 | On-premise → nube | Lee RabbitMQ con php-amqplib y publica en SQS por HTTPS 443 sobre VPC Endpoint/PrivateLink (D-AL-03); retira el mensaje local solo cuando SQS confirma. AMQPS 5671 queda reservado a broker con broker on-premise. |
 
 ### Costuras híbridas: amarre con la arquitectura física
 
@@ -363,13 +363,13 @@ La vista de integración y la vista física describen los mismos puntos de conta
 | C1 — VPN corporativa | portadora de INT-06 e INT-12 | IPsec/IKEv2, BGP, MTU 1436 | D-01 ↔ VGW |
 | C2 — Réplica WMS → Aurora | INT-12 | WAL lógico / DMS CDC | VM-02 ↔ Aurora |
 | C4 — Broker → SQS FIFO | INT-03 | AsyncAPI 2.6 | VM-03 ↔ N-09 |
-| C5 — ERP por la ACL | INT-06 | OpenAPI 3.1 de Puelche | VM-04 ↔ celery-erp-sync |
+| C5 — ERP por la ACL | INT-06 | OpenAPI 3.1 de Puelche | VM-04 ↔ erp-sync (trabajador Laravel), con clave idempotente por operación |
 | C6 — Identidad | INT-13 | Realm cifrado por S3 | Keycloak maestro ↔ A-05 / VM-C03 |
 | C7 — IoT Greengrass | INT-05 | MQTTS 8883, X.509 | B-02 ↔ N-08 |
 | C8 — Observabilidad | INT-14 | OTLP | F-01 ↔ CloudWatch |
 | C10 — Apps de terreno | INT-01 / INT-02 | OpenAPI 3.1 | C-01 / C-02 ↔ Capa 3 |
 | C13 — Cross-dock | INT-04 | AsyncAPI 2.6 / AMQPS | E-01 ↔ VM-03 y ↔ N-09 |
-| C14 — Notificaciones y EDI | INT-08 / INT-11 | GS1 / API de notificaciones | Celery workers ↔ terceros |
+| C14 — Notificaciones y EDI | INT-08 / INT-11 | GS1 / API de notificaciones; AS2 por AWS Transfer Family | Trabajos de Laravel ↔ terceros |
 | C15 — Portales de la DMZ | INT-01 (lectura de stock, crédito y cobranza) | OpenAPI 3.1 | N-01/N-02/N-03 ↔ Capa 3 |
 | C16 — Pago Transbank | INT-09 | API de la pasarela | Módulo integraciones ↔ Webpay |
 
@@ -392,7 +392,7 @@ Esta solución de seguridad se estructura sobre: Zero Trust, capa expuesta, iden
 1. **Zero Trust conforme a NIST SP 800-207**. Verificación explícita de cada solicitud, privilegio mínimo y presunción de compromiso. La red interna no confiere confianza.
 2. **Seguridad desde el diseño y por defecto**. Modelado de amenazas STRIDE documentado por cada componente y por cada integración externa, antes de implementar.
 3. **La identidad es el perímetro**. Autoridad única de identidad mediante Keycloak y toda decisión de acceso se toma sobre el token, no sobre la dirección de red de origen.
-4. **Sin conexiones entrantes al on-premise**. Todo tráfico desde on-premise hacia la nube es saliente. Las dos únicas excepciones son las conexiones entrantes de DMS hacia PostgreSQL y de celery-erp-sync hacia ACL, declaradas, acotadas al túnel IPsec autenticado y auditadas.
+4. **Sin conexiones entrantes al on-premise**. Todo tráfico desde on-premise hacia la nube es saliente. Las dos únicas excepciones son las conexiones entrantes de DMS hacia PostgreSQL y de erp-sync hacia ACL, declaradas, acotadas al túnel IPsec autenticado y auditadas.
 5. **Cifrado en tránsito y en reposo sin excepciones**. TLS 1.3 mínimo para el transito, cifrado en reposo del 100 % de los datos con claves gestionadas en KMS/HSM y separación de funciones en su custodia.
 6. **La seguridad no puede detener la ventana crítica**. Ningún control de seguridad puede introducir una dependencia en línea dentro de 05:30 hasta las 07:00 ni en las 14 h de terreno sin señal. La autenticación de terreno se resuelve sin red por diseño.
 7. **Operable por cuatro personas**. El CLIENTE tiene 4 personas de TI, por lo que se privilegian servicios administrados y un SOC contratado 24/7 por sobre plataformas que exijan operación local especializada.
@@ -403,7 +403,7 @@ Esta solución de seguridad se estructura sobre: Zero Trust, capa expuesta, iden
 
 #### Zonas y flujos
 
-En el texto las zonas y su flujo son la zona pública como los clientes del canal moderno, transportistas para los 160 conductores y 180 proveedores que ingresan únicamente por la DMZ en nube en CloudFront más AWS WAF v2 más Shield Advanced hacia el Amazon API Gateway con OIDC, cuotas, esquema y validación de carga útil, para la zona de aplicación se usa ECS Fargate más workers y Keycloak IdP maestro como autoridad única que sirve a las zonas de datos como Aurora PostgreSQL, DynamoDB y S3 con Object Lock, en subredes privadas sin salida, para la zona on-premise se usa VLAN 10 MGT, 20 SRV, 30 OPS, 40 WKS, 50 IOT, firewall D-01 UTM en HA como Customer Gateway y caché Keycloak de solo lectura TTL 8 h que se conecta con la nube por VPN/IPsec saliente, por último para la zona de terreno se usa apps Kotlin offline-first más MDM; HHT compartidos en cámara a −22 °C que no tiene perímetro.
+En el texto las zonas y su flujo son la zona pública como los clientes del canal moderno, transportistas para los 160 conductores y 180 proveedores que ingresan únicamente por la DMZ en nube en CloudFront más AWS WAF v2 más Shield Advanced hacia el Amazon API Gateway con OIDC, cuotas, esquema y validación de carga útil, para la zona de aplicación se usa ECS Fargate más workers y Keycloak IdP maestro como autoridad única que sirve a las zonas de datos como Aurora PostgreSQL, DynamoDB y S3 con Object Lock, en subredes privadas sin salida, para la zona on-premise se usa VLAN 10 MGT, 20 SRV, 30 OPS, 40 WKS, 50 IOT, firewall D-01 UTM en HA como Customer Gateway y caché Keycloak de solo lectura de 24 h con verificador local de relevo, que se conecta con la nube por VPN/IPsec saliente, por último para la zona de terreno se usa apps Kotlin offline-first más MDM; HHT compartidos en cámara a −22 °C que no tiene perímetro.
 
 Reglas de zona declaradas:
 
@@ -453,7 +453,7 @@ Regla declarada: ningún nodo on-premise abre puertos entrantes. Toda gestión r
 
 #### Modelo de identidad
 
-Como autoridad única en nube y cachés locales de solo lectura el Keycloak IdP maestro vive en ECS Fargate ubicado en sa-east-1 respaldado en Aurora y concentra todas las escrituras ya sean altas, bajas, cambios de rol, políticas y revocaciones. Para el VM-05 de Talca y el VM-C03 de Concepción operan cachés locales de solo lectura con TTL de 8 h que validan la firma OIDC de forma local. No existe un maestro on-premise ni promoción local a escritura.
+Como autoridad única en nube y cachés locales de solo lectura el Keycloak IdP maestro vive en ECS Fargate ubicado en sa-east-1 respaldado en Aurora y concentra todas las escrituras ya sean altas, bajas, cambios de rol, políticas y revocaciones. Para el VM-05 de Talca y el VM-C03 de Concepción y en cada E-01 operan cachés locales de solo lectura con TTL de 24 h, que conservan los datos de identidad y de turno pero no emiten sesiones; el verificador local del mismo nodo habilita cada relevo sin enlace con el manifiesto firmado y el PIN personal. El backend Laravel valida los JWT OIDC (firma, emisor, audiencia, vencimiento y alcance) y no incorpora un segundo emisor de identidades. No existe un maestro on-premise ni promoción local a escritura.
 
 - **Keycloak IdP maestro en la nube (autoridad única)** Integración mediante SCIM con el directorio corporativo del CLIENTE por VPN saliente.
 - **Caché local para Talca y Concepción (solo lectura por 8 horas)** Validación local de firma y emisión de sesiones sin conexión.
@@ -588,29 +588,30 @@ Arquitectura de despliegue de la solución: ambientes, redes y segmentación, al
 
 ### Ambientes de despliegue
 
-Los cinco ambientes obligatorios están habilitados como condición del hito H3, aislados entre sí mediante cuentas AWS separadas bajo una organización centralizada de AWS Control Tower (aislamiento estricto + SCP), que se listan en la Tabla 62:
+Un cambio recorre tres ambientes antes de llegar a Producción: Desarrollo, QA y Preproducción. La marcha blanca de cada etapa ocurre ya en Producción, porque es operación supervisada con datos y usuarios reales en paralelo con la operación vigente. Un quinto ambiente, de Recuperación ante Desastres, sostiene la continuidad (RT-04.01): reside en us-east-1 para el dominio de nube, mientras que la recuperación del dominio on-premise la asume el CD Concepción, que forma parte de Producción. Los cinco ambientes están habilitados como condición del hito H3, aislados entre sí mediante cuentas AWS separadas bajo una organización centralizada de AWS Control Tower (aislamiento estricto + SCP), que se listan en la Tabla 62:
 
 **Tabla 62** — Ambientes de despliegue
 
 | Ambiente | Cuenta AWS | VPC | Región | Uso |
 |---|---|---|---|---|
 | Desarrollo | Cuenta 1 | 10.104.0.0/16 | sa-east-1 | Integración continua, pruebas unitarias automáticas |
-| Calidad (QA) | Cuenta 2 | 10.103.0.0/16 | sa-east-1 | Pruebas funcionales, estáticas, DAST/SAST |
-| Pre-Producción | Cuenta 3 | 10.102.0.0/16 | sa-east-1 | Marcha blanca, pruebas de aceptación y de carga |
-| Producción | Cuenta 4 | 10.101.0.0/16 | sa-east-1 | Operación real (Multi-AZ) |
-| Recuperación ante Desastres | Cuenta 5 | 10.201.0.0/16 | us-east-1 | 5.º ambiente obligatorio (RT-04.01) |
+| QA | Cuenta 2 | 10.103.0.0/16 | sa-east-1 | Pruebas funcionales, de integración y de regresión; análisis dinámico |
+| Preproducción | Cuenta 3 | 10.102.0.0/16 | sa-east-1 | Aceptación, carga, resiliencia y ensayo del paso a producción |
+| Producción | Cuenta 4 | 10.101.0.0/16 | sa-east-1 | Operación real (Multi-AZ), con los sitios on-premise; marcha blanca |
+| Recuperación ante Desastres | Cuenta 5 | 10.201.0.0/16 | us-east-1 | Réplica en caliente del dominio de nube (RT-04.01) |
 
 Reglas que gobiernan el modelo de ambientes:
 
-- **Paridad Pre-Producción = Producción.** topología, versiones de componentes y configuración equivalentes; las diferencias por costo se declaran y justifican una a una.
-- **On-premise como producción.** el despliegue on-premise es producción con la imagen única wms_only; esa misma imagen recorre Dev→QA→PreProd en la nube antes del cutover en Talca (ventana de 24 h) y en Concepción. No se mantienen ambientes on-premise separados — la paridad la garantizan la imagen única y el IaC versionado.
+- **Paridad Preproducción = Producción (RT-04.02).** versiones, configuración, dimensionamiento y topología de nube equivalentes. Diferencias declaradas: (1) se reduce o apaga fuera del horario de uso; (2) trabaja con datos sintéticos, con anonimización verificada con Amazon Macie (RT-11.25); (3) el sitio on-premise se emula en su propia VPC, con la misma imagen wms_only, el mismo broker y el mismo verificador local, sin túnel hacia las bodegas. Como la emulación no reproduce el hardware, la primera instalación de cada versión en los centros de distribución avanza sitio por sitio.
+- **Desarrollo y QA.** aislados y reconstruibles desde código; Desarrollo con datos sintéticos o anonimizados y QA con datos de prueba controlados y versionados, restituidos a un estado conocido antes de cada ciclo de pruebas.
+- **On-premise como producción.** el despliegue on-premise es producción con la imagen única wms_only; esa misma imagen recorre Desarrollo→QA→Preproducción en la nube antes del cutover en Talca (ventana de 24 h) y en Concepción. No se mantienen ambientes on-premise separados — la paridad la garantizan la imagen única y el IaC versionado.
 - **Entrega continua.** el pipeline CI ejecuta compilación, pruebas unitarias, análisis estático, análisis de composición, escaneo de secretos y escaneo de imágenes de contenedor, con bloqueo automático del despliegue ante hallazgos críticos o altos.
-- **Despliegue sin interrupción.** estrategia azul-verde con canario (despliegue gradual a un porcentaje pequeño de tráfico) en etapas, demostrada en PreProducción antes de cada paso a producción; reversión automatizada.
-- **Configuración externalizada.** un mismo artefacto se promueve QA→PreProd→Prod sin recompilación; los secretos viven en gestor de secretos con rotación automática, sin credenciales embebidas.
-- **Datos no productivos.** Dev, QA y PreProd usan datos sintéticos generados desde la volumetría del Cap. 14 del caso; las plantillas próximas a producción pasan por anonimización/seudonimización verificable (Amazon Macie).
+- **Despliegue sin interrupción.** estrategia azul-verde con canario (despliegue gradual a un porcentaje pequeño de tráfico) en etapas, demostrada en Preproducción antes de cada paso a producción; reversión automatizada.
+- **Configuración externalizada.** un mismo artefacto se promueve QA→Preproducción→Producción sin recompilación; los secretos viven en gestor de secretos con rotación automática, sin credenciales embebidas.
+- **Datos no productivos.** Desarrollo, QA y Preproducción usan datos sintéticos generados desde la volumetría del Cap. 14 del caso; las plantillas próximas a producción pasan por anonimización/seudonimización verificable (Amazon Macie).
 - **Sin acceso interactivo a producción.** los despliegues son exclusivamente por pipeline; el acceso administrativo excepcional es just-in-time vía AWS Systems Manager Session Manager con MFA, aprobación y sesión grabada.
-- **Reducción de ambientes no productivos fuera de horario.** Dev/QA/PreProd se apagan o reducen fuera del horario de uso, con el ahorro reflejado en la estructura de costos.
-- **Portal web (N-01/N-02/N-03).** la SPA Angular se publica por ambiente en S3+CloudFront (bucket y distribución por cuenta AWS) y su backend es la misma imagen Django del ambiente; entra a producción con el hito de enero 2029.
+- **Reducción de ambientes no productivos fuera de horario.** Desarrollo, QA y Preproducción se apagan o reducen fuera del horario de uso, con el ahorro reflejado en la estructura de costos (RT-15.02, RT-04.13).
+- **Portal web (N-01/N-02/N-03).** la SPA Angular se publica por ambiente en S3+CloudFront (bucket y distribución por cuenta AWS) y su backend es la misma imagen Laravel del ambiente; entra a producción con el hito de enero 2029.
 
 
 ### Redes (topología, segmentación y conectividad)
@@ -659,7 +660,7 @@ Todo el tráfico on-premise → nube es outbound (HTTPS/443, MQTTS/8883) sin con
 | Sync cross-dock → Talca (broker a broker) | AMQPS 5671 | SRV-TALCA (on-prem) |
 | Caché Keycloak A-05/VM-C03 → S3 (import Realm) | HTTPS 443 (VPC Endpoint S3) | AWS (objeto cifrado) |
 | Excepción: AWS DMS → PostgreSQL WMS (CDC) | TCP 5432 (over VPN) | VM-02 SRV-TALCA |
-| Excepción: celery-erp-sync → ACL ERP | HTTPS 443 (over VPN) | VM-04 SRV-TALCA |
+| Excepción: erp-sync → ACL ERP | HTTPS 443 (over VPN) | VM-04 SRV-TALCA |
 
 #### Capa pública (DMZ) y DNS
 
@@ -740,7 +741,7 @@ Esquema único para toda la arquitectura híbrida (nube + on-premise):
 - **2 medios.** PostgreSQL/Aurora y S3 (almacenamiento de objetos).
 - **1 copia fuera del sitio.** S3 Cross-Region Replication → bucket en us-east-1.
 - **1 copia inmutable.** S3 Object Lock (WORM, Compliance Mode) + AWS Backup Vault Lock (ni el root puede eliminarla); s3-documents-legal y s3-audit-logs en Compliance, no Governance.
-- **0 errores.** Restore testing automatizado mensual (Lambda) + verificación de restauración local + prueba DR semestral.
+- **0 errores.** Restore testing mensual automatizado con AWS Backup + verificación de restauración local + prueba DR semestral.
 
 
 D-05 (NAS local con WORM) es la copia local de recuperación rápida y NO cuenta como la pierna inmutable; permite restaurar el WMS en ≤ 4 h sin depender del enlace WAN. RPO ≤ 15 min por AWS DMS CDC del WAL lógico (wal_level=logical) hacia la nube antes de la copia local.
@@ -983,9 +984,8 @@ El dimensionamiento en nube por componente se resume en la Tabla 82:
 
 | Componente | Base (normal) | Peak septiembre | Criterio de escalado |
 |---|---|---|---|
-| ECS Fargate Django (tareas 2 vCPU / 4 GB) | 2 | 6 (3×) | Target Tracking CPU > 70 % |
-| ECS Fargate Celery workers (2 vCPU / 4 GB) | 2 | 4 (2×) | Cola (queue depth) / CPU |
-| AWS Lambda (fn-iot-validator, fn-document-signer) | 100 concurrencias | 500 (reserva) | Eventos IoT Core / S3 |
+| ECS Fargate, perfil de API PHP-FPM (tareas 1 vCPU / 2 GB) | 2 | 4; techo 8 | Procesos PHP-FPM ocupados > 70 % |
+| ECS Fargate, consumidor de reconciliación y trabajos de Laravel (1 vCPU / 2 GB) | 2 + 2 | 4 + 4; erp-sync fijo en 2 procesos | Edad del mensaje más antiguo / profundidad de cada cola |
 | Aurora PostgreSQL (writer / reader) | db.r6g.large × 2 AZ | db.r6g.xlarge + 2 readers | CPU > 60 % / Conexiones > 80 % |
 | ElastiCache Redis | cache.r6g.large | cache.r6g.xlarge | Memoria > 75 % (stock/crédito < 2 s) |
 | DynamoDB (telemetría IoT cruda) | On-demand | On-demand | Sin gestión de capacidad |
@@ -994,8 +994,8 @@ El dimensionamiento en nube por componente se resume en la Tabla 82:
 
 Escalado automático (RT-09.04):
 
-- **Predictivo + reactivo (ADR-12).** pre-warm en agosto de las tareas ECS, concurrencia reservada Lambda; reactivo con Target Tracking en < 2 min · aprovisionamiento en < 3 min · cooldown 60 s.
-- **Serverless-first.** DynamoDB On-Demand y Lambda escalan sin configuración adicional; la capacidad se paga por uso (sin capacidad ociosa, RT-15.01 — FinOps Cloud del Subdocumento 4.1).
+- **Predictivo + reactivo (ADR-12).** pre-warm en agosto de las tareas ECS; reactivo con Target Tracking en < 2 min · aprovisionamiento en < 3 min · cooldown 60 s.
+- **Serverless-first.** DynamoDB On-Demand e IoT Core escalan sin configuración adicional; la capacidad se paga por uso (sin capacidad ociosa, RT-15.01 — FinOps Cloud del Subdocumento 4.1).
 
 
 ### Plan de capacidad y crecimiento 3× sin rediseño
@@ -1012,7 +1012,7 @@ El crecimiento se absorbe con el mismo diseño (sin cambio de topología, VLAN, 
 | Enlace Talca / Concepción | 20→50 / 10→20 Mbps | 50 / 100 Mbps | Contrato escalonado de enlaces |
 | TPS VM-02 | \~105 | \~315 | Escala vertical 8→12 vCPU (32→64 GB) + particionado mensual |
 
-En nube, el 3× se absorbe por auto-scaling (Fargate 2→6, Celery 2→4, Lambda hasta 500, Aurora xlarge + readers), sin rediseño arquitectónico — misma decisión ADR-12 que fija el límite de elasticidad del peak.
+En nube, el 3× se absorbe con el escalado independiente de los perfiles (API hasta 8 tareas, consumidor y trabajos hasta 4, Aurora xlarge + readers), sin rediseño arquitectónico — misma decisión ADR-12. El número de tareas es una estimación con supuestos declarados que la prueba de carga debe confirmar.
 
 ### Umbrales de desempeño (percentil p95)
 
@@ -1030,7 +1030,7 @@ Los umbrales de desempeño por operación se fijan en la Tabla 84:
 | Navegación entre vistas ya cargadas | ≤ 1 s |
 | Búsqueda con criterios compuestos | ≤ 3 s |
 
-Los umbrales se verifican con monitoreo CloudWatch y se prueban en Pre-Producción (subsección de pruebas de carga y estrés).
+Los umbrales se verifican con monitoreo CloudWatch y se prueban en Preproducción (subsección de pruebas de carga y estrés).
 
 ### Primer cuello de botella
 
@@ -1046,7 +1046,7 @@ Enlace WAN: QoS prioriza broker/WAL; colas diferidas fuera de la ventana; conmut
 
 Offline: buffers RabbitMQ de 24 h y buffers OTel de 24 h; reconciliación cronológica e idempotente al reconectar.
 
-Nube: throttling en API Gateway, timeouts y reintentos con backoff en Celery, DLQ para tareas fallidas.
+Nube: throttling en API Gateway, timeouts y reintentos con backoff en los trabajadores de Laravel y en el consumidor de reconciliación, DLQ para mensajes y trabajos fallidos.
 
 ### Pruebas de carga y estrés
 
@@ -1056,7 +1056,7 @@ Las pruebas de carga y estrés se definen en la Tabla 86:
 
 | Prueba | Carga | Escenario |
 |---|---|---|
-| Carga (RNF-19.04) | 1,5 × la carga de diseño = 5.850 entregas/día ≈ 160 TPS sostenidos (carga de diseño = peak 2.600 × 1,5 = 3.900; la prueba la vuelve a multiplicar por 1,5) | Pre-Producción, perfiles horarios reales (pick nocturno, despacho, preventa) |
+| Carga (RNF-19.04) | 1,5 × la carga de diseño = 5.850 entregas/día ≈ 160 TPS sostenidos (carga de diseño = peak 2.600 × 1,5 = 3.900; la prueba la vuelve a multiplicar por 1,5) | Preproducción, perfiles horarios reales (pick nocturno, despacho, preventa) |
 | Estrés | Incremento hasta el punto de quiebre ≥ 3× | Curva de tiempo de respuesta vs carga |
 | Informe de carga (RT-09.07) | Curvas, saturación, recursos (CPU/RAM/IOPS/enlace/colas) | Insumo al hito de producción (mes 16) y a la actualización de capacidad (RT-09.09, subsección de actualización del plan de capacidad) |
 
@@ -1068,19 +1068,23 @@ Gestión de capacidad durante la Operación con proyección trimestral de crecim
 
 Ventana de ampliación: adición de vCPU/OSD dentro del físico, contrato escalonado de enlaces, 4.º nodo al acercarse al margen. La revisión se apoya en el informe de carga como insumo del hito de producción (mes 16).
 
-Nube: revisión de costos de nube — evaluar umbrales Target Tracking y concurrencia reservada con al menos 30 días antes del peak de septiembre.
+Nube: revisión de costos de nube — evaluar umbrales Target Tracking con al menos 30 días antes del peak de septiembre.
 
 ## Registro de decisiones de arquitectura
 
-Registro consolidado de las quince decisiones de arquitectura que condicionan esta propuesta. Es entregable contractual conforme a RT-02.04 y se mantiene actualizado durante toda la ejecución. Para cada decisión se indica la alternativa escogida, las alternativas descartadas con el motivo de rechazo, y el criterio de selección. Todas las decisiones fueron aprobadas entre el 05 y el 06 de septiembre de 2026.
+Registro consolidado de las quince decisiones de arquitectura que condicionan esta propuesta. Es entregable contractual conforme a RT-02.04 y se mantiene actualizado durante toda la ejecución. Para cada decisión se indica la alternativa escogida, las alternativas descartadas con el motivo de rechazo, y el criterio de selección; las decisiones reformuladas para el backend Laravel agregan sus consecuencias y la evidencia que deberá confirmarlas. ADR-01, ADR-05, ADR-11, ADR-12 y ADR-14 quedan en estado propuesta hasta su aprobación por el equipo; en ADR-04, ADR-06, ADR-08 y ADR-13 se ajustó la implementación sin cambiar la decisión. El texto vigente del registro es el del Subdocumento 4 en LaTeX (14_m_decisiones_adr.tex).
 
 ### ADR-01 · Estilo arquitectónico
 
-**Decisión adoptada.** Monolito modular Django 5.x LTS / Python 3.12, desplegado en ECS Fargate con apps por dominio y límites de contexto DDD. Módulos críticos (WMS offline, shipper, workers, portal) en procesos separados.
+**Decisión adoptada.** Monolito modular en Laravel 13 sobre PHP 8.5, con los módulos M1–M12 separados por espacios de nombres PSR-4 y dependencias fijadas por composer.lock. Un solo artefacto se ejecuta en perfiles separados: API y wms_only con PHP-FPM, y shipper, consumidor de reconciliación, trabajos y planificador como procesos PHP de línea de comandos. El motor de optimización de rutas de M4 y el transporte AS2 de M11 quedan fuera del artefacto, tras un contrato versionado. Estado: propuesta.
 
-**Alternativas descartadas.** *Microservicios EKS*: volumen (\~105 TPS) dos órdenes bajo el umbral que los justifica; 4 personas no operan 9–13 componentes de plano de control; TCO estimado en +USD 40–70 K / 56 m (estimación interna basada en la operación de EKS con el equipo del CLIENTE). *Monolito clásico WMS 2013*: sin fronteras de módulo, proveedor desaparecido; viola RT-02.02.
+**Alternativas descartadas.** *Monolito modular en Django y Python 3.12*: técnicamente viable con los mismos contratos, pero la arquitectura lógica adopta Laravel y mantener ambos runtimes obligaría a operar dos cadenas de construcción, de dependencias y de parches. *Microservicios en EKS*: el volumen de unos 105 TPS está dos órdenes bajo el umbral que los justifica y cuatro personas no operan un plano de control. *Monolito clásico del WMS de 2013*: sin fronteras de módulo y con el proveedor desaparecido; incumple RT-02.02. *Traducir a PHP el ruteo y el AS2 sin prueba*: la equivalencia no se deduce del cambio de lenguaje, por eso ambos se aíslan.
 
-**Criterio de selección.** Pertinencia al volumen real (BTT §2.3); operabilidad por 4 personas; TCO 56 meses; despliegue independiente sin particionar el dominio. Normativa: RT-02.01/02.02/02.03, RT-09.05, BA Art. 16, RNF-19.01–04. Relacionada: D5, D8, D14 (Arq. Lógica).
+**Criterio de selección.** Coherencia con la arquitectura lógica (4.1); pertinencia al volumen real (BTT §2.3); operabilidad por 4 personas; despliegue y escalado independiente por perfil sin particionar el dominio. Normativa: RT-02.01/02.02/02.03, RT-09.05, BA Art. 16, RNF-19.01–04.
+
+**Consecuencias.** La imagen incluye PHP-FPM, PHP CLI y las extensiones declaradas; el pipeline agrega composer audit, PHPUnit, PHPStan/Larastan y Pint; el dimensionamiento de los perfiles se recalcula para PHP. El motor de ruteo agrega una imagen propia y una tarea de Fargate bajo demanda.
+
+**Evidencia exigida.** Pruebas de paridad de contratos, datos y colas; prueba de carga por perfil; y generación de rutas de toda la operación en menos de 20 minutos (Caso, Cap. 18), condición de aceptación del motor que se seleccione.
 
 ### ADR-02 · Conectividad WAN
 
@@ -1100,7 +1104,7 @@ Registro consolidado de las quince decisiones de arquitectura que condicionan es
 
 ### ADR-04 · Persistencia políglota
 
-**Decisión adoptada.** PostgreSQL+PostGIS (transaccional WMS, CP), Aurora (OLTP cloud + DRP), DynamoDB (IoT raw, AP, TTL 30 d), S3+Redshift Serverless (OLAP + series de temperatura), S3 Object Lock/Glacier (retención legal 5 años).
+**Decisión adoptada.** PostgreSQL+PostGIS (transaccional WMS, CP), Aurora (OLTP cloud + DRP), DynamoDB (IoT raw, AP, TTL 30 d), S3+Redshift Serverless (OLAP + series de temperatura), S3 Object Lock/Glacier (retención legal 5 años). La aplicación accede a PostgreSQL con PDO y el Query Builder de Laravel; las consultas geográficas de M4 usan SQL PostGIS parametrizado sobre índices GiST, y el esquema evoluciona con migraciones Laravel aditivas. La réplica DMS del WMS alimenta solo un esquema de réplica de lectura; el estado central se actualiza por los eventos de reconciliación, con una clave de origen única por evento.
 
 **Alternativas descartadas.** *Motor único relacional*: no escala ingesta IoT sin degradar picking (RNF-11.02). *InfluxDB*: segundo motor exótico a operar; serie de tiempo cabe en capa OLAP. *DynamoDB para todo*: no ofrece ACID cross-tabla para reconciliación determinista.
 
@@ -1108,15 +1112,19 @@ Registro consolidado de las quince decisiones de arquitectura que condicionan es
 
 ### ADR-05 · Mensajería asíncrona
 
-**Decisión adoptada.** RabbitMQ local por sitio (buffer 24 h) + shipper idempotente → SQS FIFO (VPC Endpoint outbound) + Celery workers (tareas derivadas de eventos) + IoT Core MQTT (ingesta edge).
+**Decisión adoptada.** RabbitMQ local por sitio, con colas durables, mensajes persistentes y confirmación de publicación, como buffer de 24 h. Un shipper PHP con php-amqplib publica cada evento como sobre JSON canónico y versionado en una cola SQS FIFO de reconciliación (VPC Endpoint, saliente) y solo retira el mensaje local cuando SQS confirma. Un consumidor PHP dedicado lee esa cola con el SDK de AWS, valida el esquema, aplica el sobre y confirma solo tras persistir. Los trabajos internos de Laravel usan colas SQS distintas. IoT Core MQTT mantiene la ingesta del borde. Estado: propuesta.
 
-**Alternativas descartadas.** *REST síncrono*: no sobrevive corte a mitad de ventana; rompe reconciliación. *Kafka/MSK*: operar clústeres en 5 sitios es desproporcionado para el equipo disponible y 105 TPS.
+**Alternativas descartadas.** *REST síncrono*: no sobrevive corte a mitad de ventana; rompe reconciliación. *Kafka/MSK*: operar clústeres en 5 sitios es desproporcionado para el equipo disponible y 105 TPS. *Una sola cola SQS para eventos y trabajos*: acopla el formato externo al serializador del framework. *Redis y Horizon en los sitios*: agregan un tercer motor local sin mejorar la durabilidad de PostgreSQL y RabbitMQ. *Workers Celery*: correspondían al backend Django y se retiran con él.
 
-**Criterio de selección.** Resiliencia offline (buffer local + reproducción idempotente); reconciliación determinista RT-03.12; Zero Trust (todo outbound); TCO proporcional al volumen. Normativa: RT-02.06/02.07, RT-03.10/03.12, RNF-07.01/13.01, BA Art. 21. Relacionada: D4.
+**Criterio de selección.** Resiliencia offline (buffer local + reproducción idempotente); reconciliación determinista RT-03.12; independencia del formato respecto del lenguaje; Zero Trust (todo outbound); TCO proporcional al volumen. Normativa: RT-02.06/02.07, RT-03.10/03.12, RNF-07.01/13.01, BA Art. 21. Relacionada: D4.
+
+**Consecuencias.** Grupos de orden por sitio y agregado de negocio, deduplicación por identificador del evento, visibilidad de 60 s, cinco intentos antes de la cola de fallidos y retención de 4 días; clave de origen por evento aplicado en la base central; el consumidor acepta la versión vigente del sobre y la anterior.
+
+**Evidencia exigida.** Prueba de corte de 24 h por sitio con drenaje completo sin pérdida ni duplicados dentro de las 2 h comprometidas; prueba de mensajes duplicados, fuera de orden y de versión desconocida.
 
 ### ADR-06 · Identidad híbrida (Modelo B)
 
-**Decisión adoptada.** Keycloak IdP maestro en AWS (ECS Fargate, 2 tareas Multi-AZ, backend Aurora) + caché local solo lectura (TTL 8 h) en Talca y Concepción. Tokens offline por perfil (8 h bodega, 14 h reparto). OTP para conductores externos.
+**Decisión adoptada.** Keycloak IdP maestro en AWS (ECS Fargate, 2 tareas Multi-AZ, backend Aurora) + caché local solo lectura (TTL 24 h, igual a la autonomía del CD) en Talca, Concepción y los cross-docking, con un verificador local que, en cada relevo de turno sin enlace, valida el manifiesto de turno firmado por Keycloak y el PIN personal. La caché conserva datos y no emite sesiones; la credencial de turno dura hasta 8 h en bodega y 14 h en reparto. Durante el corte no se promete revocación remota inmediata. El backend Laravel valida los JWT OIDC (firma, emisor, audiencia, vencimiento y alcance) y aplica políticas por recurso, turno, ruta, sitio y empresa, sin Sanctum ni Passport como segundo emisor. OTP para conductores externos.
 
 **Alternativas descartadas.** *IdP solo nube*: paraliza bodega ante corte. *AD maestro local*: duplica administración, crea maestro a promover en DR. *Keycloak maestro local*: nube no puede autenticar si el enlace cae.
 
@@ -1132,7 +1140,7 @@ Registro consolidado de las quince decisiones de arquitectura que condicionan es
 
 ### ADR-08 · Destino del WMS legado 2013
 
-**Decisión adoptada.** Reemplazo total en Etapa 1 por módulo WMS del monolito (ADR-01): Talca maestro, Concepción edge, cross-docks sobre E-01. Migración por dominio, oleadas por sitio, reversión azul-verde.
+**Decisión adoptada.** Reemplazo total en Etapa 1 por módulo WMS del monolito (ADR-01): Talca maestro, Concepción edge, cross-docks sobre E-01. Migración por dominio, oleadas por sitio, reversión azul-verde. Durante la coexistencia cada operación tiene un único escritor autorizado: el WMS de 2013 y el nuevo nunca escriben a la vez stock, cobros o documentos tributarios.
 
 **Alternativas descartadas.** *Mantener e integrar*: proveedor desaparecido, sin soporte; no soporta multi-sitio, picking FEFO (primero en expirar, primero en salir), SSCC GS1 ni conteo cíclico ciego. *Extender a otros sitios*: arrastra riesgo de soporte inexistente en ventana crítica.
 
@@ -1156,31 +1164,37 @@ Registro consolidado de las quince decisiones de arquitectura que condicionan es
 
 ### ADR-11 · Integración B2B/EDI canal moderno
 
-**Decisión adoptada.** Hub EDI centralizado GS1 (EANCOM/GS1 XML + EPCIS) en nube, con conector configurable por cadena, equivalencias GTIN (RF-12.03), bandeja de excepciones (RF-12.06) y ACL hacia ERP/GDE. Canal moderno operativo ≤ enero 2029.
+**Decisión adoptada.** Hub EDI centralizado GS1 (EANCOM/GS1 XML + EPCIS) en nube, con conector configurable por cadena, equivalencias GTIN (RF-12.03), bandeja de excepciones (RF-12.06) y ACL hacia ERP/GDE. La transformación corre en el perfil EDI de Laravel; el transporte AS2 lo presta AWS Transfer Family (firma, cifrado, certificados y MDN), tras un contrato versionado. Canal moderno operativo ≤ enero 2029. Estado: propuesta.
 
-**Alternativas descartadas.** *Punto-a-punto por cadena*: multiplica adaptadores; mantenimiento desproporcionado ante cambios de cadena. *EDI delegado al ERP*: expone frontera frágil; viola Zero Trust (escritura directa desde cadena).
+**Alternativas descartadas.** *Punto-a-punto por cadena*: multiplica adaptadores; mantenimiento desproporcionado ante cambios de cadena. *EDI delegado al ERP*: expone frontera frágil; viola Zero Trust (escritura directa desde cadena). *Conector AS2 en una biblioteca PHP*: sin implementación validada contra las cadenas; alternativa solo si supera las mismas pruebas de interoperabilidad.
 
-**Criterio de selección.** Estandarización GS1 (Cap. 16.2); esfuerzo marginal por cadena nueva; aislamiento ERP por ACL (Zero Trust); plazo enero 2029. Normativa: RT-05.23, RT-16.16/16.17, RNF-12.01, RF-12.03/12.06. Relacionada: RF-12, RF-01.10.
+**Criterio de selección.** Estandarización GS1 (Cap. 16.2); esfuerzo marginal por cadena nueva; aislamiento ERP por ACL (Zero Trust); transporte AS2 administrado para 4 personas; plazo enero 2029. Normativa: RT-05.23, RT-16.16/16.17, RNF-12.01, RF-12.03/12.06. Relacionada: RF-12, RF-01.10.
+
+**Evidencia exigida.** Prueba de interoperabilidad AS2 con cada cadena (firma, cifrado, certificados y MDN) antes de habilitarla.
 
 ### ADR-12 · Absorción del peak de septiembre
 
-**Decisión adoptada.** Cómputo elástico: Fargate 2→6, Celery 2→4, Lambda 100→500, Aurora large→xlarge +2 readers, DynamoDB on-demand. Escala predictiva + reactiva. Base con Savings Plan, peak con cómputo efímero.
+**Decisión adoptada.** Cómputo elástico con escalado independiente por perfil: API PHP-FPM 2→4 tareas (techo 8) por procesos ocupados > 70 %; consumidor de reconciliación 2→4 por edad del mensaje más antiguo; trabajos 2→4 por profundidad de cola, con erp-sync fijo en 2 procesos; planificador en 1 tarea. Aurora large→xlarge +2 readers, DynamoDB on-demand. Escala predictiva + reactiva. Base con Savings Plan, peak con cómputo efímero. Estado: propuesta.
 
-**Alternativas descartadas.** *Capacidad fija al peak*: paga 12 meses la capacidad de 3 semanas. *Solo escala reactiva*: burst predecible de septiembre; la reactiva sola introduce lag en ventana crítica.
+**Alternativas descartadas.** *Capacidad fija al peak*: paga 12 meses la capacidad de 3 semanas. *Solo escala reactiva*: burst predecible de septiembre; la reactiva sola introduce lag en ventana crítica. *Trasladar las cifras del backend anterior (6 tareas de aplicación y 4 de workers Celery)*: eran supuestos de otro runtime.
 
 **Criterio de selección.** Perfil no plano al peak ×1,5 (RNF-19.04); cuello de botella identificado (RT-09.05); FinOps (RT-03.06): base reservada + peak efímero; congelamiento 1–25 sept y diciembre (RT-10.05). Normativa: RT-09.05, RT-03.06/03.08/03.09, RNF-19.01–04, RT-10.05. Relacionada: Decisión 16.1 N° 30.
 
+**Consecuencias.** El número de tareas se deriva de supuestos declarados (50 ms de CPU y 150 ms de residencia por solicitud), no de una medición; las conexiones a PostgreSQL quedan acotadas por los procesos de cada perfil.
+
+**Evidencia exigida.** Prueba de carga en Preproducción que mida consumo por solicitud y por sobre, saturación de PHP-FPM, conexiones, edad de colas y rendimiento del ERP; si difieren, se recalculan tareas y procesos antes del paso a producción.
+
 ### ADR-13 · Puerta de enlace de servicios
 
-**Decisión adoptada.** Amazon API Gateway como Capa 3 única: autorizador OIDC (Keycloak), validación de esquema OpenAPI, cuotas y límites de tasa por actor/ruta, versionado /v{major}, propagación de transaction_id a Capa 8.
+**Decisión adoptada.** Amazon API Gateway como Capa 3 en la nube, complementada en cada sitio por la puerta de API local del WMS para operar sin enlace: autorizador OIDC (Keycloak), validación de esquema OpenAPI, cuotas y límites de tasa por actor/ruta, versionado /v{major}, propagación de transaction_id a Capa 8.
 
-**Alternativas descartadas.** *Kong autoadministrado*: agrega componente crítico a parchar en ruta de la venta; riesgo en ventana 05:30–07:00 con el equipo disponible. *Desarrollo propio (middleware Django)*: sin cuotas/rate-limit nativos; viola Art. 21.2.
+**Alternativas descartadas.** *Kong autoadministrado*: agrega componente crítico a parchar en ruta de la venta; riesgo en ventana 05:30–07:00 con el equipo disponible. *Desarrollo propio (middleware de la aplicación)*: sin cuotas ni límites de tasa administrados en el borde; viola Art. 21.2. La validación del token en el backend Laravel complementa a la puerta de enlace y no la reemplaza (ADR-06).
 
 **Criterio de selección.** Cumplimiento literal Art. 21.2 sin desarrollo propio; servicio administrado para 4 personas; coherencia entre vistas (Art. 16.4); reversibilidad por contratos OpenAPI/AsyncAPI estándar. Normativa: BA Art. 21.2, RT-02.01/02.02, RT-11.11, RT-05.16/05.18, Art. 16.3. Relacionada: D8.
 
 ### ADR-14 · Plataforma de observabilidad
 
-**Decisión adoptada.** Plataforma única en nube: instrumentación OTel, colectores ADOT on-premise con buffer 24 h, logs en CloudWatch Logs (12+24 m), métricas en CloudWatch Metrics (13 meses) y trazas en CloudWatch con retención declarada. Tableros nativos de CloudWatch para operación.
+**Decisión adoptada.** Plataforma única en nube: instrumentación con OpenTelemetry para PHP y Laravel y para Kotlin, con el transaction_id propagado por HTTP, RabbitMQ, SQS y la ACL; métricas por perfil (PHP-FPM ocupado, reinicios, profundidad y edad de cola por grupo, DLQ, latencia del ERP y de escritura de VM-02); colectores ADOT on-premise con buffer 24 h, logs en CloudWatch Logs (12+24 m), métricas en CloudWatch Metrics (13 meses) y trazas en CloudWatch con retención declarada. Tableros nativos de CloudWatch para operación. Estado: propuesta.
 
 **Alternativas descartadas.** *Prometheus+Grafana+Loki local + cloud*: dos plataformas (viola Art. 16.4 y RT-03.16); VM-06 sin capacidad. *AMP + X-Ray + Grafana*: cuatro servicios de observabilidad para un equipo de 4 personas; complejidad operativa desproporcionada sin ganancia funcional sobre CloudWatch nativo.
 

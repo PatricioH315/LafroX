@@ -107,7 +107,15 @@ La fila de las 12:00 gobierna los TPS totales porque coincide la hora cargada de
 
 La dimensión 4 es (640 + 160) + 14.200 + 180 = \textbf{15.180 personas o entidades}. La dimensión 5 toma el mayor resultado entre ventanas: noche 120 + 60 + 6 = 186; despacho 96; día sin portal 62 + 96 + 184 = 342; portal en régimen 342 + 96,30 = \textbf{438,30}; portal extremo 342 + 433,33 = \textbf{775,33}. La dimensión 6 es 62 + 96 = \textbf{158 dispositivos de terreno en operación simultánea}.
 
-El parque separado de la dimensión 6 es: 132 terminales de bodega en Talca, 66 en Concepción, 69 de preventa, 106 de reparto, 106 impresoras, 106 terminales de pago, 6 escáneres y 28 termógrafos. La reserva de terminales de bodega y reparto es 10\,\% conforme a BTT 8.4.
+El parque separado de la dimensión 6 se distribuye así:
+
+\begin{itemize}
+  \item Bodega: 132 terminales en Talca y 66 en Concepción.
+  \item Terreno: 69 terminales de preventa, 106 de reparto, 106 impresoras y 106 terminales de pago.
+  \item Cross-docking y frío: 6 escáneres y 28 termógrafos.
+\end{itemize}
+
+La reserva de terminales de bodega y reparto es 10\,\% conforme a BTT 8.4.
 
 \section{Dimensiones 7--10: almacenamiento, retención y migración}
 \label{sec:anexo-4b-dimensiones-7-10}
@@ -116,7 +124,17 @@ El almacenamiento transaccional se calcula con 1.300.000 eventos = 260.000 líne
 
 La temperatura separa cámaras y camiones: 28 puntos × 288 lecturas/día = 8.064 lecturas de cámara, y 28 termógrafos × 162 lecturas/día entre 05:30 y 19:00 = 4.536 lecturas de camión; el total es 12.600 mensajes/día. Con 145 bytes por lectura, son 0,67 GB/año crudos, 0,17 GB/año almacenados con factor 0,25 y 3,33 GB crudos en cinco años. La posición produce 42 camiones × 12 h × 120 eventos/h × 365 = 22.075.200 eventos/año; con 145 bytes son 3,20 GB crudos y 0,80 GB almacenados en 12 meses. Son filas separadas porque sus retenciones son distintas.
 
-La dimensión 10 se estima por dominio: maestros completos 34.180 KB; ventas y pedidos, 3 años, 10.476.000 KB; inventario y movimientos, 2 años, 3.348.600 KB; recepciones con campo de lote, 5 años, 1.380.000 KB; cuentas por cobrar, 2 años, 816.000 KB. La suma de 16.054.780 KB × 2 ÷ 1.000.000 = \textbf{32,11 GB}. Con 10 o 30 líneas por recepción, el intervalo es \textbf{30,73–33,49 GB}. No se multiplican eventos históricos de trazabilidad: el caso declara que no existe una forma consultable. El 41\,\% sin lote sólo orienta el saneamiento.
+La dimensión 10 se estima por dominio:
+
+\begin{itemize}
+  \item Maestros completos: 34.180 KB.
+  \item Ventas y pedidos: 3 años y 10.476.000 KB.
+  \item Inventario y movimientos: 2 años y 3.348.600 KB.
+  \item Recepciones con campo de lote: 5 años y 1.380.000 KB.
+  \item Cuentas por cobrar: 2 años y 816.000 KB.
+\end{itemize}
+
+La suma de 16.054.780 KB × 2 ÷ 1.000.000 = \textbf{32,11 GB}. Con 10 o 30 líneas por recepción, el intervalo es \textbf{30,73–33,49 GB}. No se multiplican eventos históricos de trazabilidad: el caso declara que no existe una forma consultable. El 41\,\% sin lote sólo orienta el saneamiento.
 
 \section{Dimensiones 11--12: integraciones, mensajes y enlaces}
 \label{sec:anexo-4b-dimensiones-11-12}
@@ -144,7 +162,15 @@ La dimensión 11 cuenta los quince contratos INT-01 a INT-15 del apartado 4.1. L
 \end{tablalarga}
 \end{anexohorizontal}
 
-Para la dimensión 12, el drenaje se obtiene sumando cambios con WAL, vaciado del broker, telemetría, observabilidad e incremental de respaldo acumulados en 24 horas, y dividiendo por 2 horas. En Talca, los cambios son 0,041 GB/día; WAL = 3 × 0,041 = 0,123 GB/día; broker = 0,5 × 0,041 = 0,020 GB/día; telemetría = 12.600 × 145 ÷ 1.000.000.000 ÷ 2 = 0,001 GB/día; observabilidad = 5 × 0,25 = 1,25 GB/día; incremental = 0,041 GB/día. La suma es 1,43 GB/día y el drenaje 1,59 Mbps. La hora cargada suma oficina y retorno de flota: 3,71 Mbps; el peor caso es 3,71 + 1,59 = \textbf{5,30 Mbps}. Concepción acumula 0,59 GB/día y drena 0,66 Mbps; cada cross-docking acumula 0,27 GB/día y drena 0,30 Mbps. Las utilizaciones son 26,51\,\% de D-03 y 31,88\,\% de D-04 en Talca; 7,69\,\% y 21,96\,\% en Concepción; 17,41\,\% de D-06 y 14,92\,\% de D-04 en cada cross-docking. La utilización de respaldo divide sólo el drenaje por D-04, porque la sincronización tiene prioridad sobre la oficina durante la recuperación.
+Para la dimensión 12, el drenaje se obtiene sumando los aportes acumulados en 24 horas y dividiendo por 2 horas:
+
+\begin{itemize}
+  \item Aportes en Talca: cambios de 0,041 GB/día; WAL = 3 × 0,041 = 0,123 GB/día; broker = 0,5 × 0,041 = 0,020 GB/día; telemetría = 12.600 × 145 ÷ 1.000.000.000 ÷ 2 = 0,001 GB/día; observabilidad = 5 × 0,25 = 1,25 GB/día; incremental de respaldo = 0,041 GB/día.
+  \item Resultado por sitio: Talca suma 1,43 GB/día y drena 1,59 Mbps; la hora cargada de oficina y retorno de flota suma 3,71 Mbps, por lo que el peor caso es 3,71 + 1,59 = \textbf{5,30 Mbps}. Concepción acumula 0,59 GB/día y drena 0,66 Mbps; cada cross-docking acumula 0,27 GB/día y drena 0,30 Mbps.
+  \item Utilización de enlaces: Talca, 26,51\,\% de D-03 y 31,88\,\% de D-04; Concepción, 7,69\,\% y 21,96\,\%; cada cross-docking, 17,41\,\% de D-06 y 14,92\,\% de D-04.
+\end{itemize}
+
+La utilización de respaldo divide sólo el drenaje por D-04, porque la sincronización tiene prioridad sobre la oficina durante la recuperación.
 
 La ventana dominical usa ocho horas sin operación de bodega ni reparto. En Talca, el respaldo completo de 15,12 GB se convierte en 1,68 horas sobre 20 Mbps y la App de reparto, 23,80 GB, en 2,64 horas; juntas requieren 4,32 horas. Una tanda de 16 sistemas operativos de 2 GB agrega 3,56 horas y ocupa 7,88 horas, por lo que cabe una tanda por domingo y se necesitan 15 domingos para 238 equipos. En Concepción, respaldo de 7,76 GB y aplicación de 6,60 GB requieren 3,19 horas; una tanda de 10 sistemas operativos ocupa 7,64 horas y se necesitan 7 domingos. En cada sitio, el tamaño de la aplicación es ≤100 MB por equipo y preventa usa la red móvil; las actualizaciones se escalonan trimestralmente.
 
@@ -158,7 +184,14 @@ La dimensión 14 es un tiempo. Los 96 camiones regresan entre 17:00 y 20:00; con
 \section{Dimensiones 15--16: mesa de ayuda y operación}
 \label{sec:anexo-4b-dimensiones-15-16}
 
-El escenario de mesa es (640 + 160) × 2,5 = \textbf{2.000 contactos mensuales}. Con 22,14 días equivalentes, la hora cargada concentra 2.000 × 25\,\% ÷ 22,14 = 22,58 contactos/hora y cada una de las otras 17 horas recibe 2.000 × 75\,\% ÷ 22,14 ÷ 17 = 3,98 contactos/hora. Erlang C usa 10 minutos de atención media, 80\,\% de respuestas antes de 20 segundos y abandono ≤5\,\%: exige 7 agentes en la hora cargada y 2 en las demás. La suma semanal es (7 + 17 × 2) × 6 = 246 horas-posición; 246 ÷ 42 = 5,86, pero la dotación no puede ser menor que las 7 posiciones simultáneas, por lo que la mesa requiere \textbf{7 personas}. Al resolver el mismo cálculo con siete agentes, el límite es 2.391 contactos/mes: 2.391 × 25\,\% ÷ 22,14 = 27,00 contactos/hora cargada y 2.391 × 75\,\% ÷ 22,14 ÷ 17 = 4,99 contactos/hora en las demás franjas.
+La mesa de ayuda se dimensiona en cuatro pasos:
+
+\begin{enumerate}
+  \item Demanda horaria: (640 + 160) × 2,5 = \textbf{2.000 contactos mensuales}. Con 22,14 días equivalentes, la hora cargada concentra 2.000 × 25\,\% ÷ 22,14 = 22,58 contactos/hora y cada una de las otras 17 horas recibe 2.000 × 75\,\% ÷ 22,14 ÷ 17 = 3,98 contactos/hora.
+  \item Resultado Erlang C: con 10 minutos de atención media, 80\,\% de respuestas antes de 20 segundos y abandono ≤5\,\%, exige 7 agentes en la hora cargada y 2 en las demás.
+  \item Dotación simultánea: (7 + 17 × 2) × 6 = 246 horas-posición semanales; 246 ÷ 42 = 5,86, pero la dotación no puede ser menor que las 7 posiciones simultáneas, por lo que la mesa requiere \textbf{7 personas}.
+  \item Capacidad máxima de siete agentes: Al resolver el mismo cálculo, el límite es 2.391 contactos/mes; 2.391 × 25\,\% ÷ 22,14 = 27,00 contactos/hora cargada y 2.391 × 75\,\% ÷ 22,14 ÷ 17 = 4,99 contactos/hora en las demás franjas.
+\end{enumerate}
 
 La cobertura 24×7 de septiembre y diciembre requiere, además, al menos una posición de mesa en las horas 22:00–04:00 de lunes a sábado y durante los domingos: 6 × 6 + 24 = 60 horas-posición semanales; 60 ÷ 42 = 1,43, por lo que se agregan \textbf{2 personas} y la mesa peak queda en 9. Un NOC y un SOC de una posición cada uno requieren 2 × (168 ÷ 42) = \textbf{8 personas}; desde el 26-04-2028 requieren 2 × (168 ÷ 40) = \textbf{10 personas}. La dotación total es 15 personas en operación normal y 17 en septiembre/diciembre a 42 horas; con 40 horas, 17 y 19. Las funciones NOC/SOC pueden ser subcontratadas conforme a BTT RT-21.01 y RT-11.17.
 
@@ -193,7 +226,18 @@ El perfil de API atiende aplicaciones y portales N-01 a N-03. Una tarea Fargate 
 \section{Crecimiento, enlaces y ventana dominical}
 \label{sec:anexo-4b-crecimiento}
 
-La proyección de año 3 de la Tabla 14.1 es 36.000 pedidos, 305.000 líneas, 1.650 entregas normales, 3.100 entregas peak y 40.000 DTE mensuales. Cada componente usa una base distinta: WMS Talca = 3,02 × (305.000 ÷ 260.000) = 3,54 TPS; nube más portal = 14,66 × (36.000 ÷ 31.000) = 17,03 solicitudes/s; evidencia = 87,72 × (36.000 ÷ 31.000) = 101,87 GB/año; enlace de Talca = 5,34 Mbps por el nuevo flujo de cambios; terminales de bodega = 120 × (350 ÷ 310) × 1,10 = 150; mesa = 2.000 × (350 ÷ 310) = 2.258 contactos/mes. Por separado, BTT RT-09.03 exige 3×: 93.000 pedidos, 780.000 líneas, 4.200/7.800 entregas y 102.000 DTE mensuales.
+La proyección de año 3 de la Tabla 14.1 es 36.000 pedidos, 305.000 líneas, 1.650 entregas normales, 3.100 entregas peak y 40.000 DTE mensuales. Cada componente usa una base distinta:
+
+\begin{itemize}
+  \item WMS Talca = 3,02 × (305.000 ÷ 260.000) = 3,54 TPS.
+  \item Nube más portal = 14,66 × (36.000 ÷ 31.000) = 17,03 solicitudes/s.
+  \item Evidencia = 87,72 × (36.000 ÷ 31.000) = 101,87 GB/año.
+  \item Enlace de Talca = 5,34 Mbps por el nuevo flujo de cambios.
+  \item Terminales de bodega = 120 × (350 ÷ 310) × 1,10 = 150.
+  \item Mesa = 2.000 × (350 ÷ 310) = 2.258 contactos/mes.
+\end{itemize}
+
+Por separado, BTT RT-09.03 exige 3×: 93.000 pedidos, 780.000 líneas, 4.200/7.800 entregas y 102.000 DTE mensuales.
 
 \begin{tablalafrox}{Plan de capacidad}{tab:anexo-4b-plan}{F{0.28} G{0.16} G{0.16} G{0.16} Y}{\cab{Componente} & \cab{Año 1} & \cab{Año 3} & \cab{3×} & \cab{Acción}}
   WMS de Talca, TPS peak & 3,02 & 3,54 & 9,06 & Revisar CPU e IOPS trimestralmente \\
