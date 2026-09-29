@@ -79,9 +79,7 @@ Las ocho capas separan la interacción con las personas, las reglas de negocio y
 
 Las capas 7 y 8 atraviesan las demás; no duplican reglas de negocio.
 
-La Figura~\ref{fig:arql-general-completa} presenta la arquitectura lógica completa: relaciona los actores y sus aplicaciones con los módulos M1--M12, las integraciones y los almacenes de datos. Permite reconocer las ocho capas y las tecnologías que sostienen cada responsabilidad. La Figura~\ref{fig:arql-1}, presentada a continuación, resume ese conjunto para facilitar la lectura de los recorridos principales.
-
-Primero se leen las entradas de la capa 1 y la exposición de las capas 2 y 3; después, las decisiones de M1--M12 en la capa 4 y los intercambios de la capa 5. Seguridad y observabilidad atraviesan esas rutas y no sustituyen al dueño de cada dato. La vista resumida explicita la puerta local que sostiene el CD durante un corte. Las vigencias de identidad y los recorridos desconectados se precisan en los apartados de seguridad y acceso local.
+La arquitectura se presenta primero mediante su vista general completa (Figura~\ref{fig:arql-general-completa}) y después mediante una síntesis de sus ocho capas (Figura~\ref{fig:arql-1}). Ambas vistas se complementan para relacionar las funciones de negocio con los componentes que las sostienen.
 
 \clearpage
 \begin{center}
@@ -92,14 +90,18 @@ Primero se leen las entradas de la capa 1 y la exposición de las capas 2 y 3; d
 
 {\footnotesize Fuente: elaboración propia de LafroX.\par}
 
+La vista general muestra cómo cada actor accede a la solución desde su aplicación, portal o consola y se relaciona con los módulos M1--M12. Se lee desde las personas hacia las reglas de negocio, las integraciones y los datos, distinguiendo los componentes de nube y los del sitio. Las conexiones representan intercambios sujetos a autorización, no acceso directo a las bases de datos. Seguridad y observabilidad acompañan todo el recorrido; sus controles y las condiciones de operación sin conexión se desarrollan en los apartados siguientes.
+
 \clearpage
 \begin{center}
-  \includegraphics[width=0.98\linewidth,height=0.83\textheight,keepaspectratio]{Diagramas/arquitectura_logica_actual/ARQL-19_Vista_general_legible.pdf}
+  \includegraphics[width=0.98\linewidth,height=0.65\textheight,keepaspectratio]{Diagramas/arquitectura_logica_actual/ARQL-19_Vista_general_legible.pdf}
   \captionof{figure}{Vista resumida de las ocho capas lógicas}
   \label{fig:arql-1}
 \end{center}
 
 {\footnotesize Fuente: elaboración propia de LafroX.\par}
+
+La vista resumida destaca la responsabilidad de cada capa: presentación captura y muestra información; borde protege la entrada; las puertas de servicio validan las solicitudes; el negocio aplica las reglas en Laravel; integración conserva y distribuye eventos; y acceso a datos administra la persistencia. Seguridad y observabilidad son transversales, no pasos finales del procesamiento. La puerta local permite que la bodega siga operando sin WAN, mientras las colas conservan el trabajo pendiente para reconciliarlo al recuperar la conexión.
 
 \clearpage
 \subsubsection{Capa de presentación}
