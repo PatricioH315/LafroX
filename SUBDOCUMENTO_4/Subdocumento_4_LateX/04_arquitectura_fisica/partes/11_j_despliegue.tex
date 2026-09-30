@@ -86,7 +86,7 @@ En Preproducción la secuencia se ensaya sobre la topología de Producción y el
 
 \minititulo{Producción}
 
-En Producción la misma secuencia se ejecuta de forma automática y llega además a los sitios on-premise a través de la VPC Hub, sitio por sitio (Figura~\ref{fig:amb-produccion}).
+En Producción la misma secuencia se ejecuta de forma automática y llega además a los sitios on-premise por el Transit Gateway y la Site-to-Site VPN de la VPC Hub, sitio por sitio (Figura~\ref{fig:amb-produccion}).
 
 \begin{figure}[p]
   \centering
@@ -200,7 +200,7 @@ El despliegue sin interrupción es, por lo tanto, la regla y no una capacidad op
 
 La sección de conexiones describe los caminos entre los sitios, el terreno y la nube, y su conmutación (Figura~\ref{fig:conexiones} y Tabla~\ref{tab:conexiones}). El despliegue agrega tres definiciones sobre esa red: dónde llegan los túneles, cómo se reparte el direccionamiento y cómo se dirige el tráfico entre regiones.
 
-Los túneles VPN de los cinco sitios llegan a la VPC Hub de sa-east-1, donde el Transit Gateway los enruta entre ellos y los une solo a la VPC de Producción; us-east-1 dispone de su propio Transit Gateway y de su VPN para reconectar los sitios durante una conmutación. La de Producción es la única VPC con enlace hacia los sitios, coherente con que el on-premise es producción: Desarrollo, QA y Preproducción no tienen conectividad con las bodegas, de modo que un error en un ambiente de prueba no puede alcanzarlas. El direccionamiento se asigna sin solapamiento, según la Tabla~\ref{tab:t64}.
+Los túneles de AWS Site-to-Site VPN de los cinco sitios llegan a la VPC Hub de sa-east-1, donde el Transit Gateway los enruta entre ellos y los une solo a la VPC de Producción; us-east-1 dispone de su propio Transit Gateway y de su VPN para reconectar los sitios durante una conmutación. La de Producción es la única VPC con enlace hacia los sitios, coherente con que el on-premise es producción: Desarrollo, QA y Preproducción no tienen conectividad con las bodegas, de modo que un error en un ambiente de prueba no puede alcanzarlas. El direccionamiento se asigna sin solapamiento, según la Tabla~\ref{tab:t64}.
 
 \begin{tablalafrox}{Direccionamiento y segmentación}{tab:t64}%
   {F{0.30} F{0.27} Y}%
