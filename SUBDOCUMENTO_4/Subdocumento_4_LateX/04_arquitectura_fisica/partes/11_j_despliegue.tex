@@ -44,7 +44,7 @@ En los cinco ambientes la imagen de la aplicación corre en ECS Fargate, que es 
 
 Desarrollo y QA son aislados y se reconstruyen desde código. Desarrollo trabaja con datos sintéticos o anonimizados, y QA con un juego de datos de prueba controlado y versionado que se restituye a un estado conocido antes de cada ciclo de pruebas. Ningún ambiente no productivo recibe datos productivos sin anonimización o seudonimización verificable. Desarrollo, QA y Preproducción se reducen o apagan fuera del horario de uso, con el ahorro reflejado en la estructura de costos (RT-04.13).
 
-Las bodegas no tienen ambientes propios de prueba, y no los necesitan. El on-premise es producción: la imagen wms\_only que corre en los centros de distribución es la misma que recorrió Desarrollo, QA y Preproducción en la nube, y la infraestructura de cada sitio se declara como código versionado. Lo que se ensayó en la nube es, por lo tanto, lo que se instala en Talca y en Concepción, dentro de la ventana de 24 horas del cutover. QA y Preproducción ensayan esa imagen con el verificador local de identidad y la puerta de API local del WMS, con adaptadores simulados del ERP, y reproducen el corte de enlace y el relevo de turno antes de cada paso a producción.
+Las bodegas no tienen ambientes propios de prueba, y no los necesitan. El on-premise es producción: la imagen wms\_only que corre en los centros de distribución es la misma que recorrió Desarrollo, QA y Preproducción en la nube, y la infraestructura de cada sitio se declara como código versionado. Lo que se ensayó en la nube es, por lo tanto, lo que se instala en Talca, en Concepción y en cada cross-docking, sitio por sitio. QA y Preproducción ensayan esa imagen con el verificador local de identidad y la puerta de API local del WMS, con adaptadores simulados del ERP, y reproducen el corte de enlace y el relevo de turno antes de cada paso a producción.
 
 Preproducción es equivalente a Producción en versiones, configuración, dimensionamiento y topología de nube (RT-04.02). Subsisten tres diferencias justificadas:
 
@@ -56,7 +56,7 @@ Preproducción es equivalente a Producción en versiones, configuración, dimens
 
 La emulación reproduce la topología del sitio y no su hardware; por eso la primera instalación de cada versión en los centros de distribución avanza sitio por sitio, como se describe en la liberación. Durante las pruebas de carga y estrés de la Tabla~\ref{tab:t86} opera con el dimensionamiento completo de Producción.
 
-Las figuras siguientes muestran cada uno de los cinco ambientes. Desarrollo, QA y Preproducción residen solo en la nube; Producción y Recuperación ante Desastres son mixtos, porque abarcan la nube y los sitios on-premise. No existe un ambiente solo on-premise: los centros de distribución y los cross-docking son parte de Producción.
+Las figuras siguientes muestran cada uno de los cinco ambientes. Desarrollo, QA, Preproducción y Recuperación ante Desastres residen solo en la nube; Producción es el único ambiente mixto, porque abarca la nube y los sitios on-premise. No existe un ambiente solo on-premise: los centros de distribución y los cross-docking son parte de Producción, y por eso la recuperación del dominio on-premise, que asume el CD Concepción, ocurre dentro de Producción y no en el ambiente de Recuperación ante Desastres.
 
 \minititulo{Desarrollo}
 
@@ -100,7 +100,7 @@ Producción opera en varias zonas, junto con los sitios on-premise, y en ella oc
 
 \minititulo{Recuperación ante Desastres}
 
-La recuperación reside en us-east-1 para el dominio de nube y en el CD Concepción para el dominio on-premise, como muestra la Figura~\ref{fig:amb-recuperacion}.
+Recuperación ante Desastres reside en us-east-1 y recupera el dominio de nube; la figura muestra también, como referencia, la recuperación del dominio on-premise que asume el CD Concepción dentro de Producción (Figura~\ref{fig:amb-recuperacion}).
 
 \figuralafrox{1}{ambientes/amb_recuperacion}{Ambiente de Recuperación ante Desastres}{fig:amb-recuperacion}
 
@@ -125,7 +125,7 @@ El acceso privilegiado reúne estos controles:
 
 La cuenta de último recurso (sección~\ref{sub:adr-15}) se usa solo ante la indisponibilidad del IdP, con doble custodia, alerta inmediata, rotación de credenciales tras su uso y revisión posterior registrada.
 
-Los portales de clientes, transportistas y proveedores siguen el mismo ciclo: su aplicación Angular se publica por ambiente en S3 privado y CloudFront, con la imagen de aplicación del mismo ambiente como backend.
+Los portales de clientes, transportistas y proveedores siguen el mismo ciclo: su aplicación Angular se publica por ambiente en S3 privado y CloudFront, con la imagen de aplicación del mismo ambiente como backend. Las consolas Angular, en cambio, corren como contenedor en ECS Fargate tras el balanceador de aplicación privado (N-04).
 
 \subsubsection{Artefacto y perfiles de ejecución}
 
@@ -142,7 +142,7 @@ La aplicación se construye una sola vez por versión como una imagen PHP 8.5 co
   Planificador & PHP CLI; tareas periódicas del ambiente & N-04, una sola tarea por ambiente & No escala \\
 \end{tablalafrox}
 
-Los perfiles comparten la revisión de código y la versión de esquema, pero cada uno tiene su propio rol de IAM o credencial local, con solo los permisos que su función necesita: el perfil de API no puede leer la cola de reconciliación, el consumidor no puede escribir en las colas de trabajos y el shipper solo puede enviar a su cola FIFO. El planificador corre como una sola tarea por ambiente, con despliegue que detiene la tarea anterior antes de iniciar la nueva, y cada tarea periódica toma además un bloqueo en la base de datos para impedir ejecuciones superpuestas; los sitios no ejecutan planificador, porque sus procesos permanentes son el servidor del WMS y el shipper. En los centros de distribución, el perfil \texttt{wms\_only}, que es el Motor WMS A-01, corre como contenedor en VM-01 y VM-C01, y el shipper corre junto al broker de colas A-03, RabbitMQ, en VM-03 y VM-C04, todos sobre las máquinas virtuales de Proxmox. En cada cross-docking, el perfil \texttt{wms\_only} y el shipper se orquestan con Docker Compose en E-01, junto a PostgreSQL, RabbitMQ y la caché de identidad. Los sitios descargan la imagen desde Elastic Container Registry por la VPN y los endpoints de la VPC de Producción, en conexiones salientes y sin tráfico por Internet; Ansible (F-02), con el que se declara como código la configuración de los cinco sitios, actualiza sus contenedores sitio por sitio. La réplica reducida de us-east-1 recibe cada versión liberada en Producción desde la réplica de Elastic Container Registry en esa región, de modo que la plataforma que se promueve en una conmutación corre la misma versión que la región primaria. Fuera de la imagen Laravel quedan el motor de rutas M4 y el transporte AS2 M11, ambos en contenedores propios sobre ECS Fargate (N-04), construidos por el mismo pipeline y tras contratos versionados (sección~\ref{sub:adr-11}).
+Los perfiles comparten la revisión de código y la versión de esquema, pero cada uno tiene su propio rol de IAM o credencial local, con solo los permisos que su función necesita: el perfil de API no puede leer la cola de reconciliación, el consumidor no puede escribir en las colas de trabajos y el shipper solo puede enviar a su cola FIFO. El planificador corre como una sola tarea por ambiente, con despliegue que detiene la tarea anterior antes de iniciar la nueva, y cada tarea periódica toma además un bloqueo en la base de datos para impedir ejecuciones superpuestas; los sitios no ejecutan planificador, porque sus procesos permanentes son el servidor del WMS y el shipper. En los centros de distribución, el perfil \texttt{wms\_only}, que es el Motor WMS A-01, corre como contenedor en VM-01 y VM-C01, y el shipper corre junto al broker de colas A-03, RabbitMQ, en VM-03 y VM-C04, todos sobre las máquinas virtuales de Proxmox. En cada cross-docking, el perfil \texttt{wms\_only} y el shipper se orquestan con Docker Compose en E-01, junto a PostgreSQL, RabbitMQ y la caché de identidad. Los sitios descargan la imagen desde Elastic Container Registry por la VPN y los endpoints de la VPC de Producción, en conexiones salientes y sin tráfico por Internet; Ansible (F-02), con el que se declara como código la configuración de los cinco sitios, actualiza sus contenedores sitio por sitio. La réplica reducida de us-east-1 recibe cada versión liberada en Producción desde el mismo Elastic Container Registry de sa-east-1, de modo que la plataforma que se promueve en una conmutación corre la misma versión que la región primaria. Fuera de la imagen Laravel quedan el motor de rutas M4 y el transporte AS2 M11, ambos en contenedores propios sobre ECS Fargate (N-04), construidos por el mismo pipeline y tras contratos versionados (sección~\ref{sub:adr-11}).
 
 Cada perfil cumple este ciclo de vida:
 
