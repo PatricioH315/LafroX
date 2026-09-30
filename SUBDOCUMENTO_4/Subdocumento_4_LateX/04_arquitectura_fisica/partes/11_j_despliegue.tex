@@ -35,16 +35,16 @@ Un cambio recorre tres ambientes antes de llegar a Producción: Desarrollo, QA y
   QA & 10.103.0.0/16 & sa-east-1 & Pruebas funcionales, de integración y de regresión; análisis dinámico \\
   Preproducción & 10.102.0.0/16 & sa-east-1 & Aceptación, carga, resiliencia y ensayo del paso a producción \\
   Producción & 10.101.0.0/16 & sa-east-1 & Operación en varias zonas, con los sitios on-premise; marcha blanca \\
-  Recuperación ante Desastres & 10.201.0.0/16 & us-east-1 & Réplica en caliente del dominio de nube \\
+  Recuperación ante Desastres & 10.201.0.0/16 & us-east-1 & Réplica en caliente del dominio de nube; el dominio on-premise se recupera en el CD Concepción \\
 \end{tablalafrox}
 
 Cada ambiente reside en una cuenta AWS propia, bajo una organización de AWS Control Tower cuyas políticas de control de servicio impiden que un error o un acceso indebido en un ambiente alcance a otro; la organización incorpora además sus cuentas de gestión, de archivo de registros y de auditoría. Los bloques de direccionamiento no se solapan entre sí ni con los de los sitios on-premise, y solo el ambiente de recuperación reside fuera de la región primaria. Los cinco ambientes quedan habilitados y operativos en el hito H3 del Formulario E-25, en el mes 6 del contrato, antes de la primera marcha blanca (RT-04.01).
 
-En los cinco ambientes la imagen de la aplicación corre en ECS Fargate, que es el cómputo de la plataforma de aplicación N-04 (Tabla~\ref{tab:servicios-nube}); cada ambiente despliega la imagen en su propia cuenta, desde el mismo Elastic Container Registry de sa-east-1. Los ambientes se diferencian en su escala y en su conectividad, no en el servicio donde corre el código: Producción opera en dos zonas; Preproducción replica esa topología; Desarrollo y QA se reducen o apagan fuera del horario de uso; y Recuperación ante Desastres mantiene la réplica reducida de us-east-1.
+En los cinco ambientes la imagen de la aplicación corre en ECS Fargate, que es el cómputo de la plataforma de aplicación N-04 (Tabla~\ref{tab:servicios-nube}); cada ambiente despliega la imagen en su propia cuenta, desde el mismo Elastic Container Registry de sa-east-1. Los ambientes se diferencian en su escala y en su conectividad, no en el servicio donde corre el código: Producción opera en dos zonas; Preproducción replica esa topología; Desarrollo, QA y Preproducción se reducen o apagan fuera del horario de uso; y Recuperación ante Desastres mantiene la réplica reducida de us-east-1.
 
 Desarrollo y QA son aislados y se reconstruyen desde código. Desarrollo trabaja con datos sintéticos o anonimizados, y QA con un juego de datos de prueba controlado y versionado que se restituye a un estado conocido antes de cada ciclo de pruebas. Ningún ambiente no productivo recibe datos productivos sin anonimización o seudonimización verificable. Desarrollo, QA y Preproducción se reducen o apagan fuera del horario de uso, con el ahorro reflejado en la estructura de costos (RT-04.13).
 
-Las bodegas no tienen ambientes propios de prueba, y no los necesitan. El on-premise es producción: la imagen wms\_only que corre en los centros de distribución es la misma que recorrió Desarrollo, QA y Preproducción en la nube, y la infraestructura de cada sitio se declara como código versionado. Lo que se ensayó en la nube es, por lo tanto, lo que se instala en Talca, en Concepción y en cada cross-docking, sitio por sitio. QA y Preproducción ensayan esa imagen con el verificador local de identidad y la puerta de API local del WMS, con adaptadores simulados del ERP, y reproducen el corte de enlace y el relevo de turno antes de cada paso a producción.
+Las bodegas no tienen ambientes propios de prueba, y no los necesitan. El on-premise es producción: la imagen wms\_only que corre en los centros de distribución y en los cross-docking es la misma que recorrió Desarrollo, QA y Preproducción en la nube, y la infraestructura de cada sitio se declara como código versionado. Lo que se ensayó en la nube es, por lo tanto, lo que se instala en Talca, en Concepción y en cada cross-docking, sitio por sitio. QA y Preproducción ensayan esa imagen con el verificador local de identidad y la puerta de API local del WMS, con adaptadores simulados del ERP, y reproducen el corte de enlace y el relevo de turno antes de cada paso a producción.
 
 Preproducción es equivalente a Producción en versiones, configuración, dimensionamiento y topología de nube (RT-04.02). Subsisten tres diferencias justificadas:
 
@@ -54,9 +54,9 @@ Preproducción es equivalente a Producción en versiones, configuración, dimens
   \item Preproducción emula el sitio on-premise dentro de su propia VPC, con la misma imagen wms\_only, el mismo broker y el mismo verificador local, pero sin túnel hacia las bodegas, para que un ensayo no pueda alcanzar la operación real.
 \end{enumerate}
 
-La emulación reproduce la topología del sitio y no su hardware; por eso la primera instalación de cada versión en los centros de distribución avanza sitio por sitio, como se describe en la liberación. Durante las pruebas de carga y estrés de la Tabla~\ref{tab:t86} opera con el dimensionamiento completo de Producción.
+La emulación reproduce la topología del sitio y no su hardware; por eso la primera instalación de cada versión en los centros de distribución y los cross-docking avanza sitio por sitio, como se describe en la liberación. Durante las pruebas de carga y estrés de la Tabla~\ref{tab:t86} opera con el dimensionamiento completo de Producción.
 
-Las figuras siguientes muestran cada uno de los cinco ambientes. Desarrollo, QA, Preproducción y Recuperación ante Desastres residen solo en la nube; Producción es el único ambiente mixto, porque abarca la nube y los sitios on-premise. No existe un ambiente solo on-premise: los centros de distribución y los cross-docking son parte de Producción, y por eso la recuperación del dominio on-premise, que asume el CD Concepción, ocurre dentro de Producción y no en el ambiente de Recuperación ante Desastres.
+Las figuras siguientes muestran cada uno de los cinco ambientes. Desarrollo, QA y Preproducción residen solo en la nube. Producción y Recuperación ante Desastres son mixtos: Producción abarca la nube y los sitios on-premise, y Recuperación ante Desastres cubre la indisponibilidad de la región o del sitio primario (numeral 4.1 de las Transversales) con un sitio por dominio, la región us-east-1 para la nube y el CD Concepción para el on-premise; Concepción es, a la vez, un sitio de Producción que opera todos los días. No existe un ambiente solo on-premise.
 
 \minititulo{Desarrollo}
 
@@ -100,7 +100,7 @@ Producción opera en varias zonas, junto con los sitios on-premise, y en ella oc
 
 \minititulo{Recuperación ante Desastres}
 
-Recuperación ante Desastres reside en us-east-1 y recupera el dominio de nube; la figura muestra también, como referencia, la recuperación del dominio on-premise que asume el CD Concepción dentro de Producción (Figura~\ref{fig:amb-recuperacion}).
+Recuperación ante Desastres tiene dos sitios, uno por dominio: la región us-east-1 para la nube y el CD Concepción para el on-premise, como muestra la Figura~\ref{fig:amb-recuperacion}.
 
 \figuralafrox{1}{ambientes/amb_recuperacion}{Ambiente de Recuperación ante Desastres}{fig:amb-recuperacion}
 
@@ -115,7 +115,7 @@ El paso de un ambiente a otro lo controla el pipeline de integración continua: 
 
 El pipeline bloquea el despliegue ante un hallazgo crítico o alto, ante un contrato público roto sin versión nueva o ante una cobertura de la lógica de negocio inferior al 70 \% (RT-04.11). Primero, la imagen aprobada se firma, se publica en Elastic Container Registry y se promueve por su digest, de modo que ningún ambiente recompila; el paso a Producción es automático una vez que la versión supera los controles del pipeline y el ensayo en Preproducción, dentro de las ventanas de la Tabla~\ref{tab:jd02} (RT-04.06). Segundo, la configuración no sensible se externaliza por ambiente en SSM Parameter Store y los secretos se gestionan en AWS Secrets Manager con rotación automática (sección~\ref{sub:adr-15}); la imagen no contiene secretos ni el archivo de entorno (RT-04.08 y RT-04.09). Tercero, las migraciones de base de datos son migraciones Laravel basales y aditivas, que siguen la estrategia de expandir y contraer: se ejecutan como un paso único del despliegue antes de cambiar el tráfico, cada versión solo agrega estructuras, de modo que la versión anterior y la nueva de la aplicación funcionan sobre el mismo esquema durante el despliegue, y las estructuras obsoletas se eliminan en una versión posterior. Cada migración declara además su reversión, de modo que el esquema puede volver a la versión anterior (RT-04.10). Luego, el código reside en un repositorio con ramas protegidas, revisión obligatoria por pares y sin escritura directa sobre la rama principal (RT-04.03); su gobierno y la trazabilidad se desarrollan en el plan de calidad (Subdocumento 9).
 
-El acceso privilegiado reúne estos controles:
+A Producción no se llega de otra forma: su acceso es restringido y auditado, y los desarrolladores no tienen acceso interactivo directo a ese ambiente (numeral 4.1 de las Transversales). El acceso privilegiado excepcional reúne estos controles:
 
 \begin{itemize}
   \item IAM Identity Center federado con Keycloak por SAML 2.0 y SCIM, y MFA.

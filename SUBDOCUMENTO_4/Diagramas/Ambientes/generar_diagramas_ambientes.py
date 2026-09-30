@@ -232,7 +232,7 @@ d.save('A4_Ambiente_Produccion.drawio')
 
 # ---------------------------------------------------------------- A5 Recuperacion
 d = D('Recuperación ante Desastres')
-d.badge(B('Tipo de ambiente:') + ' solo nube (AWS) · us-east-1', NUBE, 20, 20)
+d.badge(B('Tipo de ambiente:') + ' mixto (nube + on-premise) · un sitio de recuperación por dominio', MIX, 20, 20, 820)
 cb, ecr = cadena(d)
 cuenta(d, 'Recuperación ante Desastres', 'us-east-1 · ≈ 7.700 km de la primaria', 'VPC Recuperación · 10.201.0.0/16', 340, 80, 1000, 560)
 rfar = d.icon('ECS Fargate (N-04)<br>réplica reducida<br>carga completa en &lt; 30 min', 'fargate', 'compute', 460, 300, lw=220, right=True)
@@ -241,9 +241,9 @@ d.icon('Aurora Global Database (N-05)<br>réplica promovible', 'aurora', 'db', 8
 d.icon('AWS Backup (N-11)<br>copias entre regiones', 'backup', 'storage', 1100, 260)
 d.box('Keycloak (A-05), API pública y privada y Verified Access: se restituyen en la conmutación (paso 6, Tabla 4.3-6)', 460, 460, 780, 60, fill='#F4F6F6')
 d.edge(ecr, rfar, 'cada versión liberada en Producción', ports=R % 0.5, pos=0.6)
-d.group('Producción · recuperación del dominio on-premise (referencia)', 'group_corporate_data_center', '#7D8998', 1380, 80, 470, 560)
+d.group('On-premise · sitio de recuperación del dominio on-premise', 'group_corporate_data_center', '#7D8998', 1380, 80, 470, 560)
 t = d.box(B('CD Talca') + '<br>VM-01: A-01 Motor WMS · VM-02: A-02 Base transaccional', 1410, 150, 410, 80, fill='#F4F6F6')
-c = d.box(B('CD Concepción') + '<br>VM-C01 promueve su A-01 Motor WMS<br>RTO adicional de 1 a 2 h', 1410, 320, 410, 90, fill='#F4F6F6')
+c = d.box(B('CD Concepción') + ' (opera a diario en Producción)<br>VM-C01 promueve su A-01 Motor WMS<br>RTO adicional de 1 a 2 h', 1410, 320, 410, 90, fill='#F4F6F6')
 d.edge(t, c, 'DRP local · ≈ 200 km', dashed=1)
 d.leyenda(COMUNES + ['La réplica reducida de ECS Fargate recibe cada versión liberada en Producción, desde el mismo ECR de sa-east-1'],
           20, 660, 620)
