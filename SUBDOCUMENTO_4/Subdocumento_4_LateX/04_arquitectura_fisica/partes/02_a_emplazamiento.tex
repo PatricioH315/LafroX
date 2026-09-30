@@ -32,6 +32,19 @@ De las seis instalaciones que cubre la solución, cinco alojan cómputo on-premi
   \item La sexta instalación, la casa matriz de Talca, está junto al centro de distribución, solo aloja oficinas y trabaja contra la nube, por lo que no requiere cómputo propio y el dimensionamiento se calcula sobre los otros cinco recintos.
 \end{itemize}
 
+Los dos centros de distribución tienen su recinto especificado en el apartado~\ref{cap:4-3-data-center}; las plataformas de cross-docking no lo tienen, porque operan en un gabinete de borde dentro de la nave. La Figura~\ref{fig:crossdocking} muestra ese gabinete, que se repite igual en Curicó, Chillán y Los Ángeles.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.6\linewidth]{figuras/Arquitectura_Fisica_Crossdocking.png}
+  \caption{Gabinete de borde de las plataformas de cross-docking}
+  \label{fig:crossdocking}
+  \fuentefigura
+\end{figure}
+\FloatBarrier
+
+Starlink es el enlace principal y el LTE de dos proveedores lo respalda; ambos llegan a un firewall compacto que termina el túnel VPN hacia la nube y conmuta de enlace en menos de 30 s. Detrás del firewall, un switch compacto conecta el mini-PC industrial, que ejecuta en contenedores Docker el WMS, PostgreSQL, RabbitMQ, la caché de Keycloak y el colector ADOT. Los dos escáneres GS1 de cada plataforma trabajan contra ese WMS local. El gabinete reúne en un solo equipo las funciones que Talca y Concepción reparten en varias máquinas virtuales, y con ello opera al 100\,\% en local la ventana de tres horas de recepción, desconsolidación y re-despacho. El firewall, el switch y el mini-PC son puntos únicos de falla aceptados; su contingencia se trata en la sección~\ref{sec:conexiones}.
+
 La séptima instalación que proyecta el caso a tres años se incorpora parametrizando la infraestructura como código, sobre el bloque de direccionamiento ya reservado en la Tabla~\ref{tab:t64}, sin obras en la sala de Talca.
 
 En la nube, la región primaria es sa-east-1 y cada servicio se despliega en al menos dos zonas de disponibilidad. La región us-east-1 solo aloja la recuperación ante desastres. La Figura~\ref{fig:emplazamiento-dominios} ubica cada componente en su sitio.
@@ -105,6 +118,7 @@ En la nube, la región primaria es sa-east-1 y cada servicio se despliega en al 
   \end{tikzpicture}
   \caption{Ubicación de los componentes por dominio y por sitio}
   \label{fig:emplazamiento-dominios}
+  \fuentefigura
 \end{figure}
 
 La figura muestra que ninguna instalación depende de otra para operar. Talca y Concepción tienen cada uno su WMS, su base, su broker y su caché de identidad; los cross-docking reúnen esas mismas funciones en un solo equipo; y el terreno lleva su propio almacén local en el dispositivo. La nube concentra lo que es común a todos los sitios: los portales, el transaccional compartido, la analítica y los servicios de seguridad. Los doce componentes híbridos aparecen en los dos dominios porque cada uno tiene una parte que debe seguir operando en el sitio y otra que consolida en la nube.

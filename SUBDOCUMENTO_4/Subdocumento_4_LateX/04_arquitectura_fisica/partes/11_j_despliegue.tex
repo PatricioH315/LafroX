@@ -200,7 +200,7 @@ El despliegue sin interrupción es, por lo tanto, la regla y no una capacidad op
 
 La sección de conexiones describe los caminos entre los sitios, el terreno y la nube, y su conmutación (Figura~\ref{fig:conexiones} y Tabla~\ref{tab:conexiones}). El despliegue agrega tres definiciones sobre esa red: dónde llegan los túneles, cómo se reparte el direccionamiento y cómo se dirige el tráfico entre regiones.
 
-Los túneles VPN de los cinco sitios terminan en un Transit Gateway en sa-east-1, que enruta entre ellos y los une solo a la VPC de Producción. Es la única VPC con enlace hacia los sitios, coherente con que el on-premise es producción: Desarrollo, QA y Preproducción no tienen conectividad con las bodegas, de modo que un error en un ambiente de prueba no puede alcanzarlas. El direccionamiento se asigna sin solapamiento, según la Tabla~\ref{tab:t64}.
+Los túneles VPN de los cinco sitios llegan a la VPC Hub de sa-east-1, donde el Transit Gateway los enruta entre ellos y los une solo a la VPC de Producción; us-east-1 dispone de su propio Transit Gateway y de su VPN para reconectar los sitios durante una conmutación. La de Producción es la única VPC con enlace hacia los sitios, coherente con que el on-premise es producción: Desarrollo, QA y Preproducción no tienen conectividad con las bodegas, de modo que un error en un ambiente de prueba no puede alcanzarlas. El direccionamiento se asigna sin solapamiento, según la Tabla~\ref{tab:t64}.
 
 \begin{tablalafrox}{Direccionamiento y segmentación}{tab:t64}%
   {F{0.30} F{0.27} Y}%
@@ -210,10 +210,10 @@ Los túneles VPN de los cinco sitios terminan en un Transit Gateway en sa-east-1
   Cross-docking & 10.3.0.0/16 a 10.5.0.0/16 & VLAN de gestión y de operación tras el firewall del sitio, por la VPN \\
   Sitio adicional previsto & 10.6.0.0/16 & Reservado \\
   VPC Producción, zona pública & 10.101.1.0/24 y 10.101.2.0/24 & NAT y Network Load Balancer del canal AS2 \\
-  VPC Producción, zona privada & Resto de 10.101.0.0/16 & ALB de aplicación y consolas, aplicación, datos y adjunto del Transit Gateway \\
+  VPC Producción, zona privada & Resto de 10.101.0.0/16 & ALB de aplicación y consolas, aplicación y datos; enlazada a los sitios por el Transit Gateway de la VPC Hub \\
 \end{tablalafrox}
 
-Cada sitio con cómputo dispone de un bloque propio, y el centro de distribución que Puelche evalúa abrir hacia 2030 en la Región de Los Lagos ya tiene el suyo reservado, de modo que su incorporación es una parametrización de la infraestructura como código (RT-02.12). En la nube, los ALB de aplicación y consolas son privados; la subred pública solo aloja NAT y el Network Load Balancer del canal AS2. Los portales residen en S3 privado, servido únicamente por CloudFront. La VPC de Producción usa endpoints de interfaz execute-api, IoT Core, SQS, SSM y Elastic Container Registry, este último junto con el de S3, donde se almacenan las capas de las imágenes; por ellos los sitios descargan la imagen sin salir a Internet.
+Cada sitio con cómputo dispone de un bloque propio, y el centro de distribución que Puelche evalúa abrir hacia 2030 en la Región de Los Lagos ya tiene el suyo reservado, de modo que su incorporación es una parametrización de la infraestructura como código (RT-02.12). En la nube, los ALB de aplicación y consolas son privados; la subred pública solo aloja NAT y el Network Load Balancer del canal AS2. Los portales residen en S3 privado, servido únicamente por CloudFront. La VPC de Producción usa endpoints de interfaz execute-api, IoT Core, SQS, SSM y Elastic Container Registry, y endpoints de puerta de enlace para DynamoDB y S3. Como los de puerta de enlace no son alcanzables desde los sitios por la VPN, los sitios descargan la imagen por el endpoint de interfaz de Elastic Container Registry y por un endpoint de interfaz de S3, donde se almacenan las capas de las imágenes, sin salir a Internet.
 
 El tráfico externo sigue las entradas de la sección~\ref{sub:superficie}. Route 53 conmuta el enrutamiento regional ante falla, pero la identidad, las API pública y privada y el acceso a las consolas por Verified Access deben restituirse antes de reabrir transacciones; la VPN hacia us-east-1 se activa durante la reconexión del broker (Tabla~\ref{tab:4-3-6}).
 

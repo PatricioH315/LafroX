@@ -71,6 +71,7 @@ La Figura~\ref{fig:conexiones} muestra estas conexiones.
   \end{tikzpicture}
   \caption{Conexiones entre los sitios, el terreno y la nube}
   \label{fig:conexiones}
+  \fuentefigura
 \end{figure}
 
 La figura distingue las entradas públicas, los túneles de sitio y las sincronizaciones locales en cuatro flujos:
@@ -138,7 +139,7 @@ Cada conexión se apoya en equipos del sitio que también pueden fallar. La Tabl
   Instancia de escritura VM-02 & Se reinicia en otro nodo del clúster. & D-05 restaura la base en hasta 4 h sin enlace. \\
   Disco de un nodo de Talca & El RAID 10 reconstruye sobre el repuesto en caliente. & Ceph conserva una segunda copia en otro nodo. \\
   Miembro del stack de switches de Talca & El otro miembro mantiene el tráfico. & Reposición sin corte. \\
-  Servidor de borde de Concepción & El RAID 10 tolera la falla de un disco; el equipo tiene fuente única y, ante su falla, se repone. & La pila se restaura desde la réplica en Aurora. \\
+  Servidor de borde de Concepción & El RAID 10 tolera la falla de un disco; el equipo tiene fuente única y, ante su falla, se repone. & La pila se reinstala con la misma imagen y la base local se reconstruye desde el estado central, que ya recibió los eventos del sitio por las colas. \\
   Mini-PC de un cross-docking & Equipo único; se repone. & El nuevo equipo se resincroniza desde Talca y SQS FIFO. \\
   Firewall de un cross-docking & Equipo único; se repone. & La ventana de 3 h opera 100\,\% local y sincroniza al reconectar. \\
   Periféricos de andén & Sin redundancia por equipo. & La etiqueta se emite en otra de las impresoras del centro de distribución. \\

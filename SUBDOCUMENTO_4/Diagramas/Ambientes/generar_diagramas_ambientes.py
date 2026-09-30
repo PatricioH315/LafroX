@@ -221,12 +221,12 @@ d.paso(7, 1526, 530)
 d.box('Contenedores de la misma imagen; infraestructura de cada sitio declarada como código versionado', 1560, 610, 430, 70, fill='#F4F6F6')
 d.edge(ecr, au, 'migraciones de esquema', ports=R % 0.75, pos=0.25)
 d.edge(ecr, f1, 'azul-verde con canario', ports=R % 0.25, pos=0.25)
-d.edge(ecr, sit, 'misma imagen desde ECR por la VPN y los endpoints de la VPC de Producción; Ansible (F-02) actualiza los contenedores',
+d.edge(ecr, sit, 'misma imagen desde ECR por la VPN (VPC Hub) y los endpoints de interfaz de la VPC de Producción; Ansible (F-02) actualiza los contenedores',
        dashed=1, ports='exitX=0;exitY=0.5;entryX=0;entryY=0.5;', pos=0.3, pts=((14, 508), (14, 830), (1520, 830), (1520, 565)))
 d.leyenda(COMUNES + ['Migraciones Laravel aditivas y reversibles, antes de cambiar el tráfico (RT-04.10)',
                      'Despliegue azul-verde con canario en ECS Fargate; paso automático sin intervención manual (RT-04.06, RT-04.07)',
                      'Publicación de los portales Angular en S3 privado y CloudFront',
-                     'Sitios on-premise: descarga desde ECR por la VPN y los endpoints; Ansible (F-02) actualiza los contenedores, sitio por sitio'],
+                     'Sitios on-premise: descarga desde ECR por la VPN (VPC Hub) y los endpoints de interfaz; Ansible (F-02) actualiza los contenedores, sitio por sitio'],
           20, 860, 720)
 d.save('A4_Ambiente_Produccion.drawio')
 

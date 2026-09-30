@@ -68,7 +68,20 @@ Para la recuperación on-premise, el gabinete de borde del CD Concepción no est
   \item Monitoreo remoto integrado al NOC del sitio.
 \end{itemize}
 
-El listado componente por componente (cómputo, almacenamiento, enlace redundante y respaldo de alimentación) se entrega en el Formulario T-11. Los gabinetes de borde de los tres cross-docking no forman parte del sitio de recuperación y se especifican en el Formulario T-11, sin repetir aquí la tipología.
+El listado componente por componente (cómputo, almacenamiento, enlace redundante y respaldo de alimentación) se entrega en el Formulario T-11. Los gabinetes de borde de los tres cross-docking no forman parte del sitio de recuperación; se especifican en el Formulario T-11 y su arquitectura se muestra en la Figura~\ref{fig:crossdocking}, sin repetir aquí la tipología.
+
+La Figura~\ref{fig:cd-concepcion} muestra el gabinete de borde de Concepción y el equipamiento con que opera todos los días.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\linewidth]{figuras/Arquitectura_Fisica_CD_Concepcion.png}
+  \caption{Gabinete de borde del CD Concepción}
+  \label{fig:cd-concepcion}
+  \fuentefigura
+\end{figure}
+\FloatBarrier
+
+La fibra es el enlace principal y el LTE lo respalda; ambos llegan a un firewall único que termina el túnel hacia la nube. Detrás, un switch conecta el servidor Proxmox de nodo único, que aloja cuatro máquinas virtuales: VM-C01 con el WMS, VM-C02 con PostgreSQL, VM-C03 con la caché de Keycloak y VM-C04 con RabbitMQ, el shipper y el colector ADOT. En la bodega, los terminales MC9400 y las impresoras de andén trabajan por Wi-Fi 6E contra el WMS local; en la cadena de frío, los sensores entregan sus lecturas al gateway IoT, que las publica por MQTTS y bloquea el despacho ante una excursión térmica. La figura muestra que Concepción ejecuta la misma pila de Talca en una sola máquina. Por eso puede asumir la bodega de Talca con la promoción controlada del motor de almacenes, sin instalar software nuevo durante la contingencia. El firewall y el servidor son puntos únicos de falla aceptados, cubiertos por la operación autónoma de 24 horas ante la pérdida del enlace y, ante la falla de un equipo, por su reposición y la reconstrucción de la base local desde el estado central, al que Concepción ya entregó sus eventos por las colas (sección~\ref{sec:conexiones}).
 
 \subsection{Replicación}
 
