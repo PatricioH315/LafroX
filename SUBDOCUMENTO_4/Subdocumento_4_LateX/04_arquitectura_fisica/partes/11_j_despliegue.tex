@@ -125,7 +125,7 @@ El acceso privilegiado reúne estos controles:
 
 La cuenta de último recurso (sección~\ref{sub:adr-15}) se usa solo ante la indisponibilidad del IdP, con doble custodia, alerta inmediata, rotación de credenciales tras su uso y revisión posterior registrada.
 
-Los portales de clientes, transportistas y proveedores siguen el mismo ciclo: su aplicación Angular se publica por ambiente en S3 privado y CloudFront, con la imagen de aplicación del mismo ambiente como backend, y entra a producción con el hito de enero de 2029.
+Los portales de clientes, transportistas y proveedores siguen el mismo ciclo: su aplicación Angular se publica por ambiente en S3 privado y CloudFront, con la imagen de aplicación del mismo ambiente como backend.
 
 \subsubsection{Artefacto y perfiles de ejecución}
 
@@ -193,7 +193,7 @@ El calendario de Puelche limita cuándo se puede intervenir la plataforma. El ca
   Resto del calendario & Sí, sin interrupción & Excepcional, con aviso de 10 días hábiles \\
 \end{tablalafrox}
 
-El despliegue sin interrupción es, por lo tanto, la regla y no una capacidad opcional: solo fuera de las ventanas protegidas se admite una indisponibilidad programada, y únicamente por excepción. En la ventana nocturna, además, toda intervención en bodega considera el turno de preparación. Descontados los congelamientos, quedan unos diez meses desplegables al año, de los que se excluyen los tres primeros días hábiles de cada mes. Sobre ese margen se fija una cadencia quincenal de despliegue y un tiempo de hasta cinco días hábiles desde que se confirma un cambio de código hasta que llega a producción, compatible con el plazo de siete días para remediar una vulnerabilidad crítica que declara la arquitectura de seguridad (apartado 4.1). La tasa de cambios fallidos no supera el 5 \% de los despliegues del mes y el tiempo de restauración no supera 4 horas, conforme al Artículo 78.3; estas cuatro métricas se miden durante la Operación (RT-04.12). Las correcciones de incidentes críticos usan el mismo pipeline, con prioridad y fuera de la cadencia quincenal, dentro del plazo de resolución de 4 horas.
+El despliegue sin interrupción es, por lo tanto, la regla y no una capacidad opcional: solo fuera de las ventanas protegidas se admite una indisponibilidad programada, y únicamente por excepción. En la ventana nocturna, además, toda intervención en bodega considera el turno de preparación. Descontados los congelamientos, quedan unos diez meses desplegables al año, de los que se excluyen los tres primeros días hábiles de cada mes. Sobre ese margen se fija una cadencia quincenal de despliegue y un tiempo de hasta cinco días hábiles desde que se confirma un cambio de código hasta que llega a producción, compatible con el plazo de siete días corridos para remediar una vulnerabilidad crítica (Artículo 21.1 de las Bases Administrativas; RT-11.04). La tasa de cambios fallidos no supera el 5 \% de los despliegues del mes y el tiempo de restauración no supera 4 horas, conforme al Artículo 78.3; estas cuatro métricas se miden durante la Operación (RT-04.12). Las correcciones de incidentes críticos usan el mismo pipeline, con prioridad y fuera de la cadencia quincenal, dentro del plazo de resolución de 4 horas.
 
 \subsection{Red de despliegue}
 \label{sub:2-redes-topologia-segmentacion-y-conectivi}
@@ -210,7 +210,7 @@ Los túneles VPN de los cinco sitios terminan en un Transit Gateway en sa-east-1
   Cross-docking & 10.3.0.0/16 a 10.5.0.0/16 & VLAN de gestión y de operación tras el firewall del sitio, por la VPN \\
   Sitio adicional previsto & 10.6.0.0/16 & Reservado \\
   VPC Producción, zona pública & 10.101.1.0/24 y 10.101.2.0/24 & NAT y Network Load Balancer del canal AS2 \\
-  VPC Producción, zona privada & Resto de 10.101.0.0/16 & ALB de aplicación y consolas, aplicación, datos y Transit Gateway \\
+  VPC Producción, zona privada & Resto de 10.101.0.0/16 & ALB de aplicación y consolas, aplicación, datos y adjunto del Transit Gateway \\
 \end{tablalafrox}
 
 Cada sitio con cómputo dispone de un bloque propio, y el centro de distribución que Puelche evalúa abrir hacia 2030 ya tiene el suyo reservado. En la nube, los ALB de aplicación y consolas son privados; la subred pública solo aloja NAT y el Network Load Balancer del canal AS2. Los portales residen en S3 privado, servido únicamente por CloudFront. La VPC de Producción usa endpoints de interfaz execute-api, IoT Core, SQS, SSM y Elastic Container Registry, este último junto con el de S3, donde se almacenan las capas de las imágenes; por ellos los sitios descargan la imagen sin salir a Internet.
@@ -295,7 +295,7 @@ AWS Backup aplica a Aurora y DynamoDB los respaldos y la recuperación a un inst
 \subsection{Verificación de la continuidad}
 \label{sub:6-verificacion-de-la-continuidad}
 
-Los mecanismos anteriores se verifican con pruebas periódicas. Antes de cada paso a producción, y al menos una vez por semestre durante la Operación, se inyectan la caída de una instancia, de una zona o de una dependencia externa, la latencia elevada y la saturación de disco (RT-10.07), y se comprueban las resoluciones de las Tablas~\ref{tab:fallas-sitios} y~\ref{tab:fallas-nube}. La conmutación regional se ensaya dos veces al año con escrituras de pedidos y sincronización en us-east-1, midiendo el RTO y el RPO; con la misma frecuencia se ensaya la pérdida completa del sitio de Talca, distinta del corte de enlace, mediante la promoción del WMS de Concepción; los respaldos se restauran mensualmente. Las pruebas se programan fuera de la ventana de despacho y producen un informe de resultados. El plan de continuidad del negocio se elabora conforme a ISO 22301, y la continuidad TIC se estructura conforme a ISO/IEC 27031, articulada con el plan de recuperación ante desastres de esta sección (RT-10.03 y RT-10.04).
+Los mecanismos anteriores se verifican con pruebas periódicas. Antes de cada paso a producción, y al menos una vez por semestre durante la Operación, se inyectan la caída de una instancia, de una zona o de una dependencia externa, la latencia elevada y la saturación de disco (RT-10.07), y se comprueban las resoluciones de las Tablas~\ref{tab:fallas-sitios} y~\ref{tab:fallas-nube}. La conmutación regional se ensaya dos veces al año con escrituras de pedidos y sincronización en us-east-1, y el RTO y el RPO medidos deben cumplirse en el 100~\% de los ensayos (Artículo 78.3); con la misma frecuencia se ensaya la pérdida completa del sitio de Talca, distinta del corte de enlace, mediante la promoción del WMS de Concepción; los respaldos se restauran mensualmente. Las pruebas se programan fuera de la ventana de despacho y producen un informe de resultados. El plan de continuidad del negocio se elabora conforme a ISO 22301, y la continuidad TIC se estructura conforme a ISO/IEC 27031, articulada con el plan de recuperación ante desastres de esta sección (RT-10.03 y RT-10.04).
 
 La aplicación se instrumenta con OpenTelemetry para PHP y Laravel. Además de las métricas de infraestructura, cada perfil publica señales agrupadas por ámbito:
 
