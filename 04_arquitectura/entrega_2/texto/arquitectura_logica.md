@@ -1,73 +1,62 @@
-# Capítulo 4 · Arquitectura Lógica de la Solución (Parte 4.1)
+# 4. Introducción a la Arquitectura lógica y física de la solución
 
-Versión de trabajo 0.2. Este subdocumento define responsabilidades, flujos e interfaces de la arquitectura lógica. Las referencias al despliegue expresan dependencias de esos servicios; no sustituyen ni modifican el subdocumento de arquitectura física.
+El capítulo 4 explica cómo la solución sostiene la operación distribuida de Puelche. Este fragmento desarrolla la arquitectura lógica del apartado 4.1 y la conecta con las capacidades del capítulo 3, el modelo de datos del capítulo 5 y los contratos de integración. El apartado 4.2 debe acreditar dónde se ejecuta cada componente; el 4.3, la estrategia de centros de datos. El registro ADR y el Formulario T-11 acompañan la arquitectura integrada.
 
-## 4.1  Visión General de la Arquitectura
+## 4.1 Arquitectura lógica
 
-En Puelche, un pedido debe poder tomarse en una ruta sin cobertura, prepararse durante la noche y llegar al cliente con su lote y su evidencia de entrega identificados. La arquitectura parte de esa continuidad: cada operación se registra donde ocurre y se reconcilia cuando vuelve la conexión. Para ordenar las responsabilidades, la solución se organiza en las ocho capas exigidas por el numeral 2.1 de las Bases Técnicas Transversales (RT-02.01).
+Este apartado desarrolla las responsabilidades y los contratos de la solución que deben corresponder al esquema y explicación de los apartados 3.3 y 3.4. La correspondencia se establece por capacidad: recepción e inventario (M1–M2), preventa y planificación (M3–M4), preparación y reparto (M5–M6), rendición y devoluciones (M7–M8), calidad y analítica (M9–M10), canal moderno y flota (M11–M12). El emplazamiento, las conexiones y su capacidad corresponden a 4.2; los centros de datos, a 4.3. Los catálogos extensos se entregan en los anexos 4.1-A a 4.1-N. El Anexo N identifica las capacidades del capítulo 3 disponible y la realización requerida de cada módulo; distingue esa cobertura lógica del cotejo completo que exige el capítulo integrado.
+
+En Puelche, un pedido debe poder tomarse en una ruta sin cobertura, prepararse durante la noche y llegar al cliente con su lote y su evidencia de entrega identificados. La arquitectura parte de esa continuidad: cada operación se registra donde ocurre y se reconcilia cuando vuelve la conexión. Para ordenar las responsabilidades, la solución se organiza en las ocho capas exigidas por el numeral 2.1 de las Bases Técnicas Transversales (Pontificia Universidad Católica de Valparaíso [PUCV], 2026b, cap. 2, p. 6; RT-02.01).
+
+### 4.1.1 Especificaciones Tecnologías de Software a utilizar
+
+El núcleo de negocio se implementa como monolito modular en Laravel 13 y PHP 8.5. Frente a microservicios por dominio, esta elección conserva una sola base de código y un despliegue comprensible para el equipo TI de cuatro personas; sincronización, mensajería EDI y telemetría se ejecutan como procesos separables cuando su carga lo exija. Laravel proporciona rutas, validación, políticas, contenedor de dependencias y trabajos en cola; las reglas de negocio permanecen en módulos propios, sin depender de esas interfaces. Se seleccionan PostgreSQL/PostGIS para transacciones y geografía, RabbitMQ local para conservar trabajo durante un corte y SQS FIFO para ordenar su entrega por partición al reconectar. Ni el framework ni la cola sustituyen la deduplicación y la conciliación de los consumidores.
+
+Angular y TypeScript sirven los portales; Kotlin nativo en Android permite escaneo, captura de evidencia y almacenamiento cifrado en el parque móvil Zebra. Keycloak emite la identidad central mediante OIDC; las decisiones de autorización siguen siendo de cada servicio. La comparación con microservicios, aplicaciones híbridas y otros productos se resume en la sección de alternativas y en los ADR fechados. Los servicios gestionados de AWS apoyan la ejecución y la integración; su ubicación y redundancia corresponden a 4.2. Estas elecciones deben sostenerse durante el contrato mediante actualización de versiones soportadas, sin prometer que una versión inicial durará 56 meses.
 
 Los principios que gobiernan el diseño son los siguientes:
 
-- **Continuidad sin conexión.** Preventa y reparto deben registrar un turno completo de 14 horas sin cobertura. El componente local debe mantener al menos 24 horas continuas de operación autónoma y degradada (RT-03.10). La sincronización posterior es idempotente: reenviar un evento no vuelve a ejecutar la operación. Los conflictos se resuelven con reglas de negocio documentadas, no dando prioridad automática al último registro recibido.
+  - **Continuidad sin conexión.** Preventa y reparto deben registrar un turno completo de 14 horas sin cobertura. El componente local debe mantener al menos 24 horas continuas de operación autónoma y degradada (RT-03.10). La sincronización posterior es idempotente: reenviar un evento no vuelve a ejecutar la operación. Los conflictos se resuelven con reglas de negocio documentadas, no dando prioridad automática al último registro recibido.
+  - **Atención adaptada al canal tradicional.** La solución no exige que los 11.600 almacenes instalen una aplicación ni dispongan de conexión propia. El conductor registra la entrega y su confirmación mediante firma o QR; los avisos por WhatsApp/SMS se utilizan cuando el canal está disponible.
+  - **Responsabilidades distribuidas.** Recepción, preparación y despacho conservan su núcleo transaccional disponible en cada sitio. Preventa, reparto y canal moderno disponen de servicios centrales, mientras las aplicaciones de terreno conservan la captura local cuando no pueden alcanzarlos. La ubicación, la capacidad y la redundancia de esos servicios se justifican en 4.2, conforme al Art. 16.
+  - **Evolución durante 56 meses.** La Etapa 1 comprende los meses 1–15, con producción en el mes 16; la Etapa 2, los meses 13–20, con producción en el mes 21. Los 36 meses de operación se extienden del mes 21 al 56 (Art. 17).
+  - **Verificación explícita del acceso.** La identidad central utiliza OIDC y MFA. Cada servicio verifica autorización, alcance y contexto; una solicitud no se considera confiable solo por provenir de la red corporativa. El cifrado y la auditoría acompañan cada intercambio.
+  - **Recuperación y reconciliación.** RT-07.04 exige RTO $\leq$ 4 horas y RPO $\leq$ 15 minutos para los servicios críticos. La retención local permite reconciliar al recuperar el enlace, siempre que sobreviva el sitio; no protege por sí sola frente a su destrucción durante el corte. El Anexo 4.1-M define la prueba y la brecha de protección externa que debe resolverse sin rebajar el requisito. Los ambientes, medios de respaldo y conectividad redundante corresponden a 4.2.
+  - **Operación sostenible para cuatro personas.** Las herramientas, los procedimientos y el soporte deben permitir que el equipo TI de Puelche administre la solución con el apoyo del adjudicatario durante todo el contrato.
 
-- **Atención adaptada al canal tradicional.** La solución no exige que los 11.600 almacenes instalen una aplicación ni dispongan de conexión propia. El conductor registra la entrega y su confirmación mediante firma o QR; los avisos por WhatsApp/SMS se utilizan cuando el canal está disponible.
+La descripción sigue el marco TOGAF y la organización de vistas de ISO/IEC/IEEE 42010:2022 (International Organization for Standardization [ISO], 2022). La vista lógica define las responsabilidades de los componentes y sus relaciones con los procesos, los datos, la seguridad y las integraciones. Cada decisión arquitectónica debe conservar su justificación, las alternativas consideradas y los requisitos que la sustentan (PUCV, 2026b, cap. 2, p. 6; RT-02.04).
 
-- **Responsabilidades distribuidas entre bodega y nube.** Recepción, preparación y despacho mantienen su núcleo transaccional local. Preventa, reparto y canal moderno tienen sus servicios centrales en AWS, junto con la integración, la analítica y el almacenamiento consolidado. Las aplicaciones de terreno conservan la captura local aun cuando esos servicios no sean alcanzables. Esta separación responde al despliegue híbrido obligatorio del Art. 16.
+### 4.1.2 Principios de integración
 
-- **Evolución durante 56 meses.** La Etapa 1 comprende los meses 1–15, con producción en el mes 16; la Etapa 2, los meses 13–20, con producción en el mes 21. Los 36 meses de operación se extienden del mes 21 al 56 (Art. 17).
+La integración no es un apéndice: es el tejido que sostiene la operación distribuida de Puelche. El riesgo principal del caso está en las costuras entre sistemas legados sin documentación de interfaces, no en los módulos nuevos. De las Bases Técnicas Transversales (RT-02.06–02.08 y RT-05.16) y del caso 02 se desprenden ocho reglas de diseño:
 
-- **Verificación explícita del acceso.** La identidad central utiliza OIDC y MFA. La comunicación interna aplica mTLS y segmentación, sin considerar confiable una solicitud solo por provenir de la red corporativa. La infraestructura se gestiona como código y los servicios críticos requieren distribución entre zonas de disponibilidad.
+  - **Contrato antes que conexión.** Cada interfaz tiene dueño, contrato OpenAPI o AsyncAPI, versión y comportamiento ante falla antes de entrar en operación.
+  - **Asincronía con excepciones justificadas.** Los eventos desacoplan procesos; disponibilidad, crédito, autorización de pago y actos tributarios que exigen respuesta se consultan con tiempo máximo de espera y estado explícito.
+  - **Idempotencia.** Una escritura conserva su UUID en todos los reintentos; el consumidor deduplica y resuelve conflictos por regla de negocio, no por la última marca de tiempo.
+  - **Reconciliación auditable.** Cada conflicto conserva operación, regla, resultado, autor y momento, conforme a la bitácora del Artículo 16.4.
+  - **Frontera única del legado.** La capa anticorrupción traduce hacia el ERP; ningún módulo o portal escribe directamente en él.
+  - **Confianza explícita.** Cada mensaje y llamada se autentica, autoriza y correlaciona; las excepciones de conectividad hacia el sitio son privadas, acotadas y auditadas.
+  - **Falla declarada.** Las quince entradas del catálogo indican si reintentan, se difieren, degradan o requieren procedimiento manual.
+  - **Ventana de despacho protegida.** Las cargas masivas, reprocesos y despliegues de conectores no interrumpen la operación de 05:30 a 07:00.
 
-- **Recuperación con condiciones declaradas.** Se consideran cinco ambientes, incluido el de recuperación ante desastres (RT-04.01). La solución propone una región secundaria en us-east-1, con simulacros semestrales (Art. 20 / RT-07.07). La replicación de datos personales queda condicionada a la aprobación expresa del CLIENTE y a la revisión de los requisitos de transferencia aplicables. La alternativa intrarregional en sa-east-1 combina una tercera zona y respaldo inmutable, pero no equivale a recuperación ante la pérdida completa de la región: su cobertura y RTO deben aceptarse expresamente antes de adoptarla.
+Estas reglas se verifican en los contratos, el catálogo de interfaces y las pruebas de falla de cada consumidor.
 
-- **Operación sostenible para cuatro personas.** Las herramientas, los procedimientos y el soporte deben permitir que el equipo TI de Puelche administre la solución con el apoyo del adjudicatario durante todo el contrato.
+Estos principios se materializan en la capa de integración, los eventos canónicos, la capa anticorrupción, el catálogo de interfaces y las reglas de reconciliación descritas en este apartado.
 
-La descripción sigue el marco TOGAF declarado y la organización de vistas de ISO/IEC/IEEE 42010. Este documento desarrolla la vista lógica y sus relaciones con procesos, datos, seguridad e integración. La vista de despliegue/física se mantiene en su documento específico; aquí no se declara su validación. Las decisiones se documentan mediante registros de decisión arquitectónica (ADR) fechados y fundamentados, conforme a RT-02.04.
+El núcleo reúne M1–M12 en Laravel 13 sobre PHP 8.5, con dependencias fijadas por `composer.lock`. Cada módulo tiene espacio de nombres, servicios de aplicación, reglas de dominio y adaptadores propios. Esta organización evita que una pantalla o un cambio de proveedor invada otra capacidad. Para 14.200 clientes y unos 31.000 pedidos mensuales, se conserva la sencillez operativa del monolito modular, en línea con el numeral 2.3 de las Bases Técnicas Transversales. Sincronización, EDI y telemetría tienen trabajadores y capacidad de escalado independientes desde el inicio (RT-02.02); su emplazamiento se detalla en 4.2.
 
-Para la estructura del núcleo de negocio se evaluaron tres alternativas.
-El monobloque único, sin fronteras de contexto, se descartó porque acopla dominios que el caso exige separar (trazabilidad de lote, preventa, reparto y costo de servir) y dificulta la convivencia con los legados (ERP 2017, WMS 2013).
-La arquitectura de microservicios se descartó porque su costo operativo y de gobierno supera el beneficio para el volumen del caso (14.200 clientes, ~31.000 pedidos/mes, ≈150.000 mensajes/día) y para un equipo TI de 4 personas (§ 4.1), y porque la operación sin conexión obligatoria (14 h por turno y 24 h de continuidad, RT-03.10) en un despliegue híbrido con on-premise obligatorio (Art. 16) no exige esa granularidad.
-Se eligió el monolito modular en Django: los 12 módulos viven separados por apps y contextos (RT-02.05, stateless), con sincronización, EDI y telemetría ejecutables como workers independientes cuando la carga lo requiera (RT-02.02).
-El despliegue corre tanto en ECS Fargate como en Docker Compose sobre Proxmox, en línea con el numeral 2.3 de las Bases Técnicas Transversales.
+La volumetría operativa que condiciona el dimensionamiento es la siguiente: 14.200 clientes activos, 8.400 SKU (que pasan a aproximadamente 9.500), 31.000 pedidos mensuales con 260.000 líneas y 2,4 millones de unidades, aproximadamente 1.400 entregas diarias habituales con un pico de septiembre de 2.600 entregas (volumen casi duplicado durante tres semanas), 96 camiones en la ventana crítica de despacho (42 propios y 54 de transportistas externos), 62 preventistas, aproximadamente 200 conductores, 120 preparadores nocturnos y 310 personas de centro de distribución (PUCV, 2026a, cap. 14, pp. 24–25). El diseño se dimensiona contra el pico de septiembre en la ventana de 05:30 a 07:00, nunca contra el promedio, y declara explícitamente los puntos únicos de falla (SPOF) con su mitigación conforme a RT-02.11.
 
-### 4.1.1  Principios de Integración
+El modelo distingue seis instalaciones: los CD de Talca y Concepción, las plataformas de cross-docking de Curicó, Chillán y Los Ángeles, y la casa matriz de Talca, contigua al CD principal (Caso 02, cap. 2.3). Las primeras cinco requieren servicios locales de operación; la casa matriz no aloja cómputo propio y utiliza los portales y las consolas en nube. Los identificadores de sitio serán parametrizables para incorporar una séptima instalación proyectada a tres años y evaluar la futura operación en Los Lagos hacia 2030.
 
-La integración sostiene la operación distribuida de Puelche. El riesgo principal del caso está en las costuras entre sistemas legados sin documentación de interfaces, no en los módulos nuevos. Los siguientes ocho principios gobiernan cada decisión de integración y se trazan a la normativa y a los componentes que los implementan: Los códigos D8, S26, D-AL-05 y A-04 citados en la tabla remiten al registro de decisiones y al registro de reglas de negocio del Capítulo 17.1.
+### 4.1.3 Capas de la arquitectura
 
-| Nº | Principio | Base normativa | Componente / Regla / Decisión que lo implementa |
-|---|---|---|---|
-| 1 | **Contrato antes que conexión.** Ninguna integración existe sin contrato publicado (OpenAPI 3.1 o AsyncAPI 2.6), dueño declarado y versión semántica. Una integración sin contrato no entra al catálogo y no se despliega. | Art. 23 · RT-05.16 | ACL (A-04), Hub EDI GS1, OpenAPI 3.1/AsyncAPI 2.6 por módulo, Catálogo §3 |
-| 2 | **Asíncrono por defecto, síncrono por excepción.** Toda dependencia entre módulos se modela como evento por la Capa 5. Solo las lecturas críticas de la venta (disponibilidad de stock, crédito del cliente) y los actos de fe pública (DTE al SII, autorización de pago) son síncronas, y siempre con timeout explícito. | Art. 19 · RT-02.07/02.08 | Capa 5: RabbitMQ, SQS FIFO, EventBridge; lecturas críticas vía Capa 3 con timeout |
-| 3 | **Idempotencia universal.** Toda escritura originada en terreno o en bodega lleva UUID de cliente y ventana de deduplicación documentada. El servidor es la fuente de verdad y resuelve conflictos por regla de negocio, nunca por marca de tiempo ciega. | RT-02.06 · S26 | UUID en toda escritura offline, deduplicación en Gateway y Capa 4, regla de deduplicación S26 |
-| 4 | **Bitácora de reconciliación auditable.** Toda decisión de reconciliación registra qué transacción, qué conflicto, qué regla se aplicó, quién la aplicó y cuándo. Es un entregable auditable ante el mandante, no un registro técnico. | Art. 16.4 · RT-03.12 | Regla de reserva (D8), bitácora Art. 16.4, no timestamp ciego |
-| 5 | **El legado nunca se escribe directo.** El ERP de 2017 se toca solo a través de la capa anticorrupción A-04. Ningún módulo, portal ni cadena de supermercados escribe al ERP. | RT-05.20 · ADR-11 | ACL (A-04) frontera única ERP, celery-erp-sync → ACL → ERP |
-| 6 | **Zero Trust también en la integración.** Todo tráfico on-premise → nube es saliente (HTTPS/443, MQTTS/8883). Las dos únicas excepciones entrantes están declaradas y acotadas (D-AL-05). | Art. 21 · D-AL-05 | Tráfico saliente únicamente, 2 excepciones D-AL-05 controladas |
-| 7 | **Toda integración declara cómo falla.** Cada entrada del catálogo declara su comportamiento ante falla —reintentar, degradar, diferir o suplir con procedimiento manual— y se verifica con inyección de fallas. | RT-10.08 · RT-09.08 | Catálogo 15 integraciones (INT-01 a INT-15) con comportamiento ante falla por entrada |
-| 8 | **Ninguna integración interrumpe la ventana crítica.** Cargas masivas, reprocesos y despliegues de conectores se ejecutan fuera de 05:30–07:00 de lunes a sábado. | RT-10.05 (caso) | Ventana 05:30–07:00 protegida; colas y workers absorben picos fuera de ventana |
+Las ocho capas separan la interacción con las personas, las reglas de negocio y la persistencia. Seguridad y observabilidad atraviesan el conjunto. La Tabla 4.1 permite ubicar cada responsabilidad antes de revisar sus componentes.
 
-Estos principios se materializan en la Capa 5 (§ 4.2.5), el Catálogo de integraciones (§ 4.2.5.1), la Mensajería (§ 4.2.5.2), las Costuras híbridas (§ 4.2.5.3), la Capa anticorrupción (§ 4.2.5.4), el Gobierno y versionado (§ 4.2.5.5) y la Carga/descarga masiva (§ 4.2.5.6).
-
-El núcleo de negocio reúne 12 módulos en un monolito modular Django, con Python 3.12 como línea base de la propuesta. Esta organización mantiene separados los dominios sin imponer al equipo TI la operación de numerosos microservicios. Para 14.200 clientes y unos 31.000 pedidos mensuales, se privilegia esa simplicidad operativa, en línea con el numeral 2.3 de las Bases Técnicas Transversales. Los procesos de sincronización, EDI y telemetría pueden ejecutarse como trabajadores independientes cuando su carga lo requiera (RT-02.02). Se conserva la ejecución en contenedores: ECS Fargate en nube y Docker Compose sobre el entorno Proxmox local, sin desarrollar aquí su dimensionamiento físico.
-
-La volumetría operativa que condiciona el dimensionamiento es la siguiente: 14.200 clientes activos, 8.400 SKU (que pasan a aproximadamente 9.500), 31.000 pedidos mensuales con 260.000 líneas y 2,4 millones de unidades, aproximadamente 1.400 entregas diarias habituales con peak de septiembre de 2.600 entregas (volumen casi duplicado durante tres semanas), 96 camiones en la ventana crítica de despacho (42 propios y 54 de transportistas externos), 62 preventistas, aproximadamente 200 conductores, 120 preparadores nocturnos y 310 personas de centro de distribución. El diseño se dimensiona contra el pico de septiembre en la ventana de 05:30 a 07:00, nunca contra el promedio, y declara explícitamente los puntos únicos de falla (SPOF) con su mitigación conforme a RT-02.11.
-
-La arquitectura distingue seis instalaciones: los CD de Talca y Concepción, las plataformas de cross-docking de Curicó, Chillán y Los Ángeles, y la casa matriz en Talca. Las primeras cinco requieren servicios locales de operación; la casa matriz utiliza los portales y el back office en nube. Esta distinción se conserva como supuesto de trabajo para aclarar la discrepancia entre cinco y seis instalaciones del caso, pendiente de respuesta del mandante. La identificación de sitio será parametrizable para admitir una séptima instalación proyectada a tres años y evaluar la futura operación en Los Lagos hacia 2030. No se presupone que sus recursos físicos estén ya aprobados.
-
-### 4.1.2  Ambientes del ciclo de vida (SDLC)
-
-El ciclo de vida contempla los cinco ambientes exigidos por RT-04.01, incluido el de recuperación ante desastres:
-- **DEV.** Desarrollo de los 12 módulos del monolito (M1–M12) y de los contratos OpenAPI/AsyncAPI, con pipeline CI/CD mediante GitLab CI y CodeBuild y pruebas de contrato consumidor-proveedor (§ 4.2.5.4).
-- **QA.** Pruebas funcionales, de integración y de fallas por integración (inyección de fallas, RT-10.07), además de las pruebas de la ventana crítica 05:30–07:00.
-- **PREPROD.** Marcha blanca y corte (cutover) con réplica de la topología híbrida nube + on-premise, ensayos de los turnos de 24 h sin conexión y de la sincronización posterior.
-- **PROD.** Operación en régimen, con despliegues y cargas masivas fuera de la ventana crítica 05:30–07:00 (§ 4.2.5.5).
-- **Recuperación (DR).** Región secundaria us-east-1 con replicación (Aurora Global, S3 CRR), condicionada a la aprobación del CLIENTE y con prueba semestral (Art. 20 / RT-07.07).
-
-## 4.2  Capas de la Arquitectura
-
-Las ocho capas separan la interacción con las personas, las reglas de negocio y la persistencia. Seguridad y observabilidad atraviesan el conjunto. El siguiente mapa permite ubicar cada responsabilidad antes de revisar sus componentes.
+*Tabla 4.1 — Mapa de capas de la arquitectura lógica*
 
 | Capa | Nombre | Responsabilidad principal |
-| --- | --- | --- |
+| — | — | — |
 | 1 | Presentación | Aplicaciones móviles, terminales de bodega, portales y consolas. |
 | 2 | Borde y exposición | Protección del acceso, contenido estático y recepción segura de tráfico. |
 | 3 | Puerta de enlace | Autenticación de APIs, contratos, cuotas y correlación. |
@@ -77,616 +66,682 @@ Las ocho capas separan la interacción con las personas, las reglas de negocio y
 | 7 | Seguridad transversal | Identidad, secretos, cifrado y auditoría. |
 | 8 | Observabilidad transversal | Métricas, registros, trazas y alertas de operación. |
 
-### 4.2.1  Capa de Presentación
+*Fuente: elaboración propia de LafroX a partir de Bases Técnicas Transversales, numeral 2.1.*
 
-La capa de presentación reúne las herramientas que utiliza cada persona para trabajar: aplicaciones móviles que pueden operar sin conexión y portales web servidos desde la nube. Se declaran 11 roles canónicos para el modelo de acceso. Las 13 vistas de perfiles heredadas se conservan en 4.8 como referencia; su correspondencia con esos roles debe quedar validada en la matriz de permisos, sin confundir una vista de interacción con un rol de autorización.
+Las capas 7 y 8 atraviesan las demás; no duplican reglas de negocio.
+
+La arquitectura se presenta primero mediante su vista general completa (Figura 4.1) y después mediante una síntesis de sus ocho capas (Figura 4.2). Ambas vistas se complementan para relacionar las funciones de negocio con los componentes que las sostienen.
+
+![Vista general completa de la arquitectura lógica](<../../../Diagramas/arquitectura_logica_actual/cambios laravel/ARQL-01_Vision_general.png>)
+
+*Vista general completa de la arquitectura lógica*
+
+*Fuente: elaboración propia de LafroX.*
+
+La vista general muestra cómo cada actor accede a la solución desde su aplicación, portal o consola y se relaciona con los módulos M1–M12. Se lee desde las personas hacia las reglas de negocio, las integraciones y los datos, distinguiendo los componentes de nube y los del sitio. Las conexiones representan intercambios sujetos a autorización, no acceso directo a las bases de datos. Seguridad y observabilidad acompañan todo el recorrido; sus controles y las condiciones de operación sin conexión se desarrollan en los apartados siguientes.
+
+![Vista resumida de las ocho capas lógicas](<../../../Diagramas/arquitectura_logica_actual/ARQL-19_Vista_general_legible.pdf>)
+
+*Vista resumida de las ocho capas lógicas*
+
+*Fuente: elaboración propia de LafroX.*
+
+La vista resumida destaca la responsabilidad de cada capa: presentación captura y muestra información; borde protege la entrada; las puertas de servicio validan las solicitudes; el negocio aplica las reglas en Laravel; integración conserva y distribuye eventos; y acceso a datos administra la persistencia. Seguridad y observabilidad son transversales, no pasos finales del procesamiento. La puerta local permite que la bodega siga operando sin WAN, mientras las colas conservan el trabajo pendiente para reconciliarlo al recuperar la conexión.
+
+#### 4.1.21.1 Capa de presentación
+
+La capa de presentación reúne las herramientas que utiliza cada persona para trabajar: aplicaciones móviles que pueden operar sin conexión y portales web servidos desde la nube. Preventistas, conductores y preparadores capturan hechos operativos; clientes, transportistas y proveedores consultan únicamente sus datos autorizados; Calidad, gerencias, planificación y TI toman decisiones desde consolas especializadas. Los permisos se asignan mediante una matriz de roles y atributos: un perfil de interacción no implica por sí solo acceso a todas las funciones del módulo.
 
 Las aplicaciones de campo (preventa y reparto) se construyen en Kotlin nativo para Android, decisión alineada con el ecosistema del parque de dispositivos Zebra (EC55, TC58e, MC9400) desplegado en los centros de distribución y con las condiciones de operación del terreno. La app de preventa mantiene una foto local de datos de lectura (stock, precios, crédito, promociones) y captura local de eventos (pedidos, identificadores únicos UUID); la app de reparto gestiona la entrega, la prueba de entrega digital (POD con firma, código QR y fotografía), la cobranza en ruta y el control de envases retornables. Ambas aplicaciones operan con datos locales cifrados y sincronizan de forma idempotente por medio del API Gateway cuando se recupera la conectividad.
 
-Los terminales de bodega (HHT con escáner GS1) descargan las misiones de preparación al inicio del turno y registran su ejecución localmente, incluso en cámaras a -22 °C sin señal. La continuidad de 24 horas corresponde al servicio de bodega en su conjunto; debe verificarse con los cambios de turno y la vigencia de las credenciales, no deducirse de la sola descarga de misiones.
+Los terminales de bodega (HHT con escáner GS1) descargan las misiones de preparación al inicio del turno y registran su ejecución localmente, incluso en cámaras a -22 °C sin señal. La autonomía mínima de 24 horas comprende el servicio de bodega completo: registro de operaciones, conservación de datos, cambios de turno y control de acceso.
 
-Los portales web, implementados en Angular con Tailwind CSS, permiten a clientes consultar pedidos y documentos, a transportistas revisar rutas y a proveedores consultar órdenes y recepciones. El catálogo público admite consulta sin autenticación; las funciones privadas requieren identidad OIDC mediante Keycloak y permisos por rol. La tarea `web` en ECS Fargate sirve las aplicaciones. El acceso administrativo se restringe a la red corporativa o a VPN con MFA.
+Los portales web, implementados en Angular con Tailwind CSS, permiten a clientes consultar pedidos y documentos, a transportistas revisar rutas y a proveedores consultar órdenes y recepciones. El catálogo público admite consulta sin autenticación; las funciones privadas requieren identidad OIDC mediante Keycloak y permisos por rol. El acceso administrativo exige MFA y una ruta autorizada, definida físicamente en 4.2.
 
-Las consolas de rutas, calidad, BI y administración TI acceden a sus dominios mediante APIs autorizadas. Ningún navegador se conecta directamente a las bases de datos. Esta separación permite aplicar las mismas reglas de acceso y auditoría con independencia de la pantalla utilizada. En las Figuras 2–4, 9 y 13 (§ 4.8) se muestra el recorrido del preventista, de los conductores, del preparador y del planificador.
+Las consolas de rutas, calidad, BI y administración TI acceden a sus dominios mediante APIs autorizadas. Ningún navegador se conecta directamente a las bases de datos. Esta separación permite aplicar las mismas reglas de acceso y auditoría con independencia de la pantalla utilizada.
 
-### 4.2.2  Capa de Borde y Exposición (Capa 2)
+#### 4.1.21.2 Capa de borde y exposición (Capa 2)
 
-La capa de borde constituye el único punto de entrada público de la plataforma y, en el contexto de Puelche, también es el borde de terreno y bodega donde la conectividad es intermitente. Sus componentes principales son:
+La capa de borde delimita la entrada pública y la entrada de dispositivos de terreno y bodega, donde la conectividad es intermitente. Define las siguientes responsabilidades; su despliegue se especifica en 4.2:
 
-- **CDN (Amazon CloudFront).** Distribución de contenido estático de portales y catálogo público.
+  - **CDN (Amazon CloudFront).** Entrada pública de portales externos y APIs de negocio: distribuye contenido estático y encamina las rutas `/v1` y `/sync/v1` al API Gateway. El acceso directo al origen de esas APIs debe rechazarse y probarse. Las consolas internas usan acceso privado verificado; el transporte AS2 tiene una superficie separada, restringida a contrapartes registradas.
+  - **WAF gestionado (AWS WAF + Shield).** Filtrado de tráfico con reglas OWASP Top 10 y reglas personalizadas por API; protección contra denegación de servicio en capas 3, 4 y 7.
+  - **Balanceador de carga (ALB).** Distribuye hacia los servicios privados el tráfico que API Gateway entrega mediante su integración privada. El flujo de acceso público es cliente $\rightarrow$ CloudFront/WAF $\rightarrow$ API Gateway $\rightarrow$ integración privada/ALB $\rightarrow$ servicio.
+  - **Acceso local y continuidad.** Los servicios del sitio aplican control de acceso propio y preservan la operación crítica aun cuando todos los enlaces externos estén indisponibles. Los CD usan fibra y LTE; los cross-docking usan Starlink y LTE de dos proveedores, con conmutación automática en menos de 30 segundos (ADR-02).
+  - **AWS IoT Greengrass.** Corre solo en dos gateways IoT industriales (Moxa UC-8200 o equivalente), uno en el CD Talca y otro en el CD Concepción. Leen los sensores de cámara por Modbus, bloquean el despacho ante una excursión térmica en menos de 5 segundos y conservan 24 horas de datos sin enlace. No se instala en camiones: la posición de la flota llega por la API del tercero (INT-15). Los termógrafos registran toda la ruta en su memoria interna, avisan por BLE al terminal del conductor aun sin señal y este reenvía el aviso a la nube al recuperar cobertura; al volver el camión, el terminal descarga y envía el registro completo.
 
-- **WAF gestionado (AWS WAF + Shield).** Filtrado de tráfico con reglas OWASP Top 10 y reglas personalizadas por API; protección contra denegación de servicio en capas 3, 4 y 7.
+#### 4.1.21.3 Capa de puerta de enlace de servicios (Capa 3)
 
-- **Balanceador de carga (ALB).** Distribuye hacia los servicios privados el tráfico que API Gateway entrega mediante su integración privada. El flujo de negocio se describe como cliente → API Gateway → integración privada/ALB → servicio, conservando la corrección ya incorporada de la versión anterior de este subdocumento.
+Amazon API Gateway concentra la publicación de servicios detrás de la entrada pública de CloudFront. El diseño requiere validar la identidad emitida por Keycloak, controlar esquema, cuotas y tasa de solicitudes, y propagar un `transaction_id`. La modalidad de API y su mecanismo de autorización deben concretarse al implementar; no se presupone que todas las modalidades ofrezcan las mismas capacidades de forma nativa. El recorrido físico y el bloqueo efectivo del acceso directo al origen se deben comprobar en 4.2.
 
-- **Acceso local y continuidad del enlace.** Los servicios locales quedan detrás del control de acceso del sitio (D-01). La solución propone conectividad por fibra, Starlink y LTE dual, con conmutación SD-WAN objetivo inferior a 30 segundos. Para la arquitectura lógica, esto constituye una dependencia de conectividad: aunque falle la conmutación, las operaciones críticas deben continuar localmente. Su implementación, redundancia y dimensionamiento se remiten a arquitectura física.
+La capa publica dos conjuntos de APIs: las de negocio (`/v1`) y las de sincronización offline (`/sync/v1`). El Gateway aplica los controles de entrada y enruta las solicitudes. El servicio de negocio valida el contenido y garantiza la idempotencia de cada escritura mediante su UUID, una ventana de deduplicación documentada y el registro persistente del resultado (RT-02.06).
 
-- **AWS IoT Greengrass.** Borde IoT en terreno y almacenes para la recolección de datos de sensores de frío y telemetría de camiones, con buffer de reenvío y persistencia local durante cortes de conectividad.
+El ingreso por API Gateway corresponde a los servicios en nube. Durante una interrupción del enlace, la bodega utiliza los servicios de su sitio sin depender del Gateway remoto. Los terminales sin cobertura conservan sus eventos y los entregan al servicio local cuando recuperan comunicación; la reconciliación con la nube ocurre al restablecerse el enlace externo. Los contratos y las reglas de validación se mantienen en ambos recorridos.
 
-### 4.2.3  Capa de Puerta de Enlace de Servicios (Capa 3)
+La bodega dispone además de una puerta de API *local* como función del motor WMS A-01, en VM-01, VM-C01 y E-01, acotada a la red del sitio y a M1, M2, M5 y la función local de bloqueo de M9. Los 120 terminales no llaman a Amazon API Gateway durante un corte: el verificador local valida la autorización de turno y esta función aplica esquema, límites de tasa, tamaño de carga, UUID y registro de auditoría antes de entregar una orden al módulo correspondiente. Este control no publica una segunda entrada en internet ni emite identidades nuevas. La Figura 4.3 separa los dos recorridos y muestra cómo se conserva el trabajo hasta la reconexión.
 
-Amazon API Gateway concentra la publicación de servicios, conforme a la decisión D8 (2026-09-05) del registro de decisiones. El diseño requiere validar la identidad emitida por Keycloak, controlar esquema, cuotas y tasa de solicitudes, y propagar un `transaction_id`. La modalidad de API y su mecanismo de autorización deben concretarse al implementar; no se presupone que todas las modalidades ofrezcan las mismas capacidades de forma nativa. La integración privada entrega el tráfico al ALB y a los servicios en ECS Fargate.
+![Identidad y puerta de API local durante un corte de 24 horas](<../../../Diagramas/arquitectura_logica_actual/ARQL-17_Acceso_local_24h.png>)
 
-La capa publica dos conjuntos de APIs: las de negocio (`/v1`) y las de sincronización offline (`/sync/v1`), estas últimas con escrituras idempotentes por UUID. La sincronización de dispositivos de preventa, reparto y misiones de picking constituye tráfico de API de primera clase que ingresa por el Gateway, valida esquema y aplica deduplicación en el servidor (RT-02.06). Durante un corte de conectividad, los terminales de bodega (recepción, preparación y despacho) se autentican contra el control de acceso del sitio (D-01) y sincronizan contra las colas locales (RabbitMQ on-premise) y las bases y buffers locales (reconciliación WMS, INT-03/INT-04, y misiones descargadas al inicio del turno, § 4.2.1); el API Gateway aplica cuando existe conectividad.
+*Identidad y puerta de API local durante un corte de 24 horas*
 
-### 4.2.4  Capa de Lógica de Negocio (Capa 4)
+*Fuente: elaboración propia de LafroX.*
 
-La capa de servicios de negocio encapsula los 12 módulos funcionales de la solución (M1–M12), implementados como un monolito modular Django con cada módulo separado por apps y contextos. Los módulos son stateless (RT-02.05): el estado de proceso reside en las bases de datos y colas de la capa de datos y de integración, nunca en memoria del proceso.
+El manifiesto de turno firmado por Keycloak llega antes del corte; en cada relevo el verificador local, alojado junto a la caché, valida el manifiesto y un segundo factor local: el PIN personal sobre el terminal enrolado por MDM. El permiso queda limitado a funciones de bodega, mientras los eventos y la bitácora se envían después con su identificador original. La prueba debe iniciar el corte antes de dos relevos sucesivos y medir vencimiento, denegación, reintentos y recuperación; la caché de identidad de 24 horas no emite sesiones y el relevo lo habilita el verificador local.
 
-Los componentes críticos se empaquetan y escalan por separado como workers o procesos desacoplados: sincronización offline, EDI (AS2) y telemetría. Esta modularidad permite extraer estos workers del monolito si el volumen lo requiere, preservando la capacidad de escalado independiente de los servicios críticos (RT-02.02).
+#### 4.1.21.4 Capa de lógica de negocio (Capa 4)
 
-El escalado horizontal se ejecuta en nube mediante ECS Fargate con autoscaling por umbrales de CPU, rutas y colas, con límites superiores y costo declarados en la oferta. En on-premise, los contenedores se escalan por sitio con réplicas sobre el clúster Proxmox.
+La capa de servicios de negocio reúne M1–M12 en un monolito modular Laravel. Cada contexto separa `Domain`, `Application`, `Infrastructure` y `Http` bajo un espacio de nombres PSR-4. Los controladores reciben y validan solicitudes; los servicios de aplicación coordinan casos de uso; el dominio decide reservas, bloqueos y rendiciones; los adaptadores traducen persistencia e integraciones. Los módulos se llaman mediante interfaces públicas o eventos versionados: no acceden a las tablas privadas de otro contexto ni importan sus modelos de persistencia. Los proveedores de servicios registran esas interfaces en el contenedor y una prueba de dependencias impide invertir las fronteras. Así, compartir proceso no confunde la propiedad de cada decisión (RT-02.05).
 
-### 4.2.5  Capa de Integración y Eventos (Capa 5)
+La misma versión del artefacto Laravel ejecuta perfiles separados: API central, WMS local limitado a M1/M2/M5 y bloqueo M9, consumidores de SQS, adaptador AMQP y reglas comerciales EDI de M11. El transporte OpenAS2 es un componente independiente: verifica certificados, firma, cifrado y acuses MDN antes de entregar el mensaje a M11; no ejecuta reglas comerciales ni escribe en el ERP. Cada perfil dispone de cola, concurrencia, permisos y métricas propios. El planificador de tareas tiene una sola autoridad por ambiente. Esta separación permite escalar y reiniciar sincronización, EDI y telemetría sin multiplicar el monolito completo (RT-02.02).
+
+Los módulos evitan estado durable en memoria y pueden crecer por réplicas o por trabajadores independientes, según la demanda. Los umbrales, límites de capacidad, emplazamiento y costos se especifican en 4.2 y en la oferta económica.
+
+#### 4.1.21.5 Capa de integración y eventos (Capa 5)
 
 La capa de integración conecta la nueva operación con sistemas que Puelche ya utiliza. Sus límites son especialmente importantes ante el ERP de 2017 sin interfaces documentadas y el WMS de 2013. También concentra el intercambio con cadenas del canal moderno, los servicios de pago, los mapas y la telemetría, de modo que un cambio externo no obligue a modificar cada módulo de negocio.
 
-RabbitMQ conserva las colas de integración local. En nube, EventBridge distribuye eventos y SQS FIFO ordena los mensajes que requieren secuencia dentro de cada grupo. El orden no se presume global ni se atribuye a toda la cadena de eventos. Los consumidores aplican deduplicación, reintentos con espera creciente y una cola de mensajes fallidos (DLQ), con intervención trazable cuando el procesamiento no puede completarse (RT-02.07).
+RabbitMQ conserva las colas de integración local. En nube, SQS FIFO ordena los mensajes de reconciliación dentro de cada grupo y SNS difunde eventos y alertas. Los avisos al cliente se entregan mediante SNS o la API del proveedor de notificaciones (INT-11). El orden no se presume global ni se atribuye a toda la cadena de eventos. Los consumidores aplican deduplicación, reintentos con espera creciente y una cola de mensajes fallidos (DLQ), con intervención trazable cuando el procesamiento no puede completarse (RT-02.07).
+
+El shipper publica en la cola SQS FIFO de reconciliación un sobre JSON independiente de PHP con versión, identidad, clave de orden y carga. Un consumidor PHP dedicado lee ese sobre mediante el SDK de AWS, valida su esquema, invoca el caso de uso Laravel y reconoce el mensaje solo después de persistir el resultado. Los trabajos derivados propios de Laravel usan su conector SQS en colas distintas y declaran grupo y clave de deduplicación cuando requieren orden FIFO. Esta separación evita entregar mensajes externos al deserializador de trabajos del framework. RabbitMQ local se conecta mediante un adaptador AMQP probado con `php-amqplib`; el shipper confirma la publicación en SQS antes de reconocer el mensaje local. No se introduce Redis ni Horizon en los sitios, donde la continuidad depende de PostgreSQL y RabbitMQ.
 
 Las APIs de la plataforma reciben solicitudes por la Capa 3. Los servicios de negocio invocan sus adaptadores de integración cuando necesitan consultar pagos o mapas, con tiempo máximo de espera explícito (RT-02.08). Los intercambios diferidos con ERP, EDI, telemetría y notificaciones utilizan colas y reintentos. La emisión tributaria se canaliza por el ERP mediante la ACL; no se crea un segundo emisor de documentos ante el SII.
 
-El ERP de 2017 se conserva como única fuente de verdad tributaria y único emisor de DTE. La capa anticorrupción (ACL) traduce los contratos de la solución al formato del legado, sin reemplazarlo ni modificar su código. El flujo de rendición es: rendición aprobada → SQS → `celery-erp-sync` → ACL → ERP. Ningún módulo, portal o cadena escribe directamente en el ERP. La solución conserva el folio, estado y acuse que devuelve la integración para poder seguir cada documento hasta su operación de origen.
+El ERP de 2017 se conserva como única fuente de verdad tributaria y único emisor de DTE. La capa anticorrupción (ACL) traduce los contratos de la solución al formato del legado, sin reemplazarlo ni modificar su código. El flujo de rendición es: rendición aprobada $\rightarrow$ SQS $\rightarrow$ trabajador Laravel `erp-sync` $\rightarrow$ ACL $\rightarrow$ ERP. Ningún módulo, portal o cadena escribe directamente en el ERP. El trabajador usa una clave idempotente por operación y conserva folio, estado y acuse para seguir cada documento hasta su origen; reintentar un trabajo no solicita un segundo documento.
 
-La integración con las cadenas del canal moderno se resuelve con un Hub EDI centralizado GS1 en nube (EANCOM, GS1 XML y EPCIS), con conector configurable por cadena, tabla de equivalencias GTIN (RF-12.03), bandeja de excepciones (RF-12.06) y Capa Anticorrupción hacia el ERP y la GDE. El hub mapea cada cadena contra un modelo canónico GS1, no contra el ERP; AS2 es uno de los transportes del hub. El canal moderno queda operativo ≤ enero 2029. En la Figura 6 (§ 4.8) se muestra el recorrido del canal moderno por el Hub EDI.
+La integración con las cadenas del canal moderno se resuelve con un hub EDI centralizado en nube. Utiliza mensajes comerciales EANCOM y GS1 XML, y eventos EPCIS para trazabilidad. Cada cadena dispone de un conector configurable, una tabla de equivalencias GTIN (RF-12.03) y una bandeja de excepciones (RF-12.06). El hub transforma los mensajes al modelo canónico y entrega al ERP, exclusivamente mediante la ACL, la información necesaria para sus documentos, incluida la guía de despacho electrónica (GDE). AS2 es uno de los transportes del hub. El canal moderno debe quedar operativo a más tardar en enero de 2029.
 
-#### 4.2.5.1  Eventos Canónicos del Dominio
+**Eventos canónicos del dominio.**
 
-Los eventos son el vocabulario del sistema. Se nombran en pasado, son inmutables y llevan `event_id` (UUID), `occurred_at`, `site_id` y `transaction_id`. El catálogo de eventos canónicos del dominio se presenta en la Tabla 1. Cada evento declara productor único, consumidores registrados, clave de partición y política de reintento, y su origen se traza a un requisito del caso o a una decisión del numeral 16.1.
+Los eventos son el vocabulario del sistema. Se nombran en pasado, son inmutables y llevan `event_id` (UUID), `occurred_at`, `site_id` y `transaction_id`. El catálogo de eventos canónicos del dominio se presenta en el Anexo 4.1-A. Cada evento declara productor único, consumidores registrados, clave de partición y política de reintento, y su origen se traza a un requisito del caso o a una decisión del numeral 16.1.
 
-| Evento | Productor | Consumidores | Clave de partición | Origen en el caso / Decisión |
-|---|---|---|---|---|
-| RecepcionConfirmada | M1 | M2, M9, ACL→ERP | site_id | Cap. 9.5: retiro sanitario < 2 h |
-| StockReservado / ReservaLiberada | M2 | M3, M5 | sku_id | Decisión 16.1 #8: doble compromiso stock |
-| PedidoConfirmado | M3, M11 | M4, M5, M7 | pedido_id | Une preventa y canal moderno en un flujo |
-| MisionPreparada | M5 | M6, ACL→ERP | pedido_id | Cierra ciclo bodega a andén |
-| EntregaRegistrada | M6 | M7, M8, M10, SII | entrega_id | Decisión 16.1 #1: entrega cumplida / OTIF |
-| DevolucionRegistrada | M8 | M2, M7, M10 | entrega_id | Decisión 16.1 #12: efecto sobre DTE emitido |
-| EnvaseMovido | M8 | M2, M10 | cliente_id | Decisión 16.1 #10: 68.000 canastillos, 9.400 pallets, 14% pérdida |
-| ExcursionTermicaDetectada | M9 (borde) | M5 (bloqueo), M10, alertas | shipment_id | Decisión 16.1 #4: bloqueo local < 5 s |
-| RendicionCerrada | M7 | M10, ACL→ERP | conductor_id | Control efectivo que circula en ruta |
-| DesviacionDeRutaDetectada | M12 | M10, M9 | ruta_id | Costo servir; no control jornada (D1) |
+Cada evento conserva productor único y clave de orden para evitar ambigüedad al reintentar.
 
-*Tabla 1. Eventos canónicos del dominio*
+Los esquemas AsyncAPI 2.6 versionados por evento se gobiernan desde el Catálogo de interfaces (§ 4.1.6); `transaction_id` conserva la correlación entre los módulos consumidores.
 
-Los esquemas AsyncAPI 2.6 versionados por evento viven en el Catálogo (§ 4.2.5.1 del catálogo) y la trazabilidad `transaction_id` recorre extremo a extremo (§ 4.7, patrón Correlación).
+**Orquestación y coreografía.**
 
-#### 4.2.5.2  Contratos de Integración
+M3 coordina de manera síncrona la confirmación de un pedido y solicita a M2 una reserva: necesita una respuesta única y visible para el preventista. Cuando el pedido queda confirmado, publica `PedidoConfirmado`; M5, M4 y M10 reaccionan cada uno a ese hecho mediante su propio consumidor. Esa coreografía evita que M3 conozca el horario de preparación o el esquema analítico. La publicación se registra junto con el cambio de estado mediante una bandeja transaccional de salida (*outbox*); el consumidor confirma su progreso solo después de persistir su resultado. Si falla un consumidor, la cola reintenta y termina en una bandeja de excepción, sin deshacer a ciegas el pedido ya confirmado.
 
-Los contratos se declaran por dimensión, con metadatos obligatorios y reglas de validación que el Gateway aplica antes de alcanzar la Capa 4:
+El despacho tiene una coordinación distinta: M5 no libera la carga hasta recibir el resultado de M9 sobre el lote y la guía emitida por el ERP a través de la ACL. Una excursión térmica bloquea localmente la salida aun con el enlace caído; solo Calidad puede liberar el lote tras evaluación registrada. El conductor informa la incidencia y conserva la carga, pero no aprueba su liberación sanitaria. Las Figuras Figura 4.4 y Figura 4.5 recorren el pedido con y sin conexión y hacen visible dónde cambia una captura pendiente a una operación confirmada.
 
-| Dimensión | Definición |
-|---|---|
-| **API síncrona** | OpenAPI 3.1 por módulo, ruta `/v{major}/...`. Metadatos obligatorios: `x-owner` (módulo dueño), `x-version` (semver), `x-status` (`draft`, `stable`, `deprecated`), `x-sunset` (fecha retiro). |
-| **Eventos** | AsyncAPI 2.6 con JSON Schema versionado por evento. Cada evento declara productor único, consumidores registrados, clave de partición y política de reintento. |
-| **Autenticación** | Superficies: OAuth 2.1 con PKCE. Servicio a servicio: mTLS. Máquina a máquina: credenciales de cliente con secreto de rotación automática. Todos los tokens los firma Keycloak (Capa 7). |
-| **Validación** | Validación de esquema e inspección de carga útil en la puerta de enlace (Art. 21.2), antes de alcanzar la Capa 4. Un mensaje que no valida no entra: se rechaza con causa y queda registrado. |
-| **Trazabilidad** | Todo llamado y todo evento propaga `transaction_id` (OpenTelemetry) desde la Capa 3 hasta la Capa 6. Es la clave con la que se reconstruye una operación de extremo a extremo, conforme al Art. 23: quién, qué, cuándo, desde dónde y con qué valores anteriores y posteriores. |
+![Secuencia lógica del pedido con conexión](<../../../Diagramas/arquitectura_logica_actual/ARQL-15_Pedido_con_conexion.png>)
 
-#### 4.2.5.3  Capa Anticorrupción y Estrangulamiento del Legado
+*Secuencia lógica del pedido con conexión*
+
+*Fuente: elaboración propia de LafroX.*
+
+Con conexión, M2 devuelve una reserva explícita y M5 no comienza a preparar un pedido rechazado. La carga preparada sigue retenida si M9 informa un bloqueo o si el ERP no devuelve la guía electrónica. El flujo dibuja esos dos retornos porque un pedido confirmado no autoriza por sí mismo la salida física.
+
+![Secuencia lógica del pedido capturado sin conexión](<../../../Diagramas/arquitectura_logica_actual/ARQL-16_Pedido_sin_conexion.png>)
+
+*Secuencia lógica del pedido capturado sin conexión*
+
+*Fuente: elaboración propia de LafroX.*
+
+Sin conexión, la aplicación conserva la intención de compra, no una reserva firme. El mismo UUID viaja en todos los reintentos; M3 y M2 producen un resultado durable con la regla y la causal de excepción. Si se pierde el acuse de respuesta, el dispositivo conserva el evento y pregunta por ese UUID antes de eliminarlo. Solo un pedido confirmado alimenta M5, lo que permite explicar al cliente un faltante sin duplicar la venta.
+
+**Contratos de integración.**
+
+Las APIs síncronas se describen en OpenAPI 3.1 por módulo y versión mayor. Cada operación declara dueño, esquema de solicitud y respuesta, identidad requerida, errores de negocio, límites de tasa y fecha de retirada. El Gateway valida la entrada, pero la decisión de negocio y la idempotencia pertenecen al servicio. Las interfaces de sincronización `/sync/v1` reciben lotes con UUID por operación y devuelven un resultado individual, de modo que un error de una entrega no obligue a repetir todas las demás.
+
+Los eventos se describen en AsyncAPI 2.6 con productor único, consumidores, clave de partición, versión, política de reintento y cola de fallidos. Los mensajes viajan al menos una vez: cada consumidor deduplica por `event_id` y preserva orden dentro del agregado que lo exige. OAuth con PKCE protege clientes interactivos; mTLS y credenciales rotadas protegen servicios. `transaction_id` enlaza llamada, evento, resultado y evidencia de auditoría.
+
+**Capa anticorrupción y sustitución del WMS.**
 
 **Frontera única del ERP (A-04).** El ERP de 2017 no tiene documentación de interfaces. En vez de descubrir su forma real dentro de cada módulo, se levanta una sola frontera: la ACL expone hacia adentro un contrato OpenAPI 3.1 propio de Puelche y absorbe hacia afuera la forma del ERP. Consecuencias:
 
-- El conocimiento del ERP queda concentrado y documentado en un solo componente, no disperso en doce módulos.
-- Ningún módulo, portal ni cadena de supermercados escribe al ERP: `celery-erp-sync` publica notificaciones por SQS y lee contratos por la ACL.
-- Cuando una capacidad del ERP se absorbe en la plataforma, se retira de la ACL sin tocar a los consumidores.
+  - El conocimiento del ERP queda concentrado y documentado en un solo componente, no disperso en doce módulos.
+  - Ningún módulo, portal ni cadena de supermercados escribe al ERP: el trabajador Laravel `erp-sync` consume SQS y llama a la ACL mediante su contrato versionado.
+  - Cuando una capacidad del ERP se absorbe en la plataforma, se retira de la ACL sin tocar a los consumidores.
 
-**Estrangulamiento del WMS de 2013 (ADR-08, Decisión 16.1 #14).** El WMS se reemplaza en la Etapa 1 por los módulos M1, M2 y M5 del monolito. Durante la coexistencia el legado queda detrás de la misma ACL, con una tabla de "capacidad absorbida" (recepción GS1, *slotting*, misiones de picking con HHT, conteo cíclico) que se vacía ola a ola por sitio, con estrategia azul-verde y plan de reversión.
+**Estrangulamiento del WMS de 2013 (ADR-08, Decisión 16.1 N° 14).** El WMS se reemplaza en la Etapa 1 por los módulos M1, M2 y M5 del monolito. Durante la coexistencia el legado queda detrás de la misma ACL. La Tabla 4.2 indica qué capacidad se absorbe en cada ola y cómo se revierte por sitio.
+
+*Tabla 4.2 — Capacidad absorbida del WMS 2013 por ola y sitio*
 
 | Capacidad WMS 2013 | Módulo | Ola | Estrategia / Reversión |
-|---|---|---|---|
+| — | — | — | — |
 | Recepción GS1 | M1 | 1 | Azul-verde / feature flag (reversión inmediata) |
 | Slotting / ubicaciones | M2 | 1–2 | Azul-verde / feature flag |
 | Misiones picking HHT | M5 | 2 | Azul-verde / feature flag |
 | Conteo cíclico | M2 | 2–3 | Paralelo + comparación / feature flag |
 
-*Tabla 2. Capacidad absorbida del WMS 2013 por ola y sitio*
+*Fuente: registro único del Subdocumento 4, ADR-08, y Caso 02, Decisión 16.1 N° 14.*
+
+La sustitución por olas permite comprobar cada capacidad antes de retirar la anterior.
 
 No se mantiene el WMS 2013 como sistema operativo en producción tras la Etapa 1. La ACL garantiza que ningún módulo, portal ni cadena escribe al ERP/WMS legado directamente.
 
-**Hub EDI GS1 (ADR-11).** Una cadena nueva se incorpora por configuración de perfil (equivalencias GTIN por cadena, RF-12.03), no por desarrollo. El hub mapea cada cadena contra un modelo canónico GS1, no contra el ERP: esto evita construir una integración distinta por cada cadena (Cap. 17.4, punto 10 del caso).
+**Hub EDI GS1 (ADR-11).** Una cadena nueva se incorpora por configuración de perfil (equivalencias GTIN por cadena, RF-12.03), no por desarrollo. El hub mapea cada cadena contra un modelo canónico GS1, no contra el ERP; así evita construir una integración diferente en los doce módulos de negocio.
 
-#### 4.2.5.4  Versionado y Gobierno de Integración
+**Versionado y gobierno de integración.**
 
-**Reglas de versionado semántico**
+Los contratos siguen versiones `major.minor.patch`. Un cambio aditivo conserva compatibilidad; retirar un campo exige marcarlo como obsoleto y anunciar la fecha de salida con al menos seis meses de anticipación. Dos versiones pueden convivir mientras migran los consumidores identificados. Un cambio incompatible requiere aprobación del Comité de Arquitectura, pruebas de contrato y plan de reversión. Los perfiles de cadenas se versionan sin alterar el vocabulario común del hub; los cambios de interfaces tributarias se gestionan en la ACL, no como perfiles EDI. El Anexo 4.1-B asigna dueño y evidencia a cada mecanismo de gobierno.
 
-| Regla | Definición |
-|---|---|
-| Semver estricto | `major.minor.patch`. `major` = cambio disruptivo; `minor` = aditivo y retro-compatible; `patch` = corrección. |
-| Evolución aditiva primero | Un campo se agrega, nunca cambia de significado. Un campo que deja de usarse se marca `deprecated` antes de retirarse. |
-| Preaviso mínimo 6 meses | Ninguna versión se retira antes de seis meses de aviso formal (Art. 23 · RT-05.17). Registro de deprecaciones visible para todo el equipo y el CLIENTE. |
-| Doble versión concurrente | Durante la migración conviven `v{n}` y `v{n+1}`; el consumidor migra en su ventana, no en la del proveedor. |
-| Aprobación cambios disruptivos | Un `major` requiere aprobación del Comité de Arquitectura y plan de migración con consumidores identificados uno a uno. |
-| Congelamientos del caso | No se publica ni retira ninguna versión en septiembre, diciembre ni los tres primeros días hábiles del mes (Cap. 13.2 caso). |
-| Contratos de terceros | Especificaciones de cadenas y SII se versionan como perfiles del Hub EDI (ADR-11). |
+El catálogo y las pruebas hacen visible quién responde cuando un contrato cambia o falla.
 
-**Mecanismos de gobierno de la capa de integración**
+**Carga y descarga masiva de datos.**
 
-| Mecanismo | Cómo opera | Responsable / Artefacto |
-|---|---|---|
-| Catálogo único versionado | Toda integración: dueño, contrato, versión, estado, comportamiento ante falla. Lo que no está en el catálogo no se despliega. | Arquitecto Solución / Catálogo (portal API Gateway) |
-| Comité Arquitectura | Aprueba altas y cambios `major`; cadencia declarada en plan gobierno. | Arq. Sol., Jefe Proy., Jefe TI Cliente / Actas |
-| Pruebas contrato consumidor-proveedor | Pipeline: cambio que rompe consumidor registrado bloquea despliegue automáticamente. | Líder Desarrollo, Líder Calidad / Pipeline CI/CD |
-| Pruebas falla por integración | Inyección fallas (RT-10.07) en marcha blanca; verifica comportamiento catálogo. | Líder Calidad, Líder Operación / Evidencia marcha blanca |
-| Observabilidad por integración | Latencia, error, volumen, DLQ por integración, correlación `transaction_id` (Capa 8). | Líder Operación/SRE / Tableros Grafana OSS |
-| Bandeja excepciones negocio | EDI/DTE → bandeja operada por actor canónico (RF-12.05/12.06). | Jefe TI, Responsable Canal Moderno / Bandeja operativa |
-| Traspaso equipo 4 personas | Catálogo, guías resolución, bandeja = artefactos operables sin proponente. | Líder Implantación/Gestión Cambio / Documentación traspaso |
+Las importaciones históricas y las extracciones regulatorias utilizan contratos distintos de la operación diaria. El Anexo 4.1-C compara su mecanismo, la prueba de integridad y el tratamiento de rechazos; ninguna carga masiva desplaza la preparación durante la ventana crítica de despacho.
 
-#### 4.2.5.5  Carga y Descarga Masiva de Datos
-
-| Escenario | Mecanismo | Control y auditoría |
-|---|---|---|
-| Carga inicial maestros/históricos (ERP, WMS) | ETL por lotes, inserción idempotente por UUID, ventana sin operación | Conteo previo/posterior por lote, conciliación totales, bitácora carga (quién, cuándo, lote, resultado); rechazados → cuarentena + reproceso |
-| Descarga regulatoria (traza lote, temperaturas, DTE, geo) | Exportación asíncrona CSV/Parquet, firmada, checksum | Registro extracción (solicitante, filtro, resultado); control acceso datos sensibles (RT-16.09) |
-| Sincronización masiva turno (terreno) | Sincronizadores con partición + reanudación + deduplicación; medios a S3 por objeto | Nivel servicio: turno completo ≤ 10 min; métricas sync en Capa 8 |
-| Interfaces periódicas con terceros | Colas con `batch_id` + confirmación por lote | Monitoreo DLQ + acuse por lote en bandeja excepciones |
-
-*Tabla 3. Escenarios de carga y descarga masiva (RT-05.22)*
+El procesamiento por lotes conserva totales y rechazos sin bloquear la operación diaria.
 
 **Regla transversal:** ninguna carga masiva se ejecuta dentro de la ventana crítica 05:30–07:00, y toda carga queda registrada y es auditable.
 
-### 4.2.6  Capa de Acceso a Datos (Capa 6)
+#### 4.1.21.6 Capa de acceso a datos (Capa 6)
 
-La capa de datos distingue quién conserva la información operativa, quién la consolida y quién la consulta para análisis. Esta separación evita que una caída del enlace detenga la bodega o que una consulta gerencial compita con el despacho. Se diferencian los siguientes roles lógicos por sitio:
+La capa de datos distingue quién conserva la información operativa, quién la consolida y quién la consulta para análisis. Esta separación permite que la bodega siga trabajando sin enlace externo y que las consultas gerenciales no compitan con el despacho. Los dominios de información asumen las siguientes responsabilidades:
 
-On-premise:
-- **CD Talca:** PostgreSQL 16 con PostGIS como maestro de bodega para recepción, preparación y despacho, con autonomía mínima de 24 horas.
-- **CD Concepción:** PostgreSQL y WMS de alcance reducido (`wms_only`), capaz de sostener 24 horas de operación local sin depender de Talca.
-- **Cross-docking de Curicó, Chillán y Los Ángeles:** mini-WMS para registrar recepción, desconsolidación y despacho. El detalle se sincroniza con Talca y los eventos críticos se publican en SQS FIFO cuando existe conexión. Las tres horas indicadas en el caso son una ventana operativa, no una excepción a RT-03.10: el diseño lógico exige al menos 24 horas de continuidad local degradada, cuya suficiencia deberá demostrarse mediante pruebas. En la Figura 9 (§ 4.8) se muestra la operación del preparador contra el maestro de bodega local.
+En la operación local:
 
-En nube: Amazon Aurora PostgreSQL como réplica/DRP del maestro de bodega y como OLTP de preventa, reparto y canal moderno; Amazon DynamoDB para ingesta IoT de sensores de frío (raw con TTL de 30 días); Amazon S3 y Redshift Serverless para la serie consolidada OLAP (S3 Parquet ← AWS Glue ← DynamoDB raw); Redis (Amazon ElastiCache) para caché de stock caliente, precios y sesiones SSO; y S3 como almacén de documentos (POD firmado, DTE, comprobantes, evidencia QR).
+  - **CD Talca:** PostgreSQL 16 con PostGIS como maestro de bodega para recepción, preparación y despacho, con autonomía mínima de 24 horas.
+  - **CD Concepción:** PostgreSQL y WMS de alcance reducido (`wms_only`), capaz de sostener 24 horas de operación local sin depender de Talca.
+  - **Cross-docking de Curicó, Chillán y Los Ángeles:** mini-WMS para registrar recepción, desconsolidación y despacho. El detalle se sincroniza con Talca y los eventos críticos se publican en SQS FIFO cuando existe conexión. Las tres horas indicadas en el caso son una ventana operativa, no una excepción a RT-03.10: el diseño lógico exige al menos 24 horas de continuidad local degradada, cuya suficiencia deberá demostrarse mediante pruebas.
+
+En los servicios centrales, PostgreSQL conserva las transacciones de preventa, reparto y canal moderno; el flujo de telemetría ingresa en DynamoDB y se consolida para análisis en S3 y Redshift mediante Glue; Redis acelera lecturas autorizadas de stock, precios y sesiones; S3 conserva documentos y evidencias. La función de cada almacén, y no su ubicación física, determina qué módulo puede escribir en él. La topología de replicación y recuperación se especifica en 4.2.
 
 No se incorpora Redis local. Al iniciar el turno con conexión, la aplicación solicita a las APIs una copia de stock, precios y demás datos autorizados; los servicios la obtienen de sus almacenes, incluido ElastiCache. El dispositivo conserva esa copia cifrada en SQLite/Room y consulta allí mientras está desconectado. Al reconectar, reconcilia primero las escrituras pendientes y actualiza los datos de lectura. Reemplazar la copia de lectura nunca debe borrar pedidos, cobros ni evidencias aún no confirmados por el servidor.
 
-La vigencia de esos datos es independiente de la identidad. Se establecen credenciales de turno de 8 horas en CD y 14 horas en terreno, además de una caché local de identidad de solo lectura con TTL de 8 horas. Son controles distintos: una copia reciente de precios no renueva la sesión y una sesión válida no convierte el stock descargado en una reserva confirmada.
+La vigencia de los datos de lectura es independiente de la identidad. Las credenciales de turno duran 8 horas en bodega y 14 horas en terreno; la caché local de identidad es de solo lectura y tiene TTL de 24 horas en VM-05 (Talca), VM-C03 (Concepción) y E-01 de cada cross-docking. Una copia reciente de precios no renueva la sesión y una sesión válida no convierte el stock descargado en una reserva confirmada. El relevo de turno sin IdP lo habilita el verificador local del mismo nodo, conforme a la capa de seguridad de este apartado.
 
-La separación transaccional/analítica es estricta: la analítica no lee del transaccional para evitar degradar la ventana crítica de despacho. Las latencias comprometidas son: operación del día ≤ 5 minutos, cierre comercial ≤ 2 horas, gestión ≤ 4 horas.
+La separación transaccional/analítica es estricta: la analítica no lee del transaccional para evitar degradar la ventana crítica de despacho. Las latencias comprometidas son: operación del día $\leq$ 5 minutos, cierre comercial $\leq$ 2 horas, gestión $\leq$ 4 horas.
 
-Se plantea una política de respaldo 3-2-1-0 con cuatro funciones complementarias:
+Cada evento conserva identidad, estado y resultado hasta recibir confirmación durable. DMS replica el WMS de Talca hacia un esquema de lectura; no escribe en las tablas de negocio centrales. Los consumidores de eventos actualizan estas últimas con deduplicación transaccional por sitio y UUID. Concepción y los cross-docking sincronizan sus eventos sin presumir un flujo DMS propio. Durante un corte cada sitio retiene sus cambios dentro de una capacidad comprobada para 24 horas. Esta retención no acredita el RPO ante destrucción del origen: se exige protección durable fuera de su dominio de falla y la prueba del Anexo 4.1-M. El esquema 3-2-1-1-0, los medios de respaldo y la restauración se desarrollan en 4.2.
 
-- **Recuperación local:** copia en NAS con control WORM y clave independiente, con objetivo de restauración del WMS de hasta 4 horas sin depender del enlace WAN. Esta copia no se contabiliza como la copia inmutable exigida.
-- **Inmutabilidad en nube:** S3 Object Lock en modo Compliance y AWS Backup Vault Lock.
-- **Recuperación regional:** Aurora Global Database y replicación de objetos S3 CRR con RTC, condicionadas a la aprobación del esquema de datos entre regiones y a pruebas de recuperación.
-- **Custodia externa:** copia cifrada transportable, rotada semanalmente y con cadena de custodia. El respaldo en S3 no sustituye esta función.
+#### 4.1.21.7 Capa de seguridad transversal (Capa 7)
 
-Se propone un objetivo de punto de recuperación (RPO) de hasta 15 minutos mediante captura de cambios (CDC) desde el WAL lógico hacia nube con AWS DMS. Es un objetivo a probar con conectividad disponible, no una garantía durante un corte prolongado: en ese escenario los cambios permanecen en el sitio y el desfase remoto aumenta. La aceptación debe cubrir también la pérdida del sitio antes de sincronizar. Los procedimientos físicos de custodia y restauración corresponden a sus documentos específicos.
+La seguridad atraviesa las ocho capas. Su unidad de decisión no es la red desde la que llega una solicitud, sino el sujeto, el recurso, la acción y el contexto del turno. Keycloak conserva la autoridad de identidad; el servicio dueño del recurso conserva la decisión de autorización. Esta separación evita que un token válido permita, por sí solo, liberar una carga, consultar crédito o modificar una regla de calidad (PUCV, 2026b, caps. 11–12, pp. 23–26; RT-11.01 y RT-12.05; National Institute of Standards and Technology [NIST], 2020).
 
-### 4.2.7  Capa de Seguridad Transversal (Capa 7)
+**Límites de confianza y capa expuesta.**
 
-La seguridad se aplica transversalmente a todas las capas, no como perímetro único. Sus dominios principales son:
+La Figura 4.2 distingue personas, dispositivos, sitio, servicios centrales y terceros. CloudFront protege los portales externos y sus APIs; el origen de esas APIs rechaza el acceso público directo. Las consolas internas usan acceso verificado por identidad y postura del dispositivo hacia servicios privados. OpenAS2 expone un canal B2B distinto, limitado a contrapartes registradas y con validación criptográfica y MDN; no es una API pública de negocio. Los almacenes de datos no son superficies públicas. El inventario de dominios, puertos y rutas de 4.2 debe representar las tres superficies por separado (RT-11.07 y RT-11.13).
 
-- **Identidad y acceso.** Keycloak se mantiene como autoridad central en ECS Fargate, con OIDC, SSO y MFA. Los permisos se asignan a los 11 roles canónicos declarados, sujetos a la validación de su matriz de acceso. La caché local es de solo lectura y tiene TTL de 8 horas; las credenciales de turno duran 8 horas en CD y 14 horas en terreno. No se introduce un maestro local promocionable ni una credencial ordinaria de 24 horas. La recuperación de identidad debe conservar la misma autoridad y sus políticas.
+API Gateway verifica la identidad, el alcance, las cuotas, los límites de tasa, el esquema y la carga útil antes de entregar una solicitud; M1–M12 repiten la autorización de negocio sobre el recurso concreto. Los puntos públicos incorporan detección de bots y reto progresivo sin bloquear a una persona legítima. La comunicación entre servicios se autentica mutuamente y se cifra; un evento asíncrono también conserva productor, destinatario, versión, identificador y permisos necesarios. Así se aplica el mismo límite de confianza a REST y a mensajería (RT-11.11–11.12).
 
-Las credenciales de turno se emiten por el control de acceso del sitio (D-01) mientras la política de identidad importada siga vigente, conservando la misma autoridad del IdP y sus políticas. La ventana de importación SCIM es de hasta 24 horas (INT-13), de modo que una credencial emitida antes del corte cubre los turnos de las 22:00 y de las 06:00 dentro de la jornada de 24 horas que exige RT-03.10. Se mantienen la caché local de solo lectura con TTL de 8 horas, las credenciales de turno de 8 horas en CD y 14 horas en terreno, y la prohibición de un maestro local promocionable o de una credencial ordinaria de 24 horas. Las revocaciones pendientes se aplican en la primera conexión con el IdP, y la cuenta de emergencia break-glass se conserva como contingencia controlada para la indisponibilidad del IdP, sin reemplazar la autenticación normal de todos los operarios.
+La política lógica prohíbe el ingreso público directo a los sitios. Las excepciones de integración a través de un túnel privado no son exposición a internet: se autorizan de forma nominativa, por origen, destino y propósito, y se registran. Su número, sentido de inicio de conexión y reglas de red deben quedar inequívocos en 4.2; una excepción no amplía el permiso de los módulos para escribir directamente en el ERP.
 
-- **Gestión de secretos.** AWS Secrets Manager y SSM Parameter Store con rotación automática. Los nodos on-premise los consumen por VPC Endpoint saliente, sin abrir puertos entrantes, salvo las dos excepciones controladas D-AL-05 sobre túnel IPsec autenticado (decisión D13 del registro de decisiones, gestión de secretos). Cuenta de emergencia break-glass fuera de banda, custodiada en bóveda física con doble firma, para contingencia de indisponibilidad del IdP; su activación exige procedimiento escrito, notificación inmediata a TI y a la gerencia, registro en cadena de custodia y rotación de credenciales tras el uso. Se prueba dos veces al año junto con el simulacro de DRP. Prohibición absoluta de secretos embebidos en código, imágenes o archivos de configuración.
+**Identidad, autorización y sesiones.**
 
-- **Cifrado y datos sensibles.** Se exige protección en tránsito mediante TLS y mTLS donde corresponda, y gestión de claves con KMS en nube. La solución propone cifrado por campo para antecedentes comerciales y comportamiento de pago, retención de 12 meses para geolocalización con registro de consultas, y seudonimización del RUT mediante mecanismos basados en pgcrypto. Estas políticas requieren aprobación y prueba de acceso y eliminación. El PAN de la tarjeta no se almacena; la integración utiliza tokenización de la pasarela. Las características y certificaciones del terminal POS se verifican en la adquisición, fuera del alcance de esta vista lógica.
+La identidad central utiliza OIDC, SSO y MFA. El rol se complementa con atributos de instalación, turno, ruta, dispositivo y empresa transportista. El proveedor solo consulta sus órdenes; el transportista administra sus conductores y rutas asignadas; el conductor actúa sobre su entrega y rendición; Calidad decide sobre un lote bloqueado; y Tesorería aprueba la conciliación, sin que quien registró el cobro pueda aprobar su propia diferencia. Los administradores elevan privilegios por tiempo limitado, con aprobación y registro de sesión. El alta, cambio de rol y baja quedan vinculados al ciclo de vida laboral o contractual; las personas externas disponen de registro, verificación y recuperación de acceso sin requerir correo corporativo (RT-12.01–12.06 y RT-12.09–12.12).
 
-- **Microsegmentación.** MTLS entre servicios internos, sin confianza implícita en la red.
+En las APIs Laravel, un guard OIDC comprueba firma con las claves publicadas por Keycloak, emisor, audiencia, vencimiento y alcance. Las políticas del módulo dueño verifican además recurso, turno y atributos; se prueban tanto rutas HTTP como trabajos asíncronos para que una cola no eluda la autorización. El acceso local usa exclusivamente el verificador de manifiestos descrito abajo. Laravel no emite otra identidad de usuario mediante Sanctum o Passport: Keycloak sigue siendo el único IdP y la administración de personas se realiza en el portal Angular autorizado.
 
-- **Auditoría.** Registros inmutables (RT-16.07) con trazabilidad de acciones por actor, almacenados en formato inmodificable.
+En conexión, el token de acceso dura como máximo 30 minutos; la inactividad cierra la sesión administrativa a los 15 minutos y las demás a los 30. La credencial de refresco es rotatoria, se invalida ante baja o sospecha de compromiso y no supera 24 horas para acceso ordinario ni 8 horas para privilegios. El cierre de sesión se propaga a los servicios conectados y se impide la concurrencia no autorizada para cuentas compartibles por riesgo. Ninguna credencial se transporta en la URL. Estas duraciones no renuevan ni alargan una autorización offline; responden a los controles de RT-12.07–12.08.
 
-- **Detección.** Amazon GuardDuty, Security Hub y CloudTrail con correlación en la capa de observabilidad.
+La credencial de turno dura hasta 8 horas en bodega y hasta 14 horas en terreno. Mientras existe enlace, Keycloak renueva al menos cada hora un manifiesto firmado con los turnos y permisos preinscritos para una ventana de 26 horas; así, incluso si el corte comienza justo antes de la renovación siguiente, quedan al menos 25 horas de verificación local. La caché de identidad, de solo lectura y TTL de 24 horas, conserva datos recibidos en VM-05 (Talca), VM-C03 (Concepción) y E-01 de cada cross-docking, pero no emite sesiones. Al relevarse un turno sin enlace, el verificador del mismo nodo comprueba la firma y vigencia del manifiesto y un segundo factor local: el PIN personal sobre el terminal enrolado por MDM; limita el acceso a M1, M2, M5 y a las acciones autorizadas de M9, bloquea intentos repetidos y registra cada decisión. El dispositivo compartido identifica el contexto, pero no sustituye la identidad personal del operario. Los detalles de claves y alojamiento pertenecen a 4.2 (ADR-06).
 
-- **Modelado de amenazas.** STRIDE por componente y por integración externa (Art. 21.1), con mitigación diseñada antes de la implementación.
+La revocación es inmediata en los servicios conectados. Durante una desconexión no se promete revocación remota instantánea: el permiso local expira al terminar su turno, no se amplía sin enlace y la incidencia se marca para revisar operaciones al reconectar. Una baja conocida localmente bloquea de inmediato la credencial en ese sitio; el verificador sincroniza las revocaciones y auditorías al restablecerse el enlace. Se ensayan dos relevos dentro de 24 horas, vencimiento, pérdida de dispositivo y recuperación del enlace. La cuenta de emergencia exige doble autorización, alcance acotado, custodia fuera de banda, registro y rotación posterior; no reemplaza la autenticación ordinaria de todos los operarios (RT-03.10 y RT-12.13).
 
-La identidad y acceso se modela con RBAC por rol canónico complementado con ABAC por atributos de contexto (instalación, horario de turno, dispositivo), con segregación de funciones en aprobaciones y elevación temporal de privilegios (JIT) con justificación y registro auditado (RT-12.05–12.07).
+**Clasificación, cifrado y custodia.**
 
-La arquitectura distingue dos objetivos que deben medirse por separado: 99,95 % mensual para la infraestructura del recinto y al menos 99,9 % mensual para el servicio de negocio de extremo a extremo. El segundo se comprueba sobre la transacción crítica y no se deduce de la disponibilidad de cada componente. La cobertura, exclusiones y medición se contrastarán con los niveles de servicio contractuales; durante el despacho de 05:30 a 07:00 sigue vigente la exigencia de continuidad de la operación.
+La Tabla 4.3 resume cómo cambia el control según el dato. La clasificación se aplica al evento, su copia local, las APIs y las exportaciones, no solo a la base de datos central.
 
-### 4.2.8  Capa de Observabilidad Transversal (Capa 8)
+*Tabla 4.3 — Clasificación lógica y protección de la información*
+
+| Nivel | Ejemplo del caso | Regla de acceso | Protección adicional |
+| — | — | — | — |
+| Restringido | Credenciales, claves y factores. | Solo custodios nominados. | Claves separadas y auditoría. |
+| Confidencial | Crédito, conducta de pago, geolocalización y POD. | Rol, finalidad y registro de consulta. | Cifrado por campo sensible. |
+| Interno | Pedidos, movimientos y telemetría operativa. | Módulo dueño y perfiles autorizados. | Cifrado y trazabilidad. |
+| Público | Catálogo sin precio personalizado. | Lectura anónima controlada. | Integridad y protección antiabuso. |
+
+*Fuente: elaboración propia de LafroX a partir de Bases Técnicas Transversales, RT-11.03/09/10, y Caso 02, capítulo 15.*
+
+La categoría confidencial exige separar quién puede usar el dato de quién administra su almacenamiento: el acceso a la base no revela por sí solo comportamiento de pago ni geolocalización. Todo dato en reposo se cifra; los campos sensibles del caso reciben además cifrado por campo. En tránsito se exige TLS 1.3 para las interfaces compatibles, se prohíben TLS 1.0 y 1.1, se automatiza la gestión de certificados y se emplea mTLS entre servicios. La custodia y rotación de claves mantienen separación de funciones. El PAN de tarjetas no se almacena; se usa la tokenización de la pasarela. El RUT requiere una técnica de seudonimización con acceso a la clave separado y una finalidad documentada, sin confundir cifrado reversible con anonimización. La geolocalización de personas conserva la retención de 12 meses del caso y un registro de consultas; su transferencia fuera de Chile depende de la evaluación y aprobación aplicables, no de la existencia técnica de una réplica (PUCV, 2026a, cap. 15, pp. 26–30; PUCV, 2026b, cap. 11, pp. 23–24; RT-11.08–11.10 y RT-16.09).
+
+**Amenazas, controles y evidencia.**
+
+El modelado STRIDE toma cada módulo y cada integración externa como unidad de revisión, identifica su límite de confianza, abuso posible, mitigación, responsable y prueba. Para M3, el abuso es reutilizar una credencial o reenviar un pedido: se comprueban enrolamiento, vigencia e idempotencia. Para M5, la elevación indebida de privilegios no debe liberar una carga bloqueada por M9: se prueba la separación de autorizaciones. Para M11 y la ACL, un mensaje EDI repetido o manipulado se rechaza o aísla sin escribir dos veces en el ERP. El registro verificable de estos escenarios se mantiene junto con la matriz de controles ISO/IEC 27001/27002 y las pruebas de seguridad; nombrar STRIDE o la norma sin ese resultado no constituye evidencia (RT-11.02 y RT-11.05).
+
+Cada decisión de acceso y cada acción crítica conserva sujeto, empresa si aplica, recurso, operación, resultado, hora, identificador de transacción y regla aplicada. Los eventos de seguridad se envían a una bitácora inalterable y al SIEM; durante un corte se conservan localmente y se remiten con el mismo identificador al reconectar. Las reglas de detección incluyen acceso privilegiado fuera de turno, intentos reiterados de uso de una credencial de conductor revocada, consulta masiva de datos comerciales, alteración de evidencia de temperatura y desvío anómalo de mensajes EDI. Los registros técnicos en CloudWatch se conservan 12 meses en línea y 24 meses adicionales en archivo; los registros de seguridad y auditoría se conservan 7 años bajo Object Lock. La retención de documentos tributarios y POD se gobierna separadamente por su dominio de datos. La plataforma y el SOC que operan estos controles se describen en 4.2 y en el capítulo de servicios (RT-11.14–11.19).
+
+La aceptación de esta vista requiere una prueba de acceso denegado por rol y atributo, una de cifrado de campo con lectura administrativa sin texto claro, una de continuidad y relevo offline, una de revocación al reconectar y una de correlación de un evento de negocio con su alerta de seguridad. Se distinguen dos objetivos de disponibilidad: 99,95 % mensual para la infraestructura del recinto y al menos 99,9 % mensual para el servicio de negocio de extremo a extremo. Ninguno elimina la exigencia de continuidad durante el despacho de 05:30 a 07:00.
+
+#### 4.1.21.8 Capa de observabilidad transversal (Capa 8)
 
 La observabilidad debe ayudar al equipo a responder preguntas operativas: qué pedido quedó pendiente, dónde se interrumpió una integración y qué entregas pueden verse afectadas. Para ello reúne métricas, registros y trazas de nube y sitios locales en una misma plataforma (RT-03.16 y Art. 16.4).
 
-La instrumentación se basa en OpenTelemetry (SDK en Django, apps Kotlin, API Gateway, RabbitMQ/SQS, Greengrass) con trazas y métricas nativas y spans correlacionados por `transaction_id` propagado desde la Capa 3.
+La instrumentación utiliza OpenTelemetry para PHP/Laravel y las aplicaciones Kotlin, junto con los registros y métricas disponibles de API Gateway, RabbitMQ, SQS y Greengrass. El identificador `transaction_id` acompaña las solicitudes y los mensajes; los trabajadores extraen el contexto de traza del sobre de evento para correlacionar la operación de negocio, incluidos los procesos asíncronos.
 
-En on-premise, los colectores ADOT (con buffer en disco de 24 horas) recolectan la telemetría local y la exportan a la plataforma centralizada en nube: Amazon Managed Service for Prometheus (AMP) compatible con PromQL para métricas con retención de 13 meses, Amazon CloudWatch Logs para registros (12 meses en línea + 24 meses en archivo), AWS X-Ray para trazas distribuidas (30 días de retención) y Grafana OSS autoadministrado en sa-east-1 para tableros operacionales unificados.
+En on-premise, los colectores ADOT, con buffer en disco de 24 horas, recolectan la telemetría local y la exportan a la plataforma única en Amazon CloudWatch: Logs conserva los registros técnicos 12 meses en línea y 24 meses en archivo; Metrics conserva las métricas 13 meses; las trazas y los tableros operacionales también se alojan en CloudWatch (ADR-14).
 
 Los tableros se estructuran en tres niveles: operacional (para el equipo de TI y SRE), gerencial (para la gerencia y jefes) y del mandante (para Puelche, solo lectura con auditoría de consultas, conforme a RT-14.02). Las alertas se formulan por síntomas de negocio, no por causas técnicas, con ventanas de evaluación para evitar falsos positivos y escalamiento por criticidad.
 
 Durante un corte de enlace, el sitio no depende de los tableros centralizados para despachar. Las alarmas locales continúan y los colectores retienen la telemetría para enviarla al restablecer la conexión. La capacidad del buffer de 24 horas debe comprobarse con la carga de diseño; no se presume conservación ilimitada. La retención de métricas, registros técnicos y trazas no sustituye la política de auditoría de negocio exigida por RT-16.10.
 
-## 4.3  Módulos Funcionales
+### 4.1.4 Módulos funcionales y límites de contexto
 
-Los 12 módulos M1–M12 separan responsabilidades de negocio y conservan su trazabilidad a los requerimientos funcionales. La Tabla 4 presenta la descripción completa de cada módulo con su contexto delimitado, dependencias y acoplamiento.
+Los doce módulos M1–M12 separan decisiones de negocio y conservan su trazabilidad a los requerimientos. El Anexo 4.1-D identifica responsabilidad, intercambio, actor principal y etapa. Un actor puede participar en varios módulos sin convertirse en propietario de sus datos. El detalle de los módulos críticos se desarrolla inmediatamente después.
 
-| Módulo | Épica / RF | Funciones críticas | Actor responsable | Contexto delimitado | Qué NO le pertenece | Consume de | Publica hacia | Acoplamiento | Etapa | Capa |
-|---|---|---|---|---|---|---|---|---|---|---|
-| M1 Recepción | RF-01 | Validación vs OC, lote/venc, SSCC, cuarentena, GS1, integración ERP | Preparador / Jefe TI | Entrada mercadería, lote, SSCC, cuarentena, GS1 | No asigna stock a venta ni arma pedidos | ERP (colas), M2 (ubicación) | M2 (evento), ERP | Bajo (eventos) | Etapa 1 | Capa 4 |
-| M2 Inventario | RF-02 | Stock multi-sitio (2 CD+3 CDK), slotting, conteo ciego, FEFO, disponibilidad | Preparador, Jefa Calidad | Stock multi-sitio, slotting, conteo ciego, FEFO, disp. | No decide crédito ni rutas | M1, M5 | M3/M4/M5 (disp. Capa 3) | Bajo (lecturas+eventos) | Etapa 1 | Capa 4 |
-| M3 Preventa | RF-03 | Pedido, reserva stock, promos, precios, crédito, ID único offline, dedupe | **Preventista** | Pedido, reserva, promos, precios, crédito | No emite guías ni arma rutas | M2 (stock), M7 (crédito) | M5 (pedido), M6 (guía) | Medio (reserva+eventos) | Etapa 1 | Capa 4 |
-| M4 Planificación Rutas | RF-04 | Secuenciación auto, ventanas, capacidad, cadena frío, bloqueo cap., costo entrega | **Planificador** | Secuenciación, ventanas, capacidad, cadena frío | No ejecuta entrega ni liquida cobros | M2/M3 (pedidos), GIS | M6 (rutas/vent.), M12 (desvío) | Bajo (eventos) | Etapa 1 | Capa 4 |
-| M5 Preparación | RF-05 | Misiones picking, GS1, faltantes con motivo, secuenc. térmica, FEFO, carga dirigida | **Preparador** | Misiones picking, GS1, faltantes, térmica, FEFO | No gestiona flota ni clientes | M3 (pedidos), M2 (ubic.) | M6 (unidad prep.), ERP | Bajo (eventos) | Etapa 1 | Capa 4 |
-| M6 Reparto/Entrega | RF-06 | POD digital, QR, local cerrado+reagenda, cobranza, envases, comprobante, OTP | **Conductores**, Cliente | POD, QR, local cerrado, cobranza, devol., OTP | No liquida ni define crédito | M4 (rutas), M7 (cobranza) | M7 (rendición), M8 (dev.), SII | Medio (transacc. ruta) | Etapa 1 | Capa 4 |
-| M7 Cobranza/Rendición | RF-07 | Rendición digital, causales descuadre, cartera crédito, POS, interfaz cobr.→ERP | **Gerente Finanzas**, Conductor | Rendición, cartera, costo servir, POS | No planifica rutas | M6 (rendición), POS | ERP (colas), M10 (BI) | Bajo (eventos) | Etapa 1 | Capa 4 |
-| M8 Devoluciones/Envases | RF-08 | Devoluciones ruta, cuenta corriente envases, mermas a costo servir | Conductor, Gerente Com. | Devoluciones ruta, cta. cte. envases, mermas | No arma pedidos | M6 (devoluciones) | M2 (stock), M10 (mermas) | Bajo (eventos) | Etapa 1 | Capa 4 |
-| M9 Calidad/Trazabilidad | RF-09 | Trazabilidad fwd/bwd, sensores frío, excursiones, control sanitario, bloqueo | **Jefa Calidad** | Lotes, sensores, excursiones, retiro sanitario | No ejecuta venta | Sensores (Capa 2), M2/M5 | M5 (bloqueo), M10 (BI) | Bajo (eventos+bloqueo) | Etapa 1 | Capa 4 |
-| M10 BI/Gerencia | RF-11 | OTIF, fill rate, costo servir, ocupación flota, tablero real-time, segmentación | **Gerente Com., Finanzas** | OTIF, costo servir, tableros, segmentación | No escribe transacciones | M1–M9 (eventos), Capa 6 | Gerencia (tableros) | Solo lectura | Etapa 1 | Capa 4 |
-| M11 EDI Canal Moderno | RF-12 | Pedido EDI (AS2/API), validación, excepciones, ASN, ventana 30 min, acuse | **Cliente Canal Mod.**, Jefe TI | Pedido EDI, AS2/API, excepciones, ASN, acuse | No gestiona transporte | Cadenas (EDI/API), M3 | M3 (pedido EDI), M6, cadenas | Medio (trazabilidad) | Etapa 2 | Capa 4 |
-| M12 Telemetría/Flota | RF-14 | Integración fuente exist., ruta plan vs real, geocercas, desviaciones, costo servir | **Gerente Com./Jefa Cal.** | Ruta plan vs real, geocercas, ETA, km | No control jornada ni cámaras (D1) | GPS/telemet. (Capa 2), M4 | M10 (costo servir), M9 (frío) | Bajo (solo lectura) | Etapa 1 | Capa 4 |
+Cada módulo tiene un dueño de negocio y una vía explícita para colaborar con los demás.
 
-*Tabla 4. Descripción completa de los 12 módulos funcionales*
+La correspondencia con los identificadores físicos se detalla en el Anexo 4.A (Formulario T-11) de 4.2: N-04 ejecuta los módulos M1–M12 en nube; A-01 ejecuta M1, M2 y M5 como WMS local sobre A-02 (base transaccional), con A-03 (RabbitMQ), A-04 (ACL del ERP) y A-05 (identidad local) como apoyos. M9 utiliza B-02 (gateways de frío) y N-08 (ingesta IoT); M10 utiliza N-10 (analítica). N-09 proporciona SQS FIFO y SNS a los flujos asíncronos; N-01 a N-03 publican los portales y N-13 gestiona los terminales de bodega y terreno. Estos códigos identifican componentes de despliegue, no módulos de negocio adicionales.
 
-La columna Etapa indica la etapa del cronograma en la que entra en producción cada módulo: Etapa 1 en el mes 16 y Etapa 2 en el mes 21, según el Art. 17.
-El detalle por módulo se remite a § 4.3 / ADR.
-La columna Capa ubica cada módulo en la Capa 4 del mapa de § 4.2; sus interfaces de entrada llegan por las Capas 2/3, sus eventos y adaptadores salen por la Capa 5, la persistencia vive en la Capa 6 y la observabilidad en la Capa 8.
+El reparto evita que M6 emita DTE o que M10 escriba pedidos. M1 y M5 entregan datos al ERP únicamente por la capa anticorrupción. M11 entra en la Etapa 2 sin cambiar el dueño de la reserva de stock, que sigue siendo M2. Los límites y dependencias se precisan en el mapa siguiente.
 
-Los límites de contexto y dependencias inter-módulo se detallan en § 4.3.1 (Mapa formal de límites de contexto). Cada módulo traza sus RF a la matriz de trazabilidad (Cap. 17.1) y sus eventos canónicos a la Tabla 1.
+El Anexo 4.1-E hace visible el paso del requerimiento al componente y a la capa que lo realiza. Es una síntesis de los dominios, no una sustitución del catálogo requisito por requisito del Formulario T-12; allí se debe conservar también origen, etapa, prueba y criterio de aceptación de cada RF y RNF.
 
-### 4.3.1  Mapa Formal de Límites de Contexto (Context Mapping)
+La trazabilidad transversal se prueba sobre esos mismos recorridos: RT-03.10/12/13 en M1, M3, M5 y M6 con 24 horas en sitio y 14 horas en terreno; RT-02.06 mediante UUID y resultado persistente en M2/M3/M6; RT-02.13 mediante el modelo de dominio; y RT-11/12 mediante autorización y auditoría en cada cruce. El entorno de prueba y el caso de aceptación deben reproducir la falla, no limitarse a una marca de cumplimiento.
 
-El modelo de dominios se organiza mediante *bounded contexts* explícitos. La Tabla 5 define la relación entre contextos siguiendo los patrones de DDD: *Customer/Supplier*, *Conformist*, *Anticorruption Layer*, *Shared Kernel*, *Open Host Service* y *Published Language*.
+#### 4.1.21.9 Mapa de límites de contexto
 
-| Contexto (Módulo) | Patrón relación | Contexto relacionado | Contrato / Interfaz | Decisión / ADR |
-|---|---|---|---|---|
-| Recepción (M1) | Anticorruption Layer | ERP 2017 | OpenAPI 3.1 (ACL) | ADR-11, Dec 16.1#14 |
-| Inventario (M2) | Open Host Service | Preventa (M3), Preparación (M5), Planificación (M4) | OpenAPI 3.1 /v1/inventario | RT-02.12, S26 |
-| Preventa (M3) | Customer/Supplier | Inventario (M2), Cobranza (M7) | OpenAPI 3.1 /v1/preventa, /v1/sync | S26, RT-03.12 |
-| Planificación Rutas (M4) | Conformist | Inventario (M2), Preventa (M3), GIS externo | OpenAPI 3.1 /v1/rutas | RT-02.10 |
-| Preparación (M5) | Customer/Supplier | Inventario (M2), Reparto (M6), ERP | AsyncAPI (MisionPreparada), OpenAPI 3.1 (ACL) | ADR-08 |
-| Reparto/Entrega (M6) | Customer/Supplier | Planificación (M4), Cobranza (M7), Devoluciones (M8) | OpenAPI 3.1 /v1/reparto, /v1/sync | Dec 16.1#1, #3 |
-| Cobranza/Rendición (M7) | Anticorruption Layer | ERP 2017 | OpenAPI 3.1 (ACL), SQS | ADR-11, INT-06 |
-| Devoluciones/Envases (M8) | Shared Kernel | Inventario (M2), Cobranza (M7) | Eventos (EnvaseMovido, DevolucionRegistrada) | Dec 16.1#10, #12 |
-| Calidad/Trazabilidad (M9) | Customer/Supplier | Inventario (M2), Preparación (M5), Sensores (Capa 2) | Eventos (ExcursionTermicaDetectada), OpenAPI 3.1 | Dec 16.1#4 |
-| BI/Gerencia (M10) | Published Language | M1–M9, Capa 6 (Redshift) | AsyncAPI (EventBridge), consultas SQL | RT-05.27, RT-05.29 |
-| EDI Canal Moderno (M11) | Open Host Service | Cadenas (AS2/API), Preventa (M3), Reparto (M6) | EANCOM/GS1 XML/EPCIS, AS2, OpenAPI 3.1 | ADR-11, RT-05.23 |
-| Telemetría/Flota (M12) | Conformist | Planificación (M4), GPS externo, Calidad (M9) | API fuente existente, Eventos (DesviacionDeRutaDetectada) | D1, RT-17.06 |
+El modelo de dominios se organiza mediante límites de contexto explícitos. El Anexo 4.1-F indica qué módulo entrega información, qué módulo la recibe y dónde se traduce un modelo ajeno. El uso de un vocabulario publicado o de una capa anticorrupción evita que un cambio en el ERP o en una cadena comercial reescriba las reglas de stock y pedido.
 
-*Tabla 5. Mapa de límites de contexto (Context Mapping)*
+El mapa expone dependencias que deben permanecer bajo contratos versionados.
 
-El diagrama de contextos (Mermaid) se referencia en § 4.8 / Diagramas. Cada relación declara dueño del contrato, versión y comportamiento ante falla en el Catálogo (§ 4.5).
+El mapa asigna a cada relación un dueño de contrato y una superficie de intercambio. El catálogo de interfaces (§ 4.1.6) añade la versión y la conducta ante falla; una relación en esta tabla no equivale por sí sola a un contrato ejecutable.
 
-### 4.3.2  Módulo de Trazabilidad
+#### 4.1.21.10 Módulo de calidad y trazabilidad (M9)
 
-El módulo de trazabilidad resuelve el problema central que motivó la licitación: la incapacidad de responder en tiempo real ante un retiro sanitario. En marzo de 2026, un retiro preventivo de queso fresco tomó 9 días en resolverse de forma inexacta, generando pérdidas de $31 millones, la apertura de un sumario sanitario y la suspensión como distribuidor autorizado por un proveedor clave por seis meses.
+El módulo de trazabilidad resuelve el problema central que motivó la licitación: la incapacidad de responder en tiempo real ante un retiro sanitario. En marzo de 2026, un retiro preventivo de queso fresco tomó 9 días en resolverse de forma inexacta, generando pérdidas de \$31 millones, la apertura de un sumario sanitario y la suspensión como distribuidor autorizado por un proveedor clave por seis meses.
 
-El módulo implementa la unidad de trazabilidad sanitaria definida como el lote del proveedor conforme al estándar GS1 (GTIN + lote + vencimiento FEFO + temperatura), decisión fundamentada en la decisión 16.1 #2. La identidad primaria se enlaza a la unidad logística SSCC en cada movimiento interno de Puelche. Se descartan caja y pallet como identidad primaria debido a la volumetría (aproximadamente 9.500 SKU, 2,4 millones de unidades mensuales) y por el estado real de la captura (41% de recepciones sin lote registrado): el problema no es el nivel de agregación, sino la captura; por eso la recepción exige lectura del lote del proveedor (RF-01).
+La unidad de trazabilidad sanitaria es el lote del proveedor, identificado por el producto (GTIN) y el número de lote. El vencimiento y los registros de temperatura se conservan como atributos asociados; FEFO es la regla de rotación por vencimiento, no parte del identificador. Cada movimiento vincula el lote con la unidad logística identificada mediante SSCC. Esta organización permite seguir el producto aunque cambie de caja o pallet. Como el 41% de las recepciones carece de lote registrado, la captura en recepción es obligatoria para sostener la trazabilidad (RF-01).
 
-La trazabilidad forward/backward se implementa evento a evento conforme al estándar GS1 EPCIS, permitiendo al sistema responder en menos de 2 horas ante un retiro sanitario (Cap. 18), con identificación precisa de los lotes y puntos de entrega afectados. Los registros de temperatura se capturan de forma continua por sensores IoT en cámaras y vehículos, con alerta automática ante excursiones fuera de rango (RF-09.03/05) y bloqueo del despacho cuando se detecta una excursión térmica (RF-09.07). El módulo integra sensores de frío (Greengrass, Capa 2), inventario (M2), preparación (M5) y la capa de observabilidad (Capa 8), con evidencia de cumplimiento exportable. En la Figura 10 (§ 4.8) se muestra la captura de temperatura y el bloqueo por excursión.
+La trazabilidad forward/backward se implementa evento a evento conforme al estándar GS1 EPCIS, permitiendo al sistema responder en menos de 2 horas ante un retiro sanitario (Cap. 18), con identificación precisa de los lotes y puntos de entrega afectados. Los registros de temperatura se capturan de forma continua en 28 puntos de cámara y 28 termógrafos: 18 en camiones propios y 10 en camiones refrigerados de transportistas. Una lectura fuera del rango configurado genera alerta y retención preventiva automática de la carga en M5, también sin enlace (RF-09.03/05/07); el sistema registra umbral, duración, sensor y lote. La jefatura de Calidad evalúa la excursión y es la única que autoriza una liberación trazada o dispone rechazo. El conductor no puede levantar el bloqueo. M9 integra los sensores de cámara mediante los dos gateways con Greengrass (Capa 2), los termógrafos mediante el terminal del conductor, inventario (M2), preparación (M5) y observabilidad (Capa 8), con evidencia exportable de la decisión.
 
-### 4.3.3  Módulo de Gestión de Inventario
+#### 4.1.21.11 Módulo de inventario (M2)
 
 El módulo de inventario permite saber qué stock existe, dónde está y qué parte puede comprometerse. Mantiene la operación distribuida entre Talca, Concepción y los tres cross-docks; la casa matriz consulta la información consolidada. Sus capacidades son las siguientes:
 
-- **Stock por sitio (RF-02.02, RT-02.12).** Cada instalación operativa informa sus movimientos al consolidado. Con conexión se consulta disponibilidad actual; sin ella se muestra la copia descargada, identificada como información pendiente de actualización. La parametrización admite nuevos sitios sin convertir a la casa matriz en una bodega ni asignarle stock operativo por defecto.
+  - **Stock por sitio (RF-02.02, RT-02.12).** Cada instalación operativa informa sus movimientos al consolidado. Con conexión se consulta disponibilidad actual; sin ella se muestra la copia descargada, identificada como información pendiente de actualización. La parametrización admite nuevos sitios sin convertir a la casa matriz en una bodega ni asignarle stock operativo por defecto.
+  - **Slotting y conteo ciego.** Asignación de ubicaciones por criterio documentado de rotación, peso y compatibilidad, con conteo cíclico de inventario mediado por terminales HHT con escáner GS1, reduciendo la discrepancia actual del 2,3% del valor contado a menos del 1%.
+  - **FEFO (First Expired, First Out).** La preparación y el despacho respetan el principio de primer vencimiento, con secuenciación térmica para productos refrigerados y congelados.
+  - **Stock disponible.** Con conexión se consulta la disponibilidad mediante APIs. Sin conexión se utiliza la copia autorizada descargada al inicio del turno y almacenada en SQLite/Room. La reserva se confirma en el servicio de negocio; los pedidos capturados sin señal permanecen pendientes de validación. Los conflictos se resuelven con reglas documentadas de asignación y prioridad, no mediante la sola comparación de marcas de tiempo.
 
-- **Slotting y conteo ciego.** Asignación de ubicaciones por criterio documentado de rotación, peso y compatibilidad, con conteo cíclico de inventario mediado por terminales HHT con escáner GS1, reduciendo la discrepancia actual del 2,3% del valor contado a menos del 1%.
-
-- **FEFO (First Expired, First Out).** La preparación y el despacho respetan el principio de primer vencimiento, con secuenciación térmica para productos refrigerados y congelados.
-
-- **Stock disponible.** Consulta de disponibilidad para preventa (online con conexión, offline con la foto de stock descargada desde ElastiCache al inicio del turno y almacenada localmente en SQLite/Room del dispositivo) con reserva de stock mediante la regla de negocio definida en la decisión 16.1 #8 (doble compromiso de stock resuelto en el servidor al sincronizar, no con timestamp ciego). Sin conexión, el pedido queda como pendiente de validación de stock hasta la sincronización posterior. En las Figuras 8 y 9 (§ 4.8) se muestran la recepción y la preparación.
-
-### 4.3.4  Módulo de Preventa Móvil
+#### 4.1.21.12 Módulo de preventa móvil (M3)
 
 Para los 62 preventistas, tomar un pedido debe seguir siendo posible aun cuando la ruta no tenga cobertura. El módulo reemplaza una aplicación que no consulta stock ni crédito y presenta caídas y duplicación de pedidos. La nueva interacción distingue con claridad lo registrado en el dispositivo de lo confirmado por el servidor:
 
-- **Toma de pedido offline (RF-03.02).** El preventista toma el pedido sin señal de red. La aplicación mantiene una foto local de datos de lectura (stock, crédito del cliente, precios vigentes, promociones) que se descarga al inicio del turno cuando hay conectividad.
+  - **Toma de pedido offline (RF-03.02).** El preventista toma el pedido sin señal de red. La aplicación mantiene una foto local de datos de lectura (stock, crédito del cliente, precios vigentes, promociones) que se descarga al inicio del turno cuando hay conectividad.
+  - **Identificador único y deduplicación (RF-03.16/17).** Cada evento recibe un UUID que se conserva en todos sus reintentos. El servicio de negocio registra su procesamiento y evita ejecutar dos veces la misma operación.
+  - **Validación de stock y crédito.** La validación definitiva ocurre en la sincronización con la regla de negocio del servidor (reserva de stock, RF-03.03; crédito del cliente, RF-03.08/09). Sin conexión, el pedido queda como pendiente de validación y se resuelve en la sincronización posterior.
+  - **Sincronización diferida.** Al recuperar cobertura, el dispositivo envía las escrituras acumuladas por API Gateway. El Gateway aplica los controles de entrada; el servicio de negocio valida, deduplica, procesa y confirma cada evento. El dispositivo conserva los eventos que aún no tienen confirmación.
 
-- **Identificador único y deduplicación (RF-03.16/17).** Cada evento generado offline lleva un UUID idempotente que se envía por el API Gateway con deduplicación en el servidor.
+La prueba de aceptación de terreno considera un turno de 14 horas sin cobertura. El caso exige que un dispositivo de reparto sincronice esa jornada en un máximo de 10 minutos; para el CD, fija hasta 2 horas tras un corte de 24 horas. Estos límites se verifican con la volumetría correspondiente y reconciliación determinista (RT-03.12), sin extender automáticamente el umbral del repartidor a cualquier carga de preventa.
 
-- **Validación de stock y crédito.** La validación definitiva ocurre en la sincronización con la regla de negocio del servidor (reserva de stock, RF-03.03; crédito del cliente, RF-03.08/09). Sin conexión, el pedido queda como pendiente de validación y se resuelve en la sincronización posterior.
-
-- **Sincronización diferida.** Al recuperar cobertura, el dispositivo envía las escrituras acumuladas por el API Gateway (Capa 3), que valida esquema y deduplica antes de entregar a la capa de negocio.
-
-La prueba de aceptación de terreno considera un turno de 14 horas sin cobertura. El caso exige que un dispositivo de reparto sincronice esa jornada en un máximo de 10 minutos; para el CD, fija hasta 2 horas tras un corte de 24 horas. Estos límites se verifican con la volumetría correspondiente y reconciliación determinista (RT-03.12), sin extender automáticamente el umbral del repartidor a cualquier carga de preventa. En la Figura 2 (§ 4.8) se muestra el flujo del preventista.
-
-### 4.3.5  Módulo de Planificación de Rutas
+#### 4.1.21.13 Módulo de planificación de rutas (M4)
 
 El módulo de planificación de rutas automatiza un proceso que actualmente depende de una sola persona (21 años de conocimiento concentrado, con retiro programado en 2 años) que administra una planilla de 11 hojas. El módulo implementa:
 
-- **Secuenciación automática.** Optimización determinista de rutas con capacidad y ventanas de tiempo (VRP), con objetivo de ejecución inferior a 20 minutos (Cap. 18). La solución propuesta no utiliza IA para esta función y debe permitir al planificador entender las restricciones y revisar el resultado; esa decisión de alcance no implica que RT-18 prohíba la IA.
+  - **Secuenciación automática.** Optimización determinista de rutas con capacidad y ventanas de tiempo (VRP), con objetivo de ejecución inferior a 20 minutos (Cap. 18). El planificador puede conocer las restricciones utilizadas y revisar el resultado. Esta función no incorpora inteligencia artificial.
+  - **Ventanas horarias y capacidad.** Considera capacidad de vehículo, ventanas de entrega del cliente y cadena de frío.
+  - **Integración con GIS.** Consulta de direcciones, cálculo de ETA y geocercas por API externa, con caché de mapas por zona en dispositivos para degradación a ruta offline con secuencia cargada.
+  - **Costo de entrega.** Alimenta el cálculo del costo de servir por cliente, uno de los ejes de evaluación del caso.
 
-- **Ventanas horarias y capacidad.** Considera capacidad de vehículo, ventanas de entrega del cliente y cadena de frío.
+La propuesta automática no convierte las excepciones del planificador en reglas opacas: M4 conserva restricción, motivo de ajuste y autor de la ruta aprobada para transferir conocimiento y comprobar el criterio de aceptación.
 
-- **Integración con GIS.** Consulta de direcciones, cálculo de ETA y geocercas por API externa, con caché de mapas por zona en dispositivos para degradación a ruta offline con secuencia cargada.
+#### 4.1.21.14 Módulo de rendición y cobro (M7)
 
-- **Costo de entrega.** Alimenta el cálculo del costo de servir por cliente, uno de los ejes de evaluación del caso. En la Figura 13 (§ 4.8) se muestra el puesto del planificador.
+El módulo de rendición y cobro resuelve las diferencias de rendición que promedian \$4,2 millones mensuales sin investigación de causa. Implementa:
 
-### 4.3.6  Módulo de Rendición y Cobro
+  - **Rendición digital individual (RF-07.02).** Cada conductor rinde sus cobros del turno de forma digital, con causales de descuadre clasificadas y trazables.
+  - **Cobranza en ruta (RF-07.06).** El conductor registra el cobro y conserva su evidencia para la rendición. En pagos con POS móvil, la captura local de una operación no se presenta como autorización bancaria. El tratamiento sin cobertura depende de las capacidades y condiciones acordadas con la pasarela; se concilia al reconectar sin generar cargos duplicados.
+  - **Interfaz con ERP (RF-07.09).** La rendición aprobada se publica en SQS; el trabajador Laravel `erp-sync` consume y entrega a la **capa anticorrupción (ACL)**; la ACL integra con el ERP. Nunca hay escritura directa al ERP. El ERP permanece como única fuente de verdad tributaria y único emisor de DTE.
+  - **Costo de servir (RF-11).** El módulo alimenta el tablero de BI con el costo real por entrega, incluyendo kilometraje real (telemetría M12), tiempo de servicio y deducciones por devoluciones.
 
-El módulo de rendición y cobro resuelve las diferencias de rendición que promedian $4,2 millones mensuales sin investigación de causa. Implementa:
-
-- **Rendición digital individual (RF-07.02).** Cada conductor rinde sus cobros del turno de forma digital, con causales de descuadre clasificadas y trazables.
-
-- **Cobranza en ruta (RF-07.06).** El conductor registra el cobro y conserva su evidencia para la rendición. En pagos con POS móvil, la captura local de una operación no se presenta como autorización bancaria. El tratamiento sin cobertura depende de las capacidades y condiciones acordadas con la pasarela; se concilia al reconectar sin generar cargos duplicados.
-
-- **Interfaz con ERP (RF-07.09).** La rendición aprobada se publica en SQS; el worker `celery-erp-sync` consume y entrega a la **capa anticorrupción (ACL)**; la ACL integra con el ERP. Nunca hay escritura directa al ERP. El ERP permanece como única fuente de verdad tributaria y único emisor de DTE.
-
-- **Costo de servir (RF-11).** El módulo alimenta el tablero de BI con el costo real por entrega, incluyendo kilometraje real (telemetría M12), tiempo de servicio y deducciones por devoluciones. En las Figuras 3, 4 y 12 (§ 4.8) se muestran los recorridos de los conductores y del gerente de finanzas.
-
-### 4.3.7  Módulo de Dashboard de Costo de Servir
+#### 4.1.21.15 Módulo de analítica y costo de servir (M10)
 
 El módulo de inteligencia de negocio consolida la información operativa en tableros gerenciales de autoservicio (RT-05.27) con modelo semántico en el mismo lenguaje del negocio: OTIF, fill rate, costo por entrega, ocupación de flota y segmentación por canal/cliente.
 
-Los tableros se alimentan del almacén analítico (Redshift Serverless) con latencias comprometidas: operación del día ≤ 5 minutos, cierre comercial ≤ 2 horas, gestión ≤ 4 horas (RT-05.29). El modelo dimensional se estructura en hechos (ventas, entregas, stock, costo de servir) y dimensiones (cliente, SKU, tiempo, ruta, canal), con drill-down hasta línea de pedido y lote para trazabilidad sanitaria completa.
+Los tableros se alimentan del almacén analítico (Redshift Serverless) con latencias comprometidas: operación del día $\leq$ 5 minutos, cierre comercial $\leq$ 2 horas, gestión $\leq$ 4 horas (RT-05.29). El modelo dimensional se estructura en hechos (ventas, entregas, stock, costo de servir) y dimensiones (cliente, SKU, tiempo, ruta, canal), con drill-down hasta línea de pedido y lote para trazabilidad sanitaria completa.
 
 La información es de solo lectura para la analítica, sin acceder al transaccional en vivo, conforme al principio de separación transaccional/analítico. Los informes se programan (diarios, semanales, mensuales) y se exportan de forma asíncrona con firma y checksum (RT-05.28).
 
-Quedan excluidas IA y analítica predictiva del alcance propuesto. Se prioriza recuperar la calidad de la captura, dado que el caso informa un 41 % de recepciones sin lote registrado. El lago de datos columnar y el almacén analítico permiten evaluar esas capacidades más adelante, previa decisión del CLIENTE y sin darlas por incluidas. Esta delimitación debe mantenerse alineada con las innovaciones comprometidas en la propuesta. En las Figuras 11 y 12 (§ 4.8) se muestran los tableros de gerencia.
+El módulo no incorpora inteligencia artificial ni analítica predictiva. Se prioriza la calidad de la captura y la disponibilidad de indicadores verificables, dado que el caso informa un 41 % de recepciones sin lote registrado. La incorporación futura de capacidades predictivas requerirá una decisión expresa del CLIENTE y la definición de su alcance.
 
-## 4.4  Modelo de Datos Conceptual
+Comercial y Finanzas consultan indicadores sobre el mismo modelo semántico, pero solo Finanzas participa en la aprobación de diferencias de rendición; M10 no recibe permiso para modificar cobros.
+
+#### 4.1.21.16 Recepción, preparación, reparto y servicios asociados
+
+**M1 Recepción** compara lo recibido con la orden de compra, identifica GTIN, lote, vencimiento y SSCC, y registra cuarentena cuando falta evidencia o hay una diferencia. Publica `RecepcionConfirmada` para que M2 ubique el stock; no lo reserva para venta. La información del ERP entra y sale exclusivamente por la capa anticorrupción.
+
+El proveedor consulta el estado de su orden y de la recepción; no accede a las reglas internas de inventario ni confirma unilateralmente un lote.
+
+**M5 Preparación** toma pedidos confirmados y ubicaciones de M2, aplica FEFO y genera misiones verificables con lectura GS1. Conserva localmente cada lectura y la causal de faltante. Una carga no se libera por el mero hecho de estar preparada: la solicitud de guía electrónica se cursa al ERP por la ACL y la salida queda condicionada a su confirmación o a la contingencia tributaria aprobada.
+
+El preparador confirma cada lectura en el servicio local; la pérdida del enlace externo no borra la misión ni convierte una carga preparada en una salida autorizada.
+
+**M6 Reparto y entrega** recibe de M4 la ruta y de M5 la carga liberada. El conductor registra receptor, cantidad recibida, rechazos y POD en el dispositivo aun sin señal. M6 no liquida cobros ni emite documentos tributarios; publica el resultado para M7 y M8 y mantiene visible el estado pendiente de sincronización.
+
+El conductor propio y el externo utilizan el mismo contrato de entrega con identidades personales distintas. La evidencia queda ligada al turno y al receptor, sin exigir que el almacén instale una aplicación.
+
+**M8 Devoluciones y envases** separa la mercadería que regresa de los activos retornables. Cada devolución conserva cantidad, lote, causal y vínculo con la entrega; el ajuste tributario se solicita al ERP por la ACL. Los canastillos y pallets se controlan por saldo de cliente y movimientos firmados, sujetos a conciliación en la rendición.
+
+**M11 Canal moderno** recibe pedidos mediante contratos EDI configurados por cadena, traduce códigos a un vocabulario común y envía el pedido normalizado a M3. Las diferencias de formato y equivalencias van a una bandeja de excepciones; M11 no se convierte en un segundo dueño del pedido ni del inventario.
+
+La cadena intercambia pedidos por el hub EDI; el transportista consulta y asigna viajes desde su portal. Ninguno de esos canales reemplaza el registro personal del conductor que ejecuta M6.
+
+**M12 Telemetría y flota** consume la fuente de posicionamiento existente de los vehículos propios, compara ruta planificada con recorrido y entrega kilómetros a M10 para costo de servir. No incorpora cámaras de cabina ni usa la posición para controlar la jornada laboral. Su falla degrada la visibilidad de ruta, no la captura de entregas de M6.
+
+### 4.1.5 Modelo de datos conceptual
 
 El modelo de datos de la solución se fundamenta en un conjunto de entidades de negocio canónicas, sus relaciones y eventos, conforme a RT-02.13. Este modelo alimenta la matriz de trazabilidad del Capítulo 17.1 y los contratos de integración (OpenAPI 3.1 y AsyncAPI 2.6 por módulo).
 
 Las entidades principales son:
 
-- **Cliente.** Con RUT, razón social, canal (tradicional, food service, cadenas), crédito, georreferencia y estado de bloqueo. Eventos: creación, actualización y cambio de bloqueo.
+  - **Cliente.** Con RUT, razón social, canal (tradicional, food service, cadenas), crédito, georreferencia y estado de bloqueo. Eventos: creación, actualización y cambio de bloqueo.
+  - **Pedido.** Identificador UUID, preventista, cliente, líneas de detalle (SKU, cantidad, precio) y ciclo de vida (tomado $\rightarrow$ confirmado $\rightarrow$ preparado $\rightarrow$ despachado $\rightarrow$ entregado $\rightarrow$ rendido). Eventos: toma, confirmación, asignación de línea, despacho y evidencia de entrega.
+  - **SKU / Producto.** Con codificación GTIN/GS1, unidad, clasificación de temperatura, rangos térmicos (RF-09.01) y vida útil.
+  - **Lote.** Unidad de trazabilidad sanitaria identificada por GTIN y número de lote del proveedor, con vencimiento como atributo asociado. Cada movimiento interno la vincula con su unidad logística SSCC. Eventos: recepción, bloqueo, inicio de retiro sanitario y enlace con unidad logística.
+  - **Misión de preparación.** HHT, oleada, ubicación, unidades y ciclo de vida (descargada $\rightarrow$ ejecutada $\rightarrow$ cerrada).
+  - **Ruta / viaje.** Planificador, vehículo, conductor, ventanas, secuencia de entregas y geocercas.
+  - **Entrega.** Pedido, viaje, prueba de entrega (POD: firma, QR, fotografía), documentos DTE y efectivo. Eventos: evidencia, reintento y aprobación de rendición.
+  - **Documento tributario.** Factura, boleta, guía de despacho, folio del SII y acuse.
+  - **Envase retornable.** Canastillo o pallet, cliente, saldo y pérdida estimada del 14% anual (Decisión 16.1 N° 10). Control por cuenta corriente por cliente, no por unidad identificada.
+  - **Sensor / registro térmico.** Dispositivo, lote o posición, temperatura y excursión térmica.
 
-- **Pedido.** Identificador UUID, preventista, cliente, líneas de detalle (SKU, cantidad, precio) y ciclo de vida (tomado → confirmado → preparado → despachado → entregado → rendido). Eventos: toma, confirmación, asignación de línea, despacho y evidencia de entrega.
+La Figura 4.6 dibuja las relaciones mínimas necesarias para responder dos preguntas del caso: de qué lote provino una unidad entregada y a qué clientes llegó un lote que debe retirarse. No pretende ser el diccionario de datos del capítulo 5.
 
-- **SKU / Producto.** Con codificación GTIN/GS1, unidad, clasificación de temperatura, rangos térmicos (RF-09.01) y vida útil.
+![Modelo conceptual del pedido, el lote y la entrega](<../../../Diagramas/arquitectura_logica_actual/ARQL-18_Dominio_trazabilidad.png>)
 
-- **Lote.** La unidad de trazabilidad sanitaria, vinculada al lote del proveedor (GS1: GTIN + lote + vencimiento) y enlazada a la unidad logística SSCC en cada movimiento interno. Eventos: recepción, bloqueo, inicio de retiro sanitario y enlace con unidad logística.
+*Modelo conceptual del pedido, el lote y la entrega*
 
-- **Misión de preparación.** HHT, oleada, ubicación, unidades y ciclo de vida (descargada → ejecutada → cerrada).
+*Fuente: elaboración propia de LafroX.*
 
-- **Ruta / viaje.** Planificador, vehículo, conductor, ventanas, secuencia de entregas y geocercas.
-
-- **Entrega.** Pedido, viaje, prueba de entrega (POD: firma, QR, fotografía), documentos DTE y efectivo. Eventos: evidencia, reintento y aprobación de rendición.
-
-- **Documento tributario.** Factura, boleta, guía de despacho, folio del SII y acuse.
-
-- **Envase retornable.** Canastillo o pallet, cliente, saldo y pérdida estimada del 14% anual (decisión 16.1 #10). Control por cuenta corriente por cliente, no por unidad identificada.
-
-- **Sensor / registro térmico.** Dispositivo, lote o posición, temperatura y excursión térmica.
+La línea de pedido se asigna a un lote identificado por GTIN y lote del proveedor; los movimientos con SSCC conservan la cadena de custodia hasta la entrega. La entrega vincula la evidencia de recepción y el folio de la guía que el ERP emitió antes del traslado. Un pedido aún puede no tener entrega, y una entrega puede registrar más de una evidencia o un rechazo parcial: esas cardinalidades y estados se concretan en el capítulo 5 sin perder el identificador de origen.
 
 Los eventos usan verbos en pasado y son la base de los esquemas AsyncAPI. Toda escritura offline es idempotente por UUID (RT-02.06).
 
 El almacenamiento se distribuye en quince dominios lógicos: BD_INVENTARIO, BD_PREVENTA, BD_RUTAS (PostGIS), BD_PREPARACION, BD_REPARTO, BD_COBRANZA_FINANZAS, BD_MAESTROS_CONF, BD_GOBIERNO_ACCESO, BD_CALIDAD_TRAZABILIDAD, BD_TELEMETRIA, BD_EDI_CANALMODERNO, BD_BI_GERENCIA, BD_MAILS_NOTIF, REDIS_SESIONES_CACHE y S3_DOCS. El dominio de telemetría conserva la ingesta raw en DynamoDB y su serie consolidada en S3 Parquet y Redshift, procesada con Glue. Esta separación incluye bases transaccionales, almacenes analíticos, caché y objetos; no representa quince servidores físicos ni quince motores de base de datos independientes.
 
-## 4.5  Catálogo de Interfaces
+### 4.1.6 Catálogo de interfaces
 
-El catálogo es el registro único de integraciones. Cada entrada tiene identificador estable, módulo dueño, contrato, versión, estado y comportamiento ante falla. Vive versionado junto al código y se publica en el portal interno de desarrolladores servido por Amazon API Gateway (Capa 3). Se declaran 15 integraciones: 8 internas y 7 externas.
+El catálogo identifica quince integraciones por número estable, dueño y superficie contractual. Los anexos 4.1-G y 4.1-H reúnen para cada una el modo, volumen esperado, ventana requerida de la contraparte y conducta ante lentitud o error (RT-05.21). Se distingue una ventana requerida por el diseño de un SLA efectivamente acordado con un tercero. El contrato ejecutable OpenAPI o AsyncAPI debe fijar operación o evento, esquema, versión, autenticación, errores y plazo de retirada. La publicación de una ruta genérica por sí sola no equivale a entregar ese contrato.
 
-### 4.5.1  Integraciones internas — superficies y plano híbrido
+#### 4.1.21.17 Integraciones internas
 
-| ID | Integración | Modo | Contrato | Módulo | Ventana crítica | Comportamiento ante falla (RT-10.08) |
-|---|---|---|---|---|---|---|
-| INT-01 | App Preventa ↔ plataforma (pedidos, stock, crédito, promos, precios) | Síncrono lectura + sync diferida idempotente escritura | OpenAPI 3.1 /v1/preventa, /v1/sync | M3 | 09:00–18:00 | Caché turno (saldo, stock, tarifa; TTL 8 h); pedido sin conexión se confirma en sync; no se pierde |
-| INT-02 | App Reparto ↔ plataforma (POD, entregas, devoluciones, cobranza, envases) | Sync diferida idempotente por lotes | OpenAPI 3.1 /v1/reparto, /v1/sync | M6, M7, M8 | 05:30–07:00, 17:00–20:00 | Turno 14 h sin señal; sync ≤ 10 min al reconectar (RT-03.12); acuse por lote (RF-06.07) |
-| INT-03 | Broker on-premise → nube (reconciliación WMS) | Asíncrono | AsyncAPI 2.6 SQS FIFO, MessageGroupId = sitio | M2, M5 | 22:00–06:00 | Buffer RabbitMQ 24 h; publicación cronológica al reconectar; CD sincronizado ≤ 2 h tras corte 24 h |
-| INT-04 | Cross-dock → Talca (detalle mini-WMS) | Asíncrono broker a broker | AsyncAPI 2.6 AMQPS 5671 | M2 | 03:00–06:00 | Ventana 3 h 100% local; eventos críticos directo a SQS, no dependen Talca (D-AL-04) |
-| INT-05 | Borde IoT → nube (cadena de frío) | Asíncrono, al menos una vez | AsyncAPI 2.6 MQTTS 8883 con X.509 por dispositivo | M9, M12 | 24×7 | Buffer Greengrass 14 h; detección excursión y bloqueo despacho 100% locales |
-| INT-12 | Réplica WMS → Aurora (continuidad) | Asíncrono CDC | WAL lógico (wal_level=logical) por AWS DMS | M2 | continua | Excepción entrante D-AL-05; si VPN cae, DMS encola en origen y reanuda sin pérdida — RPO ≤ 15 min |
-| INT-13 | Identidad: maestro → cachés locales | Asíncrono (importación Realm cifrado S3, saliente) | Exportación/importación Realm Keycloak | Capa 7 | 24×7 | Δ ≤ 8 h por TTL y ≤ 24 h por SCIM; sin conexiones entrantes a Keycloak |
-| INT-14 | Observabilidad on-premise → plataforma | Asíncrono (OTLP) | OpenTelemetry | Capa 8 | 24×7 | Buffer disco 24 h; envío diferido cierra hueco al reconectar |
+Las ocho interfaces internas intercambian pedidos, entregas, inventario, identidad y telemetría entre dispositivos, sitios y nube. El Anexo 4.1-G permite reconocer qué módulo acepta cada mensaje y cómo se conserva cuando falla el enlace.
 
-*Tabla 6. Integraciones internas — superficies y plano híbrido*
+Las interfaces críticas conservan datos durante el corte y confirman cada operación al reconectar.
 
-### 4.5.2  Integraciones externas — plataforma y terceros
+INT-01 y INT-02 conservan el UUID de cada operación hasta obtener acuse durable; INT-03 y INT-04 ordenan eventos por sitio o agregado. INT-12 replica únicamente el WMS de Talca a un esquema de lectura separado de las tablas escritas por los consumidores de eventos. Su desfase aumenta durante el corte WAN; el registro local solo permite recuperarlo si sobrevive y conserva capacidad. El Anexo 4.1-M distingue este caso de la pérdida simultánea del sitio y del enlace.
 
-| ID | Sistema | Modo | Contrato / estándar | Volumen | Ventana crítica | Comportamiento ante falla (RT-10.08) |
-|---|---|---|---|---|---|---|
-| INT-06 | ERP 2017 (catálogo, stock valorizado, cobranzas, contabilidad) | Asíncrono colas + síncrono solo lecturas | OpenAPI 3.1 Puelche (ACL); ERP sin contrato propio | ≈ 34.000 DTE/mes; cobranzas/turno | Cierre contable diario, 3 primeros días hábiles mes | Cortacircuito: preventa/reparto no se degradan; colas retienen 24 h; desajuste en bitácora Art. 16.4 |
-| INT-07 | SII — DTE, guía despacho electrónica, acuse recibo | Síncrono por puerta enlace | Formato autoridad tributaria (RT-05.23); firma Ley 19.799 | ≈ 34.000 docs/mes; pico 05:30–07:00 | Emisión por turno | Entrega no se detiene: evidencia local (firma, QR, foto) + timbre diferido folio reservado; reintento exponencial — cero guías papel (RF-06.02) |
-| INT-08 | Cadenas supermercados — canal moderno | Asíncrono (AS2) + API síncrona selectiva | EANCOM D.01B / GS1 XML (pedido, aviso despacho, factura) + EPCIS trazabilidad | 500 puntos canal moderno | Ventana 30 min (RF-12.10); hito ene 2029 (RNF-12.01) | DLQ + bandeja excepciones actor canónico (RF-12.05/06); alternativa manual por acuerdo cada cadena |
-| INT-09 | Transbank Webpay y POS móvil | Síncrono por puerta enlace | API pasarela; idempotencia transaction_id | ≈ 1.400 entregas/día (2.600 peak); 11.800 cobros efectivo/mes | 05:30–07:00 | Doble captura sin conexión: POS registra pendiente autorización diferida; si no procede, efectivo o giro crédito con firma. Cobro nunca se pierde |
-| INT-10 | GIS, mapas, ETA, geocercas | Síncrono por puerta enlace | API proveedor GIS | Planificación diaria ≈ 96 camiones | Planificación previa despacho | Caché mapas por zona en dispositivo; degradación a ruta offline con secuencia cargada (M4); entrega no se pierde |
-| INT-11 | Notificaciones — correo, app, mensajería, SMS | Asíncrono por colas | API proveedor notificaciones | Avisos despacho y llegada por turno | Previo a entrega | Cola local entrega diferida; canal se elige por cliente (canal tradicional no usa correo, RT-16.21) |
-| INT-15 | Telemetría flota existente (camiones propios) | Asíncrono, solo lectura | API fuente existente (RT-17.06) | 42 vehículos; ≈ 420.000 km/mes | Operación diurna | Degrada a ruta planificada sin posición real; no control jornada (D1, objeción sindical L577) |
+#### 4.1.21.18 Integraciones externas
 
-*Tabla 7. Integraciones externas — plataforma y terceros*
+Las siete interfaces con terceros se encapsulan para que un cambio de proveedor no altere doce módulos a la vez. El Anexo 4.1-H separa el tercero, el dueño interno del contrato y la conducta ante falla.
 
-**Volumen de mensajes por integración (numeral 14.2).** El total en régimen es ≈ 150.000 mensajes/día, dominado por trazabilidad y telemetría (series de tiempo que no atraviesan base transaccional: entran por borde y consolidan en capa analítica, ADR-04). Las cinco integraciones restantes son de configuración y administración, con volumen despreciable.
+La ACL aísla el ERP; ninguna falla de tercero convierte un estado pendiente en aprobado.
 
-| Integración | Volumen régimen | Peak septiembre | Derivación |
-|---|---|---|---|
-| Capa anticorrupción ERP (asíncrona) | ≈ 4.700 msg/día | ≈ 9.400 | 1.240 pedidos + 46 recepciones + 1.400 preparaciones + 1.400 evidencias + ≈ 600 recaudaciones |
-| Documentos tributarios y acuse (SII, síncrona) | ≈ 2.700 msg/día | ≈ 5.400 | 34.000 docs/mes + acuse, sobre 25 días |
-| Eventos trazabilidad GS1 EPCIS | ≈ 52.000 eventos/día | ≈ 104.000 | 260.000 líneas/mes × 5 eventos ciclo, sobre 25 días |
-| Telemetría cadena frío (IoT Core) | ≈ 13.200 msg/día | sin variación | 46 fuentes (28 cámaras + 18 termógrafos) × 1 muestra/5 min |
-| Telemetría flota | ≈ 60.500 msg/día | ≈ 72.000 | 42 camiones × 1 posición/30s durante 12 h ruta |
-| Sync terreno (colas dispositivo) | ≈ 13.000 escrituras/día | ≈ 26.000 | 1.240 pedidos + 1.400 evidencias + 10.400 confirmaciones prep. |
-| EDI canal moderno (Etapa 2) | ≈ 550 msg/día | ≈ 1.100 | 136 pedidos/día × 4 mensajes (pedido, confirmación, aviso, acuse) |
-| Notificaciones multicanal | ≈ 2.800 msg/día | ≈ 5.600 | hora estimada llegada y acuse por entrega |
-| Autorización pago (POS móvil) | ≈ 500 msg/día | ≈ 1.000 | fracción canal tradicional que migra efectivo a electrónico |
-| Servicio mapas y geocodificación | ≈ 200 llamadas/día | ≈ 400 | una corrida ruteo por zona + recálculos incidencia |
+La integración tributaria INT-07 pasa por el ERP, único emisor de DTE; M5 no llama al SII. La falla de INT-09 impide afirmar que un cargo quedó aprobado. Para INT-08 se preservan el mensaje original, su equivalencia y la respuesta enviada a cada cadena.
 
-*Tabla 8. Volumen de mensajes por integración (derivado volumetría caso)*
+**Volumen de mensajes por integración.** Los anexos 4.1-G y 4.1-H declaran las quince interfaces; el Anexo I resume órdenes de magnitud y cálculos. No se usa la suma de eventos, consultas, muestras y reenvíos como número de transacciones únicas: una misma operación cruza varias interfaces. La prueba mide además tamaño de mensajes, objetos y WAL. La telemetría se ingiere y consolida por su flujo específico sin competir con las escrituras críticas de despacho (ADR-04).
 
-## 4.6  Tecnologías Seleccionadas
+El volumen de telemetría no debe competir con las escrituras críticas de despacho.
+
+### 4.1.7 Detalle de tecnologías seleccionadas
 
 A continuación se resume la tecnología de cada capa y su justificación principal:
 
-- **Backend (12 módulos).** Django con Python 3.12 como línea base, organizado como monolito modular. GeoDjango y PostGIS cubren el trabajo geoespacial. El mantenimiento contempla actualizaciones a versiones soportadas durante los 56 meses; no supone soporte ininterrumpido de una única versión.
+  - **Backend (12 módulos).** Laravel 13 sobre PHP 8.5, con Composer y `composer.lock`, organizado en contextos M1–M12. PostgreSQL/PostGIS conserva los datos geográficos; M4 usa repositorios espaciales con SQL parametrizado vía PDO/Query Builder y pruebas de consultas. Laravel 13 requiere PHP 8.3 o superior y admite PHP 8.5 (Laravel. (2026). *Release notes*. https://laravel.com/framework/docs/releases.); ambos componentes se actualizarán a versiones con soporte durante los 56 meses.
+  - **Frontend web.** Angular con Tailwind CSS y TypeScript. La integración con Keycloak se implementa mediante OIDC y se mantiene junto con las dependencias del cliente. Las versiones deben actualizarse durante el contrato conforme a sus ciclos de soporte.
+  - **Apps de campo (preventa y reparto).** Kotlin Android nativo. Nativo del parque Zebra/Android, escáner GS1 vía Zebra DataWedge, SQLite/Room offline, acceso nativo a GPS, POS y térmica.
+  - **Borde y continuidad del acceso (Capa 2).** CloudFront, WAF, Shield y ALB en nube, con control de acceso local. Los CD utilizan fibra + LTE y los cross-docking, Starlink + LTE de dos proveedores; la conmutación automática ocurre en menos de 30 segundos (ADR-02), sin sustituir la autonomía del servicio local.
+  - **Puerta de enlace de servicios (Capa 3).** Amazon API Gateway para publicar las APIs y aplicar controles de entrada. La configuración debe cubrir la validación de identidad de Keycloak, las cuotas y los límites de solicitudes, conforme a la modalidad de API seleccionada y al flujo descrito en la capa de puerta de enlace de este apartado.
+  - **Base de datos transaccional on-premise.** PostgreSQL + PostGIS por sitio con rol diferenciado — Talca maestro, Concepción edge `wms_only`, cross-docks mini-WMS con buffer acotado.
+  - **Base de datos nube (OLTP y recuperación).** Amazon Aurora PostgreSQL, con despliegue Multi-AZ y una ventana propuesta de recuperación a un punto en el tiempo (PITR) de 35 días. Los tiempos de conmutación y restauración se verifican mediante pruebas frente a los objetivos RTO/RPO establecidos.
+  - **Ingesta IoT / frío.** Amazon DynamoDB e IoT Core reciben las lecturas; Greengrass corre solo en dos gateways Moxa UC-8200 o equivalentes de Talca y Concepción, que leen sensores por Modbus, bloquean el despacho en menos de 5 segundos y conservan 24 horas sin enlace. Los termógrafos de los camiones registran toda la ruta en memoria interna y alertan por BLE al terminal, que reenvía el aviso al recuperar cobertura y descarga el registro completo al volver. Escrituras serverless con TTL nativo (raw 30 días).
+  - **Serie consolidada (OLAP).** S3 Parquet + AWS Glue + Redshift Serverless. OLAP por diseño: DynamoDB raw $\rightarrow$ Glue $\rightarrow$ S3 Parquet $\rightarrow$ Redshift, sin motor de series adicional.
+  - **Caché y datos de turno.** Redis acelera las lecturas centrales; no se exige Redis en cada sitio. Las APIs entregan una copia cifrada para SQLite/Room y conservan por separado la cola de escrituras pendientes. La identidad usa credenciales de 8 horas en bodega y 14 horas en terreno; su caché local de solo lectura tiene TTL de 24 horas en VM-05, VM-C03 y cada E-01, junto al verificador local de relevos (ADR-06).
+  - **Mensajería asíncrona (Capa 5).** RabbitMQ en on-premise mediante adaptador AMQP `php-amqplib`; SQS FIFO con sobre JSON y consumidor PHP para reconciliación, colas SQS separadas para trabajos Laravel, y SNS para difusión y alertas en nube. Un único planificador Laravel programa las tareas periódicas. **ERP integrado exclusivamente vía ACL; Hub EDI GS1 centralizado en nube (EANCOM, GS1 XML, EPCIS), AS2 como transporte.**
+  - **Analítica / BI.** S3 Data Lake, Redshift Serverless y Glue ETL. Consultas históricas sin degradar el procesamiento transaccional. No se incorpora IA ni analítica predictiva en el alcance propuesto.
+  - **Objetos / documentos.** Amazon S3 con Intelligent-Tiering y Object Lock.
+  - **IAM / Identidad (Capa 7).** Keycloak (OIDC, SAML, SSO, MFA) como IdP maestro en nube, con caché local de solo lectura de TTL 24 horas y verificador local con manifiesto firmado y PIN personal en VM-05, VM-C03 y cada E-01.
+  - **Gestión de secretos (Capa 7).** AWS Secrets Manager y SSM Parameter Store con rotación automática. Cuenta de emergencia fuera de banda, con doble autorización, registro de uso y rotación posterior de credenciales.
+  - **Observabilidad (Capa 8).** OpenTelemetry para PHP/Laravel y colectores ADOT on-premise con buffer en disco de 24 horas; plataforma única Amazon CloudWatch para logs (12 meses en línea + 24 en archivo), métricas (13 meses), trazas y tableros (ADR-14).
+  - **Gestión de dispositivos (RT-03.18).** Gestión centralizada mediante MDM (Android Enterprise / Zebra DNA, SaaS), con políticas de configuración y control del parque móvil.
+  - **Contenedores / orquestación.** Imagen PHP 8.5 con servidor HTTP/PHP-FPM para APIs y procesos PHP CLI separados para colas y programación. ECS Fargate aloja los perfiles centrales; Talca y Concepción ejecutan el perfil `wms_only` sobre máquinas virtuales Proxmox, y Docker Compose se usa en los mini-PC E-01 de los cross-docking. El código y las migraciones de esquema proceden del mismo artefacto versionado.
+  - **Infraestructura como Código.** Terraform con CDK + Ansible.
+  - **CI/CD.** GitLab CI como orquestador + AWS CodeBuild para construcción hermética con procedencia SLSA 3; `composer audit`, PHPUnit, PHPStan/Larastan y Laravel Pint verifican dependencias, comportamiento, análisis estático y formato. `swagger-php` genera OpenAPI 3.1 desde atributos PHP; los esquemas AsyncAPI 2.6 se validan y publican en la misma puerta de calidad.
 
-- **Frontend web.** Angular con Tailwind CSS y TypeScript. La integración con Keycloak se implementa mediante OIDC y se mantiene junto con las dependencias del cliente. Las versiones deben actualizarse durante el contrato conforme a sus ciclos de soporte.
+Los servicios AWS consumidos incluyen: CloudFront, WAF+Shield, ALB, API Gateway, Aurora, ElastiCache, DynamoDB, S3, Redshift Serverless, ECS Fargate, Route 53, Secrets Manager/SSM, KMS, IAM+Organizations, CloudWatch, Transit Gateway, SQS, SNS, AWS Backup, GuardDuty/Security Hub, CloudTrail e IoT Core+Greengrass.
 
-- **Apps de campo (preventa y reparto).** Kotlin Android nativo. Nativo del parque Zebra/Android, escáner GS1 vía Zebra DataWedge, SQLite/Room offline, acceso nativo a GPS, POS y térmica.
+La selección no descansa en una lista de marcas. Laravel conserva una superficie de APIs, políticas y colas coherente para los doce módulos; Django también permitiría el monolito, pero mantener su runtime junto al nuevo obligaría a operar dos cadenas de dependencias y dos familias de trabajadores. La equivalencia se acepta por contratos y pruebas, no por parecido de bibliotecas. PostgreSQL/PostGIS se prefiere a MariaDB por la combinación de transacciones y consultas geográficas del dominio de rutas y sitios; la prueba cubre consultas espaciales y migración. Keycloak se prefiere a un proveedor de identidad exclusivamente en nube porque permite administrar personal propio y externo sin trasladar la autorización de negocio fuera de M1–M12; el relevo local requiere la prueba de 24 horas. API Gateway reduce administración frente a un gateway propio, sujeto a prueba de cuotas y costo bajo el pico. RabbitMQ local más SQS FIFO conserva el trabajo del sitio sin enlace; la deduplicación y el orden por partición se prueban en los consumidores. Angular se conserva por sus componentes y contratos TypeScript. Los costos, el emplazamiento y la redundancia se comprueban en 4.2 y en el registro ADR.
 
-- **Borde y continuidad del acceso (Capa 2).** CloudFront, WAF, Shield y ALB en nube, con control de acceso local. La conectividad por fibra, Starlink y LTE dual tiene un objetivo de conmutación inferior a 30 segundos, que debe probarse sin sustituir la autonomía del servicio local.
+El núcleo utiliza tecnologías con alternativas de despliegue como Laravel, Angular, PostgreSQL, RabbitMQ y Keycloak. Eso facilita la portabilidad, pero no elimina la dependencia de los servicios administrados de AWS. La reversibilidad documenta contratos, exportación de datos y sustitución de adaptadores, junto con el esfuerzo de migración exigido por RT-03.07.
 
-- **Puerta de enlace de servicios (Capa 3).** Amazon API Gateway. Servicio administrado sin nodo a operar, integración nativa con WAF, throttling, cuotas y OIDC.
+### 4.1.8 Implantación progresiva del backend Laravel
 
-- **Base de datos transaccional on-premise.** PostgreSQL + PostGIS por sitio con rol diferenciado: Talca maestro, Concepción edge `wms_only`, cross-docks mini-WMS con buffer acotado.
+La implantación conserva los identificadores M1–M12, sus dueños de datos, las rutas y versiones públicas, los eventos JSON, la identidad Keycloak y las reglas offline. La Tabla 4.4 muestra cómo se implementan las capacidades del backend; PostgreSQL/PostGIS, RabbitMQ, SQS y los clientes mantienen sus contratos.
 
-- **Base de datos nube (OLTP y recuperación).** Amazon Aurora PostgreSQL, con despliegue Multi-AZ y recuperación a un punto en el tiempo. La solución propone una ventana de PITR de 35 días. Los tiempos de conmutación y restauración se miden en pruebas frente a los RTO/RPO comprometidos; no se da por garantizado un cambio de servicio en menos de 30 segundos.
+*Tabla 4.4 — Implementación lógica del backend Laravel*
 
-- **Ingesta IoT / frío.** Amazon DynamoDB con AWS IoT Greengrass en borde. Escrituras serverless con TTL nativo (raw 30 días).
+| Capacidad | Implementación Laravel/PHP | Comprobación |
+| — | — | — |
+| APIs y módulos | Rutas y controladores Laravel; servicios por contexto PSR-4. | Contratos OpenAPI y límites de módulo. |
+| Persistencia y geografía | PDO/Query Builder y SQL PostGIS parametrizado; migraciones Laravel basales. | Datos, índices y consultas espaciales equivalentes. |
+| Tareas y planificación | Consumidor PHP de JSON en SQS FIFO; trabajos Laravel en colas separadas y planificador único. | Orden por grupo, reintentos y tareas únicas. |
+| Cola local y shipper | Adaptador AMQP con `php-amqplib` y sobre JSON. | Corte de 24 h, confirmación y drenaje sin pérdida. |
+| Identidad y administración | Guard OIDC, políticas por recurso y portal Angular. | Permisos, baja y relevos de turno. |
+| Contratos, pruebas y trazas | `swagger-php`, AsyncAPI, PHPUnit y OpenTelemetry PHP. | Paridad de API, eventos y correlación. |
 
-- **Serie consolidada (OLAP).** S3 Parquet + AWS Glue + Redshift Serverless. OLAP por diseño: DynamoDB raw → Glue → S3 Parquet → Redshift, sin motor de series adicional.
+*Fuente: elaboración propia de LafroX a partir de los contratos y requisitos de esta arquitectura.*
 
-- **Caché y datos de turno.** Amazon ElastiCache en nube, sin instancia Redis local. Las APIs entregan una copia cifrada para SQLite/Room y conservan por separado la cola de escrituras pendientes. La identidad usa credenciales de 8 horas en CD y 14 horas en terreno, con las condiciones de continuidad descritas en 4.2.7.
+La implantación comienza por fijar contratos, dueños de datos y esquema PostgreSQL del WMS de 2013 como línea base de migración. Las migraciones Laravel posteriores son aditivas y compatibles con los lectores de la ola previa. M1/M2/M5 se ensayan en un sitio piloto con el WMS legado disponible para reversión; después se habilitan los demás sitios, módulos y trabajadores. En coexistencia, una operación tiene un único escritor autorizado: no se habilita doble escritura de stock, cobros o DTE. Todo evento que cruza tecnologías usa JSON versionado. La reversión devuelve el tráfico al escritor previo solo después de detener el nuevo, conciliar pendientes y verificar esquemas y contratos compatibles. Cada ola cierra con pruebas de 14 horas en terreno, 24 horas por sitio con dos relevos, emisión de guía previa al despacho, 96 camiones en la ventana crítica y reconciliación sin pedidos duplicados.
 
-- **Mensajería asíncrona (Capa 5).** RabbitMQ en on-premise + SQS FIFO y EventBridge en nube. **ERP integrado exclusivamente vía ACL; Hub EDI GS1 centralizado en nube (EANCOM, GS1 XML, EPCIS), AS2 como transporte.**
+### 4.1.9 Ambientes del ciclo de vida y promoción de componentes
 
-- **Analítica / BI.** S3 Data Lake, Redshift Serverless y Glue ETL. Consultas históricas sin degradar el procesamiento transaccional. No se incorpora IA ni analítica predictiva en el alcance propuesto.
+Los cinco ambientes del RT-04.01 cumplen propósitos distintos. En **Desarrollo**, el equipo construye los módulos Laravel y las aplicaciones Kotlin, los contratos y las migraciones con datos sintéticos o anonimizados; las pruebas unitarias no necesitan conectarse al ERP real. En **QA**, se despliegan M1–M12, el verificador local y los adaptadores simulados para ensayar integración, regresión, idempotencia y fallas de enlace con datos controlados. En **Preproducción**, el mismo artefacto y las mismas versiones de contratos se ensayan con topología equivalente a producción y volumen representativo de septiembre; se prueban los 120 terminales, el relevo de turnos, la emisión de guía por el ERP y la reconciliación. Toda diferencia de escala o configuración se declara antes de aceptar el ensayo, conforme a RT-04.02.
 
-- **Objetos / documentos.** Amazon S3 con Intelligent-Tiering y Object Lock.
+En **Producción**, los módulos sirven datos reales con acceso restringido y auditado; los desarrolladores no corrigen transacciones directamente. El ambiente de **Recuperación ante desastres** conserva la versión compatible de los componentes y permite ensayar conmutación y retorno al menos dos veces al año, sin presumir que una réplica remota contiene eventos aún no enviados desde un sitio aislado. Los cinco deben estar operativos en el hito H3; su emplazamiento, capacidad y segregación de redes se demuestran en 4.2, no mediante el simple nombre del ambiente.
 
-- **IAM / Identidad (Capa 7).** Keycloak (OIDC, SAML, SSO, MFA) como IdP maestro en ECS/Fargate con caché local on-premise de solo lectura.
+La promoción conserva la identidad del artefacto PHP, `composer.lock` y la versión de esquema desde QA hasta producción. La revisión por pares, pruebas de contrato OpenAPI/AsyncAPI, PHPUnit, PHPStan/Larastan, `composer audit`, análisis de secretos e imágenes bloquean un despliegue defectuoso (RT-04.03–04.05). Cada cambio registra requisito, commit, prueba, aprobación y despliegue; una migración incompatible con eventos pendientes se detiene o conserva un lector de la versión anterior. La recuperación ante desastres verifica además la lectura de datos y mensajes generados durante la contingencia antes del retorno al primario.
 
-- **Gestión de secretos (Capa 7).** AWS Secrets Manager + SSM Parameter Store con rotación automática, conforme a la decisión D13 del registro de decisiones (gestión de secretos). **Cuenta de emergencia break-glass fuera de banda en bóveda física.**
+### 4.1.10 Patrones de diseño y continuidad
 
-- **Observabilidad (Capa 8).** OpenTelemetry/ADOT (emisión on-premise, buffer 24 horas) + AMP (**retención 13 meses**) + CloudWatch Logs + X-Ray + Grafana OSS (plataforma única en nube, decisión D14 del registro de decisiones).
+La continuidad se articula con ISO 22301 para la gestión de continuidad del negocio y con ISO/IEC 27031 para la preparación de las TIC que la sostiene, conforme a RT-10.03 y RT-10.04 (ISO, 2019, 2025). En esta vista, su aplicación se concreta en las dependencias entre módulos, las funciones que pueden continuar desconectadas, los estados pendientes y las condiciones para volver a una operación consistente. El análisis de impacto en el negocio, los responsables de activar la contingencia y los procedimientos manuales se desarrollan en el Subdocumento 11; sus resultados deben validar las prioridades y objetivos de recuperación de los servicios. Esta correspondencia de diseño no constituye una certificación ni acredita por sí sola el cumplimiento integral de las normas.
 
-- **Gestión de dispositivos (RT-03.18).** MDM gestionado (Android Enterprise / Zebra DNA, SaaS) como componente de nube con emplazamiento propio en la tabla de emplazamiento (N-13), conforme a la decisión D15 del registro de decisiones.
+Ante pérdida de conectividad, M1, M2 y M5 conservan la operación local y M9 mantiene el bloqueo sanitario; M3 y M6 conservan la captura de terreno durante las autonomías definidas. Las confirmaciones que dependen de crédito, stock central o documentos del ERP permanecen explícitamente pendientes o bloqueadas según su regla. La continuidad protege la evidencia y la seguridad de la operación: no habilita una salida sin autorización tributaria ni permite levantar un bloqueo sanitario para recuperar velocidad.
 
-- **Contenedores / orquestación.** Docker + ECS Fargate en nube; Docker Compose sobre Proxmox en on-premise.
+La recuperación lógica exige restablecer identidad y autorización, disponer del estado transaccional y de los eventos pendientes, y habilitar después el procesamiento y la reconciliación. Cada consumidor confirma solo operaciones persistidas, deduplica los reenvíos y deriva los conflictos a su responsable. Antes de cerrar la contingencia se cotejan pedidos, reservas, lotes, entregas y rendiciones con sus identificadores de origen; los pendientes y las excepciones quedan visibles y auditados. El orden concreto de restauración y la capacidad de respaldo se documentan en 4.2 y en el plan de recuperación ante desastres del Subdocumento 11.
 
-- **Infraestructura como Código.** Terraform (multi-zona) + Ansible.
-
-- **CI/CD.** GitLab CI como orquestador + AWS CodeBuild para construcción hermética con procedencia SLSA 3.
-
-Los servicios AWS consumidos incluyen: CloudFront, WAF+Shield, ALB, API Gateway, Aurora, ElastiCache, DynamoDB, S3, Redshift Serverless, ECS Fargate, Route 53, Secrets Manager/SSM, KMS, IAM+Organizations, CloudWatch/X-Ray/AMP, Transit Gateway/VPC Peering, SQS, AWS Backup, GuardDuty/Security Hub, CloudTrail, SES/SNS e IoT Core+Greengrass.
-
-El núcleo utiliza tecnologías con alternativas de despliegue como Django, Angular, PostgreSQL, RabbitMQ y Keycloak. Eso facilita la portabilidad, pero no elimina la dependencia de los servicios administrados de AWS. La reversibilidad debe documentar contratos, exportación de datos y sustitución de adaptadores, junto con el esfuerzo de migración exigido por RT-03.07.
-
-## 4.7  Patrones de Diseño y Buenas Prácticas
+La evidencia de aceptación vincula cada servicio con su requisito, módulo, dependencia, objetivo de recuperación y prueba. Se ensayan pérdida de WAN durante 24 horas en el sitio, captura móvil durante 14 horas, indisponibilidad del ERP, relevo sin IdP y recuperación con mensajes repetidos. Se mide la conservación de operaciones confirmadas, el respeto de los bloqueos, la ausencia de duplicados y el tiempo hasta recuperar un estado conciliado. Una pérdida completa del sitio requiere una prueba de restauración distinta del corte WAN, contrastada con RTO $\leq$ 4 horas y RPO $\leq$ 15 minutos para los servicios críticos; la autonomía local no demuestra por sí sola esos objetivos.
 
 La arquitectura aplica un conjunto de patrones de diseño que responden a las restricciones específicas de la operación de Puelche:
 
-**Principios SOLID.** El diseño aplica los cinco principios SOLID a la estructura de los módulos:
-Responsabilidad única (SRP): los 12 módulos (M1–M12) viven en apps Django y contextos separados, cada uno con una sola responsabilidad de negocio (§ 4.2.4).
-Abierto a extensión (OCP): el estrangulamiento del WMS 2013 se incorpora por olas con feature flags y estrategia azul-verde, de modo que el monolito se extiende sin modificar lo ya absorbido (ADR-08, § 4.2.5.3, Tabla 2).
-Sustitución de Liskov (LSP): los adaptadores de la capa anticorrupción (ACL, A-04) son sustituibles y una capacidad del ERP absorbida se retira de la ACL sin tocar a los consumidores (§ 4.2.5.3).
-Segregación de interfaces (ISP): los contratos de negocio `/v1` y de sincronización offline `/sync/v1` están separados, de modo que cada cliente consume solo el contrato que necesita (§ 4.2.3).
-Inversión de dependencias (DIP): las dependencias fluyen por colas (Capa 5) y por el catálogo de contratos, nunca en escritura directa al ERP (§ 4.2.5, § 4.5).
+**Registro local y sincronización idempotente.** Cada escritura recibe un UUID que se conserva al reintentar. El evento permanece en la cola local hasta que el servicio de negocio confirma su procesamiento. Ese servicio deduplica y resuelve conflictos con reglas documentadas, conforme a RT-02.06. La copia de lectura en SQLite/Room se actualiza por separado. Así, renovar precios o stock no elimina un pedido pendiente y el trabajo de terreno no depende de una consulta a Redis en tiempo real.
 
-**Registro local y sincronización idempotente.** Cada escritura recibe un UUID y permanece en una cola local hasta que el servidor confirma su procesamiento. Al volver la conexión se envía por API Gateway; el servicio de negocio deduplica y resuelve conflictos conforme a la regla de deduplicación S26 y RT-02.06. La copia de lectura en SQLite/Room se actualiza por separado. Así, renovar precios o stock no elimina un pedido pendiente y el trabajo de terreno no depende de una consulta a Redis en tiempo real.
+**Servicios sin estado durable en memoria.** Las bases de datos y las colas conservan el estado de negocio; las sesiones utilizan los mecanismos de identidad definidos. Sustituir una instancia no debe perder el progreso de una operación. El acceso desconectado respeta las vigencias de las credenciales y las restricciones explicadas en la capa de seguridad.
 
-**Servicios sin estado durable en memoria.** Las bases de datos y colas conservan el estado de negocio; las sesiones conectadas utilizan los mecanismos de identidad y caché definidos. Sustituir una instancia del servicio no debe perder el progreso de una operación. La identidad desconectada respeta las vigencias de 8 y 14 horas y la emisión de la credencial del turno siguiente por el control de acceso del sitio, sin atribuir a una caché de solo lectura capacidad para emitir credenciales nuevas.
+**Degradación controlada sin pérdida silenciosa.** Cuando un componente no responde, la operación continúa en modo reducido informado a la persona usuaria ("modo offline"). Ninguna degradación produce pérdida de una transacción de venta o entrega: si una escritura no llega al servidor, queda en el buffer local del dispositivo, visible como pendiente y reconciliada en la sincronización posterior (RT-02.09). La clasificación de servicios (RT-10.02) distingue cuatro niveles, conforme a la Tabla de 4.2: crítico, preparación y despacho en la ventana 05:30–07:00, con el bloqueo por excursión térmica y la identidad de bodega que lo habilitan; alto, toma de pedido y consulta de stock y crédito, entrega y evidencia, planificación de rutas, documentos tributarios, integración con el ERP, cobranza y rendición, registro de temperatura; medio, canal moderno (EDI), notificaciones, analítica y tableros, portales, consultas de geolocalización, registros de auditoría y seguridad; bajo, reportería e informes a pedido.
 
-Degradación elegante sin pérdida silenciosa. Cuando un componente no responde, la operación continúa en modo reducido informado a la persona usuaria ("modo offline"). Ninguna degradación produce pérdida de una transacción de venta o entrega: si una escritura no llega al servidor, queda en el buffer local del dispositivo, visible como pendiente y reconciliada en la sincronización posterior (RT-02.09). La clasificación de servicios (RT-10.02) distingue cuatro niveles de criticidad: crítico (despacho 05:30–07:00), alto (preventa, rutas, DTE), medio (EDI, notificaciones, BI) y bajo (reportes ad-hoc).
+**Resiliencia con cortacircuitos y colas.** Las llamadas remotas tienen un tiempo máximo de espera explícito (RT-02.08). Las operaciones reintentables utilizan espera creciente con variación aleatoria y un cortacircuitos que suspende temporalmente las llamadas a un servicio que falla. Si el ERP no está disponible, la preventa conserva la captura de pedidos, mientras las confirmaciones dependientes del legado permanecen pendientes. Las colas y sus DLQ permiten recuperar el procesamiento; los consumidores deben deduplicar porque un mensaje puede entregarse más de una vez.
 
-Resiliencia con cortacircuitos y colas. Toda llamada remota lleva timeout explícito obligatorio (RT-02.08), reintento con retroceso exponencial y jitter, y cortacircuitos sobre sistemas externos (ERP, Transbank, SII). Un fallo de ERP no degrada la preventa. Las colas con DLQ (Capa 5) absorben los picos de integración y garantizan la entrega al menos una vez con deduplicación.
+**Integración con legados mediante ACL.** Los módulos M1, M5, M7 y M11 intercambian información con el ERP a través de adaptadores; no absorben su responsabilidad tributaria ni modifican su código. Las capacidades del WMS 2013 se sustituyen gradualmente en M1, M2 y M5. La ACL mantiene separados el modelo de negocio de la solución y los formatos del legado, en coherencia con RT-02.14. No se permiten escrituras directas al ERP.
 
-**Integración con legados mediante ACL.** Los módulos M1, M5, M7 y M11 intercambian información con el ERP a través de adaptadores; no absorben su responsabilidad tributaria ni modifican su código. Las capacidades del WMS 2013 se sustituyen gradualmente en M1, M2 y M5, conforme a la decisión 16.1 #14, la decisión D10 del registro de decisiones y el ADR-08. La ACL mantiene separados el modelo de negocio nuevo y los formatos del legado, en coherencia con RT-02.14. No se permiten escrituras directas al ERP.
+**Correlación de extremo a extremo.** Cada transacción lleva un `transaction_id` que acompaña las solicitudes y los eventos, incluidos los capturados sin conexión. Al sincronizar, ese identificador permite relacionar métricas, trazas y registros en la plataforma común de observabilidad de nube y sitios locales (RT-03.16 y Art. 16.4).
 
-Trazabilidad end-to-end por correlación. Cada transacción lleva un `transaction_id` que se propaga desde la Capa 3 a través de todas las capas, habilitando correlación completa de métricas, trazas y registros en la capa de observabilidad. Este patrón es exigido por RT-03.16 y Art. 16.4, que demandan "la misma plataforma" para nube y on-premise, sin puntos ciegos.
+**Gobierno de contratos y versionado.** Las APIs de negocio y de integración se documentan con OpenAPI 3.1 (síncrona) y AsyncAPI 2.6 (eventos), con semver estricto, propietario declarado por módulo, compatibilidad hacia atrás y aviso mínimo de 6 meses antes de deprecar una versión (RT-05.16/17).
 
-Gobierno de contratos y versionado. Las APIs de negocio y de integración se documentan con OpenAPI 3.1 (síncrona) y AsyncAPI 2.6 (eventos), con semver estricto, propietario declarado por módulo, compatibilidad hacia atrás y aviso mínimo de 6 meses antes de deprecar una versión (RT-05.16/17).
+**Seguridad Zero Trust.** Cada solicitud se verifica explícitamente, sin presuponer la confiabilidad de ninguna red, dispositivo o identidad (NIST, 2020, SP 800-207). Los servicios utilizan mTLS, los secretos tienen rotación automática y los registros de auditoría son inmutables (RT-16.07). La segmentación y las conexiones entrantes al sitio local se especifican en 4.2.
 
-Seguridad Zero Trust. Cada solicitud se verifica explícitamente, sin presuponer la confiabilidad de ninguna red, dispositivo o identidad (NIST SP 800-207). La segmentación se implementa por IaC (Terraform), los servicios se comunican por mTLS, los secretos se gestionan en servicios administrados con rotación automática, y los registros de auditoría son inmutables (RT-16.07). Sin puertos entrantes on-premise salvo las dos excepciones controladas D-AL-05 por túnel IPsec autenticado.
+**Separación transaccional y analítica.** Los tableros consultan Redshift Serverless, no el transaccional en vivo. Los eventos incrementales permiten mantener las latencias de hasta 5 minutos para operación, 2 horas para cierre comercial y 4 horas para gestión. Las tareas pesadas se programan fuera de la ventana crítica, sin detener la actualización incremental necesaria para el tablero operacional. No se incluye IA ni analítica predictiva en este alcance.
 
-**Separación transaccional y analítica.** Los tableros consultan Redshift Serverless, no el transaccional en vivo. Los eventos incrementales permiten mantener las latencias de hasta 5 minutos para operación, 2 horas para cierre comercial y 4 horas para gestión. Las tareas pesadas se programan fuera de la ventana crítica, sin detener la actualización incremental necesaria para el tablero operacional. No se incluyen IA ni analítica predictiva en este alcance.
+#### 4.1.21.19 SOLID aplicado a los contratos de negocio
 
-## 4.8  Diagramas de la arquitectura lógica
+La responsabilidad única se comprueba en el flujo de un pedido: M3 captura y confirma el pedido, M2 decide si reserva stock, M5 ejecuta la preparación y la ACL traduce hacia el ERP. Ninguno de esos componentes puede asumir la decisión del otro por compartir un proceso Laravel. Para extender el canal moderno, M11 incorpora un adaptador por cadena bajo un contrato publicado; M3 no se modifica para aprender un nuevo formato EDI. Esa es la aplicación concreta del principio abierto/cerrado.
 
-Se conservan el diagrama general y las 13 vistas de perfiles de la biblioteca del proyecto. Son imágenes de la línea base de la Entrega 1, de la biblioteca única de diagramas del repositorio (Diagramas/ARQL-*.png), no redibujadas para esta versión. Deben leerse junto con las responsabilidades y flujos actualizados en 4.1–4.6. Su integración con la capa anticorrupción (ACL, § 4.2.5.3) y los eventos canónicos del dominio (§ 4.2.5.1) queda definida en la Capa 5 de este subdocumento. Cada figura se cita desde la sección del cuerpo que trata a su actor o tema y se explica a continuación con el actor, las capas que recorre y su comportamiento sin conexión.
+Un adaptador nuevo sustituye a uno anterior solo si conserva las respuestas, errores e idempotencia exigidos por el contrato versionado: las pruebas de contrato verifican esa sustitución. Las interfaces se separan por capacidad y autorización —consulta de stock, reserva, recepción de POD y liberación sanitaria— para que un cliente de lectura no reciba por accidente una operación de escritura. Finalmente, M3, M5 y M7 dependen de puertos de negocio para inventario, documentos y mensajería, no de llamadas directas al SDK de una nube o a tablas del ERP. En QA se sustituyen esos puertos por dobles de prueba; en producción los adaptadores implementan el contrato. Estas pruebas dan contenido verificable a sustitución, segregación de interfaces e inversión de dependencias, en vez de presentar SOLID como una lista de siglas.
 
-### 4.8.1  Diagrama general de la arquitectura lógica
+### 4.1.11 Registro de decisiones de arquitectura
 
-![4.8.1  Diagrama general de la arquitectura lógica](../../../Diagramas/ARQL-01_Vision_general.png)
+Las decisiones se identifican con la numeración del registro arquitectónico común al Subdocumento 4. La Tabla 4.5 resume las que gobiernan esta vista lógica; cada ADR conserva problema, alternativas, criterio de selección, consecuencia y evidencia de validación (RT-02.04).
 
-Figura 1. Diagrama general de la arquitectura lógica.
-La figura de visión general muestra la solución completa: los 12 módulos viven en la Capa 4 (Lógica de negocio), la integración en la Capa 5 (Integración y eventos) y los datos en la Capa 6 (Acceso a datos), sobre el plano híbrido de nube y sitios on-premise.
-Completan el mapa la presentación (Capa 1), el borde (Capa 2), la puerta de enlace (Capa 3), la seguridad (Capa 7) y la observabilidad (Capa 8).
-Sin conexión, la operación de bodega y terreno continúa localmente y al volver el enlace se reconcilia (RT-03.10).
+*Tabla 4.5 — Registro de decisiones de la vista lógica*
 
-### 4.8.2  Diagrama del preventista de la arquitectura lógica
+| ADR del registro único | Decisión adoptada que aplica a 4.1 |
+| — | — |
+| ADR-01 | Monolito modular Laravel 13 / PHP 8.5, con perfiles de API, WMS local, shipper, consumidores y portal separados; contratos estables entre M1–M12. |
+| ADR-05 | RabbitMQ local por sitio; shipper idempotente hacia SQS FIFO con JSON canónico; consumidor PHP dedicado, trabajos Laravel en colas separadas e IoT Core MQTT. |
+| ADR-06 | Keycloak maestro en nube, caché local de solo lectura con TTL de 24 horas y verificador local que valida el manifiesto firmado y el PIN personal en cada relevo sin enlace. |
+| ADR-07 | Aplicación nativa Android Kotlin para preventa, reparto y picking, con SQLite/Room y periféricos Zebra. |
+| ADR-08 | Reemplazo del WMS 2013 en Etapa 1 mediante el módulo WMS del monolito, por dominio, sitio y ola, con reversión. |
+| ADR-11 | Hub EDI centralizado GS1 en nube con conector configurable por cadena, equivalencias GTIN y ACL hacia ERP/GDE. |
+| ADR-12 | Cómputo elástico: perfiles API y trabajadores PHP/Laravel con escalado independiente; límites de concurrencia y memoria medidos bajo el pico, Aurora y DynamoDB según el plan de capacidad. |
 
-![4.8.2  Diagrama del preventista de la arquitectura lógica](../../../Diagramas/ARQL-02_Preventista.png)
+*Fuente: elaboración propia de LafroX a partir de los requisitos RT-02.04 y RT-02.11 y del caso 02.*
 
-Figura 2. Diagrama del preventista de la arquitectura lógica.
-La figura sigue al preventista (M3). El flujo parte de la Capa 1 (app Kotlin), pasa por la Capa 3 (API Gateway con los contratos `/v1` y `/sync/v1`) y llega a la Capa 4 (M3).
-La Capa 6 entrega al inicio del turno la copia de stock, precios, crédito y promociones desde ElastiCache, almacenada en SQLite/Room del dispositivo.
-Sin conexión, el pedido se toma offline con la foto local y un UUID idempotente; al reconectar, el servidor valida stock y crédito y deduplica (RT-02.06).
+Las consecuencias se convierten en pruebas: ADR-01 exige verificar límites de módulo; ADR-05, persistencia y deduplicación tras un corte; ADR-06, dos relevos de turno sin IdP; ADR-08, reversión de una ola sin duplicar stock; y ADR-12, drenaje de la cola bajo el pico de septiembre. Una elección no se acredita solo por figurar en la tabla.
 
-### 4.8.3  Diagrama del conductor propio de la arquitectura lógica
+### 4.1.12 Puntos únicos de falla y riesgos residuales
 
-![4.8.3  Diagrama del conductor propio de la arquitectura lógica](../../../Diagramas/ARQL-03_Conductor_propio.png)
+RT-02.11 exige identificar las dependencias singulares que subsisten y justificar el riesgo residual. La Tabla 4.6 distingue su efecto, la continuidad prevista y la condición de aceptación. Una réplica o una cola reduce el impacto, pero no elimina por declaración la dependencia.
 
-Figura 3. Diagrama del conductor propio de la arquitectura lógica.
-La figura sigue al conductor propio (M6). Recorre la Capa 1 (app de reparto), la Capa 3 (puerta de enlace) y la Capa 4 (M6/M7/M8).
-Sin conexión, el turno de 14 h se cumple sin señal: POD con firma, QR y foto, cobranza y devoluciones se registran de forma local.
-Al reconectar sincroniza en un máximo de 10 minutos (RT-03.12) y rinde.
+*Tabla 4.6 — Dependencias singulares y riesgo residual*
 
-### 4.8.4  Diagrama del conductor externo de la arquitectura lógica
+| Dependencia | Efecto si falla | Continuidad prevista | Aceptación |
+| — | — | — | — |
+| Identidad central | No hay altas ni revocación remota. | Asignaciones vigentes y servicio local. | Prueba de relevo 24 h. |
+| ERP y emisión DTE | No se confirma nueva guía. | Se conserva trabajo preparado; salida afectada se bloquea. | Contingencia tributaria validada. |
+| Maestro bodega Talca | Se pierde consolidación y reserva global. | Cada sitio opera localmente y reconcilia. | Conflicto de stock declarado. |
+| SII y pasarela de pago | No hay respuesta en línea. | Reintento y cobro alternativo aprobado. | Pendiente no equivale a aprobado. |
+| Planificador experto | Faltan decisiones ante excepciones. | Reglas de M4 y suplente capacitado. | Prueba antes de su retiro. |
 
-![4.8.4  Diagrama del conductor externo de la arquitectura lógica](../../../Diagramas/ARQL-04_Conductor_externo.png)
+*Fuente: elaboración propia de LafroX a partir de Bases Técnicas Transversales, RT-02.11, y caso 02.*
 
-Figura 4. Diagrama del conductor externo de la arquitectura lógica.
-La figura sigue al conductor externo (M6/M7) y recorre las mismas capas que la Figura 3 (Capa 1, Capa 3 y Capa 4).
-Sin conexión mantiene la continuidad del turno de 14 h, con credenciales de turno de 14 h en terreno.
-Al reconectar, el acuse se envía por lote (RF-06.07).
+Las dependencias externas conservan riesgo residual que exige prueba o contingencia aprobada.
 
-### 4.8.5  Diagrama del cliente canal tradicional de la arquitectura lógica
+La dependencia del ERP y del SII no es aceptable para un nuevo despacho sin el mecanismo tributario de contingencia acordado. El riesgo de identidad local tampoco se declara cerrado antes de probar cada relevo de turno durante un corte de 24 horas. El emplazamiento y la redundancia física se verifican en 4.2.
 
-![4.8.5  Diagrama del cliente canal tradicional de la arquitectura lógica](../../../Diagramas/ARQL-05_Cliente_canal_tradicional.png)
+### 4.1.13 Comparación de alternativas arquitectónicas
 
-Figura 5. Diagrama del cliente canal tradicional de la arquitectura lógica.
-La figura sigue al cliente del canal tradicional. Recorre la Capa 2 (CloudFront/WAF), la Capa 3 (OIDC) y la Capa 4 (consulta de pedidos y documentos).
-El catálogo público admite consulta sin autenticación.
-El canal es en línea y no aplica contingencia offline: el cliente consulta la nube.
+La comparación considera la carga real, la continuidad desconectada, la reversión y la dotación que deberá operar la solución. La Tabla 4.7 resume las elecciones lógicas; los ADR explicitan su criterio y consecuencia operativa. La evaluación económica pertenece a los apartados de costos.
 
-### 4.8.6  Diagrama del cliente canal moderno de la arquitectura lógica
+*Tabla 4.7 — Alternativas lógicas y criterio de selección*
 
-![4.8.6  Diagrama del cliente canal moderno de la arquitectura lógica](../../../Diagramas/ARQL-06_Cliente_canal_moderno.png)
+| Decisión | Seleccionada | Alternativa viable | Criterio decisivo |
+| — | — | — | — |
+| Estilo del núcleo | Monolito modular M1–M12 con perfiles separados. | Servicios por dominio. | Menor carga operativa con 31.000 pedidos/mes. |
+| Framework backend | Laravel 13/PHP 8.5 con límites PSR-4. | Django/Python con los mismos contratos. | Un runtime PHP y pruebas de paridad de contratos, datos y colas. |
+| Aplicación terreno | Kotlin nativo. | Desarrollo multiplataforma. | Integración Zebra y persistencia local. |
+| Mensajería | Broker local y cola de nube. | Broker solo en nube. | Conservación del trabajo con enlace caído. |
+| WMS 2013 | Reemplazo por olas M1/M2/M5. | Sustitución simultánea. | Reversión por sitio y capacidad. |
 
-Figura 6. Diagrama del cliente canal moderno de la arquitectura lógica.
-La figura sigue al cliente del canal moderno (M11). El flujo entra por la Capa 5 (Hub EDI GS1, AS2/API) y la Capa 4 (M11), y continúa hacia M3, M6 y las cadenas.
-El hub vive en nube y no depende de los sitios.
-Ante la falla de una cadena aplica DLQ y bandeja de excepciones con ventana de 30 minutos (RF-12.10).
+*Fuente: elaboración propia de LafroX a partir de Registro ADR y volumetría del caso 02.*
 
-### 4.8.7  Diagrama del transportista de la arquitectura lógica
+Las elecciones reducen carga operativa sin perder autonomía local.
 
-![4.8.7  Diagrama del transportista de la arquitectura lógica](../../../Diagramas/ARQL-07_Transportista.png)
+El despliegue híbrido no figura como una alternativa libre: es una obligación del Artículo 16 de las Bases Administrativas. Su distribución concreta corresponde a 4.2.
 
-Figura 7. Diagrama del transportista de la arquitectura lógica.
-La figura sigue al transportista. Recorre la Capa 1 (portal), la Capa 2, la Capa 3 y la Capa 4 (M4 para rutas y estado de M6).
-El portal es en línea.
-Las rutas planificadas se descargan a los dispositivos del conductor para la operación offline.
+### 4.1.14 Relación entre las vistas de arquitectura
 
-### 4.8.8  Diagrama del proveedor de la arquitectura lógica
+RT-02.03 exige cinco vistas de la arquitectura: lógica, procesos, despliegue, datos y seguridad. La Tabla 4.8 indica qué preocupación responde cada una y dónde debe demostrarse en el Subdocumento 4 o en el capítulo de datos. La integración atraviesa esas vistas; no se presenta como una sexta vista exigida por la Base.
 
-![4.8.8  Diagrama del proveedor de la arquitectura lógica](../../../Diagramas/ARQL-08_Proveedor.png)
+*Tabla 4.8 — Trazabilidad de las cinco vistas de arquitectura*
 
-Figura 8. Diagrama del proveedor de la arquitectura lógica.
-La figura sigue al proveedor (M1). Recorre la Capa 1 (portal de proveedores), la Capa 3, la Capa 4 (M1) y sale por la Capa 5 hacia el ERP mediante la ACL.
-Sin conexión, la recepción se registra localmente (HHT/SSCC) y sincroniza al volver el enlace.
-El ERP solo se escribe vía ACL.
+| Vista | Pregunta que responde | Lugar de la evidencia | Responsable |
+| — | — | — | — |
+| Lógica | Quién realiza cada función y por qué contrato se comunica. | 4.1: capas, módulos, interfaces. | Arquitectura |
+| Procesos | Cómo atraviesan los módulos el pedido, despacho, entrega y rendición. | 4.1: eventos y flujos; 3.4: operación. | Operaciones |
+| Despliegue | Dónde se ejecuta y cómo continúa durante una falla. | 4.2 y 4.3. | Infraestructura |
+| Datos | Quién posee, conserva y reconcilia cada dato. | 4.1: dominios; capítulo 5: modelo y gestión. | Datos |
+| Seguridad | Quién puede actuar, con qué identidad y qué controles. | 4.1: controles lógicos; 4.2: implantación. | Seguridad |
 
-### 4.8.9  Diagrama del preparador de la arquitectura lógica
+*Fuente: elaboración propia de LafroX a partir de Bases Técnicas Transversales, RT-02.03.*
 
-![4.8.9  Diagrama del preparador de la arquitectura lógica](../../../Diagramas/ARQL-09_Preparador.png)
+La evidencia de una vista se comprueba en el apartado indicado, no por el nombre de la tabla.
 
-Figura 9. Diagrama del preparador de la arquitectura lógica.
-La figura sigue al preparador (M5). Recorre la Capa 1 (HHT), la Capa 3 cuando hay conexión, la Capa 4 (M5) y la Capa 6 on-premise (PostgreSQL del sitio).
-Sin conexión, las misiones descargadas al inicio del turno se ejecutan de forma 100 % local, incluso en cámara a -22 °C.
-RabbitMQ mantiene un buffer de 24 h y los eventos críticos se envían a SQS al reconectar (INT-03).
+La vista lógica queda desarrollada aquí. La comprobación de las otras cuatro requiere revisar el capítulo integrado y sus figuras; esta tabla es una ruta de lectura, no una declaración automática de conformidad con ISO/IEC/IEEE 42010.
 
-### 4.8.10  Diagrama de jefa de calidad de la arquitectura lógica
+### 4.1.15 Funciones disponibles y no disponibles sin conexión
 
-![4.8.10  Diagrama de jefa de calidad de la arquitectura lógica](../../../Diagramas/ARQL-10_Jefa_de_calidad.png)
+Conforme a RT-03.10, la captura del turno de 14 horas en terreno y la operación local de 24 horas en los centros de distribución conservan sus eventos hasta recibir confirmación. RT-03.13 exige nombrar también lo que no funciona sin red y el procedimiento que lo suple. El Anexo 4.1-J distingue ambos casos; una operación pendiente nunca equivale a aprobación de un tercero.
 
-Figura 10. Diagrama de jefa de calidad de la arquitectura lógica.
-La figura sigue a la jefa de calidad (M9). Recorre la Capa 2 (Greengrass y sensores), la Capa 4 (M9) y las Capas 5/8.
-Sin conexión, la detección de excursión térmica y el bloqueo de despacho son 100 % locales (menos de 5 segundos, decisión 16.1 #4).
-El buffer Greengrass de 14 h conserva los registros hasta reconectar (INT-05).
+La operación local conserva la captura; las autorizaciones externas esperan conexión o procedimiento aprobado. AL-OFF-01, en el Anexo 4.1-M, exige un corte de 24 horas con relevos a las 8 y 16 horas, verificación de permisos, reinicio de componentes y reconciliación. La prueba incluye recepción, preparación y despacho con documentación tributaria disponible; también ensaya el despacho sin guía, cuya brecha se resuelve mediante AL-DTE-01. Aprobar la captura o el relevo de identidad no basta para acreditar la continuidad completa del despacho.
 
-### 4.8.11  Diagrama de gerente comercial de la arquitectura lógica
+La copia de stock, crédito y precios lleva fecha de actualización; al superar su vigencia se presenta como referencia, no como aprobación de la venta. El conductor tampoco presenta una captura POS como pago autorizado. Para el relevo de turno en bodega, la validación local de identidad debe probarse durante 24 horas antes de acreditar la autonomía completa.
 
-![4.8.11  Diagrama de gerente comercial de la arquitectura lógica](../../../Diagramas/ARQL-11_Gerente_comercial.png)
+### 4.1.16 Reglas de reconciliación
 
-Figura 11. Diagrama de gerente comercial de la arquitectura lógica.
-La figura sigue al gerente comercial (M10). Recorre la Capa 1 (tableros), la Capa 4 (M10) y la Capa 6 (Redshift Serverless).
-La analítica vive en nube.
-Los tableros no participan del despacho y la operación local no depende de ellos.
+Toda reconciliación se resuelve por regla de negocio declarada, nunca por la sola marca de tiempo. La clave UUID generada por el cliente se conserva en todos los reintentos y el resultado se retiene para deduplicación durante 30 días; un lote más antiguo se aísla para revisión antes de admitir una nueva escritura. El resultado incluye identificador, versión, regla aplicada, actor y fecha. El Anexo 4.1-K muestra los conflictos de negocio principales.
 
-### 4.8.12  Diagrama de gerente finanzas de la arquitectura lógica
+Los conflictos de negocio dejan rastro de regla y resultado para revisión posterior.
 
-![4.8.12  Diagrama de gerente finanzas de la arquitectura lógica](../../../Diagramas/ARQL-12_Gerente_finanzas.png)
+La replicación es un flujo de continuidad, no una regla para resolver conflictos. INT-12 usa DMS desde Talca hacia una réplica de lectura; los demás sitios sincronizan eventos mediante INT-03 e INT-04. Durante un corte, la base de cada sitio conserva autoridad sobre su operación y retiene cambios hasta el acuse durable, dentro de la capacidad dimensionada. Si se pierde ese sitio antes de transmitirlos, los cambios no protegidos externamente pueden perderse. Por ello, el RPO de 15 minutos sigue siendo un requisito exigible, no un resultado demostrado mediante una cola local. La aceptación exige la prueba AL-DR-01 del Anexo 4.1-M.
 
-Figura 12. Diagrama de gerente finanzas de la arquitectura lógica.
-La figura sigue al gerente de finanzas (M7/M10). Recorre la Capa 1, la Capa 4 (M7 y M10) y la Capa 5 (SQS hacia `celery-erp-sync`, la ACL y el ERP).
-Sin conexión, la rendición se acumula localmente y se publica al reconectar.
-El ERP se escribe solo por la ACL y el costo de servir se alimenta por telemetría (M12).
+### 4.1.17 Articulación entre prueba de entrega, DTE y acuse
 
-### 4.8.13  Diagrama de planificador de rutas de la arquitectura lógica
+La guía de despacho electrónica debe estar vinculada a la salida de mercadería antes de iniciar el traslado. La aplicación no la emite: M5 entrega los datos de despacho por la capa anticorrupción al ERP, que conserva la responsabilidad tributaria y devuelve folio, estado y documento. M6 captura después la recepción efectiva, incluidos bultos rechazados, identidad del receptor y evidencia. El acuse técnico de recepción o procesamiento ante el SII y el acuse de recepción de mercaderías del destinatario son hechos distintos; cada uno conserva su origen, fecha y estado.
 
-![4.8.13  Diagrama de planificador de rutas de la arquitectura lógica](../../../Diagramas/ARQL-13_Planificador_de_rutas.png)
+#### 4.1.21.20 Secuencia y excepciones
 
-Figura 13. Diagrama de planificador de rutas de la arquitectura lógica.
-La figura sigue al planificador de rutas (M4). Recorre la Capa 1 (consola), la Capa 4 (M4) y el GIS externo (INT-10) con caché de mapas.
-Sin conexión, la caché de mapas por zona permite degradar a ruta offline con la secuencia cargada.
-La planificación previa se descarga a los dispositivos.
+La secuencia lógica es: preparación confirmada en M5; solicitud de guía al ERP mediante ACL; autorización de salida con el documento disponible; captura de POD y diferencias en M6; conciliación de la entrega en M7/M8; y, si corresponde, solicitud al ERP de factura, nota de crédito o tratamiento tributario de la devolución. Un mismo `transaction_id` relaciona pedido, guía, entrega, evidencia, acuses y documentos posteriores. El acuse del destinatario se obtiene por el mecanismo que acuerde el CLIENTE conforme a la normativa aplicable; una fotografía o un QR no se presume equivalente por sí solo.
 
-### 4.8.14  Diagrama de gerente de TI de la arquitectura lógica
+Si el ERP o su canal tributario no confirma la guía antes de la salida, M5 muestra el despacho como bloqueado y lo deriva al responsable de Operaciones y Tributación para aplicar únicamente la contingencia autorizada por el CLIENTE. La captura offline del POD permite registrar una entrega ya despachada; no autoriza emitir retroactivamente una guía desde el teléfono. Esta separación protege la continuidad de la evidencia sin atribuir a la aplicación facultades tributarias que permanecen en el ERP.
 
-![4.8.14  Diagrama de gerente de TI de la arquitectura lógica](../../../Diagramas/ARQL-14_Gerente_TI.png)
+#### 4.1.21.21 Control de liberación en la ventana crítica
 
-Figura 14. Diagrama de gerente de TI de la arquitectura lógica.
-La figura sigue al gerente de TI. Recorre la Capa 1 (consolas, portales y back office en nube), la Capa 8 (tableros y alertas) y la Capa 7 (seguridad).
-Los tableros centrales no son necesarios para despachar.
-Las alarmas locales y el buffer ADOT de 24 h se envían al restablecer la conexión (Capa 8).
+M5 conserva los estados carga confirmada, guía solicitada, resultado incierto, guía disponible y salida liberada. La solicitud lleva una clave estable por despacho y versión de carga. Ante un timeout se consulta el resultado de esa misma solicitud antes de repetirla; no se genera otra guía a ciegas. Solo se libera cuando la guía corresponde a la carga vigente y su evidencia está disponible localmente. Una modificación posterior de carga vuelve a exigir la validación documental del ERP. El acuse técnico del SII, el documento emitido y la autorización de traslado no se representan con un único booleano.
+
+Al cerrar la carga nocturna se solicita la guía por adelantado, sin confundir anticipación con contingencia. Antes de las 05:30, Operaciones revisa las salidas programadas y las guías disponibles. Durante 05:30–07:00 se prioriza INT-07 sobre reportes y cargas masivas; una incidencia identifica los camiones afectados, hora prevista, responsable y estado documental. Los despachos con documentación válida siguen su curso; los afectados se retienen hasta recuperar el ERP o aplicar el procedimiento tributario aprobado. Ningún perfil de supervisor puede omitir ese control con una autorización genérica.
+
+Esta retención protege la validez del despacho, pero puede incumplir la ventana de indisponibilidad cero del caso. La solución exige cerrar AL-DTE-01: procedimiento firmado por Operaciones y Tributación del CLIENTE, compatible con su emisor ERP, y ensayo de las 96 salidas con fallas inyectadas. No se atribuye aprobación a ese procedimiento mientras no exista el acta. La preemisión reduce exposición, pero no resuelve cambios de carga ni fallas prolongadas por sí sola.
+
+### 4.1.18 Identidad y ciclo de vida de conductores externos
+
+Los conductores de transportistas externos ( 160, de 10 empresas) no pertenecen a la dotación de Puelche. Antes de entregar una ruta, el transportista declara la identidad del conductor y su vínculo con la empresa. El responsable de despacho aprueba la asignación conductor–vehículo–turno; el alta inicial requiere conexión para verificar un OTP de un solo uso. El identificador del conductor y el del transportista acompañan cada `EntregaRegistrada`. La autorización se limita a la ruta asignada y a M6, M7 y M8 mediante rol y atributos de turno, sitio y dispositivo.
+
+La aplicación conserva localmente una asignación firmada para el turno de hasta 14 horas y permite capturar eventos mientras no exista red. La caché local de identidad, de solo lectura y TTL de 24 horas, no acorta por sí sola la vigencia de esa asignación de terreno; tampoco la renueva. Una persona reemplazante que no fue dada de alta no obtiene una nueva identidad sin conexión. En ese caso Operaciones reasigna el turno a un conductor ya habilitado y registra la excepción; la rotación no autoriza compartir el OTP ni la cuenta del conductor anterior.
+
+Al finalizar el turno expiran la asignación y sus permisos. Si se denuncia pérdida de dispositivo o baja anticipada, Keycloak revoca el acceso conectado y el equipo borra los datos al recuperar conexión. Mientras permanezca sin señal no puede prometerse revocación remota inmediata: la duración de la asignación limita la exposición y la incidencia se registra para bloquear la rendición y revisar la evidencia capturada durante el intervalo.
+
+### 4.1.19 Primer cuello de botella bajo la carga de septiembre
+
+Septiembre eleva las entregas diarias de aproximadamente 1.400 a 2.600 durante tres semanas. Las 2.600 entregas ocurren a lo largo de la jornada; la ventana 05:30–07:00 concentra la salida de 96 camiones, no todas las firmas de entrega. En esa ventana, el primer cuello de botella probable es la confirmación de guías del ERP mediante la ACL: es una dependencia singular y aumentar réplicas Laravel no acelera al emisor legado. La base transaccional de Talca, la WAN al reconectar y la transferencia de evidencias son candidatos adicionales, no recursos cuya saturación ya se haya medido. La Tabla 4.9 muestra cómo contrastar la hipótesis; RT-09.05 exige sustentar el primer límite con una prueba reproducible.
+
+*Tabla 4.9 — Detección del primer cuello de botella*
+
+| Recurso | Señal de saturación | Respuesta lógica | Prueba |
+| — | — | — | — |
+| ERP por ACL | Aumentan guías pendientes y latencia p95 de emisión. | Solicitar guías al cerrar carga, antes de salida. | 96 camiones en ventana. |
+| VM-02, base transaccional de Talca | Crecen la latencia de confirmación y la espera de escritura. | Medir y aliviar contención de escrituras del WMS local. | Carga de preparación y despacho de Talca. |
+| Cola de integración | Crecen edad del mensaje y DLQ. | Priorizar guías; diferir reportes. | Corte y reconexión. |
+| M2 en bodega | Crecen espera de reserva y bloqueos de stock. | Serializar por SKU y aislar consultas. | Doble compromiso en peak. |
+
+*Fuente: elaboración propia de LafroX a partir de Caso 02, numeral 14.1 y ventana 05:30–07:00.*
+
+La emisión de guías debe medirse antes de atribuir el límite al cómputo escalable.
+
+La preparación nocturna permite adelantar la solicitud de guía cuando la carga se estabiliza. Se mide el número de guías sin confirmar antes de cada salida y se alerta al responsable de despacho; el camión afectado no se marca como liberado mientras falte el documento o una contingencia autorizada. La prueba de carga debe confirmar si el ERP es efectivamente el primer límite y ajustar esta hipótesis con medición, como exige RT-09.05.
+
+### 4.1.20 Decisiones del numeral 16.1 del caso
+
+El Anexo 4.1-L conserva el número y la pregunta de cada una de las dieciséis decisiones del caso. Distingue una regla de diseño de una validación que todavía requiere al CLIENTE: una fila marcada para validación no equivale a una aprobación suya. El registro de supuestos del capítulo 3 debe conservar el fundamento, impacto e instancia de validación de cada decisión.
+
+Las validaciones pendientes quedan identificadas por su número original para consulta al CLIENTE.
+
+La matriz permite comprobar qué decisión implementa cada módulo. En particular, la identidad externa corresponde al número 5 y el destino del WMS al 14; ninguna de ellas debe desplazarse para llenar una tabla de cumplimiento.
+
+### 4.1.21 Condiciones y supuestos de diseño
+
+La lógica adopta seis instalaciones en total, de las cuales cinco son sitios logísticos con servicio local y la sexta es la casa matriz de Talca, contigua al CD principal y sin cómputo propio (Caso 02, cap. 2.3). La parametrización de sitios evita codificar el número en cada módulo.
+
+Los cortes frecuentes de dos horas descritos en la operación son el escenario ordinario. Los límites de diseño son más exigentes: un turno de 14 horas en terreno y 24 horas en cada centro de distribución. No se reduce la autonomía porque el incidente más común sea más corto.
+
+El relevo de turnos sin IdP, la autorización tributaria de salida y la pérdida de sitio se verifican con AL-OFF-01, AL-DTE-01 y AL-DR-01 del Anexo 4.1-M. Los objetivos exigidos siguen siendo RTO $\leq$ 4 horas y RPO $\leq$ 15 minutos para servicios críticos. La retención en el sitio no acredita recuperación ante su pérdida simultánea con la WAN. El registro de cierre distingue diseño, prueba ejecutada y aprobación del CLIENTE; ninguno sustituye a los otros.
+
+## Referencias
+
+International Organization for Standardization. (2022). *ISO/IEC/IEEE 42010:2022: Software, systems and enterprise—Architecture description*. https://www.iso.org/standard/74393.html
+
+International Organization for Standardization. (2019). *ISO 22301:2019: Security and resilience—Business continuity management systems—Requirements*. https://www.iso.org/standard/75106.html
+
+International Organization for Standardization. (2025). *ISO/IEC 27031:2025: Cybersecurity—Information and communication technology readiness for business continuity*. https://www.iso.org/standard/27031
+
+National Institute of Standards and Technology. (2020). *Zero trust architecture* (Special Publication 800-207). U.S. Department of Commerce. https://doi.org/10.6028/NIST.SP.800-207
+
+Pontificia Universidad Católica de Valparaíso. (2026a). *Bases Técnicas del Caso 02—Logística* (TEFP-01/2026).
+
+Pontificia Universidad Católica de Valparaíso. (2026b). *Bases Técnicas Transversales* (TEFP-01/2026).
+
+## Declaración de uso de IA
+
+Se utilizó OpenAI Codex como apoyo a la revisión de consistencia, redacción de contratos y protocolos, conversión entre Markdown y LaTeX y comprobación de compilación. El uso fue sustancial en las adiciones del apartado 4.1. Los diagramas incorporan trabajo previo del equipo y vistas elaboradas con asistencia de IA; la tabla no atribuye autoría exclusiva de IA a las láminas de Tomás. No se han ejecutado pruebas operacionales ni obtenido aprobaciones del CLIENTE mediante esta herramienta.
+
+*Tabla 4.10 — Uso de IA en el apartado lógico*
+
+| Sección | Herramienta | Finalidad | Texto | Diagramas | Revisión humana |
+| — | — | — | — | — | — |
+| 4.1 | OpenAI Codex | Redacción, coherencia y verificación documental. | Alto | Alto en vistas asistidas | Revisión final no realizada; se efectuará sobre el consolidado. |
+
+*Fuente: registro del trabajo asistido sobre el apartado 4.1; declaración de apoyo, no certificación técnica.*
+
+La declaración de los anexos figura al final de su archivo independiente. La revisión humana debe identificar a quien verificó contratos, cifras, diagramas y correspondencia con 4.2, y sus resultados deben consolidarse en el Formulario A-6. La ausencia actual de esa revisión impide tratar este archivo de trabajo como una entrega final conforme; no se atribuye al equipo una verificación todavía no realizada.

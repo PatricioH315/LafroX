@@ -1,7 +1,7 @@
 % !TeX program = lualatex
 % Anexos independientes del Subdocumento 4.1.
 \makeatletter
-\def\input@path{{../../../Productos/plantilla-latex/}{Productos/plantilla-latex/}}
+\def\input@path{{../../../Productos/plantilla-latex/}{Productos/plantilla-latex/}{04_arquitectura/entrega_2/latex/}}
 \makeatother
 \documentclass[carta,firma]{lafrox}
 \datoslafrox{
@@ -9,12 +9,13 @@
   subtitulo = {Anexos del Subdocumento 4.1},
   alcance = {Arquitectura lógica},
   formulario = {Formulario T-22},
-  fecha = {25 de septiembre de 2026},
+  fecha = {29 de septiembre de 2026},
   version = {},
   nomenclatura = {anexos\_4.1.pdf},
 }
 \hypersetup{pdftitle={Anexos del Subdocumento 4.1 -- Arquitectura lógica}}
 \usepackage{etoolbox}
+\renewcommand{\LFXestadodoc}{Entrega 2 · Apartado lógico}
 \patchcmd{\portadalafrox}{\LFXcampoportada{Versión}{\LFXversion}}{\LFXcampoportada{Documento}{Anexos 4.1}}{}{\PackageError{anexos41}{No se pudo ajustar la portada}{Revisar la plantilla}}
 \patchcmd{\LFXpieizquierdo}{\textperiodcentered\ v\LFXversion}{}{}{\PackageError{anexos41}{No se pudo ajustar el pie}{Revisar la plantilla}}
 \captionsetup{hypcap=false}
@@ -140,7 +141,7 @@ M12 Flota & Adapta telemetría & GPS, M4 y M10 & Ruta observada. & No registra e
 
 \section*{Anexo 4.1-G --- Catálogo de interfaces internas}
 \addcontentsline{toc}{section}{Anexo 4.1-G --- Catálogo de interfaces internas}
-El detalle de catálogo de interfaces internas se presenta a continuación.
+El catálogo conserva los identificadores de las ocho interfaces internas. Las fichas que siguen completan el modo, volumen, ventana y conducta ante lentitud exigidos por RT-05.21. Los volúmenes son escenarios de diseño, no mediciones. Un mensaje de negocio puede atravesar varias interfaces: sus cifras no se suman como operaciones únicas.
 
 \begin{tablalafrox}{Integraciones internas: dueño, contrato y continuidad}{tab:catalogo-internas}{F{0.09} F{0.29} F{0.16} F{0.24} Y}{\cab{ID} & \cab{Intercambio} & \cab{Dueño} & \cab{Contrato} & \cab{Falla}}
 INT-01 & Pedido preventa y consulta. & M3 & API negocio y sync. & Captura local pendiente. \\
@@ -154,6 +155,8 @@ INT-14 & Métricas y trazas. & Operación & OTLP. & Buffer local. \\
 \end{tablalafrox}
 
 {\footnotesize Fuente: elaboración propia de LafroX a partir de Diseño lógico LafroX, con base en RT-02.06 y RT-03.12.\par}
+
+\input{catalogo_interno_4.1.tex}
 
 \section*{Anexo 4.1-H --- Catálogo de interfaces externas}
 \addcontentsline{toc}{section}{Anexo 4.1-H --- Catálogo de interfaces externas}
@@ -171,19 +174,21 @@ INT-15 & Telemetría existente & M12 & API de solo lectura. & Ruta planificada s
 
 {\footnotesize Fuente: elaboración propia de LafroX a partir de Caso 02 y Bases Técnicas Transversales, RT-05.\par}
 
+\input{catalogo_externo_4.1.tex}
+
 \section*{Anexo 4.1-I --- Volumen de mensajes}
 \addcontentsline{toc}{section}{Anexo 4.1-I --- Volumen de mensajes}
-El detalle de volumen de mensajes se presenta a continuación.
+Esta síntesis permite contrastar órdenes de magnitud. Los anexos G y H son el catálogo por interfaz e identifican ventana, modo, unidades y supuestos. Las cifras siguientes incluyen flujos encadenados: no se suman para obtener transacciones únicas ni dimensionan por sí solas bytes de evidencia, WAL o ancho de banda. El peak depende de la variable que crece, no de duplicar todas las fuentes.
 
 \begin{tablalafrox}{Volumen de mensajes por integración (derivado volumetría caso)}{tab:volumen-mensajes}{F{0.26} F{0.26} F{0.21} Y}{\cab{Integración} & \cab{Volumen régimen} & \cab{Peak septiembre} & \cab{Derivación}}
-Capa anticorrupción ERP (asíncrona) & $\approx$ 4.700 msg/día & $\approx$ 9.400 & 1.240 pedidos + 46 recepciones + 1.400 preparaciones + 1.400 evidencias + $\approx$ 600 recaudaciones \\
-Documentos tributarios y acuse (SII, síncrona) & $\approx$ 2.700 msg/día & $\approx$ 5.400 & 34.000 docs/mes + acuse, sobre 25 días \\
+Capa anticorrupción ERP (INT-06) & 4.686 msg/día & 9.372 & 1.240 + 46 + 1.400 + 1.400 + 600; peak de diseño por factor 2 \\
+Documentos tributarios y acuse (INT-07) & 2.720 msg/día & 5.440 & 34.000 docs/mes por 2 intercambios, sobre 25 días \\
 Eventos trazabilidad GS1 EPCIS & $\approx$ 52.000 eventos/día & $\approx$ 104.000 & 260.000 líneas/mes $\times$ 5 eventos ciclo, sobre 25 días \\
-Telemetría cadena frío (IoT Core) & $\approx$ 16.100 msg/día & sin variación & 56 fuentes (28 puntos de cámara + 28 termógrafos) $\times$ 288 muestras diarias \\
-Telemetría flota & $\approx$ 60.500 msg/día & $\approx$ 72.000 & 42 camiones $\times$ 1 posición/30s durante 12 h ruta \\
-Sync terreno (colas dispositivo) & $\approx$ 13.000 escrituras/día & $\approx$ 26.000 & 1.240 pedidos + 1.400 evidencias + 10.400 confirmaciones prep. \\
-EDI canal moderno (Etapa 2) & $\approx$ 550 msg/día & $\approx$ 1.100 & 136 pedidos/día $\times$ 4 mensajes (pedido, confirmación, aviso, acuse) \\
-Notificaciones multicanal & $\approx$ 2.800 msg/día & $\approx$ 5.600 & hora estimada llegada y acuse por entrega \\
+Telemetría cadena frío (INT-05) & 16.128 muestras/día & 16.128 & 56 fuentes por 288; envolvente de 24 h, no solo turno móvil \\
+Telemetría flota (INT-15) & 60.480 posiciones/día & 70.560 & 42 camiones por 120 posiciones/h; turno de 12/14 h \\
+Capturas terreno (INT-01/02) & Hasta 5.440 sobres/día & Hasta 10.280 & 1.240/2.480 pedidos más 3 sobres por 1.400/2.600 entregas; excluye picking local \\
+EDI canal moderno (INT-08) & 544 msg/día & 1.088 & Supuesto de 136 pedidos por 4 intercambios; peak por factor 2 \\
+Notificaciones (INT-11) & 2.800 msg/día & 5.200 & Dos avisos por 1.400/2.600 entregas \\
 Autorización pago (POS móvil) & $\approx$ 500 msg/día & $\approx$ 1.000 & fracción canal tradicional que migra efectivo a electrónico \\
 Servicio mapas y geocodificación & $\approx$ 200 llamadas/día & $\approx$ 400 & una corrida ruteo por zona + recálculos incidencia \\
 \end{tablalafrox}
@@ -250,4 +255,5 @@ El detalle de decisiones del numeral 16.1 se presenta a continuación.
 
 {\footnotesize Fuente: elaboración propia de LafroX a partir de Caso 02, numeral 16.1.\par}
 
+\input{aceptacion_logica_4.1.tex}
 \end{document}
