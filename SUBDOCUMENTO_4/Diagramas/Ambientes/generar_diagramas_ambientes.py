@@ -135,10 +135,11 @@ d.paso(4, 426, 290)
 d.box(B('Pruebas unitarias'), 660, 280, 260, 50)
 d.box('Datos sintéticos o anonimizados', 660, 350, 260, 50, fill='#F5E6FA', stroke='#C925D1')
 d.box('Aislado y reconstruible desde código<br>Se reduce o apaga fuera del horario de uso', 660, 420, 260, 80, fill='#F4F6F6')
-d.icon('AWS Secrets Manager<br>(configuración del ambiente)', 'secrets_manager', 'sec', 1000, 280)
+d.icon('AWS Secrets Manager<br>(secretos del ambiente)', 'secrets_manager', 'sec', 1000, 280, lw=150)
+d.icon('SSM Parameter Store<br>(configuración del ambiente)', 'systems_manager', 'mgmt', 1170, 280, lw=150)
 portales(d, cb, 1000, 420, 5)
 d.edge(ecr, far, 'despliega la misma imagen', ports=R % 0.5, pos=0.6)
-d.leyenda(COMUNES + ['Despliegue de la imagen en ECS Fargate, con la configuración y los secretos del ambiente',
+d.leyenda(COMUNES + ['Despliegue de la imagen en ECS Fargate, con la configuración (Parameter Store) y los secretos (Secrets Manager) del ambiente',
                      'Publicación de los portales Angular en S3 privado y CloudFront'], 20, 660, 520)
 d.save('A1_Ambiente_Desarrollo.drawio')
 
@@ -153,11 +154,12 @@ d.box(B('Pruebas funcionales, de integración y de regresión automatizadas') + 
 d.box('Verificador local de identidad y puerta de API local del WMS', 680, 365, 290, 60, fill='#FCE4EC', stroke='#DD344C')
 d.box('Adaptadores simulados del ERP', 680, 440, 290, 45, fill='#FCE4EC', stroke='#DD344C')
 d.box('Ensayo de corte de enlace y relevo de turno', 680, 500, 290, 45)
-d.box('Datos de prueba versionados<br>Aislado y reconstruible desde código · se reduce o apaga fuera de horario', 420, 580, 550, 60, fill='#F5E6FA', stroke='#C925D1')
-d.icon('AWS Secrets Manager<br>(configuración del ambiente)', 'secrets_manager', 'sec', 1030, 280)
+d.box('Datos de prueba versionados<br>Aislado y reconstruible desde código · se reduce o apaga fuera de horario', 420, 565, 550, 55, fill='#F5E6FA', stroke='#C925D1')
+d.icon('AWS Secrets Manager<br>(secretos del ambiente)', 'secrets_manager', 'sec', 1030, 280, lw=150)
+d.icon('SSM Parameter Store<br>(configuración del ambiente)', 'systems_manager', 'mgmt', 1200, 280, lw=150)
 portales(d, cb, 1030, 440, 5)
 d.edge(ecr, far, 'despliega la misma imagen', ports=R % 0.5, pos=0.6)
-d.leyenda(COMUNES + ['Despliegue de la imagen en ECS Fargate, con la configuración y los secretos del ambiente',
+d.leyenda(COMUNES + ['Despliegue de la imagen en ECS Fargate, con la configuración (Parameter Store) y los secretos (Secrets Manager) del ambiente',
                      'Publicación de los portales Angular en S3 privado y CloudFront'], 20, 720, 520)
 d.save('A2_Ambiente_QA.drawio')
 
@@ -182,7 +184,8 @@ cb, ecr = cadena(d)
 cuenta(d, 'Preproducción', 'sa-east-1 (São Paulo)', 'VPC Preproducción · 10.102.0.0/16 · misma topología de nube que Producción', 340, 80, 1500, 720)
 alb, f1, au, fb = nube_productiva(d, 380, 'lector', '')
 d.paso(4, 520, 480); d.paso(5, 520, 370)
-d.icon('AWS Secrets Manager<br>(configuración del ambiente)', 'secrets_manager', 'sec', 1180, 250)
+d.icon('AWS Secrets Manager<br>(secretos del ambiente)', 'secrets_manager', 'sec', 1180, 250, lw=150)
+d.icon('SSM Parameter Store<br>(configuración del ambiente)', 'systems_manager', 'mgmt', 1350, 250, lw=150)
 portales(d, cb, 1180, 380, 6)
 d.icon('Amazon Macie<br>(verifica datos sintéticos)', 'macie', 'sec', 1180, 620)
 d.group('Sitio on-premise emulado · VPC propia', 'group_vpc2', '#8C4FFF', 1450, 230, 320, 250)
@@ -205,7 +208,8 @@ cb, ecr = cadena(d)
 cuenta(d, 'Producción', 'sa-east-1 (São Paulo) · región primaria', 'VPC Producción · 10.101.0.0/16', 340, 80, 1150, 720)
 alb, f1, au, fb = nube_productiva(d, 380, 'lector promovible', '')
 d.paso(4, 520, 480); d.paso(5, 520, 370)
-d.icon('AWS Secrets Manager<br>(configuración del ambiente)', 'secrets_manager', 'sec', 1180, 250)
+d.icon('AWS Secrets Manager<br>(secretos del ambiente)', 'secrets_manager', 'sec', 1180, 250, lw=150)
+d.icon('SSM Parameter Store<br>(configuración del ambiente)', 'systems_manager', 'mgmt', 1350, 250, lw=150)
 portales(d, cb, 1180, 380, 6)
 d.icon('AWS Systems Manager<br>Session Manager (acceso excepcional)', 'systems_manager', 'mgmt', 1180, 620, lw=230)
 d.group('On-premise · parte de Producción', 'group_corporate_data_center', '#7D8998', 1540, 80, 470, 720)
@@ -218,7 +222,7 @@ d.box('Contenedores de la misma imagen; infraestructura de cada sitio declarada 
 d.edge(ecr, au, 'migraciones de esquema', ports=R % 0.75, pos=0.25)
 d.edge(ecr, f1, 'azul-verde con canario', ports=R % 0.25, pos=0.25)
 d.edge(ecr, sit, 'misma imagen desde ECR por la VPN y los endpoints de la VPC de Producción; Ansible (F-02) actualiza los contenedores',
-       dashed=1, ports='exitX=0.5;exitY=1;entryX=0;entryY=0.5;', pos=0.3, pts=((68, 830), (1520, 830), (1520, 565)))
+       dashed=1, ports='exitX=0;exitY=0.5;entryX=0;entryY=0.5;', pos=0.3, pts=((14, 508), (14, 830), (1520, 830), (1520, 565)))
 d.leyenda(COMUNES + ['Migraciones Laravel aditivas y reversibles, antes de cambiar el tráfico (RT-04.10)',
                      'Despliegue azul-verde con canario en ECS Fargate; paso automático sin intervención manual (RT-04.06, RT-04.07)',
                      'Publicación de los portales Angular en S3 privado y CloudFront',
