@@ -4,9 +4,12 @@
 # ambiente, con los nombres y codigos del informe. El unico texto explicativo es la leyenda
 # "Secuencia de despliegue"; los circulos numerados ubican cada paso en el dibujo.
 #
+# Todo elemento dibujado participa en un paso numerado. No se dibujan servicios que solo se usan en
+# tiempo de ejecucion (Secrets Manager, Parameter Store) ni componentes que la imagen no toca
+# (broker, verificador local, segunda zona).
+#
 # Ubicacion AWS coherente: dentro de la VPC solo lo que vive en ella (ALB, ECS Fargate, Aurora);
-# los servicios regionales (S3, Secrets Manager, Parameter Store) en la region, fuera de la VPC;
-# CloudFront, que es global, en la cuenta y fuera de la region.
+# S3 en la region, fuera de la VPC; CloudFront, que es global, en la cuenta y fuera de la region.
 import os
 from xml.sax.saxutils import escape
 
@@ -128,13 +131,7 @@ def portales(d, git, n, xcf):
     d.edge(s3, cf, R(0.5))
 
 
-def configuracion(d, x, y):
-    """Secrets Manager y Parameter Store: servicios regionales que el paso de despliegue consume."""
-    d.icon('AWS Secrets Manager', 'secrets_manager', 'sec', x, y, lw=150)
-    d.icon('SSM Parameter Store', 'systems_manager', 'mgmt', x + 160, y, lw=150)
-
-
-PASO_DESPLIEGUE = 'Despliegue de la imagen en ECS Fargate, con su configuración (Parameter Store) y sus secretos (Secrets Manager)'
+PASO_DESPLIEGUE = 'Despliegue de la misma imagen en ECS Fargate, con la configuración propia del ambiente y sin recompilar (RT-04.08)'
 PASO_PORTALES = 'El pipeline que orquesta GitLab CI publica los portales Angular en S3 privado, servidos por CloudFront'
 PASO_MIGRACIONES = 'Migraciones Laravel aditivas y reversibles en Aurora, antes de cambiar el tráfico (RT-04.10)'
 
@@ -145,12 +142,11 @@ def ambiente_simple(nombre, vpc, fname):
     d = D(nombre)
     d.badge(B('Tipo de ambiente:') + ' solo nube (AWS)', NUBE, 460)
     git, ecr = cadena(d)
-    nube(d, nombre, 'sa-east-1 (São Paulo)', 320, 80, 880, 560, 660)
-    portales(d, git, 5, 1080)
-    d.group(vpc, 'group_vpc2', '#8C4FFF', 380, 370, 300, 200)
-    far = d.icon('ECS Fargate (N-04)', 'fargate', 'compute', 500, 450)
-    d.paso(4, 466, 440)
-    configuracion(d, 740, 450)
+    nube(d, nombre, 'sa-east-1 (São Paulo)', 320, 80, 780, 560, 540)
+    portales(d, git, 5, 950)
+    d.group(vpc, 'group_vpc2', '#8C4FFF', 380, 370, 320, 190)
+    far = d.icon('ECS Fargate (N-04)', 'fargate', 'compute', 510, 450)
+    d.paso(4, 476, 440)
     d.edge(ecr, far, R(0.5))
     d.leyenda(COMUNES + [PASO_DESPLIEGUE, PASO_PORTALES], 680, 920)
     d.save(fname)
@@ -161,16 +157,17 @@ ambiente_simple('QA', 'VPC QA · 10.103.0.0/16', 'A2_Ambiente_QA.drawio')
 
 
 # ------------------------------------------------------------------ Preproduccion y Produccion
-def vpc_productiva(d, titulo):
-    """VPC con la topologia de Produccion (RT-04.02): ALB privado, Fargate en dos zonas y Aurora escritor."""
-    d.group(titulo, 'group_vpc2', '#8C4FFF', 380, 370, 680, 440)
-    d.icon('Application Load Balancer privado', 'elastic_load_balancing', 'net', 410, 410, lw=280, right=True)
-    d.zone('Zona sa-east-1a', 400, 490, 310, 290)
-    d.zone('Zona sa-east-1b', 730, 490, 310, 290)
-    f1 = d.icon('ECS Fargate (N-04)', 'fargate', 'compute', 527, 540)
-    d.icon('ECS Fargate (N-04)', 'fargate', 'compute', 857, 540)
-    au = d.icon('Aurora PostgreSQL (N-05)<br>escritor', 'aurora', 'db', 527, 670, lw=220)
-    d.paso(4, 493, 660); d.paso(5, 493, 530)
+def vpc_productiva(d, titulo, ecr):
+    """VPC con la topologia de Produccion (RT-04.02): Aurora (paso 4), ECS Fargate en 2 zonas y el ALB privado
+    que desplaza el trafico en el azul-verde con canario (paso 5)."""
+    d.group(titulo, 'group_vpc2', '#8C4FFF', 380, 370, 580, 350)
+    f1 = d.icon('ECS Fargate (N-04)<br>en 2 zonas', 'fargate', 'compute', 640, 440, lw=180)
+    au = d.icon('Aurora PostgreSQL (N-05)<br>escritor', 'aurora', 'db', 640, 600, lw=220)
+    alb = d.icon('Application Load Balancer<br>privado', 'elastic_load_balancing', 'net', 840, 440, lw=200)
+    d.paso(5, 606, 430); d.paso(4, 606, 590)
+    d.edge(ecr, f1, R(0.25), pts=((330, 484), (330, 468)))
+    d.edge(ecr, au, R(0.75), pts=((300, 512), (300, 628)))
+    d.edge(alb, f1, 'exitX=0;exitY=0.5;entryX=1;entryY=0.5;')
     return f1, au
 
 
@@ -178,44 +175,40 @@ def vpc_productiva(d, titulo):
 d = D('Preproducción')
 d.badge(B('Tipo de ambiente:') + ' solo nube (AWS) · el sitio on-premise se emula en una VPC', NUBE, 800)
 git, ecr = cadena(d)
-nube(d, 'Preproducción', 'sa-east-1 (São Paulo)', 320, 80, 1440, 860, 1160)
-portales(d, git, 6, 1600)
-f1, au = vpc_productiva(d, 'VPC Preproducción · 10.102.0.0/16')
-d.group('Sitio on-premise emulado · VPC propia', 'group_vpc2', '#8C4FFF', 1100, 370, 390, 150)
-emu = d.box(B('wms_only') + ' · broker · verificador local', 1125, 430, 345, 56, fill='#FFFFFF')
-d.paso(5, 1091, 418)
-configuracion(d, 1170, 600)
-d.edge(ecr, f1, R(0.25), pts=((330, 484), (330, 568))); d.edge(ecr, au, R(0.75), pts=((300, 512), (300, 698)))
-d.edge(ecr, emu, 'exitX=0;exitY=0.5;entryX=0;entryY=0.5;', pts=((14, 498), (14, 960), (1080, 960), (1080, 458)))
+nube(d, 'Preproducción', 'sa-east-1 (São Paulo)', 320, 80, 1220, 700, 940)
+portales(d, git, 6, 1350)
+vpc_productiva(d, 'VPC Preproducción · 10.102.0.0/16 · topología de Producción', ecr)
+d.group('Sitio on-premise emulado', 'group_vpc2', '#8C4FFF', 1000, 370, 260, 130)
+emu = d.box('Misma imagen: ' + B('wms_only'), 1020, 420, 220, 50, fill='#FFFFFF')
+d.paso(5, 986, 410)
+d.edge(ecr, emu, 'exitX=0;exitY=0.5;entryX=0;entryY=0.5;', pts=((14, 498), (14, 810), (980, 810), (980, 445)))
 d.leyenda(COMUNES + [PASO_MIGRACIONES,
-                     'Despliegue azul-verde con canario en ECS Fargate y en el sitio emulado, con su configuración y sus secretos (RT-04.07)',
-                     PASO_PORTALES], 1000, 1000)
+                     'Despliegue azul-verde con canario en ECS Fargate y en el sitio emulado: el balanceador de aplicación privado desplaza el tráfico de forma gradual (RT-04.07)',
+                     PASO_PORTALES], 850, 1180)
 d.save('A3_Ambiente_Preproduccion.drawio')
 
 # Produccion: 1-3 cadena, 4 migraciones, 5 azul-verde automatico, 6 portales, 7 sitios on-premise
 d = D('Producción')
 d.badge(B('Tipo de ambiente:') + ' mixto (nube + on-premise)', MIX, 520)
 git, ecr = cadena(d)
-nube(d, 'Producción', 'sa-east-1 (São Paulo) · región primaria', 320, 80, 1440, 860, 1160)
-portales(d, git, 6, 1600)
-f1, au = vpc_productiva(d, 'VPC Producción · 10.101.0.0/16')
-d.group('VPC Hub', 'group_vpc2', '#8C4FFF', 1100, 370, 390, 150)
-tgw = d.icon('AWS Transit Gateway', 'transit_gateway', 'net', 1380, 410, lw=160)
-d.paso(7, 1346, 400)
-configuracion(d, 1170, 600)
-d.group('On-premise · parte de Producción', 'group_corporate_data_center', '#7D8998', 1800, 80, 440, 860)
-sitios = [d.box(B('CD Talca · Proxmox VE') + '<br>VM-01: A-01 (wms_only) · VM-03: A-03 y shipper', 1820, 403, 400, 70),
-          d.box(B('CD Concepción · Proxmox VE') + '<br>VM-C01: A-01 (wms_only) · VM-C04: A-03 y shipper', 1820, 543, 400, 70),
-          d.box(B('Cross-docking (3) · E-01') + '<br>Docker Compose: wms_only y shipper', 1820, 683, 400, 70)]
-d.edge(ecr, f1, R(0.25), pts=((330, 484), (330, 568))); d.edge(ecr, au, R(0.75), pts=((300, 512), (300, 698)))
-d.edge(ecr, tgw, 'exitX=0;exitY=0.5;entryX=0;entryY=0.5;', dashed=1, pts=((14, 498), (14, 960), (1080, 960), (1080, 438)))
+nube(d, 'Producción', 'sa-east-1 (São Paulo) · región primaria', 320, 80, 1220, 700, 940)
+portales(d, git, 6, 1350)
+vpc_productiva(d, 'VPC Producción · 10.101.0.0/16', ecr)
+d.group('VPC Hub', 'group_vpc2', '#8C4FFF', 1000, 370, 260, 150)
+tgw = d.icon('AWS Transit Gateway', 'transit_gateway', 'net', 1102, 420, lw=160)
+d.paso(7, 1068, 410)
+d.group('On-premise · parte de Producción', 'group_corporate_data_center', '#7D8998', 1590, 80, 420, 700)
+sitios = [d.box(B('CD Talca') + '<br>VM-01: wms_only · VM-03: shipper', 1610, 413, 380, 70),
+          d.box(B('CD Concepción') + '<br>VM-C01: wms_only · VM-C04: shipper', 1610, 543, 380, 70),
+          d.box(B('Cross-docking (3)') + '<br>E-01: wms_only y shipper (Docker Compose)', 1610, 673, 380, 70)]
+d.edge(ecr, tgw, 'exitX=0;exitY=0.5;entryX=0;entryY=0.5;', dashed=1, pts=((14, 498), (14, 810), (980, 810), (980, 448)))
 for i, sid in enumerate(sitios):
     d.edge(tgw, sid, R(0.5), dashed=1, label='VPN' if i == 0 else '')
 d.leyenda(COMUNES + [PASO_MIGRACIONES,
-                     'Despliegue azul-verde con canario en ECS Fargate, con su configuración y sus secretos; paso automático, sin intervención manual (RT-04.06, RT-04.07)',
+                     'Despliegue azul-verde con canario en ECS Fargate: el balanceador de aplicación privado desplaza el tráfico de forma gradual; paso automático, sin intervención manual (RT-04.06, RT-04.07)',
                      PASO_PORTALES,
                      'Sitios on-premise: descarga de la misma imagen desde ECR por la VPN (VPC Hub) y los endpoints de interfaz; Ansible (F-02) actualiza los contenedores, sitio por sitio'],
-          1000, 1120)
+          850, 1300)
 d.save('A4_Ambiente_Produccion.drawio')
 
 # ------------------------------------------------------------------ Recuperacion ante Desastres
@@ -223,17 +216,17 @@ d.save('A4_Ambiente_Produccion.drawio')
 d = D('Recuperación ante Desastres')
 d.badge(B('Tipo de ambiente:') + ' mixto (nube + on-premise) · un sitio de recuperación por dominio', MIX, 760)
 git, ecr = cadena(d)
-d.group('AWS Cloud · organización AWS Control Tower', 'group_aws_cloud_alt', '#232F3E', 320, 80, 620, 460)
-d.group('Cuenta AWS · Recuperación ante Desastres', 'group_account', '#CD2264', 340, 120, 580, 400)
-d.group('us-east-1 · ≈ 7.700 km de la primaria', 'group_region', '#00A4A6', 360, 165, 540, 335, dashed=1)
-d.group('VPC Recuperación · 10.201.0.0/16', 'group_vpc2', '#8C4FFF', 380, 210, 380, 250)
-far = d.icon('ECS Fargate (N-04)<br>réplica reducida', 'fargate', 'compute', 540, 300)
-d.paso(4, 506, 290)
+d.group('AWS Cloud · organización AWS Control Tower', 'group_aws_cloud_alt', '#232F3E', 320, 80, 560, 460)
+d.group('Cuenta AWS · Recuperación ante Desastres', 'group_account', '#CD2264', 340, 120, 520, 400)
+d.group('us-east-1 · ≈ 7.700 km de la primaria', 'group_region', '#00A4A6', 360, 165, 480, 335, dashed=1)
+d.group('VPC Recuperación · 10.201.0.0/16', 'group_vpc2', '#8C4FFF', 380, 230, 440, 230)
+far = d.icon('ECS Fargate (N-04)<br>réplica reducida', 'fargate', 'compute', 580, 320, lw=200)
+d.paso(4, 546, 310)
 d.edge(ecr, far, R(0.5))
-d.group('On-premise · sitio de recuperación', 'group_corporate_data_center', '#7D8998', 990, 80, 440, 460)
-t = d.box(B('CD Talca') + '<br>VM-01: A-01 Motor WMS', 1010, 150, 400, 70)
-c = d.box(B('CD Concepción') + '<br>VM-C01: A-01 Motor WMS', 1010, 340, 400, 70)
-d.paso(5, 976, 330)
+d.group('On-premise · sitio de recuperación', 'group_corporate_data_center', '#7D8998', 930, 80, 440, 460)
+t = d.box(B('CD Talca') + '<br>VM-01: wms_only', 950, 170, 400, 70)
+c = d.box(B('CD Concepción') + '<br>VM-C01: wms_only', 950, 420, 400, 70)
+d.paso(5, 916, 410)
 d.edge(t, c, 'exitX=0.5;exitY=1;entryX=0.5;entryY=0;', dashed=1, label='DRP local')
 d.leyenda(COMUNES + ['La réplica reducida de ECS Fargate en us-east-1 recibe cada versión liberada en Producción, desde el ECR de sa-east-1',
                      'Si se pierde Talca, el CD Concepción promueve VM-C01, que ya corre la misma imagen desplegada en Producción (RTO adicional de 1 a 2 h)'],
