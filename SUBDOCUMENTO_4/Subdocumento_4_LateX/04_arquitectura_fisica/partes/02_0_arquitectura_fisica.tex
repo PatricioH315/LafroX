@@ -37,48 +37,20 @@ La Figura~\ref{fig:vista-general} presenta la vista general de la arquitectura f
 \begin{landscape}
 \begin{figure}[p]
   \centering
-  \includegraphics[width=\linewidth,height=0.85\textheight,keepaspectratio]{figuras/Arquitectura_Fisica_General.jpg}
+  \includegraphics[width=\linewidth,height=0.9\textheight,keepaspectratio]{figuras/Arquitectura_Fisica_General.png}
   \caption{Vista general de la arquitectura física híbrida}
   \label{fig:vista-general}
-  \par\small Autoría: LafroX.
+  \fuentefigura
 \end{figure}
 \end{landscape}
 
-\section*{Vista general de la nube}
+La Figura~\ref{fig:vista-general} se lee de arriba hacia abajo en tres franjas. En la franja superior están quienes llegan desde fuera de la red del CLIENTE: clientes, proveedores y transportistas por los portales; preventistas y conductores con sus terminales EC55 y TC58e, que leen el termógrafo del camión por Bluetooth (BLE); la casa matriz y el teletrabajo; y las cadenas de supermercados. Cada grupo entra por una puerta distinta. Los portales y los terminales pasan por el borde global (Route 53, Shield Advanced, AWS WAF y CloudFront) hacia API Gateway; la casa matriz y el teletrabajo usan Verified Access; y las cadenas intercambian mensajes por el canal AS2 detrás del Network Load Balancer. Los recorridos y controles de entrada se detallan en la sección~\ref{sec:conexiones}.
 
-Los portales y los terminales de terreno acceden por CloudFront a la API pública; la oficina y el trabajo remoto usan Verified Access. Las bodegas operan contra su WMS local y las cadenas de supermercados intercambian mensajes por el canal AS2. Los recorridos y controles de entrada se detallan en la sección~\ref{sec:conexiones}.
+En la franja central, la región primaria sa-east-1 reúne en la VPC de producción el balanceador privado de aplicación, la aplicación en ECS Fargate, Keycloak, ElastiCache, Aurora PostgreSQL y AWS DMS, que copia los cambios del PostgreSQL de Talca (VM-02) a un esquema de réplica de solo lectura en Aurora. Fuera de esa VPC quedan los servicios regionales DynamoDB, S3, SQS FIFO e IoT Core, que recibe la telemetría de cadena de frío por MQTTS, y la VPC Hub, donde Transit Gateway y la VPN Site-to-Site enlazan la nube con los sitios. La región us-east-1 recibe las réplicas de Aurora PostgreSQL, DynamoDB y S3 para la recuperación ante desastres. Esta franja se detalla en la Figura~\ref{fig:nube} de la sección~\ref{sec:servicios-nube}, con la distribución por zona de disponibilidad, los servicios de operación y seguridad y la réplica reducida de aplicación en us-east-1.
 
-En AWS sa-east-1, los componentes se distribuyen y cumplen estas funciones:
+En la franja inferior están las cinco instalaciones con cómputo, cada una con su firewall y su switch y conectada a la VPC Hub por su propio túnel VPN. El CD Talca aloja un clúster Proxmox VE con Ceph de tres nodos y seis máquinas virtuales, junto al ERP de 2017 y al respaldo NAS WORM; el CD Concepción, un servidor Proxmox de nodo único con cuatro máquinas virtuales; y cada una de las tres plataformas de cross-docking, un mini-PC industrial con Docker. En los dos centros de distribución, los terminales MC9400 trabajan por Wi-Fi 6E y el gateway IoT recoge los sensores de las cámaras; en los cross-docking, los escáneres GS1 trabajan contra el mini-PC. Cada tipo de sitio tiene su propia figura de detalle: el cross-docking en la Figura~\ref{fig:crossdocking} (sección~\ref{sec:emplazamiento}), el CD Talca en la Figura~\ref{fig:cd-talca} (sección~\ref{sec:d-especificaciones-del-sitio-principal-on-}) y el CD Concepción en la Figura~\ref{fig:cd-concepcion} (sección~\ref{sec:e-especificaciones-del-sitio-secundario-y-}).
 
-\begin{itemize}
-  \item ECS Fargate, Keycloak y Redis se distribuyen entre sa-east-1a y sa-east-1b.
-  \item Aurora PostgreSQL tiene su escritor en sa-east-1a y un lector promovible en sa-east-1b, tal como se detalla en la sección~\ref{sec:despliegue}.
-  \item AWS DMS copia los cambios del PostgreSQL de Talca (VM-02) a un esquema de réplica de solo lectura en Aurora.
-  \item El estado central se actualiza por separado mediante los eventos de reconciliación que llegan por SQS FIFO.
-  \item Fuera de la VPC de producción, IoT Core atiende la integración de sensores.
-  \item DynamoDB, SQS FIFO, Glue y S3 apoyan la persistencia y el intercambio de datos.
-  \item Redshift y QuickSight sirven la analítica.
-  \item ECR suministra las imágenes de Fargate.
-  \item CloudWatch concentra el monitoreo.
-\end{itemize}
-
-Los servicios contratados y su alta disponibilidad se desarrollan en las secciones~\ref{sec:servicios-nube} y~\ref{sec:despliegue}.
-
-La región us-east-1 recibe réplicas de Aurora PostgreSQL, DynamoDB y S3 para recuperación ante desastres. La vista general representa esas copias de datos; la réplica reducida de aplicación, su escalamiento y el procedimiento de conmutación se detallan en las secciones~\ref{cap:4-3-data-center} y~\ref{sec:despliegue}.
-
-\section*{Vista general de las instalaciones}
-
-La VPC Hub enlaza la nube con los sitios mediante Transit Gateway y VPN Site-to-Site. El equipamiento se distribuye por ámbito:
-
-\begin{itemize}
-  \item \textbf{CD Talca:} la sala técnica reúne fibra con respaldo LTE, firewalls en par activo/pasivo, switching y máquinas virtuales para WMS, PostgreSQL, RabbitMQ, integración con el ERP, caché de Keycloak y ADOT con SSM. También comprende respaldo NAS WORM, equipos de bodega y sensores de cadena de frío conectados por gateway IoT mediante MQTTS, con bloqueo de despacho.
-  \item \textbf{CD Concepción:} dispone de fibra y LTE, firewall, switch y un servidor Proxmox de nodo único con WMS, PostgreSQL, caché de Keycloak, RabbitMQ, shipper y ADOT, además de bodega y cadena de frío.
-  \item \textbf{Cross-docking:} emplean Starlink, LTE de doble SIM y un mini-PC industrial con Docker para WMS, PostgreSQL, RabbitMQ, caché de identidad y ADOT, junto con escáneres GS1.
-\end{itemize}
-
-El CD (Talca), el de Concepción y los cross-docking disponen de estos componentes. Estos sostienen la operación local durante una interrupción del enlace. El emplazamiento, las condiciones de los centros de datos y las conexiones se precisan en las secciones~\ref{sec:emplazamiento},~\ref{cap:4-3-data-center} y~\ref{sec:conexiones}.
-
-La bodega confirma sus operaciones contra el WMS del sitio. Talca replica los cambios de VM-02 a Aurora por DMS; Concepción y los cross-docking envían sus eventos por colas. Si cae el enlace, las bases y los brokers locales permiten seguir operando y entregan los eventos retenidos al reconectar. En conjunto, la figura muestra cómo se mantiene la operación local mientras la nube concentra los servicios comunes, la consolidación de datos y la recuperación.
+La figura muestra la regla que ordena el diseño: la bodega confirma sus operaciones contra el WMS del sitio, y la nube concentra los servicios comunes, la consolidación de datos y la recuperación. Talca replica los cambios de VM-02 a Aurora por DMS; Concepción y los cross-docking envían sus eventos por colas. Si cae el enlace, las bases y los brokers locales permiten seguir operando y entregan los eventos retenidos al reconectar.
 
 Este apartado se ordena en seis partes:
 

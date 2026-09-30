@@ -73,3 +73,23 @@ Los registros de decisión descartan de forma expresa los siguientes servicios y
 \subsection{Modelo de contratación}
 
 Los servicios se contratan por uso, con la capacidad base comprometida mediante Savings Plans y el peak de septiembre cubierto con capacidad efímera que se libera al terminar. Los ambientes de Desarrollo, QA y Preproducción se reducen o apagan fuera del horario de uso. La reversibilidad está asegurada por la elección de servicios: Aurora es compatible con PostgreSQL, los datos analíticos se guardan en formato Parquet, y Keycloak, Laravel, PostgreSQL y RabbitMQ son de código abierto, de modo que un traslado a otra plataforma conserva la aplicación y los datos y se concentra en sustituir los servicios administrados de AWS que la solución consume. Los montos de estos servicios se declaran en la Oferta Económica y no en este documento.
+
+\subsection{Topología de los servicios}
+
+La Figura~\ref{fig:nube} ubica en la topología de AWS los servicios de la Tabla~\ref{tab:servicios-nube} y los recursos de la región secundaria: el borde global, la región primaria sa-east-1 con sus dos zonas de disponibilidad y la región de recuperación us-east-1. Los servicios de gobierno de cuentas de la tabla (Control Tower, Organizations, Cost Explorer y Budgets) se aplican sobre las cuentas y no ocupan un lugar en la topología, por lo que no se dibujan.
+
+\begin{landscape}
+\begin{figure}[p]
+  \centering
+  \includegraphics[width=\linewidth,height=0.9\textheight,keepaspectratio]{figuras/Arquitectura_Fisica_Nube.png}
+  \caption{Topología de los servicios en AWS: región primaria sa-east-1 y región de recuperación us-east-1}
+  \label{fig:nube}
+  \fuentefigura
+\end{figure}
+\end{landscape}
+
+La figura se recorre desde la entrada. En el borde global, Route 53 resuelve los nombres, y AWS WAF y Shield Advanced protegen a CloudFront, que sirve los portales desde S3 y reenvía las llamadas a la API Gateway pública. La Lambda autorizadora valida el token de las rutas protegidas de la API pública y de la API privada; los endpoints OIDC de autenticación pasan sin autorizador hacia Keycloak. La casa matriz y el teletrabajo entran por Verified Access al balanceador privado de aplicación, y las cadenas de supermercados llegan por el Network Load Balancer al transporte AS2.
+
+Dentro de la VPC de producción, cada zona de disponibilidad tiene su propia copia de ECS Fargate, Keycloak y ElastiCache. Aurora PostgreSQL tiene el escritor en sa-east-1a y el lector promovible en sa-east-1b, y AWS DMS escribe en el escritor la réplica del PostgreSQL de Talca. Los VPC endpoints conectan Fargate con los servicios regionales sin salir a Internet. Esos servicios quedan fuera de las zonas porque AWS los opera en varias zonas de forma nativa: IoT Core escribe las lecturas de frío en DynamoDB, SQS FIFO recibe la reconciliación de los sitios, SNS difunde las alertas, ECR guarda las imágenes y AWS Backup custodia las copias; la analítica fluye de S3 a Glue, Redshift y QuickSight. El bloque de operación y seguridad (CloudWatch, CloudTrail, Config, GuardDuty, Security Hub, KMS, Secrets Manager, Systems Manager, IAM Identity Center e Inspector) es transversal a toda la región, y la VPC Hub recibe los túneles de los cinco sitios.
+
+La región us-east-1 repite la cadena de entrada con capacidad reducida: API Gateway, la Lambda autorizadora, Verified Access y una VPC de recuperación con balanceador, Fargate, Keycloak y la réplica secundaria de Aurora, además de su propio Transit Gateway y su VPN para reconectar los sitios. La figura muestra así dos propiedades del diseño: ningún componente con estado depende de una sola zona de disponibilidad, y la recuperación regional no exige reconstruir la entrada, porque la réplica solo escala. Los tiempos de esa conmutación se fijan en el apartado~\ref{cap:4-3-data-center}.

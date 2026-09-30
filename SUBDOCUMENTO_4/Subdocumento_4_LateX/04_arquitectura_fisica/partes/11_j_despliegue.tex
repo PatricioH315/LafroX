@@ -160,7 +160,7 @@ Los túneles VPN de los cinco sitios terminan en un Transit Gateway en sa-east-1
   VPC Producción, zona privada & Resto de 10.101.0.0/16 & ALB de aplicación y consolas, aplicación, datos y Transit Gateway \\
 \end{tablalafrox}
 
-Cada sitio con cómputo dispone de un bloque propio, y el centro de distribución que Puelche evalúa abrir hacia 2030 ya tiene el suyo reservado. En la nube, los ALB de aplicación y consolas son privados; la subred pública solo aloja NAT y el Network Load Balancer del canal AS2. Los portales residen en S3 privado, servido únicamente por CloudFront. La VPC de Producción usa endpoints de interfaz execute-api, IoT Core, SQS y SSM.
+Cada sitio con cómputo dispone de un bloque propio, y el centro de distribución que Puelche evalúa abrir hacia 2030 ya tiene el suyo reservado. En la nube, los ALB de aplicación y consolas son privados; la subred pública solo aloja NAT y el Network Load Balancer del canal AS2. Los portales residen en S3 privado, servido únicamente por CloudFront. La VPC de Producción usa endpoints de interfaz execute-api, IoT Core, SQS y SSM, y endpoints de puerta de enlace para DynamoDB y S3.
 
 El tráfico externo sigue las entradas de la sección~\ref{sub:superficie}. Route 53 conmuta el enrutamiento regional ante falla, pero la identidad, las API pública y privada y las consolas deben restituirse antes de reabrir transacciones; la VPN hacia us-east-1 se activa durante la reconexión del broker (Tabla~\ref{tab:4-3-6}).
 

@@ -170,6 +170,7 @@
 \RequirePackage{fancyhdr}
 \RequirePackage{caption}
 \RequirePackage{pdflscape}
+\RequirePackage{placeins}  % \FloatBarrier: la figura sale antes que el texto que la explica
 \RequirePackage{eso-pic}
 \RequirePackage{ragged2e}
 %  lastpage: el total de folios del bloque de control documental de la
@@ -640,6 +641,14 @@
     \includegraphics[width=#1\textwidth]{#2}
     \caption{#3}\label{#4}
   \end{figure}}
+
+% Fuente de la figura (aclaraciones, sección 4): va dentro del entorno figure,
+% justo después de \caption y \label, con el mismo estilo del pie.
+%   \fuentefigura                     -> Fuente: elaboración propia.
+%   \fuentefigura[Autor (2024)]       -> Fuente: Autor (2024).
+\newcommand{\fuentefigura}[1][elaboración propia]{%
+  \par\vspace{2pt}%
+  {\footnotesize\color{lafroxGris}\raggedright Fuente: #1.\par}}
 
 \newenvironment{anexohorizontal}{\begin{landscape}}{\end{landscape}}
 
