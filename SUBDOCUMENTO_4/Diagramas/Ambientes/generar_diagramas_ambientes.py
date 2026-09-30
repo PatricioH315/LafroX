@@ -44,11 +44,11 @@ class D:
               'whiteSpace=wrap;labelWidth=%d;') % (CAT[cat], pos, res, lw)
         return s.add(st, x, y, 56, 56, label)
 
-    def group(s, label, gr, color, x, y, w, h, dashed=0):
+    def group(s, label, gr, color, x, y, w, h, dashed=0, valign='top'):
         st = ('points=[];outlineConnect=0;gradientColor=none;html=1;whiteSpace=wrap;fontSize=16;fontStyle=1;'
               'container=0;pointerEvents=0;collapsible=0;recursiveResize=0;shape=mxgraph.aws4.group;'
-              'grIcon=mxgraph.aws4.%s;strokeColor=%s;fillColor=none;verticalAlign=top;align=left;spacingLeft=30;'
-              'fontColor=%s;dashed=%d;') % (gr, color, color, dashed)
+              'grIcon=mxgraph.aws4.%s;strokeColor=%s;fillColor=none;verticalAlign=%s;align=left;spacingLeft=30;spacingBottom=6;'
+              'fontColor=%s;dashed=%d;') % (gr, color, valign, color, dashed)
         return s.add(st, x, y, w, h, label)
 
     def zone(s, label, x, y, w, h):
@@ -101,17 +101,20 @@ COMUNES = ['GitLab CI orquesta el cambio y ejecuta los controles; bloquea ante h
 def cadena(d):
     """Pasos 1 a 3, comunes a los cinco ambientes. Devuelve (GitLab CI, ECR)."""
     d.add('rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#232F3E;strokeColor=#232F3E;fontSize=15;'
-          'fontColor=#FFFFFF;', 20, 80, 240, 50, B('Cadena de entrega') + '<br>N-04 · sa-east-1')
+          'fontColor=#FFFFFF;', 20, 80, 240, 50, B('Cadena de entrega'))
     dev = d.add('sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#232F3E;strokeColor=none;dashed=0;'
                 'labelPosition=right;verticalLabelPosition=middle;verticalAlign=middle;align=left;spacingLeft=4;'
                 'html=1;fontSize=15;aspect=fixed;shape=mxgraph.aws4.users;', 40, 160, 50, 50, 'Equipo de desarrollo')
-    git = d.box(B('GitLab CI'), 20, 250, 170, 50, fill='#FFF2E8', stroke='#E67E22')
-    cb = d.icon('AWS CodeBuild', 'codebuild', 'devtools', 40, 350, right=True)
-    ecr = d.icon('Amazon ECR', 'ecr', 'container', 40, 470)
+    # GitLab CI es un servicio contratado por suscripcion, fuera de AWS
+    git = d.box(B('GitLab CI') + '<br>(suscripción)', 20, 250, 170, 50, fill='#FFF2E8', stroke='#E67E22')
+    # CodeBuild y ECR son servicios de AWS (N-04, sa-east-1); el informe no fija la cuenta
+    d.group('AWS Cloud · sa-east-1 · N-04', 'group_aws_cloud_alt', '#232F3E', 20, 325, 270, 290, valign='bottom')
+    cb = d.icon('AWS CodeBuild', 'codebuild', 'devtools', 72, 375, right=True)
+    ecr = d.icon('Amazon ECR', 'ecr', 'container', 72, 480)
     d.edge(dev, git, 'exitX=0.5;exitY=1;entryX=0.3;entryY=0;')
     d.edge(git, cb, 'exitX=0.3;exitY=1;entryX=0.5;entryY=0;')
     d.edge(cb, ecr, 'exitX=0.5;exitY=1;entryX=0.5;entryY=0;')
-    d.paso(1, 6, 238); d.paso(2, 6, 342); d.paso(3, 6, 462)
+    d.paso(1, 6, 238); d.paso(2, 36, 367); d.paso(3, 36, 472)
     return git, ecr
 
 
@@ -165,8 +168,8 @@ def vpc_productiva(d, titulo, ecr):
     au = d.icon('Aurora PostgreSQL (N-05)<br>escritor', 'aurora', 'db', 640, 600, lw=220)
     alb = d.icon('Application Load Balancer<br>privado', 'elastic_load_balancing', 'net', 840, 440, lw=200)
     d.paso(5, 606, 430); d.paso(4, 606, 590)
-    d.edge(ecr, f1, R(0.25), pts=((330, 484), (330, 468)))
-    d.edge(ecr, au, R(0.75), pts=((300, 512), (300, 628)))
+    d.edge(ecr, f1, R(0.25), pts=((330, 494), (330, 468)))
+    d.edge(ecr, au, R(0.75), pts=((310, 522), (310, 628)))
     d.edge(alb, f1, 'exitX=0;exitY=0.5;entryX=1;entryY=0.5;')
     return f1, au
 
@@ -181,7 +184,7 @@ vpc_productiva(d, 'VPC Preproducción · 10.102.0.0/16 · topología de Producci
 d.group('Sitio emulado · VPC propia', 'group_vpc2', '#8C4FFF', 1000, 370, 285, 180)
 emu = d.icon('ECS Fargate (N-04)<br>wms_only', 'fargate', 'compute', 1110, 420, lw=180)
 d.paso(5, 1076, 410)
-d.edge(ecr, emu, 'exitX=0;exitY=0.5;entryX=0;entryY=0.5;', pts=((14, 498), (14, 810), (980, 810), (980, 448)))
+d.edge(ecr, emu, 'exitX=0;exitY=0.5;entryX=0;entryY=0.5;', pts=((14, 508), (14, 810), (980, 810), (980, 448)))
 d.leyenda(COMUNES + [PASO_MIGRACIONES,
                      'Despliegue azul-verde con canario en ECS Fargate y en el sitio emulado: el balanceador de aplicación privado desplaza el tráfico de forma gradual (RT-04.07)',
                      PASO_PORTALES], 850, 1180)
@@ -203,7 +206,7 @@ d.group('On-premise · parte de Producción', 'group_corporate_data_center', '#7
 sitios = [d.box(B('CD Talca') + '<br>VM-01: wms_only · VM-03: shipper', 1610, 413, 380, 70),
           d.box(B('CD Concepción') + '<br>VM-C01: wms_only · VM-C04: shipper', 1610, 543, 380, 70),
           d.box(B('Cross-docking (3)') + '<br>E-01: wms_only y shipper (Docker Compose)', 1610, 673, 380, 70)]
-d.edge(ecr, tgw, 'exitX=0;exitY=0.5;entryX=0;entryY=0.5;', dashed=1, pts=((14, 498), (14, 810), (980, 810), (980, 448)))
+d.edge(ecr, tgw, 'exitX=0;exitY=0.5;entryX=0;entryY=0.5;', dashed=1, pts=((14, 508), (14, 810), (980, 810), (980, 448)))
 for sid in sitios:
     d.edge(vpn, sid, R(0.5), dashed=1)
 d.leyenda(COMUNES + [PASO_MIGRACIONES,
@@ -232,6 +235,6 @@ d.paso(5, 916, 410)
 d.edge(t, c, 'exitX=0.5;exitY=1;entryX=0.5;entryY=0;', dashed=1, label='DRP local')
 d.leyenda(COMUNES + ['La réplica reducida de ECS Fargate en us-east-1 recibe cada versión liberada en Producción, desde el ECR de sa-east-1',
                      'Si se pierde Talca, el CD Concepción promueve VM-C01, que ya corre la misma imagen desplegada en Producción (RTO adicional de 1 a 2 h)'],
-          580, 1040)
+          650, 1040)
 d.save('A5_Ambiente_Recuperacion_Desastres.drawio')
 print('ok')
