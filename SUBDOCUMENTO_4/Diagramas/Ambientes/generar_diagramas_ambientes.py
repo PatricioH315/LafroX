@@ -1,3 +1,4 @@
+# Cada elemento debe tener respaldo textual en el informe (11_j, 02_a, 02_b, 06_e, 15_anexo_t11).
 # Genera los 5 diagramas de ambientes del 4.2.4 centrados en el despliegue:
 # cadena del equipo de desarrollo -> ECR -> donde vive el codigo (Fargate / VM / E-01).
 # Nombres y codigos tomados del informe (02_a, 02_b, 11_j, 06_e, 15_anexo_t11).
@@ -81,7 +82,7 @@ d = D('Desarrollo')
 d.badge(B('Tipo de ambiente:') + ' solo nube (AWS)', NUBE, 20, 20)
 ecr = cadena(d)
 cuenta(d, 'Desarrollo', 'sa-east-1 (São Paulo)', 'VPC Desarrollo · 10.104.0.0/16', 300, 80, 1000, 560)
-far = d.icon('ECS Fargate (N-04)<br>imagen Laravel 13 · PHP 8.5', 'fargate', 'compute', 420, 270, lw=240)
+far = d.box(B('Imagen de la aplicación') + '<br>Laravel 13 · PHP 8.5<br>(la misma en todos los ambientes)', 380, 265, 210, 110, fill='#FFF2E8', stroke='#ED7100')
 d.box(B('Pruebas unitarias'), 620, 250, 260, 50)
 d.box('Datos sintéticos o anonimizados', 620, 320, 260, 50, fill='#F5E6FA', stroke='#C925D1')
 d.box('Aislado y reconstruible desde código<br>Se reduce o apaga fuera del horario de uso', 620, 390, 260, 80, fill='#F4F6F6')
@@ -96,7 +97,7 @@ d = D('QA')
 d.badge(B('Tipo de ambiente:') + ' solo nube (AWS)', NUBE, 20, 20)
 ecr = cadena(d)
 cuenta(d, 'QA', 'sa-east-1 (São Paulo)', 'VPC QA · 10.103.0.0/16', 300, 80, 1000, 620)
-far = d.icon('ECS Fargate (N-04)<br>misma imagen; perfil wms_only', 'fargate', 'compute', 420, 270, lw=240)
+far = d.box(B('Imagen de la aplicación') + '<br>la misma de Desarrollo<br>ensayo del perfil wms_only', 380, 265, 210, 110, fill='#FFF2E8', stroke='#ED7100')
 d.box(B('Pruebas funcionales, de integración y de regresión automatizadas') + '<br>Análisis dinámico', 620, 240, 290, 80)
 d.box('Verificador local de identidad y puerta de API local del WMS', 620, 335, 290, 60, fill='#FCE4EC', stroke='#DD344C')
 d.box('Adaptadores simulados del ERP', 620, 410, 290, 45, fill='#FCE4EC', stroke='#DD344C')
