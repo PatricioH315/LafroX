@@ -7,7 +7,7 @@
 %
 %  v05 -- reestructurada como informe (base c2ac90c, 23-09-2026). Mismos datos
 %  y decisiones de la version vigente; cambia la organizacion y la redaccion.
-%  v06 -- demotada de capitulo a seccion 4.2.3 dentro del capitulo 4.2 cuando
+%  v06 -- demotada de capitulo a seccion 4.2.4 dentro del capitulo 4.2 cuando
 %  el cuerpo se reordeno a emplazamiento, servicios, despliegue, conexiones y
 %  dimensionamiento. Complementa, sin repetir, la seccion de conexiones y
 %  puntos de falla (sec:conexiones).
@@ -40,7 +40,7 @@ Un cambio recorre tres ambientes antes de llegar a Producción: Desarrollo, QA y
 
 Cada ambiente reside en una cuenta AWS propia, bajo una organización de AWS Control Tower cuyas políticas de control de servicio impiden que un error o un acceso indebido en un ambiente alcance a otro; la organización incorpora además sus cuentas de gestión, de archivo de registros y de auditoría. Los bloques de direccionamiento no se solapan entre sí ni con los de los sitios on-premise, y solo el ambiente de recuperación reside fuera de la región primaria. Los cinco ambientes quedan habilitados y operativos en el hito H3 del Formulario E-25, en el mes 6 del contrato, antes de la primera marcha blanca (RT-04.01).
 
-En los cinco ambientes la imagen de la aplicación corre en ECS Fargate, que es el cómputo de la plataforma de aplicación N-04 (Tabla~\ref{tab:servicios-nube}); cada ambiente despliega la imagen en su propia cuenta, desde el mismo Elastic Container Registry de sa-east-1. Los ambientes se diferencian en su escala y en su conectividad, no en el servicio donde corre el código: Producción opera en dos zonas; Preproducción replica esa topología; Desarrollo, QA y Preproducción se reducen o apagan fuera del horario de uso; y Recuperación ante Desastres mantiene la réplica reducida de us-east-1.
+En la nube, en los cinco ambientes, la imagen de la aplicación corre en ECS Fargate, que es el cómputo de la plataforma de aplicación N-04 (Tabla~\ref{tab:servicios-nube}); cada ambiente despliega la imagen en su propia cuenta, desde el mismo Elastic Container Registry de sa-east-1. Los ambientes se diferencian en su escala y en su conectividad, no en el servicio donde corre el código: Producción opera en dos zonas; Preproducción replica esa topología; Desarrollo, QA y Preproducción se reducen o apagan fuera del horario de uso; y Recuperación ante Desastres mantiene la réplica reducida de us-east-1.
 
 Desarrollo y QA son aislados y se reconstruyen desde código. Desarrollo trabaja con datos sintéticos o anonimizados, y QA con un juego de datos de prueba controlado y versionado que se restituye a un estado conocido antes de cada ciclo de pruebas. Ningún ambiente no productivo recibe datos productivos sin anonimización o seudonimización verificable. Desarrollo, QA y Preproducción se reducen o apagan fuera del horario de uso, con el ahorro reflejado en la estructura de costos (RT-04.13).
 
@@ -72,7 +72,7 @@ QA sigue la misma secuencia en su propia cuenta y su propia VPC, con la misma im
 
 \minititulo{Preproducción}
 
-En Preproducción la secuencia agrega las migraciones en Aurora y el despliegue azul-verde con canario, sobre la topología de Producción y el sitio on-premise emulado (Figura~\ref{fig:amb-preproduccion}).
+En Preproducción la secuencia se ensaya sobre la topología de Producción y el sitio on-premise emulado: las migraciones en Aurora y el despliegue azul-verde con canario se demuestran aquí antes de cada paso a producción (RT-04.07; Figura~\ref{fig:amb-preproduccion}).
 
 \begin{figure}[p]
   \centering
