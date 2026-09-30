@@ -178,10 +178,10 @@ git, ecr = cadena(d)
 nube(d, 'Preproducción', 'sa-east-1 (São Paulo)', 320, 80, 1220, 700, 940)
 portales(d, git, 6, 1350)
 vpc_productiva(d, 'VPC Preproducción · 10.102.0.0/16 · topología de Producción', ecr)
-d.group('Sitio on-premise emulado', 'group_vpc2', '#8C4FFF', 1000, 370, 260, 130)
-emu = d.box('Misma imagen: ' + B('wms_only'), 1020, 420, 220, 50, fill='#FFFFFF')
-d.paso(5, 986, 410)
-d.edge(ecr, emu, 'exitX=0;exitY=0.5;entryX=0;entryY=0.5;', pts=((14, 498), (14, 810), (980, 810), (980, 445)))
+d.group('Sitio emulado · VPC propia', 'group_vpc2', '#8C4FFF', 1000, 370, 285, 180)
+emu = d.icon('ECS Fargate (N-04)<br>wms_only', 'fargate', 'compute', 1110, 420, lw=180)
+d.paso(5, 1076, 410)
+d.edge(ecr, emu, 'exitX=0;exitY=0.5;entryX=0;entryY=0.5;', pts=((14, 498), (14, 810), (980, 810), (980, 448)))
 d.leyenda(COMUNES + [PASO_MIGRACIONES,
                      'Despliegue azul-verde con canario en ECS Fargate y en el sitio emulado: el balanceador de aplicación privado desplaza el tráfico de forma gradual (RT-04.07)',
                      PASO_PORTALES], 850, 1180)
@@ -194,20 +194,22 @@ git, ecr = cadena(d)
 nube(d, 'Producción', 'sa-east-1 (São Paulo) · región primaria', 320, 80, 1220, 700, 940)
 portales(d, git, 6, 1350)
 vpc_productiva(d, 'VPC Producción · 10.101.0.0/16', ecr)
-d.group('VPC Hub', 'group_vpc2', '#8C4FFF', 1000, 370, 260, 150)
-tgw = d.icon('AWS Transit Gateway', 'transit_gateway', 'net', 1102, 420, lw=160)
-d.paso(7, 1068, 410)
+d.group('VPC Hub', 'group_vpc2', '#8C4FFF', 1000, 370, 290, 170)
+tgw = d.icon('AWS Transit Gateway', 'transit_gateway', 'net', 1040, 420, lw=120)
+vpn = d.icon('AWS Site-to-Site VPN', 'site_to_site_vpn', 'net', 1190, 420, lw=120)
+d.edge(tgw, vpn, R(0.5), dashed=1)
+d.paso(7, 1006, 410)
 d.group('On-premise · parte de Producción', 'group_corporate_data_center', '#7D8998', 1590, 80, 420, 700)
 sitios = [d.box(B('CD Talca') + '<br>VM-01: wms_only · VM-03: shipper', 1610, 413, 380, 70),
           d.box(B('CD Concepción') + '<br>VM-C01: wms_only · VM-C04: shipper', 1610, 543, 380, 70),
           d.box(B('Cross-docking (3)') + '<br>E-01: wms_only y shipper (Docker Compose)', 1610, 673, 380, 70)]
 d.edge(ecr, tgw, 'exitX=0;exitY=0.5;entryX=0;entryY=0.5;', dashed=1, pts=((14, 498), (14, 810), (980, 810), (980, 448)))
-for i, sid in enumerate(sitios):
-    d.edge(tgw, sid, R(0.5), dashed=1, label='VPN' if i == 0 else '')
+for sid in sitios:
+    d.edge(vpn, sid, R(0.5), dashed=1)
 d.leyenda(COMUNES + [PASO_MIGRACIONES,
                      'Despliegue azul-verde con canario en ECS Fargate: el balanceador de aplicación privado desplaza el tráfico de forma gradual; paso automático, sin intervención manual (RT-04.06, RT-04.07)',
                      PASO_PORTALES,
-                     'Sitios on-premise: descarga de la misma imagen desde ECR por la VPN (VPC Hub) y los endpoints de interfaz; Ansible (F-02) actualiza los contenedores, sitio por sitio'],
+                     'Sitios on-premise: descargan la misma imagen desde ECR por el Transit Gateway de la VPC Hub y la Site-to-Site VPN; Ansible (F-02) actualiza los contenedores, sitio por sitio'],
           850, 1300)
 d.save('A4_Ambiente_Produccion.drawio')
 
