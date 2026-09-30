@@ -60,19 +60,19 @@ Las figuras siguientes muestran cada uno de los cinco ambientes. Desarrollo, QA 
 
 \minititulo{Desarrollo}
 
-Desarrollo construye y prueba de forma unitaria cada cambio, con datos sintéticos o anonimizados, como muestra la Figura~\ref{fig:amb-desarrollo}.
+La Figura~\ref{fig:amb-desarrollo} muestra la secuencia de despliegue de Desarrollo: la imagen que produce la cadena de entrega se despliega en ECS Fargate con la configuración y los secretos del ambiente, y los portales se publican en S3 privado, servidos por CloudFront.
 
 \figuralafrox{1}{ambientes/amb_desarrollo}{Ambiente de Desarrollo}{fig:amb-desarrollo}
 
 \minititulo{QA}
 
-QA valida cada cambio con pruebas funcionales, de integración y de regresión automatizadas, sobre su juego de datos de prueba versionado, como muestra la Figura~\ref{fig:amb-qa}.
+QA sigue la misma secuencia en su propia cuenta y su propia VPC, con la misma imagen que recorrió Desarrollo (Figura~\ref{fig:amb-qa}).
 
 \figuralafrox{1}{ambientes/amb_qa}{Ambiente de QA}{fig:amb-qa}
 
 \minititulo{Preproducción}
 
-Preproducción ensaya la versión con la topología de Producción y el sitio on-premise emulado, como muestra la Figura~\ref{fig:amb-preproduccion}.
+En Preproducción la secuencia agrega las migraciones en Aurora y el despliegue azul-verde con canario, sobre la topología de Producción y el sitio on-premise emulado (Figura~\ref{fig:amb-preproduccion}).
 
 \begin{figure}[p]
   \centering
@@ -86,7 +86,7 @@ Preproducción ensaya la versión con la topología de Producción y el sitio on
 
 \minititulo{Producción}
 
-Producción opera en varias zonas, junto con los sitios on-premise, y en ella ocurre la marcha blanca de cada etapa, como muestra la Figura~\ref{fig:amb-produccion}.
+En Producción la misma secuencia se ejecuta de forma automática y llega además a los sitios on-premise a través de la VPC Hub, sitio por sitio (Figura~\ref{fig:amb-produccion}).
 
 \begin{figure}[p]
   \centering
@@ -100,7 +100,7 @@ Producción opera en varias zonas, junto con los sitios on-premise, y en ella oc
 
 \minititulo{Recuperación ante Desastres}
 
-Recuperación ante Desastres tiene dos sitios, uno por dominio: la región us-east-1 para la nube y el CD Concepción para el on-premise, como muestra la Figura~\ref{fig:amb-recuperacion}.
+Recuperación ante Desastres tiene dos sitios, uno por dominio: en la región us-east-1, la réplica reducida recibe cada versión liberada en Producción; en el on-premise, el CD Concepción promueve su WMS con la misma imagen si se pierde Talca (Figura~\ref{fig:amb-recuperacion}).
 
 \figuralafrox{1}{ambientes/amb_recuperacion}{Ambiente de Recuperación ante Desastres}{fig:amb-recuperacion}
 
