@@ -65,11 +65,11 @@ Las capas 7 y 8 atraviesan las demás; no duplican reglas de negocio.
 
 La arquitectura se presenta primero mediante su vista general completa (Figura Figura 4.1) y después mediante una síntesis de sus ocho capas (Figura Figura 4.2). Ambas vistas se complementan para relacionar las funciones de negocio con los componentes que las sostienen.
 
-![Vista general completa de la arquitectura lógica](<../../../Diagramas/arquitectura_logica_actual/cambios laravel/ARQL-01_Vision_general_consolidada.pdf>)
+![Vista general completa de la arquitectura lógica](<../../../Diagramas/arquitectura_logica_actual/cambios laravel/ARQL-01_Vision_general.png>)
 
 *Vista general completa de la arquitectura lógica*
 
-*Fuente: adaptación y consolidación del modelo general aportado por Tomás Pérez; LafroX.*
+*Fuente: diagrama general aportado por Tomás Pérez; LafroX.*
 
 La vista general muestra cómo cada actor accede a la solución desde su aplicación, portal o consola y se relaciona con los módulos M1–M12. Se lee desde las personas hacia las reglas de negocio, las integraciones y los datos, distinguiendo los componentes de nube y los del sitio. Las conexiones representan intercambios sujetos a autorización, no acceso directo a las bases de datos. Seguridad y observabilidad acompañan todo el recorrido; sus controles y las condiciones de operación sin conexión se desarrollan en los apartados siguientes.
 
@@ -83,6 +83,16 @@ La vista resumida destaca la responsabilidad de cada capa: presentación captura
 
 #### 4.1.21.1 Capa de presentación
 
+La Figura Figura 4.3 presenta las responsabilidades de esta capa.
+
+![Presentación: aplicaciones y superficies de trabajo](<../../../Diagramas/arquitectura_logica_actual/capas_recortes/ARQL-21_Recorte_Presentacion.png>)
+
+*Presentación: aplicaciones y superficies de trabajo*
+
+*Fuente: recorte por capa del diagrama general aportado por Tomás Pérez; LafroX.*
+
+Las aplicaciones móviles conservan las capturas pendientes; los portales y consolas consultan sus dominios mediante APIs autorizadas. El dispositivo y la pantalla no sustituyen la identidad ni los permisos de la persona.
+
 La capa de presentación reúne las herramientas que utiliza cada persona para trabajar: aplicaciones móviles que pueden operar sin conexión y portales web servidos desde la nube. Preventistas, conductores y preparadores capturan hechos operativos; clientes, transportistas y proveedores consultan únicamente sus datos autorizados; Calidad, gerencias, planificación y TI toman decisiones desde consolas especializadas. Los permisos se asignan mediante una matriz de roles y atributos: un perfil de interacción no implica por sí solo acceso a todas las funciones del módulo.
 
 Las aplicaciones de campo (preventa y reparto) se construyen en Kotlin nativo para Android, decisión alineada con el ecosistema del parque de dispositivos Zebra (EC55, TC58e, MC9400) desplegado en los centros de distribución y con las condiciones de operación del terreno. La app de preventa mantiene una foto local de datos de lectura (stock, precios, crédito, promociones) y captura local de eventos (pedidos, identificadores únicos UUID); la app de reparto gestiona la entrega, la prueba de entrega digital (POD con firma, código QR y fotografía), la cobranza en ruta y el control de envases retornables. Ambas aplicaciones operan con datos locales cifrados y sincronizan de forma idempotente por medio del API Gateway cuando se recupera la conectividad.
@@ -95,6 +105,16 @@ Las consolas de rutas, calidad, BI y administración TI acceden a sus dominios m
 
 #### 4.1.21.2 Capa de borde y exposición (Capa 2)
 
+La Figura Figura 4.4 presenta las responsabilidades de esta capa.
+
+![Borde: entradas públicas, privadas y locales](<../../../Diagramas/arquitectura_logica_actual/capas_recortes/ARQL-22_Recorte_Borde.png>)
+
+*Borde: entradas públicas, privadas y locales*
+
+*Fuente: recorte por capa del diagrama general aportado por Tomás Pérez; LafroX.*
+
+La entrada pública protege las APIs y rechaza el acceso directo a su origen. El acceso local sostiene la bodega sin WAN; Greengrass procesa los sensores de cámara, mientras AS2 conserva una superficie B2B distinta.
+
 La capa de borde delimita la entrada pública y la entrada de dispositivos de terreno y bodega, donde la conectividad es intermitente. Define las siguientes responsabilidades; su despliegue se especifica en 4.2:
 
   - **CDN (Amazon CloudFront).** Entrada pública de portales externos y APIs de negocio: distribuye contenido estático y encamina las rutas `/v1` y `/sync/v1` al API Gateway. El acceso directo al origen de esas APIs debe rechazarse y probarse. Las consolas internas usan acceso privado verificado; el transporte AS2 tiene una superficie separada, restringida a contrapartes registradas.
@@ -105,13 +125,23 @@ La capa de borde delimita la entrada pública y la entrada de dispositivos de te
 
 #### 4.1.21.3 Capa de puerta de enlace de servicios (Capa 3)
 
+La Figura Figura 4.5 presenta las responsabilidades de esta capa.
+
+![Puertas de servicio: recorrido central y local](<../../../Diagramas/arquitectura_logica_actual/capas_recortes/ARQL-23_Recorte_Puertas.png>)
+
+*Puertas de servicio: recorrido central y local*
+
+*Fuente: recorte por capa del diagrama general aportado por Tomás Pérez; LafroX.*
+
+El recorrido central valida la identidad y entrega solicitudes a servicios privados. La puerta local atiende al HHT dentro del sitio, sin invocar el Gateway remoto durante un corte; ambos recorridos conservan validación, idempotencia y auditoría.
+
 Amazon API Gateway concentra la publicación de servicios detrás de la entrada pública de CloudFront. El diseño requiere validar la identidad emitida por Keycloak, controlar esquema, cuotas y tasa de solicitudes, y propagar un `transaction_id`. Se selecciona REST API con authorizer REQUEST que verifica firma, emisor, audiencia, expiración y alcance del JWT de Keycloak. Las operaciones sensibles no reutilizan autorizaciones almacenadas; el módulo verifica además recurso y revocación conocida. La integración privada usa VPC Link V2 hacia ALB; la validación básica de Gateway se complementa con el esquema completo en Laravel (AWS, s. f.-a, s. f.-b, s. f.-c; Anexo 4.1-O, ADR-13). El recorrido físico y el bloqueo efectivo del acceso directo al origen se deben comprobar en 4.2.
 
 La capa publica dos conjuntos de APIs: las de negocio (`/v1`) y las de sincronización offline (`/sync/v1`). El Gateway aplica los controles de entrada y enruta las solicitudes. El servicio de negocio valida el contenido y garantiza la idempotencia de cada escritura mediante su UUID, una ventana de deduplicación documentada y el registro persistente del resultado (RT-02.06).
 
 El ingreso por API Gateway corresponde a los servicios en nube. Durante una interrupción del enlace, la bodega utiliza los servicios de su sitio sin depender del Gateway remoto. Los terminales sin cobertura conservan sus eventos y los entregan al servicio local cuando recuperan comunicación; la reconciliación con la nube ocurre al restablecerse el enlace externo. Los contratos y las reglas de validación se mantienen en ambos recorridos.
 
-La bodega dispone además de una puerta de API *local* como función del motor WMS A-01, en VM-01, VM-C01 y E-01, acotada a la red del sitio y a M1, M2, M5 y la función local de bloqueo de M9. Los 120 terminales no llaman a Amazon API Gateway durante un corte: el verificador local valida la autorización de turno y esta función aplica esquema, límites de tasa, tamaño de carga, UUID y registro de auditoría antes de entregar una orden al módulo correspondiente. Este control no publica una segunda entrada en internet ni emite identidades nuevas. La Figura Figura 4.3 separa los dos recorridos y muestra cómo se conserva el trabajo hasta la reconexión.
+La bodega dispone además de una puerta de API *local* como función del motor WMS A-01, en VM-01, VM-C01 y E-01, acotada a la red del sitio y a M1, M2, M5 y la función local de bloqueo de M9. Los 120 terminales no llaman a Amazon API Gateway durante un corte: el verificador local valida la autorización de turno y esta función aplica esquema, límites de tasa, tamaño de carga, UUID y registro de auditoría antes de entregar una orden al módulo correspondiente. Este control no publica una segunda entrada en internet ni emite identidades nuevas. La Figura Figura 4.6 separa los dos recorridos y muestra cómo se conserva el trabajo hasta la reconexión.
 
 ![Identidad y puerta de API local durante un corte de 24 horas](<../../../Diagramas/arquitectura_logica_actual/ARQL-17_Acceso_local_24h.png>)
 
@@ -123,6 +153,16 @@ El manifiesto de turno firmado por Keycloak llega antes del corte; en cada relev
 
 #### 4.1.21.4 Capa de lógica de negocio (Capa 4)
 
+La Figura Figura 4.7 presenta las responsabilidades de esta capa.
+
+![Negocio: monolito modular Laravel y sus doce módulos](<../../../Diagramas/arquitectura_logica_actual/capas_recortes/ARQL-24_Recorte_Negocio.png>)
+
+*Negocio: monolito modular Laravel y sus doce módulos*
+
+*Fuente: recorte por capa del diagrama general aportado por Tomás Pérez; LafroX.*
+
+El recorte reúne los doce módulos de negocio y sus funciones principales, junto con las tecnologías del backend y los sistemas externos con los que se relacionan. Los límites e intercambios de cada contexto se desarrollan en los apartados siguientes.
+
 La capa de servicios de negocio reúne M1–M12 en un monolito modular Laravel. Cada contexto separa `Domain`, `Application`, `Infrastructure` y `Http` bajo un espacio de nombres PSR-4. Los controladores reciben y validan solicitudes; los servicios de aplicación coordinan casos de uso; el dominio decide reservas, bloqueos y rendiciones; los adaptadores traducen persistencia e integraciones. Los módulos se llaman mediante interfaces públicas o eventos versionados: no acceden a las tablas privadas de otro contexto ni importan sus modelos de persistencia. Los proveedores de servicios registran esas interfaces en el contenedor y una prueba de dependencias impide invertir las fronteras. Así, compartir proceso no confunde la propiedad de cada decisión (RT-02.05).
 
 La misma versión del artefacto Laravel ejecuta perfiles separados: API central, WMS local limitado a M1/M2/M5 y bloqueo M9, consumidores de SQS, adaptador AMQP y reglas comerciales EDI de M11. El transporte OpenAS2 es un componente independiente: verifica certificados, firma, cifrado y acuses MDN antes de entregar el mensaje a M11; no ejecuta reglas comerciales ni escribe en el ERP. Cada perfil dispone de cola, concurrencia, permisos y métricas propios. El planificador de tareas tiene una sola autoridad por ambiente. Esta separación permite escalar y reiniciar sincronización, EDI y telemetría sin multiplicar el monolito completo (RT-02.02).
@@ -130,6 +170,16 @@ La misma versión del artefacto Laravel ejecuta perfiles separados: API central,
 Los módulos evitan estado durable en memoria y pueden crecer por réplicas o por trabajadores independientes, según la demanda. Los umbrales, límites de capacidad, emplazamiento y costos se especifican en 4.2 y en la oferta económica.
 
 #### 4.1.21.5 Capa de integración y eventos (Capa 5)
+
+La Figura Figura 4.8 presenta las responsabilidades de esta capa.
+
+![Integración: continuidad local y contratos con terceros](<../../../Diagramas/arquitectura_logica_actual/capas_recortes/ARQL-25_Recorte_Integracion.png>)
+
+*Integración: continuidad local y contratos con terceros*
+
+*Fuente: recorte por capa del diagrama general aportado por Tomás Pérez; LafroX.*
+
+El sitio conserva los eventos hasta confirmar su publicación y el consumidor confirma después de persistir. La ACL concentra el acceso al ERP, único emisor tributario; el hub EDI traduce contratos comerciales y las excepciones permanecen trazables.
 
 La capa de integración conecta la nueva operación con sistemas que Puelche ya utiliza. Sus límites son especialmente importantes ante el ERP de 2017 sin interfaces documentadas y el WMS de 2013. También concentra el intercambio con cadenas del canal moderno, los servicios de pago, los mapas y la telemetría, de modo que un cambio externo no obligue a modificar cada módulo de negocio.
 
@@ -155,7 +205,7 @@ Los esquemas AsyncAPI 2.6 versionados por evento se gobiernan desde el Catálogo
 
 M3 coordina de manera síncrona la confirmación de un pedido y solicita a M2 una reserva: necesita una respuesta única y visible para el preventista. Cuando el pedido queda confirmado, publica `PedidoConfirmado`; M5, M4 y M10 reaccionan cada uno a ese hecho mediante su propio consumidor. Esa coreografía evita que M3 conozca el horario de preparación o el esquema analítico. La publicación se registra junto con el cambio de estado mediante una bandeja transaccional de salida (*outbox*); el consumidor confirma su progreso solo después de persistir su resultado. Si falla un consumidor, la cola reintenta y termina en una bandeja de excepción, sin deshacer a ciegas el pedido ya confirmado.
 
-El despacho tiene una coordinación distinta: M5 no libera la carga hasta recibir el resultado de M9 sobre el lote y la guía emitida por el ERP a través de la ACL. Una excursión térmica bloquea localmente la salida aun con el enlace caído; solo Calidad puede liberar el lote tras evaluación registrada. El conductor informa la incidencia y conserva la carga, pero no aprueba su liberación sanitaria. Las Figuras Figura 4.4 y Figura 4.5 recorren el pedido con y sin conexión y hacen visible dónde cambia una captura pendiente a una operación confirmada.
+El despacho tiene una coordinación distinta: M5 no libera la carga hasta recibir el resultado de M9 sobre el lote y la guía emitida por el ERP a través de la ACL. Una excursión térmica bloquea localmente la salida aun con el enlace caído; solo Calidad puede liberar el lote tras evaluación registrada. El conductor informa la incidencia y conserva la carga, pero no aprueba su liberación sanitaria. Las Figuras Figura 4.9 y Figura 4.10 recorren el pedido con y sin conexión y hacen visible dónde cambia una captura pendiente a una operación confirmada.
 
 ![Secuencia lógica del pedido con conexión](<../../../Diagramas/arquitectura_logica_actual/ARQL-15_Pedido_con_conexion.png>)
 
@@ -222,6 +272,16 @@ El procesamiento por lotes conserva totales y rechazos sin bloquear la operació
 
 #### 4.1.21.6 Capa de acceso a datos (Capa 6)
 
+La Figura Figura 4.11 presenta las responsabilidades de esta capa.
+
+![Datos: propiedad y persistencia híbrida](<../../../Diagramas/arquitectura_logica_actual/capas_recortes/ARQL-26_Recorte_Datos.png>)
+
+*Datos: propiedad y persistencia híbrida*
+
+*Fuente: recorte por capa del diagrama general aportado por Tomás Pérez; LafroX.*
+
+El sitio conserva la autoridad de bodega y el dispositivo mantiene sus capturas hasta recibir confirmación durable. Los servicios centrales separan transacciones, caché, documentos y analítica; ninguna consulta de BI debe competir con el despacho.
+
 La capa de datos distingue quién conserva la información operativa, quién la consolida y quién la consulta para análisis. Esta separación permite que la bodega siga trabajando sin enlace externo y que las consultas gerenciales no compitan con el despacho. Los dominios de información asumen las siguientes responsabilidades:
 
 En la operación local:
@@ -241,6 +301,16 @@ La separación transaccional/analítica es estricta: la analítica no lee del tr
 Cada evento conserva identidad, estado y resultado hasta recibir confirmación durable. DMS replica el WMS de Talca hacia un esquema de lectura; no escribe en las tablas de negocio centrales. Los consumidores de eventos actualizan estas últimas con deduplicación transaccional por sitio y UUID. Concepción y los cross-docking sincronizan sus eventos sin presumir un flujo DMS propio. Durante un corte cada sitio retiene sus cambios dentro de una capacidad comprobada para 24 horas. Esta retención no acredita el RPO ante destrucción del origen: se exige protección durable fuera de su dominio de falla y la prueba del Anexo 4.1-M. El esquema 3-2-1-1-0, los medios de respaldo y la restauración se desarrollan en 4.2.
 
 #### 4.1.21.7 Capa de seguridad transversal (Capa 7)
+
+La Figura Figura 4.12 presenta las responsabilidades de esta capa.
+
+![Seguridad: identidad y autorización transversal](<../../../Diagramas/arquitectura_logica_actual/capas_recortes/ARQL-27_Recorte_Seguridad.png>)
+
+*Seguridad: identidad y autorización transversal*
+
+*Fuente: recorte por capa del diagrama general aportado por Tomás Pérez; LafroX.*
+
+Keycloak emite la identidad y cada módulo decide la autorización sobre su recurso. Sin enlace, el verificador usa permisos de turno previamente firmados; el cifrado y la auditoría protegen los datos y decisiones a lo largo de todas las capas.
 
 La seguridad atraviesa las ocho capas. Su unidad de decisión no es la red desde la que llega una solicitud, sino el sujeto, el recurso, la acción y el contexto del turno. Keycloak conserva la autoridad de identidad; el servicio dueño del recurso conserva la decisión de autorización. Esta separación evita que un token válido permita, por sí solo, liberar una carga, consultar crédito o modificar una regla de calidad (PUCV, 2026b, caps. 11–12, pp. 23–26; RT-11.01 y RT-12.05; National Institute of Standards and Technology [NIST], 2020).
 
@@ -290,6 +360,16 @@ Cada decisión de acceso y cada acción crítica conserva sujeto, empresa si apl
 La aceptación de esta vista requiere una prueba de acceso denegado por rol y atributo, una de cifrado de campo con lectura administrativa sin texto claro, una de continuidad y relevo offline, una de revocación al reconectar y una de correlación de un evento de negocio con su alerta de seguridad. Se distinguen dos objetivos de disponibilidad: 99,95 % mensual para la infraestructura del recinto y al menos 99,9 % mensual para el servicio de negocio de extremo a extremo. Ninguno elimina la exigencia de continuidad durante el despacho de 05:30 a 07:00.
 
 #### 4.1.21.8 Capa de observabilidad transversal (Capa 8)
+
+La Figura Figura 4.13 presenta las responsabilidades de esta capa.
+
+![Observabilidad: correlación de nube y sitios](<../../../Diagramas/arquitectura_logica_actual/capas_recortes/ARQL-28_Recorte_Observabilidad.png>)
+
+*Observabilidad: correlación de nube y sitios*
+
+*Fuente: recorte por capa del diagrama general aportado por Tomás Pérez; LafroX.*
+
+La correlación permite seguir una operación entre APIs, módulos y consumidores. Durante el corte, el sitio conserva telemetría y mantiene sus alarmas; CloudWatch reúne registros, métricas y trazas para los tableros y la atención de incidentes.
 
 La observabilidad debe ayudar al equipo a responder preguntas operativas: qué pedido quedó pendiente, dónde se interrumpió una integración y qué entregas pueden verse afectadas. Para ello reúne métricas, registros y trazas de nube y sitios locales en una misma plataforma (RT-03.16 y Art. 16.4).
 
@@ -422,7 +502,7 @@ Las entidades principales son:
   - **Envase retornable.** Canastillo o pallet, cliente, saldo y pérdida estimada del 14% anual (Decisión 16.1 N° 10). Control por cuenta corriente por cliente, no por unidad identificada.
   - **Sensor / registro térmico.** Dispositivo, lote o posición, temperatura y excursión térmica.
 
-La Figura Figura 4.6 dibuja las relaciones mínimas necesarias para responder dos preguntas del caso: de qué lote provino una unidad entregada y a qué clientes llegó un lote que debe retirarse. No pretende ser el diccionario de datos del capítulo 5.
+La Figura Figura 4.14 dibuja las relaciones mínimas necesarias para responder dos preguntas del caso: de qué lote provino una unidad entregada y a qué clientes llegó un lote que debe retirarse. No pretende ser el diccionario de datos del capítulo 5.
 
 ![Modelo conceptual del pedido, el lote y la entrega](<../../../Diagramas/arquitectura_logica_actual/ARQL-18_Dominio_trazabilidad.png>)
 

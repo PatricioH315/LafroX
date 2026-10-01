@@ -1,0 +1,143 @@
+{
+  "fuente": "Diagramas/arquitectura_logica_actual/cambios laravel/ARQL-01_Vision_general.png",
+  "sha256Fuente": "2de9ec88c51e63305e5bdb2ab1e05340b50d0d22afe6441d0a8d04c54a83b7f5",
+  "dimensionesOriginales": [
+    3172,
+    2846
+  ],
+  "vistaPreliminar": [
+    1664,
+    1493
+  ],
+  "recortes": [
+    {
+      "file": "ARQL-21_Recorte_Presentacion.png",
+      "preview": [
+        0,
+        0,
+        1020,
+        260
+      ],
+      "original": {
+        "left": 0,
+        "top": 0,
+        "width": 1945,
+        "height": 496
+      },
+      "sha256": "2693dcb5c0f7d7bcec6a6e19e672bcb759ee011722e63f2f90b4af1881c4dc47"
+    },
+    {
+      "file": "ARQL-22_Recorte_Borde.png",
+      "preview": [
+        90,
+        280,
+        930,
+        96
+      ],
+      "original": {
+        "left": 171,
+        "top": 533,
+        "width": 1774,
+        "height": 184
+      },
+      "sha256": "7c507d482d1b42a7862781fce9a811eeebe6645fb505fb85f2eda8bfc5161017"
+    },
+    {
+      "file": "ARQL-23_Recorte_Puertas.png",
+      "preview": [
+        300,
+        404,
+        660,
+        55
+      ],
+      "original": {
+        "left": 571,
+        "top": 770,
+        "width": 1259,
+        "height": 105
+      },
+      "sha256": "2cd57182cfff0716028766043141731f1641636386ea7a4b2103c8b2d15c5278"
+    },
+    {
+      "file": "ARQL-24_Recorte_Negocio.png",
+      "preview": [
+        25,
+        521,
+        1605,
+        180
+      ],
+      "original": {
+        "left": 47,
+        "top": 993,
+        "width": 3061,
+        "height": 344
+      },
+      "sha256": "dc848744f6ac2b98168d6ba72322de232e818a033e71111ccd94e1a93ec5faa7"
+    },
+    {
+      "file": "ARQL-25_Recorte_Integracion.png",
+      "preview": [
+        90,
+        703,
+        1245,
+        106
+      ],
+      "original": {
+        "left": 171,
+        "top": 1340,
+        "width": 2374,
+        "height": 203
+      },
+      "sha256": "ce0cfc5de322f8c616649029c75caba23402deb5c9c06b37f62adc32590f98f6"
+    },
+    {
+      "file": "ARQL-26_Recorte_Datos.png",
+      "preview": [
+        180,
+        850,
+        900,
+        385
+      ],
+      "original": {
+        "left": 343,
+        "top": 1620,
+        "width": 1716,
+        "height": 735
+      },
+      "sha256": "a59ce2406223a76ee407ff76447999e54500f60c6882485395a4e7b82afdc7e0"
+    },
+    {
+      "file": "ARQL-27_Recorte_Seguridad.png",
+      "preview": [
+        215,
+        1270,
+        815,
+        103
+      ],
+      "original": {
+        "left": 409,
+        "top": 2420,
+        "width": 1555,
+        "height": 198
+      },
+      "sha256": "eb37a66d715856b9428d24f324450068406f19c0f07d6c009fb040676f0f7629"
+    },
+    {
+      "file": "ARQL-28_Recorte_Observabilidad.png",
+      "preview": [
+        215,
+        1394,
+        815,
+        99
+      ],
+      "original": {
+        "left": 409,
+        "top": 2657,
+        "width": 1555,
+        "height": 189
+      },
+      "sha256": "1dd730e504119ce4b2033c4c5aad2ecf4b3414e4132d31bb8597bd093a332e09"
+    }
+  ],
+  "contenidoOriginalPreservado": true
+}
