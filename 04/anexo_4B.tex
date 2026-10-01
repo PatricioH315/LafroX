@@ -1,0 +1,31 @@
+\makeatletter
+\def\input@path{{../00/plantilla/fisica/}}
+\makeatother
+%% ============================================================================
+%%  LAFROX-Subdocumento4-Anexos.tex
+%%
+%%  Anexo 4.B: Memoria de cálculo del dimensionamiento.
+%%  Archivo propio del Subdocumento 4, separado del cuerpo de arquitectura.
+%% ============================================================================
+\documentclass[carta,firma]{lafrox}
+
+\makeatletter
+\@removefromreset{table}{chapter}
+\@removefromreset{figure}{chapter}
+\makeatother
+\renewcommand{\thetable}{\arabic{table}}
+\renewcommand{\thefigure}{\arabic{figure}}
+
+\datoslafrox{
+  documento  = Propuesta Técnica,
+  subtitulo  = Anexo 4.B --- Memoria de cálculo del dimensionamiento,
+  alcance    = {Subdocumento 4 --- Anexos},
+  formulario = {Anexo 4.B},
+  fecha      = 05 de octubre de 2026,
+  version    = 2.0,
+}
+
+\begin{document}
+\portadalafrox
+\input{anexos/fisica/16_anexo_4b_memoria_calculo}
+\end{document}

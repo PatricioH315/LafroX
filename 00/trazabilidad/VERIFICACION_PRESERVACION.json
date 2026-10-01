@@ -1,0 +1,26 @@
+{
+  "rama": "rama-latex",
+  "commits": {
+    "logica": "e55133c2f91806af03f393776256a2feea23faa7",
+    "fisica": "5c5e27059675651dc26f8028ffbaa310950558b0"
+  },
+  "raiz": [
+    "00",
+    "04"
+  ],
+  "archivosOriginalesComprobados": 113,
+  "copiasExactas": 99,
+  "fragmentosTecnicosPreservados": 63,
+  "fragmentosConSoloRutasDeFigurasAdaptadas": 8,
+  "categorias": {
+    "cuerpo_4.1": 24,
+    "anexos_4.1": 26,
+    "cuerpo_4.2": 7,
+    "cuerpo_4.3": 2,
+    "complemento_fisico": 2,
+    "formulario_T11": 1,
+    "anexo_4.B": 1
+  },
+  "rutasDeFigurasComprobadas": 26,
+  "contenidoTecnicoAlterado": false
+}

@@ -1,0 +1,44 @@
+\makeatletter
+\def\input@path{{../00/plantilla/fisica/}}
+\makeatother
+%% ============================================================================
+%%  LAFROX-Formulario-T-11.tex
+%%
+%%  Formulario T-11: Especificaciones técnicas ofertadas. Archivo propio, separado
+%%  del Subdocumento 4 (aclaraciones, sección 1: un formulario por archivo).
+%%  Se compila por sí solo:  latexmk LAFROX-Formulario-T-11.tex
+%%  El cuerpo está en 04_arquitectura_fisica/partes/15_anexo_t11.tex.
+%%
+%%  Columnas oficiales (Bases Administrativas, Formulario T-11): Componente |
+%%  Producto / servicio ofertado | Ubicación / Lugar | Cantidad | Justificación.
+%%  Sin precios (Art. 50.2).
+%% ============================================================================
+\documentclass[carta,firma]{lafrox}
+
+\makeatletter
+\@removefromreset{table}{chapter}
+\makeatother
+\renewcommand{\thetable}{\arabic{table}}
+
+% Tablas sin palabras cortadas (aclaraciones, sección 5).
+\let\LFXcuerpotablaorig\LFXcuerpotabla
+\renewcommand{\LFXcuerpotabla}{%
+  \LFXcuerpotablaorig\hyphenpenalty=10000\exhyphenpenalty=10000\relax}
+
+\datoslafrox{
+  documento  = Propuesta Técnica,
+  subtitulo  = Formulario T-11 --- Especificaciones técnicas ofertadas,
+  alcance    = {Subdocumento 4 --- Arquitectura lógica y física de la solución},
+  formulario = {Formulario T-11},
+  fecha      = 05 de octubre de 2026,
+  version    = 2.0,
+}
+
+\begin{document}
+\portadalafrox
+
+% El cuerpo del formulario vive en 04_arquitectura_fisica/partes/15_anexo_t11.tex,
+% que también se incluye al final del subdocumento (main.tex). Se edita solo ahí.
+\input{formularios/T11/15_anexo_t11}
+
+\end{document}

@@ -1,0 +1,37 @@
+\subsection{Modelo de datos conceptual}
+
+El modelo de datos de la solución se fundamenta en un conjunto de entidades de negocio canónicas, sus relaciones y eventos, conforme a RT-02.13. Este modelo alimenta la matriz de trazabilidad del Capítulo 17.1 y los contratos de integración (OpenAPI 3.1 y AsyncAPI 2.6 por módulo).
+
+Las entidades principales son:
+
+\begin{itemize}
+  \item \textbf{Cliente.} Con RUT, razón social, canal (tradicional, food service, cadenas), crédito, georreferencia y estado de bloqueo. Eventos: creación, actualización y cambio de bloqueo.
+  \item \textbf{Pedido.} Identificador UUID, preventista, cliente, líneas de detalle (SKU, cantidad, precio) y ciclo de vida (tomado $\rightarrow$ confirmado $\rightarrow$ preparado $\rightarrow$ despachado $\rightarrow$ entregado $\rightarrow$ rendido). Eventos: toma, confirmación, asignación de línea, despacho y evidencia de entrega.
+  \item \textbf{SKU / Producto.} Con codificación GTIN/GS1, unidad, clasificación de temperatura, rangos térmicos (RF-09.01) y vida útil.
+  \item \textbf{Lote.} Unidad de trazabilidad sanitaria identificada por GTIN y número de lote del proveedor, con vencimiento como atributo asociado. Cada movimiento interno la vincula con su unidad logística SSCC. Eventos: recepción, bloqueo, inicio de retiro sanitario y enlace con unidad logística.
+  \item \textbf{Misión de preparación.} HHT, oleada, ubicación, unidades y ciclo de vida (descargada $\rightarrow$ ejecutada $\rightarrow$ cerrada).
+  \item \textbf{Ruta / viaje.} Planificador, vehículo, conductor, ventanas, secuencia de entregas y geocercas.
+  \item \textbf{Entrega.} Pedido, viaje, prueba de entrega (POD: firma, QR, fotografía), documentos DTE y efectivo. Eventos: evidencia, reintento y aprobación de rendición.
+  \item \textbf{Documento tributario.} Factura, boleta, guía de despacho, folio del SII y acuse.
+  \item \textbf{Envase retornable.} Canastillo o pallet, cliente, saldo y pérdida estimada del 14\% anual (Decisión 16.1 N\textdegree{} 10). Control por cuenta corriente por cliente, no por unidad identificada.
+  \item \textbf{Sensor / registro térmico.} Dispositivo, lote o posición, temperatura y excursión térmica.
+\end{itemize}
+
+La Figura~\ref{fig:arql-18} dibuja las relaciones mínimas necesarias para responder dos preguntas del caso: de qué lote provino una unidad entregada y a qué clientes llegó un lote que debe retirarse. No pretende ser el diccionario de datos del capítulo 5.
+
+\begin{anexohorizontal}
+\begin{center}
+  \includegraphics[width=0.96\linewidth,height=0.67\textheight,keepaspectratio]{figuras/logica/ARQL-18_Dominio_trazabilidad.png}
+  \captionof{figure}{Modelo conceptual del pedido, el lote y la entrega}
+  \label{fig:arql-18}
+\end{center}
+
+{\footnotesize Fuente: elaboración propia de LafroX.\par}
+
+La línea de pedido se asigna a un lote identificado por GTIN y lote del proveedor; los movimientos con SSCC conservan la cadena de custodia hasta la entrega. La entrega vincula la evidencia de recepción y el folio de la guía que el ERP emitió antes del traslado. Un pedido aún puede no tener entrega, y una entrega puede registrar más de una evidencia o un rechazo parcial: esas cardinalidades y estados se concretan en el capítulo 5 sin perder el identificador de origen.
+\end{anexohorizontal}
+
+Los eventos usan verbos en pasado y son la base de los esquemas AsyncAPI. Toda escritura offline es idempotente por UUID (RT-02.06).
+
+El almacenamiento se distribuye en quince dominios lógicos: BD\_INVENTARIO, BD\_PREVENTA, BD\_RUTAS (PostGIS), BD\_PREPARACION, BD\_REPARTO, BD\_COBRANZA\_FINANZAS, BD\_MAESTROS\_CONF, BD\_GOBIERNO\_ACCESO, BD\_CALIDAD\_TRAZABILIDAD, BD\_TELEMETRIA, BD\_EDI\_CANALMODERNO, BD\_BI\_GERENCIA, BD\_MAILS\_NOTIF, REDIS\_SESIONES\_CACHE y S3\_DOCS. El dominio de telemetría conserva la ingesta raw en DynamoDB y su serie consolidada en S3 Parquet y Redshift, procesada con Glue. Esta separación incluye bases transaccionales, almacenes analíticos, caché y objetos; no representa quince servidores físicos ni quince motores de base de datos independientes.
+

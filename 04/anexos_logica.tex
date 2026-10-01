@@ -1,0 +1,24 @@
+% !TeX program = lualatex
+% Anexos independientes del Subdocumento 4.1.
+\makeatletter
+\def\input@path{{../00/plantilla/logica/}}
+\makeatother
+\documentclass[carta,firma]{lafrox}
+\datoslafrox{
+  documento = {Propuesta Técnica},
+  subtitulo = {Anexos del Subdocumento 4.1},
+  alcance = {Arquitectura lógica},
+  formulario = {Formulario T-22},
+  fecha = {29 de septiembre de 2026},
+  version = {},
+  nomenclatura = {anexos\_4.1.pdf},
+}
+\hypersetup{pdftitle={Anexos del Subdocumento 4.1 -- Arquitectura lógica}}
+\usepackage{etoolbox}
+\renewcommand{\LFXestadodoc}{Entrega 2 · Apartado lógico}
+\patchcmd{\portadalafrox}{\LFXcampoportada{Versión}{\LFXversion}}{\LFXcampoportada{Documento}{Anexos 4.1}}{}{\PackageError{anexos41}{No se pudo ajustar la portada}{Revisar la plantilla}}
+\patchcmd{\LFXpieizquierdo}{\textperiodcentered\ v\LFXversion}{}{}{\PackageError{anexos41}{No se pudo ajustar el pie}{Revisar la plantilla}}
+\captionsetup{hypcap=false}
+\begin{document}
+\import{anexos/logica/}{contenido.tex}
+\end{document}
