@@ -1,6 +1,6 @@
 # LafroX — rama-latex
 
-Esta rama consolida exclusivamente el Subdocumento 4. Su raíz contiene las carpetas `00` y `04`, además de los metadatos internos de Git.
+Esta rama consolida exclusivamente el Subdocumento 4. Su raíz contiene las carpetas `00` y `04`, los main y su ensamblador, el script de compilación y sus resultados, además de los metadatos internos de Git.
 
 - `00`: plantillas originales y trazabilidad del traslado.
 - `04`: arquitectura lógica 4.1, física 4.2, centros de datos 4.3 y sus complementos.
@@ -9,8 +9,8 @@ La incorporación parte de `arquitectura-alvaro` (`e55133c2f91806af03f393776256a
 
 ## Archivos de trabajo
 
-- [Raíz del documento completo](../04/main.tex).
-- [Orden de incorporación](../04/contenido.tex).
+- [Raíz del documento completo](../main.tex).
+- [Orden de incorporación](../contenido.tex).
 - [Instrucciones de compilación y estructura](../04/README.md).
 - [Manifiesto y huellas de origen/destino](trazabilidad/MANIFIESTO.json).
 - [Correspondencia de archivos](trazabilidad/ORIGENES.md).

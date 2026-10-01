@@ -1,7 +1,7 @@
 %git % !TeX program = lualatex
 % Raíz de compilación del subdocumento 4.1 (arquitectura lógica).
 \makeatletter
-\def\input@path{{../00/plantilla/logica/}}
+\def\input@path{{00/plantilla/logica/}{04/}}
 \makeatother
 \documentclass[carta,firma]{lafrox}
 \datoslafrox{
@@ -19,7 +19,7 @@
 \patchcmd{\portadalafrox}{\LFXcampoportada{Versión}{\LFXversion}}{\LFXcampoportada{Documento}{4.1}}{}{\PackageError{subdoc41}{No se pudo ajustar la portada}{Revisar la plantilla}}
 \patchcmd{\LFXpieizquierdo}{\textperiodcentered\ v\LFXversion}{}{}{\PackageError{subdoc41}{No se pudo ajustar el pie}{Revisar la plantilla}}
 \captionsetup{hypcap=false}
-\graphicspath{{./}}
+\graphicspath{{04/}}
 % Índices complementarios.
 \makeatletter
 \renewcommand*{\l@figure}{\@dottedtocline{1}{1.5em}{3.2em}}
@@ -33,5 +33,5 @@
 \listalocal{Lista de tablas}{lot}
 \listalocal{Lista de figuras}{lof}
 \setcounter{chapter}{3}
-\import{partes/4.1_logica/}{contenido.tex}
+\import{04/partes/4.1_logica/}{contenido.tex}
 \end{document}

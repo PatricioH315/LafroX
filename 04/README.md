@@ -8,11 +8,14 @@ Esta carpeta reúne las fuentes vigentes de 4.1, 4.2 y 4.3. El contenido está c
 00/
   plantilla/logica/
   plantilla/fisica/
-  trazabilidad/
+ trazabilidad/
+main.tex
+main_logica.tex
+contenido.tex
+compilar.ps1
+LAFROX-Subdocumento4.pdf
+LAFROX-Subdocumento4.1.pdf
 04/
-  main.tex
-  contenido.tex
-  main_logica.tex
   anexos_logica.tex
   formulario_T11.tex
   anexo_4B.tex
@@ -33,7 +36,7 @@ El documento principal conserva el cuerpo lógico y el ensamblado físico origin
 
 ## Compilación
 
-Requiere una instalación existente de LuaLaTeX con los paquetes utilizados por las clases originales de LafroX. Abrir una terminal en esta carpeta `04` y ejecutar:
+Requiere una instalación existente de LuaLaTeX con los paquetes utilizados por las clases originales de LafroX. Abrir una terminal en la raíz del repositorio y ejecutar:
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File .\compilar.ps1
@@ -42,20 +45,20 @@ powershell -ExecutionPolicy Bypass -File .\compilar.ps1
 También puede compilarse el documento principal manualmente, dos veces o hasta estabilizar referencias:
 
 ```text
-lualatex --interaction=nonstopmode --halt-on-error --output-directory=salida --jobname=LAFROX-Subdocumento4 main.tex
+lualatex --interaction=nonstopmode --halt-on-error --jobname=LAFROX-Subdocumento4 main.tex
 ```
 
-El script crea `salida/` y compila todas las raíces con LuaLaTeX. Las salidas son:
+El script compila los dos main desde la raíz y los complementos desde `04`; crea `04/salida/` para estos últimos. Puede usarse `-SoloMain` para verificar únicamente los dos main. Las salidas relativas a la raíz del repositorio son:
 
 | Fuente | Resultado |
 | --- | --- |
-| `main.tex` | `salida/LAFROX-Subdocumento4.pdf` |
-| `main_logica.tex` | `salida/LAFROX-Subdocumento4.1.pdf` |
-| `anexos_logica.tex` | `salida/LAFROX-Subdocumento4.1-Anexos.pdf` |
-| `formulario_T11.tex` | `salida/LAFROX-Formulario-T-11.pdf` |
-| `anexo_4B.tex` | `salida/LAFROX-Anexo-4B.pdf` |
+| `main.tex` | `LAFROX-Subdocumento4.pdf` |
+| `main_logica.tex` | `LAFROX-Subdocumento4.1.pdf` |
+| `04/anexos_logica.tex` | `04/salida/LAFROX-Subdocumento4.1-Anexos.pdf` |
+| `04/formulario_T11.tex` | `04/salida/LAFROX-Formulario-T-11.pdf` |
+| `04/anexo_4B.tex` | `04/salida/LAFROX-Anexo-4B.pdf` |
 
-Compilar desde `04`, no desde su carpeta superior. `main.tex` es la entrada del proyecto integrado; las demás raíces permiten revisar o distribuir los complementos por separado.
+Compilar los main desde la raíz del repositorio. Si se compilan los complementos manualmente, hacerlo desde `04`. `main.tex` es la entrada del proyecto integrado; las demás raíces permiten revisar o distribuir los complementos por separado.
 
 ## Alcance del traslado
 

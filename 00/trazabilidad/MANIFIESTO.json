@@ -8,7 +8,13 @@
   },
   "raizPermitida": [
     "00",
-    "04"
+    "04",
+    "main.tex",
+    "main_logica.tex",
+    "contenido.tex",
+    "compilar.ps1",
+    ".gitignore",
+    "resultados asociados a main"
   ],
   "registros": [
     {
@@ -1105,11 +1111,12 @@
       "rama": "arquitectura-alvaro",
       "commit": "e55133c2f91806af03f393776256a2feea23faa7",
       "origen": "main.tex",
-      "destino": "04/main_logica.tex",
+      "destino": "main_logica.tex",
       "categoria": "raiz_independiente",
       "sha256Origen": "6e845eb860c7239ba50bfb3518301bbe96a279af92f3f95c3dbb144565a64181",
-      "sha256Destino": "b2e2c68ecd32f989870d8bd4ce8376230939cca3daa9ef6d583fc6c8771ee198",
-      "adaptado": true
+      "sha256Destino": "dc4d5de9f4d032ac03ffa304538b0f4db220e7c31f5738a5460cfc55559035ba",
+      "adaptado": true,
+      "destinoAntesDelTraslado": "04/main_logica.tex"
     },
     {
       "rama": "arquitectura-alvaro",
@@ -1191,5 +1198,6 @@
     "Raíces y metadatos de compilación",
     "Espacios de nombres PDF para evitar destinos duplicados"
   ],
-  "contenidoTecnicoAlterado": false
+  "contenidoTecnicoAlterado": false,
+  "trasladoMain": "00/trazabilidad/TRASLADO_MAIN.md"
 }

@@ -1,6 +1,6 @@
 # Reglas de trabajo de rama-latex
 
-- Esta rama contiene solo `00` y `04`. No incorporar archivos de otros subdocumentos.
+- Esta rama conserva las carpetas `00` y `04`; por instrucción del usuario, los main, su ensamblador, script y resultados se ubican en la raíz. No incorporar archivos de otros subdocumentos.
 - La etapa vigente es una consolidación estructural. No modificar textos, tablas, cifras, diagramas, anexos ni decisiones técnicas de 4.1, 4.2 y 4.3 hasta recibir una nueva instrucción.
 - Se permite ajustar rutas y ensambladores para compilar. Registrar cualquier ajuste en la trazabilidad y comprobar que no cambie el contenido técnico.
 - El contenido se edita en `partes/`, `anexos/` y `formularios/`; las raíces `.tex` solo coordinan la compilación y los metadatos.

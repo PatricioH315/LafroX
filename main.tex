@@ -1,6 +1,6 @@
 % !TeX program = lualatex
 \makeatletter
-\def\input@path{{../00/plantilla/fisica/}}
+\def\input@path{{00/plantilla/fisica/}{04/}}
 \makeatother
 \documentclass[carta,firma]{lafrox}
 \usepackage{etoolbox}
@@ -19,7 +19,7 @@
 \renewcommand{\LFXestadodoc}{Entrega 2}
 \patchcmd{\portadalafrox}{\LFXcampoportada{Versión}{\LFXversion}}{\LFXcampoportada{Documento}{4}}{}{}
 \patchcmd{\LFXpieizquierdo}{\textperiodcentered\ v\LFXversion}{}{}{}
-\graphicspath{{./}}
+\graphicspath{{04/}}
 \makeatletter
 % Los rótulos originales de 4.3 requieren una columna más ancha en las listas.
 \renewcommand*{\l@table}{\@dottedtocline{1}{0pt}{5em}}
