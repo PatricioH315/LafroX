@@ -10,21 +10,21 @@ El Data Center Primario concentra la operación productiva de la solución en do
 
 Esta sección declara, para cada dominio, el proveedor, la región y las zonas de disponibilidad, los servicios contratados y el sitio on-premise. También fija los objetivos de continuidad verificables que los gobiernan: disponibilidad de infraestructura de 99,95 % mensual por componente y, para los servicios críticos, RTO ≤ 4 h y RPO ≤ 15 min. Sobre estos objetivos se sostiene el compromiso contractual penalizable de ≥ 99,9 % mensual de la transacción de negocio de extremo a extremo. El desglose servicio por servicio y componente por componente se entrega en el Formulario T-11.
 
-### Proveedor
+### 4.3.1.1 Proveedor
 
 Para la nube en Amazon Web Services todos los servicios se contratan en cuentas del CLIENTE, que son organizadas bajo AWS Control Tower con una cuenta por ambiente de modo que la propiedad de los datos y de la infraestructura es del CLIENTE desde el primer día. Los criterios con que se eligieron esos servicios se explican en el apartado [4.2.3](02_b_servicios_nube.md#sec:servicios-nube). AWS satisface el requisito de presencia de región o zona en Chile o en Sudamérica con la región primaria sa-east-1. El cumplimiento de los estándares y marcos de referencia del Artículo 4.3 de las Bases Administrativas (Art. 4.3, p. 5) entre ellos ISO/IEC 27017 (nube) e ISO/IEC 27018 (datos personales en nube) se acredita en la matriz de controles ISO/IEC 27001/27002 de la arquitectura de seguridad (apartado 4.1), y no se repite en esta sección.
 
 En el dominio On-premise del CD de Talca, el caso exige cómputo, almacenamiento y procesamiento en las instalaciones del CLIENTE para sostener recepción, preparación y despacho durante un corte de enlace; ello obliga a la modalidad híbrida. Ese alcance requiere cómputo local para la continuidad de un sitio operacional sin albergar el núcleo. Por ello, el sitio adopta la tipología de **sala técnica secundaria o de sitio** del numeral 6.1 de las Bases Técnicas Transversales (Cap. 6, p. 14), con disponibilidad de infraestructura de 99,95 % y dimensionamiento proporcional al equipamiento real.
 
-### Región y zonas de disponibilidad
+### 4.3.1.2 Región y zonas de disponibilidad
 
 La región primaria de la nube es sa-east-1, ubicada en São Paulo, Brasil. Todo componente con requisito de alta disponibilidad se despliega en al menos dos zonas de disponibilidad; no se acepta un diseño en una sola zona. Aurora PostgreSQL tiene el escritor en sa-east-1a y un lector promovible en sa-east-1b. ECS Fargate, ElastiCache Redis, el balanceador de aplicación y el NAT Gateway operan entre esas mismas dos zonas con conmutación automática; DynamoDB opera Multi-AZ de forma nativa y transparente. El único componente con escritor único es la base de datos, que conmuta de forma automática entre las zonas. Este diseño sostiene el compromiso de extremo a extremo de ≥ 99,9 % mensual de la transacción crítica y la conmutación se verifica en las pruebas de resiliencia por inyección de fallas de la arquitectura de despliegue.
 
-### Servicios contratados en la región primaria
+### 4.3.1.3 Servicios contratados en la región primaria
 
 Los servicios contratados en la región primaria son los que agrupa por función la Tabla [5](#tab:servicios-nube) del apartado [4.2.3](02_b_servicios_nube.md#sec:servicios-nube). En esta región se concentran la operación productiva, la analítica y los servicios de detección, cumplimiento y gobierno; todos son servicios administrados, de modo que la solución no opera servidores en la nube.
 
-### Sitio on-premise: CD Talca (sala técnica secundaria)
+### 4.3.1.4 Sitio on-premise: CD Talca (sala técnica secundaria)
 
 El caso fija para el CD de Talca una sala técnica secundaria “dimensionada para sostener recepción, preparación y despacho durante un corte”, y advierte que la sala actual de 25 m<sup>2</sup> no cumple el Capítulo 6 de las Bases Técnicas Transversales (p. 14). Conforme a la tipología del numeral 6.1 de las Bases Técnicas Transversales (Cap. 6, p. 14), no se aplica íntegramente a este sitio el conjunto de exigencias de una sala técnica principal, sino el subconjunto dimensionado al sitio: energía, climatización, control de acceso, detección de incendio y monitoreo. El numeral 6.1 de las Bases Técnicas Transversales (Cap. 6, p. 14) exige declarar la tipología y justificar el dimensionamiento, y advierte que “sobredimensionar el recinto es tan penalizado como subdimensionarlo: ambos revelan que el cálculo de capacidad no se hizo”. El equipamiento real que la sala debe alojar y los cálculos eléctrico y térmico desarrollados a continuación determinan su superficie proyectada, que se fija en el plano de distribución interna (Figura [15](05_d_sitio_principal.md#fig:recinto-talca)).
 
@@ -71,7 +71,7 @@ Para el cálculo de carga eléctrica la carga se proyecta sobre los equipos que 
 El cálculo eléctrico sigue estos pasos:
 
 1. Potencia aparente y UPS: con factor de potencia 0,95, 7,0 kW $$ 0,95 ≈ 7,4 kVA; al 80 % de utilización, 7,4 kVA $$ 0,8 ≈ 9,2 kVA. El UPS seleccionado es modular de 10 kVA, de doble conversión on-line, en configuración N+1 y con bypass de mantenimiento.
-2. PUE: la carga TI de 7,0 kW, la climatización de precisión de ≈ 2,3 kW, la iluminación y apoyo de ≈ 0,6 kW y las pérdidas de conversión del UPS de ≈ 0,55 kW suman ≈ 10,4 kW; 10,4 $$ 7,0 ≈ 1,5. La PUE estimada de diseño es 1,5. El numerador se mide en el tablero general del recinto y el denominador a la salida de las PDU de los racks, semestralmente y con informe entregable. El PUE del recinto on-premise se declara junto con la intensidad de carbono de la región de nube.
+2. PUE: la carga TI de 7,0 kW, la climatización de precisión de ≈ 2,3 kW, la iluminación y apoyo de ≈ 0,6 kW y las pérdidas de conversión del UPS de ≈ 0,55 kW suman ≈ 10,4 kW; 10,4 ÷ 7,0 ≈ 1,5. La PUE estimada de diseño es 1,5. El numerador se mide en el tablero general del recinto y el denominador a la salida de las PDU de los racks, semestralmente y con informe entregable. El PUE del recinto on-premise se declara junto con la intensidad de carbono de la región de nube.
 3. Generador: la carga del sitio de ≈ 10,4 kW exige un grupo electrógeno de 15 kVA con estanque dimensionado a 24 horas continuas y contrato de reabastecimiento declarado.
 
 La climatización de precisión para la operación continua es redundante en configuración N+1 y controla la temperatura y la humedad relativa dentro de los rangos que recomienda el fabricante del equipamiento.

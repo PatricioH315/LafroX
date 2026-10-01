@@ -44,7 +44,7 @@ Las especificaciones del data center primario y del secundario se desarrollan en
 
 Esta sección resume y analiza el equipamiento y el software que la solución requiere en las instalaciones del CLIENTE, en el terreno y en la plataforma de nube. El detalle de cada elemento, con su producto ofertado, su ubicación, su cantidad y su justificación, se entrega en el Formulario T-11. El equipamiento físico lo adquiere el CLIENTE, y el adjudicatario lo especifica, instala, integra y mantiene durante el contrato.
 
-### Síntesis del equipamiento por familia
+### 4.2.1.1 Síntesis del equipamiento por familia
 
 La Tabla [1](#tab:t26) cruza cada familia de equipamiento con el sitio donde se instala. Las cifras son las unidades en operación; la reserva se analiza a continuación de la tabla.
 
@@ -76,7 +76,7 @@ A las unidades en operación se suma la reserva del numeral 8.4 de las Bases Té
 
 Se proveen ocho estaciones nuevas para despacho, administración, planificación, calidad y TI. Los equipos existentes de los usuarios de oficina se incorporan a la gestión central con CrowdStrike Falcon, cifrado de disco, parches y control de extraíbles como condición de acceso por Verified Access (sección [4.4.16](#sub:adr-16)).
 
-### Criterios de selección
+### 4.2.1.2 Criterios de selección
 
 Cada familia se especifica contra una condición del caso que el equipamiento de oficina no resiste:
 
@@ -91,7 +91,7 @@ En la sala técnica se aplica redundancia sin sobrecompra:
 - Concepción: el servidor se dimensiona a su propia bodega, sin sobrecompra, y sus switches de núcleo van en par porque es el sitio de recuperación on-premise.
 - Los cinco sitios: los firewalls van en par activo/pasivo, porque RT-08.03 (Bases Técnicas Transversales, Cap. 8, p. 18) no admite cortafuegos en punto único de falla. El servidor de Concepción, y el mini-PC y el switch de cada cross-docking, quedan como puntos únicos de falla aceptados, cubiertos por la operación autónoma del sitio y por la unidad de reserva que viaja en el camión de línea nocturno desde Talca.
 
-### Software y licenciamiento
+### 4.2.1.3 Software y licenciamiento
 
 El software de base que opera el adjudicatario es de código abierto y se organiza así:
 
@@ -109,7 +109,7 @@ El emplazamiento de cada componente se decide con los seis criterios del Artícu
 
 De esos hechos se desprende la regla que ordena todo el emplazamiento: lo que debe funcionar sin enlace vive en el sitio, y lo que escala, se comparte o está expuesto a Internet vive en la nube. Conforme a esa regla, registrada en la decisión ADR-03, los 36 componentes del catálogo se reparten en 13 de nube pura, 11 on-premise y 12 híbridos, que tienen una parte en cada dominio.
 
-### Instalaciones y dominios
+### 4.2.2.1 Instalaciones y dominios
 
 De las seis instalaciones que cubre la solución, cinco alojan cómputo on-premise. La tipología que fija el caso se aplica así:
 
@@ -153,7 +153,7 @@ En la nube, la región primaria es sa-east-1 y cada servicio se despliega en al 
 
 La figura muestra que ninguna instalación depende de los sistemas de otra para operar, aunque Concepción siga recibiendo parte de su surtido desde Talca. Talca y Concepción tienen cada uno su WMS, su base, su broker y su caché de identidad; los cross-docking reúnen esas mismas funciones en un solo equipo; y el terreno lleva su propio almacén local en el dispositivo. La nube concentra lo que es común a todos los sitios: los portales, el transaccional compartido, la analítica y los servicios de seguridad. Los doce componentes híbridos aparecen en los dos dominios porque cada uno tiene una parte que debe seguir operando en el sitio y otra que consolida en la nube.
 
-### Correspondencia con la arquitectura lógica
+### 4.2.2.2 Correspondencia con la arquitectura lógica
 
 La Tabla [2](#tab:mapeo-logica) asocia cada módulo y cada capa transversal de la arquitectura lógica del apartado 4.1 con el componente físico que lo ejecuta y con el lugar donde corre. Es la traza que permite seguir una responsabilidad lógica hasta su emplazamiento. Los componentes físicos se identifican con un catálogo único, agrupado por letra: A para el núcleo de bodega, B para la cadena de frío, C para los dispositivos de operación, D para la red, E para los cross-docking, F para la observabilidad y la seguridad de los nodos, y N para la nube.
 
@@ -182,7 +182,7 @@ La Tabla [2](#tab:mapeo-logica) asocia cada módulo y cada capa transversal de l
 
 La tabla deja M1, M2, M5 y el bloqueo de M9 en el sitio; los módulos compartidos corren en N-04 y el terreno captura en su terminal. Los perfiles de ejecución se especifican en la sección [4.2.4](#sec:despliegue).
 
-### Síntesis del emplazamiento por dominio y criterio
+### 4.2.2.3 Síntesis del emplazamiento por dominio y criterio
 
 La Tabla [3](#tab:t21) resume cómo se distribuyen los 36 componentes entre los tres dominios y los seis criterios del Artículo 16.2 (Bases Administrativas, Art. 16.2, p. 11) que deciden cada emplazamiento. A continuación se justifica, dominio por dominio, por qué cada componente vive donde vive; el producto, la cantidad y la ubicación exacta de cada elemento no son materia del emplazamiento y se especifican en el Formulario T-11.
 
@@ -207,7 +207,7 @@ El emplazamiento responde a cuatro criterios decisivos del caso:
 
 La columna Total suma 37 en las filas de criterios porque la plataforma analítica (N-10) se contabiliza en los dos criterios que deciden su emplazamiento, volumen de datos y costo total de propiedad; la fila final suma los 36 componentes efectivos.
 
-### Componentes de nube pura
+### 4.2.2.4 Componentes de nube pura
 
 Los trece componentes de nube pura viven solo en la nube. La justificación de cada uno y el criterio del Artículo 16.2 (Bases Administrativas, Art. 16.2, p. 11) que la determina son los siguientes:
 
@@ -227,7 +227,7 @@ Los trece componentes de nube pura viven solo en la nube. La justificación de c
 
 Ningún componente de nube pura participa en las transacciones que el caso exige resolver sin enlace: la confirmación de preparación, el despacho y el registro de entrega se ejecutan en el sitio o en el dispositivo. Lo que sube a la nube lo hace por tres razones. Los portales y la gestión de identidades externas lo hacen por regulación, porque el Artículo 21 de las Bases Administrativas (p. 15) impide exponer los sitios a Internet. La plataforma de aplicación, la analítica y la telemetría lo hacen por volumen y costo, porque su carga varía con la estación y se paga por uso. Y la seguridad y el respaldo lo hacen porque un equipo de TI de cuatro personas no puede operar esos controles en sus propios servidores.
 
-### Componentes on-premise
+### 4.2.2.5 Componentes on-premise
 
 Los once componentes on-premise viven solo en las instalaciones del CLIENTE. La justificación de cada uno y su criterio:
 
@@ -245,7 +245,7 @@ Los once componentes on-premise viven solo en las instalaciones del CLIENTE. La 
 
 En el on-premise dominan la latencia y la conectividad. Los sensores, las impresoras, las balanzas y los terminales de cámara son periféricos que trabajan donde está la mercadería, y ninguno puede depender de un enlace que el caso describe como intermitente. Los tres enlaces y el switching tampoco podrían emplazarse en otro lugar: son la infraestructura que conecta el sitio con la nube y sostiene su red interna cuando esa conexión falla.
 
-### Componentes híbridos
+### 4.2.2.6 Componentes híbridos
 
 Los doce componentes híbridos tienen una parte en cada dominio. Para cada uno, la justificación explica qué parte vive en el sitio, qué parte vive en la nube y por qué se reparten así:
 
@@ -264,7 +264,7 @@ Los doce componentes híbridos tienen una parte en cada dominio. Para cada uno, 
 
 Los componentes híbridos siguen todos el mismo patrón: la parte que atiende la operación queda en el sitio y la parte que consolida queda en la nube, unidas por un mecanismo que tolera el corte. En el núcleo de bodega, Talca replica su base por DMS y los demás sitios sincronizan eventos por colas; en el terreno, el almacén local del dispositivo; y en la observabilidad, el buffer en disco de los colectores. Por eso la conectividad es el criterio dominante en siete de los doce: cada uno existe en dos lugares precisamente porque el enlace entre ellos no es confiable.
 
-### Autonomía de cada ámbito sin enlace
+### 4.2.2.7 Autonomía de cada ámbito sin enlace
 
 El emplazamiento anterior se verifica en lo que cada ámbito puede hacer cuando pierde el enlace. La Tabla [4](#tab:t29) declara esa autonomía y el tiempo en que cada ámbito vuelve a quedar sincronizado.
 
@@ -297,7 +297,7 @@ La plataforma de nube es Amazon Web Services. Todos los servicios se contratan e
 - Preferir servicios compatibles con estándares abiertos, para acotar el esfuerzo de salir de la plataforma.
 - Contratar en la región secundaria solo lo que la recuperación ante desastres necesita.
 
-### Servicios por función
+### 4.2.3.1 Servicios por función
 
 La Tabla [5](#tab:servicios-nube) agrupa los servicios contratados por la función que cumplen en la arquitectura y los asocia a los componentes del catálogo que los usan. El listado servicio por servicio, con su justificación y su cantidad, se entrega en el Formulario T-11.
 
@@ -323,7 +323,7 @@ La Tabla [5](#tab:servicios-nube) agrupa los servicios contratados por la funci�
 
 La tabla distingue los servicios de entrada, aplicación y datos. La aplicación corre en contenedores administrados; la única función Lambda autoriza las API REST. Los portales Angular se sirven desde S3 privado por CloudFront, y las consolas Angular desde Fargate. Las colas SQS de trabajos de Laravel están separadas de la cola FIFO de reconciliación; ElastiCache solo actúa como caché. El recorrido de acceso se precisa en la sección [4.2.5](#sec:conexiones).
 
-### Región secundaria y residencia de los datos
+### 4.2.3.2 Región secundaria y residencia de los datos
 
 La región us-east-1 no es una segunda producción. Solo contiene recursos para la recuperación:
 
@@ -333,7 +333,7 @@ La región us-east-1 no es una segunda producción. Solo contiene recursos para 
 
 La analítica y los datos de geolocalización de personas quedan fuera de esa región por diseño, con los resguardos de residencia de la sección [4.3.2](#sec:e-especificaciones-del-sitio-secundario-y-).
 
-### Servicios que no se contratan
+### 4.2.3.3 Servicios que no se contratan
 
 Los registros de decisión descartan de forma expresa los siguientes servicios y productos, que no aparecen en la arquitectura:
 
@@ -343,11 +343,11 @@ Los registros de decisión descartan de forma expresa los siguientes servicios y
 - No se contratan servicios de trazas y métricas separados de CloudWatch, porque las Bases piden una sola plataforma de observabilidad para nube y on-premise.
 - No se autoaloja un gestor de secretos, porque Secrets Manager rota las credenciales sin el desellado manual que exigiría uno propio.
 
-### Modelo de contratación
+### 4.2.3.4 Modelo de contratación
 
 Los servicios se contratan por uso, con la capacidad base comprometida mediante Savings Plans y el peak de septiembre cubierto con capacidad efímera que se libera al terminar. Los ambientes de Desarrollo, QA y Preproducción se reducen o apagan fuera del horario de uso. La reversibilidad está asegurada por la elección de servicios: Aurora es compatible con PostgreSQL, los datos analíticos se guardan en formato Parquet, y Keycloak, Laravel, PostgreSQL y RabbitMQ son de código abierto, de modo que un traslado a otra plataforma conserva la aplicación y los datos y se concentra en sustituir los servicios administrados de AWS que la solución consume. Los montos de estos servicios se declaran en la Oferta Económica y no en este documento.
 
-### Topología de los servicios
+### 4.2.3.5 Topología de los servicios
 
 La Figura [4](#fig:nube) ubica en la topología de AWS los servicios de la Tabla [5](#tab:servicios-nube) y los recursos de la región secundaria: el borde global, la región primaria sa-east-1 con sus dos zonas de disponibilidad y la región de recuperación us-east-1. Los servicios de gobierno de cuentas de la tabla (Control Tower, Organizations, Cost Explorer y Budgets) se aplican sobre las cuentas y no ocupan un lugar en la topología, por lo que no se dibujan.
 
@@ -469,7 +469,7 @@ La cuenta de último recurso (sección [4.4.15](#sub:adr-15)) se usa solo ante l
 
 Los portales de clientes, transportistas y proveedores siguen el mismo ciclo: su aplicación Angular se publica por ambiente en S3 privado y CloudFront, con la imagen de aplicación del mismo ambiente como backend. Las consolas Angular, en cambio, corren como contenedor en ECS Fargate tras el balanceador de aplicación privado (N-04).
 
-#### Artefacto y perfiles de ejecución
+#### 4.2.4.1.1 Artefacto y perfiles de ejecución
 
 La aplicación se construye una sola vez por versión como una imagen PHP 8.5 con Laravel 13 que contiene el código, el `vendor` resuelto desde `composer.lock`, PHP-FPM, el intérprete de línea de comandos y las extensiones que la solución usa: `pdo_pgsql`, `mbstring`, `intl`, `openssl`, `opcache`, `curl` para el SDK de AWS, `sockets` para el adaptador AMQP `php-amqplib`, la extensión de OpenTelemetry y `pcntl`, que solo usan los procesos de línea de comandos para terminar de forma ordenada al recibir la señal de detención. Un servidor web liviano acompaña a PHP-FPM en los perfiles HTTP. La misma imagen corre en todos los ambientes y en todos los sitios; lo que cambia es el perfil con que arranca, como muestra la Tabla [7](#tab:perfiles).
 
@@ -494,7 +494,7 @@ Cada perfil cumple este ciclo de vida:
 
 Así, ningún reinicio, escalado o despliegue deja un trabajo a medias.
 
-#### Liberación y reversión
+#### 4.2.4.1.2 Liberación y reversión
 
 Cada versión se libera con estrategia azul-verde: la versión nueva se despliega junto a la vigente y recibe tráfico de forma gradual, en etapas de canario, después de haberse demostrado el mismo procedimiento en Preproducción (RT-04.07; Bases Técnicas Transversales, Cap. 4, p. 11). La puesta en producción avanza por proceso, por sitio o por zona comercial, nunca como un evento único que afecte a la vez a la bodega, la preventa, el reparto y la facturación. En la sustitución del WMS de 2013 por olas, cada capacidad se activa además por sitio mediante indicadores de funcionalidad (*feature flags*), de modo que revertir una ola es apagar su indicador, sin volver a desplegar.
 
@@ -504,7 +504,7 @@ Si la falla de un despliegue se manifestara durante la ventana de despacho, la b
 
 Cada promoción ensaya además la compatibilidad de los mensajes pendientes. Un sitio puede volver de un corte de 24 horas con sobres publicados por la versión anterior, de modo que el consumidor de reconciliación acepta la versión vigente y la inmediatamente anterior del sobre JSON, y rechaza hacia la cola de mensajes fallidos cualquier versión que no reconozca, sin aplicarla. Preproducción reproduce ese caso —sitio emulado desconectado, promoción de la versión nueva y reconexión— antes de cada paso a producción.
 
-#### Transición al backend Laravel
+#### 4.2.4.1.3 Transición al backend Laravel
 
 La arquitectura lógica fija la implantación progresiva del backend (apartado 4.1). Su secuencia física es la siguiente:
 
@@ -515,7 +515,7 @@ La arquitectura lógica fija la implantación progresiva del backend (apartado 4
 5. Cada ola cierra verificando saldos de stock, cobros y folios contra el origen, y se revierte por sitio si falla un umbral acordado con el CLIENTE.
 6. La reversión devuelve el tráfico al escritor anterior solo después de detener el nuevo, conciliar los pendientes y comprobar que el esquema sigue legible por la versión previa.
 
-#### Calendario y cadencia
+#### 4.2.4.1.4 Calendario y cadencia
 
 El calendario de Puelche limita cuándo se puede intervenir la plataforma. El caso prohíbe intervenir los sistemas entre el 1 y el 25 de septiembre, en diciembre y durante el cierre contable de cada mes, prohíbe el paso a producción en todo septiembre y en diciembre, y exige indisponibilidad cero en la ventana de despacho (Bases Técnicas del caso, Cap. 10, restricción 8, p. 19, y Cap. 13, p. 23; RT-10.05 y RT-10.06; Bases Técnicas Transversales, Cap. 10, p. 22; Bases Técnicas del caso, Cap. 15, p. 27). La Tabla [8](#tab:jd02) cruza cada período con lo que admite.
 
@@ -593,11 +593,11 @@ Si Talca pierde sus dos caminos, la base local sigue siendo autoritativa y el sl
 
 La réplica por DMS y la reconciliación por eventos cumplen funciones distintas y no se mezclan. DMS copia las tablas del WMS de Talca (VM-02) a un esquema de réplica de solo lectura en Aurora, que sirve a la continuidad y a las consultas. Concepción y los cross-docking no replican sus bases por DMS: publican sus eventos mediante los brokers y SQS FIFO. El consumidor de reconciliación aplica esos sobres JSON a las tablas de dominio del estado central —stock consolidado, trazabilidad de lotes, pedidos, entregas y cobros—, y en la misma transacción registra la clave de origen del evento, formada por el sitio y el identificador único que el evento trae desde su captura. Una restricción de unicidad sobre esa clave impide aplicar dos veces el mismo evento, aunque SQS lo entregue de nuevo o llegue después de la ventana de deduplicación de la cola. Ninguna tabla de dominio se alimenta de la réplica DMS, y ningún evento escribe en el esquema de réplica.
 
-#### Conmutación y retorno
+#### 4.2.4.4.1 Conmutación y retorno
 
 La conmutación de región y el retorno siguen el procedimiento de la sección [4.3.2.5](#sub:conmutacion-regional) (Tabla [4.3-6](#tab:4-3-6)): el enrutamiento hacia us-east-1 conmuta de forma automática y su retorno se ejecuta de forma coordinada tras la reconciliación, mientras la promoción de la base exige la autorización del CLIENTE. Si la contingencia afecta solo a la bodega de Talca, el WMS de Concepción (VM-C01) asume su carga con un RTO adicional de 1 a 2 horas. Los sitios de recuperación y sus amenazas comunes se analizan en la Tabla [4.3-3](#tab:4-3-3).
 
-#### Operación durante una contingencia regional
+#### 4.2.4.4.2 Operación durante una contingencia regional
 
 Mientras la región primaria no está disponible, la bodega y el terreno siguen operando contra sus bases locales y sus dispositivos, y los servicios en nube vuelven con la promoción de la réplica. La analítica y las consultas de geolocalización de personas, excluidas de us-east-1 por diseño (sección [4.3.2](#sec:e-especificaciones-del-sitio-secundario-y-)), esperan el retorno; ninguna es un servicio crítico.
 
@@ -650,7 +650,7 @@ La disponibilidad efectiva de cada servicio, las métricas del proceso de despli
 
 Esta sección describe cómo se conectan los sitios, el terreno y la nube, identifica cada punto donde esa conexión o su infraestructura puede fallar, y declara cómo se resuelve cada falla o, cuando no se resuelve de forma automática, cuál es la contingencia. Su punto de partida es el caso: la conectividad actual de Puelche se corta con frecuencia y en algunos lugares no existe, por lo que la solución no puede suponer un enlace disponible y debe decir, para cada conexión, qué pasa cuando no lo está.
 
-### Conexiones entre sitios, terreno y nube
+### 4.2.5.1 Conexiones entre sitios, terreno y nube
 
 Los dos dominios fijos, la nube y el on-premise, se conectan por túneles VPN IPsec que terminan en el par de firewalls de cada sitio (D-01) y en el Transit Gateway de AWS en sa-east-1, con enrutamiento dinámico BGP. El mismo Transit Gateway enruta entre los sitios, de modo que Concepción y los cross-docking alcanzan Talca sin exponerla a Internet. Los caminos de acceso se distribuyen así:
 
@@ -725,7 +725,7 @@ La Tabla [13](#tab:superficie) delimita las únicas entradas desde redes externa
 
 La tabla excluye toda otra entrada desde fuera de la red del CLIENTE. En recuperación ante desastres se activan las mismas entradas en us-east-1. MDM, EDR, SII, Transbank, GIS, notificaciones y telemetría de flota son dependencias de salida, detalladas en el Formulario T-11.
 
-### Puntos de falla en los sitios y en los enlaces
+### 4.2.5.3 Puntos de falla en los sitios y en los enlaces
 
 Cada conexión se apoya en equipos del sitio que también pueden fallar. La Tabla [14](#tab:fallas-sitios) recorre esos puntos de falla, desde el enlace hasta la energía del recinto, e indica para cada uno el mecanismo que la resuelve y la contingencia si ese mecanismo no basta.
 
@@ -752,7 +752,7 @@ Cada conexión se apoya en equipos del sitio que también pueden fallar. La Tabl
 
 La tabla muestra que los firewalls van en par en los cinco sitios, porque RT-08.03 (Bases Técnicas Transversales, Cap. 8, p. 18) no admite cortafuegos en punto único de falla, y que los puntos únicos de falla que permanecen son el servidor de Concepción y el mini-PC y el switch de cada cross-docking, donde la redundancia no compensa su costo: la pérdida de sus enlaces se cubre con la autonomía local, y la falla de sus propios equipos, con la reposición y la resincronización indicadas en la tabla. Por el mismo fundamento, ese servidor, el mini-PC y el switch de los cross-docking operan con fuente única, excepción declarada a la exigencia de fuente redundante. La liberación sanitaria y el despacho no dependen de la nube. En la ventana de Talca, VM-02 se reinicia en otro nodo y otra impresora emite la etiqueta si falla la del andén. Los mecanismos de alta disponibilidad se detallan en la sección [4.2.4.3](#sub:3-alta-disponibilidad).
 
-### Puntos de falla en la nube, el terreno y las integraciones
+### 4.2.5.4 Puntos de falla en la nube, el terreno y las integraciones
 
 La Tabla [15](#tab:fallas-nube) completa el recorrido con los puntos de falla que están fuera de los sitios: la nube, el terreno y los sistemas de terceros.
 
@@ -1076,21 +1076,21 @@ El Data Center Primario concentra la operación productiva de la solución en do
 
 Esta sección declara, para cada dominio, el proveedor, la región y las zonas de disponibilidad, los servicios contratados y el sitio on-premise. También fija los objetivos de continuidad verificables que los gobiernan: disponibilidad de infraestructura de 99,95 % mensual por componente y, para los servicios críticos, RTO ≤ 4 h y RPO ≤ 15 min. Sobre estos objetivos se sostiene el compromiso contractual penalizable de ≥ 99,9 % mensual de la transacción de negocio de extremo a extremo. El desglose servicio por servicio y componente por componente se entrega en el Formulario T-11.
 
-### Proveedor
+### 4.3.1.1 Proveedor
 
 Para la nube en Amazon Web Services todos los servicios se contratan en cuentas del CLIENTE, que son organizadas bajo AWS Control Tower con una cuenta por ambiente de modo que la propiedad de los datos y de la infraestructura es del CLIENTE desde el primer día. Los criterios con que se eligieron esos servicios se explican en el apartado [4.2.3](#sec:servicios-nube). AWS satisface el requisito de presencia de región o zona en Chile o en Sudamérica con la región primaria sa-east-1. El cumplimiento de los estándares y marcos de referencia del Artículo 4.3 de las Bases Administrativas (Art. 4.3, p. 5) entre ellos ISO/IEC 27017 (nube) e ISO/IEC 27018 (datos personales en nube) se acredita en la matriz de controles ISO/IEC 27001/27002 de la arquitectura de seguridad (apartado 4.1), y no se repite en esta sección.
 
 En el dominio On-premise del CD de Talca, el caso exige cómputo, almacenamiento y procesamiento en las instalaciones del CLIENTE para sostener recepción, preparación y despacho durante un corte de enlace; ello obliga a la modalidad híbrida. Ese alcance requiere cómputo local para la continuidad de un sitio operacional sin albergar el núcleo. Por ello, el sitio adopta la tipología de **sala técnica secundaria o de sitio** del numeral 6.1 de las Bases Técnicas Transversales (Cap. 6, p. 14), con disponibilidad de infraestructura de 99,95 % y dimensionamiento proporcional al equipamiento real.
 
-### Región y zonas de disponibilidad
+### 4.3.1.2 Región y zonas de disponibilidad
 
 La región primaria de la nube es sa-east-1, ubicada en São Paulo, Brasil. Todo componente con requisito de alta disponibilidad se despliega en al menos dos zonas de disponibilidad; no se acepta un diseño en una sola zona. Aurora PostgreSQL tiene el escritor en sa-east-1a y un lector promovible en sa-east-1b. ECS Fargate, ElastiCache Redis, el balanceador de aplicación y el NAT Gateway operan entre esas mismas dos zonas con conmutación automática; DynamoDB opera Multi-AZ de forma nativa y transparente. El único componente con escritor único es la base de datos, que conmuta de forma automática entre las zonas. Este diseño sostiene el compromiso de extremo a extremo de ≥ 99,9 % mensual de la transacción crítica y la conmutación se verifica en las pruebas de resiliencia por inyección de fallas de la arquitectura de despliegue.
 
-### Servicios contratados en la región primaria
+### 4.3.1.3 Servicios contratados en la región primaria
 
 Los servicios contratados en la región primaria son los que agrupa por función la Tabla [5](#tab:servicios-nube) del apartado [4.2.3](#sec:servicios-nube). En esta región se concentran la operación productiva, la analítica y los servicios de detección, cumplimiento y gobierno; todos son servicios administrados, de modo que la solución no opera servidores en la nube.
 
-### Sitio on-premise: CD Talca (sala técnica secundaria)
+### 4.3.1.4 Sitio on-premise: CD Talca (sala técnica secundaria)
 
 El caso fija para el CD de Talca una sala técnica secundaria “dimensionada para sostener recepción, preparación y despacho durante un corte”, y advierte que la sala actual de 25 m<sup>2</sup> no cumple el Capítulo 6 de las Bases Técnicas Transversales (p. 14). Conforme a la tipología del numeral 6.1 de las Bases Técnicas Transversales (Cap. 6, p. 14), no se aplica íntegramente a este sitio el conjunto de exigencias de una sala técnica principal, sino el subconjunto dimensionado al sitio: energía, climatización, control de acceso, detección de incendio y monitoreo. El numeral 6.1 de las Bases Técnicas Transversales (Cap. 6, p. 14) exige declarar la tipología y justificar el dimensionamiento, y advierte que “sobredimensionar el recinto es tan penalizado como subdimensionarlo: ambos revelan que el cálculo de capacidad no se hizo”. El equipamiento real que la sala debe alojar y los cálculos eléctrico y térmico desarrollados a continuación determinan su superficie proyectada, que se fija en el plano de distribución interna (Figura [15](#fig:recinto-talca)).
 
@@ -1137,7 +1137,7 @@ Para el cálculo de carga eléctrica la carga se proyecta sobre los equipos que 
 El cálculo eléctrico sigue estos pasos:
 
 1. Potencia aparente y UPS: con factor de potencia 0,95, 7,0 kW $$ 0,95 ≈ 7,4 kVA; al 80 % de utilización, 7,4 kVA $$ 0,8 ≈ 9,2 kVA. El UPS seleccionado es modular de 10 kVA, de doble conversión on-line, en configuración N+1 y con bypass de mantenimiento.
-2. PUE: la carga TI de 7,0 kW, la climatización de precisión de ≈ 2,3 kW, la iluminación y apoyo de ≈ 0,6 kW y las pérdidas de conversión del UPS de ≈ 0,55 kW suman ≈ 10,4 kW; 10,4 $$ 7,0 ≈ 1,5. La PUE estimada de diseño es 1,5. El numerador se mide en el tablero general del recinto y el denominador a la salida de las PDU de los racks, semestralmente y con informe entregable. El PUE del recinto on-premise se declara junto con la intensidad de carbono de la región de nube.
+2. PUE: la carga TI de 7,0 kW, la climatización de precisión de ≈ 2,3 kW, la iluminación y apoyo de ≈ 0,6 kW y las pérdidas de conversión del UPS de ≈ 0,55 kW suman ≈ 10,4 kW; 10,4 ÷ 7,0 ≈ 1,5. La PUE estimada de diseño es 1,5. El numerador se mide en el tablero general del recinto y el denominador a la salida de las PDU de los racks, semestralmente y con informe entregable. El PUE del recinto on-premise se declara junto con la intensidad de carbono de la región de nube.
 3. Generador: la carga del sitio de ≈ 10,4 kW exige un grupo electrógeno de 15 kVA con estanque dimensionado a 24 horas continuas y contrato de reabastecimiento declarado.
 
 La climatización de precisión para la operación continua es redundante en configuración N+1 y controla la temperatura y la humedad relativa dentro de los rangos que recomienda el fabricante del equipamiento.
@@ -1206,7 +1206,7 @@ El Data Center Secundario sostiene la continuidad cuando la operación primaria 
 
 En coherencia con el carácter híbrido obligatorio de la solución, hay dos sitios de recuperación: la región AWS us-east-1 para el dominio en nube y el gabinete de borde del centro de distribución de Concepción para el dominio on-premise. En ambos se sostienen los objetivos de continuidad de los servicios críticos: RTO ≤ 4 horas y RPO ≤ 15 minutos, probados al menos dos veces al año con conmutación real y con respaldo 3-2-1-1-0. Sobre esos objetivos se sostiene el compromiso contractual penalizable de ≥ 99,9 % mensual de la transacción de negocio de extremo a extremo. El desglose componente por componente de la réplica y de la política de respaldo se entrega en el Formulario T-11.
 
-### Modalidad del sitio secundario
+### 4.3.2.1 Modalidad del sitio secundario
 
 La modalidad declarada es activo-pasiva en caliente: la región de recuperación mantiene una réplica reducida pero funcional de la plataforma que es escalable a carga completa durante la conmutación y que se promueve sólo ante la indisponibilidad de la región primaria. La elección se justifica frente a las alternativas, como exigen las Bases:
 
@@ -1215,7 +1215,7 @@ La modalidad declarada es activo-pasiva en caliente: la región de recuperación
 
 El costo de la modalidad se acota porque la región secundaria no es una segunda producción: contiene solo los recursos que exige la recuperación. Estos son la réplica pasiva promovible del núcleo transaccional, la réplica reducida de aplicación que escala durante la conmutación y las copias de respaldo. El propio caso expresa este criterio al exigir declarar la región primaria y la secundaria.
 
-### Región o sitio de recuperación
+### 4.3.2.2 Región o sitio de recuperación
 
 La solución tiene dos sitios de recuperación, uno por dominio en coherencia con el carácter híbrido obligatorio: la región AWS us-east-1 para el dominio en nube y el gabinete de borde del CD Concepción para el dominio on-premise. La Tabla 4.3-3 compara ambos sitios en distancia y amenazas comunes:
 
@@ -1262,7 +1262,7 @@ La Figura [16](#fig:cd-concepcion) muestra el gabinete de borde de Concepción y
 
 La fibra es el enlace principal y el LTE lo respalda; ambos llegan a un par de firewalls en alta disponibilidad que termina el túnel hacia la nube. Detrás, dos switches de núcleo en stack conectan el servidor Proxmox de nodo único, que aloja cuatro máquinas virtuales: VM-C01 con el WMS, VM-C02 con PostgreSQL, VM-C03 con la caché de Keycloak y VM-C04 con RabbitMQ, el shipper y el colector ADOT. En la bodega, los terminales MC9400 y las impresoras de andén trabajan por Wi-Fi 6E contra el WMS local; en la cadena de frío, los sensores entregan sus lecturas al gateway IoT, que las publica por MQTTS y bloquea el despacho ante una excursión térmica. La figura muestra que Concepción ejecuta la misma pila de Talca en una sola máquina. Por eso puede asumir la bodega de Talca con la promoción controlada del motor de almacenes, sin instalar software nuevo durante la contingencia. Como sitio de recuperación, Concepción lleva en par los firewalls y los switches de núcleo; el servidor queda como punto único de falla aceptado, cubierto por la operación autónoma de 24 horas ante la pérdida del enlace y, ante su falla, por su reposición y la reconstrucción de la base local desde el estado central, al que Concepción ya entregó sus eventos por las colas (sección [4.2.5](#sec:conexiones)).
 
-### Replicación
+### 4.3.2.3 Replicación
 
 La replicación de datos es continua hacia el sitio de recuperación en nube con medición y alertamiento del retraso de replicación. Cada dominio de datos alcanza el objetivo de punto de recuperación con su propio mecanismo, como resume la Tabla 4.3-4:
 
@@ -1279,7 +1279,7 @@ La replicación de datos es continua hacia el sitio de recuperación en nube con
 
 Todos los dominios críticos se replican de forma continua. El único dominio cuyo retraso de replicación depende de una condición externa es la réplica del WMS de Talca, ya que viaja por la WAN. Si Talca pierde simultáneamente sus dos caminos de enlace, el registro de escritura de VM-02 retiene los cambios que AWS DMS leerá al reconectar; la base local permanece autoritativa durante el corte y el retraso se mide de forma continua con alertas a los 5 y a los 15 minutos. Durante ese corte la copia remota del WMS queda desactualizada hasta un máximo de 24 horas, por lo que el RPO remoto de 15 minutos de esa réplica rige solo con enlace; el registro que el corte obliga a retener está dimensionado en la arquitectura de despliegue.
 
-### RPO y RTO
+### 4.3.2.4 RPO y RTO
 
 Los objetivos de continuidad de los servicios críticos son RTO ≤ 4 horas y RPO ≤ 15 minutos. La Tabla 4.3-5 resume los objetivos que gobiernan este sitio secundario y el compromiso sobre el que se miden.
 
@@ -1317,7 +1317,7 @@ Los pasos con tiempo declarado, ejecutados en serie y en el peor caso, suman cer
 
 Cuando la contingencia afecta solo a la bodega de Talca, el plan de recuperación local promueve el motor de almacenes del CD Concepción, que opera de forma autónoma todos los días, con un RTO adicional de 1 a 2 horas dentro de la ventana de 4 horas. En esa contingencia local la identidad no requiere conmutación, porque su autoridad reside en la nube y las cachés locales son de solo lectura.
 
-### Procedimiento de retorno
+### 4.3.2.6 Procedimiento de retorno
 
 Existe un procedimiento de retorno al sitio principal, documentado y probado, que incluye la reconciliación de los datos generados durante la contingencia. El retorno a la región primaria sigue seis pasos:
 
@@ -1330,7 +1330,7 @@ Existe un procedimiento de retorno al sitio principal, documentado y probado, qu
 
 El procedimiento de retorno se prueba en cada ensayo de recuperación semestral, de modo que queda declarado y ejercitado.
 
-### Pruebas del plan de recuperación y respaldos
+### 4.3.2.7 Pruebas del plan de recuperación y respaldos
 
 El procedimiento de conmutación y el de retorno se ensayan dos veces al año con conmutación real, incluidas escrituras de pedidos y sincronización en us-east-1; el RTO y el RPO medidos deben cumplirse en el 100 % de los ensayos. La inyección de fallas y la restauración mensual de respaldos se describen en la sección [4.2.4.6](#sub:6-verificacion-de-la-continuidad), y la política 3-2-1-1-0 con sus retenciones en la sección [4.2.4.5](#sub:5-respaldos-esquema-3-2-1-1-0-rnf-20-07).
 

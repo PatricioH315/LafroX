@@ -7,7 +7,7 @@ El Data Center Secundario sostiene la continuidad cuando la operación primaria 
 
 En coherencia con el carácter híbrido obligatorio de la solución, hay dos sitios de recuperación: la región AWS us-east-1 para el dominio en nube y el gabinete de borde del centro de distribución de Concepción para el dominio on-premise. En ambos se sostienen los objetivos de continuidad de los servicios críticos: RTO ≤ 4 horas y RPO ≤ 15 minutos, probados al menos dos veces al año con conmutación real y con respaldo 3-2-1-1-0. Sobre esos objetivos se sostiene el compromiso contractual penalizable de ≥ 99,9 % mensual de la transacción de negocio de extremo a extremo. El desglose componente por componente de la réplica y de la política de respaldo se entrega en el Formulario T-11.
 
-### Modalidad del sitio secundario
+### 4.3.2.1 Modalidad del sitio secundario
 
 La modalidad declarada es activo-pasiva en caliente: la región de recuperación mantiene una réplica reducida pero funcional de la plataforma que es escalable a carga completa durante la conmutación y que se promueve sólo ante la indisponibilidad de la región primaria. La elección se justifica frente a las alternativas, como exigen las Bases:
 
@@ -16,7 +16,7 @@ La modalidad declarada es activo-pasiva en caliente: la región de recuperación
 
 El costo de la modalidad se acota porque la región secundaria no es una segunda producción: contiene solo los recursos que exige la recuperación. Estos son la réplica pasiva promovible del núcleo transaccional, la réplica reducida de aplicación que escala durante la conmutación y las copias de respaldo. El propio caso expresa este criterio al exigir declarar la región primaria y la secundaria.
 
-### Región o sitio de recuperación
+### 4.3.2.2 Región o sitio de recuperación
 
 La solución tiene dos sitios de recuperación, uno por dominio en coherencia con el carácter híbrido obligatorio: la región AWS us-east-1 para el dominio en nube y el gabinete de borde del CD Concepción para el dominio on-premise. La Tabla 4.3-3 compara ambos sitios en distancia y amenazas comunes:
 
@@ -63,7 +63,7 @@ La Figura [16](06_e_sitio_secundario.md#fig:cd-concepcion) muestra el gabinete d
 
 La fibra es el enlace principal y el LTE lo respalda; ambos llegan a un par de firewalls en alta disponibilidad que termina el túnel hacia la nube. Detrás, dos switches de núcleo en stack conectan el servidor Proxmox de nodo único, que aloja cuatro máquinas virtuales: VM-C01 con el WMS, VM-C02 con PostgreSQL, VM-C03 con la caché de Keycloak y VM-C04 con RabbitMQ, el shipper y el colector ADOT. En la bodega, los terminales MC9400 y las impresoras de andén trabajan por Wi-Fi 6E contra el WMS local; en la cadena de frío, los sensores entregan sus lecturas al gateway IoT, que las publica por MQTTS y bloquea el despacho ante una excursión térmica. La figura muestra que Concepción ejecuta la misma pila de Talca en una sola máquina. Por eso puede asumir la bodega de Talca con la promoción controlada del motor de almacenes, sin instalar software nuevo durante la contingencia. Como sitio de recuperación, Concepción lleva en par los firewalls y los switches de núcleo; el servidor queda como punto único de falla aceptado, cubierto por la operación autónoma de 24 horas ante la pérdida del enlace y, ante su falla, por su reposición y la reconstrucción de la base local desde el estado central, al que Concepción ya entregó sus eventos por las colas (sección [4.2.5](02_c_conexiones.md#sec:conexiones)).
 
-### Replicación
+### 4.3.2.3 Replicación
 
 La replicación de datos es continua hacia el sitio de recuperación en nube con medición y alertamiento del retraso de replicación. Cada dominio de datos alcanza el objetivo de punto de recuperación con su propio mecanismo, como resume la Tabla 4.3-4:
 
@@ -80,7 +80,7 @@ La replicación de datos es continua hacia el sitio de recuperación en nube con
 
 Todos los dominios críticos se replican de forma continua. El único dominio cuyo retraso de replicación depende de una condición externa es la réplica del WMS de Talca, ya que viaja por la WAN. Si Talca pierde simultáneamente sus dos caminos de enlace, el registro de escritura de VM-02 retiene los cambios que AWS DMS leerá al reconectar; la base local permanece autoritativa durante el corte y el retraso se mide de forma continua con alertas a los 5 y a los 15 minutos. Durante ese corte la copia remota del WMS queda desactualizada hasta un máximo de 24 horas, por lo que el RPO remoto de 15 minutos de esa réplica rige solo con enlace; el registro que el corte obliga a retener está dimensionado en la arquitectura de despliegue.
 
-### RPO y RTO
+### 4.3.2.4 RPO y RTO
 
 Los objetivos de continuidad de los servicios críticos son RTO ≤ 4 horas y RPO ≤ 15 minutos. La Tabla 4.3-5 resume los objetivos que gobiernan este sitio secundario y el compromiso sobre el que se miden.
 
@@ -118,7 +118,7 @@ Los pasos con tiempo declarado, ejecutados en serie y en el peor caso, suman cer
 
 Cuando la contingencia afecta solo a la bodega de Talca, el plan de recuperación local promueve el motor de almacenes del CD Concepción, que opera de forma autónoma todos los días, con un RTO adicional de 1 a 2 horas dentro de la ventana de 4 horas. En esa contingencia local la identidad no requiere conmutación, porque su autoridad reside en la nube y las cachés locales son de solo lectura.
 
-### Procedimiento de retorno
+### 4.3.2.6 Procedimiento de retorno
 
 Existe un procedimiento de retorno al sitio principal, documentado y probado, que incluye la reconciliación de los datos generados durante la contingencia. El retorno a la región primaria sigue seis pasos:
 
@@ -131,6 +131,6 @@ Existe un procedimiento de retorno al sitio principal, documentado y probado, qu
 
 El procedimiento de retorno se prueba en cada ensayo de recuperación semestral, de modo que queda declarado y ejercitado.
 
-### Pruebas del plan de recuperación y respaldos
+### 4.3.2.7 Pruebas del plan de recuperación y respaldos
 
 El procedimiento de conmutación y el de retorno se ensayan dos veces al año con conmutación real, incluidas escrituras de pedidos y sincronización en us-east-1; el RTO y el RPO medidos deben cumplirse en el 100 % de los ensayos. La inyección de fallas y la restauración mensual de respaldos se describen en la sección [4.2.4.6](11_j_despliegue.md#sub:6-verificacion-de-la-continuidad), y la política 3-2-1-1-0 con sus retenciones en la sección [4.2.4.5](11_j_despliegue.md#sub:5-respaldos-esquema-3-2-1-1-0-rnf-20-07).

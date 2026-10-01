@@ -7,7 +7,7 @@ El emplazamiento de cada componente se decide con los seis criterios del Artícu
 
 De esos hechos se desprende la regla que ordena todo el emplazamiento: lo que debe funcionar sin enlace vive en el sitio, y lo que escala, se comparte o está expuesto a Internet vive en la nube. Conforme a esa regla, registrada en la decisión ADR-03, los 36 componentes del catálogo se reparten en 13 de nube pura, 11 on-premise y 12 híbridos, que tienen una parte en cada dominio.
 
-### Instalaciones y dominios
+### 4.2.2.1 Instalaciones y dominios
 
 De las seis instalaciones que cubre la solución, cinco alojan cómputo on-premise. La tipología que fija el caso se aplica así:
 
@@ -51,7 +51,7 @@ En la nube, la región primaria es sa-east-1 y cada servicio se despliega en al 
 
 La figura muestra que ninguna instalación depende de los sistemas de otra para operar, aunque Concepción siga recibiendo parte de su surtido desde Talca. Talca y Concepción tienen cada uno su WMS, su base, su broker y su caché de identidad; los cross-docking reúnen esas mismas funciones en un solo equipo; y el terreno lleva su propio almacén local en el dispositivo. La nube concentra lo que es común a todos los sitios: los portales, el transaccional compartido, la analítica y los servicios de seguridad. Los doce componentes híbridos aparecen en los dos dominios porque cada uno tiene una parte que debe seguir operando en el sitio y otra que consolida en la nube.
 
-### Correspondencia con la arquitectura lógica
+### 4.2.2.2 Correspondencia con la arquitectura lógica
 
 La Tabla [2](#tab:mapeo-logica) asocia cada módulo y cada capa transversal de la arquitectura lógica del apartado 4.1 con el componente físico que lo ejecuta y con el lugar donde corre. Es la traza que permite seguir una responsabilidad lógica hasta su emplazamiento. Los componentes físicos se identifican con un catálogo único, agrupado por letra: A para el núcleo de bodega, B para la cadena de frío, C para los dispositivos de operación, D para la red, E para los cross-docking, F para la observabilidad y la seguridad de los nodos, y N para la nube.
 
@@ -80,7 +80,7 @@ La Tabla [2](#tab:mapeo-logica) asocia cada módulo y cada capa transversal de l
 
 La tabla deja M1, M2, M5 y el bloqueo de M9 en el sitio; los módulos compartidos corren en N-04 y el terreno captura en su terminal. Los perfiles de ejecución se especifican en la sección [4.2.4](11_j_despliegue.md#sec:despliegue).
 
-### Síntesis del emplazamiento por dominio y criterio
+### 4.2.2.3 Síntesis del emplazamiento por dominio y criterio
 
 La Tabla [3](#tab:t21) resume cómo se distribuyen los 36 componentes entre los tres dominios y los seis criterios del Artículo 16.2 (Bases Administrativas, Art. 16.2, p. 11) que deciden cada emplazamiento. A continuación se justifica, dominio por dominio, por qué cada componente vive donde vive; el producto, la cantidad y la ubicación exacta de cada elemento no son materia del emplazamiento y se especifican en el Formulario T-11.
 
@@ -105,7 +105,7 @@ El emplazamiento responde a cuatro criterios decisivos del caso:
 
 La columna Total suma 37 en las filas de criterios porque la plataforma analítica (N-10) se contabiliza en los dos criterios que deciden su emplazamiento, volumen de datos y costo total de propiedad; la fila final suma los 36 componentes efectivos.
 
-### Componentes de nube pura
+### 4.2.2.4 Componentes de nube pura
 
 Los trece componentes de nube pura viven solo en la nube. La justificación de cada uno y el criterio del Artículo 16.2 (Bases Administrativas, Art. 16.2, p. 11) que la determina son los siguientes:
 
@@ -125,7 +125,7 @@ Los trece componentes de nube pura viven solo en la nube. La justificación de c
 
 Ningún componente de nube pura participa en las transacciones que el caso exige resolver sin enlace: la confirmación de preparación, el despacho y el registro de entrega se ejecutan en el sitio o en el dispositivo. Lo que sube a la nube lo hace por tres razones. Los portales y la gestión de identidades externas lo hacen por regulación, porque el Artículo 21 de las Bases Administrativas (p. 15) impide exponer los sitios a Internet. La plataforma de aplicación, la analítica y la telemetría lo hacen por volumen y costo, porque su carga varía con la estación y se paga por uso. Y la seguridad y el respaldo lo hacen porque un equipo de TI de cuatro personas no puede operar esos controles en sus propios servidores.
 
-### Componentes on-premise
+### 4.2.2.5 Componentes on-premise
 
 Los once componentes on-premise viven solo en las instalaciones del CLIENTE. La justificación de cada uno y su criterio:
 
@@ -143,7 +143,7 @@ Los once componentes on-premise viven solo en las instalaciones del CLIENTE. La 
 
 En el on-premise dominan la latencia y la conectividad. Los sensores, las impresoras, las balanzas y los terminales de cámara son periféricos que trabajan donde está la mercadería, y ninguno puede depender de un enlace que el caso describe como intermitente. Los tres enlaces y el switching tampoco podrían emplazarse en otro lugar: son la infraestructura que conecta el sitio con la nube y sostiene su red interna cuando esa conexión falla.
 
-### Componentes híbridos
+### 4.2.2.6 Componentes híbridos
 
 Los doce componentes híbridos tienen una parte en cada dominio. Para cada uno, la justificación explica qué parte vive en el sitio, qué parte vive en la nube y por qué se reparten así:
 
@@ -162,7 +162,7 @@ Los doce componentes híbridos tienen una parte en cada dominio. Para cada uno, 
 
 Los componentes híbridos siguen todos el mismo patrón: la parte que atiende la operación queda en el sitio y la parte que consolida queda en la nube, unidas por un mecanismo que tolera el corte. En el núcleo de bodega, Talca replica su base por DMS y los demás sitios sincronizan eventos por colas; en el terreno, el almacén local del dispositivo; y en la observabilidad, el buffer en disco de los colectores. Por eso la conectividad es el criterio dominante en siete de los doce: cada uno existe en dos lugares precisamente porque el enlace entre ellos no es confiable.
 
-### Autonomía de cada ámbito sin enlace
+### 4.2.2.7 Autonomía de cada ámbito sin enlace
 
 El emplazamiento anterior se verifica en lo que cada ámbito puede hacer cuando pierde el enlace. La Tabla [4](#tab:t29) declara esa autonomía y el tiempo en que cada ámbito vuelve a quedar sincronizado.
 

@@ -5,7 +5,7 @@
 
 Esta sección describe cómo se conectan los sitios, el terreno y la nube, identifica cada punto donde esa conexión o su infraestructura puede fallar, y declara cómo se resuelve cada falla o, cuando no se resuelve de forma automática, cuál es la contingencia. Su punto de partida es el caso: la conectividad actual de Puelche se corta con frecuencia y en algunos lugares no existe, por lo que la solución no puede suponer un enlace disponible y debe decir, para cada conexión, qué pasa cuando no lo está.
 
-### Conexiones entre sitios, terreno y nube
+### 4.2.5.1 Conexiones entre sitios, terreno y nube
 
 Los dos dominios fijos, la nube y el on-premise, se conectan por túneles VPN IPsec que terminan en el par de firewalls de cada sitio (D-01) y en el Transit Gateway de AWS en sa-east-1, con enrutamiento dinámico BGP. El mismo Transit Gateway enruta entre los sitios, de modo que Concepción y los cross-docking alcanzan Talca sin exponerla a Internet. Los caminos de acceso se distribuyen así:
 
@@ -80,7 +80,7 @@ La Tabla [13](#tab:superficie) delimita las únicas entradas desde redes externa
 
 La tabla excluye toda otra entrada desde fuera de la red del CLIENTE. En recuperación ante desastres se activan las mismas entradas en us-east-1. MDM, EDR, SII, Transbank, GIS, notificaciones y telemetría de flota son dependencias de salida, detalladas en el Formulario T-11.
 
-### Puntos de falla en los sitios y en los enlaces
+### 4.2.5.3 Puntos de falla en los sitios y en los enlaces
 
 Cada conexión se apoya en equipos del sitio que también pueden fallar. La Tabla [14](#tab:fallas-sitios) recorre esos puntos de falla, desde el enlace hasta la energía del recinto, e indica para cada uno el mecanismo que la resuelve y la contingencia si ese mecanismo no basta.
 
@@ -107,7 +107,7 @@ Cada conexión se apoya en equipos del sitio que también pueden fallar. La Tabl
 
 La tabla muestra que los firewalls van en par en los cinco sitios, porque RT-08.03 (Bases Técnicas Transversales, Cap. 8, p. 18) no admite cortafuegos en punto único de falla, y que los puntos únicos de falla que permanecen son el servidor de Concepción y el mini-PC y el switch de cada cross-docking, donde la redundancia no compensa su costo: la pérdida de sus enlaces se cubre con la autonomía local, y la falla de sus propios equipos, con la reposición y la resincronización indicadas en la tabla. Por el mismo fundamento, ese servidor, el mini-PC y el switch de los cross-docking operan con fuente única, excepción declarada a la exigencia de fuente redundante. La liberación sanitaria y el despacho no dependen de la nube. En la ventana de Talca, VM-02 se reinicia en otro nodo y otra impresora emite la etiqueta si falla la del andén. Los mecanismos de alta disponibilidad se detallan en la sección [4.2.4.3](11_j_despliegue.md#sub:3-alta-disponibilidad).
 
-### Puntos de falla en la nube, el terreno y las integraciones
+### 4.2.5.4 Puntos de falla en la nube, el terreno y las integraciones
 
 La Tabla [15](#tab:fallas-nube) completa el recorrido con los puntos de falla que están fuera de los sitios: la nube, el terreno y los sistemas de terceros.
 

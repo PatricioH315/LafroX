@@ -104,7 +104,7 @@ La cuenta de último recurso (sección [4.4.15](14_m_decisiones_adr.md#sub:adr-1
 
 Los portales de clientes, transportistas y proveedores siguen el mismo ciclo: su aplicación Angular se publica por ambiente en S3 privado y CloudFront, con la imagen de aplicación del mismo ambiente como backend. Las consolas Angular, en cambio, corren como contenedor en ECS Fargate tras el balanceador de aplicación privado (N-04).
 
-#### Artefacto y perfiles de ejecución
+#### 4.2.4.1.1 Artefacto y perfiles de ejecución
 
 La aplicación se construye una sola vez por versión como una imagen PHP 8.5 con Laravel 13 que contiene el código, el `vendor` resuelto desde `composer.lock`, PHP-FPM, el intérprete de línea de comandos y las extensiones que la solución usa: `pdo_pgsql`, `mbstring`, `intl`, `openssl`, `opcache`, `curl` para el SDK de AWS, `sockets` para el adaptador AMQP `php-amqplib`, la extensión de OpenTelemetry y `pcntl`, que solo usan los procesos de línea de comandos para terminar de forma ordenada al recibir la señal de detención. Un servidor web liviano acompaña a PHP-FPM en los perfiles HTTP. La misma imagen corre en todos los ambientes y en todos los sitios; lo que cambia es el perfil con que arranca, como muestra la Tabla [7](#tab:perfiles).
 
@@ -129,7 +129,7 @@ Cada perfil cumple este ciclo de vida:
 
 Así, ningún reinicio, escalado o despliegue deja un trabajo a medias.
 
-#### Liberación y reversión
+#### 4.2.4.1.2 Liberación y reversión
 
 Cada versión se libera con estrategia azul-verde: la versión nueva se despliega junto a la vigente y recibe tráfico de forma gradual, en etapas de canario, después de haberse demostrado el mismo procedimiento en Preproducción (RT-04.07; Bases Técnicas Transversales, Cap. 4, p. 11). La puesta en producción avanza por proceso, por sitio o por zona comercial, nunca como un evento único que afecte a la vez a la bodega, la preventa, el reparto y la facturación. En la sustitución del WMS de 2013 por olas, cada capacidad se activa además por sitio mediante indicadores de funcionalidad (*feature flags*), de modo que revertir una ola es apagar su indicador, sin volver a desplegar.
 
@@ -139,7 +139,7 @@ Si la falla de un despliegue se manifestara durante la ventana de despacho, la b
 
 Cada promoción ensaya además la compatibilidad de los mensajes pendientes. Un sitio puede volver de un corte de 24 horas con sobres publicados por la versión anterior, de modo que el consumidor de reconciliación acepta la versión vigente y la inmediatamente anterior del sobre JSON, y rechaza hacia la cola de mensajes fallidos cualquier versión que no reconozca, sin aplicarla. Preproducción reproduce ese caso —sitio emulado desconectado, promoción de la versión nueva y reconexión— antes de cada paso a producción.
 
-#### Transición al backend Laravel
+#### 4.2.4.1.3 Transición al backend Laravel
 
 La arquitectura lógica fija la implantación progresiva del backend (apartado 4.1). Su secuencia física es la siguiente:
 
@@ -150,7 +150,7 @@ La arquitectura lógica fija la implantación progresiva del backend (apartado 4
 5. Cada ola cierra verificando saldos de stock, cobros y folios contra el origen, y se revierte por sitio si falla un umbral acordado con el CLIENTE.
 6. La reversión devuelve el tráfico al escritor anterior solo después de detener el nuevo, conciliar los pendientes y comprobar que el esquema sigue legible por la versión previa.
 
-#### Calendario y cadencia
+#### 4.2.4.1.4 Calendario y cadencia
 
 El calendario de Puelche limita cuándo se puede intervenir la plataforma. El caso prohíbe intervenir los sistemas entre el 1 y el 25 de septiembre, en diciembre y durante el cierre contable de cada mes, prohíbe el paso a producción en todo septiembre y en diciembre, y exige indisponibilidad cero en la ventana de despacho (Bases Técnicas del caso, Cap. 10, restricción 8, p. 19, y Cap. 13, p. 23; RT-10.05 y RT-10.06; Bases Técnicas Transversales, Cap. 10, p. 22; Bases Técnicas del caso, Cap. 15, p. 27). La Tabla [8](#tab:jd02) cruza cada período con lo que admite.
 
@@ -228,11 +228,11 @@ Si Talca pierde sus dos caminos, la base local sigue siendo autoritativa y el sl
 
 La réplica por DMS y la reconciliación por eventos cumplen funciones distintas y no se mezclan. DMS copia las tablas del WMS de Talca (VM-02) a un esquema de réplica de solo lectura en Aurora, que sirve a la continuidad y a las consultas. Concepción y los cross-docking no replican sus bases por DMS: publican sus eventos mediante los brokers y SQS FIFO. El consumidor de reconciliación aplica esos sobres JSON a las tablas de dominio del estado central —stock consolidado, trazabilidad de lotes, pedidos, entregas y cobros—, y en la misma transacción registra la clave de origen del evento, formada por el sitio y el identificador único que el evento trae desde su captura. Una restricción de unicidad sobre esa clave impide aplicar dos veces el mismo evento, aunque SQS lo entregue de nuevo o llegue después de la ventana de deduplicación de la cola. Ninguna tabla de dominio se alimenta de la réplica DMS, y ningún evento escribe en el esquema de réplica.
 
-#### Conmutación y retorno
+#### 4.2.4.4.1 Conmutación y retorno
 
 La conmutación de región y el retorno siguen el procedimiento de la sección [4.3.2.5](06_e_sitio_secundario.md#sub:conmutacion-regional) (Tabla [4.3-6](#tab:4-3-6)): el enrutamiento hacia us-east-1 conmuta de forma automática y su retorno se ejecuta de forma coordinada tras la reconciliación, mientras la promoción de la base exige la autorización del CLIENTE. Si la contingencia afecta solo a la bodega de Talca, el WMS de Concepción (VM-C01) asume su carga con un RTO adicional de 1 a 2 horas. Los sitios de recuperación y sus amenazas comunes se analizan en la Tabla [4.3-3](#tab:4-3-3).
 
-#### Operación durante una contingencia regional
+#### 4.2.4.4.2 Operación durante una contingencia regional
 
 Mientras la región primaria no está disponible, la bodega y el terreno siguen operando contra sus bases locales y sus dispositivos, y los servicios en nube vuelven con la promoción de la réplica. La analítica y las consultas de geolocalización de personas, excluidas de us-east-1 por diseño (sección [4.3.2](06_e_sitio_secundario.md#sec:e-especificaciones-del-sitio-secundario-y-)), esperan el retorno; ninguna es un servicio crítico.
 

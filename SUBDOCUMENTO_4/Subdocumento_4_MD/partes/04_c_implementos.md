@@ -5,7 +5,7 @@
 
 Esta sección resume y analiza el equipamiento y el software que la solución requiere en las instalaciones del CLIENTE, en el terreno y en la plataforma de nube. El detalle de cada elemento, con su producto ofertado, su ubicación, su cantidad y su justificación, se entrega en el Formulario T-11. El equipamiento físico lo adquiere el CLIENTE, y el adjudicatario lo especifica, instala, integra y mantiene durante el contrato.
 
-### Síntesis del equipamiento por familia
+### 4.2.1.1 Síntesis del equipamiento por familia
 
 La Tabla [1](#tab:t26) cruza cada familia de equipamiento con el sitio donde se instala. Las cifras son las unidades en operación; la reserva se analiza a continuación de la tabla.
 
@@ -37,7 +37,7 @@ A las unidades en operación se suma la reserva del numeral 8.4 de las Bases Té
 
 Se proveen ocho estaciones nuevas para despacho, administración, planificación, calidad y TI. Los equipos existentes de los usuarios de oficina se incorporan a la gestión central con CrowdStrike Falcon, cifrado de disco, parches y control de extraíbles como condición de acceso por Verified Access (sección [4.4.16](14_m_decisiones_adr.md#sub:adr-16)).
 
-### Criterios de selección
+### 4.2.1.2 Criterios de selección
 
 Cada familia se especifica contra una condición del caso que el equipamiento de oficina no resiste:
 
@@ -52,7 +52,7 @@ En la sala técnica se aplica redundancia sin sobrecompra:
 - Concepción: el servidor se dimensiona a su propia bodega, sin sobrecompra, y sus switches de núcleo van en par porque es el sitio de recuperación on-premise.
 - Los cinco sitios: los firewalls van en par activo/pasivo, porque RT-08.03 (Bases Técnicas Transversales, Cap. 8, p. 18) no admite cortafuegos en punto único de falla. El servidor de Concepción, y el mini-PC y el switch de cada cross-docking, quedan como puntos únicos de falla aceptados, cubiertos por la operación autónoma del sitio y por la unidad de reserva que viaja en el camión de línea nocturno desde Talca.
 
-### Software y licenciamiento
+### 4.2.1.3 Software y licenciamiento
 
 El software de base que opera el adjudicatario es de código abierto y se organiza así:
 

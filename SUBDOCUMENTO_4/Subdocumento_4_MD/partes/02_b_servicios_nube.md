@@ -9,7 +9,7 @@ La plataforma de nube es Amazon Web Services. Todos los servicios se contratan e
 - Preferir servicios compatibles con estándares abiertos, para acotar el esfuerzo de salir de la plataforma.
 - Contratar en la región secundaria solo lo que la recuperación ante desastres necesita.
 
-### Servicios por función
+### 4.2.3.1 Servicios por función
 
 La Tabla [5](#tab:servicios-nube) agrupa los servicios contratados por la función que cumplen en la arquitectura y los asocia a los componentes del catálogo que los usan. El listado servicio por servicio, con su justificación y su cantidad, se entrega en el Formulario T-11.
 
@@ -35,7 +35,7 @@ La Tabla [5](#tab:servicios-nube) agrupa los servicios contratados por la funci�
 
 La tabla distingue los servicios de entrada, aplicación y datos. La aplicación corre en contenedores administrados; la única función Lambda autoriza las API REST. Los portales Angular se sirven desde S3 privado por CloudFront, y las consolas Angular desde Fargate. Las colas SQS de trabajos de Laravel están separadas de la cola FIFO de reconciliación; ElastiCache solo actúa como caché. El recorrido de acceso se precisa en la sección [4.2.5](02_c_conexiones.md#sec:conexiones).
 
-### Región secundaria y residencia de los datos
+### 4.2.3.2 Región secundaria y residencia de los datos
 
 La región us-east-1 no es una segunda producción. Solo contiene recursos para la recuperación:
 
@@ -45,7 +45,7 @@ La región us-east-1 no es una segunda producción. Solo contiene recursos para 
 
 La analítica y los datos de geolocalización de personas quedan fuera de esa región por diseño, con los resguardos de residencia de la sección [4.3.2](06_e_sitio_secundario.md#sec:e-especificaciones-del-sitio-secundario-y-).
 
-### Servicios que no se contratan
+### 4.2.3.3 Servicios que no se contratan
 
 Los registros de decisión descartan de forma expresa los siguientes servicios y productos, que no aparecen en la arquitectura:
 
@@ -55,11 +55,11 @@ Los registros de decisión descartan de forma expresa los siguientes servicios y
 - No se contratan servicios de trazas y métricas separados de CloudWatch, porque las Bases piden una sola plataforma de observabilidad para nube y on-premise.
 - No se autoaloja un gestor de secretos, porque Secrets Manager rota las credenciales sin el desellado manual que exigiría uno propio.
 
-### Modelo de contratación
+### 4.2.3.4 Modelo de contratación
 
 Los servicios se contratan por uso, con la capacidad base comprometida mediante Savings Plans y el peak de septiembre cubierto con capacidad efímera que se libera al terminar. Los ambientes de Desarrollo, QA y Preproducción se reducen o apagan fuera del horario de uso. La reversibilidad está asegurada por la elección de servicios: Aurora es compatible con PostgreSQL, los datos analíticos se guardan en formato Parquet, y Keycloak, Laravel, PostgreSQL y RabbitMQ son de código abierto, de modo que un traslado a otra plataforma conserva la aplicación y los datos y se concentra en sustituir los servicios administrados de AWS que la solución consume. Los montos de estos servicios se declaran en la Oferta Económica y no en este documento.
 
-### Topología de los servicios
+### 4.2.3.5 Topología de los servicios
 
 La Figura [4](02_b_servicios_nube.md#fig:nube) ubica en la topología de AWS los servicios de la Tabla [5](#tab:servicios-nube) y los recursos de la región secundaria: el borde global, la región primaria sa-east-1 con sus dos zonas de disponibilidad y la región de recuperación us-east-1. Los servicios de gobierno de cuentas de la tabla (Control Tower, Organizations, Cost Explorer y Budgets) se aplican sobre las cuentas y no ocupan un lugar en la topología, por lo que no se dibujan.
 
