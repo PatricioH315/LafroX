@@ -4,7 +4,6 @@ $projectDirectory = $PSScriptRoot
 $outputDirectory = Join-Path $projectDirectory '04/salida'
 $sources = @(
     @{ Archivo = 'main.tex'; Nombre = 'LAFROX-Subdocumento4'; Carpeta = '.'; Salida = '.' },
-    @{ Archivo = 'main_logica.tex'; Nombre = 'LAFROX-Subdocumento4.1'; Carpeta = '.'; Salida = '.' },
     @{ Archivo = 'anexos_logica.tex'; Nombre = 'LAFROX-Subdocumento4.1-Anexos'; Carpeta = '04'; Salida = 'salida' },
     @{ Archivo = 'formulario_T11.tex'; Nombre = 'LAFROX-Formulario-T-11'; Carpeta = '04'; Salida = 'salida' },
     @{ Archivo = 'anexo_4B.tex'; Nombre = 'LAFROX-Anexo-4B'; Carpeta = '04'; Salida = 'salida' }

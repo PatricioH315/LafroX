@@ -120,7 +120,7 @@ La rama contiene únicamente las carpetas 00 y 04, además de los metadatos inte
 | arquitectura-alvaro | `Productos/plantilla-latex/lafrox-portada.tex` | [00/plantilla/logica/lafrox-portada.tex](../../00/plantilla/logica/lafrox-portada.tex) | Copia exacta |
 | Alex_LASECUELA | `SUBDOCUMENTO_4/Subdocumento_4_LateX/lafrox.cls` | [00/plantilla/fisica/lafrox.cls](../../00/plantilla/fisica/lafrox.cls) | Copia exacta |
 | Alex_LASECUELA | `SUBDOCUMENTO_4/Subdocumento_4_LateX/lafrox-portada.tex` | [00/plantilla/fisica/lafrox-portada.tex](../../00/plantilla/fisica/lafrox-portada.tex) | Copia exacta |
-| arquitectura-alvaro | `main.tex` | [04/main_logica.tex](../../04/main_logica.tex) | Rutas / ensamblado |
+| arquitectura-alvaro | `main.tex` | Ensamblador independiente retirado; ver `RETIRO_PDF_LOGICO_INDEPENDIENTE.md` | Historial de rutas / ensamblado |
 | arquitectura-alvaro | `04_arquitectura/entrega_2/latex/anexos_4.1.tex` | [04/anexos_logica.tex](../../04/anexos_logica.tex) | Rutas / ensamblado |
 | Alex_LASECUELA | `SUBDOCUMENTO_4/Subdocumento_4_LateX/LAFROX-Formulario-T-11.tex` | [04/formulario_T11.tex](../../04/formulario_T11.tex) | Rutas / ensamblado |
 | Alex_LASECUELA | `SUBDOCUMENTO_4/Subdocumento_4_LateX/LAFROX-Subdocumento4-Anexos.tex` | [04/anexo_4B.tex](../../04/anexo_4B.tex) | Rutas / ensamblado |
