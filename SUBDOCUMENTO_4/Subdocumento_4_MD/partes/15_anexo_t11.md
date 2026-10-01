@@ -3,8 +3,8 @@
 **Metadatos de portada**
 
 - Documento: Propuesta Técnica
-- Subtítulo: Formulario T-11 --- Especificaciones técnicas ofertadas
-- Alcance: Subdocumento 4 --- Arquitectura lógica y física de la solución
+- Subtítulo: Formulario T-11 — Especificaciones técnicas ofertadas
+- Alcance: Subdocumento 4 — Arquitectura lógica y física de la solución
 - Formulario: Formulario T-11
 - Fecha: 05 de octubre de 2026
 - Versión: 2.0
@@ -18,7 +18,7 @@ La Tabla [28](#tab:t11) reúne todos los elementos ofertados, agrupados por fami
 <a id="tab:t11"></a>
 **Tabla 1.** Formulario T-11: especificaciones técnicas ofertadas
 | Componente | Producto / servicio ofertado | Ubicación / Lugar | Cantidad | Justificación |
-| --- | --- | --- | --- | --- |
+| — | — | — | — | — |
 | Infraestructura de cómputo y almacenamiento |  |  |  |  |
 | Servidor del clúster | Servidor de rack de 2U y doble procesador, Dell PowerEdge R7625 o HPE DL385 Gen11: 2 EPYC 9124 de 16 núcleos, 128 GB DDR5 ECC ampliables, RAID 1 para el sistema y RAID 10 con 4 NVMe de 1,92 TB y repuesto en caliente, con bahías para duplicar los discos, 2 puertos de 10 GbE y 2 fuentes de 800 W | CD Talca, gabinete R01 | 3 | Tres nodos iguales dejan capacidad para todas las máquinas virtuales si falla uno (RT-03.14; Bases Técnicas Transversales, Cap. 3, p. 9), con doble fuente en circuitos distintos (RT-08.04; Bases Técnicas Transversales, Cap. 8, p. 18), y los discos NVMe en RAID 10 superan con holgura las operaciones de disco del peak de septiembre; el crecimiento de 3 veces se absorbe agregando discos y memoria en el mismo nodo. |
 | D-05 — Respaldo local | NAS con bloqueo de escritura WORM y cifrado de disco | CD Talca, gabinete R01 | 1 | Es la copia local de recuperación rápida del esquema 3-2-1-1-0: restaura el WMS en hasta 4 h sin depender del enlace (RNF-20.06), y complementa la copia inmutable en nube sin reemplazarla. |

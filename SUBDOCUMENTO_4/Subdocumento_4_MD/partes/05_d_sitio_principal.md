@@ -3,9 +3,6 @@
 <a id="cap:4-3-data-center"></a>
 # 4.3 Data center
 
-{4.3-}
-{0}
-
 <a id="sec:d-especificaciones-del-sitio-principal-on-"></a>
 ## 4.3.1 Especificaciones Data Center Primaria
 

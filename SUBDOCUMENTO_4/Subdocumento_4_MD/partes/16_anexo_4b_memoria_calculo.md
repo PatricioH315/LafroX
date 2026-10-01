@@ -3,17 +3,13 @@
 **Metadatos de portada**
 
 - Documento: Propuesta Técnica
-- Subtítulo: Anexo 4.B --- Memoria de cálculo del dimensionamiento
-- Alcance: Subdocumento 4 --- Anexos
+- Subtítulo: Anexo 4.B — Memoria de cálculo del dimensionamiento
+- Alcance: Subdocumento 4 — Anexos
 - Formulario: Anexo 4.B
 - Fecha: 05 de octubre de 2026
 - Versión: 2.0
 
 # Anexo 4.B. Memoria de cálculo del dimensionamiento
-
-{4.B.}
-{anexo4B.}
-{0}
 
 <a id="sec:anexo-4b-entradas"></a>
 ## 4.B.1 Entradas, requisitos, parámetros y supuestos
@@ -25,7 +21,7 @@ La Tabla [29](#tab:anexo-4b-hechos) concentra los hechos que alimentan las fórm
 <a id="tab:anexo-4b-hechos"></a>
 **Tabla 29.** Hechos del caso utilizados
 | Dato | Valor | Fuente |
-| --- | --- | --- |
+| — | — | — |
 | Volumetría comercial | 31.000 pedidos; 260.000 líneas; 2,4 millones de unidades mensuales | Bases Técnicas del caso, Cap. 2, p. 4 |
 | Entregas | ≈ 1.400 normales y ≈ 2.600 en septiembre | Bases Técnicas del caso, Cap. 14, p. 24 |
 | Documentos tributarios electrónicos (DTE) y transporte | ≈ 34.000 documentos tributarios electrónicos, ≈ 2.100 viajes de camión y ≈ 420.000 km recorridos al mes | Bases Técnicas del caso, Cap. 14, p. 24 |
@@ -39,7 +35,7 @@ La Tabla [30](#tab:anexo-4b-parametros) fija los valores que impone la propuesta
 <a id="tab:anexo-4b-parametros"></a>
 **Tabla 30.** Parámetros de diseño
 | Parámetro | Valor | Justificación y uso | Confirmación |
-| --- | --- | --- | --- |
+| — | — | — | — |
 | Operaciones de flujo | 2 por línea: lectura de ubicación o lote y confirmación; 5 por entrega: estado, evidencia, documento, cobro y cierre; 4 por cross-docking: recepción, escaneo, desconsolidación y despacho | Flujo del apartado 4.1 | RT-09.06 (Bases Técnicas Transversales, Cap. 9, p. 21) |
 | Preventa | 2 consultas por visita y 1 operación por línea | Stock, crédito y pedido | Contrato y carga |
 | Concentración horaria | SV-04 = 2,0, sólo en la hora cargada | Frío, despacho, reparto y sincronización | Perfil de 24 h |
@@ -56,7 +52,7 @@ La Tabla [31](#tab:anexo-4b-supuestos) declara el fundamento, impacto y validaci
 <a id="tab:anexo-4b-supuestos"></a>
 **Tabla 31.** Supuestos de volumen
 | Código | Qué suponemos y por qué | Si resulta equivocado | Cómo y cuándo se valida |
-| --- | --- | --- | --- |
+| — | — | — | — |
 | SV-01 | Un pedido genera una entrega; 31.000/1.400 produce 22,14 días y concuerda con 2.100/96. | Cambian evidencia, mensajes y almacenamiento. | Conciliación ERP–guías–entregas en Etapa 1. |
 | SV-02 | Septiembre escala los flujos de volumen y diciembre no supera su exigencia; el factor 1,857 es cálculo. | Falta capacidad en el nuevo peak. | Serie mensual antes del congelamiento. |
 | SV-03 | Talca prepara 2/3 y Concepción 1/3 por superficies y función de abastecimiento adicional. | Faltan terminales, WMS o enlace en el centro subestimado. | Exportación WMS por centro. |
@@ -81,7 +77,7 @@ La Tabla [32](#tab:anexo-4b-horario) conserva el perfil hora por hora que produc
 <a id="tab:anexo-4b-horario"></a>
 **Tabla 32.** Perfil horario por lugar de proceso
 | Hora | Talca N/P | Concepción N/P |  | Nube N/P | Portal N/P | Total N/P |
-| --- | --- | --- | --- | --- | --- | --- |
+| — | — | — | — | — | — | — |
 | 00:00 | 0,54 / 1,01 | 0,27 / 0,50 | 0,00 / 0,00 | 0,74 / 1,37 | 0,00 / 0,00 | 1,55 / 2,88 |
 | 01:00 | 0,54 / 1,01 | 0,27 / 0,50 | 0,00 / 0,00 | 0,74 / 1,37 | 0,00 / 0,00 | 1,55 / 2,88 |
 | 02:00 | 0,54 / 1,01 | 0,27 / 0,50 | 0,00 / 0,00 | 0,74 / 1,37 | 0,00 / 0,00 | 1,55 / 2,88 |
@@ -152,7 +148,7 @@ La dimensión 11 cuenta los quince contratos INT-01 a INT-15 del apartado 4.1. L
 <a id="tab:anexo-4b-integraciones"></a>
 **Tabla 33.** Mensajes por integración
 | Integración | Normal/día | Peak/día | Origen del volumen |
-| --- | --- | --- | --- |
+| — | — | — | — |
 | INT-01 Pedido preventa y consulta | 1.400 | 2.600 | 1.400 × 1; 2.600 × 1, por SV-01 |
 | INT-02 Entrega, POD y cobro | 7.000 | 13.000 | 1.400 × 5; 2.600 × 5 |
 | INT-03 Eventos de bodega a nube | 58.710 | 109.032 | 260.000 ÷ 22,14 × 5; peak × 1,857 |
@@ -207,7 +203,7 @@ La base local contiene maestros, stock, lotes presentes y movimientos del horizo
 <a id="tab:anexo-4b-vm"></a>
 **Tabla 34.** Requerimiento por VM real del diseño
 | VM o equipo | Requerido actual | Requerido a 3× | Sitio |
-| --- | --- | --- | --- |
+| — | — | — | — |
 | VM-01 | 3 vCPU; 4 GB; 50 GB; 25 IOPS | 3 vCPU; 4 GB; 50 GB; 73 IOPS | Talca |
 | VM-02 | 3 vCPU; 6 GB; 20 GB; 25 IOPS | 3 vCPU; 8 GB; 31 GB; 73 IOPS | Talca |
 | VM-03 | 2 vCPU; 4 GB; 50 GB; 25 IOPS | 2 vCPU; 4 GB; 50 GB; 73 IOPS | Talca |
@@ -244,7 +240,7 @@ Por separado, RT-09.03 (Bases Técnicas Transversales, Cap. 9, p. 21) exige 3×:
 <a id="tab:anexo-4b-plan"></a>
 **Tabla 35.** Plan de capacidad
 | Componente | Año 1 | Año 3 | 3× | Acción |
-| --- | --- | --- | --- | --- |
+| — | — | — | — | — |
 | WMS de Talca, TPS peak | 3,02 | 3,54 | 9,06 | Revisar CPU e IOPS trimestralmente |
 | Nube, TPS peak / tareas | 14,66 / 2 | 17,03 / 2 | 43,98 / 4 | Escalamiento y prueba trimestral |
 | Evidencia anual | 87,72 GB | 101,87 GB | 263,16 GB | Escalar S3 y retención |

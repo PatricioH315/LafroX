@@ -1,5 +1,7 @@
 # Subdocumento 4 — Markdown
 
+Versión en un solo archivo: [Subdocumento_4_completo.md](Subdocumento_4_completo.md) (las 13 partes unidas en el orden de abajo).
+
 | Orden | Número/sección (como sale en el PDF) | Título | Archivo .md | Archivo .tex fuente |
 |---:|---|---|---|---|
 | 1 | 4.2 | Arquitectura física | [02_0_arquitectura_fisica.md](partes/02_0_arquitectura_fisica.md) | [02_0_arquitectura_fisica.tex](../Subdocumento_4_LateX/04_arquitectura_fisica/partes/02_0_arquitectura_fisica.tex) |
