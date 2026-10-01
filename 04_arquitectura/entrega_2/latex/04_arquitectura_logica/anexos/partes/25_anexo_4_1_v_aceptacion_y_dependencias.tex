@@ -1,0 +1,22 @@
+\clearpage
+\section*{Anexo 4.1-V --- Condiciones de aceptación y dependencias}
+\phantomsection
+\label{anx:V}
+\addcontentsline{toc}{section}{Anexo 4.1-V --- Condiciones de aceptación y dependencias}
+La propuesta conserva los requisitos obligatorios y distingue diseño, aprobación y ensayo. Las condiciones siguientes requieren evidencia del CLIENTE o cotejo integrado; su registro no afirma que exista aprobación ni consulta enviada. Las pruebas se ejecutan en Preproducción y antes de cada ola aplicable, con resultados observados y responsables identificados.
+
+\begin{tablalafrox}{Decisiones necesarias para aceptación}{tab:condiciones-aceptacion}{F{0.14} F{0.28} F{0.31} Y}{\cab{ID} & \cab{Decisión o dependencia} & \cab{Alternativa y evidencia requerida} & \cab{Responsable}}
+AL-DTE-01 & Continuidad de guía en 96 salidas. & Emisor ERP disponible y evidencia local, o contingencia tributaria expresamente autorizada; ensayo con carga cambiada. & Operaciones, Tributación y ERP. \\
+AL-BR-01 & Pérdida del sitio aislado. & Protección externa independiente con desfase $\leq$ 15 min, o resolución formal del escenario; AL-DR-01. & Arquitectura, Infraestructura y CLIENTE. \\
+AL-MAP-01 & Correspondencia 3.3/3.4/4.1/4.2. & Inventario N cotejado con esquema, nombres y realizaciones exactas. & Arquitectura y dueños de capítulos. \\
+AL-POD-01 & Perfil de receptor y validez de acuse. & Procedimiento por cliente y evidencia conforme al canal aplicable. & Tributación, Comercial y Seguridad. \\
+AL-SLA-01 & Ventanas efectivas de terceros. & Acuerdos de contraparte, cuotas, mantenimiento y escalamiento en G/H. & Integración y CLIENTE. \\
+AL-REV-01 & Revisión humana y A-6. & Identificar persona, sección, diagramas y qué verificó; acta y declaración consolidadas. & Equipo responsable del Subdocumento 4. \\
+\end{tablalafrox}
+{\footnotesize Fuente: requisitos y protocolos citados en 4.1; condiciones de aceptación de la propuesta.\par}
+
+La propuesta de continuidad del ERP mantiene un único emisor lógico y un solo registro de documentos: un mecanismo de alta disponibilidad o recuperación del proveedor debe conservar sus claves y folios. La ACL admite consultar resultados y descargar evidencia, sin cambiar el ERP ni emitir en nombre de otro sistema. Si el proveedor no puede cumplir y no existe contingencia aplicable, la salida afectada permanece bloqueada y el requisito de continuidad no se considera satisfecho.
+
+La protección de datos críticos distingue enlace ordinario caído de aislamiento absoluto. Un camino independiente que sigue operativo permite sacar la copia durable; no debe compartir el dominio de falla del sitio. Si se pierden simultáneamente todos los medios y el origen, la brecha no desaparece al llamarla modo offline. El ensayo y la decisión formal mantienen el objetivo RPO de 15 minutos; la arquitectura física debe realizar la protección que se seleccione.
+
+Las condiciones AL-OFF-01, AL-PERF-01 y AL-POD-01 tienen protocolo reproducible. Su ejecución se programa en la EDT y plan de calidad; la ausencia de resultados en una oferta previa a construir no se presenta como prueba ya aprobada. El equipo revisa el consolidado y asume el diseño antes de entregar; la herramienta no firma esa revisión.

@@ -1,4 +1,6 @@
 \section*{Anexo 4.1-N --- Correspondencia de componentes lógicos}
+\phantomsection
+\label{anx:N}
 \addcontentsline{toc}{section}{Anexo 4.1-N --- Correspondencia de componentes lógicos}
 La matriz identifica los doce módulos y los servicios transversales para cotejarlos con el esquema y explicación de solución exigidos en 3.3--3.4 y con su realización física en 4.2. El texto de trabajo disponible del capítulo 3 conserva otra numeración: 3.2.1 contiene alcance funcional de Etapa 1, 3.2.2 infraestructura y 3.3.1 Etapa 2. Estas localizaciones permiten verificar la capacidad existente, pero no sustituyen la adecuación formal de ese capítulo. La correspondencia física es una asignación lógica requerida; su aceptación exige el identificador y la evidencia del componente implantado en el 4.2 integrado.
 
@@ -21,4 +23,44 @@ M12 & 3.3.1 Telemetría & INT-15 & Adaptador de solo lectura y consulta de ruta 
 La tabla cubre 12 de 12 módulos, no el 100\% de los componentes del capítulo integrado. Para las capacidades transversales de 3.2.2 se exige correspondencia adicional: presentación y borde con aplicaciones, CloudFront y acceso privado; puerta de enlace con API central y puerta local; eventos con RabbitMQ, shipper y SQS; datos con bases, réplica de lectura y objetos; identidad con Keycloak y verificador local; secretos y auditoría con sus servicios de custodia; observabilidad con OpenTelemetry/ADOT, alarma local y CloudWatch. Notificaciones se traza a INT-11; el motor de optimización de M4 conserva contrato separado y no se presume implementado en PHP por la elección del backend.
 
 El cierre AL-MAP-01 requiere inventariar cada caja de los diagramas 3.3 y 4.1, asignarle identificador estable, contrato, responsable y componente exacto de 4.2, y efectuar la comprobación inversa para detectar infraestructura sin función. La cobertura se calcula como componentes con ambos enlaces verificados dividido por el inventario completo; una referencia genérica a 4.2 no cuenta como enlace verificado. No se declara 100\% hasta integrar las versiones aprobadas de los tres apartados.
-
+\subsection*{Inventario trazable de capacidades transversales}
+Los siguientes 37 identificadores complementan los doce módulos: el inventario lógico tiene 49 unidades verificables. La capacidad del capítulo 3 se cita según su localización disponible; la última columna especifica la obligación que debe realizar 4.2, no acredita su implantación. AL-MAP-01 exige completar el identificador físico exacto y verificar ambos sentidos antes del cierre integrado.
+\begin{tablalafrox}{Inventario transversal y correspondencia requerida}{tab:inventario-transversal}{F{0.16} F{0.23} F{0.22} F{0.15} Y}{\cab{ID} & \cab{Componente} & \cab{Capacidad} & \cab{Contrato} & \cab{Obligación en 4.2}}
+UI-MOV & Apps Kotlin / Room & 3.2.1 preventa y entrega & INT-01/02 & M3/M6/M7/M8 \\
+UI-HHT & Terminales de bodega & 3.2.1 preparación & INT-03 / API local & M1/M2/M5 \\
+UI-WEB & Portales Angular & 3.2.2 administración; 3.3.1 portales & API autorizada & Roles por empresa \\
+BOR-PUB & CloudFront / WAF / Shield & 3.2.2 seguridad & HTTPS & Entrada pública única \\
+BOR-B2B & Superficie AS2 & 3.3.1 canal moderno & INT-08 & Contrapartes registradas \\
+GW-CENT & REST API / authorizer & 3.2.2 plataforma & API / sincronización & ADR-13 \\
+GW-LOCAL & Puerta API de sitio & 3.2.1 WMS & INT-03 & Validación sin WAN \\
+AUTH-CENT & Keycloak & 3.2.2 seguridad & INT-13 / OIDC & Autoridad de identidad \\
+AUTH-LOCAL & Verificador de turnos & 3.2.2 continuidad & Manifiesto firmado & PIN, turno y sitio \\
+WMS-SITE & Perfil WMS local & 3.2.1 WMS & INT-03 & Un escritor por sitio \\
+INT-BROKER & RabbitMQ & 3.2.2 integración & AMQP & Persistencia y DLQ \\
+INT-SHIPPER & Shipper local a nube & 3.2.2 integración & JSON / SQS & Acuse después de envío \\
+INT-CONSUMER & Consumidor PHP & 3.2.2 integración & AsyncAPI / JSON & Persistir antes de acuse \\
+INT-JOBS & Trabajadores Laravel & 3.2.2 ERP & Colas internas & ERP-sync aislado \\
+INT-SCHED & Planificador & 3.2.2 administración & Tareas versionadas & Un líder por ambiente \\
+INT-ACL & Adaptador ERP & 3.2.2 ERP / DTE & INT-06/07 & ERP único emisor \\
+INT-EDI & OpenAS2 / perfiles & 3.3.1 canal moderno & INT-08 & MDN no es acuse comercial \\
+INT-GIS & Adaptador de mapas & 3.2.1 rutas & INT-10 & Tiempo máximo / precarga \\
+INT-OPT & Optimizador M4 & 3.2.1 y 3.3.1 rutas & Trabajo versionado & Restricciones de ruta \\
+INT-GPS & Adaptador de flota & 3.3.1 telemetría & INT-15 & Solo lectura \\
+INT-NOTIF & Notificaciones & 3.2.2 administración & INT-11 & Vigencia por canal \\
+INT-IOT & Captura térmica local & 3.2.1 frío & INT-05 & Bloqueo local \\
+DAT-OLTP & PostgreSQL / PostGIS & 3.2.1 inventario & Repositorios propios & Autoridad por sitio \\
+DAT-CDC & Réplica de Talca & 3.2.2 continuidad & INT-12 & Lectura, no doble escritor \\
+DAT-OLAP & DynamoDB / Glue / S3 / Redshift & 3.3.1 analítica & ETL / eventos & Separado de OLTP \\
+DAT-OBJ & Objetos POD / DTE & 3.2.1 entrega & Hash y objeto & Retención por dominio \\
+DAT-CACHE & Redis central & 3.2.2 plataforma & Lecturas autorizadas & No reserva stock \\
+DAT-LOCAL & Room / cola cifrada & 3.2.1 movilidad & UUID / sincronización & Separar foto y pendientes \\
+SEC-SECRETS & Custodia de claves & 3.2.2 seguridad & Identidad de servicio & Rotación segregada \\
+SEC-AUDIT & Auditoría inalterable & 3.2.2 administración & Evento de decisión & Sujeto, regla y resultado \\
+SEC-SIEM & Detección y correlación & 3.2.2 seguridad & Alertas & Casos Q/R \\
+OBS-COLLECT & OpenTelemetry / ADOT & 3.2.2 observabilidad & INT-14 / OTLP & Buffer de 24 horas \\
+OBS-LOCAL & Alarmas del sitio & 3.2.2 continuidad & Alerta local & No depende de WAN \\
+OBS-CENT & CloudWatch & 3.2.2 observabilidad & INT-14 & Plataforma única \\
+DEV-PIPE & CI/CD y SBOM & 3.2.2 plataforma & Artefacto firmado & Promoción por contrato \\
+DEV-IAC & Terraform / Ansible & 3.2.2 infraestructura & Estado y configuración & Propietario único \\
+DEV-MDM & Gestión de terminales & 3.2.2 seguridad & Enrolamiento & Política y borrado \\
+\end{tablalafrox}

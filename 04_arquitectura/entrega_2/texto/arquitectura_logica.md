@@ -1,8 +1,10 @@
 # 4. Introducción a la Arquitectura lógica y física de la solución
 
-El capítulo 4 explica cómo la solución sostiene la operación distribuida de Puelche. Este fragmento desarrolla la arquitectura lógica del apartado 4.1 y la conecta con las capacidades del capítulo 3, el modelo de datos del capítulo 5 y los contratos de integración. El apartado 4.2 debe acreditar dónde se ejecuta cada componente; el 4.3, la estrategia de centros de datos. El registro ADR y el Formulario T-11 acompañan la arquitectura integrada.
+El capítulo 4 explica cómo la solución sostiene la operación distribuida de Puelche. La arquitectura lógica define las responsabilidades, los datos y los contratos que permiten ejecutar las capacidades del capítulo 3; la arquitectura física acredita su emplazamiento y continuidad, y la estrategia de centros de datos completa su recuperación. Esta descripción se relaciona con el modelo de datos del capítulo 5, el registro ADR y el Formulario T-11 de la arquitectura integrada.
 
 ## 4.1 Arquitectura lógica
+
+Los anexos A–N detallan eventos, módulos, interfaces, reglas y correspondencias. O contiene las decisiones lógicas fechadas; P, las tecnologías y su actualización; Q y R, amenazas y controles; S, los puntos de vista y sus reglas de correspondencia; T, el desempeño; U, la evidencia documental; y V, las condiciones de aceptación que requieren intervención del CLIENTE. El archivo independiente de anexos comienza con un catálogo navegable: cada entrada identifica la sección que la utiliza y el requisito que respalda. Los identificadores se mantienen aunque cambie una página.
 
 Este apartado desarrolla las responsabilidades y los contratos de la solución que deben corresponder al esquema y explicación de los apartados 3.3 y 3.4. La correspondencia se establece por capacidad: recepción e inventario (M1–M2), preventa y planificación (M3–M4), preparación y reparto (M5–M6), rendición y devoluciones (M7–M8), calidad y analítica (M9–M10), canal moderno y flota (M11–M12). El emplazamiento, las conexiones y su capacidad corresponden a 4.2; los centros de datos, a 4.3. Los catálogos extensos se entregan en los anexos 4.1-A a 4.1-N. El Anexo N identifica las capacidades del capítulo 3 disponible y la realización requerida de cada módulo; distingue esa cobertura lógica del cotejo completo que exige el capítulo integrado.
 
@@ -24,7 +26,9 @@ Los principios que gobiernan el diseño son los siguientes:
   - **Recuperación y reconciliación.** RT-07.04 exige RTO $\leq$ 4 horas y RPO $\leq$ 15 minutos para los servicios críticos. La retención local permite reconciliar al recuperar el enlace, siempre que sobreviva el sitio; no protege por sí sola frente a su destrucción durante el corte. El Anexo 4.1-M define la prueba y la brecha de protección externa que debe resolverse sin rebajar el requisito. Los ambientes, medios de respaldo y conectividad redundante corresponden a 4.2.
   - **Operación sostenible para cuatro personas.** Las herramientas, los procedimientos y el soporte deben permitir que el equipo TI de Puelche administre la solución con el apoyo del adjudicatario durante todo el contrato.
 
-La descripción sigue el marco TOGAF y la organización de vistas de ISO/IEC/IEEE 42010:2022 (International Organization for Standardization [ISO], 2022). La vista lógica define las responsabilidades de los componentes y sus relaciones con los procesos, los datos, la seguridad y las integraciones. Cada decisión arquitectónica debe conservar su justificación, las alternativas consideradas y los requisitos que la sustentan (PUCV, 2026b, cap. 2, p. 6; RT-02.04).
+La descripción sigue el marco TOGAF y la organización de vistas de ISO/IEC/IEEE 42010:2022 (International Organization for Standardization [ISO], 2022a). La vista lógica define las responsabilidades de los componentes y sus relaciones con los procesos, los datos, la seguridad y las integraciones. Cada decisión arquitectónica debe conservar su justificación, las alternativas consideradas y los requisitos que la sustentan (PUCV, 2026b, cap. 2, p. 6; RT-02.04).
+
+Las decisiones tecnológicas se registran con alternativas y criterios en el Anexo 4.1-O; el soporte y la actualización durante el contrato se especifican en el Anexo 4.1-P.
 
 ### 4.1.2 Principios de integración
 
@@ -51,32 +55,21 @@ El modelo distingue seis instalaciones: los CD de Talca y Concepción, las plata
 
 ### 4.1.3 Capas de la arquitectura
 
-Las ocho capas separan la interacción con las personas, las reglas de negocio y la persistencia. Seguridad y observabilidad atraviesan el conjunto. La Tabla 4.1 permite ubicar cada responsabilidad antes de revisar sus componentes.
+Las ocho capas separan la interacción con las personas, las reglas de negocio y la persistencia. Seguridad y observabilidad atraviesan el conjunto. La vista general permite ubicar cada responsabilidad antes de revisar sus componentes; el inventario trazable se reúne en el Anexo 4.1-N.
 
-*Tabla 4.1 — Mapa de capas de la arquitectura lógica*
-
-| Capa | Nombre | Responsabilidad principal |
-| — | — | — |
-| 1 | Presentación | Aplicaciones móviles, terminales de bodega, portales y consolas. |
-| 2 | Borde y exposición | Protección del acceso, contenido estático y recepción segura de tráfico. |
-| 3 | Puerta de enlace | Autenticación de APIs, contratos, cuotas y correlación. |
-| 4 | Lógica de negocio | Reglas y procesos de los módulos M1–M12. |
-| 5 | Integración y eventos | Colas, hub EDI y adaptadores de los sistemas externos. |
-| 6 | Acceso a datos | Persistencia transaccional, analítica, documental y caché. |
-| 7 | Seguridad transversal | Identidad, secretos, cifrado y auditoría. |
-| 8 | Observabilidad transversal | Métricas, registros, trazas y alertas de operación. |
+Presentación reúne las superficies de trabajo; borde protege su entrada; puerta de enlace valida solicitudes; negocio decide por módulo; integración intercambia contratos; acceso a datos persiste por propietario. Seguridad y observabilidad atraviesan esas seis responsabilidades.
 
 *Fuente: elaboración propia de LafroX a partir de Bases Técnicas Transversales, numeral 2.1.*
 
 Las capas 7 y 8 atraviesan las demás; no duplican reglas de negocio.
 
-La arquitectura se presenta primero mediante su vista general completa (Figura 4.1) y después mediante una síntesis de sus ocho capas (Figura 4.2). Ambas vistas se complementan para relacionar las funciones de negocio con los componentes que las sostienen.
+La arquitectura se presenta primero mediante su vista general completa (Figura Figura 4.1) y después mediante una síntesis de sus ocho capas (Figura Figura 4.2). Ambas vistas se complementan para relacionar las funciones de negocio con los componentes que las sostienen.
 
-![Vista general completa de la arquitectura lógica](<../../../Diagramas/arquitectura_logica_actual/cambios laravel/ARQL-01_Vision_general.png>)
+![Vista general completa de la arquitectura lógica](<../../../Diagramas/arquitectura_logica_actual/cambios laravel/ARQL-01_Vision_general_consolidada.pdf>)
 
 *Vista general completa de la arquitectura lógica*
 
-*Fuente: elaboración propia de LafroX.*
+*Fuente: adaptación y consolidación del modelo general aportado por Tomás Pérez; LafroX.*
 
 La vista general muestra cómo cada actor accede a la solución desde su aplicación, portal o consola y se relaciona con los módulos M1–M12. Se lee desde las personas hacia las reglas de negocio, las integraciones y los datos, distinguiendo los componentes de nube y los del sitio. Las conexiones representan intercambios sujetos a autorización, no acceso directo a las bases de datos. Seguridad y observabilidad acompañan todo el recorrido; sus controles y las condiciones de operación sin conexión se desarrollan en los apartados siguientes.
 
@@ -112,13 +105,13 @@ La capa de borde delimita la entrada pública y la entrada de dispositivos de te
 
 #### 4.1.21.3 Capa de puerta de enlace de servicios (Capa 3)
 
-Amazon API Gateway concentra la publicación de servicios detrás de la entrada pública de CloudFront. El diseño requiere validar la identidad emitida por Keycloak, controlar esquema, cuotas y tasa de solicitudes, y propagar un `transaction_id`. La modalidad de API y su mecanismo de autorización deben concretarse al implementar; no se presupone que todas las modalidades ofrezcan las mismas capacidades de forma nativa. El recorrido físico y el bloqueo efectivo del acceso directo al origen se deben comprobar en 4.2.
+Amazon API Gateway concentra la publicación de servicios detrás de la entrada pública de CloudFront. El diseño requiere validar la identidad emitida por Keycloak, controlar esquema, cuotas y tasa de solicitudes, y propagar un `transaction_id`. Se selecciona REST API con authorizer REQUEST que verifica firma, emisor, audiencia, expiración y alcance del JWT de Keycloak. Las operaciones sensibles no reutilizan autorizaciones almacenadas; el módulo verifica además recurso y revocación conocida. La integración privada usa VPC Link V2 hacia ALB; la validación básica de Gateway se complementa con el esquema completo en Laravel (AWS, s. f.-a, s. f.-b, s. f.-c; Anexo 4.1-O, ADR-13). El recorrido físico y el bloqueo efectivo del acceso directo al origen se deben comprobar en 4.2.
 
 La capa publica dos conjuntos de APIs: las de negocio (`/v1`) y las de sincronización offline (`/sync/v1`). El Gateway aplica los controles de entrada y enruta las solicitudes. El servicio de negocio valida el contenido y garantiza la idempotencia de cada escritura mediante su UUID, una ventana de deduplicación documentada y el registro persistente del resultado (RT-02.06).
 
 El ingreso por API Gateway corresponde a los servicios en nube. Durante una interrupción del enlace, la bodega utiliza los servicios de su sitio sin depender del Gateway remoto. Los terminales sin cobertura conservan sus eventos y los entregan al servicio local cuando recuperan comunicación; la reconciliación con la nube ocurre al restablecerse el enlace externo. Los contratos y las reglas de validación se mantienen en ambos recorridos.
 
-La bodega dispone además de una puerta de API *local* como función del motor WMS A-01, en VM-01, VM-C01 y E-01, acotada a la red del sitio y a M1, M2, M5 y la función local de bloqueo de M9. Los 120 terminales no llaman a Amazon API Gateway durante un corte: el verificador local valida la autorización de turno y esta función aplica esquema, límites de tasa, tamaño de carga, UUID y registro de auditoría antes de entregar una orden al módulo correspondiente. Este control no publica una segunda entrada en internet ni emite identidades nuevas. La Figura 4.3 separa los dos recorridos y muestra cómo se conserva el trabajo hasta la reconexión.
+La bodega dispone además de una puerta de API *local* como función del motor WMS A-01, en VM-01, VM-C01 y E-01, acotada a la red del sitio y a M1, M2, M5 y la función local de bloqueo de M9. Los 120 terminales no llaman a Amazon API Gateway durante un corte: el verificador local valida la autorización de turno y esta función aplica esquema, límites de tasa, tamaño de carga, UUID y registro de auditoría antes de entregar una orden al módulo correspondiente. Este control no publica una segunda entrada en internet ni emite identidades nuevas. La Figura Figura 4.3 separa los dos recorridos y muestra cómo se conserva el trabajo hasta la reconexión.
 
 ![Identidad y puerta de API local durante un corte de 24 horas](<../../../Diagramas/arquitectura_logica_actual/ARQL-17_Acceso_local_24h.png>)
 
@@ -194,9 +187,9 @@ Los eventos se describen en AsyncAPI 2.6 con productor único, consumidores, cla
   - Ningún módulo, portal ni cadena de supermercados escribe al ERP: el trabajador Laravel `erp-sync` consume SQS y llama a la ACL mediante su contrato versionado.
   - Cuando una capacidad del ERP se absorbe en la plataforma, se retira de la ACL sin tocar a los consumidores.
 
-**Estrangulamiento del WMS de 2013 (ADR-08, Decisión 16.1 N° 14).** El WMS se reemplaza en la Etapa 1 por los módulos M1, M2 y M5 del monolito. Durante la coexistencia el legado queda detrás de la misma ACL. La Tabla 4.2 indica qué capacidad se absorbe en cada ola y cómo se revierte por sitio.
+**Estrangulamiento del WMS de 2013 (ADR-08, Decisión 16.1 N° 14).** El WMS se reemplaza en la Etapa 1 por los módulos M1, M2 y M5 del monolito. Durante la coexistencia el legado queda detrás de la misma ACL. La Tabla Tabla 4.1 indica qué capacidad se absorbe en cada ola y cómo se revierte por sitio.
 
-*Tabla 4.2 — Capacidad absorbida del WMS 2013 por ola y sitio*
+*Tabla 4.1 — Capacidad absorbida del WMS 2013 por ola y sitio*
 
 | Capacidad WMS 2013 | Módulo | Ola | Estrategia / Reversión |
 | — | — | — | — |
@@ -253,7 +246,7 @@ La seguridad atraviesa las ocho capas. Su unidad de decisión no es la red desde
 
 **Límites de confianza y capa expuesta.**
 
-La Figura 4.2 distingue personas, dispositivos, sitio, servicios centrales y terceros. CloudFront protege los portales externos y sus APIs; el origen de esas APIs rechaza el acceso público directo. Las consolas internas usan acceso verificado por identidad y postura del dispositivo hacia servicios privados. OpenAS2 expone un canal B2B distinto, limitado a contrapartes registradas y con validación criptográfica y MDN; no es una API pública de negocio. Los almacenes de datos no son superficies públicas. El inventario de dominios, puertos y rutas de 4.2 debe representar las tres superficies por separado (RT-11.07 y RT-11.13).
+La Figura Figura 4.2 distingue personas, dispositivos, sitio, servicios centrales y terceros. CloudFront protege los portales externos y sus APIs; el origen de esas APIs rechaza el acceso público directo. Las consolas internas usan acceso verificado por identidad y postura del dispositivo hacia servicios privados. OpenAS2 expone un canal B2B distinto, limitado a contrapartes registradas y con validación criptográfica y MDN; no es una API pública de negocio. Los almacenes de datos no son superficies públicas. El inventario de dominios, puertos y rutas de 4.2 debe representar las tres superficies por separado (RT-11.07 y RT-11.13).
 
 API Gateway verifica la identidad, el alcance, las cuotas, los límites de tasa, el esquema y la carga útil antes de entregar una solicitud; M1–M12 repiten la autorización de negocio sobre el recurso concreto. Los puntos públicos incorporan detección de bots y reto progresivo sin bloquear a una persona legítima. La comunicación entre servicios se autentica mutuamente y se cifra; un evento asíncrono también conserva productor, destinatario, versión, identificador y permisos necesarios. Así se aplica el mismo límite de confianza a REST y a mensajería (RT-11.11–11.12).
 
@@ -273,16 +266,16 @@ La revocación es inmediata en los servicios conectados. Durante una desconexió
 
 **Clasificación, cifrado y custodia.**
 
-La Tabla 4.3 resume cómo cambia el control según el dato. La clasificación se aplica al evento, su copia local, las APIs y las exportaciones, no solo a la base de datos central.
+La Tabla Tabla 4.2 resume cómo cambia el control según el dato. La clasificación se aplica al evento, su copia local, las APIs y las exportaciones, no solo a la base de datos central.
 
-*Tabla 4.3 — Clasificación lógica y protección de la información*
+*Tabla 4.2 — Clasificación lógica y protección de la información*
 
 | Nivel | Ejemplo del caso | Regla de acceso | Protección adicional |
 | — | — | — | — |
 | Restringido | Credenciales, claves y factores. | Solo custodios nominados. | Claves separadas y auditoría. |
 | Confidencial | Crédito, conducta de pago, geolocalización y POD. | Rol, finalidad y registro de consulta. | Cifrado por campo sensible. |
 | Interno | Pedidos, movimientos y telemetría operativa. | Módulo dueño y perfiles autorizados. | Cifrado y trazabilidad. |
-| Público | Catálogo sin precio personalizado. | Lectura anónima controlada. | Integridad y protección antiabuso. |
+| Público | Catálogo sin precios. | Lectura anónima controlada. | Integridad y protección antiabuso. |
 
 *Fuente: elaboración propia de LafroX a partir de Bases Técnicas Transversales, RT-11.03/09/10, y Caso 02, capítulo 15.*
 
@@ -290,7 +283,7 @@ La categoría confidencial exige separar quién puede usar el dato de quién adm
 
 **Amenazas, controles y evidencia.**
 
-El modelado STRIDE toma cada módulo y cada integración externa como unidad de revisión, identifica su límite de confianza, abuso posible, mitigación, responsable y prueba. Para M3, el abuso es reutilizar una credencial o reenviar un pedido: se comprueban enrolamiento, vigencia e idempotencia. Para M5, la elevación indebida de privilegios no debe liberar una carga bloqueada por M9: se prueba la separación de autorizaciones. Para M11 y la ACL, un mensaje EDI repetido o manipulado se rechaza o aísla sin escribir dos veces en el ERP. El registro verificable de estos escenarios se mantiene junto con la matriz de controles ISO/IEC 27001/27002 y las pruebas de seguridad; nombrar STRIDE o la norma sin ese resultado no constituye evidencia (RT-11.02 y RT-11.05).
+El modelado STRIDE toma cada módulo y cada integración externa como unidad de revisión, identifica su límite de confianza, abuso posible, mitigación, responsable y prueba. Para M3, el abuso es reutilizar una credencial o reenviar un pedido: se comprueban enrolamiento, vigencia e idempotencia. Para M5, la elevación indebida de privilegios no debe liberar una carga bloqueada por M9: se prueba la separación de autorizaciones. Para M11 y la ACL, un mensaje EDI repetido o manipulado se rechaza o aísla sin escribir dos veces en el ERP. El Anexo 4.1-Q registra las amenazas por módulo y frontera; el Anexo 4.1-R vincula controles ISO/IEC 27001/27002 con responsable y prueba. Son especificaciones de aceptación, no resultados de ensayos ni certificación (ISO, 2022b, 2022c) (RT-11.02 y RT-11.05).
 
 Cada decisión de acceso y cada acción crítica conserva sujeto, empresa si aplica, recurso, operación, resultado, hora, identificador de transacción y regla aplicada. Los eventos de seguridad se envían a una bitácora inalterable y al SIEM; durante un corte se conservan localmente y se remiten con el mismo identificador al reconectar. Las reglas de detección incluyen acceso privilegiado fuera de turno, intentos reiterados de uso de una credencial de conductor revocada, consulta masiva de datos comerciales, alteración de evidencia de temperatura y desvío anómalo de mensajes EDI. Los registros técnicos en CloudWatch se conservan 12 meses en línea y 24 meses adicionales en archivo; los registros de seguridad y auditoría se conservan 7 años bajo Object Lock. La retención de documentos tributarios y POD se gobierna separadamente por su dominio de datos. La plataforma y el SOC que operan estos controles se describen en 4.2 y en el capítulo de servicios (RT-11.14–11.19).
 
@@ -429,7 +422,7 @@ Las entidades principales son:
   - **Envase retornable.** Canastillo o pallet, cliente, saldo y pérdida estimada del 14% anual (Decisión 16.1 N° 10). Control por cuenta corriente por cliente, no por unidad identificada.
   - **Sensor / registro térmico.** Dispositivo, lote o posición, temperatura y excursión térmica.
 
-La Figura 4.6 dibuja las relaciones mínimas necesarias para responder dos preguntas del caso: de qué lote provino una unidad entregada y a qué clientes llegó un lote que debe retirarse. No pretende ser el diccionario de datos del capítulo 5.
+La Figura Figura 4.6 dibuja las relaciones mínimas necesarias para responder dos preguntas del caso: de qué lote provino una unidad entregada y a qué clientes llegó un lote que debe retirarse. No pretende ser el diccionario de datos del capítulo 5.
 
 ![Modelo conceptual del pedido, el lote y la entrega](<../../../Diagramas/arquitectura_logica_actual/ARQL-18_Dominio_trazabilidad.png>)
 
@@ -472,7 +465,7 @@ El volumen de telemetría no debe competir con las escrituras críticas de despa
 A continuación se resume la tecnología de cada capa y su justificación principal:
 
   - **Backend (12 módulos).** Laravel 13 sobre PHP 8.5, con Composer y `composer.lock`, organizado en contextos M1–M12. PostgreSQL/PostGIS conserva los datos geográficos; M4 usa repositorios espaciales con SQL parametrizado vía PDO/Query Builder y pruebas de consultas. Laravel 13 requiere PHP 8.3 o superior y admite PHP 8.5 (Laravel. (2026). *Release notes*. https://laravel.com/framework/docs/releases.); ambos componentes se actualizarán a versiones con soporte durante los 56 meses.
-  - **Frontend web.** Angular con Tailwind CSS y TypeScript. La integración con Keycloak se implementa mediante OIDC y se mantiene junto con las dependencias del cliente. Las versiones deben actualizarse durante el contrato conforme a sus ciclos de soporte.
+  - **Frontend web.** Angular 22 con Tailwind CSS y TypeScript 6.0 compatible con su matriz oficial. La integración con Keycloak se implementa mediante OIDC y se mantiene junto con las dependencias del cliente. Las versiones deben actualizarse durante el contrato conforme a sus ciclos de soporte.
   - **Apps de campo (preventa y reparto).** Kotlin Android nativo. Nativo del parque Zebra/Android, escáner GS1 vía Zebra DataWedge, SQLite/Room offline, acceso nativo a GPS, POS y térmica.
   - **Borde y continuidad del acceso (Capa 2).** CloudFront, WAF, Shield y ALB en nube, con control de acceso local. Los CD utilizan fibra + LTE y los cross-docking, Starlink + LTE de dos proveedores; la conmutación automática ocurre en menos de 30 segundos (ADR-02), sin sustituir la autonomía del servicio local.
   - **Puerta de enlace de servicios (Capa 3).** Amazon API Gateway para publicar las APIs y aplicar controles de entrada. La configuración debe cubrir la validación de identidad de Keycloak, las cuotas y los límites de solicitudes, conforme a la modalidad de API seleccionada y al flujo descrito en la capa de puerta de enlace de este apartado.
@@ -489,7 +482,7 @@ A continuación se resume la tecnología de cada capa y su justificación princi
   - **Observabilidad (Capa 8).** OpenTelemetry para PHP/Laravel y colectores ADOT on-premise con buffer en disco de 24 horas; plataforma única Amazon CloudWatch para logs (12 meses en línea + 24 en archivo), métricas (13 meses), trazas y tableros (ADR-14).
   - **Gestión de dispositivos (RT-03.18).** Gestión centralizada mediante MDM (Android Enterprise / Zebra DNA, SaaS), con políticas de configuración y control del parque móvil.
   - **Contenedores / orquestación.** Imagen PHP 8.5 con servidor HTTP/PHP-FPM para APIs y procesos PHP CLI separados para colas y programación. ECS Fargate aloja los perfiles centrales; Talca y Concepción ejecutan el perfil `wms_only` sobre máquinas virtuales Proxmox, y Docker Compose se usa en los mini-PC E-01 de los cross-docking. El código y las migraciones de esquema proceden del mismo artefacto versionado.
-  - **Infraestructura como Código.** Terraform con CDK + Ansible.
+  - **Infraestructura como Código.** Terraform administra recursos mediante proveedores y estados separados por ambiente; Ansible configura hosts. CDK no administra los mismos recursos: cada activo tiene un único propietario de infraestructura como código.
   - **CI/CD.** GitLab CI como orquestador + AWS CodeBuild para construcción hermética con procedencia SLSA 3; `composer audit`, PHPUnit, PHPStan/Larastan y Laravel Pint verifican dependencias, comportamiento, análisis estático y formato. `swagger-php` genera OpenAPI 3.1 desde atributos PHP; los esquemas AsyncAPI 2.6 se validan y publican en la misma puerta de calidad.
 
 Los servicios AWS consumidos incluyen: CloudFront, WAF+Shield, ALB, API Gateway, Aurora, ElastiCache, DynamoDB, S3, Redshift Serverless, ECS Fargate, Route 53, Secrets Manager/SSM, KMS, IAM+Organizations, CloudWatch, Transit Gateway, SQS, SNS, AWS Backup, GuardDuty/Security Hub, CloudTrail e IoT Core+Greengrass.
@@ -498,20 +491,13 @@ La selección no descansa en una lista de marcas. Laravel conserva una superfici
 
 El núcleo utiliza tecnologías con alternativas de despliegue como Laravel, Angular, PostgreSQL, RabbitMQ y Keycloak. Eso facilita la portabilidad, pero no elimina la dependencia de los servicios administrados de AWS. La reversibilidad documenta contratos, exportación de datos y sustitución de adaptadores, junto con el esfuerzo de migración exigido por RT-03.07.
 
+El Anexo 4.1-P reúne versiones de referencia, soporte y criterios de actualización. Las versiones menores se fijan en archivos de bloqueo y SBOM y se promueven mediante pruebas de contrato; no se congela una versión sin soporte por los 56 meses. Laravel, PHP, PostgreSQL, Angular y RabbitMQ se revisan conforme a sus políticas oficiales (Laravel, 2026; PHP, 2026; PostgreSQL, 2026; Angular, 2026a, 2026b; RabbitMQ, 2026).
+
 ### 4.1.8 Implantación progresiva del backend Laravel
 
-La implantación conserva los identificadores M1–M12, sus dueños de datos, las rutas y versiones públicas, los eventos JSON, la identidad Keycloak y las reglas offline. La Tabla 4.4 muestra cómo se implementan las capacidades del backend; PostgreSQL/PostGIS, RabbitMQ, SQS y los clientes mantienen sus contratos.
+La implantación conserva los identificadores M1–M12, sus dueños de datos, las rutas y versiones públicas, los eventos JSON, la identidad Keycloak y las reglas offline. El Anexo 4.1-P muestra cómo se implementan las capacidades del backend; PostgreSQL/PostGIS, RabbitMQ, SQS y los clientes mantienen sus contratos.
 
-*Tabla 4.4 — Implementación lógica del backend Laravel*
-
-| Capacidad | Implementación Laravel/PHP | Comprobación |
-| — | — | — |
-| APIs y módulos | Rutas y controladores Laravel; servicios por contexto PSR-4. | Contratos OpenAPI y límites de módulo. |
-| Persistencia y geografía | PDO/Query Builder y SQL PostGIS parametrizado; migraciones Laravel basales. | Datos, índices y consultas espaciales equivalentes. |
-| Tareas y planificación | Consumidor PHP de JSON en SQS FIFO; trabajos Laravel en colas separadas y planificador único. | Orden por grupo, reintentos y tareas únicas. |
-| Cola local y shipper | Adaptador AMQP con `php-amqplib` y sobre JSON. | Corte de 24 h, confirmación y drenaje sin pérdida. |
-| Identidad y administración | Guard OIDC, políticas por recurso y portal Angular. | Permisos, baja y relevos de turno. |
-| Contratos, pruebas y trazas | `swagger-php`, AsyncAPI, PHPUnit y OpenTelemetry PHP. | Paridad de API, eventos y correlación. |
+La implementación conserva rutas y contratos, repositorios PostgreSQL/PostGIS y eventos JSON. Sustituye el runtime por Laravel/PHP, separa consumidor de integración y trabajos internos, y prueba identidad, trazas y reversión antes de habilitar cada ola.
 
 *Fuente: elaboración propia de LafroX a partir de los contratos y requisitos de esta arquitectura.*
 
@@ -563,29 +549,17 @@ Un adaptador nuevo sustituye a uno anterior solo si conserva las respuestas, err
 
 ### 4.1.11 Registro de decisiones de arquitectura
 
-Las decisiones se identifican con la numeración del registro arquitectónico común al Subdocumento 4. La Tabla 4.5 resume las que gobiernan esta vista lógica; cada ADR conserva problema, alternativas, criterio de selección, consecuencia y evidencia de validación (RT-02.04).
+Las decisiones lógicas utilizan los identificadores del registro del Subdocumento 4. El Anexo O contiene sus fichas fechadas, alternativas, criterio y consecuencias (RT-02.04); distingue una decisión adoptada por la propuesta de una aprobación del CLIENTE. Una ficha anterior incompatible deja de ser autoridad para esta vista cuando la nueva identifica expresamente su sustitución.
 
-*Tabla 4.5 — Registro de decisiones de la vista lógica*
+ADR-01 conserva un monolito modular con procesos separables, adecuado al equipo TI de cuatro personas. ADR-05 separa mensajes canónicos de trabajos internos Laravel; ADR-06 mantiene una sola autoridad de identidad con relevo local; ADR-07 selecciona Kotlin para los periféricos de terreno. ADR-08 retira el WMS de 2013 por olas y ADR-11 mantiene la traducción EDI fuera del dominio del ERP. ADR-12, ADR-13 y ADR-14 fijan aislamiento de carga, publicación de APIs y observabilidad. ADR-L01 y ADR-L02 explicitan las condiciones lógicas de liberación documental y protección externa.
 
-| ADR del registro único | Decisión adoptada que aplica a 4.1 |
-| — | — |
-| ADR-01 | Monolito modular Laravel 13 / PHP 8.5, con perfiles de API, WMS local, shipper, consumidores y portal separados; contratos estables entre M1–M12. |
-| ADR-05 | RabbitMQ local por sitio; shipper idempotente hacia SQS FIFO con JSON canónico; consumidor PHP dedicado, trabajos Laravel en colas separadas e IoT Core MQTT. |
-| ADR-06 | Keycloak maestro en nube, caché local de solo lectura con TTL de 24 horas y verificador local que valida el manifiesto firmado y el PIN personal en cada relevo sin enlace. |
-| ADR-07 | Aplicación nativa Android Kotlin para preventa, reparto y picking, con SQLite/Room y periféricos Zebra. |
-| ADR-08 | Reemplazo del WMS 2013 en Etapa 1 mediante el módulo WMS del monolito, por dominio, sitio y ola, con reversión. |
-| ADR-11 | Hub EDI centralizado GS1 en nube con conector configurable por cadena, equivalencias GTIN y ACL hacia ERP/GDE. |
-| ADR-12 | Cómputo elástico: perfiles API y trabajadores PHP/Laravel con escalado independiente; límites de concurrencia y memoria medidos bajo el pico, Aurora y DynamoDB según el plan de capacidad. |
-
-*Fuente: elaboración propia de LafroX a partir de los requisitos RT-02.04 y RT-02.11 y del caso 02.*
-
-Las consecuencias se convierten en pruebas: ADR-01 exige verificar límites de módulo; ADR-05, persistencia y deduplicación tras un corte; ADR-06, dos relevos de turno sin IdP; ADR-08, reversión de una ola sin duplicar stock; y ADR-12, drenaje de la cola bajo el pico de septiembre. Una elección no se acredita solo por figurar en la tabla.
+Las consecuencias se convierten en pruebas: ADR-01 exige verificar límites de módulo; ADR-05, persistencia y deduplicación tras un corte; ADR-06, dos relevos de turno sin IdP; ADR-08, reversión de una ola sin duplicar stock; y ADR-12, drenaje de la cola bajo el pico de septiembre. Una elección no se acredita solo por figurar en el registro.
 
 ### 4.1.12 Puntos únicos de falla y riesgos residuales
 
-RT-02.11 exige identificar las dependencias singulares que subsisten y justificar el riesgo residual. La Tabla 4.6 distingue su efecto, la continuidad prevista y la condición de aceptación. Una réplica o una cola reduce el impacto, pero no elimina por declaración la dependencia.
+RT-02.11 exige identificar las dependencias singulares que subsisten y justificar el riesgo residual. La Tabla Tabla 4.3 distingue su efecto, la continuidad prevista y la condición de aceptación. Una réplica o una cola reduce el impacto, pero no elimina por declaración la dependencia.
 
-*Tabla 4.6 — Dependencias singulares y riesgo residual*
+*Tabla 4.3 — Dependencias singulares y riesgo residual*
 
 | Dependencia | Efecto si falla | Continuidad prevista | Aceptación |
 | — | — | — | — |
@@ -603,9 +577,9 @@ La dependencia del ERP y del SII no es aceptable para un nuevo despacho sin el m
 
 ### 4.1.13 Comparación de alternativas arquitectónicas
 
-La comparación considera la carga real, la continuidad desconectada, la reversión y la dotación que deberá operar la solución. La Tabla 4.7 resume las elecciones lógicas; los ADR explicitan su criterio y consecuencia operativa. La evaluación económica pertenece a los apartados de costos.
+La comparación considera la carga real, la continuidad desconectada, la reversión y la dotación que deberá operar la solución. La Tabla Tabla 4.4 resume las elecciones lógicas; los ADR explicitan su criterio y consecuencia operativa. La evaluación económica pertenece a los apartados de costos.
 
-*Tabla 4.7 — Alternativas lógicas y criterio de selección*
+*Tabla 4.4 — Alternativas lógicas y criterio de selección*
 
 | Decisión | Seleccionada | Alternativa viable | Criterio decisivo |
 | — | — | — | — |
@@ -623,23 +597,13 @@ El despliegue híbrido no figura como una alternativa libre: es una obligación 
 
 ### 4.1.14 Relación entre las vistas de arquitectura
 
-RT-02.03 exige cinco vistas de la arquitectura: lógica, procesos, despliegue, datos y seguridad. La Tabla 4.8 indica qué preocupación responde cada una y dónde debe demostrarse en el Subdocumento 4 o en el capítulo de datos. La integración atraviesa esas vistas; no se presenta como una sexta vista exigida por la Base.
+RT-02.03 exige cinco vistas de la arquitectura: lógica, procesos, despliegue, datos y seguridad. El Anexo S define sus interesados, preocupaciones, modelos y reglas de correspondencia, siguiendo la organización de descripciones de ISO/IEC/IEEE 42010:2022 (ISO, 2022a). La integración atraviesa esas vistas; no se presenta como una sexta vista exigida por la Base.
 
-*Tabla 4.8 — Trazabilidad de las cinco vistas de arquitectura*
+Operaciones necesita comprobar que un pedido puede avanzar sin perder su lote ni saltarse una autorización; Calidad necesita seguir un lote hasta su receptor; Seguridad necesita distinguir quién puede liberar una carga; y TI necesita aislar una falla y recuperar el estado. Las vistas responden a esas preocupaciones con los mismos identificadores M1–M12, INT-01–15 y los componentes transversales del Anexo N. Así se puede pasar de una secuencia a su dueño de datos, contrato y control sin cambiar de vocabulario.
 
-| Vista | Pregunta que responde | Lugar de la evidencia | Responsable |
-| — | — | — | — |
-| Lógica | Quién realiza cada función y por qué contrato se comunica. | 4.1: capas, módulos, interfaces. | Arquitectura |
-| Procesos | Cómo atraviesan los módulos el pedido, despacho, entrega y rendición. | 4.1: eventos y flujos; 3.4: operación. | Operaciones |
-| Despliegue | Dónde se ejecuta y cómo continúa durante una falla. | 4.2 y 4.3. | Infraestructura |
-| Datos | Quién posee, conserva y reconcilia cada dato. | 4.1: dominios; capítulo 5: modelo y gestión. | Datos |
-| Seguridad | Quién puede actuar, con qué identidad y qué controles. | 4.1: controles lógicos; 4.2: implantación. | Seguridad |
+Las correspondencias se comprueban en ambos sentidos: todo evento tiene productor y consumidores; toda escritura tiene dueño; toda función desconectada tiene persistencia y autorización locales; y todo componente desplegado debe realizar una responsabilidad inventariada. Una diferencia se registra con requisito afectado y ADR responsable. La cobertura lógica del inventario no se confunde con el cotejo de emplazamientos y centros de datos.
 
-*Fuente: elaboración propia de LafroX a partir de Bases Técnicas Transversales, RT-02.03.*
-
-La evidencia de una vista se comprueba en el apartado indicado, no por el nombre de la tabla.
-
-La vista lógica queda desarrollada aquí. La comprobación de las otras cuatro requiere revisar el capítulo integrado y sus figuras; esta tabla es una ruta de lectura, no una declaración automática de conformidad con ISO/IEC/IEEE 42010.
+La vista lógica desarrolla aquí las responsabilidades y sus relaciones. El despliegue y los centros de datos se acreditan en 4.2–4.3 y el modelo detallado de datos en el capítulo 5; esta distribución de evidencia no sustituye su revisión integrada.
 
 ### 4.1.15 Funciones disponibles y no disponibles sin conexión
 
@@ -675,6 +639,8 @@ Al cerrar la carga nocturna se solicita la guía por adelantado, sin confundir a
 
 Esta retención protege la validez del despacho, pero puede incumplir la ventana de indisponibilidad cero del caso. La solución exige cerrar AL-DTE-01: procedimiento firmado por Operaciones y Tributación del CLIENTE, compatible con su emisor ERP, y ensayo de las 96 salidas con fallas inyectadas. No se atribuye aprobación a ese procedimiento mientras no exista el acta. La preemisión reduce exposición, pero no resuelve cambios de carga ni fallas prolongadas por sí sola.
 
+El Anexo 4.1-U distingue emisión tributaria, constancia operativa y acuse del receptor. La firma, fotografía o QR del POD no se equiparan automáticamente al recibo exigible: el mecanismo se selecciona según el receptor y se canaliza por el ERP o el perfil EDI aprobado (SII, 2018, s. f.-a, s. f.-b).
+
 ### 4.1.18 Identidad y ciclo de vida de conductores externos
 
 Los conductores de transportistas externos ( 160, de 10 empresas) no pertenecen a la dotación de Puelche. Antes de entregar una ruta, el transportista declara la identidad del conductor y su vínculo con la empresa. El responsable de despacho aprueba la asignación conductor–vehículo–turno; el alta inicial requiere conexión para verificar un OTP de un solo uso. El identificador del conductor y el del transportista acompañan cada `EntregaRegistrada`. La autorización se limita a la ruta asignada y a M6, M7 y M8 mediante rol y atributos de turno, sitio y dispositivo.
@@ -685,9 +651,9 @@ Al finalizar el turno expiran la asignación y sus permisos. Si se denuncia pér
 
 ### 4.1.19 Primer cuello de botella bajo la carga de septiembre
 
-Septiembre eleva las entregas diarias de aproximadamente 1.400 a 2.600 durante tres semanas. Las 2.600 entregas ocurren a lo largo de la jornada; la ventana 05:30–07:00 concentra la salida de 96 camiones, no todas las firmas de entrega. En esa ventana, el primer cuello de botella probable es la confirmación de guías del ERP mediante la ACL: es una dependencia singular y aumentar réplicas Laravel no acelera al emisor legado. La base transaccional de Talca, la WAN al reconectar y la transferencia de evidencias son candidatos adicionales, no recursos cuya saturación ya se haya medido. La Tabla 4.9 muestra cómo contrastar la hipótesis; RT-09.05 exige sustentar el primer límite con una prueba reproducible.
+Septiembre eleva las entregas diarias de aproximadamente 1.400 a 2.600 durante tres semanas. Las 2.600 entregas ocurren a lo largo de la jornada; la ventana 05:30–07:00 concentra la salida de 96 camiones, no todas las firmas de entrega. En esa ventana, el primer cuello de botella probable es la confirmación de guías del ERP mediante la ACL: es una dependencia singular y aumentar réplicas Laravel no acelera al emisor legado. La base transaccional de Talca, la WAN al reconectar y la transferencia de evidencias son candidatos adicionales, no recursos cuya saturación ya se haya medido. La Tabla Tabla 4.5 muestra cómo contrastar la hipótesis; RT-09.05 exige sustentar el primer límite con una prueba reproducible.
 
-*Tabla 4.9 — Detección del primer cuello de botella*
+*Tabla 4.5 — Detección del primer cuello de botella*
 
 | Recurso | Señal de saturación | Respuesta lógica | Prueba |
 | — | — | — | — |
@@ -701,6 +667,8 @@ Septiembre eleva las entregas diarias de aproximadamente 1.400 a 2.600 durante t
 La emisión de guías debe medirse antes de atribuir el límite al cómputo escalable.
 
 La preparación nocturna permite adelantar la solicitud de guía cuando la carga se estabiliza. Se mide el número de guías sin confirmar antes de cada salida y se alerta al responsable de despacho; el camión afectado no se marca como liberado mientras falte el documento o una contingencia autorizada. La prueba de carga debe confirmar si el ERP es efectivamente el primer límite y ajustar esta hipótesis con medición, como exige RT-09.05.
+
+El Anexo 4.1-T especifica percentiles, ventanas de ensayo, carga de 1,5 veces el peak y escenario de crecimiento de tres veces, con colas y procesos aislados. Los resultados se deben medir; los cálculos de escenario no son evidencia de capacidad ejecutada.
 
 ### 4.1.20 Decisiones del numeral 16.1 del caso
 
@@ -718,9 +686,10 @@ Los cortes frecuentes de dos horas descritos en la operación son el escenario o
 
 El relevo de turnos sin IdP, la autorización tributaria de salida y la pérdida de sitio se verifican con AL-OFF-01, AL-DTE-01 y AL-DR-01 del Anexo 4.1-M. Los objetivos exigidos siguen siendo RTO $\leq$ 4 horas y RPO $\leq$ 15 minutos para servicios críticos. La retención en el sitio no acredita recuperación ante su pérdida simultánea con la WAN. El registro de cierre distingue diseño, prueba ejecutada y aprobación del CLIENTE; ninguno sustituye a los otros.
 
+El Anexo 4.1-V reúne las condiciones de aceptación y las decisiones del CLIENTE. La continuidad tributaria de las 96 salidas, la protección ante pérdida del sitio bajo aislamiento total y la revisión humana del consolidado requieren evidencia o aprobación identificable antes de declarar cierre; la propuesta no rebaja los requisitos por omisión.
 ## Referencias
 
-International Organization for Standardization. (2022). *ISO/IEC/IEEE 42010:2022: Software, systems and enterprise—Architecture description*. https://www.iso.org/standard/74393.html
+International Organization for Standardization. (2022a). *ISO/IEC/IEEE 42010:2022: Software, systems and enterprise—Architecture description*. https://www.iso.org/standard/74393.html
 
 International Organization for Standardization. (2019). *ISO 22301:2019: Security and resilience—Business continuity management systems—Requirements*. https://www.iso.org/standard/75106.html
 
@@ -728,20 +697,53 @@ International Organization for Standardization. (2025). *ISO/IEC 27031:2025: Cyb
 
 National Institute of Standards and Technology. (2020). *Zero trust architecture* (Special Publication 800-207). U.S. Department of Commerce. https://doi.org/10.6028/NIST.SP.800-207
 
-Pontificia Universidad Católica de Valparaíso. (2026a). *Bases Técnicas del Caso 02—Logística* (TEFP-01/2026).
+Pontificia Universidad Católica de Valparaíso. (2026a). *Bases Técnicas del Caso 02—Logística* (TFEP-01/2026).
 
-Pontificia Universidad Católica de Valparaíso. (2026b). *Bases Técnicas Transversales* (TEFP-01/2026).
+Pontificia Universidad Católica de Valparaíso. (2026b). *Bases Técnicas Transversales* (TFEP-01/2026).
+
+International Organization for Standardization. (2022b). *ISO/IEC 27001:2022*. https://www.iso.org/standard/27001
+
+International Organization for Standardization. (2022c). *ISO/IEC 27002:2022*. https://www.iso.org/standard/75652.html
+
+{ Laravel. (2026). *Release notes*. https://laravel.com/framework/docs/releases}
+
+{ PHP. (2026). *Supported versions*. https://www.php.net/supported-versions.php}
+
+{ PostgreSQL. (2026). *Versioning policy*. https://www.postgresql.org/support/versioning/}
+
+{ Angular. (2026a). *Release policy*. https://angular.dev/reference/releases}
+
+{ Angular. (2026b). *Version compatibility*. https://angular.dev/reference/versions}
+
+{ RabbitMQ. (2026). *Release information*. https://www.rabbitmq.com/release-information}
+
+{ Amazon Web Services. (s. f.-a). *Request validation for REST APIs*. https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-method-request-validation.html}
+
+{ Amazon Web Services. (s. f.-b). *Lambda authorizers*. https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-use-lambda-authorizer.html}
+
+{ Amazon Web Services. (s. f.-c). *Private integrations*. https://docs.aws.amazon.com/apigateway/latest/developerguide/private-integration.html}
+
+{ Servicio de Impuestos Internos. (2018). *Oficio 781: acuse de recibo*. https://www.sii.cl/normativa_legislacion/jurisprudencia_administrativa/ley_impuesto_ventas/2018/ja781.htm}
+
+{ Servicio de Impuestos Internos. (s. f.-a). *Representación de guía de despacho electrónica*. https://www.sii.cl/preguntas_frecuentes/factura_electronica/001_003_6599.htm}
+
+{ Servicio de Impuestos Internos. (s. f.-b). *Formato de recibos*. https://www.sii.cl/factura_electronica/desc_19983.pdf}
+
+{ Servicio de Impuestos Internos. (s. f.-c). *Contingencia de emisión*. https://www.sii.cl/preguntas_frecuentes/factura_electronica/001_003_6624.htm}
+
+Pontificia Universidad Católica de Valparaíso. (2026c). *Aclaraciones de licitación: índice obligatorio y consistencia de los subdocumentos*.
 
 ## Declaración de uso de IA
 
 Se utilizó OpenAI Codex como apoyo a la revisión de consistencia, redacción de contratos y protocolos, conversión entre Markdown y LaTeX y comprobación de compilación. El uso fue sustancial en las adiciones del apartado 4.1. Los diagramas incorporan trabajo previo del equipo y vistas elaboradas con asistencia de IA; la tabla no atribuye autoría exclusiva de IA a las láminas de Tomás. No se han ejecutado pruebas operacionales ni obtenido aprobaciones del CLIENTE mediante esta herramienta.
 
-*Tabla 4.10 — Uso de IA en el apartado lógico*
+*Tabla 4.6 — Uso de IA en el apartado lógico*
 
 | Sección | Herramienta | Finalidad | Texto | Diagramas | Revisión humana |
 | — | — | — | — | — | — |
 | 4.1 | OpenAI Codex | Redacción, coherencia y verificación documental. | Alto | Alto en vistas asistidas | Revisión final no realizada; se efectuará sobre el consolidado. |
+| 4.1.1 | OpenAI Codex | Especificaciones y soporte de tecnologías. | Alto | No aplica | Revisión final no realizada. |
 
 *Fuente: registro del trabajo asistido sobre el apartado 4.1; declaración de apoyo, no certificación técnica.*
 
-La declaración de los anexos figura al final de su archivo independiente. La revisión humana debe identificar a quien verificó contratos, cifras, diagramas y correspondencia con 4.2, y sus resultados deben consolidarse en el Formulario A-6. La ausencia actual de esa revisión impide tratar este archivo de trabajo como una entrega final conforme; no se atribuye al equipo una verificación todavía no realizada.
+La declaración detallada por los 21 apartados del cuerpo y por los 22 anexos figura al final del archivo independiente de anexos. La revisión humana debe identificar a quien verificó contratos, cifras, diagramas y correspondencia con 4.2, y sus resultados deben consolidarse en el Formulario A-6. La ausencia actual de esa revisión impide tratar este archivo de trabajo como una entrega final conforme; no se atribuye al equipo una verificación todavía no realizada.

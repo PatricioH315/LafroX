@@ -1,4 +1,6 @@
 \section*{Anexo 4.1-M --- Verificación de continuidad lógica}
+\phantomsection
+\label{anx:M}
 \addcontentsline{toc}{section}{Anexo 4.1-M --- Verificación de continuidad lógica}
 Este anexo especifica pruebas de aceptación, no resultados de ensayos. Cada ejecución debe conservar versión de software y configuración, datos de carga, relojes sincronizados, comandos de inyección de falla, logs con correlación, resultados esperados y observados, incidencias y acta. Sin estos artefactos no se acredita cumplimiento. Los responsables indicados son roles propuestos de ejecución y aprobación, no firmas ya obtenidas.
 
@@ -26,4 +28,3 @@ A las 8 y 16 horas, personas distintas inician turno con PIN personal en termina
 Durante el corte se ejecutan recepción, reserva local, picking, bloqueos térmicos, despacho con documento disponible y captura de incidencias. Se incluye el intento de nueva salida sin guía: su aceptación depende de AL-DTE-01, no de aprobar el PIN. Tras reconectar se drenan colas con reenvíos, duplicados y eventos fuera de orden; se comparan stock, pedidos, POD, permisos y auditoría con el oráculo. Una revocación central desconocida durante el corte se aplica al reconectar y sus acciones del intervalo se revisan; no se declara revocación instantánea offline.
 
 Se acepta cuando ambos relevos funcionan con personas identificadas, no hay autorización indebida, todas las operaciones confirmadas reaparecen una sola vez en el destino y cada conflicto conserva regla y responsable. El informe registra latencias, ocupación máxima, antigüedad de cola y tiempo de drenaje bajo carga de septiembre. Seguridad, Calidad y Operaciones firman los resultados. La autonomía de despacho no se declara completa si queda abierto AL-DTE-01.
-

@@ -32,6 +32,7 @@
   ],
   "anexos": [
     "01_apertura_anexos.tex",
+    "00_catalogo_anexos.tex",
     "02_anexo_4_1_a_catalogo_de_eventos_canonicos.tex",
     "03_anexo_4_1_b_gobierno_de_la_integracion.tex",
     "04_anexo_4_1_c_escenarios_de_carga_masiva.tex",
@@ -46,8 +47,17 @@
     "13_anexo_4_1_l_decisiones_del_numeral_16_1.tex",
     "14_anexo_4_1_m_verificacion_de_continuidad_logica.tex",
     "15_anexo_4_1_n_correspondencia_de_componentes_logicos.tex",
+    "18_anexo_4_1_o_decisiones_logicas.tex",
+    "19_anexo_4_1_p_tecnologias_soporte.tex",
+    "20_anexo_4_1_q_modelado_amenazas.tex",
+    "21_anexo_4_1_r_controles_seguridad.tex",
+    "22_anexo_4_1_s_puntos_de_vista.tex",
+    "23_anexo_4_1_t_desempeno.tex",
+    "24_anexo_4_1_u_evidencia_documental.tex",
+    "25_anexo_4_1_v_aceptacion_y_dependencias.tex",
     "16_referencias.tex",
     "17_declaracion_de_uso_de_ia.tex"
   ],
-  "verificacion": "Concatenación exacta de fragmentos frente al original; sin cambios técnicos."
+  "verificacion": "Estructura ampliada por mejora técnica; las huellas originales se conservan como antecedente de migración, no como validación del contenido actualizado.",
+  "fechaActualizacion": "2026-09-30"
 }

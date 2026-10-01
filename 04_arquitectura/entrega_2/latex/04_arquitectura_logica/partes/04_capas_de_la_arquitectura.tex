@@ -1,17 +1,8 @@
 \subsection{Capas de la arquitectura}
 
-Las ocho capas separan la interacción con las personas, las reglas de negocio y la persistencia. Seguridad y observabilidad atraviesan el conjunto. La Tabla~\ref{tab:mapa-capas} permite ubicar cada responsabilidad antes de revisar sus componentes.
+Las ocho capas separan la interacción con las personas, las reglas de negocio y la persistencia. Seguridad y observabilidad atraviesan el conjunto. La vista general permite ubicar cada responsabilidad antes de revisar sus componentes; el inventario trazable se reúne en el Anexo 4.1-N.
 
-\begin{tablalafrox}{Mapa de capas de la arquitectura lógica}{tab:mapa-capas}{C{1.0cm} L{4.0cm} Y}{\cab{Capa} & \cab{Nombre} & \cab{Responsabilidad principal}}
-1 & Presentación & Aplicaciones móviles, terminales de bodega, portales y consolas. \\
-2 & Borde y exposición & Protección del acceso, contenido estático y recepción segura de tráfico. \\
-3 & Puerta de enlace & Autenticación de APIs, contratos, cuotas y correlación. \\
-4 & Lógica de negocio & Reglas y procesos de los módulos M1--M12. \\
-5 & Integración y eventos & Colas, hub EDI y adaptadores de los sistemas externos. \\
-6 & Acceso a datos & Persistencia transaccional, analítica, documental y caché. \\
-7 & Seguridad transversal & Identidad, secretos, cifrado y auditoría. \\
-8 & Observabilidad transversal & Métricas, registros, trazas y alertas de operación. \\
-\end{tablalafrox}
+Presentación reúne las superficies de trabajo; borde protege su entrada; puerta de enlace valida solicitudes; negocio decide por módulo; integración intercambia contratos; acceso a datos persiste por propietario. Seguridad y observabilidad atraviesan esas seis responsabilidades.
 
 {\footnotesize Fuente: elaboración propia de LafroX a partir de Bases Técnicas Transversales, numeral 2.1.\par}
 
@@ -21,12 +12,11 @@ La arquitectura se presenta primero mediante su vista general completa (Figura~\
 
 \clearpage
 \begin{center}
-  \includegraphics[width=\linewidth,height=0.83\textheight,keepaspectratio]{Diagramas/arquitectura_logica_actual/cambios laravel/ARQL-01_Vision_general.png}
+  \includegraphics[width=\linewidth,height=0.83\textheight,keepaspectratio]{Diagramas/arquitectura_logica_actual/cambios laravel/ARQL-01_Vision_general_consolidada.pdf}
   \captionof{figure}{Vista general completa de la arquitectura lógica}
   \label{fig:arql-general-completa}
 \end{center}
-
-{\footnotesize Fuente: elaboración propia de LafroX.\par}
+{\footnotesize Fuente: adaptación y consolidación del modelo general aportado por Tomás Pérez; LafroX.\par}
 
 La vista general muestra cómo cada actor accede a la solución desde su aplicación, portal o consola y se relaciona con los módulos M1--M12. Se lee desde las personas hacia las reglas de negocio, las integraciones y los datos, distinguiendo los componentes de nube y los del sitio. Las conexiones representan intercambios sujetos a autorización, no acceso directo a las bases de datos. Seguridad y observabilidad acompañan todo el recorrido; sus controles y las condiciones de operación sin conexión se desarrollan en los apartados siguientes.
 
@@ -68,7 +58,7 @@ La capa de borde delimita la entrada pública y la entrada de dispositivos de te
 
 \subsubsection{Capa de puerta de enlace de servicios (Capa 3)}
 
-Amazon API Gateway concentra la publicación de servicios detrás de la entrada pública de CloudFront. El diseño requiere validar la identidad emitida por Keycloak, controlar esquema, cuotas y tasa de solicitudes, y propagar un \texttt{transaction\_id}. La modalidad de API y su mecanismo de autorización deben concretarse al implementar; no se presupone que todas las modalidades ofrezcan las mismas capacidades de forma nativa. El recorrido físico y el bloqueo efectivo del acceso directo al origen se deben comprobar en 4.2.
+Amazon API Gateway concentra la publicación de servicios detrás de la entrada pública de CloudFront. El diseño requiere validar la identidad emitida por Keycloak, controlar esquema, cuotas y tasa de solicitudes, y propagar un \texttt{transaction\_id}. Se selecciona REST API con authorizer REQUEST que verifica firma, emisor, audiencia, expiración y alcance del JWT de Keycloak. Las operaciones sensibles no reutilizan autorizaciones almacenadas; el módulo verifica además recurso y revocación conocida. La integración privada usa VPC Link V2 hacia ALB; la validación básica de Gateway se complementa con el esquema completo en Laravel (AWS, s.~f.-a, s.~f.-b, s.~f.-c; Anexo 4.1-O, ADR-13). El recorrido físico y el bloqueo efectivo del acceso directo al origen se deben comprobar en 4.2.
 
 La capa publica dos conjuntos de APIs: las de negocio (\texttt{/v1}) y las de sincronización offline (\texttt{/sync/v1}). El Gateway aplica los controles de entrada y enruta las solicitudes. El servicio de negocio valida el contenido y garantiza la idempotencia de cada escritura mediante su UUID, una ventana de deduplicación documentada y el registro persistente del resultado (RT-02.06).
 
@@ -246,7 +236,7 @@ La Tabla~\ref{tab:seguridad-clasificacion} resume cómo cambia el control según
 Restringido & Credenciales, claves y factores. & Solo custodios nominados. & Claves separadas y auditoría. \\
 Confidencial & Crédito, conducta de pago, geolocalización y POD. & Rol, finalidad y registro de consulta. & Cifrado por campo sensible. \\
 Interno & Pedidos, movimientos y telemetría operativa. & Módulo dueño y perfiles autorizados. & Cifrado y trazabilidad. \\
-Público & Catálogo sin precio personalizado. & Lectura anónima controlada. & Integridad y protección antiabuso. \\
+Público & Catálogo sin precios. & Lectura anónima controlada. & Integridad y protección antiabuso. \\
 \end{tablalafrox}
 
 {\footnotesize Fuente: elaboración propia de LafroX a partir de Bases Técnicas Transversales, RT-11.03/09/10, y Caso 02, capítulo 15.\par}
@@ -254,7 +244,7 @@ Público & Catálogo sin precio personalizado. & Lectura anónima controlada. & 
 La categoría confidencial exige separar quién puede usar el dato de quién administra su almacenamiento: el acceso a la base no revela por sí solo comportamiento de pago ni geolocalización. Todo dato en reposo se cifra; los campos sensibles del caso reciben además cifrado por campo. En tránsito se exige TLS 1.3 para las interfaces compatibles, se prohíben TLS 1.0 y 1.1, se automatiza la gestión de certificados y se emplea mTLS entre servicios. La custodia y rotación de claves mantienen separación de funciones. El PAN de tarjetas no se almacena; se usa la tokenización de la pasarela. El RUT requiere una técnica de seudonimización con acceso a la clave separado y una finalidad documentada, sin confundir cifrado reversible con anonimización. La geolocalización de personas conserva la retención de 12 meses del caso y un registro de consultas; su transferencia fuera de Chile depende de la evaluación y aprobación aplicables, no de la existencia técnica de una réplica (PUCV, 2026a, cap.~15, pp.~26--30; PUCV, 2026b, cap.~11, pp.~23--24; RT-11.08--11.10 y RT-16.09).
 
 \paragraph{Amenazas, controles y evidencia.}
-El modelado STRIDE toma cada módulo y cada integración externa como unidad de revisión, identifica su límite de confianza, abuso posible, mitigación, responsable y prueba. Para M3, el abuso es reutilizar una credencial o reenviar un pedido: se comprueban enrolamiento, vigencia e idempotencia. Para M5, la elevación indebida de privilegios no debe liberar una carga bloqueada por M9: se prueba la separación de autorizaciones. Para M11 y la ACL, un mensaje EDI repetido o manipulado se rechaza o aísla sin escribir dos veces en el ERP. El registro verificable de estos escenarios se mantiene junto con la matriz de controles ISO/IEC 27001/27002 y las pruebas de seguridad; nombrar STRIDE o la norma sin ese resultado no constituye evidencia (RT-11.02 y RT-11.05).
+El modelado STRIDE toma cada módulo y cada integración externa como unidad de revisión, identifica su límite de confianza, abuso posible, mitigación, responsable y prueba. Para M3, el abuso es reutilizar una credencial o reenviar un pedido: se comprueban enrolamiento, vigencia e idempotencia. Para M5, la elevación indebida de privilegios no debe liberar una carga bloqueada por M9: se prueba la separación de autorizaciones. Para M11 y la ACL, un mensaje EDI repetido o manipulado se rechaza o aísla sin escribir dos veces en el ERP. El Anexo 4.1-Q registra las amenazas por módulo y frontera; el Anexo 4.1-R vincula controles ISO/IEC 27001/27002 con responsable y prueba. Son especificaciones de aceptación, no resultados de ensayos ni certificación (ISO, 2022b, 2022c) (RT-11.02 y RT-11.05).
 
 Cada decisión de acceso y cada acción crítica conserva sujeto, empresa si aplica, recurso, operación, resultado, hora, identificador de transacción y regla aplicada. Los eventos de seguridad se envían a una bitácora inalterable y al SIEM; durante un corte se conservan localmente y se remiten con el mismo identificador al reconectar. Las reglas de detección incluyen acceso privilegiado fuera de turno, intentos reiterados de uso de una credencial de conductor revocada, consulta masiva de datos comerciales, alteración de evidencia de temperatura y desvío anómalo de mensajes EDI. Los registros técnicos en CloudWatch se conservan 12 meses en línea y 24 meses adicionales en archivo; los registros de seguridad y auditoría se conservan 7 años bajo Object Lock. La retención de documentos tributarios y POD se gobierna separadamente por su dominio de datos. La plataforma y el SOC que operan estos controles se describen en 4.2 y en el capítulo de servicios (RT-11.14--11.19).
 

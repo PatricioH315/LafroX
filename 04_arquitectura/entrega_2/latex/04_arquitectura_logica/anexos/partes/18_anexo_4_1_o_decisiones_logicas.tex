@@ -1,0 +1,42 @@
+\clearpage
+\section*{Anexo 4.1-O --- Decisiones de arquitectura lógica}
+\phantomsection
+\label{anx:O}
+\addcontentsline{toc}{section}{Anexo 4.1-O --- Decisiones de arquitectura lógica}
+Las fichas tienen fecha de decisión documental 30 de septiembre de 2026 y estado \emph{adoptada en la propuesta}. Ese estado no acredita aprobación del CLIENTE ni ejecución de la prueba. Los identificadores existentes se conservan; las fichas ADR-01, 05, 06, 13 y 14 sustituyen para la vista lógica las formulaciones incompatibles del registro anterior. La realización física debe cotejar esos identificadores antes del cierre integrado (PUCV, 2026b, RT-02.04; Aclaraciones, capítulo 4).
+
+\subsection*{ADR-01. Núcleo y límites de módulo}
+La decisión es Laravel 13/PHP 8.5 con M1--M12, puertos de dominio y perfiles API, WMS local y trabajadores separados. Se descartan microservicios por módulo por su carga de administración para cuatro personas y un monolito sin fronteras por impedir aislamiento; Django es viable, pero conservar ambos runtimes duplicaría dependencias y operación. El criterio es poder desplegar los procesos críticos de forma independiente sin duplicar el dominio. Se exige prueba de dependencias entre módulos, contratos y promoción de un trabajador sin interrumpir WMS. Un proceso comparte artefacto, no permisos ni memoria durable.
+
+\subsection*{ADR-04. Persistencia por responsabilidad}
+Se selecciona PostgreSQL/PostGIS para transacciones y geografía, DynamoDB para ingesta raw y S3/Redshift para consolidación analítica. Se descartan un único almacén para operación y análisis por competencia con picking, y un motor adicional de series por mayor operación. El criterio es conservar autoridad transaccional por sitio y permitir consulta analítica sin escribir stock. La consecuencia es reconciliar por contratos, no por doble escritura. La prueba comprueba propietarios, consultas espaciales y que un tablero no acceda al OLTP.
+
+\subsection*{ADR-05. Mensajes canónicos y trabajos internos}
+Se seleccionan outbox y RabbitMQ local, shipper hacia SQS FIFO y consumidor PHP de JSON versionado. Los trabajos serializados de Laravel usan colas separadas; SNS difunde avisos. Se descartan broker solo en nube por perder continuidad del sitio y Kafka por complejidad no justificada. Cada partición tiene orden y cada consumidor deduplica por sitio y UUID. El acuse del broker no equivale a resultado de negocio. La prueba interrumpe publicación, persistencia y acuse y demuestra una sola consecuencia.
+
+\subsection*{ADR-06. Identidad y relevo local}
+Keycloak mantiene la autoridad central. La caché descriptiva local dura 24 horas; el manifiesto firmado cubre 26 horas y se renueva cada hora; la autorización personal dura 8 horas en bodega o 14 en terreno. El verificador local valida persona, PIN, dispositivo, sitio y turno. Se descartan cuentas compartidas, caché que emite identidades y dependencia exclusiva del IdP remoto. La prueba AL-OFF-01 incluye relevos a las 8 y 16 horas, reloj, revocación al reconectar y reinicio. El riesgo de revocación remota durante aislamiento se limita por expiración y bloqueo conocido localmente.
+
+\subsection*{ADR-07. Movilidad}
+Kotlin nativo con Room y periféricos Zebra conserva captura cifrada y evidencia. Se descartan PWA como único cliente de campo y una capa multiplataforma sin validación de periféricos. El criterio es escaneo con guantes, acceso a termógrafo/POS e interacción de una mano. La selección no atribuye inferioridad universal a Flutter; se verifica con el parque del caso y pruebas a $-22\,^\circ$C, lluvia y sin señal.
+
+\subsection*{ADR-08. Sustitución del WMS}
+M1/M2/M5 sustituyen el WMS 2013 en Etapa 1 mediante olas por sitio y capacidad. Mantener el legado indefinidamente arrastra falta de soporte; reemplazarlo simultáneamente eleva el riesgo de corte. La reversión requiere un único escritor, conciliación de pendientes y esquema compatible; no se promete volver a una base antigua con eventos nuevos sin transformar. La aceptación comprueba stock, lote y misiones antes y después de una reversión.
+
+\subsection*{ADR-11. EDI y frontera ERP}
+M11 traduce EANCOM/GS1 XML mediante perfiles por cadena; OpenAS2 conserva transporte, firma y MDN. El ERP se alcanza solo por ACL. Se descartan conectores directos de cada módulo al ERP y equivalencias dispersas por pantalla. El criterio es incorporar cadenas por configuración sin cambiar el pedido de M3. Se ensayan mensaje repetido, código desconocido, MDN perdido y rechazo comercial. M11 entra en Etapa 2.
+
+\subsection*{ADR-12. Aislamiento y capacidad}
+API, WMS local, reconciliación, ERP-sync, EDI y notificaciones tienen procesos, concurrencia, permisos y colas propios. Se descarta escalar un único proceso para absorber IoT y guías a la vez. Los mamparos reservan capacidad para despacho y limitan consumidores no críticos. El Anexo T define respuesta, carga de ensayo y recuperación; los límites cuantitativos de instancias y su emplazamiento se acreditan en 4.2. La prueba mide bloqueo de base y edad de cola además de CPU.
+
+\subsection*{ADR-13. Publicación y autorización}
+Se selecciona Amazon API Gateway REST API con authorizer REQUEST que verifica JWT de Keycloak; la integración privada utiliza VPC Link V2 hacia ALB. Se descarta tratar HTTP API y REST API como intercambiables sin verificar validación y cuotas, y un gateway propio por carga de operación. La validación básica de Gateway se complementa en Laravel con esquema completo y políticas por recurso. La decisión se sustenta en la documentación de AWS sobre validación, authorizers e integración privada (Amazon Web Services [AWS], s.~f.-a, s.~f.-b, s.~f.-c). Se ensayan firma, emisor, audiencia, expiración, alcance, cuerpo no admitido y acceso directo al origen.
+
+\subsection*{ADR-14. Observabilidad}
+OpenTelemetry y ADOT exportan a una plataforma CloudWatch con correlación de transacción; alarmas locales y buffer de 24 horas sostienen el sitio. Se descarta una segunda plataforma editorial de tableros por instalación y una alarma que dependa de WAN para detener una carga. El criterio es una operación común, sin convertir el diagnóstico en dueño de negocio. Los destinos, muestreo, retención y permisos se versionan; auditoría de negocio nunca se descarta para conservar una traza. La prueba reconstruye el recorrido de un UUID después del corte.
+
+\subsection*{ADR-L01. Liberación documental}
+M5 solicita la guía al ERP con clave por despacho y versión de carga. Se descartan emisión sustituta en Laravel, reintento ciego y autorización genérica del supervisor. La evidencia válida se guarda localmente antes de liberar. Se propone continuidad del emisor ERP con su mecanismo de emisión y custodia existente o una contingencia autorizada y documentada; la ACL consulta ese mismo emisor, sin duplicarlo. La elección concreta requiere validación de Tributación y responsable del ERP. AL-DTE-01 verifica cambios tardíos y las 96 salidas; el Anexo V registra la decisión del CLIENTE requerida.
+
+\subsection*{ADR-L02. Protección fuera del sitio}
+Toda transacción crítica confirmada localmente conserva secuencia y marca de agua de protección externa. Se exige copia durable fuera del dominio de falla con retraso máximo de 15 minutos en el escenario cubierto; la selección de medios es física. Se descarta declarar RPO cumplido mediante WAL o RabbitMQ del mismo sitio. Si todos los caminos de extracción fallan y el origen se destruye, no existe solución de software que recupere datos nunca enviados. La continuidad local se mantiene y el riesgo se escala por AL-BR-01 sin suspender implícitamente escrituras ni rebajar RT-07.04. AL-DR-01 comprueba el escenario y la decisión formal aplicable.
