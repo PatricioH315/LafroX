@@ -1,0 +1,117 @@
+\subsection{Módulos funcionales y límites de contexto}
+\label{sec:modulos-funcionales}
+
+Los doce módulos M1--M12 separan decisiones de negocio y conservan su trazabilidad a los requerimientos. El Anexo 4.1-D identifica responsabilidad, intercambio, actor principal y etapa. Un actor puede participar en varios módulos sin convertirse en propietario de sus datos. El detalle de los módulos críticos se desarrolla inmediatamente después.
+
+
+Cada módulo tiene un dueño de negocio y una vía explícita para colaborar con los demás.
+
+La correspondencia con los identificadores físicos se detalla en el Anexo 4.A (Formulario T-11) de 4.2: N-04 ejecuta los módulos M1--M12 en nube; A-01 ejecuta M1, M2 y M5 como WMS local sobre A-02 (base transaccional), con A-03 (RabbitMQ), A-04 (ACL del ERP) y A-05 (identidad local) como apoyos. M9 utiliza B-02 (gateways de frío) y N-08 (ingesta IoT); M10 utiliza N-10 (analítica). N-09 proporciona SQS FIFO y SNS a los flujos asíncronos; N-01 a N-03 publican los portales y N-13 gestiona los terminales de bodega y terreno. Estos códigos identifican componentes de despliegue, no módulos de negocio adicionales.
+
+El reparto evita que M6 emita DTE o que M10 escriba pedidos. M1 y M5 entregan datos al ERP únicamente por la capa anticorrupción. M11 entra en la Etapa 2 sin cambiar el dueño de la reserva de stock, que sigue siendo M2. Los límites y dependencias se precisan en el mapa siguiente.
+
+El Anexo 4.1-E hace visible el paso del requerimiento al componente y a la capa que lo realiza. Es una síntesis de los dominios, no una sustitución del catálogo requisito por requisito del Formulario T-12; allí se debe conservar también origen, etapa, prueba y criterio de aceptación de cada RF y RNF.
+
+
+La trazabilidad transversal se prueba sobre esos mismos recorridos: RT-03.10/12/13 en M1, M3, M5 y M6 con 24 horas en sitio y 14 horas en terreno; RT-02.06 mediante UUID y resultado persistente en M2/M3/M6; RT-02.13 mediante el modelo de dominio; y RT-11/12 mediante autorización y auditoría en cada cruce. El entorno de prueba y el caso de aceptación deben reproducir la falla, no limitarse a una marca de cumplimiento.
+
+\subsubsection{Mapa de límites de contexto}
+\label{subsec:limites-contexto}
+
+El modelo de dominios se organiza mediante límites de contexto explícitos. El Anexo 4.1-F indica qué módulo entrega información, qué módulo la recibe y dónde se traduce un modelo ajeno. El uso de un vocabulario publicado o de una capa anticorrupción evita que un cambio en el ERP o en una cadena comercial reescriba las reglas de stock y pedido.
+
+
+El mapa expone dependencias que deben permanecer bajo contratos versionados.
+
+El mapa asigna a cada relación un dueño de contrato y una superficie de intercambio. El catálogo de interfaces (\S~\ref{sec:catalogo-interfaces}) añade la versión y la conducta ante falla; una relación en esta tabla no equivale por sí sola a un contrato ejecutable.
+
+\subsubsection{Módulo de calidad y trazabilidad (M9)}
+
+El módulo de trazabilidad resuelve el problema central que motivó la licitación: la incapacidad de responder en tiempo real ante un retiro sanitario. En marzo de 2026, un retiro preventivo de queso fresco tomó 9 días en resolverse de forma inexacta, generando pérdidas de \$31 millones, la apertura de un sumario sanitario y la suspensión como distribuidor autorizado por un proveedor clave por seis meses.
+
+La unidad de trazabilidad sanitaria es el lote del proveedor, identificado por el producto (GTIN) y el número de lote. El vencimiento y los registros de temperatura se conservan como atributos asociados; FEFO es la regla de rotación por vencimiento, no parte del identificador. Cada movimiento vincula el lote con la unidad logística identificada mediante SSCC. Esta organización permite seguir el producto aunque cambie de caja o pallet. Como el 41\% de las recepciones carece de lote registrado, la captura en recepción es obligatoria para sostener la trazabilidad (RF-01).
+
+La trazabilidad forward/backward se implementa evento a evento conforme al estándar GS1 EPCIS, permitiendo al sistema responder en menos de 2 horas ante un retiro sanitario (Cap. 18), con identificación precisa de los lotes y puntos de entrega afectados. Los registros de temperatura se capturan de forma continua en 28 puntos de cámara y 28 termógrafos: 18 en camiones propios y 10 en camiones refrigerados de transportistas. Una lectura fuera del rango configurado genera alerta y retención preventiva automática de la carga en M5, también sin enlace (RF-09.03/05/07); el sistema registra umbral, duración, sensor y lote. La jefatura de Calidad evalúa la excursión y es la única que autoriza una liberación trazada o dispone rechazo. El conductor no puede levantar el bloqueo. M9 integra los sensores de cámara mediante los dos gateways con Greengrass (Capa 2), los termógrafos mediante el terminal del conductor, inventario (M2), preparación (M5) y observabilidad (Capa 8), con evidencia exportable de la decisión.
+
+\subsubsection{Módulo de inventario (M2)}
+
+El módulo de inventario permite saber qué stock existe, dónde está y qué parte puede comprometerse. Mantiene la operación distribuida entre Talca, Concepción y los tres cross-docks; la casa matriz consulta la información consolidada. Sus capacidades son las siguientes:
+
+\begin{itemize}
+  \item \textbf{Stock por sitio (RF-02.02, RT-02.12).} Cada instalación operativa informa sus movimientos al consolidado. Con conexión se consulta disponibilidad actual; sin ella se muestra la copia descargada, identificada como información pendiente de actualización. La parametrización admite nuevos sitios sin convertir a la casa matriz en una bodega ni asignarle stock operativo por defecto.
+  \item \textbf{Slotting y conteo ciego.} Asignación de ubicaciones por criterio documentado de rotación, peso y compatibilidad, con conteo cíclico de inventario mediado por terminales HHT con escáner GS1, reduciendo la discrepancia actual del 2,3\% del valor contado a menos del 1\%.
+  \item \textbf{FEFO (First Expired, First Out).} La preparación y el despacho respetan el principio de primer vencimiento, con secuenciación térmica para productos refrigerados y congelados.
+  \item \textbf{Stock disponible.} Con conexión se consulta la disponibilidad mediante APIs. Sin conexión se utiliza la copia autorizada descargada al inicio del turno y almacenada en SQLite/Room. La reserva se confirma en el servicio de negocio; los pedidos capturados sin señal permanecen pendientes de validación. Los conflictos se resuelven con reglas documentadas de asignación y prioridad, no mediante la sola comparación de marcas de tiempo.
+\end{itemize}
+
+\subsubsection{Módulo de preventa móvil (M3)}
+
+Para los 62 preventistas, tomar un pedido debe seguir siendo posible aun cuando la ruta no tenga cobertura. El módulo reemplaza una aplicación que no consulta stock ni crédito y presenta caídas y duplicación de pedidos. La nueva interacción distingue con claridad lo registrado en el dispositivo de lo confirmado por el servidor:
+
+\begin{itemize}
+  \item \textbf{Toma de pedido offline (RF-03.02).} El preventista toma el pedido sin señal de red. La aplicación mantiene una foto local de datos de lectura (stock, crédito del cliente, precios vigentes, promociones) que se descarga al inicio del turno cuando hay conectividad.
+  \item \textbf{Identificador único y deduplicación (RF-03.16/17).} Cada evento recibe un UUID que se conserva en todos sus reintentos. El servicio de negocio registra su procesamiento y evita ejecutar dos veces la misma operación.
+  \item \textbf{Validación de stock y crédito.} La validación definitiva ocurre en la sincronización con la regla de negocio del servidor (reserva de stock, RF-03.03; crédito del cliente, RF-03.08/09). Sin conexión, el pedido queda como pendiente de validación y se resuelve en la sincronización posterior.
+  \item \textbf{Sincronización diferida.} Al recuperar cobertura, el dispositivo envía las escrituras acumuladas por API Gateway. El Gateway aplica los controles de entrada; el servicio de negocio valida, deduplica, procesa y confirma cada evento. El dispositivo conserva los eventos que aún no tienen confirmación.
+\end{itemize}
+
+La prueba de aceptación de terreno considera un turno de 14 horas sin cobertura. El caso exige que un dispositivo de reparto sincronice esa jornada en un máximo de 10 minutos; para el CD, fija hasta 2 horas tras un corte de 24 horas. Estos límites se verifican con la volumetría correspondiente y reconciliación determinista (RT-03.12), sin extender automáticamente el umbral del repartidor a cualquier carga de preventa.
+
+\subsubsection{Módulo de planificación de rutas (M4)}
+
+El módulo de planificación de rutas automatiza un proceso que actualmente depende de una sola persona (21 años de conocimiento concentrado, con retiro programado en 2 años) que administra una planilla de 11 hojas. El módulo implementa:
+
+\begin{itemize}
+  \item \textbf{Secuenciación automática.} Optimización determinista de rutas con capacidad y ventanas de tiempo (VRP), con objetivo de ejecución inferior a 20 minutos (Cap. 18). El planificador puede conocer las restricciones utilizadas y revisar el resultado. Esta función no incorpora inteligencia artificial.
+  \item \textbf{Ventanas horarias y capacidad.} Considera capacidad de vehículo, ventanas de entrega del cliente y cadena de frío.
+  \item \textbf{Integración con GIS.} Consulta de direcciones, cálculo de ETA y geocercas por API externa, con caché de mapas por zona en dispositivos para degradación a ruta offline con secuencia cargada.
+  \item \textbf{Costo de entrega.} Alimenta el cálculo del costo de servir por cliente, uno de los ejes de evaluación del caso.
+\end{itemize}
+
+La propuesta automática no convierte las excepciones del planificador en reglas opacas: M4 conserva restricción, motivo de ajuste y autor de la ruta aprobada para transferir conocimiento y comprobar el criterio de aceptación.
+
+\subsubsection{Módulo de rendición y cobro (M7)}
+
+El módulo de rendición y cobro resuelve las diferencias de rendición que promedian \$4,2 millones mensuales sin investigación de causa. Implementa:
+
+\begin{itemize}
+  \item \textbf{Rendición digital individual (RF-07.02).} Cada conductor rinde sus cobros del turno de forma digital, con causales de descuadre clasificadas y trazables.
+  \item \textbf{Cobranza en ruta (RF-07.06).} El conductor registra el cobro y conserva su evidencia para la rendición. En pagos con POS móvil, la captura local de una operación no se presenta como autorización bancaria. El tratamiento sin cobertura depende de las capacidades y condiciones acordadas con la pasarela; se concilia al reconectar sin generar cargos duplicados.
+  \item \textbf{Interfaz con ERP (RF-07.09).} La rendición aprobada se publica en SQS; el trabajador Laravel \texttt{erp-sync} consume y entrega a la \textbf{capa anticorrupción (ACL)}; la ACL integra con el ERP. Nunca hay escritura directa al ERP. El ERP permanece como única fuente de verdad tributaria y único emisor de DTE.
+  \item \textbf{Costo de servir (RF-11).} El módulo alimenta el tablero de BI con el costo real por entrega, incluyendo kilometraje real (telemetría M12), tiempo de servicio y deducciones por devoluciones.
+\end{itemize}
+
+\subsubsection{Módulo de analítica y costo de servir (M10)}
+
+El módulo de inteligencia de negocio consolida la información operativa en tableros gerenciales de autoservicio (RT-05.27) con modelo semántico en el mismo lenguaje del negocio: OTIF, fill rate, costo por entrega, ocupación de flota y segmentación por canal/cliente.
+
+Los tableros se alimentan del almacén analítico (Redshift Serverless) con latencias comprometidas: operación del día $\leq$ 5 minutos, cierre comercial $\leq$ 2 horas, gestión $\leq$ 4 horas (RT-05.29). El modelo dimensional se estructura en hechos (ventas, entregas, stock, costo de servir) y dimensiones (cliente, SKU, tiempo, ruta, canal), con drill-down hasta línea de pedido y lote para trazabilidad sanitaria completa.
+
+La información es de solo lectura para la analítica, sin acceder al transaccional en vivo, conforme al principio de separación transaccional/analítico. Los informes se programan (diarios, semanales, mensuales) y se exportan de forma asíncrona con firma y checksum (RT-05.28).
+
+El módulo no incorpora inteligencia artificial ni analítica predictiva. Se prioriza la calidad de la captura y la disponibilidad de indicadores verificables, dado que el caso informa un 41 \% de recepciones sin lote registrado. La incorporación futura de capacidades predictivas requerirá una decisión expresa del CLIENTE y la definición de su alcance.
+
+Comercial y Finanzas consultan indicadores sobre el mismo modelo semántico, pero solo Finanzas participa en la aprobación de diferencias de rendición; M10 no recibe permiso para modificar cobros.
+
+\subsubsection{Recepción, preparación, reparto y servicios asociados}
+
+\textbf{M1 Recepción} compara lo recibido con la orden de compra, identifica GTIN, lote, vencimiento y SSCC, y registra cuarentena cuando falta evidencia o hay una diferencia. Publica \texttt{RecepcionConfirmada} para que M2 ubique el stock; no lo reserva para venta. La información del ERP entra y sale exclusivamente por la capa anticorrupción.
+
+El proveedor consulta el estado de su orden y de la recepción; no accede a las reglas internas de inventario ni confirma unilateralmente un lote.
+
+\textbf{M5 Preparación} toma pedidos confirmados y ubicaciones de M2, aplica FEFO y genera misiones verificables con lectura GS1. Conserva localmente cada lectura y la causal de faltante. Una carga no se libera por el mero hecho de estar preparada: la solicitud de guía electrónica se cursa al ERP por la ACL y la salida queda condicionada a su confirmación o a la contingencia tributaria aprobada.
+
+El preparador confirma cada lectura en el servicio local; la pérdida del enlace externo no borra la misión ni convierte una carga preparada en una salida autorizada.
+
+\textbf{M6 Reparto y entrega} recibe de M4 la ruta y de M5 la carga liberada. El conductor registra receptor, cantidad recibida, rechazos y POD en el dispositivo aun sin señal. M6 no liquida cobros ni emite documentos tributarios; publica el resultado para M7 y M8 y mantiene visible el estado pendiente de sincronización.
+
+El conductor propio y el externo utilizan el mismo contrato de entrega con identidades personales distintas. La evidencia queda ligada al turno y al receptor, sin exigir que el almacén instale una aplicación.
+
+\textbf{M8 Devoluciones y envases} separa la mercadería que regresa de los activos retornables. Cada devolución conserva cantidad, lote, causal y vínculo con la entrega; el ajuste tributario se solicita al ERP por la ACL. Los canastillos y pallets se controlan por saldo de cliente y movimientos firmados, sujetos a conciliación en la rendición.
+
+\textbf{M11 Canal moderno} recibe pedidos mediante contratos EDI configurados por cadena, traduce códigos a un vocabulario común y envía el pedido normalizado a M3. Las diferencias de formato y equivalencias van a una bandeja de excepciones; M11 no se convierte en un segundo dueño del pedido ni del inventario.
+
+La cadena intercambia pedidos por el hub EDI; el transportista consulta y asigna viajes desde su portal. Ninguno de esos canales reemplaza el registro personal del conductor que ejecuta M6.
+
+\textbf{M12 Telemetría y flota} consume la fuente de posicionamiento existente de los vehículos propios, compara ruta planificada con recorrido y entrega kilómetros a M10 para costo de servir. No incorpora cámaras de cabina ni usa la posición para controlar la jornada laboral. Su falla degrada la visibilidad de ruta, no la captura de entregas de M6.
+

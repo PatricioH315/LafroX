@@ -1,0 +1,28 @@
+\subsection{Catálogo de interfaces}
+\label{sec:catalogo-interfaces}
+
+El catálogo identifica quince integraciones por número estable, dueño y superficie contractual. Los anexos 4.1-G y 4.1-H reúnen para cada una el modo, volumen esperado, ventana requerida de la contraparte y conducta ante lentitud o error (RT-05.21). Se distingue una ventana requerida por el diseño de un SLA efectivamente acordado con un tercero. El contrato ejecutable OpenAPI o AsyncAPI debe fijar operación o evento, esquema, versión, autenticación, errores y plazo de retirada. La publicación de una ruta genérica por sí sola no equivale a entregar ese contrato.
+
+\subsubsection{Integraciones internas}
+
+Las ocho interfaces internas intercambian pedidos, entregas, inventario, identidad y telemetría entre dispositivos, sitios y nube. El Anexo 4.1-G permite reconocer qué módulo acepta cada mensaje y cómo se conserva cuando falla el enlace.
+
+
+Las interfaces críticas conservan datos durante el corte y confirman cada operación al reconectar.
+
+INT-01 y INT-02 conservan el UUID de cada operación hasta obtener acuse durable; INT-03 y INT-04 ordenan eventos por sitio o agregado. INT-12 replica únicamente el WMS de Talca a un esquema de lectura separado de las tablas escritas por los consumidores de eventos. Su desfase aumenta durante el corte WAN; el registro local solo permite recuperarlo si sobrevive y conserva capacidad. El Anexo 4.1-M distingue este caso de la pérdida simultánea del sitio y del enlace.
+
+\subsubsection{Integraciones externas}
+
+Las siete interfaces con terceros se encapsulan para que un cambio de proveedor no altere doce módulos a la vez. El Anexo 4.1-H separa el tercero, el dueño interno del contrato y la conducta ante falla.
+
+
+La ACL aísla el ERP; ninguna falla de tercero convierte un estado pendiente en aprobado.
+
+La integración tributaria INT-07 pasa por el ERP, único emisor de DTE; M5 no llama al SII. La falla de INT-09 impide afirmar que un cargo quedó aprobado. Para INT-08 se preservan el mensaje original, su equivalencia y la respuesta enviada a cada cadena.
+
+\textbf{Volumen de mensajes por integración.} Los anexos 4.1-G y 4.1-H declaran las quince interfaces; el Anexo I resume órdenes de magnitud y cálculos. No se usa la suma de eventos, consultas, muestras y reenvíos como número de transacciones únicas: una misma operación cruza varias interfaces. La prueba mide además tamaño de mensajes, objetos y WAL. La telemetría se ingiere y consolida por su flujo específico sin competir con las escrituras críticas de despacho (ADR-04).
+
+
+El volumen de telemetría no debe competir con las escrituras críticas de despacho.
+

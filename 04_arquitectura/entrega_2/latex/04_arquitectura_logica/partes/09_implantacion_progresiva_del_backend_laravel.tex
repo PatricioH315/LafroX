@@ -1,0 +1,18 @@
+\subsection{Implantación progresiva del backend Laravel}
+\label{sec:transicion-laravel}
+
+La implantación conserva los identificadores M1--M12, sus dueños de datos, las rutas y versiones públicas, los eventos JSON, la identidad Keycloak y las reglas offline. La Tabla~\ref{tab:mapeo-laravel} muestra cómo se implementan las capacidades del backend; PostgreSQL/PostGIS, RabbitMQ, SQS y los clientes mantienen sus contratos.
+
+\begin{tablalafrox}{Implementación lógica del backend Laravel}{tab:mapeo-laravel}{F{0.27} F{0.35} Y}{\cab{Capacidad} & \cab{Implementación Laravel/PHP} & \cab{Comprobación}}
+APIs y módulos & Rutas y controladores Laravel; servicios por contexto PSR-4. & Contratos OpenAPI y límites de módulo. \\
+Persistencia y geografía & PDO/Query Builder y SQL PostGIS parametrizado; migraciones Laravel basales. & Datos, índices y consultas espaciales equivalentes. \\
+Tareas y planificación & Consumidor PHP de JSON en SQS FIFO; trabajos Laravel en colas separadas y planificador único. & Orden por grupo, reintentos y tareas únicas. \\
+Cola local y shipper & Adaptador AMQP con \texttt{php-amqplib} y sobre JSON. & Corte de 24 h, confirmación y drenaje sin pérdida. \\
+Identidad y administración & Guard OIDC, políticas por recurso y portal Angular. & Permisos, baja y relevos de turno. \\
+Contratos, pruebas y trazas & \texttt{swagger-php}, AsyncAPI, PHPUnit y OpenTelemetry PHP. & Paridad de API, eventos y correlación. \\
+\end{tablalafrox}
+
+{\footnotesize Fuente: elaboración propia de LafroX a partir de los contratos y requisitos de esta arquitectura.\par}
+
+La implantación comienza por fijar contratos, dueños de datos y esquema PostgreSQL del WMS de 2013 como línea base de migración. Las migraciones Laravel posteriores son aditivas y compatibles con los lectores de la ola previa. M1/M2/M5 se ensayan en un sitio piloto con el WMS legado disponible para reversión; después se habilitan los demás sitios, módulos y trabajadores. En coexistencia, una operación tiene un único escritor autorizado: no se habilita doble escritura de stock, cobros o DTE. Todo evento que cruza tecnologías usa JSON versionado. La reversión devuelve el tráfico al escritor previo solo después de detener el nuevo, conciliar pendientes y verificar esquemas y contratos compatibles. Cada ola cierra con pruebas de 14 horas en terreno, 24 horas por sitio con dos relevos, emisión de guía previa al despacho, 96 camiones en la ventana crítica y reconciliación sin pedidos duplicados.
+

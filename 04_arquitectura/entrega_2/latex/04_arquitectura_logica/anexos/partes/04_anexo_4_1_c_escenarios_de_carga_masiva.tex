@@ -1,0 +1,13 @@
+\section*{Anexo 4.1-C --- Escenarios de carga masiva}
+\addcontentsline{toc}{section}{Anexo 4.1-C --- Escenarios de carga masiva}
+El detalle de escenarios de carga masiva se presenta a continuación.
+
+\begin{tablalafrox}{Escenarios de carga y descarga masiva (RT-05.22)}{tab:carga-masiva}{F{0.24} F{0.34} Y}{\cab{Escenario} & \cab{Mecanismo} & \cab{Control y auditoría}}
+Carga inicial maestros/históricos (ERP, WMS) & ETL por lotes, inserción idempotente por UUID, ventana sin operación & Conteo previo/posterior por lote, conciliación totales, bitácora carga (quién, cuándo, lote, resultado); rechazados $\rightarrow$ cuarentena + reproceso \\
+Descarga regulatoria (traza lote, temperaturas, DTE, geo) & Exportación asíncrona CSV/Parquet, firmada, checksum & Registro extracción (solicitante, filtro, resultado); control acceso datos sensibles (RT-16.09) \\
+Sincronización masiva turno (terreno) & Sincronizadores con partición + reanudación + deduplicación; medios a S3 por objeto & Nivel servicio: turno completo $\leq$ 10 min; métricas sync en Capa 8 \\
+Interfaces periódicas con terceros & Colas con \texttt{batch\_id} + confirmación por lote & Monitoreo DLQ + acuse por lote en bandeja excepciones \\
+\end{tablalafrox}
+
+{\footnotesize Fuente: elaboración propia de LafroX a partir de Bases Técnicas Transversales, RT-05.22.\par}
+

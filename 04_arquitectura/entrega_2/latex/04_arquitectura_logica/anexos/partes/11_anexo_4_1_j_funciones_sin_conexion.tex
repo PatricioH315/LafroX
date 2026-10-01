@@ -1,0 +1,18 @@
+\section*{Anexo 4.1-J --- Funciones sin conexión}
+\addcontentsline{toc}{section}{Anexo 4.1-J --- Funciones sin conexión}
+El detalle de funciones sin conexión se presenta a continuación.
+
+\begin{tablalafrox}{Funciones sin conexión y procedimiento de continuidad}{tab:funciones-offline}{F{0.24} F{0.16} F{0.26} Y}{\cab{Función} & \cab{Estado} & \cab{Continuidad local} & \cab{Al reconectar}}
+Pedido preventa & Captura 14 h & Precio y stock informativos; pedido pendiente. & M2 valida reserva y crédito. \\
+Entrega y POD & Captura 14 h & Evidencia cifrada y cola persistente. & M6 confirma o abre excepción. \\
+Recepción y preparación & Opera 24 h & Registro GS1 y bloqueo térmico local. & Eventos a nube y conciliación. \\
+Cobro en efectivo & Captura 14 h & Comprobante y custodia según política. & M7 rinde y concilia. \\
+Autorización POS & No disponible & Efectivo o crédito autorizado; sin cargo presunto. & Autorizar una sola vez. \\
+Nueva guía electrónica & No disponible & M5 retiene la salida afectada; escalar. & ERP emite antes de liberar. \\
+Ruteo y mapas en línea & No disponible & Usar secuencia y mapas precargados. & Recalcular cambios pendientes. \\
+EDI de supermercados & No disponible & Registrar incidente y aviso acordado con cadena. & Cola y bandeja de excepciones. \\
+Tablero central & No disponible & Alarmas y bitácora local sostienen despacho. & Reponer telemetría y estado. \\
+\end{tablalafrox}
+
+{\footnotesize Fuente: elaboración propia de LafroX a partir de Bases Técnicas Transversales, RT-03.10 y RT-03.13.\par}
+

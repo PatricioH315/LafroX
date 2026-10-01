@@ -1,0 +1,19 @@
+\subsection{Relación entre las vistas de arquitectura}
+\label{sec:iso42010}
+
+RT-02.03 exige cinco vistas de la arquitectura: lógica, procesos, despliegue, datos y seguridad. La Tabla~\ref{tab:vistas-iso42010} indica qué preocupación responde cada una y dónde debe demostrarse en el Subdocumento 4 o en el capítulo de datos. La integración atraviesa esas vistas; no se presenta como una sexta vista exigida por la Base.
+
+\begin{tablalafrox}{Trazabilidad de las cinco vistas de arquitectura}{tab:vistas-iso42010}{F{0.15} F{0.34} F{0.27} Y}{\cab{Vista} & \cab{Pregunta que responde} & \cab{Lugar de la evidencia} & \cab{Responsable}}
+Lógica & Quién realiza cada función y por qué contrato se comunica. & 4.1: capas, módulos, interfaces. & Arquitectura \\
+Procesos & Cómo atraviesan los módulos el pedido, despacho, entrega y rendición. & 4.1: eventos y flujos; 3.4: operación. & Operaciones \\
+Despliegue & Dónde se ejecuta y cómo continúa durante una falla. & 4.2 y 4.3. & Infraestructura \\
+Datos & Quién posee, conserva y reconcilia cada dato. & 4.1: dominios; capítulo 5: modelo y gestión. & Datos \\
+Seguridad & Quién puede actuar, con qué identidad y qué controles. & 4.1: controles lógicos; 4.2: implantación. & Seguridad \\
+\end{tablalafrox}
+
+{\footnotesize Fuente: elaboración propia de LafroX a partir de Bases Técnicas Transversales, RT-02.03.\par}
+
+La evidencia de una vista se comprueba en el apartado indicado, no por el nombre de la tabla.
+
+La vista lógica queda desarrollada aquí. La comprobación de las otras cuatro requiere revisar el capítulo integrado y sus figuras; esta tabla es una ruta de lectura, no una declaración automática de conformidad con ISO/IEC/IEEE 42010.
+

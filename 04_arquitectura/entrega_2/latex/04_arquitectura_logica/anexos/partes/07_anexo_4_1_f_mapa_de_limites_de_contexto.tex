@@ -1,0 +1,21 @@
+\section*{Anexo 4.1-F --- Mapa de límites de contexto}
+\addcontentsline{toc}{section}{Anexo 4.1-F --- Mapa de límites de contexto}
+El detalle de mapa de límites de contexto se presenta a continuación.
+
+\begin{tablalafrox}{Mapa de límites de contexto}{tab:context-mapping}{F{0.17} F{0.20} F{0.27} F{0.22} Y}{\cab{Dueño} & \cab{Relación} & \cab{Interlocutor} & \cab{Contrato} & \cab{Límite}}
+M1 Recepción & Traducción por ACL & ERP 2017 & Recepción validada. & ERP no escribe lote. \\
+M2 Inventario & Servicio publicado & M3, M4 y M5 & Consulta y reserva. & M2 decide stock. \\
+M3 Preventa & Cliente de M2 & M2 y M7 & Pedido y sincronización. & No aprueba crédito local. \\
+M4 Rutas & Adapta fuente & M3, M6 y GIS & Ruta aprobada. & GIS no decide ruta. \\
+M5 Preparación & Proveedor de evento & M2, M6 y ACL & Misión preparada. & No emite guía. \\
+M6 Reparto & Proveedor de evento & M4, M7 y M8 & Entrega registrada. & No liquida cobro. \\
+M7 Rendición & Traducción por ACL & M6 y ERP & Rendición aprobada. & ERP sigue tributario. \\
+M8 Devoluciones & Lenguaje publicado & M2 y M7 & Devolución y envase. & No ajusta DTE. \\
+M9 Calidad & Proveedor de bloqueo & M1, M5 y sensores & Lote bloqueado. & Calidad libera. \\
+M10 Analítica & Consumidor de eventos & M1--M9 y M12 & Indicadores consolidados. & Solo lectura. \\
+M11 Canal moderno & Traducción EDI & Cadena, M3 y ACL & Pedido normalizado. & M3 gobierna pedido. \\
+M12 Flota & Adapta telemetría & GPS, M4 y M10 & Ruta observada. & No registra entrega. \\
+\end{tablalafrox}
+
+{\footnotesize Fuente: elaboración propia de LafroX a partir de Caso 02 y responsabilidades de M1--M12 definidas en esta sección.\par}
+

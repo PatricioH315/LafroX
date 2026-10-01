@@ -1,0 +1,19 @@
+\subsection{Registro de decisiones de arquitectura}
+\label{sec:adr}
+
+Las decisiones se identifican con la numeración del registro arquitectónico común al Subdocumento 4. La Tabla~\ref{tab:adr} resume las que gobiernan esta vista lógica; cada ADR conserva problema, alternativas, criterio de selección, consecuencia y evidencia de validación (RT-02.04).
+
+\begin{tablalafrox}{Registro de decisiones de la vista lógica}{tab:adr}{F{0.13} Y}{\cab{ADR del registro único} & \cab{Decisión adoptada que aplica a 4.1}}
+ADR-01 & Monolito modular Laravel 13 / PHP 8.5, con perfiles de API, WMS local, shipper, consumidores y portal separados; contratos estables entre M1--M12. \\
+ADR-05 & RabbitMQ local por sitio; shipper idempotente hacia SQS FIFO con JSON canónico; consumidor PHP dedicado, trabajos Laravel en colas separadas e IoT Core MQTT. \\
+ADR-06 & Keycloak maestro en nube, caché local de solo lectura con TTL de 24 horas y verificador local que valida el manifiesto firmado y el PIN personal en cada relevo sin enlace. \\
+ADR-07 & Aplicación nativa Android Kotlin para preventa, reparto y picking, con SQLite/Room y periféricos Zebra. \\
+ADR-08 & Reemplazo del WMS 2013 en Etapa 1 mediante el módulo WMS del monolito, por dominio, sitio y ola, con reversión. \\
+ADR-11 & Hub EDI centralizado GS1 en nube con conector configurable por cadena, equivalencias GTIN y ACL hacia ERP/GDE. \\
+ADR-12 & Cómputo elástico: perfiles API y trabajadores PHP/Laravel con escalado independiente; límites de concurrencia y memoria medidos bajo el pico, Aurora y DynamoDB según el plan de capacidad. \\
+\end{tablalafrox}
+
+{\footnotesize Fuente: elaboración propia de LafroX a partir de los requisitos RT-02.04 y RT-02.11 y del caso 02.\par}
+
+Las consecuencias se convierten en pruebas: ADR-01 exige verificar límites de módulo; ADR-05, persistencia y deduplicación tras un corte; ADR-06, dos relevos de turno sin IdP; ADR-08, reversión de una ola sin duplicar stock; y ADR-12, drenaje de la cola bajo el pico de septiembre. Una elección no se acredita solo por figurar en la tabla.
+

@@ -1,0 +1,14 @@
+% !TeX root = ../../../main.tex
+
+\chapter{Introducción a la Arquitectura lógica y física de la solución}
+\label{cap:arquitectura-logica}
+
+El capítulo 4 explica cómo la solución sostiene la operación distribuida de Puelche. Este fragmento desarrolla la arquitectura lógica del apartado 4.1 y la conecta con las capacidades del capítulo 3, el modelo de datos del capítulo 5 y los contratos de integración. El apartado 4.2 debe acreditar dónde se ejecuta cada componente; el 4.3, la estrategia de centros de datos. El registro ADR y el Formulario T-11 acompañan la arquitectura integrada.
+
+\section{Arquitectura lógica}
+\label{sec:arquitectura-logica}
+
+Este apartado desarrolla las responsabilidades y los contratos de la solución que deben corresponder al esquema y explicación de los apartados 3.3 y 3.4. La correspondencia se establece por capacidad: recepción e inventario (M1--M2), preventa y planificación (M3--M4), preparación y reparto (M5--M6), rendición y devoluciones (M7--M8), calidad y analítica (M9--M10), canal moderno y flota (M11--M12). El emplazamiento, las conexiones y su capacidad corresponden a 4.2; los centros de datos, a 4.3. Los catálogos extensos se entregan en los anexos 4.1-A a 4.1-N. El Anexo N identifica las capacidades del capítulo 3 disponible y la realización requerida de cada módulo; distingue esa cobertura lógica del cotejo completo que exige el capítulo integrado.
+
+En Puelche, un pedido debe poder tomarse en una ruta sin cobertura, prepararse durante la noche y llegar al cliente con su lote y su evidencia de entrega identificados. La arquitectura parte de esa continuidad: cada operación se registra donde ocurre y se reconcilia cuando vuelve la conexión. Para ordenar las responsabilidades, la solución se organiza en las ocho capas exigidas por el numeral 2.1 de las Bases Técnicas Transversales (Pontificia Universidad Católica de Valparaíso [PUCV], 2026b, cap.~2, p.~6; RT-02.01).
+

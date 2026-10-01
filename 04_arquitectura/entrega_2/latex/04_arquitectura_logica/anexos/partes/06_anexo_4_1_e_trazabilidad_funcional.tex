@@ -1,0 +1,21 @@
+\section*{Anexo 4.1-E --- Trazabilidad funcional}
+\addcontentsline{toc}{section}{Anexo 4.1-E --- Trazabilidad funcional}
+El detalle de trazabilidad funcional se presenta a continuación.
+
+\begin{tablalafrox}{Trazabilidad funcional de la arquitectura lógica}{tab:traza-logica}{F{0.16} F{0.26} F{0.26} Y}{\cab{Requisito} & \cab{Responsable} & \cab{Capas implicadas} & \cab{Evidencia verificable}}
+RF-01 & M1 Recepción & 1, 4, 5 y 6 & Lote GS1 recibido y publicado. \\
+RF-02 & M2 Inventario & 4, 5 y 6 & Reserva y FEFO por sitio. \\
+RF-03 & M3 Preventa & 1, 3, 4 y 6 & Pedido único tras reconexión. \\
+RF-04 & M4 Rutas & 1, 4 y 5 & Ruta revisada en menos de 20 min. \\
+RF-05 & M5 Preparación & 1, 4, 5 y 6 & Lectura y carga por lote. \\
+RF-06 & M6 Reparto & 1, 4, 5 y 6 & POD unido a entrega. \\
+RF-07 & M7 Rendición & 1, 4 y 5 & Descuadre y aprobación segregados. \\
+RF-08 & M8 Devoluciones & 1, 4, 5 y 6 & Saldo y causal conciliados. \\
+RF-09 & M9 Calidad & 2, 4, 5 y 6 & Bloqueo y liberación por Calidad. \\
+RF-11 & M10 Analítica & 4, 5 y 6 & OTIF y costo trazables al evento. \\
+RF-12 & M11 Canal moderno & 3, 4 y 5 & Pedido EDI normalizado. \\
+RF-14 & M12 Flota & 2, 4 y 5 & Ruta real correlacionada. \\
+\end{tablalafrox}
+
+{\footnotesize Fuente: elaboración propia de LafroX a partir del catálogo funcional del caso y las responsabilidades definidas en la Tabla~\ref{tab:modulos-funcionales}.\par}
+
