@@ -1,14 +1,11 @@
 % !TeX root = ../../main.tex
 % ------------------------------------------------------------------
-%  4.3 Data center primario y secundario --- cabecera y 4.3.1 primario
-%  Fragmento del Subdocumento 4.2, traido desde contenido.tex con
-%  \parte{partes/05_d_sitio_principal}. Las rutas son relativas a la carpeta del
-%  subdocumento, nunca a la de main.tex.
+%  4.3 Data center primario y secundario: encabezado y 4.3.1, el primario.
 %
-%  Texto literal de «4.3 completo sin imagenes_v2.md» (carpeta 4.3/), solo
-%  convertido a LaTeX. Las tablas de este capítulo se numeran 4.3-1 a 4.3-6,
-%  como las cita el texto; la numeración corrida se restituye al cierre de
-%  06_e_sitio_secundario.tex.
+%  El texto viene de «4.3 completo sin imagenes_v2.md» (carpeta 4.3/),
+%  pasado a LaTeX sin reescribirlo. Las tablas de este capítulo se numeran
+%  4.3-1 a 4.3-6 porque así las cita el texto; al final de
+%  06_e_sitio_secundario.tex se vuelve a la numeración corrida.
 % ------------------------------------------------------------------
 
 \chapter{Data center}
@@ -30,9 +27,9 @@ Esta sección declara, para cada dominio, el proveedor, la región y las zonas d
 
 \subsection{Proveedor}
 
-Para la nube en Amazon Web Services todos los servicios se contratan en cuentas del CLIENTE, que son organizadas bajo AWS Control Tower con una cuenta por ambiente de modo que la propiedad de los datos y de la infraestructura es del CLIENTE desde el primer día. Los criterios con que se eligieron esos servicios se explican en el apartado~\ref{sec:servicios-nube}. AWS satisface el requisito de presencia de región o zona en Chile o en Sudamérica con la región primaria sa-east-1. El cumplimiento de los estándares y marcos de referencia del Artículo 4.3 de las Bases Administrativas entre ellos ISO/IEC 27017 (nube) e ISO/IEC 27018 (datos personales en nube) se acredita en la matriz de controles ISO/IEC 27001/27002 de la arquitectura de seguridad (apartado 4.1), y no se repite en esta sección.
+Para la nube en Amazon Web Services todos los servicios se contratan en cuentas del CLIENTE, que son organizadas bajo AWS Control Tower con una cuenta por ambiente de modo que la propiedad de los datos y de la infraestructura es del CLIENTE desde el primer día. Los criterios con que se eligieron esos servicios se explican en el apartado~\ref{sec:servicios-nube}. AWS satisface el requisito de presencia de región o zona en Chile o en Sudamérica con la región primaria sa-east-1. El cumplimiento de los estándares y marcos de referencia del Artículo 4.3 de las Bases Administrativas (Art. 4.3, p. 5) entre ellos ISO/IEC 27017 (nube) e ISO/IEC 27018 (datos personales en nube) se acredita en la matriz de controles ISO/IEC 27001/27002 de la arquitectura de seguridad (apartado 4.1), y no se repite en esta sección.
 
-En el dominio On-premise del CD de Talca, el caso exige cómputo, almacenamiento y procesamiento en las instalaciones del CLIENTE para sostener recepción, preparación y despacho durante un corte de enlace; ello obliga a la modalidad híbrida. Ese alcance requiere cómputo local para la continuidad de un sitio operacional sin albergar el núcleo. Por ello, el sitio adopta la tipología de \textbf{sala técnica secundaria o de sitio} del numeral 6.1 de las Transversales, con disponibilidad de infraestructura de 99,95 \% y dimensionamiento proporcional al equipamiento real.
+En el dominio On-premise del CD de Talca, el caso exige cómputo, almacenamiento y procesamiento en las instalaciones del CLIENTE para sostener recepción, preparación y despacho durante un corte de enlace; ello obliga a la modalidad híbrida. Ese alcance requiere cómputo local para la continuidad de un sitio operacional sin albergar el núcleo. Por ello, el sitio adopta la tipología de \textbf{sala técnica secundaria o de sitio} del numeral 6.1 de las Bases Técnicas Transversales (Cap. 6, p. 14), con disponibilidad de infraestructura de 99,95 \% y dimensionamiento proporcional al equipamiento real.
 
 \subsection{Región y zonas de disponibilidad}
 
@@ -44,7 +41,7 @@ Los servicios contratados en la región primaria son los que agrupa por función
 
 \subsection{Sitio on-premise: CD Talca (sala técnica secundaria)}
 
-El caso fija para el CD de Talca una sala técnica secundaria ``dimensionada para sostener recepción, preparación y despacho durante un corte'', y advierte que la sala actual de 25 m\textsuperscript{2} no cumple el Capítulo 6 del documento transversal. Conforme a la tipología del numeral 6.1 de las Transversales, no se aplica íntegramente a este sitio el conjunto de exigencias de una sala técnica principal, sino el subconjunto dimensionado al sitio: energía, climatización, control de acceso, detección de incendio y monitoreo. El numeral 6.1 de las Transversales exige declarar la tipología y justificar el dimensionamiento, y advierte que ``sobredimensionar el recinto es tan penalizado como subdimensionarlo: ambos revelan que el cálculo de capacidad no se hizo''. El equipamiento real que la sala debe alojar y los cálculos eléctrico y térmico desarrollados a continuación determinan su superficie proyectada, que se fija en el plano de distribución interna (Figura~\ref{fig:recinto-talca}).
+El caso fija para el CD de Talca una sala técnica secundaria ``dimensionada para sostener recepción, preparación y despacho durante un corte'', y advierte que la sala actual de 25 m\textsuperscript{2} no cumple el Capítulo 6 de las Bases Técnicas Transversales (p. 14). Conforme a la tipología del numeral 6.1 de las Bases Técnicas Transversales (Cap. 6, p. 14), no se aplica íntegramente a este sitio el conjunto de exigencias de una sala técnica principal, sino el subconjunto dimensionado al sitio: energía, climatización, control de acceso, detección de incendio y monitoreo. El numeral 6.1 de las Bases Técnicas Transversales (Cap. 6, p. 14) exige declarar la tipología y justificar el dimensionamiento, y advierte que ``sobredimensionar el recinto es tan penalizado como subdimensionarlo: ambos revelan que el cálculo de capacidad no se hizo''. El equipamiento real que la sala debe alojar y los cálculos eléctrico y térmico desarrollados a continuación determinan su superficie proyectada, que se fija en el plano de distribución interna (Figura~\ref{fig:recinto-talca}).
 
 La sala aloja el siguiente equipamiento:
 
@@ -56,7 +53,7 @@ La sala aloja el siguiente equipamiento:
 
 El listado completo de componentes de sala (UPS, generador, climatización, seguridad física, extinción, cableado y gabinetes) y del equipamiento de cómputo y red que alojan los gabinetes se entrega en el Formulario T-11. La ocupación por rack y el margen de crecimiento se declaran en la Figura~\ref{fig:racks-talca}.
 
-Para la disponibilidad y la redundancia la disponibilidad de infraestructura comprometida es del 99,95 \% mensual por componente en energía del recinto, climatización, red y comunicaciones, servidores y cómputo, y motor de base de datos. Además se sostiene con redundancia N+1 en energía y climatización, con generación autónoma y con monitoreo continuo con alertamiento. No se invoca una clasificación de instalación de terceros (ejemplo un nivel TIER certificado), por lo que los niveles de disponibilidad de infraestructura del numeral 7.2 son un medio, no un fin y el compromiso que se mide y se penaliza es el de la transacción de negocio de extremo a extremo.
+Para la disponibilidad y la redundancia la disponibilidad de infraestructura comprometida es del 99,95 \% mensual por componente en energía del recinto, climatización, red y comunicaciones, servidores y cómputo, y motor de base de datos. Además se sostiene con redundancia N+1 en energía y climatización, con generación autónoma y con monitoreo continuo con alertamiento. No se invoca una clasificación de instalación de terceros (ejemplo un nivel TIER certificado), por lo que los niveles de disponibilidad de infraestructura del numeral 7.2 de las Bases Técnicas Transversales (Cap. 7, p. 17) son un medio, no un fin y el compromiso que se mide y se penaliza es el de la transacción de negocio de extremo a extremo.
 
 La Figura~\ref{fig:cd-talca} muestra cómo se conecta el equipamiento de la sala con la bodega, la cadena de frío y el ERP.
 

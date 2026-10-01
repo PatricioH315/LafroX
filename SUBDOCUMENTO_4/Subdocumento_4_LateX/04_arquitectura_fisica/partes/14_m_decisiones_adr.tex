@@ -167,11 +167,11 @@ Los trabajos internos de Laravel usan colas SQS distintas, de modo que ningún s
 \begin{itemize}
   \item \emph{Punto a punto por cadena}: multiplica adaptadores y su mantenimiento.
   \item \emph{EDI delegado al ERP}: expone una frontera frágil y permite escritura directa desde la cadena, contra Zero Trust.
-  \item \emph{AWS Transfer Family}: su servidor AS2 recibe por HTTP en TCP 5080 y no satisface TLS 1.3 en tránsito (RT-11.08).
+  \item \emph{AWS Transfer Family}: su servidor AS2 recibe por HTTP en TCP 5080 y no satisface TLS 1.3 en tránsito (RT-11.08; Bases Técnicas Transversales, Cap. 11, p. 23).
   \item \emph{Biblioteca PHP para AS2}: carece de implementación validada con las cadenas.
 \end{itemize}
 
-\textbf{Criterio de selección.} Estandarización GS1, esfuerzo marginal por cadena nueva, aislamiento del ERP por la ACL, TLS 1.3 verificable y plazo de enero de 2029; el contenedor propio es la excepción a la preferencia por servicios administrados (RT-03.05) necesaria para cumplir RT-11.08.
+\textbf{Criterio de selección.} Estandarización GS1, esfuerzo marginal por cadena nueva, aislamiento del ERP por la ACL, TLS 1.3 verificable y plazo de enero de 2029; el contenedor propio es la excepción a la preferencia por servicios administrados (RT-03.05; Bases Técnicas Transversales, Cap. 3, p. 8) necesaria para cumplir RT-11.08 (Bases Técnicas Transversales, Cap. 11, p. 23).
 
 \textbf{Evidencia exigida.} Prueba de interoperabilidad por cadena con TLS 1.3, firma, cifrado, certificado y MDN antes de habilitarla.
 
@@ -213,7 +213,7 @@ Escala de forma predictiva y reactiva el cómputo elástico. Aurora pasa de larg
 \begin{itemize}
   \item \emph{Kong autoadministrado}: agrega un componente crítico que parchar en la ruta de la venta.
   \item \emph{HTTP API con autorizador JWT nativo}: no ofrece API privada ni validación de modelos de solicitud.
-  \item \emph{Validación del token solo en Laravel}: la puerta no autentica e incumple RT-11.11.
+  \item \emph{Validación del token solo en Laravel}: la puerta no autentica e incumple RT-11.11 (Bases Técnicas Transversales, Cap. 11, p. 23).
 \end{itemize}
 
 \textbf{Criterio de selección.} Autenticación y validación en la puerta, separación de entradas pública y privada y acceso restringido al origen.
@@ -243,8 +243,8 @@ Escala de forma predictiva y reactiva el cómputo elástico. Aurora pasa de larg
 
 \textbf{Decisión adoptada.} AWS Verified Access protege por aplicación las consolas internas y la administración de Keycloak para oficina y trabajo remoto. Usa Keycloak con MFA como proveedor de confianza OIDC de usuario y CrowdStrike Falcon (F-03) como proveedor de postura de dispositivo; AWS WAF se asocia a la instancia. Su destino es el ALB privado del frontend Angular en Fargate, que reenvía llamadas a la API REST privada por el endpoint execute-api.
 
-\textbf{Alternativas descartadas:} \emph{Client VPN}: concede acceso de red y requiere un manejador de conexión adicional para verificar postura; \emph{Solo VPN de sitio}: no cubre el trabajo remoto de RT-03.22 y confía en la ubicación de red.
+\textbf{Alternativas descartadas:} \emph{Client VPN}: concede acceso de red y requiere un manejador de conexión adicional para verificar postura; \emph{Solo VPN de sitio}: no cubre el trabajo remoto de RT-03.22 (Bases Técnicas Transversales, Cap. 3, p. 10) y confía en la ubicación de red.
 
-\textbf{Criterio de selección.} Acceso por aplicación con identidad, MFA y postura para ambos orígenes, conforme a RT-03.22, RT-11.01 y RT-12.03.
+\textbf{Criterio de selección.} Acceso por aplicación con identidad, MFA y postura para ambos orígenes, conforme a RT-03.22 (Bases Técnicas Transversales, Cap. 3, p. 10), RT-11.01 (Bases Técnicas Transversales, Cap. 11, p. 23) y RT-12.03 (Bases Técnicas Transversales, Cap. 12, p. 25).
 
 \textbf{Evidencia exigida.} Pruebas de acceso con MFA y postura válida e inválida desde oficina y trabajo remoto.

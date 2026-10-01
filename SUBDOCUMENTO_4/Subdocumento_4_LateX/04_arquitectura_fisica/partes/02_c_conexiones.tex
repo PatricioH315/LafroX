@@ -1,12 +1,10 @@
 % !TeX root = ../../main.tex
 % ------------------------------------------------------------------
-%  4.2.4 Conexiones, puntos de falla y contingencia
-%  Fragmento del Subdocumento 4.2, traido desde contenido.tex con
-%  \parte{partes/02_c_conexiones}. Las rutas son relativas a la carpeta del
-%  subdocumento, nunca a la de main.tex.
+%  4.2.5 Conexiones, puntos de falla y contingencia.
 %
-%  Coherente con la arquitectura de despliegue (puntos únicos de falla,
-%  RT-02.11) y con la autonomía declarada en 4.2.1 (Tabla t29).
+%  Tiene que calzar con los puntos únicos de falla aceptados en el
+%  despliegue (RT-02.11) y con la autonomía de cada sitio declarada en el
+%  emplazamiento.
 % ------------------------------------------------------------------
 
 \section{Conexiones, puntos de falla y contingencia}
@@ -16,7 +14,7 @@ Esta sección describe cómo se conectan los sitios, el terreno y la nube, ident
 
 \subsection{Conexiones entre sitios, terreno y nube}
 
-Los dos dominios fijos, la nube y el on-premise, se conectan por túneles VPN IPsec que terminan en el firewall de cada sitio (D-01) y en el Transit Gateway de AWS en sa-east-1, con enrutamiento dinámico BGP. El mismo Transit Gateway enruta entre los sitios, de modo que Concepción y los cross-docking alcanzan Talca sin exponerla a Internet. Los caminos de acceso se distribuyen así:
+Los dos dominios fijos, la nube y el on-premise, se conectan por túneles VPN IPsec que terminan en el par de firewalls de cada sitio (D-01) y en el Transit Gateway de AWS en sa-east-1, con enrutamiento dinámico BGP. El mismo Transit Gateway enruta entre los sitios, de modo que Concepción y los cross-docking alcanzan Talca sin exponerla a Internet. Los caminos de acceso se distribuyen así:
 
 \begin{itemize}
   \item Cada centro de distribución tiene dos caminos físicamente independientes: fibra y LTE.
@@ -103,7 +101,7 @@ La Tabla~\ref{tab:conexiones} resume cada conexión con su medio, su camino alte
   Región primaria con la secundaria & Replicación nativa de Aurora, DynamoDB y S3 & Respaldo inmutable & Promoción autorizada \\
 \end{tablalafrox}
 
-Los cinco sitios tienen un camino alternativo hacia la nube. Concepción también opera sin Talca, el terreno sin señal y los termógrafos con registro interno. El autoservicio de los portales requiere conexión.
+Los cinco sitios tienen un camino alternativo hacia la nube. Concepción también opera sin los sistemas de Talca, el terreno sin señal y los termógrafos con registro interno. El autoservicio de los portales requiere conexión.
 
 \subsection{Superficie de exposición}
 \label{sub:superficie}
@@ -134,20 +132,20 @@ Cada conexión se apoya en equipos del sitio que también pueden fallar. La Tabl
   Starlink de un cross-docking & El LTE de dos proveedores toma el tráfico en menos de 30 s. & La ventana de 3 h opera 100\,\% local y sincroniza al reconectar. \\
   Enlace de Los Ángeles en la madrugada & Starlink queda como camino único, porque la red móvil falla a esa hora. & La ventana de madrugada opera íntegramente local. \\
   Firewall de Talca & La unidad pasiva asume las direcciones y los túneles en menos de 30 s. & Operación local 24 h sin enlace. \\
-  Firewall de Concepción & Equipo único; se repone. & Concepción opera 24 h sin enlace mientras se reemplaza. \\
+  Firewall de Concepción & La unidad pasiva asume el túnel y la conmutación de enlace en menos de 30 s. & La unidad dañada se reemplaza con la de reserva de Talca. \\
   Nodo del clúster de Talca & Las VM se reinician en los nodos restantes, con sus datos replicados por Ceph. & Ante un segundo nodo, el DRP local promueve el WMS de Concepción en 1 a 2 h. \\
   Instancia de escritura VM-02 & Se reinicia en otro nodo del clúster. & D-05 restaura la base en hasta 4 h sin enlace. \\
   Disco de un nodo de Talca & El RAID 10 reconstruye sobre el repuesto en caliente. & Ceph conserva una segunda copia en otro nodo. \\
-  Miembro del stack de switches de Talca & El otro miembro mantiene el tráfico. & Reposición sin corte. \\
+  Miembro del stack de switches de Talca o de Concepción & El otro miembro mantiene el tráfico. & Reposición sin corte con la unidad de reserva de Talca. \\
   Servidor de borde de Concepción & El RAID 10 tolera la falla de un disco; el equipo tiene fuente única y, ante su falla, se repone. & La pila se reinstala con la misma imagen y la base local se reconstruye desde el estado central, que ya recibió los eventos del sitio por las colas. \\
-  Mini-PC de un cross-docking & Equipo único; se repone. & El nuevo equipo se resincroniza desde Talca y SQS FIFO. \\
-  Firewall de un cross-docking & Equipo único; se repone. & La ventana de 3 h opera 100\,\% local y sincroniza al reconectar. \\
+  Mini-PC de un cross-docking & Equipo único; se repone con la unidad de reserva, que viaja desde Talca en el camión de línea nocturno. & El nuevo equipo se resincroniza desde Talca y SQS FIFO. \\
+  Firewall de un cross-docking & La unidad pasiva del par asume el túnel en menos de 30 s. & La ventana de 3 h opera 100\,\% local y sincroniza al reconectar. \\
   Periféricos de andén & Sin redundancia por equipo. & La etiqueta se emite en otra de las impresoras del centro de distribución. \\
   Energía de la sala de Talca & UPS N+1 de 30 min y generador que toma carga en 8 a 15 s. & Estanque de 24 h y contrato de reabastecimiento. \\
   Climatización de la sala de Talca & Segunda unidad de precisión en N+1. & Alerta del monitoreo de los sensores ambientales. \\
 \end{tablalafrox}
 
-La tabla muestra que los puntos únicos de falla permanecen en Concepción y los cross-docking, donde la redundancia no compensa su costo: la pérdida de sus enlaces se cubre con la autonomía local, y la falla de sus propios equipos, con la reposición y la resincronización indicadas en la tabla. Por el mismo fundamento, su firewall, su servidor o mini-PC y su switch operan con fuente única, excepción declarada a la exigencia de fuente redundante. La liberación sanitaria y el despacho no dependen de la nube. En la ventana de Talca, VM-02 se reinicia en otro nodo y otra impresora emite la etiqueta si falla la del andén. Los mecanismos de alta disponibilidad se detallan en la sección~\ref{sub:3-alta-disponibilidad}.
+La tabla muestra que los firewalls van en par en los cinco sitios, porque RT-08.03 (Bases Técnicas Transversales, Cap. 8, p. 18) no admite cortafuegos en punto único de falla, y que los puntos únicos de falla que permanecen son el servidor de Concepción y el mini-PC y el switch de cada cross-docking, donde la redundancia no compensa su costo: la pérdida de sus enlaces se cubre con la autonomía local, y la falla de sus propios equipos, con la reposición y la resincronización indicadas en la tabla. Por el mismo fundamento, ese servidor, el mini-PC y el switch de los cross-docking operan con fuente única, excepción declarada a la exigencia de fuente redundante. La liberación sanitaria y el despacho no dependen de la nube. En la ventana de Talca, VM-02 se reinicia en otro nodo y otra impresora emite la etiqueta si falla la del andén. Los mecanismos de alta disponibilidad se detallan en la sección~\ref{sub:3-alta-disponibilidad}.
 
 \subsection{Puntos de falla en la nube, el terreno y las integraciones}
 

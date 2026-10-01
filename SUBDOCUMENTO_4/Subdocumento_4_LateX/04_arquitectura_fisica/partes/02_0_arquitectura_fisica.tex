@@ -1,19 +1,19 @@
 % !TeX root = ../../main.tex
 % ------------------------------------------------------------------
-%  4.2 Arquitectura física --- título e introducción
-%  Fragmento del Subdocumento 4.2, traido desde contenido.tex con
-%  \parte{partes/02_0_arquitectura_fisica}. Las rutas son relativas a la
-%  carpeta del subdocumento, nunca a la de main.tex.
+%  4.2 Arquitectura física: título e introducción.
 %
-%  NUMERACION. El índice obligatorio (aclaraciones, sección 11) numera este
-%  contenido como 4.2 y sus subtítulos como 4.2.X. El título se imprime como
-%  "4.2 Arquitectura física", sin el rótulo "Capítulo" (formato definido en
-%  contenido.tex). La antigua "Visión general" es ahora esta introducción.
+%  Este archivo lo incluye contenido.tex; las rutas de las figuras se
+%  escriben desde la carpeta del subdocumento, no desde la de main.tex.
+%
+%  El índice obligatorio (aclaraciones, sección 11) numera esta parte como
+%  4.2 y sus apartados como 4.2.X. El título sale sin la palabra «Capítulo»;
+%  ese formato está en contenido.tex. Lo que antes era «Visión general»
+%  quedó como esta introducción.
 % ------------------------------------------------------------------
 
-% Tablas sin palabras cortadas (aclaraciones, sección 5: "sin palabras
-% cortadas por columnas angostas"). Rige desde aquí hasta el final del
-% subdocumento, incluido el anexo T-11.
+% Las aclaraciones (sección 5) piden tablas sin palabras cortadas en
+% columnas angostas. Esto lo activa desde aquí hasta el final del
+% subdocumento, T-11 incluido.
 \ifdefined\LFXcuerpotablaorig\else
   \let\LFXcuerpotablaorig\LFXcuerpotabla
   \renewcommand{\LFXcuerpotabla}{%
@@ -25,7 +25,7 @@
 
 La arquitectura física declara dónde vive cada componente de la solución, qué servicios se contratan en la nube, cómo se conectan los sitios entre sí y con la nube, qué ocurre cuando falla cada conexión y cuánta capacidad se provee.
 
-Esa arquitectura materializa el despliegue híbrido obligatorio del Artículo 16\textdegree{} de las Bases Administrativas. La carga principal corre en nube pública AWS, con la región primaria en sa-east-1 (São Paulo, Brasil) y la recuperación ante desastres en us-east-1 (Norte de Virginia, EE. UU.), y los componentes on-premise garantizan la continuidad de la operación de bodega, plataformas y terreno durante los cortes del enlace. La solución cubre las seis instalaciones de la compañía ---los centros de distribución de Talca y de Concepción, las plataformas de cross-docking de Curicó, Chillán y Los Ángeles, y la casa matriz de Talca---, además de la calle y los 14.200 puntos de entrega. Cinco de esas instalaciones alojan cómputo; la casa matriz, contigua al centro de distribución de Talca, solo tiene oficinas y trabaja contra la nube. La séptima instalación, que el caso proyecta a tres años, se agrega por parametrización, sin cambios de desarrollo ni crecimiento de servidores en el CD Talca. Dos principios gobiernan el diseño:
+Esa arquitectura materializa el despliegue híbrido obligatorio del Artículo 16\textdegree{} de las Bases Administrativas (Art. 16, p. 11). La carga principal corre en nube pública AWS, con la región primaria en sa-east-1 (São Paulo, Brasil) y la recuperación ante desastres en us-east-1 (Norte de Virginia, EE. UU.), y los componentes on-premise garantizan la continuidad de la operación de bodega, plataformas y terreno durante los cortes del enlace. La solución cubre las seis instalaciones de la compañía ---los centros de distribución de Talca y de Concepción, las plataformas de cross-docking de Curicó, Chillán y Los Ángeles, y la casa matriz de Talca---, además de la calle y los 14.200 puntos de entrega. Cinco de esas instalaciones alojan cómputo; la casa matriz, contigua al centro de distribución de Talca, solo tiene oficinas y trabaja contra la nube. La séptima instalación, que el caso proyecta a tres años, se agrega por parametrización, sin cambios de desarrollo ni crecimiento de servidores en el CD Talca. Dos principios gobiernan el diseño:
 
 \begin{itemize}
   \item \textbf{Carga principal en nube:} el núcleo transaccional de preventa, reparto y canal moderno, la analítica, la integración y el almacenamiento consolidado se ejecutan en AWS sa-east-1, con escalado elástico para el peak de septiembre.
@@ -48,7 +48,7 @@ La Figura~\ref{fig:vista-general} se lee de arriba hacia abajo en tres franjas. 
 
 En la franja central, la región primaria sa-east-1 reúne en la VPC de producción el balanceador privado de aplicación, la aplicación en ECS Fargate, Keycloak, ElastiCache, Aurora PostgreSQL y AWS DMS, que copia los cambios del PostgreSQL de Talca (VM-02) a un esquema de réplica de solo lectura en Aurora. Fuera de esa VPC quedan los servicios regionales DynamoDB, S3, SQS FIFO e IoT Core, que recibe la telemetría de cadena de frío por MQTTS, y la VPC Hub, donde Transit Gateway y la VPN Site-to-Site enlazan la nube con los sitios. La región us-east-1 recibe las réplicas de Aurora PostgreSQL, DynamoDB y S3 para la recuperación ante desastres. Esta franja se detalla en la Figura~\ref{fig:nube} de la sección~\ref{sec:servicios-nube}, con la distribución por zona de disponibilidad, los servicios de operación y seguridad y la réplica reducida de aplicación en us-east-1.
 
-En la franja inferior están las cinco instalaciones con cómputo, cada una con su firewall y su switch y conectada a la VPC Hub por su propio túnel VPN. El CD Talca aloja un clúster Proxmox VE con Ceph de tres nodos y seis máquinas virtuales, junto al ERP de 2017 y al respaldo NAS WORM; el CD Concepción, un servidor Proxmox de nodo único con cuatro máquinas virtuales; y cada una de las tres plataformas de cross-docking, un mini-PC industrial con Docker. En los dos centros de distribución, los terminales MC9400 trabajan por Wi-Fi 6E y el gateway IoT recoge los sensores de las cámaras; en los cross-docking, los escáneres GS1 trabajan contra el mini-PC. Cada tipo de sitio tiene su propia figura de detalle: el cross-docking en la Figura~\ref{fig:crossdocking} (sección~\ref{sec:emplazamiento}), el CD Talca en la Figura~\ref{fig:cd-talca} (sección~\ref{sec:d-especificaciones-del-sitio-principal-on-}) y el CD Concepción en la Figura~\ref{fig:cd-concepcion} (sección~\ref{sec:e-especificaciones-del-sitio-secundario-y-}).
+En la franja inferior están las cinco instalaciones con cómputo, cada una con su par de firewalls y su switching, y conectada a la VPC Hub por su propio túnel VPN. El CD Talca aloja un clúster Proxmox VE con Ceph de tres nodos y seis máquinas virtuales, junto al ERP de 2017 y al respaldo NAS WORM; el CD Concepción, un servidor Proxmox de nodo único con cuatro máquinas virtuales; y cada una de las tres plataformas de cross-docking, un mini-PC industrial con Docker. En los dos centros de distribución, los terminales MC9400 trabajan por Wi-Fi 6E y el gateway IoT recoge los sensores de las cámaras; en los cross-docking, los terminales inalámbricos trabajan contra el mini-PC. Cada tipo de sitio tiene su propia figura de detalle: el cross-docking en la Figura~\ref{fig:crossdocking} (sección~\ref{sec:emplazamiento}), el CD Talca en la Figura~\ref{fig:cd-talca} (sección~\ref{sec:d-especificaciones-del-sitio-principal-on-}) y el CD Concepción en la Figura~\ref{fig:cd-concepcion} (sección~\ref{sec:e-especificaciones-del-sitio-secundario-y-}).
 
 La figura muestra la regla que ordena el diseño: la bodega confirma sus operaciones contra el WMS del sitio, y la nube concentra los servicios comunes, la consolidación de datos y la recuperación. Talca replica los cambios de VM-02 a Aurora por DMS; Concepción y los cross-docking envían sus eventos por colas. Si cae el enlace, las bases y los brokers locales permiten seguir operando y entregan los eventos retenidos al reconectar.
 
@@ -56,7 +56,7 @@ Este apartado se ordena en seis partes:
 
 \begin{itemize}
   \item Sección~\ref{sec:implementos}: equipamiento y software provistos, resumidos y analizados; el detalle elemento por elemento figura en el Formulario T-11, que acompaña a este subdocumento como archivo propio (LAFROX-Formulario-T-11).
-  \item Sección~\ref{sec:emplazamiento}: ubicación de cada componente en la nube o en las instalaciones según el Artículo 16.2.
+  \item Sección~\ref{sec:emplazamiento}: ubicación de cada componente en la nube o en las instalaciones según el Artículo 16.2 (Bases Administrativas, Art. 16.2, p. 11).
   \item Sección~\ref{sec:servicios-nube}: servicios contratados en la plataforma de nube.
   \item Sección~\ref{sec:despliegue}: puesta en marcha y operación, ambientes y ciclo de entrega, red de despliegue, alta disponibilidad, recuperación ante desastres, respaldos y verificación.
   \item Sección~\ref{sec:conexiones}: conexiones, puntos de falla y contingencia de cada uno.

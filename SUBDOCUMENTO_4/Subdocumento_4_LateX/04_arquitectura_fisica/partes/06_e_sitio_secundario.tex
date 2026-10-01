@@ -1,13 +1,9 @@
 % !TeX root = ../../main.tex
 % ------------------------------------------------------------------
-%  4.3.2 Data center secundario
-%  Fragmento del Subdocumento 4.2, traido desde contenido.tex con
-%  \parte{partes/06_e_sitio_secundario}. Las rutas son relativas a la carpeta del
-%  subdocumento, nunca a la de main.tex.
+%  4.3.2 Data center secundario.
 %
-%  Texto literal de «4.3 completo sin imagenes_v2.md» (carpeta 4.3/), solo
-%  convertido a LaTeX. Al cierre se restituye la numeración corrida de las
-%  tablas que 05_d_sitio_principal.tex cambió a 4.3-n.
+%  Mismo origen que el 4.3.1. Al final de este archivo se devuelve la
+%  numeración corrida de las tablas que 05_d_sitio_principal.tex cambió.
 % ------------------------------------------------------------------
 
 \section{Especificaciones Data Center Secundario}
@@ -81,7 +77,7 @@ La Figura~\ref{fig:cd-concepcion} muestra el gabinete de borde de Concepción y 
 \end{figure}
 \FloatBarrier
 
-La fibra es el enlace principal y el LTE lo respalda; ambos llegan a un firewall único que termina el túnel hacia la nube. Detrás, un switch conecta el servidor Proxmox de nodo único, que aloja cuatro máquinas virtuales: VM-C01 con el WMS, VM-C02 con PostgreSQL, VM-C03 con la caché de Keycloak y VM-C04 con RabbitMQ, el shipper y el colector ADOT. En la bodega, los terminales MC9400 y las impresoras de andén trabajan por Wi-Fi 6E contra el WMS local; en la cadena de frío, los sensores entregan sus lecturas al gateway IoT, que las publica por MQTTS y bloquea el despacho ante una excursión térmica. La figura muestra que Concepción ejecuta la misma pila de Talca en una sola máquina. Por eso puede asumir la bodega de Talca con la promoción controlada del motor de almacenes, sin instalar software nuevo durante la contingencia. El firewall y el servidor son puntos únicos de falla aceptados, cubiertos por la operación autónoma de 24 horas ante la pérdida del enlace y, ante la falla de un equipo, por su reposición y la reconstrucción de la base local desde el estado central, al que Concepción ya entregó sus eventos por las colas (sección~\ref{sec:conexiones}).
+La fibra es el enlace principal y el LTE lo respalda; ambos llegan a un par de firewalls en alta disponibilidad que termina el túnel hacia la nube. Detrás, dos switches de núcleo en stack conectan el servidor Proxmox de nodo único, que aloja cuatro máquinas virtuales: VM-C01 con el WMS, VM-C02 con PostgreSQL, VM-C03 con la caché de Keycloak y VM-C04 con RabbitMQ, el shipper y el colector ADOT. En la bodega, los terminales MC9400 y las impresoras de andén trabajan por Wi-Fi 6E contra el WMS local; en la cadena de frío, los sensores entregan sus lecturas al gateway IoT, que las publica por MQTTS y bloquea el despacho ante una excursión térmica. La figura muestra que Concepción ejecuta la misma pila de Talca en una sola máquina. Por eso puede asumir la bodega de Talca con la promoción controlada del motor de almacenes, sin instalar software nuevo durante la contingencia. Como sitio de recuperación, Concepción lleva en par los firewalls y los switches de núcleo; el servidor queda como punto único de falla aceptado, cubierto por la operación autónoma de 24 horas ante la pérdida del enlace y, ante su falla, por su reposición y la reconstrucción de la base local desde el estado central, al que Concepción ya entregó sus eventos por las colas (sección~\ref{sec:conexiones}).
 
 \subsection{Replicación}
 

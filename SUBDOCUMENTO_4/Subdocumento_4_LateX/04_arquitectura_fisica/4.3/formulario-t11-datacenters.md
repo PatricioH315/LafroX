@@ -30,8 +30,8 @@
 | Climatización del borde | Climatización de precisión acorde al equipamiento del borde | CD Concepción, gabinete de borde | 1 | Dimensionada al equipamiento real del borde conforme a la tipología del numeral 6.1 |
 | Control de acceso y monitoreo | Acceso controlado y monitoreo remoto integrado al NOC del sitio | CD Concepción, gabinete de borde | 1 | Aplica la tipología de borde operacional del numeral 6.1 con supervisión remota del sitio |
 | Servidor de borde | Dell R250 o HPE DL20 Gen11, 32 GB, RAID 10 sobre las 4 bahías (sin repuesto en caliente) | CD Concepción, gabinete de borde | 1 | Sostiene el WMS con 24 h de operación autónoma; promoción controlada ante contingencia de Talca (RNF-02.01; RT-07.02). Fuente única declarada como punto único de falla aceptado (RT-02.11) |
-| Perímetro del borde — firewall | Firewall de borde de grado empresarial | CD Concepción, gabinete de borde | 1 | Punto único de falla aceptado (RT-02.11); es el Customer Gateway del túnel hacia AWS y conmuta entre fibra y LTE en menos de 30 s (RT-03.17) |
-| Perímetro del borde — switch | Switch de borde de grado empresarial | CD Concepción, gabinete de borde | 1 | Punto único de falla aceptado (RT-02.11); sostiene la red de bodega del sitio secundario durante 24 h de autonomía, sin depender del principal |
+| Perímetro del borde — firewall | Par activo/pasivo de firewalls de borde de grado empresarial | CD Concepción, gabinete de borde | 2 | Sin punto único de falla (RT-08.03); es el Customer Gateway del túnel hacia AWS y conmuta entre fibra y LTE en menos de 30 s (RT-03.17) |
+| Perímetro del borde — switch | Par de switches de núcleo en stack, con doble fuente | CD Concepción, gabinete de borde | 2 | Sin punto único de falla (RT-08.03); sostiene la red de bodega del sitio secundario durante 24 h de autonomía, sin depender del principal |
 
 > Los componentes de la **réplica en nube** (`us-east-1`) ya están declarados en el anexo actual: N-04 (réplica reducida ECS), N-05 (Aurora Global Database), N-06 (Global Tables), N-11 (AWS Backup + S3 Object Lock + replicación de S3) y D-01 (VPC/Route 53) — no requieren cambios.
 
