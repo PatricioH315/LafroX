@@ -26,3 +26,9 @@ Las correcciones efectuadas son de conversión: numeración de las capas, refere
 El contenido heredado de Alex-MD se conserva byte por byte; las nuevas instrucciones y el manifiesto quedan dentro del capítulo 04. El cotejo de referencias del capítulo 3, la incorporación de 4.2/4.3 y la publicación de esta rama requieren trabajo posterior solicitado por el usuario.
 
 La incorporación se registra en un commit local de `alvaro-md`. Se comprobaron 151 enlaces internos, las 33 tablas y 350 filas, 199 párrafos sin comandos y 114 identificadores conservados. No se ejecuta push ni se cambia la rama del checkout original.
+
+## Actualización: importación de Markdown físico
+
+El 1 de octubre de 2026 el usuario autorizó importar la carpeta Markdown física publicada en `rama-latex`. Se incorporaron 15 archivos desde `MD_4.2_2.3`, commit `95ed2c9a1cc20aa7ad9f3ebbe03cafa0e1e1259c`, dentro de `04_arquitectura/MD_4.2_2.3`. Incluye 4.2, 4.3, ADR, referencias, T-11 y memoria de cálculo, en 13 partes y un documento reunido, más README. El documento reunido conserva el nombre de origen pero no incluye 4.1.
+
+Se adaptaron 39 enlaces a figuras y fuentes fijándolos al commit de origen. No se importaron LaTeX ni binarios, no se editó la lógica y no se armonizaron decisiones técnicas. Las huellas se registran en `MANIFIESTO_IMPORTACION_FISICA.md`. El usuario solicitó registrar y publicar esta importación en `alvaro-md`; se verificaron los 15 documentos, los 39 enlaces externos y los 81 enlaces locales antes del commit. No se alteran los capítulos heredados de Alex-MD.

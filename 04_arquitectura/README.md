@@ -8,8 +8,10 @@ Esta carpeta amplía el contenido heredado de `Alex-MD` con la arquitectura lóg
 - [Anexos 4.1-A a 4.1-V e índice trazable](<logica 4.1/LAFROX-Subdocumento4.1-Anexos.md>).
 - [Manifiesto de conversión, fuentes y huellas SHA-256](<logica 4.1/MANIFIESTO.md>).
 - [Contexto de trabajo de esta incorporación](CONTEXTO_SESION.md).
+- [Arquitectura física, centros de datos y complementos importados de rama-latex](MD_4.2_2.3/README.md).
+- [Procedencia y huellas de la importación física](MANIFIESTO_IMPORTACION_FISICA.md).
 
-El cuerpo y los anexos se mantienen separados, siguiendo la organización de las carpetas 01, 02 y 03 de Alex-MD. Esta primera incorporación contiene únicamente 4.1. La arquitectura física 4.2 y los centros de datos 4.3 son dependencias documentales y todavía no se han importado.
+El cuerpo y los anexos lógicos se mantienen separados, siguiendo la organización de las carpetas 01, 02 y 03 de Alex-MD. Se incorporó además la carpeta `MD_4.2_2.3` desde `rama-latex`, commit `95ed2c9a1cc20aa7ad9f3ebbe03cafa0e1e1259c`, con sus 15 Markdown: física, centros de datos, ADR, referencias, T-11 y memoria de cálculo. Se conservan la organización y el contenido de origen, ajustando únicamente enlaces externos. No se fusiona ni armoniza la lógica con la física en esta operación.
 
 ## Procedencia y compatibilidad
 
