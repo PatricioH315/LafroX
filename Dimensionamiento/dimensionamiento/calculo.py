@@ -144,7 +144,7 @@ WORKING_SET_FRACTION = 0.25
 CPU_UTILIZATION = 0.70
 CPU_MS = {"app": 50.0, "db": 20.0, "broker": 10.0, "acl": 20.0, "identity": 10.0, "obs": 5.0}
 OBS_MB_PER_NODE_DAY = 250.0
-OBS_NODES = {"Talca": 5, "Concepción": 2, "Cada cross-docking": 1}
+OBS_NODES = {"Talca": 6, "Concepción": 4, "Cada cross-docking": 1}
 CAMERA_POINTS = 21                 # diseño B-01: 15 en Talca y 6 en Concepción (S-37)
 CAMERA_POINTS_SITE = {"Talca": 15, "Concepción": 6}
 TEMP_MINUTES = 5
@@ -263,8 +263,8 @@ def hourly_profile(volume_factor: float, edi_active: bool, *, lines_factor: floa
         portal = portal_mean_tps if 9 <= hour < 18 else 0.0
         if hour == LOADED_HOUR["portal"]:
             portal *= S51_CONCENTRATION_FACTOR
-        talca = prep * S49_TALCA_SHARE + dispatch
-        concepcion = prep * (1 - S49_TALCA_SHARE)
+        talca = (prep + dispatch) * S49_TALCA_SHARE
+        concepcion = (prep + dispatch) * (1 - S49_TALCA_SHARE)
         cloud = preventa + delivery + receipt + trace + sync + edi + guides
         total = talca + concepcion + cross + cloud + portal
         rows.append({"hora": hour, "Talca": talca, "Concepción": concepcion,
@@ -315,14 +315,13 @@ def main() -> None:
     normal_tps = normal_max["total"]
     peak_tps = peak_max["total"]
 
-    # La dimensión 2 conserva la cota histórica de emisión dentro de 05:30-07:00.
-    dispatch_normal_work = (ENTREGAS_NORMAL_DIA * DISPATCH_TX_PER_DELIVERY
-                            + CAMIONES_TOTAL * DISPATCH_TX_PER_TRUCK + dte_day)
+    # Dimensión 2: máximo horario efectivo entre las horas que intersectan
+    # 05:30–07:00. El tramo 05:00 se supone uniforme y aporta desde 05:30.
     dte_peak_day = dte_day * factor_peak
-    dispatch_peak_work = (ENTREGAS_PEAK_DIA * DISPATCH_TX_PER_DELIVERY
-                          + CAMIONES_TOTAL * DISPATCH_TX_PER_TRUCK + dte_peak_day)
-    dim2_normal = dispatch_normal_work / 5_400 * S51_CONCENTRATION_FACTOR
-    dim2_peak = dispatch_peak_work / 5_400 * S51_CONCENTRATION_FACTOR
+    dispatch_window_rows_normal = [normal_rows[5], normal_rows[6]]
+    dispatch_window_rows_peak = [peak_rows[5], peak_rows[6]]
+    dim2_normal = max(row["total"] for row in dispatch_window_rows_normal)
+    dim2_peak = max(row["total"] for row in dispatch_window_rows_peak)
     load_test_tps = peak_tps * REQ_PRUEBA_CARGA
 
     portal_regime_sessions_h = 2_600 / 9 * S51_CONCENTRATION_FACTOR
@@ -409,7 +408,7 @@ def main() -> None:
         ("INT-11", "Avisos al cliente", ENTREGAS_NORMAL_DIA * 2, ENTREGAS_PEAK_DIA * 2, "1.400 × 2; 2.600 × 2"),
         ("INT-12", "Cambios de datos a réplica", movement_records_month / dispatch_days, movement_records_month / dispatch_days * factor_peak, "279.050 ÷ 22,14; peak × 1,857"),
         ("INT-13", "Identidad a sitio", (sum(warehouse_terminals.values()) + preventa_devices + truck_devices + cross_park) * IDENTITY_MESSAGES_PER_DEVICE_DAY, (sum(warehouse_terminals.values()) + preventa_devices + truck_devices + cross_park) * IDENTITY_MESSAGES_PER_DEVICE_DAY, "380 dispositivos × 2"),
-        ("INT-14", "Métricas y trazas", (OBS_NODES["Talca"] + OBS_NODES["Concepción"] + CROSS_DOCKS * OBS_NODES["Cada cross-docking"]) * OBS_EVENTS_PER_NODE_DAY, (OBS_NODES["Talca"] + OBS_NODES["Concepción"] + CROSS_DOCKS * OBS_NODES["Cada cross-docking"]) * OBS_EVENTS_PER_NODE_DAY, "10 nodos × 1.000"),
+        ("INT-14", "Métricas y trazas", (OBS_NODES["Talca"] + OBS_NODES["Concepción"] + CROSS_DOCKS * OBS_NODES["Cada cross-docking"]) * OBS_EVENTS_PER_NODE_DAY, (OBS_NODES["Talca"] + OBS_NODES["Concepción"] + CROSS_DOCKS * OBS_NODES["Cada cross-docking"]) * OBS_EVENTS_PER_NODE_DAY, "13 nodos × 1.000"),
         ("INT-15", "Telemetría existente", CAMIONES_PROPIOS * S55_OWN_TELEMETRY_ACCESS * (3600 / POSITION_SECONDS) * ROUTE_HOURS, CAMIONES_PROPIOS * S55_OWN_TELEMETRY_ACCESS * (3600 / POSITION_SECONDS) * ROUTE_HOURS, "42 × 12 × 120; SV-07")]
     # El redondeo se aplica por integración y luego se suma, para que la tabla
     # sea auditable y el total sea exactamente la suma de sus filas.
@@ -480,11 +479,13 @@ def main() -> None:
     vm_total = {site: sum_resources(values) for site, values in vm_sets.items()}
     vm_total_3x = {site: sum_resources(values) for site, values in vm_sets_3x.items()}
 
-    def cluster_resources(total: dict[str, float]) -> dict[str, float]:
-        return {key: math.ceil(value * 1.15) if key == "vcpu" else value + (2 if key == "ram_gb" else 0) for key, value in total.items()}
+    def cluster_resources(total: dict[str, float], physical_nodes: int) -> dict[str, float]:
+        return {key: math.ceil(value * 1.15) if key == "vcpu" else value + (HYPERVISOR_RAM_GB * physical_nodes if key == "ram_gb" else 0) for key, value in total.items()}
 
-    talca_cluster_required = cluster_resources(vm_total["Talca"])
-    talca_cluster_required_3x = cluster_resources(vm_total_3x["Talca"])
+    talca_cluster_required = cluster_resources(vm_total["Talca"], 3)
+    talca_cluster_required_3x = cluster_resources(vm_total_3x["Talca"], 3)
+    concepcion_cluster_required = cluster_resources(vm_total["Concepción"], 1)
+    concepcion_cluster_required_3x = cluster_resources(vm_total_3x["Concepción"], 1)
     t11_talca_n1 = {"vcpu": 128, "ram_gb": 256, "disk_gb": 3_840}
     t11_concepcion = {"vcpu": 16, "ram_gb": 32, "disk_gb": 3_840}
     talca_util_current = {key: talca_cluster_required[key] / t11_talca_n1[key] for key in ("vcpu", "ram_gb", "disk_gb")}
@@ -500,6 +501,8 @@ def main() -> None:
     fleet_sync_mbps = CAMIONES_TOTAL * fleet_device_mb * 8 / (3 * 3600)
     fleet_peak_hour_devices = CAMIONES_TOTAL / 3 * S51_CONCENTRATION_FACTOR
     fleet_peak_hour_mbps = fleet_peak_hour_devices * fleet_device_mb * 8 / 3600
+    fleet_peak_site_mbps = {"Talca": fleet_peak_hour_mbps * S49_TALCA_SHARE,
+                            "Concepción": fleet_peak_hour_mbps * (1 - S49_TALCA_SHARE)}
     site_data_day: dict[str, dict[str, float]] = {}
     link_rows: dict[str, dict[str, float]] = {}
     for site in site_tps_peak:
@@ -514,7 +517,7 @@ def main() -> None:
         office_gb_day = OFICINA_PERSONAS * OFFICE_MB_PER_USER_H * 18 / 1000 if site == "Talca" else 0.0
         continuous = daily_replicable * 8_000 / 86_400
         office_mbps = office_gb_day * 8_000 / (18 * 3600) if site == "Talca" else 0.0
-        sync_mbps = fleet_peak_hour_mbps if site == "Talca" else 0.0
+        sync_mbps = fleet_peak_site_mbps.get(site, 0.0)
         hour_loaded_regime = continuous * S51_CONCENTRATION_FACTOR + office_mbps + sync_mbps
         hour_loaded_peak = continuous * S51_CONCENTRATION_FACTOR * factor_peak + office_mbps + sync_mbps
         drain = daily_replicable * 8_000 / (REQ_SYNC_CD_H * 3600)
@@ -532,6 +535,7 @@ def main() -> None:
         link_rows[site] = {"principal": principal, "backup": backup, "principal_code": principal_code, "backup_code": backup_code, "principal_util": worst / principal, "backup_util": drain / backup}
 
     year3_link_rows: dict[str, float] = {}
+    three_x_link_rows: dict[str, float] = {}
     for site in site_tps_peak:
         row = site_data_day[site]
         changes = (row["changes_wal"] + row["broker"] + row["incremental"]) * y3_lines_factor
@@ -539,6 +543,12 @@ def main() -> None:
         y3_continuous = y3_daily * 8_000 / 86_400
         y3_drain = y3_daily * 8_000 / (REQ_SYNC_CD_H * 3600)
         year3_link_rows[site] = y3_continuous * S51_CONCENTRATION_FACTOR + row["office_mbps"] + row["sync_mbps"] + y3_drain
+        three_x_daily = ((row["changes_wal"] + row["broker"] + row["incremental"]) * REQ_CRECIMIENTO
+                         + row["temperature"] + row["observability"])
+        three_x_continuous = three_x_daily * 8_000 / 86_400
+        three_x_drain = three_x_daily * 8_000 / (REQ_SYNC_CD_H * 3600)
+        three_x_link_rows[site] = (three_x_continuous * S51_CONCENTRATION_FACTOR
+                                   + row["office_mbps"] + row["sync_mbps"] + three_x_drain)
 
     operational_concurrency["portal régimen"] = portal_regime_concurrent
     operational_concurrency["portal cota extrema"] = portal_extreme_concurrent
@@ -635,7 +645,7 @@ def main() -> None:
         "Se calcula el máximo horario de cada régimen para evitar sumar ventanas que no coinciden. La fórmula de una ventana es volumen del flujo × operaciones ÷ duración de la ventana × SV-04 sólo en su hora cargada.",
         f"En régimen normal el máximo horario es **{fmt(normal_tps)} TPS a las {int(normal_max['hora']):02d}:00**. Los máximos por lugar son Talca {fmt(normal_place_max['Talca']['Talca'])}, Concepción {fmt(normal_place_max['Concepción']['Concepción'])}, cada cross-docking {fmt(normal_place_max['cross-docking']['cross-docking'])}, nube {fmt(normal_place_max['nube']['nube'])} y portal {fmt(normal_place_max['portal']['portal'])} TPS.",
         f"En septiembre el máximo es **{fmt(peak_tps)} TPS a las {int(peak_max['hora']):02d}:00**. Por lugar: Talca {fmt(peak_place_max['Talca']['Talca'])}, Concepción {fmt(peak_place_max['Concepción']['Concepción'])}, cada cross-docking {fmt(peak_place_max['cross-docking']['cross-docking'])}, nube {fmt(peak_place_max['nube']['nube'])} y portal {fmt(peak_place_max['portal']['portal'])} TPS.",
-        f"La ventana de despacho, incluida la cota de emisión de guías, se calcula como (2.600 × 2 + 96 × 2 + 2.852) ÷ 5.400 × 2 = **{fmt(dim2_peak)} TPS** peak; el régimen equivalente es **{fmt(dim2_normal)} TPS**. La cifra de 2.852 corresponde a documentos emitidos, sin acuses. Para el portal, 2.600 ÷ 9 × 2 por SV-04 × 60 ÷ 3.600 = {fmt(portal_regime_requests_s)} solicitudes/s.",
+        f"La dimensión 2 toma el mayor total horario dentro de 05:30–07:00: las horas 05:00 y 06:00, suponiendo uniforme el tramo 05:30–06:00; resulta **{fmt(dim2_peak)} TPS** peak y **{fmt(dim2_normal)} TPS** normal. Los {fmt(dte_peak_day, 0)} DTE/día peak son el total de documentos tributarios electrónicos, no sólo guías; tratarlos todos como guías que deben emitirse antes de la salida constituye una cota conservadora. Para el portal, 2.600 ÷ 9 × 2 por SV-04 × 60 ÷ 3.600 = {fmt(portal_regime_requests_s)} solicitudes/s.",
         f"La prueba BTT RT-09.06 aplica una sola vez 1,5 × {fmt(peak_tps)} = **{fmt(load_test_tps)} TPS**.", "",
         "### Perfil horario de 24 horas", "",
         "La tabla conserva las tasas por hora y por lugar. La fila máxima explica la dimensión 1 y la dimensión 3.", *hourly_markdown(), "",
@@ -650,13 +660,13 @@ def main() -> None:
         f"La migración suma maestros {fmt(historical_domains['maestros completos'], 0)} KB, ventas y pedidos {fmt(historical_domains['ventas y pedidos, 3 años'], 0)} KB, inventario y movimientos {fmt(historical_domains['inventario y movimientos, 2 años'], 0)} KB, recepciones con lote {fmt(historical_domains['recepciones con lote, 5 años'], 0)} KB y cuentas por cobrar {fmt(historical_domains['cuentas por cobrar, 2 años'], 0)} KB. Con factor 2: **{fmt(historical_gb)} GB**, sensibilidad **{fmt(historical_low_gb)}–{fmt(historical_high_gb)} GB**.", "",
         "## Dimensiones 11–12: integraciones y enlaces", "",
         f"El apartado 4.1 contiene 15 integraciones. La dimensión 11 suma **{fmt(message_total, 0)} mensajes/día normal** y **{fmt(message_peak, 0)} peak**; portal y llamadas internas a la API quedan fuera. El EDI actual es cero; el escenario 2029 usa la cota de 11 % de pedidos.", *integration_markdown(), "",
-        "El drenaje contiene sólo cambios con WAL, vaciado del broker, telemetría, observabilidad e incremental de respaldo acumulados durante 24 horas; no incluye tráfico de oficina. El peor caso suma la hora cargada con oficina y la sincronización de la flota cuando corresponde."]
+        "El drenaje contiene sólo cambios con WAL, vaciado del broker, telemetría, observabilidad e incremental de respaldo acumulados durante 24 horas; no incluye tráfico de oficina. El peor caso suma la hora cargada con oficina y la sincronización de la flota cuando corresponde. D-06 se calcula con 2 Mbps de subida garantizada mínima supuesta, un parámetro conservador de diseño que se confirma en la instalación."]
     for site in site_tps_peak:
         row = site_data_day[site]
         link = link_rows[site]
         lines.append(f"- {site}: régimen cargado {fmt(row['hour_loaded_regime'])} Mbps; drenaje {fmt(row['drain_mbps'])} Mbps; peor caso {fmt(row['worst'])} Mbps; {link['principal_code']} {fmt(link['principal_util'] * 100)} % y {link['backup_code']} para drenaje {fmt(link['backup_util'] * 100)} %. Datos acumulables: {fmt(row['daily_replicable'])} GB/día.")
     lines += [
-        f"Talca agrega la flota al regresar al centro de distribución: {fmt(fleet_peak_hour_devices, 0)} camiones en la hora punta de 17:00–20:00 requieren **{fmt(fleet_peak_hour_mbps)} Mbps** en Wi-Fi y enlace; el agregado de las tres horas es {fmt(fleet_sync_mbps)} Mbps. Cada dispositivo queda sincronizado en diez minutos y la flota completa termina unos diez minutos después del último camión.", "",
+        f"El retorno se reparte según SV-03: {fmt(fleet_peak_hour_devices, 0)} camiones en la hora punta total de 17:00–20:00 requieren {fmt(fleet_peak_site_mbps['Talca'])} Mbps en Talca y {fmt(fleet_peak_site_mbps['Concepción'])} Mbps en Concepción para Wi-Fi y enlace; la flota completa requiere {fmt(fleet_peak_hour_mbps)} Mbps en esa hora y {fmt(fleet_sync_mbps)} Mbps agregados en las tres horas. Cada dispositivo queda sincronizado en diez minutos.", "",
         "## Dimensiones 13–14: terreno y sincronización", "",
         f"La peor ruta genera 34 × {fmt(evidence_kb)} KB ÷ 1.024 + 2 MB = **{fmt(fleet_device_mb)} MB** por dispositivo. Una ruta promedio genera **{fmt(device_mb_avg_normal)} MB** normal y **{fmt(device_mb_avg_peak)} MB** en septiembre.",
         f"Con {fmt(fleet_device_mb)} MB, el umbral de quiebre de sincronización es {fmt(fleet_device_mb)} MB × 8 ÷ 600 s = **{fmt(min_sync_mbps)} Mbps efectivos**; el diseño exige que cada dispositivo disponga de al menos ese caudal.", "",
@@ -665,14 +675,14 @@ def main() -> None:
         f"La operación 24×7 de septiembre y diciembre requiere ocho personas para un NOC y un SOC de una posición cada uno: 168 ÷ 42 = {persons_per_position_42h} personas por posición. Desde el 26-04-2028, 168 ÷ 40 = {persons_per_position_40h}; el total mesa más NOC/SOC es **{total_operation_people_42h}** y luego **{total_operation_people_40h} personas**.", "",
         "## Capacidad on-premise", "",
         "La base local incluye maestros, stock, lotes presentes y movimientos de cuatro meses; el histórico de retención vive en la nube. La RAM de la base es 4 GB más 25 % del tamaño a 3×; cada VM suma base de sistema y carga.", *vm_markdown(),
-        f"Talca requiere con hipervisor {resource_line(talca_cluster_required)} actual y {resource_line(talca_cluster_required_3x)} a 3×. Frente al T-11 con un nodo caído, la utilización es {fmt(talca_util_current['vcpu'] * 100)} / {fmt(talca_util_current['ram_gb'] * 100)} / {fmt(talca_util_current['disk_gb'] * 100)} % actual y {fmt(talca_util_3x['vcpu'] * 100)} / {fmt(talca_util_3x['ram_gb'] * 100)} / {fmt(talca_util_3x['disk_gb'] * 100)} % a 3× para CPU/RAM/disco. La configuración mínima N+1 y 3× por nodo es {min_node_3x['vcpu']} vCPU, {min_node_3x['ram_gb']} GB RAM y {min_node_3x['disk_gb']} GB lógicos; la redundancia fija el mínimo.", "",
+        f"Las VMs de Talca suman {resource_line(vm_total['Talca'])}; con hipervisor (+15 % vCPU y 2 GB RAM por cada uno de 3 nodos físicos) requieren {resource_line(talca_cluster_required)} actual y {resource_line(talca_cluster_required_3x)} a 3×. Las VMs de Concepción suman {resource_line(vm_total['Concepción'])}; con hipervisor (+15 % vCPU y 2 GB RAM por nodo físico) requieren {resource_line(concepcion_cluster_required)} actual y {resource_line(concepcion_cluster_required_3x)} a 3×. Frente al T-11 con un nodo caído, la utilización de Talca es {fmt(talca_util_current['vcpu'] * 100)} / {fmt(talca_util_current['ram_gb'] * 100)} / {fmt(talca_util_current['disk_gb'] * 100)} % actual y {fmt(talca_util_3x['vcpu'] * 100)} / {fmt(talca_util_3x['ram_gb'] * 100)} / {fmt(talca_util_3x['disk_gb'] * 100)} % a 3× para CPU/RAM/disco. La configuración mínima N+1 y 3× por nodo es {min_node_3x['vcpu']} vCPU, {min_node_3x['ram_gb']} GB RAM y {min_node_3x['disk_gb']} GB lógicos; la redundancia fija el mínimo.", "",
         "## Capacidad en nube", "",
         f"El perfil de API atiende aplicaciones y portales N-01 a N-03. Una tarea Fargate entrega 0,70 ÷ 0,05 = **{fmt(task_capacity_tps)} solicitudes/s**. Régimen: {fmt(cloud_normal_load)} solicitudes/s y {fargate_tasks['régimen']} tareas; peak: {fmt(cloud_peak_load)} y {fargate_tasks['peak']}; RT-09.06: {fmt(cloud_test_load)} y {fargate_tasks['prueba']}; cota extrema: {fmt(extreme_portal_load)} y {fargate_tasks['cota']}; sensibilidad de 120 solicitudes por sesión: {fmt(sensitivity_regime_load)} y {fargate_tasks['sensibilidad régimen']} en régimen, {fmt(sensitivity_extreme_load)} y {fargate_tasks['sensibilidad cota']} en cota. El techo es ocho tareas.", "",
         "## Ventana dominical", ""]
     for site in site_tps_peak:
         row = site_data_day[site]
-        lines.append(f"- {site}: respaldo completo a 3× {fmt(row['full_backup_gb'])} GB y aplicación {fmt(row['app_update_gb'])} GB requieren {fmt(row['app_hours'])} h; la tanda de sistema operativo es {row['os_batch_devices']} equipos, {fmt(row['os_batch_hours'])} h por domingo y {row['os_sundays']} domingos. La aplicación es de hasta 100 MB y el sistema operativo se distribuye trimestralmente.")
-    lines += ["", "## Crecimiento, umbrales y cuello de botella", "", f"Año 3 usa {fmt_int(Y3_PEDIDOS_MES)} pedidos/mes ({fmt_int(Y3_PEDIDOS_MES)} ÷ {fmt_int(PEDIDOS_MES)} = {fmt(Y3_PEDIDOS_MES / PEDIDOS_MES)}×), {fmt_int(Y3_LINEAS_MES)} líneas/mes ({fmt(Y3_LINEAS_MES / LINEAS_MES)}×), {fmt_int(Y3_ENTREGAS_NORMAL_DIA)}/{fmt_int(Y3_ENTREGAS_PEAK_DIA)} entregas/día y {fmt_int(Y3_DTE_MES)} DTE/mes. Por separado, 3× es 93.000 pedidos, 780.000 líneas, 4.200/7.800 entregas y 102.000 DTE mensuales.", f"La tabla de capacidad del año 3 se obtiene con una base por métrica: WMS Talca {fmt(site_tps_peak['Talca'])} × ({fmt_int(Y3_LINEAS_MES)} ÷ {fmt_int(LINEAS_MES)}) = {fmt(year3_talca_tps)} TPS; nube más portal {fmt(peak_tps)} × ({fmt_int(Y3_PEDIDOS_MES)} ÷ {fmt_int(PEDIDOS_MES)}) = {fmt(year3_cloud_load)} solicitudes/s; evidencia {fmt(evidence_gb_year)} × ({fmt_int(Y3_PEDIDOS_MES)} ÷ {fmt_int(PEDIDOS_MES)}) = {fmt(year3_evidence_gb)} GB/año; Talca usa {fmt(year3_link_rows['Talca'])} Mbps en el peor caso; bodega Talca usa {year3_talca_terminals} terminales; mesa conserva {fmt_int(year3_help_contacts)} contactos/mes. La columna 3× cubre carga técnica, no aumenta el parque de personas.", f"El umbral de SV-04, expresado como múltiplo de la tasa peak antes de saturar la capacidad calculada, es Talca {fmt(concentration_break['Talca'])}×, Concepción {fmt(concentration_break['Concepción'])}×, cada cross-docking {fmt(concentration_break['Cada cross-docking'])}× y nube más portal {fmt(concentration_break['Nube + portal'])}×. La cota extrema combinada requiere {fargate_tasks['cota']} tareas; la sensibilidad exige {fargate_tasks['sensibilidad cota']} y se mantiene bajo el techo de ocho.", f"Para las {fmt(dte_peak_day, 0)} guías peak, el tiempo máximo por guía es 27.000 ÷ {fmt(dte_peak_day, 0)} = {fmt(dte_scenarios['22:00–05:30'])} s si se reparte en toda la preparación; {fmt(dte_scenarios['últimas 3,5 h'])} s si se concentra al final; y {fmt(dte_scenarios['05:30–07:00'])} s si se conserva la práctica actual. El diseño emite cada guía cuando confirma la carga, durante la noche. Se detectan guías pendientes frente a la hora de salida de cada camión; se resuelve priorizando la cola y reconciliando el folio, sin crear otro emisor: el ERP sigue siendo el único emisor y la guía acompaña el traslado.", f"Con siete agentes, el escenario de mesa tolera aproximadamente {fmt_int(max_contacts_7)} contactos mensuales antes de requerir una posición adicional. Se observan percentiles 95, colas, errores, IOPS, Wi-Fi, ERP y drenaje en RT-09.06 y en la operación.", "", "## Fuentes de validación", "", "El perfilado confirma tamaños de registros y migración; la prueba de carga confirma CPU, residencia Fargate, concurrencia y tasas; la prueba de corte confirma drenaje y la prueba dominical confirma respaldo y actualizaciones. Ninguna de estas verificaciones reemplaza el valor de diseño declarado."]
+        lines.append(f"- {site}: respaldo completo a 3× {fmt(row['full_backup_gb'])} GB y aplicación {fmt(row['app_update_gb'])} GB requieren {fmt(row['app_hours'])} h; la tanda de sistema operativo es {row['os_batch_devices']} equipos, {fmt(row['os_batch_hours'])} h por domingo y una ronda completa ocupa {row['os_sundays']} domingos. La aplicación se actualiza en un domingo por sitio; el sistema operativo se distribuye en tandas dominicales, con cadencia semestral.")
+    lines += ["", "## Crecimiento, umbrales y cuello de botella", "", f"Año 3 usa {fmt_int(Y3_PEDIDOS_MES)} pedidos/mes ({fmt_int(Y3_PEDIDOS_MES)} ÷ {fmt_int(PEDIDOS_MES)} = {fmt(Y3_PEDIDOS_MES / PEDIDOS_MES)}×), {fmt_int(Y3_LINEAS_MES)} líneas/mes ({fmt(Y3_LINEAS_MES / LINEAS_MES)}×), {fmt_int(Y3_ENTREGAS_NORMAL_DIA)}/{fmt_int(Y3_ENTREGAS_PEAK_DIA)} entregas/día y {fmt_int(Y3_DTE_MES)} DTE/mes. Por separado, 3× es 93.000 pedidos, 780.000 líneas, 4.200/7.800 entregas y 102.000 DTE mensuales.", f"La tabla de capacidad del año 3 se obtiene con una base por métrica: WMS Talca {fmt(site_tps_peak['Talca'])} × ({fmt_int(Y3_LINEAS_MES)} ÷ {fmt_int(LINEAS_MES)}) = {fmt(year3_talca_tps)} TPS; nube más portal {fmt(peak_tps)} × ({fmt_int(Y3_PEDIDOS_MES)} ÷ {fmt_int(PEDIDOS_MES)}) = {fmt(year3_cloud_load)} solicitudes/s; evidencia {fmt(evidence_gb_year)} × ({fmt_int(Y3_PEDIDOS_MES)} ÷ {fmt_int(PEDIDOS_MES)}) = {fmt(year3_evidence_gb)} GB/año; Talca usa {fmt(year3_link_rows['Talca'])} Mbps en el peor caso y {fmt(three_x_link_rows['Talca'])} Mbps a 3×; bodega Talca usa {year3_talca_terminals} terminales; mesa conserva {fmt_int(year3_help_contacts)} contactos/mes. La columna 3× cubre carga técnica, no aumenta el parque de personas.", f"El umbral de SV-04, expresado como múltiplo de la tasa peak antes de saturar la capacidad calculada, es Talca {fmt(concentration_break['Talca'])}×, Concepción {fmt(concentration_break['Concepción'])}×, cada cross-docking {fmt(concentration_break['Cada cross-docking'])}× y nube más portal {fmt(concentration_break['Nube + portal'])}×. La cota extrema combinada requiere {fargate_tasks['cota']} tareas; la sensibilidad exige {fargate_tasks['sensibilidad cota']} y se mantiene bajo el techo de ocho.", f"Para los {fmt(dte_peak_day, 0)} DTE peak, el tiempo máximo por documento es 27.000 ÷ {fmt(dte_peak_day, 0)} = {fmt(dte_scenarios['22:00–05:30'])} s si se reparte en toda la preparación; {fmt(dte_scenarios['últimas 3,5 h'])} s si se concentra al final; y {fmt(dte_scenarios['05:30–07:00'])} s si se conserva la práctica actual. El diseño emite el documento cuando confirma la carga, durante la noche. Se detectan documentos pendientes frente a la hora de salida de cada camión; se resuelve priorizando la cola y reconciliando el folio, sin crear otro emisor: el ERP sigue siendo el único emisor y el documento acompaña el traslado.", f"Con siete agentes, el escenario de mesa tolera aproximadamente {fmt_int(max_contacts_7)} contactos mensuales antes de requerir una posición adicional. Se observan percentiles 95, colas, errores, IOPS, Wi-Fi, ERP y drenaje en RT-09.06 y en la operación.", "", "## Fuentes de validación", "", "El perfilado confirma tamaños de registros y migración; la prueba de carga confirma CPU, residencia Fargate, concurrencia y tasas; la prueba de corte confirma drenaje y la prueba dominical confirma respaldo y actualizaciones. Ninguna de estas verificaciones reemplaza el valor de diseño declarado."]
     OUT.write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 

@@ -5,7 +5,6 @@ La implantación conserva los identificadores M1--M12, sus dueños de datos, las
 
 La implementación conserva rutas y contratos, repositorios PostgreSQL/PostGIS y eventos JSON. Sustituye el runtime por Laravel/PHP, separa consumidor de integración y trabajos internos, y prueba identidad, trazas y reversión antes de habilitar cada ola.
 
-{\footnotesize Fuente: elaboración propia de LafroX a partir de los contratos y requisitos de esta arquitectura.\par}
 
 La implantación comienza por fijar contratos, dueños de datos y esquema PostgreSQL del WMS de 2013 como línea base de migración. Las migraciones Laravel posteriores son aditivas y compatibles con los lectores de la ola previa. M1/M2/M5 se ensayan en un sitio piloto con el WMS legado disponible para reversión; después se habilitan los demás sitios, módulos y trabajadores. En coexistencia, una operación tiene un único escritor autorizado: no se habilita doble escritura de stock, cobros o DTE. Todo evento que cruza tecnologías usa JSON versionado. La reversión devuelve el tráfico al escritor previo solo después de detener el nuevo, conciliar pendientes y verificar esquemas y contratos compatibles. Cada ola cierra con pruebas de 14 horas en terreno, 24 horas por sitio con dos relevos, emisión de guía previa al despacho, 96 camiones en la ventana crítica y reconciliación sin pedidos duplicados.
 

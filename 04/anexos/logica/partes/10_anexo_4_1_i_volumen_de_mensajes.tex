@@ -5,16 +5,22 @@
 Esta síntesis permite contrastar órdenes de magnitud. Los anexos G y H son el catálogo por interfaz e identifican ventana, modo, unidades y supuestos. Las cifras siguientes incluyen flujos encadenados: no se suman para obtener transacciones únicas ni dimensionan por sí solas bytes de evidencia, WAL o ancho de banda. El peak depende de la variable que crece, no de duplicar todas las fuentes.
 
 \begin{tablalafrox}{Volumen de mensajes por integración (derivado volumetría caso)}{tab:volumen-mensajes}{F{0.26} F{0.26} F{0.21} Y}{\cab{Integración} & \cab{Volumen régimen} & \cab{Peak septiembre} & \cab{Derivación}}
-Capa anticorrupción ERP (INT-06) & 4.686 msg/día & 9.372 & 1.240 + 46 + 1.400 + 1.400 + 600; peak de diseño por factor 2 \\
-Documentos tributarios y acuse (INT-07) & 2.720 msg/día & 5.440 & 34.000 docs/mes por 2 intercambios, sobre 25 días \\
-Eventos trazabilidad GS1 EPCIS & $\approx$ 52.000 eventos/día & $\approx$ 104.000 & 260.000 líneas/mes $\times$ 5 eventos ciclo, sobre 25 días \\
-Telemetría cadena frío (INT-05) & 16.128 muestras/día & 16.128 & 56 fuentes por 288; envolvente de 24 h, no solo turno móvil \\
-Telemetría flota (INT-15) & 60.480 posiciones/día & 70.560 & 42 camiones por 120 posiciones/h; turno de 12/14 h \\
-Capturas terreno (INT-01/02) & Hasta 5.440 sobres/día & Hasta 10.280 & 1.240/2.480 pedidos más 3 sobres por 1.400/2.600 entregas; excluye picking local \\
-EDI canal moderno (INT-08) & 544 msg/día & 1.088 & Supuesto de 136 pedidos por 4 intercambios; peak por factor 2 \\
-Notificaciones (INT-11) & 2.800 msg/día & 5.200 & Dos avisos por 1.400/2.600 entregas \\
-Autorización pago (POS móvil) & $\approx$ 500 msg/día & $\approx$ 1.000 & fracción canal tradicional que migra efectivo a electrónico \\
-Servicio mapas y geocodificación & $\approx$ 200 llamadas/día & $\approx$ 400 & una corrida ruteo por zona + recálculos incidencia \\
+INT-01 Pedido preventa & 1.400 msg/día & 2.600 & Entregas diarias habituales y peak de septiembre \\
+INT-02 Entrega, POD y cobro & 7.000 msg/día & 13.000 & Cinco operaciones por entrega \\
+INT-03 Eventos bodega a nube & 58.710 msg/día & 109.032 & 260.000 líneas ÷ 22,14 $\times$ 5; peak $\times$ 1,857 \\
+INT-04 Cross-docking a Talca & 5.600 msg/día & 10.400 & Cuatro operaciones por entrega \\
+INT-05 Temperatura & 10.584 msg/día & 10.584 & 21 $\times$ 288 lecturas de cámara + 28 $\times$ 162 de termógrafo \\
+INT-06 ERP 2017 & 2.025 msg/día & 3.762 & Flujos ERP sobre 22,14 días; peak $\times$ 1,857 \\
+INT-07 DTE/SII & 3.071 msg/día & 5.703 & 34.000 documentos ÷ 22,14 $\times$ 2; peak $\times$ 1,857 \\
+INT-08 EDI cadenas modernas & 0 msg/día & 1.144 & Escenario 2029: 2.600 $\times$ 11\,\% $\times$ 4 \\
+INT-09 Pasarela de pago & 533 msg/día & 990 & 11.800 ÷ 22,14; peak $\times$ 1,857 \\
+INT-10 Mapas y geocodificación & 96 llamadas/día & 96 & Volumen constante en ambos escenarios \\
+INT-11 Avisos al cliente & 2.800 msg/día & 5.200 & Dos avisos por entrega \\
+INT-12 Cambios a réplica & 12.602 cambios/día & 23.404 & Peak $\times$ 1,857; WAL estimado de 0,123 GB/día en Talca \\
+INT-13 Identidad y manifiestos & 760 eventos/día & 760 & 380 dispositivos $\times$ 2 \\
+INT-14 Métricas, logs y trazas & 13.000 eventos/día & 13.000 & 13 nodos $\times$ 1.000 eventos \\
+INT-15 Telemetría de flota & 60.480 posiciones/día & 60.480 & 42 camiones $\times$ 120 posiciones/h $\times$ 12 h \\
+\textbf{Total} & \textbf{178.661/día} & \textbf{260.155/día} & \textbf{15 integraciones} \\
 \end{tablalafrox}
 
 {\footnotesize Fuente: elaboración propia de LafroX a partir de Caso 02, numeral 14.1; cálculos indicados en la columna de derivación.\par}

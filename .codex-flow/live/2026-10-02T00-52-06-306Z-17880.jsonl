@@ -1,0 +1,6 @@
+{"type":"thread.started","thread_id":"01a0fa18-d7e5-7e62-9d32-b1240ec980e8","at":"2026-10-02T00:52:07.535Z"}
+{"type":"item.completed","item":{"id":"item_0","type":"error","message":"Model metadata for `gpt-6.1-sol` not found. Defaulting to fallback metadata; this can degrade performance and cause issues."},"at":"2026-10-02T00:52:07.569Z"}
+{"type":"turn.started","at":"2026-10-02T00:52:07.853Z"}
+{"type":"error","message":"{\"type\":\"error\",\"status\":400,\"error\":{\"type\":\"invalid_request_error\",\"message\":\"The 'gpt-6.1-sol' model is not supported when using Codex with a ChatGPT account.\"}}","at":"2026-10-02T00:52:10.993Z"}
+{"type":"turn.failed","error":{"message":"{\"type\":\"error\",\"status\":400,\"error\":{\"type\":\"invalid_request_error\",\"message\":\"The 'gpt-6.1-sol' model is not supported when using Codex with a ChatGPT account.\"}}"},"at":"2026-10-02T00:52:11.000Z"}
+{"type":"live.run_finished","status":"failed","sessionId":"01a0fa18-d7e5-7e62-9d32-b1240ec980e8","at":"2026-10-02T00:52:11.355Z"}

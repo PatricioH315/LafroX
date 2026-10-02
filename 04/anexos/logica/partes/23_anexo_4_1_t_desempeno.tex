@@ -6,7 +6,7 @@
 Los umbrales se miden sobre la operación percibida y confirmada, no sobre una llamada aislada. La copia de consulta puede responder inmediatamente como información fechada; no confirma stock o crédito. El timeout del adaptador es un límite de protección independiente del tiempo visible al usuario (PUCV, 2026a, cap.~15; PUCV, 2026b, RT-09.01--09.08).
 
 \begin{tablalafrox}{Objetivos y escenarios de desempeño}{tab:aceptacion-desempeno}{F{0.24} F{0.19} Y}{\cab{Operación} & \cab{Objetivo} & \cab{Carga y comprobación}}
-Confirmar línea picking & p95 $\leq$ 1 s. & Terminal, puerta local, M5/M2 y base; 120 preparadores concurrentes. \\
+Confirmar línea picking & p95 $\leq$ 1 s. & Terminal, puerta local, M5/M2 y base; 186 terminales concurrentes del turno nocturno. \\
 Registrar entrega & p95 $\leq$ 2 s. & Persistencia local durable, POD y UUID; el envío de foto no bloquea la captura. \\
 Registrar línea preventa & p95 $\leq$ 1,5 s. & Captura cifrada, persistencia y estado; no exige reserva central offline. \\
 Consultar stock/crédito & p95 $\leq$ 2 s. & API con enlace; copia fechada inmediata durante degradación. \\
@@ -17,7 +17,7 @@ Liberar despachos & 96 salidas 05:30--07:00. & Guías por destino/carga y cambio
 \end{tablalafrox}
 {\footnotesize Fuente: Caso 02, caps.~14--15 y 18; las pruebas son compromisos de ejecución, no resultados obtenidos.\par}
 
-La carga nominal usa 31.000 pedidos y 260.000 líneas mensuales. La envolvente peak de G/H duplica los eventos de pedido y bodega cuando no existe una distribución horaria medida. RT-09.06 exige además 1,5 veces ese peak: por ejemplo, 156.000 eventos de bodega por día de ensayo si el peak es 104.000, y 3.900 entregas por día si la referencia peak es 2.600. Esas cifras no trasladan todas las entregas a la ventana de salida de camiones. La prueba distribuye la carga por hora y sitio y registra los supuestos; el crecimiento de RT-09.03 ensaya tres veces la volumetría inicial sin rediseñar contratos ni identificadores.
+La prueba RT-09.06 usa una carga total de 1,5 $\times$ 14,66 = 21,99 TPS, distribuida por perfil horario y sitio; las tasas por integración se detallan en el Anexo 4.B del Subdocumento 4. El crecimiento de RT-09.03 ensaya tres veces la volumetría inicial sin rediseñar contratos ni identificadores.
 
 Las reservas se serializan por agregado para evitar doble compromiso; los perfiles ERP, reconciliación, EDI y reportes tienen mamparos de concurrencia y colas independientes. Bajo sobrecarga, lectura degrada a copia fechada, escritura permanece pendiente y objetos se transfieren por reanudación. El usuario recibe estado y causal; nunca se descarta una operación confirmada para recuperar velocidad.
 

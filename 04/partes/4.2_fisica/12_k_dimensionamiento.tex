@@ -40,7 +40,7 @@ La cadena evita mezclar decisiones de diseño con hechos del CLIENTE. En particu
 \subsection{Perfil de carga y regímenes de diseño}
 \label{sec:dimensionamiento-regimenes}
 
-El Bases Técnicas del caso, Anexo B, p. 38 distribuye la operación en estas ventanas:
+Las Bases Técnicas del caso (Anexo B, p. 38) distribuyen la operación en estas ventanas:
 
 \begin{itemize}
   \item Preparación de 22:00 a 06:00.
@@ -111,15 +111,15 @@ La dimensión 1, «Transacciones por segundo en régimen normal», toma el máxi
 La Tabla~\ref{tab:t76} presenta los lugares de proceso y separa el portal de la nube. El despacho se muestra como una cota independiente porque el caso lo identifica como peak actual de emisión de documentos.
 
 \begin{tablalafrox}{Transacciones por segundo por lugar de proceso}{tab:t76}{F{0.24} G{0.16} G{0.16} G{0.16} Y}{\cab{Lugar o flujo} & \cab{Régimen normal} & \cab{Ventana de despacho} & \cab{Peak septiembre} & \cab{Derivación}}
-  WMS de Talca & 1,64 TPS & 1,11 TPS & 3,02 TPS & preparación y despacho según perfil horario \\
-  WMS de Concepción & 0,54 TPS & -- & 1,01 TPS & 2/3 y 1/3 de las líneas; SV-03 \\
+  WMS de Talca & 1,46 TPS & 1,46 TPS & 2,68 TPS & preparación y despacho según perfil horario y SV-03 \\
+  WMS de Concepción & 0,73 TPS & 0,73 TPS & 1,34 TPS & 2/3 y 1/3 de preparación y despacho; SV-03 \\
   Cada cross-docking & 1,56 TPS & -- & 2,89 TPS & 4 operaciones por entrega \\
-  Nube, sin portal & 2,67 TPS & 0,68 TPS & 5,03 TPS & preventa, reparto, recepción, trazabilidad, guías y sincronización \\
+  Nube, sin portal & 2,67 TPS & 0,79 TPS & 5,03 TPS & preventa, reparto, recepción, trazabilidad, guías y sincronización \\
   Portal & 9,63 TPS & -- & 9,63 TPS & 2.600 ÷ 9 × 2 por SV-04 × 60 ÷ 3.600 \\
-  Total & 12,30 TPS & 1,68 / 3,05 TPS & 14,66 TPS & máximo horario; despacho con guías \\
+  Total & 12,30 TPS & 2,98 / 5,50 TPS & 14,66 TPS & máximo horario; despacho con guías \\
 \end{tablalafrox}
 
-El flujo de preparación visible es 11.742 líneas por noche × 2 operaciones × 2/3 ÷ 28.800 segundos = 0,54 TPS de media de ventana para Talca. Al aplicar SV-04 sólo a la hora cargada, llega a 1,09 TPS; a las 05:00 se suma el despacho y el WMS de Talca alcanza 1,64 TPS normal. En septiembre llega a 3,02 TPS al incluir el factor de volumen. Las 2.600 sesiones habituales del portal pertenecen a food service y cadenas (Bases Técnicas del caso, Cap. 2, p. 4) y no son las 2.600 visitas diarias de preventa (Bases Técnicas del caso, Anexo B, p. 38); la coincidencia numérica no implica que sean el mismo flujo. La prueba RT-09.06 (Bases Técnicas Transversales, Cap. 9, p. 21) es 1,5 × 14,66 = 21,99 TPS y no recibe un segundo multiplicador.
+El despacho de 05:30 a 07:00 se reparte entre ambos centros conforme a SV-03, en la misma proporción que la preparación. La dimensión 2 toma el máximo real del perfil en las horas 05:00 y 06:00; el tramo 05:30–06:00 se considera uniforme, por lo que resulta 2,98 TPS normal y 5,50 TPS peak. Los aproximadamente 2.852 documentos/día peak son el total de DTE (34.000 ÷ 22,14 × 1,857), no sólo guías; considerarlos todos como guías que deben emitirse antes de la salida es una cota conservadora. Las 2.600 sesiones habituales del portal pertenecen a food service y cadenas (Bases Técnicas del caso, Cap. 2, p. 4) y no son las 2.600 visitas diarias de preventa (Bases Técnicas del caso, Anexo B, p. 38). La prueba RT-09.06 (Bases Técnicas Transversales, Cap. 9, p. 21) es 1,5 × 14,66 = 21,99 TPS y no recibe un segundo multiplicador.
 
 \subsection{Personas usuarias, concurrencia y dispositivos: dimensiones 4--6}
 \label{sec:dimensionamiento-usuarios}
@@ -164,43 +164,43 @@ La migración no supone eventos históricos digitales de trazabilidad: el caso d
 \subsection{Integraciones y ancho de banda por sitio: dimensiones 11--12}
 \label{sec:dimensionamiento-enlaces}
 
-La dimensión 11, «Número de integraciones y volumen de mensajes por integración», cuenta únicamente INT-01 a INT-15 del catálogo del apartado 4.1. Portal y llamadas internas a la API quedan fuera. La Tabla~\ref{tab:dimensionamiento-integraciones} resume sus 175.661 mensajes diarios normales y 257.155 en peak.
+La dimensión 11, «Número de integraciones y volumen de mensajes por integración», cuenta únicamente INT-01 a INT-15 del catálogo del apartado 4.1. Portal y llamadas internas a la API quedan fuera. La Tabla~\ref{tab:dimensionamiento-integraciones} resume sus 178.661 mensajes diarios normales y 260.155 en peak; INT-14 considera 13 nodos observables: seis VMs en Talca, cuatro en Concepción y un mini-PC por cada uno de los tres cross-docking, con 1.000 eventos por nodo al día.
 
 \begin{tablalafrox}{Mensajes de integración por grupo}{tab:dimensionamiento-integraciones}{F{0.26} G{0.18} G{0.18} Y}{\cab{Integraciones} & \cab{Normal} & \cab{Peak} & \cab{Origen}}
   INT-01 a INT-04 & 72.710/día & 135.032/día & Pedidos, entregas, eventos y cota de cross-docking \\
   INT-05 & 10.584/día & 10.584/día & 6.048 cámaras + 4.536 termógrafos \\
   INT-06 a INT-10 & 5.725/día & 11.695/día & ERP, DTE, EDI, pagos y mapas \\
-  INT-11 a INT-15 & 86.642/día & 99.844/día & Avisos, réplica, identidad, ADOT y telemetría \\
-  \textbf{Total} & \textbf{175.661/día} & \textbf{257.155/día} & \textbf{15 integraciones} \\
+  INT-11 a INT-15 & 89.642/día & 102.844/día & Avisos, réplica, identidad, ADOT y telemetría \\
+  \textbf{Total} & \textbf{178.661/día} & \textbf{260.155/día} & \textbf{15 integraciones} \\
 \end{tablalafrox}
 
 El EDI actual es cero y el escenario 2029 se limita a 11\,\% de los pedidos de la cadena principal, que pesa 11\,\% de la venta (SV-05). La Tabla~\ref{tab:t81} compara la hora cargada, el drenaje y el peor caso con el enlace principal y el respaldo de cada sitio.
 
 \begin{tablalafrox}{Ancho de banda por sitio}{tab:t81}{F{0.22} G{0.19} G{0.16} G{0.17} Y}{\cab{Sitio} & \cab{Régimen cargado} & \cab{Drenaje 24 h/2 h} & \cab{Peor caso} & \cab{Utilización principal / respaldo LTE (drenaje prioritario)}}
-  Talca, D-03 / D-04 & 3,71 Mbps & 1,59 Mbps & 5,30 Mbps & 26,51\,\% / 31,88\,\% \\
-  Concepción, D-03 / D-04 & 0,11 Mbps & 0,66 Mbps & 0,77 Mbps & 7,68\,\% / 21,93\,\% \\
+  Talca, D-03 / D-04 & 3,29 Mbps & 1,87 Mbps & 5,16 Mbps & 25,80\,\% / 37,43\,\% \\
+  Concepción, D-03 / D-04 & 0,67 Mbps & 1,21 Mbps & 1,88 Mbps & 18,82\,\% / 40,45\,\% \\
   Cada cross-docking, D-06 / D-04 & 0,05 Mbps & 0,30 Mbps & 0,35 Mbps & 17,41\,\% / 14,92\,\% \\
 \end{tablalafrox}
 
-En esta comparación, D-03 es el enlace de fibra, D-04 el enlace LTE y D-06 el enlace satelital. El drenaje no incluye oficina: durante un corte no se encola ese tráfico. Sí incluye cambios con WAL, broker, telemetría, observabilidad e incremental de respaldo. Durante la recuperación por D-04, la sincronización tiene prioridad sobre la oficina conforme a RT-03.24 (Bases Técnicas Transversales, Cap. 3, p. 10). Talca agrega 1,40 Mbps en la hora punta de retorno de 64 camiones; el agregado de la ventana 17:00–20:00 es 0,70 Mbps. El respaldo completo semanal y la App de reparto caben en la ventana dominical; el sistema operativo se distribuye en tandas de 16 equipos en Talca, 10 en Concepción y 2 en cada cross-docking.
+En esta comparación, D-03 es el enlace de fibra, D-04 el enlace LTE y D-06 el enlace satelital, calculado conservadoramente con 2 Mbps de subida garantizada mínima supuesta, a confirmar en la instalación. El drenaje no incluye oficina: durante un corte no se encola ese tráfico. Sí incluye cambios con WAL, broker, telemetría, observabilidad e incremental de respaldo. Durante la recuperación por D-04, la sincronización tiene prioridad sobre la oficina conforme a RT-03.24 (Bases Técnicas Transversales, Cap. 3, p. 10). En la hora punta regresan 64 camiones en total, repartidos por SV-03: el enlace y la Wi-Fi requieren 0,93 Mbps en Talca y 0,47 Mbps en Concepción; en conjunto, 1,40 Mbps. El agregado de la ventana 17:00–20:00 es 0,70 Mbps. El respaldo completo semanal y la App de reparto caben en la ventana dominical; el sistema operativo se distribuye en tandas dominicales de 16 equipos en Talca, 10 en Concepción y 2 en cada cross-docking, una ronda completa ocupa 15 y 7 domingos en los centros respectivamente. La aplicación se actualiza en un domingo por sitio; la ronda del sistema operativo tiene cadencia semestral.
 
 \subsection{Terreno: turno sin señal y sincronización de la flota: dimensiones 13--14}
 \label{sec:dimensionamiento-terreno}
 
 La dimensión 13, «Volumen de datos generado por un dispositivo de reparto en un turno completo sin señal», es 9,83 MB para la ruta de 34 clientes; una ruta promedio genera 5,36 MB normales y 8,24 MB en septiembre. La cifra incluye evidencia, una fotografía adicional cuando corresponde y 2 MB de datos locales.
 
-La dimensión 14, «Tiempo de sincronización de la flota al regresar al centro de distribución», se expresa en tiempo: cada dispositivo sincroniza en diez minutos con al menos 0,13 Mbps efectivos. Los 64 camiones de la hora punta requieren 1,40 Mbps en la Wi-Fi y el enlace de Talca; la flota termina unos diez minutos después de la llegada del último camión. La cota de 34 clientes corresponde a la ruta rural más larga descrita en el caso (Bases Técnicas del caso, Cap. 8, p. 16, entrevista al conductor de la ruta Cauquenes); en el centro de distribución la sincronización ocurre por Wi-Fi.
+La dimensión 14, «Tiempo de sincronización de la flota al regresar al centro de distribución», se expresa en tiempo: cada dispositivo sincroniza en diez minutos con al menos 0,13 Mbps efectivos. Los 64 camiones de la hora punta se reparten por SV-03: aproximadamente 43 en Talca y 21 en Concepción, con 0,93 y 0,47 Mbps respectivamente en la Wi-Fi y el enlace de cada centro. La flota completa requiere 1,40 Mbps en esa hora. La cota de 34 clientes corresponde a la ruta rural más larga descrita en el caso (Bases Técnicas del caso, Cap. 8, p. 16, entrevista al conductor de la ruta Cauquenes); en los centros de distribución la sincronización ocurre por Wi-Fi.
 
 \subsection{Capacidad on-premise}
 \label{sec:dimensionamiento-onpremise}
 
-La capacidad propuesta conserva maestros, stock, lotes presentes y movimientos de cuatro meses en cada sitio; el histórico vive en la nube. El horizonte cubre el ciclo de conteo de 11.400 ÷ 3.400 = 3,35 meses y la rotación media de 11,4 veces/año. Cada VM se calcula como base de sistema más carga; se agregan un 15\,\% de CPU y 2 GB de RAM por nodo para el hipervisor.
+La capacidad propuesta conserva maestros, stock, lotes presentes y movimientos de cuatro meses en cada sitio; el histórico vive en la nube. El horizonte cubre el ciclo de conteo de 11.400 ÷ 3.400 = 3,35 meses y la rotación media de 11,4 veces/año. Cada VM se calcula como base de sistema más carga. El cuadro distingue la suma de las VMs del requisito total con hipervisor: +15\,\% de vCPU redondeado hacia arriba y +2 GB de RAM por nodo físico (tres en Talca y uno en Concepción).
 
 \begin{tablalafrox}{Capacidad requerida por sitio}{tab:t79}{F{0.25} G{0.18} G{0.18} Y}{\cab{Sitio} & \cab{Base local} & \cab{Requerido actual} & \cab{Requerido a 3×}}
-  Talca, VM-01 a VM-06 & 5,04 GB; 7,78 GB RAM de trabajo & 17 vCPU; 24 GB RAM; 210 GB & 17 vCPU; 26 GB RAM; 221 GB \\
-  Concepción, VM-C01 a VM-C04 & 2,59 GB; 5,94 GB RAM de trabajo & 10 vCPU; 15 GB RAM; 140 GB & 10 vCPU; 16 GB RAM; 140 GB \\
+  Talca, VM-01 a VM-06 & 5,04 GB; 7,78 GB RAM de trabajo & VMs: 14 vCPU; 22 GB RAM; 210 GB. Con hipervisor: 17 vCPU; 28 GB; 210 GB & VMs: 14 vCPU; 24 GB RAM; 221 GB. Con hipervisor: 17 vCPU; 30 GB; 221 GB \\
+  Concepción, VM-C01 a VM-C04 & 2,59 GB; 5,94 GB RAM de trabajo & VMs: 10 vCPU; 15 GB RAM; 140 GB. Con hipervisor: 12 vCPU; 17 GB; 140 GB & VMs: 10 vCPU; 16 GB RAM; 140 GB. Con hipervisor: 12 vCPU; 18 GB; 140 GB \\
   Cada cross-docking, mini-PC & 0,63 GB; 4,47 GB RAM de trabajo & 3 vCPU; 5 GB RAM; 50 GB & 3 vCPU; 5 GB RAM; 50 GB \\
-  Configuración mínima por nodo & -- & -- & 9 vCPU; 13 GB RAM; 221 GB lógicos \\
+  Configuración mínima por nodo & -- & -- & 9 vCPU; 15 GB RAM; 221 GB lógicos \\
 \end{tablalafrox}
 
 La configuración mínima N+1, con dos nodos sobrevivientes y réplica de almacenamiento, aplica sólo al clúster de Talca. Concepción y cada cross-docking se dimensionan con un nodo por sitio, como fija el apartado 4.2.2. En Talca el mínimo lo fija la redundancia, no la carga: la configuración cubre 3×, es decir, un margen de crecimiento de +200\,\% sobre la carga actual.
@@ -226,10 +226,10 @@ El portal en régimen usa 9,63 solicitudes/s y 96,30 sesiones concurrentes; su c
 La Tabla~\ref{tab:dimensionamiento-plan} mantiene separadas la proyección del año 3 y la exigencia técnica de 3×. Cada fila tiene una acción concreta de operación o ampliación.
 
 \begin{tablalafrox}{Proyección y crecimiento de capacidad}{tab:dimensionamiento-plan}{F{0.26} G{0.16} G{0.16} G{0.16} Y}{\cab{Componente} & \cab{Año 1} & \cab{Año 3} & \cab{3×} & \cab{Acción}}
-  WMS de Talca, TPS peak & 3,02 & 3,02 × (305.000 ÷ 260.000) = 3,54 & 9,06 & Revisar CPU e IOPS trimestralmente \\
+  WMS de Talca, TPS peak & 2,68 & 2,68 × (305.000 ÷ 260.000) = 3,15 & 8,05 & Revisar CPU e IOPS trimestralmente \\
   Nube, TPS peak / tareas & 14,66 / 2 & 14,66 × (36.000 ÷ 31.000) = 17,03 / 2 & 43,98 / 4 & Escalamiento automático y prueba trimestral \\
   Evidencia anual & 87,72 GB & 87,72 × (36.000 ÷ 31.000) = 101,87 GB & 263,16 GB & Escalar S3 y revisar retención \\
-  Enlace de Talca, peor caso & 5,30 Mbps & 5,34 Mbps, con los flujos de volumen × 305.000 ÷ 260.000 & 8,71 Mbps & Ampliar D-03 si el percentil 95 supera la cota \\
+  Enlace de Talca, peor caso & 5,16 Mbps & 5,20 Mbps, con los flujos de volumen × 305.000 ÷ 260.000 & 5,64 Mbps & Ampliar D-03 si el percentil 95 supera la cota \\
   Terminales de bodega de Talca & 132 & (23 + 3) de congelado + (113 + 12) estándar = 151 & no aplica & Ajustar parque a la dotación \\
   Mesa de ayuda, contactos & 2.000/mes & 2.000 × (350 ÷ 310) = 2.258/mes & 6.000/mes & Recalibrar Erlang C trimestralmente \\
 \end{tablalafrox}
@@ -290,7 +290,7 @@ La Tabla~\ref{tab:t72} reúne cada dimensión con el nombre literal del Caso 14.
 
 \begin{tablalafrox}{Síntesis de las dieciséis dimensiones}{tab:t72}{F{0.07} F{0.31} G{0.20} G{0.20} Y}{\cab{N.°} & \cab{Dimensión} & \cab{Valor en régimen normal o ventana} & \cab{Valor en peak o declarado} & \cab{Derivación}}
   1 & Transacciones por segundo en régimen normal & 12,30 TPS a las 12:00 & -- & Anexo 4.B, sección 4.B.2 \\
-  2 & Transacciones por segundo en el peak de la ventana de despacho de 05:30 a 07:00 & 1,68 TPS & 3,05 TPS & Anexo 4.B, sección 4.B.2 \\
+  2 & Transacciones por segundo en el peak de la ventana de despacho de 05:30 a 07:00 & 2,98 TPS & 5,50 TPS & Anexo 4.B, sección 4.B.2 \\
   3 & Transacciones por segundo en el peak de septiembre & -- & 14,66 TPS a las 12:00 & Anexo 4.B, sección 4.B.2 \\
   4 & Personas usuarias registradas, internas y externas & 15.180 & -- & Anexo 4.B, sección 4.B.3 \\
   5 & Personas usuarias concurrentes en peak & 438,30 en régimen; 342 sin portal & 775,33, cota extrema & Anexo 4.B, sección 4.B.3 \\
@@ -299,8 +299,8 @@ La Tabla~\ref{tab:t72} reúne cada dimensión con el nombre literal del Caso 14.
   8 & Volumen anual de almacenamiento de evidencia de entrega, firmas y fotografías & 87,72 GB/año & 13,58 GB mes peak & Anexo 4.B, sección 4.B.4 \\
   9 & Volumen anual de almacenamiento de series de temperatura y de posicionamiento & 0,56 + 3,20 GB/año crudos & 2,80 + 3,20 GB crudos retenidos & Anexo 4.B, sección 4.B.4 \\
   10 & Volumen total de datos históricos a migrar & 32,11 GB & 30,73--33,49 GB de sensibilidad & Anexo 4.B, sección 4.B.4 \\
-  11 & Número de integraciones y volumen de mensajes por integración & 15; 175.661 mensajes/día & 257.155 mensajes/día & Anexo 4.B, sección 4.B.5 \\
-  12 & Ancho de banda requerido por sitio, en régimen y en peak & 3,71 / 0,11 / 0,05 Mbps cargados & 5,30 / 0,77 / 0,35 Mbps peor caso & Anexo 4.B, sección 4.B.5 \\
+  11 & Número de integraciones y volumen de mensajes por integración & 15; 178.661 mensajes/día & 260.155 mensajes/día & Anexo 4.B, sección 4.B.5 \\
+  12 & Ancho de banda requerido por sitio, en régimen y en peak & 3,29 / 0,67 / 0,05 Mbps cargados & 5,16 / 1,88 / 0,35 Mbps peor caso & Anexo 4.B, sección 4.B.5 \\
   13 & Volumen de datos generado por un dispositivo de reparto en un turno completo sin señal & 5,36 MB promedio & 9,83 MB, ruta de 34 clientes & Anexo 4.B, sección 4.B.6 \\
   14 & Tiempo de sincronización de la flota al regresar al centro de distribución & 10 min por dispositivo & 10 min después del último camión & Anexo 4.B, sección 4.B.6 \\
   15 & Contactos mensuales a la mesa de ayuda & 2.000 contactos/mes & 2.000 contactos/mes en el escenario conservador; 7 agentes cubren hasta 2.391 & Anexo 4.B, sección 4.B.7 \\

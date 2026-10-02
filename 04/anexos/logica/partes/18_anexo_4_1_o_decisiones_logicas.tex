@@ -3,7 +3,7 @@
 \phantomsection
 \label{anx:O}
 \addcontentsline{toc}{section}{Anexo 4.1-O --- Decisiones de arquitectura lógica}
-Las fichas tienen fecha de decisión documental 30 de septiembre de 2026 y estado \emph{adoptada en la propuesta}. Ese estado no acredita aprobación del CLIENTE ni ejecución de la prueba. Los identificadores existentes se conservan; las fichas ADR-01, 05, 06, 13 y 14 sustituyen para la vista lógica las formulaciones incompatibles del registro anterior. La realización física debe cotejar esos identificadores antes del cierre integrado (PUCV, 2026b, RT-02.04; Aclaraciones, capítulo 4).
+Las fichas tienen fecha de decisión documental 30 de septiembre de 2026 y estado \emph{adoptada en la propuesta}. Ese estado no acredita aprobación del CLIENTE ni ejecución de la prueba. Los identificadores existentes se conservan; las fichas ADR-01, 05, 06, 13 y 14 sustituyen para la vista lógica las formulaciones incompatibles del registro anterior. La realización física debe cotejar esos identificadores antes del cierre integrado (PUCV, 2026b, RT-02.04).
 
 \subsection*{ADR-01. Núcleo y límites de módulo}
 La decisión es Laravel 13/PHP 8.5 con M1--M12, puertos de dominio y perfiles API, WMS local y trabajadores separados. Se descartan microservicios por módulo por su carga de administración para cuatro personas y un monolito sin fronteras por impedir aislamiento; Django es viable, pero conservar ambos runtimes duplicaría dependencias y operación. El criterio es poder desplegar los procesos críticos de forma independiente sin duplicar el dominio. Se exige prueba de dependencias entre módulos, contratos y promoción de un trabajador sin interrumpir WMS. Un proceso comparte artefacto, no permisos ni memoria durable.

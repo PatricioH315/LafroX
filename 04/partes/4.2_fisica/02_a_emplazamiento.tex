@@ -131,8 +131,8 @@ La Tabla~\ref{tab:mapeo-logica} asocia cada módulo y cada capa transversal de l
   M5 Preparación & A-01 y A-02, con C-03 y C-04 & Sitio \\
   M6 Reparto & C-02 en el terminal; N-04 y N-05, con la evidencia en S3 & Terreno y nube \\
   M7 Rendición & C-02; N-04; A-04 hacia el ERP & Terreno, nube y VM-04 \\
-  M8 Devoluciones & C-02; N-04; A-01 en la recepción del retorno & Terreno, nube y sitio \\
-  M9 Calidad & B-01, B-02 con el bloqueo en el borde y B-03; N-06 y N-08 & Sitio, camiones y nube \\
+  M8 Devoluciones & C-02; N-04; A-01 para la recepción física de retornos mediante la puerta de API local & Terreno, nube y sitio \\
+  M9 Calidad & B-01, B-02 con la función local de bloqueo en el borde y B-03; N-06 y N-08 & Sitio, camiones y nube \\
   M10 Analítica & N-10 & Nube \\
   M11 Canal moderno & N-04 con el perfil EDI y el transporte AS2; A-04 & Nube y VM-04 \\
   M12 Flota & N-04 y N-06, con la API del proveedor de telemetría & Nube \\
@@ -144,7 +144,7 @@ La Tabla~\ref{tab:mapeo-logica} asocia cada módulo y cada capa transversal de l
   Capa 8, observabilidad & F-01 y CloudWatch (N-12) & Sitio y nube \\
 \end{tablalafrox}
 
-La tabla deja M1, M2, M5 y el bloqueo de M9 en el sitio; los módulos compartidos corren en N-04 y el terreno captura en su terminal. Los perfiles de ejecución se especifican en la sección~\ref{sec:despliegue}.
+El perfil local cubre M1, M2, M5, la función de bloqueo de M9 y la recepción física de retornos de M8 a través de la puerta de API local. Los módulos compartidos corren en N-04 y el terreno captura en su terminal. Los perfiles de ejecución se especifican en la sección~\ref{sec:despliegue}.
 
 \subsection{Síntesis del emplazamiento por dominio y criterio}
 
