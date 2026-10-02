@@ -1,0 +1,13 @@
+\begin{tikzpicture}[x=1cm,y=1cm,>=stealth,box/.style={draw=lafroxGris,rounded corners=1pt,text width=3.55cm,minimum height=1.25cm,align=left,inner sep=5pt,font=\fontsize{9.5pt}{12pt}\selectfont},edge/.style={->,line width=.6pt},lab/.style={fill=white,inner sep=2pt,font=\fontsize{9pt}{11pt}\selectfont}]
+\node[box] (a) at (0,0) {\textbf{Cliente}\\RUT; código ERP};
+\node[box] (b) at (5.1,0) {\textbf{Pedido}\\UUID; tarifa; estado};
+\node[box] (c) at (5.1,-2.5) {\textbf{Línea de pedido}\\SKU; cantidad; precio};
+\node[box] (d) at (0,-2.5) {\textbf{Punto de entrega}\\Dirección; ventana};
+\node[box] (e) at (5.1,-5) {\textbf{Reserva M2}\\Sitio; lote; cantidad};
+\node[box] (f) at (0,-5) {\textbf{Producto}\\GTIN; unidad; rango térmico};
+\draw[edge] (a) -- node[lab,midway,above=0.8cm] {1 : 0..N} (b);
+\draw[edge] (a) -- node[lab,midway,text width=1.8cm,align=center] {1 : 0..N} (d);
+\draw[edge] (b) -- node[lab,midway,text width=1.8cm,align=center] {1 : 1..N} (c);
+\draw[edge] (c) -- node[lab,midway,text width=1.8cm,align=center] {1 : 0..N} (e);
+\draw[edge] (f) -- node[lab,midway,text width=1.8cm,align=center] {1 : 0..N} (c);
+\end{tikzpicture}

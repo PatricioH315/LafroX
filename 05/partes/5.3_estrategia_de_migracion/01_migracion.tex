@@ -1,0 +1,46 @@
+\section{Estrategia de migración}
+\label{sec:5-migracion}
+La migración reemplaza el WMS 2013 por sitio y ola, preserva el ERP 2017 e incorpora los registros de planillas y cuadernos que el caso identifica. No se supone que esos orígenes tienen API, esquema limpio o cinco años completos de temperatura digital. El inventario y perfilado determina su disponibilidad; las ausencias se explican al CLIENTE sin fabricar historia.
+
+\subsection{Alcance, fuentes y estimación de volumen}
+Maestros de clientes, productos y proveedores se cargan completos; ventas y pedidos abarcan tres años; inventario y movimientos dos; trazabilidad sanitaria cinco; cuentas por cobrar saldos vivos más dos años. Históricos anteriores y documentos sujetos a retención permanecen consultables en repositorio protegido aunque no formen parte del saldo OLTP. Fotografías/POD, XML y registros térmicos existentes se inventarían y se trasladan como objetos o archivos, preservando su integridad.
+
+La Tabla~\ref{tab:5-migracion-volumen} reproduce el cálculo de arquitectura con KB y GB decimales: GB = KB/1.000.000. El factor dos reserva índices y sobrecarga lógica de destino; no representa una segunda copia de seguridad.
+
+\begin{tablalafrox}{Volumen de migración estructurada de referencia}{tab:5-migracion-volumen}{F{0.24} F{0.43} Y}{\cab{Familia} & \cab{Derivación de KB} & \cab{KB estimados}}
+Maestros & 14.200 × 2 + 8.400 × 0,5 + 180 × 1 & 34.180 \\
+Ventas/\allowbreak pedidos & (31.000 + 260.000) × 36 × 1 & 10.476.000 \\
+Inventario & 279.050 × 24 × 0,5 & 3.348.600 \\
+Trazabilidad & 1.150 × 60 × 20 & 1.380.000 \\
+Cuentas por cobrar & 34.000 × 24 × 1 & 816.000 \\
+Total origen & Suma de cinco familias & 16.054.780 \\
+Destino con sobrecarga & Total × 2 /\allowbreak  1.000.000 & 32,11 GB (29,90 GiB) \\
+\end{tablalafrox}
+
+La memoria de arquitectura rotula 32,11 GB: su equivalencia se obtiene con 1.000 KB por MB y 1.000 MB por GB, mientras la conversión binaria de los mismos bytes da 29,90 GiB. Se conservan ambos valores y se fija la unidad en cada reporte. Las 20 KB por recepción trazable, una KB por registro comercial y saldos vivos incluidos en la cota de dos años son supuestos SV de dimensionamiento, no tamaños medidos. Si saldos vivos fuera de esa cota o archivos documentales elevan el volumen, se amplía el presupuesto antes del ensayo. El Anexo 5-E presenta sensibilidad y evita sumar evidencia nueva como si fuera historia efectivamente disponible.
+
+\subsection{Perfilado, saneamiento y transformación}
+Cada extracto se recibe fechado, con hash, origen, permisos y responsable. Se trabaja en staging aislado; las reglas se versionan. Se verifica unicidad de RUT/código, GTIN, unidades, cardinalidades, signos y saldos; se detectan fechas imposibles, referencias huérfanas, cliente duplicado, lote ausente y temperaturas fuera de instrumento. La limpieza conserva original, regla, valor transformado y decisión humana cuando afecta dinero, lote o identidad.
+La Figura~\ref{fig:5-migracion} separa los extractos de origen, la calidad, la carga y el control antes de abrir el destino.
+
+\begin{figure}[htbp]
+\centering
+\input{05/figuras/fuentes/datos/migracion.tex}
+\caption{Flujo de migración y decisión de corte}
+\label{fig:5-migracion}
+{\fontsize{9pt}{11pt}\selectfont Fuente: elaboración de LafroX a partir del Caso 02 y la arquitectura de referencia.}
+\end{figure}\FloatBarrier
+
+La transformación normaliza RUT y GTIN, fechas con zona, códigos y unidad base; asigna UUID por correspondencia durable, no aleatoriamente en cada reejecución. Pedido y detalle se cargan juntos; movimientos preservan referencia de lote/SSCC y fecha. Una trazabilidad sin lote se registra como evidencia incompleta en repositorio histórico y no se convierte en stock libre. Las decisiones de fusión de cliente y ajuste de saldo son responsabilidad de Comercial y Tesorería respectivamente. El Anexo 5-D detalla origen, destino, reglas y tratamiento de excepciones.
+
+\subsection{Dos ensayos y conciliación verificable}
+El primer ensayo completo en Preproducción ejecuta extracción, carga, conciliación y reversión con un inventario de todas las familias. Mide duración y defectos por fase. El segundo repite el alcance completo con reglas corregidas y ensaya captura de delta, congelamiento de escritura, aplicación final y arranque. Se requiere que ambos produzcan acta, logs, hashes y reporte de diferencias, no solo muestras. DMS ayuda a validar las tablas replicadas compatibles, pero no sustituye controles de objetos, reglas de negocio ni fuentes no relacionales (Amazon Web Services, s. f.-c).
+
+La conciliación compara filas por familia/período/sitio, sumas exactas de cantidades e importes, saldos vivos, referencias y hashes de objetos. Origen aceptado más cuarentena y exclusiones autorizadas explica el total extraído. Se exige cero diferencias monetarias o de stock sin explicación y cero huérfanos en conjuntos liberados; 100\% de archivos documentales tienen huella. El muestreo dirigido propuesto cubre al menos 30 casos por fuente y cada patrón de excepción, incluyendo los de mayor importe, lotes bloqueados, devolución y entrega parcial; no reemplaza las sumas completas. La aceptación de un defecto no elimina la obligación sanitaria o contractual.
+
+\subsection{Corte por sitio y reversión}
+El volumen inicial se precarga antes del corte. Se propone domingo de ocho horas como ventana de diseño: 30 minutos congelar y comprobar respaldo, 60 extraer/aplicar delta, 90 conciliar, 60 probar recorridos, 30 decidir apertura y 120 reservar para reversión; quedan 90 minutos de margen. Son presupuestos que ambos ensayos deben demostrar. A 20 Mbps efectivos, 32,11 GB de destino equivaldrían a 3,57 horas de transferencia ideal; por ello no se transfiere toda la historia durante el corte. La cota propuesta de delta es 1,5 GB, con diez minutos ideales a ese caudal y 60 presupuestados incluyendo transformación; se verifica en sitio.
+
+El cronograma de Subdocumento 7 fijará mes y fecha de cada ola; aquí se establece precedencia: maestros y Talca, Concepción, después cada cross-dock según ensayo y readiness. El corte termina antes de preparación 22:00 y no se programa durante 1–25 de septiembre, diciembre ni primeros tres días hábiles de mes. Se respetan las ventanas protegidas de recepción, preparación y despacho. Una ventana dominical solo se usa tras acordar las actividades reales del sitio.
+
+La decisión go/no-go corresponde a Operaciones, Tesorería, Calidad y responsable de implantación. Antes de apertura, un fallo restaura el punto consistente probado y devuelve escritura a la fuente anterior. Después de apertura no se restaura ciegamente una copia vieja: se congela destino, exportan todos los eventos nuevos y se concilian para reaplicar o compensar en el legado antes de reabrirlo. Nunca escriben ambos WMS sobre el mismo agregado. Si las dos horas de reserva no bastan en ensayo, la ola se rediseña antes de producción. Los históricos no migrados permanecen consultables y con identificador de fuente hasta terminar su retención.

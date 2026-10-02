@@ -1,0 +1,38 @@
+\section{Estrategia de desempeño}
+\label{sec:5-desempeno}
+Las consultas y escrituras se priorizan según la ventana real del caso. Preparación, despacho, preventa y retorno de flota tienen cargas distintas; sumar sus máximos como si fueran simultáneos sobredimensiona y usar promedio diario oculta el cuello de botella. El cálculo de referencia mantiene el perfil horario de arquitectura y distingue transacción de negocio, solicitudes API y mensajes de integración.
+
+\subsection{Carga, capacidad y unidades}
+El caso entrega 31.000 pedidos y 260.000 líneas mensuales, con 1.400 entregas diarias normales y 2.600 en septiembre. El factor peak es 2.600/1.400 = 1,857. La memoria vigente obtiene 12,30 solicitudes/s en régimen, 14,66 peak y una prueba a 1,5 × 14,66 = 21,99; el máximo del despacho es 5,50 y no el máximo diario. Esas solicitudes no se convierten directamente en IOPS: la prueba mide SQL, filas, WAL, aciertos de caché y tiempo de bloqueo por recorrido.
+
+La Tabla~\ref{tab:5-capacidad} conserva estimaciones decimales de almacenamiento y distingue contenido de sobrecarga, horizonte y sensibilidad.
+
+\begin{tablalafrox}{Capacidad de referencia y horizontes de conservación}{tab:5-capacidad}{F{0.24} F{0.33} Y}{\cab{Familia} & \cab{Generación anual} & \cab{Horizonte /\allowbreak  volumen}}
+Transaccional & 50,75 GB con factor 2 & 6 años: 304,49 GB; cota, no retención universal \\
+POD & 87,72 GB & 6 años: 526,32 GB al volumen actual \\
+Temperatura & 0,5602 GB raw; 0,1400 GB comprimidos & 5 años: 0,7002 GB consolidados \\
+Posición & 3,2009 GB raw; 0,8002 GB comprimidos & 12 meses: 0,8002 GB consolidados \\
+POD año 3 & 87,72 × 36.000/\allowbreak 31.000 & 101,87 GB/\allowbreak año \\
+Migración estructurada & 16,05 GB payload estimado & 32,11 GB con factor 2 \\
+\end{tablalafrox}
+
+Las fórmulas y sensibilidad a crecimiento están en el Anexo 5-E. El factor 0,25 de compresión de series se valida con Parquet; no se aplica a fotografías ya comprimidas ni a bytes cifrados sin ensayo. El almacenamiento retenido, respaldo, réplica y buffer se presupuesta por separado: el payload histórico compartido no se vuelve a sumar por cada dominio lógico. La base local conserva maestros, existencias, lotes presentes y cuatro meses de movimientos; historia de retención se archiva en nube con referencias consultables.
+
+\subsection{Índices, particiones y consultas}
+Stock usa índice por sitio/lote/ubicación y reserva activa por sitio/lote/estado. FEFO filtra existencia liberada y ordena por vencimiento, no por nombre de producto. Pedido se busca por cliente/fecha y UUID; línea por pedido/número. Trazabilidad indexa GTIN/lote proveedor, asignación por lote y detalle de entrega por asignación. Geografía usa GiST de PostGIS y consulta parametrizada; el teléfono recibe ruta aprobada, no calcula un join analítico sobre el historial GPS.
+
+Movimientos, auditoría y eventos voluminosos se proponen con partición mensual por ocurrido\_en, particiones futuras y control de poda. La llave única física de una tabla particionada incluye la clave de partición; un registro de identidad no particionado controla unicidad global event\_id. No se declara un índice global inexistente ni se retira una partición con retención o referencias activas. PostgreSQL documenta esas limitaciones y las ventajas de poda de particiones (PostgreSQL Global Development Group, s. f.-b).
+
+El Anexo 5-E presenta un catálogo de consultas y candidatos de índices que se confirman con EXPLAIN ANALYZE y datos representativos en QA; no se ejecuta ANALYZE costoso sobre producción en despacho. Se evitan SELECT *, lecturas N+1 del ORM y páginas profundas con OFFSET; la paginación por clave fecha/id limita filas. Las exportaciones y reportes usan lectura dedicada o capa analítica y colas de baja prioridad. Los planes se comparan después de cada versión y se retiran índices que agregan costo de escritura sin uso observado.
+
+\subsection{Caché y copias de turno}
+Se propone TTL central de 30 segundos para vista indicativa de stock/crédito y 15 minutos para catálogo, siempre con versión e invalidación por evento. Esos TTL son parámetros de diseño: confirmar reserva consulta M2 y confirmar crédito la autoridad financiera. Ante caída de Redis se omite caché con límites de concurrencia; no se detiene la escritura durable. SQLite/Room mantiene copia cifrada de datos asignados a turno y cola de operaciones distinta. No borra UUID/POD por terminar turno antes de acuse; un supervisor gestiona cola vencida o de más de 30 días.
+
+La identidad respeta credencial de ocho horas en bodega y catorce en terreno; la copia de solo lectura de 24 horas del sitio no habilita identidades nuevas. El dispositivo solo carga datos de su ámbito, purga tras sincronización y plazo de trabajo autorizado, y MDM bloquea o borra ante pérdida. Fotos conservan hash y tamaño máximo de diseño de la memoria; una compresión posterior no reemplaza el original de una evidencia ya registrada.
+
+\subsection{Drenaje, mantenimiento y verificación}
+La ruta rural de 34 clientes produce 9,83 MB por dispositivo conforme a arquitectura. Para diez minutos requiere 9,83 × 8/600 = 0,131 Mbps efectivos. Se ensaya reparto completo, reenvíos y competencia de Wi-Fi al retorno. El CD acumula 1,68 GB/día en Talca y 1,09 en Concepción; su drenaje dimensionado en arquitectura incluye WAL, broker, telemetría, observabilidad y respaldo, no solo eventos. Los dos gateways de Talca no duplican las muestras térmicas en el almacén curado.
+
+Los recorridos críticos se verifican contra el caso: confirmar línea de preparación hasta un segundo, registrar entrega hasta dos, línea de preventa hasta 1,5 y consulta stock/crédito hasta dos. Se registran percentiles y máximos, errores y operaciones no confirmadas; publicar un p95 favorable no exime las violaciones del umbral exigido. El ensayo combina 21,99 solicitudes/s, datos retenidos, 24 horas de backlog, pérdida de caché y restauración, con presupuestos de concurrencia por perfil. El límite de ocho tareas Fargate y las capacidades de sitio son los de arquitectura, no nuevos recursos implícitos.
+
+Se observan bloqueo, lag de réplica, edad de outbox, tasa de excepción, espacio libre, particiones, autovacuum y latencia analítica. Se propone alerta de espacio al 70\%, acción de ampliación al 80\% y reserva de al menos 20\% tras crecimiento proyectado, ajustadas con prueba. Backups y restauración se ensayan hasta los RTO/RPO de arquitectura. DDL, cargas completas y cambios de índices se programan fuera de ventanas protegidas; operaciones de mantenimiento que necesiten bloqueo se prueban antes. El primer riesgo a vigilar sigue siendo el ERP al emitir guía en ventana crítica: acelerar PostgreSQL no elimina el tiempo del emisor ni autoriza salida sin documento.

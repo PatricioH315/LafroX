@@ -1,0 +1,13 @@
+\begin{tikzpicture}[x=1cm,y=1cm,>=stealth,box/.style={draw=lafroxGris,rounded corners=1pt,text width=3.55cm,minimum height=1.25cm,align=left,inner sep=5pt,font=\fontsize{9.5pt}{12pt}\selectfont},edge/.style={->,line width=.6pt},lab/.style={fill=white,inner sep=2pt,font=\fontsize{9pt}{11pt}\selectfont}]
+\node[box] (a) at (0,0) {\textbf{ERP /\allowbreak  WMS /\allowbreak  archivos}\\Extracto fechado y con huella};
+\node[box] (b) at (5.1,0) {\textbf{Perfilado}\\Duplicados; nulos; unidades};
+\node[box] (c) at (0,-2.5) {\textbf{Transformación}\\Mapeo ID; reglas versionadas};
+\node[box] (d) at (5.1,-2.5) {\textbf{Carga aislada}\\Aceptados /\allowbreak  cuarentena};
+\node[box] (e) at (0,-5) {\textbf{Conciliación}\\Recuentos; sumas; muestra};
+\node[box] (f) at (5.1,-5) {\textbf{Corte o reversión}\\Responsables; límite de tiempo};
+\draw[edge] (a) -- node[lab,midway,above=0.8cm] {exportación} (b);
+\draw[edge] (b) -- node[lab,midway,text width=1.8cm,align=center] {calidad} (d);
+\draw[edge] (c) -- node[lab,midway,above=0.8cm] {mapeo} (d);
+\draw[edge] (d) -- node[lab,midway,text width=1.8cm,align=center] {control} (e);
+\draw[edge] (e) -- node[lab,midway,above=0.8cm] {decisión} (f);
+\end{tikzpicture}

@@ -1,0 +1,12 @@
+\begin{tikzpicture}[x=1cm,y=1cm,>=stealth,box/.style={draw=lafroxGris,rounded corners=1pt,text width=3.55cm,minimum height=1.25cm,align=left,inner sep=5pt,font=\fontsize{9.5pt}{12pt}\selectfont},edge/.style={->,line width=.6pt},lab/.style={fill=white,inner sep=2pt,font=\fontsize{9pt}{11pt}\selectfont}]
+\node[box] (a) at (0,0) {\textbf{Sensor físico}\\ID; sesión; secuencia};
+\node[box] (b) at (5.1,0) {\textbf{Raw DynamoDB}\\TTL 30 días; duplicados};
+\node[box] (c) at (0,-2.5) {\textbf{Bloqueo local M9}\\Lote; regla; decisión Calidad};
+\node[box] (d) at (5.1,-2.5) {\textbf{Serie S3 /\allowbreak  Redshift}\\Validada; conservación 5 años};
+\node[box] (e) at (0,-5) {\textbf{M5 salida}\\Verifica bloqueo activo};
+\node[box] (f) at (5.1,-5) {\textbf{Posición M12}\\API tercero; campo cifrado};
+\draw[edge] (a) -- node[lab,midway,above=0.8cm] {INT-05} (b);
+\draw[edge] (a) -- node[lab,midway,text width=1.8cm,align=center] {evaluación local} (c);
+\draw[edge] (c) -- node[lab,midway,text width=1.8cm,align=center] {bloquea} (e);
+\draw[edge] (b) -- node[lab,midway,text width=1.8cm,align=center] {hash y conciliación} (d);
+\end{tikzpicture}

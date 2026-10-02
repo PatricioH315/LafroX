@@ -1,0 +1,79 @@
+\chapter*{Anexo 5-H --- Trazabilidad, decisiones y aceptación}
+\addcontentsline{toc}{chapter}{Anexo 5-H --- Trazabilidad, decisiones y aceptación}
+\label{anx:5-H}
+Las decisiones del diseño, los criterios de prueba y las dependencias se mantienen separados para poder revisar cada conclusión con su fuente.
+
+\section*{Correspondencia y condiciones de cierre}
+La matriz es una contribución documental al T-12 vigente del Subdocumento 3. Conserva IDs RT sin declarar cumplimiento implementado. RT-05.10 transversal trata catálogo/linaje; el caso usa ese código para retención. RT-05.15 transversal trata consulta de históricos no migrados; el caso lo usa para alcance de migración. Se satisfacen ambas materias en filas y referencias separadas por fuente.
+
+Las pruebas y decisiones de la siguiente matriz son criterios de implantación. Actas, responsables nominados y fechas se incorporan cuando se ejecuten; este documento no simula su firma. Las condiciones de continuidad tributaria, pérdida de sitio y frescura bajo aislamiento conservan los requisitos exigidos y se resuelven por evidencia y acuerdo identificable, no por compilación del PDF.
+
+\begin{tablalafrox}{Cobertura RT-05}{tab:5-rt}{F{0.22} F{0.34} Y}{\cab{Requisito /\allowbreak  carácter} & \cab{Materia /\allowbreak  sección} & \cab{Evidencia /\allowbreak  estado}}
+RT-05.01 /\allowbreak  Obligatorio & Modelo y diccionario; 5.1; 5-A/\allowbreak B & VD-01; diccionario completo y DER; Diseñado \\
+RT-05.02 /\allowbreak  Obligatorio & Motor, paradigma y CAP; 5.2.1–2; 5-C & AC-02/\allowbreak 03; autoridad por agregado; Diseñado \\
+RT-05.03 /\allowbreak  Obligatorio & Auditoría de operación; 5.2.5; 5-A/\allowbreak G & AC-01/\allowbreak 04; antes/\allowbreak después y autor; Diseñado \\
+RT-05.04 /\allowbreak  Obligatorio & Calidad de datos; 5.2.5; 5-G & VD-03; tablero y cuarentena; Diseñado \\
+RT-05.05 /\allowbreak  Obligatorio & Separación OLTP/\allowbreak OLAP; 5.2.4; 5.4; 5-E/\allowbreak F & VD-04; carga sin degradación OLTP; Diseñado \\
+RT-05.06 /\allowbreak  Obligatorio & Exportación completa; 5.2.6; 5-G & VD-05; recuentos y hashes; Diseñado \\
+RT-05.07 /\allowbreak  Obligatorio & Retención y eliminación; 5.2.6; 5-G & AC-12; expiración por categoría; Diseñado \\
+RT-05.08 /\allowbreak  Obligatorio & Datos personales; 5.2.5; 5-A/\allowbreak G & VD-06; ACL/\allowbreak cifrado campo; Diseñado; acuerdo Art.85 requerido \\
+RT-05.09 /\allowbreak  Obligatorio & Datos maestros; 5.1.1; 5-B/\allowbreak D & VD-03; no claves duplicadas; Diseñado \\
+RT-05.10 /\allowbreak  Deseable & Catálogo y linaje automático; 5.2.4; 5-F & VD-07; indicador hasta origen; Propuesto \\
+RT-05.11 /\allowbreak  Obligatorio & Plan de migración; 5.3; 5-D/\allowbreak E & ENS-1/\allowbreak 2; cobertura y reversión; Diseñado \\
+RT-05.12 /\allowbreak  Obligatorio & Perfilado y saneamiento; 5.3.2; 5-D & VD-03; reporte de defectos; Procedimiento definido \\
+RT-05.13 /\allowbreak  Obligatorio & Dos ensayos completos; 5.3.3; 5-D & ENS-1/\allowbreak 2 con actas y tiempos; Programado en implantación; no ejecutado \\
+RT-05.14 /\allowbreak  Obligatorio & Conciliación verificable; 5.3.3; 5-D & ENS-1/\allowbreak 2; cero diferencia inexplicada; Criterios definidos \\
+RT-05.15 /\allowbreak  Según caso & Históricos no migrados y alcance del caso; 5.3.1/\allowbreak 4; 5-D/\allowbreak G & VD-05; archivo accesible durante retención; Diseñado; códigos cotejados por materia \\
+RT-05.16 /\allowbreak  Obligatorio & OpenAPI/\allowbreak AsyncAPI; 5.2.3; 5-C/\allowbreak H; referencia 4.1-G/\allowbreak H & VD-08; generación/\allowbreak validación CI; Diseño; contratos ejecutables por implementar \\
+RT-05.17 /\allowbreak  Obligatorio & Versionado y preaviso; 5.2.3; 5-C & VD-08; coexistencia y 6 meses; Diseñado \\
+RT-05.18 /\allowbreak  Obligatorio & OAuth 2.1 /\allowbreak  mTLS; 5.2.3; 5-C/\allowbreak G & VD-06; intercambio autenticado; Diseñado \\
+RT-05.19 /\allowbreak  Obligatorio & Correlación entrada/\allowbreak salida; 5.2.1/\allowbreak 3; 5-A/\allowbreak C & AC-01; transaction\_\allowbreak id común; Diseñado \\
+RT-05.20 /\allowbreak  Obligatorio & ACL frente al legado; 5.1.1; 5.2.3; 5-C/\allowbreak D & AC-09; mismo folio tras timeout; Diseñado \\
+RT-05.21 /\allowbreak  Obligatorio & Modo, volumen y falla de interfaces; 5.2.3; 5.4.1; 5-C/\allowbreak E; referencia 4.1-G/\allowbreak H/\allowbreak I & VD-08; 15 INT y pruebas de terceros; Hereda catálogo de arquitectura \\
+RT-05.22 /\allowbreak  Obligatorio & Carga masiva y errores por registro; 5.2.3; 5.3.2; 5-D & VD-03; parcialidad por agregado íntegro; Diseñado \\
+RT-05.23 /\allowbreak  Según caso & GS1, EDI y formato tributario; 5.1.2/\allowbreak 3; 5.2.3; 5-A/\allowbreak C & VD-08; validación de perfiles; Diseñado; perfiles de cadenas requeridos \\
+RT-05.24 /\allowbreak  Deseable & Portal de desarrolladores; 5.2.3; 5-H & VD-08; sandbox y credenciales expirables; Propuesto; no desplegado \\
+RT-05.25 /\allowbreak  Obligatorio & Tableros del caso; 5.2.4; 5-F & VD-07; fórmulas y fuentes; Diseñado \\
+RT-05.26 /\allowbreak  Obligatorio & Filtros y profundización; 5.2.4; 5-F & VD-07; ámbito por rol y grano; Diseñado \\
+RT-05.27 /\allowbreak  Obligatorio & Autoservicio del CLIENTE; 5.2.4; 5-F/\allowbreak G & VD-07; informe creado por rol CLIENTE; Diseñado \\
+RT-05.28 /\allowbreak  Obligatorio & Exportar/\allowbreak programar informes; 5.2.4; 5-F/\allowbreak G & VD-05/\allowbreak 07; CSV/\allowbreak JSON/\allowbreak calendario; Diseñado \\
+RT-05.29 /\allowbreak  Según caso & Latencia analítica; 5.2.4; 5-F/\allowbreak H & VD-04; 5 min /\allowbreak  2 h /\allowbreak  4 h; Exigencia conservada; aislamiento requiere ensayo \\
+RT-05.30 /\allowbreak  Deseable & Analítica predictiva; 5.2.4; 5-H & Coherencia de alcance con arquitectura; No incorporada; explotación descriptiva \\
+\end{tablalafrox}
+
+\begin{tablalafrox}{Decisiones de datos}{tab:5-adr}{F{0.19} F{0.35} F{0.21} Y}{\cab{Decisión} & \cab{Regla} & \cab{Fuente} & \cab{Efecto}}
+DD-01 Índice & Adoptar cuatro títulos de aclaraciones; analítica/\allowbreak gobierno dentro de 5.2 & Aclaraciones cap.5 & Resuelve estructura del plan anterior \\
+DD-02 Stock & Autoridad M2 por sitio/\allowbreak lote; nube no confirma con proyección & 4.1 reconciliación/\allowbreak INT-12 & Conserva autonomía y evita doble reserva \\
+DD-03 CDC & DMS Talca a esquema lectura separado de eventos & 4.1 catálogo INT-12 & Sin replicación bidireccional genérica \\
+DD-04 Retorno M8 & Recepción local distinta de liberación y abono & Commit 2799de3 & Propaga último ajuste al modelo \\
+DD-05 Thermal & Clave sensor/\allowbreak sesión/\allowbreak secuencia independiente de gateway & 3 gateways de arquitectura & Deduplica dos lectores Talca \\
+DD-06 Unidades & KB/\allowbreak GB decimales para memoria; GiB calculado aparte & Memoria de dimensionamiento & Evita ambigüedad de factor 1000/\allowbreak 1024 \\
+DD-07 Historia & Retención del caso y migración por materia, no por código aislado & Caso cap.15/\allowbreak BTT cap.5 & RT-05.10/\allowbreak 15 desajustados se anotan \\
+DD-08 Auditoría & Plazo de negocio sigue dato; log técnico plazo distinto & RT-05.03 y arquitectura & No reducir DTE/\allowbreak POD a 36 meses \\
+DD-09 Analítica & Microcarga y marcas de agua; sin IA predictiva & 4.1 y Caso RT-05.29 & No prometer frescura global sin enlace \\
+DD-10 Privacidad & Autorización Art.85 para regiones y subencargados & 4.2 región/\allowbreak BA Art.85 & Sin aprobación implícita del CLIENTE \\
+\end{tablalafrox}
+
+\begin{tablalafrox}{Dependencias y validación}{tab:5-pend}{F{0.09} F{0.29} F{0.36} Y}{\cab{ID} & \cab{Materia} & \cab{Responsable /\allowbreak  evidencia} & \cab{Hito}}
+PD-01 & Disponibilidad y tamaño real de extractos/\allowbreak históricos & Inventario y perfilado con dueños ERP/\allowbreak WMS/\allowbreak Calidad & Antes ENS-1 \\
+PD-02 & Procedimiento tributario de contingencia AL-DTE-01 & Operaciones/\allowbreak Tributación; ensayo 96 salidas & Antes producción de despacho \\
+PD-03 & Protección externa con sitio/\allowbreak WAN perdidos AL-DR-01 & Infraestructura; ensayo RPO/\allowbreak RTO & Antes aceptación continuidad \\
+PD-04 & Frescura 5 minutos bajo aislamiento & CLIENTE/\allowbreak Operaciones; visibilidad local y global ensayada & Antes marcha blanca M10 \\
+PD-05 & Fecha/\allowbreak mes de olas y corte & Implantación; dependencia del cronograma Subdoc-7 & Antes ENS-2 \\
+PD-06 & Políticas comerciales y maestro compartido & Comercial/\allowbreak Tesorería; precio, reservas, crédito y OTIF & Antes liberación funcional \\
+PD-07 & Acuerdo datos personales y regiones & CLIENTE/\allowbreak Seguridad; Art.85 y subencargados & Antes tratamiento real \\
+PD-08 & Revisión humana de contenido y aceptación de diseño & Responsables del proyecto; constancia identificable & Antes presentación final \\
+PD-09 & Tamaños de auditoría/\allowbreak cifrado y retención local efectiva & Plataforma; perfilado frente capacidad 4.2 & Antes prueba de carga \\
+PD-10 & Implementación física de hechos y dimensiones & M10; contrato analítico desde modelo propuesto & Durante implementación; antes autoservicio \\
+\end{tablalafrox}
+
+\begin{tablalafrox}{Criterios de verificación}{tab:5-acept}{F{0.1} F{0.19} F{0.45} Y}{\cab{ID} & \cab{Recorrido} & \cab{Criterio} & \cab{Estado}}
+VD-01 & Modelo/\allowbreak diccionario & Todos los atributos tienen seis propiedades; relaciones referidas existen & Diseño verificado automáticamente \\
+VD-02 & Reconexión & Escenarios AC-01–12; cero efecto repetido; stock conciliado & Ensayo previsto \\
+VD-03 & Calidad/\allowbreak migración & Conjunto liberado sin huérfanos; diferencias explicadas & ENS-1/\allowbreak ENS-2 previstos \\
+VD-04 & Carga/\allowbreak analítica & 21,99 solicitudes/\allowbreak s y umbrales caso; lag end-to-end visible & Ensayo previsto \\
+VD-05 & Exportación/\allowbreak eliminación & Paquete completo/\allowbreak hashes; ninguna versión expuesta después de supresión & Ensayo previsto \\
+VD-06 & Seguridad & Mínimo privilegio, cifrado, consulta sensible y revocación & Ensayo previsto \\
+VD-07 & BI & Filtros, fórmula, drill-down, autoservicio y calendario & Ensayo previsto \\
+VD-08 & Contratos & Compatibilidad esquemas, rechazo de credencial inválida y perfiles GS1/\allowbreak EDI & Implementación/\allowbreak ensayo previstos \\
+\end{tablalafrox}

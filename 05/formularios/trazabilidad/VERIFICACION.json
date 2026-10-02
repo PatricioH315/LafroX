@@ -1,0 +1,38 @@
+{
+  "fecha": "2026-10-02",
+  "rama": "alvaro-modelo-y-gestion-de-datos",
+  "entidades": 59,
+  "atributos": 549,
+  "dominios": 15,
+  "relaciones": 34,
+  "requisitos": 30,
+  "estructura": [
+    "Modelo",
+    "Gestión de datos",
+    "Estrategia de migración",
+    "Estrategia de desempeño"
+  ],
+  "errores": [],
+  "pdfs": [
+    {
+      "archivo": "LAFROX-Subdocumento5.pdf",
+      "paginas": 24,
+      "sha256": "a7710ca089552092184ecf393ba9995f60fe65506f94fc6fe852ad9d3bf4c624",
+      "advertencias": [
+        "LaTeX Warning: You have requested document class `00/plantilla/fisica/lafrox',"
+      ],
+      "texto_fuera_pagina": []
+    },
+    {
+      "archivo": "LAFROX-Subdocumento5-Anexos.pdf",
+      "paginas": 74,
+      "sha256": "a82c8e2a544bd8fbef8bdb699838c099c5f866480676735c0d2abb452bd594d5",
+      "advertencias": [
+        "LaTeX Warning: You have requested document class `00/plantilla/fisica/lafrox',"
+      ],
+      "texto_fuera_pagina": []
+    }
+  ],
+  "revision_visual": "Inspección visual por Codex de las hojas de contacto del cuerpo y los 74 folios de anexos, con ampliación de diagramas, tablas, índice y cierre final de 24 páginas. Sin defectos de legibilidad ni solapamiento detectados; no equivale a revisión humana.",
+  "ensayos_operacionales": "No ejecutados; protocolos y criterios documentados"
+}

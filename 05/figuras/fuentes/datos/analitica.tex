@@ -1,0 +1,13 @@
+\begin{tikzpicture}[x=1cm,y=1cm,>=stealth,box/.style={draw=lafroxGris,rounded corners=1pt,text width=3.55cm,minimum height=1.25cm,align=left,inner sep=5pt,font=\fontsize{9.5pt}{12pt}\selectfont},edge/.style={->,line width=.6pt},lab/.style={fill=white,inner sep=2pt,font=\fontsize{9pt}{11pt}\selectfont}]
+\node[box] (a) at (0,0) {\textbf{Eventos OLTP}\\Outbox; event\_\allowbreak id; versión};
+\node[box] (b) at (5.1,0) {\textbf{Ingesta incremental}\\Orden; duplicados; marca agua};
+\node[box] (c) at (0,-2.5) {\textbf{S3 /\allowbreak  Glue}\\Parquet; catálogo; linaje};
+\node[box] (d) at (5.1,-2.5) {\textbf{Redshift}\\Hechos; dimensiones SCD2};
+\node[box] (e) at (0,-5) {\textbf{Modelo semántico}\\Indicador; fórmula; fuente};
+\node[box] (f) at (5.1,-5) {\textbf{Autoservicio CLIENTE}\\Filtros; detalle; exportación};
+\draw[edge] (a) -- node[lab,midway,above=0.8cm] {acuse durable} (b);
+\draw[edge] (b) -- node[lab,midway,text width=1.8cm,align=center] {microcarga} (d);
+\draw[edge] (c) -- node[lab,midway,above=0.8cm] {reproceso} (d);
+\draw[edge] (d) -- node[lab,midway,text width=1.8cm,align=center] {vista gobernada} (e);
+\draw[edge] (e) -- node[lab,midway,above=0.8cm] {permisos por fila} (f);
+\end{tikzpicture}

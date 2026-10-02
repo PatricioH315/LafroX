@@ -1,0 +1,73 @@
+\section{Gestión de datos}
+\label{sec:5-gestion}
+La gestión conserva el derecho de cada módulo a decidir y el del CLIENTE a consultar, exportar y verificar sus datos. La selección tecnológica de arquitectura se concreta aquí por dominio, transacción y comportamiento durante una partición; no se atribuye una única propiedad CAP a toda la solución.
+
+\subsection{Persistencia y límites transaccionales}
+PostgreSQL/PostGIS se mantiene para WMS y geografía, y Aurora PostgreSQL para dominios centrales. La referencia de arquitectura es PostgreSQL 16.x y PostGIS compatible; la versión de Aurora se fija por compatibilidad y soporte al implantar. Las cantidades, relaciones y restricciones justifican persistencia relacional en inventario, pedidos, entregas y finanzas. DynamoDB recibe muestras de telemetría identificables por clave; S3 guarda objetos y series Parquet; Redshift sirve hechos y dimensiones. Redis acelera lecturas, no custodia movimientos ni pagos.
+
+La reserva M2 bloquea el saldo del agregado sitio/lote, valida disponibilidad y escribe reserva, auditoría y outbox en una transacción. Para reglas que abarcan varios saldos se propone aislamiento serializable con reintento completo y orden estable de bloqueo. No se mantiene una transacción abierta mientras se espera al ERP o a otro sitio. Una solicitud de M3 se resuelve como pendiente, confirmada o rechazada; compensar libera una reserva idempotentemente y deja registro. La semántica de aislamiento y sus reintentos se basa en PostgreSQL Global Development Group (s. f.-a).
+
+Entre contextos el flujo utiliza eventos canónicos con \emph{event\_id}, \emph{transaction\_id}, agregado, versión, sitio, fecha del hecho y versión del esquema. La outbox persiste con el cambio; el consumidor confirma solo después de resultado durable en su inbox. El envío puede repetirse; la unicidad de identidad y huella evita repetir el efecto de negocio. La deduplicación conserva resultado durante 30 días según arquitectura; mensajes anteriores se aíslan para revisión. El FIFO y la cola no sustituyen esa regla.
+
+\subsection{Autoridad, particiones y sincronización}
+Talca conserva el maestro operativo WMS y publica su CDC INT-12 en un esquema de lectura separado. Concepción ejecuta el perfil wms\_only y cada cross-docking conserva su operación local acotada. La autoridad de un movimiento corresponde al sitio custodio; el pedido central no modifica el saldo remoto desde una proyección de Aurora. El agregado se identifica por sitio/lote/ubicación y época de autoridad. Transferir autoridad requiere cerrar la versión anterior, conciliar y habilitar la nueva; durante un corte no se promueve otra autoridad a ciegas.
+La Figura~\ref{fig:5-autoridad} muestra la confirmación en M2, la outbox local y la separación entre proyección de eventos y CDC de lectura.
+
+\begin{figure}[htbp]
+\centering
+\input{05/figuras/fuentes/datos/autoridad.tex}
+\caption{Autoridad de escritura y recorridos de sincronización}
+\label{fig:5-autoridad}
+{\fontsize{9pt}{11pt}\selectfont Fuente: elaboración de LafroX a partir del Caso 02 y la arquitectura de referencia.}
+\end{figure}\FloatBarrier
+
+Durante la partición se favorece consistencia para nueva reserva, liberación sanitaria, pago confirmado y emisión tributaria: sin respuesta de su autoridad, esos efectos quedan pendientes o bloqueados. Se favorece disponibilidad de captura para pedido, POD, retorno físico y lectura térmica, manteniendo identidad, evidencia y estado pendiente de reconciliación. El WMS sigue trabajando sobre existencias propias y misiones ya asignadas durante 24 horas; el dispositivo captura su turno de 14 horas. Ese funcionamiento no permite comprometer stock de un sitio inaccesible.
+
+La sincronización ordena por agregado y secuencia, detecta huecos y no aplica un evento futuro antes de su dependencia. El sitio retiene movimientos hasta acuse durable; la nube consolida una sola proyección por evento. Stock se concilia con saldo inicial más movimientos y reservas, no con \emph{last write wins}. Entrega posterior a cancelación queda en conflicto para Operaciones, precio cambiado requiere aceptación comercial y devolución no acredita nota de crédito antes de respuesta ERP. El Anexo 5-C reproduce el protocolo y sus salidas por escenario.
+
+La réplica DMS y los consumidores de INT-03 no escriben la misma tabla de destino. La protección externa durante pérdida simultánea de sitio y WAN sigue condicionada a la prueba AL-DR-01 de arquitectura; una cola local no demuestra RPO de 15 minutos. Se conserva RTO máximo de cuatro horas y RPO máximo de quince minutos para servicios críticos, con ensayo de pérdida de sitio. No se ofrece una excepción implícita por operación desconectada.
+
+\subsection{Contratos y carga masiva}
+OpenAPI 3.1 documenta las operaciones y AsyncAPI 2.6 o superior los eventos; la generación desde código y la validación se incorporan a CI/CD al implementar. El contrato fija tipos, obligatoriedad, errores por fila, idempotencia y versión SemVer. Un cambio incompatible tiene preaviso mínimo de seis meses y coexistencia de versiones con prueba de consumidores. OAuth 2.1 con credenciales de cliente o mTLS protege intercambios; se heredan las quince interfaces, ventanas y volúmenes de los anexos 4.1-G/H/I, sin renumerarlas.
+
+La ACL traduce el ERP, conserva código de origen y consulta el resultado de una solicitud tributaria incierta antes de reintentar. GS1 identifica producto, SSCC y ubicaciones; EANCOM, GS1 XML y EPCIS se aplican por perfil de cadena, y el ERP preserva el formato tributario original. La importación CSV UTF-8 o JSON valida primero esquema y referencias, reporta número de fila y causa, y separa aceptadas de cuarentena. Se carga cada agregado completo en su transacción; procesar parcialmente un archivo no deja media cabecera con detalles ausentes.
+
+El portal de desarrolladores existente en el alcance de contratos publicará documentación navegable. Credenciales de prueba autoservidas y sandbox, materia deseable RT-05.24, se proponen con ámbito y expiración sin acceso productivo; la cobertura documental no afirma que el portal esté desplegado.
+
+\subsection{Separación transaccional y explotación analítica}
+M10 consume eventos e incrementales en recursos distintos del OLTP. No ejecuta paneles directamente sobre las tablas WMS ni usa INT-12 como único canal de frescura, porque CDC puede retrasarse bajo aislamiento. S3 Parquet conserva capas de recepción y curación con manifiestos; Glue transforma y registra origen; Redshift materializa el modelo dimensional. El flujo incremental operacional usa microcargas propuestas de un minuto y marca de agua por fuente; los procesos históricos y de gestión corren en colas separadas. La prueba determina el tamaño de lote y la concurrencia compatible con los SLA.
+La Figura~\ref{fig:5-analitica} relaciona eventos de negocio, transformación, hechos/dimensiones y autoservicio del CLIENTE.
+
+\begin{figure}[htbp]
+\centering
+\input{05/figuras/fuentes/datos/analitica.tex}
+\caption{Modelo de explotación y linaje analítico}
+\label{fig:5-analitica}
+{\fontsize{9pt}{11pt}\selectfont Fuente: elaboración de LafroX a partir del Caso 02 y la arquitectura de referencia.}
+\end{figure}\FloatBarrier
+
+El hecho de entrega tiene grano de intento/entrega, el de pedido una línea versionada, el de inventario un movimiento, el de frío una lectura validada y el de rendición un cierre por viaje/conductor. Dimensiones conformadas de fecha, sitio, cliente, producto, canal, ruta y causal permiten navegación común; cliente, producto y zona usan historia SCD2 cuando cambia un atributo de análisis. La transacción de origen y la versión de transformación permanecen asociadas al hecho. Reproceso sustituye la misma clave/version, sin sumar de nuevo.
+
+OTIF se calcula por pedido comprometido en el período: numerador de pedidos con todas sus líneas netas aceptadas dentro de ventana sobre denominador de pedidos comprometidos. Un intento parcial no cuenta como completo; reintento se evalúa contra la promesa inicial salvo modificación acordada antes del vencimiento y auditada. Fill rate compara unidades aceptadas con unidades comprometidas en su unidad base; perfect order añade ausencia de daño y documentación correcta. Devoluciones, merma, diferencia de caja y costo de servir tienen fórmulas y granularidad en el Anexo 5-F. Un costo operativo del CLIENTE no incluye precios de la oferta tecnológica.
+
+El modelo semántico expone filtros por período, sitio, canal, zona, producto y causal, y profundiza hasta el registro de origen autorizado. QuickSight del catálogo de arquitectura sirve autoservicio; vistas y permisos por fila excluyen receptor, pago y GPS personal de usuarios sin facultad. Cada informe exporta CSV/JSON y admite calendario de envío con registro de destinatario. Se propone catálogo automatizado de dataset, columna, transformación y ejecución enlazado a event\_id para RT-05.10.
+
+La latencia del caso es cinco minutos para indicadores diarios, dos horas para cierre comercial tras el último camión y cuatro horas para gestión. Se mide desde ocurrido\_en hasta visible\_en, no solo duración del ETL. Bajo ausencia de enlace se muestra antigüedad y cobertura por sitio: no se declara fresco un panel que no recibió el hecho. La recuperación de backlog se prueba junto con la sincronización de dos horas del CD y diez minutos por terminal; la imposibilidad de sostener cinco minutos globales sin enlace se registra como condición de aceptación, sin rebajar el umbral exigido. No se incorpora analítica predictiva, deseable RT-05.30, por coherencia con la arquitectura propuesta.
+
+\subsection{Calidad, auditoría y protección}
+La calidad se gestiona con completitud, exactitud y consistencia conforme al marco requerido ISO/IEC 25012. Validación de RUT/GTIN, cantidades, unidad, lote/vencimiento y estados ocurre en captura y se repite en el servidor. Los datos sanitarios y financieros inválidos quedan en cuarentena; nunca se corrigen inventando lote o duplicando un saldo. Cada defecto tiene fuente, regla, responsable, severidad, decisión y reejecución. El tablero expone proporción válida, defectos abiertos y antigüedad por dominio; Anexo 5-G declara metas de diseño y evidencia de verificación.
+
+La auditoría de negocio guarda quién, qué, cuándo, equipo, valores anteriores y posteriores, motivo, correlación y regla aplicada. Se persiste con el cambio y se exporta a archivo inmutable; las lecturas sensibles también dejan huella. El plazo sigue al dato auditado. Los logs técnicos de CloudWatch mantienen doce meses en línea y veinticuatro de archivo conforme a arquitectura; ese plazo técnico no limita los seis años de trazabilidad del DTE o POD.
+
+El CLIENTE conserva rol responsable y LafroX actúa como encargado bajo instrucciones documentadas y acuerdo del Artículo 85. Cada atributo del diccionario declara sensibilidad. Cifrado de campo cubre comportamiento de pago, antecedentes comerciales restringidos y posición de personas, con claves KMS separadas, permisos mínimos y rotación; TLS protege transporte. Para búsqueda de identificadores cifrados se propone token de igualdad bajo clave separada, nunca texto claro en logs. No se conservan PAN ni CVV; pasarela entrega token/referencia. SQL y exportaciones respetan ámbitos de sitio, rol y finalidad.
+
+Subencargados y transferencia internacional requieren autorización escrita del CLIENTE según las bases. La localización primaria sa-east-1 y recuperación us-east-1 de arquitectura se incluye en ese acuerdo; no se presume autorización por elegir región. Preproducción usa datos sintéticos o seudonimizados salvo extracto controlado para ensayo. Solicitudes de titulares se tramitan con el CLIENTE, registrando base de retención y acciones; la brecha se comunica dentro de las 24 horas exigidas, además de la cadena crítica de seguridad.
+
+\subsection{Retención, archivado, eliminación y portabilidad}
+Los documentos tributarios y POD se conservan seis años; trazabilidad sanitaria, al menos cinco años o vida útil más seis meses si es mayor; temperatura, cinco años; GPS personal, doce meses. La base local retiene cuatro meses de movimientos según capacidad de arquitectura y los lotes/stock presentes; archivar no elimina un lote todavía necesario ni un evento sin acuse. La consulta histórica usa nube y repositorio protegido. Los tiempos se cuentan desde cierre documental o fecha del hecho según categoría, conservando excepciones y suspensión legal.
+
+El TTL de DynamoDB es asíncrono y no prueba una fecha exacta de borrado (Amazon Web Services, s. f.-a). Una rutina controla vencidos, excluye registros caducos de consulta y verifica eliminación con inventario posterior. Raw térmico solo expira tras consolidación comprobada. S3 Object Lock protege versiones por plazo y retención legal; no permite prometer borrado de una versión todavía retenida (Amazon Web Services, s. f.-b). Se separan buckets/categorías y se evita bloquear GPS durante seis años.
+
+La eliminación genera orden aprobada, listado de claves/versiones, controles de dependencias y certificado con huellas y resultado. El procedimiento comprende OLTP, hechos/dimensiones, Parquet, todas las versiones S3, índices, cachés, móviles y copias temporales. Los respaldos inmutables siguen su calendario definido: la orden de supresión queda fuera del respaldo y se reaplica antes de abrir un entorno restaurado. Si existe bloqueo legal se conserva lo requerido y se comunica la causa y nueva revisión; no se promete borrar criptográficamente una copia cuya clave sea compartida con datos vigentes.
+
+El CLIENTE puede exportar por autoservicio la totalidad de datos en CSV/JSON, Parquet para series y XML/originales para documentos, con diccionario, relaciones, manifiesto de archivos, recuentos y SHA-256. La exportación autorizada se ejecuta sobre instantánea consistente o marca de agua por fuente, queda auditada y no exige intervención de LafroX ni costo adicional. En finalización contractual se realiza devolución verificada y eliminación certificada bajo instrucciones del CLIENTE, incluyendo subencargados y ventanas de expiración de respaldos.

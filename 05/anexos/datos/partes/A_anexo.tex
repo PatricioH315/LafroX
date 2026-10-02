@@ -1,0 +1,1460 @@
+\chapter*{Anexo 5-A --- Diccionario de datos y reglas de integridad}
+\addcontentsline{toc}{chapter}{Anexo 5-A --- Diccionario de datos y reglas de integridad}
+\label{anx:5-A}
+Cada entidad conserva sus restricciones y propietario, y cada atributo su tipo, dominio de valores, obligatoriedad y sensibilidad.
+
+El diccionario es lógico y orientado a diseño; el tamaño físico y las versiones menores se fijan durante implementación y perfilado. Todos los atributos definidos se incluyen en la exportación CSV UTF-8 de apoyo. Las marcas Interno, Personal y Restringido controlan permisos y minimización; no convierten automáticamente todo dato en categoría legal sensible. Cifrado explícito indica almacenamiento por campo protegido; sus restricciones de negocio se comprueban antes del cifrado bajo servicio autorizado.
+
+UUID, creado\_en y version son campos comunes de registros de negocio, repetidos aquí para que cada entidad sea autocontenida. Las entidades de caché tienen identidad por clave. Tipos documentales en series se traducen a esquemas DynamoDB/Parquet equivalentes; la representación PostgreSQL expresa el dominio lógico, no obliga a desplegar telemetría en una tabla SQL.
+
+\section*{cliente}
+Dominio: BD\_\allowbreak MAESTROS\_\allowbreak CONF. Módulo: M3/\allowbreak M7. Propietario: Comercial. ERP publica el maestro autorizado mediante ACL; M3 mantiene preferencia de canal bajo su propio contrato. Un RUT puede tener varios puntos de entrega.
+
+\begin{tablalafrox}{Atributos de cliente}{tab:5-dict-cliente}{F{0.29} F{0.34} F{0.1} Y}{\cab{Atributo y tipo} & \cab{Valores /\allowbreak  validación} & \cab{Oblig.} & \cab{Sensibilidad}}
+id
+uuid & UUID estable, PK & Sí & Interno \\
+creado\_\allowbreak en
+timestamptz & UTC; instante de persistencia & Sí & Interno \\
+version
+bigint & Entero mayor o igual a 1 & Sí & Interno \\
+rut
+varchar(12) & RUT normalizado y DV válido; único & Sí & Personal \\
+codigo\_\allowbreak erp
+varchar(40) & Identificador único en ERP & Sí & Interno \\
+razon\_\allowbreak social
+varchar(160) & Texto no vacío & Sí & Personal \\
+canal
+varchar(20) & tradicional, food\_\allowbreak service, cadena & Sí & Interno \\
+estado
+varchar(16) & activo, bloqueado, inactivo & Sí & Interno \\
+preferencia\_\allowbreak canal
+varchar(16) & app, sms, mensajeria, correo, sin\_\allowbreak digital & Sí & Personal \\
+\end{tablalafrox}
+
+\section*{punto\_\allowbreak entrega}
+Dominio: BD\_\allowbreak MAESTROS\_\allowbreak CONF. Módulo: M3/\allowbreak M4. Propietario: Comercial. FK lógica a cliente; UNIQUE(cliente\_\allowbreak id,codigo). La ventana se copia en cada entrega prometida para preservar el compromiso histórico.
+
+\begin{tablalafrox}{Atributos de punto\_\allowbreak entrega}{tab:5-dict-punto_entrega}{F{0.29} F{0.34} F{0.1} Y}{\cab{Atributo y tipo} & \cab{Valores /\allowbreak  validación} & \cab{Oblig.} & \cab{Sensibilidad}}
+id
+uuid & UUID estable, PK & Sí & Interno \\
+creado\_\allowbreak en
+timestamptz & UTC; instante de persistencia & Sí & Interno \\
+version
+bigint & Entero mayor o igual a 1 & Sí & Interno \\
+cliente\_\allowbreak id
+uuid & Referencia a cliente & Sí & Interno \\
+codigo
+varchar(40) & Único por cliente & Sí & Interno \\
+direccion
+varchar(240) & Dirección de entrega & Sí & Personal \\
+posicion
+geography(Point,4326) & Latitud y longitud válidas; geocodificación revisada & No & Personal \\
+ventana\_\allowbreak desde
+time & Hora local America/\allowbreak Santiago & Sí & Interno \\
+ventana\_\allowbreak hasta
+time & Fin posterior al inicio; excepción nocturna parametrizada & Sí & Interno \\
+zona
+varchar(40) & Catálogo de zonas logísticas & Sí & Interno \\
+\end{tablalafrox}
+
+\section*{producto}
+Dominio: BD\_\allowbreak MAESTROS\_\allowbreak CONF. Módulo: M1/\allowbreak M2. Propietario: Abastecimiento. GTIN se versiona por presentación. M9 autoriza rangos térmicos; el maestro ERP conserva la identidad comercial y sus equivalencias.
+
+\begin{tablalafrox}{Atributos de producto}{tab:5-dict-producto}{F{0.29} F{0.34} F{0.1} Y}{\cab{Atributo y tipo} & \cab{Valores /\allowbreak  validación} & \cab{Oblig.} & \cab{Sensibilidad}}
+id
+uuid & UUID estable, PK & Sí & Interno \\
+creado\_\allowbreak en
+timestamptz & UTC; instante de persistencia & Sí & Interno \\
+version
+bigint & Entero mayor o igual a 1 & Sí & Interno \\
+codigo\_\allowbreak erp
+varchar(40) & SKU autorizado único & Sí & Interno \\
+gtin
+varchar(14) & GTIN normalizado; dígito verificador & Sí & Interno \\
+descripcion
+varchar(160) & Nombre comercial & Sí & Interno \\
+unidad
+varchar(16) & Catálogo GS1/\allowbreak unidades autorizadas & Sí & Interno \\
+clase\_\allowbreak temperatura
+varchar(16) & seco, refrigerado, congelado & Sí & Interno \\
+temperatura\_\allowbreak min
+numeric(5,2) & Grados Celsius; según ficha aprobada; propietario: Calidad & No & Interno \\
+temperatura\_\allowbreak max
+numeric(5,2) & Mayor o igual al mínimo; propietario: Calidad & No & Interno \\
+vida\_\allowbreak util\_\allowbreak dias
+integer & Entero positivo; propietario: Calidad & Sí & Interno \\
+\end{tablalafrox}
+
+\section*{proveedor}
+Dominio: BD\_\allowbreak MAESTROS\_\allowbreak CONF. Módulo: M1. Propietario: Abastecimiento. Maestro completo migrado del ERP; modificar plazo exige versión y autor.
+
+\begin{tablalafrox}{Atributos de proveedor}{tab:5-dict-proveedor}{F{0.29} F{0.34} F{0.1} Y}{\cab{Atributo y tipo} & \cab{Valores /\allowbreak  validación} & \cab{Oblig.} & \cab{Sensibilidad}}
+id
+uuid & UUID estable, PK & Sí & Interno \\
+creado\_\allowbreak en
+timestamptz & UTC; instante de persistencia & Sí & Interno \\
+version
+bigint & Entero mayor o igual a 1 & Sí & Interno \\
+rut
+varchar(12) & RUT y DV válido; único & Sí & Personal \\
+codigo\_\allowbreak erp
+varchar(40) & Código externo único & Sí & Interno \\
+razon\_\allowbreak social
+varchar(160) & Texto no vacío & Sí & Personal \\
+plazo\_\allowbreak dias
+integer & Entero no negativo & Sí & Interno \\
+\end{tablalafrox}
+
+\section*{sitio}
+Dominio: BD\_\allowbreak MAESTROS\_\allowbreak CONF. Módulo: M1/\allowbreak M2/\allowbreak M5. Propietario: Operaciones. Código estable y único; solo los cinco sitios logísticos escriben WMS. Casa matriz opera por nube.
+
+\begin{tablalafrox}{Atributos de sitio}{tab:5-dict-sitio}{F{0.29} F{0.34} F{0.1} Y}{\cab{Atributo y tipo} & \cab{Valores /\allowbreak  validación} & \cab{Oblig.} & \cab{Sensibilidad}}
+id
+uuid & UUID estable, PK & Sí & Interno \\
+creado\_\allowbreak en
+timestamptz & UTC; instante de persistencia & Sí & Interno \\
+version
+bigint & Entero mayor o igual a 1 & Sí & Interno \\
+codigo
+varchar(24) & Talca, Concepción, Curicó, Chillán, Los Ángeles; ampliable & Sí & Interno \\
+tipo
+varchar(16) & cd, crossdock, oficina & Sí & Interno \\
+zona\_\allowbreak horaria
+varchar(40) & America/\allowbreak Santiago & Sí & Interno \\
+\end{tablalafrox}
+
+\section*{recepcion}
+Dominio: BD\_\allowbreak INVENTARIO. Módulo: M1. Propietario: Jefatura de bodega. La recepción cerrada tiene al menos una línea; el cierre genera movimientos y outbox en una misma transacción local.
+
+\begin{tablalafrox}{Atributos de recepcion}{tab:5-dict-recepcion}{F{0.29} F{0.34} F{0.1} Y}{\cab{Atributo y tipo} & \cab{Valores /\allowbreak  validación} & \cab{Oblig.} & \cab{Sensibilidad}}
+id
+uuid & UUID estable, PK & Sí & Interno \\
+creado\_\allowbreak en
+timestamptz & UTC; instante de persistencia & Sí & Interno \\
+version
+bigint & Entero mayor o igual a 1 & Sí & Interno \\
+sitio\_\allowbreak id
+uuid & Referencia a sitio logístico & Sí & Interno \\
+proveedor\_\allowbreak id
+uuid & Referencia al maestro proveedor & Sí & Interno \\
+documento\_\allowbreak origen
+varchar(80) & Documento ERP/\allowbreak proveedor; clave externa & Sí & Interno \\
+estado
+varchar(16) & capturada, validada, observada, cerrada & Sí & Interno \\
+ocurrido\_\allowbreak en
+timestamptz & Instante físico de recepción & Sí & Interno \\
+\end{tablalafrox}
+
+\section*{lote}
+Dominio: BD\_\allowbreak CALIDAD\_\allowbreak TRAZABILIDAD. Módulo: M1/\allowbreak M9. Propietario: Calidad. UNIQUE(producto\_\allowbreak id,proveedor\_\allowbreak id,lote\_\allowbreak proveedor). Si un GTIN/\allowbreak lote aparece con varios proveedores se conserva el origen y se agrupa el retiro por GTIN/\allowbreak lote. Un vencimiento discordante se aísla para Calidad.
+
+\begin{tablalafrox}{Atributos de lote}{tab:5-dict-lote}{F{0.29} F{0.34} F{0.1} Y}{\cab{Atributo y tipo} & \cab{Valores /\allowbreak  validación} & \cab{Oblig.} & \cab{Sensibilidad}}
+id
+uuid & UUID estable, PK & Sí & Interno \\
+creado\_\allowbreak en
+timestamptz & UTC; instante de persistencia & Sí & Interno \\
+version
+bigint & Entero mayor o igual a 1 & Sí & Interno \\
+producto\_\allowbreak id
+uuid & Referencia al producto/\allowbreak GTIN & Sí & Interno \\
+proveedor\_\allowbreak id
+uuid & Proveedor de origen & Sí & Interno \\
+lote\_\allowbreak proveedor
+varchar(80) & Código de lote no vacío & Sí & Interno \\
+vence\_\allowbreak en
+date & Fecha de vencimiento & Sí & Interno \\
+estado
+varchar(20) & liberado, bloqueado, retiro, descartado & Sí & Interno \\
+\end{tablalafrox}
+
+\section*{unidad\_\allowbreak logistica}
+Dominio: BD\_\allowbreak INVENTARIO. Módulo: M1/\allowbreak M2. Propietario: Jefatura de bodega. La unidad puede contener varios lotes mediante contenido\_\allowbreak unidad. El movimiento conserva SSCC y custodia; no se usa SSCC para identificar cada envase retornable.
+
+\begin{tablalafrox}{Atributos de unidad\_\allowbreak logistica}{tab:5-dict-unidad_logistica}{F{0.29} F{0.34} F{0.1} Y}{\cab{Atributo y tipo} & \cab{Valores /\allowbreak  validación} & \cab{Oblig.} & \cab{Sensibilidad}}
+id
+uuid & UUID estable, PK & Sí & Interno \\
+creado\_\allowbreak en
+timestamptz & UTC; instante de persistencia & Sí & Interno \\
+version
+bigint & Entero mayor o igual a 1 & Sí & Interno \\
+sscc
+varchar(18) & SSCC y dígito verificador; único & Sí & Interno \\
+sitio\_\allowbreak id
+uuid & Sitio custodio actual & Sí & Interno \\
+ubicacion
+varchar(40) & Posición autorizada del sitio & Sí & Interno \\
+estado
+varchar(16) & recibida, almacenada, preparada, despachada & Sí & Interno \\
+\end{tablalafrox}
+
+\section*{contenido\_\allowbreak unidad}
+Dominio: BD\_\allowbreak INVENTARIO. Módulo: M1/\allowbreak M2. Propietario: Jefatura de bodega. UNIQUE(unidad\_\allowbreak id,lote\_\allowbreak id); suma de cantidades se concilia con recepción y movimientos.
+
+\begin{tablalafrox}{Atributos de contenido\_\allowbreak unidad}{tab:5-dict-contenido_unidad}{F{0.29} F{0.34} F{0.1} Y}{\cab{Atributo y tipo} & \cab{Valores /\allowbreak  validación} & \cab{Oblig.} & \cab{Sensibilidad}}
+id
+uuid & UUID estable, PK & Sí & Interno \\
+creado\_\allowbreak en
+timestamptz & UTC; instante de persistencia & Sí & Interno \\
+version
+bigint & Entero mayor o igual a 1 & Sí & Interno \\
+unidad\_\allowbreak id
+uuid & Referencia a unidad logística & Sí & Interno \\
+lote\_\allowbreak id
+uuid & Referencia a lote & Sí & Interno \\
+cantidad
+numeric(14,3) & Cantidad mayor que cero en unidad base & Sí & Interno \\
+\end{tablalafrox}
+
+\section*{linea\_\allowbreak recepcion}
+Dominio: BD\_\allowbreak INVENTARIO. Módulo: M1. Propietario: Jefatura de bodega. Cada línea identifica lote y SSCC; una observación térmica bloquea liberación hasta decisión de Calidad.
+
+\begin{tablalafrox}{Atributos de linea\_\allowbreak recepcion}{tab:5-dict-linea_recepcion}{F{0.29} F{0.34} F{0.1} Y}{\cab{Atributo y tipo} & \cab{Valores /\allowbreak  validación} & \cab{Oblig.} & \cab{Sensibilidad}}
+id
+uuid & UUID estable, PK & Sí & Interno \\
+creado\_\allowbreak en
+timestamptz & UTC; instante de persistencia & Sí & Interno \\
+version
+bigint & Entero mayor o igual a 1 & Sí & Interno \\
+recepcion\_\allowbreak id
+uuid & FK a recepción & Sí & Interno \\
+lote\_\allowbreak id
+uuid & Referencia a lote & Sí & Interno \\
+unidad\_\allowbreak id
+uuid & Referencia a SSCC & Sí & Interno \\
+cantidad
+numeric(14,3) & Mayor que cero & Sí & Interno \\
+temperatura
+numeric(5,2) & Lectura de control en Celsius & No & Interno \\
+\end{tablalafrox}
+
+\section*{movimiento\_\allowbreak stock}
+Dominio: BD\_\allowbreak INVENTARIO. Módulo: M2. Propietario: Jefatura de bodega. Libro inmutable; correcciones mediante movimiento compensatorio aprobado. Stock se obtiene de suma de deltas, no de la última cifra recibida.
+
+\begin{tablalafrox}{Atributos de movimiento\_\allowbreak stock}{tab:5-dict-movimiento_stock}{F{0.29} F{0.34} F{0.1} Y}{\cab{Atributo y tipo} & \cab{Valores /\allowbreak  validación} & \cab{Oblig.} & \cab{Sensibilidad}}
+id
+uuid & UUID estable, PK & Sí & Interno \\
+creado\_\allowbreak en
+timestamptz & UTC; instante de persistencia & Sí & Interno \\
+version
+bigint & Entero mayor o igual a 1 & Sí & Interno \\
+sitio\_\allowbreak id
+uuid & Autoridad de escritura del sitio & Sí & Interno \\
+lote\_\allowbreak id
+uuid & Referencia a lote & Sí & Interno \\
+unidad\_\allowbreak id
+uuid & Unidad logística afectada & Sí & Interno \\
+tipo
+varchar(24) & recepcion, traslado, preparacion, despacho, devolucion, ajuste & Sí & Interno \\
+cantidad\_\allowbreak delta
+numeric(14,3) & Entrada positiva o salida negativa, distinta de cero & Sí & Interno \\
+ubicacion
+varchar(40) & Ubicación en sitio & Sí & Interno \\
+secuencia\_\allowbreak sitio
+bigint & Monótona por sitio y época & Sí & Interno \\
+evento\_\allowbreak origen\_\allowbreak id
+uuid & Identidad de operación; única & Sí & Interno \\
+ocurrido\_\allowbreak en
+timestamptz & Hora del hecho físico & Sí & Interno \\
+\end{tablalafrox}
+
+\section*{reserva}
+Dominio: BD\_\allowbreak INVENTARIO. Módulo: M2. Propietario: Jefatura de bodega. M2 es autoridad por agregado sitio/\allowbreak lote. Para confirmar bloquea saldo y comprueba disponible; la nube coordina sin confirmar contra una réplica atrasada.
+
+\begin{tablalafrox}{Atributos de reserva}{tab:5-dict-reserva}{F{0.29} F{0.34} F{0.1} Y}{\cab{Atributo y tipo} & \cab{Valores /\allowbreak  validación} & \cab{Oblig.} & \cab{Sensibilidad}}
+id
+uuid & UUID estable, PK & Sí & Interno \\
+creado\_\allowbreak en
+timestamptz & UTC; instante de persistencia & Sí & Interno \\
+version
+bigint & Entero mayor o igual a 1 & Sí & Interno \\
+linea\_\allowbreak pedido\_\allowbreak id
+uuid & Referencia a línea del pedido & Sí & Interno \\
+sitio\_\allowbreak id
+uuid & Sitio que confirma & Sí & Interno \\
+lote\_\allowbreak id
+uuid & Lote asignado por FEFO & Sí & Interno \\
+cantidad
+numeric(14,3) & Mayor que cero & Sí & Interno \\
+estado
+varchar(16) & pendiente, confirmada, consumida, liberada, rechazada & Sí & Interno \\
+expira\_\allowbreak en
+timestamptz & Plazo parametrizado por operación & No & Interno \\
+\end{tablalafrox}
+
+\section*{pedido}
+Dominio: BD\_\allowbreak PREVENTA. Módulo: M3. Propietario: Comercial. Capturado offline no equivale a reserva confirmada. Pedido tiene una o más líneas; reenvío con mismo UUID devuelve resultado anterior.
+
+\begin{tablalafrox}{Atributos de pedido}{tab:5-dict-pedido}{F{0.29} F{0.34} F{0.1} Y}{\cab{Atributo y tipo} & \cab{Valores /\allowbreak  validación} & \cab{Oblig.} & \cab{Sensibilidad}}
+id
+uuid & UUID estable, PK & Sí & Interno \\
+creado\_\allowbreak en
+timestamptz & UTC; instante de persistencia & Sí & Interno \\
+version
+bigint & Entero mayor o igual a 1 & Sí & Interno \\
+cliente\_\allowbreak id
+uuid & Maestro cliente & Sí & Interno \\
+punto\_\allowbreak id
+uuid & Punto de entrega del mismo cliente & Sí & Interno \\
+actor\_\allowbreak id
+uuid & Preventista o cuenta de autoservicio & Sí & Personal \\
+estado
+varchar(20) & capturado, pendiente, confirmado, preparado, despachado, parcial, entregado, rendido, cancelado & Sí & Interno \\
+capturado\_\allowbreak en
+timestamptz & Hora en terminal, conservada & Sí & Interno \\
+transaction\_\allowbreak id
+uuid & Correlación transversal estable & Sí & Interno \\
+tarifa\_\allowbreak version
+varchar(40) & Versión de tarifa mostrada & Sí & Interno \\
+\end{tablalafrox}
+
+\section*{linea\_\allowbreak pedido}
+Dominio: BD\_\allowbreak PREVENTA. Módulo: M3. Propietario: Comercial. UNIQUE(pedido\_\allowbreak id,numero). Un cambio de tarifa genera revalidación explícita; el importe es dato operativo del CLIENTE, no precio de oferta.
+
+\begin{tablalafrox}{Atributos de linea\_\allowbreak pedido}{tab:5-dict-linea_pedido}{F{0.29} F{0.34} F{0.1} Y}{\cab{Atributo y tipo} & \cab{Valores /\allowbreak  validación} & \cab{Oblig.} & \cab{Sensibilidad}}
+id
+uuid & UUID estable, PK & Sí & Interno \\
+creado\_\allowbreak en
+timestamptz & UTC; instante de persistencia & Sí & Interno \\
+version
+bigint & Entero mayor o igual a 1 & Sí & Interno \\
+pedido\_\allowbreak id
+uuid & FK a pedido & Sí & Interno \\
+numero
+integer & Entero positivo único por pedido & Sí & Interno \\
+producto\_\allowbreak id
+uuid & Referencia al SKU autorizado & Sí & Interno \\
+cantidad
+numeric(14,3) & Mayor que cero & Sí & Interno \\
+precio\_\allowbreak informado
+numeric(18,2) & Moneda CLP; mayor o igual a cero & Sí & Comercial restringido \\
+unidad
+varchar(16) & Unidad de captura y conversión versionada & Sí & Interno \\
+\end{tablalafrox}
+
+\section*{asignacion\_\allowbreak lote}
+Dominio: BD\_\allowbreak PREPARACION. Módulo: M5. Propietario: Jefatura de bodega. Una línea puede servirse con varios lotes. Las cantidades asignadas y entregadas permiten traza hacia adelante y hacia atrás.
+
+\begin{tablalafrox}{Atributos de asignacion\_\allowbreak lote}{tab:5-dict-asignacion_lote}{F{0.29} F{0.34} F{0.1} Y}{\cab{Atributo y tipo} & \cab{Valores /\allowbreak  validación} & \cab{Oblig.} & \cab{Sensibilidad}}
+id
+uuid & UUID estable, PK & Sí & Interno \\
+creado\_\allowbreak en
+timestamptz & UTC; instante de persistencia & Sí & Interno \\
+version
+bigint & Entero mayor o igual a 1 & Sí & Interno \\
+linea\_\allowbreak pedido\_\allowbreak id
+uuid & Línea servida & Sí & Interno \\
+lote\_\allowbreak id
+uuid & Lote proveedor & Sí & Interno \\
+unidad\_\allowbreak id
+uuid & SSCC de procedencia & Sí & Interno \\
+reserva\_\allowbreak id
+uuid & Reserva aceptada en M2 & Sí & Interno \\
+cantidad
+numeric(14,3) & Mayor que cero; no superar reserva neta & Sí & Interno \\
+\end{tablalafrox}
+
+\section*{mision}
+Dominio: BD\_\allowbreak PREPARACION. Módulo: M5. Propietario: Jefatura de bodega. No se reasigna una misión descargada sin revocar o cerrar su versión previa.
+
+\begin{tablalafrox}{Atributos de mision}{tab:5-dict-mision}{F{0.29} F{0.34} F{0.1} Y}{\cab{Atributo y tipo} & \cab{Valores /\allowbreak  validación} & \cab{Oblig.} & \cab{Sensibilidad}}
+id
+uuid & UUID estable, PK & Sí & Interno \\
+creado\_\allowbreak en
+timestamptz & UTC; instante de persistencia & Sí & Interno \\
+version
+bigint & Entero mayor o igual a 1 & Sí & Interno \\
+sitio\_\allowbreak id
+uuid & Sitio ejecutor & Sí & Interno \\
+oleada
+varchar(40) & Grupo de preparación & Sí & Interno \\
+actor\_\allowbreak id
+uuid & Preparador autorizado en turno & Sí & Personal \\
+dispositivo\_\allowbreak id
+uuid & Terminal HHT & Sí & Interno \\
+estado
+varchar(16) & descargada, ejecutada, cerrada & Sí & Interno \\
+\end{tablalafrox}
+
+\section*{linea\_\allowbreak mision}
+Dominio: BD\_\allowbreak PREPARACION. Módulo: M5. Propietario: Jefatura de bodega. Confirmar línea y consumir reserva es operación idempotente; faltante requiere causal y ajuste autorizado.
+
+\begin{tablalafrox}{Atributos de linea\_\allowbreak mision}{tab:5-dict-linea_mision}{F{0.29} F{0.34} F{0.1} Y}{\cab{Atributo y tipo} & \cab{Valores /\allowbreak  validación} & \cab{Oblig.} & \cab{Sensibilidad}}
+id
+uuid & UUID estable, PK & Sí & Interno \\
+creado\_\allowbreak en
+timestamptz & UTC; instante de persistencia & Sí & Interno \\
+version
+bigint & Entero mayor o igual a 1 & Sí & Interno \\
+mision\_\allowbreak id
+uuid & FK a misión & Sí & Interno \\
+asignacion\_\allowbreak id
+uuid & Referencia a asignación de lote & Sí & Interno \\
+cantidad\_\allowbreak confirmada
+numeric(14,3) & Entre cero y cantidad asignada & Sí & Interno \\
+confirmada\_\allowbreak en
+timestamptz & Hora del escaneo & No & Interno \\
+\end{tablalafrox}
+
+\section*{despacho}
+Dominio: BD\_\allowbreak PREPARACION. Módulo: M5. Propietario: Operaciones. Solo salida\_\allowbreak liberada exige guía vigente de la misma carga y copia disponible localmente. Ningún booleano fusiona guía, SII y acuse de mercadería.
+
+\begin{tablalafrox}{Atributos de despacho}{tab:5-dict-despacho}{F{0.29} F{0.34} F{0.1} Y}{\cab{Atributo y tipo} & \cab{Valores /\allowbreak  validación} & \cab{Oblig.} & \cab{Sensibilidad}}
+id
+uuid & UUID estable, PK & Sí & Interno \\
+creado\_\allowbreak en
+timestamptz & UTC; instante de persistencia & Sí & Interno \\
+version
+bigint & Entero mayor o igual a 1 & Sí & Interno \\
+sitio\_\allowbreak id
+uuid & Sitio de salida & Sí & Interno \\
+viaje\_\allowbreak id
+uuid & Viaje aprobado & Sí & Interno \\
+carga\_\allowbreak version
+bigint & Versión positiva de carga & Sí & Interno \\
+estado
+varchar(24) & carga\_\allowbreak confirmada, guia\_\allowbreak solicitada, resultado\_\allowbreak incierto, guia\_\allowbreak disponible, salida\_\allowbreak liberada & Sí & Interno \\
+guia\_\allowbreak id
+uuid & DTE confirmado por ERP & No & Interno \\
+liberado\_\allowbreak en
+timestamptz & Instante de salida autorizada & No & Interno \\
+\end{tablalafrox}
+
+\section*{viaje}
+Dominio: BD\_\allowbreak RUTAS. Módulo: M4/\allowbreak M12. Propietario: Planificación. Planificador aprueba versión de ruta. El conductor de cada hecho no se reemplaza retrospectivamente cuando cambia la asignación.
+
+\begin{tablalafrox}{Atributos de viaje}{tab:5-dict-viaje}{F{0.29} F{0.34} F{0.1} Y}{\cab{Atributo y tipo} & \cab{Valores /\allowbreak  validación} & \cab{Oblig.} & \cab{Sensibilidad}}
+id
+uuid & UUID estable, PK & Sí & Interno \\
+creado\_\allowbreak en
+timestamptz & UTC; instante de persistencia & Sí & Interno \\
+version
+bigint & Entero mayor o igual a 1 & Sí & Interno \\
+sitio\_\allowbreak id
+uuid & Sitio de origen & Sí & Interno \\
+vehiculo\_\allowbreak id
+uuid & Vehículo propio o tercero & Sí & Interno \\
+conductor\_\allowbreak id
+uuid & Vínculo autorizado vigente & Sí & Personal \\
+fecha\_\allowbreak operacion
+date & Fecha local de jornada & Sí & Interno \\
+estado
+varchar(16) & planificado, aprobado, iniciado, cerrado & Sí & Interno \\
+distancia\_\allowbreak km
+numeric(12,3) & Distancia no negativa & No & Interno \\
+\end{tablalafrox}
+
+\section*{parada}
+Dominio: BD\_\allowbreak RUTAS. Módulo: M4. Propietario: Planificación. UNIQUE(viaje\_\allowbreak id,secuencia). Se conserva la ventana original aun si la ruta real cambia.
+
+\begin{tablalafrox}{Atributos de parada}{tab:5-dict-parada}{F{0.29} F{0.34} F{0.1} Y}{\cab{Atributo y tipo} & \cab{Valores /\allowbreak  validación} & \cab{Oblig.} & \cab{Sensibilidad}}
+id
+uuid & UUID estable, PK & Sí & Interno \\
+creado\_\allowbreak en
+timestamptz & UTC; instante de persistencia & Sí & Interno \\
+version
+bigint & Entero mayor o igual a 1 & Sí & Interno \\
+viaje\_\allowbreak id
+uuid & FK a viaje & Sí & Interno \\
+punto\_\allowbreak id
+uuid & Punto autorizado de entrega & Sí & Interno \\
+secuencia
+integer & Entero positivo único por viaje & Sí & Interno \\
+ventana\_\allowbreak inicio
+timestamptz & Compromiso para esta visita & Sí & Interno \\
+ventana\_\allowbreak fin
+timestamptz & Posterior al inicio & Sí & Interno \\
+restriccion
+varchar(160) & Regla de acceso o excepción documentada & No & Interno \\
+\end{tablalafrox}
+
+\section*{vehiculo}
+Dominio: BD\_\allowbreak RUTAS. Módulo: M12. Propietario: Flota. Maestro de capacidades gobernado por Flota; no se deduce capacidad del GPS.
+
+\begin{tablalafrox}{Atributos de vehiculo}{tab:5-dict-vehiculo}{F{0.29} F{0.34} F{0.1} Y}{\cab{Atributo y tipo} & \cab{Valores /\allowbreak  validación} & \cab{Oblig.} & \cab{Sensibilidad}}
+id
+uuid & UUID estable, PK & Sí & Interno \\
+creado\_\allowbreak en
+timestamptz & UTC; instante de persistencia & Sí & Interno \\
+version
+bigint & Entero mayor o igual a 1 & Sí & Interno \\
+patente
+varchar(12) & Identificador normalizado único & Sí & Interno \\
+transportista\_\allowbreak id
+uuid & Empresa propietaria, si es tercero & No & Interno \\
+capacidad\_\allowbreak kg
+numeric(12,3) & Mayor que cero & Sí & Interno \\
+capacidad\_\allowbreak m3
+numeric(10,3) & Mayor que cero & Sí & Interno \\
+frio
+boolean & Capacidad de transporte refrigerado & Sí & Interno \\
+\end{tablalafrox}
+
+\section*{entrega}
+Dominio: BD\_\allowbreak REPARTO. Módulo: M6. Propietario: Operaciones. Pedido tiene cero o muchas entregas/\allowbreak intentos. Entrega completa exige cubrir todas las cantidades pendientes; intento fallido conserva causal sin fabricar receptor.
+
+\begin{tablalafrox}{Atributos de entrega}{tab:5-dict-entrega}{F{0.29} F{0.34} F{0.1} Y}{\cab{Atributo y tipo} & \cab{Valores /\allowbreak  validación} & \cab{Oblig.} & \cab{Sensibilidad}}
+id
+uuid & UUID estable, PK & Sí & Interno \\
+creado\_\allowbreak en
+timestamptz & UTC; instante de persistencia & Sí & Interno \\
+version
+bigint & Entero mayor o igual a 1 & Sí & Interno \\
+pedido\_\allowbreak id
+uuid & Referencia al pedido & Sí & Interno \\
+parada\_\allowbreak id
+uuid & Visita que origina el intento & Sí & Interno \\
+despacho\_\allowbreak id
+uuid & Salida con guía válida & Sí & Interno \\
+intento
+integer & Número positivo por pedido/\allowbreak parada & Sí & Interno \\
+estado
+varchar(20) & completa, parcial, no\_\allowbreak entregada, en\_\allowbreak conflicto & Sí & Interno \\
+receptor\_\allowbreak cifrado
+bytea & Identidad mínima cifrada; nombre o causal de ausencia & No & Personal restringido \\
+ocurrido\_\allowbreak en
+timestamptz & Momento efectivo de recepción & Sí & Interno \\
+actor\_\allowbreak id
+uuid & Conductor autor del registro & Sí & Personal \\
+\end{tablalafrox}
+
+\section*{detalle\_\allowbreak entrega}
+Dominio: BD\_\allowbreak REPARTO. Módulo: M6. Propietario: Operaciones. Aceptada más rechazada no supera asignación pendiente. Rechazo mayor que cero exige causal y retorno vinculado.
+
+\begin{tablalafrox}{Atributos de detalle\_\allowbreak entrega}{tab:5-dict-detalle_entrega}{F{0.29} F{0.34} F{0.1} Y}{\cab{Atributo y tipo} & \cab{Valores /\allowbreak  validación} & \cab{Oblig.} & \cab{Sensibilidad}}
+id
+uuid & UUID estable, PK & Sí & Interno \\
+creado\_\allowbreak en
+timestamptz & UTC; instante de persistencia & Sí & Interno \\
+version
+bigint & Entero mayor o igual a 1 & Sí & Interno \\
+entrega\_\allowbreak id
+uuid & FK a entrega & Sí & Interno \\
+asignacion\_\allowbreak id
+uuid & Lote y SSCC entregado & Sí & Interno \\
+aceptada
+numeric(14,3) & Cantidad no negativa & Sí & Interno \\
+rechazada
+numeric(14,3) & Cantidad no negativa & Sí & Interno \\
+causal
+varchar(40) & daño, vencimiento, no\_\allowbreak solicitado, faltante, otra & No & Interno \\
+\end{tablalafrox}
+
+\section*{evidencia\_\allowbreak pod}
+Dominio: BD\_\allowbreak REPARTO. Módulo: M6. Propietario: Operaciones. Una entrega conserva cero o varias evidencias según causal y política; no se cambia el original ni se presume validez tributaria de una foto.
+
+\begin{tablalafrox}{Atributos de evidencia\_\allowbreak pod}{tab:5-dict-evidencia_pod}{F{0.29} F{0.34} F{0.1} Y}{\cab{Atributo y tipo} & \cab{Valores /\allowbreak  validación} & \cab{Oblig.} & \cab{Sensibilidad}}
+id
+uuid & UUID estable, PK & Sí & Interno \\
+creado\_\allowbreak en
+timestamptz & UTC; instante de persistencia & Sí & Interno \\
+version
+bigint & Entero mayor o igual a 1 & Sí & Interno \\
+entrega\_\allowbreak id
+uuid & Entrega documentada & Sí & Interno \\
+objeto\_\allowbreak id
+uuid & Manifiesto de objeto S3 & Sí & Interno \\
+tipo
+varchar(16) & firma, foto, qr, constancia & Sí & Personal restringido \\
+hash\_\allowbreak sha256
+char(64) & Huella del objeto original & Sí & Interno \\
+capturada\_\allowbreak en
+timestamptz & Hora en dispositivo & Sí & Interno \\
+causal\_\allowbreak sin\_\allowbreak firma
+varchar(80) & Negativa, imposibilidad o receptor ausente & No & Personal \\
+\end{tablalafrox}
+
+\section*{documento\_\allowbreak tributario}
+Dominio: BD\_\allowbreak COBRANZA\_\allowbreak FINANZAS. Módulo: M5/\allowbreak M7. Propietario: Tributación. ERP único emisor. UNIQUE(emisor\_\allowbreak rut,tipo,folio); consulta por clave tras timeout antes de reemitir.
+
+\begin{tablalafrox}{Atributos de documento\_\allowbreak tributario}{tab:5-dict-documento_tributario}{F{0.29} F{0.34} F{0.1} Y}{\cab{Atributo y tipo} & \cab{Valores /\allowbreak  validación} & \cab{Oblig.} & \cab{Sensibilidad}}
+id
+uuid & UUID estable, PK & Sí & Interno \\
+creado\_\allowbreak en
+timestamptz & UTC; instante de persistencia & Sí & Interno \\
+version
+bigint & Entero mayor o igual a 1 & Sí & Interno \\
+emisor\_\allowbreak rut
+varchar(12) & RUT del emisor ERP & Sí & Personal \\
+tipo
+varchar(24) & guia, factura, boleta, nota\_\allowbreak credito, otro & Sí & Interno \\
+folio
+bigint & Folio positivo; único por emisor y tipo & Sí & Interno \\
+despacho\_\allowbreak id
+uuid & Salida asociada para guía & No & Interno \\
+objeto\_\allowbreak id
+uuid & XML/\allowbreak documento original & Sí & Interno \\
+estado\_\allowbreak erp
+varchar(24) & solicitado, incierto, emitido, rechazado, anulado & Sí & Interno \\
+clave\_\allowbreak solicitud
+uuid & Clave idempotente estable por carga & Sí & Interno \\
+\end{tablalafrox}
+
+\section*{acuse}
+Dominio: BD\_\allowbreak COBRANZA\_\allowbreak FINANZAS. Módulo: M7. Propietario: Tributación. Los acuses se registran por tipo; un MDN AS2 no equivale a aceptación comercial ni tributaria.
+
+\begin{tablalafrox}{Atributos de acuse}{tab:5-dict-acuse}{F{0.29} F{0.34} F{0.1} Y}{\cab{Atributo y tipo} & \cab{Valores /\allowbreak  validación} & \cab{Oblig.} & \cab{Sensibilidad}}
+id
+uuid & UUID estable, PK & Sí & Interno \\
+creado\_\allowbreak en
+timestamptz & UTC; instante de persistencia & Sí & Interno \\
+version
+bigint & Entero mayor o igual a 1 & Sí & Interno \\
+documento\_\allowbreak id
+uuid & Documento relacionado & Sí & Interno \\
+tipo
+varchar(24) & tecnico\_\allowbreak sii, mercaderia\_\allowbreak destinatario, mdn\_\allowbreak edi & Sí & Interno \\
+origen
+varchar(80) & ERP, SII o destinatario/\allowbreak cadena & Sí & Interno \\
+estado
+varchar(20) & recibido, aceptado, rechazado, observado & Sí & Interno \\
+objeto\_\allowbreak id
+uuid & Comprobante original & Sí & Interno \\
+ocurrido\_\allowbreak en
+timestamptz & Hora de recepción & Sí & Interno \\
+\end{tablalafrox}
+
+\section*{cobro}
+Dominio: BD\_\allowbreak COBRANZA\_\allowbreak FINANZAS. Módulo: M7. Propietario: Tesorería. No se confirma tarjeta por timeout. El efectivo capturado se concilia con rendición; no se suma dos veces por reintento.
+
+\begin{tablalafrox}{Atributos de cobro}{tab:5-dict-cobro}{F{0.29} F{0.34} F{0.1} Y}{\cab{Atributo y tipo} & \cab{Valores /\allowbreak  validación} & \cab{Oblig.} & \cab{Sensibilidad}}
+id
+uuid & UUID estable, PK & Sí & Interno \\
+creado\_\allowbreak en
+timestamptz & UTC; instante de persistencia & Sí & Interno \\
+version
+bigint & Entero mayor o igual a 1 & Sí & Interno \\
+entrega\_\allowbreak id
+uuid & Entrega que origina pago & Sí & Interno \\
+conductor\_\allowbreak id
+uuid & Custodio en turno & Sí & Personal \\
+medio
+varchar(16) & efectivo, tarjeta, transferencia, credito & Sí & Interno \\
+monto\_\allowbreak cifrado
+bytea & Importe CLP no negativo cifrado & Sí & Financiero restringido \\
+referencia\_\allowbreak pasarela
+varchar(100) & Referencia tokenizada; sin PAN ni CVV & No & Financiero restringido \\
+estado
+varchar(16) & capturado, confirmado, incierto, rechazado & Sí & Interno \\
+ocurrido\_\allowbreak en
+timestamptz & Hora del pago & Sí & Interno \\
+\end{tablalafrox}
+
+\section*{rendicion}
+Dominio: BD\_\allowbreak COBRANZA\_\allowbreak FINANZAS. Módulo: M7. Propietario: Tesorería. Tesorería valida esperado, recibido y diferencia. Corrección por ajuste con autor y motivo; la captura del conductor no es cierre contable ERP.
+
+\begin{tablalafrox}{Atributos de rendicion}{tab:5-dict-rendicion}{F{0.29} F{0.34} F{0.1} Y}{\cab{Atributo y tipo} & \cab{Valores /\allowbreak  validación} & \cab{Oblig.} & \cab{Sensibilidad}}
+id
+uuid & UUID estable, PK & Sí & Interno \\
+creado\_\allowbreak en
+timestamptz & UTC; instante de persistencia & Sí & Interno \\
+version
+bigint & Entero mayor o igual a 1 & Sí & Interno \\
+conductor\_\allowbreak id
+uuid & Autor/\allowbreak custodio & Sí & Personal \\
+viaje\_\allowbreak id
+uuid & Viaje rendido & Sí & Interno \\
+esperado\_\allowbreak cifrado
+bytea & Suma de cobros de efectivo confirmados & Sí & Financiero restringido \\
+recibido\_\allowbreak cifrado
+bytea & Monto contado por Tesorería & Sí & Financiero restringido \\
+causal\_\allowbreak diferencia
+varchar(160) & Explicación obligatoria si hay diferencia & No & Financiero restringido \\
+estado
+varchar(16) & abierta, conciliada, observada, cerrada & Sí & Interno \\
+\end{tablalafrox}
+
+\section*{saldo\_\allowbreak credito}
+Dominio: BD\_\allowbreak COBRANZA\_\allowbreak FINANZAS. Módulo: M7. Propietario: Tesorería. Proyección del ERP; no se sustituye con un saldo offline. M3 presenta antigüedad y no habilita crédito adicional durante incertidumbre.
+
+\begin{tablalafrox}{Atributos de saldo\_\allowbreak credito}{tab:5-dict-saldo_credito}{F{0.29} F{0.34} F{0.1} Y}{\cab{Atributo y tipo} & \cab{Valores /\allowbreak  validación} & \cab{Oblig.} & \cab{Sensibilidad}}
+id
+uuid & UUID estable, PK & Sí & Interno \\
+creado\_\allowbreak en
+timestamptz & UTC; instante de persistencia & Sí & Interno \\
+version
+bigint & Entero mayor o igual a 1 & Sí & Interno \\
+cliente\_\allowbreak id
+uuid & Maestro cliente único & Sí & Interno \\
+saldo\_\allowbreak cifrado
+bytea & Saldo vivo CLP cifrado & Sí & Financiero restringido \\
+limite\_\allowbreak cifrado
+bytea & Límite autorizado cifrado & Sí & Financiero restringido \\
+bloqueado
+boolean & Restricción comunicada por ERP & Sí & Interno \\
+vigente\_\allowbreak en
+timestamptz & Fecha de fuente ERP & Sí & Interno \\
+\end{tablalafrox}
+
+\section*{devolucion}
+Dominio: BD\_\allowbreak INVENTARIO. Módulo: M8. Propietario: Operaciones. Recepción física local no acredita aptitud ni abono. Calidad decide reingreso; ERP emite documento posterior enlazado al original.
+
+\begin{tablalafrox}{Atributos de devolucion}{tab:5-dict-devolucion}{F{0.29} F{0.34} F{0.1} Y}{\cab{Atributo y tipo} & \cab{Valores /\allowbreak  validación} & \cab{Oblig.} & \cab{Sensibilidad}}
+id
+uuid & UUID estable, PK & Sí & Interno \\
+creado\_\allowbreak en
+timestamptz & UTC; instante de persistencia & Sí & Interno \\
+version
+bigint & Entero mayor o igual a 1 & Sí & Interno \\
+entrega\_\allowbreak id
+uuid & Entrega o intento original & Sí & Interno \\
+lote\_\allowbreak id
+uuid & Lote de retorno & Sí & Interno \\
+cantidad
+numeric(14,3) & Mayor que cero & Sí & Interno \\
+causal
+varchar(40) & daño, vencimiento, no\_\allowbreak solicitado, otra & Sí & Interno \\
+estado
+varchar(20) & capturada, recibida, cuarentena, liberada, descartada & Sí & Interno \\
+documento\_\allowbreak posterior\_\allowbreak id
+uuid & Documento emitido por ERP si corresponde & No & Interno \\
+\end{tablalafrox}
+
+\section*{movimiento\_\allowbreak envase}
+Dominio: BD\_\allowbreak INVENTARIO. Módulo: M8. Propietario: Operaciones. Saldo por cliente/\allowbreak tipo = suma de movimientos aceptados. No se crea una identidad por cada canastillo; disputa no elimina evidencia del hecho.
+
+\begin{tablalafrox}{Atributos de movimiento\_\allowbreak envase}{tab:5-dict-movimiento_envase}{F{0.29} F{0.34} F{0.1} Y}{\cab{Atributo y tipo} & \cab{Valores /\allowbreak  validación} & \cab{Oblig.} & \cab{Sensibilidad}}
+id
+uuid & UUID estable, PK & Sí & Interno \\
+creado\_\allowbreak en
+timestamptz & UTC; instante de persistencia & Sí & Interno \\
+version
+bigint & Entero mayor o igual a 1 & Sí & Interno \\
+cliente\_\allowbreak id
+uuid & Cuenta corriente del cliente & Sí & Interno \\
+tipo\_\allowbreak envase
+varchar(16) & canastillo, pallet & Sí & Interno \\
+cantidad\_\allowbreak delta
+integer & Cargo positivo, retorno negativo; distinto de cero & Sí & Interno \\
+entrega\_\allowbreak id
+uuid & Entrega de origen si aplica & No & Interno \\
+sitio\_\allowbreak id
+uuid & Sitio de recepción física & Sí & Interno \\
+estado
+varchar(16) & capturado, aceptado, disputado, compensado & Sí & Interno \\
+evidencia\_\allowbreak id
+uuid & Constancia vinculada & No & Personal restringido \\
+\end{tablalafrox}
+
+\section*{sensor}
+Dominio: BD\_\allowbreak TELEMETRIA. Módulo: M9. Propietario: Calidad. Exactamente una ubicación sitio/\allowbreak vehículo; gateway redundante no crea un segundo sensor físico.
+
+\begin{tablalafrox}{Atributos de sensor}{tab:5-dict-sensor}{F{0.29} F{0.34} F{0.1} Y}{\cab{Atributo y tipo} & \cab{Valores /\allowbreak  validación} & \cab{Oblig.} & \cab{Sensibilidad}}
+id
+uuid & UUID estable, PK & Sí & Interno \\
+creado\_\allowbreak en
+timestamptz & UTC; instante de persistencia & Sí & Interno \\
+version
+bigint & Entero mayor o igual a 1 & Sí & Interno \\
+codigo
+varchar(40) & Identificador único del sensor físico & Sí & Interno \\
+sitio\_\allowbreak id
+uuid & Sitio; nulo para vehículo & No & Interno \\
+vehiculo\_\allowbreak id
+uuid & Vehículo; nulo para cámara & No & Interno \\
+calibrado\_\allowbreak en
+date & Fecha de última calibración & Sí & Interno \\
+intervalo\_\allowbreak seg
+integer & Muestreo positivo según perfil técnico & Sí & Interno \\
+\end{tablalafrox}
+
+\section*{lectura\_\allowbreak termica}
+Dominio: BD\_\allowbreak TELEMETRIA. Módulo: M9. Propietario: Calidad. Clave de deduplicación sensor/\allowbreak sesión/\allowbreak secuencia; conservar discrepancias de valor como incidente. Raw en DynamoDB, serie validada en Parquet y Redshift.
+
+\begin{tablalafrox}{Atributos de lectura\_\allowbreak termica}{tab:5-dict-lectura_termica}{F{0.29} F{0.34} F{0.1} Y}{\cab{Atributo y tipo} & \cab{Valores /\allowbreak  validación} & \cab{Oblig.} & \cab{Sensibilidad}}
+id
+uuid & UUID estable, PK & Sí & Interno \\
+creado\_\allowbreak en
+timestamptz & UTC; instante de persistencia & Sí & Interno \\
+version
+bigint & Entero mayor o igual a 1 & Sí & Interno \\
+sensor\_\allowbreak id
+uuid & Sensor de origen & Sí & Interno \\
+secuencia\_\allowbreak origen
+bigint & Secuencia del dispositivo y sesión & Sí & Interno \\
+sesion\_\allowbreak origen
+varchar(40) & Identifica reinicio del termógrafo & Sí & Interno \\
+ocurrido\_\allowbreak en
+timestamptz & Hora de muestreo UTC & Sí & Interno \\
+valor\_\allowbreak c
+numeric(5,2) & Temperatura Celsius & Sí & Interno \\
+calidad
+varchar(16) & valida, sospechosa, sin\_\allowbreak calibracion & Sí & Interno \\
+gateway\_\allowbreak id
+varchar(40) & Gateway que transportó, no clave de lectura & Sí & Interno \\
+\end{tablalafrox}
+
+\section*{bloqueo\_\allowbreak calidad}
+Dominio: BD\_\allowbreak CALIDAD\_\allowbreak TRAZABILIDAD. Módulo: M9. Propietario: Calidad. Bloqueo local aplica a M5 en menos de 5 s según arquitectura; liberación exige decisión motivada de Calidad, no tiempo de espera.
+
+\begin{tablalafrox}{Atributos de bloqueo\_\allowbreak calidad}{tab:5-dict-bloqueo_calidad}{F{0.29} F{0.34} F{0.1} Y}{\cab{Atributo y tipo} & \cab{Valores /\allowbreak  validación} & \cab{Oblig.} & \cab{Sensibilidad}}
+id
+uuid & UUID estable, PK & Sí & Interno \\
+creado\_\allowbreak en
+timestamptz & UTC; instante de persistencia & Sí & Interno \\
+version
+bigint & Entero mayor o igual a 1 & Sí & Interno \\
+lote\_\allowbreak id
+uuid & Lote afectado & Sí & Interno \\
+sensor\_\allowbreak id
+uuid & Sensor causante si térmico & No & Interno \\
+motivo
+varchar(80) & Excursión, retiro sanitario u observación & Sí & Interno \\
+estado
+varchar(16) & activo, liberado, descartado & Sí & Interno \\
+decisor\_\allowbreak id
+uuid & Responsable de Calidad para liberar & No & Personal \\
+ocurrido\_\allowbreak en
+timestamptz & Hora de bloqueo & Sí & Interno \\
+\end{tablalafrox}
+
+\section*{posicion\_\allowbreak flota}
+Dominio: BD\_\allowbreak TELEMETRIA. Módulo: M12. Propietario: Flota. Se ingiere por INT-15 desde telemetría existente. Plazo máximo de dato personal 12 meses; métricas agregadas irreversibles se separan del identificador de persona.
+
+\begin{tablalafrox}{Atributos de posicion\_\allowbreak flota}{tab:5-dict-posicion_flota}{F{0.29} F{0.34} F{0.1} Y}{\cab{Atributo y tipo} & \cab{Valores /\allowbreak  validación} & \cab{Oblig.} & \cab{Sensibilidad}}
+id
+uuid & UUID estable, PK & Sí & Interno \\
+creado\_\allowbreak en
+timestamptz & UTC; instante de persistencia & Sí & Interno \\
+version
+bigint & Entero mayor o igual a 1 & Sí & Interno \\
+vehiculo\_\allowbreak id
+uuid & Vehículo telemático & Sí & Interno \\
+viaje\_\allowbreak id
+uuid & Viaje asociado si existe & No & Interno \\
+referencia\_\allowbreak tercero
+varchar(100) & Clave de lectura externa única & Sí & Interno \\
+posicion\_\allowbreak cifrada
+bytea & Coordenadas cifradas a nivel de campo & Sí & Personal restringido \\
+ocurrido\_\allowbreak en
+timestamptz & Hora del GPS & Sí & Interno \\
+\end{tablalafrox}
+
+\section*{transportista}
+Dominio: BD\_\allowbreak GOBIERNO\_\allowbreak ACCESO. Módulo: M6/\allowbreak M12. Propietario: Flota. Transportista declara conductores; autorización y revocación conservan versión y rastro.
+
+\begin{tablalafrox}{Atributos de transportista}{tab:5-dict-transportista}{F{0.29} F{0.34} F{0.1} Y}{\cab{Atributo y tipo} & \cab{Valores /\allowbreak  validación} & \cab{Oblig.} & \cab{Sensibilidad}}
+id
+uuid & UUID estable, PK & Sí & Interno \\
+creado\_\allowbreak en
+timestamptz & UTC; instante de persistencia & Sí & Interno \\
+version
+bigint & Entero mayor o igual a 1 & Sí & Interno \\
+rut
+varchar(12) & RUT válido único & Sí & Personal \\
+razon\_\allowbreak social
+varchar(160) & Empresa autorizada & Sí & Personal \\
+estado
+varchar(16) & activo, suspendido, finalizado & Sí & Interno \\
+\end{tablalafrox}
+
+\section*{vinculo\_\allowbreak conductor}
+Dominio: BD\_\allowbreak GOBIERNO\_\allowbreak ACCESO. Módulo: M6. Propietario: Flota. Autor de POD refiere actor y vínculo histórico. Reemplazar conductor requiere un vínculo nuevo, sin sobrescribir el anterior.
+
+\begin{tablalafrox}{Atributos de vinculo\_\allowbreak conductor}{tab:5-dict-vinculo_conductor}{F{0.29} F{0.34} F{0.1} Y}{\cab{Atributo y tipo} & \cab{Valores /\allowbreak  validación} & \cab{Oblig.} & \cab{Sensibilidad}}
+id
+uuid & UUID estable, PK & Sí & Interno \\
+creado\_\allowbreak en
+timestamptz & UTC; instante de persistencia & Sí & Interno \\
+version
+bigint & Entero mayor o igual a 1 & Sí & Interno \\
+actor\_\allowbreak id
+uuid & Identidad Keycloak estable & Sí & Personal \\
+transportista\_\allowbreak id
+uuid & Empresa; nulo si propio & No & Interno \\
+desde
+timestamptz & Inicio del vínculo & Sí & Interno \\
+hasta
+timestamptz & Fin del vínculo, posterior al inicio & No & Interno \\
+estado
+varchar(16) & activo, revocado, expirado & Sí & Interno \\
+\end{tablalafrox}
+
+\section*{autorizacion\_\allowbreak turno}
+Dominio: BD\_\allowbreak GOBIERNO\_\allowbreak ACCESO. Módulo: M1/\allowbreak M5/\allowbreak M6. Propietario: Seguridad. El caché de identidad de 24 h no extiende la credencial del turno. No se almacenan PIN ni tokens en texto claro.
+
+\begin{tablalafrox}{Atributos de autorizacion\_\allowbreak turno}{tab:5-dict-autorizacion_turno}{F{0.29} F{0.34} F{0.1} Y}{\cab{Atributo y tipo} & \cab{Valores /\allowbreak  validación} & \cab{Oblig.} & \cab{Sensibilidad}}
+id
+uuid & UUID estable, PK & Sí & Interno \\
+creado\_\allowbreak en
+timestamptz & UTC; instante de persistencia & Sí & Interno \\
+version
+bigint & Entero mayor o igual a 1 & Sí & Interno \\
+actor\_\allowbreak id
+uuid & Identidad del autor & Sí & Personal \\
+dispositivo\_\allowbreak id
+uuid & Equipo autorizado & Sí & Interno \\
+sitio\_\allowbreak id
+uuid & Sitio o ámbito del turno & Sí & Interno \\
+valida\_\allowbreak hasta
+timestamptz & 8 h bodega o 14 h terreno según arquitectura & Sí & Interno \\
+manifiesto\_\allowbreak hash
+char(64) & Manifiesto firmado de autorización & Sí & Interno \\
+estado
+varchar(16) & vigente, revocada, expirada & Sí & Interno \\
+\end{tablalafrox}
+
+\section*{mensaje\_\allowbreak edi}
+Dominio: BD\_\allowbreak EDI\_\allowbreak CANALMODERNO. Módulo: M11. Propietario: Comercial. MDN se separa de respuesta comercial; M11 solicita a M3 el pedido y no escribe reserva M2.
+
+\begin{tablalafrox}{Atributos de mensaje\_\allowbreak edi}{tab:5-dict-mensaje_edi}{F{0.29} F{0.34} F{0.1} Y}{\cab{Atributo y tipo} & \cab{Valores /\allowbreak  validación} & \cab{Oblig.} & \cab{Sensibilidad}}
+id
+uuid & UUID estable, PK & Sí & Interno \\
+creado\_\allowbreak en
+timestamptz & UTC; instante de persistencia & Sí & Interno \\
+version
+bigint & Entero mayor o igual a 1 & Sí & Interno \\
+cadena\_\allowbreak id
+varchar(40) & Socio y perfil versionado & Sí & Interno \\
+referencia\_\allowbreak externa
+varchar(100) & Documento único por cadena/\allowbreak tipo & Sí & Interno \\
+tipo
+varchar(24) & pedido, respuesta, aviso\_\allowbreak despacho, factura & Sí & Interno \\
+formato
+varchar(16) & EANCOM, GS1\_\allowbreak XML, EPCIS & Sí & Interno \\
+objeto\_\allowbreak id
+uuid & Original AS2 y transformación & Sí & Interno \\
+pedido\_\allowbreak id
+uuid & Pedido canónico resultante & No & Interno \\
+estado
+varchar(20) & recibido, validado, traducido, observado, respondido & Sí & Interno \\
+\end{tablalafrox}
+
+\section*{notificacion}
+Dominio: BD\_\allowbreak MAILS\_\allowbreak NOTIF. Módulo: M3/\allowbreak M6. Propietario: Comercial. UNIQUE(evento\_\allowbreak id,cliente\_\allowbreak id,canal,plantilla); enviada no implica leída. Cliente sin canal digital conserva atención por preventista/\allowbreak conductor.
+
+\begin{tablalafrox}{Atributos de notificacion}{tab:5-dict-notificacion}{F{0.29} F{0.34} F{0.1} Y}{\cab{Atributo y tipo} & \cab{Valores /\allowbreak  validación} & \cab{Oblig.} & \cab{Sensibilidad}}
+id
+uuid & UUID estable, PK & Sí & Interno \\
+creado\_\allowbreak en
+timestamptz & UTC; instante de persistencia & Sí & Interno \\
+version
+bigint & Entero mayor o igual a 1 & Sí & Interno \\
+cliente\_\allowbreak id
+uuid & Destinatario autorizado & Sí & Interno \\
+canal
+varchar(16) & sms, mensajeria, correo, app & Sí & Personal \\
+plantilla
+varchar(40) & Plantilla versionada sin datos de pago en claro & Sí & Interno \\
+evento\_\allowbreak id
+uuid & Hecho que genera aviso & Sí & Interno \\
+estado
+varchar(16) & pendiente, enviada, entregada, fallida & Sí & Interno \\
+referencia\_\allowbreak proveedor
+varchar(100) & Acuse técnico del proveedor & No & Interno \\
+\end{tablalafrox}
+
+\section*{objeto\_\allowbreak documental}
+Dominio: S3\_\allowbreak DOCS. Módulo: M6/\allowbreak M7/\allowbreak M9. Propietario: Operaciones y Tributación. Conservar manifiesto y hashes; transacción de metadatos solo publica evidencia verificada. Object Lock se aplica por categoría, no indefinidamente a todo objeto.
+
+\begin{tablalafrox}{Atributos de objeto\_\allowbreak documental}{tab:5-dict-objeto_documental}{F{0.29} F{0.34} F{0.1} Y}{\cab{Atributo y tipo} & \cab{Valores /\allowbreak  validación} & \cab{Oblig.} & \cab{Sensibilidad}}
+id
+uuid & UUID estable, PK & Sí & Interno \\
+creado\_\allowbreak en
+timestamptz & UTC; instante de persistencia & Sí & Interno \\
+version
+bigint & Entero mayor o igual a 1 & Sí & Interno \\
+clave\_\allowbreak objeto
+varchar(240) & Ruta opaca; sin RUT ni nombre en URL & Sí & Interno \\
+version\_\allowbreak objeto
+varchar(160) & Versión inmutable identificable & Sí & Interno \\
+mime
+varchar(80) & Tipo autorizado & Sí & Interno \\
+hash\_\allowbreak sha256
+char(64) & Huella verificable & Sí & Interno \\
+tamano\_\allowbreak bytes
+bigint & Mayor que cero & Sí & Interno \\
+retener\_\allowbreak hasta
+timestamptz & Política por categoría y bloqueo legal & Sí & Interno \\
+cifrado\_\allowbreak clave\_\allowbreak id
+varchar(160) & Referencia a KMS, nunca secreto & Sí & Interno \\
+\end{tablalafrox}
+
+\section*{evento\_\allowbreak outbox}
+Dominio: dominio\_\allowbreak productor. Módulo: M1–M12. Propietario: Propietario del módulo. Persiste junto con cambio y auditoría en una transacción; solo se purga después de acuse durable y plazo de deduplicación.
+
+\begin{tablalafrox}{Atributos de evento\_\allowbreak outbox}{tab:5-dict-evento_outbox}{F{0.29} F{0.34} F{0.1} Y}{\cab{Atributo y tipo} & \cab{Valores /\allowbreak  validación} & \cab{Oblig.} & \cab{Sensibilidad}}
+id
+uuid & UUID estable, PK & Sí & Interno \\
+creado\_\allowbreak en
+timestamptz & UTC; instante de persistencia & Sí & Interno \\
+version
+bigint & Entero mayor o igual a 1 & Sí & Interno \\
+event\_\allowbreak id
+uuid & Identificador único & Sí & Interno \\
+transaction\_\allowbreak id
+uuid & Correlación de extremo a extremo & Sí & Interno \\
+agregado\_\allowbreak id
+uuid & Entidad cuya versión cambia & Sí & Interno \\
+agregado\_\allowbreak version
+bigint & Versión positiva & Sí & Interno \\
+sitio\_\allowbreak id
+uuid & Origen del hecho & Sí & Interno \\
+tipo
+varchar(80) & Nombre canónico en pasado & Sí & Interno \\
+schema\_\allowbreak version
+varchar(16) & SemVer del contrato & Sí & Interno \\
+payload
+jsonb & Esquema validado; datos personales minimizados/\allowbreak cifrados & Sí & Según carga \\
+estado
+varchar(16) & pendiente, enviado, acusado, excepcion & Sí & Interno \\
+\end{tablalafrox}
+
+\section*{resultado\_\allowbreak inbox}
+Dominio: dominio\_\allowbreak consumidor. Módulo: M1–M12. Propietario: Propietario del módulo. Duplicado con misma huella devuelve resultado; distinto payload bajo mismo UUID se aísla. Mensaje de más de 30 días requiere revisión antes de nueva escritura.
+
+\begin{tablalafrox}{Atributos de resultado\_\allowbreak inbox}{tab:5-dict-resultado_inbox}{F{0.29} F{0.34} F{0.1} Y}{\cab{Atributo y tipo} & \cab{Valores /\allowbreak  validación} & \cab{Oblig.} & \cab{Sensibilidad}}
+id
+uuid & UUID estable, PK & Sí & Interno \\
+creado\_\allowbreak en
+timestamptz & UTC; instante de persistencia & Sí & Interno \\
+version
+bigint & Entero mayor o igual a 1 & Sí & Interno \\
+event\_\allowbreak id
+uuid & Clave idempotente única por consumidor & Sí & Interno \\
+hash\_\allowbreak payload
+char(64) & Huella de carga canónica & Sí & Interno \\
+regla
+varchar(80) & Regla aplicada y versión & Sí & Interno \\
+resultado
+jsonb & Estado y referencia de efecto durable & Sí & Interno \\
+actor\_\allowbreak id
+uuid & Autor original o cuenta de sistema & Sí & Personal \\
+resuelto\_\allowbreak en
+timestamptz & Instante de persistencia & Sí & Interno \\
+expira\_\allowbreak en
+timestamptz & 30 días como mínimo antes de archivo & Sí & Interno \\
+\end{tablalafrox}
+
+\section*{auditoria}
+Dominio: dominio\_\allowbreak productor. Módulo: M1–M12. Propietario: Seguridad y dueño de negocio. La bitácora de negocio acompaña al registro durante su retención, aunque los logs técnicos tengan otro plazo. Registrar también lectura sensible.
+
+\begin{tablalafrox}{Atributos de auditoria}{tab:5-dict-auditoria}{F{0.29} F{0.34} F{0.1} Y}{\cab{Atributo y tipo} & \cab{Valores /\allowbreak  validación} & \cab{Oblig.} & \cab{Sensibilidad}}
+id
+uuid & UUID estable, PK & Sí & Interno \\
+creado\_\allowbreak en
+timestamptz & UTC; instante de persistencia & Sí & Interno \\
+version
+bigint & Entero mayor o igual a 1 & Sí & Interno \\
+entidad
+varchar(80) & Tipo de registro & Sí & Interno \\
+entidad\_\allowbreak id
+uuid & Registro afectado & Sí & Interno \\
+actor\_\allowbreak id
+uuid & Autor y vínculo verificables & Sí & Personal \\
+dispositivo\_\allowbreak id
+uuid & Equipo o cuenta técnica & Sí & Interno \\
+accion
+varchar(40) & crear, modificar, compensar, consultar\_\allowbreak sensible, eliminar & Sí & Interno \\
+antes\_\allowbreak cifrado
+bytea & Valores anteriores protegidos; nulo al crear & No & Según carga \\
+despues\_\allowbreak cifrado
+bytea & Valores posteriores protegidos; nulo al eliminar & No & Según carga \\
+transaction\_\allowbreak id
+uuid & Correlación & Sí & Interno \\
+ocurrido\_\allowbreak en
+timestamptz & Hora del hecho & Sí & Interno \\
+\end{tablalafrox}
+
+\section*{carga\_\allowbreak migracion}
+Dominio: BD\_\allowbreak MAESTROS\_\allowbreak CONF. Módulo: Migración. Propietario: Responsable de migración. Aceptadas más cuarentena deben explicar el total de origen; conservar mapeo de IDs y reporte de diferencias.
+
+\begin{tablalafrox}{Atributos de carga\_\allowbreak migracion}{tab:5-dict-carga_migracion}{F{0.29} F{0.34} F{0.1} Y}{\cab{Atributo y tipo} & \cab{Valores /\allowbreak  validación} & \cab{Oblig.} & \cab{Sensibilidad}}
+id
+uuid & UUID estable, PK & Sí & Interno \\
+creado\_\allowbreak en
+timestamptz & UTC; instante de persistencia & Sí & Interno \\
+version
+bigint & Entero mayor o igual a 1 & Sí & Interno \\
+fuente
+varchar(160) & Sistema y exportación versionada & Sí & Interno \\
+hash\_\allowbreak origen
+char(64) & Huella del extracto protegido & Sí & Interno \\
+reglas\_\allowbreak version
+varchar(40) & Versión de mapeo & Sí & Interno \\
+filas\_\allowbreak origen
+bigint & Recuento no negativo & Sí & Interno \\
+filas\_\allowbreak aceptadas
+bigint & Recuento no negativo & Sí & Interno \\
+filas\_\allowbreak cuarentena
+bigint & Recuento no negativo & Sí & Interno \\
+estado
+varchar(20) & perfilada, ensayada, conciliada, revertida & Sí & Interno \\
+\end{tablalafrox}
+
+\section*{hecho\_\allowbreak entrega}
+Dominio: BD\_\allowbreak BI\_\allowbreak GERENCIA. Módulo: M10. Propietario: Control de gestión. Hecho a grano de entrega; OTIF se agrega por pedido sin contar intentos como pedidos adicionales. No almacena identidad de receptor ni ubicación personal en claro.
+
+\begin{tablalafrox}{Atributos de hecho\_\allowbreak entrega}{tab:5-dict-hecho_entrega}{F{0.29} F{0.34} F{0.1} Y}{\cab{Atributo y tipo} & \cab{Valores /\allowbreak  validación} & \cab{Oblig.} & \cab{Sensibilidad}}
+id
+uuid & UUID estable, PK & Sí & Interno \\
+creado\_\allowbreak en
+timestamptz & UTC; instante de persistencia & Sí & Interno \\
+version
+bigint & Entero mayor o igual a 1 & Sí & Interno \\
+entrega\_\allowbreak id
+uuid & Clave natural del evento operativo & Sí & Interno \\
+pedido\_\allowbreak id
+uuid & Permite evaluar OTIF por pedido & Sí & Interno \\
+fecha\_\allowbreak key
+integer & Clave a dim\_\allowbreak fecha & Sí & Interno \\
+cliente\_\allowbreak key
+bigint & Clave sustituta SCD2 & Sí & Interno \\
+sitio\_\allowbreak key
+bigint & Clave a dim\_\allowbreak sitio & Sí & Interno \\
+cantidad\_\allowbreak aceptada
+numeric(14,3) & Suma por evento, no acumulado duplicado & Sí & Interno \\
+completa
+boolean & Todas las líneas netas cubiertas & Sí & Interno \\
+a\_\allowbreak tiempo
+boolean & Recepción dentro de ventana prometida & Sí & Interno \\
+fuente\_\allowbreak event\_\allowbreak id
+uuid & Evento canónico único & Sí & Interno \\
+visible\_\allowbreak en
+timestamptz & Momento disponible en modelo semántico & Sí & Interno \\
+dataset\_\allowbreak origen
+varchar(120) & Dataset gobernado & Sí & Interno \\
+lote\_\allowbreak etl
+uuid & Ejecución con manifiesto & Sí & Interno \\
+transformation\_\allowbreak version
+varchar(40) & Regla aplicada & Sí & Interno \\
+ocurrido\_\allowbreak en
+timestamptz & Momento de origen UTC & Sí & Interno \\
+\end{tablalafrox}
+
+\section*{dim\_\allowbreak cliente}
+Dominio: BD\_\allowbreak BI\_\allowbreak GERENCIA. Módulo: M10. Propietario: Control de gestión. Intervalos sin solapamiento por cliente; hechos enlazan la versión válida al ocurrir el evento.
+
+\begin{tablalafrox}{Atributos de dim\_\allowbreak cliente}{tab:5-dict-dim_cliente}{F{0.29} F{0.34} F{0.1} Y}{\cab{Atributo y tipo} & \cab{Valores /\allowbreak  validación} & \cab{Oblig.} & \cab{Sensibilidad}}
+id
+uuid & UUID estable, PK & Sí & Interno \\
+creado\_\allowbreak en
+timestamptz & UTC; instante de persistencia & Sí & Interno \\
+version
+bigint & Entero mayor o igual a 1 & Sí & Interno \\
+cliente\_\allowbreak key
+bigint & Clave sustituta única & Sí & Interno \\
+cliente\_\allowbreak id
+uuid & Identidad seudonimizada para navegación autorizada & Sí & Personal \\
+canal
+varchar(20) & Canal en la versión histórica & Sí & Interno \\
+zona
+varchar(40) & Zona logística histórica & Sí & Interno \\
+valida\_\allowbreak desde
+timestamptz & Inicio de vigencia SCD2 & Sí & Interno \\
+valida\_\allowbreak hasta
+timestamptz & Fin exclusivo, nulo si vigente & No & Interno \\
+\end{tablalafrox}
+
+\section*{cache\_\allowbreak lectura}
+Dominio: REDIS\_\allowbreak SESIONES\_\allowbreak CACHE. Módulo: M3/\allowbreak M4. Propietario: Plataforma. Caché prescindible; no confirma stock, crédito ni pagos. Vaciarla no pierde registros de negocio.
+
+\begin{tablalafrox}{Atributos de cache\_\allowbreak lectura}{tab:5-dict-cache_lectura}{F{0.29} F{0.34} F{0.1} Y}{\cab{Atributo y tipo} & \cab{Valores /\allowbreak  validación} & \cab{Oblig.} & \cab{Sensibilidad}}
+clave
+varchar(160) & Entidad, versión, sitio y ámbito; sin PII & Sí & Interno \\
+valor
+jsonb & Proyección minimizada de lectura & Sí & Según carga \\
+version\_\allowbreak fuente
+bigint & Versión del registro publicado & Sí & Interno \\
+expira\_\allowbreak en
+timestamptz & TTL por categoría & Sí & Interno \\
+\end{tablalafrox}
+
+\section*{equivalencia\_\allowbreak maestro}
+Dominio: BD\_\allowbreak MAESTROS\_\allowbreak CONF. Módulo: ACL. Propietario: Dueño del maestro. UNIQUE(fuente,entidad,codigo\_\allowbreak externo) vigente; fusión conserva alias, origen y aprobación.
+
+\begin{tablalafrox}{Atributos de equivalencia\_\allowbreak maestro}{tab:5-dict-equivalencia_maestro}{F{0.29} F{0.34} F{0.1} Y}{\cab{Atributo y tipo} & \cab{Valores /\allowbreak  validación} & \cab{Oblig.} & \cab{Sensibilidad}}
+id
+uuid & UUID estable, PK & Sí & Interno \\
+creado\_\allowbreak en
+timestamptz & UTC; instante de persistencia & Sí & Interno \\
+version
+bigint & Entero mayor o igual a 1 & Sí & Interno \\
+fuente
+varchar(40) & ERP, WMS o cadena autorizada & Sí & Interno \\
+entidad
+varchar(40) & Tipo de entidad del catálogo & Sí & Interno \\
+codigo\_\allowbreak externo
+varchar(100) & Identificador en la fuente & Sí & Interno \\
+canonico\_\allowbreak id
+uuid & Entidad canónica referida & Sí & Interno \\
+desde
+timestamptz & Inicio de vigencia & Sí & Interno \\
+hasta
+timestamptz & Fin exclusivo, nulo si vigente & No & Interno \\
+\end{tablalafrox}
+
+\section*{dispositivo}
+Dominio: BD\_\allowbreak GOBIERNO\_\allowbreak ACCESO. Módulo: MDM. Propietario: Plataforma. Equipo compartido no determina autor: autorización de turno identifica la persona.
+
+\begin{tablalafrox}{Atributos de dispositivo}{tab:5-dict-dispositivo}{F{0.29} F{0.34} F{0.1} Y}{\cab{Atributo y tipo} & \cab{Valores /\allowbreak  validación} & \cab{Oblig.} & \cab{Sensibilidad}}
+id
+uuid & UUID estable, PK & Sí & Interno \\
+creado\_\allowbreak en
+timestamptz & UTC; instante de persistencia & Sí & Interno \\
+version
+bigint & Entero mayor o igual a 1 & Sí & Interno \\
+codigo\_\allowbreak mdm
+varchar(80) & Inventario MDM único & Sí & Interno \\
+tipo
+varchar(20) & preventa, reparto, hht, gateway & Sí & Interno \\
+sitio\_\allowbreak id
+uuid & Sitio de adscripción & No & Interno \\
+estado
+varchar(20) & activo, bloqueado, perdido, retirado & Sí & Interno \\
+ultima\_\allowbreak sync
+timestamptz & Último acuse & No & Interno \\
+\end{tablalafrox}
+
+\section*{dim\_\allowbreak fecha}
+Dominio: BD\_\allowbreak BI\_\allowbreak GERENCIA. Módulo: M10. Propietario: Control de gestión. Clave fecha no sustituye hora UTC del hecho.
+
+\begin{tablalafrox}{Atributos de dim\_\allowbreak fecha}{tab:5-dict-dim_fecha}{F{0.29} F{0.34} F{0.1} Y}{\cab{Atributo y tipo} & \cab{Valores /\allowbreak  validación} & \cab{Oblig.} & \cab{Sensibilidad}}
+id
+uuid & UUID estable, PK & Sí & Interno \\
+creado\_\allowbreak en
+timestamptz & UTC; instante de persistencia & Sí & Interno \\
+version
+bigint & Entero mayor o igual a 1 & Sí & Interno \\
+fecha\_\allowbreak key
+integer & AAAAMMDD único & Sí & Interno \\
+fecha
+date & Día America/\allowbreak Santiago & Sí & Interno \\
+mes
+integer & 1 a 12 & Sí & Interno \\
+anio
+integer & Año calendario & Sí & Interno \\
+temporada
+varchar(24) & normal, septiembre, diciembre & Sí & Interno \\
+\end{tablalafrox}
+
+\section*{dim\_\allowbreak sitio}
+Dominio: BD\_\allowbreak BI\_\allowbreak GERENCIA. Módulo: M10. Propietario: Control de gestión. Mapeo de código estable; historia cuando cambia clasificación.
+
+\begin{tablalafrox}{Atributos de dim\_\allowbreak sitio}{tab:5-dict-dim_sitio}{F{0.29} F{0.34} F{0.1} Y}{\cab{Atributo y tipo} & \cab{Valores /\allowbreak  validación} & \cab{Oblig.} & \cab{Sensibilidad}}
+id
+uuid & UUID estable, PK & Sí & Interno \\
+creado\_\allowbreak en
+timestamptz & UTC; instante de persistencia & Sí & Interno \\
+version
+bigint & Entero mayor o igual a 1 & Sí & Interno \\
+sitio\_\allowbreak key
+bigint & Clave sustituta única & Sí & Interno \\
+sitio\_\allowbreak id
+uuid & Sitio canónico & Sí & Interno \\
+codigo
+varchar(24) & Código de sitio & Sí & Interno \\
+tipo
+varchar(16) & cd, crossdock, oficina & Sí & Interno \\
+\end{tablalafrox}
+
+\section*{dim\_\allowbreak producto}
+Dominio: BD\_\allowbreak BI\_\allowbreak GERENCIA. Módulo: M10. Propietario: Control de gestión. Sin solapamiento de vigencia por producto.
+
+\begin{tablalafrox}{Atributos de dim\_\allowbreak producto}{tab:5-dict-dim_producto}{F{0.29} F{0.34} F{0.1} Y}{\cab{Atributo y tipo} & \cab{Valores /\allowbreak  validación} & \cab{Oblig.} & \cab{Sensibilidad}}
+id
+uuid & UUID estable, PK & Sí & Interno \\
+creado\_\allowbreak en
+timestamptz & UTC; instante de persistencia & Sí & Interno \\
+version
+bigint & Entero mayor o igual a 1 & Sí & Interno \\
+producto\_\allowbreak key
+bigint & Clave sustituta única & Sí & Interno \\
+producto\_\allowbreak id
+uuid & Producto canónico & Sí & Interno \\
+gtin
+varchar(14) & Presentación histórica & Sí & Interno \\
+familia
+varchar(40) & Familia autorizada & Sí & Interno \\
+condicion\_\allowbreak termica
+varchar(16) & seco, refrigerado, congelado & Sí & Interno \\
+valida\_\allowbreak desde
+timestamptz & Inicio SCD2 & Sí & Interno \\
+valida\_\allowbreak hasta
+timestamptz & Fin exclusivo, nulo vigente & No & Interno \\
+\end{tablalafrox}
+
+\section*{dim\_\allowbreak ruta}
+Dominio: BD\_\allowbreak BI\_\allowbreak GERENCIA. Módulo: M10. Propietario: Control de gestión. UNIQUE(viaje\_\allowbreak id,version\_\allowbreak ruta); no expone GPS personal.
+
+\begin{tablalafrox}{Atributos de dim\_\allowbreak ruta}{tab:5-dict-dim_ruta}{F{0.29} F{0.34} F{0.1} Y}{\cab{Atributo y tipo} & \cab{Valores /\allowbreak  validación} & \cab{Oblig.} & \cab{Sensibilidad}}
+id
+uuid & UUID estable, PK & Sí & Interno \\
+creado\_\allowbreak en
+timestamptz & UTC; instante de persistencia & Sí & Interno \\
+version
+bigint & Entero mayor o igual a 1 & Sí & Interno \\
+ruta\_\allowbreak key
+bigint & Clave sustituta única & Sí & Interno \\
+viaje\_\allowbreak id
+uuid & Viaje canónico & Sí & Interno \\
+version\_\allowbreak ruta
+bigint & Versión aprobada & Sí & Interno \\
+zona
+varchar(40) & Zona logística & Sí & Interno \\
+\end{tablalafrox}
+
+\section*{dim\_\allowbreak causal}
+Dominio: BD\_\allowbreak BI\_\allowbreak GERENCIA. Módulo: M10. Propietario: Control de gestión. Conservar versión del significado histórico.
+
+\begin{tablalafrox}{Atributos de dim\_\allowbreak causal}{tab:5-dict-dim_causal}{F{0.29} F{0.34} F{0.1} Y}{\cab{Atributo y tipo} & \cab{Valores /\allowbreak  validación} & \cab{Oblig.} & \cab{Sensibilidad}}
+id
+uuid & UUID estable, PK & Sí & Interno \\
+creado\_\allowbreak en
+timestamptz & UTC; instante de persistencia & Sí & Interno \\
+version
+bigint & Entero mayor o igual a 1 & Sí & Interno \\
+causal\_\allowbreak key
+bigint & Clave sustituta única & Sí & Interno \\
+codigo
+varchar(40) & Código gobernado & Sí & Interno \\
+familia
+varchar(20) & faltante, daño, rechazo, demora, calidad, otra & Sí & Interno \\
+descripcion
+varchar(160) & Definición de uso & Sí & Interno \\
+\end{tablalafrox}
+
+\section*{hecho\_\allowbreak pedido}
+Dominio: BD\_\allowbreak BI\_\allowbreak GERENCIA. Módulo: M10. Propietario: Control de gestión. Línea/\allowbreak version; seleccionar versión vigente, no sumar revisiones.
+
+\begin{tablalafrox}{Atributos de hecho\_\allowbreak pedido}{tab:5-dict-hecho_pedido}{F{0.29} F{0.34} F{0.1} Y}{\cab{Atributo y tipo} & \cab{Valores /\allowbreak  validación} & \cab{Oblig.} & \cab{Sensibilidad}}
+id
+uuid & UUID estable, PK & Sí & Interno \\
+creado\_\allowbreak en
+timestamptz & UTC; instante de persistencia & Sí & Interno \\
+version
+bigint & Entero mayor o igual a 1 & Sí & Interno \\
+linea\_\allowbreak id
+uuid & Línea canónica & Sí & Interno \\
+version\_\allowbreak linea
+bigint & Versión de compromiso & Sí & Interno \\
+fecha\_\allowbreak key
+integer & dim\_\allowbreak fecha & Sí & Interno \\
+cliente\_\allowbreak key
+bigint & dim\_\allowbreak cliente SCD2 & Sí & Interno \\
+producto\_\allowbreak key
+bigint & dim\_\allowbreak producto SCD2 & Sí & Interno \\
+cantidad\_\allowbreak comprometida
+numeric(14,3) & Mayor que cero en unidad base & Sí & Interno \\
+fuente\_\allowbreak event\_\allowbreak id
+uuid & Evento canónico único & Sí & Interno \\
+dataset\_\allowbreak origen
+varchar(120) & Dataset gobernado & Sí & Interno \\
+lote\_\allowbreak etl
+uuid & Ejecución con manifiesto & Sí & Interno \\
+transformation\_\allowbreak version
+varchar(40) & Regla aplicada & Sí & Interno \\
+ocurrido\_\allowbreak en
+timestamptz & Momento de origen UTC & Sí & Interno \\
+visible\_\allowbreak en
+timestamptz & Momento disponible en modelo semántico & Sí & Interno \\
+\end{tablalafrox}
+
+\section*{hecho\_\allowbreak movimiento}
+Dominio: BD\_\allowbreak BI\_\allowbreak GERENCIA. Módulo: M10. Propietario: Control de gestión. No mezclar delta y snapshot de saldo en una misma suma.
+
+\begin{tablalafrox}{Atributos de hecho\_\allowbreak movimiento}{tab:5-dict-hecho_movimiento}{F{0.29} F{0.34} F{0.1} Y}{\cab{Atributo y tipo} & \cab{Valores /\allowbreak  validación} & \cab{Oblig.} & \cab{Sensibilidad}}
+id
+uuid & UUID estable, PK & Sí & Interno \\
+creado\_\allowbreak en
+timestamptz & UTC; instante de persistencia & Sí & Interno \\
+version
+bigint & Entero mayor o igual a 1 & Sí & Interno \\
+movimiento\_\allowbreak id
+uuid & Movimiento canónico único & Sí & Interno \\
+fecha\_\allowbreak key
+integer & dim\_\allowbreak fecha & Sí & Interno \\
+sitio\_\allowbreak key
+bigint & dim\_\allowbreak sitio & Sí & Interno \\
+producto\_\allowbreak key
+bigint & dim\_\allowbreak producto & Sí & Interno \\
+lote\_\allowbreak id
+uuid & Referencia sanitaria & Sí & Interno \\
+cantidad\_\allowbreak delta
+numeric(14,3) & Delta firmado & Sí & Interno \\
+fuente\_\allowbreak event\_\allowbreak id
+uuid & Evento canónico único & Sí & Interno \\
+dataset\_\allowbreak origen
+varchar(120) & Dataset gobernado & Sí & Interno \\
+lote\_\allowbreak etl
+uuid & Ejecución con manifiesto & Sí & Interno \\
+transformation\_\allowbreak version
+varchar(40) & Regla aplicada & Sí & Interno \\
+ocurrido\_\allowbreak en
+timestamptz & Momento de origen UTC & Sí & Interno \\
+visible\_\allowbreak en
+timestamptz & Momento disponible en modelo semántico & Sí & Interno \\
+\end{tablalafrox}
+
+\section*{hecho\_\allowbreak temperatura}
+Dominio: BD\_\allowbreak BI\_\allowbreak GERENCIA. Módulo: M10. Propietario: Control de gestión. Hueco de muestra no acredita duración continua.
+
+\begin{tablalafrox}{Atributos de hecho\_\allowbreak temperatura}{tab:5-dict-hecho_temperatura}{F{0.29} F{0.34} F{0.1} Y}{\cab{Atributo y tipo} & \cab{Valores /\allowbreak  validación} & \cab{Oblig.} & \cab{Sensibilidad}}
+id
+uuid & UUID estable, PK & Sí & Interno \\
+creado\_\allowbreak en
+timestamptz & UTC; instante de persistencia & Sí & Interno \\
+version
+bigint & Entero mayor o igual a 1 & Sí & Interno \\
+lectura\_\allowbreak id
+uuid & Lectura deduplicada única & Sí & Interno \\
+sensor\_\allowbreak id
+uuid & Sensor físico & Sí & Interno \\
+fecha\_\allowbreak key
+integer & dim\_\allowbreak fecha & Sí & Interno \\
+sitio\_\allowbreak key
+bigint & dim\_\allowbreak sitio para cámara & No & Interno \\
+valor\_\allowbreak c
+numeric(5,2) & Valor Celsius validado & Sí & Interno \\
+fuera\_\allowbreak rango
+boolean & Regla aprobada de Calidad & Sí & Interno \\
+regla\_\allowbreak version
+varchar(40) & Versión de rango & Sí & Interno \\
+fuente\_\allowbreak event\_\allowbreak id
+uuid & Evento canónico único & Sí & Interno \\
+dataset\_\allowbreak origen
+varchar(120) & Dataset gobernado & Sí & Interno \\
+lote\_\allowbreak etl
+uuid & Ejecución con manifiesto & Sí & Interno \\
+transformation\_\allowbreak version
+varchar(40) & Regla aplicada & Sí & Interno \\
+ocurrido\_\allowbreak en
+timestamptz & Momento de origen UTC & Sí & Interno \\
+visible\_\allowbreak en
+timestamptz & Momento disponible en modelo semántico & Sí & Interno \\
+\end{tablalafrox}
+
+\section*{hecho\_\allowbreak rendicion}
+Dominio: BD\_\allowbreak BI\_\allowbreak GERENCIA. Módulo: M10. Propietario: Control de gestión. Detalle solo Tesorería; agregados no identifican personas.
+
+\begin{tablalafrox}{Atributos de hecho\_\allowbreak rendicion}{tab:5-dict-hecho_rendicion}{F{0.29} F{0.34} F{0.1} Y}{\cab{Atributo y tipo} & \cab{Valores /\allowbreak  validación} & \cab{Oblig.} & \cab{Sensibilidad}}
+id
+uuid & UUID estable, PK & Sí & Interno \\
+creado\_\allowbreak en
+timestamptz & UTC; instante de persistencia & Sí & Interno \\
+version
+bigint & Entero mayor o igual a 1 & Sí & Interno \\
+rendicion\_\allowbreak id
+uuid & Rendición de origen & Sí & Interno \\
+fecha\_\allowbreak key
+integer & dim\_\allowbreak fecha & Sí & Interno \\
+ruta\_\allowbreak key
+bigint & dim\_\allowbreak ruta & Sí & Interno \\
+esperado\_\allowbreak cifrado
+bytea & Importe CLP protegido & Sí & Financiero restringido \\
+recibido\_\allowbreak cifrado
+bytea & Importe CLP protegido & Sí & Financiero restringido \\
+causal\_\allowbreak key
+bigint & dim\_\allowbreak causal si diferencia & No & Interno \\
+fuente\_\allowbreak event\_\allowbreak id
+uuid & Evento canónico único & Sí & Interno \\
+dataset\_\allowbreak origen
+varchar(120) & Dataset gobernado & Sí & Interno \\
+lote\_\allowbreak etl
+uuid & Ejecución con manifiesto & Sí & Interno \\
+transformation\_\allowbreak version
+varchar(40) & Regla aplicada & Sí & Interno \\
+ocurrido\_\allowbreak en
+timestamptz & Momento de origen UTC & Sí & Interno \\
+visible\_\allowbreak en
+timestamptz & Momento disponible en modelo semántico & Sí & Interno \\
+\end{tablalafrox}

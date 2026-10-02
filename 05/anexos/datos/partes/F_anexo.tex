@@ -1,0 +1,27 @@
+\chapter*{Anexo 5-F --- Modelo analítico, indicadores y linaje}
+\addcontentsline{toc}{chapter}{Anexo 5-F --- Modelo analítico, indicadores y linaje}
+\label{anx:5-F}
+Las fórmulas usan una misma granularidad y sus dimensiones permiten investigar la causa del resultado sin convertir datos personales en acceso general.
+
+\section*{Esquema dimensional y frescura}
+dim\_fecha tiene día, semana, mes, temporada y zona horaria; dim\_sitio código y tipo; dim\_producto SKU, GTIN, familia y condición térmica; dim\_cliente canal y zona con intervalos SCD2; dim\_ruta viaje y versión; dim\_causal vocabulario gobernado. Cada dimensión usa clave sustituta, referencia canónica, versión y vigencia; dimensión no conocida usa clave de excepción y se regulariza preservando el hecho.
+
+hecho\_pedido: una línea/version, cantidad comprometida y fecha de promesa; hecho\_entrega: un intento, cantidades y fuente; hecho\_movimiento: un delta de stock; hecho\_temperatura: una muestra válida; hecho\_rendicion: un cierre con importes protegidos. Todos incluyen source\_event\_id, dataset de origen, lote ETL, transformation\_version, occurred\_at y visible\_at. En Parquet el manifiesto vincula rango de claves, filas, hash y esquema.
+
+Las fichas de indicadores excluyen denominador cero, mostrándolo como sin población. Un pedido cancelado antes del compromiso solo se excluye con causal autorizada y publicada; cancelarlo después no mejora artificialmente OTIF. No se suman múltiples intentos como nuevos pedidos. Las metas de negocio se conservan del caso y se acuerda su definición operacional antes de marcha blanca.
+
+El tablero muestra fecha de última transacción por sitio, cobertura, marca de agua y diferencia occurred\_at--visible\_at. Objetivos: diarios <=5 minutos, cierre <=2 horas tras último camión, gestión <=4 horas. La prueba incluye hechos tardíos de 24 h; se mide latencia total y recuperación, diferenciando retraso de conectividad. Catálogo y linaje se actualizan por ejecución y se prueban navegando del indicador al registro y extracto de origen.
+
+\begin{tablalafrox}{Fichas de indicadores}{tab:5-kpi}{F{0.18} F{0.16} F{0.32} Y}{\cab{Indicador} & \cab{Grano} & \cab{Fórmula} & \cab{Origen /\allowbreak  dimensiones}}
+OTIF & Pedido comprometido & 100 × pedidos completos y a tiempo /\allowbreak  pedidos comprometidos & Ventana y cantidades de M3/\allowbreak M6; período, sitio, canal, zona \\
+Fill rate & Línea y unidad base & 100 × unidades aceptadas /\allowbreak  unidades comprometidas & Asignación y detalle M5/\allowbreak M6; SKU, sitio, período \\
+Perfect order & Pedido & 100 × pedidos OTIF sin daño y con documentos válidos /\allowbreak  comprometidos & M3/\allowbreak M5/\allowbreak M6/\allowbreak ERP; causal, cliente, canal \\
+Faltantes & Línea & Suma max(comprometido - aceptado,0) en unidad base & M3/\allowbreak M5/\allowbreak M6; producto, lote, sitio \\
+Devoluciones & Cantidad por causal & 100 × cantidad devuelta /\allowbreak  cantidad despachada, misma unidad & M8/\allowbreak M5; período, producto, causal \\
+Merma vencimiento & Valor inventario & 100 × valor descartado por vencimiento /\allowbreak  valor medio inventario & M2/\allowbreak M9/\allowbreak ERP; valor medio diario, sitio, SKU \\
+Diferencia rendición & Viaje/\allowbreak conductor & Efectivo recibido - esperado; absolutos y causales por separado & M7; Tesorería accede a detalle cifrado \\
+Saldo envases & Cliente/\allowbreak tipo & Suma cargos - retornos aceptados; disputas separadas & M8; cliente, tipo, período \\
+Excursión térmica & Sensor/\allowbreak evento & Conteo y duración de intervalos fuera de rango aprobado & M9; sensor, lote, sitio; no inferir continuidad en huecos \\
+Costo por entrega & Entrega & Costo operativo asignado /\allowbreak  entregas del período; intentos fallidos visibles & ERP + M4/\allowbreak M6/\allowbreak M8; km, tiempo, capacidad; pesos aprobados \\
+Costo de servir & Cliente/\allowbreak canal & Ruta + atención + retornos + custodia asignados sin doble reparto & ERP/\allowbreak M4/\allowbreak M7/\allowbreak M8; reconciliar total de costos de origen \\
+\end{tablalafrox}

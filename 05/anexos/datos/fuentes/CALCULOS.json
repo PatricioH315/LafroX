@@ -1,0 +1,24 @@
+{
+  "unidades": {
+    "GB": "10^9 bytes",
+    "GiB": "2^30 bytes",
+    "KB_fuente": "1000 bytes para mantener GB de arquitectura"
+  },
+  "oltp_bytes_anual": 50748600000,
+  "pod_bytes_anual": 87720000000.0,
+  "temperatura_raw_bytes_anual": 560158200,
+  "temperatura_curada_bytes_anual": 140039550.0,
+  "gps_raw_bytes_anual": 3200904000,
+  "gps_curado_bytes_anual": 800226000.0,
+  "migracion_bytes_destino": 32109560000,
+  "migracion_gib_destino": 29.904358088970184,
+  "migracion_sensibilidad_gb": [
+    30.72956,
+    33.48956
+  ],
+  "escenarios": {
+    "pod_seis_anos_constante_gb": 526.32,
+    "pod_seis_anos_crecimiento_lineal_gb": 736.848,
+    "pod_aumento_duplicado_imagenes_gb_anual": 164.28
+  }
+}

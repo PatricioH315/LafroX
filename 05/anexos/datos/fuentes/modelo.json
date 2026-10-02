@@ -1,0 +1,5306 @@
+{
+  "version": "1.0-propuesta",
+  "base_commit": "2799de341bb425c0323119ca51d0e51e050d506a",
+  "dominios": [
+    [
+      "BD_INVENTARIO",
+      "M1/M2/M8",
+      "PostgreSQL local; proyección Aurora",
+      "Bodega",
+      "Sitio custodio",
+      "Saldo, reserva y movimientos por sitio/lote",
+      "Consistencia local; sin nueva promesa remota aislada"
+    ],
+    [
+      "BD_PREVENTA",
+      "M3",
+      "Aurora PostgreSQL; Room en terminal",
+      "Comercial",
+      "M3 nube; captura en terminal",
+      "Pedido y tarifa informada",
+      "Captura disponible; confirmación espera M2"
+    ],
+    [
+      "BD_RUTAS",
+      "M4/M12",
+      "PostgreSQL/PostGIS y Aurora compatible",
+      "Planificación/Flota",
+      "M4 versión aprobada",
+      "Viaje, restricciones y paradas",
+      "Lectura local de ruta; cambios en autoridad"
+    ],
+    [
+      "BD_PREPARACION",
+      "M5",
+      "PostgreSQL por sitio",
+      "Bodega",
+      "M5 sitio",
+      "Misión, asignación y salida",
+      "Consistencia local sobre carga vigente"
+    ],
+    [
+      "BD_REPARTO",
+      "M6",
+      "Aurora; Room en dispositivo",
+      "Operaciones",
+      "M6; hechos capturados en terreno",
+      "Entrega, rechazo y POD",
+      "Disponible para capturar; validación diferida"
+    ],
+    [
+      "BD_COBRANZA_FINANZAS",
+      "M7/ACL",
+      "Aurora; ERP externo",
+      "Tesorería/Tributación",
+      "M7 captura; ERP contabiliza y emite",
+      "Cobros, rendición, saldo proyectado, DTE",
+      "Consistencia para cargo; estado incierto ante falla"
+    ],
+    [
+      "BD_MAESTROS_CONF",
+      "M1/M3/ACL",
+      "Aurora; copias locales versionadas",
+      "Comercial/Abastecimiento",
+      "ERP identidad comercial; módulo configuración",
+      "Clientes, SKU, proveedor, sitios",
+      "Lectura local; modificación en fuente autorizada"
+    ],
+    [
+      "BD_GOBIERNO_ACCESO",
+      "Keycloak/M6",
+      "PostgreSQL Keycloak; manifiesto local",
+      "Seguridad/Flota",
+      "IdP identidad; módulo autoriza vínculo",
+      "Actor, empresa, turno y autorización",
+      "No emitir nuevas identidades aislado"
+    ],
+    [
+      "BD_CALIDAD_TRAZABILIDAD",
+      "M9",
+      "PostgreSQL local y Aurora",
+      "Calidad",
+      "M9 por lote y sitio",
+      "Lote, bloqueo, retiro y custodia",
+      "Bloqueo disponible local; liberación autorizada"
+    ],
+    [
+      "BD_TELEMETRIA",
+      "M9/M12",
+      "DynamoDB raw; S3 Parquet; Redshift",
+      "Calidad/Flota",
+      "Sensor o tercero; consumidor deduplica",
+      "Lecturas térmicas y posición",
+      "Ingesta disponible; consolidación eventual"
+    ],
+    [
+      "BD_EDI_CANALMODERNO",
+      "M11",
+      "Aurora + originales S3",
+      "Comercial",
+      "M11 traducción; M3 pedido",
+      "Equivalencias, mensajes y acuses",
+      "Respuesta comercial tras validación"
+    ],
+    [
+      "BD_BI_GERENCIA",
+      "M10",
+      "S3 Parquet + Glue + Redshift",
+      "Control de gestión",
+      "Proyección derivada, sin escritura OLTP",
+      "Hechos, dimensiones y modelo semántico",
+      "Eventual con SLA de frescura explícito"
+    ],
+    [
+      "BD_MAILS_NOTIF",
+      "Servicio notificaciones",
+      "Aurora + SNS",
+      "Comercial",
+      "Consumidor de avisos",
+      "Preferencias, entregas técnicas y reintentos",
+      "Eventual; aviso no modifica venta"
+    ],
+    [
+      "REDIS_SESIONES_CACHE",
+      "Plataforma",
+      "Redis administrado central",
+      "Plataforma",
+      "Fuente OLTP/IdP, nunca caché",
+      "Lecturas y sesiones centrales",
+      "Eventual; invalidación y bypass"
+    ],
+    [
+      "S3_DOCS",
+      "M6/M7/M9",
+      "S3 cifrado con manifiesto y Object Lock",
+      "Operaciones/Tributación",
+      "Módulo dueño del objeto",
+      "POD, XML DTE, acuses y archivos",
+      "Objeto verificado antes de publicar referencia"
+    ]
+  ],
+  "entidades": [
+    {
+      "nombre": "cliente",
+      "dominio": "BD_MAESTROS_CONF",
+      "modulo": "M3/M7",
+      "propietario": "Comercial",
+      "atributos": [
+        {
+          "nombre": "id",
+          "tipo": "uuid",
+          "valores": "UUID estable, PK",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Comercial"
+        },
+        {
+          "nombre": "creado_en",
+          "tipo": "timestamptz",
+          "valores": "UTC; instante de persistencia",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Comercial"
+        },
+        {
+          "nombre": "version",
+          "tipo": "bigint",
+          "valores": "Entero mayor o igual a 1",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Comercial"
+        },
+        {
+          "nombre": "rut",
+          "tipo": "varchar(12)",
+          "valores": "RUT normalizado y DV válido; único",
+          "obligatorio": "Sí",
+          "sensibilidad": "Personal",
+          "propietario": "Comercial"
+        },
+        {
+          "nombre": "codigo_erp",
+          "tipo": "varchar(40)",
+          "valores": "Identificador único en ERP",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Comercial"
+        },
+        {
+          "nombre": "razon_social",
+          "tipo": "varchar(160)",
+          "valores": "Texto no vacío",
+          "obligatorio": "Sí",
+          "sensibilidad": "Personal",
+          "propietario": "Comercial"
+        },
+        {
+          "nombre": "canal",
+          "tipo": "varchar(20)",
+          "valores": "tradicional, food_service, cadena",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Comercial"
+        },
+        {
+          "nombre": "estado",
+          "tipo": "varchar(16)",
+          "valores": "activo, bloqueado, inactivo",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Comercial"
+        },
+        {
+          "nombre": "preferencia_canal",
+          "tipo": "varchar(16)",
+          "valores": "app, sms, mensajeria, correo, sin_digital",
+          "obligatorio": "Sí",
+          "sensibilidad": "Personal",
+          "propietario": "Comercial"
+        }
+      ],
+      "regla": "ERP publica el maestro autorizado mediante ACL; M3 mantiene preferencia de canal bajo su propio contrato. Un RUT puede tener varios puntos de entrega."
+    },
+    {
+      "nombre": "punto_entrega",
+      "dominio": "BD_MAESTROS_CONF",
+      "modulo": "M3/M4",
+      "propietario": "Comercial",
+      "atributos": [
+        {
+          "nombre": "id",
+          "tipo": "uuid",
+          "valores": "UUID estable, PK",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Comercial"
+        },
+        {
+          "nombre": "creado_en",
+          "tipo": "timestamptz",
+          "valores": "UTC; instante de persistencia",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Comercial"
+        },
+        {
+          "nombre": "version",
+          "tipo": "bigint",
+          "valores": "Entero mayor o igual a 1",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Comercial"
+        },
+        {
+          "nombre": "cliente_id",
+          "tipo": "uuid",
+          "valores": "Referencia a cliente",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Comercial"
+        },
+        {
+          "nombre": "codigo",
+          "tipo": "varchar(40)",
+          "valores": "Único por cliente",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Comercial"
+        },
+        {
+          "nombre": "direccion",
+          "tipo": "varchar(240)",
+          "valores": "Dirección de entrega",
+          "obligatorio": "Sí",
+          "sensibilidad": "Personal",
+          "propietario": "Comercial"
+        },
+        {
+          "nombre": "posicion",
+          "tipo": "geography(Point,4326)",
+          "valores": "Latitud y longitud válidas; geocodificación revisada",
+          "obligatorio": "No",
+          "sensibilidad": "Personal",
+          "propietario": "Comercial"
+        },
+        {
+          "nombre": "ventana_desde",
+          "tipo": "time",
+          "valores": "Hora local America/Santiago",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Comercial"
+        },
+        {
+          "nombre": "ventana_hasta",
+          "tipo": "time",
+          "valores": "Fin posterior al inicio; excepción nocturna parametrizada",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Comercial"
+        },
+        {
+          "nombre": "zona",
+          "tipo": "varchar(40)",
+          "valores": "Catálogo de zonas logísticas",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Comercial"
+        }
+      ],
+      "regla": "FK lógica a cliente; UNIQUE(cliente_id,codigo). La ventana se copia en cada entrega prometida para preservar el compromiso histórico."
+    },
+    {
+      "nombre": "producto",
+      "dominio": "BD_MAESTROS_CONF",
+      "modulo": "M1/M2",
+      "propietario": "Abastecimiento",
+      "atributos": [
+        {
+          "nombre": "id",
+          "tipo": "uuid",
+          "valores": "UUID estable, PK",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Abastecimiento"
+        },
+        {
+          "nombre": "creado_en",
+          "tipo": "timestamptz",
+          "valores": "UTC; instante de persistencia",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Abastecimiento"
+        },
+        {
+          "nombre": "version",
+          "tipo": "bigint",
+          "valores": "Entero mayor o igual a 1",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Abastecimiento"
+        },
+        {
+          "nombre": "codigo_erp",
+          "tipo": "varchar(40)",
+          "valores": "SKU autorizado único",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Abastecimiento"
+        },
+        {
+          "nombre": "gtin",
+          "tipo": "varchar(14)",
+          "valores": "GTIN normalizado; dígito verificador",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Abastecimiento"
+        },
+        {
+          "nombre": "descripcion",
+          "tipo": "varchar(160)",
+          "valores": "Nombre comercial",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Abastecimiento"
+        },
+        {
+          "nombre": "unidad",
+          "tipo": "varchar(16)",
+          "valores": "Catálogo GS1/unidades autorizadas",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Abastecimiento"
+        },
+        {
+          "nombre": "clase_temperatura",
+          "tipo": "varchar(16)",
+          "valores": "seco, refrigerado, congelado",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Abastecimiento"
+        },
+        {
+          "nombre": "temperatura_min",
+          "tipo": "numeric(5,2)",
+          "valores": "Grados Celsius; según ficha aprobada",
+          "obligatorio": "No",
+          "sensibilidad": "Interno",
+          "propietario": "Calidad"
+        },
+        {
+          "nombre": "temperatura_max",
+          "tipo": "numeric(5,2)",
+          "valores": "Mayor o igual al mínimo",
+          "obligatorio": "No",
+          "sensibilidad": "Interno",
+          "propietario": "Calidad"
+        },
+        {
+          "nombre": "vida_util_dias",
+          "tipo": "integer",
+          "valores": "Entero positivo",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Calidad"
+        }
+      ],
+      "regla": "GTIN se versiona por presentación. M9 autoriza rangos térmicos; el maestro ERP conserva la identidad comercial y sus equivalencias."
+    },
+    {
+      "nombre": "proveedor",
+      "dominio": "BD_MAESTROS_CONF",
+      "modulo": "M1",
+      "propietario": "Abastecimiento",
+      "atributos": [
+        {
+          "nombre": "id",
+          "tipo": "uuid",
+          "valores": "UUID estable, PK",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Abastecimiento"
+        },
+        {
+          "nombre": "creado_en",
+          "tipo": "timestamptz",
+          "valores": "UTC; instante de persistencia",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Abastecimiento"
+        },
+        {
+          "nombre": "version",
+          "tipo": "bigint",
+          "valores": "Entero mayor o igual a 1",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Abastecimiento"
+        },
+        {
+          "nombre": "rut",
+          "tipo": "varchar(12)",
+          "valores": "RUT y DV válido; único",
+          "obligatorio": "Sí",
+          "sensibilidad": "Personal",
+          "propietario": "Abastecimiento"
+        },
+        {
+          "nombre": "codigo_erp",
+          "tipo": "varchar(40)",
+          "valores": "Código externo único",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Abastecimiento"
+        },
+        {
+          "nombre": "razon_social",
+          "tipo": "varchar(160)",
+          "valores": "Texto no vacío",
+          "obligatorio": "Sí",
+          "sensibilidad": "Personal",
+          "propietario": "Abastecimiento"
+        },
+        {
+          "nombre": "plazo_dias",
+          "tipo": "integer",
+          "valores": "Entero no negativo",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Abastecimiento"
+        }
+      ],
+      "regla": "Maestro completo migrado del ERP; modificar plazo exige versión y autor."
+    },
+    {
+      "nombre": "sitio",
+      "dominio": "BD_MAESTROS_CONF",
+      "modulo": "M1/M2/M5",
+      "propietario": "Operaciones",
+      "atributos": [
+        {
+          "nombre": "id",
+          "tipo": "uuid",
+          "valores": "UUID estable, PK",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Operaciones"
+        },
+        {
+          "nombre": "creado_en",
+          "tipo": "timestamptz",
+          "valores": "UTC; instante de persistencia",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Operaciones"
+        },
+        {
+          "nombre": "version",
+          "tipo": "bigint",
+          "valores": "Entero mayor o igual a 1",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Operaciones"
+        },
+        {
+          "nombre": "codigo",
+          "tipo": "varchar(24)",
+          "valores": "Talca, Concepción, Curicó, Chillán, Los Ángeles; ampliable",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Operaciones"
+        },
+        {
+          "nombre": "tipo",
+          "tipo": "varchar(16)",
+          "valores": "cd, crossdock, oficina",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Operaciones"
+        },
+        {
+          "nombre": "zona_horaria",
+          "tipo": "varchar(40)",
+          "valores": "America/Santiago",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Operaciones"
+        }
+      ],
+      "regla": "Código estable y único; solo los cinco sitios logísticos escriben WMS. Casa matriz opera por nube."
+    },
+    {
+      "nombre": "recepcion",
+      "dominio": "BD_INVENTARIO",
+      "modulo": "M1",
+      "propietario": "Jefatura de bodega",
+      "atributos": [
+        {
+          "nombre": "id",
+          "tipo": "uuid",
+          "valores": "UUID estable, PK",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Jefatura de bodega"
+        },
+        {
+          "nombre": "creado_en",
+          "tipo": "timestamptz",
+          "valores": "UTC; instante de persistencia",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Jefatura de bodega"
+        },
+        {
+          "nombre": "version",
+          "tipo": "bigint",
+          "valores": "Entero mayor o igual a 1",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Jefatura de bodega"
+        },
+        {
+          "nombre": "sitio_id",
+          "tipo": "uuid",
+          "valores": "Referencia a sitio logístico",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Jefatura de bodega"
+        },
+        {
+          "nombre": "proveedor_id",
+          "tipo": "uuid",
+          "valores": "Referencia al maestro proveedor",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Jefatura de bodega"
+        },
+        {
+          "nombre": "documento_origen",
+          "tipo": "varchar(80)",
+          "valores": "Documento ERP/proveedor; clave externa",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Jefatura de bodega"
+        },
+        {
+          "nombre": "estado",
+          "tipo": "varchar(16)",
+          "valores": "capturada, validada, observada, cerrada",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Jefatura de bodega"
+        },
+        {
+          "nombre": "ocurrido_en",
+          "tipo": "timestamptz",
+          "valores": "Instante físico de recepción",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Jefatura de bodega"
+        }
+      ],
+      "regla": "La recepción cerrada tiene al menos una línea; el cierre genera movimientos y outbox en una misma transacción local."
+    },
+    {
+      "nombre": "lote",
+      "dominio": "BD_CALIDAD_TRAZABILIDAD",
+      "modulo": "M1/M9",
+      "propietario": "Calidad",
+      "atributos": [
+        {
+          "nombre": "id",
+          "tipo": "uuid",
+          "valores": "UUID estable, PK",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Calidad"
+        },
+        {
+          "nombre": "creado_en",
+          "tipo": "timestamptz",
+          "valores": "UTC; instante de persistencia",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Calidad"
+        },
+        {
+          "nombre": "version",
+          "tipo": "bigint",
+          "valores": "Entero mayor o igual a 1",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Calidad"
+        },
+        {
+          "nombre": "producto_id",
+          "tipo": "uuid",
+          "valores": "Referencia al producto/GTIN",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Calidad"
+        },
+        {
+          "nombre": "proveedor_id",
+          "tipo": "uuid",
+          "valores": "Proveedor de origen",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Calidad"
+        },
+        {
+          "nombre": "lote_proveedor",
+          "tipo": "varchar(80)",
+          "valores": "Código de lote no vacío",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Calidad"
+        },
+        {
+          "nombre": "vence_en",
+          "tipo": "date",
+          "valores": "Fecha de vencimiento",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Calidad"
+        },
+        {
+          "nombre": "estado",
+          "tipo": "varchar(20)",
+          "valores": "liberado, bloqueado, retiro, descartado",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Calidad"
+        }
+      ],
+      "regla": "UNIQUE(producto_id,proveedor_id,lote_proveedor). Si un GTIN/lote aparece con varios proveedores se conserva el origen y se agrupa el retiro por GTIN/lote. Un vencimiento discordante se aísla para Calidad."
+    },
+    {
+      "nombre": "unidad_logistica",
+      "dominio": "BD_INVENTARIO",
+      "modulo": "M1/M2",
+      "propietario": "Jefatura de bodega",
+      "atributos": [
+        {
+          "nombre": "id",
+          "tipo": "uuid",
+          "valores": "UUID estable, PK",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Jefatura de bodega"
+        },
+        {
+          "nombre": "creado_en",
+          "tipo": "timestamptz",
+          "valores": "UTC; instante de persistencia",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Jefatura de bodega"
+        },
+        {
+          "nombre": "version",
+          "tipo": "bigint",
+          "valores": "Entero mayor o igual a 1",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Jefatura de bodega"
+        },
+        {
+          "nombre": "sscc",
+          "tipo": "varchar(18)",
+          "valores": "SSCC y dígito verificador; único",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Jefatura de bodega"
+        },
+        {
+          "nombre": "sitio_id",
+          "tipo": "uuid",
+          "valores": "Sitio custodio actual",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Jefatura de bodega"
+        },
+        {
+          "nombre": "ubicacion",
+          "tipo": "varchar(40)",
+          "valores": "Posición autorizada del sitio",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Jefatura de bodega"
+        },
+        {
+          "nombre": "estado",
+          "tipo": "varchar(16)",
+          "valores": "recibida, almacenada, preparada, despachada",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Jefatura de bodega"
+        }
+      ],
+      "regla": "La unidad puede contener varios lotes mediante contenido_unidad. El movimiento conserva SSCC y custodia; no se usa SSCC para identificar cada envase retornable."
+    },
+    {
+      "nombre": "contenido_unidad",
+      "dominio": "BD_INVENTARIO",
+      "modulo": "M1/M2",
+      "propietario": "Jefatura de bodega",
+      "atributos": [
+        {
+          "nombre": "id",
+          "tipo": "uuid",
+          "valores": "UUID estable, PK",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Jefatura de bodega"
+        },
+        {
+          "nombre": "creado_en",
+          "tipo": "timestamptz",
+          "valores": "UTC; instante de persistencia",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Jefatura de bodega"
+        },
+        {
+          "nombre": "version",
+          "tipo": "bigint",
+          "valores": "Entero mayor o igual a 1",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Jefatura de bodega"
+        },
+        {
+          "nombre": "unidad_id",
+          "tipo": "uuid",
+          "valores": "Referencia a unidad logística",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Jefatura de bodega"
+        },
+        {
+          "nombre": "lote_id",
+          "tipo": "uuid",
+          "valores": "Referencia a lote",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Jefatura de bodega"
+        },
+        {
+          "nombre": "cantidad",
+          "tipo": "numeric(14,3)",
+          "valores": "Cantidad mayor que cero en unidad base",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Jefatura de bodega"
+        }
+      ],
+      "regla": "UNIQUE(unidad_id,lote_id); suma de cantidades se concilia con recepción y movimientos."
+    },
+    {
+      "nombre": "linea_recepcion",
+      "dominio": "BD_INVENTARIO",
+      "modulo": "M1",
+      "propietario": "Jefatura de bodega",
+      "atributos": [
+        {
+          "nombre": "id",
+          "tipo": "uuid",
+          "valores": "UUID estable, PK",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Jefatura de bodega"
+        },
+        {
+          "nombre": "creado_en",
+          "tipo": "timestamptz",
+          "valores": "UTC; instante de persistencia",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Jefatura de bodega"
+        },
+        {
+          "nombre": "version",
+          "tipo": "bigint",
+          "valores": "Entero mayor o igual a 1",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Jefatura de bodega"
+        },
+        {
+          "nombre": "recepcion_id",
+          "tipo": "uuid",
+          "valores": "FK a recepción",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Jefatura de bodega"
+        },
+        {
+          "nombre": "lote_id",
+          "tipo": "uuid",
+          "valores": "Referencia a lote",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Jefatura de bodega"
+        },
+        {
+          "nombre": "unidad_id",
+          "tipo": "uuid",
+          "valores": "Referencia a SSCC",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Jefatura de bodega"
+        },
+        {
+          "nombre": "cantidad",
+          "tipo": "numeric(14,3)",
+          "valores": "Mayor que cero",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Jefatura de bodega"
+        },
+        {
+          "nombre": "temperatura",
+          "tipo": "numeric(5,2)",
+          "valores": "Lectura de control en Celsius",
+          "obligatorio": "No",
+          "sensibilidad": "Interno",
+          "propietario": "Jefatura de bodega"
+        }
+      ],
+      "regla": "Cada línea identifica lote y SSCC; una observación térmica bloquea liberación hasta decisión de Calidad."
+    },
+    {
+      "nombre": "movimiento_stock",
+      "dominio": "BD_INVENTARIO",
+      "modulo": "M2",
+      "propietario": "Jefatura de bodega",
+      "atributos": [
+        {
+          "nombre": "id",
+          "tipo": "uuid",
+          "valores": "UUID estable, PK",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Jefatura de bodega"
+        },
+        {
+          "nombre": "creado_en",
+          "tipo": "timestamptz",
+          "valores": "UTC; instante de persistencia",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Jefatura de bodega"
+        },
+        {
+          "nombre": "version",
+          "tipo": "bigint",
+          "valores": "Entero mayor o igual a 1",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Jefatura de bodega"
+        },
+        {
+          "nombre": "sitio_id",
+          "tipo": "uuid",
+          "valores": "Autoridad de escritura del sitio",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Jefatura de bodega"
+        },
+        {
+          "nombre": "lote_id",
+          "tipo": "uuid",
+          "valores": "Referencia a lote",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Jefatura de bodega"
+        },
+        {
+          "nombre": "unidad_id",
+          "tipo": "uuid",
+          "valores": "Unidad logística afectada",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Jefatura de bodega"
+        },
+        {
+          "nombre": "tipo",
+          "tipo": "varchar(24)",
+          "valores": "recepcion, traslado, preparacion, despacho, devolucion, ajuste",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Jefatura de bodega"
+        },
+        {
+          "nombre": "cantidad_delta",
+          "tipo": "numeric(14,3)",
+          "valores": "Entrada positiva o salida negativa, distinta de cero",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Jefatura de bodega"
+        },
+        {
+          "nombre": "ubicacion",
+          "tipo": "varchar(40)",
+          "valores": "Ubicación en sitio",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Jefatura de bodega"
+        },
+        {
+          "nombre": "secuencia_sitio",
+          "tipo": "bigint",
+          "valores": "Monótona por sitio y época",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Jefatura de bodega"
+        },
+        {
+          "nombre": "evento_origen_id",
+          "tipo": "uuid",
+          "valores": "Identidad de operación; única",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Jefatura de bodega"
+        },
+        {
+          "nombre": "ocurrido_en",
+          "tipo": "timestamptz",
+          "valores": "Hora del hecho físico",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Jefatura de bodega"
+        }
+      ],
+      "regla": "Libro inmutable; correcciones mediante movimiento compensatorio aprobado. Stock se obtiene de suma de deltas, no de la última cifra recibida."
+    },
+    {
+      "nombre": "reserva",
+      "dominio": "BD_INVENTARIO",
+      "modulo": "M2",
+      "propietario": "Jefatura de bodega",
+      "atributos": [
+        {
+          "nombre": "id",
+          "tipo": "uuid",
+          "valores": "UUID estable, PK",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Jefatura de bodega"
+        },
+        {
+          "nombre": "creado_en",
+          "tipo": "timestamptz",
+          "valores": "UTC; instante de persistencia",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Jefatura de bodega"
+        },
+        {
+          "nombre": "version",
+          "tipo": "bigint",
+          "valores": "Entero mayor o igual a 1",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Jefatura de bodega"
+        },
+        {
+          "nombre": "linea_pedido_id",
+          "tipo": "uuid",
+          "valores": "Referencia a línea del pedido",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Jefatura de bodega"
+        },
+        {
+          "nombre": "sitio_id",
+          "tipo": "uuid",
+          "valores": "Sitio que confirma",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Jefatura de bodega"
+        },
+        {
+          "nombre": "lote_id",
+          "tipo": "uuid",
+          "valores": "Lote asignado por FEFO",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Jefatura de bodega"
+        },
+        {
+          "nombre": "cantidad",
+          "tipo": "numeric(14,3)",
+          "valores": "Mayor que cero",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Jefatura de bodega"
+        },
+        {
+          "nombre": "estado",
+          "tipo": "varchar(16)",
+          "valores": "pendiente, confirmada, consumida, liberada, rechazada",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Jefatura de bodega"
+        },
+        {
+          "nombre": "expira_en",
+          "tipo": "timestamptz",
+          "valores": "Plazo parametrizado por operación",
+          "obligatorio": "No",
+          "sensibilidad": "Interno",
+          "propietario": "Jefatura de bodega"
+        }
+      ],
+      "regla": "M2 es autoridad por agregado sitio/lote. Para confirmar bloquea saldo y comprueba disponible; la nube coordina sin confirmar contra una réplica atrasada."
+    },
+    {
+      "nombre": "pedido",
+      "dominio": "BD_PREVENTA",
+      "modulo": "M3",
+      "propietario": "Comercial",
+      "atributos": [
+        {
+          "nombre": "id",
+          "tipo": "uuid",
+          "valores": "UUID estable, PK",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Comercial"
+        },
+        {
+          "nombre": "creado_en",
+          "tipo": "timestamptz",
+          "valores": "UTC; instante de persistencia",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Comercial"
+        },
+        {
+          "nombre": "version",
+          "tipo": "bigint",
+          "valores": "Entero mayor o igual a 1",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Comercial"
+        },
+        {
+          "nombre": "cliente_id",
+          "tipo": "uuid",
+          "valores": "Maestro cliente",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Comercial"
+        },
+        {
+          "nombre": "punto_id",
+          "tipo": "uuid",
+          "valores": "Punto de entrega del mismo cliente",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Comercial"
+        },
+        {
+          "nombre": "actor_id",
+          "tipo": "uuid",
+          "valores": "Preventista o cuenta de autoservicio",
+          "obligatorio": "Sí",
+          "sensibilidad": "Personal",
+          "propietario": "Comercial"
+        },
+        {
+          "nombre": "estado",
+          "tipo": "varchar(20)",
+          "valores": "capturado, pendiente, confirmado, preparado, despachado, parcial, entregado, rendido, cancelado",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Comercial"
+        },
+        {
+          "nombre": "capturado_en",
+          "tipo": "timestamptz",
+          "valores": "Hora en terminal, conservada",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Comercial"
+        },
+        {
+          "nombre": "transaction_id",
+          "tipo": "uuid",
+          "valores": "Correlación transversal estable",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Comercial"
+        },
+        {
+          "nombre": "tarifa_version",
+          "tipo": "varchar(40)",
+          "valores": "Versión de tarifa mostrada",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Comercial"
+        }
+      ],
+      "regla": "Capturado offline no equivale a reserva confirmada. Pedido tiene una o más líneas; reenvío con mismo UUID devuelve resultado anterior."
+    },
+    {
+      "nombre": "linea_pedido",
+      "dominio": "BD_PREVENTA",
+      "modulo": "M3",
+      "propietario": "Comercial",
+      "atributos": [
+        {
+          "nombre": "id",
+          "tipo": "uuid",
+          "valores": "UUID estable, PK",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Comercial"
+        },
+        {
+          "nombre": "creado_en",
+          "tipo": "timestamptz",
+          "valores": "UTC; instante de persistencia",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Comercial"
+        },
+        {
+          "nombre": "version",
+          "tipo": "bigint",
+          "valores": "Entero mayor o igual a 1",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Comercial"
+        },
+        {
+          "nombre": "pedido_id",
+          "tipo": "uuid",
+          "valores": "FK a pedido",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Comercial"
+        },
+        {
+          "nombre": "numero",
+          "tipo": "integer",
+          "valores": "Entero positivo único por pedido",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Comercial"
+        },
+        {
+          "nombre": "producto_id",
+          "tipo": "uuid",
+          "valores": "Referencia al SKU autorizado",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Comercial"
+        },
+        {
+          "nombre": "cantidad",
+          "tipo": "numeric(14,3)",
+          "valores": "Mayor que cero",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Comercial"
+        },
+        {
+          "nombre": "precio_informado",
+          "tipo": "numeric(18,2)",
+          "valores": "Moneda CLP; mayor o igual a cero",
+          "obligatorio": "Sí",
+          "sensibilidad": "Comercial restringido",
+          "propietario": "Comercial"
+        },
+        {
+          "nombre": "unidad",
+          "tipo": "varchar(16)",
+          "valores": "Unidad de captura y conversión versionada",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Comercial"
+        }
+      ],
+      "regla": "UNIQUE(pedido_id,numero). Un cambio de tarifa genera revalidación explícita; el importe es dato operativo del CLIENTE, no precio de oferta."
+    },
+    {
+      "nombre": "asignacion_lote",
+      "dominio": "BD_PREPARACION",
+      "modulo": "M5",
+      "propietario": "Jefatura de bodega",
+      "atributos": [
+        {
+          "nombre": "id",
+          "tipo": "uuid",
+          "valores": "UUID estable, PK",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Jefatura de bodega"
+        },
+        {
+          "nombre": "creado_en",
+          "tipo": "timestamptz",
+          "valores": "UTC; instante de persistencia",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Jefatura de bodega"
+        },
+        {
+          "nombre": "version",
+          "tipo": "bigint",
+          "valores": "Entero mayor o igual a 1",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Jefatura de bodega"
+        },
+        {
+          "nombre": "linea_pedido_id",
+          "tipo": "uuid",
+          "valores": "Línea servida",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Jefatura de bodega"
+        },
+        {
+          "nombre": "lote_id",
+          "tipo": "uuid",
+          "valores": "Lote proveedor",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Jefatura de bodega"
+        },
+        {
+          "nombre": "unidad_id",
+          "tipo": "uuid",
+          "valores": "SSCC de procedencia",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Jefatura de bodega"
+        },
+        {
+          "nombre": "reserva_id",
+          "tipo": "uuid",
+          "valores": "Reserva aceptada en M2",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Jefatura de bodega"
+        },
+        {
+          "nombre": "cantidad",
+          "tipo": "numeric(14,3)",
+          "valores": "Mayor que cero; no superar reserva neta",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Jefatura de bodega"
+        }
+      ],
+      "regla": "Una línea puede servirse con varios lotes. Las cantidades asignadas y entregadas permiten traza hacia adelante y hacia atrás."
+    },
+    {
+      "nombre": "mision",
+      "dominio": "BD_PREPARACION",
+      "modulo": "M5",
+      "propietario": "Jefatura de bodega",
+      "atributos": [
+        {
+          "nombre": "id",
+          "tipo": "uuid",
+          "valores": "UUID estable, PK",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Jefatura de bodega"
+        },
+        {
+          "nombre": "creado_en",
+          "tipo": "timestamptz",
+          "valores": "UTC; instante de persistencia",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Jefatura de bodega"
+        },
+        {
+          "nombre": "version",
+          "tipo": "bigint",
+          "valores": "Entero mayor o igual a 1",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Jefatura de bodega"
+        },
+        {
+          "nombre": "sitio_id",
+          "tipo": "uuid",
+          "valores": "Sitio ejecutor",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Jefatura de bodega"
+        },
+        {
+          "nombre": "oleada",
+          "tipo": "varchar(40)",
+          "valores": "Grupo de preparación",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Jefatura de bodega"
+        },
+        {
+          "nombre": "actor_id",
+          "tipo": "uuid",
+          "valores": "Preparador autorizado en turno",
+          "obligatorio": "Sí",
+          "sensibilidad": "Personal",
+          "propietario": "Jefatura de bodega"
+        },
+        {
+          "nombre": "dispositivo_id",
+          "tipo": "uuid",
+          "valores": "Terminal HHT",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Jefatura de bodega"
+        },
+        {
+          "nombre": "estado",
+          "tipo": "varchar(16)",
+          "valores": "descargada, ejecutada, cerrada",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Jefatura de bodega"
+        }
+      ],
+      "regla": "No se reasigna una misión descargada sin revocar o cerrar su versión previa."
+    },
+    {
+      "nombre": "linea_mision",
+      "dominio": "BD_PREPARACION",
+      "modulo": "M5",
+      "propietario": "Jefatura de bodega",
+      "atributos": [
+        {
+          "nombre": "id",
+          "tipo": "uuid",
+          "valores": "UUID estable, PK",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Jefatura de bodega"
+        },
+        {
+          "nombre": "creado_en",
+          "tipo": "timestamptz",
+          "valores": "UTC; instante de persistencia",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Jefatura de bodega"
+        },
+        {
+          "nombre": "version",
+          "tipo": "bigint",
+          "valores": "Entero mayor o igual a 1",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Jefatura de bodega"
+        },
+        {
+          "nombre": "mision_id",
+          "tipo": "uuid",
+          "valores": "FK a misión",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Jefatura de bodega"
+        },
+        {
+          "nombre": "asignacion_id",
+          "tipo": "uuid",
+          "valores": "Referencia a asignación de lote",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Jefatura de bodega"
+        },
+        {
+          "nombre": "cantidad_confirmada",
+          "tipo": "numeric(14,3)",
+          "valores": "Entre cero y cantidad asignada",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Jefatura de bodega"
+        },
+        {
+          "nombre": "confirmada_en",
+          "tipo": "timestamptz",
+          "valores": "Hora del escaneo",
+          "obligatorio": "No",
+          "sensibilidad": "Interno",
+          "propietario": "Jefatura de bodega"
+        }
+      ],
+      "regla": "Confirmar línea y consumir reserva es operación idempotente; faltante requiere causal y ajuste autorizado."
+    },
+    {
+      "nombre": "despacho",
+      "dominio": "BD_PREPARACION",
+      "modulo": "M5",
+      "propietario": "Operaciones",
+      "atributos": [
+        {
+          "nombre": "id",
+          "tipo": "uuid",
+          "valores": "UUID estable, PK",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Operaciones"
+        },
+        {
+          "nombre": "creado_en",
+          "tipo": "timestamptz",
+          "valores": "UTC; instante de persistencia",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Operaciones"
+        },
+        {
+          "nombre": "version",
+          "tipo": "bigint",
+          "valores": "Entero mayor o igual a 1",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Operaciones"
+        },
+        {
+          "nombre": "sitio_id",
+          "tipo": "uuid",
+          "valores": "Sitio de salida",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Operaciones"
+        },
+        {
+          "nombre": "viaje_id",
+          "tipo": "uuid",
+          "valores": "Viaje aprobado",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Operaciones"
+        },
+        {
+          "nombre": "carga_version",
+          "tipo": "bigint",
+          "valores": "Versión positiva de carga",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Operaciones"
+        },
+        {
+          "nombre": "estado",
+          "tipo": "varchar(24)",
+          "valores": "carga_confirmada, guia_solicitada, resultado_incierto, guia_disponible, salida_liberada",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Operaciones"
+        },
+        {
+          "nombre": "guia_id",
+          "tipo": "uuid",
+          "valores": "DTE confirmado por ERP",
+          "obligatorio": "No",
+          "sensibilidad": "Interno",
+          "propietario": "Operaciones"
+        },
+        {
+          "nombre": "liberado_en",
+          "tipo": "timestamptz",
+          "valores": "Instante de salida autorizada",
+          "obligatorio": "No",
+          "sensibilidad": "Interno",
+          "propietario": "Operaciones"
+        }
+      ],
+      "regla": "Solo salida_liberada exige guía vigente de la misma carga y copia disponible localmente. Ningún booleano fusiona guía, SII y acuse de mercadería."
+    },
+    {
+      "nombre": "viaje",
+      "dominio": "BD_RUTAS",
+      "modulo": "M4/M12",
+      "propietario": "Planificación",
+      "atributos": [
+        {
+          "nombre": "id",
+          "tipo": "uuid",
+          "valores": "UUID estable, PK",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Planificación"
+        },
+        {
+          "nombre": "creado_en",
+          "tipo": "timestamptz",
+          "valores": "UTC; instante de persistencia",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Planificación"
+        },
+        {
+          "nombre": "version",
+          "tipo": "bigint",
+          "valores": "Entero mayor o igual a 1",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Planificación"
+        },
+        {
+          "nombre": "sitio_id",
+          "tipo": "uuid",
+          "valores": "Sitio de origen",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Planificación"
+        },
+        {
+          "nombre": "vehiculo_id",
+          "tipo": "uuid",
+          "valores": "Vehículo propio o tercero",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Planificación"
+        },
+        {
+          "nombre": "conductor_id",
+          "tipo": "uuid",
+          "valores": "Vínculo autorizado vigente",
+          "obligatorio": "Sí",
+          "sensibilidad": "Personal",
+          "propietario": "Planificación"
+        },
+        {
+          "nombre": "fecha_operacion",
+          "tipo": "date",
+          "valores": "Fecha local de jornada",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Planificación"
+        },
+        {
+          "nombre": "estado",
+          "tipo": "varchar(16)",
+          "valores": "planificado, aprobado, iniciado, cerrado",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Planificación"
+        },
+        {
+          "nombre": "distancia_km",
+          "tipo": "numeric(12,3)",
+          "valores": "Distancia no negativa",
+          "obligatorio": "No",
+          "sensibilidad": "Interno",
+          "propietario": "Planificación"
+        }
+      ],
+      "regla": "Planificador aprueba versión de ruta. El conductor de cada hecho no se reemplaza retrospectivamente cuando cambia la asignación."
+    },
+    {
+      "nombre": "parada",
+      "dominio": "BD_RUTAS",
+      "modulo": "M4",
+      "propietario": "Planificación",
+      "atributos": [
+        {
+          "nombre": "id",
+          "tipo": "uuid",
+          "valores": "UUID estable, PK",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Planificación"
+        },
+        {
+          "nombre": "creado_en",
+          "tipo": "timestamptz",
+          "valores": "UTC; instante de persistencia",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Planificación"
+        },
+        {
+          "nombre": "version",
+          "tipo": "bigint",
+          "valores": "Entero mayor o igual a 1",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Planificación"
+        },
+        {
+          "nombre": "viaje_id",
+          "tipo": "uuid",
+          "valores": "FK a viaje",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Planificación"
+        },
+        {
+          "nombre": "punto_id",
+          "tipo": "uuid",
+          "valores": "Punto autorizado de entrega",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Planificación"
+        },
+        {
+          "nombre": "secuencia",
+          "tipo": "integer",
+          "valores": "Entero positivo único por viaje",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Planificación"
+        },
+        {
+          "nombre": "ventana_inicio",
+          "tipo": "timestamptz",
+          "valores": "Compromiso para esta visita",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Planificación"
+        },
+        {
+          "nombre": "ventana_fin",
+          "tipo": "timestamptz",
+          "valores": "Posterior al inicio",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Planificación"
+        },
+        {
+          "nombre": "restriccion",
+          "tipo": "varchar(160)",
+          "valores": "Regla de acceso o excepción documentada",
+          "obligatorio": "No",
+          "sensibilidad": "Interno",
+          "propietario": "Planificación"
+        }
+      ],
+      "regla": "UNIQUE(viaje_id,secuencia). Se conserva la ventana original aun si la ruta real cambia."
+    },
+    {
+      "nombre": "vehiculo",
+      "dominio": "BD_RUTAS",
+      "modulo": "M12",
+      "propietario": "Flota",
+      "atributos": [
+        {
+          "nombre": "id",
+          "tipo": "uuid",
+          "valores": "UUID estable, PK",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Flota"
+        },
+        {
+          "nombre": "creado_en",
+          "tipo": "timestamptz",
+          "valores": "UTC; instante de persistencia",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Flota"
+        },
+        {
+          "nombre": "version",
+          "tipo": "bigint",
+          "valores": "Entero mayor o igual a 1",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Flota"
+        },
+        {
+          "nombre": "patente",
+          "tipo": "varchar(12)",
+          "valores": "Identificador normalizado único",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Flota"
+        },
+        {
+          "nombre": "transportista_id",
+          "tipo": "uuid",
+          "valores": "Empresa propietaria, si es tercero",
+          "obligatorio": "No",
+          "sensibilidad": "Interno",
+          "propietario": "Flota"
+        },
+        {
+          "nombre": "capacidad_kg",
+          "tipo": "numeric(12,3)",
+          "valores": "Mayor que cero",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Flota"
+        },
+        {
+          "nombre": "capacidad_m3",
+          "tipo": "numeric(10,3)",
+          "valores": "Mayor que cero",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Flota"
+        },
+        {
+          "nombre": "frio",
+          "tipo": "boolean",
+          "valores": "Capacidad de transporte refrigerado",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Flota"
+        }
+      ],
+      "regla": "Maestro de capacidades gobernado por Flota; no se deduce capacidad del GPS."
+    },
+    {
+      "nombre": "entrega",
+      "dominio": "BD_REPARTO",
+      "modulo": "M6",
+      "propietario": "Operaciones",
+      "atributos": [
+        {
+          "nombre": "id",
+          "tipo": "uuid",
+          "valores": "UUID estable, PK",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Operaciones"
+        },
+        {
+          "nombre": "creado_en",
+          "tipo": "timestamptz",
+          "valores": "UTC; instante de persistencia",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Operaciones"
+        },
+        {
+          "nombre": "version",
+          "tipo": "bigint",
+          "valores": "Entero mayor o igual a 1",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Operaciones"
+        },
+        {
+          "nombre": "pedido_id",
+          "tipo": "uuid",
+          "valores": "Referencia al pedido",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Operaciones"
+        },
+        {
+          "nombre": "parada_id",
+          "tipo": "uuid",
+          "valores": "Visita que origina el intento",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Operaciones"
+        },
+        {
+          "nombre": "despacho_id",
+          "tipo": "uuid",
+          "valores": "Salida con guía válida",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Operaciones"
+        },
+        {
+          "nombre": "intento",
+          "tipo": "integer",
+          "valores": "Número positivo por pedido/parada",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Operaciones"
+        },
+        {
+          "nombre": "estado",
+          "tipo": "varchar(20)",
+          "valores": "completa, parcial, no_entregada, en_conflicto",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Operaciones"
+        },
+        {
+          "nombre": "receptor_cifrado",
+          "tipo": "bytea",
+          "valores": "Identidad mínima cifrada; nombre o causal de ausencia",
+          "obligatorio": "No",
+          "sensibilidad": "Personal restringido",
+          "propietario": "Operaciones"
+        },
+        {
+          "nombre": "ocurrido_en",
+          "tipo": "timestamptz",
+          "valores": "Momento efectivo de recepción",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Operaciones"
+        },
+        {
+          "nombre": "actor_id",
+          "tipo": "uuid",
+          "valores": "Conductor autor del registro",
+          "obligatorio": "Sí",
+          "sensibilidad": "Personal",
+          "propietario": "Operaciones"
+        }
+      ],
+      "regla": "Pedido tiene cero o muchas entregas/intentos. Entrega completa exige cubrir todas las cantidades pendientes; intento fallido conserva causal sin fabricar receptor."
+    },
+    {
+      "nombre": "detalle_entrega",
+      "dominio": "BD_REPARTO",
+      "modulo": "M6",
+      "propietario": "Operaciones",
+      "atributos": [
+        {
+          "nombre": "id",
+          "tipo": "uuid",
+          "valores": "UUID estable, PK",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Operaciones"
+        },
+        {
+          "nombre": "creado_en",
+          "tipo": "timestamptz",
+          "valores": "UTC; instante de persistencia",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Operaciones"
+        },
+        {
+          "nombre": "version",
+          "tipo": "bigint",
+          "valores": "Entero mayor o igual a 1",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Operaciones"
+        },
+        {
+          "nombre": "entrega_id",
+          "tipo": "uuid",
+          "valores": "FK a entrega",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Operaciones"
+        },
+        {
+          "nombre": "asignacion_id",
+          "tipo": "uuid",
+          "valores": "Lote y SSCC entregado",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Operaciones"
+        },
+        {
+          "nombre": "aceptada",
+          "tipo": "numeric(14,3)",
+          "valores": "Cantidad no negativa",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Operaciones"
+        },
+        {
+          "nombre": "rechazada",
+          "tipo": "numeric(14,3)",
+          "valores": "Cantidad no negativa",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Operaciones"
+        },
+        {
+          "nombre": "causal",
+          "tipo": "varchar(40)",
+          "valores": "daño, vencimiento, no_solicitado, faltante, otra",
+          "obligatorio": "No",
+          "sensibilidad": "Interno",
+          "propietario": "Operaciones"
+        }
+      ],
+      "regla": "Aceptada más rechazada no supera asignación pendiente. Rechazo mayor que cero exige causal y retorno vinculado."
+    },
+    {
+      "nombre": "evidencia_pod",
+      "dominio": "BD_REPARTO",
+      "modulo": "M6",
+      "propietario": "Operaciones",
+      "atributos": [
+        {
+          "nombre": "id",
+          "tipo": "uuid",
+          "valores": "UUID estable, PK",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Operaciones"
+        },
+        {
+          "nombre": "creado_en",
+          "tipo": "timestamptz",
+          "valores": "UTC; instante de persistencia",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Operaciones"
+        },
+        {
+          "nombre": "version",
+          "tipo": "bigint",
+          "valores": "Entero mayor o igual a 1",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Operaciones"
+        },
+        {
+          "nombre": "entrega_id",
+          "tipo": "uuid",
+          "valores": "Entrega documentada",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Operaciones"
+        },
+        {
+          "nombre": "objeto_id",
+          "tipo": "uuid",
+          "valores": "Manifiesto de objeto S3",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Operaciones"
+        },
+        {
+          "nombre": "tipo",
+          "tipo": "varchar(16)",
+          "valores": "firma, foto, qr, constancia",
+          "obligatorio": "Sí",
+          "sensibilidad": "Personal restringido",
+          "propietario": "Operaciones"
+        },
+        {
+          "nombre": "hash_sha256",
+          "tipo": "char(64)",
+          "valores": "Huella del objeto original",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Operaciones"
+        },
+        {
+          "nombre": "capturada_en",
+          "tipo": "timestamptz",
+          "valores": "Hora en dispositivo",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Operaciones"
+        },
+        {
+          "nombre": "causal_sin_firma",
+          "tipo": "varchar(80)",
+          "valores": "Negativa, imposibilidad o receptor ausente",
+          "obligatorio": "No",
+          "sensibilidad": "Personal",
+          "propietario": "Operaciones"
+        }
+      ],
+      "regla": "Una entrega conserva cero o varias evidencias según causal y política; no se cambia el original ni se presume validez tributaria de una foto."
+    },
+    {
+      "nombre": "documento_tributario",
+      "dominio": "BD_COBRANZA_FINANZAS",
+      "modulo": "M5/M7",
+      "propietario": "Tributación",
+      "atributos": [
+        {
+          "nombre": "id",
+          "tipo": "uuid",
+          "valores": "UUID estable, PK",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Tributación"
+        },
+        {
+          "nombre": "creado_en",
+          "tipo": "timestamptz",
+          "valores": "UTC; instante de persistencia",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Tributación"
+        },
+        {
+          "nombre": "version",
+          "tipo": "bigint",
+          "valores": "Entero mayor o igual a 1",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Tributación"
+        },
+        {
+          "nombre": "emisor_rut",
+          "tipo": "varchar(12)",
+          "valores": "RUT del emisor ERP",
+          "obligatorio": "Sí",
+          "sensibilidad": "Personal",
+          "propietario": "Tributación"
+        },
+        {
+          "nombre": "tipo",
+          "tipo": "varchar(24)",
+          "valores": "guia, factura, boleta, nota_credito, otro",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Tributación"
+        },
+        {
+          "nombre": "folio",
+          "tipo": "bigint",
+          "valores": "Folio positivo; único por emisor y tipo",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Tributación"
+        },
+        {
+          "nombre": "despacho_id",
+          "tipo": "uuid",
+          "valores": "Salida asociada para guía",
+          "obligatorio": "No",
+          "sensibilidad": "Interno",
+          "propietario": "Tributación"
+        },
+        {
+          "nombre": "objeto_id",
+          "tipo": "uuid",
+          "valores": "XML/documento original",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Tributación"
+        },
+        {
+          "nombre": "estado_erp",
+          "tipo": "varchar(24)",
+          "valores": "solicitado, incierto, emitido, rechazado, anulado",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Tributación"
+        },
+        {
+          "nombre": "clave_solicitud",
+          "tipo": "uuid",
+          "valores": "Clave idempotente estable por carga",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Tributación"
+        }
+      ],
+      "regla": "ERP único emisor. UNIQUE(emisor_rut,tipo,folio); consulta por clave tras timeout antes de reemitir."
+    },
+    {
+      "nombre": "acuse",
+      "dominio": "BD_COBRANZA_FINANZAS",
+      "modulo": "M7",
+      "propietario": "Tributación",
+      "atributos": [
+        {
+          "nombre": "id",
+          "tipo": "uuid",
+          "valores": "UUID estable, PK",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Tributación"
+        },
+        {
+          "nombre": "creado_en",
+          "tipo": "timestamptz",
+          "valores": "UTC; instante de persistencia",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Tributación"
+        },
+        {
+          "nombre": "version",
+          "tipo": "bigint",
+          "valores": "Entero mayor o igual a 1",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Tributación"
+        },
+        {
+          "nombre": "documento_id",
+          "tipo": "uuid",
+          "valores": "Documento relacionado",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Tributación"
+        },
+        {
+          "nombre": "tipo",
+          "tipo": "varchar(24)",
+          "valores": "tecnico_sii, mercaderia_destinatario, mdn_edi",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Tributación"
+        },
+        {
+          "nombre": "origen",
+          "tipo": "varchar(80)",
+          "valores": "ERP, SII o destinatario/cadena",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Tributación"
+        },
+        {
+          "nombre": "estado",
+          "tipo": "varchar(20)",
+          "valores": "recibido, aceptado, rechazado, observado",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Tributación"
+        },
+        {
+          "nombre": "objeto_id",
+          "tipo": "uuid",
+          "valores": "Comprobante original",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Tributación"
+        },
+        {
+          "nombre": "ocurrido_en",
+          "tipo": "timestamptz",
+          "valores": "Hora de recepción",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Tributación"
+        }
+      ],
+      "regla": "Los acuses se registran por tipo; un MDN AS2 no equivale a aceptación comercial ni tributaria."
+    },
+    {
+      "nombre": "cobro",
+      "dominio": "BD_COBRANZA_FINANZAS",
+      "modulo": "M7",
+      "propietario": "Tesorería",
+      "atributos": [
+        {
+          "nombre": "id",
+          "tipo": "uuid",
+          "valores": "UUID estable, PK",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Tesorería"
+        },
+        {
+          "nombre": "creado_en",
+          "tipo": "timestamptz",
+          "valores": "UTC; instante de persistencia",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Tesorería"
+        },
+        {
+          "nombre": "version",
+          "tipo": "bigint",
+          "valores": "Entero mayor o igual a 1",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Tesorería"
+        },
+        {
+          "nombre": "entrega_id",
+          "tipo": "uuid",
+          "valores": "Entrega que origina pago",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Tesorería"
+        },
+        {
+          "nombre": "conductor_id",
+          "tipo": "uuid",
+          "valores": "Custodio en turno",
+          "obligatorio": "Sí",
+          "sensibilidad": "Personal",
+          "propietario": "Tesorería"
+        },
+        {
+          "nombre": "medio",
+          "tipo": "varchar(16)",
+          "valores": "efectivo, tarjeta, transferencia, credito",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Tesorería"
+        },
+        {
+          "nombre": "monto_cifrado",
+          "tipo": "bytea",
+          "valores": "Importe CLP no negativo cifrado",
+          "obligatorio": "Sí",
+          "sensibilidad": "Financiero restringido",
+          "propietario": "Tesorería"
+        },
+        {
+          "nombre": "referencia_pasarela",
+          "tipo": "varchar(100)",
+          "valores": "Referencia tokenizada; sin PAN ni CVV",
+          "obligatorio": "No",
+          "sensibilidad": "Financiero restringido",
+          "propietario": "Tesorería"
+        },
+        {
+          "nombre": "estado",
+          "tipo": "varchar(16)",
+          "valores": "capturado, confirmado, incierto, rechazado",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Tesorería"
+        },
+        {
+          "nombre": "ocurrido_en",
+          "tipo": "timestamptz",
+          "valores": "Hora del pago",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Tesorería"
+        }
+      ],
+      "regla": "No se confirma tarjeta por timeout. El efectivo capturado se concilia con rendición; no se suma dos veces por reintento."
+    },
+    {
+      "nombre": "rendicion",
+      "dominio": "BD_COBRANZA_FINANZAS",
+      "modulo": "M7",
+      "propietario": "Tesorería",
+      "atributos": [
+        {
+          "nombre": "id",
+          "tipo": "uuid",
+          "valores": "UUID estable, PK",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Tesorería"
+        },
+        {
+          "nombre": "creado_en",
+          "tipo": "timestamptz",
+          "valores": "UTC; instante de persistencia",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Tesorería"
+        },
+        {
+          "nombre": "version",
+          "tipo": "bigint",
+          "valores": "Entero mayor o igual a 1",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Tesorería"
+        },
+        {
+          "nombre": "conductor_id",
+          "tipo": "uuid",
+          "valores": "Autor/custodio",
+          "obligatorio": "Sí",
+          "sensibilidad": "Personal",
+          "propietario": "Tesorería"
+        },
+        {
+          "nombre": "viaje_id",
+          "tipo": "uuid",
+          "valores": "Viaje rendido",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Tesorería"
+        },
+        {
+          "nombre": "esperado_cifrado",
+          "tipo": "bytea",
+          "valores": "Suma de cobros de efectivo confirmados",
+          "obligatorio": "Sí",
+          "sensibilidad": "Financiero restringido",
+          "propietario": "Tesorería"
+        },
+        {
+          "nombre": "recibido_cifrado",
+          "tipo": "bytea",
+          "valores": "Monto contado por Tesorería",
+          "obligatorio": "Sí",
+          "sensibilidad": "Financiero restringido",
+          "propietario": "Tesorería"
+        },
+        {
+          "nombre": "causal_diferencia",
+          "tipo": "varchar(160)",
+          "valores": "Explicación obligatoria si hay diferencia",
+          "obligatorio": "No",
+          "sensibilidad": "Financiero restringido",
+          "propietario": "Tesorería"
+        },
+        {
+          "nombre": "estado",
+          "tipo": "varchar(16)",
+          "valores": "abierta, conciliada, observada, cerrada",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Tesorería"
+        }
+      ],
+      "regla": "Tesorería valida esperado, recibido y diferencia. Corrección por ajuste con autor y motivo; la captura del conductor no es cierre contable ERP."
+    },
+    {
+      "nombre": "saldo_credito",
+      "dominio": "BD_COBRANZA_FINANZAS",
+      "modulo": "M7",
+      "propietario": "Tesorería",
+      "atributos": [
+        {
+          "nombre": "id",
+          "tipo": "uuid",
+          "valores": "UUID estable, PK",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Tesorería"
+        },
+        {
+          "nombre": "creado_en",
+          "tipo": "timestamptz",
+          "valores": "UTC; instante de persistencia",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Tesorería"
+        },
+        {
+          "nombre": "version",
+          "tipo": "bigint",
+          "valores": "Entero mayor o igual a 1",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Tesorería"
+        },
+        {
+          "nombre": "cliente_id",
+          "tipo": "uuid",
+          "valores": "Maestro cliente único",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Tesorería"
+        },
+        {
+          "nombre": "saldo_cifrado",
+          "tipo": "bytea",
+          "valores": "Saldo vivo CLP cifrado",
+          "obligatorio": "Sí",
+          "sensibilidad": "Financiero restringido",
+          "propietario": "Tesorería"
+        },
+        {
+          "nombre": "limite_cifrado",
+          "tipo": "bytea",
+          "valores": "Límite autorizado cifrado",
+          "obligatorio": "Sí",
+          "sensibilidad": "Financiero restringido",
+          "propietario": "Tesorería"
+        },
+        {
+          "nombre": "bloqueado",
+          "tipo": "boolean",
+          "valores": "Restricción comunicada por ERP",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Tesorería"
+        },
+        {
+          "nombre": "vigente_en",
+          "tipo": "timestamptz",
+          "valores": "Fecha de fuente ERP",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Tesorería"
+        }
+      ],
+      "regla": "Proyección del ERP; no se sustituye con un saldo offline. M3 presenta antigüedad y no habilita crédito adicional durante incertidumbre."
+    },
+    {
+      "nombre": "devolucion",
+      "dominio": "BD_INVENTARIO",
+      "modulo": "M8",
+      "propietario": "Operaciones",
+      "atributos": [
+        {
+          "nombre": "id",
+          "tipo": "uuid",
+          "valores": "UUID estable, PK",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Operaciones"
+        },
+        {
+          "nombre": "creado_en",
+          "tipo": "timestamptz",
+          "valores": "UTC; instante de persistencia",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Operaciones"
+        },
+        {
+          "nombre": "version",
+          "tipo": "bigint",
+          "valores": "Entero mayor o igual a 1",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Operaciones"
+        },
+        {
+          "nombre": "entrega_id",
+          "tipo": "uuid",
+          "valores": "Entrega o intento original",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Operaciones"
+        },
+        {
+          "nombre": "lote_id",
+          "tipo": "uuid",
+          "valores": "Lote de retorno",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Operaciones"
+        },
+        {
+          "nombre": "cantidad",
+          "tipo": "numeric(14,3)",
+          "valores": "Mayor que cero",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Operaciones"
+        },
+        {
+          "nombre": "causal",
+          "tipo": "varchar(40)",
+          "valores": "daño, vencimiento, no_solicitado, otra",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Operaciones"
+        },
+        {
+          "nombre": "estado",
+          "tipo": "varchar(20)",
+          "valores": "capturada, recibida, cuarentena, liberada, descartada",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Operaciones"
+        },
+        {
+          "nombre": "documento_posterior_id",
+          "tipo": "uuid",
+          "valores": "Documento emitido por ERP si corresponde",
+          "obligatorio": "No",
+          "sensibilidad": "Interno",
+          "propietario": "Operaciones"
+        }
+      ],
+      "regla": "Recepción física local no acredita aptitud ni abono. Calidad decide reingreso; ERP emite documento posterior enlazado al original."
+    },
+    {
+      "nombre": "movimiento_envase",
+      "dominio": "BD_INVENTARIO",
+      "modulo": "M8",
+      "propietario": "Operaciones",
+      "atributos": [
+        {
+          "nombre": "id",
+          "tipo": "uuid",
+          "valores": "UUID estable, PK",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Operaciones"
+        },
+        {
+          "nombre": "creado_en",
+          "tipo": "timestamptz",
+          "valores": "UTC; instante de persistencia",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Operaciones"
+        },
+        {
+          "nombre": "version",
+          "tipo": "bigint",
+          "valores": "Entero mayor o igual a 1",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Operaciones"
+        },
+        {
+          "nombre": "cliente_id",
+          "tipo": "uuid",
+          "valores": "Cuenta corriente del cliente",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Operaciones"
+        },
+        {
+          "nombre": "tipo_envase",
+          "tipo": "varchar(16)",
+          "valores": "canastillo, pallet",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Operaciones"
+        },
+        {
+          "nombre": "cantidad_delta",
+          "tipo": "integer",
+          "valores": "Cargo positivo, retorno negativo; distinto de cero",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Operaciones"
+        },
+        {
+          "nombre": "entrega_id",
+          "tipo": "uuid",
+          "valores": "Entrega de origen si aplica",
+          "obligatorio": "No",
+          "sensibilidad": "Interno",
+          "propietario": "Operaciones"
+        },
+        {
+          "nombre": "sitio_id",
+          "tipo": "uuid",
+          "valores": "Sitio de recepción física",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Operaciones"
+        },
+        {
+          "nombre": "estado",
+          "tipo": "varchar(16)",
+          "valores": "capturado, aceptado, disputado, compensado",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Operaciones"
+        },
+        {
+          "nombre": "evidencia_id",
+          "tipo": "uuid",
+          "valores": "Constancia vinculada",
+          "obligatorio": "No",
+          "sensibilidad": "Personal restringido",
+          "propietario": "Operaciones"
+        }
+      ],
+      "regla": "Saldo por cliente/tipo = suma de movimientos aceptados. No se crea una identidad por cada canastillo; disputa no elimina evidencia del hecho."
+    },
+    {
+      "nombre": "sensor",
+      "dominio": "BD_TELEMETRIA",
+      "modulo": "M9",
+      "propietario": "Calidad",
+      "atributos": [
+        {
+          "nombre": "id",
+          "tipo": "uuid",
+          "valores": "UUID estable, PK",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Calidad"
+        },
+        {
+          "nombre": "creado_en",
+          "tipo": "timestamptz",
+          "valores": "UTC; instante de persistencia",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Calidad"
+        },
+        {
+          "nombre": "version",
+          "tipo": "bigint",
+          "valores": "Entero mayor o igual a 1",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Calidad"
+        },
+        {
+          "nombre": "codigo",
+          "tipo": "varchar(40)",
+          "valores": "Identificador único del sensor físico",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Calidad"
+        },
+        {
+          "nombre": "sitio_id",
+          "tipo": "uuid",
+          "valores": "Sitio; nulo para vehículo",
+          "obligatorio": "No",
+          "sensibilidad": "Interno",
+          "propietario": "Calidad"
+        },
+        {
+          "nombre": "vehiculo_id",
+          "tipo": "uuid",
+          "valores": "Vehículo; nulo para cámara",
+          "obligatorio": "No",
+          "sensibilidad": "Interno",
+          "propietario": "Calidad"
+        },
+        {
+          "nombre": "calibrado_en",
+          "tipo": "date",
+          "valores": "Fecha de última calibración",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Calidad"
+        },
+        {
+          "nombre": "intervalo_seg",
+          "tipo": "integer",
+          "valores": "Muestreo positivo según perfil técnico",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Calidad"
+        }
+      ],
+      "regla": "Exactamente una ubicación sitio/vehículo; gateway redundante no crea un segundo sensor físico."
+    },
+    {
+      "nombre": "lectura_termica",
+      "dominio": "BD_TELEMETRIA",
+      "modulo": "M9",
+      "propietario": "Calidad",
+      "atributos": [
+        {
+          "nombre": "id",
+          "tipo": "uuid",
+          "valores": "UUID estable, PK",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Calidad"
+        },
+        {
+          "nombre": "creado_en",
+          "tipo": "timestamptz",
+          "valores": "UTC; instante de persistencia",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Calidad"
+        },
+        {
+          "nombre": "version",
+          "tipo": "bigint",
+          "valores": "Entero mayor o igual a 1",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Calidad"
+        },
+        {
+          "nombre": "sensor_id",
+          "tipo": "uuid",
+          "valores": "Sensor de origen",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Calidad"
+        },
+        {
+          "nombre": "secuencia_origen",
+          "tipo": "bigint",
+          "valores": "Secuencia del dispositivo y sesión",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Calidad"
+        },
+        {
+          "nombre": "sesion_origen",
+          "tipo": "varchar(40)",
+          "valores": "Identifica reinicio del termógrafo",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Calidad"
+        },
+        {
+          "nombre": "ocurrido_en",
+          "tipo": "timestamptz",
+          "valores": "Hora de muestreo UTC",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Calidad"
+        },
+        {
+          "nombre": "valor_c",
+          "tipo": "numeric(5,2)",
+          "valores": "Temperatura Celsius",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Calidad"
+        },
+        {
+          "nombre": "calidad",
+          "tipo": "varchar(16)",
+          "valores": "valida, sospechosa, sin_calibracion",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Calidad"
+        },
+        {
+          "nombre": "gateway_id",
+          "tipo": "varchar(40)",
+          "valores": "Gateway que transportó, no clave de lectura",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Calidad"
+        }
+      ],
+      "regla": "Clave de deduplicación sensor/sesión/secuencia; conservar discrepancias de valor como incidente. Raw en DynamoDB, serie validada en Parquet y Redshift."
+    },
+    {
+      "nombre": "bloqueo_calidad",
+      "dominio": "BD_CALIDAD_TRAZABILIDAD",
+      "modulo": "M9",
+      "propietario": "Calidad",
+      "atributos": [
+        {
+          "nombre": "id",
+          "tipo": "uuid",
+          "valores": "UUID estable, PK",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Calidad"
+        },
+        {
+          "nombre": "creado_en",
+          "tipo": "timestamptz",
+          "valores": "UTC; instante de persistencia",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Calidad"
+        },
+        {
+          "nombre": "version",
+          "tipo": "bigint",
+          "valores": "Entero mayor o igual a 1",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Calidad"
+        },
+        {
+          "nombre": "lote_id",
+          "tipo": "uuid",
+          "valores": "Lote afectado",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Calidad"
+        },
+        {
+          "nombre": "sensor_id",
+          "tipo": "uuid",
+          "valores": "Sensor causante si térmico",
+          "obligatorio": "No",
+          "sensibilidad": "Interno",
+          "propietario": "Calidad"
+        },
+        {
+          "nombre": "motivo",
+          "tipo": "varchar(80)",
+          "valores": "Excursión, retiro sanitario u observación",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Calidad"
+        },
+        {
+          "nombre": "estado",
+          "tipo": "varchar(16)",
+          "valores": "activo, liberado, descartado",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Calidad"
+        },
+        {
+          "nombre": "decisor_id",
+          "tipo": "uuid",
+          "valores": "Responsable de Calidad para liberar",
+          "obligatorio": "No",
+          "sensibilidad": "Personal",
+          "propietario": "Calidad"
+        },
+        {
+          "nombre": "ocurrido_en",
+          "tipo": "timestamptz",
+          "valores": "Hora de bloqueo",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Calidad"
+        }
+      ],
+      "regla": "Bloqueo local aplica a M5 en menos de 5 s según arquitectura; liberación exige decisión motivada de Calidad, no tiempo de espera."
+    },
+    {
+      "nombre": "posicion_flota",
+      "dominio": "BD_TELEMETRIA",
+      "modulo": "M12",
+      "propietario": "Flota",
+      "atributos": [
+        {
+          "nombre": "id",
+          "tipo": "uuid",
+          "valores": "UUID estable, PK",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Flota"
+        },
+        {
+          "nombre": "creado_en",
+          "tipo": "timestamptz",
+          "valores": "UTC; instante de persistencia",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Flota"
+        },
+        {
+          "nombre": "version",
+          "tipo": "bigint",
+          "valores": "Entero mayor o igual a 1",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Flota"
+        },
+        {
+          "nombre": "vehiculo_id",
+          "tipo": "uuid",
+          "valores": "Vehículo telemático",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Flota"
+        },
+        {
+          "nombre": "viaje_id",
+          "tipo": "uuid",
+          "valores": "Viaje asociado si existe",
+          "obligatorio": "No",
+          "sensibilidad": "Interno",
+          "propietario": "Flota"
+        },
+        {
+          "nombre": "referencia_tercero",
+          "tipo": "varchar(100)",
+          "valores": "Clave de lectura externa única",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Flota"
+        },
+        {
+          "nombre": "posicion_cifrada",
+          "tipo": "bytea",
+          "valores": "Coordenadas cifradas a nivel de campo",
+          "obligatorio": "Sí",
+          "sensibilidad": "Personal restringido",
+          "propietario": "Flota"
+        },
+        {
+          "nombre": "ocurrido_en",
+          "tipo": "timestamptz",
+          "valores": "Hora del GPS",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Flota"
+        }
+      ],
+      "regla": "Se ingiere por INT-15 desde telemetría existente. Plazo máximo de dato personal 12 meses; métricas agregadas irreversibles se separan del identificador de persona."
+    },
+    {
+      "nombre": "transportista",
+      "dominio": "BD_GOBIERNO_ACCESO",
+      "modulo": "M6/M12",
+      "propietario": "Flota",
+      "atributos": [
+        {
+          "nombre": "id",
+          "tipo": "uuid",
+          "valores": "UUID estable, PK",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Flota"
+        },
+        {
+          "nombre": "creado_en",
+          "tipo": "timestamptz",
+          "valores": "UTC; instante de persistencia",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Flota"
+        },
+        {
+          "nombre": "version",
+          "tipo": "bigint",
+          "valores": "Entero mayor o igual a 1",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Flota"
+        },
+        {
+          "nombre": "rut",
+          "tipo": "varchar(12)",
+          "valores": "RUT válido único",
+          "obligatorio": "Sí",
+          "sensibilidad": "Personal",
+          "propietario": "Flota"
+        },
+        {
+          "nombre": "razon_social",
+          "tipo": "varchar(160)",
+          "valores": "Empresa autorizada",
+          "obligatorio": "Sí",
+          "sensibilidad": "Personal",
+          "propietario": "Flota"
+        },
+        {
+          "nombre": "estado",
+          "tipo": "varchar(16)",
+          "valores": "activo, suspendido, finalizado",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Flota"
+        }
+      ],
+      "regla": "Transportista declara conductores; autorización y revocación conservan versión y rastro."
+    },
+    {
+      "nombre": "vinculo_conductor",
+      "dominio": "BD_GOBIERNO_ACCESO",
+      "modulo": "M6",
+      "propietario": "Flota",
+      "atributos": [
+        {
+          "nombre": "id",
+          "tipo": "uuid",
+          "valores": "UUID estable, PK",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Flota"
+        },
+        {
+          "nombre": "creado_en",
+          "tipo": "timestamptz",
+          "valores": "UTC; instante de persistencia",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Flota"
+        },
+        {
+          "nombre": "version",
+          "tipo": "bigint",
+          "valores": "Entero mayor o igual a 1",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Flota"
+        },
+        {
+          "nombre": "actor_id",
+          "tipo": "uuid",
+          "valores": "Identidad Keycloak estable",
+          "obligatorio": "Sí",
+          "sensibilidad": "Personal",
+          "propietario": "Flota"
+        },
+        {
+          "nombre": "transportista_id",
+          "tipo": "uuid",
+          "valores": "Empresa; nulo si propio",
+          "obligatorio": "No",
+          "sensibilidad": "Interno",
+          "propietario": "Flota"
+        },
+        {
+          "nombre": "desde",
+          "tipo": "timestamptz",
+          "valores": "Inicio del vínculo",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Flota"
+        },
+        {
+          "nombre": "hasta",
+          "tipo": "timestamptz",
+          "valores": "Fin del vínculo, posterior al inicio",
+          "obligatorio": "No",
+          "sensibilidad": "Interno",
+          "propietario": "Flota"
+        },
+        {
+          "nombre": "estado",
+          "tipo": "varchar(16)",
+          "valores": "activo, revocado, expirado",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Flota"
+        }
+      ],
+      "regla": "Autor de POD refiere actor y vínculo histórico. Reemplazar conductor requiere un vínculo nuevo, sin sobrescribir el anterior."
+    },
+    {
+      "nombre": "autorizacion_turno",
+      "dominio": "BD_GOBIERNO_ACCESO",
+      "modulo": "M1/M5/M6",
+      "propietario": "Seguridad",
+      "atributos": [
+        {
+          "nombre": "id",
+          "tipo": "uuid",
+          "valores": "UUID estable, PK",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Seguridad"
+        },
+        {
+          "nombre": "creado_en",
+          "tipo": "timestamptz",
+          "valores": "UTC; instante de persistencia",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Seguridad"
+        },
+        {
+          "nombre": "version",
+          "tipo": "bigint",
+          "valores": "Entero mayor o igual a 1",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Seguridad"
+        },
+        {
+          "nombre": "actor_id",
+          "tipo": "uuid",
+          "valores": "Identidad del autor",
+          "obligatorio": "Sí",
+          "sensibilidad": "Personal",
+          "propietario": "Seguridad"
+        },
+        {
+          "nombre": "dispositivo_id",
+          "tipo": "uuid",
+          "valores": "Equipo autorizado",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Seguridad"
+        },
+        {
+          "nombre": "sitio_id",
+          "tipo": "uuid",
+          "valores": "Sitio o ámbito del turno",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Seguridad"
+        },
+        {
+          "nombre": "valida_hasta",
+          "tipo": "timestamptz",
+          "valores": "8 h bodega o 14 h terreno según arquitectura",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Seguridad"
+        },
+        {
+          "nombre": "manifiesto_hash",
+          "tipo": "char(64)",
+          "valores": "Manifiesto firmado de autorización",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Seguridad"
+        },
+        {
+          "nombre": "estado",
+          "tipo": "varchar(16)",
+          "valores": "vigente, revocada, expirada",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Seguridad"
+        }
+      ],
+      "regla": "El caché de identidad de 24 h no extiende la credencial del turno. No se almacenan PIN ni tokens en texto claro."
+    },
+    {
+      "nombre": "mensaje_edi",
+      "dominio": "BD_EDI_CANALMODERNO",
+      "modulo": "M11",
+      "propietario": "Comercial",
+      "atributos": [
+        {
+          "nombre": "id",
+          "tipo": "uuid",
+          "valores": "UUID estable, PK",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Comercial"
+        },
+        {
+          "nombre": "creado_en",
+          "tipo": "timestamptz",
+          "valores": "UTC; instante de persistencia",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Comercial"
+        },
+        {
+          "nombre": "version",
+          "tipo": "bigint",
+          "valores": "Entero mayor o igual a 1",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Comercial"
+        },
+        {
+          "nombre": "cadena_id",
+          "tipo": "varchar(40)",
+          "valores": "Socio y perfil versionado",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Comercial"
+        },
+        {
+          "nombre": "referencia_externa",
+          "tipo": "varchar(100)",
+          "valores": "Documento único por cadena/tipo",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Comercial"
+        },
+        {
+          "nombre": "tipo",
+          "tipo": "varchar(24)",
+          "valores": "pedido, respuesta, aviso_despacho, factura",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Comercial"
+        },
+        {
+          "nombre": "formato",
+          "tipo": "varchar(16)",
+          "valores": "EANCOM, GS1_XML, EPCIS",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Comercial"
+        },
+        {
+          "nombre": "objeto_id",
+          "tipo": "uuid",
+          "valores": "Original AS2 y transformación",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Comercial"
+        },
+        {
+          "nombre": "pedido_id",
+          "tipo": "uuid",
+          "valores": "Pedido canónico resultante",
+          "obligatorio": "No",
+          "sensibilidad": "Interno",
+          "propietario": "Comercial"
+        },
+        {
+          "nombre": "estado",
+          "tipo": "varchar(20)",
+          "valores": "recibido, validado, traducido, observado, respondido",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Comercial"
+        }
+      ],
+      "regla": "MDN se separa de respuesta comercial; M11 solicita a M3 el pedido y no escribe reserva M2."
+    },
+    {
+      "nombre": "notificacion",
+      "dominio": "BD_MAILS_NOTIF",
+      "modulo": "M3/M6",
+      "propietario": "Comercial",
+      "atributos": [
+        {
+          "nombre": "id",
+          "tipo": "uuid",
+          "valores": "UUID estable, PK",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Comercial"
+        },
+        {
+          "nombre": "creado_en",
+          "tipo": "timestamptz",
+          "valores": "UTC; instante de persistencia",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Comercial"
+        },
+        {
+          "nombre": "version",
+          "tipo": "bigint",
+          "valores": "Entero mayor o igual a 1",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Comercial"
+        },
+        {
+          "nombre": "cliente_id",
+          "tipo": "uuid",
+          "valores": "Destinatario autorizado",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Comercial"
+        },
+        {
+          "nombre": "canal",
+          "tipo": "varchar(16)",
+          "valores": "sms, mensajeria, correo, app",
+          "obligatorio": "Sí",
+          "sensibilidad": "Personal",
+          "propietario": "Comercial"
+        },
+        {
+          "nombre": "plantilla",
+          "tipo": "varchar(40)",
+          "valores": "Plantilla versionada sin datos de pago en claro",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Comercial"
+        },
+        {
+          "nombre": "evento_id",
+          "tipo": "uuid",
+          "valores": "Hecho que genera aviso",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Comercial"
+        },
+        {
+          "nombre": "estado",
+          "tipo": "varchar(16)",
+          "valores": "pendiente, enviada, entregada, fallida",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Comercial"
+        },
+        {
+          "nombre": "referencia_proveedor",
+          "tipo": "varchar(100)",
+          "valores": "Acuse técnico del proveedor",
+          "obligatorio": "No",
+          "sensibilidad": "Interno",
+          "propietario": "Comercial"
+        }
+      ],
+      "regla": "UNIQUE(evento_id,cliente_id,canal,plantilla); enviada no implica leída. Cliente sin canal digital conserva atención por preventista/conductor."
+    },
+    {
+      "nombre": "objeto_documental",
+      "dominio": "S3_DOCS",
+      "modulo": "M6/M7/M9",
+      "propietario": "Operaciones y Tributación",
+      "atributos": [
+        {
+          "nombre": "id",
+          "tipo": "uuid",
+          "valores": "UUID estable, PK",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Operaciones y Tributación"
+        },
+        {
+          "nombre": "creado_en",
+          "tipo": "timestamptz",
+          "valores": "UTC; instante de persistencia",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Operaciones y Tributación"
+        },
+        {
+          "nombre": "version",
+          "tipo": "bigint",
+          "valores": "Entero mayor o igual a 1",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Operaciones y Tributación"
+        },
+        {
+          "nombre": "clave_objeto",
+          "tipo": "varchar(240)",
+          "valores": "Ruta opaca; sin RUT ni nombre en URL",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Operaciones y Tributación"
+        },
+        {
+          "nombre": "version_objeto",
+          "tipo": "varchar(160)",
+          "valores": "Versión inmutable identificable",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Operaciones y Tributación"
+        },
+        {
+          "nombre": "mime",
+          "tipo": "varchar(80)",
+          "valores": "Tipo autorizado",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Operaciones y Tributación"
+        },
+        {
+          "nombre": "hash_sha256",
+          "tipo": "char(64)",
+          "valores": "Huella verificable",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Operaciones y Tributación"
+        },
+        {
+          "nombre": "tamano_bytes",
+          "tipo": "bigint",
+          "valores": "Mayor que cero",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Operaciones y Tributación"
+        },
+        {
+          "nombre": "retener_hasta",
+          "tipo": "timestamptz",
+          "valores": "Política por categoría y bloqueo legal",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Operaciones y Tributación"
+        },
+        {
+          "nombre": "cifrado_clave_id",
+          "tipo": "varchar(160)",
+          "valores": "Referencia a KMS, nunca secreto",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Operaciones y Tributación"
+        }
+      ],
+      "regla": "Conservar manifiesto y hashes; transacción de metadatos solo publica evidencia verificada. Object Lock se aplica por categoría, no indefinidamente a todo objeto."
+    },
+    {
+      "nombre": "evento_outbox",
+      "dominio": "dominio_productor",
+      "modulo": "M1–M12",
+      "propietario": "Propietario del módulo",
+      "atributos": [
+        {
+          "nombre": "id",
+          "tipo": "uuid",
+          "valores": "UUID estable, PK",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Propietario del módulo"
+        },
+        {
+          "nombre": "creado_en",
+          "tipo": "timestamptz",
+          "valores": "UTC; instante de persistencia",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Propietario del módulo"
+        },
+        {
+          "nombre": "version",
+          "tipo": "bigint",
+          "valores": "Entero mayor o igual a 1",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Propietario del módulo"
+        },
+        {
+          "nombre": "event_id",
+          "tipo": "uuid",
+          "valores": "Identificador único",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Propietario del módulo"
+        },
+        {
+          "nombre": "transaction_id",
+          "tipo": "uuid",
+          "valores": "Correlación de extremo a extremo",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Propietario del módulo"
+        },
+        {
+          "nombre": "agregado_id",
+          "tipo": "uuid",
+          "valores": "Entidad cuya versión cambia",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Propietario del módulo"
+        },
+        {
+          "nombre": "agregado_version",
+          "tipo": "bigint",
+          "valores": "Versión positiva",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Propietario del módulo"
+        },
+        {
+          "nombre": "sitio_id",
+          "tipo": "uuid",
+          "valores": "Origen del hecho",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Propietario del módulo"
+        },
+        {
+          "nombre": "tipo",
+          "tipo": "varchar(80)",
+          "valores": "Nombre canónico en pasado",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Propietario del módulo"
+        },
+        {
+          "nombre": "schema_version",
+          "tipo": "varchar(16)",
+          "valores": "SemVer del contrato",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Propietario del módulo"
+        },
+        {
+          "nombre": "payload",
+          "tipo": "jsonb",
+          "valores": "Esquema validado; datos personales minimizados/cifrados",
+          "obligatorio": "Sí",
+          "sensibilidad": "Según carga",
+          "propietario": "Propietario del módulo"
+        },
+        {
+          "nombre": "estado",
+          "tipo": "varchar(16)",
+          "valores": "pendiente, enviado, acusado, excepcion",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Propietario del módulo"
+        }
+      ],
+      "regla": "Persiste junto con cambio y auditoría en una transacción; solo se purga después de acuse durable y plazo de deduplicación."
+    },
+    {
+      "nombre": "resultado_inbox",
+      "dominio": "dominio_consumidor",
+      "modulo": "M1–M12",
+      "propietario": "Propietario del módulo",
+      "atributos": [
+        {
+          "nombre": "id",
+          "tipo": "uuid",
+          "valores": "UUID estable, PK",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Propietario del módulo"
+        },
+        {
+          "nombre": "creado_en",
+          "tipo": "timestamptz",
+          "valores": "UTC; instante de persistencia",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Propietario del módulo"
+        },
+        {
+          "nombre": "version",
+          "tipo": "bigint",
+          "valores": "Entero mayor o igual a 1",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Propietario del módulo"
+        },
+        {
+          "nombre": "event_id",
+          "tipo": "uuid",
+          "valores": "Clave idempotente única por consumidor",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Propietario del módulo"
+        },
+        {
+          "nombre": "hash_payload",
+          "tipo": "char(64)",
+          "valores": "Huella de carga canónica",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Propietario del módulo"
+        },
+        {
+          "nombre": "regla",
+          "tipo": "varchar(80)",
+          "valores": "Regla aplicada y versión",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Propietario del módulo"
+        },
+        {
+          "nombre": "resultado",
+          "tipo": "jsonb",
+          "valores": "Estado y referencia de efecto durable",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Propietario del módulo"
+        },
+        {
+          "nombre": "actor_id",
+          "tipo": "uuid",
+          "valores": "Autor original o cuenta de sistema",
+          "obligatorio": "Sí",
+          "sensibilidad": "Personal",
+          "propietario": "Propietario del módulo"
+        },
+        {
+          "nombre": "resuelto_en",
+          "tipo": "timestamptz",
+          "valores": "Instante de persistencia",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Propietario del módulo"
+        },
+        {
+          "nombre": "expira_en",
+          "tipo": "timestamptz",
+          "valores": "30 días como mínimo antes de archivo",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Propietario del módulo"
+        }
+      ],
+      "regla": "Duplicado con misma huella devuelve resultado; distinto payload bajo mismo UUID se aísla. Mensaje de más de 30 días requiere revisión antes de nueva escritura."
+    },
+    {
+      "nombre": "auditoria",
+      "dominio": "dominio_productor",
+      "modulo": "M1–M12",
+      "propietario": "Seguridad y dueño de negocio",
+      "atributos": [
+        {
+          "nombre": "id",
+          "tipo": "uuid",
+          "valores": "UUID estable, PK",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Seguridad y dueño de negocio"
+        },
+        {
+          "nombre": "creado_en",
+          "tipo": "timestamptz",
+          "valores": "UTC; instante de persistencia",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Seguridad y dueño de negocio"
+        },
+        {
+          "nombre": "version",
+          "tipo": "bigint",
+          "valores": "Entero mayor o igual a 1",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Seguridad y dueño de negocio"
+        },
+        {
+          "nombre": "entidad",
+          "tipo": "varchar(80)",
+          "valores": "Tipo de registro",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Seguridad y dueño de negocio"
+        },
+        {
+          "nombre": "entidad_id",
+          "tipo": "uuid",
+          "valores": "Registro afectado",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Seguridad y dueño de negocio"
+        },
+        {
+          "nombre": "actor_id",
+          "tipo": "uuid",
+          "valores": "Autor y vínculo verificables",
+          "obligatorio": "Sí",
+          "sensibilidad": "Personal",
+          "propietario": "Seguridad y dueño de negocio"
+        },
+        {
+          "nombre": "dispositivo_id",
+          "tipo": "uuid",
+          "valores": "Equipo o cuenta técnica",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Seguridad y dueño de negocio"
+        },
+        {
+          "nombre": "accion",
+          "tipo": "varchar(40)",
+          "valores": "crear, modificar, compensar, consultar_sensible, eliminar",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Seguridad y dueño de negocio"
+        },
+        {
+          "nombre": "antes_cifrado",
+          "tipo": "bytea",
+          "valores": "Valores anteriores protegidos; nulo al crear",
+          "obligatorio": "No",
+          "sensibilidad": "Según carga",
+          "propietario": "Seguridad y dueño de negocio"
+        },
+        {
+          "nombre": "despues_cifrado",
+          "tipo": "bytea",
+          "valores": "Valores posteriores protegidos; nulo al eliminar",
+          "obligatorio": "No",
+          "sensibilidad": "Según carga",
+          "propietario": "Seguridad y dueño de negocio"
+        },
+        {
+          "nombre": "transaction_id",
+          "tipo": "uuid",
+          "valores": "Correlación",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Seguridad y dueño de negocio"
+        },
+        {
+          "nombre": "ocurrido_en",
+          "tipo": "timestamptz",
+          "valores": "Hora del hecho",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Seguridad y dueño de negocio"
+        }
+      ],
+      "regla": "La bitácora de negocio acompaña al registro durante su retención, aunque los logs técnicos tengan otro plazo. Registrar también lectura sensible."
+    },
+    {
+      "nombre": "carga_migracion",
+      "dominio": "BD_MAESTROS_CONF",
+      "modulo": "Migración",
+      "propietario": "Responsable de migración",
+      "atributos": [
+        {
+          "nombre": "id",
+          "tipo": "uuid",
+          "valores": "UUID estable, PK",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Responsable de migración"
+        },
+        {
+          "nombre": "creado_en",
+          "tipo": "timestamptz",
+          "valores": "UTC; instante de persistencia",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Responsable de migración"
+        },
+        {
+          "nombre": "version",
+          "tipo": "bigint",
+          "valores": "Entero mayor o igual a 1",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Responsable de migración"
+        },
+        {
+          "nombre": "fuente",
+          "tipo": "varchar(160)",
+          "valores": "Sistema y exportación versionada",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Responsable de migración"
+        },
+        {
+          "nombre": "hash_origen",
+          "tipo": "char(64)",
+          "valores": "Huella del extracto protegido",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Responsable de migración"
+        },
+        {
+          "nombre": "reglas_version",
+          "tipo": "varchar(40)",
+          "valores": "Versión de mapeo",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Responsable de migración"
+        },
+        {
+          "nombre": "filas_origen",
+          "tipo": "bigint",
+          "valores": "Recuento no negativo",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Responsable de migración"
+        },
+        {
+          "nombre": "filas_aceptadas",
+          "tipo": "bigint",
+          "valores": "Recuento no negativo",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Responsable de migración"
+        },
+        {
+          "nombre": "filas_cuarentena",
+          "tipo": "bigint",
+          "valores": "Recuento no negativo",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Responsable de migración"
+        },
+        {
+          "nombre": "estado",
+          "tipo": "varchar(20)",
+          "valores": "perfilada, ensayada, conciliada, revertida",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Responsable de migración"
+        }
+      ],
+      "regla": "Aceptadas más cuarentena deben explicar el total de origen; conservar mapeo de IDs y reporte de diferencias."
+    },
+    {
+      "nombre": "hecho_entrega",
+      "dominio": "BD_BI_GERENCIA",
+      "modulo": "M10",
+      "propietario": "Control de gestión",
+      "atributos": [
+        {
+          "nombre": "id",
+          "tipo": "uuid",
+          "valores": "UUID estable, PK",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "creado_en",
+          "tipo": "timestamptz",
+          "valores": "UTC; instante de persistencia",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "version",
+          "tipo": "bigint",
+          "valores": "Entero mayor o igual a 1",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "entrega_id",
+          "tipo": "uuid",
+          "valores": "Clave natural del evento operativo",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "pedido_id",
+          "tipo": "uuid",
+          "valores": "Permite evaluar OTIF por pedido",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "fecha_key",
+          "tipo": "integer",
+          "valores": "Clave a dim_fecha",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "cliente_key",
+          "tipo": "bigint",
+          "valores": "Clave sustituta SCD2",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "sitio_key",
+          "tipo": "bigint",
+          "valores": "Clave a dim_sitio",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "cantidad_aceptada",
+          "tipo": "numeric(14,3)",
+          "valores": "Suma por evento, no acumulado duplicado",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "completa",
+          "tipo": "boolean",
+          "valores": "Todas las líneas netas cubiertas",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "a_tiempo",
+          "tipo": "boolean",
+          "valores": "Recepción dentro de ventana prometida",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "fuente_event_id",
+          "tipo": "uuid",
+          "valores": "Evento canónico único",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "visible_en",
+          "tipo": "timestamptz",
+          "valores": "Momento disponible en modelo semántico",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "dataset_origen",
+          "tipo": "varchar(120)",
+          "valores": "Dataset gobernado",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "lote_etl",
+          "tipo": "uuid",
+          "valores": "Ejecución con manifiesto",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "transformation_version",
+          "tipo": "varchar(40)",
+          "valores": "Regla aplicada",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "ocurrido_en",
+          "tipo": "timestamptz",
+          "valores": "Momento de origen UTC",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        }
+      ],
+      "regla": "Hecho a grano de entrega; OTIF se agrega por pedido sin contar intentos como pedidos adicionales. No almacena identidad de receptor ni ubicación personal en claro."
+    },
+    {
+      "nombre": "dim_cliente",
+      "dominio": "BD_BI_GERENCIA",
+      "modulo": "M10",
+      "propietario": "Control de gestión",
+      "atributos": [
+        {
+          "nombre": "id",
+          "tipo": "uuid",
+          "valores": "UUID estable, PK",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "creado_en",
+          "tipo": "timestamptz",
+          "valores": "UTC; instante de persistencia",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "version",
+          "tipo": "bigint",
+          "valores": "Entero mayor o igual a 1",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "cliente_key",
+          "tipo": "bigint",
+          "valores": "Clave sustituta única",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "cliente_id",
+          "tipo": "uuid",
+          "valores": "Identidad seudonimizada para navegación autorizada",
+          "obligatorio": "Sí",
+          "sensibilidad": "Personal",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "canal",
+          "tipo": "varchar(20)",
+          "valores": "Canal en la versión histórica",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "zona",
+          "tipo": "varchar(40)",
+          "valores": "Zona logística histórica",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "valida_desde",
+          "tipo": "timestamptz",
+          "valores": "Inicio de vigencia SCD2",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "valida_hasta",
+          "tipo": "timestamptz",
+          "valores": "Fin exclusivo, nulo si vigente",
+          "obligatorio": "No",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        }
+      ],
+      "regla": "Intervalos sin solapamiento por cliente; hechos enlazan la versión válida al ocurrir el evento."
+    },
+    {
+      "nombre": "cache_lectura",
+      "dominio": "REDIS_SESIONES_CACHE",
+      "modulo": "M3/M4",
+      "propietario": "Plataforma",
+      "atributos": [
+        {
+          "nombre": "clave",
+          "tipo": "varchar(160)",
+          "valores": "Entidad, versión, sitio y ámbito; sin PII",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Plataforma"
+        },
+        {
+          "nombre": "valor",
+          "tipo": "jsonb",
+          "valores": "Proyección minimizada de lectura",
+          "obligatorio": "Sí",
+          "sensibilidad": "Según carga",
+          "propietario": "Plataforma"
+        },
+        {
+          "nombre": "version_fuente",
+          "tipo": "bigint",
+          "valores": "Versión del registro publicado",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Plataforma"
+        },
+        {
+          "nombre": "expira_en",
+          "tipo": "timestamptz",
+          "valores": "TTL por categoría",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Plataforma"
+        }
+      ],
+      "regla": "Caché prescindible; no confirma stock, crédito ni pagos. Vaciarla no pierde registros de negocio."
+    },
+    {
+      "nombre": "equivalencia_maestro",
+      "dominio": "BD_MAESTROS_CONF",
+      "modulo": "ACL",
+      "propietario": "Dueño del maestro",
+      "atributos": [
+        {
+          "nombre": "id",
+          "tipo": "uuid",
+          "valores": "UUID estable, PK",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Dueño del maestro"
+        },
+        {
+          "nombre": "creado_en",
+          "tipo": "timestamptz",
+          "valores": "UTC; instante de persistencia",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Dueño del maestro"
+        },
+        {
+          "nombre": "version",
+          "tipo": "bigint",
+          "valores": "Entero mayor o igual a 1",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Dueño del maestro"
+        },
+        {
+          "nombre": "fuente",
+          "tipo": "varchar(40)",
+          "valores": "ERP, WMS o cadena autorizada",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Dueño del maestro"
+        },
+        {
+          "nombre": "entidad",
+          "tipo": "varchar(40)",
+          "valores": "Tipo de entidad del catálogo",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Dueño del maestro"
+        },
+        {
+          "nombre": "codigo_externo",
+          "tipo": "varchar(100)",
+          "valores": "Identificador en la fuente",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Dueño del maestro"
+        },
+        {
+          "nombre": "canonico_id",
+          "tipo": "uuid",
+          "valores": "Entidad canónica referida",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Dueño del maestro"
+        },
+        {
+          "nombre": "desde",
+          "tipo": "timestamptz",
+          "valores": "Inicio de vigencia",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Dueño del maestro"
+        },
+        {
+          "nombre": "hasta",
+          "tipo": "timestamptz",
+          "valores": "Fin exclusivo, nulo si vigente",
+          "obligatorio": "No",
+          "sensibilidad": "Interno",
+          "propietario": "Dueño del maestro"
+        }
+      ],
+      "regla": "UNIQUE(fuente,entidad,codigo_externo) vigente; fusión conserva alias, origen y aprobación."
+    },
+    {
+      "nombre": "dispositivo",
+      "dominio": "BD_GOBIERNO_ACCESO",
+      "modulo": "MDM",
+      "propietario": "Plataforma",
+      "atributos": [
+        {
+          "nombre": "id",
+          "tipo": "uuid",
+          "valores": "UUID estable, PK",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Plataforma"
+        },
+        {
+          "nombre": "creado_en",
+          "tipo": "timestamptz",
+          "valores": "UTC; instante de persistencia",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Plataforma"
+        },
+        {
+          "nombre": "version",
+          "tipo": "bigint",
+          "valores": "Entero mayor o igual a 1",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Plataforma"
+        },
+        {
+          "nombre": "codigo_mdm",
+          "tipo": "varchar(80)",
+          "valores": "Inventario MDM único",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Plataforma"
+        },
+        {
+          "nombre": "tipo",
+          "tipo": "varchar(20)",
+          "valores": "preventa, reparto, hht, gateway",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Plataforma"
+        },
+        {
+          "nombre": "sitio_id",
+          "tipo": "uuid",
+          "valores": "Sitio de adscripción",
+          "obligatorio": "No",
+          "sensibilidad": "Interno",
+          "propietario": "Plataforma"
+        },
+        {
+          "nombre": "estado",
+          "tipo": "varchar(20)",
+          "valores": "activo, bloqueado, perdido, retirado",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Plataforma"
+        },
+        {
+          "nombre": "ultima_sync",
+          "tipo": "timestamptz",
+          "valores": "Último acuse",
+          "obligatorio": "No",
+          "sensibilidad": "Interno",
+          "propietario": "Plataforma"
+        }
+      ],
+      "regla": "Equipo compartido no determina autor: autorización de turno identifica la persona."
+    },
+    {
+      "nombre": "dim_fecha",
+      "dominio": "BD_BI_GERENCIA",
+      "modulo": "M10",
+      "propietario": "Control de gestión",
+      "atributos": [
+        {
+          "nombre": "id",
+          "tipo": "uuid",
+          "valores": "UUID estable, PK",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "creado_en",
+          "tipo": "timestamptz",
+          "valores": "UTC; instante de persistencia",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "version",
+          "tipo": "bigint",
+          "valores": "Entero mayor o igual a 1",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "fecha_key",
+          "tipo": "integer",
+          "valores": "AAAAMMDD único",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "fecha",
+          "tipo": "date",
+          "valores": "Día America/Santiago",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "mes",
+          "tipo": "integer",
+          "valores": "1 a 12",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "anio",
+          "tipo": "integer",
+          "valores": "Año calendario",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "temporada",
+          "tipo": "varchar(24)",
+          "valores": "normal, septiembre, diciembre",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        }
+      ],
+      "regla": "Clave fecha no sustituye hora UTC del hecho."
+    },
+    {
+      "nombre": "dim_sitio",
+      "dominio": "BD_BI_GERENCIA",
+      "modulo": "M10",
+      "propietario": "Control de gestión",
+      "atributos": [
+        {
+          "nombre": "id",
+          "tipo": "uuid",
+          "valores": "UUID estable, PK",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "creado_en",
+          "tipo": "timestamptz",
+          "valores": "UTC; instante de persistencia",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "version",
+          "tipo": "bigint",
+          "valores": "Entero mayor o igual a 1",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "sitio_key",
+          "tipo": "bigint",
+          "valores": "Clave sustituta única",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "sitio_id",
+          "tipo": "uuid",
+          "valores": "Sitio canónico",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "codigo",
+          "tipo": "varchar(24)",
+          "valores": "Código de sitio",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "tipo",
+          "tipo": "varchar(16)",
+          "valores": "cd, crossdock, oficina",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        }
+      ],
+      "regla": "Mapeo de código estable; historia cuando cambia clasificación."
+    },
+    {
+      "nombre": "dim_producto",
+      "dominio": "BD_BI_GERENCIA",
+      "modulo": "M10",
+      "propietario": "Control de gestión",
+      "atributos": [
+        {
+          "nombre": "id",
+          "tipo": "uuid",
+          "valores": "UUID estable, PK",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "creado_en",
+          "tipo": "timestamptz",
+          "valores": "UTC; instante de persistencia",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "version",
+          "tipo": "bigint",
+          "valores": "Entero mayor o igual a 1",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "producto_key",
+          "tipo": "bigint",
+          "valores": "Clave sustituta única",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "producto_id",
+          "tipo": "uuid",
+          "valores": "Producto canónico",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "gtin",
+          "tipo": "varchar(14)",
+          "valores": "Presentación histórica",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "familia",
+          "tipo": "varchar(40)",
+          "valores": "Familia autorizada",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "condicion_termica",
+          "tipo": "varchar(16)",
+          "valores": "seco, refrigerado, congelado",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "valida_desde",
+          "tipo": "timestamptz",
+          "valores": "Inicio SCD2",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "valida_hasta",
+          "tipo": "timestamptz",
+          "valores": "Fin exclusivo, nulo vigente",
+          "obligatorio": "No",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        }
+      ],
+      "regla": "Sin solapamiento de vigencia por producto."
+    },
+    {
+      "nombre": "dim_ruta",
+      "dominio": "BD_BI_GERENCIA",
+      "modulo": "M10",
+      "propietario": "Control de gestión",
+      "atributos": [
+        {
+          "nombre": "id",
+          "tipo": "uuid",
+          "valores": "UUID estable, PK",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "creado_en",
+          "tipo": "timestamptz",
+          "valores": "UTC; instante de persistencia",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "version",
+          "tipo": "bigint",
+          "valores": "Entero mayor o igual a 1",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "ruta_key",
+          "tipo": "bigint",
+          "valores": "Clave sustituta única",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "viaje_id",
+          "tipo": "uuid",
+          "valores": "Viaje canónico",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "version_ruta",
+          "tipo": "bigint",
+          "valores": "Versión aprobada",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "zona",
+          "tipo": "varchar(40)",
+          "valores": "Zona logística",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        }
+      ],
+      "regla": "UNIQUE(viaje_id,version_ruta); no expone GPS personal."
+    },
+    {
+      "nombre": "dim_causal",
+      "dominio": "BD_BI_GERENCIA",
+      "modulo": "M10",
+      "propietario": "Control de gestión",
+      "atributos": [
+        {
+          "nombre": "id",
+          "tipo": "uuid",
+          "valores": "UUID estable, PK",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "creado_en",
+          "tipo": "timestamptz",
+          "valores": "UTC; instante de persistencia",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "version",
+          "tipo": "bigint",
+          "valores": "Entero mayor o igual a 1",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "causal_key",
+          "tipo": "bigint",
+          "valores": "Clave sustituta única",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "codigo",
+          "tipo": "varchar(40)",
+          "valores": "Código gobernado",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "familia",
+          "tipo": "varchar(20)",
+          "valores": "faltante, daño, rechazo, demora, calidad, otra",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "descripcion",
+          "tipo": "varchar(160)",
+          "valores": "Definición de uso",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        }
+      ],
+      "regla": "Conservar versión del significado histórico."
+    },
+    {
+      "nombre": "hecho_pedido",
+      "dominio": "BD_BI_GERENCIA",
+      "modulo": "M10",
+      "propietario": "Control de gestión",
+      "atributos": [
+        {
+          "nombre": "id",
+          "tipo": "uuid",
+          "valores": "UUID estable, PK",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "creado_en",
+          "tipo": "timestamptz",
+          "valores": "UTC; instante de persistencia",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "version",
+          "tipo": "bigint",
+          "valores": "Entero mayor o igual a 1",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "linea_id",
+          "tipo": "uuid",
+          "valores": "Línea canónica",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "version_linea",
+          "tipo": "bigint",
+          "valores": "Versión de compromiso",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "fecha_key",
+          "tipo": "integer",
+          "valores": "dim_fecha",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "cliente_key",
+          "tipo": "bigint",
+          "valores": "dim_cliente SCD2",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "producto_key",
+          "tipo": "bigint",
+          "valores": "dim_producto SCD2",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "cantidad_comprometida",
+          "tipo": "numeric(14,3)",
+          "valores": "Mayor que cero en unidad base",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "fuente_event_id",
+          "tipo": "uuid",
+          "valores": "Evento canónico único",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "dataset_origen",
+          "tipo": "varchar(120)",
+          "valores": "Dataset gobernado",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "lote_etl",
+          "tipo": "uuid",
+          "valores": "Ejecución con manifiesto",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "transformation_version",
+          "tipo": "varchar(40)",
+          "valores": "Regla aplicada",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "ocurrido_en",
+          "tipo": "timestamptz",
+          "valores": "Momento de origen UTC",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "visible_en",
+          "tipo": "timestamptz",
+          "valores": "Momento disponible en modelo semántico",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        }
+      ],
+      "regla": "Línea/version; seleccionar versión vigente, no sumar revisiones."
+    },
+    {
+      "nombre": "hecho_movimiento",
+      "dominio": "BD_BI_GERENCIA",
+      "modulo": "M10",
+      "propietario": "Control de gestión",
+      "atributos": [
+        {
+          "nombre": "id",
+          "tipo": "uuid",
+          "valores": "UUID estable, PK",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "creado_en",
+          "tipo": "timestamptz",
+          "valores": "UTC; instante de persistencia",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "version",
+          "tipo": "bigint",
+          "valores": "Entero mayor o igual a 1",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "movimiento_id",
+          "tipo": "uuid",
+          "valores": "Movimiento canónico único",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "fecha_key",
+          "tipo": "integer",
+          "valores": "dim_fecha",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "sitio_key",
+          "tipo": "bigint",
+          "valores": "dim_sitio",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "producto_key",
+          "tipo": "bigint",
+          "valores": "dim_producto",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "lote_id",
+          "tipo": "uuid",
+          "valores": "Referencia sanitaria",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "cantidad_delta",
+          "tipo": "numeric(14,3)",
+          "valores": "Delta firmado",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "fuente_event_id",
+          "tipo": "uuid",
+          "valores": "Evento canónico único",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "dataset_origen",
+          "tipo": "varchar(120)",
+          "valores": "Dataset gobernado",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "lote_etl",
+          "tipo": "uuid",
+          "valores": "Ejecución con manifiesto",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "transformation_version",
+          "tipo": "varchar(40)",
+          "valores": "Regla aplicada",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "ocurrido_en",
+          "tipo": "timestamptz",
+          "valores": "Momento de origen UTC",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "visible_en",
+          "tipo": "timestamptz",
+          "valores": "Momento disponible en modelo semántico",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        }
+      ],
+      "regla": "No mezclar delta y snapshot de saldo en una misma suma."
+    },
+    {
+      "nombre": "hecho_temperatura",
+      "dominio": "BD_BI_GERENCIA",
+      "modulo": "M10",
+      "propietario": "Control de gestión",
+      "atributos": [
+        {
+          "nombre": "id",
+          "tipo": "uuid",
+          "valores": "UUID estable, PK",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "creado_en",
+          "tipo": "timestamptz",
+          "valores": "UTC; instante de persistencia",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "version",
+          "tipo": "bigint",
+          "valores": "Entero mayor o igual a 1",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "lectura_id",
+          "tipo": "uuid",
+          "valores": "Lectura deduplicada única",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "sensor_id",
+          "tipo": "uuid",
+          "valores": "Sensor físico",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "fecha_key",
+          "tipo": "integer",
+          "valores": "dim_fecha",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "sitio_key",
+          "tipo": "bigint",
+          "valores": "dim_sitio para cámara",
+          "obligatorio": "No",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "valor_c",
+          "tipo": "numeric(5,2)",
+          "valores": "Valor Celsius validado",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "fuera_rango",
+          "tipo": "boolean",
+          "valores": "Regla aprobada de Calidad",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "regla_version",
+          "tipo": "varchar(40)",
+          "valores": "Versión de rango",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "fuente_event_id",
+          "tipo": "uuid",
+          "valores": "Evento canónico único",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "dataset_origen",
+          "tipo": "varchar(120)",
+          "valores": "Dataset gobernado",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "lote_etl",
+          "tipo": "uuid",
+          "valores": "Ejecución con manifiesto",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "transformation_version",
+          "tipo": "varchar(40)",
+          "valores": "Regla aplicada",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "ocurrido_en",
+          "tipo": "timestamptz",
+          "valores": "Momento de origen UTC",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "visible_en",
+          "tipo": "timestamptz",
+          "valores": "Momento disponible en modelo semántico",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        }
+      ],
+      "regla": "Hueco de muestra no acredita duración continua."
+    },
+    {
+      "nombre": "hecho_rendicion",
+      "dominio": "BD_BI_GERENCIA",
+      "modulo": "M10",
+      "propietario": "Control de gestión",
+      "atributos": [
+        {
+          "nombre": "id",
+          "tipo": "uuid",
+          "valores": "UUID estable, PK",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "creado_en",
+          "tipo": "timestamptz",
+          "valores": "UTC; instante de persistencia",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "version",
+          "tipo": "bigint",
+          "valores": "Entero mayor o igual a 1",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "rendicion_id",
+          "tipo": "uuid",
+          "valores": "Rendición de origen",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "fecha_key",
+          "tipo": "integer",
+          "valores": "dim_fecha",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "ruta_key",
+          "tipo": "bigint",
+          "valores": "dim_ruta",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "esperado_cifrado",
+          "tipo": "bytea",
+          "valores": "Importe CLP protegido",
+          "obligatorio": "Sí",
+          "sensibilidad": "Financiero restringido",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "recibido_cifrado",
+          "tipo": "bytea",
+          "valores": "Importe CLP protegido",
+          "obligatorio": "Sí",
+          "sensibilidad": "Financiero restringido",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "causal_key",
+          "tipo": "bigint",
+          "valores": "dim_causal si diferencia",
+          "obligatorio": "No",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "fuente_event_id",
+          "tipo": "uuid",
+          "valores": "Evento canónico único",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "dataset_origen",
+          "tipo": "varchar(120)",
+          "valores": "Dataset gobernado",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "lote_etl",
+          "tipo": "uuid",
+          "valores": "Ejecución con manifiesto",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "transformation_version",
+          "tipo": "varchar(40)",
+          "valores": "Regla aplicada",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "ocurrido_en",
+          "tipo": "timestamptz",
+          "valores": "Momento de origen UTC",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        },
+        {
+          "nombre": "visible_en",
+          "tipo": "timestamptz",
+          "valores": "Momento disponible en modelo semántico",
+          "obligatorio": "Sí",
+          "sensibilidad": "Interno",
+          "propietario": "Control de gestión"
+        }
+      ],
+      "regla": "Detalle solo Tesorería; agregados no identifican personas."
+    }
+  ],
+  "relaciones": [
+    [
+      "cliente",
+      "punto_entrega",
+      "1",
+      "0..N",
+      "composición comercial"
+    ],
+    [
+      "cliente",
+      "pedido",
+      "1",
+      "0..N",
+      "cliente del pedido"
+    ],
+    [
+      "pedido",
+      "linea_pedido",
+      "1",
+      "1..N",
+      "detalle obligatorio"
+    ],
+    [
+      "producto",
+      "linea_pedido",
+      "1",
+      "0..N",
+      "SKU solicitado"
+    ],
+    [
+      "producto",
+      "lote",
+      "1",
+      "0..N",
+      "origen sanitario"
+    ],
+    [
+      "proveedor",
+      "lote",
+      "1",
+      "0..N",
+      "proveedor del lote"
+    ],
+    [
+      "recepcion",
+      "linea_recepcion",
+      "1",
+      "1..N",
+      "recepción cerrada"
+    ],
+    [
+      "lote",
+      "linea_recepcion",
+      "1",
+      "0..N",
+      "lote recibido"
+    ],
+    [
+      "unidad_logistica",
+      "contenido_unidad",
+      "1",
+      "1..N",
+      "unidad no vacía"
+    ],
+    [
+      "lote",
+      "contenido_unidad",
+      "1",
+      "0..N",
+      "contenido mixto"
+    ],
+    [
+      "lote",
+      "movimiento_stock",
+      "1",
+      "0..N",
+      "libro de custodia"
+    ],
+    [
+      "linea_pedido",
+      "reserva",
+      "1",
+      "0..N",
+      "reservas por lote/sitio"
+    ],
+    [
+      "reserva",
+      "asignacion_lote",
+      "1",
+      "0..N",
+      "consumo acotado"
+    ],
+    [
+      "linea_pedido",
+      "asignacion_lote",
+      "1",
+      "0..N",
+      "servicio multilot"
+    ],
+    [
+      "mision",
+      "linea_mision",
+      "1",
+      "1..N",
+      "misión descargada"
+    ],
+    [
+      "asignacion_lote",
+      "linea_mision",
+      "1",
+      "0..N",
+      "preparación"
+    ],
+    [
+      "viaje",
+      "parada",
+      "1",
+      "1..N",
+      "ruta aprobada"
+    ],
+    [
+      "viaje",
+      "despacho",
+      "1",
+      "0..N",
+      "cargas/salidas"
+    ],
+    [
+      "pedido",
+      "entrega",
+      "1",
+      "0..N",
+      "intentos o parcialidad"
+    ],
+    [
+      "parada",
+      "entrega",
+      "1",
+      "0..N",
+      "visita"
+    ],
+    [
+      "entrega",
+      "detalle_entrega",
+      "1",
+      "0..N",
+      "cero si local cerrado"
+    ],
+    [
+      "asignacion_lote",
+      "detalle_entrega",
+      "1",
+      "0..N",
+      "traza a lote y SSCC"
+    ],
+    [
+      "entrega",
+      "evidencia_pod",
+      "1",
+      "0..N",
+      "evidencias por causal"
+    ],
+    [
+      "documento_tributario",
+      "acuse",
+      "1",
+      "0..N",
+      "acuses diferenciados"
+    ],
+    [
+      "entrega",
+      "cobro",
+      "1",
+      "0..N",
+      "pagos por medio"
+    ],
+    [
+      "viaje",
+      "rendicion",
+      "1",
+      "0..N",
+      "conciliaciones y ajustes"
+    ],
+    [
+      "entrega",
+      "devolucion",
+      "1",
+      "0..N",
+      "rechazos/retornos"
+    ],
+    [
+      "cliente",
+      "movimiento_envase",
+      "1",
+      "0..N",
+      "saldo por tipo"
+    ],
+    [
+      "sensor",
+      "lectura_termica",
+      "1",
+      "0..N",
+      "serie deduplicada"
+    ],
+    [
+      "lote",
+      "bloqueo_calidad",
+      "1",
+      "0..N",
+      "calidad"
+    ],
+    [
+      "vehiculo",
+      "viaje",
+      "1",
+      "0..N",
+      "asignación"
+    ],
+    [
+      "transportista",
+      "vinculo_conductor",
+      "0..1",
+      "0..N",
+      "propio o tercero"
+    ],
+    [
+      "cliente",
+      "saldo_credito",
+      "1",
+      "0..1",
+      "proyección del ERP"
+    ],
+    [
+      "pedido",
+      "mensaje_edi",
+      "0..1",
+      "0..N",
+      "canal moderno"
+    ]
+  ]
+}

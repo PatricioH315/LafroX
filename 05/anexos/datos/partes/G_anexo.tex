@@ -1,0 +1,39 @@
+\chapter*{Anexo 5-G --- Calidad, clasificación y ciclo de vida}
+\addcontentsline{toc}{chapter}{Anexo 5-G --- Calidad, clasificación y ciclo de vida}
+\label{anx:5-G}
+Se distinguen plazos exigidos por el caso y parámetros propuestos por LafroX; los segundos se formalizan con el dueño de negocio antes de producción.
+
+
+\begin{tablalafrox}{Políticas por categoría}{tab:5-retencion}{F{0.2} F{0.26} F{0.28} Y}{\cab{Categoría} & \cab{Plazo /\allowbreak  base} & \cab{Representaciones} & \cab{Responsable /\allowbreak  control}}
+DTE/\allowbreak XML/\allowbreak acuses & 6 años desde emisión/\allowbreak cierre & S3 y manifiesto; ERP mantiene su responsabilidad & Tributación; legal hold por expediente \\
+POD/\allowbreak firma/\allowbreak foto & 6 años desde entrega & S3 versionado; metadatos/\allowbreak linaje & Operaciones; expurgo de todas versiones \\
+Lote/\allowbreak custodia sanitaria & Mayor de 5 años o vida útil + 6 meses & Histórico protegido; local stock vigente + 4 meses movimientos & Calidad; bloquear purga si retiro abierto \\
+Temperatura consolidada & 5 años desde lectura & Parquet/\allowbreak Redshift; raw 30 días tras verificación & Calidad; verificar copia antes de TTL \\
+GPS personal & 12 meses desde lectura & Campo cifrado; datasets y respaldos controlados & Flota/\allowbreak Seguridad; no Object Lock de 6 años \\
+Ventas/\allowbreak pedidos & Migrar 3 años; conservar 6 años como propuesta de negocio & OLTP activo/\allowbreak archivo; respetar documentos vinculados & Comercial valida plazo propuesto \\
+Inventario no sanitario & Migrar 2 años; 6 años propuestos para auditoría de negocio & Local 4 meses; archivo nube & Bodega valida plazo; sanitario prevalece \\
+CxC y cobros & Saldos vivos + 2 años migrados; 6 años propuestos & ERP/\allowbreak Aurora y archivo cifrado & Tesorería; saldo abierto no se purga \\
+Identidad y vínculo & Vigencia + retención de actos vinculados; minimizar atributos & Keycloak/\allowbreak ref. histórica; manif. TTL 24 h & Seguridad; no prolongar autorización de turno \\
+Outbox/\allowbreak inbox & Resultado al menos 30 días; evidencia según registro & Contexto/\allowbreak archivo; no purgar sin acuse & Plataforma; antiguos aislados \\
+Logs técnicos & 12 meses línea + 24 meses archivo & CloudWatch/\allowbreak archivo inmutable & Seguridad; auditoría de negocio plazo propio \\
+Caché/\allowbreak móvil & TTL central por categoría; turno y cola hasta acuse & Redis/\allowbreak Room cifrado & Plataforma; borrado remoto y certificado \\
+Notificaciones & 12 meses propuestos; actos relevantes se archivan con negocio & Estado y acuse; contenido mínimo & Comercial valida plazo por finalidad \\
+EDI & 6 años para vínculo comercial/\allowbreak tributario propuesto & S3 original/\allowbreak transformación; metadatos & Comercial/\allowbreak Tributación; aplicar categoría mayor \\
+Staging migración & 90 días tras aceptación, salvo expediente requerido & Extractos cifrados; acceso restringido & Migración/\allowbreak CLIENTE; certificado al expirar \\
+\end{tablalafrox}
+
+\begin{tablalafrox}{Calidad y metas de diseño}{tab:5-calidad}{F{0.18} F{0.36} F{0.2} Y}{\cab{Dimensión} & \cab{Medición} & \cab{Criterio} & \cab{Responsable}}
+Completitud & 100 × atributos obligatorios informados /\allowbreak  obligatorios esperados & 100\% en conjunto liberado & Dueño del dominio; cuarentena \\
+Exactitud identidad & 100 × RUT/\allowbreak GTIN válidos /\allowbreak  identificadores evaluados & 100\% de registros liberados & Comercial/\allowbreak Abastecimiento; cotejo fuente \\
+Consistencia saldo & Saldo origen - saldo destino, por cuenta/\allowbreak sitio/\allowbreak lote & 0 diferencia no explicada & Tesorería/\allowbreak Bodega; conciliación completa \\
+Unicidad & Número de claves de negocio repetidas sin equivalencia autorizada & 0 en conjunto liberado & Dueño del maestro; fusión documentada \\
+Integridad documental & Objetos con hash correcto /\allowbreak  objetos liberados & 100\% & Operaciones/\allowbreak Tributación; aislar corruptos \\
+Frescura operacional & visible\_\allowbreak en - ocurrido\_\allowbreak en & <=5 min con origen accesible; registrar totalidad & Control de gestión/\allowbreak Plataforma \\
+Cobertura sanitaria & Movimientos identificados a lote/\allowbreak SSCC /\allowbreak  movimientos sanitarios & 100\% de nuevo flujo; defectos históricos explicados & Calidad; no fabricar lotes \\
+\end{tablalafrox}
+\section*{Responsabilidades y controles de ciclo de vida}
+Los propietarios del Anexo 5-B aceptan reglas de calidad y permisos. Seguridad administra acceso, claves y respuesta a incidente; Plataforma ejecuta particiones, respaldos y borrado; el CLIENTE decide finalidades, subencargados, transferencias y excepciones legales. El certificado de eliminación registra categorías, orden, hashes, versiones, ejecutor, verificador y excepciones con fecha de próxima revisión.
+
+Política de respaldo propuesta para cerrar el diseño: copias operacionales diarias con ventana de 35 días cuando el servicio lo admite, coherente con PITR de Aurora; archivo documental conserva su plazo propio y no depende de backups diarios. Las políticas efectivas on-premise y recuperación deben cotejarse y probarse contra 4.2 antes de liberación. Un GPS vencido puede persistir hasta expirar un backup de 35 días, sin consulta ni restauración abierta; una supresión se reaplica antes de exposición. La prueba de borrado recorre tablas, archivos Parquet, índices, todas las versiones S3, dispositivos y caché.
+
+Para exportar, el CLIENTE define ámbito y obtiene paquete con datasets, diccionario, relaciones, archivos originales y manifiesto; recuentos y huellas verifican cobertura. En datos particionados se fija snapshot/marca de agua y se informa fecha por fuente. Credenciales de exportación tienen expiración y registro de descargas. No se incluyen secretos ni material privado de claves en la portabilidad de datos.

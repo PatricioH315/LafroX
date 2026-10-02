@@ -1,0 +1,31 @@
+\chapter*{Anexo 5-E --- Desempeño y memoria de capacidad}
+\addcontentsline{toc}{chapter}{Anexo 5-E --- Desempeño y memoria de capacidad}
+\label{anx:5-E}
+Las estimaciones se entregan con fórmulas y unidades. CALCULOS.json conserva sus resultados sin redondeo; no son mediciones de producción.
+
+\section*{Derivaciones y sensibilidad}
+Se usa GB decimal para los resultados de arquitectura. El tamaño de origen comercial es una KB por fila y el de movimiento 0,5 KB; se aplica factor dos por índices y sobrecarga. El tamaño real se medirá mediante perfilado, considerando cifrado, JSON de auditoría y WAL, que pueden exceder esa cota.
+
+Transaccional anual: $[(260.000\times5+260.000\times2+31.000\times5)\times1.000+279.050\times500]\times2\times12 = 50.748.600.000$ bytes. Son 50,75 GB y 304,49 GB a seis años constantes. El factor dos ya está incluido; no se vuelve a aplicar a cada dominio.
+
+POD: $30+200\times(1+900/31.000)=235,806$ KB por entrega; $31.000\times12\times235,806\times1.000=87,72$ GB/año. Seis años constantes dan 526,32 GB aproximadamente. Como sensibilidad de crecimiento lineal de 16\% por año, factores 1; 1,16; 1,32; 1,48; 1,64; 1,80 suman 8,4 años equivalentes y producen 736,85 GB. Esa extrapolación más allá del año 3 es supuesto adicional, no proyección entregada por el CLIENTE. Duplicar tamaño de fotografía eleva la generación a 164,28 GB/año y debe recalcularse antes de comprometer espacio.
+
+Temperatura: $(6.048+4.536)\times145\times365=560.158.200$ bytes/año raw. Compresión 0,25: 0,1400 GB/año y 0,7002 GB a cinco años. Raw 30 días: 0,0460 GB, sin sobrecarga DynamoDB. No se duplica el volumen porque dos gateways leen las cámaras de Talca.
+
+GPS: $22.075.200\times145=3.200.904.000$ bytes/año raw y 0,8002 GB curados con factor 0,25. Se conserva doce meses; cifrado y esquema real se medirán antes de aplicar esa compresión.
+
+Migración: $34.180+10.476.000+3.348.600+1.380.000+816.000=16.054.780$ KB; por dos da 32,10956 GB. La sensibilidad de trazabilidad de 10 a 30 KB por recepción varía 690.000 KB a cada lado, resultando 30,72956--33,48956 GB de destino. Las 1 KB por fila, saldos vivos y fuentes documentales adicionales se verifican mediante inventario. El valor binario correcto para 32,10956 GB decimales es 29,9044 GiB; no 30,62 GiB, que surgiría de tratar las KB de origen como KiB. Esta distinción se aplica a todo el presupuesto.
+
+El total de contenido retenido transaccional, POD, temperatura curada y GPS curado a volumen constante es aproximadamente 832,31 GB. Es una suma de clases sin superponer la copia raw ni migración ya incluida en la historia; no es el tamaño final de infraestructura. Para reserva propuesta de 20\% libre se divide entre 0,8, y se agregan separadamente respaldo, réplica, WAL, staging, metadatos y crecimiento después del perfilado. Arquitectura mantiene su dimensionamiento on-premise; cualquier desviación se eleva con fórmula y evidencia.
+
+\begin{tablalafrox}{Consultas representativas y candidato de acceso}{tab:5-consultas}{F{0.18} F{0.28} F{0.31} Y}{\cab{Consulta} & \cab{Acceso propuesto} & \cab{Control} & \cab{Umbral}}
+Q1 Stock/\allowbreak FEFO & sitio,lote,ubicación; lote(producto,vence) & Reserva serializada; copia indicativa no confirma & <=2 s consulta stock/\allowbreak crédito \\
+Q2 Confirmación línea & mision,id; asignacion,reserva & Transacción corta; evento único & <=1 s \\
+Q3 Pedido preventa & pedido(cliente,capturado\_\allowbreak en,id); línea(pedido,numero) & Paginación por clave; validación precio & <=1,5 s por línea \\
+Q4 Entrega/\allowbreak POD & entrega(pedido,ocurrido\_\allowbreak en); detalle(asignacion) & Metadatos separados de carga de objeto; hash verificado & <=2 s registro \\
+Q5 Retiro sanitario & lote(producto,lote\_\allowbreak proveedor); asignacion(lote); detalle(asignacion) & Cruce cliente de destino; no escaneo completo de fotos & Medir contra RF/\allowbreak RNF del retiro del caso \\
+Q6 Ruta/\allowbreak geocerca & GiST punto; viaje(fecha,sitio) & SQL parametrizado y versión de ruta & Medir carga espacial en QA \\
+Q7 Outbox/\allowbreak inbox & Pendientes por estado/\allowbreak creado\_\allowbreak en; identidad global event\_\allowbreak id & Partición fecha + registro global identidad & Backlog CD <=2 h; terminal <=10 min \\
+Q8 Serie térmica & sensor,fecha; Parquet por fecha/\allowbreak sitio & Deduplicar muestra y separar histórico & Indicador del día <=5 min \\
+Q9 Analítica & hecho por fecha/\allowbreak sitio; dimensiones por clave & Redshift; sin consulta de tablero al OLTP & Gestión <=4 h; cierre <=2 h \\
+\end{tablalafrox}

@@ -1,0 +1,28 @@
+% !TeX program = lualatex
+\makeatletter
+\def\input@path{{00/plantilla/fisica/}}
+\makeatother
+\documentclass[carta,firma]{lafrox}
+\usepackage{etoolbox}
+\captionsetup{hypcap=false}
+\setcounter{tocdepth}{2}
+\setcounter{secnumdepth}{2}
+% Índice detallado compacto: conserva tamaño y títulos de la plantilla.
+\titlecontents{chapter}[0pt]
+  {\addvspace{7pt}\intersemibold\color{lafroxTinta}}
+  {\textcolor{lafroxFuerte}{\thecontentslabel}\enspace}{}
+  {\normalfont\color{lafroxGris}\hfill\contentspage}
+\titlecontents{section}[1.5em]
+  {\addvspace{1pt}\fontsize{10pt}{12pt}\selectfont\color{lafroxTinta}}
+  {\textcolor{lafroxGris}{\thecontentslabel}\enspace}{}
+  {\normalfont\color{lafroxGris}\hfill\contentspage}
+\titlecontents{subsection}[3.4em]
+  {\fontsize{9.5pt}{11pt}\selectfont\color{lafroxGris}}
+  {\thecontentslabel\enspace}{}
+  {\hfill\contentspage}
+\newcommand{\datosdocumentocinco}[2]{
+\datoslafrox{documento={Propuesta Técnica},subtitulo={#1},alcance={Modelo y gestión de datos},formulario={Formulario T-7},fecha={02 de octubre de 2026},version={1.0},nomenclatura={#2}}
+\hypersetup{pdftitle={#1}}
+\renewcommand{\LFXestadodoc}{Propuesta de diseño}
+\patchcmd{\portadalafrox}{\LFXcampoportada{Versión}{\LFXversion}}{\LFXcampoportada{Documento}{5}}{}{}
+}

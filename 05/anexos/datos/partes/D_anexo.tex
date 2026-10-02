@@ -1,0 +1,26 @@
+\chapter*{Anexo 5-D --- Migración, saneamiento y conciliación}
+\addcontentsline{toc}{chapter}{Anexo 5-D --- Migración, saneamiento y conciliación}
+\label{anx:5-D}
+El mapeo identifica sistema de origen, conjunto de destino, transformación y autoridad para defectos; las fechas finales se incorporan al cronograma de implantación.
+
+
+\begin{tablalafrox}{Mapeo de fuentes}{tab:5-mapeo}{F{0.21} F{0.23} F{0.34} Y}{\cab{Origen} & \cab{Destino} & \cab{Reglas} & \cab{Responsable}}
+ERP clientes/\allowbreak proveedores & cliente/\allowbreak proveedor & Normalizar RUT; UUID estable; fusionar solo con aprobación & Comercial/\allowbreak Abastecimiento \\
+ERP productos & producto & Código SKU, GTIN por presentación, unidad y conversión & Abastecimiento/\allowbreak Calidad \\
+ERP ventas/\allowbreak pedidos 3 años & pedido/\allowbreak linea\_\allowbreak pedido & Conservar importe exacto, fecha y tarifa conocida; marcar desconocida como dato histórico, no valor inventado & Comercial \\
+WMS Talca 2013 & recepcion/\allowbreak lote/\allowbreak movimiento & 2 años movimientos; 5 años sanitario; mapear ubicación y lote & Bodega/\allowbreak Calidad \\
+Planillas Concepción & movimiento\_\allowbreak stock & Saldo inicial conciliado; inventario físico y diferencias aprobadas & Bodega \\
+Planillas rutas 11 hojas & viaje/\allowbreak parada/\allowbreak restricciones & Extraer reglas, ventanas y decisiones con planificador & Planificación \\
+ERP CxC & saldo\_\allowbreak credito y archivo de movimientos & Saldos vivos + 2 años; explicar balance de apertura & Tesorería \\
+Cuadernos/\allowbreak planillas sanitarios & archivo + lote cuando verificable & Digitalización controlada; doble verificación; reportar ausencia de lote & Calidad \\
+ERP XML /\allowbreak  POD existente & objeto\_\allowbreak documental/\allowbreak acuse/\allowbreak evidencia & Huella, referencia, tipo y retención; inventariar disponibilidad & Tributación/\allowbreak Operaciones \\
+Temperatura/\allowbreak GPS históricos & series o archivo de consulta & Zona horaria y calidad; no extrapolar lecturas inexistentes & Calidad/\allowbreak Flota \\
+\end{tablalafrox}
+\section*{Protocolo de actas de ensayo}
+Cada acta tendrá identificador ENS-1 o ENS-2, fecha, responsables, ambientes, extractos y hashes, versiones de reglas/código, inicio y fin por fase, recuentos, sumas y diferencias por familia, tiempos de corte y reversión, pruebas funcionales y decisión firmada. No se rellenan resultados anticipadamente. ENS-1 recorre toda la migración y retorno al legado; ENS-2 añade delta y arranque de operación.
+
+\section*{Defectos y umbrales}
+RUT inválido, duplicado de clave, lote ausente, cantidades incompatibles, saldo financiero discordante y objeto sin huella son defectos bloqueantes para el conjunto afectado. Se permite cargar el resto si sus agregados están completos y el CLIENTE conoce la cobertura. Cada diferencia autorizada conserva razón y evidencia; aprobación no habilita despacho de producto no trazable ni omite una obligación tributaria.
+
+\section*{Secuencia de corte y reversión}
+Antes del corte: copia verificada, ensayo de restauración, lista de dispositivos y colas sin sincronizar, inventario de fuentes y delta congelado. Durante el corte: impedir doble escritura, aplicar delta por orden de dependencia, conciliar y probar recepción, FEFO, preparación, guía, POD y rendición. Apertura requiere lista completa y decisión de Operaciones, Calidad y Tesorería. Ante reversión posterior a apertura, exportar eventos nuevos, resolver su correspondencia y reingresarlos o compensarlos en origen antes de reabrir. Conservación del original permite investigar sin alterar evidencia.

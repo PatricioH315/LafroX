@@ -1,0 +1,43 @@
+\chapter*{Anexo 5-C --- Persistencia y reconciliación}
+\addcontentsline{toc}{chapter}{Anexo 5-C --- Persistencia y reconciliación}
+\label{anx:5-C}
+Esta matriz concreta la elección de persistencia y la conducta de cada dominio durante interrupción de comunicación.
+
+
+\begin{tablalafrox}{Persistencia y garantías por dominio}{tab:5-cap}{F{0.29} F{0.34} Y}{\cab{Dominio} & \cab{Agregado /\allowbreak  alcance} & \cab{Conducta durante partición}}
+BD\_\allowbreak INVENTARIO & Saldo, reserva y movimientos por sitio/\allowbreak lote & Consistencia local; sin nueva promesa remota aislada \\
+BD\_\allowbreak PREVENTA & Pedido y tarifa informada & Captura disponible; confirmación espera M2 \\
+BD\_\allowbreak RUTAS & Viaje, restricciones y paradas & Lectura local de ruta; cambios en autoridad \\
+BD\_\allowbreak PREPARACION & Misión, asignación y salida & Consistencia local sobre carga vigente \\
+BD\_\allowbreak REPARTO & Entrega, rechazo y POD & Disponible para capturar; validación diferida \\
+BD\_\allowbreak COBRANZA\_\allowbreak FINANZAS & Cobros, rendición, saldo proyectado, DTE & Consistencia para cargo; estado incierto ante falla \\
+BD\_\allowbreak MAESTROS\_\allowbreak CONF & Clientes, SKU, proveedor, sitios & Lectura local; modificación en fuente autorizada \\
+BD\_\allowbreak GOBIERNO\_\allowbreak ACCESO & Actor, empresa, turno y autorización & No emitir nuevas identidades aislado \\
+BD\_\allowbreak CALIDAD\_\allowbreak TRAZABILIDAD & Lote, bloqueo, retiro y custodia & Bloqueo disponible local; liberación autorizada \\
+BD\_\allowbreak TELEMETRIA & Lecturas térmicas y posición & Ingesta disponible; consolidación eventual \\
+BD\_\allowbreak EDI\_\allowbreak CANALMODERNO & Equivalencias, mensajes y acuses & Respuesta comercial tras validación \\
+BD\_\allowbreak BI\_\allowbreak GERENCIA & Hechos, dimensiones y modelo semántico & Eventual con SLA de frescura explícito \\
+BD\_\allowbreak MAILS\_\allowbreak NOTIF & Preferencias, entregas técnicas y reintentos & Eventual; aviso no modifica venta \\
+REDIS\_\allowbreak SESIONES\_\allowbreak CACHE & Lecturas y sesiones centrales & Eventual; invalidación y bypass \\
+S3\_\allowbreak DOCS & POD, XML DTE, acuses y archivos & Objeto verificado antes de publicar referencia \\
+\end{tablalafrox}
+\section*{Protocolo de aceptación de evento}
+El receptor autentica ámbito y versión, comprueba hash e identidad, exige versión anterior o pone el mensaje en espera por hueco, y aplica regla de negocio. Persiste efecto, resultado e historial antes del acuse. El emisor reintenta la misma identidad hasta acuse durable. Las operaciones rechazadas producen un resultado consultable, no desaparecen de la cola sin explicación. Se retiene evidencia del conflicto y su decisión.
+
+\section*{Límites de autoridad}
+No se usa replicación multimaestro genérica ni sobrescritura por fecha. Cada agregado de stock tiene sitio custodio y época de autoridad; el traslado físico registra salida y recepción separadas con referencia común. Un consumidor nube consolida movimientos, y DMS conserva una copia Talca de lectura separada. La autoridad se transfiere solo con conciliación y revocación de la anterior.
+
+\begin{tablalafrox}{Escenarios y resultados de aceptación}{tab:5-escenarios}{F{0.22} F{0.17} F{0.31} Y}{\cab{Escenario} & \cab{Autoridad} & \cab{Resolución} & \cab{Criterio}}
+AC-01 Pedido repetido & M3/\allowbreak inbox & Mismo UUID y hash devuelve resultado; hash distinto aísla & Un pedido y una reserva efectiva \\
+AC-02 Doble reserva & M2 sitio/\allowbreak lote & Bloqueo y comprobación de saldo; segunda solicitud en excepción & Saldo no negativo y razón de rechazo \\
+AC-03 Corte 24 h & M1/\allowbreak M2/\allowbreak M5/\allowbreak M8 & Continúa ámbito local; secuencia y outbox durable & Reconciliación CD hasta 2 h tras enlace \\
+AC-04 POD vs cancelación & M6/\allowbreak Operaciones & Conservar ambos hechos; supervisor resuelve antes de cobro/\allowbreak DTE & Ningún hecho sobrescrito \\
+AC-05 Cambio precio & M3/\allowbreak Comercial & Mantener precio mostrado; solicitar aceptación versionada & Sin modificación silenciosa \\
+AC-06 Retorno físico & M8 sitio & Registrar recibido; Calidad y ERP resuelven por separado & Sin doble abono ni stock liberado sin Calidad \\
+AC-07 Excursión térmica & M9/\allowbreak M5 & Bloqueo local; liberación motivada por Calidad & Bloqueo antes de 5 s; serie sin duplicados \\
+AC-08 Pago incierto & M7/\allowbreak ACL & Consultar referencia pasarela; conservar estado incierto & Una sola confirmación de cobro \\
+AC-09 DTE timeout & M5/\allowbreak ERP & Consultar misma clave; bloquear salida sin guía de carga vigente & No folio duplicado; AL-DTE-01 \\
+AC-10 Gateway redundante & M9/\allowbreak telemetría & Deduplicar sensor/\allowbreak sesión/\allowbreak secuencia; diferencia de valor incidente & Una lectura física en serie consolidada \\
+AC-11 Pérdida sitio y WAN & Infraestructura & Restaurar protección externa ensayada; no promover a ciegas & AL-DR-01; RTO 4 h y RPO 15 min \\
+AC-12 Restore tras supresión & Seguridad & Reaplicar órdenes de borrado antes de exposición & GPS vencido no reaparece en consulta \\
+\end{tablalafrox}

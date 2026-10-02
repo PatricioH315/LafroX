@@ -1,0 +1,12 @@
+\begin{tikzpicture}[x=1cm,y=1cm,>=stealth,box/.style={draw=lafroxGris,rounded corners=1pt,text width=3.55cm,minimum height=1.25cm,align=left,inner sep=5pt,font=\fontsize{9.5pt}{12pt}\selectfont},edge/.style={->,line width=.6pt},lab/.style={fill=white,inner sep=2pt,font=\fontsize{9pt}{11pt}\selectfont}]
+\node[box] (a) at (0,0) {\textbf{ERP /\allowbreak  Keycloak}\\Maestro comercial /\allowbreak  identidad};
+\node[box] (b) at (5.1,0) {\textbf{Copias de lectura}\\Versionadas; ámbito de sitio};
+\node[box] (c) at (0,-2.5) {\textbf{M11 Canal moderno}\\Original; equivalencia; MDN};
+\node[box] (d) at (5.1,-2.5) {\textbf{Avisos /\allowbreak  Redis}\\Preferencia /\allowbreak  caché derivada};
+\node[box] (e) at (0,-5) {\textbf{Auditoría de negocio}\\Antes; después; actor; equipo};
+\node[box] (f) at (5.1,-5) {\textbf{Objetos S3}\\Manifiesto; hash; retención};
+\draw[edge] (a) -- node[lab,midway,above=0.8cm] {publicación} (b);
+\draw[edge] (c) -- node[lab,midway,text width=1.8cm,align=center] {correlación} (e);
+\draw[edge] (d) -- node[lab,midway,text width=1.8cm,align=center] {consulta sensible} (e);
+\draw[edge] (e) -- node[lab,midway,above=0.8cm] {archivo protegido} (f);
+\end{tikzpicture}

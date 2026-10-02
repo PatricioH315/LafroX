@@ -1,0 +1,13 @@
+\begin{tikzpicture}[x=1cm,y=1cm,>=stealth,box/.style={draw=lafroxGris,rounded corners=1pt,text width=3.55cm,minimum height=1.25cm,align=left,inner sep=5pt,font=\fontsize{9.5pt}{12pt}\selectfont},edge/.style={->,line width=.6pt},lab/.style={fill=white,inner sep=2pt,font=\fontsize{9pt}{11pt}\selectfont}]
+\node[box] (a) at (5.1,0) {\textbf{M3 nube}\\Captura; solicita reserva};
+\node[box] (b) at (0,0) {\textbf{M2 sitio custodio}\\Confirma sitio/\allowbreak lote; versión};
+\node[box] (c) at (0,-5.6) {\textbf{Aurora proyección}\\Consume eventos; no doble stock};
+\node[box] (d) at (0,-2.8) {\textbf{Outbox local}\\Movimiento y resultado durable};
+\node[box] (e) at (5.1,-2.8) {\textbf{DMS INT-12}\\Talca: esquema solo lectura};
+\node[box] (f) at (5.1,-5.6) {\textbf{Room en terreno}\\UUID; 14 h; acuse de resultado};
+\draw[edge] (a) -- node[lab,midway,above=0.8cm] {Solicitud con enlace} (b);
+\draw[edge] (b) -- node[lab,midway,text width=1.8cm,align=center] {Commit local} (d);
+\draw[edge] (d) -- node[lab,midway,text width=1.8cm,align=center] {INT-03 /\allowbreak  04} (c);
+\draw[edge] (b) -- node[lab,midway,text width=1.8cm,align=center] {CDC lectura} (e);
+\draw[edge] (f) -- node[lab,midway,above=0.8cm] {INT-01 /\allowbreak  02} (c);
+\end{tikzpicture}

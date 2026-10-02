@@ -1,0 +1,31 @@
+﻿requisito,caracter,materia,seccion,anexo,evidencia_prevista,estado
+RT-05.01,Obligatorio,Modelo y diccionario,5.1,5-A/B,VD-01; diccionario completo y DER,Diseñado
+RT-05.02,Obligatorio,"Motor, paradigma y CAP",5.2.1–2,5-C,AC-02/03; autoridad por agregado,Diseñado
+RT-05.03,Obligatorio,Auditoría de operación,5.2.5,5-A/G,AC-01/04; antes/después y autor,Diseñado
+RT-05.04,Obligatorio,Calidad de datos,5.2.5,5-G,VD-03; tablero y cuarentena,Diseñado
+RT-05.05,Obligatorio,Separación OLTP/OLAP,5.2.4; 5.4,5-E/F,VD-04; carga sin degradación OLTP,Diseñado
+RT-05.06,Obligatorio,Exportación completa,5.2.6,5-G,VD-05; recuentos y hashes,Diseñado
+RT-05.07,Obligatorio,Retención y eliminación,5.2.6,5-G,AC-12; expiración por categoría,Diseñado
+RT-05.08,Obligatorio,Datos personales,5.2.5,5-A/G,VD-06; ACL/cifrado campo,Diseñado; acuerdo Art.85 requerido
+RT-05.09,Obligatorio,Datos maestros,5.1.1,5-B/D,VD-03; no claves duplicadas,Diseñado
+RT-05.10,Deseable,Catálogo y linaje automático,5.2.4,5-F,VD-07; indicador hasta origen,Propuesto
+RT-05.11,Obligatorio,Plan de migración,5.3,5-D/E,ENS-1/2; cobertura y reversión,Diseñado
+RT-05.12,Obligatorio,Perfilado y saneamiento,5.3.2,5-D,VD-03; reporte de defectos,Procedimiento definido
+RT-05.13,Obligatorio,Dos ensayos completos,5.3.3,5-D,ENS-1/2 con actas y tiempos,Programado en implantación; no ejecutado
+RT-05.14,Obligatorio,Conciliación verificable,5.3.3,5-D,ENS-1/2; cero diferencia inexplicada,Criterios definidos
+RT-05.15,Según caso,Históricos no migrados y alcance del caso,5.3.1/4,5-D/G,VD-05; archivo accesible durante retención,Diseñado; códigos cotejados por materia
+RT-05.16,Obligatorio,OpenAPI/AsyncAPI,5.2.3,5-C/H; referencia 4.1-G/H,VD-08; generación/validación CI,Diseño; contratos ejecutables por implementar
+RT-05.17,Obligatorio,Versionado y preaviso,5.2.3,5-C,VD-08; coexistencia y 6 meses,Diseñado
+RT-05.18,Obligatorio,OAuth 2.1 / mTLS,5.2.3,5-C/G,VD-06; intercambio autenticado,Diseñado
+RT-05.19,Obligatorio,Correlación entrada/salida,5.2.1/3,5-A/C,AC-01; transaction_id común,Diseñado
+RT-05.20,Obligatorio,ACL frente al legado,5.1.1; 5.2.3,5-C/D,AC-09; mismo folio tras timeout,Diseñado
+RT-05.21,Obligatorio,"Modo, volumen y falla de interfaces",5.2.3; 5.4.1,5-C/E; referencia 4.1-G/H/I,VD-08; 15 INT y pruebas de terceros,Hereda catálogo de arquitectura
+RT-05.22,Obligatorio,Carga masiva y errores por registro,5.2.3; 5.3.2,5-D,VD-03; parcialidad por agregado íntegro,Diseñado
+RT-05.23,Según caso,"GS1, EDI y formato tributario",5.1.2/3; 5.2.3,5-A/C,VD-08; validación de perfiles,Diseñado; perfiles de cadenas requeridos
+RT-05.24,Deseable,Portal de desarrolladores,5.2.3,5-H,VD-08; sandbox y credenciales expirables,Propuesto; no desplegado
+RT-05.25,Obligatorio,Tableros del caso,5.2.4,5-F,VD-07; fórmulas y fuentes,Diseñado
+RT-05.26,Obligatorio,Filtros y profundización,5.2.4,5-F,VD-07; ámbito por rol y grano,Diseñado
+RT-05.27,Obligatorio,Autoservicio del CLIENTE,5.2.4,5-F/G,VD-07; informe creado por rol CLIENTE,Diseñado
+RT-05.28,Obligatorio,Exportar/programar informes,5.2.4,5-F/G,VD-05/07; CSV/JSON/calendario,Diseñado
+RT-05.29,Según caso,Latencia analítica,5.2.4,5-F/H,VD-04; 5 min / 2 h / 4 h,Exigencia conservada; aislamiento requiere ensayo
+RT-05.30,Deseable,Analítica predictiva,5.2.4,5-H,Coherencia de alcance con arquitectura,No incorporada; explotación descriptiva

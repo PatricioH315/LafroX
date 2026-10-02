@@ -1,0 +1,13 @@
+\begin{tikzpicture}[x=1cm,y=1cm,>=stealth,box/.style={draw=lafroxGris,rounded corners=1pt,text width=3.55cm,minimum height=1.25cm,align=left,inner sep=5pt,font=\fontsize{9.5pt}{12pt}\selectfont},edge/.style={->,line width=.6pt},lab/.style={fill=white,inner sep=2pt,font=\fontsize{9pt}{11pt}\selectfont}]
+\node[box] (a) at (0,0) {\textbf{Viaje /\allowbreak  parada M4}\\Conductor; ventana prometida};
+\node[box] (b) at (5.1,0) {\textbf{Despacho M5}\\Carga vigente; guía ERP};
+\node[box] (c) at (0,-2.5) {\textbf{Entrega M6}\\Intento; parcialidad; receptor};
+\node[box] (d) at (5.1,-2.5) {\textbf{Detalle de entrega}\\Asignación; aceptado/\allowbreak rechazado};
+\node[box] (e) at (0,-5) {\textbf{POD /\allowbreak  objeto}\\Firma, foto, QR o causal};
+\node[box] (f) at (5.1,-5) {\textbf{DTE /\allowbreak  acuses}\\ERP; SII; destinatario};
+\draw[edge] (a) -- node[lab,midway,above=0.8cm] {1 : 0..N} (b);
+\draw[edge] (a) -- node[lab,midway,text width=1.8cm,align=center] {1 : 0..N} (c);
+\draw[edge] (c) -- node[lab,midway,above=0.8cm] {1 : 0..N} (d);
+\draw[edge] (c) -- node[lab,midway,text width=1.8cm,align=center] {1 : 0..N} (e);
+\draw[edge] (b) -- node[lab,midway,text width=1.8cm,align=center] {guía vigente} (f);
+\end{tikzpicture}

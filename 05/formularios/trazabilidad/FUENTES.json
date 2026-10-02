@@ -1,0 +1,446 @@
+[
+  {
+    "tipo": "base o alcance",
+    "ruta": "Bases MarkDown/Bases Administrativas.md",
+    "sha256": "a1f36d3e1917b7fde42107209554ac844082a95c21ae6b43e8ae02558f33ff7f",
+    "consulta": "2026-10-02"
+  },
+  {
+    "tipo": "base o alcance",
+    "ruta": "Bases MarkDown/Bases_Tecnicas_Transversales.md",
+    "sha256": "bf7ff0d25089ed491ff479c9485fa6639e455b78ddd107bdd83e7e7613f326c2",
+    "consulta": "2026-10-02"
+  },
+  {
+    "tipo": "base o alcance",
+    "ruta": "Bases MarkDown/Caso_02_Logistica.md",
+    "sha256": "9550b1703e1e0b37c19079bca08d5e068261e5086b76104d36d4fc76d0383d47",
+    "consulta": "2026-10-02"
+  },
+  {
+    "tipo": "base o alcance",
+    "ruta": "LafroX-alvaro-md/Bases/aclaraciones-licitacion.md",
+    "sha256": "d8c9f7f20129ce1deb6a703508e17bec0cb3201bfad36850bbd67f178404ac97",
+    "consulta": "2026-10-02"
+  },
+  {
+    "tipo": "base o alcance",
+    "ruta": "LafroX-alvaro-md/03_esquema_solucion_alcance/LAFROX-Subdocumento3.md",
+    "sha256": "048cbde822d8e15ff8652abd0f568c269e692294c87c155f6fded13ddd015949",
+    "consulta": "2026-10-02"
+  },
+  {
+    "tipo": "base o alcance",
+    "ruta": "LafroX-alvaro-md/03_esquema_solucion_alcance/LAFROX-Formulario-T-12.md",
+    "sha256": "25e491b20eaabca858434b5a244216018326f3d44e8539855cefc5e88df8093d",
+    "consulta": "2026-10-02"
+  },
+  {
+    "tipo": "arquitectura base",
+    "ruta": "04/partes/4.1_logica/01_introduccion.tex",
+    "sha256": "b56f289a23163a7f4e9683bf3d7686e34753025f7ba23e55bc4ade2bf073554e",
+    "commit": "2799de3"
+  },
+  {
+    "tipo": "arquitectura base",
+    "ruta": "04/partes/4.1_logica/02_especificaciones_tecnologias_de_software_a_utilizar.tex",
+    "sha256": "b090fbe6293e0fae1f4606cfd462646d7d66ac4ae80b340bf51c4b844e48f1c0",
+    "commit": "2799de3"
+  },
+  {
+    "tipo": "arquitectura base",
+    "ruta": "04/partes/4.1_logica/03_principios_de_integracion.tex",
+    "sha256": "de9ba426009ce876f51ce44c3ffab59cc12ab2d7774a9f0bf8d042afac7accff",
+    "commit": "2799de3"
+  },
+  {
+    "tipo": "arquitectura base",
+    "ruta": "04/partes/4.1_logica/04_capas_de_la_arquitectura.tex",
+    "sha256": "58ddd4193e488dac5274959f1ae081b3a72b01de67872a716c5ae7a98b8ce4a5",
+    "commit": "2799de3"
+  },
+  {
+    "tipo": "arquitectura base",
+    "ruta": "04/partes/4.1_logica/05_modulos_funcionales_y_limites_de_contexto.tex",
+    "sha256": "bb5ec87123bc217612f49eabc22d0164bd93f5aa7e14f9d86f36e5c94e3193df",
+    "commit": "2799de3"
+  },
+  {
+    "tipo": "arquitectura base",
+    "ruta": "04/partes/4.1_logica/06_modelo_de_datos_conceptual.tex",
+    "sha256": "96525f1525d3ab8404c22ff5de10dace54c4c348d602468e633881d39515c124",
+    "commit": "2799de3"
+  },
+  {
+    "tipo": "arquitectura base",
+    "ruta": "04/partes/4.1_logica/07_catalogo_de_interfaces.tex",
+    "sha256": "3747d16332274c586bc32d7540beb5677c18c3e3e27e0e27b77afbf1dfd9d101",
+    "commit": "2799de3"
+  },
+  {
+    "tipo": "arquitectura base",
+    "ruta": "04/partes/4.1_logica/08_detalle_de_tecnologias_seleccionadas.tex",
+    "sha256": "85d4c88bfd2c499867096343d69a0b3c703bf4fe2d3a007e4f40cdb96ae50b1e",
+    "commit": "2799de3"
+  },
+  {
+    "tipo": "arquitectura base",
+    "ruta": "04/partes/4.1_logica/09_implantacion_progresiva_del_backend_laravel.tex",
+    "sha256": "ae6f334871425331ad3c994d33c8f89b502c733f1508fb192c84bb912d27bb27",
+    "commit": "2799de3"
+  },
+  {
+    "tipo": "arquitectura base",
+    "ruta": "04/partes/4.1_logica/10_ambientes_del_ciclo_de_vida_y_promocion_de_componentes.tex",
+    "sha256": "6a7274126a1302e2264de6edfc0f832e21d526741bf72b0f7a577e384222bf91",
+    "commit": "2799de3"
+  },
+  {
+    "tipo": "arquitectura base",
+    "ruta": "04/partes/4.1_logica/11_patrones_de_diseno_y_continuidad.tex",
+    "sha256": "e603b073e166bf73b1616667307e250e5dffa81981f310bd5a1c26c3aae4c902",
+    "commit": "2799de3"
+  },
+  {
+    "tipo": "arquitectura base",
+    "ruta": "04/partes/4.1_logica/12_registro_de_decisiones_de_arquitectura.tex",
+    "sha256": "5c00b4c83caf066ec20c17d2beda30df01f0848354852f2b066ee4912fdae648",
+    "commit": "2799de3"
+  },
+  {
+    "tipo": "arquitectura base",
+    "ruta": "04/partes/4.1_logica/13_puntos_unicos_de_falla_y_riesgos_residuales.tex",
+    "sha256": "ad71959e535672bf6d8ac20cf124f890f787662e84c8074122e0634ff2088882",
+    "commit": "2799de3"
+  },
+  {
+    "tipo": "arquitectura base",
+    "ruta": "04/partes/4.1_logica/14_comparacion_de_alternativas_arquitectonicas.tex",
+    "sha256": "f46d8256f431658f0838410903445612241052150c08fb9794d68c4dec249928",
+    "commit": "2799de3"
+  },
+  {
+    "tipo": "arquitectura base",
+    "ruta": "04/partes/4.1_logica/15_relacion_entre_las_vistas_de_arquitectura.tex",
+    "sha256": "ac4f5481aba23853701ffb52ef2bacaec30cd5666bc9a11f3d709a7c8b15d8e5",
+    "commit": "2799de3"
+  },
+  {
+    "tipo": "arquitectura base",
+    "ruta": "04/partes/4.1_logica/16_funciones_disponibles_y_no_disponibles_sin_conexion.tex",
+    "sha256": "a9e6fa98ba14243632afbed6b7bf3bfe81583694d2a4c3073152914eb6a5c92c",
+    "commit": "2799de3"
+  },
+  {
+    "tipo": "arquitectura base",
+    "ruta": "04/partes/4.1_logica/17_reglas_de_reconciliacion.tex",
+    "sha256": "048673431b873155543b99ff1f4931f959aa958d0334098ff71585ab02cdcb21",
+    "commit": "2799de3"
+  },
+  {
+    "tipo": "arquitectura base",
+    "ruta": "04/partes/4.1_logica/18_articulacion_entre_prueba_de_entrega_dte_y_acuse.tex",
+    "sha256": "b617f43cd7fa6166d784910a84c73e823df97f18ba682bdb11b19a6b57ebfa48",
+    "commit": "2799de3"
+  },
+  {
+    "tipo": "arquitectura base",
+    "ruta": "04/partes/4.1_logica/19_identidad_y_ciclo_de_vida_de_conductores_externos.tex",
+    "sha256": "404ef1be76c9ba3558fa4613d023d31d55f3a8bbd87e601f0c185de432557cd3",
+    "commit": "2799de3"
+  },
+  {
+    "tipo": "arquitectura base",
+    "ruta": "04/partes/4.1_logica/20_primer_cuello_de_botella_bajo_la_carga_de_septiembre.tex",
+    "sha256": "c7f900164bbc35cc91d3671ace63d0e0a19cad12c01a2c1382c5c349b6b1c2eb",
+    "commit": "2799de3"
+  },
+  {
+    "tipo": "arquitectura base",
+    "ruta": "04/partes/4.1_logica/21_decisiones_del_numeral_16_1_del_caso.tex",
+    "sha256": "f2de193abc42b59e808b15e8307f42b91eeee4455d0e73a4dfed111871012c05",
+    "commit": "2799de3"
+  },
+  {
+    "tipo": "arquitectura base",
+    "ruta": "04/partes/4.1_logica/22_condiciones_y_supuestos_de_diseno.tex",
+    "sha256": "a0b42e3662de71217ad4ded1ee4fa0c1786a8e90be0648510c917f9895480276",
+    "commit": "2799de3"
+  },
+  {
+    "tipo": "arquitectura base",
+    "ruta": "04/partes/4.1_logica/23_referencias.tex",
+    "sha256": "e4c6e0fa26cc8cc66707c983112839e713bc96419229c5235ef667ce2d66753c",
+    "commit": "2799de3"
+  },
+  {
+    "tipo": "arquitectura base",
+    "ruta": "04/partes/4.1_logica/24_declaracion_de_uso_de_ia.tex",
+    "sha256": "5f83e3660ebde84dccd605efe6d99c687fe0603a0a8944394f401fc7018caf24",
+    "commit": "2799de3"
+  },
+  {
+    "tipo": "arquitectura base",
+    "ruta": "04/partes/4.1_logica/contenido.tex",
+    "sha256": "634ae462484c59a320ba523da8b4d7e182f60ff46ae65ea809cd4c5b01bba2c0",
+    "commit": "2799de3"
+  },
+  {
+    "tipo": "arquitectura base",
+    "ruta": "04/partes/4.2_fisica/02_0_arquitectura_fisica.tex",
+    "sha256": "b9db9e3af06cfd4bb224055fec1963c86aa7d1d4c77515e6216101b59bac8bcc",
+    "commit": "2799de3"
+  },
+  {
+    "tipo": "arquitectura base",
+    "ruta": "04/partes/4.2_fisica/02_a_emplazamiento.tex",
+    "sha256": "590e13ec00d8becfb48a204e36df2a2189ce83ebe82db65aad79944c4fb5fba4",
+    "commit": "2799de3"
+  },
+  {
+    "tipo": "arquitectura base",
+    "ruta": "04/partes/4.2_fisica/02_b_servicios_nube.tex",
+    "sha256": "efa5388de8c7fa02ef2505ea8c2a328347f238fe33af11226c6dfcb63d0c2c58",
+    "commit": "2799de3"
+  },
+  {
+    "tipo": "arquitectura base",
+    "ruta": "04/partes/4.2_fisica/02_c_conexiones.tex",
+    "sha256": "932afc157315561aedab11570bf562fd33808fba23340648707ee095b951c79f",
+    "commit": "2799de3"
+  },
+  {
+    "tipo": "arquitectura base",
+    "ruta": "04/partes/4.2_fisica/04_c_implementos.tex",
+    "sha256": "c2afc96d4d7367517512c9836dc8c5ec5c450b2d92c9640f16f9d41c9fb45980",
+    "commit": "2799de3"
+  },
+  {
+    "tipo": "arquitectura base",
+    "ruta": "04/partes/4.2_fisica/11_j_despliegue.tex",
+    "sha256": "c2a6599c8985025e9e3b1fd1ba71487d2bb603dd68adb9afb0e426784a1b3432",
+    "commit": "2799de3"
+  },
+  {
+    "tipo": "arquitectura base",
+    "ruta": "04/partes/4.2_fisica/12_k_dimensionamiento.tex",
+    "sha256": "de1e395efd38af0fc16cf09b0dfd97c5076989b5554c859f6d847ffbbaf07aca",
+    "commit": "2799de3"
+  },
+  {
+    "tipo": "arquitectura base",
+    "ruta": "04/partes/4.2_fisica/14_m_decisiones_adr.tex",
+    "sha256": "df1d4bc7d56294c9ad70fe89123251f4e7622615ec67565ef0efc3223d388741",
+    "commit": "2799de3"
+  },
+  {
+    "tipo": "arquitectura base",
+    "ruta": "04/partes/4.2_fisica/17_referencias.tex",
+    "sha256": "2ac21ec3b96e0a79eb9f36b4afce14fd030831939de17438803a0303fba25ca8",
+    "commit": "2799de3"
+  },
+  {
+    "tipo": "arquitectura base",
+    "ruta": "04/partes/4.2_fisica/contenido.tex",
+    "sha256": "86c56a35a77e6f4fe655318fa6072a31185650dd2a552b49faf2f6dd09bfacc1",
+    "commit": "2799de3"
+  },
+  {
+    "tipo": "arquitectura base",
+    "ruta": "04/partes/4.3_centros_de_datos/05_d_sitio_principal.tex",
+    "sha256": "ac2d9e4752ebe4b52598948730dee0cbb7e2e795b8c6af73a89659b97b95c2d0",
+    "commit": "2799de3"
+  },
+  {
+    "tipo": "arquitectura base",
+    "ruta": "04/partes/4.3_centros_de_datos/06_e_sitio_secundario.tex",
+    "sha256": "034c6043efc2a4177e630843f921bc5adeda53aad0c53777f55237390c064ab6",
+    "commit": "2799de3"
+  },
+  {
+    "tipo": "arquitectura base",
+    "ruta": "04/anexos/fisica/16_anexo_4b_memoria_calculo.tex",
+    "sha256": "a79860d6394ce0e8c771269703c3f5455aed5c12e7f7c465f60033923976dec0",
+    "commit": "2799de3"
+  },
+  {
+    "tipo": "arquitectura base",
+    "ruta": "04/anexos/logica/contenido.tex",
+    "sha256": "a806af7725aad6a7bcd69cea993f2d14d72f01c44297d2a3fb24264b8c85ae7c",
+    "commit": "2799de3"
+  },
+  {
+    "tipo": "arquitectura base",
+    "ruta": "04/anexos/logica/partes/00_catalogo_anexos.tex",
+    "sha256": "1ae076781bbe3d1c0f82c73d3cded607687a1040ad3b0b5abf94e33c0ec72689",
+    "commit": "2799de3"
+  },
+  {
+    "tipo": "arquitectura base",
+    "ruta": "04/anexos/logica/partes/01_apertura_anexos.tex",
+    "sha256": "f7473f26cba72eff1bd7a2a127b6972e9154a96e521f05c39b678b1dedbc6842",
+    "commit": "2799de3"
+  },
+  {
+    "tipo": "arquitectura base",
+    "ruta": "04/anexos/logica/partes/02_anexo_4_1_a_catalogo_de_eventos_canonicos.tex",
+    "sha256": "032e9cd65afdbf03d91153673db9542815c8e298a96820cfe4301f37b24ae2aa",
+    "commit": "2799de3"
+  },
+  {
+    "tipo": "arquitectura base",
+    "ruta": "04/anexos/logica/partes/03_anexo_4_1_b_gobierno_de_la_integracion.tex",
+    "sha256": "68ecc87afc95509614babdde1cd8ba9044e63b31db925e1e54cc2d2c03f4d285",
+    "commit": "2799de3"
+  },
+  {
+    "tipo": "arquitectura base",
+    "ruta": "04/anexos/logica/partes/04_anexo_4_1_c_escenarios_de_carga_masiva.tex",
+    "sha256": "146c2bedebddb69a889be28061ad5dd900cf46ca6dd3f4ebd50bf5556f511c68",
+    "commit": "2799de3"
+  },
+  {
+    "tipo": "arquitectura base",
+    "ruta": "04/anexos/logica/partes/05_anexo_4_1_d_matriz_de_los_doce_modulos.tex",
+    "sha256": "e785ef6ef43efff0ab2172c413d3f17450b6d0d7c146d11dcff676baf691e170",
+    "commit": "2799de3"
+  },
+  {
+    "tipo": "arquitectura base",
+    "ruta": "04/anexos/logica/partes/06_anexo_4_1_e_trazabilidad_funcional.tex",
+    "sha256": "8aca247c5ee64c67d4efa4949422bc55ce2d868fdfd31c8a925bfb3390b6bfbc",
+    "commit": "2799de3"
+  },
+  {
+    "tipo": "arquitectura base",
+    "ruta": "04/anexos/logica/partes/07_anexo_4_1_f_mapa_de_limites_de_contexto.tex",
+    "sha256": "81c3f825ba848e7f3180946217fe26e9e6a39fcccf74b3a8521c9f754bfba619",
+    "commit": "2799de3"
+  },
+  {
+    "tipo": "arquitectura base",
+    "ruta": "04/anexos/logica/partes/08_anexo_4_1_g_catalogo_de_interfaces_internas.tex",
+    "sha256": "330de737a20b9446c7aa13171edc31ab0af166814570aae6a8d01ad668f68583",
+    "commit": "2799de3"
+  },
+  {
+    "tipo": "arquitectura base",
+    "ruta": "04/anexos/logica/partes/09_anexo_4_1_h_catalogo_de_interfaces_externas.tex",
+    "sha256": "0646affa58bed4fea80063c1027b3e30cc57611c76a67b3b2e4d1a8d7f91d240",
+    "commit": "2799de3"
+  },
+  {
+    "tipo": "arquitectura base",
+    "ruta": "04/anexos/logica/partes/10_anexo_4_1_i_volumen_de_mensajes.tex",
+    "sha256": "5535fcb745b189f7fbfcd333cbbd7cd306b034d89ef414af456c92d6e1461506",
+    "commit": "2799de3"
+  },
+  {
+    "tipo": "arquitectura base",
+    "ruta": "04/anexos/logica/partes/11_anexo_4_1_j_funciones_sin_conexion.tex",
+    "sha256": "650129582c6550df398f1121a278d1b0b975271b17166142a11f98dbe75fa3d3",
+    "commit": "2799de3"
+  },
+  {
+    "tipo": "arquitectura base",
+    "ruta": "04/anexos/logica/partes/12_anexo_4_1_k_reglas_de_reconciliacion.tex",
+    "sha256": "e49151fa9ecb15f1243372b9559862c2c1ef48b53a620b00fc689b3d30c03fe8",
+    "commit": "2799de3"
+  },
+  {
+    "tipo": "arquitectura base",
+    "ruta": "04/anexos/logica/partes/13_anexo_4_1_l_decisiones_del_numeral_16_1.tex",
+    "sha256": "aa19317a8b567f9f4ce52ffa5dd623b3e6c498143e37e6e213f9a23157bb1753",
+    "commit": "2799de3"
+  },
+  {
+    "tipo": "arquitectura base",
+    "ruta": "04/anexos/logica/partes/14_anexo_4_1_m_verificacion_de_continuidad_logica.tex",
+    "sha256": "67d326a54e90bb1ce5da1d9bac70faae62a926f2a7ac4374955113c7b9638f56",
+    "commit": "2799de3"
+  },
+  {
+    "tipo": "arquitectura base",
+    "ruta": "04/anexos/logica/partes/15_anexo_4_1_n_correspondencia_de_componentes_logicos.tex",
+    "sha256": "1e605e353970cb5b986896346c8cb7e5652b60dc6b766896afe31878b3f1e0d1",
+    "commit": "2799de3"
+  },
+  {
+    "tipo": "arquitectura base",
+    "ruta": "04/anexos/logica/partes/16_referencias.tex",
+    "sha256": "e4c6e0fa26cc8cc66707c983112839e713bc96419229c5235ef667ce2d66753c",
+    "commit": "2799de3"
+  },
+  {
+    "tipo": "arquitectura base",
+    "ruta": "04/anexos/logica/partes/17_declaracion_de_uso_de_ia.tex",
+    "sha256": "dd1ad08664a0b6b78e936baebf821caec1dfc0bf0f0c50347088ff0a97255c6e",
+    "commit": "2799de3"
+  },
+  {
+    "tipo": "arquitectura base",
+    "ruta": "04/anexos/logica/partes/18_anexo_4_1_o_decisiones_logicas.tex",
+    "sha256": "98a6bba58e0733a2ccde43609d1b0ce61459b950a24e0e14396a2bb0ecf212b1",
+    "commit": "2799de3"
+  },
+  {
+    "tipo": "arquitectura base",
+    "ruta": "04/anexos/logica/partes/19_anexo_4_1_p_tecnologias_soporte.tex",
+    "sha256": "1552127019a35d4ecc7af915f71d60f12df7ff783d70c806dc4e05872e8ae733",
+    "commit": "2799de3"
+  },
+  {
+    "tipo": "arquitectura base",
+    "ruta": "04/anexos/logica/partes/20_anexo_4_1_q_modelado_amenazas.tex",
+    "sha256": "85106a292fccf9e8da3f6898bb421437f15c915bb9b5973a9d377decf291dc8e",
+    "commit": "2799de3"
+  },
+  {
+    "tipo": "arquitectura base",
+    "ruta": "04/anexos/logica/partes/21_anexo_4_1_r_controles_seguridad.tex",
+    "sha256": "e10a0643fc99ff82c5a0168d567069e4a4d15cf60dc62ac6561ed896961f945a",
+    "commit": "2799de3"
+  },
+  {
+    "tipo": "arquitectura base",
+    "ruta": "04/anexos/logica/partes/22_anexo_4_1_s_puntos_de_vista.tex",
+    "sha256": "b811f76b04a831f25a81c74aab6ba66dae7193e1295326f623d7c395889fc791",
+    "commit": "2799de3"
+  },
+  {
+    "tipo": "arquitectura base",
+    "ruta": "04/anexos/logica/partes/23_anexo_4_1_t_desempeno.tex",
+    "sha256": "795e61961c14089317a9e5822f28657d6eb574cb3bd9d020469d8066235b43d5",
+    "commit": "2799de3"
+  },
+  {
+    "tipo": "arquitectura base",
+    "ruta": "04/anexos/logica/partes/24_anexo_4_1_u_evidencia_documental.tex",
+    "sha256": "b70cd4cbad6b0532da003fdd3274e9abb953c042d6d9edfa1992eff0e92388eb",
+    "commit": "2799de3"
+  },
+  {
+    "tipo": "arquitectura base",
+    "ruta": "04/anexos/logica/partes/25_anexo_4_1_v_aceptacion_y_dependencias.tex",
+    "sha256": "09e5b4b9a91f355069eb8e69dce55732262f341a7381edde7342f93aff093bf7",
+    "commit": "2799de3"
+  },
+  {
+    "tipo": "arquitectura base",
+    "ruta": "04/formularios/T11/15_anexo_t11.tex",
+    "sha256": "3c87056f02c0e70467e3fff9db00372a0ef4baae9040a13c8289fc3053cd66e6",
+    "commit": "2799de3"
+  },
+  {
+    "tipo": "arquitectura base",
+    "ruta": "Dimensionamiento/dimensionamiento/calculo.py",
+    "sha256": "ffba33d2885ecd9dbdfd9bf16ad919c6e9074f9a540410be92a6033efdeec3cd",
+    "commit": "2799de3"
+  },
+  {
+    "tipo": "arquitectura base",
+    "ruta": "Dimensionamiento/dimensionamiento/resultados.md",
+    "sha256": "15e6a017a4454ff0532d28ea35258a09341ff1de00734147d15fd1b693221b18",
+    "commit": "2799de3"
+  }
+]

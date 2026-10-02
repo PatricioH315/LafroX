@@ -1,0 +1,90 @@
+\section{Modelo}
+\label{sec:5-modelo}
+El dato se captura donde ocurre el hecho: recepción en andén, preparación por lectura GS1, entrega en el local y rendición en Tesorería. El identificador original enlaza esos registros sin exigir que la persona vuelva a digitarlos. Los dominios separan propietarios y reglas; compartir PostgreSQL o el proceso Laravel no permite escribir tablas privadas de otro módulo.
+
+\subsection{Identidad, relaciones y datos maestros}
+El ERP conserva la identidad autorizada de cliente, producto y proveedor. La ACL traduce sus códigos a UUID canónicos y mantiene una correspondencia única \emph{fuente, entidad, identificador externo}. Cambios de presentación del producto crean equivalencias GTIN versionadas; una misma razón social escrita de dos maneras no crea dos clientes. Comercial gobierna preferencias de contacto y puntos de entrega, Abastecimiento los atributos de compra y Calidad los rangos sanitarios. Cada propiedad tiene una autoridad, aunque el maestro reúna aportes de varios responsables.
+
+El esquema operacional se normaliza hasta tercera forma normal dentro de cada contexto: cabecera y detalle se separan, las relaciones muchos a muchos se materializan y los catálogos limitan estados y unidades. Precio informado, ventana prometida y autor del hecho se conservan como instantáneas históricas deliberadas; no se recalculan con el maestro vigente. La FK dentro de un contexto comprueba integridad; entre bases se usa referencia canónica, validación contractual y conciliación de referencias huérfanas.
+
+Todos los registros de negocio incorporan UUID, fecha UTC y versión positiva. Hora del hecho y hora de persistencia son distintas. La presentación usa America/Santiago, conservando el desplazamiento horario de la captura. Los importes operacionales se expresan con decimales exactos y las cantidades con unidad base y conversión versionada; no se redondea un saldo con coma flotante.
+La Figura~\ref{fig:5-pedido} relaciona cliente, punto de entrega y líneas del pedido con la reserva de M2.
+
+\begin{figure}[htbp]
+\centering
+\input{05/figuras/fuentes/datos/pedido.tex}
+\caption{Modelo de cliente, pedido y reserva}
+\label{fig:5-pedido}
+{\fontsize{9pt}{11pt}\selectfont Fuente: elaboración de LafroX a partir del Caso 02 y la arquitectura de referencia.}
+\end{figure}\FloatBarrier
+
+Un pedido confirmado posee al menos una línea. Una línea puede originar varias reservas y asignaciones a lote; la suma aceptada no excede la cantidad solicitada, salvo modificación explícita y autorizada del pedido. La captura offline conserva precio y tarifa, pero no promete una reserva que el sitio custodio aún no confirmó. Esto evita que dos preventistas comprometan la última unidad usando copias atrasadas.
+
+\subsection{Recepción, inventario y preparación}
+M1 registra recepción y sus líneas, enlazadas a lote y unidad logística. El lote sanitario se identifica por GTIN y lote del proveedor; se mantiene también el proveedor de origen para desambiguar colisiones. Vencimiento es atributo, no identidad de un nuevo lote. Si el mismo código llega con vencimientos incompatibles, Calidad resuelve la discrepancia antes de liberarlo. Una unidad SSCC puede contener varios lotes mediante una relación de contenido.
+La Figura~\ref{fig:5-custodia} expone el camino desde la recepción hasta la asignación del pedido y el libro de movimientos.
+
+\begin{figure}[htbp]
+\centering
+\input{05/figuras/fuentes/datos/custodia.tex}
+\caption{Modelo de lote, SSCC y custodia}
+\label{fig:5-custodia}
+{\fontsize{9pt}{11pt}\selectfont Fuente: elaboración de LafroX a partir del Caso 02 y la arquitectura de referencia.}
+\end{figure}\FloatBarrier
+
+M2 calcula stock por sitio, lote y ubicación a partir del libro de movimientos. La reserva inmoviliza cantidad; la preparación la consume y el despacho reduce existencia física. M5 conserva misión, línea confirmada y asignación a lote/SSCC. Para responder un retiro se recorre lote, asignación, detalle de entrega y cliente; para investigar una entrega se sigue la ruta inversa. Un ajuste deja contramovimiento, motivo y aprobación, sin borrar el hecho original.
+
+\subsection{Ruta, salida y entrega}
+M4 conserva viaje aprobado, capacidades y paradas ordenadas; M12 añade ruta real por la API de telemetría existente. La ventana prometida se registra antes del reparto para que OTIF sea reproducible. M5 mantiene la versión de carga y su guía emitida por ERP. El estado de salida liberada exige documento válido de esa misma carga, disponible localmente.
+La Figura~\ref{fig:5-entrega} distingue visita, carga, intento de entrega, evidencia operativa y documentación tributaria.
+
+\begin{figure}[htbp]
+\centering
+\input{05/figuras/fuentes/datos/entrega.tex}
+\caption{Modelo de salida, entrega y evidencias}
+\label{fig:5-entrega}
+{\fontsize{9pt}{11pt}\selectfont Fuente: elaboración de LafroX a partir del Caso 02 y la arquitectura de referencia.}
+\end{figure}\FloatBarrier
+
+Un pedido puede no tener entrega o tener varios intentos y entregas parciales. Cada detalle refiere una asignación de lote y expresa cantidad aceptada, rechazada y causal. Una entrega sin recepción, por ejemplo local cerrado, no fabrica un receptor ni un POD firmado. Las evidencias son objetos con hash, versión y fecha; la constancia de negativa se distingue de una firma. El acuse técnico del SII, el MDN EDI y el acuse de mercadería del destinatario se registran como tipos separados. El mecanismo de validez del acuse se selecciona con Tributación conforme al Subdocumento 4; una foto o un QR no lo acredita por sí solo.
+
+\subsection{Cobranza, devoluciones y retornables}
+M7 captura cobro por medio y lo vincula a entrega, viaje y conductor custodio. Tesorería compara efectivo esperado con recibido; la diferencia conserva causal y decisión. Un timeout de pasarela deja el pago incierto hasta consultar su referencia estable. El saldo de crédito es proyección fechada del ERP y no se incrementa por una lectura del dispositivo.
+La Figura~\ref{fig:5-retornos} separa cobro, rendición, devolución de producto y movimiento de envase.
+
+\begin{figure}[htbp]
+\centering
+\input{05/figuras/fuentes/datos/retornos.tex}
+\caption{Modelo de cobro y logística inversa}
+\label{fig:5-retornos}
+{\fontsize{9pt}{11pt}\selectfont Fuente: elaboración de LafroX a partir del Caso 02 y la arquitectura de referencia.}
+\end{figure}\FloatBarrier
+
+M8 distingue recepción física del retorno, aptitud sanitaria y efecto financiero. El sitio registra el hecho aun sin WAN; Calidad decide liberación o descarte, y el ERP emite el documento posterior cuando corresponde. Los envases se controlan por cuenta corriente de cliente y tipo, con movimientos de cargo y devolución; SSCC pertenece a custodia logística y no individualiza los 68.000 canastillos del caso. Una disputa conserva el saldo aceptado y la evidencia en una bandeja de excepción.
+
+\subsection{Calidad, telemetría e información transversal}
+M9 relaciona sensor, lectura, lote y bloqueo. Dos gateways de Talca leyendo el mismo sensor transmiten la misma identidad de muestra; la clave sensor/sesión/secuencia impide duplicar la serie. La diferencia de valor bajo esa clave genera incidente. La geolocalización se recibe por INT-15, se cifra por campo y se usa para ruta y costo, sin incorporar cámaras de cabina ni convertir GPS en control de jornada.
+La Figura~\ref{fig:5-frio} separa la decisión local de Calidad de la conservación de series y la posición de flota.
+
+\begin{figure}[htbp]
+\centering
+\input{05/figuras/fuentes/datos/frio.tex}
+\caption{Modelo de temperatura y bloqueo}
+\label{fig:5-frio}
+{\fontsize{9pt}{11pt}\selectfont Fuente: elaboración de LafroX a partir del Caso 02 y la arquitectura de referencia.}
+\end{figure}\FloatBarrier
+
+La temperatura cruda tiene una permanencia propuesta de 30 días en DynamoDB; la serie validada se conserva cinco años en S3 Parquet y Redshift. El plazo corto del raw no reemplaza la retención sanitaria. El consumidor verifica publicación y conciliación de la serie antes de permitir su expiración.
+La Figura~\ref{fig:5-gobierno} ubica maestros, copias versionadas, mensajes de cadenas, notificaciones y registros de auditoría.
+
+\begin{figure}[htbp]
+\centering
+\input{05/figuras/fuentes/datos/gobierno.tex}
+\caption{Dominios de maestros, acceso, EDI y documentos}
+\label{fig:5-gobierno}
+{\fontsize{9pt}{11pt}\selectfont Fuente: elaboración de LafroX a partir del Caso 02 y la arquitectura de referencia.}
+\end{figure}\FloatBarrier
+
+BD\_GOBIERNO\_ACCESO conserva la referencia a identidad Keycloak, vínculo histórico de conductor y autorización de turno; no almacena contraseñas de aplicación ni sustituye al IdP. BD\_EDI\_CANALMODERNO enlaza original, traducción y pedido M3. BD\_MAILS\_NOTIF registra preferencia, envío y acuse técnico. REDIS\_SESIONES\_CACHE es prescindible y S3\_DOCS conserva los objetos bajo manifiesto. BD\_BI\_GERENCIA representa información derivada; su modelo dimensional se desarrolla en 5.2.
+
+El Anexo 5-A documenta cada atributo con tipo, dominio de valores, obligatoriedad, propietario y sensibilidad. El Anexo 5-B detalla cardinalidades y los quince dominios de almacenamiento. Las tablas auxiliares de outbox, inbox y auditoría pertenecen a cada contexto productor o consumidor; no agregan tres bases físicas a las quince familias de arquitectura.

@@ -1,0 +1,60 @@
+\chapter*{Anexo 5-B --- Relaciones y propietarios}
+\addcontentsline{toc}{chapter}{Anexo 5-B --- Relaciones y propietarios}
+\label{anx:5-B}
+Las cardinalidades se leen desde la primera entidad hacia la segunda. Las referencias entre contextos son lógicas y se validan por contrato; no se exige una FK física cruzando motores.
+
+
+\begin{tablalafrox}{Dominios de información y propietario}{tab:5-dominios}{F{0.3} F{0.34} Y}{\cab{Dominio /\allowbreak  módulo} & \cab{Motor y emplazamiento} & \cab{Propietario /\allowbreak  autoridad}}
+BD\_\allowbreak INVENTARIO /\allowbreak  M1/\allowbreak M2/\allowbreak M8 & PostgreSQL local; proyección Aurora & Bodega; Sitio custodio \\
+BD\_\allowbreak PREVENTA /\allowbreak  M3 & Aurora PostgreSQL; Room en terminal & Comercial; M3 nube; captura en terminal \\
+BD\_\allowbreak RUTAS /\allowbreak  M4/\allowbreak M12 & PostgreSQL/\allowbreak PostGIS y Aurora compatible & Planificación/\allowbreak Flota; M4 versión aprobada \\
+BD\_\allowbreak PREPARACION /\allowbreak  M5 & PostgreSQL por sitio & Bodega; M5 sitio \\
+BD\_\allowbreak REPARTO /\allowbreak  M6 & Aurora; Room en dispositivo & Operaciones; M6; hechos capturados en terreno \\
+BD\_\allowbreak COBRANZA\_\allowbreak FINANZAS /\allowbreak  M7/\allowbreak ACL & Aurora; ERP externo & Tesorería/\allowbreak Tributación; M7 captura; ERP contabiliza y emite \\
+BD\_\allowbreak MAESTROS\_\allowbreak CONF /\allowbreak  M1/\allowbreak M3/\allowbreak ACL & Aurora; copias locales versionadas & Comercial/\allowbreak Abastecimiento; ERP identidad comercial; módulo configuración \\
+BD\_\allowbreak GOBIERNO\_\allowbreak ACCESO /\allowbreak  Keycloak/\allowbreak M6 & PostgreSQL Keycloak; manifiesto local & Seguridad/\allowbreak Flota; IdP identidad; módulo autoriza vínculo \\
+BD\_\allowbreak CALIDAD\_\allowbreak TRAZABILIDAD /\allowbreak  M9 & PostgreSQL local y Aurora & Calidad; M9 por lote y sitio \\
+BD\_\allowbreak TELEMETRIA /\allowbreak  M9/\allowbreak M12 & DynamoDB raw; S3 Parquet; Redshift & Calidad/\allowbreak Flota; Sensor o tercero; consumidor deduplica \\
+BD\_\allowbreak EDI\_\allowbreak CANALMODERNO /\allowbreak  M11 & Aurora + originales S3 & Comercial; M11 traducción; M3 pedido \\
+BD\_\allowbreak BI\_\allowbreak GERENCIA /\allowbreak  M10 & S3 Parquet + Glue + Redshift & Control de gestión; Proyección derivada, sin escritura OLTP \\
+BD\_\allowbreak MAILS\_\allowbreak NOTIF /\allowbreak  Servicio notificaciones & Aurora + SNS & Comercial; Consumidor de avisos \\
+REDIS\_\allowbreak SESIONES\_\allowbreak CACHE /\allowbreak  Plataforma & Redis administrado central & Plataforma; Fuente OLTP/\allowbreak IdP, nunca caché \\
+S3\_\allowbreak DOCS /\allowbreak  M6/\allowbreak M7/\allowbreak M9 & S3 cifrado con manifiesto y Object Lock & Operaciones/\allowbreak Tributación; Módulo dueño del objeto \\
+\end{tablalafrox}
+
+\begin{tablalafrox}{Relaciones del modelo}{tab:5-relaciones}{F{0.23} F{0.23} F{0.13} Y}{\cab{Origen} & \cab{Destino} & \cab{Cardinalidad} & \cab{Regla}}
+cliente & punto\_\allowbreak entrega & 1 : 0..N & composición comercial \\
+cliente & pedido & 1 : 0..N & cliente del pedido \\
+pedido & linea\_\allowbreak pedido & 1 : 1..N & detalle obligatorio \\
+producto & linea\_\allowbreak pedido & 1 : 0..N & SKU solicitado \\
+producto & lote & 1 : 0..N & origen sanitario \\
+proveedor & lote & 1 : 0..N & proveedor del lote \\
+recepcion & linea\_\allowbreak recepcion & 1 : 1..N & recepción cerrada \\
+lote & linea\_\allowbreak recepcion & 1 : 0..N & lote recibido \\
+unidad\_\allowbreak logistica & contenido\_\allowbreak unidad & 1 : 1..N & unidad no vacía \\
+lote & contenido\_\allowbreak unidad & 1 : 0..N & contenido mixto \\
+lote & movimiento\_\allowbreak stock & 1 : 0..N & libro de custodia \\
+linea\_\allowbreak pedido & reserva & 1 : 0..N & reservas por lote/\allowbreak sitio \\
+reserva & asignacion\_\allowbreak lote & 1 : 0..N & consumo acotado \\
+linea\_\allowbreak pedido & asignacion\_\allowbreak lote & 1 : 0..N & servicio multilot \\
+mision & linea\_\allowbreak mision & 1 : 1..N & misión descargada \\
+asignacion\_\allowbreak lote & linea\_\allowbreak mision & 1 : 0..N & preparación \\
+viaje & parada & 1 : 1..N & ruta aprobada \\
+viaje & despacho & 1 : 0..N & cargas/\allowbreak salidas \\
+pedido & entrega & 1 : 0..N & intentos o parcialidad \\
+parada & entrega & 1 : 0..N & visita \\
+entrega & detalle\_\allowbreak entrega & 1 : 0..N & cero si local cerrado \\
+asignacion\_\allowbreak lote & detalle\_\allowbreak entrega & 1 : 0..N & traza a lote y SSCC \\
+entrega & evidencia\_\allowbreak pod & 1 : 0..N & evidencias por causal \\
+documento\_\allowbreak tributario & acuse & 1 : 0..N & acuses diferenciados \\
+entrega & cobro & 1 : 0..N & pagos por medio \\
+viaje & rendicion & 1 : 0..N & conciliaciones y ajustes \\
+entrega & devolucion & 1 : 0..N & rechazos/\allowbreak retornos \\
+cliente & movimiento\_\allowbreak envase & 1 : 0..N & saldo por tipo \\
+sensor & lectura\_\allowbreak termica & 1 : 0..N & serie deduplicada \\
+lote & bloqueo\_\allowbreak calidad & 1 : 0..N & calidad \\
+vehiculo & viaje & 1 : 0..N & asignación \\
+transportista & vinculo\_\allowbreak conductor & 0..1 : 0..N & propio o tercero \\
+cliente & saldo\_\allowbreak credito & 1 : 0..1 & proyección del ERP \\
+pedido & mensaje\_\allowbreak edi & 0..1 : 0..N & canal moderno \\
+\end{tablalafrox}
