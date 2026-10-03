@@ -1,15 +1,15 @@
-\section*{Anexo 4.1-K --- Reglas de reconciliación}
+\section*{Anexo 4-K --- Reglas de reconciliación}
 \phantomsection
 \label{anx:K}
-\addcontentsline{toc}{section}{Anexo 4.1-K --- Reglas de reconciliación}
-El detalle de reglas de reconciliación se presenta a continuación.
+\addcontentsline{toc}{section}{Anexo 4-K --- Reglas de reconciliación}
+La tabla fija, para cada conflicto de negocio, la regla que lo resuelve, el lugar donde se ejecuta y los datos que conserva la bitácora del Artículo 16.4.
 
 \begin{tablalafrox}{Reglas de reconciliación y bitácora Art. 16.4}{tab:reglas-reconciliacion}{F{0.16} F{0.24} F{0.18} F{0.18} Y}{\cab{Conflicto} & \cab{Regla de resolución} & \cab{Dónde se ejecuta} & \cab{Bitácora Art. 16.4} & \cab{Dec. / ADR}}
-Doble reserva stock (preventa offline vs online) & M2 confirma una sola reserva; la otra queda en excepción con aviso, sin resolver por la última marca de tiempo. & Capa 4 (M2/M3) & Pedido, stock, regla, resultado y hora. & Decisión 16.1 N\textdegree{} 8; RT-02.06 \\
-Pedido duplicado (reenvío offline) & M3 conserva el UUID y devuelve el resultado ya persistido, sin volver a reservar ni cobrar. & Capa 4 (M3) & transaction\_id, event\_id y resultado anterior. & RT-02.06 \\
+Doble reserva stock (preventa offline vs online) & M2 confirma una sola reserva; la otra queda en excepción con aviso, sin resolver por la última marca de tiempo. & Capa 4 (M2/M3) & Pedido, stock, regla, resultado y hora. & Decisión 16.1 N\textdegree{} 8; RT-03.12 \\
+Pedido duplicado (reenvío offline) & M3 conserva el UUID y devuelve el resultado ya persistido, sin volver a reservar ni cobrar. & Capa 4 (M3) & transaction\_id, event\_id y resultado previo. & RT-02.06 \\
 Entrega offline vs cancelación back-office & M6 aísla el conflicto: compara estado y evidencia; un supervisor resuelve antes de ajustar cobro o DTE. & Capa 4 (M6/M7) & Entrega, cancelación, POD y decisión motivada. & Decisión 16.1 N\textdegree{} 1 \\
 Excursión térmica detectada offline & M9 bloquea localmente la salida; solo Calidad libera tras evaluación. & Capas 2 y 4 (M9/M5) & Sensor, umbral, lote, bloqueo y liberación. & Decisión 16.1 N\textdegree{} 4 \\
-Rendición conductor offline vs ERP caído & M7 conserva la captura en el dispositivo hasta reconexión; el sitio retiene sus propios eventos en RabbitMQ; \texttt{erp-sync} reintenta con cortacircuito & Capa 1 (dispositivo) + Capa 4 (M7) + Capa 5 + ACL & conductor\_id, monto, causal descuadre, reintentos ERP & INT-06, RT-10.08 \\
+Rendición conductor offline vs ERP caído & M7 conserva la captura en el dispositivo hasta reconexión; el sitio retiene sus propios eventos en RabbitMQ; \texttt{erp-sync} en VM-04 consume RabbitMQ local y SQS por salida, y reintenta con cortacircuito & Capa 1 (dispositivo) + Capa 4 (M7) + Capa 5 + ACL & conductor\_id, monto, causal descuadre, reintentos ERP & INT-06, RT-10.08 \\
 Conflicto envases (conductor devuelve vs cliente niega) & Cuenta corriente por cliente (saldo, no unidad); registro EnvaseMovido con firma/QR conductor; disputa $\rightarrow$ bandeja excepciones & Capa 4 (M8) & cliente\_id, tipo envase, firma/QR, decisión (saldo actualizado) & Decisión 16.1 N\textdegree{} 10 \\
 Cambio de precio entre captura y confirmación & M3 conserva la tarifa mostrada; si cambió antes de confirmar, solicita aceptación o autorización comercial, sin cambiar silenciosamente el pedido & M3 + M7 & pedido\_id, tarifa inicial y vigente, respuesta del cliente & Decisión 16.1 N\textdegree{} 9 \\
 Devolución tras guía emitida & M8 conserva cantidad, lote y causal; el ERP decide y emite el documento tributario posterior mediante ACL & M8 + ACL & entrega\_id, guía original, devolución, documento resultante & Decisión 16.1 N\textdegree{} 12 \\

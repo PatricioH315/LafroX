@@ -1,8 +1,8 @@
 \clearpage
-\section*{Anexo 4.1-Q --- Modelado de amenazas lógicas}
+\section*{Anexo 4-Q --- Modelado de amenazas lógicas}
 \phantomsection
 \label{anx:Q}
-\addcontentsline{toc}{section}{Anexo 4.1-Q --- Modelado de amenazas lógicas}
+\addcontentsline{toc}{section}{Anexo 4-Q --- Modelado de amenazas lógicas}
 STRIDE se aplica por módulo, componente transversal e integración externa (RT-11.02). S representa suplantación; T, alteración; R, repudio; I, divulgación; D, denegación; E, elevación de privilegios. Cada escenario tiene una prueba negativa y un dueño; el registro se reevalúa al cambiar un contrato o límite de confianza. Esta matriz registra amenazas de diseño, no resultados de pentesting.
 
 \begin{tablalafrox}{Amenazas de los doce módulos}{tab:amenazas-modulos}{F{0.10} F{0.25} F{0.34} Y}{\cab{Elemento} & \cab{Amenaza} & \cab{Control y prueba} & \cab{Dueño}}
@@ -38,6 +38,6 @@ SEC-SECRETS/\allowbreak AUDIT/\allowbreak SIEM & I/\allowbreak R: clave expuesta
 OBS-COLLECT/\allowbreak LOCAL/\allowbreak CENT & D/\allowbreak R: buffer lleno o traza faltante. & Cuota, alarma y prioridad de auditoría; corte con saturación. \\
 DEV-PIPE/\allowbreak IAC/\allowbreak MDM/\allowbreak UI-WEB/\allowbreak BOR-B2B & S/\allowbreak E: artefacto o acceso de gestión ajeno. & Firma, SBOM, aprobación y MFA; imagen sin procedencia y rol excesivo. \\
 \end{tablalafrox}
-{\footnotesize Fuente: catálogo INT-01--15, inventario del Anexo N y RT-11.02. Seguridad mantiene el registro; cada dueño ejecuta su escenario con Calidad.\par}
+{\footnotesize Fuente: catálogo INT-01--15, inventario del Anexo 4-N y RT-11.02. Seguridad mantiene el registro; cada dueño ejecuta su escenario con Calidad.\par}
 
 Las integraciones internas heredan los controles de productor y consumidor: INT-01/\allowbreak 02, identidad y UUID; INT-03/\allowbreak 04, sitio y secuencia; INT-05, sensor y frescura; INT-12, cuenta CDC de lectura; INT-13, manifiesto firmado; INT-14, integridad y capacidad del buffer. Toda excepción conserva escenario, consecuencia, responsable, tratamiento y criterio de cierre.

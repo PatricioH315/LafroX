@@ -1,22 +1,19 @@
 \clearpage
-\section*{Anexo 4.1-V --- Condiciones de aceptación y dependencias}
+\section*{Anexo 4-V --- Protocolos de aceptación}
 \phantomsection
 \label{anx:V}
-\addcontentsline{toc}{section}{Anexo 4.1-V --- Condiciones de aceptación y dependencias}
-La propuesta conserva los requisitos obligatorios y distingue diseño, aprobación y ensayo. Las condiciones siguientes requieren evidencia del CLIENTE o cotejo integrado; su registro no afirma que exista aprobación ni consulta enviada. Las pruebas se ejecutan en Preproducción y antes de cada ola aplicable, con resultados observados y responsables identificados.
+\addcontentsline{toc}{section}{Anexo 4-V --- Protocolos de aceptación}
+Las pruebas siguientes se ejecutan en Preproducción y antes de la ola aplicable. Cada acta identifica carga, inyección de falla, resultados observados y responsables; el Anexo 4-M desarrolla AL-DTE-01, AL-DR-01, AL-OFF-01 y AL-CLI-01. La Tabla~\ref{tab:condiciones-aceptacion} resume sus protocolos.
 
-\begin{tablalafrox}{Decisiones necesarias para aceptación}{tab:condiciones-aceptacion}{F{0.14} F{0.28} F{0.31} Y}{\cab{ID} & \cab{Decisión o dependencia} & \cab{Alternativa y evidencia requerida} & \cab{Responsable}}
-AL-DTE-01 & Continuidad de guía en 96 salidas. & Emisor ERP disponible y evidencia local, o contingencia tributaria expresamente autorizada; ensayo con carga cambiada. & Operaciones, Tributación y ERP. \\
-AL-BR-01 & Pérdida del sitio aislado. & Protección externa independiente con desfase $\leq$ 15 min, o resolución formal del escenario; AL-DR-01. & Arquitectura, Infraestructura y CLIENTE. \\
-AL-MAP-01 & Correspondencia 3.3/3.4/4.1/4.2. & Inventario N cotejado con esquema, nombres y realizaciones exactas. & Arquitectura y dueños de capítulos. \\
-AL-POD-01 & Perfil de receptor y validez de acuse. & Procedimiento por cliente y evidencia conforme al canal aplicable. & Tributación, Comercial y Seguridad. \\
-AL-SLA-01 & Ventanas efectivas de terceros. & Acuerdos de contraparte, cuotas, mantenimiento y escalamiento en G/H. & Integración y CLIENTE. \\
-AL-REV-01 & Revisión humana y A-6. & Identificar persona, sección, diagramas y qué verificó; acta y declaración consolidadas. & Equipo responsable del Subdocumento 4. \\
+\begin{tablalafrox}{Protocolos de aceptación de la arquitectura lógica}{tab:condiciones-aceptacion}{F{0.17} F{0.29} F{0.33} Y}{\cab{ID} & \cab{Ejecución} & \cab{Criterio de aceptación} & \cab{Evidencia}}
+\mbox{AL-DTE-01} & Ensayar 96 guías por las rutas de Talca y de los demás sitios, con fallas y cambio de carga. & Cada camión sale con guía válida del ERP; sin los tres caminos, solo lleva la carga amparada. & Origen, ruta, folio, carga, acuse y acta. \\
+\mbox{AL-POD-01} & Ensayar entrega total, parcial y receptor sustituto sin señal. & El POD conserva autor, objeto y acuse aplicable. & Firma, hash y trazas. \\
+\mbox{AL-SLA-01} & Simular ventanas y cuotas de ERP, SII y contrapartes. & Reintentos y escalamiento respetan cada contrato. & Contratos, logs y tiempos. \\
+\mbox{AL-OFF-01} & Aislar cada sitio 24 horas con dos relevos y despachar con guía preemitida. & Operación local y conciliación sin duplicados; solo sale carga amparada. & Bitácora, guías, colas y acta. \\
+\mbox{AL-CLI-01} & Armar pedidos sin señal en el Portal de Clientes instalado y reconectar. & Ningún pedido se pierde ni se duplica; M3 reserva solo al recibirlo. & UUID, respuesta de M3 y acta. \\
+\mbox{AL-DR-01} & Cortar caminos y recuperar Talca en nube. & RTO $\leq$ 4 horas y RPO $\leq$ 15 minutos. & Marcas de agua y acta. \\
+\mbox{AL-PERF-01} & Aplicar carga de 3$\times$ con mamparos por perfil. & Latencias y colas cumplen el Anexo 4-T. & Métricas y reporte. \\
 \end{tablalafrox}
-{\footnotesize Fuente: requisitos y protocolos citados en 4.1; condiciones de aceptación de la propuesta.\par}
+{\footnotesize Fuente: elaboración propia.\par}
 
-La propuesta de continuidad del ERP mantiene un único emisor lógico y un solo registro de documentos: un mecanismo de alta disponibilidad o recuperación del proveedor debe conservar sus claves y folios. La ACL admite consultar resultados y descargar evidencia, sin cambiar el ERP ni emitir en nombre de otro sistema. Si el proveedor no puede cumplir y no existe contingencia aplicable, la salida afectada permanece bloqueada y el requisito de continuidad no se considera satisfecho.
-
-La protección de datos críticos distingue enlace ordinario caído de aislamiento absoluto. Un camino independiente que sigue operativo permite sacar la copia durable; no debe compartir el dominio de falla del sitio. Si se pierden simultáneamente todos los medios y el origen, la brecha no desaparece al llamarla modo offline. El ensayo y la decisión formal mantienen el objetivo RPO de 15 minutos; la arquitectura física debe realizar la protección que se seleccione.
-
-Las condiciones AL-OFF-01, AL-PERF-01 y AL-POD-01 tienen protocolo reproducible. Su ejecución se programa en la EDT y plan de calidad; la ausencia de resultados en una oferta previa a construir no se presenta como prueba ya aprobada. El equipo revisa el consolidado y asume el diseño antes de entregar; la herramienta no firma esa revisión.
+AL-DTE-01 comprueba ambas rutas de las 96 guías, la preemisión nocturna, la invalidación por cambio de carga y la nueva emisión del ERP ante el SII por fibra, LTE o Starlink en espera caliente. AL-OFF-01 comprueba por separado el despacho con guía válida preemitida. AL-DR-01 mide la extracción continua y la recuperación del WMS de Talca en ECS Fargate; el límite residual se desarrolla en 4.3.2. Los resultados de todas las pruebas se vinculan a los requisitos y al registro ADR del Anexo 4-O.

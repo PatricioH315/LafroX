@@ -11,10 +11,10 @@
         <mxCell id="nVaVhRBkELaX6mWcn4OE-2" parent="NOSNqamQ-Jdh2TOBjGmn-1" style="image;html=1;image=img/lib/clip_art/networking/Wireless_Router_N_128x128.png;fontSize=30;verticalLabelPosition=bottom;verticalAlign=top;labelWidth=140;whiteSpace=wrap;fontStyle=0;strokeWidth=2;" value="LTE" vertex="1">
           <mxGeometry height="80" width="80" x="567" y="690" as="geometry" />
         </mxCell>
-        <mxCell id="nVaVhRBkELaX6mWcn4OE-3" parent="NOSNqamQ-Jdh2TOBjGmn-1" style="image;html=1;image=img/lib/clip_art/networking/Firewall_02_128x128.png;fontSize=30;labelPosition=right;verticalLabelPosition=middle;align=left;verticalAlign=middle;spacingLeft=8;labelWidth=150;whiteSpace=wrap;fontStyle=0;strokeWidth=2;" value="Firewall" vertex="1">
+        <mxCell id="nVaVhRBkELaX6mWcn4OE-3" parent="NOSNqamQ-Jdh2TOBjGmn-1" style="image;html=1;image=img/lib/clip_art/networking/Firewall_02_128x128.png;fontSize=30;labelPosition=right;verticalLabelPosition=middle;align=left;verticalAlign=middle;spacingLeft=8;labelWidth=280;whiteSpace=wrap;fontStyle=0;strokeWidth=2;" value="Firewall · par HA" vertex="1">
           <mxGeometry height="70" width="70" x="817" y="565" as="geometry" />
         </mxCell>
-        <mxCell id="nVaVhRBkELaX6mWcn4OE-4" parent="NOSNqamQ-Jdh2TOBjGmn-1" style="image;html=1;image=img/lib/clip_art/networking/Switch_128x128.png;fontSize=30;labelPosition=right;verticalLabelPosition=middle;align=left;verticalAlign=middle;spacingLeft=8;labelWidth=150;whiteSpace=wrap;fontStyle=0;strokeWidth=2;" value="Switch" vertex="1">
+        <mxCell id="nVaVhRBkELaX6mWcn4OE-4" parent="NOSNqamQ-Jdh2TOBjGmn-1" style="image;html=1;image=img/lib/clip_art/networking/Switch_128x128.png;fontSize=30;labelPosition=right;verticalLabelPosition=middle;align=left;verticalAlign=middle;spacingLeft=8;labelWidth=400;whiteSpace=wrap;fontStyle=0;strokeWidth=2;" value="Switches de núcleo · stack" vertex="1">
           <mxGeometry height="70" width="70" x="817" y="750" as="geometry" />
         </mxCell>
         <mxCell id="nVaVhRBkELaX6mWcn4OE-5" parent="NOSNqamQ-Jdh2TOBjGmn-1" style="rounded=1;arcSize=3;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#94a3b8;dashed=1;verticalAlign=top;align=left;spacingLeft=10;spacingTop=4;fontSize=30;fontStyle=0;fontColor=#334155;strokeWidth=2;" value="Servidor Proxmox · nodo único" vertex="1">
@@ -120,6 +120,11 @@
         <mxCell id="nVaVhRBkELaX6mWcn4OE-29" parent="NOSNqamQ-Jdh2TOBjGmn-1" style="image;image=img/lib/clip_art/computers/Virtual_Application_128x128.png;fontSize=30;fontStyle=0;strokeWidth=2;" value="VM-C04 RabbitMQ, shipper y ADOT" vertex="1">
           <mxGeometry height="80" width="80" x="1315.46" y="1169.06" as="geometry" />
         </mxCell>
-      </root>
+      <mxCell id="concepcion-starlink" parent="NOSNqamQ-Jdh2TOBjGmn-1" style="image;html=1;image=img/lib/clip_art/telecommunication/Signal_tower_on_128x128.png;fontSize=30;verticalLabelPosition=bottom;verticalAlign=top;labelWidth=140;whiteSpace=wrap;fontStyle=0;strokeWidth=2;" value="Starlink" vertex="1">
+          <mxGeometry height="80" width="80" x="1300" y="565" as="geometry" />
+        </mxCell><mxCell id="concepcion-starlink-tercer-camino" edge="1" parent="NOSNqamQ-Jdh2TOBjGmn-1" source="concepcion-starlink" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#475569;strokeWidth=2;fontSize=30;labelBackgroundColor=#ffffff;dashed=1;dashPattern=8 5;endArrow=block;endFill=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;fontStyle=0" target="nVaVhRBkELaX6mWcn4OE-3" value="tercer camino">
+          <mxGeometry relative="1" as="geometry">
+          <Array as="points"><mxPoint x="1240" y="605" /><mxPoint x="1240" y="670" /><mxPoint x="852" y="670" /></Array></mxGeometry>
+        </mxCell></root>
     </mxGraphModel>
   </diagram></mxfile>

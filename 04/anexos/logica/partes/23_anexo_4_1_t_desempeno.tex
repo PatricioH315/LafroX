@@ -1,8 +1,8 @@
 \clearpage
-\section*{Anexo 4.1-T --- Desempeño y aceptación lógica}
+\section*{Anexo 4-T --- Desempeño y aceptación lógica}
 \phantomsection
 \label{anx:T}
-\addcontentsline{toc}{section}{Anexo 4.1-T --- Desempeño y aceptación lógica}
+\addcontentsline{toc}{section}{Anexo 4-T --- Desempeño y aceptación lógica}
 Los umbrales se miden sobre la operación percibida y confirmada, no sobre una llamada aislada. La copia de consulta puede responder inmediatamente como información fechada; no confirma stock o crédito. El timeout del adaptador es un límite de protección independiente del tiempo visible al usuario (PUCV, 2026a, cap.~15; PUCV, 2026b, RT-09.01--09.08).
 
 \begin{tablalafrox}{Objetivos y escenarios de desempeño}{tab:aceptacion-desempeno}{F{0.24} F{0.19} Y}{\cab{Operación} & \cab{Objetivo} & \cab{Carga y comprobación}}
@@ -17,8 +17,8 @@ Liberar despachos & 96 salidas 05:30--07:00. & Guías por destino/carga y cambio
 \end{tablalafrox}
 {\footnotesize Fuente: Caso 02, caps.~14--15 y 18; las pruebas son compromisos de ejecución, no resultados obtenidos.\par}
 
-La prueba RT-09.06 usa una carga total de 1,5 $\times$ 14,66 = 21,99 TPS, distribuida por perfil horario y sitio; las tasas por integración se detallan en el Anexo 4.B del Subdocumento 4. El crecimiento de RT-09.03 ensaya tres veces la volumetría inicial sin rediseñar contratos ni identificadores.
+La prueba RT-09.06 usa una carga total de 1,5 $\times$ 14,66 = 21,99 TPS, distribuida por perfil horario y sitio; las tasas por integración se detallan en el Anexo 4-W del Subdocumento 4. El crecimiento de RT-09.03 ensaya tres veces la volumetría inicial sin rediseñar contratos ni identificadores.
 
-Las reservas se serializan por agregado para evitar doble compromiso; los perfiles ERP, reconciliación, EDI y reportes tienen mamparos de concurrencia y colas independientes. Bajo sobrecarga, lectura degrada a copia fechada, escritura permanece pendiente y objetos se transfieren por reanudación. El usuario recibe estado y causal; nunca se descarta una operación confirmada para recuperar velocidad.
+Las reservas se serializan por agregado para evitar doble compromiso; los perfiles ERP, reconciliación, EDI y reportes tienen mamparos de concurrencia y colas independientes. Bajo sobrecarga, lectura degrada a copia fechada, escritura permanece sin confirmar y objetos se transfieren por reanudación. El usuario recibe estado y causal; nunca se descarta una operación confirmada para recuperar velocidad.
 
-AL-PERF-01 incrementa carga en escalones hasta saturación y mide p50/p95/p99, errores, bloqueos de base, edad de cola, WAL, buffer y tiempo de recuperación. El ensayo detiene consumidores no críticos y comprueba que despacho conserva su capacidad reservada. Si el ERP limita primero, se mejora continuidad y presupuesto de emisión, no se presume que más Laravel lo corrige. El informe conserva versión, datos, distribución horaria, curvas, punto de quiebre y operaciones pendientes. Los umbrales de autoscaling y límites de infraestructura se trazan al componente físico; su costo permanece en la oferta económica.
+AL-PERF-01 incrementa carga en escalones hasta saturación y mide p50/p95/p99, errores, bloqueos de base, edad de cola, WAL, buffer y tiempo de recuperación. El ensayo detiene consumidores no críticos y comprueba que despacho conserva su capacidad reservada. Si el ERP limita primero, se mejora continuidad y presupuesto de emisión, no se presume que más Laravel lo corrige. El informe conserva versión, datos, distribución horaria, curvas, punto de quiebre y operaciones sin confirmar. Los umbrales de autoscaling y límites de infraestructura se trazan al componente físico; su costo permanece en la oferta económica.

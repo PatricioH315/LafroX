@@ -1,8 +1,8 @@
-\section*{Anexo 4.1-L --- Decisiones del numeral 16.1}
+\section*{Anexo 4-L --- Decisiones del numeral 16.1}
 \phantomsection
 \label{anx:L}
-\addcontentsline{toc}{section}{Anexo 4.1-L --- Decisiones del numeral 16.1}
-El detalle de decisiones del numeral 16.1 se presenta a continuación.
+\addcontentsline{toc}{section}{Anexo 4-L --- Decisiones del numeral 16.1}
+La tabla conserva el número y la pregunta de cada decisión del numeral 16.1 del caso, la regla o componente propuesto y la validación que corresponde al CLIENTE.
 
 \begin{tablalafrox}{Decisiones de diseño del numeral 16.1}{tab:16-decisiones}{F{0.05} F{0.29} F{0.42} Y}{\cab{Nº} & \cab{Pregunta del caso} & \cab{Regla o componente propuesto} & \cab{Validación}}
 1 & Entrega parcial e indicador de servicio & M6 distingue entregado completo, parcial y no entregado; M10 calcula OTIF por pedido completo y ventana acordada. & Criterio comercial \\
@@ -12,7 +12,7 @@ El detalle de decisiones del numeral 16.1 se presenta a continuación.
 5 & Identidad y sustitución de conductor externo & Portal Transportistas registra vínculo empresa--conductor--turno; OTP inicial y revocación al cambio; M6 conserva autor de cada POD. & Procedimiento transportista \\
 6 & Efectivo y riesgo del dinero en ruta & M7 conserva cobro y rendición individual con causal de diferencia; Puelche define custodia y límite por turno. & Política de Tesorería \\
 7 & Costo de servir y clientes no rentables & M10 calcula costo por entrega con ruta, tiempo, devoluciones y envases; Comercial decide medidas, no el algoritmo. & Criterio comercial \\
-8 & Dos preventistas comprometen el mismo stock & M2 confirma reserva central; M3 deja pendiente el pedido sin conexión y comunica rechazo o sustitución al sincronizar. & Prioridad comercial \\
+8 & Dos preventistas comprometen el mismo stock & M2 confirma reserva central; M3 deja sin confirmar el pedido sin conexión y comunica rechazo o sustitución al sincronizar. & Prioridad comercial \\
 9 & Precio cambia antes del despacho & M3 conserva precio informado y versión de tarifa; una diferencia genera revalidación y aviso antes de confirmar. & Política de precios \\
 10 & Control de envases retornables & M8 registra saldo por cliente, tipo y movimiento con evidencia; se concilia en la rendición. & Modalidad de cargo \\
 11 & Maestro de productos ante cambios del proveedor & M1 ingresa equivalencia GTIN/formato; el maestro autorizado se sincroniza mediante ACL con ERP y preserva historial. & Dueño del maestro \\

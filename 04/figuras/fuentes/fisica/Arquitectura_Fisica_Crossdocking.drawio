@@ -20,14 +20,14 @@
         <mxCell id="c6" parent="1" style="image;html=1;image=img/lib/clip_art/networking/Firewall_02_128x128.png;aspect=fixed;" value="" vertex="1">
           <mxGeometry height="70" width="70" x="340" y="135" as="geometry" />
         </mxCell>
-        <mxCell id="c7" parent="1" style="text;html=1;align=left;verticalAlign=middle;fontSize=30;fontColor=#1e293b;fillColor=#ffffff;whiteSpace=nowrap;spacing=0;" value="Firewall&lt;br&gt;compacto" vertex="1">
-          <mxGeometry height="72" width="146.9" x="418" y="134" as="geometry" />
+        <mxCell id="c7" parent="1" style="text;html=1;align=left;verticalAlign=middle;fontSize=30;fontColor=#1e293b;fillColor=#ffffff;whiteSpace=nowrap;spacing=0;" value="Firewall compacto&lt;br&gt;· par HA" vertex="1">
+          <mxGeometry height="72" width="300" x="418" y="134" as="geometry" />
         </mxCell>
         <mxCell id="c8" parent="1" style="image;html=1;image=img/lib/clip_art/networking/Switch_128x128.png;aspect=fixed;" value="" vertex="1">
           <mxGeometry height="70" width="70" x="340" y="320" as="geometry" />
         </mxCell>
-        <mxCell id="c9" parent="1" style="text;html=1;align=left;verticalAlign=middle;fontSize=30;fontColor=#1e293b;fillColor=#ffffff;whiteSpace=nowrap;spacing=0;" value="Switch&lt;br&gt;compacto" vertex="1">
-          <mxGeometry height="72" width="146.9" x="418" y="319" as="geometry" />
+        <mxCell id="c9" parent="1" style="text;html=1;align=left;verticalAlign=middle;fontSize=30;fontColor=#1e293b;fillColor=#ffffff;whiteSpace=nowrap;spacing=0;" value="Switch industrial a" vertex="1">
+          <mxGeometry height="72" width="300" x="418" y="319" as="geometry" />
         </mxCell>
         <mxCell id="c10" edge="1" parent="1" style="edgeStyle=none;rounded=0;html=1;strokeColor=#475569;strokeWidth=2;endArrow=block;endFill=1;endSize=8;" value="">
           <mxGeometry relative="1" as="geometry">
@@ -79,11 +79,16 @@
           <mxGeometry height="144" width="278.6" x="360.7" y="647" as="geometry" />
         </mxCell>
         <mxCell id="c22" edge="1" parent="1" style="edgeStyle=none;rounded=0;html=1;strokeColor=#475569;strokeWidth=2;endArrow=block;endFill=1;endSize=8;" value="">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="395" y="390" as="sourcePoint" />
-            <mxPoint x="395" y="500" as="targetPoint" />
-          </mxGeometry>
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="300" y="390" /></Array><mxPoint x="375" y="390" as="sourcePoint" /><mxPoint x="300" y="500" as="targetPoint" /></mxGeometry>
         </mxCell>
-      </root>
+      <mxCell id="c23" parent="1" style="image;html=1;image=img/lib/clip_art/networking/Switch_128x128.png;aspect=fixed;" value="" vertex="1">
+          <mxGeometry height="70" width="70" x="340" y="420" as="geometry" />
+        </mxCell><mxCell id="c24" parent="1" style="text;html=1;align=left;verticalAlign=middle;fontSize=30;fontColor=#1e293b;fillColor=#ffffff;whiteSpace=nowrap;spacing=0;" value="Switch industrial b" vertex="1">
+          <mxGeometry height="72" width="300" x="418" y="419" as="geometry" />
+        </mxCell><mxCell id="c25" edge="1" parent="1" style="edgeStyle=none;rounded=0;html=1;strokeColor=#475569;strokeWidth=2;endArrow=block;endFill=1;endSize=8;" value="">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="375" y="230" /><mxPoint x="730" y="230" /><mxPoint x="730" y="405" /><mxPoint x="375" y="405" /></Array><mxPoint x="375" y="205" as="sourcePoint" /><mxPoint x="375" y="420" as="targetPoint" /></mxGeometry>
+        </mxCell><mxCell id="c26" edge="1" parent="1" style="edgeStyle=none;rounded=0;html=1;strokeColor=#475569;strokeWidth=2;endArrow=block;endFill=1;endSize=8;" value="">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="375" y="490" as="sourcePoint" /><mxPoint x="375" y="500" as="targetPoint" /></mxGeometry>
+        </mxCell></root>
     </mxGraphModel>
   </diagram></mxfile>

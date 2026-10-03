@@ -1,12 +1,12 @@
 \clearpage
-\section*{Anexo 4.1-U --- Prueba de entrega, guía y acuses}
+\section*{Anexo 4-U --- Prueba de entrega, guía y acuses}
 \phantomsection
 \label{anx:U}
-\addcontentsline{toc}{section}{Anexo 4.1-U --- Prueba de entrega, guía y acuses}
+\addcontentsline{toc}{section}{Anexo 4-U --- Prueba de entrega, guía y acuses}
 La solución propone tres registros separados: documento tributario emitido por ERP, evidencia operacional capturada por M6 y acuse recibido por el canal del destinatario. El SII exige portar la representación gráfica o impresa del DTE durante traslado; su acuse técnico no acredita por sí solo recepción de mercaderías (Servicio de Impuestos Internos [SII], s.~f.-a). La evidencia móvil tampoco se transforma automáticamente en el recibo legal del destinatario.
 
 \subsection*{Mecanismo de recepción propuesto}
-M5 guarda folio, tipo, emisor, destinatario, versión de carga, documento y hash antes de liberar; el conductor dispone de representación gráfica o impresa conforme al procedimiento tributario. En el local, M6 registra nombre del receptor, identificación según política validada, lugar, hora, cantidades aceptadas/rechazadas y firma manuscrita capturada o alternativa operacional QR/fotografía. La cola cifrada conserva el objeto y su hash; la sincronización vincula la evidencia a entrega y guía.
+M5 solicita la guía al cerrar la carga nocturna mediante \texttt{erp-sync} en VM-04 y guarda folio, tipo, emisor, destinatario, versión de carga, documento y hash antes de liberar; el conductor dispone de representación gráfica o impresa conforme al procedimiento tributario (SII, s.~f.-a). Talca entrega la solicitud por RabbitMQ local; Concepción y los cross-docking la entregan por RabbitMQ local, shipper y la cola FIFO de solicitudes al ERP, que \texttt{erp-sync} consume por salida, y reciben folio y documento por la cola de respuesta del sitio. Si un cambio de carga invalida la guía y no hay camino disponible hasta el ERP de Talca, el camión solo sale con la carga amparada por su guía vigente y el ajuste pasa a la ruta siguiente. En el local, M6 registra nombre del receptor, identificación según política validada, lugar, hora, cantidades aceptadas/rechazadas y firma manuscrita capturada o alternativa operacional QR/fotografía. La cola cifrada conserva el objeto y su hash; la sincronización vincula la evidencia a entrega y guía.
 
 Para un receptor electrónico habilitado se propone recibir su acuse por el mecanismo tributario del ERP o el canal EDI acordado, conservar el XML y su validación e identificar al firmante o emisor autorizado. Para el receptor al que corresponde constancia en representación impresa, se obtiene esa constancia y se conserva copia digital vinculada; no se obliga a una persona natural a poseer firma electrónica avanzada. La diferencia se fundamenta en la interpretación publicada por el SII sobre receptores electrónicos y no obligados (SII, 2018) y en su formato de recibo electrónico (SII, s.~f.-b). Tributación valida el perfil aplicable de cada cliente antes de habilitarlo.
 
@@ -19,6 +19,6 @@ Negativa a firmar & Nombre si disponible, causal y constancia alternativa. & Ent
 Acuse tributario recibido & Origen, XML/constancia, fecha y validación. & Vincular al DTE sin reemplazar el POD. \\
 Resultado incierto & Clave original y último estado conocido. & Consultar antes de reenviar o solicitar otro documento. \\
 \end{tablalafrox}
-{\footnotesize Fuente: diseño lógico M5--M8, RT-16.14 y publicaciones del SII citadas.\par}
+{\footnotesize Fuente: diseño lógico M5--M8, RT-16.14 del caso (PUCV, 2026a, cap.~15, p.~27) y publicaciones del SII citadas.\par}
 
-AL-POD-01 ensaya recepción completa, parcial, persona sustituta, negativa a firmar, falta de señal y objeto alterado. Se acepta cuando cada hecho conserva autor y origen, la guía precede a la salida, el documento no cambia por reenvío y una evidencia operacional insuficiente no se declara acuse tributario. La FAQ del SII sobre contingencia es orientativa y no equivale a autorización para este contribuyente (SII, s.~f.-c); el procedimiento de emisión bajo falla se cierra por AL-DTE-01.
+AL-POD-01 ensaya recepción completa, parcial, persona sustituta, negativa a firmar, falta de señal y objeto alterado. Se acepta cuando cada hecho conserva autor y origen, la guía precede a la salida, un cambio de carga invalida la guía y exige una nueva, el documento no cambia por reenvío y una evidencia operacional insuficiente no se declara acuse tributario. La FAQ del SII sobre contingencia es orientativa y no equivale a autorización para este contribuyente (SII, s.~f.-c); el procedimiento de emisión bajo falla se cierra por AL-DTE-01.

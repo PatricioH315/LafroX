@@ -5,9 +5,9 @@ RT-02.11 exige identificar las dependencias singulares que subsisten y justifica
 
 \begin{tablalafrox}{Dependencias singulares y riesgo residual}{tab:spof}{F{0.21} F{0.26} F{0.27} Y}{\cab{Dependencia} & \cab{Efecto si falla} & \cab{Continuidad prevista} & \cab{Aceptación}}
 Identidad central & No hay altas ni revocación remota. & Asignaciones vigentes y servicio local. & Prueba de relevo 24 h. \\
-ERP y emisión DTE & No se confirma nueva guía. & Se conserva trabajo preparado; salida afectada se bloquea. & Contingencia tributaria validada. \\
-Maestro bodega Talca & Se pierde consolidación y reserva global. & Cada sitio opera localmente y reconcilia. & Conflicto de stock declarado. \\
-SII y pasarela de pago & No hay respuesta en línea. & Reintento y cobro alternativo aprobado. & Pendiente no equivale a aprobado. \\
+ERP y emisión DTE & Se retrasa una nueva guía. & Preemisión nocturna y ERP por tres caminos; la salida sin guía válida se bloquea. & AL-DTE-01 con 96 salidas. \\
+Consolidación central de stock & La reserva central queda fechada. & Cada sitio opera localmente y preventa captura pedidos sujetos a validación. & Conciliación de eventos por sitio. \\
+SII y pasarela de pago & No hay respuesta en línea. & Reintento y cobro alternativo aprobado. & Sin confirmar no equivale a aprobado. \\
 Planificador experto & Faltan decisiones ante excepciones. & Reglas de M4 y suplente capacitado. & Prueba antes de su retiro. \\
 \end{tablalafrox}
 
@@ -15,5 +15,5 @@ Planificador experto & Faltan decisiones ante excepciones. & Reglas de M4 y supl
 
 Las dependencias externas conservan riesgo residual que exige prueba o contingencia aprobada.
 
-La dependencia del ERP y del SII no es aceptable para un nuevo despacho sin el mecanismo tributario de contingencia acordado. El riesgo de identidad local tampoco se declara cerrado antes de probar cada relevo de turno durante un corte de 24 horas. El emplazamiento y la redundancia física se verifican en 4.2.
+El ERP permanece como único emisor ante el SII mediante fibra, LTE y satélite de Talca; un cambio de carga invalida la guía preemitida y exige una nueva. El riesgo de identidad local tampoco se declara cerrado antes de probar cada relevo de turno durante un corte de 24 horas. El emplazamiento y la redundancia física se verifican en 4.2.
 

@@ -1,24 +1,24 @@
-\section*{Anexo 4.1-H --- Catálogo de interfaces externas}
+\section*{Anexo 4-H --- Catálogo de interfaces externas}
 \phantomsection
 \label{anx:H}
-\addcontentsline{toc}{section}{Anexo 4.1-H --- Catálogo de interfaces externas}
-El detalle de catálogo de interfaces externas se presenta a continuación.
+\addcontentsline{toc}{section}{Anexo 4-H --- Catálogo de interfaces externas}
+La tabla identifica, para cada integración con terceros, el dueño interno, el contrato y la respuesta ante falla; las fichas que siguen completan modo, volumen, ventana y tiempo de espera.
 
-\begin{tablalafrox}{Integraciones externas y respuesta ante falla}{tab:catalogo-externas}{F{0.09} F{0.27} F{0.18} F{0.24} Y}{\cab{ID} & \cab{Tercero} & \cab{Dueño interno} & \cab{Contrato} & \cab{Falla}}
-INT-06 & ERP 2017 & ACL/M7 & Adaptador versionado. & Cola; sin escritura directa. \\
-INT-07 & Emisor DTE del ERP y SII & ACL/M5 & Guía y estado tributario. & Bloquear nueva salida afectada. \\
-INT-08 & Cadenas modernas & M11 & Perfil EDI por cadena. & Bandeja y aviso acordado. \\
-INT-09 & Pasarela de pago & M7 & Autorización con clave única. & Efectivo o crédito aprobado. \\
-INT-10 & Mapas y geocodificación & M4 & API proveedor. & Ruta precargada. \\
-INT-11 & Avisos al cliente & Trabajador Laravel de notificaciones & SNS o API del proveedor de notificaciones. & Reintento por canal acordado. \\
-INT-15 & Telemetría existente & M12 & API de solo lectura. & Ruta planificada sin posición. \\
+\begin{tablalafrox}{Integraciones externas y respuesta ante falla}{tab:catalogo-externas}{F{0.11} F{0.25} F{0.18} F{0.24} Y}{\cab{ID} & \cab{Tercero} & \cab{Dueño interno} & \cab{Contrato} & \cab{Falla}}
+\mbox{INT-06} & ERP 2017 & ACL/M7 & Adaptador versionado. & Cola; sin escritura directa. \\
+\mbox{INT-07} & Emisor DTE del ERP y SII & ACL/M5 & Guía y estado tributario. & Bloquear nueva salida afectada. \\
+\mbox{INT-08} & Cadenas modernas & M11 & Perfil EDI por cadena. & Bandeja y aviso acordado. \\
+\mbox{INT-09} & Pasarela de pago & M7 & Autorización con clave única. & Efectivo o crédito aprobado. \\
+\mbox{INT-10} & Mapas y geocodificación & M4 & API proveedor. & Ruta precargada. \\
+\mbox{INT-11} & Avisos al cliente & Trabajador Laravel de notificaciones & SNS o API del proveedor de notificaciones. & Reintento por canal acordado. \\
+\mbox{INT-15} & Telemetría existente & M12 & API de solo lectura. & Ruta planificada sin posición. \\
 \end{tablalafrox}
 
 {\footnotesize Fuente: elaboración propia de LafroX a partir de Caso 02 y Bases Técnicas Transversales, RT-05.\par}
 
 % Fichas del Anexo H.
 \subsection*{Condiciones de servicio de las contrapartes}
-Las ventanas siguientes expresan la disponibilidad que requiere Puelche. El catálogo no atribuye un SLA no acreditado al ERP, SII, cadenas ni proveedores. Antes de habilitar cada integración se incorporarán al contrato su horario efectivo, mantenimientos, cuotas y escalamiento; una ventana inferior a la requerida se trata como brecha de aceptación. Los timeouts son parámetros iniciales del adaptador, sujetos a ensayo y al contrato de contraparte.
+Las ventanas siguientes expresan la disponibilidad que requiere Puelche. El catálogo no atribuye un SLA no acreditado al ERP, SII, cadenas ni proveedores. Antes de habilitar cada integración se incorporarán al contrato su horario efectivo, mantenimientos, cuotas y escalamiento; una ventana inferior a la requerida exige ajuste contractual u operativo. Los timeouts son parámetros iniciales del adaptador, sujetos a ensayo y al contrato de contraparte.
 
 \paragraph{INT-06. ERP 2017 --- ACL/M7.}
 Modo asíncrono para intercambio de negocio; consulta síncrona de estado cuando una escritura queda incierta. Volumen normal/peak: 2.025/3.762 mensajes/día, calculados con los flujos diarios y equivalentes de 22,14 días; peak con factor 1,857. Contraparte requerida 24$\times$7, especialmente preparación 22:00--06:00 y despacho 05:30--07:00. Timeout de 10 segundos por llamada. Ante lentitud se abre cortacircuito, se conserva la solicitud y se prioriza despacho; ante respuesta perdida se consulta por clave externa antes de repetir. Un error funcional va a excepción. No se escribe directamente en tablas del ERP.
@@ -27,7 +27,7 @@ Modo asíncrono para intercambio de negocio; consulta síncrona de estado cuando
 Modo síncrono para conocer el resultado documental antes de liberar salida, con seguimiento asíncrono de estados. Volumen normal/peak: 3.071/5.703 mensajes/día, con factor de septiembre 1,857. Polling y reintentos se miden aparte. Contrapartes: emisor ERP y su canal SII; se requiere servicio durante preparación y disponibilidad sin interrupción para las 96 salidas de 05:30--07:00. Timeout de llamada: 10 segundos, sin equiparar timeout a rechazo o autorización. Resultado incierto obliga a consultar la misma solicitud. La cola no habilita salida sin documento; se aplica el control y el protocolo AL-DTE-01. El ERP sigue siendo el único emisor.
 
 \paragraph{INT-08. Cadenas del canal moderno --- M11.}
-Modo asíncrono EDI; el MDN es acuse de transporte, separado de la respuesta comercial. Escenario 2029: 0/1.144 mensajes/día (2.600 × 11\,\% $	imes$ 4 intercambios). Contraparte requerida 24$\times$7, con cortes de recepción y ventanas de entrega específicos de cada cadena, que deben figurar en su acuerdo. Timeout inicial de transporte: 30 segundos; MDN asíncrono esperado en 15 minutos como umbral de alerta propuesto, no SLA de la cadena. OpenAS2 conserva identificador y evidencia; M11 deduplica, valida equivalencias y deriva rechazo funcional a bandeja. Una entrega técnica no confirma el pedido ni permite superar su hora de corte.
+Modo asíncrono EDI; el MDN es acuse de transporte, separado de la respuesta comercial. Escenario 2029: 0/1.144 mensajes/día (2.600 × 11\,\% × 4 intercambios). Contraparte requerida 24$\times$7, con cortes de recepción y ventanas de entrega específicos de cada cadena, que deben figurar en su acuerdo. Timeout inicial de transporte: 30 segundos; MDN asíncrono esperado en 15 minutos como umbral de alerta propuesto, no SLA de la cadena. OpenAS2 conserva identificador y evidencia; M11 deduplica, valida equivalencias y deriva rechazo funcional a bandeja. Una entrega técnica no confirma el pedido ni permite superar su hora de corte.
 
 \paragraph{INT-09. Pasarela de pago --- M7.}
 Modo síncrono. Volumen normal/peak: 533/990 autorizaciones/día, con factor de septiembre 1,857. Contraparte requerida 24$\times$7, cubriendo el turno de reparto de hasta 14 horas. Timeout de 10 segundos. Si el resultado es incierto, se consulta por la misma clave antes de volver a cobrar. Sin respuesta no se registra autorización; se ofrece efectivo o crédito previamente aprobado según política del CLIENTE. Se concilia el resultado tardío para evitar cobro duplicado.

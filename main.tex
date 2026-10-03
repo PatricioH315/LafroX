@@ -20,6 +20,10 @@
 \patchcmd{\portadalafrox}{\LFXcampoportada{Versión}{\LFXversion}}{\LFXcampoportada{Documento}{4}}{}{}
 \patchcmd{\LFXpieizquierdo}{\textperiodcentered\ v\LFXversion}{}{}{}
 \graphicspath{{04/}}
+% Numeración corrida de tablas y figuras en todo el subdocumento.
+\counterwithout{table}{chapter}
+\counterwithout{figure}{chapter}
+
 \makeatletter
 % Los rótulos originales de 4.3 requieren una columna más ancha en las listas.
 \renewcommand*{\l@table}{\@dottedtocline{1}{0pt}{5em}}

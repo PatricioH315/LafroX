@@ -1,15 +1,15 @@
-\section*{Anexo 4.1-D --- Matriz de los doce módulos}
+\section*{Anexo 4-D --- Matriz de los doce módulos}
 \phantomsection
 \label{anx:D}
-\addcontentsline{toc}{section}{Anexo 4.1-D --- Matriz de los doce módulos}
-El detalle de matriz de los doce módulos se presenta a continuación.
+\addcontentsline{toc}{section}{Anexo 4-D --- Matriz de los doce módulos}
+La matriz asigna a cada módulo su requisito funcional, su responsabilidad, su interfaz principal, su actor y la etapa en que entra en producción.
 
 \begin{tablalafrox}{Módulos, responsabilidades e interlocutores}{tab:modulos-funcionales}{F{0.18} F{0.23} F{0.24} F{0.23} Y}{\cab{Módulo / RF} & \cab{Responsabilidad} & \cab{Interfaz principal} & \cab{Actor principal} & \cab{Etapa}}
 M1 Recepción / RF-01 & Lote y recepción GS1. & Evento a M2; ACL con ERP. & Recepcionista; proveedor. & 1 \\
-M2 Inventario / RF-02 & Stock, reserva y FEFO. & Consulta de M3/M5. & Jefatura de bodega. & 1 \\
-M3 Preventa / RF-03 & Pedido y precio informado. & Reserva en M2; sincronización. & Preventista. & 1 \\
+M2 Inventario / RF-02 & Movimientos por sitio, reserva central y FEFO. & Consulta de M3/M5. & Jefatura de bodega. & 1 \\
+M3 Preventa / RF-03 & Pedido y precio informado de preventa y autoatención. & Reserva en M2; sincronización. & Preventista; cliente. & 1 \\
 M4 Rutas / RF-04 & Secuencia y restricciones. & Ruta aprobada a M6. & Planificador. & 1 \\
-M5 Preparación / RF-05 & Misión y carga confirmada. & Evento a M6; guía vía ACL. & Preparador; jefatura. & 1 \\
+M5 Preparación / RF-05 & Misión y carga confirmada. & Guía nocturna vía \texttt{erp-sync} y ACL en VM-04. & Preparador; jefatura. & 1 \\
 M6 Reparto / RF-06 & Entrega y POD. & Evento a M7/M8. & Conductor propio o externo. & 1 \\
 M7 Rendición / RF-07 & Cobro y descuadre. & ACL al ERP; evento a M10. & Conductor; Tesorería. & 1 \\
 M8 Devoluciones / RF-08 & Retorno y saldo de envases. & Evento a M2/M7. & Conductor; bodega. & 1 \\

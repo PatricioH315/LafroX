@@ -1,15 +1,15 @@
-\section*{Anexo 4.1-F --- Mapa de límites de contexto}
+\section*{Anexo 4-F --- Mapa de límites de contexto}
 \phantomsection
 \label{anx:F}
-\addcontentsline{toc}{section}{Anexo 4.1-F --- Mapa de límites de contexto}
-El detalle de mapa de límites de contexto se presenta a continuación.
+\addcontentsline{toc}{section}{Anexo 4-F --- Mapa de límites de contexto}
+El mapa indica, para cada módulo, el tipo de relación con sus interlocutores, el contrato que intercambian y el límite que impide invadir una decisión ajena.
 
 \begin{tablalafrox}{Mapa de límites de contexto}{tab:context-mapping}{F{0.17} F{0.20} F{0.27} F{0.22} Y}{\cab{Dueño} & \cab{Relación} & \cab{Interlocutor} & \cab{Contrato} & \cab{Límite}}
 M1 Recepción & Traducción por ACL & ERP 2017 & Recepción validada. & ERP no escribe lote. \\
-M2 Inventario & Servicio publicado & M3, M4 y M5 & Consulta y reserva. & M2 decide stock. \\
+M2 Inventario & Servicio publicado & M3, M4 y M5 & Consulta y reserva. & Cada sitio decide movimientos; N-04/N-05 consolida. \\
 M3 Preventa & Cliente de M2 & M2 y M7 & Pedido y sincronización. & No aprueba crédito local. \\
 M4 Rutas & Adapta fuente & M3, M6 y GIS & Ruta aprobada. & GIS no decide ruta. \\
-M5 Preparación & Proveedor de evento & M2, M6 y ACL & Misión preparada. & No emite guía. \\
+M5 Preparación & Proveedor de evento & M2, M6 y ACL & Misión preparada. & ERP emite guía por \texttt{erp-sync} local. \\
 M6 Reparto & Proveedor de evento & M4, M7 y M8 & Entrega registrada. & No liquida cobro. \\
 M7 Rendición & Traducción por ACL & M6 y ERP & Rendición aprobada. & ERP sigue tributario. \\
 M8 Devoluciones & Lenguaje publicado & M2 y M7 & Devolución y envase. & No ajusta DTE. \\

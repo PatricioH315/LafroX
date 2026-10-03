@@ -1,8 +1,8 @@
-\section*{Anexo 4.1-C --- Escenarios de carga masiva}
+\section*{Anexo 4-C --- Escenarios de carga masiva}
 \phantomsection
 \label{anx:C}
-\addcontentsline{toc}{section}{Anexo 4.1-C --- Escenarios de carga masiva}
-El detalle de escenarios de carga masiva se presenta a continuación.
+\addcontentsline{toc}{section}{Anexo 4-C --- Escenarios de carga masiva}
+La tabla distingue los escenarios de carga y descarga masiva por su mecanismo y por el control que deja auditable cada lote.
 
 \begin{tablalafrox}{Escenarios de carga y descarga masiva (RT-05.22)}{tab:carga-masiva}{F{0.24} F{0.34} Y}{\cab{Escenario} & \cab{Mecanismo} & \cab{Control y auditoría}}
 Carga inicial maestros/históricos (ERP, WMS) & ETL por lotes, inserción idempotente por UUID, ventana sin operación & Conteo previo/posterior por lote, conciliación totales, bitácora carga (quién, cuándo, lote, resultado); rechazados $\rightarrow$ cuarentena + reproceso \\

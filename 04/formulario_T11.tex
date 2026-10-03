@@ -6,8 +6,8 @@
 %%
 %%  Formulario T-11: Especificaciones técnicas ofertadas. Archivo propio, separado
 %%  del Subdocumento 4 (aclaraciones, sección 1: un formulario por archivo).
-%%  Se compila por sí solo:  latexmk LAFROX-Formulario-T-11.tex
-%%  El cuerpo está en 04_arquitectura_fisica/partes/15_anexo_t11.tex.
+%%  Se compila con compilar.ps1 en la raíz del proyecto.
+%%  El cuerpo está en formularios/T11/15_anexo_t11.tex.
 %%
 %%  Columnas oficiales (Bases Administrativas, Formulario T-11): Componente |
 %%  Producto / servicio ofertado | Ubicación / Lugar | Cantidad | Justificación.
@@ -31,14 +31,19 @@
   alcance    = {Subdocumento 4 --- Arquitectura lógica y física de la solución},
   formulario = {Formulario T-11},
   fecha      = 05 de octubre de 2026,
-  version    = 2.0,
+  version    = {},
+  nomenclatura = {LAFROX-Formulario-T-11.pdf},
 }
+\usepackage{etoolbox}
+\renewcommand{\LFXestadodoc}{Entrega 2}
+\patchcmd{\portadalafrox}{\LFXcampoportada{Versión}{\LFXversion}}{\LFXcampoportada{Documento}{Formulario T-11}}{}{}
+\patchcmd{\LFXpieizquierdo}{\textperiodcentered\ v\LFXversion}{}{}{}
 
 \begin{document}
 \portadalafrox
 
-% El cuerpo del formulario vive en 04_arquitectura_fisica/partes/15_anexo_t11.tex,
-% que también se incluye al final del subdocumento (main.tex). Se edita solo ahí.
+% El cuerpo del formulario vive en formularios/T11/15_anexo_t11.tex y se compila solo
+% en este archivo propio (aclaraciones, sección 1). Se edita solo ahí.
 \input{formularios/T11/15_anexo_t11}
 
 \end{document}

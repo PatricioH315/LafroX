@@ -1,8 +1,8 @@
 \clearpage
-\section*{Anexo 4.1-P --- Tecnologías, soporte y actualización}
+\section*{Anexo 4-P --- Tecnologías, soporte y actualización}
 \phantomsection
 \label{anx:P}
-\addcontentsline{toc}{section}{Anexo 4.1-P --- Tecnologías, soporte y actualización}
+\addcontentsline{toc}{section}{Anexo 4-P --- Tecnologías, soporte y actualización}
 El inventario distingue versión de referencia de una imagen exacta de producción. Cada liberación fija parches, hashes y compatibilidad en los archivos de bloqueo y SBOM; las versiones futuras se aprueban mediante pruebas antes de promoverse. La hoja de ruta cubre los 56 meses mediante actualizaciones, no suponiendo soporte de una misma versión durante todo el contrato (PUCV, 2026b, numeral 1.6).
 
 \begin{tablalafrox}{Ciclo de soporte del núcleo lógico}{tab:soporte-logico}{F{0.16} F{0.15} F{0.23} Y}{\cab{Producto} & \cab{Referencia} & \cab{Fin de soporte publicado} & \cab{Plan de actualización}}
@@ -20,7 +20,7 @@ Laravel, PHP, PostgreSQL y Angular tienen horizontes inferiores al contrato: el 
 \begin{tablalafrox}{Inventario complementario y control de vigencia}{tab:inventario-software}{F{0.23} F{0.23} Y}{\cab{Componente} & \cab{Línea base lógica} & \cab{Control durante 56 meses}}
 PostGIS & 3.x compatible con PostgreSQL 16. & Compatibilidad y fin de soporte de la distribución registrados antes de liberar. \\
 Kotlin/Android & Rama estable compatible con parque Zebra. & Matriz OS, SDK y periféricos por modelo; MDM impide OS fuera de soporte. \\
-Room/SQLite & Versión estable de AndroidX Room y SQLite incorporada. & Parches fijados por Gradle; migración de cola sin perder pendientes. \\
+Room/SQLite & Versión estable de AndroidX Room y SQLite incorporada. & Parches fijados por Gradle; migración de cola sin perder registros sin confirmar. \\
 Keycloak & 26.x, parche soportado al liberar. & Revisión trimestral del ciclo oficial; migrar junto al adaptador OIDC. \\
 Tailwind/Node/RxJS & Versiones compatibles con Angular y su toolchain. & Archivo de bloqueo y matriz de compatibilidad; Node solo construye el cliente. \\
 Composer/PHPUnit/PHPStan/Pint & Versiones compatibles con PHP 8.5 y Laravel 13. & Composer lock, análisis de licencia, audit y regresión; no entran herramientas de prueba al runtime. \\
@@ -31,12 +31,14 @@ Terraform/Ansible & Versiones estables y providers fijados. & Terraform gobierna
 Servicios AWS & API/engine gestionados declarados por servicio. & Avisos de retiro trimestrales; prueba de adaptación. Aurora conserva versión de engine y fecha de soporte del proveedor. \\
 MDM/Android Enterprise & Servicio y plan compatibles con el parque. & Contrato de soporte y actualización de dispositivos durante todo el período. \\
 \end{tablalafrox}
-{\footnotesize Fuente: decisiones de arquitectura lógica y política de configuración de la propuesta. No se inventan fechas que un proveedor no publica.\par}
+{\footnotesize Fuente: decisiones de arquitectura lógica y política de configuración de la propuesta.\par}
 
 El fin de soporte no publicado se registra como \emph{no publicado}, con responsable y frecuencia de revisión; no significa soporte indefinido. Antes de aprobar una dependencia se verifica licencia, mantenimiento, vulnerabilidades y alternativa de sustitución (RT-11.26). La ficha de liberación identifica versión exacta, EOL conocido o política aplicable, prueba, rollback y responsable. La aceptación rechaza una imagen fuera de soporte.
 
-Las alternativas se evalúan por operación offline, integración industrial, transacciones, geografía, carga del equipo y reversibilidad. PostgreSQL/PostGIS se selecciona frente a MariaDB por el dominio espacial; Angular se conserva frente a cambiar la plataforma web por sus contratos y componentes existentes; Kotlin se selecciona frente a una capa móvil adicional por validación del parque; Keycloak mantiene identidad propia frente a delegar el dominio de autorizaciones a un IdP propietario. Las herramientas de construcción no cambian esos contratos. Los criterios concretos se verifican en ADR-01/04/06/07/13 y el Anexo T.
+Las alternativas se evalúan por operación offline, integración industrial, transacciones, geografía, carga del equipo y reversibilidad. PostgreSQL/PostGIS se selecciona frente a MariaDB por el dominio espacial; Angular se conserva frente a cambiar la plataforma web por sus contratos y componentes existentes; Kotlin se selecciona frente a una capa móvil adicional por validación del parque; Keycloak mantiene identidad propia frente a delegar el dominio de autorizaciones a un IdP propietario. Las herramientas de construcción no cambian esos contratos. Los criterios concretos se verifican en ADR-04/06/07/20/21 y el Anexo 4-T.
 \subsection*{Implementación compatible del backend}
+
+La tabla relaciona cada capacidad del backend con su implementación en Laravel/PHP y con la comprobación que acredita su equivalencia.
 \begin{tablalafrox}{Implementación lógica del backend Laravel}{tab:mapeo-laravel}{F{0.27} F{0.35} Y}{\cab{Capacidad} & \cab{Implementación Laravel/PHP} & \cab{Comprobación}}
 APIs y módulos & Rutas y controladores Laravel; servicios por contexto PSR-4. & Contratos OpenAPI y límites de módulo. \\
 Persistencia y geografía & PDO/Query Builder y SQL PostGIS parametrizado; migraciones Laravel basales. & Datos, índices y consultas espaciales equivalentes. \\

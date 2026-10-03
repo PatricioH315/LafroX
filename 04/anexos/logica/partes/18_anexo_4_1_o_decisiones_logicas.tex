@@ -1,42 +1,315 @@
 \clearpage
-\section*{Anexo 4.1-O --- Decisiones de arquitectura lógica}
+\section*{Anexo 4-O --- Registro de decisiones de arquitectura}
 \phantomsection
 \label{anx:O}
-\addcontentsline{toc}{section}{Anexo 4.1-O --- Decisiones de arquitectura lógica}
-Las fichas tienen fecha de decisión documental 30 de septiembre de 2026 y estado \emph{adoptada en la propuesta}. Ese estado no acredita aprobación del CLIENTE ni ejecución de la prueba. Los identificadores existentes se conservan; las fichas ADR-01, 05, 06, 13 y 14 sustituyen para la vista lógica las formulaciones incompatibles del registro anterior. La realización física debe cotejar esos identificadores antes del cierre integrado (PUCV, 2026b, RT-02.04).
+\addcontentsline{toc}{section}{Anexo 4-O --- Registro de decisiones de arquitectura}
 
-\subsection*{ADR-01. Núcleo y límites de módulo}
-La decisión es Laravel 13/PHP 8.5 con M1--M12, puertos de dominio y perfiles API, WMS local y trabajadores separados. Se descartan microservicios por módulo por su carga de administración para cuatro personas y un monolito sin fronteras por impedir aislamiento; Django es viable, pero conservar ambos runtimes duplicaría dependencias y operación. El criterio es poder desplegar los procesos críticos de forma independiente sin duplicar el dominio. Se exige prueba de dependencias entre módulos, contratos y promoción de un trabajador sin interrumpir WMS. Un proceso comparte artefacto, no permisos ni memoria durable.
+El registro reúne las decisiones de arquitectura lógica y física conforme a RT-02.04 (PUCV, 2026b, cap. 2). Cada ficha identifica la alternativa descartada, el criterio de selección y la evidencia necesaria para verificar su realización. Los RT de las fichas remiten a las Bases Técnicas Transversales (PUCV, 2026b), salvo RT-10.05 y RT-16.14, precisados por el caso (PUCV, 2026a, cap.~15, p.~27).
 
-\subsection*{ADR-04. Persistencia por responsabilidad}
-Se selecciona PostgreSQL/PostGIS para transacciones y geografía, DynamoDB para ingesta raw y S3/Redshift para consolidación analítica. Se descartan un único almacén para operación y análisis por competencia con picking, y un motor adicional de series por mayor operación. El criterio es conservar autoridad transaccional por sitio y permitir consulta analítica sin escribir stock. La consecuencia es reconciliar por contratos, no por doble escritura. La prueba comprueba propietarios, consultas espaciales y que un tablero no acceda al OLTP.
+\subsection*{ADR-01. Estilo arquitectónico}
+\label{sub:adr-01}
+\textbf{Decisión adoptada.} Laravel 13/PHP 8.5 organiza M1--M12 en un monolito modular con perfiles de ejecución separados.
 
-\subsection*{ADR-05. Mensajes canónicos y trabajos internos}
-Se seleccionan outbox y RabbitMQ local, shipper hacia SQS FIFO y consumidor PHP de JSON versionado. Los trabajos serializados de Laravel usan colas separadas; SNS difunde avisos. Se descartan broker solo en nube por perder continuidad del sitio y Kafka por complejidad no justificada. Cada partición tiene orden y cada consumidor deduplica por sitio y UUID. El acuse del broker no equivale a resultado de negocio. La prueba interrumpe publicación, persistencia y acuse y demuestra una sola consecuencia.
+\textbf{Alternativas evaluadas.} Microservicios por módulo multiplican despliegues y operación; un monolito sin límites permite dependencias cruzadas.
 
-\subsection*{ADR-06. Identidad y relevo local}
-Keycloak mantiene la autoridad central. La caché descriptiva local dura 24 horas; el manifiesto firmado cubre 26 horas y se renueva cada hora; la autorización personal dura 8 horas en bodega o 14 en terreno. El verificador local valida persona, PIN, dispositivo, sitio y turno. Se descartan cuentas compartidas, caché que emite identidades y dependencia exclusiva del IdP remoto. La prueba AL-OFF-01 incluye relevos a las 8 y 16 horas, reloj, revocación al reconectar y reinicio. El riesgo de revocación remota durante aislamiento se limita por expiración y bloqueo conocido localmente.
+\textbf{Criterio de selección.} Límites de dominio comprobables con el equipo de operación disponible.
 
-\subsection*{ADR-07. Movilidad}
-Kotlin nativo con Room y periféricos Zebra conserva captura cifrada y evidencia. Se descartan PWA como único cliente de campo y una capa multiplataforma sin validación de periféricos. El criterio es escaneo con guantes, acceso a termógrafo/POS e interacción de una mano. La selección no atribuye inferioridad universal a Flutter; se verifica con el parque del caso y pruebas a $-22\,^\circ$C, lluvia y sin señal.
+\textbf{Consecuencias.} Los módulos comparten artefacto y publican contratos; API, WMS y trabajadores tienen procesos y permisos propios. Los servicios de negocio no conservan estado de sesión en sus procesos.
 
-\subsection*{ADR-08. Sustitución del WMS}
-M1/M2/M5 sustituyen el WMS 2013 en Etapa 1 mediante olas por sitio y capacidad. Mantener el legado indefinidamente arrastra falta de soporte; reemplazarlo simultáneamente eleva el riesgo de corte. La reversión requiere un único escritor, conciliación de pendientes y esquema compatible; no se promete volver a una base antigua con eventos nuevos sin transformar. La aceptación comprueba stock, lote y misiones antes y después de una reversión.
+\textbf{Evidencia exigida.} Prueba de dependencias, contratos y promoción de un trabajador sin interrumpir el WMS.
 
-\subsection*{ADR-11. EDI y frontera ERP}
-M11 traduce EANCOM/GS1 XML mediante perfiles por cadena; OpenAS2 conserva transporte, firma y MDN. El ERP se alcanza solo por ACL. Se descartan conectores directos de cada módulo al ERP y equivalencias dispersas por pantalla. El criterio es incorporar cadenas por configuración sin cambiar el pedido de M3. Se ensayan mensaje repetido, código desconocido, MDN perdido y rechazo comercial. M11 entra en Etapa 2.
+\textbf{Requisitos que la sustentan.} RT-02.02, RT-02.04, RT-02.05; Caso, equipo TI.
 
-\subsection*{ADR-12. Aislamiento y capacidad}
-API, WMS local, reconciliación, ERP-sync, EDI y notificaciones tienen procesos, concurrencia, permisos y colas propios. Se descarta escalar un único proceso para absorber IoT y guías a la vez. Los mamparos reservan capacidad para despacho y limitan consumidores no críticos. El Anexo T define respuesta, carga de ensayo y recuperación; los límites cuantitativos de instancias y su emplazamiento se acreditan en 4.2. La prueba mide bloqueo de base y edad de cola además de CPU.
+\subsection*{ADR-02. Conectividad WAN (tres caminos)}
+\label{sub:adr-02}
+\textbf{Decisión adoptada.} Talca y Concepción usan fibra y LTE con Starlink fijo como tercer camino en espera caliente: el terminal permanece encendido, el túnel IPsec establecido y BGP con menor preferencia, y solo toma tráfico si fallan ambos caminos terrestres. En los cross-docking Starlink es el camino principal, con LTE de dos proveedores como respaldo.
 
-\subsection*{ADR-13. Publicación y autorización}
-Se selecciona Amazon API Gateway REST API con authorizer REQUEST que verifica JWT de Keycloak; la integración privada utiliza VPC Link V2 hacia ALB. Se descarta tratar HTTP API y REST API como intercambiables sin verificar validación y cuotas, y un gateway propio por carga de operación. La validación básica de Gateway se complementa en Laravel con esquema completo y políticas por recurso. La decisión se sustenta en la documentación de AWS sobre validación, authorizers e integración privada (Amazon Web Services [AWS], s.~f.-a, s.~f.-b, s.~f.-c). Se ensayan firma, emisor, audiencia, expiración, alcance, cuerpo no admitido y acceso directo al origen.
+\textbf{Alternativas evaluadas.} Fibra y LTE solos comparten amenazas terrestres; apagar el terminal satelital obliga a adquirir satélites durante varios minutos y a negociar el túnel en plena falla.
+
+\textbf{Criterio de selección.} Extracción continua y separación de dominios de falla con conmutación automática.
+
+\textbf{Consecuencias.} Al fallar fibra y LTE, el satélite de los CD prioriza DMS/WAL de Talca, salida del broker y outbox, guías hacia el ERP y el SII, identidad y telemetría crítica; la oficina cede capacidad. Talca lo alimenta con UPS y generador y Concepción con UPS. La tarifa plana no aumenta por mantener encendido el terminal.
+
+\textbf{Evidencia exigida.} Inyección de fallas por camino y medición de retraso, conmutación y RPO en AL-DR-01.
+
+\textbf{Requisitos que la sustentan.} RT-03.10, RT-07.04; Caso, continuidad de sitios.
+
+\subsection*{ADR-03. Modelo híbrido y topología de sitios}
+\label{sub:adr-03}
+\textbf{Decisión adoptada.} Cada sitio conserva autoridad sobre sus movimientos con el mismo perfil \texttt{wms\_only}; N-04/N-05 consolidan stock y reservas en la nube.
+
+\textbf{Alternativas evaluadas.} Una autoridad única en Talca crea dependencia WAN; un perfil reducido en cross-docking fragmenta reglas y despliegue.
+
+\textbf{Criterio de selección.} Autonomía de 24 horas y una regla de bodega común.
+
+\textbf{Consecuencias.} Las transferencias se registran como despacho y recepción, conciliadas por eventos idempotentes en nube.
+
+\textbf{Evidencia exigida.} Corte de Talca y de WAN por sitio con operación local y conciliación de transferencias.
+
+\textbf{Requisitos que la sustentan.} RT-02.12, RT-03.10; Caso, cinco sitios operativos.
+
+\subsection*{ADR-04. Persistencia políglota}
+\label{sub:adr-04}
+\textbf{Decisión adoptada.} PostgreSQL/PostGIS conserva transacciones y geografía; DynamoDB recibe telemetría y S3/Redshift soportan analítica.
+
+\textbf{Alternativas evaluadas.} Un almacén único hace competir analítica y despacho; un motor adicional de series aumenta operación.
+
+\textbf{Criterio de selección.} Propiedad transaccional por dominio y consultas analíticas desacopladas.
+
+\textbf{Consecuencias.} Los contratos de eventos alimentan vistas sin doble escritura de stock; el estado de sesión y de proceso reside en almacenes externos de alta disponibilidad.
+
+\textbf{Evidencia exigida.} Consultas espaciales, trazabilidad de propietarios y ensayo de carga sin consultas BI al OLTP.
+
+\textbf{Requisitos que la sustentan.} RT-02.05, RT-09.06; Caso, rutas y cadena de frío.
+
+\subsection*{ADR-05. Mensajería asíncrona}
+\label{sub:adr-05}
+\textbf{Decisión adoptada.} Outbox y RabbitMQ local publican sobres JSON versionados en SQS FIFO; los trabajos Laravel usan colas separadas.
+
+\textbf{Alternativas evaluadas.} Broker solo en nube interrumpe el sitio; Kafka local añade administración desproporcionada.
+
+\textbf{Criterio de selección.} Persistencia de 24 horas, orden por grupo e idempotencia de negocio.
+
+\textbf{Consecuencias.} Los sitios inician conexiones salientes; solo DMS inicia desde nube hacia VM-02 por IPsec, con regla nominada y auditoría.
+
+\textbf{Evidencia exigida.} Ensayo de corte, duplicado, desorden y acuse tras persistir; inspección de reglas de red.
+
+\textbf{Requisitos que la sustentan.} RT-02.06, RT-02.07 y RT-03.10.
+
+\subsection*{ADR-06. Identidad híbrida}
+\label{sub:adr-06}
+\textbf{Decisión adoptada.} Keycloak es autoridad central y cada sitio verifica manifiestos firmados y PIN local para relevos sin WAN.
+
+\textbf{Alternativas evaluadas.} IdP solo nube impide nuevos relevos; directorio maestro local duplica autoridad.
+
+\textbf{Criterio de selección.} Acceso personal durante 24 horas sin crear un segundo emisor de identidades.
+
+\textbf{Consecuencias.} La caché local es de solo lectura; la revocación remota se aplica al reconectar y los permisos expiran por turno.
+
+\textbf{Evidencia exigida.} AL-OFF-01 ensaya dos relevos, dispositivo, vencimiento, reinicio y reconexión.
+
+\textbf{Requisitos que la sustentan.} RT-03.10, RT-12.01 y RT-12.11.
+
+\subsection*{ADR-07. Movilidad de terreno}
+\label{sub:adr-07}
+\textbf{Decisión adoptada.} Kotlin Android nativo con Room y periféricos Zebra conserva capturas cifradas durante el turno.
+
+\textbf{Alternativas evaluadas.} PWA no garantiza integración industrial y offline completo; Flutter añade una capa de validación de periféricos.
+
+\textbf{Criterio de selección.} Escaneo, impresión y captura fiables en frío y sin señal.
+
+\textbf{Consecuencias.} Se mantiene un artefacto para preventa, reparto y picking con perfiles de permiso; inventario, configuración, actualizaciones y bloqueo de dispositivos se administran remotamente.
+
+\textbf{Evidencia exigida.} Ensayo de 14 horas sin señal, sincronización, periféricos y operación a $-22\,^\circ$C.
+
+\textbf{Requisitos que la sustentan.} RT-03.10, RT-03.18; Caso, parque móvil.
+
+\subsection*{ADR-08. Destino del WMS 2013}
+\label{sub:adr-08}
+\textbf{Decisión adoptada.} M1/M2/M5 reemplazan el WMS 2013 por olas y un único escritor por operación.
+
+\textbf{Alternativas evaluadas.} Mantener el legado prolonga falta de soporte; cambio simultáneo de todos los sitios eleva el riesgo de corte.
+
+\textbf{Criterio de selección.} Funciones FEFO, GS1 y continuidad con reversión controlada.
+
+\textbf{Consecuencias.} Cada ola reconcilia operaciones sin confirmar y verifica compatibilidad de esquema antes de cambiar el escritor.
+
+\textbf{Evidencia exigida.} Prueba de stock, lote y preparación antes y después de la reversión.
+
+\textbf{Requisitos que la sustentan.} Caso, WMS 2013 y continuidad de las bodegas.
+
+\subsection*{ADR-09. Estrategia de recuperación ante desastres}
+\label{sub:adr-09}
+\textbf{Decisión adoptada.} Aurora Global Database protege la región; el WMS de Talca se recupera en ECS Fargate sobre su copia en Aurora. ECR replica las imágenes entre regiones y la infraestructura como código crea en la secundaria las colas SQS FIFO, SQS y SNS equivalentes, inicialmente vacías.
+
+\textbf{Alternativas evaluadas.} Concepción como DR de Talca consume su capacidad y mantiene amenaza terrestre; restauración fría no alcanza cuatro horas.
+
+\textbf{Criterio de selección.} RTO $\leq$ 4 horas y RPO $\leq$ 15 minutos con dominios de falla separados.
+
+\textbf{Consecuencias.} Talca habilita la copia para escritura al detener DMS; terminales acceden por VPN y el retorno invierte la réplica tras reconstruir VM-02. La conmutación redirige los shippers y \texttt{erp-sync} a las colas de la región secundaria sin depender de la primaria.
+
+\textbf{Evidencia exigida.} AL-DR-01 recupera Talca en nube y ensaya promoción regional, escritura y retorno.
+
+\textbf{Requisitos que la sustentan.} RT-07.04; Caso, continuidad.
+
+\subsection*{ADR-10. Plataforma on-premise: virtualización y almacenamiento}
+\label{sub:adr-10}
+\textbf{Decisión adoptada.} Talca usa tres nodos Proxmox de 16 núcleos y 64 GB cada uno, arranque M.2 en RAID 1, dos NVMe Ceph por nodo sin RAID y doble fuente; Ceph usa réplica \texttt{size}=3, \texttt{min\_size}=2 y tres monitores. El NAS tiene doble fuente, RAID 6 y WORM.
+
+\textbf{Alternativas evaluadas.} Ceph sobre RAID 10 duplica protección y reduce capacidad; un almacenamiento sin quórum pierde tolerancia a nodo.
+
+\textbf{Criterio de selección.} Capacidad y quórum N+1 con demanda del Anexo 4-W.
+
+\textbf{Consecuencias.} Se reservan recursos de OSD y monitor; seis OSD ofrecen cerca de 1,92 TB útiles y unos 1,5 TB al 80\% de llenado. Concepción usa RAID 10 y doble fuente; E-01 y sus switches tienen alimentación redundante.
+
+\textbf{Evidencia exigida.} Prueba de pérdida de nodo, reconstrucción, latencia y carga de cientos de IOPS a 3$\times$ frente a decenas de miles de IOPS de NVMe.
+
+\textbf{Requisitos que la sustentan.} RT-07.04, RT-08.03, RT-08.04; Anexo 4-W.
+
+\subsection*{ADR-11. Integración B2B/EDI}
+\label{sub:adr-11}
+\textbf{Decisión adoptada.} M11 traduce EANCOM/GS1 XML y EPCIS por cadena; OpenAS2 gestiona firma, cifrado y MDN; ERP se alcanza por ACL.
+
+\textbf{Alternativas evaluadas.} Punto a punto por cadena duplica adaptadores; delegar EDI al ERP expone su frontera.
+
+\textbf{Criterio de selección.} Contratos GS1 y aislamiento del emisor tributario.
+
+\textbf{Consecuencias.} Los perfiles de cadena se versionan y las excepciones quedan trazables.
+
+\textbf{Evidencia exigida.} Interoperabilidad por cadena con TLS 1.3, certificados, MDN y rechazo comercial.
+
+\textbf{Requisitos que la sustentan.} RT-11.08, RF-12.03, RF-12.06; Caso, canal moderno.
+
+\subsection*{ADR-12. Capacidad y peak}
+\label{sub:adr-12}
+\textbf{Decisión adoptada.} Aurora mantiene capacidad fija dimensionada para 3$\times$, sin escalado automático; Fargate escala la API de 2 a 4 tareas en los casos base y a 7 en la sensibilidad de 91,70 solicitudes/s, bajo el techo de 8. El consumidor y los trabajos de notificaciones y EDI escalan de 2 a 4 tareas por perfil.
+
+\textbf{Alternativas evaluadas.} Cambiar Aurora de large a xlarge en septiembre introduce intervención en congelamiento; un proceso único comparte saturación entre perfiles.
+
+\textbf{Criterio de selección.} Capacidad probada antes del peak y mamparos de concurrencia.
+
+\textbf{Consecuencias.} Los perfiles tienen colas, conexiones y cuotas separadas; no se interviene del 1 al 25 de septiembre.
+
+\textbf{Evidencia exigida.} Carga de 3$\times$ y sensibilidad de 91,70 solicitudes/s con medición de PHP-FPM, tareas API, conexiones, bloqueo de base y edad de colas.
+
+\textbf{Requisitos que la sustentan.} RT-09.03, RT-09.06; Caso, peak de septiembre.
+
+\subsection*{ADR-13. Puerta de enlace de servicios}
+\label{sub:adr-13}
+\textbf{Decisión adoptada.} API Gateway REST publica entradas pública y privada con autorizador JWT Keycloak y VPC Link hacia ALB. La puerta de API local A-01 de cada sitio valida esquema, tasa, UUID y permisos, y registra auditoría sin WAN.
+
+\textbf{Alternativas evaluadas.} Gateway propio agrega operación; HTTP API no cubre la validación y entrada privada requeridas.
+
+\textbf{Criterio de selección.} Identidad y validación en puerta, con autorización de recurso en Laravel.
+
+\textbf{Consecuencias.} El origen público directo y la API privada fuera del endpoint autorizado se deniegan; la puerta local conserva los controles de entrada durante el aislamiento.
+
+\textbf{Evidencia exigida.} Prueba de JWT, cuota, esquema, origen y endpoint privado, más validación local de tasa, UUID, permisos y auditoría durante un corte WAN.
+
+\textbf{Requisitos que la sustentan.} RT-11.07 y RT-11.11.
 
 \subsection*{ADR-14. Observabilidad}
-OpenTelemetry y ADOT exportan a una plataforma CloudWatch con correlación de transacción; alarmas locales y buffer de 24 horas sostienen el sitio. Se descarta una segunda plataforma editorial de tableros por instalación y una alarma que dependa de WAN para detener una carga. El criterio es una operación común, sin convertir el diagnóstico en dueño de negocio. Los destinos, muestreo, retención y permisos se versionan; auditoría de negocio nunca se descarta para conservar una traza. La prueba reconstruye el recorrido de un UUID después del corte.
+\label{sub:adr-14}
+\textbf{Decisión adoptada.} OpenTelemetry y ADOT exportan métricas, registros y trazas a CloudWatch con buffer local de 24 horas.
 
-\subsection*{ADR-L01. Liberación documental}
-M5 solicita la guía al ERP con clave por despacho y versión de carga. Se descartan emisión sustituta en Laravel, reintento ciego y autorización genérica del supervisor. La evidencia válida se guarda localmente antes de liberar. Se propone continuidad del emisor ERP con su mecanismo de emisión y custodia existente o una contingencia autorizada y documentada; la ACL consulta ese mismo emisor, sin duplicarlo. La elección concreta requiere validación de Tributación y responsable del ERP. AL-DTE-01 verifica cambios tardíos y las 96 salidas; el Anexo V registra la decisión del CLIENTE requerida.
+\textbf{Alternativas evaluadas.} Dos plataformas aumentan soporte; tablero solo remoto deja sin alarma al sitio aislado.
 
-\subsection*{ADR-L02. Protección fuera del sitio}
-Toda transacción crítica confirmada localmente conserva secuencia y marca de agua de protección externa. Se exige copia durable fuera del dominio de falla con retraso máximo de 15 minutos en el escenario cubierto; la selección de medios es física. Se descarta declarar RPO cumplido mediante WAL o RabbitMQ del mismo sitio. Si todos los caminos de extracción fallan y el origen se destruye, no existe solución de software que recupere datos nunca enviados. La continuidad local se mantiene y el riesgo se escala por AL-BR-01 sin suspender implícitamente escrituras ni rebajar RT-07.04. AL-DR-01 comprueba el escenario y la decisión formal aplicable.
+\textbf{Criterio de selección.} Correlación de extremo a extremo y una plataforma operable por el equipo.
+
+\textbf{Consecuencias.} Las alarmas locales actúan durante el corte y el UUID se conserva al reenviar telemetría.
+
+\textbf{Evidencia exigida.} Reconstrucción de una transacción tras corte y prueba de capacidad del buffer.
+
+\textbf{Requisitos que la sustentan.} RT-03.16; Art. 16.4.
+
+\subsection*{ADR-15. Gestión de secretos}
+\label{sub:adr-15}
+\textbf{Decisión adoptada.} Secrets Manager custodia credenciales y certificados rotables; Parameter Store conserva configuración no sensible.
+
+\textbf{Alternativas evaluadas.} Vault autoadministrado añade desellado y operación; archivos locales carecen de custodia central.
+
+\textbf{Criterio de selección.} Rotación auditable con separación de funciones.
+
+\textbf{Consecuencias.} KMS cifra secretos y una cuenta de emergencia queda bajo doble custodia fuera de línea.
+
+\textbf{Evidencia exigida.} Prueba de rotación, denegación de acceso y uso auditado de contingencia.
+
+\textbf{Requisitos que la sustentan.} RT-04.09, RT-11.09 y RT-12.13.
+
+\subsection*{ADR-16. Acceso de personas internas y remotas}
+\label{sub:adr-16}
+\textbf{Decisión adoptada.} Verified Access protege consolas con Keycloak MFA y postura del dispositivo.
+
+\textbf{Alternativas evaluadas.} Client VPN concede acceso de red más amplio; VPN de sitio no cubre personas remotas.
+
+\textbf{Criterio de selección.} Acceso por aplicación condicionado a identidad y postura.
+
+\textbf{Consecuencias.} La consola y la API privada permanecen fuera de internet público.
+
+\textbf{Evidencia exigida.} Prueba desde oficina y remoto con postura válida e inválida.
+
+\textbf{Requisitos que la sustentan.} RT-03.22, RT-11.01, RT-12.03.
+
+\subsection*{ADR-17. Emisión de guías y liberación documental}
+\label{sub:adr-17}
+\textbf{Decisión adoptada.} Dos procesos \texttt{erp-sync} en VM-04 junto a la ACL consumen RabbitMQ de Talca y, por salida, la cola FIFO de solicitudes al ERP; las respuestas vuelven a cada sitio por su cola FIFO; el ERP emite ante SII por tres caminos.
+
+\textbf{Alternativas evaluadas.} Trabajador solo en nube pierde la solicitud local sin WAN; emisión sustituta en Laravel duplica autoridad tributaria.
+
+\textbf{Criterio de selección.} Guía válida antes de liberar cada camión sin conexión entrante desde nube.
+
+\textbf{Consecuencias.} La guía se preemite al cerrar carga nocturna; cambiar carga invalida la guía y exige nueva emisión, que requiere un camino de Talca y, fuera de Talca, también uno del sitio. Si no hay camino hasta el ERP, el camión sale solo con la carga amparada por su guía vigente y el ajuste pasa a la ruta siguiente.
+
+\textbf{Evidencia exigida.} AL-DTE-01 ensaya 96 salidas, caída de fibra y LTE, cambio de carga, folio y acuse.
+
+\textbf{Requisitos que la sustentan.} RT-10.05 y RT-16.14 del caso (PUCV, 2026a, cap.~15, p.~27); RF-07.09; Caso, 96 camiones.
+
+\subsection*{ADR-18. Protección de datos fuera del sitio}
+\label{sub:adr-18}
+\textbf{Decisión adoptada.} La extracción continua de DMS/WAL y outbox por fibra, LTE y satélite sostiene RPO $\leq$ 15 minutos en los CD.
+
+\textbf{Alternativas evaluadas.} Retención solo en WAL o RabbitMQ local no protege la pérdida del sitio; dos caminos terrestres comparten falla.
+
+\textbf{Criterio de selección.} Tres medios con dominios de falla distintos y confirmación durable externa.
+
+\textbf{Consecuencias.} Se alerta a los 5 y 15 minutos; la autonomía local permanece y el límite residual se justifica en 4.3.2.
+
+\textbf{Evidencia exigida.} AL-DR-01 mide puntos consistentes y recupera el WMS de Talca en nube con los tres caminos ensayados.
+
+\textbf{Requisitos que la sustentan.} RT-07.04 y RT-03.10.
+
+\subsection*{ADR-19. Residencia de datos y regiones}
+\label{sub:adr-19}
+\textbf{Decisión adoptada.} La región primaria es sa-east-1 y la secundaria us-east-1, ambas transferencias internacionales sujetas a aprobación del CLIENTE.
+
+\textbf{Alternativas evaluadas.} Restringir la propuesta a una sola región impide recuperación regional; replicar todas las categorías excede minimización.
+
+\textbf{Criterio de selección.} Continuidad con base de licitud, minimización y control contractual.
+
+\textbf{Consecuencias.} AWS actúa como encargado bajo contrato con cláusulas tipo para la Ley N.\textdegree{} 21.719 (Ley N.\textdegree{} 21.719, 2024); el CLIENTE administra KMS, cifra datos en reposo y tránsito, audita accesos, excluye la geolocalización de personas de la réplica secundaria y copia la analítica en forma diferida. Si el CLIENTE no aprueba Estados Unidos por estar fuera de Sudamérica, el parámetro de región secundaria de la infraestructura como código se cambia a otra región AWS aprobada que ofrezca Aurora Global Database, DynamoDB Global Tables, replicación de S3, ECS Fargate y AWS Backup; se conservan la arquitectura, el RTO y el RPO. Las categorías no críticas restringidas a la región primaria reciben copias inmutables en otra cuenta.
+
+\textbf{Evidencia exigida.} Contrato de encargo, registro de tratamiento, aprobación de residencia y prueba de exclusiones y recuperación.
+
+\textbf{Requisitos que la sustentan.} Art. 23 de las Bases Administrativas (PUCV, 2026c, art. 23); Ley N.\textdegree{} 21.719; RT-07.04.
+
+\subsection*{ADR-20. Frontend web}
+\label{sub:adr-20}
+\textbf{Decisión adoptada.} Angular con TypeScript y Tailwind sirve portales y consolas con contratos publicados. El Portal de Clientes se publica además como aplicación web progresiva instalable, que es el perfil de autoatención con operación desconectada exigido por el caso.
+
+\textbf{Alternativas evaluadas.} React ofrece composición flexible pero exige elegir más piezas de estado y navegación; Vue exige otra cadena de componentes y soporte. Un cuarto perfil del cliente en la aplicación Kotlin exigiría enrolar teléfonos de clientes en el MDM corporativo y mezclar su identidad con la de los turnos de trabajadores.
+
+\textbf{Criterio de selección.} Uniformidad de componentes, contratos y mantenimiento del equipo, con separación entre las herramientas de trabajadores y de clientes.
+
+\textbf{Consecuencias.} El portal usa OIDC y autorización por recurso; se actualizan dependencias durante el contrato. Sin señal, el portal instalado solo consulta lo descargado y arma el pedido; la confirmación espera la recepción en M3. El canal es opcional y no altera la atención por preventista.
+
+\textbf{Evidencia exigida.} Prueba de accesibilidad, contratos, autenticación y promoción del mismo artefacto, más AL-CLI-01 del Anexo 4-M.
+
+\textbf{Requisitos que la sustentan.} RT-16.30 y RT-17.01 del caso (PUCV, 2026a, cap.~15, p.~27); restricción 5 del caso.
+
+\subsection*{ADR-21. Infraestructura como código y cadena de entrega}
+\label{sub:adr-21}
+\textbf{Decisión adoptada.} Terraform y Ansible administran infraestructura y hosts; GitLab CI y CodeBuild construyen y promueven artefactos firmados.
+
+\textbf{Alternativas evaluadas.} CloudFormation/CDK exige otra cadena para los hosts locales y aumenta el esfuerzo de portabilidad; CodePipeline/GitHub Actions dispersa las puertas del repositorio GitLab.
+
+\textbf{Criterio de selección.} Propiedad única de recursos, construcción reproducible y trazabilidad de aprobación.
+
+\textbf{Consecuencias.} Estados por ambiente, revisión de planes y puertas de seguridad preceden la promoción.
+
+\textbf{Evidencia exigida.} Recreación de ambiente, plan sin deriva, SBOM, firma y reversión de despliegue.
+
+\textbf{Requisitos que la sustentan.} RT-04.03--04.05.
+
+\subsection*{ADR-22. Cadena de frío en el borde}
+\label{sub:adr-22}
+\textbf{Decisión adoptada.} Greengrass en gateways industriales lee Modbus, bloquea despacho local y conserva lecturas durante 24 horas.
+
+\textbf{Alternativas evaluadas.} Lectura directa a nube depende de WAN; lectura en PLC mezcla control industrial con reglas de despacho y dificulta auditoría.
+
+\textbf{Criterio de selección.} Bloqueo en menos de cinco segundos y evidencia durante aislamiento.
+
+\textbf{Consecuencias.} Dos gateways cubren cámaras de Talca y uno Concepción; el módulo M9 mantiene la decisión de liberación.
+
+\textbf{Evidencia exigida.} Inyección de excursión térmica, corte WAN, reinicio y reconciliación de lecturas.
+
+\textbf{Requisitos que la sustentan.} RT-03.10; Caso, cadena de frío.

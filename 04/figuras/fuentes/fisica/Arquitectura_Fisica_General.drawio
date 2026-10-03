@@ -482,14 +482,14 @@
         <mxCell id="es24zZQMtdsAxR5ngH_v-123" parent="1" style="shape=image;html=1;image=img/lib/clip_art/networking/Firewall_02_128x128.png;aspect=fixed;fontSize=34;" value="" vertex="1">
           <mxGeometry height="70" width="70" x="1840" y="2040.0" as="geometry" />
         </mxCell>
-        <mxCell id="es24zZQMtdsAxR5ngH_v-124" parent="1" style="shape=text;strokeColor=none;fillColor=#ffffff;html=1;align=center;verticalAlign=middle;fontSize=42;fontColor=#1e293b;whiteSpace=nowrap;" value="Firewall" vertex="1">
-          <mxGeometry height="41.5" width="141.4" x="1804.3" y="1994.5" as="geometry" />
+        <mxCell id="es24zZQMtdsAxR5ngH_v-124" parent="1" style="shape=text;strokeColor=none;fillColor=#ffffff;html=1;align=center;verticalAlign=middle;fontSize=42;fontColor=#1e293b;whiteSpace=nowrap;" value="Firewall&lt;br&gt;par HA" vertex="1">
+          <mxGeometry height="83" width="160" x="1795" y="1953" as="geometry" />
         </mxCell>
         <mxCell id="es24zZQMtdsAxR5ngH_v-125" parent="1" style="shape=image;html=1;image=img/lib/clip_art/networking/Switch_128x128.png;aspect=fixed;fontSize=34;" value="" vertex="1">
           <mxGeometry height="70" width="70" x="2050" y="2040.0" as="geometry" />
         </mxCell>
-        <mxCell id="es24zZQMtdsAxR5ngH_v-126" parent="1" style="shape=text;strokeColor=none;fillColor=#ffffff;html=1;align=center;verticalAlign=middle;fontSize=42;fontColor=#1e293b;whiteSpace=nowrap;" value="Switch" vertex="1">
-          <mxGeometry height="41.5" width="114.2" x="2027.9" y="1994.5" as="geometry" />
+        <mxCell id="es24zZQMtdsAxR5ngH_v-126" parent="1" style="shape=text;strokeColor=none;fillColor=#ffffff;html=1;align=center;verticalAlign=middle;fontSize=42;fontColor=#1e293b;whiteSpace=nowrap;" value="Switches&lt;br&gt;de núcleo" vertex="1">
+          <mxGeometry height="83" width="220" x="1965" y="1953" as="geometry" />
         </mxCell>
         <mxCell id="es24zZQMtdsAxR5ngH_v-127" parent="1" style="shape=image;html=1;image=img/lib/clip_art/computers/Server_Rack_128x128.png;aspect=fixed;fontSize=34;" value="" vertex="1">
           <mxGeometry height="70" width="70" x="2290" y="2040.0" as="geometry" />
@@ -518,8 +518,8 @@
         <mxCell id="es24zZQMtdsAxR5ngH_v-135" parent="1" style="shape=image;html=1;image=img/lib/clip_art/networking/Switch_128x128.png;aspect=fixed;fontSize=34;" value="" vertex="1">
           <mxGeometry height="70" width="70" x="3140" y="2040.0" as="geometry" />
         </mxCell>
-        <mxCell id="es24zZQMtdsAxR5ngH_v-136" parent="1" style="shape=text;strokeColor=none;fillColor=#ffffff;html=1;align=center;verticalAlign=middle;fontSize=42;fontColor=#1e293b;whiteSpace=nowrap;" value="Switch" vertex="1">
-          <mxGeometry height="41.5" width="114.2" x="3117.9" y="1994.5" as="geometry" />
+        <mxCell id="es24zZQMtdsAxR5ngH_v-136" parent="1" style="shape=text;strokeColor=none;fillColor=#ffffff;html=1;align=center;verticalAlign=middle;fontSize=42;fontColor=#1e293b;whiteSpace=nowrap;" value="Switches" vertex="1">
+          <mxGeometry height="41.5" width="175" x="3088" y="1994.5" as="geometry" />
         </mxCell>
         <mxCell id="es24zZQMtdsAxR5ngH_v-137" parent="1" style="shape=image;html=1;image=img/lib/clip_art/computers/Virtual_Machine_128x128.png;aspect=fixed;fontSize=34;" value="" vertex="1">
           <mxGeometry height="70" width="70" x="3390.0" y="2040.0" as="geometry" />
@@ -554,6 +554,10 @@
         <mxCell id="iaqhurnfso6lWWyAJNsG-1" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#C925D1;strokeColor=#ffffff;dashed=0;html=1;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.aurora;aspect=fixed;fontSize=37;strokeWidth=3;" value="" vertex="1">
           <mxGeometry height="70" width="70" x="2010" y="1614" as="geometry" />
         </mxCell>
-      </root>
+      <mxCell id="general-talca-starlink" parent="1" style="shape=text;strokeColor=none;fillColor=#ffffff;html=1;align=center;verticalAlign=middle;fontSize=42;fontColor=#1e293b;whiteSpace=nowrap;" value="Starlink" vertex="1">
+          <mxGeometry height="48" width="197.9" x="806" y="2113" as="geometry" />
+        </mxCell><mxCell id="general-concepcion-starlink" parent="1" style="shape=text;strokeColor=none;fillColor=#ffffff;html=1;align=center;verticalAlign=middle;fontSize=42;fontColor=#1e293b;whiteSpace=nowrap;" value="Starlink" vertex="1">
+          <mxGeometry height="48" width="197.9" x="1776" y="2113" as="geometry" />
+        </mxCell></root>
     </mxGraphModel>
   </diagram></mxfile>
