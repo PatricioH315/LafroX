@@ -1,4 +1,12 @@
-# Manifiesto de conversión del Subdocumento 4.1
+# LafroX — Procedencia histórica y versión vigente
+
+La versión vigente fue sincronizada el 3 de octubre de 2026 desde `rama-latex`, commit `732a9d6688569bf981594c2e21c47a167b8f8ba7`. Sus fuentes, transformaciones y huellas están en el [Manifiesto de alineación](../MANIFIESTO_ALINEACION.md).
+
+## Registro histórico de importación
+
+El registro que sigue conserva la evidencia de la importación anterior. Sus commits, conteos, hashes y descripciones corresponden a esa versión histórica; no describen el contenido vigente después de la alineación.
+
+## Manifiesto de conversión del Subdocumento 4.1
 
 Fecha: 1 de octubre de 2026.
 
@@ -7,7 +15,7 @@ Fecha: 1 de octubre de 2026.
 - Fuente lógica: `arquitectura-alvaro`, commit [`e55133c2f91806af03f393776256a2feea23faa7`](https://github.com/PatricioH315/LafroX/commit/e55133c2f91806af03f393776256a2feea23faa7).
 - Alcance autorizado: incorporación íntegra de arquitectura lógica en Markdown; sin importar arquitectura física ni modificar capítulos 1–3.
 
-## Reglas de conversión
+### Reglas de conversión
 
 Se leyeron los ensambladores y todos sus fragmentos en el orden editorial original: 24 del cuerpo y 26 de anexos. No se utilizó el Markdown previo como autoridad, porque contenía errores de numeración y referencias. Las decisiones, supuestos, requisitos, versiones, pendientes y limitaciones conservan el contenido de la fuente; esta conversión no acredita aprobación ni resuelve diferencias con otros capítulos.
 
@@ -17,7 +25,7 @@ El checkout conserva exclusivamente archivos Markdown, siguiendo el formato de A
 
 El contenido heredado de Alex-MD permanece intacto. Las referencias existentes a 4.2, 4.3 y otros capítulos ausentes se mantienen como dependencias documentales, sin atribuirles contenido disponible. La física y los centros de datos no forman parte de esta incorporación. La discrepancia de numeración del capítulo 3 señalada por el Anexo N se conserva; cotejarla con Alex-MD requerirá una revisión posterior autorizada.
 
-## Inventario de fuentes
+### Inventario de fuentes
 
 | Fuente fijada al commit | Destino | SHA-256 original |
 | --- | --- | --- |
@@ -74,7 +82,7 @@ El contenido heredado de Alex-MD permanece intacto. Las referencias existentes a
 | [16_referencias.tex](https://github.com/PatricioH315/LafroX/blob/e55133c2f91806af03f393776256a2feea23faa7/04_arquitectura/entrega_2/latex/04_arquitectura_logica/anexos/partes/16_referencias.tex) | Anexos 4.1 | `79a1ddca44a54d4c502f69d1a0e2a42ed60eba20045de074f8397d151d58aaf5` |
 | [17_declaracion_de_uso_de_ia.tex](https://github.com/PatricioH315/LafroX/blob/e55133c2f91806af03f393776256a2feea23faa7/04_arquitectura/entrega_2/latex/04_arquitectura_logica/anexos/partes/17_declaracion_de_uso_de_ia.tex) | Anexos 4.1 | `dd1ad08664a0b6b78e936baebf821caec1dfc0bf0f0c50347088ff0a97255c6e` |
 
-## Figuras originales
+### Figuras originales
 
 | Identificador | Fuente original | SHA-256 |
 | --- | --- | --- |
@@ -93,7 +101,7 @@ El contenido heredado de Alex-MD permanece intacto. Las referencias existentes a
 | Figura 4.13 | [ARQL-28_Recorte_Observabilidad.png](https://github.com/PatricioH315/LafroX/blob/e55133c2f91806af03f393776256a2feea23faa7/Diagramas/arquitectura_logica_actual/capas_recortes/ARQL-28_Recorte_Observabilidad.png) | `1dd730e504119ce4b2033c4c5aad2ecf4b3414e4132d31bb8597bd093a332e09` |
 | Figura 4.14 | [ARQL-18_Dominio_trazabilidad.png](https://github.com/PatricioH315/LafroX/blob/e55133c2f91806af03f393776256a2feea23faa7/Diagramas/arquitectura_logica_actual/ARQL-18_Dominio_trazabilidad.png) | `80df9386a41229d5b8c7fd734025bc64621893701c7b1ce69cb055de86d27f2e` |
 
-## Verificación de conversión
+### Verificación de conversión
 
 - 24 fragmentos de cuerpo y 26 fragmentos de anexos procesados.
 - 22 anexos A–V incluidos.

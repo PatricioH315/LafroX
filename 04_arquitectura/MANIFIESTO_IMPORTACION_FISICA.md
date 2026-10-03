@@ -1,4 +1,12 @@
-# Procedencia de Markdown físico
+# LafroX — Procedencia histórica y versión vigente
+
+La versión vigente fue sincronizada el 3 de octubre de 2026 desde `rama-latex`, commit `732a9d6688569bf981594c2e21c47a167b8f8ba7`. Sus fuentes, transformaciones y huellas están en el [Manifiesto de alineación](MANIFIESTO_ALINEACION.md).
+
+## Registro histórico de importación
+
+El registro que sigue conserva la evidencia de la importación anterior. Sus commits, conteos, hashes y descripciones corresponden a esa versión histórica; no describen el contenido vigente después de la alineación.
+
+## Procedencia de Markdown físico
 
 Importado de rama-latex, commit `95ed2c9a1cc20aa7ad9f3ebbe03cafa0e1e1259c`, el 1 de octubre de 2026.
 

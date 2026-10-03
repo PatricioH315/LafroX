@@ -1,26 +1,27 @@
-# LafroX — Subdocumento 4
+# LafroX — Subdocumento 4 alineado
 
-Esta carpeta amplía el contenido heredado de `Alex-MD` con la arquitectura lógica del apartado 4.1. La ampliación fue solicitada expresamente por el usuario el 1 de octubre de 2026 para trabajar en una nueva rama llamada `alvaro-md`.
+Versión Markdown del contenido ensamblado de `rama-latex`, commit `732a9d6688569bf981594c2e21c47a167b8f8ba7`, sincronizada el 3 de octubre de 2026 en `alvaro-md`.
 
-## Contenido incorporado
+| Entrega | Documento |
+| --- | --- |
+| Cuerpo 4.1–4.3 y cierre común | [LAFROX-Subdocumento4.md](LAFROX-Subdocumento4.md) |
+| Anexos 4-A–4-W | [LAFROX-Subdocumento4-Anexos.md](LAFROX-Subdocumento4-Anexos.md) |
+| Formulario independiente | [LAFROX-Formulario-T-11.md](LAFROX-Formulario-T-11.md) |
 
-- [Arquitectura lógica: cuerpo completo del Subdocumento 4.1](<logica 4.1/LAFROX-Subdocumento4.1.md>).
-- [Anexos 4.1-A a 4.1-V e índice trazable](<logica 4.1/LAFROX-Subdocumento4.1-Anexos.md>).
-- [Manifiesto de conversión, fuentes y huellas SHA-256](<logica 4.1/MANIFIESTO.md>).
-- [Contexto de trabajo de esta incorporación](CONTEXTO_SESION.md).
-- [Arquitectura física, centros de datos y complementos importados de rama-latex](MD_4.2_2.3/README.md).
-- [Procedencia y huellas de la importación física](MANIFIESTO_IMPORTACION_FISICA.md).
+El registro único ADR-01–ADR-22 está en el Anexo 4-O; el resumen permanece en 4.1.11. La memoria es el Anexo 4-W. T-11 y memoria no se duplican en el cuerpo. Los tres documentos conservan la redacción, cifras, supuestos y limitaciones de la fuente.
 
-El cuerpo y los anexos lógicos se mantienen separados, siguiendo la organización de las carpetas 01, 02 y 03 de Alex-MD. Se incorporó además la carpeta `MD_4.2_2.3` desde `rama-latex`, commit `95ed2c9a1cc20aa7ad9f3ebbe03cafa0e1e1259c`, con sus 15 Markdown: física, centros de datos, ADR, referencias, T-11 y memoria de cálculo. Se conservan la organización y el contenido de origen, ajustando únicamente enlaces externos. No se fusiona ni armoniza la lógica con la física en esta operación.
+## Partes y mantenimiento
 
-## Procedencia y compatibilidad
+- [Cuerpo lógico](<logica 4.1/LAFROX-Subdocumento4.1.md>).
+- [Bloque lógico de anexos](<logica 4.1/LAFROX-Subdocumento4.1-Anexos.md>).
+- [Partes de física, centros de datos y complementos](MD_4.2_2.3/README.md).
+- [Referencias comunes](partes_cierre/referencias.md) y [declaración de IA del cuerpo](partes_cierre/declaracion_de_uso_de_ia.md).
+- [Referencias de anexos](anexos_cierre/16_referencias.md) y [declaración de IA de anexos](anexos_cierre/17_declaracion_de_uso_de_ia.md).
 
-La rama `alvaro-md` se creó desde `Alex-MD`, commit `09ace4cea5b96ca641368c56996367ff7f26ea50`. El contenido lógico se convirtió desde `arquitectura-alvaro`, commit `e55133c2f91806af03f393776256a2feea23faa7`, leyendo el ensamblador LaTeX y sus 50 fragmentos de cuerpo y anexos. Se conserva el texto técnico, incluidos sus supuestos, decisiones y pendientes; la conversión no constituye una nueva auditoría de cumplimiento.
+Las partes permiten revisar el contenido por sección; los documentos canónicos son el ensamblado generado de las mismas conversiones. Cualquier edición posterior requiere actualizar la parte correspondiente y regenerar o cotejar el consolidado. No mantener revisiones técnicas diferentes entre ambos formatos.
 
-Todos los archivos añadidos son Markdown. Los capítulos 1, 2 y 3, las Bases y los archivos compartidos heredados permanecen intactos para facilitar un futuro merge con Alex-MD. Las instrucciones y manifiestos propios de 4.1 se guardan aquí y no sustituyen los de la raíz.
+Las figuras usan enlaces fijados al commit vigente. Los cuatro diagramas TikZ se representan mediante un enlace al fuente y una transcripción de rótulos. No se incorporan binarios ni se recrean figuras. Los enlaces a figuras requieren acceso a GitHub; la conversión no acredita legibilidad de una entrega PDF.
 
-Las 14 figuras se identifican mediante enlaces a los originales fijados al commit de origen, junto con sus títulos, fuentes y explicaciones de lectura. No se sustituyen los diagramas ni los recortes aprobados por dibujos nuevos. Consultarlos requiere acceso a GitHub; no se incorporan binarios al checkout Markdown.
+[Manifiesto de fuentes, huellas y comprobaciones](MANIFIESTO_ALINEACION.md) · [Informe de verificación](VERIFICACION_ALINEACION.md) · [Discrepancias conservadas de la fuente](DISCREPANCIAS_FUENTE.md) · [Contexto de sesión](CONTEXTO_SESION.md).
 
-## Navegación
-
-El índice del cuerpo permite recorrer sus apartados; el catálogo de anexos enlaza los 22 anexos y mantiene sus requisitos asociados. Los números de página propios del PDF se reemplazan por enlaces a secciones. Los apartados Referencias y Declaración de uso de IA se conservan en ambos documentos.
+Las importaciones anteriores permanecen documentadas como historia en sus manifiestos. Los archivos heredados de Alex-MD fuera del capítulo 04 y la carpeta no versionada `md para drive/` no forman parte de esta sincronización.

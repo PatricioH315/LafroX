@@ -1,10 +1,19 @@
+# LafroX — Formulario T-11
+
+[Cuerpo](LAFROX-Subdocumento4.md) · [Anexos](LAFROX-Subdocumento4-Anexos.md) · [T-11](LAFROX-Formulario-T-11.md) · [Procedencia](MANIFIESTO_ALINEACION.md)
+
+## Índice
+
+- [Formulario T-11: Especificaciones técnicas ofertadas](#h-04-formularios-t11-15-anexo-t11-tex-1)
+- [Referencias](#h-04-formularios-t11-15-anexo-t11-tex-2)
+
 <a id="h-04-formularios-t11-15-anexo-t11-tex-1"></a>
 
 # Formulario T-11: Especificaciones técnicas ofertadas
 
 Este formulario detalla los componentes de infraestructura, plataforma, licenciamiento y hardware especificados para la solución, con su ubicación, su cantidad y su justificación, conforme al Formulario T-11 de las Bases Administrativas. Acompaña al Subdocumento 4 (Arquitectura lógica y física de la solución): su resumen y análisis están en el apartado 4.2.1 de ese subdocumento, y el emplazamiento de cada componente se justifica en su apartado 4.2.2. Cuando un elemento materializa un componente del catálogo de emplazamiento, la columna Componente lleva el mismo código y nombre del apartado 4.2.2 (por ejemplo, D-01 Firewall y Customer Gateway); los elementos de soporte que no son componentes de arquitectura, como la infraestructura de la sala técnica o el cableado, se identifican solo por su nombre. El equipamiento físico lo adquiere el CLIENTE, y el adjudicatario lo especifica, instala, integra y mantiene (PUCV, 2026c, art. 14.2, p. 10).
 
-La Tabla [T11.1](../../LAFROX-Formulario-T-11.md#tab-t11) reúne todos los elementos ofertados, agrupados por familia: infraestructura de cómputo y almacenamiento, red y seguridad, dispositivos de terreno y de operación, sala técnica de Talca, gabinetes de borde, plataforma de nube y software de base. Las cantidades de dispositivos de terreno y de componentes críticos incluyen una reserva del 10 % del parque de cada tipo, redondeada hacia arriba, conforme a la tabla de repuestos del numeral 8.4 (PUCV, 2026b, cap. 8, p. 19); los supuestos que fijan cada cantidad (S-28 y S-30 a S-41) se registran en el Subdocumento 3, y el cálculo de cada cantidad está en el Anexo 4-W.
+La Tabla [T11.1](#tab-t11) reúne todos los elementos ofertados, agrupados por familia: infraestructura de cómputo y almacenamiento, red y seguridad, dispositivos de terreno y de operación, sala técnica de Talca, gabinetes de borde, plataforma de nube y software de base. Las cantidades de dispositivos de terreno y de componentes críticos incluyen una reserva del 10 % del parque de cada tipo, redondeada hacia arriba, conforme a la tabla de repuestos del numeral 8.4 (PUCV, 2026b, cap. 8, p. 19); los supuestos que fijan cada cantidad (S-28 y S-30 a S-41) se registran en el Subdocumento 3, y el cálculo de cada cantidad está en el Anexo 4-W.
 
 <a id="tab-t11"></a>
 

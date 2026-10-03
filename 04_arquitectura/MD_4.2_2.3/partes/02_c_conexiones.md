@@ -1,25 +1,28 @@
-<!-- Fuente: 04/partes/4.2_fisica/02_c_conexiones.tex — conversión fiel; editar el .tex y regenerar -->
+<a id="h-04-partes-4-2-fisica-02-c-conexiones-tex-77"></a>
 
-<a id="sec:conexiones"></a>
 ## 4.2.5 Conexiones, puntos de falla y contingencia
+
+<a id="sec-conexiones"></a>
 
 Esta sección describe cómo se conectan los sitios, el terreno y la nube, identifica cada punto donde esa conexión o su infraestructura puede fallar, y declara cómo se resuelve cada falla o, cuando no se resuelve de forma automática, cuál es la contingencia. Su punto de partida es el caso: la conectividad actual de Puelche se corta con frecuencia y en algunos lugares no existe, por lo que la solución no puede suponer un enlace disponible y debe decir, para cada conexión, qué pasa cuando no lo está.
 
+<a id="h-04-partes-4-2-fisica-02-c-conexiones-tex-78"></a>
+
 ### 4.2.5.1 Conexiones entre sitios, terreno y nube
 
-Los dos dominios fijos, la nube y el on-premise, se conectan por túneles VPN IPsec que terminan en el par de firewalls de cada sitio (D-01) y en el Transit Gateway de AWS en sa-east-1, con enrutamiento dinámico BGP. El mismo Transit Gateway enruta entre los sitios, de modo que Concepción y los cross-docking alcanzan Talca sin exponerla a Internet. Los caminos de acceso se distribuyen así:
+Los dos dominios fijos, la nube y el on-premise, se conectan por túneles VPN IPsec que terminan en el par de firewalls de cada sitio (D-01) y en el Transit Gateway de AWS en sa-east-1, con enrutamiento dinámico BGP. Cada sitio publica sus eventos directamente a la nube y opera sin conexión con los sistemas de otra instalación. Los caminos de acceso se distribuyen así:
 
-- Cada centro de distribución tiene dos caminos físicamente independientes: fibra y LTE.
-- Cada cross-docking tiene dos caminos físicamente independientes: Starlink y LTE de dos proveedores.
+-  Cada centro de distribución tiene tres caminos independientes: fibra D-03, LTE D-04 y Starlink D-06. Starlink permanece en espera caliente, con el terminal encendido, el túnel IPsec establecido y BGP de menor preferencia; solo toma el tráfico cuando fallan fibra y LTE y entonces prioriza DMS/WAL de Talca, broker y outbox, guías hacia ERP y SII, identidad y telemetría crítica.
+
+-  Cada cross-docking usa Starlink como camino principal y LTE de dos proveedores como respaldo.
+
+El terminal satelital de los centros permanece encendido porque adquirir satélites y negociar el túnel durante una falla tardaría minutos; el plan de tarifa plana no agrega costo por mantenerlo encendido.
 
 Los terminales EC55 y TC58e acceden por red celular a CloudFront, cuyas rutas `/v1` y `/sync/v1` llegan a la API REST pública.
 
-La Figura [10](02_c_conexiones.md#fig:conexiones) muestra estas conexiones.
+La Figura [25](../../LAFROX-Subdocumento4.md#fig-conexiones) muestra estas conexiones.
 
-<a id="fig:conexiones"></a>
-**Figura 10.** Conexiones entre los sitios, el terreno y la nube
-
-> Figura compuesta en TikZ en el LaTeX; ver main.pdf, página 57.
+**Diagrama vectorial del fuente:** [consultar figura en LaTeX](https://github.com/PatricioH315/LafroX/blob/732a9d6688569bf981594c2e21c47a167b8f8ba7/04/partes/4.2_fisica/02_c_conexiones.tex). Representación textual de sus rótulos; no sustituye el diagrama.
 
 - Usuarios externos: clientes, transportistas y proveedores
 - AWS sa-east-1
@@ -27,50 +30,64 @@ La Figura [10](02_c_conexiones.md#fig:conexiones) muestra estas conexiones.
 - VPC Endpoints
 - API REST pública
 - CloudFront y WAF
-- AWS us-east-1<br>recuperación<br>y réplica
-- CD Talca<br> D-01 en par
-- CD Concepción<br> D-01 de borde
-- Cross-docking<br> E-01, tres sitios
-- Terreno<br> C-01 y C-02
-- Camiones<br> B-03
+- AWS us-east-1 recuperación y réplica
+- CD Talca D-01 en par
+- CD Concepción D-01 de borde
+- Cross-docking E-01, tres sitios
+- Terreno C-01 y C-02
+- Camiones B-03
 
-La figura distingue las entradas públicas, los túneles de sitio y las sincronizaciones locales en cuatro flujos:
+**Figura 25 — Conexiones entre los sitios, el terreno y la nube**
 
-- Sitios–Talca: Concepción y los cross-docking sincronizan con Talca por la VPN.
-- Termógrafo–terminal: los termógrafos descargan por Bluetooth al terminal del conductor.
-- Nube–VM: AWS DMS accede a VM-02 y `erp-sync` a VM-04 únicamente por el túnel IPsec autenticado.
-- Cross-docking–SQS: los eventos críticos llegan a SQS FIFO sin depender de Talca.
+<a id="fig-conexiones"></a>
 
-Los 184 usuarios de administración, comercial y soporte de Talca y Concepción acceden a las consolas y a la administración de Keycloak solo por Verified Access. La consola Angular corre en Fargate tras un ALB privado y reenvía las llamadas a la API REST privada por el endpoint de interfaz execute-api. CloudFront publica únicamente los endpoints OIDC necesarios para autenticación y renovación de sesión por la API REST pública sin autorizador hacia Keycloak tras el ALB privado; el verificador local de relevos permanece en cada sitio. Las cadenas usan el canal AS2 descrito en la sección [4.4.11](14_m_decisiones_adr.md#sub:adr-11).
+*Fuente: elaboración propia.*
 
-La Tabla [12](#tab:conexiones) resume cada conexión con su medio, su camino alternativo y el tiempo de conmutación entre ambos.
+La figura distingue las entradas públicas, los túneles de sitio y el intercambio local con los terminales en tres flujos:
 
-<a id="tab:conexiones"></a>
-**Tabla 12.** Conexiones de la solución y su camino alternativo
-| Conexión | Medio y protocolo | Camino alternativo | Conmutación |
+-  Termógrafo–terminal: los termógrafos descargan por Bluetooth al terminal del conductor.
+
+-  Nube–VM: AWS DMS accede únicamente a VM-02 de Talca por el túnel IPsec autenticado.
+
+-  Sitios–SQS: los eventos de cada sitio, incluidos los cross-docking, llegan a SQS FIFO sin depender de otro sitio.
+
+Los 184 usuarios de administración, comercial y soporte de Talca y Concepción acceden a las consolas y a la administración de Keycloak solo por Verified Access. La consola Angular corre en dos tareas Fargate distribuidas entre dos zonas tras un ALB privado y reenvía las llamadas a la API REST privada por el endpoint de interfaz execute-api. CloudFront publica únicamente los endpoints OIDC necesarios para autenticación y renovación de sesión por la API REST pública sin autorizador hacia Keycloak tras el ALB privado; el verificador local de relevos permanece en cada sitio. Las cadenas usan el canal AS2 descrito en ADR-11 (Anexo 4-O), cuyo transporte mantiene dos tareas Fargate distribuidas entre dos zonas.
+
+La Tabla [18](../../LAFROX-Subdocumento4.md#tab-conexiones) resume cada conexión con su medio, su camino alternativo y el tiempo de conmutación entre ambos.
+
+<a id="tab-conexiones"></a>
+
+**Tabla 18 — Conexiones de la solución y su camino alternativo**
+
+| **Conexión** | **Medio y protocolo** | **Camino alternativo** | **Conmutación** |
 | --- | --- | --- | --- |
-| CD Talca con la nube | Fibra D-03, túneles IPsec con BGP | LTE D-04 | Menos de 30 s |
-| CD Concepción con la nube | Fibra D-03, túneles IPsec con BGP | LTE D-04 | Menos de 30 s |
+| CD Talca con la nube | Fibra D-03, túneles IPsec con BGP | LTE D-04 y, tras él, Starlink D-06 | Menos de 30 s |
+| CD Concepción con la nube | Fibra D-03, túneles IPsec con BGP | LTE D-04 y, tras él, Starlink D-06 | Menos de 30 s |
 | Cross-docking con la nube | Starlink D-06, túneles IPsec con BGP | LTE D-04 de dos proveedores | Menos de 30 s |
-| Concepción con Talca | TCP 8080 y 5432 con TLS sobre la VPN | Operación autónoma | No aplica |
-| Cross-docking con Talca | AMQPS 5671 entre brokers, por la VPN | Envío diferido | No aplica |
 | Terreno con la nube | Red celular, CloudFront, API REST pública | Almacén local del dispositivo | No aplica |
 | Termógrafos con el terminal del conductor | BLE con el terminal del conductor, en ruta y al regresar | Registro interno del termógrafo | No aplica |
-| Usuarios externos con los portales | Internet, HTTPS por CloudFront | Ninguno: el autoservicio requiere conexión | No aplica |
+| Usuarios externos con los portales | Internet, HTTPS por CloudFront | Portal de Clientes instalado, que conserva el pedido hasta reconectar | No aplica |
 | Oficinas y trabajo remoto con las consolas | Internet, HTTPS por Verified Access | Otra conexión a Internet | No aplica |
 | Cadenas con el canal AS2 | Internet, TLS 1.3 al Network Load Balancer | Reenvío AS2 hasta el acuse MDN | No aplica |
 | Región primaria con la secundaria | Replicación nativa de Aurora, DynamoDB y S3 | Respaldo inmutable | Promoción autorizada |
 
-Los cinco sitios tienen un camino alternativo hacia la nube. Concepción también opera sin los sistemas de Talca, el terreno sin señal y los termógrafos con registro interno. El autoservicio de los portales requiere conexión.
+ Fuente: elaboración propia.
 
-<a id="sub:superficie"></a>
+Los cinco sitios tienen caminos alternativos hacia la nube. Ninguna instalación depende de los sistemas de otra; el terreno opera sin señal y los termógrafos conservan su registro interno. Los portales requieren conexión, salvo el Portal de Clientes instalado, que conserva el catálogo descargado y el pedido armado hasta recuperar señal.
+
+<a id="h-04-partes-4-2-fisica-02-c-conexiones-tex-79"></a>
+
 ### 4.2.5.2 Superficie de exposición
 
-La Tabla [13](#tab:superficie) delimita las únicas entradas desde redes externas. Cada entrada usa un subdominio propio del dominio del CLIENTE gestionado en Route 53.
+<a id="sub-superficie"></a>
 
-<a id="tab:superficie"></a>
-**Tabla 13.** Superficie de exposición
-| Entrada | Servicio y puerto | Quién accede | Control |
+La Tabla [19](../../LAFROX-Subdocumento4.md#tab-superficie) delimita las únicas entradas desde redes externas. Cada entrada usa un subdominio propio del dominio del CLIENTE gestionado en Route 53.
+
+<a id="tab-superficie"></a>
+
+**Tabla 19 — Superficie de exposición**
+
+| **Entrada** | **Servicio y puerto** | **Quién accede** | **Control** |
 | --- | --- | --- | --- |
 | Portales y API | CloudFront, HTTPS 443 | Clientes, transportistas, proveedores y terminales de terreno | WAF, protección contra bots, Shield Advanced y autorizador |
 | Identidad | OIDC de Keycloak por CloudFront, HTTPS 443 | Personas usuarias | WAF y límites de tasa |
@@ -78,53 +95,68 @@ La Tabla [13](#tab:superficie) delimita las únicas entradas desde redes externa
 | Canal AS2 | Network Load Balancer, TCP 443 con TLS 1.3 | Cadenas registradas | Lista de IP, certificados, firma y MDN |
 | Túneles de sitio | VPN del Transit Gateway, IPsec UDP 500 y 4500 | Firewalls D-01 de los cinco sitios | Autenticación IKE y cifrado IPsec |
 
+ Fuente: elaboración propia.
+
 La tabla excluye toda otra entrada desde fuera de la red del CLIENTE. En recuperación ante desastres se activan las mismas entradas en us-east-1. MDM, EDR, SII, Transbank, GIS, notificaciones y telemetría de flota son dependencias de salida, detalladas en el Formulario T-11.
+
+<a id="h-04-partes-4-2-fisica-02-c-conexiones-tex-80"></a>
 
 ### 4.2.5.3 Puntos de falla en los sitios y en los enlaces
 
-Cada conexión se apoya en equipos del sitio que también pueden fallar. La Tabla [14](#tab:fallas-sitios) recorre esos puntos de falla, desde el enlace hasta la energía del recinto, e indica para cada uno el mecanismo que la resuelve y la contingencia si ese mecanismo no basta.
+Cada conexión se apoya en equipos del sitio que también pueden fallar. La Tabla [20](../../LAFROX-Subdocumento4.md#tab-fallas-sitios) recorre esos puntos de falla, desde el enlace hasta la energía del recinto, e indica para cada uno el mecanismo que la resuelve y la contingencia si ese mecanismo no basta.
 
-<a id="tab:fallas-sitios"></a>
-**Tabla 14.** Puntos de falla en los sitios y en los enlaces
-| Punto de falla | Resolución | Contingencia |
+<a id="tab-fallas-sitios"></a>
+
+**Tabla 20 — Puntos de falla en los sitios y en los enlaces**
+
+| **Punto de falla** | **Resolución** | **Contingencia** |
 | --- | --- | --- |
-| Fibra de un centro de distribución | BGP conmuta los túneles al LTE en menos de 30 s. | Si cae también el LTE, operación local 24 h. |
+| Fibra y LTE de un centro de distribución | BGP conmuta al túnel IPsec ya establecido por Starlink D-06 y prioriza DMS/WAL, broker y outbox, guías hacia ERP y SII, identidad y telemetría crítica. | La operación local conserva 24 h de autonomía. |
 | Caída del enlace de Talca para la oficina | Verified Access admite otra conexión a Internet con los mismos controles. | Plan de rutas y manifiesto aprobados en el WMS antes de las 22:00; tableros y costo de servir esperan el retorno. |
 | Starlink de un cross-docking | El LTE de dos proveedores toma el tráfico en menos de 30 s. | La ventana de 3 h opera 100 % local y sincroniza al reconectar. |
 | Enlace de Los Ángeles en la madrugada | Starlink queda como camino único, porque la red móvil falla a esa hora. | La ventana de madrugada opera íntegramente local. |
 | Firewall de Talca | La unidad pasiva asume las direcciones y los túneles en menos de 30 s. | Operación local 24 h sin enlace. |
 | Firewall de Concepción | La unidad pasiva asume el túnel y la conmutación de enlace en menos de 30 s. | La unidad dañada se reemplaza con la de reserva de Talca. |
-| Nodo del clúster de Talca | Las VM se reinician en los nodos restantes, con sus datos replicados por Ceph. | Ante un segundo nodo, el DRP local promueve el WMS de Concepción en 1 a 2 h. |
+| Nodo del clúster de Talca | Las VM se reinician en los nodos restantes, con sus datos replicados por Ceph. | Ante la pérdida del clúster, se levanta el WMS de Talca en la nube sobre su copia en Aurora. |
 | Instancia de escritura VM-02 | Se reinicia en otro nodo del clúster. | D-05 restaura la base en hasta 4 h sin enlace. |
-| Disco de un nodo de Talca | El RAID 10 reconstruye sobre el repuesto en caliente. | Ceph conserva una segunda copia en otro nodo. |
+| Disco de un nodo de Talca | Ceph marca el disco fuera y recompone sus réplicas en los otros nodos. | Durante la recomposición quedan dos réplicas. |
 | Miembro del stack de switches de Talca o de Concepción | El otro miembro mantiene el tráfico. | Reposición sin corte con la unidad de reserva de Talca. |
-| Servidor de borde de Concepción | El RAID 10 tolera la falla de un disco; el equipo tiene fuente única y, ante su falla, se repone. | La pila se reinstala con la misma imagen y la base local se reconstruye desde el estado central, que ya recibió los eventos del sitio por las colas. |
-| Mini-PC de un cross-docking | Equipo único; se repone con la unidad de reserva, que viaja desde Talca en el camión de línea nocturno. | El nuevo equipo se resincroniza desde Talca y SQS FIFO. |
+| Servidor de borde de Concepción | El RAID 10 tolera la falla de un disco y las fuentes redundantes sostienen el servidor ante la pérdida de un circuito. | Si falla el equipo, se repone y su base se reconstruye desde el estado central alimentado por sus eventos. |
+| Mini-PC de un cross-docking | Sus dos fuentes y los dos switches sostienen los circuitos y la red local; el equipo se repone desde Talca si falla. | El nuevo equipo se reconstruye desde el estado central de la nube y SQS FIFO. |
 | Firewall de un cross-docking | La unidad pasiva del par asume el túnel en menos de 30 s. | La ventana de 3 h opera 100 % local y sincroniza al reconectar. |
 | Periféricos de andén | Sin redundancia por equipo. | La etiqueta se emite en otra de las impresoras del centro de distribución. |
 | Energía de la sala de Talca | UPS N+1 de 30 min y generador que toma carga en 8 a 15 s. | Estanque de 24 h y contrato de reabastecimiento. |
+| Corte de energía en la bodega | Las UPS de los gabinetes de piso sostienen switches PoE, AP e impresoras durante 30 min. | En Talca el registro de frío continúa con el tablero respaldado por generador; en Concepción la UPS del gabinete cubre 30 min y el apagado ordenado. |
 | Climatización de la sala de Talca | Segunda unidad de precisión en N+1. | Alerta del monitoreo de los sensores ambientales. |
 
-La tabla muestra que los firewalls van en par en los cinco sitios, porque RT-08.03 (Bases Técnicas Transversales, Cap. 8, p. 18) no admite cortafuegos en punto único de falla, y que los puntos únicos de falla que permanecen son el servidor de Concepción y el mini-PC y el switch de cada cross-docking, donde la redundancia no compensa su costo: la pérdida de sus enlaces se cubre con la autonomía local, y la falla de sus propios equipos, con la reposición y la resincronización indicadas en la tabla. Por el mismo fundamento, ese servidor, el mini-PC y el switch de los cross-docking operan con fuente única, excepción declarada a la exigencia de fuente redundante. La liberación sanitaria y el despacho no dependen de la nube. En la ventana de Talca, VM-02 se reinicia en otro nodo y otra impresora emite la etiqueta si falla la del andén. Los mecanismos de alta disponibilidad se detallan en la sección [4.2.4.3](11_j_despliegue.md#sub:3-alta-disponibilidad).
+ Fuente: elaboración propia.
+
+La tabla muestra que los firewalls van en par en los cinco sitios conforme a RT-08.03 (PUCV, 2026b, cap. 8, p. 18). Concepción dispone de fuentes redundantes, y cada cross-docking tiene dos switches industriales; su mini-PC sigue siendo un equipo único por sitio, respaldado por alimentación redundante, reposición desde Talca y reconstrucción desde la nube. La liberación sanitaria y el despacho con guía preemitida no dependen de la nube. En la ventana de Talca, VM-02 se reinicia en otro nodo y otra impresora emite la etiqueta si falla la del andén. Los mecanismos de alta disponibilidad se detallan en la sección [4.2.4.3](../../LAFROX-Subdocumento4.md#sub-3-alta-disponibilidad).
+
+<a id="h-04-partes-4-2-fisica-02-c-conexiones-tex-81"></a>
 
 ### 4.2.5.4 Puntos de falla en la nube, el terreno y las integraciones
 
-La Tabla [15](#tab:fallas-nube) completa el recorrido con los puntos de falla que están fuera de los sitios: la nube, el terreno y los sistemas de terceros.
+La Tabla [21](../../LAFROX-Subdocumento4.md#tab-fallas-nube) completa el recorrido con los puntos de falla que están fuera de los sitios: la nube, el terreno y los sistemas de terceros.
 
-<a id="tab:fallas-nube"></a>
-**Tabla 15.** Puntos de falla en la nube, el terreno y las integraciones
-| Punto de falla | Resolución | Contingencia |
+<a id="tab-fallas-nube"></a>
+
+**Tabla 21 — Puntos de falla en la nube, el terreno y las integraciones**
+
+| **Punto de falla** | **Resolución** | **Contingencia** |
 | --- | --- | --- |
 | Zona de disponibilidad de sa-east-1 | Aurora conmuta en menos de 30 s, ElastiCache en menos de 60 s y Fargate reprograma las tareas. | La operación continúa en las zonas restantes. |
-| Región sa-east-1 completa | Route 53 redirige el tráfico y, con autorización del CLIENTE, se promueve la réplica en us-east-1. | RTO de 4 h y RPO de 15 min; la bodega y el terreno operan en local, y los terminales de bodega trabajan contra la puerta de API local del WMS. |
-| Túnel VPN de Talca durante la replicación | VM-02 retiene los cambios en su registro de escritura mientras DMS no puede leerlos. | DMS reanuda la réplica al reconectar; la copia en Aurora queda desactualizada durante el corte. |
-| IdP maestro o enlace de identidad | La caché de solo lectura, de 24 h, conserva los datos de identidad recibidos, y el verificador local habilita los relevos de turno con el manifiesto firmado y el PIN personal. | La credencial de turno dura hasta 8 h en bodega y 14 h en terreno; no hay revocación remota mientras dure el corte; cuenta de último recurso (sección [4.4.15](14_m_decisiones_adr.md#sub:adr-15)). |
-| Señal móvil en ruta | La aplicación opera contra el almacén local del dispositivo. | Sincroniza al reconectar dentro de los 10 min de la Tabla [4](#tab:t29). |
-| ERP legado | El trabajador `erp-sync` retiene las operaciones en su cola SQS hasta 24 h y reintenta con la misma clave idempotente, de modo que un reintento no emite otro documento. | El camión no se libera sin guía confirmada o contingencia tributaria aprobada por el CLIENTE. |
+| Región sa-east-1 completa | Tras autorización del CLIENTE se promueve Aurora, se restituyen identidad y API y se valida; entonces Route 53 dirige el tráfico a us-east-1. | RTO de 4 h y RPO de 15 min; bodega y terreno operan localmente durante la conmutación. |
+| Túnel VPN de Talca durante la replicación | BGP conmuta entre fibra D-03, LTE D-04 y Starlink D-06 para que DMS siga leyendo VM-02. | La autonomía local conserva la operación mientras se restituye cualquier camino. |
+| IdP maestro o enlace de identidad | La caché de solo lectura, de 24 h, conserva los datos de identidad recibidos, y el verificador local habilita los relevos de turno con el manifiesto firmado y el PIN personal. | La credencial de turno dura hasta 8 h en bodega y 14 h en terreno, sin revocación remota durante el corte, y queda disponible la cuenta de último recurso (ADR-06, Anexo 4-O). |
+| Señal móvil en ruta | La aplicación opera contra el almacén local del dispositivo. | Sincroniza al reconectar dentro de los 10 min de la Tabla [10](../../LAFROX-Subdocumento4.md#tab-t29). |
+| ERP legado | El trabajador `erp-sync` en VM-04 retiene las solicitudes en la cola local o en SQS y reintenta con la misma clave idempotente. | Ningún camión sale sin documento tributario válido emitido por el ERP. |
 | Perfil de API saturado | El balanceador reparte entre tareas y el escalado agrega tareas cuando los procesos PHP-FPM ocupados superan el 70 %. | Limitación de tasa en API Gateway con mensaje explícito al usuario. |
-| Mensaje de reconciliación inválido o que falla | El consumidor rechaza el sobre de versión desconocida sin aplicarlo; tras cinco intentos pasa a la cola de mensajes fallidos. | Alarma inmediata y reproceso manual trazable; el grupo afectado no bloquea a los demás. |
+| Mensaje de reconciliación inválido o que falla | El consumidor rechaza el sobre de edición desconocida sin aplicarlo; tras cinco intentos pasa a la cola de mensajes fallidos. | Alarma inmediata y reproceso manual trazable; el grupo afectado no bloquea a los demás. |
 | Excursión térmica sin enlace | El gateway bloquea el despacho en menos de 5 s en el borde. | Buffer de 24 h y alerta al reconectar. |
 | SII, cadenas o notificaciones | Reintento con espera creciente y cola de mensajes fallidos. | Reproceso desde la cola al recuperarse el tercero. |
-| Carga del peak de septiembre | Escalado automático e independiente de los perfiles de API y de trabajadores en Fargate, y de Aurora. | Limitación de tasa en API Gateway. |
+| Carga del peak de septiembre | Fargate escala automáticamente por perfil y Aurora ya está dimensionada para 3× sin cambio de instancia. | Limitación de tasa en API Gateway. |
 
-Ninguna de estas fallas detiene la bodega ni el terreno. La peor de ellas, la pérdida de toda la región primaria, deja sin servicio a los portales y a la analítica hasta la promoción de la réplica, pero la preparación, el despacho y la entrega siguen operando contra sus bases locales y sus dispositivos, porque ninguna de esas transacciones depende de la nube para confirmarse.
+ Fuente: elaboración propia.
+
+Las fallas de nube o enlace no detienen la preparación ni la entrega, que se confirman localmente. La pérdida de la región primaria deja sin servicio a los portales y a la analítica hasta promover la réplica. El despacho conserva la guía preemitida al cerrar la carga nocturna; si la carga cambia entre las 05:30 y las 07:00, la guía queda inválida y el ERP de Talca emite otra por cualquiera de sus tres caminos, a los que Concepción y los cross-docking llegan por los suyos. Si no hay camino hasta el ERP, el camión sale solo con la carga amparada por su guía vigente y el ajuste pasa a la ruta siguiente; ningún camión sale sin guía válida.
