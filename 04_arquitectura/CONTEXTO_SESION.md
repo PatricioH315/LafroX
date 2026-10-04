@@ -54,3 +54,7 @@ La incorporación se registra en un commit local de `alvaro-md`. Se comprobaron 
 El 1 de octubre de 2026 el usuario autorizó importar la carpeta Markdown física publicada en `rama-latex`. Se incorporaron 15 archivos desde `MD_4.2_2.3`, commit `95ed2c9a1cc20aa7ad9f3ebbe03cafa0e1e1259c`, dentro de `04_arquitectura/MD_4.2_2.3`. Incluye 4.2, 4.3, ADR, referencias, T-11 y memoria de cálculo, en 13 partes y un documento reunido, más README. El documento reunido conserva el nombre de origen pero no incluye 4.1.
 
 Se adaptaron 39 enlaces a figuras y fuentes fijándolos al commit de origen. No se importaron LaTeX ni binarios, no se editó la lógica y no se armonizaron decisiones técnicas. Las huellas se registran en `MANIFIESTO_IMPORTACION_FISICA.md`. El usuario solicitó registrar y publicar esta importación en `alvaro-md`; se verificaron los 15 documentos, los 39 enlaces externos y los 81 enlaces locales antes del commit. No se alteran los capítulos heredados de Alex-MD.
+
+## Mejora coordinada del Subdocumento 5 — 2026-10-03
+
+Al ejecutar el plan aprobado se añadió `COMPLEMENTO_COORDINACION_DATOS_SD5.md` (CD-05): reserva comercial M2 nube, retención/movimientos locales y solicitudes por colas consumidas mediante conexión saliente. Los canónicos y sus partes conservan la conversión histórica de 732a9d6; este complemento es un cambio de diseño posterior con capacidad y ensayos por comprobar. SD1 ajusta exclusivamente la responsabilidad del líder de desarrollo al stack Laravel/PHP vigente.

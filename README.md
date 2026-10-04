@@ -27,3 +27,6 @@ Se rechaza toda petición de trabajo en LaTeX dentro de `branch-md` para preserv
 - [Formulario T-12](03_esquema_solucion_alcance/LAFROX-Formulario-T-12.md).
 
 Se conservan las discrepancias de requerimientos por instrucción del usuario. Los catálogos originales de `Requerimientos/` no fueron reemplazados.
+
+
+La coordinación de reserva comercial y custodia física se precisa en [CD-05](04_arquitectura/COMPLEMENTO_COORDINACION_DATOS_SD5.md), añadido al ejecutar la mejora del Subdocumento 5 el 3 de octubre de 2026.

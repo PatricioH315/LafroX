@@ -243,7 +243,7 @@ El proyecto será liderado de forma exclusiva y continua por el Jefe de Proyecto
 - **Arquitecto de Solución (Bastián Trejo):** Responsable del diseño técnico global, la consistencia entre capas lógicas y la articulación del modelo híbrido nube/on-premise.
 - **Encargado de Seguridad de la Información (Álvaro Catalán):** Responsable del cumplimiento de la norma ISO/IEC 27001, la arquitectura Zero Trust y los controles de acceso.
 - **Líder de Datos (Leandro Chamorro):** Responsable de la modelación relacional, la estrategia de migración y la reconciliación determinista de inventarios.
-- **Líder de Desarrollo (Tomás Pérez):** Responsable del desarrollo del monolito modular en Python/Django con despliegue independiente de sus componentes críticos, de los componentes móviles y del canal de entrega continua.
+- **Líder de Desarrollo (Tomás Pérez):** Responsable del desarrollo del monolito modular Laravel/PHP definido en el Subdocumento 4, con perfiles de ejecución y escalamiento de sus componentes críticos, de los componentes móviles y del canal de entrega continua.
 - **Líder de Calidad (Maximiliano Miño):** Responsable del plan de pruebas, automatización y cumplimiento de los umbrales de aseguramiento de calidad ISO/IEC 25010.
 - **Líder de Operación / SRE (Guillermo Castillo):** Responsable de la disponibilidad continua 24×7, observabilidad de infraestructura y gestión de niveles de servicio.
 - **Líder de Implantación y Gestión del Cambio (Patricio Henríquez):** Responsable de la adopción en terreno, capacitación de preventistas y conductores, y marchas blancas.

@@ -174,3 +174,7 @@ Las filas y celdas de todas las tablas se contrastaron con la representación co
 ## Validación final
 
 Se comprobaron 579 enlaces locales y 808 anclas explícitas en 32 archivos Markdown del capítulo. [Resultados y límites](VERIFICACION_ALINEACION.md).
+
+## Complemento posterior de diseño
+
+La mejora autorizada de SD5 del 3 de octubre de 2026 añade [CD-05](COMPLEMENTO_COORDINACION_DATOS_SD5.md), separado de la conversión fiel. Precisa autoridad, transporte y aceptación de reservas; no cambia el commit de procedencia ni afirma que las cifras originales incorporen ese nuevo intercambio.

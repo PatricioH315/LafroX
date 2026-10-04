@@ -72,3 +72,6 @@ Fuentes leídas y huella SHA-256 de esta conversión:
 | `03_esquema_solucion_alcance/tablas_anexo/supuestos.tex` | `193854650f7480f5f7bd89e87677264f43706ca41d83e29fe542e266ac8ad76a` |
 | `03_esquema_solucion_alcance/tablas_anexo/trazabilidad.tex` | `13ff945cd7437aff62bc57ecbdca44b2d758a13d8f30de5da964a05718ac250b` |
 | `03_esquema_solucion_alcance/tablas_anexo/vacios.tex` | `841413b1096dd8837ee2710aaab789c3c1a014b42f1ea0730b82af45bdbfd240` |
+
+
+2026-10-03: mejora SD5 autorizada en la rama de datos; cambio coordinado de responsabilidad tecnológica en SD1 y complemento Markdown CD-05 en SD4. No se modifica el alcance no ofertado de T-12.
