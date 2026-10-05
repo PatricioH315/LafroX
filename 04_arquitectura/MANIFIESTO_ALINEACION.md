@@ -1,5 +1,9 @@
 # LafroX — Manifiesto de alineación del Subdocumento 4
 
+## Versión lógica posterior — 5 de octubre de 2026
+
+Se aplicó el plan de coherencia con el SD3 actual de Descargas y los quince actores validados. Las fuentes iniciales y huellas siguientes se conservan como procedencia histórica; los canónicos lógicos y sus partes tienen cambios autorizados posteriores a `732a9d6`. Física, centros de datos, 4-W y T-11 conservan su contenido. Consultar [Coherencia y dependencias](COHERENCIA_SD3_SD4_2026-10-05.md) y [verificación vigente](VERIFICACION_COHERENCIA_2026-10-05.md) antes de atribuir alineación técnica o regenerar.
+
 Fecha: 3 de octubre de 2026.
 
 Fuente: `rama-latex`, commit `732a9d6688569bf981594c2e21c47a167b8f8ba7`. Destino: `alvaro-md`, base `e377a58085c6f5c979a5bf176ecb710ce9239bbb`.

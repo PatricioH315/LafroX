@@ -1,5 +1,9 @@
 # AGENTS.md
 
+## Alcance vigente autorizado — 5 de octubre de 2026
+
+Esta copia trabaja en `alvaro-md`; `branch-md` en el registro heredado identifica su procedencia. El usuario autorizó aplicar el plan de coherencia SD3–SD4 con los quince actores validados, importar a Markdown las fuentes activas de SD3 en Descargas, actualizar la lógica y sus anexos, y crear commit y push en `alvaro-md`. Esta autorización amplía la conservación inicial de los capítulos y no cambia la regla de archivos exclusivamente Markdown. Las referencias heredadas a un capítulo 4 ausente o a no publicar describen estados anteriores. Consultar `04_arquitectura/COHERENCIA_SD3_SD4_2026-10-05.md`; preservar física, centros de datos, T-11 y memoria fuera de los ajustes lógicos autorizados.
+
 ## Regla obligatoria de integridad de branch-md
 
 - Esta es la rama `branch-md` del repositorio LafroX. Solo se crean, editan y versionan documentos `.md`; los metadatos internos de Git son la única excepción.

@@ -1,5 +1,9 @@
 # Manifiesto de procedencia y conversión
 
+## Actualización vigente — 5 de octubre de 2026
+
+El usuario autorizó actualizar SD3 desde Descargas y realizar su coherencia con la lógica del SD4 en `alvaro-md`. Se conservan únicamente Markdown. [Manifiesto SD3](03_esquema_solucion_alcance/MANIFIESTO_ACTUALIZACION_2026-10-05.md) registra inclusiones activas, huellas y comprobaciones; [Coherencia SD3–SD4](04_arquitectura/COHERENCIA_SD3_SD4_2026-10-05.md) registra los cambios de diseño y dependencias. Los registros posteriores de este archivo corresponden a importaciones históricas; sus conteos no describen la versión actual.
+
 ## Alcance
 
 La conversión se realizó desde el repositorio LafroX vigente. No constituye revisión humana nueva, aprobación del contenido ni sustitución de la revisión formal de los PDF finales.

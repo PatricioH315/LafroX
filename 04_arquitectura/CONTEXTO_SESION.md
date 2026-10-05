@@ -1,5 +1,9 @@
 # LafroX — Contexto del Subdocumento 4
 
+## Estado vigente — 5 de octubre de 2026
+
+Aplicación autorizada del plan SD3–SD4 con catálogo de quince actores validado por el equipo. Se incorporó el SD3 actual de Descargas en Markdown y la definición de actores, interfaces, acciones y etapas. La lógica del SD4 y sus partes incorporan esa correspondencia, etapa E1 de OTIF/telemetría, portales E2, tratamiento térmico graduado, reglas de promesa/reentrega, reversión con legado en lectura y CD-05. Anexos G/I/N/V incorporan contrato, volumen adicional, permisos y AL-STOCK-01/AL-ACT-01. Los canónicos lógicos ya no son idénticos a `732a9d6`: ese commit conserva la procedencia inicial. Física, centros de datos, 4-W y T-11 conservan la versión original. Las dependencias y límites están en [Coherencia SD3–SD4](COHERENCIA_SD3_SD4_2026-10-05.md). No regenerar con el convertidor histórico porque eliminaría estos cambios de diseño. Se verifica igualdad entre partes y consolidados antes de commit y push.
+
 ## Estado vigente: 3 de octubre de 2026
 
 El usuario autorizó ejecutar `PLAN_ALINEACION_SUBDOC4.md`. Se actualizó exclusivamente `04_arquitectura/` en `alvaro-md` desde el contenido ensamblado de `rama-latex`, commit `732a9d6688569bf981594c2e21c47a167b8f8ba7`. La base de destino era `e377a58085c6f5c979a5bf176ecb710ce9239bbb`. Las referencias se leyeron desde Git; no se fusionaron ramas.

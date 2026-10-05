@@ -1,5 +1,9 @@
 # CONTEXTO DE SESIÓN
 
+## Estado vigente — 5 de octubre de 2026
+
+Rama comprobada: `alvaro-md`. El usuario autorizó ejecutar y publicar el plan SD3–SD4 con los quince actores de sistema validados con el redactor del SD3. Se actualizan cuerpo, anexos y T-12 desde las inclusiones activas de `Descargas/03_esquema_solucion_alcance/03_esquema_solucion_alcance`; se añade SD3 3.4.2.1 y matriz de actores, y se realiza en la lógica del SD4 y Anexo 4-N. CD-05 se incorpora a reglas, contratos, volumen y pruebas. Las diferencias de precio, capacidad, figuras y continuidad se registran en `04_arquitectura/COHERENCIA_SD3_SD4_2026-10-05.md`. Física, centros de datos, memoria y T-11 conservan su contenido. `md para drive/` es una exportación no versionada y antigua. Los textos siguientes son historia de sesión; no sustituyen esta ampliación ni la autorización de commit/push.
+
 Este archivo mantiene el contexto mínimo y vigente para trabajar en la rama `branch-md` del repositorio LafroX sin completar vacíos mediante suposiciones. Debe leerse junto con `AGENTS.md` al iniciar o retomar una sesión.
 
 ## Identidad y protocolo

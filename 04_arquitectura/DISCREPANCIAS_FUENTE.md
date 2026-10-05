@@ -1,5 +1,7 @@
 # LafroX — Discrepancias conservadas de la fuente
 
+Actualización del 5 de octubre de 2026: la lógica y sus anexos incorporan correcciones de diseño autorizadas y dejan de ser una conversión literal de la fuente indicada abajo. El registro vigente de cambios y dependencias es [Coherencia SD3–SD4](COHERENCIA_SD3_SD4_2026-10-05.md); el contenido siguiente conserva las observaciones de la conversión original.
+
 Fecha: 3 de octubre de 2026. Fuente fijada: `rama-latex`, `732a9d6688569bf981594c2e21c47a167b8f8ba7`.
 
 La sincronización conserva el texto efectivo del fuente. Este registro distingue problemas documentales de la fuente de errores de conversión. No se atribuye aprobación contractual, revisión humana ni ejecución de ensayos a la conversión.

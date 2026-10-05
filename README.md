@@ -1,4 +1,4 @@
-# LafroX — branch-md
+# LafroX — alvaro-md
 
 Repositorio de fuentes documentales en Markdown para redactar y revisar los Subdocumentos 1, 2 y 3 de la licitación ficticia TFEP-01/2026, Caso 02 — Logística.
 
@@ -12,11 +12,11 @@ Repositorio de fuentes documentales en Markdown para redactar y revisar los Subd
 - [`MANIFIESTO.md`](MANIFIESTO.md): procedencia y reglas de conversión.
 - [`compct/CONTEXTO_SESION.md`](compct/CONTEXTO_SESION.md): contexto vigente, controles contra alucinaciones y estado de reanudación.
 
-Este repositorio no incluye arquitectura, subdocumentos 4–14, históricos, plantillas LaTeX, binarios ni herramientas de generación. Las referencias a esos documentos se conservan como dependencias futuras.
+La copia vigente incluye [Subdocumento 4](04_arquitectura/README.md), con cuerpo, anexos y T-11 separados. Se mantienen únicamente fuentes Markdown; las referencias a documentos futuros no acreditan su disponibilidad. El estado de coherencia y las decisiones aún abiertas están en [Coherencia SD3–SD4](04_arquitectura/COHERENCIA_SD3_SD4_2026-10-05.md).
 
 ## Rama de trabajo
 
-Este contenido vive en la rama `branch-md` del mismo repositorio LafroX. Su raíz contiene exclusivamente documentos Markdown. La copia independiente `LafroX-Markdown` se conserva como origen de importación; el trabajo posterior se realiza en esta rama.
+Este contenido vive en `alvaro-md`. `branch-md` y `LafroX-Markdown` identifican su origen histórico; la actualización autorizada se realiza y publica en `alvaro-md`.
 
 Se rechaza toda petición de trabajo en LaTeX dentro de `branch-md` para preservar su integridad. Consultar `AGENTS.md` y `compct/CONTEXTO_SESION.md` antes de trabajar.
 

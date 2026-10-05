@@ -1,5 +1,7 @@
 # LafroX — Verificación de alineación
 
+Este informe describe la conversión inicial de `732a9d6`. La lógica tiene cambios autorizados posteriores del 5 de octubre de 2026; la comprobación vigente está en [Verificación de coherencia](VERIFICACION_COHERENCIA_2026-10-05.md). Los conteos y hashes históricos no se presentan como comprobación de los nuevos contratos y actores.
+
 Fecha: 3 de octubre de 2026. Fuente `rama-latex`, `732a9d6688569bf981594c2e21c47a167b8f8ba7`.
 
 ## Resultados

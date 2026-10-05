@@ -206,18 +206,18 @@ La matriz asigna a cada módulo su requisito funcional, su responsabilidad, su i
 
 | **Módulo / RF** | **Responsabilidad** | **Interfaz principal** | **Actor principal** | **Etapa** |
 | --- | --- | --- | --- | --- |
-| M1 Recepción / RF-01 | Lote y recepción GS1. | Evento a M2; ACL con ERP. | Recepcionista; proveedor. | 1 |
-| M2 Inventario / RF-02 | Movimientos por sitio, reserva central y FEFO. | Consulta de M3/M5. | Jefatura de bodega. | 1 |
-| M3 Preventa / RF-03 | Pedido y precio informado de preventa y autoatención. | Reserva en M2; sincronización. | Preventista; cliente. | 1 |
-| M4 Rutas / RF-04 | Secuencia y restricciones. | Ruta aprobada a M6. | Planificador. | 1 |
-| M5 Preparación / RF-05 | Misión y carga confirmada. | Guía nocturna vía `erp-sync` y ACL en VM-04. | Preparador; jefatura. | 1 |
-| M6 Reparto / RF-06 | Entrega y POD. | Evento a M7/M8. | Conductor propio o externo. | 1 |
-| M7 Rendición / RF-07 | Cobro y descuadre. | ACL al ERP; evento a M10. | Conductor; Tesorería. | 1 |
-| M8 Devoluciones / RF-08 | Retorno y saldo de envases. | Evento a M2/M7. | Conductor; bodega. | 1 |
-| M9 Calidad / RF-09 | Lote, frío y bloqueo. | Bloqueo a M5; alerta. | Jefatura de Calidad. | 1 |
-| M10 Analítica / RF-11 | OTIF y costo de servir. | Consume eventos sin escribir. | Gerencias. | 2 |
-| M11 Canal moderno / RF-12 | Pedido EDI y excepciones. | Contrato por cadena; M3. | Cadena; equipo comercial. | 2 |
-| M12 Flota / RF-14 | Ruta real y desviación. | GPS a M4/M10. | Planificador; flota. | 2 |
+| M1 Recepción / RF-01 | Lote y recepción GS1. | Evento a M2; ACL con ERP. | Jefa de Bodega; Proveedor. | 1 |
+| M2 Inventario / RF-02 | Movimientos por sitio, reserva central y FEFO. | Consulta de M3/M5. | Jefa de Bodega. | 1 |
+| M3 Preventa / RF-03 | Pedido y precio pactado; autoatención por canal M11. | Reserva coordinada en M2; sincronización. | Preventista; clientes autorizados. | E1; autoatención E2 |
+| M4 Rutas / RF-04 | Secuencia y restricciones. | Ruta aprobada a M6. | Planificador de Rutas. | 1 |
+| M5 Preparación / RF-05 | Misión y carga confirmada. | Guía nocturna vía `erp-sync` y ACL en VM-04. | Preparador; Jefa de Bodega. | 1 |
+| M6 Reparto / RF-06 | Entrega y POD. | Evento a M7/M8. | Conductor propio; Conductor externo. | 1 |
+| M7 Rendición / RF-07 | Cobro y descuadre. | ACL al ERP; evento a M10. | Conductor propio; Conductor externo; Gerente de Finanzas. | 1 |
+| M8 Devoluciones / RF-08 | Retorno y saldo de envases. | Evento a M2/M7. | Conductor propio; Conductor externo; Jefa de Bodega. | 1 |
+| M9 Calidad / RF-09 | Lote, frío y bloqueo. | Bloqueo a M5; alerta. | Jefa de Calidad. | 1 |
+| M10 Analítica / RF-11 | OTIF operacional y costo de servir. | Consume eventos sin escribir. | Gerente Comercial; Gerente de Finanzas; Gerente de Operaciones; Jefa de Calidad. | E1 OTIF; E2 costo |
+| M11 Canal moderno / RF-12 | Pedido EDI y excepciones. | Contrato por cadena; M3. | Cliente del canal moderno; Gerente Comercial. | 2 |
+| M12 Flota / RF-14 | Ruta real y desviación; datos para costo. | GPS a M4/M10. | Planificador de Rutas; Gerente de Operaciones. | E1; costo E2 |
 
  Fuente: elaboración propia de LafroX a partir de Caso 02, requerimientos funcionales y alcance del capítulo 3.
 
@@ -344,6 +344,14 @@ Modo asíncrono por OTLP. Presupuesto de diseño: 13.000 eventos/día en régime
 
  Fuente: elaboración propia; Caso 02, cap. 14, y RT-05.21. Las tasas de consultas son supuestos de ensayo explícitos; su calibración exige medición.
 
+### Coordinación de reserva y retención — desarrollo de INT-03/04
+
+Modo asíncrono con respuesta durable requerida para confirmar el pedido. M2 central publica solicitudes a una cola FIFO por sitio que el shipper consume mediante conexión saliente; M2 local valida y retiene, y su outbox retorna el acuse por INT-03/04. Contrapartes: M2 central y custodio local del sitio solicitado; disponibilidad requerida durante toma/confirmación de pedidos y liberación de reservas. El timeout de transporte de 30 segundos deja la operación pendiente o incierta, nunca confirmada por ausencia de respuesta. La latencia de negocio se prueba contra el umbral de confirmación aplicable, sin equipararla a ese timeout.
+
+Cada sobre JSON versionado lleva UUID, correlación, sitio, época, lote, ubicación, cantidad y tipo (retener, liberar, resultado). Consumidor exclusivo por sitio, IAM de mínimo privilegio, validación de esquema y auditoría identifican su autoridad. Una repetición devuelve el resultado persistido; una época obsoleta o incompatibilidad de esquema va a excepción. Durante corte el sitio conserva retenciones; la nube no confirma ni libera sin acuse durable. Al reconectar se consulta por clave y se reconcilia el resultado antes de reintentar.
+
+Volumen adicional: dos mensajes por reserva y dos por liberación, 2N + 2L antes de reintentos. Como sensibilidad explícita, si cada línea origina una retención, los 260.000 registros mensuales y 31.000 pedidos/1.400 entregas = 22,142857 días equivalentes producen N = techo(260.000 ÷ 22,142857) = 11.742 en régimen y techo(260.000 ÷ 22,142857 × 2.600/1.400) = 21.807 en peak. El incremento sin liberaciones es 23.484/43.614 mensajes/día. Una línea dividida entre lotes o sitios puede requerir más retenciones; N, L y reintentos se medirán por sitio. Es un escenario de sensibilidad explícito, no un máximo ni una medición. Este intercambio no duplica los movimientos físicos de INT-03 ni sus cuatro operaciones de INT-04.
+
 <a id="h-04-anexos-logica-partes-09-anexo-4-1-h-catalogo-de-interfaces-externas-tex-11"></a>
 
 ## Anexo 4-H — Catálogo de interfaces externas
@@ -437,6 +445,8 @@ Esta síntesis permite contrastar órdenes de magnitud. Los anexos 4-G y 4-H son
 
  Fuente: elaboración propia de LafroX a partir de Caso 02, numeral 14.1; cálculos indicados en la columna de derivación.
 
+La coordinación de retenciones añade 2N + 2L mensajes/día a la línea base de 178.661/260.155. Bajo el escenario de una retención por línea y sin liberaciones, el total lógico llega a 202.145/303.769; reintentos, liberaciones y distribución horaria se añaden por medición. El Anexo 4-W mantiene la memoria publicada de la línea base: debe recalcular colas, enlaces y capacidad para este intercambio antes de producción. Estas cifras no acreditan dimensionamiento físico actualizado.
+
 <a id="h-04-anexos-logica-partes-11-anexo-4-1-j-funciones-sin-conexion-tex-14"></a>
 
 ## Anexo 4-J — Funciones sin conexión
@@ -478,13 +488,13 @@ La tabla fija, para cada conflicto de negocio, la regla que lo resuelve, el luga
 
 | **Conflicto** | **Regla de resolución** | **Dónde se ejecuta** | **Bitácora Art. 16.4** | **Dec. / ADR** |
 | --- | --- | --- | --- | --- |
-| Doble reserva stock (preventa offline vs online) | M2 confirma una sola reserva; la otra queda en excepción con aviso, sin resolver por la última marca de tiempo. | Capa 4 (M2/M3) | Pedido, stock, regla, resultado y hora. | Decisión 16.1 N° 8; RT-03.12 |
+| Doble reserva stock (preventa offline vs online) | M2 ordena por recepción central y correlativo de desempate; confirma solo tras retención local durable. La solicitud no cubierta queda en excepción con aviso. | Capa 4 (M2/M3) | Pedido, stock, regla, resultado y hora. | Decisión 16.1 N° 8; RT-03.12 |
 | Pedido duplicado (reenvío offline) | M3 conserva el UUID y devuelve el resultado ya persistido, sin volver a reservar ni cobrar. | Capa 4 (M3) | transaction_id, event_id y resultado previo. | RT-02.06 |
 | Entrega offline vs cancelación back-office | M6 aísla el conflicto: compara estado y evidencia; un supervisor resuelve antes de ajustar cobro o DTE. | Capa 4 (M6/M7) | Entrega, cancelación, POD y decisión motivada. | Decisión 16.1 N° 1 |
 | Excursión térmica detectada offline | M9 bloquea localmente la salida; solo Calidad libera tras evaluación. | Capas 2 y 4 (M9/M5) | Sensor, umbral, lote, bloqueo y liberación. | Decisión 16.1 N° 4 |
 | Rendición conductor offline vs ERP caído | M7 conserva la captura en el dispositivo hasta reconexión; el sitio retiene sus propios eventos en RabbitMQ; `erp-sync` en VM-04 consume RabbitMQ local y SQS por salida, y reintenta con cortacircuito | Capa 1 (dispositivo) + Capa 4 (M7) + Capa 5 + ACL | conductor_id, monto, causal descuadre, reintentos ERP | INT-06, RT-10.08 |
 | Conflicto envases (conductor devuelve vs cliente niega) | Cuenta corriente por cliente (saldo, no unidad); registro EnvaseMovido con firma/QR conductor; disputa → bandeja excepciones | Capa 4 (M8) | cliente_id, tipo envase, firma/QR, decisión (saldo actualizado) | Decisión 16.1 N° 10 |
-| Cambio de precio entre captura y confirmación | M3 conserva la tarifa mostrada; si cambió antes de confirmar, solicita aceptación o autorización comercial, sin cambiar silenciosamente el pedido | M3 + M7 | pedido_id, tarifa inicial y vigente, respuesta del cliente | Decisión 16.1 N° 9 |
+| Cambio de precio entre captura y confirmación | M3 conserva el precio pactado bajo condiciones autorizadas (RNG-08 SD3); una lista posterior no lo cambia. Una propuesta offline fuera de esas condiciones queda en excepción sin sustitución silenciosa | M3 + M7 | pedido_id, tarifa inicial y vigente, respuesta del cliente | Decisión 16.1 N° 9 |
 | Devolución tras guía emitida | M8 conserva cantidad, lote y causal; el ERP decide y emite el documento tributario posterior mediante ACL | M8 + ACL | entrega_id, guía original, devolución, documento resultante | Decisión 16.1 N° 12 |
 
  Fuente: elaboración propia de LafroX a partir de Caso 02, decisiones 16.1, y RT-03.12.
@@ -505,13 +515,13 @@ La tabla conserva el número y la pregunta de cada decisión del numeral 16.1 de
 | --- | --- | --- | --- |
 | 1 | Entrega parcial e indicador de servicio | M6 distingue entregado completo, parcial y no entregado; M10 calcula OTIF por pedido completo y ventana acordada. | Criterio comercial |
 | 2 | Unidad de trazabilidad sanitaria | M9 traza GTIN y lote proveedor; M1/M5 vinculan cada movimiento a SSCC. | Unidad con Calidad |
-| 3 | Local cerrado y responsable del reintento | M6 registra causal y evidencia; la regla de reintento se parametriza y supervisa por Operaciones. | Plazo y autoridad |
-| 4 | Excursión térmica, decisión y bloqueo | M9 aplica umbral por producto; M5 bloquea localmente y Calidad autoriza liberar o descartar. | Umbrales con Calidad |
-| 5 | Identidad y sustitución de conductor externo | Portal Transportistas registra vínculo empresa–conductor–turno; OTP inicial y revocación al cambio; M6 conserva autor de cada POD. | Procedimiento transportista |
+| 3 | Local cerrado y responsable del reintento | M6 registra intento, causal y evidencia; reagenda a la siguiente ventana y retorna al CD si persiste ausencia, sin entrega a terceros (RNG-05 SD3). | Plazo y autoridad |
+| 4 | Excursión térmica, decisión y bloqueo | M9 aplica umbral y duración por producto: advertencia menor/transitoria, retención crítica/sostenida en M2/M5; Calidad dispone liberación, bloqueo o rechazo. | Umbrales con Calidad |
+| 5 | Identidad y sustitución de conductor externo | Despacho registra vínculo personal empresa–conductor–vehículo–turno en E1; el portal lo habilita al representante en E2. OTP inicial, revocación y autoría individual de cada POD. | Procedimiento transportista |
 | 6 | Efectivo y riesgo del dinero en ruta | M7 conserva cobro y rendición individual con causal de diferencia; Puelche define custodia y límite por turno. | Política de Tesorería |
 | 7 | Costo de servir y clientes no rentables | M10 calcula costo por entrega con ruta, tiempo, devoluciones y envases; Comercial decide medidas, no el algoritmo. | Criterio comercial |
-| 8 | Dos preventistas comprometen el mismo stock | M2 confirma reserva central; M3 deja sin confirmar el pedido sin conexión y comunica rechazo o sustitución al sincronizar. | Prioridad comercial |
-| 9 | Precio cambia antes del despacho | M3 conserva precio informado y versión de tarifa; una diferencia genera revalidación y aviso antes de confirmar. | Política de precios |
+| 8 | Dos preventistas comprometen el mismo stock | M2 central confirma tras retención local durable, por recepción y correlativo; M3 conserva sin confirmar el pedido offline y comunica quiebre al sincronizar. | Orden de recepción y desempate RNG-01 |
+| 9 | Precio cambia antes del despacho | M3 conserva precio pactado y versión de condiciones; el cambio posterior de lista no altera lo acordado (RNG-08 SD3). | Política de precios |
 | 10 | Control de envases retornables | M8 registra saldo por cliente, tipo y movimiento con evidencia; se concilia en la rendición. | Modalidad de cargo |
 | 11 | Maestro de productos ante cambios del proveedor | M1 ingresa equivalencia GTIN/formato; el maestro autorizado se sincroniza mediante ACL con ERP y preserva historial. | Dueño del maestro |
 | 12 | Devolución y DTE ya emitido | M8 registra devolución y causal; ACL solicita al ERP el documento tributario que corresponda, enlazado al original. | Regla tributaria |
@@ -652,6 +662,35 @@ Los siguientes 37 identificadores complementan los doce módulos: el inventario 
 | DEV-PIPE | CI/CD y SBOM | plataforma | Artefacto firmado | Promoción por contrato |
 | DEV-IAC | Terraform / Ansible | infraestructura | Estado y configuración | Propietario único |
 | DEV-MDM | Gestión de terminales | seguridad | Enrolamiento | Política y borrado |
+
+
+<a id="matriz-actores-sistema"></a>
+
+### Correspondencia de actores y permisos del sistema
+
+La siguiente matriz realiza el catálogo del apartado 3.4.2.1 del Subdocumento 3. Las acciones se autorizan individualmente sobre el ámbito indicado; ni el cargo ni el acceso a una consola conceden permisos completos sobre el módulo. Las funciones de recepción, despacho, catálogo y Tesorería requieren asignación nominada y segregación, conservando los quince actores funcionales.
+
+| Actor del sistema | Interfaz y módulos | Acciones autorizables | Ámbito y separación | Etapa |
+| --- | --- | --- | --- | --- |
+| Preventista | App preventa; M3, lectura M2/M7 | Consultar stock/crédito, capturar pedido y sincronizar. | Cartera asignada; no reserva firme offline ni aprueba su excepción. | E1 |
+| Conductor propio | App reparto; M6/M7/M8 | Registrar entrega, POD, cobro, retorno y envases. | Ruta/vehículo/turno; no aprueba su descuadre ni libera lote. | E1 |
+| Conductor externo | App reparto; M6/M7/M8 | Operaciones de su entrega y rendición. | Identidad personal vinculada a empresa y turno; sin cuenta compartida. | E1 |
+| Preparador | App bodega/HHT; M5 y M1/M2 autorizados | Confirmar lecturas y faltantes; recepción/movimientos solo con permiso específico. | Sitio, misión y turno; no levanta bloqueo de Calidad. | E1 |
+| Cliente del canal tradicional | Portal opcional; canal M11, M3/M6/M7 | Armar pedido y consultar entrega, documentos y saldo propios. | Cliente autenticado; compra asistida sin cuenta desde E1. | E2 |
+| Cliente del canal moderno | Portal y conector EDI; M11/M3/M6/M7 | Pedido y consulta; mensajes EDI por contrato. | Empresa/cadena; sesión humana separada de identidad técnica. | E2 |
+| Empresa transportista | Portal mediante representante; M11/M4/M6/M12 | Consultar rutas/documentos y confirmar conductor/vehículo. | Solo su empresa; no firma POD por el conductor ni liquida contratos. | E2; despacho registra asignación en E1. |
+| Proveedor | Portal mediante representante; M11/M1 | Consultar órdenes y recepciones propias. | Solo su organización; lectura, sin aprobar recepción ni stock. | E2 |
+| Jefa de Calidad | Consola Calidad; M9, acciones M2/M5 | Parametrizar umbral/duración, evaluar, liberar/bloquear y retirar. | Lote/instalación; disposición sanitaria exclusiva y auditada. | E1 |
+| Gerente Comercial | Consola comercial; M3/M7/M10/M11 | Gestionar reglas/excepciones autorizadas y consultar indicadores. | Política, cartera y canal; historial de regla y aprobación. | E1; canal moderno/costo en E2. |
+| Gerente de Finanzas | Consola financiera; M7/M10 | Supervisar rendición y reglas; consultar costo de servir. | Función Tesorería nominada; registrador no aprueba su diferencia. | E1; costo en E2. |
+| Planificador de Rutas | Consola rutas; M4/M12 | Generar, corregir y aprobar ruta; consultar recorrido. | Restricción y motivo auditados; no altera cobros ni libera lotes. | E1 |
+| Jefe de TI | Consola administración; base compartida | Identidad/configuración, integraciones y observabilidad. | Privilegio temporal, MFA y auditoría; permisos de negocio segregados. | E1/E2 |
+| Gerente de Operaciones | Consola operacional; M2/M4/M5/M6 y consultas M9/M10/M12 | Supervisar despacho y gestionar excepciones operacionales. | Sitio/operación; no omite guía ni liberación sanitaria. | E1; ampliaciones en E2. |
+| Jefa de Bodega | Consola bodega; M1/M2/M5/M8 | Supervisar recepción, inventario, FEFO, preparación y retornos. | Sitio y función; ajustes justificados, guía y Calidad independientes. | E1 |
+
+Fuente: Subdocumento 3, Figura 3.4, apartado 3.4.2.1 y Anexo 3.I; catálogo coordinado con su redactor comunicado por el equipo. La tabla define autorización de diseño, no acredita aprobación del CLIENTE ni pruebas ejecutadas.
+
+Las pruebas comprueban acceso permitido y denegado por actor, intento de consulta a otra empresa o ruta, elevación de TI, separación registrador/aprobador y expiración de turno. Las identidades externas tienen registro, verificación y recuperación seguros; OTP de alta no sustituye el ciclo de recuperación. Los componentes físicos de identidad existentes realizan estos controles. Se comprueba la definición textual contra los rótulos de las figuras antes de la publicación gráfica final; las imágenes fijadas al commit de origen no se consideran actualizadas por cambiar esta matriz.
 
 <a id="h-04-anexos-logica-partes-18-anexo-4-1-o-decisiones-logicas-tex-24"></a>
 
@@ -1336,6 +1375,15 @@ Las pruebas siguientes se ejecutan en Preproducción y antes de la ola aplicable
  Fuente: elaboración propia.
 
 AL-DTE-01 comprueba ambas rutas de las 96 guías, la preemisión nocturna, la invalidación por cambio de carga y la nueva emisión del ERP ante el SII por fibra, LTE o Starlink en espera caliente. AL-OFF-01 comprueba por separado el despacho con guía válida preemitida. AL-DR-01 mide la extracción continua y la recuperación del WMS de Talca en ECS Fargate; el límite residual se desarrolla en 4.3.2. Los resultados de todas las pruebas se vinculan a los requisitos y al registro ADR del Anexo 4-O.
+
+
+### AL-STOCK-01 — Confirmación central con custodia local
+
+En PREPROD se solicita la última unidad concurrentemente desde preventa, portal y EDI; se corta enlace antes y después del commit local, se pierde el acuse, se repite UUID, se cancela durante aislamiento y se presenta una época obsoleta. Solo se confirma una reserva con retención durable de igual identidad/época/cantidad; disponible no queda negativo; timeout no confirma; preparación consume la retención y una cancelación tardía no libera lo consumido. La prueba mide p95 de confirmación con la latencia central–sitio, edad de cola y recuperación; conserva acta, estado central/local y correlación. Los resultados se trazan a RNG-01, RF-03.03, RT-02.06 y RT-03.12. Una descripción de prueba no acredita su ejecución.
+
+### AL-ACT-01 — Autorización de los quince actores
+
+Se prueba cada fila del Anexo 4-N con una operación permitida y una denegada; cruce de empresa/ruta, credencial del representante usada como conductor, rol TI intentando aprobación de negocio, aprobación de descuadre propio, baja y relevo offline. Se comprueba portal solo en su etapa, cliente tradicional asistido sin cuenta y aislamiento del catálogo público sin precios. El resultado esperado es autorización por acción/recurso con auditoría personal y sin credenciales compartidas. Se conserva evidencia por actor, requisito, versión de política y etapa, vinculada a SD3 3.4.2.1 y RT-12.05/06/12.
 
 <a id="h-04-anexos-fisica-16-anexo-4b-memoria-calculo-tex-56"></a>
 

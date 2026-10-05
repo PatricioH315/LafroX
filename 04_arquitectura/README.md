@@ -1,5 +1,7 @@
 # LafroX — Subdocumento 4 alineado
 
+Estado vigente: 5 de octubre de 2026. La lógica se actualiza con SD3 de Descargas y los quince actores validados; reglas, permisos, contratos y pruebas quedan en [Coherencia SD3–SD4](COHERENCIA_SD3_SD4_2026-10-05.md). `732a9d6` es la procedencia de conversión inicial; física, centros de datos y memoria conservan aquella fuente, mientras la lógica tiene cambios de diseño posteriores. Mantener partes y consolidados en conjunto y no sobrescribirlos con el generador histórico.
+
 Versión Markdown del contenido ensamblado de `rama-latex`, commit `732a9d6688569bf981594c2e21c47a167b8f8ba7`, sincronizada el 3 de octubre de 2026 en `alvaro-md`.
 
 | Entrega | Documento |
