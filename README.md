@@ -5,14 +5,14 @@ Repositorio de fuentes documentales en Markdown para redactar y revisar los Subd
 ## Contenido
 
 - [`Bases/`](Bases/): cuatro documentos rectores y su precedencia normativa.
-- [`01_presentacion_empresa/`](01_presentacion_empresa/): Subdocumento 1, anexos y Formulario T-6 independiente.
+- [`01_presentacion_empresa/`](01_presentacion_empresa/): Subdocumento 1 y Formulario T-6 independiente; sin archivo de anexos complementarios.
 - [`02_problema_necesidad/`](02_problema_necesidad/): Subdocumento 2 y anexos.
 - [`Requerimientos/`](Requerimientos/): los tres catálogos CSV originales convertidos íntegramente a tablas Markdown.
 - [`Revision/`](Revision/): prompt de revisión del Informe 2 adaptado a fuentes Markdown.
 - [`MANIFIESTO.md`](MANIFIESTO.md): procedencia y reglas de conversión.
 - [`compct/CONTEXTO_SESION.md`](compct/CONTEXTO_SESION.md): contexto vigente, controles contra alucinaciones y estado de reanudación.
 
-La copia vigente incluye [Subdocumento 4](04_arquitectura/README.md), con cuerpo, anexos y T-11 separados. Se mantienen únicamente fuentes Markdown; las referencias a documentos futuros no acreditan su disponibilidad. El estado de coherencia y las decisiones aún abiertas están en [Coherencia SD3–SD4](04_arquitectura/COHERENCIA_SD3_SD4_2026-10-05.md).
+La carpeta `04_arquitectura/` contiene exclusivamente [Subdocumento 4](04_arquitectura/LAFROX-Subdocumento4.md), [anexos](04_arquitectura/LAFROX-Subdocumento4-Anexos.md) y [Formulario T-11](04_arquitectura/LAFROX-Formulario-T-11.md). Las decisiones pendientes de coherencia se conservan en el contexto general de sesión; los documentos futuros no se consideran disponibles por mencionarlos.
 
 ## Rama de trabajo
 
@@ -29,4 +29,4 @@ Se rechaza toda petición de trabajo en LaTeX dentro de `branch-md` para preserv
 Se conservan las discrepancias de requerimientos por instrucción del usuario. Los catálogos originales de `Requerimientos/` no fueron reemplazados.
 
 
-La coordinación de reserva comercial y custodia física se precisa en [CD-05](04_arquitectura/COMPLEMENTO_COORDINACION_DATOS_SD5.md), añadido al ejecutar la mejora del Subdocumento 5 el 3 de octubre de 2026.
+La coordinación de reserva comercial y custodia física está integrada en el [Subdocumento 4](04_arquitectura/LAFROX-Subdocumento4.md#coordinacion-reserva-custodia) y en sus anexos G, I, N y V. Los registros de conversión y copias por partes se conservan en el historial Git, fuera de la estructura vigente de entregables.

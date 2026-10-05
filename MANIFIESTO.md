@@ -2,7 +2,7 @@
 
 ## Actualización vigente — 5 de octubre de 2026
 
-El usuario autorizó actualizar SD3 desde Descargas y realizar su coherencia con la lógica del SD4 en `alvaro-md`. Se conservan únicamente Markdown. [Manifiesto SD3](03_esquema_solucion_alcance/MANIFIESTO_ACTUALIZACION_2026-10-05.md) registra inclusiones activas, huellas y comprobaciones; [Coherencia SD3–SD4](04_arquitectura/COHERENCIA_SD3_SD4_2026-10-05.md) registra los cambios de diseño y dependencias. Los registros posteriores de este archivo corresponden a importaciones históricas; sus conteos no describen la versión actual.
+El usuario autorizó actualizar SD3 desde Descargas y realizar su coherencia con la lógica del SD4 en `alvaro-md`. La implementación fue publicada en `26c345c`; el historial de ese commit conserva las fuentes, huellas y comprobaciones. Por petición posterior se retiran los manifiestos de capítulo, registros auxiliares y copias por partes: SD3 y SD4 conservan únicamente cuerpo, anexos y formulario. Las dependencias de diseño están en el contexto general de sesión. Los registros posteriores de este archivo corresponden a importaciones históricas; sus conteos no describen la versión actual.
 
 ## Alcance
 
@@ -12,7 +12,7 @@ La conversión se realizó desde el repositorio LafroX vigente. No constituye re
 | --- | --- | --- |
 | `Bases/*.md` | Los cuatro Markdown de `Bases/` | Copia íntegra, sin reescritura. |
 | `01_presentacion_empresa/LAFROX-Subdocumento1.md` | `contenido.tex` y `tablas/equipo.tex` | Conversión de estructura, listas y tablas; organigrama transcrito a descripción textual. |
-| `01_presentacion_empresa/LAFROX-Subdocumento1-Anexos.md` | `anexos.tex` | Conversión directa. |
+| Anexo informativo del Subdocumento 1, retirado | `anexos.tex` | La copia histórica queda en Git; SD1 conserva cuerpo y T-6 independiente. |
 | `01_presentacion_empresa/LAFROX-Formulario-T-6.md` | `LAFROX-Formulario-T-6.tex` | Formulario independiente convertido a tabla Markdown. |
 | `02_problema_necesidad/LAFROX-Subdocumento2.md` | `contenido.tex`, `tablas/actores.tex` y `tablas/supuestos.tex` | Conversión de estructura, listas y tablas; seis procesos AS-IS transcritos a descripciones textuales. |
 | `02_problema_necesidad/LAFROX-Subdocumento2-Anexos.md` | `anexos.tex` | Conversión de los listados detallados a tablas Markdown. |

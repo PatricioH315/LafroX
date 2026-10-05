@@ -1,6 +1,6 @@
 # LafroX — Formulario T-11
 
-[Cuerpo](LAFROX-Subdocumento4.md) · [Anexos](LAFROX-Subdocumento4-Anexos.md) · [T-11](LAFROX-Formulario-T-11.md) · [Procedencia](MANIFIESTO_ALINEACION.md)
+[Cuerpo](LAFROX-Subdocumento4.md) · [Anexos](LAFROX-Subdocumento4-Anexos.md) · [T-11](LAFROX-Formulario-T-11.md)
 
 ## Índice
 
