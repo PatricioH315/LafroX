@@ -174,7 +174,7 @@ El ERP de 2017 se conserva como única fuente de verdad tributaria y único emis
 
 La integración con las cadenas del canal moderno se resuelve con un hub EDI centralizado en nube. Utiliza mensajes comerciales EANCOM y GS1 XML, y eventos EPCIS para trazabilidad. Cada cadena dispone de un conector configurable, una tabla de equivalencias GTIN (RF-12.03) y una bandeja de excepciones (RF-12.06). El hub transforma los mensajes al modelo canónico y entrega al ERP, exclusivamente mediante la ACL, la información necesaria para sus documentos, incluida la guía de despacho electrónica (GDE). AS2 es uno de los transportes del hub. El canal moderno debe quedar operativo a más tardar en enero de 2029.
 
-\paragraph{Eventos canónicos del dominio.}
+\paragraph{Eventos canónicos del dominio}
 \label{subsubsec:eventos-canonicos}
 
 Los eventos son el vocabulario del sistema. Se nombran en pasado, son inmutables y llevan \texttt{event\_id} (UUID), \texttt{occurred\_at}, \texttt{site\_id} y \texttt{transaction\_id}. El catálogo de eventos canónicos del dominio se presenta en el Anexo 4-A. Cada evento declara productor único, consumidores registrados, clave de partición y política de reintento, y su origen se traza a un requisito del caso o a una decisión del numeral 16.1.
@@ -183,7 +183,7 @@ Los eventos son el vocabulario del sistema. Se nombran en pasado, son inmutables
 
 Los esquemas AsyncAPI 2.6 versionados por evento se gobiernan desde el Catálogo de interfaces (\S~\ref{sec:catalogo-interfaces}); \texttt{transaction\_id} conserva la correlación entre los módulos consumidores.
 
-\paragraph{Orquestación y coreografía.}
+\paragraph{Orquestación y coreografía}
 M3 coordina de manera síncrona la confirmación de un pedido y solicita a M2 una reserva: necesita una respuesta única y visible para el preventista. Cuando el pedido queda confirmado, publica \texttt{PedidoConfirmado}; M4, M5 y M10 reaccionan a ese hecho; M11 también lo consume solo para pedidos de cadenas, a fin de responder a la cadena mediante su propio consumidor. Esa coreografía evita que M3 conozca el horario de preparación o el esquema analítico. La publicación se registra junto con el cambio de estado mediante una bandeja transaccional de salida (\textit{outbox}); el consumidor confirma su progreso solo después de persistir su resultado. Si falla un consumidor, la cola reintenta y termina en una bandeja de excepción, sin deshacer a ciegas el pedido ya confirmado.
 
 El despacho tiene una coordinación distinta: M5 no libera la carga hasta recibir el resultado de M9 sobre el lote y la guía emitida por el ERP a través de la ACL. Una excursión térmica bloquea localmente la salida aun con el enlace caído; solo Calidad puede liberar el lote tras evaluación registrada. El conductor informa la incidencia y conserva la carga, pero no aprueba su liberación sanitaria. Las Figuras~\ref{fig:arql-15} y \ref{fig:arql-16} recorren el pedido con y sin conexión y hacen visible dónde cambia una captura sin confirmar a una operación confirmada.
@@ -208,14 +208,14 @@ Con conexión, M2 devuelve una reserva explícita y M5 no comienza a preparar un
 
 Sin conexión, la aplicación conserva la intención de compra, no una reserva firme. El mismo UUID viaja en todos los reintentos; M3 y M2 producen un resultado durable con la regla y la causal de excepción. Si se pierde el acuse de respuesta, el dispositivo conserva el evento y pregunta por ese UUID antes de eliminarlo. Solo un pedido confirmado alimenta M5, lo que permite explicar al cliente un faltante sin duplicar la venta.
 
-\paragraph{Contratos de integración.}
+\paragraph{Contratos de integración}
 \label{subsubsec:contratos-integracion}
 
 Las APIs síncronas se describen en OpenAPI 3.1 por módulo y versión mayor. Cada operación declara dueño, esquema de solicitud y respuesta, identidad requerida, errores de negocio, límites de tasa y fecha de retirada. El Gateway valida la entrada, pero la decisión de negocio y la idempotencia pertenecen al servicio. Las interfaces de sincronización \texttt{/sync/v1} reciben lotes con UUID por operación y devuelven un resultado individual, de modo que un error de una entrega no obligue a repetir todas las demás.
 
 Los eventos se describen en AsyncAPI 2.6 con productor único, consumidores, clave de partición, versión, política de reintento y cola de fallidos. Los mensajes viajan al menos una vez: cada consumidor deduplica por \texttt{event\_id} y preserva orden dentro del agregado que lo exige. OAuth con PKCE protege clientes interactivos; mTLS y credenciales rotadas protegen servicios. \texttt{transaction\_id} enlaza llamada, evento, resultado y evidencia de auditoría.
 
-\paragraph{Capa anticorrupción y sustitución del WMS.}
+\paragraph{Capa anticorrupción y sustitución del WMS}
 \label{subsubsec:acl-estrangulamiento}
 
 \textbf{Frontera única del ERP (A-04).} El ERP de 2017 no tiene documentación de interfaces. En vez de descubrir su forma real dentro de cada módulo, se levanta una sola frontera: la ACL expone hacia adentro un contrato OpenAPI 3.1 propio de Puelche y absorbe hacia afuera la forma del ERP. Consecuencias:
@@ -235,7 +235,7 @@ Misiones picking HHT & M5 & 2 & Azul-verde / feature flag \\
 Conteo cíclico & M2 & 2--3 & Paralelo + comparación / feature flag \\
 \end{tablalafrox}
 
-{\footnotesize Fuente: Anexo 4-O, ADR-08, y Caso 02, decisión 16.1 N\textdegree{} 14.\par}
+{\footnotesize Fuente: Anexo 4-O, ADR-08, y PUCV (2026a, cap.~16, p.~29), decisión 14.\par}
 
 La sustitución por olas permite comprobar cada capacidad antes de retirar la precedente.
 
@@ -243,7 +243,7 @@ No se mantiene el WMS 2013 como sistema operativo en producción tras la Etapa 1
 
 \textbf{Hub EDI GS1 (ADR-11).} Una cadena nueva se incorpora por configuración de perfil (equivalencias GTIN por cadena, RF-12.03), no por desarrollo. El hub mapea cada cadena contra un modelo canónico GS1, no contra el ERP; así evita construir una integración diferente en los doce módulos de negocio.
 
-\paragraph{Versionado y gobierno de integración.}
+\paragraph{Versionado y gobierno de integración}
 \label{subsubsec:versionado-gobierno}
 
 Los contratos siguen versiones \texttt{major.\allowbreak minor.\allowbreak patch}. Un cambio aditivo conserva compatibilidad; retirar un campo exige marcarlo como obsoleto y anunciar la fecha de salida con al menos seis meses de anticipación. Dos versiones pueden convivir mientras migran los consumidores identificados. Un cambio incompatible requiere aprobación del Comité de Arquitectura, pruebas de contrato y plan de reversión. Los perfiles de cadenas se versionan sin alterar el vocabulario común del hub; los cambios de interfaces tributarias se gestionan en la ACL, no como perfiles EDI. El Anexo 4-B asigna dueño y evidencia a cada mecanismo de gobierno.
@@ -251,7 +251,7 @@ Los contratos siguen versiones \texttt{major.\allowbreak minor.\allowbreak patch
 
 El catálogo y las pruebas hacen visible quién responde cuando un contrato cambia o falla.
 
-\paragraph{Carga y descarga masiva de datos.}
+\paragraph{Carga y descarga masiva de datos}
 \label{subsubsec:carga-masiva}
 
 Las importaciones históricas y las extracciones regulatorias utilizan contratos distintos de la operación diaria. El Anexo 4-C compara su mecanismo, la prueba de integridad y el tratamiento de rechazos; ninguna carga masiva desplaza la preparación durante la ventana crítica de despacho.
@@ -316,14 +316,14 @@ Keycloak emite la identidad y cada módulo decide la autorización sobre su recu
 
 La seguridad atraviesa las ocho capas. Su unidad de decisión no es la red desde la que llega una solicitud, sino el sujeto, el recurso, la acción y el contexto del turno. Keycloak conserva la autoridad de identidad; el servicio dueño del recurso conserva la decisión de autorización. Esta separación evita que un token válido permita, por sí solo, liberar una carga, consultar crédito o modificar una regla de calidad (PUCV, 2026b, caps.~11--12, pp.~23--26; RT-11.01 y RT-12.05; National Institute of Standards and Technology [NIST], 2020).
 
-\paragraph{Límites de confianza y capa expuesta.}
+\paragraph{Límites de confianza y capa expuesta}
 La Figura~\ref{fig:arql-general-completa} distingue personas, dispositivos, sitio, servicios centrales y terceros. CloudFront protege los portales externos y sus APIs; el origen de esas APIs rechaza el acceso público directo. Las consolas internas usan acceso verificado por identidad y postura del dispositivo hacia servicios privados. OpenAS2 expone un canal B2B distinto, limitado a contrapartes registradas y con validación criptográfica y MDN; no es una API pública de negocio. Los almacenes de datos no son superficies públicas. El inventario de dominios, puertos y rutas de 4.2 debe representar las tres superficies por separado (RT-11.07 y RT-11.13).
 
 API Gateway verifica la identidad, el alcance, las cuotas, los límites de tasa, el esquema y la carga útil antes de entregar una solicitud; M1--M12 repiten la autorización de negocio sobre el recurso concreto. Los puntos públicos incorporan detección de bots y reto progresivo sin bloquear a una persona legítima. La comunicación entre servicios se autentica mutuamente y se cifra; un evento asíncrono también conserva productor, destinatario, versión, identificador y permisos necesarios. Así se aplica el mismo límite de confianza a REST y a mensajería (RT-11.11--11.12).
 
 La política lógica prohíbe el ingreso público directo a los sitios. Las excepciones de integración a través de un túnel privado no son exposición a internet: se autorizan de forma nominativa, por origen, destino y propósito, y se registran. La única conexión iniciada desde nube hacia un sitio es DMS hacia VM-02 de Talca, nominada y auditada por IPsec; las demás conexiones de los sitios se inician hacia nube. Las reglas de red se especifican en 4.2; una excepción no amplía el permiso de los módulos para escribir directamente en el ERP.
 
-\paragraph{Identidad, autorización y sesiones.}
+\paragraph{Identidad, autorización y sesiones}
 La identidad central utiliza OIDC, SSO y MFA. El rol se complementa con atributos de instalación, turno, ruta, dispositivo y empresa transportista. El proveedor solo consulta sus órdenes; el transportista administra sus conductores y rutas asignadas; el conductor actúa sobre su entrega y rendición; Calidad decide sobre un lote bloqueado; y Tesorería aprueba la conciliación, sin que quien registró el cobro pueda aprobar su propia diferencia. Los administradores elevan privilegios por tiempo limitado, con aprobación y registro de sesión. El alta, cambio de rol y baja quedan vinculados al ciclo de vida laboral o contractual, con baja efectiva antes de 24 horas desde la desvinculación, y los administradores usan además claves de acceso FIDO2; las personas externas disponen de registro, verificación y recuperación de acceso sin requerir correo corporativo (RT-12.01--12.06 y RT-12.09--12.12).
 
 En las APIs Laravel, un guard OIDC comprueba firma con las claves publicadas por Keycloak, emisor, audiencia, vencimiento y alcance. Las políticas del módulo dueño verifican además recurso, turno y atributos; se prueban tanto rutas HTTP como trabajos asíncronos para que una cola no eluda la autorización. El acceso local usa exclusivamente el verificador de manifiestos descrito abajo. Laravel no emite otra identidad de usuario mediante Sanctum o Passport: Keycloak sigue siendo el único IdP y la administración de personas se realiza en el portal Angular autorizado.
@@ -334,7 +334,7 @@ La credencial de turno dura hasta 8 horas en bodega y hasta 14 horas en terreno.
 
 La revocación es inmediata en los servicios conectados. Durante una desconexión no se promete revocación remota instantánea: el permiso local expira al terminar su turno, no se amplía sin enlace y la incidencia se marca para revisar operaciones al reconectar. Una baja conocida localmente bloquea de inmediato la credencial en ese sitio; el verificador sincroniza las revocaciones y auditorías al restablecerse el enlace. Se ensayan dos relevos dentro de 24 horas, vencimiento, pérdida de dispositivo y recuperación del enlace. La cuenta de emergencia exige doble autorización, alcance acotado, custodia fuera de banda, registro y rotación posterior; no reemplaza la autenticación ordinaria de todos los operarios (RT-03.10 y RT-12.13).
 
-\paragraph{Clasificación, cifrado y custodia.}
+\paragraph{Clasificación, cifrado y custodia}
 La Tabla~\ref{tab:seguridad-clasificacion} resume cómo cambia el control según el dato. La clasificación se aplica al evento, su copia local, las APIs y las exportaciones, no solo a la base de datos central.
 
 \begin{tablalafrox}{Clasificación lógica y protección de la información}{tab:seguridad-clasificacion}{F{0.17} F{0.29} F{0.28} Y}{\cab{Nivel} & \cab{Ejemplo del caso} & \cab{Regla de acceso} & \cab{Protección adicional}}
@@ -344,14 +344,14 @@ Interno & Pedidos, movimientos y telemetría operativa. & Módulo dueño y perfi
 Público & Catálogo sin precios. & Lectura anónima controlada. & Integridad y protección antiabuso. \\
 \end{tablalafrox}
 
-{\footnotesize Fuente: elaboración propia de LafroX a partir de Bases Técnicas Transversales, RT-11.03/09/10, y Caso 02, capítulo 15.\par}
+{\footnotesize Fuente: elaboración propia a partir de RT-11.03, RT-11.09 y RT-11.10 (PUCV, 2026b, cap.~11, p.~23; PUCV, 2026a, cap.~15, p.~27).\par}
 
 La categoría confidencial exige separar quién puede usar el dato de quién administra su almacenamiento: el acceso a la base no revela por sí solo comportamiento de pago ni geolocalización. Todo dato en reposo se cifra; los campos sensibles del caso reciben además cifrado por campo. En tránsito se exige TLS 1.3 para las interfaces compatibles, se prohíben TLS 1.0 y 1.1, se automatiza la gestión de certificados y se emplea mTLS entre servicios. La custodia y rotación de claves mantienen separación de funciones. El PAN de tarjetas no se almacena; se usa la tokenización de la pasarela. El RUT requiere una técnica de seudonimización con acceso a la clave separado y una finalidad documentada, sin confundir cifrado reversible con anonimización. La geolocalización de personas conserva la retención de 12 meses del caso y un registro de consultas; la región primaria sa-east-1 y la secundaria us-east-1 implican transferencias internacionales sujetas a aprobación del CLIENTE. AWS actúa como encargado bajo contrato con cláusulas tipo; el CLIENTE administra KMS y la geolocalización de personas se excluye de la réplica secundaria, conforme se desarrolla en 4.3.2 (PUCV, 2026a, cap.~15, pp.~26--30; PUCV, 2026b, cap.~11, pp.~23--24; RT-11.08--11.10 y RT-16.09).
 
-\paragraph{Amenazas, controles y evidencia.}
+\paragraph{Amenazas, controles y evidencia}
 El modelado STRIDE toma cada módulo y cada integración externa como unidad de revisión, identifica su límite de confianza, abuso posible, mitigación, responsable y prueba. Para M3, el abuso es reutilizar una credencial o reenviar un pedido: se comprueban enrolamiento, vigencia e idempotencia. Para M5, la elevación indebida de privilegios no debe liberar una carga bloqueada por M9: se prueba la separación de autorizaciones. Para M11 y la ACL, un mensaje EDI repetido o manipulado se rechaza o aísla sin escribir dos veces en el ERP. El Anexo 4-Q registra las amenazas por módulo y frontera; el Anexo 4-R vincula controles ISO/IEC 27001/27002 con responsable y prueba. Son especificaciones de aceptación, no resultados de ensayos ni certificación (ISO, 2022b, 2022c) (RT-11.02 y RT-11.05).
 
-Cada decisión de acceso y cada acción crítica conserva sujeto, empresa si aplica, recurso, operación, resultado, hora, identificador de transacción y regla aplicada. Los eventos de seguridad se envían a una bitácora inalterable y al SIEM; durante un corte se conservan localmente y se remiten con el mismo identificador al reconectar. Las reglas de detección incluyen acceso privilegiado fuera de turno, intentos reiterados de uso de una credencial de conductor revocada, consulta masiva de datos comerciales, alteración de evidencia de temperatura y desvío anómalo de mensajes EDI. Los registros técnicos en CloudWatch se conservan 12 meses en línea y 24 meses adicionales en archivo; los registros de seguridad y auditoría se conservan 7 años bajo Object Lock. La retención de documentos tributarios y POD se gobierna separadamente por su dominio de datos. La plataforma y el SOC que operan estos controles se describen en 4.2 y en el capítulo de servicios (RT-11.14--11.19).
+Cada decisión de acceso y cada acción crítica conserva sujeto, empresa si aplica, recurso, operación, resultado, hora, identificador de transacción y regla aplicada. Los eventos de seguridad se envían a una bitácora inalterable y al SIEM; durante un corte se conservan localmente y se remiten con el mismo identificador al reconectar. Las reglas de detección incluyen acceso privilegiado fuera de turno, intentos reiterados de uso de una credencial de conductor revocada, consulta masiva de datos comerciales, alteración de evidencia de temperatura y desvío anómalo de mensajes EDI. Los registros técnicos en CloudWatch se conservan 12 meses en línea y 24 meses adicionales en archivo; los registros de seguridad y auditoría se conservan 7 años bajo Object Lock. La retención de documentos tributarios y POD se gobierna separadamente por su dominio de datos. La plataforma que opera estos controles se describe en 4.2, y la dotación del SOC, en el Anexo 4-W (RT-11.14--11.19).
 
 La aceptación de esta vista requiere una prueba de acceso denegado por rol y atributo, una de cifrado de campo con lectura administrativa sin texto claro, una de continuidad y relevo offline, una de revocación al reconectar y una de correlación de un evento de negocio con su alerta de seguridad. Se distinguen dos objetivos de disponibilidad: 99,95 \% mensual para la infraestructura del recinto y al menos 99,9 \% mensual para el servicio de negocio de extremo a extremo. Ninguno elimina la exigencia de continuidad durante el despacho de 05:30 a 07:00.
 

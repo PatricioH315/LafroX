@@ -9,11 +9,11 @@ La entidad de interés es la plataforma logística Puelche y sus fronteras con E
 Lógica & TI y responsables de módulo. & Dueños, límites e interfaces sin dependencia de tablas ajenas. & Vista general, capas y anexos 4-D, F, G, H y N. \\
 Procesos & Operaciones, conductores y Tesorería. & Una captura avanza a confirmación, salida y rendición con estados claros. & Secuencias del pedido con y sin conexión (apartado 4.1.3.5); anexos 4-A y 4-U. \\
 Despliegue & TI, Infraestructura y Operaciones. & Cada función dispone de realización y contingencia por sitio. & Anexo 4-N y correspondencia con 4.2--4.3. \\
-Datos & Calidad, Datos y Comercial. & Lote, reservas, acuses y evidencias tienen dueño y retención. & Modelo conceptual (apartado 4.1.5), Anexo 4-K y Subdocumento 5. \\
+Datos & Calidad, Datos y Comercial. & Lote, reservas, acuses y evidencias tienen dueño y retención. & Modelo conceptual (apartado 4.1.5) y Anexo 4-K. \\
 Seguridad & Seguridad, Calidad y CLIENTE. & Nadie libera, cobra o consulta sin permiso y evidencia. & Límites de confianza, anexos 4-Q y 4-R y prueba AL-OFF-01. \\
 \end{tablalafrox}
-{\footnotesize Fuente: interesados del caso, RT-02.03 y organización de la descripción arquitectónica (ISO, 2022a).\par}
+{\footnotesize Fuente: elaboración propia a partir de RT-02.03 (PUCV, 2026b, cap.~2, p.~7) y de ISO (2022a).\par}
 
 CR-01 exige que cada capacidad del esquema y explicación de solución tenga uno o más componentes N con nombre idéntico y que todo componente tenga capacidad de origen. CR-02 exige productor único, consumidores registrados y contrato por evento; una arista sin contrato se rechaza. CR-03 exige que cada escritura tenga dueño de datos, clave idempotente y auditoría. CR-04 exige para cada función desconectada persistencia, permisos, límite de autonomía y reconciliación. CR-05 vincula componente lógico a realización física exacta; no se cuenta una referencia genérica. CR-06 exige que cada amenaza tenga control y prueba, y que cada decisión ADR tenga consecuencia verificable.
 
-Arquitectura mantiene un registro de diferencias con componente, regla infringida, requisito, dueño, decisión y evidencia de cierre. La comprobación se ejecuta al cambiar un módulo, contrato, tecnología o etapa. La Tabla de correspondencia de 4.2.2 verifica CR-01/05; pruebas de contrato, CR-02/03; AL-OFF-01, CR-04; y la revisión de Q/R/O, CR-06.
+Arquitectura mantiene un registro de diferencias con componente, regla infringida, requisito, dueño, decisión y evidencia de cierre. La comprobación se ejecuta al cambiar un módulo, contrato, tecnología o etapa. La Tabla 8 del apartado 4.2.2 verifica CR-01/05; pruebas de contrato, CR-02/03; AL-OFF-01, CR-04; y la revisión de Q/R/O, CR-06.

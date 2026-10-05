@@ -3,11 +3,11 @@
 %  Anexo 4-W: memoria de cálculo del dimensionamiento.
 % ------------------------------------------------------------------
 
-\chapter*{Anexo 4-W. Memoria de cálculo del dimensionamiento}
+\chapter*{Anexo 4-W --- Memoria de cálculo del dimensionamiento}
 \phantomsection
 \label{anx:42A}
-\markboth{Anexo 4-W. Memoria de cálculo}{Anexo 4-W. Memoria de cálculo}
-\addcontentsline{toc}{chapter}{Anexo 4-W. Memoria de cálculo del dimensionamiento}
+\markboth{Anexo 4-W --- Memoria de cálculo}{Anexo 4-W --- Memoria de cálculo}
+\addcontentsline{toc}{chapter}{Anexo 4-W --- Memoria de cálculo del dimensionamiento}
 
 \begingroup
 \renewcommand{\thesection}{4-W.\arabic{section}}
@@ -62,7 +62,7 @@ La Tabla~\ref{tab:anexo-4b-supuestos} declara el fundamento, impacto y validaci�
 \section{Dimensiones 1--3: transacciones por segundo}
 \label{sec:anexo-4b-dimensiones-1-3}
 
-Se calcula el máximo horario de cada lugar para no sumar ventanas que no coinciden. Los días equivalentes son 31.000 ÷ 1.400 = 22,14 días y el control cruzado es 2.100 ÷ 96 = 21,88 días. El factor de septiembre es 2.600 ÷ 1.400 = 1,857.
+Se calcula el máximo horario de cada lugar para no sumar ventanas que no coinciden. Los días equivalentes son 31.000 ÷ 1.400 = 22,14 días (los cálculos usan el cociente sin redondear, 22,142857) y el control cruzado es 2.100 ÷ 96 = 21,88 días. El factor de septiembre es 2.600 ÷ 1.400 = 1,857.
 
 Las operaciones de cada entrega en cross-docking se reparten en recepción, escaneo y desconsolidación de 03:00 a 05:00, y despacho de 05:00 a 06:00; SV-04 concentra sólo la hora cargada de cada tramo. La preparación normal de Talca se calcula como 11.742 líneas por noche × 2 operaciones × 2/3 ÷ 28.800 segundos = 0,54 TPS de media; la hora cargada de SV-04 alcanza 1,09 TPS. El despacho se distribuye entre Talca y Concepción según SV-03; a las 05:00 el WMS alcanza 1,46 TPS normal y 2,68 TPS en septiembre en Talca, y 0,73 y 1,34 TPS en Concepción.
 
@@ -212,7 +212,7 @@ La mesa de ayuda se dimensiona en cuatro pasos:
   \item Capacidad máxima de siete agentes: Al resolver el mismo cálculo, el límite es 2.391 contactos/mes; 2.391 × 25\,\% ÷ 22,14 = 27,00 contactos/hora cargada y 2.391 × 75\,\% ÷ 22,14 ÷ 17 = 4,99 contactos/hora en las demás franjas.
 \end{enumerate}
 
-La cobertura 24×7 de septiembre y diciembre requiere, además, al menos una posición de mesa en las horas 22:00–04:00 de lunes a sábado y durante los domingos: 6 × 6 + 24 = 60 horas-posición semanales; 60 ÷ 42 = 1,43, por lo que se agregan \textbf{2 personas} y la mesa peak queda en 9. Un NOC y un SOC de una posición cada uno requieren 2 × (168 ÷ 42) = \textbf{8 personas}; desde el 26-04-2028 requieren 2 × (168 ÷ 40) = \textbf{10 personas}. A 42 horas semanales, la dotación total es \textbf{15 personas en operación normal y 17 en septiembre/diciembre}; desde el 26-04-2028, a 40 horas semanales, es \textbf{17 en operación normal y 19 en peak}. Las funciones NOC/SOC pueden ser subcontratadas conforme a RT-21.01 (PUCV, 2026b, cap. 21, p. 35) y RT-11.17 (PUCV, 2026b, cap. 11, p. 24).
+La cobertura 24×7 de septiembre y diciembre requiere, además, al menos una posición de mesa en las horas 22:00–04:00 de lunes a sábado y durante los domingos: 6 × 6 + 24 = 60 horas-posición semanales; 60 ÷ 42 = 1,43, por lo que se agregan \textbf{2 personas} y la mesa peak queda en 9. Un NOC y un SOC de una posición cada uno requieren 2 × (168 ÷ 42) = \textbf{8 personas}; desde el 26-04-2028 requieren 2 × 5 = \textbf{10 personas}, porque 168 ÷ 40 = 4,2 se redondea hacia arriba a 5 personas por posición. A 42 horas semanales, la dotación total es \textbf{15 personas en operación normal y 17 en septiembre/diciembre}; desde el 26-04-2028, a 40 horas semanales, es \textbf{17 en operación normal y 19 en peak}. Las funciones NOC/SOC pueden ser subcontratadas conforme a RT-21.01 (PUCV, 2026b, cap. 21, p. 35) y RT-11.17 (PUCV, 2026b, cap. 11, p. 24).
 
 \section{Capacidad on-premise por VM}
 \label{sec:anexo-4b-onpremise}

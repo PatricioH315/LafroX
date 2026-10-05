@@ -5,7 +5,7 @@
 La tabla identifica, para cada evento canónico, su productor, sus consumidores, la clave de partición y el hecho del caso o la decisión del numeral 16.1 que lo origina.
 
 \begin{tablalafrox}{Eventos canónicos del dominio}{tab:eventos-canonicos}{F{0.16} F{0.08} F{0.18} F{0.15} Y}{\cab{Evento} & \cab{Productor} & \cab{Consumidores} & \cab{Clave de partición} & \cab{Origen en el caso / Decisión}}
-RecepcionConfirmada & M1 & M2, M9, ACL$\rightarrow$ERP & site\_id & Cap. 9.5: retiro sanitario < 2 h \\
+RecepcionConfirmada & M1 & M2, M9, ACL$\rightarrow$ERP & site\_id & Cap. 18, criterio 1: retiro sanitario < 2 h \\
 StockReservado / ReservaLiberada & M2 & M3, M5 & sku\_id & Decisión 16.1 N\textdegree{} 8: doble compromiso stock \\
 PedidoConfirmado & M3 & M4, M5, M10, M11 & pedido\_id & M11 consume el evento solo para responder a la cadena en pedidos de ese canal; M3 confirma el pedido \\
 MisionPreparada & M5 & M6, ACL$\rightarrow$ERP & pedido\_id & Cierra ciclo bodega a andén \\
@@ -17,4 +17,4 @@ RendicionCerrada & M7 & M10, ACL$\rightarrow$ERP & conductor\_id & Control efect
 DesviacionDeRutaDetectada & M12 & M10, M9 & ruta\_id & Costo de servir; no control de jornada. \\
 \end{tablalafrox}
 
-{\footnotesize Fuente: elaboración propia de LafroX a partir de Caso 02, flujos operativos y numeral 16.1.\par}
+{\footnotesize Fuente: elaboración propia a partir de PUCV (2026a, cap.~16, pp.~28--29) y de los flujos del apartado 4.1.\par}

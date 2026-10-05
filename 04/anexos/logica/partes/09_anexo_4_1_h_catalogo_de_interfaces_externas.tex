@@ -14,31 +14,31 @@ La tabla identifica, para cada integración con terceros, el dueño interno, el 
 \mbox{INT-15} & Telemetría existente & M12 & API de solo lectura. & Ruta planificada sin posición. \\
 \end{tablalafrox}
 
-{\footnotesize Fuente: elaboración propia de LafroX a partir de Caso 02 y Bases Técnicas Transversales, RT-05.\par}
+{\footnotesize Fuente: elaboración propia a partir de PUCV (2026a, cap.~5, p.~10) y RT-05.21 (PUCV, 2026b, cap.~5, p.~13).\par}
 
 % Fichas del Anexo H.
 \subsection*{Condiciones de servicio de las contrapartes}
 Las ventanas siguientes expresan la disponibilidad que requiere Puelche. El catálogo no atribuye un SLA no acreditado al ERP, SII, cadenas ni proveedores. Antes de habilitar cada integración se incorporarán al contrato su horario efectivo, mantenimientos, cuotas y escalamiento; una ventana inferior a la requerida exige ajuste contractual u operativo. Los timeouts son parámetros iniciales del adaptador, sujetos a ensayo y al contrato de contraparte.
 
-\paragraph{INT-06. ERP 2017 --- ACL/M7.}
+\paragraph{INT-06. ERP 2017 --- ACL/M7}
 Modo asíncrono para intercambio de negocio; consulta síncrona de estado cuando una escritura queda incierta. Volumen normal/peak: 2.025/3.762 mensajes/día, calculados con los flujos diarios y equivalentes de 22,14 días; peak con factor 1,857. Contraparte requerida 24$\times$7, especialmente preparación 22:00--06:00 y despacho 05:30--07:00. Timeout de 10 segundos por llamada. Ante lentitud se abre cortacircuito, se conserva la solicitud y se prioriza despacho; ante respuesta perdida se consulta por clave externa antes de repetir. Un error funcional va a excepción. No se escribe directamente en tablas del ERP.
 
-\paragraph{INT-07. Emisión y estados DTE --- ACL/M5.}
+\paragraph{INT-07. Emisión y estados DTE --- ACL/M5}
 Modo síncrono para conocer el resultado documental antes de liberar salida, con seguimiento asíncrono de estados. Volumen normal/peak: 3.071/5.703 mensajes/día, con factor de septiembre 1,857. Polling y reintentos se miden aparte. Contrapartes: emisor ERP y su canal SII; se requiere servicio durante preparación y disponibilidad sin interrupción para las 96 salidas de 05:30--07:00. Timeout de llamada: 10 segundos, sin equiparar timeout a rechazo o autorización. Resultado incierto obliga a consultar la misma solicitud. La cola no habilita salida sin documento; se aplica el control y el protocolo AL-DTE-01. El ERP sigue siendo el único emisor.
 
-\paragraph{INT-08. Cadenas del canal moderno --- M11.}
+\paragraph{INT-08. Cadenas del canal moderno --- M11}
 Modo asíncrono EDI; el MDN es acuse de transporte, separado de la respuesta comercial. Escenario 2029: 0/1.144 mensajes/día (2.600 × 11\,\% × 4 intercambios). Contraparte requerida 24$\times$7, con cortes de recepción y ventanas de entrega específicos de cada cadena, que deben figurar en su acuerdo. Timeout inicial de transporte: 30 segundos; MDN asíncrono esperado en 15 minutos como umbral de alerta propuesto, no SLA de la cadena. OpenAS2 conserva identificador y evidencia; M11 deduplica, valida equivalencias y deriva rechazo funcional a bandeja. Una entrega técnica no confirma el pedido ni permite superar su hora de corte.
 
-\paragraph{INT-09. Pasarela de pago --- M7.}
+\paragraph{INT-09. Pasarela de pago --- M7}
 Modo síncrono. Volumen normal/peak: 533/990 autorizaciones/día, con factor de septiembre 1,857. Contraparte requerida 24$\times$7, cubriendo el turno de reparto de hasta 14 horas. Timeout de 10 segundos. Si el resultado es incierto, se consulta por la misma clave antes de volver a cobrar. Sin respuesta no se registra autorización; se ofrece efectivo o crédito previamente aprobado según política del CLIENTE. Se concilia el resultado tardío para evitar cobro duplicado.
 
-\paragraph{INT-10. Mapas y geocodificación --- M4.}
+\paragraph{INT-10. Mapas y geocodificación --- M4}
 Modo síncrono para consultas y asíncrono para cálculos extensos. Volumen normal/peak: 96/96 llamadas/día, con el mismo volumen en ambos escenarios. Contraparte requerida 24$\times$7, con planificación previa a la salida y apoyo en ruta. Timeout de 5 segundos para consulta; trabajos largos tienen identificador y consulta de avance sin bloquear la API. Se conserva la ruta aprobada y cartografía precargada. La falta de proveedor impide nuevo cálculo que lo requiera, no borra la ruta vigente; cuotas o error 429 aplican espera informada.
 
-\paragraph{INT-11. Avisos al cliente --- Notificaciones.}
+\paragraph{INT-11. Avisos al cliente --- Notificaciones}
 Modo asíncrono mediante trabajos Laravel y SNS/API de canal. Dos avisos por entrega: 2.800/5.200 mensajes/día (1.400/2.600 entregas). Contraparte requerida 24$\times$7; las franjas permitidas de contacto se parametrizan por canal y cliente. Timeout de 10 segundos; reintento con clave de aviso y vigencia. Un aviso de ETA vencido se descarta con registro, no se envía al día siguiente. El estado enviado se distingue de recibido y no condiciona el registro de entrega. Falla persistente produce aviso operacional y canal alternativo acordado.
 
-\paragraph{INT-15. Telemetría de flota --- M12.}
+\paragraph{INT-15. Telemetría de flota --- M12}
 Modo asíncrono o extracción periódica de solo lectura según API existente. Volumen normal/peak: 60.480/60.480 posiciones/día, calculadas para 42 camiones × 120 posiciones/h × 12 h; el peak no aumenta esta fuente. Contraparte requerida 24$\times$7 para conservar historial y cubrir turnos. Timeout de 10 segundos por consulta o 30 por lote; reanudación por cursor y deduplicación. Sin datos se muestra posición fechada y ruta prevista, nunca una posición presuntamente actual. La geolocalización no sustituye al POD.
 
-{\footnotesize Fuente: elaboración propia; Caso 02, cap.~14, y RT-05.21. Los SLA de terceros requieren respaldo contractual; los supuestos de dimensionamiento se distinguen de la volumetría del caso.\par}
+{\footnotesize Fuente: elaboración propia a partir de PUCV (2026a, cap.~14, p.~24) y RT-05.21 (PUCV, 2026b, cap.~5, p.~13). Los SLA de terceros requieren respaldo contractual; los supuestos de dimensionamiento se distinguen de la volumetría del caso.\par}

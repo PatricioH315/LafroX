@@ -20,11 +20,11 @@ M12 & Telemetría & INT-15 & Adaptador de solo lectura y consulta de ruta real. 
 \end{tablalafrox}
 {\footnotesize Fuente: elaboración propia.\par}
 
-La tabla verifica la correspondencia de los doce módulos con sus capacidades, contratos y realizaciones; la Tabla de correspondencia de 4.2.2 completa el enlace físico. Las capacidades transversales también se corresponden: presentación y borde con aplicaciones, CloudFront y acceso privado; puerta de enlace con API central y puerta local; eventos con RabbitMQ, shipper y SQS; datos con bases, réplica de lectura y objetos; identidad con Keycloak y verificador local; secretos y auditoría con sus servicios de custodia; observabilidad con OpenTelemetry/ADOT, alarma local y CloudWatch. Notificaciones se traza a INT-11; el motor de optimización de M4 conserva contrato separado y no se presume implementado en PHP por la elección del backend.
+La tabla verifica la correspondencia de los doce módulos con sus capacidades, contratos y realizaciones; la Tabla 8 del apartado 4.2.2 completa el enlace físico. Las capacidades transversales también se corresponden: presentación y borde con aplicaciones, CloudFront y acceso privado; puerta de enlace con API central y puerta local; eventos con RabbitMQ, shipper y SQS; datos con bases, réplica de lectura y objetos; identidad con Keycloak y verificador local; secretos y auditoría con sus servicios de custodia; observabilidad con OpenTelemetry/ADOT, alarma local y CloudWatch. Notificaciones se traza a INT-11; el motor de optimización de M4 conserva contrato separado y no se presume implementado en PHP por la elección del backend.
 
 La correspondencia entre 3.3, 3.4, 4.1 y 4.2.2 se verifica en ambos sentidos mediante identificador, contrato, responsable y realización física.
 \subsection*{Inventario trazable de capacidades transversales}
-Los siguientes 37 identificadores complementan los doce módulos: el inventario lógico tiene 49 unidades verificables. La última columna remite a la Tabla de correspondencia de 4.2.2 para cada realización física.
+Los siguientes 37 identificadores complementan los doce módulos: el inventario lógico tiene 49 unidades verificables. La última columna remite a la Tabla 8 del apartado 4.2.2 para cada realización física.
 \begin{tablalafrox}{Inventario transversal y realización física}{tab:inventario-transversal}{F{0.16} F{0.23} F{0.22} F{0.15} Y}{\cab{ID} & \cab{Componente} & \cab{Capacidad} & \cab{Contrato} & \cab{Correspondencia 4.2.2}}
 UI-MOV & Apps Kotlin / Room & preventa y entrega & INT-01/02 & M3/M6/M7/M8 \\
 UI-HHT & Terminales de bodega & preparación & INT-03 / API local & M1/M2/M5 \\

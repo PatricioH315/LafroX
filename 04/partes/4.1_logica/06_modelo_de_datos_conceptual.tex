@@ -17,7 +17,7 @@ Las entidades principales son:
   \item \textbf{Sensor / registro térmico.} Dispositivo, lote o posición, temperatura y excursión térmica.
 \end{itemize}
 
-La Figura~\ref{fig:arql-18} dibuja las relaciones mínimas necesarias para responder dos preguntas del caso: de qué lote provino una unidad entregada y a qué clientes llegó un lote que debe retirarse. No pretende ser el diccionario de datos del capítulo 5.
+La Figura~\ref{fig:arql-18} dibuja las relaciones mínimas necesarias para responder dos preguntas del caso: de qué lote provino una unidad entregada y a qué clientes llegó un lote que debe retirarse.
 
 \begin{anexohorizontal}
 \begin{center}
@@ -28,7 +28,7 @@ La Figura~\ref{fig:arql-18} dibuja las relaciones mínimas necesarias para respo
 
 {\footnotesize Fuente: elaboración propia de LafroX.\par}
 
-La línea de pedido se asigna a un lote identificado por GTIN y lote del proveedor; los movimientos con SSCC conservan la cadena de custodia hasta la entrega. La entrega vincula la evidencia de recepción y el folio de la guía que el ERP emitió antes del traslado. Un pedido aún puede no tener entrega, y una entrega puede registrar más de una evidencia o un rechazo parcial: esas cardinalidades y estados se concretan en el capítulo 5 sin perder el identificador de origen.
+La línea de pedido se asigna a un lote identificado por GTIN y lote del proveedor; los movimientos con SSCC conservan la cadena de custodia hasta la entrega. La entrega vincula la evidencia de recepción y el folio de la guía que el ERP emitió antes del traslado. Un pedido aún puede no tener entrega, y una entrega puede registrar más de una evidencia o un rechazo parcial: esas cardinalidades y estados conservan el identificador de origen.
 \end{anexohorizontal}
 
 Los eventos usan verbos en pasado y son la base de los esquemas AsyncAPI. Toda escritura offline es idempotente por UUID (RT-02.06).

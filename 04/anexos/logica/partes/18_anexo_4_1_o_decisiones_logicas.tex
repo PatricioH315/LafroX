@@ -4,7 +4,7 @@
 \label{anx:O}
 \addcontentsline{toc}{section}{Anexo 4-O --- Registro de decisiones de arquitectura}
 
-El registro reúne las decisiones de arquitectura lógica y física conforme a RT-02.04 (PUCV, 2026b, cap. 2). Cada ficha identifica la alternativa descartada, el criterio de selección y la evidencia necesaria para verificar su realización. Los RT de las fichas remiten a las Bases Técnicas Transversales (PUCV, 2026b), salvo RT-10.05 y RT-16.14, precisados por el caso (PUCV, 2026a, cap.~15, p.~27).
+El registro reúne las decisiones de arquitectura lógica y física conforme a RT-02.04 (PUCV, 2026b, cap. 2, p. 7). Cada ficha identifica la alternativa descartada, el criterio de selección y la evidencia necesaria para verificar su realización. Los RT de las fichas remiten a las Bases Técnicas Transversales (PUCV, 2026b), salvo RT-10.05 y RT-16.14, precisados por el caso (PUCV, 2026a, cap.~15, p.~27).
 
 \subsection*{ADR-01. Estilo arquitectónico}
 \label{sub:adr-01}
@@ -140,7 +140,7 @@ El registro reúne las decisiones de arquitectura lógica y física conforme a R
 
 \textbf{Criterio de selección.} Capacidad y quórum N+1 con demanda del Anexo 4-W.
 
-\textbf{Consecuencias.} Se reservan recursos de OSD y monitor; seis OSD ofrecen cerca de 1,92 TB útiles y unos 1,5 TB al 80\% de llenado. Concepción usa RAID 10 y doble fuente; E-01 y sus switches tienen alimentación redundante.
+\textbf{Consecuencias.} Se reservan recursos de OSD y monitor; seis OSD ofrecen cerca de 1,92 TB útiles y unos 1,5 TB al 80\% de llenado. Concepción usa RAID 10 y doble fuente. E-01 usa dos SSD en RAID 1 por software, que tolera la falla de un disco con holgura para los 50 GB requeridos; RAID 5 o RAID 10 exigirían tres o cuatro discos que el mini-PC industrial no aloja. E-01 y sus switches tienen alimentación redundante.
 
 \textbf{Evidencia exigida.} Prueba de pérdida de nodo, reconstrucción, latencia y carga de cientos de IOPS a 3$\times$ frente a decenas de miles de IOPS de NVMe.
 
@@ -266,11 +266,11 @@ El registro reúne las decisiones de arquitectura lógica y física conforme a R
 
 \textbf{Criterio de selección.} Continuidad con base de licitud, minimización y control contractual.
 
-\textbf{Consecuencias.} AWS actúa como encargado bajo contrato con cláusulas tipo para la Ley N.\textdegree{} 21.719 (Ley N.\textdegree{} 21.719, 2024); el CLIENTE administra KMS, cifra datos en reposo y tránsito, audita accesos, excluye la geolocalización de personas de la réplica secundaria y copia la analítica en forma diferida. Si el CLIENTE no aprueba Estados Unidos por estar fuera de Sudamérica, el parámetro de región secundaria de la infraestructura como código se cambia a otra región AWS aprobada que ofrezca Aurora Global Database, DynamoDB Global Tables, replicación de S3, ECS Fargate y AWS Backup; se conservan la arquitectura, el RTO y el RPO. Las categorías no críticas restringidas a la región primaria reciben copias inmutables en otra cuenta.
+\textbf{Consecuencias.} AWS actúa como encargado bajo contrato con cláusulas tipo para la Ley N.\textdegree{} 21.719 (Ley N.\textdegree{} 21.719, 2024); el CLIENTE administra KMS, cifra datos en reposo y tránsito, audita accesos, excluye la geolocalización de personas de la réplica secundaria y copia la analítica en forma diferida sin las posiciones de flota. Si el CLIENTE no aprueba Estados Unidos por estar fuera de Sudamérica, el parámetro de región secundaria de la infraestructura como código se cambia a otra región AWS aprobada que ofrezca Aurora Global Database, DynamoDB Global Tables, replicación de S3, ECS Fargate y AWS Backup; se conservan la arquitectura, el RTO y el RPO. Las categorías no críticas restringidas a la región primaria reciben copias inmutables en otra cuenta.
 
 \textbf{Evidencia exigida.} Contrato de encargo, registro de tratamiento, aprobación de residencia y prueba de exclusiones y recuperación.
 
-\textbf{Requisitos que la sustentan.} Art. 23 de las Bases Administrativas (PUCV, 2026c, art. 23); Ley N.\textdegree{} 21.719; RT-07.04.
+\textbf{Requisitos que la sustentan.} Art. 23 de las Bases Administrativas (PUCV, 2026c, art. 23, p. 17); Ley N.\textdegree{} 21.719; RT-07.04.
 
 \subsection*{ADR-20. Frontend web}
 \label{sub:adr-20}

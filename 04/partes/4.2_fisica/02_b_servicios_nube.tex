@@ -55,7 +55,7 @@ La región us-east-1 no es una segunda producción. Solo contiene recursos para 
   \item Aplicación: réplica reducida de ECS que escala a carga completa en menos de 30 minutos durante una conmutación.
 \end{itemize}
 
-La región primaria sa-east-1 está en São Paulo, Brasil, y la secundaria us-east-1 en Virginia del Norte, Estados Unidos; ambas suponen transferencia internacional de datos desde Chile. Los datos de geolocalización de personas quedan fuera de la región secundaria; la analítica se copia a ella en forma diferida, porque conserva los registros de temperatura y de trazabilidad de lote que el caso exige retener cinco años (PUCV, 2026a, cap.~15, p.~26). La base de licitud, los resguardos de tratamiento y la garantía de continuidad ante las decisiones de residencia del CLIENTE se desarrollan en la sección~\ref{sec:e-especificaciones-del-sitio-secundario-y-}.
+La región primaria sa-east-1 está en São Paulo, Brasil, y la secundaria us-east-1 en Virginia del Norte, Estados Unidos; ambas suponen transferencia internacional de datos desde Chile. Los datos de geolocalización de personas quedan fuera de la región secundaria; la analítica se copia a ella en forma diferida, sin las posiciones de flota, porque conserva los registros de temperatura y de trazabilidad de lote que el caso exige retener cinco años (PUCV, 2026a, cap.~15, p.~26). La base de licitud, los resguardos de tratamiento y la garantía de continuidad ante las decisiones de residencia del CLIENTE se desarrollan en la sección~\ref{sec:e-especificaciones-del-sitio-secundario-y-}.
 
 \subsection{Servicios que no se contratan}
 

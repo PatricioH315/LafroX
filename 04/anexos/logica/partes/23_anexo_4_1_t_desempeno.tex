@@ -3,7 +3,7 @@
 \phantomsection
 \label{anx:T}
 \addcontentsline{toc}{section}{Anexo 4-T --- Desempeño y aceptación lógica}
-Los umbrales se miden sobre la operación percibida y confirmada, no sobre una llamada aislada. La copia de consulta puede responder inmediatamente como información fechada; no confirma stock o crédito. El timeout del adaptador es un límite de protección independiente del tiempo visible al usuario (PUCV, 2026a, cap.~15; PUCV, 2026b, RT-09.01--09.08).
+Los umbrales se miden sobre la operación percibida y confirmada, no sobre una llamada aislada. La copia de consulta puede responder inmediatamente como información fechada; no confirma stock o crédito. El timeout del adaptador es un límite de protección independiente del tiempo visible al usuario (PUCV, 2026a, cap.~15, p.~26; PUCV, 2026b, cap.~9, pp.~21--22).
 
 \begin{tablalafrox}{Objetivos y escenarios de desempeño}{tab:aceptacion-desempeno}{F{0.24} F{0.19} Y}{\cab{Operación} & \cab{Objetivo} & \cab{Carga y comprobación}}
 Confirmar línea picking & p95 $\leq$ 1 s. & Terminal, puerta local, M5/M2 y base; 186 terminales concurrentes del turno nocturno. \\
@@ -15,7 +15,7 @@ Reconciliar CD & $\leq$ 2 h tras corte. & 24 h locales, relevos y cargas por sit
 Planificar ruta & $<$ 20 min. & Flota, destinos, capacidad, frío y ventanas; restricciones verificadas. \\
 Liberar despachos & 96 salidas 05:30--07:00. & Guías por destino/carga y cambios tardíos; AL-DTE-01. \\
 \end{tablalafrox}
-{\footnotesize Fuente: Caso 02, caps.~14--15 y 18; las pruebas son compromisos de ejecución, no resultados obtenidos.\par}
+{\footnotesize Fuente: elaboración propia a partir de PUCV (2026a, caps.~14--15, pp.~24--28, y cap.~18, p.~34). Las pruebas son compromisos de ejecución, no resultados obtenidos.\par}
 
 La prueba RT-09.06 usa una carga total de 1,5 $\times$ 14,66 = 21,99 TPS, distribuida por perfil horario y sitio; las tasas por integración se detallan en el Anexo 4-W del Subdocumento 4. El crecimiento de RT-09.03 ensaya tres veces la volumetría inicial sin rediseñar contratos ni identificadores.
 
