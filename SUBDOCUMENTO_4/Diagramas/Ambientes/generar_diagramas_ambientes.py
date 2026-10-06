@@ -197,22 +197,30 @@ git, ecr = cadena(d)
 nube(d, 'Producción', 'sa-east-1 (São Paulo) · región primaria', 320, 80, 1220, 700, 940)
 portales(d, git, 6, 1350)
 vpc_productiva(d, 'VPC Producción · 10.101.0.0/16', ecr)
+# 11_j: los sitios descargan la imagen desde ECR por la VPN, a traves de la VPC Hub, y los endpoints de interfaz
+# de la VPC de Produccion (ECR y S3); Ansible (F-02, CD Talca) actualiza los contenedores de los sitios.
+epi = d.icon('VPC endpoints de interfaz<br>(ECR y S3)', 'endpoints', 'net', 840, 620, lw=200)
+d.cells[-1] = d.cells[-1].replace('verticalLabelPosition=bottom;verticalAlign=top;', 'verticalLabelPosition=top;verticalAlign=bottom;')
+d.paso(7, 804, 633)
 d.group('VPC Hub', 'group_vpc2', '#8C4FFF', 1000, 370, 290, 170)
 tgw = d.icon('AWS Transit Gateway', 'transit_gateway', 'net', 1040, 420, lw=120)
 vpn = d.icon('AWS Site-to-Site VPN', 'site_to_site_vpn', 'net', 1190, 420, lw=120)
 d.edge(tgw, vpn, R(0.5), dashed=1)
-d.paso(7, 1006, 410)
 d.group('On-premise · parte de Producción', 'group_corporate_data_center', '#7D8998', 1590, 80, 420, 700)
+ans = d.box(B('F-02 Ansible') + ' · CD Talca<br>actualiza los contenedores por la red de gestión', 1650, 170, 340, 70)
+d.paso(7, 1616, 160)
 sitios = [d.box(B('CD Talca') + '<br>VM-01: wms_only · VM-03: shipper', 1610, 413, 380, 70),
           d.box(B('CD Concepción') + '<br>VM-C01: wms_only · VM-C04: shipper', 1610, 543, 380, 70),
           d.box(B('Cross-docking (3)') + '<br>E-01: wms_only y shipper (Docker Compose)', 1610, 673, 380, 70)]
-d.edge(ecr, tgw, 'exitX=0;exitY=0.5;entryX=0;entryY=0.5;', dashed=1, pts=((14, 508), (14, 810), (980, 810), (980, 448)))
-for sid in sitios:
+d.edge(ecr, epi, 'exitX=0;exitY=0.5;entryX=0.5;entryY=1;', dashed=1, pts=((14, 508), (14, 810), (868, 810)))
+d.edge(epi, tgw, 'exitX=1;exitY=0.5;entryX=0;entryY=0.5;', dashed=1, pts=((980, 648), (980, 448)))
+for sid, yc in zip(sitios, (448, 578, 708)):
     d.edge(vpn, sid, R(0.5), dashed=1)
+    d.edge(ans, sid, 'exitX=1;exitY=0.5;entryX=1;entryY=0.5;', dashed=1, pts=((2000, 205), (2000, yc)))
 d.leyenda(COMUNES + [PASO_MIGRACIONES,
                      'Despliegue azul-verde con canario en ECS Fargate: el balanceador de aplicación privado desplaza el tráfico de forma gradual; paso automático, sin intervención manual (RT-04.06, RT-04.07)',
                      PASO_PORTALES,
-                     'Sitios on-premise: descargan la misma imagen desde ECR por el Transit Gateway de la VPC Hub y la Site-to-Site VPN; Ansible (F-02) actualiza los contenedores, sitio por sitio'],
+                     'Sitios on-premise: descargan la misma imagen desde ECR por los endpoints de interfaz de la VPC de Producción, el Transit Gateway de la VPC Hub y la Site-to-Site VPN; Ansible (F-02) actualiza los contenedores, sitio por sitio'],
           850, 1300)
 d.save('A4_Ambiente_Produccion.drawio')
 
