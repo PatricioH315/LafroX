@@ -11,6 +11,7 @@
 # Ubicacion AWS coherente: dentro de la VPC solo lo que vive en ella (ALB, ECS Fargate, Aurora);
 # S3 en la region, fuera de la VPC; CloudFront, que es global, en la cuenta y fuera de la region.
 import os
+import re
 from xml.sax.saxutils import escape
 
 OUT = os.path.dirname(os.path.abspath(__file__))
@@ -73,7 +74,8 @@ class D:
                         '<td style="padding:2px 0">%s</td></tr>' % (PASO, i + 1, t) for i, t in enumerate(pasos))
         html = '<b>Secuencia de despliegue</b><table style="font-size:14px;margin-top:4px">%s</table>' % filas
         return s.add('rounded=1;arcSize=4;whiteSpace=wrap;html=1;fillColor=#F4F6F6;strokeColor=#545B64;fontSize=15;'
-                     'fontColor=#232F3E;align=left;verticalAlign=top;spacing=10;', 20, y, w, 46 + 26 * len(pasos), html)
+                     'fontColor=#232F3E;align=left;verticalAlign=top;spacing=10;', 20, y, w,
+                     40 + sum(21 * (1 + len(re.sub('<[^>]+>', '', t)) // int((w - 60) / 6.6)) + 5 for t in pasos), html)
 
     def edge(s, a, b, ports='', dashed=0, pts=(), label=''):
         i = s._id()
@@ -93,9 +95,9 @@ class D:
 
 
 R = lambda y: 'exitX=1;exitY=%s;entryX=0;entryY=0.5;' % y
-COMUNES = ['GitLab CI orquesta el cambio y ejecuta los controles; bloquea ante hallazgos críticos o altos (RT-04.05)',
-           'AWS CodeBuild construye la imagen de forma hermética (SLSA nivel 3)',
-           'Amazon ECR guarda la imagen firmada, que se promueve por su digest sin recompilar']
+COMUNES = ['GitLab CI orquesta el pipeline; cada cambio instala sus dependencias según composer.lock y pasa por los controles (RT-04.05)',
+           'AWS CodeBuild construye cada imagen de forma hermética, con procedencia SLSA nivel 3; el pipeline bloquea ante un hallazgo crítico o alto, un contrato público roto sin versión nueva o una cobertura inferior al 70 % (RT-04.11)',
+           'La imagen aprobada se firma, se publica en Elastic Container Registry y se promueve por su digest, de modo que ningún ambiente recompila']
 
 
 def cadena(d):
@@ -134,14 +136,15 @@ def portales(d, git, n, xcf):
     d.edge(s3, cf, R(0.5))
 
 
-PASO_DESPLIEGUE = 'Despliegue de la misma imagen en ECS Fargate, con la configuración propia del ambiente y sin recompilar (RT-04.08)'
-PASO_PORTALES = 'El pipeline que orquesta GitLab CI publica los portales Angular en S3 privado, servidos por CloudFront'
-PASO_MIGRACIONES = 'Migraciones Laravel aditivas y reversibles en Aurora, antes de cambiar el tráfico (RT-04.10)'
+PASO_DESPLIEGUE = 'El ambiente despliega la imagen en ECS Fargate, en su propia cuenta y desde el mismo ECR de sa-east-1, con la configuración externalizada por ambiente (RT-04.08)'
+PASO_DESPLIEGUE_QA = 'QA despliega en ECS Fargate, en su propia cuenta, la misma imagen que recorrió Desarrollo, con la configuración externalizada por ambiente (RT-04.08)'
+PASO_PORTALES = 'Los portales siguen el mismo ciclo: su aplicación Angular se publica por ambiente en S3 privado y CloudFront'
+PASO_MIGRACIONES = 'Las migraciones Laravel, aditivas y reversibles, se ejecutan en Aurora como un paso único del despliegue, antes de cambiar el tráfico (RT-04.10)'
 
 
 # ------------------------------------------------------------------ Desarrollo y QA
 # 1-3 cadena, 4 despliegue en Fargate, 5 portales
-def ambiente_simple(nombre, vpc, fname):
+def ambiente_simple(nombre, vpc, fname, paso4):
     d = D(nombre)
     d.badge(B('Tipo de ambiente:') + ' solo nube (AWS)', NUBE, 460)
     git, ecr = cadena(d)
@@ -151,12 +154,12 @@ def ambiente_simple(nombre, vpc, fname):
     far = d.icon('ECS Fargate (N-04)', 'fargate', 'compute', 510, 450)
     d.paso(4, 476, 440)
     d.edge(ecr, far, R(0.5))
-    d.leyenda(COMUNES + [PASO_DESPLIEGUE, PASO_PORTALES], 680, 920)
+    d.leyenda(COMUNES + [paso4, PASO_PORTALES], 680, 1000)
     d.save(fname)
 
 
-ambiente_simple('Desarrollo', 'VPC Desarrollo · 10.104.0.0/16', 'A1_Ambiente_Desarrollo.drawio')
-ambiente_simple('QA', 'VPC QA · 10.103.0.0/16', 'A2_Ambiente_QA.drawio')
+ambiente_simple('Desarrollo', 'VPC Desarrollo · 10.104.0.0/16', 'A1_Ambiente_Desarrollo.drawio', PASO_DESPLIEGUE)
+ambiente_simple('QA', 'VPC QA · 10.103.0.0/16', 'A2_Ambiente_QA.drawio', PASO_DESPLIEGUE_QA)
 
 
 # ------------------------------------------------------------------ Preproduccion y Produccion
@@ -186,7 +189,7 @@ emu = d.icon('ECS Fargate (N-04)<br>wms_only', 'fargate', 'compute', 1110, 420, 
 d.paso(5, 1076, 410)
 d.edge(ecr, emu, 'exitX=0;exitY=0.5;entryX=0;entryY=0.5;', pts=((14, 508), (14, 810), (980, 810), (980, 448)))
 d.leyenda(COMUNES + [PASO_MIGRACIONES,
-                     'Despliegue azul-verde con canario en ECS Fargate y en el sitio emulado: el balanceador de aplicación privado desplaza el tráfico de forma gradual (RT-04.07)',
+                     'Azul-verde con canario: la versión nueva se despliega junto a la vigente y recibe tráfico de forma gradual, y se demuestra aquí antes de cada paso a producción (RT-04.07); el balanceador drena la versión que se retira. En el sitio emulado se ensaya la promoción de la versión nueva con el sitio desconectado y su reconexión',
                      PASO_PORTALES], 850, 1180)
 d.save('A3_Ambiente_Preproduccion.drawio')
 
@@ -218,9 +221,9 @@ for sid, yc in zip(sitios, (448, 578, 708)):
     d.edge(vpn, sid, R(0.5), dashed=1)
     d.edge(ans, sid, 'exitX=1;exitY=0.5;entryX=1;entryY=0.5;', dashed=1, pts=((2000, 205), (2000, yc)))
 d.leyenda(COMUNES + [PASO_MIGRACIONES,
-                     'Despliegue azul-verde con canario en ECS Fargate: el balanceador de aplicación privado desplaza el tráfico de forma gradual; paso automático, sin intervención manual (RT-04.06, RT-04.07)',
+                     'Azul-verde con canario: la versión nueva se despliega junto a la vigente y recibe tráfico de forma gradual; el paso a Producción es automático, sin intervención manual, dentro de las ventanas de despliegue (RT-04.06, RT-04.07); el balanceador drena la versión que se retira',
                      PASO_PORTALES,
-                     'Sitios on-premise: descargan la misma imagen desde ECR por los endpoints de interfaz de la VPC de Producción, el Transit Gateway de la VPC Hub y la Site-to-Site VPN; Ansible (F-02) actualiza los contenedores, sitio por sitio'],
+                     'Los sitios descargan la imagen desde ECR por la VPN, a través de la VPC Hub, y los endpoints de interfaz de la VPC de Producción; Ansible (F-02) actualiza sus contenedores sitio por sitio'],
           850, 1300)
 d.save('A4_Ambiente_Produccion.drawio')
 
@@ -241,8 +244,8 @@ t = d.box(B('CD Talca') + '<br>VM-01: wms_only', 950, 170, 400, 70)
 c = d.box(B('CD Concepción') + '<br>VM-C01: wms_only', 950, 420, 400, 70)
 d.paso(5, 916, 410)
 d.edge(t, c, 'exitX=0.5;exitY=1;entryX=0.5;entryY=0;', dashed=1, label='DRP local')
-d.leyenda(COMUNES + ['La réplica reducida de ECS Fargate en us-east-1 recibe cada versión liberada en Producción, desde el ECR de sa-east-1',
-                     'Si se pierde Talca, el CD Concepción promueve VM-C01, que ya corre la misma imagen desplegada en Producción (RTO adicional de 1 a 2 h)'],
+d.leyenda(COMUNES + ['La réplica reducida de us-east-1 recibe cada versión liberada en Producción desde el mismo ECR de sa-east-1, de modo que la plataforma que se promueve en una conmutación corre la misma versión',
+                     'Si la contingencia afecta solo a la bodega de Talca, el WMS de Concepción (VM-C01), que ya corre la misma imagen, asume su carga con un RTO adicional de 1 a 2 horas'],
           650, 1040)
 d.save('A5_Ambiente_Recuperacion_Desastres.drawio')
 print('ok')
