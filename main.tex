@@ -1,10 +1,17 @@
 % !TeX program = lualatex
 \makeatletter
-\def\input@path{{00/plantilla/fisica/}{04/}}
+\def\input@path{{00/plantilla/formato-base/}{04/}}
 \makeatother
 \documentclass[carta,firma]{lafrox}
 \usepackage{etoolbox}
+\usepackage{placeins}
 \captionsetup{hypcap=false}
+\renewcommand{\LFXisotipoportada}{00/plantilla/formato-base/logo/lafrox_isotipo_naranja.pdf}
+\renewcommand{\LFXisotipopagina}{00/plantilla/formato-base/logo/lafrox_isotipo_negro.pdf}
+% Comando de procedencia de figuras usado por 4.2 y 4.3; la plantilla base no lo incluye.
+\newcommand{\fuentefigura}[1][elaboración propia]{%
+  \par\vspace{2pt}%
+  {\footnotesize\color{lafroxGris}\raggedright Fuente: #1.\par}}
 \datoslafrox{
   documento = {Propuesta Técnica},
   subtitulo = {Subdocumento 4 --- Arquitectura de la solución},
@@ -15,28 +22,15 @@
   nomenclatura = {LAFROX-Subdocumento4.pdf},
 }
 \hypersetup{pdftitle={Subdocumento 4 -- Arquitectura de la solución}}
-\hypersetup{pdftitle={Subdocumento 4 -- Arquitectura de la solución}}
 \renewcommand{\LFXestadodoc}{Entrega 2}
-\patchcmd{\portadalafrox}{\LFXcampoportada{Versión}{\LFXversion}}{\LFXcampoportada{Documento}{4}}{}{}
-\patchcmd{\LFXpieizquierdo}{\textperiodcentered\ v\LFXversion}{}{}{}
 \graphicspath{{04/}}
 % Numeración corrida de tablas y figuras en todo el subdocumento.
 \counterwithout{table}{chapter}
 \counterwithout{figure}{chapter}
 
-\makeatletter
-% Los rótulos originales de 4.3 requieren una columna más ancha en las listas.
-\renewcommand*{\l@table}{\@dottedtocline{1}{0pt}{5em}}
-\renewcommand*{\l@figure}{\@dottedtocline{1}{0pt}{5em}}
-\newcommand{\listalocal}[2]{%
-  \phantomsection\addcontentsline{toc}{chapter}{#1}%
-  \noindent\LFXtitulopreliminar{#1}\@starttoc{#2}\clearpage}
-\makeatother
 \begin{document}
 \portadalafrox
-\indicelafrox
-\listalocal{Lista de tablas}{lot}
-\listalocal{Lista de figuras}{lof}
+\preliminareslafrox
 \setcounter{chapter}{3}
 \input{contenido.tex}
 \end{document}

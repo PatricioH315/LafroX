@@ -8,6 +8,7 @@ Esta carpeta reúne las fuentes vigentes de 4.1, 4.2 y 4.3. El contenido está c
 00/
   plantilla/logica/
   plantilla/fisica/
+  plantilla/formato-base/       # clase, portada e isotipos usados por los tres PDF
  trazabilidad/
 main.tex
 contenido.tex
@@ -32,7 +33,7 @@ El cuerpo (`main.tex`) contiene 4.1, 4.2 y 4.3, las referencias y la declaració
 
 ## Compilación
 
-Requiere una instalación existente de LuaLaTeX con los paquetes utilizados por las clases originales de LafroX. Abrir una terminal en la raíz del repositorio y ejecutar:
+Requiere LuaLaTeX con los paquetes de la plantilla común (incluidas las fuentes Source Serif 4, Source Sans 3, IBM Plex Mono y STIX Two Math). El script detecta una instalación privada de MiKTeX cuando `lualatex` aún no está en el PATH. Abrir una terminal en la raíz del repositorio y ejecutar:
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File .\compilar.ps1
@@ -56,6 +57,6 @@ Compilar el main desde la raíz del repositorio. Si se compilan los complementos
 
 ## Alcance del traslado
 
-Las fuentes de Tomás y los recortes aprobados se conservan. Las clases y sus portadas se copian íntegramente de las dos ramas. El informe de preservación comprueba cada archivo contra su origen, neutralizando únicamente las rutas de figuras cuando corresponde.
+Las fuentes de Tomás y los recortes aprobados se conservan. Las dos clases de origen permanecen en `00/plantilla/`, y los tres entregables usan el formato común de `rama-formato-Latex-base`. El informe de preservación sigue describiendo el traslado original; la aplicación del nuevo diseño está registrada en `00/trazabilidad/APLICACION_FORMATO_BASE_2026-10-06.md`.
 
 Consultar [pendientes de integración](../00/trazabilidad/PENDIENTES.md) antes de presentar esta consolidación como versión armonizada. Los cambios de redacción, numeración editorial y decisiones técnicas se realizarán después, según la instrucción del usuario.

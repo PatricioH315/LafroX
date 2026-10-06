@@ -30,7 +30,7 @@ Los dos centros de distribución tienen su recinto especificado en el apartado~\
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=0.6\linewidth]{figuras/fisica/Arquitectura_Fisica_Crossdocking.png}
+  \includegraphics[width=\linewidth]{figuras/fisica/Arquitectura_Fisica_Crossdocking.png}
   \caption{Gabinete de borde de las plataformas de cross-docking}
   \label{fig:crossdocking}
   \fuentefigura
@@ -75,19 +75,27 @@ En la nube, la región primaria es sa-east-1 y cada servicio se despliega en al 
       N-08 Ingesta de IoT\\
       N-09 Mensajería\\
       N-10 Plataforma analítica\\
+      N-11 Respaldo inmutable\\
       N-12 Seguridad y gobierno\\
       N-13 Gestión de dispositivos\\[3pt]
       Parte en nube de los híbridos};
     \node[caja, text width=4.75cm, below=5pt of sa.south west, anchor=north west] (us) {%
       \textbf{us-east-1}, recuperación\\[2pt]
-      N-11 Respaldo inmutable y réplica};
+      N-04 Réplica reducida\\
+      N-05 Base secundaria\\
+      N-06 Temperatura\\
+      N-09 Colas preparadas\\
+      N-10 Copia diferida\\
+      N-11 Copia del respaldo\\
+      N-12 Claves y secretos};
     % Columna on-premise
     \node[titulo] at (5.25,0) {On-premise};
     \node[caja, text width=5.3cm] (tal) at (5.25,-0.5) {%
       \textbf{CD Talca}, sala técnica secundaria\\[2pt]
       Máquinas VM-01 a VM-06\\
       con A-01 a A-05 y F-01\\
-      Red: D-01 en par, D-02 a D-06\\
+      Red: D-01 en par, D-02 a D-04 y D-06\\
+      Respaldo: D-05\\
       Frío: B-01 y B-02\\
       Bodega: C-03 a C-05\\
       Gestión: F-02 y F-03};
@@ -102,9 +110,10 @@ En la nube, la región primaria es sa-east-1 y cada servicio se despliega en al 
     \node[caja, text width=5.3cm, below=5pt of con.south west, anchor=north west] (cdk) {%
       \textbf{Cross-docking}, tres sitios\\[2pt]
       Mini-PC E-01\\
-      con A-01 a A-03 y caché de A-05\\
-      Red: D-01 compacto, D-02, D-04 y D-06\\
-      Gestión: F-01 y F-03};
+      con A-01 a A-03, caché de A-05 y F-01\\
+      Red: D-01, D-02, D-04 y D-06\\
+      Bodega: C-03\\
+      Gestión: F-03};
     \node[caja, text width=5.3cm, below=5pt of cdk.south west, anchor=north west] (cm) {%
       \textbf{Casa matriz}, Talca\\[2pt]
       Sin cómputo; usa la nube};

@@ -1,5 +1,5 @@
 \makeatletter
-\def\input@path{{../00/plantilla/fisica/}}
+\def\input@path{{../00/plantilla/formato-base/}}
 \makeatother
 %% ============================================================================
 %%  LAFROX-Formulario-T-11.tex
@@ -14,6 +14,8 @@
 %%  Sin precios (Art. 50.2).
 %% ============================================================================
 \documentclass[carta,firma]{lafrox}
+\renewcommand{\LFXisotipoportada}{../00/plantilla/formato-base/logo/lafrox_isotipo_naranja.pdf}
+\renewcommand{\LFXisotipopagina}{../00/plantilla/formato-base/logo/lafrox_isotipo_negro.pdf}
 
 \makeatletter
 \@removefromreset{table}{chapter}
@@ -34,10 +36,7 @@
   version    = {},
   nomenclatura = {LAFROX-Formulario-T-11.pdf},
 }
-\usepackage{etoolbox}
 \renewcommand{\LFXestadodoc}{Entrega 2}
-\patchcmd{\portadalafrox}{\LFXcampoportada{Versión}{\LFXversion}}{\LFXcampoportada{Documento}{Formulario T-11}}{}{}
-\patchcmd{\LFXpieizquierdo}{\textperiodcentered\ v\LFXversion}{}{}{}
 
 \begin{document}
 \portadalafrox

@@ -14,24 +14,6 @@ El dimensionamiento traduce la volumetría del Caso 02 en capacidad para la oper
 
 Un hecho del caso se cita y no se registra como supuesto. Un requisito proviene de las Bases o del Capítulo 15. Un parámetro de diseño es una decisión que imponemos a la solución. Un supuesto completa una cifra que el caso calla y declara fundamento, impacto y validación. Un cálculo se deriva de las entradas anteriores. Los parámetros de plataforma son 50 ms de CPU por solicitud, 64 MB de memoria por proceso y 150 ms de permanencia del proceso en Fargate; son parámetros de diseño que se perfilan y se verifican en las pruebas de RT-09.06 (Bases Técnicas Transversales, cap. 9, p. 21). Los tiempos de respuesta se evalúan en el percentil 95 conforme al numeral 9.1 de las Bases Técnicas Transversales (cap. 9, p. 21).
 
-La Figura~\ref{fig:dimensionamiento-cadena} resume esta cadena. El resultado de cada etapa alimenta la siguiente: la volumetría determina las tasas, las tasas determinan capacidad y la capacidad determina los equipos.
-
-\begin{figure}[htbp]
-  \centering
-  \LFXcuerpofigura
-  \begin{tikzpicture}[caja/.style={draw=lafroxGris, rounded corners=2pt, align=center, text width=2.45cm, minimum height=1.05cm, inner sep=3pt, execute at begin node={\hyphenpenalty=10000\exhyphenpenalty=10000}}, flecha/.style={-{latex}, line width=0.7pt, color=lafroxFuerte}]
-    \node[caja] (v) at (0,0) {Volumetría\\del caso};
-    \node[caja] (s) at (3.1,0) {Supuestos\\mínimos};
-    \node[caja] (d) at (6.2,0) {16 dimensiones\\del numeral 14.2};
-    \node[caja] (c) at (9.3,0) {Capacidad por\\lugar de proceso};
-    \node[caja] (e) at (12.4,0) {Equipos,\\enlaces y nube};
-    \draw[flecha] (v) -- (s); \draw[flecha] (s) -- (d); \draw[flecha] (d) -- (c); \draw[flecha] (c) -- (e);
-  \end{tikzpicture}
-  \caption{Cadena de cálculo del dimensionamiento.}
-  \label{fig:dimensionamiento-cadena}
-  \fuentefigura
-\end{figure}
-
 La cadena evita mezclar decisiones de diseño con hechos del CLIENTE. En particular, el factor SV-04 se aplica sólo a la hora cargada de cada ventana y no se usa para sumar procesos que ocurren en horas diferentes.
 
 \subsection{Perfil de carga y regímenes de diseño}
@@ -48,45 +30,6 @@ Las Bases Técnicas del caso (anexo B, p. 38) distribuyen la operación en estas
   \item Preventa de 09:00 a 18:00.
   \item Sincronización de 17:00 a 20:00.
 \end{itemize}
-
-El perfil de 24 horas de la Figura~\ref{fig:dimensionamiento-perfil} muestra las tasas totales calculadas para esas superposiciones.
-
-\begin{figure}[htbp]
-  \centering
-  \LFXcuerpofigura
-  \begin{tikzpicture}[x=0.5cm,y=0.3cm,font=\fontsize{9pt}{11pt}\selectfont]
-    % Eje vertical en TPS
-    \draw[lafroxGris] (0,0) -- (0,16);
-    \foreach \v in {0,5,10,15}
-      {\draw[lafroxLinea] (0,\v) -- (24,\v);
-       \node[anchor=east,text=lafroxGris] at (-0.15,\v) {\v};}
-    \node[anchor=south,text=lafroxGris] at (0,16.3) {TPS};
-    % Barras: normal (gris) y septiembre (color), una pareja por hora
-    \foreach \x/\n/\p in {0/1.55/2.88,1/1.55/2.88,2/1.55/2.88,3/2.14/3.97,4/2.72/5.05,5/3.76/6.94,6/1.79/3.26,7/.84/1.56,8/.84/1.57,9/6.49/7.96,10/6.49/7.97,11/6.49/7.96,12/12.30/14.66,13/6.49/7.96,14/6.49/7.96,15/6.49/7.96,16/6.49/7.96,17/7.27/9.41,18/2.40/4.45,19/1.46/2.71,20/.68/1.26,21/.68/1.26,22/1.55/2.88,23/1.55/2.88}
-      {\fill[lafroxGris!55] (\x+0.12,0) rectangle ++(0.36,\n);
-       \fill[lafroxFuerte] (\x+0.52,0) rectangle ++(0.36,\p);}
-    \draw[lafroxGris] (0,0) -- (24,0);
-    % Horas
-    \foreach \h/\t in {0/00:00,3/03:00,6/06:00,9/09:00,12/12:00,15/15:00,18/18:00,21/21:00,24/24:00}
-      {\draw[lafroxGris] (\h,0) -- (\h,-0.35); \node[anchor=north,text=lafroxGris] at (\h,-0.45) {\t};}
-    % Máximo
-    \node[anchor=west,fill=white,inner sep=1.5pt] at (13.1,14.1) {máximo a las 12:00: 12,30 y 14,66 TPS};
-    % Leyenda
-    \fill[lafroxGris!55] (0.5,18.2) rectangle ++(0.5,0.9); \node[anchor=west] at (1.1,18.65) {día normal};
-    \fill[lafroxFuerte] (5.0,18.2) rectangle ++(0.5,0.9); \node[anchor=west] at (5.6,18.65) {peak de septiembre};
-    % Ventanas operacionales del Caso, Anexo B.1
-    \foreach \y/\n in {-4.2/Preparación,-5.9/Despacho,-7.6/Preventa,-9.3/Sincronización,-11.0/Cross-docking}
-      {\node[anchor=east,text=lafroxGris] at (-0.15,\y) {\n};}
-    \draw[lafroxFuerte,line width=2.2pt] (22,-4.2) -- (24,-4.2); \draw[lafroxFuerte,line width=2.2pt] (0,-4.2) -- (6,-4.2);
-    \draw[lafroxFuerte,line width=2.2pt] (5.5,-5.9) -- (7,-5.9);
-    \draw[lafroxFuerte,line width=2.2pt] (9,-7.6) -- (18,-7.6);
-    \draw[lafroxFuerte,line width=2.2pt] (17,-9.3) -- (20,-9.3);
-    \draw[lafroxFuerte,line width=2.2pt] (3,-11.0) -- (6,-11.0);
-  \end{tikzpicture}
-  \caption{Tasas totales por hora en régimen normal y en septiembre.}
-  \label{fig:dimensionamiento-perfil}
-  \fuentefigura
-\end{figure}
 
 La hora más exigente es 12:00, con 12,30 TPS normales y 14,66 TPS en septiembre. Esa hora es una convención del cálculo: el factor SV-04 concentra la preventa y el portal en la hora central de su ventana, y el máximo sería el mismo en cualquier otra hora de esa ventana. En esa hora el portal aporta 9,63 TPS y la nube 2,67 TPS normales o 5,03 TPS en peak; Talca, Concepción y cada cross-docking están fuera de sus ventanas de mayor carga. El promedio diario engaña porque oculta la coincidencia de preventa, reparto y sesiones del portal.
 

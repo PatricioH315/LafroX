@@ -4,6 +4,12 @@ param([string]$Motor = 'lualatex', [switch]$SoloMain)
 #   LAFROX-Subdocumento4-Anexos.pdf   anexos 4-A a 4-W
 #   LAFROX-Formulario-T-11.pdf        formulario propio
 $ErrorActionPreference = 'Continue'
+$motorDisponible = Get-Command $Motor -ErrorAction SilentlyContinue
+if (-not $motorDisponible -and $Motor -eq 'lualatex') {
+    $miktexLocal = Join-Path $env:LOCALAPPDATA 'Programs\MiKTeX\miktex\bin\x64\lualatex.exe'
+    if (Test-Path -LiteralPath $miktexLocal) { $Motor = $miktexLocal; $motorDisponible = $true }
+}
+if (-not $motorDisponible) { throw "No se encontró el motor LaTeX: $Motor" }
 $projectDirectory = $PSScriptRoot
 $outputDirectory = Join-Path $projectDirectory 'entrega'
 $buildDirectory = Join-Path $projectDirectory 'entrega/_build'
