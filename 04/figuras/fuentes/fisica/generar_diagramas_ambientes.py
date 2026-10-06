@@ -156,7 +156,35 @@ def ambiente_simple(nombre, vpc, fname, rotulo, png):
     d.save(fname, png)
 
 
-ambiente_simple('Desarrollo', 'VPC Desarrollo · 10.104.0.0/16', 'A1_Ambiente_Desarrollo.drawio', 'con la configuración y los secretos del ambiente', 'amb_desarrollo')
+# Desarrollo: el texto dice que su secuencia numerada "se lee de izquierda a derecha" (GitLab CI aplica los
+# controles, CodeBuild construye la imagen, ECR la guarda firmada y la misma imagen llega a ECS Fargate en la VPC
+# 10.104.0.0/16); por eso la cadena va en una sola fila horizontal.
+d = D('Desarrollo')
+d.badge(B('Tipo de ambiente:') + ' solo nube (AWS)', NUBE, 460)
+d.add('rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#232F3E;strokeColor=#232F3E;fontSize=15;'
+      'fontColor=#FFFFFF;', 20, 80, 240, 50, B('Cadena de entrega'))
+dev = d.add('sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#232F3E;strokeColor=none;dashed=0;'
+            'verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=15;aspect=fixed;'
+            'shape=mxgraph.aws4.users;', 40, 323, 50, 50, 'Equipo de<br>desarrollo')
+git = d.add('shape=image;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=15;'
+            'fontColor=#232F3E;aspect=fixed;imageAspect=0;image=data:image/svg+xml,' + GITLAB_SVG + ';',
+            170, 321, 56, 54, B('GitLab CI') + '<br>(suscripción)<br>controles del pipeline')
+d.group('AWS Cloud · sa-east-1 · N-04', 'group_aws_cloud_alt', '#232F3E', 300, 265, 330, 235, valign='bottom')
+cb = d.icon('AWS CodeBuild<br>construye la imagen<br>(SLSA nivel 3)', 'codebuild', 'devtools', 340, 320, lw=150)
+ecr = d.icon('Amazon ECR<br>imagen firmada', 'ecr', 'container', 520, 320, lw=150)
+d.edge(dev, git, R(0.5)); d.edge(git, cb, R(0.5)); d.edge(cb, ecr, R(0.5))
+d.paso(1, 228, 300); d.paso(2, 398, 300); d.paso(3, 578, 300)
+nube(d, 'Desarrollo', 'sa-east-1 (São Paulo)', 670, 60, 900, 470, 640)
+s3 = d.icon('Amazon S3<br>portales N-01 a N-03', 's3', 'storage', 770, 192, lw=170)
+d.paso(5, 736, 182)
+cf = d.icon('Amazon CloudFront', 'cloudfront', 'net', 1430, 192, lw=150)
+d.edge(git, s3, 'exitX=0.5;exitY=0;entryX=0;entryY=0.5;', pts=((198, 220),), label='portales Angular', pos=0.2)
+d.edge(s3, cf, R(0.5))
+d.group('VPC Desarrollo · 10.104.0.0/16', 'group_vpc2', '#8C4FFF', 730, 300, 580, 160)
+far = d.icon('ECS Fargate (N-04)', 'fargate', 'compute', 1140, 320, lw=200)
+d.paso(4, 1106, 300)
+d.edge(ecr, far, R(0.5), label='con la configuración y los secretos del ambiente', pos=0)
+d.save('A1_Ambiente_Desarrollo.drawio', 'amb_desarrollo')
 ambiente_simple('QA', 'VPC QA · 10.103.0.0/16', 'A2_Ambiente_QA.drawio', 'misma imagen que en Desarrollo', 'amb_qa')
 
 
