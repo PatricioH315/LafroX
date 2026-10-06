@@ -7,12 +7,12 @@
 \section{Dimensionamiento y plan de capacidad}
 \label{sec:dimensionamiento}
 
-El dimensionamiento traduce la volumetría del Caso 02 en capacidad para la operación normal, la ventana protegida de despacho y el peak de septiembre. Las citas nombran las Bases Técnicas del caso y las Bases Técnicas Transversales con su capítulo y página. La cadena es: hechos y requisitos, supuestos mínimos, dieciséis dimensiones del numeral 14.2 de las Bases Técnicas del caso (PUCV, 2026a, p. 25), capacidad por lugar de proceso y equipamiento. El Anexo 4-W conserva las sustituciones, el perfil horario, las sensibilidades y los umbrales; esta sección presenta la decisión de arquitectura y su consecuencia operativa.
+El dimensionamiento traduce la volumetría del Caso 02 en capacidad para la operación normal, la ventana protegida de despacho y el peak de septiembre. Las citas nombran las Bases Técnicas del caso y las Bases Técnicas Transversales con su capítulo y página. La cadena es: hechos y requisitos, supuestos mínimos, dieciséis dimensiones del numeral 14.2 de las Bases Técnicas del caso (p. 25), capacidad por lugar de proceso y equipamiento. El Anexo 4-W conserva las sustituciones, el perfil horario, las sensibilidades y los umbrales; esta sección presenta la decisión de arquitectura y su consecuencia operativa.
 
 \subsection{Método, fuentes y supuestos}
 \label{sec:dimensionamiento-metodo}
 
-Un hecho del caso se cita y no se registra como supuesto. Un requisito proviene de las Bases o del Capítulo 15. Un parámetro de diseño es una decisión que imponemos a la solución. Un supuesto completa una cifra que el caso calla y declara fundamento, impacto y validación. Un cálculo se deriva de las entradas anteriores. Los parámetros de plataforma son 50 ms de CPU por solicitud, 64 MB de memoria por proceso y 150 ms de permanencia del proceso en Fargate; son parámetros de diseño que se perfilan y se verifican en las pruebas de RT-09.06 (PUCV, 2026b, cap. 9, p. 21). Los tiempos de respuesta se evalúan en el percentil 95 conforme al numeral 9.1 de las Bases Técnicas Transversales (PUCV, 2026b, cap. 9, p. 21).
+Un hecho del caso se cita y no se registra como supuesto. Un requisito proviene de las Bases o del Capítulo 15. Un parámetro de diseño es una decisión que imponemos a la solución. Un supuesto completa una cifra que el caso calla y declara fundamento, impacto y validación. Un cálculo se deriva de las entradas anteriores. Los parámetros de plataforma son 50 ms de CPU por solicitud, 64 MB de memoria por proceso y 150 ms de permanencia del proceso en Fargate; son parámetros de diseño que se perfilan y se verifican en las pruebas de RT-09.06 (Bases Técnicas Transversales, cap. 9, p. 21). Los tiempos de respuesta se evalúan en el percentil 95 conforme al numeral 9.1 de las Bases Técnicas Transversales (cap. 9, p. 21).
 
 La Figura~\ref{fig:dimensionamiento-cadena} resume esta cadena. El resultado de cada etapa alimenta la siguiente: la volumetría determina las tasas, las tasas determinan capacidad y la capacidad determina los equipos.
 
@@ -37,7 +37,7 @@ La cadena evita mezclar decisiones de diseño con hechos del CLIENTE. En particu
 \subsection{Perfil de carga y regímenes de diseño}
 \label{sec:dimensionamiento-regimenes}
 
-Las Bases Técnicas del caso (PUCV, 2026a, anexo B, p. 38) distribuyen la operación en estas ventanas:
+Las Bases Técnicas del caso (anexo B, p. 38) distribuyen la operación en estas ventanas:
 
 \begin{itemize}
   \item Preparación de 22:00 a 06:00.
@@ -93,10 +93,10 @@ La hora más exigente es 12:00, con 12,30 TPS normales y 14,66 TPS en septiembre
 La Tabla~\ref{tab:dimensionamiento-calendario} resume los factores de calendario que se usan en la memoria.
 
 \begin{tablalafrox}{Calendario y factores de diseño}{tab:dimensionamiento-calendario}{F{0.30} G{0.18} Y F{0.22}}{\cab{Dato} & \cab{Valor} & \cab{Uso} & \cab{Fuente}}
-  Días equivalentes de despacho & 22,14 días & 31.000 ÷ 1.400; control 2.100 ÷ 96 = 21,88 & PUCV, 2026a, cap. 14, p. 24 y Tabla 2.3; SV-01 \\
-  Factor de septiembre & 1,857 & 2.600 ÷ 1.400 & PUCV, 2026a, cap. 14, p. 24; SV-02 \\
-  Período peak & 1 al 25 de septiembre & Define el régimen peak & PUCV, 2026a, anexo B, p. 38 \\
-  Totales anuales & 12 × volumen mensual & Evita inventar días hábiles & PUCV, 2026a, cap. 14, p. 24 \\
+  Días equivalentes de despacho & 22,14 días & 31.000 ÷ 1.400; control 2.100 ÷ 96 = 21,88 & Bases Técnicas del caso, cap. 14, p. 24 y Tabla 2.3; SV-01 \\
+  Factor de septiembre & 1,857 & 2.600 ÷ 1.400 & Bases Técnicas del caso, cap. 14, p. 24; SV-02 \\
+  Período peak & 1 al 25 de septiembre & Define el régimen peak & Bases Técnicas del caso, anexo B, p. 38 \\
+  Totales anuales & 12 × volumen mensual & Evita inventar días hábiles & Bases Técnicas del caso, cap. 14, p. 24 \\
 \end{tablalafrox}
 
 {\footnotesize Fuente: elaboración propia.\par}
@@ -121,7 +121,7 @@ La Tabla~\ref{tab:t76} presenta los lugares de proceso y separa el portal de la 
 
 {\footnotesize Fuente: elaboración propia.\par}
 
-El despacho de 05:30 a 07:00 se reparte entre ambos centros conforme a SV-03, en la misma proporción que la preparación. La dimensión 2 toma el máximo real del perfil en las horas 05:00 y 06:00; el tramo 05:30–06:00 se considera uniforme, por lo que resulta 3,76 TPS normal y 6,94 TPS peak. Los aproximadamente 2.852 documentos/día peak son el total de DTE (34.000 ÷ 22,14 × 1,857), no sólo guías; considerarlos todos como guías que deben emitirse antes de la salida es una cota conservadora. Las 2.600 sesiones diarias del portal son un parámetro de diseño: una por cada cliente de food service y de cadenas, 2.100 + 500 (PUCV, 2026a, cap. 2, p. 4), y no son las 2.600 visitas diarias de preventa (PUCV, 2026a, anexo B, p. 38). La prueba RT-09.06 (PUCV, 2026b, cap. 9, p. 21) es 1,5 × 14,66 = 21,99 TPS y no recibe un segundo multiplicador.
+El despacho de 05:30 a 07:00 se reparte entre ambos centros conforme a SV-03, en la misma proporción que la preparación. La dimensión 2 toma el máximo real del perfil en las horas 05:00 y 06:00; el tramo 05:30–06:00 se considera uniforme, por lo que resulta 3,76 TPS normal y 6,94 TPS peak. Los aproximadamente 2.852 documentos/día peak son el total de DTE (34.000 ÷ 22,14 × 1,857), no sólo guías; considerarlos todos como guías que deben emitirse antes de la salida es una cota conservadora. Las 2.600 sesiones diarias del portal son un parámetro de diseño: una por cada cliente de food service y de cadenas, 2.100 + 500 (Bases Técnicas del caso, cap. 2, p. 4), y no son las 2.600 visitas diarias de preventa (Bases Técnicas del caso, anexo B, p. 38). La prueba RT-09.06 (Bases Técnicas Transversales, cap. 9, p. 21) es 1,5 × 14,66 = 21,99 TPS y no recibe un segundo multiplicador.
 
 \subsection{Personas usuarias, concurrencia y dispositivos: dimensiones 4--6}
 \label{sec:dimensionamiento-usuarios}
@@ -148,7 +148,7 @@ La cantidad a proveer se informa aparte, por ámbito:
   \item Cross-docking y frío: 7 terminales de cross-docking y 31 termógrafos.
 \end{itemize}
 
-Cada cantidad incluye la reserva del 10 \% del parque, redondeada hacia arriba, conforme a la tabla de repuestos de las Bases Técnicas Transversales (PUCV, 2026b, cap. 8, p. 19). Solo los 22 terminales de la cuadrilla de congelado de Talca son aptos para {$-$}22\,\textdegree{}C: el congelado representa cerca del 4 \% de las líneas y se prepara al final del turno, de modo que la cuadrilla que entra a la cámara es de unas 20 personas (S-34). Concepción no tiene congelado.
+Cada cantidad incluye la reserva del 10 \% del parque, redondeada hacia arriba, conforme a la tabla de repuestos de las Bases Técnicas Transversales (cap. 8, p. 19). Solo los 22 terminales de la cuadrilla de congelado de Talca son aptos para {$-$}22\,\textdegree{}C: el congelado representa cerca del 4 \% de las líneas y se prepara al final del turno, de modo que la cuadrilla que entra a la cámara es de unas 20 personas (S-34). Concepción no tiene congelado.
 
 \subsection{Almacenamiento, retención y migración: dimensiones 7--10}
 \label{sec:dimensionamiento-almacenamiento}
@@ -165,19 +165,19 @@ La dimensión 7, «Volumen anual de almacenamiento transaccional», la dimensió
 
 {\footnotesize Fuente: elaboración propia.\par}
 
-La migración no supone eventos históricos digitales de trazabilidad: el caso dice que no existe forma consultable y que el lote se anota en texto libre cuando se anota. Por eso la estimación usa 1.150 recepciones mensuales × 60 meses × 20 líneas por recepción, con sensibilidad de 10 a 30 líneas. El 41\,\% sin lote del retiro de marzo se usa sólo para saneamiento de calidad, conforme a PUCV, 2026a, cap. 7, p. 12.
+La migración no supone eventos históricos digitales de trazabilidad: el caso dice que no existe forma consultable y que el lote se anota en texto libre cuando se anota. Por eso la estimación usa 1.150 recepciones mensuales × 60 meses × 20 líneas por recepción, con sensibilidad de 10 a 30 líneas. El 41\,\% sin lote del retiro de marzo se usa sólo para saneamiento de calidad, conforme a Bases Técnicas del caso, cap. 7, p. 12.
 
 \subsection{Integraciones y ancho de banda por sitio: dimensiones 11--12}
 \label{sec:dimensionamiento-enlaces}
 
-La dimensión 11, «Número de integraciones y volumen de mensajes por integración», cuenta únicamente INT-01 a INT-15 del catálogo del apartado 4.1. Portal y llamadas internas a la API quedan fuera. La Tabla~\ref{tab:dimensionamiento-integraciones} resume sus 178.661 mensajes diarios normales y 260.155 en peak; INT-14 considera 13 nodos observables: seis VMs en Talca, cuatro en Concepción y un mini-PC por cada uno de los tres cross-docking, con 1.000 eventos por nodo al día.
+La dimensión 11, «Número de integraciones y volumen de mensajes por integración», cuenta únicamente INT-01 a INT-15 del catálogo del apartado 4.1. Portal y llamadas internas a la API quedan fuera. La Tabla~\ref{tab:dimensionamiento-integraciones} resume sus 225.629 mensajes diarios normales y 347.383 en peak, incluida la coordinación de reserva de INT-03/04; INT-14 considera 13 nodos observables: seis VMs en Talca, cuatro en Concepción y un mini-PC por cada uno de los tres cross-docking, con 1.000 eventos por nodo al día.
 
 \begin{tablalafrox}{Mensajes de integración por grupo}{tab:dimensionamiento-integraciones}{F{0.26} G{0.18} G{0.18} Y}{\cab{Integraciones} & \cab{Normal} & \cab{Peak} & \cab{Origen}}
-  INT-01 a INT-04 & 72.710/día & 135.032/día & Pedidos, entregas, eventos y cota de cross-docking \\
+  INT-01 a INT-04 & 119.678/día & 222.260/día & Pedidos, entregas, eventos, coordinación de reserva y cota de cross-docking \\
   INT-05 & 10.584/día & 10.584/día & 6.048 cámaras + 4.536 termógrafos \\
   INT-06 a INT-10 & 5.725/día & 11.695/día & ERP, DTE, EDI, pagos y mapas \\
   INT-11 a INT-15 & 89.642/día & 102.844/día & Avisos, réplica, identidad, ADOT y telemetría \\
-  \textbf{Total} & \textbf{178.661/día} & \textbf{260.155/día} & \textbf{15 integraciones} \\
+  \textbf{Total} & \textbf{225.629/día} & \textbf{347.383/día} & \textbf{15 integraciones} \\
 \end{tablalafrox}
 
 {\footnotesize Fuente: elaboración propia.\par}
@@ -204,7 +204,7 @@ D-03 es fibra, D-04 es LTE y D-06 es satélite, calculado conservadoramente con 
 
 La dimensión 13, «Volumen de datos generado por un dispositivo de reparto en un turno completo sin señal», es 9,83 MB para la ruta de 34 clientes; una ruta promedio genera 5,36 MB normales y 8,24 MB en septiembre. La cifra incluye evidencia, una fotografía adicional cuando corresponde y 2 MB de datos locales.
 
-La dimensión 14, «Tiempo de sincronización de la flota al regresar al centro de distribución», se expresa en tiempo: cada dispositivo sincroniza en diez minutos con al menos 0,13 Mbps efectivos. Los 64 camiones de la hora punta se reparten por SV-03: aproximadamente 43 en Talca y 21 en Concepción, con 0,93 y 0,47 Mbps respectivamente en la Wi-Fi y el enlace de cada centro. La flota completa requiere 1,40 Mbps en esa hora. La cota de 34 clientes corresponde a la ruta rural más larga descrita en el caso (PUCV, 2026a, cap. 8, p. 16, entrevista al conductor de la ruta Cauquenes); en los centros de distribución la sincronización ocurre por Wi-Fi.
+La dimensión 14, «Tiempo de sincronización de la flota al regresar al centro de distribución», se expresa en tiempo: cada dispositivo sincroniza en diez minutos con al menos 0,13 Mbps efectivos. Los 64 camiones de la hora punta se reparten por SV-03: aproximadamente 43 en Talca y 21 en Concepción, con 0,93 y 0,47 Mbps respectivamente en la Wi-Fi y el enlace de cada centro. La flota completa requiere 1,40 Mbps en esa hora. La cota de 34 clientes corresponde a la ruta rural más larga descrita en el caso (Bases Técnicas del caso, cap. 8, p. 16, entrevista al conductor de la ruta Cauquenes); en los centros de distribución la sincronización ocurre por Wi-Fi.
 
 \subsection{Capacidad on-premise}
 \label{sec:dimensionamiento-onpremise}
@@ -225,12 +225,12 @@ Ceph entrega 1,92 TB útiles con seis NVMe de 960 GB, tres réplicas y sin RAID.
 \subsection{Capacidad en nube}
 \label{sec:dimensionamiento-nube}
 
-La plataforma utiliza Fargate, Aurora, ElastiCache, SQS, IoT Core, DynamoDB y S3 como servicios administrados. Una tarea entrega 14 solicitudes por segundo al 70\,\% de uso con 50 ms de CPU. El escalado reacciona con métricas de un minuto y pone una tarea nueva en servicio en menos de tres minutos, valor de diseño que mide la prueba de carga; el balanceador drena la tarea que sale sin perder transacciones en curso (RT-09.04; PUCV, 2026b, cap. 9, p. 21). La Tabla~\ref{tab:dimensionamiento-nube} separa el portal y compara cada perfil con el techo de ocho tareas.
+La plataforma utiliza Fargate, Aurora, ElastiCache, SQS, IoT Core, DynamoDB y S3 como servicios administrados. Una tarea entrega 14 solicitudes por segundo al 70\,\% de uso con 50 ms de CPU. El escalado reacciona con métricas de un minuto y pone una tarea nueva en servicio en menos de tres minutos, valor de diseño que mide la prueba de carga; el balanceador drena la tarea que sale sin perder transacciones en curso (RT-09.04; Bases Técnicas Transversales, cap. 9, p. 21). La Tabla~\ref{tab:dimensionamiento-nube} separa el portal y compara cada perfil con el techo de ocho tareas.
 
 \begin{tablalafrox}{Procesos Fargate por perfil}{tab:dimensionamiento-nube}{F{0.27} G{0.18} G{0.16} G{0.16} Y}{\cab{Perfil} & \cab{Carga} & \cab{Tareas} & \cab{Techo} & \cab{Conclusión}}
   Régimen normal & 12,30 solicitudes/s (nube + portal) & 2 & 8 & Cumple \\
   Peak de septiembre & 14,66 solicitudes/s (nube + portal) & 2 & 8 & Cumple \\
-  Prueba RT-09.06 (PUCV, 2026b, cap. 9, p. 21) & 21,99 solicitudes/s totales, distribuido por perfil horario & 2 & 8 & Una sola multiplicación \\
+  Prueba RT-09.06 (Bases Técnicas Transversales, cap. 9, p. 21) & 21,99 solicitudes/s totales, distribuido por perfil horario & 2 & 8 & Una sola multiplicación \\
   Cota extrema & 48,37 solicitudes/s (5,03 + 43,33) & 4 & 8 & Bajo el techo \\
   Sensibilidad 120 solicitudes & 21,93 / 91,70 solicitudes/s; régimen / cota & 2 / 7 & 8 & Bajo el techo \\
 \end{tablalafrox}
@@ -269,22 +269,22 @@ El primer candidato es la emisión de guías del ERP. En el peak se emiten unos 
   \item En la ventana actual de despacho: máximo de 1,89 segundos por guía.
 \end{itemize}
 
-La solución emite la guía cuando confirma la carga, durante la noche. Se detectan guías aún no emitidas frente a la hora de salida de cada camión y se prioriza la cola, sin crear un segundo emisor: el ERP conserva la responsabilidad tributaria y la guía acompaña el traslado. Como el caso no documenta las interfaces del ERP y encarga levantarlas en los primeros meses (PUCV, 2026a, cap. 5, p. 10), el tiempo real por guía se mide en ese levantamiento; si superara los 4,42 segundos, las cargas se cierran por camión en el orden de salida, para que la emisión empiece antes.
+La solución emite la guía cuando confirma la carga, durante la noche. Se detectan guías aún no emitidas frente a la hora de salida de cada camión y se prioriza la cola, sin crear un segundo emisor: el ERP conserva la responsabilidad tributaria y la guía acompaña el traslado. Como el caso no documenta las interfaces del ERP y encarga levantarlas en los primeros meses (Bases Técnicas del caso, cap. 5, p. 10), el tiempo real por guía se mide en ese levantamiento; si superara los 4,42 segundos, las cargas se cierran por camión en el orden de salida, para que la emisión empiece antes.
 
 La Tabla~\ref{tab:t84} fija los umbrales de respuesta que se observan en percentil 95.
 
 \begin{tablalafrox}{Umbrales de respuesta en percentil 95}{tab:t84}{F{0.48} G{0.18} Y}{\cab{Operación} & \cab{Umbral} & \cab{Fuente}}
-  Confirmación de línea de preparación & 1 s & PUCV, 2026a, cap. 15, p. 26 \\
-  Registro de entrega & 2 s & PUCV, 2026a, cap. 15, p. 26 \\
-  Línea de preventa & 1,5 s & PUCV, 2026a, cap. 15, p. 26 \\
-  Consulta de stock y crédito & 2 s & PUCV, 2026a, cap. 15, p. 26 \\
-  Transacción crítica de terreno & 3 s & PUCV, 2026b, cap. 9, p. 21 \\
-  Carga inicial del portal & 2 s & PUCV, 2026b, cap. 9, p. 21 \\
-  Navegación & 1 s & PUCV, 2026b, cap. 9, p. 21 \\
-  API de consulta & 500 ms & PUCV, 2026b, cap. 9, p. 21 \\
-  API de escritura & 800 ms & PUCV, 2026b, cap. 9, p. 21 \\
-  Búsqueda compuesta & 3 s & PUCV, 2026b, cap. 9, p. 21 \\
-  Informe estándar & 30 s & PUCV, 2026b, cap. 9, p. 21 \\
+  Confirmación de línea de preparación & 1 s & Bases Técnicas del caso, cap. 15, p. 26 \\
+  Registro de entrega & 2 s & Bases Técnicas del caso, cap. 15, p. 26 \\
+  Línea de preventa & 1,5 s & Bases Técnicas del caso, cap. 15, p. 26 \\
+  Consulta de stock y crédito & 2 s & Bases Técnicas del caso, cap. 15, p. 26 \\
+  Transacción crítica de terreno & 3 s & Bases Técnicas Transversales, cap. 9, p. 21 \\
+  Carga inicial del portal & 2 s & Bases Técnicas Transversales, cap. 9, p. 21 \\
+  Navegación & 1 s & Bases Técnicas Transversales, cap. 9, p. 21 \\
+  API de consulta & 500 ms & Bases Técnicas Transversales, cap. 9, p. 21 \\
+  API de escritura & 800 ms & Bases Técnicas Transversales, cap. 9, p. 21 \\
+  Búsqueda compuesta & 3 s & Bases Técnicas Transversales, cap. 9, p. 21 \\
+  Informe estándar & 30 s & Bases Técnicas Transversales, cap. 9, p. 21 \\
 \end{tablalafrox}
 
 {\footnotesize Fuente: elaboración propia.\par}
@@ -294,11 +294,11 @@ Los otros candidatos son la base WMS, los IOPS, la Wi-Fi y el drenaje. Se detect
 \subsection{Validación mediante pruebas de carga y estrés}
 \label{sec:dimensionamiento-pruebas}
 
-La prueba RT-09.06 (PUCV, 2026b, cap. 9, p. 21) carga una sola vez 1,5 × la dimensión 3, es decir, 21,99 TPS totales. La Tabla~\ref{tab:t86} vincula cada ensayo con la decisión que debe cerrar.
+La prueba RT-09.06 (Bases Técnicas Transversales, cap. 9, p. 21) carga una sola vez 1,5 × la dimensión 3, es decir, 21,99 TPS totales. La Tabla~\ref{tab:t86} vincula cada ensayo con la decisión que debe cerrar.
 
 \begin{tablalafrox}{Pruebas que confirman el dimensionamiento}{tab:t86}{F{0.31} G{0.27} Y F{0.20}}{\cab{Prueba} & \cab{Carga} & \cab{Qué confirma} & \cab{Criterio}}
-  Carga RT-09.06 (PUCV, 2026b, cap. 9, p. 21) & 21,99 TPS totales, distribuidos por lugar según el perfil horario & CPU, Fargate, portal, WMS, base e IOPS & Percentil 95 \\
-  Estrés RT-09.06 (PUCV, 2026b, cap. 9, p. 21) & Sobre cota extrema portal y 3× & Umbral de quiebre y degradación & Sin pérdida ni duplicación \\
+  Carga RT-09.06 (Bases Técnicas Transversales, cap. 9, p. 21) & 21,99 TPS totales, distribuidos por lugar según el perfil horario & CPU, Fargate, portal, WMS, base e IOPS & Percentil 95 \\
+  Estrés RT-09.06 (Bases Técnicas Transversales, cap. 9, p. 21) & Sobre cota extrema portal y 3× & Umbral de quiebre y degradación & Sin pérdida ni duplicación \\
   Corte de enlace & 24 h y drenaje en 2 h & WAL, broker, telemetría y observabilidad & Drenaje completo \\
   Sincronización de dispositivo & Peor ruta en 10 min & 0,13 Mbps efectivos & Ruta reconciliada \\
   Migración & Dos ensayos independientes & Volumen y calidad histórica & Conciliación de dominios \\
@@ -325,7 +325,7 @@ La Tabla~\ref{tab:t72} reúne cada dimensión con el nombre literal del Caso 14.
   8 & Volumen anual de almacenamiento de evidencia de entrega, firmas y fotografías & 87,72 GB/año & 13,58 GB mes peak & Anexo 4-W, sección 4-W.4 \\
   9 & Volumen anual de almacenamiento de series de temperatura y de posicionamiento & 0,56 + 3,20 GB/año crudos & 2,80 + 3,20 GB crudos retenidos & Anexo 4-W, sección 4-W.4 \\
   10 & Volumen total de datos históricos a migrar & 32,11 GB & 30,73--33,49 GB de sensibilidad & Anexo 4-W, sección 4-W.4 \\
-  11 & Número de integraciones y volumen de mensajes por integración & 15; 178.661 mensajes/día & 260.155 mensajes/día & Anexo 4-W, sección 4-W.5 \\
+  11 & Número de integraciones y volumen de mensajes por integración & 15; 225.629 mensajes/día & 347.383 mensajes/día & Anexo 4-W, sección 4-W.5 \\
   12 & Ancho de banda requerido por sitio, en régimen y en peak & 3,29 / 0,67 / 0,05 Mbps cargados & 5,16 / 1,88 / 0,35 Mbps peor caso & Anexo 4-W, sección 4-W.5 \\
   13 & Volumen de datos generado por un dispositivo de reparto en un turno completo sin señal & 5,36 MB promedio & 9,83 MB, ruta de 34 clientes & Anexo 4-W, sección 4-W.6 \\
   14 & Tiempo de sincronización de la flota al regresar al centro de distribución & 10 min por dispositivo & 10 min después del último camión & Anexo 4-W, sección 4-W.6 \\

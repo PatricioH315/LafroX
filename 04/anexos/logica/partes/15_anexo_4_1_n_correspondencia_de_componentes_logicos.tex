@@ -24,7 +24,7 @@ La tabla verifica la correspondencia de los doce módulos con sus capacidades, c
 
 La correspondencia entre 3.3, 3.4, 4.1 y 4.2.2 se verifica en ambos sentidos mediante identificador, contrato, responsable y realización física.
 \subsection*{Inventario trazable de capacidades transversales}
-Los siguientes 37 identificadores complementan los doce módulos: el inventario lógico tiene 49 unidades verificables. La última columna remite a la Tabla 8 del apartado 4.2.2 para cada realización física.
+Los siguientes 37 identificadores complementan los doce módulos: el inventario lógico tiene 49 unidades verificables. La última columna resume el criterio de correspondencia; la realización física de cada identificador está en la Tabla 8 del apartado 4.2.2.
 \begin{tablalafrox}{Inventario transversal y realización física}{tab:inventario-transversal}{F{0.16} F{0.23} F{0.22} F{0.15} Y}{\cab{ID} & \cab{Componente} & \cab{Capacidad} & \cab{Contrato} & \cab{Correspondencia 4.2.2}}
 UI-MOV & Apps Kotlin / Room & preventa y entrega & INT-01/02 & M3/M6/M7/M8 \\
 UI-HHT & Terminales de bodega & preparación & INT-03 / API local & M1/M2/M5 \\
@@ -64,3 +64,26 @@ DEV-PIPE & CI/CD y SBOM & plataforma & Artefacto firmado & Promoción por contra
 DEV-IAC & Terraform / Ansible & infraestructura & Estado y configuración & Propietario único \\
 DEV-MDM & Gestión de terminales & seguridad & Enrolamiento & Política y borrado \\
 \end{tablalafrox}
+\subsection*{Correspondencia de actores y permisos del sistema}
+La Tabla~\ref{tab:actores-permisos} realiza el catálogo de quince actores del apartado 3.4.2.1 del Subdocumento 3. Cada acción se autoriza por separado sobre el ámbito indicado. Ni el cargo ni el acceso a una consola conceden todos los permisos de un módulo.
+
+\begin{tablalafrox}{Actores del sistema, interfaces y permisos}{tab:actores-permisos}{F{0.17} F{0.22} F{0.24} F{0.24} Y}{\cab{Actor} & \cab{Interfaz y módulos} & \cab{Acciones} & \cab{Ámbito y límite} & \cab{Etapa}}
+Preventista & App de preventa; M3, lectura M2/M7 & Consultar stock y crédito, capturar y sincronizar pedidos & Su cartera; no reserva offline & 1 \\
+Conductor propio & App de reparto; M6/M7/M8 & Entrega, POD, cobro, retorno y envases & Su ruta y turno; no aprueba su descuadre & 1 \\
+Conductor externo & App de reparto; M6/M7/M8 & Entrega y rendición propias & Identidad personal ligada a empresa y turno & 1 \\
+Preparador & Terminal de bodega; M5, M1/M2 con permiso & Lecturas, faltantes y movimientos autorizados & Sitio, misión y turno; no libera lotes & 1 \\
+Cliente del canal tradicional & Portal opcional; M3/M6/M7 & Armar pedidos; ver entregas, documentos y saldo & Solo sus datos; compra asistida sin cuenta & 2 \\
+Cliente del canal moderno & Portal y conector EDI; M11/M3 & Pedidos, consultas y mensajes EDI & Su cadena; sesión humana y técnica separadas & 2 \\
+Empresa transportista & Portal por representante; M4/M6/M12 & Ver rutas y documentos; confirmar conductor y vehículo & Su empresa; no firma POD & 2; registro por despacho en 1 \\
+Proveedor & Portal por representante; M1 & Consultar órdenes y recepciones & Su organización; solo lectura & 2 \\
+Jefa de Calidad & Consola de Calidad; M9, acciones M2/M5 & Fijar umbral y duración; liberar, bloquear o retirar & Lote e instalación; decisión exclusiva & 1 \\
+Gerente Comercial & Consola comercial; M3/M7/M10/M11 & Reglas, excepciones e indicadores & Política y canal, con historial & 1; canal moderno en 2 \\
+Gerente de Finanzas & Consola financiera; M7/M10 & Supervisar rendición y reglas financieras & Tesorería nominada; quien registra no aprueba & 1; costo en 2 \\
+Planificador de Rutas & Consola de rutas; M4/M12 & Generar, corregir y aprobar rutas & Motivo auditado; no altera cobros & 1 \\
+Jefe de TI & Consola de administración & Identidad, configuración, integraciones y monitoreo & Privilegio temporal con MFA; sin permisos de negocio & 1 \\
+Gerente de Operaciones & Consola operacional; M2/M4/M5/M6 & Supervisar despacho y excepciones & Sitio; no omite guía ni Calidad & 1 \\
+Jefa de Bodega & Consola de bodega; M1/M2/M5/M8 & Recepción, inventario, FEFO, preparación y retornos & Sitio; ajustes justificados & 1 \\
+\end{tablalafrox}
+{\footnotesize Fuente: elaboración propia a partir del apartado 3.4.2.1 y del Anexo 3.I del Subdocumento 3.\par}
+
+Recepción, despacho, catálogo y Tesorería son funciones asignadas a personas nominadas dentro de estos perfiles. AL-ACT-01 del Anexo 4-V verifica cada fila con una operación permitida y una denegada.

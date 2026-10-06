@@ -28,14 +28,14 @@ La Tabla~\ref{tab:servicios-nube} agrupa los servicios contratados por la funci�
   Acceso interno & Verified Access, API Gateway privada y endpoint execute-api & N-04, N-12 & sa-east-1 y us-east-1 \\
   Cómputo de aplicación & ECS Fargate, Application Load Balancer privado, Lambda autorizadora & N-04, A-05 & sa-east-1 y us-east-1 \\
   Datos operacionales & Aurora PostgreSQL, Database Migration Service, DynamoDB, ElastiCache & N-05, A-02, N-06, N-07 & sa-east-1 y us-east-1 \\
-  Mensajería & SQS FIFO para la reconciliación y para las solicitudes al ERP y sus respuestas, SQS para los trabajos de Laravel y SNS, con equivalentes vacíos creados por infraestructura como código en us-east-1 & N-09, A-03 & sa-east-1 y us-east-1 \\
+  Mensajería & SQS FIFO para la reconciliación, para las solicitudes al ERP y sus respuestas, y para la coordinación de reservas por sitio, SQS para los trabajos de Laravel y SNS, con equivalentes vacíos creados por infraestructura como código en us-east-1 & N-09, A-03 & sa-east-1 y us-east-1 \\
   Integración B2B & Network Load Balancer y OpenAS2 en Fargate & N-04 (M11) & sa-east-1 \\
   Internet de las cosas & IoT Core, IoT Greengrass & N-08, B-02, B-03 & sa-east-1 y borde \\
   Analítica & S3, Glue, Redshift Serverless, QuickSight embebido & N-10 & sa-east-1 \\
   Respaldo y recuperación & AWS Backup, S3 Object Lock, replicación de S3 entre regiones & N-11, D-05 & sa-east-1 y us-east-1 \\
   Red y conectividad & VPC, Transit Gateway, Site-to-Site VPN, NAT Gateway, VPC Endpoints & D-01 & sa-east-1 y us-east-1 \\
   Identidad, claves y secretos & KMS, Secrets Manager, Parameter Store, IAM Identity Center & A-05, N-12 & sa-east-1 y us-east-1 \\
-  Detección y cumplimiento & Security Lake, GuardDuty, Security Hub, Inspector, Macie, CloudTrail, Config & N-12, F-03 & sa-east-1; CloudTrail, GuardDuty y Config también en us-east-1 \\
+  Detección y cumplimiento & GuardDuty Runtime Monitoring para tareas ECS Fargate, Security Lake, Security Hub, Inspector, Macie, CloudTrail y Config & N-12, F-03 & sa-east-1 y us-east-1 \\
   Operación y gobierno & CloudWatch, Systems Manager, Control Tower, Organizations, Cost Explorer, Budgets & F-01, F-02, N-12 & sa-east-1 \\
   Construcción y registro de imágenes & CodeBuild y Elastic Container Registry con replicación de imágenes entre regiones & N-04, A-01 & sa-east-1 y us-east-1 \\
   Servicios de terceros en nube & Android Enterprise y Zebra DNA; consola del EDR & N-13, F-03 & Servicio gestionado \\
@@ -44,6 +44,8 @@ La Tabla~\ref{tab:servicios-nube} agrupa los servicios contratados por la funci�
 {\footnotesize Fuente: elaboración propia.\par}
 
 La tabla distingue los servicios de entrada, aplicación y datos. La aplicación corre en contenedores administrados; la única función Lambda autoriza las API REST. Los portales Angular se sirven desde S3 privado por CloudFront, mientras el frontend de consolas y el transporte AS2 mantienen dos tareas Fargate en dos zonas cada uno; el motor de rutas ejecuta una tarea por corrida. Las colas SQS de trabajos de Laravel están separadas de la cola FIFO de reconciliación; ElastiCache solo actúa como caché. El recorrido de acceso se precisa en la sección~\ref{sec:conexiones}.
+
+Para cumplir RT-11.16, GuardDuty Runtime Monitoring observa las tareas Amazon ECS ejecutadas en Fargate en las cuentas de ambiente de sa-east-1 y en la región de recuperación us-east-1. Se fija Linux Fargate plataforma 1.4 o posterior y un rol de ejecución que permite obtener el agente administrado; la VPC permite descargar su imagen desde ECR y sus capas desde S3. GuardDuty agrega el agente como sidecar a las tareas nuevas y analiza actividad de procesos, archivos y red; las tareas que ya estén ejecutándose se reinician o redespliegan para que queden cubiertas. Los hallazgos se publican en EventBridge y se encaminan al flujo de respuesta de seguridad para su triage y contención (Amazon Web Services, s.~f.-d, s.~f.-e, s.~f.-f). La cobertura corresponde a ECS sobre Fargate; EKS sobre Fargate no forma parte de la arquitectura.
 
 \subsection{Región secundaria y residencia de los datos}
 
@@ -55,7 +57,7 @@ La región us-east-1 no es una segunda producción. Solo contiene recursos para 
   \item Aplicación: réplica reducida de ECS que escala a carga completa en menos de 30 minutos durante una conmutación.
 \end{itemize}
 
-La región primaria sa-east-1 está en São Paulo, Brasil, y la secundaria us-east-1 en Virginia del Norte, Estados Unidos; ambas suponen transferencia internacional de datos desde Chile. Los datos de geolocalización de personas quedan fuera de la región secundaria; la analítica se copia a ella en forma diferida, sin las posiciones de flota, porque conserva los registros de temperatura y de trazabilidad de lote que el caso exige retener cinco años (PUCV, 2026a, cap.~15, p.~26). La base de licitud, los resguardos de tratamiento y la garantía de continuidad ante las decisiones de residencia del CLIENTE se desarrollan en la sección~\ref{sec:e-especificaciones-del-sitio-secundario-y-}.
+La región primaria sa-east-1 está en São Paulo, Brasil, y la secundaria us-east-1 en Virginia del Norte, Estados Unidos; ambas suponen transferencia internacional de datos desde Chile. Los datos de geolocalización de personas quedan fuera de la región secundaria; la analítica se copia a ella en forma diferida, sin las posiciones de flota, porque conserva los registros de temperatura y de trazabilidad de lote que el caso exige retener cinco años (Bases Técnicas del caso, cap.~15, p.~26). La base de licitud, los resguardos de tratamiento y la garantía de continuidad ante las decisiones de residencia del CLIENTE se desarrollan en la sección~\ref{sec:e-especificaciones-del-sitio-secundario-y-}.
 
 \subsection{Servicios que no se contratan}
 
@@ -63,7 +65,7 @@ Los registros de decisión descartan de forma expresa los siguientes servicios y
 
 \begin{itemize}
   \item No se instala Redis ni Laravel Horizon en los sitios, porque la continuidad local descansa en PostgreSQL y RabbitMQ, y un tercer motor por sitio agregaría operación sin beneficio.
-  \item No se contrata un clúster de Kubernetes (EKS), porque el caso no exige desplegar ni escalar cada módulo por separado y el equipo de TI no operaría su plano de control.
+  \item No se contrata un clúster de Kubernetes (EKS). El monolito modular se despliega en pocos perfiles independientes (API, consumidor, trabajos, consolas, AS2 y motor de rutas), que ECS Fargate ya despliega y revierte por separado (RT-02.02; Bases Técnicas Transversales, cap. 2, p. 6). Kubernetes se justifica con decenas de servicios, y el equipo de TI de cuatro personas no operaría su plano de control.
   \item No se contrata Kafka administrado (MSK), porque RabbitMQ en cada sitio y SQS FIFO en la nube resuelven el orden y la durabilidad con menos operación.
   \item No se contratan servicios de trazas y métricas separados de CloudWatch, porque las Bases piden una sola plataforma de observabilidad para nube y on-premise.
   \item No se autoaloja un gestor de secretos, porque Secrets Manager rota las credenciales sin el desellado manual que exigiría uno propio.
@@ -71,7 +73,7 @@ Los registros de decisión descartan de forma expresa los siguientes servicios y
 
 \subsection{Modelo de contratación}
 
-Los servicios se contratan por uso, con la capacidad base comprometida mediante Savings Plans y el peak de septiembre cubierto con capacidad efímera que se libera al terminar. Los ambientes de Desarrollo, QA y Preproducción se reducen o apagan fuera del horario de uso. La reversibilidad está asegurada por la elección de servicios: Aurora es compatible con PostgreSQL, los datos analíticos se guardan en formato Parquet, y Keycloak, Laravel, PostgreSQL y RabbitMQ son de código abierto, de modo que un traslado a otra plataforma conserva la aplicación y los datos y se concentra en sustituir los servicios administrados de AWS que la solución consume. Ese esfuerzo se acota en tres grupos: Aurora, ElastiCache, S3 y ECS Fargate se reemplazan por PostgreSQL, Redis, almacenamiento compatible con S3 y contenedores, solo con cambios de configuración; SQS, SNS, Secrets Manager y CloudWatch se reemplazan cambiando el adaptador que ya los aísla detrás de un puerto de la aplicación; e IoT Core con Greengrass, DynamoDB, Redshift con Glue y QuickSight, API Gateway con su autorizador y Verified Access no son portables y exigen rediseñar la ingesta de frío, la analítica y la entrada. Una salida cambia así la configuración de cuatro servicios y los adaptadores de otros cuatro, y rediseña cinco componentes (RT-03.07; PUCV, 2026b, cap. 3, p. 8). Los montos de estos servicios se declaran en la Oferta Económica y no en este documento.
+Los servicios se contratan por uso, con la capacidad base comprometida mediante Savings Plans y el peak de septiembre cubierto con capacidad efímera que se libera al terminar. Los ambientes de Desarrollo, QA y Preproducción se reducen o apagan fuera del horario de uso. La reversibilidad está asegurada por la elección de servicios: Aurora es compatible con PostgreSQL, los datos analíticos se guardan en formato Parquet, y Keycloak, Laravel, PostgreSQL y RabbitMQ son de código abierto, de modo que un traslado a otra plataforma conserva la aplicación y los datos y se concentra en sustituir los servicios administrados de AWS que la solución consume. Ese esfuerzo se acota en tres grupos: Aurora, ElastiCache, S3 y ECS Fargate se reemplazan por PostgreSQL, Redis, almacenamiento compatible con S3 y contenedores, solo con cambios de configuración; SQS, SNS, Secrets Manager y CloudWatch se reemplazan cambiando el adaptador que ya los aísla detrás de un puerto de la aplicación; e IoT Core con Greengrass, DynamoDB, Redshift con Glue y QuickSight, API Gateway con su autorizador y Verified Access no son portables y exigen rediseñar la ingesta de frío, la analítica y la entrada. Una salida cambia así la configuración de cuatro servicios y los adaptadores de otros cuatro, y rediseña cinco componentes (RT-03.07; Bases Técnicas Transversales, cap. 3, p. 8). Los montos de estos servicios se declaran en la Oferta Económica y no en este documento.
 
 \subsection{Topología de los servicios}
 

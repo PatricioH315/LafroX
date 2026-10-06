@@ -4,7 +4,7 @@
 \label{anx:O}
 \addcontentsline{toc}{section}{Anexo 4-O --- Registro de decisiones de arquitectura}
 
-El registro reúne las decisiones de arquitectura lógica y física conforme a RT-02.04 (PUCV, 2026b, cap. 2, p. 7). Cada ficha identifica la alternativa descartada, el criterio de selección y la evidencia necesaria para verificar su realización. Los RT de las fichas remiten a las Bases Técnicas Transversales (PUCV, 2026b), salvo RT-10.05 y RT-16.14, precisados por el caso (PUCV, 2026a, cap.~15, p.~27).
+El registro reúne las decisiones de arquitectura lógica y física conforme a RT-02.04 (Bases Técnicas Transversales, cap. 2, p. 7). Cada ficha identifica la alternativa descartada, el criterio de selección y la evidencia necesaria para verificar su realización. Los RT de las fichas remiten a las Bases Técnicas Transversales (caps. 2--16, pp. 6--29), salvo RT-10.05 y RT-16.14, precisados por el caso (Bases Técnicas del caso, cap.~15, p.~27).
 
 \subsection*{ADR-01. Estilo arquitectónico}
 \label{sub:adr-01}
@@ -14,7 +14,7 @@ El registro reúne las decisiones de arquitectura lógica y física conforme a R
 
 \textbf{Criterio de selección.} Límites de dominio comprobables con el equipo de operación disponible.
 
-\textbf{Consecuencias.} Los módulos comparten artefacto y publican contratos; API, WMS y trabajadores tienen procesos y permisos propios. Los servicios de negocio no conservan estado de sesión en sus procesos.
+\textbf{Consecuencias.} Los módulos comparten artefacto y publican contratos; API, WMS por sitio, erp-sync, shipper, consumidor y trabajadores tienen procesos y permisos propios, y cada uno se despliega y revierte por separado. Los servicios de negocio no conservan estado de sesión en sus procesos.
 
 \textbf{Evidencia exigida.} Prueba de dependencias, contratos y promoción de un trabajador sin interrumpir el WMS.
 
@@ -140,7 +140,7 @@ El registro reúne las decisiones de arquitectura lógica y física conforme a R
 
 \textbf{Criterio de selección.} Capacidad y quórum N+1 con demanda del Anexo 4-W.
 
-\textbf{Consecuencias.} Se reservan recursos de OSD y monitor; seis OSD ofrecen cerca de 1,92 TB útiles y unos 1,5 TB al 80\% de llenado. Concepción usa RAID 10 y doble fuente. E-01 usa dos SSD en RAID 1 por software, que tolera la falla de un disco con holgura para los 50 GB requeridos; RAID 5 o RAID 10 exigirían tres o cuatro discos que el mini-PC industrial no aloja. E-01 y sus switches tienen alimentación redundante.
+\textbf{Consecuencias.} Se reservan recursos de OSD y monitor; seis OSD ofrecen cerca de 1,92 TB útiles y unos 1,5 TB al 80\% de llenado. Frente a RT-03.14, el nivel declarado es Ceph sin RAID por hardware con réplica de tres copias, que tolera la falla de un disco y de un nodo. Concepción usa RAID 10 y doble fuente. E-01 usa dos SSD en RAID 1 por software, que tolera la falla de un disco con holgura para los 50 GB requeridos; RAID 5 o RAID 10 exigirían tres o cuatro discos que el mini-PC industrial no aloja. E-01 y sus switches tienen alimentación redundante.
 
 \textbf{Evidencia exigida.} Prueba de pérdida de nodo, reconstrucción, latencia y carga de cientos de IOPS a 3$\times$ frente a decenas de miles de IOPS de NVMe.
 
@@ -238,11 +238,11 @@ El registro reúne las decisiones de arquitectura lógica y física conforme a R
 
 \textbf{Criterio de selección.} Guía válida antes de liberar cada camión sin conexión entrante desde nube.
 
-\textbf{Consecuencias.} La guía se preemite al cerrar carga nocturna; cambiar carga invalida la guía y exige nueva emisión, que requiere un camino de Talca y, fuera de Talca, también uno del sitio. Si no hay camino hasta el ERP, el camión sale solo con la carga amparada por su guía vigente y el ajuste pasa a la ruta siguiente.
+\textbf{Consecuencias.} La guía se preemite al cerrar carga nocturna; cambiar carga invalida la guía y exige nueva emisión, que requiere un camino de Talca y, fuera de Talca, también uno del sitio. Si no hay camino hasta el ERP, el camión sale solo con la carga amparada por su guía vigente y el ajuste pasa a la ruta siguiente. Una guía ya anulada no se reutiliza.
 
 \textbf{Evidencia exigida.} AL-DTE-01 ensaya 96 salidas, caída de fibra y LTE, cambio de carga, folio y acuse.
 
-\textbf{Requisitos que la sustentan.} RT-10.05 y RT-16.14 del caso (PUCV, 2026a, cap.~15, p.~27); RF-07.09; Caso, 96 camiones.
+\textbf{Requisitos que la sustentan.} RT-10.05 y RT-16.14 del caso (Bases Técnicas del caso, cap.~15, p.~27); RF-05.06; Caso, 96 camiones.
 
 \subsection*{ADR-18. Protección de datos fuera del sitio}
 \label{sub:adr-18}
@@ -266,11 +266,11 @@ El registro reúne las decisiones de arquitectura lógica y física conforme a R
 
 \textbf{Criterio de selección.} Continuidad con base de licitud, minimización y control contractual.
 
-\textbf{Consecuencias.} AWS actúa como encargado bajo contrato con cláusulas tipo para la Ley N.\textdegree{} 21.719 (Ley N.\textdegree{} 21.719, 2024); el CLIENTE administra KMS, cifra datos en reposo y tránsito, audita accesos, excluye la geolocalización de personas de la réplica secundaria y copia la analítica en forma diferida sin las posiciones de flota. Si el CLIENTE no aprueba Estados Unidos por estar fuera de Sudamérica, el parámetro de región secundaria de la infraestructura como código se cambia a otra región AWS aprobada que ofrezca Aurora Global Database, DynamoDB Global Tables, replicación de S3, ECS Fargate y AWS Backup; se conservan la arquitectura, el RTO y el RPO. Las categorías no críticas restringidas a la región primaria reciben copias inmutables en otra cuenta.
+\textbf{Consecuencias.} AWS actúa como encargado bajo contrato con cláusulas tipo para la Ley N.\textdegree{} 21.719 (Ley N.\textdegree{} 21.719, 2024); el CLIENTE administra KMS, cifra datos en reposo y tránsito, audita accesos, excluye la geolocalización de personas de la réplica secundaria y copia la analítica en forma diferida sin las posiciones de flota. La declaración de ambas regiones, la base de licitud y los resguardos se someten a la aprobación del CLIENTE como hito de la Etapa 1. us-east-1 ofrece todos los servicios de recuperación del diseño.
 
 \textbf{Evidencia exigida.} Contrato de encargo, registro de tratamiento, aprobación de residencia y prueba de exclusiones y recuperación.
 
-\textbf{Requisitos que la sustentan.} Art. 23 de las Bases Administrativas (PUCV, 2026c, art. 23, p. 17); Ley N.\textdegree{} 21.719; RT-07.04.
+\textbf{Requisitos que la sustentan.} Art. 23 de las Bases Administrativas (art. 23, p. 17); Ley N.\textdegree{} 21.719; RT-07.04.
 
 \subsection*{ADR-20. Frontend web}
 \label{sub:adr-20}
@@ -284,7 +284,7 @@ El registro reúne las decisiones de arquitectura lógica y física conforme a R
 
 \textbf{Evidencia exigida.} Prueba de accesibilidad, contratos, autenticación y promoción del mismo artefacto, más AL-CLI-01 del Anexo 4-M.
 
-\textbf{Requisitos que la sustentan.} RT-16.30 y RT-17.01 del caso (PUCV, 2026a, cap.~15, p.~27); restricción 5 del caso.
+\textbf{Requisitos que la sustentan.} RT-16.30 y RT-17.01 del caso (Bases Técnicas del caso, cap.~15, p.~27); restricción 5 del caso.
 
 \subsection*{ADR-21. Infraestructura como código y cadena de entrega}
 \label{sub:adr-21}
@@ -302,7 +302,7 @@ El registro reúne las decisiones de arquitectura lógica y física conforme a R
 
 \subsection*{ADR-22. Cadena de frío en el borde}
 \label{sub:adr-22}
-\textbf{Decisión adoptada.} Greengrass en gateways industriales lee Modbus, bloquea despacho local y conserva lecturas durante 24 horas.
+\textbf{Decisión adoptada.} Greengrass en gateways industriales lee Modbus, bloquea localmente el despacho ante una excursión crítica y sostenida y conserva lecturas durante 24 horas.
 
 \textbf{Alternativas evaluadas.} Lectura directa a nube depende de WAN; lectura en PLC mezcla control industrial con reglas de despacho y dificulta auditoría.
 

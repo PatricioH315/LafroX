@@ -5,13 +5,13 @@ RT-02.11 exige identificar las dependencias singulares que subsisten y justifica
 
 \begin{tablalafrox}{Dependencias singulares y riesgo residual}{tab:spof}{F{0.21} F{0.26} F{0.27} Y}{\cab{Dependencia} & \cab{Efecto si falla} & \cab{Continuidad prevista} & \cab{Aceptación}}
 Identidad central & No hay altas ni revocación remota. & Asignaciones vigentes y servicio local. & Prueba de relevo 24 h. \\
-ERP y emisión DTE & Se retrasa una nueva guía. & Preemisión nocturna y ERP por tres caminos; la salida sin guía válida se bloquea. & AL-DTE-01 con 96 salidas. \\
+ERP y emisión DTE & Se retrasa una nueva guía; perder la sala de Talca la detiene hasta restituir el ERP. & Preemisión nocturna y ERP por tres caminos; la salida sin guía válida se bloquea. & AL-DTE-01 con 96 salidas. \\
 Consolidación central de stock & La reserva central queda fechada. & Cada sitio opera localmente y preventa captura pedidos sujetos a validación. & Conciliación de eventos por sitio. \\
 SII y pasarela de pago & No hay respuesta en línea. & Reintento y cobro alternativo aprobado. & Sin confirmar no equivale a aprobado. \\
 Planificador experto & Faltan decisiones ante excepciones. & Reglas de M4 y suplente capacitado. & Prueba antes de su retiro. \\
 \end{tablalafrox}
 
-{\footnotesize Fuente: elaboración propia a partir de RT-02.11 (PUCV, 2026b, cap.~2, p.~7).\par}
+{\footnotesize Fuente: elaboración propia a partir de RT-02.11 (Bases Técnicas Transversales, cap.~2, p.~7).\par}
 
 Las dependencias externas conservan riesgo residual que exige prueba o contingencia aprobada.
 

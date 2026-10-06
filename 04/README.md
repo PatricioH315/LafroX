@@ -12,11 +12,10 @@ Esta carpeta reúne las fuentes vigentes de 4.1, 4.2 y 4.3. El contenido está c
 main.tex
 contenido.tex
 compilar.ps1
-LAFROX-Subdocumento4.pdf
+entrega/                  # los tres PDF entregables
 04/
   anexos_logica.tex
   formulario_T11.tex
-  anexo_4B.tex
   partes/4.1_logica/
   partes/4.2_fisica/
   partes/4.3_centros_de_datos/
@@ -27,10 +26,9 @@ LAFROX-Subdocumento4.pdf
   figuras/fisica/
   figuras/centros_de_datos/
   figuras/fuentes/
-  salida/                 # resultados locales de compilación, no versionados
 ```
 
-El documento principal conserva el cuerpo lógico y el ensamblado físico original. Este último incluye centros de datos, ADR, referencias, el T-11 provisional y la memoria de cálculo. Los anexos A–V permanecen separados con su catálogo original. No se crean copias editoriales de tablas ni de figuras entre estas raíces.
+El cuerpo (`main.tex`) contiene 4.1, 4.2 y 4.3, las referencias y la declaración de uso de IA. Los anexos 4-A a 4-W y el Formulario T-11 se compilan como archivos propios (aclaraciones, sección 1).
 
 ## Compilación
 
@@ -46,14 +44,13 @@ También puede compilarse el documento principal manualmente, dos veces o hasta 
 lualatex --interaction=nonstopmode --halt-on-error --jobname=LAFROX-Subdocumento4 main.tex
 ```
 
-El script compila el main integrado desde la raíz y los complementos desde `04`; crea `04/salida/` para estos últimos. Puede usarse `-SoloMain` para verificar únicamente el main integrado. La arquitectura lógica 4.1 permanece dentro de este documento; no se genera un PDF independiente de su cuerpo. Las salidas relativas a la raíz del repositorio son:
+El script compila los tres entregables y los deja juntos en la carpeta `entrega/` de la raíz: el cuerpo desde la raíz y el anexo y el formulario desde `04`. Puede usarse `-SoloMain` para compilar solo el cuerpo.
 
 | Fuente | Resultado |
 | --- | --- |
-| `main.tex` | `LAFROX-Subdocumento4.pdf` |
-| `04/anexos_logica.tex` | `04/salida/LAFROX-Subdocumento4.1-Anexos.pdf` |
-| `04/formulario_T11.tex` | `04/salida/LAFROX-Formulario-T-11.pdf` |
-| `04/anexo_4B.tex` | `04/salida/LAFROX-Anexo-4B.pdf` |
+| `main.tex` | `entrega/LAFROX-Subdocumento4.pdf` |
+| `04/anexos_logica.tex` | `entrega/LAFROX-Subdocumento4-Anexos.pdf` |
+| `04/formulario_T11.tex` | `entrega/LAFROX-Formulario-T-11.pdf` |
 
 Compilar el main desde la raíz del repositorio. Si se compilan los complementos manualmente, hacerlo desde `04`. `main.tex` es la entrada del proyecto integrado; las demás raíces permiten revisar o distribuir los complementos por separado.
 

@@ -1,6 +1,6 @@
 \subsection{Modelo de datos conceptual}
 
-El modelo de datos de la solución se fundamenta en un conjunto de entidades de negocio canónicas, sus relaciones y eventos, conforme a RT-02.13. Este modelo alimenta la matriz de trazabilidad que exige el numeral 17.1 de las Bases Técnicas del caso (PUCV, 2026a, cap. 17), entregada en el Formulario T-12, y los contratos de integración (OpenAPI 3.1 y AsyncAPI 2.6 por módulo).
+El modelo de datos de la solución se fundamenta en un conjunto de entidades de negocio canónicas, sus relaciones y eventos, conforme a RT-02.13. Este modelo alimenta la matriz de trazabilidad que exige el numeral 17.1 de las Bases Técnicas del caso (cap. 17, p. 31), entregada en el Formulario T-12, y los contratos de integración (OpenAPI 3.1 y AsyncAPI 2.6 por módulo).
 
 Las entidades principales son:
 
@@ -17,6 +17,10 @@ Las entidades principales son:
   \item \textbf{Sensor / registro térmico.} Dispositivo, lote o posición, temperatura y excursión térmica.
 \end{itemize}
 
+Los eventos usan verbos en pasado y son la base de los esquemas AsyncAPI. Toda escritura offline es idempotente por UUID (RT-02.06; Bases Técnicas Transversales, cap. 2, p. 7).
+
+El almacenamiento se distribuye en quince dominios lógicos: BD\_INVENTARIO, BD\_PREVENTA, BD\_RUTAS (PostGIS), BD\_PREPARACION, BD\_REPARTO, BD\_COBRANZA\_FINANZAS, BD\_MAESTROS\_CONF, BD\_GOBIERNO\_ACCESO, BD\_CALIDAD\_TRAZABILIDAD, BD\_TELEMETRIA, BD\_EDI\_CANALMODERNO, BD\_BI\_GERENCIA, BD\_MAILS\_NOTIF, REDIS\_SESIONES\_CACHE y S3\_DOCS. El dominio de telemetría conserva la ingesta raw en DynamoDB y su serie consolidada en S3 Parquet y Redshift, procesada con Glue. Esta separación incluye bases transaccionales, almacenes analíticos, caché y objetos; no representa quince servidores físicos ni quince motores de base de datos independientes.
+
 La Figura~\ref{fig:arql-18} dibuja las relaciones mínimas necesarias para responder dos preguntas del caso: de qué lote provino una unidad entregada y a qué clientes llegó un lote que debe retirarse.
 
 \begin{anexohorizontal}
@@ -30,8 +34,3 @@ La Figura~\ref{fig:arql-18} dibuja las relaciones mínimas necesarias para respo
 
 La línea de pedido se asigna a un lote identificado por GTIN y lote del proveedor; los movimientos con SSCC conservan la cadena de custodia hasta la entrega. La entrega vincula la evidencia de recepción y el folio de la guía que el ERP emitió antes del traslado. Un pedido aún puede no tener entrega, y una entrega puede registrar más de una evidencia o un rechazo parcial: esas cardinalidades y estados conservan el identificador de origen.
 \end{anexohorizontal}
-
-Los eventos usan verbos en pasado y son la base de los esquemas AsyncAPI. Toda escritura offline es idempotente por UUID (RT-02.06).
-
-El almacenamiento se distribuye en quince dominios lógicos: BD\_INVENTARIO, BD\_PREVENTA, BD\_RUTAS (PostGIS), BD\_PREPARACION, BD\_REPARTO, BD\_COBRANZA\_FINANZAS, BD\_MAESTROS\_CONF, BD\_GOBIERNO\_ACCESO, BD\_CALIDAD\_TRAZABILIDAD, BD\_TELEMETRIA, BD\_EDI\_CANALMODERNO, BD\_BI\_GERENCIA, BD\_MAILS\_NOTIF, REDIS\_SESIONES\_CACHE y S3\_DOCS. El dominio de telemetría conserva la ingesta raw en DynamoDB y su serie consolidada en S3 Parquet y Redshift, procesada con Glue. Esta separación incluye bases transaccionales, almacenes analíticos, caché y objetos; no representa quince servidores físicos ni quince motores de base de datos independientes.
-

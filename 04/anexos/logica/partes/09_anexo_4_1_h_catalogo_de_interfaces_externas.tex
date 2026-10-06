@@ -14,7 +14,7 @@ La tabla identifica, para cada integración con terceros, el dueño interno, el 
 \mbox{INT-15} & Telemetría existente & M12 & API de solo lectura. & Ruta planificada sin posición. \\
 \end{tablalafrox}
 
-{\footnotesize Fuente: elaboración propia a partir de PUCV (2026a, cap.~5, p.~10) y RT-05.21 (PUCV, 2026b, cap.~5, p.~13).\par}
+{\footnotesize Fuente: elaboración propia a partir de las Bases Técnicas del caso (cap.~5, p.~10) y RT-05.21 (Bases Técnicas Transversales, cap.~5, p.~13).\par}
 
 % Fichas del Anexo H.
 \subsection*{Condiciones de servicio de las contrapartes}
@@ -41,4 +41,4 @@ Modo asíncrono mediante trabajos Laravel y SNS/API de canal. Dos avisos por ent
 \paragraph{INT-15. Telemetría de flota --- M12}
 Modo asíncrono o extracción periódica de solo lectura según API existente. Volumen normal/peak: 60.480/60.480 posiciones/día, calculadas para 42 camiones × 120 posiciones/h × 12 h; el peak no aumenta esta fuente. Contraparte requerida 24$\times$7 para conservar historial y cubrir turnos. Timeout de 10 segundos por consulta o 30 por lote; reanudación por cursor y deduplicación. Sin datos se muestra posición fechada y ruta prevista, nunca una posición presuntamente actual. La geolocalización no sustituye al POD.
 
-{\footnotesize Fuente: elaboración propia a partir de PUCV (2026a, cap.~14, p.~24) y RT-05.21 (PUCV, 2026b, cap.~5, p.~13). Los SLA de terceros requieren respaldo contractual; los supuestos de dimensionamiento se distinguen de la volumetría del caso.\par}
+{\footnotesize Fuente: elaboración propia a partir de las Bases Técnicas del caso (cap.~14, p.~24) y RT-05.21 (Bases Técnicas Transversales, cap.~5, p.~13). Los SLA de terceros requieren respaldo contractual; los supuestos de dimensionamiento se distinguen de la volumetría del caso.\par}

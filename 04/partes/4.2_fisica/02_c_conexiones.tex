@@ -23,54 +23,7 @@ El terminal satelital de los centros permanece encendido porque adquirir satéli
 
 Los terminales EC55 y TC58e acceden por red celular a CloudFront, cuyas rutas \texttt{/v1} y \texttt{/sync/v1} llegan a la API REST pública.
 
-La Figura~\ref{fig:conexiones} muestra estas conexiones.
-
-\begin{figure}[htbp]
-  \centering
-  \LFXcuerpofigura
-  \begin{tikzpicture}[
-      nodo/.style={draw=lafroxGris, line width=0.5pt, rounded corners=1.5pt,
-                   inner sep=4pt, align=center},
-      sitio/.style={nodo, text width=2.55cm, minimum height=1.25cm},
-      flecha/.style={-{latex}, line width=0.6pt, color=lafroxTinta},
-      interna/.style={-{latex}, line width=0.6pt, color=lafroxGris, dashed},
-      rotulo/.style={fill=white, inner sep=1.5pt, align=center}]
-    % Usuarios externos
-    \node[nodo, text width=3.9cm] (usr) at (10.7,0.45)
-      {Usuarios externos: clientes, transportistas y proveedores};
-    % Región primaria
-    \draw[lafroxTinta, line width=0.6pt, rounded corners=2pt] (0,-1.3) rectangle (12.2,-3.4);
-    \node[anchor=north west, font=\intersemibold, inner sep=0pt] at (0.15,-1.45) {AWS sa-east-1};
-    \node[nodo, text width=2.2cm] (vgw)  at (1.75,-2.6) {Transit Gateway};
-    \node[nodo, text width=2.6cm] (vpce) at (4.95,-2.6) {VPC Endpoints};
-    \node[nodo, text width=2.0cm] (apig) at (8.0,-2.6) {API REST pública};
-    \node[nodo, text width=2.0cm] (cf)   at (10.7,-2.6) {CloudFront y WAF};
-    % Región secundaria
-    \draw[lafroxTinta, line width=0.6pt, rounded corners=2pt] (12.75,-1.3) rectangle (15.7,-3.4);
-    \node[align=center] (us) at (14.22,-2.35) {\intersemibold AWS us-east-1\\recuperación\\y réplica};
-    \draw[flecha] (12.2,-2.35) -- (12.75,-2.35);
-    % Sitios y terreno
-    \node[sitio] (tal) at (1.45,-6.4)  {\intersemibold CD Talca\\\normalfont D-01 en par};
-    \node[sitio] (con) at (4.55,-6.4)  {\intersemibold CD Concepción\\\normalfont D-01 de borde};
-    \node[sitio] (cdk) at (7.65,-6.4)  {\intersemibold Cross-docking\\\normalfont E-01, tres sitios};
-    \node[sitio] (ter) at (10.75,-6.4) {\intersemibold Terreno\\\normalfont C-01 y C-02};
-    \node[sitio] (cam) at (13.85,-6.4) {\intersemibold Camiones\\\normalfont B-03};
-    % Enlaces hacia la nube
-    \draw[flecha] (usr) -- node[rotulo, left=3pt, pos=0.3] {HTTPS} (cf);
-    \draw[flecha] (cf.west) -- (apig.east);
-    \draw[flecha] (tal.north) -- node[rotulo, pos=0.5] {fibra D-03\\LTE D-04\\Starlink D-06\\IPsec} (vgw.south);
-    \draw[flecha] (con.north) -- node[rotulo, pos=0.5] {fibra D-03\\LTE D-04\\Starlink D-06\\IPsec} (vgw.south east);
-    \draw[flecha] (cdk.north) -- node[rotulo, pos=0.35] {Starlink D-06\\LTE D-04\\IPsec} (vgw.east);
-    \draw[flecha] (ter.north) -- node[rotulo, pos=0.5] {red celular\\HTTPS} (cf.south);
-    % Descarga local de termógrafos
-    \draw[interna] (cam.south) -- ++(0,-0.4) -| node[rotulo, below=1pt, pos=0.25] {BLE con el terminal\\del conductor} (ter.south);
-  \end{tikzpicture}
-  \caption{Conexiones entre los sitios, el terreno y la nube}
-  \label{fig:conexiones}
-  \fuentefigura
-\end{figure}
-
-La figura distingue las entradas públicas, los túneles de sitio y el intercambio local con los terminales en tres flujos:
+Los flujos principales son las entradas HTTPS de usuarios externos por CloudFront, los túneles IPsec de los sitios hacia el Transit Gateway y la descarga local por Bluetooth de los termógrafos al terminal del conductor. La tabla siguiente detalla los medios, caminos alternativos y conmutación:
 
 \begin{itemize}
   \item Termógrafo--terminal: los termógrafos descargan por Bluetooth al terminal del conductor.
@@ -126,7 +79,7 @@ Cada conexión se apoya en equipos del sitio que también pueden fallar. La Tabl
 \begin{tablalafrox}{Puntos de falla en los sitios y en los enlaces}{tab:fallas-sitios}%
   {F{0.24} Y Y}%
   {\cab{Punto de falla} & \cab{Resolución} & \cab{Contingencia}}
-  Fibra y LTE de un centro de distribución & BGP conmuta al túnel IPsec ya establecido por Starlink D-06 y prioriza DMS/WAL, broker y outbox, guías hacia ERP y SII, identidad y telemetría crítica. & La operación local conserva 24 h de autonomía. \\
+  Fibra y LTE de un centro de distribución & BGP conmuta al túnel IPsec ya establecido por Starlink D-06, con prioridad para DMS/WAL, broker, guías, identidad y telemetría crítica. & La operación local conserva 24 h de autonomía. \\
   Caída del enlace de Talca para la oficina & Verified Access admite otra conexión a Internet con los mismos controles. & Plan de rutas y manifiesto aprobados en el WMS antes de las 22:00; tableros y costo de servir esperan el retorno. \\
   Starlink de un cross-docking & El LTE de dos proveedores toma el tráfico en menos de 30 s. & La ventana de 3 h opera 100\,\% local y sincroniza al reconectar. \\
   Enlace de Los Ángeles en la madrugada & Starlink queda como camino único, porque la red móvil falla a esa hora. & La ventana de madrugada opera íntegramente local. \\
@@ -136,18 +89,18 @@ Cada conexión se apoya en equipos del sitio que también pueden fallar. La Tabl
   Instancia de escritura VM-02 & Se reinicia en otro nodo del clúster. & D-05 restaura la base en hasta 4 h sin enlace. \\
   Disco de un nodo de Talca & Ceph marca el disco fuera y recompone sus réplicas en los otros nodos. & Durante la recomposición quedan dos réplicas. \\
   Miembro del stack de switches de Talca o de Concepción & El otro miembro mantiene el tráfico. & Reposición sin corte con la unidad de reserva de Talca. \\
-  Servidor de borde de Concepción & El RAID 10 tolera la falla de un disco y las fuentes redundantes sostienen el servidor ante la pérdida de un circuito. & Si falla el equipo, se repone y su base se reconstruye desde el estado central alimentado por sus eventos. \\
-  Mini-PC de un cross-docking & Sus dos fuentes, sus dos SSD en RAID 1 y los dos switches sostienen los circuitos, los datos y la red local; si falla el equipo, se repone desde Talca. & El nuevo equipo se reconstruye desde el estado central de la nube y SQS FIFO. \\
+  Servidor de borde de Concepción & RAID 10 y fuentes redundantes. & Reposición del equipo y reconstrucción de su base desde el estado central. \\
+  Mini-PC de un cross-docking & Dos fuentes, dos SSD en RAID 1 y dos switches. & Reposición desde Talca y reconstrucción desde el estado central y SQS FIFO. \\
   Firewall de un cross-docking & La unidad pasiva del par asume el túnel en menos de 30 s. & La ventana de 3 h opera 100\,\% local y sincroniza al reconectar. \\
   Periféricos de andén & Sin redundancia por equipo. & La etiqueta se emite en otra de las impresoras del centro de distribución. \\
   Energía de la sala de Talca & UPS N+1 de 30 min y generador que toma carga en 8 a 15 s. & Estanque de 24 h y contrato de reabastecimiento. \\
-  Corte de energía en la bodega & Las UPS de los gabinetes de piso sostienen switches PoE, AP e impresoras durante 30 min. & En Talca el registro de frío continúa con el tablero respaldado por generador; en Concepción la UPS del gabinete cubre 30 min y el apagado ordenado. \\
+  Corte de energía en la bodega & Las UPS de los gabinetes de piso sostienen switches PoE, AP e impresoras durante 30 min. & Registro de frío con generador en Talca y UPS de 30 min en Concepción. \\
   Climatización de la sala de Talca & Segunda unidad de precisión en N+1. & Alerta del monitoreo de los sensores ambientales. \\
 \end{tablalafrox}
 
 {\footnotesize Fuente: elaboración propia.\par}
 
-La tabla muestra que los firewalls van en par en los cinco sitios conforme a RT-08.03 (PUCV, 2026b, cap. 8, p. 18). Concepción dispone de fuentes redundantes, y cada cross-docking tiene dos switches industriales; su mini-PC sigue siendo un equipo único por sitio, respaldado por alimentación redundante, discos en RAID 1, reposición desde Talca y reconstrucción desde la nube. La liberación sanitaria y el despacho con guía preemitida no dependen de la nube. En la ventana de Talca, VM-02 se reinicia en otro nodo y otra impresora emite la etiqueta si falla la del andén. Los mecanismos de alta disponibilidad se detallan en la sección~\ref{sub:3-alta-disponibilidad}.
+En Concepción, el RAID 10 tolera la falla de un disco y las fuentes redundantes sostienen el servidor ante la pérdida de un circuito; si falla el equipo, su base se reconstruye desde el estado central alimentado por sus eventos. En Talca, el tablero respaldado por generador mantiene el registro de frío, y en Concepción la UPS del gabinete permite el apagado ordenado. La tabla muestra además que los firewalls van en par en los cinco sitios conforme a RT-08.03 (Bases Técnicas Transversales, cap. 8, p. 18). Concepción dispone de fuentes redundantes, y cada cross-docking tiene dos switches industriales; su mini-PC sigue siendo un equipo único por sitio, respaldado por alimentación redundante, discos en RAID 1, reposición desde Talca y reconstrucción desde la nube. La liberación sanitaria y el despacho con guía preemitida no dependen de la nube. En la ventana de Talca, VM-02 se reinicia en otro nodo y otra impresora emite la etiqueta si falla la del andén. Los mecanismos de alta disponibilidad se detallan en la sección~\ref{sub:3-alta-disponibilidad}.
 
 \subsection{Puntos de falla en la nube, el terreno y las integraciones}
 
@@ -164,11 +117,11 @@ La Tabla~\ref{tab:fallas-nube} completa el recorrido con los puntos de falla que
   ERP legado & El trabajador \texttt{erp-sync} en VM-04 retiene las solicitudes en la cola local o en SQS y reintenta con la misma clave idempotente. & Ningún camión sale sin documento tributario válido emitido por el ERP. \\
   Perfil de API saturado & El balanceador reparte entre tareas y el escalado agrega tareas cuando los procesos PHP-FPM ocupados superan el 70 \%. & Limitación de tasa en API Gateway con mensaje explícito al usuario. \\
   Mensaje de reconciliación inválido o que falla & El consumidor rechaza el sobre de edición desconocida sin aplicarlo; tras cinco intentos pasa a la cola de mensajes fallidos. & Alarma inmediata y reproceso manual trazable; el grupo afectado no bloquea a los demás. \\
-  Excursión térmica sin enlace & El gateway bloquea el despacho en menos de 5 s en el borde. & Buffer de 24 h y alerta al reconectar. \\
+  Excursión térmica crítica sin enlace & El gateway bloquea el despacho en menos de 5 s en el borde. & Buffer de 24 h y alerta al reconectar. \\
   SII, cadenas o notificaciones & Reintento con espera creciente y cola de mensajes fallidos. & Reproceso desde la cola al recuperarse el tercero. \\
   Carga del peak de septiembre & Fargate escala automáticamente por perfil y Aurora ya está dimensionada para 3$\times$ sin cambio de instancia. & Limitación de tasa en API Gateway. \\
 \end{tablalafrox}
 
 {\footnotesize Fuente: elaboración propia.\par}
 
-Las fallas de nube o enlace no detienen la preparación ni la entrega, que se confirman localmente. La pérdida de la región primaria deja sin servicio a los portales y a la analítica hasta promover la réplica. El despacho conserva la guía preemitida al cerrar la carga nocturna; si la carga cambia entre las 05:30 y las 07:00, la guía queda inválida y el ERP de Talca emite otra por cualquiera de sus tres caminos, a los que Concepción y los cross-docking llegan por los suyos. Si no hay camino hasta el ERP, el camión sale solo con la carga amparada por su guía vigente y el ajuste pasa a la ruta siguiente; ningún camión sale sin guía válida.
+Las fallas de nube o enlace no detienen la preparación ni la entrega, que se confirman localmente. La pérdida de la región primaria deja sin servicio a los portales y a la analítica hasta promover la réplica. El despacho conserva la guía preemitida al cerrar la carga nocturna; si la carga cambia entre las 05:30 y las 07:00, la guía queda inválida y el ERP de Talca emite otra por cualquiera de sus tres caminos, a los que Concepción y los cross-docking llegan por los suyos. Si no hay camino hasta el ERP, el camión sale solo con la carga amparada por su guía vigente y el ajuste pasa a la ruta siguiente. Si la guía ya se anuló, la salida queda bloqueada hasta disponer de un documento válido; ningún camión sale sin guía válida.

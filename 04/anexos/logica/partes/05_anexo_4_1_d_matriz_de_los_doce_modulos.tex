@@ -5,18 +5,18 @@
 La matriz asigna a cada módulo su requisito funcional, su responsabilidad, su interfaz principal, su actor y la etapa en que entra en producción.
 
 \begin{tablalafrox}{Módulos, responsabilidades e interlocutores}{tab:modulos-funcionales}{F{0.18} F{0.23} F{0.24} F{0.23} Y}{\cab{Módulo / RF} & \cab{Responsabilidad} & \cab{Interfaz principal} & \cab{Actor principal} & \cab{Etapa}}
-M1 Recepción / RF-01 & Lote y recepción GS1. & Evento a M2; ACL con ERP. & Recepcionista; proveedor. & 1 \\
-M2 Inventario / RF-02 & Movimientos por sitio, reserva central y FEFO. & Consulta de M3/M5. & Jefatura de bodega. & 1 \\
-M3 Preventa / RF-03 & Pedido y precio informado de preventa y autoatención. & Reserva en M2; sincronización. & Preventista; cliente. & 1 \\
-M4 Rutas / RF-04 & Secuencia y restricciones. & Ruta aprobada a M6. & Planificador. & 1 \\
-M5 Preparación / RF-05 & Misión y carga confirmada. & Guía nocturna vía \texttt{erp-sync} y ACL en VM-04. & Preparador; jefatura. & 1 \\
-M6 Reparto / RF-06 & Entrega y POD. & Evento a M7/M8. & Conductor propio o externo. & 1 \\
-M7 Rendición / RF-07 & Cobro y descuadre. & ACL al ERP; evento a M10. & Conductor; Tesorería. & 1 \\
-M8 Devoluciones / RF-08 & Retorno y saldo de envases. & Evento a M2/M7. & Conductor; bodega. & 1 \\
-M9 Calidad / RF-09 & Lote, frío y bloqueo. & Bloqueo a M5; alerta. & Jefatura de Calidad. & 1 \\
-M10 Analítica / RF-11 & OTIF y costo de servir. & Consume eventos sin escribir. & Gerencias. & 2 \\
-M11 Canal moderno / RF-12 & Pedido EDI y excepciones. & Contrato por cadena; M3. & Cadena; equipo comercial. & 2 \\
-M12 Flota / RF-14 & Ruta real y desviación. & GPS a M4/M10. & Planificador; flota. & 2 \\
+M1 Recepción / RF-01 & Lote y recepción GS1. & Evento a M2; ACL con ERP. & Jefa de Bodega; Proveedor. & 1 \\
+M2 Inventario / RF-02 & Movimientos por sitio, reserva central y FEFO. & Consulta de M3/M5. & Jefa de Bodega. & 1 \\
+M3 Preventa / RF-03 & Pedido y precio pactado; autoatención por el canal de M11. & Reserva coordinada en M2; sincronización. & Preventista; clientes autorizados. & 1; autoatención en 2 \\
+M4 Rutas / RF-04 & Secuencia y restricciones. & Ruta aprobada a M6. & Planificador de Rutas. & 1 \\
+M5 Preparación / RF-05 & Misión y carga confirmada. & Guía nocturna vía \texttt{erp-sync} y ACL en VM-04. & Preparador; Jefa de Bodega. & 1 \\
+M6 Reparto / RF-06 & Entrega y POD. & Evento a M7/M8. & Conductor propio; Conductor externo. & 1 \\
+M7 Rendición / RF-07 & Cobro y descuadre. & ACL al ERP; evento a M10. & Conductores; Gerente de Finanzas. & 1 \\
+M8 Devoluciones / RF-08 & Retorno y saldo de envases. & Evento a M2/M7. & Conductores; Jefa de Bodega. & 1 \\
+M9 Calidad / RF-09 & Lote, frío y bloqueo. & Bloqueo a M5; alerta. & Jefa de Calidad. & 1 \\
+M10 Analítica / RF-11 & OTIF operacional y costo de servir. & Consume eventos sin escribir. & Gerentes Comercial, de Finanzas y de Operaciones; Jefa de Calidad. & 1 OTIF; 2 costo \\
+M11 Canal moderno / RF-12 & Pedido EDI y excepciones. & Contrato por cadena; M3. & Cliente del canal moderno; Gerente Comercial. & 2 \\
+M12 Flota / RF-14 & Ruta real, desviación y datos para costo. & GPS a M4/M10. & Planificador de Rutas; Gerente de Operaciones. & 1; costo en 2 \\
 \end{tablalafrox}
 
 {\footnotesize Fuente: elaboración propia a partir del catálogo de requerimientos y del alcance del capítulo 3.\par}

@@ -6,14 +6,22 @@
 Las pruebas siguientes se ejecutan en Preproducción y antes de la ola aplicable. Cada acta identifica carga, inyección de falla, resultados observados y responsables; el Anexo 4-M desarrolla AL-DTE-01, AL-DR-01, AL-OFF-01 y AL-CLI-01. La Tabla~\ref{tab:condiciones-aceptacion} resume sus protocolos.
 
 \begin{tablalafrox}{Protocolos de aceptación de la arquitectura lógica}{tab:condiciones-aceptacion}{F{0.17} F{0.29} F{0.33} Y}{\cab{ID} & \cab{Ejecución} & \cab{Criterio de aceptación} & \cab{Evidencia}}
-\mbox{AL-DTE-01} & Ensayar 96 guías por las rutas de Talca y de los demás sitios, con fallas y cambio de carga. & Cada camión sale con guía válida del ERP; sin los tres caminos, solo lleva la carga amparada. & Origen, ruta, folio, carga, acuse y acta. \\
+\mbox{AL-DTE-01} & Ensayar 96 guías por las rutas de Talca y de los demás sitios, con fallas y cambio de carga. & Cada camión sale con guía válida del ERP; sin los tres caminos, solo lleva la carga amparada; una guía anulada no se reutiliza. & Origen, ruta, folio, carga, acuse y acta. \\
 \mbox{AL-POD-01} & Ensayar entrega total, parcial y receptor sustituto sin señal. & El POD conserva autor, objeto y acuse aplicable. & Firma, hash y trazas. \\
 \mbox{AL-SLA-01} & Simular ventanas y cuotas de ERP, SII y contrapartes. & Reintentos y escalamiento respetan cada contrato. & Contratos, logs y tiempos. \\
 \mbox{AL-OFF-01} & Aislar cada sitio 24 horas con dos relevos y despachar con guía preemitida. & Operación local y conciliación sin duplicados; solo sale carga amparada. & Bitácora, guías, colas y acta. \\
 \mbox{AL-CLI-01} & Armar pedidos sin señal en el Portal de Clientes instalado y reconectar. & Ningún pedido se pierde ni se duplica; M3 reserva solo al recibirlo. & UUID, respuesta de M3 y acta. \\
 \mbox{AL-DR-01} & Cortar caminos y recuperar Talca en nube. & RTO $\leq$ 4 horas y RPO $\leq$ 15 minutos. & Marcas de agua y acta. \\
 \mbox{AL-PERF-01} & Aplicar carga de 3$\times$ con mamparos por perfil. & Latencias y colas cumplen el Anexo 4-T. & Métricas y reporte. \\
+\mbox{AL-STOCK-01} & Pedir la última unidad desde preventa, portal y EDI, con cortes y acuses perdidos. & Una sola reserva confirmada con retención durable; nunca stock negativo. & Estado central y local, p95 y acta. \\
+\mbox{AL-ACT-01} & Probar cada actor del Anexo 4-N con una operación permitida y una denegada. & Autorización por acción y recurso, con auditoría personal. & Política, etapa, registros y acta. \\
 \end{tablalafrox}
 {\footnotesize Fuente: elaboración propia.\par}
 
 AL-DTE-01 comprueba ambas rutas de las 96 guías, la preemisión nocturna, la invalidación por cambio de carga y la nueva emisión del ERP ante el SII por fibra, LTE o Starlink en espera caliente. AL-OFF-01 comprueba por separado el despacho con guía válida preemitida. AL-DR-01 mide la extracción continua y la recuperación del WMS de Talca en ECS Fargate; el límite residual se desarrolla en 4.3.2. Los resultados de todas las pruebas se vinculan a los requisitos y al registro ADR del Anexo 4-O.
+
+\subsection*{AL-STOCK-01. Confirmación central con custodia local}
+En Preproducción se pide la misma última unidad al mismo tiempo desde preventa, portal y EDI. Se corta el enlace antes y después del registro local, se pierde el acuse, se repite el UUID, se cancela durante un aislamiento y se presenta una época obsoleta. Solo se acepta una reserva confirmada con retención durable de igual identidad, época y cantidad. El disponible nunca queda negativo y un timeout nunca confirma. La preparación consume la retención y una cancelación tardía no libera lo consumido. La prueba mide el p95 de confirmación con la latencia entre la nube y el sitio, la edad de la cola y la recuperación. También mide la proporción de líneas que requieren más de una retención, para contrastar el volumen del Anexo 4-I. Los resultados se trazan a RNG-01, RF-03.03, RT-02.06 y RT-03.12.
+
+\subsection*{AL-ACT-01. Autorización de los quince actores}
+Cada fila del Anexo 4-N se prueba con una operación permitida y una denegada. Se incluyen el cruce entre empresas o rutas, la credencial de un representante usada como conductor, un rol de TI que intenta una aprobación de negocio, la aprobación del descuadre propio, la baja y el relevo sin conexión. Se comprueba que cada portal se habilita solo en su etapa, que el cliente tradicional compra asistido sin cuenta y que el catálogo público no muestra precios. El resultado esperado es una autorización por acción y recurso, con auditoría personal y sin credenciales compartidas. La evidencia se registra por actor, requisito, versión de la política y etapa, y se traza a RT-12.05, RT-12.06 y RT-12.12.

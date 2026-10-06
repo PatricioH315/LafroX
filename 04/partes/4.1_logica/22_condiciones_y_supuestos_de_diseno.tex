@@ -1,12 +1,11 @@
 \subsection{Condiciones y supuestos de diseño}
 \label{sec:contradicciones}
 
-La lógica adopta seis instalaciones en total, de las cuales cinco son sitios logísticos con servicio local y la sexta es la casa matriz de Talca, contigua al CD principal y sin cómputo propio (PUCV, 2026a, cap.~2, p.~5). La parametrización de sitios evita codificar el número en cada módulo.
+La lógica adopta seis instalaciones en total, de las cuales cinco son sitios logísticos con servicio local y la sexta es la casa matriz de Talca, contigua al CD principal y sin cómputo propio (Bases Técnicas del caso, cap.~2, p.~5). La parametrización de sitios evita codificar el número en cada módulo.
 
 Los cortes frecuentes de dos horas descritos en la operación son el escenario ordinario. Los límites de diseño son más exigentes: un turno de 14 horas en terreno y 24 horas en cada centro de distribución. No se reduce la autonomía porque el incidente más común sea más corto.
 
 El relevo de turnos sin IdP, la autorización tributaria de salida y la pérdida de sitio se verifican con AL-OFF-01, AL-DTE-01 y AL-DR-01 del Anexo 4-M. Los objetivos exigidos siguen siendo RTO $\leq$ 4 horas y RPO $\leq$ 15 minutos para servicios críticos. La extracción continua por fibra, LTE y satélite de los CD sostiene el RPO ante la caída de dos caminos; AL-DR-01 verifica el punto recuperable y la recuperación del WMS de Talca en la nube. El límite residual se justifica en 4.3.2.
 
-\clearpage
 
-El Anexo 4-V reúne los protocolos de aceptación AL-DTE-01, AL-POD-01, AL-SLA-01, AL-OFF-01, AL-CLI-01, AL-DR-01 y AL-PERF-01. Las actas registran configuración, fallas inyectadas, puntos de recuperación, salidas documentadas y resultados observados; 4.3.2 justifica el límite residual de continuidad.
+El Anexo 4-V reúne los protocolos de aceptación AL-DTE-01, AL-POD-01, AL-SLA-01, AL-OFF-01, AL-CLI-01, AL-DR-01, AL-PERF-01, AL-STOCK-01 y AL-ACT-01. Las actas registran configuración, fallas inyectadas, puntos de recuperación, salidas documentadas y resultados observados; 4.3.2 justifica el límite residual de continuidad.

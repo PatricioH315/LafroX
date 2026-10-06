@@ -15,7 +15,7 @@ El catálogo conserva los identificadores de las ocho interfaces internas. Las f
 \mbox{INT-14} & Métricas y trazas. & Operación & OTLP. & Buffer local. \\
 \end{tablalafrox}
 
-{\footnotesize Fuente: elaboración propia a partir de RT-02.06 y RT-03.12 (PUCV, 2026b, cap.~2, p.~7, y cap.~3, pp.~8--9).\par}
+{\footnotesize Fuente: elaboración propia a partir de RT-02.06 y RT-03.12 (Bases Técnicas Transversales, cap.~2, p.~7, y cap.~3, pp.~8--9).\par}
 
 % Fichas del Anexo G. Compilación mediante anexos_4.1.tex desde la raíz.
 \subsection*{Parámetros comunes del catálogo}
@@ -33,6 +33,11 @@ Modo asíncrono mediante outbox, RabbitMQ y consumidor canónico. Sobre de dise�
 \paragraph{INT-04. Detalle de cross-docking a la nube --- M2}
 Modo asíncrono. Volumen de diseño: 5.600/10.400 eventos/día, derivado de cuatro operaciones por cada una de las 1.400/2.600 entregas; no se suma de nuevo al total de INT-03. Contraparte: consolidación N-04/N-05 en nube, requerida 24$\times$7. Timeout de acuse de 30 segundos; cada sitio mantiene su operación, buffer de 24 horas y secuencia propia. Al reconectar se reconcilia inventario en tránsito y se aísla cualquier doble compromiso.
 
+\paragraph{Coordinación de reserva y retención --- desarrollo de INT-03/04, M2}
+Modo asíncrono con respuesta durable, requerida para confirmar el pedido. M2 central publica cada solicitud en una cola FIFO del sitio, que su shipper lee por conexión saliente. M2 local valida y retiene, y su outbox devuelve el acuse por INT-03/04. Contrapartes: M2 central y M2 del sitio que custodia el stock, requeridas durante la toma y confirmación de pedidos y la liberación de reservas. Un timeout de transporte de 30 segundos deja la operación pendiente o incierta y nunca la confirma. La latencia de negocio se mide contra el objetivo de confirmación de reserva del Anexo 4-T, que es distinto de ese timeout.
+
+Cada sobre JSON versionado lleva UUID, correlación, sitio, época de autoridad, lote, ubicación, cantidad y tipo: retener, liberar o resultado. Cada cola tiene un consumidor exclusivo con rol IAM de mínimo privilegio, validación de esquema y auditoría. Una repetición devuelve el resultado ya persistido. Una época obsoleta o un esquema incompatible pasa a la bandeja de excepciones. Durante un corte, el sitio conserva sus retenciones y la nube no confirma ni libera sin acuse durable. Al reconectar se consulta por clave y se concilia el resultado antes de reintentar. Volumen de diseño: 46.968/87.228 mensajes/día, con cuatro mensajes por línea de pedido (Anexo 4-I).
+
 \paragraph{INT-05. Temperatura --- M9}
 Modo asíncrono para muestras y alarma local inmediata. Volumen: 10.584 lecturas/día en régimen y peak, por 21 puntos de cámara × 288 lecturas más 28 termógrafos × 162 lecturas entre 05:30 y 19:00 (6.048 + 4.536). Contraparte: IoT Core/ingesta central, requerida 24$\times$7; el bloqueo M9--M5 permanece local y no espera a nube. Acuse remoto máximo de 30 segundos por lote. Gateway: retención de 24 horas; termógrafo: registro de toda la ruta, hasta 14 horas. Una pérdida de señal o lectura obsoleta genera una incidencia diferenciada de la excursión térmica.
 
@@ -45,4 +50,4 @@ Modo mixto: autenticación central síncrona y distribución asíncrona de manif
 \paragraph{INT-14. Métricas, logs y trazas --- Operación}
 Modo asíncrono por OTLP. Presupuesto de diseño: 13.000 eventos/día en régimen y peak (13 nodos × 1.000 eventos: 6 VM de Talca, 4 de Concepción y 3 mini-PC); son unidades de observabilidad y no mensajes comerciales sumables. Contraparte: colectores y CloudWatch, requeridos 24$\times$7. Exportación con timeout de 30 segundos y buffer en disco de 24 horas. El fallo de exportación no bloquea negocio; el sitio mantiene alarma local por ocupación. Auditoría de negocio y eventos de seguridad no se descartan para conservar trazas diagnósticas.
 
-{\footnotesize Fuente: elaboración propia a partir de PUCV (2026a, cap.~14, p.~24) y RT-05.21 (PUCV, 2026b, cap.~5, p.~13). Las tasas de consultas son supuestos de ensayo explícitos; su calibración exige medición.\par}
+{\footnotesize Fuente: elaboración propia a partir de las Bases Técnicas del caso (cap.~14, p.~24) y RT-05.21 (Bases Técnicas Transversales, cap.~5, p.~13). Las tasas de consultas son supuestos de ensayo explícitos; su calibración exige medición.\par}
