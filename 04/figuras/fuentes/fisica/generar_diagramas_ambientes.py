@@ -96,6 +96,7 @@ class D:
             PNGS[fname] = png
 
 
+GITLAB_SVG = 'PHN2ZyBpZD0ibG9nb19hcnQiIGRhdGEtbmFtZT0ibG9nbyBhcnQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDU4NiA1NTkiPjxkZWZzPjxzdHlsZT4uY2xzLTF7ZmlsbDojZmM2ZDI2O30uY2xzLTJ7ZmlsbDojZTI0MzI5O30uY2xzLTN7ZmlsbDojZmNhMzI2O308L3N0eWxlPjwvZGVmcz48dGl0bGU+Z2l0bGFiLWljb24tcmdiPC90aXRsZT48ZyBpZD0iZzQ0Ij48cGF0aCBpZD0icGF0aDQ2IiBjbGFzcz0iY2xzLTEiIGQ9Ik00NjEuMTcsMzAxLjgzbC0xOC45MS01OC4xMkw0MDQuODQsMTI4LjQzYTYuNDcsNi40NywwLDAsMC0xMi4yNywwTDM1NS4xNSwyNDMuNjRIMjMwLjgyTDE5My40LDEyOC40M2E2LjQ2LDYuNDYsMCwwLDAtMTIuMjYsMEwxNDMuNzgsMjQzLjY0bC0xOC45MSw1OC4xOWExMi44OCwxMi44OCwwLDAsMCw0LjY2LDE0LjM5TDI5Myw0MzUsNDU2LjQ0LDMxNi4yMmExMi45LDEyLjksMCwwLDAsNC43My0xNC4zOSIvPjwvZz48ZyBpZD0iZzQ4Ij48cGF0aCBpZD0icGF0aDUwIiBjbGFzcz0iY2xzLTIiIGQ9Ik0yOTMsNDM0LjkxaDBsNjIuMTYtMTkxLjI4SDIzMC44N0wyOTMsNDM0LjkxWiIvPjwvZz48ZyBpZD0iZzU2Ij48cGF0aCBpZD0icGF0aDU4IiBjbGFzcz0iY2xzLTEiIGQ9Ik0yOTMsNDM0LjkxLDIzMC44MiwyNDMuNjNoLTg3TDI5Myw0MzQuOTFaIi8+PC9nPjxnIGlkPSJnNjQiPjxwYXRoIGlkPSJwYXRoNjYiIGNsYXNzPSJjbHMtMyIgZD0iTTE0My43NSwyNDMuNjloMGwtMTguOTEsNTguMTJhMTIuODgsMTIuODgsMCwwLDAsNC42NiwxNC4zOUwyOTMsNDM1LDE0My43NSwyNDMuNjlaIi8+PC9nPjxnIGlkPSJnNzIiPjxwYXRoIGlkPSJwYXRoNzQiIGNsYXNzPSJjbHMtMiIgZD0iTTE0My43OCwyNDMuNjloODcuMTFMMTkzLjQsMTI4LjQ5YTYuNDcsNi40NywwLDAsMC0xMi4yNywwbC0zNy4zNSwxMTUuMloiLz48L2c+PGcgaWQ9Imc3NiI+PHBhdGggaWQ9InBhdGg3OCIgY2xhc3M9ImNscy0xIiBkPSJNMjkzLDQzNC45MWw2Mi4xNi0xOTEuMjhINDQyLjNMMjkzLDQzNC45MVoiLz48L2c+PGcgaWQ9Imc4MCI+PHBhdGggaWQ9InBhdGg4MiIgY2xhc3M9ImNscy0zIiBkPSJNNDQyLjI0LDI0My42OWgwbDE4LjkxLDU4LjEyYTEyLjg1LDEyLjg1LDAsMCwxLTQuNjYsMTQuMzlMMjkzLDQzNC45MWwxNDkuMi0xOTEuMjJaIi8+PC9nPjxnIGlkPSJnODQiPjxwYXRoIGlkPSJwYXRoODYiIGNsYXNzPSJjbHMtMiIgZD0iTTQ0Mi4yOCwyNDMuNjloLTg3LjFsMzcuNDItMTE1LjJhNi40Niw2LjQ2LDAsMCwxLDEyLjI2LDBsMzcuNDIsMTE1LjJaIi8+PC9nPjwvc3ZnPg=='  # logo oficial de GitLab (tanuki), incluido en draw.io
 R = lambda y: 'exitX=1;exitY=%s;entryX=0;entryY=0.5;' % y
 
 
@@ -107,7 +108,10 @@ def cadena(d):
                 'labelPosition=right;verticalLabelPosition=middle;verticalAlign=middle;align=left;spacingLeft=4;'
                 'html=1;fontSize=15;aspect=fixed;shape=mxgraph.aws4.users;', 40, 160, 50, 50, 'Equipo de desarrollo')
     # GitLab CI es un servicio contratado por suscripcion, fuera de AWS
-    git = d.box(B('GitLab CI') + ' (suscripción)<br>controles del pipeline', 20, 250, 200, 50, fill='#FFF2E8', stroke='#E67E22')
+    git = d.add('shape=image;verticalLabelPosition=middle;labelPosition=left;verticalAlign=middle;align=right;'
+                'spacingRight=6;html=1;fontSize=15;fontColor=#232F3E;aspect=fixed;imageAspect=0;'
+                'image=data:image/svg+xml,' + GITLAB_SVG + ';', 150, 245, 56, 54,
+                B('GitLab CI') + '<br>(suscripción)<br>controles del pipeline')
     # CodeBuild y ECR son servicios de AWS (N-04, sa-east-1); el informe no fija la cuenta
     d.group('AWS Cloud · sa-east-1 · N-04', 'group_aws_cloud_alt', '#232F3E', 20, 325, 270, 315, valign='bottom')
     cb = d.icon('AWS CodeBuild<br>construye la imagen<br>(SLSA nivel 3)', 'codebuild', 'devtools', 72, 375, right=True, lw=150)
@@ -115,7 +119,7 @@ def cadena(d):
     d.edge(dev, git, 'exitX=0.5;exitY=1;entryX=0.3;entryY=0;')
     d.edge(git, cb, 'exitX=0.3;exitY=1;entryX=0.5;entryY=0;')
     d.edge(cb, ecr, 'exitX=0.5;exitY=1;entryX=0.5;entryY=0;')
-    d.paso(1, 6, 238); d.paso(2, 36, 367); d.paso(3, 36, 472)
+    d.paso(1, 204, 232); d.paso(2, 36, 367); d.paso(3, 36, 472)
     return git, ecr
 
 
