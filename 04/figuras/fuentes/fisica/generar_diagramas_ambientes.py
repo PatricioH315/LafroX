@@ -145,14 +145,14 @@ def ambiente_simple(nombre, vpc, fname, rotulo, png):
     git, ecr = cadena(d)
     nube(d, nombre, 'sa-east-1 (São Paulo)', 320, 80, 780, 560, 540)
     portales(d, git, 5, 950)
-    d.group(vpc, 'group_vpc2', '#8C4FFF', 380, 370, 400, 190)
-    far = d.icon('ECS Fargate (N-04)' + ('<br>ensayo de wms_only' if nombre == 'QA' else ''), 'fargate', 'compute', 640, 450, lw=200)
-    d.paso(4, 606, 440)
-    d.edge(ecr, far, R(0.5), pts=((330, 508), (330, 478)), label=rotulo, pos=0.4)
+    d.group(vpc, 'group_vpc2', '#8C4FFF', 380, 370, 500, 190)
+    far = d.icon('ECS Fargate (N-04)' + ('<br>ensayo de wms_only' if nombre == 'QA' else ''), 'fargate', 'compute', 690, 450, lw=200)
+    d.paso(4, 656, 440)
+    d.edge(ecr, far, R(0.5), pts=((330, 508), (330, 478)), label=rotulo, pos=0.3)
     d.save(fname, png)
 
 
-ambiente_simple('Desarrollo', 'VPC Desarrollo · 10.104.0.0/16', 'A1_Ambiente_Desarrollo.drawio', 'despliegue de la imagen', 'amb_desarrollo')
+ambiente_simple('Desarrollo', 'VPC Desarrollo · 10.104.0.0/16', 'A1_Ambiente_Desarrollo.drawio', 'con la configuración y los secretos del ambiente', 'amb_desarrollo')
 ambiente_simple('QA', 'VPC QA · 10.103.0.0/16', 'A2_Ambiente_QA.drawio', 'misma imagen que en Desarrollo', 'amb_qa')
 
 
@@ -219,7 +219,7 @@ d.save('A4_Ambiente_Produccion.drawio', 'amb_produccion')
 # activa sobre la copia del WMS de Talca en Aurora (DMS) y atiende a sus terminales por la VPN; Concepcion
 # continua operando su propia bodega.
 d = D('Recuperación ante Desastres')
-d.badge(B('Tipo de ambiente:') + ' solo nube (AWS) · dos rutas de recuperación', NUBE, 640)
+d.badge(B('Recuperación:') + ' pérdida de la región primaria → us-east-1 · pérdida de la sala de Talca → WMS en la nube', '#232F3E', 900)
 git, ecr = cadena(d)
 d.group('AWS Cloud · organización AWS Control Tower', 'group_aws_cloud_alt', '#232F3E', 320, 80, 990, 890)
 # ruta 1: perdida de la region primaria
