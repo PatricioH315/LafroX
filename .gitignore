@@ -1,0 +1,21 @@
+# PDF de figuras y logos sí se versionan.
+*.aux
+*.log
+*.toc
+*.lof
+*.lot
+*.out
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.synctex(busy)
+*.bcf
+*.bbl
+*.blg
+*.run.xml
+*.xdv
+*.nav
+*.snm
+*.vrb
+/main.pdf
+/main-*.pdf

@@ -1,0 +1,18 @@
+% Plantilla común LafroX. Compilar desde esta carpeta: latexmk main.tex
+\documentclass[carta,firma,borrador]{lafrox}
+\datoslafrox{
+  documento = {Plantilla de subdocumento LafroX},
+  subtitulo = {Ejemplo de trabajo --- completar informe},
+  alcance = {Subdocumento de ejemplo},
+  formulario = {Completar formulario aplicable},
+  fecha = {Completar fecha de entrega},
+  version = {0.1},
+  nomenclatura = {EJEMPLO\_LAFROX\_NO\_ENTREGAR.ZIP},
+}
+\begin{document}
+\portadalafrox
+\preliminareslafrox
+% Para compilar el Subdocumento N por separado, fijar chapter en N-1:
+% \setcounter{chapter}{3} % Ejemplo: Subdocumento 4.
+\subdocumento{subdocumento-ejemplo}
+\end{document}
