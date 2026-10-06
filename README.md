@@ -2,7 +2,7 @@
 
 La rama `rama-formato-Latex-base` contiene el formato compartido. Cada rama hija debe llamarse exactamente `LafroX-Subdoc<N>-LateX`, por ejemplo `LafroX-Subdoc4-LateX`. Conservar las mayúsculas y minúsculas indicadas.
 
-## Estructura y procedencia
+## Estructura
 
 ```text
 main.tex                         Metadatos y montaje del documento
@@ -16,10 +16,6 @@ subdocumento-ejemplo/
 README.md
 .gitignore
 ```
-
-Origen: `D:\Usuario\Descargas\lafrox`, recibido el 5 de octubre de 2026. Se conservan la clase, portada, logotipos y un ejemplo. `subdoc/` duplicaba el ejemplo y su ZIP contiene otras versiones del formato; ambos se excluyen para conservar una única fuente. Los temporales y el PDF principal generado no se publican. `main.tex` se adapta como ejemplo compilable y `latexmkrc` elimina las rutas personales del equipo original.
-
-Esta base tiene historia independiente para contener únicamente la plantilla. Crear sus ramas hijas desde ella permite compartir las mejoras por merge. Integrar una rama antigua con historia distinta requiere una importación coordinada; no forzar la unión de historias independientes.
 
 ## Crear una rama hija
 
