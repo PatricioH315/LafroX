@@ -1,0 +1,61 @@
+% Adaptación de ensamblado: espacio de nombres para destinos PDF.
+\renewcommand{\theHchapter}{fisica.\arabic{chapter}}
+% !TeX root = ../main.tex
+%% ============================================================================
+%%  04_arquitectura_fisica/contenido.tex
+%%
+%%  Subdocumento 4.2 del Formulario T-7 --- Arquitectura física y de despliegue.
+%%  Se monta desde main.tex con  \subdocumento{04_arquitectura_fisica}.
+%%
+%%  La carpeta es autocontenida:
+%%    partes/    las secciones, una por archivo, traídas con \parte{}
+%%    figuras/   el modelo de emplazamiento y los planos del recinto
+%%
+%%  Ninguna ruta de aquí sube con ../ ni parte de la raíz del repositorio, de
+%%  modo que mover la carpeta no rompe nada.
+%%
+%%  NUMERACIÓN. Cada pieza es un capítulo de la clase: capítulos 1..15,
+%%  secciones x.y y subsecciones x.y.z. El título de la parte no numera: es
+%%  un rótulo de apertura, de modo que ninguna sección del documento arrastra
+%%  el prefijo "1." de una sección contenedora. La losa (a)-(n) fue eliminada;
+%%  los títulos de las piezas nombran su contenido y las referencias internas
+%%  citan por nombre de sección, no por símbolo §.
+%% ============================================================================
+
+\renewcommand{\thechapter}{4.\arabic{chapter}}
+\setcounter{chapter}{1}   % 4.1 es la arquitectura lógica; la física abre como 4.2
+
+% Títulos de apartado como "4.2 Arquitectura física", en una línea y sin el
+% rótulo "Capítulo" que pone lafrox.cls. Mismo tamaño y color del título de
+% la clase. La antigua "Visión general" (partes/01_vision_general.tex) quedó
+% como introducción de 4.2 en partes/02_0_arquitectura_fisica.tex.
+\titleformat{\chapter}[block]
+  {\normalfont\raggedright\intersemibold\fontsize{25pt}{28pt}\selectfont\color{lafroxFuerte}}
+  {\thechapter}{0.45em}{}
+
+% --- 4.2 Arquitectura física (índice obligatorio, aclaraciones sección 11) ---
+%  02_0 abre el apartado con número "4.2". El índice obligatorio fija 4.2.1 =
+%  "Especificaciones Implementos a proveer (Hardware y Software)"; los
+%  contenidos de 4.2 (emplazamiento, servicios, despliegue, conexiones y
+%  dimensionamiento) siguen como 4.2.2 a 4.2.6 (aclaraciones, sección 2).
+%  Las etiquetas de sección no llevan número, así las referencias no dependen
+%  del orden.
+\parte{02_0_arquitectura_fisica}
+\parte{04_c_implementos}        % 4.2.1 (título obligatorio)
+\parte{02_a_emplazamiento}      % 4.2.2
+\parte{02_b_servicios_nube}     % 4.2.3
+\parte{11_j_despliegue}         % 4.2.4
+\parte{02_c_conexiones}         % 4.2.5
+\parte{12_k_dimensionamiento}   % 4.2.6
+\let\LFXcuerpotabla\LFXcuerpotablaorig   % tablas sin guiones solo en 4.2
+% --- fin del bloque 4.2 ---
+
+% --- 4.3 Data center: primario (4.3.1) y secundario (4.3.2) ---
+\parte{../4.3_centros_de_datos/05_d_sitio_principal}    % 4.3 y 4.3.1 data center primario
+\parte{../4.3_centros_de_datos/06_e_sitio_secundario}   % 4.3.2 data center secundario
+% 07_f_niveles_servicio: cubierto en el sitio principal (99,95 % por componente) y en alta disponibilidad (>= 99,9 % transacción crítica)
+% 08_g_operacion_desconectada: absorbido en 4.2.1 (autonomía sin enlace, tab:t29)
+% La arquitectura de integración y la de seguridad pertenecen a la arquitectura lógica (apartado 4.1).
+% 13_l_capa_analitica: eliminado. La capa analítica pertenece a arquitectura lógica (Subdocumento 4.1); sus componentes físicos están en la síntesis de emplazamiento (tab:t21) y en los apartados de componentes de nube pura (N-04, N-06, N-08, N-10)
+% 03_b_tecnologias: retirado; las tecnologías de software se especifican en el apartado 4.1.1 (arquitectura lógica)
+% 15_n_trazabilidad: la trazabilidad código por código se responde en el Formulario T-12 (Subdocumento 3); las referencias cruzadas están dentro de cada apartado

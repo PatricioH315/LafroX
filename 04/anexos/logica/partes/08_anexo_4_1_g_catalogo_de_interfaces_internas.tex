@@ -1,0 +1,53 @@
+\section*{Anexo 4-G --- Catálogo de interfaces internas}
+\phantomsection
+\label{anx:G}
+\addcontentsline{toc}{section}{Anexo 4-G --- Catálogo de interfaces internas}
+El catálogo conserva los identificadores de las ocho interfaces internas. Las fichas que siguen completan el modo, volumen, ventana y conducta ante lentitud exigidos por RT-05.21. Los volúmenes son escenarios de diseño, no mediciones. Un mensaje de negocio puede atravesar varias interfaces: sus cifras no se suman como operaciones únicas.
+
+\begin{tablalafrox}{Integraciones internas: dueño, contrato y continuidad}{tab:catalogo-internas}{F{0.11} F{0.27} F{0.16} F{0.24} Y}{\cab{ID} & \cab{Intercambio} & \cab{Dueño} & \cab{Contrato} & \cab{Falla}}
+\mbox{INT-01} & Pedido preventa y consulta. & M3 & API negocio y sync. & Captura local sin confirmar. \\
+\mbox{INT-02} & Entrega, POD y cobro. & M6/M7/M8 & API sync por lote. & Cola en dispositivo. \\
+\mbox{INT-03} & Eventos bodega a nube. & M2/M5 & Eventos por sitio. & Broker local 24 h. \\
+\mbox{INT-04} & Detalle de cross-docking a la nube. & M2 & Evento de inventario. & Buffer y reconciliación. \\
+\mbox{INT-05} & Eventos de temperatura. & M9 & Evento de excursión. & Bloqueo local. \\
+\mbox{INT-12} & Cambios de datos a réplica. & M2 & CDC de bodega. & Desfase medido; reanudar. \\
+\mbox{INT-13} & Identidad a sitio. & Seguridad & Políticas firmadas. & Asignaciones vigentes. \\
+\mbox{INT-14} & Métricas y trazas. & Operación & OTLP. & Buffer local. \\
+\end{tablalafrox}
+
+{\footnotesize Fuente: elaboración propia a partir de RT-02.06 y RT-03.12 (Bases Técnicas Transversales, cap.~2, p.~7, y cap.~3, pp.~8--9).\par}
+
+% Fichas del Anexo G. Compilación mediante anexos_4.1.tex desde la raíz.
+\subsection*{Parámetros comunes del catálogo}
+Los contratos distinguirán aceptación durable de procesamiento concluido. Como valores iniciales de diseño, las consultas interactivas tendrán espera máxima de 5 segundos y las transferencias de lotes, 30 segundos; un timeout produce estado incierto, nunca aprobación. Los reintentos conservan UUID, aplican espera exponencial con dispersión y máximo de 5 minutos entre intentos. Los errores de validación pasan a excepción sin reintento automático. El agotamiento del presupuesto de intentos deriva a una cola de errores con alerta; no elimina la operación. Estos parámetros se ajustarán con la prueba de carga sin relajar los tiempos de negocio exigidos.
+
+\paragraph{INT-01. Preventa y consultas --- M3}
+Modo mixto: consultas síncronas y captura/sincronización asíncrona. Volumen de pedidos: 1.400/2.600 por día; las consultas de lectura se estiman en cuatro por pedido (5.600/10.400 llamadas/día) y se miden por separado. Contraparte: API central, ventana requerida 24$\times$7; la app conserva 14 horas de trabajo. Dentro de 2 segundos, si no hay respuesta vigente, muestra la copia fechada; no confirma reserva ni crédito. Lotes de sincronización esperan hasta 30 segundos y se reenvían con la misma clave. La confirmación final corresponde a M2/M3 y al control de crédito.
+
+\paragraph{INT-02. Reparto, POD y rendición --- M6/M7/M8}
+Modo asíncrono para evidencia y rendición; consulta de resultado síncrona. Base mínima: 1.400/2.600 entregas diarias (caso, cap.~14). Se consideran cinco operaciones por entrega: 7.000/13.000 operaciones/día; los eventos no aplicables no se emiten. Fotografías y firmas viajan como objetos con hash, separados del mensaje. Contraparte: API y almacenamiento central, requeridos 24$\times$7. Timeout de lote: 30 segundos. La cola cifrada del dispositivo conserva el turno de 14 horas; solo elimina el evento local después de confirmar mensaje y objetos completos. No registra pago autorizado por ausencia de respuesta del POS.
+
+\paragraph{INT-03. Eventos de bodega a nube --- M1/M2/M5/M9}
+Modo asíncrono mediante outbox, RabbitMQ y consumidor canónico. Sobre de diseño: 260.000 ÷ 22,14 $\times$ 5 $\approx$ 58.710 eventos/día; peak: 109.032, con factor 1,857. Es el total de trazabilidad de los sitios, no una carga adicional por sitio. Contraparte: ingesta central, requerida 24$\times$7. Sin acuse en 30 segundos, el productor retiene y reintenta; el acuse del broker no sustituye el acuse transaccional del dominio. Se conserva al menos 24 horas de actividad local y se mide la edad del evento local más antiguo. El consumidor deduplica por sitio y UUID antes de actualizar el dominio.
+
+\paragraph{INT-04. Detalle de cross-docking a la nube --- M2}
+Modo asíncrono. Volumen de diseño: 5.600/10.400 eventos/día, derivado de cuatro operaciones por cada una de las 1.400/2.600 entregas; no se suma de nuevo al total de INT-03. Contraparte: consolidación N-04/N-05 en nube, requerida 24$\times$7. Timeout de acuse de 30 segundos; cada sitio mantiene su operación, buffer de 24 horas y secuencia propia. Al reconectar se reconcilia inventario en tránsito y se aísla cualquier doble compromiso.
+
+\paragraph{Coordinación de reserva y retención --- desarrollo de INT-03/04, M2}
+Modo asíncrono con respuesta durable, requerida para confirmar el pedido. M2 central publica cada solicitud en una cola FIFO del sitio, que su shipper lee por conexión saliente. M2 local valida y retiene, y su outbox devuelve el acuse por INT-03/04. Contrapartes: M2 central y M2 del sitio que custodia el stock, requeridas durante la toma y confirmación de pedidos y la liberación de reservas. Un timeout de transporte de 30 segundos deja la operación pendiente o incierta y nunca la confirma. La latencia de negocio se mide contra el objetivo de confirmación de reserva del Anexo 4-T, que es distinto de ese timeout.
+
+Cada sobre JSON versionado lleva UUID, correlación, sitio, época de autoridad, lote, ubicación, cantidad y tipo: retener, liberar o resultado. Cada cola tiene un consumidor exclusivo con rol IAM de mínimo privilegio, validación de esquema y auditoría. Una repetición devuelve el resultado ya persistido. Una época obsoleta o un esquema incompatible pasa a la bandeja de excepciones. Durante un corte, el sitio conserva sus retenciones y la nube no confirma ni libera sin acuse durable. Al reconectar se consulta por clave y se concilia el resultado antes de reintentar. Volumen de diseño: 46.968/87.228 mensajes/día, con cuatro mensajes por línea de pedido (Anexo 4-I).
+
+\paragraph{INT-05. Temperatura --- M9}
+Modo asíncrono para muestras y alarma local inmediata. Volumen: 10.584 lecturas/día en régimen y peak, por 21 puntos de cámara × 288 lecturas más 28 termógrafos × 162 lecturas entre 05:30 y 19:00 (6.048 + 4.536). Contraparte: IoT Core/ingesta central, requerida 24$\times$7; el bloqueo M9--M5 permanece local y no espera a nube. Acuse remoto máximo de 30 segundos por lote. Gateway: retención de 24 horas; termógrafo: registro de toda la ruta, hasta 14 horas. Una pérdida de señal o lectura obsoleta genera una incidencia diferenciada de la excursión térmica.
+
+\paragraph{INT-12. Réplica de lectura del WMS de Talca --- M2/Datos}
+Modo asíncrono CDC. El volumen físico depende del WAL y no equivale al número de eventos EPCIS. Para la prueba se usa $V_{WAL}=N_T\times b_{WAL}$, donde $N_T$ son los cambios medidos en Talca y $b_{WAL}$, bytes medidos por cambio. Los 12.602/23.404 cambios diarios son una cota conservadora calculada con los movimientos de todos los sitios, no un conteo propio de Talca; se aplica como cota al WAL de Talca, estimado en 0,123 GB/día. Migraciones, índices y amplificación se miden aparte. Contraparte: réplica Aurora de solo lectura, requerida 24$\times$7. Se alerta al superar 5 minutos de retraso y se escala antes de 15; si caen fibra y LTE, Starlink en espera caliente toma el tráfico prioritario de DMS/WAL y sostiene RPO $\leq$ 15 minutos; con los tres caminos caídos, el WAL se conserva localmente para reconciliación. AL-DR-01 verifica el escenario de pérdida de sitio.
+
+\paragraph{INT-13. Identidad y manifiestos --- Seguridad}
+Modo mixto: autenticación central síncrona y distribución asíncrona de manifiestos. Se estiman 760 eventos/día (380 dispositivos × 2), tanto en régimen como en peak. Contraparte: Keycloak, requerida 24$\times$7. Timeout interactivo: 5 segundos. Sin enlace se usa el verificador local con manifiesto de 26 horas, caché de identidad de 24 horas y permisos de turno de 8/14 horas. No se habilitan nuevas altas ni privilegios. AL-OFF-01 prueba dos relevos y el rechazo de identidades no preinscritas.
+
+\paragraph{INT-14. Métricas, logs y trazas --- Operación}
+Modo asíncrono por OTLP. Presupuesto de diseño: 13.000 eventos/día en régimen y peak (13 nodos × 1.000 eventos: 6 VM de Talca, 4 de Concepción y 3 mini-PC); son unidades de observabilidad y no mensajes comerciales sumables. Contraparte: colectores y CloudWatch, requeridos 24$\times$7. Exportación con timeout de 30 segundos y buffer en disco de 24 horas. El fallo de exportación no bloquea negocio; el sitio mantiene alarma local por ocupación. Auditoría de negocio y eventos de seguridad no se descartan para conservar trazas diagnósticas.
+
+{\footnotesize Fuente: elaboración propia a partir de las Bases Técnicas del caso (cap.~14, p.~24) y RT-05.21 (Bases Técnicas Transversales, cap.~5, p.~13). Las tasas de consultas son supuestos de ensayo explícitos; su calibración exige medición.\par}

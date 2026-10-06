@@ -1,0 +1,33 @@
+\section*{Anexo 4-M --- Verificación de continuidad lógica}
+\phantomsection
+\label{anx:M}
+\addcontentsline{toc}{section}{Anexo 4-M --- Verificación de continuidad lógica}
+Este anexo establece los protocolos de aceptación. Cada ejecución conserva configuración, datos de carga, relojes sincronizados, inyección de fallas, trazas, resultados observados y acta.
+
+\subsection*{AL-DTE-01. Emisión documental de 96 salidas}
+Operaciones prepara las 96 cargas de la ventana 05:30--07:00 y registra origen, destino, versión de carga y guía requerida. La matriz de ensayo incluye y comprueba ambas rutas de emisión: en Talca, M5 publica en RabbitMQ local y \texttt{erp-sync} en VM-04 consume sin WAN; en Concepción y los cross-docking, RabbitMQ local entrega al shipper, este publica en la cola FIFO de solicitudes al ERP, \texttt{erp-sync} la consume por conexión saliente y la respuesta vuelve por la cola del sitio. Dos procesos \texttt{erp-sync} en VM-04 solicitan la guía al ERP mediante la ACL. Al cerrar cada carga nocturna queda preemitida la guía y el ERP conserva el intercambio con el SII por fibra, LTE o Starlink en espera caliente de Talca.
+
+El ensayo inyecta caída de fibra y LTE, respuesta extraviada del ERP, reintento, indisponibilidad transitoria del SII y cambio de carga después de la preemisión en ambas rutas. Un cambio invalida la guía: el ERP la anula según su procedimiento y emite otra antes de liberar, usando cualquiera de los tres caminos de Talca; fuera de Talca se requiere además un camino del sitio. Se comprueba por origen la secuencia RabbitMQ--\texttt{erp-sync} o RabbitMQ--shipper--cola de solicitudes--\texttt{erp-sync}--cola de respuesta, folio, carga, documento local, acuse y ausencia de duplicados. También se cortan los caminos hasta el ERP: el camión sale solo con la carga amparada por su guía vigente y el ajuste pasa a la ruta siguiente. Una guía anulada no se reutiliza: esa salida espera un documento válido. La aceptación exige documento válido para cada una de las 96 salidas; ninguna salida se libera por una autorización genérica.
+
+\subsection*{AL-DR-01. Recuperación de sitio y región}
+RT-07.04 fija RTO $\leq$ 4 horas y RPO $\leq$ 15 minutos para servicios críticos. Se mide $RPO_{observado}=t_{incidente}-t_{ultimo\_punto\_consistente}$ con UUID, secuencia y la última transacción confirmada recuperable fuera del sitio.
+
+El protocolo mantiene carga de negocio y corta fibra, LTE y satélite de uno en uno y en pares; verifica que el camino restante transporte DMS/WAL de Talca, broker, outbox e identidad con retraso inferior a 15 minutos. En cada CD se provoca luego pérdida de sala o servidor con al menos un camino de extracción activo. Para Talca se detiene DMS, se habilita su copia de Aurora para escritura y se levanta \texttt{wms\_only} en ECS Fargate; terminales y periféricos acceden por VPN. Con la sala de Talca perdida se comprueba que salen las cargas con guía preemitida y que una carga nueva queda bloqueada hasta restituir el ERP. También se ensaya promoción de us-east-1 si sa-east-1 falla. Concepción se reconstruye desde eventos centrales y recupera su propia operación; no recibe la carga de Talca.
+
+Se contrastan pedidos, stock por sitio, preparación, bloqueos sanitarios y evidencias con el oráculo de prueba y se miden RTO y RPO completos. Una prueba separada mantiene el sitio operativo sin los tres caminos durante 24 horas para verificar autonomía y alarmas; el límite residual de pérdida simultánea de los tres medios seguida de destrucción del sitio se justifica en 4.3.2.
+
+El ensayo semestral mide RPO $\leq$ 15 minutos para transacciones en nube, WMS de Talca, mensajes críticos, evidencias y documentos tributarios en S3 y telemetría de temperatura; analítica y mensajes no críticos tienen objetivo $\leq$ 24 horas, y las posiciones de flota, $\leq$ 24 horas dentro de sa-east-1. En S3 se verifica Replication Time Control, su objetivo de 99,99\% de objetos en 15 minutos, los objetos pendientes y el evento de umbral que dispara la recopia; en DynamoDB Global Tables se mide ReplicationLatency y se comprueba la alarma a 60 segundos.
+
+La conmutación regional ensaya la decisión del CLIENTE con autorizador titular y suplente facultado: si el titular no responde en 15 minutos, decide el suplente, y el paso de autorización no supera 30 minutos. El acta registra los ocho pasos y su peor caso secuencial de 5 + 30 + 20 + 30 + 15 + 15 + 5 + 15 = 135 minutos, dentro del RTO de 4 horas; el último paso redirige los shippers y \texttt{erp-sync} a las colas equivalentes, creadas vacías en la región secundaria.
+
+\subsection*{AL-OFF-01. Autonomía de 24 horas con dos relevos}
+El ensayo cubre Talca, Concepción y cada cross-docking con el mismo perfil \texttt{wms\_only}. Se preinscriben usuarios, dispositivos, turnos y permisos. El corte de los tres caminos comienza justo antes de renovar el manifiesto firmado de 26 horas; la caché descriptiva dura 24 horas.
+
+A las 8 y 16 horas, personas distintas se identifican con PIN personal en terminal enrolado. Se comprueban firma, vigencia, sitio, rol y turno; se rechazan manifiesto alterado, PIN incorrecto, dispositivo no autorizado y privilegio nuevo. Se reinicia un componente y se verifica persistencia de outbox, bitácora y permisos. Durante el corte se ejecutan recepción, retención local, preparación, bloqueo térmico y despacho con guía válida preemitida; al reconectar se drenan eventos repetidos y fuera de orden.
+
+La aceptación exige dos relevos autorizados, operaciones confirmadas aplicadas una sola vez, conflictos conciliados y auditoría completa. Se registran ocupación, retraso de cola y tiempo de drenaje con carga de septiembre; AL-DTE-01 verifica por separado una nueva guía y la invalidación de una guía preemitida.
+
+\subsection*{AL-CLI-01. Pedido de autoatención sin señal}
+El ensayo usa el Portal de Clientes instalado en un teléfono Android y en uno iOS de gama básica, con cuentas activadas por el procedimiento del preventista. Con el teléfono sin red se consulta el catálogo descargado, se arma un pedido nuevo y se repite uno anterior; luego se cierra la aplicación y se reinicia el teléfono.
+
+Al recuperar cobertura se verifica que cada pedido se envía una sola vez, aunque se repita el envío con el mismo UUID, y que M3 responde confirmado o con diferencias de stock, crédito o precio. Se rechazan el pedido con sesión vencida y el pedido de una cuenta bloqueada. La aceptación exige que ningún pedido armado sin señal se pierda o se duplique y que la reserva de stock ocurra solo al recibirlo M3.

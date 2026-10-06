@@ -1,6 +1,0 @@
-# Artefactos de compilacion LaTeX que el .gitignore raiz no cubre
-*.fls
-*.synctex.gz
-*.xdv
-*.run.xml
-*.bcf

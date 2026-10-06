@@ -1,0 +1,72 @@
+{
+  "documentos": [
+    {
+      "archivo": "LAFROX-Anexo-4B.pdf",
+      "paginas": 22,
+      "bytes": 113576,
+      "referenciasIndefinidas": false,
+      "destinosDuplicados": false,
+      "avisosOverfull": 0,
+      "titulo": "Propuesta Técnica — Informe 2"
+    },
+    {
+      "archivo": "LAFROX-Formulario-T-11.pdf",
+      "paginas": 33,
+      "bytes": 137562,
+      "referenciasIndefinidas": false,
+      "destinosDuplicados": false,
+      "avisosOverfull": 34,
+      "titulo": "Propuesta Técnica — Informe 2"
+    },
+    {
+      "archivo": "LAFROX-Subdocumento4.1-Anexos.pdf",
+      "paginas": 58,
+      "bytes": 342416,
+      "referenciasIndefinidas": false,
+      "destinosDuplicados": false,
+      "avisosOverfull": 10,
+      "titulo": "Anexos del Subdocumento 4.1 – Arquitectura lógica"
+    },
+    {
+      "archivo": "LAFROX-Subdocumento4.1.pdf",
+      "paginas": 62,
+      "bytes": 1460724,
+      "referenciasIndefinidas": false,
+      "destinosDuplicados": false,
+      "avisosOverfull": 0,
+      "titulo": "Subdocumento 4.1 – Arquitectura lógica"
+    },
+    {
+      "archivo": "LAFROX-Subdocumento4.pdf",
+      "paginas": 223,
+      "bytes": 16926664,
+      "referenciasIndefinidas": false,
+      "destinosDuplicados": false,
+      "avisosOverfull": 133,
+      "titulo": "Subdocumento 4 – Arquitectura de la solución"
+    }
+  ],
+  "paginasPrincipalRenderizadas": 223,
+  "muestrasPrincipal": [
+    1,
+    2,
+    3,
+    4,
+    18,
+    19,
+    20,
+    23,
+    26,
+    35,
+    44,
+    60,
+    69,
+    70,
+    74,
+    75,
+    139,
+    140,
+    223
+  ],
+  "revisionVisual": "El asistente inspeccionó las cinco hojas de contacto de las 223 páginas del principal y muestras detalladas del principal y de salidas independientes. Se corrigió únicamente el espacio de los rótulos de la lista de tablas en el ensamblador. Persisten avisos tipográficos registrados, sin modificar el contenido original. Esta comprobación no acredita revisión humana del equipo ni conformidad técnica de las decisiones arquitectónicas."
+}

@@ -1,0 +1,23 @@
+% !TeX program = lualatex
+% Anexos del Subdocumento 4 (Anexos 4-A a 4-W).
+\makeatletter
+\def\input@path{{../00/plantilla/formato-base/}{./}}
+\makeatother
+\documentclass[carta,firma]{lafrox}
+\renewcommand{\LFXisotipoportada}{../00/plantilla/formato-base/logo/lafrox_isotipo_naranja.pdf}
+\renewcommand{\LFXisotipopagina}{../00/plantilla/formato-base/logo/lafrox_isotipo_negro.pdf}
+\datoslafrox{
+  documento = {Propuesta Técnica},
+  subtitulo = {Anexos del Subdocumento 4 --- Arquitectura de la solución},
+  alcance = {Anexos de los apartados 4.1, 4.2 y 4.3},
+  formulario = {Formulario T-7},
+  fecha = {05 de octubre de 2026},
+  version = {},
+  nomenclatura = {LAFROX-Subdocumento4-Anexos.pdf},
+}
+\hypersetup{pdftitle={Anexos del Subdocumento 4 -- Arquitectura de la solución}}
+\renewcommand{\LFXestadodoc}{Entrega 2}
+\captionsetup{hypcap=false}
+\begin{document}
+\import{anexos/logica/}{contenido.tex}
+\end{document}

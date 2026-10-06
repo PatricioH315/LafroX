@@ -1,28 +1,12 @@
-# Dependencias y sesiones locales de opencode (no se versionan)
-node_modules/
-opencode-loop/
-
-# Archivos temporales y de sistema
-.DS_Store
-Thumbs.db
-*.log
-
-# Artefactos de compilación LaTeX (no se versionan)
 *.aux
-*.out
+*.log
 *.toc
-*.fdb_latexmk
-*.bbl
-*.blg
 *.lof
 *.lot
-
-# Archivos en tránsito (aún no consolidados en las carpetas definitivas)
-_staging/
-
-# Auditoría de integridad del caso: herramienta interna de control (no se versiona)
-AUDITORIA.md
-**/auditoria*.md
-
-# Logs de ejecución del plugin codex-flow (no se versionan)
-.codex-flow/
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.out
+*.xdv
+compilacion-*.txt
+entrega/_build/

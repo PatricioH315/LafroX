@@ -1,0 +1,1206 @@
+{
+  "fecha": "2026-10-01",
+  "rama": "rama-latex",
+  "modalidad": "Consolidación estructural; no armonización de contenido",
+  "commits": {
+    "logica": "e55133c2f91806af03f393776256a2feea23faa7",
+    "fisica": "5c5e27059675651dc26f8028ffbaa310950558b0"
+  },
+  "raizPermitida": [
+    "00",
+    "04",
+    "main.tex",
+    "contenido.tex",
+    "compilar.ps1",
+    ".gitignore",
+    "resultados asociados a main"
+  ],
+  "registros": [
+    {
+      "rama": "arquitectura-alvaro",
+      "commit": "e55133c2f91806af03f393776256a2feea23faa7",
+      "origen": "04_arquitectura/entrega_2/latex/04_arquitectura_logica/partes/01_introduccion.tex",
+      "destino": "04/partes/4.1_logica/01_introduccion.tex",
+      "categoria": "cuerpo_4.1",
+      "sha256Origen": "3a55759a84ac9faac958e2579457cbc3507d7017f98579f5dabaa55b0e3acdd6",
+      "sha256Destino": "3a55759a84ac9faac958e2579457cbc3507d7017f98579f5dabaa55b0e3acdd6",
+      "adaptado": false
+    },
+    {
+      "rama": "arquitectura-alvaro",
+      "commit": "e55133c2f91806af03f393776256a2feea23faa7",
+      "origen": "04_arquitectura/entrega_2/latex/04_arquitectura_logica/partes/02_especificaciones_tecnologias_de_software_a_utilizar.tex",
+      "destino": "04/partes/4.1_logica/02_especificaciones_tecnologias_de_software_a_utilizar.tex",
+      "categoria": "cuerpo_4.1",
+      "sha256Origen": "b090fbe6293e0fae1f4606cfd462646d7d66ac4ae80b340bf51c4b844e48f1c0",
+      "sha256Destino": "b090fbe6293e0fae1f4606cfd462646d7d66ac4ae80b340bf51c4b844e48f1c0",
+      "adaptado": false
+    },
+    {
+      "rama": "arquitectura-alvaro",
+      "commit": "e55133c2f91806af03f393776256a2feea23faa7",
+      "origen": "04_arquitectura/entrega_2/latex/04_arquitectura_logica/partes/03_principios_de_integracion.tex",
+      "destino": "04/partes/4.1_logica/03_principios_de_integracion.tex",
+      "categoria": "cuerpo_4.1",
+      "sha256Origen": "de9ba426009ce876f51ce44c3ffab59cc12ab2d7774a9f0bf8d042afac7accff",
+      "sha256Destino": "de9ba426009ce876f51ce44c3ffab59cc12ab2d7774a9f0bf8d042afac7accff",
+      "adaptado": false
+    },
+    {
+      "rama": "arquitectura-alvaro",
+      "commit": "e55133c2f91806af03f393776256a2feea23faa7",
+      "origen": "04_arquitectura/entrega_2/latex/04_arquitectura_logica/partes/04_capas_de_la_arquitectura.tex",
+      "destino": "04/partes/4.1_logica/04_capas_de_la_arquitectura.tex",
+      "categoria": "cuerpo_4.1",
+      "sha256Origen": "262f048b6d27cf1e926c0aa1a2edbc6d755bf322e279b326f7aca2b59b4e1204",
+      "sha256Destino": "fac25b342bb4b74d4e7198068d96aec634b9689b6c93436a4295b2a32410a445",
+      "adaptado": true
+    },
+    {
+      "rama": "arquitectura-alvaro",
+      "commit": "e55133c2f91806af03f393776256a2feea23faa7",
+      "origen": "04_arquitectura/entrega_2/latex/04_arquitectura_logica/partes/05_modulos_funcionales_y_limites_de_contexto.tex",
+      "destino": "04/partes/4.1_logica/05_modulos_funcionales_y_limites_de_contexto.tex",
+      "categoria": "cuerpo_4.1",
+      "sha256Origen": "9539d3be390dd5cb0233a442b320f2d123628f87fc81ced286136b263cbb4a41",
+      "sha256Destino": "9539d3be390dd5cb0233a442b320f2d123628f87fc81ced286136b263cbb4a41",
+      "adaptado": false
+    },
+    {
+      "rama": "arquitectura-alvaro",
+      "commit": "e55133c2f91806af03f393776256a2feea23faa7",
+      "origen": "04_arquitectura/entrega_2/latex/04_arquitectura_logica/partes/06_modelo_de_datos_conceptual.tex",
+      "destino": "04/partes/4.1_logica/06_modelo_de_datos_conceptual.tex",
+      "categoria": "cuerpo_4.1",
+      "sha256Origen": "e84fc8bcff8b4ef481457f531f01fad3681ca5748b80b5a64594ee5d598d806f",
+      "sha256Destino": "96525f1525d3ab8404c22ff5de10dace54c4c348d602468e633881d39515c124",
+      "adaptado": true
+    },
+    {
+      "rama": "arquitectura-alvaro",
+      "commit": "e55133c2f91806af03f393776256a2feea23faa7",
+      "origen": "04_arquitectura/entrega_2/latex/04_arquitectura_logica/partes/07_catalogo_de_interfaces.tex",
+      "destino": "04/partes/4.1_logica/07_catalogo_de_interfaces.tex",
+      "categoria": "cuerpo_4.1",
+      "sha256Origen": "3747d16332274c586bc32d7540beb5677c18c3e3e27e0e27b77afbf1dfd9d101",
+      "sha256Destino": "3747d16332274c586bc32d7540beb5677c18c3e3e27e0e27b77afbf1dfd9d101",
+      "adaptado": false
+    },
+    {
+      "rama": "arquitectura-alvaro",
+      "commit": "e55133c2f91806af03f393776256a2feea23faa7",
+      "origen": "04_arquitectura/entrega_2/latex/04_arquitectura_logica/partes/08_detalle_de_tecnologias_seleccionadas.tex",
+      "destino": "04/partes/4.1_logica/08_detalle_de_tecnologias_seleccionadas.tex",
+      "categoria": "cuerpo_4.1",
+      "sha256Origen": "66b18866bfc8efd70aa7f3816c517cc2f7372345444c58b51467e5481d52fc58",
+      "sha256Destino": "66b18866bfc8efd70aa7f3816c517cc2f7372345444c58b51467e5481d52fc58",
+      "adaptado": false
+    },
+    {
+      "rama": "arquitectura-alvaro",
+      "commit": "e55133c2f91806af03f393776256a2feea23faa7",
+      "origen": "04_arquitectura/entrega_2/latex/04_arquitectura_logica/partes/09_implantacion_progresiva_del_backend_laravel.tex",
+      "destino": "04/partes/4.1_logica/09_implantacion_progresiva_del_backend_laravel.tex",
+      "categoria": "cuerpo_4.1",
+      "sha256Origen": "5c6aee7f4ebfa0fa9cd3e21e1cc4575eaf2dd490db942ef45c74a26dd5263fd2",
+      "sha256Destino": "5c6aee7f4ebfa0fa9cd3e21e1cc4575eaf2dd490db942ef45c74a26dd5263fd2",
+      "adaptado": false
+    },
+    {
+      "rama": "arquitectura-alvaro",
+      "commit": "e55133c2f91806af03f393776256a2feea23faa7",
+      "origen": "04_arquitectura/entrega_2/latex/04_arquitectura_logica/partes/10_ambientes_del_ciclo_de_vida_y_promocion_de_componentes.tex",
+      "destino": "04/partes/4.1_logica/10_ambientes_del_ciclo_de_vida_y_promocion_de_componentes.tex",
+      "categoria": "cuerpo_4.1",
+      "sha256Origen": "f53ca64663748b01eab93e64d093099476de49a0f8fc46c0e7457ed9f68a23b9",
+      "sha256Destino": "f53ca64663748b01eab93e64d093099476de49a0f8fc46c0e7457ed9f68a23b9",
+      "adaptado": false
+    },
+    {
+      "rama": "arquitectura-alvaro",
+      "commit": "e55133c2f91806af03f393776256a2feea23faa7",
+      "origen": "04_arquitectura/entrega_2/latex/04_arquitectura_logica/partes/11_patrones_de_diseno_y_continuidad.tex",
+      "destino": "04/partes/4.1_logica/11_patrones_de_diseno_y_continuidad.tex",
+      "categoria": "cuerpo_4.1",
+      "sha256Origen": "e603b073e166bf73b1616667307e250e5dffa81981f310bd5a1c26c3aae4c902",
+      "sha256Destino": "e603b073e166bf73b1616667307e250e5dffa81981f310bd5a1c26c3aae4c902",
+      "adaptado": false
+    },
+    {
+      "rama": "arquitectura-alvaro",
+      "commit": "e55133c2f91806af03f393776256a2feea23faa7",
+      "origen": "04_arquitectura/entrega_2/latex/04_arquitectura_logica/partes/12_registro_de_decisiones_de_arquitectura.tex",
+      "destino": "04/partes/4.1_logica/12_registro_de_decisiones_de_arquitectura.tex",
+      "categoria": "cuerpo_4.1",
+      "sha256Origen": "5c00b4c83caf066ec20c17d2beda30df01f0848354852f2b066ee4912fdae648",
+      "sha256Destino": "5c00b4c83caf066ec20c17d2beda30df01f0848354852f2b066ee4912fdae648",
+      "adaptado": false
+    },
+    {
+      "rama": "arquitectura-alvaro",
+      "commit": "e55133c2f91806af03f393776256a2feea23faa7",
+      "origen": "04_arquitectura/entrega_2/latex/04_arquitectura_logica/partes/13_puntos_unicos_de_falla_y_riesgos_residuales.tex",
+      "destino": "04/partes/4.1_logica/13_puntos_unicos_de_falla_y_riesgos_residuales.tex",
+      "categoria": "cuerpo_4.1",
+      "sha256Origen": "ad71959e535672bf6d8ac20cf124f890f787662e84c8074122e0634ff2088882",
+      "sha256Destino": "ad71959e535672bf6d8ac20cf124f890f787662e84c8074122e0634ff2088882",
+      "adaptado": false
+    },
+    {
+      "rama": "arquitectura-alvaro",
+      "commit": "e55133c2f91806af03f393776256a2feea23faa7",
+      "origen": "04_arquitectura/entrega_2/latex/04_arquitectura_logica/partes/14_comparacion_de_alternativas_arquitectonicas.tex",
+      "destino": "04/partes/4.1_logica/14_comparacion_de_alternativas_arquitectonicas.tex",
+      "categoria": "cuerpo_4.1",
+      "sha256Origen": "f46d8256f431658f0838410903445612241052150c08fb9794d68c4dec249928",
+      "sha256Destino": "f46d8256f431658f0838410903445612241052150c08fb9794d68c4dec249928",
+      "adaptado": false
+    },
+    {
+      "rama": "arquitectura-alvaro",
+      "commit": "e55133c2f91806af03f393776256a2feea23faa7",
+      "origen": "04_arquitectura/entrega_2/latex/04_arquitectura_logica/partes/15_relacion_entre_las_vistas_de_arquitectura.tex",
+      "destino": "04/partes/4.1_logica/15_relacion_entre_las_vistas_de_arquitectura.tex",
+      "categoria": "cuerpo_4.1",
+      "sha256Origen": "ac4f5481aba23853701ffb52ef2bacaec30cd5666bc9a11f3d709a7c8b15d8e5",
+      "sha256Destino": "ac4f5481aba23853701ffb52ef2bacaec30cd5666bc9a11f3d709a7c8b15d8e5",
+      "adaptado": false
+    },
+    {
+      "rama": "arquitectura-alvaro",
+      "commit": "e55133c2f91806af03f393776256a2feea23faa7",
+      "origen": "04_arquitectura/entrega_2/latex/04_arquitectura_logica/partes/16_funciones_disponibles_y_no_disponibles_sin_conexion.tex",
+      "destino": "04/partes/4.1_logica/16_funciones_disponibles_y_no_disponibles_sin_conexion.tex",
+      "categoria": "cuerpo_4.1",
+      "sha256Origen": "a9e6fa98ba14243632afbed6b7bf3bfe81583694d2a4c3073152914eb6a5c92c",
+      "sha256Destino": "a9e6fa98ba14243632afbed6b7bf3bfe81583694d2a4c3073152914eb6a5c92c",
+      "adaptado": false
+    },
+    {
+      "rama": "arquitectura-alvaro",
+      "commit": "e55133c2f91806af03f393776256a2feea23faa7",
+      "origen": "04_arquitectura/entrega_2/latex/04_arquitectura_logica/partes/17_reglas_de_reconciliacion.tex",
+      "destino": "04/partes/4.1_logica/17_reglas_de_reconciliacion.tex",
+      "categoria": "cuerpo_4.1",
+      "sha256Origen": "048673431b873155543b99ff1f4931f959aa958d0334098ff71585ab02cdcb21",
+      "sha256Destino": "048673431b873155543b99ff1f4931f959aa958d0334098ff71585ab02cdcb21",
+      "adaptado": false
+    },
+    {
+      "rama": "arquitectura-alvaro",
+      "commit": "e55133c2f91806af03f393776256a2feea23faa7",
+      "origen": "04_arquitectura/entrega_2/latex/04_arquitectura_logica/partes/18_articulacion_entre_prueba_de_entrega_dte_y_acuse.tex",
+      "destino": "04/partes/4.1_logica/18_articulacion_entre_prueba_de_entrega_dte_y_acuse.tex",
+      "categoria": "cuerpo_4.1",
+      "sha256Origen": "b617f43cd7fa6166d784910a84c73e823df97f18ba682bdb11b19a6b57ebfa48",
+      "sha256Destino": "b617f43cd7fa6166d784910a84c73e823df97f18ba682bdb11b19a6b57ebfa48",
+      "adaptado": false
+    },
+    {
+      "rama": "arquitectura-alvaro",
+      "commit": "e55133c2f91806af03f393776256a2feea23faa7",
+      "origen": "04_arquitectura/entrega_2/latex/04_arquitectura_logica/partes/19_identidad_y_ciclo_de_vida_de_conductores_externos.tex",
+      "destino": "04/partes/4.1_logica/19_identidad_y_ciclo_de_vida_de_conductores_externos.tex",
+      "categoria": "cuerpo_4.1",
+      "sha256Origen": "404ef1be76c9ba3558fa4613d023d31d55f3a8bbd87e601f0c185de432557cd3",
+      "sha256Destino": "404ef1be76c9ba3558fa4613d023d31d55f3a8bbd87e601f0c185de432557cd3",
+      "adaptado": false
+    },
+    {
+      "rama": "arquitectura-alvaro",
+      "commit": "e55133c2f91806af03f393776256a2feea23faa7",
+      "origen": "04_arquitectura/entrega_2/latex/04_arquitectura_logica/partes/20_primer_cuello_de_botella_bajo_la_carga_de_septiembre.tex",
+      "destino": "04/partes/4.1_logica/20_primer_cuello_de_botella_bajo_la_carga_de_septiembre.tex",
+      "categoria": "cuerpo_4.1",
+      "sha256Origen": "c7f900164bbc35cc91d3671ace63d0e0a19cad12c01a2c1382c5c349b6b1c2eb",
+      "sha256Destino": "c7f900164bbc35cc91d3671ace63d0e0a19cad12c01a2c1382c5c349b6b1c2eb",
+      "adaptado": false
+    },
+    {
+      "rama": "arquitectura-alvaro",
+      "commit": "e55133c2f91806af03f393776256a2feea23faa7",
+      "origen": "04_arquitectura/entrega_2/latex/04_arquitectura_logica/partes/21_decisiones_del_numeral_16_1_del_caso.tex",
+      "destino": "04/partes/4.1_logica/21_decisiones_del_numeral_16_1_del_caso.tex",
+      "categoria": "cuerpo_4.1",
+      "sha256Origen": "f2de193abc42b59e808b15e8307f42b91eeee4455d0e73a4dfed111871012c05",
+      "sha256Destino": "f2de193abc42b59e808b15e8307f42b91eeee4455d0e73a4dfed111871012c05",
+      "adaptado": false
+    },
+    {
+      "rama": "arquitectura-alvaro",
+      "commit": "e55133c2f91806af03f393776256a2feea23faa7",
+      "origen": "04_arquitectura/entrega_2/latex/04_arquitectura_logica/partes/22_condiciones_y_supuestos_de_diseno.tex",
+      "destino": "04/partes/4.1_logica/22_condiciones_y_supuestos_de_diseno.tex",
+      "categoria": "cuerpo_4.1",
+      "sha256Origen": "a0b42e3662de71217ad4ded1ee4fa0c1786a8e90be0648510c917f9895480276",
+      "sha256Destino": "a0b42e3662de71217ad4ded1ee4fa0c1786a8e90be0648510c917f9895480276",
+      "adaptado": false
+    },
+    {
+      "rama": "arquitectura-alvaro",
+      "commit": "e55133c2f91806af03f393776256a2feea23faa7",
+      "origen": "04_arquitectura/entrega_2/latex/04_arquitectura_logica/partes/23_referencias.tex",
+      "destino": "04/partes/4.1_logica/23_referencias.tex",
+      "categoria": "cuerpo_4.1",
+      "sha256Origen": "79a1ddca44a54d4c502f69d1a0e2a42ed60eba20045de074f8397d151d58aaf5",
+      "sha256Destino": "79a1ddca44a54d4c502f69d1a0e2a42ed60eba20045de074f8397d151d58aaf5",
+      "adaptado": false
+    },
+    {
+      "rama": "arquitectura-alvaro",
+      "commit": "e55133c2f91806af03f393776256a2feea23faa7",
+      "origen": "04_arquitectura/entrega_2/latex/04_arquitectura_logica/partes/24_declaracion_de_uso_de_ia.tex",
+      "destino": "04/partes/4.1_logica/24_declaracion_de_uso_de_ia.tex",
+      "categoria": "cuerpo_4.1",
+      "sha256Origen": "5f83e3660ebde84dccd605efe6d99c687fe0603a0a8944394f401fc7018caf24",
+      "sha256Destino": "5f83e3660ebde84dccd605efe6d99c687fe0603a0a8944394f401fc7018caf24",
+      "adaptado": false
+    },
+    {
+      "rama": "arquitectura-alvaro",
+      "commit": "e55133c2f91806af03f393776256a2feea23faa7",
+      "origen": "04_arquitectura/entrega_2/latex/04_arquitectura_logica/contenido.tex",
+      "destino": "04/partes/4.1_logica/contenido.tex",
+      "categoria": "ensamblador",
+      "sha256Origen": "cc60a1ad22784a30d0d14239b0683da9c8e03240becd9c338f7e883b815fff61",
+      "sha256Destino": "634ae462484c59a320ba523da8b4d7e182f60ff46ae65ea809cd4c5b01bba2c0",
+      "adaptado": true
+    },
+    {
+      "rama": "arquitectura-alvaro",
+      "commit": "e55133c2f91806af03f393776256a2feea23faa7",
+      "origen": "04_arquitectura/entrega_2/latex/04_arquitectura_logica/anexos/partes/01_apertura_anexos.tex",
+      "destino": "04/anexos/logica/partes/01_apertura_anexos.tex",
+      "categoria": "anexos_4.1",
+      "sha256Origen": "f7473f26cba72eff1bd7a2a127b6972e9154a96e521f05c39b678b1dedbc6842",
+      "sha256Destino": "f7473f26cba72eff1bd7a2a127b6972e9154a96e521f05c39b678b1dedbc6842",
+      "adaptado": false
+    },
+    {
+      "rama": "arquitectura-alvaro",
+      "commit": "e55133c2f91806af03f393776256a2feea23faa7",
+      "origen": "04_arquitectura/entrega_2/latex/04_arquitectura_logica/anexos/partes/00_catalogo_anexos.tex",
+      "destino": "04/anexos/logica/partes/00_catalogo_anexos.tex",
+      "categoria": "anexos_4.1",
+      "sha256Origen": "84fea329dea40fb6576be84a2a2767fcd5fb557a442d1fa40c2cd2b48962d811",
+      "sha256Destino": "84fea329dea40fb6576be84a2a2767fcd5fb557a442d1fa40c2cd2b48962d811",
+      "adaptado": false
+    },
+    {
+      "rama": "arquitectura-alvaro",
+      "commit": "e55133c2f91806af03f393776256a2feea23faa7",
+      "origen": "04_arquitectura/entrega_2/latex/04_arquitectura_logica/anexos/partes/02_anexo_4_1_a_catalogo_de_eventos_canonicos.tex",
+      "destino": "04/anexos/logica/partes/02_anexo_4_1_a_catalogo_de_eventos_canonicos.tex",
+      "categoria": "anexos_4.1",
+      "sha256Origen": "01219923d2081dda4824ebb8ebe861e811a9d82584b8e0a3438e02e584daf200",
+      "sha256Destino": "01219923d2081dda4824ebb8ebe861e811a9d82584b8e0a3438e02e584daf200",
+      "adaptado": false
+    },
+    {
+      "rama": "arquitectura-alvaro",
+      "commit": "e55133c2f91806af03f393776256a2feea23faa7",
+      "origen": "04_arquitectura/entrega_2/latex/04_arquitectura_logica/anexos/partes/03_anexo_4_1_b_gobierno_de_la_integracion.tex",
+      "destino": "04/anexos/logica/partes/03_anexo_4_1_b_gobierno_de_la_integracion.tex",
+      "categoria": "anexos_4.1",
+      "sha256Origen": "68ecc87afc95509614babdde1cd8ba9044e63b31db925e1e54cc2d2c03f4d285",
+      "sha256Destino": "68ecc87afc95509614babdde1cd8ba9044e63b31db925e1e54cc2d2c03f4d285",
+      "adaptado": false
+    },
+    {
+      "rama": "arquitectura-alvaro",
+      "commit": "e55133c2f91806af03f393776256a2feea23faa7",
+      "origen": "04_arquitectura/entrega_2/latex/04_arquitectura_logica/anexos/partes/04_anexo_4_1_c_escenarios_de_carga_masiva.tex",
+      "destino": "04/anexos/logica/partes/04_anexo_4_1_c_escenarios_de_carga_masiva.tex",
+      "categoria": "anexos_4.1",
+      "sha256Origen": "146c2bedebddb69a889be28061ad5dd900cf46ca6dd3f4ebd50bf5556f511c68",
+      "sha256Destino": "146c2bedebddb69a889be28061ad5dd900cf46ca6dd3f4ebd50bf5556f511c68",
+      "adaptado": false
+    },
+    {
+      "rama": "arquitectura-alvaro",
+      "commit": "e55133c2f91806af03f393776256a2feea23faa7",
+      "origen": "04_arquitectura/entrega_2/latex/04_arquitectura_logica/anexos/partes/05_anexo_4_1_d_matriz_de_los_doce_modulos.tex",
+      "destino": "04/anexos/logica/partes/05_anexo_4_1_d_matriz_de_los_doce_modulos.tex",
+      "categoria": "anexos_4.1",
+      "sha256Origen": "e785ef6ef43efff0ab2172c413d3f17450b6d0d7c146d11dcff676baf691e170",
+      "sha256Destino": "e785ef6ef43efff0ab2172c413d3f17450b6d0d7c146d11dcff676baf691e170",
+      "adaptado": false
+    },
+    {
+      "rama": "arquitectura-alvaro",
+      "commit": "e55133c2f91806af03f393776256a2feea23faa7",
+      "origen": "04_arquitectura/entrega_2/latex/04_arquitectura_logica/anexos/partes/06_anexo_4_1_e_trazabilidad_funcional.tex",
+      "destino": "04/anexos/logica/partes/06_anexo_4_1_e_trazabilidad_funcional.tex",
+      "categoria": "anexos_4.1",
+      "sha256Origen": "8aca247c5ee64c67d4efa4949422bc55ce2d868fdfd31c8a925bfb3390b6bfbc",
+      "sha256Destino": "8aca247c5ee64c67d4efa4949422bc55ce2d868fdfd31c8a925bfb3390b6bfbc",
+      "adaptado": false
+    },
+    {
+      "rama": "arquitectura-alvaro",
+      "commit": "e55133c2f91806af03f393776256a2feea23faa7",
+      "origen": "04_arquitectura/entrega_2/latex/04_arquitectura_logica/anexos/partes/07_anexo_4_1_f_mapa_de_limites_de_contexto.tex",
+      "destino": "04/anexos/logica/partes/07_anexo_4_1_f_mapa_de_limites_de_contexto.tex",
+      "categoria": "anexos_4.1",
+      "sha256Origen": "81c3f825ba848e7f3180946217fe26e9e6a39fcccf74b3a8521c9f754bfba619",
+      "sha256Destino": "81c3f825ba848e7f3180946217fe26e9e6a39fcccf74b3a8521c9f754bfba619",
+      "adaptado": false
+    },
+    {
+      "rama": "arquitectura-alvaro",
+      "commit": "e55133c2f91806af03f393776256a2feea23faa7",
+      "origen": "04_arquitectura/entrega_2/latex/04_arquitectura_logica/anexos/partes/08_anexo_4_1_g_catalogo_de_interfaces_internas.tex",
+      "destino": "04/anexos/logica/partes/08_anexo_4_1_g_catalogo_de_interfaces_internas.tex",
+      "categoria": "anexos_4.1",
+      "sha256Origen": "5b030b004529ae5799112a7d45e9227b4d3382e053d96e8ce5ca531abd4bc694",
+      "sha256Destino": "5b030b004529ae5799112a7d45e9227b4d3382e053d96e8ce5ca531abd4bc694",
+      "adaptado": false
+    },
+    {
+      "rama": "arquitectura-alvaro",
+      "commit": "e55133c2f91806af03f393776256a2feea23faa7",
+      "origen": "04_arquitectura/entrega_2/latex/04_arquitectura_logica/anexos/partes/09_anexo_4_1_h_catalogo_de_interfaces_externas.tex",
+      "destino": "04/anexos/logica/partes/09_anexo_4_1_h_catalogo_de_interfaces_externas.tex",
+      "categoria": "anexos_4.1",
+      "sha256Origen": "a62da7fbd6546f19162f5a48f28a6b074ca104c0b4a702566b2db48c96304865",
+      "sha256Destino": "a62da7fbd6546f19162f5a48f28a6b074ca104c0b4a702566b2db48c96304865",
+      "adaptado": false
+    },
+    {
+      "rama": "arquitectura-alvaro",
+      "commit": "e55133c2f91806af03f393776256a2feea23faa7",
+      "origen": "04_arquitectura/entrega_2/latex/04_arquitectura_logica/anexos/partes/10_anexo_4_1_i_volumen_de_mensajes.tex",
+      "destino": "04/anexos/logica/partes/10_anexo_4_1_i_volumen_de_mensajes.tex",
+      "categoria": "anexos_4.1",
+      "sha256Origen": "763572491a58e66cc70467f85f50c2a9571053a71e6cc5d4ed5710015da30f0a",
+      "sha256Destino": "763572491a58e66cc70467f85f50c2a9571053a71e6cc5d4ed5710015da30f0a",
+      "adaptado": false
+    },
+    {
+      "rama": "arquitectura-alvaro",
+      "commit": "e55133c2f91806af03f393776256a2feea23faa7",
+      "origen": "04_arquitectura/entrega_2/latex/04_arquitectura_logica/anexos/partes/11_anexo_4_1_j_funciones_sin_conexion.tex",
+      "destino": "04/anexos/logica/partes/11_anexo_4_1_j_funciones_sin_conexion.tex",
+      "categoria": "anexos_4.1",
+      "sha256Origen": "650129582c6550df398f1121a278d1b0b975271b17166142a11f98dbe75fa3d3",
+      "sha256Destino": "650129582c6550df398f1121a278d1b0b975271b17166142a11f98dbe75fa3d3",
+      "adaptado": false
+    },
+    {
+      "rama": "arquitectura-alvaro",
+      "commit": "e55133c2f91806af03f393776256a2feea23faa7",
+      "origen": "04_arquitectura/entrega_2/latex/04_arquitectura_logica/anexos/partes/12_anexo_4_1_k_reglas_de_reconciliacion.tex",
+      "destino": "04/anexos/logica/partes/12_anexo_4_1_k_reglas_de_reconciliacion.tex",
+      "categoria": "anexos_4.1",
+      "sha256Origen": "e49151fa9ecb15f1243372b9559862c2c1ef48b53a620b00fc689b3d30c03fe8",
+      "sha256Destino": "e49151fa9ecb15f1243372b9559862c2c1ef48b53a620b00fc689b3d30c03fe8",
+      "adaptado": false
+    },
+    {
+      "rama": "arquitectura-alvaro",
+      "commit": "e55133c2f91806af03f393776256a2feea23faa7",
+      "origen": "04_arquitectura/entrega_2/latex/04_arquitectura_logica/anexos/partes/13_anexo_4_1_l_decisiones_del_numeral_16_1.tex",
+      "destino": "04/anexos/logica/partes/13_anexo_4_1_l_decisiones_del_numeral_16_1.tex",
+      "categoria": "anexos_4.1",
+      "sha256Origen": "aa19317a8b567f9f4ce52ffa5dd623b3e6c498143e37e6e213f9a23157bb1753",
+      "sha256Destino": "aa19317a8b567f9f4ce52ffa5dd623b3e6c498143e37e6e213f9a23157bb1753",
+      "adaptado": false
+    },
+    {
+      "rama": "arquitectura-alvaro",
+      "commit": "e55133c2f91806af03f393776256a2feea23faa7",
+      "origen": "04_arquitectura/entrega_2/latex/04_arquitectura_logica/anexos/partes/14_anexo_4_1_m_verificacion_de_continuidad_logica.tex",
+      "destino": "04/anexos/logica/partes/14_anexo_4_1_m_verificacion_de_continuidad_logica.tex",
+      "categoria": "anexos_4.1",
+      "sha256Origen": "67d326a54e90bb1ce5da1d9bac70faae62a926f2a7ac4374955113c7b9638f56",
+      "sha256Destino": "67d326a54e90bb1ce5da1d9bac70faae62a926f2a7ac4374955113c7b9638f56",
+      "adaptado": false
+    },
+    {
+      "rama": "arquitectura-alvaro",
+      "commit": "e55133c2f91806af03f393776256a2feea23faa7",
+      "origen": "04_arquitectura/entrega_2/latex/04_arquitectura_logica/anexos/partes/15_anexo_4_1_n_correspondencia_de_componentes_logicos.tex",
+      "destino": "04/anexos/logica/partes/15_anexo_4_1_n_correspondencia_de_componentes_logicos.tex",
+      "categoria": "anexos_4.1",
+      "sha256Origen": "1e605e353970cb5b986896346c8cb7e5652b60dc6b766896afe31878b3f1e0d1",
+      "sha256Destino": "1e605e353970cb5b986896346c8cb7e5652b60dc6b766896afe31878b3f1e0d1",
+      "adaptado": false
+    },
+    {
+      "rama": "arquitectura-alvaro",
+      "commit": "e55133c2f91806af03f393776256a2feea23faa7",
+      "origen": "04_arquitectura/entrega_2/latex/04_arquitectura_logica/anexos/partes/18_anexo_4_1_o_decisiones_logicas.tex",
+      "destino": "04/anexos/logica/partes/18_anexo_4_1_o_decisiones_logicas.tex",
+      "categoria": "anexos_4.1",
+      "sha256Origen": "98144b65c9c125c6b6177632a75cccb309652c86154806f98cb315c5612e4be9",
+      "sha256Destino": "98144b65c9c125c6b6177632a75cccb309652c86154806f98cb315c5612e4be9",
+      "adaptado": false
+    },
+    {
+      "rama": "arquitectura-alvaro",
+      "commit": "e55133c2f91806af03f393776256a2feea23faa7",
+      "origen": "04_arquitectura/entrega_2/latex/04_arquitectura_logica/anexos/partes/19_anexo_4_1_p_tecnologias_soporte.tex",
+      "destino": "04/anexos/logica/partes/19_anexo_4_1_p_tecnologias_soporte.tex",
+      "categoria": "anexos_4.1",
+      "sha256Origen": "1552127019a35d4ecc7af915f71d60f12df7ff783d70c806dc4e05872e8ae733",
+      "sha256Destino": "1552127019a35d4ecc7af915f71d60f12df7ff783d70c806dc4e05872e8ae733",
+      "adaptado": false
+    },
+    {
+      "rama": "arquitectura-alvaro",
+      "commit": "e55133c2f91806af03f393776256a2feea23faa7",
+      "origen": "04_arquitectura/entrega_2/latex/04_arquitectura_logica/anexos/partes/20_anexo_4_1_q_modelado_amenazas.tex",
+      "destino": "04/anexos/logica/partes/20_anexo_4_1_q_modelado_amenazas.tex",
+      "categoria": "anexos_4.1",
+      "sha256Origen": "85106a292fccf9e8da3f6898bb421437f15c915bb9b5973a9d377decf291dc8e",
+      "sha256Destino": "85106a292fccf9e8da3f6898bb421437f15c915bb9b5973a9d377decf291dc8e",
+      "adaptado": false
+    },
+    {
+      "rama": "arquitectura-alvaro",
+      "commit": "e55133c2f91806af03f393776256a2feea23faa7",
+      "origen": "04_arquitectura/entrega_2/latex/04_arquitectura_logica/anexos/partes/21_anexo_4_1_r_controles_seguridad.tex",
+      "destino": "04/anexos/logica/partes/21_anexo_4_1_r_controles_seguridad.tex",
+      "categoria": "anexos_4.1",
+      "sha256Origen": "e10a0643fc99ff82c5a0168d567069e4a4d15cf60dc62ac6561ed896961f945a",
+      "sha256Destino": "e10a0643fc99ff82c5a0168d567069e4a4d15cf60dc62ac6561ed896961f945a",
+      "adaptado": false
+    },
+    {
+      "rama": "arquitectura-alvaro",
+      "commit": "e55133c2f91806af03f393776256a2feea23faa7",
+      "origen": "04_arquitectura/entrega_2/latex/04_arquitectura_logica/anexos/partes/22_anexo_4_1_s_puntos_de_vista.tex",
+      "destino": "04/anexos/logica/partes/22_anexo_4_1_s_puntos_de_vista.tex",
+      "categoria": "anexos_4.1",
+      "sha256Origen": "b811f76b04a831f25a81c74aab6ba66dae7193e1295326f623d7c395889fc791",
+      "sha256Destino": "b811f76b04a831f25a81c74aab6ba66dae7193e1295326f623d7c395889fc791",
+      "adaptado": false
+    },
+    {
+      "rama": "arquitectura-alvaro",
+      "commit": "e55133c2f91806af03f393776256a2feea23faa7",
+      "origen": "04_arquitectura/entrega_2/latex/04_arquitectura_logica/anexos/partes/23_anexo_4_1_t_desempeno.tex",
+      "destino": "04/anexos/logica/partes/23_anexo_4_1_t_desempeno.tex",
+      "categoria": "anexos_4.1",
+      "sha256Origen": "1783185003814d16e7d3794f1f43b7a17687d4f6944749404ed4f2d25734e3af",
+      "sha256Destino": "1783185003814d16e7d3794f1f43b7a17687d4f6944749404ed4f2d25734e3af",
+      "adaptado": false
+    },
+    {
+      "rama": "arquitectura-alvaro",
+      "commit": "e55133c2f91806af03f393776256a2feea23faa7",
+      "origen": "04_arquitectura/entrega_2/latex/04_arquitectura_logica/anexos/partes/24_anexo_4_1_u_evidencia_documental.tex",
+      "destino": "04/anexos/logica/partes/24_anexo_4_1_u_evidencia_documental.tex",
+      "categoria": "anexos_4.1",
+      "sha256Origen": "b70cd4cbad6b0532da003fdd3274e9abb953c042d6d9edfa1992eff0e92388eb",
+      "sha256Destino": "b70cd4cbad6b0532da003fdd3274e9abb953c042d6d9edfa1992eff0e92388eb",
+      "adaptado": false
+    },
+    {
+      "rama": "arquitectura-alvaro",
+      "commit": "e55133c2f91806af03f393776256a2feea23faa7",
+      "origen": "04_arquitectura/entrega_2/latex/04_arquitectura_logica/anexos/partes/25_anexo_4_1_v_aceptacion_y_dependencias.tex",
+      "destino": "04/anexos/logica/partes/25_anexo_4_1_v_aceptacion_y_dependencias.tex",
+      "categoria": "anexos_4.1",
+      "sha256Origen": "09e5b4b9a91f355069eb8e69dce55732262f341a7381edde7342f93aff093bf7",
+      "sha256Destino": "09e5b4b9a91f355069eb8e69dce55732262f341a7381edde7342f93aff093bf7",
+      "adaptado": false
+    },
+    {
+      "rama": "arquitectura-alvaro",
+      "commit": "e55133c2f91806af03f393776256a2feea23faa7",
+      "origen": "04_arquitectura/entrega_2/latex/04_arquitectura_logica/anexos/partes/16_referencias.tex",
+      "destino": "04/anexos/logica/partes/16_referencias.tex",
+      "categoria": "anexos_4.1",
+      "sha256Origen": "79a1ddca44a54d4c502f69d1a0e2a42ed60eba20045de074f8397d151d58aaf5",
+      "sha256Destino": "79a1ddca44a54d4c502f69d1a0e2a42ed60eba20045de074f8397d151d58aaf5",
+      "adaptado": false
+    },
+    {
+      "rama": "arquitectura-alvaro",
+      "commit": "e55133c2f91806af03f393776256a2feea23faa7",
+      "origen": "04_arquitectura/entrega_2/latex/04_arquitectura_logica/anexos/partes/17_declaracion_de_uso_de_ia.tex",
+      "destino": "04/anexos/logica/partes/17_declaracion_de_uso_de_ia.tex",
+      "categoria": "anexos_4.1",
+      "sha256Origen": "dd1ad08664a0b6b78e936baebf821caec1dfc0bf0f0c50347088ff0a97255c6e",
+      "sha256Destino": "dd1ad08664a0b6b78e936baebf821caec1dfc0bf0f0c50347088ff0a97255c6e",
+      "adaptado": false
+    },
+    {
+      "rama": "arquitectura-alvaro",
+      "commit": "e55133c2f91806af03f393776256a2feea23faa7",
+      "origen": "04_arquitectura/entrega_2/latex/04_arquitectura_logica/anexos/contenido.tex",
+      "destino": "04/anexos/logica/contenido.tex",
+      "categoria": "ensamblador",
+      "sha256Origen": "a806af7725aad6a7bcd69cea993f2d14d72f01c44297d2a3fb24264b8c85ae7c",
+      "sha256Destino": "a806af7725aad6a7bcd69cea993f2d14d72f01c44297d2a3fb24264b8c85ae7c",
+      "adaptado": false
+    },
+    {
+      "rama": "Alex_LASECUELA",
+      "commit": "5c5e27059675651dc26f8028ffbaa310950558b0",
+      "origen": "SUBDOCUMENTO_4/Subdocumento_4_LateX/04_arquitectura_fisica/partes/02_0_arquitectura_fisica.tex",
+      "destino": "04/partes/4.2_fisica/02_0_arquitectura_fisica.tex",
+      "categoria": "cuerpo_4.2",
+      "sha256Origen": "7496b2e31031deea89f29d4b8ab24e9814a8dcebcfaa5490cdb7796f235f827b",
+      "sha256Destino": "b9db9e3af06cfd4bb224055fec1963c86aa7d1d4c77515e6216101b59bac8bcc",
+      "adaptado": true
+    },
+    {
+      "rama": "Alex_LASECUELA",
+      "commit": "5c5e27059675651dc26f8028ffbaa310950558b0",
+      "origen": "SUBDOCUMENTO_4/Subdocumento_4_LateX/04_arquitectura_fisica/partes/04_c_implementos.tex",
+      "destino": "04/partes/4.2_fisica/04_c_implementos.tex",
+      "categoria": "cuerpo_4.2",
+      "sha256Origen": "c2afc96d4d7367517512c9836dc8c5ec5c450b2d92c9640f16f9d41c9fb45980",
+      "sha256Destino": "c2afc96d4d7367517512c9836dc8c5ec5c450b2d92c9640f16f9d41c9fb45980",
+      "adaptado": false
+    },
+    {
+      "rama": "Alex_LASECUELA",
+      "commit": "5c5e27059675651dc26f8028ffbaa310950558b0",
+      "origen": "SUBDOCUMENTO_4/Subdocumento_4_LateX/04_arquitectura_fisica/partes/02_a_emplazamiento.tex",
+      "destino": "04/partes/4.2_fisica/02_a_emplazamiento.tex",
+      "categoria": "cuerpo_4.2",
+      "sha256Origen": "840dd3750d824b8692360acf072dce0a23afee2e02d1d16fbe9b5d6b12af8cfc",
+      "sha256Destino": "4e77b3d9d14d6a30254a94d43926033406cea4485b2207431131f44930303fa5",
+      "adaptado": true
+    },
+    {
+      "rama": "Alex_LASECUELA",
+      "commit": "5c5e27059675651dc26f8028ffbaa310950558b0",
+      "origen": "SUBDOCUMENTO_4/Subdocumento_4_LateX/04_arquitectura_fisica/partes/02_b_servicios_nube.tex",
+      "destino": "04/partes/4.2_fisica/02_b_servicios_nube.tex",
+      "categoria": "cuerpo_4.2",
+      "sha256Origen": "c52f7dc6dd635243faaa0b0d0944fc99331de1cb914bde2480e27de04cd7a2fe",
+      "sha256Destino": "efa5388de8c7fa02ef2505ea8c2a328347f238fe33af11226c6dfcb63d0c2c58",
+      "adaptado": true
+    },
+    {
+      "rama": "Alex_LASECUELA",
+      "commit": "5c5e27059675651dc26f8028ffbaa310950558b0",
+      "origen": "SUBDOCUMENTO_4/Subdocumento_4_LateX/04_arquitectura_fisica/partes/11_j_despliegue.tex",
+      "destino": "04/partes/4.2_fisica/11_j_despliegue.tex",
+      "categoria": "cuerpo_4.2",
+      "sha256Origen": "068f833d397c0d0153c5079da2213645f1cc1729af1174614cfc424aa08c13b9",
+      "sha256Destino": "282af1c6bb1e3dfadd2e3ac31614a6852985fbfafb2fda217ee3325f1ebc809d",
+      "adaptado": true
+    },
+    {
+      "rama": "Alex_LASECUELA",
+      "commit": "5c5e27059675651dc26f8028ffbaa310950558b0",
+      "origen": "SUBDOCUMENTO_4/Subdocumento_4_LateX/04_arquitectura_fisica/partes/02_c_conexiones.tex",
+      "destino": "04/partes/4.2_fisica/02_c_conexiones.tex",
+      "categoria": "cuerpo_4.2",
+      "sha256Origen": "9657e5ed9b805f49980de1742322b037d5dc163834f29da4ba38fef80f02419b",
+      "sha256Destino": "9657e5ed9b805f49980de1742322b037d5dc163834f29da4ba38fef80f02419b",
+      "adaptado": false
+    },
+    {
+      "rama": "Alex_LASECUELA",
+      "commit": "5c5e27059675651dc26f8028ffbaa310950558b0",
+      "origen": "SUBDOCUMENTO_4/Subdocumento_4_LateX/04_arquitectura_fisica/partes/12_k_dimensionamiento.tex",
+      "destino": "04/partes/4.2_fisica/12_k_dimensionamiento.tex",
+      "categoria": "cuerpo_4.2",
+      "sha256Origen": "8e16e47e570d559f1bb7c977f5389bdd2780befe28cbe27629528d4473167928",
+      "sha256Destino": "8e16e47e570d559f1bb7c977f5389bdd2780befe28cbe27629528d4473167928",
+      "adaptado": false
+    },
+    {
+      "rama": "Alex_LASECUELA",
+      "commit": "5c5e27059675651dc26f8028ffbaa310950558b0",
+      "origen": "SUBDOCUMENTO_4/Subdocumento_4_LateX/04_arquitectura_fisica/partes/05_d_sitio_principal.tex",
+      "destino": "04/partes/4.3_centros_de_datos/05_d_sitio_principal.tex",
+      "categoria": "cuerpo_4.3",
+      "sha256Origen": "32a19556ebe8c0051a8f772cfc11089b9ce54bfbc3386b7cef75edcd74d581d2",
+      "sha256Destino": "3c3aff1ff49219d14e4354148a03ed53129a1637b11c47b856d4b300f65e3efe",
+      "adaptado": true
+    },
+    {
+      "rama": "Alex_LASECUELA",
+      "commit": "5c5e27059675651dc26f8028ffbaa310950558b0",
+      "origen": "SUBDOCUMENTO_4/Subdocumento_4_LateX/04_arquitectura_fisica/partes/06_e_sitio_secundario.tex",
+      "destino": "04/partes/4.3_centros_de_datos/06_e_sitio_secundario.tex",
+      "categoria": "cuerpo_4.3",
+      "sha256Origen": "19391669ef2270a4e15d70bd50b57c59d171a6869a3c6f6237e55c0ee7a44263",
+      "sha256Destino": "034c6043efc2a4177e630843f921bc5adeda53aad0c53777f55237390c064ab6",
+      "adaptado": true
+    },
+    {
+      "rama": "Alex_LASECUELA",
+      "commit": "5c5e27059675651dc26f8028ffbaa310950558b0",
+      "origen": "SUBDOCUMENTO_4/Subdocumento_4_LateX/04_arquitectura_fisica/partes/14_m_decisiones_adr.tex",
+      "destino": "04/partes/4.2_fisica/14_m_decisiones_adr.tex",
+      "categoria": "complemento_fisico",
+      "sha256Origen": "54ff0d929c79c1991dc36ffea44fb461fced5f9c3f225c2d44704c41246c6aee",
+      "sha256Destino": "54ff0d929c79c1991dc36ffea44fb461fced5f9c3f225c2d44704c41246c6aee",
+      "adaptado": false
+    },
+    {
+      "rama": "Alex_LASECUELA",
+      "commit": "5c5e27059675651dc26f8028ffbaa310950558b0",
+      "origen": "SUBDOCUMENTO_4/Subdocumento_4_LateX/04_arquitectura_fisica/partes/17_referencias.tex",
+      "destino": "04/partes/4.2_fisica/17_referencias.tex",
+      "categoria": "complemento_fisico",
+      "sha256Origen": "2ac21ec3b96e0a79eb9f36b4afce14fd030831939de17438803a0303fba25ca8",
+      "sha256Destino": "2ac21ec3b96e0a79eb9f36b4afce14fd030831939de17438803a0303fba25ca8",
+      "adaptado": false
+    },
+    {
+      "rama": "Alex_LASECUELA",
+      "commit": "5c5e27059675651dc26f8028ffbaa310950558b0",
+      "origen": "SUBDOCUMENTO_4/Subdocumento_4_LateX/04_arquitectura_fisica/partes/15_anexo_t11.tex",
+      "destino": "04/formularios/T11/15_anexo_t11.tex",
+      "categoria": "formulario_T11",
+      "sha256Origen": "a29ce54d3db49bb262b1092d56f9438545e25247a198655ccb939f8419169195",
+      "sha256Destino": "a29ce54d3db49bb262b1092d56f9438545e25247a198655ccb939f8419169195",
+      "adaptado": false
+    },
+    {
+      "rama": "Alex_LASECUELA",
+      "commit": "5c5e27059675651dc26f8028ffbaa310950558b0",
+      "origen": "SUBDOCUMENTO_4/Subdocumento_4_LateX/04_arquitectura_fisica/partes/16_anexo_4b_memoria_calculo.tex",
+      "destino": "04/anexos/fisica/16_anexo_4b_memoria_calculo.tex",
+      "categoria": "anexo_4.B",
+      "sha256Origen": "fbeff8df840e3d94c0225a96ff8f94ed59a6a4dca50b5568bf2cc5651f68d824",
+      "sha256Destino": "fbeff8df840e3d94c0225a96ff8f94ed59a6a4dca50b5568bf2cc5651f68d824",
+      "adaptado": false
+    },
+    {
+      "rama": "Alex_LASECUELA",
+      "commit": "5c5e27059675651dc26f8028ffbaa310950558b0",
+      "origen": "SUBDOCUMENTO_4/Subdocumento_4_LateX/04_arquitectura_fisica/contenido.tex",
+      "destino": "04/partes/4.2_fisica/contenido.tex",
+      "categoria": "ensamblador",
+      "sha256Origen": "10cc09d2c412f746fd9e27cb4fae5bcd94ea8317db1cc2a7d5f06aa2e1d28d77",
+      "sha256Destino": "86c56a35a77e6f4fe655318fa6072a31185650dd2a552b49faf2f6dd09bfacc1",
+      "adaptado": true
+    },
+    {
+      "rama": "arquitectura-alvaro",
+      "commit": "e55133c2f91806af03f393776256a2feea23faa7",
+      "origen": "Diagramas/arquitectura_logica_actual/cambios laravel/ARQL-01_Vision_general.png",
+      "destino": "04/figuras/logica/cambios laravel/ARQL-01_Vision_general.png",
+      "categoria": "figura",
+      "sha256Origen": "2de9ec88c51e63305e5bdb2ab1e05340b50d0d22afe6441d0a8d04c54a83b7f5",
+      "sha256Destino": "2de9ec88c51e63305e5bdb2ab1e05340b50d0d22afe6441d0a8d04c54a83b7f5",
+      "adaptado": false
+    },
+    {
+      "rama": "arquitectura-alvaro",
+      "commit": "e55133c2f91806af03f393776256a2feea23faa7",
+      "origen": "Diagramas/arquitectura_logica_actual/ARQL-19_Vista_general_legible.pdf",
+      "destino": "04/figuras/logica/ARQL-19_Vista_general_legible.pdf",
+      "categoria": "figura",
+      "sha256Origen": "2e05db7b381bde3ab2a66bfa1ec812f5ecf78050a60c8b8515a6dcf8e8dc3981",
+      "sha256Destino": "2e05db7b381bde3ab2a66bfa1ec812f5ecf78050a60c8b8515a6dcf8e8dc3981",
+      "adaptado": false
+    },
+    {
+      "rama": "arquitectura-alvaro",
+      "commit": "e55133c2f91806af03f393776256a2feea23faa7",
+      "origen": "Diagramas/arquitectura_logica_actual/capas_recortes/ARQL-21_Recorte_Presentacion.png",
+      "destino": "04/figuras/logica/capas_recortes/ARQL-21_Recorte_Presentacion.png",
+      "categoria": "figura",
+      "sha256Origen": "2693dcb5c0f7d7bcec6a6e19e672bcb759ee011722e63f2f90b4af1881c4dc47",
+      "sha256Destino": "2693dcb5c0f7d7bcec6a6e19e672bcb759ee011722e63f2f90b4af1881c4dc47",
+      "adaptado": false
+    },
+    {
+      "rama": "arquitectura-alvaro",
+      "commit": "e55133c2f91806af03f393776256a2feea23faa7",
+      "origen": "Diagramas/arquitectura_logica_actual/capas_recortes/ARQL-22_Recorte_Borde.png",
+      "destino": "04/figuras/logica/capas_recortes/ARQL-22_Recorte_Borde.png",
+      "categoria": "figura",
+      "sha256Origen": "7c507d482d1b42a7862781fce9a811eeebe6645fb505fb85f2eda8bfc5161017",
+      "sha256Destino": "7c507d482d1b42a7862781fce9a811eeebe6645fb505fb85f2eda8bfc5161017",
+      "adaptado": false
+    },
+    {
+      "rama": "arquitectura-alvaro",
+      "commit": "e55133c2f91806af03f393776256a2feea23faa7",
+      "origen": "Diagramas/arquitectura_logica_actual/capas_recortes/ARQL-23_Recorte_Puertas.png",
+      "destino": "04/figuras/logica/capas_recortes/ARQL-23_Recorte_Puertas.png",
+      "categoria": "figura",
+      "sha256Origen": "2cd57182cfff0716028766043141731f1641636386ea7a4b2103c8b2d15c5278",
+      "sha256Destino": "2cd57182cfff0716028766043141731f1641636386ea7a4b2103c8b2d15c5278",
+      "adaptado": false
+    },
+    {
+      "rama": "arquitectura-alvaro",
+      "commit": "e55133c2f91806af03f393776256a2feea23faa7",
+      "origen": "Diagramas/arquitectura_logica_actual/ARQL-17_Acceso_local_24h.png",
+      "destino": "04/figuras/logica/ARQL-17_Acceso_local_24h.png",
+      "categoria": "figura",
+      "sha256Origen": "919c55e078238e773a2aff983a8496ba00968cd06eacc1243bf8f9dbcaee2db2",
+      "sha256Destino": "919c55e078238e773a2aff983a8496ba00968cd06eacc1243bf8f9dbcaee2db2",
+      "adaptado": false
+    },
+    {
+      "rama": "arquitectura-alvaro",
+      "commit": "e55133c2f91806af03f393776256a2feea23faa7",
+      "origen": "Diagramas/arquitectura_logica_actual/capas_recortes/ARQL-24_Recorte_Negocio.png",
+      "destino": "04/figuras/logica/capas_recortes/ARQL-24_Recorte_Negocio.png",
+      "categoria": "figura",
+      "sha256Origen": "dc848744f6ac2b98168d6ba72322de232e818a033e71111ccd94e1a93ec5faa7",
+      "sha256Destino": "dc848744f6ac2b98168d6ba72322de232e818a033e71111ccd94e1a93ec5faa7",
+      "adaptado": false
+    },
+    {
+      "rama": "arquitectura-alvaro",
+      "commit": "e55133c2f91806af03f393776256a2feea23faa7",
+      "origen": "Diagramas/arquitectura_logica_actual/capas_recortes/ARQL-25_Recorte_Integracion.png",
+      "destino": "04/figuras/logica/capas_recortes/ARQL-25_Recorte_Integracion.png",
+      "categoria": "figura",
+      "sha256Origen": "ce0cfc5de322f8c616649029c75caba23402deb5c9c06b37f62adc32590f98f6",
+      "sha256Destino": "ce0cfc5de322f8c616649029c75caba23402deb5c9c06b37f62adc32590f98f6",
+      "adaptado": false
+    },
+    {
+      "rama": "arquitectura-alvaro",
+      "commit": "e55133c2f91806af03f393776256a2feea23faa7",
+      "origen": "Diagramas/arquitectura_logica_actual/ARQL-15_Pedido_con_conexion.png",
+      "destino": "04/figuras/logica/ARQL-15_Pedido_con_conexion.png",
+      "categoria": "figura",
+      "sha256Origen": "1b547a6d6a4050280fef1b1a96bb3a9499db58f29007dc2e437e2604ff62f159",
+      "sha256Destino": "1b547a6d6a4050280fef1b1a96bb3a9499db58f29007dc2e437e2604ff62f159",
+      "adaptado": false
+    },
+    {
+      "rama": "arquitectura-alvaro",
+      "commit": "e55133c2f91806af03f393776256a2feea23faa7",
+      "origen": "Diagramas/arquitectura_logica_actual/ARQL-16_Pedido_sin_conexion.png",
+      "destino": "04/figuras/logica/ARQL-16_Pedido_sin_conexion.png",
+      "categoria": "figura",
+      "sha256Origen": "cc56f33f1236cb8bba08a60125ee899110c07fa4ca9af6bb779b37863d97907f",
+      "sha256Destino": "cc56f33f1236cb8bba08a60125ee899110c07fa4ca9af6bb779b37863d97907f",
+      "adaptado": false
+    },
+    {
+      "rama": "arquitectura-alvaro",
+      "commit": "e55133c2f91806af03f393776256a2feea23faa7",
+      "origen": "Diagramas/arquitectura_logica_actual/capas_recortes/ARQL-26_Recorte_Datos.png",
+      "destino": "04/figuras/logica/capas_recortes/ARQL-26_Recorte_Datos.png",
+      "categoria": "figura",
+      "sha256Origen": "a59ce2406223a76ee407ff76447999e54500f60c6882485395a4e7b82afdc7e0",
+      "sha256Destino": "a59ce2406223a76ee407ff76447999e54500f60c6882485395a4e7b82afdc7e0",
+      "adaptado": false
+    },
+    {
+      "rama": "arquitectura-alvaro",
+      "commit": "e55133c2f91806af03f393776256a2feea23faa7",
+      "origen": "Diagramas/arquitectura_logica_actual/capas_recortes/ARQL-27_Recorte_Seguridad.png",
+      "destino": "04/figuras/logica/capas_recortes/ARQL-27_Recorte_Seguridad.png",
+      "categoria": "figura",
+      "sha256Origen": "eb37a66d715856b9428d24f324450068406f19c0f07d6c009fb040676f0f7629",
+      "sha256Destino": "eb37a66d715856b9428d24f324450068406f19c0f07d6c009fb040676f0f7629",
+      "adaptado": false
+    },
+    {
+      "rama": "arquitectura-alvaro",
+      "commit": "e55133c2f91806af03f393776256a2feea23faa7",
+      "origen": "Diagramas/arquitectura_logica_actual/capas_recortes/ARQL-28_Recorte_Observabilidad.png",
+      "destino": "04/figuras/logica/capas_recortes/ARQL-28_Recorte_Observabilidad.png",
+      "categoria": "figura",
+      "sha256Origen": "1dd730e504119ce4b2033c4c5aad2ecf4b3414e4132d31bb8597bd093a332e09",
+      "sha256Destino": "1dd730e504119ce4b2033c4c5aad2ecf4b3414e4132d31bb8597bd093a332e09",
+      "adaptado": false
+    },
+    {
+      "rama": "arquitectura-alvaro",
+      "commit": "e55133c2f91806af03f393776256a2feea23faa7",
+      "origen": "Diagramas/arquitectura_logica_actual/ARQL-18_Dominio_trazabilidad.png",
+      "destino": "04/figuras/logica/ARQL-18_Dominio_trazabilidad.png",
+      "categoria": "figura",
+      "sha256Origen": "80df9386a41229d5b8c7fd734025bc64621893701c7b1ce69cb055de86d27f2e",
+      "sha256Destino": "80df9386a41229d5b8c7fd734025bc64621893701c7b1ce69cb055de86d27f2e",
+      "adaptado": false
+    },
+    {
+      "rama": "Alex_LASECUELA",
+      "commit": "5c5e27059675651dc26f8028ffbaa310950558b0",
+      "origen": "SUBDOCUMENTO_4/Subdocumento_4_LateX/04_arquitectura_fisica/figuras/Arquitectura_Fisica_General.png",
+      "destino": "04/figuras/fisica/Arquitectura_Fisica_General.png",
+      "categoria": "figura",
+      "sha256Origen": "25f22f0b647f13fd196c1ec8f370dc0ddab38c36a4a533493975516014121104",
+      "sha256Destino": "25f22f0b647f13fd196c1ec8f370dc0ddab38c36a4a533493975516014121104",
+      "adaptado": false
+    },
+    {
+      "rama": "Alex_LASECUELA",
+      "commit": "5c5e27059675651dc26f8028ffbaa310950558b0",
+      "origen": "SUBDOCUMENTO_4/Subdocumento_4_LateX/04_arquitectura_fisica/figuras/Arquitectura_Fisica_Crossdocking.png",
+      "destino": "04/figuras/fisica/Arquitectura_Fisica_Crossdocking.png",
+      "categoria": "figura",
+      "sha256Origen": "1ce6b0429cb96729945b21c56e201ba7078859e09d04ecc5188e823b6e902751",
+      "sha256Destino": "1ce6b0429cb96729945b21c56e201ba7078859e09d04ecc5188e823b6e902751",
+      "adaptado": false
+    },
+    {
+      "rama": "Alex_LASECUELA",
+      "commit": "5c5e27059675651dc26f8028ffbaa310950558b0",
+      "origen": "SUBDOCUMENTO_4/Subdocumento_4_LateX/04_arquitectura_fisica/figuras/Arquitectura_Fisica_Nube.png",
+      "destino": "04/figuras/fisica/Arquitectura_Fisica_Nube.png",
+      "categoria": "figura",
+      "sha256Origen": "1802a5152f1e3c3e927ca67605024ea843a40d15f45f1f2b284aad403c5786a7",
+      "sha256Destino": "1802a5152f1e3c3e927ca67605024ea843a40d15f45f1f2b284aad403c5786a7",
+      "adaptado": false
+    },
+    {
+      "rama": "Alex_LASECUELA",
+      "commit": "5c5e27059675651dc26f8028ffbaa310950558b0",
+      "origen": "SUBDOCUMENTO_4/Subdocumento_4_LateX/04_arquitectura_fisica/figuras/ambientes/amb_preproduccion.png",
+      "destino": "04/figuras/fisica/ambientes/amb_preproduccion.png",
+      "categoria": "figura",
+      "sha256Origen": "1e7158cf0f42740617f2cc0cecc14b816c648b9ba37a706636b9cf69ec1b782b",
+      "sha256Destino": "1e7158cf0f42740617f2cc0cecc14b816c648b9ba37a706636b9cf69ec1b782b",
+      "adaptado": false
+    },
+    {
+      "rama": "Alex_LASECUELA",
+      "commit": "5c5e27059675651dc26f8028ffbaa310950558b0",
+      "origen": "SUBDOCUMENTO_4/Subdocumento_4_LateX/04_arquitectura_fisica/figuras/ambientes/amb_produccion.png",
+      "destino": "04/figuras/fisica/ambientes/amb_produccion.png",
+      "categoria": "figura",
+      "sha256Origen": "af701bdbf7cdeba4c6c06a777c164dc8f16cd9b474b7176c8b120b980c9bf286",
+      "sha256Destino": "af701bdbf7cdeba4c6c06a777c164dc8f16cd9b474b7176c8b120b980c9bf286",
+      "adaptado": false
+    },
+    {
+      "rama": "Alex_LASECUELA",
+      "commit": "5c5e27059675651dc26f8028ffbaa310950558b0",
+      "origen": "SUBDOCUMENTO_4/Subdocumento_4_LateX/04_arquitectura_fisica/figuras/ambientes/amb_desarrollo.png",
+      "destino": "04/figuras/fisica/ambientes/amb_desarrollo.png",
+      "categoria": "figura",
+      "sha256Origen": "8f0d851d78310e50a16fa7762d7bb98cd90d59df34cc8e24774c2a219ef202b8",
+      "sha256Destino": "8f0d851d78310e50a16fa7762d7bb98cd90d59df34cc8e24774c2a219ef202b8",
+      "adaptado": false
+    },
+    {
+      "rama": "Alex_LASECUELA",
+      "commit": "5c5e27059675651dc26f8028ffbaa310950558b0",
+      "origen": "SUBDOCUMENTO_4/Subdocumento_4_LateX/04_arquitectura_fisica/figuras/ambientes/amb_qa.png",
+      "destino": "04/figuras/fisica/ambientes/amb_qa.png",
+      "categoria": "figura",
+      "sha256Origen": "7f03b399b02e43562d4d4f3f519ac66af9a0ab0af8fd437a2053eda70f79e3d0",
+      "sha256Destino": "7f03b399b02e43562d4d4f3f519ac66af9a0ab0af8fd437a2053eda70f79e3d0",
+      "adaptado": false
+    },
+    {
+      "rama": "Alex_LASECUELA",
+      "commit": "5c5e27059675651dc26f8028ffbaa310950558b0",
+      "origen": "SUBDOCUMENTO_4/Subdocumento_4_LateX/04_arquitectura_fisica/figuras/ambientes/amb_recuperacion.png",
+      "destino": "04/figuras/fisica/ambientes/amb_recuperacion.png",
+      "categoria": "figura",
+      "sha256Origen": "ac90c4a02571bb0e3d2506c8255447f4fbbcb8ecc51febff23cf58fe3e149cbc",
+      "sha256Destino": "ac90c4a02571bb0e3d2506c8255447f4fbbcb8ecc51febff23cf58fe3e149cbc",
+      "adaptado": false
+    },
+    {
+      "rama": "Alex_LASECUELA",
+      "commit": "5c5e27059675651dc26f8028ffbaa310950558b0",
+      "origen": "SUBDOCUMENTO_4/Subdocumento_4_LateX/04_arquitectura_fisica/figuras/Arquitectura_Fisica_CD_Talca.png",
+      "destino": "04/figuras/centros_de_datos/Arquitectura_Fisica_CD_Talca.png",
+      "categoria": "figura",
+      "sha256Origen": "5ddbca7e2a3d46aad8c96eb6e391c61cefdf505276b06b23790c8f35b53ca528",
+      "sha256Destino": "5ddbca7e2a3d46aad8c96eb6e391c61cefdf505276b06b23790c8f35b53ca528",
+      "adaptado": false
+    },
+    {
+      "rama": "Alex_LASECUELA",
+      "commit": "5c5e27059675651dc26f8028ffbaa310950558b0",
+      "origen": "SUBDOCUMENTO_4/Subdocumento_4_LateX/04_arquitectura_fisica/figuras/Racks_CD_Talca.png",
+      "destino": "04/figuras/centros_de_datos/Racks_CD_Talca.png",
+      "categoria": "figura",
+      "sha256Origen": "2a64303130a32e29f156f964b264c13db690f9a5f7b19c59be43e444dc1b6f2a",
+      "sha256Destino": "2a64303130a32e29f156f964b264c13db690f9a5f7b19c59be43e444dc1b6f2a",
+      "adaptado": false
+    },
+    {
+      "rama": "Alex_LASECUELA",
+      "commit": "5c5e27059675651dc26f8028ffbaa310950558b0",
+      "origen": "SUBDOCUMENTO_4/Subdocumento_4_LateX/04_arquitectura_fisica/figuras/Recinto_CD_Talca.png",
+      "destino": "04/figuras/centros_de_datos/Recinto_CD_Talca.png",
+      "categoria": "figura",
+      "sha256Origen": "1f34c901cf7fb7129cb093008ecb8578482c0e28c148bea55fd3dd8c89b284ae",
+      "sha256Destino": "1f34c901cf7fb7129cb093008ecb8578482c0e28c148bea55fd3dd8c89b284ae",
+      "adaptado": false
+    },
+    {
+      "rama": "Alex_LASECUELA",
+      "commit": "5c5e27059675651dc26f8028ffbaa310950558b0",
+      "origen": "SUBDOCUMENTO_4/Subdocumento_4_LateX/04_arquitectura_fisica/figuras/Arquitectura_Fisica_CD_Concepcion.png",
+      "destino": "04/figuras/centros_de_datos/Arquitectura_Fisica_CD_Concepcion.png",
+      "categoria": "figura",
+      "sha256Origen": "dc89deea9bdab6c1ce68fcbd07e82cd0860d7899e1c6956570f4950119d7a2f4",
+      "sha256Destino": "dc89deea9bdab6c1ce68fcbd07e82cd0860d7899e1c6956570f4950119d7a2f4",
+      "adaptado": false
+    },
+    {
+      "rama": "arquitectura-alvaro",
+      "commit": "e55133c2f91806af03f393776256a2feea23faa7",
+      "origen": "Diagramas/arquitectura_logica_actual/ARQL-19_Vista_general_legible.svg",
+      "destino": "04/figuras/fuentes/logica/ARQL-19_Vista_general_legible.svg",
+      "categoria": "fuente_editable_figura",
+      "sha256Origen": "7008f2bd1305013f65c28a50e763174e97ccbfd3b329c3c87d4279f660415678",
+      "sha256Destino": "7008f2bd1305013f65c28a50e763174e97ccbfd3b329c3c87d4279f660415678",
+      "adaptado": false
+    },
+    {
+      "rama": "Alex_LASECUELA",
+      "commit": "5c5e27059675651dc26f8028ffbaa310950558b0",
+      "origen": "SUBDOCUMENTO_4/Subdocumento_4_LateX/04_arquitectura_fisica/figuras/fuentes/Arquitectura_Fisica_General.drawio",
+      "destino": "04/figuras/fuentes/fisica/Arquitectura_Fisica_General.drawio",
+      "categoria": "fuente_editable_figura",
+      "sha256Origen": "ec6e48b4dea1d9e600a31ac449e63128a7e5705f830788277edb3b53f9474efe",
+      "sha256Destino": "ec6e48b4dea1d9e600a31ac449e63128a7e5705f830788277edb3b53f9474efe",
+      "adaptado": false
+    },
+    {
+      "rama": "Alex_LASECUELA",
+      "commit": "5c5e27059675651dc26f8028ffbaa310950558b0",
+      "origen": "SUBDOCUMENTO_4/Subdocumento_4_LateX/04_arquitectura_fisica/figuras/fuentes/Arquitectura_Fisica_Crossdocking.drawio",
+      "destino": "04/figuras/fuentes/fisica/Arquitectura_Fisica_Crossdocking.drawio",
+      "categoria": "fuente_editable_figura",
+      "sha256Origen": "63a92a017bfa38b36eefb8a460a2f6cfe88b12ab2211dc46dec43112ddd2cd29",
+      "sha256Destino": "63a92a017bfa38b36eefb8a460a2f6cfe88b12ab2211dc46dec43112ddd2cd29",
+      "adaptado": false
+    },
+    {
+      "rama": "Alex_LASECUELA",
+      "commit": "5c5e27059675651dc26f8028ffbaa310950558b0",
+      "origen": "SUBDOCUMENTO_4/Subdocumento_4_LateX/04_arquitectura_fisica/figuras/fuentes/Arquitectura_Fisica_Nube.drawio",
+      "destino": "04/figuras/fuentes/fisica/Arquitectura_Fisica_Nube.drawio",
+      "categoria": "fuente_editable_figura",
+      "sha256Origen": "ba4e9b3b7ef6fc785723bd4e93e77fff84c2f924ef3c576fd45b777d384994bc",
+      "sha256Destino": "ba4e9b3b7ef6fc785723bd4e93e77fff84c2f924ef3c576fd45b777d384994bc",
+      "adaptado": false
+    },
+    {
+      "rama": "Alex_LASECUELA",
+      "commit": "5c5e27059675651dc26f8028ffbaa310950558b0",
+      "origen": "SUBDOCUMENTO_4/Subdocumento_4_LateX/04_arquitectura_fisica/figuras/fuentes/Arquitectura_Fisica_CD_Talca.drawio",
+      "destino": "04/figuras/fuentes/fisica/Arquitectura_Fisica_CD_Talca.drawio",
+      "categoria": "fuente_editable_figura",
+      "sha256Origen": "48335a96c4427573ab2b863d0625c6cb702cea02ce001217e5e936a59361f11e",
+      "sha256Destino": "48335a96c4427573ab2b863d0625c6cb702cea02ce001217e5e936a59361f11e",
+      "adaptado": false
+    },
+    {
+      "rama": "Alex_LASECUELA",
+      "commit": "5c5e27059675651dc26f8028ffbaa310950558b0",
+      "origen": "SUBDOCUMENTO_4/Subdocumento_4_LateX/04_arquitectura_fisica/figuras/fuentes/Racks_CD_Talca.drawio",
+      "destino": "04/figuras/fuentes/fisica/Racks_CD_Talca.drawio",
+      "categoria": "fuente_editable_figura",
+      "sha256Origen": "d79195af4a05a64963d25abc970ca70ec38463ceecbfac6db19012f4da04ff3e",
+      "sha256Destino": "d79195af4a05a64963d25abc970ca70ec38463ceecbfac6db19012f4da04ff3e",
+      "adaptado": false
+    },
+    {
+      "rama": "Alex_LASECUELA",
+      "commit": "5c5e27059675651dc26f8028ffbaa310950558b0",
+      "origen": "SUBDOCUMENTO_4/Subdocumento_4_LateX/04_arquitectura_fisica/figuras/fuentes/Recinto_CD_Talca.drawio",
+      "destino": "04/figuras/fuentes/fisica/Recinto_CD_Talca.drawio",
+      "categoria": "fuente_editable_figura",
+      "sha256Origen": "ae66f394a5ed42badeb25cbab0808bd39fda05c83a1ce8243d5cd20aeb593b57",
+      "sha256Destino": "ae66f394a5ed42badeb25cbab0808bd39fda05c83a1ce8243d5cd20aeb593b57",
+      "adaptado": false
+    },
+    {
+      "rama": "Alex_LASECUELA",
+      "commit": "5c5e27059675651dc26f8028ffbaa310950558b0",
+      "origen": "SUBDOCUMENTO_4/Subdocumento_4_LateX/04_arquitectura_fisica/figuras/fuentes/Arquitectura_Fisica_CD_Concepcion.drawio",
+      "destino": "04/figuras/fuentes/fisica/Arquitectura_Fisica_CD_Concepcion.drawio",
+      "categoria": "fuente_editable_figura",
+      "sha256Origen": "dc1fbcec657c5eee20436aa289e2d6806100899abaa91ec0a0623dbeabed812b",
+      "sha256Destino": "dc1fbcec657c5eee20436aa289e2d6806100899abaa91ec0a0623dbeabed812b",
+      "adaptado": false
+    },
+    {
+      "rama": "Alex_LASECUELA",
+      "commit": "5c5e27059675651dc26f8028ffbaa310950558b0",
+      "origen": "SUBDOCUMENTO_4/Diagramas/Ambientes/A1_Ambiente_Desarrollo.drawio",
+      "destino": "04/figuras/fuentes/fisica/A1_Ambiente_Desarrollo.drawio",
+      "categoria": "fuente_editable_figura",
+      "sha256Origen": "0b7195deb15e89356b7987e1373cda96c25053ab736327af8b6b1954eb27c5ad",
+      "sha256Destino": "0b7195deb15e89356b7987e1373cda96c25053ab736327af8b6b1954eb27c5ad",
+      "adaptado": false
+    },
+    {
+      "rama": "Alex_LASECUELA",
+      "commit": "5c5e27059675651dc26f8028ffbaa310950558b0",
+      "origen": "SUBDOCUMENTO_4/Diagramas/Ambientes/A2_Ambiente_QA.drawio",
+      "destino": "04/figuras/fuentes/fisica/A2_Ambiente_QA.drawio",
+      "categoria": "fuente_editable_figura",
+      "sha256Origen": "26353b1512f782c8e86c67e434825f3c9d70e9c7a8bb416891169203ef4bcf10",
+      "sha256Destino": "26353b1512f782c8e86c67e434825f3c9d70e9c7a8bb416891169203ef4bcf10",
+      "adaptado": false
+    },
+    {
+      "rama": "Alex_LASECUELA",
+      "commit": "5c5e27059675651dc26f8028ffbaa310950558b0",
+      "origen": "SUBDOCUMENTO_4/Diagramas/Ambientes/A3_Ambiente_Preproduccion.drawio",
+      "destino": "04/figuras/fuentes/fisica/A3_Ambiente_Preproduccion.drawio",
+      "categoria": "fuente_editable_figura",
+      "sha256Origen": "d7319a82455ca9fef03c36212046856fe9349703680bd21e1aab9e2159529495",
+      "sha256Destino": "d7319a82455ca9fef03c36212046856fe9349703680bd21e1aab9e2159529495",
+      "adaptado": false
+    },
+    {
+      "rama": "Alex_LASECUELA",
+      "commit": "5c5e27059675651dc26f8028ffbaa310950558b0",
+      "origen": "SUBDOCUMENTO_4/Diagramas/Ambientes/A4_Ambiente_Produccion.drawio",
+      "destino": "04/figuras/fuentes/fisica/A4_Ambiente_Produccion.drawio",
+      "categoria": "fuente_editable_figura",
+      "sha256Origen": "2fe929fe0fae414c8ae8bd7e4c610e45a45d7fb9522530cb6486955b93b7f4b0",
+      "sha256Destino": "2fe929fe0fae414c8ae8bd7e4c610e45a45d7fb9522530cb6486955b93b7f4b0",
+      "adaptado": false
+    },
+    {
+      "rama": "Alex_LASECUELA",
+      "commit": "5c5e27059675651dc26f8028ffbaa310950558b0",
+      "origen": "SUBDOCUMENTO_4/Diagramas/Ambientes/A5_Ambiente_Recuperacion_Desastres.drawio",
+      "destino": "04/figuras/fuentes/fisica/A5_Ambiente_Recuperacion_Desastres.drawio",
+      "categoria": "fuente_editable_figura",
+      "sha256Origen": "9972a6551d2b070253de89c661674e9e80b4ce786ca52d5b2ec3d4d58dd368e3",
+      "sha256Destino": "9972a6551d2b070253de89c661674e9e80b4ce786ca52d5b2ec3d4d58dd368e3",
+      "adaptado": false
+    },
+    {
+      "rama": "arquitectura-alvaro",
+      "commit": "e55133c2f91806af03f393776256a2feea23faa7",
+      "origen": "Productos/plantilla-latex/lafrox.cls",
+      "destino": "00/plantilla/logica/lafrox.cls",
+      "categoria": "plantilla",
+      "sha256Origen": "ad73405c61264c613b0a17d8157acb8708e74f751d8de0d3d0f24689abd5a33a",
+      "sha256Destino": "ad73405c61264c613b0a17d8157acb8708e74f751d8de0d3d0f24689abd5a33a",
+      "adaptado": false
+    },
+    {
+      "rama": "arquitectura-alvaro",
+      "commit": "e55133c2f91806af03f393776256a2feea23faa7",
+      "origen": "Productos/plantilla-latex/lafrox-portada.tex",
+      "destino": "00/plantilla/logica/lafrox-portada.tex",
+      "categoria": "plantilla",
+      "sha256Origen": "a2dfba297d311c4bf01557f0bdc9b296d37998eec74bb7b4c007da3980a12dab",
+      "sha256Destino": "a2dfba297d311c4bf01557f0bdc9b296d37998eec74bb7b4c007da3980a12dab",
+      "adaptado": false
+    },
+    {
+      "rama": "Alex_LASECUELA",
+      "commit": "5c5e27059675651dc26f8028ffbaa310950558b0",
+      "origen": "SUBDOCUMENTO_4/Subdocumento_4_LateX/lafrox.cls",
+      "destino": "00/plantilla/fisica/lafrox.cls",
+      "categoria": "plantilla",
+      "sha256Origen": "6d0d73257373edf71bb4e922a5b11c831747997a2c5acf3ff9cb169f2255e63f",
+      "sha256Destino": "6d0d73257373edf71bb4e922a5b11c831747997a2c5acf3ff9cb169f2255e63f",
+      "adaptado": false
+    },
+    {
+      "rama": "Alex_LASECUELA",
+      "commit": "5c5e27059675651dc26f8028ffbaa310950558b0",
+      "origen": "SUBDOCUMENTO_4/Subdocumento_4_LateX/lafrox-portada.tex",
+      "destino": "00/plantilla/fisica/lafrox-portada.tex",
+      "categoria": "plantilla",
+      "sha256Origen": "a2dfba297d311c4bf01557f0bdc9b296d37998eec74bb7b4c007da3980a12dab",
+      "sha256Destino": "a2dfba297d311c4bf01557f0bdc9b296d37998eec74bb7b4c007da3980a12dab",
+      "adaptado": false
+    },
+    {
+      "rama": "arquitectura-alvaro",
+      "commit": "e55133c2f91806af03f393776256a2feea23faa7",
+      "origen": "04_arquitectura/entrega_2/latex/anexos_4.1.tex",
+      "destino": "04/anexos_logica.tex",
+      "categoria": "raiz_independiente",
+      "sha256Origen": "bc2e98cb2c9c4eab322e6a3588dc1ab5017adbf41c0d7fee4ade3f8330b75f45",
+      "sha256Destino": "23bf482ba3fa9ee7093b111c3cf41ad14792ec9d33785d6700b15ad070a0e905",
+      "adaptado": true
+    },
+    {
+      "rama": "Alex_LASECUELA",
+      "commit": "5c5e27059675651dc26f8028ffbaa310950558b0",
+      "origen": "SUBDOCUMENTO_4/Subdocumento_4_LateX/LAFROX-Formulario-T-11.tex",
+      "destino": "04/formulario_T11.tex",
+      "categoria": "raiz_independiente",
+      "sha256Origen": "926042b11c0b8a0c7a37c84e57c6ee82d6e766fc170ebb64fb818a630dc66c1c",
+      "sha256Destino": "7258b36b75e6da0a6b70fa12b77eb547da144a36002355c8f8e82ac3b71b82c1",
+      "adaptado": true
+    },
+    {
+      "rama": "Alex_LASECUELA",
+      "commit": "5c5e27059675651dc26f8028ffbaa310950558b0",
+      "origen": "SUBDOCUMENTO_4/Subdocumento_4_LateX/LAFROX-Subdocumento4-Anexos.tex",
+      "destino": "04/anexo_4B.tex",
+      "categoria": "raiz_independiente",
+      "sha256Origen": "6ba07fc8b41b16832e8065dfba88ca30664e056f7e4a2677b1a86f44b700150b",
+      "sha256Destino": "121ae684305af3041a75d9f4658e0ecf75a7c066ded8c64117777f7f55f624c9",
+      "adaptado": true
+    }
+  ],
+  "ensambladoresOriginales": [
+    {
+      "rama": "logica",
+      "commit": "e55133c2f91806af03f393776256a2feea23faa7",
+      "origen": "main.tex",
+      "sha256": "6e845eb860c7239ba50bfb3518301bbe96a279af92f3f95c3dbb144565a64181"
+    },
+    {
+      "rama": "fisica",
+      "commit": "5c5e27059675651dc26f8028ffbaa310950558b0",
+      "origen": "SUBDOCUMENTO_4/Subdocumento_4_LateX/main.tex",
+      "sha256": "305ef9b5de12dc8467c94e80b7e6402045bd44f03a3b6ae1e9168f59433044e3"
+    },
+    {
+      "rama": "logica",
+      "commit": "e55133c2f91806af03f393776256a2feea23faa7",
+      "origen": "04_arquitectura/entrega_2/latex/04_arquitectura_logica/contenido.tex",
+      "sha256": "cc60a1ad22784a30d0d14239b0683da9c8e03240becd9c338f7e883b815fff61"
+    },
+    {
+      "rama": "fisica",
+      "commit": "5c5e27059675651dc26f8028ffbaa310950558b0",
+      "origen": "SUBDOCUMENTO_4/Subdocumento_4_LateX/04_arquitectura_fisica/contenido.tex",
+      "sha256": "10cc09d2c412f746fd9e27cb4fae5bcd94ea8317db1cc2a7d5f06aa2e1d28d77"
+    }
+  ],
+  "conteos": {
+    "cuerpoLogico": 24,
+    "anexosLogicos": 26,
+    "anexosA_V": 22,
+    "fragmentosFisicaCentrosYComplementos": 13,
+    "figuras": {
+      "logica": 14,
+      "fisica": 12
+    }
+  },
+  "sha256ConcatenacionOriginal": {
+    "logica": "93f002e10dd9027ea92274630de37ea80575c7f4ce8b316b3838de4d65a56ba6",
+    "anexos_logica": "bca4aa64cfd37655a623254cffb2cc93c0288521107a6df92b2c9d99688c7d9c",
+    "fisica": "1087c3a5059290695bdd78a808c3e69bf4112631adf2c4f343bc40a53fa00114",
+    "centros_de_datos": "a3292c49c516b896d35f816faa140b13fff3ca4da1869012e086602997db7137",
+    "complementos_fisicos": "be5f3d1fe276fd3df6d03c1eb39c4177dc89a9f5c74f0eb8fcead4b0ebd6b1ce"
+  },
+  "ajustesPermitidos": [
+    "Rutas de figuras",
+    "Rutas de importación",
+    "Raíces y metadatos de compilación",
+    "Espacios de nombres PDF para evitar destinos duplicados"
+  ],
+  "contenidoTecnicoAlterado": false,
+  "trasladoMain": "00/trazabilidad/TRASLADO_MAIN.md",
+  "registrosRetirados": [
+    {
+      "rama": "arquitectura-alvaro",
+      "commit": "e55133c2f91806af03f393776256a2feea23faa7",
+      "origen": "main.tex",
+      "destino": "main_logica.tex",
+      "categoria": "raiz_independiente",
+      "sha256Origen": "6e845eb860c7239ba50bfb3518301bbe96a279af92f3f95c3dbb144565a64181",
+      "sha256Destino": "dc4d5de9f4d032ac03ffa304538b0f4db220e7c31f5738a5460cfc55559035ba",
+      "adaptado": true,
+      "destinoAntesDelTraslado": "04/main_logica.tex",
+      "motivoRetiro": "Salida independiente redundante; 4.1 permanece en main.tex",
+      "respaldo": "D:/Usuario/Documents/Proyecto_Lafrox/respaldos/retiro_4.1_independiente_20261001"
+    }
+  ]
+}

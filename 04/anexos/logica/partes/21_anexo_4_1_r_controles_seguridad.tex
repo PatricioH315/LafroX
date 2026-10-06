@@ -1,0 +1,32 @@
+\clearpage
+\section*{Anexo 4-R --- Controles de seguridad y evidencia}
+\phantomsection
+\label{anx:R}
+\addcontentsline{toc}{section}{Anexo 4-R --- Controles de seguridad y evidencia}
+Esta matriz vincula controles de ISO/\allowbreak IEC 27001:2022, Anexo A, y su guía ISO/\allowbreak IEC 27002:2022 con la implementación lógica y la evidencia prevista por RT-11.05 (Bases Técnicas Transversales, cap. 11, p. 23). La numeración es un identificador de control, no una declaración de certificación. El sistema de gestión conserva además evaluación de riesgos y declaración de aplicabilidad. La política Zero Trust se fundamenta en NIST SP 800-207 (NIST, 2020).
+
+\begin{tablalafrox}{Controles aplicados a la vista lógica}{tab:controles-seguridad}{F{0.13} F{0.18} F{0.37} Y}{\cab{Control} & \cab{Requisito} & \cab{Implementación concreta} & \cab{Evidencia}}
+5.9 & RT-11.23 & Inventario de componentes y SBOM CycloneDX/\allowbreak SPDX por liberación. & SBOM y hashes del artefacto. \\
+5.12/\allowbreak 5.13 & RT-11.03 & Clasificación aplicada a API, evento, objeto y copia local. & Matriz y pruebas de exportación. \\
+5.15/\allowbreak 5.18 & RT-12.05/\allowbreak 09/\allowbreak 10 & Roles y atributos por recurso; altas y bajas trazadas. & Permisos y pruebas negativas. \\
+5.16/\allowbreak 5.17 & RT-12.01/\allowbreak 11 & Keycloak, PIN personal y credencial de turno firmada. & AL-OFF-01 y baja conectada. \\
+5.19/\allowbreak 5.20 & RT-05.21 & SLA, ventanas, datos y respuesta de cada contraparte. & Fichas G/\allowbreak H y acuerdos. \\
+5.23 & RT-11.06 & Matriz de responsabilidad compartida por servicio (ISO/IEC 27017); datos personales cifrados con claves KMS del CLIENTE y registro de tratamiento (ISO/IEC 27018). & Matriz aprobada por servicio y registro de tratamiento. \\
+5.24/\allowbreak 5.26 & RT-11.15/\allowbreak 18/\allowbreak 19 & Clasificación, correlación y comunicación de incidentes. & Ejercicio y bitácora; aviso crítico 2 h, incidente 24 h. \\
+5.30 & RT-10.03/\allowbreak 04 & Funciones offline, dependencia y recuperación consistente. & Anexo 4-M y pruebas de recuperación de 4.3.2. \\
+5.34 & RT-05.07/\allowbreak 16.09 & Retención y consulta de GPS/\allowbreak crédito registradas. & Consulta autorizada y eliminación. \\
+8.2 & RT-12.05/\allowbreak 06 & Elevación temporal y segregación de Tesorería/\allowbreak Calidad. & Sesión y aprobación nominadas. \\
+8.5 & RT-12.03/\allowbreak 07/\allowbreak 08 & MFA, token corto, refresh rotatorio y expiración. & Pruebas de firma y sesión. \\
+8.7/\allowbreak 8.8 & RT-11.04/\allowbreak 16 & EDR y gestión de vulnerabilidades en runtime y terminal. & Escaneo y remediación 7/\allowbreak 15/\allowbreak 30 días. \\
+8.9 & RT-04.04/\allowbreak 08 & Configuración por ambiente y cambios trazados. & Diferencia de configuración y reversión. \\
+8.10/\allowbreak 8.11 & RT-05.07/\allowbreak 11.25 & Eliminación verificable y anonimización fuera de producción. & Borrado y conjunto de prueba. \\
+8.13/\allowbreak 8.14 & RT-07.04 & Estado durable y protección externa por dominio de falla. & AL-DR-01; no basta cola local. \\
+8.15/\allowbreak 8.16 & RT-11.14/\allowbreak 15 & Auditoría inalterable y detección específica del negocio. & UUID enlazado con regla SIEM. \\
+8.20/\allowbreak 8.22 & RT-11.07/\allowbreak 13 & Borde, superficie B2B separada y puerta local privada. & Intento directo al origen denegado. \\
+8.24 & RT-11.08/\allowbreak 09/\allowbreak 10 & Cifrado de reposo, campo y tránsito; claves separadas. & Admin sin texto claro y rotación. \\
+8.25/\allowbreak 8.28 & RT-11.22/\allowbreak 24 & SAST/\allowbreak SCA/\allowbreak DAST, firma y procedencia SLSA 3. & Pipeline bloqueado por hallazgo. \\
+8.29/\allowbreak 8.31/\allowbreak 8.32 & RT-04.02--04.05; RT-11.27 & Pruebas, ambientes segregados y promoción aprobada. & Commit, ensayo y despliegue correlacionados. \\
+\end{tablalafrox}
+{\footnotesize Fuente: elaboración propia a partir de ISO (2022b, 2022c), RT de los capítulos 4, 5, 7, 10, 11, 12 y 16 (Bases Técnicas Transversales, caps.~4--16, pp.~10--29), y contratos lógicos. Seguridad verifica aplicabilidad con el responsable del sistema de gestión.\par}
+
+La arquitectura impone HSTS en los portales HTTPS, TLS 1.3 en interfaces compatibles y rechazo de TLS 1.0/\allowbreak 1.1. Un tercero con limitación de protocolo exige excepción documentada y tratamiento, no una reducción silenciosa del control. Entre sistemas se utiliza mTLS u OAuth con credenciales de cliente; nunca una clave estática en la URL. El catálogo público no muestra precios, conforme al caso. OWASP ASVS nivel 2 y API Security Top 10 orientan las pruebas de aplicación. La superficie exacta y la implantación de EDR/\allowbreak SIEM se realizan en la vista física; los permisos, eventos y pruebas permanecen definidos aquí.

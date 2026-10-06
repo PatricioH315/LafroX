@@ -1,0 +1,24 @@
+\subsection{Especificaciones Tecnologías de Software a utilizar}
+\label{subsec:tecnologias-software}
+
+El núcleo de negocio se implementa como monolito modular en Laravel 13 y PHP 8.5. Frente a microservicios por dominio, esta elección conserva una sola base de código y un despliegue comprensible para el equipo TI de cuatro personas; sincronización, mensajería EDI y telemetría se ejecutan como procesos separables cuando su carga lo exija. Laravel proporciona rutas, validación, políticas, contenedor de dependencias y trabajos en cola; las reglas de negocio permanecen en módulos propios, sin depender de esas interfaces. Se seleccionan PostgreSQL/PostGIS para transacciones y geografía, RabbitMQ local para conservar trabajo durante un corte y SQS FIFO para ordenar su entrega por partición al reconectar. Ni el framework ni la cola reemplazan la deduplicación y la conciliación de los consumidores.
+
+Angular y TypeScript sirven los portales; Kotlin nativo en Android permite escaneo, captura de evidencia y almacenamiento cifrado en el parque móvil Zebra. Keycloak emite la identidad central mediante OIDC; las decisiones de autorización siguen siendo de cada servicio. La comparación con microservicios, aplicaciones híbridas y otros productos se resume en la sección de alternativas y en los ADR. Los servicios gestionados de AWS apoyan la ejecución y la integración; su ubicación y redundancia corresponden a 4.2. Estas elecciones deben sostenerse durante el contrato mediante actualización de versiones soportadas, sin prometer que una versión inicial durará 56 meses.
+
+Los principios que gobiernan el diseño son los siguientes:
+
+\begin{itemize}
+  \item \textbf{Continuidad sin conexión.} Preventa y reparto deben registrar un turno completo de 14 horas sin cobertura. El componente local debe mantener al menos 24 horas continuas de operación autónoma y degradada (RT-03.10; Bases Técnicas Transversales, cap. 3, p. 9). La sincronización posterior es idempotente: reenviar un evento no vuelve a ejecutar la operación. Los conflictos se resuelven con reglas de negocio documentadas, no dando prioridad automática al último registro recibido.
+  \item \textbf{Atención adaptada al canal tradicional.} La solución no exige que los 11.600 almacenes instalen una aplicación ni dispongan de conexión propia. El conductor registra la entrega y su confirmación mediante firma o QR; los avisos por WhatsApp/SMS se utilizan cuando el canal está disponible. El almacenero que tiene teléfono puede, además, instalar el Portal de Clientes y armar su pedido sin señal; es un canal opcional que convive con el preventista.
+  \item \textbf{Responsabilidades distribuidas.} Recepción, preparación y despacho conservan su núcleo transaccional disponible en cada sitio. Preventa, reparto y canal moderno disponen de servicios centrales, mientras las aplicaciones de terreno conservan la captura local cuando no pueden alcanzarlos. La ubicación, la capacidad y la redundancia de esos servicios se justifican en 4.2, conforme al Art. 16.
+  \item \textbf{Evolución durante 56 meses.} La Etapa 1 comprende los meses 1--15, con producción en el mes 16; la Etapa 2, los meses 13--20, con producción en el mes 21. Los 36 meses de operación se extienden del mes 21 al 56 (Art. 17).
+  \item \textbf{Verificación explícita del acceso.} La identidad central utiliza OIDC y MFA. Cada servicio verifica autorización, alcance y contexto; una solicitud no se considera confiable solo por provenir de la red corporativa. El cifrado y la auditoría acompañan cada intercambio.
+  \item \textbf{Recuperación y reconciliación.} RT-07.04 exige RTO $\leq$ 4 horas y RPO $\leq$ 15 minutos para los servicios críticos. La extracción continua por fibra, LTE y satélite en los CD sostiene el RPO exigido aun ante la caída de los dos medios terrestres. El Anexo 4-M define AL-DR-01; el límite residual se justifica en 4.3.2. Los ambientes, medios de respaldo y conectividad redundante corresponden a 4.2.
+  \item \textbf{Operación sostenible para cuatro personas.} Las herramientas, los procedimientos y el soporte deben permitir que el equipo TI de Puelche administre la solución con el apoyo del adjudicatario durante todo el contrato.
+\end{itemize}
+
+La descripción sigue la organización de vistas de ISO/IEC/IEEE 42010:2022 (International Organization for Standardization [ISO], 2022a). La vista lógica define las responsabilidades de los componentes y sus relaciones con los procesos, los datos, la seguridad y las integraciones. Cada decisión arquitectónica debe conservar su justificación, las alternativas consideradas y los requisitos que la sustentan (Bases Técnicas Transversales, cap.~2, p.~7; RT-02.04).
+
+Las decisiones tecnológicas se registran con alternativas y criterios en el Anexo 4-O; el soporte y la actualización durante el contrato se especifican en el Anexo 4-P.
+
+

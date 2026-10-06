@@ -441,7 +441,7 @@ Los niveles de disponibilidad de infraestructura son un medio, no un fin. El com
 
 | Código | Requisito | Carácter |
 |---|---|---|
-| **RT-07.09** | La política de respaldo seguirá el esquema 3-2-1-0: tres copias, en dos medios distintos, una fuera de sitio, una inmutable o fuera de línea y cero errores de verificación de restauración. | **Obligatorio** |
+| **RT-07.09** | La política de respaldo seguirá el esquema 3-2-1-1-0: tres copias, en dos medios distintos, una fuera de sitio, una inmutable o fuera de línea y cero errores de verificación de restauración. | **Obligatorio** |
 | **RT-07.10** | Los respaldos estarán cifrados en reposo y en tránsito, con clave gestionada de forma independiente de la infraestructura respaldada. | **Obligatorio** |
 | **RT-07.11** | Las copias inmutables estarán protegidas contra borrado y contra modificación durante su período de retención, incluso frente a credenciales administrativas comprometidas. | **Obligatorio** |
 | **RT-07.12** | Se ejecutará y documentará una prueba de restauración al menos mensual, sobre una muestra representativa, con medición del tiempo efectivo de restauración. | **Obligatorio** |

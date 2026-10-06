@@ -1,0 +1,33 @@
+\subsection{Registro de decisiones de arquitectura}
+\label{sec:adr}
+
+Las 22 decisiones de arquitectura se resumen en la Tabla~\ref{tab:resumen-adr}. El Anexo 4-O contiene para cada ADR la decisión, alternativas, criterio, consecuencias, evidencia y requisitos que la sustentan.
+
+\begin{tablalafrox}{Resumen del registro de decisiones de arquitectura}{tab:resumen-adr}{F{0.12} F{0.34} F{0.25} Y}{\cab{ID} & \cab{Decisión} & \cab{Alternativa principal descartada} & \cab{Criterio decisivo}}
+\mbox{ADR-01} & Monolito modular Laravel con perfiles separados. & Microservicios por módulo. & Operación sostenible y límites verificables. \\
+\mbox{ADR-02} & Fibra, LTE y satélite en espera caliente en los CD. & Solo fibra y LTE. & Extracción continua aun si fallan los medios terrestres. \\
+\mbox{ADR-03} & Sitios autónomos y consolidación en nube. & Autoridad única de Talca. & Autonomía local con vista global. \\
+\mbox{ADR-04} & Persistencia según dominio de datos. & Almacén único. & Separación de despacho y analítica. \\
+\mbox{ADR-05} & RabbitMQ local y SQS FIFO. & Broker solo en nube. & Persistencia e idempotencia tras un corte. \\
+\mbox{ADR-06} & Keycloak con verificación local de turnos. & IdP solo en nube. & Relevo personal durante 24 horas. \\
+\mbox{ADR-07} & Aplicaciones Kotlin nativas. & PWA como cliente único. & Periféricos y captura sin señal. \\
+\mbox{ADR-08} & Reemplazo del WMS 2013 por olas. & Mantención indefinida del legado. & Funciones de bodega y reversión controlada. \\
+\mbox{ADR-09} & Talca recupera su WMS en nube. & Concepción como DR de Talca. & RTO de cuatro horas con falla separada. \\
+\mbox{ADR-10} & Proxmox y Ceph sobre NVMe sin RAID. & Ceph sobre RAID 10. & Quórum y capacidad útil. \\
+\mbox{ADR-11} & Hub GS1 y OpenAS2 con ACL. & Conexiones EDI directas al ERP. & Contratos y aislamiento tributario. \\
+\mbox{ADR-12} & Aurora fija a 3$\times$ y Fargate por perfil. & Cambio de instancia en septiembre. & Peak probado sin intervención. \\
+\mbox{ADR-13} & API Gateway REST en nube y puerta de API local A-01. & Gateway solo en nube. & Validación local de esquema, tasa, UUID, permisos y auditoría sin WAN. \\
+\mbox{ADR-14} & CloudWatch con OpenTelemetry y ADOT. & Dos plataformas de observabilidad. & Correlación con buffer local. \\
+\mbox{ADR-15} & Secrets Manager y Parameter Store. & Vault autoadministrado. & Rotación y custodia auditables. \\
+\mbox{ADR-16} & Verified Access para consolas. & Client VPN. & Acceso por aplicación y postura. \\
+\mbox{ADR-17} & \texttt{erp-sync} en VM-04 con doble cola. & Trabajador solo en nube. & Guía local válida sin WAN. \\
+\mbox{ADR-18} & Extracción por tres caminos con RPO de 15 min. & Retención solo en el sitio. & Copia durable fuera del sitio. \\
+\mbox{ADR-19} & Regiones declaradas y aprobación del CLIENTE. & Una sola región. & Continuidad y licitud de transferencia. \\
+\mbox{ADR-20} & Angular con TypeScript y Portal de Clientes instalable. & Perfil del cliente en la aplicación Kotlin. & Separación entre clientes y trabajadores. \\
+\mbox{ADR-21} & Terraform, Ansible, GitLab CI y CodeBuild. & CloudFormation/CDK y otra cadena CI. & Propiedad única y promoción trazable. \\
+\mbox{ADR-22} & Greengrass en gateways industriales. & Nube directa o PLC. & Bloqueo térmico local en cinco segundos. \\
+\end{tablalafrox}
+
+{\footnotesize Fuente: elaboración propia a partir del Anexo 4-O.\par}
+
+La evidencia asociada a cada ficha permite verificar límites de módulo, continuidad por sitio, protección de datos, desempeño bajo el peak y recuperación del WMS de Talca en la nube. En ADR-12, la API utiliza de 2 a 4 tareas en el caso base y 7 en la sensibilidad de 91,70 solicitudes/s, siempre bajo el techo de 8 tareas.

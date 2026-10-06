@@ -1,0 +1,28 @@
+\section*{Anexo 4-L --- Decisiones del numeral 16.1}
+\phantomsection
+\label{anx:L}
+\addcontentsline{toc}{section}{Anexo 4-L --- Decisiones del numeral 16.1}
+La tabla conserva el número y la pregunta de cada decisión del numeral 16.1 del caso, la regla o componente propuesto y la validación que corresponde al CLIENTE.
+
+\begin{tablalafrox}{Decisiones de diseño del numeral 16.1}{tab:16-decisiones}{F{0.05} F{0.29} F{0.42} Y}{\cab{Nº} & \cab{Pregunta del caso} & \cab{Regla o componente propuesto} & \cab{Validación}}
+1 & Entrega parcial e indicador de servicio & M6 distingue entregado completo, parcial y no entregado; M10 calcula OTIF por pedido completo y ventana acordada. & Criterio comercial \\
+2 & Unidad de trazabilidad sanitaria & M9 traza GTIN y lote proveedor; M1/M5 vinculan cada movimiento a SSCC. & Unidad con Calidad \\
+3 & Local cerrado y responsable del reintento & M6 registra intento, causal y evidencia, y reagenda a la siguiente ventana. Si la ausencia persiste, retorna al CD y nunca entrega a terceros (RNG-05). & Plazo y autoridad \\
+4 & Excursión térmica, decisión y bloqueo & M9 aplica umbral y duración por producto: advertencia ante una excursión menor y transitoria, y retención en M2/M5 ante una crítica y sostenida. Calidad libera, bloquea o rechaza. & Umbrales con Calidad \\
+5 & Identidad y sustitución de conductor externo & Despacho registra en la Etapa 1 el vínculo empresa--conductor--vehículo--turno, y el portal lo habilita al representante en la Etapa 2. OTP inicial, revocación y autor de cada POD. & Procedimiento transportista \\
+6 & Efectivo y riesgo del dinero en ruta & M7 conserva cobro y rendición individual con causal de diferencia; Puelche define custodia y límite por turno. & Política de Tesorería \\
+7 & Costo de servir y clientes no rentables & M10 calcula costo por entrega con ruta, tiempo, devoluciones y envases; Comercial decide medidas, no el algoritmo. & Criterio comercial \\
+8 & Dos preventistas comprometen el mismo stock & M2 central confirma tras la retención local durable, por orden de recepción y correlativo. M3 deja sin confirmar el pedido offline y comunica el quiebre al sincronizar. & Desempate según RNG-01 \\
+9 & Precio cambia antes del despacho & M3 conserva el precio pactado y la versión de condiciones. Un cambio posterior de lista no altera lo acordado (RNG-08). & Política de precios \\
+10 & Control de envases retornables & M8 registra saldo por cliente, tipo y movimiento con evidencia; se concilia en la rendición. & Modalidad de cargo \\
+11 & Maestro de productos ante cambios del proveedor & M1 ingresa equivalencia GTIN/formato; el maestro autorizado se sincroniza mediante ACL con ERP y preserva historial. & Dueño del maestro \\
+12 & Devolución y DTE ya emitido & M8 registra devolución y causal; ACL solicita al ERP el documento tributario que corresponda, enlazado al original. & Regla tributaria \\
+13 & Objeción sindical a cámaras y geolocalización & M12 usa telemetría de flota para ruta y costo; excluye cámaras en cabina y control de jornada por GPS. & Gestión laboral \\
+14 & Destino del WMS 2013 & M1, M2 y M5 reemplazan sus capacidades en Etapa 1 por sitio y ola, con reversión controlada (ADR-08). & Corte por sitio \\
+15 & Receptor distinto, imposibilidad o negativa a firmar & M6 identifica receptor y causal; conserva QR, fotografía o constancia de negativa según política, sin equiparar automáticamente POD con acuse tributario. & Validez de evidencia \\
+16 & Conocimiento concentrado del planificador & M4 guarda restricciones, excepciones y decisiones del planificador; la transición incluye transferencia y prueba de rutas. & Aceptación Operaciones \\
+\end{tablalafrox}
+
+{\footnotesize Fuente: elaboración propia a partir de las Bases Técnicas del caso (cap.~16, pp.~28--29).\par}
+
+% Protocolos del Anexo M y correspondencia del Anexo N.

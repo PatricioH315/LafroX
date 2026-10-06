@@ -1,0 +1,20 @@
+\section*{Anexo 4-J --- Funciones sin conexión}
+\phantomsection
+\label{anx:J}
+\addcontentsline{toc}{section}{Anexo 4-J --- Funciones sin conexión}
+La tabla declara qué funciones siguen disponibles sin enlace, cómo continúan localmente y qué ocurre al reconectar, conforme a RT-03.13.
+
+\begin{tablalafrox}{Funciones sin conexión y procedimiento de continuidad}{tab:funciones-offline}{F{0.24} F{0.16} F{0.26} Y}{\cab{Función} & \cab{Estado} & \cab{Continuidad local} & \cab{Al reconectar}}
+Pedido preventa & Captura 14 h & Precio y stock informativos; pedido sin confirmar. & M2 valida reserva y crédito. \\
+Pedido de autoatención & Captura en el portal instalado & Catálogo y precios con fecha; pedido en cola con UUID. & M3 valida stock y crédito y responde al cliente. \\
+Entrega y POD & Captura 14 h & Evidencia cifrada y cola persistente. & M6 confirma o abre excepción. \\
+Recepción y preparación & Opera 24 h & Registro GS1 y bloqueo térmico local. & Eventos a nube y conciliación. \\
+Cobro en efectivo & Captura 14 h & Comprobante y custodia según política. & M7 rinde y concilia. \\
+Autorización POS & No disponible & Efectivo o crédito autorizado; sin cargo presunto. & Autorizar una sola vez. \\
+Nueva guía electrónica & Talca: disponible por RabbitMQ local; otros sitios: preemitida. & \texttt{erp-sync} en VM-04 consume RabbitMQ de Talca sin WAN y, por salida, la cola FIFO de solicitudes al ERP de los demás sitios, que reciben la respuesta por su cola; fuera de Talca se requiere un camino del sitio y uno de Talca. & M5 libera solo la carga amparada por la guía vigente; un ajuste sin camino hasta el ERP pasa a la ruta siguiente. Una guía anulada no se reutiliza: esa salida espera un documento válido. \\
+Ruteo y mapas en línea & No disponible & Usar secuencia y mapas precargados. & Recalcular cambios sin confirmar. \\
+EDI de supermercados & No disponible & Registrar incidente y aviso acordado con cadena. & Cola y bandeja de excepciones. \\
+Tablero central & No disponible & Alarmas y bitácora local sostienen despacho. & Reponer telemetría y estado. \\
+\end{tablalafrox}
+
+{\footnotesize Fuente: elaboración propia a partir de RT-03.10 y RT-03.13 (Bases Técnicas Transversales, cap.~3, pp.~8--9).\par}

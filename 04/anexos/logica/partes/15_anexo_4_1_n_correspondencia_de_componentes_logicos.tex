@@ -1,0 +1,89 @@
+\section*{Anexo 4-N --- Correspondencia de componentes lógicos}
+\phantomsection
+\label{anx:N}
+\addcontentsline{toc}{section}{Anexo 4-N --- Correspondencia de componentes lógicos}
+La matriz identifica los doce módulos y los servicios transversales para cotejarlos con el esquema y explicación de solución exigidos en 3.3--3.4 y con su realización física en 4.2. Las capacidades de 3.3 y 3.4 se corresponden con los módulos y contratos de 4.1; la tabla de correspondencia de 4.2.2 identifica su realización física.
+
+\begin{tablalafrox}{Correspondencia de módulos y realización física}{tab:correspondencia-modulos}{F{0.10} F{0.27} F{0.19} Y}{\cab{Módulo} & \cab{Capacidad en 3.3/3.4} & \cab{Contrato} & \cab{Realización en 4.2.2}}
+M1 & Recepción & INT-03/06 & Perfil WMS local, base por sitio y ACL ERP. \\
+M2 & Inventario & INT-03/04/12 & WMS por sitio, consolidación central y réplica de lectura de Talca. \\
+M3 & Preventa & INT-01/06 & App Kotlin y API Laravel central. \\
+M4 & Ruteo & INT-10 & Servicio de planificación y optimizador separado por contrato. \\
+M5 & Picking y carga & INT-03/07 & HHT, puerta local y WMS con control de guía. \\
+M6 & Entrega y POD & INT-02 & App de reparto, API y almacenamiento de evidencia. \\
+M7 & Rendición y cartera & INT-02/06/09 & API, trabajadores Laravel y ACL de cobranza. \\
+M8 & Devoluciones & INT-02/03/06 & Registro móvil/local y servicios de conciliación. \\
+M9 & Trazabilidad y frío & INT-03/05 & Bloqueo local, ingesta IoT y consulta de lotes. \\
+M10 & Analítica & Eventos canónicos & Ingesta a lago y servicios de consulta analítica. \\
+M11 & Canal moderno & INT-08 & Reglas Laravel, OpenAS2 y conector por cadena. \\
+M12 & Telemetría & INT-15 & Adaptador de solo lectura y consulta de ruta real. \\
+\end{tablalafrox}
+{\footnotesize Fuente: elaboración propia.\par}
+
+La tabla verifica la correspondencia de los doce módulos con sus capacidades, contratos y realizaciones; la Tabla 8 del apartado 4.2.2 completa el enlace físico. Las capacidades transversales también se corresponden: presentación y borde con aplicaciones, CloudFront y acceso privado; puerta de enlace con API central y puerta local; eventos con RabbitMQ, shipper y SQS; datos con bases, réplica de lectura y objetos; identidad con Keycloak y verificador local; secretos y auditoría con sus servicios de custodia; observabilidad con OpenTelemetry/ADOT, alarma local y CloudWatch. Notificaciones se traza a INT-11; el motor de optimización de M4 conserva contrato separado y no se presume implementado en PHP por la elección del backend.
+
+La correspondencia entre 3.3, 3.4, 4.1 y 4.2.2 se verifica en ambos sentidos mediante identificador, contrato, responsable y realización física.
+\subsection*{Inventario trazable de capacidades transversales}
+Los siguientes 37 identificadores complementan los doce módulos: el inventario lógico tiene 49 unidades verificables. La última columna resume el criterio de correspondencia; la realización física de cada identificador está en la Tabla 8 del apartado 4.2.2.
+\begin{tablalafrox}{Inventario transversal y realización física}{tab:inventario-transversal}{F{0.16} F{0.23} F{0.22} F{0.15} Y}{\cab{ID} & \cab{Componente} & \cab{Capacidad} & \cab{Contrato} & \cab{Correspondencia 4.2.2}}
+UI-MOV & Apps Kotlin / Room & preventa y entrega & INT-01/02 & M3/M6/M7/M8 \\
+UI-HHT & Terminales de bodega & preparación & INT-03 / API local & M1/M2/M5 \\
+UI-WEB & Portales Angular & Administración; portales & API autorizada & Roles por empresa \\
+BOR-PUB & CloudFront / AWS WAF / AWS Shield Advanced & seguridad & HTTPS & Entrada pública única \\
+BOR-B2B & Superficie AS2 & canal moderno & INT-08 & Contrapartes registradas \\
+GW-CENT & REST API / authorizer & plataforma & API / sincronización & ADR-13 \\
+GW-LOCAL & Puerta API de sitio & WMS & INT-03 & Validación sin WAN \\
+AUTH-CENT & Keycloak & seguridad & INT-13 / OIDC & Autoridad de identidad \\
+AUTH-LOCAL & Verificador de turnos & continuidad & Manifiesto firmado & PIN, turno y sitio \\
+WMS-SITE & Perfil WMS local & WMS & INT-03 & Un escritor por sitio \\
+INT-BROKER & RabbitMQ & integración & AMQP & Persistencia y DLQ \\
+INT-SHIPPER & Shipper local a nube & integración & JSON / SQS & Acuse después de envío \\
+INT-CONSUMER & Consumidor PHP & integración & AsyncAPI / JSON & Persistir antes de acuse \\
+INT-JOBS & Trabajadores Laravel & notificaciones y EDI & Colas internas & Perfil de trabajos en N-04 (Fargate) \\
+INT-SCHED & Planificador & administración & Tareas versionadas & Un líder por ambiente \\
+INT-ACL & Adaptador ERP & ERP / DTE & INT-06/07 & ERP único emisor \\
+INT-EDI & OpenAS2 / perfiles & canal moderno & INT-08 & MDN no es acuse comercial \\
+INT-GIS & Adaptador de mapas & rutas & INT-10 & Tiempo máximo / precarga \\
+INT-OPT & Optimizador M4 & rutas & Trabajo versionado & Restricciones de ruta \\
+INT-GPS & Adaptador de flota & telemetría & INT-15 & Solo lectura \\
+INT-NOTIF & Notificaciones & administración & INT-11 & Vigencia por canal \\
+INT-IOT & Captura térmica local & frío & INT-05 & Bloqueo local \\
+DAT-OLTP & PostgreSQL / PostGIS & inventario & Repositorios propios & Autoridad por sitio \\
+DAT-CDC & Réplica de Talca & continuidad & INT-12 & Lectura, no doble escritor \\
+DAT-OLAP & DynamoDB / Glue / S3 / Redshift & analítica & ETL / eventos & Separado de OLTP \\
+DAT-OBJ & Objetos POD / DTE & entrega & Hash y objeto & Retención por dominio \\
+DAT-CACHE & Redis central & plataforma & Lecturas autorizadas & No reserva stock \\
+DAT-LOCAL & Room / cola cifrada & movilidad & UUID / sincronización & Separar fotos y registros sin confirmar \\
+SEC-SECRETS & Custodia de claves & seguridad & Identidad de servicio & Rotación segregada \\
+SEC-AUDIT & Auditoría inalterable & administración & Evento de decisión & Sujeto, regla y resultado \\
+SEC-SIEM & Detección y correlación & seguridad & Alertas & Casos Q/R \\
+OBS-COLLECT & OpenTelemetry / ADOT & observabilidad & INT-14 / OTLP & Buffer de 24 horas \\
+OBS-LOCAL & Alarmas del sitio & continuidad & Alerta local & No depende de WAN \\
+OBS-CENT & CloudWatch & observabilidad & INT-14 & Plataforma única \\
+DEV-PIPE & CI/CD y SBOM & plataforma & Artefacto firmado & Promoción por contrato \\
+DEV-IAC & Terraform / Ansible & infraestructura & Estado y configuración & Propietario único \\
+DEV-MDM & Gestión de terminales & seguridad & Enrolamiento & Política y borrado \\
+\end{tablalafrox}
+\subsection*{Correspondencia de actores y permisos del sistema}
+La Tabla~\ref{tab:actores-permisos} realiza el catálogo de quince actores del apartado 3.4.2.1 del Subdocumento 3. Cada acción se autoriza por separado sobre el ámbito indicado. Ni el cargo ni el acceso a una consola conceden todos los permisos de un módulo.
+
+\begin{tablalafrox}{Actores del sistema, interfaces y permisos}{tab:actores-permisos}{F{0.17} F{0.22} F{0.24} F{0.24} Y}{\cab{Actor} & \cab{Interfaz y módulos} & \cab{Acciones} & \cab{Ámbito y límite} & \cab{Etapa}}
+Preventista & App de preventa; M3, lectura M2/M7 & Consultar stock y crédito, capturar y sincronizar pedidos & Su cartera; no reserva offline & 1 \\
+Conductor propio & App de reparto; M6/M7/M8 & Entrega, POD, cobro, retorno y envases & Su ruta y turno; no aprueba su descuadre & 1 \\
+Conductor externo & App de reparto; M6/M7/M8 & Entrega y rendición propias & Identidad personal ligada a empresa y turno & 1 \\
+Preparador & Terminal de bodega; M5, M1/M2 con permiso & Lecturas, faltantes y movimientos autorizados & Sitio, misión y turno; no libera lotes & 1 \\
+Cliente del canal tradicional & Portal opcional; M3/M6/M7 & Armar pedidos; ver entregas, documentos y saldo & Solo sus datos; compra asistida sin cuenta & 2 \\
+Cliente del canal moderno & Portal y conector EDI; M11/M3 & Pedidos, consultas y mensajes EDI & Su cadena; sesión humana y técnica separadas & 2 \\
+Empresa transportista & Portal por representante; M4/M6/M12 & Ver rutas y documentos; confirmar conductor y vehículo & Su empresa; no firma POD & 2; registro por despacho en 1 \\
+Proveedor & Portal por representante; M1 & Consultar órdenes y recepciones & Su organización; solo lectura & 2 \\
+Jefa de Calidad & Consola de Calidad; M9, acciones M2/M5 & Fijar umbral y duración; liberar, bloquear o retirar & Lote e instalación; decisión exclusiva & 1 \\
+Gerente Comercial & Consola comercial; M3/M7/M10/M11 & Reglas, excepciones e indicadores & Política y canal, con historial & 1; canal moderno en 2 \\
+Gerente de Finanzas & Consola financiera; M7/M10 & Supervisar rendición y reglas financieras & Tesorería nominada; quien registra no aprueba & 1; costo en 2 \\
+Planificador de Rutas & Consola de rutas; M4/M12 & Generar, corregir y aprobar rutas & Motivo auditado; no altera cobros & 1 \\
+Jefe de TI & Consola de administración & Identidad, configuración, integraciones y monitoreo & Privilegio temporal con MFA; sin permisos de negocio & 1 \\
+Gerente de Operaciones & Consola operacional; M2/M4/M5/M6 & Supervisar despacho y excepciones & Sitio; no omite guía ni Calidad & 1 \\
+Jefa de Bodega & Consola de bodega; M1/M2/M5/M8 & Recepción, inventario, FEFO, preparación y retornos & Sitio; ajustes justificados & 1 \\
+\end{tablalafrox}
+{\footnotesize Fuente: elaboración propia a partir del apartado 3.4.2.1 y del Anexo 3.I del Subdocumento 3.\par}
+
+Recepción, despacho, catálogo y Tesorería son funciones asignadas a personas nominadas dentro de estos perfiles. AL-ACT-01 del Anexo 4-V verifica cada fila con una operación permitida y una denegada.

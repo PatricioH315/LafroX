@@ -1,0 +1,19 @@
+\subsection{Comparación de alternativas arquitectónicas}
+\label{sec:alternativas-arquitectonicas}
+
+La comparación considera la carga real, la continuidad desconectada, la reversión y la dotación que deberá operar la solución. La Tabla~\ref{tab:alternativas} resume las elecciones lógicas; los ADR explicitan su criterio y consecuencia operativa. La evaluación económica pertenece a los apartados de costos.
+
+\begin{tablalafrox}{Alternativas lógicas y criterio de selección}{tab:alternativas}{F{0.18} F{0.27} F{0.27} Y}{\cab{Decisión} & \cab{Seleccionada} & \cab{Alternativa viable} & \cab{Criterio decisivo}}
+Estilo del núcleo & Monolito modular M1--M12 con perfiles separados. & Servicios por dominio. & Menor carga operativa con 31.000 pedidos/mes. \\
+Framework backend & Laravel 13/PHP 8.5 con límites PSR-4. & Django/Python con los mismos contratos. & Un runtime PHP y pruebas de paridad de contratos, datos y colas. \\
+Aplicación terreno & Kotlin nativo. & Desarrollo multiplataforma. & Integración Zebra y persistencia local. \\
+Mensajería & Broker local y cola de nube. & Broker solo en nube. & Conservación del trabajo con enlace caído. \\
+WMS 2013 & Reemplazo por olas M1/M2/M5. & Sustitución simultánea. & Reversión por sitio y capacidad. \\
+\end{tablalafrox}
+
+{\footnotesize Fuente: elaboración propia a partir del Anexo 4-O y de las Bases Técnicas del caso (cap.~14, p.~24).\par}
+
+El WMS y el broker de cada sitio sostienen recepción y despacho sin WAN; el monolito modular acota el número de procesos a operar.
+
+El Artículo 16 de las Bases Administrativas exige el despliegue híbrido. Su distribución concreta corresponde a 4.2.
+

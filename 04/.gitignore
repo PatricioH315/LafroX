@@ -1,0 +1,11 @@
+salida/
+*.aux
+*.log
+*.toc
+*.lof
+*.lot
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.out
+*.xdv

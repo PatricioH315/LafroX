@@ -1,0 +1,9 @@
+\subsection{Identidad y ciclo de vida de conductores externos}
+\label{sec:conductores-externos}
+
+Los conductores de transportistas externos ($\approx$\,160, de 10 empresas) no pertenecen a la dotación de Puelche. Antes de entregar una ruta, la empresa transportista declara la identidad del conductor y su vínculo con ella. En la Etapa 1, despacho registra esa declaración en su función operacional. Desde la Etapa 2, el representante de la empresa puede confirmarla en el portal de transportistas. El responsable de despacho aprueba la asignación conductor--vehículo--turno; el alta inicial requiere conexión para verificar un OTP de un solo uso. El identificador del conductor y el del transportista acompañan cada \texttt{EntregaRegistrada}. La autorización se limita a la ruta asignada y a M6, M7 y M8 mediante rol y atributos de turno, sitio y dispositivo.
+
+La aplicación conserva localmente una asignación firmada para el turno de hasta 14 horas y permite capturar eventos mientras no exista red. La caché local de identidad, de solo lectura y TTL de 24 horas, no acorta por sí sola la vigencia de esa asignación de terreno; tampoco la renueva. Una persona reemplazante que no fue dada de alta no obtiene una nueva identidad sin conexión. En ese caso Operaciones reasigna el turno a un conductor ya habilitado y registra la excepción; la rotación no autoriza compartir el OTP ni la cuenta del conductor previo.
+
+Al finalizar el turno expiran la asignación y sus permisos. Si se denuncia pérdida de dispositivo o baja anticipada, Keycloak revoca el acceso conectado y el equipo borra los datos al recuperar conexión. Mientras permanezca sin señal no puede prometerse revocación remota inmediata: la duración de la asignación limita la exposición y la incidencia se registra para bloquear la rendición y revisar la evidencia capturada durante el intervalo.
+

@@ -1,0 +1,36 @@
+% !TeX program = lualatex
+\makeatletter
+\def\input@path{{00/plantilla/formato-base/}{04/}}
+\makeatother
+\documentclass[carta,firma]{lafrox}
+\usepackage{etoolbox}
+\usepackage{placeins}
+\captionsetup{hypcap=false}
+\renewcommand{\LFXisotipoportada}{00/plantilla/formato-base/logo/lafrox_isotipo_naranja.pdf}
+\renewcommand{\LFXisotipopagina}{00/plantilla/formato-base/logo/lafrox_isotipo_negro.pdf}
+% Comando de procedencia de figuras usado por 4.2 y 4.3; la plantilla base no lo incluye.
+\newcommand{\fuentefigura}[1][elaboración propia]{%
+  \par\vspace{2pt}%
+  {\footnotesize\color{lafroxGris}\raggedright Fuente: #1.\par}}
+\datoslafrox{
+  documento = {Propuesta Técnica},
+  subtitulo = {Subdocumento 4 --- Arquitectura de la solución},
+  alcance = {Apartados 4.1, 4.2 y 4.3},
+  formulario = {Formulario T-7},
+  fecha = {05 de octubre de 2026},
+  version = {},
+  nomenclatura = {LAFROX-Subdocumento4.pdf},
+}
+\hypersetup{pdftitle={Subdocumento 4 -- Arquitectura de la solución}}
+\renewcommand{\LFXestadodoc}{Entrega 2}
+\graphicspath{{04/}}
+% Numeración corrida de tablas y figuras en todo el subdocumento.
+\counterwithout{table}{chapter}
+\counterwithout{figure}{chapter}
+
+\begin{document}
+\portadalafrox
+\preliminareslafrox
+\setcounter{chapter}{3}
+\input{contenido.tex}
+\end{document}

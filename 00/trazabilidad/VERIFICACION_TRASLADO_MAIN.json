@@ -1,0 +1,22 @@
+{
+  "documentos": [
+    {
+      "archivo": "LAFROX-Subdocumento4.pdf",
+      "paginas": 223,
+      "referenciasIndefinidas": false,
+      "destinosDuplicados": false,
+      "bytes": 16926664
+    },
+    {
+      "archivo": "LAFROX-Subdocumento4.1.pdf",
+      "paginas": 62,
+      "referenciasIndefinidas": false,
+      "destinosDuplicados": false,
+      "bytes": 1460724
+    }
+  ],
+  "textoPrincipalIdenticoAlAnterior": true,
+  "contenidoTecnicoAlterado": false,
+  "compilacion": "LuaLaTeX, tres pasadas por cada main",
+  "revisionVisual": "El asistente inspeccionó la lista de tablas y el diagrama resumido del principal, y el índice lógico independiente. No se observaron defectos nuevos en las muestras. El texto extraído completo del principal y la paginación coinciden con la versión anterior. No acredita revisión humana del equipo."
+}

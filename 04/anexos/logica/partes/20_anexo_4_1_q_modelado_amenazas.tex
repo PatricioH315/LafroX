@@ -1,0 +1,43 @@
+\clearpage
+\section*{Anexo 4-Q --- Modelado de amenazas lógicas}
+\phantomsection
+\label{anx:Q}
+\addcontentsline{toc}{section}{Anexo 4-Q --- Modelado de amenazas lógicas}
+STRIDE se aplica por módulo, componente transversal e integración externa (RT-11.02). S representa suplantación; T, alteración; R, repudio; I, divulgación; D, denegación; E, elevación de privilegios. Cada escenario tiene una prueba negativa y un dueño; el registro se reevalúa al cambiar un contrato o límite de confianza. Esta matriz registra amenazas de diseño, no resultados de pentesting.
+
+\begin{tablalafrox}{Amenazas de los doce módulos}{tab:amenazas-modulos}{F{0.10} F{0.25} F{0.34} Y}{\cab{Elemento} & \cab{Amenaza} & \cab{Control y prueba} & \cab{Dueño}}
+M1 & T: lote o recepción falsa. & GS1, cuarentena y evidencia; rechazar lote sin origen. & Recepción/\allowbreak Calidad \\
+M2 & T/\allowbreak D: reserva duplicada. & Escritor único, UUID y bloqueo por agregado; doble compromiso. & Inventario \\
+M3 & S/\allowbreak T: pedido con identidad ajena. & Turno, dispositivo y firma; token inválido y reenvío. & Comercial/\allowbreak Seguridad \\
+M4 & T: ruta con restricción omitida. & Restricción versionada, aprobación y motivo; ruta incompatible. & Operaciones \\
+M5 & E: liberar carga retenida. & Política por recurso y documento vigente; supervisor sin permiso. & Bodega/\allowbreak Calidad \\
+M6 & R/\allowbreak T: POD alterado. & Hash, autor, hora y vínculo guía; objeto con hash distinto. & Reparto \\
+M7 & E/\allowbreak R: aprobar cobro propio. & Segregación y conciliación; mismo autor registrador/\allowbreak aprobador. & Tesorería \\
+M8 & T: devolución o saldo ficticio. & Causal, lote, evidencia y disputa; devolución repetida. & Bodega/\allowbreak Tesorería \\
+M9 & T/\allowbreak E: ocultar excursión. & Alarma local y liberación exclusiva de Calidad; muestra alterada. & Calidad \\
+M10 & I: exponer crédito por tablero. & Modelo autorizado, filtros y auditoría; consulta de otro cliente. & Datos/\allowbreak Seguridad \\
+M11 & T/\allowbreak D: EDI repetido o inválido. & Firma, equivalencia y UUID; repetición/\allowbreak rechazo sin crear pedido. & Canal moderno \\
+M12 & I: uso de GPS fuera de finalidad. & Rol, ruta, retención y consulta auditada; usuario sin asignación. & Flota/\allowbreak Seguridad \\
+\end{tablalafrox}
+{\footnotesize Fuente: elaboración propia sobre límites de M1--M12 y RT-11.02.\par}
+
+\begin{tablalafrox}{Amenazas en fronteras y terceros}{tab:amenazas-fronteras}{F{0.22} F{0.24} Y}{\cab{Elemento} & \cab{Amenaza} & \cab{Control y evidencia de aceptación}}
+INT-06/\allowbreak 07, ACL y ERP & T/\allowbreak R: documento duplicado o incierto. & Clave por carga, consulta antes de reintento y estado explícito; AL-DTE-01. \\
+INT-08/\allowbreak OpenAS2 & S/\allowbreak T: contraparte falsa o mensaje cambiado. & Certificado registrado, firma y MDN; certificados desconocidos y hash alterado. \\
+INT-09/\allowbreak POS & T/\allowbreak R: doble cobro por timeout. & Clave de cargo, consulta y conciliación; respuesta tardía después de alternativa. \\
+INT-10/\allowbreak GIS/\allowbreak optimizador & D/\allowbreak T: cuotas o ruta manipulada. & Timeout, límites, ruta aprobada y comprobación de restricciones. \\
+INT-11/\allowbreak avisos & I/\allowbreak T: revelar pedido o avisar tarde. & Consentimiento/\allowbreak canal, mínimo dato y vigencia; aviso vencido. \\
+INT-15/\allowbreak GPS & I/\allowbreak T: posición falsa o histórica. & Cursor, fecha y acceso de solo lectura; muestra fuera de secuencia. \\
+UI-MOV/\allowbreak UI-HHT/\allowbreak DAT-LOCAL & I/\allowbreak S: pérdida o préstamo de terminal. & MDM, cifrado, PIN y turno; pérdida y dispositivo no enrolado. \\
+BOR-PUB/\allowbreak GW-CENT/\allowbreak AUTH-CENT & S/\allowbreak D: abuso o token ajeno. & WAF, cuota, JWT y política; firma/\allowbreak audiencia inválida y ráfaga. \\
+GW-LOCAL/\allowbreak AUTH-LOCAL/\allowbreak WMS-SITE & E/\allowbreak T: manifiesto alterado o reloj movido. & Firma, reloj controlado y permisos; AL-OFF-01. \\
+INT-BROKER/\allowbreak SHIPPER/\allowbreak CONSUMER/\allowbreak JOBS & T/\allowbreak D: evento repetido o tóxico. & Sobre versionado, outbox, DLQ y deduplicación; corte en cada acuse. \\
+INT-SCHED/\allowbreak INT-IOT & D/\allowbreak T: tarea duplicada o sensor perdido. & Autoridad única y frescura de lectura; doble líder y ausencia de sensor. \\
+DAT-OLTP/\allowbreak CDC/\allowbreak OLAP/\allowbreak OBJ/\allowbreak CACHE & I/\allowbreak T: lectura o escritura no autorizada. & Dueño, cifrado, cuenta mínima y hash; consulta directa y objeto cambiado. \\
+SEC-SECRETS/\allowbreak AUDIT/\allowbreak SIEM & I/\allowbreak R: clave expuesta o evidencia borrada. & Custodia separada, Object Lock y alertas; administración sin descifrado. \\
+OBS-COLLECT/\allowbreak LOCAL/\allowbreak CENT & D/\allowbreak R: buffer lleno o traza faltante. & Cuota, alarma y prioridad de auditoría; corte con saturación. \\
+DEV-PIPE/\allowbreak IAC/\allowbreak MDM/\allowbreak UI-WEB/\allowbreak BOR-B2B & S/\allowbreak E: artefacto o acceso de gestión ajeno. & Firma, SBOM, aprobación y MFA; imagen sin procedencia y rol excesivo. \\
+\end{tablalafrox}
+{\footnotesize Fuente: catálogo INT-01--15, inventario del Anexo 4-N y RT-11.02. Seguridad mantiene el registro; cada dueño ejecuta su escenario con Calidad.\par}
+
+Las integraciones internas heredan los controles de productor y consumidor: INT-01/\allowbreak 02, identidad y UUID; INT-03/\allowbreak 04, sitio y secuencia; INT-05, sensor y frescura; INT-12, cuenta CDC de lectura; INT-13, manifiesto firmado; INT-14, integridad y capacidad del buffer. Toda excepción conserva escenario, consecuencia, responsable, tratamiento y criterio de cierre.
