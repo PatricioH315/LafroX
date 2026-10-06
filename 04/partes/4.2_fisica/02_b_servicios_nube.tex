@@ -55,6 +55,8 @@ La región us-east-1 no es una segunda producción. Solo contiene recursos para 
   \item Datos: réplica de Aurora mediante Aurora Global Database y de las tablas de temperatura de DynamoDB mediante Global Tables.
   \item Respaldos: copia de los buckets de S3 salvo el de geolocalización y copias de AWS Backup.
   \item Aplicación: réplica reducida de ECS que escala a carga completa en menos de 30 minutos durante una conmutación.
+  \item Imágenes: réplica de las imágenes de Elastic Container Registry, que recibe cada entrega liberada en Producción.
+  \item Mensajería: colas SQS FIFO y SQS, y temas SNS equivalentes, creados vacíos por infraestructura como código para la conmutación.
 \end{itemize}
 
 La región primaria sa-east-1 está en São Paulo, Brasil, y la secundaria us-east-1 en Virginia del Norte, Estados Unidos; ambas suponen transferencia internacional de datos desde Chile. Los datos de geolocalización de personas quedan fuera de la región secundaria; la analítica se copia a ella en forma diferida, sin las posiciones de flota, porque conserva los registros de temperatura y de trazabilidad de lote que el caso exige retener cinco años (Bases Técnicas del caso, cap.~15, p.~26). La base de licitud, los resguardos de tratamiento y la garantía de continuidad ante las decisiones de residencia del CLIENTE se desarrollan en la sección~\ref{sec:e-especificaciones-del-sitio-secundario-y-}.

@@ -1591,7 +1591,7 @@ La Figura [20](LAFROX-Subdocumento4.md#fig:amb-desarrollo) muestra la secuencia 
 
 **Figura 20 — Ambiente de Desarrollo**
 
-![Ambiente de Desarrollo](https://raw.githubusercontent.com/PatricioH315/LafroX/a422d30baeaf69a3cce14909bf38e549f4f6d5fd/04/figuras/fisica/ambientes/amb_desarrollo.png)
+![Ambiente de Desarrollo](https://raw.githubusercontent.com/PatricioH315/LafroX/32b3f6e77638ffe9cf24008e3d263cbb53bf6338/04/figuras/fisica/ambientes/amb_desarrollo.png)
 
 Fuente: elaboración propia.
 
@@ -1603,7 +1603,7 @@ QA sigue la misma secuencia en su propia cuenta y su propia VPC, con la misma im
 
 **Figura 21 — Ambiente de QA**
 
-![Ambiente de QA](https://raw.githubusercontent.com/PatricioH315/LafroX/a422d30baeaf69a3cce14909bf38e549f4f6d5fd/04/figuras/fisica/ambientes/amb_qa.png)
+![Ambiente de QA](https://raw.githubusercontent.com/PatricioH315/LafroX/32b3f6e77638ffe9cf24008e3d263cbb53bf6338/04/figuras/fisica/ambientes/amb_qa.png)
 
 Fuente: elaboración propia.
 
@@ -1615,7 +1615,7 @@ En Preproducción la secuencia se ensaya sobre la topología de Producción y el
 
 **Figura 22 — Ambiente de Preproducción**
 
-![Ambiente de Preproducción](https://raw.githubusercontent.com/PatricioH315/LafroX/a422d30baeaf69a3cce14909bf38e549f4f6d5fd/04/figuras/fisica/ambientes/amb_preproduccion.png)
+![Ambiente de Preproducción](https://raw.githubusercontent.com/PatricioH315/LafroX/32b3f6e77638ffe9cf24008e3d263cbb53bf6338/04/figuras/fisica/ambientes/amb_preproduccion.png)
 
 Fuente: elaboración propia.
 
@@ -1627,7 +1627,7 @@ En Producción la misma secuencia se ejecuta de forma automática y llega ademá
 
 **Figura 23 — Ambiente de Producción**
 
-![Ambiente de Producción](https://raw.githubusercontent.com/PatricioH315/LafroX/a422d30baeaf69a3cce14909bf38e549f4f6d5fd/04/figuras/fisica/ambientes/amb_produccion.png)
+![Ambiente de Producción](https://raw.githubusercontent.com/PatricioH315/LafroX/32b3f6e77638ffe9cf24008e3d263cbb53bf6338/04/figuras/fisica/ambientes/amb_produccion.png)
 
 Fuente: elaboración propia.
 
@@ -1639,7 +1639,7 @@ La Figura [24](LAFROX-Subdocumento4.md#fig:amb-recuperacion) muestra dos rutas d
 
 **Figura 24 — Ambiente de Recuperación ante Desastres**
 
-![Ambiente de Recuperación ante Desastres](https://raw.githubusercontent.com/PatricioH315/LafroX/a422d30baeaf69a3cce14909bf38e549f4f6d5fd/04/figuras/fisica/ambientes/amb_recuperacion.png)
+![Ambiente de Recuperación ante Desastres](https://raw.githubusercontent.com/PatricioH315/LafroX/32b3f6e77638ffe9cf24008e3d263cbb53bf6338/04/figuras/fisica/ambientes/amb_recuperacion.png)
 
 Fuente: elaboración propia.
 
