@@ -1,6 +1,6 @@
 # Formulario T-14: Plan de trabajo, EDT y carta Gantt
 
-Este formulario detalla lo que el Subdocumento 7 resume en sus secciones 7.1 y 7.3, conforme al Formulario T-14 de las Bases Administrativas y al Capítulo 7 del índice obligatorio de las Aclaraciones de la licitación. Contiene la estructura de descomposición del trabajo (EDT) completa; su diccionario, con el entregable, el criterio de aceptación, el responsable y el período de cada paquete; y la carta Gantt de los 56 meses del contrato. El método de estimación y programación, la ruta crítica y los frentes de trabajo se detallan en el Formulario T-15, y la implantación de cada etapa, en el Formulario T-18.
+Este formulario detalla lo que el Subdocumento 7 resume en sus secciones 7.1 y 7.3, conforme al Formulario T-14 de las Bases Administrativas y al Capítulo 7 del índice obligatorio de las Aclaraciones de la licitación. Contiene la estructura de descomposición del trabajo (EDT) completa; su diccionario, con el entregable, el criterio de aceptación, el responsable y el período de cada paquete; y la carta Gantt de los 56 meses del contrato. El método de estimación y programación, la ruta crítica y los frentes de trabajo se detallan en el Formulario T-15, y la implantación de cada etapa, en el Formulario T-18. La EDT termina en el paquete de trabajo; la descomposición de cada paquete en actividades de 8 a 80 horas hombre que caben en una quincena está en el Formulario T-15, sección 6.
 
 ## 1 Estructura de descomposición del trabajo
 
@@ -321,7 +321,7 @@ La construcción concentra 79 de los 222 paquetes, y las fases que no son softwa
     
 
       
--  3.5.1 Pedido electrónico y aviso de despacho para las cadenas, portal de clientes y portal de proveedores (M11 Canal moderno)
+-  3.5.1 Pedido electrónico y aviso de despacho para las cadenas, y portal de proveedores (M11 Canal moderno)
       
 -  3.5.2 Portal web de clientes: cuenta, saldo, entregas y documentos
       
@@ -1212,7 +1212,7 @@ La Tabla «tab:T-14-22» presenta sus paquetes.
 
 | Código | Paquete de trabajo | Entregable | Criterio de aceptación | Resp. | Período |
 | --- | --- | --- | --- | --- | --- |
-| 3.5.1 | Pedido electrónico y aviso de despacho para las cadenas, portal de clientes y portal de proveedores (M11 Canal moderno) | M11 en QA. | Los requerimientos del T-12 asignados pasan sus pruebas, incluido el portal de proveedores que consulta en modo de solo lectura el estado de sus órdenes de compra (RF-12.22). | DES | Meses 15–16; integración mes 17 (H9). |
+| 3.5.1 | Pedido electrónico y aviso de despacho para las cadenas, y portal de proveedores (M11 Canal moderno) | M11 en QA. | Los requerimientos del T-12 asignados pasan sus pruebas, incluido el portal de proveedores que consulta en modo de solo lectura el estado de sus órdenes de compra (RF-12.22). | DES | Meses 15–16; integración mes 17 (H9). |
 | 3.5.2 | Portal web de clientes: cuenta, saldo, entregas y documentos | Portal en QA. | Los requerimientos del T-12 asignados pasan sus pruebas; además, cada cliente ve solo sus datos, y el portal cumple las normas de accesibilidad. | DES | Meses 15–16; integración mes 17 (H9). |
 | 3.5.3 | Portal web de transportistas: rutas asignadas del día siguiente | Portal en QA. | Los requerimientos del T-12 asignados pasan sus pruebas; además, cada empresa ve solo sus rutas. | DES | Meses 15–16; integración mes 17 (H9). |
 | 3.5.4 | Costo de servir por cliente y por entrega (M10 Analítica) | Costo de servir publicado. | Los requerimientos del T-12 asignados pasan sus pruebas; además, finanzas reproduce el costo de una muestra de entregas. | DAT | Meses 15–16; integración mes 17 (H9). |

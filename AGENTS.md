@@ -24,6 +24,14 @@ La rama `branch-md` de este repositorio contiene material exclusivamente Markdow
 - No inferir que un archivo ausente fue revisado, aprobado o está disponible.
 - Después de un cambio sustantivo, actualizar el estado de trabajo del contexto compacto.
 
+## Material de consulta del ramo (clases FEP y PMBOK)
+
+La carpeta `clases + pmbok/` contiene las transcripciones de las clases FEP01–FEP05 (arquitectura, requisitos/alcance/EDT, estimación, riesgos TIC y sala de servidores) y de los capítulos 5, 6, 8 y 11 del PMBOK 6 (alcance, cronograma, calidad y riesgos), con dos guías de navegación (`Guia_de_Navegacion_FEP01-FEP05.md` y `Guia_de_Navegacion_PMBOK6_Cap05-06-08-11.md`).
+
+- Úsala como consultor ante dudas de método: descomposición de la EDT (regla 8/80 y del período de reporte, FEP02 diapositiva 56), diccionario, estimación PERT, CPM y holguras, riesgos, calidad y diseño de sala técnica. Empieza por las guías de navegación para ubicar la diapositiva o sección.
+- Precedencia: las Bases y las Aclaraciones mandan sobre el material del curso. El curso orienta el método; no crea requisitos contractuales ni cifras del caso.
+- No se cita como referencia de la oferta con nombres de archivo locales: si un entregable usa una idea del PMBOK, se cita la obra (Project Management Institute, 2017). Las clases son antecedentes de preparación.
+
 ## Fuentes y precedencia
 
 1. `Bases/Bases_Administrativas.md`.
