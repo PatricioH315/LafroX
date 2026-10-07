@@ -71,7 +71,8 @@ Jefe de Proyecto y Apoderado · LafroX SpA
 
 - Tabla 1.1 Distribución de la dotación técnica de planta de LafroX. Fuente: Elaboración propia. — 9
 - Tabla 1.2 Equivalencia entre el Caso 02 y los proyectos del Formulario T-6. Fuente: elaboración propia a partir del caso y del Formulario T-6. — 12
-- Tabla 1.3 Declaración de uso de IA por sección del Subdocumento 1. Fuente: registro del equipo. — 16
+- Tabla 1.3 Roles mínimos del numeral 19.2 y su asignación. Fuente: elaboración propia a partir de las Bases Técnicas Transversales, numeral 19.2. — 14
+- Tabla 1.4 Declaración de uso de IA por sección del Subdocumento 1. Fuente: registro del equipo. — 16
 
 ---
 
@@ -238,7 +239,7 @@ Esta base de clientes evidencia la capacidad de LafroX para operar de manera sim
 
 Para garantizar el cumplimiento de los 56 meses de contrato estipulados en el Artículo 17° de las Bases Administrativas, LafroX establece una estructura de gobernanza de proyecto dedicada, centralizada y con líneas de autoridad unívocas.
 
-El proyecto será liderado de forma exclusiva y continua por el Jefe de Proyecto nominado, Alex Aravena, quien actuará como interlocutor único frente a la contraparte técnica y directiva del cliente. Reportando directamente al Jefe de Proyecto, se constituye un comité técnico compuesto por siete líderes de dominio especializados:
+El proyecto será liderado de forma exclusiva y continua por el Jefe de Proyecto nominado, Alex Aravena, quien actuará como interlocutor único frente a la contraparte técnica y directiva del cliente. Reportando directamente al Jefe de Proyecto, se constituye un comité técnico compuesto por siete líderes de dominio especializados, que cubren los roles mínimos del numeral 19.2 de las Bases Técnicas Transversales según la Tabla 1.3:
 
 - **Arquitecto de Solución (Bastián Trejo):** Responsable del diseño técnico global, la consistencia entre capas lógicas y la articulación del modelo híbrido nube/on-premise.
 - **Encargado de Seguridad de la Información (Álvaro Catalán):** Responsable del cumplimiento de la norma ISO/IEC 27001, la arquitectura Zero Trust y los controles de acceso.
@@ -248,7 +249,24 @@ El proyecto será liderado de forma exclusiva y continua por el Jefe de Proyecto
 - **Líder de Operación / SRE (Guillermo Castillo):** Responsable de la disponibilidad continua 24×7, observabilidad de infraestructura y gestión de niveles de servicio.
 - **Líder de Implantación y Gestión del Cambio (Patricio Henríquez):** Responsable de la adopción en terreno, capacitación de preventistas y conductores, y marchas blancas.
 
-El detalle curricular, la matriz de dedicación porcentual por mes de contrato y las cartas formales de compromiso del equipo nominado se presentan en el capítulo de equipo de trabajo de la oferta y en su formulario.
+El numeral 19.2 de las Bases Técnicas Transversales exige diez roles mínimos. La Tabla 1.3 asigna cada uno a una persona nominada, con su dedicación. Dos roles no tienen un líder separado y se asignan a líderes cuyo ámbito los contiene: el Líder de Integración, al Arquitecto de Solución, cuya división es Arquitectura de Solución e Integración, y el Líder Funcional, al Líder de Implantación y Gestión del Cambio, que dirige el conocimiento del proceso del CLIENTE desde el levantamiento. Por esa asignación, ambos líderes tienen dedicación completa durante la implementación.
+
+**Tabla 1.3** Roles mínimos del numeral 19.2 y su asignación. Fuente: elaboración propia a partir de las Bases Técnicas Transversales, numeral 19.2.
+
+| Rol del numeral 19.2 | Dedicación mínima exigida | Persona nominada | Dedicación asignada | Ámbito que le corresponde |
+|---|---|---|---|---|
+| Jefe de Proyecto | 100 % en implementación | Alex Aravena | 100 % meses 1 a 21; dirección del contrato en Operación | Dirección, gobierno y control |
+| Arquitecto de Solución | Alta en diseño, permanente en el Comité de Arquitectura | Bastián Trejo | 100 % meses 1 a 21; Comité de Arquitectura hasta el mes 56 | Arquitectura y registro de decisiones |
+| Líder de Integración | Permanente en implementación | Bastián Trejo | Incluido en su dedicación de 100 % meses 1 a 21 | Interfaces sin documentación, ERP y terceros (1.2.3, 3.3 y 3.6) |
+| Encargado de Seguridad de la Información | Permanente | Álvaro Catalán | Meses 1 a 56 | Seguridad, identidad y SOC |
+| Líder de Datos | Permanente en implementación | Leandro Chamorro | Meses 1 a 21 | Modelo de datos y migración |
+| Líder de Desarrollo | 100 % en implementación | Tomás Pérez | 100 % meses 1 a 21 | Construcción Laravel/PHP y móvil; en los meses 1 a 4, diseño y prototipos |
+| Líder Funcional | 100 % en implementación | Patricio Henríquez | 100 % meses 1 a 21 | Levantamiento de procesos, reglas de negocio, prototipos y pruebas de aceptación |
+| Líder de Calidad y Pruebas | Permanente | Maximiliano Miño | Meses 1 a 56 | Plan de pruebas y puertas de calidad |
+| Líder de Operación / SRE | Desde el mes 6, permanente en Operación | Guillermo Castillo | Meses 1 a 56 | Plataforma, sitios, NOC, mesa y niveles de servicio |
+| Líder de Implantación y Gestión del Cambio | Desde el mes 8 | Patricio Henríquez | Incluido en su dedicación de 100 % meses 1 a 21 | Olas, capacitación y marchas blancas |
+
+La acumulación de dos roles en una persona se compensa con equipos: el Arquitecto de Solución dirige un equipo de arquitectura e integración, y el Líder Funcional cuenta con analistas funcionales y con el equipo de implantación de las marchas blancas, cuya dotación se programa en el Formulario T-15 del Subdocumento 7, sección 5.7. Si la carga de las marchas blancas lo requiere, LafroX nomina un Líder de Implantación separado sin reducir la dedicación del Líder Funcional. La experiencia exigida para cada rol y las cartas de compromiso se acreditan conforme a las Bases Administrativas.
 
 ## 1.6 Alianzas
 
@@ -259,7 +277,7 @@ Para viabilizar el despliegue del modelo híbrido obligatorio (Artículo 16° de
 - **Fortinet / Cisco (Select Partner):** Alianza para el aprovisionamiento de equipamiento de conectividad de borde, switches industriales y firewalls de red SD-WAN requeridos para enlazar de manera segura los centros de distribución y salas técnicas on-premise. Vigente hasta septiembre de 2027.
 - **Starlink Business (Authorized Enterprise Reseller):** Convenio para la provisión e integración de terminales satelitales de baja órbita con prioridad de tráfico corporativo, garantizando redundancia de comunicaciones ante caídas de enlace en cross-dockings y almacenes remotos. Vigente hasta diciembre de 2027.
 
-Las especificaciones particulares de hardware e implementos que estas alianzas suministran al proyecto se detallan en la especificación de implementos y en el capítulo de equipo de trabajo de la oferta.
+Las especificaciones particulares de hardware e implementos que estas alianzas suministran al proyecto se detallan en el Formulario T-11 del Subdocumento 4.
 
 # Referencias
 
@@ -274,9 +292,9 @@ Las especificaciones particulares de hardware e implementos que estas alianzas s
 
 # Declaración de uso de IA
 
-En cumplimiento de la Sección 7.2 de las Aclaraciones de la Licitación, la Tabla 1.3 declara el uso asistido de herramientas de inteligencia artificial en la elaboración del presente subdocumento.
+En cumplimiento de la Sección 7.2 de las Aclaraciones de la Licitación, la Tabla 1.4 declara el uso asistido de herramientas de inteligencia artificial en la elaboración del presente subdocumento.
 
-**Tabla 1.3** Declaración de uso de IA por sección del Subdocumento 1. Fuente: registro del equipo.
+**Tabla 1.4** Declaración de uso de IA por sección del Subdocumento 1. Fuente: registro del equipo.
 
 | Sección | Herramienta | Finalidad del uso | Texto | Diagrama | Revisión humana |
 |---|---|---|---|---|---|
@@ -284,6 +302,7 @@ En cumplimiento de la Sección 7.2 de las Aclaraciones de la Licitación, la Tab
 | 1.2 Estructura Org. | Claude / Gemini | Organización de la descripción de la estructura corporativa y la dotación técnica | Bajo | Medio | Bastián Trejo (Arq): Revisión de líneas de reporte y distribución de la dotación |
 | 1.3 Gobierno interno | Claude / Gemini | Estructuración de políticas y comités | Bajo | Ninguno | Álvaro Catalán (Seg): Verificación normas 27001/CMMI |
 | 1.4 Experiencia | Claude / Gemini | Redacción de proyectos equivalentes | Bajo | Ninguno | Alex Aravena (JP): Verificación de volumetrías |
-| 1.5 Estructura Proy. | Claude / Gemini | Alineación de roles institucionales | Bajo | Ninguno | Patricio Henríquez (Gest): Trazabilidad con el capítulo de equipo de trabajo de la oferta |
+| 1.5 Estructura Proy. | Claude / Gemini | Alineación de roles institucionales | Bajo | Ninguno | Patricio Henríquez (Gest): Trazabilidad con los roles del numeral 19.2 de las Bases Técnicas Transversales |
 | 1.6 Alianzas | Claude / Gemini | Redacción de convenios de hardware | Bajo | Ninguno | Bastián Trejo (Arq): Coherencia con diseño híbrido |
 | Formulario T-6 | Claude / Gemini | Disposición tabular del formulario | Bajo | Ninguno | Alex Aravena (JP): Validación de los 11 campos exigidos y coherencia con la sección 1.4 |
+| 1.5 Estructura Proy., Tabla 1.3 (7 de octubre de 2026) | Claude Code | Asignación de los roles mínimos del numeral 19.2 | Alto | Ninguno | No documentada |

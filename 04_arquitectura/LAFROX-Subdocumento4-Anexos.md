@@ -175,7 +175,7 @@ La matriz asigna a cada módulo su requisito funcional, su responsabilidad, su i
 | M9 Calidad / RF-09 | Lote, frío y bloqueo. | Bloqueo a M5; alerta. | Jefa de Calidad. | 1 |
 | M10 Analítica / RF-11 | OTIF operacional y costo de servir. | Consume eventos sin escribir. | Gerentes Comercial, de Finanzas y de Operaciones; Jefa de Calidad. | 1 OTIF; 2 costo |
 | M11 Canal moderno / RF-12 | Pedido EDI y excepciones. | Contrato por cadena; M3. | Cliente del canal moderno; Gerente Comercial. | 2 |
-| M12 Flota / RF-14 | Ruta real, desviación y datos para costo. | GPS a M4/M10. | Planificador de Rutas; Gerente de Operaciones. | 1; costo en 2 |
+| M12 Telemetría / RF-14 | Ruta real, desviación y datos para costo. | GPS a M4/M10. | Planificador de Rutas; Gerente de Operaciones. | 1; costo en 2 |
 
 Fuente: elaboración propia a partir del catálogo de requerimientos y del alcance del capítulo 3.
 
@@ -202,7 +202,7 @@ La tabla sigue cada grupo de requisitos funcionales hasta el módulo responsable
 | RF-09 | M9 Calidad | 2, 4, 5 y 6 | Bloqueo y liberación por Calidad. |
 | RF-11 | M10 Analítica | 4, 5 y 6 | OTIF y costo trazables al evento. |
 | RF-12 | M11 Canal moderno | 3, 4 y 5 | Pedido EDI normalizado. |
-| RF-14 | M12 Flota | 2, 4 y 5 | Ruta real correlacionada. |
+| RF-14 | M12 Telemetría | 2, 4 y 5 | Ruta real correlacionada. |
 
 Fuente: elaboración propia a partir del catálogo de requerimientos del capítulo 3 y de la Tabla [A.5](LAFROX-Subdocumento4-Anexos.md#tab:modulos-funcionales).
 
@@ -229,7 +229,7 @@ El mapa indica, para cada módulo, el tipo de relación con sus interlocutores, 
 | M9 Calidad | Proveedor de bloqueo | M1, M5 y sensores | Lote bloqueado. | Calidad libera. |
 | M10 Analítica | Consumidor de eventos | M1–M9 y M12 | Indicadores consolidados. | Solo lectura. |
 | M11 Canal moderno | Traducción EDI | Cadena, M3 y ACL | Pedido normalizado. | M3 gobierna pedido. |
-| M12 Flota | Adapta telemetría | GPS, M4 y M10 | Ruta observada. | No registra entrega. |
+| M12 Telemetría | Adapta telemetría | GPS, M4 y M10 | Ruta observada. | No registra entrega. |
 
 Fuente: elaboración propia a partir de las responsabilidades de M1–M12 del apartado 4.1.4.
 
@@ -284,7 +284,7 @@ Cada sobre JSON versionado lleva UUID, correlación, sitio, época de autoridad,
 
 ##### INT-05. Temperatura — M9
 
-Modo asíncrono para muestras y alarma local inmediata. Volumen: 10.584 lecturas/día en régimen y peak, por 21 puntos de cámara × 288 lecturas más 28 termógrafos × 162 lecturas entre 05:30 y 19:00 (6.048 + 4.536). Contraparte: IoT Core/ingesta central, requerida 24×7; el bloqueo M9–M5 permanece local y no espera a nube. Acuse remoto máximo de 30 segundos por lote. Gateway: retención de 24 horas; termógrafo: registro de toda la ruta, hasta 14 horas. Una pérdida de señal o lectura obsoleta genera una incidencia diferenciada de la excursión térmica.
+Modo asíncrono para muestras y alarma local inmediata. Volumen: 10.920 lecturas/día en régimen y peak, por 21 puntos de cámara × 288 lecturas más 28 termógrafos × 174 lecturas entre 05:30 y 20:00 (6.048 + 4.872). La ventana va desde la carga en la cámara hasta la descarga del último camión, que retorna como máximo a las 20:00; el termógrafo registra en forma continua mientras el camión transporta producto de frío, de modo que una ruta extendida o un retorno nocturno sigue registrado y su volumen adicional se transmite al sincronizar. Contraparte: IoT Core/ingesta central, requerida 24×7; el bloqueo M9–M5 permanece local y no espera a nube. Acuse remoto máximo de 30 segundos por lote. Gateway: retención de 24 horas; termógrafo: registro de toda la ruta, hasta 14,5 horas en el horario declarado y continuo si la ruta se extiende. Una pérdida de señal o lectura obsoleta genera una incidencia diferenciada de la excursión térmica.
 
 ##### INT-12. Réplica de lectura del WMS de Talca — M2/Datos
 
@@ -373,18 +373,18 @@ Esta síntesis permite contrastar órdenes de magnitud. Los anexos 4-G y 4-H son
 | INT-03 Eventos bodega a nube | 58.710 msg/día | 109.032 | 260.000 líneas ÷ 22,14 × 5; peak × 1,857 |
 | INT-04 Detalle de cross-docking a la nube | 5.600 msg/día | 10.400 | Cuatro operaciones por entrega |
 | INT-03/04 Coordinación de reserva | 46.968 msg/día | 87.228 | 260.000 líneas ÷ 22,14 × 4; peak: 21.807 líneas × 4 |
-| INT-05 Temperatura | 10.584 msg/día | 10.584 | 21 × 288 lecturas de cámara + 28 × 162 de termógrafo |
+| INT-05 Temperatura | 10.920 msg/día | 10.920 | 21 × 288 lecturas de cámara + 28 × 174 de termógrafo |
 | INT-06 ERP 2017 | 2.025 msg/día | 3.762 | Flujos ERP sobre 22,14 días; peak × 1,857 |
 | INT-07 DTE/SII | 3.071 msg/día | 5.703 | 34.000 documentos ÷ 22,14 × 2; peak × 1,857 |
-| INT-08 EDI cadenas modernas | 0 msg/día | 1.144 | Escenario 2029: 2.600 × 11 % × 4 |
-| INT-09 Pasarela de pago | 533 msg/día | 990 | 11.800 ÷ 22,14; peak × 1,857 |
+| INT-08 EDI cadenas modernas | 616 msg/día | 1.144 | Solución futura E2: 1.400 × 11 % × 4; peak 2.600 × 11 % × 4 |
+| INT-09 Pasarela de pago | 2.800 msg/día | 5.200 | Cota: un pago electrónico por entrega × 2 mensajes; 1.400 × 2; 2.600 × 2 |
 | INT-10 Mapas y geocodificación | 96 llamadas/día | 96 | Volumen constante en ambos escenarios |
 | INT-11 Avisos al cliente | 2.800 msg/día | 5.200 | Dos avisos por entrega |
 | INT-12 Cambios a réplica | 12.602 cambios/día | 23.404 | Peak × 1,857; WAL estimado de 0,123 GB/día en Talca |
 | INT-13 Identidad y manifiestos | 760 eventos/día | 760 | 380 dispositivos × 2 |
 | INT-14 Métricas, logs y trazas | 13.000 eventos/día | 13.000 | 13 nodos × 1.000 eventos |
 | INT-15 Telemetría de flota | 60.480 posiciones/día | 60.480 | 42 camiones × 120 posiciones/h × 12 h |
-| **Total** | **225.629/día** | **347.383/día** | **15 integraciones** |
+| **Total** | **228.848/día** | **351.929/día** | **15 integraciones** |
 
 Fuente: elaboración propia a partir de las Bases Técnicas del caso (cap. 14, p. 24). Los cálculos se indican en la columna de derivación.
 
@@ -621,6 +621,35 @@ Recepción, despacho, catálogo y Tesorería son funciones asignadas a personas 
 <a id="anx:O"></a>
 
 El registro reúne las decisiones de arquitectura lógica y física conforme a RT-02.04 (Bases Técnicas Transversales, cap. 2, p. 7). Cada ficha identifica la alternativa descartada, el criterio de selección y la evidencia necesaria para verificar su realización. Los RT de las fichas remiten a las Bases Técnicas Transversales (caps. 2–16, pp. 6–29), salvo RT-10.05 y RT-16.14, precisados por el caso (Bases Técnicas del caso, cap. 15, p. 27).
+
+**Tabla O.0 — Estado y responsables de las decisiones**
+
+La fecha es la de registro de la decisión en la versión de la oferta, no la fecha de consulta de las tecnologías citadas. Ninguna decisión se presenta como aprobada por el CLIENTE: su aprobación forma parte del H2, y cada cambio posterior abre una nueva versión de la ficha con su fecha, su estado (propuesta, aprobada, reemplazada) y el acta del Comité de Arquitectura que la resolvió.
+
+| ADR | Decisión | Fecha de registro | Estado | Responsable de la propuesta | Aprobación |
+| --- | --- | --- | --- | --- | --- |
+| ADR-01 | Estilo arquitectónico | 5 de octubre de 2026 | Propuesta en la oferta | Bastián Trejo, Arquitecto de Solución | Comité de Arquitectura y Contraparte Técnica, en el H2 (2.4.1) |
+| ADR-02 | Conectividad WAN (tres caminos) | 5 de octubre de 2026 | Propuesta en la oferta | Bastián Trejo, Arquitecto de Solución | Comité de Arquitectura y Contraparte Técnica, en el H2 (2.4.1) |
+| ADR-03 | Modelo híbrido y topología de sitios | 5 de octubre de 2026 | Propuesta en la oferta | Bastián Trejo, Arquitecto de Solución | Comité de Arquitectura y Contraparte Técnica, en el H2 (2.4.1) |
+| ADR-04 | Persistencia políglota | 5 de octubre de 2026 | Propuesta en la oferta | Bastián Trejo, Arquitecto de Solución | Comité de Arquitectura y Contraparte Técnica, en el H2 (2.4.1) |
+| ADR-05 | Mensajería asíncrona | 5 de octubre de 2026 | Propuesta en la oferta | Bastián Trejo, Arquitecto de Solución | Comité de Arquitectura y Contraparte Técnica, en el H2 (2.4.1) |
+| ADR-06 | Identidad híbrida | 5 de octubre de 2026 | Propuesta en la oferta | Bastián Trejo, Arquitecto de Solución | Comité de Arquitectura y Contraparte Técnica, en el H2 (2.4.1) |
+| ADR-07 | Movilidad de terreno | 5 de octubre de 2026 | Propuesta en la oferta | Bastián Trejo, Arquitecto de Solución | Comité de Arquitectura y Contraparte Técnica, en el H2 (2.4.1) |
+| ADR-08 | Destino del WMS 2013 | 5 de octubre de 2026 | Propuesta en la oferta | Bastián Trejo, Arquitecto de Solución | Comité de Arquitectura y Contraparte Técnica, en el H2 (2.4.1) |
+| ADR-09 | Estrategia de recuperación ante desastres | 5 de octubre de 2026 | Propuesta en la oferta | Bastián Trejo, Arquitecto de Solución | Comité de Arquitectura y Contraparte Técnica, en el H2 (2.4.1) |
+| ADR-10 | Plataforma on-premise: virtualización y almacenamiento | 5 de octubre de 2026 | Propuesta en la oferta | Bastián Trejo, Arquitecto de Solución | Comité de Arquitectura y Contraparte Técnica, en el H2 (2.4.1) |
+| ADR-11 | Integración B2B/EDI | 5 de octubre de 2026 | Propuesta en la oferta | Bastián Trejo, Arquitecto de Solución | Comité de Arquitectura y Contraparte Técnica, en el H2 (2.4.1) |
+| ADR-12 | Capacidad y peak | 5 de octubre de 2026 | Propuesta en la oferta | Bastián Trejo, Arquitecto de Solución | Comité de Arquitectura y Contraparte Técnica, en el H2 (2.4.1) |
+| ADR-13 | Puerta de enlace de servicios | 5 de octubre de 2026 | Propuesta en la oferta | Bastián Trejo, Arquitecto de Solución | Comité de Arquitectura y Contraparte Técnica, en el H2 (2.4.1) |
+| ADR-14 | Observabilidad | 5 de octubre de 2026 | Propuesta en la oferta | Bastián Trejo, Arquitecto de Solución | Comité de Arquitectura y Contraparte Técnica, en el H2 (2.4.1) |
+| ADR-15 | Gestión de secretos | 5 de octubre de 2026 | Propuesta en la oferta | Bastián Trejo, Arquitecto de Solución | Comité de Arquitectura y Contraparte Técnica, en el H2 (2.4.1) |
+| ADR-16 | Acceso de personas internas y remotas | 5 de octubre de 2026 | Propuesta en la oferta | Bastián Trejo, Arquitecto de Solución | Comité de Arquitectura y Contraparte Técnica, en el H2 (2.4.1) |
+| ADR-17 | Emisión de guías y liberación documental | 5 de octubre de 2026 | Propuesta en la oferta | Bastián Trejo, Arquitecto de Solución | Comité de Arquitectura y Contraparte Técnica, en el H2 (2.4.1) |
+| ADR-18 | Protección de datos fuera del sitio | 5 de octubre de 2026 | Propuesta en la oferta | Bastián Trejo, Arquitecto de Solución | Comité de Arquitectura y Contraparte Técnica, en el H2 (2.4.1) |
+| ADR-19 | Residencia de datos y regiones | 5 de octubre de 2026 | Propuesta en la oferta | Bastián Trejo, Arquitecto de Solución | Comité de Arquitectura y Contraparte Técnica, en el H2 (2.4.1) |
+| ADR-20 | Frontend web | 5 de octubre de 2026 | Propuesta en la oferta | Bastián Trejo, Arquitecto de Solución | Comité de Arquitectura y Contraparte Técnica, en el H2 (2.4.1) |
+| ADR-21 | Infraestructura como código y cadena de entrega | 5 de octubre de 2026 | Propuesta en la oferta | Bastián Trejo, Arquitecto de Solución | Comité de Arquitectura y Contraparte Técnica, en el H2 (2.4.1) |
+| ADR-22 | Cadena de frío en el borde | 5 de octubre de 2026 | Propuesta en la oferta | Bastián Trejo, Arquitecto de Solución | Comité de Arquitectura y Contraparte Técnica, en el H2 (2.4.1) |
 
 **ADR-01. Estilo arquitectónico**
 
@@ -969,7 +998,7 @@ El inventario distingue versión de referencia de una imagen exacta de producci�
 | PostgreSQL | 16.x | 09-11-2028. | Ensayo de migración mayor y reversión 6 meses antes. |
 | Angular | 22.x | LTS: junio de 2028, fecha orientativa del fabricante. | Revisión semestral y actualización anual por compatibilidad. |
 | TypeScript | 6.0.x | Sin fecha contractual independiente. | Versión compatible con Angular; archivo de bloqueo y pruebas. |
-| RabbitMQ | 4.3.x | Comunidad: 30-11-2026. | Actualizar antes de esa fecha a rama soportada; no se presume licencia comercial. |
+| RabbitMQ | 4.3.x | Comunidad: 31-01-2027, según la tabla de versiones del fabricante (https://www.rabbitmq.com/release-information). | Programar la actualización a la rama soportada antes de esa fecha, que precede al inicio supuesto de febrero de 2027; no se presume licencia comercial. |
 
 Fuente: Laravel (2026), PHP (2026), PostgreSQL (2026), Angular (2026a, 2026b) y RabbitMQ (2026). Fechas consultadas el 30-09-2026.
 
@@ -1301,7 +1330,7 @@ Se calcula el máximo horario de cada lugar para no sumar ventanas que no coinci
 
 Las operaciones de cada entrega en cross-docking se reparten en recepción, escaneo y desconsolidación de 03:00 a 05:00, y despacho de 05:00 a 06:00; SV-04 concentra sólo la hora cargada de cada tramo. La preparación normal de Talca se calcula como 11.742 líneas por noche × 2 operaciones × 2/3 ÷ 28.800 segundos = 0,54 TPS de media; la hora cargada de SV-04 alcanza 1,09 TPS. El despacho se distribuye entre Talca y Concepción según SV-03; a las 05:00 el WMS alcanza 1,46 TPS normal y 2,68 TPS en septiembre en Talca, y 0,73 y 1,34 TPS en Concepción.
 
-La nube suma preventa, reparto, recepción, trazabilidad, guías, sincronización y el escenario EDI. Los aproximadamente 2.852 documentos/día peak son el total de DTE (34.000 ÷ 22,14 × 1,857), no sólo guías; tomarlos todos como guías a emitir antes de la salida es una cota conservadora. El portal queda separado: 2.600 ÷ 9 × 2 por SV-04 = 578 sesiones en la hora cargada; 578 × 60 ÷ 3.600 = 9,63 solicitudes/s y 578 × 10 ÷ 60 = 96,30 concurrentes. La cota extrema es 2.600 × 60 ÷ 3.600 = 43,33 solicitudes/s y 433,33 concurrentes. Las 2.600 sesiones diarias del portal son un parámetro de diseño: se toma una sesión por cada cliente de food service y de cadenas, 2.100 + 500 = 2.600 (Bases Técnicas del caso, cap. 2, p. 4). No son las 2.600 visitas diarias de preventa (Bases Técnicas del caso, anexo B, p. 38); que las dos cifras coincidan es casualidad.
+La nube suma preventa, reparto, recepción, trazabilidad, guías, sincronización y el escenario EDI. Los aproximadamente 2.852 documentos/día peak son el total de DTE (34.000 ÷ 22,14 × 1,857), no sólo guías; tomarlos todos como guías a emitir antes de la salida es una cota conservadora. El portal queda separado: 2.600 ÷ 9 × 2 por SV-04 = 578 sesiones en la hora cargada; 578 × 60 ÷ 3.600 = 9,63 solicitudes/s y 578 × 10 ÷ 60 = 96,30 concurrentes. La cota extrema es 2.600 × 60 ÷ 3.600 = 43,33 solicitudes/s y 433,33 concurrentes. Las 2.600 sesiones diarias del portal son un parámetro de diseño: se toma una sesión por cada cliente de food service y de cadenas, 2.100 + 500 = 2.600 (Bases Técnicas del caso, cap. 2, p. 4). La cota cubre esos dos canales y no la adopción del canal tradicional, cuyo uso del portal es opcional y no tiene una medición en el caso. Ese canal se admite con una cuota propia en la puerta de enlace: 20 solicitudes/s agregadas para los clientes tradicionales, que es la capacidad remanente bajo el techo de 8 tareas en la cota extrema (8 × 14,00 − 91,70 = 20,30 solicitudes/s). Si la adopción medida acerca el uso a esa cuota, se amplía la capacidad antes de subirla; la cuota no rechaza pedidos de preventa, que usan su propio perfil. No son las 2.600 visitas diarias de preventa (Bases Técnicas del caso, anexo B, p. 38); que las dos cifras coincidan es casualidad.
 
 La dimensión 1 es **12,30 TPS a las 12:00** en régimen normal. La dimensión 2 es **3,76 TPS normal y 6,94 TPS peak**, máximos reales del perfil horario entre 05:00 y 06:00 para la ventana 05:30–07:00. La dimensión 3 es **14,66 TPS a las 12:00** en septiembre. RT-09.06 (Bases Técnicas Transversales, cap. 9, p. 21) es 1,5 × 14,66 = **21,99 TPS**.
 
@@ -1360,7 +1389,7 @@ Cada cantidad aplica los supuestos S-28 y S-30 a S-41, registrados en el Subdocu
  
 - Terminales de preventa (S-32): 62 + 7 = 69. A tres años, 70 preventistas, un 12,9 % más, y 70 + 7 = 77, es decir, 8 más.
  
-- Terminales de bodega: se comparten entre turnos (RT-12.11; Bases Técnicas del caso, cap. 15, p. 27), sin personal de carga adicional (S-33), de modo que los fija el turno nocturno: 120 preparadores en Talca y 60 en Concepción (S-39). En Talca, 20 son de la cuadrilla de congelado (S-34): los productos de frío son 1.100 ÷ 8.400 = 13,1 % del surtido y el congelado ocupa 400 ÷ 1.300 = 30,8 % del área fría, de modo que el congelado es cerca de 13,1 % × 30,8 % = 4,0 % de las líneas; 120 personas × 8 h = 960 horas-persona, cuyo 4,0 % son 38,4 horas, concentradas en las últimas 2 horas del turno: 38,4 ÷ 2 = 19,2, unas 20 personas. Talca suma 20 + 2 de congelado y 100 + 10 estándar, Concepción 60 + 6, y los cross-docking 6 + 1 (S-35): 205 en total. A tres años (S-32), la dotación de los centros de distribución crece 350 ÷ 310 = 12,9 %: Talca llega a 23 + 3 de congelado y 113 + 12 estándar, y Concepción a 68 + 7; con los 7 de los cross-docking, el parque llega a 233, es decir, 28 más bajo la reserva agregada. Como el T-11 deja un terminal de reserva en cada plataforma, se agregan dos unidades: 235 terminales de bodega.
+- Terminales de bodega: se comparten entre turnos (RT-12.11; Bases Técnicas del caso, cap. 15, p. 27), sin personal de carga adicional (S-33), de modo que los fija el turno nocturno: 120 preparadores en Talca y 60 en Concepción (S-39). En Talca, 20 son de la cuadrilla de congelado (S-34): los productos de frío son 1.100 ÷ 8.400 = 13,1 % del surtido y el congelado ocupa 400 ÷ 1.300 = 30,8 % del área fría, de modo que el congelado es cerca de 13,1 % × 30,8 % = 4,0 % de las líneas; 120 personas × 8 h = 960 horas-persona, cuyo 4,0 % son 38,4 horas, concentradas en las últimas 2 horas del turno: 38,4 ÷ 2 = 19,2, unas 20 personas. Talca suma 20 + 2 de congelado y 100 + 10 estándar, Concepción 60 + 6, y los cross-docking 6 + 3, uno de reserva por plataforma como en el T-11 (S-35): 207 en total. A tres años (S-32), la dotación de los centros de distribución crece 350 ÷ 310 = 12,9 %: Talca llega a 23 + 3 de congelado y 113 + 12 estándar, y Concepción a 68 + 7; con los 9 de los cross-docking, el parque llega a 235 terminales de bodega, 28 más que al inicio. Las licencias de MDM y las identidades de terminal se dimensionan con 207 equipos al inicio y 235 en el año 3.
  
 - Termógrafos: 28 + 3 = 31, para los 18 camiones con frío propios y los 10 de transportistas (S-28), sin compra por crecimiento (S-38).
 
@@ -1370,7 +1399,7 @@ Cada cantidad aplica los supuestos S-28 y S-30 a S-41, registrados en el Subdocu
 
 El almacenamiento transaccional se calcula con 1.300.000 eventos = 260.000 líneas × 5, 520.000 operaciones = 260.000 líneas × 2, 155.000 operaciones = 31.000 pedidos × 5 y 279.050 movimientos = 260.000 líneas + 14.500 pallets + 3.400 conteos + 1.150 recepciones. Por tanto, ((1.300.000 + 520.000 + 155.000) × 1 KB + 279.050 × 0,5 KB) × 2 × 12 = **50,75 GB/año** y seis años acumulan **304,49 GB** como cota de retención. La evidencia es 30 KB + 200 KB × (1 + 900 ÷ 31.000) = **235,81 KB por entrega** y genera **87,72 GB/año**; en el mes peak alcanza 13,58 GB.
 
-La temperatura separa cámaras y camiones: 21 puntos instalados × 288 lecturas/día = 6.048 lecturas de cámara, con la cámara de Concepción estimada por S-37, y 28 termógrafos × 162 lecturas/día entre 05:30 y 19:00 = 4.536 lecturas de camión; el total es 10.584 mensajes/día. Con 145 bytes por lectura, son 0,56 GB/año crudos, 0,14 GB/año almacenados con factor 0,25 y 2,80 GB crudos en cinco años. La posición produce 42 camiones × 12 h × 120 eventos/h × 365 = 22.075.200 eventos/año; se cuentan los 365 días como cota, aunque el domingo no hay reparto; con 145 bytes son 3,20 GB crudos y 0,80 GB almacenados en 12 meses. Son filas separadas porque sus retenciones son distintas.
+La temperatura separa cámaras y camiones: 21 puntos instalados × 288 lecturas/día = 6.048 lecturas de cámara, con la cámara de Concepción estimada por S-37, y 28 termógrafos × 174 lecturas/día entre 05:30 y 20:00 = 4.872 lecturas de camión; el total es 10.920 mensajes/día. Con 145 bytes por lectura, son 0,58 GB/año crudos, 0,14 GB/año almacenados con factor 0,25 y 2,89 GB crudos en cinco años. La posición produce 42 camiones × 12 h × 120 eventos/h × 365 = 22.075.200 eventos/año; se cuentan los 365 días como cota, aunque el domingo no hay reparto; con 145 bytes son 3,20 GB crudos y 0,80 GB almacenados en 12 meses. Son filas separadas porque sus retenciones son distintas.
 
 La dimensión 10 se estima por dominio:
 
@@ -1403,22 +1432,22 @@ La dimensión 11 cuenta los quince contratos INT-01 a INT-15 del apartado 4.1. L
 | INT-03 Eventos de bodega a nube | 58.710 | 109.032 | 260.000 ÷ 22,14 × 5; peak × 1,857 |
 | INT-04 Detalle cross-docking a la nube | 5.600 | 10.400 | 1.400 × 4; cota de una plataforma |
 | INT-03/04 Coordinación de reserva | 46.968 | 87.228 | 260.000 ÷ 22,14 × 4; peak: 21.807 líneas × 4 |
-| INT-05 Eventos de temperatura | 10.584 | 10.584 | 6.048 + 4.536 lecturas/día |
+| INT-05 Eventos de temperatura | 10.920 | 10.920 | 6.048 + 4.872 lecturas/día |
 | INT-06 ERP 2017 | 2.025 | 3.762 | 1.400 + 1.150 ÷ 22,14 + 900 ÷ 22,14 + 11.800 ÷ 22,14; peak × 1,857 |
 | INT-07 DTE/SII | 3.071 | 5.703 | 34.000 ÷ 22,14 × 2; peak × 1,857 |
-| INT-08 Cadenas modernas EDI | 0 | 1.144 | 0 actual; 2.600 × 11 % × 4 |
-| INT-09 Pasarela de pago | 533 | 990 | 11.800 ÷ 22,14; peak × 1,857 |
+| INT-08 Cadenas modernas EDI | 616 | 1.144 | Solución futura E2 (el AS-IS es 0): 1.400 × 11 % × 4; 2.600 × 11 % × 4 |
+| INT-09 Pasarela de pago | 2.800 | 5.200 | Cota de un pago electrónico por entrega, solicitud y respuesta: 1.400 × 2; 2.600 × 2. Los 11.800 cobros mensuales del caso son en efectivo y no miden pagos con tarjeta |
 | INT-10 Mapas y geocodificación | 96 | 96 | 96 camiones × 1 |
 | INT-11 Avisos al cliente | 2.800 | 5.200 | 1.400 × 2; 2.600 × 2 |
 | INT-12 Cambios de datos a réplica | 12.602 | 23.404 | Cota conservadora de movimientos de todos los sitios: 279.050 ÷ 22,14; peak × 1,857 |
 | INT-13 Identidad a sitio | 760 | 760 | 380 dispositivos × 2 |
 | INT-14 Métricas y trazas | 13.000 | 13.000 | 13 nodos × 1.000 |
 | INT-15 Telemetría existente | 60.480 | 60.480 | 42 × 12 × 120 |
-| **Total** | **225.629** | **347.383** | **15 integraciones** |
+| **Total** | **228.848** | **351.929** | **15 integraciones** |
 
 Para la dimensión 12, el drenaje se obtiene sumando los aportes acumulados en 24 horas y dividiendo por 2 horas:
 
-- Aportes en Talca: los cambios de 0,041 GB/día viajan como WAL, que no se suma aparte: WAL = 3 × 0,041 = 0,123 GB/día; broker = 0,5 × 0,041 = 0,020 GB/día; telemetría = 10.584 × 145 ÷ 1.000.000.000 ÷ 2 = 0,001 GB/día; observabilidad = 6 × 0,25 = 1,50 GB/día; incremental de respaldo = 0,041 GB/día.
+- Aportes en Talca: los cambios de 0,041 GB/día viajan como WAL, que no se suma aparte: WAL = 3 × 0,041 = 0,123 GB/día; broker = 0,5 × 0,041 = 0,020 GB/día; telemetría = 10.920 × 145 ÷ 1.000.000.000 ÷ 2 = 0,001 GB/día; observabilidad = 6 × 0,25 = 1,50 GB/día; incremental de respaldo = 0,041 GB/día.
  
 - Resultado por sitio: Talca acumula 1,68 GB/día y drena 1,87 Mbps; su hora cargada de oficina y retorno de flota suma 3,29 Mbps, por lo que el peor caso es 3,29 + 1,87 = **5,16 Mbps**. Concepción acumula 1,09 GB/día y drena 1,21 Mbps; cada cross-docking acumula 0,27 GB/día y drena 0,30 Mbps.
  
@@ -1459,11 +1488,11 @@ La mesa de ayuda se dimensiona en cuatro pasos:
 
 - Demanda horaria: (640 + 160) × 2,5 = **2.000 contactos mensuales**. Con 22,14 días equivalentes, la hora cargada concentra 2.000 × 25 % ÷ 22,14 = 22,58 contactos/hora y cada una de las otras 17 horas recibe 2.000 × 75 % ÷ 22,14 ÷ 17 = 3,98 contactos/hora.
  
-- Resultado Erlang C: con 10 minutos de atención media, 80 % de respuestas antes de 20 segundos y abandono ≤5 %, exige 7 agentes en la hora cargada y 2 en las demás.
+- Resultado Erlang C: con 10 minutos de atención media y 80 % de respuestas antes de 20 segundos, exige 7 agentes en la hora cargada y 2 en las demás. Erlang C supone paciencia infinita: no verifica el abandono ≤5 % ni la resolución al primer contacto ≥70 % del RT-21.06, que se miden y calibran según el Formulario T-15, sección 5.6.
  
 - Dotación simultánea: (7 + 17 × 2) × 6 = 246 horas-posición semanales; 246 ÷ 42 = 5,86, pero la dotación no puede ser menor que las 7 posiciones simultáneas, por lo que la mesa requiere **7 personas**.
  
-- Capacidad máxima de siete agentes: Al resolver el mismo cálculo, el límite es 2.391 contactos/mes; 2.391 × 25 % ÷ 22,14 = 27,00 contactos/hora cargada y 2.391 × 75 % ÷ 22,14 ÷ 17 = 4,99 contactos/hora en las demás franjas.
+- Capacidad máxima de la dotación: la franja que limita es la de dos agentes. Con A = λ/μ, μ = 6 contactos/hora, C = [A^c/c! × c/(c − A)] ÷ [Σ(k = 0…c − 1) A^k/k! + A^c/c! × c/(c − A)] y SL(20 s) = 1 − C × e^(−(cμ − λ) × 20/3.600), el límite es 2.283 contactos/mes: 2.283 × 75 % ÷ 22,14 ÷ 17 = 4,55 contactos/hora y SL = 80,0 % con dos agentes, mientras la hora cargada recibe 25,78 contactos/hora y SL = 83,5 % con siete. La hora cargada sola admitiría 2.391 contactos/mes, pero a esa demanda las otras franjas bajan a 78,3 %. El escenario base de 2.000 contactos cumple (90,6 % y 84,2 %), y el del año 3, 2.258 contactos, queda a 1,1 % del límite. Por eso, cuando la demanda medida supere 2.200 contactos/mes se agrega un tercer agente en las franjas valle, con lo que el límite pasa a 2.391 contactos/mes, fijado por la hora cargada.
 
 La cobertura 24×7 de septiembre y diciembre requiere, además, al menos una posición de mesa en las horas 22:00–04:00 de lunes a sábado y durante los domingos: 6 × 6 + 24 = 60 horas-posición semanales; 60 ÷ 42 = 1,43, por lo que se agregan **2 personas** y la mesa peak queda en 9. Un NOC y un SOC de una posición cada uno requieren 2 × (168 ÷ 42) = **8 personas**; desde el 26-04-2028 requieren 2 × 5 = **10 personas**, porque 168 ÷ 40 = 4,2 se redondea hacia arriba a 5 personas por posición. A 42 horas semanales, la dotación total es **15 personas en operación normal y 17 en septiembre/diciembre**; desde el 26-04-2028, a 40 horas semanales, es **17 en operación normal y 19 en peak**. Las funciones NOC/SOC pueden ser subcontratadas conforme a RT-21.01 (Bases Técnicas Transversales, cap. 21, p. 35) y RT-11.17 (Bases Técnicas Transversales, cap. 11, p. 24).
 
@@ -1517,7 +1546,7 @@ En los tres casos la UPS requerida, que es la carga de diseño dividida por 0,8,
 
 El perfil de API atiende aplicaciones y portales N-01 a N-03. Una tarea Fargate entrega 0,70 ÷ 0,05 = **14,00 solicitudes/s**. La tabla de carga es: régimen, 12,30 solicitudes/s de nube más portal y 2 tareas; peak, 14,66 y 2; RT-09.06 (Bases Técnicas Transversales, cap. 9, p. 21), 21,99 y 2; cota extrema, 5,03 + 43,33 = 48,37 y 4. La sensibilidad de 120 solicitudes por sesión conserva las sesiones repartidas en la hora: 2,67 + 19,27 = 21,93 y 2 tareas en régimen; 5,03 + 86,67 = 91,70 y 7 tareas en cota. Todos los casos quedan bajo el techo de 8 tareas.
 
-Aurora se dimensiona con la carga de nube a 3×, 43,98 solicitudes/s, y la cota de que cada solicitud consume en la base los mismos 50 ms de CPU que en la aplicación: 43,98 × 0,05 = 2,20 vCPU, que al 70 % de uso exigen 3,14 vCPU. Se adopta db.r6g.xlarge, de 4 vCPU y 32 GiB, para el escritor y el lector de sa-east-1 y para la instancia de us-east-1. El peak actual, 14,66 × 0,05 = 0,73 vCPU, cabría en db.r6g.large, pero pasar de large a xlarge exigiría intervenir en el congelamiento de septiembre (ADR-12); por eso la capacidad queda fija desde el inicio y se verifica en la prueba RT-09.06 (Bases Técnicas Transversales, cap. 9, p. 21).
+Aurora se dimensiona con la misma cota que la API, para que la base no sea el límite de un escenario que la API admite. Cada solicitud consume en la base, como cota, los mismos 50 ms de CPU que en la aplicación, y no se descuenta la parte que atiendan el lector o la caché: así se cubre también la falla del lector, cuando el escritor recibe toda la carga. La carga de nube a 3×, 43,98 solicitudes/s, exige 43,98 × 0,05 ÷ 0,70 = 3,14 vCPU; la cota extrema con la cuota del canal tradicional, 91,70 + 20 = 111,70 solicitudes/s, exige 111,70 × 0,05 = 5,59 vCPU, que sobre 8 vCPU es un uso de 69,8 %, bajo el 70 %. Se adopta db.r6g.2xlarge, de 8 vCPU y 64 GiB, para el escritor y el lector de sa-east-1 y para la instancia de us-east-1, que hereda la carga al conmutar. El peak actual, 14,66 × 0,05 = 0,73 vCPU, cabría en una instancia menor, pero cambiar de clase exigiría intervenir en el congelamiento de septiembre (ADR-12); por eso la capacidad queda fija desde el inicio y se verifica en la prueba RT-09.06 (Bases Técnicas Transversales, cap. 9, p. 21), midiendo la mezcla real de lecturas y escrituras.
 
 ## 4-W.10 Crecimiento, enlaces y ventana dominical
 
@@ -1679,3 +1708,4 @@ La herramienta es OpenAI Codex en todas las filas. La revisión humana correspon
 | 4.1.19 | primer cuello de botella bajo la carga de septiembre | Alto | No aplica | No realizada. |
 | 4.1.20 | decisiones del numeral 16 1 del caso | Alto | No aplica | No realizada. |
 | 4.1.21 | condiciones y supuestos de diseno | Alto | No aplica | No realizada. |
+| Correcciones del 7 de octubre de 2026 | Claude Code: M12 Telemetría, revocación y suplentes, puertas 80/70 %, volúmenes INT-05/08/09, termógrafos, terminales, cuota del portal tradicional, Erlang C, Aurora, RabbitMQ y registro de estado de los ADR | Alto | No aplica | No realizada. |

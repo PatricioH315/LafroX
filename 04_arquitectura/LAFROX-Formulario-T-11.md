@@ -85,7 +85,7 @@ La Tabla [1](LAFROX-Formulario-T-11.md#tab:t11) reúne todos los elementos ofert
 | N-04 — Frontend de consolas | Angular en ECS Fargate tras ALB privado | VPC de Producción, en 2 zonas de sa-east-1 | 2 tareas en 2 zonas | Sirve las consolas y reenvía sus llamadas a la API REST privada por execute-api (RT-03.02; Bases Técnicas Transversales, cap. 3, p. 8; ADR-20, Anexo 4-O). |
 | N-04 — Motor de optimización de rutas | Contenedor propio en ECS Fargate, tras un contrato versionado con M4 | sa-east-1; relanzamiento en otra zona | 1 tarea por corrida, bajo demanda | Calcula la secuencia de rutas de M4 fuera del artefacto PHP. Si falla, ECS la relanza en otra zona y la corrida se repite dentro de la planificación de 15:00 a 18:30; la aceptación comprueba menos de 20 minutos por corrida (ADR-01 y ADR-12, Anexo 4-O). |
 | N-04 — Transporte AS2 | OpenAS2 BSD en ECS Fargate tras Network Load Balancer con paso TLS directo | sa-east-1 en 2 zonas | 2 tareas en 2 zonas; 1 acuerdo por cadena | TLS 1.3 en el contenedor, IP registradas, firma, cifrado, certificados por cadena y MDN; prueba de interoperabilidad por cadena (RT-03.02; Bases Técnicas Transversales, cap. 3, p. 8; ADR-11, Anexo 4-O). |
-| N-05 — Base de datos en nube | Aurora PostgreSQL con Aurora Global Database, instancias db.r6g.xlarge de 4 vCPU y 32 GiB, y AWS DMS | Clúster primario en sa-east-1 y secundario en us-east-1 | 3 instancias: escritor y lector en sa-east-1, y 1 en us-east-1 | Transaccional de los módulos en nube y réplica de lectura del WMS, separada del estado central que actualizan los eventos; conmuta entre zonas en menos de 30 s y mantiene RPO de 15 min para la réplica del WMS por los tres caminos de Talca (ADR-04 y ADR-09, Anexo 4-O). |
+| N-05 — Base de datos en nube | Aurora PostgreSQL con Aurora Global Database, instancias db.r6g.2xlarge de 8 vCPU y 64 GiB, y AWS DMS | Clúster primario en sa-east-1 y secundario en us-east-1 | 3 instancias: escritor y lector en sa-east-1, y 1 en us-east-1 | Transaccional de los módulos en nube y réplica de lectura del WMS, separada del estado central que actualizan los eventos; conmuta entre zonas en menos de 30 s y mantiene RPO de 15 min para la réplica del WMS por los tres caminos de Talca (ADR-04 y ADR-09, Anexo 4-O). |
 | N-06 — Telemetría cruda | DynamoDB bajo demanda; Global Tables solo para temperatura, y la tabla de posiciones de flota solo en sa-east-1 | Temperatura en sa-east-1 y us-east-1; posiciones solo en sa-east-1 | 2 tablas: temperatura global en ambas regiones y posiciones regional | Recibe las lecturas de IoT sin gestión de capacidad y las expira a los 30 días (ADR-04). |
 | N-07 — Caché | ElastiCache for Redis con primario y réplica | sa-east-1 en 2 zonas | 1 clúster | Responde la consulta de stock y crédito de preventa en menos de 2 s. |
 | N-08 — Ingesta de IoT | IoT Core con su motor de reglas e IoT Greengrass | sa-east-1 y gateways de borde | 3 gateways y 28 termógrafos | Recibe, valida y alerta la telemetría de cadena de frío, y gestiona la flota de gateways. |
@@ -115,9 +115,6 @@ La tabla vincula el equipamiento de sitio con los servicios de nube y los contro
 
 **Referencias**
 
-1.27cm
-- indent-1.27cm
-- sep0.5
 
 - Amazon Web Services. (s. f.-d). *GuardDuty Runtime Monitoring*. <https://docs.aws.amazon.com/guardduty/latest/ug/runtime-monitoring.html>
 

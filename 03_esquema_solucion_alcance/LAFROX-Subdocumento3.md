@@ -120,9 +120,9 @@ Cinco reglas concentran las decisiones más sensibles del caso, y cada una respo
 
 - **Reserva de stock (RNG-01).** La reserva firme se realiza al confirmar el pedido en el servidor central, por orden de recepción y con correlativo de desempate. Un pedido capturado sin señal utiliza stock indicativo y entra en ese orden al sincronizar. Si dos preventistas solicitan el mismo producto y el stock no alcanza para ambos, se reserva según ese orden y se notifica el quiebre al preventista cuyo pedido no puede cubrirse.
 
-- **Excursión térmica (RNG-04).** La respuesta se gradúa: advertencia ante una excursión menor y transitoria, y retención preventiva del lote ante una crítica y sostenida. La disposición final es siempre de Calidad. La regla evita tanto el bloqueo ciego que teme Operaciones como la liberación sin evidencia que teme Calidad.
+- **Excursión térmica (RNG-04).** La respuesta se gradúa: advertencia ante una excursión menor y transitoria, y retención preventiva del lote ante una crítica y sostenida. La disposición final es siempre de Calidad. La regla evita tanto el bloqueo ciego que teme Operaciones como la liberación sin evidencia que teme Calidad. Mientras Calidad no apruebe los parámetros de un tipo de producto, toda lectura fuera del rango de almacenamiento de su ficha se trata como crítica.
 
-- **Corte y promesa (RNG-15).** Un pedido urbano ingresado antes de las 14:00 se promete a 24 horas; uno rural, periférico o abastecido por cross-docking, a 48 horas. La regla reemplaza la promesa de 24 horas a todo evento que Operaciones considera imposible.
+- **Corte y promesa (RNG-15).** Un pedido urbano ingresado antes de las 14:00 se promete a 24 horas; uno urbano ingresado desde las 14:00, o uno rural, periférico o abastecido por cross-docking, a 48 horas. La preventa muestra la fecha prometida y el OTIF se mide contra ella. La regla reemplaza la promesa de 24 horas a todo evento que Operaciones considera imposible.
 
 - **Efectivo y rendición.** Cada cobro queda asociado a su entrega en el momento en que ocurre, con comprobante para el cliente. La rendición no se cierra con diferencias sin causal ni responsable. La regla no elimina el efectivo del canal tradicional; elimina la imposibilidad de saber en qué entrega se produjo el descuadre.
 
@@ -425,3 +425,5 @@ La Tabla 3.6 registra la asistencia de IA por sección, anexo y formulario. La r
 | Anexo 3.J | Codex; Claude Code | Redacción de criterios de aceptación. | Alto | Ninguno | No documentada. |
 | Anexo 3.K | Codex; Claude Code | Glosario. | Medio | Ninguno | No documentada. |
 | Formulario T-12 | Codex; Claude Code | Generación de la matriz de cumplimiento. | Alto | Ninguno | No documentada. |
+| 3.3 y Anexo 3.H: RNG-04 y RNG-15 (7 de octubre de 2026) | Claude Code | Regla provisoria de excursión térmica y promesa de pedidos urbanos desde las 14:00. | Alto | Ninguno | No documentada. |
+| Formulario T-12: EDT y pruebas (7 de octubre de 2026) | Claude Code | Asignación de paquetes y corrección de pruebas. | Alto | Ninguno | No documentada. |

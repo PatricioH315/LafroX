@@ -8,46 +8,72 @@ La propuesta aplica las siete condiciones que el Caso 02 impone a toda estrategi
 
 Las dos etapas siguen las mismas ocho reglas, y cada una responde a una condición del caso o de las Bases:
 
-1. **Convivencia antes del cambio.** Nada entra en producción sin haber convivido con la forma actual de trabajar durante su marcha blanca, con conciliación diaria y posibilidad de volver atrás (Caso 02, sección 13.3, condición 1; RT-20.03).
-2. **Fechas prohibidas.** Ningún paso a producción, inicio de ola, corte de datos ni despliegue con impacto en la facturación o en el inventario valorizado ocurre en septiembre, en diciembre ni en los tres primeros días hábiles de un mes (sección 13.3, condición 2; RT-10.05 del caso). Durante el congelamiento total (1 al 25 de septiembre y todo diciembre) no se despliegan cambios.
-3. **Olas, no un evento único.** El despliegue avanza por proceso, por sitio y por zona comercial, y nunca afecta a la vez a la bodega, la preventa, el reparto y la facturación (condición 3; RT-20.01).
-4. **Ventana de despacho protegida.** No se despliega durante la ventana de 05:30 a 07:00, que no admite indisponibilidad (RT-10.05 del caso). Las intervenciones en bodega se programan y acompañan en el turno de noche, de 22:00 a 06:00 (condición 4).
-5. **Despliegue azul-verde con interruptores de funcionalidad.** Cada capacidad nueva se publica en un entorno paralelo y se habilita por sitio y por ola mediante interruptores de funcionalidad, de modo que la reversión técnica consiste en volver a la versión anterior sin reinstalar. Cada operación tiene un único escritor autorizado: no se habilita doble escritura de stock, cobros ni guías de despacho (Capítulo 4, sección 4.1.8 y Tabla 4.1).
-6. **Reversión en dos niveles.** El nivel técnico vuelve a la versión anterior de la solución mediante azul-verde o el interruptor de funcionalidad. El operacional vuelve al procedimiento manual con la hoja de picking y la guía en papel; lo ordena el responsable de operaciones del CLIENTE y debe completarse antes de las 05:30. Los registros capturados permanecen en cola y se concilian al retomar (Capítulo 3, sección 3.4.4; RT-20.02).
-7. **Estabilización declarada.** Cada paso a producción tiene una estabilización de cuatro semanas por ola, con la dotación declarada en la sección 2.6 y sin costo adicional (condición 7; RT-20.05 y RT-20.06).
-8. **Definición de terminado y aceptación.** Ningún entregable de implantación se da por terminado sin código, pruebas, documentación, seguridad y despliegue verificados (RT-20.07). Cada hito se acepta con un protocolo de criterios objetivos y verificables, firmado por la Contraparte Técnica (RT-20.08; Bases Administrativas, Art. 18.1).
+  
+-  **Convivencia antes del cambio.** Nada entra en producción sin haber convivido con la forma actual de trabajar durante su marcha blanca, con conciliación diaria y posibilidad de volver atrás (Caso 02, sección 13.3, condición 1; RT-20.03).
+  
+-  **Fechas prohibidas.** Ningún paso a producción, inicio de ola, corte de datos ni despliegue con impacto en la facturación o en el inventario valorizado ocurre en septiembre, en diciembre ni en los tres primeros días hábiles de un mes (sección 13.3, condición 2; RT-10.05 del caso). Durante el congelamiento total (1 al 25 de septiembre y todo diciembre) no se despliegan cambios.
+  
+-  **Olas, no un evento único.** El despliegue avanza por proceso, por sitio y por zona comercial, y nunca afecta a la vez a la bodega, la preventa, el reparto y la facturación (condición 3; RT-20.01).
+  
+-  **Ventana de despacho protegida.** No se despliega durante la ventana de 05:30 a 07:00, que no admite indisponibilidad (RT-10.05 del caso). Las intervenciones en bodega se programan y acompañan en el turno de noche, de 22:00 a 06:00 (condición 4).
+  
+-  **Despliegue azul-verde con interruptores de funcionalidad.** Cada capacidad nueva se publica en un entorno paralelo y se habilita por sitio y por ola mediante interruptores de funcionalidad, de modo que la reversión técnica consiste en volver a la versión anterior sin reinstalar. Cada operación tiene un único escritor autorizado: no se habilita doble escritura de stock, cobros ni guías de despacho (Capítulo 4, sección 4.1.8 y Tabla 4.1).
+  
+-  **Reversión en dos niveles.** El nivel técnico vuelve a la versión anterior de la solución mediante azul-verde o el interruptor de funcionalidad. El operacional conserva o restituye la versión operativa local probada con un único escritor; lo ordena Operaciones del CLIENTE y debe completarse antes de las 05:30. Papel y consultas son apoyo, no sustitución manual del despacho crítico. Los registros capturados permanecen en cola y se concilian al retomar (Capítulo 3, sección 3.4.4; RT-20.02).
+  
+-  **Estabilización declarada.** Cada paso a producción tiene una estabilización de cuatro semanas por ola, con la dotación declarada en la sección 2.6 y sin costo adicional (condición 7; RT-20.05 y RT-20.06).
+  
+-  **Definición de terminado y aceptación.** Ningún entregable de implantación se da por terminado sin código, pruebas, documentación, seguridad y despliegue verificados (RT-20.07). Cada hito se acepta con un protocolo de criterios objetivos y verificables, firmado por la Contraparte Técnica (RT-20.08; Bases Administrativas, Art. 18.1).
 
 ## 2 Etapa 1: marcha blanca de los meses 13 a 15 y producción desde el mes 16
 
-La Etapa 1 pone en producción la mayor parte del alcance y concentra doce de los dieciséis resultados de aceptación del caso; por eso su implantación se describe con más detalle que la de la Etapa 2.
+La Etapa 1 pone en producción la mayor parte del alcance y incluye verificaciones de catorce de los dieciséis resultados de aceptación del caso; por eso su implantación se describe con más detalle que la de la Etapa 2.
 
 ### 2.1 Alcance y olas
 
-La Etapa 1 pone en producción la trazabilidad de recepción, la bodega con FEFO y la preparación nocturna, la cadena de frío, la preventa sin conexión, la planificación de rutas, el reparto con prueba de entrega digital, las devoluciones y envases, la rendición y los indicadores operacionales: los módulos M1 a M10 y M12 (paquetes 3.4.1 a 3.4.11 del Formulario T-14). La implantación sigue el orden de las dependencias de datos en tres olas (Capítulo 3, sección 3.4.4; paquete 4.1.1), como presenta la tabla «Olas de implantación de la Etapa 1» (Fuente: Capítulo 3, sección 3.4.4):
+La Etapa 1 pone en producción la trazabilidad de recepción, la bodega con FEFO y la preparación nocturna, la cadena de frío, la preventa sin conexión, la planificación de rutas, el reparto con prueba de entrega digital, las devoluciones y envases, la rendición y los indicadores operacionales: los módulos M1 a M10 y M12 (paquetes 3.4.1 a 3.4.11 del Formulario T-14). La implantación sigue el orden de las dependencias de datos en tres olas (Capítulo 3, sección 3.4.4; paquete 4.1.1), como presenta la Tabla «tab:T18-olas».
+
+**Olas de implantación de la Etapa 1. Fuente: Capítulo 3, sección 3.4.4.**
+
+<a id="tab:T18-olas"></a>
 
 | Ola | Procesos y módulos | Avance | Registro oficial al cerrar la ola |
-|---|---|---|---|
-| 1 | Datos maestros y recepción con lote y vencimiento (M1) | Por sitio | La solución, para recepciones y lotes |
-| 2 | Inventario por ubicación y lote con FEFO (M2) y preparación en turno de noche (M5) | Por sitio | La solución, para stock y preparación |
-| 3 | Preventa (M3), rutas (M4), reparto (M6), devoluciones y envases (M8) y rendición (M7) | Por zona comercial | La solución, para pedidos, entregas y cobros |
+| --- | --- | --- | --- |
+| 1 | Datos maestros y recepción (M1), captura/retención M9, ingesta M12 e indicadores de recepción M10 | Por sitio | La solución, para recepciones y lotes |
+| 2 | M2/M5, retiro/liberación M9, alertas M12 e indicadores de inventario M10 | Por sitio | La solución, para stock y preparación |
+| 3 | M3/M4/M6/M8/M7, trazabilidad M9, telemetría M12 e indicadores OTIF M10 | Por zona comercial | La solución, para pedidos, entregas y cobros |
 
-El calendario de las olas está restringido por las Bases. La marcha blanca dura tres meses, unas 13 semanas ($3 \times 52 / 12$). Cada ola necesita cuatro semanas consecutivas cumpliendo su criterio antes de retirar el papel (Capítulo 3, sección 3.4.4), y el Art. 17.3 exige que toda la Etapa 1 opere a volumen real durante las últimas cuatro semanas del período, las semanas 10 a 13. Si las olas fueran estrictamente secuenciales (ola 1 en las semanas 1 a 4 y ola 2 en las 5 a 8), la ola 3 empezaría en la semana 9 y tendría que entrar en todas sus zonas a la vez, lo que contradice el avance zona por zona. Por eso la ola 3 empieza antes de que termine el período de criterio de la ola 2, adelantándose en lo que dure su escalonamiento por zonas, y ambas olas no intervienen el mismo proceso al mismo tiempo, para cumplir la regla 3. La siguiente descripción textual representa la Figura T-18.1, «Olas de la Etapa 1 durante la marcha blanca» (Fuente: elaboración propia a partir del Capítulo 3, sección 3.4.4):
+El calendario de olas respeta los meses 13–15, pero su cierre se calcula con fechas reales. Sea F el instante final de la marcha blanca: el 100 % del alcance debe estar operativo antes de F − 28 días y sostener volumen real e indicadores durante [F − 28 días, F). Cada activación debe respetar 1–25 de septiembre, todo diciembre y los primeros tres días hábiles del mes; también evita 05:30–07:00 y no detiene rutas. La secuencia vigente de §6.1 adelanta los remanentes a semana 8, subordinada a ese límite. Un retraso exige replanificar antes de H6; no se recorta la evidencia ni se desplazan automáticamente las fases siguientes.
 
-- Eje temporal: semanas 1–13, distribuidas en mes 13 (semanas 1 a 5,33), mes 14 (5,33 a 9,67) y mes 15 (9,67 a 13). H6 está al inicio, en la semana 1; mes 16 (H7) está después de la semana 13.
-- Una franja destaca las semanas 10 a 13: toda la Etapa 1 debe operar a volumen real (Art. 17.3).
-- Ola 1, recepción con lote (M1; avance por sitio): cuatro semanas en criterio desde la semana 1 hasta la 5; después, la solución es el registro oficial y se retira el papel.
-- Ola 2, inventario y preparación (M2 y M5; avance por sitio): cuatro semanas en criterio desde la semana 5 hasta la 9; después, la solución es el registro oficial.
-- Ola 3, preventa a rendición (M3, M4, M6, M8 y M7; por zona): entrada escalonada zona por zona entre las semanas 6 y 10; todas las zonas desde la semana 10 hasta la 14 (continuación representada hasta el límite de mes 16). Los comienzos de entrada por zona no tienen fecha fija.
-- Los hitos de decisión de avance para las olas 1 y 2 están en las semanas 5 y 9, respectivamente.
+  
+  **Descripción textual de figura.** No sustituye la revisión visual del PDF.
+- Semanas 10 a 13: toda la Etapa 1 / a volumen real (Art. 17.3)
+- Mes 16 (H7)
+- 4 semanas / en criterio
+- Registro oficial en la solución / y papel retirado
+- 4 semanas / en criterio
+- Registro oficial
+- entrada / zona por zona
+- todas / las zonas
+- criterio de avance
+- criterio de avance
+  
+**Figura: Olas de la Etapa 1 durante la marcha blanca. Fuente: elaboración propia a partir del Capítulo 3, sección 3.4.4.**
 
-La figura muestra que las olas 1 y 2 ocupan las primeras ocho semanas en cumplir su criterio y que la ola 3 entra por zonas antes de la semana 10, de modo que toda la Etapa 1 opere a volumen real en las cuatro semanas de cierre.
+  <a id="fig:T18-olas"></a>
+
+La figura conserva la representación histórica. La programación vigente es §6.1: activaciones hasta semana 8 sujetas a fechas permitidas y al límite F − 28 días; los períodos de evidencia se superponen por dominios sin doble escritura.
 
 ### 2.2 Pruebas previas a la marcha blanca y al paso a producción
 
-Antes de cada paso a producción se aprueban las pruebas del numeral 20.1 de las Bases Técnicas Transversales, y su cumplimiento forma parte de la certificación de la Etapa 1 (H5, mes 12; paquete 3.8.7). La tabla «Pruebas previas a la marcha blanca de la Etapa 1» (Fuente: Bases Técnicas Transversales, numeral 20.1, y Formulario T-14) presenta cada prueba con su criterio de éxito:
+Antes de cada paso a producción se aprueban las pruebas del numeral 20.1 de las Bases Técnicas Transversales, y su cumplimiento forma parte de la certificación de la Etapa 1 (H5, mes 12; paquete 3.8.7). La Tabla «tab:T18-pruebas» presenta cada prueba con su criterio de éxito.
+
+**Pruebas previas a la marcha blanca de la Etapa 1. Fuente: Bases Técnicas Transversales, numeral 20.1, y Formulario T-14.**
+
+<a id="tab:T18-pruebas"></a>
 
 | Prueba | Criterio de éxito | Paquete |
-|---|---|---|
+| --- | --- | --- |
 | Integración, regresión e idempotencia | Todos los flujos de integración sin error y batería de regresión sin regresiones | 3.8.1 (H4) |
 | Aceptación de usuario y accesibilidad | Casos aprobados y firmados por la Contraparte Técnica; conformidad WCAG 2.2 AA | 3.8.2 |
 | Perfil operacional | 14 horas sin señal en terreno y 24 horas sin enlace en el CD, sin pérdidas ni duplicados; uso a −22 °C con guantes | 3.8.3 |
@@ -67,10 +93,14 @@ Cada día se concilian ambos registros por dominio: documentos, lotes, stock, en
 
 ### 2.4 Indicadores diarios y umbrales de cierre
 
-La segunda condición del Art. 17.3 exige alcanzar «el volumen de operación real comprometido en el plan de implantación» durante al menos las cuatro últimas semanas. LafroX compromete la operación real completa de cada proceso de la ola, no una muestra ni un grupo piloto. La tabla «Volumen de operación real comprometido en la marcha blanca de la Etapa 1» (Fuente: Caso 02, sección 14.1) expresa ese volumen con las cifras del caso:
+La segunda condición del Art. 17.3 exige alcanzar «el volumen de operación real comprometido en el plan de implantación» durante al menos las cuatro últimas semanas. LafroX compromete la operación real completa de cada proceso de la ola, no una muestra ni un grupo piloto. La Tabla «tab:T18-volumen» expresa ese volumen con las cifras del caso.
+
+**Volumen de operación real comprometido en la marcha blanca de la Etapa 1. Fuente: Caso 02, sección 14.1.**
+
+<a id="tab:T18-volumen"></a>
 
 | Proceso | Ola | Mes normal | Peak de septiembre |
-|---|---:|---:|---:|
+| --- | --- | --- | --- |
 | Recepciones de proveedor | 1 | ≈ 1.150 al mes | No informado por el caso |
 | Líneas de preparación de pedidos | 2 | ≈ 260.000 al mes | No informado por el caso |
 | Visitas de preventa | 3 | ≈ 62.000 al mes | No informado por el caso |
@@ -80,14 +110,18 @@ La segunda condición del Art. 17.3 exige alcanzar «el volumen de operación re
 | Cobros en efectivo | 3 | ≈ 11.800 al mes | No informado por el caso |
 | Devoluciones | 3 | ≈ 900 al mes | No informado por el caso |
 
-El compromiso es que el 100 % del volumen de cada proceso se registre en la solución durante las cuatro últimas semanas, con los demás indicadores en su umbral. Si esas semanas coinciden con un peak, el volumen comprometido es el del peak. Una ola que cubre una sola zona compromete el volumen de esa zona hasta que entran las demás; al cierre de la marcha blanca, todas las zonas están dentro.
+El compromiso es que el 100 % del volumen de cada proceso se registre en la solución durante las cuatro últimas semanas, con los demás indicadores en su umbral. Se registra el 100 % de la operación efectivamente generada cada día, incluido su aumento durante el peak; no se exige generar pedidos artificiales ni mantener 2.600 entregas todos los días del período. Los ensayos previos verifican separadamente 1,5 veces la carga peak aplicable. Una ola que cubre una sola zona compromete el volumen de esa zona hasta que entran las demás; al cierre de la marcha blanca, todas las zonas están dentro.
 
-Los indicadores se miden y publican cada día con el umbral que exige el Art. 17.3 para cerrar la marcha blanca (RT-20.04), como presenta la tabla «Indicadores diarios y umbrales de cierre de la Etapa 1» (Fuente: Bases Administrativas, Art. 17.3; Caso 02, RT-09.01 y RT-10.05; y Capítulo 3, Tabla 3.5):
+Los indicadores se miden y publican cada día con el umbral que exige el Art. 17.3 para cerrar la marcha blanca (RT-20.04), como presenta la Tabla «tab:T18-indicadores».
+
+**Indicadores diarios y umbrales de cierre de la Etapa 1. Fuente: Bases Administrativas, Art. 17.3; Caso 02, RT-09.01 y RT-10.05; y Capítulo 3, Tabla 3.5.**
+
+<a id="tab:T18-indicadores"></a>
 
 | Indicador diario | Umbral | Condición del Art. 17.3 |
-|---|---|---|
+| --- | --- | --- |
 | Incidentes críticos y altos abiertos atribuibles a la solución | 0 | Primera |
-| Transacciones de la ola registradas en la solución sobre el total | 100 % del volumen de la tabla anterior, sostenido durante las últimas 4 semanas | Segunda |
+| Transacciones de la ola registradas en la solución sobre el total | 100 % del volumen de la Tabla «tab:T18-volumen», sostenido durante las últimas 4 semanas | Segunda |
 | Indisponibilidad en la ventana de despacho de 05:30 a 07:00 | 0 minutos (RT-10.05 del caso) | Tercera |
 | Disponibilidad de la transacción crítica, de extremo a extremo | 99,9 % o más (Capítulo 3, Tabla 3.5) | Tercera |
 | Tiempo de respuesta de las transacciones críticas, percentil 95 | Confirmación de línea de preparación hasta 1 s; registro de entrega hasta 2 s; línea de preventa hasta 1,5 s; consulta de stock y crédito hasta 2 s (RT-09.01 del caso) | Tercera |
@@ -95,31 +129,68 @@ Los indicadores se miden y publican cada día con el umbral que exige el Art. 17
 | Usuarios de la ola certificados en su perfil | 100 % | Quinta |
 | Pedidos perdidos o duplicados por falta de señal | 0 (R18-06) | Cuarta |
 
-La sexta condición es el acta de aceptación firmada por la Contraparte Técnica (paquete 4.2.3, H7). Los resultados del capítulo 18 del caso que se verifican en esta marcha blanca (R18-01 a R18-03, R18-05 a R18-10 y R18-14 a R18-16) se miden con el método y el período del Capítulo 3, Anexo 3.J. La siguiente descripción textual corresponde a la Figura T-18.2, «Ciclo diario de la marcha blanca y condiciones de cierre del Art. 17.3» (Fuente: elaboración propia a partir de las Bases Administrativas, Art. 17.3, y del RT-20.04):
+La sexta condición es el acta de aceptación firmada por la Contraparte Técnica (paquete 4.2.3, H7). Los resultados del capítulo 18 del caso que se verifican en esta marcha blanca (R18-01 a R18-03, R18-05 a R18-10 y R18-14 a R18-16) se miden con el método y el período del Capítulo 3, Anexo 3.J. La Figura «fig:T18-ciclo» resume el ciclo diario y las condiciones de cierre.
 
-- El ciclo diario forma un circuito: medición de los indicadores del día → comparación con el umbral → decisión de continuar, corregir o revertir → conciliación y publicación del día → nueva medición. En el centro: «Marcha blanca E1 y E2».
-- Al cumplirse las seis condiciones copulativas se cierra la marcha blanca. Las condiciones son: (1) sin incidentes críticos ni altos, 0 abiertos; (2) volumen real durante las cuatro últimas semanas, 100 % del volumen comprometido; (3) disponibilidad y desempeño, 0 minutos en la ventana y 99,9 % o más; (4) conciliación sin diferencias, 0 sin explicar y 0 pedidos perdidos; (5) personal capacitado y certificado, 100 % de los usuarios de la ola; (6) acta de la Contraparte Técnica, H7 en Etapa 1 y H12 en Etapa 2.
+  
+  **Descripción textual de figura.** No sustituye la revisión visual del PDF.
+- Ciclo de cada día
+- Medición de los indicadores del día
+- Comparación con el umbral
+- Continuar, corregir o revertir
+- Conciliación y publicación del día
+- Marcha / blanca / E1 y E2
+- Seis condiciones copulativas (Art. 17.3)
+- Relación entre nodos: c → d.
+- Relación entre nodos: d → p.
+- Relación entre nodos: p → m.
+  
+**Figura: Ciclo diario de la marcha blanca y condiciones de cierre del Art. 17.3. Fuente: elaboración propia a partir de las Bases Administrativas, Art. 17.3, y del RT-20.04.**
+
+  <a id="fig:T18-ciclo"></a>
 
 Cada día se decide entre continuar, corregir o revertir, y la marcha blanca cierra solo cuando las seis condiciones se cumplen a la vez.
 
 ### 2.5 Procedimiento de reversión
 
-La reversión la autoriza el responsable de operaciones del CLIENTE cuando un indicador amenaza el despacho. Sus disparadores son observables: pedidos sin sincronizar al inicio de la carga, rutas del día no disponibles para cargar o un defecto crítico en la ventana de despacho. La decisión se toma en el turno de noche, y la vuelta a la hoja de picking y a la guía en papel debe completarse antes de las 05:30, para que los 96 camiones salgan a tiempo. Ese plazo protege el despacho; no es el RTO de recuperación ante desastres. La siguiente descripción textual corresponde a la Figura T-18.3, «Procedimiento de reversión de la Etapa 1» (Fuente: elaboración propia a partir del Capítulo 3, sección 3.4.4, y del paquete 4.1.2):
+La reversión la autoriza el responsable de operaciones del CLIENTE cuando un indicador amenaza el despacho. Sus disparadores son observables: pedidos sin sincronizar al inicio de la carga, rutas del día no disponibles para cargar o un defecto crítico en la ventana de despacho. La decisión se toma en el turno de noche, y la restitución de la versión operativa local y sus documentos válidos debe completarse antes de las 05:30; el papel sólo apoya tareas auxiliares y no acredita continuidad crítica; la capacidad de los 96 camiones debe demostrarse en el ensayo de la sección 6.4. Ese plazo protege el despacho; no es el RTO de recuperación ante desastres. La Figura «fig:T18-reversion» presenta el procedimiento por rol.
 
-- El reloj abarca el turno de noche desde las 22:00; preparación, detección y decisión transcurren antes de las 05:30, y el despacho se señala entre 05:30 y 07:00.
-- Tres carriles representan al responsable de operaciones del CLIENTE, al Líder de Implantación y Gestión del Cambio y al Líder de Operación / SRE.
-- El Líder de Operación / SRE detecta una señal en el monitoreo; el acompañante confirma el impacto y se pregunta si amenaza el despacho.
-- Si no lo amenaza, se corrige y la ola continúa.
-- Si lo amenaza, la vuelta al papel debe estar completa antes de las 05:30. En el plano operacional se vuelve a la hoja de picking y la guía en papel; en el técnico, se usa el interruptor o la versión anterior. Al retomar, se concilia lo que quedó en cola y la ola reinicia sus cuatro semanas.
+  
+  **Descripción textual de figura.** No sustituye la revisión visual del PDF.
+- Turno de noche: preparación, detección y decisión
+- Despacho
+- El acompañante confirma el impacto
+- ¿Amenaza el despacho?
+- No: se corrige y la ola continúa
+- Restitución operativa probada antes de las 05:30
+- Operacional: versión local, único escritor y DTE del ERP; papel de apoyo
+- Técnica: interruptor o versión anterior
+- Al retomar, se concilia lo que quedó en cola
+- La ola reinicia sus 4 semanas
+- Relación entre nodos: det → aco.
+- Relación entre nodos: aco → dec.
+- Relación entre nodos: dec → cor.
+- Relación entre nodos: dec → lim.
+- Relación entre nodos: lim → ope.
+- Relación entre nodos: ope → tec.
+- Relación entre nodos: ope → con.
+- Relación entre nodos: con → rei.
+  
+**Figura: Procedimiento de reversión de la Etapa 1. Fuente: elaboración propia a partir del Capítulo 3, sección 3.4.4, y del paquete 4.1.2.**
 
-No se pierde información: los registros capturados durante la ola quedan en cola y se concilian al retomar. Lo que se pierde es la jornada de operación en la solución nueva para esa ola, que vuelve a empezar su período de cuatro semanas (Capítulo 3, sección 3.4.4; paquete 4.1.2; Caso 02, sección 17.6, punto 4). El tiempo de cada nivel de reversión se mide en el ensayo en Preproducción que precede a cada corte (RT-20.02).
+  <a id="fig:T18-reversion"></a>
+
+El procedimiento debe conservar información: los registros capturados quedan en cola y se concilian al retomar; su integridad se verifica en el ensayo. Lo que se pierde es la jornada de operación en la solución nueva para esa ola, que vuelve a empezar su período de cuatro semanas (Capítulo 3, sección 3.4.4; paquete 4.1.2; Caso 02, sección 17.6, punto 4). El tiempo de cada nivel de reversión se mide en el ensayo en Preproducción que precede a cada corte (RT-20.02).
 
 ### 2.6 Acompañamiento en terreno y estabilización
 
-Después de cada paso a producción hay cuatro semanas de estabilización por ola, el mismo período que exige el criterio de avance. La dotación se deriva de la operación del caso (Capítulo 3, sección 3.4.4; paquete 4.2.2), como muestra la tabla «Dotación de acompañamiento y estabilización de la Etapa 1» (Fuente: Capítulo 3, sección 3.4.4):
+Después de cada paso a producción hay cuatro semanas de estabilización por ola, el mismo período que exige el criterio de avance. La dotación se deriva de la operación del caso (Capítulo 3, sección 3.4.4; paquete 4.2.2), como muestra la Tabla «tab:T18-dotacion».
+
+**Dotación de acompañamiento y estabilización de la Etapa 1. Fuente: Capítulo 3, sección 3.4.4.**
+
+<a id="tab:T18-dotacion"></a>
 
 | Frente de acompañamiento | Dotación | Cálculo |
-|---|---:|---|
+| --- | --- | --- |
 | Bodega, turno de noche (22:00 a 06:00) | 2 personas | 1 por centro de distribución (Talca y Concepción) |
 | Plataformas de cross-docking | 3 personas | 1 por plataforma, en la recepción de madrugada y el despacho de la mañana |
 | Calle (preventa y reparto) | 7 personas | 96 camiones + 62 preventistas = 158 rutas diarias; 158 / 24 días (lunes a sábado en 4 semanas) ≈ 6,6 |
@@ -129,10 +200,14 @@ Si la ola cubre solo una zona, la dotación de calle se reduce en proporción a 
 
 ### 2.7 Capacitación y certificación
 
-La capacitación se hace en el puesto y en la ruta, sin detener la venta ni el reparto (Caso 02, sección 13.3, condición 5). Usa las cuatro modalidades del Art. 90.2: presencial en cada sitio, en línea sincrónica, autoformación en línea y acompañamiento en el puesto durante la marcha blanca. Cada perfil se certifica antes de cerrar la marcha blanca, porque el Art. 17.3 exige personal «capacitado y certificado conforme al plan de capacitación aprobado» (paquetes 7.1.1 a 7.1.6 y 7.3.1). Los usuarios administradores y el equipo técnico del CLIENTE se certifican además conforme al Art. 90.4. La tabla «Perfiles operativos y modalidad de capacitación» (Fuente: Capítulo 3, Anexo 3.I, a partir del Caso 02) presenta los perfiles operativos:
+La capacitación se hace en el puesto y en la ruta, sin detener la venta ni el reparto (Caso 02, sección 13.3, condición 5). Usa las cuatro modalidades del Art. 90.2: presencial en cada sitio, en línea sincrónica, autoformación en línea y acompañamiento en el puesto durante la marcha blanca. Cada perfil se certifica antes de cerrar la marcha blanca, porque el Art. 17.3 exige personal «capacitado y certificado conforme al plan de capacitación aprobado» (paquetes 7.1.1 a 7.1.6 y 7.3.1). Los usuarios administradores y el equipo técnico del CLIENTE se certifican además conforme al Art. 90.4. La Tabla «tab:T18-perfiles» presenta los perfiles operativos.
+
+**Perfiles operativos y modalidad de capacitación. Fuente: Capítulo 3, Anexo 3.I, a partir del Caso 02.**
+
+<a id="tab:T18-perfiles"></a>
 
 | Perfil | Personas | Cómo se capacita sin detener la operación |
-|---|---:|---|
+| --- | --- | --- |
 | Preparadores | 120 | Aprendizaje en el puesto de 2 horas como máximo (RNF-05.03) y un tutor por turno; capacitación continua por la rotación del 38 % |
 | Preventistas | 62 | Prueba de captura sin señal en su propia ruta y acompañamiento en ruta |
 | Tripulación propia y peonetas | 84 | Prueba de entrega digital y rendición antes de la ola, y acompañamiento en ruta |
@@ -160,9 +235,9 @@ La Etapa 2 pone en producción el intercambio electrónico de pedidos y avisos d
 
 El despliegue avanza por cadena y por grupo de usuarios. Cada cadena se incorpora al intercambio electrónico cuando su perfil está certificado (paquetes 3.6.5 y 3.6.6) y, hasta entonces, sus pedidos siguen con carga manual controlada, que no acredita el resultado R18-13. Los portales se habilitan por grupo de clientes y por transportista, y el costo de servir se habilita para Comercial y Finanzas con los hechos acumulados desde la marcha blanca de la Etapa 1.
 
-El calendario de la Etapa 2 es más estrecho que el de la Etapa 1. Su marcha blanca dura dos meses, unas 8,7 semanas ($2 \times 52 / 12$), y el Art. 17.3 exige volumen real en las cuatro últimas, así que todas las cadenas certificadas, los portales y el costo de servir deben quedar habilitados en las primeras 4,7 semanas ($8{,}7 - 4$). El volumen comprometido incluye el 100 % de los pedidos de las cadenas certificadas, recibidos por intercambio electrónico y con aviso de despacho, y el 100 % de las entregas del período con costo de servir calculado (cerca de 1.400 por día hábil en un mes normal; Caso 02, sección 14.1).
+La marcha blanca E2 ocupa meses 19–20. Todo el alcance requerido de cadenas, portales y costo de servir debe activarse antes de F − 28 días; una cadena todavía no certificada no se excluye del denominador de aceptación. La operación registra el 100 % de sus pedidos y entregas reales, con los perfiles certificados y la conciliación requerida. La conversión promedio de dos meses a 8,7 semanas no determina una fecha límite contractual.
 
-Con el inicio de contrato de febrero de 2027 (Anexo 7.A del Subdocumento 7), el mes 19 cae en agosto de 2028 y el mes 20 en septiembre, lo que tiene tres consecuencias. La primera es que toda habilitación de la Etapa 2 ocurre en agosto, porque el congelamiento total va del 1 al 25 de septiembre (Caso 02, RT-10.05), lo que coincide con el límite de 4,7 semanas. La segunda es que las cuatro semanas de cierre caen en el peak de Fiestas Patrias, cuando las entregas suben de cerca de 1.400 a 2.600 por día y la ventana de despacho opera al máximo; el volumen comprometido es entonces el del peak, en el primer septiembre de la Etapa 1 en producción. La tercera es que entre el 1 y el 25 de septiembre no se despliega ningún cambio sobre ninguna de las dos etapas: ante un defecto de la Etapa 2, la única acción es su reversión por interruptor de funcionalidad (sección 3.4), que vuelve la capacidad al procedimiento anterior sin instalar software.
+En el escenario ilustrativo de inicio en febrero de 2027 (Anexo 7.A del Subdocumento 7), el mes 19 cae en agosto de 2028 y el mes 20 en septiembre, lo que tiene tres consecuencias. La primera es que toda habilitación de la Etapa 2 ocurre en agosto, porque el congelamiento total va del 1 al 25 de septiembre (Caso 02, RT-10.05), además de respetar F − 28 días y los primeros tres días hábiles de agosto. La segunda es que la evidencia de cierre atraviesa septiembre: incluye el volumen real de cada día y el peak cuando ocurre, con pruebas previas a 1,5 veces la carga peak. Este sería el primer septiembre de E1 en producción, por lo que la preparación de continuidad de ambas etapas es crítica. La tercera es que entre el 1 y el 25 de septiembre no se despliega ningún cambio sobre ninguna de las dos etapas: ante un defecto de la Etapa 2, se aplica la contingencia aprobada conforme a la sección 6.4, sin presumir que un cambio de configuración está exento del congelamiento.
 
 La capacidad para ese peak se demuestra antes del H11 con las pruebas de carga a 1,5 veces el peak, con ambas etapas activas (paquete 3.9.3). El caso advierte que septiembre es «el período de mayor exigencia sobre cualquier componente nuevo» (sección 13.2).
 
@@ -172,10 +247,14 @@ Antes del paso a producción del mes 21 se aprueban las mismas pruebas de la sec
 
 ### 3.3 Indicadores diarios y umbrales de cierre
 
-Se aplican los indicadores de la sección 2.4 a los usuarios y transacciones de la Etapa 2, más los propios de su alcance, que presenta la tabla «Indicadores propios de la marcha blanca de la Etapa 2» (Fuente: Capítulo 3, Anexo 3.J, y Bases Administrativas, Art. 17.2):
+Se aplican los indicadores de la sección 2.4 a los usuarios y transacciones de la Etapa 2, más los propios de su alcance, que presenta la Tabla «tab:T18-ind2».
+
+**Indicadores propios de la marcha blanca de la Etapa 2. Fuente: Capítulo 3, Anexo 3.J, y Bases Administrativas, Art. 17.2.**
+
+<a id="tab:T18-ind2"></a>
 
 | Indicador diario | Umbral | Fuente |
-|---|---|---|
+| --- | --- | --- |
 | Pedidos de cadenas certificadas recibidos por intercambio electrónico | 100 % | R18-13 (Capítulo 3, Anexo 3.J) |
 | Avisos de despacho emitidos dentro de 2 minutos de la carga | 100 % | RF-12.09 |
 | Entregas con costo de servir calculado | 100 % | R18-11 |
@@ -186,7 +265,7 @@ Los dos últimos indicadores protegen a la Etapa 1 durante la convivencia. R18-1
 
 ### 3.4 Reversión
 
-La reversión de la Etapa 2 no toca la Etapa 1. Desactiva por interruptor de funcionalidad la capacidad de la Etapa 2 que falla, y la operación vuelve al procedimiento anterior de esa capacidad: carga manual controlada de los pedidos de la cadena, atención asistida a clientes y transportistas, o el cálculo vigente de costos. Ningún despliegue ni reversión ocurre en la ventana de 05:30 a 07:00 ni en fechas prohibidas (paquete 4.1.3).
+La reversión de la Etapa 2 no toca la Etapa 1. Desactiva por interruptor de funcionalidad la capacidad de la Etapa 2 que falla, y la operación vuelve al procedimiento anterior de esa capacidad: carga manual controlada de los pedidos de la cadena, atención asistida a clientes y transportistas, o el cálculo vigente de costos. Estos procedimientos sostienen contingencia auxiliar y no acreditan R18-13 ni habilitan cierre mientras una capacidad requerida esté desactivada. Ningún despliegue ni reversión ocurre en la ventana de 05:30 a 07:00 ni en fechas prohibidas (paquete 4.1.3).
 
 ### 3.5 Estabilización, capacitación y certificación
 
@@ -198,12 +277,24 @@ La marcha blanca de la Etapa 2 cierra con las seis condiciones del Art. 17.3. El
 
 ## 4 Convivencia entre la Etapa 1 y la Etapa 2
 
-La convivencia sigue las reglas del Art. 17.2. En los meses 13 a 15 coexisten la marcha blanca de la Etapa 1 y el desarrollo de la Etapa 2: el desarrollo de la Etapa 2 no despliega en Producción ni modifica las funciones de la Etapa 1 en marcha blanca, y los frentes de ambos esfuerzos están en el Formulario T-15. En los meses 19 y 20 la Etapa 1 está en producción y la Etapa 2 en marcha blanca, con una única fuente de verdad para los datos compartidos (pedidos, clientes, guías y entregas): la Etapa 2 lee y extiende los registros de la Etapa 1, sin copiarlos ni volver a digitarlos. En el mes 21, el paso a producción de la Etapa 2 no degrada la disponibilidad, el desempeño ni la integridad de los datos de la Etapa 1, y la Operación comienza ese mes con ambos alcances. La siguiente descripción textual corresponde a la Figura T-18.4, «Convivencia de la Etapa 1 en producción con la Etapa 2 en marcha blanca» (Fuente: elaboración propia a partir de la arquitectura lógica del Capítulo 4):
+La convivencia sigue las reglas del Art. 17.2. En los meses 13 a 15 coexisten la marcha blanca de la Etapa 1 y el desarrollo de la Etapa 2: el desarrollo de la Etapa 2 no despliega en Producción ni modifica las funciones de la Etapa 1 en marcha blanca, y los frentes de ambos esfuerzos están en el Formulario T-15. En los meses 19 y 20 la Etapa 1 está en producción y la Etapa 2 en marcha blanca, con una única fuente de verdad para los datos compartidos (pedidos, clientes, guías y entregas): la Etapa 2 lee y extiende los registros de la Etapa 1, sin copiarlos ni volver a digitarlos. En el mes 21, el paso a producción de la Etapa 2 no degrada la disponibilidad, el desempeño ni la integridad de los datos de la Etapa 1, y la Operación comienza ese mes con ambos alcances. La Figura «fig:T18-convivencia» muestra el flujo de datos de los meses 19 y 20.
 
-- A la izquierda, Etapa 1 en producción incluye M1 Recepción, M2 Inventario, M3 Preventa, M4 Rutas, M5 Preparación, M6 Reparto, M7 Cobranza y rendición, M8 Devoluciones y envases, M9 Calidad y trazabilidad, M10 Analítica (indicadores y OTIF) y M12 Telemetría. Estos módulos escriben en el registro único de la plataforma.
-- El registro único contiene clientes, pedidos, guías de despacho, entregas, lotes y cobros, con un solo escritor por dato y sin copias. Se relaciona bidireccionalmente con el ERP, que es el registro contable y el único emisor de la guía de despacho.
-- A la derecha, Etapa 2 en marcha blanca incluye M11 Canal moderno, Portal de clientes, Portal de transportistas y M10 Analítica: costo de servir. La Etapa 2 lee y extiende el registro único; no duplica los datos.
-- Ningún despliegue de Etapa 2 modifica una función estabilizada de Etapa 1.
+  
+  **Descripción textual de figura.** No sustituye la revisión visual del PDF.
+- Etapa 1 en producción
+- Etapa 2 en marcha blanca
+- Clientes, pedidos, guías de despacho, entregas, lotes y cobros /  un solo escritor por dato y sin copias
+- ERP: registro contable y único emisor de la guía de despacho
+- M11 Canal moderno
+- Portal de clientes
+- Portal de transportistas
+- M10 Analítica: costo de servir
+- Ningún despliegue de la Etapa 2 modifica una función estabilizada de la Etapa 1
+- Relación entre nodos: rb → erp.
+  
+**Figura: Convivencia de la Etapa 1 en producción con la Etapa 2 en marcha blanca. Fuente: elaboración propia a partir de la arquitectura lógica del Capítulo 4.**
+
+  <a id="fig:T18-convivencia"></a>
 
 La Etapa 1 escribe en el registro único y la Etapa 2 lo lee y lo extiende; ninguna de las dos mantiene una copia de los datos de la otra, por lo que no existe una doble digitación que conciliar.
 
@@ -213,10 +304,72 @@ La transferencia al equipo de TI de cuatro personas del CLIENTE se hace antes de
 
 Queda como servicio permanente del adjudicatario durante los 36 meses lo que el Capítulo 3, sección 3.4.5, asigna a LafroX: el centro de operaciones, la mesa de servicio, la gestión de incidentes, la continuidad, la seguridad y el mantenimiento, que corresponden a los paquetes 8.1 y 8.2 (Caso 02, sección 17.6, punto 8).
 
+## 6 Condiciones de programación, recursos y continuidad
+
+Los criterios siguientes gobiernan la programación bajo supuestos explícitos y prevalecen sobre descripciones gráficas históricas. La aceptación contractual exige actas y evidencias, no la sola descripción de estos controles.
+
+### 6.1 Alcance completo de las olas y orden de incorporación
+
+| Ola | Módulos y alcance | Secuencia propuesta | Condición previa |
+| --- | --- | --- | --- |
+| 1 Recepción y trazabilidad | M1; M9 captura/retención por lote; M12 adquisición de temperatura; M10 indicadores de recepción | Talca como piloto propuesto en semana 1; Concepción y las tres plataformas en semana 2 | Lotes, sensores, contratos de integración y conciliación probados; recepción sin duplicar escritor |
+| 2 Bodega y preparación | M2/M5; M9 retiro sanitario y liberación; M12 alertas térmicas; M10 inventario/faltantes | Talca en semana 3; demás sitios en semana 4 | Datos de recepción conciliados y disponibilidad de funciones de ola 1, sin retirar respaldos antes de cuatro semanas de criterio |
+| 3 Preventa a rendición | M3/M4/M6/M8/M7; M9 trazabilidad hasta destinatario; M12 temperatura de transporte; M10 OTIF y reparto | Grupos de rutas vinculados a Talca semana 5, a Concepción semana 6, a plataformas semana 7; remanentes semana 8 | Pedido/stock/preparación disponibles, usuarios certificados, acuerdos con transportistas y sindicato; coordinación de reserva/custodia probada |
+
+Las semanas son relativas a H6 y son supuestos de preparación; al confirmar fechas se convierten a días permitidos. El piloto en Talca facilita probar la integración con WMS/ERP, pero no se presume aprobado. No se inventa un número de zonas: el plan de rutas vigente del CLIENTE define los grupos y su volumen. El responsable de Operaciones y el Líder de Implantación registran sitio, rutas, módulos, usuarios, escritor autorizado y fecha de activación en el acta de cada grupo. Si un grupo no está listo, no se sustituye su volumen por una muestra para acreditar cierre.
+
+Los dominios pueden habilitarse en paralelo sin intervenir simultáneamente el mismo proceso/sitio ni crear doble escritura. Una recepción habilitada alimenta bodega con conciliación diaria, mientras se acumula su evidencia; el retiro del respaldo exige cuatro semanas consecutivas por grupo. El último grupo se propone en semana 8 y nunca después de F − 28 días. Con apertura del período de H6 el 1 de febrero de 2028, sin activar cambios durante los primeros tres días hábiles, y cierre al comenzar el 1 de mayo de 2028, la evidencia comprende 3–30 de abril; todos los grupos deben estar operativos antes del 3 de abril. La semana 8 cae dentro de marzo y evita depender de la semana 9 de abril. Es un ejemplo calendario, no una fecha aprobada: el calendario hábil del CLIENTE y las fechas efectivas determinan las activaciones. H7/H12 respetan también los primeros tres días hábiles de su mes; la continuidad y evidencia se mantienen hasta el acta, sin usar esa espera para recortar la marcha blanca.
+
+M10 costo de servir se reserva a E2; sus indicadores operacionales pertenecen a E1. M9/M12 se activan desde la primera ola y amplían cobertura conforme al proceso; no quedan como una cuarta ola sin fecha.
+
+### 6.2 Orden de cadenas, portales y cierre E2
+
+En el mes 18 se congela el registro de cadenas y perfiles de intercambio con Operaciones/Comercial; 3.6.5 y 3.6.6 deben tener pruebas de conformidad antes de activar cada cadena. El orden propuesto es: perfiles ya certificados y accesos disponibles primero; perfiles con mayor variación o dependencia externa después, todos dentro del mes 19 y antes del inicio de las cuatro semanas finales. No se inventan nombres ni cantidades de cadenas.
+
+Portales por grupo de usuarios y costo de servir avanzan en paralelo en dominios distintos. El acta registra el 100 % del alcance de cadenas exigible, no sólo las que lograron certificarse. Si una cadena requerida falta, R18-13 permanece incumplido; la carga manual es contingencia y no acredita intercambio electrónico. La habilitación termina antes de septiembre bajo el calendario supuesto y antes de la fecha efectiva que permita cuatro semanas de cierre; no se usa «4,7 semanas» como fecha límite exacta.
+
+### 6.3 Dotación, estabilización y soporte entre etapas
+
+Se mantiene el mínimo simultáneo de 13 puestos de acompañamiento derivado del SD3: dos en CD, tres en plataformas, siete en ruta y uno de coordinación. Puestos y personas de relevo son conceptos distintos. Para planificar cuatro semanas (24 días operativos), se asumen ocho horas por jornada de terreno: 12 × 24 × 8 + 160 de coordinación = 2.464 HH; los relevos se dimensionan con 128 HH efectivas/persona-mes en T-15. No se supone que dos personas solas cubran todos los turnos nocturnos del mes.
+
+| Período | Previsión de puestos simultáneos E1 | Tratamiento |
+| --- | --- | --- |
+| Meses 13–15 | 13 | Acompañamiento de marcha blanca, sin reducción que comprometa volumen o evidencia |
+| Primeras cuatro semanas posteriores a H7, mes 16 | 13 | Estabilización reforzada; no se absorbe por desarrollo E2 |
+| Mes 17 | 7: dos CD, tres plataformas, una ruta y coordinación | Sólo si todos los usuarios y transacciones del alcance están certificados/registrados, conciliación sin diferencias inexplicadas y cero incidentes críticos/altos |
+| Meses 18–20 | 3: dos CD y coordinación; especialistas de ruta/plataformas bajo demanda | Sólo con criterios anteriores sostenidos; conserva NOC/mesa y reserva DES/QA por separado |
+| Primeras cuatro semanas tras H12, mes 21 | 13 puestos de acompañamiento E2 como supuesto conservador | Bodega y ruta verifican no degradación de E1; se recalibra con el alcance efectivo antes de H11 |
+
+Las previsiones mensuales son una curva inicial, no una retirada automática. El JP y Operaciones autorizan cada decremento en un acta con indicadores diarios y cobertura por perfil; si falla un indicador, se retiene o restituye el nivel anterior sin desplazar hitos. Toda extensión requiere recalcular HH, relevos y capacidad disponible del T-15. Para E2 se prevén cuatro semanas de atención reforzada; después se integra a F8 si la Contraparte Técnica confirma estabilidad.
+
+Desde H7 y hasta el mes 20, el paquete 4.2.2 incluye soporte puente: NOC 24×7, mesa 04:00–22:00 de lunes a sábado y 24×7 en septiembre/diciembre, especialistas para críticos/altos 24×7 y escalamiento operativo. El T-15 separa cobertura y reserva de correcciones de acompañamiento. En el mes 21 se transfiere a 8.1.1/8.1.2 sin brecha de atención. Los responsables de incidentes, escalamiento y datos son los mismos en ambas etapas; E2 no dispone de un segundo escritor de los datos E1.
+
+### 6.4 Tiempo de reversión y ensayo de capacidad
+
+Objetivos propuestos para el ensayo previo a cada corte: nivel técnico ≤10 minutos; preparación de contingencia operacional ≤30 minutos en paralelo; verificación y autorización de despacho ≤10 minutos adicionales. Tiempo total objetivo = máximo(10,30) + 10 = 40 minutos. Decisión límite propuesta 04:45; restauración operacional objetivo 05:25, con cinco minutos antes de las 05:30. Son objetivos de diseño, no tiempos medidos ni una garantía de salida de 96 camiones.
+
+El ensayo de 4.1.2 registra detección, decisión, comienzo/fin técnico, disponibilidad de la versión local, conciliación mínima, guías emitidas por ERP, disponibilidad de rutas y autorización del CLIENTE. Debe demostrar el flujo completo de los 96 despachos y las integraciones fallidas, sin pérdida/duplicación ni emisión tributaria por un sistema no autorizado. Si no termina antes de las 05:30 o no acredita ese volumen, el corte no se autoriza y se registra el riesgo para SD8. La falla del ERP requiere su contingencia tributaria aprobada; disponer de papel no prueba que se puedan emitir DTE ni cumplir el despacho.
+
+WMS permanece en solo lectura como respaldo de consulta conforme a S-14: no se reactiva su escritura para revertir. La vuelta operacional mantiene o restituye una versión local probada, único escritor y documentos válidos del ERP; conserva UUID/colas para conciliar. El papel y la carga asistida sólo sostienen tareas auxiliares y no reemplazan el despacho de 96 camiones. Ante cualquier evidencia de pérdida o duplicación se bloquea la aceptación; la conservación se comprueba, no se presume.
+
+Durante congelamientos, se aplica la continuidad previamente autorizada por el CLIENTE; no se afirma que un interruptor de funcionalidad esté exento de las prohibiciones de cambio. Si deshabilitar una función modifica producción, su ejecución requiere el procedimiento de emergencia acordado y la autoridad correspondiente. La reversión no puede degradar E1 ni crear doble digitación. Fuera de emergencia, las habilitaciones, cortes y cambios respetan todas las fechas y ventanas prohibidas.
+
+### 6.5 Controles nuevos de coordinación y aceptación
+
+Los paquetes 3.3.6, 3.4.2 y 3.4.6 incluyen el contrato CD-05: retención local por lote/ubicación, acuse durable antes de confirmar pedido, UUID e idempotencia y época de autoridad. 3.8.1/3.8.3 incluyen AL-STOCK-01 y AL-ACT-01 con corte, reintento, concurrencia y ausencia de doble descuento o custodia duplicada. La fuente es SD4 §4.1 y sus anexos lógicos; son pruebas planificadas, no ejecutadas. SD4 Anexo A31 ya dimensiona CD-05 con 4L mensajes y A32 incorpora su tráfico en enlaces. La relación con 2N + 2L exige comprobar N = L y la multiplicidad de retenciones; si un pedido usa varios lotes o ubicaciones, se mide el mayor volumen y el drenaje de cola. 3.8.4/3.9.3 verifican esa hipótesis; no se afirma que CD-05 esté ausente de la memoria. El límite residual de RPO continúa abierto ante pérdida simultánea del sitio y su respaldo local, sin alterar aquí la arquitectura física.
+
+
 ## Referencias
 
 Las Bases se citan con su documento y el artículo, capítulo, sección o código del requisito.
 
-- Distribuidora Puelche S.A. (2026a). *Bases Administrativas de Licitación N.º TFEP-01/2026: Contratación de Solución Integral de Software y Servicios de Operación*.
-- Distribuidora Puelche S.A. (2026b). *Bases Técnicas Transversales de Licitación N.º TFEP-01/2026*.
-- Distribuidora Puelche S.A. (2026c). *Caso 02: Logística. Especificaciones del problema y operación de Distribuidora Puelche S.A.*
+  
+-  Distribuidora Puelche S.A. (2026a). *Bases Administrativas de Licitación N.º TFEP-01/2026: Contratación de Solución Integral de Software y Servicios de Operación*.
+  
+-  Distribuidora Puelche S.A. (2026b). *Bases Técnicas Transversales de Licitación N.º TFEP-01/2026*.
+  
+-  Distribuidora Puelche S.A. (2026c). *Caso 02: Logística. Especificaciones del problema y operación de Distribuidora Puelche S.A.*
+
+## Declaración de uso de IA
+
+La declaración histórica del SD7 cubre la fuente importada de este formulario. Codex apoyó las correcciones y la planificación provisional el 6 de octubre de 2026, con nivel alto en texto y datos calculados y descripciones textuales de figuras. Revisión humana no documentada. Los controles automáticos no acreditan aprobación del equipo; consolidar el uso efectivo y la revisión humana en A-6 antes de entrega.

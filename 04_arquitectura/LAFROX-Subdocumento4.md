@@ -691,7 +691,7 @@ El conductor propio y el externo utilizan el mismo contrato de entrega con ident
 
 La cadena intercambia pedidos por el hub EDI; desde la Etapa 2, el representante del transportista consulta sus rutas y confirma conductor y vehículo en su portal. Ninguno de esos canales reemplaza el registro personal del conductor que ejecuta M6.
 
-**M12 Telemetría y flota** consume la fuente de posicionamiento existente de los vehículos propios, compara ruta planificada con recorrido y entrega kilómetros a M10 para costo de servir. No incorpora cámaras de cabina ni usa la posición para controlar la jornada laboral. Su falla degrada la visibilidad de ruta, no la captura de entregas de M6.
+**M12 Telemetría** consume la fuente de posicionamiento existente de los vehículos propios, compara ruta planificada con recorrido y entrega kilómetros a M10 para costo de servir. No incorpora cámaras de cabina ni usa la posición para controlar la jornada laboral. Su falla degrada la visibilidad de ruta, no la captura de entregas de M6.
 
 ### 4.1.5 Modelo de datos conceptual
 
@@ -1014,9 +1014,9 @@ El Anexo 4-U distingue emisión tributaria, constancia operativa y acuse del rec
 
 Los conductores de transportistas externos (≈ 160, de 10 empresas) no pertenecen a la dotación de Puelche. Antes de entregar una ruta, la empresa transportista declara la identidad del conductor y su vínculo con ella. En la Etapa 1, despacho registra esa declaración en su función operacional. Desde la Etapa 2, el representante de la empresa puede confirmarla en el portal de transportistas. El responsable de despacho aprueba la asignación conductor–vehículo–turno; el alta inicial requiere conexión para verificar un OTP de un solo uso. El identificador del conductor y el del transportista acompañan cada `EntregaRegistrada`. La autorización se limita a la ruta asignada y a M6, M7 y M8 mediante rol y atributos de turno, sitio y dispositivo.
 
-La aplicación conserva localmente una asignación firmada para el turno de hasta 14 horas y permite capturar eventos mientras no exista red. La caché local de identidad, de solo lectura y TTL de 24 horas, no acorta por sí sola la vigencia de esa asignación de terreno; tampoco la renueva. Una persona reemplazante que no fue dada de alta no obtiene una nueva identidad sin conexión. En ese caso Operaciones reasigna el turno a un conductor ya habilitado y registra la excepción; la rotación no autoriza compartir el OTP ni la cuenta del conductor previo.
+La aplicación conserva localmente una asignación firmada para el turno de hasta 14 horas y permite capturar eventos mientras no exista red. La caché local de identidad, de solo lectura y TTL de 24 horas, no acorta por sí sola la vigencia de esa asignación de terreno; tampoco la renueva. Una persona reemplazante que no fue dada de alta no obtiene una nueva identidad sin conexión. En ese caso Operaciones reasigna el turno a un conductor ya habilitado y registra la excepción; la rotación no autoriza compartir el OTP ni la cuenta del conductor previo. Para que esa reasignación sea posible durante un corte de 24 horas, el acuerdo con cada transportista (paquete 5.4.1) le exige mantener enrolados, antes de cada turno, conductores suplentes en número suficiente para cubrir sus rutas del día siguiente; el manifiesto firmado que Keycloak publica cada hora los incluye. Si aun así no hay un suplente habilitado, la ruta no sale con una persona no identificada: Operaciones la reasigna a un camión con conductor habilitado o la reprograma, y el caso se ensaya en la prueba de corte de 24 horas antes del H5.
 
-Al finalizar el turno expiran la asignación y sus permisos. Si se denuncia pérdida de dispositivo o baja anticipada, Keycloak revoca el acceso conectado y el equipo borra los datos al recuperar conexión. Mientras permanezca sin señal no puede prometerse revocación remota inmediata: la duración de la asignación limita la exposición y la incidencia se registra para bloquear la rendición y revisar la evidencia capturada durante el intervalo.
+Al finalizar el turno expiran la asignación y sus permisos. Si se denuncia pérdida de dispositivo o baja anticipada, Keycloak revoca el acceso conectado y el equipo borra los datos al recuperar conexión. La revocación inmediata del RT-12.07 se cumple en todo lo que depende de la solución: al recibir la denuncia, Keycloak revoca la sesión y las credenciales, la API rechaza toda operación posterior del dispositivo y la sincronización rechaza los eventos firmados después de la hora de revocación, que quedan en cuarentena para revisión. Lo que no puede hacer ningún sistema es borrar un equipo sin señal antes de que se conecte; para ese intervalo, la aplicación exige el PIN personal en cada sesión, cifra los datos locales y bloquea la rendición y el cobro hasta validar la evidencia. La exposición queda acotada a los datos ya presentes en el equipo y a un máximo de 14 horas, y no se presenta como revocación remota del equipo. Esta interpretación se somete a la Contraparte Técnica en el H2, sin rebajar el requisito.
 
 ### 4.1.19 Primer cuello de botella bajo la carga de septiembre
 
@@ -1279,7 +1279,7 @@ La Tabla [8](LAFROX-Subdocumento4.md#tab:mapeo-logica) asocia cada módulo y cad
 | M9 Calidad | B-01, B-02 con la función local de bloqueo en el borde y B-03; N-06 y N-08 | Sitio, camiones y nube |
 | M10 Analítica | N-10 | Nube |
 | M11 Canal moderno | N-04 con el perfil EDI y el transporte AS2; A-04 | Nube y VM-04 |
-| M12 Flota | N-04 y N-06, con la API del proveedor de telemetría | Nube |
+| M12 Telemetría | N-04 y N-06, con la API del proveedor de telemetría | Nube |
 | Capa 1, portales y consolas | N-01 a N-03 y frontend de consolas en N-04 | Nube |
 | Capas 2 y 3, entrada y puerta de enlace | CloudFront, WAF y API Gateway (N-01 a N-03 y N-12); puerta de API local en A-01 | Nube y sitio |
 | Capa 5, integración y eventos | A-03; N-09; A-04 | Sitio y nube |
@@ -1341,7 +1341,7 @@ Los trece componentes de nube pura viven solo en la nube. La justificación de c
  
 - **N-07 Caché** (latencia): ElastiCache mantiene en memoria el stock, el crédito y las sesiones para que la consulta de preventa responda en menos de 2 s.
  
-- **N-08 Ingesta de IoT** (volumen): IoT Core recibe los 10.584 mensajes diarios de cadena de frío por MQTTS y gestiona los gateways del borde; su motor de reglas escribe cada lectura en DynamoDB y publica en SNS las que superan el umbral.
+- **N-08 Ingesta de IoT** (volumen): IoT Core recibe los 10.920 mensajes diarios de cadena de frío por MQTTS y gestiona los gateways del borde; su motor de reglas escribe cada lectura en DynamoDB y publica en SNS las que superan el umbral.
  
 - **N-09 Mensajería** (criticidad): una cola SQS FIFO recibe la reconciliación de los sitios como sobres JSON versionados, en orden por grupo y sin duplicados; otra cola FIFO lleva las solicitudes al ERP hasta `erp-sync` y una cola FIFO de respuesta para Concepción y para cada cross-docking devuelve sus respuestas, porque Talca las recibe por RabbitMQ local; una cola FIFO de coordinación por cada uno de los cinco sitios lleva las solicitudes de retención y liberación de stock que su shipper lee por conexión saliente; otras colas SQS, separadas de esas, transportan los trabajos internos de Laravel; y SNS difunde las alertas de excursión térmica.
  
@@ -1657,7 +1657,7 @@ El paso de un ambiente a otro lo controla el pipeline de integración continua: 
  
 - Escaneo de secretos y de imágenes de contenedor, y medición de cobertura.
 
-El pipeline bloquea el despliegue ante un hallazgo crítico o alto, ante un contrato público roto sin nueva edición o ante una cobertura de la lógica de negocio inferior al 70 % (RT-04.11; Bases Técnicas Transversales, cap. 4, p. 11). Primero, la imagen aprobada se firma, se publica en Elastic Container Registry y se promueve por su digest, de modo que ningún ambiente recompila; el paso a Producción es automático una vez que la imagen supera los controles del pipeline y el ensayo en Preproducción, dentro de las ventanas de la Tabla [14](LAFROX-Subdocumento4.md#tab:jd02) (RT-04.06; Bases Técnicas Transversales, cap. 4, p. 11). Segundo, la configuración no sensible se externaliza por ambiente en SSM Parameter Store y los secretos se gestionan en AWS Secrets Manager con rotación automática (ADR-15, Anexo 4-O); la imagen no contiene secretos ni el archivo de entorno (RT-04.08 y RT-04.09; Bases Técnicas Transversales, cap. 4, p. 11). Tercero, las migraciones de base de datos son migraciones Laravel basales y aditivas, que siguen la estrategia de expandir y contraer: se ejecutan como un paso único del despliegue antes de cambiar el tráfico, cada entrega solo agrega estructuras, de modo que la entrega previa y la nueva de la aplicación funcionan sobre el mismo esquema durante el despliegue, y las estructuras obsoletas se eliminan en una entrega posterior. Cada migración declara además su reversión, de modo que el esquema puede volver a la entrega previa (RT-04.10; Bases Técnicas Transversales, cap. 4, p. 11). Luego, el código reside en un repositorio con ramas protegidas, revisión obligatoria por pares y sin escritura directa sobre la rama principal (RT-04.03; Bases Técnicas Transversales, cap. 4, p. 10).
+El pipeline bloquea el despliegue ante un hallazgo crítico o alto, ante un contrato público roto sin nueva edición o ante una cobertura de la lógica de negocio inferior al 70 % (RT-04.11; Bases Técnicas Transversales, cap. 4, p. 11). Además aplica la política corporativa del SD1: bloquea toda versión cuya cobertura de líneas por pruebas unitarias del código modificado sea inferior al 80 %. Son dos métricas distintas, medidas en la misma ejecución del pipeline, y una versión debe superar ambas (paquete 1.5.2 del Formulario T-14). Primero, la imagen aprobada se firma, se publica en Elastic Container Registry y se promueve por su digest, de modo que ningún ambiente recompila; el paso a Producción es automático una vez que la imagen supera los controles del pipeline y el ensayo en Preproducción, dentro de las ventanas de la Tabla [14](LAFROX-Subdocumento4.md#tab:jd02) (RT-04.06; Bases Técnicas Transversales, cap. 4, p. 11). Segundo, la configuración no sensible se externaliza por ambiente en SSM Parameter Store y los secretos se gestionan en AWS Secrets Manager con rotación automática (ADR-15, Anexo 4-O); la imagen no contiene secretos ni el archivo de entorno (RT-04.08 y RT-04.09; Bases Técnicas Transversales, cap. 4, p. 11). Tercero, las migraciones de base de datos son migraciones Laravel basales y aditivas, que siguen la estrategia de expandir y contraer: se ejecutan como un paso único del despliegue antes de cambiar el tráfico, cada entrega solo agrega estructuras, de modo que la entrega previa y la nueva de la aplicación funcionan sobre el mismo esquema durante el despliegue, y las estructuras obsoletas se eliminan en una entrega posterior. Cada migración declara además su reversión, de modo que el esquema puede volver a la entrega previa (RT-04.10; Bases Técnicas Transversales, cap. 4, p. 11). Luego, el código reside en un repositorio con ramas protegidas, revisión obligatoria por pares y sin escritura directa sobre la rama principal (RT-04.03; Bases Técnicas Transversales, cap. 4, p. 10).
 
 A Producción no se llega de otra forma: su acceso es restringido y auditado, y los desarrolladores no tienen acceso interactivo directo a ese ambiente (numeral 4.1 de las Bases Técnicas Transversales; Bases Técnicas Transversales, cap. 4, p. 10). El acceso privilegiado excepcional reúne estos controles:
 
@@ -2179,14 +2179,14 @@ La dimensión 11, «Número de integraciones y volumen de mensajes por integraci
 | **Integraciones** | **Normal** | **Peak** | **Origen** |
 | --- | --- | --- | --- |
 | INT-01 a INT-04 | 119.678/día | 222.260/día | Pedidos, entregas, eventos, coordinación de reserva y cota de cross-docking |
-| INT-05 | 10.584/día | 10.584/día | 6.048 cámaras + 4.536 termógrafos |
-| INT-06 a INT-10 | 5.725/día | 11.695/día | ERP, DTE, EDI, pagos y mapas |
+| INT-05 | 10.920/día | 10.920/día | 6.048 cámaras + 4.872 termógrafos |
+| INT-06 a INT-10 | 8.608/día | 15.905/día | ERP, DTE, EDI, pagos y mapas |
 | INT-11 a INT-15 | 89.642/día | 102.844/día | Avisos, réplica, identidad, ADOT y telemetría |
-| **Total** | **225.629/día** | **347.383/día** | **15 integraciones** |
+| **Total** | **228.848/día** | **351.929/día** | **15 integraciones** |
 
 Fuente: elaboración propia.
 
-El EDI actual es cero y el escenario 2029 se limita a 11 % de los pedidos de la cadena principal, que pesa 11 % de la venta (SV-05). La Tabla [27](LAFROX-Subdocumento4.md#tab:t81) compara el peor caso del camino principal y el drenaje de los caminos de respaldo.
+El EDI actual es cero; la solución futura lo dimensiona con la misma hipótesis en régimen y en peak: 11 % de los pedidos, que corresponde a la cadena principal y su 11 % de la venta (SV-05), con cuatro mensajes por pedido: 1.400 × 11 % × 4 = 616 mensajes en régimen y 2.600 × 11 % × 4 = 1.144 en peak. La pasarela de pago se acota con un pago electrónico por entrega como máximo y dos mensajes por pago (solicitud y respuesta): 2.800 en régimen y 5.200 en peak; los 11.800 cobros mensuales en efectivo del caso no miden pagos con tarjeta. La Tabla [27](LAFROX-Subdocumento4.md#tab:t81) compara el peor caso del camino principal y el drenaje de los caminos de respaldo.
 
 <a id="tab:t81"></a>
 
@@ -2365,7 +2365,7 @@ La Tabla [33](LAFROX-Subdocumento4.md#tab:t72) reúne cada dimensión con el nom
 | 8 | Volumen anual de almacenamiento de evidencia de entrega, firmas y fotografías | 87,72 GB/año | 13,58 GB mes peak | Anexo 4-W, sección 4-W.4 |
 | 9 | Volumen anual de almacenamiento de series de temperatura y de posicionamiento | 0,56 + 3,20 GB/año crudos | 2,80 + 3,20 GB crudos retenidos | Anexo 4-W, sección 4-W.4 |
 | 10 | Volumen total de datos históricos a migrar | 32,11 GB | 30,73–33,49 GB de sensibilidad | Anexo 4-W, sección 4-W.4 |
-| 11 | Número de integraciones y volumen de mensajes por integración | 15; 225.629 mensajes/día | 347.383 mensajes/día | Anexo 4-W, sección 4-W.5 |
+| 11 | Número de integraciones y volumen de mensajes por integración | 15; 228.848 mensajes/día | 351.929 mensajes/día | Anexo 4-W, sección 4-W.5 |
 | 12 | Ancho de banda requerido por sitio, en régimen y en peak | 3,29 / 0,67 / 0,05 Mbps cargados | 5,16 / 1,88 / 0,35 Mbps peor caso | Anexo 4-W, sección 4-W.5 |
 | 13 | Volumen de datos generado por un dispositivo de reparto en un turno completo sin señal | 5,36 MB promedio | 9,83 MB, ruta de 34 clientes | Anexo 4-W, sección 4-W.6 |
 | 14 | Tiempo de sincronización de la flota al regresar al centro de distribución | 10 min por dispositivo | 10 min después del último camión | Anexo 4-W, sección 4-W.6 |
