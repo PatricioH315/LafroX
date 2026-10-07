@@ -60,7 +60,7 @@ Las figuras siguientes muestran cada uno de los cinco ambientes. Desarrollo, QA 
 La Figura~\ref{fig:amb-desarrollo} muestra la secuencia de despliegue de Desarrollo: la imagen que produce la cadena de entrega se despliega en ECS Fargate con la configuración y los secretos del ambiente, y los portales se publican en S3 privado, servidos por CloudFront. Su secuencia numerada se lee de izquierda a derecha: GitLab CI aplica los controles, CodeBuild construye la imagen, ECR la guarda firmada y la misma imagen llega a ECS Fargate en la VPC 10.104.0.0/16, sin recompilar. El ambiente no tiene enlace con los sitios.
 
 \begin{figure}[htbp]\centering
-  \includegraphics[width=\textwidth]{figuras/fisica/ambientes/amb_desarrollo.png}
+  \includegraphics[width=\textwidth]{figuras/fisica/ambientes/amb_desarrollo_9pt.pdf}
   \caption{Ambiente de Desarrollo}\label{fig:amb-desarrollo}
   \fuentefigura
 \end{figure}
