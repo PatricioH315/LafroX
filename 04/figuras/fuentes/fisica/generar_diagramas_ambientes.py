@@ -1,0 +1,284 @@
+# Genera los 5 diagramas de ambientes del apartado de despliegue (04/partes/4.2_fisica/11_j_despliegue.tex).
+# Fuentes .drawio en esta carpeta; los PNG van a 04/figuras/fisica/ambientes/ (rama-latex).
+#
+# Criterio: cada diagrama muestra solo lo que interviene en la secuencia de despliegue de su ambiente,
+# con los nombres y codigos del informe. El orden lo dan los circulos numerados y los rotulos breves de las
+# flechas, tomados del apartado de despliegue; no hay recuadro de leyenda.
+#
+# Ubicacion AWS coherente: dentro de la VPC solo lo que vive en ella (ALB, ECS Fargate, Aurora, endpoints);
+# S3 en la region, fuera de la VPC; CloudFront, que es global, fuera de la region; CodeBuild y ECR en AWS
+# (sa-east-1, N-04); GitLab CI fuera de AWS (suscripcion).
+import os
+import re
+from xml.sax.saxutils import escape
+
+OUT = os.path.dirname(os.path.abspath(__file__))
+PNG_DIR = os.path.normpath(os.path.join(OUT, '..', '..', 'fisica', 'ambientes'))
+PNGS = {}
+CAT = {'compute': '#ED7100', 'container': '#ED7100', 'devtools': '#C925D1', 'db': '#C925D1',
+       'storage': '#7AA116', 'net': '#8C4FFF', 'sec': '#DD344C', 'mgmt': '#E7157B'}
+PASO = '#D6246E'
+NUBE, MIX = '#1A73E8', '#7B3FA0'
+B = lambda t: '<b>%s</b>' % t
+
+
+class D:
+    def __init__(s, name):
+        s.name, s.cells, s.n = name, [], 0
+
+    def _id(s):
+        s.n += 1
+        return 'n%d' % s.n
+
+    def add(s, style, x, y, w, h, value=''):
+        i = s._id()
+        s.cells.append('<mxCell id="%s" value="%s" style="%s" vertex="1" parent="1">'
+                       '<mxGeometry x="%d" y="%d" width="%d" height="%d" as="geometry"/></mxCell>'
+                       % (i, escape(value, {'"': '&quot;'}), style, x, y, w, h))
+        return i
+
+    def icon(s, label, res, cat, x, y, lw=170, right=False):
+        pos = ('labelPosition=right;verticalLabelPosition=middle;verticalAlign=middle;align=left;spacingLeft=6;' if right
+               else 'verticalLabelPosition=bottom;verticalAlign=top;align=center;')
+        st = ('sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=%s;strokeColor=#ffffff;dashed=0;%s'
+              'html=1;fontSize=15;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.%s;'
+              'whiteSpace=wrap;labelWidth=%d;') % (CAT[cat], pos, res, lw)
+        return s.add(st, x, y, 56, 56, label)
+
+    def group(s, label, gr, color, x, y, w, h, dashed=0, valign='top'):
+        st = ('points=[];outlineConnect=0;gradientColor=none;html=1;whiteSpace=wrap;fontSize=16;fontStyle=1;'
+              'container=0;pointerEvents=0;collapsible=0;recursiveResize=0;shape=mxgraph.aws4.group;'
+              'grIcon=mxgraph.aws4.%s;strokeColor=%s;fillColor=none;verticalAlign=%s;align=left;spacingLeft=30;spacingBottom=6;'
+              'fontColor=%s;dashed=%d;') % (gr, color, valign, color, dashed)
+        return s.add(st, x, y, w, h, label)
+
+    def zone(s, label, x, y, w, h):
+        return s.add('rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#147EBA;dashed=1;'
+                     'fontColor=#147EBA;fontSize=14;fontStyle=1;verticalAlign=top;align=center;', x, y, w, h, label)
+
+    def box(s, html, x, y, w, h, fill='#F4F6F6', stroke='#545B64'):
+        return s.add('rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=%s;strokeColor=%s;fontSize=14;'
+                     'fontColor=#232F3E;align=center;verticalAlign=middle;spacing=6;' % (fill, stroke), x, y, w, h, html)
+
+    def badge(s, text, color, w):
+        return s.add('rounded=1;arcSize=12;whiteSpace=wrap;html=1;fillColor=%s;strokeColor=%s;fontSize=17;'
+                     'fontColor=#FFFFFF;' % (color, color), 20, 20, w, 38, text)
+
+    def paso(s, n, x, y):
+        return s.add('ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=%s;strokeColor=#FFFFFF;strokeWidth=2;'
+                     'fontColor=#FFFFFF;fontStyle=1;fontSize=16;align=center;verticalAlign=middle;' % PASO,
+                     x, y, 30, 30, str(n))
+
+    def leyenda(s, pasos, y, w):
+        filas = ''.join('<tr><td style="vertical-align:top;padding:2px 8px 2px 0"><b style="color:%s">%d</b></td>'
+                        '<td style="padding:2px 0">%s</td></tr>' % (PASO, i + 1, t) for i, t in enumerate(pasos))
+        html = '<b>Secuencia de despliegue</b><table style="font-size:14px;margin-top:4px">%s</table>' % filas
+        return s.add('rounded=1;arcSize=4;whiteSpace=wrap;html=1;fillColor=#F4F6F6;strokeColor=#545B64;fontSize=15;'
+                     'fontColor=#232F3E;align=left;verticalAlign=top;spacing=10;', 20, y, w,
+                     40 + sum(21 * (1 + len(re.sub('<[^>]+>', '', t)) // int((w - 60) / 6.6)) + 5 for t in pasos), html)
+
+    def edge(s, a, b, ports='', dashed=0, pts=(), label='', pos=0):
+        i = s._id()
+        arr = ('<Array as="points">%s</Array>' % ''.join('<mxPoint x="%d" y="%d"/>' % q for q in pts)) if pts else ''
+        s.cells.append('<mxCell id="%s" value="%s" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;'
+                       'endFill=1;strokeColor=#545B64;strokeWidth=1.5;fontSize=13;fontColor=#232F3E;'
+                       'labelBackgroundColor=#FFFFFF;dashed=%d;%s" edge="1" parent="1" source="%s" target="%s">'
+                       '<mxGeometry x="%s" relative="1" as="geometry">%s</mxGeometry></mxCell>'
+                       % (i, escape(label), dashed, ports, a, b, pos, arr))
+
+    def save(s, fname, png=None):
+        xml = ('<mxfile host="app.diagrams.net"><diagram name="%s" id="%s"><mxGraphModel dx="1600" dy="1000" grid="1" '
+               'gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" math="0" '
+               'shadow="0"><root><mxCell id="0"/><mxCell id="1" parent="0"/>%s</root></mxGraphModel></diagram></mxfile>'
+               % (s.name, fname[:2], ''.join(s.cells)))
+        open(os.path.join(OUT, fname), 'w', encoding='utf-8').write(xml)
+        if png:
+            PNGS[fname] = png
+
+
+GITLAB_SVG = 'PHN2ZyBpZD0ibG9nb19hcnQiIGRhdGEtbmFtZT0ibG9nbyBhcnQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDU4NiA1NTkiPjxkZWZzPjxzdHlsZT4uY2xzLTF7ZmlsbDojZmM2ZDI2O30uY2xzLTJ7ZmlsbDojZTI0MzI5O30uY2xzLTN7ZmlsbDojZmNhMzI2O308L3N0eWxlPjwvZGVmcz48dGl0bGU+Z2l0bGFiLWljb24tcmdiPC90aXRsZT48ZyBpZD0iZzQ0Ij48cGF0aCBpZD0icGF0aDQ2IiBjbGFzcz0iY2xzLTEiIGQ9Ik00NjEuMTcsMzAxLjgzbC0xOC45MS01OC4xMkw0MDQuODQsMTI4LjQzYTYuNDcsNi40NywwLDAsMC0xMi4yNywwTDM1NS4xNSwyNDMuNjRIMjMwLjgyTDE5My40LDEyOC40M2E2LjQ2LDYuNDYsMCwwLDAtMTIuMjYsMEwxNDMuNzgsMjQzLjY0bC0xOC45MSw1OC4xOWExMi44OCwxMi44OCwwLDAsMCw0LjY2LDE0LjM5TDI5Myw0MzUsNDU2LjQ0LDMxNi4yMmExMi45LDEyLjksMCwwLDAsNC43My0xNC4zOSIvPjwvZz48ZyBpZD0iZzQ4Ij48cGF0aCBpZD0icGF0aDUwIiBjbGFzcz0iY2xzLTIiIGQ9Ik0yOTMsNDM0LjkxaDBsNjIuMTYtMTkxLjI4SDIzMC44N0wyOTMsNDM0LjkxWiIvPjwvZz48ZyBpZD0iZzU2Ij48cGF0aCBpZD0icGF0aDU4IiBjbGFzcz0iY2xzLTEiIGQ9Ik0yOTMsNDM0LjkxLDIzMC44MiwyNDMuNjNoLTg3TDI5Myw0MzQuOTFaIi8+PC9nPjxnIGlkPSJnNjQiPjxwYXRoIGlkPSJwYXRoNjYiIGNsYXNzPSJjbHMtMyIgZD0iTTE0My43NSwyNDMuNjloMGwtMTguOTEsNTguMTJhMTIuODgsMTIuODgsMCwwLDAsNC42NiwxNC4zOUwyOTMsNDM1LDE0My43NSwyNDMuNjlaIi8+PC9nPjxnIGlkPSJnNzIiPjxwYXRoIGlkPSJwYXRoNzQiIGNsYXNzPSJjbHMtMiIgZD0iTTE0My43OCwyNDMuNjloODcuMTFMMTkzLjQsMTI4LjQ5YTYuNDcsNi40NywwLDAsMC0xMi4yNywwbC0zNy4zNSwxMTUuMloiLz48L2c+PGcgaWQ9Imc3NiI+PHBhdGggaWQ9InBhdGg3OCIgY2xhc3M9ImNscy0xIiBkPSJNMjkzLDQzNC45MWw2Mi4xNi0xOTEuMjhINDQyLjNMMjkzLDQzNC45MVoiLz48L2c+PGcgaWQ9Imc4MCI+PHBhdGggaWQ9InBhdGg4MiIgY2xhc3M9ImNscy0zIiBkPSJNNDQyLjI0LDI0My42OWgwbDE4LjkxLDU4LjEyYTEyLjg1LDEyLjg1LDAsMCwxLTQuNjYsMTQuMzlMMjkzLDQzNC45MWwxNDkuMi0xOTEuMjJaIi8+PC9nPjxnIGlkPSJnODQiPjxwYXRoIGlkPSJwYXRoODYiIGNsYXNzPSJjbHMtMiIgZD0iTTQ0Mi4yOCwyNDMuNjloLTg3LjFsMzcuNDItMTE1LjJhNi40Niw2LjQ2LDAsMCwxLDEyLjI2LDBsMzcuNDIsMTE1LjJaIi8+PC9nPjwvc3ZnPg=='  # logo oficial de GitLab (tanuki), incluido en draw.io
+R = lambda y: 'exitX=1;exitY=%s;entryX=0;entryY=0.5;' % y
+
+
+def cadena(d):
+    """Pasos 1 a 3, comunes a los cinco ambientes. Devuelve (GitLab CI, ECR)."""
+    d.add('rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#232F3E;strokeColor=#232F3E;fontSize=15;'
+          'fontColor=#FFFFFF;', 20, 80, 240, 50, B('Cadena de entrega'))
+    dev = d.add('sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#232F3E;strokeColor=none;dashed=0;'
+                'labelPosition=right;verticalLabelPosition=middle;verticalAlign=middle;align=left;spacingLeft=4;'
+                'html=1;fontSize=15;aspect=fixed;shape=mxgraph.aws4.users;', 40, 160, 50, 50, 'Equipo de desarrollo')
+    # GitLab CI es un servicio contratado por suscripcion, fuera de AWS
+    git = d.add('shape=image;verticalLabelPosition=middle;labelPosition=left;verticalAlign=middle;align=right;'
+                'spacingRight=6;html=1;fontSize=15;fontColor=#232F3E;aspect=fixed;imageAspect=0;'
+                'image=data:image/svg+xml,' + GITLAB_SVG + ';', 150, 245, 56, 54,
+                B('GitLab CI') + '<br>(suscripción)<br>controles del pipeline')
+    # CodeBuild y ECR son servicios de AWS (N-04, sa-east-1); el informe no fija la cuenta
+    d.group('AWS Cloud · sa-east-1 · N-04', 'group_aws_cloud_alt', '#232F3E', 20, 325, 270, 315, valign='bottom')
+    cb = d.icon('AWS CodeBuild<br>construye la imagen<br>(SLSA nivel 3)', 'codebuild', 'devtools', 72, 375, right=True, lw=150)
+    ecr = d.icon('Amazon ECR<br>imagen firmada', 'ecr', 'container', 72, 480)
+    d.edge(dev, git, 'exitX=0.5;exitY=1;entryX=0.3;entryY=0;')
+    d.edge(git, cb, 'exitX=0.3;exitY=1;entryX=0.5;entryY=0;')
+    d.edge(cb, ecr, 'exitX=0.5;exitY=1;entryX=0.5;entryY=0;')
+    d.paso(1, 204, 232); d.paso(2, 36, 367); d.paso(3, 36, 472)
+    return git, ecr
+
+
+def nube(d, cuenta, region, x, y, w, h, rw):
+    """Nube, cuenta y region. La region deja a su derecha, dentro de la cuenta, el espacio para CloudFront."""
+    d.group('AWS Cloud · organización AWS Control Tower', 'group_aws_cloud_alt', '#232F3E', x, y, w, h)
+    d.group('Cuenta AWS · ' + cuenta, 'group_account', '#CD2264', x + 20, y + 40, w - 40, h - 60)
+    d.group(region, 'group_region', '#00A4A6', x + 40, y + 85, rw, h - 125, dashed=1)
+
+
+def portales(d, git, n, xcf):
+    """Paso de los portales: GitLab CI publica en S3 (fila superior de la region) y CloudFront los sirve."""
+    s3 = d.icon('Amazon S3<br>portales N-01 a N-03', 's3', 'storage', 420, 247, lw=170)
+    d.paso(n, 386, 237)
+    cf = d.icon('Amazon CloudFront', 'cloudfront', 'net', xcf, 247, lw=150)
+    d.edge(git, s3, R(0.5), label='portales Angular')
+    d.edge(s3, cf, R(0.5))
+
+
+
+
+# ------------------------------------------------------------------ Desarrollo y QA
+# 1-3 cadena, 4 despliegue en Fargate, 5 portales
+def ambiente_simple(nombre, vpc, fname, rotulo, png):
+    d = D(nombre)
+    d.badge(B('Tipo de ambiente:') + ' solo nube (AWS)', NUBE, 460)
+    git, ecr = cadena(d)
+    nube(d, nombre, 'sa-east-1 (São Paulo)', 320, 80, 780, 560, 540)
+    portales(d, git, 5, 950)
+    d.group(vpc, 'group_vpc2', '#8C4FFF', 380, 370, 500, 190)
+    far = d.icon('ECS Fargate (N-04)' + ('<br>ensayo de wms_only' if nombre == 'QA' else ''), 'fargate', 'compute', 690, 450, lw=200)
+    d.paso(4, 656, 440)
+    d.edge(ecr, far, R(0.5), pts=((330, 508), (330, 478)), label=rotulo, pos=0.3)
+    d.save(fname, png)
+
+
+# Desarrollo: el texto dice que su secuencia numerada "se lee de izquierda a derecha" (GitLab CI aplica los
+# controles, CodeBuild construye la imagen, ECR la guarda firmada y la misma imagen llega a ECS Fargate en la VPC
+# 10.104.0.0/16); por eso la cadena va en una sola fila horizontal.
+d = D('Desarrollo')
+d.badge(B('Tipo de ambiente:') + ' solo nube (AWS)', NUBE, 460)
+d.add('rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#232F3E;strokeColor=#232F3E;fontSize=15;'
+      'fontColor=#FFFFFF;', 20, 80, 240, 50, B('Cadena de entrega'))
+dev = d.add('sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#232F3E;strokeColor=none;dashed=0;'
+            'verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=15;aspect=fixed;'
+            'shape=mxgraph.aws4.users;', 40, 323, 50, 50, 'Equipo de<br>desarrollo')
+git = d.add('shape=image;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=15;'
+            'fontColor=#232F3E;aspect=fixed;imageAspect=0;image=data:image/svg+xml,' + GITLAB_SVG + ';',
+            170, 321, 56, 54, B('GitLab CI') + '<br>(suscripción)<br>controles del pipeline')
+d.group('AWS Cloud · sa-east-1 · N-04', 'group_aws_cloud_alt', '#232F3E', 300, 265, 330, 235, valign='bottom')
+cb = d.icon('AWS CodeBuild<br>construye la imagen<br>(SLSA nivel 3)', 'codebuild', 'devtools', 340, 320, lw=150)
+ecr = d.icon('Amazon ECR<br>imagen firmada', 'ecr', 'container', 520, 320, lw=150)
+d.edge(dev, git, R(0.5)); d.edge(git, cb, R(0.5)); d.edge(cb, ecr, R(0.5))
+d.paso(1, 228, 300); d.paso(2, 398, 300); d.paso(3, 578, 300)
+nube(d, 'Desarrollo', 'sa-east-1 (São Paulo)', 670, 60, 900, 470, 640)
+s3 = d.icon('Amazon S3<br>portales N-01 a N-03', 's3', 'storage', 770, 192, lw=170)
+d.paso(5, 736, 182)
+cf = d.icon('Amazon CloudFront', 'cloudfront', 'net', 1430, 192, lw=150)
+d.edge(git, s3, 'exitX=0.5;exitY=0;entryX=0;entryY=0.5;', pts=((198, 220),), label='portales Angular', pos=0.2)
+d.edge(s3, cf, R(0.5))
+d.group('VPC Desarrollo · 10.104.0.0/16', 'group_vpc2', '#8C4FFF', 730, 300, 580, 160)
+far = d.icon('ECS Fargate (N-04)', 'fargate', 'compute', 1140, 320, lw=200)
+d.paso(4, 1106, 300)
+d.edge(ecr, far, R(0.5), label='con la configuración y los secretos del ambiente', pos=0)
+d.save('A1_Ambiente_Desarrollo.drawio', 'amb_desarrollo')
+ambiente_simple('QA', 'VPC QA · 10.103.0.0/16', 'A2_Ambiente_QA.drawio', 'misma imagen que en Desarrollo', 'amb_qa')
+
+
+# ------------------------------------------------------------------ Preproduccion y Produccion
+def vpc_productiva(d, titulo, ecr):
+    """VPC con la topologia de Produccion (RT-04.02): Aurora (paso 4), ECS Fargate en 2 zonas y el ALB privado
+    que desplaza el trafico en el azul-verde con canario (paso 5)."""
+    d.group(titulo, 'group_vpc2', '#8C4FFF', 380, 370, 580, 350)
+    f1 = d.icon('ECS Fargate (N-04)<br>en 2 zonas', 'fargate', 'compute', 640, 440, lw=180)
+    au = d.icon('Aurora PostgreSQL (N-05)<br>escritor', 'aurora', 'db', 640, 600, lw=220)
+    alb = d.icon('Application Load Balancer<br>privado', 'elastic_load_balancing', 'net', 840, 440, lw=200)
+    d.paso(5, 606, 430); d.paso(4, 606, 590)
+    d.edge(ecr, f1, R(0.25), pts=((330, 494), (330, 468)), label='azul-verde con canario')
+    d.edge(ecr, au, R(0.75), pts=((310, 522), (310, 628)), label='migraciones')
+    d.edge(alb, f1, 'exitX=0;exitY=0.5;entryX=1;entryY=0.5;', label='drenaje')
+    return f1, au
+
+
+# Preproduccion: 1-3 cadena, 4 migraciones, 5 azul-verde en Fargate y en el sitio emulado, 6 portales
+d = D('Preproducción')
+d.badge(B('Tipo de ambiente:') + ' solo nube (AWS) · el sitio on-premise se emula en una VPC', NUBE, 800)
+git, ecr = cadena(d)
+nube(d, 'Preproducción', 'sa-east-1 (São Paulo)', 320, 80, 1220, 700, 940)
+portales(d, git, 6, 1350)
+vpc_productiva(d, 'VPC Preproducción · 10.102.0.0/16 · topología de Producción', ecr)
+d.group('Sitio emulado · VPC propia', 'group_vpc2', '#8C4FFF', 1000, 370, 285, 180)
+emu = d.icon('ECS Fargate (N-04)<br>wms_only', 'fargate', 'compute', 1110, 420, lw=180)
+d.paso(5, 1076, 410)
+d.edge(ecr, emu, 'exitX=0;exitY=0.5;entryX=0;entryY=0.5;', pts=((14, 508), (14, 810), (980, 810), (980, 448)), label='promoción y reconexión del sitio emulado')
+d.save('A3_Ambiente_Preproduccion.drawio', 'amb_preproduccion')
+
+# Produccion: 1-3 cadena, 4 migraciones, 5 azul-verde automatico, 6 portales, 7 sitios on-premise
+d = D('Producción')
+d.badge(B('Tipo de ambiente:') + ' mixto (nube + on-premise)', MIX, 520)
+git, ecr = cadena(d)
+nube(d, 'Producción', 'sa-east-1 (São Paulo) · región primaria', 320, 80, 1220, 700, 940)
+portales(d, git, 6, 1350)
+vpc_productiva(d, 'VPC Producción · 10.101.0.0/16', ecr)
+# 11_j: los sitios descargan la imagen desde ECR por la VPN, a traves de la VPC Hub, y los endpoints de interfaz
+# de la VPC de Produccion (ECR y S3); Ansible (F-02, CD Talca) actualiza los contenedores de los sitios.
+epi = d.icon('VPC endpoints de interfaz<br>(ECR y S3)', 'endpoints', 'net', 840, 620, lw=200)
+d.cells[-1] = d.cells[-1].replace('verticalLabelPosition=bottom;verticalAlign=top;', 'verticalLabelPosition=top;verticalAlign=bottom;')
+d.paso(7, 804, 633)
+d.group('VPC Hub', 'group_vpc2', '#8C4FFF', 1000, 370, 290, 170)
+tgw = d.icon('AWS Transit Gateway', 'transit_gateway', 'net', 1040, 420, lw=120)
+vpn = d.icon('AWS Site-to-Site VPN', 'site_to_site_vpn', 'net', 1190, 420, lw=120)
+d.edge(tgw, vpn, R(0.5), dashed=1)
+d.group('On-premise · parte de Producción', 'group_corporate_data_center', '#7D8998', 1590, 80, 420, 700)
+ans = d.box(B('F-02 Ansible') + ' · CD Talca<br>actualiza los contenedores por la red de gestión', 1650, 170, 340, 70)
+d.paso(7, 1616, 160)
+sitios = [d.box(B('CD Talca') + '<br>VM-01: wms_only · VM-03: shipper<br>VM-04: erp-sync', 1610, 405, 380, 86),
+          d.box(B('CD Concepción') + '<br>VM-C01: wms_only · VM-C04: shipper', 1610, 543, 380, 70),
+          d.box(B('Cross-docking (3)') + '<br>E-01: wms_only y shipper (Docker Compose)', 1610, 673, 380, 70)]
+d.edge(ecr, epi, 'exitX=0;exitY=0.5;entryX=0.5;entryY=1;', dashed=1, pts=((14, 508), (14, 810), (868, 810)), label='descarga de la imagen hacia los sitios, sitio por sitio')
+d.edge(epi, tgw, 'exitX=1;exitY=0.5;entryX=0;entryY=0.5;', dashed=1, pts=((980, 648), (980, 448)))
+for sid, yc in zip(sitios, (448, 578, 708)):
+    d.edge(vpn, sid, R(0.5), dashed=1)
+    d.edge(ans, sid, 'exitX=1;exitY=0.5;entryX=1;entryY=0.5;', dashed=1, pts=((2000, 205), (2000, yc)))
+d.save('A4_Ambiente_Produccion.drawio', 'amb_produccion')
+
+# ------------------------------------------------------------------ Recuperacion ante Desastres
+# rama-latex: (4) ECR replica cada imagen a us-east-1 y la replica reducida recibe cada entrega liberada en
+# Produccion (perdida regional); (5) si se pierde la sala de Talca, su wms_only se levanta en Fargate de la region
+# activa sobre la copia del WMS de Talca en Aurora (DMS) y atiende a sus terminales por la VPN; Concepcion
+# continua operando su propia bodega.
+d = D('Recuperación ante Desastres')
+d.badge(B('Recuperación:') + ' pérdida de la región primaria → us-east-1 · pérdida de la sala de Talca → WMS en la nube', '#232F3E', 900)
+git, ecr = cadena(d)
+d.group('AWS Cloud · organización AWS Control Tower', 'group_aws_cloud_alt', '#232F3E', 320, 80, 990, 890)
+# ruta 1: perdida de la region primaria
+d.group('Cuenta AWS · Recuperación ante Desastres', 'group_account', '#CD2264', 340, 120, 950, 330)
+d.group('us-east-1 · ≈ 7.700 km de la primaria', 'group_region', '#00A4A6', 360, 165, 910, 265, dashed=1)
+recr = d.icon('Amazon ECR (réplica)', 'ecr', 'container', 430, 300, lw=150)
+d.paso(4, 396, 290)
+d.group('VPC Recuperación · 10.201.0.0/16', 'group_vpc2', '#8C4FFF', 640, 215, 600, 190)
+far = d.icon('ECS Fargate (N-04)<br>réplica reducida', 'fargate', 'compute', 900, 300, lw=200)
+d.edge(ecr, recr, R(0.5), pts=((330, 508), (330, 328)), label='replicación entre regiones', pos=0.5)
+d.edge(recr, far, R(0.5), label='cada entrega liberada en Producción')
+# ruta 2: perdida de la sala de Talca
+d.group('Cuenta AWS · Producción', 'group_account', '#CD2264', 340, 480, 950, 470)
+d.group('sa-east-1 · región activa', 'group_region', '#00A4A6', 360, 525, 910, 405, dashed=1)
+d.group('VPC Producción · 10.101.0.0/16', 'group_vpc2', '#8C4FFF', 640, 575, 600, 335)
+wms = d.icon('ECS Fargate (N-04)<br>wms_only de Talca', 'fargate', 'compute', 760, 690, lw=200)
+d.cells[-1] = d.cells[-1].replace('verticalLabelPosition=bottom;verticalAlign=top;', 'verticalLabelPosition=top;verticalAlign=bottom;')
+d.paso(5, 724, 726)
+au = d.icon('Aurora PostgreSQL (N-05)<br>copia del WMS de Talca (DMS)', 'aurora', 'db', 760, 800, lw=240)
+d.edge(ecr, wms, 'exitX=0;exitY=0.5;entryX=0;entryY=0.3;', pts=((14, 508), (14, 707)),
+       label='si se pierde la sala de Talca', pos=0.55)
+d.edge(wms, au, 'exitX=0.5;exitY=1;entryX=0.5;entryY=0;', label='levanta sobre la copia')
+d.group('On-premise', 'group_corporate_data_center', '#7D8998', 1340, 480, 440, 470)
+term = d.box(B('CD Talca') + '<br>terminales de la bodega', 1370, 683, 380, 70)
+d.box(B('CD Concepción') + '<br>continúa operando su propia bodega', 1370, 800, 380, 70)
+d.edge(wms, term, R(0.5), dashed=1, label='VPN', pos=0.5)
+d.save('A5_Ambiente_Recuperacion_Desastres.drawio', 'amb_recuperacion')
+print('ok')
+for k, v in PNGS.items():
+    print(k, v)

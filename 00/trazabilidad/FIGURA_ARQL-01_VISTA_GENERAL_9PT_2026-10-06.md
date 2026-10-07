@@ -25,3 +25,10 @@ Cambios de contenido respecto del XML «(Arreglado) Arquitectura_Logica_Puelche�
 - Capas nombradas como en 4.1.3 (Capa 1 a Capa 8).
 
 Diferencia menor con el texto: el ALB aparece en la Capa 3 (después de API Gateway) para mostrar el flujo; la lista de 4.1.3 lo menciona dentro de la Capa 2.
+
+## Revisión 2 (mismo día, pedido del usuario)
+
+- Vuelven los logos del diagrama original: dispositivos y tecnologías de presentación, CloudFront, Route 53, API Gateway, Rest API, Lambda, Laravel, PHP, Fargate, ECS, SQS, SNS, PostgreSQL, Aurora, DynamoDB, S3, Redshift, Glue, Redis, Keycloak, KMS y CloudWatch. Se reutilizan las imágenes del XML original.
+- Las capas vuelven a su forma original: columna gris a la izquierda con etiqueta blanca y logos debajo. Nombres originales: Capa de Presentación, de Borde y Exposición, de enlace de servicios, de Negocio, de Integración y Eventos, de Datos, de Seguridad (transversal) y de Observabilidad (transversal).
+- Logos del original que no se incluyen porque sus componentes ya no están en la figura: EventBridge (reemplazado por SNS), AWS Backup y Transbank.
+- Medición: 9,05 pt en la p. 13, figura de una sola página, sin desbordes.

@@ -1,0 +1,26 @@
+{
+  "latex-workshop.latex.recipe.default": "first",
+  "latex-workshop.latex.recipes": [
+    {
+      "name": "Subdocumento 4 (latexmk / LuaLaTeX)",
+      "tools": [
+        "latexmk-subdoc4"
+      ]
+    }
+  ],
+  "latex-workshop.latex.tools": [
+    {
+      "name": "latexmk-subdoc4",
+      "command": "latexmk",
+      "args": [
+        "-cd",
+        "-lualatex",
+        "-halt-on-error",
+        "%DOC%"
+      ],
+      "cwd": "%DIR%"
+    }
+  ],
+  "latex-workshop.view.pdf.viewer": "browser",
+  "latex-workshop.latex.autoBuild.run": "onFileChange"
+}
