@@ -115,7 +115,6 @@ La tabla vincula el equipamiento de sitio con los servicios de nube y los contro
 
 **Referencias**
 
-
 - Amazon Web Services. (s. f.-d). *GuardDuty Runtime Monitoring*. <https://docs.aws.amazon.com/guardduty/latest/ug/runtime-monitoring.html>
 
 - Amazon Web Services. (s. f.-e). *How Runtime Monitoring works with Fargate (Amazon ECS only)*. <https://docs.aws.amazon.com/guardduty/latest/ug/how-runtime-monitoring-works-ecs-fargate.html>
