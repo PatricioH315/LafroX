@@ -1,0 +1,18 @@
+% Fragmento traído con \parte{tablas/tab_7F1} desde contenido.tex
+
+\begin{tablalafrox}{Supuestos y dependencias para preparar SD8}{tab:7F1}%
+  {C{1.5cm} Y L{2cm} L{2.5cm} Y Y}%
+  {\cab{ID} & \cab{Riesgo / supuesto} & \cab{EDT / hitos} & \cab{Responsable de tratamiento} & \cab{Disparador o control} & \cab{Estado de preparación}}
+  P7-01 & Productividad y tamaños HH por clase no medidos & Los 222 paquetes; T-15 §4 & JP y líderes de frente & Sustituir tamaños por estimación de equipo trazable a T-12, cantidades y ensayos; recalcular si demanda supera capacidad & Modelo cuantificado, validación pendiente \\
+  P7-02 & Red agregada no demuestra CPM detallado; PERT da 50 \% por hito & D-01--D-34; H2/H3/H4/H5/H9/H10 & JP/ARQ & Red con revisiones Art. 18.3 y PERT en T-15 §5; faltan 0,65 mes de reserva antes de H4 y 0,67 antes de H5 para un 90 \%; HT negativa o pronóstico posterior a hito activa replanificación & CPM agregado y PERT calculados; detalle diario pendiente \\
+  P7-03 & Solapamientos compiten por especialistas & 4.2.1/4.2.2, 3.5, 4.3.1; meses 13--15/19--20 & Líder DES y CAL & Mantener 256 HH DES + 128 HH CAL/mes protegidas E1, sin préstamo a F4; asignar personas nominales & Capacidad modelada; contratación/turnos no acreditados \\
+  P7-04 & Fecha efectiva cambia congelamientos & 1.1.3, 4.1; V-12/H6/H11/H7/H12 & JP/CLIENTE & Confirmar fecha y transformar meses relativos en calendario; no iniciar corte en fechas prohibidas & Escenario febrero 2027, no fecha confirmada \\
+  P7-05 & Ola/cadena no lista antes de cuatro semanas de cierre & 4.2.1/4.3.1, 7.3, 3.6.5/6 & IMP/Comercial/Operaciones & Registro de todo el alcance, activación antes del tramo final, cero incidentes críticos/altos; no reemplazar alcance por muestra & Secuencia propuesta y aceptación definida \\
+  P7-06 & Reversión manual no soporta despacho o falla DTE & 4.1.2/3.3.2; H6/H11 & Operaciones/ARQ/SRE & Ensayo de 96 despachos, objetivo total 40 minutos, final antes de 05:30; contingencia ERP aprobada & Objetivo cuantificado; tiempo/volumen no medidos \\
+  P7-07 & Retiro temprano de acompañamiento o capacidad de mesa insuficiente & 4.2.2/4.3.2/8.1.1/8.1.2/8.1.5 & IMP/SRE & Decremento sólo con acta e indicadores sostenidos; mesa con las posiciones del SD4 y SOC 24x7 en T-15; medir abandono y resolución al primer contacto y calibrar Erlang A (T-15 §5.6) & Cobertura reconciliada con SD4; SLA no medidos \\
+  P7-08 & Compra/sala/borde incumple H3 & 5.1.2/6.1/6.3/6.6.3 & SRE/CLIENTE & Recepción de sala antes de racks y configuración; H3 exige borde mes 6, no mes 12 & Restricción corregida; fecha de compra pendiente \\
+  P7-09 & Reserva de stock/custodia duplica o confirma sin acuse & 3.3.6/3.4.2/3.4.6/3.8.1/3.8.3 & ARQ/DES/CAL & CD-05; AL-STOCK-01/AL-ACT-01 con concurrencia/corte/reintento; acuse durable y autoridad por época & Incluido en pruebas, no ejecutado \\
+  P7-10 & Tráfico adicional o recuperación excede diseño & 3.8.4/3.9.3; SD4 física/DR & ARQ/SRE & Verificar 4L de A31/A32 frente a 2N + 2L y retenciones múltiples; medir carga/drenaje y límite residual DR/RPO & Dependencia de arquitectura preservada \\
+  P7-11 & Control de conservación del precio pactado & 1.2.1/3.4.6; SD2 S-09, RF-03.11/12 y SD3 RNG-08 & Comercial/JP & Probar cambio de lista entre pedido y despacho y detectar diferencias ERP & Política documental alineada; prueba funcional exigida \\
+  P7-12 & Revisión humana y evidencia formal no disponibles & 1.5/1.8, A-6, todos los hitos & JP/CAL & Registrar quién revisó, qué verificó y cuándo; comprobar PDF final en su flujo correspondiente & No se acredita aprobación humana ni formal \\
+\end{tablalafrox}
