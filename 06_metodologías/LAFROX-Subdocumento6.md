@@ -87,6 +87,8 @@ Antes de cada entrega incremental se informa a los interesados pertinentes sobre
 | Niveles de servicio, incidentes y capacidad en producción | Líder de Operación / SRE | Comité de Operación | Mensual, desde el mes 13 |
 | Cambios previstos, validaciones y apoyo | Jefe de proyecto | Interesados pertinentes | Antes de cada entrega |
 
+La Tabla 6.2 muestra que el Jefe de Proyecto concentra cuatro de las cinco comunicaciones y que la frecuencia crece hacia el equipo: semanal para el seguimiento, quincenal para el Comité de Proyecto y mensual para la dirección del CLIENTE. La única comunicación a cargo del Líder de Operación / SRE comienza en el mes 13, con la primera marcha blanca, porque desde entonces hay niveles de servicio que informar.
+
 ### 6.1.3 Gestión de adquisiciones
 
 La gestión de adquisiciones planifica, contrata y controla los bienes y servicios que requiere la solución: contratos, órdenes de compra, acuerdos con terceros y acuerdos de nivel de servicio. Cada adquisición tiene un responsable, una fecha de necesidad derivada del cronograma, una dependencia con los paquetes que la usan y una evidencia de recepción.
@@ -95,23 +97,23 @@ El CLIENTE compra el equipamiento de terreno y el de la sala técnica conforme a
 
 **Tabla 6.3. Adquisiciones — Fuente: elaboración propia a partir del Formulario T-14, fase 5, y del Formulario T-11**
 
-| Bien o servicio | Necesidad asociada | Responsable de compra o contrato | Responsable LafroX | Fecha de necesidad | Paquetes que dependen | Evidencia de recepción |
-|---|---|---|---|---|---|---|
-| Equipamiento de terreno: terminales de preventa, reparto y bodega, impresoras, sensores de temperatura, termógrafos y gateways IoT | Operación de las aplicaciones y registro de frío | CLIENTE, según la especificación 5.1.1 | Arquitecto (especificación); SRE (recepción) | Antes de cada ola; sensores antes de 6.5 | 6.5, 4.2.1 | Actas 5.1.3 |
-| Sala técnica de Talca: UPS, generador, climatización de precisión, detección y extinción, racks y gabinetes de borde | Recinto técnico del H3 | CLIENTE, según la especificación 5.1.2 | Arquitecto (especificación); SRE (recepción) | Mes 5 | 6.1, 6.3, 6.6 | Actas 5.1.3 y 6.1.5 |
-| Servidores, almacenamiento, firewalls, switches y mini-PC de borde | Cómputo y red de los sitios | CLIENTE, según la especificación 5.1.2 | SRE | Mes 5 | 6.3, 6.6 | Actas 5.1.3 |
-| Obra civil, piso técnico e instalación de energía, climatización e incendio | Habilitación del recinto | LafroX, con instaladores especializados | SRE | Meses 5 y 6 | 6.1.1 a 6.1.4 | Acta 6.1.5 |
-| Servicios de AWS | Plataforma de nube y ambientes | LafroX (5.2.1) | SRE | Antes del mes 4 | 3.1, 3.2 | Cuentas y servicios activos |
-| Gestión de dispositivos y detección en endpoints | Enrolamiento y seguridad de los terminales | LafroX (5.2.2) | SRE | Antes del enrolamiento | 6.5, 7.1 | Suscripciones activas |
-| Licencias de software de terceros | Productos de la arquitectura | A nombre del CLIENTE (5.2.3) | Arquitecto | Antes de usar cada producto | 3.1 a 3.6 | Registro de licencias |
-| Fibra óptica de Talca y Concepción | Enlace principal | LafroX (5.3.1) | SRE | Antes del H3 | 6.6 | Contrato y fecha de instalación |
-| Planes LTE de dos proveedores | Respaldo de enlace | LafroX (5.3.2) | SRE | Antes del H3 | 6.6 | Contratos |
-| Starlink de las tres plataformas | Enlace de los cross-docking | LafroX (5.3.3) | SRE | Antes del H3 | 6.6 | Contratos y equipos |
-| Acuerdos con los diez transportistas | Uso de terminales y suplentes enrolados | LafroX con el CLIENTE (5.4.1) | Implantación | Antes del H6 | 4.2.1, ola de reparto | Diez acuerdos firmados |
-| Acta con el sindicato | Terminales, GPS y cámaras | CLIENTE y sindicato (5.4.2) | Implantación | Antes del H6 | 4.2.1 | Acta firmada |
-| Custodia de fuentes | Continuidad ante insolvencia o incumplimiento | LafroX (5.4.4) | Jefe de proyecto | Antes del H4 | 9.2 | Contrato y primer depósito |
-| Evaluadores de pruebas subcontratados | Refuerzo de calidad durante las certificaciones, hasta 16 personas por día | LafroX | Líder de Calidad | Meses 9 a 12 y 16 a 18 | 3.8.2 a 3.8.8 y 3.9.2 a 3.9.7 | Contrato con perfiles y disponibilidad por quincena |
-| Servicio SOC 24×7, si se subcontrata | Monitoreo de seguridad desde el mes 13 | LafroX (8.1.5; RT-11.17) | Encargado de Seguridad | Mes 13 | 8.1.5 | Contrato con cobertura y niveles de servicio |
+| Bien o servicio | Necesidad asociada | Responsable del contrato / de LafroX | Fecha de necesidad | Paquetes que dependen y evidencia |
+| --- | --- | --- | --- | --- |
+| Equipamiento de terreno: terminales de preventa, reparto y bodega, impresoras, sensores de temperatura, termógrafos y gateways IoT | Operación de las aplicaciones y registro de frío | CLIENTE, según la especificación 5.1.1 / Arquitecto (especificación); SRE (recepción) | Antes de cada ola; sensores antes de 6.5 | 6.5, 4.2.1; Actas 5.1.3 |
+| Sala técnica de Talca: UPS, generador, climatización de precisión, detección y extinción, racks y gabinetes de borde | Recinto técnico del H3 | CLIENTE, según la especificación 5.1.2 / Arquitecto (especificación); SRE (recepción) | Mes 5 | 6.1, 6.3, 6.6; Actas 5.1.3 y 6.1.5 |
+| Servidores, almacenamiento, firewalls, switches y mini-PC de borde | Cómputo y red de los sitios | CLIENTE, según la especificación 5.1.2 / SRE | Mes 5 | 6.3, 6.6; Actas 5.1.3 |
+| Obra civil, piso técnico e instalación de energía, climatización e incendio | Habilitación del recinto | LafroX, con instaladores especializados / SRE | Meses 5 y 6 | 6.1.1 a 6.1.4; Acta 6.1.5 |
+| Servicios de AWS | Plataforma de nube y ambientes | LafroX (5.2.1) / SRE | Antes del mes 4 | 3.1, 3.2; Cuentas y servicios activos |
+| Gestión de dispositivos y detección en endpoints | Enrolamiento y seguridad de los terminales | LafroX (5.2.2) / SRE | Antes del enrolamiento | 6.5, 7.1; Suscripciones activas |
+| Licencias de software de terceros | Productos de la arquitectura | A nombre del CLIENTE (5.2.3) / Arquitecto | Antes de usar cada producto | 3.1 a 3.6; Registro de licencias |
+| Fibra óptica de Talca y Concepción | Enlace principal | LafroX (5.3.1) / SRE | Antes del H3 | 6.6; Contrato y fecha de instalación |
+| Planes LTE de dos proveedores | Respaldo de enlace | LafroX (5.3.2) / SRE | Antes del H3 | 6.6; Contratos |
+| Starlink de las tres plataformas | Enlace de los cross-docking | LafroX (5.3.3) / SRE | Antes del H3 | 6.6; Contratos y equipos |
+| Acuerdos con los diez transportistas | Uso de terminales y suplentes enrolados | LafroX con el CLIENTE (5.4.1) / Implantación | Antes del H6 | 4.2.1, ola de reparto; Diez acuerdos firmados |
+| Acta con el sindicato | Terminales, GPS y cámaras | CLIENTE y sindicato (5.4.2) / Implantación | Antes del H6 | 4.2.1; Acta firmada |
+| Custodia de fuentes | Continuidad ante insolvencia o incumplimiento | LafroX (5.4.4) / Jefe de proyecto | Antes del H4 | 9.2; Contrato y primer depósito |
+| Evaluadores de pruebas subcontratados | Refuerzo de calidad durante las certificaciones, hasta 16 personas por día | LafroX / Líder de Calidad | Meses 9 a 12 y 16 a 18 | 3.8.2 a 3.8.8 y 3.9.2 a 3.9.7; Contrato con perfiles y disponibilidad por quincena |
+| Servicio SOC 24×7, si se subcontrata | Monitoreo de seguridad desde el mes 13 | LafroX (8.1.5; RT-11.17) / Encargado de Seguridad | Mes 13 | 8.1.5; Contrato con cobertura y niveles de servicio |
 
 Cada fila tiene en el registro de adquisiciones su estado, su proveedor y su fecha comprometida. Un atraso que amenace el H3 o una ola se escala al Comité Ejecutivo con su análisis de impacto.
 
@@ -131,11 +133,27 @@ El alcance se controla contra la línea base y la matriz de trazabilidad del For
 
 El avance se mide con valor ganado (RT-19.07). El valor planificado de cada mes es la suma de las horas hombre programadas de los paquetes en curso según el Formulario T-15; el valor ganado acredita las horas de un paquete sólo en hitos de avance definidos de antemano (inicio, revisión interna y aceptación) y no por porcentaje declarado; el costo real son las horas registradas. Con ellos se calculan el índice de desempeño del cronograma (SPI) y el del costo (CPI). Un SPI o un CPI bajo 0,90, o una desviación mayor al 10 %, obligan a presentar un plan de recuperación dentro de cinco días hábiles (paquete 1.8.6).
 
+La Tabla 6.4 aplica el cálculo al corte del H4 (mes 10). El valor planificado acumulado es la suma de las horas de los meses 1 a 10 de la curva del Formulario T-15, sección 4.4; el valor ganado y el costo real son un ejemplo de avance que ilustra cómo se lee el informe mensual.
+
+**Tabla 6.4. Ejemplo de cálculo del valor ganado al corte del mes 10 — Fuente: elaboración propia a partir del Formulario T-15, sección 4.4**
+
+| Indicador | Fórmula | Valor | Lectura |
+| --- | --- | --- | --- |
+| Valor planificado (PV) | Σ HH de los meses 1 a 10 (1.416 + 2.910 + 2.122 + 3.383 + 4.079 + 5.925 + 4.964 + 4.695 + 3.392 + 2.121) | 35.006 HH | Trabajo que el plan prevé terminado al mes 10 |
+| Valor ganado (EV) | HH de los hitos de avance aceptados | 33.256 HH | Ejemplo: 95 % del trabajo planificado |
+| Costo real (AC) | HH registradas | 34.300 HH | Ejemplo de horas efectivamente imputadas |
+| SPI | EV / PV = 33.256 / 35.006 | 0,95 | Atraso del 5 %, sobre el umbral de 0,90 |
+| CPI | EV / AC = 33.256 / 34.300 | 0,97 | Se usan 3 % más horas que las ganadas |
+
+Con estos valores ningún índice cruza el umbral de 0,90, pero el SPI de 0,95 a un mes del H4 obliga a revisar en el Comité de Proyecto los paquetes de la ruta crítica que lo explican, porque el Formulario T-15 no deja reserva de calendario antes de ese hito.
+
 Las reservas se controlan por separado: la capacidad protegida de la Etapa 1 y las necesidades de contingencia del SD8 sólo se usan con autorización registrada, y su consumo se informa en el mismo informe mensual.
 
 ### 6.1.6 Mecanismos de decisión y cadencias de gobierno
 
-Los comités del Art. 71° de las Bases Administrativas tienen estas cadencias:
+Los comités del Art. 71° de las Bases Administrativas tienen las cadencias de la Tabla 6.5.
+
+**Tabla 6.5. Instancias de gobierno y cadencias — Fuente: elaboración propia a partir de las Bases Administrativas, Art. 71°, y del Formulario T-14, cuenta 1.8**
 
 | Instancia | Frecuencia | Participantes | Decide o revisa | Paquete |
 |---|---|---|---|---|
@@ -195,6 +213,8 @@ Los artefactos del desarrollo son los casos de uso, la matriz de trazabilidad de
 Las decisiones técnicas necesarias para implementar los requisitos se toman dentro del equipo responsable y se documentan cuando afectan la arquitectura, las integraciones, la seguridad o la operación; las que cambian la arquitectura pasan por el Comité de Arquitectura. Si una decisión modifica el alcance, el plazo, los costos o los criterios de aceptación aprobados, se gestiona como una solicitud de cambio según la sección 6.1.4.
 
 ## Referencias
+
+Las fuentes citadas en este documento se listan a continuación en formato APA 7.ª edición.
 
 - Distribuidora Puelche S.A. (2026a). *Bases Administrativas de Licitación N.º TFEP-01/2026: Contratación de Solución Integral de Software y Servicios de Operación*.
 - Distribuidora Puelche S.A. (2026b). *Bases Técnicas Transversales de Licitación N.º TFEP-01/2026*.

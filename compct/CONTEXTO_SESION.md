@@ -1,5 +1,15 @@
 # CONTEXTO DE SESIÓN
 
+## Estado vigente — 8 de octubre de 2026: auditoría de indicios de IA (§7.1)
+
+Se aplicó en las carpetas 01–08 y 13 la auditoría de indicios de IA de las Aclaraciones §7.1. El informe completo está en `Revision/auditoria_indicios_IA.md`.
+- **Arreglos aplicados:** PUCV → Distribuidora Puelche (2026a–d); figuras PNG del SD5 enlazadas; limpieza de restos PDF/LaTeX; numeración de tablas, figuras y subtítulos del SD7; reescritura de notas de proceso; normalización de las 24 declaraciones de IA, con `[[REVISIÓN HUMANA]]` donde no hay revisión con nombre; tablas y cálculos nuevos en SD2, SD6 (valor ganado), SD7 (HH por etapa) y SD8 (FMEA top-5); stack del SD1 alineado con Laravel/PHP y Kotlin.
+- **Pendiente del equipo:** completar `Revision/plantilla_revision_humana_IA.md` (204 celdas).
+- **Contradicciones no corregidas por decisión del usuario:** cámaras, Starlink y sala; nombres de módulos e INT-04; meses de hitos en T-14 y T-16.
+- **Pendiente antes de compilar:** replicar todo en LaTeX.
+
+Sin commit.
+
 ## Estado vigente — 8 de octubre de 2026: SD13 consolidado
 
 Se crearon `13_innovaciones/LAFROX-Subdocumento13.md`, `LAFROX-Subdocumento13-Anexos.md` (13.A contratos inn01–inn05, 13.B trazabilidad, 13.C indicadores y riesgos, 13.D observaciones) y `LAFROX-Formulario-T-19.md` (5 fichas × 17 campos), a partir de `innovaciones_corregidas.md`. Ese archivo de trabajo se conserva sin versionar y no es entregable. El SD13 se alinea sin cambios con los paquetes, meses y HH de T-14, T-15 y Anexo 7.D.
@@ -96,7 +106,7 @@ Antes de afirmar un dato, requisito, estado o decisión:
 
 - Solo se agregan archivos `.md`, además de los metadatos internos de Git.
 - Subdocumentos, anexos y formularios permanecen separados.
-- Las figuras se conservan como descripciones textuales estructuradas mientras el repositorio sea exclusivamente Markdown.
+- Las figuras enlazan su imagen real; el PDF se compila desde LaTeX. Ver la regla de AGENTS.md sobre indicios de IA (Aclaraciones §7.1).
 - Toda ampliación del alcance se registra primero en este archivo, en `README.md` y en `MANIFIESTO.md`.
 - Después de cada cambio sustantivo se actualiza la sección siguiente para permitir una reanudación segura.
 

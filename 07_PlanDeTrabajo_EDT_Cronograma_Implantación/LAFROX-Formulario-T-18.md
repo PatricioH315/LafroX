@@ -294,6 +294,8 @@ Los criterios siguientes gobiernan la programación bajo supuestos explícitos y
 
 ### 6.1 Alcance completo de las olas y orden de incorporación
 
+Las olas incorporan todo el alcance de cada etapa en el orden siguiente.
+
 | Ola | Módulos y alcance | Secuencia propuesta | Condición previa |
 | --- | --- | --- | --- |
 | 1 Recepción y trazabilidad | M1; M9 captura/retención por lote; M12 adquisición de temperatura; M10 indicadores de recepción | Talca como piloto propuesto en semana 1; Concepción y las tres plataformas en semana 2 | Lotes, sensores, contratos de integración y conciliación probados; recepción sin duplicar escritor |

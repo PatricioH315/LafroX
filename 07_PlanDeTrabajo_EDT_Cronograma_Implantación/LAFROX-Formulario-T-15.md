@@ -78,6 +78,8 @@ En los meses 13 a 15 trabajan a la vez F7, en la marcha blanca de la Etapa 1; F3
 
 ### 4.1 Supuestos y cálculo
 
+Los supuestos y el cálculo del modelo de recursos son los siguientes.
+
 - Capacidad nominal asumida: 160 HH/persona-mes; disponibilidad programable 80 %; capacidad efectiva 128 HH. El 20 % cubre ausencias y coordinación no imputada. No es una jornada contractual ni un cálculo de cumplimiento laboral.
 - Esfuerzo inicial por clase y paquete: G gestión/acta 80 HH; E diseño/configuración/innovación 240 HH; D módulo 960 HH; I integración/migración 480 HH; V prueba 320 HH (integración y cierres de certificación: 160 HH); T instalación/capacitación 160 HH. Son tamaños supuestos, a sustituir por estimaciones del equipo con trazabilidad al T-12 y cantidades reales.
 - R identifica esfuerzo recurrente mensual, incluidos equivalentes mensuales de actividades anuales/semestrales: la distribución contable no cambia la frecuencia de ejecución del T-14.
@@ -91,6 +93,8 @@ En los meses 13 a 15 trabajan a la vez F7, en la marcha blanca de la Etapa 1; F3
 - Ventanas ajustadas con el cronograma por actividad de la sección 6.1: cada paquete con entregable ocupa los meses de sus actividades, y sus HH se reparten según los días de cada actividad, no en forma pareja. Los planos 2.3.1/2.3.2 se hacen en el mes 2, la especificación 5.1.2 en el mes 3 y la sala desde el mes 4 (D-09 a D-11); los prototipos 2.6.2 terminan antes de la construcción 3.4 (D-05); la identidad 3.3.1 empieza después del plan de seguridad (D-06); los módulos se programan con dependencias por interfaz (D-16, D-18 y D-19); y las certificaciones empiezan al terminar su prueba de integración (D-21 y D-31). La actualización anual del Plan de Reversibilidad 1.7.2 ocurre en el mes 15, primer aniversario de su entrega del mes 3; las siguientes son 8.1.4. El acompañamiento de salida 9.2.1 ocupa los meses 54 a 56 para cubrir sus 90 días dentro del contrato.
 
 ### 4.2 Horas por los 222 paquetes
+
+La tabla siguiente presenta las horas de cada paquete con sus tres estimaciones y su valor esperado.
 
 | EDT | Clase | Rol | Meses | O HH | M HH | P HH | E HH |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -321,6 +325,8 @@ Se agregan explícitamente soporte puente SRE de 4.2.2 = 9336.00 HH y reserva F3
 
 ### 4.3 Resumen T-15
 
+La tabla siguiente resume las horas programadas por etapa contractual.
+
 | Etapa | HH base y cobertura | HH reserva protegida | HH programadas | Frentes | Meses |
 | --- | --- | --- | --- | --- | --- |
 | E1 Desarrollo | 37981.17 | 0 | 37981.17 | F1,F2,F3,F5,F6,F7 | 1–12 |
@@ -334,6 +340,8 @@ Se agregan explícitamente soporte puente SRE de 4.2.2 = 9336.00 HH y reserva F3
 Total exacto de paquetes y componentes = 202774.00 HH (190.366 base + 9.336 puente + 3.072 reserva); peak mensual conjunto = 69 personas equivalentes en el mes 15, cuando coinciden la construcción de los módulos de la Etapa 2, la marcha blanca de la Etapa 1 y su acompañamiento. La mesa y el SOC dimensionados en el SD4, aplicados sobre el calendario real, determinan las horas de operación y de soporte puente. La implementación imputada a los meses 21 y 22 se separa de Operación; las actividades generales que continúan como servicio permanecen en Operación. Los peaks de etapas no se suman. Las centésimas de presentación se distribuyen por mayor resto entre meses y se concilian por etapa; la suma publicada conserva 202.774 HH exactas.
 
 ### 4.4 Curvas mensuales: horas por etapa y personas por rol
+
+La tabla siguiente presenta, mes a mes, las horas por etapa y las personas equivalentes por rol.
 
 | Mes | E1 desarrollo | E1 MB | E2 desarrollo | E2 MB | Soporte puente | Operación | Cierre y estabilización implementación | Total HH | JP | ARQ | SEG | DAT | DES | CAL | SRE | IMP | Personas totales |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -481,7 +489,7 @@ La curva de la sección 4.4 y la carga diaria de la sección 6.1 se comparan con
 
 | Familia T-15 | Peak de la curva | División del SD1 que la provee | Dotación declarada | Condición |
 | --- | --- | --- | --- | --- |
-| DES | 31 equivalentes en el mes 6; 48 personas simultáneas entre julio y septiembre de 2027 | Desarrollo de software | 48 | La división declara Python, Django y móvil; la oferta usa Laravel/PHP. Se asignan sólo personas con experiencia en Laravel/PHP o capacitadas antes del mes 5, con verificación del Líder de Desarrollo. |
+| DES | 31 equivalentes en el mes 6; 48 personas simultáneas entre julio y septiembre de 2027 | Desarrollo de software | 48 | La división trabaja en PHP/Laravel y Kotlin, el mismo stack de la oferta; el Líder de Desarrollo verifica la experiencia de cada persona asignada antes del mes 5. |
 | SRE | 17 equivalentes en el mes 4; 24 simultáneas en el mes 4; 15 a 18 en Operación | SRE y Cloud (12) y NOC 24×7 (32) | 44 | Los meses 3 a 6 concentran la instalación de sala, racks y sitios: energía, climatización e incendio (6.1.2–6.1.4) los ejecutan instaladores especializados supervisados por SRE. NOC y mesa se cubren con personal del NOC con turnos asignados. |
 | SEG | 9 en el mes 16 con el SOC; 6 simultáneas sin el SOC | CISO y especialistas en ciberseguridad | 7 | El puesto SOC 24×7 exige 6 personas equivalentes. Se cubre con contratación o con un servicio SOC subcontratado (RT-11.17), con las mismas horas de la sección 4.2. |
 | CAL | 11 equivalentes y 13 simultáneas en el mes 16 | Aseguramiento y automatización de pruebas | 10 | La división declara 10; durante las certificaciones se agregan evaluadores subcontratados hasta 16 por día (SD6, sección 6.1.3). |

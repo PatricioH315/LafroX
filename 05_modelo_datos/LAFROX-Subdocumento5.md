@@ -438,7 +438,7 @@ Leandro Chamorro, líder de datos de S1, coordinará el perfilado con responsabl
 
 Cada registro se acepta sin cambio, se corrige con regla aprobada/versionada o se aísla para decisión. Se conservan original y transformación, sin inventar cliente activo, ubicación, lote, medición ni fecha. Clientes históricos no resolubles permanecen consultables en staging hasta aprobación; saldos no localizados quedan pendientes de ubicación, sin atribuir una posición de tránsito como hecho comprobado.
 
-Los defectos de 5-C se concilian por conjunto. Calidad valida trazabilidad; Finanzas importes/cartera; bodega saldos y conteo. La desviación monetaria contractual de inventario es ≤0,3 %, con toda diferencia explicada y aprobada; la línea base 2,3 % no es tolerancia de carga. Los registros aislados permanecen consultables conforme RT-05.15.
+Los defectos de 5-C se concilian por conjunto. Calidad valida trazabilidad; Finanzas importes/cartera; bodega saldos y conteo. LafroX fija como criterio de aceptación de la migración una desviación monetaria de inventario de ≤0,3 % del valor contado, con toda diferencia explicada y aprobada. Es una meta de diseño que reduce en un orden de magnitud la diferencia actual de 2,3 % del conteo cíclico (Distribuidora Puelche S.A., 2026c, cap. 4.2), y esa línea base no se acepta como tolerancia de carga. Los registros aislados permanecen consultables conforme RT-05.15.
 
 <a id="sec-5-3-3"></a>
 

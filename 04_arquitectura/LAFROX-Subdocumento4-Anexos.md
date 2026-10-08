@@ -1604,6 +1604,8 @@ Se conservan percentil 95, utilización, colas, errores, pérdida o duplicación
 
 ## Referencias
 
+Las fuentes citadas en este documento se listan a continuación en formato APA 7.ª edición.
+
 - Angular. (2026a). *Release policy*. <https://angular.dev/reference/releases>
 
 - Angular. (2026b). *Version compatibility*. <https://angular.dev/reference/versions>

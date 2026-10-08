@@ -48,7 +48,9 @@ El caso puede endurecer un requisito transversal, pero no rebajarlo. No inventar
 - Preservar exactamente los títulos obligatorios de las Aclaraciones.
 - Mantener terminología y cifras consistentes entre los documentos.
 - No incorporar contenido de arquitectura ni de los Subdocumentos 4–14 hasta que se amplíe expresamente el alcance.
-- Las figuras se representan mediante descripciones textuales estructuradas; no afirmar que sustituyen la revisión visual del PDF final.
+- Toda figura del Markdown enlaza su imagen real (archivo local o del checkout LaTeX); el PDF entregable se compila desde LaTeX con esas imágenes. Una descripción textual sólo acompaña a una figura existente y nunca reemplaza la imagen ni deja una leyenda sin objeto (Aclaraciones §7.1 a).
+- Los entregables no contienen notas de proceso, fechas de edición, autores de redacción, referencias al curso ni a la conversión Markdown/LaTeX, ni frases como «No sustituye la revisión visual del PDF» (Aclaraciones §7.1 d). Las notas de trabajo van en `compct/` o `Revision/`.
+- La columna «Revisión humana» de cada declaración de IA sólo se completa con la revisión que efectivamente hizo un integrante; mientras falte, la celda lleva `[[REVISIÓN HUMANA]]` y la entrega queda bloqueada (plantilla en `Revision/plantilla_revision_humana_IA.md`).
 - Los catálogos de `Requerimientos/` provienen de los tres CSV originales y conservan sus vacíos. No completarlos sin evidencia.
 - Toda referencia a un documento ausente se trata como dependencia futura, no como enlace roto ni evidencia disponible.
 - Cada documento entregable termina con Referencias y Declaración de uso de IA cuando así lo exijan las Aclaraciones.

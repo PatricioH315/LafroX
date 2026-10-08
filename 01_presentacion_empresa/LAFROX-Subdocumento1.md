@@ -97,7 +97,7 @@ La oferta de LafroX cuenta con tres líneas de negocio especializadas:
 
 1. **Ingeniería de software en el borde (Edge Computing):** Desarrollo de aplicaciones móviles y sistemas locales con arquitectura offline-first. Implementan almacenamiento local cifrado mediante bases de datos SQLite en terminales móviles, sincronización asíncrona bidireccional y resolución determinista de conflictos al restablecer el enlace de comunicaciones, eliminando el riesgo de pérdida transaccional en zonas rurales o almacenes sin cobertura de red.
 2. **Trazabilidad y telemetría de frío industrial:** Integración de hardware especializado de terreno, tales como termógrafos vehiculares, sensores inalámbricos y capturadores robustos aptos para operar bajo frío extremo. Esta línea asegura el monitoreo térmico continuo y la captura de eventos de custodia y transporte, en cumplimiento con el Reglamento Sanitario de los Alimentos (RSA) y normativas de retiro de producto.
-3. **Arquitecturas modulares híbridas de misión crítica:** Diseño, despliegue y soporte continuo de plataformas que combinan un núcleo transaccional en nube pública con componentes de borde desplegados en centros de distribución físicos (on-premise), asegurando alta resiliencia y autonomía operativa ante cortes de conectividad externa. La línea trabaja habitualmente con monolitos modulares en Python y Django sobre PostgreSQL, con límites de contexto explícitos, contratos de interfaz versionados y despliegue independiente de los componentes críticos. La arquitectura concreta para Puelche, con su justificación frente al Artículo 19° de las Bases Administrativas y al RT-02.02 de las Bases Técnicas Transversales, se presenta en la arquitectura de la oferta.
+3. **Arquitecturas modulares híbridas de misión crítica:** Diseño, despliegue y soporte continuo de plataformas que combinan un núcleo transaccional en nube pública con componentes de borde desplegados en centros de distribución físicos (on-premise), asegurando alta resiliencia y autonomía operativa ante cortes de conectividad externa. La línea trabaja habitualmente con monolitos modulares en PHP y Laravel sobre PostgreSQL, con aplicaciones móviles nativas en Kotlin, con límites de contexto explícitos, contratos de interfaz versionados y despliegue independiente de los componentes críticos. La arquitectura concreta para Puelche, con su justificación frente al Artículo 19° de las Bases Administrativas y al RT-02.02 de las Bases Técnicas Transversales, se presenta en la arquitectura de la oferta.
 
 Para soportar estas líneas, LafroX dispone de capacidad instalada distribuida y de un catálogo de productos y servicios que se describe a continuación.
 
@@ -108,11 +108,15 @@ El catálogo de la empresa se organiza en productos de software, servicios profe
 
 ### 1.1.1 Productos de Software
 
+La línea de productos de software de LafroX comprende:
+
 - **Aplicaciones móviles de terreno:** Soluciones offline-first para fuerzas de venta, reparto y captura de información en campo, con sincronización asíncrona y resolución determinista de conflictos ante intermitencia de red.
 - **Plataformas de monitoreo y telemetría:** Sistemas de seguimiento para flotas de transporte y cadena de frío, con generación de alertas ante desviaciones operacionales o térmicas.
 - **Núcleos transaccionales y de gestión:** Sistemas para administración de inventarios, facturación y planificación logística, desplegados en arquitecturas híbridas.
 
 ### 1.1.2 Servicios Profesionales
+
+Los servicios profesionales de LafroX son los siguientes:
 
 - **Implementación e integración de sistemas:** Diseño, despliegue y puesta en marcha de soluciones integradas con sistemas existentes del cliente.
 - **Operación y soporte continuo:** Monitoreo, atención de incidentes y mesa de ayuda bajo acuerdos de nivel de servicio.
@@ -120,6 +124,8 @@ El catálogo de la empresa se organiza en productos de software, servicios profe
 - **Gestión del cambio y capacitación:** Acompañamiento en la adopción de nuevas tecnologías y formación de usuarios finales.
 
 ### 1.1.3 Servicios de Infraestructura y Conectividad
+
+Los servicios de infraestructura y conectividad comprenden:
 
 - **Suministro de hardware especializado:** Provisión y soporte de equipamiento tecnológico para operaciones de terreno, mediante alianzas con proveedores certificados.
 - **Conectividad y redundancia:** Soluciones de comunicación para asegurar continuidad operacional en ubicaciones remotas o con conectividad limitada.
@@ -146,7 +152,7 @@ Para sostener estos procesos, la dotación técnica de 124 ingenieros y especial
 
 | División Organizacional | Área / Rol Principal | Ubicación de Trabajo | Cantidad |
 |---|---|---|---:|
-| División de Ingeniería | Desarrollo Software (Python, Django, Móvil) | Sede Central (Santiago) | 48 |
+| División de Ingeniería | Desarrollo Software (PHP/Laravel, móvil Kotlin) | Sede Central (Santiago) | 48 |
 | División de Ingeniería | Arquitectura de Solución e Integración | Sede Central (Santiago) | 15 |
 | División de Infraestructura | Centro de Operaciones de Red (NOC 24×7) | Centro de Operaciones | 32 |
 | División de Infraestructura | Ingeniería de Confiabilidad (SRE) y Cloud | Centro de Operaciones | 12 |
@@ -165,7 +171,7 @@ El modelo de gobierno interno de LafroX se fundamenta en políticas explícitas,
 La calidad de los procesos de LafroX se rige por un Sistema de Gestión de Calidad certificado conforme a ISO 9001:2015 y por prácticas evaluadas bajo CMMI-DEV Nivel 3.
 
 - **Instancia colegiada:** El Comité de Calidad y Procesos, presidido mensualmente por el Jefe de QA y con participación de los líderes de proyecto, analiza la adherencia metodológica y métricas de defecto.
-- **Políticas y controles de ingeniería:** Se implementan compuertas de calidad automáticas (quality gates) en los canales de integración continua (CI/CD). Es política corporativa estricta rechazar cualquier compilación con cobertura de pruebas unitarias inferior al 80 % o con deuda técnica detectada por SonarQube categorizada como bloqueante.
+- **Políticas y controles de ingeniería:** Se implementan compuertas de calidad automáticas (quality gates) en los canales de integración continua (CI/CD). Es política corporativa estricta rechazar cualquier compilación con cobertura de pruebas unitarias inferior al 80 % o con hallazgos bloqueantes del análisis estático de código (PHPStan/Larastan y Pint).
 - **Auditorías internas:** Se ejecutan auditorías internas trimestrales a cargo de auditores líderes certificados, orientadas a evaluar la trazabilidad entre requerimientos, código y matrices de prueba.
 
 ### 1.3.2 Modelo de Gobierno de Seguridad de la Información
@@ -279,6 +285,8 @@ Para viabilizar el despliegue del modelo híbrido obligatorio (Artículo 16° de
 Las especificaciones particulares de hardware e implementos que estas alianzas suministran al proyecto se detallan en el Formulario T-11 del Subdocumento 4.
 
 # Referencias
+
+Las fuentes citadas en este documento se listan a continuación en formato APA 7.ª edición.
 
 - AENOR. (2023). *Certificado de Sistema de Gestión de Seguridad de la Información ISO/IEC 27001:2022 N° SI-0312/2023.* AENOR Internacional.
 - Bureau Veritas. (2025). *Certificado de Sistema de Gestión de la Calidad ISO 9001:2015 N° BV-CH-94821.* Bureau Veritas Certification.

@@ -18,9 +18,11 @@ JP mantiene el registro único. Los líderes identifican riesgos al revisar inte
 
 ### 8.1.2 Roles y autoridad
 
-La tabla asigna a cada líder del proyecto su responsabilidad en el registro de riesgos.
+La Tabla 8.1 asigna a cada líder del proyecto el ámbito de riesgos que vigila en el registro.
 
-| Rol | Responsabilidad |
+**Tabla 8.1. Ámbito de riesgos por rol — Fuente: elaboración propia a partir del Capítulo 1, Tabla 1.3, y del Formulario T-16**
+
+| Rol | Ámbito de riesgos que vigila |
 | --- | --- |
 | JP — Alex Aravena | Registro, fechas, contraparte, recursos y escalamiento |
 | ARQ — Bastián Trejo | Interfaces, portabilidad, continuidad y resolución propuesta de RPO residual |
@@ -37,6 +39,8 @@ Dirigen equipos; no ejecutan solos todas las HH. La Contraparte Técnica del CLI
 
 P/I/D se asignan como juicios ordinales iniciales sustentados en exposición y controles descritos, no como frecuencias medidas; para el análisis cuantitativo, P e I se calibran con los tramos de la segunda tabla de esta sección. Horizonte: hasta entregar el control de cada ficha y, para riesgos recurrentes, los 56 meses del contrato. Cambiar el horizonte exige reevaluación.
 
+**Tabla 8.2. Escalas ordinales de probabilidad, impacto y detección — Fuente: elaboración propia a partir de ISO (2018) e IEC (2018)**
+
 | Valor | Probabilidad ordinal P | Impacto I: mayor efecto aplicable | Detección D: mayor valor, peor detección |
 | --- | --- | --- | --- |
 | 1 | Excepcional, sin dependencia expuesta identificada | Corrección local sin afectar aceptación ni servicio | Control automático probado detecta antes de confirmar |
@@ -48,6 +52,8 @@ P/I/D se asignan como juicios ordinales iniciales sustentados en exposición y c
 Exposición E = P × I (1–25): baja 1–3, moderada 4–7, alta 8–14 y crítica 15–25. FMEA agrega NPR = P × I × D (1–125), para ordenar dentro del nivel; desempates por impacto y proximidad del plazo. I = 5 exige escalamiento aunque E no alcance 15. No se asigna D = 1 a un control por describirlo.
 
 Para el análisis cuantitativo, cada valor de P se calibra con un tramo de probabilidad y cada valor de I con la fracción del esfuerzo de los paquetes afectados que el evento agregaría como retrabajo o trabajo adicional. Los paquetes afectados son los que cada ficha del Anexo 8.A nombra en «Fuente y EDT», con sus HH del Formulario T-15. La calibración es un juicio del equipo, no una frecuencia medida, y se revisa con los datos del proyecto.
+
+**Tabla 8.3. Calibración cuantitativa de las escalas — Fuente: elaboración propia a partir del Formulario T-15**
 
 | Valor | Probabilidad (tramo y valor usado) | Impacto (fracción del esfuerzo afectado) |
 | --- | --- | --- |
@@ -95,6 +101,20 @@ Solución: integridad de stock/custodia, ERP/DTE, autonomía, capacidad, RPO, se
 
 El análisis de modos de falla y sus efectos (FMEA) sigue la IEC 60812 (International Electrotechnical Commission [IEC], 2018): a la probabilidad y el impacto agrega la detección, y su producto da el número de prioridad del riesgo (NPR). Anexo 8.B presenta P/I/D, exposición y NPR. La prioridad inicial se concentra en continuidad, RPO, ERP/DTE, seguridad, capacidad y aceptación. T-16 compara exposición; NPR no reemplaza su columna Expos.
 
+La Tabla 8.4 extrae del Anexo 8.B, Tabla B.1, los cinco riesgos con mayor número de prioridad (NPR); el registro completo de los 32 está en ese anexo.
+
+**Tabla 8.4. Riesgos con mayor NPR — Fuente: Anexo 8.B, Tabla B.1**
+
+| Riesgo | P | I | D | NPR = P × I × D |
+| --- | --- | --- | --- | --- |
+| R8-01 ERP indisponible o guía invalidada | 4 | 5 | 4 | 80 |
+| R8-07 Ataque o exposición de datos críticos | 4 | 5 | 4 | 80 |
+| R8-27 INN-03 estima vida remanente insegura | 4 | 5 | 4 | 80 |
+| R8-05 Pérdida del sitio supera RPO | 3 | 5 | 5 | 75 |
+| R8-02 Doble reserva o custodia CD-05 | 4 | 5 | 3 | 60 |
+
+Los cinco pertenecen a la rama de la solución y todos tienen impacto 5. Lo que los separa es la detección: R8-05 tiene la probabilidad más baja, pero su D = 5 (sólo se aprecia al perder el sitio) lo deja en el cuarto lugar, por sobre riesgos más probables. Por eso sus respuestas privilegian controles que se prueban antes del corte (ensayo de caída del ERP, prueba de concurrencia y ejercicio de recuperación) en vez de controles que sólo reaccionan cuando el evento ocurre.
+
 No se suman puntuaciones como probabilidad del proyecto. Las relaciones importan: ausencia de contraparte puede atrasar interfaces/cadenas y eliminar semanas de evidencia; migración deficiente puede invalidar trazabilidad y aceptación. Los mismos efectos o consumos no se contabilizan dos veces.
 
 ### 8.2.3 Análisis cuantitativo
@@ -102,6 +122,8 @@ No se suman puntuaciones como probabilidad del proyecto. Las relaciones importan
 El análisis cuantitativo tiene dos partes (PMI, 2017, pp. 433–434). La primera calcula el valor esperado de cada riesgo con la calibración de la sección 8.1.3. El registro suma 15.076 HH de valor esperado, cerca de 8 % de las 190.366 HH base del T-15. Cinco riesgos concentran 67,7 % del total: productividad o dotación inferior al modelo (R8-11), mesa que no alcanza los niveles de atención (R8-22), marcha blanca que no cumple las seis condiciones (R8-18), uso de la capacidad protegida de la Etapa 1 por la Etapa 2 (R8-14) y doble reserva de stock (R8-02). El Anexo 8.B, Tabla B.2, presenta el cálculo de cada riesgo y su porcentaje acumulado.
 
 La segunda parte simula 5.000 veces el cronograma por actividad del Formulario T-15. En cada iteración, la duración de cada paquete varía con la distribución PERT de su tríada, cada riesgo ocurre con su probabilidad y, si ocurre, alarga sus paquetes afectados en la fracción de su impacto. La tabla informa, para cada hito, la fecha límite de entrega, las fechas que se alcanzan en la mitad (P50) y en el 80 % (P80) de las iteraciones y la probabilidad de entregar a tiempo. Los hitos H6, H7, H11 y H12 no se simulan: son el inicio de cada marcha blanca y cada paso a producción, con mes fijo del Art. 17°, y su riesgo se trata con R8-18 y la reserva de contingencia (Anexo 8.C, sección C.3).
+
+**Tabla 8.5. Resultado de la simulación de Monte Carlo por hito — Fuente: elaboración propia a partir del Formulario T-15 y del Anexo 8.C**
 
 | Hito | Fecha límite de entrega | P50 | P80 | P(entrega a tiempo) |
 | --- | --- | --- | --- | --- |
@@ -132,6 +154,8 @@ El costo-beneficio compara HH de prevención/verificación con retrabajo y afect
 
 La reserva de contingencia cubre los riesgos identificados y se dimensiona con la suma de sus valores esperados: 15.076 HH (PMI, 2017, p. 202; p. 443). De ellas, 1.853 HH corresponden a R8-02, R8-04 y R8-14 (461 + 384 + 1.008 HH, Tabla B.2), los riesgos de corrección de la Etapa 1 que la capacidad protegida de 3.072 HH de los meses 13 a 20, ya incluida en el T-15, puede absorber según la regla del Anexo 8.D. Esa capacidad no puede usarse antes del mes 13 ni para la Etapa 2, de modo que no cubre a los demás riesgos, y la contingencia adicional es de 15.076 − 1.853 = 13.223 HH. La tabla reparte la contingencia por período según los meses de los paquetes afectados por cada riesgo; ese reparto es el reflejo de la reserva en el flujo de caja, y su valorización está en la Oferta Económica (Art. 50.2).
 
+**Tabla 8.6. Reparto de la reserva de contingencia por período — Fuente: elaboración propia a partir del Anexo 8.B, Tabla B.2**
+
 | Período | Contingencia (HH) |
 | --- | --- |
 | Meses 1–6 | 1.802 |
@@ -142,7 +166,7 @@ La reserva de contingencia cubre los riesgos identificados y se dimensiona con l
 | Meses 34–56 | 51 |
 | **Total** | **15.076** |
 
-Los valores de cada período se redondean a la hora; el total se calcula sin redondear.
+Los valores de cada período se redondean a la hora; el total se calcula sin redondear. El 88 % de la reserva (13.222 de 15.076 HH) se concentra entre los meses 7 y 33, donde coinciden la construcción, las dos marchas blancas y el primer año de operación; después del mes 33 queda sólo el remanente de los riesgos de operación (51 HH).
 
 La reserva de cronograma son las reservas de cada hito del T-15, Tabla 5.2, dimensionadas para que la fecha P80 quede antes de la fecha límite (sección 8.2.3). La reserva de gestión cubre riesgos no identificados: no forma parte de la línea base, la autoriza el Comité Ejecutivo y su monto se define en la Oferta Económica (BA Art. 50.2). JP solicita el uso de cualquier reserva con causa, perfiles, ventana e impacto; ninguna reserva se presta entre etapas.
 
@@ -155,6 +179,8 @@ El Anexo 8.E registra las condiciones de evidencia: productividad/dotación, sec
 No se autoriza corte sin continuidad medida ni aceptación sin las seis condiciones simultáneas del Art. 17.3 y acta según Art. 18. La suspensión láctea de septiembre de 2026 es antecedente ocurrido; V-13 debe precisar evidencia y restitución con CLIENTE/proveedor. El proyecto no demuestra una solución retroactiva. La propuesta queda sujeta a las condiciones de cierre del Anexo 8.E, cada una con responsable, hito límite y evidencia; ninguna se da por cumplida sin las decisiones, pruebas y actas que allí se indican.
 
 ## Referencias
+
+Las fuentes citadas en este documento se listan a continuación en formato APA 7.ª edición.
 
 - Distribuidora Puelche S.A. (2026a). *Bases Administrativas de Licitación N.º TFEP-01/2026*, artículos 17, 18 y 50.2, y Formularios T-16 y T-22.
 - Distribuidora Puelche S.A. (2026b). *Bases Técnicas Transversales de Licitación N.º TFEP-01/2026*, RT-07.04, RT-07.07, RT-19.04, RT-21.06, RT-21.07 y RT-26.04.

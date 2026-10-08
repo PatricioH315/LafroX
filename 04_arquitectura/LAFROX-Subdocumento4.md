@@ -2763,6 +2763,8 @@ Dos veces al año se ensaya la pérdida regional con escrituras de pedidos y sin
 
 # Referencias
 
+Las fuentes citadas en este documento se listan a continuación en formato APA 7.ª edición.
+
 - Amazon Web Services. (s. f.-a). *Request validation for REST APIs*. <https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-method-request-validation.html>
 
 - Amazon Web Services. (s. f.-b). *Lambda authorizers*. <https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-use-lambda-authorizer.html>

@@ -673,6 +673,8 @@ La lectura es la del diagrama de tornado (PMI, 2017, p. 434): el H9 depende sobr
 
 ## Anexo 8.D — Reservas, autorización y programación
 
+La tabla siguiente fija las reservas, quién autoriza su uso y cuándo se programan.
+
 | Componente | HH / ventana | Inclusión y regla |
 | --- | --- | --- |
 | Corrección protegida E1 | 8 × (256 DES + 128 CAL) = 3.072 HH; meses 13–20 | Ya incluida en 202.774 HH. Remanente inicial de planificación 3.072; consumo real no informado. No prestar a E2 ni usar antes del mes 13 |
@@ -710,6 +712,8 @@ Infraestructura 99,95 %, transacción crítica 99,9 % y cero interrupción de de
 
 ## Anexo 8.F — Adopción de innovaciones y oportunidad
 
+La tabla siguiente vincula cada innovación con su riesgo de adopción, su evaluación y su respuesta.
+
 | Innovación SD7 vigente | Riesgo de adopción | P / I | Mitigación y contingencia |
 | --- | --- | --- | --- |
 | INN-01 Seguimiento de vencimiento posentrega en el local | R8-25 | 4 / 3 | Piloto asistido, I-01A y confirmación en la visita; aviso solo por vida útil y trazabilidad base si no rinde |
@@ -731,6 +735,8 @@ La oportunidad se evalúa con una escala de beneficio simétrica a la de impacto
 O8-01 — Oportunidad de diagnóstico: si los casos protegidos INN-02 representan incidentes reales, podrían permitir resolver fallas equivalentes con menos retrabajo. P ordinal 3, porque los casos protegidos cubren sólo los incidentes de corte y reintento; beneficio ordinal 3, porque un caso reproducible reduce el retrabajo de diagnóstico que hoy consumiría contingencia; puntuación de oportunidad 9, separada de exposición de amenazas. La evidencia de comparación son las HH de diagnóstico de incidentes equivalentes antes y después de usar los casos. CAL compara HH antes/después de casos equivalentes durante validación meses 11–15 y operación. Disparador: incidente equivalente con reproducción disponible. Acción: reutilizar casos dentro de 3.10.2/8.3.1. Si no se verifica ahorro, mantener diagnóstico base sin descontar HH del T-15. No se suma esta oportunidad como reserva.
 
 ## Referencias
+
+Las fuentes citadas en este documento se listan a continuación en formato APA 7.ª edición.
 
 - Distribuidora Puelche S.A. (2026a). *Bases Administrativas de Licitación N.º TFEP-01/2026*, artículos 17, 18 y 50.2, y Formularios T-16 y T-22.
 - Distribuidora Puelche S.A. (2026b). *Bases Técnicas Transversales de Licitación N.º TFEP-01/2026*, RT-07.04, RT-07.07, RT-19.04, RT-21.06, RT-21.07 y RT-26.04.

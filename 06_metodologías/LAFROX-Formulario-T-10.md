@@ -14,6 +14,8 @@ Conforme al Formulario T-10 de las Bases Administrativas, LafroX adjunta a este 
 
 ## Referencias
 
+Las fuentes citadas en este documento se listan a continuación en formato APA 7.ª edición.
+
 - Distribuidora Puelche S.A. (2026a). *Bases Administrativas de Licitación N.º TFEP-01/2026*, Formulario T-10.
 
 ## Declaración de uso de IA

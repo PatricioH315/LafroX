@@ -244,7 +244,7 @@ Si en cualquier momento se detecta un lote sospechoso, Calidad obtiene los desti
 
 La Figura 3.4 presenta una vista general de los actores, las interfaces de acceso, los doce módulos de negocio y las integraciones de la solución. Complementa las vistas del ciclo logístico de la sección 3.3 al mostrar cómo cada grupo de usuarios accede a las capacidades que necesita.
 
-**Figura 3.4 — Vista general de actores, interfaces, módulos e integraciones de la solución. Fuente: elaboración propia.**
+**Figura 3.4 — Vista general de actores, interfaces, módulos e integraciones de la solución. Fuente: elaboración propia a partir del Anexo 3.I y del Capítulo 4, sección 4.1.**
 
 Descripción: quince actores se relacionan con las aplicaciones de preventa, reparto y bodega, los portales de clientes, transportistas y proveedores, y las consolas de gestión. Estas interfaces acceden a M1–M12; ERP, geolocalización y pagos son sistemas externos. Los cruces de líneas no representan conexiones. La definición textual de los actores y de sus interacciones se desarrolla a continuación.
 
@@ -254,7 +254,7 @@ El ERP se conserva como registro contable y único emisor tributario. El sistema
 
 La Tabla 3.4 vincula capacidades y módulos de negocio. Los nombres M1 a M12 son los que usa la arquitectura lógica de la oferta.
 
-**Tabla 3.4 — Correspondencia entre capacidades del alcance y módulos lógicos. Fuente: elaboración propia.**
+**Tabla 3.4 — Correspondencia entre capacidades del alcance y módulos lógicos. Fuente: elaboración propia a partir del Anexo 3.A y del Capítulo 4, sección 4.2.**
 
 | **Capacidad** | **Módulo** | **Resultado que habilita** | **Etapa** |
 | --- | --- | --- | --- |

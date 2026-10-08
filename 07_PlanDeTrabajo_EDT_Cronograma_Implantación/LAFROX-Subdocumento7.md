@@ -334,6 +334,23 @@ El esfuerzo se estima por paquete con tres valores en horas hombre: optimista, m
 
 La base de cada estimación depende del tipo de paquete. Los módulos y las integraciones se estiman a partir de los requerimientos del Formulario T-12 asignados a cada paquete; la infraestructura, a partir de las cantidades del Formulario T-11; la implantación, a partir de las personas y rutas del caso; y la operación, a partir de los horarios de cobertura y de la periodicidad de los informes. Los paquetes de la fase 8 se estiman por mes y se multiplican por los 36 meses de operación. El Formulario T-15 detalla el método y las reglas de programación. La duración de cada paquete se obtiene de su esfuerzo esperado y de la dotación asignada, y la suma de las varianzas de los paquetes de la ruta crítica entrega la probabilidad de cumplir cada hito con la aproximación normal de PERT. Para programar y controlar, el esfuerzo de cada paquete se reparte entre sus actividades del Formulario T-15, sección 6, sin cambiar su total.
 
+La Tabla 7.4 resume el resultado de la estimación por etapa contractual, con la reserva protegida separada del trabajo base.
+
+**Tabla 7.4. Horas hombre programadas por etapa — Fuente: Formulario T-15, sección 4.3**
+
+| Etapa | Meses | HH base y cobertura | HH de reserva protegida | HH programadas |
+| --- | --- | --- | --- | --- |
+| Etapa 1 · Desarrollo | 1 a 12 | 37.981 | 0 | 37.981 |
+| Etapa 1 · Marcha blanca | 13 a 15 | 11.147 | 1.152 | 12.299 |
+| Etapa 2 · Desarrollo | 13 a 18 | 11.567 | 0 | 11.567 |
+| Etapa 2 · Marcha blanca | 19 y 20 | 7.276 | 0 | 7.276 |
+| Soporte puente de la Etapa 1 | 16 a 20 | 14.744 | 1.920 | 16.664 |
+| Cierre y estabilización de la implementación | 21 y 22 | 2.775 | 0 | 2.775 |
+| Operación | 21 a 56 | 114.213 | 0 | 114.213 |
+| **Total** |  | **199.702** | **3.072** | **202.774** |
+
+La operación concentra el 56 % de las horas programadas (114.213 de 202.774 HH), porque cubre 36 meses de servicio continuo del centro de operaciones, la mesa y el SOC. La implementación propiamente tal, de los meses 1 a 22, suma 88.561 HH, y su tramo más denso son los meses 13 a 15, cuando la marcha blanca de la Etapa 1 y el desarrollo de la Etapa 2 suman 17.579 HH (4.485 + 4.889 + 8.205, según la curva del Formulario T-15, sección 4.4), con el máximo de 69 personas equivalentes en el mes 15. Las 3.072 HH de reserva se asignan sólo a la Etapa 1, de modo que una corrección en su marcha blanca no se financia con horas de la Etapa 2.
+
 ### 7.2.3 Frentes de trabajo y sincronización
 
 El trabajo se organiza en ocho frentes. Cada frente es un equipo con un responsable que avanza en paralelo con los demás sobre un conjunto de cuentas de control. La Figura 7.6 presenta los frentes, su rol líder, sus cuentas de control y su ventana de actividad entre los meses 1 y 21; la correspondencia completa está en el Formulario T-15.
@@ -384,9 +401,9 @@ La holgura se gestiona en las instancias de gobierno de la EDT. El avance de cad
 
 ### 7.3.2 Carta Gantt y calendario
 
-La carta Gantt del Formulario T-14 cubre los 56 meses y muestra las marchas blancas, los pasos a producción y el inicio de la Operación. La Tabla 7.4 ubica los doce hitos del Formulario E-25 con el paquete que entrega cada uno.
+La carta Gantt del Formulario T-14 cubre los 56 meses y muestra las marchas blancas, los pasos a producción y el inicio de la Operación. La Tabla 7.5 ubica los doce hitos del Formulario E-25 con el paquete que entrega cada uno.
 
-**Tabla 7.4. Hitos del Formulario E-25 en el cronograma. Fuente: elaboración propia a partir del Formulario E-25 y del Formulario T-14.**
+**Tabla 7.5. Hitos del Formulario E-25 en el cronograma. Fuente: elaboración propia a partir del Formulario E-25 y del Formulario T-14.**
 
 <a id="tab:7-hitos"></a>
 
@@ -407,9 +424,9 @@ La carta Gantt del Formulario T-14 cubre los 56 meses y muestra las marchas blan
 
 La tabla está ordenada por mes y no por número de hito, porque el H8 (mes 14) ocurre antes que el H7 (mes 16). Ese cruce es la expresión concreta del solapamiento: la línea base de la Etapa 2 se aprueba mientras la Etapa 1 está en su marcha blanca.
 
-Los meses contractuales caen en meses calendario distintos según la fecha de inicio del contrato, que aún no está definida (consulta V-12). La Tabla 7.5 aplica la regla a los tres inicios que el Capítulo 3, sección 3.1.2, considera compatibles con poner la Etapa 2 en producción antes de enero de 2029, fecha desde la que rigen las condiciones de la principal cadena de supermercados.
+Los meses contractuales caen en meses calendario distintos según la fecha de inicio del contrato, que aún no está definida (consulta V-12). La Tabla 7.6 aplica la regla a los tres inicios que el Capítulo 3, sección 3.1.2, considera compatibles con poner la Etapa 2 en producción antes de enero de 2029, fecha desde la que rigen las condiciones de la principal cadena de supermercados.
 
-**Tabla 7.5. Meses contractuales según la fecha de inicio. Fuente: elaboración propia a partir de las Bases Administrativas, Art. 17°, y del Caso 02, secciones 13.2 y 13.3.**
+**Tabla 7.6. Meses contractuales según la fecha de inicio. Fuente: elaboración propia a partir de las Bases Administrativas, Art. 17°, y del Caso 02, secciones 13.2 y 13.3.**
 
 <a id="tab:7-inicio"></a>
 
@@ -436,7 +453,7 @@ La Figura 7.8 presenta la carta Gantt resumida de los 56 meses con ese supuesto 
 
   <a id="fig:7-gantt"></a>
 
-La carta muestra que los periodos fijos del Art. 17° se respetan mes a mes y que ningún paso a producción cae en una columna de congelamiento: el mes 16 es mayo de 2028 y el mes 21, octubre de 2028. Las fases de desarrollo aparecen dos veces, una por etapa, y la capacitación continúa durante la operación por la rotación de la bodega. Las columnas rayadas del mes 20 y del mes 23 confirman lo que anticipa la Tabla 7.5: el cierre de la marcha blanca de la Etapa 2 ocurre en septiembre y el primer diciembre de operación llega dos meses después de la aceptación final.
+La carta muestra que los periodos fijos del Art. 17° se respetan mes a mes y que ningún paso a producción cae en una columna de congelamiento: el mes 16 es mayo de 2028 y el mes 21, octubre de 2028. Las fases de desarrollo aparecen dos veces, una por etapa, y la capacitación continúa durante la operación por la rotación de la bodega. Las columnas rayadas del mes 20 y del mes 23 confirman lo que anticipa la Tabla 7.6: el cierre de la marcha blanca de la Etapa 2 ocurre en septiembre y el primer diciembre de operación llega dos meses después de la aceptación final.
 
 Antes de cada paso a producción, el cronograma reserva las pruebas que exige el numeral 20.1 de las Bases Técnicas Transversales: carga y estrés a 1,5 veces el peak, resiliencia, recuperación ante desastres con conmutación real, seguridad ofensiva y accesibilidad. Además, programa dos ensayos de migración antes de la migración definitiva. En la Etapa 1 estas pruebas forman la cuenta 3.8, se ejecutan en los meses 9 y 10 y se entregan antes del H5 del mes 12; en la Etapa 2 forman la cuenta 3.9, se ejecutan en los meses 16 y 17 y se entregan antes del H10 del mes 18 (Formulario T-15, Tabla 5.2).
 
@@ -444,9 +461,9 @@ Antes de cada paso a producción, el cronograma reserva las pruebas que exige el
 
 La implantación sigue el principio que impone el caso: nada entra en producción sin haber convivido con la forma actual de trabajar, y nada se despliega como un único evento (sección 13.3, condiciones 1 y 3). Técnicamente, cada capacidad se publica con un despliegue azul-verde y se habilita por sitio y por ola mediante interruptores de funcionalidad. Así, cada ola puede revertirse sin reinstalar y cada operación tiene un único escritor autorizado (Capítulo 4, sección 4.1.8). Ningún despliegue ocurre en la ventana de despacho de 05:30 a 07:00, que no admite indisponibilidad, ni en fechas de congelamiento (Caso 02, RT-10.05).
 
-La Etapa 1 entra en tres olas, en el orden de las dependencias de datos (Capítulo 3, sección 3.4.4). La Tabla 7.6 las presenta.
+La Etapa 1 entra en tres olas, en el orden de las dependencias de datos (Capítulo 3, sección 3.4.4). La Tabla 7.7 las presenta.
 
-**Tabla 7.6. Olas de implantación de la Etapa 1. Fuente: Capítulo 3, sección 3.4.4, y Formulario T-18.**
+**Tabla 7.7. Olas de implantación de la Etapa 1. Fuente: Capítulo 3, sección 3.4.4, y Formulario T-18.**
 
 <a id="tab:7-olas"></a>
 
@@ -478,9 +495,9 @@ La programación de olas usa fechas reales y no una equivalencia de meses a 13 s
 
 El avance de cada grupo exige su criterio y acompañamiento. Las cuatro semanas finales requieren todos los grupos y todo el volumen real, no una muestra. E2 habilita todas las cadenas del alcance, portales y costo de servir antes de F − 28 días y, en el ejemplo febrero 2027, antes de septiembre. La carga manual de pedidos mantiene contingencia auxiliar y no acredita intercambio electrónico ni permite excluir una cadena faltante.
 
-La reversión tiene dos niveles, que la Tabla 7.7 distingue.
+La reversión tiene dos niveles, que la Tabla 7.8 distingue.
 
-**Tabla 7.7. Niveles de reversión. Fuente: Capítulo 3, sección 3.4.4; Capítulo 4, sección 4.1.8; y Formulario T-18.**
+**Tabla 7.8. Niveles de reversión. Fuente: Capítulo 3, sección 3.4.4; Capítulo 4, sección 4.1.8; y Formulario T-18.**
 
 <a id="tab:7-reversion"></a>
 
@@ -512,9 +529,9 @@ La figura muestra que la decisión es del CLIENTE y se toma en el turno de noche
 
 ### 7.3.4 Marcha blanca de la Etapa 1
 
-La marcha blanca de la Etapa 1 son tres meses de operación supervisada con datos y usuarios reales, del mes 13 al 15. Convive con la operación vigente: en bodega, con la hoja de picking; en ruta, con la guía en papel; y en Talca, con el WMS de 2013 en solo lectura como respaldo de consulta. Cada día se concilian ambos registros, y toda diferencia se clasifica y explica antes del cierre del día (RT-20.03). La Tabla 7.8 presenta los indicadores que se miden y publican diariamente, con sus umbrales de cierre (RT-20.04).
+La marcha blanca de la Etapa 1 son tres meses de operación supervisada con datos y usuarios reales, del mes 13 al 15. Convive con la operación vigente: en bodega, con la hoja de picking; en ruta, con la guía en papel; y en Talca, con el WMS de 2013 en solo lectura como respaldo de consulta. Cada día se concilian ambos registros, y toda diferencia se clasifica y explica antes del cierre del día (RT-20.03). La Tabla 7.9 presenta los indicadores que se miden y publican diariamente, con sus umbrales de cierre (RT-20.04).
 
-**Tabla 7.8. Indicadores diarios de la marcha blanca. Fuente: Bases Administrativas, Art. 17.3; Caso 02, RT-09.01 y RT-10.05; y Capítulo 3, Tabla 3.5.**
+**Tabla 7.9. Indicadores diarios de la marcha blanca. Fuente: Bases Administrativas, Art. 17.3; Caso 02, RT-09.01 y RT-10.05; y Capítulo 3, Tabla 3.5.**
 
 <a id="tab:7-indicadores"></a>
 
@@ -557,7 +574,7 @@ La marcha blanca de la Etapa 2 dura los meses 19 y 20 y convive con la Etapa 1 e
 
 Esta marcha blanca dura unas 8,7 semanas (2 × 52 / 12). Como el Art. 17.3 exige volumen real en las cuatro últimas, todas las cadenas certificadas, los portales y el costo de servir deben quedar habilitados en las primeras 4,7 semanas. Con el inicio supuesto de febrero de 2027, el mes 19 es agosto y el mes 20 es septiembre de 2028, de modo que toda habilitación ocurre en agosto, antes del congelamiento del 1 al 25 de septiembre. Las semanas de cierre se miden con el volumen del peak de Fiestas Patrias, cerca de 2.600 entregas diarias, en el primer septiembre de la Etapa 1 en producción. Durante el congelamiento se aplica continuidad previamente autorizada por el CLIENTE; T-18 §6.4 no presume que un cambio de configuración esté exento de las prohibiciones. La capacidad para ese peak se demuestra antes del H11 con la prueba de carga a 1,5 veces el peak, con ambas etapas activas (paquete 3.9.3; Formulario T-18, sección 3.1).
 
-A los indicadores de la Tabla 7.8 se suman los propios del alcance de la Etapa 2: los pedidos de las cadenas certificadas recibidos por vía electrónica, los avisos de despacho dentro de dos minutos, las entregas con costo de servir calculado y la ausencia de degradación de los indicadores de la Etapa 1 (Formulario T-18, sección 3.3). La Figura 7.12 muestra cómo fluyen los datos entre ambas etapas.
+A los indicadores de la Tabla 7.9 se suman los propios del alcance de la Etapa 2: los pedidos de las cadenas certificadas recibidos por vía electrónica, los avisos de despacho dentro de dos minutos, las entregas con costo de servir calculado y la ausencia de degradación de los indicadores de la Etapa 1 (Formulario T-18, sección 3.3). La Figura 7.12 muestra cómo fluyen los datos entre ambas etapas.
 
   
 - Etapa 1 en producción
@@ -578,9 +595,9 @@ La figura muestra que la Etapa 2 no tiene un segundo registro de los datos de la
 
 ### 7.3.6 Estabilización y transferencia
 
-Después de cada paso a producción hay una estabilización de cuatro semanas por ola, con atención reforzada y sin costo adicional (RT-20.06). La dotación se deriva de la operación del caso, como muestra la Tabla 7.9.
+Después de cada paso a producción hay una estabilización de cuatro semanas por ola, con atención reforzada y sin costo adicional (RT-20.06). La dotación se deriva de la operación del caso, como muestra la Tabla 7.10.
 
-**Tabla 7.9. Estabilización por ola. Fuente: Capítulo 3, sección 3.4.4.**
+**Tabla 7.10. Estabilización por ola. Fuente: Capítulo 3, sección 3.4.4.**
 
 <a id="tab:7-estabilizacion"></a>
 
@@ -597,9 +614,9 @@ La operación se transfiere al equipo de TI de cuatro personas del CLIENTE antes
 
 ### 7.3.7 Momento de los resultados comprometidos
 
-El Caso 02 exige indicar en qué momento del cronograma se alcanza cada resultado de aceptación (capítulo 18). La Tabla 7.10 agrupa los dieciséis resultados por momento; el detalle por resultado está en el Anexo 7.C.
+El Caso 02 exige indicar en qué momento del cronograma se alcanza cada resultado de aceptación (capítulo 18). La Tabla 7.11 agrupa los dieciséis resultados por momento; el detalle por resultado está en el Anexo 7.C.
 
-**Tabla 7.10. Momento de los resultados de aceptación del caso. Fuente: Caso 02, capítulo 18; Capítulo 3, Anexo 3.J; y Anexo 7.C.**
+**Tabla 7.11. Momento de los resultados de aceptación del caso. Fuente: Caso 02, capítulo 18; Capítulo 3, Anexo 3.J; y Anexo 7.C.**
 
 <a id="tab:7-resultados"></a>
 
@@ -612,9 +629,9 @@ El Caso 02 exige indicar en qué momento del cronograma se alcanza cada resultad
 
 Doce de los dieciséis resultados se verifican en la marcha blanca de la Etapa 1. Por eso el volumen real y la certificación de usuarios de ese período son la principal concentración de riesgo de aceptación del proyecto, y por eso el plan dedica a esa marcha blanca su mayor dotación de acompañamiento.
 
-Las innovaciones también tienen su momento en el cronograma (Art. 29°, punto 4), como resume la Tabla 7.11.
+Las innovaciones también tienen su momento en el cronograma (Art. 29°, punto 4), como resume la Tabla 7.12.
 
-**Tabla 7.11. Innovaciones en el cronograma. Fuente: Anexo 7.D.**
+**Tabla 7.12. Innovaciones en el cronograma. Fuente: Anexo 7.D.**
 
 <a id="tab:7-innovaciones"></a>
 
@@ -661,7 +678,7 @@ Las Bases se citan con su documento y el artículo, capítulo, sección o códig
 
 En cumplimiento de la sección 7.2 de las Aclaraciones de la licitación, la tabla siguiente declara el uso de herramientas de inteligencia artificial en este subdocumento, con la revisión humana de cada parte. La declaración se consolida en el Formulario A-6.
 
-**Tabla 7.12. Declaración de uso de IA. Fuente: registro del equipo.**
+**Tabla 7.13. Declaración de uso de IA. Fuente: registro del equipo.**
 
 <a id="tab:7-ia"></a>
 

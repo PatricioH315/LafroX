@@ -82,12 +82,12 @@ Jefe de Proyecto y Apoderado · LafroX SpA
 
 | Contenido | Página |
 | --- | --- |
-| Figura 2.1 Proceso de Preventa y Toma de Pedidos AS-IS. Fuente: elaboración propia. | 13 |
-| Figura 2.2 Proceso de Recepción de Mercadería y Control de Lotes AS-IS. Fuente: elaboración propia. | 14 |
-| Figura 2.3 Proceso de Preparación y Cross-Docking AS-IS. Fuente: elaboración propia. | 15 |
-| Figura 2.4 Proceso de Planificación de Rutas AS-IS. Fuente: elaboración propia. | 16 |
-| Figura 2.5 Proceso de Reparto y Entrega AS-IS. Fuente: elaboración propia. | 16 |
-| Figura 2.6 Proceso de Rendición y Cobranza AS-IS. Fuente: elaboración propia. | 17 |
+| Figura 2.1 Proceso de Preventa y Toma de Pedidos AS-IS. Fuente: elaboración propia a partir de Distribuidora Puelche S.A. (2026c), capítulos 4 y 8. | 13 |
+| Figura 2.2 Proceso de Recepción de Mercadería y Control de Lotes AS-IS. Fuente: elaboración propia a partir de Distribuidora Puelche S.A. (2026c), capítulos 4 y 8. | 14 |
+| Figura 2.3 Proceso de Preparación y Cross-Docking AS-IS. Fuente: elaboración propia a partir de Distribuidora Puelche S.A. (2026c), capítulos 4 y 8. | 15 |
+| Figura 2.4 Proceso de Planificación de Rutas AS-IS. Fuente: elaboración propia a partir de Distribuidora Puelche S.A. (2026c), capítulos 4 y 8. | 16 |
+| Figura 2.5 Proceso de Reparto y Entrega AS-IS. Fuente: elaboración propia a partir de Distribuidora Puelche S.A. (2026c), capítulos 4 y 8. | 16 |
+| Figura 2.6 Proceso de Rendición y Cobranza AS-IS. Fuente: elaboración propia a partir de Distribuidora Puelche S.A. (2026c), capítulos 4 y 8. | 17 |
 
 CAPÍTULO 2
 
@@ -145,7 +145,7 @@ A este marco se añade el impacto crítico de la estacionalidad, durante las tre
 
 ### 2.2.3 Arbitraje de tensiones operacionales y comerciales
 
-El levantamiento de información en terreno reveló contradicciones estructurales entre las distintas gerencias de Puelche. Estas tensiones no constituyen discrepancias accidentales, sino el reflejo de objetivos locales descoordinados que exigen una decisión antes de diseñar la solución. Para cada tensión se indica la decisión que la necesidad requiere:
+Las entrevistas de levantamiento del caso (Distribuidora Puelche S.A., 2026c, cap. 8) muestran contradicciones estructurales entre las distintas gerencias de Puelche. Estas tensiones no constituyen discrepancias accidentales, sino el reflejo de objetivos locales descoordinados que exigen una decisión antes de diseñar la solución. Para cada tensión se indica la decisión que la necesidad requiere:
 
 1. Promesa de entrega (Comercial contra Operaciones): La Gerencia Comercial busca captar clientes prometiendo entregas en 24 horas a todo evento. La Gerencia de Operaciones afirma que tal promesa es materialmente imposible en la flota actual y genera frustración y reclamos. Decisión que requiere la necesidad: una promesa segmentada y viable: 24 horas para clientes urbanos con pedidos ingresados antes del corte de las 14:00, y 48 horas para clientes rurales, periféricos o abastecidos mediante cross-docking. Cómo se informa la promesa al cliente se desarrolla en el Subdocumento 3.
 
@@ -221,9 +221,7 @@ Como se aprecia en la Figura 2.1, el flujo comercial parte con el preventista vi
 > **[Descripción de imagen — Figura 2.1]**
 > Diagrama de flujo dispuesto de arriba hacia abajo. Los pasos son rectángulos de esquinas redondeadas, con relleno naranja claro y borde naranja o relleno gris claro y borde gris, unidos por flechas negras. Los tres primeros recuadros dicen «1. Visita presencial al cliente (62 preventistas)», «2. Captura pedido en App móvil offline sin stock ni crédito» y «3. Transmisión al recuperar cobertura (retraso en zonas sin señal)». Después aparece un rombo gris con la pregunta «¿Stock disponible y crédito aprobado?». La rama izquierda «Si» conduce a «4. Ingreso formal a cola de procesamiento enERP». La rama derecha «No» se divide en dos recuadros: «Falta de stock: pedido incompleto / venta perdida. 7,8% de las líneas con quiebre.» y «Bloqueo por crédito: pedido retenido en el ERP. Revisión por Crédito y Cobranza al día siguiente.». Sobre esta bifurcación figura la nota «*Los motivos pueden coincidir.».
 
-Figura 2.1 Proceso de Preventa y Toma de Pedidos AS-IS. Fuente: elaboración propia.
-
-Fuente: elaboración propia. Transcripción textual de la figura original.
+**Figura 2.1 Proceso de Preventa y Toma de Pedidos AS-IS. Fuente: elaboración propia a partir de Distribuidora Puelche S.A. (2026c), capítulos 4 y 8.**
 
 El análisis de la Figura 2.1 distingue dos problemas que el preventista no puede anticipar con la información de su aplicación: la falta de stock, cuyo quiebre afecta al 7,8 % de las líneas y puede producir pedidos incompletos o ventas perdidas, y el bloqueo por crédito, que deja el pedido retenido en el ERP para revisión por Crédito y Cobranza al día siguiente. El pedido se transmite al recuperar cobertura y el crédito se valida en el sistema de gestión.
 
@@ -243,14 +241,12 @@ En la Figura 2.2 se ilustra el registro de recepciones en los muelles de los cen
 
 6. Si la respuesta es negativa, queda comprometida la trazabilidad sanitaria; 41 % de las recepciones del producto involucrado en el retiro no tenía lote registrado.
 
-Fuente: elaboración propia. Transcripción textual de la figura original.
-
-El análisis de la Figura 2.2 muestra que el registro de lote y vencimiento no es confiable.
-
 > **[Descripción de imagen — Figura 2.2]**
 > Diagrama vertical con flechas negras, recuadros de esquinas redondeadas alternados en naranja claro y gris claro, y un rombo gris de decisión. Los primeros recuadros contienen «1. Arribo de camión a muelle CD (180 proveedores)», «2. Descarga y conteo físico de bultos en andén» y «3. Registro manual en planilla física / guía en papel». El rombo pregunta «¿Se digita lote y vencimiento en sistema?». La rama izquierda «Si» lleva a «4. Mercadería con lote registrado». La rama derecha «No» lleva al recuadro «Producto involucrado: 41% sin lote Riesgo para trazabilidad sanitaria».
 
-Figura 2.2 Proceso de Recepción de Mercadería y Control de Lotes AS-IS. Fuente: elaboración propia.
+**Figura 2.2 Proceso de Recepción de Mercadería y Control de Lotes AS-IS. Fuente: elaboración propia a partir de Distribuidora Puelche S.A. (2026c), capítulos 4 y 8.**
+
+El análisis de la Figura 2.2 muestra que el registro de lote y vencimiento no es confiable.
 
 En el producto involucrado en el retiro sanitario, 41 % de las recepciones no registró lote. Ese antecedente no permite extrapolar el porcentaje a todas las recepciones, pero sí fundamenta la necesidad de medir cobertura de captura y trazabilidad de extremo a extremo.
 
@@ -268,22 +264,16 @@ La operación de las tres plataformas de cross-docking (Curicó, Chillán y Los 
 
 Las plataformas operan con conectividad únicamente por red móvil y sin control de inventario (Distribuidora Puelche S.A., 2026c, capítulo 6 y sección 4.2).
 
-Fuente: elaboración propia. Transcripción textual de la figura original.
-
-El diagrama de la Figura 2.3 representa las actividades que deben medirse durante el levantamiento. La sospecha interna de la compañía es que el tiempo se pierde en la consolidación en Talca, pero el caso advierte que no hay datos que lo confirmen ni que lo desmientan; por eso se presenta como hipótesis (Anexo 2.2, SP-02) y no como causa probada de la brecha de 16
-
 > **[Descripción de imagen — Figura 2.3]**
 > Diagrama lineal vertical formado por cuatro rectángulos de esquinas redondeadas, unidos por flechas negras hacia abajo. El primero y el tercero tienen relleno naranja claro y borde naranja; el segundo y el cuarto, relleno gris claro y borde gris. Sus textos, en orden, son «1. Consolidación en Talca en camión de línea», «2. Llegada del camión de línea a la plataforma en la madrugada», «3. Desconsolidación en ventana de 3 horas, sin almacenamiento» y «4. Despacho matinal en camiones de reparto». No aparecen bifurcaciones ni rombos de decisión.
 
-Figura 2.3 Proceso de Preparación y Cross-Docking AS-IS. Fuente: elaboración propia.
+**Figura 2.3 Proceso de Preparación y Cross-Docking AS-IS. Fuente: elaboración propia a partir de Distribuidora Puelche S.A. (2026c), capítulos 4 y 8.**
 
-horas.
+El diagrama de la Figura 2.3 representa las actividades que deben medirse durante el levantamiento. La sospecha interna de la compañía es que el tiempo se pierde en la consolidación en Talca, pero el caso advierte que no hay datos que lo confirmen ni que lo desmientan; por eso se presenta como hipótesis (Anexo 2.2, SP-02) y no como causa probada de la brecha de 16 horas.
 
 #### 2.3.2.4 Proceso 4: Planificación de Rutas AS-IS
 
-El proceso de diagramación de despachos y asignación de vehículos se ilustra en la Figura
-
-2.4.
+El proceso de diagramación de despachos y asignación de vehículos se ilustra en la Figura 2.4.
 
 1. Los pedidos confirmados quedan disponibles para planificación entre las 15:00 y las 18:30 horas.
 
@@ -295,23 +285,16 @@ El proceso de diagramación de despachos y asignación de vehículos se ilustra 
 
 5. El despacho opera con rutas rígidas y subóptimas y alcanza 68 % de ocupación.
 
-Fuente: elaboración propia. Transcripción textual de la figura original.
-
-Como revela la Figura 2.4, la planificación descansa exclusivamente en planillas de cálculo y en la memoria del planificador. Este procedimiento impide simular alternativas dinámicas ante congestión o picos estacionales, derivando en un promedio de ocupación de camiones de solo 68 %.
-
 > **[Descripción de imagen — Figura 2.4]**
 > Diagrama vertical de cinco recuadros de esquinas redondeadas, conectados consecutivamente mediante flechas negras hacia abajo. Los recuadros primero, tercero y quinto tienen relleno naranja claro y borde naranja; segundo y cuarto son grises. En orden, dicen «1. Pedidos confirmados disponibles para planificación (15:00–18:30 hrs)», «2. Exportación manual a planillas Excel sin interfaz directa», «3. Diagramación manual de rutas (conocimiento tácito del planificador)», «4. Impresión física de hojas de ruta y guías para tripulación» y «5. Despacho con rutas rígidas y subóptimas (68% ocupación)».
 
-Figura 2.4 Proceso de Planificación de Rutas AS-IS. Fuente: elaboración propia.
+**Figura 2.4 Proceso de Planificación de Rutas AS-IS. Fuente: elaboración propia a partir de Distribuidora Puelche S.A. (2026c), capítulos 4 y 8.**
+
+Como revela la Figura 2.4, la planificación descansa exclusivamente en planillas de cálculo y en la memoria del planificador. Este procedimiento impide simular alternativas dinámicas ante congestión o picos estacionales, derivando en un promedio de ocupación de camiones de solo 68 %.
 
 #### 2.3.2.5 Proceso 5: Reparto y Entrega AS-IS
 
 La interacción en la última milla entre los camiones de reparto y los puntos de destino se presenta en la Figura 2.5.
-
-> **[Descripción de imagen — Figura 2.5]**
-> Diagrama con dos pasos iniciales dispuestos verticalmente: un recuadro gris «1. Despacho matinal de camión a ruta (05:30 a 07:00 hrs)» y un recuadro naranja claro «2. Arribo a local comercial (Almacén o Food Service)», unidos por flechas negras. A continuación, un rombo gris pregunta «¿Local abierto y cliente conforme?». La rama izquierda «Si» lleva al recuadro naranja claro «3. Firma física de guía de despacho enpapel». La rama derecha «No» se divide en dos recuadros naranja claro. El primero dice «Local cerrado A criterio del conductor:» y enumera «• Volver más tarde», «• Dejar con el negocio vecino» y «• Retornar el pedido». El segundo dice «Producto rechazado Anotar en guía y retornar el producto rechazado». Las flechas muestran las tres salidas desde la decisión.
-
-Figura 2.5 Proceso de Reparto y Entrega AS-IS. Fuente: elaboración propia.
 
 1. El camión sale a ruta durante la ventana de despacho de 05:30 a 07:00 horas.
 
@@ -323,7 +306,10 @@ Figura 2.5 Proceso de Reparto y Entrega AS-IS. Fuente: elaboración propia.
 
 5. Si el local está cerrado, el conductor decide si vuelve más tarde, deja el pedido con el negocio vecino o se lo lleva de vuelta; no existe una regla escrita. Si el cliente rechaza un producto, el conductor lo anota en la guía y se lo lleva de vuelta.
 
-Fuente: elaboración propia. Transcripción textual de la figura original.
+> **[Descripción de imagen — Figura 2.5]**
+> Diagrama con dos pasos iniciales dispuestos verticalmente: un recuadro gris «1. Despacho matinal de camión a ruta (05:30 a 07:00 hrs)» y un recuadro naranja claro «2. Arribo a local comercial (Almacén o Food Service)», unidos por flechas negras. A continuación, un rombo gris pregunta «¿Local abierto y cliente conforme?». La rama izquierda «Si» lleva al recuadro naranja claro «3. Firma física de guía de despacho enpapel». La rama derecha «No» se divide en dos recuadros naranja claro. El primero dice «Local cerrado A criterio del conductor:» y enumera «• Volver más tarde», «• Dejar con el negocio vecino» y «• Retornar el pedido». El segundo dice «Producto rechazado Anotar en guía y retornar el producto rechazado». Las flechas muestran las tres salidas desde la decisión.
+
+**Figura 2.5 Proceso de Reparto y Entrega AS-IS. Fuente: elaboración propia a partir de Distribuidora Puelche S.A. (2026c), capítulos 4 y 8.**
 
 La Figura 2.5 distingue las situaciones de local cerrado y rechazo de productos. Ante un local cerrado, el conductor decide si vuelve más tarde, deja el pedido con el negocio vecino o se lo lleva de vuelta; no existe una regla escrita. Cuando el cliente rechaza un producto, el conductor lo anota en la guía y se lo lleva de vuelta. Por tanto, el retorno de mercancía no es el resultado obligatorio de toda visita a un local cerrado ni equivale por sí mismo a una reentrega.
 
@@ -332,11 +318,6 @@ La tasa de reentregas es del 4,2 % sobre el total de entregas (Distribuidora Pue
 #### 2.3.2.6 Proceso 6: Rendición y Cobranza AS-IS
 
 Por último, la liquidación de valores cobrados en efectivo se esquematiza en la Figura 2.6.
-
-> **[Descripción de imagen — Figura 2.6]**
-> Diagrama vertical con tres pasos, un rombo de decisión y dos salidas. Los pasos, conectados por flechas negras, son «1. Cobro en efectivo en punto de entrega (Canal tradicional)», «2. El conductor conserva el dinero hasta su regreso» y «3. Rendición en caja a la mañana siguiente contra listado de entregas». El primero y el tercero son recuadros naranja claro; el segundo es gris claro. El rombo gris pregunta «¿Dinero coincide con el listado?». La rama izquierda «Si» termina en «Registro coincide»; la derecha «No» termina en «No Diferencias no conciliadas, descuadre no rastreable por entrega». Ambas salidas están en recuadros naranja claro.
-
-Figura 2.6 Proceso de Rendición y Cobranza AS-IS. Fuente: elaboración propia.
 
 1. Se cobra en efectivo contra entrega; el 38 % de las ventas del canal tradicional se cobra así y el resto se factura a 30 días.
 
@@ -350,9 +331,12 @@ Figura 2.6 Proceso de Rendición y Cobranza AS-IS. Fuente: elaboración propia.
 
 6. Si la respuesta es negativa, quedan diferencias no conciliadas y no es posible rastrear el descuadre por entrega.
 
-Fuente: elaboración propia. Transcripción textual de la figura original.
+> **[Descripción de imagen — Figura 2.6]**
+> Diagrama vertical con tres pasos, un rombo de decisión y dos salidas. Los pasos, conectados por flechas negras, son «1. Cobro en efectivo en punto de entrega (Canal tradicional)», «2. El conductor conserva el dinero hasta su regreso» y «3. Rendición en caja a la mañana siguiente contra listado de entregas». El primero y el tercero son recuadros naranja claro; el segundo es gris claro. El rombo gris pregunta «¿Dinero coincide con el listado?». La rama izquierda «Si» termina en «Registro coincide»; la derecha «No» termina en «No Diferencias no conciliadas, descuadre no rastreable por entrega». Ambas salidas están en recuadros naranja claro.
 
-La Figura 2.6 ilustra el mecanismo asociado a diferencias no conciliadas del dinero recaudado se rinde al día siguiente mediante planillas físicas. Cuando surgen descuadres, resulta imposible rastrear en qué entrega ocurrió el error.
+**Figura 2.6 Proceso de Rendición y Cobranza AS-IS. Fuente: elaboración propia a partir de Distribuidora Puelche S.A. (2026c), capítulos 4 y 8.**
+
+La Figura 2.6 muestra por qué las diferencias quedan sin conciliar: el dinero recaudado se rinde al día siguiente contra planillas físicas, de modo que, cuando surge un descuadre, no es posible rastrear en qué entrega ocurrió el error.
 
 ## 2.4 Actores y Grupos de Interés
 
@@ -380,7 +364,7 @@ Esta sección resume lo que el CLIENTE requiere, los supuestos que formula Lafro
 
 ### 2.5.1 Resumen y análisis de requerimientos del cliente
 
-A partir del análisis del problema y de las entrevistas a los actores clave, el cliente exige una solución que satisfaga un catálogo integral de requerimientos funcionales y no funcionales. Los principales ejes funcionales demandados abarcan:
+A partir del análisis del problema y de las entrevistas del caso (Distribuidora Puelche S.A., 2026c, cap. 8), el cliente exige una solución que satisfaga un catálogo integral de requerimientos funcionales y no funcionales. Los principales ejes funcionales demandados abarcan:
 
 - Preventa y comercialización: El preventista necesita conocer stock y crédito al tomar el pedido y seguir trabajando un turno completo sin señal, sin que ningún pedido se pierda ni se duplique.
 
@@ -400,7 +384,7 @@ Para diseñar una propuesta técnicamente sólida y exenta de contingencias impr
 
 Complementariamente, la Tabla 2.3 sintetiza cinco de las doce restricciones del caso, con los mismos códigos del Anexo 2.2. La inmutabilidad del canal tradicional y la prohibición de intervenir sistemas del 1 al 25 de septiembre, durante todo diciembre y en los tres primeros días hábiles de cada mes condicionan la propuesta de dos formas. Obligan a que la operación de terreno no dependa del sistema central. También obligan a programar despliegues y pasos a producción fuera de esos períodos (Distribuidora Puelche S.A., 2026c, cap. 10 y sección 13.3). El inventario íntegro de exclusiones y restricciones se encuentra en el Anexo 2.2.
 
-Tabla 2.3 Síntesis de restricciones no negociables del caso. Fuente: Distribuidora Puelche S.A. (2026c), cap. 10 y sección 13.3.
+**Tabla 2.3 Síntesis de restricciones no negociables del caso. Fuente: Distribuidora Puelche S.A. (2026c), cap. 10 y sección 13.3.**
 
 | N° | Restricción | Descripción operativa o legal | Origen |
 | --- | --- | --- | --- |
@@ -410,7 +394,11 @@ Tabla 2.3 Síntesis de restricciones no negociables del caso. Fuente: Distribuid
 | R-10 | Privacidad laboral y objeción sindical. | El sindicato objetó formalmente las cámaras en cabina y el control de jornada por posicionamiento satelital. | Caso, cap. 10, restricción 10. |
 | R-08 | Ventanas de congelamiento. | Prohibido intervenir sistemas del 1 al 25 de septiembre, durante todo diciembre y en los tres primeros días hábiles de cada mes; el paso a producción tampoco puede ocurrir en septiembre ni en diciembre. | Caso, cap. 10, restricción 8, y sección 13.3. |
 
+Las cinco restricciones de la Tabla 2.3 limitan el diseño en tres planos. En terreno, R-05 y R-10 impiden apoyar la solución en el dispositivo del almacenero o en la vigilancia del conductor, por lo que la evidencia de entrega y de cobro debe generarse con los equipos de Puelche. En la integración, R-04 y R-12 dejan al ERP como único emisor tributario, de modo que la plataforma prepara los datos pero no emite documentos legales. En el calendario, R-08 elimina septiembre, diciembre y los primeros días hábiles de cada mes como ventanas de paso a producción, lo que fija las fechas de corte del Capítulo 7.
+
 ## Referencias
+
+Las fuentes citadas en este documento se listan a continuación en formato APA 7.ª edición.
 
 - Distribuidora Puelche S.A. (2026a). Bases Administrativas de Licitación N° TFEP-01/2026: Contratación de Solución Integral de Software y Servicios de Operación.
 
