@@ -15,7 +15,7 @@ Resultado: 2 críticos, 5 altos, 7 medios y 7 bajos. Ningún cambio se aplicó a
 
 ## Altos
 
-3. **RT-03.14 (Obligatorio): equipos on-premise críticos sin redundancia.** Concepción tiene un servidor único y cada cross-docking un mini-PC E-01 único. Su falla se resuelve por reposición y reconstrucción desde la nube, sin plazo declarado. *Fuente: Codex.* Decisión del equipo: segundo equipo por sitio o justificación explícita con plazo de reposición.
+3. **[Resuelto 2026-10-07, D41] RT-03.14 (Obligatorio): equipos on-premise críticos sin redundancia.** Concepción tiene un servidor único y cada cross-docking un mini-PC E-01 único. Su falla se resuelve por reposición y reconstrucción desde la nube, sin plazo declarado. *Fuente: Codex.* Decisión del equipo: segundo equipo por sitio o justificación explícita con plazo de reposición.
 4. **Pérdida de la sala de Talca sin camino para los terminales.** 4.3.2.5 dice que los terminales se conectan por VPN al WMS levantado en la nube, pero los firewalls, el switch de núcleo y las terminaciones de enlace están en el rack R02 de esa misma sala (4.3.1.4). *Fuente: Codex.* Decisión: kit de contingencia fuera de la sala (firewall y switch de reserva ya ofertados, router LTE y Starlink) o redefinir el escenario.
 5. **Conmutación regional y mensajes ya aceptados en sa-east-1.** El shipper borra el mensaje local cuando SQS confirma (4.1.3.5). Las colas de us-east-1 se crean vacías, así que lo aceptado y no consumido en la región perdida (reconciliación, solicitudes al ERP y reservas) no tiene recuperación descrita, y la Tabla 37 promete RPO ≤15 min para «mensajes críticos». *Fuente: Codex.* Corrección propuesta: retener el outbox hasta la confirmación del consumidor central y reenviar desde la última marca confirmada al conmutar.
 6. **Preproducción y ERP real.** 4.1.9 dice que en Preproducción «se prueban los 186 terminales de bodega… la emisión de guía por el ERP», y el Anexo 4-V ejecuta AL-DTE-01 en Preproducción con ERP, SII y los tres caminos de Talca. Pero 4.2.4 define Preproducción con adaptadores simulados del ERP y sin túnel a las bodegas. *Fuente: Codex y Claude.* Decisión: dónde se ejecuta AL-DTE-01 (ambiente de prueba del ERP o marcha blanca).
@@ -58,3 +58,10 @@ Terminales de bodega 186 → 205 → 233 → 235; preventa 62 → 69 → 77; rep
 - IMP-2 (Codex): registrar en la aceptación la subida satelital medida.
 - IMP-3 (Claude): agregar la columna 3.3 a la Tabla 8, que las Aclaraciones sugieren (mapeo 3.3 → 4.1 → 4.2).
 - IMP-4 (Claude): evaluar PostgreSQL 17 en vez de 16, cuyo soporte termina en noviembre de 2028.
+
+## Estado tras la segunda pasada (2026-10-07, Claude + Codex gpt-6-sol medio)
+
+- Resueltos ahora: 5 (reenvío del outbox de 24 h y de reservas pendientes al conmutar), 7 (migraciones aditivas a la base local activa), 8 (excepción declarada bajo la Tabla 16), 9 (sin «99,99 %»), 10 (aceptación exige ≥2,2 Mbps de subida medida), 11 (ERP sin agente, con regla de firewall compensatoria), 12 (EventBridge se retira también del texto y del T-11, coherente con ARQL-01: los hallazgos de GuardDuty van a Security Hub), 13 (\FloatBarrier), 14 (rama 4.x vigente), 15, 16, 18, 19 (10.6 y 10.7 reservados), 21.
+- Nuevos y resueltos: cuerpo 12_k con temperatura 0,56/2,80 GB y mesa «hasta 2.391»; ahora 0,58/2,89 GB y 2.283, como el Anexo 4-W.
+- 3 resuelto (D41), con las tres figuras ya actualizadas por el usuario.
+- Abiertos para decisión: 1, 2, 4, 6, 17, 20.

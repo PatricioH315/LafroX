@@ -9,7 +9,7 @@ Los días equivalentes son 31.000 pedidos/mes ÷ 1.400 entregas/día = **22,14 d
 ## Dimensiones 1–3: transacciones por segundo
 
 Se calcula el máximo horario de cada régimen para evitar sumar ventanas que no coinciden. Cross-docking opera de 03:00 a 06:00: tres operaciones por entrega entre 03:00 y 05:00 y el despacho entre 05:00 y 06:00. SV-04 se aplica sólo en la hora cargada de cada tramo.
-En régimen normal el máximo horario es **12,30 TPS a las 12:00**. Los máximos por lugar son Talca 1,46, Concepción 0,73, cada cross-docking 1,17, nube 2,67 y portal 9,63 TPS.
+En régimen normal el máximo horario es **12,34 TPS a las 12:00**. Los máximos por lugar son Talca 1,46, Concepción 0,73, cada cross-docking 1,17, nube 2,71 y portal 9,63 TPS.
 En septiembre el máximo es **14,66 TPS a las 12:00**. Por lugar: Talca 2,68, Concepción 1,34, cada cross-docking 2,17, nube 5,03 y portal 9,63 TPS.
 La dimensión 2 toma el mayor total horario dentro de 05:30–07:00: las horas 05:00 y 06:00, suponiendo uniforme el tramo 05:30–06:00; resulta **6,94 TPS** peak y **3,76 TPS** normal. Los 2.852 DTE/día peak son el total de documentos tributarios electrónicos, no sólo guías; tratarlos todos como guías que deben emitirse antes de la salida constituye una cota conservadora. Para el portal, 2.600 ÷ 9 × 2 por SV-04 × 60 ÷ 3.600 = 9,63 solicitudes/s.
 La prueba BTT RT-09.06 aplica una sola vez 1,5 × 14,66 = **21,99 TPS**.
@@ -28,15 +28,15 @@ La tabla conserva las tasas por hora y por lugar. La fila máxima explica la dim
 | 06:00 | 0,74 / 1,33 | 0,37 / 0,67 | 0,00 / 0,00 | 0,68 / 1,26 | 0,00 / 0,00 | 1,79 / 3,26 |
 | 07:00 | 0,00 / 0,00 | 0,00 / 0,00 | 0,00 / 0,00 | 0,84 / 1,56 | 0,00 / 0,00 | 0,84 / 1,56 |
 | 08:00 | 0,00 / 0,00 | 0,00 / 0,00 | 0,00 / 0,00 | 0,84 / 1,57 | 0,00 / 0,00 | 0,84 / 1,57 |
-| 09:00 | 0,00 / 0,00 | 0,00 / 0,00 | 0,00 / 0,00 | 1,68 / 3,15 | 4,81 / 4,81 | 6,49 / 7,96 |
-| 10:00 | 0,00 / 0,00 | 0,00 / 0,00 | 0,00 / 0,00 | 1,68 / 3,15 | 4,81 / 4,81 | 6,49 / 7,97 |
-| 11:00 | 0,00 / 0,00 | 0,00 / 0,00 | 0,00 / 0,00 | 1,68 / 3,15 | 4,81 / 4,81 | 6,49 / 7,96 |
-| 12:00 | 0,00 / 0,00 | 0,00 / 0,00 | 0,00 / 0,00 | 2,67 / 5,03 | 9,63 / 9,63 | 12,30 / 14,66 |
-| 13:00 | 0,00 / 0,00 | 0,00 / 0,00 | 0,00 / 0,00 | 1,68 / 3,15 | 4,81 / 4,81 | 6,49 / 7,96 |
-| 14:00 | 0,00 / 0,00 | 0,00 / 0,00 | 0,00 / 0,00 | 1,68 / 3,15 | 4,81 / 4,81 | 6,49 / 7,96 |
-| 15:00 | 0,00 / 0,00 | 0,00 / 0,00 | 0,00 / 0,00 | 1,68 / 3,15 | 4,81 / 4,81 | 6,49 / 7,96 |
-| 16:00 | 0,00 / 0,00 | 0,00 / 0,00 | 0,00 / 0,00 | 1,68 / 3,15 | 4,81 / 4,81 | 6,49 / 7,96 |
-| 17:00 | 0,00 / 0,00 | 0,00 / 0,00 | 0,00 / 0,00 | 2,45 / 4,59 | 4,81 / 4,81 | 7,27 / 9,41 |
+| 09:00 | 0,00 / 0,00 | 0,00 / 0,00 | 0,00 / 0,00 | 1,70 / 3,15 | 4,81 / 4,81 | 6,51 / 7,96 |
+| 10:00 | 0,00 / 0,00 | 0,00 / 0,00 | 0,00 / 0,00 | 1,70 / 3,15 | 4,81 / 4,81 | 6,51 / 7,97 |
+| 11:00 | 0,00 / 0,00 | 0,00 / 0,00 | 0,00 / 0,00 | 1,70 / 3,15 | 4,81 / 4,81 | 6,51 / 7,96 |
+| 12:00 | 0,00 / 0,00 | 0,00 / 0,00 | 0,00 / 0,00 | 2,71 / 5,03 | 9,63 / 9,63 | 12,34 / 14,66 |
+| 13:00 | 0,00 / 0,00 | 0,00 / 0,00 | 0,00 / 0,00 | 1,70 / 3,15 | 4,81 / 4,81 | 6,51 / 7,96 |
+| 14:00 | 0,00 / 0,00 | 0,00 / 0,00 | 0,00 / 0,00 | 1,70 / 3,15 | 4,81 / 4,81 | 6,51 / 7,96 |
+| 15:00 | 0,00 / 0,00 | 0,00 / 0,00 | 0,00 / 0,00 | 1,70 / 3,15 | 4,81 / 4,81 | 6,51 / 7,96 |
+| 16:00 | 0,00 / 0,00 | 0,00 / 0,00 | 0,00 / 0,00 | 1,70 / 3,15 | 4,81 / 4,81 | 6,51 / 7,96 |
+| 17:00 | 0,00 / 0,00 | 0,00 / 0,00 | 0,00 / 0,00 | 2,47 / 4,59 | 4,81 / 4,81 | 7,29 / 9,41 |
 | 18:00 | 0,00 / 0,00 | 0,00 / 0,00 | 0,00 / 0,00 | 2,40 / 4,45 | 0,00 / 0,00 | 2,40 / 4,45 |
 | 19:00 | 0,00 / 0,00 | 0,00 / 0,00 | 0,00 / 0,00 | 1,46 / 2,71 | 0,00 / 0,00 | 1,46 / 2,71 |
 | 20:00 | 0,00 / 0,00 | 0,00 / 0,00 | 0,00 / 0,00 | 0,68 / 1,26 | 0,00 / 0,00 | 0,68 / 1,26 |
@@ -44,7 +44,7 @@ La tabla conserva las tasas por hora y por lugar. La fila máxima explica la dim
 | 22:00 | 0,54 / 1,01 | 0,27 / 0,50 | 0,00 / 0,00 | 0,74 / 1,37 | 0,00 / 0,00 | 1,55 / 2,88 |
 | 23:00 | 0,54 / 1,01 | 0,27 / 0,50 | 0,00 / 0,00 | 0,74 / 1,37 | 0,00 / 0,00 | 1,55 / 2,88 |
 
-El máximo normal ocurre a las 12:00 y el de septiembre a las 12:00; el portal aporta 9,63 y 9,63 TPS en esa hora, mientras la nube aporta 2,67 y 5,03. El promedio diario oculta la coincidencia de preventa, reparto y sesiones del portal.
+El máximo normal ocurre a las 12:00 y el de septiembre a las 12:00; el portal aporta 9,63 y 9,63 TPS en esa hora, mientras la nube aporta 2,71 y 5,03. El promedio diario oculta la coincidencia de preventa, reparto y sesiones del portal.
 
 ## Dimensiones 4–6: personas, concurrencia y dispositivos
 
@@ -55,35 +55,36 @@ La dimensión 6 es 62 preventistas + 96 equipos de reparto = **158 dispositivos 
 
 El almacenamiento transaccional parte de 1.300.000 eventos (260.000 líneas × 5), 520.000 operaciones (260.000 líneas × 2), 155.000 operaciones (31.000 pedidos × 5) y 279.050 movimientos (260.000 líneas + 14.500 pallets + 3.400 conteos + 1.150 recepciones). La fórmula es ((1.300.000 + 520.000 + 155.000) × 1 KB + 279.050 × 0,5 KB) × 2 × 12 = **50,75 GB/año**; seis años acumulan **304,49 GB** como cota de retención.
 La evidencia es 30 KB + 200 KB × (1 + 900 ÷ 31.000) = **235,81 KB por entrega**; genera **87,72 GB/año** y **13,58 GB en el mes peak**.
-Temperatura: 6.048 lecturas/día de las cámaras + 4.536 de los termógrafos de camión = 10.584 mensajes/día; con 145 bytes por lectura son 0,56 GB/año crudos y 0,14 GB/año almacenados, 2,80 GB crudos en 5 años. Posición: 22.075.200 eventos/año, 3,20 GB crudos y 0,80 GB almacenados en 12 meses; cada evento usa 145 bytes. La copia almacenada usa factor 0,25.
+Temperatura: 6.048 lecturas/día de las cámaras + 4.872 de los termógrafos de camión = 10.920 mensajes/día; con 145 bytes por lectura son 0,58 GB/año crudos y 0,14 GB/año almacenados, 2,89 GB crudos en 5 años. Posición: 22.075.200 eventos/año, 3,20 GB crudos y 0,80 GB almacenados en 12 meses; cada evento usa 145 bytes. La copia almacenada usa factor 0,25.
 La migración suma maestros 34.180 KB, ventas y pedidos 10.476.000 KB, inventario y movimientos 3.348.600 KB, recepciones con lote 1.380.000 KB y cuentas por cobrar 816.000 KB. Con factor 2: **32,11 GB**, sensibilidad **30,73–33,49 GB**.
 
 ## Dimensiones 11–12: integraciones y enlaces
 
-El apartado 4.1 contiene 15 integraciones. La dimensión 11 suma **178.661 mensajes/día normal** y **260.155 peak**; portal y llamadas internas a la API quedan fuera. El EDI actual es cero; el escenario 2029 usa la cota de 11 % de pedidos.
+El apartado 4.1 contiene 15 integraciones. La dimensión 11 suma **230.252 mensajes/día normal** y **353.333 peak**; portal y llamadas internas a la API quedan fuera. El EDI actual es cero; desde enero de 2029 opera todos los días y usa la cota de 11 % de pedidos en régimen y en peak. La pasarela de pago se acota con un pago electrónico por entrega y dos mensajes por pago.
 | Integración | Mensajes/día normal | Mensajes/día peak | Origen del volumen |
 |---|---:|---:|---|
 | INT-01 Pedido preventa y consulta | 1.400 | 2.600 | 1.400 × 1; 2.600 × 1; SV-01 |
 | INT-02 Entrega, POD y cobro | 7.000 | 13.000 | 1.400 × 5; 2.600 × 5 |
 | INT-03 Eventos de bodega a nube | 58.710 | 109.032 | 260.000 ÷ 22,14 × 5; peak × 1,857 |
 | INT-04 Detalle cross-docking a la nube | 5.600 | 10.400 | 1.400 × 4; cota de una plataforma |
-| INT-05 Eventos de temperatura | 10.584 | 10.584 | 6.048 cámaras + 4.536 termógrafos |
+| INT-03/04 Coordinación de reserva | 46.968 | 87.228 | 260.000 ÷ 22,14 × 4; peak: 21.807 líneas × 4 |
+| INT-05 Eventos de temperatura | 10.920 | 10.920 | 6.048 cámaras + 4.872 termógrafos |
 | INT-06 ERP 2017 | 2.025 | 3.762 | 1.400 + 1.150 ÷ 22,14 + 900 ÷ 22,14 + 11.800 ÷ 22,14; peak × 1,857 |
 | INT-07 DTE/SII | 3.071 | 5.703 | 34.000 ÷ 22,14 × 2; peak × 1,857 |
-| INT-08 Cadenas modernas EDI | 0 | 1.144 | 0 actual; 2.600 × 11 % × 4 |
-| INT-09 Pasarela de pago | 533 | 990 | 11.800 ÷ 22,14; peak × 1,857 |
+| INT-08 Cadenas modernas EDI | 616 | 1.144 | Escenario 2029 (hoy 0): 1.400 × 11 % × 4; 2.600 × 11 % × 4 |
+| INT-09 Pasarela de pago | 2.800 | 5.200 | Cota: un pago electrónico por entrega × 2 mensajes; 1.400 × 2; 2.600 × 2 |
 | INT-10 Mapas y geocodificación | 96 | 96 | 96 camiones × 1 |
 | INT-11 Avisos al cliente | 2.800 | 5.200 | 1.400 × 2; 2.600 × 2 |
 | INT-12 Cambios de datos a réplica | 12.602 | 23.404 | 279.050 ÷ 22,14; peak × 1,857 |
-| INT-13 Identidad a sitio | 760 | 760 | 380 dispositivos × 2 |
-| INT-14 Métricas y trazas | 13.000 | 13.000 | 13 nodos × 1.000 |
+| INT-13 Identidad a sitio | 764 | 764 | 382 dispositivos × 2 |
+| INT-14 Métricas y trazas | 14.400 | 14.400 | 13 nodos activos × 1.000 + 7 en espera × 200 |
 | INT-15 Telemetría existente | 60.480 | 60.480 | 42 × 12 × 120; SV-07 |
-| **Total** | **178.661** | **260.155** | **15 integraciones; portal y API interna fuera** |
+| **Total** | **230.252** | **353.333** | **15 integraciones; portal y API interna fuera** |
 
 El drenaje contiene cambios con WAL, vaciado del broker, telemetría, observabilidad e incremental de respaldo acumulados durante 24 horas; no incluye tráfico de oficina. La prioridad continua suma WAL, broker, telemetría crítica, guías, SII e identidad; cada mensaje de guía, respuesta SII e identidad usa la cota de 1 KB. El peor caso suma la hora cargada con oficina y la sincronización de la flota cuando corresponde. D-06 se calcula con 2 Mbps de subida mínima supuesta, un parámetro conservador de diseño que se confirma en la instalación.
 - Talca: régimen cargado 3,29 Mbps; prioridad continua 0,014 Mbps; drenaje 1,87 Mbps; peor caso 5,16 Mbps; D-03 25,80 % y D-04 para drenaje 37,43 % y D-06 para drenaje 93,59 %. Datos acumulables: 1,68 GB/día.
-- Concepción: régimen cargado 0,67 Mbps; prioridad continua 0,007 Mbps; drenaje 1,21 Mbps; peor caso 1,88 Mbps; D-03 18,82 % y D-04 para drenaje 40,45 % y D-06 para drenaje 60,68 %. Datos acumulables: 1,09 GB/día.
-- Cada cross-docking: régimen cargado 0,05 Mbps; prioridad continua 0,002 Mbps; drenaje 0,30 Mbps; peor caso 0,35 Mbps; D-06 17,41 % y D-04 para drenaje 14,92 %. Datos acumulables: 0,27 GB/día.
+- Concepción: régimen cargado 0,71 Mbps; prioridad continua 0,007 Mbps; drenaje 1,44 Mbps; peor caso 2,14 Mbps; D-03 21,41 % y D-04 para drenaje 47,86 % y D-06 para drenaje 71,79 %. Datos acumulables: 1,29 GB/día.
+- Cada cross-docking: régimen cargado 0,06 Mbps; prioridad continua 0,002 Mbps; drenaje 0,35 Mbps; peor caso 0,41 Mbps; D-06 20,65 % y D-04 para drenaje 17,70 %. Datos acumulables: 0,32 GB/día.
 El retorno se reparte según SV-03: 64 camiones en la hora punta total de 17:00–20:00 requieren 0,93 Mbps en Talca y 0,47 Mbps en Concepción para Wi-Fi y enlace; la flota completa requiere 1,40 Mbps en esa hora y 0,70 Mbps agregados en las tres horas. Cada dispositivo queda sincronizado en diez minutos.
 
 ## Dimensiones 13–14: terreno y sincronización
@@ -116,7 +117,7 @@ Las VMs de Talca suman 14 vCPU, 23 GB RAM, 210 GB disco lógico, 136 IOPS; con h
 
 ## Capacidad en nube
 
-El perfil de API atiende aplicaciones y portales N-01 a N-03. Una tarea Fargate entrega 0,70 ÷ 0,05 = **14,00 solicitudes/s**. Régimen: 12,30 solicitudes/s y 2 tareas; peak: 14,66 y 2; RT-09.06: 21,99 y 2; cota extrema: 48,37 y 4; sensibilidad de 120 solicitudes por sesión: 21,93 y 2 en régimen, 91,70 y 7 en cota. El techo es ocho tareas.
+El perfil de API atiende aplicaciones y portales N-01 a N-03. Una tarea Fargate entrega 0,70 ÷ 0,05 = **14,00 solicitudes/s**. Régimen: 12,34 solicitudes/s y 2 tareas; peak: 14,66 y 2; RT-09.06: 21,99 y 2; cota extrema: 48,37 y 4; sensibilidad de 120 solicitudes por sesión: 21,97 y 2 en régimen, 91,70 y 7 en cota. El techo es ocho tareas.
 
 ## Ventana dominical
 
@@ -130,7 +131,7 @@ Año 3 usa 36.000 pedidos/mes (36.000 ÷ 31.000 = 1,16×), 305.000 líneas/mes (
 La tabla de capacidad del año 3 se obtiene con una base por métrica: WMS Talca 2,68 × (305.000 ÷ 260.000) = 3,15 TPS; cross-docking 2,17 TPS actual, 2,58 en año 3 y 6,50 a 3×; nube más portal 14,66 × (36.000 ÷ 31.000) = 17,03 solicitudes/s; evidencia 87,72 × (36.000 ÷ 31.000) = 101,87 GB/año; Talca usa 5,20 Mbps en el peor caso y 5,64 Mbps a 3×; bodega Talca usa 151 terminales; mesa conserva 2.258 contactos/mes. La columna 3× cubre carga técnica, no aumenta el parque de personas.
 El umbral de SV-04, expresado como múltiplo de la tasa peak antes de saturar la capacidad calculada, es Talca 333,73×, Concepción 166,87×, cada cross-docking 12,92× y nube más portal 7,64×. La cota extrema combinada requiere 4 tareas; la sensibilidad exige 7 y se mantiene bajo el techo de ocho.
 Para los 2.852 DTE peak, el tiempo máximo por documento es 27.000 ÷ 2.852 = 9,47 s si se reparte en toda la preparación; 4,42 s si se concentra al final; y 1,89 s si se conserva la práctica actual. El diseño emite el documento cuando confirma la carga, durante la noche. Se detectan documentos pendientes frente a la hora de salida de cada camión; se resuelve priorizando la cola y reconciliando el folio, sin crear otro emisor: el ERP sigue siendo el único emisor y el documento acompaña el traslado.
-Con siete agentes, el escenario de mesa tolera aproximadamente 2.391 contactos mensuales antes de requerir una posición adicional. Se observan percentiles 95, colas, errores, IOPS, Wi-Fi, ERP y drenaje en RT-09.06 y en la operación.
+Con la dotación de 7 agentes en la hora cargada y 2 en las demás, la mesa tolera 2.283 contactos mensuales antes de requerir una posición adicional. Se observan percentiles 95, colas, errores, IOPS, Wi-Fi, ERP y drenaje en RT-09.06 y en la operación.
 
 ## Fuentes de validación
 

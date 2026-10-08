@@ -6,6 +6,35 @@
 
 El registro reúne las decisiones de arquitectura lógica y física conforme a RT-02.04 (Bases Técnicas Transversales, cap. 2, p. 7). Cada ficha identifica la alternativa descartada, el criterio de selección y la evidencia necesaria para verificar su realización. Los RT de las fichas remiten a las Bases Técnicas Transversales (caps. 2--16, pp. 6--29), salvo RT-10.05 y RT-16.14, precisados por el caso (Bases Técnicas del caso, cap.~15, p.~27).
 
+La Tabla~\ref{tab:adr-estado} fecha cada decisión, como exige RT-02.04. La fecha es la de registro en la versión de la oferta. Todas las decisiones las propone Bastián Trejo, Arquitecto de Solución, y las aprueban el Comité de Arquitectura y la Contraparte Técnica en el hito H2 del Formulario E-25. Ninguna se presenta como aprobada por el CLIENTE. Cada cambio posterior abre una nueva versión de la ficha, con su fecha, su estado (propuesta, aprobada o reemplazada) y el acta del Comité de Arquitectura que la resolvió.
+
+\begin{tablalafrox}{Fecha y estado de las decisiones de arquitectura}{tab:adr-estado}{F{0.12} F{0.42} F{0.22} Y}{\cab{ADR} & \cab{Decisión} & \cab{Fecha de registro} & \cab{Estado}}
+ADR-01 & Estilo arquitectónico & 5 de octubre de 2026 & Propuesta en la oferta \\
+ADR-02 & Conectividad WAN (tres caminos) & 5 de octubre de 2026 & Propuesta en la oferta \\
+ADR-03 & Modelo híbrido y topología de sitios & 5 de octubre de 2026 & Propuesta en la oferta \\
+ADR-04 & Persistencia políglota & 5 de octubre de 2026 & Propuesta en la oferta \\
+ADR-05 & Mensajería asíncrona & 5 de octubre de 2026 & Propuesta en la oferta \\
+ADR-06 & Identidad híbrida & 5 de octubre de 2026 & Propuesta en la oferta \\
+ADR-07 & Movilidad de terreno & 5 de octubre de 2026 & Propuesta en la oferta \\
+ADR-08 & Destino del WMS 2013 & 5 de octubre de 2026 & Propuesta en la oferta \\
+ADR-09 & Estrategia de recuperación ante desastres & 5 de octubre de 2026 & Propuesta en la oferta \\
+ADR-10 & Plataforma on-premise: virtualización y almacenamiento & 5 de octubre de 2026 & Propuesta en la oferta \\
+ADR-11 & Integración B2B/EDI & 5 de octubre de 2026 & Propuesta en la oferta \\
+ADR-12 & Capacidad y peak & 5 de octubre de 2026 & Propuesta en la oferta \\
+ADR-13 & Puerta de enlace de servicios & 5 de octubre de 2026 & Propuesta en la oferta \\
+ADR-14 & Observabilidad & 5 de octubre de 2026 & Propuesta en la oferta \\
+ADR-15 & Gestión de secretos & 5 de octubre de 2026 & Propuesta en la oferta \\
+ADR-16 & Acceso de personas internas y remotas & 5 de octubre de 2026 & Propuesta en la oferta \\
+ADR-17 & Emisión de guías y liberación documental & 5 de octubre de 2026 & Propuesta en la oferta \\
+ADR-18 & Protección de datos fuera del sitio & 5 de octubre de 2026 & Propuesta en la oferta \\
+ADR-19 & Residencia de datos y regiones & 5 de octubre de 2026 & Propuesta en la oferta \\
+ADR-20 & Frontend web & 5 de octubre de 2026 & Propuesta en la oferta \\
+ADR-21 & Infraestructura como código y cadena de entrega & 5 de octubre de 2026 & Propuesta en la oferta \\
+ADR-22 & Cadena de frío en el borde & 5 de octubre de 2026 & Propuesta en la oferta \\
+\end{tablalafrox}
+
+{\footnotesize Fuente: elaboración propia a partir de RT-02.04 (Bases Técnicas Transversales, cap.~2, p.~7) y del Formulario E-25 de las Bases Administrativas.\par}
+
 \subsection*{ADR-01. Estilo arquitectónico}
 \label{sub:adr-01}
 \textbf{Decisión adoptada.} Laravel 13/PHP 8.5 organiza M1--M12 en un monolito modular con perfiles de ejecución separados.
@@ -134,17 +163,17 @@ El registro reúne las decisiones de arquitectura lógica y física conforme a R
 
 \subsection*{ADR-10. Plataforma on-premise: virtualización y almacenamiento}
 \label{sub:adr-10}
-\textbf{Decisión adoptada.} Talca usa tres nodos Proxmox de 16 núcleos y 64 GB cada uno, arranque M.2 en RAID 1, dos NVMe Ceph por nodo sin RAID y doble fuente; Ceph usa réplica \texttt{size}=3, \texttt{min\_size}=2 y tres monitores. El NAS tiene doble fuente, RAID 6 y WORM.
+\textbf{Decisión adoptada.} Talca usa tres nodos Proxmox de 16 núcleos y 64 GB cada uno, arranque M.2 en RAID 1, dos NVMe Ceph por nodo sin RAID y doble fuente; Ceph usa réplica \texttt{size}=3, \texttt{min\_size}=2 y tres monitores. El NAS tiene doble fuente, RAID 6 y WORM. Concepción y cada cross-docking usan un par de equipos idénticos, uno activo y otro en espera, con réplica sincrónica de PostgreSQL.
 
-\textbf{Alternativas evaluadas.} Ceph sobre RAID 10 duplica protección y reduce capacidad; un almacenamiento sin quórum pierde tolerancia a nodo.
+\textbf{Alternativas evaluadas.} Ceph sobre RAID 10 duplica protección y reduce capacidad; un almacenamiento sin quórum pierde tolerancia a nodo. Un equipo único por sitio, aun con RAID y doble fuente, no tolera la falla del equipo, y un clúster Proxmox de dos nodos exige un tercer voto de quórum que esos sitios no tienen.
 
 \textbf{Criterio de selección.} Capacidad y quórum N+1 con demanda del Anexo 4-W.
 
-\textbf{Consecuencias.} Se reservan recursos de OSD y monitor; seis OSD ofrecen cerca de 1,92 TB útiles y unos 1,5 TB al 80\% de llenado. Frente a RT-03.14, el nivel declarado es Ceph sin RAID por hardware con réplica de tres copias, que tolera la falla de un disco y de un nodo. Concepción usa RAID 10 y doble fuente. E-01 usa dos SSD en RAID 1 por software, que tolera la falla de un disco con holgura para los 50 GB requeridos; RAID 5 o RAID 10 exigirían tres o cuatro discos que el mini-PC industrial no aloja. E-01 y sus switches tienen alimentación redundante.
+\textbf{Consecuencias.} Se reservan recursos de OSD y monitor; seis OSD ofrecen cerca de 1,92 TB útiles y unos 1,5 TB al 80\% de llenado. Frente a RT-03.14, el nivel declarado es Ceph sin RAID por hardware con réplica de tres copias, que tolera la falla de un disco y de un nodo. Cada servidor de Concepción usa RAID 10 y doble fuente. Cada E-01 usa dos SSD en RAID 1 por software, que tolera la falla de un disco con holgura para los 50 GB requeridos; RAID 5 o RAID 10 exigirían tres o cuatro discos que el mini-PC industrial no aloja. E-01 y sus switches tienen alimentación redundante. La falla del equipo activo de Concepción o de un cross-docking la cubre su par en espera, que toma el control en menos de un minuto.
 
-\textbf{Evidencia exigida.} Prueba de pérdida de nodo, reconstrucción, latencia y carga de cientos de IOPS a 3$\times$ frente a decenas de miles de IOPS de NVMe.
+\textbf{Evidencia exigida.} Prueba de pérdida de nodo, reconstrucción, latencia y carga de cientos de IOPS a 3$\times$ frente a decenas de miles de IOPS de NVMe. Apagado del equipo activo de Concepción y de un cross-docking durante su ventana, sin pérdida de transacciones confirmadas.
 
-\textbf{Requisitos que la sustentan.} RT-07.04, RT-08.03, RT-08.04; Anexo 4-W.
+\textbf{Requisitos que la sustentan.} RT-03.14, RT-07.04, RT-08.03, RT-08.04; Anexo 4-W.
 
 \subsection*{ADR-11. Integración B2B/EDI}
 \label{sub:adr-11}
@@ -162,9 +191,9 @@ El registro reúne las decisiones de arquitectura lógica y física conforme a R
 
 \subsection*{ADR-12. Capacidad y peak}
 \label{sub:adr-12}
-\textbf{Decisión adoptada.} Aurora mantiene capacidad fija dimensionada para 3$\times$, sin escalado automático; Fargate escala la API de 2 a 4 tareas en los casos base y a 7 en la sensibilidad de 91,70 solicitudes/s, bajo el techo de 8. El consumidor y los trabajos de notificaciones y EDI escalan de 2 a 4 tareas por perfil.
+\textbf{Decisión adoptada.} Aurora mantiene capacidad fija, sin escalado automático, dimensionada para la cota extrema de la API más la cuota del canal tradicional, 111,70 solicitudes/s. Fargate escala la API de 2 a 4 tareas en los casos base y a 7 en la sensibilidad de 91,70 solicitudes/s, bajo el techo de 8, que también cubre esa cuota. El consumidor y los trabajos de notificaciones y EDI escalan de 2 a 4 tareas por perfil.
 
-\textbf{Alternativas evaluadas.} Cambiar Aurora de large a xlarge en septiembre introduce intervención en congelamiento; un proceso único comparte saturación entre perfiles.
+\textbf{Alternativas evaluadas.} Cambiar la clase de Aurora en septiembre introduce intervención en congelamiento; un proceso único comparte saturación entre perfiles.
 
 \textbf{Criterio de selección.} Capacidad probada antes del peak y mamparos de concurrencia.
 

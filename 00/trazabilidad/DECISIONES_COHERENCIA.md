@@ -107,3 +107,12 @@ Suma ≈ 1 h 45 min más la decisión, dentro de RTO 4 h. No hay conmutación au
 - LAFROX-Subdocumento4-Anexos.pdf: anexos 4.1-A a 4.1-V (4.1-O = registro ADR) y Anexo 4.2-A "Memoria de cálculo del dimensionamiento" (antes "Anexo 4.B"; secciones 4.2-A.1…).
 - LAFROX-Formulario-T-11.pdf: formulario propio.
 - El cuerpo cita anexos y formulario por nombre, sin `\ref` entre archivos.
+
+## D41. RT-03.14: equipos on-premise críticos en par (2026-10-07)
+
+- Decisión del usuario: Opción A. Concepción y cada cross-docking pasan de un equipo único a un par idéntico, uno activo y otro en espera. Talca conserva su clúster N+1.
+- Concepción: dos HPE DL20 con Proxmox VE, sin clúster. El activo ejecuta VM-C01 a VM-C04 y el otro sus copias. Cross-docking: dos E-01 por plataforma (T-11: 6 + 1 de reserva).
+- Mecanismo común: PostgreSQL con réplica sincrónica al equipo en espera; keepalived (VRRP) mueve la dirección virtual del sitio en menos de un minuto; el de espera se promueve solo si pierde al activo por sus dos interfaces; al tomar el control republica el outbox de 24 h y la nube deduplica por UUID; si cae el de espera, la réplica pasa a asíncrona con alerta.
+- El equipo en espera no atiende transacciones: WMS y shipper detenidos. Su observabilidad se modela en 20 % de un nodo activo (0,05 GB y 200 eventos por día). INT-14 = 14.400; totales 230.252 / 353.333; drenaje Concepción 1,44 Mbps y cross-docking 0,35 Mbps.
+- Energía: UPS de Concepción de 3 a 5 kVA (3,42 kVA, 68 %); cross-docking 0,42 kVA (57 % de 0,75 kVA). EDR: 11 equipos físicos y 14 VM.
+- Archivos: 4.1 (capas), 4.2.0, 02_a (incl. figura TikZ), 02_c, 04_c, 11_j (alta disponibilidad y pruebas), 12_k, Anexos 4-G, 4-I, 4-O (ADR-10), 4-W, T-11 y `calculo.py`.

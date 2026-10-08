@@ -120,6 +120,7 @@ REQ_MESA_ABANDONO = 0.05         # BTT RT-21.06
 # ========================= PARÁMETROS DE DISEÑO ==========================
 PICKING_TX_PER_LINE = 2
 TRACE_EVENTS_PER_LINE = 5
+RESERVATION_MESSAGES_PER_LINE = 4   # retener y liberar, cada uno con solicitud y resultado (INT-03/04)
 DELIVERY_TX_PER_DELIVERY = 5
 DISPATCH_TX_PER_DELIVERY = 2
 DISPATCH_TX_PER_TRUCK = 2
@@ -127,6 +128,7 @@ CROSSDOCK_TX_PER_DELIVERY = 4
 PREVENTA_TX_PER_VISIT = 2         # consulta de stock y crédito
 PREVENTA_TX_PER_LINE = 1
 EDI_MESSAGES_PER_ORDER = 4
+PAYMENT_MESSAGES_PER_DELIVERY = 2   # cota: un pago electrónico por entrega, solicitud y respuesta
 PORTAL_REQUESTS_PER_SESSION = 60
 PORTAL_SESSION_MINUTES = 10
 PORTAL_SENSITIVITY_REQUESTS = 120
@@ -145,6 +147,10 @@ CPU_UTILIZATION = 0.70
 CPU_MS = {"app": 50.0, "db": 20.0, "broker": 10.0, "acl": 20.0, "identity": 10.0, "obs": 5.0}
 OBS_MB_PER_NODE_DAY = 250.0
 OBS_NODES = {"Talca": 6, "Concepción": 4, "Cada cross-docking": 1}
+# RT-03.14: Concepción y cada cross-docking tienen un equipo en espera. No atiende
+# transacciones: sin trazas, con métricas y registros estimados en 20 % de un nodo activo.
+OBS_STANDBY_NODES = {"Talca": 0, "Concepción": 4, "Cada cross-docking": 1}
+OBS_STANDBY_FACTOR = 0.20
 CAMERA_POINTS = 21                 # diseño B-01: 15 en Talca y 6 en Concepción (S-37)
 CAMERA_POINTS_SITE = {"Talca": 15, "Concepción": 6}
 TEMP_MINUTES = 5
@@ -153,7 +159,7 @@ POSITION_RECORD_BYTES = 145      # bytes por evento de posición
 TEMP_COMPRESSION = 0.25
 POSITION_SECONDS = 30
 ROUTE_HOURS = 12
-THERMOGRAPH_ROUTE_HOURS = 13.5   # Caso, Anexo B.1: 05:30–19:00
+THERMOGRAPH_ROUTE_HOURS = 14.5   # Caso, Anexo B.1: despacho desde 05:30 y regreso de la flota hasta 20:00
 WAL_FACTOR = 3.0
 BROKER_FACTOR_OF_CHANGES = 0.50
 OFFICE_MB_PER_USER_H = 5.0
@@ -317,7 +323,7 @@ def main() -> None:
     dte_day = DTE_MES / dispatch_days
     return_rate = DEVOLUCIONES_MES / PEDIDOS_MES
 
-    normal_rows = hourly_profile(1.0, False)
+    normal_rows = hourly_profile(1.0, True)   # el EDI opera todos los días desde enero de 2029
     peak_rows = hourly_profile(factor_peak, True)
     y3_lines_factor = Y3_LINEAS_MES / LINEAS_MES
     y3_orders_factor = Y3_ENTREGAS_PEAK_DIA / ENTREGAS_PEAK_DIA
@@ -370,7 +376,7 @@ def main() -> None:
     preventa_devices = ceil_int(PREVENTISTAS * 1.10)
     truck_devices = ceil_int(CAMIONES_TOTAL * 1.10)
     cross_scanners = S35_CROSS_USERS_PER_DOCK * CROSS_DOCKS
-    cross_park = with_reserve(cross_scanners)
+    cross_park = cross_scanners + CROSS_DOCKS   # una unidad de reserva en cada plataforma, como en el T-11
     equipment_park = {"terminales de bodega": sum(warehouse_terminals.values()),
                       "terminales de preventa": preventa_devices,
                       "terminales de reparto": truck_devices,
@@ -420,21 +426,25 @@ def main() -> None:
     historical_low_gb = gb_from_kb((historical_raw_kb - historical_trace_kb + historical_trace_kb * 0.5) * INDEX_AUDIT_FACTOR)
     historical_high_gb = gb_from_kb((historical_raw_kb - historical_trace_kb + historical_trace_kb * 1.5) * INDEX_AUDIT_FACTOR)
 
+    obs_active_nodes = OBS_NODES["Talca"] + OBS_NODES["Concepción"] + CROSS_DOCKS * OBS_NODES["Cada cross-docking"]
+    obs_standby_nodes = OBS_STANDBY_NODES["Concepción"] + CROSS_DOCKS * OBS_STANDBY_NODES["Cada cross-docking"]
+    obs_events_day = (obs_active_nodes + obs_standby_nodes * OBS_STANDBY_FACTOR) * OBS_EVENTS_PER_NODE_DAY
     integration_rows = [
         ("INT-01", "Pedido preventa y consulta", orders_day, ENTREGAS_PEAK_DIA, "1.400 × 1; 2.600 × 1; SV-01"),
         ("INT-02", "Entrega, POD y cobro", ENTREGAS_NORMAL_DIA * DELIVERY_TX_PER_DELIVERY, ENTREGAS_PEAK_DIA * DELIVERY_TX_PER_DELIVERY, "1.400 × 5; 2.600 × 5"),
         ("INT-03", "Eventos de bodega a nube", lines_day * TRACE_EVENTS_PER_LINE, lines_day * factor_peak * TRACE_EVENTS_PER_LINE, "260.000 ÷ 22,14 × 5; peak × 1,857"),
         ("INT-04", "Detalle cross-docking a la nube", ENTREGAS_NORMAL_DIA * CROSSDOCK_TX_PER_DELIVERY, ENTREGAS_PEAK_DIA * CROSSDOCK_TX_PER_DELIVERY, "1.400 × 4; cota de una plataforma"),
-        ("INT-05", "Eventos de temperatura", temp_messages_day, temp_messages_day, "6.048 cámaras + 4.536 termógrafos"),
+        ("INT-03/04", "Coordinación de reserva", round(lines_day) * RESERVATION_MESSAGES_PER_LINE, round(round(lines_day) * factor_peak) * RESERVATION_MESSAGES_PER_LINE, "260.000 ÷ 22,14 × 4; peak: 21.807 líneas × 4"),
+        ("INT-05", "Eventos de temperatura", temp_messages_day, temp_messages_day, "6.048 cámaras + 4.872 termógrafos"),
         ("INT-06", "ERP 2017", orders_day + RECEPCIONES_MES / dispatch_days + DEVOLUCIONES_MES / dispatch_days + COBROS_EFECTIVO_MES / dispatch_days, (orders_day + RECEPCIONES_MES / dispatch_days + DEVOLUCIONES_MES / dispatch_days + COBROS_EFECTIVO_MES / dispatch_days) * factor_peak, "1.400 + 1.150 ÷ 22,14 + 900 ÷ 22,14 + 11.800 ÷ 22,14; peak × 1,857"),
         ("INT-07", "DTE/SII", dte_day * 2, dte_peak_day * 2, "34.000 ÷ 22,14 × 2; peak × 1,857"),
-        ("INT-08", "Cadenas modernas EDI", 0.0, orders_day * factor_peak * S52_SHARE_CHAIN_ORDERS * EDI_MESSAGES_PER_ORDER, "0 actual; 2.600 × 11 % × 4"),
-        ("INT-09", "Pasarela de pago", COBROS_EFECTIVO_MES / dispatch_days, COBROS_EFECTIVO_MES / dispatch_days * factor_peak, "11.800 ÷ 22,14; peak × 1,857"),
+        ("INT-08", "Cadenas modernas EDI", orders_day * S52_SHARE_CHAIN_ORDERS * EDI_MESSAGES_PER_ORDER, orders_day * factor_peak * S52_SHARE_CHAIN_ORDERS * EDI_MESSAGES_PER_ORDER, "Escenario 2029 (hoy 0): 1.400 × 11 % × 4; 2.600 × 11 % × 4"),
+        ("INT-09", "Pasarela de pago", ENTREGAS_NORMAL_DIA * PAYMENT_MESSAGES_PER_DELIVERY, ENTREGAS_PEAK_DIA * PAYMENT_MESSAGES_PER_DELIVERY, "Cota: un pago electrónico por entrega × 2 mensajes; 1.400 × 2; 2.600 × 2"),
         ("INT-10", "Mapas y geocodificación", CAMIONES_TOTAL, CAMIONES_TOTAL, "96 camiones × 1"),
         ("INT-11", "Avisos al cliente", ENTREGAS_NORMAL_DIA * 2, ENTREGAS_PEAK_DIA * 2, "1.400 × 2; 2.600 × 2"),
         ("INT-12", "Cambios de datos a réplica", movement_records_month / dispatch_days, movement_records_month / dispatch_days * factor_peak, "279.050 ÷ 22,14; peak × 1,857"),
-        ("INT-13", "Identidad a sitio", (sum(warehouse_terminals.values()) + preventa_devices + truck_devices + cross_park) * IDENTITY_MESSAGES_PER_DEVICE_DAY, (sum(warehouse_terminals.values()) + preventa_devices + truck_devices + cross_park) * IDENTITY_MESSAGES_PER_DEVICE_DAY, "380 dispositivos × 2"),
-        ("INT-14", "Métricas y trazas", (OBS_NODES["Talca"] + OBS_NODES["Concepción"] + CROSS_DOCKS * OBS_NODES["Cada cross-docking"]) * OBS_EVENTS_PER_NODE_DAY, (OBS_NODES["Talca"] + OBS_NODES["Concepción"] + CROSS_DOCKS * OBS_NODES["Cada cross-docking"]) * OBS_EVENTS_PER_NODE_DAY, "13 nodos × 1.000"),
+        ("INT-13", "Identidad a sitio", (sum(warehouse_terminals.values()) + preventa_devices + truck_devices + cross_park) * IDENTITY_MESSAGES_PER_DEVICE_DAY, (sum(warehouse_terminals.values()) + preventa_devices + truck_devices + cross_park) * IDENTITY_MESSAGES_PER_DEVICE_DAY, f"{fmt_int(sum(warehouse_terminals.values()) + preventa_devices + truck_devices + cross_park)} dispositivos × 2"),
+        ("INT-14", "Métricas y trazas", obs_events_day, obs_events_day, f"{obs_active_nodes} nodos activos × 1.000 + {obs_standby_nodes} en espera × {fmt_int(OBS_EVENTS_PER_NODE_DAY * OBS_STANDBY_FACTOR)}"),
         ("INT-15", "Telemetría existente", CAMIONES_PROPIOS * S55_OWN_TELEMETRY_ACCESS * (3600 / POSITION_SECONDS) * ROUTE_HOURS, CAMIONES_PROPIOS * S55_OWN_TELEMETRY_ACCESS * (3600 / POSITION_SECONDS) * ROUTE_HOURS, "42 × 12 × 120; SV-07")]
     # El redondeo se aplica por integración y luego se suma, para que la tabla
     # sea auditable y el total sea exactamente la suma de sus filas.
@@ -523,7 +533,7 @@ def main() -> None:
     min_node_3x = {"vcpu": ceil_int(talca_cluster_required_3x["vcpu"] / 2), "ram_gb": ceil_int(talca_cluster_required_3x["ram_gb"] / 2), "disk_gb": ceil_int(talca_cluster_required_3x["disk_gb"])}
 
     temp_gb_day = temp_messages_day * TEMP_RECORD_BYTES / 1_000_000_000
-    obs_gb_day = {site: OBS_NODES[site] * OBS_MB_PER_NODE_DAY / 1000 for site in OBS_NODES}
+    obs_gb_day = {site: (OBS_NODES[site] + OBS_STANDBY_NODES[site] * OBS_STANDBY_FACTOR) * OBS_MB_PER_NODE_DAY / 1000 for site in OBS_NODES}
     links = {"Talca": (20.0, 5.0, T11_SATELLITE_MBPS, "D-03", "D-04", "D-06"), "Concepción": (10.0, 3.0, T11_SATELLITE_MBPS, "D-03", "D-04", "D-06"), "Cada cross-docking": (T11_SATELLITE_MBPS, 2.0, None, "D-06", "D-04", None)}
     # Los equipos de reparto se actualizan donde estaciona su camión, según SV-03; los de preventa, por MDM sobre la red móvil.
     truck_devices_talca = ceil_int(truck_devices * S49_TALCA_SHARE)
@@ -649,7 +659,7 @@ def main() -> None:
         daily = contacts / dispatch_days
         loaded = daily * S53_HELP_PEAK_SHARE
         other = daily * (1 - S53_HELP_PEAK_SHARE) / 17
-        if agents_for_service(loaded, S53_HELP_AHT_MIN * 60) > 7 or agents_for_service(other, S53_HELP_AHT_MIN * 60) > 7:
+        if agents_for_service(loaded, S53_HELP_AHT_MIN * 60) > help_loaded_agents or agents_for_service(other, S53_HELP_AHT_MIN * 60) > help_other_agents:
             max_contacts_7 = contacts - 1
             break
 
@@ -696,7 +706,7 @@ def main() -> None:
         f"Temperatura: {fmt_int(camera_messages_day)} lecturas/día de las cámaras + {fmt_int(thermograph_messages_day)} de los termógrafos de camión = {fmt_int(temp_messages_day)} mensajes/día; con {TEMP_RECORD_BYTES} bytes por lectura son {fmt(temp_raw_gb_year)} GB/año crudos y {fmt(temp_stored_gb_year)} GB/año almacenados, {fmt(temp_raw_gb_year * REQ_RET_TEMP_ANIOS)} GB crudos en 5 años. Posición: {fmt_int(position_records_year)} eventos/año, {fmt(position_raw_gb_year)} GB crudos y {fmt(position_stored_gb_year)} GB almacenados en 12 meses; cada evento usa {POSITION_RECORD_BYTES} bytes. La copia almacenada usa factor 0,25.",
         f"La migración suma maestros {fmt(historical_domains['maestros completos'], 0)} KB, ventas y pedidos {fmt(historical_domains['ventas y pedidos, 3 años'], 0)} KB, inventario y movimientos {fmt(historical_domains['inventario y movimientos, 2 años'], 0)} KB, recepciones con lote {fmt(historical_domains['recepciones con lote, 5 años'], 0)} KB y cuentas por cobrar {fmt(historical_domains['cuentas por cobrar, 2 años'], 0)} KB. Con factor 2: **{fmt(historical_gb)} GB**, sensibilidad **{fmt(historical_low_gb)}–{fmt(historical_high_gb)} GB**.", "",
         "## Dimensiones 11–12: integraciones y enlaces", "",
-        f"El apartado 4.1 contiene 15 integraciones. La dimensión 11 suma **{fmt(message_total, 0)} mensajes/día normal** y **{fmt(message_peak, 0)} peak**; portal y llamadas internas a la API quedan fuera. El EDI actual es cero; el escenario 2029 usa la cota de 11 % de pedidos.", *integration_markdown(), "",
+        f"El apartado 4.1 contiene 15 integraciones. La dimensión 11 suma **{fmt(message_total, 0)} mensajes/día normal** y **{fmt(message_peak, 0)} peak**; portal y llamadas internas a la API quedan fuera. El EDI actual es cero; desde enero de 2029 opera todos los días y usa la cota de 11 % de pedidos en régimen y en peak. La pasarela de pago se acota con un pago electrónico por entrega y dos mensajes por pago.", *integration_markdown(), "",
         "El drenaje contiene cambios con WAL, vaciado del broker, telemetría, observabilidad e incremental de respaldo acumulados durante 24 horas; no incluye tráfico de oficina. La prioridad continua suma WAL, broker, telemetría crítica, guías, SII e identidad; cada mensaje de guía, respuesta SII e identidad usa la cota de 1 KB. El peor caso suma la hora cargada con oficina y la sincronización de la flota cuando corresponde. D-06 se calcula con 2 Mbps de subida mínima supuesta, un parámetro conservador de diseño que se confirma en la instalación."]
     for site in site_tps_peak:
         row = site_data_day[site]
@@ -722,8 +732,8 @@ def main() -> None:
     for site in site_tps_peak:
         row = site_data_day[site]
         lines.append(f"- {site}: respaldo completo a 3× {fmt(row['full_backup_gb'])} GB y aplicación {fmt(row['app_update_gb'])} GB requieren {fmt(row['app_hours'])} h; la tanda de sistema operativo es {row['os_batch_devices']} equipos, {fmt(row['os_batch_hours'])} h por domingo y una ronda completa ocupa {row['os_sundays']} domingos. La aplicación se actualiza en un domingo por sitio; el sistema operativo se distribuye en tandas dominicales, con cadencia semestral.")
-    lines += ["", "## Crecimiento, umbrales y cuello de botella", "", f"Año 3 usa {fmt_int(Y3_PEDIDOS_MES)} pedidos/mes ({fmt_int(Y3_PEDIDOS_MES)} ÷ {fmt_int(PEDIDOS_MES)} = {fmt(Y3_PEDIDOS_MES / PEDIDOS_MES)}×), {fmt_int(Y3_LINEAS_MES)} líneas/mes ({fmt(Y3_LINEAS_MES / LINEAS_MES)}×), {fmt_int(Y3_ENTREGAS_NORMAL_DIA)}/{fmt_int(Y3_ENTREGAS_PEAK_DIA)} entregas/día y {fmt_int(Y3_DTE_MES)} DTE/mes. Por separado, 3× es 93.000 pedidos, 780.000 líneas, 4.200/7.800 entregas y 102.000 DTE mensuales.", f"La tabla de capacidad del año 3 se obtiene con una base por métrica: WMS Talca {fmt(site_tps_peak['Talca'])} × ({fmt_int(Y3_LINEAS_MES)} ÷ {fmt_int(LINEAS_MES)}) = {fmt(year3_talca_tps)} TPS; cross-docking {fmt(site_tps_peak['Cada cross-docking'])} TPS actual, {fmt(year3_cross_tps)} en año 3 y {fmt(three_x_cross_tps)} a 3×; nube más portal {fmt(peak_tps)} × ({fmt_int(Y3_PEDIDOS_MES)} ÷ {fmt_int(PEDIDOS_MES)}) = {fmt(year3_cloud_load)} solicitudes/s; evidencia {fmt(evidence_gb_year)} × ({fmt_int(Y3_PEDIDOS_MES)} ÷ {fmt_int(PEDIDOS_MES)}) = {fmt(year3_evidence_gb)} GB/año; Talca usa {fmt(year3_link_rows['Talca'])} Mbps en el peor caso y {fmt(three_x_link_rows['Talca'])} Mbps a 3×; bodega Talca usa {year3_talca_terminals} terminales; mesa conserva {fmt_int(year3_help_contacts)} contactos/mes. La columna 3× cubre carga técnica, no aumenta el parque de personas.", f"El umbral de SV-04, expresado como múltiplo de la tasa peak antes de saturar la capacidad calculada, es Talca {fmt(concentration_break['Talca'])}×, Concepción {fmt(concentration_break['Concepción'])}×, cada cross-docking {fmt(concentration_break['Cada cross-docking'])}× y nube más portal {fmt(concentration_break['Nube + portal'])}×. La cota extrema combinada requiere {fargate_tasks['cota']} tareas; la sensibilidad exige {fargate_tasks['sensibilidad cota']} y se mantiene bajo el techo de ocho.", f"Para los {fmt(dte_peak_day, 0)} DTE peak, el tiempo máximo por documento es 27.000 ÷ {fmt(dte_peak_day, 0)} = {fmt(dte_scenarios['22:00–05:30'])} s si se reparte en toda la preparación; {fmt(dte_scenarios['últimas 3,5 h'])} s si se concentra al final; y {fmt(dte_scenarios['05:30–07:00'])} s si se conserva la práctica actual. El diseño emite el documento cuando confirma la carga, durante la noche. Se detectan documentos pendientes frente a la hora de salida de cada camión; se resuelve priorizando la cola y reconciliando el folio, sin crear otro emisor: el ERP sigue siendo el único emisor y el documento acompaña el traslado.", f"Con siete agentes, el escenario de mesa tolera aproximadamente {fmt_int(max_contacts_7)} contactos mensuales antes de requerir una posición adicional. Se observan percentiles 95, colas, errores, IOPS, Wi-Fi, ERP y drenaje en RT-09.06 y en la operación.", "", "## Fuentes de validación", "", "El perfilado confirma tamaños de registros y migración; la prueba de carga confirma CPU, residencia Fargate, concurrencia y tasas; la prueba de corte confirma drenaje y la prueba dominical confirma respaldo y actualizaciones. Ninguna de estas verificaciones reemplaza el valor de diseño declarado."]
-    OUT.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    lines += ["", "## Crecimiento, umbrales y cuello de botella", "", f"Año 3 usa {fmt_int(Y3_PEDIDOS_MES)} pedidos/mes ({fmt_int(Y3_PEDIDOS_MES)} ÷ {fmt_int(PEDIDOS_MES)} = {fmt(Y3_PEDIDOS_MES / PEDIDOS_MES)}×), {fmt_int(Y3_LINEAS_MES)} líneas/mes ({fmt(Y3_LINEAS_MES / LINEAS_MES)}×), {fmt_int(Y3_ENTREGAS_NORMAL_DIA)}/{fmt_int(Y3_ENTREGAS_PEAK_DIA)} entregas/día y {fmt_int(Y3_DTE_MES)} DTE/mes. Por separado, 3× es 93.000 pedidos, 780.000 líneas, 4.200/7.800 entregas y 102.000 DTE mensuales.", f"La tabla de capacidad del año 3 se obtiene con una base por métrica: WMS Talca {fmt(site_tps_peak['Talca'])} × ({fmt_int(Y3_LINEAS_MES)} ÷ {fmt_int(LINEAS_MES)}) = {fmt(year3_talca_tps)} TPS; cross-docking {fmt(site_tps_peak['Cada cross-docking'])} TPS actual, {fmt(year3_cross_tps)} en año 3 y {fmt(three_x_cross_tps)} a 3×; nube más portal {fmt(peak_tps)} × ({fmt_int(Y3_PEDIDOS_MES)} ÷ {fmt_int(PEDIDOS_MES)}) = {fmt(year3_cloud_load)} solicitudes/s; evidencia {fmt(evidence_gb_year)} × ({fmt_int(Y3_PEDIDOS_MES)} ÷ {fmt_int(PEDIDOS_MES)}) = {fmt(year3_evidence_gb)} GB/año; Talca usa {fmt(year3_link_rows['Talca'])} Mbps en el peor caso y {fmt(three_x_link_rows['Talca'])} Mbps a 3×; bodega Talca usa {year3_talca_terminals} terminales; mesa conserva {fmt_int(year3_help_contacts)} contactos/mes. La columna 3× cubre carga técnica, no aumenta el parque de personas.", f"El umbral de SV-04, expresado como múltiplo de la tasa peak antes de saturar la capacidad calculada, es Talca {fmt(concentration_break['Talca'])}×, Concepción {fmt(concentration_break['Concepción'])}×, cada cross-docking {fmt(concentration_break['Cada cross-docking'])}× y nube más portal {fmt(concentration_break['Nube + portal'])}×. La cota extrema combinada requiere {fargate_tasks['cota']} tareas; la sensibilidad exige {fargate_tasks['sensibilidad cota']} y se mantiene bajo el techo de ocho.", f"Para los {fmt(dte_peak_day, 0)} DTE peak, el tiempo máximo por documento es 27.000 ÷ {fmt(dte_peak_day, 0)} = {fmt(dte_scenarios['22:00–05:30'])} s si se reparte en toda la preparación; {fmt(dte_scenarios['últimas 3,5 h'])} s si se concentra al final; y {fmt(dte_scenarios['05:30–07:00'])} s si se conserva la práctica actual. El diseño emite el documento cuando confirma la carga, durante la noche. Se detectan documentos pendientes frente a la hora de salida de cada camión; se resuelve priorizando la cola y reconciliando el folio, sin crear otro emisor: el ERP sigue siendo el único emisor y el documento acompaña el traslado.", f"Con la dotación de {help_loaded_agents} agentes en la hora cargada y {help_other_agents} en las demás, la mesa tolera {fmt_int(max_contacts_7)} contactos mensuales antes de requerir una posición adicional. Se observan percentiles 95, colas, errores, IOPS, Wi-Fi, ERP y drenaje en RT-09.06 y en la operación.", "", "## Fuentes de validación", "", "El perfilado confirma tamaños de registros y migración; la prueba de carga confirma CPU, residencia Fargate, concurrencia y tasas; la prueba de corte confirma drenaje y la prueba dominical confirma respaldo y actualizaciones. Ninguna de estas verificaciones reemplaza el valor de diseño declarado."]
+    OUT.write_text("\n".join(lines) + "\n", encoding="utf-8", newline="\n")
 
 
 if __name__ == "__main__":

@@ -4,7 +4,7 @@ from __future__ import annotations
 import argparse, html, re, urllib.parse
 from pathlib import Path
 
-COMMIT = "a422d30baeaf69a3cce14909bf38e549f4f6d5fd"
+COMMIT = "c1f0874547a965a2cf722e805844c8c68283e1e3"
 REPO_URL = "https://raw.githubusercontent.com/PatricioH315/LafroX/" + COMMIT + "/"
 
 def arg(s: str, pos: int) -> tuple[str, int]:
@@ -287,6 +287,8 @@ def convert(source: str, doc, stem, toc, labels, links, root):
     # Render visible residual plain text and references/citations.
     source=re.sub(r"\\(ref|autoref|cref|Cref|pageref)\*?\s*\{([^}]+)\}",lambda m:md_inline("\\"+m.group(1)+"{"+m.group(2)+"}",labels,doc,links,root),source)
     source=re.sub(r"\\cite(?:\[[^]]*\]){0,2}\s*\{([^}]+)\}",lambda m:"("+m.group(1).replace(";",", ")+")",source)
+    # A list environment carries its label and spacing setup as two arguments; drop both.
+    source=re.sub(r"\\begin\{list\}\{[^{}]*\}\{(?:[^{}]|\{[^{}]*\})*\}|\\end\{list\}","\n",source)
     source=re.sub(r"\\begin\{(itemize|enumerate|description)\}|\\end\{(itemize|enumerate|description)\}","\n",source)
     source=re.sub(r"\\item(?:\[[^]]*\])?\s*", "\n- ",source)
     # Remove control-only environments and format declarations. Strip comments before this point.
@@ -294,6 +296,7 @@ def convert(source: str, doc, stem, toc, labels, links, root):
     source=re.sub(r"\\(addcontentsline|markboth|setcounter|addtocounter|renewcommand|providecommand|captionsetup|label|phantomsection|centering|raggedright|small|footnotesize|scriptsize|normalsize|LFXcuerpotabla|LFXcuerpofigura|intersemibold|cab|fuente[A-Za-z]+)\*?(?:\[[^]]*\])?\s*(?:\{[^{}]*\}){1,3}","",source)
     source=md_inline(source,labels,doc,links,root)
     source=source.replace("Anexo / página","Anexo / referencia").replace("muestra la página de inicio","identifica el anexo de inicio")
+    source=re.sub(r"(?m)^[ \t]+$","",source)
     source=re.sub(r"\n\s*\n\s*\n+","\n\n",source)
     # TOC-based headings and usable document index.
     heads=re.findall(r"^(#{1,4}) (.+)$",source,re.M)

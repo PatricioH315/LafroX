@@ -21,8 +21,8 @@ De las seis instalaciones que cubre la solución, cinco alojan cómputo on-premi
 
 \begin{itemize}
   \item El CD Talca es la sala técnica secundaria, con un clúster de tres nodos con Proxmox VE y almacenamiento Ceph que aloja las máquinas virtuales VM-01 a VM-06.
-  \item El CD Concepción opera en un gabinete de borde, con un servidor con Proxmox VE que replica la misma pila en las máquinas VM-C01 a VM-C04.
-  \item Las plataformas de cross-docking de Curicó, Chillán y Los Ángeles operan cada una en un gabinete de borde, con un mini-PC industrial que ejecuta el WMS en contenedores.
+  \item El CD Concepción opera en un gabinete de borde, con dos servidores con Proxmox VE: el activo replica la misma pila en las máquinas VM-C01 a VM-C04 y el otro mantiene sus copias en espera.
+  \item Las plataformas de cross-docking de Curicó, Chillán y Los Ángeles operan cada una en un gabinete de borde, con dos mini-PC industriales, uno activo y otro en espera, que ejecutan el WMS en contenedores.
   \item La sexta instalación, la casa matriz de Talca, está junto al centro de distribución, solo aloja oficinas y trabaja contra la nube, por lo que no requiere cómputo propio y el dimensionamiento se calcula sobre los otros cinco recintos.
 \end{itemize}
 
@@ -37,7 +37,7 @@ Los dos centros de distribución tienen su recinto especificado en el apartado~\
 \end{figure}
 \FloatBarrier
 
-Starlink es el enlace principal y el LTE de dos proveedores lo respalda; ambos llegan a un par de firewalls compactos en alta disponibilidad, que termina el túnel VPN hacia la nube y conmuta de enlace en menos de 30 s. Detrás de los firewalls, dos switches industriales conectan los dos puntos de acceso de la nave y las dos interfaces del mini-PC industrial, que ejecuta en contenedores Docker el WMS, PostgreSQL, RabbitMQ, la caché de Keycloak y el colector ADOT. Los dos terminales inalámbricos de cada plataforma leen los códigos GS1 y trabajan contra ese WMS local. El gabinete reúne en un solo equipo las funciones que Talca y Concepción reparten en varias máquinas virtuales, y con ello opera al 100\,\% en local la ventana de tres horas de recepción, desconsolidación y re-despacho. El mini-PC es un equipo único por sitio, con alimentación redundante, dos SSD en RAID 1 y reposición desde Talca; su reconstrucción desde el estado central de la nube se trata en la sección~\ref{sec:conexiones}.
+Starlink es el enlace principal y el LTE de dos proveedores lo respalda; ambos llegan a un par de firewalls compactos en alta disponibilidad, que termina el túnel VPN hacia la nube y conmuta de enlace en menos de 30 s. Detrás de los firewalls, dos switches industriales conectan los dos puntos de acceso de la nave y las dos interfaces de cada uno de los dos mini-PC industriales, que ejecutan en contenedores Docker el WMS, PostgreSQL, RabbitMQ, la caché de Keycloak y el colector ADOT. Los dos terminales inalámbricos de cada plataforma leen los códigos GS1 y trabajan contra el WMS local del mini-PC activo. El gabinete reúne en un par de equipos las funciones que Talca y Concepción reparten en varias máquinas virtuales, y con ello opera al 100\,\% en local la ventana de tres horas de recepción, desconsolidación y re-despacho. El mini-PC activo replica cada transacción en forma sincrónica al que está en espera, que toma su lugar si falla (RT-03.14; Bases Técnicas Transversales, cap. 3, p. 9; sección~\ref{sub:3-alta-disponibilidad}). Cada equipo tiene además alimentación redundante y dos SSD en RAID 1, y la reserva en Talca repone el equipo dañado. La reconstrucción desde el estado central de la nube, si fallan ambos, se trata en la sección~\ref{sec:conexiones}.
 
 La Figura~\ref{fig:cd-concepcion} presenta el gabinete de borde del CD Concepción como parte de su operación autónoma.
 
@@ -50,9 +50,9 @@ La Figura~\ref{fig:cd-concepcion} presenta el gabinete de borde del CD Concepci�
 \end{figure}
 \FloatBarrier
 
-La figura sitúa el WMS, PostgreSQL, RabbitMQ y la caché de identidad en cuatro VM del servidor Proxmox local. El par de firewalls y los dos switches de núcleo sostienen la red del sitio. Fibra D-03, LTE D-04 y Starlink D-06 proporcionan tres caminos hacia la nube; la UPS de 3 kVA del gabinete protege el servidor, los equipos de red y el terminal satelital durante 30 min y permite el apagado ordenado; su carga de diseño, 2,16 kVA, usa el 72~\% de esa capacidad (Anexo 4-W). El servidor tiene fuentes redundantes. Si falla, se repone y se reconstruye su base a partir del estado central alimentado por los eventos del propio sitio. El detalle de cada equipo está en el Formulario T-11.
+La figura sitúa el WMS, PostgreSQL, RabbitMQ y la caché de identidad en cuatro VM de un servidor Proxmox local. Un segundo servidor idéntico mantiene sus copias en espera, con la base replicada en forma sincrónica, y toma su lugar si falla (RT-03.14; Bases Técnicas Transversales, cap. 3, p. 9; sección~\ref{sub:3-alta-disponibilidad}). El par de firewalls y los dos switches de núcleo sostienen la red del sitio. Fibra D-03, LTE D-04 y Starlink D-06 proporcionan tres caminos hacia la nube. La UPS de 5 kVA del gabinete protege los dos servidores, los equipos de red y el terminal satelital durante 30 min y permite el apagado ordenado; su carga de diseño, 3,42 kVA, usa el 68~\% de esa capacidad (Anexo 4-W). Cada servidor tiene fuentes redundantes. Solo si fallan ambos se repone el equipo y se reconstruye la base a partir del estado central alimentado por los eventos del propio sitio. El detalle de cada equipo está en el Formulario T-11.
 
-La séptima instalación que proyecta el caso a tres años se incorpora parametrizando la infraestructura como código, sobre el bloque de direccionamiento ya reservado en la Tabla~\ref{tab:t64}, sin obras en la sala de Talca.
+La séptima instalación que proyecta el caso a tres años se incorpora parametrizando la infraestructura como código, sobre uno de los bloques de direccionamiento ya reservados en la Tabla~\ref{tab:t64}, sin obras en la sala de Talca.
 
 En la nube, la región primaria es sa-east-1 y cada servicio se despliega en al menos dos zonas de disponibilidad. La región us-east-1 solo aloja la recuperación ante desastres. La Figura~\ref{fig:emplazamiento-dominios} ubica cada componente en su sitio.
 
@@ -101,7 +101,8 @@ En la nube, la región primaria es sa-east-1 y cada servicio se despliega en al 
       Gestión: F-02 y F-03};
     \node[caja, text width=5.3cm, below=5pt of tal.south west, anchor=north west] (con) {%
       \textbf{CD Concepción}, gabinete de borde\\[2pt]
-      Máquinas VM-C01 a VM-C04\\
+      Dos servidores, activo y en espera:\\
+      VM-C01 a VM-C04 y sus copias\\
       con A-01 a A-03, A-05 y F-01\\
       Red: D-01 a D-04 y D-06\\
       Frío: B-01 y B-02\\
@@ -109,7 +110,7 @@ En la nube, la región primaria es sa-east-1 y cada servicio se despliega en al 
       Gestión: F-03};
     \node[caja, text width=5.3cm, below=5pt of con.south west, anchor=north west] (cdk) {%
       \textbf{Cross-docking}, tres sitios\\[2pt]
-      Mini-PC E-01\\
+      Dos mini-PC E-01, activo y en espera\\
       con A-01 a A-03, caché de A-05 y F-01\\
       Red: D-01, D-02, D-04 y D-06\\
       Bodega: C-03\\
@@ -137,7 +138,7 @@ En la nube, la región primaria es sa-east-1 y cada servicio se despliega en al 
   \fuentefigura
 \end{figure}
 
-La figura muestra que ninguna instalación depende de los sistemas de otra para operar, aunque Concepción siga recibiendo parte de su surtido desde Talca. Talca y Concepción tienen cada uno su WMS, su base, su broker y su caché de identidad; los cross-docking reúnen esas mismas funciones en un solo equipo; y el terreno lleva su propio almacén local en el dispositivo. La nube concentra lo que es común a todos los sitios: los portales, el transaccional compartido, la analítica y los servicios de seguridad. Los doce componentes híbridos aparecen en los dos dominios porque cada uno tiene una parte que debe seguir operando en el sitio y otra que consolida en la nube.
+La figura muestra que ninguna instalación depende de los sistemas de otra para operar, aunque Concepción siga recibiendo parte de su surtido desde Talca. Talca y Concepción tienen cada uno su WMS, su base, su broker y su caché de identidad; los cross-docking reúnen esas mismas funciones en un par de mini-PC, uno activo y otro en espera; y el terreno lleva su propio almacén local en el dispositivo. La nube concentra lo que es común a todos los sitios: los portales, el transaccional compartido, la analítica y los servicios de seguridad. Los doce componentes híbridos aparecen en los dos dominios porque cada uno tiene una parte que debe seguir operando en el sitio y otra que consolida en la nube.
 
 \subsection{Correspondencia con la arquitectura lógica}
 
@@ -157,7 +158,7 @@ La Tabla~\ref{tab:mapeo-logica} asocia cada módulo y cada capa transversal de l
   M9 Calidad & B-01, B-02 con la función local de bloqueo en el borde y B-03; N-06 y N-08 & Sitio, camiones y nube \\
   M10 Analítica & N-10 & Nube \\
   M11 Canal moderno & N-04 con el perfil EDI y el transporte AS2; A-04 & Nube y VM-04 \\
-  M12 Flota & N-04 y N-06, con la API del proveedor de telemetría & Nube \\
+  M12 Telemetría & N-04 y N-06, con la API del proveedor de telemetría & Nube \\
   Capa 1, portales y consolas & N-01 a N-03 y frontend de consolas en N-04 & Nube \\
   Capas 2 y 3, entrada y puerta de enlace & CloudFront, WAF y API Gateway (N-01 a N-03 y N-12); puerta de API local en A-01 & Nube y sitio \\
   Capa 5, integración y eventos & A-03; N-09; A-04 & Sitio y nube \\
@@ -192,7 +193,7 @@ El emplazamiento responde a cuatro criterios decisivos del caso:
 
 \begin{itemize}
   \item Conectividad: decide once componentes y domina los on-premise e híbridos, por los cortes de enlace y el terreno sin señal.
-  \item Regulación: decide seis y domina la nube pura, porque el Artículo 21 de las Bases Administrativas (art. 21, p. 15) impide exponer los sitios a Internet y separa los públicos externos en la DMZ.
+  \item Regulación: decide seis y domina la nube pura, porque RT-03.22 no admite exponer servicios internos a Internet (Bases Técnicas Transversales, cap. 3, p. 10) y el Artículo 21.2 exige publicar solo por una capa de borde (Bases Administrativas, art. 21.2, p. 15).
   \item Costo y volumen: concentran en la nube lo que escala y se paga por uso.
   \item Latencia y criticidad: dejan en el sitio lo que debe responder sin enlace.
 \end{itemize}
@@ -211,7 +212,7 @@ Los trece componentes de nube pura viven solo en la nube. La justificación de c
   \item \textbf{N-05 Base de datos en nube} (criticidad): Aurora PostgreSQL guarda el transaccional de los módulos en nube y la réplica del WMS, conmuta entre zonas en menos de 30 s y se replica a us-east-1.
   \item \textbf{N-06 Telemetría cruda} (volumen): DynamoDB recibe las lecturas de temperatura sin gestión de capacidad y las expira a los 30 días, cuando ya están consolidadas en la capa analítica.
   \item \textbf{N-07 Caché} (latencia): ElastiCache mantiene en memoria el stock, el crédito y las sesiones para que la consulta de preventa responda en menos de 2 s.
-  \item \textbf{N-08 Ingesta de IoT} (volumen): IoT Core recibe los 10.584 mensajes diarios de cadena de frío por MQTTS y gestiona los gateways del borde; su motor de reglas escribe cada lectura en DynamoDB y publica en SNS las que superan el umbral.
+  \item \textbf{N-08 Ingesta de IoT} (volumen): IoT Core recibe los 10.920 mensajes diarios de cadena de frío por MQTTS y gestiona los gateways del borde; su motor de reglas escribe cada lectura en DynamoDB y publica en SNS las que superan el umbral.
   \item \textbf{N-09 Mensajería} (criticidad): una cola SQS FIFO recibe la reconciliación de los sitios como sobres JSON versionados, en orden por grupo y sin duplicados; otra cola FIFO lleva las solicitudes al ERP hasta \texttt{erp-sync} y una cola FIFO de respuesta para Concepción y para cada cross-docking devuelve sus respuestas, porque Talca las recibe por RabbitMQ local; una cola FIFO de coordinación por cada uno de los cinco sitios lleva las solicitudes de retención y liberación de stock que su shipper lee por conexión saliente; otras colas SQS, separadas de esas, transportan los trabajos internos de Laravel; y SNS difunde las alertas de excursión térmica.
   \item \textbf{N-10 Plataforma analítica} (volumen y costo): S3, Glue, Redshift Serverless y QuickSight conservan 5 años de datos separados del transaccional. Los tableros y la autoría de QuickSight se integran en las consolas para usuarios registrados, con modelo semántico documentado, creación autónoma de informes, exportación y permisos separados de lectura y creación; los indicadores operacionales actuales se consultan en la API de negocio.
   \item \textbf{N-11 Respaldo inmutable y réplica} (regulación): S3 Object Lock, AWS Backup y la réplica en us-east-1 guardan la copia que ni un administrador puede borrar y sostienen el RTO de 4 h y el RPO de 15 min.
@@ -219,7 +220,7 @@ Los trece componentes de nube pura viven solo en la nube. La justificación de c
   \item \textbf{N-13 Gestión de dispositivos} (costo): Android Enterprise y Zebra DNA gestionan como servicio el parque de terminales de preventa, reparto y cámara, con borrado remoto selectivo y sin infraestructura en los sitios.
 \end{itemize}
 
-Ningún componente de nube pura participa en las transacciones que el caso exige resolver sin enlace: la confirmación de preparación, el despacho y el registro de entrega se ejecutan en el sitio o en el dispositivo. Lo que sube a la nube lo hace por tres razones. Los portales y la gestión de identidades externas lo hacen por regulación, porque el Artículo 21 de las Bases Administrativas (art. 21, p. 15) impide exponer los sitios a Internet. La plataforma de aplicación, la analítica y la telemetría lo hacen por volumen y costo, porque su carga varía con la estación y se paga por uso. Y la seguridad y el respaldo lo hacen porque un equipo de TI de cuatro personas no puede operar esos controles en sus propios servidores.
+Ningún componente de nube pura participa en las transacciones que el caso exige resolver sin enlace: la confirmación de preparación, el despacho y el registro de entrega se ejecutan en el sitio o en el dispositivo. Lo que sube a la nube lo hace por tres razones. Los portales y la gestión de identidades externas lo hacen por regulación, porque RT-03.22 no admite exponer servicios internos a Internet (Bases Técnicas Transversales, cap. 3, p. 10). La plataforma de aplicación, la analítica y la telemetría lo hacen por volumen y costo, porque su carga varía con la estación y se paga por uso. Y la seguridad y el respaldo lo hacen porque un equipo de TI de cuatro personas no puede operar esos controles en sus propios servidores.
 
 \subsection{Componentes on-premise}
 
@@ -235,7 +236,7 @@ Los once componentes on-premise viven solo en las instalaciones del CLIENTE. La 
   \item \textbf{D-03 Enlace de fibra} (conectividad): es el camino principal de la VPN en Talca y Concepción, con 20 y 10 Mbps en régimen.
   \item \textbf{D-04 Enlace LTE} (conectividad): respalda la fibra en los CD y, con dos proveedores, respalda a Starlink en los cross-docking, con conmutación en menos de 30 s.
   \item \textbf{D-06 Enlace satelital} (conectividad): Starlink es el camino principal de los cross-docking, respaldado por LTE de dos proveedores, y el tercer camino en espera caliente de Talca y Concepción, con terminal encendido, túnel IPsec establecido y BGP de menor preferencia que solo toma tráfico si fallan fibra y LTE.
-  \item \textbf{E-01 WMS de cross-docking} (criticidad): el mini-PC de cada plataforma opera 100\,\% en local la ventana de 3 h de recepción, desconsolidación y re-despacho, con su propio broker y su propia base.
+  \item \textbf{E-01 WMS de cross-docking} (criticidad): el par de mini-PC de cada plataforma, uno activo y otro en espera, opera 100\,\% en local la ventana de 3 h de recepción, desconsolidación y re-despacho, con su propio broker y su propia base, replicada al equipo en espera.
   \item \textbf{F-02 Gestión de parches} (costo): Ansible aplica los parches y las líneas base CIS a los nodos de los cinco sitios por la red de gestión, sin licencia de plataforma.
 \end{itemize}
 
@@ -247,8 +248,8 @@ Los doce componentes híbridos tienen una parte en cada dominio. Para cada uno, 
 
 \begin{itemize}
   \item \textbf{A-01 Motor WMS} (latencia): el perfil \texttt{wms\_only} del artefacto Laravel, con su servidor web y PHP-FPM, corre en VM-01, VM-C01 y E-01 porque la confirmación de preparación debe responder en 1 s sin depender del enlace, y su réplica en Aurora sostiene la continuidad. El mismo motor expone la puerta de API local de la bodega, que durante un corte valida el esquema, la tasa, el UUID y la auditoría de las solicitudes de los terminales sin pasar por API Gateway.
-  \item \textbf{A-02 Base transaccional del WMS} (criticidad): PostgreSQL 16 en VM-02 y VM-C02 es el registro de cada bodega durante un corte. AWS DMS replica continuamente los cambios de VM-02 (Talca) a Aurora para continuidad y lectura por fibra, LTE o Starlink; VM-C02 (Concepción) entrega sus eventos por las colas de integración.
-  \item \textbf{A-03 Broker de colas} (conectividad): RabbitMQ en VM-03, VM-C04 y E-01 guarda hasta 24 h de eventos sin enlace, con mensajes persistentes y confirmación de publicación; el shipper, un proceso PHP con el adaptador AMQP \texttt{php-amqplib}, los publica como sobres JSON en SQS FIFO y solo los retira del broker cuando SQS confirma la recepción.
+  \item \textbf{A-02 Base transaccional del WMS} (criticidad): PostgreSQL 16 en VM-02 y VM-C02 es el registro de cada bodega durante un corte. AWS DMS replica continuamente los cambios de VM-02 (Talca) a Aurora para continuidad y lectura por fibra, LTE o Starlink; VM-C02 (Concepción) entrega sus eventos por las colas de integración. En Concepción y en cada cross-docking, la base activa se replica en forma sincrónica al equipo en espera.
+  \item \textbf{A-03 Broker de colas} (conectividad): RabbitMQ en VM-03, VM-C04 y E-01 guarda hasta 24 h de eventos sin enlace, con mensajes persistentes y confirmación de publicación; el shipper, un proceso PHP con el adaptador AMQP \texttt{php-amqplib}, los publica como sobres JSON en SQS FIFO y solo los retira del broker cuando SQS confirma la recepción. El outbox conserva 24 h de eventos ya enviados para reenviarlos tras una conmutación.
   \item \textbf{A-04 Capa anticorrupción del ERP} (criticidad): corre en VM-04, en la misma sala que el ERP de 2017, que no se modifica. En la misma VM, \texttt{erp-sync} consume la cola local de Talca y, mediante conexión saliente, la cola FIFO de solicitudes al ERP de los demás orígenes, cuyas respuestas devuelve por la cola de cada sitio; usa una clave idempotente por operación para que un reintento no emita un segundo documento tributario.
   \item \textbf{A-05 Identidad} (conectividad): el IdP maestro Keycloak corre en Fargate y sus cachés de solo lectura en VM-05, VM-C03 y E-01 validan las sesiones de bodega y de cross-docking sin enlace; en el mismo nodo, un verificador local habilita cada relevo de turno durante un corte con el manifiesto de turno firmado y un segundo factor local, el PIN personal.
   \item \textbf{B-03 Termógrafos de camión} (conectividad): los 28 termógrafos —18 en los camiones propios y 10 en los de los transportistas, instalados con el acuerdo de cada uno (S-28)— registran la temperatura durante toda la ruta sin señal y sincronizan por Bluetooth con el terminal del conductor, que alerta la excursión térmica en el momento y la reenvía a la nube cuando recupera cobertura; al volver el camión, el mismo terminal descarga el registro completo y lo envía a la nube para que IoT Core lo valide.
@@ -257,7 +258,7 @@ Los doce componentes híbridos tienen una parte en cada dominio. Para cada uno, 
   \item \textbf{D-01 Firewall y Customer Gateway} (criticidad): el par de firewalls de cada uno de los cinco sitios termina los túneles IPsec hacia el Transit Gateway de AWS y conmutan de enlace en menos de 30 s.
   \item \textbf{D-05 Respaldo local} (conectividad): el NAS WORM de Talca restaura el WMS en 4 h sin depender del enlace, y su complemento inmutable vive en S3 Object Lock.
   \item \textbf{F-01 Telemetría de observabilidad} (conectividad): los colectores ADOT de VM-06, VM-C04 y E-01 guardan hasta 24 h de métricas y trazas en disco y las envían a CloudWatch al reconectar.
-  \item \textbf{F-03 Detección en endpoints} (regulación): los agentes EDR de cada nodo y estación reportan a una consola central, lo que da una sola respuesta ante incidentes en nube y on-premise.
+  \item \textbf{F-03 Detección en endpoints} (regulación): los agentes EDR de cada nodo y estación reportan a una consola central, lo que da una sola respuesta ante incidentes en nube y on-premise. El servidor del ERP del CLIENTE no lleva agente, porque se traslada sin cambios de software. El firewall de Talca solo le permite el tráfico de la ACL en VM-04 y la administración del CLIENTE.
 \end{itemize}
 
 Los componentes híbridos siguen todos el mismo patrón: la parte que atiende la operación queda en el sitio y la parte que consolida queda en la nube, unidas por un mecanismo que tolera el corte. En el núcleo de bodega, Talca replica su base por DMS y los demás sitios sincronizan eventos por colas; en el terreno, el almacén local del dispositivo; y en la observabilidad, el buffer en disco de los colectores. Por eso la conectividad es el criterio dominante en siete de los doce: cada uno existe en dos lugares precisamente porque el enlace entre ellos no es confiable.

@@ -12,3 +12,5 @@ La petición del usuario limita esta etapa a organizar los archivos y conservar 
 8. **Presentación final.** Los números de página y la maquetación pueden variar al compilar un único documento y utilizar una plantilla común para el integrado. Revisar en la siguiente etapa la uniformidad de índice, rótulos, anexos y formularios sin confundirla con preservación del texto.
 
 Durante la revisión visual se amplió únicamente la columna de rótulos de las listas de tablas y figuras en `main.tex` (antes `04/main.tex`) para evitar que los identificadores originales `4.3-1`, etc., se superpusieran a sus títulos. No se renumeró ninguna tabla ni se cambió su título o contenido.
+
+9. **[Resuelto 2026-10-07] Figuras de D41 (RT-03.14).** Las tres figuras ya muestran el par activo/en espera y la réplica sincrónica. `Arquitectura_Fisica_Crossdocking.png` y `Arquitectura_Fisica_CD_Concepcion.png` muestran un solo mini-PC y un solo servidor; `Arquitectura_Fisica_General.png` también debe revisarse. El texto ya describe el par activo/en espera; las figuras deben agregar el segundo equipo y la réplica sincrónica.
