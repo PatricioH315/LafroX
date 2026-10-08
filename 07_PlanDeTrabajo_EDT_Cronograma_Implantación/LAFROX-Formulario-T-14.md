@@ -4,9 +4,9 @@ Este formulario detalla lo que el Subdocumento 7 resume en sus secciones 7.1 y 7
 
 ## 1 Estructura de descomposición del trabajo
 
-La EDT descompone el 100 % del alcance de la Etapa 1, la Etapa 2 y la Operación (Bases Administrativas, Art. 15°) en nueve fases, 49 cuentas de control y 222 paquetes de trabajo. Las fases 1 a 4 son las del proceso de desarrollo declarado en el Capítulo 6 (Inicio, Elaboración, Construcción y Transición) y se recorren una vez por etapa. Las fases 5 a 9 agrupan el trabajo que no es desarrollo de software. Cada paquete es la hoja de su rama, tiene un único responsable y produce un entregable verificable. En la cuenta 3.10, cada innovación agrupa sus paquetes en un cuarto nivel. La Tabla «tab:T14-1» resume el tamaño de cada fase.
+La EDT descompone el 100 % del alcance de la Etapa 1, la Etapa 2 y la Operación (Bases Administrativas, Art. 15°) en nueve fases, 49 cuentas de control y 222 paquetes de trabajo. Las fases 1 a 4 son las del proceso de desarrollo declarado en el Capítulo 6 (Inicio, Elaboración, Construcción y Transición) y se recorren una vez por etapa. Las fases 5 a 9 agrupan el trabajo que no es desarrollo de software. Cada paquete es la hoja de su rama, tiene un único responsable y produce un entregable verificable. En la cuenta 3.10, cada innovación agrupa sus paquetes en un cuarto nivel. La Tabla T14.1 resume el tamaño de cada fase.
 
-**Cuentas de control y paquetes de trabajo por fase. Fuente: elaboración propia.**
+**Tabla T14.1. Cuentas de control y paquetes de trabajo por fase. Fuente: elaboración propia.**
 
 <a id="tab:T14-1"></a>
 
@@ -841,9 +841,9 @@ La construcción concentra 79 de los 222 paquetes, y las fases que no son softwa
 
 El diccionario describe cada paquete con su entregable, su criterio de aceptación, su responsable y el período del cronograma en que se ejecuta, con el hito del Formulario E-25 que habilita cuando corresponde. Todo entregable se recibe con un acta de la Contraparte Técnica (Bases Administrativas, Art. 18.1), que acompaña la evidencia de verificación, la trazabilidad hacia los requerimientos del Formulario T-12 y las observaciones resueltas (Art. 18.2). Los criterios de cada paquete se suman a esa regla común.
 
-Los responsables son los roles de la estructura para el proyecto del Capítulo 1, sección 1.5. La Tabla «tab:T14-2» presenta las siglas usadas en el diccionario.
+Los responsables son los roles de la estructura para el proyecto del Capítulo 1, sección 1.5. La Tabla T14.2 presenta las siglas usadas en el diccionario.
 
-**Responsables de los paquetes. Fuente: Capítulo 1, sección 1.5.**
+**Tabla T14.2. Responsables de los paquetes. Fuente: Capítulo 1, sección 1.5.**
 
 <a id="tab:T14-2"></a>
 
@@ -868,9 +868,9 @@ La fase 1 reúne 9 cuentas de control y 35 paquetes de trabajo.
 
 Esta cuenta de control reúne los tres documentos con que el proyecto arranca formalmente.
 
-La Tabla «tab:T-14-3» presenta sus paquetes.
+La Tabla T14.3 presenta sus paquetes.
 
-**Diccionario de la cuenta 1.1. Fuente: elaboración propia.**
+**Tabla T14.3. Diccionario de la cuenta 1.1. Fuente: elaboración propia.**
 
 <a id="tab:T-14-3"></a>
 
@@ -884,9 +884,9 @@ La Tabla «tab:T-14-3» presenta sus paquetes.
 
 Esta cuenta de control fija qué se construye y deja todo listo para diseñar. Incluye la captura del conocimiento del planificador y el levantamiento de las interfaces, porque ambos son insumos del alcance.
 
-La Tabla «tab:T-14-4» presenta sus paquetes.
+La Tabla T14.4 presenta sus paquetes.
 
-**Diccionario de la cuenta 1.2. Fuente: elaboración propia.**
+**Tabla T14.4. Diccionario de la cuenta 1.2. Fuente: elaboración propia.**
 
 <a id="tab:T-14-4"></a>
 
@@ -902,9 +902,9 @@ La Tabla «tab:T-14-4» presenta sus paquetes.
 
 Esta cuenta de control reúne los documentos que dicen cómo y cuándo se hará el trabajo, y los informes que muestran si se cumple.
 
-La Tabla «tab:T-14-5» presenta sus paquetes.
+La Tabla T14.5 presenta sus paquetes.
 
-**Diccionario de la cuenta 1.3. Fuente: elaboración propia.**
+**Tabla T14.5. Diccionario de la cuenta 1.3. Fuente: elaboración propia.**
 
 <a id="tab:T-14-5"></a>
 
@@ -920,9 +920,9 @@ La Tabla «tab:T-14-5» presenta sus paquetes.
 
 Esta cuenta de control reúne el trabajo con las personas que pueden apoyar o frenar el proyecto, y el lugar donde se toman las decisiones.
 
-La Tabla «tab:T-14-6» presenta sus paquetes.
+La Tabla T14.6 presenta sus paquetes.
 
-**Diccionario de la cuenta 1.4. Fuente: elaboración propia.**
+**Tabla T14.6. Diccionario de la cuenta 1.4. Fuente: elaboración propia.**
 
 <a id="tab:T-14-6"></a>
 
@@ -936,9 +936,9 @@ La Tabla «tab:T-14-6» presenta sus paquetes.
 
 Esta cuenta de control reúne las reglas que impiden que algo defectuoso llegue a los usuarios.
 
-La Tabla «tab:T-14-7» presenta sus paquetes.
+La Tabla T14.7 presenta sus paquetes.
 
-**Diccionario de la cuenta 1.5. Fuente: elaboración propia.**
+**Tabla T14.7. Diccionario de la cuenta 1.5. Fuente: elaboración propia.**
 
 <a id="tab:T-14-7"></a>
 
@@ -951,9 +951,9 @@ La Tabla «tab:T-14-7» presenta sus paquetes.
 
 Esta cuenta de control mantiene vivo el registro de riesgos y verifica que cada respuesta se ejecute.
 
-La Tabla «tab:T-14-8» presenta sus paquetes.
+La Tabla T14.8 presenta sus paquetes.
 
-**Diccionario de la cuenta 1.6. Fuente: elaboración propia.**
+**Tabla T14.8. Diccionario de la cuenta 1.6. Fuente: elaboración propia.**
 
 <a id="tab:T-14-8"></a>
 
@@ -966,9 +966,9 @@ La Tabla «tab:T-14-8» presenta sus paquetes.
 
 Esta cuenta de control asegura que Puelche pueda cambiar de proveedor o asumir la operación sin interrumpir el servicio. Lo exige el Art. 77°.
 
-La Tabla «tab:T-14-9» presenta sus paquetes.
+La Tabla T14.9 presenta sus paquetes.
 
-**Diccionario de la cuenta 1.7. Fuente: elaboración propia.**
+**Tabla T14.9. Diccionario de la cuenta 1.7. Fuente: elaboración propia.**
 
 <a id="tab:T-14-9"></a>
 
@@ -981,9 +981,9 @@ La Tabla «tab:T-14-9» presenta sus paquetes.
 
 Esta cuenta de control reúne las instancias de gobierno que el Art. 71° de las Bases Administrativas hace obligatorias para ambas partes, y los mecanismos de control y reporte del capítulo 19 de las Bases Técnicas Transversales. Las actas de todos los comités se levantan dentro de los dos días hábiles siguientes, con acuerdos, responsables y plazos (RT-19.09).
 
-La Tabla «tab:T-14-10» presenta sus paquetes.
+La Tabla T14.10 presenta sus paquetes.
 
-**Diccionario de la cuenta 1.8. Fuente: elaboración propia.**
+**Tabla T14.10. Diccionario de la cuenta 1.8. Fuente: elaboración propia.**
 
 <a id="tab:T-14-10"></a>
 
@@ -1002,9 +1002,9 @@ La Tabla «tab:T-14-10» presenta sus paquetes.
 
 Esta cuenta de control reúne las obligaciones legales y contractuales que no producen software, pero que el contrato exige mantener y acreditar: cumplimiento normativo, datos personales, certificación de seguridad, garantías, seguros y obligaciones laborales.
 
-La Tabla «tab:T-14-11» presenta sus paquetes.
+La Tabla T14.11 presenta sus paquetes.
 
-**Diccionario de la cuenta 1.9. Fuente: elaboración propia.**
+**Tabla T14.11. Diccionario de la cuenta 1.9. Fuente: elaboración propia.**
 
 <a id="tab:T-14-11"></a>
 
@@ -1024,9 +1024,9 @@ La fase 2 reúne 6 cuentas de control y 18 paquetes de trabajo.
 
 Esta cuenta de control reúne los planos técnicos del software y de su emplazamiento.
 
-La Tabla «tab:T-14-12» presenta sus paquetes.
+La Tabla T14.12 presenta sus paquetes.
 
-**Diccionario de la cuenta 2.1. Fuente: elaboración propia.**
+**Tabla T14.12. Diccionario de la cuenta 2.1. Fuente: elaboración propia.**
 
 <a id="tab:T-14-12"></a>
 
@@ -1041,9 +1041,9 @@ La Tabla «tab:T-14-12» presenta sus paquetes.
 
 Esta cuenta de control define cómo se protegen los datos y los accesos.
 
-La Tabla «tab:T-14-13» presenta sus paquetes.
+La Tabla T14.13 presenta sus paquetes.
 
-**Diccionario de la cuenta 2.2. Fuente: elaboración propia.**
+**Tabla T14.13. Diccionario de la cuenta 2.2. Fuente: elaboración propia.**
 
 <a id="tab:T-14-13"></a>
 
@@ -1058,9 +1058,9 @@ La Tabla «tab:T-14-13» presenta sus paquetes.
 
 Esta cuenta de control reúne los planos de la infraestructura física que se instala en la fase 6. La sala actual de Talca tiene 25 m², un aire acondicionado de pared y una UPS que dura 10 minutos, y no cumple el estándar exigido (Caso, cap. 5 y 16).
 
-La Tabla «tab:T-14-14» presenta sus paquetes.
+La Tabla T14.14 presenta sus paquetes.
 
-**Diccionario de la cuenta 2.3. Fuente: elaboración propia.**
+**Tabla T14.14. Diccionario de la cuenta 2.3. Fuente: elaboración propia.**
 
 <a id="tab:T-14-14"></a>
 
@@ -1074,9 +1074,9 @@ La Tabla «tab:T-14-14» presenta sus paquetes.
 
 Esta cuenta de control reúne las dos actas que cierran las fases de Elaboración y dan acceso a los hitos de pago.
 
-La Tabla «tab:T-14-15» presenta sus paquetes.
+La Tabla T14.15 presenta sus paquetes.
 
-**Diccionario de la cuenta 2.4. Fuente: elaboración propia.**
+**Tabla T14.15. Diccionario de la cuenta 2.4. Fuente: elaboración propia.**
 
 <a id="tab:T-14-15"></a>
 
@@ -1089,9 +1089,9 @@ La Tabla «tab:T-14-15» presenta sus paquetes.
 
 Esta cuenta de control reúne los planes que dicen cómo sigue operando Puelche si la solución, un sitio o un proveedor fallan. Va más allá de la recuperación técnica (3.1.3): incluye contingencias auxiliares manuales cuando el proceso las admite. El despacho de 96 camiones entre 05:30 y 07:00 requiere continuidad tecnológica probada, sin sustitución manual ni interrupción.
 
-La Tabla «tab:T-14-16» presenta sus paquetes.
+La Tabla T14.16 presenta sus paquetes.
 
-**Diccionario de la cuenta 2.5. Fuente: elaboración propia.**
+**Tabla T14.16. Diccionario de la cuenta 2.5. Fuente: elaboración propia.**
 
 <a id="tab:T-14-16"></a>
 
@@ -1104,9 +1104,9 @@ La Tabla «tab:T-14-16» presenta sus paquetes.
 
 Esta cuenta de control reúne el trabajo de diseñar la solución con las personas que la van a usar, **antes** de construirla. Lo exige el Art. 26°. En Puelche es decisivo: preparadores con guantes a −22 °C, preventistas sin señal, conductores externos que se incorporan en minutos y almaceneros sin internet.
 
-La Tabla «tab:T-14-17» presenta sus paquetes.
+La Tabla T14.17 presenta sus paquetes.
 
-**Diccionario de la cuenta 2.6. Fuente: elaboración propia.**
+**Tabla T14.17. Diccionario de la cuenta 2.6. Fuente: elaboración propia.**
 
 <a id="tab:T-14-17"></a>
 
@@ -1124,9 +1124,9 @@ La fase 3 reúne 11 cuentas de control y 79 paquetes de trabajo.
 
 Esta cuenta de control reúne los lugares donde el software se construye, se prueba y se ejecuta, y las herramientas que lo mueven entre ellos. Las Bases exigen cinco ambientes: Desarrollo, QA, Preproducción, Producción y Recuperación ante desastres.
 
-La Tabla «tab:T-14-18» presenta sus paquetes.
+La Tabla T14.18 presenta sus paquetes.
 
-**Diccionario de la cuenta 3.1. Fuente: elaboración propia.**
+**Tabla T14.18. Diccionario de la cuenta 3.1. Fuente: elaboración propia.**
 
 <a id="tab:T-14-18"></a>
 
@@ -1142,9 +1142,9 @@ La Tabla «tab:T-14-18» presenta sus paquetes.
 
 Esta cuenta de control reúne la puesta en marcha de cada servicio de nube del T-11, antes de que el software lo use. Contratar el servicio no basta: hay que configurarlo según el plan de seguridad y conectarlo a la observabilidad.
 
-La Tabla «tab:T-14-19» presenta sus paquetes.
+La Tabla T14.19 presenta sus paquetes.
 
-**Diccionario de la cuenta 3.2. Fuente: elaboración propia.**
+**Tabla T14.19. Diccionario de la cuenta 3.2. Fuente: elaboración propia.**
 
 <a id="tab:T-14-19"></a>
 
@@ -1161,9 +1161,9 @@ La Tabla «tab:T-14-19» presenta sus paquetes.
 
 Esta cuenta de control reúne los servicios de software que usan los doce módulos. Se construyen primero porque, si fallan, fallan todos los módulos a la vez.
 
-La Tabla «tab:T-14-20» presenta sus paquetes.
+La Tabla T14.20 presenta sus paquetes.
 
-**Diccionario de la cuenta 3.3. Fuente: elaboración propia.**
+**Tabla T14.20. Diccionario de la cuenta 3.3. Fuente: elaboración propia.**
 
 <a id="tab:T-14-20"></a>
 
@@ -1180,9 +1180,9 @@ La Tabla «tab:T-14-20» presenta sus paquetes.
 
 Esta cuenta de control reúne los once programas que la Etapa 1 pone en producción en el mes 16. Cada uno es un paquete. Se construye por iteraciones de RUP y entra al H4 (mes 10) con QA superado.
 
-La Tabla «tab:T-14-21» presenta sus paquetes.
+La Tabla T14.21 presenta sus paquetes.
 
-**Diccionario de la cuenta 3.4. Fuente: elaboración propia.**
+**Tabla T14.21. Diccionario de la cuenta 3.4. Fuente: elaboración propia.**
 
 <a id="tab:T-14-21"></a>
 
@@ -1204,9 +1204,9 @@ La Tabla «tab:T-14-21» presenta sus paquetes.
 
 Esta cuenta de control reúne lo que la Etapa 2 pone en producción en el mes 21. Se construye entre los meses 13 y 18, mientras la Etapa 1 está en marcha blanca. Entra al H9 (mes 17) con QA superado.
 
-La Tabla «tab:T-14-22» presenta sus paquetes.
+La Tabla T14.22 presenta sus paquetes.
 
-**Diccionario de la cuenta 3.5. Fuente: elaboración propia.**
+**Tabla T14.22. Diccionario de la cuenta 3.5. Fuente: elaboración propia.**
 
 <a id="tab:T-14-22"></a>
 
@@ -1221,9 +1221,9 @@ La Tabla «tab:T-14-22» presenta sus paquetes.
 
 Esta cuenta de control reúne las conexiones con terceros que no están en la base compartida. Llevan el código de interfaz de la arquitectura del Capítulo 4. Cada integración tiene una conducta definida para cuando el tercero falla, para que una caída externa no detenga la operación.
 
-La Tabla «tab:T-14-23» presenta sus paquetes.
+La Tabla T14.23 presenta sus paquetes.
 
-**Diccionario de la cuenta 3.6. Fuente: elaboración propia.**
+**Tabla T14.23. Diccionario de la cuenta 3.6. Fuente: elaboración propia.**
 
 <a id="tab:T-14-23"></a>
 
@@ -1240,9 +1240,9 @@ La Tabla «tab:T-14-23» presenta sus paquetes.
 
 Esta cuenta de control reúne el traslado de los datos actuales a la nueva solución. Las Bases exigen dos ensayos antes de la migración definitiva y una conciliación sin diferencias no explicadas (Bases Técnicas Transversales, numeral 20.1).
 
-La Tabla «tab:T-14-24» presenta sus paquetes.
+La Tabla T14.24 presenta sus paquetes.
 
-**Diccionario de la cuenta 3.7. Fuente: elaboración propia.**
+**Tabla T14.24. Diccionario de la cuenta 3.7. Fuente: elaboración propia.**
 
 <a id="tab:T-14-24"></a>
 
@@ -1258,9 +1258,9 @@ La Tabla «tab:T-14-24» presenta sus paquetes.
 
 Esta cuenta de control reúne las pruebas que exigen las Bases antes del paso a producción de la Etapa 1, y el acta que las certifica. Cada prueba tiene su criterio de salida en el Bases Técnicas Transversales, numeral 20.1.
 
-La Tabla «tab:T-14-25» presenta sus paquetes.
+La Tabla T14.25 presenta sus paquetes.
 
-**Diccionario de la cuenta 3.8. Fuente: elaboración propia.**
+**Tabla T14.25. Diccionario de la cuenta 3.8. Fuente: elaboración propia.**
 
 <a id="tab:T-14-25"></a>
 
@@ -1279,9 +1279,9 @@ La Tabla «tab:T-14-25» presenta sus paquetes.
 
 Esta cuenta de control reúne las mismas pruebas para la Etapa 2, con una exigencia adicional: demostrar que la Etapa 1, ya en producción, no se degrada.
 
-La Tabla «tab:T-14-26» presenta sus paquetes.
+La Tabla T14.26 presenta sus paquetes.
 
-**Diccionario de la cuenta 3.9. Fuente: elaboración propia.**
+**Tabla T14.26. Diccionario de la cuenta 3.9. Fuente: elaboración propia.**
 
 <a id="tab:T-14-26"></a>
 
@@ -1299,9 +1299,9 @@ La Tabla «tab:T-14-26» presenta sus paquetes.
 
 Esta cuenta de control reúne los paquetes de construcción de las innovaciones 1, 2, 3 y 5. La parte de la innovación 4 que se hace antes de la Operación está en la fase 5 (5.4.3), porque es un diseño contractual. Las partes que ocurren durante la Operación están en la fase 8. Las metas son propuestas de diseño.
 
-La Tabla «tab:T-14-27» presenta sus paquetes.
+La Tabla T14.27 presenta sus paquetes.
 
-**Diccionario de la cuenta 3.10. Fuente: elaboración propia.**
+**Tabla T14.27. Diccionario de la cuenta 3.10. Fuente: elaboración propia.**
 
 <a id="tab:T-14-27"></a>
 
@@ -1328,9 +1328,9 @@ La Tabla «tab:T-14-27» presenta sus paquetes.
 
 Esta cuenta de control reúne lo que permite entender, mantener y traspasar la solución. Lo exige el Art. 77°.
 
-La Tabla «tab:T-14-28» presenta sus paquetes.
+La Tabla T14.28 presenta sus paquetes.
 
-**Diccionario de la cuenta 3.11. Fuente: elaboración propia.**
+**Tabla T14.28. Diccionario de la cuenta 3.11. Fuente: elaboración propia.**
 
 <a id="tab:T-14-28"></a>
 
@@ -1350,9 +1350,9 @@ La fase 4 reúne 3 cuentas de control y 10 paquetes de trabajo.
 
 Esta cuenta de control reúne los planes que dicen cómo entra la solución y cómo se vuelve atrás si algo falla.
 
-La Tabla «tab:T-14-29» presenta sus paquetes.
+La Tabla T14.29 presenta sus paquetes.
 
-**Diccionario de la cuenta 4.1. Fuente: elaboración propia.**
+**Tabla T14.29. Diccionario de la cuenta 4.1. Fuente: elaboración propia.**
 
 <a id="tab:T-14-29"></a>
 
@@ -1366,9 +1366,9 @@ La Tabla «tab:T-14-29» presenta sus paquetes.
 
 Esta cuenta de control reúne la operación supervisada de la Etapa 1, el acompañamiento posterior y el acta que la convierte en el registro oficial.
 
-La Tabla «tab:T-14-30» presenta sus paquetes.
+La Tabla T14.30 presenta sus paquetes.
 
-**Diccionario de la cuenta 4.2. Fuente: elaboración propia.**
+**Tabla T14.30. Diccionario de la cuenta 4.2. Fuente: elaboración propia.**
 
 <a id="tab:T-14-30"></a>
 
@@ -1382,9 +1382,9 @@ La Tabla «tab:T-14-30» presenta sus paquetes.
 
 Esta cuenta de control es igual a la 4.2, aplicada a la Etapa 2. Agrega una condición: convivir con la Etapa 1 ya en producción, con una sola fuente de verdad para los datos compartidos.
 
-La Tabla «tab:T-14-31» presenta sus paquetes.
+La Tabla T14.31 presenta sus paquetes.
 
-**Diccionario de la cuenta 4.3. Fuente: elaboración propia.**
+**Tabla T14.31. Diccionario de la cuenta 4.3. Fuente: elaboración propia.**
 
 <a id="tab:T-14-31"></a>
 
@@ -1403,9 +1403,9 @@ La fase 5 reúne 4 cuentas de control y 13 paquetes de trabajo.
 
 Esta cuenta de control reúne lo necesario para que el CLIENTE compre el hardware correcto y para comprobar que llegó bien.
 
-La Tabla «tab:T-14-32» presenta sus paquetes.
+La Tabla T14.32 presenta sus paquetes.
 
-**Diccionario de la cuenta 5.1. Fuente: elaboración propia.**
+**Tabla T14.32. Diccionario de la cuenta 5.1. Fuente: elaboración propia.**
 
 <a id="tab:T-14-32"></a>
 
@@ -1419,9 +1419,9 @@ La Tabla «tab:T-14-32» presenta sus paquetes.
 
 Esta cuenta de control reúne los servicios de software que LafroX contrata.
 
-La Tabla «tab:T-14-33» presenta sus paquetes.
+La Tabla T14.33 presenta sus paquetes.
 
-**Diccionario de la cuenta 5.2. Fuente: elaboración propia.**
+**Tabla T14.33. Diccionario de la cuenta 5.2. Fuente: elaboración propia.**
 
 <a id="tab:T-14-33"></a>
 
@@ -1435,9 +1435,9 @@ La Tabla «tab:T-14-33» presenta sus paquetes.
 
 Esta cuenta de control reúne los contratos de conexión de los sitios. El caso nombra la dependencia de un solo enlace en Concepción como un riesgo, y Los Ángeles tiene señal intermitente justo en su ventana de madrugada. Por eso cada sitio tiene un enlace principal y uno de respaldo de otro proveedor.
 
-La Tabla «tab:T-14-34» presenta sus paquetes.
+La Tabla T14.34 presenta sus paquetes.
 
-**Diccionario de la cuenta 5.3. Fuente: elaboración propia.**
+**Tabla T14.34. Diccionario de la cuenta 5.3. Fuente: elaboración propia.**
 
 <a id="tab:T-14-34"></a>
 
@@ -1451,9 +1451,9 @@ La Tabla «tab:T-14-34» presenta sus paquetes.
 
 Esta cuenta de control reúne los acuerdos sin los cuales la solución no puede salir a la ruta, y la fórmula contractual de la innovación 4.
 
-La Tabla «tab:T-14-35» presenta sus paquetes.
+La Tabla T14.35 presenta sus paquetes.
 
-**Diccionario de la cuenta 5.4. Fuente: elaboración propia.**
+**Tabla T14.35. Diccionario de la cuenta 5.4. Fuente: elaboración propia.**
 
 <a id="tab:T-14-35"></a>
 
@@ -1472,9 +1472,9 @@ La fase 6 reúne 6 cuentas de control y 24 paquetes de trabajo.
 
 Esta cuenta de control reúne el trabajo de convertir la sala de Talca en una sala técnica que cumpla las Bases (BTT, capítulo 6). Termina con un acta que habilita el montaje de los racks.
 
-La Tabla «tab:T-14-36» presenta sus paquetes.
+La Tabla T14.36 presenta sus paquetes.
 
-**Diccionario de la cuenta 6.1. Fuente: elaboración propia.**
+**Tabla T14.36. Diccionario de la cuenta 6.1. Fuente: elaboración propia.**
 
 <a id="tab:T-14-36"></a>
 
@@ -1490,9 +1490,9 @@ La Tabla «tab:T-14-36» presenta sus paquetes.
 
 Esta cuenta de control reúne la red física de cables que conecta los equipos de la sala y de las bodegas.
 
-La Tabla «tab:T-14-37» presenta sus paquetes.
+La Tabla T14.37 presenta sus paquetes.
 
-**Diccionario de la cuenta 6.2. Fuente: elaboración propia.**
+**Tabla T14.37. Diccionario de la cuenta 6.2. Fuente: elaboración propia.**
 
 <a id="tab:T-14-37"></a>
 
@@ -1506,9 +1506,9 @@ La Tabla «tab:T-14-37» presenta sus paquetes.
 
 Esta cuenta de control reúne el montaje de los equipos de cómputo y comunicaciones en cada uno de los cinco sitios.
 
-La Tabla «tab:T-14-38» presenta sus paquetes.
+La Tabla T14.38 presenta sus paquetes.
 
-**Diccionario de la cuenta 6.3. Fuente: elaboración propia.**
+**Tabla T14.38. Diccionario de la cuenta 6.3. Fuente: elaboración propia.**
 
 <a id="tab:T-14-38"></a>
 
@@ -1523,9 +1523,9 @@ La Tabla «tab:T-14-38» presenta sus paquetes.
 
 Esta cuenta de control reúne lo que protege físicamente a la sala y a sus respaldos.
 
-La Tabla «tab:T-14-39» presenta sus paquetes.
+La Tabla T14.39 presenta sus paquetes.
 
-**Diccionario de la cuenta 6.4. Fuente: elaboración propia.**
+**Tabla T14.39. Diccionario de la cuenta 6.4. Fuente: elaboración propia.**
 
 <a id="tab:T-14-39"></a>
 
@@ -1539,9 +1539,9 @@ La Tabla «tab:T-14-39» presenta sus paquetes.
 
 Esta cuenta de control reúne la puesta en marcha de los equipos que usan las personas en la bodega y en la ruta. Se instalan por olas, antes de que cada ola empiece.
 
-La Tabla «tab:T-14-40» presenta sus paquetes.
+La Tabla T14.40 presenta sus paquetes.
 
-**Diccionario de la cuenta 6.5. Fuente: elaboración propia.**
+**Tabla T14.40. Diccionario de la cuenta 6.5. Fuente: elaboración propia.**
 
 <a id="tab:T-14-40"></a>
 
@@ -1558,9 +1558,9 @@ La Tabla «tab:T-14-40» presenta sus paquetes.
 
 Esta cuenta de control reúne lo necesario para que el hardware instalado funcione como plataforma: el software de base, los enlaces y la prueba de autonomía.
 
-La Tabla «tab:T-14-41» presenta sus paquetes.
+La Tabla T14.41 presenta sus paquetes.
 
-**Diccionario de la cuenta 6.6. Fuente: elaboración propia.**
+**Tabla T14.41. Diccionario de la cuenta 6.6. Fuente: elaboración propia.**
 
 <a id="tab:T-14-41"></a>
 
@@ -1578,9 +1578,9 @@ La fase 7 reúne 3 cuentas de control y 13 paquetes de trabajo.
 
 Esta cuenta de control reúne la capacitación de cada grupo según su rol y su situación.
 
-La Tabla «tab:T-14-42» presenta sus paquetes.
+La Tabla T14.42 presenta sus paquetes.
 
-**Diccionario de la cuenta 7.1. Fuente: elaboración propia.**
+**Tabla T14.42. Diccionario de la cuenta 7.1. Fuente: elaboración propia.**
 
 <a id="tab:T-14-42"></a>
 
@@ -1597,9 +1597,9 @@ La Tabla «tab:T-14-42» presenta sus paquetes.
 
 Esta cuenta de control reúne el acompañamiento de quienes no basta con capacitar.
 
-La Tabla «tab:T-14-43» presenta sus paquetes.
+La Tabla T14.43 presenta sus paquetes.
 
-**Diccionario de la cuenta 7.2. Fuente: elaboración propia.**
+**Tabla T14.43. Diccionario de la cuenta 7.2. Fuente: elaboración propia.**
 
 <a id="tab:T-14-43"></a>
 
@@ -1615,9 +1615,9 @@ La Tabla «tab:T-14-43» presenta sus paquetes.
 
 Esta cuenta de control reúne las pruebas con que se demuestra que cada persona sabe usar la solución. Es una de las seis condiciones del Art. 17.3.
 
-La Tabla «tab:T-14-44» presenta sus paquetes.
+La Tabla T14.44 presenta sus paquetes.
 
-**Diccionario de la cuenta 7.3. Fuente: elaboración propia.**
+**Tabla T14.44. Diccionario de la cuenta 7.3. Fuente: elaboración propia.**
 
 <a id="tab:T-14-44"></a>
 
@@ -1634,9 +1634,9 @@ La fase 8 reúne 5 cuentas de control y 26 paquetes de trabajo.
 
 Esta cuenta de control reúne los servicios que mantienen la solución funcionando cada día y la actualización anual del Plan de Reversibilidad, que exige el Art. 77°.
 
-La Tabla «tab:T-14-45» presenta sus paquetes.
+La Tabla T14.45 presenta sus paquetes.
 
-**Diccionario de la cuenta 8.1. Fuente: elaboración propia.**
+**Tabla T14.45. Diccionario de la cuenta 8.1. Fuente: elaboración propia.**
 
 <a id="tab:T-14-45"></a>
 
@@ -1653,9 +1653,9 @@ La Tabla «tab:T-14-45» presenta sus paquetes.
 
 Esta cuenta de control reúne el trabajo que mantiene la solución sana y actualizada, separado por tipo: software, ciberseguridad y hardware.
 
-La Tabla «tab:T-14-46» presenta sus paquetes.
+La Tabla T14.46 presenta sus paquetes.
 
-**Diccionario de la cuenta 8.2. Fuente: elaboración propia.**
+**Tabla T14.46. Diccionario de la cuenta 8.2. Fuente: elaboración propia.**
 
 <a id="tab:T-14-46"></a>
 
@@ -1673,9 +1673,9 @@ La Tabla «tab:T-14-46» presenta sus paquetes.
 
 Esta cuenta de control reúne la parte de las innovaciones que ocurre después del mes 21. Las metas son propuestas de diseño.
 
-La Tabla «tab:T-14-47» presenta sus paquetes.
+La Tabla T14.47 presenta sus paquetes.
 
-**Diccionario de la cuenta 8.3. Fuente: elaboración propia.**
+**Tabla T14.47. Diccionario de la cuenta 8.3. Fuente: elaboración propia.**
 
 <a id="tab:T-14-47"></a>
 
@@ -1692,9 +1692,9 @@ La Tabla «tab:T-14-47» presenta sus paquetes.
 
 Esta cuenta de control reúne los informes y las tareas que las Bases fijan con una periodicidad durante la Operación y que no forman parte de los servicios diarios.
 
-La Tabla «tab:T-14-48» presenta sus paquetes.
+La Tabla T14.48 presenta sus paquetes.
 
-**Diccionario de la cuenta 8.4. Fuente: elaboración propia.**
+**Tabla T14.48. Diccionario de la cuenta 8.4. Fuente: elaboración propia.**
 
 <a id="tab:T-14-48"></a>
 
@@ -1709,9 +1709,9 @@ La Tabla «tab:T-14-48» presenta sus paquetes.
 
 Esta cuenta de control reúne la capacitación y el traspaso de conocimiento que las Bases exigen después de la implementación.
 
-La Tabla «tab:T-14-49» presenta sus paquetes.
+La Tabla T14.49 presenta sus paquetes.
 
-**Diccionario de la cuenta 8.5. Fuente: elaboración propia.**
+**Tabla T14.49. Diccionario de la cuenta 8.5. Fuente: elaboración propia.**
 
 <a id="tab:T-14-49"></a>
 
@@ -1729,9 +1729,9 @@ La fase 9 reúne 2 cuentas de control y 4 paquetes de trabajo.
 
 Esta cuenta de control reúne lo que se entrega cuando termina la implementación.
 
-La Tabla «tab:T-14-50» presenta sus paquetes.
+La Tabla T14.50 presenta sus paquetes.
 
-**Diccionario de la cuenta 9.1. Fuente: elaboración propia.**
+**Tabla T14.50. Diccionario de la cuenta 9.1. Fuente: elaboración propia.**
 
 <a id="tab:T-14-50"></a>
 
@@ -1744,9 +1744,9 @@ La Tabla «tab:T-14-50» presenta sus paquetes.
 
 Esta cuenta de control reúne el traspaso final y la eliminación de los datos personales.
 
-La Tabla «tab:T-14-51» presenta sus paquetes.
+La Tabla T14.51 presenta sus paquetes.
 
-**Diccionario de la cuenta 9.2. Fuente: elaboración propia.**
+**Tabla T14.51. Diccionario de la cuenta 9.2. Fuente: elaboración propia.**
 
 <a id="tab:T-14-51"></a>
 
@@ -1757,9 +1757,9 @@ La Tabla «tab:T-14-51» presenta sus paquetes.
 
 ## 3 Carta Gantt de 56 meses
 
-La carta Gantt cubre los 56 meses del contrato y muestra las ventanas de marcha blanca, los pasos a producción y el inicio de la fase de Operación, como exige el Formulario T-14. Su estructura contractual la fija el Art. 17° de las Bases Administrativas, y los hitos y sus meses, el Formulario E-25. La Tabla «tab:T14-gantt» presenta esa estructura fija, sobre la cual se programan los paquetes de la sección 2.
+La carta Gantt cubre los 56 meses del contrato y muestra las ventanas de marcha blanca, los pasos a producción y el inicio de la fase de Operación, como exige el Formulario T-14. Su estructura contractual la fija el Art. 17° de las Bases Administrativas, y los hitos y sus meses, el Formulario E-25. La Tabla T14.52 presenta esa estructura fija, sobre la cual se programan los paquetes de la sección 2.
 
-**Períodos contractuales e hitos. Fuente: Bases Administrativas, Art. 17°, y Formulario E-25.**
+**Tabla T14.52. Períodos contractuales e hitos. Fuente: Bases Administrativas, Art. 17°, y Formulario E-25.**
 
 <a id="tab:T14-gantt"></a>
 
@@ -1773,10 +1773,9 @@ La carta Gantt cubre los 56 meses del contrato y muestra las ventanas de marcha 
 | Etapa 2 · Producción y aceptación final | 21 | H12 (mes 21) |
 | Operación | 21 a 56 | Hito mensual (36 pagos) |
 
-Ningún paso a producción, inicio de ola, corte de datos ni intervención con impacto en la facturación o en el inventario valorizado se programa en septiembre, en diciembre ni en los tres primeros días hábiles de un mes (Caso 02, secciones 13.2 y 13.3). La correspondencia entre meses contractuales y meses calendario depende de la fecha de inicio del contrato; se analiza en la sección 7.3.2 del Subdocumento 7 y en su Anexo 7.A, que adoptan como supuesto un inicio en febrero de 2027. La Figura «fig:T14-56» presenta la carta de los 56 meses por período contractual y por fase.
+Ningún paso a producción, inicio de ola, corte de datos ni intervención con impacto en la facturación o en el inventario valorizado se programa en septiembre, en diciembre ni en los tres primeros días hábiles de un mes (Caso 02, secciones 13.2 y 13.3). La correspondencia entre meses contractuales y meses calendario depende de la fecha de inicio del contrato; se analiza en la sección 7.3.2 del Subdocumento 7 y en su Anexo 7.A, que adoptan como supuesto un inicio en febrero de 2027. La Figura T14.1 presenta la carta de los 56 meses por período contractual y por fase.
 
   
-  **Descripción textual de figura.** No sustituye la revisión visual del PDF.
 - Periodos del Art. 17° e hitos del E-25
 - hito mensual
 - Fases de la EDT
@@ -1785,103 +1784,15 @@ Ningún paso a producción, inicio de ola, corte de datos ni intervención con i
 - Septiembre y diciembre (sin pasos a producción)
 - Hito del Formulario E-25
   
-**Figura: Carta Gantt de los 56 meses por período contractual y por fase, con inicio en febrero de 2027. Fuente: elaboración propia a partir de las Bases Administrativas, Art. 17°, del Formulario E-25 y de la sección 2 de este formulario.**
+**Figura T14.1. Carta Gantt de los 56 meses por período contractual y por fase, con inicio en febrero de 2027. Fuente: elaboración propia a partir de las Bases Administrativas, Art. 17°, del Formulario E-25 y de la sección 2 de este formulario.**
 
   <a id="fig:T14-56"></a>
 
-La carta confirma que los períodos fijos del Art. 17° se cumplen mes a mes y que ningún paso a producción cae en una columna de congelamiento. Las Figuras «fig:T14-cca» y «fig:T14-ccb» detallan los meses 1 a 21 por cuenta de control. Cada barra se dibuja con el período del diccionario; cuando ese período se expresa respecto de un hito («antes del H4»), la barra ocupa la ventana entre la condición que habilita la cuenta y ese hito, y las barras claras indican trabajo continuo o periódico.
+La carta confirma que los períodos fijos del Art. 17° se cumplen mes a mes y que ningún paso a producción cae en una columna de congelamiento. La sección 3.1 detalla la programación por cuenta de control.
 
-  
-  **Descripción textual de figura.** No sustituye la revisión visual del PDF.
-- H1
-- H2
-- H3
-- H4
-- H5
-- H6
-- H8
-- H7
-- H9
-- H10
-- H11
-- H12
-- **Hitos E-25**
-- **1.1** Definición inicial del proyecto
-- **1.2** Alcance del proyecto
-- **1.3** Planificación del proyecto
-- **1.4** Gestión de interesados y comunicaciones
-- **1.5** Gestión de calidad
-- **1.6** Gestión de riesgos
-- **1.7** Plan de Reversibilidad
-- **1.8** Gobierno y control del proyecto
-- **1.9** Cumplimiento normativo y contractual
-- **2.1** Arquitectura de la solución
-- **2.2** Diseño de la seguridad
-- **2.3** Diseño de la sala técnica y de los racks
-- **2.4** Validación de diseños
-- **2.5** Continuidad del negocio
-- **2.6** Experiencia de usuario
-- **3.1** Ambientes y cadena de desarrollo
-- **3.2** Servicios de nube de la plataforma
-- **3.3** Base compartida
-- **3.4** Módulos de la Etapa 1
-- **3.5** Módulos de la Etapa 2
-- **3.6** Integraciones externas
-- **3.7** Migración de datos
-- **3.8** Pruebas de la Etapa 1
-- **3.9** Pruebas de la Etapa 2
-- **3.10** Innovaciones
-- **3.11** Documentación técnica
-- Ejecución
-- Continua o periódica
-- Marchas blancas (meses 13 a 15 y 19 a 20)
-  
-**Figura: Carta Gantt de los meses 1 a 21 por cuenta de control, fases 1 a 3. Fuente: elaboración propia a partir de la sección 2 de este formulario.**
+Según la carta de la sección 3.1, la sala técnica y el borde de los sitios se instalan entre los meses 3 y 5, la base compartida y los módulos de la Etapa 1 se construyen entre los meses 5 y 8, y las pruebas de integración y certificación de la Etapa 1 ocupan los meses 9 y 10, antes del H5 del mes 12. Las cuentas de la Etapa 2 (3.5, 3.9, 4.3 y la segunda parte de 5.4) se ubican entre los meses 13 y 22, con los módulos en el mes 15 y la integración y certificación en los meses 16 y 17. Las cuentas de capacitación y de gestión del cambio se intensifican desde el mes 10, en preparación de cada marcha blanca.
 
-  <a id="fig:T14-cca"></a>
-
-  
-  **Descripción textual de figura.** No sustituye la revisión visual del PDF.
-- H1
-- H2
-- H3
-- H4
-- H5
-- H6
-- H8
-- H7
-- H9
-- H10
-- H11
-- H12
-- **Hitos E-25**
-- **4.1** Plan de implantación
-- **4.2** Marcha blanca y producción de la Etapa 1
-- **4.3** Marcha blanca y producción de la Etapa 2
-- **5.1** Hardware e infraestructura
-- **5.2** Servicios de nube y licencias
-- **5.3** Enlaces de comunicaciones
-- **5.4** Acuerdos con terceros
-- **6.1** Adecuación de la sala técnica de Talca
-- **6.2** Cableado estructurado
-- **6.3** Montaje de racks y gabinetes
-- **6.4** Sistemas de seguridad física
-- **6.5** Equipamiento de campo
-- **6.6** Configuración de la infraestructura de los sitios
-- **7.1** Capacitación por roles
-- **7.2** Gestión del cambio
-- **7.3** Evaluaciones y certificaciones
-- Ejecución
-- Continua o periódica
-- Marchas blancas (meses 13 a 15 y 19 a 20)
-  
-**Figura: Carta Gantt de los meses 1 a 21 por cuenta de control, fases 4 a 7. Fuente: elaboración propia a partir de la sección 2 de este formulario.**
-
-  <a id="fig:T14-ccb"></a>
-
-Las dos figuras conservan la programación anterior y se reemplazan por la carta vigente de la sección 3.1. Según esa carta, la sala técnica y el borde de los sitios se instalan entre los meses 3 y 5, la base compartida y los módulos de la Etapa 1 se construyen entre los meses 5 y 8, y las pruebas de integración y certificación de la Etapa 1 ocupan los meses 9 y 10, antes del H5 del mes 12. Las cuentas de la Etapa 2 (3.5, 3.9, 4.3 y la segunda parte de 5.4) se ubican entre los meses 13 y 22, con los módulos en el mes 15 y la integración y certificación en los meses 16 y 17. Las cuentas de capacitación y de gestión del cambio se intensifican desde el mes 10, en preparación de cada marcha blanca.
-
-### 3.1 Carta Gantt vigente por cuenta de control
+### 3.1 Carta Gantt por cuenta de control
 
 La carta siguiente reemplaza como fuente vigente a las figuras anteriores, que conservan la programación previa a la reconciliación de ventanas. Cada barra va desde el primer mes del primer paquete de la cuenta hasta el último mes del último paquete, según el cronograma por actividad del Formulario T-15 (secciones 4.2 y 6.1); los hitos se ubican al cierre de su mes, salvo H6 y H11, que marcan el inicio de una marcha blanca. El detalle por paquete, con sus 222 ventanas, está en esa misma sección, y la red con revisiones del CLIENTE y ruta crítica, en su sección 5. Las cuentas recurrentes (1.4, 1.8, 1.9, 7.1 y 8) se muestran como barras continuas, aunque su trabajo se ejecute con la frecuencia que fija este diccionario.
 
@@ -1983,10 +1894,10 @@ Las Bases se citan con su documento y el artículo, capítulo o sección.
 
 ## Declaración de uso de IA
 
-La tabla declara el uso de IA en este formulario; se consolida en la declaración del SD7 y en el Formulario A-6.
+En cumplimiento de la sección 7.2 de las Aclaraciones de la licitación, la tabla siguiente declara el uso de herramientas de inteligencia artificial en este formulario, con la revisión humana de cada parte. La declaración se consolida en el Formulario A-6.
 
 | Sección | Herramienta | Finalidad del uso | Nivel en texto | Nivel en diagramas | Revisión humana (quién y qué verificó) |
 | --- | --- | --- | --- | --- | --- |
-| 1 EDT | Claude Code | Estructura a partir de la EDT de trabajo del equipo | Alto | Alto (descripción de figura) | No documentada |
-| 2 Diccionario | Claude Code; Codex | Diccionario, periodos y criterios; ajustes de periodos, reversibilidad, salida y calidad (7 de octubre de 2026) | Alto | Ninguno | No documentada |
-| 3 Carta Gantt | Claude Code | Estructura contractual; carta vigente en Mermaid generada desde las ventanas del T-15 (7 de octubre de 2026) | Alto | Alto | No documentada |
+| 1 EDT | Claude Code | Estructura a partir de la EDT de trabajo del equipo | Alto | Alto (descripción de figura) | [[REVISIÓN HUMANA]] |
+| 2 Diccionario | Claude Code; Codex | Diccionario, periodos y criterios; ajustes de periodos, reversibilidad, salida y calidad | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| 3 Carta Gantt | Claude Code | Estructura contractual; carta vigente en Mermaid generada desde las ventanas del T-15 | Alto | Alto | [[REVISIÓN HUMANA]] |

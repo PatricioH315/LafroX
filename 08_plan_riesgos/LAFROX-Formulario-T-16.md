@@ -1,6 +1,6 @@
 # LafroX — Formulario T-16: Plan de riesgos
 
-El registro sigue la norma ISO 31000 (International Organization for Standardization [ISO], 2018), conforme al RT-19.04 de las Bases Técnicas Transversales. Prob. e Impacto usan las escalas ordinales 1–5 del SD8, sección 8.1.3, donde también se calibran en tramos de probabilidad y fracción de esfuerzo. Expos. = Prob. × Impacto. Es la evaluación inicial; ningún riesgo tiene cierre acreditado. Detalle y NPR en Anexos 8.A/8.B; el valor esperado en HH de cada riesgo está en el Anexo 8.B, Tabla B.2. Los responsables dirigen equipos; nominarlos no acredita dotación.
+El registro sigue la norma ISO 31000 (International Organization for Standardization [ISO], 2018), conforme al RT-19.04 de las Bases Técnicas Transversales. Prob. e Impacto usan las escalas ordinales 1–5 del SD8, sección 8.1.3, donde también se calibran en tramos de probabilidad y fracción de esfuerzo. Expos. = Prob. × Impacto. Es la evaluación inicial; ningún riesgo tiene cierre acreditado. Detalle y NPR en Anexos 8.A/8.B; el valor esperado en HH de cada riesgo está en el Anexo 8.B, Tabla B.2. Cada responsable dirige el equipo que ejecuta la respuesta.
 
 | ID | Riesgo | Categoría | Prob. | Impacto | Expos. | Mitigación | Responsable |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -28,7 +28,7 @@ El registro sigue la norma ISO 31000 (International Organization for Standardiza
 | R8-22 | Mesa cubre horario pero no SLA | Operación | 4 | 4 | 16 | Medir demanda por intervalo y agentes/competencias;04–22 lunes–sábado y24×7 peaks/críticos; plazo: Antes H7/mes21; diario peaks. Disparador y contingencia: Anexo 8.A R8-22 | SRE |
 | R8-23 | Frío o sensores no producen evidencia íntegra | Operación | 4 | 5 | 20 | Probar autonomía, almacenamiento/calibración y asociación sensor/lote/tiempo; plazo: Antes ola1/reparto; continuo. Disparador y contingencia: Anexo 8.A R8-23 | SRE |
 | R8-24 | Filtración en telemetría o reproducción | Seguridad | 3 | 5 | 15 | Enmascarar, controlar acceso/retención y revisar conjuntos; plazo: Antes usar trazas; cada versión. Disparador y contingencia: Anexo 8.A R8-24 | SEG |
-| R8-25 | INN-01 no logra seguimiento posentrega | Organizacional | 4 | 3 | 12 | Piloto asistido y comparación con registro base, sin exigir conexión al almacenero; plazo: Piloto meses11–15. Disparador y contingencia: Anexo 8.A R8-25 | IMP |
+| R8-25 | INN-01 no logra seguimiento posentrega | Organizacional | 4 | 3 | 12 | Piloto asistido; no liberar sin cumplir I-01A; confirmar el saldo en la visita; catálogo como condición de activación; plazo: Piloto meses11–15. Disparador y contingencia: Anexo 8.A R8-25 | IMP |
 | R8-26 | INN-02 no reproduce fallas relevantes | Técnico | 3 | 4 | 12 | Ensayar corte/reinicio/reintento con conjuntos protegidos; plazo: Validación meses11–15; operación. Disparador y contingencia: Anexo 8.A R8-26 | CAL |
 | R8-27 | INN-03 estima vida remanente insegura | Técnico | 4 | 5 | 20 | Validar con Calidad y regla conservadora; no ampliar vencimiento por inferencia; plazo: Antes uso meses11–15; revisión26/32/38/44/50/56. Disparador y contingencia: Anexo 8.A R8-27 | DAT |
 | R8-28 | INN-04 medición variable genera disputa | Proyecto | 3 | 4 | 12 | Acordar fórmula/datos/auditoría; valores sólo en Oferta Económica; plazo: Modelo17–20; sombra21–23; antes mes24. Disparador y contingencia: Anexo 8.A R8-28 | JP |
@@ -49,6 +49,8 @@ El registro sigue la norma ISO 31000 (International Organization for Standardiza
 
 ## Declaración de uso de IA
 
+En cumplimiento de la sección 7.2 de las Aclaraciones de la licitación, la tabla siguiente declara el uso de herramientas de inteligencia artificial en este formulario, con la revisión humana de cada parte. La declaración se consolida en el Formulario A-6.
+
 | Sección | Herramienta | Finalidad del uso | Nivel en texto | Nivel en diagramas | Revisión humana (quién y qué verificó) |
 | --- | --- | --- | --- | --- | --- |
-| Formulario T-16 | Codex; Claude Code | Tabla de riesgos desde las fichas del Anexo 8.A (6 de octubre de 2026); actualización de R8-11 y referencias (7 de octubre de 2026); encabezado alineado con la calibración de la sección 8.1.3 (7 de octubre de 2026) | Alto | Ninguno | No documentada |
+| Formulario T-16 | Codex; Claude Code | Tabla de riesgos desde las fichas del Anexo 8.A; actualización de R8-11 y referencias; encabezado alineado con la calibración de la sección 8.1.3 | Alto | Ninguno | [[REVISIÓN HUMANA]] |

@@ -1,11 +1,8 @@
-<!-- Página 1 -->
 
 # LafroX SpA
 
 **VERSIÓN FINAL PARA ENTREGA**
 
-> **[Descripción de imagen]**
-> En la franja superior negra de la portada aparece el logotipo corporativo de LafroX: una cabeza de zorro estilizada mediante trazos angulares de color naranja, ubicada a la izquierda del texto blanco “LafroX SpA”. La franja termina en la parte inferior con líneas diagonales naranjas de distinto grosor que atraviesan horizontalmente la portada.
 
 ## LICITACIÓN PÚBLICA
 
@@ -22,8 +19,6 @@ Caso 02 — Logística
 
 Formulario T-6 · Formulario T-6
 
----
-
 **MANDANTE**  
 Distribuidora Puelche S.A.
 
@@ -38,27 +33,14 @@ Jefe de Proyecto y Apoderado
 contacto@lafrox.cl  
 +56 32 250 4100
 
----
-
 **FECHA DE EMISIÓN**  
 05 de octubre de 2026
-
----
 
 **FIRMA DEL REPRESENTANTE LEGAL**
 
 Alex Aravena  
 Jefe de Proyecto y Apoderado · LafroX SpA
 
-LAFROX-Formulario-T-6.pdf  
-1
-
----
-
-<!-- Página 2 -->
-
-> **[Descripción de imagen]**
-> En el encabezado superior izquierdo aparece una versión pequeña y monocromática del logotipo corporativo: una cabeza de zorro estilizada junto al texto “LafroX SpA”.
 
 # Índice general
 
@@ -69,53 +51,17 @@ LAFROX-Formulario-T-6.pdf
 | Lista de figuras | 4 |
 | Formulario T-6: Experiencia del Proponente | 5 |
 
-LafroX SpA  
-Propuesta Técnica  
-2
-
----
-
-<!-- Página 3 -->
-
-> **[Descripción de imagen]**
-> En el encabezado superior izquierdo aparece una versión pequeña y monocromática del logotipo corporativo: una cabeza de zorro estilizada junto al texto “LafroX SpA”.
 
 # Lista de tablas
 
 Tabla 1 Detalle de Experiencia de LafroX (Proyectos de Complejidad Equivalente) 6
 
-LafroX SpA  
-Propuesta Técnica  
-3
-
----
-
-<!-- Página 4 -->
-
-> **[Descripción de imagen]**
-> En el encabezado superior izquierdo aparece una versión pequeña y monocromática del logotipo corporativo: una cabeza de zorro estilizada junto al texto “LafroX SpA”.
 
 # Lista de figuras
-
-LafroX SpA  
-Propuesta Técnica  
-4
-
----
-
-<!-- Página 5 -->
 
 # Formulario T-6: Experiencia del Proponente
 
 El presente formulario detalla tres proyectos de misión crítica finalizados y en operación continua desarrollados por LafroX en los últimos cinco años, en estricto cumplimiento con los requisitos del Artículo 34° de las Bases Administrativas (experiencia en la industria logística, arquitectura híbrida y operación bajo SLA de disponibilidad ≥ 99,5 %). Los Proyectos 1 y 2 son híbridos (nube pública y componentes on-premise); los Proyectos 1, 2 y 3 operan con SLA ≥ 99,5 %.
-
-LafroX SpA  
-Propuesta Técnica  
-5
-
----
-
-<!-- Página 6 -->
 
 ## Tabla 1. Detalle de Experiencia de LafroX (Proyectos de Complejidad Equivalente)
 
@@ -131,14 +77,6 @@ Propuesta Técnica
 > **[Descripción de elemento visual]**
 > La información anterior se presenta originalmente como una tabla de cuatro columnas —“Campo”, “Proyecto 1”, “Proyecto 2” y “Proyecto 3”— con líneas horizontales que separan cada fila. En los márgenes laterales aparecen elementos de identidad visual de LafroX: una franja negra con borde naranja y, en el lado opuesto, el logotipo pequeño de la empresa junto al texto “LafroX SpA”.
 
-LafroX SpA  
-Propuesta Técnica  
-6
-
----
-
-<!-- Página 7 -->
-
 ## Tabla 1. Detalle de Experiencia de LafroX (Continuación)
 
 | Campo | Proyecto 1 | Proyecto 2 | Proyecto 3 |
@@ -151,14 +89,6 @@ Propuesta Técnica
 > **[Descripción de elemento visual]**
 > La continuación de la tabla mantiene las mismas cuatro columnas y el mismo diseño de líneas horizontales. En los márgenes laterales se repite la identidad visual de LafroX, con una franja negra y naranja y el logotipo pequeño acompañado por el nombre de la empresa.
 
-LafroX SpA  
-Propuesta Técnica  
-7
-
----
-
-<!-- Página 8 -->
-
 ## Tabla 1. Detalle de Experiencia de LafroX (Continuación)
 
 | Campo | Proyecto 1 | Proyecto 2 | Proyecto 3 |
@@ -168,6 +98,10 @@ Propuesta Técnica
 > **[Descripción de elemento visual]**
 > La última parte de la tabla conserva las cuatro columnas y muestra una única fila dedicada a las contrapartes de referencia y sus datos de contacto. En los márgenes laterales se mantiene la misma identidad visual corporativa de las páginas anteriores: franja negra con detalle naranja y el logotipo pequeño de LafroX junto al nombre de la empresa.
 
-LafroX SpA  
-Propuesta Técnica  
-8
+## Declaración de uso de IA
+
+En cumplimiento de la sección 7.2 de las Aclaraciones de la licitación, la tabla siguiente declara el uso de herramientas de inteligencia artificial en este formulario, con la revisión humana de cada parte. La declaración se consolida en el Formulario A-6.
+
+| Sección | Herramienta | Finalidad del uso | Nivel en texto | Nivel en diagramas | Revisión humana (quién y qué verificó) |
+| --- | --- | --- | --- | --- | --- |
+| Formulario T-6 | Claude / Gemini | Disposición tabular del formulario | Bajo | Ninguno | Alex Aravena (JP): Validación de los 11 campos exigidos y coherencia con la sección 1.4 |

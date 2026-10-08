@@ -410,7 +410,7 @@ Los requisitos del capítulo 05 se reproducen en la Tabla T12.5.
 | RT-05.27 | El CLIENTE podrá construir sus propios informes sin intervención del ADJUDICATARIO, mediante una herramienta de autoservicio con modelo semántico documentado. | Obligatorio | Sí (E1 y E2) | Base compartida: integración y datos | 3.3.3; 3.4.2 | Inspección documental del requisito «El CLIENTE podrá construir sus propios informes sin intervención del ADJUDICATARIO» |
 | RT-05.28 | Todo informe será exportable en formatos abiertos y programable para envío automático por calendario. | Obligatorio | Sí (E1 y E2) | Base compartida: integración y datos | 3.3.3; 3.4.2 | Informe o registro periódico del requisito «Todo informe será exportable en formatos abiertos y programable para envío automático por…» |
 | RT-05.29 | La latencia máxima entre la ocurrencia de una transacción y su disponibilidad en la capa analítica será la que fije el caso y, en su defecto, no superará las 4 horas. | Según caso | Sí (E1 y E2) | M10 Analítica | Anexo 3.A/3.B: RF-11.06, RF-11.07, RNF-11.01 | Prueba en cámara y vehículo con registro térmico (RF-11.06) |
-| RT-05.30 | Se valorará la incorporación de analítica predictiva pertinente al proceso del caso, con el modelo, sus variables, su métrica de desempeño y su plan de reentrenamiento documentados. | Deseable | No ofertado | — | — | Requisito deseable no comprometido en esta oferta |
+| RT-05.30 | Se valorará la incorporación de analítica predictiva pertinente al proceso del caso, con el modelo, sus variables, su métrica de desempeño y su plan de reentrenamiento documentados. | Deseable | Sí (E1) | Innovación 3 (M10 Analítica; M9 Calidad y trazabilidad) | Capítulo 13, sección 13.3.2 | Modelo, variables, métrica (I-03B) y plan de recalibración documentados; validación en marcha blanca (3.10.3.4) |
 
 Los requisitos del capítulo 06 se reproducen en la Tabla T12.6.
 
@@ -842,14 +842,14 @@ Los requisitos del capítulo 26 se reproducen en la Tabla T12.26.
 
 | **Código** | **Exigencia** | **Carácter** | **Cumple** | **Componente** | **Sección** | **Evidencia** |
 | --- | --- | --- | --- | --- | --- | --- |
-| RT-26.01 | Cada innovación se ubicará explícitamente en la arquitectura: qué capa la contiene, qué componentes la implementan y qué interfaces consume o expone. | Obligatorio | Sí (E1 y E2) | Innovaciones de la oferta | 3.2.1 | Verificación de configuración en marcha blanca del requisito «Cada innovación se ubicará explícitamente en la arquitectura» |
-| RT-26.02 | Cada innovación identificará los paquetes de la estructura de descomposición del trabajo que la ejecutan y el mes del cronograma en que se materializa. | Obligatorio | Sí (E1 y E2) | Innovaciones de la oferta | 3.2.1 | Verificación de configuración en marcha blanca del requisito «Cada innovación identificará los paquetes de la estructura de descomposición del trabajo…» |
-| RT-26.03 | Las innovaciones de base tecnológica declararán el nivel de madurez de la tecnología con la escala utilizada y citarán las fuentes en norma APA 7.ª edición. | Obligatorio | Sí (E1 y E2) | Innovaciones de la oferta | 3.2.1 | Inspección documental del requisito «Las innovaciones de base tecnológica declararán el nivel de madurez de la tecnología con…» |
-| RT-26.04 | Cada innovación declarará su riesgo de adopción, su probabilidad, su impacto, la estrategia de mitigación y el plan de contingencia si no rinde lo esperado. | Obligatorio | Sí (E1 y E2) | Innovaciones de la oferta | 3.2.1 | Inspección documental del requisito «Cada innovación declarará su riesgo de adopción» |
-| RT-26.05 | Cada innovación declarará su indicador de verificación con línea base, meta y momento de medición, y su impacto en inversión, costo operacional y beneficio esperado. | Obligatorio | Sí (E1 y E2) | Innovaciones de la oferta | 3.2.1 | Inspección documental del requisito «Cada innovación declarará su indicador de verificación con línea base» |
-| RT-26.06 | Las innovaciones que incorporen inteligencia artificial cumplirán íntegramente el Capítulo 18 de este documento. | Obligatorio | Sí, condicionado | Innovaciones de la oferta | 3.2.1 | Si una innovación incorpora IA, se aplica el capítulo 18 |
-| RT-26.07 | Las innovaciones que modifiquen la arquitectura de seguridad requerirán su propio modelado de amenazas. | Obligatorio | Sí (E1 y E2) | Innovaciones de la oferta | 3.2.1 | Verificación de configuración en marcha blanca del requisito «Las innovaciones que modifiquen la arquitectura de seguridad requerirán su propio…» |
-| RT-26.08 | Se valorará que al menos una innovación sea verificable durante la marcha blanca de la Etapa 1, es decir, que su beneficio pueda medirse antes del mes 16. | Deseable | No ofertado | — | — | Requisito deseable no comprometido en esta oferta |
+| RT-26.01 | Cada innovación se ubicará explícitamente en la arquitectura: qué capa la contiene, qué componentes la implementan y qué interfaces consume o expone. | Obligatorio | Sí (E1 y E2) | Innovaciones de la oferta | Capítulo 13, secciones 13.1 a 13.5; Formulario T-19 | Verificación de configuración en marcha blanca del requisito «Cada innovación se ubicará explícitamente en la arquitectura» |
+| RT-26.02 | Cada innovación identificará los paquetes de la estructura de descomposición del trabajo que la ejecutan y el mes del cronograma en que se materializa. | Obligatorio | Sí (E1 y E2) | Innovaciones de la oferta | Capítulo 13, secciones 13.1 a 13.5; Formulario T-19 | Verificación de configuración en marcha blanca del requisito «Cada innovación identificará los paquetes de la estructura de descomposición del trabajo…» |
+| RT-26.03 | Las innovaciones de base tecnológica declararán el nivel de madurez de la tecnología con la escala utilizada y citarán las fuentes en norma APA 7.ª edición. | Obligatorio | Sí (E1 y E2) | Innovaciones de la oferta | Capítulo 13, secciones 13.1 a 13.5; Formulario T-19 | Inspección documental del requisito «Las innovaciones de base tecnológica declararán el nivel de madurez de la tecnología con…» |
+| RT-26.04 | Cada innovación declarará su riesgo de adopción, su probabilidad, su impacto, la estrategia de mitigación y el plan de contingencia si no rinde lo esperado. | Obligatorio | Sí (E1 y E2) | Innovaciones de la oferta | Capítulo 13, secciones 13.1 a 13.5; Formulario T-19 | Inspección documental del requisito «Cada innovación declarará su riesgo de adopción» |
+| RT-26.05 | Cada innovación declarará su indicador de verificación con línea base, meta y momento de medición, y su impacto en inversión, costo operacional y beneficio esperado. | Obligatorio | Sí (E1 y E2) | Innovaciones de la oferta | Capítulo 13, secciones 13.1 a 13.5; Formulario T-19 | Inspección documental del requisito «Cada innovación declarará su indicador de verificación con línea base» |
+| RT-26.06 | Las innovaciones que incorporen inteligencia artificial cumplirán íntegramente el Capítulo 18 de este documento. | Obligatorio | Sí, condicionado | Innovaciones de la oferta | Capítulo 13, secciones 13.1 a 13.5; Formulario T-19 | Si una innovación incorpora IA, se aplica el capítulo 18 |
+| RT-26.07 | Las innovaciones que modifiquen la arquitectura de seguridad requerirán su propio modelado de amenazas. | Obligatorio | Sí (E1 y E2) | Innovaciones de la oferta | Capítulo 13, secciones 13.1 a 13.5; Formulario T-19 | Verificación de configuración en marcha blanca del requisito «Las innovaciones que modifiquen la arquitectura de seguridad requerirán su propio…» |
+| RT-26.08 | Se valorará que al menos una innovación sea verificable durante la marcha blanca de la Etapa 1, es decir, que su beneficio pueda medirse antes del mes 16. | Deseable | Sí (E1) | Innovaciones 1, 2 y 3 | Capítulo 13; Anexo 13.C | Indicadores I-01A, I-02A, I-02B, I-03A e I-03B medidos en el mes 15, durante la marcha blanca de la Etapa 1 |
 
 ## Referencias
 
@@ -867,14 +867,13 @@ Las fuentes se citan en cada fila por capítulo, sección o código.
 
 ## Declaración de uso de IA
 
-La Tabla T12.27 registra la asistencia de IA en el formulario.
+En cumplimiento de la sección 7.2 de las Aclaraciones de la licitación, la tabla siguiente declara el uso de herramientas de inteligencia artificial en este formulario, con la revisión humana de cada parte. La declaración se consolida en el Formulario A-6.
 
 **Tabla T12.27 — Declaración de uso de IA. Fuente: registro del equipo.**
 
-| **Sección** | **Herramienta** | **Finalidad** | **Nivel texto** | **Nivel diagramas** | **Revisión humana** |
+| Sección | Herramienta | Finalidad del uso | Nivel en texto | Nivel en diagramas | Revisión humana (quién y qué verificó) |
 | --- | --- | --- | --- | --- | --- |
-| T-12, Parte A | Codex; Claude Code | Generación de la matriz desde los catálogos del Subdocumento 3. | Alto | Ninguno | No documentada. |
-| T-12, Parte B | Codex; Claude Code | Respuesta por capítulo de las Bases Técnicas Transversales. | Alto | Ninguno | No documentada. |
-| T-12, Parte A: columnas EDT y Prueba (7 de octubre de 2026) | Claude Code | Asignación de los 262 paquetes pendientes desde la EDT del T-14 y corrección de 15 pruebas que no verificaban el comportamiento de su fila. | Alto | Ninguno | No documentada. |
-
-Actualización del 6 de octubre de 2026: Codex apoyó Actualización de las dos filas RF-03.11/12 activas, sin renumerar ni ampliar el catálogo. Participación alta en el texto ajustado, sin imágenes nuevas. No consta revisión humana de esta actualización; las comprobaciones documentales no acreditan aprobación del CLIENTE.
+| T-12, Parte A | Codex; Claude Code | Generación de la matriz desde los catálogos del Subdocumento 3. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| T-12, Parte B | Codex; Claude Code | Respuesta por capítulo de las Bases Técnicas Transversales. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| T-12, Parte A: columnas EDT y Prueba | Claude Code | Asignación de los paquetes de la EDT del T-14 a 262 filas de la matriz y corrección de 15 pruebas que no verificaban el comportamiento de su fila. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| Correcciones de coherencia | Codex | Actualización de las filas RF-03.11 y RF-03.12 | Alto | Ninguno | [[REVISIÓN HUMANA]] |

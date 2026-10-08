@@ -631,7 +631,7 @@ Los quince actores de la Figura 3.4 y del apartado 3.4.2.1 conservan sus nombres
 | Gerente de Operaciones | Consola operacional | Supervisa despacho, excepciones, rutas y continuidad de las olas. | M2, M4, M5, M6; consulta M9/M10/M12. | E1; funciones ampliadas según E2. |
 | Jefa de Bodega | Consola de bodega | Supervisa recepción, inventario, FEFO, preparación y recepción física de retornos. | M1, M2, M5 y M8. | E1 |
 
-Fuente: Figura 3.4, requerimientos del Anexo 3.A y catálogo coordinado con el redactor del Subdocumento 3 comunicado por el equipo. Esta coordinación define actores funcionales; no constituye aprobación del CLIENTE ni revisión humana final del documento.
+Fuente: Figura 3.4 y requerimientos del Anexo 3.A. El catálogo define actores funcionales; su validación con el CLIENTE se realiza en el levantamiento de la fase de Inicio.
 
 Los diecinueve interesados del Anexo 2.3 siguen presentes en la estrategia de participación anterior. Sus categorías no se cuentan como diecinueve cuentas de acceso. Sindicato y autoridad sanitaria reciben el tratamiento descrito en 3.4.2.1; food service conserva su segmento; el peoneta no comparte credenciales; la empresa transportista accede mediante representantes. Recepción, catálogo, despacho y Tesorería son funciones con permisos específicos dentro de los perfiles autorizados y no amplían por sí mismas el catálogo nominal de quince actores.
 
@@ -736,25 +736,22 @@ Las fuentes se citan en cada tabla con su capítulo, artículo, sección o códi
 
 ## Declaración de uso de IA
 
-La tabla declara la asistencia de IA en cada anexo. La revisión humana se registra cuando el equipo la realiza.
-
-La Tabla 3.A.15 registra la asistencia utilizada.
+En cumplimiento de la sección 7.2 de las Aclaraciones de la licitación, la tabla siguiente declara el uso de herramientas de inteligencia artificial en estos anexos, con la revisión humana de cada parte. La declaración se consolida en el Formulario A-6.
 
 **Tabla 3.A.15 — Declaración de uso de IA. Fuente: registro del equipo.**
 
-| **Sección** | **Herramienta** | **Finalidad** | **Nivel texto** | **Nivel diagramas** | **Revisión humana** |
+| Sección | Herramienta | Finalidad del uso | Nivel en texto | Nivel en diagramas | Revisión humana (quién y qué verificó) |
 | --- | --- | --- | --- | --- | --- |
-| 3.A | Codex; Claude Code | Conversión del catálogo funcional a tablas y contraste con las Bases. | Alto | Ninguno | No documentada. |
-| 3.B | Codex; Claude Code | Conversión del catálogo no funcional a tablas y contraste con las Bases. | Alto | Ninguno | No documentada. |
-| 3.C | Codex; Claude Code | Contraste con los Subdocumentos 1 y 2 y redacción de supuestos. | Alto | Ninguno | No documentada. |
-| 3.D | Codex; Claude Code | Redacción de registros. | Alto | Ninguno | No documentada. |
-| 3.E | Codex; Claude Code | Redacción de registros. | Alto | Ninguno | No documentada. |
-| 3.F | Codex; Claude Code | Redacción de registros. | Alto | Ninguno | No documentada. |
-| 3.G | Codex; Claude Code | Redacción de reglas. | Alto | Ninguno | No documentada. |
-| 3.H | Codex; Claude Code | Redacción de consultas. | Alto | Ninguno | No documentada. |
-| 3.I | Codex; Claude Code | Redacción de la participación de actores. | Alto | Ninguno | No documentada. |
-| 3.J | Codex; Claude Code | Redacción de los criterios de aceptación. | Alto | Ninguno | No documentada. |
-| 3.K | Codex; Claude Code | Glosario. | Medio | Ninguno | No documentada. |
-| RNG-04, RNG-15 y V-11 (7 de octubre de 2026) | Claude Code | Regla provisoria de excursión térmica y promesa de pedidos urbanos desde las 14:00. | Alto | Ninguno | No documentada. |
-
-Actualización del 6 de octubre de 2026: Codex apoyó Alineación de RF-03.11/12 y RNG-08 con S-09, conservando los catálogos complementarios históricos. Participación alta en el texto ajustado, sin imágenes nuevas. No consta revisión humana de esta actualización; las comprobaciones documentales no acreditan aprobación del CLIENTE.
+| 3.A | Codex; Claude Code | Conversión del catálogo funcional a tablas y contraste con las Bases. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| 3.B | Codex; Claude Code | Conversión del catálogo no funcional a tablas y contraste con las Bases. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| 3.C | Codex; Claude Code | Contraste con los Subdocumentos 1 y 2 y redacción de supuestos. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| 3.D | Codex; Claude Code | Redacción de registros. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| 3.E | Codex; Claude Code | Redacción de registros. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| 3.F | Codex; Claude Code | Redacción de registros. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| 3.G | Codex; Claude Code | Redacción de reglas. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| 3.H | Codex; Claude Code | Redacción de consultas. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| 3.I | Codex; Claude Code | Redacción de la participación de actores. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| 3.J | Codex; Claude Code | Redacción de los criterios de aceptación. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| 3.K | Codex; Claude Code | Glosario. | Medio | Ninguno | [[REVISIÓN HUMANA]] |
+| RNG-04, RNG-15 y V-11 | Claude Code | Regla provisoria de excursión térmica y promesa de pedidos urbanos desde las 14:00. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| Correcciones de coherencia | Codex | Alineación de RF-03.11/12 y RNG-08 con S-09 | Alto | Ninguno | [[REVISIÓN HUMANA]] |

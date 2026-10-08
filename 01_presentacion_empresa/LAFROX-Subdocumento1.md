@@ -2,7 +2,6 @@
 
 **VERSIÓN FINAL PARA ENTREGA**
 
-> **Descripción de imagen — portada:** En la parte superior izquierda aparece el logotipo de LafroX: una cabeza de zorro estilizada mediante líneas naranjas, seguida del texto “LafroX SpA” en blanco. El encabezado de la portada es una franja negra amplia, atravesada en su borde inferior por bandas diagonales naranja, blanca y naranja claro. En el extremo superior derecho de esta franja aparece el texto “VERSIÓN FINAL PARA ENTREGA”. El mismo isotipo de zorro junto al texto “LafroX SpA” aparece en tamaño reducido en el encabezado de las páginas interiores.
 
 ## LICITACIÓN PÚBLICA
 
@@ -197,7 +196,7 @@ La idoneidad técnica y metodológica de LafroX está validada por certificacion
 
 Las certificaciones con vencimiento durante el contrato se renuevan mediante auditoría de recertificación ante el mismo organismo antes de su fecha de término: ISO/IEC 27001 antes de enero de 2027, ISO/IEC 20000-1 antes de mayo de 2027 e ISO 9001 antes de noviembre de 2028. La evaluación CMMI-DEV se renueva con una nueva evaluación SCAMPI A antes de noviembre de 2026. LafroX acredita la vigencia de cada certificado ante la Contraparte Técnica durante los 56 meses del contrato. Las Bases Técnicas Transversales admiten, para ISO/IEC 27001, un certificado vigente o un plan de certificación con hitos dentro de los primeros doce meses, y para ISO/IEC 20000-1 un certificado vigente o un plan declarado (Distribuidora Puelche S.A., 2026b, sección 15.2; 2026a, Art. 34°). LafroX supera ese mínimo: acredita ambos certificados vigentes a la fecha de la oferta, junto con ISO 9001.
 
-En concordancia con el Artículo 34° de las Bases Administrativas (Distribuidora Puelche S.A., 2026a) y la aclaración oficial de la licitación, LafroX presenta en el archivo independiente LAFROX-Formulario-T-6.pdf el detalle de tres proyectos finalizados en los últimos cinco años y en operación continua, los cuales demuestran experiencia en complejidad técnica y volumétrica equivalente a la del Caso 02:
+En concordancia con el Artículo 34° de las Bases Administrativas (Distribuidora Puelche S.A., 2026a) y la aclaración oficial de la licitación, LafroX presenta en el Formulario T-6 el detalle de tres proyectos finalizados en los últimos cinco años y en operación continua, los cuales demuestran experiencia en complejidad técnica y volumétrica equivalente a la del Caso 02:
 
 1. **Sistema Híbrido de Reparto y Gestión Logística (LogiNacional S.A.):** Ejecutado entre 2021 y 2022, integró un núcleo logístico modular, ERP y facturación electrónica sobre nube pública y servidores de borde en 14 centros de distribución. Soporta 420 camiones y 22.000 entregas diarias bajo SLA contractual de 99,5 %.
 2. **Plataforma de Telemetría y Cadena de Frío IoT (FarmaRed S.A.):** Ejecutada entre 2022 y 2023, monitorea cámaras a −22 °C y una flota refrigerada; procesa más de 12 millones de mediciones mensuales bajo SLA de 99,9 %.
@@ -292,12 +291,12 @@ Las especificaciones particulares de hardware e implementos que estas alianzas s
 
 # Declaración de uso de IA
 
-En cumplimiento de la Sección 7.2 de las Aclaraciones de la Licitación, la Tabla 1.4 declara el uso asistido de herramientas de inteligencia artificial en la elaboración del presente subdocumento.
+En cumplimiento de la sección 7.2 de las Aclaraciones de la licitación, la tabla siguiente declara el uso de herramientas de inteligencia artificial en este subdocumento, con la revisión humana de cada parte. La declaración se consolida en el Formulario A-6.
 
 **Tabla 1.4** Declaración de uso de IA por sección del Subdocumento 1. Fuente: registro del equipo.
 
-| Sección | Herramienta | Finalidad del uso | Texto | Diagrama | Revisión humana |
-|---|---|---|---|---|---|
+| Sección | Herramienta | Finalidad del uso | Nivel en texto | Nivel en diagramas | Revisión humana (quién y qué verificó) |
+| --- | --- | --- | --- | --- | --- |
 | 1.1 Presentación | Claude / Gemini | Formato y redacción de capacidades | Bajo | Ninguno | Alex Aravena (JP): Coherencia con líneas de negocio |
 | 1.2 Estructura Org. | Claude / Gemini | Organización de la descripción de la estructura corporativa y la dotación técnica | Bajo | Medio | Bastián Trejo (Arq): Revisión de líneas de reporte y distribución de la dotación |
 | 1.3 Gobierno interno | Claude / Gemini | Estructuración de políticas y comités | Bajo | Ninguno | Álvaro Catalán (Seg): Verificación normas 27001/CMMI |
@@ -305,4 +304,4 @@ En cumplimiento de la Sección 7.2 de las Aclaraciones de la Licitación, la Tab
 | 1.5 Estructura Proy. | Claude / Gemini | Alineación de roles institucionales | Bajo | Ninguno | Patricio Henríquez (Gest): Trazabilidad con los roles del numeral 19.2 de las Bases Técnicas Transversales |
 | 1.6 Alianzas | Claude / Gemini | Redacción de convenios de hardware | Bajo | Ninguno | Bastián Trejo (Arq): Coherencia con diseño híbrido |
 | Formulario T-6 | Claude / Gemini | Disposición tabular del formulario | Bajo | Ninguno | Alex Aravena (JP): Validación de los 11 campos exigidos y coherencia con la sección 1.4 |
-| 1.5 Estructura Proy., Tabla 1.3 (7 de octubre de 2026) | Claude Code | Asignación de los roles mínimos del numeral 19.2 | Alto | Ninguno | No documentada |
+| 1.5 Estructura Proy., Tabla 1.3 | Claude Code | Asignación de los roles mínimos del numeral 19.2 | Alto | Ninguno | [[REVISIÓN HUMANA]] |

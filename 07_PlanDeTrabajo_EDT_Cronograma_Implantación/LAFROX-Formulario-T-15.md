@@ -26,25 +26,24 @@ La sección 5 incorpora las revisiones del CLIENTE (Art. 18.3) como retardos, ca
 La ruta crítica se identifica sobre el cronograma por actividad de la sección 6.1, con la red de la sección 5. El camino más crítico llega al H9: la construcción de los módulos de la Etapa 2 (3.5) y su prueba de integración (3.9.1), con 21 días hábiles de reserva y una probabilidad de entrega a tiempo de 90 % en la simulación con riesgos del SD8. Le siguen la certificación de la Etapa 2 (3.9.2 a 3.9.7) ante el H10, la certificación de la Etapa 1 (3.8.1 a 3.8.8) ante el H5 y la sala técnica y los ambientes del H3 (2.3, 5.1.2, 6.1, 6.3, 6.6.3 y 3.1), todos sobre 97 %. Las marchas blancas (4.2.1, meses 13 a 15, y 4.3.1, meses 19 y 20) y los pasos a producción (H7 en el mes 16 y H12 en el mes 21) tienen fechas contractuales fijas y ninguna holgura.
 
   
-  **Descripción textual de figura.** No sustituye la revisión visual del PDF.
 - Caminos casi críticos
 - 5.1.2 y 6.1 a 6.6 terminan en el H3
 - Marcha / blanca E1
 - Marcha / blanca E2
   
-**Figura: Ruta crítica identificada y caminos casi críticos de la implementación. Fuente: elaboración propia a partir del Anexo 7.B del Subdocumento 7 y de los períodos del Formulario T-14.**
+**Figura T15.1. Ruta crítica identificada y caminos casi críticos de la implementación. Fuente: elaboración propia a partir del Anexo 7.B del Subdocumento 7 y de los períodos del Formulario T-14.**
 
   <a id="fig:T15-ruta"></a>
 
-La figura conserva la lectura histórica por meses; las holguras vigentes son las de la sección 5.3. Son caminos casi críticos la captura de las reglas de ruteo del planificador (1.2.2 y 3.4.7 M4 Rutas), antes de su jubilación; los acuerdos con los diez transportistas y con el sindicato (5.4.1 y 5.4.2), antes de la ola de reparto; y la certificación del intercambio electrónico con las cadenas (3.6.5 y 3.6.6), antes del mes 21.
+La figura presenta la red por meses; las holguras calculadas por actividad están en la sección 5.3. Son caminos casi críticos la captura de las reglas de ruteo del planificador (1.2.2 y 3.4.7 M4 Rutas), antes de su jubilación; los acuerdos con los diez transportistas y con el sindicato (5.4.1 y 5.4.2), antes de la ola de reparto; y la certificación del intercambio electrónico con las cadenas (3.6.5 y 3.6.6), antes del mes 21.
 
 La holgura se gestiona en las instancias de gobierno de la EDT: el avance de la ruta crítica y de los caminos casi críticos se revisa en la reunión semanal y en el Comité de Proyecto quincenal (paquetes 1.3.5 y 1.8.3); toda desviación que comprometa un hito se escala al Comité Ejecutivo con su análisis de impacto (paquetes 1.4.3 y 1.8.2); y el informe mensual con valor ganado avisa toda desviación mayor al 10 % con su plan dentro de cinco días hábiles (paquete 1.8.6).
 
 ## 3 Frentes de trabajo y solapamientos
 
-Un frente de trabajo es un equipo con un responsable y un conjunto de cuentas de control que avanza en paralelo con los demás. La Tabla «tab:T15-frentes» define los frentes a partir de la EDT del Formulario T-14 y de los responsables de su diccionario.
+Un frente de trabajo es un equipo con un responsable y un conjunto de cuentas de control que avanza en paralelo con los demás. La Tabla T15.1 define los frentes a partir de la EDT del Formulario T-14 y de los responsables de su diccionario.
 
-**Frentes de trabajo. Fuente: elaboración propia a partir del Formulario T-14.**
+**Tabla T15.1. Frentes de trabajo. Fuente: elaboración propia a partir del Formulario T-14.**
 
 <a id="tab:T15-frentes"></a>
 
@@ -59,24 +58,23 @@ Un frente de trabajo es un equipo con un responsable y un conjunto de cuentas de
 | F7 Implantación y gestión del cambio | Líder de Implantación y Gestión del Cambio | 4.1 a 4.3, 7.1 a 7.3 | 9 a 21 |
 | F8 Operación y soporte | Líder de Operación / SRE | 8.1 a 8.3, 8.5 | 21 a 56 |
 
-Los frentes se sincronizan en los hitos del Formulario E-25 y en los comités del Art. 71°, cuyas actas registran los acuerdos entre frentes (paquetes 1.8.2 a 1.8.5). La Figura «fig:T15-frentes» presenta su ventana de actividad entre los meses 1 y 21.
+Los frentes se sincronizan en los hitos del Formulario E-25 y en los comités del Art. 71°, cuyas actas registran los acuerdos entre frentes (paquetes 1.8.2 a 1.8.5). La Figura T15.2 presenta su ventana de actividad entre los meses 1 y 21.
 
   
-  **Descripción textual de figura.** No sustituye la revisión visual del PDF.
 - Solapamiento / meses 13 a 15
 - Solapamiento / meses 19 y 20
 - **F8 Operación** / Líder de Operación / SRE
-- 8.1–8.3, 8.5: desde el mes 21 hasta el 56 $→$
+- 8.1–8.3, 8.5: desde el mes 21 hasta el 56
   
-**Figura: Frentes de trabajo de los meses 1 a 21 y solapamientos del Art. 17.2. Fuente: elaboración propia a partir de la Tabla T-15.1 y del Formulario T-14.**
+**Figura T15.2. Frentes de trabajo de los meses 1 a 21 y solapamientos del Art. 17.2. Fuente: elaboración propia a partir de la Tabla T-15.1 y del Formulario T-14.**
 
   <a id="fig:T15-frentes"></a>
 
 En los meses 13 a 15 trabajan a la vez F7, en la marcha blanca de la Etapa 1; F3, en las correcciones de esa marcha blanca; F4, en el desarrollo de la Etapa 2; F6, en las pruebas de ambas etapas; y F1 y F2. F3 y F4 dependen del mismo rol, el Líder de Desarrollo, y por eso son equipos distintos: el equipo que atiende la marcha blanca no puede ser el que desarrolla la Etapa 2 (Art. 17.2, punto 1). En los meses 19 y 20 trabajan F7, en la marcha blanca de la Etapa 2; F4, en sus correcciones; F6; y el soporte de la Etapa 1 en producción.
 
-## 4 Modelo cuantitativo provisional de recursos
+## 4 Modelo cuantitativo de recursos
 
-**Base de cálculo:** estimación de planificación con tamaños supuestos. No acredita productividad medida, contratación, turnos nominales ni aceptación del CLIENTE. Permite preparar SD8 con supuestos trazables.
+**Base de cálculo:** estimación por clases de tamaño con supuestos explícitos, que el Capítulo 8 usa para cuantificar los riesgos. La productividad y la dotación se contrastan con el avance real en cada Comité de Proyecto.
 
 ### 4.1 Supuestos y cálculo
 
@@ -333,7 +331,7 @@ Se agregan explícitamente soporte puente SRE de 4.2.2 = 9336.00 HH y reserva F3
 | Operación | 114212.67 | 0 | 114212.67 | F1,F8 | 21–56 |
 | Cierre y estabilización implementación | 2774.54 | 0 | 2774.54 | F1,F2,F4,F6,F7 | 21–22 |
 
-Total exacto de paquetes y componentes = 202774.00 HH (190.366 base + 9.336 puente + 3.072 reserva); peak mensual conjunto = 69 personas equivalentes en el mes 15, cuando coinciden la construcción de los módulos de la Etapa 2, la marcha blanca de la Etapa 1 y su acompañamiento. La versión anterior publicaba 147.328 HH porque imputaba un solo puesto de mesa, 32 HH/mes de SOC y promedios de 730 HH por mes; la mesa y el SOC dimensionados en el SD4 y el calendario real elevan la operación y el soporte puente. La implementación imputada a los meses 21 y 22 se separa de Operación; las actividades generales que continúan como servicio permanecen en Operación. Los peaks de etapas no se suman. Las centésimas de presentación se distribuyen por mayor resto entre meses y se concilian por etapa; la suma publicada conserva 202.774 HH exactas.
+Total exacto de paquetes y componentes = 202774.00 HH (190.366 base + 9.336 puente + 3.072 reserva); peak mensual conjunto = 69 personas equivalentes en el mes 15, cuando coinciden la construcción de los módulos de la Etapa 2, la marcha blanca de la Etapa 1 y su acompañamiento. La mesa y el SOC dimensionados en el SD4, aplicados sobre el calendario real, determinan las horas de operación y de soporte puente. La implementación imputada a los meses 21 y 22 se separa de Operación; las actividades generales que continúan como servicio permanecen en Operación. Los peaks de etapas no se suman. Las centésimas de presentación se distribuyen por mayor resto entre meses y se concilian por etapa; la suma publicada conserva 202.774 HH exactas.
 
 ### 4.4 Curvas mensuales: horas por etapa y personas por rol
 
@@ -396,7 +394,7 @@ Total exacto de paquetes y componentes = 202774.00 HH (190.366 base + 9.336 puen
 | 55 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 3160.22 | 0.00 | 3160.22 | 1 | 1 | 7 | 1 | 2 | 1 | 16 | 1 | 30 |
 | 56 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 3448.67 | 0.00 | 3448.67 | 1 | 1 | 7 | 1 | 2 | 1 | 18 | 1 | 32 |
 
-Factibilidad por capacidad aritmética: se debe dotar cada rol con la curva indicada. Esto no acredita contratación, disponibilidad real ni suficiencia de la mesa. El registro nominal y los turnos deben comprobarse antes de aprobar la línea base. La reserva E1 es exclusiva; el trabajo de E2 usa capacidad adicional. La revisión de HH modifica conjuntamente dotación, cronograma y exposición de SD8.
+Factibilidad por capacidad aritmética: se debe dotar cada rol con la curva indicada. El registro nominal de personas y los turnos se aprueban junto con la línea base del H1. La reserva E1 es exclusiva; el trabajo de E2 usa capacidad adicional. La revisión de HH modifica conjuntamente dotación, cronograma y exposición de SD8.
 
 ## 5 Red agregada, restricciones y escenarios de calendario
 
@@ -479,7 +477,7 @@ El Erlang C de la mesa (SD4, Anexo 4-W.7) dimensiona la espera con llegadas de P
 
 ### 5.7 Dotación requerida, roles mínimos y dotación declarada
 
-La curva de la sección 4.4 y la carga diaria de la sección 6.1 se comparan con la dotación técnica declarada en el SD1, Tabla 1.1. Las personas equivalentes de la curva son HH del mes divididas por 128; las simultáneas son las que trabajan el mismo día según el cronograma por actividad, y son las que la dotación debe cubrir. La comparación muestra dónde la curva cabe en las divisiones de LafroX y dónde se requiere asignación, contratación o subcontratación antes de aprobar la línea base. No acredita disponibilidad: las personas de esas divisiones atienden otros contratos.
+La curva de la sección 4.4 y la carga diaria de la sección 6.1 se comparan con la dotación técnica declarada en el SD1, Tabla 1.1. Las personas equivalentes de la curva son HH del mes divididas por 128; las simultáneas son las que trabajan el mismo día según el cronograma por actividad, y son las que la dotación debe cubrir. La comparación muestra dónde la curva cabe en las divisiones de LafroX y dónde se requiere asignación, contratación o subcontratación antes de aprobar la línea base. Como las personas de esas divisiones atienden otros contratos, la asignación nominal se confirma antes del H1.
 
 | Familia T-15 | Peak de la curva | División del SD1 que la provee | Dotación declarada | Condición |
 | --- | --- | --- | --- | --- |
@@ -1164,11 +1162,11 @@ Las fuentes de método citadas en este formulario son las siguientes.
 
 ## Declaración de uso de IA
 
-La tabla declara el uso de IA en este formulario; se consolida en la declaración del SD7 y en el Formulario A-6.
+En cumplimiento de la sección 7.2 de las Aclaraciones de la licitación, la tabla siguiente declara el uso de herramientas de inteligencia artificial en este formulario, con la revisión humana de cada parte. La declaración se consolida en el Formulario A-6.
 
 | Sección | Herramienta | Finalidad del uso | Nivel en texto | Nivel en diagramas | Revisión humana (quién y qué verificó) |
 | --- | --- | --- | --- | --- | --- |
-| 1 a 3 | Claude Code; Codex | Redacción del método, ruta crítica y frentes | Alto | Alto (descripciones de figuras) | No documentada |
-| 4 Modelo de recursos | Codex; Claude Code | Cálculo de HH, curvas, calendario real y cobertura de mesa/SOC (7 de octubre de 2026) | Alto | Ninguno | No documentada |
-| 6 Lista de actividades (7 de octubre de 2026) | Claude Code | Descomposición de los 222 paquetes en actividades con la regla del 8/80 y del período de reporte | Alto | Ninguno | No documentada |
-| 5 Red, PERT y dotación | Claude Code | Red con revisiones Art. 18.3, PERT de duración, medición de atención y comparación con la dotación declarada (7 de octubre de 2026) | Alto | Ninguno | No documentada |
+| 1 a 3 | Claude Code; Codex | Redacción del método, ruta crítica y frentes | Alto | Alto (descripciones de figuras) | [[REVISIÓN HUMANA]] |
+| 4 Modelo de recursos | Codex; Claude Code | Cálculo de HH, curvas, calendario real y cobertura de mesa/SOC | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| 6 Lista de actividades | Claude Code | Descomposición de los 222 paquetes en actividades con la regla del 8/80 y del período de reporte | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| 5 Red, PERT y dotación | Claude Code | Red con revisiones Art. 18.3, PERT de duración, medición de atención y comparación con la dotación declarada | Alto | Ninguno | [[REVISIÓN HUMANA]] |

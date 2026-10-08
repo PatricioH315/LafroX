@@ -271,7 +271,7 @@ La tabla permite verificar que cada flujo de la sección 3.3 tiene una responsab
 
 La solución distingue a las personas y organizaciones interesadas en el resultado del proyecto de quienes interactúan directamente con una aplicación, portal o consola. Un actor puede desempeñar ambos papeles. Participar en un comité, formular una necesidad o recibir un informe no concede por sí mismo acceso a una función.
 
-La Figura 3.4 y la definición coordinada con el redactor del Subdocumento 3 establecen quince actores del sistema: Preventista, Conductor propio, Conductor externo, Preparador, Cliente del canal tradicional, Cliente del canal moderno, Empresa transportista, Proveedor, Jefa de Calidad, Gerente Comercial, Gerente de Finanzas, Planificador de Rutas, Jefe de TI, Gerente de Operaciones y Jefa de Bodega. El catálogo y su correspondencia funcional se desarrollan en el [Anexo 3.I](LAFROX-Subdocumento3-Anexos.md#actores-del-sistema). El apartado 4.1.3.1 y el Anexo 4-N del Subdocumento 4 realizan esta definición mediante interfaces y permisos.
+La Figura 3.4 y el catálogo de actores del Anexo 3.I establecen quince actores del sistema: Preventista, Conductor propio, Conductor externo, Preparador, Cliente del canal tradicional, Cliente del canal moderno, Empresa transportista, Proveedor, Jefa de Calidad, Gerente Comercial, Gerente de Finanzas, Planificador de Rutas, Jefe de TI, Gerente de Operaciones y Jefa de Bodega. El catálogo y su correspondencia funcional se desarrollan en el [Anexo 3.I](LAFROX-Subdocumento3-Anexos.md#actores-del-sistema). El apartado 4.1.3.1 y el Anexo 4-N del Subdocumento 4 realizan esta definición mediante interfaces y permisos.
 
 Empresa transportista y Proveedor identifican organizaciones externas. La sesión pertenece a una persona representante verificada y queda limitada a los datos de su organización. Conductor externo mantiene una identidad distinta y permisos sobre su turno, vehículo y ruta; la representación de la empresa no permite firmar una entrega en nombre del conductor. Los usuarios comparten aplicaciones según su función, con permisos por acción y recurso.
 
@@ -313,7 +313,7 @@ El criterio de avance de una ola exige:
 
 La reversión la autoriza el responsable operativo del CLIENTE ante pedidos no sincronizados, rutas no disponibles o un defecto crítico. La restitución del servicio de despacho debe completarse antes de las 05:30 y sostener los 96 camiones entre 05:30 y 07:00 sin interrupción. Volver al papel no demuestra esa capacidad: la continuidad depende de la versión operativa local probada, colas durables, rutas disponibles y documentos válidos emitidos exclusivamente por ERP. Una guía ausente o invalidada requiere su reemisión autorizada; la solución no emite DTE alternativos. El papel es respaldo de consulta y contingencia de tareas auxiliares, no una sustitución manual del despacho crítico.
 
-El ensayo previo a cada corte mide tiempos, pérdida/duplicación, conciliación y volumen. T-18 §6.4 fija un objetivo de 40 minutos y final 05:25 bajo decisión 04:45; son objetivos no medidos. No se autoriza el corte sin evidencia del flujo completo. La conservación de registros en cola se comprueba en el ensayo; no se presume. El RTO de recuperación general no concede interrupciones en la ventana de despacho.
+El ensayo previo a cada corte mide tiempos, pérdida/duplicación, conciliación y volumen. El Formulario T-18, sección 6.4, fija un objetivo de 40 minutos, con término a las 05:25 si la decisión se toma a las 04:45; el ensayo debe confirmar ese objetivo. No se autoriza el corte sin evidencia del flujo completo. La conservación de registros en cola se comprueba en el ensayo; no se presume. El RTO de recuperación general no concede interrupciones en la ventana de despacho.
 
 Después de cada paso a producción, la estabilización incluye presencia en bodega durante el turno de noche y acompañamiento en ruta a preventistas y conductores. Su duración es de cuatro semanas por ola, el mismo período que exige el criterio de avance. La dotación se deriva de la operación del caso:
 
@@ -405,29 +405,28 @@ Las citas indican artículo, capítulo, sección o código de cada fuente.
 
 ## Declaración de uso de IA
 
-La Tabla 3.6 registra la asistencia de IA por sección, anexo y formulario. La revisión humana se registra cuando el equipo la realiza.
+En cumplimiento de la sección 7.2 de las Aclaraciones de la licitación, la tabla siguiente declara el uso de herramientas de inteligencia artificial en este subdocumento, con la revisión humana de cada parte. La declaración se consolida en el Formulario A-6.
 
 **Tabla 3.6 — Declaración de uso de IA. Fuente: registro del equipo.**
 
-| **Sección** | **Herramienta** | **Finalidad** | **Nivel texto** | **Nivel diagramas** | **Revisión humana** |
+| Sección | Herramienta | Finalidad del uso | Nivel en texto | Nivel en diagramas | Revisión humana (quién y qué verificó) |
 | --- | --- | --- | --- | --- | --- |
-| 3.1 | Codex; Claude Code | Contraste con las Bases y redacción. | Alto | Ninguno | No documentada. |
-| 3.2 | Codex; Claude Code | Contraste con las Bases y los Subdocumentos 1 y 2; redacción. | Alto | Ninguno | No documentada. |
-| 3.3 | Codex; Claude Code | Descripción estructurada de las figuras. | Alto | Alto | No documentada. |
-| 3.4 | Codex; Claude Code | Redacción de implementación, implantación y operación. | Alto | Ninguno | No documentada. |
-| Anexo 3.A | Codex; Claude Code | Conversión del catálogo funcional. | Alto | Ninguno | No documentada. |
-| Anexo 3.B | Codex; Claude Code | Conversión del catálogo no funcional. | Alto | Ninguno | No documentada. |
-| Anexo 3.C | Codex; Claude Code | Redacción de supuestos. | Alto | Ninguno | No documentada. |
-| Anexo 3.D | Codex; Claude Code | Redacción de registros. | Alto | Ninguno | No documentada. |
-| Anexo 3.E | Codex; Claude Code | Redacción de registros. | Alto | Ninguno | No documentada. |
-| Anexo 3.F | Codex; Claude Code | Redacción de registros. | Alto | Ninguno | No documentada. |
-| Anexo 3.G | Codex; Claude Code | Redacción de reglas. | Alto | Ninguno | No documentada. |
-| Anexo 3.H | Codex; Claude Code | Redacción de consultas. | Alto | Ninguno | No documentada. |
-| Anexo 3.I | Codex; Claude Code | Redacción de la participación de actores. | Alto | Ninguno | No documentada. |
-| Anexo 3.J | Codex; Claude Code | Redacción de criterios de aceptación. | Alto | Ninguno | No documentada. |
-| Anexo 3.K | Codex; Claude Code | Glosario. | Medio | Ninguno | No documentada. |
-| Formulario T-12 | Codex; Claude Code | Generación de la matriz de cumplimiento. | Alto | Ninguno | No documentada. |
-| 3.3 y Anexo 3.H: RNG-04 y RNG-15 (7 de octubre de 2026) | Claude Code | Regla provisoria de excursión térmica y promesa de pedidos urbanos desde las 14:00. | Alto | Ninguno | No documentada. |
-| Formulario T-12: EDT y pruebas (7 de octubre de 2026) | Claude Code | Asignación de paquetes y corrección de pruebas. | Alto | Ninguno | No documentada. |
-
-Actualización del 6 de octubre de 2026: Codex apoyó Corrección de continuidad/reversión, ERP/DTE y uso auxiliar del papel. Participación alta en el texto ajustado, sin imágenes nuevas. No consta revisión humana de esta actualización; las comprobaciones documentales no acreditan aprobación del CLIENTE.
+| 3.1 | Codex; Claude Code | Contraste con las Bases y redacción. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| 3.2 | Codex; Claude Code | Contraste con las Bases y los Subdocumentos 1 y 2; redacción. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| 3.3 | Codex; Claude Code | Descripción estructurada de las figuras. | Alto | Alto | [[REVISIÓN HUMANA]] |
+| 3.4 | Codex; Claude Code | Redacción de implementación, implantación y operación. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| Anexo 3.A | Codex; Claude Code | Conversión del catálogo funcional. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| Anexo 3.B | Codex; Claude Code | Conversión del catálogo no funcional. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| Anexo 3.C | Codex; Claude Code | Redacción de supuestos. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| Anexo 3.D | Codex; Claude Code | Redacción de registros. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| Anexo 3.E | Codex; Claude Code | Redacción de registros. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| Anexo 3.F | Codex; Claude Code | Redacción de registros. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| Anexo 3.G | Codex; Claude Code | Redacción de reglas. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| Anexo 3.H | Codex; Claude Code | Redacción de consultas. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| Anexo 3.I | Codex; Claude Code | Redacción de la participación de actores. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| Anexo 3.J | Codex; Claude Code | Redacción de criterios de aceptación. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| Anexo 3.K | Codex; Claude Code | Glosario. | Medio | Ninguno | [[REVISIÓN HUMANA]] |
+| Formulario T-12 | Codex; Claude Code | Generación de la matriz de cumplimiento. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| 3.3 y Anexo 3.H: RNG-04 y RNG-15 | Claude Code | Regla provisoria de excursión térmica y promesa de pedidos urbanos desde las 14:00. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| Formulario T-12: EDT y pruebas | Claude Code | Asignación de paquetes y corrección de pruebas. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| Correcciones de coherencia | Codex | Corrección de continuidad/reversión, ERP/DTE y uso auxiliar del papel | Alto | Ninguno | [[REVISIÓN HUMANA]] |

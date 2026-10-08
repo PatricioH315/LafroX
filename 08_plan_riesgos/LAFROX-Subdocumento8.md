@@ -71,7 +71,6 @@ Esta sección identifica los riesgos con una RBS y los analiza en dos niveles: u
 
 La estructura de desglose de riesgos (RBS) tiene raíz «Riesgos de la propuesta LafroX» y tres ramas, una por cada análisis que exige el Formulario T-22: riesgo de la solución, del desarrollo y de la implantación. Dentro de cada rama, los riesgos se agrupan en las categorías técnica, organizacional, de proyecto, de seguridad y de operación que les corresponden. Los ID son únicos aunque una causa afecte varias ramas. La Figura 8.1 presenta la estructura con los 32 riesgos del Anexo 8.A.
 
-**Descripción textual de figura.**
 - Riesgos de la propuesta LafroX (32)
   - Solución (13)
     - Técnico: R8-02, R8-04, R8-06, R8-08, R8-09, R8-27, R8-30
@@ -151,7 +150,7 @@ Cada uso registra un cargo único por evento/mes/perfil y remanente. Riesgos cor
 
 ### 8.3.3 Factibilidad y aceptación
 
-Anexo 8.E registra condiciones actuales: productividad/dotación, secuencias diarias y plazos de revisión/subsanación del Art.18.3, fecha contractual, continuidad de 96 despachos, RPO remoto, atención y evidencia láctea. La física del SD4 permanece intacta: A31/A32 ya incluyen CD-05; se necesita contrastar multiplicidad y drenaje. El límite residual RPO requiere resolución, no aceptación como sustituto de cumplimiento.
+El Anexo 8.E registra las condiciones de evidencia: productividad/dotación, secuencias diarias y plazos de revisión/subsanación del Art.18.3, fecha contractual, continuidad de 96 despachos, RPO remoto, atención y evidencia láctea. El dimensionamiento físico del Capítulo 4 (A31 y A32) ya incluye la coordinación CD-05; su multiplicidad y su drenaje se verifican en la prueba de concurrencia previa al H4. El límite residual RPO requiere resolución, no aceptación como sustituto de cumplimiento.
 
 No se autoriza corte sin continuidad medida ni aceptación sin las seis condiciones simultáneas del Art. 17.3 y acta según Art. 18. La suspensión láctea de septiembre de 2026 es antecedente ocurrido; V-13 debe precisar evidencia y restitución con CLIENTE/proveedor. El proyecto no demuestra una solución retroactiva. La propuesta queda sujeta a las condiciones de cierre del Anexo 8.E, cada una con responsable, hito límite y evidencia; ninguna se da por cumplida sin las decisiones, pruebas y actas que allí se indican.
 
@@ -168,14 +167,14 @@ No se autoriza corte sin continuidad medida ni aceptación sin las seis condicio
 
 ## Declaración de uso de IA
 
-Codex y Claude Code apoyaron la redacción, la organización, el análisis ordinal FMEA, los escenarios deterministas, el valor esperado en HH y la simulación de Monte Carlo. No se generaron imágenes; la RBS de la Figura 8.1 se presenta como descripción textual. Esta declaración no acredita ensayos ejecutados, aprobación del CLIENTE ni conformidad formal de una presentación final, y se consolida en el Formulario A-6.
+En cumplimiento de la sección 7.2 de las Aclaraciones de la licitación, la tabla siguiente declara el uso de herramientas de inteligencia artificial en este subdocumento, con la revisión humana de cada parte. La declaración se consolida en el Formulario A-6.
 
 | Sección | Herramienta | Finalidad del uso | Nivel en texto | Nivel en diagramas | Revisión humana (quién y qué verificó) |
 | --- | --- | --- | --- | --- | --- |
-| Introducción | Codex | Redacción a partir de SD2–SD4, SD6 y SD7 (6 de octubre de 2026) | Alto | Ninguno | No documentada |
-| 8.1 Plan de riesgos | Codex; Claude Code | Método, roles y escalas; Comité de Operación y textos de sección (7 de octubre de 2026) | Alto | Ninguno | No documentada |
-| 8.2 Identificación y Análisis de Riesgos | Codex; Claude Code | RBS textual, FMEA y escenarios; valor esperado en HH y simulación de Monte Carlo sobre el cronograma por actividad (7 de octubre de 2026) | Alto | Ninguno (RBS textual) | No documentada |
-| 8.3 Plan de Acción a Riesgos | Codex; Claude Code | Respuestas, reservas y factibilidad; reserva de contingencia por valor esperado y su reparto por período (7 de octubre de 2026) | Alto | Ninguno | No documentada |
-| Anexos 8.A a 8.F | Codex; Claude Code | Ver la declaración de los anexos | Alto | Ninguno | No documentada |
-| Formulario T-16 | Codex; Claude Code | Ver la declaración del formulario | Alto | Ninguno | No documentada |
-| Introducción, 8.1.1, 8.1.3, 8.2.1–8.2.3, 8.3.2 y 8.3.3: correcciones de coherencia (7 de octubre de 2026) | Claude Code | Figura 8.1 (RBS) desde las fichas 8.A, contingencia adicional elegible, hitos no simulados, citas y referencias | Medio | Medio (descripción textual de la RBS) | No documentada |
+| Introducción | Codex | Redacción a partir de SD2–SD4, SD6 y SD7 | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| 8.1 Plan de riesgos | Codex; Claude Code | Método, roles y escalas; Comité de Operación y textos de sección | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| 8.2 Identificación y Análisis de Riesgos | Codex; Claude Code | RBS textual, FMEA y escenarios; valor esperado en HH y simulación de Monte Carlo sobre el cronograma por actividad | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| 8.3 Plan de Acción a Riesgos | Codex; Claude Code | Respuestas, reservas y factibilidad; reserva de contingencia por valor esperado y su reparto por período | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| Anexos 8.A a 8.F | Codex; Claude Code | Ver la declaración de los anexos | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| Formulario T-16 | Codex; Claude Code | Ver la declaración del formulario | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| Introducción, 8.1.1, 8.1.3, 8.2.1–8.2.3, 8.3.2 y 8.3.3: correcciones de coherencia | Claude Code | Figura 8.1 (RBS) desde las fichas 8.A, contingencia adicional elegible, hitos no simulados, citas y referencias | Medio | Medio (descripción textual de la RBS) | [[REVISIÓN HUMANA]] |

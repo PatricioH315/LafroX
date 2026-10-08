@@ -4,11 +4,11 @@ Estos anexos detallan los listados que el Subdocumento 7 resume. La EDT, el dicc
 
 ## Anexo 7.A — Meses contractuales y ventanas de congelamiento según la fecha de inicio
 
-El Art. 17° de las Bases Administrativas fija los meses del contrato, no sus fechas. El mes 1 es el primer mes completo de ejecución (Bases Administrativas, Art. 10°, numeral 2). Si el contrato se inicia en el mes calendario $m$, el mes contractual $n$ cae en el mes calendario $m + (n - 1)$, contado en aritmética de doce meses.
+El Art. 17° de las Bases Administrativas fija los meses del contrato, no sus fechas. El mes 1 es el primer mes completo de ejecución (Bases Administrativas, Art. 10°, numeral 2). Si el contrato se inicia en el mes calendario m, el mes contractual n cae en el mes calendario $m + (n - 1)$, contado en aritmética de doce meses.
 
-El caso fija las ventanas del año: congelamiento total del 1 al 25 de septiembre y durante todo diciembre; congelamiento en los tres primeros días hábiles de cada mes (Caso 02, RT-10.05); y ningún paso a producción en septiembre ni en diciembre (sección 13.3, condición 2). El Capítulo 3, sección 3.1.2, deriva de esa regla los ocho meses de inicio que no ponen los meses 16 ni 21 en septiembre o diciembre (supuesto S-17). La Tabla «tab:7A1» aplica la misma fórmula a los meses de marcha blanca; los meses en negrita caen en una ventana de congelamiento.
+El caso fija las ventanas del año: congelamiento total del 1 al 25 de septiembre y durante todo diciembre; congelamiento en los tres primeros días hábiles de cada mes (Caso 02, RT-10.05); y ningún paso a producción en septiembre ni en diciembre (sección 13.3, condición 2). El Capítulo 3, sección 3.1.2, deriva de esa regla los ocho meses de inicio que no ponen los meses 16 ni 21 en septiembre o diciembre (supuesto S-17). La Tabla 7.A.1 aplica la misma fórmula a los meses de marcha blanca; los meses en negrita caen en una ventana de congelamiento.
 
-**Meses calendario de los períodos contractuales según el mes de inicio. Fuente: elaboración propia a partir de las Bases Administrativas, Art. 17°, y del Caso 02, secciones 13.2 y 13.3.**
+**Tabla 7.A.1. Meses calendario de los períodos contractuales según el mes de inicio. Fuente: elaboración propia a partir de las Bases Administrativas, Art. 17°, y del Caso 02, secciones 13.2 y 13.3.**
 
 <a id="tab:7A1"></a>
 
@@ -31,9 +31,9 @@ Durante un mes de congelamiento que cae dentro de una marcha blanca no se inicia
 
 ## Anexo 7.B — Dependencias entre paquetes de trabajo
 
-La Tabla «tab:7B1» lista las dependencias que estructuran la red del cronograma. Son de tipo fin-comienzo (FC), salvo las marcadas como comienzo-comienzo (CC) y las de tipo «por interfaz», en que el sucesor espera los contratos del predecesor para construir y su entrega para integrar; cada una indica su fundamento. El Formulario T-15, sección 6.1, aplica estas dependencias actividad por actividad. Sobre esta red se identifica la ruta crítica del Subdocumento 7, sección 7.3.1, y se aplica el método de programación del Formulario T-15.
+La Tabla 7.B.1 lista las dependencias que estructuran la red del cronograma. Son de tipo fin-comienzo (FC), salvo las marcadas como comienzo-comienzo (CC) y las de tipo «por interfaz», en que el sucesor espera los contratos del predecesor para construir y su entrega para integrar; cada una indica su fundamento. El Formulario T-15, sección 6.1, aplica estas dependencias actividad por actividad. Sobre esta red se identifica la ruta crítica del Subdocumento 7, sección 7.3.1, y se aplica el método de programación del Formulario T-15.
 
-**Dependencias entre paquetes de trabajo. Fuente: elaboración propia a partir de los Formularios T-14 y T-18 y de los capítulos indicados.**
+**Tabla 7.B.1. Dependencias entre paquetes de trabajo. Fuente: elaboración propia a partir de los Formularios T-14 y T-18 y de los capítulos indicados.**
 
 <a id="tab:7B1"></a>
 
@@ -79,9 +79,9 @@ Las dependencias D-02, D-04 y D-14 a D-25 forman la cadena que llega a la marcha
 
 ## Anexo 7.C — Momento de los resultados de aceptación del caso
 
-El Caso 02, capítulo 18, exige indicar en qué momento del cronograma se alcanza cada resultado y cómo se mide. La Tabla «tab:7C1» ubica en el cronograma las metas y métodos del Capítulo 3, Anexo 3.J.
+El Caso 02, capítulo 18, exige indicar en qué momento del cronograma se alcanza cada resultado y cómo se mide. La Tabla 7.C.1 ubica en el cronograma las metas y métodos del Capítulo 3, Anexo 3.J.
 
-**Momento de los dieciséis resultados de aceptación. Fuente: elaboración propia a partir del Caso 02, capítulo 18, y del Capítulo 3, Anexo 3.J.**
+**Tabla 7.C.1. Momento de los dieciséis resultados de aceptación. Fuente: elaboración propia a partir del Caso 02, capítulo 18, y del Capítulo 3, Anexo 3.J.**
 
 <a id="tab:7C1"></a>
 
@@ -108,9 +108,9 @@ Los resultados R18-01 a R18-10 y R18-12/R18-14/R18-15/R18-16 tienen verificacion
 
 ## Anexo 7.D — Innovaciones en la EDT y en el cronograma
 
-Cada innovación declara sus paquetes de la EDT y sus meses del cronograma, como exige el Art. 29°, punto 4, de las Bases Administrativas. La Tabla «tab:7D1» los presenta con su código de innovación y sus meses.
+Cada innovación declara sus paquetes de la EDT y sus meses del cronograma, como exige el Art. 29°, punto 4, de las Bases Administrativas. La Tabla 7.D.1 los presenta con su código de innovación y sus meses.
 
-**Paquetes y meses de las cinco innovaciones. Fuente: elaboración propia a partir del Formulario T-14.**
+**Tabla 7.D.1. Paquetes y meses de las cinco innovaciones. Fuente: elaboración propia a partir del Formulario T-14.**
 
 <a id="tab:7D1"></a>
 
@@ -142,9 +142,9 @@ Las innovaciones 1 a 3 concentran su construcción entre los meses 2 y 10 y se v
 
 ## Anexo 7.E — Trazabilidad de módulos e interfaces a la EDT
 
-La EDT contiene la arquitectura cuando cada módulo y cada interfaz del Capítulo 4 tienen al menos un paquete que los construye y prueba. La Tabla «tab:7E1» presenta esa correspondencia para los doce módulos, y la Tabla «tab:7E2», para las quince interfaces.
+La EDT contiene la arquitectura cuando cada módulo y cada interfaz del Capítulo 4 tienen al menos un paquete que los construye y prueba. La Tabla 7.E.1 presenta esa correspondencia para los doce módulos, y la Tabla 7.E.2, para las quince interfaces.
 
-**Módulos de la solución y paquetes de la EDT. Fuente: elaboración propia a partir del Capítulo 3, Tabla 3.4, y del Formulario T-14.**
+**Tabla 7.E.1. Módulos de la solución y paquetes de la EDT. Fuente: elaboración propia a partir del Capítulo 3, Tabla 3.4, y del Formulario T-14.**
 
 <a id="tab:7E1"></a>
 
@@ -165,7 +165,7 @@ La EDT contiene la arquitectura cuando cada módulo y cada interfaz del Capítul
 
 Once de los doce módulos se construyen en la cuenta 3.4 y se prueban en la 3.8; M10 Analítica es el único módulo con trabajo en ambas etapas, porque sus indicadores operacionales entran en la Etapa 1 y el costo de servir en la Etapa 2.
 
-**Interfaces de la arquitectura y paquetes de la EDT. Fuente: elaboración propia a partir del Capítulo 4, Anexos 4.1-G y 4.1-H, y del Formulario T-14.**
+**Tabla 7.E.2. Interfaces de la arquitectura y paquetes de la EDT. Fuente: elaboración propia a partir del Capítulo 4, Anexos 4-G y 4-H, y del Formulario T-14.**
 
 <a id="tab:7E2"></a>
 
@@ -189,32 +189,33 @@ Once de los doce módulos se construyen en la cuenta 3.4 y se prueban en la 3.8;
 
 Las quince interfaces tienen un paquete que las construye, y las interfaces internas (INT-01 a INT-05 e INT-12 a INT-14) dependen de la base compartida o de los módulos que las usan. Además de estas interfaces, el paquete 3.6.1 construye el intercambio de lote y trazabilidad con los proveedores.
 
-## Anexo 7.F — Supuestos y dependencias para preparar SD8
+## Anexo 7.F — Supuestos de planificación y dependencias para la gestión de riesgos
 
-Esta matriz es entrada de planificación al SD8; no reemplaza T-16, una RBS ni la evaluación cuantitativa de riesgos. No se inventan probabilidades ni importes. Los códigos P7 sirven para trazabilidad interna y no renumeran T-12.
+Esta matriz traslada al Capítulo 8 los supuestos de la planificación que condicionan el cronograma, con su responsable y el control que los vigila. El Capítulo 8 los evalúa con su escala y los registra en el Formulario T-16. Los códigos P7 son identificadores de esta matriz y no renumeran el Formulario T-12.
 
-| ID | Riesgo / supuesto | EDT / hitos | Responsable de tratamiento | Disparador o control | Estado de preparación |
-| --- | --- | --- | --- | --- | --- |
-| P7-01 | Productividad y tamaños HH por clase no medidos | Los 222 paquetes; T-15 §4 | JP y líderes de frente | Sustituir tamaños por estimación de equipo trazable a T-12, cantidades y ensayos; recalcular si demanda supera capacidad | Modelo cuantificado, validación pendiente |
-| P7-02 | Cronograma por actividad depende de tamaños y equipos supuestos | D-01–D-34; H2/H3/H4/H5/H9/H10 | JP/ARQ | T-15 §5–§6 programa 564 actividades con dependencias, revisión Art. 18.3 y nivelación; reservas de 3 a 35 días hábiles por hito. Reestimar con el equipo y repetir el cálculo; una reserva consumida a la mitad activa replanificación | Cronograma por actividad calculado; validación del equipo pendiente |
-| P7-03 | Solapamientos compiten por especialistas | 4.2.1/4.2.2, 3.5, 4.3.1; meses 13–15/19–20 | Líder DES y CAL | Mantener 256 HH DES + 128 HH CAL/mes protegidas E1, sin préstamo a F4; asignar personas nominales | Capacidad modelada; contratación/turnos no acreditados |
-| P7-04 | Fecha efectiva cambia congelamientos | 1.1.3, 4.1; V-12/H6/H11/H7/H12 | JP/CLIENTE | Confirmar fecha y transformar meses relativos en calendario; no iniciar corte en fechas prohibidas | Escenario febrero 2027, no fecha confirmada |
-| P7-05 | Ola/cadena no lista antes de cuatro semanas de cierre | 4.2.1/4.3.1, 7.3, 3.6.5/6 | IMP/Comercial/Operaciones | Registro de todo el alcance, activación antes del tramo final, cero incidentes críticos/altos; no reemplazar alcance por muestra | Secuencia propuesta y aceptación definida |
-| P7-06 | Reversión manual no soporta despacho o falla DTE | 4.1.2/3.3.2; H6/H11 | Operaciones/ARQ/SRE | Ensayo de 96 despachos, objetivo total 40 minutos, final antes de 05:30; contingencia ERP aprobada | Objetivo cuantificado; tiempo/volumen no medidos |
-| P7-07 | Retiro temprano de acompañamiento o capacidad de mesa insuficiente | 4.2.2/4.3.2/8.1.1/8.1.2/8.1.5 | IMP/SRE | Decremento sólo con acta e indicadores sostenidos; mesa con las posiciones del SD4 y SOC 24×7 en T-15; medir abandono y resolución al primer contacto y calibrar Erlang A (T-15 §5.6) | Cobertura reconciliada con SD4; SLA no medidos |
-| P7-08 | Compra/sala/borde incumple H3 | 5.1.2/6.1/6.3/6.6.3 | SRE/CLIENTE | Recepción de sala antes de racks y configuración; H3 exige borde mes 6, no mes 12 | Restricción corregida; fecha de compra pendiente |
-| P7-09 | Reserva de stock/custodia duplica o confirma sin acuse | 3.3.6/3.4.2/3.4.6/3.8.1/3.8.3 | ARQ/DES/CAL | CD-05; AL-STOCK-01/AL-ACT-01 con concurrencia/corte/reintento; acuse durable y autoridad por época | Incluido en pruebas, no ejecutado |
-| P7-10 | Tráfico adicional o recuperación excede diseño | 3.8.4/3.9.3; SD4 física/DR | ARQ/SRE | Verificar 4L de A31/A32 frente a 2N + 2L y retenciones múltiples; medir carga/drenaje y límite residual DR/RPO | Dependencia de arquitectura preservada |
-| P7-11 | Control de conservación del precio pactado | 1.2.1/3.4.6; SD2 S-09, RF-03.11/12 y SD3 RNG-08 | Comercial/JP | Probar cambio de lista entre pedido y despacho y detectar diferencias ERP | Política documental alineada; prueba funcional exigida |
-| P7-12 | Revisión humana y evidencia formal no disponibles | 1.5/1.8, A-6, todos los hitos | JP/CAL | Registrar quién revisó, qué verificó y cuándo; comprobar PDF final en su flujo correspondiente | No se acredita aprobación humana ni formal |
+| ID | Riesgo / supuesto | EDT / hitos | Responsable de tratamiento | Disparador o control |
+| --- | --- | --- | --- | --- |
+| P7-01 | Productividad y tamaños HH por clase no medidos | Los 222 paquetes; T-15 §4 | JP y líderes de frente | Sustituir tamaños por estimación de equipo trazable a T-12, cantidades y ensayos; recalcular si demanda supera capacidad |
+| P7-02 | Cronograma por actividad depende de tamaños y equipos supuestos | D-01–D-34; H2/H3/H4/H5/H9/H10 | JP/ARQ | T-15 §5–§6 programa 564 actividades con dependencias, revisión Art. 18.3 y nivelación; reservas de 3 a 35 días hábiles por hito. Reestimar con el equipo y repetir el cálculo; una reserva consumida a la mitad activa replanificación |
+| P7-03 | Solapamientos compiten por especialistas | 4.2.1/4.2.2, 3.5, 4.3.1; meses 13–15/19–20 | Líder DES y CAL | Mantener 256 HH DES + 128 HH CAL/mes protegidas E1, sin préstamo a F4; asignar personas nominales |
+| P7-04 | Fecha efectiva cambia congelamientos | 1.1.3, 4.1; V-12/H6/H11/H7/H12 | JP/CLIENTE | Confirmar fecha y transformar meses relativos en calendario; no iniciar corte en fechas prohibidas |
+| P7-05 | Ola/cadena no lista antes de cuatro semanas de cierre | 4.2.1/4.3.1, 7.3, 3.6.5/6 | IMP/Comercial/Operaciones | Registro de todo el alcance, activación antes del tramo final, cero incidentes críticos/altos; no reemplazar alcance por muestra |
+| P7-06 | Reversión manual no soporta despacho o falla DTE | 4.1.2/3.3.2; H6/H11 | Operaciones/ARQ/SRE | Ensayo de 96 despachos, objetivo total 40 minutos, final antes de 05:30; contingencia ERP aprobada |
+| P7-07 | Retiro temprano de acompañamiento o capacidad de mesa insuficiente | 4.2.2/4.3.2/8.1.1/8.1.2/8.1.5 | IMP/SRE | Decremento sólo con acta e indicadores sostenidos; mesa con las posiciones del SD4 y SOC 24×7 en T-15; medir abandono y resolución al primer contacto y calibrar Erlang A (T-15 §5.6) |
+| P7-08 | Compra/sala/borde incumple H3 | 5.1.2/6.1/6.3/6.6.3 | SRE/CLIENTE | Recepción de sala antes de racks y configuración; H3 exige borde mes 6, no mes 12 |
+| P7-09 | Reserva de stock/custodia duplica o confirma sin acuse | 3.3.6/3.4.2/3.4.6/3.8.1/3.8.3 | ARQ/DES/CAL | CD-05; AL-STOCK-01/AL-ACT-01 con concurrencia/corte/reintento; acuse durable y autoridad por época |
+| P7-10 | Tráfico adicional o recuperación excede diseño | 3.8.4/3.9.3; SD4 física/DR | ARQ/SRE | Verificar 4L de A31/A32 frente a 2N + 2L y retenciones múltiples; medir carga/drenaje y límite residual DR/RPO |
+| P7-11 | Control de conservación del precio pactado | 1.2.1/3.4.6; SD2 S-09, RF-03.11/12 y SD3 RNG-08 | Comercial/JP | Probar cambio de lista entre pedido y despacho y detectar diferencias ERP |
 
-### Política de reservas que recibe SD8
+Los once supuestos se concentran en tres frentes: el tamaño de las estimaciones (P7-01 a P7-03), la fecha efectiva y las ventanas de corte (P7-04 a P7-06) y las dependencias técnicas con la arquitectura (P7-08 a P7-10). Cada uno tiene un control que se revisa en el Comité de Proyecto, y el Capítulo 8 asigna a los de mayor exposición una reserva de contingencia.
 
-El modelo protege 3.072 HH para correcciones E1 meses 13–20, además del trabajo base y cobertura. T-15 §5 deja reserva de calendario cero antes de H4/H5/H9/H10. La holgura local de convergencia no se suma como reserva adicional. Las últimas cuatro semanas de marcha blanca no son reserva. La reserva de gestión monetaria no está determinada: requiere escenarios de costo y autoridad de uso en el documento competente; SD7 no contiene precios.
+### Política de reservas que recibe el Capítulo 8
 
-### Condición para comenzar y condición para entregar
+El modelo protege 3.072 HH para correcciones de la Etapa 1 en los meses 13 a 20, además del trabajo base y de la cobertura de servicio. El Formulario T-15, sección 5, no deja reserva de calendario antes de H4, H5, H9 y H10, y la holgura local de convergencia no se suma como reserva adicional. Las últimas cuatro semanas de marcha blanca no son reserva. La reserva de gestión se define en la Oferta Económica, porque la Oferta Técnica no contiene precios.
 
-Puede comenzar la identificación, RBS, evaluación y respuesta de riesgos del SD8 usando los paquetes, supuestos y controles anteriores. Para entregar una oferta cerrada se requieren estimación validada, red detallada, personas y turnos asignados, fecha efectiva, conformidad de decisiones con el CLIENTE y evidencias de ensayo. La preparación no equivale a declarar cumplidas estas condiciones.
+### Condiciones para aprobar la línea base
+
+Antes de aprobar la línea base del cronograma en el H1, el Jefe de Proyecto presenta al Comité de Proyecto la estimación validada por los líderes de frente, la red detallada, las personas y turnos asignados a cada frente, la fecha efectiva de inicio confirmada por el CLIENTE y las decisiones de la consulta V-12. La evidencia de los ensayos se incorpora a medida que cada hito la produce.
 
 ## Referencias
 
@@ -222,9 +223,10 @@ Bases Administrativas, Art. 17°/18° y Formularios T-14/T-15/T-18; Bases Técni
 
 ## Declaración de uso de IA
 
-Se conserva la declaración histórica del cuerpo SD7. Codex apoyó la coherencia documental y la construcción del modelo de planificación y de este anexo el 6 de octubre de 2026 (nivel alto en texto; figuras sólo como descripción textual). Revisión humana no documentada. Los controles de consistencia no sustituyen la aprobación del equipo ni se atribuyen como revisión humana.
+En cumplimiento de la sección 7.2 de las Aclaraciones de la licitación, la tabla siguiente declara el uso de herramientas de inteligencia artificial en estos anexos, con la revisión humana de cada parte. La declaración se consolida en el Formulario A-6.
 
 | Sección | Herramienta | Finalidad del uso | Nivel en texto | Nivel en diagramas | Revisión humana (quién y qué verificó) |
 | --- | --- | --- | --- | --- | --- |
-| Anexos 7.A a 7.E | Claude Code | Listados y cálculo del calendario | Alto | Ninguno | No documentada |
-| Anexo 7.B y 7.F (7 de octubre de 2026) | Claude Code | Dependencias D-05/D-06/D-09–D-11/D-28 y supuestos P7-02/P7-07 | Alto | Ninguno | No documentada |
+| Anexos 7.A a 7.E | Claude Code | Listados y cálculo del calendario | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| Anexo 7.B y 7.F | Claude Code | Dependencias D-05/D-06/D-09–D-11/D-28 y supuestos P7-02/P7-07 | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| Correcciones de coherencia | Codex | Coherencia documental y modelo de planificación del anexo | Alto | Ninguno | [[REVISIÓN HUMANA]] |

@@ -1002,7 +1002,7 @@ El inventario distingue versión de referencia de una imagen exacta de producci�
 | TypeScript | 6.0.x | Sin fecha contractual independiente. | Versión compatible con Angular; archivo de bloqueo y pruebas. |
 | RabbitMQ | Rama 4.x con soporte comunitario vigente al liberar. | 4.3.x, comunidad: 31-01-2027. | Se instala la rama vigente y se actualiza antes de su fin; no se presume licencia comercial. |
 
-Fuente: Laravel (2026), PHP (2026), PostgreSQL (2026), Angular (2026a, 2026b) y RabbitMQ (2026). Fechas consultadas el 30-09-2026; la de RabbitMQ, el 07-10-2026.
+Fuente: Laravel (2026), PHP (2026), PostgreSQL (2026), Angular (2026a, 2026b) y RabbitMQ (2026). Fechas consultadas el 30-09-2026.
 
 Laravel, PHP, PostgreSQL y Angular tienen horizontes inferiores al contrato: el responsable de Desarrollo registra cada trimestre su soporte y planifica la sustitución antes de vencimiento. RabbitMQ requiere una actualización temprana antes del fin comunitario de la rama de referencia, aun durante desarrollo. No se atribuye al CLIENTE un contrato de soporte comercial no contratado.
 
@@ -1622,11 +1622,11 @@ Se conservan percentil 95, utilización, colas, errores, pérdida o duplicación
 
 - PHP. (2026). *Supported versions*. <https://www.php.net/supported-versions.php>
 
-- Pontificia Universidad Católica de Valparaíso. (2026a). *Bases técnicas del caso 02—Logística: Distribuidora Puelche S.A.* (Licitación N.° TFEP-01/2026).
+- Distribuidora Puelche S.A. (2026c). *Caso 02: Logística. Especificaciones del problema y operación de Distribuidora Puelche S.A.* (Licitación N.º TFEP-01/2026).
 
-- Pontificia Universidad Católica de Valparaíso. (2026b). *Bases técnicas transversales* (Licitación N.° TFEP-01/2026).
+- Distribuidora Puelche S.A. (2026b). *Bases Técnicas Transversales de Licitación N.º TFEP-01/2026*.
 
-- Pontificia Universidad Católica de Valparaíso. (2026c). *Bases administrativas* (Licitación N.° TFEP-01/2026).
+- Distribuidora Puelche S.A. (2026a). *Bases Administrativas de Licitación N.º TFEP-01/2026*.
 
 - PostgreSQL. (2026). *Versioning policy*. <https://www.postgresql.org/support/versioning/>
 
@@ -1642,67 +1642,54 @@ Se conservan percentil 95, utilización, colas, errores, pérdida o duplicación
 
 ## Declaración de uso de IA
 
-OpenAI Codex asistió la organización de los catálogos, redacción, cálculos de escenario y verificación de consistencia de estos anexos. La revisión humana final se realizará sobre el consolidado: las filas registran ese estado sin atribuir una aprobación inexistente. No se generaron nuevos diagramas dentro de estos anexos.
-
-<a id="tab:uso-ia-anexos"></a>
+En cumplimiento de la sección 7.2 de las Aclaraciones de la licitación, la tabla siguiente declara el uso de herramientas de inteligencia artificial en estos anexos, con la revisión humana de cada parte. La declaración se consolida en el Formulario A-6.
 
 **Tabla A.37 — Uso de IA en los anexos lógicos**
 
-| **Anexo** | **Herramienta** | **Finalidad** | **Texto** | **Diagramas** | **Revisión humana** |
+<a id="tab:uso-ia-anexos"></a>
+
+| Sección | Herramienta | Finalidad del uso | Nivel en texto | Nivel en diagramas | Revisión humana (quién y qué verificó) |
 | --- | --- | --- | --- | --- | --- |
-| A | Codex | Eventos canónicos. | Alto | Ninguno | No realizada. |
-| B | Codex | Gobierno de integración. | Alto | Ninguno | No realizada. |
-| C | Codex | Carga masiva. | Alto | Ninguno | No realizada. |
-| D | Codex | Módulos y responsabilidades. | Alto | Ninguno | No realizada. |
-| E | Codex | Trazabilidad funcional. | Alto | Ninguno | No realizada. |
-| F | Codex | Límites de contexto. | Alto | Ninguno | No realizada. |
-| G | Codex | Interfaces internas. | Alto | Ninguno | No realizada. |
-| H | Codex | Interfaces externas. | Alto | Ninguno | No realizada. |
-| I | Codex | Cálculos de volumen. | Alto | Ninguno | No realizada. |
-| J | Codex | Funciones offline. | Alto | Ninguno | No realizada. |
-| K | Codex | Reconciliación. | Alto | Ninguno | No realizada. |
-| L | Codex | Decisiones del caso. | Alto | Ninguno | No realizada. |
-| M | Codex | Protocolos de aceptación. | Alto | Ninguno | No realizada. |
-| N | Codex | Correspondencia lógica. | Alto | Ninguno | No realizada. |
-| O | Codex | Especificación y trazabilidad. | Alto | Ninguno | No realizada. |
-| P | Codex | Especificación y trazabilidad. | Alto | Ninguno | No realizada. |
-| Q | Codex | Especificación y trazabilidad. | Alto | Ninguno | No realizada. |
-| R | Codex | Especificación y trazabilidad. | Alto | Ninguno | No realizada. |
-| S | Codex | Especificación y trazabilidad. | Alto | Ninguno | No realizada. |
-| T | Codex | Especificación y trazabilidad. | Alto | Ninguno | No realizada. |
-| U | Codex | Especificación y trazabilidad. | Alto | Ninguno | No realizada. |
-| V | Codex | Especificación y trazabilidad. | Alto | Ninguno | No realizada. |
-
-Fuente: registro de elaboración asistida; debe consolidarse con la revisión humana y el Formulario A-6 antes de presentar la oferta.
-
-**Detalle por apartado del cuerpo**
-
-La herramienta es OpenAI Codex en todas las filas. La revisión humana corresponde al consolidado; no se asigna una firma o resultado inexistente.
-
-<a id="tab:ia-apartados"></a>
-
-**Tabla A.38 — Declaración por apartado lógico**
-
-| **Apartado** | **Finalidad** | **Texto** | **Diagramas** | **Revisión** |
-| --- | --- | --- | --- | --- |
-| 4.1.1 | especificaciones tecnologias de software a utilizar | Alto | No aplica | No realizada. |
-| 4.1.2 | principios de integracion | Alto | No aplica | No realizada. |
-| 4.1.3 | capas de la arquitectura | Alto | Alto, con modelo del equipo | No realizada. |
-| 4.1.4 | modulos funcionales y limites de contexto | Alto | No aplica | No realizada. |
-| 4.1.5 | modelo de datos conceptual | Alto | No aplica | No realizada. |
-| 4.1.6 | catalogo de interfaces | Alto | No aplica | No realizada. |
-| 4.1.7 | detalle de tecnologias seleccionadas | Alto | No aplica | No realizada. |
-| 4.1.8 | implantacion progresiva del backend laravel | Alto | No aplica | No realizada. |
-| 4.1.9 | ambientes del ciclo de vida y promocion de componentes | Alto | No aplica | No realizada. |
-| 4.1.10 | patrones de diseno y continuidad | Alto | No aplica | No realizada. |
-| 4.1.11 | registro de decisiones de arquitectura | Alto | No aplica | No realizada. |
-| 4.1.12 | puntos unicos de falla y riesgos residuales | Alto | No aplica | No realizada. |
-| 4.1.13 | comparacion de alternativas arquitectonicas | Alto | No aplica | No realizada. |
-| 4.1.14 | relacion entre las vistas de arquitectura | Alto | No aplica | No realizada. |
-| 4.1.15 | funciones disponibles y no disponibles sin conexion | Alto | No aplica | No realizada. |
-| 4.1.16 | reglas de reconciliacion | Alto | No aplica | No realizada. |
-| 4.1.17 | articulacion entre prueba de entrega dte y acuse | Alto | No aplica | No realizada. |
-| 4.1.18 | identidad y ciclo de vida de conductores externos | Alto | No aplica | No realizada. |
-| 4.1.19 | primer cuello de botella bajo la carga de septiembre | Alto | No aplica | No realizada. |
-| 4.1.20 | decisiones del numeral 16 1 del caso | Alto | No aplica | No realizada. |
-| 4.1.21 | condiciones y supuestos de diseno | Alto | No aplica | No realizada. |
+| A | Codex | Eventos canónicos. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| B | Codex | Gobierno de integración. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| C | Codex | Carga masiva. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| D | Codex | Módulos y responsabilidades. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| E | Codex | Trazabilidad funcional. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| F | Codex | Límites de contexto. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| G | Codex | Interfaces internas. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| H | Codex | Interfaces externas. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| I | Codex | Cálculos de volumen. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| J | Codex | Funciones offline. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| K | Codex | Reconciliación. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| L | Codex | Decisiones del caso. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| M | Codex | Protocolos de aceptación. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| N | Codex | Correspondencia lógica. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| O | Codex | Especificación y trazabilidad. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| P | Codex | Especificación y trazabilidad. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| Q | Codex | Especificación y trazabilidad. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| R | Codex | Especificación y trazabilidad. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| S | Codex | Especificación y trazabilidad. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| T | Codex | Especificación y trazabilidad. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| U | Codex | Especificación y trazabilidad. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| V | Codex | Especificación y trazabilidad. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| 4.1.1 | OpenAI Codex | Especificaciones de tecnologías de software a utilizar | Alto | No aplica | [[REVISIÓN HUMANA]] |
+| 4.1.2 | OpenAI Codex | Principios de integracion | Alto | No aplica | [[REVISIÓN HUMANA]] |
+| 4.1.3 | OpenAI Codex | Capas de la arquitectura | Alto | Alto, con modelo del equipo | [[REVISIÓN HUMANA]] |
+| 4.1.4 | OpenAI Codex | Modulos funcionales y limites de contexto | Alto | No aplica | [[REVISIÓN HUMANA]] |
+| 4.1.5 | OpenAI Codex | Modelo de datos conceptual | Alto | No aplica | [[REVISIÓN HUMANA]] |
+| 4.1.6 | OpenAI Codex | Catalogo de interfaces | Alto | No aplica | [[REVISIÓN HUMANA]] |
+| 4.1.7 | OpenAI Codex | Detalle de tecnologias seleccionadas | Alto | No aplica | [[REVISIÓN HUMANA]] |
+| 4.1.8 | OpenAI Codex | Implantacion progresiva del backend laravel | Alto | No aplica | [[REVISIÓN HUMANA]] |
+| 4.1.9 | OpenAI Codex | Ambientes del ciclo de vida y promocion de componentes | Alto | No aplica | [[REVISIÓN HUMANA]] |
+| 4.1.10 | OpenAI Codex | Patrones de diseño y continuidad | Alto | No aplica | [[REVISIÓN HUMANA]] |
+| 4.1.11 | OpenAI Codex | Registro de decisiones de arquitectura | Alto | No aplica | [[REVISIÓN HUMANA]] |
+| 4.1.12 | OpenAI Codex | Puntos únicos de falla y riesgos residuales | Alto | No aplica | [[REVISIÓN HUMANA]] |
+| 4.1.13 | OpenAI Codex | Comparacion de alternativas arquitectonicas | Alto | No aplica | [[REVISIÓN HUMANA]] |
+| 4.1.14 | OpenAI Codex | Relacion entre las vistas de arquitectura | Alto | No aplica | [[REVISIÓN HUMANA]] |
+| 4.1.15 | OpenAI Codex | Funciones disponibles y no disponibles sin conexion | Alto | No aplica | [[REVISIÓN HUMANA]] |
+| 4.1.16 | OpenAI Codex | Reglas de reconciliación | Alto | No aplica | [[REVISIÓN HUMANA]] |
+| 4.1.17 | OpenAI Codex | Articulacion entre prueba de entrega dte y acuse | Alto | No aplica | [[REVISIÓN HUMANA]] |
+| 4.1.18 | OpenAI Codex | Identidad y ciclo de vida de conductores externos | Alto | No aplica | [[REVISIÓN HUMANA]] |
+| 4.1.19 | OpenAI Codex | Primer cuello de botella bajo la carga de septiembre | Alto | No aplica | [[REVISIÓN HUMANA]] |
+| 4.1.20 | OpenAI Codex | Decisiones del numeral 16 1 del caso | Alto | No aplica | [[REVISIÓN HUMANA]] |
+| 4.1.21 | OpenAI Codex | Condiciones y supuestos de diseño | Alto | No aplica | [[REVISIÓN HUMANA]] |

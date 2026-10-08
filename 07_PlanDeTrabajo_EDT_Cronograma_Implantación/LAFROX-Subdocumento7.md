@@ -12,7 +12,7 @@ El capítulo se apoya en otros tres capítulos de la oferta: el Capítulo 3 fija
 
 La EDT es la base común del plan: el cronograma, la estimación y la asignación de responsables se construyen sobre sus paquetes, y su diccionario fija qué se entrega y cómo se acepta cada uno. Esta sección explica cómo se descompuso el trabajo, cómo queda la estructura, cómo cubre el alcance y cómo se asignan los responsables.
 
-### Criterio de descomposición
+### 7.1.1 Criterio de descomposición
 
 La EDT de Puelche se organiza en nueve fases. Las cuatro primeras son las fases del proceso de desarrollo del Capítulo 6 (Inicio, Elaboración, Construcción y Transición) y se recorren una vez por cada etapa del Art. 17°. El primer recorrido produce la Etapa 1, con la trazabilidad de recepción, la bodega, la cadena de frío, la preventa, las rutas, el reparto y la rendición, y termina con el paso a producción del mes 16. El segundo produce la Etapa 2, con el canal moderno, los portales y el costo de servir, y termina con el paso a producción del mes 21.
 
@@ -24,9 +24,9 @@ El último nivel de la EDT es el paquete de trabajo, con su entregable, su respo
 
 Los paquetes de la fase de Operación son paquetes de esfuerzo continuo. Cada uno cubre un servicio durante los 36 meses y se controla con entregables periódicos, como los informes mensuales de servicio, los informes de pruebas y las actualizaciones anuales, que funcionan como sus puntos de verificación.
 
-La Tabla «tab:7-fases» muestra el tamaño de cada fase y los hitos que produce.
+La Tabla 7.1 muestra el tamaño de cada fase y los hitos que produce.
 
-**Cuentas de control y paquetes por fase. Fuente: elaboración propia a partir del Formulario T-14 y del Formulario E-25.**
+**Tabla 7.1. Cuentas de control y paquetes por fase. Fuente: elaboración propia a partir del Formulario T-14 y del Formulario E-25.**
 
 <a id="tab:7-fases"></a>
 
@@ -45,31 +45,28 @@ La Tabla «tab:7-fases» muestra el tamaño de cada fase y los hitos que produce
 
 La construcción concentra el 36 % de los paquetes (79 de 222), porque contiene los quince desarrollos de módulos, las integraciones, la migración, las pruebas de ambas etapas y las innovaciones. Las fases 5 a 7, que no producen software, suman 50 paquetes (23 %). Ese peso muestra que, en Puelche, la compra y la instalación del equipamiento de cinco sitios, los acuerdos con diez transportistas y con el sindicato y la capacitación de una operación que no puede detenerse son trabajo planificado y controlado, no supuestos.
 
-La Figura «fig:7-edt» presenta la estructura en su primer nivel y su relación con las etapas del contrato.
+La Figura 7.1 presenta la estructura en su primer nivel y su relación con las etapas del contrato.
 
   
-  **Descripción textual de figura.** No sustituye la revisión visual del PDF.
-- Plataforma logística de Distribuidora Puelche / [-1pt]
+- Plataforma logística de Distribuidora Puelche:
      49 cuentas de control · 222 paquetes de trabajo
 - Etapas del contrato (Art. 17°) y fases que trabajan en cada una
-- **Etapa 1** / [-1pt]H1 a H7
-- **Etapa 2** / [-1pt]H8 a H12
-- **Operación** / [-1pt]hito mensual
+- **Etapa 1**:H1 a H7
+- **Etapa 2**:H8 a H12
+- **Operación**:hito mensual
 - la fase 9 cierra en los meses 21 y 56
-- Relación entre nodos: raiz → raiz.
   
-**Figura: Vista general de la EDT y su relación con las etapas del Art. 17°. Fuente: elaboración propia a partir de las Bases Administrativas, Art. 15° y 17°, y del Formulario T-14.**
+**Figura 7.1. Vista general de la EDT y su relación con las etapas del Art. 17°. Fuente: elaboración propia a partir de las Bases Administrativas, Art. 15° y 17°, y del Formulario T-14.**
 
   <a id="fig:7-edt"></a>
 
 La figura se lee de arriba hacia abajo. Las fases de desarrollo forman el ciclo que se recorre dos veces, una por etapa; por eso sus fichas aparecen tanto en la banda de la Etapa 1 como en la de la Etapa 2. Adquisiciones, infraestructura y capacitación trabajan en paralelo con ese ciclo y lo alimentan, y la operación y el cierre empiezan cuando termina la implementación. La EDT no expresa secuencia: el número de una fase no indica cuándo ocurre, y sus fechas están en la carta Gantt de la sección 7.3.2.
 
-### Estructura general
+### 7.1.2 Estructura general
 
-Las Figuras «fig:7-edt-dev» y «fig:7-edt-sop» presentan el segundo nivel de la EDT: las cuentas de control de cada fase, con la cantidad de paquetes de cada una y los hitos que producen.
+Las Figuras 7.2 y 7.3 presentan el segundo nivel de la EDT: las cuentas de control de cada fase, con la cantidad de paquetes de cada una y los hitos que producen.
 
   
-  **Descripción textual de figura.** No sustituye la revisión visual del PDF.
 - 1 Inicio /  9 CC  35 PT
 - 2 Elaboración /  6 CC  18 PT
 - 3 Construcción /  11 CC  79 PT
@@ -105,18 +102,17 @@ Las Figuras «fig:7-edt-dev» y «fig:7-edt-sop» presentan el segundo nivel de 
 - **4.3** Marcha blanca y producción de la Etapa 2 / 4 PT  Hito H11 Hito H12
 - Las fases 1 a 4 se recorren dos veces: la primera termina en el H7 (mes 16) y la segunda en el H12 (mes 21).
   
-**Figura: Fases de desarrollo (1 a 4) y sus cuentas de control. Fuente: elaboración propia a partir del Formulario T-14 y del Formulario E-25.**
+**Figura 7.2. Fases de desarrollo (1 a 4) y sus cuentas de control. Fuente: elaboración propia a partir del Formulario T-14 y del Formulario E-25.**
 
   <a id="fig:7-edt-dev"></a>
 
-En la Figura «fig:7-edt-dev», cada rombo marca la cuenta de control que entrega el hito. La fase de Inicio fija qué se construye y cómo se dirige el proyecto. Además del acta, la línea base y los planes, contiene dos paquetes que solo existen por la situación de Puelche: el 1.2.2, que captura las reglas de ruteo del planificador cuya jubilación tiene fecha dentro del contrato (Caso 02, capítulo 18, resultado 16), y el 1.2.3, que especifica las interfaces del sistema de gestión que el CLIENTE reconoce no tener documentadas (Caso 02, sección 17.5). También incluye el gobierno del proyecto, con los comités del Art. 71°, el informe mensual con valor ganado y el tablero (RT-19.06 a RT-19.09), y el cumplimiento normativo y contractual.
+En la Figura 7.2, cada rombo marca la cuenta de control que entrega el hito. La fase de Inicio fija qué se construye y cómo se dirige el proyecto. Además del acta, la línea base y los planes, contiene dos paquetes que solo existen por la situación de Puelche: el 1.2.2, que captura las reglas de ruteo del planificador cuya jubilación tiene fecha dentro del contrato (Caso 02, capítulo 18, resultado 16), y el 1.2.3, que especifica las interfaces del sistema de gestión que el CLIENTE reconoce no tener documentadas (Caso 02, sección 17.5). También incluye el gobierno del proyecto, con los comités del Art. 71°, el informe mensual con valor ganado y el tablero (RT-19.06 a RT-19.09), y el cumplimiento normativo y contractual.
 
 La fase de Elaboración diseña la solución antes de programar: la arquitectura lógica y física, el modelo de datos con trazabilidad por lote, el plan de seguridad, los planos de la sala técnica de Talca, que hoy no cumple el estándar exigido (Caso 02, capítulo 16), la continuidad del negocio y la experiencia de usuario, diseñada con preparadores que trabajan con guantes a −22 °C, preventistas sin señal y conductores externos. La aprobación de la arquitectura, la seguridad y el modelo de datos es el H2 del mes 4.
 
 La fase de Construcción produce los cinco ambientes y los servicios de nube; la base compartida, con la identidad, la integración con el ERP como único emisor de la guía de despacho, la convivencia con el WMS de 2013 y la operación sin conexión; los once módulos de la Etapa 1 y los cuatro desarrollos de la Etapa 2; las integraciones externas y la migración de datos; las pruebas de certificación de ambas etapas, las innovaciones y la documentación técnica. La fase de Transición convierte la solución probada en el registro oficial mediante el plan de olas, la reversión, las dos marchas blancas y la estabilización.
 
   
-  **Descripción textual de figura.** No sustituye la revisión visual del PDF.
 - 5 Adquisiciones y contrataciones /  4 CC  13 PT
 - 6 Infraestructura física y sitios /  6 CC  24 PT
 - 7 Capacitación y gestión del cambio /  3 CC  13 PT
@@ -146,21 +142,21 @@ La fase de Construcción produce los cinco ambientes y los servicios de nube; la
 - **9.1** Cierre de la implementación / 2 PT   Mes 21
 - **9.2** Salida al término del contrato / 2 PT   Mes 56
   
-**Figura: Fases de soporte, operación y cierre (5 a 9) y sus cuentas de control. Fuente: elaboración propia a partir del Formulario T-14.**
+**Figura 7.3. Fases de soporte, operación y cierre (5 a 9) y sus cuentas de control. Fuente: elaboración propia a partir del Formulario T-14.**
 
   <a id="fig:7-edt-sop"></a>
 
-La Figura «fig:7-edt-sop» muestra que el trabajo que no es software tiene cuentas propias con responsable. La fase de Adquisiciones y contrataciones separa lo que compra el CLIENTE de lo que contrata LafroX: el CLIENTE compra el hardware de terreno y de la sala, que LafroX especifica y recibe, y LafroX contrata la nube, los enlaces y las licencias. Esta fase reúne también los acuerdos sin los cuales la solución no sale a la ruta, con las diez empresas transportistas y con el sindicato, y la fórmula contractual de la innovación 4.
+La Figura 7.3 muestra que el trabajo que no es software tiene cuentas propias con responsable. La fase de Adquisiciones y contrataciones separa lo que compra el CLIENTE de lo que contrata LafroX: el CLIENTE compra el hardware de terreno y de la sala, que LafroX especifica y recibe, y LafroX contrata la nube, los enlaces y las licencias. Esta fase reúne también los acuerdos sin los cuales la solución no sale a la ruta, con las diez empresas transportistas y con el sindicato, y la fórmula contractual de la innovación 4.
 
 La fase de Infraestructura física y sitios instala la sala de Talca, con energía, climatización y extinción; los racks y los gabinetes de borde de Concepción y de las tres plataformas de cross-docking; los terminales, los sensores de cámara y los termógrafos de los 28 camiones con frío; y los enlaces con su respaldo. Termina con la prueba de autonomía de 24 horas del centro de distribución.
 
 La fase de Capacitación y gestión del cambio atiende la rotación del 38 % en preparación, con capacitación continua del turno de noche; al personal con veinte o treinta años en la compañía, con acompañamiento individual; la incorporación en el andén de los conductores externos; y el traspaso al equipo de TI de cuatro personas. La certificación de usuarios, destacada en la cuenta 7.3, es una de las seis condiciones de cierre de cada marcha blanca. La fase de Operación presta los servicios de los meses 21 a 56, y la de Cierre entrega el código al término de la implementación y ejecuta la salida al término del contrato.
 
-### Cobertura del alcance
+### 7.1.3 Cobertura del alcance
 
-Las Aclaraciones de la licitación exigen que la EDT contenga explícitamente las innovaciones y las actividades de seguridad, calidad, migración e implantación (sección 11, Capítulo 7), y el Caso 02 exige que contenga la arquitectura (capítulo 19). La Tabla «tab:7-cobertura» comprueba que cada uno de esos componentes tiene paquetes propios.
+Las Aclaraciones de la licitación exigen que la EDT contenga explícitamente las innovaciones y las actividades de seguridad, calidad, migración e implantación (sección 11, Capítulo 7), y el Caso 02 exige que contenga la arquitectura (capítulo 19). La Tabla 7.2 comprueba que cada uno de esos componentes tiene paquetes propios.
 
-**Cobertura del alcance en la EDT. Fuente: elaboración propia a partir del Formulario T-14, del Capítulo 4 y de las Aclaraciones.**
+**Tabla 7.2. Cobertura del alcance en la EDT. Fuente: elaboración propia a partir del Formulario T-14, del Capítulo 4 y de las Aclaraciones.**
 
 <a id="tab:7-cobertura"></a>
 
@@ -176,10 +172,9 @@ Las Aclaraciones de la licitación exigen que la EDT contenga explícitamente la
 
 La tabla muestra que ninguna exigencia descansa en un paquete genérico. La seguridad, por ejemplo, aparece en las cinco fases donde ocurre: el diseño de la Elaboración, la identidad y las pruebas de seguridad ofensiva de la Construcción, la seguridad física de la sala y el centro de operaciones de seguridad durante la Operación. Las pruebas de seguridad ofensiva 3.8.6 y 3.9.5 se cuentan en la fila de seguridad y en la de calidad, porque son a la vez control de seguridad y prueba de certificación. Las pruebas de la Etapa 2 repiten las de la Etapa 1 con una exigencia adicional: demostrar que la Etapa 1 en producción no se degrada.
 
-La Figura «fig:7-cobertura» ubica esos paquetes por fase y muestra en qué parte de la EDT y, por lo tanto, del cronograma quedan las actividades de cada categoría.
+La Figura 7.4 ubica esos paquetes por fase y muestra en qué parte de la EDT y, por lo tanto, del cronograma quedan las actividades de cada categoría.
 
   
-  **Descripción textual de figura.** No sustituye la revisión visual del PDF.
 - Innovaciones /  23 PT
 - Seguridad /  17 PT
 - Calidad /  19 PT
@@ -240,7 +235,7 @@ La Figura «fig:7-cobertura» ubica esos paquetes por fase y muestra en qué par
 - —
 - —
   
-**Figura: Ubicación en la EDT de las innovaciones y de la seguridad, la calidad, la migración y la implantación. Fuente: elaboración propia a partir del Formulario T-14 y de las Aclaraciones, sección 11.**
+**Figura 7.4. Ubicación en la EDT de las innovaciones y de la seguridad, la calidad, la migración y la implantación. Fuente: elaboración propia a partir del Formulario T-14 y de las Aclaraciones, sección 11.**
 
   <a id="fig:7-cobertura"></a>
 
@@ -248,13 +243,13 @@ La matriz confirma que las cinco categorías se distribuyen desde el diseño has
 
 Los anexos completan la cobertura. El Anexo 7.E relaciona los doce módulos y las quince interfaces del Capítulo 4 con el paquete que los construye y prueba, y el Anexo 7.C ubica los dieciséis resultados de aceptación del caso en su paquete y su momento. Los requerimientos del Formulario T-12 se trazan a los paquetes mediante la matriz de trazabilidad del paquete 1.2.4, que se aprueba con el H1.
 
-### Diccionario y asignación de responsables
+### 7.1.4 Diccionario y asignación de responsables
 
 El diccionario de la EDT, en el Formulario T-14, describe cada paquete con su entregable, su criterio de aceptación, su responsable y el período del cronograma en que se ejecuta, junto con el hito del Formulario E-25 que habilita. Todo entregable se recibe con el acta de la Contraparte Técnica, acompañada de su evidencia de verificación, su trazabilidad hacia los requerimientos y las observaciones resueltas (Bases Administrativas, Art. 18.1 y 18.2). Los criterios del diccionario se suman a esa regla común. Por ejemplo, el paquete 3.4.1 (M1 Recepción) se acepta solo si ningún producto con trazabilidad obligatoria se recibe sin lote, y el 4.1.2 (reversión de la Etapa 1) se acepta solo si su ensayo termina antes de las 05:30, sostiene 96 despachos sin interrupción con DTE válidos del ERP y no pierde ni duplica registros.
 
-Los responsables son los ocho roles de la estructura para el proyecto del Capítulo 1, sección 1.5. La Tabla «tab:7-responsables» muestra cómo se reparten los paquetes.
+Los responsables son los ocho roles de la estructura para el proyecto del Capítulo 1, sección 1.5. La Tabla 7.3 muestra cómo se reparten los paquetes.
 
-**Paquetes por responsable. Fuente: elaboración propia a partir del Formulario T-14.**
+**Tabla 7.3. Paquetes por responsable. Fuente: elaboración propia a partir del Formulario T-14.**
 
 <a id="tab:7-responsables"></a>
 
@@ -278,16 +273,15 @@ El plan de trabajo aplica las metodologías del Capítulo 6. La gestión del pro
 
 El desarrollo sigue las cuatro fases del proceso iterativo del Capítulo 6, que la EDT recorre una vez por etapa. Dentro de la Construcción, cada módulo avanza por iteraciones que producen resultados verificables, mientras que la marcha blanca y la aceptación formal ocurren solo en los meses que fija el Art. 17°. El tablero de flujo del equipo coordina las tareas diarias, pero no reemplaza el cronograma ni la aceptación formal de los entregables, como establece la metodología de gestión de proyectos del Capítulo 6.
 
-### Secuenciamiento y dependencias
+### 7.2.1 Secuenciamiento y dependencias
 
 El orden del trabajo sigue las dependencias de datos y de infraestructura de Puelche (Capítulo 3, sección 3.4.3). Primero se aprueban el alcance (H1, mes 2) y el diseño (H2, mes 4). En paralelo, se especifica y compra el equipamiento de la sala y de los sitios, y se contratan la nube y los enlaces, de modo que la infraestructura híbrida y los ambientes queden habilitados en el H3 del mes 6.
 
 La construcción de la Etapa 1 parte por la base compartida, porque si falla, fallan todos los módulos. Sigue con recepción e inventario, que alimentan la preparación y el retiro sanitario, mientras la preventa avanza en paralelo porque necesita stock y crédito. Las rutas y el reparto se integran cuando existen el pedido confirmado y la preparación, y la rendición, cuando existe la entrega registrada. La Etapa 2 se diseña en los meses 13 y 14 (H8), reutiliza los pedidos, las guías y las evidencias ya probadas, y calcula el costo de servir con los hechos acumulados desde la marcha blanca de la Etapa 1.
 
-La Figura «fig:7-red» presenta esa red de precedencias entre cuentas de control. El Anexo 7.B lista las 34 dependencias entre paquetes con su fundamento.
+La Figura 7.5 presenta esa red de precedencias entre cuentas de control. El Anexo 7.B lista las 34 dependencias entre paquetes con su fundamento.
 
   
-  **Descripción textual de figura.** No sustituye la revisión visual del PDF.
 - Etapa 1 (meses 1 a 16)
 - Etapa 2 (meses 13 a 21)
 - 1.2 Alcance del proyecto
@@ -323,28 +317,8 @@ La Figura «fig:7-red» presenta esa red de precedencias entre cuentas de contro
 - Cadena crítica identificada
 - Precedencia fin-comienzo (CC: comienzo-comienzo)
 - Hito del Formulario E-25
-- Relación entre nodos: n12 → n21.
-- Relación entre nodos: n21 → n24.
-- Relación entre nodos: n12 → n33 → n33.
-- Relación entre nodos: n22 → n33.
-- Relación entre nodos: n33 → n34.
-- Relación entre nodos: n34 → n38.
-- Relación entre nodos: n38 → n42.
-- Relación entre nodos: n23 → n51.
-- Relación entre nodos: n51 → n61.
-- Relación entre nodos: n61 → n63.
-- Relación entre nodos: n63 → n66.
-- Relación entre nodos: n66 → H3.
-- Relación entre nodos: n52 → n32.
-- Relación entre nodos: n32 → n31.
-- Relación entre nodos: n31 → H3.
-- Relación entre nodos: H8 → n35.
-- Relación entre nodos: n35 → n39.
-- Relación entre nodos: n39 → n43.
-- Relación entre nodos: n43 → n8.
-- Relación entre nodos: n8 → n91.
   
-**Figura: Red de precedencias entre cuentas de control e hitos. Fuente: elaboración propia a partir del Anexo 7.B y del Formulario E-25.**
+**Figura 7.5. Red de precedencias entre cuentas de control e hitos. Fuente: elaboración propia a partir del Anexo 7.B y del Formulario E-25.**
 
   <a id="fig:7-red"></a>
 
@@ -354,34 +328,33 @@ El secuenciamiento incorpora además las condiciones de la operación de Puelche
 
 Los acuerdos con los diez transportistas y con el sindicato preceden a la ola de reparto (paquetes 5.4.1 y 5.4.2), y la certificación del intercambio electrónico es un paquete por cadena y no una tarea única (paquetes 3.6.5 y 3.6.6). Las interfaces del sistema de gestión se levantan en el Inicio y se prueban temprano (paquetes 1.2.3 y 3.3.2). Las reglas de ruteo del planificador se capturan en los talleres de los meses 1 a 3 y se validan sin él durante la marcha blanca (paquete 1.2.2; resultado R18-16).
 
-### Estimación
+### 7.2.2 Estimación
 
 El esfuerzo se estima por paquete con tres valores en horas hombre: optimista, más probable y pesimista (PMI, 2017, p. 201). La incertidumbre de cada estimación se representa con una distribución beta, una de las que el PMBOK admite para modelar la incertidumbre de duración y recursos (PMI, 2017, p. 432). Con ella, la técnica PERT da el esfuerzo esperado $T_E = (O + 4M + P)/6$ y su desviación $σ = (P - O)/6$ (Malcolm et al., 1959). El PMBOK presenta también la distribución triangular, $(O + M + P)/3$ (PMI, 2017, p. 201); se prefiere la beta porque da cuatro veces más peso al valor más probable, que el equipo funda en los requerimientos del Formulario T-12 y en las cantidades del Formulario T-11.
 
 La base de cada estimación depende del tipo de paquete. Los módulos y las integraciones se estiman a partir de los requerimientos del Formulario T-12 asignados a cada paquete; la infraestructura, a partir de las cantidades del Formulario T-11; la implantación, a partir de las personas y rutas del caso; y la operación, a partir de los horarios de cobertura y de la periodicidad de los informes. Los paquetes de la fase 8 se estiman por mes y se multiplican por los 36 meses de operación. El Formulario T-15 detalla el método y las reglas de programación. La duración de cada paquete se obtiene de su esfuerzo esperado y de la dotación asignada, y la suma de las varianzas de los paquetes de la ruta crítica entrega la probabilidad de cumplir cada hito con la aproximación normal de PERT. Para programar y controlar, el esfuerzo de cada paquete se reparte entre sus actividades del Formulario T-15, sección 6, sin cambiar su total.
 
-### Frentes de trabajo y sincronización
+### 7.2.3 Frentes de trabajo y sincronización
 
-El trabajo se organiza en ocho frentes. Cada frente es un equipo con un responsable que avanza en paralelo con los demás sobre un conjunto de cuentas de control. La Figura «fig:7-frentes» presenta los frentes, su rol líder, sus cuentas de control y su ventana de actividad entre los meses 1 y 21; la correspondencia completa está en el Formulario T-15.
+El trabajo se organiza en ocho frentes. Cada frente es un equipo con un responsable que avanza en paralelo con los demás sobre un conjunto de cuentas de control. La Figura 7.6 presenta los frentes, su rol líder, sus cuentas de control y su ventana de actividad entre los meses 1 y 21; la correspondencia completa está en el Formulario T-15.
 
   
-  **Descripción textual de figura.** No sustituye la revisión visual del PDF.
 - Solapamiento / meses 13 a 15
 - Solapamiento / meses 19 y 20
 - **F8 Operación** / Líder de Operación / SRE
-- 8.1–8.3, 8.5: desde el mes 21 hasta el 56 $→$
+- 8.1–8.3, 8.5: desde el mes 21 hasta el 56
   
-**Figura: Frentes de trabajo de los meses 1 a 21. Fuente: elaboración propia a partir de los Formularios T-14 y T-15.**
+**Figura 7.6. Frentes de trabajo de los meses 1 a 21. Fuente: elaboración propia a partir de los Formularios T-14 y T-15.**
 
   <a id="fig:7-frentes"></a>
 
 La figura muestra que en ningún mes trabaja un solo frente: entre los meses 1 y 15 avanzan a la vez la dirección, la arquitectura, la construcción de la Etapa 1, la plataforma y la calidad, y desde el mes 9 se suma la implantación. Los frentes se sincronizan en tres instancias. La primera son los hitos del Formulario E-25, porque cada hito exige que varios frentes entreguen a la vez. La segunda son los comités del Art. 71°: el de Proyecto es quincenal y los de Arquitectura y Operación son mensuales, y sus actas registran los acuerdos entre frentes en dos días hábiles (RT-19.09). La tercera son las ventanas de calendario, que son comunes a todos los frentes.
 
-### Solapamientos de los meses 13 a 15 y 19 a 20
+### 7.2.4 Solapamientos de los meses 13 a 15 y 19 a 20
 
 El Art. 17.2 obliga a dimensionar dotación y frentes para dos esfuerzos simultáneos. En los meses 13 a 15 trabajan a la vez el frente de implantación (F7), en la marcha blanca de la Etapa 1 con su acompañamiento; el de construcción de la Etapa 1 (F3), en las correcciones de esa marcha blanca; el de construcción de la Etapa 2 (F4), en su desarrollo, con el H8 en el mes 14; el de calidad (F6), en las pruebas de ambas etapas; y los frentes de dirección y de arquitectura (F1 y F2).
 
-F3 y F4 dependen del mismo rol, el Líder de Desarrollo, pero son equipos distintos. Si el mismo equipo atendiera la marcha blanca y desarrollara la Etapa 2, cada incidente de la marcha blanca atrasaría la Etapa 2, que es precisamente la situación que el Art. 17.2 busca evitar. La Figura «fig:7-frentes» lo hace visible: en la franja sombreada de los meses 13 a 15, las barras de F3 y F4 coexisten en carriles separados.
+F3 y F4 dependen del mismo rol, el Líder de Desarrollo, pero son equipos distintos. Si el mismo equipo atendiera la marcha blanca y desarrollara la Etapa 2, cada incidente de la marcha blanca atrasaría la Etapa 2, que es precisamente la situación que el Art. 17.2 busca evitar. La Figura 7.6 lo hace visible: en la franja sombreada de los meses 13 a 15, las barras de F3 y F4 coexisten en carriles separados.
 
 En los meses 19 y 20 la Etapa 1 está en producción y la Etapa 2 en marcha blanca. Trabajan F7, en la marcha blanca de la Etapa 2; F4, en sus correcciones; F6, en las pruebas; y el soporte de la Etapa 1 en producción. La dotación de cada frente en cada solapamiento se presenta en el Formulario T-15, de modo que los dos esfuerzos se sumen sin contar dos veces a las mismas personas.
 
@@ -389,20 +362,19 @@ En los meses 19 y 20 la Etapa 1 está en producción y la Etapa 2 en marcha blan
 
 El cronograma aplica el Art. 17° mes a mes y la implantación aplica las condiciones del Caso 02 (secciones 13.3 y 17.6). Esta sección presenta la ruta crítica, la carta Gantt, el plan de implantación, las marchas blancas, la estabilización y el momento en que se alcanza cada resultado comprometido. El detalle está en los Formularios T-14, T-15 y T-18.
 
-### Ruta crítica y holguras
+### 7.3.1 Ruta crítica y holguras
 
 La ruta crítica se calcula con el método de la ruta crítica sobre la red del Anexo 7.B (PMI, 2017, pp. 210–211). Una pasada hacia adelante da las fechas tempranas de cada paquete; una pasada hacia atrás, desde los meses fijos del Art. 17°, da las tardías; LS − ES es la holgura total; la libre se mide contra el ES de los sucesores. Como los hitos del Formulario E-25 son fechas fijas, un camino que no llega a su hito tiene holgura negativa y obliga a replanificar.
 
-La cadena crítica nace en las interfaces sin documentación del sistema de gestión, que el caso señala expresamente (sección 17.5), y recorre la especificación de las interfaces (1.2.3), la integración con el ERP (3.3.2), los módulos de la Etapa 1 (3.4), las pruebas de integración (H4, mes 10), la certificación (H5, mes 12), la marcha blanca (H6, mes 13) y el paso a producción (H7, mes 16). La Figura «fig:7-ruta» ubica esa cadena y los caminos casi críticos sobre los meses del contrato.
+La cadena crítica nace en las interfaces sin documentación del sistema de gestión, que el caso señala expresamente (sección 17.5), y recorre la especificación de las interfaces (1.2.3), la integración con el ERP (3.3.2), los módulos de la Etapa 1 (3.4), las pruebas de integración (H4, mes 10), la certificación (H5, mes 12), la marcha blanca (H6, mes 13) y el paso a producción (H7, mes 16). La Figura 7.7 ubica esa cadena y los caminos casi críticos sobre los meses del contrato.
 
   
-  **Descripción textual de figura.** No sustituye la revisión visual del PDF.
 - Caminos casi críticos
 - 5.1.2 y 6.1 a 6.6 terminan en el H3
 - Marcha / blanca E1
 - Marcha / blanca E2
   
-**Figura: Ruta crítica identificada y caminos casi críticos de la implementación. Fuente: elaboración propia a partir del Anexo 7.B y de los períodos del Formulario T-14.**
+**Figura 7.7. Ruta crítica identificada y caminos casi críticos de la implementación. Fuente: elaboración propia a partir del Anexo 7.B y de los períodos del Formulario T-14.**
 
   <a id="fig:7-ruta"></a>
 
@@ -410,11 +382,11 @@ La figura conserva la lectura por meses. El Formulario T-15 programa ahora las 5
 
 La holgura se gestiona en las instancias de gobierno de la EDT. El avance de cada paquete de la ruta crítica y de los caminos casi críticos se revisa en la reunión semanal de seguimiento y en el Comité de Proyecto quincenal (paquetes 1.3.5 y 1.8.3). Toda desviación que comprometa un hito se escala al Comité Ejecutivo con su análisis de impacto (paquetes 1.4.3 y 1.8.2), y el informe mensual con valor ganado avisa toda desviación mayor al 10 % con su plan dentro de cinco días hábiles (paquete 1.8.6). H7 y H12 dependen además de la aceptación copulativa de la marcha blanca, que no tiene una probabilidad calculada.
 
-### Carta Gantt y calendario
+### 7.3.2 Carta Gantt y calendario
 
-La carta Gantt del Formulario T-14 cubre los 56 meses y muestra las marchas blancas, los pasos a producción y el inicio de la Operación. La Tabla «tab:7-hitos» ubica los doce hitos del Formulario E-25 con el paquete que entrega cada uno.
+La carta Gantt del Formulario T-14 cubre los 56 meses y muestra las marchas blancas, los pasos a producción y el inicio de la Operación. La Tabla 7.4 ubica los doce hitos del Formulario E-25 con el paquete que entrega cada uno.
 
-**Hitos del Formulario E-25 en el cronograma. Fuente: elaboración propia a partir del Formulario E-25 y del Formulario T-14.**
+**Tabla 7.4. Hitos del Formulario E-25 en el cronograma. Fuente: elaboración propia a partir del Formulario E-25 y del Formulario T-14.**
 
 <a id="tab:7-hitos"></a>
 
@@ -435,9 +407,9 @@ La carta Gantt del Formulario T-14 cubre los 56 meses y muestra las marchas blan
 
 La tabla está ordenada por mes y no por número de hito, porque el H8 (mes 14) ocurre antes que el H7 (mes 16). Ese cruce es la expresión concreta del solapamiento: la línea base de la Etapa 2 se aprueba mientras la Etapa 1 está en su marcha blanca.
 
-Los meses contractuales caen en meses calendario distintos según la fecha de inicio del contrato, que aún no está definida (consulta V-12). La Tabla «tab:7-inicio» aplica la regla a los tres inicios que el Capítulo 3, sección 3.1.2, considera compatibles con poner la Etapa 2 en producción antes de enero de 2029, fecha desde la que rigen las condiciones de la principal cadena de supermercados.
+Los meses contractuales caen en meses calendario distintos según la fecha de inicio del contrato, que aún no está definida (consulta V-12). La Tabla 7.5 aplica la regla a los tres inicios que el Capítulo 3, sección 3.1.2, considera compatibles con poner la Etapa 2 en producción antes de enero de 2029, fecha desde la que rigen las condiciones de la principal cadena de supermercados.
 
-**Meses contractuales según la fecha de inicio. Fuente: elaboración propia a partir de las Bases Administrativas, Art. 17°, y del Caso 02, secciones 13.2 y 13.3.**
+**Tabla 7.5. Meses contractuales según la fecha de inicio. Fuente: elaboración propia a partir de las Bases Administrativas, Art. 17°, y del Caso 02, secciones 13.2 y 13.3.**
 
 <a id="tab:7-inicio"></a>
 
@@ -449,10 +421,9 @@ Los meses contractuales caen en meses calendario distintos según la fecha de in
 
 Ningún inicio admisible deja las dos marchas blancas completas fuera de septiembre y diciembre; el Anexo 7.A extiende el análisis a los ocho meses de inicio admisibles. Con un inicio en diciembre de 2026, el inicio de la marcha blanca de la Etapa 1 cae en diciembre; con uno en marzo de 2027, el inicio de la marcha blanca de la Etapa 2 cae en septiembre. Con febrero de 2027, en cambio, el congelamiento afecta solo el segundo mes de la marcha blanca de la Etapa 2 y no un inicio, por lo que LafroX lo adopta como supuesto de calendario del cronograma. Su costo es que las semanas de cierre de esa marcha blanca coinciden con el peak de septiembre, que la sección 7.3.5 trata. Dentro de un mes de congelamiento no se inicia ninguna ola ni se despliega ningún cambio, y la marcha blanca continúa en convivencia, con medición diaria.
 
-La Figura «fig:7-gantt» presenta la carta Gantt resumida de los 56 meses con ese supuesto de inicio, por período contractual. La carta vigente por cuenta de control, generada desde las ventanas reconciliadas de los 222 paquetes, está en el Formulario T-14, sección 3.1.
+La Figura 7.8 presenta la carta Gantt resumida de los 56 meses con ese supuesto de inicio, por período contractual. La carta vigente por cuenta de control, generada desde las ventanas reconciliadas de los 222 paquetes, está en el Formulario T-14, sección 3.1.
 
   
-  **Descripción textual de figura.** No sustituye la revisión visual del PDF.
 - Periodos del Art. 17° e hitos del E-25
 - hito mensual
 - Fases de la EDT
@@ -461,21 +432,21 @@ La Figura «fig:7-gantt» presenta la carta Gantt resumida de los 56 meses con e
 - Septiembre y diciembre (sin pasos a producción)
 - Hito del Formulario E-25
   
-**Figura: Carta Gantt resumida de los 56 meses, con inicio en febrero de 2027. Fuente: elaboración propia a partir de las Bases Administrativas, Art. 17°, del Formulario E-25 y del Formulario T-14.**
+**Figura 7.8. Carta Gantt resumida de los 56 meses, con inicio en febrero de 2027. Fuente: elaboración propia a partir de las Bases Administrativas, Art. 17°, del Formulario E-25 y del Formulario T-14.**
 
   <a id="fig:7-gantt"></a>
 
-La carta muestra que los periodos fijos del Art. 17° se respetan mes a mes y que ningún paso a producción cae en una columna de congelamiento: el mes 16 es mayo de 2028 y el mes 21, octubre de 2028. Las fases de desarrollo aparecen dos veces, una por etapa, y la capacitación continúa durante la operación por la rotación de la bodega. Las columnas rayadas del mes 20 y del mes 23 confirman lo que anticipa la Tabla «tab:7-inicio»: el cierre de la marcha blanca de la Etapa 2 ocurre en septiembre y el primer diciembre de operación llega dos meses después de la aceptación final.
+La carta muestra que los periodos fijos del Art. 17° se respetan mes a mes y que ningún paso a producción cae en una columna de congelamiento: el mes 16 es mayo de 2028 y el mes 21, octubre de 2028. Las fases de desarrollo aparecen dos veces, una por etapa, y la capacitación continúa durante la operación por la rotación de la bodega. Las columnas rayadas del mes 20 y del mes 23 confirman lo que anticipa la Tabla 7.5: el cierre de la marcha blanca de la Etapa 2 ocurre en septiembre y el primer diciembre de operación llega dos meses después de la aceptación final.
 
 Antes de cada paso a producción, el cronograma reserva las pruebas que exige el numeral 20.1 de las Bases Técnicas Transversales: carga y estrés a 1,5 veces el peak, resiliencia, recuperación ante desastres con conmutación real, seguridad ofensiva y accesibilidad. Además, programa dos ensayos de migración antes de la migración definitiva. En la Etapa 1 estas pruebas forman la cuenta 3.8, se ejecutan en los meses 9 y 10 y se entregan antes del H5 del mes 12; en la Etapa 2 forman la cuenta 3.9, se ejecutan en los meses 16 y 17 y se entregan antes del H10 del mes 18 (Formulario T-15, Tabla 5.2).
 
-### Plan de implantación y puesta en marcha
+### 7.3.3 Plan de implantación y puesta en marcha
 
 La implantación sigue el principio que impone el caso: nada entra en producción sin haber convivido con la forma actual de trabajar, y nada se despliega como un único evento (sección 13.3, condiciones 1 y 3). Técnicamente, cada capacidad se publica con un despliegue azul-verde y se habilita por sitio y por ola mediante interruptores de funcionalidad. Así, cada ola puede revertirse sin reinstalar y cada operación tiene un único escritor autorizado (Capítulo 4, sección 4.1.8). Ningún despliegue ocurre en la ventana de despacho de 05:30 a 07:00, que no admite indisponibilidad, ni en fechas de congelamiento (Caso 02, RT-10.05).
 
-La Etapa 1 entra en tres olas, en el orden de las dependencias de datos (Capítulo 3, sección 3.4.4). La Tabla «tab:7-olas» las presenta.
+La Etapa 1 entra en tres olas, en el orden de las dependencias de datos (Capítulo 3, sección 3.4.4). La Tabla 7.6 las presenta.
 
-**Olas de implantación de la Etapa 1. Fuente: Capítulo 3, sección 3.4.4, y Formulario T-18.**
+**Tabla 7.6. Olas de implantación de la Etapa 1. Fuente: Capítulo 3, sección 3.4.4, y Formulario T-18.**
 
 <a id="tab:7-olas"></a>
 
@@ -487,10 +458,9 @@ La Etapa 1 entra en tres olas, en el orden de las dependencias de datos (Capítu
 
 Una ola avanza a la siguiente cuando cumple su criterio durante cuatro semanas consecutivas a volumen real: sin defectos críticos ni altos, con conciliación diaria sin diferencias no explicadas, con los indicadores de disponibilidad y tiempo de respuesta cumplidos, con los usuarios certificados y con el acta de la Contraparte Técnica (Capítulo 3, sección 3.4.4).
 
-La programación de olas usa fechas reales y no una equivalencia de meses a 13 semanas: todos los grupos deben estar operativos antes del inicio de los 28 días finales de marcha blanca. T-18 §6.1 propone Talca/Concepción/plataformas/remanentes en semanas 5/6/7/8 para la ola de reparto, subordinadas a fechas permitidas y al límite F − 28 días. Se permite superposición por dominios sin intervenir simultáneamente el mismo proceso ni doble escritura. La figura histórica queda subordinada a esta programación.
+La programación de olas usa fechas reales y no una equivalencia de meses a 13 semanas: todos los grupos deben estar operativos antes del inicio de los 28 días finales de marcha blanca. T-18 §6.1 propone Talca/Concepción/plataformas/remanentes en semanas 5/6/7/8 para la ola de reparto, subordinadas a fechas permitidas y al límite F − 28 días. Se permite superposición por dominios sin intervenir simultáneamente el mismo proceso ni doble escritura.
 
   
-  **Descripción textual de figura.** No sustituye la revisión visual del PDF.
 - Semanas 10 a 13: toda la Etapa 1 / a volumen real (Art. 17.3)
 - Mes 16 (H7)
 - 4 semanas / en criterio
@@ -502,15 +472,15 @@ La programación de olas usa fechas reales y no una equivalencia de meses a 13 s
 - criterio de avance
 - criterio de avance
   
-**Figura: Secuencia de olas de la Etapa 1 durante la marcha blanca. Fuente: elaboración propia a partir del Capítulo 3, sección 3.4.4, y del Formulario T-18.**
+**Figura 7.9. Secuencia de olas de la Etapa 1 durante la marcha blanca. Fuente: elaboración propia a partir del Capítulo 3, sección 3.4.4, y del Formulario T-18.**
 
   <a id="fig:7-olas"></a>
 
 El avance de cada grupo exige su criterio y acompañamiento. Las cuatro semanas finales requieren todos los grupos y todo el volumen real, no una muestra. E2 habilita todas las cadenas del alcance, portales y costo de servir antes de F − 28 días y, en el ejemplo febrero 2027, antes de septiembre. La carga manual de pedidos mantiene contingencia auxiliar y no acredita intercambio electrónico ni permite excluir una cadena faltante.
 
-La reversión tiene dos niveles, que la Tabla «tab:7-reversion» distingue.
+La reversión tiene dos niveles, que la Tabla 7.7 distingue.
 
-**Niveles de reversión. Fuente: Capítulo 3, sección 3.4.4; Capítulo 4, sección 4.1.8; y Formulario T-18.**
+**Tabla 7.7. Niveles de reversión. Fuente: Capítulo 3, sección 3.4.4; Capítulo 4, sección 4.1.8; y Formulario T-18.**
 
 <a id="tab:7-reversion"></a>
 
@@ -520,10 +490,9 @@ La reversión tiene dos niveles, que la Tabla «tab:7-reversion» distingue.
 | Operacional, Etapa 1 | Conserva/restaura versión operativa local probada, único escritor y DTE válidos; papel sólo de apoyo | Responsable de operaciones del CLIENTE | Completo antes de las 05:30 |
 | Operacional, Etapa 2 | Desactiva la capacidad de la Etapa 2 que falla, sin tocar la Etapa 1 | Responsable de operaciones del CLIENTE | Fuera de la ventana de 05:30 a 07:00 |
 
-La reversión operacional se dispara con señales observables: pedidos sin sincronizar al inicio de la carga, rutas del día no disponibles o un defecto crítico en la ventana de despacho. El plazo de las 05:30 protege la salida de los 96 camiones y no es el tiempo de recuperación ante desastres. La Figura «fig:7-reversion» presenta el procedimiento por rol.
+La reversión operacional se dispara con señales observables: pedidos sin sincronizar al inicio de la carga, rutas del día no disponibles o un defecto crítico en la ventana de despacho. El plazo de las 05:30 protege la salida de los 96 camiones y no es el tiempo de recuperación ante desastres. La Figura 7.10 presenta el procedimiento por rol.
 
   
-  **Descripción textual de figura.** No sustituye la revisión visual del PDF.
 - Turno de noche: preparación, detección y decisión
 - Despacho
 - El acompañante confirma el impacto
@@ -534,26 +503,18 @@ La reversión operacional se dispara con señales observables: pedidos sin sincr
 - Técnica: interruptor o versión anterior
 - Al retomar, se concilia lo que quedó en cola
 - La ola reinicia sus 4 semanas
-- Relación entre nodos: det → aco.
-- Relación entre nodos: aco → dec.
-- Relación entre nodos: dec → cor.
-- Relación entre nodos: dec → lim.
-- Relación entre nodos: lim → ope.
-- Relación entre nodos: ope → tec.
-- Relación entre nodos: ope → con.
-- Relación entre nodos: con → rei.
   
-**Figura: Procedimiento de reversión de la Etapa 1 en la ventana de despacho. Fuente: elaboración propia a partir del Formulario T-18.**
+**Figura 7.10. Procedimiento de reversión de la Etapa 1 en la ventana de despacho. Fuente: elaboración propia a partir del Formulario T-18.**
 
   <a id="fig:7-reversion"></a>
 
 La figura muestra que la decisión es del CLIENTE y se toma en el turno de noche, antes de que empiece el despacho. El ensayo debe comprobar que lo capturado permanece en cola y se concilia sin pérdida ni duplicación; no se presume por la descripción. Lo que se pierde es el avance de la ola, que reinicia su período de cuatro semanas (Caso 02, sección 17.6, punto 4). La reversión se ensaya en Preproducción antes de cada corte (paquete 4.1.2), y en ese ensayo se mide el tiempo de cada nivel.
 
-### Marcha blanca de la Etapa 1
+### 7.3.4 Marcha blanca de la Etapa 1
 
-La marcha blanca de la Etapa 1 son tres meses de operación supervisada con datos y usuarios reales, del mes 13 al 15. Convive con la operación vigente: en bodega, con la hoja de picking; en ruta, con la guía en papel; y en Talca, con el WMS de 2013 en solo lectura como respaldo de consulta. Cada día se concilian ambos registros, y toda diferencia se clasifica y explica antes del cierre del día (RT-20.03). La Tabla «tab:7-indicadores» presenta los indicadores que se miden y publican diariamente, con sus umbrales de cierre (RT-20.04).
+La marcha blanca de la Etapa 1 son tres meses de operación supervisada con datos y usuarios reales, del mes 13 al 15. Convive con la operación vigente: en bodega, con la hoja de picking; en ruta, con la guía en papel; y en Talca, con el WMS de 2013 en solo lectura como respaldo de consulta. Cada día se concilian ambos registros, y toda diferencia se clasifica y explica antes del cierre del día (RT-20.03). La Tabla 7.8 presenta los indicadores que se miden y publican diariamente, con sus umbrales de cierre (RT-20.04).
 
-**Indicadores diarios de la marcha blanca. Fuente: Bases Administrativas, Art. 17.3; Caso 02, RT-09.01 y RT-10.05; y Capítulo 3, Tabla 3.5.**
+**Tabla 7.8. Indicadores diarios de la marcha blanca. Fuente: Bases Administrativas, Art. 17.3; Caso 02, RT-09.01 y RT-10.05; y Capítulo 3, Tabla 3.5.**
 
 <a id="tab:7-indicadores"></a>
 
@@ -569,10 +530,9 @@ La marcha blanca de la Etapa 1 son tres meses de operación supervisada con dato
 
 Los indicadores reproducen las condiciones del Art. 17.3 con umbrales que se pueden medir cada día, de modo que el cierre no depende de un juicio al final del período. El volumen comprometido es la operación real completa de cada proceso y no una muestra; con las cifras del caso (sección 14.1), son cerca de 1.150 recepciones de proveedor y 260.000 líneas de preparación al mes, unos 31.000 pedidos al mes y alrededor de 1.400 entregas por día hábil, o 2.600 si las semanas de cierre coinciden con el peak de septiembre. El detalle por proceso está en el Formulario T-18, Tabla T-18.1.
 
-La sexta condición del Art. 17.3 es el acta de la Contraparte Técnica, que en la Etapa 1 es el H7 del mes 16. Si una condición no se cumple al término del mes 15, la marcha blanca se extiende a costo de LafroX, sin mover las fechas siguientes (Art. 17.3). La Figura «fig:7-ciclo» resume cómo opera cada día de marcha blanca y cuándo se cierra.
+La sexta condición del Art. 17.3 es el acta de la Contraparte Técnica, que en la Etapa 1 es el H7 del mes 16. Si una condición no se cumple al término del mes 15, la marcha blanca se extiende a costo de LafroX, sin mover las fechas siguientes (Art. 17.3). La Figura 7.11 resume cómo opera cada día de marcha blanca y cuándo se cierra.
 
   
-  **Descripción textual de figura.** No sustituye la revisión visual del PDF.
 - Ciclo de cada día
 - Medición de los indicadores del día
 - Comparación con el umbral
@@ -580,11 +540,8 @@ La sexta condición del Art. 17.3 es el acta de la Contraparte Técnica, que en 
 - Conciliación y publicación del día
 - Marcha / blanca / E1 y E2
 - Seis condiciones copulativas (Art. 17.3)
-- Relación entre nodos: c → d.
-- Relación entre nodos: d → p.
-- Relación entre nodos: p → m.
   
-**Figura: Ciclo diario de la marcha blanca y condiciones de cierre según el Art. 17.3. Fuente: elaboración propia a partir de las Bases Administrativas, Art. 17.3, y del RT-20.04.**
+**Figura 7.11. Ciclo diario de la marcha blanca y condiciones de cierre según el Art. 17.3. Fuente: elaboración propia a partir de las Bases Administrativas, Art. 17.3, y del RT-20.04.**
 
   <a id="fig:7-ciclo"></a>
 
@@ -594,16 +551,15 @@ La capacitación se hace en el puesto y en la ruta con las cuatro modalidades de
 
 La adopción se mide por perfil y por ola, y si una ola no alcanza la meta, no avanza y se extiende el acompañamiento. La respuesta es distinta según el grupo: el personal con veinte o treinta años en la compañía recibe acompañamiento individual y reconocimiento formal de su conocimiento, y el personal rotativo de preparación cuenta con un tutor por turno (Formulario T-18, secciones 2.7 y 2.8).
 
-### Marcha blanca de la Etapa 2 y convivencia
+### 7.3.5 Marcha blanca de la Etapa 2 y convivencia
 
 La marcha blanca de la Etapa 2 dura los meses 19 y 20 y convive con la Etapa 1 en producción. La regla central del Art. 17.2 es que exista una única fuente de verdad para los datos compartidos: la Etapa 2 lee y extiende los pedidos, clientes, guías y entregas de la Etapa 1, sin copiarlos ni digitarlos de nuevo, y ningún despliegue de la Etapa 2 modifica las funciones estabilizadas de la Etapa 1 ni ocurre en la ventana de despacho.
 
-Esta marcha blanca dura unas 8,7 semanas ($2 × 52 / 12$). Como el Art. 17.3 exige volumen real en las cuatro últimas, todas las cadenas certificadas, los portales y el costo de servir deben quedar habilitados en las primeras 4,7 semanas. Con el inicio supuesto de febrero de 2027, el mes 19 es agosto y el mes 20 es septiembre de 2028, de modo que toda habilitación ocurre en agosto, antes del congelamiento del 1 al 25 de septiembre. Las semanas de cierre se miden con el volumen del peak de Fiestas Patrias, cerca de 2.600 entregas diarias, en el primer septiembre de la Etapa 1 en producción. Durante el congelamiento se aplica continuidad previamente autorizada por el CLIENTE; T-18 §6.4 no presume que un cambio de configuración esté exento de las prohibiciones. La capacidad para ese peak se demuestra antes del H11 con la prueba de carga a 1,5 veces el peak, con ambas etapas activas (paquete 3.9.3; Formulario T-18, sección 3.1).
+Esta marcha blanca dura unas 8,7 semanas (2 × 52 / 12). Como el Art. 17.3 exige volumen real en las cuatro últimas, todas las cadenas certificadas, los portales y el costo de servir deben quedar habilitados en las primeras 4,7 semanas. Con el inicio supuesto de febrero de 2027, el mes 19 es agosto y el mes 20 es septiembre de 2028, de modo que toda habilitación ocurre en agosto, antes del congelamiento del 1 al 25 de septiembre. Las semanas de cierre se miden con el volumen del peak de Fiestas Patrias, cerca de 2.600 entregas diarias, en el primer septiembre de la Etapa 1 en producción. Durante el congelamiento se aplica continuidad previamente autorizada por el CLIENTE; T-18 §6.4 no presume que un cambio de configuración esté exento de las prohibiciones. La capacidad para ese peak se demuestra antes del H11 con la prueba de carga a 1,5 veces el peak, con ambas etapas activas (paquete 3.9.3; Formulario T-18, sección 3.1).
 
-A los indicadores de la Tabla «tab:7-indicadores» se suman los propios del alcance de la Etapa 2: los pedidos de las cadenas certificadas recibidos por vía electrónica, los avisos de despacho dentro de dos minutos, las entregas con costo de servir calculado y la ausencia de degradación de los indicadores de la Etapa 1 (Formulario T-18, sección 3.3). La Figura «fig:7-convivencia» muestra cómo fluyen los datos entre ambas etapas.
+A los indicadores de la Tabla 7.8 se suman los propios del alcance de la Etapa 2: los pedidos de las cadenas certificadas recibidos por vía electrónica, los avisos de despacho dentro de dos minutos, las entregas con costo de servir calculado y la ausencia de degradación de los indicadores de la Etapa 1 (Formulario T-18, sección 3.3). La Figura 7.12 muestra cómo fluyen los datos entre ambas etapas.
 
   
-  **Descripción textual de figura.** No sustituye la revisión visual del PDF.
 - Etapa 1 en producción
 - Etapa 2 en marcha blanca
 - Clientes, pedidos, guías de despacho, entregas, lotes y cobros /  un solo escritor por dato y sin copias
@@ -613,19 +569,18 @@ A los indicadores de la Tabla «tab:7-indicadores» se suman los propios del alc
 - Portal de transportistas
 - M10 Analítica: costo de servir
 - Ningún despliegue de la Etapa 2 modifica una función estabilizada de la Etapa 1
-- Relación entre nodos: rb → erp.
   
-**Figura: Convivencia de la Etapa 1 en producción con la Etapa 2 en marcha blanca. Fuente: elaboración propia a partir de la arquitectura lógica del Capítulo 4.**
+**Figura 7.12. Convivencia de la Etapa 1 en producción con la Etapa 2 en marcha blanca. Fuente: elaboración propia a partir de la arquitectura lógica del Capítulo 4.**
 
   <a id="fig:7-convivencia"></a>
 
 La figura muestra que la Etapa 2 no tiene un segundo registro de los datos de la Etapa 1: lee el registro único y lo extiende con sus propios datos, de modo que no existe una doble digitación que conciliar. El ERP se mantiene como registro contable y único emisor de la guía de despacho para ambas etapas. El paso a producción del mes 21 es la aceptación final de la implementación (H12) y el inicio de la Operación con ambos alcances (Art. 17.2, punto 4).
 
-### Estabilización y transferencia
+### 7.3.6 Estabilización y transferencia
 
-Después de cada paso a producción hay una estabilización de cuatro semanas por ola, con atención reforzada y sin costo adicional (RT-20.06). La dotación se deriva de la operación del caso, como muestra la Tabla «tab:7-estabilizacion».
+Después de cada paso a producción hay una estabilización de cuatro semanas por ola, con atención reforzada y sin costo adicional (RT-20.06). La dotación se deriva de la operación del caso, como muestra la Tabla 7.9.
 
-**Estabilización por ola. Fuente: Capítulo 3, sección 3.4.4.**
+**Tabla 7.9. Estabilización por ola. Fuente: Capítulo 3, sección 3.4.4.**
 
 <a id="tab:7-estabilizacion"></a>
 
@@ -640,11 +595,11 @@ Las siete personas de calle permiten acompañar cada una de las 158 rutas diaria
 
 La operación se transfiere al equipo de TI de cuatro personas del CLIENTE antes del mes 21, con procedimientos documentados y ensayados y con la base de conocimiento. Sigue una mentoría de seis meses (paquetes 7.1.4 y 8.5.2; RT-22.07). Quedan como servicio permanente de LafroX durante los 36 meses los que el Capítulo 3, sección 3.4.5, le asigna: el centro de operaciones, la mesa de servicio, la gestión de incidentes, la continuidad, la seguridad y el mantenimiento.
 
-### Momento de los resultados comprometidos
+### 7.3.7 Momento de los resultados comprometidos
 
-El Caso 02 exige indicar en qué momento del cronograma se alcanza cada resultado de aceptación (capítulo 18). La Tabla «tab:7-resultados» agrupa los dieciséis resultados por momento; el detalle por resultado está en el Anexo 7.C.
+El Caso 02 exige indicar en qué momento del cronograma se alcanza cada resultado de aceptación (capítulo 18). La Tabla 7.10 agrupa los dieciséis resultados por momento; el detalle por resultado está en el Anexo 7.C.
 
-**Momento de los resultados de aceptación del caso. Fuente: Caso 02, capítulo 18; Capítulo 3, Anexo 3.J; y Anexo 7.C.**
+**Tabla 7.10. Momento de los resultados de aceptación del caso. Fuente: Caso 02, capítulo 18; Capítulo 3, Anexo 3.J; y Anexo 7.C.**
 
 <a id="tab:7-resultados"></a>
 
@@ -657,34 +612,33 @@ El Caso 02 exige indicar en qué momento del cronograma se alcanza cada resultad
 
 Doce de los dieciséis resultados se verifican en la marcha blanca de la Etapa 1. Por eso el volumen real y la certificación de usuarios de ese período son la principal concentración de riesgo de aceptación del proyecto, y por eso el plan dedica a esa marcha blanca su mayor dotación de acompañamiento.
 
-Las innovaciones también tienen su momento en el cronograma (Art. 29°, punto 4), como resume la Tabla «tab:7-innovaciones».
+Las innovaciones también tienen su momento en el cronograma (Art. 29°, punto 4), como resume la Tabla 7.11.
 
-**Innovaciones en el cronograma. Fuente: Anexo 7.D.**
+**Tabla 7.11. Innovaciones en el cronograma. Fuente: Anexo 7.D.**
 
 <a id="tab:7-innovaciones"></a>
 
 | Innovación | Paquetes de la EDT | Meses | Hito |
 | --- | --- | --- | --- |
-| 1 · Seguimiento de vencimiento posentrega | 3.10.1.1 a 3.10.1.4 | 7 a 15 | H4, H5 y marcha blanca E1 |
+| 1 · Seguimiento de vencimiento posentrega en el local | 3.10.1.1 a 3.10.1.4 | 7 a 15 | H4, H5 y marcha blanca E1 |
 | 2 · Reproducción de incidentes de terreno | 3.10.2.1 a 3.10.2.4; 8.3.1 | 2 a 15; 21 a 56 | H4 y marcha blanca E1 |
-| 3 · Vida útil remanente por historia térmica | 3.10.3.1 a 3.10.3.4; 8.3.2 | 3 a 15; operación | H4, H5 y marcha blanca E1 |
-| 4 · Tramo variable ligado al costo de servir | 5.4.3; 8.3.3; 8.3.4 | 17 a 20; 21 a 23; 24 a 56 | Hito mensual |
+| 3 · Vida útil remanente por historia térmica del lote | 3.10.3.1 a 3.10.3.4; 8.3.2 | 3 a 15; operación | H4, H5 y marcha blanca E1 |
+| 4 · Tramo variable de la Operación ligado al costo de servir | 5.4.3; 8.3.3; 8.3.4 | 17 a 20; 21 a 23; 24 a 56 | Hito mensual |
 | 5 · Hoja de negocio del almacenero | 3.10.4.1 a 3.10.4.4; 8.3.5; 8.3.6 | 13 a 27 | H9, H10 y H12 |
 
 Tres innovaciones se validan en la marcha blanca de la Etapa 1. La innovación 5 sigue el calendario de la Etapa 2, y la innovación 4 empieza a liquidar recién desde el mes 24, después de una línea base y tres liquidaciones en sombra. Así, ninguna innovación agrega trabajo a la ruta crítica de la Etapa 1 después del H4.
 
-## Base vigente de planificación
+### 7.3.8 Base de planificación y recursos
 
+El Formulario T-15, sección 4, estima las horas de los 222 paquetes con tres valores (optimista, más probable y pesimista) por clase de tamaño, y separa las curvas mensuales de implementación, soporte puente de la Etapa 1 y Operación. La cobertura del centro de operaciones, la mesa de servicio y el SOC sigue las posiciones dimensionadas en el Capítulo 4, Anexo 4-W.7. Con esa base, el total programado es de 202.774 HH (190.366 HH de implementación, 9.336 HH de soporte puente de la Etapa 1 y 3.072 HH de reserva del frente de construcción y de calidad) y el máximo mensual es de 69 personas equivalentes en el mes 15, cuando coinciden la marcha blanca de la Etapa 1 y el desarrollo de la Etapa 2. La sección 5 del mismo formulario calcula la red y el PERT sobre las actividades niveladas y compara la curva con la dotación del Capítulo 1. Las capacidades protegidas de la Etapa 1 no se prestan al desarrollo de la Etapa 2.
 
-T-15 §4 contiene un modelo de HH O/M/P/E por los 222 paquetes, resumen de etapas, soporte puente E1 y curvas mensuales separadas de implementación y Operación. Es una estimación por clases de tamaño con supuestos explícitos: no acredita productividad ni contratación. La cobertura de NOC, mesa y SOC sigue el calendario real y las posiciones dimensionadas en el SD4, Anexo 4-W.7; el total programado es 202.774 HH y el peak mensual, 69 personas equivalentes en el mes 15, bajo supuestos. T-15 §5 calcula la red y el PERT sobre las actividades programadas y niveladas, la medición de los niveles de atención y la comparación de la curva con la dotación declarada en el SD1. Las capacidades protegidas de E1 no se prestan al desarrollo E2.
+La gestión del plan sigue el Capítulo 6: la sección 6.1 fija el PMBOK adaptado, el tablero Kanban, el valor ganado y el control de cambios, y la sección 6.2 fija el proceso RUP iterativo con DevSecOps. La Construcción avanza en las iteraciones definidas en la sección 6.2, con revisión semanal de avance y bloqueos y una demostración de incremento verificable al cierre de cada iteración; una demostración no implica un paso a producción. El Jefe de Proyecto registra la capacidad y los criterios de terminado antes de seleccionar el trabajo de cada iteración, y los cambios se aprueban según la sección 6.1.4.
 
-La coherencia metodológica se apoya en el SD6, sección 6.1 (PMBOK adaptado, Kanban, valor ganado y cambios), y sección 6.2 (RUP iterativo y DevSecOps). El SD6 no fija una duración única de iteración: SD7 propone revisar semanalmente avance/bloqueos y reservar una demostración de incremento verificable cada dos semanas durante Construcción, sin convertir cada demostración en puesta en producción ni atribuir a SD6 un sprint obligatorio. El tamaño de las iteraciones se ajusta al bloque y a los hitos; el JP registra capacidad y criterios de terminado antes de cada selección de trabajo. La aprobación de cambios se rige por el SD6, sección 6.1.4.
+El cronograma rector usa meses contractuales 1 a 56. El Anexo 7.A traduce esos meses a fechas con un inicio supuesto en febrero de 2027; cuando el CLIENTE confirme la fecha de inicio (consulta V-12), se recalculan los meses calendario y los congelamientos antes de aprobar cada corte. La revisión de parámetros de la Innovación 3 (paquete 8.3.2) se ejecuta en los meses 26, 32, 38, 44, 50 y 56.
 
-Febrero de 2027 permanece como escenario razonado del Anexo 7.A, no como fecha confirmada. El cronograma rector usa meses relativos 1–56; al contestar V-12 se recalculan meses civiles y congelamientos antes de aprobar cortes. INN-03.P5 queda en revisiones semestrales meses 26/32/38/44/50/56, no en una supuesta actividad continua nueva.
+El Formulario T-18, sección 6, define la cobertura por ola de M9, M12 y M10, propone Talca como sitio piloto, ordena las olas por sitio, por rutas y por certificación de cadenas, declara la estabilización de la Etapa 2 y el soporte de la Etapa 1 en los meses 16 a 20, y fija un objetivo de 40 minutos para el ensayo de reversión. El corte exige un ensayo con volumen real y la contingencia tributaria; el respaldo manual por sí solo no sustituye ese ensayo para los 96 despachos. El WMS queda en modo de solo lectura conforme al supuesto S-14.
 
-T-18 §6 resuelve la cobertura por ola de M9/M12/M10, propone Talca como piloto, orden por sitio/rutas y por certificación de cadenas, declara estabilización E2 y soporte E1 meses 16–20, y define un objetivo de ensayo de reversión de 40 minutos. Ninguna descripción de respaldo manual acredita por sí misma los 96 despachos; el corte exige ensayo de volumen y contingencia tributaria. El WMS conserva sólo lectura conforme a S-14.
-
-El Anexo 7.F entrega a SD8 supuestos, riesgos, disparadores, responsables y paquetes. SD2 S-09 y los RF activos 03.11/12 del SD3/T-12 conservan el precio pactado al capturar el pedido. CD-05 está dimensionado en SD4 A31/A32; falta verificar su multiplicidad y carga. El límite residual de RPO, continuidad crítica y capacidad nominal permanecen como condiciones de evidencia en SD8; no se modifica la arquitectura física.
+El Anexo 7.F traslada al Capítulo 8 los supuestos, disparadores, responsables y paquetes de la planificación. La regla de precio es única en la oferta: el precio acordado al capturar el pedido (Capítulo 2, Anexo 2.2, S-09; RF-03.11 y RF-03.12). La coordinación de reserva y custodia CD-05 está dimensionada en el Capítulo 4 (A31 y A32), y su multiplicidad y carga se verifican en la prueba de concurrencia previa al H4 (riesgo R8-02). El límite residual de RPO, la continuidad crítica y la capacidad nominal se gestionan como condiciones de evidencia del Anexo 8.E, con responsable y hito límite.
 
 ## Referencias
 
@@ -705,22 +659,22 @@ Las Bases se citan con su documento y el artículo, capítulo, sección o códig
 
 ## Declaración de uso de IA
 
-En cumplimiento de la sección 7.2 de las Aclaraciones de la licitación, la Tabla «tab:7-ia» declara el uso de herramientas de inteligencia artificial en este subdocumento, en sus anexos y en sus formularios. Esta declaración se consolida en el Formulario A-6.
+En cumplimiento de la sección 7.2 de las Aclaraciones de la licitación, la tabla siguiente declara el uso de herramientas de inteligencia artificial en este subdocumento, con la revisión humana de cada parte. La declaración se consolida en el Formulario A-6.
 
-**Declaración de uso de IA. Fuente: registro del equipo.**
+**Tabla 7.12. Declaración de uso de IA. Fuente: registro del equipo.**
 
 <a id="tab:7-ia"></a>
 
-| Sección | Herramienta | Finalidad del uso | Nivel en texto | Nivel en diagramas | Revisión humana |
+| Sección | Herramienta | Finalidad del uso | Nivel en texto | Nivel en diagramas | Revisión humana (quién y qué verificó) |
 | --- | --- | --- | --- | --- | --- |
-| Introducción | Claude Code | Redacción a partir de las Bases y de los capítulos de la oferta | Alto | Ninguno | No documentada |
-| 7.1 EDT | Claude Code | Redacción, conteos desde la EDT del equipo y figuras de la EDT | Alto | Alto | No documentada |
-| 7.2 Plan de trabajo | Claude Code | Redacción del secuenciamiento y de los frentes; red y carriles | Alto | Alto | No documentada |
-| 7.3 Cronograma e implantación | Claude Code | Redacción, calendario por fecha de inicio, Gantt y flujos | Alto | Alto | No documentada |
-| Anexos 7.A a 7.E | Claude Code | Listados y cálculo del calendario | Alto | Ninguno | No documentada |
-| Formulario T-14 | Claude Code | Diccionario a partir del diccionario de trabajo del equipo; Gantt por cuenta | Alto | Alto | No documentada |
-| Formulario T-15 | Claude Code | Estructura, método y frentes | Alto | Alto | No documentada |
-| Formulario T-18 | Claude Code | Redacción a partir del Capítulo 3 y del caso | Alto | Alto | No documentada |
-| Ajustes de planificación SD7, T-14/T-15/T-18 y Anexo 7.F (2026-10-06) | Codex | Coherencia documental, supuestos de recursos y cálculo reproducible CPM/PERT, preparación de dependencias para SD8 | Alto | Descripciones textuales | Revisión humana no documentada; controles automáticos no equivalen a aprobación del equipo |
-| Cronograma por actividad, nivelación y PERT del T-15 §5–§6; criterio 8/80 de 7.1 (2026-10-07) | Claude Code | Descomposición de los paquetes en actividades según las clases FEP02 y el PMBOK, cap. 6 | Alto | Ninguno | No documentada |
-| Correcciones interdocumentales SD7, Anexo 7.B, T-14 y T-15 (2026-10-07) | Claude Code | Ventanas y dependencias, revisión Art. 18.3, PERT, cobertura de mesa/SOC, carta Gantt vigente en Mermaid, salida y reversibilidad | Alto | Alto (carta Gantt Mermaid) | No documentada |
+| Introducción | Claude Code | Redacción a partir de las Bases y de los capítulos de la oferta | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| 7.1 EDT | Claude Code | Redacción, conteos desde la EDT del equipo y figuras de la EDT | Alto | Alto | [[REVISIÓN HUMANA]] |
+| 7.2 Plan de trabajo | Claude Code | Redacción del secuenciamiento y de los frentes; red y carriles | Alto | Alto | [[REVISIÓN HUMANA]] |
+| 7.3 Cronograma e implantación | Claude Code | Redacción, calendario por fecha de inicio, Gantt y flujos | Alto | Alto | [[REVISIÓN HUMANA]] |
+| Anexos 7.A a 7.E | Claude Code | Listados y cálculo del calendario | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| Formulario T-14 | Claude Code | Diccionario a partir del diccionario de trabajo del equipo; Gantt por cuenta | Alto | Alto | [[REVISIÓN HUMANA]] |
+| Formulario T-15 | Claude Code | Estructura, método y frentes | Alto | Alto | [[REVISIÓN HUMANA]] |
+| Formulario T-18 | Claude Code | Redacción a partir del Capítulo 3 y del caso | Alto | Alto | [[REVISIÓN HUMANA]] |
+| Ajustes de planificación SD7, T-14/T-15/T-18 y Anexo 7.F | Codex | Coherencia documental, supuestos de recursos y cálculo reproducible CPM/PERT, preparación de dependencias para SD8 | Alto | Descripciones textuales | [[REVISIÓN HUMANA]] |
+| Cronograma por actividad, nivelación y PERT del T-15 §5–§6; criterio 8/80 de 7.1 | Claude Code | Descomposición de los paquetes en actividades según el PMBOK (Project Management Institute, 2017, cap. 6) | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| Correcciones interdocumentales SD7, Anexo 7.B, T-14 y T-15 | Claude Code | Ventanas y dependencias, revisión Art. 18.3, PERT, cobertura de mesa/SOC, carta Gantt vigente en Mermaid, salida y reversibilidad | Alto | Alto (carta Gantt Mermaid) | [[REVISIÓN HUMANA]] |

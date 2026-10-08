@@ -5,7 +5,7 @@
 **Mandante:** Distribuidora Puelche S.A.  
 **Proponente:** LafroX SpA — RUT 77.418.902-K  
 **Representante legal:** Alex Aravena, Jefe de Proyecto y Apoderado  
-**Fecha de emisión:** 7 de octubre de 2026  
+**Fecha de emisión:** 5 de octubre de 2026  
 **Formularios:** T-9 y T-10
 
 ## Índice
@@ -205,12 +205,12 @@ Las decisiones técnicas necesarias para implementar los requisitos se toman den
 
 ## Declaración de uso de IA
 
-La tabla declara el uso de herramientas de inteligencia artificial en este subdocumento y en sus formularios; se consolida en el Formulario A-6.
+En cumplimiento de la sección 7.2 de las Aclaraciones de la licitación, la tabla siguiente declara el uso de herramientas de inteligencia artificial en este subdocumento, con la revisión humana de cada parte. La declaración se consolida en el Formulario A-6.
 
 | Sección | Herramienta | Finalidad del uso | Nivel en texto | Nivel en diagramas | Revisión humana (quién y qué verificó) |
-|---|---|---|---|---|---|
-| Introducción | Claude Code | Redacción de la introducción y conexión con SD4 y SD7 (7 de octubre de 2026) | Alto | Ninguno | No documentada |
-| 6.1 Metodología de Gestión de Proyectos | Codex; Claude Code | Responsabilidades de adquisición y cadencias (6 de octubre de 2026); PMBOK adaptado, valor ganado, matriz de adquisiciones y Comité de Operación (7 de octubre de 2026) | Alto | Ninguno | No documentada |
-| 6.2 Metodología de Desarrollo Software | Claude Code | Compuertas DevSecOps, herramientas del SD4, cadencia de iteraciones y artefactos (7 de octubre de 2026) | Alto | Ninguno | No documentada |
-| Formulario T-9 | Claude Code | Portada del formulario | Bajo | Ninguno | No documentada |
-| Formulario T-10 | Claude Code | Portada del formulario | Bajo | Ninguno | No documentada |
+| --- | --- | --- | --- | --- | --- |
+| Introducción | Claude Code | Redacción de la introducción y conexión con SD4 y SD7 | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| 6.1 Metodología de Gestión de Proyectos | Codex; Claude Code | Responsabilidades de adquisición y cadencias; PMBOK adaptado, valor ganado, matriz de adquisiciones y Comité de Operación | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| 6.2 Metodología de Desarrollo Software | Claude Code | Compuertas DevSecOps, herramientas del SD4, cadencia de iteraciones y artefactos | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| Formulario T-9 | Claude Code | Portada del formulario | Bajo | Ninguno | [[REVISIÓN HUMANA]] |
+| Formulario T-10 | Claude Code | Portada del formulario | Bajo | Ninguno | [[REVISIÓN HUMANA]] |

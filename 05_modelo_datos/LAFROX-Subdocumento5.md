@@ -22,7 +22,7 @@ Av. Brasil 2241, Valparaíso
 
 FECHA DE EMISIÓN
 
-03 de octubre de 2026
+05 de octubre de 2026
 
 FIRMA DEL REPRESENTANTE LEGAL
 
@@ -30,13 +30,11 @@ Alex Aravena
 
 Jefe de Proyecto y Apoderado · LafroX SpA
 
-LAFROX-Subdocumento5.pdf
 
 <a id="indice-general"></a>
 
 ## Índice general
 
-Las páginas de este índice se generan al compilar el documento; no se declaran a mano porque un número escrito no verificado introduce un error de referencia.
 
 | Apartado | Enlace |
 | --- | --- |
@@ -118,7 +116,7 @@ Objetos presentes en este documento.
 
 El ítem 5 define cómo los datos sostienen trazabilidad sanitaria, cumplimiento de entrega y control de existencias para Distribuidora Puelche S.A. S2 aporta el problema; S3 y el Formulario T-12 fijan alcance y aceptación; S4 y T-11 fijan autoridades, motores, despliegue y capacidad. El capítulo desarrolla modelo, gestión, migración y desempeño sin cambiar esas decisiones.
 
-Las decisiones de este ítem aplican las Bases Administrativas (Pontificia Universidad Católica de Valparaíso [PUCV], 2026b, arts. 16, 17 y 85), las Bases Técnicas del Caso 02 (PUCV, 2026c, caps. 14–16 y 18) y las Bases Técnicas Transversales (PUCV, 2026d, §§5 y 9); su estructura y presentación siguen las Aclaraciones de licitación (PUCV, 2026a, §§2–6 y 11).
+Las decisiones de este ítem aplican las Bases Administrativas (Distribuidora Puelche S.A., 2026a, arts. 16, 17 y 85), las Bases Técnicas del Caso 02 (Distribuidora Puelche S.A., 2026c, caps. 14–16 y 18) y las Bases Técnicas Transversales (Distribuidora Puelche S.A., 2026b, §§5 y 9); su estructura y presentación siguen las Aclaraciones de licitación (Distribuidora Puelche S.A., 2026d, §§2–6 y 11).
 
 Los antecedentes de empresa, problema, alcance y arquitectura proceden de los Subdocumentos 1, 2, 3 y 4, respectivamente (LafroX SpA, 2026d, 2026c, 2026b, 2026a); sus remisiones señalan el apartado específico utilizado.
 
@@ -148,9 +146,11 @@ M12 captura telemetría; Calidad decide disposición sanitaria. Una excursión m
 
 La Figura 5.1 presenta el MR general con las tablas principales y sus relaciones, agrupadas por dominio; las vistas específicas desarrollan cada parte. Distingue las referencias entre almacenes de las FK físicas y mantiene la vista conceptual de la operación. Las vistas de detalle relacionan productos y lotes con recepción, contenido logístico, custodia, asignaciones del pedido y cumplimiento. El lote se identifica por GTIN canónico+número del proveedor; la unidad tiene UUID interno y SSCC exterior. La composición admite varios lotes por unidad y unidades por lote.
 
-**Insertar figura 5.1 — MR general de datos de la solución.**
+![Figura 5.1 — MR general de datos de la solución](Diagramas/Fig_5-1_MR_General.png)
 
-*Fuente: elaboración propia de LafroX a partir de las decisiones 16.1 N° 1, N° 2, N° 4 y N° 14 del capítulo 16 del caso (PUCV, 2026c), de los requisitos RT-05.01 y RT-05.23 de las Bases Técnicas Transversales (PUCV, 2026d) y de RF-01.07 y RF-09 del Formulario T-12.*
+**Figura 5.1 — MR general de datos de la solución.**
+
+*Fuente: elaboración propia de LafroX a partir de las decisiones 16.1 N° 1, N° 2, N° 4 y N° 14 del capítulo 16 del caso (Distribuidora Puelche S.A., 2026c), de los requisitos RT-05.01 y RT-05.23 de las Bases Técnicas Transversales (Distribuidora Puelche S.A., 2026b) y de RF-01.07 y RF-09 del Formulario T-12.*
 
 Cada registro de promesa tiene UUID propio como PK; version ordena sus cambios con unicidad por pedido. La entrega referencia la ORIGINAL del mismo pedido. El pedido conserva ORIGINAL y revisiones como compromisos distintos. Una entrega por pedido admite varios intentos y líneas fragmentadas por asignación/lote/unidad; POD y cobro se vinculan a esos hechos. La cabecera de custodia contiene el evento y su detalle identifica objetos y cantidades. El cliente y sus puntos se desarrollan en 5-M, sin crear una instalación de inventario por cada local de entrega. El documento fiscal emitido por ERP antecede al traslado; el POD acredita el hecho posterior.
 
@@ -168,7 +168,9 @@ La Figura A5.1 del Anexo 5-M dibuja maestros, puntos, instalaciones y equivalenc
 
 La Figura 5.2 distingue recepción, lote, unidad, contenido, saldo, movimiento, reserva y conteo cíclico. Se exige lote al cierre de las líneas de productos que lo requieren; productos exentos y unidades VACIA/ABIERTA conservan NULL legítimos. El SSCC de 18 dígitos no sustituye el UUID; vencimiento es atributo del lote.
 
-**Insertar figura 5.2 — Recepción, inventario, lote y unidad logística.**
+![Figura 5.2 — Recepción, inventario, lote y unidad logística](Diagramas/Fig_5-2_Inventario.png)
+
+**Figura 5.2 — Recepción, inventario, lote y unidad logística.**
 
 *Fuente: elaboración propia de LafroX a partir de la decisión 16.1 N° 2 y N° 14 del caso, del Subdocumento 4, 4.1.3.6, y de RF-01.07 y RF-02 del Formulario T-12.*
 
@@ -182,7 +184,9 @@ En TERRENO, preventista_id identifica al capturador autorizado; MOSTRADOR, EDI y
 
 La Figura 5.3 relaciona pedido, líneas, promesas, asignaciones y misiones; la reserva que abastece cada asignación se detalla en la Figura 5.2. La fecha/ventana ORIGINAL se fija al confirmar el pedido y permanece inmutable; una reprogramación agrega REVISION con motivo, actor y autorización. fecha_prometida y vigencias son timestamps UTC, con zona de origen conocida.
 
-**Insertar figura 5.3 — Pedido, línea, asignación, misión y confirmación de preparación.**
+![Figura 5.3 — Pedido, línea, asignación, misión y confirmación de preparación](Diagramas/Fig_5-3_Pedido_Preparacion.png)
+
+**Figura 5.3 — Pedido, línea, asignación, misión y confirmación de preparación.**
 
 *Fuente: elaboración propia de LafroX a partir de RNG-01, RNG-15 y RNG-05 del Subdocumento 3, y del Subdocumento 4, 4.1.4.4.*
 
@@ -194,7 +198,9 @@ La promesa conserva las condiciones de S3: 24 h para urbano ingresado antes de l
 
 La Figura 5.4 separa plan de ruta, viaje, parada, entrega e intento. BD_RUTAS conserva autoridad central; el itinerario descargado permite ejecutar la ruta autorizada sin señal. Una entrega por pedido admite visitas fallidas, parciales y completas sin sobrescribir las anteriores.
 
-**Insertar figura 5.4 — Ruta, viaje, paradas, entrega, intento y devolución.**
+![Figura 5.4 — Ruta, viaje, paradas, entrega, intento y devolución](Diagramas/Fig_5-4_Rutas_Reparto.png)
+
+**Figura 5.4 — Ruta, viaje, paradas, entrega, intento y devolución.**
 
 *Fuente: elaboración propia de LafroX a partir de las decisiones 16.1 N° 1, N° 3, N° 10 y N° 15 del caso, y del Subdocumento 4, 4.1.4.5 y 4.1.4.8.*
 
@@ -206,7 +212,9 @@ Las líneas del intento conservan asignación, lote/unidad, cantidad aceptada/re
 
 La Figura 5.5 relaciona evento, objetos, documentos, sensor, asociación temporal y resolución de Calidad. EPCIS 2.0 y CBV 2.0 tienen versiones separadas; perfil_evento identifica el contrato versionado de la solución descrito en 5-C (GS1, 2022a, 2022b). parent_event_id representa causalidad interna y admite NULL en raíz. epcis_parent_id identifica el contenedor de una agregación y no un evento causal.
 
-**Insertar figura 5.5 — Cadena de custodia de lote y de unidad logística en formato EPCIS.**
+![Figura 5.5 — Cadena de custodia de lote y de unidad logística en formato EPCIS](Diagramas/Fig_5-5_Custodia_EPCIS.png)
+
+**Figura 5.5 — Cadena de custodia de lote y de unidad logística en formato EPCIS.**
 
 *Fuente: elaboración propia de LafroX a partir de RF-01.07, RF-09 y RNF-09.02 del Formulario T-12, del Subdocumento 4, 4.1.4.2, y de RT-05.23 según el capítulo 15 del caso.*
 
@@ -222,9 +230,11 @@ El retiro identifica clientes y documentos en ≤2 h desde la solicitud de Calid
 
 La Figura 5.6 diferencia cobro, aplicación, autorización, compensación, rendición, documento, carga y POD. El ERP es único emisor fiscal y el documento habilitador precede al traslado; no existe timbre diferido desde el móvil. POD, acuse técnico SII y recepción de mercadería son evidencias distintas, con representación en papel para destinatario no habilitado según S4.
 
-**Insertar figura 5.6 — Cobro, rendición, cuenta corriente de envases y documento tributario.**
+![Figura 5.6 — Cobro, rendición, cuenta corriente de envases y documento tributario](Diagramas/Fig_5-6_Cobro_Documentos.png)
 
-*Fuente: elaboración propia de LafroX a partir de RT-16.14 y RT-16.09 de las Bases Técnicas Transversales (PUCV, 2026d), del Anexo 4-U del Subdocumento 4, y de la decisión 16.1 N° 6 y N° 12 del caso.*
+**Figura 5.6 — Cobro, rendición, cuenta corriente de envases y documento tributario.**
+
+*Fuente: elaboración propia de LafroX a partir de RT-16.14 y RT-16.09 de las Bases Técnicas Transversales (Distribuidora Puelche S.A., 2026b), del Anexo 4-U del Subdocumento 4, y de la decisión 16.1 N° 6 y N° 12 del caso.*
 
 La identidad fiscal usa tipo/emisor/folio/versión; hash verifica contenido y las referencias tipadas comprueban la entidad de negocio. POD admite varias evidencias por entrega/intento; el móvil puede cerrar localmente bajo autorización con evidencia durable, conservando estado de verificación central posterior.
 
@@ -244,7 +254,7 @@ La auditoría registra actor, dispositivo, instante, operación, resultado y val
 
 La Figura A5.3 del Anexo 5-M distingue ingesta térmica cruda en DynamoDB, archivo detallado S3 Parquet/Glue, serie/analítica Redshift, posición personal y objetos. Raw dura treinta días; el perfil detallado y las versiones que lo interpretan permanecen cinco años. El agregado no permite reconstruir una lectura perdida, por lo que no sustituye el detalle.
 
-S4, Anexo 4-W.4, fija 21 puntos térmicos ×288 y 28 termógrafos ×162 =10.584 muestras/día. Operan tres gateways: dos en Talca y uno en Concepción; las reservas de T-11 no agregan ingesta ordinaria. El sensor referencia su gateway, sin crear otra autoridad de maestros.
+S4, Anexo 4-W.4, fija 21 puntos térmicos ×288 y 28 termógrafos ×174 =10.920 muestras/día. Operan tres gateways: dos en Talca y uno en Concepción; las reservas de T-11 no agregan ingesta ordinaria. El sensor referencia su gateway, sin crear otra autoridad de maestros.
 
 GPS permanece en sa-east-1, raw treinta días y plazo personal total doce meses, sin réplica internacional. La posición no se confunde con geocerca de configuración. S3_DOCS conserva originales por clase; Redis contiene lectura reconstruible y Room/SQLite conserva además hechos/evidencias durables. Las claves, vigencias y purgas están en 5-G.
 
@@ -254,11 +264,13 @@ GPS permanece en sa-east-1, raw treinta días y plazo personal total doce meses,
 
 La Figura 5.7 define hechos y dimensiones para analizar servicio, inventario, cobro y frío. El grano e identidad de origen evitan duplicados de carga: pedido para compromiso, entrega/intento para ejecución y línea/asignación para cantidades; la entrega por pedido no cuenta cada visita como pedido independiente.
 
-**Insertar figura 5.7 — Modelo dimensional de explotación.**
+![Figura 5.7 — Modelo dimensional de explotación](Diagramas/Fig_5-7_Dimensional.png)
+
+**Figura 5.7 — Modelo dimensional de explotación.**
 
 *Fuente: elaboración propia de LafroX a partir de RF-11.06 y RF-11.07 del Formulario T-12, de los criterios R18-04 y R18-11 del capítulo 18 del caso, y de RNG-09 del Subdocumento 3.*
 
-El modelo incluye dimensiones de fecha, cliente, producto, sitio, ruta y canal; cliente, producto, sitio y ruta conservan versiones y vigencias. El cálculo previo al grano del pedido evita multiplicar OTIF/importes al unir líneas; cada hecho conserva origen y controles monetarios/GPS. Redshift/QuickSight sirve analítica pesada y la API consultas operativas. 5-H fija fórmulas, audiencia, filtros, profundización y latencia; costo de servir inicia E2. RT-05.10/.24/.30 deseables conservan su alcance no ofertado.
+El modelo incluye dimensiones de fecha, cliente, producto, sitio, ruta y canal; cliente, producto, sitio y ruta conservan versiones y vigencias. El cálculo previo al grano del pedido evita multiplicar OTIF/importes al unir líneas; cada hecho conserva origen y controles monetarios/GPS. Redshift/QuickSight sirve analítica pesada y la API consultas operativas. 5-H fija fórmulas, audiencia, filtros, profundización y latencia; costo de servir inicia E2. RT-05.10/.24 deseables conservan su alcance no ofertado; RT-05.30 se oferta mediante la Innovación 3 del Capítulo 13 (sección 13.3.2), sobre las series y la asociación sensor–lote de la sección 5.1.7.
 
 <a id="sec-5-1-12"></a>
 
@@ -444,7 +456,6 @@ Se entregarán esquema perfilado, correspondencias aprobadas, código ETL versio
 
 La secuencia comprende preparación, carga inicial, ensayos, marcha blanca y corte oficial. E1 mantiene desarrollo M1–12, marcha blanca M13–15 y producción M16; E2 desarrollo M13–18, marcha blanca M19–20 y producción M21. Las últimas cuatro semanas de cada marcha blanca usan volumen real y aceptación. Los pilotos tienen perímetro y escritor definidos; no se confunden con el corte definitivo.
 
-<a id="fig-migracion"></a>
 
 
 Cada ensayo completo independiente recorre extracción, transferencia, transformación, carga, índices, delta, conciliación y rollback; el segundo comienza con extracción nueva y registra tiempos y resultados propios. Se trata de procedimientos futuros, sin actas de ejecución acreditadas.
@@ -483,7 +494,7 @@ Esta sección aplica los escenarios de carga de S4 a índices, particiones, cach
 
 ### 5.4.1 Escenarios de carga de referencia
 
-La Tabla 5.3 relaciona los escenarios de S4 con su efecto sobre el modelo y la prueba prevista. RT-09.01–03 exige dimensionamiento, umbrales bajo carga y crecimiento 3×; RT-09.06 exige carga a 1,5×pico y estrés hasta saturación (PUCV, 2026d, §9).
+La Tabla 5.3 relaciona los escenarios de S4 con su efecto sobre el modelo y la prueba prevista. RT-09.01–03 exige dimensionamiento, umbrales bajo carga y crecimiento 3×; RT-09.06 exige carga a 1,5×pico y estrés hasta saturación (Distribuidora Puelche S.A., 2026b, §9).
 
 <a id="tab-escenarios"></a>
 
@@ -499,7 +510,7 @@ La Tabla 5.3 relaciona los escenarios de S4 con su efecto sobre el modelo y la p
 
 **Tabla 5.3 — Escenarios de carga vigentes del dimensionamiento**
 
-*Fuente: Subdocumento 4, Anexo 4-W, §§4-W.2 y 4-W.10, Tablas A.29 y A.34 y los umbrales de RT-09.01 a RT-09.03 y RT-09.06 de las Bases Técnicas Transversales (PUCV, 2026d).*
+*Fuente: Subdocumento 4, Anexo 4-W, §§4-W.2 y 4-W.10, Tablas A.29 y A.34 y los umbrales de RT-09.01 a RT-09.03 y RT-09.06 de las Bases Técnicas Transversales (Distribuidora Puelche S.A., 2026b).*
 
 El máximo global combina preventa, reparto y portal; despacho distingue total distribuido y WMS Talca. Se adoptan los resultados de A.34 (3,15/8,05), cuya base visible 2,68 está redondeada, sin recalcular desde ese redondeo. Los índices priorizan lote/unidad y filtros operativos.
 
@@ -557,14 +568,14 @@ Actas identifican versión, ambiente y datos. Ensayos completos preceden cada co
 
 Estas fuentes sostienen las reglas y decisiones citadas en este ítem. Las fuentes locales son documentos de la licitación o de la propuesta; EPCIS/CBV y PostgreSQL respaldan exclusivamente sus contratos técnicos.
 
-- Pontificia Universidad Católica de Valparaíso. (2026a). *Aclaraciones de licitación*. [Documento](../Bases/aclaraciones-licitacion.md).
-- Pontificia Universidad Católica de Valparaíso. (2026b). *Bases Administrativas TFEP-01/2026*. [Documento](../Bases/Bases_Administrativas.md).
-- Pontificia Universidad Católica de Valparaíso. (2026c). *Bases Técnicas del Caso 02 — Logística*. [Documento](../Bases/Caso_02_Logistica.md).
-- Pontificia Universidad Católica de Valparaíso. (2026d). *Bases Técnicas Transversales*, versión 1.0. [Documento](../Bases/Bases_Tecnicas_Transversales.md).
-- LafroX SpA. (2026d). *Presentación de la empresa*, Subdocumento 1. [Documento](../01_presentacion_empresa/LAFROX-Subdocumento1.md).
-- LafroX SpA. (2026c). *Problema y necesidad*, Subdocumento 2. [Documento](../02_problema_necesidad/LAFROX-Subdocumento2.md).
-- LafroX SpA. (2026b). *Esquema de solución y alcance*, Subdocumento 3 y anexos. [Documento](../03_esquema_solucion_alcance/LAFROX-Subdocumento3.md).
-- LafroX SpA. (2026a). *Arquitectura*, Subdocumento 4, anexos y formularios T-11/T-12. [Documento](../04_arquitectura/LAFROX-Subdocumento4.md).
+- Distribuidora Puelche S.A. (2026a). *Bases Administrativas de Licitación N.º TFEP-01/2026: Contratación de Solución Integral de Software y Servicios de Operación*.
+- Distribuidora Puelche S.A. (2026b). *Bases Técnicas Transversales de Licitación N.º TFEP-01/2026*.
+- Distribuidora Puelche S.A. (2026c). *Caso 02: Logística. Especificaciones del problema y operación de Distribuidora Puelche S.A.*
+- Distribuidora Puelche S.A. (2026d). *Aclaraciones de la Licitación N.º TFEP-01/2026*.
+- LafroX SpA. (2026d). *Presentación de la empresa*, Subdocumento 1..
+- LafroX SpA. (2026c). *Problema y necesidad*, Subdocumento 2..
+- LafroX SpA. (2026b). *Esquema de solución y alcance*, Subdocumento 3 y anexos..
+- LafroX SpA. (2026a). *Arquitectura*, Subdocumento 4, anexos y formularios T-11/T-12..
 - International Organization for Standardization. (2008). *ISO/IEC 25012:2008, Software engineering — SQuaRE — Data quality model*. Dimensiones de calidad citadas en 5.2.5; no es fuente de umbrales numéricos.
 - GS1. (2022a). *EPCIS Standard*, release 2.0, junio de 2022. [Estándar](https://ref.gs1.org/standards/epcis/2.0.1/).
 - GS1. (2022b). *Core Business Vocabulary Standard*, release 2.0. [Estándar](https://ref.gs1.org/standards/cbv/2.0.0/).
@@ -574,49 +585,45 @@ Estas fuentes sostienen las reglas y decisiones citadas en este ítem. Las fuent
 
 ## Declaración de uso de IA
 
-La herramienta empleada en la elaboración de este capítulo fue un asistente de programación con acceso a los documentos de las Bases y a los subdocumentos previos. Asistió en la organización del material, la redacción del texto, la construcción de los diagramas en notación Mermaid, la verificación de consistencia entre entidades y el cálculo de los escenarios de carga tomados del Subdocumento 4. **La revisión humana final se realiza sobre el consolidado y no está ejecutada en el estado actual de este archivo**: las filas de la tabla siguiente registran esa situación sin atribuir una aprobación que nadie ha firmado.
+En cumplimiento de la sección 7.2 de las Aclaraciones de la licitación, la tabla siguiente declara el uso de herramientas de inteligencia artificial en este subdocumento, con la revisión humana de cada parte. La declaración se consolida en el Formulario A-6.
+
+**Tabla 5.17 - Uso de IA por apartado del capítulo**
 
 <a id="tab-uso-ia"></a>
 
 | Sección | Herramienta | Finalidad del uso | Nivel en texto | Nivel en diagramas | Revisión humana (quién y qué verificó) |
 | --- | --- | --- | --- | --- | --- |
-| 5.1.1 | Asistente de programación | Estructuración de dominios y almacenes lógicos a partir de S4 y RT-05.01 | Alto | No aplica | No realizada; pendiente de rol de datos de LAFROX |
-| 5.1.2 | Asistente de programación | Redacción del modelo conceptual y construcción de las Figuras 5.1 y 5.2 | Alto | Alto | No realizada; pendiente de verificación de cardinalidades contra la decisión de diseño |
-| 5.1.3 | Asistente de programación | Redacción de identidad compartida y equivalencias | Alto | Alto | No realizada; verificar unicidad de claves naturales declaradas |
-| 5.1.4 | Asistente de programación | Redacción de recepción, lote y unidad logística | Alto | Alto | No realizada; verificar distinción entre SSCC e identificador interno |
-| 5.1.5 | Asistente de programación | Redacción de preventa, reserva y preparación | Alto | Alto | No realizada; verificar conciliación de reservas y saldos |
-| 5.1.6 | Asistente de programación | Redacción de ruta, entrega, intento y devolución | Alto | Alto | No realizada; verificar inmutabilidad de la promesa original |
-| 5.1.7 | Asistente de programación | Redacción de custodia,Excursión y asociación temporal | Alto | Alto | No realizada; verificar genealogía causal y composición logística |
-| 5.1.8 | Asistente de programación | Redacción de cobranza, documentos y POD | Alto | Alto | No realizada; verificar que el documento antecede al movimiento |
-| 5.1.9 | Asistente de programación | Redacción de intercambio y gobierno del acceso | Alto | Alto | No realizada; verificar roles productor, dueño funcional y consumidor |
-| 5.1.10 | Asistente de programación | Redacción de telemetría, caché y objetos | Alto | Alto | No realizada; verificar vida útil de 30 días del dato crudo |
-| 5.1.11 | Asistente de programación | Redacción del modelo dimensional de explotación | Alto | Alto | No realizada; verificar grano declarado de cada hecho |
-| 5.1.12 | Asistente de programación | Redacción de reglas relacionales resueltas | Alto | No aplica | No realizada; verificar restricciones y acciones al borrar |
-| 5.2.1 | Asistente de programación | Redacción de paradigmas, motores y su posición | Alto | No aplica | No realizada; verificar que ningún Warehouse se ubique en Aurora |
-| 5.2.2 | Asistente de programación | Redacción de transaccionalidad, aislamiento e idempotencia | Alto | Alto | No realizada; verificar aislamiento declarado por agregado |
-| 5.2.3 | Asistente de programación | Redacción de autoridad de escritura y comportamiento en partición | Alto | No aplica | No realizada; verificar comportamiento offline por dominio |
-| 5.2.4 | Asistente de programación | Redacción de la gestión de datos maestros | Alto | No aplica | No realizada; verificar dueño funcional único por entidad |
-| 5.2.5 | Asistente de programación | Redacción de controles de calidad | Alto | No aplica | No realizada; verificar denominadores de cada control |
-| 5.2.6 | Asistente de programación | Redacción de la separación analítica y fórmulas | Alto | No aplica | No realizada; verificar latencia declarada de cada indicador |
-| 5.2.7 | Asistente de programación | Redacción de retención, archivado y eliminación | Alto | No aplica | No realizada; verificar plazos contra S4 y el caso |
-| 5.2.8 | Asistente de programación | Redacción de exportación e intercambio masivo | Alto | No aplica | No realizada; verificar manifiesto, hash y reintento |
-| 5.3.1 | Asistente de programación | Cálculo del volumen migrable y redacción del alcance | Alto | No aplica | No realizada; verificar la aritmética de 32,11 GB y su sensibilidad |
-| 5.3.2 | Asistente de programación | Redacción del perfilado, saneamiento y causas de rechazo | Alto | Alto | No realizada; verificar que no exista carga silenciosa |
-| 5.3.3 | Asistente de programación | Redacción de transformación y artefactos versionados | Alto | No aplica | No realizada; verificar la regla de derivación declarada |
-| 5.3.4 | Asistente de programación | Redacción de la secuencia por olas y calendario | Alto | Alto | No realizada; verificar dos ensayos completos e independientes |
-| 5.3.5 | Asistente de programación | Redacción de conciliación y criterios de corte | Alto | No aplica | No realizada; verificar el criterio de aprobación |
-| 5.3.6 | Asistente de programación | Redacción del delta, la reversión y la continuidad del ERP | Alto | No aplica | No realizada; verificar reversión probada antes del corte |
-| 5.4.1 | Asistente de programación | Recálculo de escenarios de carga desde S4 4.B | Alto | No aplica | No realizada; verificar 12,30, 14,66, 21,99, 17,03 y 3,54 TPS |
-| 5.4.2 | Asistente de programación | Redacción de consultas críticas e índices | Alto | No aplica | No realizada; verificar que cada índice cite atributos existentes |
-| 5.4.3 | Asistente de programación | Redacción de particionado y archivado | Alto | No aplica | No realizada; verificar unicidad particionada en PostgreSQL 16 |
-| 5.4.4 | Asistente de programación | Redacción de cachés y copia local del dispositivo | Alto | No aplica | No realizada; verificar umbrales ejecutables de invalidación |
-| 5.4.5 | Asistente de programación | Redacción de conexiones, concurrencia y colas | Alto | No aplica | No realizada; verificar límites declarados |
-| 5.4.6 | Asistente de programación | Redacción del protocolo de medición y pruebas | Alto | No aplica | No realizada; verificar periodicidad y umbral de aceptación |
-| Referencias | Asistente de programación | Comprobación de existencia y formato de las fuentes citadas | Medio | No aplica | No realizada; verificar cada referencia contra la fuente primaria |
-| Declaración de uso de IA | Asistente de programación | Redacción de esta declaración de trazabilidad | Medio | No aplica | No realizada; pendiente de firma |
-
-**Tabla 5.17 - Uso de IA por apartado del capítulo**
-
-*Fuente: registro de elaboración asistida de este subdocumento. Los niveles declarados son `Ninguno`, `Bajo`, `Medio` y `Alto` según la densidad de asistencia sobre el resultado publicado. Debe consolidarse con la revisión humana del capítulo antes de la entrega.*
-
-Una advertencia cierra esta declaración y evita que se lea como una formalidad. **Un diagrama generado con asistencia no es evidencia de que el diagrama sea correcto**: cada entidad, cada cardinalidad y cada relación de este capítulo deben ser verificadas por una persona contra la decisión de diseño que representan. Lo que sí quedó comprobado en la elaboración de este archivo es de alcance limitado y conviene enunciarlo sin exagerarlo: se verificó el balanceo de los bloques de código, el cierre de cada bloque Mermaid, la correspondencia entre cada llamada y su figura, la numeración correlativa de figuras y tablas y la resolución de todas las anclas internas del índice. **Eso no equivale a una prueba de renderizado**: la escritura de un bloque Mermaid balanceado no garantiza que el motor de diagrama empleado por el pipeline de publicación lo dibuje, y en este estado no se ha compilado el documento a PDF ni se ha inspeionado ninguna imagen resultante. El renderizado queda como verificación pendiente. Lo mismo vale para las cifras: los cálculos de carga y de volumen se recalcularon contra el Subdocumento 4, y su verificación formal corresponde a la etapa de revisión del consolidado.
+| 5.1.1 | Asistente de programación | Estructuración de dominios y almacenes lógicos a partir de S4 y RT-05.01 | Alto | No aplica | [[REVISIÓN HUMANA]] |
+| 5.1.2 | Asistente de programación | Redacción del modelo conceptual y construcción de las Figuras 5.1 y 5.2 | Alto | Alto | [[REVISIÓN HUMANA]] |
+| 5.1.3 | Asistente de programación | Redacción de identidad compartida y equivalencias | Alto | Alto | [[REVISIÓN HUMANA]] |
+| 5.1.4 | Asistente de programación | Redacción de recepción, lote y unidad logística | Alto | Alto | [[REVISIÓN HUMANA]] |
+| 5.1.5 | Asistente de programación | Redacción de preventa, reserva y preparación | Alto | Alto | [[REVISIÓN HUMANA]] |
+| 5.1.6 | Asistente de programación | Redacción de ruta, entrega, intento y devolución | Alto | Alto | [[REVISIÓN HUMANA]] |
+| 5.1.7 | Asistente de programación | Redacción de custodia,Excursión y asociación temporal | Alto | Alto | [[REVISIÓN HUMANA]] |
+| 5.1.8 | Asistente de programación | Redacción de cobranza, documentos y POD | Alto | Alto | [[REVISIÓN HUMANA]] |
+| 5.1.9 | Asistente de programación | Redacción de intercambio y gobierno del acceso | Alto | Alto | [[REVISIÓN HUMANA]] |
+| 5.1.10 | Asistente de programación | Redacción de telemetría, caché y objetos | Alto | Alto | [[REVISIÓN HUMANA]] |
+| 5.1.11 | Asistente de programación | Redacción del modelo dimensional de explotación | Alto | Alto | [[REVISIÓN HUMANA]] |
+| 5.1.12 | Asistente de programación | Redacción de reglas relacionales resueltas | Alto | No aplica | [[REVISIÓN HUMANA]] |
+| 5.2.1 | Asistente de programación | Redacción de paradigmas, motores y su posición | Alto | No aplica | [[REVISIÓN HUMANA]] |
+| 5.2.2 | Asistente de programación | Redacción de transaccionalidad, aislamiento e idempotencia | Alto | Alto | [[REVISIÓN HUMANA]] |
+| 5.2.3 | Asistente de programación | Redacción de autoridad de escritura y comportamiento en partición | Alto | No aplica | [[REVISIÓN HUMANA]] |
+| 5.2.4 | Asistente de programación | Redacción de la gestión de datos maestros | Alto | No aplica | [[REVISIÓN HUMANA]] |
+| 5.2.5 | Asistente de programación | Redacción de controles de calidad | Alto | No aplica | [[REVISIÓN HUMANA]] |
+| 5.2.6 | Asistente de programación | Redacción de la separación analítica y fórmulas | Alto | No aplica | [[REVISIÓN HUMANA]] |
+| 5.2.7 | Asistente de programación | Redacción de retención, archivado y eliminación | Alto | No aplica | [[REVISIÓN HUMANA]] |
+| 5.2.8 | Asistente de programación | Redacción de exportación e intercambio masivo | Alto | No aplica | [[REVISIÓN HUMANA]] |
+| 5.3.1 | Asistente de programación | Cálculo del volumen migrable y redacción del alcance | Alto | No aplica | [[REVISIÓN HUMANA]] |
+| 5.3.2 | Asistente de programación | Redacción del perfilado, saneamiento y causas de rechazo | Alto | Alto | [[REVISIÓN HUMANA]] |
+| 5.3.3 | Asistente de programación | Redacción de transformación y artefactos versionados | Alto | No aplica | [[REVISIÓN HUMANA]] |
+| 5.3.4 | Asistente de programación | Redacción de la secuencia por olas y calendario | Alto | Alto | [[REVISIÓN HUMANA]] |
+| 5.3.5 | Asistente de programación | Redacción de conciliación y criterios de corte | Alto | No aplica | [[REVISIÓN HUMANA]] |
+| 5.3.6 | Asistente de programación | Redacción del delta, la reversión y la continuidad del ERP | Alto | No aplica | [[REVISIÓN HUMANA]] |
+| 5.4.1 | Asistente de programación | Recálculo de escenarios de carga desde S4 4.B | Alto | No aplica | [[REVISIÓN HUMANA]] |
+| 5.4.2 | Asistente de programación | Redacción de consultas críticas e índices | Alto | No aplica | [[REVISIÓN HUMANA]] |
+| 5.4.3 | Asistente de programación | Redacción de particionado y archivado | Alto | No aplica | [[REVISIÓN HUMANA]] |
+| 5.4.4 | Asistente de programación | Redacción de cachés y copia local del dispositivo | Alto | No aplica | [[REVISIÓN HUMANA]] |
+| 5.4.5 | Asistente de programación | Redacción de conexiones, concurrencia y colas | Alto | No aplica | [[REVISIÓN HUMANA]] |
+| 5.4.6 | Asistente de programación | Redacción del protocolo de medición y pruebas | Alto | No aplica | [[REVISIÓN HUMANA]] |
+| Referencias | Asistente de programación | Comprobación de existencia y formato de las fuentes citadas | Medio | No aplica | [[REVISIÓN HUMANA]] |
+| Declaración de uso de IA | Asistente de programación | Redacción de esta declaración de trazabilidad | Medio | No aplica | [[REVISIÓN HUMANA]] |

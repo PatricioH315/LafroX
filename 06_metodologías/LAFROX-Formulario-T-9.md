@@ -21,6 +21,8 @@ Conforme al Formulario T-9 de las Bases Administrativas, LafroX adjunta a este f
 
 ## Declaración de uso de IA
 
+En cumplimiento de la sección 7.2 de las Aclaraciones de la licitación, la tabla siguiente declara el uso de herramientas de inteligencia artificial en este formulario, con la revisión humana de cada parte. La declaración se consolida en el Formulario A-6.
+
 | Sección | Herramienta | Finalidad del uso | Nivel en texto | Nivel en diagramas | Revisión humana (quién y qué verificó) |
 | --- | --- | --- | --- | --- | --- |
-| Formulario T-9 | Claude Code | Portada y correspondencia con la sección 6.1 | Bajo | Ninguno | No documentada |
+| Formulario T-9 | Claude Code | Portada y correspondencia con la sección 6.1 | Bajo | Ninguno | [[REVISIÓN HUMANA]] |

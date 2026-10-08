@@ -31,9 +31,9 @@ La Etapa 1 pone en producción la mayor parte del alcance y incluye verificacion
 
 ### 2.1 Alcance y olas
 
-La Etapa 1 pone en producción la trazabilidad de recepción, la bodega con FEFO y la preparación nocturna, la cadena de frío, la preventa sin conexión, la planificación de rutas, el reparto con prueba de entrega digital, las devoluciones y envases, la rendición y los indicadores operacionales: los módulos M1 a M10 y M12 (paquetes 3.4.1 a 3.4.11 del Formulario T-14). La implantación sigue el orden de las dependencias de datos en tres olas (Capítulo 3, sección 3.4.4; paquete 4.1.1), como presenta la Tabla «tab:T18-olas».
+La Etapa 1 pone en producción la trazabilidad de recepción, la bodega con FEFO y la preparación nocturna, la cadena de frío, la preventa sin conexión, la planificación de rutas, el reparto con prueba de entrega digital, las devoluciones y envases, la rendición y los indicadores operacionales: los módulos M1 a M10 y M12 (paquetes 3.4.1 a 3.4.11 del Formulario T-14). La implantación sigue el orden de las dependencias de datos en tres olas (Capítulo 3, sección 3.4.4; paquete 4.1.1), como presenta la Tabla T18.1.
 
-**Olas de implantación de la Etapa 1. Fuente: Capítulo 3, sección 3.4.4.**
+**Tabla T18.1. Olas de implantación de la Etapa 1. Fuente: Capítulo 3, sección 3.4.4.**
 
 <a id="tab:T18-olas"></a>
 
@@ -46,7 +46,6 @@ La Etapa 1 pone en producción la trazabilidad de recepción, la bodega con FEFO
 El calendario de olas respeta los meses 13–15, pero su cierre se calcula con fechas reales. Sea F el instante final de la marcha blanca: el 100 % del alcance debe estar operativo antes de F − 28 días y sostener volumen real e indicadores durante [F − 28 días, F). Cada activación debe respetar 1–25 de septiembre, todo diciembre y los primeros tres días hábiles del mes; también evita 05:30–07:00 y no detiene rutas. La secuencia vigente de §6.1 adelanta los remanentes a semana 8, subordinada a ese límite. Un retraso exige replanificar antes de H6; no se recorta la evidencia ni se desplazan automáticamente las fases siguientes.
 
   
-  **Descripción textual de figura.** No sustituye la revisión visual del PDF.
 - Semanas 10 a 13: toda la Etapa 1 / a volumen real (Art. 17.3)
 - Mes 16 (H7)
 - 4 semanas / en criterio
@@ -58,7 +57,7 @@ El calendario de olas respeta los meses 13–15, pero su cierre se calcula con f
 - criterio de avance
 - criterio de avance
   
-**Figura: Olas de la Etapa 1 durante la marcha blanca. Fuente: elaboración propia a partir del Capítulo 3, sección 3.4.4.**
+**Figura T18.1. Olas de la Etapa 1 durante la marcha blanca. Fuente: elaboración propia a partir del Capítulo 3, sección 3.4.4.**
 
   <a id="fig:T18-olas"></a>
 
@@ -66,9 +65,9 @@ La figura conserva la representación histórica. La programación vigente es §
 
 ### 2.2 Pruebas previas a la marcha blanca y al paso a producción
 
-Antes de cada paso a producción se aprueban las pruebas del numeral 20.1 de las Bases Técnicas Transversales, y su cumplimiento forma parte de la certificación de la Etapa 1 (H5, mes 12; paquete 3.8.7). La Tabla «tab:T18-pruebas» presenta cada prueba con su criterio de éxito.
+Antes de cada paso a producción se aprueban las pruebas del numeral 20.1 de las Bases Técnicas Transversales, y su cumplimiento forma parte de la certificación de la Etapa 1 (H5, mes 12; paquete 3.8.7). La Tabla T18.2 presenta cada prueba con su criterio de éxito.
 
-**Pruebas previas a la marcha blanca de la Etapa 1. Fuente: Bases Técnicas Transversales, numeral 20.1, y Formulario T-14.**
+**Tabla T18.2. Pruebas previas a la marcha blanca de la Etapa 1. Fuente: Bases Técnicas Transversales, numeral 20.1, y Formulario T-14.**
 
 <a id="tab:T18-pruebas"></a>
 
@@ -93,9 +92,9 @@ Cada día se concilian ambos registros por dominio: documentos, lotes, stock, en
 
 ### 2.4 Indicadores diarios y umbrales de cierre
 
-La segunda condición del Art. 17.3 exige alcanzar «el volumen de operación real comprometido en el plan de implantación» durante al menos las cuatro últimas semanas. LafroX compromete la operación real completa de cada proceso de la ola, no una muestra ni un grupo piloto. La Tabla «tab:T18-volumen» expresa ese volumen con las cifras del caso.
+La segunda condición del Art. 17.3 exige alcanzar «el volumen de operación real comprometido en el plan de implantación» durante al menos las cuatro últimas semanas. LafroX compromete la operación real completa de cada proceso de la ola, no una muestra ni un grupo piloto. La Tabla T18.3 expresa ese volumen con las cifras del caso.
 
-**Volumen de operación real comprometido en la marcha blanca de la Etapa 1. Fuente: Caso 02, sección 14.1.**
+**Tabla T18.3. Volumen de operación real comprometido en la marcha blanca de la Etapa 1. Fuente: Caso 02, sección 14.1.**
 
 <a id="tab:T18-volumen"></a>
 
@@ -112,16 +111,16 @@ La segunda condición del Art. 17.3 exige alcanzar «el volumen de operación re
 
 El compromiso es que el 100 % del volumen de cada proceso se registre en la solución durante las cuatro últimas semanas, con los demás indicadores en su umbral. Se registra el 100 % de la operación efectivamente generada cada día, incluido su aumento durante el peak; no se exige generar pedidos artificiales ni mantener 2.600 entregas todos los días del período. Los ensayos previos verifican separadamente 1,5 veces la carga peak aplicable. Una ola que cubre una sola zona compromete el volumen de esa zona hasta que entran las demás; al cierre de la marcha blanca, todas las zonas están dentro.
 
-Los indicadores se miden y publican cada día con el umbral que exige el Art. 17.3 para cerrar la marcha blanca (RT-20.04), como presenta la Tabla «tab:T18-indicadores».
+Los indicadores se miden y publican cada día con el umbral que exige el Art. 17.3 para cerrar la marcha blanca (RT-20.04), como presenta la Tabla T18.4.
 
-**Indicadores diarios y umbrales de cierre de la Etapa 1. Fuente: Bases Administrativas, Art. 17.3; Caso 02, RT-09.01 y RT-10.05; y Capítulo 3, Tabla 3.5.**
+**Tabla T18.4. Indicadores diarios y umbrales de cierre de la Etapa 1. Fuente: Bases Administrativas, Art. 17.3; Caso 02, RT-09.01 y RT-10.05; y Capítulo 3, Tabla 3.5.**
 
 <a id="tab:T18-indicadores"></a>
 
 | Indicador diario | Umbral | Condición del Art. 17.3 |
 | --- | --- | --- |
 | Incidentes críticos y altos abiertos atribuibles a la solución | 0 | Primera |
-| Transacciones de la ola registradas en la solución sobre el total | 100 % del volumen de la Tabla «tab:T18-volumen», sostenido durante las últimas 4 semanas | Segunda |
+| Transacciones de la ola registradas en la solución sobre el total | 100 % del volumen de la Tabla T18.3, sostenido durante las últimas 4 semanas | Segunda |
 | Indisponibilidad en la ventana de despacho de 05:30 a 07:00 | 0 minutos (RT-10.05 del caso) | Tercera |
 | Disponibilidad de la transacción crítica, de extremo a extremo | 99,9 % o más (Capítulo 3, Tabla 3.5) | Tercera |
 | Tiempo de respuesta de las transacciones críticas, percentil 95 | Confirmación de línea de preparación hasta 1 s; registro de entrega hasta 2 s; línea de preventa hasta 1,5 s; consulta de stock y crédito hasta 2 s (RT-09.01 del caso) | Tercera |
@@ -129,10 +128,9 @@ Los indicadores se miden y publican cada día con el umbral que exige el Art. 17
 | Usuarios de la ola certificados en su perfil | 100 % | Quinta |
 | Pedidos perdidos o duplicados por falta de señal | 0 (R18-06) | Cuarta |
 
-La sexta condición es el acta de aceptación firmada por la Contraparte Técnica (paquete 4.2.3, H7). Los resultados del capítulo 18 del caso que se verifican en esta marcha blanca (R18-01 a R18-03, R18-05 a R18-10 y R18-14 a R18-16) se miden con el método y el período del Capítulo 3, Anexo 3.J. La Figura «fig:T18-ciclo» resume el ciclo diario y las condiciones de cierre.
+La sexta condición es el acta de aceptación firmada por la Contraparte Técnica (paquete 4.2.3, H7). Los resultados del capítulo 18 del caso que se verifican en esta marcha blanca (R18-01 a R18-03, R18-05 a R18-10 y R18-14 a R18-16) se miden con el método y el período del Capítulo 3, Anexo 3.J. La Figura T18.2 resume el ciclo diario y las condiciones de cierre.
 
   
-  **Descripción textual de figura.** No sustituye la revisión visual del PDF.
 - Ciclo de cada día
 - Medición de los indicadores del día
 - Comparación con el umbral
@@ -140,11 +138,8 @@ La sexta condición es el acta de aceptación firmada por la Contraparte Técnic
 - Conciliación y publicación del día
 - Marcha / blanca / E1 y E2
 - Seis condiciones copulativas (Art. 17.3)
-- Relación entre nodos: c → d.
-- Relación entre nodos: d → p.
-- Relación entre nodos: p → m.
   
-**Figura: Ciclo diario de la marcha blanca y condiciones de cierre del Art. 17.3. Fuente: elaboración propia a partir de las Bases Administrativas, Art. 17.3, y del RT-20.04.**
+**Figura T18.2. Ciclo diario de la marcha blanca y condiciones de cierre del Art. 17.3. Fuente: elaboración propia a partir de las Bases Administrativas, Art. 17.3, y del RT-20.04.**
 
   <a id="fig:T18-ciclo"></a>
 
@@ -152,10 +147,9 @@ Cada día se decide entre continuar, corregir o revertir, y la marcha blanca cie
 
 ### 2.5 Procedimiento de reversión
 
-La reversión la autoriza el responsable de operaciones del CLIENTE cuando un indicador amenaza el despacho. Sus disparadores son observables: pedidos sin sincronizar al inicio de la carga, rutas del día no disponibles para cargar o un defecto crítico en la ventana de despacho. La decisión se toma en el turno de noche, y la restitución de la versión operativa local y sus documentos válidos debe completarse antes de las 05:30; el papel sólo apoya tareas auxiliares y no acredita continuidad crítica; la capacidad de los 96 camiones debe demostrarse en el ensayo de la sección 6.4. Ese plazo protege el despacho; no es el RTO de recuperación ante desastres. La Figura «fig:T18-reversion» presenta el procedimiento por rol.
+La reversión la autoriza el responsable de operaciones del CLIENTE cuando un indicador amenaza el despacho. Sus disparadores son observables: pedidos sin sincronizar al inicio de la carga, rutas del día no disponibles para cargar o un defecto crítico en la ventana de despacho. La decisión se toma en el turno de noche, y la restitución de la versión operativa local y sus documentos válidos debe completarse antes de las 05:30; el papel sólo apoya tareas auxiliares y no acredita continuidad crítica; la capacidad de los 96 camiones debe demostrarse en el ensayo de la sección 6.4. Ese plazo protege el despacho; no es el RTO de recuperación ante desastres. La Figura T18.3 presenta el procedimiento por rol.
 
   
-  **Descripción textual de figura.** No sustituye la revisión visual del PDF.
 - Turno de noche: preparación, detección y decisión
 - Despacho
 - El acompañante confirma el impacto
@@ -166,16 +160,8 @@ La reversión la autoriza el responsable de operaciones del CLIENTE cuando un in
 - Técnica: interruptor o versión anterior
 - Al retomar, se concilia lo que quedó en cola
 - La ola reinicia sus 4 semanas
-- Relación entre nodos: det → aco.
-- Relación entre nodos: aco → dec.
-- Relación entre nodos: dec → cor.
-- Relación entre nodos: dec → lim.
-- Relación entre nodos: lim → ope.
-- Relación entre nodos: ope → tec.
-- Relación entre nodos: ope → con.
-- Relación entre nodos: con → rei.
   
-**Figura: Procedimiento de reversión de la Etapa 1. Fuente: elaboración propia a partir del Capítulo 3, sección 3.4.4, y del paquete 4.1.2.**
+**Figura T18.3. Procedimiento de reversión de la Etapa 1. Fuente: elaboración propia a partir del Capítulo 3, sección 3.4.4, y del paquete 4.1.2.**
 
   <a id="fig:T18-reversion"></a>
 
@@ -183,9 +169,9 @@ El procedimiento debe conservar información: los registros capturados quedan en
 
 ### 2.6 Acompañamiento en terreno y estabilización
 
-Después de cada paso a producción hay cuatro semanas de estabilización por ola, el mismo período que exige el criterio de avance. La dotación se deriva de la operación del caso (Capítulo 3, sección 3.4.4; paquete 4.2.2), como muestra la Tabla «tab:T18-dotacion».
+Después de cada paso a producción hay cuatro semanas de estabilización por ola, el mismo período que exige el criterio de avance. La dotación se deriva de la operación del caso (Capítulo 3, sección 3.4.4; paquete 4.2.2), como muestra la Tabla T18.5.
 
-**Dotación de acompañamiento y estabilización de la Etapa 1. Fuente: Capítulo 3, sección 3.4.4.**
+**Tabla T18.5. Dotación de acompañamiento y estabilización de la Etapa 1. Fuente: Capítulo 3, sección 3.4.4.**
 
 <a id="tab:T18-dotacion"></a>
 
@@ -200,9 +186,9 @@ Si la ola cubre solo una zona, la dotación de calle se reduce en proporción a 
 
 ### 2.7 Capacitación y certificación
 
-La capacitación se hace en el puesto y en la ruta, sin detener la venta ni el reparto (Caso 02, sección 13.3, condición 5). Usa las cuatro modalidades del Art. 90.2: presencial en cada sitio, en línea sincrónica, autoformación en línea y acompañamiento en el puesto durante la marcha blanca. Cada perfil se certifica antes de cerrar la marcha blanca, porque el Art. 17.3 exige personal «capacitado y certificado conforme al plan de capacitación aprobado» (paquetes 7.1.1 a 7.1.6 y 7.3.1). Los usuarios administradores y el equipo técnico del CLIENTE se certifican además conforme al Art. 90.4. La Tabla «tab:T18-perfiles» presenta los perfiles operativos.
+La capacitación se hace en el puesto y en la ruta, sin detener la venta ni el reparto (Caso 02, sección 13.3, condición 5). Usa las cuatro modalidades del Art. 90.2: presencial en cada sitio, en línea sincrónica, autoformación en línea y acompañamiento en el puesto durante la marcha blanca. Cada perfil se certifica antes de cerrar la marcha blanca, porque el Art. 17.3 exige personal «capacitado y certificado conforme al plan de capacitación aprobado» (paquetes 7.1.1 a 7.1.6 y 7.3.1). Los usuarios administradores y el equipo técnico del CLIENTE se certifican además conforme al Art. 90.4. La Tabla T18.6 presenta los perfiles operativos.
 
-**Perfiles operativos y modalidad de capacitación. Fuente: Capítulo 3, Anexo 3.I, a partir del Caso 02.**
+**Tabla T18.6. Perfiles operativos y modalidad de capacitación. Fuente: Capítulo 3, Anexo 3.I, a partir del Caso 02.**
 
 <a id="tab:T18-perfiles"></a>
 
@@ -247,9 +233,9 @@ Antes del paso a producción del mes 21 se aprueban las mismas pruebas de la sec
 
 ### 3.3 Indicadores diarios y umbrales de cierre
 
-Se aplican los indicadores de la sección 2.4 a los usuarios y transacciones de la Etapa 2, más los propios de su alcance, que presenta la Tabla «tab:T18-ind2».
+Se aplican los indicadores de la sección 2.4 a los usuarios y transacciones de la Etapa 2, más los propios de su alcance, que presenta la Tabla T18.7.
 
-**Indicadores propios de la marcha blanca de la Etapa 2. Fuente: Capítulo 3, Anexo 3.J, y Bases Administrativas, Art. 17.2.**
+**Tabla T18.7. Indicadores propios de la marcha blanca de la Etapa 2. Fuente: Capítulo 3, Anexo 3.J, y Bases Administrativas, Art. 17.2.**
 
 <a id="tab:T18-ind2"></a>
 
@@ -277,10 +263,9 @@ La marcha blanca de la Etapa 2 cierra con las seis condiciones del Art. 17.3. El
 
 ## 4 Convivencia entre la Etapa 1 y la Etapa 2
 
-La convivencia sigue las reglas del Art. 17.2. En los meses 13 a 15 coexisten la marcha blanca de la Etapa 1 y el desarrollo de la Etapa 2: el desarrollo de la Etapa 2 no despliega en Producción ni modifica las funciones de la Etapa 1 en marcha blanca, y los frentes de ambos esfuerzos están en el Formulario T-15. En los meses 19 y 20 la Etapa 1 está en producción y la Etapa 2 en marcha blanca, con una única fuente de verdad para los datos compartidos (pedidos, clientes, guías y entregas): la Etapa 2 lee y extiende los registros de la Etapa 1, sin copiarlos ni volver a digitarlos. En el mes 21, el paso a producción de la Etapa 2 no degrada la disponibilidad, el desempeño ni la integridad de los datos de la Etapa 1, y la Operación comienza ese mes con ambos alcances. La Figura «fig:T18-convivencia» muestra el flujo de datos de los meses 19 y 20.
+La convivencia sigue las reglas del Art. 17.2. En los meses 13 a 15 coexisten la marcha blanca de la Etapa 1 y el desarrollo de la Etapa 2: el desarrollo de la Etapa 2 no despliega en Producción ni modifica las funciones de la Etapa 1 en marcha blanca, y los frentes de ambos esfuerzos están en el Formulario T-15. En los meses 19 y 20 la Etapa 1 está en producción y la Etapa 2 en marcha blanca, con una única fuente de verdad para los datos compartidos (pedidos, clientes, guías y entregas): la Etapa 2 lee y extiende los registros de la Etapa 1, sin copiarlos ni volver a digitarlos. En el mes 21, el paso a producción de la Etapa 2 no degrada la disponibilidad, el desempeño ni la integridad de los datos de la Etapa 1, y la Operación comienza ese mes con ambos alcances. La Figura T18.4 muestra el flujo de datos de los meses 19 y 20.
 
   
-  **Descripción textual de figura.** No sustituye la revisión visual del PDF.
 - Etapa 1 en producción
 - Etapa 2 en marcha blanca
 - Clientes, pedidos, guías de despacho, entregas, lotes y cobros /  un solo escritor por dato y sin copias
@@ -290,9 +275,8 @@ La convivencia sigue las reglas del Art. 17.2. En los meses 13 a 15 coexisten la
 - Portal de transportistas
 - M10 Analítica: costo de servir
 - Ningún despliegue de la Etapa 2 modifica una función estabilizada de la Etapa 1
-- Relación entre nodos: rb → erp.
   
-**Figura: Convivencia de la Etapa 1 en producción con la Etapa 2 en marcha blanca. Fuente: elaboración propia a partir de la arquitectura lógica del Capítulo 4.**
+**Figura T18.4. Convivencia de la Etapa 1 en producción con la Etapa 2 en marcha blanca. Fuente: elaboración propia a partir de la arquitectura lógica del Capítulo 4.**
 
   <a id="fig:T18-convivencia"></a>
 
@@ -372,4 +356,8 @@ Las Bases se citan con su documento y el artículo, capítulo, sección o códig
 
 ## Declaración de uso de IA
 
-La declaración histórica del SD7 cubre la fuente importada de este formulario. Codex apoyó las correcciones y la planificación provisional el 6 de octubre de 2026, con nivel alto en texto y datos calculados y descripciones textuales de figuras. Revisión humana no documentada. Los controles automáticos no acreditan aprobación del equipo; consolidar el uso efectivo y la revisión humana en A-6 antes de entrega.
+En cumplimiento de la sección 7.2 de las Aclaraciones de la licitación, la tabla siguiente declara el uso de herramientas de inteligencia artificial en este formulario, con la revisión humana de cada parte. La declaración se consolida en el Formulario A-6.
+
+| Sección | Herramienta | Finalidad del uso | Nivel en texto | Nivel en diagramas | Revisión humana (quién y qué verificó) |
+| --- | --- | --- | --- | --- | --- |
+| Formulario T-18 | Codex | Correcciones de coherencia y planificación de la implantación | Alto | Medio (descripciones de figuras) | [[REVISIÓN HUMANA]] |

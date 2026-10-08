@@ -1,15 +1,7 @@
-<!-- Conversión fiel a Markdown. Los bloques [Descripción de imagen] y los separadores de página son notas de conversión; el resto corresponde al contenido original. Se conservan las referencias a páginas y los cortes de página del PDF. -->
-
----
-
-<!-- Página 1 del PDF original -->
 
 LafroX SpA
 
 VERSIÓN FINAL PARA ENTREGA
-
-> **[Descripción de imagen — logotipo y diseño de portada]**
-> En la franja negra superior aparece el contorno naranja de una cabeza de zorro junto a «LafroX SpA» en blanco. A la derecha se lee «VERSIÓN FINAL PARA ENTREGA» en gris. El borde inferior de la franja es inclinado y tiene dos líneas naranjas separadas por una franja blanca. El resto de la portada tiene fondo blanco, títulos negros, líneas horizontales grises y un rótulo negro con texto blanco para «Sobre N.° 2 --- Oferta Técnica». Los datos del mandante y proponente se sitúan a la izquierda y los del representante legal a la derecha. En la zona de firma aparece una línea horizontal sin firma manuscrita visible.
 
 LICITACIÓN PÚBLICA
 
@@ -33,8 +25,6 @@ Subdocumento 02 · Formulario T-7
 
 PROPONENTE
 
-LafroX SpA
-
 RUT 77.418.902-K
 
 Av. Brasil 2241, Valparaíso
@@ -48,16 +38,6 @@ FIRMA DEL REPRESENTANTE LEGAL
 Alex Aravena
 
 Jefe de Proyecto y Apoderado · LafroX SpA
-
-LAFROX-Subdocumento2.pdf
-
-1
-
----
-
-<!-- Página 2 del PDF original -->
-
-LafroX SpA
 
 ## Índice general
 
@@ -89,18 +69,6 @@ LafroX SpA
 | Referencias | 22 |
 | Declaración de uso de IA | 22 |
 
-LafroX SpA
-
-Propuesta Técnica
-
-2
-
----
-
-<!-- Página 3 del PDF original -->
-
-LafroX SpA
-
 ## Lista de tablas
 
 | Contenido | Página |
@@ -109,21 +77,6 @@ LafroX SpA
 | Tabla 2.2 Matriz de síntesis de actores, tensiones operacionales y estrategia de gestión. Fuente: elaboración propia a partir de Distribuidora Puelche S.A. (2026c), caps. 2, 4, 10 y 13. | 18 |
 | Tabla 2.3 Síntesis de restricciones no negociables del caso. Fuente: Distribuidora Puelche S.A. (2026c), cap. 10 y sección 13.3. | 21 |
 | Tabla 2.4 Declaración de uso de IA por sección del Subdocumento 2. Fuente: registro del equipo. | 22 |
-
-LafroX SpA
-
-Propuesta Técnica
-
-3
-
----
-
-<!-- Página 4 del PDF original -->
-
-LafroX SpA
-
-> **[Descripción de imagen — elementos gráficos de página]**
-> En el encabezado aparece un pequeño contorno negro de cabeza de zorro junto a «LafroX SpA», sobre una línea horizontal gris. En el pie aparece una franja negra con borde superior naranja inclinado.
 
 ## Lista de figuras
 
@@ -136,26 +89,13 @@ LafroX SpA
 | Figura 2.5 Proceso de Reparto y Entrega AS-IS. Fuente: elaboración propia. | 16 |
 | Figura 2.6 Proceso de Rendición y Cobranza AS-IS. Fuente: elaboración propia. | 17 |
 
-LafroX SpA
-
-Propuesta Técnica
-
-4
-
----
-
-<!-- Página 5 del PDF original -->
-
 CAPÍTULO 2
-
-> **[Descripción de imagen — elemento gráfico de página]**
-> En el borde inferior aparece una franja negra con una línea naranja inclinada en su borde superior.
 
 # Introducción al Problema y Necesidad
 
 El presente subdocumento expone el diagnóstico integral, operacional y estratégico de Distribuidora Puelche S.A. en el marco del caso. Se analiza la estructura de su modelo logístico actual (AS-IS), caracterizado por una profunda fragmentación de datos, procesos manuales en terreno y desacoples entre la promesa comercial y la capacidad física de distribución.
 
-Este capítulo establece la línea base conceptual y cuantitativa para el resto de la propuesta: fundamenta los requerimientos funcionales y el alcance técnico, define los requerimientos no funcionales y de resiliencia, y delimita las restricciones operativas que condicionan la planificación de la implantación. El catálogo pormenorizado de requerimientos del cliente, el registro extendido de supuestos y exclusiones, y el inventario nominal de actores y sistemas legados se presentan en el archivo adjunto independiente LAFROX-Subdocumento2-Anexos.pdf.
+Este capítulo establece la línea base conceptual y cuantitativa para el resto de la propuesta: fundamenta los requerimientos funcionales y el alcance técnico, define los requerimientos no funcionales y de resiliencia, y delimita las restricciones operativas que condicionan la planificación de la implantación. El catálogo pormenorizado de requerimientos del cliente, el registro extendido de supuestos y exclusiones, y el inventario nominal de actores y sistemas legados se presentan en los Anexos 2.1 a 2.3 de este subdocumento.
 
 ## 2.1 Resumen Ejecutivo del problema
 
@@ -165,17 +105,7 @@ La raíz del problema no reside en un único sistema defectuoso, sino en un teji
 
 1. Vulnerabilidad sanitaria y regulatoria: El retiro preventivo de marzo de 2026 demoró 9 días y alcanzó 4.800 kg del lote 24-0217, con una pérdida directa de dinero. El proveedor suspendió a Puelche por seis meses de su lista de distribuidores autorizados; ese proveedor representa el 6 % de las ventas. En el producto involucrado, el 41 % de las recepciones no registraba lote en el sistema.
 
-2. Fricción comercial y quiebre de preventa: El 7,8 % de las líneas de pedido tomadas en terreno presenta quiebre de stock, pues los 62 preventistas operan a ciegas mediante una
-
-LafroX SpA Propuesta Técnica 5
-
----
-
-<!-- Página 6 del PDF original -->
-
-LafroX SpA                                                       Introducción al Problema y Necesidad
-
-aplicación móvil obsoleta sin visibilidad de inventario ni crédito en tiempo real.
+2. Fricción comercial y quiebre de preventa: El 7,8 % de las líneas de pedido tomadas en terreno presenta quiebre de stock, pues los 62 preventistas operan a ciegas mediante una aplicación móvil obsoleta sin visibilidad de inventario ni crédito en tiempo real.
 
 3. Opacidad financiera y diferencias de rendición sin investigar: La empresa subsidia entregas ineficientes bajo un prorrateo de costo de servir estático fijado en 2016. La rendición manual diferida del efectivo genera diferencias no conciliadas; además, el 1,1 % mensual de las guías de despacho se extravía o queda ilegible; ante un reclamo de entrega no recibida, encontrar la guía toma en promedio 12 días.
 
@@ -192,14 +122,6 @@ En concordancia con el análisis prescrito en las Bases de Licitación, la probl
 1. Habilitación sanitaria y comercial comprometida: El cumplimiento del Reglamento Sanitario de los Alimentos (Decreto 977) exige el control riguroso de la cadena de frío (congelados a −18 °C o menos; la cámara de congelado de Talca opera a −22 °C) (Ministerio de Salud, 1996) y la trazabilidad bidireccional inmediata de lotes. En la actualidad, el registro de temperatura es discontinuo e instrumentalizado por el propio conductor, sin alarmas automáticas ante excursiones térmicas. Al recibir mercadería de los 180 proveedores, el personal revisa las fechas de vencimiento por muestreo y registra el lote de manera incompleta, en un campo de texto libre. La trazabilidad depende del papel de recepción y de la memoria de quienes despacharon, sin estar disponible de forma consultable en los sistemas. Esta carencia expone a Puelche a sanciones de la autoridad sanitaria, que ya observó la ausencia de registro continuo de temperatura en su última fiscalización. También le impide acreditar ante el proveedor de lácteos la capacidad de trazabilidad que este exige para restablecer la relación tras la suspensión, que vence en septiembre de 2026.
 
 2. Pérdida de competitividad del servicio: El nivel de servicio actual (OTIF 82,4 % y fill rate 91,3 %) está lejos de las referencias de 95 % y 97 % que el caso asocia a esos indicadores. Además, la principal cadena exigirá desde enero de 2029 pedido electrónico, aviso de despacho, ventana de entrega de 30 minutos con penalización y prueba de entrega digital.
-
-LafroX SpA Propuesta Técnica 6
-
----
-
-<!-- Página 7 del PDF original -->
-
-LafroX SpA                                                           Introducción al Problema y Necesidad
 
 Hoy Puelche entrega entre las 08:00 y las 18:00. Los clientes del canal tradicional (11.600 almacenes) y food service (2.100 puntos) enfrentan faltantes y retrasos. La falta de visibilidad en preventa y la rigidez de las rutas provocan reentregas equivalentes al 4,2 % de las entregas. Sobre la referencia de 1.400 entregas diarias, ello equivale a aproximadamente 59 reentregas al día (1.400 × 0,042 = 58,8).
 
@@ -219,20 +141,7 @@ La comprensión del negocio de Distribuidora Puelche S.A. exige interpretar sus 
 
 - Estándares sectoriales GS1 y EDI: (GS1 Chile, 2020). Demanda la adopción de identificadores universales (GTIN para productos, GLN para puntos de entrega, GS1-128 para unidades logísticas de carga) e intercambio electrónico de datos (EDI) para órdenes de compra, avisos de despacho (DESADV) y facturación electrónica con el gran retail chileno.
 
-A este marco se añade el impacto crítico de la estacionalidad, durante las tres primeras
-
-LafroX SpA Propuesta Técnica 7
-
----
-
-<!-- Página 8 del PDF original -->
-
-LafroX SpA                                                       Introducción al Problema y Necesidad
-
-> **[Descripción de imagen — elementos gráficos de página]**
-> En el encabezado aparece un pequeño contorno negro de cabeza de zorro junto a «LafroX SpA», sobre una línea horizontal gris. En el pie aparece una franja negra con borde superior naranja inclinado.
-
-semanas de septiembre el volumen diario casi se duplica, de ≈ 1.400 a ≈ 2.600 entregas (2026c, anexo B.2). Este pico satura la ventana de preparación nocturna (22:00 a 06:00 hrs) y genera congestión severa en la ventana crítica de despacho matinal (05:30 a 07:00 hrs). Un dimensionamiento informático o de flota calculado para promedios mensuales colapsa inevitablemente en este período. Similar tensión ocurre en diciembre y durante los cierres mensuales, mientras que en invierno los caminos rurales empeoran y alargan los tramos sin señal, que en rutas de hasta 240 km ya llegan a dos horas.
+A este marco se añade el impacto crítico de la estacionalidad, durante las tres primeras semanas de septiembre el volumen diario casi se duplica, de ≈ 1.400 a ≈ 2.600 entregas (2026c, anexo B.2). Este pico satura la ventana de preparación nocturna (22:00 a 06:00 hrs) y genera congestión severa en la ventana crítica de despacho matinal (05:30 a 07:00 hrs). Un dimensionamiento informático o de flota calculado para promedios mensuales colapsa inevitablemente en este período. Similar tensión ocurre en diciembre y durante los cierres mensuales, mientras que en invierno los caminos rurales empeoran y alargan los tramos sin señal, que en rutas de hasta 240 km ya llegan a dos horas.
 
 ### 2.2.3 Arbitraje de tensiones operacionales y comerciales
 
@@ -244,24 +153,9 @@ El levantamiento de información en terreno reveló contradicciones estructurale
 
 3. Gestión del efectivo (Finanzas contra Comercial): Finanzas exige erradicar el efectivo y exigir transferencias o prepagos para evitar pérdidas. Comercial sostiene que exigir bancarización liquidará al canal tradicional. Decisión que requiere la necesidad: se respeta el pago en efectivo del canal tradicional, sin exigir al almacenero un dispositivo propio (Distribuidora Puelche S.A., 2026c, cap. 10, restricción 5). La necesidad es que cada cobro quede asociado a su entrega y que la diferencia de rendición pueda rastrearse por entrega, en vez de detectarse al día siguiente. El mecanismo de registro, comprobante y cuadratura se desarrolla en el Subdocumento 3.
 
-4. Nube y cortes de enlace (Jefe de TI contra la operación): El jefe de TI prefiere todo en la nube y él mismo explica por qué la operación no puede depender de ella: la fibra se corta cuatro veces al año, Concepción no tiene respaldo y las plataformas de cross-docking operan solo con red móvil. Decisión que requiere la necesidad: la preferencia por la nube
+4. Nube y cortes de enlace (Jefe de TI contra la operación): El jefe de TI prefiere todo en la nube y él mismo explica por qué la operación no puede depender de ella: la fibra se corta cuatro veces al año, Concepción no tiene respaldo y las plataformas de cross-docking operan solo con red móvil. Decisión que requiere la necesidad: la preferencia por la nube es admisible solo si la operación no depende del enlace. Cada centro de distribución debe poder recibir, preparar y despachar durante al menos 24 horas sin enlace, y la preventa y el reparto deben operar un turno completo de 14 horas sin señal, sin pérdida ni duplicación de registros al reconectar (Distribuidora Puelche S.A., 2026c, cap. 10, restricciones 2 y 3, y cap. 15). La arquitectura que lo cumple se desarrolla en el Subdocumento 3.
 
-LafroX SpA Propuesta Técnica 8
-
----
-
-<!-- Página 9 del PDF original -->
-
-LafroX SpA                                                                Introducción al Problema y Necesidad
-
-> **[Descripción de imagen — elementos gráficos de página]**
-> En el encabezado aparece un pequeño contorno negro de cabeza de zorro junto a «LafroX SpA», sobre una línea horizontal gris. En el pie aparece una franja negra con borde superior naranja inclinado.
-
-es admisible solo si la operación no depende del enlace. Cada centro de distribución debe poder recibir, preparar y despachar durante al menos 24 horas sin enlace, y la preventa y el reparto deben operar un turno completo de 14 horas sin señal, sin pérdida ni duplicación de registros al reconectar (Distribuidora Puelche S.A., 2026c, cap. 10, restricciones 2 y 3, y cap. 15). La arquitectura que lo cumple se desarrolla en el Subdocumento 3.
-
-5. Planificación de rutas (Conocimiento tácito contra Algoritmo): La empresa depende absolutamente del criterio mental de un único planificador con más de 20 años en la compañía, quien se jubilará en dos años. Operaciones teme que un software estándar genere rutas teóricas absurdas que los choferes rechacen. Decisión que requiere la necesidad: el conocimiento del planificador debe quedar explícito, documentado y validado por él antes de su jubilación, mediante una elicitación formal durante los primeros meses; cualquier ruta propuesta debe poder corregirse manualmente y respetar las restricciones de terreno que hoy solo él conoce (Anexo 2.2, S-16). El mecanismo se desarrolla en el Subdocumento
-
-3.
+5. Planificación de rutas (Conocimiento tácito contra Algoritmo): La empresa depende absolutamente del criterio mental de un único planificador con más de 20 años en la compañía, quien se jubilará en dos años. Operaciones teme que un software estándar genere rutas teóricas absurdas que los choferes rechacen. Decisión que requiere la necesidad: el conocimiento del planificador debe quedar explícito, documentado y validado por él antes de su jubilación, mediante una elicitación formal durante los primeros meses; cualquier ruta propuesta debe poder corregirse manualmente y respetar las restricciones de terreno que hoy solo él conoce (Anexo 2.2, S-16). El mecanismo se desarrolla en el Subdocumento 3.
 
 ## 2.3 Dimensionamiento del problema
 
@@ -277,42 +171,12 @@ Tabla 2.1 Dimensionamiento cuantitativo de las brechas operacionales de Distribu
 | --- | --- | --- | --- |
 | Entregas a tiempo y completas (OTIF) | 82,4 % | Referencia del caso: sobre 95 % | 17,6 % de pedidos fallidos; riesgo de perder a la principal cadena (11 % de la venta) ante sus condiciones de 2029. |
 | Cumplimiento de lo pedido (fill rate) | 91,3 % | Referencia del caso: sobre 97 % | Pedidos entregados incompletos; afecta directamente el componente In-Full del OTIF. |
-
-continúa en la página siguiente
-
-LafroX SpA Propuesta Técnica 9
-
----
-
-<!-- Página 10 del PDF original -->
-
-LafroX SpA                                                                Introducción al Problema y Necesidad
-
-Tabla 2.1 — continuación
-
-| Indicador Operacional | Línea Base Actual | Meta o condición | Impacto Económico y Operacional en Puelche |
-| --- | --- | --- | --- |
 | Tiempo para identificar a los clientes afectados por un retiro sanitario | 9 días, con resultado estimado | Lista de clientes afectados por lote, con evidencia, en menos de 2 horas | Retiro preventivo marzo 2026: suspensión de 6 meses del proveedor (6 % ventas). |
 | Recepciones sin registro de lote | 41,0 % del producto involucrado | El 100 % de las recepciones registra el lote de los productos que lo requieren. | Imposibilidad de trazar productos en bodega y despacho; ruptura del estándar de inocuidad. |
 | Quiebre de stock en preventa | 7,8 % de las líneas | Referencia del caso: bajo 2 % | Ventas perdidas no recuperadas; preventista compromete productos físicamente agotados. |
 | Reentregas operacionales | 4,2 % | Referencia del caso: bajo 1 % | Sobre 1.400 entregas diarias, equivale a aproximadamente 59 reentregas por día. |
 | Diferencias mensuales de efectivo | $4,2 M/mes | Rendición cuadrada el mismo día; toda diferencia identificada y explicada. | Diferencias de rendición sin investigar; se rinden a la mañana siguiente. |
 | Diferencia en conteo cíclico | 2,3 % del valor contado | Diferencias de inventario investigadas y ajustes debidamente justificados. | Descuadre entre inventario contable y existencias físicas. |
-
-continúa en la página siguiente
-
-LafroX SpA Propuesta Técnica 10
-
----
-
-<!-- Página 11 del PDF original -->
-
-LafroX SpA                                                               Introducción al Problema y Necesidad
-
-Tabla 2.1 — continuación
-
-| Indicador Operacional | Línea Base Actual | Meta o condición | Impacto Económico y Operacional en Puelche |
-| --- | --- | --- | --- |
 | Merma por vencimiento | 1,7 % del valor del inventario al año | Merma no superior al 1,0 % del valor del inventario al año, verificada tras 12 meses de operación, sin aumentar los quiebres de stock. | Pérdida de productos perecibles por ausencia de despacho FEFO (First Expired, First Out). |
 | Pérdida de envases retornables | 14 % estimado del parque al año | Parque de envases controlado; pérdida anual no superior al 7 %, verificada tras 12 meses de operación. | 68.000 canastillos y 9.400 pallets sin control individual; se anotan en un cuaderno. |
 | Ocupación promedio de camiones | 68,0 % | Umbral a comprometer | Capacidad ociosa de transporte; días valle registran 41 % de utilización de tolva. |
@@ -325,17 +189,6 @@ Del análisis de la Tabla 2.1 se desprende que el caso cuantifica en dinero dos 
 - el descuadre, sobre el valor contado;
 
 - las reentregas, sobre las entregas;
-
-LafroX SpA Propuesta Técnica 11
-
----
-
-<!-- Página 12 del PDF original -->
-
-LafroX SpA                                                       Introducción al Problema y Necesidad
-
-> **[Descripción de imagen — elementos gráficos de página]**
-> En el encabezado aparece un pequeño contorno negro de cabeza de zorro junto a «LafroX SpA», sobre una línea horizontal gris. En el pie aparece una franja negra con borde superior naranja inclinado.
 
 - los envases, sobre el parque.
 
@@ -364,14 +217,6 @@ Como se aprecia en la Figura 2.1, el flujo comercial parte con el preventista vi
 5. Si la respuesta es afirmativa, el pedido ingresa formalmente a la cola de procesamiento del ERP.
 
 6. Si la respuesta es negativa, se distinguen dos motivos que pueden coincidir: falta de stock, que produce pedidos incompletos o ventas perdidas y cuyo quiebre afecta al 7,8 % de las líneas; o bloqueo por crédito, que deja el pedido retenido en el ERP para revisión por Crédito y Cobranza al día siguiente.
-
-LafroX SpA Propuesta Técnica 12
-
----
-
-<!-- Página 13 del PDF original -->
-
-LafroX SpA                                                                                                Introducción al Problema y Necesidad
 
 > **[Descripción de imagen — Figura 2.1]**
 > Diagrama de flujo dispuesto de arriba hacia abajo. Los pasos son rectángulos de esquinas redondeadas, con relleno naranja claro y borde naranja o relleno gris claro y borde gris, unidos por flechas negras. Los tres primeros recuadros dicen «1. Visita presencial al cliente (62 preventistas)», «2. Captura pedido en App móvil offline sin stock ni crédito» y «3. Transmisión al recuperar cobertura (retraso en zonas sin señal)». Después aparece un rombo gris con la pregunta «¿Stock disponible y crédito aprobado?». La rama izquierda «Si» conduce a «4. Ingreso formal a cola de procesamiento enERP». La rama derecha «No» se divide en dos recuadros: «Falta de stock: pedido incompleto / venta perdida. 7,8% de las líneas con quiebre.» y «Bloqueo por crédito: pedido retenido en el ERP. Revisión por Crédito y Cobranza al día siguiente.». Sobre esta bifurcación figura la nota «*Los motivos pueden coincidir.».
@@ -402,14 +247,6 @@ Fuente: elaboración propia. Transcripción textual de la figura original.
 
 El análisis de la Figura 2.2 muestra que el registro de lote y vencimiento no es confiable.
 
-LafroX SpA Propuesta Técnica 13
-
----
-
-<!-- Página 14 del PDF original -->
-
-LafroX SpA                                                                               Introducción al Problema y Necesidad
-
 > **[Descripción de imagen — Figura 2.2]**
 > Diagrama vertical con flechas negras, recuadros de esquinas redondeadas alternados en naranja claro y gris claro, y un rombo gris de decisión. Los primeros recuadros contienen «1. Arribo de camión a muelle CD (180 proveedores)», «2. Descarga y conteo físico de bultos en andén» y «3. Registro manual en planilla física / guía en papel». El rombo pregunta «¿Se digita lote y vencimiento en sistema?». La rama izquierda «Si» lleva a «4. Mercadería con lote registrado». La rama derecha «No» lleva al recuadro «Producto involucrado: 41% sin lote Riesgo para trazabilidad sanitaria».
 
@@ -434,17 +271,6 @@ Las plataformas operan con conectividad únicamente por red móvil y sin control
 Fuente: elaboración propia. Transcripción textual de la figura original.
 
 El diagrama de la Figura 2.3 representa las actividades que deben medirse durante el levantamiento. La sospecha interna de la compañía es que el tiempo se pierde en la consolidación en Talca, pero el caso advierte que no hay datos que lo confirmen ni que lo desmientan; por eso se presenta como hipótesis (Anexo 2.2, SP-02) y no como causa probada de la brecha de 16
-
-LafroX SpA Propuesta Técnica 14
-
----
-
-<!-- Página 15 del PDF original -->
-
-LafroX SpA                                                                 Introducción al Problema y Necesidad
-
-> **[Descripción de imagen — elementos gráficos de página]**
-> En el encabezado aparece un pequeño contorno negro de cabeza de zorro junto a «LafroX SpA», sobre una línea horizontal gris. En el pie aparece una franja negra con borde superior naranja inclinado.
 
 > **[Descripción de imagen — Figura 2.3]**
 > Diagrama lineal vertical formado por cuatro rectángulos de esquinas redondeadas, unidos por flechas negras hacia abajo. El primero y el tercero tienen relleno naranja claro y borde naranja; el segundo y el cuarto, relleno gris claro y borde gris. Sus textos, en orden, son «1. Consolidación en Talca en camión de línea», «2. Llegada del camión de línea a la plataforma en la madrugada», «3. Desconsolidación en ventana de 3 horas, sin almacenamiento» y «4. Despacho matinal en camiones de reparto». No aparecen bifurcaciones ni rombos de decisión.
@@ -473,14 +299,6 @@ Fuente: elaboración propia. Transcripción textual de la figura original.
 
 Como revela la Figura 2.4, la planificación descansa exclusivamente en planillas de cálculo y en la memoria del planificador. Este procedimiento impide simular alternativas dinámicas ante congestión o picos estacionales, derivando en un promedio de ocupación de camiones de solo 68 %.
 
-LafroX SpA Propuesta Técnica 15
-
----
-
-<!-- Página 16 del PDF original -->
-
-LafroX SpA                                                                                                       Introducción al Problema y Necesidad
-
 > **[Descripción de imagen — Figura 2.4]**
 > Diagrama vertical de cinco recuadros de esquinas redondeadas, conectados consecutivamente mediante flechas negras hacia abajo. Los recuadros primero, tercero y quinto tienen relleno naranja claro y borde naranja; segundo y cuarto son grises. En orden, dicen «1. Pedidos confirmados disponibles para planificación (15:00–18:30 hrs)», «2. Exportación manual a planillas Excel sin interfaz directa», «3. Diagramación manual de rutas (conocimiento tácito del planificador)», «4. Impresión física de hojas de ruta y guías para tripulación» y «5. Despacho con rutas rígidas y subóptimas (68% ocupación)».
 
@@ -498,14 +316,6 @@ Figura 2.5 Proceso de Reparto y Entrega AS-IS. Fuente: elaboración propia.
 1. El camión sale a ruta durante la ventana de despacho de 05:30 a 07:00 horas.
 
 2. Arriba al local comercial, ya sea almacén o cliente de food service.
-
-LafroX SpA Propuesta Técnica 16
-
----
-
-<!-- Página 17 del PDF original -->
-
-LafroX SpA                                                                           Introducción al Problema y Necesidad
 
 3. El proceso consulta si el local está abierto y el cliente está conforme.
 
@@ -527,17 +337,6 @@ Por último, la liquidación de valores cobrados en efectivo se esquematiza en l
 > Diagrama vertical con tres pasos, un rombo de decisión y dos salidas. Los pasos, conectados por flechas negras, son «1. Cobro en efectivo en punto de entrega (Canal tradicional)», «2. El conductor conserva el dinero hasta su regreso» y «3. Rendición en caja a la mañana siguiente contra listado de entregas». El primero y el tercero son recuadros naranja claro; el segundo es gris claro. El rombo gris pregunta «¿Dinero coincide con el listado?». La rama izquierda «Si» termina en «Registro coincide»; la derecha «No» termina en «No Diferencias no conciliadas, descuadre no rastreable por entrega». Ambas salidas están en recuadros naranja claro.
 
 Figura 2.6 Proceso de Rendición y Cobranza AS-IS. Fuente: elaboración propia.
-
-LafroX SpA Propuesta Técnica 17
-
----
-
-<!-- Página 18 del PDF original -->
-
-LafroX SpA                                                                  Introducción al Problema y Necesidad
-
-> **[Descripción de imagen — elementos gráficos de página]**
-> En el encabezado aparece un pequeño contorno negro de cabeza de zorro junto a «LafroX SpA», sobre una línea horizontal gris. En el pie aparece una franja negra con borde superior naranja inclinado.
 
 1. Se cobra en efectivo contra entrega; el 38 % de las ventas del canal tradicional se cobra así y el resto se factura a 30 días.
 
@@ -566,37 +365,12 @@ Tabla 2.2 Matriz de síntesis de actores, tensiones operacionales y estrategia d
 | Grupo / Estamento | Tensión / Desafío Principal | Influencia | Interés | Estrategia de Gestión |
 | --- | --- | --- | --- | --- |
 | Dirección Estratégica (Gerenta General, Comercial, Finanzas) | Discrepancia entre la promesa comercial de 24 h y la viabilidad operativa; condiciones 2029 de la principal cadena (11 % de la venta); opacidad en el costo de servir. | Muy Alta | Muy Alto | Participación en el comité que arbitra la promesa de entrega y el orden de prioridades, con decisiones registradas en acta. |
-
-continúa en la página siguiente
-
-LafroX SpA Propuesta Técnica 18
-
----
-
-<!-- Página 19 del PDF original -->
-
-LafroX SpA                                                               Introducción al Problema y Necesidad
-
-Tabla 2.2 — continuación
-
-| Grupo / Estamento | Tensión / Desafío Principal | Influencia | Interés | Estrategia de Gestión |
-| --- | --- | --- | --- | --- |
 | Jefaturas Operacionales y Soporte (Operaciones, Calidad, Bodega, TI, Planificador) | Brecha de 16 h no investigada entre la reducción prometida y la observada en cross-docking; riesgo sanitario por falta de lote; dependencia de un planificador único que se jubila en dos años; equipo TI de 4 personas. | Alta | Muy Alto | Participación directa en el levantamiento: talleres con el planificador, validación de la regla térmica con Calidad y medición conjunta de tiempos en cross-docking. |
 | Personal Operativo de Terreno (62 preventistas, 84 conductores y peonetas propios, aprox. 160 conductores de transportistas, 120 preparadores, sindicato) | Preventa sin stock ni crédito (7,8 % de las líneas con quiebre); riesgo en el transporte de efectivo; objeción sindical a cámaras y control de jornada por GPS. | Alta | Alto | Validación de cada cambio en sus condiciones reales de trabajo; acuerdo previo con el sindicato antes de utilizar GPS para control de jornada; controles de privacidad en el uso de telemetría operacional; capacitación sin detener la venta ni el reparto. |
 | Clientes y Canales de Venta (11.600 tradicionales, 2.100 food service, 500 modernos) | 17,6 % de entregas fallidas o tardías (OTIF 82,4 %); almaceneros a los que no se puede exigir internet, dispositivo ni pago electrónico, con el 38 % de la venta del canal cobrada en efectivo contra entrega; condiciones 2029 de la principal cadena. | Muy Alta | Alto | Preservar la forma de compra y pago del canal tradicional; levantar con los clientes de food service sus exigencias de puntualidad y frescura, y con cada cadena sus condiciones. |
 | Proveedores, Transportistas y Autoridad (180 proveedores, 10 transportistas, SEREMI de Salud) | En el producto del retiro, 41 % de recepciones sin lote; rotación sin aviso de conductores de terceros; observación de la autoridad por falta de registro continuo de temperatura. | Media-Alta | Alto | Aviso anticipado de los requisitos de rotulado; acuerdo operacional con cada transportista; canal formal con la autoridad sanitaria. |
 
-El análisis de la Tabla 2.2 permite concluir que el principal foco de resistencia al cambio no se ubica en los clientes del canal tradicional (quienes acogen favorablemente cualquier mejora que no les altere su hábito de pago), sino en el personal operativo de terreno y sus organizaciones sindicales. La oposición histórica del sindicato a las cámaras en cabina y al
-
-LafroX SpA Propuesta Técnica 19
-
----
-
-<!-- Página 20 del PDF original -->
-
-LafroX SpA                                                         Introducción al Problema y Necesidad
-
-rastreo satelital laboral demanda una estrategia de implantación basada en la transparencia: los sistemas telemáticos deben orientarse al aseguramiento de la carga y el activo vehicular, sin invadir la privacidad individual del conductor. De igual modo, la captura del conocimiento tácito del planificador de rutas exige una dinámica de reconocimiento formal de su experiencia profesional.
+El análisis de la Tabla 2.2 permite concluir que el principal foco de resistencia al cambio no se ubica en los clientes del canal tradicional (quienes acogen favorablemente cualquier mejora que no les altere su hábito de pago), sino en el personal operativo de terreno y sus organizaciones sindicales. La oposición histórica del sindicato a las cámaras en cabina y al rastreo satelital laboral demanda una estrategia de implantación basada en la transparencia: los sistemas telemáticos deben orientarse al aseguramiento de la carga y el activo vehicular, sin invadir la privacidad individual del conductor. De igual modo, la captura del conocimiento tácito del planificador de rutas exige una dinámica de reconocimiento formal de su experiencia profesional.
 
 El catálogo extendido y nominal con el detalle de los 19 actores se encuentra disponible en el Anexo 2.3.
 
@@ -620,20 +394,7 @@ El catálogo completo y priorizado de requerimientos funcionales y no funcionale
 
 ### 2.5.2 Supuestos de ingeniería formulados por LafroX
 
-Para diseñar una propuesta técnicamente sólida y exenta de contingencias imprevistas, LafroX formula un conjunto de supuestos propios de ingeniería, deslindándolos formalmente de las restricciones impuestas por las bases. El detalle, con fundamento, impacto y mecanismo
-
-LafroX SpA Propuesta Técnica 20
-
----
-
-<!-- Página 21 del PDF original -->
-
-LafroX SpA                                                                 Introducción al Problema y Necesidad
-
-> **[Descripción de imagen — elementos gráficos de página]**
-> En el encabezado aparece un pequeño contorno negro de cabeza de zorro junto a «LafroX SpA», sobre una línea horizontal gris. En el pie aparece una franja negra con borde superior naranja inclinado.
-
-de validación, se presenta en el Anexo 2.2.
+Para diseñar una propuesta técnicamente sólida y exenta de contingencias imprevistas, LafroX formula un conjunto de supuestos propios de ingeniería, deslindándolos formalmente de las restricciones impuestas por las bases. El detalle, con fundamento, impacto y mecanismo de validación, se presenta en el Anexo 2.2.
 
 ### 2.5.3 Exclusiones y restricciones no negociables
 
@@ -648,14 +409,6 @@ Tabla 2.3 Síntesis de restricciones no negociables del caso. Fuente: Distribuid
 | R-12 | Validez legal de los documentos tributarios. | La guía de despacho electrónica y su acuse de recibo tienen efectos legales que la solución no puede comprometer; se suma el cumplimiento sanitario del Decreto 977 para los congelados. | Caso, cap. 10, restricción 12; Ministerio de Salud (1996). |
 | R-10 | Privacidad laboral y objeción sindical. | El sindicato objetó formalmente las cámaras en cabina y el control de jornada por posicionamiento satelital. | Caso, cap. 10, restricción 10. |
 | R-08 | Ventanas de congelamiento. | Prohibido intervenir sistemas del 1 al 25 de septiembre, durante todo diciembre y en los tres primeros días hábiles de cada mes; el paso a producción tampoco puede ocurrir en septiembre ni en diciembre. | Caso, cap. 10, restricción 8, y sección 13.3. |
-
-LafroX SpA Propuesta Técnica 21
-
----
-
-<!-- Página 22 del PDF original -->
-
-LafroX SpA                                                                    Introducción al Problema y Necesidad
 
 ## Referencias
 
@@ -677,34 +430,17 @@ LafroX SpA                                                                    In
 
 ## Declaración de uso de IA
 
-Tabla 2.4 declara el uso asistido de herramientas de inteligencia artificial en la elaboración del presente subdocumento.
+En cumplimiento de la sección 7.2 de las Aclaraciones de la licitación, la tabla siguiente declara el uso de herramientas de inteligencia artificial en este subdocumento, con la revisión humana de cada parte. La declaración se consolida en el Formulario A-6.
 
-Tabla 2.4 Declaración de uso de IA por sección del Subdocumento 2. Fuente: registro del equipo.
+**Tabla 2.4 Declaración de uso de IA por sección del Subdocumento 2. Fuente: registro del equipo.**
 
-| Sección | Herramienta | Finalidad del uso | Texto | Diag. | Revisión humana |
+| Sección | Herramienta | Finalidad del uso | Nivel en texto | Nivel en diagramas | Revisión humana (quién y qué verificó) |
 | --- | --- | --- | --- | --- | --- |
 | 2.1 Resumen Ejec. | Claude / Gemini | Síntesis ejecutiva y estilo formal | Bajo | Ninguno | Alex Aravena (JP): Validación del resumen y propuesta de valor |
 | 2.2 Comprensión | Claude / Gemini | Estructuración de los 3 problemas | Bajo | Ninguno | Patricio Henríquez (Gest): Verificación de arbitraje de tensiones |
 | 2.3 Dimensionamiento | Claude / Gemini | Descripción estructurada de los 6 flujos AS-IS | Bajo | Medio | Tomás Pérez (Des): Verificación de flujos AS-IS y cálculos |
 | 2.4 Actores | Claude / Gemini | Disposición tabular de actores | Bajo | Ninguno | Patricio Henríquez (Gest): Consistencia con catálogo de actores |
-
-continúa en la página siguiente
-
-LafroX SpA Propuesta Técnica 22
-
----
-
-<!-- Página 23 del PDF original -->
-
-LafroX SpA                                                              Introducción al Problema y Necesidad
-
-Tabla 2.4 — continuación
-
-| Sección | Herramienta | Finalidad del uso | Texto | Diag. | Revisión humana |
-| --- | --- | --- | --- | --- | --- |
 | 2.5 Requerimientos | Claude / Gemini | Formato y redacción de supuestos | Bajo | Ninguno | Bastián Trejo (Arq): Deslinde de supuestos vs restricciones |
 | Anexo 2.1 | Claude / Gemini | Maquetación del listado de requerimientos | Bajo | Ninguno | Bastián Trejo (Arq): Coherencia con el catálogo canónico |
 | Anexo 2.2 | Claude / Gemini | Consolidación de decisiones, exclusiones y restricciones | Bajo | Ninguno | Alex Aravena (JP): Cotejo con los capítulos 10, 11 y 16.1 del caso |
 | Anexo 2.3 | Claude / Gemini | Maquetación de actores y sistemas legados | Bajo | Ninguno | Patricio Henríquez (Gest): Cotejo de actores, cifras y sistemas con el caso |
-
-LafroX SpA Propuesta Técnica 23

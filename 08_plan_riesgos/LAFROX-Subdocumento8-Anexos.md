@@ -390,23 +390,23 @@ Datos de ubicación/clientes/cobros podrían circular sin minimización en traza
 
 ### R8-25 — INN-01 no logra seguimiento posentrega
 
-Clientes podrían no aportar datos útiles y reducir cobertura de vencimiento en local.
+Los avisos podrían no confirmarse en la visita, porque el ritmo de reposición del canal tradicional es irregular, o no tener una acción posible si falta el catálogo de canje; la innovación perdería credibilidad ante preventistas y almaceneros.
 
 - Análisis / categoría: Implantación / Organizacional.
 - Fuente y EDT: SD7 Anexo 7.D INN-01; BTT RT-26.04; 3.10.1,7.2.1.
-- Evaluación inicial: P=4; I=3; D=3; E=12; NPR=36. Horizonte: piloto y validación de INN-01. P=4 porque depende de que los clientes aporten datos de forma voluntaria; D=3 porque el indicador del piloto lo muestra.
+- Evaluación inicial: P=4; I=3; D=3; E=12; NPR=36. Horizonte: piloto y validación de INN-01. P=4 porque las compras del canal tradicional son irregulares y el saldo en el local solo se estima; D=3 porque el indicador del piloto (I-01A) lo muestra.
 - Responsable de respuesta: IMP, con su equipo y contrapartes de su ámbito.
-- Disparador: Cobertura/uso inferior al objetivo previo del piloto.
+- Disparador: Avisos con riesgo confirmado bajo el 70 % de los evaluables, o aviso sin acción disponible en el catálogo.
 - Plazo: Piloto meses 11–15.
-- Mitigación: Piloto asistido y comparación con registro base, sin exigir conexión al almacenero.
-- Contingencia: Mantener trazabilidad lote/entrega y atención asistida.
+- Mitigación: Piloto asistido; no liberar sin cumplir I-01A; mostrar la confianza de cada aviso y confirmar el saldo en la visita; catálogo aprobado como condición de activación; sin exigir conexión al almacenero.
+- Contingencia: Degradar a aviso solo por vida útil remanente del lote, sin estimar el ritmo; mantener trazabilidad lote/entrega y escalar a Comercial.
 - Evidencia de cierre: Resultado frente a objetivo previo y decisión de adopción.
 - Costo-beneficio técnico: asignar controles a los paquetes señalados, comparar HH de verificación y retrabajo según 8.C. Una ampliación necesita asignación conforme a 8.D; no se presume incluida. Para requisitos obligatorios, el ahorro de HH no sustituye cumplimiento.
 - Seguimiento semanal y en cada comité; diario durante marcha blanca/operación afectadas. Puntuación residual sólo tras verificar controles.
 
 ### R8-26 — INN-02 no reproduce fallas relevantes
 
-Registros incompletos podrían impedir reproducir incidentes offline y diagnosticar defectos.
+Registros incompletos podrían impedir reproducir incidentes offline y diagnosticar defectos. Causa secundaria: la captura de evidencia podría consumir batería o datos del terminal.
 
 - Análisis / categoría: Desarrollo / Técnico.
 - Fuente y EDT: SD7 Anexo 7.D INN-02; BTT RT-26.04; 3.10.2,8.3.1.
@@ -414,7 +414,7 @@ Registros incompletos podrían impedir reproducir incidentes offline y diagnosti
 - Responsable de respuesta: CAL, con su equipo y contrapartes de su ámbito.
 - Disparador: Caso representativo no reproducible.
 - Plazo: Validación meses 11–15; operación.
-- Mitigación: Ensayar corte/reinicio/reintento con conjuntos protegidos.
+- Mitigación: Ensayar corte/reinicio/reintento con conjuntos protegidos; cupo de tamaño y frecuencia de captura.
 - Contingencia: Conservar diagnóstico y regresión base con trazas protegidas.
 - Evidencia de cierre: Reproducción y diagnóstico contrastados.
 - Costo-beneficio técnico: asignar controles a los paquetes señalados, comparar HH de verificación y retrabajo según 8.C. Una ampliación necesita asignación conforme a 8.D; no se presume incluida. Para requisitos obligatorios, el ahorro de HH no sustituye cumplimiento.
@@ -422,7 +422,7 @@ Registros incompletos podrían impedir reproducir incidentes offline y diagnosti
 
 ### R8-27 — INN-03 estima vida remanente insegura
 
-Historia incompleta o mala calibración podría sugerir una vida útil no segura.
+Historia incompleta o mala calibración podría sugerir una vida útil no segura. Causa secundaria: Operaciones podría leer la estimación como permiso para relajar la regla graduada RNG-04.
 
 - Análisis / categoría: Solución / Técnico.
 - Fuente y EDT: SD7 INN-03; SD3 M9/M12; BTT RT-26.04; 3.10.3,8.3.2.
@@ -430,7 +430,7 @@ Historia incompleta o mala calibración podría sugerir una vida útil no segura
 - Responsable de respuesta: DAT, con su equipo y contrapartes de su ámbito.
 - Disparador: Resultado fuera de criterio Calidad o historial faltante.
 - Plazo: Antes uso meses 11–15; revisión26/32/38/44/50/56.
-- Mitigación: Validar con Calidad y regla conservadora; no ampliar vencimiento por inferencia.
+- Mitigación: Validar con Calidad y regla conservadora; no ampliar vencimiento por inferencia; la regla graduada y el bloqueo de B-02 no cambian.
 - Contingencia: Deshabilitar recomendación y mantener vencimiento/control sanitario.
 - Evidencia de cierre: Validación Calidad con trazabilidad modelo/datos.
 - Costo-beneficio técnico: asignar controles a los paquetes señalados, comparar HH de verificación y retrabajo según 8.C. Una ampliación necesita asignación conforme a 8.D; no se presume incluida. Para requisitos obligatorios, el ahorro de HH no sustituye cumplimiento.
@@ -454,7 +454,7 @@ Costo de servir incompleto podría distorsionar línea base/liquidación variabl
 
 ### R8-29 — INN-05 baja adopción de hoja del almacenero
 
-La hoja podría no ser comprensible o útil y quedar sin uso.
+La hoja podría no ser comprensible o útil y quedar sin uso. Causa secundaria: el bloque 4 comparativo podría permitir inferir las cifras de un local vecino.
 
 - Análisis / categoría: Implantación / Organizacional.
 - Fuente y EDT: SD7 INN-05; Caso canal tradicional; BTT RT-26.04; 3.10.4,8.3.5,8.3.6.
@@ -462,7 +462,7 @@ La hoja podría no ser comprensible o útil y quedar sin uso.
 - Responsable de respuesta: IMP, con su equipo y contrapartes de su ámbito.
 - Disparador: Uso/beneficio menor al objetivo acordado antes piloto.
 - Plazo: Piloto E2; evaluar24–27.
-- Mitigación: Co-diseño/piloto asistido o papel; preservar preventista y efectivo.
+- Mitigación: Co-diseño/piloto asistido o papel; preservar preventista y efectivo; umbral mínimo de locales y supresión de celdas en el bloque 4, con revisión legal previa.
 - Contingencia: Retirar mejora opcional mediante gobierno manteniendo compromisos y canal obligatorio.
 - Evidencia de cierre: Utilidad/uso contrastados y decisión documentada.
 - Costo-beneficio técnico: asignar controles a los paquetes señalados, comparar HH de verificación y retrabajo según 8.C. Una ampliación necesita asignación conforme a 8.D; no se presume incluida. Para requisitos obligatorios, el ahorro de HH no sustituye cumplimiento.
@@ -712,10 +712,10 @@ Infraestructura 99,95 %, transacción crítica 99,9 % y cero interrupción de de
 
 | Innovación SD7 vigente | Riesgo de adopción | P / I | Mitigación y contingencia |
 | --- | --- | --- | --- |
-| INN-01 Seguimiento de vencimiento posentrega | R8-25 | 4 / 3 | Piloto asistido y objetivo previo; conservar trazabilidad base si no rinde |
-| INN-02 Reproducción de incidentes | R8-26; seguridad R8-24 | 3 / 4 | Casos protegidos de corte/reintento; mantener diagnóstico/regresión base |
-| INN-03 Vida remanente por historia térmica | R8-27 | 4 / 5 | Validación Calidad/revisión semestral; retirar recomendación y mantener vencimiento/control sanitario |
-| INN-04 Tramo variable por costo de servir | R8-28 | 3 / 4 | Línea base y tres liquidaciones sombra; resolución contractual sin tarifas técnicas |
+| INN-01 Seguimiento de vencimiento posentrega en el local | R8-25 | 4 / 3 | Piloto asistido, I-01A y confirmación en la visita; aviso solo por vida útil y trazabilidad base si no rinde |
+| INN-02 Reproducción de incidentes de terreno | R8-26; seguridad R8-24 | 3 / 4 | Casos protegidos de corte/reintento; mantener diagnóstico/regresión base |
+| INN-03 Vida útil remanente por historia térmica del lote | R8-27 | 4 / 5 | Validación Calidad/revisión semestral; retirar recomendación y mantener vencimiento/control sanitario |
+| INN-04 Tramo variable de la Operación ligado al costo de servir | R8-28 | 3 / 4 | Línea base y tres liquidaciones sombra; resolución contractual sin tarifas técnicas |
 | INN-05 Hoja de negocio del almacenero | R8-29 | 4 / 3 | Co-diseño/piloto asistido sin exigir conexión; conservar preventista y efectivo |
 
 La oportunidad se evalúa con una escala de beneficio simétrica a la de impacto del SD8, sección 8.1.3, en el horizonte de los meses 11 a 56:
@@ -743,12 +743,12 @@ O8-01 — Oportunidad de diagnóstico: si los casos protegidos INN-02 representa
 
 ## Declaración de uso de IA
 
-La tabla declara el uso de IA en estos anexos; se consolida en la declaración del SD8 y en el Formulario A-6.
+En cumplimiento de la sección 7.2 de las Aclaraciones de la licitación, la tabla siguiente declara el uso de herramientas de inteligencia artificial en estos anexos, con la revisión humana de cada parte. La declaración se consolida en el Formulario A-6.
 
 | Sección | Herramienta | Finalidad del uso | Nivel en texto | Nivel en diagramas | Revisión humana (quién y qué verificó) |
 | --- | --- | --- | --- | --- | --- |
-| Anexos 8.A y 8.B | Codex; Claude Code | Fichas y FMEA (6 de octubre de 2026); justificación individual de P y D con horizonte (7 de octubre de 2026) | Alto | Ninguno | No documentada |
-| Anexos 8.B y 8.C: cuantificación y simulación (7 de octubre de 2026) | Claude Code | Valor esperado en HH, simulación de Monte Carlo y sensibilidad sobre el cronograma por actividad | Alto | Ninguno | No documentada |
-| Anexos 8.C y 8.D | Codex; Claude Code | Escenarios deterministas; reserva de contingencia por valor esperado (7 de octubre de 2026) | Alto | Ninguno | No documentada |
-| Anexos 8.E y 8.F | Codex; Claude Code | Condiciones de evidencia; escala de beneficio de la oportunidad (7 de octubre de 2026) | Alto | Ninguno | No documentada |
-| Anexos 8.A–8.E: correcciones de coherencia (7 de octubre de 2026) | Claude Code | Fuentes de las fichas, notas de redondeo y de muestreo, contingencia adicional elegible, condiciones E8 y referencias | Medio | Ninguno | No documentada |
+| Anexos 8.A y 8.B | Codex; Claude Code | Fichas y FMEA; justificación individual de P y D con horizonte | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| Anexos 8.B y 8.C: cuantificación y simulación | Claude Code | Valor esperado en HH, simulación de Monte Carlo y sensibilidad sobre el cronograma por actividad | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| Anexos 8.C y 8.D | Codex; Claude Code | Escenarios deterministas; reserva de contingencia por valor esperado | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| Anexos 8.E y 8.F | Codex; Claude Code | Condiciones de evidencia; escala de beneficio de la oportunidad | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| Anexos 8.A–8.E: correcciones de coherencia | Claude Code | Fuentes de las fichas, notas de redondeo y de muestreo, contingencia adicional elegible, condiciones E8 y referencias | Medio | Ninguno | [[REVISIÓN HUMANA]] |

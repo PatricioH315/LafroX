@@ -119,8 +119,16 @@ La tabla vincula el equipamiento de sitio con los servicios de nube y los contro
 
 - Amazon Web Services. (s. f.-b). *How Runtime Monitoring works with Fargate (Amazon ECS only)*. <https://docs.aws.amazon.com/guardduty/latest/ug/how-runtime-monitoring-works-ecs-fargate.html>
 
-- Pontificia Universidad Católica de Valparaíso. (2026a). *Bases técnicas del caso 02—Logística: Distribuidora Puelche S.A.* (Licitación N.° TFEP-01/2026).
+- Distribuidora Puelche S.A. (2026c). *Caso 02: Logística. Especificaciones del problema y operación de Distribuidora Puelche S.A.* (Licitación N.º TFEP-01/2026).
 
-- Pontificia Universidad Católica de Valparaíso. (2026b). *Bases técnicas transversales* (Licitación N.° TFEP-01/2026).
+- Distribuidora Puelche S.A. (2026b). *Bases Técnicas Transversales de Licitación N.º TFEP-01/2026*.
 
-- Pontificia Universidad Católica de Valparaíso. (2026c). *Bases administrativas* (Licitación N.° TFEP-01/2026).
+- Distribuidora Puelche S.A. (2026a). *Bases Administrativas de Licitación N.º TFEP-01/2026*.
+
+## Declaración de uso de IA
+
+En cumplimiento de la sección 7.2 de las Aclaraciones de la licitación, la tabla siguiente declara el uso de herramientas de inteligencia artificial en este formulario, con la revisión humana de cada parte. La declaración se consolida en el Formulario A-6.
+
+| Sección | Herramienta | Finalidad del uso | Nivel en texto | Nivel en diagramas | Revisión humana (quién y qué verificó) |
+| --- | --- | --- | --- | --- | --- |
+| Formulario T-11 | Codex | Consolidación del inventario de componentes físicos y lógicos y cotejo con el Capítulo 4 | Alto | Ninguno | [[REVISIÓN HUMANA]] |

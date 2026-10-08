@@ -1,5 +1,28 @@
 # CONTEXTO DE SESIÓN
 
+## Estado vigente — 8 de octubre de 2026: SD13 consolidado
+
+Se crearon `13_innovaciones/LAFROX-Subdocumento13.md`, `LAFROX-Subdocumento13-Anexos.md` (13.A contratos inn01–inn05, 13.B trazabilidad, 13.C indicadores y riesgos, 13.D observaciones) y `LAFROX-Formulario-T-19.md` (5 fichas × 17 campos), a partir de `innovaciones_corregidas.md`. Ese archivo de trabajo se conserva sin versionar y no es entregable. El SD13 se alinea sin cambios con los paquetes, meses y HH de T-14, T-15 y Anexo 7.D.
+- Riesgos: se usa la escala 1–5 del SD8 con las fichas R8-23 a R8-29.
+- Corrección técnica: se cita 10.920 mensajes diarios (SD4) y CloudWatch sin Grafana.
+- Responsables: Chamorro y Henríquez dirigen hasta el mes 21. Después, los paquetes 8.3.x siguen con las siglas DAT e IMP del T-14, en el frente F8 de Castillo; Calidad aprueba los parámetros y Seguridad el bloque 4. No se cambiaron siglas en T-14 ni T-15.
+
+Ajustes cruzados:
+- T-12: RT-05.30 «Sí (E1)» mediante INN-03; RT-26.01 a 26.07 remiten al Capítulo 13 y al T-19; RT-26.08 «Sí (E1)» mediante INN-01, INN-02 e INN-03.
+- SD5 y SD5-Anexos: 10.920 (28×174) y RT-05.30 ofertado.
+- SD8-Anexos: R8-25 redefinida (avisos no confirmados o sin catálogo) y causas secundarias en R8-26, R8-27 y R8-29, sin cambiar P, I, D ni valor esperado; nombres completos en 8.F.
+- T-16: mitigación de R8-25.
+- SD7: nombres completos en la tabla de innovaciones.
+
+Avisados y no tocados:
+- §4.1.6 del SD4 sin contratos inn.
+- Nombres M7, M8 y M9 en la Tabla 8 del SD4.
+- Python/Django en la Tabla 1.1 del SD1.
+- RF-09.06 y RF-08.05 del CSV.
+- Impresoras 106 frente a 110.
+- Contingencia 12.004 frente a 13.223 HH.
+- La columna de revisión humana de la declaración de IA del SD13 lleva marcas «[Integrante: completar…]» que el equipo debe llenar antes de entregar. Sin commit.
+
 ## Estado vigente — 7 de octubre de 2026: cronograma por actividad y SD8 cuantitativo
 
 SD7: T-15 §6 programa 564 actividades de 163 paquetes con entregable (≤80 HH, ≤1 quincena) con dependencias del Anexo 7.B (D-16/18/19 por interfaz, D-21b nueva), revisión Art. 18.3 y nivelación con la dotación del SD1; 59 paquetes de esfuerzo continuo por ocurrencia. Total 202.774 HH, peak 69 (mes 15). Reservas por hito en T-15 Tabla 5.2. El usuario aceptó: refuerzo de calidad con evaluadores subcontratados hasta 16/día (meses 9–12 y 16–18, SD6 §6.1.3), compra del CLIENTE dentro del mes siguiente a 5.1.2, y la calibración de escalas del SD8 (P: 5/20/40/60/80 %; I: 0/5/10/20/30 % del esfuerzo afectado). SD8: 32 riesgos, valor esperado 15.076 HH (contingencia adicional 12.004 HH), Monte Carlo con P(H9)=90 % y demás ≥97,7 %, P80 de todos los hitos dentro de su límite. Preferencia del usuario: mover lo menos posible los otros subdocumentos. Material del ramo en `clases + pmbok/` como consultor.

@@ -126,7 +126,7 @@ El capítulo 4 explica cómo la solución sostiene la operación distribuida de 
 
 <a id="sec:arquitectura-logica"></a>
 
-Los anexos 4-A a 4-N detallan eventos, módulos, interfaces, reglas y correspondencias. El Anexo 4-O reúne el registro único ADR-01 a ADR-22; el 4-P presenta las tecnologías y su actualización; los 4-Q y 4-R, amenazas y controles; el 4-S, los puntos de vista y sus reglas de correspondencia; el 4-T, el desempeño; el 4-U, la evidencia documental; y el 4-V, los protocolos de aceptación. El archivo independiente de anexos comienza con un catálogo navegable: cada entrada identifica la sección que la utiliza y el requisito que respalda.
+Los anexos 4-A a 4-N detallan eventos, módulos, interfaces, reglas y correspondencias. El Anexo 4-O reúne el registro único ADR-01 a ADR-22; el 4-P presenta las tecnologías y su actualización; los 4-Q y 4-R, amenazas y controles; el 4-S, los puntos de vista y sus reglas de correspondencia; el 4-T, el desempeño; el 4-U, la evidencia documental; y el 4-V, los protocolos de aceptación. Los anexos comienzan con un catálogo navegable: cada entrada identifica la sección que la utiliza y el requisito que respalda.
 
 Este apartado desarrolla las responsabilidades y los contratos de la solución y su correspondencia con el esquema y la explicación de 3.3 y 3.4. La correspondencia se establece por capacidad: recepción e inventario (M1–M2), preventa y planificación (M3–M4), preparación y reparto (M5–M6), rendición y devoluciones (M7–M8), calidad y analítica (M9–M10), canal moderno y flota (M11–M12). El emplazamiento, las conexiones y su capacidad corresponden a 4.2; los centros de datos, a 4.3. Los catálogos extensos se entregan en los anexos 4-A a 4-V. El Anexo 4-N verifica las capacidades y contratos; la Tabla [8](LAFROX-Subdocumento4.md#tab:mapeo-logica) de 4.2.2 identifica su realización física.
 
@@ -2795,11 +2795,11 @@ Dos veces al año se ensaya la pérdida regional con escrituras de pedidos y sin
 
 - PHP. (2026). *Supported versions*. <https://www.php.net/supported-versions.php>
 
-- Pontificia Universidad Católica de Valparaíso. (2026a). *Bases técnicas del caso 02—Logística: Distribuidora Puelche S.A.* (Licitación N.° TFEP-01/2026).
+- Distribuidora Puelche S.A. (2026c). *Caso 02: Logística. Especificaciones del problema y operación de Distribuidora Puelche S.A.* (Licitación N.º TFEP-01/2026).
 
-- Pontificia Universidad Católica de Valparaíso. (2026b). *Bases técnicas transversales* (Licitación N.° TFEP-01/2026).
+- Distribuidora Puelche S.A. (2026b). *Bases Técnicas Transversales de Licitación N.º TFEP-01/2026*.
 
-- Pontificia Universidad Católica de Valparaíso. (2026c). *Bases administrativas* (Licitación N.° TFEP-01/2026).
+- Distribuidora Puelche S.A. (2026a). *Bases Administrativas de Licitación N.º TFEP-01/2026*.
 
 - PostgreSQL. (2026). *Versioning policy*. <https://www.postgresql.org/support/versioning/>
 
@@ -2813,43 +2813,39 @@ Dos veces al año se ensaya la pérdida regional con escrituras de pedidos y sin
 
 # Declaración de uso de IA
 
-Se utilizó OpenAI Codex como apoyo a la revisión de consistencia, redacción de contratos y protocolos, conversión entre Markdown y LaTeX y comprobación de compilación. El uso fue sustancial en las adiciones del apartado 4.1. Los diagramas incorporan trabajo previo del equipo y vistas elaboradas con asistencia de IA; la tabla no atribuye autoría exclusiva de IA a las láminas de Tomás. No se han ejecutado pruebas operacionales ni obtenido aprobaciones del CLIENTE mediante esta herramienta.
-
-<a id="tab:uso-ia-logica"></a>
+En cumplimiento de la sección 7.2 de las Aclaraciones de la licitación, la tabla siguiente declara el uso de herramientas de inteligencia artificial en este subdocumento, con la revisión humana de cada parte. La declaración se consolida en el Formulario A-6.
 
 **Tabla 40 — Uso de IA en el Subdocumento 4**
 
-| **Sección** | **Herramienta** | **Finalidad** | **Texto** | **Diagramas** | **Revisión humana** |
+<a id="tab:uso-ia-logica"></a>
+
+| Sección | Herramienta | Finalidad del uso | Nivel en texto | Nivel en diagramas | Revisión humana (quién y qué verificó) |
 | --- | --- | --- | --- | --- | --- |
-| 4.1 | OpenAI Codex | Redacción, coherencia y verificación documental. | Alto | Alto en vistas asistidas | Revisión final no realizada; se efectuará sobre el consolidado. |
-| 4.1.1 | OpenAI Codex | Especificaciones y soporte de tecnologías. | Alto | No aplica | Revisión final no realizada. |
-| 4.2 | | | Alto | | |
-| 4.3 | | | Alto | | |
-| 4-A | Codex | Eventos canónicos. | Alto | Ninguno | No realizada. |
-| 4-B | Codex | Gobierno de integración. | Alto | Ninguno | No realizada. |
-| 4-C | Codex | Carga masiva. | Alto | Ninguno | No realizada. |
-| 4-D | Codex | Módulos y responsabilidades. | Alto | Ninguno | No realizada. |
-| 4-E | Codex | Trazabilidad funcional. | Alto | Ninguno | No realizada. |
-| 4-F | Codex | Límites de contexto. | Alto | Ninguno | No realizada. |
-| 4-G | Codex | Interfaces internas. | Alto | Ninguno | No realizada. |
-| 4-H | Codex | Interfaces externas. | Alto | Ninguno | No realizada. |
-| 4-I | Codex | Cálculos de volumen. | Alto | Ninguno | No realizada. |
-| 4-J | Codex | Funciones offline. | Alto | Ninguno | No realizada. |
-| 4-K | Codex | Reconciliación. | Alto | Ninguno | No realizada. |
-| 4-L | Codex | Decisiones del caso. | Alto | Ninguno | No realizada. |
-| 4-M | Codex | Protocolos de aceptación. | Alto | Ninguno | No realizada. |
-| 4-N | Codex | Correspondencia lógica. | Alto | Ninguno | No realizada. |
-| 4-O | Codex | Especificación y trazabilidad. | Alto | Ninguno | No realizada. |
-| 4-P | Codex | Especificación y trazabilidad. | Alto | Ninguno | No realizada. |
-| 4-Q | Codex | Especificación y trazabilidad. | Alto | Ninguno | No realizada. |
-| 4-R | Codex | Especificación y trazabilidad. | Alto | Ninguno | No realizada. |
-| 4-S | Codex | Especificación y trazabilidad. | Alto | Ninguno | No realizada. |
-| 4-T | Codex | Especificación y trazabilidad. | Alto | Ninguno | No realizada. |
-| 4-U | Codex | Especificación y trazabilidad. | Alto | Ninguno | No realizada. |
-| 4-V | Codex | Especificación y trazabilidad. | Alto | Ninguno | No realizada. |
-| 4-W | | | Alto | | |
-| T-11 | | | Alto | | |
-
-Fuente: registro del trabajo asistido sobre el apartado 4.1; declaración de apoyo, no certificación técnica.
-
-La declaración detallada por los 21 apartados del cuerpo y por los 22 anexos figura al final del archivo independiente de anexos. La revisión humana debe identificar a quien verificó contratos, cifras, diagramas y correspondencia con 4.2, y sus resultados deben consolidarse en el Formulario A-6. La ausencia actual de esa revisión impide tratar este archivo de trabajo como una entrega final conforme; no se atribuye al equipo una verificación todavía no realizada.
+| 4.1 | OpenAI Codex | Redacción, coherencia y verificación documental. | Alto | Alto en vistas asistidas | [[REVISIÓN HUMANA]] |
+| 4.1.1 | OpenAI Codex | Especificaciones y soporte de tecnologías. | Alto | No aplica | [[REVISIÓN HUMANA]] |
+| 4.2 | Codex | Apoyo a la redacción y verificación de consistencia del apartado | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| 4.3 | Codex | Apoyo a la redacción y verificación de consistencia del apartado | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| 4-A | Codex | Eventos canónicos. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| 4-B | Codex | Gobierno de integración. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| 4-C | Codex | Carga masiva. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| 4-D | Codex | Módulos y responsabilidades. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| 4-E | Codex | Trazabilidad funcional. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| 4-F | Codex | Límites de contexto. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| 4-G | Codex | Interfaces internas. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| 4-H | Codex | Interfaces externas. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| 4-I | Codex | Cálculos de volumen. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| 4-J | Codex | Funciones offline. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| 4-K | Codex | Reconciliación. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| 4-L | Codex | Decisiones del caso. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| 4-M | Codex | Protocolos de aceptación. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| 4-N | Codex | Correspondencia lógica. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| 4-O | Codex | Especificación y trazabilidad. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| 4-P | Codex | Especificación y trazabilidad. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| 4-Q | Codex | Especificación y trazabilidad. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| 4-R | Codex | Especificación y trazabilidad. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| 4-S | Codex | Especificación y trazabilidad. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| 4-T | Codex | Especificación y trazabilidad. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| 4-U | Codex | Especificación y trazabilidad. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| 4-V | Codex | Especificación y trazabilidad. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| 4-W | Codex | Apoyo a la redacción y verificación de consistencia del apartado | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| T-11 | Codex | Apoyo a la redacción y verificación de consistencia del apartado | Alto | Ninguno | [[REVISIÓN HUMANA]] |

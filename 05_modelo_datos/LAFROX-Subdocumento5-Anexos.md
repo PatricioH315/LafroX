@@ -13,7 +13,7 @@
 
 El Subdocumento 5 remite a estos anexos por letra. Contienen diccionario, cardinalidades, dominios/validaciones, retención, sensibilidad, índices, cachés, indicadores, trazabilidad RT-05, protocolos, migración y modelos complementarios; el cuerpo concentra su análisis.
 
-Cada anexo sigue la misma regla de redacción que el capítulo: el texto explica antes de mostrar la tabla, la tabla declara con el número de columnas mínimo que la información exige, y la fuente de cada dato se indica al pie. Ningún dato de estos anexos es una medición. Los valores proceden del dimensionamiento del Subdocumento 4, de los umbrales del capítulo 2 del Subdocumento 2, de los requisitos RT-05 y RT-09 de las Bases Técnicas Transversales (PUCV, 2026d) y del criterio de los casos.
+Cada anexo sigue la misma regla de redacción que el capítulo: el texto explica antes de mostrar la tabla, la tabla declara con el número de columnas mínimo que la información exige, y la fuente de cada dato se indica al pie. Ningún dato de estos anexos es una medición. Los valores proceden del dimensionamiento del Subdocumento 4, de los umbrales del capítulo 2 del Subdocumento 2, de los requisitos RT-05 y RT-09 de las Bases Técnicas Transversales (Distribuidora Puelche S.A., 2026b) y del criterio de los casos.
 
 ## Índice de anexos
 
@@ -29,7 +29,7 @@ Cada anexo sigue la misma regla de redacción que el capítulo: el texto explica
 | 5-H | Fórmulas de indicador y su linaje | 5.1.6, 5.2.6 |
 | 5-I | Matriz de trazabilidad de RT-05 con su evidencia | 5.1, 5.2, 5.3, 5.4 |
 | 5-J | Protocolo de aceptación de datos y pruebas propuestas | 5.3.5, 5.4.6 |
-| 5-K | Respuesta a la revisión del Informe 1 | 5.1–5.4 |
+| 5-K | Resolución de observaciones de la instancia anterior | 5.1–5.4 |
 | 5-L | Mapeo y ventanas de migración | 5.3 |
 | 5-M | Modelos lógicos complementarios | 5.1 |
 | Referencias | Fuentes documentales | Todo el ítem |
@@ -74,7 +74,7 @@ Objetos presentes en este documento.
 
 ## Anexo 5-A. Diccionario de datos atributo por atributo
 
-Las decisiones de este ítem aplican las Bases Administrativas (Pontificia Universidad Católica de Valparaíso [PUCV], 2026b, arts. 16, 17 y 85), las Bases Técnicas del Caso 02 (PUCV, 2026c, caps. 14–16 y 18) y las Bases Técnicas Transversales (PUCV, 2026d, §§5 y 9); su estructura y presentación siguen las Aclaraciones de licitación (PUCV, 2026a, §§2–6 y 11).
+Las decisiones de este ítem aplican las Bases Administrativas (Distribuidora Puelche S.A., 2026a, arts. 16, 17 y 85), las Bases Técnicas del Caso 02 (Distribuidora Puelche S.A., 2026c, caps. 14–16 y 18) y las Bases Técnicas Transversales (Distribuidora Puelche S.A., 2026b, §§5 y 9); su estructura y presentación siguen las Aclaraciones de licitación (Distribuidora Puelche S.A., 2026d, §§2–6 y 11).
 
 Los antecedentes de empresa, problema, alcance y arquitectura proceden de los Subdocumentos 1, 2, 3 y 4, respectivamente (LafroX SpA, 2026d, 2026c, 2026b, 2026a); sus remisiones señalan el apartado específico utilizado.
 
@@ -109,7 +109,7 @@ Un obligatorio vacío se rechaza en captura; un derivado lo calcula su proceso. 
 
 **Tabla A.1 — Leyenda de propietario funcional y de sensibilidad**
 
-*Fuente: elaboración propia de LafroX a partir de los quince nombres lógicos de persistencia de S4, de RT-05.01 y RT-16 de las Bases Técnicas Transversales (PUCV, 2026d) y de la regla de propietario funcional del Anexo 5-B.*
+*Fuente: elaboración propia de LafroX a partir de los quince nombres lógicos de persistencia de S4, de RT-05.01 y RT-16 de las Bases Técnicas Transversales (Distribuidora Puelche S.A., 2026b) y de la regla de propietario funcional del Anexo 5-B.*
 <a id="tab-a2-dic-maestros"></a>
 
 La Tabla A.2 desarrolla los atributos de maestros e identidades, con sus condiciones y políticas de conservación.
@@ -191,7 +191,7 @@ La Tabla A.2 desarrolla los atributos de maestros e identidades, con sus condici
 
 **Tabla A.2 - Diccionario de atributos: Entidades maestras e identidad compartida**
 
-*Fuente: elaboración propia de LafroX a partir del modelo lógico de la Figura A5.1 del Anexo 5-M, de RT-05.01 de las Bases Técnicas Transversales (PUCV, 2026d) y de la matriz de retención del Anexo 5-D.*
+*Fuente: elaboración propia de LafroX a partir del modelo lógico de la Figura A5.1 del Anexo 5-M, de RT-05.01 de las Bases Técnicas Transversales (Distribuidora Puelche S.A., 2026b) y de la matriz de retención del Anexo 5-D.*
 
 La validación aplica la condición de cada fila al hito indicado; NULL legítimo se distingue de dato obligatorio ausente.
 
@@ -287,7 +287,7 @@ La Tabla A.3 desarrolla los atributos de recepción e inventario, con sus condic
 
 **Tabla A.3 - Diccionario de atributos: Recepción, inventario, lote y unidad logística**
 
-*Fuente: elaboración propia de LafroX a partir del modelo lógico de las Figuras 5.2 del Subdocumento 5 y A5.1 del Anexo 5-M, de RT-05.01 de las Bases Técnicas Transversales (PUCV, 2026d) y de la matriz de retención del Anexo 5-D.*
+*Fuente: elaboración propia de LafroX a partir del modelo lógico de las Figuras 5.2 del Subdocumento 5 y A5.1 del Anexo 5-M, de RT-05.01 de las Bases Técnicas Transversales (Distribuidora Puelche S.A., 2026b) y de la matriz de retención del Anexo 5-D.*
 
 <a id="tab-a4-dic-trazabilidad"></a>
 
@@ -395,7 +395,7 @@ La Tabla A.4 desarrolla los atributos de custodia y frío, con sus condiciones y
 
 **Tabla A.4 - Diccionario de atributos: Trazabilidad sanitaria y cadena de custodia**
 
-*Fuente: elaboración propia de LafroX a partir del modelo lógico de las Figuras 5.5 y 5.2 del Subdocumento 5 y A5.3 del Anexo 5-M, de RT-05.01 de las Bases Técnicas Transversales (PUCV, 2026d) y de la matriz de retención del Anexo 5-D.*
+*Fuente: elaboración propia de LafroX a partir del modelo lógico de las Figuras 5.5 y 5.2 del Subdocumento 5 y A5.3 del Anexo 5-M, de RT-05.01 de las Bases Técnicas Transversales (Distribuidora Puelche S.A., 2026b) y de la matriz de retención del Anexo 5-D.*
 
 La validación aplica la condición de cada fila al hito indicado; NULL legítimo se distingue de dato obligatorio ausente.
 
@@ -472,7 +472,7 @@ La Tabla A.5 desarrolla los atributos de pedido y preparación, con sus condicio
 
 **Tabla A.5 - Diccionario de atributos: Preventa, reserva y preparación**
 
-*Fuente: elaboración propia de LafroX a partir del modelo lógico de las Figuras 5.3 y 5.2 del Subdocumento 5, de RT-05.01 de las Bases Técnicas Transversales (PUCV, 2026d) y de la matriz de retención del Anexo 5-D.*
+*Fuente: elaboración propia de LafroX a partir del modelo lógico de las Figuras 5.3 y 5.2 del Subdocumento 5, de RT-05.01 de las Bases Técnicas Transversales (Distribuidora Puelche S.A., 2026b) y de la matriz de retención del Anexo 5-D.*
 
 La validación aplica la condición de cada fila al hito indicado; NULL legítimo se distingue de dato obligatorio ausente.
 
@@ -565,7 +565,7 @@ La Tabla A.6 desarrolla los atributos de ruta, reparto y envases, con sus condic
 
 **Tabla A.6 - Diccionario de atributos: Rutas, reparto, entrega, devolución y envases**
 
-*Fuente: elaboración propia de LafroX a partir del modelo lógico de las Figuras 5.4 y 5.6 del Subdocumento 5, de RT-05.01 de las Bases Técnicas Transversales (PUCV, 2026d) y de la matriz de retención del Anexo 5-D.*
+*Fuente: elaboración propia de LafroX a partir del modelo lógico de las Figuras 5.4 y 5.6 del Subdocumento 5, de RT-05.01 de las Bases Técnicas Transversales (Distribuidora Puelche S.A., 2026b) y de la matriz de retención del Anexo 5-D.*
 
 La validación aplica la condición de cada fila al hito indicado; NULL legítimo se distingue de dato obligatorio ausente.
 
@@ -693,7 +693,7 @@ La Tabla A.7 desarrolla los atributos de cobranza y documentos, con sus condicio
 
 **Tabla A.7 - Diccionario de atributos: Cobranza, documentos,envases y objetos**
 
-*Fuente: elaboración propia de LafroX a partir del modelo lógico de las Figuras 5.6 y 5.4 del Subdocumento 5 y A5.3 del Anexo 5-M, de RT-05.01 de las Bases Técnicas Transversales (PUCV, 2026d) y de la matriz de retención del Anexo 5-D.*
+*Fuente: elaboración propia de LafroX a partir del modelo lógico de las Figuras 5.6 y 5.4 del Subdocumento 5 y A5.3 del Anexo 5-M, de RT-05.01 de las Bases Técnicas Transversales (Distribuidora Puelche S.A., 2026b) y de la matriz de retención del Anexo 5-D.*
 
 La validación aplica la condición de cada fila al hito indicado; NULL legítimo se distingue de dato obligatorio ausente.
 
@@ -799,7 +799,7 @@ La Tabla A.8 desarrolla los atributos de EDI, notificaciones y gobierno, con sus
 
 **Tabla A.8 - Diccionario de atributos: Intercambio electrónico, notificación y gobierno del acceso**
 
-*Fuente: elaboración propia de LafroX a partir del modelo lógico de la Figura A5.2 del Anexo 5-M, de RT-05.01 de las Bases Técnicas Transversales (PUCV, 2026d) y de la matriz de retención del Anexo 5-D.*
+*Fuente: elaboración propia de LafroX a partir del modelo lógico de la Figura A5.2 del Anexo 5-M, de RT-05.01 de las Bases Técnicas Transversales (Distribuidora Puelche S.A., 2026b) y de la matriz de retención del Anexo 5-D.*
 
 La validación aplica la condición de cada fila al hito indicado; NULL legítimo se distingue de dato obligatorio ausente.
 
@@ -887,7 +887,7 @@ La Tabla A.9 desarrolla los atributos de telemetría y copias de consulta, con s
 
 **Tabla A.9 - Diccionario de atributos: Telemetría, caché de lectura y objetos del dispositivo**
 
-*Fuente: elaboración propia de LafroX a partir del modelo lógico de la Figura A5.3 del Anexo 5-M, de RT-05.01 de las Bases Técnicas Transversales (PUCV, 2026d) y de la matriz de retención del Anexo 5-D.*
+*Fuente: elaboración propia de LafroX a partir del modelo lógico de la Figura A5.3 del Anexo 5-M, de RT-05.01 de las Bases Técnicas Transversales (Distribuidora Puelche S.A., 2026b) y de la matriz de retención del Anexo 5-D.*
 
 La validación aplica la condición de cada fila al hito indicado; NULL legítimo se distingue de dato obligatorio ausente.
 
@@ -1013,7 +1013,7 @@ La Tabla A.10 desarrolla los atributos de hechos y dimensiones analíticas, con 
 
 **Tabla A.10 - Diccionario de atributos: Modelo dimensional de explotación**
 
-*Fuente: elaboración propia de LafroX a partir del modelo lógico de la Figura 5.7 del Subdocumento 5, de RT-05.01 de las Bases Técnicas Transversales (PUCV, 2026d) y de la matriz de retención del Anexo 5-D.*
+*Fuente: elaboración propia de LafroX a partir del modelo lógico de la Figura 5.7 del Subdocumento 5, de RT-05.01 de las Bases Técnicas Transversales (Distribuidora Puelche S.A., 2026b) y de la matriz de retención del Anexo 5-D.*
 
 La validación aplica la condición de cada fila al hito indicado; NULL legítimo se distingue de dato obligatorio ausente.
 
@@ -1222,7 +1222,7 @@ Cada regla de calidad declara dominio, punto de aplicación y causa tipificada. 
 
 **Tabla A.12 - Dominios de valores cerrados y su validación**
 
-*Fuente: elaboración propia de LafroX a partir del Anexo 5-A, de los perfiles de evento declarados en 5.1.7 y de RT-05.04 de las Bases Técnicas Transversales (PUCV, 2026d).*
+*Fuente: elaboración propia de LafroX a partir del Anexo 5-A, de los perfiles de evento declarados en 5.1.7 y de RT-05.04 de las Bases Técnicas Transversales (Distribuidora Puelche S.A., 2026b).*
 
 <a id="tab-a14-causas-rechazo"></a>
 
@@ -1258,7 +1258,7 @@ Cada regla de calidad declara dominio, punto de aplicación y causa tipificada. 
 
 **Tabla A.13 - Causas de rechazo y su tratamiento en operación y en migración**
 
-*Fuente: elaboración propia de LafroX a partir de RT-05.04 y RT-05.12 de las Bases Técnicas Transversales (PUCV, 2026d), del caso de estudio y de las reglas de saneamiento declaradas en 5.3.*
+*Fuente: elaboración propia de LafroX a partir de RT-05.04 y RT-05.12 de las Bases Técnicas Transversales (Distribuidora Puelche S.A., 2026b), del caso de estudio y de las reglas de saneamiento declaradas en 5.3.*
 
 A.13 distingue rechazo (sin carga y con causa accionable), cuarentena (original íntegro consultable, defecto y resolución posterior) y decisión registrada (corrección/equivalencia aprobada con regla/versión en perfilado). Se prohíbe carga corregida silenciosa o historia inferida: resultado/causa ausentes permanecen aislados con original visible.
 
@@ -1298,7 +1298,7 @@ La Tabla A.14 detalla inicio, ubicación y eliminación por dominio/atributo. Lo
 
 **Tabla A.14 - Retención declarada por dominio y por atributo**
 
-*Fuente: elaboración propia de LafroX a partir de RT-05.07 de las Bases Técnicas Transversales (PUCV, 2026d), de los plazos de retención del Subdocumento 4 y del Artículo 85 de las Bases Administrativas (PUCV, 2026b).*
+*Fuente: elaboración propia de LafroX a partir de RT-05.07 de las Bases Técnicas Transversales (Distribuidora Puelche S.A., 2026b), de los plazos de retención del Subdocumento 4 y del Artículo 85 de las Bases Administrativas (Distribuidora Puelche S.A., 2026a).*
 
 El respaldo y la salida de contrato se coordinan con S4: la eliminación comprueba clase, versiones, réplicas y plazo. Un bloqueo de conservación activo no se elude; se elimina al hacerse elegible y se audita la excepción. La evidencia vigente no pierde su clave compartida y las copias personales deben quedar ilegibles según el procedimiento aprobado, sin afirmar que una clave global pueda destruirse selectivamente.
 
@@ -1307,7 +1307,7 @@ El respaldo y la salida de contrato se coordinan con S4: la eliminación comprue
 
 ## Anexo 5-E. Clasificación por sensibilidad y controles declarados
 
-RT-05.08 y Art. 85 exigen seudonimización/cifrado de campo para datos personales sensibles. A.15 distingue protección del almacén y de columnas según sensibilidad; toda clase AL exige cifrado en reposo y justificación del control de campo (PUCV, 2026d, §5; 2026b, art. 85).
+RT-05.08 y Art. 85 exigen seudonimización/cifrado de campo para datos personales sensibles. A.15 distingue protección del almacén y de columnas según sensibilidad; toda clase AL exige cifrado en reposo y justificación del control de campo (Distribuidora Puelche S.A., 2026b, §5; 2026a, art. 85).
 <a id="tab-a16-sensibilidad"></a>
 
 | Clase de dato | Sensibilidad | Cifrado en reposo | Cifrado a nivel de campo | Control de acceso declarado |
@@ -1331,7 +1331,7 @@ RT-05.08 y Art. 85 exigen seudonimización/cifrado de campo para datos personale
 
 **Tabla A.15 - Clasificación por sensibilidad y control declarado**
 
-*Fuente: elaboración propia de LafroX a partir de RT-05.08 y RT-16 de las Bases Técnicas Transversales (PUCV, 2026d), del Artículo 85 de las Bases Administrativas (PUCV, 2026b) y de la clasificación por atributo del Anexo 5-A.*
+*Fuente: elaboración propia de LafroX a partir de RT-05.08 y RT-16 de las Bases Técnicas Transversales (Distribuidora Puelche S.A., 2026b), del Artículo 85 de las Bases Administrativas (Distribuidora Puelche S.A., 2026a) y de la clasificación por atributo del Anexo 5-A.*
 
 GPS se cifra por campo y desaparece a doce meses totales; la evidencia de operación puede subsistir, pero auditoría/respaldo no deben reconstruir la coordenada. DTE conserva acceso por rol y emisión única, justificando su control sin cifrado de campo. La copia de identidad de 24 h permite consulta, no autoriza reservas/precios ni reemplaza el control de acceso.
 
@@ -1475,7 +1475,7 @@ La Tabla A.18 define fórmula, grano, período, casos sin dato y linaje de cada 
 
 **Tabla A.18 - Fórmulas exactas, granularidad y linaje documental**
 
-*Fuente: elaboración propia de LafroX a partir de RT-05.25 a RT-05.29 de las Bases Técnicas Transversales (PUCV, 2026d), de S3 sobre indicadores y de los atributos del Anexo 5-A.*
+*Fuente: elaboración propia de LafroX a partir de RT-05.25 a RT-05.29 de las Bases Técnicas Transversales (Distribuidora Puelche S.A., 2026b), de S3 sobre indicadores y de los atributos del Anexo 5-A.*
 
 OTIF usa todos los pedidos comprometidos del período una vez, incluidos no entregados, y exige completar todas sus líneas dentro de la ventana ORIGINAL inmutable. La fila analítica se identifica por pedido_id y conserva la ORIGINAL; entrega_id y ruta_sk pueden ser NULL hasta que existan sus hechos operativos. No se crean entregas ni rutas ficticias para cargar el denominador. Las duraciones sin instantes suficientes son NULL, no cero; la ausencia de entrega no retira al pedido comprometido del cálculo. No filtra por vigencia actual ni por existencia de entrega. La exactitud por cantidades homologa unidades y declara base cero; la desviación monetaria usa valor contable del sitio y el umbral ≤0,3 %, sin confundir ambos indicadores.
 
@@ -1493,7 +1493,7 @@ OTIF usa todos los pedidos comprometidos del período una vez, incluidos no entr
 
 **Tabla A.19 - Catálogo de indicadores por fase, audiencia, latencia y exportación**
 
-*Fuente: elaboración propia de LafroX a partir de S3 3.4, de RT-05.25 a RT-05.29 de las Bases Técnicas Transversales (PUCV, 2026d) y de las fases del Artículo 17 de las Bases Administrativas (PUCV, 2026b).*
+*Fuente: elaboración propia de LafroX a partir de S3 3.4, de RT-05.25 a RT-05.29 de las Bases Técnicas Transversales (Distribuidora Puelche S.A., 2026b) y de las fases del Artículo 17 de las Bases Administrativas (Distribuidora Puelche S.A., 2026a).*
 
 Consulta operativa puntual usa API/caché válida; BI pesado usa Redshift. Latencias: ≤5 min operativo, ≤2 h desde último retorno para cierre y ≤4 h gerencial. Cada tablero muestra consolidación y pendientes; la exportación programada conserva alcance/manifest/hash/conteo según 5.2.8.
 
@@ -1502,7 +1502,7 @@ Consulta operativa puntual usa API/caché válida; BI pesado usa Redshift. Laten
 
 ## Anexo 5-I. Matriz de trazabilidad de RT-05 con su evidencia
 
-A.20 vincula cada RT-05 con desarrollo verificable en cuerpo/anexo. RT-05.10/.24/.30 siguen siendo deseables no ofertados según T-12; diccionario, linaje documental y fórmulas no se presentan como esas capacidades automatizadas.
+A.20 vincula cada RT-05 con desarrollo verificable en cuerpo/anexo. RT-05.10/.24 siguen siendo deseables no ofertados según T-12, y RT-05.30 se oferta mediante la Innovación 3 (Capítulo 13, sección 13.3.2); diccionario, linaje documental y fórmulas no se presentan como esas capacidades automatizadas.
 <a id="tab-a22-rt05"></a>
 
 | Requisito | Apartado que lo atiende | Evidencia comprobable en la fuente | Anexo que lo desarrolla |
@@ -1536,11 +1536,11 @@ A.20 vincula cada RT-05 con desarrollo verificable en cuerpo/anexo. RT-05.10/.24
 | RT-05.27 Autoservicio y modelo semántico | 5.2.6; S4 4.1.4.7 y 4.2.2.4, N-10 | Autoría QuickSight autónoma con permisos separados; grano, relaciones, fórmulas y casos límite documentados en el modelo semántico | 5-H; S4 |
 | RT-05.28 Exportación de informes | 5.2.6 y 5.2.8 | Informes exportables y envío por calendario bajo permisos CLIENTE; exportación íntegra con manifiesto, huella y conteo | 5-H |
 | RT-05.29 Latencia máxima de disponibilidad analítica | 5.2.6 y 5.4.1 | Operativa de hasta cinco minutos desde el hecho, cierre de hasta dos horas desde el último retorno y gerencial de hasta cuatro horas | 5-H y 5-J |
-| RT-05.30 Analítica predictiva, deseable | 5.2.6 | No ofertado; no se promete predicción ni se la describe como capacidad disponible | No aplica |
+| RT-05.30 Analítica predictiva, deseable | 5.1.7 y 5.2.6 | Ofertado mediante la Innovación 3 (Capítulo 13, sección 13.3.2): modelo cinético determinista por familia sobre la serie térmica asociada al lote; variables, métrica y plan de recalibración documentados en el Capítulo 13 | Capítulo 13 |
 
 **Tabla A.20 - Matriz de trazabilidad de RT-05 con evidencia comprobable**
 
-*Fuente: elaboración propia de LafroX a partir del bloque RT-05 de las Bases Técnicas Transversales (PUCV, 2026d), del Formulario T-12 sobre capacidades ofertadas y no ofertadas y del contenido de los apartados citados del Subdocumento 5.*
+*Fuente: elaboración propia de LafroX a partir del bloque RT-05 de las Bases Técnicas Transversales (Distribuidora Puelche S.A., 2026b), del Formulario T-12 sobre capacidades ofertadas y no ofertadas y del contenido de los apartados citados del Subdocumento 5.*
 
 RT-05.16/.17/.20 se desarrollan en S4: contratos desde código, versiones y capa anticorrupción. S5 conserva el vínculo y las reglas de datos, sin duplicar esa arquitectura.
 
@@ -1574,9 +1574,9 @@ Las pruebas son propuestas sin resultados ni aceptación del CLIENTE acreditados
 
 **Tabla A.21 - Pruebas de aceptación de la migración con umbral numérico**
 
-*Fuente: elaboración propia de LafroX a partir de RT-05.11 a RT-05.15 de las Bases Técnicas Transversales (PUCV, 2026d), del Artículo 17 de las Bases Administrativas (PUCV, 2026b) y de la estrategia de migración de 5.3.*
+*Fuente: elaboración propia de LafroX a partir de RT-05.11 a RT-05.15 de las Bases Técnicas Transversales (Distribuidora Puelche S.A., 2026b), del Artículo 17 de las Bases Administrativas (Distribuidora Puelche S.A., 2026a) y de la estrategia de migración de 5.3.*
 
-En las pruebas de A.22, p95 se mide desde la acción de la persona usuaria, con el perfil completo de 5.4.1 y resultados por operación, no solo la media global. Máximos: consulta simple API 500 ms; escritura API 800 ms; preparación 1 s; entrega/acuse durable local 2 s; línea de preventa 1,5 s; consulta stock/crédito extremo a extremo 2 s; búsqueda compuesta 3 s; informe estándar 30 s. Son umbrales de las Bases Técnicas Transversales (PUCV, 2026d) §9.1 y del caso §15; el acuse local no implica consolidación central, que mantiene 10 min móvil/2 h sitio desde reconexión. Cada ensayo dura al menos quince minutos por nivel de carga; estrés continúa hasta saturación y la recuperación debe volver a esos umbrales en ≤5 min tras retirar el exceso.
+En las pruebas de A.22, p95 se mide desde la acción de la persona usuaria, con el perfil completo de 5.4.1 y resultados por operación, no solo la media global. Máximos: consulta simple API 500 ms; escritura API 800 ms; preparación 1 s; entrega/acuse durable local 2 s; línea de preventa 1,5 s; consulta stock/crédito extremo a extremo 2 s; búsqueda compuesta 3 s; informe estándar 30 s. Son umbrales de las Bases Técnicas Transversales (Distribuidora Puelche S.A., 2026b) §9.1 y del caso §15; el acuse local no implica consolidación central, que mantiene 10 min móvil/2 h sitio desde reconexión. Cada ensayo dura al menos quince minutos por nivel de carga; estrés continúa hasta saturación y la recuperación debe volver a esos umbrales en ≤5 min tras retirar el exceso.
 
 <a id="tab-a24-pruebas-desempeno"></a>
 
@@ -1597,7 +1597,7 @@ En las pruebas de A.22, p95 se mide desde la acción de la persona usuaria, con 
 
 **Tabla A.22 - Pruebas de aceptación de desempeño con umbral numérico**
 
-*Fuente: elaboración propia de LafroX a partir de RT-05.29 de las Bases Técnicas Transversales (PUCV, 2026d), de los escenarios de carga de S4 declarados en 5.4.1 y de la matriz de retención del Anexo 5-D.*
+*Fuente: elaboración propia de LafroX a partir de RT-05.29 de las Bases Técnicas Transversales (Distribuidora Puelche S.A., 2026b), de los escenarios de carga de S4 declarados en 5.4.1 y de la matriz de retención del Anexo 5-D.*
 
 <a id="tab-a25-pruebas-operacion"></a>
 
@@ -1624,7 +1624,7 @@ En las pruebas de A.22, p95 se mide desde la acción de la persona usuaria, con 
 
 **Tabla A.23 - Pruebas de aceptación de trazabilidad, calidad, operación y seguridad**
 
-*Fuente: elaboración propia de LafroX a partir de RT-05.08, RT-05.14 y RT-05.29 de las Bases Técnicas Transversales (PUCV, 2026d), de los recorridos de 5.1.7 y de la matriz de retención del Anexo 5-D.*
+*Fuente: elaboración propia de LafroX a partir de RT-05.08, RT-05.14 y RT-05.29 de las Bases Técnicas Transversales (Distribuidora Puelche S.A., 2026b), de los recorridos de 5.1.7 y de la matriz de retención del Anexo 5-D.*
 
 S4, Anexo 4-M, define ensayos complementarios. AL-DTE-01 comprueba 96 salidas con guía vigente, reintentos y cambios de carga en ambas rutas ERP; sin comunicación, conserva carga amparada y difiere ajustes. AL-CLI-01 reinicia el portal Android/iOS sin red, recupera catálogo/pedido y reenvía UUID: cero pérdida/duplicación, reserva tras validación M3; sesión vencida/cuenta bloqueada se rechazan. Rechazo esperado conserva causa/auditoría/mensaje; no es fallo de integridad.
 
@@ -1633,25 +1633,25 @@ AL-DR-01 se ensaya semestralmente: corte individual/por pares de fibra, LTE y St
 
 <a id="anexo-5k"></a>
 
-## Anexo 5-K. Respuesta al Informe 1 - Subdocumento 5
+## Anexo 5-K. Resolución de observaciones de la instancia anterior
 
-La Tabla A.24 indica respuesta documental y verificación pendiente. La coincidencia de campos no certifica reglas ni pruebas ejecutadas; firma, folio, paginación y legibilidad requieren el PDF final.
+La Tabla A.24 responde cada observación del CLIENTE a la instancia anterior con la sección que la resuelve y la evidencia que la sostiene..
 
 | Observación | Respuesta documental | Evidencia | Estado |
 | --- | --- | --- | --- |
 | Modelo, relaciones y diccionario insuficientes | Conceptual y vistas críticas en cuerpo; modelos del cuerpo y complementos 5-M y diccionario exacto | 5.1, 5-A, 5-B, 5-C | Diseño y diccionario documentados; prueba en PREPROD |
-| CAP, motor y autoridad no justificados | Autoridad por perímetro; DMS solo Talca lector; eventos centrales deduplicados | 5.2.1–3 y 5-B | Diseño documentado; ensayo offline pendiente |
+| CAP, motor y autoridad no justificados | Autoridad por perímetro; DMS solo Talca lector; eventos centrales deduplicados | 5.2.1–3 y 5-B | Diseño documentado; ensayo sin conexión programado en Preproducción |
 | Migración sin volumen, herramientas, responsables ni ventana | Fuente 16,05478 GB base, destino estimado 32,10956; mapeo, cálculo por fase, dos ensayos, marcha blanca y corte | 5.3, 5-L, 5-J | Propuesta documentada; perfilado/actas y tiempos reales futuros |
-| Desempeño y autonomía inconsistentes | Índices reales, globales sin partición, timestamp compuesto, vigencias 24/8–14/26 h | 5.4, 5-F, 5-G | Cotejo documental; DDL/planes y pruebas PREPROD pendientes |
+| Desempeño y autonomía inconsistentes | Índices reales, globales sin partición, timestamp compuesto, vigencias 24/8–14/26 h | 5.4, 5-F, 5-G | Cotejo documental; DDL, planes de ejecución y pruebas programados en Preproducción |
 | Modelo analítico e indicadores ausentes | Granos y claves; original inmutable, base completa, latencias y audiencia | 5.1.11, 5.2.6, 5-H | Diseño documentado; cálculo sobre datos reales futuro |
 | Documento/guía/POD confundidos | ERP único emisor previo al traslado; POD y acuses diferenciados | 5.1.8, 5-J | Diseño documentado; validaciones externas S4 abiertas |
 | Formato, referencias y metadatos | Reducción de cuadros narrativos y figuras redundantes; índices reconstruidos | Fuente S5/A5 y Referencias | Control de fuente; presentación final bajo procedimiento de entrega |
 
-**Tabla A.24 — Respuesta documental y límites de verificación**
+**Tabla A.24 — Resolución de observaciones y evidencia**
 
-*Fuente: Informe 1, revisión del ítem 5; evidencia de la fuente de este ítem.*
+*Fuente: observaciones del CLIENTE a la instancia anterior y secciones de este capítulo.*
 
-Las pruebas descritas se ejecutarán durante el proyecto. Este estado no atribuye aprobación humana ni conformidad de producción.
+Las pruebas citadas en la columna de estado se ejecutan durante el proyecto, en los hitos que indica el Formulario T-14.
 
 <a id="anexo-5l"></a>
 
@@ -1720,7 +1720,9 @@ El esquema lógico se distribuye sin duplicaciones: inventario, pedido/preparaci
 
 La Figura A5.1 desarrolla maestros e identidades compartidas; se relaciona con 5.1.3 del cuerpo y se valida con 5-A/5-C.
 
-**Insertar figura A5.1 — Maestros e identidades compartidas.**
+![Figura A5.1 — Maestros e identidades compartidas](Diagramas/Fig_A5-1_Maestros.png)
+
+**Figura A5.1 — Maestros e identidades compartidas.**
 
 *Fuente: modelo de LafroX a partir de S3/S4 y RT-05.01.*
 
@@ -1728,7 +1730,9 @@ Las equivalencias traducen claves externas a UUID canónicos y no crean identida
 
 La Figura A5.2 desarrolla edi, notificaciones y gobierno; se relaciona con 5.1.9 del cuerpo y se valida con 5-A/5-C.
 
-**Insertar figura A5.2 — EDI, notificaciones y gobierno.**
+![Figura A5.2 — EDI, notificaciones y gobierno](Diagramas/Fig_A5-2_EDI_Notif_Gobierno.png)
+
+**Figura A5.2 — EDI, notificaciones y gobierno.**
 
 *Fuente: modelo de LafroX a partir de S3/S4 y RT-05.01.*
 
@@ -1736,7 +1740,9 @@ Mensaje y aviso conservan identidad/resultado; auditoría y excepción preservan
 
 La Figura A5.3 desarrolla telemetría, copias de consulta y objetos; se relaciona con 5.1.10 del cuerpo y se valida con 5-A/5-C.
 
-**Insertar figura A5.3 — Telemetría, copias de consulta y objetos.**
+![Figura A5.3 — Telemetría, copias de consulta y objetos](Diagramas/Fig_A5-3_Telemetria_Cache.png)
+
+**Figura A5.3 — Telemetría, copias de consulta y objetos.**
 
 *Fuente: modelo de LafroX a partir de S3/S4 y RT-05.01.*
 
@@ -1746,14 +1752,14 @@ Raw, detalle, agregado, GPS y evidencia tienen plazos y permisos distintos. Las 
 
 Estas fuentes sostienen las reglas y decisiones citadas en este ítem. Las fuentes locales son documentos de la licitación o de la propuesta; EPCIS/CBV y PostgreSQL respaldan exclusivamente sus contratos técnicos.
 
-- Pontificia Universidad Católica de Valparaíso. (2026a). *Aclaraciones de licitación*. [Documento](../Bases/aclaraciones-licitacion.md).
-- Pontificia Universidad Católica de Valparaíso. (2026b). *Bases Administrativas TFEP-01/2026*. [Documento](../Bases/Bases_Administrativas.md).
-- Pontificia Universidad Católica de Valparaíso. (2026c). *Bases Técnicas del Caso 02 — Logística*. [Documento](../Bases/Caso_02_Logistica.md).
-- Pontificia Universidad Católica de Valparaíso. (2026d). *Bases Técnicas Transversales*, versión 1.0. [Documento](../Bases/Bases_Tecnicas_Transversales.md).
-- LafroX SpA. (2026d). *Presentación de la empresa*, Subdocumento 1. [Documento](../01_presentacion_empresa/LAFROX-Subdocumento1.md).
-- LafroX SpA. (2026c). *Problema y necesidad*, Subdocumento 2. [Documento](../02_problema_necesidad/LAFROX-Subdocumento2.md).
-- LafroX SpA. (2026b). *Esquema de solución y alcance*, Subdocumento 3 y anexos. [Documento](../03_esquema_solucion_alcance/LAFROX-Subdocumento3.md).
-- LafroX SpA. (2026a). *Arquitectura*, Subdocumento 4, anexos y formularios T-11/T-12. [Documento](../04_arquitectura/LAFROX-Subdocumento4.md).
+- Distribuidora Puelche S.A. (2026a). *Bases Administrativas de Licitación N.º TFEP-01/2026: Contratación de Solución Integral de Software y Servicios de Operación*.
+- Distribuidora Puelche S.A. (2026b). *Bases Técnicas Transversales de Licitación N.º TFEP-01/2026*.
+- Distribuidora Puelche S.A. (2026c). *Caso 02: Logística. Especificaciones del problema y operación de Distribuidora Puelche S.A.*
+- Distribuidora Puelche S.A. (2026d). *Aclaraciones de la Licitación N.º TFEP-01/2026*.
+- LafroX SpA. (2026d). *Presentación de la empresa*, Subdocumento 1..
+- LafroX SpA. (2026c). *Problema y necesidad*, Subdocumento 2..
+- LafroX SpA. (2026b). *Esquema de solución y alcance*, Subdocumento 3 y anexos..
+- LafroX SpA. (2026a). *Arquitectura*, Subdocumento 4, anexos y formularios T-11/T-12..
 - International Organization for Standardization. (2008). *ISO/IEC 25012:2008, Software engineering — SQuaRE — Data quality model*. Dimensiones de calidad citadas en 5.2.5; no es fuente de umbrales numéricos.
 - GS1. (2022a). *EPCIS Standard*, release 2.0, junio de 2022. [Estándar](https://ref.gs1.org/standards/epcis/2.0.1/).
 - GS1. (2022b). *Core Business Vocabulary Standard*, release 2.0. [Estándar](https://ref.gs1.org/standards/cbv/2.0.0/).
@@ -1763,15 +1769,14 @@ Estas fuentes sostienen las reglas y decisiones citadas en este ítem. Las fuent
 
 ## Declaración de uso de IA
 
+En cumplimiento de la sección 7.2 de las Aclaraciones de la licitación, la tabla siguiente declara el uso de herramientas de inteligencia artificial en estos anexos, con la revisión humana de cada parte. La declaración se consolida en el Formulario A-6.
+
 <a id="tab-a27-declaracion-ia"></a>
 
-**Texto de caída:** La declaración responde al requisito §7.2 de Bases/aclaraciones-licitacion.md. Se indica herramienta utilizada, finalidad, nivel de asistencia y verificación humana realizada. No se completan datos de revisión humana ni aprobación del CLIENTE.
-
 | Sección | Herramienta | Finalidad del uso | Nivel en texto | Nivel en diagramas | Revisión humana (quién y qué verificó) |
-|---|---|---|---|---|---|
-| S5 - Capítulo completo | Modelo de asistencia interna | Revisión estructural, coherencia con guía y verificación de contradicciones | Medio | Bajo | Ninguno (revisión técnica automatizada interna). No se atribuye revisor humano. |
-| A5 - 5-A (Diccionario) | Modelo de asistencia interna | Conciliación modelo-diccionario, corrección de tipos/dominios/referencias | Medio | Ninguno | Ninguno (verificación por conteo 111/792). No se atribuye revisor humano. |
-| A5 - 5-B a 5-F | Modelo de asistencia interna | Matrices, índices, retención, sensibilidad, particionado | Medio | Ninguno | Ninguno. No se atribuye revisor humano. |
-| A5 - 5-G a 5-J | Modelo de asistencia interna | Cachés, fórmulas/indicadores, RT-05, pruebas | Medio | Ninguno | Ninguno. No se atribuye revisor humano. |
-| A5 - 5-K (Respuesta Informe 1) | Modelo de asistencia interna | Registro de respuestas con evidencia | Medio | Ninguno | Ninguno. No se atribuye revisor humano. |
-
+| --- | --- | --- | --- | --- | --- |
+| S5 - Capítulo completo | Modelo de asistencia interna | Revisión estructural, coherencia con guía y verificación de contradicciones | Medio | Bajo | [[REVISIÓN HUMANA]] |
+| A5 - 5-A (Diccionario) | Modelo de asistencia interna | Conciliación modelo-diccionario, corrección de tipos/dominios/referencias | Medio | Ninguno | [[REVISIÓN HUMANA]] |
+| A5 - 5-B a 5-F | Modelo de asistencia interna | Matrices, índices, retención, sensibilidad, particionado | Medio | Ninguno | [[REVISIÓN HUMANA]] |
+| A5 - 5-G a 5-J | Modelo de asistencia interna | Cachés, fórmulas/indicadores, RT-05, pruebas | Medio | Ninguno | [[REVISIÓN HUMANA]] |
+| Anexo 5-K (resolución de observaciones) | Modelo de asistencia interna | Registro de respuestas con evidencia | Medio | Ninguno | [[REVISIÓN HUMANA]] |
