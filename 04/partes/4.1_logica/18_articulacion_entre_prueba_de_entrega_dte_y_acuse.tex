@@ -5,15 +5,42 @@ La guía de despacho electrónica debe estar vinculada a la salida de mercaderí
 
 \subsubsection{Secuencia y excepciones}
 
-La secuencia lógica es: preparación confirmada en M5; solicitud nocturna de guía al ERP mediante \texttt{erp-sync} y ACL de VM-04; autorización de salida con el documento disponible; captura de POD y diferencias en M6; conciliación de la entrega en M7/M8; y, si corresponde, solicitud al ERP de factura, nota de crédito o tratamiento tributario de la devolución. Un mismo \texttt{transaction\_id} relaciona pedido, guía, entrega, evidencia, acuses y documentos posteriores. El acuse del destinatario se obtiene por el mecanismo que acuerde el CLIENTE conforme a la normativa aplicable; una fotografía o un QR no se presume equivalente por sí solo.
+La secuencia lógica es:
+
+\begin{enumerate}
+  \item preparación confirmada en M5;
+  \item solicitud nocturna de guía al ERP mediante \texttt{erp-sync} y ACL de VM-04;
+  \item autorización de salida con el documento disponible;
+  \item captura de POD y diferencias en M6;
+  \item conciliación de la entrega en M7/M8;
+  \item y, si corresponde, solicitud al ERP de factura, nota de crédito o tratamiento tributario de la devolución.
+\end{enumerate}
+
+Un mismo \texttt{transaction\_id} relaciona pedido, guía, entrega, evidencia, acuses y documentos posteriores. El acuse del destinatario se obtiene por el mecanismo que acuerde el CLIENTE conforme a la normativa aplicable; una fotografía o un QR no se presume equivalente por sí solo.
 
 Si el ERP o su canal tributario no confirma la guía antes de la salida, M5 muestra el despacho como bloqueado y lo deriva al responsable de Operaciones y Tributación para aplicar únicamente la contingencia autorizada por el CLIENTE. La captura offline del POD permite registrar una entrega ya despachada; no autoriza emitir retroactivamente una guía desde el teléfono. Esta separación protege la continuidad de la evidencia sin atribuir a la aplicación facultades tributarias que permanecen en el ERP.
 
 \subsubsection{Control de liberación en la ventana crítica}
 
-M5 conserva los estados carga confirmada, guía solicitada, resultado incierto, guía disponible y salida liberada. La solicitud lleva una clave estable por despacho y versión de carga. Ante un timeout se consulta el resultado de esa misma solicitud antes de repetirla; no se genera otra guía a ciegas. Solo se libera cuando la guía corresponde a la carga vigente y su evidencia está disponible localmente. Una modificación efectiva de carga invalida la guía y exige que el ERP anule el documento según su procedimiento y emita uno nuevo antes de la salida; si no hay conectividad para emitirlo, el cambio propuesto no se ejecuta y solo sale la carga original si su guía sigue vigente. Una guía ya anulada o invalidada no se reutiliza, aunque se reponga la carga anterior. El acuse técnico del SII, el documento emitido y la autorización de traslado no se representan con un único booleano.
+M5 conserva los estados carga confirmada, guía solicitada, resultado incierto, guía disponible y salida liberada.
 
-Al cerrar la carga nocturna se solicita la guía por adelantado, sin confundir anticipación con contingencia. Antes de las 05:30, Operaciones revisa las salidas programadas y las guías disponibles. Durante 05:30--07:00 se prioriza INT-07 sobre reportes y cargas masivas; una incidencia identifica los camiones afectados, hora prevista, responsable y estado documental. Los despachos con documentación válida siguen su curso; ante un cambio de carga, la nueva guía la emite el ERP de Talca por cualquiera de sus tres caminos y, para Concepción y los cross-docking, requiere además un camino disponible del sitio. Ningún perfil de supervisor puede omitir ese control con una autorización genérica.
+\begin{itemize}
+  \item La solicitud lleva una clave estable por despacho y versión de carga.
+  \item Ante un timeout se consulta el resultado de esa misma solicitud antes de repetirla; no se genera otra guía a ciegas.
+  \item Solo se libera cuando la guía corresponde a la carga vigente y su evidencia está disponible localmente.
+  \item Una modificación efectiva de carga invalida la guía y exige que el ERP anule el documento según su procedimiento y emita uno nuevo antes de la salida; si no hay conectividad para emitirlo, el cambio propuesto no se ejecuta y solo sale la carga original si su guía sigue vigente.
+  \item Una guía ya anulada o invalidada no se reutiliza, aunque se reponga la carga anterior.
+  \item El acuse técnico del SII, el documento emitido y la autorización de traslado no se representan con un único booleano.
+\end{itemize}
+
+Al cerrar la carga nocturna se solicita la guía por adelantado, sin confundir anticipación con contingencia.
+
+\begin{itemize}
+  \item Antes de las 05:30, Operaciones revisa las salidas programadas y las guías disponibles.
+  \item Durante 05:30--07:00 se prioriza INT-07 sobre reportes y cargas masivas; una incidencia identifica los camiones afectados, hora prevista, responsable y estado documental.
+  \item Los despachos con documentación válida siguen su curso; ante un cambio de carga, la nueva guía la emite el ERP de Talca por cualquiera de sus tres caminos y, para Concepción y los cross-docking, requiere además un camino disponible del sitio.
+  \item Ningún perfil de supervisor puede omitir ese control con una autorización genérica.
+\end{itemize}
 
 La preemisión nocturna permite liberar cada camión con la carga amparada por su guía vigente sin depender de Internet durante la ventana; si se propone cambiar la carga y no hay camino hasta el ERP, el cambio se pospone a la ruta siguiente y sale solo la carga original con su guía vigente. Si el cambio ya se ejecutó o la guía se anuló, la salida queda bloqueada hasta disponer de un documento válido. Ningún camión sale sin guía válida. AL-DTE-01 ensaya las 96 salidas con fallas inyectadas, preemisión nocturna, cambio de carga y emisión del ERP ante el SII por fibra, LTE y Starlink en espera caliente de Talca. La prueba registra folio, anulación, nueva guía y estado de cada salida.
 

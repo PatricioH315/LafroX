@@ -27,7 +27,19 @@ A continuación se resume la tecnología de cada capa y su justificación princi
 
 Los servicios AWS consumidos incluyen: CloudFront, AWS WAF, AWS Shield Advanced, ALB, Network Load Balancer, API Gateway, Verified Access, Aurora, ElastiCache, DynamoDB, S3, Redshift Serverless, ECS Fargate, Lambda (solo como autorizador), Route 53, Secrets Manager, Systems Manager, KMS, IAM, Organizations, IAM Identity Center, CloudWatch, Transit Gateway, NAT Gateway, VPC Endpoints, Site-to-Site VPN, SQS, SNS, AWS Backup, GuardDuty, Security Hub, Security Lake, Macie, Inspector, Config, Database Migration Service, Glue, QuickSight, Elastic Container Registry, CodeBuild, Control Tower, CloudTrail e IoT Core+Greengrass.
 
-Laravel conserva una superficie de APIs, políticas y colas coherente para los doce módulos; Django también permitiría el monolito, pero mantener su runtime junto al nuevo obligaría a operar dos cadenas de dependencias y dos familias de trabajadores. La equivalencia se acepta por contratos y pruebas, no por parecido de bibliotecas. PostgreSQL/PostGIS se prefiere a MariaDB por la combinación de transacciones y consultas geográficas del dominio de rutas y sitios; la prueba cubre consultas espaciales y migración. Keycloak se prefiere a un proveedor de identidad exclusivamente en nube porque permite administrar personal propio y externo sin trasladar la autorización de negocio fuera de M1--M12; el relevo local requiere la prueba de 24 horas. API Gateway reduce administración frente a un gateway propio, sujeto a prueba de cuotas y costo bajo el pico. RabbitMQ local más SQS FIFO conserva el trabajo del sitio sin enlace; la deduplicación y el orden por partición se prueban en los consumidores. Angular se conserva por sus componentes y contratos TypeScript. Los costos, el emplazamiento y la redundancia se comprueban en 4.2 y en el registro ADR.
+Laravel conserva una superficie de APIs, políticas y colas coherente para los doce módulos;
+
+\begin{itemize}
+  \item Django también permitiría el monolito, pero mantener su runtime junto al nuevo obligaría a operar dos cadenas de dependencias y dos familias de trabajadores.
+  \item La equivalencia se acepta por contratos y pruebas, no por parecido de bibliotecas.
+  \item PostgreSQL/PostGIS se prefiere a MariaDB por la combinación de transacciones y consultas geográficas del dominio de rutas y sitios; la prueba cubre consultas espaciales y migración.
+  \item Keycloak se prefiere a un proveedor de identidad exclusivamente en nube porque permite administrar personal propio y externo sin trasladar la autorización de negocio fuera de M1--M12; el relevo local requiere la prueba de 24 horas.
+  \item API Gateway reduce administración frente a un gateway propio, sujeto a prueba de cuotas y costo bajo el pico.
+  \item RabbitMQ local más SQS FIFO conserva el trabajo del sitio sin enlace; la deduplicación y el orden por partición se prueban en los consumidores.
+  \item Angular se conserva por sus componentes y contratos TypeScript.
+\end{itemize}
+
+Los costos, el emplazamiento y la redundancia se comprueban en 4.2 y en el registro ADR.
 
 El núcleo utiliza tecnologías con alternativas de despliegue como Laravel, Angular, PostgreSQL, RabbitMQ y Keycloak. Eso facilita la portabilidad, pero no elimina la dependencia de los servicios administrados de AWS. La reversibilidad documenta contratos, exportación de datos y sustitución de adaptadores, junto con el esfuerzo de migración exigido por RT-03.07, que 4.2 acota por servicio.
 

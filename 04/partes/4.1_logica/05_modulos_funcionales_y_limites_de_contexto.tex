@@ -37,7 +37,18 @@ El módulo de trazabilidad resuelve el problema central que motivó la licitaci�
 
 La unidad de trazabilidad sanitaria es el lote del proveedor, identificado por el producto (GTIN) y el número de lote. El vencimiento y los registros de temperatura se conservan como atributos asociados; FEFO es la regla de rotación por vencimiento, no parte del identificador. Cada movimiento vincula el lote con la unidad logística identificada mediante SSCC. Esta organización permite seguir el producto aunque cambie de caja o pallet. Como el 41\% de las recepciones carece de lote registrado, la captura en recepción es obligatoria para sostener la trazabilidad (RF-01).
 
-La trazabilidad forward/backward se implementa evento a evento conforme al estándar GS1 EPCIS, permitiendo al sistema responder en menos de 2 horas ante un retiro sanitario (Bases Técnicas del caso, cap. 18, p. 34), con identificación precisa de los lotes y puntos de entrega afectados. Los registros de temperatura se capturan de forma continua en 21 puntos de temperatura en cámaras (15 en Talca y 6 en Concepción) y 28 termógrafos: 18 en camiones propios y 10 en camiones refrigerados de transportistas. Una excursión menor y transitoria genera una advertencia. Una excursión crítica y sostenida, según el umbral y la duración parametrizados por producto, genera retención preventiva automática en M2 y M5, también sin enlace (RNG-04 y RF-09.05/06/07 del Subdocumento 3). Mientras Calidad no apruebe los parámetros de un tipo de producto, toda lectura fuera del rango de almacenamiento de la ficha del SKU se trata como crítica. El sistema registra la versión de la regla, el umbral, la duración, el sensor y el lote. La jefatura de Calidad evalúa la excursión y es la única que autoriza una liberación trazada o dispone rechazo. El conductor no puede levantar el bloqueo. M9 integra los sensores de cámara mediante los tres gateways con Greengrass (Capa 2), los termógrafos mediante el terminal del conductor, inventario (M2), preparación (M5) y observabilidad (Capa 8), con evidencia exportable de la decisión.
+La trazabilidad forward/backward se implementa evento a evento conforme al estándar GS1 EPCIS, permitiendo al sistema responder en menos de 2 horas ante un retiro sanitario (Bases Técnicas del caso, cap. 18, p. 34), con identificación precisa de los lotes y puntos de entrega afectados.
+
+\begin{itemize}
+  \item Los registros de temperatura se capturan de forma continua en 21 puntos de temperatura en cámaras (15 en Talca y 6 en Concepción) y 28 termógrafos: 18 en camiones propios y 10 en camiones refrigerados de transportistas.
+  \item Una excursión menor y transitoria genera una advertencia.
+  \item Una excursión crítica y sostenida, según el umbral y la duración parametrizados por producto, genera retención preventiva automática en M2 y M5, también sin enlace (RNG-04 y RF-09.05/06/07 del Subdocumento 3).
+  \item Mientras Calidad no apruebe los parámetros de un tipo de producto, toda lectura fuera del rango de almacenamiento de la ficha del SKU se trata como crítica.
+  \item El sistema registra la versión de la regla, el umbral, la duración, el sensor y el lote.
+  \item La jefatura de Calidad evalúa la excursión y es la única que autoriza una liberación trazada o dispone rechazo.
+  \item El conductor no puede levantar el bloqueo.
+  \item M9 integra los sensores de cámara mediante los tres gateways con Greengrass (Capa 2), los termógrafos mediante el terminal del conductor, inventario (M2), preparación (M5) y observabilidad (Capa 8), con evidencia exportable de la decisión.
+\end{itemize}
 
 \subsubsection{Módulo de inventario (M2)}
 
@@ -68,9 +79,24 @@ La prueba de aceptación de terreno considera un turno de 14 horas sin cobertura
 
 M2 central es dueño de la reserva comercial. M2 de cada sitio conserva la existencia, los movimientos y la retención física. M3 confirma un pedido solo después de que M2 central persiste el acuse de una retención local durable. El consolidado y la réplica DMS son proyecciones de lectura y no autorizan una reserva. Las solicitudes se ordenan por recepción central con correlativo de desempate (RNG-01 del Subdocumento 3). El pedido offline entra en ese orden al sincronizar.
 
-M2 central persiste la solicitud pendiente con UUID, correlación, sitio, época de autoridad, lote, ubicación, cantidad y versión. El shipper del sitio lee, por conexión saliente, una cola FIFO de coordinación propia y entrega la solicitud al broker local. M2 local bloquea el agregado, valida la existencia y el estado de Calidad, y persiste la retención, la auditoría y el outbox. INT-03/04 devuelve el resultado, y M2 central persiste el acuse antes de que M3 confirme. Un reenvío recupera el resultado de la misma clave sin descontar otra vez.
+M2 central persiste la solicitud pendiente con UUID, correlación, sitio, época de autoridad, lote, ubicación, cantidad y versión.
 
-La cancelación o la expiración central inicia una liberación pendiente. El stock sigue retenido hasta el acuse durable del sitio. Una retención ya consumida por la preparación no vuelve a quedar disponible. Si se pierde el acuse, la operación queda en estado incierto y la retención se mantiene. Durante un aislamiento no se confirma una reserva remota nueva, y el sitio continúa sus movimientos y misiones. Un cambio de autoridad exige conciliación y la revocación de la época anterior, y no se hace durante una partición.
+\begin{enumerate}
+  \item El shipper del sitio lee, por conexión saliente, una cola FIFO de coordinación propia y entrega la solicitud al broker local.
+  \item M2 local bloquea el agregado, valida la existencia y el estado de Calidad, y persiste la retención, la auditoría y el outbox.
+  \item INT-03/04 devuelve el resultado, y M2 central persiste el acuse antes de que M3 confirme.
+  \item Un reenvío recupera el resultado de la misma clave sin descontar otra vez.
+\end{enumerate}
+
+La cancelación o la expiración central inicia una liberación pendiente.
+
+\begin{itemize}
+  \item El stock sigue retenido hasta el acuse durable del sitio.
+  \item Una retención ya consumida por la preparación no vuelve a quedar disponible.
+  \item Si se pierde el acuse, la operación queda en estado incierto y la retención se mantiene.
+  \item Durante un aislamiento no se confirma una reserva remota nueva, y el sitio continúa sus movimientos y misiones.
+  \item Un cambio de autoridad exige conciliación y la revocación de la época anterior, y no se hace durante una partición.
+\end{itemize}
 
 La coordinación usa colas e identidades por sitio, separadas de las del ERP, de la reconciliación de eventos y de los trabajos de Laravel. La nube publica las solicitudes y cada shipper inicia su conexión. La única conexión iniciada desde la nube hacia un sitio sigue siendo DMS de Talca. El Anexo 4-G detalla este contrato dentro de INT-03/04, el Anexo 4-I cuantifica sus mensajes y AL-STOCK-01 del Anexo 4-V lo verifica. Su emplazamiento físico se describe en 4.2.
 

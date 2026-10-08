@@ -1,10 +1,14 @@
 \subsection{Reglas de reconciliación}
 \label{sec:reglas-reconciliacion}
 
-Toda reconciliación se resuelve por regla de negocio declarada, nunca por la sola marca de tiempo. La clave UUID generada por el cliente se conserva en todos los reintentos y el resultado se retiene para deduplicación durante 30 días; un lote más antiguo se aísla para revisión antes de admitir una nueva escritura. El resultado incluye identificador, versión, regla aplicada, actor y fecha. El Anexo 4-K muestra los conflictos de negocio principales.
+Toda reconciliación se resuelve por regla de negocio declarada, nunca por la sola marca de tiempo.
+
+\begin{itemize}
+  \item La clave UUID generada por el cliente se conserva en todos los reintentos y el resultado se retiene para deduplicación durante 30 días; un lote más antiguo se aísla para revisión antes de admitir una nueva escritura.
+  \item El resultado incluye identificador, versión, regla aplicada, actor y fecha. El Anexo 4-K muestra los conflictos de negocio principales.
+\end{itemize}
 
 
 Los conflictos de negocio dejan rastro de regla y resultado para revisión posterior.
 
 La replicación es un flujo de continuidad, no una regla para resolver conflictos. INT-12 usa DMS desde Talca hacia una réplica de lectura; los demás sitios sincronizan eventos mediante INT-03 e INT-04. Durante un corte, la base de cada sitio conserva autoridad sobre su operación y retiene cambios hasta el acuse durable, dentro de la capacidad dimensionada. La extracción continua por fibra, LTE y satélite en los CD conserva una copia durable fuera del sitio y sostiene RPO $\leq$ 15 minutos. AL-DR-01 del Anexo 4-M mide el punto recuperable; el límite residual se justifica en 4.3.2.
-

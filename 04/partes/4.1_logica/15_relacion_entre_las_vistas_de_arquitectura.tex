@@ -5,9 +5,15 @@ RT-02.03 exige cinco vistas de la arquitectura: lógica, procesos, despliegue, d
 
 Operaciones necesita comprobar que un pedido puede avanzar sin perder su lote ni saltarse una autorización; Calidad necesita seguir un lote hasta su receptor; Seguridad necesita distinguir quién puede liberar una carga; y TI necesita aislar una falla y recuperar el estado. Las vistas responden a esas preocupaciones con los mismos identificadores M1--M12, INT-01--15 y los componentes transversales del Anexo 4-N. Así se puede pasar de una secuencia a su dueño de datos, contrato y control sin cambiar de vocabulario.
 
-Las correspondencias se comprueban en ambos sentidos: todo evento tiene productor y consumidores; toda escritura tiene dueño; toda función desconectada tiene persistencia y autorización locales; y todo componente desplegado debe realizar una responsabilidad inventariada. Una diferencia se registra con requisito afectado y ADR responsable. La cobertura lógica del inventario no se confunde con el cotejo de emplazamientos y centros de datos.
+Las correspondencias se comprueban en ambos sentidos:
+
+\begin{itemize}
+  \item todo evento tiene productor y consumidores;
+  \item toda escritura tiene dueño;
+  \item toda función desconectada tiene persistencia y autorización locales;
+  \item y todo componente desplegado debe realizar una responsabilidad inventariada. Una diferencia se registra con requisito afectado y ADR responsable. La cobertura lógica del inventario no se confunde con el cotejo de emplazamientos y centros de datos.
+\end{itemize}
 
 La vista lógica desarrolla aquí las responsabilidades y sus relaciones. El despliegue y los centros de datos se acreditan en 4.2--4.3.
-
 
 

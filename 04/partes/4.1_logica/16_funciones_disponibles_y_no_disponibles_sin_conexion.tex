@@ -4,6 +4,18 @@
 Conforme a RT-03.10, la captura del turno de 14 horas en terreno y la operación local de 24 horas en los centros de distribución conservan sus eventos hasta recibir confirmación. RT-03.13 de las Bases Transversales exige nombrar también lo que no funciona sin red y el procedimiento que lo suple; el caso fija bajo ese mismo identificador los plazos de sincronización tras la reconexión. El Anexo 4-J distingue ambos casos; una operación sin confirmar nunca equivale a aprobación de un tercero.
 
 
-La operación local conserva la captura; las autorizaciones externas esperan conexión o procedimiento aprobado. AL-OFF-01, en el Anexo 4-M, exige un corte de 24 horas con relevos a las 8 y 16 horas, verificación de permisos, reinicio de componentes y reconciliación. La prueba incluye recepción, preparación y despacho con guía válida preemitida al cerrar la carga nocturna. AL-DTE-01 ensaya el cambio de carga que invalida esa guía y exige otra mediante \texttt{erp-sync} en VM-04, el ERP y cualquiera de los tres caminos de Talca. Aprobar la captura o el relevo de identidad no basta para acreditar la continuidad completa del despacho.
+La operación local conserva la captura; las autorizaciones externas esperan conexión o procedimiento aprobado.
 
-La copia de stock, crédito y precios lleva fecha de actualización; al superar su vigencia se presenta como referencia, no como aprobación de la venta. El conductor tampoco presenta una captura POS como pago autorizado. El Portal de Clientes instalado conserva el catálogo, los precios con su fecha y el pedido armado sin señal; no reserva stock ni confirma precio o fecha de entrega hasta que M3 recibe el pedido, como verifica AL-CLI-01 del Anexo 4-M. Para el relevo de turno en bodega, la validación local de identidad debe probarse durante 24 horas antes de acreditar la autonomía completa.
+\begin{itemize}
+  \item AL-OFF-01, en el Anexo 4-M, exige un corte de 24 horas con relevos a las 8 y 16 horas, verificación de permisos, reinicio de componentes y reconciliación.
+  \item La prueba incluye recepción, preparación y despacho con guía válida preemitida al cerrar la carga nocturna.
+  \item AL-DTE-01 ensaya el cambio de carga que invalida esa guía y exige otra mediante \texttt{erp-sync} en VM-04, el ERP y cualquiera de los tres caminos de Talca.
+  \item Aprobar la captura o el relevo de identidad no basta para acreditar la continuidad completa del despacho.
+\end{itemize}
+
+\begin{itemize}
+  \item La copia de stock, crédito y precios lleva fecha de actualización; al superar su vigencia se presenta como referencia, no como aprobación de la venta.
+  \item El conductor tampoco presenta una captura POS como pago autorizado.
+  \item El Portal de Clientes instalado conserva el catálogo, los precios con su fecha y el pedido armado sin señal; no reserva stock ni confirma precio o fecha de entrega hasta que M3 recibe el pedido, como verifica AL-CLI-01 del Anexo 4-M.
+  \item Para el relevo de turno en bodega, la validación local de identidad debe probarse durante 24 horas antes de acreditar la autonomía completa.
+\end{itemize}

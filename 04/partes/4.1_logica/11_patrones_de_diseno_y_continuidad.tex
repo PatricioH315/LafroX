@@ -6,7 +6,14 @@ La continuidad se articula con ISO 22301 para la gestión de continuidad del neg
 
 Ante pérdida de conectividad, M1, M2 y M5 conservan la operación local y M9 mantiene el bloqueo sanitario; M3 y M6 conservan la captura de terreno durante las autonomías definidas. Las confirmaciones que dependen de crédito, stock central o documentos del ERP permanecen explícitamente sin confirmar o bloqueadas según su regla. La continuidad protege la evidencia y la seguridad de la operación: no habilita una salida sin autorización tributaria ni permite levantar un bloqueo sanitario para recuperar velocidad.
 
-La recuperación lógica exige restablecer identidad y autorización, disponer del estado transaccional y de los eventos sin confirmar, y habilitar después el procesamiento y la reconciliación. Cada consumidor confirma solo operaciones persistidas, deduplica los reenvíos y deriva los conflictos a su responsable. Antes de cerrar la contingencia se cotejan pedidos, reservas, lotes, entregas y rendiciones con sus identificadores de origen; las operaciones sin confirmar y las excepciones quedan visibles y auditadas. El orden concreto de restauración y la capacidad de respaldo se documentan en 4.2 y 4.3.
+La recuperación lógica exige restablecer identidad y autorización, disponer del estado transaccional y de los eventos sin confirmar, y habilitar después el procesamiento y la reconciliación.
+
+\begin{itemize}
+  \item Cada consumidor confirma solo operaciones persistidas, deduplica los reenvíos y deriva los conflictos a su responsable.
+  \begin{samepage}
+  \item Antes de cerrar la contingencia se cotejan pedidos, reservas, lotes, entregas y rendiciones con sus identificadores de origen; las operaciones sin confirmar y las excepciones quedan visibles y auditadas. El orden concreto de restauración y la capacidad de respaldo se documentan en 4.2 y 4.3.
+  \par\end{samepage}
+\end{itemize}
 
 La evidencia de aceptación vincula cada servicio con su requisito, módulo, dependencia, objetivo de recuperación y prueba. Se ensayan pérdida de WAN durante 24 horas en el sitio, captura móvil durante 14 horas, indisponibilidad del ERP, relevo sin IdP y recuperación con mensajes repetidos. Se mide la conservación de operaciones confirmadas, el respeto de los bloqueos, la ausencia de duplicados y el tiempo hasta recuperar un estado conciliado. Una pérdida completa del sitio requiere una prueba de restauración distinta del corte WAN, contrastada con RTO $\leq$ 4 horas y RPO $\leq$ 15 minutos para los servicios críticos. La extracción continua por fibra, LTE y satélite sostiene el RPO, verificado con AL-DR-01; 4.3.2 justifica el límite residual.
 
@@ -16,7 +23,14 @@ La arquitectura aplica un conjunto de patrones de diseño que responden a las re
 
 \textbf{Servicios sin estado durable en memoria.} Las bases de datos y las colas conservan el estado de negocio; las sesiones utilizan los mecanismos de identidad definidos. Sustituir una instancia no debe perder el progreso de una operación. El acceso desconectado respeta las vigencias de las credenciales y las restricciones explicadas en la capa de seguridad.
 
-\textbf{Degradación controlada sin pérdida silenciosa.} Cuando un componente no responde, la operación continúa en modo reducido informado a la persona usuaria ("modo offline"). Ninguna degradación produce pérdida de una transacción de venta o entrega: si una escritura no llega al servidor, queda en el buffer local del dispositivo, visible como no confirmada y reconciliada en la sincronización posterior (RT-02.09; Bases Técnicas Transversales, cap. 2, p. 7). La clasificación de servicios (RT-10.02; Bases Técnicas Transversales, cap. 10, p. 22) distingue cuatro niveles, conforme a la Tabla~\ref{tab:jd05}: crítico, preparación, despacho y emisión de la guía durante la ventana 05:30--07:00, con el bloqueo por excursión térmica y la identidad de bodega que lo habilitan; alto, toma de pedido y consulta de stock y crédito, entrega y evidencia, planificación de rutas, los demás DTE, integración con el ERP, cobranza y rendición, registro de temperatura; medio, canal moderno (EDI), notificaciones, analítica y tableros, portales, consultas de geolocalización, registros de auditoría y seguridad; bajo, reportería e informes a pedido.
+\textbf{Degradación controlada sin pérdida silenciosa.} Cuando un componente no responde, la operación continúa en modo reducido informado a la persona usuaria ("modo offline"). Ninguna degradación produce pérdida de una transacción de venta o entrega: si una escritura no llega al servidor, queda en el buffer local del dispositivo, visible como no confirmada y reconciliada en la sincronización posterior (RT-02.09; Bases Técnicas Transversales, cap. 2, p. 7). La clasificación de servicios (RT-10.02; Bases Técnicas Transversales, cap. 10, p. 22) distingue cuatro niveles, conforme a la Tabla~\ref{tab:jd05}:
+
+\begin{itemize}
+  \item crítico, preparación, despacho y emisión de la guía durante la ventana 05:30--07:00, con el bloqueo por excursión térmica y la identidad de bodega que lo habilitan;
+  \item alto, toma de pedido y consulta de stock y crédito, entrega y evidencia, planificación de rutas, los demás DTE, integración con el ERP, cobranza y rendición, registro de temperatura;
+  \item medio, canal moderno (EDI), notificaciones, analítica y tableros, portales, consultas de geolocalización, registros de auditoría y seguridad;
+  \item bajo, reportería e informes a pedido.
+\end{itemize}
 
 \textbf{Resiliencia con cortacircuitos y colas.} Las llamadas remotas tienen un tiempo máximo de espera explícito (RT-02.08; Bases Técnicas Transversales, cap. 2, p. 7). Las operaciones reintentables utilizan espera creciente con variación aleatoria y un cortacircuitos que suspende temporalmente las llamadas a un servicio que falla. Si el ERP no está disponible, la preventa conserva la captura de pedidos, mientras las confirmaciones dependientes del legado permanecen sin confirmar. Las colas y sus DLQ permiten recuperar el procesamiento; los consumidores deben deduplicar porque un mensaje puede entregarse más de una vez.
 
@@ -32,6 +46,14 @@ La arquitectura aplica un conjunto de patrones de diseño que responden a las re
 
 \subsubsection{SOLID aplicado a los contratos de negocio}
 
-La responsabilidad única se comprueba en el flujo de un pedido: M3 captura y confirma el pedido, M2 decide si reserva stock, M5 ejecuta la preparación y la ACL traduce hacia el ERP. Ninguno de esos componentes puede asumir la decisión del otro por compartir un proceso Laravel. Para extender el canal moderno, M11 incorpora un adaptador por cadena bajo un contrato publicado; M3 no se modifica para aprender un nuevo formato EDI. Esa es la aplicación concreta del principio abierto/cerrado.
+La responsabilidad única se comprueba en el flujo de un pedido: M3 captura y confirma el pedido, M2 decide si reserva stock, M5 ejecuta la preparación y la ACL traduce hacia el ERP. Ninguno de esos componentes puede asumir la decisión del otro por compartir un proceso Laravel.
 
-Un adaptador nuevo sustituye a uno previo solo si conserva las respuestas, errores e idempotencia exigidos por el contrato versionado: las pruebas de contrato verifican esa sustitución. Las interfaces se separan por capacidad y autorización ---consulta de stock, reserva, recepción de POD y liberación sanitaria--- para que un cliente de lectura no reciba por accidente una operación de escritura. Finalmente, M3, M5 y M7 dependen de puertos de negocio para inventario, documentos y mensajería, no de llamadas directas al SDK de una nube o a tablas del ERP. En QA se reemplazan esos puertos por dobles de prueba; en producción los adaptadores implementan el contrato. Las pruebas de contrato verifican sustitución, segregación de interfaces e inversión de dependencias.
+Para extender el canal moderno, M11 incorpora un adaptador por cadena bajo un contrato publicado; M3 no se modifica para aprender un nuevo formato EDI. Esa es la aplicación concreta del principio abierto/cerrado.
+
+Un adaptador nuevo sustituye a uno previo solo si conserva las respuestas, errores e idempotencia exigidos por el contrato versionado: las pruebas de contrato verifican esa sustitución.
+
+\begin{itemize}
+  \item Las interfaces se separan por capacidad y autorización ---consulta de stock, reserva, recepción de POD y liberación sanitaria--- para que un cliente de lectura no reciba por accidente una operación de escritura.
+  \item Finalmente, M3, M5 y M7 dependen de puertos de negocio para inventario, documentos y mensajería, no de llamadas directas al SDK de una nube o a tablas del ERP.
+  \item En QA se reemplazan esos puertos por dobles de prueba; en producción los adaptadores implementan el contrato. Las pruebas de contrato verifican sustitución, segregación de interfaces e inversión de dependencias.
+\end{itemize}
