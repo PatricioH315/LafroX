@@ -8,7 +8,7 @@ Esta guía explica los 6 anexos del capítulo 8 por separado. Permite elegir el 
 
 ## Anexo 8.A — Registro ampliado de amenazas
 
-Desarrolla las 32 fichas R8-01–R8-32: causa, evento, consecuencia, P/I/D, horizonte, responsable, disparador, plazo, mitigación, contingencia y evidencia. Cubre ERP/documentos, doble reserva, datos/frío, seguridad, terceros, capacidad, personal y marchas blancas. R8-23–29 incluyen adopción de innovaciones; R8-31/32 tratan repetición de certificación y disponibilidad de evaluadores. Las evaluaciones son iniciales.
+Desarrolla las 32 fichas R8-01–R8-32: causa, evento, consecuencia, P/I/D, horizonte, responsable, disparador, plazo, mitigación, contingencia y evidencia. Cubre ERP/documentos, doble reserva, datos/frío, seguridad, terceros, capacidad, personal y marchas blancas. R8-23–29 incluyen adopción de innovaciones; R8-31/32 tratan repetición de certificación y disponibilidad de evaluadores. R8-03 incluye el enlace de Concepción y R8-18 el peak de septiembre sobre la marcha blanca E2, dos riesgos que pide el Caso 19. Un glosario inicial explica los códigos de las fichas. Las evaluaciones son iniciales.
 
 **Cuándo consultarlo:** para ejecutar una respuesta concreta, no solo conocer la puntuación del riesgo.
 
@@ -24,7 +24,7 @@ B.1 ordena exposición y NPR de FMEA; B.2 convierte probabilidad e impacto calib
 
 ## Anexo 8.C — Escenarios deterministas y costo-beneficio
 
-Distingue escenarios deterministas, cocientes prevención/retrabajo y simulación. Usa 128 HH efectivas por persona-mes; en paralelo toma el máximo de duraciones y en secuencia suma. C.3 simula 5.000 veces la red de 163 paquetes con entregable, con duraciones PERT y eventos de riesgo. Marcha blanca, operación y algunos hitos quedan fuera de ese mismo modelo.
+Distingue escenarios deterministas, cocientes prevención/retrabajo y simulación. La Tabla C.5 calcula el costo-beneficio de los 22 riesgos críticos: HH del paquete de control frente al retrabajo que evita; 18 superan 1 y tres (R8-05, R8-06, R8-17) se mantienen por ser obligatorios. Usa 128 HH efectivas por persona-mes; en paralelo toma el máximo de duraciones y en secuencia suma. C.3 simula 5.000 veces la red de 163 paquetes con entregable, con duraciones PERT y eventos de riesgo. Marcha blanca, operación y algunos hitos quedan fuera de ese mismo modelo.
 
 **Cuándo consultarlo:** para entender qué supone una demora o probabilidad calculada y cuáles son sus límites.
 

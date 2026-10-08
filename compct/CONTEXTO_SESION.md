@@ -1,8 +1,28 @@
 # CONTEXTO DE SESIÓN
 
+## Estado vigente — 8 de octubre de 2026: observaciones de la revisión del SD8 corregidas
+
+Se aplicaron en SD8, Anexos y T-16 las observaciones de `Revision/revision_comision_informe2_SD8.md`, salvo valores monetarios y magnitud de la reserva de gestión (por decisión del usuario, hasta la entrega final). Cambios: Figura 8.1 en Mermaid; apetito de riesgo en 8.1.3; mapa de los siete riesgos del Caso 19 en 8.2.1, con Concepción en R8-03 y peak de septiembre en R8-18 (sin cambiar P, I, D ni valor esperado); Tabla C.5 de costo-beneficio de los 22 críticos (HH del paquete de control del T-15 frente al impacto de B.2) y línea específica en cada ficha; glosario de códigos en 8.A; línea de seguimiento repetida movida a la introducción de 8.A; redacción de fichas y T-16; citas APA 1:1 en los tres archivos; leyendas «Tabla 8.N —»; C-04 con 12 puestos. «CD-05», «A31» y «A32» no existen en el SD4: se reemplazaron por coordinación de reserva de INT-03/04, Anexo 4-I y 4-W.5 (R8-02 y R8-06 renombrados). Siguen con esos códigos obsoletos el cuerpo del SD7 (párrafo final, sobre el Anexo 7.F), el Anexo 7.F (P7-09 y P7-10) y el T-18 (§ de CD-05). Pendientes: 13 celdas `[[REVISIÓN HUMANA]]`; Tabla C.4 con 5.000 iteraciones; imagen de la Figura 8.1 para LaTeX. Sin commit.
+
+## Estado vigente — 8 de octubre de 2026: revisión de la Comisión sólo del SD8
+
+`Revision/revision_comision_informe2_SD8.md` aplica el prompt del Informe 2 al SD8 tras corregir sus contradicciones. Puntaje 0 por 13 celdas `[[REVISIÓN HUMANA]]` y RBS en lista; sin la causal, 40 (antes 20). Pendientes: RBS dibujada; riesgos del Caso 19 ausentes (enlace de Concepción; peak de septiembre sobre la marcha blanca E2); costo-beneficio repetido en 32 fichas; referencias sin cita; «13 puestos» de C-04; T-16 R8-11 desalineado con 8.A; cámaras en R8-21. No se modificó ningún entregable. Sin commit.
+
+## Estado vigente — 8 de octubre de 2026: contradicciones del SD8 corregidas
+
+Regla del usuario: en cada contradicción manda el subdocumento anterior, salvo algo muy importante. Se corrigieron en SD8 (cuerpo, anexos y T-16) las siete contradicciones de su hoja en la planilla:
+- C-12 (SD4 manda): el RPO ≤15 min se cumple con tres caminos; la falla de los tres seguida de destrucción del sitio es riesgo residual justificado (RT-02.11; SD4 4.3.2.4). Introducción, Tabla 8.1, 8.3.3, R8-05, nota de 8.B, E8-05 y T-16 R8-05 ya no dicen «aceptar el riesgo no satisface Bases».
+- C-14: SD8 8.2.3 dice 89,9 % para el H9. Excepción a la regla: también se cambió SD7 7.3.1 a «al menos el 89,9 %», porque es el resultado calculado de su propio T-15 (Tabla 5.2).
+- C-15: SD8 8.2.3 aclara que los 9.336 HH de soporte puente son parte de las 16.664 HH del período 16–20 de la Tabla 7.4. La etiqueta de esa fila del SD7 no se tocó.
+- C-16 (SD7 7.2.2 manda): E8-01 y R8-11 describen clases de tamaño fundadas en T-12 y T-11 con tríada ±25 %, sin llamarlas «supuestas».
+- C-17: «antes del H7 (mes 16) y del H12 (mes 21)» en R8-22, E8-07 y T-16.
+- C-18: E8-11 dice que la subsanación consume la reserva del hito; H2–H10 (13–35 días hábiles) la absorben y el H1 (6) no.
+- C-21: suspensión del proveedor de lácteos «de marzo a septiembre de 2026» en 8.3.3 y E8-08.
+Se actualizaron las declaraciones de IA de los tres archivos y `Resumen/LAFROX-Subdocumento8-Resumen.md`. La planilla `.xlsx` no se modificó (estaba abierta en Excel): falta marcar la columna J de la hoja SD8. Sin commit.
+
 ## Estado vigente — 8 de octubre de 2026: segunda revisión de la Comisión y planilla de contradicciones
 
-Se reemplazó `Revision/revision_comision_informe2.md` con una nueva corrida del prompt sobre SD1–SD8 y SD13; el SD9 no se evaluó por instrucción del usuario. Puntaje actual 0 en todos los ítems por las 204 celdas `[[REVISIÓN HUMANA]]`; sin esa causal, 23,4 sobre el 89 % evaluado. Las 22 contradicciones entre subdocumentos (8 altas, 9 medias y 5 bajas) están en `../Contradicciones_LafroX_Informe2.xlsx`, fuera del repositorio porque la rama sólo admite `.md`: una hoja por subdocumento y cada contradicción registrada en una sola hoja, la del subdocumento que debe corregirse. No se modificó ningún entregable. Sin commit.
+Se reemplazó `Revision/revision_comision_informe2.md` con una nueva corrida del prompt sobre SD1–SD8 y SD13; el SD9 no se evaluó por instrucción del usuario. Puntaje actual 0 en todos los ítems por las 204 celdas `[[REVISIÓN HUMANA]]`; sin esa causal, 23,4 sobre el 89 % evaluado. Las 22 contradicciones entre subdocumentos (8 altas, 9 medias y 5 bajas) están en `../Contradicciones_LafroX_Informe2.xlsx`, fuera del repositorio porque la rama sólo admite `.md`: hoja Registro con una fila por contradicción y una hoja por subdocumento con todas las contradicciones en que participa, sincronizadas: la acción marcada en la columna J de una hoja aparece en la columna K de la otra y el estado común se recalcula en ambas. No se modificó ningún entregable. Sin commit.
 
 ## Estado vigente — 8 de octubre de 2026: guías de lectura en Resumen
 
