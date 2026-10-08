@@ -1,0 +1,140 @@
+\section{Modelo}
+\label{sec:sd5-5-1}
+
+El modelo separa identidad comercial, lote sanitario, unidad logística, compromiso del pedido y evidencia de entrega. La Figura~\ref{fig:sd5-mr-general} presenta las relaciones generales y las Figuras~\ref{fig:sd5-inventario}--\ref{fig:sd5-dimensional} desarrollan inventario, pedido/preparación, reparto, custodia, cobranza/documentos y analítica. El diccionario 5-A contiene cada atributo; 5-B y 5-C precisan integridad y validación.
+
+\subsection{Dominios de información y almacenes lógicos}
+\label{sec:sd5-5-1-1}
+
+El modelo lógico se presenta por dominios: Figuras 5.2--5.6 y A5.1--A5.2 forman sus vistas relacionales; 5.7 presenta el modelo dimensional y A5.3 las estructuras de telemetría, caché y objetos. La Figura 5.1 presenta el MR general de datos de la solución; las Figuras 5.2--5.7 y A5.1--A5.3 desarrollan sus partes con tablas y relaciones específicas. Las vistas por dominio muestran claves y relaciones esenciales; el diccionario 5-A conserva todos los atributos y tipos. Una caja de referencia en otra vista no redefine la tabla ni representa otra base de datos.
+
+Los quince dominios lógicos de S4 distribuyen autoridad y responsabilidad funcional. Maestros y configuración, preventa, rutas, reparto, cobranza/finanzas, Calidad/trazabilidad, EDI, gobierno/acceso y notificaciones residen en los almacenes centrales declarados; inventario y preparación conservan autoridad en PostgreSQL del sitio. Telemetría usa DynamoDB para ingesta térmica y S3/Glue/Redshift para detalle y agregados; BI consulta Redshift/QuickSight. Redis conserva proyecciones y S3\_DOCS evidencia por clase de retención.
+
+El Anexo 5-B integra los quince nombres, módulos, ubicaciones y motores. BD\_RUTAS tiene autoridad central, con itinerarios descargados de consulta; DMS de Talca replica al esquema lector separado. La distinción permite que una operación local siga confirmada en su perímetro sin presentar la proyección central como actualizada durante un corte.
+
+M12 captura telemetría; Calidad decide disposición sanitaria. Una excursión menor transitoria genera advertencia; una crítica o sostenida activa el bloqueo definido en S3/S4 y la resolución final corresponde a Calidad. El ERP conserva emisión tributaria única. Estas responsabilidades evitan tanto dos escritores de un saldo como una resolución sanitaria atribuida al sensor.
+
+\subsection{Modelo conceptual de la operación de Puelche}
+\label{sec:sd5-5-1-2}
+
+La Figura 5.1 presenta el MR general con las tablas principales y sus relaciones, agrupadas por dominio; las vistas específicas desarrollan cada parte. Distingue las referencias entre almacenes de las FK físicas y mantiene la vista conceptual de la operación. Las vistas de detalle relacionan productos y lotes con recepción, contenido logístico, custodia, asignaciones del pedido y cumplimiento. El lote se identifica por GTIN canónico+número del proveedor; la unidad tiene UUID interno y SSCC exterior. La composición admite varios lotes por unidad y unidades por lote.
+
+\figurafuente{1.0}{figuras/Fig_5-1_MR_General.png}
+  {MR general de datos de la solución}{fig:sd5-mr-general}
+  {elaboración propia de LafroX a partir de las decisiones 16.1 N.\textdegree{} 1, N.\textdegree{} 2, N.\textdegree{} 4 y N.\textdegree{} 14 del capítulo 16 del caso (PUCV, 2026c), de los requisitos RT-05.01 y RT-05.23 de las Bases Técnicas Transversales (PUCV, 2026d) y de RF-01.07 y RF-09 del Formulario T-12.}
+
+Cada registro de promesa tiene UUID propio como PK; \texttt{version} ordena sus cambios con unicidad por pedido. La entrega referencia la ORIGINAL del mismo pedido. El pedido conserva ORIGINAL y revisiones como compromisos distintos. Una entrega por pedido admite varios intentos y líneas fragmentadas por asignación/lote/unidad; POD y cobro se vinculan a esos hechos. La cabecera de custodia contiene el evento y su detalle identifica objetos y cantidades. El cliente y sus puntos se desarrollan en 5-M, sin crear una instalación de inventario por cada local de entrega. El documento fiscal emitido por ERP antecede al traslado; el POD acredita el hecho posterior.
+
+\subsection{Maestros compartidos e identidad única}
+\label{sec:sd5-5-1-3}
+
+Un maestro tiene dueño funcional, UUID estable e historial; la integración traduce códigos externos mediante equivalencias versionadas y nunca crea identidades paralelas. Producto conserva un GTIN canónico único cuando aplica; otros GTIN/códigos se resuelven por equivalencia aprobada, sin compartir identidad sanitaria entre productos. Corregir descripción o vencimiento no cambia el identificador ni rompe historia.
+
+La Figura A5.1 del Anexo 5-M dibuja maestros, puntos, instalaciones y equivalencias. Un cliente puede tener varios puntos; sitio representa instalación operativa y no cada cliente. Comercial valida productos/clientes, Finanzas condiciones de crédito y Calidad reglas sanitarias; el módulo dueño publica la versión y las copias locales registran instante de actualización. Los conflictos de código se aíslan y concilian antes de publicar, conforme RT-05.09 y 5.2.4.
+
+\subsection{Recepción, inventario y unidad logística}
+\label{sec:sd5-5-1-4}
+
+La Figura 5.2 distingue recepción, lote, unidad, contenido, saldo, movimiento, reserva y conteo cíclico. Se exige lote al cierre de las líneas de productos que lo requieren; productos exentos y unidades VACIA/ABIERTA conservan NULL legítimos. El SSCC de 18 dígitos no sustituye el UUID; vencimiento es atributo del lote.
+
+\figurafuente{1.0}{figuras/Fig_5-2_Inventario.png}
+  {Recepción, inventario, lote y unidad logística}{fig:sd5-inventario}
+  {elaboración propia de LafroX a partir de la decisión 16.1 N.\textdegree{} 2 y N.\textdegree{} 14 del caso, del Subdocumento 4, 4.1.3.6, y de RF-01.07 y RF-02 del Formulario T-12.}
+
+El saldo tiene grano sitio+ubicación+producto+lote+unidad de medida; la conversión se valida antes de comparar o reservar. La transacción bloquea el saldo, valida disponibilidad y registra movimiento/outbox sin duplicar reintentos. Varias asignaciones abastecen una línea de pedido. \texttt{secuencia\_documento} solo existe si el documento de origen aporta ordinal; no se inventa para identificar un hecho histórico. Los ajustes y anulaciones de 5-C conservan causa, dirección y movimiento original; no sobrescriben saldo ni evidencia sin autorización.
+
+\subsection{Preventa, preparación y misión de preparación}
+\label{sec:sd5-5-1-5}
+
+En TERRENO, \texttt{preventista\_id} identifica al capturador autorizado; MOSTRADOR, EDI y PORTAL mantienen NULL sin inventar un preventista. La identidad de quien captura o integra se registra en \texttt{gob\_auditoria.actor\_id} con UUID/correlación y \texttt{origen\_captura}: persona autorizada, cuenta de autoatención o actor técnico autenticado, respectivamente. El responsable comercial no se infiere de ese campo. M3 valida cuenta/permisos al confirmar; un pedido pendiente no crea reserva ni promesa de entrega confirmada.
+
+La Figura 5.3 relaciona pedido, líneas, promesas, asignaciones y misiones; la reserva que abastece cada asignación se detalla en la Figura 5.2. La fecha/ventana ORIGINAL se fija al confirmar el pedido y permanece inmutable; una reprogramación agrega REVISION con motivo, actor y autorización. \texttt{fecha\_prometida} y vigencias son timestamps UTC, con zona de origen conocida.
+
+\figurafuente{1.0}{figuras/Fig_5-3_Pedido_Preparacion.png}
+  {Pedido, línea, asignación, misión y confirmación de preparación}{fig:sd5-pedido}
+  {elaboración propia de LafroX a partir de RNG-01, RNG-15 y RNG-05 del Subdocumento 3, y del Subdocumento 4, 4.1.4.4.}
+
+La promesa conserva las condiciones de S3: 24 h para urbano ingresado antes de las 14:00 y 48 h para rural, periférico o abastecido por cross-docking, según RNG-15. OTIF evalúa ORIGINAL aun después de su cierre de vigencia. La preparación puede dividir una línea entre lotes/unidades y confirmar cantidades parciales; la reserva validada por PostgreSQL del sitio sigue confirmada localmente durante un corte, con consolidación central pendiente. El móvil no reserva contra una copia indicativa de stock.
+
+\subsection{Rutas, reparto, entrega y devolución}
+\label{sec:sd5-5-1-6}
+
+La Figura 5.4 separa plan de ruta, viaje, parada, entrega e intento. BD\_RUTAS conserva autoridad central; el itinerario descargado permite ejecutar la ruta autorizada sin señal. Una entrega por pedido admite visitas fallidas, parciales y completas sin sobrescribir las anteriores.
+
+\figurafuente{1.0}{figuras/Fig_5-4_Rutas_Reparto.png}
+  {Ruta, viaje, paradas, entrega, intento y devolución}{fig:sd5-rutas}
+  {elaboración propia de LafroX a partir de las decisiones 16.1 N.\textdegree{} 1, N.\textdegree{} 3, N.\textdegree{} 10 y N.\textdegree{} 15 del caso, y del Subdocumento 4, 4.1.4.5 y 4.1.4.8.}
+
+Las líneas del intento conservan asignación, lote/unidad, cantidad aceptada/rechazada y causal. La identidad del fragmento se reutiliza en reintentos; distintas asignaciones no se deduplican por compartir producto/cantidad. Una devolución vincula el hecho de origen y su recepción/disposición; la cuenta de envases mantiene saldo por cliente y tipo, sin serialización individual. Los geofences de configuración se distinguen de coordenadas personales GPS, cuya conservación total es doce meses.
+
+\subsection{Trazabilidad sanitaria y cadena de custodia}
+\label{sec:sd5-5-1-7}
+
+La Figura 5.5 relaciona evento, objetos, documentos, sensor, asociación temporal y resolución de Calidad. EPCIS 2.0 y CBV 2.0 tienen versiones separadas; \texttt{perfil\_evento} identifica el contrato versionado de la solución descrito en 5-C (GS1, 2022a, 2022b). \texttt{parent\_event\_id} representa causalidad interna y admite NULL en raíz. \texttt{epcis\_parent\_id} identifica el contenedor de una agregación y no un evento causal.
+
+\figurafuente{1.0}{figuras/Fig_5-5_Custodia_EPCIS.png}
+  {Cadena de custodia de lote y de unidad logística en formato EPCIS}{fig:sd5-custodia}
+  {elaboración propia de LafroX a partir de RF-01.07, RF-09 y RNF-09.02 del Formulario T-12, del Subdocumento 4, 4.1.4.2, y de RT-05.23 según el capítulo 15 del caso.}
+
+Una cabecera puede mencionar varios objetos/cantidades; la asociación temporal vincula sensor, lote, unidad y producto con las lecturas efectivamente aplicables. Regla y calibración se conservan en su versión histórica. Una advertencia menor transitoria no equivale a disposición final; el bloqueo crítico o sostenido se aplica conforme S3/S4 y únicamente Calidad libera o rechaza con fundamento. Lecturas inválidas se preservan marcadas, separando defecto de sensor, excursión y pérdida de cobertura.
+
+La consulta forward sigue lote\,$\rightarrow$\,contenido/unidades \,$\rightarrow$\, objetos/eventos \,$\rightarrow$\, asignaciones \,$\rightarrow$\, intentos/entregas \,$\rightarrow$\, documentos/POD. La backward invierte ese recorrido hasta recepción y proveedor; múltiples recepciones del mismo lote se distinguen por su evidencia, sin atribuir origen único cuando no puede determinarse.
+
+El retiro identifica clientes y documentos en $\le$2~h desde la solicitud de Calidad. Su presupuesto de diseño es 5~min identificación + 10 custodia + 15 entregas/documentos + 10 pendientes + 15 expediente + 15 revisión + 15 margen = 85~min, a demostrar en prueba. Calidad consulta autoridades locales y central; despacho de cada sitio contrasta carga/ruta y conductores aportan pendientes. Los clientes planificados con lote aún offline integran el universo potencial a contactar/bloquear, distinto de entregas confirmadas. A los 30~min sin respuesta se escala a Operaciones; una lista parcial que no identifica ese universo no cumple aceptación. El Anexo 5-J fija evidencia y prueba offline; un sello de última sincronización por sí solo no demuestra completitud.
+
+\subsection{Cobranza, envases, documentos y POD}
+\label{sec:sd5-5-1-8}
+
+La Figura 5.6 diferencia cobro, aplicación, autorización, compensación, rendición, documento, carga y POD. El ERP es único emisor fiscal y el documento habilitador precede al traslado; no existe timbre diferido desde el móvil. POD, acuse técnico SII y recepción de mercadería son evidencias distintas, con representación en papel para destinatario no habilitado según S4.
+
+\figurafuente{1.0}{figuras/Fig_5-6_Cobro_Documentos.png}
+  {Cobro, rendición, cuenta corriente de envases y documento tributario}{fig:sd5-cobro}
+  {elaboración propia de LafroX a partir de RT-16.14 y RT-16.09 de las Bases Técnicas Transversales (PUCV, 2026d), del Anexo 4-U del Subdocumento 4, y de la decisión 16.1 N.\textdegree{} 6 y N.\textdegree{} 12 del caso.}
+
+La identidad fiscal usa tipo/emisor/folio/versión; hash verifica contenido y las referencias tipadas comprueban la entidad de negocio. POD admite varias evidencias por entrega/intento; el móvil puede cerrar localmente bajo autorización con evidencia durable, conservando estado de verificación central posterior.
+
+Un timeout de POS mantiene pago incierto: consulta, conciliación y eventual cancelación/compensación dependen del contrato del tercero. Un pago alternativo necesita autorización financiera y vínculo al primero; agotar reintentos no prueba rechazo ni evita por sí mismo doble cargo. Autoriza un actor con rol financiero distinto del ejecutor. \texttt{ajuste\_redondeo} expresa importe registrado menos importe externo comprobado solo para tarjeta; efectivo/crédito no fabrican autorización externa. Las cuentas de envases son saldos por cliente/tipo. S4, Anexo 4-M, define AL-DTE-01 y AL-DR-01; su aceptación requiere ensayo.
+
+\subsection{Intercambio electrónico, notificaciones y gobierno del acceso}
+\label{sec:sd5-5-1-9}
+
+La Figura A5.2 de 5-M desarrolla perfil de cadena, equivalencias, mensajes/ASN, avisos, asignación de roles, auditoría y excepciones. El perfil establece esquema y campos admitidos; se conserva mensaje original, hash, identidad externa y correlación. Un reintento devuelve resultado previo sin duplicar efecto. Un código de cadena se traduce a identidad canónica; no crea cliente/producto por defecto.
+
+La auditoría registra actor, dispositivo, instante, operación, resultado y valores anteriores/posteriores mínimos. La excepción conserva contexto histórico, regla y versión; su identidad es (\texttt{correlacion\_id}, \texttt{clave}), no hora de llegada. Los mensajes/notificaciones usan solo integraciones habilitadas en S4 y su estado de envío no sustituye recepción de mercadería ni acuse fiscal.
+
+\subsection{Telemetría, caché y objetos}
+\label{sec:sd5-5-1-10}
+
+La Figura A5.3 del Anexo 5-M distingue ingesta térmica cruda en DynamoDB, archivo detallado S3 Parquet/Glue, serie/analítica Redshift, posición personal y objetos. Raw dura treinta días; el perfil detallado y las versiones que lo interpretan permanecen cinco años. El agregado no permite reconstruir una lectura perdida, por lo que no sustituye el detalle.
+
+S4, Anexo 4-W.4, fija 21 puntos térmicos $\times$288 y 28 termógrafos $\times$162 = 10.584 muestras/día. Operan tres gateways: dos en Talca y uno en Concepción; las reservas de T-11 no agregan ingesta ordinaria. El sensor referencia su gateway, sin crear otra autoridad de maestros.
+
+GPS permanece en sa-east-1, raw treinta días y plazo personal total doce meses, sin réplica internacional. La posición no se confunde con geocerca de configuración. S3\_DOCS conserva originales por clase; Redis contiene lectura reconstruible y Room/SQLite conserva además hechos/evidencias durables. Las claves, vigencias y purgas están en 5-G.
+
+\subsection{Modelo lógico del dominio analítico}
+\label{sec:sd5-5-1-11}
+
+La Figura 5.7 define hechos y dimensiones para analizar servicio, inventario, cobro y frío. El grano e identidad de origen evitan duplicados de carga: pedido para compromiso, entrega/intento para ejecución y línea/asignación para cantidades; la entrega por pedido no cuenta cada visita como pedido independiente.
+
+\figurafuente{1.0}{figuras/Fig_5-7_Dimensional.png}
+  {Modelo dimensional de explotación}{fig:sd5-dimensional}
+  {elaboración propia de LafroX a partir de RF-11.06 y RF-11.07 del Formulario T-12, de los criterios R18-04 y R18-11 del capítulo 18 del caso, y de RNG-09 del Subdocumento 3.}
+
+El modelo incluye dimensiones de fecha, cliente, producto, sitio, ruta y canal; cliente, producto, sitio y ruta conservan versiones y vigencias. El cálculo previo al grano del pedido evita multiplicar OTIF/importes al unir líneas; cada hecho conserva origen y controles monetarios/GPS. Redshift/QuickSight sirve analítica pesada y la API consultas operativas. 5-H fija fórmulas, audiencia, filtros, profundización y latencia; costo de servir inicia E2. RT-05.10/.24/.30 deseables conservan su alcance no ofertado.
+
+\subsection{Reglas relacionales resueltas}
+\label{sec:sd5-5-1-12}
+
+Los extremos opcionales representan estados iniciales o excepciones, no omisión de controles: TERRENO exige preventista; producto con lote exigido exige lote; raíz causal es el único evento sin padre; un sensor fijo exige sitio y uno móvil vehículo. La unidad VACIA/ABIERTA puede no tener contenido; al cerrarse exige contenido y SSCC según el hito. Una misión puede no tener confirmación antes del picking, pero no cierra sin validar sus líneas. Pedido PENDIENTE no tiene promesa confirmada; al confirmarse mantiene exactamente una ORIGINAL y las revisiones autorizadas. Cada pedido admite cero o una entrega y varios intentos vinculados a esa entrega.
+
+El modelo relacional lógico se presenta por dominios en las Figuras 5.2--5.6, con atributos, claves y cardinalidades; la Figura 5.7 desarrolla el modelo dimensional analítico. Las Figuras A5.1--A5.3 de 5-M completan maestros, EDI/gobierno y telemetría, y 5-A contiene el diccionario exacto. Las FK físicas se limitan al mismo almacén; entre dominios, sedes, motores y objetos se validan identidad/versión y conciliación.
+
+Lote usa GTIN canónico+número, con vencimiento como atributo. Unidad usa UUID y SSCC exterior, composición de varios lotes y estados VACIA/ABIERTA permitidos. Saldo tiene grano sitio+ubicación+producto+lote+unidad; recepción conserva \texttt{secuencia\_documento} solo si el origen entrega ordinal. Reserva y asignación remiten a la línea de pedido concreta y permiten fragmentación por lote/unidad.
+
+Custodia separa cabecera y objetos; \texttt{parent\_event\_id} representa genealogía causal y admite NULL en raíz, mientras la agregación logística representa contenedor/contenido. \texttt{ts\_evento} y \texttt{secuencia\_linea} del detalle mantienen timestamp de cabecera y ordinal estable; las restricciones compuestas de 5-F hacen implementable la partición sin duplicar un reintento entre meses.
+
+Un pedido tiene una entrega con varios intentos; las líneas del intento distinguen asignación, lote/unidad y cantidades aceptadas/rechazadas. Promesa ORIGINAL es inmutable y la fecha/ventana usa UTC; la entrega referencia \texttt{promesa\_id}, sin columna duplicada \texttt{fecha\_promesa\_original}. Las revisiones autorizadas no reemplazan la base de OTIF.
+
+Documento fiscal, POD, acuse técnico y recepción de mercadería conservan identidad propia. La clave fiscal incluye tipo/emisor/folio/versión; el hash verifica contenido. El ERP emite antes del traslado. Cobro y compensación se concilian con segregación de autorizador, nunca mediante una corrección silenciosa de importe.
+
+El Anexo 5-C define parámetros tipados, perfiles EPCIS/CBV separados, movimientos/reversiones y vigencias sin solapamiento; 5-F declara índices y unicidad global. Los casos de borde se comprobarán en PREPROD según 5-J, sin afirmar que el diseño documental ya equivale a restricciones ejecutadas.

@@ -1,0 +1,84 @@
+\section{Gestión de datos}
+\label{sec:sd5-5-2}
+
+Esta sección desarrolla RT-05.02--10: motor y paradigma, consistencia y disponibilidad, garantías de escritura, autoridad offline, gobierno de maestros, calidad, separación analítica, retención y exportación. Cada decisión se aplica a los dominios de 5.1 y define su comportamiento ante fallos.
+
+\subsection{Paradigma y motor de persistencia por dominio}
+\label{sec:sd5-5-2-1}
+
+Los quince nombres lógicos de S4 separan responsabilidades de escritura, sin exigir quince motores. El Anexo 5-B integra dominio, ubicación, motor y autoridad. PostgreSQL 16/PostGIS sostiene relaciones, restricciones e historia; Aurora concentra los dominios centrales y los PostgreSQL de sitio sostienen inventario y preparación bajo una sola autoridad por agregado. BD\_RUTAS tiene autoridad central en Aurora y copias de consulta autorizadas en sitio o móvil.
+
+Frente a una partición de red, se conserva consistencia dentro del perímetro de la autoridad: bodega puede confirmar contra su PostgreSQL local y terreno puede registrar hechos autorizados durablemente. La consolidación central queda pendiente. Una copia indicativa de stock no permite crear reservas. DynamoDB acepta ingesta térmica eventual; S3 Parquet conserva detalle y Redshift explota series y agregados. Redis/ElastiCache contiene proyecciones reconstruibles y S3\_DOCS objetos versionados. Las credenciales de AWS son administración, no un motor de persistencia adicional.
+
+La elección relacional evita saldos y cobros divergentes; el modelo columnar reduce barridos analíticos sin competir con OLTP. La disponibilidad local no concede autoridad para modificar compromisos centrales ni para crear permisos offline.
+
+\subsection{Transaccionalidad, aislamiento e idempotencia}
+\label{sec:sd5-5-2-2}
+
+Negocio, auditoría y outbox se escriben en la misma transacción del módulo dueño. Bajo lectura confirmada, las operaciones de saldo/reserva/cobro bloquean su agregado y validan invariantes; una clave única protege idempotencia, sin depender de consultar antes de insertar. El shipper/trabajador de S4 publica la outbox; el motor no envía directamente a la cola.
+
+Inbox y efecto se confirman en una transacción: caída previa revierte ambos; posterior al commit devuelve el resultado, sin repetir efectos. Las proyecciones no retroceden versión, pero hechos aditivos/sanitarios/financieros tardíos se conservan. Un gap reordena y solicita faltantes; tras agotar reintentos escala y concilia. Actor, dispositivo, correlación, esquema/versión e instantes de ocurrencia/registro permiten reconstrucción RT-05.03/.19.
+
+Offline, Room/SQLite persiste hecho e identidad/evidencia antes del acuse $\le$2~s. El móvil verifica autorización preemitida por Keycloak; puede cerrar localmente la entrega autorizada con consolidación pendiente. La carga/hash central confirma después el objeto. La aceptación local no afirma que la nube ya conoce el hecho ni concede autoridad para reservar contra una copia de consulta.
+
+\subsection{Autoridad de escritura y comportamiento en partición}
+\label{sec:sd5-5-2-3}
+
+Cada agregado conserva un escritor autorizado. Sin WAN, bodega consulta y escribe contra PostgreSQL local; una reserva allí validada está confirmada localmente, aunque su consolidación central siga pendiente. DMS replica exclusivamente Talca hacia un esquema central lector separado. Las demás sedes publican eventos; los consumidores centrales deduplican efectos de negocio. CDC no vuelve a aplicar esos efectos ni sustituye la outbox. BD\_RUTAS se administra centralmente y los itinerarios/manifiestos descargados permiten ejecutar la ruta autorizada offline.
+
+Sin WAN, el móvil registra intentos, entregas, cobros permitidos y evidencias bajo permisos preemitidos; stock, precio y crédito descargados son indicativos para decisiones centrales. La incertidumbre POS, autorización segregada de pago alternativo y conciliación siguen 5.1.8: un timeout no prueba rechazo ni garantiza ausencia de doble cargo.
+
+La Tabla~\ref{tab:sd5-limites-offline} compara los límites heredados de S4 y su consecuencia observable.
+
+\parte{tablas/limites_offline}
+
+Estos plazos miden objetos distintos. La vigencia del manifiesto no extiende una credencial de turno vencida. Los relevos preinscritos de 8/16~h se verifican sin enlace; Keycloak firma y renueva con conexión. La carga central del POD no bloquea el acuse durable ni el cierre local autorizado.
+
+\subsection{Gestión de datos maestros}
+\label{sec:sd5-5-2-4}
+
+El dueño funcional propone cambios, un rol habilitado aprueba y el módulo de maestros publica versión y vigencia sin solapamiento. Leandro Chamorro coordina datos según S1; responsables del CLIENTE validan Comercial, Finanzas, bodega y Calidad. Un conflicto de RUT/GTIN/código externo se aísla con original y decisión; no se fusionan lotes por semejanza ni se activan maestros incompletos por defecto.
+
+La capa anticorrupción de S4 traduce ERP/WMS/cadenas a las claves y unidades canónicas. Contratos OpenAPI/AsyncAPI, autenticación entre sistemas, modo, volumen, ventana y fallo se remiten a los Anexos 4-G, 4-H y 4-I de S4; las versiones y el preaviso mínimo de seis meses de RT-05.17 conservan lectores de la ola previa. La publicación por eventos invalida copias y deja versión/instante visible; un sitio sin enlace no crea un maestro central alternativo.
+
+\subsection{Calidad de datos}
+\label{sec:sd5-5-2-5}
+
+La calidad se valida en captura, integración y explotación con original preservado, regla/versionado, causa, dueño y resolución. La línea base del caso es 41\,\% de recepciones del producto retirado sin lote; el cierre operativo exige 100\,\% de líneas de productos con lote obligatorio completas, y SSCC solo al hito de unidad que lo requiere. VACIA/ABIERTA y producto exento admiten ausencia legítima.
+
+ISO/IEC 25012 (International Organization for Standardization, 2008) orienta dimensiones de completitud, exactitud, consistencia, unicidad, validez, oportunidad y credibilidad. 5-C fija dominios/rechazos; 5-H fija fórmulas y tablero de calidad con profundización a registro/decisión. Inventario monetario se compara contra valor contable del sitio con desviación $\le$0,3\,\%, separado de exactitud por cantidades; toda diferencia debe explicarse. La línea base 2,3\,\% no es tolerancia. Se conservan lecturas térmicas inválidas marcadas y se mide cobertura perdida, sin destruir evidencia para mejorar el indicador. El linaje de RT-05.10 es documental, conforme T-12.
+
+\subsection{Separación transaccional-analítica y modelo de explotación}
+\label{sec:sd5-5-2-6}
+
+OTIF = 100 $\times$ pedidos comprometidos entregados completos dentro de la ventana ORIGINAL / total de pedidos comprometidos del período, contando cada pedido una vez e incluyendo no entregados. La promesa original se busca por tipo ORIGINAL sin filtro de vigencia; las revisiones no cambian esa base. Metas S3: 90\,\% M15, 93\,\% M19 y 95\,\% M32. Denominador cero se muestra no aplicable, nunca 100\,\% inventado.
+
+Exactitud por cantidad = 100 $\times$ máx(0, 1 $-$ $\Sigma$\textbar cantidad sistema $-$ cantidad conteo\textbar{} / $\Sigma$\textbar cantidad conteo\textbar), con cantidades homologadas por unidad y grano sitio/ubicación/producto/lote/unidad. Si la base física es cero y sistema también cero se informa sin base; si sistema no es cero se informa diferencia y no aplicable porcentual, sin ocultarla. La desviación monetaria = 100 $\times$ $\Sigma$\textbar valor sistema $-$ valor físico\textbar{} / valor contable del sitio en CLP y misma valorización; base contable cero requiere decisión registrada. Umbral contractual $\le$0,3\,\%, independiente de exactitud por cantidades.
+
+Integridad de recepción considera exclusivamente líneas de productos que requieren lote al cierre; SSCC se exige en la unidad logística al hito correspondiente, sin penalizar VACIA/ABIERTA ni productos exentos. Los tableros operativos se consultan por API/proyecciones separadas con frescura $\le$5~min; cierre $\le$2~h desde último retorno de camión y gerencial $\le$4~h en Redshift/QuickSight. El catálogo 5-H declara audiencia, período/sitio/producto/canal, drill al hecho y documento, exportación y linaje documental. Costo de servicio inicia E2. No se ofertan por esta ampliación linaje automatizado, portal de desarrolladores ni predicción deseables excluidos en S3/S4.
+
+La analítica pesada se ejecuta en Redshift y S3 mediante Glue, separada de OLTP. Las consultas operativas puntuales usan API/proyecciones y las marcas de frescura; la CDC de Talca permanece en el esquema lector separado y no duplica el efecto de los eventos canónicos de negocio. El CLIENTE dispone de filtros, profundización y exportación autónoma del catálogo de 5-H.
+
+La creación autónoma de informes usa la autoría QuickSight integrada en las consolas, con permisos distintos de lectura y creación, conforme S4 §4.1.4.7 y §4.2.2.4, componente N-10. El modelo semántico de 5.1.11/5-H fija grano, relaciones, fórmulas y casos sin base; los informes admiten filtros guardados y envío por calendario bajo los mismos permisos, sin intervención del ADJUDICATARIO.
+
+El Anexo 5-H concentra el catálogo por audiencia, etapa, fórmula y latencia.
+
+Cada porcentaje declara su base y el caso cero; no se presentan cantidades de unidades distintas como comparables ni se excluyen pedidos no entregados. La marca de consolidación y los pendientes evitan mostrar como actualizada una cifra que no lo está.
+
+\subsection{Retención, archivado, eliminación y protección}
+\label{sec:sd5-5-2-7}
+
+La política completa por dominio/atributo está en 5-D y la clasificación/cifrado en 5-E. Documentos/POD duran seis años; expediente sanitario, máximo vida útil+seis meses/cinco años; detalle térmico, cinco años; GPS personal, doce meses totales; auditoría, siete años. Logs conservan doce meses online más veinticuatro de archivo y respaldos treinta y cinco días según S4. El tipo de objeto, y no estar en S3, determina plazo.
+
+Maestros, reglas y calibraciones se conservan mientras interpreten un expediente vigente. Un rango temporal no autoriza eliminar toda una partición si incluye expedientes abiertos. La purga verifica filas, versiones, derivados, cachés, réplicas y copias legibles; una retención legal/Object Lock activa aplaza la eliminación elegible y deja evidencia. Eliminar coordenada requiere impedir reconstrucción desde auditoría; geocerca de configuración no es posición personal. No se destruye clave compartida de evidencia vigente. El archivo exige acceso auditado y restauración probada; la ventana histórica de migración no es plazo de borrado.
+
+\subsection{Exportación e intercambio masivo}
+\label{sec:sd5-5-2-8}
+
+Se propone una exportación íntegra, autónoma y sin cobro adicional, operada por un rol autorizado del CLIENTE. Incluye datos aceptados e historia, maestros y equivalencias, reglas y calibraciones, auditoría, esquemas/diccionario, manifiestos y objetos con sus referencias; respeta los permisos y los plazos de retención. Se entrega CSV UTF-8 o JSON para relaciones, Parquet para series y originales de objetos, con esquemas abiertos y sin exigir software propietario para recuperar su contenido.
+
+El trabajo registra snapshot por autoridad, instante de corte y marcas de agua; captura los deltas hasta una frontera común conciliada y publica la relación de autoridades rezagadas. Una exportación incompleta se declara parcial y no se ofrece como copia íntegra. El manifiesto contiene versión de esquema, alcance, conteos, sumas de control, hashes SHA-256 y referencias de objetos; la validación compara la descarga con ese manifiesto.
+
+El CLIENTE inicia, consulta avance y descarga por enlace autenticado/temporal. Se auditan solicitante, alcance y accesos. Como parámetros iniciales de diseño, el enlace vence en 24~h y puede renovarse sin repetir paquetes; estos se purgan a siete días conservando auditoría. Identidad de trabajo y bloques verificados permiten reanudación sin duplicar/omitir datos. La aceptación ensayará reconstrucción de datos y apertura de objetos fuera de la plataforma.
+
+La carga masiva operativa de RT-05.22 usa consolas y trabajos por lotes de S4, Anexo 4-C. Un rol CLIENTE autorizado carga CSV UTF-8/JSON según contrato versionado del módulo. Se validan formato, permisos, claves, dominios y referencias antes de aplicar, conservando identidad de origen/operación. Se aceptan registros válidos independientes; dependencias/agregados inseparables se rechazan completos. El informe consultable/descargable contiene estado, conteos y fila/clave, causa y regla de cada rechazo. Corregir y reenviar rechazados conserva identidad sin repetir aceptados; negocio, auditoría y acuse siguen 5.2.2. Descarga y exportación programada mantienen permisos, formatos y manifiesto.

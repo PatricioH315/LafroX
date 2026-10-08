@@ -1,0 +1,36 @@
+%% ============================================================================
+%%  05_modelo_datos/contenido.tex -- Subdocumento 5: Modelo y gestión de datos
+%%  Traspaso del LAFROX-Subdocumento5.md. Fragmentos en partes/ y tablas/.
+%% ============================================================================
+
+% Figura con pie de fuente integrado (la clase no trae macro de fuente).
+%  #1 ancho relativo  #2 archivo  #3 título  #4 etiqueta  #5 fuente
+\newcommand{\figurafuente}[5]{%
+  \begin{figure}[htbp]\centering
+    \includegraphics[width=#1\textwidth,height=0.72\textheight,keepaspectratio]{#2}
+    \caption{#3}\label{#4}
+    {\raggedright\fontsize{9pt}{11pt}\selectfont\color{lafroxGris}\emph{Fuente: #5}\par}
+  \end{figure}}
+
+% Pie de fuente de tablas (se coloca justo después de \end{tablalafrox}).
+\newcommand{\fuentetabla}[1]{%
+  {\raggedright\fontsize{9pt}{11pt}\selectfont\color{lafroxGris}\emph{Fuente: #1}\par}\vspace{8pt}}
+
+\chapter{Modelo y gestión de datos}
+\label{cap:sd5}
+
+\section*{Introducción al modelo y gestión de datos}
+
+El ítem 5 define cómo los datos sostienen trazabilidad sanitaria, cumplimiento de entrega y control de existencias para Distribuidora Puelche S.A. S2 aporta el problema; S3 y el Formulario T-12 fijan alcance y aceptación; S4 y T-11 fijan autoridades, motores, despliegue y capacidad. El capítulo desarrolla modelo, gestión, migración y desempeño sin cambiar esas decisiones.
+
+Las decisiones de este ítem aplican las Bases Administrativas (Pontificia Universidad Católica de Valparaíso [PUCV], 2026b, arts.\ 16, 17 y 85), las Bases Técnicas del Caso 02 (PUCV, 2026c, caps.\ 14--16 y 18) y las Bases Técnicas Transversales (PUCV, 2026d, §§5 y 9); su estructura y presentación siguen las Aclaraciones de licitación (PUCV, 2026a, §§2--6 y 11).
+
+Los antecedentes de empresa, problema, alcance y arquitectura proceden de los Subdocumentos 1, 2, 3 y 4, respectivamente (LafroX SpA, 2026d, 2026c, 2026b, 2026a); sus remisiones señalan el apartado específico utilizado.
+
+El cuerpo explica los modelos críticos y las decisiones de operación. El anexo aporta diccionario, cardinalidades, catálogos, retención, índices, cachés, linaje, pruebas y mapeo de migración; 5-M dibuja únicamente maestros, EDI/gobierno y telemetría que complementan las figuras del cuerpo. Los plazos y capacidades son compromisos o cálculos de diseño, no resultados de ensayos ejecutados.
+
+\parte{partes/5_1_modelo}
+\parte{partes/5_2_gestion}
+\parte{partes/5_3_migracion}
+\parte{partes/5_4_desempeno}
+\parte{partes/referencias_ia}

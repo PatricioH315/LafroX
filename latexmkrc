@@ -1,4 +1,5 @@
 # LuaLaTeX obligatorio para lafrox.cls.
+@default_files = ('LAFROX-Subdocumento5.tex', 'LAFROX-Subdocumento5-Anexos.tex');
 $pdf_mode = 4;
 $lualatex = 'lualatex --interaction=nonstopmode --synctex=1 %O %S';
 $bibtex_use = 2;

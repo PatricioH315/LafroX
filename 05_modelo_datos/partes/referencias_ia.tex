@@ -1,0 +1,30 @@
+\section*{Referencias}
+\addcontentsline{toc}{section}{Referencias}
+\label{sec:sd5-referencias}
+
+Estas fuentes sostienen las reglas y decisiones citadas en este ítem. Las fuentes locales son documentos de la licitación o de la propuesta; EPCIS/CBV y PostgreSQL respaldan exclusivamente sus contratos técnicos.
+
+\begin{itemize}[leftmargin=1.5em,itemsep=4pt]
+  \item Pontificia Universidad Católica de Valparaíso. (2026a). \emph{Aclaraciones de licitación}.
+  \item Pontificia Universidad Católica de Valparaíso. (2026b). \emph{Bases Administrativas TFEP-01/2026}.
+  \item Pontificia Universidad Católica de Valparaíso. (2026c). \emph{Bases Técnicas del Caso 02 --- Logística}.
+  \item Pontificia Universidad Católica de Valparaíso. (2026d). \emph{Bases Técnicas Transversales}, versión 1.0.
+  \item LafroX SpA. (2026d). \emph{Presentación de la empresa}, Subdocumento 1.
+  \item LafroX SpA. (2026c). \emph{Problema y necesidad}, Subdocumento 2.
+  \item LafroX SpA. (2026b). \emph{Esquema de solución y alcance}, Subdocumento 3 y anexos.
+  \item LafroX SpA. (2026a). \emph{Arquitectura}, Subdocumento 4, anexos y formularios T-11/T-12.
+  \item International Organization for Standardization. (2008). \emph{ISO/IEC 25012:2008, Software engineering --- SQuaRE --- Data quality model}. Dimensiones de calidad citadas en 5.2.5; no es fuente de umbrales numéricos.
+  \item GS1. (2022a). \emph{EPCIS Standard}, release 2.0, junio de 2022. \url{https://ref.gs1.org/standards/epcis/2.0.1/}
+  \item GS1. (2022b). \emph{Core Business Vocabulary Standard}, release 2.0. \url{https://ref.gs1.org/standards/cbv/2.0.0/}
+  \item PostgreSQL Global Development Group. (2023). \emph{PostgreSQL 16 Documentation: Constraints; Table Partitioning}. Restricciones: \url{https://www.postgresql.org/docs/16/ddl-constraints.html}; particionado: \url{https://www.postgresql.org/docs/16/ddl-partitioning.html}. Aplicación: 5-F.
+\end{itemize}
+
+\section*{Declaración de uso de IA}
+\addcontentsline{toc}{section}{Declaración de uso de IA}
+\label{sec:sd5-ia}
+
+La herramienta empleada en la elaboración de este capítulo fue un asistente de programación con acceso a los documentos de las Bases y a los subdocumentos previos. Asistió en la organización del material, la redacción del texto, la construcción de los diagramas en notación Mermaid, la verificación de consistencia entre entidades y el cálculo de los escenarios de carga tomados del Subdocumento 4. \textbf{La revisión humana final se realiza sobre el consolidado y no está ejecutada en el estado actual de este archivo}: las filas de la tabla siguiente registran esa situación sin atribuir una aprobación que nadie ha firmado.
+
+\parte{tablas/uso_ia}
+
+Una advertencia cierra esta declaración y evita que se lea como una formalidad. \textbf{Un diagrama generado con asistencia no es evidencia de que el diagrama sea correcto}: cada entidad, cada cardinalidad y cada relación de este capítulo deben ser verificadas por una persona contra la decisión de diseño que representan. Lo que sí quedó comprobado en la elaboración de este archivo es de alcance limitado y conviene enunciarlo sin exagerarlo: se verificó el balanceo de los bloques de código, el cierre de cada bloque Mermaid, la correspondencia entre cada llamada y su figura, la numeración correlativa de figuras y tablas y la resolución de todas las anclas internas del índice. \textbf{Eso no equivale a una prueba de renderizado}: la escritura de un bloque Mermaid balanceado no garantiza que el motor de diagrama empleado por el pipeline de publicación lo dibuje, y en este estado no se ha compilado el documento a PDF ni se ha inspeccionado ninguna imagen resultante. El renderizado queda como verificación pendiente. Lo mismo vale para las cifras: los cálculos de carga y de volumen se recalcularon contra el Subdocumento 4, y su verificación formal corresponde a la etapa de revisión del consolidado.

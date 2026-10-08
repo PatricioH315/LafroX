@@ -1,0 +1,24 @@
+%  Leyenda de propietario funcional y de sensibilidad -- generada desde el anexo en Markdown
+\begin{tablalafrox}{Leyenda de propietario funcional y de sensibilidad}{tab:sd5-a1}%
+  {F{0.085} Y F{0.376} F{0.154}}%
+  {\cab{Código} & \cab{Significado} & \cab{Dueño funcional} & \cab{Sensibilidad y control exigido}}
+  \texttt{MAE} & Maestros y configuración; dueño de clientes, proveedores, productos, unidades, sitios, vehículos y parámetros & Responsable funcional del dominio en el CLIENTE; LafroX administra técnicamente & \texttt{ME} \\
+  \texttt{INV} & Recepción e inventario; dueño de lote, unidad logística, saldo, reserva y conteo & Responsable funcional del dominio en el CLIENTE; LafroX administra técnicamente & \texttt{ME}, \texttt{CR} en la unidad con responsable \\
+  \texttt{CAL} & Calidad y trazabilidad; dueño de sensor, regla térmica, calibración, lectura y custodia & Responsable funcional del dominio en el CLIENTE; LafroX administra técnicamente & \texttt{ME}, \texttt{CR} en el actor del evento \\
+  \texttt{PRE} & Preventa; dueño de tarifa, pedido, línea, promesa y asignación & Responsable funcional del dominio en el CLIENTE; LafroX administra técnicamente & \texttt{ME}, \texttt{AL} en importe y crédito \\
+  \texttt{PREP} & Preparación; dueño de misión y confirmación de picking & Responsable funcional del dominio en el CLIENTE; LafroX administra técnicamente & \texttt{ME} \\
+  \texttt{RUT} & Rutas; dueño de ruta, viaje, parada y geocerca & Responsable funcional del dominio en el CLIENTE; LafroX administra técnicamente & \texttt{CR} en la posición y en el conductor \\
+  \texttt{REP} & Reparto y devolución; dueño de entrega, intento, causal, devolución y cuenta de envases & Responsable funcional del dominio en el CLIENTE; LafroX administra técnicamente & \texttt{ME}, \texttt{CR} en el receptor \\
+  \texttt{COB} & Cobranza y finanzas; dueño de saldo, cobro, pos, compensación, rendición, cuadratura y descuadre & Responsable funcional del dominio en el CLIENTE; LafroX administra técnicamente & \texttt{AL} \\
+  \texttt{DOC} & Documentos y objetos; dueño de documento, referencia, POD, acuse técnico y objeto almacenado & Responsable funcional del dominio en el CLIENTE; LafroX administra técnicamente & \texttt{AL} en el documento, \texttt{ME} en el envoltorio \\
+  \texttt{EDI} & Intercambio electrónico; dueño de perfil de cadena, mensaje, equivalencia y ASN & Responsable funcional del dominio en el CLIENTE; LafroX administra técnicamente & \texttt{ME} \\
+  \texttt{NOT} & Notificaciones; dueño de plantilla, preferencia, aviso e intento de envío & Responsable funcional del dominio en el CLIENTE; LafroX administra técnicamente & \texttt{CR} en el contacto del destinatario \\
+  \texttt{TEL} & Telemetría; dueño de lectura cruda, archivo, serie consolidada y posición & Responsable funcional del dominio en el CLIENTE; LafroX administra técnicamente & \texttt{ME}, \texttt{CR} en la posición \\
+  \texttt{GOB} & Gobierno y acceso; dueño de actor, asignación, auditoría y excepción de sincronización & Responsable funcional del dominio en el CLIENTE; LafroX administra técnicamente & \texttt{AL} en la auditoría \\
+  \texttt{DER} & Proyección derivada; su autoridad es la entidad de origen y ningún proceso escribe salvo el que la publica & Responsable funcional del dominio en el CLIENTE; LafroX administra técnicamente & \texttt{ME} \\
+  \texttt{ANA} & Explotación; dueño de dimensión y hecho, alimentados desde la fuente transaccional & Responsable funcional del dominio en el CLIENTE; LafroX administra técnicamente & \texttt{AL} cuando el atributo es un importe \\
+  \texttt{AL} & Datos de alta sensibilidad: condicion financiera, importe, saldo, documento e identidad tributaria & No aplica: código de sensibilidad & Cifrado a nivel de campo o de servidor, mínimo privilegio y consulta auditada \\
+  \texttt{CR} & Datos críticos o identificadores que permiten reconstruir quién es la persona o dónde está & No aplica: código de sensibilidad & Cifrado a nivel de campo, acceso reforzado y consulta auditada \\
+  \texttt{ME} & Datos de sensibilidad media: medidas de operación, catálogos, estados y referencias técnicas & No aplica: código de sensibilidad & Acceso por rol y cifrado en reposo del almacén \\
+\end{tablalafrox}
+\fuentetabla{elaboración propia de LafroX a partir de los quince nombres lógicos de persistencia de S4, de RT-05.01 y RT-16 de las Bases Técnicas Transversales (PUCV, 2026d) y de la regla de propietario funcional del Anexo 5-B.}

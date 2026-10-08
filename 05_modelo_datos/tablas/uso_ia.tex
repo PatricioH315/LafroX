@@ -1,0 +1,40 @@
+%  Tabla 5.4 (Uso de IA por apartado) -- traída con \parte{tablas/uso_ia}
+\begin{tablalafrox}{Uso de IA por apartado del capítulo}{tab:sd5-uso-ia}%
+  {L{1.7cm} L{2.0cm} Y C{1.3cm} C{1.4cm} L{3.4cm}}%
+  {\cab{Sección} & \cab{Herramienta} & \cab{Finalidad del uso} & \cab{Nivel en texto} & \cab{Nivel en diagramas} & \cab{Revisión humana}}
+  5.1.1 & Asistente de programación & Estructuración de dominios y almacenes lógicos a partir de S4 y RT-05.01 & Alto & No aplica & No realizada; pendiente de rol de datos de LAFROX \\
+  5.1.2 & Asistente de programación & Redacción del modelo conceptual y construcción de las Figuras 5.1 y 5.2 & Alto & Alto & No realizada; pendiente de verificación de cardinalidades contra la decisión de diseño \\
+  5.1.3 & Asistente de programación & Redacción de identidad compartida y equivalencias & Alto & Alto & No realizada; verificar unicidad de claves naturales declaradas \\
+  5.1.4 & Asistente de programación & Redacción de recepción, lote y unidad logística & Alto & Alto & No realizada; verificar distinción entre SSCC e identificador interno \\
+  5.1.5 & Asistente de programación & Redacción de preventa, reserva y preparación & Alto & Alto & No realizada; verificar conciliación de reservas y saldos \\
+  5.1.6 & Asistente de programación & Redacción de ruta, entrega, intento y devolución & Alto & Alto & No realizada; verificar inmutabilidad de la promesa original \\
+  5.1.7 & Asistente de programación & Redacción de custodia, excursión y asociación temporal & Alto & Alto & No realizada; verificar genealogía causal y composición logística \\
+  5.1.8 & Asistente de programación & Redacción de cobranza, documentos y POD & Alto & Alto & No realizada; verificar que el documento antecede al movimiento \\
+  5.1.9 & Asistente de programación & Redacción de intercambio y gobierno del acceso & Alto & Alto & No realizada; verificar roles productor, dueño funcional y consumidor \\
+  5.1.10 & Asistente de programación & Redacción de telemetría, caché y objetos & Alto & Alto & No realizada; verificar vida útil de 30 días del dato crudo \\
+  5.1.11 & Asistente de programación & Redacción del modelo dimensional de explotación & Alto & Alto & No realizada; verificar grano declarado de cada hecho \\
+  5.1.12 & Asistente de programación & Redacción de reglas relacionales resueltas & Alto & No aplica & No realizada; verificar restricciones y acciones al borrar \\
+  5.2.1 & Asistente de programación & Redacción de paradigmas, motores y su posición & Alto & No aplica & No realizada; verificar que ningún Warehouse se ubique en Aurora \\
+  5.2.2 & Asistente de programación & Redacción de transaccionalidad, aislamiento e idempotencia & Alto & Alto & No realizada; verificar aislamiento declarado por agregado \\
+  5.2.3 & Asistente de programación & Redacción de autoridad de escritura y comportamiento en partición & Alto & No aplica & No realizada; verificar comportamiento offline por dominio \\
+  5.2.4 & Asistente de programación & Redacción de la gestión de datos maestros & Alto & No aplica & No realizada; verificar dueño funcional único por entidad \\
+  5.2.5 & Asistente de programación & Redacción de controles de calidad & Alto & No aplica & No realizada; verificar denominadores de cada control \\
+  5.2.6 & Asistente de programación & Redacción de la separación analítica y fórmulas & Alto & No aplica & No realizada; verificar latencia declarada de cada indicador \\
+  5.2.7 & Asistente de programación & Redacción de retención, archivado y eliminación & Alto & No aplica & No realizada; verificar plazos contra S4 y el caso \\
+  5.2.8 & Asistente de programación & Redacción de exportación e intercambio masivo & Alto & No aplica & No realizada; verificar manifiesto, hash y reintento \\
+  5.3.1 & Asistente de programación & Cálculo del volumen migrable y redacción del alcance & Alto & No aplica & No realizada; verificar la aritmética de 32,11 GB y su sensibilidad \\
+  5.3.2 & Asistente de programación & Redacción del perfilado, saneamiento y causas de rechazo & Alto & Alto & No realizada; verificar que no exista carga silenciosa \\
+  5.3.3 & Asistente de programación & Redacción de transformación y artefactos versionados & Alto & No aplica & No realizada; verificar la regla de derivación declarada \\
+  5.3.4 & Asistente de programación & Redacción de la secuencia por olas y calendario & Alto & Alto & No realizada; verificar dos ensayos completos e independientes \\
+  5.3.5 & Asistente de programación & Redacción de conciliación y criterios de corte & Alto & No aplica & No realizada; verificar el criterio de aprobación \\
+  5.3.6 & Asistente de programación & Redacción del delta, la reversión y la continuidad del ERP & Alto & No aplica & No realizada; verificar reversión probada antes del corte \\
+  5.4.1 & Asistente de programación & Recálculo de escenarios de carga desde S4 4.B & Alto & No aplica & No realizada; verificar 12,30, 14,66, 21,99, 17,03 y 3,54 TPS \\
+  5.4.2 & Asistente de programación & Redacción de consultas críticas e índices & Alto & No aplica & No realizada; verificar que cada índice cite atributos existentes \\
+  5.4.3 & Asistente de programación & Redacción de particionado y archivado & Alto & No aplica & No realizada; verificar unicidad particionada en PostgreSQL 16 \\
+  5.4.4 & Asistente de programación & Redacción de cachés y copia local del dispositivo & Alto & No aplica & No realizada; verificar umbrales ejecutables de invalidación \\
+  5.4.5 & Asistente de programación & Redacción de conexiones, concurrencia y colas & Alto & No aplica & No realizada; verificar límites declarados \\
+  5.4.6 & Asistente de programación & Redacción del protocolo de medición y pruebas & Alto & No aplica & No realizada; verificar periodicidad y umbral de aceptación \\
+  Referencias & Asistente de programación & Comprobación de existencia y formato de las fuentes citadas & Medio & No aplica & No realizada; verificar cada referencia contra la fuente primaria \\
+  Declaración de uso de IA & Asistente de programación & Redacción de esta declaración de trazabilidad & Medio & No aplica & No realizada; pendiente de firma \\
+\end{tablalafrox}
+\fuentetabla{registro de elaboración asistida de este subdocumento. Los niveles declarados son Ninguno, Bajo, Medio y Alto según la densidad de asistencia sobre el resultado publicado. Debe consolidarse con la revisión humana del capítulo antes de la entrega.}

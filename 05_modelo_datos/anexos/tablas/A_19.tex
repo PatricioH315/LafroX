@@ -1,0 +1,15 @@
+%  Catálogo de indicadores por fase, audiencia, latencia y exportación -- generada desde el anexo en Markdown
+\begin{landscape}\setlength{\textwidth}{\linewidth}
+\begin{tablalafrox}{Catálogo de indicadores por fase, audiencia, latencia y exportación}{tab:sd5-a19}%
+  {F{0.082} F{0.089} F{0.121} Y F{0.137} F{0.109} F{0.114} F{0.091}}%
+  {\cab{Fase} & \cab{Audiencia} & \cab{Objetivo} & \cab{Indicadores y KPI} & \cab{Dimensiones y filtros} & \cab{Profundización} & \cab{Frecuencia y latencia máxima} & \cab{Exportación}}
+  Recepción y bodega & Supervisor de bodega y calidad & Trazabilidad e integridad del ingreso & Integridad de lote, cobertura de lectura, cobertura de frío y disponibilidad de cadena de frío, vencimientos & Sitio, fecha, producto, canal, tipo de evento & Hasta línea de recepción y lectura & Diaria y continua; cinco minutos & CSV y Parquet programado \\
+  Preparación y despacho & Supervisor de preparación & Cumplimiento del compromiso de salida & Relleno de pedido, tiempo de preparación, picking sin incidencia & Sitio, fecha, cliente, zona, misión & Hasta línea y asignación & Continua; cinco minutos & CSV y Parquet programado \\
+  Reparto & Supervisor de reparto y operación & Servicio entregado y causa del no cumplimiento & Entrega completa y a tiempo, intento de entrega, causales, reentrega & Día, zona, ruta, conductor, resultado & Hasta intento y línea de entrega & Continua; cinco minutos & CSV y Parquet programado \\
+  Calidad y sanitario & Calidad y responsable sanitario & Exposición térmica y disposición de lote & Tensión térmica por producto, excursiones, bloqueos y resoluciones, cobertura de frío y disponibilidad de cadena de frío & Producto, lote, sitio, ventana, severidad & Hasta lectura y regla aplicada & Diaria y mensual; cinco minutos y cierre mensual & CSV y Parquet programado \\
+  Cobranza y finanzas & Cobranza y tesorería & Recuperación y control de caja & Cobranza y aplicación, rendición y diferencia de turno, cuentas de envases & Mes, cliente, turno, responsable, causal & Hasta cobro, pago y documento & Diaria y de cierre de turno; dos horas & CSV y Parquet programado \\
+  Gestión & Gerencia & Cumplimiento del contrato y del caso & OTIF consolidado, cobertura del plan, costo por cliente y entrega en E2, calidad de datos & Mes, cliente, sitio, producto, canal & Hasta pedido, entrega y documento & Cierre diario; cuatro horas & Exportación integral con manifiesto \\
+  Plataforma & Responsable de datos de LAFROX & Salud de la plataforma & Latencia de consolidación, cobertura de datos, excepciones de sincronización, incidentes & Ambiente, módulo, dispositivo, periodo & Hasta tablero, consulta y excepción & Continua; cinco minutos & CSV y Parquet programado \\
+\end{tablalafrox}
+\fuentetabla{elaboración propia de LafroX a partir de S3 3.4, de RT-05.25 a RT-05.29 de las Bases Técnicas Transversales (PUCV, 2026d) y de las fases del Artículo 17 de las Bases Administrativas (PUCV, 2026b).}
+\end{landscape}

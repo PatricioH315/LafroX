@@ -1,0 +1,18 @@
+% Subdocumento 5 (anexos 5-A a 5-M). Compilar desde esta carpeta: latexmk
+\documentclass[carta,firma,final]{lafrox}
+\datoslafrox{
+  documento = {Subdocumento 5 --- Anexos},
+  subtitulo = {Informe 2},
+  alcance = {Subdocumento 5},
+  formulario = {Formulario T-7},
+  fecha = {03 de octubre de 2026},
+  version = {1.0},
+  nomenclatura = {LAFROX-Subdocumento5-Anexos.pdf},
+}
+\begin{document}
+\portadalafrox
+\preliminareslafrox
+% Contador de capítulo: N-1 para el Subdocumento N.
+\setcounter{chapter}{4} % Subdocumento 5.
+\subdocumento{05_modelo_datos/anexos}
+\end{document}

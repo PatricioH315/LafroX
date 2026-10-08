@@ -1,0 +1,22 @@
+%  Clasificación por sensibilidad y control declarado -- generada desde el anexo en Markdown
+\begin{tablalafrox}{Clasificación por sensibilidad y control declarado}{tab:sd5-a15}%
+  {F{0.237} F{0.114} F{0.114} F{0.114} Y}%
+  {\cab{Clase de dato} & \cab{Sensibilidad} & \cab{Cifrado en reposo} & \cab{Cifrado a nivel de campo} & \cab{Control de acceso declarado}}
+  Documentos tributarios, POD y acuses & \texttt{AL} & Sí, con cifrado de servidor y rotación de clave & No, por decisión declarada: la emisión es única y el acceso está restringido por rol & Solo el ERP emite; lectura por rol de documentos y registro de consulta \\
+  Ubicación de personas y vehículos & \texttt{CR} & Sí & Sí & Acceso por rol de operación, uso limitado a la finalidad declarada y registro de auditoría \\
+  Identificación de personas, licencias y datos de contacto & \texttt{CR} & Sí & Sí & Credenciales cifradas de transporte sin clave estática; nunca se almacenan contraseñas del proveedor de identidad \\
+  Condición de crédito, saldo y cobro & \texttt{AL} & Sí & Sí & Acceso por rol de cobranza, con consulta auditada y segregación entre quien cobra y quien autoriza \\
+  Expediente sanitario por lote y unidad & \texttt{AL} & Sí & Sí en el identificador del responsable y en la firma & Acceso por rol de calidad y de trazabilidad; el acceso del conductor no libera el lote por sí solo \\
+  Series de temperatura, reglas y calibraciones & \texttt{ME} & Sí & No & Acceso por rol de calidad \\
+  Inventario, saldos y conteos & \texttt{ME} & Sí & No & Acceso por sitio asignado \\
+  Datos de clientes y maestro comercial & \texttt{ME} con \texttt{CR} en RUT y representante & Sí & Sí en RUT y representante & Acceso por rol de maestro, con auditoría de modificación \\
+  Objetos almacenados de evidencia & \texttt{ME} con \texttt{AL} en el documento que contienen & Sí, con bloqueo de versión & No & Acceso por referencia de clave lógica y huella verificada, nunca por ruta física \\
+  Registros de auditoría y de seguridad & \texttt{AL} & Sí & Sí en los valores anterior y posterior & Consulta por perfil de auditoría, con registro de la propia consulta \\
+  Registros técnicos de aplicación y de acceso & \texttt{ME} & Sí & No & Acceso por rol de seguridad, con retención de doce meses distinta de la auditoría \\
+  Parámetros, catálogos y equivalencias & \texttt{ME} & Sí & No & Acceso por rol de configuración, con versión y responsable del cambio \\
+  Credenciales de turno y manifiesto firmado del dispositivo & \texttt{AL} & Sí & No & Vida de 8 horas en bodega y 14 en terreno, con manifiesto de 26 horas renovado cada hora \\
+  Copias locales de identidad, precio, crédito y saldo & \texttt{CR} & Sí en el almacén del dispositivo & Sí & Copia de identidad de solo lectura por 24 horas; la copia local no confirma reservas ni precios \\
+  Lectura cruda de telemetría & \texttt{ME} & Sí & No & Acceso al proceso de ingesta; retención de 30 días \\
+  Hechos y dimensiones analíticas & \texttt{ME} con \texttt{AL} en importes & Sí en el almacén analítico & Sí en importes & Publicación sin dato crudo y con el mismo criterio de acceso que la fuente \\
+\end{tablalafrox}
+\fuentetabla{elaboración propia de LafroX a partir de RT-05.08 y RT-16 de las Bases Técnicas Transversales (PUCV, 2026d), del Artículo 85 de las Bases Administrativas (PUCV, 2026b) y de la clasificación por atributo del Anexo 5-A.}

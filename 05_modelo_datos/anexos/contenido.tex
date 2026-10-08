@@ -1,0 +1,421 @@
+%% ============================================================================
+%%  05_modelo_datos/anexos/contenido.tex -- Subdocumento 5, Anexos 5-A a 5-M
+%%  Archivo de anexos, separado del subdocumento (Aclaraciones, sección 1).
+%%  Tablas en tablas/A_n.tex, figuras en figuras/.
+%% ============================================================================
+
+\newcommand{\figurafuente}[5]{%
+  \begin{figure}[htbp]\centering
+    \includegraphics[width=#1\textwidth,height=0.72\textheight,keepaspectratio]{#2}
+    \caption{#3}\label{#4}
+    {\raggedright\fontsize{9pt}{11pt}\selectfont\color{lafroxGris}\emph{Fuente: #5}\par}
+  \end{figure}}
+\newcommand{\fuentetabla}[1]{%
+  {\raggedright\fontsize{9pt}{11pt}\selectfont\color{lafroxGris}\emph{Fuente: #1}\par}\vspace{8pt}}
+
+% Numeración propia de los anexos: Anexo 5-A, Tabla A.1, Figura A5.1
+\renewcommand{\thesection}{Anexo 5-\Alph{section}.}
+\renewcommand{\thesubsection}{5-\Alph{section}.\arabic{subsection}}
+\renewcommand{\thetable}{A.\arabic{table}}
+\renewcommand{\thefigure}{A5.\arabic{figure}}
+
+% Tablas de anexo: cuerpo de 9 pt (mínimo del Art. 40.4), con interlineado y
+% relleno ajustados para que el diccionario de atributos mantenga una extensión razonable.
+\renewcommand{\LFXcuerpotabla}{\fontsize{9pt}{10.6pt}\selectfont}
+\renewcommand{\arraystretch}{1.1}
+\setlength{\tabcolsep}{3.5pt}
+
+\chapter{Anexos del Subdocumento 5}
+\label{cap:sd5-anexos}
+
+\textbf{Modelo y gestión de datos}
+
+El Subdocumento 5 remite a estos anexos por letra. Contienen diccionario, cardinalidades, dominios/validaciones, retención, sensibilidad, índices, cachés, indicadores, trazabilidad RT-05, protocolos, migración y modelos complementarios; el cuerpo concentra su análisis.
+
+Cada anexo sigue la misma regla de redacción que el capítulo: el texto explica antes de mostrar la tabla, la tabla declara con el número de columnas mínimo que la información exige, y la fuente de cada dato se indica al pie. Ningún dato de estos anexos es una medición. Los valores proceden del dimensionamiento del Subdocumento 4, de los umbrales del capítulo 2 del Subdocumento 2, de los requisitos RT-05 y RT-09 de las Bases Técnicas Transversales (PUCV, 2026d) y del criterio de los casos.
+
+\section{Diccionario de datos atributo por atributo}
+\label{anexo-5a}
+
+Las decisiones de este ítem aplican las Bases Administrativas (Pontificia Universidad Católica de Valparaíso [PUCV], 2026b, arts. 16, 17 y 85), las Bases Técnicas del Caso 02 (PUCV, 2026c, caps. 14–16 y 18) y las Bases Técnicas Transversales (PUCV, 2026d, §§5 y 9); su estructura y presentación siguen las Aclaraciones de licitación (PUCV, 2026a, §§2–6 y 11).
+
+Los antecedentes de empresa, problema, alcance y arquitectura proceden de los Subdocumentos 1, 2, 3 y 4, respectivamente (LafroX SpA, 2026d, 2026c, 2026b, 2026a); sus remisiones señalan el apartado específico utilizado.
+
+El diccionario 5-A contiene una fila por cada uno de los 791 atributos de 111 entidades del esquema lógico, dibujado entre el cuerpo y 5-M. Conserva nombre, significado, tipo, dominio, obligatoriedad, referencia, propietario y sensibilidad/política, conforme RT-05.01.
+
+Las nueve tablas agrupan dominios sin resumir atributos. json representa jsonb en PostgreSQL y datetime timestamp UTC; cachés/documentos no son tablas SQL por aparecer en una vista ER. Las políticas P01 y siguientes evitan repetir retención/control por fila y se desarrollan en la leyenda posterior y 5-D/5-E.
+
+Un obligatorio vacío se rechaza en captura; un derivado lo calcula su proceso. Propietario identifica el dominio dueño, no los consumidores: todos usan el mismo maestro compartido. Retención sigue a la entidad salvo excepción explícita por atributo.
+
+\parte{tablas/A_1}
+
+La Tabla A.2 desarrolla los atributos de maestros e identidades, con sus condiciones y políticas de conservación.
+
+\parte{tablas/A_2}
+
+La validación aplica la condición de cada fila al hito indicado; NULL legítimo se distingue de dato obligatorio ausente.
+
+La Tabla A.3 desarrolla los atributos de recepción e inventario, con sus condiciones y políticas de conservación.
+
+\parte{tablas/A_3}
+
+La Tabla A.4 desarrolla los atributos de custodia y frío, con sus condiciones y políticas de conservación.
+
+\parte{tablas/A_4}
+
+La validación aplica la condición de cada fila al hito indicado; NULL legítimo se distingue de dato obligatorio ausente.
+
+La Tabla A.5 desarrolla los atributos de pedido y preparación, con sus condiciones y políticas de conservación.
+
+\parte{tablas/A_5}
+
+La validación aplica la condición de cada fila al hito indicado; NULL legítimo se distingue de dato obligatorio ausente.
+
+La Tabla A.6 desarrolla los atributos de ruta, reparto y envases, con sus condiciones y políticas de conservación.
+
+\parte{tablas/A_6}
+
+La validación aplica la condición de cada fila al hito indicado; NULL legítimo se distingue de dato obligatorio ausente.
+
+La Tabla A.7 desarrolla los atributos de cobranza y documentos, con sus condiciones y políticas de conservación.
+
+\parte{tablas/A_7}
+
+La validación aplica la condición de cada fila al hito indicado; NULL legítimo se distingue de dato obligatorio ausente.
+
+La Tabla A.8 desarrolla los atributos de EDI, notificaciones y gobierno, con sus condiciones y políticas de conservación.
+
+\parte{tablas/A_8}
+
+La validación aplica la condición de cada fila al hito indicado; NULL legítimo se distingue de dato obligatorio ausente.
+
+La Tabla A.9 desarrolla los atributos de telemetría y copias de consulta, con sus condiciones y políticas de conservación.
+
+\parte{tablas/A_9}
+
+La validación aplica la condición de cada fila al hito indicado; NULL legítimo se distingue de dato obligatorio ausente.
+
+La Tabla A.10 desarrolla los atributos de hechos y dimensiones analíticas, con sus condiciones y políticas de conservación.
+
+\parte{tablas/A_10}
+
+La validación aplica la condición de cada fila al hito indicado; NULL legítimo se distingue de dato obligatorio ausente.
+
+\subsection{Políticas referidas por el diccionario}
+
+Cada fila conserva sensibilidad y código de política. Los códigos siguientes reproducen su plazo/control; 5-D define inicio, ubicación y eliminación y prevalece en excepciones de conservación. AL/CR/ME se interpretan con la leyenda A.1 y 5-E. Las referencias de UUID se validan según 5-B; no son UUID nuevos del receptor. La política por fila no permite eliminar maestros interpretativos ni evidencia de un expediente vigente.
+
+\begin{itemize}
+  \item \texttt{P01}: Vigente con historial de versiones; Acceso por rol; cifrado en reposo del almacén.
+  \item \texttt{P02}: Vigente con historial de versiones; Cifrado a nivel de campo, acceso reforzado y consulta auditada.
+  \item \texttt{P03}: Vigente con historial de versiones; Cifrado a nivel de campo.
+  \item \texttt{P04}: Vigente más 5 años de historial; Acceso por rol; cifrado en reposo del almacén.
+  \item \texttt{P05}: Vigente más 5 años de historial; Cifrado a nivel de campo.
+  \item \texttt{P06}: 7 años (auditoría y seguridad); Acceso por rol; cifrado en reposo del almacén.
+  \item \texttt{P07}: 7 años (auditoría y seguridad); Cifrado a nivel de campo, acceso reforzado y consulta auditada.
+  \item \texttt{P08}: Máx(vida útil + 6 meses, 5 años); Acceso por rol; cifrado en reposo del almacén.
+  \item \texttt{P09}: 5 años por trazabilidad; se reconstruye del movimiento; Cifrado a nivel de campo.
+  \item \texttt{P10}: 5 años por trazabilidad; se reconstruye del movimiento; Acceso por rol; cifrado en reposo del almacén.
+  \item \texttt{P11}: Máx(vida útil + 6 meses, 5 años); Cifrado a nivel de campo.
+  \item \texttt{P12}: 6 años por respaldo del documento y del corte; Acceso por rol; cifrado en reposo del almacén.
+  \item \texttt{P13}: 6 años por respaldo del documento y del corte; Cifrado a nivel de campo.
+  \item \texttt{P14}: 5 años, incluida la versión de regla y calibración que la interpreta; Acceso por rol; cifrado en reposo del almacén.
+  \item \texttt{P15}: 5 años, incluida la versión de regla y calibración que la interpreta; Cifrado a nivel de campo.
+  \item \texttt{P16}: conservar con el expediente sanitario y sus versiones interpretativas.
+  \item \texttt{P17}: 5 años como evidencia del precio aplicado; Acceso por rol; cifrado en reposo del almacén.
+  \item \texttt{P18}: 5 años como evidencia del precio aplicado; Cifrado a nivel de campo.
+  \item \texttt{P19}: 6 años por el compromiso con el cliente; Acceso por rol; cifrado en reposo del almacén.
+  \item \texttt{P20}: 6 años por el compromiso con el cliente; Cifrado a nivel de campo.
+  \item \texttt{P21}: 6 años por compromiso/evidencia; Acceso por rol; cifrado en reposo del almacén.
+  \item \texttt{P22}: 6 años por el compromiso con el cliente; Cifrado a nivel de campo, acceso reforzado y consulta auditada.
+  \item \texttt{P23}: 12 meses la posición; 6 años el plan y la secuencia; Acceso por rol; cifrado en reposo del almacén.
+  \item \texttt{P24}: 12 meses la posición; 6 años el plan y la secuencia; Cifrado a nivel de campo, acceso reforzado y consulta auditada.
+  \item \texttt{P25}: 12 meses la posición; 6 años el plan y la secuencia; Cifrado en reposo y en tránsito.
+  \item \texttt{P26}: Historial interpretativo de auditoría 7 años; datos personales según 5-D; Acceso por rol; cifrado en reposo del almacén.
+  \item \texttt{P27}: 6 años por evidencia de servicio; Acceso por rol; cifrado en reposo del almacén.
+  \item \texttt{P28}: 6 años por evidencia de servicio; Cifrado a nivel de campo, acceso reforzado y consulta auditada.
+  \item \texttt{P29}: 6 años por evidencia de servicio; Cifrado a nivel de campo.
+  \item \texttt{P30}: 6 años de dossier financiero; Cifrado a nivel de campo.
+  \item \texttt{P31}: 6 años de dossier financiero; Acceso por rol; cifrado en reposo del almacén.
+  \item \texttt{P32}: 6 años de dossier financiero; Cifrado a nivel de campo, acceso reforzado y consulta auditada.
+  \item \texttt{P33}: 6 años con bloqueo de versión; Acceso por rol; cifrado en reposo del almacén.
+  \item \texttt{P34}: 6 años con bloqueo de versión; Cifrado a nivel de campo, acceso reforzado y consulta auditada.
+  \item \texttt{P35}: 6 años deintercambio; Acceso por rol; cifrado en reposo del almacén.
+  \item \texttt{P36}: 6 años deintercambio; Cifrado a nivel de campo, acceso reforzado y consulta auditada.
+  \item \texttt{P37}: Vigente con historial; Cifrado a nivel de campo.
+  \item \texttt{P38}: Vigente con historial; Acceso por rol; cifrado en reposo del almacén.
+  \item \texttt{P39}: 12 meses de registro; 6 años la evidencia de notificación al cliente; Acceso por rol; cifrado en reposo del almacén.
+  \item \texttt{P40}: 12 meses de registro; 6 años la evidencia de notificación al cliente; Cifrado a nivel de campo.
+  \item \texttt{P41}: 7 años (auditoría y seguridad); Solo escritura; la consulta se audita.
+  \item \texttt{P42}: 7 años (auditoría y seguridad); Cifrado a nivel de campo; Solo escritura; la consulta se audita.
+  \item \texttt{P43}: 7 años, alineada con la retención de la auditoría porque la decisión forma parte del expediente que la sustenta; Acceso por rol; cifrado en reposo del almacén.
+  \item \texttt{P44}: 30 días en el almacén de ingesta; Retención de 30 días; no es evidencia sanitaria.
+  \item \texttt{P45}: 30 días en el almacén de ingesta; Cifrado a nivel de campo; Retención de 30 días; no es evidencia sanitaria.
+  \item \texttt{P46}: 5 años, con asociación, regla y calibración; Acceso por rol; cifrado en reposo del almacén.
+  \item \texttt{P47}: 5 años, con asociación, regla y calibración; Cifrado a nivel de campo.
+  \item \texttt{P48}: 12 meses totales, incluidos los derivados; Cifrado en reposo y en tránsito; Uso limitado a la finalidad declarada; eliminación total verificada a los 12 meses.
+  \item \texttt{P49}: 12 meses totales, incluidos los derivados; Cifrado en reposo y en tránsito; Cifrado a nivel de campo, acceso reforzado y consulta auditada; Uso limitado a la finalidad declarada; eliminación total verificada a los 12 meses.
+  \item \texttt{P50}: Sin retención: es derivada y se reconstruye; Proyección derivada: no es fuente y no confirma una reserva.
+  \item \texttt{P51}: Sin retención: es derivada y se reconstruye; Cifrado a nivel de campo; Proyección derivada: no es fuente y no confirma una reserva.
+  \item \texttt{P52}: Sin retención: es derivada y se reconstruye; Cifrado a nivel de campo, acceso reforzado y consulta auditada; Proyección derivada: no es fuente y no confirma una reserva.
+  \item \texttt{P53}: Alineada a la retención de su fuente transaccional; Se publica al warehouse sin dato crítico ni sin cifrar.
+  \item \texttt{P54}: Alineada a la retención de su fuente transaccional; Cifrado a nivel de campo, acceso reforzado y consulta auditada; Se publica al warehouse sin dato crítico ni sin cifrar.
+  \item \texttt{P55}: Alineada a la retención de su fuente transaccional; Cifrado a nivel de campo; Se publica al warehouse sin dato crítico ni sin cifrar.
+\end{itemize}
+
+\section{Cardinalidades exactas, módulo y integridad referencial}
+\label{anexo-5b}
+
+Cada dominio relacional confirma en su autoridad, sin escritor alternativo durante particiones: BD\_RUTAS central con copias lectoras; inventario/preparación local. Ingesta térmica durable acepta consistencia eventual; BI es diferido y Redis reconstruible. S3 aporta durabilidad/versionado, sin transacción distribuida con su referencia. CAP se aplica por perímetro, no solo por motor.
+
+Las cardinalidades se leen en las vistas de 5.1/5-M y la nulabilidad en 5-A/5-C; las restricciones físicas e índices están en 5-F. La matriz siguiente identifica almacén, motor y autoridad, sin repetir todos los conectores.
+
+Los extremos opcionales representan estados iniciales o excepciones, no omisión de controles: TERRENO exige preventista; producto con lote exigido exige lote; raíz causal es el único evento sin padre; un sensor fijo exige sitio y uno móvil vehículo. La unidad VACIA/ABIERTA puede no tener contenido; al cerrarse exige contenido y SSCC según el hito. Una misión puede no tener confirmación antes del picking, pero no cierra sin validar sus líneas. Pedido PENDIENTE no tiene promesa confirmada; al confirmarse mantiene exactamente una ORIGINAL y las revisiones autorizadas. Cada pedido admite cero o una entrega y varios intentos vinculados a esa entrega. Cada promesa tiene promesa\_id como PK individual y ordinal único por pedido; entrega referencia la ORIGINAL del mismo pedido.
+
+Lote y unidad logística se relacionan muchos a muchos mediante inv\_unidad\_contenido; unidad y evento se relacionan mediante cal\_evento\_objeto. No existe una FK directa lote$\rightarrow$unidad ni unidad$\rightarrow$cabecera del evento. El SSCC identifica la unidad, no el lote; GTIN+número del proveedor identifica el lote. La reserva detalla líneas vinculadas al pedido; las confirmaciones referencian su línea de misión. Un pedido EDI sin cliente resuelto queda en staging, sin crear un pedido canónico inválido.
+
+Movimientos conservan saldo origen/destino según dirección, ajuste y reversión de 5-C. Cobro puede preceder a rendición, obligatoria al cierre; aplicación conecta deuda/documento y pago. POD/acuses son objetos distintos del DTE. El expediente conserva entidades/versiones bajo 5-D, sin borrado en cascada de evidencia; referencias entre almacenes se validan por contrato, no por FK distribuida. Los hechos analíticos conservan grano/identidad de origen y las cachés son proyecciones reconstruibles.
+
+\parte{tablas/A_11}
+
+Las relaciones de negocio no usan borrado en cascada de evidencia. Se cierran estados y se elimina solo bajo retención elegible. UUID relaciona filas y clave natural protege negocio; entre almacenes/sedes se valida identidad y versión por contrato, no mediante FK distribuida.
+
+En PostgreSQL 16 la UK particionada incluye toda la clave de partición; unicidad local no equivale a identidad global. 5-F fija ámbito y restricciones. Una FK hacia tabla particionada requiere clave referenciada válida; entre motores se valida el contrato de identidad.
+
+\section{Dominios de valores, reglas de validación y causas de rechazo}
+\label{anexo-5c}
+
+Se conservan sin partición las entidades con UUID global referenciado por FK simple: saldo, movimiento, excursión/bloqueo, POD y auditoría. Su grano se controla con UK y mantenimiento por lotes; no se anuncia PK global incompatible con una partición mensual. El detalle sanitario conserva la partición y FK compuestas ya declaradas. El saldo incluye producto\_id y lote nullable solo para producto exento; UK sitio/ubicación/producto/lote/unidad usa NULLS NOT DISTINCT. Contenido/reserva/conteo conservan la misma condición, sin crear lote ficticio. Si existe lote, se verifica que corresponde al producto.
+
+Los catálogos abiertos de territorio, sistema, turno y familia remiten a versiones aprobadas y contratos concretos, no a un catálogo cerrado sin definición. En 5-A se enumeran dominio de decisión/causa/perfil de receptor y procedencia térmica. Desconocido se aísla como DOMINIO\_NO\_ADMITIDO con original y dueño; la dimensión hereda versión y no fabrica clasificación. La ventana EDI valida hora/zona y cruce a día siguiente según el perfil.
+
+Las reglas de este anexo se sustentan en las vistas lógicas del cuerpo y Anexo 5-M y el diccionario 5-A. Dentro del mismo PostgreSQL se aplican FK; entre almacenes, sedes o S3 se valida identidad/versión mediante contratos, conciliación y excepciones, sin anunciar FK distribuida.
+
+\textbf{Parámetros tipados.} valor es JSON/jsonb con tipo\_valor y valor: NUMERO exige número, unidad y rango aprobados; BOOLEANO solo true/false; TEXTO límite declarado por parámetro, máximo inicial 512 caracteres; INTERVALO exige cantidad positiva y unidad del catálogo SEGUNDO/MINUTO/HORA/DIA; LISTA exige elementos del catálogo aprobado, sin duplicados. Tipo desconocido, ausencia de valor, rango o unidad inválidos producen PARAMETRO\_INVALIDO y aislamiento en migración. No se convierte ausencia en falso.
+
+\textbf{Perfiles sanitarios.} epcis\_version=2.0 y cbv\_version=2.0 son independientes; perfil\_evento es versión de contrato de solución: RECEPCION\_V1 (ObjectEvent, OBSERVE, receiving), MOVIMIENTO\_V1 (ObjectEvent, OBSERVE, transporting), AGREGACION\_V1 (AggregationEvent, ADD/DELETE para composición/descomposición, packing/unpacking), DESPACHO\_V1 (ObjectEvent, OBSERVE, shipping), ENTREGA\_V1 (ObjectEvent, OBSERVE, receiving en destino). Los términos CBV se serializan con sus identificadores de vocabulario; ubicación, instante, objetos, disposición y procedencia se validan en el contrato. Un perfil desconocido se aísla con EVENTO\_FUERA\_DE\_SUBCONJUNTO, conservando mensaje original. ObjectEvent/AggregationEvent son tipos EPCIS, no versiones de CBV. El arreglo de objetos se congela con ordinal estable antes de publicar; la falta de ordinal externo no inventa un hecho de negocio.
+
+\textbf{Movimientos y cantidades.} cantidad es positiva con unidad; RECEPCION exige destino, SALIDA exige origen, TRASLADO exige ambos distintos y misma conversión validada. AJUSTE positivo exige destino y causa; negativo exige origen y causa. ANULACION exige documento\_origen\_tipo=MOVIMIENTO y documento\_origen\_id del movimiento original, invierte sus efectos origen/destino y conserva cantidad/unidad y vínculo idempotente; nunca sobrescribe ni elimina el original. Los saldos no se vuelven negativos por una reversión sin control. Importes cobrados no negativos; ajuste\_redondeo y diferencias pueden tener signo con su fórmula, justificación y autorización. ajuste\_redondeo = importe registrado $-$ importe autorizado externo solo para tarjeta comprobada; efectivo/crédito no fabrican autorización externa.
+
+\textbf{Identidad de promesa.} Cada ORIGINAL o REVISION recibe un promesa\_id distinto como PK individual. UNIQUE(pedido\_id, version) ordena la historia sin repetir ordinal; el único parcial de ORIGINAL garantiza una por pedido. La entrega referencia esa PK y valida pedido coincidente y tipo ORIGINAL en el contrato/transacción de aceptación, sin filtrar su vigencia.
+
+\textbf{Vigencias.} Parámetro, regla térmica, calibración, tarifa y revisiones de promesa no tienen intervalos históricos superpuestos para su clave natural. Intervalos semiabiertos [desde,hasta), extremo abierto solo para versión final, fin > inicio. La escritura bloquea la clave natural y comprueba todos los intervalos en la misma transacción; donde son co-residentes se añade exclusión por rango PostgreSQL con soporte btree\_gist. El único parcial de fila abierta es adicional y no sustituye la exclusión. La promesa ORIGINAL permanece inmutable aun cuando haya revisión; el indicador la busca por tipo=ORIGINAL y no por vigencia actual.
+
+\textbf{Selección temporal.} El dominio de vigente\_desde identifica el inicio, no obliga a que sea posterior al hecho. Para usar una versión, desde $\le$ fecha de negocio < hasta, o sin límite final cuando hasta es NULL; una versión futura no se aplica antes de su inicio. Se conservan intervalos y versiones históricas, incluidos los de dimensiones analíticas. Un vencimiento se registra tal como lo declara el proveedor; su estado sanitario se valida sin desplazar la fecha para aceptar el lote.
+
+\textbf{Carga y cifrado.} version\_carga es un ordinal bigint positivo, aumenta con cada revisión y se compara numéricamente. La autorización de salida exige que carga y documento ERP correspondan a esa versión; un ordinal mayor no acredita emisión válida. obj\_objeto.cifrado es booleano comprobado en el almacenamiento; si 5-E exige cifrado, false o la falta de verificación impiden aceptar el objeto, conservando original y causa de rechazo.
+
+\textbf{Origen de captura.} En TERRENO, preventista\_id identifica al capturador autorizado; MOSTRADOR, EDI y PORTAL mantienen NULL sin inventar un preventista. La identidad de quien captura o integra se registra en gob\_auditoria.actor\_id con UUID/correlación y origen\_captura: persona autorizada, cuenta de autoatención o actor técnico autenticado, respectivamente. El responsable comercial no se infiere de ese campo. M3 valida cuenta/permisos al confirmar; un pedido pendiente no crea reserva ni promesa de entrega confirmada.
+
+\textbf{Ciclo de vida.} parent\_event\_id admite NULL exclusivamente en raíz causal; unidad VACIA/ABIERTA admite ausencia de contenido y SSCC hasta el hito de cierre que lo exige. Producto sin lote obligatorio admite lote NULL. Las líneas permiten varias asignaciones/lotes/unidades e intentos; no se deduplican por mera igualdad de producto/cantidad. Actor autorizador financiero referencia mae\_actor.actor\_id y tiene rol habilitado distinto del ejecutor, antes de aprobar un movimiento; no se confunde con nombre de rol. payload de excepción conserva snapshot de decisión y regla/versionado con límite de 256 KiB de diseño; el exceso conserva objeto íntegro con hash y retención equivalente, sin truncamiento silencioso.
+
+La recepción conserva lecturas térmicas físicamente inválidas con valor original, sensor, hora, unidad y alerta; se excluyen del cálculo de cumplimiento con causa visible, sin destruir evidencia. Defecto de sensor, excursión válida y pérdida de cobertura son incidentes distintos. Cada rechazo adicional usa código de causa, original preservado, responsable y decisión antes de publicar; los catálogos de identidad y causales externos se versionan según S4, no se sustituyen por un default local.
+
+Cada regla de calidad declara dominio, punto de aplicación y causa tipificada. Los rechazos alimentan el tablero RT-05.04; original y decisión se conservan antes de publicar.
+
+\parte{tablas/A_12}
+
+\parte{tablas/A_13}
+
+A.13 distingue rechazo (sin carga y con causa accionable), cuarentena (original íntegro consultable, defecto y resolución posterior) y decisión registrada (corrección/equivalencia aprobada con regla/versión en perfilado). Se prohíbe carga corregida silenciosa o historia inferida: resultado/causa ausentes permanecen aislados con original visible.
+
+\section{Retención por dominio y por atributo}
+\label{anexo-5d}
+
+La retención se determina por clase, no por estar en S3: documentos/POD seis años; trazabilidad máximo entre vida útil más seis meses y cinco años; térmico detallado cinco años; GPS y datos personales de posición doce meses totales (raw treinta días en sa-east-1, sin réplica internacional); auditoría siete años; logs doce meses online más veinticuatro de archivo y respaldos treinta y cinco días según S4. Las copias personales y versiones temporales se incluyen en purga/inventario. Geocercas de configuración no son posición personal. Maestros, reglas y calibraciones sobreviven mientras permitan interpretar cualquier expediente retenido.
+
+Un objeto bloqueado o bajo conservación legal no se destruye antes de vencimiento: se programa eliminación elegible, se comprueban versiones, réplicas y respaldos conforme S4 y se registra resultado. No se promete eludir Object Lock ni borrar evidencia financiera como si fuera caché.
+
+La Tabla A.14 detalla inicio, ubicación y eliminación por dominio/atributo. Los doce meses de posición personal incluyen derivados y coordenadas recuperables de respaldos: retirar el identificador no basta para anonimizar. Los siete años de auditoría/seguridad son un compromiso de S4, no un plazo impuesto por el caso.
+
+\parte{tablas/A_14}
+
+El respaldo y la salida de contrato se coordinan con S4: la eliminación comprueba clase, versiones, réplicas y plazo. Un bloqueo de conservación activo no se elude; se elimina al hacerse elegible y se audita la excepción. La evidencia vigente no pierde su clave compartida y las copias personales deben quedar ilegibles según el procedimiento aprobado, sin afirmar que una clave global pueda destruirse selectivamente.
+
+\section{Clasificación por sensibilidad y controles declarados}
+\label{anexo-5e}
+
+RT-05.08 y Art. 85 exigen seudonimización/cifrado de campo para datos personales sensibles. A.15 distingue protección del almacén y de columnas según sensibilidad; toda clase AL exige cifrado en reposo y justificación del control de campo (PUCV, 2026d, §5; 2026b, art. 85).
+
+\parte{tablas/A_15}
+
+GPS se cifra por campo y desaparece a doce meses totales; la evidencia de operación puede subsistir, pero auditoría/respaldo no deben reconstruir la coordenada. DTE conserva acceso por rol y emisión única, justificando su control sin cifrado de campo. La copia de identidad de 24 h permite consulta, no autoriza reservas/precios ni reemplaza el control de acceso.
+
+\section{Índices, columnas y particionado}
+\label{anexo-5f}
+
+La PK de cal\_evento\_objeto es (evento\_objeto\_id, ts\_evento); la UK es (evento\_id, secuencia\_linea, ts\_evento). La cabecera no particionada tiene UK (evento\_id, ts\_ocurrencia) y el detalle FK (evento\_id, ts\_evento) hacia esa pareja. Se prohíbe cambiar ts\_ocurrencia y ts\_evento tras aceptar el evento. Así un mismo evento no puede ingresar en otro mes con timestamp divergente. Si cabecera y detalle no son co-residentes, se mantienen en el mismo almacén sanitario de S4 para este contrato; otras referencias son contratos entre dominios.
+
+mae\_producto.gtin es único para el GTIN canónico no nulo; las equivalencias alternas no comparten identidad entre productos. inv\_lote conserva UK (gtin, numero\_lote) y valida concordancia con producto\_id; vencimiento es atributo. gob\_excepcion\_sync usa UK (correlacion\_id, clave), construida de identidad de operación y versión de decisión, sin depender de la hora de recepción.
+
+rep\_entrega y rep\_entrega\_linea no se particionan; una entrega por pedido tiene varios intentos y sus fragmentos. La identidad del fragmento y su asignación de origen se fijan antes de reintentar; la combinación con lote/unidad NULL legítimos aplica NULLS NOT DISTINCT, y no se eliminan líneas legítimas de asignaciones distintas por una coincidencia de atributos. Se verificará en PREPROD el esquema físico y las restricciones; no se afirma que se hayan ejecutado las restricciones antes de los ensayos.
+
+5.4.2 justifica las consultas; A.16 declara columnas/orden y ámbito físico. El predicado de igualdad abre el índice y el de rango lo acota. Partición permite poda temporal, pero no crea índice ni garantiza unicidad entre meses.
+
+En PostgreSQL 16, una unicidad particionada incluye la clave de partición; un índice local no acredita identidad global (PostgreSQL Global Development Group, 2023). Las identidades globales se conservan en tablas sin partición; el detalle sanitario usa FK/PK/UK compuestas y fecha inmutable.
+
+\parte{tablas/A_16}
+
+Documento usa identidad fiscal, no hash único. Lote se relaciona con unidad por contenido e índices en ambos sentidos. ORIGINAL tiene unicidad parcial global y evento/cobro/mensaje no se particionan. Caché no admite índice SQL; 5-G define versión/invalidación. Los planes y restricciones se comprobarán en PREPROD.
+
+\parte{tablas/A_17}
+
+El detalle sanitario mantiene ts\_evento=ts\_ocurrencia y no admite cambios posteriores. Mes es ámbito físico; filtro por mes no implica partición. Se retira una partición completa solo si todo su contenido es elegible y ningún expediente sigue vigente; en otro caso se aplica eliminación por filas verificadas.
+
+\section{Claves de caché, vigencia e invalidación}
+\label{anexo-5g}
+
+Las claves/versiones siguen cache\_* de 5-A y S4 §§4.1.3.6–7, Anexo 4-O, ADR-06. La autoridad incrementa versión e invalida por outbox; Redis se reconstruye desde ella. Sin enlace, lectura fechada/indicativa; reserva, cobro y precio requieren al escritor competente.
+
+\begin{itemize}
+  \item \textbf{Permisos:} actor/sitio/versión; credencial 8 h bodega o 14 h terreno. Cambio de rol/sitio invalida; vencimiento bloquea el turno. Relevos preinscritos se verifican con PIN.
+  \item \textbf{Manifiesto:} versión/huella/objetos, firmado por Keycloak, 26 h; renovación horaria con enlace o cambio de turno. Verificador comprueba firma/vigencia y avisa antes de vencer; no es Redis ni extiende la credencial.
+  \item \textbf{Identidad de consulta:} cliente/sitio/versión, 24 h; cambio de maestro/manifiesto refresca, sin autorizar operaciones.
+  \item \textbf{Saldo:} sitio/ubicación/producto/lote/unidad/versión, 5 min en pantalla; movimiento invalida y refresca o marca dato indicativo.
+  \item \textbf{Precio:} GTIN/canal/versión hasta vigente\_hasta; nueva tarifa invalida, con vigencia pendiente hasta validación.
+  \item \textbf{Crédito:} cliente/versión hasta cambio de condición o 8 h de credencial; cambio de saldo/condición invalida, con restricción visible.
+  \item \textbf{Maestros:} familia/clave/versión hasta nueva publicación; reemplazo refresca sitios, productos y unidades.
+  \item \textbf{Evidencia:} clave lógica/huella/versión; captura/intercambio refresca objetos y exige hash antes de aceptar.
+  \item \textbf{Consulta local:} objeto/versión de manifiesto, 24 h; actualización refresca stock/precio/crédito. PWA conserva catálogo/precios fechados, validación definitiva en M3.
+  \item \textbf{Pendientes:} dispositivo o cuenta/UUID/versión de cola, sin TTL antes de resolución. Room/SQLite o IndexedDB conserva payload/evidencia/resultado; UUID vincula al pedido central tras acuse. Resolución publica estado; purga sigue 5-D, sin tratar evidencia como caché.
+\end{itemize}
+
+\section{Fórmulas de indicador, linaje documental y catálogo por fase}
+\label{anexo-5h}
+
+5.2.6 desarrolla fórmulas y casos sin base: OTIF sobre ORIGINAL, exactitud por cantidades homologadas y desviación monetaria $\le$0,3 \%. A.18–A.19 detallan el catálogo con linaje, audiencias y latencias; SSCC/lote se exigen según hito y producto, admitiendo VACIA/ABIERTA y exentos. Costo de servir inicia E2.
+
+Las claves fecha\_key se derivan del origen y se convierten al calendario de la zona IANA del sitio, conservando el instante UTC; no se sustituyen por el día de carga ETL. hech\_entrega usa la fecha de la promesa ORIGINAL, incluidos pedidos no entregados; hech\_entrega\_intento, la fecha\_intento; hech\_linea\_venta, la fecha de negocio de la venta en origen; hech\_movimiento\_stock, la fecha\_ocurrencia del movimiento; hech\_actividad\_costo, la fecha de negocio de la actividad trazada; hech\_excursion, su inicio. Al medir relleno o intentos sobre pedidos comprometidos, el período y denominador se obtienen de la ORIGINAL del pedido, aunque sus hechos se ejecuten en otra fecha. Las versiones de dimensiones se seleccionan por la fecha del hecho dentro de su intervalo, no por la versión vigente al cargar. Un origen sin fecha válida se aísla y se informa; no se inventa una fecha ni se asigna una futura arbitraria.
+
+La Tabla A.18 define fórmula, grano, período, casos sin dato y linaje de cada indicador; A.19 fija fase, audiencia y latencia. El linaje documental registra origen, transformación, fórmula, versión y responsable; la automatización deseable no ofertada en T-12 queda fuera del alcance.
+
+\parte{tablas/A_18}
+
+OTIF usa todos los pedidos comprometidos del período una vez, incluidos no entregados, y exige completar todas sus líneas dentro de la ventana ORIGINAL inmutable. La fila analítica se identifica por pedido\_id y conserva la ORIGINAL; entrega\_id y ruta\_sk pueden ser NULL hasta que existan sus hechos operativos. No se crean entregas ni rutas ficticias para cargar el denominador. Las duraciones sin instantes suficientes son NULL, no cero; la ausencia de entrega no retira al pedido comprometido del cálculo. No filtra por vigencia actual ni por existencia de entrega. La exactitud por cantidades homologa unidades y declara base cero; la desviación monetaria usa valor contable del sitio y el umbral $\le$0,3 \%, sin confundir ambos indicadores.
+
+\parte{tablas/A_19}
+
+Consulta operativa puntual usa API/caché válida; BI pesado usa Redshift. Latencias: $\le$5 min operativo, $\le$2 h desde último retorno para cierre y $\le$4 h gerencial. Cada tablero muestra consolidación y pendientes; la exportación programada conserva alcance/manifest/hash/conteo según 5.2.8.
+
+\section{Matriz de trazabilidad de RT-05 con su evidencia}
+\label{anexo-5i}
+
+A.20 vincula cada RT-05 con desarrollo verificable en cuerpo/anexo. RT-05.10/.24/.30 siguen siendo deseables no ofertados según T-12; diccionario, linaje documental y fórmulas no se presentan como esas capacidades automatizadas.
+
+\parte{tablas/A_20}
+
+RT-05.16/.17/.20 se desarrollan en S4: contratos desde código, versiones y capa anticorrupción. S5 conserva el vínculo y las reglas de datos, sin duplicar esa arquitectura.
+
+\section{Protocolo de aceptación de datos y pruebas propuestas}
+\label{anexo-5j}
+
+La prueba de retiro $\le$2 h sigue el recorrido de 5.1.7 y contrasta todas las autoridades con carga/ruta/despacho previos. Calidad y cada sede verifican existencias/destinatarios, conductores aportan pendientes y Finanzas valida documentos. Clientes planificados con el lote offline se contactan/bloquean como potenciales, sin declararlos entregas confirmadas. Tras 30 min sin respuesta se escala a Operaciones manteniendo cobertura preventiva.
+
+El presupuesto de 85 min es estimación de diseño, no resultado medido. La prueba $\le$2 h debe demostrar cobertura del universo expuesto/potencial, lista de contactos, bloqueos, evidencias pendientes y escalamiento; un resultado parcial sin identificar el universo potencial falla aceptación. Casos offline y restauración forman parte del ensayo.
+
+Las Tablas A.21–A.23 especifican pruebas propuestas de migración, desempeño y trazabilidad/calidad/seguridad, con precondición, datos/carga, acción, umbral, período, evidencia y responsable. Su aceptación requiere registrar los resultados; no se presentan como pruebas ejecutadas.
+
+Las pruebas son propuestas sin resultados ni aceptación del CLIENTE acreditados.
+
+\parte{tablas/A_21}
+
+En las pruebas de A.22, p95 se mide desde la acción de la persona usuaria, con el perfil completo de 5.4.1 y resultados por operación, no solo la media global. Máximos: consulta simple API 500 ms; escritura API 800 ms; preparación 1 s; entrega/acuse durable local 2 s; línea de preventa 1,5 s; consulta stock/crédito extremo a extremo 2 s; búsqueda compuesta 3 s; informe estándar 30 s. Son umbrales de las Bases Técnicas Transversales (PUCV, 2026d) §9.1 y del caso §15; el acuse local no implica consolidación central, que mantiene 10 min móvil/2 h sitio desde reconexión. Cada ensayo dura al menos quince minutos por nivel de carga; estrés continúa hasta saturación y la recuperación debe volver a esos umbrales en $\le$5 min tras retirar el exceso.
+
+\parte{tablas/A_22}
+
+\parte{tablas/A_23}
+
+S4, Anexo 4-M, define ensayos complementarios. AL-DTE-01 comprueba 96 salidas con guía vigente, reintentos y cambios de carga en ambas rutas ERP; sin comunicación, conserva carga amparada y difiere ajustes. AL-CLI-01 reinicia el portal Android/iOS sin red, recupera catálogo/pedido y reenvía UUID: cero pérdida/duplicación, reserva tras validación M3; sesión vencida/cuenta bloqueada se rechazan. Rechazo esperado conserva causa/auditoría/mensaje; no es fallo de integridad.
+
+AL-DR-01 se ensaya semestralmente: corte individual/por pares de fibra, LTE y Starlink, retraso externo y pérdida de sitio con un camino activo. Se mide RPO=t\_incidente$-$t\_último\_punto\_consistente recuperable mediante UUID/secuencia, y RTO$\le$4 h; transacciones de nube/WMS Talca, mensajes críticos, documentos/evidencias y temperatura $\le$15 min; analítica/mensajes no críticos $\le$24 h y GPS $\le$24 h solo en sa-east-1. Talca detiene DMS, habilita su copia Aurora para escritura y levanta wms\_only en Fargate de la región activa; Concepción reconstruye su operación desde eventos, sin carga de Talca. Cambio regional crea colas vacías y reenvía outbox sin duplicados; retorno conserva un escritor. S3 RTC verifica 99,99 \% en 15 min y pendientes/recopia; DynamoDB verifica alarma ReplicationLatency a 60 s. Autonomía 24 h sin los tres caminos se prueba aparte: buffer local no protege ante su caída simultánea seguida de destrucción del sitio, límite residual de S4 §4.3.2. Restauración por clase de A.23 no sustituye RTO crítico. Se registran estados sanitarios/evidencias, tiempos, pérdidas y duplicados. Versiones/incidentes/crecimiento repiten protocolos y revisión trimestral de capacidad; son ensayos por ejecutar.
+
+\section{Respuesta al Informe 1 - Subdocumento 5}
+\label{anexo-5k}
+
+La Tabla A.24 indica respuesta documental y verificación pendiente. La coincidencia de campos no certifica reglas ni pruebas ejecutadas; firma, folio, paginación y legibilidad requieren el PDF final.
+
+\parte{tablas/A_24}
+
+Las pruebas descritas se ejecutarán durante el proyecto. Este estado no atribuye aprobación humana ni conformidad de producción.
+
+\section{Mapeo, cálculo de olas y ventana de corte}
+\label{anexo-5l}
+
+Este anexo define el contrato de migración de 5.3. Los nombres físicos del legado se comprobarán durante el perfilado y se versionarán en el contrato de extracción. No se presentan nombres hipotéticos como esquema constatado.
+
+La Tabla A.25 relaciona conjuntos y campos críticos con las entidades reales de destino y el responsable que valida la conversión.
+
+\parte{tablas/A_25}
+
+Cada campo transformado conserva valor de origen, regla/versión, clave y decisión. Un campo sin correspondencia no se omite silenciosamente: responsable decide migrar, corregir o conservar consulta con explicación aprobada.
+
+La Tabla A.26 calcula fases de carga inicial. Para volumen V en GB de fuente decimal y base ventas 10,476, cada fase es max(mínimo, techo(tiempo ventas $\times$ V/10,476)); mínimos 10/10/10/10/10/10/20 min. Son reservas de planificación, no tiempos medidos. Extracción usa bytes de fuente; transferencia bytes serializados reales, aquí provisionalmente iguales. Transformación/carga/índices usan la base medida en ensayo, no el factor 2 como tasa de red.
+
+\parte{tablas/A_26}
+
+La suma secuencial se distribuye en noches previas. La mayor ola, 285 min, cabe en 22:00–02:45; reserva de preparación 30 min y rollback 60 min da 375 min, 22:00–04:15. No equivale a detener la operación esas noches: origen sigue siendo escritor y el destino está en staging. Cartera viva adicional y trace perfilada obligan a recalcular cada fase y ampliar noches de carga inicial antes de aceptación.
+
+La Tabla A.27 fija la ventana relativa final propuesta; los dos ensayos deben demostrar que el delta real cabe. No se transfiere el escritor si el tiempo medido más rollback supera la ventana disponible.
+
+\parte{tablas/A_27}
+
+Se preserva despacho 05:30–07:00 y congelamientos septiembre/diciembre/cierre mensual. Si no-go ocurre antes, rollback comienza inmediatamente y usa la reserva; se registran tiempos, resultado y frontera recuperada. E1 M16 y E2 M21 requieren marcha blanca previa y últimas cuatro semanas con volumen real. RTO/RPO de S4 continúan siendo condiciones contractuales; esta reserva es hipótesis a demostrar, no resultado de recuperación.
+
+\section{Modelos lógicos complementarios}
+\label{anexo-5m}
+
+Los modelos específicos complementan el MR general de 5.1. El diccionario 5-A conserva todos los atributos, tipos y restricciones.
+
+El esquema lógico se distribuye sin duplicaciones: inventario, pedido/preparación, reparto, custodia, cobranza/documentos y analítica se dibujan en las Figuras 5.2–5.7 del cuerpo. Aquí se desarrollan maestros, EDI/gobierno y telemetría. El diccionario 5-A define tipos, dominio, obligatoriedad, propietario y sensibilidad de todos los atributos.
+
+La Figura A5.1 desarrolla maestros e identidades compartidas; se relaciona con 5.1.3 del cuerpo y se valida con 5-A/5-C.
+
+\figurafuente{1.0}{figuras/Fig_A5-1_Maestros.png}
+  {Maestros e identidades compartidas}{fig:sd5-a1}
+  {modelo de LafroX a partir de S3/S4 y RT-05.01.}
+
+Las equivalencias traducen claves externas a UUID canónicos y no crean identidades paralelas. La vigencia conserva historia y la copia local mantiene versión/fecha de consulta.
+
+La Figura A5.2 desarrolla edi, notificaciones y gobierno; se relaciona con 5.1.9 del cuerpo y se valida con 5-A/5-C.
+
+\figurafuente{1.0}{figuras/Fig_A5-2_EDI_Notif_Gobierno.png}
+  {EDI, notificaciones y gobierno}{fig:sd5-a2}
+  {modelo de LafroX a partir de S3/S4 y RT-05.01.}
+
+Mensaje y aviso conservan identidad/resultado; auditoría y excepción preservan actor, contexto y versión. El acuse de integración no sustituye aceptación fiscal ni recepción física.
+
+La Figura A5.3 desarrolla telemetría, copias de consulta y objetos; se relaciona con 5.1.10 del cuerpo y se valida con 5-A/5-C.
+
+\figurafuente{1.0}{figuras/Fig_A5-3_Telemetria_Cache.png}
+  {Telemetría, copias de consulta y objetos}{fig:sd5-a3}
+  {modelo de LafroX a partir de S3/S4 y RT-05.01.}
+
+Raw, detalle, agregado, GPS y evidencia tienen plazos y permisos distintos. Las proyecciones se reconstruyen desde su autoridad; la evidencia durable pendiente no se trata como caché descartable.
+
+\section*{Referencias}
+\addcontentsline{toc}{section}{Referencias}
+
+Estas fuentes sostienen las reglas y decisiones citadas en este ítem. Las fuentes locales son documentos de la licitación o de la propuesta; EPCIS/CBV y PostgreSQL respaldan exclusivamente sus contratos técnicos.
+
+\begin{itemize}
+  \item Pontificia Universidad Católica de Valparaíso. (2026a). \emph{Aclaraciones de licitación}. Documento.
+  \item Pontificia Universidad Católica de Valparaíso. (2026b). \emph{Bases Administrativas TFEP-01/2026}. Documento.
+  \item Pontificia Universidad Católica de Valparaíso. (2026c). \emph{Bases Técnicas del Caso 02 — Logística}. Documento.
+  \item Pontificia Universidad Católica de Valparaíso. (2026d). \emph{Bases Técnicas Transversales}, versión 1.0. Documento.
+  \item LafroX SpA. (2026d). \emph{Presentación de la empresa}, Subdocumento 1. Documento.
+  \item LafroX SpA. (2026c). \emph{Problema y necesidad}, Subdocumento 2. Documento.
+  \item LafroX SpA. (2026b). \emph{Esquema de solución y alcance}, Subdocumento 3 y anexos. Documento.
+  \item LafroX SpA. (2026a). \emph{Arquitectura}, Subdocumento 4, anexos y formularios T-11/T-12. Documento.
+  \item International Organization for Standardization. (2008). \emph{ISO/IEC 25012:2008, Software engineering — SQuaRE — Data quality model}. Dimensiones de calidad citadas en 5.2.5; no es fuente de umbrales numéricos.
+  \item GS1. (2022a). \emph{EPCIS Standard}, release 2.0, junio de 2022. Estándar: \url{https://ref.gs1.org/standards/epcis/2.0.1/}.
+  \item GS1. (2022b). \emph{Core Business Vocabulary Standard}, release 2.0. Estándar: \url{https://ref.gs1.org/standards/cbv/2.0.0/}.
+  \item PostgreSQL Global Development Group. (2023). \emph{PostgreSQL 16 Documentation: Constraints; Table Partitioning}. Restricciones: \url{https://www.postgresql.org/docs/16/ddl-constraints.html}, particionado: \url{https://www.postgresql.org/docs/16/ddl-partitioning.html}. Aplicación: 5-F.
+\end{itemize}
+
+\section*{Declaración de uso de IA}
+\addcontentsline{toc}{section}{Declaración de uso de IA}
+
+\textbf{Texto de caída:} La declaración responde al requisito §7.2 de Bases/aclaraciones-licitacion.md. Se indica herramienta utilizada, finalidad, nivel de asistencia y verificación humana realizada. No se completan datos de revisión humana ni aprobación del CLIENTE.
+
+\parte{tablas/A_28}
+

@@ -1,0 +1,33 @@
+%  Causas de rechazo y su tratamiento en operación y en migración -- generada desde el anexo en Markdown
+\begin{tablalafrox}{Causas de rechazo y su tratamiento en operación y en migración}{tab:sd5-a13}%
+  {F{0.161} F{0.206} F{0.217} Y}%
+  {\cab{Causa} & \cab{Dónde se detecta} & \cab{Tratamiento en operación} & \cab{Tratamiento en migración}}
+  \texttt{GTIN\_\allowbreak{}INVALIDO} & Captura de recepción y de producto & Rechazo con mensaje al operador & Cuarentena con el valor original preservado \\
+  \texttt{GTIN\_\allowbreak{}DUPLICADO} & Resolución de equivalencia de producto & Rechazo; se registra la referencia existente & Alta de equivalencia con decisión registrada, no reemplazo silencioso \\
+  \texttt{LOTE\_\allowbreak{}VACIO} & Captura de recepción & Rechazo; no se acepta línea de producto que exige lote sin él & Cuarentena con el valor original y la regla que exige el lote \\
+  \texttt{VENCIMIENTO\_\allowbreak{}ANTERIOR} & Captura de recepción & Rechazo con la fecha correcta en el mensaje & Cuarentena; no se deriva vencimiento desde una vida útil genérica \\
+  \texttt{VENCIMIENTO\_\allowbreak{}AUSENTE} & Captura de recepción de producto que exige vencimiento & Rechazo & Cuarentena hasta obtener el dato de origen o la decisión de Calidad \\
+  \texttt{SSCC\_\allowbreak{}INVALIDO} & Captura de unidad logística & Rechazo de la unidad & Cuarentena con la etiqueta original disponible \\
+  \texttt{IDENTIDAD\_\allowbreak{}LOGISTICA\_\allowbreak{}INVALIDA} & Captura de unidad logística & Rechazo; la identidad interna la genera el sistema & Cuarentena; nunca se deriva un identificador del código de negocio \\
+  \texttt{CANTIDAD\_\allowbreak{}NEGATIVA} & Captura de movimiento & Rechazo & Cuarentena con el signo original preservado \\
+  \texttt{RESERVA\_\allowbreak{}EXCESIVA} & Confirmación de preparación & Rechazo; el saldo no permite la reserva & No se ajusta el saldo para coincidir: la diferencia se explica y se autoriza \\
+  \texttt{UNIDAD\_\allowbreak{}SIN\_\allowbreak{}CONVERSION} & Captura de línea & Rechazo & Cuarentena hasta declarar el factor y su versión \\
+  \texttt{SITIO\_\allowbreak{}DESCONOCIDO} & Captura con sitio & Rechazo & Alta del sitio en el maestro con decisión registrada o aislamiento \\
+  \texttt{CANAL\_\allowbreak{}NO\_\allowbreak{}DECLARADO} & Captura de pedido & Rechazo & Cuarentena; el canal no se deduce del nombre del cliente \\
+  \texttt{ACTOR\_\allowbreak{}SIN\_\allowbreak{}ROL} & Identificación de la operación & Rechazo; no hay operación sin actor & Cuarentena; no se inventa un actor \\
+  \texttt{RESULTADO\_\allowbreak{}NO\_\allowbreak{}CATALOGADO} & Cierre de intento & Rechazo del cierre & Cuarentena; el resultado histórico se conserva sin reinterpretar \\
+  \texttt{CAUSAL\_\allowbreak{}OBLIGATORIA} & Cierre de intento no exitoso & Rechazo del cierre & Cuarentena con el resultado original y la observación de la fuente \\
+  \texttt{EVENTO\_\allowbreak{}FUERA\_\allowbreak{}DE\_\allowbreak{}SUBCONJUNTO} & Ingesta de evento de custodia & Rechazo del evento con alerta & No se fabrica historia: el evento no migrado queda declarado \\
+  \texttt{CADENA\_\allowbreak{}CUSTODIA\_\allowbreak{}ROTA} & Ingesta de evento sin padre resoluble & Rechazo del evento enlazado y registro de la interrupción & Cuarentena del evento huérfano sin inventar el padre \\
+  \texttt{VENTANA\_\allowbreak{}TERMICA\_\allowbreak{}INVALIDA} & Asociación de ventana a producto & Rechazo de la asociación & Cuarentena de la asociación \\
+  \texttt{HASH\_\allowbreak{}NO\_\allowbreak{}COINCIDE} & Ingesta de documento u objeto & Rechazo del documento y alerta & Aislamiento con el archivo original disponible para verificación \\
+  \texttt{CLASE\_\allowbreak{}RETENCION\_\allowbreak{}DESCONOCIDA} & Aceptación de objeto almacenado & Rechazo del objeto & No se acepta objeto sin clase; se corrige la política, no el objeto \\
+  \texttt{VERSION\_\allowbreak{}DE\_\allowbreak{}CARGA\_\allowbreak{}AUSENTE} & Carga masiva & Rechazo del lote completo & Rechazo; la versión es obligatoria y ordena la reejecución \\
+  \texttt{ZONA\_\allowbreak{}HORARIA\_\allowbreak{}INVALIDA} & Captura de sitio & Rechazo del alta de sitio & Cuarentena del sitio \\
+  \texttt{TEMPERATURA\_\allowbreak{}FUERA\_\allowbreak{}DE\_\allowbreak{}RANGO} & Ingesta de lectura & Rechazo de la lectura con alerta & Cuarentena de la serie; no se corrige la lectura histórica \\
+  \texttt{UNIDAD\_\allowbreak{}TEMPERATURA\_\allowbreak{}AUSENTE} & Ingesta de lectura & Rechazo de la lectura & Cuarentena de la serie \\
+  \texttt{VERSION\_\allowbreak{}VIGENTE\_\allowbreak{}DUPLICADA} & Publicación de versión de parámetro & Rechazo de la publicación & Cuarentena de la versión duplicada \\
+  \texttt{IMPORTE\_\allowbreak{}NEGATIVO}, \texttt{MONEDA\_\allowbreak{}AUSENTE} & Captura de importe & Rechazo & Cuarentena con el importe original \\
+  \texttt{AUDITORIA\_\allowbreak{}INCOMPLETA} & Cierre de la operación & Rechazo del registro de auditoría & La operación no se carga sin su auditoría \\
+\end{tablalafrox}
+\fuentetabla{elaboración propia de LafroX a partir de RT-05.04 y RT-05.12 de las Bases Técnicas Transversales (PUCV, 2026d), del caso de estudio y de las reglas de saneamiento declaradas en 5.3.}

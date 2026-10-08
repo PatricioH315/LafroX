@@ -1,0 +1,56 @@
+\section{Estrategia de desempeño}
+\label{sec:sd5-5-4}
+
+Esta sección aplica los escenarios de carga de S4 a índices, particiones, caché, concurrencia y pruebas del modelo. Las decisiones protegen la operación repetitiva y permiten detectar saturación sin alterar las autoridades ni identidades de 5.1.
+
+\subsection{Escenarios de carga de referencia}
+\label{sec:sd5-5-4-1}
+
+La Tabla~\ref{tab:sd5-escenarios} relaciona los escenarios de S4 con su efecto sobre el modelo y la prueba prevista. RT-09.01--03 exige dimensionamiento, umbrales bajo carga y crecimiento 3$\times$; RT-09.06 exige carga a 1,5$\times$pico y estrés hasta saturación (PUCV, 2026d, §9).
+
+\parte{tablas/escenarios_carga}
+
+El máximo global combina preventa, reparto y portal; despacho distingue total distribuido y WMS Talca. Se adoptan los resultados de A.34 (3,15/8,05), cuya base visible 2,68 está redondeada, sin recalcular desde ese redondeo. Los índices priorizan lote/unidad y filtros operativos.
+
+Los escenarios conservan identidades/restricciones, UUID internos y equivalencias de origen. Son cálculos de diseño; 5.4.6 define su ensayo en PREPROD.
+
+\subsection{Consultas críticas e índices}
+\label{sec:sd5-5-4-2}
+
+Los índices del Anexo 5-F responden a predicados reales del modelo: disponibilidad por sitio/ubicación/lote/unidad; composición por unidad y recorrido inverso por lote en \texttt{inv\_unidad\_contenido}; custodia por lote o unidad en \texttt{cal\_evento\_objeto} y unión a cabecera; excursiones por \texttt{cal\_excursion(lote\_id, inicio)}; excepciones por \texttt{gob\_excepcion\_sync(correlacion\_id, clave)} y \texttt{(estado, fecha)}. Actor y dispositivo de una excepción se reconstruyen desde su payload histórico y auditoría, sin inventar una columna \texttt{dispositivo\_id}.
+
+La identidad fiscal usa tipo/emisor/folio/versión, no el hash. Los mensajes, eventos y cobros necesitan identidad global; la unicidad no depende del mes de llegada. Los índices y restricciones se verifican en PREPROD mediante creación del esquema y planes EXPLAIN con volumen representativo, conservando versión del motor, consultas y resultados. Una consulta sanitaria sin fecha conocida recorre todas las particiones pertinentes por lote y no presupone poda temporal.
+
+\subsection{Particionamiento y archivado}
+\label{sec:sd5-5-4-3}
+
+\begingroup\sloppy 5-F fija tablas sin partición para unicidad global:\texttt{cal\_evento\_custodia}, \texttt{prv\_pedido\_promesa}, \texttt{doc\_documento}, \texttt{cob\_cobro} y \texttt{edi\_mensaje}; índices selectivos y mantenimiento/borrado acotados fuera de despacho. \texttt{rep\_entrega} y sus líneas conservan una entrega por pedido con varios intentos y fragmentos, sin duplicados entre meses.\par\endgroup
+
+\texttt{cal\_evento\_objeto} usa \texttt{ts\_evento} inmutable y PK/UK/FK completas, concordantes con cabecera. Saldo, movimiento, excursión/bloqueo, POD y auditoría mantienen UUID global sin partición; series/hechos analíticos siguen A.17.
+
+Una partición se retira solo con todas sus filas/expedientes vencidos y sin retención legal; de otro modo se borran filas elegibles con control y auditoría. Archivo conserva reglas, maestros y calibraciones que interpretan expedientes vivos. Se ensaya restauración según S4.
+
+\subsection{Caché y copia local del dispositivo}
+\label{sec:sd5-5-4-4}
+
+5-G fija claves/versiones e invalidación. Redis/ElastiCache acelera lectura, sin confirmar saldo/pago. Stock usa sitio/ubicación/producto/lote/unidad/versión; precio, producto/canal/versión; crédito, cliente/versión. La autoridad escribe e invalida por outbox; tras pérdida, reconstrucción desde esa autoridad.
+
+Room/SQLite distingue copias indicativas de hechos/POD durables; el móvil cierra la entrega autorizada localmente y verifica el objeto central después. PostgreSQL del sitio confirma reservas; ningún saldo descargado las autoriza. El Portal de Clientes instalable usa IndexedDB para catálogo/precios fechados y pedidos pendientes. UUID y payload de pedido/líneas sobreviven al reinicio hasta acuse durable de M3, que valida stock/crédito/precio y sesión/cuenta. Antes del acuse no hay reserva ni precio/promesa confirmados. M3 es dueño del pedido de preventista, autoatención y canal moderno; canal de captura no cambia el catálogo comercial. Invalidar una cuenta bloquea acceso/envíos sin borrar pendientes sin resolución.
+
+Keycloak preemite y firma el manifiesto de 26~h; renueva al menos cada hora con conexión. Offline se verifica firma/vigencia/PIN y relevos preinscritos; se distinguen identidad de consulta de 24~h y credenciales de 8/14~h. La copia personal se invalida y purga al vencer, cerrar sesión o retirar autorización; la eliminación local se verifica y audita, incluyendo colas, archivos temporales y versiones conforme a 5-D. No se purga evidencia durable antes de su consolidación y retención aplicable.
+
+\subsection{Conexiones, concurrencia y colas}
+\label{sec:sd5-5-4-5}
+
+S4 dimensiona 438,30 usuarios en régimen, extremo de 775,33 con portal y 158 dispositivos de terreno. Los pools limitan conexiones por instancia y la API limita tasa/espera; al exceder capacidad encola o devuelve estado explícito sin pérdida silenciosa. Los límites concretos de pool se calibran en PREPROD con el perfil de 5.4.1; no se presentan como medidos.
+
+SQS FIFO no sustituye la deduplicación durable ni la conciliación. Outbox/inbox conservan identidad y resultado; edad/profundidad de cola y versión del agregado permiten detectar retrasos. La nube escala según S4 y el sitio usa capacidad local reservada; saturar el enlace no habilita dos escritores del mismo saldo.
+
+\subsection{Medición y pruebas propuestas}
+\label{sec:sd5-5-4-6}
+
+En PREPROD se probará carga a 1,5$\times$pico = 21,99~TPS, con distribución por sitio y hora de S4, y estrés hasta identificar saturación. Se medirán p95, recursos, error, profundidad/edad de cola, recuperación y ausencia de pérdida/duplicación; el informe incluirá curvas y punto de quiebre. Las pruebas de índices ejecutarán creación de restricciones y planes con volumen representativo.
+
+Autonomía: bodega 24~h sin WAN y terreno 14~h sin señal, acuse local $\le$2~s; sincronización de reparto $\le$10~min y de sitio $\le$2~h tras reconexión. AL-CLI-01 prueba reinicio, UUID y sesión/cuenta de autoatención, sin extenderle el plazo de reparto. AL-DR-01 distingue autonomía de pérdida del sitio: RTO $\le$4~h / RPO $\le$15~min críticos; RPO $\le$24~h analítica/mensajes no críticos y GPS dentro de sa-east-1. 5-J verifica extracción por fibra/LTE/Starlink y recuperación; buffer local no acredita RPO externo. Restauración por clase sigue 5-J.
+
+Actas identifican versión, ambiente y datos. Ensayos completos preceden cada corte y cambio de reglas; capacidad se revisa trimestralmente y ante incidente/versión/crecimiento (RT-09.09). 5-I vincula requisitos y 5-J aceptación; son compromisos futuros dentro del alcance ofertado.

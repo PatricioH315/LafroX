@@ -1,0 +1,36 @@
+%  Matriz de trazabilidad de RT-05 con evidencia comprobable -- generada desde el anexo en Markdown
+\begin{tablalafrox}{Matriz de trazabilidad de RT-05 con evidencia comprobable}{tab:sd5-a20}%
+  {F{0.273} F{0.114} Y F{0.114}}%
+  {\cab{Requisito} & \cab{Apartado que lo atiende} & \cab{Evidencia comprobable en la fuente} & \cab{Anexo que lo desarrolla}}
+  RT-05.01 Modelo y diccionario & 5.1.1 a 5.1.11 & Nueve vistas lógicas distribuidas entre cuerpo y 5-M, sin duplicaciones; diccionario de 111 entidades y 791 atributos con tipo, dominio, obligatoriedad, propietario y sensibilidad & 5-A y 5-B \\
+  RT-05.02 Paradigma y motor por dominio & 5.1.1 y 5.2.1 & Tabla de índices y almacenes; posición declarada entre consistencia y disponibilidad por dominio; sin credenciales contadas como tecnología de persistencia & 5-B \\
+  RT-05.03 Trazabilidad de la operación & 5.2.2 & el contrato de escritura de 5.2.2 con cambio, auditoría y outbox en la misma transacción del motor dueño; \texttt{gob\_\allowbreak{}auditoria} con actor, dispositivo, instante, resultado y valores anterior y posterior & 5-A y 5-J \\
+  RT-05.04 Calidad de datos & 5.2.5 & Perfil por población, regla, umbral, dueño, resolución y tablero con profundización; ISO/\allowbreak{}IEC 25012 (International Organization for Standardization, 2008) como referencia de dimensiones, no de cifras propias & 5-C y 5-H \\
+  RT-05.05 Separación transaccional y analítica & 5.1.1 y 5.2.6 & Consumo en S3, Glue, Redshift Serverless y QuickSight; el almacén transaccional no ejecuta analítica pesada & 5-B \\
+  RT-05.06 Exportación íntegra sin costo adicional & 5.2.8 & Operación autónoma con tablas, series y objetos, formatos abiertos, relaciones y diccionario, manifiesto con huella y conteo, permiso, seguimiento, reintento, validación y descarga & 5-H \\
+  RT-05.07 Retención, archivado y eliminación & 5.2.7 & Matriz por dominio con inicio de plazo, en línea y archivo, ubicación y réplica, bloqueo legal, eliminación de derivados y evidencia & 5-D y 5-F \\
+  RT-05.08 Datos personales conforme al Art. 85 & 5.2.7 y 5.1.10 & Clasificación \texttt{AL}, \texttt{CR} y \texttt{ME} por atributo con cifrado en reposo, cifrado a nivel de campo, mínimo privilegio y consulta auditada & 5-E \\
+  RT-05.09 Gestión de datos maestros & 5.1.3 & Maestro con dueño y aprobador por familia, vigencia, equivalencias entre ERP, WMS y EDI, propagación, conflicto y conciliación; la identidad del lote no se fusiona por semejanza & 5-A y 5-C \\
+  RT-05.10 Catálogo con linaje automatizado, deseable & 5.2.6 y Anexo 5-H & No ofertado como capacidad automatizada; se entrega trazabilidad documental de origen, transformación, fórmula, versión y responsable & 5-H \\
+  RT-05.11 Plan de migración & 5.3.1 a 5.3.6 & Alcance, volumen \texttt{32,11 GB} con rango \texttt{30,73} a \texttt{33,49 GB}, origen, reglas, criterios de calidad, oleadas, reversión y responsables & 5-J \\
+  RT-05.12 Perfilado y saneamiento previos & 5.3.2 & Perfilado por conjunto, categoría excluyente, original preservado, causa tipificada y decisión del responsable & 5-C y 5-J \\
+  RT-05.13 Dos ensayos completos en preproducción & 5.3.4 y 5-L & Dos ensayos completos e independientes antes del corte, con extracción, transformación, carga, conciliación, delta y reversión & 5-J \\
+  RT-05.14 Conciliación cuantitativa & 5.3.5 & Conciliación del universo de origen/\allowbreak{}destino por claves, recuentos y sumas; muestreo dirigido complementario; cero diferencias no explicadas & 5-J \\
+  RT-05.15 No migrados accesibles en consulta & 5.3.3 & Repositorio de consulta con inventario, formato, localización, búsqueda, dueño, plazo, permisos y prueba de consulta & 5-D y 5-J \\
+  RT-05.16 Servicios síncronos y flujos por evento & 5.2.2 y 5.2.4 & Contratos en OpenAPI 3.1 y AsyncAPI 2.6 o superior generados desde el código, con versión semántica & Subdocumento 4 \\
+  RT-05.17 Obsolescencia y preaviso & 5.2.4 & Política de versiones con preaviso mínimo de seis meses y tabla de equivalencias entre sistemas & 5-C \\
+  RT-05.18 Autenticación entre sistemas & 5.2.4; S4 4.1.3.5 y 4.1.3.7 & Autenticación de servicios mediante mTLS y credenciales rotadas; las credenciales de turno de personas son un control distinto & S4; 5-E \\
+  RT-05.19 Registro de entrada y salida con correlativo & 5.2.2 & \texttt{transaction\_\allowbreak{}id} y \texttt{correlacion\_\allowbreak{}id} en auditoría, evento, excepción de sincronización y mensaje; instantes de ocurrencia y de registro diferenciados & 5-A y 5-J \\
+  RT-05.20 Capa anticorrupción & 5.2.4 & Traducción de integraciones heredadas y de terceros con equivalencias tipadas y validación de versión antes del efecto & 5-B \\
+  RT-05.21 Declaración por integración & 5.2.4; S4 Anexos 4-G/\allowbreak{}4-H/\allowbreak{}4-I & Catálogo INT con modo, volumen, ventana de contraparte y comportamiento sin respuesta; no sustituido por una prueba genérica & S4 \\
+  RT-05.22 Carga y descarga masiva & 5.2.8 & Carga operativa por rol CLIENTE, validación previa, aceptación parcial por registro independiente, informe de errores y reintento idempotente; descarga abierta & 5-C y 5-J; S4 Anexo 4-C \\
+  RT-05.23 Estándares sectoriales & 5.1.7 y 5.1.9 & Subconjunto declarado de EPCIS 2.0 y CBV 2.0 (GS1, 2022a, 2022b) con identificadores canónicos y etiquetas españolas separadas; equivalencias GS1 en EDI & 5-A \\
+  RT-05.24 Portal de desarrolladores, deseable & 5.4.6 & No ofertado; no hay compromiso de portal y no se describe ninguno & No aplica \\
+  RT-05.25 Capa analítica con tableros & 5.2.6 & Catálogo de indicadores por fase con audiencia, objetivo, fórmula, dimensiones, filtros, profundización, frecuencia y latencia & 5-H \\
+  RT-05.26 Filtros y profundización & 5.2.6 & Filtros por período, unidad organizacional y dimensión, con profundización hasta pedido, entrega, línea y documento & 5-H \\
+  RT-05.27 Autoservicio y modelo semántico & 5.2.6; S4 4.1.4.7 y 4.2.2.4, N-10 & Autoría QuickSight autónoma con permisos separados; grano, relaciones, fórmulas y casos límite documentados en el modelo semántico & 5-H; S4 \\
+  RT-05.28 Exportación de informes & 5.2.6 y 5.2.8 & Informes exportables y envío por calendario bajo permisos CLIENTE; exportación íntegra con manifiesto, huella y conteo & 5-H \\
+  RT-05.29 Latencia máxima de disponibilidad analítica & 5.2.6 y 5.4.1 & Operativa de hasta cinco minutos desde el hecho, cierre de hasta dos horas desde el último retorno y gerencial de hasta cuatro horas & 5-H y 5-J \\
+  RT-05.30 Analítica predictiva, deseable & 5.2.6 & No ofertado; no se promete predicción ni se la describe como capacidad disponible & No aplica \\
+\end{tablalafrox}
+\fuentetabla{elaboración propia de LafroX a partir del bloque RT-05 de las Bases Técnicas Transversales (PUCV, 2026d), del Formulario T-12 sobre capacidades ofertadas y no ofertadas y del contenido de los apartados citados del Subdocumento 5.}

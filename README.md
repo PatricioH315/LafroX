@@ -5,17 +5,24 @@ La rama `rama-formato-Latex-base` contiene el formato compartido. Cada rama hija
 ## Estructura
 
 ```text
-main.tex                         Metadatos y montaje del documento
+LAFROX-Subdocumento5.tex         Montaje y metadatos del subdocumento  -> LAFROX-Subdocumento5.pdf
+LAFROX-Subdocumento5-Anexos.tex  Montaje y metadatos del archivo de anexos -> LAFROX-Subdocumento5-Anexos.pdf
 lafrox.cls                       Clase y formato corporativo
 lafrox-portada.tex               Diseño de portada
-latexmkrc                        Compilación con LuaLaTeX
-logo/                           Isotipos de portada y encabezado
-subdocumento-ejemplo/
-    contenido.tex               Capítulo autocontenido de muestra
-    tablas/ejemplo_tabla.tex     Ejemplo de tabla
+latexmkrc                        Compilación con LuaLaTeX (genera ambos PDF)
+logo/                            Isotipos de portada y encabezado
+05_modelo_datos/
+    contenido.tex                Capítulo 5 (cuerpo)
+    partes/  tablas/  figuras/   Secciones 5.1–5.4, tablas 5.1–5.4 y Figuras 5.1–5.7
+    anexos/
+        contenido.tex            Anexos 5-A a 5-M, referencias y declaración de IA
+        tablas/                  Tablas A.1–A.28
+        figuras/                 Figuras A5.1–A5.3
 README.md
 .gitignore
 ```
+
+Las Aclaraciones exigen dos archivos por subdocumento: el cuerpo y sus anexos (`EMPRESA-SubdocumentoX` y `EMPRESA-SubdocumentoX-Anexos`). `latexmk` sin argumentos compila ambos.
 
 ## Crear una rama hija
 

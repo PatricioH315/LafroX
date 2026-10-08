@@ -1,0 +1,22 @@
+%  Módulo, almacén lógico y motor por dominio -- generada desde el anexo en Markdown
+\begin{tablalafrox}{Módulo, almacén lógico y motor por dominio}{tab:sd5-a11}%
+  {F{0.141} F{0.173} F{0.222} F{0.163} Y}%
+  {\cab{Dominio} & \cab{Módulo y almacén lógico} & \cab{Motor que lo sostiene} & \cab{Participantes y ubicación} & \cab{Naturaleza de la referencia}}
+  Maestros y configuración & \texttt{BD\_\allowbreak{}MAESTROS\_\allowbreak{}CONF} & PostgreSQL 16 con Aurora central como distribución y copia local de lectura & Autoridad en Maestro; copias de solo lectura en cada sitio & Réplica por publicación de eventos, sin escritura local \\
+  Actores, roles y permisos & \texttt{BD\_\allowbreak{}GOBIERNO\_\allowbreak{}ACCESO} e identidad federada de S4 & PostgreSQL 16 y Keycloak como proveedor de identidad & Central & El token se valida contra el emisor; no se almacenan contraseñas \\
+  Recepción, lote, saldo y unidad logística & BD\_\allowbreak{}INVENTARIO & PostgreSQL 16/\allowbreak{}PostGIS por sitio; Aurora copia/\allowbreak{}consolidado & Cada sitio confirma en su perímetro & DMS solo Talca lector; consolidación por eventos \\
+  Trazabilidad, custodia y calidad & \texttt{BD\_\allowbreak{}CALIDAD\_\allowbreak{}TRAZABILIDAD} & PostgreSQL 16 local y DynamoDB para ingesta de eventos & Central Aurora para el expediente consolidado & El evento local es el que prueba; el central consolida \\
+  Preventa, tarifa y promesa & BD\_\allowbreak{}PREVENTA & Aurora PostgreSQL central & M3, dueño del pedido en los tres canales & Pedido/\allowbreak{}tarifa centrales; reserva validada por inventario del sitio \\
+  Preparación y picking & \texttt{BD\_\allowbreak{}PREPARACION} & PostgreSQL 16 local & Por sitio & Escritura local con evento al bus y confirmación idempotente \\
+  Rutas, viajes y paradas & BD\_\allowbreak{}RUTAS & PostgreSQL/\allowbreak{}PostGIS central & Autoridad central; copias en sitio/\allowbreak{}dispositivo & Itinerario descargado/\allowbreak{}versionado; sin otro escritor \\
+  Reparto, entrega y devolución & BD\_\allowbreak{}REPARTO & PostgreSQL central; Room/\allowbreak{}SQLite en terreno & Central consolida capturas autorizadas & Acuse durable local; consolidación posterior sin exigir WAN \\
+  Cobranza y finanzas & BD\_\allowbreak{}COBRANZA\_\allowbreak{}FINANZAS & PostgreSQL central; captura durable móvil & Autoridad financiera central & Captura offline permitida, rendición y conciliación; POS incierto no es aprobación \\
+  Documentos y objetos & \texttt{S3\_\allowbreak{}DOCS} & Almacenamiento de objetos con bloqueo de versión & Central y copia por región & La referencia es por clave lógica y huella, nunca por ruta física \\
+  Intercambio con canal moderno & \texttt{BD\_\allowbreak{}EDI\_\allowbreak{}CANALMODERNO} & PostgreSQL 16 central & Central & Contrato versionado y mensajes idempotentes \\
+  Notificaciones al cliente & BD\_\allowbreak{}MAILS\_\allowbreak{}NOTIF & PostgreSQL central & Central & Plantillas/\allowbreak{}preferencias versionadas; tres canales \\
+  Telemetría y caché de lectura & BD\_\allowbreak{}TELEMETRIA /\allowbreak{} REDIS\_\allowbreak{}SESIONES\_\allowbreak{}CACHE & DynamoDB raw; S3 Parquet/\allowbreak{}Glue/\allowbreak{}Redshift series; Redis caché & M12 ingiere; central consolida; metadatos/\allowbreak{}calibraciones en Calidad & Caché reconstruible, sin confirmar reservas/\allowbreak{}pagos \\
+  Analítica de explotación & \texttt{BD\_\allowbreak{}BI\_\allowbreak{}GERENCIA} & Amazon S3, AWS Glue, Amazon Redshift Serverless y QuickSight embebido & Región \texttt{sa-east-1} & Consulta sin escritura en el almacén transaccional \\
+  Bus de eventos & Cola administrada de brokerage de S4 & Broker de mensajería & Central y por sitio & Publicación con reintento y confirmación durable \\
+  Copia local del dispositivo & Persistencia local de captura/\allowbreak{}consulta & Room/\allowbreak{}SQLite nativo; IndexedDB en PWA & Dispositivo/\allowbreak{}cuenta & UUID, payload pendiente y acuse durable; sin autoridad comercial autónoma \\
+\end{tablalafrox}
+\fuentetabla{elaboración propia de LafroX a partir de los quince nombres lógicos de persistencia de S4 4.1.5, del Subdocumento 4 y de T-11; el Formulario T-12 no añade motores.}

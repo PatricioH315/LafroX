@@ -1,0 +1,15 @@
+%  Particionamiento declarado y su relación con la retención -- generada desde el anexo en Markdown
+\begin{tablalafrox}{Particionamiento declarado y su relación con la retención}{tab:sd5-a17}%
+  {F{0.161} F{0.114} Y F{0.363}}%
+  {\cab{Tabla o familia} & \cab{Clave de partición} & \cab{Motivo declarado} & \cab{Relación con la política de retención}}
+  \texttt{cal\_\allowbreak{}evento\_\allowbreak{}objeto} & Mes de \texttt{ts\_\allowbreak{}evento} & Es la única tabla de custodia particionada, y usa una copia mantenida del instante del evento porque no tiene fecha propia & Permite retirar meses completos al vencer el plazo del expediente del lote \\
+  \texttt{cal\_\allowbreak{}excursion} & Sin partición & UUID global referenciado; índices selectivos y mantenimiento acotado & Archivo/\allowbreak{}borrado por lotes elegibles, conservando expediente vigente \\
+  \texttt{cal\_\allowbreak{}bloqueo} & Sin partición & UUID global referenciado; índices selectivos y mantenimiento acotado & Archivo/\allowbreak{}borrado por lotes elegibles, conservando expediente vigente \\
+  \texttt{tel\_\allowbreak{}serie\_\allowbreak{}consolidada} & Mes del día local del sitio & Se consulta por día y por sensor & Permite eliminar por mes al cumplir cinco años \\
+  \texttt{gob\_\allowbreak{}auditoria} & Sin partición & UUID global referenciado; índices selectivos y mantenimiento acotado & Archivo/\allowbreak{}borrado por lotes elegibles, conservando expediente vigente \\
+  \texttt{inv\_\allowbreak{}saldo} & Sin partición & UUID global referenciado; índices selectivos y mantenimiento acotado & Archivo/\allowbreak{}borrado por lotes elegibles, conservando expediente vigente \\
+  \texttt{inv\_\allowbreak{}movimiento} & Sin partición & UUID global referenciado; índices selectivos y mantenimiento acotado & Archivo/\allowbreak{}borrado por lotes elegibles, conservando expediente vigente \\
+  \texttt{doc\_\allowbreak{}pod} & Sin partición & UUID global referenciado; índices selectivos y mantenimiento acotado & Archivo/\allowbreak{}borrado por lotes elegibles, conservando expediente vigente \\
+  \texttt{hech\_\allowbreak{}entrega}, \texttt{hech\_\allowbreak{}entrega\_\allowbreak{}intento}, \texttt{hech\_\allowbreak{}linea\_\allowbreak{}venta} y \texttt{hech\_\allowbreak{}actividad\_\allowbreak{}costo} & Mes del hecho & Hechos inmutables de alta escritura & La retención sigue a la fuente transaccional del hecho \\
+\end{tablalafrox}
+\fuentetabla{elaboración propia de LafroX a partir de PostgreSQL 16 Table Partitioning y de la matriz de retención del Anexo 5-D.}

@@ -1,0 +1,62 @@
+\section{Estrategia de migración}
+\label{sec:sd5-5-3}
+
+La migración transforma datos del ERP, WMS de 2013 y planillas al modelo de 5.1, preservando identidad e historia. Conforme RT-05.11--14, se define alcance, volumen, herramientas, saneamiento con registro de defectos, al menos dos ensayos completos en Preproducción, conciliación cuantitativa y corte con reversión.
+
+\subsection{Alcance, orígenes y volumen estimado}
+\label{sec:sd5-5-3-1}
+
+El alcance es maestros completos, ventas de tres años, inventario de dos años, trazabilidad de cinco años si existe y cartera viva completa más dos años de historia. El perfilado identificará disponibilidad y antigüedad; los 816.000~KB históricos de cartera no prueban que incluyan deuda viva anterior. La trazabilidad no se excluye sin perfilarla. Los datos que no se migren permanecen consultables bajo su retención, con manifiesto de origen y motivo, sin fabricar lotes, actores, eventos ni fechas.
+
+La Tabla~\ref{tab:sd5-volumen-migracion} separa bytes de origen de almacenamiento estimado; KB y GB son decimales. Se asume provisionalmente serialización sin expansión ni compresión; los bytes transferidos se medirán y sustituirán ese supuesto en los ensayos. El factor 2 estima almacenamiento de destino, no volumen de red.
+
+\parte{tablas/volumen_migracion}
+
+La sensibilidad heredada de almacenamiento es 30,73--33,49~GB. La ampliación de cartera viva y trace faltante tiene que cuantificarse durante el perfilado; no se declara cubierta por ese intervalo. El ERP conserva la emisión única y puede aportar copias documentales con su identidad fiscal, sin reemitirlas.
+
+\subsection{Perfilado y saneamiento}
+\label{sec:sd5-5-3-2}
+
+Leandro Chamorro, líder de datos de S1, coordinará el perfilado con responsables de maestros, inventario, Finanzas y Calidad del CLIENTE. Se documentarán tablas/campos reales, claves, disponibilidad temporal, bytes serializados, duplicados, valores nulos, unidades, RUT/GTIN, lotes y cobertura documental. No se presupone el esquema físico de sistemas legados que aún no ha sido levantado.
+
+Cada registro se acepta sin cambio, se corrige con regla aprobada/versionada o se aísla para decisión. Se conservan original y transformación, sin inventar cliente activo, ubicación, lote, medición ni fecha. Clientes históricos no resolubles permanecen consultables en staging hasta aprobación; saldos no localizados quedan pendientes de ubicación, sin atribuir una posición de tránsito como hecho comprobado.
+
+Los defectos de 5-C se concilian por conjunto. Calidad valida trazabilidad; Finanzas importes/cartera; bodega saldos y conteo. La desviación monetaria contractual de inventario es $\le$0,3\,\%, con toda diferencia explicada y aprobada; la línea base 2,3\,\% no es tolerancia de carga. Los registros aislados permanecen consultables conforme RT-05.15.
+
+\subsection{Transformación, herramientas y artefactos}
+\label{sec:sd5-5-3-3}
+
+La extracción usa conexiones de solo lectura al ERP/WMS y archivos originales para planillas. S3 conserva paquetes con hash, conteos, ventana y versión; Glue ejecuta transformaciones versionadas y PostgreSQL carga masivamente en staging antes de publicar maestros y hechos. DMS se limita a Talca y su esquema lector: no es herramienta universal ni aplica de nuevo negocio ya recibido por eventos.
+
+El Anexo 5-L declara mapeo semántico origen$\rightarrow$destino, campos críticos, claves, conversión, rechazo, conciliación y responsable. El contrato de extracción incorporará nombres físicos comprobados durante el perfilado, sin inventar tablas legadas. Toda conversión mantiene procedencia, versión y valores originales; los ensayos comprobarán ese mapeo con datos completos.
+
+Se entregarán esquema perfilado, correspondencias aprobadas, código ETL versionado, manifiestos, defectos, tiempos, conciliación y actas go/no-go/rollback. El archivo vincula el documento ERP original; no reemite ni modifica su contenido.
+
+\subsection{Secuencia, ensayos y calendario por ola}
+\label{sec:sd5-5-3-4}
+
+La secuencia comprende preparación, carga inicial, ensayos, marcha blanca y corte oficial. E1 mantiene desarrollo M1--12, marcha blanca M13--15 y producción M16; E2 desarrollo M13--18, marcha blanca M19--20 y producción M21. Las últimas cuatro semanas de cada marcha blanca usan volumen real y aceptación. Los pilotos tienen perímetro y escritor definidos; no se confunden con el corte definitivo.
+
+Cada ensayo completo independiente recorre extracción, transferencia, transformación, carga, índices, delta, conciliación y rollback; el segundo comienza con extracción nueva y registra tiempos y resultados propios. Se trata de procedimientos futuros, sin actas de ejecución acreditadas.
+
+Las siete fases de la ola de ventas suman 285~min: 45+30+40+60+35+30+45. Con fuente/transferencia provisional de 10.476~MB, extracción requiere 3,88~MB/s y transferencia 5,82~MB/s; con margen 30\,\%, capacidad de 5,04 y 7,57~MB/s respectivamente. Si el perfilado comprobara 20.952~MB realmente transferidos, los valores serían 7,76/11,64 y con margen 10,09/15,13: no se aplica ese volumen por el solo factor de almacenamiento. Para inventario, los 15/10~min de extracción/transferencia de la Tabla A.26 requieren 3.348,6~MB / 900~s = 3,72~MB/s y / 600~s = 5,58~MB/s; con margen 30\,\%, 4,84/7,26~MB/s. Si el perfilado comprobara 6.697,2~MB físicos manteniendo esos tiempos, se requerirían 7,44/11,16~MB/s y con margen 9,67/14,51. El factor 2 de almacenamiento no acredita ese volumen de transferencia. Duración de cada fase = bytes de esa fase / tasa, sin dividir otra vez por la ventana.
+
+5-L calcula olas y reserva rollback. Las cargas iniciales ocupan noches previas con origen como escritor; el corte solo aplica delta/validación. Se excluye 1--25 septiembre, 1--31 diciembre y primeros tres días hábiles del cierre mensual. Ventana 22:00--06:00, protegiendo despacho 05:30--07:00; domingo para cargas largas. La fecha civil depende del inicio contractual; go/no-go exige tiempos medidos compatibles con ventana y reversión.
+
+\subsection{Conciliación y criterios de corte}
+\label{sec:sd5-5-3-5}
+
+La conciliación cubre el universo: origen = aceptados + corregidos + aislados/excluidos con decisión; destino = aceptados/corregidos bajo transformación documentada. Compara claves/recuentos, importes por mes/moneda, cantidades homologadas por producto, saldos por sitio y cartera por cliente, incluida deuda viva anterior. Cada diferencia exige causa, evidencia y aprobación; diferencias no explicadas = cero.
+
+El muestreo dirigido de lotes, equivalencias, documentos y riesgos complementa los controles completos; ni 19/20 ni 95\,\% basta para aceptar. Se exige trazabilidad del universo migrado y consulta de no migrados; inventario con conteo, desviación monetaria $\le$0,3\,\% y toda diferencia explicada, separada de exactitud por cantidad.
+
+Autoriza el CLIENTE mediante responsable funcional del conjunto y responsable de datos, con segregación financiera. No-go por pérdida/duplicación, trazabilidad rota no resuelta, importes no conciliados, permisos inválidos o tiempo incompatible con rollback. El ERP conserva emisión tributaria única y todo conjunto no migrado queda consultable con sus objetos, reglas y procedencia durante el plazo aplicable.
+
+\subsection{Delta, reversión y continuidad del ERP}
+\label{sec:sd5-5-3-6}
+
+Snapshot y marcas de agua delimitan el corte por autoridad. El delta del escritor vigente se identifica y concilia antes de transferir/devolver autoridad. Al suspender escrituras se drenan operaciones aceptadas y registra frontera final; hay un escritor por operación/sitio. DMS Talca mantiene su lector separado, sin repetir efectos de eventos.
+
+Rollback detiene el escritor nuevo, preserva evidencia, restaura el punto de control, concilia delta y devuelve autoridad al sistema previo de cada perímetro; WMS Talca no es escritor previo de todas las sedes. El ensayo comprueba recuperación, emisión ERP y cero pérdida/duplicación, no solo cambio nominal de escritor.
+
+La continuidad manual/papel de S3 conserva captura y conciliación, sin dos escritores ni traslado sin guía vigente. S4, Anexo 4-M, AL-DTE-01, exige preemisión por el ERP al cerrar la carga nocturna: Talca usa RabbitMQ/erp-sync en VM-04; otras sedes, shipper y colas de solicitud/respuesta con comunicación del sitio. Cambio de carga exige anulación/reemisión antes de liberarlo; sin comunicación, solo sale la carga amparada y el ajuste pasa al siguiente viaje. S5 consulta/archiva copias, sin emitir ni modificar DTE. Los protocolos AL-DTE-01 y AL-DR-01 se acreditarán en ensayo.
