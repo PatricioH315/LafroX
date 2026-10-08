@@ -45,7 +45,19 @@ P/I/D son juicios ordinales iniciales sustentados en exposición y controles des
 | 4 | Exposición recurrente o varias dependencias sin control demostrado | Amenaza hito, SLA o alcance obligatorio | Se aprecia al afectar operación o en revisión tardía |
 | 5 | Condiciones muy favorables al evento sin barrera eficaz | Detiene despacho crítico, compromete seguridad/datos/sanidad o impide aceptación | Sin evidencia de detección o reconocible después de pérdida |
 
-Exposición E = P × I (1–25): baja 1–3, moderada 4–7, alta 8–14 y crítica 15–25. FMEA agrega NPR = P × I × D (1–125), para ordenar dentro del nivel; desempates por impacto y proximidad del plazo. I = 5 exige escalamiento aunque E no alcance 15. No se asigna D = 1 a un control por describirlo. Estas escalas no estiman pérdida monetaria ni probabilidad estadística.
+Exposición E = P × I (1–25): baja 1–3, moderada 4–7, alta 8–14 y crítica 15–25. FMEA agrega NPR = P × I × D (1–125), para ordenar dentro del nivel; desempates por impacto y proximidad del plazo. I = 5 exige escalamiento aunque E no alcance 15. No se asigna D = 1 a un control por describirlo.
+
+Para el análisis cuantitativo, cada valor de P se calibra con un tramo de probabilidad y cada valor de I con la fracción del esfuerzo de los paquetes afectados que el evento agregaría como retrabajo o trabajo adicional. Los paquetes afectados son los que cada ficha del Anexo 8.A nombra en «Fuente y EDT», con sus HH del Formulario T-15. La calibración es un juicio del equipo, no una frecuencia medida, y se revisa con los datos del proyecto.
+
+| Valor | Probabilidad (tramo y valor usado) | Impacto (fracción del esfuerzo afectado) |
+| --- | --- | --- |
+| 1 | Menos de 10 %; 5 % | Sin esfuerzo adicional |
+| 2 | 10 a 30 %; 20 % | 5 % |
+| 3 | 30 a 50 %; 40 % | 10 % |
+| 4 | 50 a 70 %; 60 % | 20 % |
+| 5 | Más de 70 %; 80 % | 30 % |
+
+El valor esperado de un riesgo es su probabilidad por su impacto en HH. Las horas sirven de unidad porque la oferta técnica no contiene montos (BA Art. 50.2); la Oferta Económica valoriza esas horas.
 
 ### 8.1.4 Registro y cierre
 
@@ -53,13 +65,13 @@ El responsable actualiza fuente, estado, disparador, tratamiento, consumo de HH 
 
 ## 8.2 Identificación y Análisis de Riesgos
 
-Esta sección identifica los riesgos con una RBS y los analiza en dos niveles: uno cualitativo con FMEA y otro cuantitativo con escenarios deterministas y el PERT del cronograma.
+Esta sección identifica los riesgos con una RBS y los analiza en dos niveles: uno cualitativo con FMEA y otro cuantitativo con el valor esperado de cada riesgo en horas hombre y una simulación de Monte Carlo sobre el cronograma por actividad del SD7.
 
 ### 8.2.1 RBS y análisis separados
 
 La RBS textual tiene raíz «Riesgos de la propuesta LafroX» y tres ramas: solución, desarrollo e implantación. Cada rama clasifica riesgos técnicos, organizacionales, de proyecto, seguridad y operación. Los IDs son únicos aunque una causa afecte varias ramas. Esta representación permite revisar relaciones en Markdown; no acredita revisión visual de una figura final.
 
-Solución: integridad de stock/custodia, ERP/DTE, autonomía, capacidad, RPO, seguridad, obsolescencia y proveedores. Desarrollo: interfaces sin documentación, recursos, contrapartes, conocimiento de rutas, migración y certificación externa. Implantación: congelamientos, cuatro semanas completas, suministros, adopción, relevos y atención. Anexo 8.A desarrolla 30 amenazas; 8.F cubre las cinco innovaciones y una oportunidad de diagnóstico con INN-02. Las tres ramas permiten preparar los análisis separados exigidos por T-22.
+Solución: integridad de stock/custodia, ERP/DTE, autonomía, capacidad, RPO, seguridad, obsolescencia y proveedores. Desarrollo: interfaces sin documentación, recursos, contrapartes, conocimiento de rutas, migración, certificación externa, certificación paralela a la revisión del CLIENTE y refuerzo subcontratado de calidad. Implantación: congelamientos, cuatro semanas completas, suministros, adopción, relevos y atención. Anexo 8.A desarrolla 32 amenazas; 8.F cubre las cinco innovaciones y una oportunidad de diagnóstico con INN-02. Las tres ramas permiten preparar los análisis separados exigidos por T-22.
 
 ### 8.2.2 Resultados cualitativos y FMEA
 
@@ -67,11 +79,26 @@ Anexo 8.B presenta P/I/D, exposición y NPR. La prioridad inicial se concentra e
 
 No se suman puntuaciones como probabilidad del proyecto. Las relaciones importan: ausencia de contraparte puede atrasar interfaces/cadenas y eliminar semanas de evidencia; migración deficiente puede invalidar trazabilidad y aceptación. Los mismos efectos o consumos no se contabilizan dos veces.
 
-### 8.2.3 Escenarios cuantitativos
+### 8.2.3 Análisis cuantitativo
 
-Se aplica FMEA y escenarios deterministas, sin Monte Carlo. Anexo 8.C calcula retrabajo, perfiles, duración, demoras de hitos y límite de activación. T-15 programa 202.774 HH, con soporte puente de 9.336 HH y reserva E1 de 3.072 HH ya incluidos; la mesa y el SOC siguen las posiciones del SD4 y el calendario real. El máximo mensual es 66 personas equivalentes en el mes 16; no demuestra contratación ni cobertura por subventana, y la dotación declarada en el SD1 no cubre SEG ni IMP sin contratación o subcontratación (T-15 §5.7). Horas de atención tampoco prueban SLA.
+El análisis cuantitativo tiene dos partes (PMI, 2017, pp. 433–434). La primera calcula el valor esperado de cada riesgo con la calibración de la sección 8.1.3. El registro suma 15.076 HH de valor esperado, cerca de 8 % de las 190.366 HH base del T-15. Cinco riesgos concentran 67,7 % del total: productividad o dotación inferior al modelo (R8-11), mesa que no alcanza los niveles de atención (R8-22), marcha blanca que no cumple las seis condiciones (R8-18), uso de la capacidad protegida de la Etapa 1 por la Etapa 2 (R8-14) y doble reserva de stock (R8-02). El Anexo 8.B, Tabla B.2, presenta el cálculo de cada riesgo y su porcentaje acumulado.
 
-La red agregada reconciliada incluye medio mes de revisión del CLIENTE antes de cada hito y deja reserva de calendario cero antes de H4/H5/H9/H10. Su PERT de duración da σ = 0,51 mes en el camino al H4 y 0,53 al H5: cada hito tiene 50 % de probabilidad de cumplirse, y el 90 % exigiría 0,65 y 0,67 mes de reserva (T-15 §5.3). Una reserva en meses 13–20 no subsana retraso anterior a H5. Las marchas blancas y sus últimas cuatro semanas no son reserva. Febrero de 2027 es ejemplo compatible con E2 en octubre de 2028; V-12 debe confirmar fecha y calendario hábil, preservando producción antes de enero de 2029.
+La segunda parte simula 5.000 veces el cronograma por actividad del Formulario T-15. En cada iteración, la duración de cada paquete varía con la distribución PERT de su tríada, cada riesgo ocurre con su probabilidad y, si ocurre, alarga sus paquetes afectados en la fracción de su impacto. La tabla informa, para cada hito, la fecha límite de entrega, las fechas que se alcanzan en la mitad (P50) y en el 80 % (P80) de las iteraciones y la probabilidad de entregar a tiempo.
+
+| Hito | Fecha límite de entrega | P50 | P80 | P(entrega a tiempo) |
+| --- | --- | --- | --- | --- |
+| H1 | 17-03-2027 | 09-03-2027 | 10-03-2027 | > 99,9 % |
+| H2 | 17-05-2027 | 06-04-2027 | 09-04-2027 | > 99,9 % |
+| H3 | 16-07-2027 | 30-06-2027 | 09-07-2027 | 98,6 % |
+| H4 | 16-11-2027 | 28-10-2027 | 03-11-2027 | > 99,9 % |
+| H5 | 17-01-2028 | 27-12-2027 | 05-01-2028 | 97,7 % |
+| H8 | 17-03-2028 | 06-03-2028 | 09-03-2028 | 99,3 % |
+| H9 | 16-06-2028 | 06-06-2028 | 14-06-2028 | 89,9 % |
+| H10 | 17-07-2028 | 30-06-2028 | 07-07-2028 | 97,7 % |
+
+La fecha P80 de cada hito queda antes de su fecha límite: el plan se compromete al percentil 80 y se ejecuta sobre las fechas programadas, que están cerca del P50. Para lograrlo, el SD7 dimensionó las reservas de cada hito con esta simulación, adelantó la sala técnica, los ambientes y la integración de la Etapa 2, y refuerza la calidad con evaluadores subcontratados durante las certificaciones. El H9 es el hito más expuesto (90 %), y su probabilidad depende sobre todo de R8-14, R8-11 y R8-15 (Anexo 8.C, Tabla C.4).
+
+T-15 programa 202.774 HH, con soporte puente de 9.336 HH y reserva E1 de 3.072 HH ya incluidos; la mesa y el SOC siguen las posiciones del SD4 y el calendario real. El máximo mensual es 69 personas equivalentes en el mes 15, y la construcción de la Etapa 1 ocupa a 48 personas de desarrollo a la vez; no demuestra contratación ni cobertura por subventana, y la dotación declarada en el SD1 no cubre SEG ni IMP sin contratación o subcontratación (T-15 §5.7). Horas de atención tampoco prueban SLA.
 
 ## 8.3 Plan de Acción a Riesgos
 
@@ -85,9 +112,21 @@ El costo-beneficio compara HH de prevención/verificación con retrabajo y afect
 
 ### 8.3.2 Reservas y cronograma
 
-Anexo 8.D distingue la capacidad protegida E1 de 3.072 HH, ya incluida; el soporte puente de 9.336 HH como servicio base; contingencias dimensionadas fuera del T-15 con su ventana: 400 HH de integración E1 en los meses 7 a 11, 400 HH de integración E2 en los meses 15 a 18, 442 HH/mes de atención si la demanda supera 2.200 contactos y 2.464 HH por cada cuatro semanas de extensión de marcha blanca; y la reserva de gestión para riesgos no identificados. Cada contingencia se dimensiona con el mayor escenario individual de su ámbito, sin sumar escenarios del mismo defecto ni prestarse entre etapas. JP solicita su uso al Comité Ejecutivo con causa, perfiles, ventana e impacto; los montos pertenecen a la Oferta Económica (Art. 50.2). No se inventa un porcentaje.
+La reserva de contingencia cubre los riesgos identificados y se dimensiona con la suma de sus valores esperados: 15.076 HH (PMI, 2017, p. 202; p. 443). De ellas, 3.072 HH ya están en el T-15 como capacidad protegida de corrección de la Etapa 1, por lo que la contingencia adicional es de 12.004 HH. La tabla reparte la contingencia por período según los meses de los paquetes afectados por cada riesgo; ese reparto es el reflejo de la reserva en el flujo de caja, y su valorización está en la Oferta Económica (Art. 50.2).
 
-Cada uso registra un cargo único por evento/mes/perfil y remanente. Riesgos correlacionados comparten consumo real; E1 no presta su reserva a E2. Los recursos adicionales requieren actualizar T-15 y calendario, sin ampliar automáticamente los 56 meses. Los meses 21 y 22 separan 2.834,54 HH de cierre y estabilización de implementación de la operación.
+| Período | Contingencia (HH) |
+| --- | --- |
+| Meses 1–6 | 1.802 |
+| Meses 7–12 | 4.090 |
+| Meses 13–15 | 2.359 |
+| Meses 16–21 | 3.287 |
+| Meses 22–33 | 3.486 |
+| Meses 34–56 | 51 |
+| **Total** | **15.076** |
+
+La reserva de cronograma son las reservas de cada hito del T-15, Tabla 5.2, dimensionadas para que la fecha P80 quede antes de la fecha límite (sección 8.2.3). La reserva de gestión cubre riesgos no identificados: no forma parte de la línea base, la autoriza el Comité Ejecutivo y su monto se define en la Oferta Económica; esta oferta técnica no la expresa en horas porque LafroX no dispone en esta copia de datos históricos que la sustenten. JP solicita el uso de cualquier reserva con causa, perfiles, ventana e impacto; ninguna reserva se presta entre etapas.
+
+Cada uso registra un cargo único por evento/mes/perfil y remanente. Riesgos correlacionados comparten consumo real; E1 no presta su reserva a E2. Los recursos adicionales requieren actualizar T-15 y calendario, sin ampliar automáticamente los 56 meses. Los meses 21 y 22 separan 2.774,54 HH de cierre y estabilización de implementación de la operación.
 
 ### 8.3.3 Factibilidad y aceptación
 
@@ -114,7 +153,7 @@ Codex y Claude Code apoyaron la redacción, la organización, el análisis ordin
 | --- | --- | --- | --- | --- | --- |
 | Introducción | Codex | Redacción a partir de SD2–SD4, SD6 y SD7 (6 de octubre de 2026) | Alto | Ninguno | No documentada |
 | 8.1 Plan de riesgos | Codex; Claude Code | Método, roles y escalas; Comité de Operación y textos de sección (7 de octubre de 2026) | Alto | Ninguno | No documentada |
-| 8.2 Identificación y Análisis de Riesgos | Codex; Claude Code | RBS textual, FMEA y escenarios; actualización con el T-15 y el PERT (7 de octubre de 2026) | Alto | Ninguno (RBS textual) | No documentada |
-| 8.3 Plan de Acción a Riesgos | Codex; Claude Code | Respuestas, reservas y factibilidad; contingencias dimensionadas (7 de octubre de 2026) | Alto | Ninguno | No documentada |
+| 8.2 Identificación y Análisis de Riesgos | Codex; Claude Code | RBS textual, FMEA y escenarios; valor esperado en HH y simulación de Monte Carlo sobre el cronograma por actividad (7 de octubre de 2026) | Alto | Ninguno (RBS textual) | No documentada |
+| 8.3 Plan de Acción a Riesgos | Codex; Claude Code | Respuestas, reservas y factibilidad; reserva de contingencia por valor esperado y su reparto por período (7 de octubre de 2026) | Alto | Ninguno | No documentada |
 | Anexos 8.A a 8.F | Codex; Claude Code | Ver la declaración de los anexos | Alto | Ninguno | No documentada |
 | Formulario T-16 | Codex; Claude Code | Ver la declaración del formulario | Alto | Ninguno | No documentada |

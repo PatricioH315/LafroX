@@ -1,6 +1,6 @@
 # Formulario T-14: Plan de trabajo, EDT y carta Gantt
 
-Este formulario detalla lo que el Subdocumento 7 resume en sus secciones 7.1 y 7.3, conforme al Formulario T-14 de las Bases Administrativas y al Capítulo 7 del índice obligatorio de las Aclaraciones de la licitación. Contiene la estructura de descomposición del trabajo (EDT) completa; su diccionario, con el entregable, el criterio de aceptación, el responsable y el período de cada paquete; y la carta Gantt de los 56 meses del contrato. El método de estimación y programación, la ruta crítica y los frentes de trabajo se detallan en el Formulario T-15, y la implantación de cada etapa, en el Formulario T-18. La EDT termina en el paquete de trabajo; la descomposición de cada paquete en actividades de 8 a 80 horas hombre que caben en una quincena está en el Formulario T-15, sección 6.
+Este formulario detalla lo que el Subdocumento 7 resume en sus secciones 7.1 y 7.3, conforme al Formulario T-14 de las Bases Administrativas y al Capítulo 7 del índice obligatorio de las Aclaraciones de la licitación. Contiene la estructura de descomposición del trabajo (EDT) completa; su diccionario, con el entregable, el criterio de aceptación, el responsable y el período de cada paquete; y la carta Gantt de los 56 meses del contrato. El método de estimación y programación, la ruta crítica y los frentes de trabajo se detallan en el Formulario T-15, y la implantación de cada etapa, en el Formulario T-18. La EDT termina en el paquete de trabajo; la descomposición de cada paquete en actividades de 8 a 80 horas hombre que caben en una quincena, con sus fechas, está en el Formulario T-15, sección 6. La EDT termina en el paquete de trabajo; la descomposición de cada paquete en actividades de 8 a 80 horas hombre que caben en una quincena está en el Formulario T-15, sección 6.
 
 ## 1 Estructura de descomposición del trabajo
 
@@ -892,11 +892,11 @@ La Tabla «tab:T-14-4» presenta sus paquetes.
 
 | Código | Paquete de trabajo | Entregable | Criterio de aceptación | Resp. | Período |
 | --- | --- | --- | --- | --- | --- |
-| 1.2.1 | Documento de especificación de requerimientos y línea base de alcance de la Etapa 1 (H1) | Especificación de requerimientos aprobada (línea base de alcance). | El 100 % de los requerimientos de la Etapa 1 tiene módulo y criterio de aceptación, y la línea base está firmada en el mes 2. | ARQ | Meses 1 y 2 (H1). |
+| 1.2.1 | Documento de especificación de requerimientos y línea base de alcance de la Etapa 1 (H1) | Especificación de requerimientos aprobada (línea base de alcance). | El 100 % de los requerimientos de la Etapa 1 tiene módulo y criterio de aceptación, y la línea base está firmada en el mes 2. | ARQ | Mes 1 (H1). |
 | 1.2.2 | Documento de reglas de ruteo capturadas al planificador de rutas | Catálogo de reglas de ruteo validado por don Hugo. | Don Hugo firma que las reglas representan su criterio. Las rutas que el software genera con esas reglas resultan operables cuando se comparan con las suyas. | IMP | Meses 1 a 3. |
 | 1.2.3 | Documento de especificación de las interfaces sin documentación del ERP, del WMS de 2013 y de la telemetría del tercero | Especificación de cada interfaz (formato, volumen y horario) y prueba de conexión. | Cada interfaz tiene contrato y una prueba de conexión exitosa en el ambiente de Desarrollo antes del H2. | ARQ | Meses 1 a 4. |
 | 1.2.4 | Matriz de trazabilidad: requerimiento, módulo, paquete y prueba (H1) | Matriz de trazabilidad. | Ningún requerimiento ofertado queda sin paquete ni sin prueba. | CAL | Mes 2 (H1). Se actualiza con cada cambio aprobado. |
-| 1.2.5 | Documento de línea base de alcance de la Etapa 2: canal moderno y costo de servir (H8) | Línea base de alcance de la Etapa 2. | Está aprobada por la Contraparte Técnica en el mes 14. | ARQ | Meses 13 y 14 (H8). |
+| 1.2.5 | Documento de línea base de alcance de la Etapa 2: canal moderno y costo de servir (H8) | Línea base de alcance de la Etapa 2. | Está aprobada por la Contraparte Técnica en el mes 14. | ARQ | Mes 13 (H8). |
 
 #### Cuenta 1.3 — Planificación del proyecto
 
@@ -910,7 +910,7 @@ La Tabla «tab:T-14-5» presenta sus paquetes.
 
 | Código | Paquete de trabajo | Entregable | Criterio de aceptación | Resp. | Período |
 | --- | --- | --- | --- | --- | --- |
-| 1.3.1 | Plan para la dirección del proyecto, con el calendario de congelamientos de septiembre, diciembre y el cierre mensual | Plan para la dirección con el calendario de congelamientos. | Ningún paso a producción, corte de datos ni despliegue cae en una fecha prohibida; los meses 16 y 21 coinciden con el Art. 17°; el plan está aprobado. | JP | Meses 1 y 2 (H1). Se actualiza con cada cambio. |
+| 1.3.1 | Plan para la dirección del proyecto, con el calendario de congelamientos de septiembre, diciembre y el cierre mensual | Plan para la dirección con el calendario de congelamientos. | Ningún paso a producción, corte de datos ni despliegue cae en una fecha prohibida; los meses 16 y 21 coinciden con el Art. 17°; el plan está aprobado. | JP | Mes 1 (H1). Se actualiza con cada cambio. |
 | 1.3.2 | EDT y diccionario de la EDT (línea base del alcance) | EDT dibujada y diccionario aprobados. | Todo requerimiento de la matriz (1.2.4) cae en un paquete, y ningún paquete queda sin responsable. | JP | Mes 2 (H1). |
 | 1.3.3 | Carta Gantt de 56 meses con los hitos H1 a H12 y la ruta crítica | Carta Gantt aprobada. | Cubre los 56 meses, respeta el Art. 17° y nombra la ruta crítica con su cálculo. | JP | Mes 2. |
 | 1.3.4 | Documento de nivelación de recursos y frentes del solapamiento de los meses 13 a 15 y 19 a 20 | Nivelación de recursos por etapa y por frente. | Ningún mes asigna a una persona por sobre su capacidad, y los dos frentes del solapamiento tienen dotación propia. | JP | Mes 2. Se revisa antes del mes 13. |
@@ -944,7 +944,7 @@ La Tabla «tab:T-14-7» presenta sus paquetes.
 
 | Código | Paquete de trabajo | Entregable | Criterio de aceptación | Resp. | Período |
 | --- | --- | --- | --- | --- | --- |
-| 1.5.1 | Plan de calidad y plan de pruebas | Plan de calidad y plan de pruebas aprobados. | Cada tipo de prueba que exigen las Bases tiene su ambiente, su calendario y su criterio de salida. | CAL | Meses 2 a 4. |
+| 1.5.1 | Plan de calidad y plan de pruebas | Plan de calidad y plan de pruebas aprobados. | Cada tipo de prueba que exigen las Bases tiene su ambiente, su calendario y su criterio de salida. | CAL | Mes 2. |
 | 1.5.2 | Puertas de calidad automáticas en la cadena de integración (cobertura de pruebas unitarias del 80 % y de lógica de negocio del 70 %) | Puertas activas en la cadena de integración, con su informe de métricas. | Una versión queda bloqueada si la cobertura de líneas por pruebas unitarias del código modificado es inferior al 80 % (política del SD1) o si la cobertura de la lógica de negocio de los módulos es inferior al 70 % (RT-04.11); ninguna llega a Preproducción con pruebas en falla. | CAL | Desde que existe la cadena de integración (3.1.4). |
 
 #### Cuenta 1.6 — Gestión de riesgos
@@ -1010,9 +1010,9 @@ La Tabla «tab:T-14-11» presenta sus paquetes.
 
 | Código | Paquete de trabajo | Entregable | Criterio de aceptación | Resp. | Período |
 | --- | --- | --- | --- | --- | --- |
-| 1.9.1 | Matriz de cumplimiento normativo por obligación legal, con su control y su evidencia | Matriz de cumplimiento normativo. | Cada obligación aplicable tiene su control y su evidencia, y la matriz está aprobada por el CLIENTE. | SEG | Meses 1 a 4, y actualizada ante cada cambio normativo. |
-| 1.9.2 | Acuerdo de tratamiento de datos personales con el CLIENTE | Acuerdo firmado. | Está firmado antes de tratar datos reales; es decir, antes de cargar el maestro (3.7.2). | SEG | Meses 1 a 3. |
-| 1.9.3 | Registro de actividades de tratamiento y evaluación de impacto en protección de datos | Registro de tratamientos y evaluaciones de impacto. | Cada tratamiento tiene su registro; los de alto riesgo tienen evaluación de impacto; hay una contraparte designada. | SEG | Meses 2 a 4, y actualizado ante cada tratamiento nuevo. |
+| 1.9.1 | Matriz de cumplimiento normativo por obligación legal, con su control y su evidencia | Matriz de cumplimiento normativo. | Cada obligación aplicable tiene su control y su evidencia, y la matriz está aprobada por el CLIENTE. | SEG | Mes 1, y actualizada ante cada cambio normativo. |
+| 1.9.2 | Acuerdo de tratamiento de datos personales con el CLIENTE | Acuerdo firmado. | Está firmado antes de tratar datos reales; es decir, antes de cargar el maestro (3.7.2). | SEG | Mes 1. |
+| 1.9.3 | Registro de actividades de tratamiento y evaluación de impacto en protección de datos | Registro de tratamientos y evaluaciones de impacto. | Cada tratamiento tiene su registro; los de alto riesgo tienen evaluación de impacto; hay una contraparte designada. | SEG | Mes 2, y actualizado ante cada tratamiento nuevo. |
 | 1.9.4 | Certificación ISO/IEC 27001 vigente y entrega anual de los informes de certificación | Certificación vigente durante el contrato e informe anual de certificaciones. | La certificación nunca está vencida, y hay un informe entregado cada año. | SEG | Anual, durante todo el contrato. |
 | 1.9.5 | Garantía de fiel cumplimiento, seguros y certificados laborales vigentes durante el contrato | Garantía constituida, pólizas acreditadas cada año y certificados laborales mensuales. | Ninguna garantía ni póliza queda vencida, y hay un certificado laboral por mes. | JP | Desde la adjudicación hasta el término del contrato. |
 
@@ -1032,10 +1032,10 @@ La Tabla «tab:T-14-12» presenta sus paquetes.
 
 | Código | Paquete de trabajo | Entregable | Criterio de aceptación | Resp. | Período |
 | --- | --- | --- | --- | --- | --- |
-| 2.1.1 | Documento de arquitectura lógica: capas, módulos M1 a M12 e interfaces | Documento de arquitectura lógica. | Está aprobado en el H2, y cada requerimiento de la línea base apunta a un módulo. | ARQ | Meses 2 a 4 (H2). |
-| 2.1.2 | Documento de arquitectura física híbrida: nube, centros de distribución y plataformas de cross-docking | Documento de arquitectura física. | Está aprobado en el H2, y cada componente tiene su lugar y su razón. | ARQ | Meses 2 a 4 (H2). |
-| 2.1.3 | Modelo de datos y diccionario de datos, con la trazabilidad por lote | Modelo de datos y diccionario de datos. | Está aprobado en el H2, y un retiro simulado recorre un lote desde la recepción hasta sus clientes. | DAT | Meses 2 a 4 (H2). |
-| 2.1.4 | Documento de diseño detallado de M11 y del intercambio con las cadenas | Documento de diseño detallado de la Etapa 2. | Está aprobado en el H8 y no cambia ningún contrato de la Etapa 1. | ARQ | Meses 13 y 14 (H8). |
+| 2.1.1 | Documento de arquitectura lógica: capas, módulos M1 a M12 e interfaces | Documento de arquitectura lógica. | Está aprobado en el H2, y cada requerimiento de la línea base apunta a un módulo. | ARQ | Mes 2 (H2). |
+| 2.1.2 | Documento de arquitectura física híbrida: nube, centros de distribución y plataformas de cross-docking | Documento de arquitectura física. | Está aprobado en el H2, y cada componente tiene su lugar y su razón. | ARQ | Mes 2 (H2). |
+| 2.1.3 | Modelo de datos y diccionario de datos, con la trazabilidad por lote | Modelo de datos y diccionario de datos. | Está aprobado en el H2, y un retiro simulado recorre un lote desde la recepción hasta sus clientes. | DAT | Mes 2 (H2). |
+| 2.1.4 | Documento de diseño detallado de M11 y del intercambio con las cadenas | Documento de diseño detallado de la Etapa 2. | Está aprobado en el H8 y no cambia ningún contrato de la Etapa 1. | ARQ | Mes 13 (H8). |
 
 #### Cuenta 2.2 — Diseño de la seguridad
 
@@ -1049,10 +1049,10 @@ La Tabla «tab:T-14-13» presenta sus paquetes.
 
 | Código | Paquete de trabajo | Entregable | Criterio de aceptación | Resp. | Período |
 | --- | --- | --- | --- | --- | --- |
-| 2.2.1 | Plan de seguridad de la información | Plan de seguridad. | Está aprobado en el H2, y cada requisito de seguridad del T-12 tiene su control. | SEG | Meses 2 a 4 (H2). |
+| 2.2.1 | Plan de seguridad de la información | Plan de seguridad. | Está aprobado en el H2, y cada requisito de seguridad del T-12 tiene su control. | SEG | Mes 2 (H2). |
 | 2.2.2 | Modelado de amenazas por componente y por integración externa, actualizado ante cada cambio | Modelo de amenazas con sus controles. | Cada amenaza alta tiene un control probado o un riesgo aceptado por escrito por el CLIENTE. | SEG | Meses 3 a 10, y ante cada cambio de arquitectura. |
-| 2.2.3 | Plan de respuesta a incidentes de seguridad, con aviso al CLIENTE en dos horas | Plan de respuesta a incidentes de seguridad. | El plan define la clasificación, el escalamiento, los plazos y los responsables, y se ensaya una vez antes del H5. | SEG | Meses 3 a 6. |
-| 2.2.4 | Matriz de clasificación de la información y matriz de controles | Las dos matrices. | Cada tipo de dato tiene su nivel, y cada nivel tiene sus controles implementados. | SEG | Meses 2 a 4 (con el H2). |
+| 2.2.3 | Plan de respuesta a incidentes de seguridad, con aviso al CLIENTE en dos horas | Plan de respuesta a incidentes de seguridad. | El plan define la clasificación, el escalamiento, los plazos y los responsables, y se ensaya una vez antes del H5. | SEG | Mes 3. |
+| 2.2.4 | Matriz de clasificación de la información y matriz de controles | Las dos matrices. | Cada tipo de dato tiene su nivel, y cada nivel tiene sus controles implementados. | SEG | Mes 2 (con el H2). |
 
 #### Cuenta 2.3 — Diseño de la sala técnica y de los racks
 
@@ -1066,9 +1066,9 @@ La Tabla «tab:T-14-14» presenta sus paquetes.
 
 | Código | Paquete de trabajo | Entregable | Criterio de aceptación | Resp. | Período |
 | --- | --- | --- | --- | --- | --- |
-| 2.3.1 | Plano de la sala técnica de Talca, con su cálculo eléctrico y térmico | Plano y memoria de cálculo. | La potencia y la climatización calculadas cubren la carga de diseño con redundancia N+1. | SRE | Meses 2 y 3. |
-| 2.3.2 | Plano de distribución de los racks R01 de servidores y R02 de comunicaciones | Plano de distribución de los racks. | Los servidores y las comunicaciones quedan en racks separados (RT-06.05), y cada equipo tiene doble alimentación (RT-08.04). | SRE | Meses 2 y 3. |
-| 2.3.3 | Plano de los gabinetes de borde de Concepción y de las plataformas de cross-docking | Planos de los gabinetes. | Cada gabinete sostiene su sitio operando sin enlace durante el tiempo declarado. | SRE | Meses 2 a 4. |
+| 2.3.1 | Plano de la sala técnica de Talca, con su cálculo eléctrico y térmico | Plano y memoria de cálculo. | La potencia y la climatización calculadas cubren la carga de diseño con redundancia N+1. | SRE | Meses 1 y 2. |
+| 2.3.2 | Plano de distribución de los racks R01 de servidores y R02 de comunicaciones | Plano de distribución de los racks. | Los servidores y las comunicaciones quedan en racks separados (RT-06.05), y cada equipo tiene doble alimentación (RT-08.04). | SRE | Meses 1 y 2. |
+| 2.3.3 | Plano de los gabinetes de borde de Concepción y de las plataformas de cross-docking | Planos de los gabinetes. | Cada gabinete sostiene su sitio operando sin enlace durante el tiempo declarado. | SRE | Mes 2. |
 
 #### Cuenta 2.4 — Validación de diseños
 
@@ -1097,8 +1097,8 @@ La Tabla «tab:T-14-16» presenta sus paquetes.
 
 | Código | Paquete de trabajo | Entregable | Criterio de aceptación | Resp. | Período |
 | --- | --- | --- | --- | --- | --- |
-| 2.5.1 | Plan de continuidad del negocio según ISO 22301, con análisis de impacto y procedimientos manuales | Plan de continuidad del negocio con su análisis de impacto. | Cada proceso identifica continuidad y activación aprobadas por CLIENTE; sólo admite apoyo manual donde corresponda. El despacho crítico exige cero interrupción y flujo tecnológico/DTE probado, independientemente del RTO general. | SRE | Meses 3 a 8. |
-| 2.5.2 | Plan de continuidad TIC según ISO/IEC 27031 y plan de recuperación ante desastres | Plan de continuidad TIC y plan de recuperación ante desastres. | Los dos planes están articulados con el plan de continuidad del negocio, y el RTO y el RPO coinciden con los comprometidos. | SRE | Meses 3 a 8. |
+| 2.5.1 | Plan de continuidad del negocio según ISO 22301, con análisis de impacto y procedimientos manuales | Plan de continuidad del negocio con su análisis de impacto. | Cada proceso identifica continuidad y activación aprobadas por CLIENTE; sólo admite apoyo manual donde corresponda. El despacho crítico exige cero interrupción y flujo tecnológico/DTE probado, independientemente del RTO general. | SRE | Mes 3. |
+| 2.5.2 | Plan de continuidad TIC según ISO/IEC 27031 y plan de recuperación ante desastres | Plan de continuidad TIC y plan de recuperación ante desastres. | Los dos planes están articulados con el plan de continuidad del negocio, y el RTO y el RPO coinciden con los comprometidos. | SRE | Mes 3. |
 
 #### Cuenta 2.6 — Experiencia de usuario
 
@@ -1112,9 +1112,9 @@ La Tabla «tab:T-14-17» presenta sus paquetes.
 
 | Código | Paquete de trabajo | Entregable | Criterio de aceptación | Resp. | Período |
 | --- | --- | --- | --- | --- | --- |
-| 2.6.1 | Investigación con preparadores, preventistas, conductores y almaceneros | Informe de investigación de usuarios por perfil. | Cada perfil operacional tiene sus tareas críticas y sus condiciones de uso documentadas. | IMP | Meses 2 a 4. |
-| 2.6.2 | Prototipos y pruebas de usabilidad con participantes del CLIENTE | Prototipos e informe de las pruebas de usabilidad. | Cada flujo crítico se probó con usuarios de su perfil, y los hallazgos están incorporados al diseño antes de construir el módulo (D-05). | IMP | Meses 3 y 4. |
-| 2.6.3 | Indicadores de usabilidad comprometidos por transacción crítica | Tabla de indicadores de usabilidad. | Cada transacción crítica tiene sus cuatro indicadores, que se verifican en las pruebas de aceptación (3.8.2). | IMP | Meses 4 a 6. |
+| 2.6.1 | Investigación con preparadores, preventistas, conductores y almaceneros | Informe de investigación de usuarios por perfil. | Cada perfil operacional tiene sus tareas críticas y sus condiciones de uso documentadas. | IMP | Mes 2. |
+| 2.6.2 | Prototipos y pruebas de usabilidad con participantes del CLIENTE | Prototipos e informe de las pruebas de usabilidad. | Cada flujo crítico se probó con usuarios de su perfil, y los hallazgos están incorporados al diseño antes de construir el módulo (D-05). | IMP | Mes 3. |
+| 2.6.3 | Indicadores de usabilidad comprometidos por transacción crítica | Tabla de indicadores de usabilidad. | Cada transacción crítica tiene sus cuatro indicadores, que se verifican en las pruebas de aceptación (3.8.2). | IMP | Mes 4. |
 
 ### 2.3 Fase 3. Construcción
 
@@ -1132,11 +1132,11 @@ La Tabla «tab:T-14-18» presenta sus paquetes.
 
 | Código | Paquete de trabajo | Entregable | Criterio de aceptación | Resp. | Período |
 | --- | --- | --- | --- | --- | --- |
-| 3.1.1 | Ambientes de Desarrollo y QA en la nube (H3) | Ambientes de Desarrollo y QA operativos. | La cadena de integración despliega todos los módulos en ambos ambientes. | SRE | Hasta el mes 6 (H3). |
-| 3.1.2 | Ambientes de Preproducción y Producción en la nube (H3) | Ambientes de Preproducción y Producción operativos. | La misma versión del software pasa de QA a Preproducción y a Producción sin volver a compilarse; toda diferencia de escala entre Preproducción y Producción está declarada. | SRE | Hasta el mes 6 (H3). |
-| 3.1.3 | Ambiente de recuperación ante desastres en la región secundaria (H3) | Ambiente de recuperación habilitado, con su procedimiento de conmutación. | El ambiente está habilitado en el H3. La prueba real se hace en 3.8.5. | SRE | Hasta el mes 6 (H3). |
-| 3.1.4 | Cadena de integración y entrega continua, e infraestructura como código | Cadena operativa y repositorio de infraestructura como código. | Un cambio pasa por la cadena hasta QA sin intervención manual; los ambientes se pueden recrear desde el repositorio. | SRE | Meses 4 a 6. |
-| 3.1.5 | Observabilidad de los doce módulos y de los sitios, con tableros para el CLIENTE (H3) | Tableros y alertas operativos. | Cada módulo y cada sitio publica sus indicadores con alertas configuradas. | SRE | Hasta el mes 6 (H3: «con observabilidad operativa»). |
+| 3.1.1 | Ambientes de Desarrollo y QA en la nube (H3) | Ambientes de Desarrollo y QA operativos. | La cadena de integración despliega todos los módulos en ambos ambientes. | SRE | Hasta el mes 5 (H3). |
+| 3.1.2 | Ambientes de Preproducción y Producción en la nube (H3) | Ambientes de Preproducción y Producción operativos. | La misma versión del software pasa de QA a Preproducción y a Producción sin volver a compilarse; toda diferencia de escala entre Preproducción y Producción está declarada. | SRE | Hasta el mes 5 (H3). |
+| 3.1.3 | Ambiente de recuperación ante desastres en la región secundaria (H3) | Ambiente de recuperación habilitado, con su procedimiento de conmutación. | El ambiente está habilitado en el H3. La prueba real se hace en 3.8.5. | SRE | Hasta el mes 5 (H3). |
+| 3.1.4 | Cadena de integración y entrega continua, e infraestructura como código | Cadena operativa y repositorio de infraestructura como código. | Un cambio pasa por la cadena hasta QA sin intervención manual; los ambientes se pueden recrear desde el repositorio. | SRE | Mes 4. |
+| 3.1.5 | Observabilidad de los doce módulos y de los sitios, con tableros para el CLIENTE (H3) | Tableros y alertas operativos. | Cada módulo y cada sitio publica sus indicadores con alertas configuradas. | SRE | Hasta el mes 5 (H3: «con observabilidad operativa»). |
 
 #### Cuenta 3.2 — Servicios de nube de la plataforma
 
@@ -1150,11 +1150,11 @@ La Tabla «tab:T-14-19» presenta sus paquetes.
 
 | Código | Paquete de trabajo | Entregable | Criterio de aceptación | Resp. | Período |
 | --- | --- | --- | --- | --- | --- |
-| 3.2.1 | Servicio de nube para la aplicación y los portales | Servicio configurado. | El software se despliega en él y cumple el plan de seguridad. | SRE | Meses 4 a 6. |
-| 3.2.2 | Servicio de nube de base de datos, caché y mensajería | Servicio configurado. | La base de datos replica a la región secundaria y las colas entregan los mensajes sin duplicarlos. | SRE | Meses 4 a 6. |
-| 3.2.3 | Servicio de nube de ingesta de IoT, telemetría cruda y plataforma analítica | Servicio configurado. | Las lecturas de un sensor de prueba llegan al almacén analítico. | SRE | Meses 4 a 8. |
-| 3.2.4 | Servicio de nube de respaldo inmutable y réplica entre regiones | Servicio configurado, con su política de retención. | Una restauración de prueba recupera los datos. | SRE | Meses 4 a 6. |
-| 3.2.5 | Servicio de nube de seguridad y gobierno, y detección en endpoints | Servicio configurado. | Los controles del plan de seguridad están activos y los equipos físicos reportan a la consola. | SEG | Meses 4 a 6. |
+| 3.2.1 | Servicio de nube para la aplicación y los portales | Servicio configurado. | El software se despliega en él y cumple el plan de seguridad. | SRE | Mes 4. |
+| 3.2.2 | Servicio de nube de base de datos, caché y mensajería | Servicio configurado. | La base de datos replica a la región secundaria y las colas entregan los mensajes sin duplicarlos. | SRE | Mes 4. |
+| 3.2.3 | Servicio de nube de ingesta de IoT, telemetría cruda y plataforma analítica | Servicio configurado. | Las lecturas de un sensor de prueba llegan al almacén analítico. | SRE | Mes 4. |
+| 3.2.4 | Servicio de nube de respaldo inmutable y réplica entre regiones | Servicio configurado, con su política de retención. | Una restauración de prueba recupera los datos. | SRE | Mes 4. |
+| 3.2.5 | Servicio de nube de seguridad y gobierno, y detección en endpoints | Servicio configurado. | Los controles del plan de seguridad están activos y los equipos físicos reportan a la consola. | SEG | Mes 4. |
 | 3.2.6 | Servicio de gestión de dispositivos móviles | Servicio configurado. | Un terminal de prueba se enrola, recibe la aplicación y se borra a distancia. | SRE | Antes del enrolamiento de los terminales (6.5.1). |
 
 #### Cuenta 3.3 — Base compartida
@@ -1170,7 +1170,7 @@ La Tabla «tab:T-14-20» presenta sus paquetes.
 | Código | Paquete de trabajo | Entregable | Criterio de aceptación | Resp. | Período |
 | --- | --- | --- | --- | --- | --- |
 | 3.3.1 | Identidad y control de acceso, incluidos los conductores externos que rotan sin aviso | Identidad y control de acceso funcionando en QA. | Un conductor externo nuevo se habilita en el andén y pierde el acceso al terminar; la identidad funciona durante un corte de 24 horas. | SEG | Antes del H4. |
-| 3.3.2 | Integración con el ERP como único emisor de la guía de despacho (INT-06 e INT-07) | Integración en QA. | Toda guía la emite el ERP; cada entrega se concilia con su guía el mismo día; una caída del ERP no detiene el despacho. | ARQ | Meses 5–9; cierre en t = 9,0, antes de la prueba de integración del H4. |
+| 3.3.2 | Integración con el ERP como único emisor de la guía de despacho (INT-06 e INT-07) | Integración en QA. | Toda guía la emite el ERP; cada entrega se concilia con su guía el mismo día; una caída del ERP no detiene el despacho. | ARQ | Meses 5 y 6; termina antes de la prueba de integración del H4 (T-15, Tabla 6.1). |
 | 3.3.3 | Convivencia con el WMS de 2013 durante el reemplazo | Mecanismo de convivencia y procedimiento para apagar el WMS. | No hay doble escritura de stock durante la convivencia. | ARQ | Antes del H4. |
 | 3.3.4 | Integración con la telemetría de los 42 camiones propios (INT-15) | Integración en QA. | M12 recibe la posición de los 42 camiones. | ARQ | Antes del H4. |
 | 3.3.5 | Registro auditable de stock, lotes y cobros | Registro auditable en QA. | Toda operación de stock, lote y cobro queda registrada y se puede consultar. | ARQ | Antes del H4. |
@@ -1190,15 +1190,15 @@ La Tabla «tab:T-14-21» presenta sus paquetes.
 | --- | --- | --- | --- | --- | --- |
 | 3.4.1 | Recepción de mercadería con captura de lote y vencimiento (M1 Recepción) | M1 en QA. | Los requerimientos del T-12 asignados al módulo pasan sus pruebas; además, ningún producto con trazabilidad obligatoria se recibe sin lote. | DES | H4. |
 | 3.4.2 | Inventario por ubicación y lote, con FEFO y conteo cíclico (M2 Inventario) | M2 en QA. | Los requerimientos del T-12 asignados al módulo pasan sus pruebas; además, cada diferencia de conteo queda con su causa. | DES | H4. |
-| 3.4.3 | Preparación de pedidos en el turno de noche y en la cámara de congelado (M5 Preparación) | M5 en QA. | Los requerimientos del T-12 asignados al módulo pasan sus pruebas; además, se opera con guantes en el terminal de congelado, y cada faltante queda con su causa. | DES | Mes 8, tras 3.4.1/2; antes de rutas/reparto. |
+| 3.4.3 | Preparación de pedidos en el turno de noche y en la cámara de congelado (M5 Preparación) | M5 en QA. | Los requerimientos del T-12 asignados al módulo pasan sus pruebas; además, se opera con guantes en el terminal de congelado, y cada faltante queda con su causa. | DES | Meses 6 y 7; construye después de los contratos de 3.4.1/3.4.2 e integra después de su entrega (D-16). |
 | 3.4.4 | Cadena de frío, retención de lotes y retiro sanitario (M9 Calidad y trazabilidad) | M9 en QA. | Los requerimientos del T-12 asignados al módulo pasan sus pruebas; además, un retiro simulado entrega la lista de clientes en menos de 2 horas. | DES | H4. |
 | 3.4.5 | Ingesta de temperatura y posición de la flota (M12 Telemetría) | M12 en QA. | Los requerimientos del T-12 asignados al módulo pasan sus pruebas; además, las series no tienen brechas sin registrar. | DES | H4. |
 | 3.4.6 | Aplicación móvil de preventa sin conexión, con stock y crédito (M3 Preventa) | M3 en QA. | Los requerimientos del T-12 asignados al módulo pasan sus pruebas; además, ningún pedido se pierde ni se duplica al recuperar la señal. | DES | H4. |
-| 3.4.7 | Planificación de rutas corregible por el planificador (M4 Rutas) | M4 en QA. | Los requerimientos del T-12 asignados al módulo pasan sus pruebas; además, la ruta se genera en menos de 20 minutos y don Hugo la valida. | DES | Mes 9, tras 3.4.3 y 3.4.6; antes de H4. |
-| 3.4.8 | Aplicación móvil de reparto con prueba de entrega digital (M6 Reparto) | M6 en QA. | Los requerimientos del T-12 asignados al módulo pasan sus pruebas; además, funciona sin señal, y la prueba de entrega llega al ERP el mismo día. | DES | Primera mitad del mes 9; base aceptada antes de 3.4.10; H4. |
-| 3.4.9 | Devoluciones en terreno y control de envases (M8 Devoluciones y envases) | M8 en QA. | Los requerimientos del T-12 asignados al módulo pasan sus pruebas; además, cada devolución queda con su causa. | DES | Mes 9; H4. |
-| 3.4.10 | Cobro en ruta, rendición y conciliación (M7 Cobranza y rendición) | M7 en QA. | Los requerimientos del T-12 asignados al módulo pasan sus pruebas; además, cada cobro queda unido a su entrega. | DES | Segunda mitad del mes 9, tras 3.4.8; H4. |
-| 3.4.11 | Indicadores operacionales y OTIF diario (M10 Analítica) | Indicadores publicados. | Los requerimientos del T-12 asignados al módulo pasan sus pruebas; además, operaciones reproduce el cálculo sobre una muestra. | DAT | Meses 8 y 9; H4. |
+| 3.4.7 | Planificación de rutas corregible por el planificador (M4 Rutas) | M4 en QA. | Los requerimientos del T-12 asignados al módulo pasan sus pruebas; además, la ruta se genera en menos de 20 minutos y don Hugo la valida. | DES | Mes 7; construye después de los contratos de 3.4.3 y 3.4.6 e integra después de su entrega (D-18); H4. |
+| 3.4.8 | Aplicación móvil de reparto con prueba de entrega digital (M6 Reparto) | M6 en QA. | Los requerimientos del T-12 asignados al módulo pasan sus pruebas; además, funciona sin señal, y la prueba de entrega llega al ERP el mismo día. | DES | Mes 7; construye después de los contratos de 3.4.3 y 3.4.6 e integra después de su entrega (D-18); H4. |
+| 3.4.9 | Devoluciones en terreno y control de envases (M8 Devoluciones y envases) | M8 en QA. | Los requerimientos del T-12 asignados al módulo pasan sus pruebas; además, cada devolución queda con su causa. | DES | Mes 8; H4. |
+| 3.4.10 | Cobro en ruta, rendición y conciliación (M7 Cobranza y rendición) | M7 en QA. | Los requerimientos del T-12 asignados al módulo pasan sus pruebas; además, cada cobro queda unido a su entrega. | DES | Mes 8; construye después de los contratos de 3.4.8 e integra después de su entrega (D-19); H4. |
+| 3.4.11 | Indicadores operacionales y OTIF diario (M10 Analítica) | Indicadores publicados. | Los requerimientos del T-12 asignados al módulo pasan sus pruebas; además, operaciones reproduce el cálculo sobre una muestra. | DAT | Mes 8; H4. |
 
 #### Cuenta 3.5 — Módulos de la Etapa 2
 
@@ -1212,10 +1212,10 @@ La Tabla «tab:T-14-22» presenta sus paquetes.
 
 | Código | Paquete de trabajo | Entregable | Criterio de aceptación | Resp. | Período |
 | --- | --- | --- | --- | --- | --- |
-| 3.5.1 | Pedido electrónico y aviso de despacho para las cadenas, y portal de proveedores (M11 Canal moderno) | M11 en QA. | Los requerimientos del T-12 asignados pasan sus pruebas, incluido el portal de proveedores que consulta en modo de solo lectura el estado de sus órdenes de compra (RF-12.22). | DES | Meses 15–16; integración mes 17 (H9). |
-| 3.5.2 | Portal web de clientes: cuenta, saldo, entregas y documentos | Portal en QA. | Los requerimientos del T-12 asignados pasan sus pruebas; además, cada cliente ve solo sus datos, y el portal cumple las normas de accesibilidad. | DES | Meses 15–16; integración mes 17 (H9). |
-| 3.5.3 | Portal web de transportistas: rutas asignadas del día siguiente | Portal en QA. | Los requerimientos del T-12 asignados pasan sus pruebas; además, cada empresa ve solo sus rutas. | DES | Meses 15–16; integración mes 17 (H9). |
-| 3.5.4 | Costo de servir por cliente y por entrega (M10 Analítica) | Costo de servir publicado. | Los requerimientos del T-12 asignados pasan sus pruebas; además, finanzas reproduce el costo de una muestra de entregas. | DAT | Meses 15–16; integración mes 17 (H9). |
+| 3.5.1 | Pedido electrónico y aviso de despacho para las cadenas, y portal de proveedores (M11 Canal moderno) | M11 en QA. | Los requerimientos del T-12 asignados pasan sus pruebas, incluido el portal de proveedores que consulta en modo de solo lectura el estado de sus órdenes de compra (RF-12.22). | DES | Mes 15; integración mes 16 (H9). |
+| 3.5.2 | Portal web de clientes: cuenta, saldo, entregas y documentos | Portal en QA. | Los requerimientos del T-12 asignados pasan sus pruebas; además, cada cliente ve solo sus datos, y el portal cumple las normas de accesibilidad. | DES | Mes 15; integración mes 16 (H9). |
+| 3.5.3 | Portal web de transportistas: rutas asignadas del día siguiente | Portal en QA. | Los requerimientos del T-12 asignados pasan sus pruebas; además, cada empresa ve solo sus rutas. | DES | Mes 15; integración mes 16 (H9). |
+| 3.5.4 | Costo de servir por cliente y por entrega (M10 Analítica) | Costo de servir publicado. | Los requerimientos del T-12 asignados pasan sus pruebas; además, finanzas reproduce el costo de una muestra de entregas. | DAT | Mes 15; integración mes 16 (H9). |
 
 #### Cuenta 3.6 — Integraciones externas
 
@@ -1266,13 +1266,13 @@ La Tabla «tab:T-14-25» presenta sus paquetes.
 
 | Código | Paquete de trabajo | Entregable | Criterio de aceptación | Resp. | Período |
 | --- | --- | --- | --- | --- | --- |
-| 3.8.1 | Pruebas de integración, regresión e idempotencia en QA (H4) | Informe de pruebas. | Todos los flujos se ejecutan sin error, y no hay regresiones. | CAL | Mes 10 (H4). |
+| 3.8.1 | Pruebas de integración, regresión e idempotencia en QA (H4) | Informe de pruebas. | Todos los flujos se ejecutan sin error, y no hay regresiones. | CAL | Mes 9 (H4). |
 | 3.8.2 | Pruebas de aceptación y de accesibilidad con preventistas, conductores y bodega | Casos de aceptación firmados. | Los casos están firmados por la Contraparte Técnica, y la accesibilidad cumple WCAG 2.2 AA. | CAL | Antes del H5. |
 | 3.8.3 | Pruebas del perfil operacional: sin señal, sin enlace y a −22 °C con guantes | Informe de las tres pruebas. | No se pierde ni se duplica ningún registro, y el terminal se usa con guantes. | CAL | Antes del H5. |
 | 3.8.4 | Pruebas de carga con el peak de septiembre y de resiliencia | Informe de carga y resiliencia. | Se cumplen los tiempos exigidos a 1,5 veces el peak, y la solución se recupera sin intervención. | CAL | Antes del H5. |
 | 3.8.5 | Prueba de recuperación ante desastres con conmutación real | Informe de la prueba. | Se alcanzan el RTO y el RPO comprometidos. | CAL | Antes del H5. |
 | 3.8.6 | Prueba de seguridad ofensiva de la Etapa 1, por un tercero independiente | Informe íntegro del tercero y evidencia de las correcciones. | No quedan hallazgos críticos ni altos abiertos. | SEG | Antes del H5. |
-| 3.8.7 | Acta de certificación de la Etapa 1 (H5) | Acta del H5 con su expediente de evidencia. | Las pruebas 3.8.2 a 3.8.6 están aprobadas y el acta está firmada. | CAL | Mes 12 (H5). |
+| 3.8.7 | Acta de certificación de la Etapa 1 (H5) | Acta del H5 con su expediente de evidencia. | Las pruebas 3.8.2 a 3.8.6 están aprobadas y el acta está firmada. | CAL | Mes 10 (H5). |
 | 3.8.8 | Demostración en Preproducción del despliegue sin interrupción de la Etapa 1 | Informe de la demostración. | La versión se despliega y se revierte en Preproducción sin interrupción y sin intervención manual. | SRE | Antes del H5 y antes de cada paso a producción. |
 
 #### Cuenta 3.9 — Pruebas de la Etapa 2
@@ -1287,12 +1287,12 @@ La Tabla «tab:T-14-26» presenta sus paquetes.
 
 | Código | Paquete de trabajo | Entregable | Criterio de aceptación | Resp. | Período |
 | --- | --- | --- | --- | --- | --- |
-| 3.9.1 | Pruebas de integración y regresión sin afectar la Etapa 1 en producción (H9) | Informe de pruebas. | No hay regresiones en la Etapa 1. | CAL | Mes 17 (H9). |
+| 3.9.1 | Pruebas de integración y regresión sin afectar la Etapa 1 en producción (H9) | Informe de pruebas. | No hay regresiones en la Etapa 1. | CAL | Mes 16 (H9). |
 | 3.9.2 | Pruebas de aceptación y de accesibilidad con cadenas, transportistas, Comercial y Finanzas | Casos firmados. | Los casos están firmados por la Contraparte Técnica, y los portales cumplen WCAG 2.2 AA. | CAL | Antes del H10. |
 | 3.9.3 | Pruebas de carga con ambas etapas activas y de resiliencia | Informe. | Se cumplen los tiempos a 1,5 veces el peak. | CAL | Antes del H10. |
 | 3.9.4 | Prueba de recuperación ante desastres con ambas etapas | Informe. | Se alcanzan el RTO y el RPO comprometidos. | CAL | Antes del H10. |
 | 3.9.5 | Prueba de seguridad ofensiva de la Etapa 2, por un tercero independiente | Informe y correcciones. | No quedan hallazgos críticos ni altos abiertos. | SEG | Antes del H10. |
-| 3.9.6 | Acta de certificación de la Etapa 2 y cierre del desarrollo (H10) | Acta del H10. | Las pruebas 3.9.2 a 3.9.5 están aprobadas y el acta está firmada. | CAL | Mes 18 (H10). |
+| 3.9.6 | Acta de certificación de la Etapa 2 y cierre del desarrollo (H10) | Acta del H10. | Las pruebas 3.9.2 a 3.9.5 están aprobadas y el acta está firmada. | CAL | Meses 16 y 17 (H10). |
 | 3.9.7 | Demostración en Preproducción del despliegue sin interrupción de la Etapa 2 | Informe de la demostración. | La versión se despliega y se revierte sin interrumpir ninguna de las dos etapas. | SRE | Antes del H10. |
 
 #### Cuenta 3.10 — Innovaciones
@@ -1411,8 +1411,8 @@ La Tabla «tab:T-14-32» presenta sus paquetes.
 
 | Código | Paquete de trabajo | Entregable | Criterio de aceptación | Resp. | Período |
 | --- | --- | --- | --- | --- | --- |
-| 5.1.1 | Especificación de compra del equipamiento de terreno para el CLIENTE | Especificación de compra con su calendario. | Cada partida del T-11 tiene modelo, cantidad y fecha de necesidad, y el CLIENTE la aprueba. | ARQ | Meses 2 a 4. |
-| 5.1.2 | Especificación de compra de la sala técnica, los racks y los gabinetes de borde para el CLIENTE | Especificación de compra. | Coincide con los planos de la fase 2 (2.3) y con el T-11, y llega a tiempo para el H3. | ARQ | Mes 4, después de 2.3.1 y 2.3.2 (D-09). |
+| 5.1.1 | Especificación de compra del equipamiento de terreno para el CLIENTE | Especificación de compra con su calendario. | Cada partida del T-11 tiene modelo, cantidad y fecha de necesidad, y el CLIENTE la aprueba. | ARQ | Mes 2. |
+| 5.1.2 | Especificación de compra de la sala técnica, los racks y los gabinetes de borde para el CLIENTE | Especificación de compra. | Coincide con los planos de la fase 2 (2.3) y con el T-11, y llega a tiempo para el H3. | ARQ | Mes 2, después de 2.3.1 y 2.3.2 (D-09). |
 | 5.1.3 | Actas de recepción técnica de los equipos comprados por el CLIENTE | Actas de recepción. | El 100 % de lo especificado se recibe conforme antes de su instalación (fase 6). | SRE | Según el calendario de compra. |
 
 #### Cuenta 5.2 — Servicios de nube y licencias
@@ -1480,11 +1480,11 @@ La Tabla «tab:T-14-36» presenta sus paquetes.
 
 | Código | Paquete de trabajo | Entregable | Criterio de aceptación | Resp. | Período |
 | --- | --- | --- | --- | --- | --- |
-| 6.1.1 | Obra civil y piso técnico de la sala | Sala acondicionada según el plano. | El recinto coincide con el plano aprobado, incluido el blindaje perimetral especificado, y está listo para recibir los equipos. | SRE | Mes 5, después de la especificación 5.1.2 (D-10). |
-| 6.1.2 | Hardware de energía instalado: UPS modular N+1, generador con 24 horas de autonomía, transferencia automática y PDU A/B | Sistema de energía instalado y probado. | En una prueba con carga real, el corte de la red pasa a la UPS y al generador sin que se apague ningún equipo. | SRE | Meses 5 y 6. |
-| 6.1.3 | Hardware de climatización de precisión N+1 instalado | Climatización instalada y probada. | Con un equipo apagado, la sala se mantiene en el rango de temperatura del fabricante. | SRE | Meses 5 y 6. |
-| 6.1.4 | Hardware de detección temprana de incendio y extinción por agente limpio instalado | Sistema instalado y conectado al monitoreo. | Una prueba de detección genera la alarma en el monitoreo, y la extinción queda armada. | SRE | Meses 5 y 6. |
-| 6.1.5 | Acta de recepción técnica de la sala | Acta firmada. | Las pruebas de 6.1.2 a 6.1.4 están aprobadas. | SRE | Inicio del mes 6, después de 6.1.2 a 6.1.4 y antes del montaje de los racks (6.3). |
+| 6.1.1 | Obra civil y piso técnico de la sala | Sala acondicionada según el plano. | El recinto coincide con el plano aprobado, incluido el blindaje perimetral especificado, y está listo para recibir los equipos. | SRE | Mes 3, después de la especificación 5.1.2 (D-10). |
+| 6.1.2 | Hardware de energía instalado: UPS modular N+1, generador con 24 horas de autonomía, transferencia automática y PDU A/B | Sistema de energía instalado y probado. | En una prueba con carga real, el corte de la red pasa a la UPS y al generador sin que se apague ningún equipo. | SRE | Mes 3. |
+| 6.1.3 | Hardware de climatización de precisión N+1 instalado | Climatización instalada y probada. | Con un equipo apagado, la sala se mantiene en el rango de temperatura del fabricante. | SRE | Mes 3. |
+| 6.1.4 | Hardware de detección temprana de incendio y extinción por agente limpio instalado | Sistema instalado y conectado al monitoreo. | Una prueba de detección genera la alarma en el monitoreo, y la extinción queda armada. | SRE | Mes 3. |
+| 6.1.5 | Acta de recepción técnica de la sala | Acta firmada. | Las pruebas de 6.1.2 a 6.1.4 están aprobadas. | SRE | Mes 4, después de 6.1.2 a 6.1.4 y antes del montaje de los racks (6.3). |
 
 #### Cuenta 6.2 — Cableado estructurado
 
@@ -1498,7 +1498,7 @@ La Tabla «tab:T-14-37» presenta sus paquetes.
 
 | Código | Paquete de trabajo | Entregable | Criterio de aceptación | Resp. | Período |
 | --- | --- | --- | --- | --- | --- |
-| 6.2.1 | Cableado de cobre Cat6A y fibra OM4 tendido, con dos ductos de ingreso independientes | Cableado tendido. | Los dos ductos de ingreso están separados (RT-06.32), y todos los puntos del diseño están cableados. | SRE | Meses 4 a 6. |
+| 6.2.1 | Cableado de cobre Cat6A y fibra OM4 tendido, con dos ductos de ingreso independientes | Cableado tendido. | Los dos ductos de ingreso están separados (RT-06.32), y todos los puntos del diseño están cableados. | SRE | Mes 4. |
 | 6.2.2 | Certificación de enlaces, etiquetado y planos as-built | Informe de certificación por enlace y planos as-built. | El 100 % de los enlaces está certificado y etiquetado. | SRE | Mes 6. |
 | 6.2.3 | Gabinetes de piso y switches de acceso instalados en las bodegas de Talca y Concepción | Gabinetes de piso instalados y conectados. | Cada punto de la bodega tiene red, y el Wi-Fi cubre las zonas de trabajo de los terminales. | SRE | Antes del H6. |
 
@@ -1568,7 +1568,7 @@ La Tabla «tab:T-14-41» presenta sus paquetes.
 | --- | --- | --- | --- | --- | --- |
 | 6.6.1 | Software de base instalado en los sitios: virtualización, contenedores, PostgreSQL, RabbitMQ y Keycloak | Software de base instalado en los cinco sitios. | Cada sitio ejecuta la misma imagen de la aplicación que la nube. | SRE | Antes del H3. |
 | 6.6.2 | Enlaces de fibra, LTE y Starlink habilitados, con conmutación al respaldo | Enlaces operativos. | Al cortar el enlace principal, el respaldo toma el tráfico en menos de 30 segundos. | SRE | Antes del H3. |
-| 6.6.3 | Borde de los CD en servicio, con la prueba de autonomía de 24 horas aprobada | Informe de la prueba de autonomía por sitio. | Cada CD opera 24 horas sin enlace y concilia sin pérdidas ni duplicados. | SRE | Mes 6, antes del H3; pruebas de aceptación ampliadas antes del H5. |
+| 6.6.3 | Borde de los CD en servicio, con la prueba de autonomía de 24 horas aprobada | Informe de la prueba de autonomía por sitio. | Cada CD opera 24 horas sin enlace y concilia sin pérdidas ni duplicados. | SRE | Mes 5, antes del H3; pruebas de aceptación ampliadas antes del H5. |
 
 ### 2.7 Fase 7. Capacitación y gestión del cambio
 
@@ -1883,7 +1883,7 @@ Las dos figuras muestran que la construcción de la Etapa 1 se concentra entre l
 
 ### 3.1 Carta Gantt vigente por cuenta de control
 
-La carta siguiente reemplaza como fuente vigente a las figuras anteriores, que conservan la programación previa a la reconciliación de ventanas. Cada barra va desde el primer mes del primer paquete de la cuenta hasta el último mes del último paquete, según la sección 4.2 del Formulario T-15; los hitos se ubican al cierre de su mes, salvo H6 y H11, que marcan el inicio de una marcha blanca. El detalle por paquete, con sus 222 ventanas, está en esa misma sección, y la red con revisiones del CLIENTE y ruta crítica, en su sección 5. Las cuentas recurrentes (1.4, 1.8, 1.9, 7.1 y 8) se muestran como barras continuas, aunque su trabajo se ejecute con la frecuencia que fija este diccionario.
+La carta siguiente reemplaza como fuente vigente a las figuras anteriores, que conservan la programación previa a la reconciliación de ventanas. Cada barra va desde el primer mes del primer paquete de la cuenta hasta el último mes del último paquete, según el cronograma por actividad del Formulario T-15 (secciones 4.2 y 6.1); los hitos se ubican al cierre de su mes, salvo H6 y H11, que marcan el inicio de una marcha blanca. El detalle por paquete, con sus 222 ventanas, está en esa misma sección, y la red con revisiones del CLIENTE y ruta crítica, en su sección 5. Las cuentas recurrentes (1.4, 1.8, 1.9, 7.1 y 8) se muestran como barras continuas, aunque su trabajo se ejecute con la frecuencia que fija este diccionario.
 
 ```mermaid
 gantt
@@ -1905,7 +1905,7 @@ gantt
     H12 mes 21 : milestone, 2028-10-31, 0d
     section Fase 1 Inicio
     1.1 Definición inicial del proyecto (meses 1–1) : 2027-02-01, 2027-02-28
-    1.2 Alcance del proyecto (meses 1–14) : 2027-02-01, 2028-03-31
+    1.2 Alcance del proyecto (meses 1–13) : 2027-02-01, 2028-02-29
     1.3 Planificación del proyecto (meses 1–20) : 2027-02-01, 2028-09-30
     1.4 Gestión de interesados y comunicaciones (meses 1–56) : 2027-02-01, 2031-09-30
     1.5 Gestión de calidad (meses 2–20) : 2027-03-01, 2028-09-30
@@ -1914,40 +1914,40 @@ gantt
     1.8 Gobierno y control del proyecto (meses 1–56) : 2027-02-01, 2031-09-30
     1.9 Cumplimiento normativo y contractual (meses 1–56) : 2027-02-01, 2031-09-30
     section Fase 2 Elaboración
-    2.1 Arquitectura de la solución (meses 2–14) : 2027-03-01, 2028-03-31
+    2.1 Arquitectura de la solución (meses 2–13) : 2027-03-01, 2028-02-29
     2.2 Diseño de la seguridad (meses 2–10) : 2027-03-01, 2027-11-30
-    2.3 Diseño de la sala técnica y de los racks (meses 2–4) : 2027-03-01, 2027-05-31
+    2.3 Diseño de la sala técnica y de los racks (meses 1–2) : 2027-02-01, 2027-03-31
     2.4 Validación de diseños (meses 4–14) : 2027-05-01, 2028-03-31
-    2.5 Continuidad del negocio (meses 3–8) : 2027-04-01, 2027-09-30
-    2.6 Experiencia de usuario (meses 2–6) : 2027-03-01, 2027-07-31
+    2.5 Continuidad del negocio (meses 3–3) : 2027-04-01, 2027-04-30
+    2.6 Experiencia de usuario (meses 2–4) : 2027-03-01, 2027-05-31
     section Fase 3 Construcción
-    3.1 Ambientes y cadena de desarrollo (meses 4–6) : 2027-05-01, 2027-07-31
-    3.2 Servicios de nube de la plataforma (meses 4–8) : 2027-05-01, 2027-09-30
-    3.3 Base compartida (meses 5–9) : 2027-06-01, 2027-10-31
-    3.4 Módulos de la Etapa 1 (meses 5–9) : 2027-06-01, 2027-10-31
-    3.5 Módulos de la Etapa 2 (meses 15–16) : 2028-04-01, 2028-05-31
+    3.1 Ambientes y cadena de desarrollo (meses 4–5) : 2027-05-01, 2027-06-30
+    3.2 Servicios de nube de la plataforma (meses 4–5) : 2027-05-01, 2027-06-30
+    3.3 Base compartida (meses 5–7) : 2027-06-01, 2027-08-31
+    3.4 Módulos de la Etapa 1 (meses 6–8) : 2027-07-01, 2027-09-30
+    3.5 Módulos de la Etapa 2 (meses 15–15) : 2028-04-01, 2028-04-30
     3.6 Integraciones externas (meses 7–19) : 2027-08-01, 2028-08-31
     3.7 Migración de datos (meses 7–12) : 2027-08-01, 2028-01-31
-    3.8 Pruebas de la Etapa 1 (meses 10–12) : 2027-11-01, 2028-01-31
-    3.9 Pruebas de la Etapa 2 (meses 17–18) : 2028-06-01, 2028-07-31
+    3.8 Pruebas de la Etapa 1 (meses 9–10) : 2027-10-01, 2027-11-30
+    3.9 Pruebas de la Etapa 2 (meses 16–17) : 2028-05-01, 2028-06-30
     3.10 Innovaciones (meses 2–21) : 2027-03-01, 2028-10-31
     3.11 Documentación técnica (meses 4–21) : 2027-05-01, 2028-10-31
     section Fase 4 Transición
-    4.1 Plan de implantación (meses 10–18) : 2027-11-01, 2028-07-31
+    4.1 Plan de implantación (meses 10–17) : 2027-11-01, 2028-06-30
     4.2 Marcha blanca y producción de la Etapa 1 (meses 13–20) : 2028-02-01, 2028-09-30
     4.3 Marcha blanca y producción de la Etapa 2 (meses 19–22) : 2028-08-01, 2028-11-30
     section Fase 5 Adquisiciones y contrataciones
-    5.1 Hardware e infraestructura (meses 2–6) : 2027-03-01, 2027-07-31
-    5.2 Servicios de nube y licencias (meses 2–6) : 2027-03-01, 2027-07-31
-    5.3 Enlaces de comunicaciones (meses 4–6) : 2027-05-01, 2027-07-31
+    5.1 Hardware e infraestructura (meses 2–5) : 2027-03-01, 2027-06-30
+    5.2 Servicios de nube y licencias (meses 2–4) : 2027-03-01, 2027-05-31
+    5.3 Enlaces de comunicaciones (meses 4–4) : 2027-05-01, 2027-05-31
     5.4 Acuerdos con terceros (meses 7–20) : 2027-08-01, 2028-09-30
     section Fase 6 Infraestructura física y sitios
-    6.1 Adecuación de la sala técnica de Talca (meses 5–6) : 2027-06-01, 2027-07-31
-    6.2 Cableado estructurado (meses 4–11) : 2027-05-01, 2027-12-31
-    6.3 Montaje de racks y gabinetes (meses 6–11) : 2027-07-01, 2027-12-31
+    6.1 Adecuación de la sala técnica de Talca (meses 3–4) : 2027-04-01, 2027-05-31
+    6.2 Cableado estructurado (meses 4–7) : 2027-05-01, 2027-08-31
+    6.3 Montaje de racks y gabinetes (meses 4–9) : 2027-05-01, 2027-10-31
     6.4 Sistemas de seguridad física (meses 5–6) : 2027-06-01, 2027-07-31
     6.5 Equipamiento de campo (meses 9–12) : 2027-10-01, 2028-01-31
-    6.6 Configuración de la infraestructura de los sitios (meses 5–6) : 2027-06-01, 2027-07-31
+    6.6 Configuración de la infraestructura de los sitios (meses 5–5) : 2027-06-01, 2027-06-30
     section Fase 7 Capacitación y gestión del cambio
     7.1 Capacitación por roles (meses 10–56) : 2027-11-01, 2031-09-30
     7.2 Gestión del cambio (meses 2–21) : 2027-03-01, 2028-10-31

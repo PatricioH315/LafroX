@@ -170,11 +170,11 @@ Clases HH/128HH efectivas no medidas podrían subestimar esfuerzo y especialista
 
 - Análisis / categoría: Desarrollo / Proyecto.
 - Fuente y EDT: T-15 §§4/5; SD1 dotación declarada; 222 paquetes,1.3.4.
-- Evaluación inicial: P=4; I=5; D=3; E=20; NPR=60. Horizonte: hasta el H5. P=4 porque los tamaños de HH son supuestos, el PERT da 50 % de cumplir cada hito y la dotación declarada no cubre SEG ni IMP sin contratación (T-15 §5.3 y §5.7); D=3 porque el valor ganado mensual lo detecta con un mes de atraso.
+- Evaluación inicial: P=4; I=5; D=3; E=20; NPR=60. Horizonte: hasta el H5. P=4 porque los tamaños de HH y las plantillas de actividades son supuestos, el cronograma por actividad usa toda la división de desarrollo entre julio y septiembre de 2027 y la dotación declarada no cubre SEG ni IMP sin contratación (T-15 §5.7); D=3 porque el valor ganado mensual lo detecta con un mes de atraso.
 - Responsable de respuesta: JP, con su equipo y contrapartes de su ámbito.
 - Disparador: Estimación supera capacidad por rol/subventana o personas no asignadas.
 - Plazo: Antes línea base; semanal.
-- Mitigación: Estimar con equipo/cantidades; asignar competencias y relevos; comprobar el peak de 66 (mes 16), la comparación con la dotación declarada (T-15 §5.7) y las bandas de 15 especialistas; crear la reserva de 0,65/0,67 mes que el PERT exige antes de H4/H5.
+- Mitigación: Estimar con equipo/cantidades; asignar competencias y relevos; comprobar el peak de 69 (mes 15), las 48 personas simultáneas de desarrollo y la dotación declarada (T-15 §5.7); vigilar semanalmente la reserva de cada hito (T-15, Tabla 5.2).
 - Contingencia: Reordenar dentro de hitos y sustentar capacidad adicional; no prestar E1 a E2.
 - Evidencia de cierre: Asignaciones nominales y cero sobreasignación por subventana.
 - Costo-beneficio técnico: asignar controles a los paquetes señalados, comparar HH de verificación y retrabajo según 8.C. Una ampliación necesita asignación conforme a 8.D; no se presume incluida. Para requisitos obligatorios, el ahorro de HH no sustituye cumplimiento.
@@ -294,15 +294,15 @@ Defecto alto, volumen incompleto o diferencias podrían persistir en cierre e im
 
 ### R8-19 — Suministros o sala fuera de secuencia
 
-Demoras compra/recepción/configuración podrían bloquear H3 o una ola pese a HH disponibles.
+La sala se instala desde el mes 3, por lo que el CLIENTE debe comprar lo especificado dentro del mes siguiente a la aprobación de 5.1.2; una compra, recepción o configuración tardía podría bloquear el H3 o una ola pese a HH disponibles.
 
 - Análisis / categoría: Implantación / Proyecto.
 - Fuente y EDT: BTT recinto; Caso cap. 11; SD7 D-09–13/26; 5.1.2,6.1,6.3,6.6.3,6.5.
-- Evaluación inicial: P=3; I=5; D=3; E=15; NPR=45. Horizonte: hasta el H3. P=3 porque compra, recepción e instalación ocurren en dos meses con proveedores externos; D=3 porque las actas de recepción lo revelan.
+- Evaluación inicial: P=3; I=5; D=3; E=15; NPR=45. Horizonte: hasta el H3. P=3 porque la compra del CLIENTE debe cerrarse en un mes y la instalación depende de proveedores externos; D=3 porque las actas de recepción lo revelan.
 - Responsable de respuesta: SRE, con su equipo y contrapartes de su ámbito.
-- Disparador: Suministro posterior a montaje o dispositivo ausente.
+- Disparador: Orden de compra del CLIENTE no emitida al cierre del mes 3, suministro posterior a montaje o dispositivo ausente.
 - Plazo: Sala/racks/borde antes H3; terreno antes ola.
-- Mitigación: Confirmar responsabilidades BTT/SD4 y compra de terreno CLIENTE; recibir antes montar.
+- Mitigación: Acordar en el mes 1 el calendario de compra del CLIENTE (1.1.3 y 5.1.3); confirmar responsabilidades BTT/SD4; recibir antes de montar.
 - Contingencia: Recuperar suministro/instalación con capacidad específica; no activar equipos inexistentes.
 - Evidencia de cierre: Actas y pruebas en secuencia sala/racks/borde/terreno.
 - Costo-beneficio técnico: asignar controles a los paquetes señalados, comparar HH de verificación y retrabajo según 8.C. Una ampliación necesita asignación conforme a 8.D; no se presume incluida. Para requisitos obligatorios, el ahorro de HH no sustituye cumplimiento.
@@ -484,9 +484,43 @@ CD eventual2030 o crecimiento distinto por sitio podría superar capacidades.
 - Costo-beneficio técnico: asignar controles a los paquetes señalados, comparar HH de verificación y retrabajo según 8.C. Una ampliación necesita asignación conforme a 8.D; no se presume incluida. Para requisitos obligatorios, el ahorro de HH no sustituye cumplimiento.
 - Seguimiento semanal y en cada comité; diario durante marcha blanca/operación afectadas. Puntuación residual sólo tras verificar controles.
 
+### R8-31 — Observaciones de revisión obligan a repetir certificación paralela
+
+La certificación de cada etapa empieza al terminar la prueba de integración, mientras el CLIENTE revisa el entregable del H4 o del H9; si la revisión formula observaciones sobre el software, parte de la certificación ya ejecutada debe repetirse.
+
+- Análisis / categoría: Desarrollo / Proyecto.
+- Fuente y EDT: BA Art. 18.3; SD7 D-21/D-31; T-15 §5.2; 3.8.2,3.8.3,3.9.2,3.9.3,3.9.4,3.9.5.
+- Evaluación inicial: P=3; I=4; D=3; E=12; NPR=36. Horizonte: meses 9 a 18. P=3 porque la revisión del CLIENTE puede observar el software entregado y la certificación ya empezó; D=3 porque las observaciones se conocen al cierre de los diez días hábiles de revisión.
+- Responsable de respuesta: CAL, con su equipo y contrapartes de su ámbito.
+- Disparador: Observación del CLIENTE sobre un caso o requisito ya certificado.
+- Plazo: Revisión del H4 (mes 10) y del H9 (mes 17).
+- Mitigación: Entregar por incrementos (T-15 §5.5) para que la revisión final cubra sólo el último; ejecutar primero los casos que no dependen de lo observable en la revisión.
+- Contingencia: Repetir sólo los casos afectados, con cargo a la reserva del hito y a la contingencia de calidad.
+- Evidencia de cierre: Acta del H4/H9 sin observaciones abiertas sobre casos certificados.
+- Costo-beneficio técnico: asignar controles a los paquetes señalados, comparar HH de verificación y retrabajo según 8.C. Una ampliación necesita asignación conforme a 8.D; no se presume incluida. Para requisitos obligatorios, el ahorro de HH no sustituye cumplimiento.
+- Seguimiento semanal y en cada comité; diario durante marcha blanca/operación afectadas. Puntuación residual sólo tras verificar controles.
+
+### R8-32 — Evaluadores subcontratados no disponibles para las certificaciones
+
+La reserva ante el H5 y el H10 supone reforzar el equipo de calidad con evaluadores subcontratados hasta 16 personas por día; si no llegan a tiempo o no conocen el dominio, la certificación se alarga.
+
+- Análisis / categoría: Desarrollo / Organizacional.
+- Fuente y EDT: SD6 §6.1.3; T-15 §5.2 y §5.7; 3.8.2,3.8.3,3.8.4,3.8.5,3.8.7,3.9.2,3.9.3,3.9.4,3.9.6.
+- Evaluación inicial: P=3; I=4; D=2; E=12; NPR=24. Horizonte: meses 9 a 12 y 16 a 18. P=3 porque el refuerzo depende de un proveedor externo en dos ventanas precisas; D=2 porque el contrato y la disponibilidad por quincena se verifican antes de cada ventana.
+- Responsable de respuesta: CAL, con su equipo y contrapartes de su ámbito.
+- Disparador: Contrato no firmado dos meses antes de la ventana o evaluadores sin la inducción del dominio.
+- Plazo: Contrato antes del mes 7 y del mes 14.
+- Mitigación: Contratar con anticipación, con perfiles y disponibilidad por quincena; inducir a los evaluadores con los casos del T-12 durante la marcha de QA.
+- Contingencia: Reasignar evaluadores de la División de Calidad desde otros contratos o priorizar los casos críticos de aceptación.
+- Evidencia de cierre: Evaluadores asignados e inducidos al inicio de cada certificación.
+- Costo-beneficio técnico: asignar controles a los paquetes señalados, comparar HH de verificación y retrabajo según 8.C. Una ampliación necesita asignación conforme a 8.D; no se presume incluida. Para requisitos obligatorios, el ahorro de HH no sustituye cumplimiento.
+- Seguimiento semanal y en cada comité; diario durante marcha blanca/operación afectadas. Puntuación residual sólo tras verificar controles.
+
 ## Anexo 8.B — FMEA y exposición inicial
 
-La tabla reúne la evaluación inicial de las 30 fichas del Anexo 8.A con la escala del SD8, sección 8.1.3, y su justificación individual en cada ficha.
+### B.1 Prioridad cualitativa
+
+La tabla reúne la evaluación inicial de las 32 fichas del Anexo 8.A con la escala del SD8, sección 8.1.3, y su justificación individual en cada ficha.
 
 | ID | Análisis | P | I | D | E = P×I | NPR = P×I×D | Nivel |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -520,12 +554,58 @@ La tabla reúne la evaluación inicial de las 30 fichas del Anexo 8.A con la esc
 | R8-28 | Implantación | 3 | 4 | 3 | 12 | 36 | Alta |
 | R8-29 | Implantación | 4 | 3 | 2 | 12 | 24 | Alta |
 | R8-30 | Solución | 3 | 4 | 3 | 12 | 36 | Alta |
+| R8-31 | Desarrollo | 3 | 4 | 3 | 12 | 36 | Alta |
+| R8-32 | Desarrollo | 3 | 4 | 2 | 12 | 24 | Alta |
 
 Orden dentro del nivel: NPR descendente, impacto y proximidad del plazo. R8-05 tiene NPR75 e impacto5 y requiere escalamiento por la brecha conocida registrada en8.E. R8-01/07/27 alcanzan NPR80. No se interpreta NPR como porcentaje ni se estiman puntajes residuales sin evidencia.
 
+### B.2 Cuantificación en horas hombre
+
+La tabla aplica la calibración del SD8, sección 8.1.3. La base son las HH de los paquetes que la ficha nombra (los paquetes recurrentes cuentan doce meses y los de cobertura o acompañamiento no se incluyen); R8-18 y R8-22, cuyos paquetes son de acompañamiento y cobertura, usan los escenarios C-04 y C-05 del Anexo 8.C. Las filas están ordenadas de mayor a menor valor esperado, con su porcentaje acumulado.
+
+**Tabla B.2 — Valor esperado por riesgo. Fuente: elaboración propia a partir del Anexo 8.A y del Formulario T-15.**
+
+| ID | Riesgo | P (probabilidad) | I | Base (HH) | Fracción | Impacto (HH) | Valor esperado (HH) | Acumulado |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| R8-11 | Productividad o dotación inferior al modelo | 4 (60 %) | 5 | 22.640 | 30 % | 6.792 | 4.075 | 27,0 % |
+| R8-22 | Mesa cubre horario pero no SLA | 4 (60 %) | 4 | Escenario C-05, 12 meses | — | 5.304 | 3.182 | 48,1 % |
+| R8-18 | Marcha blanca no cumple seis condiciones | 4 (60 %) | 5 | Escenario C-04 | — | 2.464 | 1.478 | 57,9 % |
+| R8-14 | E2 consume capacidad protegida E1 | 4 (60 %) | 5 | 5.600 | 30 % | 1.680 | 1.008 | 64,6 % |
+| R8-02 | Doble reserva o custodia CD-05 | 4 (60 %) | 5 | 2.560 | 30 % | 768 | 461 | 67,7 % |
+| R8-16 | Migración altera saldos o pierde lotes | 4 (60 %) | 5 | 2.400 | 30 % | 720 | 432 | 70,6 % |
+| R8-23 | Frío o sensores no producen evidencia íntegra | 4 (60 %) | 5 | 2.240 | 30 % | 672 | 403 | 73,2 % |
+| R8-04 | Pérdida o duplicación tras 14 horas offline | 4 (60 %) | 4 | 3.200 | 20 % | 640 | 384 | 75,8 % |
+| R8-08 | Bloqueo por proveedor | 3 (40 %) | 4 | 4.400 | 20 % | 880 | 352 | 78,1 % |
+| R8-15 | Perfiles EDI no certificados a tiempo | 4 (60 %) | 5 | 1.920 | 30 % | 576 | 346 | 80,4 % |
+| R8-19 | Suministros o sala fuera de secuencia | 3 (40 %) | 5 | 2.640 | 30 % | 792 | 317 | 82,5 % |
+| R8-12 | Contrapartes CLIENTE no disponibles | 4 (60 %) | 4 | 1.984 | 20 % | 397 | 238 | 84,1 % |
+| R8-32 | Evaluadores subcontratados no disponibles para las certificaciones | 3 (40 %) | 4 | 2.560 | 20 % | 512 | 205 | 85,4 % |
+| R8-24 | Filtración en telemetría o reproducción | 3 (40 %) | 5 | 1.600 | 30 % | 480 | 192 | 86,7 % |
+| R8-27 | INN-03 estima vida remanente insegura | 4 (60 %) | 5 | 1.056 | 30 % | 317 | 190 | 88,0 % |
+| R8-09 | Obsolescencia durante 56 meses | 4 (60 %) | 4 | 1.536 | 20 % | 307 | 184 | 89,2 % |
+| R8-07 | Ataque o exposición de datos críticos | 4 (60 %) | 5 | 960 | 30 % | 288 | 173 | 90,3 % |
+| R8-31 | Observaciones de revisión obligan a repetir certificación paralela | 3 (40 %) | 4 | 1.920 | 20 % | 384 | 154 | 91,4 % |
+| R8-20 | Rotación y resistencia reducen adopción | 4 (60 %) | 4 | 1.248 | 20 % | 250 | 150 | 92,4 % |
+| R8-30 | Crecimiento o nuevo CD supera parametrización | 3 (40 %) | 4 | 1.664 | 20 % | 333 | 133 | 93,2 % |
+| R8-10 | Interfaces no documentadas exigen retrabajo | 4 (60 %) | 4 | 1.040 | 20 % | 208 | 125 | 94,1 % |
+| R8-06 | Carga y cola CD-05 exceden capacidad | 4 (60 %) | 5 | 640 | 30 % | 192 | 115 | 94,8 % |
+| R8-05 | Pérdida del sitio supera RPO | 3 (40 %) | 5 | 928 | 30 % | 278 | 111 | 95,6 % |
+| R8-01 | ERP indisponible o guía invalidada | 4 (60 %) | 5 | 560 | 30 % | 168 | 101 | 96,2 % |
+| R8-03 | CD no sostiene 24 horas sin WAN | 3 (40 %) | 5 | 800 | 30 % | 240 | 96 | 96,9 % |
+| R8-26 | INN-02 no reproduce fallas relevantes | 3 (40 %) | 4 | 1.152 | 20 % | 230 | 92 | 97,5 % |
+| R8-21 | Transportistas o sindicato rechazan dispositivos | 3 (40 %) | 4 | 1.120 | 20 % | 224 | 90 | 98,1 % |
+| R8-13 | Conocimiento de ruteo no transferido | 3 (40 %) | 4 | 1.040 | 20 % | 208 | 83 | 98,6 % |
+| R8-25 | INN-01 no logra seguimiento posentrega | 4 (60 %) | 3 | 1.120 | 10 % | 112 | 67 | 99,1 % |
+| R8-29 | INN-05 baja adopción de hoja del almacenero | 4 (60 %) | 3 | 1.120 | 10 % | 112 | 67 | 99,5 % |
+| R8-17 | Fecha efectiva elimina ventanas permitidas | 4 (60 %) | 5 | 240 | 30 % | 72 | 43 | 99,8 % |
+| R8-28 | INN-04 medición variable genera disputa | 3 (40 %) | 4 | 352 | 20 % | 70 | 28 | 100,0 % |
+| **Total** |  |  |  |  |  |  | **15.076** |  |
+
+El valor esperado no es lo que costará cada riesgo: si ocurre, cuesta su impacto completo, y si no, nada. Sumado sobre todo el registro, estima el esfuerzo que la incertidumbre conocida agregará al proyecto y dimensiona la reserva de contingencia (SD8, sección 8.3.2).
+
 ## Anexo 8.C — Escenarios deterministas y costo-beneficio
 
-Este anexo cuantifica en horas hombre y en meses los efectos de los escenarios que usan las fichas, con reglas reproducibles.
+Este anexo cuantifica en horas hombre y en meses los efectos de los escenarios que usan las fichas, con reglas reproducibles, y presenta la simulación de Monte Carlo del cronograma (C.3).
 
 ### C.1 Reglas y unidades
 
@@ -535,7 +615,7 @@ T-15 supone 128 HH efectivas/persona-mes; módulo D = 960 HH, integración I = 4
 | --- | --- | --- |
 | C-01 Corrección E1 meses 13–20 (R8-02/04/14) | 25 % × 960 = 240 HH DES + 160 HH CAL = 400 HH. Máximo(240/256,160/128) = 1,25 meses con reserva mensual | No cabe en un mes por CAL: agregar 32 HH CAL a ese mes o distribuir si la ventana y aceptación lo permiten. Registrar 400 HH una sola vez. Antes de H5 esa reserva no está disponible |
 | C-02 Retrabajo EDI previo H10 (R8-10/15) | 50 % × 480 = 240 HH DES + 160 HH CAL = 400 HH. Dos DES y dos CAL adicionales darían máximo(240/256,160/256) = 0,9375 mes en paralelo; si secuencial, 0,9375 + 0,625 = 1,5625 meses | Es una necesidad de escenario, no dotación ni reserva acreditada. El orden real de corrección y prueba determina duración; no prestar reserva E1 a E2 |
-| C-03 Demora integración (R8-10/11) | N06/N08 +0,25 mes ⇒ entrega del H4 en t9,75 y revisión del CLIENTE reducida a 0,25 mes; N12/N13 +0,50 ⇒ entrega del H9 en t17,00, sin plazo de revisión. PERT: σ = 0,51 mes al H4 y 0,53 al H5 | Holgura de hito cero y 50 % de cumplir cada hito: recuperar y recalcular antes de comprometer H5/H10. No convertir el pronóstico en fecha contractual |
+| C-03 Demora de construcción o integración (R8-10/11) | La reserva programada es 19 días hábiles antes de la entrega del H4, 35 antes del H5, 21 antes del H9 y 28 antes del H10 (T-15, Tabla 5.2). Una demora de 10 días hábiles en la integración E2 (3.9.1) deja 11 días de reserva antes del H9 | Recuperar con capacidad o secuencia dentro de la reserva; si la demora proyectada supera la mitad de la reserva, replanificar antes del hito. La probabilidad conjunta con los demás riesgos está en C.3. No convertir el pronóstico en fecha contractual |
 | C-04 Acompañamiento adicional (R8-18/20) | Cuatro semanas: 12 × 24 × 8 + 160 = 2.464 HH IMP; techo(2464/128) = 20 personas equivalentes | 13 puestos simultáneos necesitan relevos. Sólo es aumento de HH si excede el acompañamiento ya incluido; verificar el calendario de esa extensión |
 | C-05 Tercer agente de mesa en las franjas valle (R8-22) | 17 horas × 26 días de lunes a sábado = 442 HH/mes; techo(442/128) = 4 personas equivalentes | Se activa si la demanda medida supera 2.200 contactos/mes y eleva el límite de 2.283 a 2.391 contactos/mes (SD4, Anexo 4-W.7). Es capacidad de escenario, no incluida en el T-15; abandono y resolución al primer contacto se miden aparte |
 | C-06 Reversión (R8-01) | Máximo(10 min técnicos,30 min preparación operacional) + 10 min validación = 40 min; 04:45 + 40 = 05:25 | Objetivo con cinco minutos hasta 05:30, sin medición. Ensayar 96 despachos y fallos ERP/carga. RTO general de cuatro horas no admite detener despacho |
@@ -550,20 +630,56 @@ Una verificación de 160 HH frente a retrabajo supuesto de 400 HH da 400/160 = 2
 
 En despacho, seguridad, sanidad y RPO, la conformidad es obligatoria; las HH ayudan a escoger alternativas conformes. Retirar una innovación que no rinde exige gobierno y preservar compromisos contratados; no elimina funciones obligatorias.
 
+### C.3 Simulación de Monte Carlo del cronograma
+
+El modelo es la red de los 163 paquetes con entregable del Formulario T-15, sección 6.1, con sus dependencias del Anexo 7.B y las fechas de inicio programadas como fechas de liberación. En cada una de las 5.000 iteraciones:
+
+- la duración de cada paquete se toma de una distribución PERT con O = 0,75 d, M = d y P = 1,25 d, que es una beta(3, 3) escalada;
+- cada riesgo de la Tabla B.2 ocurre con su probabilidad; si ocurre, la duración de cada paquete afectado crece en la fracción de su impacto, y los efectos de varios riesgos sobre un mismo paquete se suman;
+- se recalculan las fechas por las dependencias y se registra la entrega de cada hito.
+
+R8-18 y R8-22 no se simulan porque afectan la duración de las marchas blancas y la operación, que tienen fechas contractuales fijas; se cubren con la reserva de contingencia. La simulación no nivela recursos en cada iteración: supone que el equipo asignado a un paquete se mantiene mientras se alarga.
+
+**Tabla C.3 — Resultado por hito. Fuente: elaboración propia.**
+
+| Hito | Fecha límite de entrega | P50 | P80 | P(entrega a tiempo) |
+| --- | --- | --- | --- | --- |
+| H1 | 17-03-2027 | 09-03-2027 | 10-03-2027 | > 99,9 % |
+| H2 | 17-05-2027 | 06-04-2027 | 09-04-2027 | > 99,9 % |
+| H3 | 16-07-2027 | 30-06-2027 | 09-07-2027 | 98,6 % |
+| H4 | 16-11-2027 | 28-10-2027 | 03-11-2027 | > 99,9 % |
+| H5 | 17-01-2028 | 27-12-2027 | 05-01-2028 | 97,7 % |
+| H8 | 17-03-2028 | 06-03-2028 | 09-03-2028 | 99,3 % |
+| H9 | 16-06-2028 | 06-06-2028 | 14-06-2028 | 89,9 % |
+| H10 | 17-07-2028 | 30-06-2028 | 07-07-2028 | 97,7 % |
+
+**Tabla C.4 — Sensibilidad: probabilidad de entrega a tiempo si el riesgo no existiera (3.000 iteraciones). Fuente: elaboración propia.**
+
+| Riesgo | H3 | H5 | H9 | H10 |
+| --- | --- | --- | --- | --- |
+| Con todos los riesgos | 98,6 % | 97,9 % | 90,5 % | 97,8 % |
+| Sin R8-11 Productividad o dotación | 99,2 % | 99,2 % | 99,2 % | 97,7 % |
+| Sin R8-14 Capacidad E1 usada por E2 | 99,2 % | 97,6 % | 100,0 % | 100,0 % |
+| Sin R8-15 Perfiles EDI | 99,2 % | 97,6 % | 97,4 % | 97,9 % |
+| Sin R8-19 Suministros o sala | 100,0 % | 97,6 % | 89,9 % | 97,8 % |
+| Sin R8-23 Evidencia de frío | 98,9 % | 99,3 % | 89,9 % | 97,8 % |
+| Sin R8-31 Certificación repetida | 98,9 % | 98,7 % | 89,9 % | 99,5 % |
+| Sin R8-32 Evaluadores subcontratados | 98,9 % | 99,1 % | 89,9 % | 99,9 % |
+| Sin R8-06 Carga CD-05 | 99,2 % | 97,6 % | 90,0 % | 98,8 % |
+
+La lectura es la del diagrama de tornado (PMI, 2017, p. 434): el H9 depende sobre todo de mantener separada la capacidad de la Etapa 1 (R8-14), de la productividad (R8-11) y de la certificación de las cadenas (R8-15); el H10, de R8-14 y del refuerzo de calidad (R8-32, R8-31); el H5, de la evidencia de frío (R8-23), la productividad y el refuerzo de calidad; el H3, de la compra del CLIENTE (R8-19). Esos riesgos tienen seguimiento semanal en el Comité de Proyecto. Las diferencias menores a un punto están dentro del error de muestreo.
+
 ## Anexo 8.D — Reservas, autorización y programación
 
 | Componente | HH / ventana | Inclusión y regla |
 | --- | --- | --- |
 | Corrección protegida E1 | 8 × (256 DES + 128 CAL) = 3.072 HH; meses 13–20 | Ya incluida en 202.774 HH. Remanente inicial de planificación 3.072; consumo real no informado. No prestar a E2 ni usar antes del mes 13 |
 | Soporte puente E1 | 9.336 HH SRE; meses 16–20 | Servicio base ya incluido; no reserva de desarrollo |
-| Cierre/estabilización implementación meses 21–22 | 2.834,54 HH | Separado de operación en T-15; no añadir de nuevo |
-| Calendario H4/H5/H9/H10 | 0 meses de reserva de hito; el PERT exige 0,65 y 0,67 mes antes de H4/H5 para 90 % | Brecha que debe cerrarse antes de aprobar la línea base (T-15 §5.3) |
+| Cierre/estabilización implementación meses 21–22 | 2.774,54 HH | Separado de operación en T-15; no añadir de nuevo |
+| Reserva de cronograma | Reserva entre la entrega y la fecha límite de cada hito (T-15, Tabla 5.2), dimensionada para que la fecha P80 simulada quede antes de la fecha límite (Tabla C.3) | Se consume sólo por desviaciones registradas; no se presta entre hitos |
 | Últimas cuatro semanas de marcha blanca | 0 días disponibles como reserva | Evidencia obligatoria, no tiempo para completar alcance |
-| Contingencia de integración E1 | 400 HH (240 DES + 160 CAL), dimensionada con C-02; disponible meses 7 a 11 | Cubre el mayor escenario individual de retrabajo de integración antes del H5, cuando la reserva protegida aún no existe. Fuera del total del T-15; su uso exige autorización y actualiza la curva |
-| Contingencia de integración E2 | 400 HH (240 DES + 160 CAL), dimensionada con C-02; disponible meses 15 a 18 | Separada de la E1; no se presta entre etapas ni se suma con la anterior |
-| Contingencia de atención | 442 HH/mes desde el mes en que se active C-05 | Sólo si la demanda medida supera 2.200 contactos/mes |
-| Extensión de marcha blanca | 2.464 HH por cada cuatro semanas (C-04) | Sólo ante extensión del Art. 17.3, a costo del adjudicatario y sin mover fases siguientes |
-| Reserva de gestión | Para riesgos no identificados; sin horas preasignadas | JP solicita caso; Comité Ejecutivo autoriza con capacidad/plazo explícitos; actualización T-15/calendario. Su monto, y el de las contingencias anteriores, corresponde a la Oferta Económica (Art. 50.2) |
+| Reserva de contingencia | 15.076 HH, suma de los valores esperados de la Tabla B.2; 12.004 HH adicionales a la capacidad protegida E1, repartidas por período en el SD8, sección 8.3.2 | Cubre riesgos identificados. Los escenarios C-01 a C-05 son usos típicos: corrección E1 (400 HH), retrabajo EDI (400 HH), extensión de marcha blanca (2.464 HH por cuatro semanas) y tercer agente de mesa (442 HH/mes). Cada uso se registra contra el riesgo que lo origina; no se presta entre etapas |
+| Reserva de gestión | Riesgos no identificados; no se expresa en HH en esta oferta técnica | No forma parte de la línea base; la autoriza el Comité Ejecutivo; su monto se define en la Oferta Económica (Art. 50.2) |
 
 Por evento se registra ID relacionado, mes/subventana, perfil, HH autorizadas/consumidas, remanente y efecto en hitos. Si R8-02 y R8-04 representan el mismo defecto, comparten cargo. Redactar esta planificación no demuestra consumo de HH. La ampliación de marcha blanca se rige por Art. 17.3 a costo del adjudicatario y sin mover fases siguientes; ninguna reserva lo deroga.
 
@@ -573,8 +689,8 @@ Estas entradas son estados documentales actuales, no probabilidades FMEA. El rie
 
 | ID | Estado y condición de cierre | Responsable / límite | Riesgos asociados |
 | --- | --- | --- | --- |
-| E8-01 | T-15 usa tamaños y productividad supuestos; peak 66 en el mes 16, brechas de dotación en SEG e IMP (T-15 §5.7) y capacidad por subventana sin asignación. Estimar con equipo y comprobar personas, competencias, relevos y cero sobreasignación | JP/DES/CAL; antes línea base | R8-11/14 |
-| E8-02 | CPM agregado de 24 bloques con revisiones Art. 18.3 y PERT calculados; cada hito tiene 50 % de cumplirse y faltan 0,65/0,67 mes de reserva antes de H4/H5; detalle diario y sala/racks/configuración no demostrado. Desagregar D-01–D-34 y comprobar secuencias y capacidad | JP/ARQ/SRE; antes línea base/H3 | R8-10/11/19 |
+| E8-01 | T-15 usa tamaños y productividad supuestos; peak 69 en el mes 15, 48 personas simultáneas de desarrollo entre julio y septiembre de 2027, brechas de dotación en SEG e IMP (T-15 §5.7) y capacidad por subventana sin asignación. Estimar con equipo y comprobar personas, competencias, relevos y cero sobreasignación | JP/DES/CAL; antes línea base | R8-11/14 |
+| E8-02 | Cronograma de 564 actividades calculado con dependencias, revisión Art. 18.3 y nivelación (T-15 §5–§6); sus plantillas, equipos y compras del CLIENTE no están validados. Reestimar con el equipo, confirmar plazos de compra y repetir el cálculo | JP/ARQ/SRE; antes línea base/H3 | R8-10/11/19 |
 | E8-03 | V-12 no confirma fecha/calendario hábil. Febrero 2027 es ejemplo; comprobar E2 antes enero 2029, congelamientos y 28 días | JP/CLIENTE; mes 1 antes H1 | R8-15/17/18 |
 | E8-04 | Objetivo 40 minutos/96 camiones sin ensayo. Demostrar versión operativa, DTE válidos y flujo sin interrupción; papel no acredita despacho | ARQ/SRE/Operaciones; antes H6/H11 | R8-01 |
 | E8-05 | SD4 describe RPO remoto >15 min ante pérdida del sitio/respaldo. Resolver arquitectura y medir RPO/RTO; aceptar el riesgo no satisface Bases | ARQ/SRE; antes H5/H10 | R8-05 |
@@ -585,6 +701,7 @@ Estas entradas son estados documentales actuales, no probabilidades FMEA. El rie
 | E8-10 | Antecedentes/dotación SD1 sin acreditación externa en esta copia. No usar declaraciones como disponibilidad/certificación demostradas | JP; antes presentación correspondiente | R8-11 |
 | E8-11 | Sin revisión humana final/A-6 consolidado ni actas de aceptación en esta sesión. Documentar revisores, alcance, pruebas y actas; Markdown no acredita presentación visual final | JP/CAL; antes entrega y cada aceptación | R8-18 |
 | E8-13 | La red agregada incorpora medio mes de revisión del CLIENTE antes de cada hito y presentación por incrementos (T-15 §5.1 y §5.5), pero la subsanación de diez días hábiles no tiene holgura: una observación atrasa el hito. Acordar con la Contraparte Técnica el calendario de presentaciones | JP/CAL/CLIENTE; antes aprobar línea base | R8-12/17/18 |
+| E8-14 | La calibración de probabilidades e impactos de la sección 8.1.3 y la simulación usan juicio del equipo, no frecuencias medidas. Contrastar con los datos de avance y de incidentes desde el mes 3 y recalcular el valor esperado y la simulación en cada Comité de Proyecto | JP/CAL; trimestral desde el mes 3 | Todos |
 | E8-12 | SD5 sin consolidar, excluido. Datos necesarios no disponibles en SD3/4 son dependencias futuras; no presumir disponibilidad | DAT/ARQ; al consolidarse | R8-16 |
 
 La incoherencia de precio quedó corregida en SD2 S-09 y RF activos 03.11/12 del SD3/T-12: todos conservan el precio capturado. La integración requiere prueba. Catálogos originales y material complementario histórico se conservan sin reemplazar la línea activa.
@@ -631,5 +748,6 @@ La tabla declara el uso de IA en estos anexos; se consolida en la declaración d
 | Sección | Herramienta | Finalidad del uso | Nivel en texto | Nivel en diagramas | Revisión humana (quién y qué verificó) |
 | --- | --- | --- | --- | --- | --- |
 | Anexos 8.A y 8.B | Codex; Claude Code | Fichas y FMEA (6 de octubre de 2026); justificación individual de P y D con horizonte (7 de octubre de 2026) | Alto | Ninguno | No documentada |
-| Anexos 8.C y 8.D | Codex; Claude Code | Escenarios deterministas; contingencias dimensionadas y PERT (7 de octubre de 2026) | Alto | Ninguno | No documentada |
+| Anexos 8.B y 8.C: cuantificación y simulación (7 de octubre de 2026) | Claude Code | Valor esperado en HH, simulación de Monte Carlo y sensibilidad sobre el cronograma por actividad | Alto | Ninguno | No documentada |
+| Anexos 8.C y 8.D | Codex; Claude Code | Escenarios deterministas; reserva de contingencia por valor esperado (7 de octubre de 2026) | Alto | Ninguno | No documentada |
 | Anexos 8.E y 8.F | Codex; Claude Code | Condiciones de evidencia; escala de beneficio de la oportunidad (7 de octubre de 2026) | Alto | Ninguno | No documentada |

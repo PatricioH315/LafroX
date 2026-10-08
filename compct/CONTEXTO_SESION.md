@@ -1,5 +1,9 @@
 # CONTEXTO DE SESIÓN
 
+## Estado vigente — 7 de octubre de 2026: cronograma por actividad y SD8 cuantitativo
+
+SD7: T-15 §6 programa 564 actividades de 163 paquetes con entregable (≤80 HH, ≤1 quincena) con dependencias del Anexo 7.B (D-16/18/19 por interfaz, D-21b nueva), revisión Art. 18.3 y nivelación con la dotación del SD1; 59 paquetes de esfuerzo continuo por ocurrencia. Total 202.774 HH, peak 69 (mes 15). Reservas por hito en T-15 Tabla 5.2. El usuario aceptó: refuerzo de calidad con evaluadores subcontratados hasta 16/día (meses 9–12 y 16–18, SD6 §6.1.3), compra del CLIENTE dentro del mes siguiente a 5.1.2, y la calibración de escalas del SD8 (P: 5/20/40/60/80 %; I: 0/5/10/20/30 % del esfuerzo afectado). SD8: 32 riesgos, valor esperado 15.076 HH (contingencia adicional 12.004 HH), Monte Carlo con P(H9)=90 % y demás ≥97,7 %, P80 de todos los hitos dentro de su límite. Preferencia del usuario: mover lo menos posible los otros subdocumentos. Material del ramo en `clases + pmbok/` como consultor.
+
 ## Estado vigente — 5 de octubre de 2026
 
 Limpieza adicional autorizada: se retira el archivo informativo de anexos del SD1 porque no incorpora anexos complementarios. `01_presentacion_empresa/` conserva cuerpo y T-6; SD3 y SD4 conservan sus tres entregables. El usuario solicita registrar toda esta limpieza en el commit `limpieza de archivos` y publicarlo en `alvaro-md`. Los originales eliminados permanecen recuperables en Git.

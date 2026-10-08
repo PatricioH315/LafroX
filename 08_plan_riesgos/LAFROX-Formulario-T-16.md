@@ -1,6 +1,6 @@
 # LafroX — Formulario T-16: Plan de riesgos
 
-Prob. e Impacto usan escalas ordinales 1–5 de SD8 §8.1.3. Expos. = Prob. × Impacto. Evaluación inicial, sin porcentajes estadísticos ni cierre acreditado. Detalle y NPR en Anexos 8.A/8.B. Los responsables dirigen equipos; nominarlos no acredita dotación.
+Prob. e Impacto usan escalas ordinales 1–5 de SD8 §8.1.3. Expos. = Prob. × Impacto. Evaluación inicial, sin porcentajes estadísticos ni cierre acreditado. Detalle y NPR en Anexos 8.A/8.B; el valor esperado en HH de cada riesgo está en el Anexo 8.B, Tabla B.2. Los responsables dirigen equipos; nominarlos no acredita dotación.
 
 | ID | Riesgo | Categoría | Prob. | Impacto | Expos. | Mitigación | Responsable |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -14,7 +14,7 @@ Prob. e Impacto usan escalas ordinales 1–5 de SD8 §8.1.3. Expos. = Prob. × I
 | R8-08 | Bloqueo por proveedor | Técnico | 3 | 4 | 12 | Inventariar dependencias, contratos y formatos; ensayar extracción/restauración; plazo: Diseño H2/H8; ensayo anual y salida mes56. Disparador y contingencia: Anexo 8.A R8-08 | ARQ |
 | R8-09 | Obsolescencia durante 56 meses | Técnico | 4 | 4 | 16 | Inventariar versiones/soporte y ensayar compatibilidad en QA; plazo: Inventario H2; revisión mensual operación. Disparador y contingencia: Anexo 8.A R8-09 | SRE |
 | R8-10 | Interfaces no documentadas exigen retrabajo | Técnico | 4 | 4 | 16 | Capturar muestras/horarios y probar contratos y errores temprano; plazo: Antes H2; integración H4. Disparador y contingencia: Anexo 8.A R8-10 | ARQ |
-| R8-11 | Productividad o dotación inferior al modelo | Proyecto | 4 | 5 | 20 | Estimar con equipo/cantidades; asignar competencias y relevos; comprobar el peak de 66 (mes 16), la dotación declarada (T-15 §5.7) y las bandas de 15 especialistas; crear la reserva PERT antes de H4/H5; plazo: Antes línea base; semanal. Disparador y contingencia: Anexo 8.A R8-11 | JP |
+| R8-11 | Productividad o dotación inferior al modelo | Proyecto | 4 | 5 | 20 | Estimar con equipo/cantidades; asignar competencias y relevos; comprobar el peak de 69 (mes 15), las 48 personas simultáneas de desarrollo y la dotación declarada (T-15 §5.7); vigilar la reserva de cada hito; plazo: Antes línea base; semanal. Disparador y contingencia: Anexo 8.A R8-11 | JP |
 | R8-12 | Contrapartes CLIENTE no disponibles | Organizacional | 4 | 4 | 16 | Reservar agenda, responsable/suplente y material por decisión; plazo: Agenda mes1; cada comité quincenal. Disparador y contingencia: Anexo 8.A R8-12 | JP |
 | R8-13 | Conocimiento de ruteo no transferido | Organizacional | 3 | 4 | 12 | Capturar reglas/excepciones y validar con planificador y suplente; plazo: Captura meses1–3; probar antes H7. Disparador y contingencia: Anexo 8.A R8-13 | IMP |
 | R8-14 | E2 consume capacidad protegida E1 | Proyecto | 4 | 5 | 20 | Separar equipos y proteger 256DES+128CAL HH/mes E1; plazo: Antes mes13; semanal hasta20. Disparador y contingencia: Anexo 8.A R8-14 | DES |
@@ -34,6 +34,8 @@ Prob. e Impacto usan escalas ordinales 1–5 de SD8 §8.1.3. Expos. = Prob. × I
 | R8-28 | INN-04 medición variable genera disputa | Proyecto | 3 | 4 | 12 | Acordar fórmula/datos/auditoría; valores sólo en Oferta Económica; plazo: Modelo17–20; sombra21–23; antes mes24. Disparador y contingencia: Anexo 8.A R8-28 | JP |
 | R8-29 | INN-05 baja adopción de hoja del almacenero | Organizacional | 4 | 3 | 12 | Co-diseño/piloto asistido o papel; preservar preventista y efectivo; plazo: Piloto E2; evaluar24–27. Disparador y contingencia: Anexo 8.A R8-29 | IMP |
 | R8-30 | Crecimiento o nuevo CD supera parametrización | Técnico | 3 | 4 | 12 | Contrastar distribución real y probar límites de plataforma; plazo: Antes H5/H10; anual. Disparador y contingencia: Anexo 8.A R8-30 | ARQ |
+| R8-31 | Observaciones de revisión obligan a repetir certificación paralela | Proyecto | 3 | 4 | 12 | Entregar por incrementos y ejecutar primero los casos independientes de la revisión; repetir sólo los casos afectados con cargo a la reserva del hito; plazo: revisión del H4 y del H9. Disparador: observación sobre un caso ya certificado | CAL |
+| R8-32 | Evaluadores subcontratados no disponibles para las certificaciones | Organizacional | 3 | 4 | 12 | Contratar antes de los meses 7 y 14 con disponibilidad por quincena e inducción con casos del T-12; contingencia: reasignación interna y priorización de casos críticos. Disparador: contrato no firmado dos meses antes | CAL |
 
 ## Referencias
 

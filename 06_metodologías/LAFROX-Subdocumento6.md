@@ -110,6 +110,7 @@ El CLIENTE compra el equipamiento de terreno y el de la sala técnica conforme a
 | Acuerdos con los diez transportistas | Uso de terminales y suplentes enrolados | LafroX con el CLIENTE (5.4.1) | Implantación | Antes del H6 | 4.2.1, ola de reparto | Diez acuerdos firmados |
 | Acta con el sindicato | Terminales, GPS y cámaras | CLIENTE y sindicato (5.4.2) | Implantación | Antes del H6 | 4.2.1 | Acta firmada |
 | Custodia de fuentes | Continuidad ante insolvencia o incumplimiento | LafroX (5.4.4) | Jefe de proyecto | Antes del H4 | 9.2 | Contrato y primer depósito |
+| Evaluadores de pruebas subcontratados | Refuerzo de calidad durante las certificaciones, hasta 16 personas por día | LafroX | Líder de Calidad | Meses 9 a 12 y 16 a 18 | 3.8.2 a 3.8.8 y 3.9.2 a 3.9.7 | Contrato con perfiles y disponibilidad por quincena |
 | Servicio SOC 24×7, si se subcontrata | Monitoreo de seguridad desde el mes 13 | LafroX (8.1.5; RT-11.17) | Encargado de Seguridad | Mes 13 | 8.1.5 | Contrato con cobertura y niveles de servicio |
 
 Cada fila tiene en el registro de adquisiciones su estado, su proveedor y su fecha comprometida. Un atraso que amenace el H3 o una ola se escala al Comité Ejecutivo con su análisis de impacto.

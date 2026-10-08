@@ -31,7 +31,7 @@ Durante un mes de congelamiento que cae dentro de una marcha blanca no se inicia
 
 ## Anexo 7.B — Dependencias entre paquetes de trabajo
 
-La Tabla «tab:7B1» lista las dependencias que estructuran la red del cronograma. Son de tipo fin-comienzo (FC), salvo las marcadas como comienzo-comienzo (CC), y cada una indica su fundamento. Sobre esta red se identifica la ruta crítica del Subdocumento 7, sección 7.3.1, y se aplica el método de programación del Formulario T-15.
+La Tabla «tab:7B1» lista las dependencias que estructuran la red del cronograma. Son de tipo fin-comienzo (FC), salvo las marcadas como comienzo-comienzo (CC) y las de tipo «por interfaz», en que el sucesor espera los contratos del predecesor para construir y su entrega para integrar; cada una indica su fundamento. El Formulario T-15, sección 6.1, aplica estas dependencias actividad por actividad. Sobre esta red se identifica la ruta crítica del Subdocumento 7, sección 7.3.1, y se aplica el método de programación del Formulario T-15.
 
 **Dependencias entre paquetes de trabajo. Fuente: elaboración propia a partir de los Formularios T-14 y T-18 y de los capítulos indicados.**
 
@@ -43,23 +43,24 @@ La Tabla «tab:7B1» lista las dependencias que estructuran la red del cronogram
 | D-02 | 1.2.3 Especificación de las interfaces sin documentación | 3.3.2 Integración con el ERP | FC | Interfaces sin documentación (Caso 02, sección 17.5) |
 | D-03 | 1.2.2 Reglas de ruteo del planificador | 3.4.7 M4 Rutas | FC | Captura del conocimiento antes de la jubilación (Caso 02, cap. 18, resultado 16) |
 | D-04 | 2.4.1 Aprobación de arquitectura, seguridad y datos (H2) | 3.4 Módulos de la Etapa 1 | FC | No se construye sin diseño aprobado (Capítulo 6, fase de Elaboración) |
-| D-05 | 2.6.2 Prototipos y pruebas de usabilidad | 3.4 Módulos de la Etapa 1 | FC | Diseño con usuarios antes de construir (Bases Administrativas, Art. 26°); 2.6.2 cierra en el mes 4 y 3.4 empieza en el mes 5 |
-| D-06 | 2.2.1 Plan de seguridad | 3.3.1 Identidad y control de acceso | FC | La identidad aplica el plan de seguridad aprobado en el H2 (mes 4); 3.3.1 empieza en el mes 5 |
+| D-05 | 2.6.2 Prototipos y pruebas de usabilidad | 3.4 Módulos de la Etapa 1 | FC | Diseño con usuarios antes de construir (Bases Administrativas, Art. 26°); 2.6.2 cierra antes de que empiece 3.4 (Formulario T-15, Tabla 6.1) |
+| D-06 | 2.2.1 Plan de seguridad | 3.3.1 Identidad y control de acceso | FC | La identidad aplica el plan de seguridad aprobado en el H2 |
 | D-07 | 5.2.1 Contrato de los servicios de AWS | 3.2 Servicios de nube | FC | Servicios activos antes de configurar ambientes |
-| D-08 | 3.2 Servicios de nube | 3.1.1 a 3.1.3 Ambientes en la nube (H3) | FC | Los ambientes usan los servicios configurados |
-| D-09 | 2.3.1 y 2.3.2 Planos de sala y racks | 5.1.2 Especificación de compra de sala y racks | FC | Se especifica lo diseñado; planos en los meses 2 y 3, especificación en el mes 4 |
-| D-10 | 5.1.2 Especificación de compra | 6.1 Sala técnica de Talca | FC | Se instala el suministro recibido conforme a responsabilidades BTT/SD4/T-11; la compra de terreno del CLIENTE no transfiere toda provisión de sala/racks. 6.1 empieza en el mes 5 |
-| D-11 | 6.1.5 Recepción técnica de la sala | 6.3.1 y 6.3.2 Racks R01 y R02 | FC | El acta de la sala habilita el montaje; 6.1.5 se firma al inicio del mes 6, después de 6.1.2 a 6.1.4 |
-| D-12 | 6.3 Racks y gabinetes | 6.6 Configuración de los sitios | FC | El software de base se instala sobre el hardware montado |
+| D-08 | 3.2.1, 3.2.2, 3.2.4 y 3.2.5 Servicios de nube de aplicación, datos, respaldo y seguridad | 3.1.1 a 3.1.3 Ambientes en la nube (H3) | FC | Los ambientes usan los servicios configurados. La ingesta de IoT 3.2.3 precede a M12 (3.4.5) y la gestión de dispositivos 3.2.6 precede a la configuración de terminales (6.5.1); no condicionan los ambientes |
+| D-09 | 2.3.1 y 2.3.2 Planos de sala y racks | 5.1.2 Especificación de compra de sala y racks | FC | Se especifica lo diseñado; planos en los meses 1 y 2 y especificación en los meses 2 y 3 |
+| D-10 | 5.1.2 Especificación de compra | 6.1 Sala técnica de Talca | FC | Se instala el suministro recibido conforme a responsabilidades BTT/SD4/T-11; la compra de terreno del CLIENTE no transfiere toda provisión de sala/racks. 6.1 empieza en el mes 3, por lo que el CLIENTE compra dentro del mes siguiente a la aprobación de la especificación |
+| D-11 | 6.1.5 Recepción técnica de la sala | 6.3.1 y 6.3.2 Racks R01 y R02 | FC | El acta de la sala habilita el montaje; 6.1.5 se firma después de 6.1.2 a 6.1.4 (Formulario T-15, Tabla 6.1) |
+| D-12 | 6.3.1 a 6.3.3 Racks de Talca y gabinete de Concepción | 6.6 Configuración de los sitios | FC | El software de base se instala sobre el hardware montado. Los gabinetes de cross-docking (6.3.4) se montan junto con el equipamiento de campo de cada ola (6.5.1, CC) y no condicionan la configuración de los CD |
 | D-13 | 6.6.3 Borde de los CD en servicio y validación inicial | H3 (mes 6); pruebas ampliadas antes de H5 | FC | Infraestructura híbrida del H3 (Formulario E-25) |
 | D-14 | 3.1 Ambientes (H3) | Entrega y ejecución en QA de 3.4; no el inicio de desarrollo en DEV | FC | Los módulos se entregan en QA |
 | D-15 | 3.3 Base compartida | 3.4 Módulos de la Etapa 1 | CC | La base compartida se construye primero (Capítulo 3, sección 3.4.3) |
-| D-16 | 3.4.1 M1 Recepción y 3.4.2 M2 Inventario | 3.4.3 M5 Preparación y 3.4.4 M9 Calidad y trazabilidad | FC | Recepción e inventario alimentan preparación y retiro (Capítulo 3, sección 3.4.3) |
+| D-16 | 3.4.1 M1 Recepción y 3.4.2 M2 Inventario | 3.4.3 M5 Preparación y 3.4.4 M9 Calidad y trazabilidad | Por interfaz | Recepción e inventario alimentan preparación y retiro (Capítulo 3, sección 3.4.3). El sucesor construye después de que el predecesor fija sus contratos (actividad A02) e integra después de que el predecesor entrega en QA (A12) |
 | D-17 | 3.4.2 M2 Inventario | 3.4.6 M3 Preventa | CC | La preventa necesita stock (Capítulo 3, sección 3.4.3) |
-| D-18 | 3.4.3 M5 Preparación y 3.4.6 M3 Preventa | 3.4.7 M4 Rutas y 3.4.8 M6 Reparto | FC | Rutas y reparto requieren pedido confirmado y preparación (Capítulo 3, sección 3.4.3) |
-| D-19 | 3.4.8 M6 Reparto | 3.4.10 M7 Cobranza y rendición | FC | La rendición requiere la entrega registrada (Capítulo 3, sección 3.4.3) |
+| D-18 | 3.4.3 M5 Preparación y 3.4.6 M3 Preventa | 3.4.7 M4 Rutas y 3.4.8 M6 Reparto | Por interfaz | Rutas y reparto requieren pedido confirmado y preparación (Capítulo 3, sección 3.4.3). El sucesor construye después de que el predecesor fija sus contratos (actividad A02) e integra después de que el predecesor entrega en QA (A12) |
+| D-19 | 3.4.8 M6 Reparto | 3.4.10 M7 Cobranza y rendición | Por interfaz | La rendición requiere la entrega registrada (Capítulo 3, sección 3.4.3). El sucesor construye después de que el predecesor fija sus contratos (actividad A02) e integra después de que el predecesor entrega en QA (A12) |
 | D-20 | 3.4 Módulos de la Etapa 1 | 3.8.1 Pruebas de integración (H4) | FC | Formulario E-25, H4 |
-| D-21 | 3.8.1 Pruebas de integración | 3.8.2 a 3.8.6 Pruebas de certificación | FC | Bases Técnicas Transversales, numeral 20.1 |
+| D-21 | 3.8.1 Pruebas de integración | 3.8.2 Aceptación y 3.8.3 Operación sin conexión | FC | Bases Técnicas Transversales, numeral 20.1. Empiezan al terminar 3.8.1, en paralelo con la revisión del H4 por el CLIENTE |
+| D-21b | 3.4 Módulos de la Etapa 1 entregados en QA | 3.8.4 Carga, 3.8.5 Recuperación, 3.8.6 Seguridad ofensiva y 3.8.8 Respaldo | FC | Pruebas no funcionales sobre la versión integrada en Preproducción; no dependen del resultado funcional de 3.8.1 |
 | D-22 | 3.1.3 Ambiente de recuperación | 3.8.5 Prueba de recuperación ante desastres | FC | La prueba exige conmutación real |
 | D-23 | 3.8.2 a 3.8.6 | 3.8.7 Certificación de la Etapa 1 (H5) | FC | Formulario E-25, H5 |
 | D-24 | 3.7.1 a 3.7.4 Migración y ensayos | 3.7.5 Conciliación y corte | FC | Dos ensayos previos (numeral 20.1) |
@@ -69,7 +70,7 @@ La Tabla «tab:7B1» lista las dependencias que estructuran la red del cronogram
 | D-28 | 4.2.1 y 7.3.1 Certificación de usuarios | 4.2.3 Paso a producción de la Etapa 1 (H7); luego 4.2.2 Estabilización (meses 16 a 20) | FC | Bases Administrativas, Art. 17.3 y 90.4. La estabilización 4.2.2 sigue al paso a producción y no lo condiciona |
 | D-29 | 1.2.5 y 2.4.2 Línea base y diseño de la Etapa 2 (H8) | 3.5 Módulos de la Etapa 2 | FC | Formulario E-25, H8 |
 | D-30 | 3.5 Módulos de la Etapa 2 | 3.9.1 Pruebas de integración (H9) | FC | Formulario E-25, H9 |
-| D-31 | 3.9.1 a 3.9.5 | 3.9.6 Certificación de la Etapa 2 (H10) | FC | Formulario E-25, H10 |
+| D-31 | 3.9.1 a 3.9.5 | 3.9.6 Certificación de la Etapa 2 (H10) | FC | Formulario E-25, H10. Las pruebas 3.9.2 a 3.9.5 empiezan al terminar 3.9.1, en paralelo con la revisión del H9 |
 | D-32 | 3.9.6 (H10), 3.6.5 y 4.1.3 | 4.3.1 Marcha blanca de la Etapa 2 (H11) | FC | Formulario E-25, H11 |
 | D-33 | 4.3.1, 7.3.2, 7.1.4 y 4.3.4 | 4.3.3 Aceptación final (H12) | FC | Bases Administrativas, Art. 17.3 y 37.1 |
 | D-34 | 4.3.3 Aceptación final (H12) | 8 Operación y 9.1 Cierre de la implementación | FC | Bases Administrativas, Art. 17.2, punto 4 |
@@ -195,7 +196,7 @@ Esta matriz es entrada de planificación al SD8; no reemplaza T-16, una RBS ni l
 | ID | Riesgo / supuesto | EDT / hitos | Responsable de tratamiento | Disparador o control | Estado de preparación |
 | --- | --- | --- | --- | --- | --- |
 | P7-01 | Productividad y tamaños HH por clase no medidos | Los 222 paquetes; T-15 §4 | JP y líderes de frente | Sustituir tamaños por estimación de equipo trazable a T-12, cantidades y ensayos; recalcular si demanda supera capacidad | Modelo cuantificado, validación pendiente |
-| P7-02 | Red agregada no demuestra CPM detallado; PERT da 50 % por hito | D-01–D-34; H2/H3/H4/H5/H9/H10 | JP/ARQ | Red con revisiones Art. 18.3 y PERT en T-15 §5; faltan 0,65 mes de reserva antes de H4 y 0,67 antes de H5 para un 90 %; HT negativa o pronóstico posterior a hito activa replanificación | CPM agregado y PERT calculados; detalle diario pendiente |
+| P7-02 | Cronograma por actividad depende de tamaños y equipos supuestos | D-01–D-34; H2/H3/H4/H5/H9/H10 | JP/ARQ | T-15 §5–§6 programa 564 actividades con dependencias, revisión Art. 18.3 y nivelación; reservas de 3 a 35 días hábiles por hito. Reestimar con el equipo y repetir el cálculo; una reserva consumida a la mitad activa replanificación | Cronograma por actividad calculado; validación del equipo pendiente |
 | P7-03 | Solapamientos compiten por especialistas | 4.2.1/4.2.2, 3.5, 4.3.1; meses 13–15/19–20 | Líder DES y CAL | Mantener 256 HH DES + 128 HH CAL/mes protegidas E1, sin préstamo a F4; asignar personas nominales | Capacidad modelada; contratación/turnos no acreditados |
 | P7-04 | Fecha efectiva cambia congelamientos | 1.1.3, 4.1; V-12/H6/H11/H7/H12 | JP/CLIENTE | Confirmar fecha y transformar meses relativos en calendario; no iniciar corte en fechas prohibidas | Escenario febrero 2027, no fecha confirmada |
 | P7-05 | Ola/cadena no lista antes de cuatro semanas de cierre | 4.2.1/4.3.1, 7.3, 3.6.5/6 | IMP/Comercial/Operaciones | Registro de todo el alcance, activación antes del tramo final, cero incidentes críticos/altos; no reemplazar alcance por muestra | Secuencia propuesta y aceptación definida |
