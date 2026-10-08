@@ -12,7 +12,7 @@ Identifica qué podría impedir la aceptación o la continuidad de la solución,
 
 [Las escalas](../08_plan_riesgos/LAFROX-Subdocumento8.md#813-escalas-previas-al-an%C3%A1lisis) **P, I y D** (probabilidad, impacto y dificultad de detección) van de **1 a 5**. La exposición es **P × I** y se clasifica en baja, moderada, alta (8–14) y crítica (15–25). Para cuantificar, cada nivel de P equivale a un tramo de probabilidad (por ejemplo, 4 = 60 %) y cada nivel de I a una fracción del esfuerzo de los paquetes afectados (por ejemplo, 5 = 30 %).
 
-El **apetito de riesgo** fija qué se hace en cada nivel. Un riesgo crítico, o con impacto 5, exige tratamiento antes de su hito y se escala al Comité Ejecutivo. Uno alto exige tratamiento con responsable. Uno moderado o bajo se acepta con seguimiento. Ningún riesgo que afecte un requisito obligatorio se acepta sin tratamiento.
+El **apetito de riesgo** fija una regla de acción por zona. Un riesgo crítico, o con impacto 5, se evita, se mitiga o se escala antes de su hito, aunque su retorno en horas sea bajo. Uno alto se mitiga con un control de la EDT. Uno moderado se acepta activamente, con reserva y disparador, y uno bajo, pasivamente. La **tolerancia** es cero días de atraso en los hitos del Art. 17° y en el despacho de la madrugada, y el **umbral** de escalamiento es todo riesgo crítico o un consumo de reserva mayor que el previsto. Al cierre de cada etapa, una auditoría de riesgos comprueba que el proceso funciona.
 
 ## Qué riesgos se identificaron
 
@@ -46,17 +46,28 @@ La **simulación de Monte Carlo** recorre 5.000 veces la red de los 163 paquetes
 
 ## Cómo se responde
 
-Cada ficha del Anexo 8.A fija responsable, disparador, plazo, mitigación, contingencia y evidencia de cierre. [El costo-beneficio](../08_plan_riesgos/LAFROX-Subdocumento8.md#831-respuestas-y-costo-beneficio-t%C3%A9cnico) de los 22 riesgos críticos (Anexo 8.C, Tabla C.5) divide el retrabajo que evita el control por las HH del paquete que lo ejecuta. Esos paquetes ya están en el T-15, de modo que el cálculo justifica mantenerlos y no agrega horas:
+Cada ficha del Anexo 8.A fija responsable, estrategia, disparador, plazo, mitigación, contingencia, efecto esperado, riesgo residual, riesgo secundario y evidencia de cierre. Las estrategias son las cinco del PMBOK para amenazas y se eligen según quién controla la causa:
 
-- En **18 de 21**, el control cuesta menos que el retrabajo que evita, con cocientes de 1,3 a 84,9.
-- **R8-05, R8-06 y R8-17** quedan bajo 1 y se mantienen porque protegen requisitos obligatorios: el RPO, los tiempos de respuesta en el peak y los meses del Art. 17°.
-- **R8-22** (mesa de ayuda) no tiene un control previo con horas: su contingencia se activa sólo si la demanda medida supera 2.200 contactos al mes.
+| Estrategia | Riesgos | Por qué |
+| --- | --- | --- |
+| Mitigar | 28 | LafroX controla la causa |
+| Escalar | R8-12 y R8-17 | Dependen de decisiones del CLIENTE |
+| Evitar | R8-14 | Separar los equipos de las dos etapas elimina la causa |
+| Aceptar activamente | R8-22 | La demanda de la mesa no admite un control previo; hay contingencia y disparador |
+| Transferir | Ninguno | Contratar a un tercero no traslada la obligación de LafroX |
+
+Cada respuesta deja un **residual**: con la probabilidad un nivel más baja tras verificar cada control, el valor esperado del registro baja de 15.076 a **10.803 HH**. Las respuestas también crean **riesgos secundarios**, registrados como riesgos propios; por ejemplo, certificar en paralelo a la revisión del CLIENTE crea R8-31.
+
+[El costo-beneficio](../08_plan_riesgos/LAFROX-Subdocumento8.md#831-respuestas-y-costo-beneficio-t%C3%A9cnico) sigue la regla del PMBOK: una respuesta se justifica si reduce el valor esperado más de lo que cuesta. El Anexo 8.C, Tabla C.5, divide el ahorro esperado de cada riesgo crítico por las HH de su paquete de control, ya incluido en el T-15:
+
+- En **3 de 21** el retorno supera 1: la nivelación de recursos frente a R8-11 (17,0) y R8-14 (4,2), y el plan de olas con la certificación de usuarios frente a R8-18 (2,1).
+- En los **otros 18** el ahorro medido sólo en HH de retrabajo es menor que el costo, porque ese impacto no incluye la detención del despacho, la sanción sanitaria ni el atraso de un hito. Se aplican igual por la regla del nivel crítico, y la mayoría son pruebas o actas que las Bases exigen.
 
 ## Reservas
 
-[La reserva de contingencia](../08_plan_riesgos/LAFROX-Subdocumento8.md#832-reservas-y-cronograma) es la suma de los valores esperados, **15.076 HH**. De ellas, **1.853 HH** (R8-02, R8-04 y R8-14) caben en la capacidad protegida de la Etapa 1, de 3.072 HH, ya incluida en el T-15. Por eso la contingencia adicional es de **13.223 HH**. Esa capacidad no se usa antes del mes 13 ni se presta a la Etapa 2. El 88 % de la contingencia se concentra entre los meses 7 y 33.
+[La reserva de contingencia](../08_plan_riesgos/LAFROX-Subdocumento8.md#832-reservas-y-cronograma) es la suma de los valores esperados, **15.076 HH** (7,9 % de las HH base), y forma parte de la línea base. Se dimensiona con el valor esperado inicial porque al ofertar ningún control está verificado; cada control verificado libera la diferencia con el residual, hasta **4.273 HH**. De ellas, **1.853 HH** (R8-02, R8-04 y R8-14) caben en la capacidad protegida de la Etapa 1, de 3.072 HH, ya incluida en el T-15. Por eso la contingencia adicional es de **13.223 HH**. Esa capacidad no se usa antes del mes 13 ni se presta a la Etapa 2. El 88 % de la contingencia se concentra entre los meses 7 y 33.
 
-La **reserva de cronograma** son las reservas de cada hito del T-15, de 6 a 35 días hábiles, dimensionadas para que la fecha P80 quede antes de la fecha límite. Una observación del CLIENTE consume esa reserva; sólo la del H1 (6 días) no alcanza para los diez días de subsanación. La **reserva de gestión** cubre lo no identificado: la autoriza el Comité Ejecutivo y su monto va en la Oferta Económica.
+La **reserva de cronograma** son las reservas de cada hito del T-15, de 6 a 35 días hábiles, dimensionadas para que la fecha P80 quede antes de la fecha límite. Una observación del CLIENTE consume esa reserva; sólo la del H1 (6 días) no alcanza para los diez días de subsanación. La **reserva de gestión** cubre lo no identificado: no forma parte de la línea base, la autoriza el Comité Ejecutivo, usarla exige actualizar la línea base y su monto va en la Oferta Económica.
 
 ## Condiciones antes de declarar la propuesta factible
 

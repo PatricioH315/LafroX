@@ -40,7 +40,10 @@ Emisión tributaria concentrada en ERP; si falta una guía o cambia la carga, po
 - Mitigación: Preemisión nocturna, conciliación carga/guía y ensayo de caída ERP con 96 camiones.
 - Contingencia: Conservar versión local probada y DTE válidos; Operaciones decide continuidad autorizada con ERP. No emitir documentos alternativos ni reemplazar despacho por papel.
 - Evidencia de cierre: Ensayo de 96 salidas sin interrupción, con caída ERP/carga modificada, sin pérdida ni duplicación.
-- Costo-beneficio técnico: el control es el paquete 4.1.2, procedimiento de reversión ensayado (80 HH, ya incluido en el T-15), que evita 168 HH de retrabajo si el evento ocurre; cociente 2,1 (Anexo 8.C, Tabla C.5).
+- Estrategia: Mitigar, porque LafroX controla la causa y el control reduce la probabilidad.
+- Efecto esperado y residual: al verificar el control, P baja de 4 (60 %) a 3 (40 %); el valor esperado baja de 101 HH a 67 HH residuales.
+- Riesgo secundario: preemitir guías de noche obliga a reemitirlas si la carga cambia, lo que la conciliación carga–guía debe cubrir.
+- Costo-beneficio técnico: el control es el paquete 4.1.2, procedimiento de reversión ensayado, de 80 HH ya incluidas en el T-15. Ahorra 34 HH de valor esperado; retorno 0,4: el retorno en HH es menor que 1 y el control se aplica por la regla del nivel crítico (SD8, sección 8.1.3) (Anexo 8.C, Tabla C.5).
 
 ### R8-02 — Doble reserva o custodia en la coordinación de reserva
 
@@ -55,7 +58,10 @@ Cortes/reintentos podrían confirmar sin acuse durable o repetir descuentos, alt
 - Mitigación: Probar concurrencia, UUID, idempotencia, época de autoridad y retención por lote/ubicación.
 - Contingencia: Bloquear confirmaciones ambiguas y conciliar colas con un único escritor; continuidad sólo sin degradar despacho.
 - Evidencia de cierre: AL-STOCK-01/AL-ACT-01 con cero doble descuento/custodia.
-- Costo-beneficio técnico: el control es el paquete 3.8.1, pruebas de integración, regresión e idempotencia (160 HH, ya incluido en el T-15), que evita 768 HH de retrabajo si el evento ocurre; cociente 4,8 (Anexo 8.C, Tabla C.5).
+- Estrategia: Mitigar, porque LafroX controla la causa y el control reduce la probabilidad.
+- Efecto esperado y residual: al verificar el control, P baja de 4 (60 %) a 3 (40 %); el valor esperado baja de 461 HH a 307 HH residuales.
+- Riesgo secundario: bloquear las confirmaciones ambiguas puede demorar pedidos durante un corte; se mide en AL-STOCK-01.
+- Costo-beneficio técnico: el control es el paquete 3.8.1, pruebas de integración, regresión e idempotencia, de 160 HH ya incluidas en el T-15. Ahorra 154 HH de valor esperado; retorno 0,96: el retorno en HH es menor que 1 y el control se aplica por la regla del nivel crítico (SD8, sección 8.1.3) (Anexo 8.C, Tabla C.5).
 
 ### R8-03 — CD no sostiene 24 horas sin WAN
 
@@ -70,7 +76,10 @@ Dependencias remotas ocultas podrían impedir recibir, preparar o despachar dura
 - Mitigación: Ensayar 24 horas sin WAN con procesos completos y reconciliación en Talca y en Concepción, con los tres caminos cortados.
 - Contingencia: Mantener autoridad local probada y aislar dependencia; no aprobar corte sin continuidad.
 - Evidencia de cierre: 24 horas de operación completa y drenaje sin diferencias inexplicadas.
-- Costo-beneficio técnico: el control es el paquete 6.6.3, prueba de autonomía de 24 horas (160 HH, ya incluido en el T-15), que evita 240 HH de retrabajo si el evento ocurre; cociente 1,5 (Anexo 8.C, Tabla C.5).
+- Estrategia: Mitigar, porque LafroX controla la causa y el control reduce la probabilidad.
+- Efecto esperado y residual: al verificar el control, P baja de 3 (40 %) a 2 (20 %); el valor esperado baja de 96 HH a 48 HH residuales.
+- Riesgo secundario: no se identifica.
+- Costo-beneficio técnico: el control es el paquete 6.6.3, prueba de autonomía de 24 horas, de 160 HH ya incluidas en el T-15. Ahorra 48 HH de valor esperado; retorno 0,3: el retorno en HH es menor que 1 y el control se aplica por la regla del nivel crítico (SD8, sección 8.1.3) (Anexo 8.C, Tabla C.5).
 
 ### R8-04 — Pérdida o duplicación tras 14 horas offline
 
@@ -85,7 +94,10 @@ Dispositivos/reintentos podrían perder pedidos, entregas o cobros al reconectar
 - Mitigación: Ensayar 14 horas offline, reinicio, UUID y reconciliación.
 - Contingencia: Retener registros durables y bloquear confirmaciones ambiguas sin doble digitación.
 - Evidencia de cierre: Registros/cobros completos y únicos al reconectar.
-- Costo-beneficio técnico: el control es el paquete 3.8.3, pruebas del perfil operacional (320 HH, ya incluido en el T-15), que evita 640 HH de retrabajo si el evento ocurre; cociente 2,0 (Anexo 8.C, Tabla C.5).
+- Estrategia: Mitigar, porque LafroX controla la causa y el control reduce la probabilidad.
+- Efecto esperado y residual: al verificar el control, P baja de 4 (60 %) a 3 (40 %); el valor esperado baja de 384 HH a 256 HH residuales.
+- Riesgo secundario: no se identifica.
+- Costo-beneficio técnico: el control es el paquete 3.8.3, pruebas del perfil operacional, de 320 HH ya incluidas en el T-15. Ahorra 128 HH de valor esperado; retorno 0,4: el retorno en HH es menor que 1 y el control se aplica por la regla del nivel crítico (SD8, sección 8.1.3) (Anexo 8.C, Tabla C.5).
 
 ### R8-05 — Pérdida del sitio supera RPO
 
@@ -100,7 +112,10 @@ Falla simultánea de comunicaciones seguida de destrucción del sitio podría el
 - Mitigación: Aplicar las medidas del SD4 (4.3.2.4): alarmas de retraso de replicación a los 5 y 15 min, reposición del enlace por el proveedor, preemisión de guías al cerrar la carga y conservación local en el NAS WORM de Talca.
 - Contingencia: Aplicar DR probado (imagen del WMS de Talca en Fargate de la región activa), recuperar los datos del NAS WORM y de la última copia remota, y registrar el incidente con la pérdida efectiva.
 - Evidencia de cierre: Conmutación real con RPO ≤ 15 min y RTO ≤ 4 h; continuidad de despacho por ensayo separado.
-- Costo-beneficio técnico: el control es el paquete 3.8.5, prueba de recuperación con conmutación real (320 HH, ya incluido en el T-15), que evita 278 HH de retrabajo si el evento ocurre; cociente 0,9 (Anexo 8.C, Tabla C.5); se mantiene porque protege el RPO obligatorio del RT-07.04.
+- Estrategia: Mitigar, porque LafroX controla la causa y el control reduce la probabilidad.
+- Efecto esperado y residual: al verificar el control, P baja de 3 (40 %) a 2 (20 %); el valor esperado baja de 111 HH a 56 HH residuales.
+- Riesgo secundario: no se identifica.
+- Costo-beneficio técnico: el control es el paquete 3.8.5, prueba de recuperación con conmutación real, de 320 HH ya incluidas en el T-15. Ahorra 56 HH de valor esperado; retorno 0,2: el retorno en HH es menor que 1 y el control se aplica por la regla del nivel crítico (SD8, sección 8.1.3) (Anexo 8.C, Tabla C.5).
 
 ### R8-06 — Carga y cola de la coordinación de reserva exceden capacidad
 
@@ -115,7 +130,10 @@ El SD4 (Anexo 4-I) supone cuatro mensajes por línea de pedido. Si muchas línea
 - Mitigación: Medir la proporción de líneas repartidas y de retenciones liberadas, y probar 1,5 veces el peak, el crecimiento y el drenaje.
 - Contingencia: Priorizar transacciones y limitar tráfico auxiliar; escalar capacidad por arquitectura sin reducir volumen obligatorio.
 - Evidencia de cierre: Carga/latencias y drenaje conformes a multiplicidad medida.
-- Costo-beneficio técnico: el control es el paquete 3.8.4, pruebas de carga y resiliencia (320 HH, ya incluido en el T-15), que evita 192 HH de retrabajo si el evento ocurre; cociente 0,6 (Anexo 8.C, Tabla C.5); se mantiene porque demuestra los tiempos obligatorios del RT-09.01 a 1,5 veces el peak.
+- Estrategia: Mitigar, porque LafroX controla la causa y el control reduce la probabilidad.
+- Efecto esperado y residual: al verificar el control, P baja de 4 (60 %) a 3 (40 %); el valor esperado baja de 115 HH a 77 HH residuales.
+- Riesgo secundario: no se identifica.
+- Costo-beneficio técnico: el control es el paquete 3.8.4, pruebas de carga y resiliencia, de 320 HH ya incluidas en el T-15. Ahorra 38 HH de valor esperado; retorno 0,1: el retorno en HH es menor que 1 y el control se aplica por la regla del nivel crítico (SD8, sección 8.1.3) (Anexo 8.C, Tabla C.5).
 
 ### R8-07 — Ataque o exposición de datos críticos
 
@@ -130,7 +148,10 @@ Móviles, portales y terceros podrían permitir acceso indebido, ransomware o al
 - Mitigación: Pruebas ofensivas, mínimo privilegio, aislamiento, registro y rotación de credenciales.
 - Contingencia: Contener acceso, preservar evidencia y recuperar entorno limpio con continuidad probada.
 - Evidencia de cierre: Sin defectos de seguridad críticos/altos abiertos y prueba de recuperación.
-- Costo-beneficio técnico: el control es el paquete 3.8.6, prueba de seguridad ofensiva de la Etapa 1 (160 HH, ya incluido en el T-15), que evita 288 HH de retrabajo si el evento ocurre; cociente 1,8 (Anexo 8.C, Tabla C.5).
+- Estrategia: Mitigar, porque LafroX controla la causa y el control reduce la probabilidad.
+- Efecto esperado y residual: al verificar el control, P baja de 4 (60 %) a 3 (40 %); el valor esperado baja de 173 HH a 115 HH residuales.
+- Riesgo secundario: no se identifica.
+- Costo-beneficio técnico: el control es el paquete 3.8.6, prueba de seguridad ofensiva de la Etapa 1, de 160 HH ya incluidas en el T-15. Ahorra 58 HH de valor esperado; retorno 0,4: el retorno en HH es menor que 1 y el control se aplica por la regla del nivel crítico (SD8, sección 8.1.3) (Anexo 8.C, Tabla C.5).
 
 ### R8-08 — Bloqueo por proveedor
 
@@ -145,7 +166,10 @@ Dependencias AWS, mapas, mensajería y ERP podrían impedir sustitución o extra
 - Mitigación: Inventariar dependencias, contratos y formatos; ensayar extracción/restauración.
 - Contingencia: Usar copias portables e interfaces desacopladas; alternativa mediante control de cambios.
 - Evidencia de cierre: Exportación/restauración reproducibles y documentación CLIENTE.
-- Costo-beneficio técnico: riesgo de nivel alto, tratado con los paquetes de su EDT ya incluidos en el T-15; no requiere ampliar horas y su cociente se calcula si sube a nivel crítico (SD8, sección 8.1.3).
+- Estrategia: Mitigar, porque LafroX controla la causa y el control reduce la probabilidad.
+- Efecto esperado y residual: al verificar el control, P baja de 3 (40 %) a 2 (20 %); el valor esperado baja de 352 HH a 176 HH residuales.
+- Riesgo secundario: no se identifica.
+- Costo-beneficio técnico: riesgo de nivel alto, tratado con los paquetes de su EDT ya incluidos en el T-15; su retorno se calcula si sube a nivel crítico (SD8, sección 8.1.3).
 
 ### R8-09 — Obsolescencia durante 56 meses
 
@@ -160,7 +184,10 @@ Versiones o dispositivos podrían quedar sin soporte e introducir vulnerabilidad
 - Mitigación: Inventariar versiones/soporte y ensayar compatibilidad en QA.
 - Contingencia: Aislar componente y migrar a versión probada en fechas permitidas.
 - Evidencia de cierre: Versiones soportadas y regresión sin degradación E1/E2.
-- Costo-beneficio técnico: el control es el paquete 8.2.5, actualización anual de los componentes de base (un año) (96 HH, ya incluido en el T-15), que evita 307 HH de retrabajo si el evento ocurre; cociente 3,2 (Anexo 8.C, Tabla C.5).
+- Estrategia: Mitigar, porque LafroX controla la causa y el control reduce la probabilidad.
+- Efecto esperado y residual: al verificar el control, P baja de 4 (60 %) a 3 (40 %); el valor esperado baja de 184 HH a 123 HH residuales.
+- Riesgo secundario: no se identifica.
+- Costo-beneficio técnico: el control es el paquete 8.2.5, actualización anual de los componentes de base (un año), de 96 HH ya incluidas en el T-15. Ahorra 61 HH de valor esperado; retorno 0,6: el retorno en HH es menor que 1 y el control se aplica por la regla del nivel crítico (SD8, sección 8.1.3) (Anexo 8.C, Tabla C.5).
 
 ### R8-10 — Interfaces no documentadas exigen retrabajo
 
@@ -175,7 +202,10 @@ El levantamiento podría descubrir formatos/restricciones no representados en pr
 - Mitigación: Capturar muestras/horarios y probar contratos y errores temprano.
 - Contingencia: Priorizar interfaz con capacidad adicional explícita; no usar reserva posterior a H5.
 - Evidencia de cierre: Contratos y pruebas positivas/negativas con volumen representativo.
-- Costo-beneficio técnico: el control es el paquete 1.2.3, especificación de las interfaces sin documentación (80 HH, ya incluido en el T-15), que evita 208 HH de retrabajo si el evento ocurre; cociente 2,6 (Anexo 8.C, Tabla C.5).
+- Estrategia: Mitigar, porque LafroX controla la causa y el control reduce la probabilidad.
+- Efecto esperado y residual: al verificar el control, P baja de 4 (60 %) a 3 (40 %); el valor esperado baja de 125 HH a 83 HH residuales.
+- Riesgo secundario: no se identifica.
+- Costo-beneficio técnico: el control es el paquete 1.2.3, especificación de las interfaces sin documentación, de 80 HH ya incluidas en el T-15. Ahorra 42 HH de valor esperado; retorno 0,5: el retorno en HH es menor que 1 y el control se aplica por la regla del nivel crítico (SD8, sección 8.1.3) (Anexo 8.C, Tabla C.5).
 
 ### R8-11 — Productividad o dotación inferior al modelo
 
@@ -190,7 +220,10 @@ Clases HH/128HH efectivas no medidas podrían subestimar esfuerzo y especialista
 - Mitigación: Refinar con el equipo la estimación por clase, trazada al T-12 y a las cantidades del T-11; asignar competencias y relevos; comprobar el peak de 69 (mes 15), las 48 personas simultáneas de desarrollo y la dotación declarada (T-15 §5.7); vigilar semanalmente la reserva de cada hito (T-15, Tabla 5.2).
 - Contingencia: Reordenar dentro de hitos y sustentar capacidad adicional; no prestar E1 a E2.
 - Evidencia de cierre: Asignaciones nominales y cero sobreasignación por subventana.
-- Costo-beneficio técnico: el control es el paquete 1.3.4, nivelación de recursos y frentes (80 HH, ya incluido en el T-15), que evita 6.792 HH de retrabajo si el evento ocurre; cociente 84,9 (Anexo 8.C, Tabla C.5).
+- Estrategia: Mitigar, porque LafroX controla la causa y el control reduce la probabilidad.
+- Efecto esperado y residual: al verificar el control, P baja de 4 (60 %) a 3 (40 %); el valor esperado baja de 4.075 HH a 2.717 HH residuales.
+- Riesgo secundario: no se identifica.
+- Costo-beneficio técnico: el control es el paquete 1.3.4, nivelación de recursos y frentes, de 80 HH ya incluidas en el T-15. Ahorra 1.358 HH de valor esperado; retorno 17,0: el control se justifica por su retorno (Anexo 8.C, Tabla C.5).
 
 ### R8-12 — Contrapartes CLIENTE no disponibles
 
@@ -205,7 +238,10 @@ TI de cuatro personas y gerencias podrían no atender decisiones, pruebas o acta
 - Mitigación: Reservar agenda, responsable/suplente y material por decisión.
 - Contingencia: Escalar a patrocinador y avanzar tareas independientes; silencio no es aceptación.
 - Evidencia de cierre: Decisiones/actas explícitas con responsables y fechas.
-- Costo-beneficio técnico: el control es el paquete 1.1.1, acta de constitución con la Contraparte Técnica (80 HH, ya incluido en el T-15), que evita 397 HH de retrabajo si el evento ocurre; cociente 5,0 (Anexo 8.C, Tabla C.5).
+- Estrategia: Escalar, porque la decisión depende del CLIENTE y excede la autoridad del JP.
+- Efecto esperado y residual: al verificar el control, P baja de 4 (60 %) a 3 (40 %); el valor esperado baja de 238 HH a 159 HH residuales.
+- Riesgo secundario: no se identifica.
+- Costo-beneficio técnico: el control es el paquete 1.1.1, acta de constitución con la Contraparte Técnica, de 80 HH ya incluidas en el T-15. Ahorra 79 HH de valor esperado; retorno 0,99: el retorno en HH es menor que 1 y el control se aplica por la regla del nivel crítico (SD8, sección 8.1.3) (Anexo 8.C, Tabla C.5).
 
 ### R8-13 — Conocimiento de ruteo no transferido
 
@@ -220,7 +256,10 @@ Ausencia o jubilación podría ocurrir antes de capturar/validar excepciones ope
 - Mitigación: Capturar reglas/excepciones y validar con planificador y suplente.
 - Contingencia: Suplente entrenado y reglas versionadas; evitar dependencia permanente de don Hugo.
 - Evidencia de cierre: Dos semanas sin planificador y OTIF conforme.
-- Costo-beneficio técnico: riesgo de nivel alto, tratado con los paquetes de su EDT ya incluidos en el T-15; no requiere ampliar horas y su cociente se calcula si sube a nivel crítico (SD8, sección 8.1.3).
+- Estrategia: Mitigar, porque LafroX controla la causa y el control reduce la probabilidad.
+- Efecto esperado y residual: al verificar el control, P baja de 3 (40 %) a 2 (20 %); el valor esperado baja de 83 HH a 42 HH residuales.
+- Riesgo secundario: no se identifica.
+- Costo-beneficio técnico: riesgo de nivel alto, tratado con los paquetes de su EDT ya incluidos en el T-15; su retorno se calcula si sube a nivel crítico (SD8, sección 8.1.3).
 
 ### R8-14 — E2 consume capacidad protegida E1
 
@@ -235,7 +274,10 @@ El solapamiento podría reasignar corrección E1, degradarla o retrasar E2.
 - Mitigación: Separar equipos y proteger 256 HH de DES y 128 HH de CAL al mes para la Etapa 1.
 - Contingencia: Restituir E1 y justificar ampliación E2; no duplicar reserva.
 - Evidencia de cierre: Equipos/capacidad independientes y métricas E1 sostenidas.
-- Costo-beneficio técnico: el control es el paquete 1.3.4, nivelación de recursos y frentes (80 HH, ya incluido en el T-15), que evita 1.680 HH de retrabajo si el evento ocurre; cociente 21,0 (Anexo 8.C, Tabla C.5); el control es el mismo de R8-11 y se cuenta una vez.
+- Estrategia: Evitar, porque separar los equipos elimina la causa, que es compartir personas entre etapas.
+- Efecto esperado y residual: al verificar el control, P baja de 4 (60 %) a 3 (40 %); el valor esperado baja de 1.008 HH a 672 HH residuales.
+- Riesgo secundario: separar los equipos de la Etapa 1 y la Etapa 2 exige más personas a la vez y alimenta R8-11.
+- Costo-beneficio técnico: el control es el paquete 1.3.4, nivelación de recursos y frentes, de 80 HH ya incluidas en el T-15; el paquete es el mismo de R8-11 y su costo se cuenta una vez. Ahorra 336 HH de valor esperado; retorno 4,2: el control se justifica por su retorno (Anexo 8.C, Tabla C.5).
 
 ### R8-15 — Perfiles EDI no certificados a tiempo
 
@@ -250,7 +292,10 @@ Dependencia de cadenas podría impedir activar todo el alcance antes de los 28 d
 - Mitigación: Acordar pruebas temprano y registrar todos los perfiles/aprobaciones.
 - Contingencia: Carga asistida es contingencia auxiliar, no EDI; recuperar sin excluir cadenas.
 - Evidencia de cierre: Aprobaciones por cadena y 100 % del alcance durante cuatro semanas.
-- Costo-beneficio técnico: el control es el paquete 2.1.4, diseño del intercambio con las cadenas (240 HH, ya incluido en el T-15), que evita 576 HH de retrabajo si el evento ocurre; cociente 2,4 (Anexo 8.C, Tabla C.5).
+- Estrategia: Mitigar, porque LafroX controla la causa y el control reduce la probabilidad.
+- Efecto esperado y residual: al verificar el control, P baja de 4 (60 %) a 3 (40 %); el valor esperado baja de 346 HH a 230 HH residuales.
+- Riesgo secundario: no se identifica.
+- Costo-beneficio técnico: el control es el paquete 2.1.4, diseño del intercambio con las cadenas, de 240 HH ya incluidas en el T-15. Ahorra 115 HH de valor esperado; retorno 0,5: el retorno en HH es menor que 1 y el control se aplica por la regla del nivel crítico (SD8, sección 8.1.3) (Anexo 8.C, Tabla C.5).
 
 ### R8-16 — Migración altera saldos o pierde lotes
 
@@ -265,7 +310,10 @@ Datos WMS/planillas con vacíos podrían trasladar existencias incorrectas e inv
 - Mitigación: Perfilar/conteo y dos ensayos; reconciliar SKU, lote y ubicación.
 - Contingencia: Retener corte y corregir origen; WMS sólo lectura, sin doble escritura.
 - Evidencia de cierre: Ensayos/corte con diferencias explicadas y trazabilidad completa.
-- Costo-beneficio técnico: el control es el paquete 3.7.1, perfilamiento y saneamiento de datos (480 HH, ya incluido en el T-15), que evita 720 HH de retrabajo si el evento ocurre; cociente 1,5 (Anexo 8.C, Tabla C.5).
+- Estrategia: Mitigar, porque LafroX controla la causa y el control reduce la probabilidad.
+- Efecto esperado y residual: al verificar el control, P baja de 4 (60 %) a 3 (40 %); el valor esperado baja de 432 HH a 288 HH residuales.
+- Riesgo secundario: no se identifica.
+- Costo-beneficio técnico: el control es el paquete 3.7.1, perfilamiento y saneamiento de datos, de 480 HH ya incluidas en el T-15. Ahorra 144 HH de valor esperado; retorno 0,3: el retorno en HH es menor que 1 y el control se aplica por la regla del nivel crítico (SD8, sección 8.1.3) (Anexo 8.C, Tabla C.5).
 
 ### R8-17 — Fecha efectiva elimina ventanas permitidas
 
@@ -280,7 +328,10 @@ Inicio distinto del supuesto podría coincidir con congelamientos o impedir la p
 - Mitigación: Convertir meses a fechas con feriados CLIENTE/prohibiciones.
 - Contingencia: Reordenar dentro de períodos; escalar incompatibilidad sin presumir prórroga.
 - Evidencia de cierre: Calendario compatible con hitos y evidencia completa.
-- Costo-beneficio técnico: el control es el paquete 1.1.3, acta de fecha de inicio y ventanas de paso a producción (80 HH, ya incluido en el T-15), que evita 72 HH de retrabajo si el evento ocurre; cociente 0,9 (Anexo 8.C, Tabla C.5); se mantiene porque protege los meses obligatorios del Art. 17°.
+- Estrategia: Escalar, porque la decisión depende del CLIENTE y excede la autoridad del JP.
+- Efecto esperado y residual: al verificar el control, P baja de 4 (60 %) a 3 (40 %); el valor esperado baja de 43 HH a 29 HH residuales.
+- Riesgo secundario: no se identifica.
+- Costo-beneficio técnico: el control es el paquete 1.1.3, acta de fecha de inicio y ventanas de paso a producción, de 80 HH ya incluidas en el T-15. Ahorra 14 HH de valor esperado; retorno 0,2: el retorno en HH es menor que 1 y el control se aplica por la regla del nivel crítico (SD8, sección 8.1.3) (Anexo 8.C, Tabla C.5).
 
 ### R8-18 — Marcha blanca no cumple seis condiciones
 
@@ -295,7 +346,10 @@ Defecto alto, volumen incompleto o diferencias podrían persistir en cierre e im
 - Mitigación: Activar todo antes de F−28 días y demostrar las seis condiciones simultáneas; en la Etapa 2, habilitar todo en agosto y demostrar la carga a 1,5 veces el peak con ambas etapas activas antes del H11 (3.9.3).
 - Contingencia: Extender a costo adjudicatario sin mover fases siguientes; no firmar cumplimiento ficticio.
 - Evidencia de cierre: 28 días completos, cero críticos/altos, conciliación, usuarios certificados y acta.
-- Costo-beneficio técnico: el control es el paquete 4.1.1, plan de olas, y 7.3.1, certificación de usuarios (240 HH, ya incluido en el T-15), que evita 2.464 HH de retrabajo si el evento ocurre; cociente 10,3 (Anexo 8.C, Tabla C.5).
+- Estrategia: Mitigar, porque LafroX controla la causa y el control reduce la probabilidad.
+- Efecto esperado y residual: al verificar el control, P baja de 4 (60 %) a 3 (40 %); el valor esperado baja de 1.478 HH a 986 HH residuales.
+- Riesgo secundario: extender una marcha blanca a costo del adjudicatario sin mover las fases siguientes presiona la capacidad del solapamiento (R8-14).
+- Costo-beneficio técnico: el control es el paquete 4.1.1, plan de olas, y 7.3.1, certificación de usuarios, de 240 HH ya incluidas en el T-15. Ahorra 493 HH de valor esperado; retorno 2,1: el control se justifica por su retorno (Anexo 8.C, Tabla C.5).
 
 ### R8-19 — Suministros o sala fuera de secuencia
 
@@ -310,7 +364,10 @@ La sala se instala desde el mes 3, por lo que el CLIENTE debe comprar lo especif
 - Mitigación: Acordar en el mes 1 el calendario de compra del CLIENTE (1.1.3 y 5.1.3); confirmar responsabilidades BTT/SD4; recibir antes de montar.
 - Contingencia: Recuperar suministro/instalación con capacidad específica; no activar equipos inexistentes.
 - Evidencia de cierre: Actas y pruebas en secuencia sala, racks, borde y terreno.
-- Costo-beneficio técnico: el control es el paquete 5.1.2, especificación de compra, y 5.1.3, actas de recepción (160 HH, ya incluido en el T-15), que evita 792 HH de retrabajo si el evento ocurre; cociente 5,0 (Anexo 8.C, Tabla C.5).
+- Estrategia: Mitigar, porque LafroX controla la causa y el control reduce la probabilidad.
+- Efecto esperado y residual: al verificar el control, P baja de 3 (40 %) a 2 (20 %); el valor esperado baja de 317 HH a 158 HH residuales.
+- Riesgo secundario: no se identifica.
+- Costo-beneficio técnico: el control es el paquete 5.1.2, especificación de compra, y 5.1.3, actas de recepción, de 160 HH ya incluidas en el T-15. Ahorra 158 HH de valor esperado; retorno 0,99: el retorno en HH es menor que 1 y el control se aplica por la regla del nivel crítico (SD8, sección 8.1.3) (Anexo 8.C, Tabla C.5).
 
 ### R8-20 — Rotación y resistencia reducen adopción
 
@@ -325,7 +382,10 @@ Rotación 38 % de preparación y personal antiguo podrían dejar turnos sin usua
 - Mitigación: Tutor por turno, certificación en puesto y acompañamiento con relevos.
 - Contingencia: Retener/restaurar acompañamiento y repetir formación sin detener rutas.
 - Evidencia de cierre: Usuarios por perfil/turno certificados y uso sostenido.
-- Costo-beneficio técnico: el control es el paquete 7.3.1, certificación de usuarios de la Etapa 1 (160 HH, ya incluido en el T-15), que evita 250 HH de retrabajo si el evento ocurre; cociente 1,6 (Anexo 8.C, Tabla C.5); el control es compartido con R8-18 y se cuenta una vez.
+- Estrategia: Mitigar, porque LafroX controla la causa y el control reduce la probabilidad.
+- Efecto esperado y residual: al verificar el control, P baja de 4 (60 %) a 3 (40 %); el valor esperado baja de 150 HH a 100 HH residuales.
+- Riesgo secundario: no se identifica.
+- Costo-beneficio técnico: el control es el paquete 7.3.1, certificación de usuarios de la Etapa 1, de 160 HH ya incluidas en el T-15; el paquete es el mismo de R8-18 y su costo se cuenta una vez. Ahorra 50 HH de valor esperado; retorno 0,3: el retorno en HH es menor que 1 y el control se aplica por la regla del nivel crítico (SD8, sección 8.1.3) (Anexo 8.C, Tabla C.5).
 
 ### R8-21 — Transportistas o sindicato rechazan dispositivos
 
@@ -340,7 +400,10 @@ Vehículos externos y objeciones al GPS podrían impedir sensores o captura en r
 - Mitigación: Acordar instalación, uso, finalidad y acceso con CLIENTE, terceros y sindicato.
 - Contingencia: Escalar acuerdos; atención auxiliar no reemplaza registro térmico ni excluye rutas.
 - Evidencia de cierre: Acuerdos/pruebas en toda flota y rutas requeridas.
-- Costo-beneficio técnico: riesgo de nivel alto, tratado con los paquetes de su EDT ya incluidos en el T-15; no requiere ampliar horas y su cociente se calcula si sube a nivel crítico (SD8, sección 8.1.3).
+- Estrategia: Mitigar, porque LafroX controla la causa y el control reduce la probabilidad.
+- Efecto esperado y residual: al verificar el control, P baja de 3 (40 %) a 2 (20 %); el valor esperado baja de 90 HH a 45 HH residuales.
+- Riesgo secundario: no se identifica.
+- Costo-beneficio técnico: riesgo de nivel alto, tratado con los paquetes de su EDT ya incluidos en el T-15; su retorno se calcula si sube a nivel crítico (SD8, sección 8.1.3).
 
 ### R8-22 — Mesa cubre horario pero no SLA
 
@@ -355,7 +418,10 @@ Las posiciones de mesa dimensionadas con Erlang C podrían no bastar si la deman
 - Mitigación: Medir la demanda por intervalo y los agentes y competencias; 04:00–22:00 de lunes a sábado y 24×7 en peaks y críticos.
 - Contingencia: Activar agentes adicionales verificados y guardia especialista.
 - Evidencia de cierre: Prueba de demanda/turnos con los tres SLA y horarios.
-- Costo-beneficio técnico: sin paquete de control propio; la medición por contacto va dentro de la mesa (8.1.2), y la contingencia, el escenario C-05 de 442 HH al mes, sólo se activa si la demanda medida supera 2.200 contactos al mes (Anexo 8.C, Tabla C.5).
+- Estrategia: Aceptar activamente, porque no hay control previo rentable; se reserva la contingencia con disparador.
+- Efecto esperado y residual: P se mantiene en 4 (60 %); el valor esperado de 3.182 HH queda como residual, cubierto por la reserva de contingencia y activado por el disparador.
+- Riesgo secundario: no se identifica.
+- Costo-beneficio técnico: sin control previo con horas propias; la medición por contacto va dentro de la mesa (8.1.2), y la contingencia, el escenario C-05 de 442 HH al mes, sólo se gasta si la demanda medida supera 2.200 contactos al mes.
 
 ### R8-23 — Frío o sensores no producen evidencia íntegra
 
@@ -370,7 +436,10 @@ Las posiciones de mesa dimensionadas con Erlang C podrían no bastar si la deman
 - Mitigación: Probar autonomía, almacenamiento/calibración y asociación sensor, lote y tiempo.
 - Contingencia: Calidad retiene lote sin evidencia y utiliza reemplazo probado.
 - Evidencia de cierre: Serie completa y asociada al lote; ensayo a −22 °C y sin señal.
-- Costo-beneficio técnico: el control es el paquete 6.5.3, sensores y gateways instalados y calibrados (160 HH, ya incluido en el T-15), que evita 672 HH de retrabajo si el evento ocurre; cociente 4,2 (Anexo 8.C, Tabla C.5).
+- Estrategia: Mitigar, porque LafroX controla la causa y el control reduce la probabilidad.
+- Efecto esperado y residual: al verificar el control, P baja de 4 (60 %) a 3 (40 %); el valor esperado baja de 403 HH a 269 HH residuales.
+- Riesgo secundario: no se identifica.
+- Costo-beneficio técnico: el control es el paquete 6.5.3, sensores y gateways instalados y calibrados, de 160 HH ya incluidas en el T-15. Ahorra 134 HH de valor esperado; retorno 0,8: el retorno en HH es menor que 1 y el control se aplica por la regla del nivel crítico (SD8, sección 8.1.3) (Anexo 8.C, Tabla C.5).
 
 ### R8-24 — Filtración en telemetría o reproducción
 
@@ -385,7 +454,10 @@ Datos de ubicación, clientes y cobros podrían circular sin minimización en tr
 - Mitigación: Enmascarar, controlar acceso/retención y revisar conjuntos.
 - Contingencia: Suspender conjunto afectado, contener y producir muestra protegida.
 - Evidencia de cierre: Inspección de datos/permisos sin exposición indebida.
-- Costo-beneficio técnico: el control es el paquete 3.8.6, prueba de seguridad ofensiva de la Etapa 1 (160 HH, ya incluido en el T-15), que evita 480 HH de retrabajo si el evento ocurre; cociente 3,0 (Anexo 8.C, Tabla C.5); el control es compartido con R8-07 y se cuenta una vez.
+- Estrategia: Mitigar, porque LafroX controla la causa y el control reduce la probabilidad.
+- Efecto esperado y residual: al verificar el control, P baja de 3 (40 %) a 2 (20 %); el valor esperado baja de 192 HH a 96 HH residuales.
+- Riesgo secundario: no se identifica.
+- Costo-beneficio técnico: el control es el paquete 3.8.6, prueba de seguridad ofensiva de la Etapa 1, de 160 HH ya incluidas en el T-15; el paquete es el mismo de R8-07 y su costo se cuenta una vez. Ahorra 96 HH de valor esperado; retorno 0,6: el retorno en HH es menor que 1 y el control se aplica por la regla del nivel crítico (SD8, sección 8.1.3) (Anexo 8.C, Tabla C.5).
 
 ### R8-25 — INN-01 no logra seguimiento posentrega
 
@@ -400,7 +472,10 @@ Los avisos podrían no confirmarse en la visita, porque el ritmo de reposición 
 - Mitigación: Piloto asistido; no liberar sin cumplir I-01A; mostrar la confianza de cada aviso y confirmar el saldo en la visita; catálogo aprobado como condición de activación; sin exigir conexión al almacenero.
 - Contingencia: Degradar a aviso solo por vida útil remanente del lote, sin estimar el ritmo; mantener trazabilidad lote/entrega y escalar a Comercial.
 - Evidencia de cierre: Resultado frente a objetivo previo y decisión de adopción.
-- Costo-beneficio técnico: riesgo de nivel alto, tratado con los paquetes de su EDT ya incluidos en el T-15; no requiere ampliar horas y su cociente se calcula si sube a nivel crítico (SD8, sección 8.1.3).
+- Estrategia: Mitigar, porque LafroX controla la causa y el control reduce la probabilidad.
+- Efecto esperado y residual: al verificar el control, P baja de 4 (60 %) a 3 (40 %); el valor esperado baja de 67 HH a 45 HH residuales.
+- Riesgo secundario: no se identifica.
+- Costo-beneficio técnico: riesgo de nivel alto, tratado con los paquetes de su EDT ya incluidos en el T-15; su retorno se calcula si sube a nivel crítico (SD8, sección 8.1.3).
 
 ### R8-26 — INN-02 no reproduce fallas relevantes
 
@@ -415,7 +490,10 @@ Registros incompletos podrían impedir reproducir incidentes offline y diagnosti
 - Mitigación: Ensayar corte, reinicio y reintento con conjuntos protegidos; cupo de tamaño y frecuencia de captura.
 - Contingencia: Conservar diagnóstico y regresión base con trazas protegidas.
 - Evidencia de cierre: Reproducción y diagnóstico contrastados.
-- Costo-beneficio técnico: riesgo de nivel alto, tratado con los paquetes de su EDT ya incluidos en el T-15; no requiere ampliar horas y su cociente se calcula si sube a nivel crítico (SD8, sección 8.1.3).
+- Estrategia: Mitigar, porque LafroX controla la causa y el control reduce la probabilidad.
+- Efecto esperado y residual: al verificar el control, P baja de 3 (40 %) a 2 (20 %); el valor esperado baja de 92 HH a 46 HH residuales.
+- Riesgo secundario: capturar evidencia de terreno crea el riesgo de filtración R8-24.
+- Costo-beneficio técnico: riesgo de nivel alto, tratado con los paquetes de su EDT ya incluidos en el T-15; su retorno se calcula si sube a nivel crítico (SD8, sección 8.1.3).
 
 ### R8-27 — INN-03 estima vida remanente insegura
 
@@ -430,7 +508,10 @@ Historia incompleta o mala calibración podría sugerir una vida útil no segura
 - Mitigación: Validar con Calidad y regla conservadora; no ampliar vencimiento por inferencia; la regla graduada y el bloqueo de B-02 no cambian.
 - Contingencia: Deshabilitar recomendación y mantener vencimiento/control sanitario.
 - Evidencia de cierre: Validación Calidad con trazabilidad modelo/datos.
-- Costo-beneficio técnico: el control es el paquete 3.10.3.4, validación de INN-03 con Calidad (240 HH, ya incluido en el T-15), que evita 317 HH de retrabajo si el evento ocurre; cociente 1,3 (Anexo 8.C, Tabla C.5).
+- Estrategia: Mitigar, porque LafroX controla la causa y el control reduce la probabilidad.
+- Efecto esperado y residual: al verificar el control, P baja de 4 (60 %) a 3 (40 %); el valor esperado baja de 190 HH a 127 HH residuales.
+- Riesgo secundario: Operaciones podría leer la estimación como permiso para relajar la regla RNG-04.
+- Costo-beneficio técnico: el control es el paquete 3.10.3.4, validación de INN-03 con Calidad, de 240 HH ya incluidas en el T-15. Ahorra 63 HH de valor esperado; retorno 0,3: el retorno en HH es menor que 1 y el control se aplica por la regla del nivel crítico (SD8, sección 8.1.3) (Anexo 8.C, Tabla C.5).
 
 ### R8-28 — INN-04 medición variable genera disputa
 
@@ -445,7 +526,10 @@ Costo de servir incompleto podría distorsionar línea base/liquidación variabl
 - Mitigación: Acordar fórmula, datos y auditoría; valores sólo en Oferta Económica.
 - Contingencia: Mecanismo contractual de resolución y corrección; sin modificar SLA ni inventar tarifa.
 - Evidencia de cierre: Línea base y tres liquidaciones sombra reconciliadas.
-- Costo-beneficio técnico: riesgo de nivel alto, tratado con los paquetes de su EDT ya incluidos en el T-15; no requiere ampliar horas y su cociente se calcula si sube a nivel crítico (SD8, sección 8.1.3).
+- Estrategia: Mitigar, porque LafroX controla la causa y el control reduce la probabilidad.
+- Efecto esperado y residual: al verificar el control, P baja de 3 (40 %) a 2 (20 %); el valor esperado baja de 28 HH a 14 HH residuales.
+- Riesgo secundario: no se identifica.
+- Costo-beneficio técnico: riesgo de nivel alto, tratado con los paquetes de su EDT ya incluidos en el T-15; su retorno se calcula si sube a nivel crítico (SD8, sección 8.1.3).
 
 ### R8-29 — INN-05 baja adopción de hoja del almacenero
 
@@ -460,7 +544,10 @@ La hoja podría no ser comprensible o útil y quedar sin uso. Causa secundaria: 
 - Mitigación: Co-diseño/piloto asistido o papel; preservar preventista y efectivo; umbral mínimo de locales y supresión de celdas en el bloque 4, con revisión legal previa.
 - Contingencia: Retirar mejora opcional mediante gobierno manteniendo compromisos y canal obligatorio.
 - Evidencia de cierre: Utilidad/uso contrastados y decisión documentada.
-- Costo-beneficio técnico: riesgo de nivel alto, tratado con los paquetes de su EDT ya incluidos en el T-15; no requiere ampliar horas y su cociente se calcula si sube a nivel crítico (SD8, sección 8.1.3).
+- Estrategia: Mitigar, porque LafroX controla la causa y el control reduce la probabilidad.
+- Efecto esperado y residual: al verificar el control, P baja de 4 (60 %) a 3 (40 %); el valor esperado baja de 67 HH a 45 HH residuales.
+- Riesgo secundario: no se identifica.
+- Costo-beneficio técnico: riesgo de nivel alto, tratado con los paquetes de su EDT ya incluidos en el T-15; su retorno se calcula si sube a nivel crítico (SD8, sección 8.1.3).
 
 ### R8-30 — Crecimiento o nuevo CD supera parametrización
 
@@ -475,7 +562,10 @@ CD eventual en 2030 o crecimiento distinto por sitio podría superar capacidades
 - Mitigación: Contrastar distribución real y probar límites de plataforma.
 - Contingencia: Preparar ampliación con control de cambios; no declarar sitio incierto contratado.
 - Evidencia de cierre: Capacidad ensayada y alcance de nuevo sitio acordado.
-- Costo-beneficio técnico: riesgo de nivel alto, tratado con los paquetes de su EDT ya incluidos en el T-15; no requiere ampliar horas y su cociente se calcula si sube a nivel crítico (SD8, sección 8.1.3).
+- Estrategia: Mitigar, porque LafroX controla la causa y el control reduce la probabilidad.
+- Efecto esperado y residual: al verificar el control, P baja de 3 (40 %) a 2 (20 %); el valor esperado baja de 133 HH a 67 HH residuales.
+- Riesgo secundario: no se identifica.
+- Costo-beneficio técnico: riesgo de nivel alto, tratado con los paquetes de su EDT ya incluidos en el T-15; su retorno se calcula si sube a nivel crítico (SD8, sección 8.1.3).
 
 ### R8-31 — Observaciones de revisión obligan a repetir certificación paralela
 
@@ -490,7 +580,10 @@ La certificación de cada etapa empieza al terminar la prueba de integración, m
 - Mitigación: Entregar por incrementos (T-15 §5.5) para que la revisión final cubra sólo el último; ejecutar primero los casos que no dependen de lo observable en la revisión.
 - Contingencia: Repetir sólo los casos afectados, con cargo a la reserva del hito y a la contingencia de calidad.
 - Evidencia de cierre: Acta del H4/H9 sin observaciones abiertas sobre casos certificados.
-- Costo-beneficio técnico: riesgo de nivel alto, tratado con los paquetes de su EDT ya incluidos en el T-15; no requiere ampliar horas y su cociente se calcula si sube a nivel crítico (SD8, sección 8.1.3).
+- Estrategia: Mitigar, porque LafroX controla la causa y el control reduce la probabilidad.
+- Efecto esperado y residual: al verificar el control, P baja de 3 (40 %) a 2 (20 %); el valor esperado baja de 154 HH a 77 HH residuales.
+- Riesgo secundario: ninguno nuevo; R8-31 es a su vez el riesgo secundario de certificar en paralelo a la revisión del CLIENTE.
+- Costo-beneficio técnico: riesgo de nivel alto, tratado con los paquetes de su EDT ya incluidos en el T-15; su retorno se calcula si sube a nivel crítico (SD8, sección 8.1.3).
 
 ### R8-32 — Evaluadores subcontratados no disponibles para las certificaciones
 
@@ -505,7 +598,10 @@ La reserva ante el H5 y el H10 supone reforzar el equipo de calidad con evaluado
 - Mitigación: Contratar con anticipación, con perfiles y disponibilidad por quincena; inducir a los evaluadores con los casos del T-12 durante la marcha de QA.
 - Contingencia: Reasignar evaluadores de la División de Calidad desde otros contratos o priorizar los casos críticos de aceptación.
 - Evidencia de cierre: Evaluadores asignados e inducidos al inicio de cada certificación.
-- Costo-beneficio técnico: riesgo de nivel alto, tratado con los paquetes de su EDT ya incluidos en el T-15; no requiere ampliar horas y su cociente se calcula si sube a nivel crítico (SD8, sección 8.1.3).
+- Estrategia: Mitigar, porque LafroX controla la causa y el control reduce la probabilidad.
+- Efecto esperado y residual: al verificar el control, P baja de 3 (40 %) a 2 (20 %); el valor esperado baja de 205 HH a 102 HH residuales.
+- Riesgo secundario: ninguno nuevo; R8-32 es a su vez el riesgo secundario de reforzar la calidad con evaluadores subcontratados.
+- Costo-beneficio técnico: riesgo de nivel alto, tratado con los paquetes de su EDT ya incluidos en el T-15; su retorno se calcula si sube a nivel crítico (SD8, sección 8.1.3).
 
 ## Anexo 8.B — FMEA y exposición inicial
 
@@ -619,36 +715,36 @@ Los porcentajes 25 % y 50 % son variaciones hipotéticas de esfuerzo, no probabi
 
 ### C.2 Comparación de prevención y retrabajo
 
-El cociente de cada riesgo crítico divide el retrabajo que el control evita si el evento ocurre, que es el impacto en HH de la Tabla B.2, por las HH del paquete que ejecuta el control en el Formulario T-15. Un cociente mayor que 1 indica que el control cuesta menos que el retrabajo que evita. Son cocientes de esfuerzo, sin retorno monetario, y un control incluido en el T-15 no vuelve a cargarse como reserva. Un mismo paquete que controla dos riesgos se cuenta una vez. La Tabla C.5 presenta los 22 riesgos críticos.
+Una respuesta se justifica si reduce el valor esperado más de lo que cuesta (PMI, 2017, pp. 442–443). El ahorro esperado de cada riesgo crítico es la diferencia entre su valor esperado inicial y el residual, con la probabilidad un nivel más baja tras verificar el control (Anexo 8.A). El retorno divide ese ahorro por las HH del paquete que ejecuta el control en el Formulario T-15. Un control incluido en el T-15 no vuelve a cargarse como reserva, y un mismo paquete que controla dos riesgos se cuenta una vez. La Tabla C.5 presenta los 22 riesgos críticos.
 
 **Tabla C.5 — Costo-beneficio del control de cada riesgo crítico. Fuente: elaboración propia a partir de la Tabla B.2 y del Formulario T-15, sección 4.2.**
 
-| ID | Paquete de control | HH del control | Impacto evitado (HH) | Cociente |
-| --- | --- | --- | --- | --- |
-| R8-01 | 4.1.2, procedimiento de reversión ensayado | 80 | 168 | 2,1 |
-| R8-02 | 3.8.1, pruebas de integración, regresión e idempotencia | 160 | 768 | 4,8 |
-| R8-03 | 6.6.3, prueba de autonomía de 24 horas | 160 | 240 | 1,5 |
-| R8-04 | 3.8.3, pruebas del perfil operacional | 320 | 640 | 2,0 |
-| R8-05 | 3.8.5, prueba de recuperación con conmutación real | 320 | 278 | 0,9 |
-| R8-06 | 3.8.4, pruebas de carga y resiliencia | 320 | 192 | 0,6 |
-| R8-07 | 3.8.6, prueba de seguridad ofensiva de la Etapa 1 | 160 | 288 | 1,8 |
-| R8-09 | 8.2.5, actualización anual de los componentes de base (un año) | 96 | 307 | 3,2 |
-| R8-10 | 1.2.3, especificación de las interfaces sin documentación | 80 | 208 | 2,6 |
-| R8-11 | 1.3.4, nivelación de recursos y frentes | 80 | 6.792 | 84,9 |
-| R8-12 | 1.1.1, acta de constitución con la Contraparte Técnica | 80 | 397 | 5,0 |
-| R8-14 | 1.3.4, nivelación de recursos y frentes | 80 | 1.680 | 21,0 |
-| R8-15 | 2.1.4, diseño del intercambio con las cadenas | 240 | 576 | 2,4 |
-| R8-16 | 3.7.1, perfilamiento y saneamiento de datos | 480 | 720 | 1,5 |
-| R8-17 | 1.1.3, acta de fecha de inicio y ventanas de paso a producción | 80 | 72 | 0,9 |
-| R8-18 | 4.1.1, plan de olas, y 7.3.1, certificación de usuarios | 240 | 2.464 | 10,3 |
-| R8-19 | 5.1.2, especificación de compra, y 5.1.3, actas de recepción | 160 | 792 | 5,0 |
-| R8-20 | 7.3.1, certificación de usuarios de la Etapa 1 | 160 | 250 | 1,6 |
-| R8-22 | Sin paquete propio; medición dentro de 8.1.2 | — | 5.304 (C-05) | — |
-| R8-23 | 6.5.3, sensores y gateways instalados y calibrados | 160 | 672 | 4,2 |
-| R8-24 | 3.8.6, prueba de seguridad ofensiva de la Etapa 1 | 160 | 480 | 3,0 |
-| R8-27 | 3.10.3.4, validación de INN-03 con Calidad | 240 | 317 | 1,3 |
+| ID | Paquete de control | HH del control | VE inicial (HH) | VE residual (HH) | Ahorro esperado (HH) | Retorno |
+| --- | --- | --- | --- | --- | --- | --- |
+| R8-01 | 4.1.2, procedimiento de reversión ensayado | 80 | 101 | 67 | 34 | 0,4 |
+| R8-02 | 3.8.1, pruebas de integración, regresión e idempotencia | 160 | 461 | 307 | 154 | 0,96 |
+| R8-03 | 6.6.3, prueba de autonomía de 24 horas | 160 | 96 | 48 | 48 | 0,3 |
+| R8-04 | 3.8.3, pruebas del perfil operacional | 320 | 384 | 256 | 128 | 0,4 |
+| R8-05 | 3.8.5, prueba de recuperación con conmutación real | 320 | 111 | 56 | 56 | 0,2 |
+| R8-06 | 3.8.4, pruebas de carga y resiliencia | 320 | 115 | 77 | 38 | 0,1 |
+| R8-07 | 3.8.6, prueba de seguridad ofensiva de la Etapa 1 | 160 | 173 | 115 | 58 | 0,4 |
+| R8-09 | 8.2.5, actualización anual de los componentes de base (un año) | 96 | 184 | 123 | 61 | 0,6 |
+| R8-10 | 1.2.3, especificación de las interfaces sin documentación | 80 | 125 | 83 | 42 | 0,5 |
+| R8-11 | 1.3.4, nivelación de recursos y frentes | 80 | 4.075 | 2.717 | 1.358 | 17,0 |
+| R8-12 | 1.1.1, acta de constitución con la Contraparte Técnica | 80 | 238 | 159 | 79 | 0,99 |
+| R8-14 | 1.3.4, nivelación de recursos y frentes | 80 | 1.008 | 672 | 336 | 4,2 |
+| R8-15 | 2.1.4, diseño del intercambio con las cadenas | 240 | 346 | 230 | 115 | 0,5 |
+| R8-16 | 3.7.1, perfilamiento y saneamiento de datos | 480 | 432 | 288 | 144 | 0,3 |
+| R8-17 | 1.1.3, acta de fecha de inicio y ventanas de paso a producción | 80 | 43 | 29 | 14 | 0,2 |
+| R8-18 | 4.1.1, plan de olas, y 7.3.1, certificación de usuarios | 240 | 1.478 | 986 | 493 | 2,1 |
+| R8-19 | 5.1.2, especificación de compra, y 5.1.3, actas de recepción | 160 | 317 | 158 | 158 | 0,99 |
+| R8-20 | 7.3.1, certificación de usuarios de la Etapa 1 | 160 | 150 | 100 | 50 | 0,3 |
+| R8-22 | Sin control previo; medición dentro de 8.1.2 | — | 3.182 | 3.182 | 0 | — |
+| R8-23 | 6.5.3, sensores y gateways instalados y calibrados | 160 | 403 | 269 | 134 | 0,8 |
+| R8-24 | 3.8.6, prueba de seguridad ofensiva de la Etapa 1 | 160 | 192 | 96 | 96 | 0,6 |
+| R8-27 | 3.10.3.4, validación de INN-03 con Calidad | 240 | 190 | 127 | 63 | 0,3 |
 
-En 18 de los 21 riesgos con paquete de control el cociente supera 1, entre 1,3 (R8-27) y 84,9 (R8-11). Tres quedan bajo 1 y se mantienen porque protegen requisitos obligatorios: R8-05 (0,9, RPO del RT-07.04), R8-06 (0,6, tiempos del RT-09.01 a 1,5 veces el peak) y R8-17 (0,9, meses del Art. 17°). R8-22 no tiene un control propio que cueste horas antes del evento: su contingencia C-05 se activa sólo con la demanda medida.
+El retorno supera 1 en 3 de los 21 controles: R8-11 (17,0), R8-14 (4,2), R8-18 (2,1). En los otros 18 el ahorro medido sólo en retrabajo es menor que el costo del control, entre 0,1 y 0,99. La razón es que la Tabla B.2 mide el impacto como HH de retrabajo en los paquetes afectados, y no incluye la detención del despacho, la sanción sanitaria, el incumplimiento de un hito ni la pérdida de datos, que son las consecuencias que dan a esos riesgos impacto 4 o 5. Para ellos rige la regla del nivel crítico del SD8, sección 8.1.3: un riesgo crítico se trata aunque su retorno en HH sea menor que 1. Además, la mayoría de esos controles son pruebas, actas o planes que las Bases exigen como entregables. R8-22 se acepta activamente: no gasta horas antes del evento y su contingencia C-05 se activa sólo con la demanda medida.
 
 En despacho, seguridad, sanidad y RPO, la conformidad es obligatoria; las HH ayudan a escoger alternativas conformes. Retirar una innovación que no rinde exige gobierno y preservar compromisos contratados; no elimina funciones obligatorias.
 
@@ -702,8 +798,8 @@ La tabla siguiente fija las reservas, quién autoriza su uso y cuándo se progra
 | Cierre/estabilización implementación meses 21–22 | 2.774,54 HH | Separado de operación en T-15; no añadir de nuevo |
 | Reserva de cronograma | Reserva entre la entrega y la fecha límite de cada hito (T-15, Tabla 5.2), dimensionada para que la fecha P80 simulada quede antes de la fecha límite (Tabla C.3) | Se consume sólo por desviaciones registradas; no se presta entre hitos |
 | Últimas cuatro semanas de marcha blanca | 0 días disponibles como reserva | Evidencia obligatoria, no tiempo para completar alcance |
-| Reserva de contingencia | 15.076 HH, suma de los valores esperados de la Tabla B.2, repartidas por período en el SD8, sección 8.3.2. La capacidad protegida E1 absorbe sólo R8-02, R8-04 y R8-14 (1.853 HH); la contingencia adicional es de 13.223 HH | Cubre riesgos identificados. Los escenarios C-01 a C-05 son usos típicos: corrección E1 (400 HH), retrabajo EDI (400 HH), extensión de marcha blanca (2.464 HH por cuatro semanas) y tercer agente de mesa (442 HH/mes). Cada uso se registra contra el riesgo que lo origina; no se presta entre etapas |
-| Reserva de gestión | Riesgos no identificados; no se expresa en HH en esta oferta técnica | No forma parte de la línea base; la autoriza el Comité Ejecutivo; su monto se define en la Oferta Económica (Art. 50.2) |
+| Reserva de contingencia | 15.076 HH, suma de los valores esperados de la Tabla B.2, repartidas por período en el SD8, sección 8.3.2. La capacidad protegida E1 absorbe sólo R8-02, R8-04 y R8-14 (1.853 HH); la contingencia adicional es de 13.223 HH | Cubre riesgos identificados y forma parte de la línea base. La usa el JP con el riesgo declarado, y se libera cuando el riesgo se cierra sin ocurrir o cuando la verificación de su control baja el valor esperado al residual; si todos los controles se verifican, se liberan 4.273 HH y quedan 10.803 HH. Los escenarios C-01 a C-05 son usos típicos: corrección E1 (400 HH), retrabajo EDI (400 HH), extensión de marcha blanca (2.464 HH por cuatro semanas) y tercer agente de mesa (442 HH/mes). Cada uso se registra contra el riesgo que lo origina; no se presta entre etapas |
+| Reserva de gestión | Riesgos no identificados; no se expresa en HH en esta oferta técnica | No forma parte de la línea base; la autoriza el Comité Ejecutivo y usarla exige actualizar la línea base; su monto se define en la Oferta Económica (Art. 50.2) |
 
 Por evento se registra ID relacionado, mes/subventana, perfil, HH autorizadas/consumidas, remanente y efecto en hitos. Si R8-02 y R8-04 representan el mismo defecto, comparten cargo. La ampliación de marcha blanca se rige por el Art. 17.3 (Distribuidora Puelche S.A., 2026a) a costo del adjudicatario y sin mover fases siguientes; ninguna reserva lo deroga.
 
@@ -752,7 +848,7 @@ La oportunidad se evalúa con una escala de beneficio simétrica a la de impacto
 | 4 | Protege un hito, un SLA o un alcance obligatorio |
 | 5 | Evita detener el despacho crítico o comprometer seguridad, datos o sanidad |
 
-O8-01 — Oportunidad de diagnóstico: si los casos protegidos INN-02 representan incidentes reales, podrían permitir resolver fallas equivalentes con menos retrabajo. P ordinal 3, porque los casos protegidos cubren sólo los incidentes de corte y reintento; beneficio ordinal 3, porque un caso reproducible reduce el retrabajo de diagnóstico que hoy consumiría contingencia; puntuación de oportunidad 9, separada de exposición de amenazas. La evidencia de comparación son las HH de diagnóstico de incidentes equivalentes antes y después de usar los casos. CAL compara HH antes/después de casos equivalentes durante validación meses 11–15 y operación. Disparador: incidente equivalente con reproducción disponible. Acción: reutilizar casos dentro de 3.10.2/8.3.1. Si no se verifica ahorro, mantener diagnóstico base sin descontar HH del T-15. No se suma esta oportunidad como reserva.
+O8-01 — Oportunidad de diagnóstico: si los casos protegidos INN-02 representan incidentes reales, podrían permitir resolver fallas equivalentes con menos retrabajo. P ordinal 3, porque los casos protegidos cubren sólo los incidentes de corte y reintento; beneficio ordinal 3, porque un caso reproducible reduce el retrabajo de diagnóstico que hoy consumiría contingencia; puntuación de oportunidad 9, separada de exposición de amenazas. Estrategia: mejorar, porque la reutilización de los casos protegidos aumenta su probabilidad de ocurrir (PMI, 2017, p. 444). La evidencia de comparación son las HH de diagnóstico de incidentes equivalentes antes y después de usar los casos. CAL compara HH antes/después de casos equivalentes durante validación meses 11–15 y operación. Disparador: incidente equivalente con reproducción disponible. Acción: reutilizar casos dentro de 3.10.2/8.3.1. Si no se verifica ahorro, mantener diagnóstico base sin descontar HH del T-15. No se suma esta oportunidad como reserva.
 
 ## Referencias
 
@@ -778,4 +874,5 @@ En cumplimiento de la sección 7.2 de las Aclaraciones de la licitación, la tab
 | Anexos 8.C y 8.D | Codex; Claude Code | Escenarios deterministas; reserva de contingencia por valor esperado | Alto | Ninguno | [[REVISIÓN HUMANA]] |
 | Anexos 8.E y 8.F | Codex; Claude Code | Condiciones de evidencia; escala de beneficio de la oportunidad | Alto | Ninguno | [[REVISIÓN HUMANA]] |
 | Anexos 8.A–8.E: correcciones de coherencia | Claude Code | Fuentes de las fichas, notas de redondeo y de muestreo, contingencia adicional elegible, condiciones E8 (base de estimación, RPO residual, plazos H7/H12, subsanación y suspensión láctea), fichas R8-05, R8-11 y R8-22, y referencias | Medio | Ninguno | [[REVISIÓN HUMANA]] |
+| Anexos 8.A–8.D: alineación con el PMBOK | Claude Code | Estrategia, efecto esperado, residual y riesgo secundario en cada ficha; Tabla C.5 con ahorro esperado y retorno; reglas de reserva | Medio | Ninguno | [[REVISIÓN HUMANA]] |
 | Anexos 8.A–8.D: revisión de la Comisión | Claude Code | Glosario de códigos, costo-beneficio por riesgo (Tabla C.5), riesgos del Caso 19 en R8-03 y R8-18, coordinación de reserva según el SD4, redacción de las fichas y citas | Medio | Ninguno | [[REVISIÓN HUMANA]] |
