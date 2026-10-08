@@ -44,8 +44,6 @@
 - [Referencias](#referencias)
 - [Declaración de uso de IA](#declaración-de-uso-de-ia)
 
-A.table
-
 # Anexos del Subdocumento 4
 
 Estos anexos reúnen los catálogos, las matrices, el registro de decisiones de arquitectura y la memoria de cálculo del dimensionamiento citados en los apartados 4.1, 4.2 y 4.3 del Subdocumento 4. El cuerpo del subdocumento conserva la explicación de las decisiones y sus consecuencias operativas; el detalle de cada equipo y servicio se entrega en el Formulario T-11.
@@ -166,7 +164,7 @@ La matriz asigna a cada módulo su requisito funcional, su responsabilidad, su i
 | --- | --- | --- | --- | --- |
 | M1 Recepción / RF-01 | Lote y recepción GS1. | Evento a M2; ACL con ERP. | Jefa de Bodega; Proveedor. | 1 |
 | M2 Inventario / RF-02 | Movimientos por sitio, reserva central y FEFO. | Consulta de M3/M5. | Jefa de Bodega. | 1 |
-| M3 Preventa / RF-03 | Pedido y precio pactado; autoatención por el canal de M11. | Reserva coordinada en M2; sincronización. | Preventista; clientes autorizados. | 1; autoatención en 2 |
+| M3 Preventa / RF-03 | Pedido y precio pactado; autoatención desde el Portal de Clientes. | Reserva coordinada en M2; sincronización. | Preventista; clientes autorizados. | 1; autoatención en 2 |
 | M4 Rutas / RF-04 | Secuencia y restricciones. | Ruta aprobada a M6. | Planificador de Rutas. | 1 |
 | M5 Preparación / RF-05 | Misión y carga confirmada. | Guía nocturna vía `erp-sync` y ACL en VM-04. | Preparador; Jefa de Bodega. | 1 |
 | M6 Reparto / RF-06 | Entrega y POD. | Evento a M7/M8. | Conductor propio; Conductor externo. | 1 |
@@ -296,7 +294,7 @@ Modo mixto: autenticación central síncrona y distribución asíncrona de manif
 
 ##### INT-14. Métricas, logs y trazas — Operación
 
-Modo asíncrono por OTLP. Presupuesto de diseño: 13.000 eventos/día en régimen y peak (13 nodos × 1.000 eventos: 6 VM de Talca, 4 de Concepción y 3 mini-PC); son unidades de observabilidad y no mensajes comerciales sumables. Contraparte: colectores y CloudWatch, requeridos 24×7. Exportación con timeout de 30 segundos y buffer en disco de 24 horas. El fallo de exportación no bloquea negocio; el sitio mantiene alarma local por ocupación. Auditoría de negocio y eventos de seguridad no se descartan para conservar trazas diagnósticas.
+Modo asíncrono por OTLP. Presupuesto de diseño: 14.400 eventos/día en régimen y peak (13 nodos activos × 1.000 eventos: 6 VM de Talca, 4 de Concepción y 3 mini-PC; y 7 en espera × 200 eventos: 4 VM de Concepción y 3 mini-PC); son unidades de observabilidad y no mensajes comerciales sumables. Contraparte: colectores y CloudWatch, requeridos 24×7. Exportación con timeout de 30 segundos y buffer en disco de 24 horas. El fallo de exportación no bloquea negocio; el sitio mantiene alarma local por ocupación. Auditoría de negocio y eventos de seguridad no se descartan para conservar trazas diagnósticas.
 
 Fuente: elaboración propia a partir de las Bases Técnicas del caso (cap. 14, p. 24) y RT-05.21 (Bases Técnicas Transversales, cap. 5, p. 13). Las tasas de consultas son supuestos de ensayo explícitos; su calibración exige medición.
 
@@ -382,9 +380,9 @@ Esta síntesis permite contrastar órdenes de magnitud. Los anexos 4-G y 4-H son
 | INT-11 Avisos al cliente | 2.800 msg/día | 5.200 | Dos avisos por entrega |
 | INT-12 Cambios a réplica | 12.602 cambios/día | 23.404 | Peak × 1,857; WAL estimado de 0,123 GB/día en Talca |
 | INT-13 Identidad y manifiestos | 764 eventos/día | 764 | 382 dispositivos × 2 |
-| INT-14 Métricas, logs y trazas | 13.000 eventos/día | 13.000 | 13 nodos × 1.000 eventos |
+| INT-14 Métricas, logs y trazas | 14.400 eventos/día | 14.400 | 13 nodos activos × 1.000 + 7 en espera × 200 |
 | INT-15 Telemetría de flota | 60.480 posiciones/día | 60.480 | 42 camiones × 120 posiciones/h × 12 h |
-| **Total** | **228.852/día** | **351.933/día** | **15 integraciones** |
+| **Total** | **230.252/día** | **353.333/día** | **15 integraciones** |
 
 Fuente: elaboración propia a partir de las Bases Técnicas del caso (cap. 14, p. 24). Los cálculos se indican en la columna de derivación.
 
@@ -485,13 +483,13 @@ El ensayo inyecta caída de fibra y LTE, respuesta extraviada del ERP, reintento
 
 RT-07.04 fija RTO ≤ 4 horas y RPO ≤ 15 minutos para servicios críticos. Se mide RPO_observado=t_incidente-t_ultimo_punto_consistente con UUID, secuencia y la última transacción confirmada recuperable fuera del sitio.
 
-El protocolo mantiene carga de negocio y corta fibra, LTE y satélite de uno en uno y en pares; verifica que el camino restante transporte DMS/WAL de Talca, broker, outbox e identidad con retraso inferior a 15 minutos. En cada CD se provoca luego pérdida de sala o servidor con al menos un camino de extracción activo. Para Talca se detiene DMS, se habilita su copia de Aurora para escritura y se levanta `wms_only` en ECS Fargate; terminales y periféricos acceden por VPN. Con la sala de Talca perdida se comprueba que salen las cargas con guía preemitida y que una carga nueva queda bloqueada hasta restituir el ERP. También se ensaya promoción de us-east-1 si sa-east-1 falla. Concepción se reconstruye desde eventos centrales y recupera su propia operación; no recibe la carga de Talca.
+El protocolo mantiene carga de negocio y corta fibra, LTE y satélite de uno en uno y en pares; verifica que el camino restante transporte DMS/WAL de Talca, broker, outbox e identidad con retraso inferior a 15 minutos. En cada CD se provoca luego pérdida de sala o servidor con al menos un camino de extracción activo. Para Talca se detiene DMS, se habilita su copia de Aurora para escritura y se levanta `wms_only` en ECS Fargate; terminales y periféricos acceden por VPN. Con la sala de Talca perdida se comprueba que salen las cargas con guía preemitida y que una carga nueva queda bloqueada hasta restituir el ERP. También se ensaya promoción de us-east-1 si sa-east-1 falla. En Concepción, el servidor en espera toma el control en menos de un minuto. Solo la pérdida de ambos obliga a reconstruir su base desde los eventos centrales. Concepción no recibe la carga de Talca.
 
 Se contrastan pedidos, stock por sitio, preparación, bloqueos sanitarios y evidencias con el oráculo de prueba y se miden RTO y RPO completos. Una prueba separada mantiene el sitio operativo sin los tres caminos durante 24 horas para verificar autonomía y alarmas; el límite residual de pérdida simultánea de los tres medios seguida de destrucción del sitio se justifica en 4.3.2.
 
 El ensayo semestral mide RPO ≤ 15 minutos para transacciones en nube, WMS de Talca, mensajes críticos, evidencias y documentos tributarios en S3 y telemetría de temperatura; analítica y mensajes no críticos tienen objetivo ≤ 24 horas, y las posiciones de flota, ≤ 24 horas dentro de sa-east-1. En S3 se verifica Replication Time Control, su objetivo de 99,99% de objetos en 15 minutos, los objetos pendientes y el evento de umbral que dispara la recopia; en DynamoDB Global Tables se mide ReplicationLatency y se comprueba la alarma a 60 segundos.
 
-La conmutación regional ensaya la decisión del CLIENTE con autorizador titular y suplente facultado: si el titular no responde en 15 minutos, decide el suplente, y el paso de autorización no supera 30 minutos. El acta registra los ocho pasos y su peor caso secuencial de 5 + 30 + 20 + 30 + 15 + 15 + 5 + 15 = 135 minutos, dentro del RTO de 4 horas; el último paso redirige los shippers y `erp-sync` a las colas equivalentes, creadas vacías en la región secundaria.
+La conmutación regional ensaya la decisión del CLIENTE con autorizador titular y suplente facultado: si el titular no responde en 15 minutos, decide el suplente, y el paso de autorización no supera 30 minutos. El acta registra los ocho pasos y su peor caso secuencial de 5 + 30 + 20 + 30 + 15 + 15 + 5 + 15 = 135 minutos, dentro del RTO de 4 horas; el último paso redirige los shippers y `erp-sync` a las colas equivalentes, creadas vacías en la región secundaria. Luego se comprueba que el reenvío del outbox de 24 h y de las reservas pendientes no deja mensajes perdidos ni duplicados.
 
 **AL-OFF-01. Autonomía de 24 horas con dos relevos**
 
@@ -793,17 +791,17 @@ Fuente: elaboración propia a partir de RT-02.04 (Bases Técnicas Transversales,
 **ADR-10. Plataforma on-premise: virtualización y almacenamiento**
 
 <a id="sub:adr-10"></a>
-**Decisión adoptada.** Talca usa tres nodos Proxmox de 16 núcleos y 64 GB cada uno, arranque M.2 en RAID 1, dos NVMe Ceph por nodo sin RAID y doble fuente; Ceph usa réplica `size`=3, `min_size`=2 y tres monitores. El NAS tiene doble fuente, RAID 6 y WORM.
+**Decisión adoptada.** Talca usa tres nodos Proxmox de 16 núcleos y 64 GB cada uno, arranque M.2 en RAID 1, dos NVMe Ceph por nodo sin RAID y doble fuente; Ceph usa réplica `size`=3, `min_size`=2 y tres monitores. El NAS tiene doble fuente, RAID 6 y WORM. Concepción y cada cross-docking usan un par de equipos idénticos, uno activo y otro en espera, con réplica sincrónica de PostgreSQL.
 
-**Alternativas evaluadas.** Ceph sobre RAID 10 duplica protección y reduce capacidad; un almacenamiento sin quórum pierde tolerancia a nodo.
+**Alternativas evaluadas.** Ceph sobre RAID 10 duplica protección y reduce capacidad; un almacenamiento sin quórum pierde tolerancia a nodo. Un equipo único por sitio, aun con RAID y doble fuente, no tolera la falla del equipo, y un clúster Proxmox de dos nodos exige un tercer voto de quórum que esos sitios no tienen.
 
 **Criterio de selección.** Capacidad y quórum N+1 con demanda del Anexo 4-W.
 
-**Consecuencias.** Se reservan recursos de OSD y monitor; seis OSD ofrecen cerca de 1,92 TB útiles y unos 1,5 TB al 80% de llenado. Frente a RT-03.14, el nivel declarado es Ceph sin RAID por hardware con réplica de tres copias, que tolera la falla de un disco y de un nodo. Concepción usa RAID 10 y doble fuente. E-01 usa dos SSD en RAID 1 por software, que tolera la falla de un disco con holgura para los 50 GB requeridos; RAID 5 o RAID 10 exigirían tres o cuatro discos que el mini-PC industrial no aloja. E-01 y sus switches tienen alimentación redundante.
+**Consecuencias.** Se reservan recursos de OSD y monitor; seis OSD ofrecen cerca de 1,92 TB útiles y unos 1,5 TB al 80% de llenado. Frente a RT-03.14, el nivel declarado es Ceph sin RAID por hardware con réplica de tres copias, que tolera la falla de un disco y de un nodo. Cada servidor de Concepción usa RAID 10 y doble fuente. Cada E-01 usa dos SSD en RAID 1 por software, que tolera la falla de un disco con holgura para los 50 GB requeridos; RAID 5 o RAID 10 exigirían tres o cuatro discos que el mini-PC industrial no aloja. E-01 y sus switches tienen alimentación redundante. La falla del equipo activo de Concepción o de un cross-docking la cubre su par en espera, que toma el control en menos de un minuto.
 
-**Evidencia exigida.** Prueba de pérdida de nodo, reconstrucción, latencia y carga de cientos de IOPS a 3× frente a decenas de miles de IOPS de NVMe.
+**Evidencia exigida.** Prueba de pérdida de nodo, reconstrucción, latencia y carga de cientos de IOPS a 3× frente a decenas de miles de IOPS de NVMe. Apagado del equipo activo de Concepción y de un cross-docking durante su ventana, sin pérdida de transacciones confirmadas.
 
-**Requisitos que la sustentan.** RT-07.04, RT-08.03, RT-08.04; Anexo 4-W.
+**Requisitos que la sustentan.** RT-03.14, RT-07.04, RT-08.03, RT-08.04; Anexo 4-W.
 
 **ADR-11. Integración B2B/EDI**
 
@@ -1002,7 +1000,7 @@ El inventario distingue versión de referencia de una imagen exacta de producci�
 | PostgreSQL | 16.x | 09-11-2028. | Ensayo de migración mayor y reversión 6 meses antes. |
 | Angular | 22.x | LTS: junio de 2028, fecha orientativa del fabricante. | Revisión semestral y actualización anual por compatibilidad. |
 | TypeScript | 6.0.x | Sin fecha contractual independiente. | Versión compatible con Angular; archivo de bloqueo y pruebas. |
-| RabbitMQ | 4.3.x | Comunidad: 31-01-2027. | Actualizar antes de esa fecha a rama soportada; no se presume licencia comercial. |
+| RabbitMQ | Rama 4.x con soporte comunitario vigente al liberar. | 4.3.x, comunidad: 31-01-2027. | Se instala la rama vigente y se actualiza antes de su fin; no se presume licencia comercial. |
 
 Fuente: Laravel (2026), PHP (2026), PostgreSQL (2026), Angular (2026a, 2026b) y RabbitMQ (2026). Fechas consultadas el 30-09-2026; la de RabbitMQ, el 07-10-2026.
 
@@ -1382,19 +1380,19 @@ La dimensión 4 es (640 + 160) + 14.200 + 180 = **15.180 personas o entidades**.
 El parque separado de la dimensión 6 se distribuye así:
 
 - Bodega: 132 terminales en Talca, 22 de ellos para congelado, y 66 en Concepción.
- 
+
 - Terreno: 69 terminales de preventa, 106 de reparto, 106 impresoras y 106 terminales de pago.
- 
-- Cross-docking y frío: 7 terminales de cross-docking y 31 termógrafos.
+
+- Cross-docking y frío: 9 terminales de cross-docking y 31 termógrafos.
 
 Cada cantidad aplica los supuestos S-28 y S-30 a S-41, registrados en el Subdocumento 3, y la reserva del 10 % del parque de cada tipo, redondeada hacia arriba, conforme a la tabla de repuestos de las Bases Técnicas Transversales (cap. 8, p. 19):
 
 - Equipos de reparto (S-30): 96 camiones + 10 de reserva = 106 de cada dispositivo. A tres años (S-31), los viajes crecen 2.400 ÷ 2.100 = 1,143, es decir, 14,3 %; la flota llega a 96 × 1,143 = 109,7, unos 110 camiones, y el parque a 110 + 11 = 121, es decir, 15 unidades más de cada dispositivo.
- 
+
 - Terminales de preventa (S-32): 62 + 7 = 69. A tres años, 70 preventistas, un 12,9 % más, y 70 + 7 = 77, es decir, 8 más.
- 
+
 - Terminales de bodega: se comparten entre turnos (RT-12.11; Bases Técnicas del caso, cap. 15, p. 27), sin personal de carga adicional (S-33), de modo que los fija el turno nocturno: 120 preparadores en Talca y 60 en Concepción (S-39). En Talca, 20 son de la cuadrilla de congelado (S-34): los productos de frío son 1.100 ÷ 8.400 = 13,1 % del surtido y el congelado ocupa 400 ÷ 1.300 = 30,8 % del área fría, de modo que el congelado es cerca de 13,1 % × 30,8 % = 4,0 % de las líneas; 120 personas × 8 h = 960 horas-persona, cuyo 4,0 % son 38,4 horas, concentradas en las últimas 2 horas del turno: 38,4 ÷ 2 = 19,2, unas 20 personas. Talca suma 20 + 2 de congelado y 100 + 10 estándar, Concepción 60 + 6, y los cross-docking 6 + 3, una unidad de reserva por plataforma (S-35): 207 en total. A tres años (S-32), la dotación de los centros de distribución crece 350 ÷ 310 = 12,9 %: Talca llega a 23 + 3 de congelado y 113 + 12 estándar, y Concepción a 68 + 7; con los 9 de los cross-docking, el parque llega a 235 terminales de bodega, 28 más que al inicio. Las licencias de gestión de dispositivos y las identidades de terminal se dimensionan con 207 equipos al inicio y 235 en el año 3.
- 
+
 - Termógrafos: 28 + 3 = 31, para los 18 camiones con frío propios y los 10 de transportistas (S-28), sin compra por crecimiento (S-38).
 
 ## 4-W.4 Dimensiones 7–10: almacenamiento, retención y migración
@@ -1408,13 +1406,13 @@ La temperatura separa cámaras y camiones: 21 puntos instalados × 288 lecturas/
 La dimensión 10 se estima por dominio:
 
 - Maestros completos: 34.180 KB.
- 
+
 - Ventas y pedidos: 3 años y 10.476.000 KB.
- 
+
 - Inventario y movimientos: 2 años y 3.348.600 KB.
- 
+
 - Recepciones con campo de lote: 5 años y 1.380.000 KB.
- 
+
 - Cuentas por cobrar: 2 años y 816.000 KB.
 
 La suma de 16.054.780 KB × 2 ÷ 1.000.000 = **32,11 GB**. Con 10 o 30 líneas por recepción, el intervalo es **30,73–33,49 GB**. No se multiplican eventos históricos de trazabilidad: el caso declara que no existe una forma consultable. El 41 % sin lote sólo orienta el saneamiento.
@@ -1445,16 +1443,16 @@ La dimensión 11 cuenta los quince contratos INT-01 a INT-15 del apartado 4.1. L
 | INT-11 Avisos al cliente | 2.800 | 5.200 | 1.400 × 2; 2.600 × 2 |
 | INT-12 Cambios de datos a réplica | 12.602 | 23.404 | Cota conservadora de movimientos de todos los sitios: 279.050 ÷ 22,14; peak × 1,857 |
 | INT-13 Identidad a sitio | 764 | 764 | 382 dispositivos × 2 |
-| INT-14 Métricas y trazas | 13.000 | 13.000 | 13 nodos × 1.000 |
+| INT-14 Métricas y trazas | 14.400 | 14.400 | 13 nodos activos × 1.000 + 7 en espera × 200 |
 | INT-15 Telemetría existente | 60.480 | 60.480 | 42 × 12 × 120 |
-| **Total** | **228.852** | **351.933** | **15 integraciones** |
+| **Total** | **230.252** | **353.333** | **15 integraciones** |
 
 Para la dimensión 12, el drenaje se obtiene sumando los aportes acumulados en 24 horas y dividiendo por 2 horas:
 
 - Aportes en Talca: los cambios de 0,041 GB/día viajan como WAL, que no se suma aparte: WAL = 3 × 0,041 = 0,123 GB/día; broker = 0,5 × 0,041 = 0,020 GB/día; telemetría = 10.920 × 145 ÷ 1.000.000.000 ÷ 2 = 0,001 GB/día; observabilidad = 6 × 0,25 = 1,50 GB/día; incremental de respaldo = 0,041 GB/día.
- 
-- Resultado por sitio: Talca acumula 1,68 GB/día y drena 1,87 Mbps; su hora cargada de oficina y retorno de flota suma 3,29 Mbps, por lo que el peor caso es 3,29 + 1,87 = **5,16 Mbps**. Concepción acumula 1,09 GB/día y drena 1,21 Mbps; cada cross-docking acumula 0,27 GB/día y drena 0,30 Mbps.
- 
+
+- Resultado por sitio: Talca acumula 1,68 GB/día y drena 1,87 Mbps; su hora cargada de oficina y retorno de flota suma 3,29 Mbps, por lo que el peor caso es 3,29 + 1,87 = **5,16 Mbps**. Concepción acumula 1,29 GB/día y drena 1,44 Mbps; cada cross-docking acumula 0,32 GB/día y drena 0,35 Mbps. Su observabilidad incluye el equipo en espera, que no atiende transacciones: no genera trazas y sus métricas y registros se estiman en 20 % de un nodo activo, 0,05 GB/día. Concepción suma 4 × 0,25 + 4 × 0,05 = 1,20 GB/día y cada cross-docking 0,25 + 0,05 = 0,30 GB/día. La prueba de corte mide ese valor.
+
 - Tráfico prioritario continuo: Talca 0,014 Mbps; Concepción 0,007 Mbps; cada cross-docking 0,002 Mbps, con WAL, broker/outbox, guías y SII, identidad y telemetría crítica.
 
 <a id="tab:anexo-4b-enlaces"></a>
@@ -1466,11 +1464,11 @@ Para la dimensión 12, el drenaje se obtiene sumando los aportes acumulados en 2
 | Talca | D-03 fibra | 20 Mbps | 5,16 Mbps, peor caso | 25,80 % |
 | Talca | D-04 LTE | 5 Mbps | 1,87 Mbps, drenaje | 37,43 % |
 | Talca | D-06 satélite | 2 Mbps | 1,87 Mbps, drenaje | 93,59 % |
-| Concepción | D-03 fibra | 10 Mbps | 1,88 Mbps, peor caso | 18,82 % |
-| Concepción | D-04 LTE | 3 Mbps | 1,21 Mbps, drenaje | 40,45 % |
-| Concepción | D-06 satélite | 2 Mbps | 1,21 Mbps, drenaje | 60,68 % |
-| Cada cross-docking | D-06 satélite | 2 Mbps | 0,35 Mbps, peor caso | 17,41 % |
-| Cada cross-docking | D-04 LTE | 2 Mbps | 0,30 Mbps, drenaje | 14,92 % |
+| Concepción | D-03 fibra | 10 Mbps | 2,14 Mbps, peor caso | 21,41 % |
+| Concepción | D-04 LTE | 3 Mbps | 1,44 Mbps, drenaje | 47,86 % |
+| Concepción | D-06 satélite | 2 Mbps | 1,44 Mbps, drenaje | 71,79 % |
+| Cada cross-docking | D-06 satélite | 2 Mbps | 0,41 Mbps, peor caso | 20,65 % |
+| Cada cross-docking | D-04 LTE | 2 Mbps | 0,35 Mbps, drenaje | 17,70 % |
 
 La coordinación de reserva no se suma al drenaje: durante un aislamiento la nube no confirma reservas remotas del sitio, por lo que sus solicitudes esperan en la cola de la nube y no en el sitio. Su tasa continua es de 87.228 × 1 KB ÷ 86.400 s, unos 0,008 Mbps sumando todos los sitios, y no cambia la utilización de la tabla. La tasa prioritaria suma WAL, broker y telemetría crítica a los mensajes de guía, respuesta del SII e identidad, con una cota de 1 KB por mensaje; se divide el volumen diario por 86.400 segundos. Los 12.602/23.404 cambios diarios de INT-12 son una cota conservadora basada en movimientos de todos los sitios, aplicada al dimensionamiento de Talca y no un conteo medido allí. La utilización de respaldo divide el drenaje por la capacidad de cada camino. En Talca y Concepción, D-06 permanece encendido en espera caliente, con túnel IPsec establecido y BGP de menor preferencia; solo toma tráfico si fallan fibra y LTE, cuando prioriza DMS/WAL de Talca, salida del broker y outbox, guías hacia ERP y SII, identidad y telemetría crítica. La tarifa plana no agrega costo por mantenerlo encendido. En los cross-docking Starlink es el camino principal y LTE de dos proveedores da respaldo. El tercer camino de los CD sostiene la salida continua de datos exigida por el RPO de 15 minutos; la oficina cede prioridad durante la recuperación.
 
@@ -1491,11 +1489,11 @@ La dimensión 14 es un tiempo. Los 96 camiones regresan entre 17:00 y 20:00; con
 La mesa de ayuda se dimensiona en cuatro pasos:
 
 - Demanda horaria: (640 + 160) × 2,5 = **2.000 contactos mensuales**. Con 22,14 días equivalentes, la hora cargada concentra 2.000 × 25 % ÷ 22,14 = 22,58 contactos/hora y cada una de las otras 17 horas recibe 2.000 × 75 % ÷ 22,14 ÷ 17 = 3,98 contactos/hora.
- 
+
 - Resultado Erlang C: con 10 minutos de atención media y 80 % de respuestas antes de 20 segundos, exige 7 agentes en la hora cargada y 2 en las demás. Erlang C supone que nadie abandona la espera, por lo que no verifica el abandono ≤5 % ni la resolución al primer contacto ≥70 % de RT-21.06 (Bases Técnicas Transversales, cap. 21, p. 36). Ambos se miden por contacto desde la marcha blanca, y la dotación se calibra con esa medición.
- 
+
 - Dotación simultánea: (7 + 17 × 2) × 6 = 246 horas-posición semanales; 246 ÷ 42 = 5,86, pero la dotación no puede ser menor que las 7 posiciones simultáneas, por lo que la mesa requiere **7 personas**.
- 
+
 - Capacidad máxima de la dotación: la franja que limita es la de dos agentes. Con A = λ/μ, μ = 6 contactos/hora, C = [Ac/c! × c/(c − A)] ÷ [Σ(k = 0…c − 1) Ak/k! + Ac/c! × c/(c − A)] y SL(20 s) = 1 − C × e−(cμ − λ) × 20/3.600, el límite es 2.283 contactos/mes: 2.283 × 75 % ÷ 22,14 ÷ 17 = 4,55 contactos/hora y SL = 80,0 % con dos agentes, mientras la hora cargada recibe 25,78 contactos/hora y SL = 83,5 % con siete. La hora cargada sola admitiría 2.391 contactos/mes, pero con esa demanda las otras franjas bajan a 78,3 %. El escenario base de 2.000 contactos cumple (90,6 % y 84,2 %), y el del año 3, 2.258 contactos, queda a 1,1 % del límite. Por eso, cuando la demanda medida supere 2.200 contactos/mes se agrega un tercer agente en las franjas valle, con lo que el límite pasa a 2.391 contactos/mes, fijado por la hora cargada.
 
 La cobertura 24×7 de septiembre y diciembre requiere, además, al menos una posición de mesa en las horas 22:00–04:00 de lunes a sábado y durante los domingos: 6 × 6 + 24 = 60 horas-posición semanales; 60 ÷ 42 = 1,43, por lo que se agregan **2 personas** y la mesa peak queda en 9. Un NOC y un SOC de una posición cada uno requieren 2 × (168 ÷ 42) = **8 personas**; desde el 26-04-2028 requieren 2 × 5 = **10 personas**, porque 168 ÷ 40 = 4,2 se redondea hacia arriba a 5 personas por posición. A 42 horas semanales, la dotación total es **15 personas en operación normal y 17 en septiembre/diciembre**; desde el 26-04-2028, a 40 horas semanales, es **17 en operación normal y 19 en peak**. Las funciones NOC/SOC pueden ser subcontratadas conforme a RT-21.01 (Bases Técnicas Transversales, cap. 21, p. 35) y RT-11.17 (Bases Técnicas Transversales, cap. 11, p. 24).
@@ -1524,9 +1522,9 @@ La base local contiene maestros, stock, lotes presentes y movimientos del horizo
 | VM-C04 | 2 vCPU; 4 GB; 50 GB; 22 IOPS | 2 vCPU; 4 GB; 50 GB; 43 IOPS | Concepción |
 | Mini-PC | 3 vCPU; 5 GB; 50 GB; 52 IOPS | 3 vCPU; 5 GB; 50 GB; 156 IOPS | Cada cross-docking |
 
-VM-04 incorpora dos procesos PHP CLI de `erp-sync` de 64 MB cada uno: la base de 2 GB sube a 3 GB tras redondear 2 + 2 × 64 ÷ 1.024. Las VMs de Talca suman 14 vCPU, 23 GB RAM, 210 GB y 136 IOPS actuales; a 3× suman 14 vCPU, 25 GB, 221 GB y 359 IOPS. El hipervisor agrega 15 % de vCPU y 2 GB RAM por nodo; Ceph agrega por nodo dos OSD de 1 vCPU y 4 GB cada uno y monitor/manager de 1 vCPU y 2 GB. El total de Talca es 26 vCPU, 59 GB RAM y 210 GB actuales; a 3×, 26 vCPU, 61 GB y 221 GB. Concepción requiere con hipervisor 12 vCPU, 17 GB RAM y 140 GB actuales; a 3×, 12 vCPU, 18 GB y 140 GB.
+VM-04 incorpora dos procesos PHP CLI de `erp-sync` de 64 MB cada uno: la base de 2 GB sube a 3 GB tras redondear 2 + 2 × 64 ÷ 1.024. Las VMs de Talca suman 14 vCPU, 23 GB RAM, 210 GB y 136 IOPS actuales; a 3× suman 14 vCPU, 25 GB, 221 GB y 359 IOPS. El hipervisor agrega 15 % de vCPU y 2 GB RAM por nodo; Ceph agrega por nodo dos OSD de 1 vCPU y 4 GB cada uno y monitor/manager de 1 vCPU y 2 GB. El total de Talca es 26 vCPU, 59 GB RAM y 210 GB actuales; a 3×, 26 vCPU, 61 GB y 221 GB. Concepción requiere con hipervisor 12 vCPU, 17 GB RAM y 140 GB actuales; a 3×, 12 vCPU, 18 GB y 140 GB. El segundo servidor de Concepción aloja copias en espera de VM-C01 a VM-C04 con los mismos recursos, y cada cross-docking tiene un segundo mini-PC idéntico en espera: la utilización de cada equipo no cambia.
 
-Cada nodo ofertado de Talca dispone de 32 hilos y 64 GB RAM. Sus seis NVMe de 960 GB sin RAID suman 5,76 TB brutos; Ceph con tres réplicas entrega 1,92 TB útiles; con un nodo caído conserva quórum y sirve los datos con dos réplicas hasta que el nodo vuelve. El umbral de llenado al 80 % es 1,54 TB frente a 221 GB requeridos a 3×. En N+1 quedan 64 vCPU, 128 GB RAM y 1,92 TB útiles: utilización de CPU/RAM/disco de 40,62 % / 46,09 % / 10,94 % actual y 40,62 % / 47,66 % / 11,51 % a 3×. El mínimo por nodo para N+1 y 3× es 13 vCPU, 31 GB RAM y 221 GB de OSD. Concepción dispone de 16 hilos, 32 GB RAM y 3,84 TB útiles de RAID 10; utiliza 75,00 % / 53,12 % / 3,65 % actual y 75,00 % / 56,25 % / 3,65 % a 3×.
+Cada nodo ofertado de Talca dispone de 32 hilos y 64 GB RAM. Sus seis NVMe de 960 GB sin RAID suman 5,76 TB brutos; Ceph con tres réplicas entrega 1,92 TB útiles; con un nodo caído conserva quórum y sirve los datos con dos réplicas hasta que el nodo vuelve. El umbral de llenado al 80 % es 1,54 TB frente a 221 GB requeridos a 3×. En N+1 quedan 64 vCPU, 128 GB RAM y 1,92 TB útiles: utilización de CPU/RAM/disco de 40,62 % / 46,09 % / 10,94 % actual y 40,62 % / 47,66 % / 11,51 % a 3×. El mínimo por nodo para N+1 y 3× es 13 vCPU, 31 GB RAM y 221 GB de OSD. Cada servidor de Concepción dispone de 16 hilos, 32 GB RAM y 3,84 TB útiles de RAID 10; utiliza 75,00 % / 53,12 % / 3,65 % actual y 75,00 % / 56,25 % / 3,65 % a 3×.
 
 La energía de los gabinetes de borde y de piso se calcula con el método de la carga de TI de Talca: los servidores cuentan la potencia de placa de sus dos fuentes y los demás equipos, su consumo máximo de ficha; se agrega un margen de crecimiento de 20 %, se convierte a potencia aparente con factor de potencia 0,95 y se exige que la UPS no supere el 80 % de uso. La ONT y el router LTE del operador quedan cubiertos por el margen, igual que en Talca.
 
@@ -1536,13 +1534,13 @@ La energía de los gabinetes de borde y de piso se calcula con el método de la 
 
 | **Gabinete** | **Equipos y potencia** | **Carga de diseño** | **UPS y uso** |
 | --- | --- | --- | --- |
-| Borde de Concepción | Servidor 2 × 500 W; 2 firewalls × 150 W; 2 switches de núcleo × 150 W; Starlink 100 W; gateway IoT 10 W; total 1.710 W | 2.052 W; 2,16 kVA | 3 kVA; 72 % |
+| Borde de Concepción | 2 servidores × 2 × 500 W; 2 firewalls × 150 W; 2 switches de núcleo × 150 W; Starlink 100 W; gateway IoT 10 W; total 2.710 W | 3.252 W; 3,42 kVA | 5 kVA; 68 % |
 | Piso de Talca y de Concepción | Switch de acceso con fuente de 600 W, que incluye 370 W de PoE para los puntos de acceso; impresora de andén 98 W; total 698 W | 838 W; 0,88 kVA | 1,5 kVA; 59 % |
-| Borde de cross-docking | Mini-PC 45 W; 2 firewalls × 24 W; 2 switches × 18,96 W; 2 puntos de acceso PoE+ × 30 W; Starlink 100 W; total 291 W | 349 W; 0,37 kVA | 0,75 kVA; 49 % |
+| Borde de cross-docking | 2 mini-PC × 45 W; 2 firewalls × 24 W; 2 switches × 18,96 W; 2 puntos de acceso PoE+ × 30 W; Starlink 100 W; total 336 W | 403 W; 0,42 kVA | 0,75 kVA; 57 % |
 
 Fuente: elaboración propia; consumos según la ficha técnica de cada modelo de referencia del Formulario T-11.
 
-En los tres casos la UPS requerida, que es la carga de diseño dividida por 0,8, queda bajo la capacidad ofertada: 2,70, 1,10 y 0,46 kVA. Cada UPS lleva baterías para 30 minutos a su carga de diseño. Los consumos declarados del servidor de Concepción y del mini-PC satisfacen RT-08.01 (Bases Técnicas Transversales, cap. 8, p. 18).
+En los tres casos la UPS requerida, que es la carga de diseño dividida por 0,8, queda bajo la capacidad ofertada: 4,28, 1,10 y 0,53 kVA. Cada UPS lleva baterías para 30 minutos a su carga de diseño. Los consumos declarados de los servidores de Concepción y de los mini-PC satisfacen RT-08.01 (Bases Técnicas Transversales, cap. 8, p. 18).
 
 ## 4-W.9 Capacidad en nube
 
@@ -1559,15 +1557,15 @@ Aurora se dimensiona con la misma cota que la API, para que la base no sea el l�
 La proyección de año 3 del numeral 14.1 de las Bases Técnicas del caso (cap. 14, p. 24) es 36.000 pedidos, 305.000 líneas, 1.650 entregas normales, 3.100 entregas peak y 40.000 DTE mensuales. Cada componente usa una base distinta:
 
 - WMS Talca = 2,68 × (305.000 ÷ 260.000) = 3,15 TPS.
- 
+
 - Nube más portal = 14,66 × (36.000 ÷ 31.000) = 17,03 solicitudes/s.
- 
+
 - Evidencia = 87,72 × (36.000 ÷ 31.000) = 101,87 GB/año.
- 
+
 - Enlace de Talca = 5,20 Mbps a año 3 y 5,64 Mbps a 3×.
- 
+
 - Terminales de bodega de Talca = (23 + 3) de congelado + (113 + 12) estándar = 151.
- 
+
 - Mesa = 2.000 × (350 ÷ 310) = 2.258 contactos/mes.
 
 Por separado, RT-09.03 (Bases Técnicas Transversales, cap. 9, p. 21) exige 3×: 93.000 pedidos, 780.000 líneas, 4.200/7.800 entregas y 102.000 DTE mensuales.
