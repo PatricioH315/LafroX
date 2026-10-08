@@ -204,7 +204,7 @@ La arquitectura se presenta primero mediante su vista general completa (Figura [
 
  **Figura 1 — Vista general completa de la arquitectura lógica**
 
-![Vista general completa de la arquitectura lógica](https://raw.githubusercontent.com/PatricioH315/LafroX/c1f0874547a965a2cf722e805844c8c68283e1e3/04/figuras/logica/ARQL-01_Vision_general_9pt.pdf)
+![Vista general completa de la arquitectura lógica](https://raw.githubusercontent.com/PatricioH315/LafroX/d397c30ff8ad232ec4e3ea02caf5f3cb6800a547/04/figuras/logica/ARQL-01_Vision_general_9pt.pdf)
 
 <a id="fig:arql-general-completa"></a>
 
@@ -214,7 +214,7 @@ La vista general muestra cómo cada actor accede a la solución desde su aplicac
 
  **Figura 2 — Vista resumida de las ocho capas lógicas**
 
-![Vista resumida de las ocho capas lógicas](https://raw.githubusercontent.com/PatricioH315/LafroX/c1f0874547a965a2cf722e805844c8c68283e1e3/04/figuras/logica/ARQL-19_Vista_general_legible.pdf)
+![Vista resumida de las ocho capas lógicas](https://raw.githubusercontent.com/PatricioH315/LafroX/d397c30ff8ad232ec4e3ea02caf5f3cb6800a547/04/figuras/logica/ARQL-19_Vista_general_legible.pdf)
 
 <a id="fig:arql-1"></a>
 
@@ -228,7 +228,7 @@ La Figura [3](LAFROX-Subdocumento4.md#fig:arql-capa-1) presenta las responsabili
 
 **Figura 3 — Presentación: aplicaciones y superficies de trabajo**
 
-![Presentación: aplicaciones y superficies de trabajo](https://raw.githubusercontent.com/PatricioH315/LafroX/c1f0874547a965a2cf722e805844c8c68283e1e3/04/figuras/logica/capas_recortes/ARQL-21_Recorte_Presentacion.png)
+![Presentación: aplicaciones y superficies de trabajo](https://raw.githubusercontent.com/PatricioH315/LafroX/d397c30ff8ad232ec4e3ea02caf5f3cb6800a547/04/figuras/logica/capas_recortes/ARQL-21_Recorte_Presentacion.png)
 
 <a id="fig:arql-capa-1"></a>
  Las aplicaciones móviles conservan las capturas sin confirmar; los portales y consolas consultan sus dominios mediante APIs autorizadas. El dispositivo y la pantalla no reemplazan la identidad ni los permisos de la persona.
@@ -259,7 +259,7 @@ La Figura [4](LAFROX-Subdocumento4.md#fig:arql-capa-2) presenta las responsabili
 
 **Figura 4 — Borde: entradas públicas, privadas y locales**
 
-![Borde: entradas públicas, privadas y locales](https://raw.githubusercontent.com/PatricioH315/LafroX/c1f0874547a965a2cf722e805844c8c68283e1e3/04/figuras/logica/capas_recortes/ARQL-22_Recorte_Borde.png)
+![Borde: entradas públicas, privadas y locales](https://raw.githubusercontent.com/PatricioH315/LafroX/d397c30ff8ad232ec4e3ea02caf5f3cb6800a547/04/figuras/logica/capas_recortes/ARQL-22_Recorte_Borde.png)
 
 <a id="fig:arql-capa-2"></a>
  La entrada pública protege las APIs y rechaza el acceso directo a su origen. El acceso local sostiene la bodega sin WAN; Greengrass procesa los sensores de cámara, mientras AS2 conserva una superficie B2B distinta.
@@ -284,7 +284,7 @@ La Figura [5](LAFROX-Subdocumento4.md#fig:arql-capa-3) presenta las responsabili
 
 **Figura 5 — Puertas de servicio: recorrido central y local**
 
-![Puertas de servicio: recorrido central y local](https://raw.githubusercontent.com/PatricioH315/LafroX/c1f0874547a965a2cf722e805844c8c68283e1e3/04/figuras/logica/capas_recortes/ARQL-23_Recorte_Puertas.png)
+![Puertas de servicio: recorrido central y local](https://raw.githubusercontent.com/PatricioH315/LafroX/d397c30ff8ad232ec4e3ea02caf5f3cb6800a547/04/figuras/logica/capas_recortes/ARQL-23_Recorte_Puertas.png)
 
 <a id="fig:arql-capa-3"></a>
  El recorrido central valida la identidad y entrega solicitudes a servicios privados. La puerta local atiende al HHT dentro del sitio, sin invocar el Gateway remoto durante un corte; ambos recorridos conservan validación, idempotencia y auditoría.
@@ -299,7 +299,7 @@ La bodega dispone además de una puerta de API *local* como función del motor W
 
  **Figura 6 — Identidad y puerta de API local durante un corte de 24 horas**
 
-![Identidad y puerta de API local durante un corte de 24 horas](https://raw.githubusercontent.com/PatricioH315/LafroX/c1f0874547a965a2cf722e805844c8c68283e1e3/04/figuras/logica/ARQL-17_Acceso_local_24h.png)
+![Identidad y puerta de API local durante un corte de 24 horas](https://raw.githubusercontent.com/PatricioH315/LafroX/d397c30ff8ad232ec4e3ea02caf5f3cb6800a547/04/figuras/logica/ARQL-17_Acceso_local_24h.png)
 
 <a id="fig:arql-17"></a>
 
@@ -313,7 +313,7 @@ La Figura [7](LAFROX-Subdocumento4.md#fig:arql-capa-4) presenta las responsabili
 
 **Figura 7 — Negocio: monolito modular Laravel y sus doce módulos**
 
-![Negocio: monolito modular Laravel y sus doce módulos](https://raw.githubusercontent.com/PatricioH315/LafroX/c1f0874547a965a2cf722e805844c8c68283e1e3/04/figuras/logica/capas_recortes/ARQL-24_Recorte_Negocio.png)
+![Negocio: monolito modular Laravel y sus doce módulos](https://raw.githubusercontent.com/PatricioH315/LafroX/d397c30ff8ad232ec4e3ea02caf5f3cb6800a547/04/figuras/logica/capas_recortes/ARQL-24_Recorte_Negocio.png)
 
 <a id="fig:arql-capa-4"></a>
  La figura reúne los doce módulos de negocio y sus funciones principales, junto con las tecnologías del backend y los sistemas externos con los que se relacionan. Los límites e intercambios de cada contexto se desarrollan en los apartados siguientes.
@@ -330,7 +330,7 @@ La Figura [8](LAFROX-Subdocumento4.md#fig:arql-capa-5) presenta las responsabili
 
 **Figura 8 — Integración: continuidad local y contratos con terceros**
 
-![Integración: continuidad local y contratos con terceros](https://raw.githubusercontent.com/PatricioH315/LafroX/c1f0874547a965a2cf722e805844c8c68283e1e3/04/figuras/logica/capas_recortes/ARQL-25_Recorte_Integracion.png)
+![Integración: continuidad local y contratos con terceros](https://raw.githubusercontent.com/PatricioH315/LafroX/d397c30ff8ad232ec4e3ea02caf5f3cb6800a547/04/figuras/logica/capas_recortes/ARQL-25_Recorte_Integracion.png)
 
 <a id="fig:arql-capa-5"></a>
  El sitio conserva los eventos hasta confirmar su publicación y el consumidor confirma después de persistir. La ACL concentra el acceso al ERP, único emisor tributario; el hub EDI traduce contratos comerciales y las excepciones permanecen trazables.
@@ -363,7 +363,7 @@ El despacho tiene una coordinación distinta: M5 no libera la carga hasta recibi
 
  **Figura 9 — Secuencia lógica del pedido con conexión**
 
-![Secuencia lógica del pedido con conexión](https://raw.githubusercontent.com/PatricioH315/LafroX/c1f0874547a965a2cf722e805844c8c68283e1e3/04/figuras/logica/ARQL-15_Pedido_con_conexion.png)
+![Secuencia lógica del pedido con conexión](https://raw.githubusercontent.com/PatricioH315/LafroX/d397c30ff8ad232ec4e3ea02caf5f3cb6800a547/04/figuras/logica/ARQL-15_Pedido_con_conexion.png)
 
 <a id="fig:arql-15"></a>
 
@@ -373,7 +373,7 @@ Con conexión, M2 devuelve una reserva explícita y M5 no comienza a preparar un
 
  **Figura 10 — Secuencia lógica del pedido capturado sin conexión**
 
-![Secuencia lógica del pedido capturado sin conexión](https://raw.githubusercontent.com/PatricioH315/LafroX/c1f0874547a965a2cf722e805844c8c68283e1e3/04/figuras/logica/ARQL-16_Pedido_sin_conexion.png)
+![Secuencia lógica del pedido capturado sin conexión](https://raw.githubusercontent.com/PatricioH315/LafroX/d397c30ff8ad232ec4e3ea02caf5f3cb6800a547/04/figuras/logica/ARQL-16_Pedido_sin_conexion.png)
 
 <a id="fig:arql-16"></a>
 
@@ -446,7 +446,7 @@ La Figura [11](LAFROX-Subdocumento4.md#fig:arql-capa-6) presenta las responsabil
 
 **Figura 11 — Datos: propiedad y persistencia híbrida**
 
-![Datos: propiedad y persistencia híbrida](https://raw.githubusercontent.com/PatricioH315/LafroX/c1f0874547a965a2cf722e805844c8c68283e1e3/04/figuras/logica/capas_recortes/ARQL-26_Recorte_Datos.png)
+![Datos: propiedad y persistencia híbrida](https://raw.githubusercontent.com/PatricioH315/LafroX/d397c30ff8ad232ec4e3ea02caf5f3cb6800a547/04/figuras/logica/capas_recortes/ARQL-26_Recorte_Datos.png)
 
 <a id="fig:arql-capa-6"></a>
  El sitio conserva la autoridad de bodega y el dispositivo mantiene sus capturas hasta recibir confirmación durable. Los servicios centrales separan transacciones, caché, documentos y analítica; ninguna consulta de BI debe competir con el despacho.
@@ -477,7 +477,7 @@ La Figura [12](LAFROX-Subdocumento4.md#fig:arql-capa-7) presenta las responsabil
 
 **Figura 12 — Seguridad: identidad y autorización transversal**
 
-![Seguridad: identidad y autorización transversal](https://raw.githubusercontent.com/PatricioH315/LafroX/c1f0874547a965a2cf722e805844c8c68283e1e3/04/figuras/logica/capas_recortes/ARQL-27_Recorte_Seguridad.png)
+![Seguridad: identidad y autorización transversal](https://raw.githubusercontent.com/PatricioH315/LafroX/d397c30ff8ad232ec4e3ea02caf5f3cb6800a547/04/figuras/logica/capas_recortes/ARQL-27_Recorte_Seguridad.png)
 
 <a id="fig:arql-capa-7"></a>
  Keycloak emite la identidad y cada módulo decide la autorización sobre su recurso. Sin enlace, el verificador usa permisos de turno previamente firmados; el cifrado y la auditoría protegen los datos y decisiones a lo largo de todas las capas.
@@ -537,7 +537,7 @@ La Figura [13](LAFROX-Subdocumento4.md#fig:arql-capa-8) presenta las responsabil
 
 **Figura 13 — Observabilidad: correlación de nube y sitios**
 
-![Observabilidad: correlación de nube y sitios](https://raw.githubusercontent.com/PatricioH315/LafroX/c1f0874547a965a2cf722e805844c8c68283e1e3/04/figuras/logica/capas_recortes/ARQL-28_Recorte_Observabilidad.png)
+![Observabilidad: correlación de nube y sitios](https://raw.githubusercontent.com/PatricioH315/LafroX/d397c30ff8ad232ec4e3ea02caf5f3cb6800a547/04/figuras/logica/capas_recortes/ARQL-28_Recorte_Observabilidad.png)
 
 <a id="fig:arql-capa-8"></a>
  La correlación permite seguir una operación entre APIs, módulos y consumidores. Durante el corte, el sitio conserva telemetría y mantiene sus alarmas; CloudWatch reúne registros, métricas y trazas para los tableros y la atención de incidentes.
@@ -724,7 +724,7 @@ La Figura [14](LAFROX-Subdocumento4.md#fig:arql-18) dibuja las relaciones mínim
 
  **Figura 14 — Modelo conceptual del pedido, el lote y la entrega**
 
-![Modelo conceptual del pedido, el lote y la entrega](https://raw.githubusercontent.com/PatricioH315/LafroX/c1f0874547a965a2cf722e805844c8c68283e1e3/04/figuras/logica/ARQL-18_Dominio_trazabilidad.png)
+![Modelo conceptual del pedido, el lote y la entrega](https://raw.githubusercontent.com/PatricioH315/LafroX/d397c30ff8ad232ec4e3ea02caf5f3cb6800a547/04/figuras/logica/ARQL-18_Dominio_trazabilidad.png)
 
 <a id="fig:arql-18"></a>
 
@@ -1086,7 +1086,7 @@ La Figura [15](LAFROX-Subdocumento4.md#fig:vista-general) presenta la vista gene
 
 **Figura 15 — Vista general de la arquitectura física híbrida**
 
-![Vista general de la arquitectura física híbrida](../../LafroX/04/figuras/fisica/Arquitectura_Fisica_General.png)
+![Vista general de la arquitectura física híbrida](https://raw.githubusercontent.com/PatricioH315/LafroX/d397c30ff8ad232ec4e3ea02caf5f3cb6800a547/04/figuras/fisica/Arquitectura_Fisica_General.png)
 
 Fuente: elaboración propia.
 
@@ -1223,7 +1223,7 @@ Los dos centros de distribución tienen su recinto especificado en el apartado [
 
 **Figura 16 — Gabinete de borde de las plataformas de cross-docking**
 
-![Gabinete de borde de las plataformas de cross-docking](../../LafroX/04/figuras/fisica/Arquitectura_Fisica_Crossdocking.png)
+![Gabinete de borde de las plataformas de cross-docking](https://raw.githubusercontent.com/PatricioH315/LafroX/d397c30ff8ad232ec4e3ea02caf5f3cb6800a547/04/figuras/fisica/Arquitectura_Fisica_Crossdocking.png)
 
 Fuente: elaboración propia.
 
@@ -1235,7 +1235,7 @@ La Figura [17](LAFROX-Subdocumento4.md#fig:cd-concepcion) presenta el gabinete d
 
 **Figura 17 — Gabinete de borde del CD Concepción**
 
-![Gabinete de borde del CD Concepción](../../LafroX/04/figuras/centros_de_datos/Arquitectura_Fisica_CD_Concepcion.png)
+![Gabinete de borde del CD Concepción](https://raw.githubusercontent.com/PatricioH315/LafroX/d397c30ff8ad232ec4e3ea02caf5f3cb6800a547/04/figuras/centros_de_datos/Arquitectura_Fisica_CD_Concepcion.png)
 
 Fuente: elaboración propia.
 
@@ -1523,7 +1523,7 @@ La Figura [19](LAFROX-Subdocumento4.md#fig:nube) ubica en la topología de AWS l
 
 **Figura 19 — Topología de los servicios en AWS: región primaria sa-east-1 y región de recuperación us-east-1**
 
-![Topología de los servicios en AWS: región primaria sa-east-1 y región de recuperación us-east-1](https://raw.githubusercontent.com/PatricioH315/LafroX/c1f0874547a965a2cf722e805844c8c68283e1e3/04/figuras/fisica/Arquitectura_Fisica_Nube.png)
+![Topología de los servicios en AWS: región primaria sa-east-1 y región de recuperación us-east-1](https://raw.githubusercontent.com/PatricioH315/LafroX/d397c30ff8ad232ec4e3ea02caf5f3cb6800a547/04/figuras/fisica/Arquitectura_Fisica_Nube.png)
 
 Fuente: elaboración propia.
 
@@ -1600,7 +1600,7 @@ La Figura [20](LAFROX-Subdocumento4.md#fig:amb-desarrollo) muestra cómo llega u
 
 **Figura 20 — Ambiente de Desarrollo**
 
-![Ambiente de Desarrollo](https://raw.githubusercontent.com/PatricioH315/LafroX/c1f0874547a965a2cf722e805844c8c68283e1e3/04/figuras/fisica/ambientes/amb_desarrollo.png)
+![Ambiente de Desarrollo](https://raw.githubusercontent.com/PatricioH315/LafroX/d397c30ff8ad232ec4e3ea02caf5f3cb6800a547/04/figuras/fisica/ambientes/amb_desarrollo.png)
 
 Fuente: elaboración propia.
 
@@ -1626,7 +1626,7 @@ QA repite la secuencia de Desarrollo en su propia cuenta y su propia VPC (Figura
 
 **Figura 21 — Ambiente de QA**
 
-![Ambiente de QA](https://raw.githubusercontent.com/PatricioH315/LafroX/c1f0874547a965a2cf722e805844c8c68283e1e3/04/figuras/fisica/ambientes/amb_qa.png)
+![Ambiente de QA](https://raw.githubusercontent.com/PatricioH315/LafroX/d397c30ff8ad232ec4e3ea02caf5f3cb6800a547/04/figuras/fisica/ambientes/amb_qa.png)
 
 Fuente: elaboración propia.
 
@@ -1650,7 +1650,7 @@ En Preproducción la secuencia se ensaya sobre la topología de Producción y so
 
 **Figura 22 — Ambiente de Preproducción**
 
-![Ambiente de Preproducción](https://raw.githubusercontent.com/PatricioH315/LafroX/c1f0874547a965a2cf722e805844c8c68283e1e3/04/figuras/fisica/ambientes/amb_preproduccion.png)
+![Ambiente de Preproducción](https://raw.githubusercontent.com/PatricioH315/LafroX/d397c30ff8ad232ec4e3ea02caf5f3cb6800a547/04/figuras/fisica/ambientes/amb_preproduccion.png)
 
 Fuente: elaboración propia.
 
@@ -1682,7 +1682,7 @@ En Producción la secuencia se ejecuta de forma automática y llega además a lo
 
 **Figura 23 — Ambiente de Producción**
 
-![Ambiente de Producción](https://raw.githubusercontent.com/PatricioH315/LafroX/c1f0874547a965a2cf722e805844c8c68283e1e3/04/figuras/fisica/ambientes/amb_produccion.png)
+![Ambiente de Producción](https://raw.githubusercontent.com/PatricioH315/LafroX/d397c30ff8ad232ec4e3ea02caf5f3cb6800a547/04/figuras/fisica/ambientes/amb_produccion.png)
 
 Fuente: elaboración propia.
 
@@ -1716,7 +1716,7 @@ La Figura [24](LAFROX-Subdocumento4.md#fig:amb-recuperacion) muestra las dos rut
 
 **Figura 24 — Ambiente de Recuperación ante Desastres**
 
-![Ambiente de Recuperación ante Desastres](https://raw.githubusercontent.com/PatricioH315/LafroX/c1f0874547a965a2cf722e805844c8c68283e1e3/04/figuras/fisica/ambientes/amb_recuperacion.png)
+![Ambiente de Recuperación ante Desastres](https://raw.githubusercontent.com/PatricioH315/LafroX/d397c30ff8ad232ec4e3ea02caf5f3cb6800a547/04/figuras/fisica/ambientes/amb_recuperacion.png)
 
 Fuente: elaboración propia.
 
@@ -2539,7 +2539,7 @@ La Figura [25](LAFROX-Subdocumento4.md#fig:cd-talca) muestra cómo se conecta el
 
 **Figura 25 — Arquitectura física del sitio on-premise del CD Talca**
 
-![Arquitectura física del sitio on-premise del CD Talca](https://raw.githubusercontent.com/PatricioH315/LafroX/c1f0874547a965a2cf722e805844c8c68283e1e3/04/figuras/centros_de_datos/Arquitectura_Fisica_CD_Talca.png)
+![Arquitectura física del sitio on-premise del CD Talca](https://raw.githubusercontent.com/PatricioH315/LafroX/d397c30ff8ad232ec4e3ea02caf5f3cb6800a547/04/figuras/centros_de_datos/Arquitectura_Fisica_CD_Talca.png)
 
 Fuente: elaboración propia.
 
@@ -2613,7 +2613,7 @@ La Figura [26](LAFROX-Subdocumento4.md#fig:racks-talca) muestra cómo se reparte
 
 **Figura 26 — Distribución de U y ocupación proyectada de los racks del CD Talca**
 
-![Distribución de U y ocupación proyectada de los racks del CD Talca](https://raw.githubusercontent.com/PatricioH315/LafroX/c1f0874547a965a2cf722e805844c8c68283e1e3/04/figuras/centros_de_datos/Racks_CD_Talca.png)
+![Distribución de U y ocupación proyectada de los racks del CD Talca](https://raw.githubusercontent.com/PatricioH315/LafroX/d397c30ff8ad232ec4e3ea02caf5f3cb6800a547/04/figuras/centros_de_datos/Racks_CD_Talca.png)
 
 Fuente: elaboración propia.
 
@@ -2639,7 +2639,7 @@ Los equipos de energía y climatización y los controles de acceso descritos se 
 
 **Figura 27 — Distribución interna del recinto técnico del CD Talca por zonas y líneas de acceso**
 
-![Distribución interna del recinto técnico del CD Talca por zonas y líneas de acceso](https://raw.githubusercontent.com/PatricioH315/LafroX/c1f0874547a965a2cf722e805844c8c68283e1e3/04/figuras/centros_de_datos/Recinto_CD_Talca.png)
+![Distribución interna del recinto técnico del CD Talca por zonas y líneas de acceso](https://raw.githubusercontent.com/PatricioH315/LafroX/d397c30ff8ad232ec4e3ea02caf5f3cb6800a547/04/figuras/centros_de_datos/Recinto_CD_Talca.png)
 
 Fuente: elaboración propia.
 

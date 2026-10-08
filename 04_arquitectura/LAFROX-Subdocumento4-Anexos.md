@@ -44,8 +44,6 @@
 - [Referencias](#referencias)
 - [Declaración de uso de IA](#declaración-de-uso-de-ia)
 
-A.table
-
 # Anexos del Subdocumento 4
 
 Estos anexos reúnen los catálogos, las matrices, el registro de decisiones de arquitectura y la memoria de cálculo del dimensionamiento citados en los apartados 4.1, 4.2 y 4.3 del Subdocumento 4. El cuerpo del subdocumento conserva la explicación de las decisiones y sus consecuencias operativas; el detalle de cada equipo y servicio se entrega en el Formulario T-11.
