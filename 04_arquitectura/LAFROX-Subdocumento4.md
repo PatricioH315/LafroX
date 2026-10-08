@@ -2817,12 +2817,38 @@ Se utilizó OpenAI Codex como apoyo a la revisión de consistencia, redacción d
 
 <a id="tab:uso-ia-logica"></a>
 
-**Tabla 40 — Uso de IA en el apartado lógico**
+**Tabla 40 — Uso de IA en el Subdocumento 4**
 
 | **Sección** | **Herramienta** | **Finalidad** | **Texto** | **Diagramas** | **Revisión humana** |
 | --- | --- | --- | --- | --- | --- |
 | 4.1 | OpenAI Codex | Redacción, coherencia y verificación documental. | Alto | Alto en vistas asistidas | Revisión final no realizada; se efectuará sobre el consolidado. |
 | 4.1.1 | OpenAI Codex | Especificaciones y soporte de tecnologías. | Alto | No aplica | Revisión final no realizada. |
+| 4.2 | | | Alto | | |
+| 4.3 | | | Alto | | |
+| 4-A | Codex | Eventos canónicos. | Alto | Ninguno | No realizada. |
+| 4-B | Codex | Gobierno de integración. | Alto | Ninguno | No realizada. |
+| 4-C | Codex | Carga masiva. | Alto | Ninguno | No realizada. |
+| 4-D | Codex | Módulos y responsabilidades. | Alto | Ninguno | No realizada. |
+| 4-E | Codex | Trazabilidad funcional. | Alto | Ninguno | No realizada. |
+| 4-F | Codex | Límites de contexto. | Alto | Ninguno | No realizada. |
+| 4-G | Codex | Interfaces internas. | Alto | Ninguno | No realizada. |
+| 4-H | Codex | Interfaces externas. | Alto | Ninguno | No realizada. |
+| 4-I | Codex | Cálculos de volumen. | Alto | Ninguno | No realizada. |
+| 4-J | Codex | Funciones offline. | Alto | Ninguno | No realizada. |
+| 4-K | Codex | Reconciliación. | Alto | Ninguno | No realizada. |
+| 4-L | Codex | Decisiones del caso. | Alto | Ninguno | No realizada. |
+| 4-M | Codex | Protocolos de aceptación. | Alto | Ninguno | No realizada. |
+| 4-N | Codex | Correspondencia lógica. | Alto | Ninguno | No realizada. |
+| 4-O | Codex | Especificación y trazabilidad. | Alto | Ninguno | No realizada. |
+| 4-P | Codex | Especificación y trazabilidad. | Alto | Ninguno | No realizada. |
+| 4-Q | Codex | Especificación y trazabilidad. | Alto | Ninguno | No realizada. |
+| 4-R | Codex | Especificación y trazabilidad. | Alto | Ninguno | No realizada. |
+| 4-S | Codex | Especificación y trazabilidad. | Alto | Ninguno | No realizada. |
+| 4-T | Codex | Especificación y trazabilidad. | Alto | Ninguno | No realizada. |
+| 4-U | Codex | Especificación y trazabilidad. | Alto | Ninguno | No realizada. |
+| 4-V | Codex | Especificación y trazabilidad. | Alto | Ninguno | No realizada. |
+| 4-W | | | Alto | | |
+| T-11 | | | Alto | | |
 
 Fuente: registro del trabajo asistido sobre el apartado 4.1; declaración de apoyo, no certificación técnica.
 
