@@ -1,5 +1,17 @@
 # CONTEXTO DE SESIÓN
 
+## Estado vigente — 8 de octubre de 2026: guías de lectura en Resumen
+
+El usuario autorizó implementar el plan de `Resumen/` en la rama comprobada `rama-md`, sin cambiar de rama ni realizar commit/publicación. La carpeta contiene 26 guías independientes y `README.md`: nueve subdocumentos (1–8 y 13), siete archivos de anexos que explican 66 anexos individuales y diez formularios. Cada nombre conserva el original con sufijo `-Resumen.md`; la carpeta es plana y exclusivamente Markdown.
+
+Las guías usan el contenido local vigente y distinguen compromisos, supuestos, cálculos y verificaciones pendientes. Se excluyen Bases, material del curso, revisiones, catálogos auxiliares y el borrador de innovaciones. No se alteraron los 26 entregables fuente. Se actualizó el acceso desde README y se registró procedencia en MANIFIESTO. Al cambiar un original se actualiza manualmente su resumen y las guías relacionadas; no existe generación automática.
+
+Durante el cotejo final se incorporaron cambios concurrentes de los originales: SD1 y T-15 describen ahora PHP/Laravel y Kotlin; no se mantiene como pendiente la antigua diferencia con Python/Django. La contingencia adicional vigente del SD8 es 13.223 HH; la cifra histórica 12.004 HH del contexto no se trasladó como diferencia actual al SD7. Siguen descritas diferencias vigentes: doce resultados E1 en el cuerpo SD7 frente a catorce con verificaciones E1 en 7.C/T-18, y responsabilidades/fechas de sala técnica entre SD6, T-11 y T-15. Las guías no las corrigen ni acreditan aceptación.
+
+Verificación completada: 27 archivos Markdown en Resumen, correspondencia uno a uno de los 26 documentos, 66 anexos cubiertos exactamente una vez, 280 enlaces locales con destino y ancla válidos, 24 comprobaciones de cifras clave en las fuentes y tres comprobaciones aritméticas. `git diff --check` pasó. Los hashes de los 26 originales permanecieron iguales respecto de la última lectura completa tras las actualizaciones concurrentes; las únicas modificaciones de esta tarea fuera de Resumen son README, MANIFIESTO y este contexto.
+
+Los encabezados de rama/alcance de los registros anteriores son históricos; esta autorización explícita gobierna la creación de la carpeta Resumen en `rama-md`. La asistencia de IA en las guías no constituye revisión humana adicional de los originales.
+
 ## Estado vigente — 8 de octubre de 2026: auditoría de indicios de IA (§7.1)
 
 Se aplicó en las carpetas 01–08 y 13 la auditoría de indicios de IA de las Aclaraciones §7.1. El informe completo está en `Revision/auditoria_indicios_IA.md`.

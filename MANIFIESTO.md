@@ -1,5 +1,13 @@
 # Manifiesto de procedencia y conversión
 
+## Carpeta Resumen — 8 de octubre de 2026
+
+El usuario autorizó crear `Resumen/` en la rama actual `rama-md`, usando las fuentes locales vigentes sin modificar los entregables originales. El alcance es de 26 resúmenes independientes: nueve subdocumentos (1–8 y 13), siete archivos de anexos y diez formularios (T-6, T-9, T-10, T-11, T-12, T-14, T-15, T-16, T-18 y T-19), más `Resumen/README.md` como índice. Los archivos de anexos sintetizan por separado sus 66 anexos individuales. Los nombres originales se conservan agregando `-Resumen` antes de `.md`.
+
+La transformación es síntesis explicativa en español con asistencia de Codex: propósito, decisiones, cifras esenciales, relaciones y enlaces a fuentes y secciones. Las matrices se explican sin copiar sus filas. Se conservan supuestos, pendientes y diferencias vigentes; no se inventan datos ni se acreditan resultados de pruebas, certificaciones, aprobación del CLIENTE o revisión humana adicional. Las guías reflejan las actualizaciones locales detectadas durante el cotejo final.
+
+Se excluyen Bases, material del curso, revisiones, catálogos auxiliares y `13_innovaciones/innovaciones_corregidas.md`. No se crearon archivos de otros formatos, ni commit ni publicación por esta tarea. Las guías se mantienen manualmente cuando cambia su fuente. Los registros anteriores de este manifiesto describen la procedencia histórica.
+
 ## Actualización vigente — 5 de octubre de 2026
 
 El usuario autorizó actualizar SD3 desde Descargas y realizar su coherencia con la lógica del SD4 en `alvaro-md`. La implementación fue publicada en `26c345c`; el historial de ese commit conserva las fuentes, huellas y comprobaciones. Por petición posterior se retiran los manifiestos de capítulo, registros auxiliares y copias por partes: SD3 y SD4 conservan únicamente cuerpo, anexos y formulario. Las dependencias de diseño están en el contexto general de sesión. Los registros posteriores de este archivo corresponden a importaciones históricas; sus conteos no describen la versión actual.

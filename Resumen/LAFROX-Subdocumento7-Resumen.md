@@ -1,0 +1,37 @@
+# LafroX — Resumen del Subdocumento 7: Plan de trabajo
+
+[Índice de resúmenes](README.md) · [Documento original](../07_PlanDeTrabajo_EDT_Cronograma_Implantaci%C3%B3n/LAFROX-Subdocumento7.md)
+
+## Para qué sirve
+
+Convierte el alcance en trabajo programado: qué entregar, en qué orden, con qué equipos y cómo incorporarlo a la operación. Es la guía para navegar T-14, T-15 y T-18.
+
+## Qué trabajo contiene
+
+[La EDT](../07_PlanDeTrabajo_EDT_Cronograma_Implantaci%C3%B3n/LAFROX-Subdocumento7.md#71-edt) —estructura de descomposición del trabajo— cubre el alcance en **9 fases, 49 cuentas de control y 222 paquetes**. Inicio, Elaboración, Construcción y Transición siguen el proceso de SD6; adquisiciones, infraestructura, capacitación, operación y cierre completan la propuesta.
+
+Cada paquete tiene un entregable, criterio de aceptación, responsable y período. La seguridad, calidad, migración e innovaciones tienen trabajo explícito; no se dan por cubiertas por una tarea genérica. T-14 contiene el diccionario y la carta Gantt.
+
+## Orden, esfuerzo y simultaneidad
+
+[El plan](../07_PlanDeTrabajo_EDT_Cronograma_Implantaci%C3%B3n/LAFROX-Subdocumento7.md#72-plan-de-trabajo) parte de alcance e interfaces; después desarrolla arquitectura, infraestructura y base compartida. Recepción/inventario alimentan preparación y trazabilidad; pedidos alimentan rutas; entregas alimentan rendición y costo de servir.
+
+El esfuerzo usa estimación **PERT**, con escenarios optimista, probable y pesimista. Se organizan **ocho frentes**, y los meses 13–15 y 19–20 necesitan equipos simultáneos: atender E1 no debe consumir la capacidad asignada a E2.
+
+La [base de recursos](../07_PlanDeTrabajo_EDT_Cronograma_Implantaci%C3%B3n/LAFROX-Subdocumento7.md#738-base-de-planificaci%C3%B3n-y-recursos) programa **202.774 HH** —horas hombre—: **190.366** de trabajo base, **9.336** de soporte puente E1 y **3.072** de correcciones protegidas. El máximo de la curva es **69 personas equivalentes en mes 15**. El total incluye **114.213 HH de Operación**; no representa únicamente construcción de software. Una equivalencia mensual no demuestra disponibilidad de personas con la competencia requerida cada día.
+
+## Calendario e implantación
+
+El contrato tiene **56 meses**. E1 pasa a producción en **mes 16** y E2 en **mes 21**; la operación contractual cubre 36 meses. [Los doce hitos](../07_PlanDeTrabajo_EDT_Cronograma_Implantaci%C3%B3n/LAFROX-Subdocumento7.md#732-carta-gantt-y-calendario) se ordenan por fecha, no por número: H8 ocurre antes que H7 por el solapamiento.
+
+[La implantación](../07_PlanDeTrabajo_EDT_Cronograma_Implantaci%C3%B3n/LAFROX-Subdocumento7.md#733-plan-de-implantaci%C3%B3n-y-puesta-en-marcha) se hace por olas, con conciliación diaria, usuarios certificados y cuatro semanas finales a volumen real. La estabilización dura **cuatro semanas por ola**. El despacho de 05:30–07:00 no admite interrupciones; las fechas prohibidas condicionan las activaciones y cortes.
+
+## Dónde consultar y qué no está confirmado
+
+T-15 descompone **163 paquetes con entregable en 564 actividades** y trata **59 paquetes continuos** por ocurrencia o quincena. T-18 desarrolla olas, reversión y transferencia; los anexos relacionan calendario, dependencias, aceptación, innovación y riesgos.
+
+El cuerpo menciona doce resultados verificados en E1 mientras Anexo 7.C/T-18 detallan catorce con verificaciones en esa marcha blanca. Son diferencias internas que se señalan sin reconciliarlas. Los tamaños, equipos, fecha de inicio y pruebas deben validarse antes de tratar el plan como una ejecución acreditada.
+
+---
+
+**Fuente y actualización:** documento local vigente al 8 de octubre de 2026. Resumen elaborado con asistencia de Codex; no acredita aprobación del CLIENTE ni revisión humana adicional.
