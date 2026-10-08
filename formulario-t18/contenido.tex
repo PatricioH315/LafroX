@@ -43,6 +43,7 @@ La Etapa 1 pone en producción la trazabilidad de recepción, la bodega con FEFO
 El calendario de olas respeta los meses 13--15, pero su cierre se calcula con fechas reales. Sea F el instante final de la marcha blanca: el 100 \% del alcance debe estar operativo antes de F − 28 días y sostener volumen real e indicadores durante [F − 28 días, F). Cada activación debe respetar 1--25 de septiembre, todo diciembre y los primeros tres días hábiles del mes; también evita 05:30--07:00 y no detiene rutas. La secuencia vigente de §6.1 adelanta los remanentes a semana 8, subordinada a ese límite. Un retraso exige replanificar antes de H6; no se recorta la evidencia ni se desplazan automáticamente las fases siguientes.
 
 \begin{figure}[htbp]
+  \LFXfiguraPendiente
   \nota{Descripción textual de figura: Semanas 10 a 13: toda la Etapa 1 a volumen real (Art. 17.3). Mes 16 (H7). 4 semanas en criterio. Registro oficial en la solución y papel retirado. Entrada zona por zona, todas las zonas, criterio de avance.}
   \caption{Olas de la Etapa 1 durante la marcha blanca.}
   \label{fig:T18-olas}
@@ -84,6 +85,7 @@ Los indicadores se miden y publican cada día con el umbral que exige el Art. 17
 La sexta condición es el acta de aceptación firmada por la Contraparte Técnica (paquete 4.2.3, H7). Los resultados del capítulo 18 del caso que se verifican en esta marcha blanca (R18-01 a R18-03, R18-05 a R18-10 y R18-14 a R18-16) se miden con el método y el período del Capítulo 3, Anexo 3.J. La Figura \ref{fig:T18-ciclo} resume el ciclo diario y las condiciones de cierre.
 
 \begin{figure}[htbp]
+  \LFXfiguraPendiente
   \nota{Descripción textual de figura: Ciclo de cada día, medición, comparación, continuar/corregir/revertir, conciliación, seis condiciones copulativas (Art. 17.3).}
   \caption{Ciclo diario de la marcha blanca y condiciones de cierre del Art. 17.3.}
   \label{fig:T18-ciclo}
@@ -98,6 +100,7 @@ Cada día se decide entre continuar, corregir o revertir, y la marcha blanca cie
 La reversión la autoriza el responsable de operaciones del CLIENTE cuando un indicador amenaza el despacho. Sus disparadores son observables: pedidos sin sincronizar al inicio de la carga, rutas del día no disponibles para cargar o un defecto crítico en la ventana de despacho. La decisión se toma en el turno de noche, y la restitución de la versión operativa local y sus documentos válidos debe completarse antes de las 05:30; el papel sólo apoya tareas auxiliares y no acredita continuidad crítica; la capacidad de los 96 camiones debe demostrarse en el ensayo de la sección 6.4. Ese plazo protege el despacho; no es el RTO de recuperación ante desastres. La Figura \ref{fig:T18-reversion} presenta el procedimiento por rol.
 
 \begin{figure}[htbp]
+  \LFXfiguraPendiente
   \nota{Descripción textual de figura: Turno de noche, despacho, restitución operativa probada antes de las 05:30, la ola reinicia sus 4 semanas.}
   \caption{Procedimiento de reversión de la Etapa 1.}
   \label{fig:T18-reversion}
@@ -181,6 +184,7 @@ La marcha blanca de la Etapa 2 cierra con las seis condiciones del Art. 17.3. El
 La convivencia sigue las reglas del Art. 17.2. En los meses 13 a 15 coexisten la marcha blanca de la Etapa 1 y el desarrollo de la Etapa 2: el desarrollo de la Etapa 2 no despliega en Producción ni modifica las funciones de la Etapa 1 en marcha blanca, y los frentes de ambos esfuerzos están en el Formulario T-15. En los meses 19 y 20 la Etapa 1 está en producción y la Etapa 2 en marcha blanca, con una única fuente de verdad para los datos compartidos (pedidos, clientes, guías y entregas): la Etapa 2 lee y extiende los registros de la Etapa 1, sin copiarlos ni volver a digitarlos. En el mes 21, el paso a producción de la Etapa 2 no degrada la disponibilidad, el desempeño ni la integridad de los datos de la Etapa 1, y la Operación comienza ese mes con ambos alcances. La Figura \ref{fig:T18-convivencia} muestra el flujo de datos de los meses 19 y 20.
 
 \begin{figure}[htbp]
+  \LFXfiguraPendiente
   \nota{Descripción textual de figura: Etapa 1 en producción, Etapa 2 en marcha blanca, ERP único emisor. Ningún despliegue de la Etapa 2 modifica una función estabilizada de la Etapa 1.}
   \caption{Convivencia de la Etapa 1 en producción con la Etapa 2 en marcha blanca.}
   \label{fig:T18-convivencia}

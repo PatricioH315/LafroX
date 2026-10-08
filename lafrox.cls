@@ -775,6 +775,23 @@
     \par\endgroup\addvspace{9pt}%
   \fi}
 
+% Marcador visible para figuras que aun no se han incorporado al PDF.
+% Se deja siempre presente en la posicion exacta donde falta la ilustracion.
+\newcommand{\LFXfiguraPendiente}{%
+  \par\addvspace{6pt}%
+  \begin{center}
+    \fbox{%
+      \parbox[c][2.8cm][c]{0.90\linewidth}{%
+        \centering
+        {\intersemibold\fontsize{12pt}{14pt}\selectfont\color{lafroxFuerte}FIGURA PENDIENTE}\par
+        \vspace{4pt}
+        {\fontsize{9pt}{11pt}\selectfont\color{lafroxGris}por insertar en esta posición}%
+      }%
+    }%
+  \end{center}
+  \par\addvspace{6pt}%
+}
+
 % ---------------------------------------------------------------------------
 % 11. FIGURAS Y ANEXOS HORIZONTALES
 % ---------------------------------------------------------------------------
