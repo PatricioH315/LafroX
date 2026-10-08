@@ -2,11 +2,11 @@
 
 Este formulario presenta la información de planificación que pide el Formulario T-15 de las Bases Administrativas para el Subdocumento 7: el método con que se estiman las horas hombre de cada paquete, la programación sobre la red de dependencias, la ruta crítica y sus holguras, y los frentes de trabajo, con el detalle de los solapamientos de los meses 13 a 15 y 19 a 20. Los paquetes de trabajo son los de la EDT del Formulario T-14. Este formulario no contiene precios ni costos (Art. 50.2).
 
-\section{1 Método de estimación y de programación}
+\section{Método de estimación y de programación}
 
 La estimación y la programación siguen el PMBOK y la técnica PERT, de modo que cada duración y cada holgura se puedan reconstruir a partir de valores declarados.
 
-\subsection{1.1 Estimación}
+\subsection{Estimación}
 
 El esfuerzo de cada paquete se estima con tres valores en horas hombre (Project Management Institute [PMI], 2017, p. 201): el optimista (O), que corresponde al mejor escenario; el más probable (M), con recursos y productividad realistas; y el pesimista (P), que corresponde al peor escenario. La incertidumbre de cada estimación se representa con una distribución beta, que el PMBOK admite entre las distribuciones para modelar la incertidumbre (PMI, 2017, p. 432). Con ella, la técnica PERT calcula el valor esperado y la desviación (Malcolm et al., 1959):
 T\_E = (O + 4M + P) / 6; σ = (P − O) / 6.
@@ -15,13 +15,13 @@ La p. 201 del PMBOK presenta también la distribución triangular, \$(O + M + P)
 
 Las bases de cada estimación se declaran por tipo de paquete. Los módulos y las integraciones se estiman con los requerimientos del Formulario T-12 asignados al paquete; la infraestructura, con las cantidades del Formulario T-11; la implantación y la capacitación, con las personas y rutas del caso y la dotación del Formulario T-18, sección 2.6; y la operación, con los horarios de cobertura de los paquetes 8.1.1 y 8.1.2 y la periodicidad de los informes. Los paquetes de la fase 8 son de esfuerzo continuo: su estimación es mensual y se multiplica por los 36 meses de operación.
 
-\subsection{1.2 Programación}
+\subsection{Programación}
 
 La duración deberá contrastarse con esfuerzo, capacidad efectiva y dependencias. La sección 6 descompone cada paquete en actividades de 8 a 80 HH que caben en una quincena; sobre ellas se programa en detalle y se informa el avance. Las ventanas de la sección 4 son supuestos; la red agregada de la sección 5 explicita un cálculo provisional de calendario. Las dependencias entre paquetes están en el Anexo 7.B del Subdocumento 7, y sobre esa red se aplica el método de la ruta crítica (PMI, 2017, pp. 210–211): una pasada hacia adelante da el inicio y el fin tempranos; una pasada hacia atrás, desde los meses fijos del Art. 17°, da el inicio y el fin tardíos; la diferencia LS − ES es la holgura total; la holgura libre se calcula respecto del ES de sus sucesores. Los hitos del Formulario E-25 son restricciones de fecha fija: un camino que no llega a su hito tiene holgura negativa y obliga a replanificar.
 
 La sección 5 incorpora las revisiones del CLIENTE (Art. 18.3) como retardos, calcula el PERT de duración por camino con su desviación y probabilidad de cumplir cada hito, y añade escenarios deterministas de demora. La probabilidad por camino no se presenta como probabilidad de cumplir todo el proyecto. La nivelación ajusta el inicio de los paquetes con holgura para que ningún rol supere su dotación disponible (PMI, 2017, pp. 211–212); los paquetes de la ruta crítica no se mueven.
 
-\section{2 Ruta crítica y holguras}
+\section{Ruta crítica y holguras}
 
 La cadena crítica nace en las interfaces del sistema de gestión sin documentación (Caso 02, sección 17.5): 1.2.3 Especificación de las interfaces, 3.3.2 Integración con el ERP, 3.4 Módulos de la Etapa 1, 3.8.1 Pruebas de integración (H4, mes 10), 3.8.2 a 3.8.6 Pruebas de certificación, 3.8.7 Certificación (H5, mes 12), 4.2.1 Marcha blanca (H6, mes 13) y 4.2.3 Paso a producción (H7, mes 16). La Figura «fig:T15-ruta» la presenta junto con los caminos casi críticos.
 
@@ -38,7 +38,7 @@ La figura identifica cadenas de riesgo, pero no permite concluir holgura cero po
 
 La holgura se gestiona en las instancias de gobierno de la EDT: el avance de la ruta crítica y de los caminos casi críticos se revisa en la reunión semanal y en el Comité de Proyecto quincenal (paquetes 1.3.5 y 1.8.3); toda desviación que comprometa un hito se escala al Comité Ejecutivo con su análisis de impacto (paquetes 1.4.3 y 1.8.2); y el informe mensual con valor ganado avisa toda desviación mayor al 10 \% con su plan dentro de cinco días hábiles (paquete 1.8.6).
 
-\section{3 Frentes de trabajo y solapamientos}
+\section{Frentes de trabajo y solapamientos}
 
 Un frente de trabajo es un equipo con un responsable y un conjunto de cuentas de control que avanza en paralelo con los demás. La Tabla «tab:T15-frentes» define los frentes a partir de la EDT del Formulario T-14 y de los responsables de su diccionario.
 
@@ -61,11 +61,11 @@ Los frentes se sincronizan en los hitos del Formulario E-25 y en los comités de
 
 En los meses 13 a 15 trabajan a la vez F7, en la marcha blanca de la Etapa 1; F3, en las correcciones de esa marcha blanca; F4, en el desarrollo de la Etapa 2; F6, en las pruebas de ambas etapas; y F1 y F2. F3 y F4 dependen del mismo rol, el Líder de Desarrollo, y por eso son equipos distintos: el equipo que atiende la marcha blanca no puede ser el que desarrolla la Etapa 2 (Art. 17.2, punto 1). En los meses 19 y 20 trabajan F7, en la marcha blanca de la Etapa 2; F4, en sus correcciones; F6; y el soporte de la Etapa 1 en producción.
 
-\section{4 Modelo cuantitativo provisional de recursos}
+\section{Modelo cuantitativo provisional de recursos}
 
 \textbf{Base de cálculo:} estimación de planificación con tamaños supuestos. No acredita productividad medida, contratación, turnos nominales ni aceptación del CLIENTE. Permite preparar SD8 con supuestos trazables.
 
-\subsection{4.1 Supuestos y cálculo}
+\subsection{Supuestos y cálculo}
 
 \begin{itemize}
   \item Capacidad nominal asumida: 160 HH/persona-mes; disponibilidad programable 80 \%; capacidad efectiva 128 HH. El 20 \% cubre ausencias y coordinación no imputada. No es una jornada contractual ni un cálculo de cumplimiento laboral.
@@ -81,27 +81,27 @@ En los meses 13 a 15 trabajan a la vez F7, en la marcha blanca de la Etapa 1; F3
   \item Ventanas ajustadas para respetar el Anexo 7.B: 2.3.1/2.3.2 terminan en el mes 3 y 5.1.2 ocupa el mes 4 (D-09); la sala 6.1.1–6.1.4 empieza en el mes 5, después de la especificación (D-10), y su recepción 6.1.5 ocurre en el mes 6, después de 6.1.2–6.1.4 y antes de los racks (D-11); los prototipos 2.6.2 terminan en el mes 4, antes de la construcción 3.4 (D-05); la identidad 3.3.1 empieza en el mes 5, después del plan de seguridad 2.2.1 aprobado en el H2 (D-06); la integración con el ERP 3.3.2 termina en el mes 9 para dejar la revisión del H4 dentro del mes 10 (sección 5.5). La actualización anual del Plan de Reversibilidad 1.7.2 ocurre en el mes 15, primer aniversario de su entrega del mes 3; las siguientes son 8.1.4. El acompañamiento de salida 9.2.1 ocupa los meses 54 a 56 para cubrir sus 90 días dentro del contrato.
 
 \end{itemize}
-\subsection{4.2 Horas por los 222 paquetes}
+\subsection{Horas por los 222 paquetes}
 
 \parte{tablas/tab_T15_2}
 
 Se agregan explícitamente soporte puente SRE de 4.2.2 = 9336.00 HH y reserva F3/QA = 8 × (256 + 128) = 3.072 HH. Son componentes separados de las filas base (190.366 HH), incluidos en las curvas siguientes.
 
-\subsection{4.3 Resumen T-15}
+\subsection{Resumen T-15}
 
 \parte{tablas/tab_T15_3}
 
 Total exacto de paquetes y componentes = 202774.00 HH (190.366 base + 9.336 puente + 3.072 reserva); peak mensual conjunto = 66 personas equivalentes en el mes 16, cuando coinciden el desarrollo de la Etapa 2, el soporte puente de la Etapa 1 y el SOC. La versión anterior publicaba 147.328 HH porque imputaba un solo puesto de mesa, 32 HH/mes de SOC y promedios de 730 HH por mes; la mesa y el SOC dimensionados en el SD4 y el calendario real elevan la operación y el soporte puente. La implementación imputada a los meses 21 y 22 se separa de Operación; las actividades generales que continúan como servicio permanecen en Operación. Los peaks de etapas no se suman. Las centésimas de presentación se distribuyen por mayor resto entre meses y se concilian por etapa; la suma publicada conserva 202.774 HH exactas.
 
-\subsection{4.4 Curvas mensuales: horas por etapa y personas por rol}
+\subsection{Curvas mensuales: horas por etapa y personas por rol}
 
 \parte{tablas/tab_T15_4}
 
 Factibilidad por capacidad aritmética: se debe dotar cada rol con la curva indicada. Esto no acredita contratación, disponibilidad real ni suficiencia de la mesa. El registro nominal y los turnos deben comprobarse antes de aprobar la línea base. La reserva E1 es exclusiva; el trabajo de E2 usa capacidad adicional. La revisión de HH modifica conjuntamente dotación, cronograma y exposición de SD8.
 
-\section{5 Red agregada, restricciones y escenarios de calendario}
+\section{Red agregada, restricciones y escenarios de calendario}
 
-\subsection{5.1 Cálculo reproducible}
+\subsection{Cálculo reproducible}
 
 t = 0 abre el mes 1; t = 10 cierra el mes 10 (H4). Cada hito del Formulario E-25 se cumple con el acta de aceptación (Art. 18.1), y el CLIENTE dispone de diez días hábiles para revisar cada entregable (Art. 18.3). Por eso la red incluye, antes de cada hito de aceptación, un retardo R de 0,5 mes, equivalente a esos diez días hábiles: el trabajo técnico termina medio mes antes del cierre del mes del hito. Los diez días hábiles de subsanación no se programan como trabajo normal; si se necesitan, el hito se atrasa, y la segunda presentación con observaciones de la misma naturaleza es atraso imputable (Art. 18.3). t = 12/18 abre la marcha blanca siguiente; t = 15/20 marca la frontera hacia los meses 16/21, cuyo acta se firma en un día permitido del mes.
 
@@ -111,7 +111,7 @@ ES = máximo(liberación, EF de predecesores); EF = ES + d; LF = mínimo(LS suce
 
 La red incorpora las precedencias corregidas del Anexo 7.B: D-05 (prototipos 2.6.2 cerrados en el mes 4, antes de N05/N07), D-06 (identidad 3.3.1 desde el mes 5, dentro de N06), D-09–D-11 (planos, especificación, sala y recepción en secuencia mensual) y D-28 (la estabilización 4.2.2 sigue al paso a producción). Las garantías, la certificación externa de las interfaces de las cadenas (3.6.5/3.6.6) y las interfaces de terceros no forman bloques propios: se programan como restricciones de los paquetes que las contienen y se verifican en el calendario diario.
 
-\subsection{5.2 Secuencias que hacen compatible el modelo}
+\subsection{Secuencias que hacen compatible el modelo}
 
 La preparación 3.4.3 completa sus 960 HH en mes 8, después de recepción/inventario; preventa 3.4.6 termina mes 8. Rutas 3.4.7 y reparto 3.4.8 se ejecutan en mes 9. Dentro de ese mes, reparto entrega su base aceptada en la primera mitad y cobranza 3.4.10 ejecuta sus 960 HH en la segunda; devoluciones 3.4.9 e indicadores 3.4.11 terminan en mes 9. Esta secuencia preserva D-16/D-18/D-19. Para reparto y cobranza, 960 / (0,5 × 128) = 15 personas equivalentes por subventana, con especialistas distintos o transferencia ordenada; el techo mensual no prueba esa asignación.
 
@@ -121,7 +121,7 @@ Los cuatro módulos 3.5 se construyen meses 15–16 después de H8; integración
 
 El bloque N04 resume las cadenas paralelas de compra, sala, racks y configuración: 5.1.2 en el mes 4; 6.1.1–6.1.4 en los meses 5 y 6; 6.1.5 al inicio del mes 6; 6.3.1/6.3.2 después de esa acta, y 6.6.3 antes de t = 5,5. Ningún paquete se entrega en QA antes de H3. Las entregas parciales dentro del mes 6 (acta de sala, montaje y configuración) se programan por día antes de aprobar la línea base.
 
-\subsection{5.3 Márgenes y análisis PERT de duración}
+\subsection{Márgenes y análisis PERT de duración}
 
 \parte{tablas/tab_T15_6}
 
@@ -133,21 +133,21 @@ Por ejemplo, para H4: σ = √(3,5² + 5,0² + 0,5²)/12 = √37,5/12 = 0,51 mes
 
 Escenario determinista: una demora no recuperada de 0,25 mes en N06/N08 lleva la entrega de H4 a t = 9,75 y deja sólo 0,25 mes para la revisión; sin recuperación, el acta del H4 cae fuera del mes 10 y amenaza H5. Una demora de 0,50 mes en N12/N13 lleva H9 a t = 17,50 y amenaza H10. Se trata de sensibilidad, no de autorización para mover hitos. La capacidad protegida E1 es 3.072 HH en meses 13–20 y no puede sanar un retraso previo a H5.
 
-\subsection{5.4 Gobierno}
+\subsection{Gobierno}
 
 Las ventanas mensuales de acompañamiento son una imputación inicial: cuatro semanas desde un acta en día permitido pueden cruzar al mes siguiente, como ocurre con 4.3.2. Confirmada la fecha, se redistribuyen las mismas HH entre meses y se recalculan relevos; no se acorta el acompañamiento para mantener una celda mensual.
 
 El JP revisa semanalmente fechas pronosticadas, consumo de capacidad y restricciones. Una amenaza a H4/H5/H9/H10 se escala sin esperar consumo de una holgura inexistente. La actualización de tareas, equipos o duración obliga a repetir el cálculo y conservar D-01–D-34; se mantienen los 56 meses y las condiciones del Art. 17.3. Ver SD8, Anexos 8.C/8.D, para escenarios, reservas y condiciones de evidencia.
 
-\subsection{5.5 Presentación de entregables y revisión del CLIENTE}
+\subsection{Presentación de entregables y revisión del CLIENTE}
 
 Cada entregable que gatilla un hito se presenta al terminar su bloque técnico, medio mes antes del cierre del mes del hito, para que la revisión de diez días hábiles del Art. 18.3 termine dentro de ese mes. Los entregables que admiten revisión por partes se presentan por incrementos: los informes de QA de M1/M2 al cerrar N05 (t = 7), los del resto de los módulos al cerrar N07 (t = 9) y el informe de integración al cerrar N08 (t = 9,5). Así, la revisión final del H4 cubre sólo el último incremento. Si el CLIENTE formula observaciones, la subsanación de diez días hábiles corre en paralelo con el bloque siguiente, pero el hito no se da por cumplido hasta el acta. Este procedimiento no supone que el CLIENTE renuncie a su plazo ni que firme el acta el mismo día de la entrega.
 
-\subsection{5.6 Medición de los niveles de atención}
+\subsection{Medición de los niveles de atención}
 
 El Erlang C de la mesa (SD4, Anexo 4-W.7) dimensiona la espera con llegadas de Poisson, atención exponencial y paciencia infinita. Sirve para el 80 \% de respuestas antes de 20 segundos, pero no modela el abandono ni la resolución al primer contacto del RT-21.06 de las Bases Técnicas Transversales. Para ambos se aplica medición: desde la marcha blanca de la Etapa 1, la mesa registra por contacto la hora de llegada, de respuesta o de abandono y si se resolvió sin escalar. Con al menos cuatro semanas de registros se calibra un modelo con abandono (Erlang A) usando la paciencia observada, y se recalcula la dotación de 8.1.2 antes del mes 21. La resolución al primer contacto se sostiene con la base de conocimiento de 3.11 y la capacitación de 7.1, y se informa mensualmente. Si un indicador no se cumple durante dos meses seguidos, se aumenta la dotación de la franja afectada sin esperar la revisión anual.
 
-\subsection{5.7 Dotación requerida, roles mínimos y dotación declarada}
+\subsection{Dotación requerida, roles mínimos y dotación declarada}
 
 La curva de la sección 4.4 se compara con la dotación técnica declarada en el SD1, Tabla 1.1. La comparación muestra dónde la curva cabe en las divisiones de LafroX y dónde se requiere asignación, contratación o subcontratación antes de aprobar la línea base. No acredita disponibilidad: las personas de esas divisiones atienden otros contratos.
 
@@ -155,7 +155,7 @@ La curva de la sección 4.4 se compara con la dotación técnica declarada en el
 
 Los roles mínimos del numeral 19.2 de las Bases Técnicas Transversales se imputan a las familias así. El Jefe de Proyecto (100 \% en implementación) se imputa a JP en los meses 1–21. El Líder de Desarrollo (100 \% en implementación) se imputa a ARQ en los meses 1–4, donde participa en el diseño 2.1 y en los prototipos 2.6.2, y a DES desde el mes 4 (3.11.3/3.11.4 y los módulos); por eso la curva muestra DES cero en los meses 1–3 sin que el rol quede sin horas. El Líder Funcional (100 \% en implementación) se imputa a IMP en los meses 1–4 (1.2.2 y 2.6) y a CAL e IMP desde el mes 5 (pruebas de aceptación y olas). El Líder de Integración (permanente en implementación) se imputa a ARQ (1.2.3, 3.3 y 3.6). Ninguna de estas imputaciones agrega horas: forman parte de las horas de los paquetes donde trabajan. El SD1, sección 1.5, nomina a las personas que ocupan cada rol.
 
-\section{6 Lista de actividades: regla del 8/80 y del período de reporte}
+\section{Lista de actividades: regla del 8/80 y del período de reporte}
 
 La EDT del Formulario T-14 llega hasta el paquete de trabajo; fuera de ella, cada paquete se descompone en las actividades que permiten programarlo, asignarlo y controlarlo (PMI, 2017, pp. 183–185). Las actividades cumplen dos reglas de tamaño:
 
@@ -166,7 +166,7 @@ La EDT del Formulario T-14 llega hasta el paquete de trabajo; fuera de ella, cad
 \end{itemize}
 La descomposición no cambia las HH de la sección 4: la suma de las actividades de cada paquete es igual a su esfuerzo esperado E. Las actividades heredan el responsable y la ventana del paquete. La quincena exacta de cada actividad se fija por planificación gradual (PMI, 2017, p. 185): las actividades de los tres meses siguientes se programan en detalle antes de cada Comité de Proyecto, y las posteriores conservan la ventana mensual de la sección 4.2. El avance se informa por el código de la actividad, que cuelga del código de su paquete.
 
-\subsection{6.1 Paquetes descompuestos en actividades}
+\subsection{Paquetes descompuestos en actividades}
 
 Los paquetes de producto se descomponen con una plantilla por clase. Un módulo (D, 960 HH) se divide en 12 actividades de 80 HH; una integración (I, 480 HH), en 6; un diseño o configuración (E, 240 HH), en 3; una instalación o capacitación (T, 160 HH), en 2; una prueba ampliada (V, 320 HH), en 4, y una de integración o cierre (V, 160 HH), en 2. Un paquete de gestión (G, 80 HH) es una actividad única, porque ya cumple ambas reglas. La Tabla 6.1 lista las 592 actividades de los 183 paquetes de producto y de gestión. Las plantillas son supuestos de planificación, como los tamaños de la sección 4.1: el equipo de cada paquete las ajusta al refinar su estimación, sin superar 80 HH ni una quincena por actividad.
 
@@ -174,7 +174,7 @@ Los paquetes de producto se descomponen con una plantilla por clase. Un módulo 
 
 \parte{tablas/tab_T15_9}
 
-\subsection{6.2 Paquetes de esfuerzo continuo}
+\subsection{Paquetes de esfuerzo continuo}
 
 Los paquetes recurrentes (R), de acompañamiento (A) y de cobertura (C) son de nivel de esfuerzo: no producen un entregable único, sino un servicio o una reunión que se repite. No se dividen en entregables más pequeños, sino por ocurrencia o por quincena:
 
