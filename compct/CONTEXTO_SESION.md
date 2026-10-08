@@ -1,5 +1,9 @@
 # CONTEXTO DE SESIÓN
 
+## Estado vigente — 8 de octubre de 2026: segunda revisión de la Comisión y planilla de contradicciones
+
+Se reemplazó `Revision/revision_comision_informe2.md` con una nueva corrida del prompt sobre SD1–SD8 y SD13; el SD9 no se evaluó por instrucción del usuario. Puntaje actual 0 en todos los ítems por las 204 celdas `[[REVISIÓN HUMANA]]`; sin esa causal, 23,4 sobre el 89 % evaluado. Las 22 contradicciones entre subdocumentos (8 altas, 9 medias y 5 bajas) están en `../Contradicciones_LafroX_Informe2.xlsx`, fuera del repositorio porque la rama sólo admite `.md`: una hoja por subdocumento y cada contradicción registrada en una sola hoja, la del subdocumento que debe corregirse. No se modificó ningún entregable. Sin commit.
+
 ## Estado vigente — 8 de octubre de 2026: guías de lectura en Resumen
 
 El usuario autorizó implementar el plan de `Resumen/` en la rama comprobada `rama-md`, sin cambiar de rama ni realizar commit/publicación. La carpeta contiene 26 guías independientes y `README.md`: nueve subdocumentos (1–8 y 13), siete archivos de anexos que explican 66 anexos individuales y diez formularios. Cada nombre conserva el original con sufijo `-Resumen.md`; la carpeta es plana y exclusivamente Markdown.
