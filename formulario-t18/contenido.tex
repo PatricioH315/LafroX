@@ -43,15 +43,48 @@ La Etapa 1 pone en producción la trazabilidad de recepción, la bodega con FEFO
 El calendario de olas respeta los meses 13--15, pero su cierre se calcula con fechas reales. Sea F el instante final de la marcha blanca: el 100 \% del alcance debe estar operativo antes de F − 28 días y sostener volumen real e indicadores durante [F − 28 días, F). Cada activación debe respetar 1--25 de septiembre, todo diciembre y los primeros tres días hábiles del mes; también evita 05:30--07:00 y no detiene rutas. La secuencia vigente de §6.1 adelanta los remanentes a semana 8, subordinada a ese límite. Un retraso exige replanificar antes de H6; no se recorta la evidencia ni se desplazan automáticamente las fases siguientes.
 
 \begin{figure}[htbp]
-  \LFXfiguraPendiente
-  \nota{Descripción textual de figura: Semanas 10 a 13: toda la Etapa 1 a volumen real (Art. 17.3). Mes 16 (H7). 4 semanas en criterio. Registro oficial en la solución y papel retirado. Entrada zona por zona, todas las zonas, criterio de avance.}
+  \centering
+  \begin{tikzpicture}[font=\LFXcuerpofigura]
+    \node[draw,rounded corners,align=center,text width=2.5cm,minimum height=10mm]
+      (w5) at (0,0) {\textbf{Semana 5}\\Talca};
+    \node[draw,rounded corners,align=center,text width=2.5cm,minimum height=10mm]
+      (w6) at (3,0) {\textbf{Semana 6}\\Concepción};
+    \node[draw,rounded corners,align=center,text width=2.5cm,minimum height=10mm]
+      (w7) at (6,0) {\textbf{Semana 7}\\Plataformas};
+    \node[draw,rounded corners,align=center,text width=2.5cm,minimum height=10mm]
+      (w8) at (9,0) {\textbf{Semana 8}\\Remanentes};
+    \draw[->] (w5) -- (w6);
+    \draw[->] (w6) -- (w7);
+    \draw[->] (w7) -- (w8);
+    \node[draw,rounded corners,align=center,text width=11.5cm,minimum height=11mm]
+      (gate) at (4.5,-1.35)
+      {\textbf{Hito de entrada a la evidencia}\\
+       100\,\% del alcance activo antes de F$-$28 días; siguen cuatro semanas de evaluación};
+    \draw[->] (w8.south) -- ++(0,-5mm) -| (gate.north east);
+    \node[draw,rounded corners,align=center,text width=2.5cm,minimum height=14mm]
+      (d1) at (0,-3.1) {\textbf{Semana 10}\\Volumen real};
+    \node[draw,rounded corners,align=center,text width=2.5cm,minimum height=14mm]
+      (d2) at (3,-3.1) {\textbf{Semana 11}\\Conciliación};
+    \node[draw,rounded corners,align=center,text width=2.5cm,minimum height=14mm]
+      (d3) at (6,-3.1) {\textbf{Semana 12}\\Indicadores};
+    \node[draw,rounded corners,align=center,text width=2.5cm,minimum height=14mm]
+      (d4) at (9,-3.1) {\textbf{Semana 13}\\Criterio sostenido};
+    \draw[->] (gate.south) -- ++(0,-5mm) -| (d1.north);
+    \draw[->] (d1) -- (d2);
+    \draw[->] (d2) -- (d3);
+    \draw[->] (d3) -- (d4);
+    \node[draw,rounded corners,align=center,text width=11.5cm,minimum height=9mm]
+      (h7) at (4.5,-4.45)
+      {\textbf{H7 / mes 16}\\Cierre con acta de la Contraparte Técnica};
+    \draw[->] (d4.south) -- (h7.north);
+  \end{tikzpicture}
   \caption{Olas de la Etapa 1 durante la marcha blanca.}
   \label{fig:T18-olas}
 \end{figure}
 
 \nota{Fuente: elaboración propia a partir del Capítulo 3, sección 3.4.4.}
 
-La figura conserva la representación histórica. La programación vigente es §6.1: activaciones hasta semana 8 sujetas a fechas permitidas y al límite F − 28 días; los períodos de evidencia se superponen por dominios sin doble escritura.
+La figura resume la secuencia de referencia. La programación vigente es §6.1: activaciones hasta semana 8 sujetas a fechas permitidas y al límite exacto F − 28 días; los períodos de evidencia se superponen por dominios sin doble escritura.
 
 \subsection{Pruebas previas a la marcha blanca y al paso a producción}
 
@@ -85,8 +118,35 @@ Los indicadores se miden y publican cada día con el umbral que exige el Art. 17
 La sexta condición es el acta de aceptación firmada por la Contraparte Técnica (paquete 4.2.3, H7). Los resultados del capítulo 18 del caso que se verifican en esta marcha blanca (R18-01 a R18-03, R18-05 a R18-10 y R18-14 a R18-16) se miden con el método y el período del Capítulo 3, Anexo 3.J. La Figura \ref{fig:T18-ciclo} resume el ciclo diario y las condiciones de cierre.
 
 \begin{figure}[htbp]
-  \LFXfiguraPendiente
-  \nota{Descripción textual de figura: Ciclo de cada día, medición, comparación, continuar/corregir/revertir, conciliación, seis condiciones copulativas (Art. 17.3).}
+  \centering
+  \begin{tikzpicture}[font=\LFXcuerpofigura]
+    \node[draw,rounded corners,align=center,text width=3cm,minimum height=10mm]
+      (measure) at (0,0)
+      {\textbf{Medir}\\Indicadores del día};
+    \node[draw,rounded corners,align=center,text width=3cm,minimum height=10mm]
+      (compare) at (3.5,0)
+      {\textbf{Comparar}\\Resultados con umbrales};
+    \node[draw,rounded corners,align=center,text width=3.1cm,minimum height=10mm]
+      (act) at (7,0)
+      {\textbf{Decidir}\\Continuar, corregir o revertir};
+    \node[draw,rounded corners,align=center,text width=3.1cm,minimum height=10mm]
+      (publish) at (10.5,0)
+      {\textbf{Conciliar y publicar}\\Resultado diario};
+    \draw[->] (measure) -- (compare);
+    \draw[->] (compare) -- (act);
+    \draw[->] (act) -- (publish);
+    \draw[->] (publish.south) -- ++(0,-3mm) -| (measure.south);
+    \node[draw,rounded corners,align=left,text width=13.5cm,inner sep=5pt]
+      at (5.25,-2.75)
+      {\fontsize{8pt}{9.5pt}\selectfont
+       \textbf{Cierre: seis condiciones simultáneas (Art. 17.3)}\\
+       1. Cero incidentes críticos o altos abiertos.\\
+       2. Volumen real completo durante las últimas cuatro semanas.\\
+       3. Sin indisponibilidad en despacho; disponibilidad y respuesta dentro de umbral.\\
+       4. Sin diferencias inexplicadas ni pedidos perdidos o duplicados.\\
+       5. 100\,\% de usuarios capacitados y certificados.\\
+       6. Acta de aceptación de la Contraparte Técnica (H7).};
+  \end{tikzpicture}
   \caption{Ciclo diario de la marcha blanca y condiciones de cierre del Art. 17.3.}
   \label{fig:T18-ciclo}
 \end{figure}
@@ -100,8 +160,45 @@ Cada día se decide entre continuar, corregir o revertir, y la marcha blanca cie
 La reversión la autoriza el responsable de operaciones del CLIENTE cuando un indicador amenaza el despacho. Sus disparadores son observables: pedidos sin sincronizar al inicio de la carga, rutas del día no disponibles para cargar o un defecto crítico en la ventana de despacho. La decisión se toma en el turno de noche, y la restitución de la versión operativa local y sus documentos válidos debe completarse antes de las 05:30; el papel sólo apoya tareas auxiliares y no acredita continuidad crítica; la capacidad de los 96 camiones debe demostrarse en el ensayo de la sección 6.4. Ese plazo protege el despacho; no es el RTO de recuperación ante desastres. La Figura \ref{fig:T18-reversion} presenta el procedimiento por rol.
 
 \begin{figure}[htbp]
-  \LFXfiguraPendiente
-  \nota{Descripción textual de figura: Turno de noche, despacho, restitución operativa probada antes de las 05:30, la ola reinicia sus 4 semanas.}
+  \centering
+  \begin{tikzpicture}[font=\LFXcuerpofigura]
+    \node[draw,rounded corners,align=center,text width=5.3cm,minimum height=11mm]
+      (detect) at (0,0)
+      {\textbf{Turno de noche}\\Se detecta pedido sin sincronizar, ruta no disponible o defecto crítico};
+    \node[draw,rounded corners,align=center,text width=5.3cm,minimum height=10mm]
+      (verify) at (0,-1.7)
+      {Acompañante confirma impacto; Operaciones del CLIENTE decide};
+    \node[draw,rounded corners,align=center,text width=4.2cm,minimum height=10mm]
+      (decision) at (0,-3.0)
+      {\textbf{¿Se amenaza el despacho?}};
+    \node[draw,rounded corners,align=center,text width=4cm,minimum height=10mm]
+      (continue) at (-4.3,-4.45)
+      {\textbf{No}\\Corregir; continuar la ola};
+    \node[draw,rounded corners,align=center,text width=4cm,minimum height=10mm]
+      (authorize) at (4.3,-4.45)
+      {\textbf{Sí}\\Autorizar reversión};
+    \draw[->] (detect) -- (verify);
+    \draw[->] (verify) -- (decision);
+    \draw[->] (decision.south west) -- (continue.north);
+    \draw[->] (decision.south east) -- (authorize.north);
+    \node[draw,rounded corners,align=center,text width=4cm,minimum height=12mm]
+      (operational) at (1.8,-6.1)
+      {\textbf{Operacional}\\Versión local y documentos ERP válidos antes de las 05:30};
+    \node[draw,rounded corners,align=center,text width=4cm,minimum height=12mm]
+      (technical) at (6.6,-6.1)
+      {\textbf{Técnica}\\Interruptor o versión anterior; no reinstalar};
+    \draw[->] (authorize.south) -- (operational.north east);
+    \draw[->] (authorize.south) -- (technical.north west);
+    \node[draw,rounded corners,align=center,text width=10cm,minimum height=10mm]
+      (reconcile) at (4.2,-7.9)
+      {Al retomar, conciliar registros en cola; no perder ni duplicar operaciones};
+    \draw[->] (operational.south) -- (reconcile.north west);
+    \draw[->] (technical.south) -- (reconcile.north east);
+    \node[draw,rounded corners,align=center,text width=10cm,minimum height=9mm]
+      (restart) at (4.2,-9.2)
+      {\textbf{La ola vuelve a iniciar sus cuatro semanas de criterio}};
+    \draw[->] (reconcile) -- (restart);
+  \end{tikzpicture}
   \caption{Procedimiento de reversión de la Etapa 1.}
   \label{fig:T18-reversion}
 \end{figure}
@@ -184,8 +281,29 @@ La marcha blanca de la Etapa 2 cierra con las seis condiciones del Art. 17.3. El
 La convivencia sigue las reglas del Art. 17.2. En los meses 13 a 15 coexisten la marcha blanca de la Etapa 1 y el desarrollo de la Etapa 2: el desarrollo de la Etapa 2 no despliega en Producción ni modifica las funciones de la Etapa 1 en marcha blanca, y los frentes de ambos esfuerzos están en el Formulario T-15. En los meses 19 y 20 la Etapa 1 está en producción y la Etapa 2 en marcha blanca, con una única fuente de verdad para los datos compartidos (pedidos, clientes, guías y entregas): la Etapa 2 lee y extiende los registros de la Etapa 1, sin copiarlos ni volver a digitarlos. En el mes 21, el paso a producción de la Etapa 2 no degrada la disponibilidad, el desempeño ni la integridad de los datos de la Etapa 1, y la Operación comienza ese mes con ambos alcances. La Figura \ref{fig:T18-convivencia} muestra el flujo de datos de los meses 19 y 20.
 
 \begin{figure}[htbp]
-  \LFXfiguraPendiente
-  \nota{Descripción textual de figura: Etapa 1 en producción, Etapa 2 en marcha blanca, ERP único emisor. Ningún despliegue de la Etapa 2 modifica una función estabilizada de la Etapa 1.}
+  \centering
+  \begin{tikzpicture}[font=\LFXcuerpofigura]
+    \node[draw,rounded corners,align=center,text width=2.8cm,minimum height=13mm]
+      (erp) at (0,0)
+      {\textbf{ERP}\\Registro contable y emisor único de guías};
+    \node[draw,rounded corners,align=center,text width=3.4cm,minimum height=13mm]
+      (stage1) at (4,0)
+      {\textbf{Etapa 1}\\Producción estable; funciones protegidas};
+    \node[draw,rounded corners,align=center,text width=4.2cm,minimum height=15mm]
+      (shared) at (9,0)
+      {\textbf{Registro compartido}\\Pedidos, clientes, guías y entregas; una fuente de verdad};
+    \node[draw,rounded corners,align=center,text width=4.2cm,minimum height=15mm]
+      (stage2) at (9,-2.25)
+      {\textbf{Etapa 2 en marcha blanca}\\M11 Canal moderno, portales y costo de servir};
+    \draw[->] (erp) -- node[above,align=center]{documentos\\válidos} (stage1);
+    \draw[->] (stage1) -- node[above,align=center]{opera} (shared);
+    \draw[->] (shared.south west) -- node[left,align=right]{lee} (stage2.north west);
+    \draw[->] (stage2.north east) -- node[right,align=left]{extiende\\los datos} (shared.south east);
+    \node[draw,rounded corners,align=center,text width=13cm,minimum height=12mm]
+      at (4.5,-3.9)
+      {Sin copias ni doble digitación. Cada dominio conserva un escritor autorizado.\\
+       Ningún despliegue de Etapa 2 modifica funciones estabilizadas de Etapa 1.};
+  \end{tikzpicture}
   \caption{Convivencia de la Etapa 1 en producción con la Etapa 2 en marcha blanca.}
   \label{fig:T18-convivencia}
 \end{figure}

@@ -2,6 +2,24 @@
 
 \label{cap:subdoc07}
 
+\newcommand{\figuraEDT}[3]{%
+  \par\addvspace{5pt}%
+  \begin{center}
+    \includegraphics[width=0.96\linewidth,height=0.72\textheight,keepaspectratio]{#1}
+    \captionsetup{hypcap=false}
+    \captionof{figure}{#2}\label{#3}
+  \end{center}%
+  \par\addvspace{7pt}}
+
+\newcommand{\figuraEDTRotada}[3]{%
+  \par\clearpage
+  \begin{center}
+    \includegraphics[angle=90,width=0.68\textheight,height=0.80\textwidth,keepaspectratio]{#1}
+    \captionsetup{hypcap=false}
+    \captionof{figure}{#2}\label{#3}
+  \end{center}%
+  \clearpage}
+
 Este capítulo presenta cómo LafroX ejecutará el proyecto de Distribuidora Puelche dentro del cronograma contractual obligatorio de 56 meses (Bases Administrativas, Art. 17°): qué trabajo se hace, en qué orden, con qué esfuerzo y cómo la solución entra en operación sin detener la venta, la bodega ni el reparto.
 
 La sección 7.1 descompone el 100 \% del alcance en una estructura de descomposición del trabajo (EDT) con paquetes estimables y asignables. La sección 7.2 secuencia ese trabajo y lo organiza en frentes paralelos, con especial atención a los meses 13 a 15 y 19 a 20, en que dos esfuerzos coexisten. La sección 7.3 presenta la ruta crítica, la carta Gantt con los hitos del Formulario E-25 y el plan de implantación y de marcha blanca de cada etapa.
@@ -34,52 +52,119 @@ La Tabla «tab:7-fases» muestra el tamaño de cada fase y los hitos que produce
 
 La construcción concentra el 36 \% de los paquetes (79 de 222), porque contiene los quince desarrollos de módulos, las integraciones, la migración, las pruebas de ambas etapas y las innovaciones. Las fases 5 a 7, que no producen software, suman 50 paquetes (23 \%). Ese peso muestra que, en Puelche, la compra y la instalación del equipamiento de cinco sitios, los acuerdos con diez transportistas y con el sindicato y la capacitación de una operación que no puede detenerse son trabajo planificado y controlado, no supuestos.
 
-La Figura «fig:7-edt» presenta la estructura en su primer nivel y su relación con las etapas del contrato.
+La Figura \ref{fig:7-edt} resume el primer nivel de la EDT: la raíz del proyecto y sus nueve fases.
 
-  
-\begin{figure}[htbp]
-  \LFXfiguraPendiente
-  \nota{Descripción textual de figura: Plataforma logística de Distribuidora Puelche / [1pt] 49 cuentas de control · 222 paquetes de trabajo Etapas del contrato (Art. 17°) y fases que trabajan en cada una \textbf{Etapa 1} / [1pt]H1 a H7 \textbf{Etapa 2} / [1pt]H8 a H12 \textbf{Operación} / [1pt]hito mensual la fase 9 cierra en los meses 21 y 56 Relación entre nodos: raiz → raiz.}
-  \caption{\textbf{Figura: Vista general de la EDT y su relación con las etapas del Art. 17°. Fuente: elaboración propia a partir de las Bases Administrativas, Art. 15° y 17°, y del Formulario T-14.}}
-  \label{fig:7-edt}
-\end{figure}
+\figuraEDT{imagenes/Imagenes de la edt/EDT nivel 2.drawio.png}
+  {Vista del primer nivel de la EDT: raíz del proyecto y sus nueve fases. Fuente: elaboración propia a partir del Formulario T-14.}
+  {fig:7-edt}
 
-
-La figura se lee de arriba hacia abajo. Las fases de desarrollo forman el ciclo que se recorre dos veces, una por etapa; por eso sus fichas aparecen tanto en la banda de la Etapa 1 como en la de la Etapa 2. Adquisiciones, infraestructura y capacitación trabajan en paralelo con ese ciclo y lo alimentan, y la operación y el cierre empiezan cuando termina la implementación. La EDT no expresa secuencia: el número de una fase no indica cuándo ocurre, y sus fechas están en la carta Gantt de la sección 7.3.2.
+Las fases de desarrollo (1 a 4) se recorren una vez por etapa; las fases 5 a 7 las habilitan en paralelo, y las fases 8 y 9 cubren la operación y el cierre. La figura muestra la estructura, no la secuencia temporal: el número de una fase no indica cuándo ocurre; sus fechas están en la carta Gantt de la sección 7.3.2.
 
 \subsection{Estructura general}
 
-Las Figuras «fig:7-edt-dev» y «fig:7-edt-sop» presentan el segundo nivel de la EDT: las cuentas de control de cada fase, con la cantidad de paquetes de cada una y los hitos que producen.
+Las láminas siguientes desglosan las cuentas de control y los paquetes por fase. Cada imagen se presenta inmediatamente después de su descripción; las divisiones «1 de 2», «2 de 2» y «1 de 3» identifican continuaciones de una misma fase.
 
-  
-\begin{figure}[htbp]
-  \LFXfiguraPendiente
-  \nota{Descripción textual de figura: 1 Inicio /  9 CC  35 PT 2 Elaboración /  6 CC  18 PT 3 Construcción /  11 CC  79 PT 4 Transición /  3 CC  10 PT \textbf{1.1} Definición inicial del proyecto / 3 PT \textbf{1.2} Alcance del proyecto / 5 PT  Hito H1 Hito H8 \textbf{1.3} Planificación del proyecto / 5 PT \textbf{1.4} Gestión de interesados y comunicaciones / 3 PT \textbf{1.5} Gestión de calidad / 2 PT \textbf{1.6} Gestión de riesgos / 2 PT \textbf{1.7} Plan de Reversibilidad / 2 PT \textbf{1.8} Gobierno y control del proyecto / 8 PT \textbf{1.9} Cumplimiento normativo y contractual / 5 PT \textbf{2.1} Arquitectura de la solución / 4 PT \textbf{2.2} Diseño de la seguridad / 4 PT \textbf{2.3} Diseño de la sala técnica y de los racks / 3 PT \textbf{2.4} Validación de diseños / 2 PT  Hito H2 Hito H8 \textbf{2.5} Continuidad del negocio / 2 PT \textbf{2.6} Experiencia de usuario / 3 PT \textbf{3.1} Ambientes y cadena de desarrollo / 5 PT  Hito H3 \textbf{3.2} Servicios de nube de la plataforma / 6 PT \textbf{3.3} Base compartida / 6 PT \textbf{3.4} Módulos de la Etapa 1 / 11 PT \textbf{3.5} Módulos de la Etapa 2 / 4 PT \textbf{3.6} Integraciones externas / 6 PT \textbf{3.7} Migración de datos / 5 PT \textbf{3.8} Pruebas de la Etapa 1 / 8 PT  Hito H4 Hito H5 \textbf{3.9} Pruebas de la Etapa 2 / 7 PT  Hito H9 Hito H10 \textbf{3.10} Innovaciones / 16 PT (INN01, 02, 03 y 05) \textbf{3.11} Documentación técnica / 5 PT \textbf{4.1} Plan de implantación / 3 PT \textbf{4.2} Marcha blanca y producción de la Etapa 1 / 3 PT  Hito H6 Hito H7 \textbf{4.3} Marcha blanca y producción de la Etapa 2 / 4 PT  Hito H11 Hito H12 Las fases 1 a 4 se recorren dos veces: la primera termina en el H7 (mes 16) y la segunda en el H12 (mes 21).}
-  \caption{\textbf{Figura: Fases de desarrollo (1 a 4) y sus cuentas de control. Fuente: elaboración propia a partir del Formulario T-14 y del Formulario E-25.}}
-  \label{fig:7-edt-dev}
-\end{figure}
+\subsubsection{Fase 1. Inicio}
 
+La fase de Inicio define el proyecto, fija su alcance y planificación y establece cómo se gobierna y controla. Sus cuentas 1.1 a 1.5 abarcan el acta, la línea base, la planificación, los interesados y la calidad.
 
-En la Figura «fig:7-edt-dev», cada rombo marca la cuenta de control que entrega el hito. La fase de Inicio fija qué se construye y cómo se dirige el proyecto. Además del acta, la línea base y los planes, contiene dos paquetes que solo existen por la situación de Puelche: el 1.2.2, que captura las reglas de ruteo del planificador cuya jubilación tiene fecha dentro del contrato (Caso 02, capítulo 18, resultado 16), y el 1.2.3, que especifica las interfaces del sistema de gestión que el CLIENTE reconoce no tener documentadas (Caso 02, sección 17.5). También incluye el gobierno del proyecto, con los comités del Art. 71°, el informe mensual con valor ganado y el tablero (RT-19.06 a RT-19.09), y el cumplimiento normativo y contractual.
+\figuraEDT{imagenes/Imagenes de la edt/EDT-Fase 1 (1 de 2).drawio.png}
+  {Fase 1 — Inicio, primera parte: cuentas 1.1 a 1.5. Fuente: elaboración propia a partir del Formulario T-14.}
+  {fig:7-edt-fase-1a}
 
-La fase de Elaboración diseña la solución antes de programar: la arquitectura lógica y física, el modelo de datos con trazabilidad por lote, el plan de seguridad, los planos de la sala técnica de Talca, que hoy no cumple el estándar exigido (Caso 02, capítulo 16), la continuidad del negocio y la experiencia de usuario, diseñada con preparadores que trabajan con guantes a −22 °C, preventistas sin señal y conductores externos. La aprobación de la arquitectura, la seguridad y el modelo de datos es el H2 del mes 4.
+La segunda lámina completa Inicio con gestión de riesgos, reversibilidad, gobierno, control y cumplimiento normativo. Incluye los paquetes 1.2.2 y 1.2.3, que capturan las reglas de ruteo cuya fuente experta se jubila y las interfaces del sistema de gestión que el CLIENTE reconoce no tener documentadas; también incluye los comités del Art. 71°, el informe de valor ganado y el tablero (RT-19.06 a RT-19.09).
 
-La fase de Construcción produce los cinco ambientes y los servicios de nube; la base compartida, con la identidad, la integración con el ERP como único emisor de la guía de despacho, la convivencia con el WMS de 2013 y la operación sin conexión; los once módulos de la Etapa 1 y los cuatro desarrollos de la Etapa 2; las integraciones externas y la migración de datos; las pruebas de certificación de ambas etapas, las innovaciones y la documentación técnica. La fase de Transición convierte la solución probada en el registro oficial mediante el plan de olas, la reversión, las dos marchas blancas y la estabilización.
+\figuraEDT{imagenes/Imagenes de la edt/EDT-Fase 1 (2 de 2).drawio.png}
+  {Fase 1 — Inicio, segunda parte: cuentas 1.6 a 1.9, desde riesgos hasta cumplimiento contractual.}
+  {fig:7-edt-fase-1b}
 
-  
-\begin{figure}[htbp]
-  \LFXfiguraPendiente
-  \nota{Descripción textual de figura: 5 Adquisiciones y contrataciones /  4 CC  13 PT 6 Infraestructura física y sitios /  6 CC  24 PT 7 Capacitación y gestión del cambio /  3 CC  13 PT 8 Operación y soporte /  5 CC  26 PT 9 Cierre /  2 CC  4 PT \textbf{5.1} Hardware e infraestructura / 3 PT \textbf{5.2} Servicios de nube y licencias / 3 PT \textbf{5.3} Enlaces de comunicaciones / 3 PT \textbf{5.4} Acuerdos con terceros / 4 PT Transportistas, sindicato y fórmula de la innovación 4 \textbf{6.1} Adecuación de la sala técnica de Talca / 5 PT \textbf{6.2} Cableado estructurado / 3 PT \textbf{6.3} Montaje de racks y gabinetes / 4 PT \textbf{6.4} Sistemas de seguridad física / 3 PT \textbf{6.5} Equipamiento de campo / 6 PT \textbf{6.6} Configuración de la infraestructura de los sitios / 3 PT \textbf{7.1} Capacitación por roles / 6 PT \textbf{7.2} Gestión del cambio / 5 PT \textbf{7.3} Evaluaciones y certificaciones / 2 PT Condición de cierre de cada marcha blanca (Art. 17.3) \textbf{8.1} Servicios de operación / 6 PT \textbf{8.2} Mantenimiento / 7 PT \textbf{8.3} Innovaciones en operación / 6 PT \textbf{8.4} Informes y obligaciones periódicas / 4 PT \textbf{8.5} Capacitación y transferencia en operación / 3 PT Meses 21 a 56 \textbf{9.1} Cierre de la implementación / 2 PT   Mes 21 \textbf{9.2} Salida al término del contrato / 2 PT   Mes 56}
-  \caption{\textbf{Figura: Fases de soporte, operación y cierre (5 a 9) y sus cuentas de control. Fuente: elaboración propia a partir del Formulario T-14.}}
-  \label{fig:7-edt-sop}
-\end{figure}
+\subsubsection{Fase 2. Elaboración}
 
+Elaboración diseña la solución antes de programar: arquitectura lógica y física, datos trazables por lote, seguridad, sala técnica de Talca, continuidad y experiencia de usuario. La aprobación de arquitectura, seguridad y modelo de datos corresponde al H2 del mes 4. La primera lámina muestra las cuentas 2.1 a 2.3.
 
-La Figura «fig:7-edt-sop» muestra que el trabajo que no es software tiene cuentas propias con responsable. La fase de Adquisiciones y contrataciones separa lo que compra el CLIENTE de lo que contrata LafroX: el CLIENTE compra el hardware de terreno y de la sala, que LafroX especifica y recibe, y LafroX contrata la nube, los enlaces y las licencias. Esta fase reúne también los acuerdos sin los cuales la solución no sale a la ruta, con las diez empresas transportistas y con el sindicato, y la fórmula contractual de la innovación 4.
+\figuraEDT{imagenes/Imagenes de la edt/EDT-Fase 2 (1 de 2).drawio.png}
+  {Fase 2 — Elaboración, primera parte: arquitectura, seguridad y sala técnica, cuentas 2.1 a 2.3.}
+  {fig:7-edt-fase-2a}
 
-La fase de Infraestructura física y sitios instala la sala de Talca, con energía, climatización y extinción; los racks y los gabinetes de borde de Concepción y de las tres plataformas de cross-docking; los terminales, los sensores de cámara y los termógrafos de los 28 camiones con frío; y los enlaces con su respaldo. Termina con la prueba de autonomía de 24 horas del centro de distribución.
+La continuación cubre la validación de diseños, continuidad del negocio y experiencia de usuario (cuentas 2.4 a 2.6), incluidos los procedimientos manuales y la recuperación ante desastres.
 
-La fase de Capacitación y gestión del cambio atiende la rotación del 38 \% en preparación, con capacitación continua del turno de noche; al personal con veinte o treinta años en la compañía, con acompañamiento individual; la incorporación en el andén de los conductores externos; y el traspaso al equipo de TI de cuatro personas. La certificación de usuarios, destacada en la cuenta 7.3, es una de las seis condiciones de cierre de cada marcha blanca. La fase de Operación presta los servicios de los meses 21 a 56, y la de Cierre entrega el código al término de la implementación y ejecuta la salida al término del contrato.
+\figuraEDT{imagenes/Imagenes de la edt/EDT-Fase 2 (2 de 2).drawio.png}
+  {Fase 2 — Elaboración, segunda parte: validación, continuidad y experiencia de usuario, cuentas 2.4 a 2.6.}
+  {fig:7-edt-fase-2b}
+
+\subsubsection{Fase 3. Construcción}
+
+Construcción produce los ambientes y servicios de nube, la base compartida, los módulos de ambas etapas, las integraciones, la migración, las pruebas, las innovaciones y la documentación. La primera lámina reúne ambientes, nube, base compartida y módulos de la Etapa 1 (cuentas 3.1 a 3.4).
+
+\figuraEDT{imagenes/Imagenes de la edt/EDT-Fase 3 (1 de 3).drawio.png}
+  {Fase 3 — Construcción, primera parte: ambientes, nube, base compartida y módulos de la Etapa 1, cuentas 3.1 a 3.4.}
+  {fig:7-edt-fase-3a}
+
+La segunda lámina presenta los módulos de la Etapa 2, las integraciones externas, la migración y las pruebas de la Etapa 1 (cuentas 3.5 a 3.8). La integración con el ERP conserva su función de emisor único de la guía de despacho.
+
+\figuraEDT{imagenes/Imagenes de la edt/EDT-Fase 3 (2 de 3).drawio.png}
+  {Fase 3 — Construcción, segunda parte: módulos de la Etapa 2, integraciones, migración y pruebas de la Etapa 1, cuentas 3.5 a 3.8.}
+  {fig:7-edt-fase-3b}
+
+La tercera lámina cierra Construcción con las pruebas de la Etapa 2, las innovaciones y la documentación técnica (cuentas 3.9 a 3.11). Por su formato vertical, se presenta rotada en una página propia para facilitar su consulta y ampliación digital.
+
+\figuraEDTRotada{imagenes/Imagenes de la edt/EDT-Fase 3 (3 de 3).drawio.png}
+  {Fase 3 — Construcción, tercera parte: pruebas de la Etapa 2, innovaciones y documentación técnica, cuentas 3.9 a 3.11.}
+  {fig:7-edt-fase-3c}
+
+\subsubsection{Fase 4. Transición}
+
+Transición convierte la solución probada en el registro oficial. Su plan contempla las olas y la reversión; luego coordina las marchas blancas, la estabilización y las actas de aceptación de ambas etapas (H7 y H12).
+
+\figuraEDT{imagenes/Imagenes de la edt/EDT-Fase 4.drawio.png}
+  {Fase 4 — Transición: plan de implantación y marchas blancas de las etapas 1 y 2, cuentas 4.1 a 4.3.}
+  {fig:7-edt-fase-4}
+
+\subsubsection{Fase 5. Adquisiciones y contrataciones}
+
+Esta fase separa lo que compra el CLIENTE de lo que contrata LafroX: el CLIENTE compra hardware de terreno y de sala, que LafroX especifica y recibe; LafroX contrata nube, enlaces y licencias. También formaliza los acuerdos con transportistas y sindicato y la fórmula contractual de la innovación 4.
+
+\figuraEDT{imagenes/Imagenes de la edt/EDT-Fase 5.drawio.png}
+  {Fase 5 — Adquisiciones y contrataciones: hardware, servicios, enlaces y acuerdos con terceros, cuentas 5.1 a 5.4.}
+  {fig:7-edt-fase-5}
+
+\subsubsection{Fase 6. Infraestructura física y sitios}
+
+La fase instala la sala técnica de Talca, con energía, climatización y extinción; el cableado, los racks y gabinetes de borde; y la infraestructura de los sitios. La primera lámina cubre la sala, el cableado y el montaje de racks (cuentas 6.1 a 6.3).
+
+\figuraEDT{imagenes/Imagenes de la edt/EDT-Fase 6 (1 de 2).drawio.png}
+  {Fase 6 — Infraestructura física y sitios, primera parte: sala técnica, cableado y racks, cuentas 6.1 a 6.3.}
+  {fig:7-edt-fase-6a}
+
+La segunda lámina incluye seguridad física, equipamiento de campo y configuración de la infraestructura distribuida en los sitios (cuentas 6.4 a 6.6), incluidos los termógrafos de los camiones con frío y la prueba de autonomía de 24 horas.
+
+\figuraEDT{imagenes/Imagenes de la edt/EDT-Fase 6 (2 de 2).drawio.png}
+  {Fase 6 — Infraestructura física y sitios, segunda parte: seguridad física, equipamiento de campo y configuración, cuentas 6.4 a 6.6.}
+  {fig:7-edt-fase-6b}
+
+\subsubsection{Fase 7. Capacitación y gestión del cambio}
+
+La fase atiende la rotación del 38 \% en preparación con capacitación continua del turno de noche; acompaña individualmente al personal con veinte o treinta años en la compañía; incorpora a los conductores externos en el andén; y transfiere conocimiento al equipo de TI del CLIENTE. La certificación de usuarios (cuenta 7.3) es una de las condiciones de cierre de cada marcha blanca.
+
+\figuraEDT{imagenes/Imagenes de la edt/EDT-Fase 7.drawio.png}
+  {Fase 7 — Capacitación y gestión del cambio: capacitación por roles, acompañamiento y certificaciones, cuentas 7.1 a 7.3.}
+  {fig:7-edt-fase-7}
+
+\subsubsection{Fase 8. Operación y soporte}
+
+La fase presta servicios durante los meses 21 a 56: centro de operaciones, gestión de incidentes, continuidad, mantenimiento, innovaciones, informes y transferencia al equipo del CLIENTE.
+
+\figuraEDT{imagenes/Imagenes de la edt/EDT-Fase 8.drawio.png}
+  {Fase 8 — Operación y soporte durante 36 meses: servicios, mantenimiento, innovaciones, informes y transferencia, cuentas 8.1 a 8.5.}
+  {fig:7-edt-fase-8}
+
+\subsubsection{Fase 9. Cierre}
+
+Cierre comprende dos momentos: completar la implementación en el mes 21, con entrega de código, infraestructura como código y lecciones aprendidas; y ejecutar la salida al término del contrato, con el Plan de Reversibilidad y el tratamiento final de los datos.
+
+\figuraEDT{imagenes/Imagenes de la edt/EDT-Fase 9.drawio.png}
+  {Fase 9 — Cierre: cierre de implementación y salida al término del contrato, cuentas 9.1 y 9.2.}
+  {fig:7-edt-fase-9}
 
 \subsection{Cobertura del alcance}
 
@@ -254,12 +339,37 @@ La Etapa 1 entra en tres olas, en el orden de las dependencias de datos (Capítu
 
 Una ola avanza a la siguiente cuando cumple su criterio durante cuatro semanas consecutivas a volumen real: sin defectos críticos ni altos, con conciliación diaria sin diferencias no explicadas, con los indicadores de disponibilidad y tiempo de respuesta cumplidos, con los usuarios certificados y con el acta de la Contraparte Técnica (Capítulo 3, sección 3.4.4).
 
-La programación de olas usa fechas reales y no una equivalencia de meses a 13 semanas: todos los grupos deben estar operativos antes del inicio de los 28 días finales de marcha blanca. T-18 §6.1 propone Talca/Concepción/plataformas/remanentes en semanas 5/6/7/8 para la ola de reparto, subordinadas a fechas permitidas y al límite F − 28 días. Se permite superposición por dominios sin intervenir simultáneamente el mismo proceso ni doble escritura. La figura histórica queda subordinada a esta programación.
+La programación de olas usa fechas reales y no una equivalencia de meses a 13 semanas: todos los grupos deben estar operativos antes del inicio de los 28 días finales de marcha blanca. T-18 §6.1 propone Talca/Concepción/plataformas/remanentes en semanas 5/6/7/8 para la ola de reparto, subordinadas a fechas permitidas y al límite F − 28 días. Se permite superposición por dominios sin intervenir simultáneamente el mismo proceso ni doble escritura. La figura resume esa secuencia de referencia; prevalece el límite exacto F − 28 días.
 
   
 \begin{figure}[htbp]
-  \LFXfiguraPendiente
-  \nota{Descripción textual de figura: Semanas 10 a 13: toda la Etapa 1 / a volumen real (Art. 17.3) Mes 16 (H7) 4 semanas / en criterio Registro oficial en la solución / y papel retirado 4 semanas / en criterio Registro oficial entrada / zona por zona todas / las zonas criterio de avance criterio de avance}
+  \centering
+  \begin{tikzpicture}[font=\LFXcuerpofigura]
+    \node[draw,rounded corners,align=center,text width=2.5cm,minimum height=9mm]
+      (w5) at (0,0) {\textbf{Semana 5}\\Talca};
+    \node[draw,rounded corners,align=center,text width=2.5cm,minimum height=9mm]
+      (w6) at (3,0) {\textbf{Semana 6}\\Concepción};
+    \node[draw,rounded corners,align=center,text width=2.5cm,minimum height=9mm]
+      (w7) at (6,0) {\textbf{Semana 7}\\Plataformas};
+    \node[draw,rounded corners,align=center,text width=2.5cm,minimum height=9mm]
+      (w8) at (9,0) {\textbf{Semana 8}\\Remanentes};
+    \draw[->] (w5) -- (w6);
+    \draw[->] (w6) -- (w7);
+    \draw[->] (w7) -- (w8);
+    \node[draw,rounded corners,align=center,text width=11.4cm,minimum height=10mm]
+      (gate) at (4.5,-1.25)
+      {Antes de comenzar los últimos 28 días: todo el alcance activo,\\
+       con fechas sujetas a ventanas permitidas y sin doble escritura};
+    \draw[->] (w8.south) -- ++(0,-4mm) -| (gate.north east);
+    \node[draw,rounded corners,align=center,text width=11.4cm,minimum height=11mm]
+      (evidence) at (4.5,-2.65)
+      {\textbf{Últimos 28 días de marcha blanca (referencia: semanas 10--13)}\\
+       Volumen real completo en todas las zonas + criterios sostenidos durante cuatro semanas consecutivas};
+    \draw[->] (gate) -- (evidence);
+    \node[align=center] at (4.5,-3.55)
+      {\textbf{H7 / mes 16:} cierre con acta de la Contraparte Técnica};
+    \draw[->] (evidence) -- (4.5,-3.32);
+  \end{tikzpicture}
   \caption{\textbf{Figura: Secuencia de olas de la Etapa 1 durante la marcha blanca. Fuente: elaboración propia a partir del Capítulo 3, sección 3.4.4, y del Formulario T-18.}}
   \label{fig:7-olas}
 \end{figure}
@@ -279,8 +389,45 @@ La reversión operacional se dispara con señales observables: pedidos sin sincr
 
   
 \begin{figure}[htbp]
-  \LFXfiguraPendiente
-  \nota{Descripción textual de figura: Turno de noche: preparación, detección y decisión Despacho El acompañante confirma el impacto ¿Amenaza el despacho? No: se corrige y la ola continúa Restitución operativa probada antes de las 05:30 Operacional: versión local y documentos ERP; papel sólo de apoyo Técnica: interruptor o versión anterior Al retomar, se concilia lo que quedó en cola La ola reinicia sus 4 semanas Relación entre nodos: det → aco. Relación entre nodos: aco → dec. Relación entre nodos: dec → cor. Relación entre nodos: dec → lim. Relación entre nodos: lim → ope. Relación entre nodos: ope → tec. Relación entre nodos: ope → con. Relación entre nodos: con → rei.}
+  \centering
+  \begin{tikzpicture}[font=\LFXcuerpofigura]
+    \node[draw,rounded corners,align=center,text width=5.1cm,minimum height=9mm]
+      (detect) at (0,0)
+      {\textbf{Turno de noche}\\Se detecta una señal que amenaza el despacho};
+    \node[draw,rounded corners,align=center,text width=5.1cm,minimum height=9mm]
+      (check) at (0,-1.45)
+      {Acompañante verifica el impacto y lo informa a Operaciones del CLIENTE};
+    \node[draw,rounded corners,align=center,text width=4.4cm,minimum height=9mm]
+      (decision) at (0,-2.9)
+      {\textbf{¿Amenaza el despacho?}};
+    \node[draw,rounded corners,align=center,text width=4cm,minimum height=10mm]
+      (continue) at (-4.3,-4.35)
+      {\textbf{No}\\Corregir; la ola continúa};
+    \node[draw,rounded corners,align=center,text width=4cm,minimum height=10mm]
+      (authorize) at (4.3,-4.35)
+      {\textbf{Sí}\\CLIENTE autoriza la reversión};
+    \draw[->] (detect) -- (check);
+    \draw[->] (check) -- (decision);
+    \draw[->] (decision.south west) -- (continue.north);
+    \draw[->] (decision.south east) -- (authorize.north);
+    \node[draw,rounded corners,align=center,text width=4cm,minimum height=12mm]
+      (operational) at (1.8,-6.0)
+      {\textbf{Operacional}\\Versión local y documentos ERP válidos antes de las 05:30};
+    \node[draw,rounded corners,align=center,text width=4cm,minimum height=12mm]
+      (technical) at (6.6,-6.0)
+      {\textbf{Técnica}\\Volver a versión anterior o desactivar el interruptor};
+    \draw[->] (authorize.south) -- (operational.north east);
+    \draw[->] (authorize.south) -- (technical.north west);
+    \node[draw,rounded corners,align=center,text width=9.7cm,minimum height=10mm]
+      (reconcile) at (4.2,-7.8)
+      {Al retomar, conciliar los registros que quedaron en cola, sin pérdida ni duplicación};
+    \draw[->] (operational.south) -- (reconcile.north west);
+    \draw[->] (technical.south) -- (reconcile.north east);
+    \node[draw,rounded corners,align=center,text width=9.7cm,minimum height=9mm]
+      (restart) at (4.2,-9.1)
+      {\textbf{La ola reinicia su período de cuatro semanas}};
+    \draw[->] (reconcile) -- (restart);
+  \end{tikzpicture}
   \caption{\textbf{Figura: Procedimiento de reversión de la Etapa 1 en la ventana de despacho. Fuente: elaboración propia a partir del Formulario T-18.}}
   \label{fig:7-reversion}
 \end{figure}
@@ -304,8 +451,35 @@ La sexta condición del Art. 17.3 es el acta de la Contraparte Técnica, que en 
 
   
 \begin{figure}[htbp]
-  \LFXfiguraPendiente
-  \nota{Descripción textual de figura: Ciclo de cada día Medición de los indicadores del día Comparación con el umbral Continuar, corregir o revertir Conciliación y publicación del día Marcha / blanca / E1 y E2 Seis condiciones copulativas (Art. 17.3) Relación entre nodos: c → d. Relación entre nodos: d → p. Relación entre nodos: p → m.}
+  \centering
+  \begin{tikzpicture}[font=\LFXcuerpofigura]
+    \node[draw,rounded corners,align=center,text width=3cm,minimum height=10mm]
+      (measure) at (0,0)
+      {\textbf{Medir}\\Indicadores del día};
+    \node[draw,rounded corners,align=center,text width=3cm,minimum height=10mm]
+      (compare) at (3.5,0)
+      {\textbf{Comparar}\\Resultados con umbrales};
+    \node[draw,rounded corners,align=center,text width=3.1cm,minimum height=10mm]
+      (act) at (7,0)
+      {\textbf{Decidir}\\Continuar, corregir o revertir};
+    \node[draw,rounded corners,align=center,text width=3.1cm,minimum height=10mm]
+      (publish) at (10.5,0)
+      {\textbf{Conciliar y publicar}\\Resultado diario};
+    \draw[->] (measure) -- (compare);
+    \draw[->] (compare) -- (act);
+    \draw[->] (act) -- (publish);
+    \draw[->] (publish.south) -- ++(0,-3mm) -| (measure.south);
+    \node[draw,rounded corners,align=left,text width=13.5cm,inner sep=5pt]
+      at (5.25,-2.75)
+      {\fontsize{8pt}{9.5pt}\selectfont
+       \textbf{Cierre: las seis condiciones simultáneas del Art. 17.3}\\
+       1. Cero incidentes críticos o altos abiertos.\\
+       2. Volumen real completo durante las últimas cuatro semanas.\\
+       3. Sin indisponibilidad en despacho; disponibilidad y respuesta dentro de umbral.\\
+       4. Sin diferencias inexplicadas ni pedidos perdidos o duplicados.\\
+       5. 100\,\% de usuarios capacitados y certificados.\\
+       6. Acta de aceptación de la Contraparte Técnica (H7).};
+  \end{tikzpicture}
   \caption{\textbf{Figura: Ciclo diario de la marcha blanca y condiciones de cierre según el Art. 17.3. Fuente: elaboración propia a partir de las Bases Administrativas, Art. 17.3, y del RT-20.04.}}
   \label{fig:7-ciclo}
 \end{figure}
@@ -327,8 +501,29 @@ A los indicadores de la Tabla «tab:7-indicadores» se suman los propios del alc
 
   
 \begin{figure}[htbp]
-  \LFXfiguraPendiente
-  \nota{Descripción textual de figura: Etapa 1 en producción Etapa 2 en marcha blanca Clientes, pedidos, guías de despacho, entregas, lotes y cobros /  un solo escritor por dato y sin copias ERP: registro contable y único emisor de la guía de despacho M11 Canal moderno Portal de clientes Portal de transportistas M10 Analítica: costo de servir Ningún despliegue de la Etapa 2 modifica una función estabilizada de la Etapa 1 Relación entre nodos: rb → erp.}
+  \centering
+  \begin{tikzpicture}[font=\LFXcuerpofigura]
+    \node[draw,rounded corners,align=center,text width=2.6cm,minimum height=13mm]
+      (erp) at (0,0)
+      {\textbf{ERP}\\Registro contable y emisor único de guías};
+    \node[draw,rounded corners,align=center,text width=3.2cm,minimum height=13mm]
+      (stage1) at (4,0)
+      {\textbf{Etapa 1}\\Producción estable};
+    \node[draw,rounded corners,align=center,text width=4.1cm,minimum height=13mm]
+      (shared) at (8.8,0)
+      {\textbf{Registro compartido}\\Pedidos, clientes, guías, entregas, lotes y cobros};
+    \node[draw,rounded corners,align=center,text width=4cm,minimum height=15mm]
+      (stage2) at (8.8,-2.2)
+      {\textbf{Etapa 2 en marcha blanca}\\M11 Canal moderno, portales y costo de servir};
+    \draw[->] (erp) -- node[above,align=center]{documentos\\válidos} (stage1);
+    \draw[->] (stage1) -- node[above,align=center]{opera y escribe} (shared);
+    \draw[->] (shared.south) -- node[right,align=left]{lee} (stage2.north);
+    \draw[->] (stage2.west) -- ++(-1.1,0) |- node[pos=0.25,left,align=right]{extiende\\los datos} (shared.south);
+    \node[draw,rounded corners,align=center,text width=12.8cm,minimum height=12mm]
+      at (4.4,-3.8)
+      {Una sola fuente de verdad y un escritor autorizado por dato.\\
+       Etapa 2 no duplica datos ni modifica funciones estabilizadas de Etapa 1.};
+  \end{tikzpicture}
   \caption{\textbf{Figura: Convivencia de la Etapa 1 en producción con la Etapa 2 en marcha blanca. Fuente: elaboración propia a partir de la arquitectura lógica del Capítulo 4.}}
   \label{fig:7-convivencia}
 \end{figure}
