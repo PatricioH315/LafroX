@@ -1,0 +1,20 @@
+%% Generado por gen.py desde consolidado.json y las Bases.
+La Tabla~\ref{tab:anx-rnf} presenta rnf con umbral respaldado.\par
+\begin{tablalafrox}{RNF con umbral respaldado. Fuente: Bases y SD2.}{tab:anx-rnf}%
+  {L{1.8cm} L{4cm} Y L{4cm} L{5cm}}%
+  {\cab{ID} & \cab{Materia} & \cab{Umbral} & \cab{Método de verificación} & \cab{Origen}}
+  RNF-01.03 & Recepción sin enlace y entrega diferida al ERP & Recepción operable durante cortes de enlace. &  & Caso, cap. 10, restricción 2 \\
+  RNF-02.01 & Sincronización del centro de distribución tras un corte de 24 h & Sincronización del centro tras 24 horas de corte en no más de 2 horas, con resolución determinista de conflictos. &  & Caso, cap. 15, fila de sincronización; BTT, RT-03.12 \\
+  RNF-04.01 & Tiempo de generación de la ruta del día siguiente & Generación de la ruta del día siguiente en menos de 20 minutos. &  & Caso, cap. 18, criterio 7 \\
+  RNF-05.02 & Operabilidad con guantes térmicos a $-$22\,°C & Dispositivos operables a $-$22\,°C y sin señal en la cámara. &  & Caso, cap. 10, restricción 7 \\
+  RNF-06.01 & Persistencia local de la jornada de reparto & Registrar la jornada íntegra de reparto durante 14 horas sin cobertura. &  & Caso, cap. 15, RT-03.10; SD2, RNF-RESIL \\
+  RNF-06.03 & Sincronización del dispositivo de reparto tras 14 h sin señal & Sincronización del dispositivo tras un turno sin señal en no más de 10 minutos. &  & Caso, cap. 15, fila de sincronización; BTT, RT-03.12 \\
+  RNF-09.01 & Respuesta a un retiro sanitario & Lista de clientes afectados por lote con evidencia en menos de 2 horas. &  & Caso, cap. 18, criterio 1 \\
+  RNF-12.01 & Hito de producción del canal moderno & Capacidades exigidas por la principal cadena en producción antes de enero de 2029. &  & Caso, sección 13.2 \\
+  RNF-13.01 & Operación autónoma del componente on-premise & Recepción, preparación y despacho autónomos durante al menos 24 horas sin enlace. &  & Caso, cap. 15; BTT, RT-03.10 \\
+  RNF-20.06 & Recuperación ante desastres & RTO $\leq$ 4 horas; RPO $\leq$ 15 minutos para servicios críticos; prueba de conmutación al menos dos veces al año. &  & BTT, RT-07.04 y RT-07.07; SD2, RNF-DR \\
+  RNF-21.01 & Centro de operaciones de red & Monitoreo operacional 24 $\times$ 7. &  & SD1, sección 1.1; SD2, anexo 2.3, Jefe de TI \\
+  RNF-22.03 & Capacitación sin detener la operación & Capacitación y acompañamiento sin detener venta ni reparto y considerando turno nocturno. &  & Caso, sección 13.3, condiciones 4 y 5 \\
+  RNF-23.01 & Especificación del hardware de terreno & Especificar cantidades y características del hardware de terreno que compra el CLIENTE. &  & Caso, cap. 11 \\
+\end{tablalafrox}
+\par\noindent\textbf{Nota de trabajo:} Los métodos vacíos todavía no constituyen pruebas diseñadas. Para completarlo se requiere definir procedimiento, datos, instrumento y evidencia.\par

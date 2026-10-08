@@ -1,0 +1,201 @@
+%% 03_esquema_solucion_alcance/anexos.tex -- generado desde lafrox-markdown/03_esquema_solucion_alcance/LAFROX-Subdocumento3-Anexos.md
+\chapter*{Anexos del Subdocumento 3}
+\addcontentsline{toc}{chapter}{Anexos del Subdocumento 3}
+
+El índice siguiente ordena el contenido de este archivo.
+
+\section*{Anexo 3.A — Catálogo de requerimientos funcionales}
+\addcontentsline{toc}{section}{Anexo 3.A — Catálogo de requerimientos funcionales}
+
+El catálogo funcional reúne \textbf{175 requerimientos}. Cada requerimiento identifica actor, descripción verificable, precondición, resultado esperado, prioridad, origen y etapa comprometida.
+
+La etapa se asigna con el criterio de la sección 3.2.1 del Subdocumento 3: la Etapa 1 concentra captura, trazabilidad, entrega, efectivo y rutas; la Etapa 2 incorpora canal moderno, portal y costo de servir. Los requerimientos transversales de las Bases rigen en ambas etapas. La prioridad usa la escala Crítica, Alta y Media del Anexo 2.1 del Subdocumento 2 (LafroX, 2026a); la categoría «Muy Alta» del catálogo consolidado se expresa como «Crítica». Cada requerimiento funcional asociado a una familia del Subdocumento 2, Anexo 2.1, conserva como máximo la prioridad asignada a esa familia; los requerimientos sin familia y los derivados de las Bases quedan como máximo en «Alta». La categoría «Crítica» se reserva a los requerimientos que sostienen un resultado obligatorio de aceptación, una restricción operacional, un hito externo o una condición rectora del Subdocumento 2. El catálogo completo reúne \textbf{261 requerimientos ofertados: 56 críticos, 162 altos y 43 medios}.
+
+Cuando un parámetro no está definido entre los requisitos del CLIENTE, LafroX propone su valor y lo somete a validación durante el levantamiento. Esta regla rige para todos los anexos y para el Formulario T-12.
+
+La Tabla 3.A.1 presenta los requerimientos funcionales de Distribuidora Puelche, ordenados por épica.
+
+\begin{landscape}
+\setlength{\textwidth}{\linewidth}\setlength{\tabcolsep}{3pt}
+\input{tablas_anexo/rf_caso.tex}
+\end{landscape}
+
+La tabla cubre doce épicas. La épica 12 y las funciones de costo de servir de la épica 11 se comprometen en la Etapa 2, porque dependen de los hechos de entrega registrados durante la Etapa 1. Las demás funciones se comprometen en la Etapa 1.
+
+La Tabla 3.A.2 relaciona las catorce familias F-01 a F-14 del Anexo 2.1 del Subdocumento 2 (LafroX, 2026a) con los requerimientos detallados.
+
+\input{tablas_anexo/correspondencia_familias.tex}
+
+Cada familia del Subdocumento 2 tiene al menos un requerimiento detallado que la materializa, salvo las indicadas expresamente. Un mismo requerimiento puede sostener dos familias; por ejemplo, la telemetría de flota apoya el control de frío de F-07. La numeración RF-xx.yy del Subdocumento 3 no coincide con la numeración F-xx de las familias y no debe leerse como equivalencia.
+
+La Tabla 3.A.3 presenta los requerimientos funcionales derivados de las Bases Técnicas Transversales.
+
+\begin{landscape}
+\setlength{\textwidth}{\linewidth}\setlength{\tabcolsep}{3pt}
+\input{tablas_anexo/rf_btt.tex}
+\end{landscape}
+
+Los identificadores RF-14.01 a RF-14.05 corresponden a telemetría en el catálogo de Distribuidora Puelche y a seguridad en los requisitos derivados de las Bases Técnicas Transversales. Estos últimos incorporan el sufijo -BTT para distinguirlos. Ambos grupos se responden por separado en el Formulario T-12.
+
+La Tabla 3.A.3a registra materias funcionales complementarias: requisitos propios que LafroX agrega al catálogo y materias que se responden mediante un requisito transversal o no se ofertan como función independiente.
+
+\input{tablas_anexo/materias_funcionales_complementarias.tex}
+
+La tabla distingue dos grupos. Los ofertados (RF-06.06, RF-09.10 y RF-10.01 a RF-10.03) son requisitos propios de LafroX que se suman al compromiso y se detallan en la Tabla 3.A.3b, junto con RF-02.11 y RF-06.14, que materializan las familias F-05 y F-09. Los demás son alias absorbidos por el RT indicado o materias no ofertadas con su fundamento; no reducen una obligación de las Bases.
+
+\begin{landscape}
+\setlength{\textwidth}{\linewidth}\setlength{\tabcolsep}{3pt}
+\input{tablas_anexo/rf_propios.tex}
+\end{landscape}
+
+\section*{Anexo 3.B — Catálogo de requerimientos no funcionales}
+\addcontentsline{toc}{section}{Anexo 3.B — Catálogo de requerimientos no funcionales}
+
+El catálogo no funcional ofertado reúne \textbf{86 requerimientos}, detallados en las Tablas 3.A.4, 3.A.5 y 3.A.5b. Cada fila indica el umbral o criterio binario, la verificación prevista y el origen. Los protocolos detallados, datos y ambientes de prueba se desarrollan en el plan de calidad de la oferta.
+
+La Tabla 3.A.4 presenta los requerimientos no funcionales de Distribuidora Puelche.
+
+\input{tablas_anexo/rnf_caso.tex}
+
+Los identificadores RNF-03-01, RNF-03-02 y RNF-03-03 del catálogo consolidado se escriben RNF-03.01, RNF-03.02 y RNF-03.03 para uniformar la grafía; se trata del mismo requerimiento.
+
+La Tabla 3.A.5 presenta los requerimientos no funcionales derivados de las Bases Técnicas Transversales.
+
+\input{tablas_anexo/rnf_btt.tex}
+
+La Tabla 3.A.5a relaciona las cinco condiciones rectoras del Anexo 2.1 del Subdocumento 2 (LafroX, 2026a) con los requerimientos detallados y registra las materias no funcionales complementarias.
+
+\input{tablas_anexo/condiciones_rectoras_rnf.tex}
+
+Las cinco condiciones rectoras quedan cubiertas por requerimientos detallados con umbral. RNF-09.05, RNF-12.03, RNF-14.11 y RNF-14.12 son requisitos propios de LafroX.
+
+La Tabla 3.A.5b detalla los cuatro requisitos no funcionales propios de LafroX, con umbral y verificación.
+
+\input{tablas_anexo/rnf_propios.tex}
+
+Los requisitos RNF-14.11 y RNF-14.12 preparan la solución para las modificaciones introducidas por la Ley N.º 21.719, que entrarán en vigencia el 1 de diciembre de 2026 (Ley N.º 21.719, 2024, art. primero transitorio). El respaldo legal comprende las disposiciones sobre seguridad y geolocalización incorporadas a la Ley N.º 19.628 mediante el artículo primero, numeral 8, de la Ley N.º 21.719 (2024): artículos 14 quinquies y 16 sexies. El acuerdo sindical previo proviene del supuesto S-13 del Anexo 2.2 del Subdocumento 2 (LafroX, 2026a); el cifrado a nivel de campo y la auditoría son controles comprometidos por LafroX. La geolocalización por vehículo se tratará como dato personal cuando permita identificar a una persona.
+
+\section*{Anexo 3.C — Registro de supuestos}
+\addcontentsline{toc}{section}{Anexo 3.C — Registro de supuestos}
+
+Los supuestos S-01 a S-16 recogen las decisiones formuladas en el Anexo 2.2 del Subdocumento 2 (LafroX, 2026a). Los registros S-17 a S-41 desarrollan condiciones de alcance y dimensionamiento, con el origen indicado en cada fila; S-26 y S-29 conservan la meta y el criterio de inventario de la Tabla 2.1 del Subdocumento 2 (LafroX, 2026c). Ninguno se presenta como aprobado por el CLIENTE: cada uno indica la consecuencia si resulta falso y la instancia que lo valida, salvo los mínimos obligatorios que no requieren validación.
+
+La Tabla 3.A.6 presenta los supuestos de la oferta.
+
+\input{tablas_anexo/supuestos.tex}
+
+Los supuestos se revisan en el comité de proyecto del mes 1 y su resultado se registra en acta. Un supuesto rechazado actualiza los requerimientos y reglas indicados en la columna «Si resulta falso».
+
+\section*{Anexo 3.D — Registro de exclusiones}
+\addcontentsline{toc}{section}{Anexo 3.D — Registro de exclusiones}
+
+Se conservan las nueve exclusiones de alcance de Distribuidora Puelche. No se agregan exclusiones propias que reduzcan las obligaciones de la oferta.
+
+La Tabla 3.A.7 presenta las exclusiones explícitas.
+
+\input{tablas_anexo/exclusiones.tex}
+
+La exclusión E-05 no impide integrar a los transportistas en la operación: el portal de transportistas (RF-12.19 a RF-12.21) comparte rutas y documentos, pero no liquida pagos. La exclusión E-09 obliga a LafroX a especificar el hardware (RNF-23.01), aunque la compra corresponde al CLIENTE.
+
+\section*{Anexo 3.E — Registro de restricciones}
+\addcontentsline{toc}{section}{Anexo 3.E — Registro de restricciones}
+
+Se presentan las doce restricciones operacionales de Distribuidora Puelche. Cada una condiciona requerimientos concretos del catálogo.
+
+La Tabla 3.A.8 presenta estas restricciones.
+
+\input{tablas_anexo/restricciones.tex}
+
+Las restricciones R-02, R-03 y R-07 explican la operación desconectada de la solución; R-04 y R-12 mantienen al ERP como único emisor; R-08 condiciona el calendario de pasos a producción de la sección 3.1.2 del Subdocumento 3.
+
+\section*{Anexo 3.F — Registro de decisiones de alcance y de diseño}
+\addcontentsline{toc}{section}{Anexo 3.F — Registro de decisiones de alcance y de diseño}
+
+Las decisiones registran las elecciones de LafroX que no son exigencia directa de las Bases. Su aceptación por el CLIENTE se verifica en el comité de proyecto.
+
+La Tabla 3.A.9 presenta el registro de decisiones.
+
+\input{tablas_anexo/decisiones.tex}
+
+Las decisiones D-03, D-11 y D-12 unifican valores que antes tenían más de una versión. Cualquier cambio posterior se registra en este anexo antes de modificar el catálogo.
+
+\section*{Anexo 3.G — Registro de reglas de negocio}
+\addcontentsline{toc}{section}{Anexo 3.G — Registro de reglas de negocio}
+
+Las reglas precisan qué se captura, quién decide y qué consecuencia tiene cada evento. Forman parte del registro de requerimientos y se parametrizan cuando dependen de un valor comercial o sanitario.
+
+La Tabla 3.A.10 presenta el registro de reglas de negocio.
+
+\input{tablas_anexo/reglas_negocio.tex}
+
+Las reglas RNG-01, RNG-04, RNG-05 y RNG-07 recogen las decisiones adoptadas en los registros S-08, S-04, S-03 y S-10, respectivamente, del Anexo 2.2 del Subdocumento 2 (LafroX, 2026a). RNG-15 conserva la promesa del arbitraje 1 del Subdocumento 2 (LafroX, 2026c); permanece pendiente definir el tratamiento de pedidos urbanos posteriores a las 14:00. Los parámetros se configuran sin desarrollo (RF-17.02), conservando los compromisos del SD2; la configuración no constituye una validación de los valores pendientes.
+
+\section*{Anexo 3.H — Registro de vacíos y consultas}
+\addcontentsline{toc}{section}{Anexo 3.H — Registro de vacíos y consultas}
+
+Cada registro identifica la pregunta o el estado documental del asunto, su efecto en el alcance, la base de oferta y el responsable. V-04 y V-05 están resueltas documentalmente; V-03 registra una decisión de oferta adoptada y conserva pendiente la aclaración formal. Las demás consultas siguen pendientes de confirmación o decisión. Ninguna fila acredita una respuesta recibida del CLIENTE.
+
+La Tabla 3.A.11 presenta las consultas abiertas.
+
+\input{tablas_anexo/vacios.tex}
+
+Las aclaraciones V-02, V-03 y V-17 se dirigen al mandante por diferencias internas de las Bases. V-04 y V-05 no requieren respuesta para fijar sus obligaciones documentales, cuyo cumplimiento debe demostrarse. Las demás consultas se dirigen a las contrapartes indicadas y conservan los momentos de validación de la tabla. Resolver una formulación documental no equivale a confirmar un dato operacional ni a recibir una aprobación del CLIENTE.
+
+\section*{Anexo 3.I — Participación de los grupos de interés}
+\addcontentsline{toc}{section}{Anexo 3.I — Participación de los grupos de interés}
+
+La estrategia de apoyo distingue a los 19 actores del Anexo 2.3 del Subdocumento 2 (LafroX, 2026a) y usa sus nombres. El comité ejecutivo participa como instancia de decisión, sin agregarse como vigésimo actor. Los responsables de LafroX corresponden a la sección «Estructura para Proyecto» del Subdocumento 1 (LafroX, 2026b).
+
+La Tabla 3.A.12 presenta la participación de cada actor.
+
+\input{tablas_anexo/participacion_actores.tex}
+
+El planificador tiene influencia Alta e interés Muy Alto según el Anexo 2.3 del Subdocumento 2 (LafroX, 2026a); por eso participa desde el mes 1 y no solo como informado. El portal de transportistas no incluye liquidación de pagos, que la exclusión E-05 deja fuera del alcance.
+
+\section*{Anexo 3.J — Criterios de aceptación}
+\addcontentsline{toc}{section}{Anexo 3.J — Criterios de aceptación}
+
+Cada uno de los dieciséis resultados de aceptación tiene una meta, un momento y un método de verificación. Se conservan los límites exigidos por el CLIENTE; cuando no existe un valor definido, LafroX establece la meta comprometida. Los protocolos completos se desarrollan en el plan de calidad de la oferta.
+
+La Tabla 3.A.13 presenta los criterios de aceptación.
+
+\input{tablas_anexo/criterios_aceptacion.tex}
+
+Las metas de R18-04 y R18-16 son propias de LafroX. La meta de R18-04 alcanza el 95 \% en el mes 32, tras un ciclo anual con ambas etapas en producción; la ventana de 30 minutos de la principal cadena se mide aparte (RF-12.10 y RF-12.11). Los tramos se derivan en la sección 3.2.5 del Subdocumento 3. Las metas de R18-12 y R18-14 son supuestos de oferta (S-26 y S-27), sujetos a validación con el CLIENTE. La aceptación de cada resultado la firma la Contraparte Técnica en el acta de cierre de la marcha blanca (\textit{Bases Administrativas}, 2026, art. 17.3, p. 13). Hay dos excepciones, que se aceptan en el cierre de forma provisional y se confirman en operación: R18-04, en su tramo del mes 32, y R18-12, tras 12 meses.
+
+R18-12 conserva la meta de la Tabla 2.1 del Subdocumento 2 (LafroX, 2026c): pérdida anual de envases no superior al 7 \% del parque. La medición no utiliza el número de despachos como denominador. Se conserva también la meta de merma por vencimiento del mismo cuadro: no superior al 1,0 \% del valor del inventario al año, verificada tras 12 meses de operación y sin aumentar los quiebres de stock. Su verificación compara la merma anual valorizada y los quiebres de stock con la línea base del Subdocumento 2; este compromiso complementa los dieciséis resultados de aceptación.
+
+\section*{Anexo 3.K — Glosario de siglas y códigos}
+\addcontentsline{toc}{section}{Anexo 3.K — Glosario de siglas y códigos}
+
+El glosario explica las siglas y códigos de los anexos y del Formulario T-12.
+
+La Tabla 3.A.14 presenta las siglas y códigos utilizados.
+
+\input{tablas_anexo/glosario.tex}
+
+\section*{Referencias}
+\addcontentsline{toc}{section}{Referencias}
+
+Las fuentes se citan en cada tabla con su capítulo, artículo, sección o código.
+
+{\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\linespread{2}\selectfont
+\hangindent=1.27cm\hangafter=1 \textit{Bases administrativas para la preparación de la propuesta}. (2026). (Versión 1.0).\par
+\hangindent=1.27cm\hangafter=1 \textit{Bases técnicas transversales para la preparación de la propuesta}. (2026). (Versión 1.0).\par
+\hangindent=1.27cm\hangafter=1 LafroX. (2026a). \textit{Anexos del Subdocumento 02}.\par
+\hangindent=1.27cm\hangafter=1 LafroX. (2026b). \textit{Subdocumento 1: Presentación de la empresa}.\par
+\hangindent=1.27cm\hangafter=1 LafroX. (2026c). \textit{Subdocumento 2: Comprensión del problema y de la necesidad}.\par
+\hangindent=1.27cm\hangafter=1 Ley N.º 19.799. (2002, 12 de abril). \textit{Sobre documentos electrónicos, firma electrónica y servicios de certificación de dicha firma}. Diario Oficial de la República de Chile. \url{https://www.bcn.cl/leychile/navegar?idNorma=196640}\par
+\hangindent=1.27cm\hangafter=1 Ley N.º 21.719. (2024, 13 de diciembre). \textit{Regula la protección y el tratamiento de los datos personales y crea la Agencia de Protección de Datos Personales}. Diario Oficial de la República de Chile. \url{https://www.bcn.cl/leychile/navegar?idNorma=1209272}\par
+}
+
+\section*{Declaración de uso de IA}
+\addcontentsline{toc}{section}{Declaración de uso de IA}
+
+La tabla declara la asistencia de IA en cada anexo. La revisión humana se registra cuando el equipo la realiza.
+
+La Tabla 3.A.15 registra la asistencia utilizada.
+
+\input{tablas_anexo/declaracion_ia.tex}

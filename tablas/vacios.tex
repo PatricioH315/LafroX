@@ -1,0 +1,76 @@
+%  Origen: 03_esquema_solucion_alcance/entrega_2/tablas/esquema_solucion_alcance.xlsx
+%  Hoja "3.4.4 Registro de vacíos y consultas al CLIENTE". Las columnas
+%  "Origen" e "Impacto" del origen se integraron en la descripcion del vacio.
+
+\begin{tablalafrox}{Vacíos detectados, tratamiento adoptado y estado}%
+  {tab:vacios}%
+  {C{1.1cm} Y L{4.3cm} L{2.9cm}}%
+  {\cab{ID} & \cab{Vacío o ambigüedad} & \cab{Tratamiento} & \cab{Estado}}
+  V-01 & La planilla manual de sugerencia de reposición del preventista no
+      tiene requerimiento dedicado en el catálogo (caso, capítulos 5 y 9.10).
+      Deja la cobertura de reposición aparentemente incompleta.
+    & Consulta conforme al Artículo 43.3; resolución declarada: RF-03.15 más
+      RF-08.05.
+    & Resuelto, Decisión 23 \\
+  V-02 & Número de instalaciones: cinco según el capítulo 8 del caso, seis
+      según la Tabla 14.1 y RT-21.16. Afecta alcance de red, soporte,
+      traslados y dimensionamiento.
+    & Consulta conforme al Artículo 43.3; lectura declarada: seis sitios, cinco
+      con cómputo.
+    & Elevado a consulta, Decisión 57 \\
+  V-03 & Flota: 42 camiones, 84 conductores y peonetas, y 42 conductores según
+      la Tabla 14.1. Afecta la oferta económica de terminales, impresoras de
+      cabina y terminales de pago.
+    & Consulta conforme al Artículo 43.3; supuesto adoptado: una tripulación
+      por camión, 42 conductores más 42 peonetas.
+    & Elevado a consulta, Decisión 45 \\
+  V-04 & Número de ambientes: cuatro según el Artículo 24\textsuperscript{o} y
+      el Formulario E-25, cinco más recuperación ante desastres según el
+      Artículo 3\textsuperscript{o} y RT-04.01. Afecta el diseño de
+      infraestructura y su costo.
+    & Resuelto por precedencia: cinco ambientes más el de recuperación ante
+      desastres.
+    & Resuelto, S\,3.2.2 \\
+  V-05 & La ponderación del Formulario T-21 suma 98~\% aunque su total declara
+      100~\%. Afecta el cálculo del puntaje técnico.
+    & Declarada y elevada a consulta; no se altera el formulario.
+    & Elevado a consulta \\
+  V-06 & Fechas de calendario: el registro del Formulario T-20 cierra antes de
+      la publicación de las bases; el Informe 1 coincide con el Acta de
+      Respuestas; el Informe 3 y la Presentación 3 caen el mismo día.
+    & No se altera el cronograma; se eleva consulta.
+    & Elevado a consulta \\
+  V-07 & Códigos RT mal referenciados en la tabla de valores del capítulo 15
+      del caso: RT-03.24 por RT-03.23, RT-03.13 por RT-03.12, RT-05.10 por
+      RT-16.10, y RT-06.01 citado como tipología de emplazamiento.
+    & Se responde contra el código correcto del documento transversal y se
+      señala el desajuste.
+    & Resuelto, Matriz T-12 \\
+  V-08 & Desconexión: el relato del caso refiere cortes de hasta dos horas,
+      mientras el capítulo 10 y RT-03.10 exigen operar un turno completo de 14
+      horas sin señal.
+    & Se documentan dos escenarios: 2 horas como nominal y 14 horas como
+      contingencia de diseño.
+    & Resuelto, supuesto S-41 \\
+  V-09 & Alta y recuperación de credenciales de usuarios sin correo
+      corporativo (RT-12.12). Afecta a conductores externos y al canal
+      tradicional.
+    & Identidad centralizada con factor presencial mediante clave de un solo
+      uso, y doble factor para acceso externo.
+    & Resuelto, Decisión 34 \\
+  V-10 & Lote ausente en el 41~\% de las recepciones del producto suspendido.
+      Afecta la fidelidad de la trazabilidad de partida.
+    & No se deduce el dato: la migración lo marca y lo excluye de la cobertura
+      de trazabilidad.
+    & Resuelto, Decisión 58 \\
+  V-11 & El saldo inicial de la cuenta corriente de envases retornables no
+      existe en el origen. Afecta el control de 68.000 canastillos y 9.400
+      pallets.
+    & Inventario de apertura acordado con el CLIENTE.
+    & Resuelto, Decisión 58 \\
+  V-12 & Razón social del proponente pendiente de definir, con efecto en la
+      nomenclatura de archivos del Artículo 43.3 y en la planilla de consultas.
+    & Definición previa a la presentación; nomenclatura estandarizada a
+      TFEP-01/2026.
+    & Pendiente formal \\
+\end{tablalafrox}

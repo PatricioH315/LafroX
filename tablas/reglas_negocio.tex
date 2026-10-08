@@ -1,0 +1,69 @@
+%  Origen: 03_esquema_solucion_alcance/entrega_2/tablas/esquema_solucion_alcance.xlsx
+%  Hoja "3.9 Registro de reglas de negocio".
+
+\begin{tablalafrox}{Registro de reglas de negocio}%
+  {tab:reglas-negocio}%
+  {C{1.5cm} L{3.7cm} Y}%
+  {\cab{ID} & \cab{Regla} & \cab{Definición operativa}}
+  RNG-01 & Asignación y reserva de stock
+    & La reserva se produce al confirmar el pedido, no al tomarlo ni al
+      prepararlo, y se resuelve por orden de llegada. El segundo preventista
+      que confirma sobre el mismo stock queda con quiebre parcial y no bloquea
+      al primero. \\
+  RNG-02 & Stock disponible, comprometido y en tránsito
+    & Disponible es el físico menos el comprometido. El tránsito no suma hasta
+      que la recepción se confirma. Sin conexión el dato es indicativo y se
+      muestra con su antigüedad; los conflictos se resuelven por orden
+      cronológico. \\
+  RNG-03 & Política de crédito en preventa
+    & Superar el límite dispara alerta; por sobre el 110~\% se bloquea el
+      envío. Las excepciones las autoriza un supervisor y quedan registradas;
+      sin conexión se aprueban al sincronizar. \\
+  RNG-04 & Excursión térmica y disposición del producto
+    & Los parámetros de tiempo y grados los define la jefa de calidad y son
+      configurables. La alerta es inmediata, pero el bloqueo no es automático:
+      el conductor decide la disposición según el producto. \\
+  RNG-05 & Reintento de entrega y local cerrado
+    & El conductor reporta local cerrado, el sistema registra el fallido y
+      reagenda a la siguiente ventana del cliente. El conductor no decide. Si
+      la indisponibilidad persiste, los productos vuelven al almacén. \\
+  RNG-06 & Devoluciones y efecto tributario
+    & La devolución se registra en la prueba de entrega, sin conexión y con
+      motivo tomado de catálogo. El destino se decide en el andén de retorno y
+      pasa al ERP. El documento ya emitido se resuelve con nota de crédito,
+      con retención legal de seis años. \\
+  RNG-07 & Control de envases retornables
+    & Se lleva saldo por cliente en cuenta corriente, no por unidad
+      identificada. La entrega descuenta y la devolución suma; el preventista
+      recibe alerta al superar el umbral y se emite reporte diario de pérdida. \\
+  RNG-08 & Cambio de precio entre toma y despacho
+    & Se cobra el precio acordado por el preventista al tomar el pedido.
+      Los cambios posteriores de la lista de precios no modifican el importe
+      pactado. Toda discrepancia se alerta al responsable comercial y se
+      corrige antes de la facturación. \\
+  RNG-09 & Entrega cumplida, OTIF y fill rate
+    & Una entrega parcial no cuenta como cumplida: \emph{in full} exige el
+      100~\% de ítems y unidades. \emph{On time} se mide contra fecha y
+      ventana. El fill rate compara unidades entregadas contra pedidas. Toda
+      parcial queda como desvío auditado con causal. \\
+  RNG-10 & FEFO y vida útil remanente
+    & El picking sigue estrictamente el vencimiento de lote, con bitácora de
+      excepción. Se alerta bajo un umbral configurable, del orden de 30 días. \\
+  RNG-11 & Maestro de productos y códigos externos
+    & Prevalece el maestro interno de Puelche como única fuente autorizada, con
+      historial de códigos. Los códigos externos se resuelven por tabla de
+      equivalencias por cadena; lo no resuelto pasa a bandeja de excepciones. \\
+  RNG-12 & Sincronización y resolución de conflictos
+    & Al reconectar, la sincronización es automática con reconciliación
+      determinista y bitácora auditable. Durante las 14 horas de terreno el
+      dato sin conexión es indicativo y el stock se valida contra el servidor
+      al reconectar. \\
+  RNG-13 & Secuenciación térmica y validación por zona
+    & La secuencia de picking es seco, refrigerado y congelado. La
+      compatibilidad térmica se valida al ubicar: un congelado no puede
+      quedar fuera de zona congelada. \\
+  RNG-14 & Capacidad del vehículo y carga dirigida
+    & No se asigna carga que exceda el peso o el volumen nominal, ni cadena de
+      frío a un vehículo sin equipo. La carga se ordena en secuencia inversa a
+      la ruta y se verifica el escaneo de todos los bultos. \\
+\end{tablalafrox}

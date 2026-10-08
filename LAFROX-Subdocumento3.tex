@@ -1,0 +1,35 @@
+%% ============================================================================
+%%  03_esquema_solucion_alcance/LAFROX-Subdocumento3.tex
+%%  Render independiente del Subdocumento 3 (Esquema de solución y alcance).
+%%
+%%  Nomenclatura de la aclaración de la licitación, sección 1:
+%%    LAFROX-Subdocumento3.pdf           (este archivo)
+%%    LAFROX-Subdocumento3-Anexos.pdf    (LAFROX-Subdocumento3-Anexos.tex)
+%%    LAFROX-Formulario-T-12.pdf         (LAFROX-Formulario-T-12.tex)
+%%
+%%  Opción [final]: presentación institucional; esta revisión incluye notas de trabajo (la aclaración,
+%%  sección 7.1 d, sanciona los marcadores de borrador en la entrega).
+%%
+%%  Compilar:  latexmk            (LuaLaTeX, ver latexmkrc)
+%%  Limpiar:   latexmk -c
+%% ============================================================================
+
+\documentclass[carta,firma,final]{lafrox}
+
+\usetikzlibrary{arrows.meta,fit,backgrounds,shapes.geometric}
+
+\datoslafrox{
+  subtitulo    = {Subdocumento 3 --- Esquema de solución y alcance},
+  alcance      = {Subdocumento 3},
+  formulario   = {Formulario T-7},
+  nomenclatura = {LAFROX-Subdocumento3.pdf},
+}
+
+\begin{document}
+
+\portadalafrox
+\preliminareslafrox
+
+\subdocumento{.}
+
+\end{document}

@@ -1,0 +1,32 @@
+%  Origen: 03_esquema_solucion_alcance/entrega_2/tablas/esquema_solucion_alcance.xlsx
+%  Hoja "3.2.2 Alcance de infraestructura del proyecto" (emplazamiento).
+
+\begin{tablalafrox}{Modelo de emplazamiento híbrido: qué va dónde y por qué}%
+  {tab:emplazamiento}%
+  {L{4.0cm} L{3.3cm} Y}%
+  {\cab{Componente} & \cab{Emplazamiento} & \cab{Justificación}}
+  Recepción, picking y carga en los centros de distribución de Talca y
+    Concepción
+    & On-premise, con réplica a nube
+    & Debe seguir operando durante un corte de enlace (restricción
+      N.\textdegree\,2); el ambiente incluye montacargas y cámara de congelado
+      a $-$22\,°C sin cobertura de señal. \\
+  Plataformas de cross-docking de Curicó, Chillán y Los Ángeles
+    & Gabinete de borde, con conectividad exclusiva por red móvil
+    & Sin almacenamiento propio, ventana de operación de tres horas y sin fibra
+      óptica disponible. \\
+  Preventa y reparto en dispositivos de terreno
+    & Aplicación que opera sin red, con sincronización diferida a nube
+    & Deben operar un turno completo sin señal, en rutas rurales de hasta 240
+      kilómetros (restricción N.\textdegree\,3). \\
+  Trazabilidad de lote, cadena de frío, analítica, portal y componentes de
+    inteligencia artificial
+    & Nube pública, región Chile o Sudamérica
+    & Volumen variable y sin acoplamiento a equipamiento físico; requiere
+      elasticidad durante el peak de septiembre. \\
+  Telemetría de los 42 camiones propios
+    & Se integra desde la plataforma del proveedor externo que ya la provee
+    & Fuente existente que se preserva; los 54 camiones de transportistas no
+      están cubiertos y se incorporan mediante un mecanismo a definir con cada
+      empresa (Decisión N.\textdegree\,5). \\
+\end{tablalafrox}

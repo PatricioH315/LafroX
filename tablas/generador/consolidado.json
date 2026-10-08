@@ -1,0 +1,3766 @@
+{
+  "rf": [
+    {
+      "id": "RF-01.01",
+      "titulo": "Recepción y Validación de Cantidades contra OC",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Cap. 4.1, Anexo A, Cap. 12"
+    },
+    {
+      "id": "RF-01.02",
+      "titulo": "Registro Obligatorio de Lote",
+      "desc": "Registrar el lote de todo producto que requiere trazabilidad en la recepción.",
+      "actor": "Recepción",
+      "pre": "Producto sujeto a trazabilidad recibido.",
+      "res": "Recepción asociada al lote.",
+      "prio": "Crítica",
+      "etapa": "E1",
+      "origen": "Caso, cap. 18, criterio 2; SD2, anexo 2.1, RF-02",
+      "origen_candidato": "Cap. 4.1, Cap. 4.9, Cap. 7.3"
+    },
+    {
+      "id": "RF-01.03",
+      "titulo": "Registro de Fecha de Vencimiento",
+      "desc": "Registrar el vencimiento del producto recibido.",
+      "actor": "Recepción",
+      "pre": "Producto recibido con fecha de vencimiento.",
+      "res": "Vencimiento disponible para gestión FEFO.",
+      "prio": "Alta",
+      "etapa": "E1",
+      "origen": "SD2, anexo 2.1, RF-02 y RF-03",
+      "origen_candidato": "Cap. 4.1, Cap. 4.8"
+    },
+    {
+      "id": "RF-01.04",
+      "titulo": "Registro de No Conformidades en Recepción",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Cap. 4.1, Cap. 4.9, Cap. 8 (Entrevista de Calidad), RT-17.06"
+    },
+    {
+      "id": "RF-01.05",
+      "titulo": "Cuarentena Automática por No Conformidad",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Cap. 4.1, Cap. 4.9, RT-17.06"
+    },
+    {
+      "id": "RF-01.06",
+      "titulo": "Lectura y Decodificación de Códigos GS1",
+      "desc": "Capturar el código GS1-128 de los productos recibidos.",
+      "actor": "Recepción",
+      "pre": "Código disponible en el producto.",
+      "res": "Código asociado al registro de recepción.",
+      "prio": "Alta",
+      "etapa": "E1",
+      "origen": "SD2, anexo 2.1, RF-02",
+      "origen_candidato": "RT-17.06, Cap. 16.2 (GS1)"
+    },
+    {
+      "id": "RF-01.07",
+      "titulo": "Generación e Impresión de Etiqueta SSCC",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Cap. 4.2 , Cap. 12 (GS1), RT-05.23"
+    },
+    {
+      "id": "RF-01.08",
+      "titulo": "Asignación de SSCC a Ubicación de Almacenamiento",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Cap. 4.2, Cap. 12 (GS1), RT-05.23"
+    },
+    {
+      "id": "RF-01.09",
+      "titulo": "Integración de Recepción con ERP",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Cap. 5, Anexo A, RT-03.13"
+    },
+    {
+      "id": "RF-01.10",
+      "titulo": "Gestión de Fichas de Producto",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Cap. 14.1 (pasa de 8.400 a 9.500 SKu), Cap. 8 (Hugo), Cap. 16.1 (N11)"
+    },
+    {
+      "id": "RF-01.11",
+      "titulo": "Validación de Compatibilidad Térmica en Putaway",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Cap. 2.3, Cap. 4.9, Cap. 10 (restricción 2)"
+    },
+    {
+      "id": "RF-02.01",
+      "titulo": "Configuración de topología de instalaciones",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Cap. 2.3, RT-02.12"
+    },
+    {
+      "id": "RF-02.02",
+      "titulo": "Consolidación de stock físico multi-sitio",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Cap. 2.3"
+    },
+    {
+      "id": "RF-02.03",
+      "titulo": "Reasignación de ubicaciones (slotting)",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Cap. 8 (Ximena)"
+    },
+    {
+      "id": "RF-02.04",
+      "titulo": "Conteo cíclico en modo ciego",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Cap. 4.2, Cap. 14.1"
+    },
+    {
+      "id": "RF-02.05",
+      "titulo": "Cálculo de stock disponible para la venta",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Cap. 16.1 (Decisión #8)"
+    },
+    {
+      "id": "RF-02.06",
+      "titulo": "Gestión de inventario en tránsito",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Cap. 2.3 (abastecimiento desde Talca)"
+    },
+    {
+      "id": "RF-02.07",
+      "titulo": "Consulta de nivel de ocupación por zona",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Cap. 2.3 (p. 5); Cap. 4.2 (p. 8)"
+    },
+    {
+      "id": "RF-02.08",
+      "titulo": "Gestión FEFO y alertas de vida útil",
+      "desc": "Asignar existencias para preparación siguiendo FEFO.",
+      "actor": "Bodega",
+      "pre": "Existencias con vencimiento registrado.",
+      "res": "Asignación ordenada por vencimiento.",
+      "prio": "Alta",
+      "etapa": "E1",
+      "origen": "SD2, anexo 2.1, RF-03",
+      "origen_candidato": "Cap. 4.2 (p. 8); Cap. 4.8 (p. 9); Cap. 7.2 (p. 12)"
+    },
+    {
+      "id": "RF-02.09",
+      "titulo": "Retención sanitaria de lote en inventario",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Cap. 9.6 (p. 18); Cap. 16.1 N.º 4 (p. 28)"
+    },
+    {
+      "id": "RF-02.10",
+      "titulo": "Ficha de trazabilidad de lote",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Cap. 1, Cap. 4.9, Cap. 9.5"
+    },
+    {
+      "id": "RF-03.01",
+      "titulo": "Consulta de stock disponible en línea",
+      "desc": "Mostrar stock disponible en la consulta en línea al tomar el pedido.",
+      "actor": "Preventista",
+      "pre": "Inicio de captura del pedido.",
+      "res": "Información de stock visible durante la consulta en línea.",
+      "prio": "Crítica",
+      "etapa": "E1",
+      "origen": "Caso, cap. 18, criterio 5; SD2, anexo 2.1, RF-01",
+      "origen_candidato": "Cap. 4.3 (p. 8); Cap. 9.2 (p. 18); Cap. 18 N.º 5 (p. 34)"
+    },
+    {
+      "id": "RF-03.02",
+      "titulo": "Consulta de stock disponible sin conectividad",
+      "desc": "Mostrar la información de stock disponible en el dispositivo durante una toma sin señal.",
+      "actor": "Preventista",
+      "pre": "Inicio de captura del pedido.",
+      "res": "Información local de stock visible sin conexión; regla de reserva aún sin desarrollar.",
+      "prio": "Crítica",
+      "etapa": "E1",
+      "origen": "Caso, cap. 18, criterio 5; SD2, anexo 2.1, RF-01",
+      "origen_candidato": "Cap. 10 Restricción 3 (p. 19); Cap. 18 N.º 5 (p. 34)"
+    },
+    {
+      "id": "RF-03.03",
+      "titulo": "Reserva de stock al confirmar el pedido",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Cap. 16.1 N.º 8 (p. 28)"
+    },
+    {
+      "id": "RF-03.04",
+      "titulo": "Consulta de crédito y deuda vencida en línea",
+      "desc": "Mostrar crédito y deuda del cliente en la consulta en línea.",
+      "actor": "Preventista",
+      "pre": "Cliente identificado.",
+      "res": "Información comercial visible en línea.",
+      "prio": "Crítica",
+      "etapa": "E1",
+      "origen": "Caso, cap. 18, criterio 5; SD2, sección 2.5 y anexo 2.1, RF-01",
+      "origen_candidato": "Cap. 4.3 (p. 8); Cap. 8, entrevista al gerente comercial (p. 15)"
+    },
+    {
+      "id": "RF-03.05",
+      "titulo": "Consulta de crédito y deuda vencida sin conectividad",
+      "desc": "Mostrar crédito y deuda del cliente con la información disponible sin conexión.",
+      "actor": "Preventista",
+      "pre": "Cliente identificado.",
+      "res": "Información comercial local visible sin señal.",
+      "prio": "Crítica",
+      "etapa": "E1",
+      "origen": "Caso, cap. 18, criterio 5; SD2, sección 2.5 y anexo 2.1, RF-01",
+      "origen_candidato": "Cap. 10 Restricción 3 (p. 19); Cap. 18 N.º 5 (p. 34)"
+    },
+    {
+      "id": "RF-03.06",
+      "titulo": "Consulta de historial de compra del cliente",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Cap. 4.3 (p. 8); Cap. 9.2 (p. 18)"
+    },
+    {
+      "id": "RF-03.07",
+      "titulo": "Aplicación de promociones a una línea de pedido",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Cap. 4.1 (p. 7); Cap. 4.7 (p. 9)"
+    },
+    {
+      "id": "RF-03.08",
+      "titulo": "Alerta por superación del límite de crédito",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Cap. 4.3 (p. 8); Cap. 8, entrevista a la preventista (p. 16)"
+    },
+    {
+      "id": "RF-03.09",
+      "titulo": "Bloqueo de envío por exceso de crédito",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Cap. 4.3 (p. 8)"
+    },
+    {
+      "id": "RF-03.10",
+      "titulo": "Autorización de excepción por supervisor de crédito",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Cap. 16.1 N.º 8 (p. 28)"
+    },
+    {
+      "id": "RF-03.11",
+      "titulo": "Configuración de excepción de precio por cliente o cadena",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Cap. 16.1 N.º 9 (p. 28)"
+    },
+    {
+      "id": "RF-03.12",
+      "titulo": "Alerta al cliente por cambio de precio",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Cap. 16.1 N.º 9 (p. 28)"
+    },
+    {
+      "id": "RF-03.13",
+      "titulo": "Información de ventana de entrega comprometible",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Cap. 9.1 (p. 18); Cap. 8, entrevista al gerente comercial (p. 15)"
+    },
+    {
+      "id": "RF-03.14",
+      "titulo": "Sugerencia de productos al preventista",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Cap. 9.2 (p. 18)"
+    },
+    {
+      "id": "RF-03.15",
+      "titulo": "Generación de identificador único de pedido offline",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Cap. 4.3 (p. 8); Cap. 18 N.º 6 (p. 34)"
+    },
+    {
+      "id": "RF-03.16",
+      "titulo": "Detección y descarte de pedidos duplicados al sincronizar",
+      "desc": "Evitar la duplicación de pedidos al recuperar conectividad.",
+      "actor": "Preventa",
+      "pre": "Pedidos capturados sin señal.",
+      "res": "Pedidos sincronizados sin duplicación.",
+      "prio": "Crítica",
+      "etapa": "E1",
+      "origen": "Caso, cap. 18, criterio 6",
+      "origen_candidato": "Cap. 4.3 (p. 8); Cap. 18 N.º 6 (p. 34)"
+    },
+    {
+      "id": "RF-04.01",
+      "titulo": "Asignación y secuenciación automática de rutas",
+      "desc": "Generar automáticamente la ruta del día siguiente en menos de 20 minutos.",
+      "actor": "Planificador",
+      "pre": "Pedidos y restricciones de ruta disponibles.",
+      "res": "Ruta propuesta para revisión.",
+      "prio": "Alta",
+      "etapa": "E1",
+      "origen": "Caso, cap. 18, criterio 7; SD2, anexo 2.1, RF-06",
+      "origen_candidato": "Cap. 4.4, Criterio de aceptación #7"
+    },
+    {
+      "id": "RF-04.02",
+      "titulo": "Modificación manual de rutas y reasignación de pedidos",
+      "desc": "Permitir corregir la ruta propuesta y registrar cada corrección.",
+      "actor": "Planificador",
+      "pre": "Ruta propuesta disponible.",
+      "res": "Ruta corregida con registro de cambios.",
+      "prio": "Alta",
+      "etapa": "E1",
+      "origen": "Caso, cap. 18, criterio 7; SD2, anexo 2.1, RF-06",
+      "origen_candidato": "Cap. 8, entrevista al planificador (p. 14); Cap. 9.3 (p. 18)"
+    },
+    {
+      "id": "RF-04.03",
+      "titulo": "Bloqueo de asignación por exceso de capacidad",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Cap. 4.4 (p. 8); Cap. 7.2 (p. 12)"
+    },
+    {
+      "id": "RF-04.04",
+      "titulo": "Ajuste de secuencia de ruta por ventanas horarias",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Cap. 4.4 (p. 8); Cap. 9.1 (p. 18)"
+    },
+    {
+      "id": "RF-04.05",
+      "titulo": "Restricción de vehículos por requisito de cadena de frío",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Cap. 2.3 (p. 5); Cap. 4.4 (p. 8)"
+    },
+    {
+      "id": "RF-04.06",
+      "titulo": "Notificación de hora estimada de llegada al cliente",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Cap. 9.1 (p. 18); Cap. 15 RT-16.21 (p. 28)"
+    },
+    {
+      "id": "RF-04.07",
+      "titulo": "Parametrización de ventanas horarias",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Cap. 8, entrevista al planificador (p. 14)"
+    },
+    {
+      "id": "RF-04.08",
+      "titulo": "Cálculo integral del costo de entrega realizada",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Cap. 9.3 y 9.8 (pp. 18--19); Cap. 16.1 N.º 7 (p. 28)"
+    },
+    {
+      "id": "RF-05.01",
+      "titulo": "Generación de misiones de picking",
+      "desc": "Generar y consolidar hojas digitales de preparación por olas y zonas.",
+      "actor": "Jefatura de bodega",
+      "pre": "Pedidos disponibles para preparación.",
+      "res": "Trabajo de preparación organizado por olas.",
+      "prio": "Alta",
+      "etapa": "E1",
+      "origen": "SD2, anexo 2.1, RF-04",
+      "origen_candidato": "Cap. 4.5"
+    },
+    {
+      "id": "RF-05.02",
+      "titulo": "Validación de líneas por escaneo GS1",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Cap. 4.5, Cap. 12"
+    },
+    {
+      "id": "RF-05.03",
+      "titulo": "Motivo obligatorio de faltante",
+      "desc": "Registrar la causa de cada faltante en el momento de producirse.",
+      "actor": "Preparador",
+      "pre": "Faltante detectado durante preparación.",
+      "res": "Faltante asociado a su causa.",
+      "prio": "Alta",
+      "etapa": "E1",
+      "origen": "Caso, cap. 18, criterio 15",
+      "origen_candidato": "Cap. 8, Crit. #15"
+    },
+    {
+      "id": "RF-05.04",
+      "titulo": "Secuenciación térmica de misiones",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Cap. 4.5"
+    },
+    {
+      "id": "RF-05.05",
+      "titulo": "Asignación de inventario FEFO en picking",
+      "desc": "Asignar existencias para preparación siguiendo FEFO.",
+      "actor": "Bodega",
+      "pre": "Existencias con vencimiento registrado.",
+      "res": "Asignación ordenada por vencimiento.",
+      "prio": "Alta",
+      "etapa": "E1",
+      "origen": "SD2, anexo 2.1, RF-03",
+      "origen_candidato": "Cap. 4.8, 9.10"
+    },
+    {
+      "id": "RF-05.06",
+      "titulo": "Envío de preparación al ERP",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Cap. 4.5 (segundo punto de pérdida)"
+    },
+    {
+      "id": "RF-05.07",
+      "titulo": "Carga dirigida inversa a ruta",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Cap. 4.5, Criterio de Aceptación #14"
+    },
+    {
+      "id": "RF-06.01",
+      "titulo": "Confirmación de recepción de bultos",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Cap. 4.6 (p. 8)"
+    },
+    {
+      "id": "RF-06.02",
+      "titulo": "Captura de firma en pantalla",
+      "desc": "Capturar firma en pantalla como parte de la prueba digital de entrega.",
+      "actor": "Conductor y receptor",
+      "pre": "Entrega en el punto del cliente.",
+      "res": "Firma asociada al registro de entrega.",
+      "prio": "Crítica",
+      "etapa": "E1",
+      "origen": "SD2, anexo 2.1, RF-08",
+      "origen_candidato": "Cap. 9.4 (p. 18); Cap. 16.1 N.º 15 (p. 29)"
+    },
+    {
+      "id": "RF-06.03",
+      "titulo": "Reporte de rechazo de productos",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Cap. 4.6 (p. 8); Cap. 16.1 N.º 12 (p. 28)"
+    },
+    {
+      "id": "RF-06.04",
+      "titulo": "Reporte de local cerrado y reagendamiento automático",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Cap. 4.6 (p. 8); Cap. 16.1 N.º 3 (p. 28)"
+    },
+    {
+      "id": "RF-06.05",
+      "titulo": "Registro de recaudación de pagos en efectivo",
+      "desc": "Registrar el cobro en efectivo en el punto de entrega.",
+      "actor": "Conductor",
+      "pre": "Cliente paga en efectivo.",
+      "res": "Cobro asociado a la entrega para rendición.",
+      "prio": "Alta",
+      "etapa": "E1",
+      "origen": "Caso, cap. 10, restricción 5; cap. 18, criterio 10; SD2, RF-10",
+      "origen_candidato": "Cap. 4.7 (p. 9); Cap. 9.7 (p. 19)"
+    },
+    {
+      "id": "RF-06.06",
+      "titulo": "Registro de hora real de llegada y término de la entrega",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Cap. 7.1 (p. 11); Cap. 9.1 (p. 18); Cap. 16.1 N.º 1 (p. 28)"
+    },
+    {
+      "id": "RF-06.07",
+      "titulo": "Sincronización automática de registros de turno",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Cap. 4.6 y 4.7"
+    },
+    {
+      "id": "RF-06.08",
+      "titulo": "Autenticación del conductor externo por clave de un solo uso",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Restricción #6, RT-12.11, Cap. 16.1 (Decisión #5)"
+    },
+    {
+      "id": "RF-06.09",
+      "titulo": "Captura de devolución de envases retornables",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Cap. 4.8, Cap. 9.7, Criterio Aceptación #12"
+    },
+    {
+      "id": "RF-06.10",
+      "titulo": "Actualización de saldo de envases retornables",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Cap. 4.8, Cap. 9.7, Criterio Aceptación #12"
+    },
+    {
+      "id": "RF-06.11",
+      "titulo": "Confirmación de recepción mediante QR",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Cap. 16.1 (Decisión #15)"
+    },
+    {
+      "id": "RF-06.12",
+      "titulo": "Confirmación de recepción sin conectividad",
+      "desc": "Registrar la recepción de mercadería sin conectividad.",
+      "actor": "Conductor y receptor",
+      "pre": "Entrega en zona sin señal.",
+      "res": "Evidencia conservada para sincronización.",
+      "prio": "Crítica",
+      "etapa": "E1",
+      "origen": "Caso, cap. 10, restricción 3; SD2, RF-08",
+      "origen_candidato": "Cap. 16.1 (Decisión #15)"
+    },
+    {
+      "id": "RF-06.13",
+      "titulo": "Impresión de comprobante térmico en terreno",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "RT-17.06 (impresora térmica portátil)"
+    },
+    {
+      "id": "RF-07.01",
+      "titulo": "Cálculo del monto esperado de rendición por camión",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Cap. 4.7 (p. 9); Cap. 9.7 (p. 19); Cap. 18 N.º 10 (p. 34)"
+    },
+    {
+      "id": "RF-07.02",
+      "titulo": "Rendición Digital Individual de Efectivo",
+      "desc": "Conciliar el efectivo el mismo día y registrar la explicación de toda diferencia.",
+      "actor": "Tesorería y conductor",
+      "pre": "Cobros y dinero rendido disponibles.",
+      "res": "Rendición conciliada con diferencias explicadas.",
+      "prio": "Alta",
+      "etapa": "E1",
+      "origen": "Caso, cap. 18, criterio 10; SD2, RF-10",
+      "origen_candidato": "Cap. 4.7, CA-10"
+    },
+    {
+      "id": "RF-07.03",
+      "titulo": "Registro Obligatorio de Causales de Descuadre en Caja",
+      "desc": "Conciliar el efectivo el mismo día y registrar la explicación de toda diferencia.",
+      "actor": "Tesorería y conductor",
+      "pre": "Cobros y dinero rendido disponibles.",
+      "res": "Rendición conciliada con diferencias explicadas.",
+      "prio": "Alta",
+      "etapa": "E1",
+      "origen": "Caso, cap. 18, criterio 10; SD2, RF-10",
+      "origen_candidato": "Cap. 4.7, 9.7, CA-10"
+    },
+    {
+      "id": "RF-07.04",
+      "titulo": "Consola de Gestión de Cartera de Crédito",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Cap. 4.7"
+    },
+    {
+      "id": "RF-07.05",
+      "titulo": "Alerta y Bloqueo de Crédito en Preventa",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Cap. 4.3, 8, RT-09.01"
+    },
+    {
+      "id": "RF-07.06",
+      "titulo": "Cobro con Terminal POS Móvil en Ruta",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "RT-17.06, Cap. 9.7"
+    },
+    {
+      "id": "RF-07.07",
+      "titulo": "Consulta de Estado de Cuenta en Portal de Clientes",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Cap. 9.7, RT-16.30"
+    },
+    {
+      "id": "RF-07.08",
+      "titulo": "Validación en Tesorería de Pagos Web",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Cap. 4.7, 9.7, RT-16.30"
+    },
+    {
+      "id": "RF-07.09",
+      "titulo": "Interfaz Asíncrona de Cobranzas hacia ERP",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Cap. 5, Restricción R4"
+    },
+    {
+      "id": "RF-07.10",
+      "titulo": "Registro de Abonos y Pagos Parciales en Entrega",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Cap. 4.7"
+    },
+    {
+      "id": "RF-07.11",
+      "titulo": "Cobranza Presencial de Facturas por Preventistas",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Cap. 4.3, Cap. 8"
+    },
+    {
+      "id": "RF-08.01",
+      "titulo": "Registro de Devoluciones en Ruta",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Cap. 4.6, Cap. 4.8, RT-17.01"
+    },
+    {
+      "id": "RF-08.02",
+      "titulo": "Gestión del Destino de Productos Devueltos",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Cap. 4.8, Cap. 10 (restriccion 4)"
+    },
+    {
+      "id": "RF-08.03",
+      "titulo": "Gestión de Cuenta Corriente de Envases Retornables",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Cap. 4.8, Cap. 16.1 (Decisión #10), Cap. 9.7"
+    },
+    {
+      "id": "RF-08.04",
+      "titulo": "Alertas por Exceso de Envases Retornables",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Cap. 4.8, Cap. 9.7"
+    },
+    {
+      "id": "RF-08.05",
+      "titulo": "Registro de Mermas por Vencimiento",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Cap. 4.8, Cap. 10 (restriccion 4)"
+    },
+    {
+      "id": "RF-08.06",
+      "titulo": "Reporte de Pérdida de Envases Retornables",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Cap. 4.8, Cap. 18 (Criterio Aceptación #12)"
+    },
+    {
+      "id": "RF-08.07",
+      "titulo": "Integración de Devoluciones y Mermas al Costo de Servir",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Cap. 9.8"
+    },
+    {
+      "id": "RF-09.01",
+      "titulo": "Trazabilidad hacia adelante por lote",
+      "desc": "Obtener los clientes afectados por un lote con evidencia en menos de dos horas.",
+      "actor": "Calidad",
+      "pre": "Lote sujeto a investigación o retiro.",
+      "res": "Relación de destinos y clientes afectados disponible.",
+      "prio": "Crítica",
+      "etapa": "E1",
+      "origen": "Caso, cap. 18, criterio 1; SD2, RF-11",
+      "origen_candidato": "Cap. 1, Cap. 9.6, Criterio Aceptación #1"
+    },
+    {
+      "id": "RF-09.02",
+      "titulo": "Trazabilidad hacia atrás por lote",
+      "desc": "Reconstruir el origen del lote asociado a una entrega.",
+      "actor": "Calidad",
+      "pre": "Lote sujeto a investigación o retiro.",
+      "res": "Origen y movimientos del lote identificables.",
+      "prio": "Crítica",
+      "etapa": "E1",
+      "origen": "Caso, cap. 18, criterio 1; SD2, RF-11",
+      "origen_candidato": "Cap. 4.9, Cap. 9.6"
+    },
+    {
+      "id": "RF-09.03",
+      "titulo": "Registro de temperaturas de cámaras de refigerado y congelado",
+      "desc": "Registrar automáticamente la temperatura de cámaras de forma continua.",
+      "actor": "Calidad",
+      "pre": "Operación de almacenamiento o transporte refrigerado.",
+      "res": "Registro térmico de cámaras auditable y disponible.",
+      "prio": "Crítica",
+      "etapa": "E1",
+      "origen": "Caso, cap. 18, criterio 3; SD2, RF-07",
+      "origen_candidato": "Cap. 4.9, Cap. 7.3, Criterio Aceptación #3"
+    },
+    {
+      "id": "RF-09.04",
+      "titulo": "Registro de temperaturas de camiones con equipo de frío",
+      "desc": "Registrar automáticamente la temperatura de vehículos de forma continua.",
+      "actor": "Calidad",
+      "pre": "Operación de almacenamiento o transporte refrigerado.",
+      "res": "Registro térmico de transporte auditable y disponible.",
+      "prio": "Crítica",
+      "etapa": "E1",
+      "origen": "Caso, cap. 18, criterio 3; SD2, RF-07",
+      "origen_candidato": "Cap. 4.6, Cap. 4.9, Criterio Aceptación #3"
+    },
+    {
+      "id": "RF-09.05",
+      "titulo": "Alerta de excursión térmica",
+      "desc": "Alertar ante excursiones térmicas.",
+      "actor": "Calidad y operaciones",
+      "pre": "Lecturas disponibles y regla térmica definida.",
+      "res": "Alerta disponible para tratamiento operacional.",
+      "prio": "Crítica",
+      "etapa": "E1",
+      "origen": "SD2, RF-07; Caso, cap. 16.1, decisión 4",
+      "origen_candidato": "Cap. 8 (Katherine), Cap. 16.1 (Decisión #4)"
+    },
+    {
+      "id": "RF-09.06",
+      "titulo": "Retención automática del lote ante excursión térmica",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Cap. 8 (Katherine vs Nelson), Cap. 16.1 (Decisión #4)"
+    },
+    {
+      "id": "RF-09.07",
+      "titulo": "Registro de rechazo del cliente por sospecha de ruptura de frío",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Cap. 4.9, Cap. 8"
+    },
+    {
+      "id": "RF-09.08",
+      "titulo": "Registro de lotes con control sanitario",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Cap. 4.5, Cap. 4.9"
+    },
+    {
+      "id": "RF-09.09",
+      "titulo": "Generación de cumplimiento de cadena de frío",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Cap. 4.9 ; Cap. 18 criterio N°3"
+    },
+    {
+      "id": "RF-09.10",
+      "titulo": "Parametrización de la regla de excursión térmica",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Cap. 8, entrevista a la jefa de calidad (p. 15); Cap. 9.6 (p. 18); Cap. 16.1 N.º 4 (p. 28)"
+    },
+    {
+      "id": "RF-10.01",
+      "titulo": "Sugerencia de reposición de compras por SKU y proveedor",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Cap. 4.1 (p. 7); Cap. 5 (p. 10); Cap. 9.10 (p. 19)"
+    },
+    {
+      "id": "RF-10.02",
+      "titulo": "Incorporación de promociones comprometidas a la reposición",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Cap. 4.1 (p. 7); Cap. 9.10 (p. 19)"
+    },
+    {
+      "id": "RF-10.03",
+      "titulo": "Traspaso de la sugerencia aprobada al módulo de compras del ERP",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Cap. 5 (p. 10); Cap. 10 Restricción 4 (p. 19)"
+    },
+    {
+      "id": "RF-11.01",
+      "titulo": "Distribución Automática de Reportes Ejecutivos",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Cap. 7.1, 7.2, 9.8, CA-11"
+    },
+    {
+      "id": "RF-11.02",
+      "titulo": "Cálculo del Costo de Servir por Entrega y Cliente",
+      "desc": "Determinar costo de servir por cliente y entrega a partir de hechos operacionales.",
+      "actor": "Finanzas",
+      "pre": "Hechos de cada entrega disponibles.",
+      "res": "Costo individual disponible para análisis.",
+      "prio": "Media",
+      "etapa": "E2",
+      "origen": "Caso, cap. 18, criterio 11; SD2, RF-14",
+      "origen_candidato": "Cap. 4.4, 7.2, 9.8, CA-11"
+    },
+    {
+      "id": "RF-11.03",
+      "titulo": "Cálculo Diario Unificado del Indicador OTIF",
+      "desc": "Medir las entregas completas y a tiempo con una única definición.",
+      "actor": "Operaciones",
+      "pre": "Entrega y compromiso comercial registrados.",
+      "res": "Indicador comparable entre áreas.",
+      "prio": "Alta",
+      "etapa": "",
+      "origen": "Caso, cap. 18, criterio 4",
+      "origen_candidato": "Cap. 7.1, 9.1, CA-04"
+    },
+    {
+      "id": "RF-11.04",
+      "titulo": "Medición de Fill Rate y Perfect Order con POD Móvil",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Cap. 7.1, 9.4, 16.2, CA-08"
+    },
+    {
+      "id": "RF-11.05",
+      "titulo": "Monitoreo y Alerta de Ocupación de Flota",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Cap. 4.4, 7.2, CA-14"
+    },
+    {
+      "id": "RF-11.06",
+      "titulo": "Tablero de Control Operacional en Tiempo Real",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "RT-05.29, Cap. 9.1, 9.6"
+    },
+    {
+      "id": "RF-11.07",
+      "titulo": "Liquidación y Cierre Comercial por Camión",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "RT-05.29, CA-10"
+    },
+    {
+      "id": "RF-11.08",
+      "titulo": "Segmentación de Clientes por Rentabilidad Neta",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Cap. 7.2, 9.8, Decisión 16.1 #7"
+    },
+    {
+      "id": "RF-12.01",
+      "titulo": "Recepción de pedido electrónico",
+      "desc": "Recibir pedidos electrónicos estructurados de las cadenas, sin redigitación.",
+      "actor": "Canal moderno",
+      "pre": "Intercambio habilitado con la cadena.",
+      "res": "Pedido recibido por intercambio electrónico.",
+      "prio": "Alta",
+      "etapa": "E2",
+      "origen": "Caso, cap. 18, criterio 13; SD2, RF-13",
+      "origen_candidato": "Cap. 9.9; RT-05.23"
+    },
+    {
+      "id": "RF-12.02",
+      "titulo": "Validación automática del pedido EDI",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Cap. 9.9 / Cap. 17.1"
+    },
+    {
+      "id": "RF-12.03",
+      "titulo": "Resolución del código de producto contra el maestro de Puelche",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Cap. 16.1, Decisión #11"
+    },
+    {
+      "id": "RF-12.04",
+      "titulo": "Registro automático del pedido EDI válido en el sistema de gestión",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Cap. 18, Criterio de Aceptación #13"
+    },
+    {
+      "id": "RF-12.05",
+      "titulo": "Disponibilización del pedido a la planificación de despacho",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Cap. 18, Criterio de Aceptación #13"
+    },
+    {
+      "id": "RF-12.06",
+      "titulo": "Gestión de excepciones de pedidos EDI inválidos",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Cap. 17.1 / 17.2"
+    },
+    {
+      "id": "RF-12.07",
+      "titulo": "Confirmación o rechazo del pedido a la cadena de origen",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Cap. 9.9"
+    },
+    {
+      "id": "RF-12.08",
+      "titulo": "Historial de estados del pedido electrónico",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Cap. 9.1 / 9.4 / 9.9"
+    },
+    {
+      "id": "RF-12.09",
+      "titulo": "Envío de aviso de despacho anticipado (ASN)",
+      "desc": "Responder al pedido de la cadena con aviso de despacho.",
+      "actor": "Canal moderno",
+      "pre": "Intercambio habilitado con la cadena.",
+      "res": "Aviso de despacho emitido al canal moderno.",
+      "prio": "Alta",
+      "etapa": "E2",
+      "origen": "Caso, cap. 18, criterio 13; SD2, RF-13",
+      "origen_candidato": "Cap. 9.9; entrevista Rubén Salinas"
+    },
+    {
+      "id": "RF-12.10",
+      "titulo": "Planificación de la llegada dentro de la ventana de 30 minutos",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Cap. 9.9"
+    },
+    {
+      "id": "RF-12.11",
+      "titulo": "Registro del cumplimiento de la ventana de entrega",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Cap. 9.9; RT-10.05"
+    },
+    {
+      "id": "RF-12.12",
+      "titulo": "Captura de evidencia de entrega en canal moderno",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Cap. 9.9; Cap. 16.1, Decisión #15"
+    },
+    {
+      "id": "RF-12.13",
+      "titulo": "Envío de acuse de recibo digital al cliente",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Cap. 9.9"
+    },
+    {
+      "id": "RF-12.14",
+      "titulo": "Portal público de catálogo",
+      "desc": "Permitir consultar el catálogo en línea.",
+      "actor": "Cliente",
+      "pre": "Información comercial disponible.",
+      "res": "Catálogo disponible para consulta.",
+      "prio": "Media",
+      "etapa": "E2",
+      "origen": "SD2, anexo 2.1, RF-12",
+      "origen_candidato": "RT-16.30"
+    },
+    {
+      "id": "RF-12.15",
+      "titulo": "Pedido en autoservicio para clientes del canal moderno",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "RT-16.30"
+    },
+    {
+      "id": "RF-12.16",
+      "titulo": "Consulta de estado de entregas en el portal de clientes",
+      "desc": "Permitir consultar el estado del pedido y entrega en el portal.",
+      "actor": "Cliente",
+      "pre": "Información comercial disponible.",
+      "res": "Estado disponible para el cliente.",
+      "prio": "Media",
+      "etapa": "E2",
+      "origen": "SD2, anexo 2.1, RF-12",
+      "origen_candidato": "RT-16.30 / Cap. 9.1"
+    },
+    {
+      "id": "RF-12.17",
+      "titulo": "Consulta de documentos tributarios en el portal de clientes",
+      "desc": "Permitir consultar la documentación de facturación en el portal.",
+      "actor": "Cliente",
+      "pre": "Información comercial disponible.",
+      "res": "Documentos disponibles para consulta.",
+      "prio": "Media",
+      "etapa": "E2",
+      "origen": "SD2, anexo 2.1, RF-12",
+      "origen_candidato": "RT-16.30 / RT-16.14"
+    },
+    {
+      "id": "RF-12.18",
+      "titulo": "Consulta de saldo y estado de cuenta en el portal de clientes",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "RT-16.30"
+    },
+    {
+      "id": "RF-12.19",
+      "titulo": "Consulta de rutas asignadas en el portal de transportistas",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "RT-16.30"
+    },
+    {
+      "id": "RF-12.20",
+      "titulo": "Descarga de documentación de despacho en el portal de transportistas",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "RT-16.30"
+    },
+    {
+      "id": "RF-12.21",
+      "titulo": "Confirmación diaria de conductor y vehículo",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Cap. 16.1, Decisión #5"
+    },
+    {
+      "id": "RF-12.22",
+      "titulo": "Consulta de órdenes de compra en el portal de proveedores",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "RT-16.30"
+    },
+    {
+      "id": "RF-12.23",
+      "titulo": "Consulta de recepciones en el portal de proveedores",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "RT-16.30"
+    },
+    {
+      "id": "RF-12.24",
+      "titulo": "Consulta de devoluciones y notas de crédito en el portal de proveedores",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "RT-16.30"
+    },
+    {
+      "id": "RF-12.25",
+      "titulo": "Registro de cliente en el portal",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Cap. 15 RT-12.12 (p. 27)"
+    },
+    {
+      "id": "RF-12.26",
+      "titulo": "Inicio de sesión en el portal de clientes",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Cap. 15 RT-12.12 (p. 27)"
+    },
+    {
+      "id": "RF-12.27",
+      "titulo": "Recuperación de contraseña",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Cap. 15 RT-12.12 (p. 27)"
+    },
+    {
+      "id": "RF-12.28",
+      "titulo": "Cierre de sesión en el portal de clientes",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Cap. 15 RT-12.12 (p. 27)"
+    },
+    {
+      "id": "RF-12.29",
+      "titulo": "Expiración automática de sesión por inactividad",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Cap. 15 RT-12.12 (p. 27)"
+    },
+    {
+      "id": "RF-12.30",
+      "titulo": "Pago electrónico de pedidos de autoservicio",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Cap. 15 RT-16.30 (p. 28)"
+    },
+    {
+      "id": "RF-13.01",
+      "titulo": "Declaración de arquitectura multicapa",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Bases Técnicas Transversales, RT-02.01, RT-02.03"
+    },
+    {
+      "id": "RF-13.02",
+      "titulo": "Tabla de emplazamiento nube/on-premise",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Bases Técnicas Transversales, Cap. 3.1, RT-03.01"
+    },
+    {
+      "id": "RF-13.03",
+      "titulo": "Registro de decisiones de arquitectura (ADR)",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Bases Técnicas Transversales, RT-02.04"
+    },
+    {
+      "id": "RF-13.04",
+      "titulo": "Modelo de dominio de negocio",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Bases Técnicas Transversales, RT-02.13"
+    },
+    {
+      "id": "RF-14.01",
+      "titulo": "Integración con telemetría de camiones propios",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Cap. 5, RT-17.06"
+    },
+    {
+      "id": "RF-14.02",
+      "titulo": "Visualización de rutas planificadas vs reales",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Cap. 3 y entrevista de nelson"
+    },
+    {
+      "id": "RF-14.03",
+      "titulo": "Alerta de desviación de ruta",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Cap. 9.1"
+    },
+    {
+      "id": "RF-14.04",
+      "titulo": "Integración de telemetría con costo de servir",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Cap. 9.8"
+    },
+    {
+      "id": "RF-14.05",
+      "titulo": "Vinculación conductor-camión en cada viaje",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Cap. 16.1 (Decisión #5), Cap. 4.6"
+    },
+    {
+      "id": "RF-14.06",
+      "titulo": "Gestión de geocercas para control de llegada/salida",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Cap. 9.9 y entrevista con ruben salinas"
+    },
+    {
+      "id": "RF-15.01",
+      "titulo": "Gestión centralizada de identidad",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Bases Técnicas Transversales, RT-12.01"
+    },
+    {
+      "id": "RF-15.02",
+      "titulo": "Inicio de sesión único (SSO) para todos los módulos",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Bases Técnicas Transversales, RT-12.02"
+    },
+    {
+      "id": "RF-15.03",
+      "titulo": "Autenticación multifactor (MFA) para administradores y acceso externo",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Bases Técnicas Transversales, RT-12.03"
+    },
+    {
+      "id": "RF-15.04",
+      "titulo": "Control de acceso basado en roles (RBAC) y segregación de funciones",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Bases Técnicas Transversales, RT-12.05"
+    },
+    {
+      "id": "RF-15.05",
+      "titulo": "Aprovisionamiento y desaprovisionamiento automatizado de cuentas",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Bases Técnicas Transversales, RT-12.10"
+    },
+    {
+      "id": "RF-16.01",
+      "titulo": "Observabilidad unificada para nube y on-premise",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Bases Técnicas Transversales, RT-14.01"
+    },
+    {
+      "id": "RF-16.02",
+      "titulo": "Acceso del CLIENTE a tableros operacionales y de negocio",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Bases Técnicas Transversales, RT-14.02"
+    },
+    {
+      "id": "RF-16.03",
+      "titulo": "Alertamiento basado en síntomas de negocio",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Bases Técnicas Transversales, RT-14.04"
+    },
+    {
+      "id": "RF-16.04",
+      "titulo": "Análisis de causa raíz obligatorio tras incidente crítico",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Bases Técnicas Transversales, RT-14.06"
+    },
+    {
+      "id": "RF-17.01",
+      "titulo": "Módulo de administración de usuarios, roles y permisos",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Bases Técnicas Transversales, RT-16.01"
+    },
+    {
+      "id": "RF-17.02",
+      "titulo": "Parametrización de reglas de negocio desde interfaz de administración",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Bases Técnicas Transversales, RT-16.02"
+    },
+    {
+      "id": "RF-17.03",
+      "titulo": "Aprobación de dos perfiles para cambios de parámetros con impacto operacional",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Bases Técnicas Transversales, RT-16.03"
+    },
+    {
+      "id": "RF-17.04",
+      "titulo": "Registro de auditoría inalterable",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Bases Técnicas Transversales, RT-16.06, RT-16.07"
+    },
+    {
+      "id": "RF-17.05",
+      "titulo": "Consulta y exportación de auditoría desde la interfaz",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Bases Técnicas Transversales, RT-16.08"
+    },
+    {
+      "id": "RF-17.06",
+      "titulo": "Soporte de flujos de trabajo configurables",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Bases Técnicas Transversales, RT-16.11, RT-16.12"
+    },
+    {
+      "id": "RF-17.07",
+      "titulo": "Bandeja de tareas unificada",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Bases Técnicas Transversales, RT-16.13"
+    },
+    {
+      "id": "RF-17.08",
+      "titulo": "Gestión documental con versionado y control de acceso",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Bases Técnicas Transversales, RT-16.15, RT-16.16"
+    },
+    {
+      "id": "RF-17.09",
+      "titulo": "Generación de documentos a partir de plantillas",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Bases Técnicas Transversales, RT-16.19"
+    },
+    {
+      "id": "RF-17.10",
+      "titulo": "Notificaciones multicanal (correo, SMS, notificación en app)",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Bases Técnicas Transversales, RT-16.20, RT-16.21"
+    },
+    {
+      "id": "RF-17.11",
+      "titulo": "Búsqueda global con indexación de texto completo",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Bases Técnicas Transversales, RT-16.27"
+    },
+    {
+      "id": "RF-17.12",
+      "titulo": "Listados ordenables, filtrables, paginados y exportables",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Bases Técnicas Transversales, RT-16.28"
+    },
+    {
+      "id": "RF-17.13",
+      "titulo": "Portal público con catálogo y contacto (sin autenticación)",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Bases Técnicas Transversales, RT-16.31"
+    },
+    {
+      "id": "RF-18.01",
+      "titulo": "Soporte de firma electrónica avanzada (Ley 19.799)",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Bases Técnicas Transversales, RT-16.17, RT-16.18"
+    },
+    {
+      "id": "RF-18.02",
+      "titulo": "Configuración de preferencias de notificación por usuario",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Bases Técnicas Transversales, RT-16.22"
+    },
+    {
+      "id": "RF-18.03",
+      "titulo": "Envío asíncrono de notificaciones con reintento y registro",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Bases Técnicas Transversales, RT-16.23"
+    },
+    {
+      "id": "RF-19.01",
+      "titulo": "Clasificación de información por nivel de sensibilidad",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Bases Técnicas Transversales, RT-11.03"
+    },
+    {
+      "id": "RF-19.02",
+      "titulo": "Matriz de controles de seguridad trazable a ISO 27001/27002",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Bases Técnicas Transversales, RT-11.05"
+    },
+    {
+      "id": "RF-19.03",
+      "titulo": "Declaración de superficie de exposición",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Bases Técnicas Transversales, RT-11.13"
+    },
+    {
+      "id": "RF-19.04",
+      "titulo": "Plan de respuesta a incidentes de seguridad",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Bases Técnicas Transversales, RT-11.18"
+    },
+    {
+      "id": "RF-19.05",
+      "titulo": "Notificación de brecha de seguridad al CLIENTE",
+      "desc": "",
+      "actor": "",
+      "pre": "",
+      "res": "",
+      "prio": "",
+      "etapa": "",
+      "origen": "",
+      "origen_candidato": "Bases Técnicas Transversales, RT-11.19"
+    }
+  ],
+  "rnf": [
+    {
+      "id": "RNF-01.01",
+      "titulo": "Tiempo de registro de un ítem en recepción",
+      "origen_candidato": "Caso, Cap. 4.1 (p. 7)",
+      "umbral": "",
+      "metodo": "",
+      "origen": "",
+      "etapa": ""
+    },
+    {
+      "id": "RNF-01.02",
+      "titulo": "Retención de registros de recepción",
+      "origen_candidato": "Caso, Cap. 15, RT-05.10 (p. 27); Bases Técnicas Transversales, RT-16.10",
+      "umbral": "",
+      "metodo": "",
+      "origen": "",
+      "etapa": ""
+    },
+    {
+      "id": "RNF-01.03",
+      "titulo": "Recepción sin enlace y entrega diferida al ERP",
+      "origen_candidato": "Caso, Cap. 10, Restricción 2 (p. 19)",
+      "umbral": "Recepción operable durante cortes de enlace.",
+      "metodo": "",
+      "origen": "Caso, cap. 10, restricción 2",
+      "etapa": ""
+    },
+    {
+      "id": "RNF-02.01",
+      "titulo": "Sincronización del centro de distribución tras un corte de 24 h",
+      "origen_candidato": "Caso, Cap. 15, RT-03.13 (p. 26); Bases Técnicas Transversales, RT-03.12",
+      "umbral": "Sincronización del centro tras 24 horas de corte en no más de 2 horas, con resolución determinista de conflictos.",
+      "metodo": "",
+      "origen": "Caso, cap. 15, fila de sincronización; BTT, RT-03.12",
+      "etapa": ""
+    },
+    {
+      "id": "RNF-03.01",
+      "titulo": "Registro de una línea de pedido en preventa",
+      "origen_candidato": "Caso, Cap. 15, RT-09.01 (p. 27)",
+      "umbral": "",
+      "metodo": "",
+      "origen": "",
+      "etapa": ""
+    },
+    {
+      "id": "RNF-03.02",
+      "titulo": "Consulta de stock y crédito en preventa",
+      "origen_candidato": "Caso, Cap. 15, RT-09.01 (p. 27)",
+      "umbral": "",
+      "metodo": "",
+      "origen": "",
+      "etapa": ""
+    },
+    {
+      "id": "RNF-03.03",
+      "titulo": "Consulta del historial de compra",
+      "origen_candidato": "Caso, Cap. 9.2 (p. 18)",
+      "umbral": "",
+      "metodo": "",
+      "origen": "",
+      "etapa": ""
+    },
+    {
+      "id": "RNF-04.01",
+      "titulo": "Tiempo de generación de la ruta del día siguiente",
+      "origen_candidato": "Caso, Cap. 18 N.º 7 (p. 34)",
+      "umbral": "Generación de la ruta del día siguiente en menos de 20 minutos.",
+      "metodo": "",
+      "origen": "Caso, cap. 18, criterio 7",
+      "etapa": ""
+    },
+    {
+      "id": "RNF-05.01",
+      "titulo": "Confirmación de una línea de picking",
+      "origen_candidato": "Caso, Cap. 15, RT-09.01 (p. 27)",
+      "umbral": "",
+      "metodo": "",
+      "origen": "",
+      "etapa": ""
+    },
+    {
+      "id": "RNF-05.02",
+      "titulo": "Operabilidad con guantes térmicos a −22 °C",
+      "origen_candidato": "Caso, Cap. 10, Restricción 7 (p. 19); Cap. 15, RT-13.08 (p. 27)",
+      "umbral": "Dispositivos operables a −22 °C y sin señal en la cámara.",
+      "metodo": "",
+      "origen": "Caso, cap. 10, restricción 7",
+      "etapa": ""
+    },
+    {
+      "id": "RNF-05.03",
+      "titulo": "Curva de aprendizaje del preparador",
+      "origen_candidato": "Caso, Cap. 10, Restricción 11 (p. 20)",
+      "umbral": "",
+      "metodo": "",
+      "origen": "",
+      "etapa": ""
+    },
+    {
+      "id": "RNF-06.01",
+      "titulo": "Persistencia local de la jornada de reparto",
+      "origen_candidato": "Caso, Cap. 15, RT-03.10 (p. 26)",
+      "umbral": "Registrar la jornada íntegra de reparto durante 14 horas sin cobertura.",
+      "metodo": "",
+      "origen": "Caso, cap. 15, RT-03.10; SD2, RNF-RESIL",
+      "etapa": ""
+    },
+    {
+      "id": "RNF-06.02",
+      "titulo": "Duración del acceso sin conexión por perfil",
+      "origen_candidato": "Caso, Cap. 15, RT-12.11 (p. 27)",
+      "umbral": "",
+      "metodo": "",
+      "origen": "",
+      "etapa": ""
+    },
+    {
+      "id": "RNF-06.03",
+      "titulo": "Sincronización del dispositivo de reparto tras 14 h sin señal",
+      "origen_candidato": "Caso, Cap. 15, RT-03.13 (p. 26)",
+      "umbral": "Sincronización del dispositivo tras un turno sin señal en no más de 10 minutos.",
+      "metodo": "",
+      "origen": "Caso, cap. 15, fila de sincronización; BTT, RT-03.12",
+      "etapa": ""
+    },
+    {
+      "id": "RNF-07.01",
+      "titulo": "Preconciliación de cobranzas al reconectar",
+      "origen_candidato": "Caso, Cap. 9.7 (p. 19)",
+      "umbral": "",
+      "metodo": "",
+      "origen": "",
+      "etapa": ""
+    },
+    {
+      "id": "RNF-07.02",
+      "titulo": "Cifrado a nivel de campo de datos de pago y de comportamiento de pago",
+      "origen_candidato": "Caso, Cap. 15, RT-11.10 (p. 27)",
+      "umbral": "",
+      "metodo": "",
+      "origen": "",
+      "etapa": ""
+    },
+    {
+      "id": "RNF-08.01",
+      "titulo": "Registro de una devolución en el andén de retorno",
+      "origen_candidato": "Caso, Cap. 4.8 (p. 9)",
+      "umbral": "",
+      "metodo": "",
+      "origen": "",
+      "etapa": ""
+    },
+    {
+      "id": "RNF-08.02",
+      "titulo": "Retención de devoluciones y mermas",
+      "origen_candidato": "Caso, Cap. 15, RT-05.10 (p. 27)",
+      "umbral": "",
+      "metodo": "",
+      "origen": "",
+      "etapa": ""
+    },
+    {
+      "id": "RNF-09.01",
+      "titulo": "Respuesta a un retiro sanitario",
+      "origen_candidato": "Caso, Cap. 18 N.º 1 (p. 34)",
+      "umbral": "Lista de clientes afectados por lote con evidencia en menos de 2 horas.",
+      "metodo": "",
+      "origen": "Caso, cap. 18, criterio 1",
+      "etapa": ""
+    },
+    {
+      "id": "RNF-09.02",
+      "titulo": "Retención de la trazabilidad sanitaria",
+      "origen_candidato": "Caso, Cap. 15, RT-05.10 (p. 27)",
+      "umbral": "",
+      "metodo": "",
+      "origen": "",
+      "etapa": ""
+    },
+    {
+      "id": "RNF-09.03",
+      "titulo": "Registro de consultas a la trazabilidad y a información sensible",
+      "origen_candidato": "Caso, Cap. 15, RT-16.09 (p. 28)",
+      "umbral": "",
+      "metodo": "",
+      "origen": "",
+      "etapa": ""
+    },
+    {
+      "id": "RNF-09.04",
+      "titulo": "Captura de temperatura sin señal",
+      "origen_candidato": "Caso, Cap. 6 (p. 11); Cap. 10, Restricción 7 (p. 19)",
+      "umbral": "",
+      "metodo": "",
+      "origen": "",
+      "etapa": ""
+    },
+    {
+      "id": "RNF-09.05",
+      "titulo": "Frecuencia de registro de temperatura",
+      "origen_candidato": "Caso, Cap. 9.6 (p. 18); Cap. 18 N.º 3 (p. 34)",
+      "umbral": "",
+      "metodo": "",
+      "origen": "",
+      "etapa": ""
+    },
+    {
+      "id": "RNF-11.01",
+      "titulo": "Latencia de los indicadores de la operación del día",
+      "origen_candidato": "Caso, Cap. 15, RT-05.29 (p. 27)",
+      "umbral": "",
+      "metodo": "",
+      "origen": "",
+      "etapa": ""
+    },
+    {
+      "id": "RNF-11.02",
+      "titulo": "Desacople entre analítica y transacción",
+      "origen_candidato": "Bases Técnicas Transversales, RT-05.05",
+      "umbral": "",
+      "metodo": "",
+      "origen": "",
+      "etapa": ""
+    },
+    {
+      "id": "RNF-11.03",
+      "titulo": "Cierre comercial del día",
+      "origen_candidato": "Caso, Cap. 15, RT-05.29 (p. 27)",
+      "umbral": "",
+      "metodo": "",
+      "origen": "",
+      "etapa": ""
+    },
+    {
+      "id": "RNF-11.04",
+      "titulo": "Latencia de los indicadores de gestión",
+      "origen_candidato": "Caso, Cap. 15, RT-05.29 (p. 27)",
+      "umbral": "",
+      "metodo": "",
+      "origen": "",
+      "etapa": ""
+    },
+    {
+      "id": "RNF-12.01",
+      "titulo": "Hito de producción del canal moderno",
+      "origen_candidato": "Caso, Cap. 13.2 (p. 22)",
+      "umbral": "Capacidades exigidas por la principal cadena en producción antes de enero de 2029.",
+      "metodo": "",
+      "origen": "Caso, sección 13.2",
+      "etapa": ""
+    },
+    {
+      "id": "RNF-12.02",
+      "titulo": "Incorporación de una cadena nueva sin desarrollo",
+      "origen_candidato": "Caso, Cap. 17.4 N.º 10 (p. 33)",
+      "umbral": "",
+      "metodo": "",
+      "origen": "",
+      "etapa": ""
+    },
+    {
+      "id": "RNF-12.03",
+      "titulo": "Envío del acuse de recibo al canal moderno",
+      "origen_candidato": "Caso, Cap. 9.9 (p. 19)",
+      "umbral": "",
+      "metodo": "",
+      "origen": "",
+      "etapa": ""
+    },
+    {
+      "id": "RNF-13.01",
+      "titulo": "Operación autónoma del componente on-premise",
+      "origen_candidato": "Bases Administrativas, Art. 16.4 (p. 12); Caso, Cap. 15, RT-03.10 (p. 26)",
+      "umbral": "Recepción, preparación y despacho autónomos durante al menos 24 horas sin enlace.",
+      "metodo": "",
+      "origen": "Caso, cap. 15; BTT, RT-03.10",
+      "etapa": ""
+    },
+    {
+      "id": "RNF-13.02",
+      "titulo": "Funciones no disponibles sin conexión",
+      "origen_candidato": "Bases Técnicas Transversales, RT-03.13",
+      "umbral": "",
+      "metodo": "",
+      "origen": "",
+      "etapa": ""
+    },
+    {
+      "id": "RNF-13.03",
+      "titulo": "Redundancia de equipos on-premise críticos",
+      "origen_candidato": "Bases Técnicas Transversales, RT-03.14",
+      "umbral": "",
+      "metodo": "",
+      "origen": "",
+      "etapa": ""
+    },
+    {
+      "id": "RNF-13.04",
+      "titulo": "Tolerancia a la falla de disco",
+      "origen_candidato": "Bases Técnicas Transversales, RT-03.14",
+      "umbral": "",
+      "metodo": "",
+      "origen": "",
+      "etapa": ""
+    },
+    {
+      "id": "RNF-13.05",
+      "titulo": "Nivel RAID declarado",
+      "origen_candidato": "Bases Técnicas Transversales, RT-03.14",
+      "umbral": "",
+      "metodo": "",
+      "origen": "",
+      "etapa": ""
+    },
+    {
+      "id": "RNF-13.06",
+      "titulo": "Endurecimiento de sistemas on-premise",
+      "origen_candidato": "Bases Técnicas Transversales, RT-03.15",
+      "umbral": "",
+      "metodo": "",
+      "origen": "",
+      "etapa": ""
+    },
+    {
+      "id": "RNF-13.07",
+      "titulo": "Enlace redundante entre sitio y nube",
+      "origen_candidato": "Bases Técnicas Transversales, RT-03.17; Caso, Cap. 6 (p. 10)",
+      "umbral": "",
+      "metodo": "",
+      "origen": "",
+      "etapa": ""
+    },
+    {
+      "id": "RNF-13.08",
+      "titulo": "Ancho de banda por sitio",
+      "origen_candidato": "Bases Técnicas Transversales, RT-03.20",
+      "umbral": "",
+      "metodo": "",
+      "origen": "",
+      "etapa": ""
+    },
+    {
+      "id": "RNF-13.09",
+      "titulo": "Cobertura inalámbrica en los sitios",
+      "origen_candidato": "Caso, Cap. 15, RT-03.24 (p. 26); Bases Técnicas Transversales, RT-03.23",
+      "umbral": "",
+      "metodo": "",
+      "origen": "",
+      "etapa": ""
+    },
+    {
+      "id": "RNF-14.01",
+      "titulo": "Cifrado en tránsito",
+      "origen_candidato": "Bases Técnicas Transversales, RT-11.08",
+      "umbral": "",
+      "metodo": "",
+      "origen": "",
+      "etapa": ""
+    },
+    {
+      "id": "RNF-14.02",
+      "titulo": "Cifrado en reposo",
+      "origen_candidato": "Bases Técnicas Transversales, RT-11.09",
+      "umbral": "",
+      "metodo": "",
+      "origen": "",
+      "etapa": ""
+    },
+    {
+      "id": "RNF-14.03",
+      "titulo": "Segregación de red en nube",
+      "origen_candidato": "Bases Técnicas Transversales, RT-03.04",
+      "umbral": "",
+      "metodo": "",
+      "origen": "",
+      "etapa": ""
+    },
+    {
+      "id": "RNF-14.04",
+      "titulo": "Correlación de eventos de seguridad",
+      "origen_candidato": "Bases Técnicas Transversales, RT-11.15",
+      "umbral": "",
+      "metodo": "",
+      "origen": "",
+      "etapa": ""
+    },
+    {
+      "id": "RNF-14.05",
+      "titulo": "Detección y respuesta en puntos finales",
+      "origen_candidato": "Bases Técnicas Transversales, RT-11.16",
+      "umbral": "",
+      "metodo": "",
+      "origen": "",
+      "etapa": ""
+    },
+    {
+      "id": "RNF-14.06",
+      "titulo": "Pruebas de intrusión",
+      "origen_candidato": "Bases Técnicas Transversales, RT-11.20",
+      "umbral": "",
+      "metodo": "",
+      "origen": "",
+      "etapa": ""
+    },
+    {
+      "id": "RNF-14.07",
+      "titulo": "Análisis de código y de dependencias",
+      "origen_candidato": "Bases Técnicas Transversales, RT-11.22",
+      "umbral": "",
+      "metodo": "",
+      "origen": "",
+      "etapa": ""
+    },
+    {
+      "id": "RNF-14.08",
+      "titulo": "Inventario de componentes de software",
+      "origen_candidato": "Bases Técnicas Transversales, RT-11.23",
+      "umbral": "",
+      "metodo": "",
+      "origen": "",
+      "etapa": ""
+    },
+    {
+      "id": "RNF-14.09",
+      "titulo": "Procedencia de artefactos",
+      "origen_candidato": "Bases Técnicas Transversales, RT-11.24",
+      "umbral": "",
+      "metodo": "",
+      "origen": "",
+      "etapa": ""
+    },
+    {
+      "id": "RNF-14.10",
+      "titulo": "Datos productivos en ambientes no productivos",
+      "origen_candidato": "Bases Técnicas Transversales, RT-11.25",
+      "umbral": "",
+      "metodo": "",
+      "origen": "",
+      "etapa": ""
+    },
+    {
+      "id": "RNF-14.11",
+      "titulo": "Privacidad de la geolocalización de personas",
+      "origen_candidato": "Caso, Cap. 10, Restricción 10 (p. 20); Cap. 15, RT-05.10 (p. 27)",
+      "umbral": "",
+      "metodo": "",
+      "origen": "",
+      "etapa": ""
+    },
+    {
+      "id": "RNF-14.12",
+      "titulo": "Categorías de datos personales en terreno",
+      "origen_candidato": "Caso, Cap. 12 (p. 21)",
+      "umbral": "",
+      "metodo": "",
+      "origen": "",
+      "etapa": ""
+    },
+    {
+      "id": "RNF-15.01",
+      "titulo": "Política de sesión",
+      "origen_candidato": "Bases Técnicas Transversales, RT-12.07",
+      "umbral": "",
+      "metodo": "",
+      "origen": "",
+      "etapa": ""
+    },
+    {
+      "id": "RNF-15.02",
+      "titulo": "Credenciales de sesión",
+      "origen_candidato": "Bases Técnicas Transversales, RT-12.08",
+      "umbral": "",
+      "metodo": "",
+      "origen": "",
+      "etapa": ""
+    },
+    {
+      "id": "RNF-15.03",
+      "titulo": "Auditoría del ciclo de vida de la identidad",
+      "origen_candidato": "Bases Técnicas Transversales, RT-12.09",
+      "umbral": "",
+      "metodo": "",
+      "origen": "",
+      "etapa": ""
+    },
+    {
+      "id": "RNF-16.01",
+      "titulo": "Indicadores de nivel de servicio sobre la experiencia real",
+      "origen_candidato": "Bases Técnicas Transversales, RT-14.03",
+      "umbral": "",
+      "metodo": "",
+      "origen": "",
+      "etapa": ""
+    },
+    {
+      "id": "RNF-16.02",
+      "titulo": "Libros de operación y guías de resolución",
+      "origen_candidato": "Bases Técnicas Transversales, RT-14.05",
+      "umbral": "",
+      "metodo": "",
+      "origen": "",
+      "etapa": ""
+    },
+    {
+      "id": "RNF-16.03",
+      "titulo": "Registros sin datos sensibles ni credenciales",
+      "origen_candidato": "Bases Técnicas Transversales, RT-14.07",
+      "umbral": "",
+      "metodo": "",
+      "origen": "",
+      "etapa": ""
+    },
+    {
+      "id": "RNF-17.01",
+      "titulo": "Retención de la auditoría",
+      "origen_candidato": "Bases Técnicas Transversales, RT-16.10",
+      "umbral": "",
+      "metodo": "",
+      "origen": "",
+      "etapa": ""
+    },
+    {
+      "id": "RNF-17.02",
+      "titulo": "Exportaciones de gran volumen",
+      "origen_candidato": "Bases Técnicas Transversales, RT-16.29",
+      "umbral": "",
+      "metodo": "",
+      "origen": "",
+      "etapa": ""
+    },
+    {
+      "id": "RNF-17.03",
+      "titulo": "Portal público ante picos de tráfico",
+      "origen_candidato": "Bases Técnicas Transversales, RT-16.34",
+      "umbral": "",
+      "metodo": "",
+      "origen": "",
+      "etapa": ""
+    },
+    {
+      "id": "RNF-19.01",
+      "titulo": "Cálculo de capacidad",
+      "origen_candidato": "Bases Técnicas Transversales, RT-09.01; Caso, Cap. 14.2 (p. 25)",
+      "umbral": "",
+      "metodo": "",
+      "origen": "",
+      "etapa": ""
+    },
+    {
+      "id": "RNF-19.02",
+      "titulo": "Escalamiento horizontal automático",
+      "origen_candidato": "Bases Técnicas Transversales, RT-09.04",
+      "umbral": "",
+      "metodo": "",
+      "origen": "",
+      "etapa": ""
+    },
+    {
+      "id": "RNF-19.03",
+      "titulo": "Componente que se satura primero",
+      "origen_candidato": "Bases Técnicas Transversales, RT-09.05; Caso, Cap. 17.4 N.º 13 (p. 33)",
+      "umbral": "",
+      "metodo": "",
+      "origen": "",
+      "etapa": ""
+    },
+    {
+      "id": "RNF-19.04",
+      "titulo": "Pruebas de carga y estrés",
+      "origen_candidato": "Bases Técnicas Transversales, RT-09.06",
+      "umbral": "",
+      "metodo": "",
+      "origen": "",
+      "etapa": ""
+    },
+    {
+      "id": "RNF-20.01",
+      "titulo": "Disponibilidad de los servicios críticos",
+      "origen_candidato": "Bases Administrativas, Art. 20 (p. 14); Caso, Cap. 15, RT-10.05 (p. 27)",
+      "umbral": "",
+      "metodo": "",
+      "origen": "",
+      "etapa": ""
+    },
+    {
+      "id": "RNF-20.02",
+      "titulo": "Clasificación de servicios por criticidad",
+      "origen_candidato": "Bases Técnicas Transversales, RT-10.02",
+      "umbral": "",
+      "metodo": "",
+      "origen": "",
+      "etapa": ""
+    },
+    {
+      "id": "RNF-20.03",
+      "titulo": "Continuidad del negocio",
+      "origen_candidato": "Bases Técnicas Transversales, RT-10.03",
+      "umbral": "",
+      "metodo": "",
+      "origen": "",
+      "etapa": ""
+    },
+    {
+      "id": "RNF-20.04",
+      "titulo": "Pruebas de resiliencia",
+      "origen_candidato": "Bases Técnicas Transversales, RT-10.07",
+      "umbral": "",
+      "metodo": "",
+      "origen": "",
+      "etapa": ""
+    },
+    {
+      "id": "RNF-20.05",
+      "titulo": "Comportamiento ante falla de dependencias externas",
+      "origen_candidato": "Bases Técnicas Transversales, RT-10.08",
+      "umbral": "",
+      "metodo": "",
+      "origen": "",
+      "etapa": ""
+    },
+    {
+      "id": "RNF-20.06",
+      "titulo": "Recuperación ante desastres",
+      "origen_candidato": "Bases Administrativas, Art. 20 (p. 14); Bases Técnicas Transversales, RT-07.04 y RT-07.07",
+      "umbral": "RTO ≤ 4 horas; RPO ≤ 15 minutos para servicios críticos; prueba de conmutación al menos dos veces al año.",
+      "metodo": "",
+      "origen": "BTT, RT-07.04 y RT-07.07; SD2, RNF-DR",
+      "etapa": ""
+    },
+    {
+      "id": "RNF-20.07",
+      "titulo": "Política de respaldo",
+      "origen_candidato": "Bases Técnicas Transversales, RT-07.09 y RT-07.12",
+      "umbral": "",
+      "metodo": "",
+      "origen": "",
+      "etapa": ""
+    },
+    {
+      "id": "RNF-21.01",
+      "titulo": "Centro de operaciones de red",
+      "origen_candidato": "Bases Técnicas Transversales, RT-21.01",
+      "umbral": "Monitoreo operacional 24 × 7.",
+      "metodo": "",
+      "origen": "SD1, sección 1.1; SD2, anexo 2.3, Jefe de TI",
+      "etapa": ""
+    },
+    {
+      "id": "RNF-21.02",
+      "titulo": "Gerente de servicio dedicado",
+      "origen_candidato": "Bases Técnicas Transversales, RT-21.02",
+      "umbral": "",
+      "metodo": "",
+      "origen": "",
+      "etapa": ""
+    },
+    {
+      "id": "RNF-21.03",
+      "titulo": "Umbrales de atención de la mesa",
+      "origen_candidato": "Bases Técnicas Transversales, RT-21.06",
+      "umbral": "",
+      "metodo": "",
+      "origen": "",
+      "etapa": ""
+    },
+    {
+      "id": "RNF-21.04",
+      "titulo": "Horario de atención",
+      "origen_candidato": "Caso, Cap. 15, RT-21.06 (p. 28); Bases Técnicas Transversales, RT-21.07",
+      "umbral": "",
+      "metodo": "",
+      "origen": "",
+      "etapa": ""
+    },
+    {
+      "id": "RNF-21.05",
+      "titulo": "Dimensionamiento de la mesa de ayuda",
+      "origen_candidato": "Bases Técnicas Transversales, RT-21.14",
+      "umbral": "",
+      "metodo": "",
+      "origen": "",
+      "etapa": ""
+    },
+    {
+      "id": "RNF-21.06",
+      "titulo": "Canal único de registro",
+      "origen_candidato": "Bases Técnicas Transversales, RT-21.15",
+      "umbral": "",
+      "metodo": "",
+      "origen": "",
+      "etapa": ""
+    },
+    {
+      "id": "RNF-21.07",
+      "titulo": "Traslado de especialistas a sitios alejados",
+      "origen_candidato": "Caso, Cap. 15, RT-21.16 (p. 28)",
+      "umbral": "",
+      "metodo": "",
+      "origen": "",
+      "etapa": ""
+    },
+    {
+      "id": "RNF-21.08",
+      "titulo": "Bolsa anual de mantención evolutiva",
+      "origen_candidato": "Bases Técnicas Transversales, RT-21.19",
+      "umbral": "",
+      "metodo": "",
+      "origen": "",
+      "etapa": ""
+    },
+    {
+      "id": "RNF-21.09",
+      "titulo": "Actualización anual de componentes de base",
+      "origen_candidato": "Bases Técnicas Transversales, RT-21.22",
+      "umbral": "",
+      "metodo": "",
+      "origen": "",
+      "etapa": ""
+    },
+    {
+      "id": "RNF-22.01",
+      "titulo": "Plan de capacitación por perfil",
+      "origen_candidato": "Bases Técnicas Transversales, RT-22.01",
+      "umbral": "",
+      "metodo": "",
+      "origen": "",
+      "etapa": ""
+    },
+    {
+      "id": "RNF-22.02",
+      "titulo": "Material de capacitación",
+      "origen_candidato": "Bases Técnicas Transversales, RT-22.03",
+      "umbral": "",
+      "metodo": "",
+      "origen": "",
+      "etapa": ""
+    },
+    {
+      "id": "RNF-22.03",
+      "titulo": "Capacitación sin detener la operación",
+      "origen_candidato": "Caso, Cap. 15, RT-22.04 (p. 28)",
+      "umbral": "Capacitación y acompañamiento sin detener venta ni reparto y considerando turno nocturno.",
+      "metodo": "",
+      "origen": "Caso, sección 13.3, condiciones 4 y 5",
+      "etapa": ""
+    },
+    {
+      "id": "RNF-22.04",
+      "titulo": "Certificación de administradores y técnicos",
+      "origen_candidato": "Bases Técnicas Transversales, RT-22.05",
+      "umbral": "",
+      "metodo": "",
+      "origen": "",
+      "etapa": ""
+    },
+    {
+      "id": "RNF-22.05",
+      "titulo": "Capacitación del personal nuevo del CLIENTE",
+      "origen_candidato": "Bases Técnicas Transversales, RT-22.06; Caso, Cap. 10, Restricción 11 (p. 20)",
+      "umbral": "",
+      "metodo": "",
+      "origen": "",
+      "etapa": ""
+    },
+    {
+      "id": "RNF-22.06",
+      "titulo": "Mentoría al equipo de TI del CLIENTE",
+      "origen_candidato": "Bases Técnicas Transversales, RT-22.07",
+      "umbral": "",
+      "metodo": "",
+      "origen": "",
+      "etapa": ""
+    },
+    {
+      "id": "RNF-23.01",
+      "titulo": "Especificación del hardware de terreno",
+      "origen_candidato": "Bases Técnicas Transversales, RT-08.10; Caso, Cap. 11 (p. 20)",
+      "umbral": "Especificar cantidades y características del hardware de terreno que compra el CLIENTE.",
+      "metodo": "",
+      "origen": "Caso, cap. 11",
+      "etapa": ""
+    },
+    {
+      "id": "RNF-23.02",
+      "titulo": "Protección de los dispositivos de terreno",
+      "origen_candidato": "Bases Técnicas Transversales, RT-08.12; Caso, Cap. 15, RT-13.08 (p. 27)",
+      "umbral": "",
+      "metodo": "",
+      "origen": "",
+      "etapa": ""
+    },
+    {
+      "id": "RNF-23.03",
+      "titulo": "Ciclo de vida de los dispositivos",
+      "origen_candidato": "Bases Técnicas Transversales, RT-08.13",
+      "umbral": "",
+      "metodo": "",
+      "origen": "",
+      "etapa": ""
+    },
+    {
+      "id": "RNF-23.04",
+      "titulo": "Estaciones de trabajo de operación y administración",
+      "origen_candidato": "Bases Técnicas Transversales, RT-08.07",
+      "umbral": "",
+      "metodo": "",
+      "origen": "",
+      "etapa": ""
+    }
+  ],
+  "supuestos": [
+    [
+      "S-01",
+      "Entrega cumplida y OTIF",
+      "",
+      "",
+      "Resolver la materia y documentar fundamento, consecuencias e instancia de validación."
+    ],
+    [
+      "S-02",
+      "Unidad de trazabilidad sanitaria",
+      "",
+      "",
+      "Resolver la materia y documentar fundamento, consecuencias e instancia de validación."
+    ],
+    [
+      "S-03",
+      "Local cerrado",
+      "",
+      "",
+      "Resolver la materia y documentar fundamento, consecuencias e instancia de validación."
+    ],
+    [
+      "S-04",
+      "Excursión térmica",
+      "",
+      "",
+      "Resolver la materia y documentar fundamento, consecuencias e instancia de validación."
+    ],
+    [
+      "S-05",
+      "Conductor de empresa transportista",
+      "",
+      "",
+      "Resolver la materia y documentar fundamento, consecuencias e instancia de validación."
+    ],
+    [
+      "S-06",
+      "Efectivo",
+      "Se mantiene el cobro en efectivo y se registra para conciliación; no se exige pago electrónico al canal tradicional.",
+      "Caso, cap. 10, restricción 5; SD2, RF-10",
+      "Definir custodia, límites y responsabilidades por dinero en circulación."
+    ],
+    [
+      "S-07",
+      "Costo de servir",
+      "",
+      "",
+      "Resolver la materia y documentar fundamento, consecuencias e instancia de validación."
+    ],
+    [
+      "S-08",
+      "Asignación de stock",
+      "",
+      "",
+      "Resolver la materia y documentar fundamento, consecuencias e instancia de validación."
+    ],
+    [
+      "S-09",
+      "Cambio de precio entre toma y despacho",
+      "",
+      "",
+      "Resolver la materia y documentar fundamento, consecuencias e instancia de validación."
+    ],
+    [
+      "S-10",
+      "Envases retornables",
+      "",
+      "",
+      "Resolver la materia y documentar fundamento, consecuencias e instancia de validación."
+    ],
+    [
+      "S-11",
+      "Maestro de productos",
+      "",
+      "",
+      "Resolver la materia y documentar fundamento, consecuencias e instancia de validación."
+    ],
+    [
+      "S-12",
+      "Devolución en la entrega",
+      "",
+      "",
+      "Resolver la materia y documentar fundamento, consecuencias e instancia de validación."
+    ],
+    [
+      "S-13",
+      "Objeción sindical",
+      "",
+      "",
+      "Resolver la materia y documentar fundamento, consecuencias e instancia de validación."
+    ],
+    [
+      "S-14",
+      "Sistema de gestión de almacenes de 2013",
+      "Reemplazo modular progresivo del sistema de bodega.",
+      "SD2, anexo 2.3, inventario de sistemas legados",
+      "Fundamentar alternativas y definir transición, migración y reversión; la decisión de alcance no acredita su diseño."
+    ],
+    [
+      "S-15",
+      "Prueba de entrega sin firma del titular",
+      "",
+      "",
+      "Resolver la materia y documentar fundamento, consecuencias e instancia de validación."
+    ],
+    [
+      "S-16",
+      "Conocimiento del planificador",
+      "Capturar el conocimiento del planificador mediante talleres en los meses 1 a 3, bajo el supuesto de cooperación durante los primeros cuatro meses.",
+      "SD2, sección 2.5, supuesto 1",
+      "Confirmar fecha de retiro y definir prueba de transferencia a un reemplazo."
+    ],
+    [
+      "S-17",
+      "Fecha de inicio del contrato",
+      "",
+      "",
+      "Resolver la materia y documentar fundamento, consecuencias e instancia de validación."
+    ],
+    [
+      "S-18",
+      "Interfaces del ERP",
+      "",
+      "",
+      "Resolver la materia y documentar fundamento, consecuencias e instancia de validación."
+    ],
+    [
+      "S-19",
+      "Acceso a la telemetría existente",
+      "",
+      "",
+      "Resolver la materia y documentar fundamento, consecuencias e instancia de validación."
+    ],
+    [
+      "S-20",
+      "Hardware de terreno disponible",
+      "",
+      "",
+      "Resolver la materia y documentar fundamento, consecuencias e instancia de validación."
+    ],
+    [
+      "S-21",
+      "Promesa de entrega",
+      "",
+      "",
+      "Resolver la materia y documentar fundamento, consecuencias e instancia de validación."
+    ],
+    [
+      "S-22",
+      "Seis instalaciones, cinco con cómputo",
+      "",
+      "",
+      "Resolver la materia y documentar fundamento, consecuencias e instancia de validación."
+    ],
+    [
+      "S-23",
+      "Tripulación por camión",
+      "",
+      "",
+      "Resolver la materia y documentar fundamento, consecuencias e instancia de validación."
+    ],
+    [
+      "S-24",
+      "Desconexión nominal y de diseño",
+      "",
+      "",
+      "Resolver la materia y documentar fundamento, consecuencias e instancia de validación."
+    ],
+    [
+      "S-25",
+      "Historia de ventas para la reposición",
+      "",
+      "",
+      "Resolver la materia y documentar fundamento, consecuencias e instancia de validación."
+    ]
+  ],
+  "restricciones": [
+    [
+      "R-01",
+      "El despacho de la mañana no se detiene. Entre las 05:30 y las 07:00 salen 96 camiones. No existe forma de ejecutar esa ventana a mano. Un sistema indisponible en ese tramo equivale a un día sin operación.",
+      "Caso, cap. 10, restricción 1"
+    ],
+    [
+      "R-02",
+      "El centro de distribución debe poder recibir, preparar y despachar durante un corte del enlace. La preparación nocturna y la carga no pueden quedar detenidas por conectividad.",
+      "Caso, cap. 10, restricción 2"
+    ],
+    [
+      "R-03",
+      "Las aplicaciones de preventa y de reparto deben funcionar un turno completo sin señal. Hay rutas donde el dispositivo no recupera cobertura hasta el regreso.",
+      "Caso, cap. 10, restricción 3"
+    ],
+    [
+      "R-04",
+      "El sistema de gestión no se reemplaza ni se modifica. Es el sistema de registro contable y tributario. La solución le entrega datos; el sistema de gestión emite los documentos tributarios. No habrá dos verdades ni un segundo emisor.",
+      "Caso, cap. 10, restricción 4"
+    ],
+    [
+      "R-05",
+      "No se puede exigir al cliente del canal tradicional que tenga internet, dispositivo propio ni medio de pago electrónico. La solución debe funcionar con el cliente tal como es.",
+      "Caso, cap. 10, restricción 5"
+    ],
+    [
+      "R-06",
+      "La solución debe operar con conductores que no son trabajadores de la compañía: 54 camiones de diez empresas transportistas, con rotación sin aviso.",
+      "Caso, cap. 10, restricción 6"
+    ],
+    [
+      "R-07",
+      "Los dispositivos que se usen en la cámara de congelado deben operar a −22 °C y sin cobertura de señal en su interior.",
+      "Caso, cap. 10, restricción 7"
+    ],
+    [
+      "R-08",
+      "Congelamiento operacional: prohibido intervenir sistemas entre el 1 y el 25 de septiembre y durante todo el mes de diciembre. Prohibido intervenir durante los tres primeros días hábiles del mes, por el cierre comercial y contable.",
+      "Caso, cap. 10, restricción 8"
+    ],
+    [
+      "R-09",
+      "El área de tecnologías de información de la compañía son cuatro personas. Toda función que requiera un especialista dedicado que la compañía no tiene debe ofrecerse como servicio y estar costeada.",
+      "Caso, cap. 10, restricción 9"
+    ],
+    [
+      "R-10",
+      "El sindicato de conductores objetó formalmente, el año pasado, la instalación de cámaras en cabina y el control de jornada por posicionamiento satelital. Cualquier propuesta que involucre esas tecnologías debe hacerse cargo del asunto.",
+      "Caso, cap. 10, restricción 10"
+    ],
+    [
+      "R-11",
+      "La rotación anual del personal de preparación de pedidos es del 38 % y el turno crítico es nocturno. Toda solución que exija entrenamiento prolongado para operar en bodega será rechazada.",
+      "Caso, cap. 10, restricción 11"
+    ],
+    [
+      "R-12",
+      "La emisión de documentos tributarios electrónicos debe cumplir la normativa vigente. La guía de despacho electrónica y su acuse de recibo tienen efectos legales que la solución no puede comprometer.",
+      "Caso, cap. 10, restricción 12"
+    ],
+    [
+      "R-13",
+      "",
+      ""
+    ],
+    [
+      "R-14",
+      "",
+      ""
+    ],
+    [
+      "R-15",
+      "",
+      ""
+    ],
+    [
+      "R-16",
+      "",
+      ""
+    ],
+    [
+      "R-17",
+      "",
+      ""
+    ],
+    [
+      "R-18",
+      "",
+      ""
+    ],
+    [
+      "R-19",
+      "",
+      ""
+    ],
+    [
+      "R-20",
+      "",
+      ""
+    ],
+    [
+      "R-21",
+      "",
+      ""
+    ],
+    [
+      "R-22",
+      "",
+      ""
+    ]
+  ],
+  "exclusiones": [
+    [
+      "EX-01",
+      "No se pide reemplazar el sistema de gestión empresarial ni ninguno de sus módulos, ni la emisión de documentos tributarios electrónicos."
+    ],
+    [
+      "EX-02",
+      "No se pide administrar remuneraciones ni recursos humanos, que residen en el sistema de gestión."
+    ],
+    [
+      "EX-03",
+      "No se pide un sistema de punto de venta para el local del cliente, sin perjuicio del canal de autoatención que la solución deba ofrecerle."
+    ],
+    [
+      "EX-04",
+      "No se pide comercio electrónico dirigido al consumidor final."
+    ],
+    [
+      "EX-05",
+      "No se pide administrar el contrato ni el pago de las empresas transportistas, sí integrarlas operacionalmente."
+    ],
+    [
+      "EX-06",
+      "No se pide el diseño de la red logística: la ubicación de los centros de distribución y de las plataformas no está en discusión en este proyecto."
+    ],
+    [
+      "EX-07",
+      "No se pide automatizar la bodega con equipamiento robotizado ni transportadores."
+    ],
+    [
+      "EX-08",
+      "No se pide la gestión de la flota en su dimensión mecánica, sin perjuicio de integrar la telemetría existente."
+    ],
+    [
+      "EX-09",
+      "El hardware de terreno —dispositivos, lectores, impresoras portátiles, sensores— lo adquiere el CLIENTE; el PROPONENTE debe especificar exactamente qué comprar, cuánto y con qué características, conforme al Capítulo 8 de las Bases Técnicas Transversales."
+    ],
+    [
+      "EX-10",
+      ""
+    ],
+    [
+      "EX-11",
+      ""
+    ]
+  ],
+  "decisiones": [
+    [
+      "D-01",
+      "Reparto entre etapas"
+    ],
+    [
+      "D-02",
+      "Medición del OTIF en la Etapa 1"
+    ],
+    [
+      "D-03",
+      "Promesa de entrega"
+    ],
+    [
+      "D-04",
+      "Metas del Cap. 18"
+    ],
+    [
+      "D-05",
+      "Planilla de reposición"
+    ],
+    [
+      "D-06",
+      "Estrategia de implantación"
+    ],
+    [
+      "D-07",
+      "Reversión en la ventana de despacho"
+    ],
+    [
+      "D-08",
+      "Funciones sin conexión"
+    ],
+    [
+      "D-09",
+      "Inteligencia artificial"
+    ],
+    [
+      "D-10",
+      "Mesa de ayuda"
+    ]
+  ],
+  "reglas": [
+    [
+      "RNG-01",
+      "Reserva de stock"
+    ],
+    [
+      "RNG-02",
+      "Stock disponible"
+    ],
+    [
+      "RNG-03",
+      "Crédito en preventa"
+    ],
+    [
+      "RNG-04",
+      "Excursión térmica"
+    ],
+    [
+      "RNG-05",
+      "Local cerrado"
+    ],
+    [
+      "RNG-06",
+      "Devolución en la entrega"
+    ],
+    [
+      "RNG-07",
+      "Envases retornables"
+    ],
+    [
+      "RNG-08",
+      "Precio entre toma y despacho"
+    ],
+    [
+      "RNG-09",
+      "Entrega cumplida, OTIF y fill rate"
+    ],
+    [
+      "RNG-10",
+      "FEFO y vida útil"
+    ],
+    [
+      "RNG-11",
+      "Maestro de productos"
+    ],
+    [
+      "RNG-12",
+      "Sincronización y conflictos"
+    ],
+    [
+      "RNG-13",
+      "Secuencia térmica y ubicación"
+    ],
+    [
+      "RNG-14",
+      "Capacidad y carga"
+    ],
+    [
+      "RNG-15",
+      "Corte y promesa de entrega"
+    ],
+    [
+      "RNG-16",
+      "Descuentos en terreno"
+    ]
+  ],
+  "vacios": [
+    [
+      "V-01",
+      "Cinco instalaciones (Cap. 8) frente a seis (Tabla 14.1 y RT-21.16)."
+    ],
+    [
+      "V-02",
+      "La ponderación del Formulario T-21 suma 98 % aunque su total declara 100 %."
+    ],
+    [
+      "V-03",
+      "84 conductores y peonetas frente a 42 conductores propios en la Tabla 14.1."
+    ],
+    [
+      "V-04",
+      "Cuatro ambientes (Art. 24 y E-25) frente a cinco más recuperación (Art. 3 y RT-04.01)."
+    ],
+    [
+      "V-05",
+      "Códigos RT del Cap. 15 del caso que no calzan con la materia del documento transversal: RT-03.24 (es RT-03.23), RT-03.13 (es RT-03.12), RT-05.10 (es RT-16.10), RT-09.01 (es RT-09.02), RT-16.14 (es RT-16.17), RT-16.21 (es RT-16.20), RT-16.30 (es RT-16.31), RT-21.06 (es RT-21.07), RT-15.02 (certificación sectorial, sin código) y RT-06.01 (exclusividad, no tipología)."
+    ],
+    [
+      "V-06",
+      "Relato de cortes de 2 h frente a la exigencia de 14 h."
+    ],
+    [
+      "V-07",
+      "Alta y recuperación de credenciales de personas sin correo."
+    ],
+    [
+      "V-08",
+      "41 % de recepciones del producto retirado sin lote en origen."
+    ],
+    [
+      "V-09",
+      "No existe saldo inicial de envases por cliente."
+    ],
+    [
+      "V-10",
+      "El Cap. 5 manda reemplazar la planilla de reposición y el catálogo inicial no tenía requerimiento."
+    ],
+    [
+      "V-11",
+      "Faltaban la hora real de entrega y el monto esperado de rendición, sin los cuales el OTIF y la cuadratura no se calculan."
+    ],
+    [
+      "V-12",
+      "Regla escrita de excursión térmica y responsable de la disposición."
+    ],
+    [
+      "V-13",
+      "Fecha de inicio del contrato: con inicio en enero o abril de 2027 el mes 21 cae en septiembre o diciembre, donde el caso prohíbe pasar a producción."
+    ],
+    [
+      "V-14",
+      "La suspensión del proveedor de lácteos vence en septiembre de 2026, antes del inicio del contrato; no está definido qué evidencia de trazabilidad acepta el proveedor."
+    ],
+    [
+      "V-15",
+      "Fecha exacta de retiro del planificador y su disponibilidad como asesor."
+    ],
+    [
+      "V-16",
+      "Condiciones contractuales de acceso a los datos de la telemetría del tercero."
+    ]
+  ],
+  "actores": [
+    [
+      "Gerenta General",
+      "Revisar la síntesis de resultados y las tensiones de alcance."
+    ],
+    [
+      "Gerente Comercial",
+      "Revisar stock visible y promesa comercial."
+    ],
+    [
+      "Gerente de Operaciones",
+      "Revisar preparación, despacho y continuidad."
+    ],
+    [
+      "Gerente de Finanzas",
+      "Revisar conciliación y costo de servir."
+    ],
+    [
+      "Jefa de Calidad",
+      "Revisar captura de lote, frío y retiro."
+    ],
+    [
+      "Jefa de Bodega",
+      "Revisar FEFO y preparación en el turno nocturno."
+    ],
+    [
+      "Jefe de TI",
+      "Validar interfaces y necesidades de soporte."
+    ],
+    [
+      "Planificador de Rutas",
+      "Participar en captura de heurísticas y corrección de rutas."
+    ],
+    [
+      "Preventistas",
+      "Revisar captura de pedidos en terreno."
+    ],
+    [
+      "Tripulación propia",
+      "Revisar entrega digital y registro de efectivo."
+    ],
+    [
+      "Conductores externos",
+      "Revisar incorporación y uso de la aplicación en ruta."
+    ],
+    [
+      "Empresas transportistas",
+      "Acordar incorporación operacional de sus conductores."
+    ],
+    [
+      "Preparadores",
+      "Revisar listas digitales y aprendizaje en el puesto."
+    ],
+    [
+      "Sindicato de Choferes",
+      "Revisar tratamiento de datos de vehículo y personas."
+    ],
+    [
+      "Canal Tradicional",
+      "Mantener compra y pago sin dispositivos obligatorios."
+    ],
+    [
+      "Food Service",
+      "Revisar ventanas de atención y evidencia de entrega."
+    ],
+    [
+      "Canal Moderno",
+      "Revisar pedido electrónico y aviso de despacho."
+    ],
+    [
+      "Proveedores",
+      "Revisar captura de códigos y lote en recepción."
+    ],
+    [
+      "Autoridad Sanitaria",
+      "Disponer de evidencia de trazabilidad y temperatura."
+    ]
+  ],
+  "r18": [
+    [
+      "R18-01",
+      "Ante un retiro sanitario, la lista de clientes afectados por lote se obtiene con evidencia en menos de dos horas.",
+      "9 días, con resultado estimado."
+    ],
+    [
+      "R18-02",
+      "El 100 % de las recepciones registra el lote de los productos que lo requieren.",
+      "41 % sin registro en el producto involucrado."
+    ],
+    [
+      "R18-03",
+      "Existe registro continuo y automático de temperatura en cámaras y vehículos, auditable y disponible para el cliente.",
+      "3 lecturas manuales por viaje."
+    ],
+    [
+      "R18-04",
+      "El indicador de entregas completas y a tiempo se mide de una sola forma y alcanza la meta comprometida por el PROPONENTE.",
+      "82,4 %, medido de forma distinta por cada área."
+    ],
+    [
+      "R18-05",
+      "El preventista conoce el stock disponible y el crédito del cliente en el momento de tomar el pedido.",
+      "No los conoce."
+    ],
+    [
+      "R18-06",
+      "Ningún pedido se pierde ni se duplica por falta de señal.",
+      "Ocurre semanalmente, sin medición."
+    ],
+    [
+      "R18-07",
+      "La ruta del día siguiente se genera automáticamente en menos de 20 minutos y el planificador puede corregirla, quedando registro de cada corrección.",
+      "3,5 horas de una persona insustituible."
+    ],
+    [
+      "R18-08",
+      "La prueba de entrega es digital y está disponible para el cliente el mismo día.",
+      "Guía en papel; 12 días para resolver un reclamo."
+    ],
+    [
+      "R18-09",
+      "Cero guías extraviadas o ilegibles.",
+      "1,1 % mensual."
+    ],
+    [
+      "R18-10",
+      "La rendición del efectivo cuadra el mismo día y toda diferencia queda explicada.",
+      "$ 4,2 millones mensuales de diferencia sin investigar."
+    ],
+    [
+      "R18-11",
+      "El costo de servir se conoce por cliente y por entrega, construido desde el hecho.",
+      "Prorrateo por zona con criterio de 2016."
+    ],
+    [
+      "R18-12",
+      "El parque de envases retornables se controla y la pérdida anual baja bajo la meta comprometida.",
+      "14 % de pérdida estimada, sin control."
+    ],
+    [
+      "R18-13",
+      "Los pedidos de las cadenas entran por vía electrónica estructurada, sin digitación, y se responde con aviso de despacho.",
+      "Cero pedidos electrónicos."
+    ],
+    [
+      "R18-14",
+      "La ocupación de los camiones sube y ningún camión sale bajo el umbral que el PROPONENTE comprometa.",
+      "68 % promedio, con días de 41 %."
+    ],
+    [
+      "R18-15",
+      "La causa de cada faltante queda registrada al momento de producirse.",
+      "Se registra el faltante, no la causa."
+    ],
+    [
+      "R18-16",
+      "Don Hugo se puede jubilar sin que la operación se resienta.",
+      "El cumplimiento cae 6 a 9 puntos cuando está de vacaciones."
+    ]
+  ],
+  "mapping": [
+    [
+      "RF-01",
+      "RF-03.01, RF-03.02, RF-03.04, RF-03.05, RF-03.16",
+      "E1",
+      "Crítica"
+    ],
+    [
+      "RF-02",
+      "RF-01.02, RF-01.03, RF-01.06",
+      "E1",
+      "Crítica"
+    ],
+    [
+      "RF-03",
+      "RF-02.08, RF-05.05",
+      "E1",
+      "Alta"
+    ],
+    [
+      "RF-04",
+      "RF-05.01",
+      "E1",
+      "Alta"
+    ],
+    [
+      "RF-05",
+      "",
+      "E1",
+      "Alta"
+    ],
+    [
+      "RF-06",
+      "RF-04.01, RF-04.02",
+      "E1",
+      "Alta"
+    ],
+    [
+      "RF-07",
+      "RF-09.03, RF-09.04, RF-09.05",
+      "E1",
+      "Crítica"
+    ],
+    [
+      "RF-08",
+      "RF-06.02, RF-06.12",
+      "E1",
+      "Crítica"
+    ],
+    [
+      "RF-09",
+      "",
+      "E1",
+      "Alta"
+    ],
+    [
+      "RF-10",
+      "RF-06.05, RF-07.02, RF-07.03",
+      "E1",
+      "Alta"
+    ],
+    [
+      "RF-11",
+      "RF-09.01, RF-09.02",
+      "E1",
+      "Crítica"
+    ],
+    [
+      "RF-12",
+      "RF-12.14, RF-12.16, RF-12.17",
+      "E2",
+      "Media"
+    ],
+    [
+      "RF-13",
+      "RF-12.01, RF-12.09",
+      "E2",
+      "Alta"
+    ],
+    [
+      "RF-14",
+      "RF-11.02",
+      "E2",
+      "Media"
+    ]
+  ],
+  "vacios_revision": [
+    [
+      "V-01",
+      "Número de instalaciones: cinco en entrevista, seis en volumetría; SD2 indica 14 CD.",
+      "Confirmar universo de instalaciones; no trasladar 14 CD al diseño."
+    ],
+    [
+      "V-02",
+      "La ponderación del Formulario T-21 suma 98 % aunque su total declara 100 %.",
+      "Contrastar el planteamiento original y documentar tratamiento antes de cerrar la consulta."
+    ],
+    [
+      "V-03",
+      "84 conductores y peonetas frente a 42 conductores propios en la Tabla 14.1.",
+      "Contrastar el planteamiento original y documentar tratamiento antes de cerrar la consulta."
+    ],
+    [
+      "V-04",
+      "Cuatro ambientes (Art. 24 y E-25) frente a cinco más recuperación (Art. 3 y RT-04.01).",
+      "Contrastar el planteamiento original y documentar tratamiento antes de cerrar la consulta."
+    ],
+    [
+      "V-05",
+      "Códigos de sincronización y otras materias del capítulo 15 no coinciden con BTT.",
+      "Usar código transversal por materia y registrar el valor particular del caso; completar cotejo por fila."
+    ],
+    [
+      "V-06",
+      "Relato de cortes de 2 h frente a la exigencia de 14 h.",
+      "Contrastar el planteamiento original y documentar tratamiento antes de cerrar la consulta."
+    ],
+    [
+      "V-07",
+      "Alta y recuperación de credenciales de personas sin correo.",
+      "Contrastar el planteamiento original y documentar tratamiento antes de cerrar la consulta."
+    ],
+    [
+      "V-08",
+      "41 % de recepciones del producto retirado sin lote en origen.",
+      "Contrastar el planteamiento original y documentar tratamiento antes de cerrar la consulta."
+    ],
+    [
+      "V-09",
+      "No existe saldo inicial de envases por cliente.",
+      "Contrastar el planteamiento original y documentar tratamiento antes de cerrar la consulta."
+    ],
+    [
+      "V-10",
+      "El Cap. 5 manda reemplazar la planilla de reposición y el catálogo inicial no tenía requerimiento.",
+      "Contrastar el planteamiento original y documentar tratamiento antes de cerrar la consulta."
+    ],
+    [
+      "V-11",
+      "Faltaban la hora real de entrega y el monto esperado de rendición, sin los cuales el OTIF y la cuadratura no se calculan.",
+      "Contrastar el planteamiento original y documentar tratamiento antes de cerrar la consulta."
+    ],
+    [
+      "V-12",
+      "Regla escrita de excursión térmica y responsable de la disposición.",
+      "Contrastar el planteamiento original y documentar tratamiento antes de cerrar la consulta."
+    ],
+    [
+      "V-13",
+      "Inicio calendario del contrato no consolidado.",
+      "Confirmar fecha de inicio y compatibilidad de los meses 16 y 21 con congelamientos y enero de 2029."
+    ],
+    [
+      "V-14",
+      "La suspensión del proveedor de lácteos vence en septiembre de 2026, antes del inicio del contrato; no está definido qué evidencia de trazabilidad acepta el proveedor.",
+      "Contrastar el planteamiento original y documentar tratamiento antes de cerrar la consulta."
+    ],
+    [
+      "V-15",
+      "Disponibilidad y retiro del planificador.",
+      "Confirmar fecha; conservar talleres meses 1 a 3 del SD2, sin fijar retiro entre meses 8 y 13."
+    ],
+    [
+      "V-16",
+      "Condiciones contractuales de acceso a los datos de la telemetría del tercero.",
+      "Confirmar acceso, condiciones contractuales e interfaces antes de definir la integración."
+    ],
+    [
+      "V-17",
+      "Rotación de 38 % atribuida a conductores externos en SD2.",
+      "El caso atribuye ese porcentaje a preparación de pedidos; no trasladarlo a conductores."
+    ],
+    [
+      "V-18",
+      "SD2 menciona 99,5 % y referencias RNF que requieren cotejo.",
+      "Definir disponibilidad por servicio contra Bases; no usar experiencia corporativa como SLA contractual."
+    ],
+    [
+      "V-19",
+      "SD2 propone ventanas comerciales y corte horario.",
+      "Confirmar capacidad y condiciones de la promesa antes de convertirla en garantía de servicio."
+    ],
+    [
+      "V-20",
+      "Referencias a arquitectura, EDT, pruebas e innovaciones de documentos aún no revisados.",
+      "Completar vínculos tras revisar esos documentos; mantener campos vacíos."
+    ],
+    [
+      "V-21",
+      "SD2 menciona SAP Business One y Manhattan; no se adopta la marca como evidencia técnica.",
+      "Acreditar fabricante, versión e interfaces antes de diseñar integración o migración."
+    ]
+  ]
+}

@@ -1,0 +1,10 @@
+\renewcommand{\thetable}{3.A.5b}
+\begin{tablalafrox}{Requisitos no funcionales propios ofertados. Fuente: elaboración propia de LafroX a partir de los requerimientos de Distribuidora Puelche, las Bases Técnicas Transversales y el Anexo 2.2 del Subdocumento 2 (LafroX, 2026a).}%
+  {tab:3-A-5b}%
+  {F{0.091} F{0.144} Y F{0.144} F{0.121} F{0.143}}%
+  {\cab{ID} & \cab{Materia} & \cab{Umbral o criterio} & \cab{Verificación prevista} & \cab{Prioridad / etapa} & \cab{Origen}}
+  RNF-09.05 & Frecuencia de registro de temperatura & Cada cámara y cada vehículo con frío registra temperatura con una frecuencia, parametrizable por tipo de producto, suficiente para detectar una desviación de 2\,°C sostenida durante 15 minutos (RF-09.05). La serie no admite brechas: un intervalo sin lectura se registra como evento. & Prueba en cámara y vehículo con registro térmico & Crítica / E1 & Propio LafroX. Fuente: RF-09.05. \\
+  RNF-12.03 & Envío del acuse de recibo al canal moderno & El acuse de recibo digital de cada entrega a una cadena se envía dentro de los 30 minutos posteriores a la descarga (RF-12.13), junto con el aviso de despacho de la misma guía. & Prueba funcional con datos representativos en marcha blanca & Alta / E2 & Propio LafroX. Fuente: Caso, sección 13.2; RF-12.13. \\
+  RNF-14.11 & Privacidad de la geolocalización de personas & Hasta el acuerdo con el sindicato, la posición se registra por vehículo y ruta, no por persona, y no se usa para controlar la jornada. El acceso a la geolocalización es por rol autorizado, queda auditado (RNF-09.03) y se cifra a nivel de campo (RNF-07.02). & Revisión de configuración y prueba de seguridad & Crítica / E1 & Propio LafroX. Fuente: SD2, Anexo 2.2, S-13; Ley N° 21.719. \\
+  RNF-14.12 & Categorías de datos personales en terreno & El 100 \% de los campos con datos personales capturados en terreno (receptor, conductor, preventista, cliente) tiene categoría asignada. Los de categoría sensible se cifran a nivel de campo (RNF-07.02) y su consulta queda auditada (RNF-09.03). & Revisión de configuración y prueba de seguridad & Alta / E1 & Propio LafroX. Fuente: Ley N° 21.719; BTT, cap. 11. \\
+\end{tablalafrox}

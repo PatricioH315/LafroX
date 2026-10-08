@@ -1,0 +1,23 @@
+%% Generado por gen.py desde consolidado.json y las Bases.
+La Tabla~\ref{tab:anx-reglas} presenta registro de reglas de negocio.\par
+\begin{tablalafrox}{Registro de reglas de negocio. Fuente: Caso, cap. 16.1 y 17.1; reglas\_de\_negocio.md.}{tab:anx-reglas}%
+  {L{1.4cm} L{4.3cm} Y L{4cm} L{5cm}}%
+  {\cab{ID} & \cab{Materia} & \cab{Qué y dónde se captura} & \cab{Quién decide} & \cab{Consecuencia y RF}}
+  RNG-01 & Reserva de stock & Reserva al confirmar; offline muestra antigüedad. & Sistema y bodega. & Evita doble compromiso; RF-02.05, RF-03.03. \\
+  RNG-02 & Stock disponible & Disponible = físico menos comprometido; tránsito no se vende antes de recepción. & Sistema y bodega. & Evita sobreventa; RF-02.05, RF-02.06. \\
+  RNG-03 & Crédito en preventa & Consulta límite y deuda; excepción registrada. & Supervisor de crédito. & Bloqueo o excepción trazable; RF-03.04--03.10. \\
+  RNG-04 & Excursión térmica & Sensor registra, sistema alerta y retiene el lote. & Calidad. & Liberación o disposición trazable; RF-09.03--09.10. \\
+  RNG-05 & Local cerrado & Conductor registra; sistema propone próxima ventana. & Planificador. & Reentrega trazable; RF-06.04, RF-04.07. \\
+  RNG-06 & Devolución & Captura SKU, cantidad y motivo aun sin señal. & Bodega y Finanzas. & Proceso tributario en ERP; RF-06.03, RF-08.01--02. \\
+  RNG-07 & Envases retornables & Entrega descuenta y devolución suma saldo por cliente. & Conductor y preventista. & Controla pérdida; RF-06.09, RF-08.03--06. \\
+  RNG-08 & Precio & Precio acordado por el preventista al tomar el pedido; los cambios posteriores no modifican el importe pactado. & Preventista y responsable comercial. & Precio conservado y discrepancias corregidas antes de facturar; RF-03.11--03.12. \\
+  RNG-09 & OTIF & In-Full exige unidades completas y On-Time ventana pactada. & Gerencia comercial. & Parcial queda con causal; RF-11.03--04. \\
+  RNG-10 & FEFO & Picking prioriza vencimiento y deja excepción. & Sistema y preparador. & Reduce merma; RF-02.08, RF-05.05. \\
+  RNG-11 & Maestro de productos & Maestro interno conserva equivalencias GS1 y externas. & Administrador de catálogo. & Excepción para código no resuelto; RF-01.10, RF-12.03. \\
+  RNG-12 & Sincronización & Cola local con UUID, deduplicación y bitácora. & Servicio de sincronización. & Sin pedidos perdidos o duplicados; RF-03.15--16. \\
+  RNG-13 & Secuencia térmica & Picking sigue seco, refrigerado y congelado. & Sistema y preparador. & Evita ruptura de frío; RF-05.04, RF-01.11. \\
+  RNG-14 & Capacidad y carga & Ruta no excede peso, volumen ni condición térmica. & Planificador y cargador. & Evita rechazo; RF-04.03--05, RF-05.07. \\
+  RNG-15 & Corte y promesa & Corte y ventana se parametrizan por cliente y zona. & Comercial y operaciones. & No promete plazo universal; RF-03.13, RF-04.07. \\
+  RNG-16 & Descuentos & Excepción comercial se registra antes de confirmar. & Supervisor comercial. & Evita descuento sin trazabilidad; RF-03.07, RF-03.10. \\
+\end{tablalafrox}
+\par\noindent\textbf{Nota de trabajo:} Cada regla debe validarse durante el levantamiento y mantenerse configurable cuando dependa de un parámetro comercial o sanitario. Para completarlo se requiere registrar la evidencia de esa validación.\par

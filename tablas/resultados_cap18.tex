@@ -1,0 +1,102 @@
+%  Origen: 03_esquema_solucion_alcance/entrega_2/tablas/esquema_solucion_alcance.xlsx
+%  Hoja "3.11.2 Resultados de negocio del Capítulo 18".
+
+\begin{tablalafrox}{Resultados de negocio del Capítulo 18: meta, momento y
+  medición}%
+  {tab:resultados-cap18}%
+  {C{1.4cm} Y L{3.0cm} L{4.3cm}}%
+  {\cab{Código} & \cab{Meta comprometida} & \cab{Momento} &
+   \cab{Medición y evidencia}}
+  R18-01 & Ante un retiro sanitario, la lista de clientes afectados por lote se
+      obtiene con evidencia en menos de dos horas, cubriendo el 100~\% del
+      lote.
+    & En operación desde la producción de la Etapa 1, mes 16.
+    & Ejercicio de trazabilidad hacia adelante y hacia atrás sobre los eventos
+      GS1 EPCIS, midiendo desde la consulta hasta la lista con evidencia.
+      Línea base: 9 días. \\
+  R18-02 & El 100~\% de las recepciones de productos que lo requieren registra
+      el lote.
+    & En operación desde el mes 16.
+    & Porcentaje de órdenes de compra y recepciones con lote capturado,
+      auditado en los conteos cíclicos. Línea base: 41~\% sin registro. \\
+  R18-03 & Registro continuo y automático de temperatura en cámaras y en
+      vehículos con equipo de frío, auditable y disponible para el cliente.
+    & En operación desde el mes 16.
+    & Serie de temperatura por sensor con integridad comprobable y
+      cumplimiento de cadena de frío por viaje. Reemplaza las tres lecturas
+      manuales de cada viaje. \\
+  R18-04 & OTIF con mejora gradual: 90~\% al cierre de la Etapa 1, 93~\% al mes
+      12 y 95~\% en régimen.
+    & Curva gradual desde la marcha blanca, meses 13--15, y en régimen durante
+      la Operación.
+    & OTIF diario por cliente, ruta, zona y consolidado, con base de cálculo
+      explícita e \emph{in full} al 100~\%. Línea base: 82,4~\%. \\
+  R18-05 & El preventista conoce el stock disponible, el crédito y la deuda
+      vencida del cliente en el punto de toma, con y sin conectividad.
+    & En operación desde el mes 16.
+    & Porcentaje de tomas con consulta registrada de los tres datos; pruebas de
+      aceptación con los 62 preventistas; prueba de operación sin red durante
+      14 horas. \\
+  R18-06 & Ningún pedido se pierde ni se duplica por falta de señal.
+    & En operación desde el mes 16.
+    & Reconciliación de sincronización por turno con bitácora auditable;
+      conteo de duplicados descartados y de pedidos no sincronizados. \\
+  R18-07 & La ruta del día siguiente se genera de forma automática en menos de
+      20 minutos y toda corrección queda registrada.
+    & En operación desde el mes 16.
+    & Tiempo de generación medido en operación diaria y bitácora de
+      correcciones del planificador. Línea base: 3,5 horas. \\
+  R18-08 & La prueba de entrega es digital y está disponible para el cliente el
+      mismo día; el acuse del canal moderno se envía dentro de los 30 minutos
+      siguientes a la descarga.
+    & Prueba de entrega desde el mes 16; acuse del canal moderno con la Etapa
+      2, mes 21.
+    & Porcentaje de entregas con prueba digital ---firma en pantalla, código QR
+      o fotografía con nombre del receptor--- y evidencia publicada el mismo
+      día; acuse por vía electrónica. \\
+  R18-09 & Cero guías extraviadas o ilegibles, con guía de despacho electrónica
+      integrada a la prueba de entrega.
+    & En operación desde el mes 16.
+    & Conciliación diaria de guías emitidas contra pruebas de entrega
+      recibidas, y reclamos por guía ilegible o extraviada. Línea base: 1,1~\%
+      mensual. \\
+  R18-10 & La rendición del efectivo cuadra el mismo día y toda diferencia
+      queda explicada con causal tipificada.
+    & En operación desde el mes 16.
+    & Cuadratura por camión entre monto esperado y recaudado al retorno, con
+      bloqueo del cierre ante saldo sin justificar. Elimina el descuadre de
+      \$4,2 millones mensuales sin investigar. \\
+  R18-11 & El costo de servir se conoce por cliente y por entrega, construido
+      desde los hechos operacionales.
+    & Con la producción de la Etapa 2, mes 21.
+    & Costeo de cada entrega desde kilómetros, tiempo de conducción y de
+      descarga y peajes reales; consolidación mensual y matriz de rentabilidad
+      por cliente. Reemplaza el prorrateo por zona de 2016. \\
+  R18-12 & El parque de envases retornables se controla por cuenta corriente
+      por cliente y la pérdida baja al 7~\% anual o menos.
+    & Control desde el mes 16; meta anual consolidada al mes 12 de operación.
+    & Saldo por cliente actualizado en cada entrega y devolución, y reporte
+      diario de pérdida por cliente, tipo y zona. Línea base: 14~\%. \\
+  R18-13 & Los pedidos del canal moderno entran por vía electrónica
+      estructurada, sin digitación, y se responde con aviso de despacho.
+    & Con la Etapa 2, mes 21, y en producción antes de enero de 2029.
+    & Porcentaje de pedidos de cadenas recibidos por intercambio electrónico y
+      resueltos contra el maestro por equivalencias, sin digitación manual, con
+      aviso de despacho transmitido. \\
+  R18-14 & La ocupación de los camiones sube al 75~\% o más y ningún camión
+      sale bajo el umbral de 65~\% sin alerta.
+    & Con la producción de la Etapa 2, mes 21.
+    & Ocupación por camión y por ruta alimentada por la telemetría, con alerta
+      bajo el umbral declarado. Línea base: 68~\%, con días de 41~\%. \\
+  R18-15 & La causa de cada faltante queda registrada en el momento en que se
+      produce.
+    & En operación desde el mes 16.
+    & Porcentaje de registros de faltante con causal obligatoria en la
+      preparación. \\
+  R18-16 & El conocimiento de rutas queda codificado en el motor antes de la
+      jubilación del planificador, sin que la operación se resienta.
+    & Captura durante la Etapa 1, meses 1--15, antes de su fecha de salida.
+    & Sesiones de transferencia y parametrización validada del motor;
+      cumplimiento de OTIF y de ocupación sin degradación durante sus
+      ausencias. \\
+\end{tablalafrox}

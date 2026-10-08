@@ -1,0 +1,37 @@
+%  Origen: 03_esquema_solucion_alcance/entrega_2/tablas/esquema_solucion_alcance.xlsx
+%  Hoja "3.2.2 Alcance de infraestructura del proyecto" (capas).
+
+\begin{tablalafrox}{Las ocho capas de la plataforma y su aplicación en Puelche}%
+  {tab:capas}%
+  {L{3.7cm} Y}%
+  {\cab{Capa} & \cab{Aplicación en la distribuidora}}
+  Presentación
+    & Portal de administración en Talca y Concepción; aplicación móvil de
+      preventa; aplicación de reparto; aplicación de recepción y picking en
+      bodega; autoatención de clientes, transportistas y proveedores. \\
+  Borde y exposición
+    & Red de distribución de contenido y cortafuegos de aplicación gestionado
+      para el portal público y las interfaces expuestas a proveedores y
+      cadenas, con terminación TLS 1.3. \\
+  Puerta de enlace de servicios
+    & Punto único de publicación de las interfaces de pedidos, crédito,
+      trazabilidad, entrega e intercambio con cadenas. \\
+  Servicios de negocio
+    & Módulos sin estado: preventa, planificación de rutas, bodega y picking,
+      trazabilidad y retiros, cadena de frío, entrega y prueba de entrega,
+      cobranza y efectivo, devoluciones y envases, costeo, y reposición y
+      compras. \\
+  Integración y eventos
+    & Bus de mensajería que desacopla preventa, crédito, bodega, ruta, reparto
+      y facturación, con colas y reintento para los dispositivos sin señal. \\
+  Datos
+    & Base transaccional ---pedidos, stock, trazabilidad de lote, temperatura y
+      prueba de entrega--- separada del almacén analítico que sostiene OTIF,
+      fill rate y costo de servir. \\
+  Seguridad transversal
+    & Identidad federada, cifrado en tránsito y en reposo, y cifrado a nivel de
+      campo para datos comerciales, de pago y de geolocalización. \\
+  Observabilidad transversal
+    & Métricas, registros y trazas correlacionados de Talca, Concepción, las
+      tres plataformas de cross-docking y los dispositivos de terreno. \\
+\end{tablalafrox}
