@@ -2,9 +2,9 @@
 
 # Introducción a los Riesgos
 
-La solución de LafroX integra recepción y trazabilidad, inventario, frío, preventa, reparto y cobranza en E1, y canal moderno, portales y costo de servir en E2. Sus riesgos dependen de una operación que despacha 96 camiones entre 05:30 y 07:00, mantiene los CD 24 horas sin WAN y el terreno 14 horas sin señal, conserva ERP como único emisor tributario y despliega sin detener rutas. Este plan conecta las decisiones comerciales del SD2, alcance del SD3, contratos y dimensionamiento del SD4, gobierno del SD6 y programación del SD7. No utiliza el SD5 aún no consolidado.
+La solución de LafroX integra recepción y trazabilidad, inventario, frío, preventa, reparto y cobranza en E1, y canal moderno, portales y costo de servir en E2. Sus riesgos dependen de una operación que despacha 96 camiones entre 05:30 y 07:00, mantiene los CD 24 horas sin WAN y el terreno 14 horas sin señal, conserva ERP como único emisor tributario y despliega sin detener rutas. Este plan conecta las decisiones comerciales del SD2, alcance del SD3, contratos y dimensionamiento del SD4, gobierno del SD6 y programación del SD7.
 
-El cuerpo establece método y decisiones; los Anexos 8.A–8.F contienen registro ampliado, FMEA, escenarios, reservas y condiciones de evidencia; el T-16 conserva el formato obligatorio separado. La viabilidad del planteamiento no equivale a factibilidad demostrada: existen condiciones de evidencia y una brecha residual de RPO que requieren resolución antes de declarar cumplimiento integral.
+El cuerpo establece método y decisiones; los Anexos 8.A–8.F contienen registro ampliado, FMEA, escenarios, reservas y condiciones de evidencia; el T-16 conserva el formato obligatorio separado. Las condiciones que deben cerrarse antes de cada hito, incluida la brecha residual de RPO declarada en el SD4 (sección 4.3.2.4), se registran en el Anexo 8.E con responsable y plazo.
 
 ## 8.1 Plan de riesgos
 
@@ -12,7 +12,7 @@ Esta sección define cómo se gestionan los riesgos durante los 56 meses: el cic
 
 ### 8.1.1 Enfoque y ciclo
 
-El registro vivo sigue identificación, análisis, respuesta y seguimiento conforme a BTT RT-19.04 y al enfoque ISO 31000 exigido por las Bases. Cada entrada distingue causa, evento incierto y consecuencia, sin convertir una inconsistencia observada en riesgo futuro. El Anexo 8.E separa problemas y dependencias actuales. Este método no constituye certificación de LafroX.
+El registro vivo sigue identificación, análisis, respuesta y seguimiento conforme a la norma ISO 31000 (International Organization for Standardization [ISO], 2018), que exige el RT-19.04 de las Bases Técnicas Transversales (Distribuidora Puelche S.A., 2026b). Cada entrada distingue causa, evento incierto y consecuencia, sin convertir una inconsistencia observada en riesgo futuro. El Anexo 8.E separa problemas y dependencias actuales.
 
 JP mantiene el registro único. Los líderes identifican riesgos al revisar interfaces, pruebas, capacidad y despliegues; verifican disparadores semanalmente y ante cada cambio. El Comité de Proyecto quincenal revisa todos los riesgos abiertos, responsables, plazos y evidencia. Los comités Ejecutivo y de Arquitectura mensuales deciden escalamiento y cambios de sus ámbitos, y desde el mes 13 el Comité de Operación mensual revisa los riesgos de servicio: niveles de atención, incidentes, capacidad y continuidad (SD6, sección 6.1.6). Una amenaza a continuidad, seguridad o hito se escala inmediatamente. Marcha blanca exige seguimiento diario; operación mantiene vigilancia diaria de incidentes y colas y revisión en comités.
 
@@ -35,7 +35,7 @@ Dirigen equipos; no ejecutan solos todas las HH. La Contraparte Técnica del CLI
 
 ### 8.1.3 Escalas previas al análisis
 
-P/I/D son juicios ordinales iniciales sustentados en exposición y controles descritos; no frecuencias medidas ni porcentajes. Horizonte: hasta entregar el control de cada ficha y, para riesgos recurrentes, los 56 meses del contrato. Cambiar el horizonte exige reevaluación.
+P/I/D se asignan como juicios ordinales iniciales sustentados en exposición y controles descritos, no como frecuencias medidas; para el análisis cuantitativo, P e I se calibran con los tramos de la segunda tabla de esta sección. Horizonte: hasta entregar el control de cada ficha y, para riesgos recurrentes, los 56 meses del contrato. Cambiar el horizonte exige reevaluación.
 
 | Valor | Probabilidad ordinal P | Impacto I: mayor efecto aplicable | Detección D: mayor valor, peor detección |
 | --- | --- | --- | --- |
@@ -69,13 +69,32 @@ Esta sección identifica los riesgos con una RBS y los analiza en dos niveles: u
 
 ### 8.2.1 RBS y análisis separados
 
-La RBS textual tiene raíz «Riesgos de la propuesta LafroX» y tres ramas: solución, desarrollo e implantación. Cada rama clasifica riesgos técnicos, organizacionales, de proyecto, seguridad y operación. Los IDs son únicos aunque una causa afecte varias ramas. Esta representación permite revisar relaciones en Markdown; no acredita revisión visual de una figura final.
+La estructura de desglose de riesgos (RBS) tiene raíz «Riesgos de la propuesta LafroX» y tres ramas, una por cada análisis que exige el Formulario T-22: riesgo de la solución, del desarrollo y de la implantación. Dentro de cada rama, los riesgos se agrupan en las categorías técnica, organizacional, de proyecto, de seguridad y de operación que les corresponden. Los ID son únicos aunque una causa afecte varias ramas. La Figura 8.1 presenta la estructura con los 32 riesgos del Anexo 8.A.
+
+**Descripción textual de figura.**
+- Riesgos de la propuesta LafroX (32)
+  - Solución (13)
+    - Técnico: R8-02, R8-04, R8-06, R8-08, R8-09, R8-27, R8-30
+    - Operación: R8-01, R8-03, R8-05, R8-23
+    - Seguridad: R8-07, R8-24
+  - Desarrollo (10)
+    - Proyecto: R8-11, R8-14, R8-15, R8-31
+    - Técnico: R8-10, R8-16, R8-26
+    - Organizacional: R8-12, R8-13, R8-32
+  - Implantación (9)
+    - Organizacional: R8-20, R8-21, R8-25, R8-29
+    - Proyecto: R8-17, R8-19, R8-28
+    - Operación: R8-18, R8-22
+
+**Figura 8.1 — Estructura de desglose de riesgos (RBS). Fuente: elaboración propia a partir del Anexo 8.A.**
+
+La figura muestra que la solución concentra 13 de los 32 riesgos y 11 de los 22 de nivel crítico de la Tabla B.1, porque reúne la continuidad del despacho, la reserva de stock y la evidencia de frío. Los dos riesgos de seguridad (R8-07 y R8-24) pertenecen a la rama de la solución, porque sus fichas los originan en los portales, móviles, integraciones y trazas que la arquitectura expone. El desarrollo se concentra en la categoría de proyecto (dotación, capacidad protegida de la Etapa 1, certificación de cadenas y revisión del CLIENTE), y la implantación, en la organizacional (rotación, transportistas, sindicato y adopción de innovaciones).
 
 Solución: integridad de stock/custodia, ERP/DTE, autonomía, capacidad, RPO, seguridad, obsolescencia y proveedores. Desarrollo: interfaces sin documentación, recursos, contrapartes, conocimiento de rutas, migración, certificación externa, certificación paralela a la revisión del CLIENTE y refuerzo subcontratado de calidad. Implantación: congelamientos, cuatro semanas completas, suministros, adopción, relevos y atención. Anexo 8.A desarrolla 32 amenazas; 8.F cubre las cinco innovaciones y una oportunidad de diagnóstico con INN-02. Las tres ramas permiten preparar los análisis separados exigidos por T-22.
 
 ### 8.2.2 Resultados cualitativos y FMEA
 
-Anexo 8.B presenta P/I/D, exposición y NPR. La prioridad inicial se concentra en continuidad, RPO, ERP/DTE, seguridad, capacidad y aceptación. T-16 compara exposición; NPR no reemplaza su columna Expos.
+El análisis de modos de falla y sus efectos (FMEA) sigue la IEC 60812 (International Electrotechnical Commission [IEC], 2018): a la probabilidad y el impacto agrega la detección, y su producto da el número de prioridad del riesgo (NPR). Anexo 8.B presenta P/I/D, exposición y NPR. La prioridad inicial se concentra en continuidad, RPO, ERP/DTE, seguridad, capacidad y aceptación. T-16 compara exposición; NPR no reemplaza su columna Expos.
 
 No se suman puntuaciones como probabilidad del proyecto. Las relaciones importan: ausencia de contraparte puede atrasar interfaces/cadenas y eliminar semanas de evidencia; migración deficiente puede invalidar trazabilidad y aceptación. Los mismos efectos o consumos no se contabilizan dos veces.
 
@@ -83,7 +102,7 @@ No se suman puntuaciones como probabilidad del proyecto. Las relaciones importan
 
 El análisis cuantitativo tiene dos partes (PMI, 2017, pp. 433–434). La primera calcula el valor esperado de cada riesgo con la calibración de la sección 8.1.3. El registro suma 15.076 HH de valor esperado, cerca de 8 % de las 190.366 HH base del T-15. Cinco riesgos concentran 67,7 % del total: productividad o dotación inferior al modelo (R8-11), mesa que no alcanza los niveles de atención (R8-22), marcha blanca que no cumple las seis condiciones (R8-18), uso de la capacidad protegida de la Etapa 1 por la Etapa 2 (R8-14) y doble reserva de stock (R8-02). El Anexo 8.B, Tabla B.2, presenta el cálculo de cada riesgo y su porcentaje acumulado.
 
-La segunda parte simula 5.000 veces el cronograma por actividad del Formulario T-15. En cada iteración, la duración de cada paquete varía con la distribución PERT de su tríada, cada riesgo ocurre con su probabilidad y, si ocurre, alarga sus paquetes afectados en la fracción de su impacto. La tabla informa, para cada hito, la fecha límite de entrega, las fechas que se alcanzan en la mitad (P50) y en el 80 % (P80) de las iteraciones y la probabilidad de entregar a tiempo.
+La segunda parte simula 5.000 veces el cronograma por actividad del Formulario T-15. En cada iteración, la duración de cada paquete varía con la distribución PERT de su tríada, cada riesgo ocurre con su probabilidad y, si ocurre, alarga sus paquetes afectados en la fracción de su impacto. La tabla informa, para cada hito, la fecha límite de entrega, las fechas que se alcanzan en la mitad (P50) y en el 80 % (P80) de las iteraciones y la probabilidad de entregar a tiempo. Los hitos H6, H7, H11 y H12 no se simulan: son el inicio de cada marcha blanca y cada paso a producción, con mes fijo del Art. 17°, y su riesgo se trata con R8-18 y la reserva de contingencia (Anexo 8.C, sección C.3).
 
 | Hito | Fecha límite de entrega | P50 | P80 | P(entrega a tiempo) |
 | --- | --- | --- | --- | --- |
@@ -112,7 +131,7 @@ El costo-beneficio compara HH de prevención/verificación con retrabajo y afect
 
 ### 8.3.2 Reservas y cronograma
 
-La reserva de contingencia cubre los riesgos identificados y se dimensiona con la suma de sus valores esperados: 15.076 HH (PMI, 2017, p. 202; p. 443). De ellas, 3.072 HH ya están en el T-15 como capacidad protegida de corrección de la Etapa 1, por lo que la contingencia adicional es de 12.004 HH. La tabla reparte la contingencia por período según los meses de los paquetes afectados por cada riesgo; ese reparto es el reflejo de la reserva en el flujo de caja, y su valorización está en la Oferta Económica (Art. 50.2).
+La reserva de contingencia cubre los riesgos identificados y se dimensiona con la suma de sus valores esperados: 15.076 HH (PMI, 2017, p. 202; p. 443). De ellas, 1.853 HH corresponden a R8-02, R8-04 y R8-14 (461 + 384 + 1.008 HH, Tabla B.2), los riesgos de corrección de la Etapa 1 que la capacidad protegida de 3.072 HH de los meses 13 a 20, ya incluida en el T-15, puede absorber según la regla del Anexo 8.D. Esa capacidad no puede usarse antes del mes 13 ni para la Etapa 2, de modo que no cubre a los demás riesgos, y la contingencia adicional es de 15.076 − 1.853 = 13.223 HH. La tabla reparte la contingencia por período según los meses de los paquetes afectados por cada riesgo; ese reparto es el reflejo de la reserva en el flujo de caja, y su valorización está en la Oferta Económica (Art. 50.2).
 
 | Período | Contingencia (HH) |
 | --- | --- |
@@ -124,7 +143,9 @@ La reserva de contingencia cubre los riesgos identificados y se dimensiona con l
 | Meses 34–56 | 51 |
 | **Total** | **15.076** |
 
-La reserva de cronograma son las reservas de cada hito del T-15, Tabla 5.2, dimensionadas para que la fecha P80 quede antes de la fecha límite (sección 8.2.3). La reserva de gestión cubre riesgos no identificados: no forma parte de la línea base, la autoriza el Comité Ejecutivo y su monto se define en la Oferta Económica; esta oferta técnica no la expresa en horas porque LafroX no dispone en esta copia de datos históricos que la sustenten. JP solicita el uso de cualquier reserva con causa, perfiles, ventana e impacto; ninguna reserva se presta entre etapas.
+Los valores de cada período se redondean a la hora; el total se calcula sin redondear.
+
+La reserva de cronograma son las reservas de cada hito del T-15, Tabla 5.2, dimensionadas para que la fecha P80 quede antes de la fecha límite (sección 8.2.3). La reserva de gestión cubre riesgos no identificados: no forma parte de la línea base, la autoriza el Comité Ejecutivo y su monto se define en la Oferta Económica (BA Art. 50.2). JP solicita el uso de cualquier reserva con causa, perfiles, ventana e impacto; ninguna reserva se presta entre etapas.
 
 Cada uso registra un cargo único por evento/mes/perfil y remanente. Riesgos correlacionados comparten consumo real; E1 no presta su reserva a E2. Los recursos adicionales requieren actualizar T-15 y calendario, sin ampliar automáticamente los 56 meses. Los meses 21 y 22 separan 2.774,54 HH de cierre y estabilización de implementación de la operación.
 
@@ -132,22 +153,22 @@ Cada uso registra un cargo único por evento/mes/perfil y remanente. Riesgos cor
 
 Anexo 8.E registra condiciones actuales: productividad/dotación, secuencias diarias y plazos de revisión/subsanación del Art.18.3, fecha contractual, continuidad de 96 despachos, RPO remoto, atención y evidencia láctea. La física del SD4 permanece intacta: A31/A32 ya incluyen CD-05; se necesita contrastar multiplicidad y drenaje. El límite residual RPO requiere resolución, no aceptación como sustituto de cumplimiento.
 
-No se autoriza corte sin continuidad medida ni aceptación sin las seis condiciones simultáneas del Art. 17.3 y acta según Art. 18. La suspensión láctea de septiembre de 2026 es antecedente ocurrido; V-13 debe precisar evidencia y restitución con CLIENTE/proveedor. El proyecto no demuestra una solución retroactiva. La conclusión es viabilidad propuesta con condiciones de cierre identificadas; la factibilidad integral requiere resolver brechas y aportar decisiones, pruebas y actas.
+No se autoriza corte sin continuidad medida ni aceptación sin las seis condiciones simultáneas del Art. 17.3 y acta según Art. 18. La suspensión láctea de septiembre de 2026 es antecedente ocurrido; V-13 debe precisar evidencia y restitución con CLIENTE/proveedor. El proyecto no demuestra una solución retroactiva. La propuesta queda sujeta a las condiciones de cierre del Anexo 8.E, cada una con responsable, hito límite y evidencia; ninguna se da por cumplida sin las decisiones, pruebas y actas que allí se indican.
 
 ## Referencias
 
-- Distribuidora Puelche S.A. (2026). Bases Administrativas TFEP-01/2026, artículos 17, 18, 50.2 y formularios T-16/T-22.
-- Distribuidora Puelche S.A. (2026). Bases Técnicas Transversales, RT-07.04/07, RT-19.04, RT-21.06/07 y RT-26.04.
-- Distribuidora Puelche S.A. (2026). Caso 02 — Logística, capítulos 10–14 y requisitos específicos citados.
-- Aclaraciones de licitación (2026), capítulo 8 y reglas de presentación.
-- LafroX. SD1–4, SD6 y SD7, con anexos y formularios citados. SD5 no utilizado.
+- Distribuidora Puelche S.A. (2026a). *Bases Administrativas de Licitación N.º TFEP-01/2026*, artículos 17, 18 y 50.2, y Formularios T-16 y T-22.
+- Distribuidora Puelche S.A. (2026b). *Bases Técnicas Transversales de Licitación N.º TFEP-01/2026*, RT-07.04, RT-07.07, RT-19.04, RT-21.06, RT-21.07 y RT-26.04.
+- Distribuidora Puelche S.A. (2026c). *Caso 02: Logística*, capítulos 10 a 14 y requisitos específicos citados.
+- Distribuidora Puelche S.A. (2026d). *Aclaraciones de la Licitación N.º TFEP-01/2026*, secciones 2, 4, 6, 7 y 11 (Capítulo 8).
+- LafroX. (2026). Subdocumentos 1 a 4, 6 y 7, con los anexos y formularios citados.
 - International Electrotechnical Commission. (2018). *IEC 60812:2018 Failure modes and effects analysis (FMEA and FMECA)*. IEC.
 - International Organization for Standardization. (2018). *ISO 31000:2018 Risk management — Guidelines*. ISO.
 - Project Management Institute. (2017). *La guía de los fundamentos para la dirección de proyectos (Guía del PMBOK®)* (6.ª ed.), capítulo 11. Project Management Institute.
 
 ## Declaración de uso de IA
 
-Codex y Claude Code apoyaron la redacción, la organización, el análisis ordinal FMEA y los cálculos deterministas. No se generaron imágenes; la RBS se representa textualmente. Esta declaración no acredita ensayos ejecutados, aprobación del CLIENTE ni conformidad formal de una presentación final, y se consolida en el Formulario A-6.
+Codex y Claude Code apoyaron la redacción, la organización, el análisis ordinal FMEA, los escenarios deterministas, el valor esperado en HH y la simulación de Monte Carlo. No se generaron imágenes; la RBS de la Figura 8.1 se presenta como descripción textual. Esta declaración no acredita ensayos ejecutados, aprobación del CLIENTE ni conformidad formal de una presentación final, y se consolida en el Formulario A-6.
 
 | Sección | Herramienta | Finalidad del uso | Nivel en texto | Nivel en diagramas | Revisión humana (quién y qué verificó) |
 | --- | --- | --- | --- | --- | --- |
@@ -157,3 +178,4 @@ Codex y Claude Code apoyaron la redacción, la organización, el análisis ordin
 | 8.3 Plan de Acción a Riesgos | Codex; Claude Code | Respuestas, reservas y factibilidad; reserva de contingencia por valor esperado y su reparto por período (7 de octubre de 2026) | Alto | Ninguno | No documentada |
 | Anexos 8.A a 8.F | Codex; Claude Code | Ver la declaración de los anexos | Alto | Ninguno | No documentada |
 | Formulario T-16 | Codex; Claude Code | Ver la declaración del formulario | Alto | Ninguno | No documentada |
+| Introducción, 8.1.1, 8.1.3, 8.2.1–8.2.3, 8.3.2 y 8.3.3: correcciones de coherencia (7 de octubre de 2026) | Claude Code | Figura 8.1 (RBS) desde las fichas 8.A, contingencia adicional elegible, hitos no simulados, citas y referencias | Medio | Medio (descripción textual de la RBS) | No documentada |

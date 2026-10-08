@@ -2,7 +2,7 @@
 
 ## Anexo 8.A — Registro ampliado de amenazas
 
-P/I/D son juicios ordinales iniciales según SD8 §8.1.3. Las entradas están identificadas, con tratamiento propuesto; no hay evidencia de ensayos ni cierre contractual en esta sesión. La causa descrita sustenta P; la consecuencia sustenta I; la forma y evidencia de detección sustenta D. Los vacíos actuales se distinguen de eventos inciertos en 8.E.
+P/I/D son juicios ordinales iniciales según SD8 §8.1.3. Las entradas están identificadas, con tratamiento propuesto; el cierre de cada ficha exige la evidencia indicada en ella. La causa descrita sustenta P; la consecuencia sustenta I; la forma y evidencia de detección sustenta D. Los vacíos actuales se distinguen de eventos inciertos en 8.E.
 
 ### R8-01 — ERP indisponible o guía invalidada
 
@@ -121,7 +121,7 @@ Móviles, portales y terceros podrían permitir acceso indebido, ransomware o al
 Dependencias AWS/mapas/mensajería/ERP podrían impedir sustitución o extracción y comprometer salida y continuidad.
 
 - Análisis / categoría: Solución / Técnico.
-- Fuente y EDT: Aclaraciones8.2; SD4 híbrida; 2.1,3.3,3.11,9.2.
+- Fuente y EDT: Aclaraciones §11, 8.2; SD4 híbrida; 2.1,3.3,3.11,9.2.
 - Evaluación inicial: P=3; I=4; D=3; E=12; NPR=36. Horizonte: diseño H2/H8 y salida del mes 56. P=3 porque varias dependencias tienen un solo proveedor; D=3 porque se detecta en el ensayo anual de extracción y restauración.
 - Responsable de respuesta: ARQ, con su equipo y contrapartes de su ámbito.
 - Disparador: Exportación/restauración falla o restricción contractual.
@@ -137,7 +137,7 @@ Dependencias AWS/mapas/mensajería/ERP podrían impedir sustitución o extracci�
 Versiones o dispositivos podrían quedar sin soporte e introducir vulnerabilidades/incompatibilidad.
 
 - Análisis / categoría: Solución / Técnico.
-- Fuente y EDT: Aclaraciones8.2; SD4; BTT mantenimiento; 8.2.2,8.2.3,8.2.4.
+- Fuente y EDT: Aclaraciones §11, 8.2; SD4; BTT mantenimiento; 8.2.2,8.2.3,8.2.4.
 - Evaluación inicial: P=4; I=4; D=2; E=16; NPR=32. Horizonte: los 56 meses. P=4 porque varias versiones de la arquitectura terminan su soporte dentro del contrato; D=2 porque esas fechas se conocen y se revisan mensualmente.
 - Responsable de respuesta: SRE, con su equipo y contrapartes de su ámbito.
 - Disparador: Fin de soporte en horizonte o actualización bloqueada.
@@ -185,7 +185,7 @@ Clases HH/128HH efectivas no medidas podrían subestimar esfuerzo y especialista
 TI de cuatro personas y gerencias podrían no atender decisiones, pruebas o actas a tiempo.
 
 - Análisis / categoría: Desarrollo / Organizacional.
-- Fuente y EDT: Caso cap. 10; Aclaraciones8.2; 1.1.3,1.8,2.4,7.3.
+- Fuente y EDT: Caso cap. 10; Aclaraciones §11, 8.2; 1.1.3,1.8,2.4,7.3.
 - Evaluación inicial: P=4; I=4; D=2; E=16; NPR=32. Horizonte: hasta el H12. P=4 porque el equipo de TI del CLIENTE tiene cuatro personas y atiende la operación; D=2 porque cada revisión tiene fecha registrada y su vencimiento se detecta ese día.
 - Responsable de respuesta: JP, con su equipo y contrapartes de su ámbito.
 - Disparador: Decisión/revisión no atendida en fecha acordada.
@@ -473,7 +473,7 @@ La hoja podría no ser comprensible o útil y quedar sin uso.
 CD eventual2030 o crecimiento distinto por sitio podría superar capacidades.
 
 - Análisis / categoría: Solución / Técnico.
-- Fuente y EDT: Caso §13.2/14; Aclaraciones8.2; SD4; 2.1,3.8.4,8.2.3.
+- Fuente y EDT: Caso §13.2/14; Aclaraciones §11, 8.2; SD4; 2.1,3.8.4,8.2.3.
 - Evaluación inicial: P=3; I=4; D=3; E=12; NPR=36. Horizonte: los 56 meses. P=3 porque el caso menciona un CD eventual en 2030; D=3 porque la proyección trimestral de capacidad lo revela.
 - Responsable de respuesta: ARQ, con su equipo y contrapartes de su ámbito.
 - Disparador: Nuevo sitio confirmado o distribución supera escenario.
@@ -601,6 +601,8 @@ La tabla aplica la calibración del SD8, sección 8.1.3. La base son las HH de l
 | R8-28 | INN-04 medición variable genera disputa | 3 (40 %) | 4 | 352 | 20 % | 70 | 28 | 100,0 % |
 | **Total** |  |  |  |  |  |  | **15.076** |  |
 
+Los valores de cada fila se redondean a la hora; el total y los porcentajes acumulados se calculan sin redondear.
+
 El valor esperado no es lo que costará cada riesgo: si ocurre, cuesta su impacto completo, y si no, nada. Sumado sobre todo el registro, estima el esfuerzo que la incertidumbre conocida agregará al proyecto y dimensiona la reserva de contingencia (SD8, sección 8.3.2).
 
 ## Anexo 8.C — Escenarios deterministas y costo-beneficio
@@ -667,7 +669,7 @@ R8-18 y R8-22 no se simulan porque afectan la duración de las marchas blancas y
 | Sin R8-32 Evaluadores subcontratados | 98,9 % | 99,1 % | 89,9 % | 99,9 % |
 | Sin R8-06 Carga CD-05 | 99,2 % | 97,6 % | 90,0 % | 98,8 % |
 
-La lectura es la del diagrama de tornado (PMI, 2017, p. 434): el H9 depende sobre todo de mantener separada la capacidad de la Etapa 1 (R8-14), de la productividad (R8-11) y de la certificación de las cadenas (R8-15); el H10, de R8-14 y del refuerzo de calidad (R8-32, R8-31); el H5, de la evidencia de frío (R8-23), la productividad y el refuerzo de calidad; el H3, de la compra del CLIENTE (R8-19). Esos riesgos tienen seguimiento semanal en el Comité de Proyecto. Las diferencias menores a un punto están dentro del error de muestreo.
+La lectura es la del diagrama de tornado (PMI, 2017, p. 434): el H9 depende sobre todo de mantener separada la capacidad de la Etapa 1 (R8-14), de la productividad (R8-11) y de la certificación de las cadenas (R8-15); el H10, de R8-14 y del refuerzo de calidad (R8-32, R8-31); el H5, de la evidencia de frío (R8-23), la productividad y el refuerzo de calidad; el H3, de la compra del CLIENTE (R8-19). Esos riesgos tienen seguimiento semanal en el Comité de Proyecto. La Tabla C.4 se compara contra su propia fila «Con todos los riesgos», calculada con 3.000 iteraciones; por eso difiere en décimas de la Tabla C.3, de 5.000. Las diferencias menores a un punto, incluidas las que dejan una fila bajo esa base, están dentro del error de muestreo.
 
 ## Anexo 8.D — Reservas, autorización y programación
 
@@ -678,7 +680,7 @@ La lectura es la del diagrama de tornado (PMI, 2017, p. 434): el H9 depende sobr
 | Cierre/estabilización implementación meses 21–22 | 2.774,54 HH | Separado de operación en T-15; no añadir de nuevo |
 | Reserva de cronograma | Reserva entre la entrega y la fecha límite de cada hito (T-15, Tabla 5.2), dimensionada para que la fecha P80 simulada quede antes de la fecha límite (Tabla C.3) | Se consume sólo por desviaciones registradas; no se presta entre hitos |
 | Últimas cuatro semanas de marcha blanca | 0 días disponibles como reserva | Evidencia obligatoria, no tiempo para completar alcance |
-| Reserva de contingencia | 15.076 HH, suma de los valores esperados de la Tabla B.2; 12.004 HH adicionales a la capacidad protegida E1, repartidas por período en el SD8, sección 8.3.2 | Cubre riesgos identificados. Los escenarios C-01 a C-05 son usos típicos: corrección E1 (400 HH), retrabajo EDI (400 HH), extensión de marcha blanca (2.464 HH por cuatro semanas) y tercer agente de mesa (442 HH/mes). Cada uso se registra contra el riesgo que lo origina; no se presta entre etapas |
+| Reserva de contingencia | 15.076 HH, suma de los valores esperados de la Tabla B.2, repartidas por período en el SD8, sección 8.3.2. La capacidad protegida E1 absorbe sólo R8-02, R8-04 y R8-14 (1.853 HH); la contingencia adicional es de 13.223 HH | Cubre riesgos identificados. Los escenarios C-01 a C-05 son usos típicos: corrección E1 (400 HH), retrabajo EDI (400 HH), extensión de marcha blanca (2.464 HH por cuatro semanas) y tercer agente de mesa (442 HH/mes). Cada uso se registra contra el riesgo que lo origina; no se presta entre etapas |
 | Reserva de gestión | Riesgos no identificados; no se expresa en HH en esta oferta técnica | No forma parte de la línea base; la autoriza el Comité Ejecutivo; su monto se define en la Oferta Económica (Art. 50.2) |
 
 Por evento se registra ID relacionado, mes/subventana, perfil, HH autorizadas/consumidas, remanente y efecto en hitos. Si R8-02 y R8-04 representan el mismo defecto, comparten cargo. Redactar esta planificación no demuestra consumo de HH. La ampliación de marcha blanca se rige por Art. 17.3 a costo del adjudicatario y sin mover fases siguientes; ninguna reserva lo deroga.
@@ -698,13 +700,11 @@ Estas entradas son estados documentales actuales, no probabilidades FMEA. El rie
 | E8-07 | T-15 ya imputa las posiciones de mesa del SD4 y el SOC 24×7, pero el Erlang C no verifica abandono ni resolución al primer contacto, y el límite es 2.283 contactos/mes. Medir por contacto desde la marcha blanca y calibrar Erlang A (T-15 §5.6). BTT RT-21.06 y Caso RT-21.06 tienen contenido distinto | SRE; antes H7/mes 21 | R8-22 |
 | E8-08 | Suspensión láctea septiembre 2026 es antecedente anterior; V-13 sin restitución documentada. Confirmar condiciones/evidencia con CLIENTE/proveedor sin atribuir solución retroactiva | JP/DAT/Calidad CLIENTE; mes 1 y antes aceptación trazabilidad | R8-16/23 |
 | E8-09 | AL-STOCK-01/AL-ACT-01, carga, offline y conmutación descritos, no ejecutados. Aportar resultados reproducibles y resolver defectos críticos/altos | CAL/líderes; H5/H10/cierre aplicable | R8-02–07/16/18 |
-| E8-10 | Antecedentes/dotación SD1 sin acreditación externa en esta copia. No usar declaraciones como disponibilidad/certificación demostradas | JP; antes presentación correspondiente | R8-11 |
-| E8-11 | Sin revisión humana final/A-6 consolidado ni actas de aceptación en esta sesión. Documentar revisores, alcance, pruebas y actas; Markdown no acredita presentación visual final | JP/CAL; antes entrega y cada aceptación | R8-18 |
-| E8-13 | La red agregada incorpora medio mes de revisión del CLIENTE antes de cada hito y presentación por incrementos (T-15 §5.1 y §5.5), pero la subsanación de diez días hábiles no tiene holgura: una observación atrasa el hito. Acordar con la Contraparte Técnica el calendario de presentaciones | JP/CAL/CLIENTE; antes aprobar línea base | R8-12/17/18 |
-| E8-14 | La calibración de probabilidades e impactos de la sección 8.1.3 y la simulación usan juicio del equipo, no frecuencias medidas. Contrastar con los datos de avance y de incidentes desde el mes 3 y recalcular el valor esperado y la simulación en cada Comité de Proyecto | JP/CAL; trimestral desde el mes 3 | Todos |
-| E8-12 | SD5 sin consolidar, excluido. Datos necesarios no disponibles en SD3/4 son dependencias futuras; no presumir disponibilidad | DAT/ARQ; al consolidarse | R8-16 |
+| E8-10 | Antecedentes, certificaciones y dotación del SD1 son declarados; su acreditación documental se entrega en el Sobre N.° 1 (SD1, sección 1.4). No usar las declaraciones como disponibilidad demostrada antes de asignar personas | JP; antes presentación correspondiente | R8-11 |
+| E8-11 | La red agregada incorpora medio mes de revisión del CLIENTE antes de cada hito y presentación por incrementos (T-15 §5.1 y §5.5), pero la subsanación de diez días hábiles no tiene holgura: una observación atrasa el hito. Acordar con la Contraparte Técnica el calendario de presentaciones | JP/CAL/CLIENTE; antes aprobar línea base | R8-12/17/18 |
+| E8-12 | La calibración de probabilidades e impactos de la sección 8.1.3 y la simulación usan juicio del equipo, no frecuencias medidas. Contrastar con los datos de avance y de incidentes desde el mes 3 y recalcular el valor esperado y la simulación en cada Comité de Proyecto | JP/CAL; trimestral desde el mes 3 | Todos |
 
-La incoherencia de precio quedó corregida en SD2 S-09 y RF activos 03.11/12 del SD3/T-12: todos conservan el precio capturado. La integración requiere prueba. Catálogos originales y material complementario histórico se conservan sin reemplazar la línea activa.
+La regla de precio es única en la oferta: el SD2 (Anexo 2.2, S-09), el SD3 (Anexo 3.G, RNG-08) y el Formulario T-12 (RF-03.11 y RF-03.12) conservan el precio acordado al capturar el pedido. Su transmisión al ERP sin alteración se verifica en las pruebas de integración.
 
 Infraestructura 99,95 %, transacción crítica 99,9 % y cero interrupción de despacho son obligaciones distintas. RTO ≤4 h/RPO ≤15 min no rebajan la ventana crítica.
 
@@ -732,11 +732,11 @@ O8-01 — Oportunidad de diagnóstico: si los casos protegidos INN-02 representa
 
 ## Referencias
 
-- Distribuidora Puelche S.A. (2026). Bases Administrativas TFEP-01/2026, artículos 17, 18, 50.2 y formularios T-16/T-22.
-- Distribuidora Puelche S.A. (2026). Bases Técnicas Transversales, RT-07.04/07, RT-19.04, RT-21.06/07 y RT-26.04.
-- Distribuidora Puelche S.A. (2026). Caso 02 — Logística, capítulos 10–14 y requisitos específicos citados.
-- Aclaraciones de licitación (2026), capítulo 8 y reglas de presentación.
-- LafroX. SD1–4, SD6 y SD7, con anexos y formularios citados. SD5 no utilizado.
+- Distribuidora Puelche S.A. (2026a). *Bases Administrativas de Licitación N.º TFEP-01/2026*, artículos 17, 18 y 50.2, y Formularios T-16 y T-22.
+- Distribuidora Puelche S.A. (2026b). *Bases Técnicas Transversales de Licitación N.º TFEP-01/2026*, RT-07.04, RT-07.07, RT-19.04, RT-21.06, RT-21.07 y RT-26.04.
+- Distribuidora Puelche S.A. (2026c). *Caso 02: Logística*, capítulos 10 a 14 y requisitos específicos citados.
+- Distribuidora Puelche S.A. (2026d). *Aclaraciones de la Licitación N.º TFEP-01/2026*, secciones 2, 4, 6, 7 y 11 (Capítulo 8).
+- LafroX. (2026). Subdocumentos 1 a 4, 6 y 7, con los anexos y formularios citados.
 - International Electrotechnical Commission. (2018). *IEC 60812:2018 Failure modes and effects analysis (FMEA and FMECA)*. IEC.
 - International Organization for Standardization. (2018). *ISO 31000:2018 Risk management — Guidelines*. ISO.
 - Project Management Institute. (2017). *La guía de los fundamentos para la dirección de proyectos (Guía del PMBOK®)* (6.ª ed.), capítulo 11. Project Management Institute.
@@ -751,3 +751,4 @@ La tabla declara el uso de IA en estos anexos; se consolida en la declaración d
 | Anexos 8.B y 8.C: cuantificación y simulación (7 de octubre de 2026) | Claude Code | Valor esperado en HH, simulación de Monte Carlo y sensibilidad sobre el cronograma por actividad | Alto | Ninguno | No documentada |
 | Anexos 8.C y 8.D | Codex; Claude Code | Escenarios deterministas; reserva de contingencia por valor esperado (7 de octubre de 2026) | Alto | Ninguno | No documentada |
 | Anexos 8.E y 8.F | Codex; Claude Code | Condiciones de evidencia; escala de beneficio de la oportunidad (7 de octubre de 2026) | Alto | Ninguno | No documentada |
+| Anexos 8.A–8.E: correcciones de coherencia (7 de octubre de 2026) | Claude Code | Fuentes de las fichas, notas de redondeo y de muestreo, contingencia adicional elegible, condiciones E8 y referencias | Medio | Ninguno | No documentada |

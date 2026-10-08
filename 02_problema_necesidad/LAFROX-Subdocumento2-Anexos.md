@@ -250,7 +250,7 @@ Tabla 2.A.3 — continuación
 | S-06 | Se mantiene el efectivo y se reduce mediante medios alternativos; cada camión realiza rendición digital individual. | Toda diferencia exige causal tipificada y responsable identificado antes del cierre. | Si el CLIENTE reduce el uso de efectivo mediante medios alternativos voluntarios, la conciliación se conserva con menor volumen de operaciones; el canal tradicional mantiene la posibilidad de pagar en efectivo. | Gerente de Finanzas, mes 1. |
 | S-07 | El costo de servir se calcula por actividad, entrega y cliente, usando distancia, tiempos, volumen, devoluciones y activos retornables. | Los clientes no rentables se segmentan para revisar frecuencia y pedido mínimo; no se eliminan automáticamente. | Otra metodología cambia los datos que deben capturarse desde la Etapa 1. | Gerente de Finanzas, antes del mes 13. |
 | S-08 | El stock se reserva al confirmar el pedido en el servidor central, por orden cronológico. | En modo desconectado el stock es indicativo; los conflictos se resuelven al sincronizar y se notifica el quiebre. | Una reserva local cambia la resolución de conflictos. | Gerencia Comercial, levantamiento de reglas. |
-| S-09 | Rige el precio vigente al despacho, salvo excepción configurada por cliente o cadena. | Un cambio sin excepción se informa al cliente y queda trazado antes o junto con la facturación. | El precio de toma cambia la integración con el ERP. | Gerencia Comercial, mes 2. |
+| S-09 | Rige el precio acordado al capturar el pedido y registrado conforme a las condiciones comerciales autorizadas. | Una actualización posterior de la lista no modifica el importe pactado; el ERP recibe y conserva el precio del pedido. | Una diferencia de integración se bloquea y concilia antes de facturar; no se aplica automáticamente la lista del despacho. | Gerencia Comercial, mes 2. |
 | S-10 | Los 68.000 canastillos y 9.400 pallets se controlan por saldo de cliente y transportista, sin serialización unitaria. | Entregas y devoluciones actualizan la cuenta corriente; los excesos y pérdidas generan alertas e informes. | La serialización exige otra captura y otro hardware. | Gerencia de Operaciones, mes 2. |
 
 continúa en la página siguiente
@@ -478,3 +478,12 @@ Tabla 2.A.8 Inventario de sistemas legados de Distribuidora Puelche S.A. Fuente:
 | Planillas y cuadernos | Registros manuales | No informado | Lotes, conteo, faltantes, devoluciones, envases, temperatura, rendición de efectivo y costo por zona. | Deben desaparecer como sistema de registro. |
 
 LafroX SpA Propuesta Técnica 19
+
+
+## Referencias
+
+Bases Administrativas TFEP-01/2026; Bases Técnicas Transversales; Caso 02 — Logística; Aclaraciones de licitación; SD3 y SD7 para las correspondencias de alcance y gobierno.
+
+## Declaración de uso de IA
+
+Actualización del 6 de octubre de 2026: Codex apoyó Alineación de S-09 con conservación del precio capturado y control de diferencias ERP. Participación alta en el texto ajustado, sin imágenes nuevas. No consta revisión humana de esta actualización; las comprobaciones documentales no acreditan aprobación del CLIENTE.

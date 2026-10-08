@@ -311,7 +311,9 @@ El criterio de avance de una ola exige:
 
 - Acta firmada por la Contraparte Técnica.
 
-La reversión la autoriza el responsable operativo del CLIENTE cuando un indicador amenaza el despacho. Su disparador es observable: pedidos sin sincronizar al inicio de la carga, rutas del día no disponibles para cargar o un defecto crítico en la ventana de despacho. La vuelta al procedimiento anterior debe completarse antes de las 05:30. Por eso se decide en el turno de noche, con la hoja de picking y la guía en papel disponibles. Los registros capturados durante la ola permanecen en cola y se concilian al retomar; no se pierden. Este tiempo de vuelta no es el RTO de la sección 3.4.5: es el plazo para no afectar el despacho.
+La reversión la autoriza el responsable operativo del CLIENTE ante pedidos no sincronizados, rutas no disponibles o un defecto crítico. La restitución del servicio de despacho debe completarse antes de las 05:30 y sostener los 96 camiones entre 05:30 y 07:00 sin interrupción. Volver al papel no demuestra esa capacidad: la continuidad depende de la versión operativa local probada, colas durables, rutas disponibles y documentos válidos emitidos exclusivamente por ERP. Una guía ausente o invalidada requiere su reemisión autorizada; la solución no emite DTE alternativos. El papel es respaldo de consulta y contingencia de tareas auxiliares, no una sustitución manual del despacho crítico.
+
+El ensayo previo a cada corte mide tiempos, pérdida/duplicación, conciliación y volumen. T-18 §6.4 fija un objetivo de 40 minutos y final 05:25 bajo decisión 04:45; son objetivos no medidos. No se autoriza el corte sin evidencia del flujo completo. La conservación de registros en cola se comprueba en el ensayo; no se presume. El RTO de recuperación general no concede interrupciones en la ventana de despacho.
 
 Después de cada paso a producción, la estabilización incluye presencia en bodega durante el turno de noche y acompañamiento en ruta a preventistas y conductores. Su duración es de cuatro semanas por ola, el mismo período que exige el criterio de avance. La dotación se deriva de la operación del caso:
 
@@ -337,7 +339,7 @@ La migración de datos acompaña la secuencia de olas. El WMS de 2013 opera en T
 
 - Corte fuera de las ventanas de congelamiento.
 
-El WMS se conserva en solo lectura hasta el cierre de la marcha blanca del sitio como respaldo de consulta (Anexo 3.C, S-14). La vía operacional de reversión es el procedimiento manual con hoja de picking y guía en papel descrito arriba; el CLIENTE conserva la autoridad sobre los datos, y las transacciones del período se concilian al retomar. La reversión se ensaya en PREPROD antes de cada corte.
+El WMS se conserva en solo lectura hasta el cierre de la marcha blanca del sitio como respaldo de consulta (Anexo 3.C, S-14). La reversión conserva una versión operativa local probada y un único escritor por dominio; el papel sólo apoya consulta y tareas auxiliares. El CLIENTE conserva la autoridad sobre los datos y se concilian las transacciones del período; el despacho crítico requiere la evidencia y condiciones descritas arriba. La reversión se ensaya en PREPROD antes de cada corte.
 
 ### 3.4.5 Operación
 
@@ -427,3 +429,5 @@ La Tabla 3.6 registra la asistencia de IA por sección, anexo y formulario. La r
 | Formulario T-12 | Codex; Claude Code | Generación de la matriz de cumplimiento. | Alto | Ninguno | No documentada. |
 | 3.3 y Anexo 3.H: RNG-04 y RNG-15 (7 de octubre de 2026) | Claude Code | Regla provisoria de excursión térmica y promesa de pedidos urbanos desde las 14:00. | Alto | Ninguno | No documentada. |
 | Formulario T-12: EDT y pruebas (7 de octubre de 2026) | Claude Code | Asignación de paquetes y corrección de pruebas. | Alto | Ninguno | No documentada. |
+
+Actualización del 6 de octubre de 2026: Codex apoyó Corrección de continuidad/reversión, ERP/DTE y uso auxiliar del papel. Participación alta en el texto ajustado, sin imágenes nuevas. No consta revisión humana de esta actualización; las comprobaciones documentales no acreditan aprobación del CLIENTE.

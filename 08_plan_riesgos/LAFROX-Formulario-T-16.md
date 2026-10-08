@@ -1,6 +1,6 @@
 # LafroX — Formulario T-16: Plan de riesgos
 
-Prob. e Impacto usan escalas ordinales 1–5 de SD8 §8.1.3. Expos. = Prob. × Impacto. Evaluación inicial, sin porcentajes estadísticos ni cierre acreditado. Detalle y NPR en Anexos 8.A/8.B; el valor esperado en HH de cada riesgo está en el Anexo 8.B, Tabla B.2. Los responsables dirigen equipos; nominarlos no acredita dotación.
+El registro sigue la norma ISO 31000 (International Organization for Standardization [ISO], 2018), conforme al RT-19.04 de las Bases Técnicas Transversales. Prob. e Impacto usan las escalas ordinales 1–5 del SD8, sección 8.1.3, donde también se calibran en tramos de probabilidad y fracción de esfuerzo. Expos. = Prob. × Impacto. Es la evaluación inicial; ningún riesgo tiene cierre acreditado. Detalle y NPR en Anexos 8.A/8.B; el valor esperado en HH de cada riesgo está en el Anexo 8.B, Tabla B.2. Los responsables dirigen equipos; nominarlos no acredita dotación.
 
 | ID | Riesgo | Categoría | Prob. | Impacto | Expos. | Mitigación | Responsable |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -39,11 +39,11 @@ Prob. e Impacto usan escalas ordinales 1–5 de SD8 §8.1.3. Expos. = Prob. × I
 
 ## Referencias
 
-- Distribuidora Puelche S.A. (2026). Bases Administrativas TFEP-01/2026, artículos 17, 18, 50.2 y formularios T-16/T-22.
-- Distribuidora Puelche S.A. (2026). Bases Técnicas Transversales, RT-07.04/07, RT-19.04, RT-21.06/07 y RT-26.04.
-- Distribuidora Puelche S.A. (2026). Caso 02 — Logística, capítulos 10–14 y requisitos específicos citados.
-- Aclaraciones de licitación (2026), capítulo 8 y reglas de presentación.
-- LafroX. SD1–4, SD6 y SD7, con anexos y formularios citados. SD5 no utilizado.
+- Distribuidora Puelche S.A. (2026a). *Bases Administrativas de Licitación N.º TFEP-01/2026*, artículos 17, 18 y 50.2, y Formularios T-16 y T-22.
+- Distribuidora Puelche S.A. (2026b). *Bases Técnicas Transversales de Licitación N.º TFEP-01/2026*, RT-07.04, RT-07.07, RT-19.04, RT-21.06, RT-21.07 y RT-26.04.
+- Distribuidora Puelche S.A. (2026c). *Caso 02: Logística*, capítulos 10 a 14 y requisitos específicos citados.
+- Distribuidora Puelche S.A. (2026d). *Aclaraciones de la Licitación N.º TFEP-01/2026*, secciones 2, 4, 6, 7 y 11 (Capítulo 8).
+- LafroX. (2026). Subdocumentos 1 a 4, 6 y 7, con los anexos y formularios citados.
 - International Organization for Standardization. (2018). *ISO 31000:2018 Risk management — Guidelines*. ISO.
 - Project Management Institute. (2017). *La guía de los fundamentos para la dirección de proyectos (Guía del PMBOK®)* (6.ª ed.), capítulo 11. Project Management Institute.
 
@@ -51,4 +51,4 @@ Prob. e Impacto usan escalas ordinales 1–5 de SD8 §8.1.3. Expos. = Prob. × I
 
 | Sección | Herramienta | Finalidad del uso | Nivel en texto | Nivel en diagramas | Revisión humana (quién y qué verificó) |
 | --- | --- | --- | --- | --- | --- |
-| Formulario T-16 | Codex; Claude Code | Tabla de riesgos desde las fichas del Anexo 8.A (6 de octubre de 2026); actualización de R8-11 y referencias (7 de octubre de 2026) | Alto | Ninguno | No documentada |
+| Formulario T-16 | Codex; Claude Code | Tabla de riesgos desde las fichas del Anexo 8.A (6 de octubre de 2026); actualización de R8-11 y referencias (7 de octubre de 2026); encabezado alineado con la calibración de la sección 8.1.3 (7 de octubre de 2026) | Alto | Ninguno | No documentada |
