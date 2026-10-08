@@ -1879,7 +1879,7 @@ La carta confirma que los períodos fijos del Art. 17° se cumplen mes a mes y q
 
   <a id="fig:T14-ccb"></a>
 
-Las dos figuras muestran que la construcción de la Etapa 1 se concentra entre los meses 5 y 10, sobre la base compartida y con la infraestructura de los sitios terminada en el mes 6, y que las cuentas de la Etapa 2 (3.5, 3.9, 4.3 y la segunda parte de 5.4) se ubican entre los meses 13 y 21, sin interferir con las pruebas de la Etapa 1 que cierran en el mes 12. Las cuentas de capacitación y de gestión del cambio se intensifican desde el mes 12, en preparación de cada marcha blanca.
+Las dos figuras conservan la programación anterior y se reemplazan por la carta vigente de la sección 3.1. Según esa carta, la sala técnica y el borde de los sitios se instalan entre los meses 3 y 5, la base compartida y los módulos de la Etapa 1 se construyen entre los meses 5 y 8, y las pruebas de integración y certificación de la Etapa 1 ocupan los meses 9 y 10, antes del H5 del mes 12. Las cuentas de la Etapa 2 (3.5, 3.9, 4.3 y la segunda parte de 5.4) se ubican entre los meses 13 y 22, con los módulos en el mes 15 y la integración y certificación en los meses 16 y 17. Las cuentas de capacitación y de gestión del cambio se intensifican desde el mes 10, en preparación de cada marcha blanca.
 
 ### 3.1 Carta Gantt vigente por cuenta de control
 
