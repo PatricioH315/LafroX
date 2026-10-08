@@ -40,7 +40,7 @@ La Etapa 1 pone en producción la trazabilidad de recepción, la bodega con FEFO
 \nota{Fuente: Capítulo 3, sección 3.4.4.}
 \parte{tablas/tab_T18_olas}
 
-El calendario de olas respeta los meses 13--15, pero su cierre se calcula con fechas reales. Sea F el instante final de la marcha blanca: el 100 \% del alcance debe estar operativo antes de F − 28 días y sostener volumen real e indicadores durante [F − 28 días, F). Cada activación debe respetar 1--25 de septiembre, todo diciembre y los primeros tres días hábiles del mes; también evita 05:30--07:00 y no detiene rutas. La secuencia vigente de §6.1 adelanta los remanentes a semana 8, subordinada a ese límite. Un retraso exige replanificar antes de H6; no se recorta la evidencia ni se desplazan automáticamente las fases siguientes.
+El calendario de olas respeta los meses 13--15, pero su cierre se calcula con fechas reales. Sea F el instante final de la marcha blanca: el 100 \% del alcance debe estar operativo antes de F − 28 días y sostener volumen real e indicadores durante [F − 28 días, F). Cada activación debe respetar 1--25 de septiembre, todo diciembre y los primeros tres días hábiles del mes; también evita 05:30--07:00 y no detiene rutas. La secuencia vigente de 6.1 adelanta los remanentes a semana 8, subordinada a ese límite. Un retraso exige replanificar antes de H6; no se recorta la evidencia ni se desplazan automáticamente las fases siguientes.
 
 \begin{figure}[htbp]
   \centering
@@ -84,7 +84,7 @@ El calendario de olas respeta los meses 13--15, pero su cierre se calcula con fe
 
 \nota{Fuente: elaboración propia a partir del Capítulo 3, sección 3.4.4.}
 
-La figura resume la secuencia de referencia. La programación vigente es §6.1: activaciones hasta semana 8 sujetas a fechas permitidas y al límite exacto F − 28 días; los períodos de evidencia se superponen por dominios sin doble escritura.
+La figura resume la secuencia de referencia. La programación vigente es 6.1: activaciones hasta semana 8 sujetas a fechas permitidas y al límite exacto F − 28 días; los períodos de evidencia se superponen por dominios sin doble escritura.
 
 \subsection{Pruebas previas a la marcha blanca y al paso a producción}
 
@@ -360,7 +360,7 @@ Durante congelamientos, se aplica la continuidad previamente autorizada por el C
 
 \subsection{Controles nuevos de coordinación y aceptación}
 
-Los paquetes 3.3.6, 3.4.2 y 3.4.6 incluyen el contrato CD-05: retención local por lote/ubicación, acuse durable antes de confirmar pedido, UUID e idempotencia y época de autoridad. 3.8.1/3.8.3 incluyen AL-STOCK-01 y AL-ACT-01 con corte, reintento, concurrencia y ausencia de doble descuento o custodia duplicada. La fuente es SD4 §4.1 y sus anexos lógicos; son pruebas planificadas, no ejecutadas. SD4 Anexo A31 ya dimensiona CD-05 con 4L mensajes y A32 incorpora su tráfico en enlaces. La relación con 2N + 2L exige comprobar N = L y la multiplicidad de retenciones; si un pedido usa varios lotes o ubicaciones, se mide el mayor volumen y el drenaje de cola. 3.8.4/3.9.3 verifican esa hipótesis; no se afirma que CD-05 esté ausente de la memoria. El límite residual de RPO continúa abierto ante pérdida simultánea del sitio y su respaldo local, sin alterar aquí la arquitectura física.
+Los paquetes 3.3.6, 3.4.2 y 3.4.6 incluyen el contrato CD-05: retención local por lote/ubicación, acuse durable antes de confirmar pedido, UUID e idempotencia y época de autoridad. 3.8.1/3.8.3 incluyen AL-STOCK-01 y AL-ACT-01 con corte, reintento, concurrencia y ausencia de doble descuento o custodia duplicada. La fuente es SD4 4.1 y sus anexos lógicos; son pruebas planificadas, no ejecutadas. SD4 Anexo A31 ya dimensiona CD-05 con 4L mensajes y A32 incorpora su tráfico en enlaces. La relación con 2N + 2L exige comprobar N = L y la multiplicidad de retenciones; si un pedido usa varios lotes o ubicaciones, se mide el mayor volumen y el drenaje de cola. 3.8.4/3.9.3 verifican esa hipótesis; no se afirma que CD-05 esté ausente de la memoria. El límite residual de RPO continúa abierto ante pérdida simultánea del sitio y su respaldo local, sin alterar aquí la arquitectura física.
 
 
 \section{Referencias}
