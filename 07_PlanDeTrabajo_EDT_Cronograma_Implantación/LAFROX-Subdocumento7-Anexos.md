@@ -63,19 +63,21 @@ La Tabla 7.B.1 lista las dependencias que estructuran la red del cronograma. Son
 | D-21b | 3.4 Módulos de la Etapa 1 entregados en QA | 3.8.4 Carga, 3.8.5 Recuperación, 3.8.6 Seguridad ofensiva y 3.8.8 Respaldo | FC | Pruebas no funcionales sobre la versión integrada en Preproducción; no dependen del resultado funcional de 3.8.1 |
 | D-22 | 3.1.3 Ambiente de recuperación | 3.8.5 Prueba de recuperación ante desastres | FC | La prueba exige conmutación real |
 | D-23 | 3.8.2 a 3.8.6 | 3.8.7 Certificación de la Etapa 1 (H5) | FC | Formulario E-25, H5 |
-| D-24 | 3.7.1 a 3.7.4 Migración y ensayos | 3.7.5 Conciliación y corte | FC | Dos ensayos previos (numeral 20.1) |
+| D-24 | 3.7.1 a 3.7.4 Migración y ensayos | 3.7.5 Conciliación y corte | FC | Dos ensayos previos (numeral 20.1). El corte (3.7.5.A06) espera los ensayos 3.7.3 y 3.7.4; la preparación del corte avanza en paralelo en ambientes no productivos |
 | D-25 | 3.8.7 (H5), 3.7.5, 4.1.1 y 4.1.2 | 4.2.1 Marcha blanca de la Etapa 1 (H6) | FC | Formulario E-25, H6; RT-20.01 y RT-20.02 |
 | D-26 | 6.5 Equipamiento de campo de cada ola | Ola correspondiente de 4.2.1 | FC | Equipamiento instalado antes de la ola |
 | D-27 | 5.4.1 y 5.4.2 Acuerdos con transportistas y sindicato | Ola de reparto de 4.2.1 | FC | Capítulo 3, Anexo 3.I |
 | D-28 | 4.2.1 y 7.3.1 Certificación de usuarios | 4.2.3 Paso a producción de la Etapa 1 (H7); luego 4.2.2 Estabilización (meses 16 a 20) | FC | Bases Administrativas, Art. 17.3 y 90.4. La estabilización 4.2.2 sigue al paso a producción y no lo condiciona |
 | D-29 | 1.2.5 y 2.4.2 Línea base y diseño de la Etapa 2 (H8) | 3.5 Módulos de la Etapa 2 | FC | Formulario E-25, H8 |
 | D-30 | 3.5 Módulos de la Etapa 2 | 3.9.1 Pruebas de integración (H9) | FC | Formulario E-25, H9 |
-| D-31 | 3.9.1 a 3.9.5 | 3.9.6 Certificación de la Etapa 2 (H10) | FC | Formulario E-25, H10. Las pruebas 3.9.2 a 3.9.5 empiezan al terminar 3.9.1, en paralelo con la revisión del H9 |
+| D-31 | 3.9.1 Pruebas de integración | 3.9.2 Aceptación | FC | Bases Técnicas Transversales, numeral 20.1. Los ciclos de aceptación empiezan al terminar 3.9.1, en paralelo con la revisión del H9; la preparación de casos y datos avanza antes |
+| D-31b | 3.5 Módulos de la Etapa 2 entregados en QA | 3.9.3 Carga, 3.9.4 Recuperación y 3.9.5 Seguridad ofensiva | FC | Pruebas no funcionales sobre la versión integrada en Preproducción; no dependen del resultado funcional de 3.9.1 |
+| D-31c | 3.9.1 a 3.9.5 | 3.9.6 Certificación de la Etapa 2 (H10) | FC | Formulario E-25, H10 |
 | D-32 | 3.9.6 (H10), 3.6.5 y 4.1.3 | 4.3.1 Marcha blanca de la Etapa 2 (H11) | FC | Formulario E-25, H11 |
 | D-33 | 4.3.1, 7.3.2, 7.1.4 y 4.3.4 | 4.3.3 Aceptación final (H12) | FC | Bases Administrativas, Art. 17.3 y 37.1 |
 | D-34 | 4.3.3 Aceptación final (H12) | 8 Operación y 9.1 Cierre de la implementación | FC | Bases Administrativas, Art. 17.2, punto 4 |
 
-Las dependencias D-29 a D-31 forman la ruta crítica de la Etapa 2. D-02, D-04 y D-14 a D-25 forman la cadena casi crítica de la Etapa 1. D-07 a D-13 convergen en el H3. D-32 a D-34 enlazan la certificación de la Etapa 2 con su marcha blanca, aceptación y operación.
+Las dependencias D-29 a D-31c forman la ruta crítica de la Etapa 2. D-02, D-04 y D-14 a D-25 forman la cadena casi crítica de la Etapa 1. D-07 a D-13 convergen en el H3. D-32 a D-34 enlazan la certificación de la Etapa 2 con su marcha blanca, aceptación y operación.
 
 ## Anexo 7.C — Momento de los resultados de aceptación del caso
 

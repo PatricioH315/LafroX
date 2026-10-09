@@ -276,31 +276,38 @@ Total de celdas por completar: 204.
 
 ## 08_plan_riesgos/LAFROX-Formulario-T-16.md
 
-| Fila (sección) | Uso declarado | Qué verificar | Integrante | Hecho |
+Las filas de esta sección y las dos siguientes son las 18 celdas vigentes del SD8 (9 de octubre de 2026). El integrante propuesto es el responsable del rol en la Tabla 8.1; puede revisar otro integrante, pero sólo quien efectivamente verificó escribe su nombre en la celda.
+
+| Fila (sección) | Uso declarado | Qué verificar | Integrante propuesto | Hecho |
 | --- | --- | --- | --- | --- |
-| Formulario T-16 | Tabla de riesgos desde las fichas del Anexo 8.A; actualización de R8-11 y referencias; encabezado alineado con la calibración de la sección 8.1.3 | Cotejar cada fila del formulario con el cuerpo y con los formularios relacionados (códigos, meses, cantidades). | | |
+| Formulario T-16 | Registro de 32 amenazas, responsables temporales y mitigación | Cotejar P, I y exposición de las 32 filas con la Tabla B.1; confirmar que cada responsable existe en la Tabla 8.1 y que los plazos usan los hitos del E-25; leer en voz alta R8-05, R8-12, R8-18 y R8-22 y poder explicarlos | Alex Aravena (JP) | |
 
 ## 08_plan_riesgos/LAFROX-Subdocumento8-Anexos.md
 
-| Fila (sección) | Uso declarado | Qué verificar | Integrante | Hecho |
+| Fila (sección) | Uso declarado | Qué verificar | Integrante propuesto | Hecho |
 | --- | --- | --- | --- | --- |
-| Anexos 8.A y 8.B | Fichas y FMEA; justificación individual de P y D con horizonte | Verificar que cada tabla del anexo esté citada en el cuerpo y que sus cifras coincidan con él. | | |
-| Anexos 8.B y 8.C: cuantificación y simulación | Valor esperado en HH, simulación de Monte Carlo y sensibilidad sobre el cronograma por actividad | Verificar que cada tabla del anexo esté citada en el cuerpo y que sus cifras coincidan con él. | | |
-| Anexos 8.C y 8.D | Escenarios deterministas; reserva de contingencia por valor esperado | Verificar que cada tabla del anexo esté citada en el cuerpo y que sus cifras coincidan con él. | | |
-| Anexos 8.E y 8.F | Condiciones de evidencia; escala de beneficio de la oportunidad | Verificar que cada tabla del anexo esté citada en el cuerpo y que sus cifras coincidan con él. | | |
-| Anexos 8.A–8.E: correcciones de coherencia | Fuentes de las fichas, notas de redondeo y de muestreo, contingencia adicional elegible, condiciones E8 y referencias | Verificar que cada tabla del anexo esté citada en el cuerpo y que sus cifras coincidan con él. | | |
+| Anexo 8.A | Registro, horizonte y responsables temporales | Leer las 32 fichas; para cinco al azar, justificar P, I y D con el Caso y el subdocumento citado en «Fuente y EDT»; confirmar el relevo del mes 22 y los suplentes | Alex Aravena (JP) | |
+| Anexo 8.B | FMEA y matrices de exposición/paquetes | Recalcular E y NPR de las 32 filas; recalcular a mano R8-11 (45.040 × 30 % × 60 %) y R8-07 (2.112 × 30 % × 60 %); comprobar el total conjunto 29.647,18 HH | Maximiliano Miño (CAL) | |
+| Anexo 8.C | Costo-beneficio, ejecución y modelo reproducible | Ejecutar el modelo de `compct/modelo_montecarlo_SD8.md` y obtener las Tablas C.3, C.4 y C.6; poder explicar el factor PERT, la nivelación y la regla de entrega de los hitos | Maximiliano Miño (CAL) | |
+| Anexo 8.D | Contingencia, gestión y curva por mes/perfil | Sumar la Tabla D.2 contra 29.647,18 HH; verificar el cálculo de la gestión (1.600 HH, 0,94 + 1,25 meses) y su coincidencia con el T-15, sección 4.5 | Alex Aravena (JP) | |
+| Anexo 8.E | Compatibilidad y condiciones de evidencia | Confirmar que E8-01 a E8-14 tienen responsable, límite y riesgo asociado; revisar E8-11 (H1/H8) y E8-14 (opción del contrato de implantación) | Alex Aravena (JP) | |
+| Anexo 8.F | Adopción de innovaciones y oportunidad | Cotejar nombres, P e I de R8-25 a R8-29 con el SD13 y el T-19 | Leandro Chamorro (DAT) | |
 
 ## 08_plan_riesgos/LAFROX-Subdocumento8.md
 
-| Fila (sección) | Uso declarado | Qué verificar | Integrante | Hecho |
+| Fila (sección) | Uso declarado | Qué verificar | Integrante propuesto | Hecho |
 | --- | --- | --- | --- | --- |
-| Introducción | Redacción a partir de SD2–SD4, SD6 y SD7 | Comparar la figura del PDF con el texto que la explica; confirmar que la figura existe y no es un recorte. | | |
-| 8.1 Plan de riesgos | Método, roles y escalas; Comité de Operación y textos de sección | Leer la sección completa, confirmar cifras y decisiones contra el Caso y contra los demás subdocumentos, y anotar qué se corrigió. | | |
-| 8.2 Identificación y Análisis de Riesgos | RBS textual, FMEA y escenarios; valor esperado en HH y simulación de Monte Carlo sobre el cronograma por actividad | Rehacer a mano al menos un cálculo y confirmar las cifras contra el Caso (cap. 14 y 15) y el Formulario T-15. | | |
-| 8.3 Plan de Acción a Riesgos | Respuestas, reservas y factibilidad; reserva de contingencia por valor esperado y su reparto por período | Leer la sección completa, confirmar cifras y decisiones contra el Caso y contra los demás subdocumentos, y anotar qué se corrigió. | | |
-| Anexos 8.A a 8.F | Ver la declaración de los anexos | Verificar que cada tabla del anexo esté citada en el cuerpo y que sus cifras coincidan con él. | | |
-| Formulario T-16 | Ver la declaración del formulario | Cotejar cada fila del formulario con el cuerpo y con los formularios relacionados (códigos, meses, cantidades). | | |
-| Introducción, 8.1.1, 8.1.3, 8.2.1–8.2.3, 8.3.2 y 8.3.3: correcciones de coherencia | Figura 8.1 (RBS) desde las fichas 8.A, contingencia adicional elegible, hitos no simulados, citas y referencias | Comparar la figura del PDF con el texto que la explica; confirmar que la figura existe y no es un recorte. | | |
+| Introducción | Conexión con operación, alcance y formularios | Confirmar las cifras del Caso cap. 10 (96 camiones, 05:30–07:00, CD 24 h, terreno 14 h) y las remisiones a SD2–SD7 | Alex Aravena (JP) | |
+| 8.1 Plan de riesgos | Roles, escalas, ciclo y cierre | Confirmar nombres y meses de la Tabla 8.1 con SD1 Tabla 1.3; poder explicar las escalas de las Tablas 8.2 y 8.3 y el apetito | Alex Aravena (JP) | |
+| 8.2 Identificación y Análisis de Riesgos | RBS, FMEA y cuantificación reproducible | Confirmar que la Figura 8.1 tiene los 32 riesgos con su rama; que la Tabla 8.5 coincide con el T-15, Tabla 5.2, y con el SD7 7.3.1; poder explicar por qué el H3 es el hito más expuesto | Bastián Trejo (ARQ) | |
+| 8.3 Plan de Acción a Riesgos | Respuestas, contingencia y gestión | Confirmar 29.647,18 HH, 1.600 HH y la Tabla 8.6; revisar el tratamiento del RPO residual con el SD4 4.3.2.4 | Bastián Trejo (ARQ) | |
+| Anexo 8.A | Ver declaración propia de ese anexo | Se cierra al cerrar la fila «Anexo 8.A» de los anexos | Alex Aravena (JP) | |
+| Anexo 8.B | Ver declaración propia de ese anexo | Se cierra al cerrar la fila «Anexo 8.B» de los anexos | Maximiliano Miño (CAL) | |
+| Anexo 8.C | Ver declaración propia de ese anexo | Se cierra al cerrar la fila «Anexo 8.C» de los anexos | Maximiliano Miño (CAL) | |
+| Anexo 8.D | Ver declaración propia de ese anexo | Se cierra al cerrar la fila «Anexo 8.D» de los anexos | Alex Aravena (JP) | |
+| Anexo 8.E | Ver declaración propia de ese anexo | Se cierra al cerrar la fila «Anexo 8.E» de los anexos | Alex Aravena (JP) | |
+| Anexo 8.F | Ver declaración propia de ese anexo | Se cierra al cerrar la fila «Anexo 8.F» de los anexos | Leandro Chamorro (DAT) | |
+| Formulario T-16 | Ver declaración propia del formulario | Se cierra al cerrar la fila del T-16 | Alex Aravena (JP) | |
 
 ## 13_innovaciones/LAFROX-Formulario-T-19.md
 

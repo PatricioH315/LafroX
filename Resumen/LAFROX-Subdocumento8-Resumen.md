@@ -40,9 +40,9 @@ El enlace de Concepción lo resuelve el SD4 con tres caminos independientes, y R
 
 **Cualitativo (FMEA).** El número de prioridad **NPR = P × I × D** ordena los riesgos. Los más altos son la caída del ERP o una guía invalidada (R8-01), un ataque a datos críticos (R8-07) y una vida útil insegura estimada por INN-03 (R8-27), con 80. Les sigue la pérdida del sitio por sobre el RPO (R8-05), con 75. R8-05 es poco probable, pero sólo se detecta al ocurrir; por eso se ensaya antes del corte.
 
-**Cuantitativo.** [El valor esperado](../08_plan_riesgos/LAFROX-Subdocumento8.md#823-an%C3%A1lisis-cuantitativo) del registro suma **15.076 HH**, cerca del 8 % de las 190.366 HH base del T-15. Cinco riesgos concentran el **67,7 %**: productividad o dotación, mesa de ayuda, marcha blanca, uso de la capacidad de la Etapa 1 por la Etapa 2 y doble reserva de stock.
+**Cuantitativo.** [El valor esperado](../08_plan_riesgos/LAFROX-Subdocumento8.md#823-an%C3%A1lisis-cuantitativo) del registro conjunto suma **29.647,18 HH**, el 15,6 % de las 190.366 HH base del T-15. Dos riesgos concentran el **66,8 %**: la demanda de la mesa de ayuda (R8-22) y la productividad o dotación (R8-11).
 
-La **simulación de Monte Carlo** recorre 5.000 veces la red de los 163 paquetes con entregable del T-15, con duraciones PERT y la ocurrencia de cada riesgo. En todos los hitos simulados, la fecha P80 queda antes de la fecha límite. El más expuesto es el **H9, con 89,9 %** de entrega a tiempo; depende sobre todo de R8-14, R8-11 y R8-15. H6, H7, H11 y H12 no se simulan porque tienen mes fijo por el Art. 17°; su riesgo se trata con R8-18 y la contingencia.
+La **simulación de Monte Carlo** recorre 5.000 veces las 564 actividades del T-15, con duraciones PERT, la ocurrencia de cada riesgo y nivelación diaria de recursos. En todos los hitos, la fecha P80 queda antes de la fecha límite. El más expuesto es el **H3, con 88,3 %** de entrega a tiempo, por el suministro de la sala (R8-19); le sigue el H8, con 91,1 %. Las ocho entregas se cumplen juntas en el 78,0 % de las iteraciones, y R8-11 es el riesgo que más pesa en el plazo. La preparación del H6 se cumple en el 96,5 % y la del H11 en el 100 %; las seis condiciones de cierre de cada marcha blanca se tratan con R8-18.
 
 ## Cómo se responde
 
@@ -56,7 +56,7 @@ Cada ficha del Anexo 8.A fija responsable, estrategia, disparador, plazo, mitiga
 | Aceptar activamente | R8-22 | La demanda de la mesa no admite un control previo; hay contingencia y disparador |
 | Transferir | Ninguno | Contratar a un tercero no traslada la obligación de LafroX |
 
-Cada respuesta deja un **residual**: con la probabilidad un nivel más baja tras verificar cada control, el valor esperado del registro baja de 15.076 a **10.803 HH**. Las respuestas también crean **riesgos secundarios**, registrados como riesgos propios; por ejemplo, certificar en paralelo a la revisión del CLIENTE crea R8-31.
+Cada respuesta deja un **residual**: con la probabilidad un nivel más baja tras verificar cada control, el registro conjunto baja de 29.647,18 a **23.503,37 HH**. Las respuestas también crean **riesgos secundarios**, anotados en cada ficha; algunos son riesgos propios, como R8-31, que nace de certificar en paralelo a la revisión del CLIENTE.
 
 [El costo-beneficio](../08_plan_riesgos/LAFROX-Subdocumento8.md#831-respuestas-y-costo-beneficio-t%C3%A9cnico) sigue la regla del PMBOK: una respuesta se justifica si reduce el valor esperado más de lo que cuesta. El Anexo 8.C, Tabla C.5, divide el ahorro esperado de cada riesgo crítico por las HH de su paquete de control, ya incluido en el T-15:
 
@@ -65,9 +65,9 @@ Cada respuesta deja un **residual**: con la probabilidad un nivel más baja tras
 
 ## Reservas
 
-[La reserva de contingencia](../08_plan_riesgos/LAFROX-Subdocumento8.md#832-reservas-y-cronograma) es la suma de los valores esperados, **15.076 HH** (7,9 % de las HH base), y forma parte de la línea base. Se dimensiona con el valor esperado inicial porque al ofertar ningún control está verificado; cada control verificado libera la diferencia con el residual, hasta **4.273 HH**. De ellas, **1.853 HH** (R8-02, R8-04 y R8-14) caben en la capacidad protegida de la Etapa 1, de 3.072 HH, ya incluida en el T-15. Por eso la contingencia adicional es de **13.223 HH**. Esa capacidad no se usa antes del mes 13 ni se presta a la Etapa 2. El 88 % de la contingencia se concentra entre los meses 7 y 33.
+[La reserva de contingencia](../08_plan_riesgos/LAFROX-Subdocumento8.md#832-reservas-y-cronograma) es el registro conjunto, **29.647,18 HH**. Ningún riesgo coincide con la ventana y los perfiles de la capacidad protegida de la Etapa 1, por lo que no se descuenta nada de ella. El T-15, sección 4.5, refleja la contingencia por período y la compara con la dotación: cabe en todos los roles salvo implantación en los meses 15 y 20, que se cubre con la opción de hasta 8 personas adicionales del contrato de implantación.
 
-La **reserva de cronograma** son las reservas de cada hito del T-15, de 6 a 35 días hábiles, dimensionadas para que la fecha P80 quede antes de la fecha límite. Una observación del CLIENTE consume esa reserva; sólo la del H1 (6 días) no alcanza para los diez días de subsanación. La **reserva de gestión** cubre lo no identificado: no forma parte de la línea base, la autoriza el Comité Ejecutivo, usarla exige actualizar la línea base y su monto va en la Oferta Económica.
+La **reserva de cronograma** son las reservas de cada hito del T-15, de 4 a 35 días hábiles, con la fecha P80 antes de la fecha límite. La **reserva de gestión**, de **1.600 HH**, cubre un evento no identificado equivalente a rehacer un módulo de clase D con su integración y certificación; no forma parte de la línea base, la autoriza el Comité Ejecutivo y su valorización va en la Oferta Económica.
 
 ## Condiciones antes de declarar la propuesta factible
 

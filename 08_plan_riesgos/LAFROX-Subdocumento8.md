@@ -35,7 +35,7 @@ La Tabla 8.1 distingue al responsable del riesgo, la familia de esfuerzo y su vi
 | SRE | Guillermo Castillo | Guillermo Castillo | Capacidad/continuidad |
 | IMP | Patricio Henríquez | Guillermo Castillo; equipo IMP | CAL: usuarios; SEG: privacidad |
 
-Las responsabilidades de DAT e IMP se transfieren al frente F8 de Operación, como establece el SD13. R8-27 requiere aprobación sanitaria de Calidad; R8-29, privacidad de Seguridad. La Contraparte Técnica acepta con acta; Operaciones autoriza cortes y Calidad del CLIENTE decide sobre los aspectos sanitarios. Su agenda se fija en mes 1 y se sigue con R8-12. Los cambios físicos siguen el gobierno de arquitectura.
+Las responsabilidades de DAT e IMP se transfieren al frente F8 de Operación, como establece el SD13. Para que no dependan de una sola persona, desde el mes 22 Bastián Trejo, que sigue en el Comité de Arquitectura, es suplente de Guillermo Castillo en DAT y DES, y Maximiliano Miño lo es en IMP; ambos continúan hasta el mes 56 (SD1, Tabla 1.3). R8-27 requiere aprobación sanitaria de Calidad; R8-29, privacidad de Seguridad. La Contraparte Técnica acepta con acta; Operaciones autoriza cortes y Calidad del CLIENTE decide sobre los aspectos sanitarios. Su agenda se fija en mes 1 y se sigue con R8-12. Los cambios físicos siguen el gobierno de arquitectura.
 
 ### 8.1.3 Escalas previas al análisis
 
@@ -130,28 +130,28 @@ No se suman puntuaciones como probabilidad del proyecto. Las relaciones importan
 
 El análisis combina exposición individual, registro conjunto y calendario con recursos (PMI, 2017, pp. 433–434). La Tabla B.3 permite seguir cada cifra hasta sus paquetes, meses, perfiles y controles. R8-11 abarca 162 paquetes con entregable de implementación, que suman 45.040,00 HH y se desglosan en la Tabla B.4. El esfuerzo recurrente cubre toda su ventana; la probabilidad no se convierte en una tasa mensual.
 
-Los valores esperados individuales suman 35.969,16 HH. Al contar una sola vez una misma corrección de capacidad o interfaz, el registro conjunto suma **35.219,98 HH** bajo independencia y **34.756,36 HH** en el escenario correlacionado. La contingencia adopta el mayor de los dos registros conjuntos. Es una necesidad de capacidad bajo los supuestos del análisis y no un consumo cierto ni una frecuencia medida.
+Los valores esperados individuales suman 30.396,36 HH. Al contar una sola vez una misma corrección de capacidad o interfaz, el registro conjunto suma **29.647,18 HH** bajo independencia y **29.183,56 HH** en el escenario correlacionado. La contingencia adopta el mayor de los dos registros conjuntos. Es una necesidad de capacidad bajo los supuestos del análisis, no un consumo cierto ni una frecuencia medida. Dos riesgos concentran el 66,8 %: R8-22, la demanda de la mesa (11.699,40 HH), y R8-11, la productividad o dotación (8.107,20 HH).
 
-La simulación ejecuta 5.000 iteraciones sobre las 564 actividades, con semilla 20261008, PERT por paquete y nueva nivelación diaria. Conserva las fechas contractuales y desarrolla las precedencias del Anexo 7.B. La Tabla 8.5 resume el escenario independiente; el Anexo 8.C incluye intervalos de incertidumbre, correlación, sensibilidad con muestras comunes y el procedimiento reproducible.
+La simulación de Monte Carlo ejecuta 5.000 iteraciones sobre las 564 actividades del Formulario T-15, con duraciones PERT por paquete, la ocurrencia de cada riesgo y una nueva nivelación diaria por rol en cada iteración. Conserva las fechas contractuales y las precedencias del Anexo 7.B. Para cada hito mide la fecha en que se entrega el paquete que lo gatilla y la compara con su fecha límite: el último día hábil del mes del hito menos los diez días hábiles de revisión del CLIENTE (BA Art. 18.3). La Tabla 8.5 resume el escenario independiente; el Anexo 8.C agrega el escenario correlacionado, los intervalos de confianza, la sensibilidad y la preparación de las marchas blancas.
 
 **Tabla 8.5 — Entrega por hito con recursos y riesgos. Fuente: Anexo 8.C, Tabla C.3.**
 
 | Hito | Límite de entrega | P50 | P80 | P a tiempo |
 | --- | --- | --- | --- | --- |
-| H1 | 17-03-2027 | 10-03-2027 | 11-03-2027 | 100,00 % |
-| H2 | 17-05-2027 | 02-06-2027 | 02-06-2027 | 0,00 % |
-| H3 | 16-07-2027 | 07-07-2027 | 13-07-2027 | 88,32 % |
-| H4 | 16-11-2027 | 29-10-2027 | 05-11-2027 | 99,92 % |
-| H5 | 17-01-2028 | 24-12-2027 | 04-01-2028 | 97,76 % |
-| H8 | 17-03-2028 | 04-04-2028 | 04-04-2028 | 0,00 % |
-| H9 | 16-06-2028 | 26-05-2028 | 31-05-2028 | 100,00 % |
-| H10 | 17-07-2028 | 21-07-2028 | 27-07-2028 | 31,02 % |
+| H1 | 17-03-2027 | 10-03-2027 | 11-03-2027 | 100,0 % |
+| H2 | 17-05-2027 | 05-05-2027 | 10-05-2027 | 97,4 % |
+| H3 | 16-07-2027 | 07-07-2027 | 13-07-2027 | 88,3 % |
+| H4 | 16-11-2027 | 29-10-2027 | 05-11-2027 | 99,9 % |
+| H5 | 17-01-2028 | 24-12-2027 | 04-01-2028 | 97,8 % |
+| H8 | 17-03-2028 | 16-03-2028 | 16-03-2028 | 91,1 % |
+| H9 | 16-06-2028 | 24-05-2028 | 29-05-2028 | 100,0 % |
+| H10 | 17-07-2028 | 27-06-2028 | 29-06-2028 | 100,0 % |
 
-H2 y H8 presentan una incompatibilidad incluso sin riesgos: las actividades de aprobación terminan después de sus fechas límite de entrega. Al conservar D-31, el P80 del H10 es el 27-07-2028 y supera su límite del 17-07-2028; la proporción de entregas a tiempo es 31,02 %. Ninguna iteración cumple simultáneamente las ocho entregas bajo estas fuentes y supuestos. E8-13 y E8-14 requieren resolución antes de declarar factibilidad.
+La fecha P80 de todos los hitos queda antes de su límite. El hito más expuesto es el H3 (88,3 %), por el suministro de la sala y los racks (R8-19): sin ese riesgo llega al 100 %. Le sigue el H8 (91,1 %), cuya aprobación de diseño tiene cuatro días hábiles de reserva. Las ocho entregas se cumplen juntas en el 78,0 % de las iteraciones; ese valor exige que ningún hito se atrase en la misma iteración y por eso es menor que el de cada hito. La sensibilidad del Anexo 8.C muestra que R8-11 es el riesgo que más pesa en el plazo: sin él, todos los hitos llegan al 100 %. Por eso su control (1.3.4) se revisa cada semana contra la reserva de cada hito.
 
-La Tabla C.6 comprueba la preparación de H6 y H11 y las condiciones de calendario de H7 y H12. Una fecha fija no elimina la incertidumbre. El alcance completo, la capacidad y las cuatro semanas de evidencia son condiciones necesarias; las seis condiciones del Art. 17.3 requieren mediciones y acta, que la simulación no acredita.
+La preparación del H6 (prerrequisitos D-25 a tiempo para el acta del mes 13) se cumple en el 96,5 % de las iteraciones y la del H11 en el 100 % (Tabla C.6). Una fecha fija no elimina la incertidumbre de la marcha blanca: las seis condiciones del Art. 17.3 se miden durante sus cuatro semanas finales, y su riesgo de no cumplirse es R8-18, que tiene su propia contingencia.
 
-El T-15 conserva 202.774 HH, incluidas 9.336 HH de soporte puente y 3.072 HH de capacidad protegida E1. Las 9.336 HH forman parte de las 16.664 HH del período 16–20 del SD7. El peak de 69 personas y las 48 simultáneas de desarrollo son referencias de la programación fuente; su asignación nominal continúa siendo una condición. La nueva contingencia y los resultados de este SD8 no están incorporados todavía en esa curva.
+El T-15 conserva 202.774 HH de línea base, incluidas 9.336 HH de soporte puente y 3.072 HH de capacidad protegida E1. Las 9.336 HH forman parte de las 16.664 HH del período 16–20 del SD7. Las reservas de contingencia y de gestión se reflejan en el T-15, sección 4.5, por período y con la capacidad que las cubre.
 
 ## 8.3 Plan de Acción a Riesgos
 
@@ -163,46 +163,46 @@ Cada ficha del Anexo 8.A define estrategia, responsable temporal, disparador, pl
 
 La Tabla C.5 compara las 32 respuestas en HH (PMI, 2017, pp. 442–443). Los 35 paquetes de control únicos suman 6.768,00 HH ya programadas. Su costo se cuenta una vez, aunque un control proteja varios riesgos; los retornos individuales no se suman. Se descarta toda alternativa que incumpla sanidad, despacho, integridad de datos o una función obligatoria.
 
-Si la probabilidad disminuyera un nivel, el registro conjunto residual sería 27.218,57 HH, frente a las 35.219,98 HH iniciales. Esta hipótesis no acredita eficacia ni permite liberar automáticamente la diferencia de 8.001,41 HH. CAL comprueba resultados y JP solicita cambios con evidencia, remanente y ventana de uso. La certificación paralela origina R8-31; el refuerzo de calidad, R8-32; la captura de trazas, R8-24; y la separación de equipos mantiene presión sobre R8-11.
+Si la probabilidad disminuyera un nivel, el registro conjunto residual sería 23.503,37 HH, frente a las 29.647,18 HH iniciales. Esta hipótesis no acredita eficacia ni permite liberar automáticamente la diferencia de 6.143,81 HH. CAL comprueba resultados y JP solicita cambios con evidencia, remanente y ventana de uso. La certificación paralela origina R8-31; el refuerzo de calidad, R8-32; la captura de trazas, R8-24; y la separación de equipos mantiene presión sobre R8-11.
 
 ### 8.3.2 Reservas y cronograma
 
-La reserva de contingencia cubre los riesgos identificados: **35.219,98 HH**, el 18,50 % de las 190.366 HH base. La capacidad protegida sólo se descuenta cuando coinciden los meses 13–20, la Etapa 1 y los perfiles DES/CAL. La matriz actual sitúa los paquetes de R8-02 y R8-04 antes del mes 13, y los de R8-14 en la Etapa 2. No demuestra absorción por capacidad protegida; por eso requiere **35.219,98 HH adicionales**. Las 3.072 HH continúan protegidas para correcciones E1 futuras, sin prestarse a E2.
+La reserva de contingencia cubre los riesgos identificados: **29.647,18 HH**, el 15,57 % de las 190.366 HH base de los paquetes. La capacidad protegida E1 sólo se descuenta cuando coinciden los meses 13–20, la Etapa 1 y los perfiles DES/CAL; los paquetes de R8-02 y R8-04 terminan antes del mes 13 y los de R8-14 son trabajo de la Etapa 2, de modo que no se descuenta nada y las 3.072 HH quedan protegidas para correcciones futuras de la Etapa 1, sin prestarse a la Etapa 2.
 
-La Tabla 8.6 resume los períodos y la Tabla D.2 detalla cada mes y perfil. La capacidad adicional es una necesidad calculada que todavía no está incorporada en las 202.774 HH del T-15. Su integración exigiría conciliar 237.993,98 HH con la dotación y las ventanas, conservando los 56 meses contractuales.
+La Tabla 8.6 resume la contingencia por período; la Tabla D.2 la detalla por mes y perfil. El T-15, sección 4.5, la refleja en el plan: compara, período a período, el peak de personas equivalentes adicionales con la dotación. Toda la contingencia cabe en la dotación declarada, salvo implantación en los meses 15 y 20, donde la extensión de la marcha blanca (R8-18) se cubre con la opción de hasta 8 personas adicionales del contrato de implantación (E8-14).
 
-**Tabla 8.6 — Contingencia adicional por período, HH. Fuente: D.2.**
+**Tabla 8.6 — Contingencia por período, HH. Fuente: Anexo 8.D, Tabla D.2.**
 
-| Período | HH adicionales |
+| Período | HH de contingencia |
 | --- | --- |
 | Meses 1–6 | 5.149,18 |
 | Meses 7–12 | 5.104,75 |
-| Meses 13–15 | 4.445,38 |
-| Meses 16–21 | 5.292,88 |
-| Meses 22–33 | 5.228,07 |
-| Meses 34–56 | 9.999,72 |
-| Total | 35.219,98 |
+| Meses 13–15 | 4.056,58 |
+| Meses 16–21 | 4.503,76 |
+| Meses 22–33 | 3.720,39 |
+| Meses 34–56 | 7.112,52 |
+| Total | 29.647,18 |
 
 La distribución mantiene reserva hasta el mes 56. Cada cargo identifica evento, paquete, etapa, perfil, mes, HH y evidencia para impedir el doble consumo. Sólo una misma corrección comparte cargo; el residual hipotético no se libera sin cierre y autorización.
 
-La reserva de gestión propuesta es de **400 HH adicionales: 240 DES y 160 CAL**, separadas de contingencia y fuera de la línea base. La autoriza el Comité Ejecutivo para un imprevisto adicional dimensionado con C-01/C-02, sin atribuir antecedentes históricos a LafroX. Con capacidad adicional de 256 DES y 128 CAL al mes, requiere 1,25 meses en paralelo; completarla en un mes exige otras 32 HH CAL. Esa capacidad no consume la protección E1 ni se presenta como contratación acreditada.
+La reserva de gestión es de **1.600 HH**, separada de la contingencia y fuera de la línea base. Cubre un evento que el registro no identifica, dimensionado como rehacer un módulo de clase D (960 HH de desarrollo), su integración (480 HH) y una certificación (160 HH), con las unidades del T-15, sección 4.1. Con 8 desarrolladores y 4 evaluadores adicionales toma 0,94 meses de desarrollo y 1,25 de integración y certificación, unos 2,2 meses en secuencia. La autoriza el Comité Ejecutivo y obliga a actualizar la línea base; un riesgo identificado nunca se carga a esta reserva.
 
-La reserva de cronograma se contrasta con el pronóstico y los límites, resolviendo H2, H8 y D-31 según el Anexo 8.E. Las cuatro semanas finales son evidencia obligatoria. La valorización y el flujo monetario corresponden a la Oferta Económica (BA Art. 50.2); el flujo técnico por mes y perfil aparece en la Tabla D.2.
+La reserva de cronograma son los días hábiles entre la entrega programada de cada hito y su fecha límite, de 4 a 35 (T-15, Tabla 5.2). Las cuatro semanas finales de cada marcha blanca son evidencia obligatoria y no aportan reserva. La valorización y el flujo monetario de las reservas corresponden a la Oferta Económica (BA Art. 50.2).
 
 ### 8.3.3 Factibilidad y aceptación
 
-El Anexo 8.E registra las condiciones de evidencia: productividad/dotación, secuencias diarias y plazos de revisión/subsanación del Art. 18.3, fecha contractual, continuidad de 96 despachos, RPO remoto, atención y evidencia láctea. La coordinación de reserva y retención de INT-03/04 (SD4, apartado 4.1.4.4 y Anexo 4-G) está dimensionada en el Anexo 4-I, Tabla A.10, y el Anexo 4-W, Tablas A.32 y A.33, con un máximo de cuatro mensajes por línea. La retención consumida no se libera y esa holgura cubre líneas repartidas entre lotes o sitios. AL-STOCK-01 mide la proporción de líneas con más de una retención antes del H4. Las pruebas 3.8.4 y 3.9.3 verifican la carga y el drenaje, sin sumar la coordinación al drenaje tras un corte. El compromiso RPO ≤15 min del SD4, sección 4.2.5.1, se verifica por escenario sobre fibra, LTE y Starlink. La falla simultánea de los tres caminos seguida de la destrucción del sitio antes de reponer alguno es el riesgo residual declarado en SD4 4.3.2.4 (RT-02.11). R8-05 lo trata con alarmas de retraso de replicación a los 5 y 15 min, reposición del enlace por el proveedor, preemisión de guías al cerrar la carga y conservación local en el NAS WORM de Talca. AL-DR-01 mide RPO/RTO antes de H5/H10. Si el NAS se destruye con el sitio, sólo queda la última copia remota consistente: las medidas locales no demuestran por sí solas una pérdida de datos de 15 minutos o menos. RT-02.11 no exime de RT-07.04; E8-05 exige resolver y demostrar esa frontera.
+El Anexo 8.E registra las condiciones de evidencia: productividad/dotación, secuencias diarias y plazos de revisión/subsanación del Art. 18.3, fecha contractual, continuidad de 96 despachos, RPO remoto, atención y evidencia láctea. La coordinación de reserva y retención de INT-03/04 (SD4, apartado 4.1.4.4 y Anexo 4-G) está dimensionada en el Anexo 4-I, Tabla A.10, y el Anexo 4-W, Tablas A.32 y A.33, con un máximo de cuatro mensajes por línea. La retención consumida no se libera y esa holgura cubre líneas repartidas entre lotes o sitios. AL-STOCK-01 mide la proporción de líneas con más de una retención antes del H4. Las pruebas 3.8.4 y 3.9.3 verifican la carga y el drenaje, sin sumar la coordinación al drenaje tras un corte. El compromiso RPO ≤15 min del SD4, sección 4.2.5.1, se verifica por escenario sobre fibra, LTE y Starlink. La falla simultánea de los tres caminos seguida de la destrucción del sitio antes de reponer alguno es el riesgo residual declarado en SD4 4.3.2.4 (RT-02.11). R8-05 lo trata con alarmas de retraso de replicación a los 5 y 15 min, reposición del enlace por el proveedor, preemisión de guías al cerrar la carga y conservación local en el NAS WORM de Talca. AL-DR-01 mide RPO/RTO antes de H5/H10. Si el NAS se destruye con el sitio, sólo queda la última copia remota consistente: las medidas locales no demuestran por sí solas una pérdida de datos de 15 minutos o menos. Por eso E8-05 exige demostrar en AL-DR-01 qué copia remota sobrevive y en qué frontera se cumple el RPO de 15 minutos (RT-07.04), junto con el tratamiento del riesgo residual (RT-02.11).
 
-El retiro sanitario debe identificar a los clientes afectados con evidencia en menos de dos horas; los 85 minutos de diseño del SD5 no constituyen un ensayo aprobado. E8-13 a E8-16 establecen las condiciones de calendario y capacidad. No se autoriza corte sin continuidad medida ni aceptación sin las seis condiciones simultáneas del Art. 17.3 y acta según Art. 18. La suspensión del proveedor de lácteos, de marzo a septiembre de 2026, es antecedente ocurrido. La consulta V-13 del SD3 (Anexo 3.H) precisa en el mes 1, con el CLIENTE y el proveedor, qué evidencia de trazabilidad restablece la relación, y la Etapa 1 prioriza esa trazabilidad; la restitución depende del proveedor. La propuesta queda sujeta a las condiciones de cierre del Anexo 8.E, cada una con responsable, hito límite y evidencia; ninguna se da por cumplida sin las decisiones, pruebas y actas que allí se indican.
+El retiro sanitario debe identificar a los clientes afectados con evidencia en menos de dos horas; los 85 minutos de diseño del SD5 no constituyen un ensayo aprobado. E8-13 y E8-14 establecen las condiciones de calendario y capacidad. No se autoriza corte sin continuidad medida ni aceptación sin las seis condiciones simultáneas del Art. 17.3 y acta según Art. 18. La suspensión del proveedor de lácteos, de marzo a septiembre de 2026, es antecedente ocurrido. La consulta V-13 del SD3 (Anexo 3.H) precisa en el mes 1, con el CLIENTE y el proveedor, qué evidencia de trazabilidad restablece la relación, y la Etapa 1 prioriza esa trazabilidad; la restitución depende del proveedor. La propuesta queda sujeta a las condiciones de cierre del Anexo 8.E, cada una con responsable, hito límite y evidencia; ninguna se da por cumplida sin las decisiones, pruebas y actas que allí se indican.
 
 ## Referencias
 
-Las fuentes citadas en este documento se listan a continuación en formato APA 7.ª edición.
+Las fuentes citadas en este documento se listan en formato APA 7.ª edición. Las Bases se citan en el texto con su documento y el artículo, capítulo, sección o código del requisito.
 
-- Distribuidora Puelche S.A. (2026a). *Bases Administrativas de Licitación N.º TFEP-01/2026*, artículos 17, 18 y 50.2, y Formularios T-16 y T-22.
-- Distribuidora Puelche S.A. (2026b). *Bases Técnicas Transversales de Licitación N.º TFEP-01/2026*, RT-07.04, RT-07.07, RT-19.04, RT-21.06, RT-21.07 y RT-26.04.
-- Distribuidora Puelche S.A. (2026c). *Caso 02: Logística*, capítulos 10 a 14 y requisitos específicos citados.
-- Distribuidora Puelche S.A. (2026d). *Aclaraciones de la Licitación N.º TFEP-01/2026*, secciones 2, 4, 6, 7 y 11 (Capítulo 8).
+- Distribuidora Puelche S.A. (2026a). *Bases Administrativas de Licitación N.º TFEP-01/2026: Contratación de Solución Integral de Software y Servicios de Operación*.
+- Distribuidora Puelche S.A. (2026b). *Bases Técnicas Transversales de Licitación N.º TFEP-01/2026*.
+- Distribuidora Puelche S.A. (2026c). *Caso 02: Logística. Especificaciones del problema y operación de Distribuidora Puelche S.A.*
+- Distribuidora Puelche S.A. (2026d). *Aclaraciones de la Licitación N.º TFEP-01/2026*.
 - LafroX. (2026). Subdocumentos 1 a 7 y 13, con los anexos y formularios citados.
 - International Electrotechnical Commission. (2018). *IEC 60812:2018 Failure modes and effects analysis (FMEA and FMECA)*. IEC.
 - International Organization for Standardization. (2018). *ISO 31000:2018 Risk management — Guidelines*. ISO.
