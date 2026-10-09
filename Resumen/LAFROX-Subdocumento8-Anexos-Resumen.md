@@ -16,7 +16,7 @@ Desarrolla las 32 fichas R8-01–R8-32: causa, evento, consecuencia, P/I/D, hori
 
 ## Anexo 8.B — FMEA y exposición inicial
 
-B.1 ordena exposición y NPR de FMEA; B.2 convierte probabilidad e impacto calibrados en HH. El total esperado es 15.076 HH; cinco riesgos concentran 67,7 %. Las probabilidades proceden de juicio calibrado, no de frecuencias observadas. El redondeo de filas no sustituye al cálculo del total sin redondear.
+B.1 ordena exposición y NPR de FMEA; B.2 convierte probabilidad e impacto calibrados en HH. La suma individual es 30.396,36 HH y el registro conjunto 29.647,18 HH; R8-22 y R8-11 concentran el 66,8 %. Las probabilidades proceden de juicio calibrado, no de frecuencias observadas.
 
 **Cuándo consultarlo:** para priorizar tratamiento y seguir la base de la contingencia.
 
@@ -24,7 +24,7 @@ B.1 ordena exposición y NPR de FMEA; B.2 convierte probabilidad e impacto calib
 
 ## Anexo 8.C — Escenarios deterministas y costo-beneficio
 
-Distingue escenarios deterministas, cocientes prevención/retrabajo y simulación. La Tabla C.5 calcula el costo-beneficio de los 22 riesgos críticos como en el PMBOK: ahorro esperado (valor esperado inicial menos residual) dividido por las HH del paquete de control. Sólo R8-11, R8-14 y R8-18 superan 1; los otros 18 se aplican por la regla del nivel crítico, porque el impacto en HH no incluye detener el despacho ni atrasar un hito. Usa 128 HH efectivas por persona-mes; en paralelo toma el máximo de duraciones y en secuencia suma. C.3 simula 5.000 veces la red de 163 paquetes con entregable, con duraciones PERT y eventos de riesgo. Marcha blanca, operación y algunos hitos quedan fuera de ese mismo modelo.
+Distingue escenarios deterministas, costo-beneficio y simulación. La Tabla C.5 calcula el costo-beneficio de las 32 respuestas como en el PMBOK: ahorro esperado (valor esperado inicial menos residual) dividido por las HH del paquete de control. R8-11, R8-14, R8-18, R8-12 y R8-32 superan 1; los demás controles se aplican por sanidad, continuidad, datos o aceptación obligatoria. C.3 simula 5.000 veces las 564 actividades del T-15 con duraciones PERT, eventos de riesgo y nivelación diaria, y mide además la preparación de las marchas blancas y la sensibilidad por riesgo.
 
 **Cuándo consultarlo:** para entender qué supone una demora o probabilidad calculada y cuáles son sus límites.
 
@@ -32,7 +32,7 @@ Distingue escenarios deterministas, cocientes prevención/retrabajo y simulació
 
 ## Anexo 8.D — Reservas, autorización y programación
 
-Define autorización y registro de consumo por riesgo, ventana y perfil. La contingencia forma parte de la línea base y se libera al cerrar un riesgo o al verificar su control, hasta 4.273 HH; la de gestión exige actualizar la línea base. Las 3.072 HH protegidas E1 ya están incluidas en T-15; solo 1.853 HH esperadas de R8-02/04/14 son absorbibles allí. La reserva adicional es 13.223 HH. Soporte puente es servicio base, no reserva; un mismo defecto se carga una sola vez.
+Define autorización y registro de consumo por riesgo, ventana y perfil. La contingencia es de 29.647,18 HH y su reparto mensual está en la Tabla D.2; el T-15, sección 4.5, la compara con la dotación. Ningún riesgo es absorbible por las 3.072 HH protegidas de la Etapa 1. La gestión es de 1.600 HH y exige actualizar la línea base. Soporte puente es servicio base, no reserva; un mismo defecto se carga una sola vez.
 
 **Cuándo consultarlo:** antes de asignar contingencia o prestar recursos de corrección entre etapas.
 

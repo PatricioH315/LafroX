@@ -4,14 +4,14 @@ Los anexos desarrollan el registro de 32 amenazas, la evaluación FMEA, la cuant
 
 ## Anexo 8.A — Registro ampliado de amenazas
 
-Las fichas aplican el proceso de la norma ISO 31000 (International Organization for Standardization [ISO], 2018) que exige el RT-19.04 (Distribuidora Puelche S.A., 2026b), sobre las restricciones del Caso 02 (Distribuidora Puelche S.A., 2026c, Cap. 10) y los temas obligatorios del índice (Distribuidora Puelche S.A., 2026d, sección 11). Cada una se ancla en un subdocumento de la oferta (LafroX, 2026). P, I y D son juicios ordinales iniciales según la sección 8.1.3 del SD8: la causa descrita sustenta P, la consecuencia sustenta I y la forma de detección sustenta D. El cierre de cada ficha exige la evidencia indicada en ella, y los vacíos actuales se distinguen de los eventos inciertos en el Anexo 8.E. Toda ficha se sigue semanalmente y en cada comité, y a diario durante la marcha blanca o la operación afectadas; la eficacia residual exige evidencia. El residual hipotético de C.5 no libera automáticamente capacidad.
+Las fichas aplican el proceso de la norma ISO 31000 (International Organization for Standardization [ISO], 2018) que exige el RT-19.04 (Distribuidora Puelche S.A., 2026b), sobre las restricciones del Caso 02 (Distribuidora Puelche S.A., 2026c, Cap. 10) y los temas obligatorios del índice (Distribuidora Puelche S.A., 2026d, sección 11). Cada una se ancla en un subdocumento de la oferta (LafroX, 2026). P, I y D son juicios ordinales iniciales según la sección 8.1.3 del SD8: la causa descrita sustenta P, la consecuencia sustenta I y la forma de detección sustenta D. El cierre de cada ficha exige la evidencia indicada en ella, y los vacíos actuales se distinguen de los eventos inciertos en el Anexo 8.E. Toda ficha se sigue semanalmente y en cada comité, y a diario durante la marcha blanca o la operación afectadas. Tres reglas valen para todas las fichas. El residual hipotético baja P un nivel como supuesto de comparación, no como eficacia medida; sólo la evidencia, el cierre y la autorización ajustan la reserva efectiva (Anexo 8.D). La Tabla C.5 cuenta una sola vez los controles compartidos. Y la contingencia protege la obligación cuando el control falla: retirar alcance obligatorio nunca es una alternativa conforme.
 
 RBS significa estructura de desglose de riesgos y NPR, número de prioridad. G-CAP/G-INT son cargos de efecto compartido definidos en B.2, no riesgos nuevos. Las fichas usan los códigos siguientes.
 
 | Código | Significado | Dónde se define |
 | --- | --- | --- |
 | R8-01 a R8-32 | Riesgos de este plan | Este anexo |
-| E8-01 a E8-16 | Condiciones de evidencia actuales | Anexo 8.E |
+| E8-01 a E8-14 | Condiciones de evidencia actuales | Anexo 8.E |
 | H1 a H12 | Hitos contractuales | SD7, Tabla 7.5 |
 | E1, E2 | Etapa 1 y Etapa 2 | Bases Administrativas, Art. 17° |
 | F y F−28 días | Fecha de paso a producción de una etapa e inicio de sus cuatro semanas finales de marcha blanca | Bases Administrativas, Art. 17.3 |
@@ -43,10 +43,10 @@ Emisión tributaria concentrada en ERP; si falta una guía o cambia la carga, po
 - Contingencia: Conservar versión local probada y DTE válidos; Operaciones decide continuidad autorizada con ERP. No emitir documentos alternativos ni reemplazar despacho por papel.
 - Evidencia de cierre: Ensayo de 96 salidas sin interrupción, con caída ERP/carga modificada, sin pérdida ni duplicación.
 - Estrategia: Mitigar, porque LafroX controla la causa y el control reduce la probabilidad.
-- Efecto esperado y residual: VE individual 100,80 HH; escenario hipotético P=40,00 %, 67,20 HH residuales. Bajar P un nivel es supuesto de comparación, no eficacia medida. Sólo evidencia, cierre y autorización ajustan reserva efectiva (8.D).
+- Efecto esperado y residual: VE individual 100,80 HH; residual hipotético con P = 40,00 %: 67,20 HH.
 - Riesgo secundario: preemitir guías de noche obliga a reemitirlas si la carga cambia, lo que la conciliación carga–guía debe cubrir.
-- Costo-beneficio técnico: controles 4.1.2; 80,00 HH de T-15; ahorro individual hipotético 33,60 HH; retorno 0,42. C.5 cuenta controles compartidos una vez. La contingencia protege la obligación cuando falla el control; retirar alcance obligatorio no es alternativa conforme.
-- Base cuantitativa: paquetes, meses, perfiles y probabilidad en B.3; cargo Cargo propio.
+- Costo-beneficio técnico: control 4.1.2, 80,00 HH del T-15; ahorro hipotético 33,60 HH; retorno 0,42.
+- Base cuantitativa: Tabla B.3; cargo propio.
 
 ### R8-02 — Doble reserva o custodia en la coordinación de reserva
 
@@ -62,10 +62,10 @@ Cortes/reintentos podrían confirmar sin acuse durable o repetir descuentos, alt
 - Contingencia: Bloquear confirmaciones ambiguas y conciliar colas con un único escritor; continuidad sólo sin degradar despacho.
 - Evidencia de cierre: AL-STOCK-01/AL-ACT-01 con cero doble descuento/custodia.
 - Estrategia: Mitigar, porque LafroX controla la causa y el control reduce la probabilidad.
-- Efecto esperado y residual: VE individual 460,80 HH; escenario hipotético P=40,00 %, 307,20 HH residuales. Bajar P un nivel es supuesto de comparación, no eficacia medida. Sólo evidencia, cierre y autorización ajustan reserva efectiva (8.D).
+- Efecto esperado y residual: VE individual 460,80 HH; residual hipotético con P = 40,00 %: 307,20 HH.
 - Riesgo secundario: bloquear las confirmaciones ambiguas puede demorar pedidos durante un corte; se mide en AL-STOCK-01.
-- Costo-beneficio técnico: controles 3.8.1; 160,00 HH de T-15; ahorro individual hipotético 153,60 HH; retorno 0,96. C.5 cuenta controles compartidos una vez. La contingencia protege la obligación cuando falla el control; retirar alcance obligatorio no es alternativa conforme.
-- Base cuantitativa: paquetes, meses, perfiles y probabilidad en B.3; cargo Cargo propio.
+- Costo-beneficio técnico: control 3.8.1, 160,00 HH del T-15; ahorro hipotético 153,60 HH; retorno 0,96.
+- Base cuantitativa: Tabla B.3; cargo propio.
 
 ### R8-03 — CD no sostiene 24 horas sin WAN
 
@@ -81,10 +81,10 @@ Dependencias remotas ocultas podrían impedir recibir, preparar o despachar dura
 - Contingencia: Mantener autoridad local probada y aislar dependencia; no aprobar corte sin continuidad.
 - Evidencia de cierre: 24 horas de operación completa y drenaje sin diferencias inexplicadas.
 - Estrategia: Mitigar, porque LafroX controla la causa y el control reduce la probabilidad.
-- Efecto esperado y residual: VE individual 96,00 HH; escenario hipotético P=20,00 %, 48,00 HH residuales. Bajar P un nivel es supuesto de comparación, no eficacia medida. Sólo evidencia, cierre y autorización ajustan reserva efectiva (8.D).
-- Riesgo secundario: no se identifica.
-- Costo-beneficio técnico: controles 6.6.3; 160,00 HH de T-15; ahorro individual hipotético 48,00 HH; retorno 0,30. C.5 cuenta controles compartidos una vez. La contingencia protege la obligación cuando falla el control; retirar alcance obligatorio no es alternativa conforme.
-- Base cuantitativa: paquetes, meses, perfiles y probabilidad en B.3; cargo Cargo propio.
+- Efecto esperado y residual: VE individual 96,00 HH; residual hipotético con P = 20,00 %: 48,00 HH.
+- Riesgo secundario: ensayar 24 horas sin WAN en un CD real puede afectar la operación del día; se ejecuta en un día permitido y con reversión preparada.
+- Costo-beneficio técnico: control 6.6.3, 160,00 HH del T-15; ahorro hipotético 48,00 HH; retorno 0,30.
+- Base cuantitativa: Tabla B.3; cargo propio.
 
 ### R8-04 — Pérdida o duplicación tras 14 horas offline
 
@@ -100,10 +100,10 @@ Dispositivos/reintentos podrían perder pedidos, entregas o cobros al reconectar
 - Contingencia: Retener registros durables y bloquear confirmaciones ambiguas sin doble digitación.
 - Evidencia de cierre: Registros/cobros completos y únicos al reconectar.
 - Estrategia: Mitigar, porque LafroX controla la causa y el control reduce la probabilidad.
-- Efecto esperado y residual: VE individual 384,00 HH; escenario hipotético P=40,00 %, 256,00 HH residuales. Bajar P un nivel es supuesto de comparación, no eficacia medida. Sólo evidencia, cierre y autorización ajustan reserva efectiva (8.D).
-- Riesgo secundario: no se identifica.
-- Costo-beneficio técnico: controles 3.8.3; 320,00 HH de T-15; ahorro individual hipotético 128,00 HH; retorno 0,40. C.5 cuenta controles compartidos una vez. La contingencia protege la obligación cuando falla el control; retirar alcance obligatorio no es alternativa conforme.
-- Base cuantitativa: paquetes, meses, perfiles y probabilidad en B.3; cargo Cargo propio.
+- Efecto esperado y residual: VE individual 384,00 HH; residual hipotético con P = 40,00 %: 256,00 HH.
+- Riesgo secundario: bloquear las confirmaciones ambiguas al reconectar puede retrasar la rendición del conductor; el retraso se mide en la conciliación diaria.
+- Costo-beneficio técnico: control 3.8.3, 320,00 HH del T-15; ahorro hipotético 128,00 HH; retorno 0,40.
+- Base cuantitativa: Tabla B.3; cargo propio.
 
 ### R8-05 — Pérdida del sitio supera RPO
 
@@ -117,12 +117,12 @@ La arquitectura compromete RPO ≤15 min con fibra, LTE y Starlink, a comprobar 
 - Plazo: Ensayar antes H5/H10.
 - Mitigación: Aplicar las medidas del SD4 (4.3.2.4): alarmas de retraso de replicación a los 5 y 15 min, reposición del enlace por el proveedor, preemisión de guías al cerrar la carga y conservación local en el NAS WORM de Talca.
 - Contingencia: Aplicar DR probado (imagen del WMS de Talca en Fargate de la región activa), recuperar la última copia remota consistente y usar el NAS sólo si sobrevivió al daño, y registrar el incidente con la pérdida efectiva.
-- Evidencia de cierre: AL-DR-01 mide RPO ≤15 min y RTO ≤4 h e identifica la copia sobreviviente. Un NAS destruido con el sitio no es recuperable. Tres caminos caídos y destrucción antes de replicar requieren demostrar la frontera remota o resolver la brecha contractual; RT-02.11 no exime de RT-07.04. Despacho por ensayo separado.
+- Evidencia de cierre: AL-DR-01 mide RPO ≤ 15 min y RTO ≤ 4 h e identifica la copia remota que sobrevive cuando el NAS se destruye con el sitio; con ella se demuestra la frontera en que se cumple el RPO (RT-07.04) junto con el tratamiento del riesgo residual (RT-02.11). La continuidad del despacho se prueba en un ensayo separado.
 - Estrategia: Mitigar, porque LafroX controla la causa y el control reduce la probabilidad.
-- Efecto esperado y residual: VE individual 180,48 HH; escenario hipotético P=20,00 %, 90,24 HH residuales. Bajar P un nivel es supuesto de comparación, no eficacia medida. Sólo evidencia, cierre y autorización ajustan reserva efectiva (8.D).
-- Riesgo secundario: no se identifica.
-- Costo-beneficio técnico: controles 3.8.5; 320,00 HH de T-15; ahorro individual hipotético 90,24 HH; retorno 0,28. C.5 cuenta controles compartidos una vez. La contingencia protege la obligación cuando falla el control; retirar alcance obligatorio no es alternativa conforme.
-- Base cuantitativa: paquetes, meses, perfiles y probabilidad en B.3; cargo Cargo propio.
+- Efecto esperado y residual: VE individual 180,48 HH; residual hipotético con P = 20,00 %: 90,24 HH.
+- Riesgo secundario: las alarmas de replicación a los 5 minutos pueden dispararse en cortes breves; su umbral se calibra en el ensayo AL-DR-01.
+- Costo-beneficio técnico: control 3.8.5, 320,00 HH del T-15; ahorro hipotético 90,24 HH; retorno 0,28.
+- Base cuantitativa: Tabla B.3; cargo propio.
 
 ### R8-06 — Carga y cola de la coordinación de reserva exceden capacidad
 
@@ -138,17 +138,17 @@ La coordinación de reserva y retención del SD4 (apartado 4.1.4.4 y Anexo 4-G) 
 - Contingencia: Priorizar transacciones y limitar tráfico auxiliar; escalar capacidad por arquitectura sin reducir volumen obligatorio.
 - Evidencia de cierre: Carga/latencias y drenaje conformes a multiplicidad medida.
 - Estrategia: Mitigar, porque LafroX controla la causa y el control reduce la probabilidad.
-- Efecto esperado y residual: VE individual 115,20 HH; escenario hipotético P=40,00 %, 76,80 HH residuales. Bajar P un nivel es supuesto de comparación, no eficacia medida. Sólo evidencia, cierre y autorización ajustan reserva efectiva (8.D).
-- Riesgo secundario: no se identifica.
-- Costo-beneficio técnico: controles 3.8.4; 320,00 HH de T-15; ahorro individual hipotético 38,40 HH; retorno 0,12. C.5 cuenta controles compartidos una vez. La contingencia protege la obligación cuando falla el control; retirar alcance obligatorio no es alternativa conforme.
-- Base cuantitativa: paquetes, meses, perfiles y probabilidad en B.3; cargo Cargo propio.
+- Efecto esperado y residual: VE individual 115,20 HH; residual hipotético con P = 40,00 %: 76,80 HH.
+- Riesgo secundario: limitar el tráfico auxiliar en el peak retrasa reportes y portales; la prioridad se declara por clase de transacción.
+- Costo-beneficio técnico: control 3.8.4, 320,00 HH del T-15; ahorro hipotético 38,40 HH; retorno 0,12.
+- Base cuantitativa: Tabla B.3; cargo propio.
 
 ### R8-07 — Ataque o exposición de datos críticos
 
 Móviles, portales y terceros podrían permitir acceso indebido, ransomware o alteración de lotes/cobros.
 
 - Análisis / categoría: Solución / Seguridad.
-- Fuente y EDT: BTT seguridad cap. 13; SD4 seguridad; 3.3.1, 3.8.6, 3.9.5, 8.1.5.
+- Fuente y EDT: BTT seguridad cap. 13; SD4 seguridad; 3.3.1, 3.8.6, 3.9.5, 8.2.2. El impacto se mide sobre el trabajo de seguridad que un incidente obliga a rehacer: controles construidos, pruebas ofensivas y mantenimiento de ciberseguridad. El monitoreo del SOC (8.1.5) es el control que detecta el evento y no se rehace.
 - Evaluación inicial: P=4; I=5; D=4; E=20; NPR=80. Horizonte: los 56 meses. P=4 porque portales, móviles e integraciones con terceros están expuestos de forma permanente; D=4 porque un acceso indebido puede reconocerse recién en la revisión del SIEM.
 - Responsable de respuesta: SEG, con su equipo y contrapartes de su ámbito.
 - Disparador: Vulnerabilidad crítica/alta o acceso entre clientes.
@@ -157,10 +157,10 @@ Móviles, portales y terceros podrían permitir acceso indebido, ransomware o al
 - Contingencia: Contener acceso, preservar evidencia y recuperar entorno limpio con continuidad probada.
 - Evidencia de cierre: Sin defectos de seguridad críticos/altos abiertos y prueba de recuperación.
 - Estrategia: Mitigar, porque LafroX controla la causa y el control reduce la probabilidad.
-- Efecto esperado y residual: VE individual 5.952,96 HH; escenario hipotético P=40,00 %, 3.968,64 HH residuales. Bajar P un nivel es supuesto de comparación, no eficacia medida. Sólo evidencia, cierre y autorización ajustan reserva efectiva (8.D).
-- Riesgo secundario: no se identifica.
-- Costo-beneficio técnico: controles 3.8.6; 160,00 HH de T-15; ahorro individual hipotético 1.984,32 HH; retorno 12,40. C.5 cuenta controles compartidos una vez. La contingencia protege la obligación cuando falla el control; retirar alcance obligatorio no es alternativa conforme.
-- Base cuantitativa: paquetes, meses, perfiles y probabilidad en B.3; cargo Cargo propio.
+- Efecto esperado y residual: VE individual 380,16 HH; residual hipotético con P = 40,00 %: 253,44 HH.
+- Riesgo secundario: las pruebas ofensivas sobre Preproducción pueden degradar un ambiente compartido; se programan fuera de las ventanas de certificación.
+- Costo-beneficio técnico: control 3.8.6, 160,00 HH del T-15; ahorro hipotético 126,72 HH; retorno 0,79.
+- Base cuantitativa: Tabla B.3; cargo propio.
 
 ### R8-08 — Bloqueo por proveedor
 
@@ -176,10 +176,10 @@ Dependencias AWS, mapas, mensajería y ERP podrían impedir sustitución o extra
 - Contingencia: Usar copias portables e interfaces desacopladas; alternativa mediante control de cambios.
 - Evidencia de cierre: Exportación/restauración reproducibles y documentación CLIENTE.
 - Estrategia: Mitigar, porque LafroX controla la causa y el control reduce la probabilidad.
-- Efecto esperado y residual: VE individual 352,00 HH; escenario hipotético P=20,00 %, 176,00 HH residuales. Bajar P un nivel es supuesto de comparación, no eficacia medida. Sólo evidencia, cierre y autorización ajustan reserva efectiva (8.D).
-- Riesgo secundario: no se identifica.
-- Costo-beneficio técnico: controles 1.7.1, 8.1.4, 9.2.1; 448,00 HH de T-15; ahorro individual hipotético 176,00 HH; retorno 0,39. C.5 cuenta controles compartidos una vez. La contingencia protege la obligación cuando falla el control; retirar alcance obligatorio no es alternativa conforme.
-- Base cuantitativa: paquetes, meses, perfiles y probabilidad en B.3; cargo Cargo propio.
+- Efecto esperado y residual: VE individual 352,00 HH; residual hipotético con P = 20,00 %: 176,00 HH.
+- Riesgo secundario: mantener formatos portables limita el uso de servicios administrados propios del proveedor; el Comité de Arquitectura decide cada excepción.
+- Costo-beneficio técnico: control 1.7.1, 8.1.4, 9.2.1, 448,00 HH del T-15; ahorro hipotético 176,00 HH; retorno 0,39.
+- Base cuantitativa: Tabla B.3; cargo propio.
 
 ### R8-09 — Obsolescencia durante 56 meses
 
@@ -195,10 +195,10 @@ Versiones o dispositivos podrían quedar sin soporte e introducir vulnerabilidad
 - Contingencia: Aislar componente y migrar a versión probada en fechas permitidas.
 - Evidencia de cierre: Versiones soportadas y regresión sin degradación E1/E2.
 - Estrategia: Mitigar, porque LafroX controla la causa y el control reduce la probabilidad.
-- Efecto esperado y residual: VE individual 552,96 HH; escenario hipotético P=40,00 %, 368,64 HH residuales. Bajar P un nivel es supuesto de comparación, no eficacia medida. Sólo evidencia, cierre y autorización ajustan reserva efectiva (8.D).
-- Riesgo secundario: no se identifica.
-- Costo-beneficio técnico: controles 8.2.5; 288,00 HH de T-15; ahorro individual hipotético 184,32 HH; retorno 0,64. C.5 cuenta controles compartidos una vez. La contingencia protege la obligación cuando falla el control; retirar alcance obligatorio no es alternativa conforme.
-- Base cuantitativa: paquetes, meses, perfiles y probabilidad en B.3; cargo Cargo propio.
+- Efecto esperado y residual: VE individual 552,96 HH; residual hipotético con P = 40,00 %: 368,64 HH.
+- Riesgo secundario: actualizar versiones durante el contrato puede introducir regresiones; cada actualización pasa la regresión de QA y respeta las fechas prohibidas.
+- Costo-beneficio técnico: control 8.2.5, 288,00 HH del T-15; ahorro hipotético 184,32 HH; retorno 0,64.
+- Base cuantitativa: Tabla B.3; cargo propio.
 
 ### R8-10 — Interfaces no documentadas exigen retrabajo
 
@@ -214,10 +214,10 @@ El levantamiento podría descubrir formatos/restricciones no representados en pr
 - Contingencia: Priorizar interfaz con capacidad adicional explícita; no usar reserva posterior a H5.
 - Evidencia de cierre: Contratos y pruebas positivas/negativas con volumen representativo.
 - Estrategia: Mitigar, porque LafroX controla la causa y el control reduce la probabilidad.
-- Efecto esperado y residual: VE individual 124,80 HH; escenario hipotético P=40,00 %, 83,20 HH residuales. Bajar P un nivel es supuesto de comparación, no eficacia medida. Sólo evidencia, cierre y autorización ajustan reserva efectiva (8.D).
-- Riesgo secundario: no se identifica.
-- Costo-beneficio técnico: controles 1.2.3; 80,00 HH de T-15; ahorro individual hipotético 41,60 HH; retorno 0,52. C.5 cuenta controles compartidos una vez. La contingencia protege la obligación cuando falla el control; retirar alcance obligatorio no es alternativa conforme.
-- Base cuantitativa: paquetes, meses, perfiles y probabilidad en B.3; cargo G-INT.
+- Efecto esperado y residual: VE individual 124,80 HH; residual hipotético con P = 40,00 %: 83,20 HH.
+- Riesgo secundario: dar capacidad adicional a una interfaz atrasada desplaza otra; JP registra el traslado contra la reserva del hito.
+- Costo-beneficio técnico: control 1.2.3, 80,00 HH del T-15; ahorro hipotético 41,60 HH; retorno 0,52.
+- Base cuantitativa: Tabla B.3; cargo compartido G-INT (Tabla B.2).
 
 ### R8-11 — Productividad o dotación inferior al modelo
 
@@ -233,10 +233,10 @@ Clases HH/128 HH efectivas no medidas podrían subestimar esfuerzo y especialist
 - Contingencia: Reordenar dentro de hitos y sustentar capacidad adicional; no prestar E1 a E2.
 - Evidencia de cierre: Asignaciones nominales y cero sobreasignación por subventana.
 - Estrategia: Mitigar, porque LafroX controla la causa y el control reduce la probabilidad.
-- Efecto esperado y residual: VE individual 8.107,20 HH; escenario hipotético P=40,00 %, 5.404,80 HH residuales. Bajar P un nivel es supuesto de comparación, no eficacia medida. Sólo evidencia, cierre y autorización ajustan reserva efectiva (8.D).
-- Riesgo secundario: no se identifica.
-- Costo-beneficio técnico: controles 1.3.4; 80,00 HH de T-15; ahorro individual hipotético 2.702,40 HH; retorno 33,78. C.5 cuenta controles compartidos una vez. La contingencia protege la obligación cuando falla el control; retirar alcance obligatorio no es alternativa conforme.
-- Base cuantitativa: paquetes, meses, perfiles y probabilidad en B.3; cargo G-CAP.
+- Efecto esperado y residual: VE individual 8.107,20 HH; residual hipotético con P = 40,00 %: 5.404,80 HH.
+- Riesgo secundario: reforzar el equipo con personas nuevas reduce la productividad inicial por la inducción; ese efecto se incorpora a la estimación por clase.
+- Costo-beneficio técnico: control 1.3.4, 80,00 HH del T-15; ahorro hipotético 2.702,40 HH; retorno 33,78.
+- Base cuantitativa: Tabla B.3; cargo compartido G-CAP (Tabla B.2).
 
 ### R8-12 — Contrapartes CLIENTE no disponibles
 
@@ -248,14 +248,14 @@ TI de cuatro personas y gerencias podrían no atender decisiones, pruebas o acta
 - Responsable de respuesta: JP, con su equipo y contrapartes de su ámbito.
 - Disparador: Decisión/revisión no atendida en fecha acordada.
 - Plazo: Agenda en el mes 1; cada comité quincenal.
-- Mitigación: Reservar agenda, responsable/suplente y material por decisión.
-- Contingencia: Escalar a patrocinador y avanzar tareas independientes; silencio no es aceptación.
+- Mitigación: Reservar agenda, responsable/suplente y material por decisión. En el H1 y el H8, cuya reserva (6 y 4 días hábiles) es menor que los diez días de subsanación del Art. 18.3, el borrador del entregable se revisa con la Contraparte Técnica una semana antes de la entrega formal, para que las observaciones lleguen antes de la revisión de diez días.
+- Contingencia: Escalar a patrocinador y avanzar tareas independientes; silencio no es aceptación. Si el H1 o el H8 reciben observaciones formales, el equipo del entregable (2 ARQ en el H1, 5 en el H8) subsana en cinco días hábiles, la mitad del plazo del Art. 18.3, para que el acta quede dentro del mes del Formulario E-25.
 - Evidencia de cierre: Decisiones/actas explícitas con responsables y fechas.
 - Estrategia: Escalar, porque la decisión depende del CLIENTE y excede la autoridad del JP.
-- Efecto esperado y residual: VE individual 486,72 HH; escenario hipotético P=40,00 %, 324,48 HH residuales. Bajar P un nivel es supuesto de comparación, no eficacia medida. Sólo evidencia, cierre y autorización ajustan reserva efectiva (8.D).
-- Riesgo secundario: no se identifica.
-- Costo-beneficio técnico: controles 1.1.1; 80,00 HH de T-15; ahorro individual hipotético 162,24 HH; retorno 2,03. C.5 cuenta controles compartidos una vez. La contingencia protege la obligación cuando falla el control; retirar alcance obligatorio no es alternativa conforme.
-- Base cuantitativa: paquetes, meses, perfiles y probabilidad en B.3; cargo Cargo propio.
+- Efecto esperado y residual: VE individual 486,72 HH; residual hipotético con P = 40,00 %: 324,48 HH.
+- Riesgo secundario: escalar decisiones al patrocinador puede tensionar la relación con la Contraparte Técnica; se escala sólo contra la agenda acordada en el mes 1.
+- Costo-beneficio técnico: control 1.1.1, 80,00 HH del T-15; ahorro hipotético 162,24 HH; retorno 2,03.
+- Base cuantitativa: Tabla B.3; cargo propio.
 
 ### R8-13 — Conocimiento de ruteo no transferido
 
@@ -271,10 +271,10 @@ Ausencia o jubilación podría ocurrir antes de capturar/validar excepciones ope
 - Contingencia: Suplente entrenado y reglas versionadas; evitar dependencia permanente de don Hugo.
 - Evidencia de cierre: Dos semanas sin planificador y OTIF conforme.
 - Estrategia: Mitigar, porque LafroX controla la causa y el control reduce la probabilidad.
-- Efecto esperado y residual: VE individual 83,20 HH; escenario hipotético P=20,00 %, 41,60 HH residuales. Bajar P un nivel es supuesto de comparación, no eficacia medida. Sólo evidencia, cierre y autorización ajustan reserva efectiva (8.D).
-- Riesgo secundario: no se identifica.
-- Costo-beneficio técnico: controles 1.2.2; 80,00 HH de T-15; ahorro individual hipotético 41,60 HH; retorno 0,52. C.5 cuenta controles compartidos una vez. La contingencia protege la obligación cuando falla el control; retirar alcance obligatorio no es alternativa conforme.
-- Base cuantitativa: paquetes, meses, perfiles y probabilidad en B.3; cargo Cargo propio.
+- Efecto esperado y residual: VE individual 83,20 HH; residual hipotético con P = 20,00 %: 41,60 HH.
+- Riesgo secundario: el suplente capacitado puede no tener la autoridad informal del planificador; IMP valida las reglas con los jefes de despacho.
+- Costo-beneficio técnico: control 1.2.2, 80,00 HH del T-15; ahorro hipotético 41,60 HH; retorno 0,52.
+- Base cuantitativa: Tabla B.3; cargo propio.
 
 ### R8-14 — E2 consume capacidad protegida E1
 
@@ -290,10 +290,10 @@ El solapamiento podría reasignar corrección E1, degradarla o retrasar E2.
 - Contingencia: Restituir E1 y justificar ampliación E2; no duplicar reserva.
 - Evidencia de cierre: Equipos/capacidad independientes y métricas E1 sostenidas.
 - Estrategia: Mitigar. Separar y vigilar equipos reduce la reasignación indebida; no elimina toda competencia por especialistas.
-- Efecto esperado y residual: VE individual 1.008,00 HH; escenario hipotético P=40,00 %, 672,00 HH residuales. Bajar P un nivel es supuesto de comparación, no eficacia medida. Sólo evidencia, cierre y autorización ajustan reserva efectiva (8.D).
+- Efecto esperado y residual: VE individual 1.008,00 HH; residual hipotético con P = 40,00 %: 672,00 HH.
 - Riesgo secundario: separar los equipos de la Etapa 1 y la Etapa 2 exige más personas a la vez y alimenta R8-11.
-- Costo-beneficio técnico: controles 1.3.4; 80,00 HH de T-15; ahorro individual hipotético 336,00 HH; retorno 4,20. C.5 cuenta controles compartidos una vez. La contingencia protege la obligación cuando falla el control; retirar alcance obligatorio no es alternativa conforme.
-- Base cuantitativa: paquetes, meses, perfiles y probabilidad en B.3; cargo G-CAP.
+- Costo-beneficio técnico: control 1.3.4, 80,00 HH del T-15; ahorro hipotético 336,00 HH; retorno 4,20.
+- Base cuantitativa: Tabla B.3; cargo compartido G-CAP (Tabla B.2).
 
 ### R8-15 — Perfiles EDI no certificados a tiempo
 
@@ -309,10 +309,10 @@ Dependencia de cadenas podría impedir activar todo el alcance antes de los 28 d
 - Contingencia: Carga asistida es contingencia auxiliar, no EDI; recuperar sin excluir cadenas.
 - Evidencia de cierre: Aprobaciones por cadena y 100 % del alcance durante cuatro semanas.
 - Estrategia: Mitigar, porque LafroX controla la causa y el control reduce la probabilidad.
-- Efecto esperado y residual: VE individual 345,60 HH; escenario hipotético P=40,00 %, 230,40 HH residuales. Bajar P un nivel es supuesto de comparación, no eficacia medida. Sólo evidencia, cierre y autorización ajustan reserva efectiva (8.D).
-- Riesgo secundario: no se identifica.
-- Costo-beneficio técnico: controles 2.1.4; 240,00 HH de T-15; ahorro individual hipotético 115,20 HH; retorno 0,48. C.5 cuenta controles compartidos una vez. La contingencia protege la obligación cuando falla el control; retirar alcance obligatorio no es alternativa conforme.
-- Base cuantitativa: paquetes, meses, perfiles y probabilidad en B.3; cargo G-INT.
+- Efecto esperado y residual: VE individual 345,60 HH; residual hipotético con P = 40,00 %: 230,40 HH.
+- Riesgo secundario: acordar pruebas tempranas con las cadenas exige ambientes EDI antes de terminar los módulos de la Etapa 2; se prueban contra el contrato de la interfaz.
+- Costo-beneficio técnico: control 2.1.4, 240,00 HH del T-15; ahorro hipotético 115,20 HH; retorno 0,48.
+- Base cuantitativa: Tabla B.3; cargo compartido G-INT (Tabla B.2).
 
 ### R8-16 — Migración altera saldos o pierde lotes
 
@@ -328,10 +328,10 @@ Datos WMS/planillas con vacíos podrían trasladar existencias incorrectas e inv
 - Contingencia: Retener corte y corregir origen; WMS sólo lectura, sin doble escritura.
 - Evidencia de cierre: Ensayos/corte con diferencias explicadas y trazabilidad completa.
 - Estrategia: Mitigar, porque LafroX controla la causa y el control reduce la probabilidad.
-- Efecto esperado y residual: VE individual 432,00 HH; escenario hipotético P=40,00 %, 288,00 HH residuales. Bajar P un nivel es supuesto de comparación, no eficacia medida. Sólo evidencia, cierre y autorización ajustan reserva efectiva (8.D).
-- Riesgo secundario: no se identifica.
-- Costo-beneficio técnico: controles 3.7.1; 480,00 HH de T-15; ahorro individual hipotético 144,00 HH; retorno 0,30. C.5 cuenta controles compartidos una vez. La contingencia protege la obligación cuando falla el control; retirar alcance obligatorio no es alternativa conforme.
-- Base cuantitativa: paquetes, meses, perfiles y probabilidad en B.3; cargo Cargo propio.
+- Efecto esperado y residual: VE individual 432,00 HH; residual hipotético con P = 40,00 %: 288,00 HH.
+- Riesgo secundario: retener el corte por diferencias acerca la migración al inicio de la marcha blanca; el corte se programa con margen antes del acta del H6.
+- Costo-beneficio técnico: control 3.7.1, 480,00 HH del T-15; ahorro hipotético 144,00 HH; retorno 0,30.
+- Base cuantitativa: Tabla B.3; cargo propio.
 
 ### R8-17 — Fecha efectiva elimina ventanas permitidas
 
@@ -347,10 +347,10 @@ Inicio distinto del supuesto podría coincidir con congelamientos o impedir la p
 - Contingencia: Reordenar dentro de períodos; escalar incompatibilidad sin presumir prórroga.
 - Evidencia de cierre: Calendario compatible con hitos y evidencia completa.
 - Estrategia: Escalar, porque la decisión depende del CLIENTE y excede la autoridad del JP.
-- Efecto esperado y residual: VE individual 43,20 HH; escenario hipotético P=40,00 %, 28,80 HH residuales. Bajar P un nivel es supuesto de comparación, no eficacia medida. Sólo evidencia, cierre y autorización ajustan reserva efectiva (8.D).
-- Riesgo secundario: no se identifica.
-- Costo-beneficio técnico: controles 1.1.3; 80,00 HH de T-15; ahorro individual hipotético 14,40 HH; retorno 0,18. C.5 cuenta controles compartidos una vez. La contingencia protege la obligación cuando falla el control; retirar alcance obligatorio no es alternativa conforme.
-- Base cuantitativa: paquetes, meses, perfiles y probabilidad en B.3; cargo Cargo propio.
+- Efecto esperado y residual: VE individual 43,20 HH; residual hipotético con P = 40,00 %: 28,80 HH.
+- Riesgo secundario: recalcular el calendario al confirmar la fecha puede mover olas a días prohibidos; JP lo revisa en el Comité de Proyecto antes de aprobar la línea base.
+- Costo-beneficio técnico: control 1.1.3, 80,00 HH del T-15; ahorro hipotético 14,40 HH; retorno 0,18.
+- Base cuantitativa: Tabla B.3; cargo propio.
 
 ### R8-18 — Marcha blanca no cumple seis condiciones
 
@@ -363,13 +363,13 @@ Defecto alto, volumen incompleto o diferencias podrían persistir en cierre e im
 - Disparador: Una condición falla o grupo fuera del alcance.
 - Plazo: Diario marcha blanca; H7/H12.
 - Mitigación: Activar todo antes de F−28 días y demostrar las seis condiciones simultáneas; en la Etapa 2, habilitar todo en agosto y demostrar la carga a 1,5 veces el peak con ambas etapas activas antes del H11 (3.9.3).
-- Contingencia: Extender a costo adjudicatario sin mover fases siguientes; no firmar cumplimiento ficticio.
+- Contingencia: Extender cuatro semanas el acompañamiento, a costo del adjudicatario y sin mover las fases siguientes, con la opción de hasta 8 personas adicionales del contrato de implantación (E8-14); no firmar cumplimiento ficticio.
 - Evidencia de cierre: 28 días completos, cero críticos/altos, conciliación, usuarios certificados y acta.
 - Estrategia: Mitigar, porque LafroX controla la causa y el control reduce la probabilidad.
-- Efecto esperado y residual: VE individual 2.956,80 HH; escenario hipotético P=40,00 %, 1.971,20 HH residuales. Bajar P un nivel es supuesto de comparación, no eficacia medida. Sólo evidencia, cierre y autorización ajustan reserva efectiva (8.D).
+- Efecto esperado y residual: VE individual 2.956,80 HH; residual hipotético con P = 40,00 %: 1.971,20 HH.
 - Riesgo secundario: extender una marcha blanca a costo del adjudicatario sin mover las fases siguientes presiona la capacidad del solapamiento (R8-14).
-- Costo-beneficio técnico: controles 4.1.1, 7.3.1, 7.3.2; 400,00 HH de T-15; ahorro individual hipotético 985,60 HH; retorno 2,46. C.5 cuenta controles compartidos una vez. La contingencia protege la obligación cuando falla el control; retirar alcance obligatorio no es alternativa conforme.
-- Base cuantitativa: paquetes, meses, perfiles y probabilidad en B.3; cargo Cargo propio.
+- Costo-beneficio técnico: control 4.1.1, 7.3.1, 7.3.2, 400,00 HH del T-15; ahorro hipotético 985,60 HH; retorno 2,46.
+- Base cuantitativa: Tabla B.3; cargo propio.
 
 ### R8-19 — Suministros o sala fuera de secuencia
 
@@ -385,10 +385,10 @@ LafroX especifica y compra la sala técnica, los racks, los servidores y los gab
 - Contingencia: Recuperar suministro/instalación con capacidad específica; no activar equipos inexistentes.
 - Evidencia de cierre: Actas y pruebas en secuencia sala, racks, borde y terreno.
 - Estrategia: Mitigar, porque LafroX controla la causa y el control reduce la probabilidad.
-- Efecto esperado y residual: VE individual 316,80 HH; escenario hipotético P=20,00 %, 158,40 HH residuales. Bajar P un nivel es supuesto de comparación, no eficacia medida. Sólo evidencia, cierre y autorización ajustan reserva efectiva (8.D).
-- Riesgo secundario: no se identifica.
-- Costo-beneficio técnico: controles 5.1.2, 5.1.3; 160,00 HH de T-15; ahorro individual hipotético 158,40 HH; retorno 0,99. C.5 cuenta controles compartidos una vez. La contingencia protege la obligación cuando falla el control; retirar alcance obligatorio no es alternativa conforme.
-- Base cuantitativa: paquetes, meses, perfiles y probabilidad en B.3; cargo Cargo propio.
+- Efecto esperado y residual: VE individual 316,80 HH; residual hipotético con P = 20,00 %: 158,40 HH.
+- Riesgo secundario: comprar con anticipación hace correr la garantía antes del uso; los plazos de garantía se registran con R8-09.
+- Costo-beneficio técnico: control 5.1.2, 5.1.3, 160,00 HH del T-15; ahorro hipotético 158,40 HH; retorno 0,99.
+- Base cuantitativa: Tabla B.3; cargo propio.
 
 ### R8-20 — Rotación y resistencia reducen adopción
 
@@ -404,10 +404,10 @@ Rotación 38 % de preparación y personal antiguo podrían dejar turnos sin usua
 - Contingencia: Retener/restaurar acompañamiento y repetir formación sin detener rutas.
 - Evidencia de cierre: Usuarios por perfil/turno certificados y uso sostenido.
 - Estrategia: Mitigar, porque LafroX controla la causa y el control reduce la probabilidad.
-- Efecto esperado y residual: VE individual 395,52 HH; escenario hipotético P=40,00 %, 263,68 HH residuales. Bajar P un nivel es supuesto de comparación, no eficacia medida. Sólo evidencia, cierre y autorización ajustan reserva efectiva (8.D).
-- Riesgo secundario: no se identifica.
-- Costo-beneficio técnico: controles 7.3.1, 7.3.2; 320,00 HH de T-15; ahorro individual hipotético 131,84 HH; retorno 0,41. C.5 cuenta controles compartidos una vez. La contingencia protege la obligación cuando falla el control; retirar alcance obligatorio no es alternativa conforme.
-- Base cuantitativa: paquetes, meses, perfiles y probabilidad en B.3; cargo Cargo propio.
+- Efecto esperado y residual: VE individual 395,52 HH; residual hipotético con P = 40,00 %: 263,68 HH.
+- Riesgo secundario: el tutor por turno retira a un preparador experimentado de su puesto; se compensa con relevos del acompañamiento.
+- Costo-beneficio técnico: control 7.3.1, 7.3.2, 320,00 HH del T-15; ahorro hipotético 131,84 HH; retorno 0,41.
+- Base cuantitativa: Tabla B.3; cargo propio.
 
 ### R8-21 — Transportistas o sindicato rechazan dispositivos
 
@@ -423,14 +423,14 @@ Vehículos externos y objeciones al GPS podrían impedir sensores o captura en r
 - Contingencia: Escalar acuerdos; atención auxiliar no reemplaza registro térmico ni excluye rutas.
 - Evidencia de cierre: Acuerdos/pruebas en toda flota y rutas requeridas.
 - Estrategia: Mitigar, porque LafroX controla la causa y el control reduce la probabilidad.
-- Efecto esperado y residual: VE individual 89,60 HH; escenario hipotético P=20,00 %, 44,80 HH residuales. Bajar P un nivel es supuesto de comparación, no eficacia medida. Sólo evidencia, cierre y autorización ajustan reserva efectiva (8.D).
-- Riesgo secundario: no se identifica.
-- Costo-beneficio técnico: controles 5.4.1, 5.4.2; 160,00 HH de T-15; ahorro individual hipotético 44,80 HH; retorno 0,28. C.5 cuenta controles compartidos una vez. La contingencia protege la obligación cuando falla el control; retirar alcance obligatorio no es alternativa conforme.
-- Base cuantitativa: paquetes, meses, perfiles y probabilidad en B.3; cargo Cargo propio.
+- Efecto esperado y residual: VE individual 89,60 HH; residual hipotético con P = 20,00 %: 44,80 HH.
+- Riesgo secundario: limitar la finalidad del GPS a la jornada y la ruta puede restringir datos útiles para el ruteo; la finalidad se acuerda con el CLIENTE.
+- Costo-beneficio técnico: control 5.4.1, 5.4.2, 160,00 HH del T-15; ahorro hipotético 44,80 HH; retorno 0,28.
+- Base cuantitativa: Tabla B.3; cargo propio.
 
 ### R8-22 — Mesa cubre horario pero no SLA
 
-Las posiciones de mesa dimensionadas con Erlang C podrían no bastar si la demanda o el tiempo de atención difieren del supuesto, y el modelo no verifica el abandono ≤5 % ni la resolución al primer contacto ≥70 %.
+La mesa base del T-15 (8.1.2) cubre los tres niveles de servicio hasta 2.283 contactos al mes con las posiciones dimensionadas con Erlang C (SD4, Anexo 4-W.7). Esas posiciones podrían no bastar si la demanda o el tiempo de atención superan el supuesto, y el modelo no verifica el abandono ≤ 5 % ni la resolución al primer contacto ≥ 70 %.
 
 - Análisis / categoría: Implantación / Operación.
 - Fuente y EDT: BTT RT-21.06/07; Caso RT-21.06; 4.2.2, 8.1.1, 8.1.2.
@@ -442,10 +442,10 @@ Las posiciones de mesa dimensionadas con Erlang C podrían no bastar si la deman
 - Contingencia: tercer agente valle y guardia especialista. Elegir el menor c por franja con A<c y SL(20 s) ≥80 % mediante Erlang C; asignar capacidad y medir abandono ≤5 % y resolución inicial ≥70 % aparte. Escalar incumplimiento inmediatamente.
 - Evidencia de cierre: Prueba de demanda/turnos con los tres SLA y horarios.
 - Estrategia: Aceptar activamente, porque se dimensiona una primera respuesta condicionada a demanda real; se reserva la contingencia con disparador.
-- Efecto esperado y residual: VE individual 11.699,40 HH; escenario hipotético P=60,00 %, 11.699,40 HH residuales. La aceptación activa conserva P. Sólo evidencia, cierre y autorización ajustan reserva efectiva (8.D).
-- Riesgo secundario: no se identifica.
-- Costo-beneficio técnico: controles medición dentro de 8.1.2; 0,00 HH de T-15; ahorro individual hipotético 0,00 HH; retorno no aplicable. C.5 cuenta controles compartidos una vez. La contingencia protege la obligación cuando falla el control; retirar alcance obligatorio no es alternativa conforme.
-- Base cuantitativa: paquetes, meses, perfiles y probabilidad en B.3; cargo Cargo propio.
+- Efecto esperado y residual: VE individual 11.699,40 HH; la aceptación activa conserva P = 60,00 %, por lo que el residual es igual al inicial.
+- Riesgo secundario: un tercer agente en las franjas valle baja la ocupación de la mesa; su permanencia se revisa con la demanda medida.
+- Costo-beneficio técnico: control medición dentro de 8.1.2, 0,00 HH del T-15; ahorro hipotético 0,00 HH; retorno no aplicable.
+- Base cuantitativa: Tabla B.3; cargo propio.
 
 ### R8-23 — Frío o sensores no producen evidencia íntegra
 
@@ -461,10 +461,10 @@ Las posiciones de mesa dimensionadas con Erlang C podrían no bastar si la deman
 - Contingencia: Calidad retiene lote sin evidencia y utiliza reemplazo probado.
 - Evidencia de cierre: Serie completa y asociada al lote; ensayo a −22 °C y sin señal.
 - Estrategia: Mitigar, porque LafroX controla la causa y el control reduce la probabilidad.
-- Efecto esperado y residual: VE individual 403,20 HH; escenario hipotético P=40,00 %, 268,80 HH residuales. Bajar P un nivel es supuesto de comparación, no eficacia medida. Sólo evidencia, cierre y autorización ajustan reserva efectiva (8.D).
-- Riesgo secundario: no se identifica.
-- Costo-beneficio técnico: controles 6.5.3; 160,00 HH de T-15; ahorro individual hipotético 134,40 HH; retorno 0,84. C.5 cuenta controles compartidos una vez. La contingencia protege la obligación cuando falla el control; retirar alcance obligatorio no es alternativa conforme.
-- Base cuantitativa: paquetes, meses, perfiles y probabilidad en B.3; cargo Cargo propio.
+- Efecto esperado y residual: VE individual 403,20 HH; residual hipotético con P = 40,00 %: 268,80 HH.
+- Riesgo secundario: calibrar los sensores los retira de servicio; se mantiene un stock de reemplazo probado.
+- Costo-beneficio técnico: control 6.5.3, 160,00 HH del T-15; ahorro hipotético 134,40 HH; retorno 0,84.
+- Base cuantitativa: Tabla B.3; cargo propio.
 
 ### R8-24 — Filtración en telemetría o reproducción
 
@@ -480,10 +480,10 @@ Datos de ubicación, clientes y cobros podrían circular sin minimización en tr
 - Contingencia: Suspender conjunto afectado, contener y producir muestra protegida.
 - Evidencia de cierre: Inspección de datos/permisos sin exposición indebida.
 - Estrategia: Mitigar, porque LafroX controla la causa y el control reduce la probabilidad.
-- Efecto esperado y residual: VE individual 192,00 HH; escenario hipotético P=20,00 %, 96,00 HH residuales. Bajar P un nivel es supuesto de comparación, no eficacia medida. Sólo evidencia, cierre y autorización ajustan reserva efectiva (8.D).
-- Riesgo secundario: no se identifica.
-- Costo-beneficio técnico: controles 3.8.6; 160,00 HH de T-15; ahorro individual hipotético 96,00 HH; retorno 0,60. C.5 cuenta controles compartidos una vez. La contingencia protege la obligación cuando falla el control; retirar alcance obligatorio no es alternativa conforme.
-- Base cuantitativa: paquetes, meses, perfiles y probabilidad en B.3; cargo Cargo propio.
+- Efecto esperado y residual: VE individual 192,00 HH; residual hipotético con P = 20,00 %: 96,00 HH.
+- Riesgo secundario: enmascarar los conjuntos de reproducción puede ocultar la causa de un incidente; CAL valida que el conjunto siga siendo útil (R8-26).
+- Costo-beneficio técnico: control 3.8.6, 160,00 HH del T-15; ahorro hipotético 96,00 HH; retorno 0,60.
+- Base cuantitativa: Tabla B.3; cargo propio.
 
 ### R8-25 — INN-01 no logra seguimiento posentrega
 
@@ -499,10 +499,10 @@ Los avisos podrían no confirmarse en la visita, porque el ritmo de reposición 
 - Contingencia: Degradar a aviso solo por vida útil remanente del lote, sin estimar el ritmo; mantener trazabilidad lote/entrega y escalar a Comercial.
 - Evidencia de cierre: Resultado frente a objetivo previo y decisión de adopción.
 - Estrategia: Mitigar, porque LafroX controla la causa y el control reduce la probabilidad.
-- Efecto esperado y residual: VE individual 67,20 HH; escenario hipotético P=40,00 %, 44,80 HH residuales. Bajar P un nivel es supuesto de comparación, no eficacia medida. Sólo evidencia, cierre y autorización ajustan reserva efectiva (8.D).
-- Riesgo secundario: no se identifica.
-- Costo-beneficio técnico: controles 3.10.1.4; 240,00 HH de T-15; ahorro individual hipotético 22,40 HH; retorno 0,09. C.5 cuenta controles compartidos una vez. La contingencia protege la obligación cuando falla el control; retirar alcance obligatorio no es alternativa conforme.
-- Base cuantitativa: paquetes, meses, perfiles y probabilidad en B.3; cargo Cargo propio.
+- Efecto esperado y residual: VE individual 67,20 HH; residual hipotético con P = 40,00 %: 44,80 HH.
+- Riesgo secundario: degradar el aviso a sólo vida útil reduce su valor comercial; Comercial decide si mantiene el piloto.
+- Costo-beneficio técnico: control 3.10.1.4, 240,00 HH del T-15; ahorro hipotético 22,40 HH; retorno 0,09.
+- Base cuantitativa: Tabla B.3; cargo propio.
 
 ### R8-26 — INN-02 no reproduce fallas relevantes
 
@@ -518,10 +518,10 @@ Registros incompletos podrían impedir reproducir incidentes offline y diagnosti
 - Contingencia: Conservar diagnóstico y regresión base con trazas protegidas.
 - Evidencia de cierre: Reproducción y diagnóstico contrastados.
 - Estrategia: Mitigar, porque LafroX controla la causa y el control reduce la probabilidad.
-- Efecto esperado y residual: VE individual 122,88 HH; escenario hipotético P=20,00 %, 61,44 HH residuales. Bajar P un nivel es supuesto de comparación, no eficacia medida. Sólo evidencia, cierre y autorización ajustan reserva efectiva (8.D).
+- Efecto esperado y residual: VE individual 122,88 HH; residual hipotético con P = 20,00 %: 61,44 HH.
 - Riesgo secundario: capturar evidencia de terreno crea el riesgo de filtración R8-24.
-- Costo-beneficio técnico: controles 3.10.2.4; 240,00 HH de T-15; ahorro individual hipotético 61,44 HH; retorno 0,26. C.5 cuenta controles compartidos una vez. La contingencia protege la obligación cuando falla el control; retirar alcance obligatorio no es alternativa conforme.
-- Base cuantitativa: paquetes, meses, perfiles y probabilidad en B.3; cargo Cargo propio.
+- Costo-beneficio técnico: control 3.10.2.4, 240,00 HH del T-15; ahorro hipotético 61,44 HH; retorno 0,26.
+- Base cuantitativa: Tabla B.3; cargo propio.
 
 ### R8-27 — INN-03 estima vida remanente insegura
 
@@ -537,10 +537,10 @@ Historia incompleta o mala calibración podría sugerir una vida útil no segura
 - Contingencia: Deshabilitar recomendación y mantener vencimiento/control sanitario.
 - Evidencia de cierre: Validación Calidad con trazabilidad modelo/datos.
 - Estrategia: Mitigar, porque LafroX controla la causa y el control reduce la probabilidad.
-- Efecto esperado y residual: VE individual 224,64 HH; escenario hipotético P=40,00 %, 149,76 HH residuales. Bajar P un nivel es supuesto de comparación, no eficacia medida. Sólo evidencia, cierre y autorización ajustan reserva efectiva (8.D).
+- Efecto esperado y residual: VE individual 224,64 HH; residual hipotético con P = 40,00 %: 149,76 HH.
 - Riesgo secundario: Operaciones podría leer la estimación como permiso para relajar la regla RNG-04.
-- Costo-beneficio técnico: controles 3.10.3.4; 240,00 HH de T-15; ahorro individual hipotético 74,88 HH; retorno 0,31. C.5 cuenta controles compartidos una vez. La contingencia protege la obligación cuando falla el control; retirar alcance obligatorio no es alternativa conforme.
-- Base cuantitativa: paquetes, meses, perfiles y probabilidad en B.3; cargo Cargo propio.
+- Costo-beneficio técnico: control 3.10.3.4, 240,00 HH del T-15; ahorro hipotético 74,88 HH; retorno 0,31.
+- Base cuantitativa: Tabla B.3; cargo propio.
 
 ### R8-28 — INN-04 medición variable genera disputa
 
@@ -556,10 +556,10 @@ Costo de servir incompleto podría distorsionar línea base/liquidación variabl
 - Contingencia: Mecanismo contractual de resolución y corrección; sin modificar SLA ni inventar tarifa.
 - Evidencia de cierre: Línea base y tres liquidaciones sombra reconciliadas.
 - Estrategia: Mitigar, porque LafroX controla la causa y el control reduce la probabilidad.
-- Efecto esperado y residual: VE individual 55,04 HH; escenario hipotético P=20,00 %, 27,52 HH residuales. Bajar P un nivel es supuesto de comparación, no eficacia medida. Sólo evidencia, cierre y autorización ajustan reserva efectiva (8.D).
-- Riesgo secundario: no se identifica.
-- Costo-beneficio técnico: controles 5.4.3; 80,00 HH de T-15; ahorro individual hipotético 27,52 HH; retorno 0,34. C.5 cuenta controles compartidos una vez. La contingencia protege la obligación cuando falla el control; retirar alcance obligatorio no es alternativa conforme.
-- Base cuantitativa: paquetes, meses, perfiles y probabilidad en B.3; cargo Cargo propio.
+- Efecto esperado y residual: VE individual 55,04 HH; residual hipotético con P = 20,00 %: 27,52 HH.
+- Riesgo secundario: las liquidaciones sombra exigen datos de costo antes del mes 21; DAT los prepara en el paquete 5.4.3.
+- Costo-beneficio técnico: control 5.4.3, 80,00 HH del T-15; ahorro hipotético 27,52 HH; retorno 0,34.
+- Base cuantitativa: Tabla B.3; cargo propio.
 
 ### R8-29 — INN-05 baja adopción de hoja del almacenero
 
@@ -575,10 +575,10 @@ La hoja podría no ser comprensible o útil y quedar sin uso. Causa secundaria: 
 - Contingencia: Retirar mejora opcional mediante gobierno manteniendo compromisos y canal obligatorio.
 - Evidencia de cierre: Utilidad/uso contrastados y decisión documentada.
 - Estrategia: Mitigar, porque LafroX controla la causa y el control reduce la probabilidad.
-- Efecto esperado y residual: VE individual 67,20 HH; escenario hipotético P=40,00 %, 44,80 HH residuales. Bajar P un nivel es supuesto de comparación, no eficacia medida. Sólo evidencia, cierre y autorización ajustan reserva efectiva (8.D).
-- Riesgo secundario: no se identifica.
-- Costo-beneficio técnico: controles 3.10.4.1, 8.3.6; 320,00 HH de T-15; ahorro individual hipotético 22,40 HH; retorno 0,07. C.5 cuenta controles compartidos una vez. La contingencia protege la obligación cuando falla el control; retirar alcance obligatorio no es alternativa conforme.
-- Base cuantitativa: paquetes, meses, perfiles y probabilidad en B.3; cargo Cargo propio.
+- Efecto esperado y residual: VE individual 67,20 HH; residual hipotético con P = 40,00 %: 44,80 HH.
+- Riesgo secundario: la alternativa en papel duplica la entrega de la hoja; se limita al piloto.
+- Costo-beneficio técnico: control 3.10.4.1, 8.3.6, 320,00 HH del T-15; ahorro hipotético 22,40 HH; retorno 0,07.
+- Base cuantitativa: Tabla B.3; cargo propio.
 
 ### R8-30 — Crecimiento o nuevo CD supera parametrización
 
@@ -594,10 +594,10 @@ CD eventual en 2030 o crecimiento distinto por sitio podría superar capacidades
 - Contingencia: Preparar ampliación con control de cambios; no declarar sitio incierto contratado.
 - Evidencia de cierre: Capacidad ensayada y alcance de nuevo sitio acordado.
 - Estrategia: Mitigar, porque LafroX controla la causa y el control reduce la probabilidad.
-- Efecto esperado y residual: VE individual 194,56 HH; escenario hipotético P=20,00 %, 97,28 HH residuales. Bajar P un nivel es supuesto de comparación, no eficacia medida. Sólo evidencia, cierre y autorización ajustan reserva efectiva (8.D).
-- Riesgo secundario: no se identifica.
-- Costo-beneficio técnico: controles 8.2.3; 1.152,00 HH de T-15; ahorro individual hipotético 97,28 HH; retorno 0,08. C.5 cuenta controles compartidos una vez. La contingencia protege la obligación cuando falla el control; retirar alcance obligatorio no es alternativa conforme.
-- Base cuantitativa: paquetes, meses, perfiles y probabilidad en B.3; cargo Cargo propio.
+- Efecto esperado y residual: VE individual 194,56 HH; residual hipotético con P = 20,00 %: 97,28 HH.
+- Riesgo secundario: ampliar capacidad por un crecimiento anticipado sobredimensiona la plataforma; la ampliación se decide con la proyección trimestral.
+- Costo-beneficio técnico: control 8.2.3, 1.152,00 HH del T-15; ahorro hipotético 97,28 HH; retorno 0,08.
+- Base cuantitativa: Tabla B.3; cargo propio.
 
 ### R8-31 — Observaciones de revisión obligan a repetir certificación paralela
 
@@ -613,10 +613,10 @@ La certificación de cada etapa empieza al terminar la prueba de integración, m
 - Contingencia: Repetir sólo los casos afectados, con cargo a la reserva del hito y a la contingencia de calidad.
 - Evidencia de cierre: Acta del H4/H9 sin observaciones abiertas sobre casos certificados.
 - Estrategia: Mitigar, porque LafroX controla la causa y el control reduce la probabilidad.
-- Efecto esperado y residual: VE individual 153,60 HH; escenario hipotético P=20,00 %, 76,80 HH residuales. Bajar P un nivel es supuesto de comparación, no eficacia medida. Sólo evidencia, cierre y autorización ajustan reserva efectiva (8.D).
+- Efecto esperado y residual: VE individual 153,60 HH; residual hipotético con P = 20,00 %: 76,80 HH.
 - Riesgo secundario: ninguno nuevo; R8-31 es a su vez el riesgo secundario de certificar en paralelo a la revisión del CLIENTE.
-- Costo-beneficio técnico: controles 3.8.1, 3.9.1; 320,00 HH de T-15; ahorro individual hipotético 76,80 HH; retorno 0,24. C.5 cuenta controles compartidos una vez. La contingencia protege la obligación cuando falla el control; retirar alcance obligatorio no es alternativa conforme.
-- Base cuantitativa: paquetes, meses, perfiles y probabilidad en B.3; cargo Cargo propio.
+- Costo-beneficio técnico: control 3.8.1, 3.9.1, 320,00 HH del T-15; ahorro hipotético 76,80 HH; retorno 0,24.
+- Base cuantitativa: Tabla B.3; cargo propio.
 
 ### R8-32 — Evaluadores subcontratados no disponibles para las certificaciones
 
@@ -632,10 +632,10 @@ La reserva ante el H5 y el H10 supone reforzar el equipo de calidad con evaluado
 - Contingencia: Reasignar evaluadores de la División de Calidad desde otros contratos o priorizar los casos críticos de aceptación.
 - Evidencia de cierre: Evaluadores asignados e inducidos al inicio de cada certificación.
 - Estrategia: Mitigar, porque LafroX controla la causa y el control reduce la probabilidad.
-- Efecto esperado y residual: VE individual 204,80 HH; escenario hipotético P=20,00 %, 102,40 HH residuales. Bajar P un nivel es supuesto de comparación, no eficacia medida. Sólo evidencia, cierre y autorización ajustan reserva efectiva (8.D).
+- Efecto esperado y residual: VE individual 204,80 HH; residual hipotético con P = 20,00 %: 102,40 HH.
 - Riesgo secundario: ninguno nuevo; R8-32 es a su vez el riesgo secundario de reforzar la calidad con evaluadores subcontratados.
-- Costo-beneficio técnico: controles 1.5.1; 80,00 HH de T-15; ahorro individual hipotético 102,40 HH; retorno 1,28. C.5 cuenta controles compartidos una vez. La contingencia protege la obligación cuando falla el control; retirar alcance obligatorio no es alternativa conforme.
-- Base cuantitativa: paquetes, meses, perfiles y probabilidad en B.3; cargo G-CAP.
+- Costo-beneficio técnico: control 1.5.1, 80,00 HH del T-15; ahorro hipotético 102,40 HH; retorno 1,28.
+- Base cuantitativa: Tabla B.3; cargo compartido G-CAP (Tabla B.2).
 
 ## Anexo 8.B — FMEA y exposición inicial
 
@@ -698,7 +698,6 @@ G-CAP (R8-11/14/32) y G-INT (R8-10/15) representan el mismo retrabajo por paquet
 | --- | --- | --- | --- | --- | --- | --- |
 | R8-22 | Mesa cubre horario pero no SLA | 60,00 % | C-05: meses 13–56 | 19.499,00 | 11.699,40 | 11.699,40 |
 | R8-11 | Productividad o dotación inferior al modelo | 60,00 % | 45.040,00 | 13.512,00 | 8.107,20 | 8.107,20 |
-| R8-07 | Ataque o exposición de datos críticos | 60,00 % | 33.072,00 | 9.921,60 | 5.952,96 | 5.952,96 |
 | R8-18 | Marcha blanca no cumple seis condiciones | 60,00 % | C-04: dos ventanas | 4.928,00 | 2.956,80 | 2.956,80 |
 | R8-09 | Obsolescencia durante 56 meses | 60,00 % | 4.608,00 | 921,60 | 552,96 | 552,96 |
 | R8-12 | Contrapartes CLIENTE no disponibles | 60,00 % | 4.056,00 | 811,20 | 486,72 | 486,72 |
@@ -708,6 +707,7 @@ G-CAP (R8-11/14/32) y G-INT (R8-10/15) representan el mismo retrabajo por paquet
 | R8-23 | Frío o sensores no producen evidencia íntegra | 60,00 % | 2.240,00 | 672,00 | 403,20 | 403,20 |
 | R8-20 | Rotación y resistencia reducen adopción | 60,00 % | 3.296,00 | 659,20 | 395,52 | 395,52 |
 | R8-04 | Pérdida o duplicación tras 14 horas offline | 60,00 % | 3.200,00 | 640,00 | 384,00 | 384,00 |
+| R8-07 | Ataque o exposición de datos críticos | 60,00 % | 2.112,00 | 633,60 | 380,16 | 380,16 |
 | R8-08 | Bloqueo por proveedor | 40,00 % | 4.400,00 | 880,00 | 352,00 | 352,00 |
 | R8-15 | Perfiles EDI no certificados a tiempo | 60,00 % | 1.920,00 | 576,00 | 345,60 | 345,60 |
 | R8-19 | Suministros o sala fuera de secuencia | 40,00 % | 2.640,00 | 792,00 | 316,80 | 316,80 |
@@ -729,7 +729,7 @@ G-CAP (R8-11/14/32) y G-INT (R8-10/15) representan el mismo retrabajo por paquet
 | R8-28 | INN-04 medición variable genera disputa | 40,00 % | 688,00 | 137,60 | 55,04 | 55,04 |
 | R8-17 | Fecha efectiva elimina ventanas permitidas | 60,00 % | 240,00 | 72,00 | 43,20 | 43,20 |
 
-La suma individual es **35.969,16 HH**; el registro independiente, **35.219,98 HH**, y el correlacionado, **34.756,36 HH**. Se adopta el mayor conjunto como contingencia técnica: **35.219,98 HH**. La diferencia de 749,18 HH elimina sólo cargos compartidos según el supuesto. Los controles siguen incluidos en T-15 y no se añaden a la reserva.
+La suma individual es **30.396,36 HH**; el registro independiente, **29.647,18 HH**, y el correlacionado, **29.183,56 HH**. Se adopta el mayor conjunto como contingencia técnica: **29.647,18 HH**. La diferencia de 749,18 HH elimina sólo cargos compartidos según el supuesto. Los controles siguen incluidos en T-15 y no se añaden a la reserva.
 
 ### B.3 Matriz de trazabilidad de la cuantificación
 
@@ -739,37 +739,37 @@ La Tabla B.3 expande cuentas a paquetes hoja. Productos: HH por días programado
 
 | ID | Paquetes hoja | Meses de impacto | Perfiles | Impacto HH | P | Controles | Cargo |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| R8-01 | 3.3.2, 4.1.2 | 5, 6, 11 | ARQ, IMP | 168,00 | 60,00 % | 4.1.2 | Cargo propio |
-| R8-02 | 3.3.6, 3.4.2, 3.4.6, 3.8.1 | 6, 7, 9 | ARQ, DES, CAL | 768,00 | 60,00 % | 3.8.1 | Cargo propio |
-| R8-03 | 3.8.3, 3.8.5, 6.6.3 | 5, 9, 10 | CAL, SRE | 240,00 | 40,00 % | 6.6.3 | Cargo propio |
-| R8-04 | 3.4.10, 3.4.6, 3.4.8, 3.8.3 | 6, 7, 8, 9, 10 | DES, CAL | 640,00 | 60,00 % | 3.8.3 | Cargo propio |
-| R8-05 | 3.8.5, 3.9.4, 8.2.7 | 9, 10, 16, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56 | CAL, SRE | 451,20 | 40,00 % | 3.8.5 | Cargo propio |
-| R8-06 | 3.8.4, 3.9.3 | 9, 10, 16 | CAL | 192,00 | 60,00 % | 3.8.4 | Cargo propio |
-| R8-07 | 3.3.1, 3.8.6, 3.9.5, 8.1.5 | 6, 7, 9, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56 | SEG | 9.921,60 | 60,00 % | 3.8.6 | Cargo propio |
-| R8-08 | 2.1.1, 2.1.2, 2.1.3, 2.1.4, 3.11.1, 3.11.2, 3.11.3, 3.11.4, 3.11.5, 3.3.1, 3.3.2, 3.3.3, 3.3.4, 3.3.5, 3.3.6, 9.2.1, 9.2.2 | 2, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 54, 55, 56 | JP, ARQ, SEG, DAT, DES, SRE | 880,00 | 40,00 % | 1.7.1, 8.1.4, 9.2.1 | Cargo propio |
-| R8-09 | 8.2.2, 8.2.3, 8.2.4 | 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56 | SEG, DES, SRE | 921,60 | 60,00 % | 8.2.5 | Cargo propio |
+| R8-01 | 3.3.2, 4.1.2 | 5, 6, 11 | ARQ, IMP | 168,00 | 60,00 % | 4.1.2 | cargo propio |
+| R8-02 | 3.3.6, 3.4.2, 3.4.6, 3.8.1 | 6, 7, 9 | ARQ, DES, CAL | 768,00 | 60,00 % | 3.8.1 | cargo propio |
+| R8-03 | 3.8.3, 3.8.5, 6.6.3 | 5, 9, 10 | CAL, SRE | 240,00 | 40,00 % | 6.6.3 | cargo propio |
+| R8-04 | 3.4.10, 3.4.6, 3.4.8, 3.8.3 | 6, 7, 8, 9, 10 | DES, CAL | 640,00 | 60,00 % | 3.8.3 | cargo propio |
+| R8-05 | 3.8.5, 3.9.4, 8.2.7 | 9, 10, 16, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56 | CAL, SRE | 451,20 | 40,00 % | 3.8.5 | cargo propio |
+| R8-06 | 3.8.4, 3.9.3 | 9, 10, 16 | CAL | 192,00 | 60,00 % | 3.8.4 | cargo propio |
+| R8-07 | 3.3.1, 3.8.6, 3.9.5, 8.2.2 | 6, 7, 9, 16, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56 | SEG | 633,60 | 60,00 % | 3.8.6 | cargo propio |
+| R8-08 | 2.1.1, 2.1.2, 2.1.3, 2.1.4, 3.11.1, 3.11.2, 3.11.3, 3.11.4, 3.11.5, 3.3.1, 3.3.2, 3.3.3, 3.3.4, 3.3.5, 3.3.6, 9.2.1, 9.2.2 | 2, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 54, 55, 56 | JP, ARQ, SEG, DAT, DES, SRE | 880,00 | 40,00 % | 1.7.1, 8.1.4, 9.2.1 | cargo propio |
+| R8-09 | 8.2.2, 8.2.3, 8.2.4 | 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56 | SEG, DES, SRE | 921,60 | 60,00 % | 8.2.5 | cargo propio |
 | R8-10 | 1.2.3, 3.3.2, 3.3.5 | 1, 5, 6, 7 | ARQ | 208,00 | 60,00 % | 1.2.3 | G-INT |
 | R8-11 | 162 paquetes: B.4 | 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21 | JP, ARQ, SEG, DAT, DES, CAL, SRE, IMP | 13.512,00 | 60,00 % | 1.3.4 | G-CAP |
-| R8-12 | 1.1.3, 1.8.1, 1.8.2, 1.8.3, 1.8.4, 1.8.5, 1.8.6, 1.8.7, 1.8.8, 2.4.1, 2.4.2, 7.3.1, 7.3.2 | 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56 | JP, ARQ, SRE, IMP | 811,20 | 60,00 % | 1.1.1 | Cargo propio |
-| R8-13 | 1.2.2, 3.4.7 | 1, 2, 3, 7 | DES, IMP | 208,00 | 40,00 % | 1.2.2 | Cargo propio |
+| R8-12 | 1.1.3, 1.8.1, 1.8.2, 1.8.3, 1.8.4, 1.8.5, 1.8.6, 1.8.7, 1.8.8, 2.4.1, 2.4.2, 7.3.1, 7.3.2 | 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56 | JP, ARQ, SRE, IMP | 811,20 | 60,00 % | 1.1.1 | cargo propio |
+| R8-13 | 1.2.2, 3.4.7 | 1, 2, 3, 7 | DES, IMP | 208,00 | 40,00 % | 1.2.2 | cargo propio |
 | R8-14 | 3.5.1, 3.5.2, 3.5.3, 3.5.4, 3.9.1, 3.9.2, 3.9.3, 3.9.4, 3.9.5, 3.9.6, 3.9.7 | 15, 16, 17 | SEG, DAT, DES, CAL, SRE | 1.680,00 | 60,00 % | 1.3.4 | G-CAP |
 | R8-15 | 3.5.1, 3.6.5, 3.6.6 | 13, 14, 15, 16, 17, 18, 19 | DES | 576,00 | 60,00 % | 2.1.4 | G-INT |
-| R8-16 | 3.7.1, 3.7.2, 3.7.3, 3.7.4, 3.7.5 | 7, 8, 9, 10, 11, 12 | DAT | 720,00 | 60,00 % | 3.7.1 | Cargo propio |
-| R8-17 | 1.1.3, 1.3.1, 4.1.3 | 1, 17 | JP, IMP | 72,00 | 60,00 % | 1.1.3 | Cargo propio |
-| R8-18 | 3.9.3, 4.2.1, 4.3.1, 7.3.1, 7.3.2 | 15, 20 | IMP | 4.928,00 | 60,00 % | 4.1.1, 7.3.1, 7.3.2 | Cargo propio |
-| R8-19 | 5.1.2, 6.1.1, 6.1.2, 6.1.3, 6.1.4, 6.1.5, 6.3.1, 6.3.2, 6.3.3, 6.3.4, 6.5.1, 6.5.2, 6.5.3, 6.5.4, 6.5.5, 6.5.6, 6.6.3 | 2, 3, 4, 5, 9, 10, 11 | ARQ, SRE | 792,00 | 40,00 % | 5.1.2, 5.1.3 | Cargo propio |
-| R8-20 | 7.1.2, 7.2.1, 7.3.1, 7.3.2 | 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56 | IMP | 659,20 | 60,00 % | 7.3.1, 7.3.2 | Cargo propio |
-| R8-21 | 5.4.1, 5.4.2, 6.5.1, 6.5.2, 6.5.3, 6.5.4, 6.5.5, 6.5.6 | 9, 10, 11 | SRE, IMP | 224,00 | 40,00 % | 5.4.1, 5.4.2 | Cargo propio |
-| R8-22 | 4.2.2, 8.1.1, 8.1.2 | 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56 | SRE | 19.499,00 | 60,00 % | Medición 8.1.2 | Cargo propio |
-| R8-23 | 3.4.5, 3.8.3, 6.5.1, 6.5.2, 6.5.3, 6.5.4, 6.5.5, 6.5.6 | 6, 7, 9, 10, 11 | DES, CAL, SRE | 672,00 | 60,00 % | 6.5.3 | Cargo propio |
-| R8-24 | 3.10.2.1, 3.10.2.2, 3.10.2.3, 3.10.2.4, 3.3.1, 3.8.6 | 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 14 | SEG, CAL | 480,00 | 40,00 % | 3.8.6 | Cargo propio |
-| R8-25 | 3.10.1.1, 3.10.1.2, 3.10.1.3, 3.10.1.4, 7.2.1 | 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 | DAT, IMP | 112,00 | 60,00 % | 3.10.1.4 | Cargo propio |
-| R8-26 | 3.10.2.1, 3.10.2.2, 3.10.2.3, 3.10.2.4, 8.3.1 | 2, 3, 4, 5, 7, 8, 9, 11, 12, 14, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56 | CAL | 307,20 | 40,00 % | 3.10.2.4 | Cargo propio |
-| R8-27 | 3.10.3.1, 3.10.3.2, 3.10.3.3, 3.10.3.4, 8.3.2 | 3, 4, 5, 6, 8, 9, 10, 11, 12, 14, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56 | DAT | 374,40 | 60,00 % | 3.10.3.4 | Cargo propio |
-| R8-28 | 5.4.3, 8.3.3, 8.3.4 | 17, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56 | JP | 137,60 | 40,00 % | 5.4.3 | Cargo propio |
-| R8-29 | 3.10.4.1, 3.10.4.2, 3.10.4.3, 3.10.4.4, 8.3.5, 8.3.6 | 13, 14, 15, 16, 17, 18, 19, 20, 22, 23, 24, 25, 26, 27 | IMP | 112,00 | 60,00 % | 3.10.4.1, 8.3.6 | Cargo propio |
-| R8-30 | 2.1.1, 2.1.2, 2.1.3, 2.1.4, 3.8.4, 8.2.3 | 2, 9, 10, 13, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56 | ARQ, DAT, CAL, SRE | 486,40 | 40,00 % | 8.2.3 | Cargo propio |
-| R8-31 | 3.8.2, 3.8.3, 3.9.2, 3.9.3, 3.9.4, 3.9.5 | 9, 10, 16 | SEG, CAL | 384,00 | 40,00 % | 3.8.1, 3.9.1 | Cargo propio |
+| R8-16 | 3.7.1, 3.7.2, 3.7.3, 3.7.4, 3.7.5 | 7, 8, 9, 10, 11, 12 | DAT | 720,00 | 60,00 % | 3.7.1 | cargo propio |
+| R8-17 | 1.1.3, 1.3.1, 4.1.3 | 1, 17 | JP, IMP | 72,00 | 60,00 % | 1.1.3 | cargo propio |
+| R8-18 | 3.9.3, 4.2.1, 4.3.1, 7.3.1, 7.3.2 | 15, 20 | IMP | 4.928,00 | 60,00 % | 4.1.1, 7.3.1, 7.3.2 | cargo propio |
+| R8-19 | 5.1.2, 6.1.1, 6.1.2, 6.1.3, 6.1.4, 6.1.5, 6.3.1, 6.3.2, 6.3.3, 6.3.4, 6.5.1, 6.5.2, 6.5.3, 6.5.4, 6.5.5, 6.5.6, 6.6.3 | 2, 3, 4, 5, 9, 10, 11 | ARQ, SRE | 792,00 | 40,00 % | 5.1.2, 5.1.3 | cargo propio |
+| R8-20 | 7.1.2, 7.2.1, 7.3.1, 7.3.2 | 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56 | IMP | 659,20 | 60,00 % | 7.3.1, 7.3.2 | cargo propio |
+| R8-21 | 5.4.1, 5.4.2, 6.5.1, 6.5.2, 6.5.3, 6.5.4, 6.5.5, 6.5.6 | 9, 10, 11 | SRE, IMP | 224,00 | 40,00 % | 5.4.1, 5.4.2 | cargo propio |
+| R8-22 | 4.2.2, 8.1.1, 8.1.2 | 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56 | SRE | 19.499,00 | 60,00 % | Medición 8.1.2 | cargo propio |
+| R8-23 | 3.4.5, 3.8.3, 6.5.1, 6.5.2, 6.5.3, 6.5.4, 6.5.5, 6.5.6 | 6, 7, 9, 10, 11 | DES, CAL, SRE | 672,00 | 60,00 % | 6.5.3 | cargo propio |
+| R8-24 | 3.10.2.1, 3.10.2.2, 3.10.2.3, 3.10.2.4, 3.3.1, 3.8.6 | 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 14 | SEG, CAL | 480,00 | 40,00 % | 3.8.6 | cargo propio |
+| R8-25 | 3.10.1.1, 3.10.1.2, 3.10.1.3, 3.10.1.4, 7.2.1 | 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 | DAT, IMP | 112,00 | 60,00 % | 3.10.1.4 | cargo propio |
+| R8-26 | 3.10.2.1, 3.10.2.2, 3.10.2.3, 3.10.2.4, 8.3.1 | 2, 3, 4, 5, 7, 8, 9, 11, 12, 14, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56 | CAL | 307,20 | 40,00 % | 3.10.2.4 | cargo propio |
+| R8-27 | 3.10.3.1, 3.10.3.2, 3.10.3.3, 3.10.3.4, 8.3.2 | 3, 4, 5, 6, 8, 9, 10, 11, 12, 14, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56 | DAT | 374,40 | 60,00 % | 3.10.3.4 | cargo propio |
+| R8-28 | 5.4.3, 8.3.3, 8.3.4 | 17, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56 | JP | 137,60 | 40,00 % | 5.4.3 | cargo propio |
+| R8-29 | 3.10.4.1, 3.10.4.2, 3.10.4.3, 3.10.4.4, 8.3.5, 8.3.6 | 13, 14, 15, 16, 17, 18, 19, 20, 22, 23, 24, 25, 26, 27 | IMP | 112,00 | 60,00 % | 3.10.4.1, 8.3.6 | cargo propio |
+| R8-30 | 2.1.1, 2.1.2, 2.1.3, 2.1.4, 3.8.4, 8.2.3 | 2, 9, 10, 13, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56 | ARQ, DAT, CAL, SRE | 486,40 | 40,00 % | 8.2.3 | cargo propio |
+| R8-31 | 3.8.2, 3.8.3, 3.9.2, 3.9.3, 3.9.4, 3.9.5 | 9, 10, 16 | SEG, CAL | 384,00 | 40,00 % | 3.8.1, 3.9.1 | cargo propio |
 | R8-32 | 3.8.2, 3.8.3, 3.8.4, 3.8.5, 3.8.7, 3.9.2, 3.9.3, 3.9.4, 3.9.6 | 9, 10, 16, 17 | CAL | 512,00 | 40,00 % | 1.5.1 | G-CAP |
 
 ### B.3.1 Desglose de R8-11
@@ -805,11 +805,11 @@ T-15 supone 128 HH efectivas/persona-mes; módulo D = 960 HH, integración I = 4
 | --- | --- | --- |
 | C-01 Corrección E1 meses 13–20 (R8-02/04/14) | 25 % × 960 = 240 HH DES + 160 HH CAL = 400 HH. Máximo(240/256,160/128) = 1,25 meses con reserva mensual | No cabe en un mes por CAL: agregar 32 HH CAL a ese mes o distribuir si la ventana y aceptación lo permiten. Registrar 400 HH una sola vez. Antes de H5 esa reserva no está disponible |
 | C-02 Retrabajo EDI previo H10 (R8-10/15) | 50 % × 480 = 240 HH DES + 160 HH CAL = 400 HH. Dos DES y dos CAL adicionales darían máximo(240/256,160/256) = 0,9375 mes en paralelo; si secuencial, 0,9375 + 0,625 = 1,5625 meses | Es una necesidad de escenario, no dotación ni reserva acreditada. El orden real de corrección y prueba determina duración; no prestar reserva E1 a E2 |
-| C-03 Demora de construcción o integración (R8-10/11) | La reserva programada es 19 días hábiles antes de la entrega del H4, 35 antes del H5, 21 antes del H9 y 28 antes del H10 (T-15, Tabla 5.2). Una demora de 10 días hábiles en la integración E2 (3.9.1) deja 11 días de reserva antes del H9 | Recuperar con capacidad o secuencia dentro de la reserva; si la demora proyectada supera la mitad de la reserva, replanificar antes del hito. La probabilidad conjunta con los demás riesgos está en C.3. No convertir el pronóstico en fecha contractual |
+| C-03 Demora de construcción o integración (R8-10/11) | La reserva programada es 19 días hábiles antes de la entrega del H4, 35 antes del H5, 21 antes del H9 y 25 antes del H10 (T-15, Tabla 5.2). Una demora de 10 días hábiles en la integración E2 (3.9.1) deja 11 días de reserva antes del H9 | Recuperar con capacidad o secuencia dentro de la reserva; si la demora proyectada supera la mitad de la reserva, replanificar antes del hito. La probabilidad conjunta con los demás riesgos está en C.3. No convertir el pronóstico en fecha contractual |
 | C-04 Acompañamiento adicional (R8-18/20) | Cuatro semanas: 12 × 24 × 8 + 160 = 2.464 HH IMP; techo(2464/128) = 20 personas equivalentes | Los 12 puestos simultáneos necesitan relevos. Sólo es aumento de HH si excede el acompañamiento ya incluido; verificar el calendario de esa extensión |
 | C-05 Tercer agente de mesa en las franjas valle (R8-22) | 17 horas × 26 días de lunes a sábado = 442 HH/mes; techo(442/128) = 4 personas equivalentes | Se activa si la demanda medida supera 2.200 contactos/mes y eleva el límite de 2.283 a 2.391 contactos/mes (SD4, Anexo 4-W.7). Cota meses 13–56 con días reales L–S. No incluida en T-15; >2.391 obliga a recalcular por franja y asignar capacidad. Abandono/resolución inicial se miden aparte |
 | C-06 Reversión (R8-01) | Máximo(10 min técnicos, 30 min preparación operacional) + 10 min validación = 40 min; 04:45 + 40 = 05:25 | Objetivo con cinco minutos hasta 05:30, sin medición. Ensayar 96 despachos y fallos ERP/carga. RTO general de cuatro horas no admite detener despacho |
-| C-07 Evidencia completa (R8-17/18) | Activación completa antes de F−28 días. E1 ejemplo: F=04-05-2028 ⇒ 06 abril–03 mayo; E2: F=05-10-2028 ⇒ 07 septiembre–04 octubre | E1 remanentes semana 8 de marzo; E2 habilitaciones en agosto antes de congelamiento 01–25 septiembre. Fechas posteriores a tres primeros hábiles; confirmar feriados CLIENTE. La evidencia continúa hasta acta; habilitaciones E2 concluyen en agosto |
+| C-07 Evidencia completa (R8-17/18) | Activación completa antes de F−28 días. E1 ejemplo: F=05-05-2028 ⇒ 07 abril–04 mayo (el 1 de mayo es feriado, por lo que el 2, el 3 y el 4 son los tres primeros días hábiles); E2: F=05-10-2028 ⇒ 07 septiembre–04 octubre | E1 remanentes semana 8 de marzo; E2 habilitaciones en agosto antes de congelamiento 01–25 septiembre. Fechas posteriores a tres primeros hábiles; confirmar feriados CLIENTE. La evidencia continúa hasta acta; habilitaciones E2 concluyen en agosto |
 | C-08 Mensajes de la coordinación de reserva (R8-06) | Una línea con una retención usa cuatro mensajes (SD4, Anexo 4-I). Repartida en dos retenciones que se liberan, usa ocho; si ambas se consumen, cuatro. Si 10 % de las líneas se reparten y se liberan, el flujo sube de 46.968 a 46.968 × 1,10 = 51.665 mensajes diarios, antes de descontar la holgura de las retenciones consumidas | No implica el mismo aumento en todo el tráfico. Medir la proporción con AL-STOCK-01 y contrastar el Anexo 4-I con ARQ y SRE; no alterar aquí la memoria física |
 
 Los porcentajes 25 % y 50 % son variaciones hipotéticas de esfuerzo, no probabilidades de evento. Los escenarios no constituyen una bolsa adicional sumable: varios pueden describir el mismo defecto.
@@ -829,7 +829,7 @@ La Tabla C.5 compara las 32 amenazas (PMI, 2017, pp. 442–443). Residual hipot�
 | R8-04 | 3.8.3 | 320,00 | 384,00 | 256,00 | 128,00 | 0,40 |
 | R8-05 | 3.8.5 | 320,00 | 180,48 | 90,24 | 90,24 | 0,28 |
 | R8-06 | 3.8.4 | 320,00 | 115,20 | 76,80 | 38,40 | 0,12 |
-| R8-07 | 3.8.6 | 160,00 | 5.952,96 | 3.968,64 | 1.984,32 | 12,40 |
+| R8-07 | 3.8.6 | 160,00 | 380,16 | 253,44 | 126,72 | 0,79 |
 | R8-08 | 1.7.1, 8.1.4, 9.2.1 | 448,00 | 352,00 | 176,00 | 176,00 | 0,39 |
 | R8-09 | 8.2.5 | 288,00 | 552,96 | 368,64 | 184,32 | 0,64 |
 | R8-10 | 1.2.3 | 80,00 | 124,80 | 83,20 | 41,60 | 0,52 |
@@ -868,499 +868,105 @@ Los **35 controles únicos suman 6.768,00 HH ya incluidas en T-15**. No se suman
 | 7.3.1 | R8-18, R8-20 | 160,00 |
 | 7.3.2 | R8-18, R8-20 | 160,00 |
 
-El conjunto residual hipotético sería **27.218,57 HH**, diferencia **8.001,41 HH**. No se libera automáticamente: CAL mide eficacia y JP solicita actualización con remanente/ventana; autoriza el comité competente.
+El conjunto residual hipotético sería **23.503,37 HH**, diferencia **6.143,81 HH**. No se libera automáticamente: CAL mide eficacia y JP solicita actualización con remanente/ventana; autoriza el comité competente.
 
 Los controles con retorno menor a uno se aplican por sanidad, continuidad, datos o aceptación obligatoria. Para los diez riesgos altos también se compara control contra contingencia de impacto completo de B.2; preservar una alternativa conforme exige menor exposición residual demostrable. Retirar función obligatoria es alternativa inadmisible. Los riesgos de obsolescencia/portabilidad incluyen controles durante toda operación y salida. Valorización sólo en Oferta Económica.
 
 ### C.3 Simulación de Monte Carlo sobre actividades
 
-El modelo usa las 564 actividades de 163 paquetes de T-15 Tabla 6.1 y desarrolla Anexo 7.B: FC, CC e interfaces A02/A12. Los 59 paquetes continuos cargan capacidad por su distribución mensual; no se convierten en productos. Las fechas programadas son liberaciones mínimas. Los productos conservan equipos y HH; no se anticipan artificialmente para mejorar resultados.
+El modelo usa las 564 actividades de los 163 paquetes con entregable del Formulario T-15, Tabla 6.1, con las precedencias de esa tabla y las del Anexo 7.B (FC, CC y por interfaz). Los 59 paquetes de esfuerzo continuo cargan capacidad con su distribución mensual y no se convierten en productos. Las fechas programadas son fechas mínimas de inicio: ninguna actividad se adelanta para mejorar el resultado.
 
-5.000 iteraciones por escenario, PCG64, semilla 20261008. Factor PERT por paquete: 0,75+0,50×beta(3,3), compartido por sus actividades. Riesgos añaden fracción de trabajo a paquetes afectados. G-CAP/G-INT toman máximo del mismo efecto; trabajos distintos se suman. Independencia y uniforme común por grupo son escenarios de juicio, no correlaciones medidas.
+Cada escenario tiene 5.000 iteraciones con una semilla fija, de modo que la corrida se repite con el mismo resultado. La duración de cada paquete se multiplica por un factor PERT 0,75 + 0,50 × beta(3, 3), común a sus actividades, que reproduce la tríada O = 0,75 M y P = 1,25 M del T-15. Cada riesgo ocurre con la probabilidad de su ficha y, si ocurre, alarga los paquetes de la Tabla B.3 en la fracción de impacto de la Tabla 8.3. Los riesgos de los grupos G-CAP y G-INT toman el máximo del mismo efecto; trabajos distintos se suman. El escenario independiente sortea cada riesgo por separado; el correlacionado usa un mismo número aleatorio para los riesgos de cada grupo. Ninguna de las dos correlaciones es medida: son los dos extremos razonables del juicio del equipo.
 
-Trabajo de lunes a viernes, 6,4 HH/persona/día, inicio ilustrativo 01-02-2027. No se inventan feriados CLIENTE. Corte de migración e instalación de terreno respetan septiembre 1–25, diciembre y tres primeros hábiles. Desarrollo DEV/QA, documentación y capacitación no son intervenciones productivas. V-12 confirma fecha y feriados antes de aprobar línea base.
+El calendario usa días hábiles de lunes a viernes, 6,4 HH por persona y día, y el 1 de febrero de 2027 como inicio supuesto (V-12). El corte de la migración (3.7.5.A06) y la instalación de terreno (6.5) no ocurren del 1 al 25 de septiembre, en diciembre ni en los tres primeros días hábiles del mes; el desarrollo en DEV y QA, la documentación y la capacitación no son intervenciones productivas. Cada iteración nivela los recursos por día y por rol: desarrollo 48, arquitectura y datos 15 en conjunto, seguridad 7 sin el SOC, SRE y NOC 44, calidad 10 (16 durante las certificaciones de los meses 9 a 12 y 16 a 18) e implantación 30. El esfuerzo continuo, el soporte puente y la capacidad protegida E1 se descuentan antes de asignar productos. Cada actividad toma la primera fecha en que caben sus personas, con prioridad por la fecha límite del hito que alimenta.
 
-Límites corporativos: DES 48, ARQ+DAT 15, SEG 7 sin SOC, SRE/NOC 44. CAL 10, con máximo total conservador 16 en meses 9–12/16–18 condicionado a evaluadores disponibles; se precisa esta interpretación antes de contratar. IMP 30 de T-15 5.7; JP/documentación 11, techo de la carga simultánea de actividades y trabajo continuo del T-15, no once jefes. JP/IMP y SOC subcontratado son necesidades de asignación, no disponibilidad acreditada.
+La fecha límite de entrega de cada hito es el último día hábil del mes del Formulario E-25 menos los diez días hábiles de revisión del CLIENTE (BA Art. 18.3). Los intervalos de confianza son de Wilson al 95 % y miden sólo el error de muestreo del modelo; no cubren el error de los tamaños, la disponibilidad real ni la eficacia de los controles.
 
-Las HH continuas se reparten entre días hábiles de cada mes. Acompañamiento 4.2.2 sigue 2464/1312/544/544/544 y 4.3.2 sigue 2361,33/102,67; NOC/SOC, días×24; mesa, posiciones y domingos peak del calendario. El soporte puente usa 1851/1786/1810/1851/2038 HH; protección E1 suma 256 DES/128 CAL en meses 13–20. Se descuentan antes de asignar productos; SOC se contabiliza separado de los 7 especialistas.
-
-Se nivela cada iteración por recurso/día: primera fecha factible y prioridad por límite del hito sucesor, fecha programada e ID. La prioridad se propaga hacia antecesores. Ninguna actividad puede exceder capacidad restante. Un atraso se registra sin mover el límite contractual.
-
-IC 95 % Wilson mide error de muestreo condicionado al modelo; excluye error de tamaños, disponibilidad, calendario real y eficacia de controles. Cero éxitos no demuestra imposibilidad absoluta; todos los éxitos no garantizan certeza.
-
-**Tabla C.3 — Entrega por hito y escenario correlacionado. Fuente: ejecución de C.3.3 sobre T-15/7.B.**
+**Tabla C.3 — Entrega por hito y escenario correlacionado. Fuente: elaboración propia, simulación descrita en esta sección sobre el T-15 y el Anexo 7.B.**
 
 | Hito | Límite | P50 independiente | P80 independiente | P a tiempo | IC 95 % | P correlacionado |
 | --- | --- | --- | --- | --- | --- | --- |
 | H1 | 17-03-2027 | 10-03-2027 | 11-03-2027 | 100,00 % | 99,92 %–100,00 % | 100,00 % |
-| H2 | 17-05-2027 | 02-06-2027 | 02-06-2027 | 0,00 % | 0,00 %–0,08 % | 0,00 % |
+| H2 | 17-05-2027 | 05-05-2027 | 10-05-2027 | 97,36 % | 96,88 %–97,77 % | 97,36 % |
 | H3 | 16-07-2027 | 07-07-2027 | 13-07-2027 | 88,32 % | 87,40 %–89,18 % | 88,32 % |
 | H4 | 16-11-2027 | 29-10-2027 | 05-11-2027 | 99,92 % | 99,79 %–99,97 % | 99,92 % |
 | H5 | 17-01-2028 | 24-12-2027 | 04-01-2028 | 97,76 % | 97,31 %–98,13 % | 97,76 % |
-| H8 | 17-03-2028 | 04-04-2028 | 04-04-2028 | 0,00 % | 0,00 %–0,08 % | 0,00 % |
-| H9 | 16-06-2028 | 26-05-2028 | 31-05-2028 | 100,00 % | 99,92 %–100,00 % | 100,00 % |
-| H10 | 17-07-2028 | 21-07-2028 | 27-07-2028 | 31,02 % | 29,75 %–32,32 % | 49,60 % |
+| H8 | 17-03-2028 | 16-03-2028 | 16-03-2028 | 91,08 % | 90,26 %–91,84 % | 91,08 % |
+| H9 | 16-06-2028 | 24-05-2028 | 29-05-2028 | 100,00 % | 99,92 %–100,00 % | 100,00 % |
+| H10 | 17-07-2028 | 27-06-2028 | 29-06-2028 | 100,00 % | 99,92 %–100,00 % | 100,00 % |
 
-H2/H8 fallan también sin riesgos: aprobación 2.4.1 acaba 28-05-2027 y 2.4.2 acaba 30-03-2028, después de límites 17-05-2027/17-03-2028. Tabla 5.2 del T-15 mide diseño 2.1.1/2.1.4, distinto de aprobación requerida en SD7 Tabla 7.5. Aplicar D-31 lleva certificación determinista H10 al27-06-2028; con riesgos, P80=27-07-2028 y P a tiempo=31,02 %. El H9 da100,00 %, condicionado al modelo; no se traslada automáticamente 89,9 %.
-
-Las ocho entregas conjuntas dan **0,00 %** en ambas configuraciones por incompatibilidades de liberación. Es diagnóstico de esta red, no predicción comercial. E8-13/E8-14 requieren resolución antes de afirmar factibilidad. No acredita aceptación contractual ni ensayos.
+Sin riesgos y con el factor PERT igual a 1, todos los hitos se entregan en la fecha programada del T-15, Tabla 5.2. Con riesgos, la fecha P80 de cada hito queda antes de su límite. Las ocho entregas se cumplen juntas en el 78,04 % de las iteraciones (IC 95 %: 76,87 %–79,17 %) en ambos escenarios. La correlación no cambia la probabilidad de los hitos porque los riesgos agrupados ya comparten el mismo efecto máximo en la Tabla B.2; sólo adelanta algunas fechas P50 del H9 y del H10.
 
 ### C.3.1 Preparación de marchas blancas
 
-H6/H11 comprueban prerrequisitos D-25/D-32; H7/H12, alcance completo, equipos y usuarios antes de F−28 días, con recursos nivelados. H6 ilustrativo 04-02-2028/H11 04-08-2028; F1 04-05-2028/F2 05-10-2028, sujetos a calendario CLIENTE. E2 se habilita en agosto antes del congelamiento.
+El H6 y el H11 exigen que los prerrequisitos de la marcha blanca (D-25 y D-32) terminen a tiempo para el acta del mes 13 y del mes 19, con la misma regla de entrega de los demás hitos. El H7 y el H12 exigen además el alcance completo, los equipos y los usuarios antes de F−28 días; con un inicio el 1 de febrero de 2027, F1 es el 5 de mayo de 2028, primer día permitido después del feriado del 1 de mayo y de los tres primeros días hábiles, y F2 el 5 de octubre de 2028, sujetos al calendario del CLIENTE. La Etapa 2 se habilita en agosto, antes del congelamiento de septiembre.
 
-Si R8-18 ocurre, su escenario conservador de cuatro semanas adicionales impide reconocer preparación de cierre a tiempo. No se extienden fechas. Un indicador por horizonte representa esa cota en ambas etapas, no dos frecuencias independientes.
-
-**Tabla C.6 — Preparación condicionada, no aceptación contractual. Fuente: C.3.3.**
+**Tabla C.6 — Preparación condicionada, no aceptación contractual. Fuente: elaboración propia, simulación de la sección C.3.**
 
 | Comprobación | Independencia | IC 95 % | Correlación común |
 | --- | --- | --- | --- |
-| H6 prerrequisitos | 5,74 % | 5,13 %–6,42 % | 5,74 % |
-| H7 alcance/evidencia | 40,16 % | 38,81 %–41,53 % | 40,16 % |
-| H11 prerrequisitos | 97,80 % | 97,36 %–98,17 % | 98,26 % |
-| H12 alcance/evidencia | 40,36 % | 39,01 %–41,73 % | 40,36 % |
-| Ocho entregas juntas | 0,00 % | 0,00 %–0,08 % | 0,00 % |
-| Entregas y preparación | 0,00 % | 0,00 %–0,08 % | 0,00 % |
+| H6 prerrequisitos | 96,50 % | 95,95 %–96,97 % | 96,50 % |
+| H7 alcance antes de F−28 días | 100,00 % | 99,92 %–100,00 % | 100,00 % |
+| H11 prerrequisitos | 100,00 % | 99,92 %–100,00 % | 100,00 % |
+| H12 alcance antes de F−28 días | 100,00 % | 99,92 %–100,00 % | 100,00 % |
+| Ocho entregas juntas | 78,04 % | 76,87 %–79,17 % | 78,04 % |
+| Entregas y preparación juntas | 75,82 % | 74,61 %–76,99 % | 75,82 % |
 
-Las seis condiciones del Art. 17.3 son copulativas: cero incidentes críticos/altos, volumen real cuatro semanas, disponibilidad/respuesta sostenidas, conciliación sin diferencias inexplicadas, personas capacitadas/certificadas y acta. Son mediciones por ejecutar; las probabilidades anteriores no certifican software ni SLA. Mesa requiere abandono/resolución inicial medidos y retiro sanitario en menos de dos horas exige ensayo. La observación continúa hasta acta; no autoriza desplegar durante congelamientos.
+La preparación no es la aceptación. Las seis condiciones del Art. 17.3 son copulativas: cero incidentes críticos o altos, volumen real durante cuatro semanas, disponibilidad y tiempos de respuesta sostenidos, conciliación sin diferencias inexplicadas, personas capacitadas y certificadas, y acta. Se miden durante la marcha blanca, y el riesgo de no cumplirlas es R8-18, con su contingencia de cuatro semanas adicionales de acompañamiento en cada etapa. Esa contingencia no mueve el paso a producción: la observación continúa hasta el acta y no autoriza desplegar durante los congelamientos.
 
 ### C.3.2 Sensibilidad con muestras comunes
 
-La Tabla C.4 usa las mismas 5.000 muestras PERT/uniformes de la corrida independiente. Sólo desactiva el riesgo indicado, conservando calendario, dependencias y nivelación.
+La Tabla C.4 usa las mismas 5.000 muestras de la corrida independiente y desactiva sólo el riesgo indicado, conservando calendario, dependencias y nivelación. Muestra los hitos que no llegan al 100 % en la corrida base.
 
-**Tabla C.4 — Sensibilidad con 5.000 muestras comunes. Fuente: C.3.3.**
+**Tabla C.4 — Sensibilidad con 5.000 muestras comunes. Fuente: elaboración propia, simulación de la sección C.3.**
 
-| Escenario | H3 | H5 | H9 | H10 |
-| --- | --- | --- | --- | --- |
-| Todos | 88,32 % | 97,76 % | 100,00 % | 31,02 % |
-| Sin R8-11 | 100,00 % | 100,00 % | 100,00 % | 54,36 % |
-| Sin R8-14 | 88,32 % | 97,76 % | 100,00 % | 48,88 % |
-| Sin R8-15 | 88,32 % | 97,76 % | 100,00 % | 36,50 % |
-| Sin R8-19 | 100,00 % | 97,76 % | 100,00 % | 31,02 % |
-| Sin R8-23 | 88,32 % | 99,70 % | 100,00 % | 31,02 % |
-| Sin R8-31 | 88,32 % | 98,92 % | 100,00 % | 37,36 % |
-| Sin R8-32 | 88,32 % | 97,76 % | 100,00 % | 31,40 % |
-| Sin R8-06 | 88,32 % | 97,76 % | 100,00 % | 36,54 % |
+| Escenario | H2 | H3 | H5 | H8 | Ocho juntas |
+| --- | --- | --- | --- | --- | --- |
+| Todos | 97,36 % | 88,32 % | 97,76 % | 91,08 % | 78,04 % |
+| Sin R8-11 | 100,00 % | 100,00 % | 100,00 % | 100,00 % | 100,00 % |
+| Sin R8-19 | 97,36 % | 100,00 % | 97,76 % | 91,08 % | 87,26 % |
+| Sin R8-23 | 97,36 % | 88,32 % | 99,70 % | 91,08 % | 79,24 % |
+| Sin R8-31 | 97,36 % | 88,32 % | 98,92 % | 91,08 % | 78,74 % |
+| Sin R8-14, R8-15, R8-32 o R8-06 | 97,36 % | 88,32 % | 97,76 % | 91,08 % | 78,04 % |
 
-Una diferencia no prueba eficacia medida. La nivelación reordena ocupaciones al abrir huecos y puede producir efectos secundarios. Quitar amenazas no corrige liberaciones incompatibles de H2/H8.
+R8-11 es el riesgo que gobierna el plazo: sin él, todas las entregas se cumplen. R8-19 explica la exposición del H3, y R8-23 y R8-31 la del H5. Quitar R8-14, R8-15, R8-32 o R8-06 no cambia los hitos medidos, aunque sí cambia su consumo de horas en la Tabla B.2. Una diferencia en la tabla no prueba la eficacia de un control: sólo indica dónde concentrar el seguimiento.
 
-### C.3.3 Procedimiento reproducible y entradas
+### C.3.3 Entradas y reproducción
 
-Python 3.12 y NumPy; pasar carpeta de fuentes y 5000 como argumentos. El código sólo lee fuentes y emite JSON. MAP/CONTROL expresan B.3/C.5. La salida entrega matrices sin redondear, caso determinista, dos escenarios, ocho sensibilidades y huellas. Las anclas de referencias continuas no listadas usan extremos de su ventana como supuesto conservador, no actividades inventadas.
-
-| Entrada | SHA-256 |
-| --- | --- |
-| 07_PlanDeTrabajo_EDT_Cronograma_Implantación\LAFROX-Formulario-T-15.md | d16a87fef6234d26b89e23b66a4189e2a70cd7f78c05d29d885391e1821da33a |
-| 07_PlanDeTrabajo_EDT_Cronograma_Implantación\LAFROX-Subdocumento 7.md | cf520053d6c16a20907b3c493cbf8c37ecb880dd35365ee36c11334433ee78aa |
-| 07_PlanDeTrabajo_EDT_Cronograma_Implantación\LAFROX-Subdocumento 7-Anexos.md | f9ed4a9455e5a212255778a5582922796f1f61026cbe7d4ab892a0d67064e97b |
-
-~~~python
-import sys, re, json, hashlib, calendar, math, time
-from pathlib import Path
-from datetime import date, timedelta
-import numpy as np
-ROOT=Path(sys.argv[1]).resolve()
-N=int(sys.argv[2]) if len(sys.argv)>2 else 5000
-SEED=20261008
-def file(prefix,name):
-    return next(ROOT.glob(prefix+'*/'+name))
-def read(p): return p.read_text(encoding='utf-8-sig')
-T15=file('07_','LAFROX-Formulario-T-15.md')
-T7=file('07_','LAFROX-Subdocumento7.md')
-A7=file('07_','LAFROX-Subdocumento7-Anexos.md')
-A8=file('08_','LAFROX-Subdocumento8-Anexos.md')
-def rows(t):
-    return [[s.strip() for s in l.strip().strip('|').split('|')]
-            for l in t.splitlines() if l.startswith('|')]
-t=read(T15)
-pr=rows(t.split('### 4.2 Horas')[1].split('### 4.3')[0])
-pkg={}
-for c in pr:
-    if re.fullmatch(r'\d+(?:\.\d+)+',c[0]):
-        a,b=map(int,c[3].split('–'))
-        pkg[c[0]]={'id':c[0],'class':c[1],'role':c[2],'a':a,'b':b,'hh':float(c[7])}
-ar=rows(t.split('### 6.1 Paquetes')[1].split('### 6.2')[0])
-acts=[]
-for c in ar:
-    if re.fullmatch(r'\d+(?:\.\d+)+\.A\d+',c[0]):
-        dep=[(m[0],bool(m[1])) for m in re.findall(r'(\d+(?:\.\d+)+\.A\d+)(\s*\(CC\))?',c[8])]
-        acts.append({'id':c[0],'pkg':c[0].split('.A')[0],'role':c[2],
-                     'people':int(c[3]),'hh':float(c[4]),'start':c[5],
-                     'end':c[6],'days':int(c[7]),'dep':dep})
-assert len(pkg)==222 and len(acts)==564
-assert abs(sum(p['hh'] for p in pkg.values())-190366)<1e-6
-ap={a['pkg'] for a in acts}
-assert len(ap)==163
-for k in ap: assert abs(sum(a['hh'] for a in acts if a['pkg']==k)-pkg[k]['hh'])<1e-6
-ROLES=['JP','ARQ','SEG','DAT','DES','CAL','SRE','IMP']
-def monthdate(m):
-    y=2027+(m)//12; mm=(m)%12+1
-    return date(y,mm,1)
-def parse(s): return date(*reversed(list(map(int,s.split('-')))))
-START=date(2027,2,1)
-DAYS=[START+timedelta(days=i) for i in range(365*7) if (START+timedelta(days=i)).weekday()<5]
-DAYS=DAYS[:1800]; H=len(DAYS)
-def di(d): return int(np.searchsorted(DAYS,d))
-MONTH=np.array([(d.year-2027)*12+d.month-1 for d in DAYS])
-def fmt(i): return DAYS[min(int(i),H-1)].strftime('%d-%m-%Y')
-# HH por paquete y mes: las fechas de actividades gobiernan los productos.
-pm={}
-for k,p in pkg.items():
-    v=np.zeros((56,8)); ri=ROLES.index(p['role'])
-    if k in ap:
-        for a in acts:
-            if a['pkg']!=k: continue
-            ix=np.arange(di(parse(a['start'])),di(parse(a['end']))+1)
-            assert len(ix)==a['days'],a['id']
-            for m in set(MONTH[ix]):
-                v[m-1,ri]+=a['hh']*np.sum(MONTH[ix]==m)/len(ix)
-    else:
-        ms=list(range(p['a'],p['b']+1))
-        weights=np.ones(len(ms))
-        if k=='4.2.2': weights=np.array([2464,1312,544,544,544.])
-        if k=='4.3.2': weights=np.array([2361.33,102.67])
-        if k in ('8.1.1','8.1.5'):
-            weights=np.array([calendar.monthrange(monthdate(m).year,monthdate(m).month)[1]*24 for m in ms])
-        if k=='8.1.2':
-            weights=[]
-            for m in ms:
-                d=monthdate(m); nd=calendar.monthrange(d.year,d.month)[1]
-                ls=sum(date(d.year,d.month,j).weekday()<6 for j in range(1,nd+1))
-                su=nd-ls; weights.append(ls*41+(ls*6+su*24 if d.month in (9,12) else 0))
-            weights=np.array(weights,float)
-        for m,w in zip(ms,weights/np.sum(weights)):
-            v[m-1,ri]+=p['hh']*w
-    assert abs(v.sum()-p['hh'])<1e-5,k
-    pm[k]=v
-MAP=[
-['3.3.2','4.1.2'],['3.3.6','3.4.2','3.4.6','3.8.1'],
-['6.6.3','3.8.3','3.8.5'],['3.4.6','3.4.8','3.4.10','3.8.3'],
-['3.8.5','3.9.4','8.2.7'],['3.8.4','3.9.3'],
-['3.3.1','3.8.6','3.9.5','8.1.5'],['2.1','3.3','3.11','9.2'],
-['8.2.2','8.2.3','8.2.4'],['1.2.3','3.3.2','3.3.5'],
-sorted([k for k in ap if pkg[k]['b']<=21]),
-['1.1.3','1.8','2.4','7.3'],['1.2.2','3.4.7'],['3.5','3.9'],
-['3.5.1','3.6.5','3.6.6'],['3.7.1','3.7.2','3.7.3','3.7.4','3.7.5'],
-['1.1.3','1.3.1','4.1.3'],['4.2.1','4.3.1','7.3','3.9.3'],
-['5.1.2','6.1','6.3','6.6.3','6.5'],['7.1.2','7.2.1','7.3.1','7.3.2'],
-['5.4.1','5.4.2','6.5'],['4.2.2','8.1.1','8.1.2'],
-['3.4.5','6.5','3.8.3'],['3.10.2','3.3.1','3.8.6'],
-['3.10.1','7.2.1'],['3.10.2','8.3.1'],['3.10.3','8.3.2'],
-['5.4.3','8.3.3','8.3.4'],['3.10.4','8.3.5','8.3.6'],
-['2.1','3.8.4','8.2.3'],
-['3.8.2','3.8.3','3.9.2','3.9.3','3.9.4','3.9.5'],
-['3.8.2','3.8.3','3.8.4','3.8.5','3.8.7','3.9.2','3.9.3','3.9.4','3.9.6']]
-CONTROL=[
-['4.1.2'],['3.8.1'],['6.6.3'],['3.8.3'],['3.8.5'],['3.8.4'],['3.8.6'],
-['1.7.1','8.1.4','9.2.1'],['8.2.5'],['1.2.3'],['1.3.4'],['1.1.1'],
-['1.2.2'],['1.3.4'],['2.1.4'],['3.7.1'],['1.1.3'],['4.1.1','7.3.1','7.3.2'],
-['5.1.2','5.1.3'],['7.3.1','7.3.2'],['5.4.1','5.4.2'],[],
-['6.5.3'],['3.8.6'],['3.10.1.4'],['3.10.2.4'],['3.10.3.4'],
-['5.4.3'],['3.10.4.1','8.3.6'],['8.2.3'],['3.8.1','3.9.1'],['1.5.1']]
-qrows=rows(read(A8).split('### B.1')[1].split('### B.2')[0])
-evals={c[0]:(int(c[2]),int(c[3]),int(c[4])) for c in qrows if c[0].startswith('R8-')}
-prob=np.array([{1:.05,2:.2,3:.4,4:.6,5:.8}[evals[f'R8-{i+1:02}'][0]] for i in range(32)])
-frac=np.array([{1:0,2:.05,3:.1,4:.2,5:.3}[evals[f'R8-{i+1:02}'][1]] for i in range(32)])
-expanded=[]; X=np.zeros((32,56,8))
-for i,mp in enumerate(MAP):
-    ks=sorted({k for k in pkg if any(k==p or k.startswith(p+'.') for p in mp)})
-    expanded.append(ks)
-    X[i]=sum((pm[k] for k in ks),np.zeros((56,8)))*frac[i]
-X[17]=0; X[17,14,7]=2464; X[17,19,7]=2464
-X[21]=0
-for m in range(13,57):
-    d=monthdate(m); nd=calendar.monthrange(d.year,d.month)[1]
-    X[21,m-1,6]=17*sum(date(d.year,d.month,j).weekday()<6 for j in range(1,nd+1))
-# Una correccion por paquete/perfil. Los dos grupos comparten efecto de capacidad o interfaz.
-GROUPS=[[10,13,31],[9,14]]
-def cost_expected(ps,correlated=False):
-    out=X*ps[:,None,None]
-    for group in GROUPS:
-        out[group]=0
-        outcomes=[]
-        if correlated:
-            edges=sorted({0.,1.,*ps[group]})
-            for lo,hi in zip(edges,edges[1:]): outcomes.append((hi-lo,np.array([(lo+hi)/2<ps[g] for g in group])))
-        else:
-            for bits in range(1<<len(group)):
-                on=np.array([bool(bits&(1<<j)) for j in range(len(group))])
-                w=np.prod([ps[g] if z else 1-ps[g] for g,z in zip(group,on)])
-                outcomes.append((w,on))
-        for w,on in outcomes:
-            if not any(on): continue
-            stack=np.stack([X[g] if z else np.zeros((56,8)) for g,z in zip(group,on)])
-            winner=stack.argmax(axis=0); maximum=stack.max(axis=0)
-            for j,g in enumerate(group): out[g]+=w*np.where(winner==j,maximum,0)
-    return out
-EC=cost_expected(prob); ER=cost_expected(np.where(np.arange(32)==21,prob,np.maximum(prob-.2,0)))
-CC=cost_expected(prob,True)
-raw=(X*prob[:,None,None]).sum()
-# Proteccion E1: solo trabajo de E1 en meses13-20 y perfiles DES/CAL.
-eligible=np.zeros((56,8))
-for i in (1,3): # R8-14 es exposicion E2, no correccion E1.
-    eligible+=EC[i]
-mask=np.zeros((56,8)); mask[12:20,4]=256; mask[12:20,5]=128
-absorbed=np.minimum(eligible,mask).sum()
-# Grupos de recurso corporativo: ARQ+DAT comparten 15; SOC separado.
-RR=['JP','ARQ+DAT','SEG','DES','CAL','SRE','IMP']
-ri=[0,1,2,1,3,4,5,6]
-rmap=dict(zip(ROLES,ri))
-CAP=np.tile(np.array([5.,15,7,48,10,44,30])[:,None],(1,H))
-cert=((MONTH>=9)&(MONTH<=12))|((MONTH>=16)&(MONTH<=18))
-CAP[4,cert]=16 # capacidad TOTAL durante certificacion, lectura conservadora de T-15.
-BG=np.zeros_like(CAP)
-for k,p in pkg.items():
-    if k in ap or k=='8.1.5': continue
-    for m in range(1,57):
-        ix=np.flatnonzero(MONTH==m)
-        if len(ix): BG[rmap[p['role']],ix]+=pm[k][m-1].sum()/(6.4*len(ix))
-for m in range(16,21):
-    ix=np.flatnonzero(MONTH==m); BG[5,ix]+=[1851,1786,1810,1851,2038][m-16]/(6.4*len(ix))
-for m in range(13,21):
-    ix=np.flatnonzero(MONTH==m); BG[3,ix]+=256/(6.4*len(ix)); BG[4,ix]+=128/(6.4*len(ix))
-AV=CAP-BG
-# Restricciones que afectan entregables/habilitaciones; desarrollo QA no es intervencion productiva.
-ids={a['id']:j for j,a in enumerate(acts)}
-# Desarrollo explicito de las dependencias del Anexo 7.B que afectan productos.
-EDGES=[
-(['1.2.1'],['2.1.1'],'FC'),(['1.2.3'],['3.3.2'],'FC'),
-(['1.2.2'],['3.4.7'],'FC'),(['2.4.1'],['3.4'],'FC'),
-(['2.6.2'],['3.4'],'FC'),(['2.2.1'],['3.3.1'],'FC'),
-(['5.2.1'],['3.2'],'FC'),
-(['3.2.1','3.2.2','3.2.4','3.2.5'],['3.1.1','3.1.2','3.1.3'],'FC'),
-(['2.3.1','2.3.2'],['5.1.2'],'FC'),(['5.1.2'],['6.1'],'FC'),
-(['6.1.5'],['6.3.1','6.3.2'],'FC'),
-(['6.3.1','6.3.2','6.3.3'],['6.6'],'FC'),
-(['3.3'],['3.4'],'CC'),(['3.4.2'],['3.4.6'],'CC'),
-(['3.4'],['3.8.1'],'FC'),(['3.8.1'],['3.8.2','3.8.3'],'FC'),
-(['3.4'],['3.8.4','3.8.5','3.8.6','3.8.8'],'FC'),
-(['3.1.3'],['3.8.5'],'FC'),
-(['3.8.2','3.8.3','3.8.4','3.8.5','3.8.6'],['3.8.7'],'FC'),
-(['3.7.1','3.7.2','3.7.3','3.7.4'],['3.7.5'],'FC'),
-(['1.2.5','2.4.2'],['3.5'],'FC'),(['3.5'],['3.9.1'],'FC'),
-(['3.9.1'],['3.9.2','3.9.3','3.9.4','3.9.5'],'FC'),
-(['3.9.1','3.9.2','3.9.3','3.9.4','3.9.5'],['3.9.6'],'FC')]
-def pexpand(keys): return sorted(k for k in ap if any(k==p or k.startswith(p+'.') for p in keys))
-def endpoint(k,first=False):
-    aa=[a['id'] for a in acts if a['pkg']==k]
-    return min(aa) if first else max(aa)
-added_edges=[]
-for pp,ss,kind in EDGES:
-    for sk in pexpand(ss):
-        dest=acts[ids[endpoint(sk,True)]]
-        preds=pexpand(pp)
-        if pp==['1.2.2']: preds=['1.2.2']
-        for pk in preds:
-            ref=(endpoint(pk,kind=='CC') if pk in ap else pk+'.A01',kind=='CC')
-            if ref not in dest['dep']:
-                dest['dep'].append(ref); added_edges.append((dest['id'],ref[0],kind))
-for pk in pexpand(['3.4']):
-    dest=acts[ids[endpoint(pk)]]
-    for ak in pexpand(['3.1']):
-        ref=(endpoint(ak),False)
-        if ref not in dest['dep']: dest['dep'].append(ref); added_edges.append((dest['id'],ref[0],'FC'))
-for pp,ss in [(['3.4.1','3.4.2'],['3.4.3','3.4.4']),
-              (['3.4.3','3.4.6'],['3.4.7','3.4.8']),(['3.4.8'],['3.4.10'])]:
-    for sk in ss:
-        for suffix,psuffix in [('A03','A02'),('A10','A12'),('A11','A12')]:
-            dest=acts[ids[sk+'.'+suffix]]
-            for pk in pp:
-                ref=(pk+'.'+psuffix,False)
-                if ref not in dest['dep']: dest['dep'].append(ref); added_edges.append((dest['id'],ref[0],'FC'))
-missing=sorted({k for a in acts for k,cc in a['dep'] if k not in ids})
-dep=[[(ids[k],cc) for k,cc in a['dep'] if k in ids] for a in acts]
-release=np.array([di(parse(a['start'])) for a in acts],int)
-for j,a in enumerate(acts):
-    for k,cc in a['dep']:
-        if k in ids: continue
-        p=pkg[k.split('.A')[0]]
-        last=monthdate(p['b']); last=date(last.year,last.month,calendar.monthrange(last.year,last.month)[1])
-        release[j]=max(release[j],di(monthdate(p['a'])) if cc else di(last)+int(last.weekday()<5))
-baseline_end=np.array([di(parse(a['end'])) for a in acts],int)
-risk_effect=np.zeros((32,len(acts)))
-for i in range(32):
-    if i in (17,21): continue
-    for j,a in enumerate(acts):
-        if a['pkg'] in expanded[i]: risk_effect[i,j]=frac[i]
-psorted=sorted(ap); pidx={k:i for i,k in enumerate(psorted)}
-pof=np.array([pidx[a['pkg']] for a in acts])
-hpk={1:['1.2.1','1.2.4'],2:['2.4.1'],3:['3.1.1','3.1.2','3.1.3','3.1.5','6.6.3'],
-     4:['3.8.1'],5:['3.8.7'],8:['1.2.5','2.4.2'],9:['3.9.1'],10:['3.9.6']}
-hmonths={1:2,2:4,3:6,4:10,5:12,8:14,9:17,10:18}
-hids={h:np.array([j for j,a in enumerate(acts) if a['pkg'] in ks]) for h,ks in hpk.items()}
-limits={}
-for h,m in hmonths.items():
-    md=monthdate(m); last=date(md.year,md.month,calendar.monthrange(md.year,md.month)[1])
-    lim=di(last)-(last.weekday()>=5)-10
-    limits[h]=lim
-# Propagar prioridad de los hitos a los antecesores.
-priority=np.full(len(acts),H-1,int)
-for h,jx in hids.items(): priority[jx]=np.minimum(priority[jx],limits[h])
-for repeat in range(len(acts)):
-    change=False
-    for j,ds in enumerate(dep):
-        for k,cc in ds:
-            if priority[k]>priority[j]: priority[k]=priority[j]; change=True
-    if not change: break
-order=[]; done=set()
-while len(order)<len(acts):
-    ready=[j for j in range(len(acts)) if j not in done and all(k in done for k,cc in dep[j])]
-    assert ready,'Ciclo en predecesoras'
-    j=min(ready,key=lambda j:(priority[j],release[j],acts[j]['id']))
-    done.add(j); order.append(j)
-source_errors=[(acts[j]['id'],acts[k]['id'],'CC' if cc else 'FC')
-              for j in range(len(acts)) for k,cc in dep[j]
-              if di(parse(acts[j]['start']))<(di(parse(acts[k]['start'])) if cc else baseline_end[k]+1)]
-load=BG.copy()
-for j,a in enumerate(acts): load[rmap[a['role']],release[j]:baseline_end[j]+1]+=a['people']
-source_peak=(load-CAP).max(axis=1)
-old_jp_cap=float(CAP[0,0])
-CAP[0,:]=math.ceil(float(load[0].max()))
-AV=CAP-BG
-source_peak=(load-CAP).max(axis=1)
-def permitted(d):
-    first=monthdate((d.year-2027)*12+d.month-1)
-    first3=[first+timedelta(days=z) for z in range(7) if (first+timedelta(days=z)).weekday()<5][:3]
-    return not(d.month==12 or (d.month==9 and d.day<=25) or d in first3)
-protected_ids={j for j,a in enumerate(acts) if a['pkg'] in {'3.7.5','6.5.1','6.5.2','6.5.3','6.5.4','6.5.5','6.5.6'}}
-blocked=np.array([not permitted(d) for d in DAYS])
-def schedule(factor,on):
-    b=len(factor); starts=np.zeros((b,len(acts)),np.int32); ends=starts.copy()
-    durfactor=on@risk_effect
-    for group in GROUPS:
-        vals=np.stack([on[:,g,None]*risk_effect[g] for g in group])
-        durfactor-=vals.sum(axis=0); durfactor+=vals.max(axis=0)
-    dd=np.ceil(np.array([a['hh']/a['people']/6.4 for a in acts])[None,:]
-               *factor[:,pof]*(1+durfactor)-1e-12).astype(int)
-    use=np.zeros((b,len(RR),H),np.float32); br=np.arange(b)
-    for j in order:
-        a=acts[j]; role=rmap[a['role']]; d=dd[:,j]
-        s=np.full(b,release[j],int)
-        for k,cc in dep[j]: s=np.maximum(s,starts[:,k] if cc else ends[:,k]+1)
-        width=int(d.max()); off=np.arange(width)
-        while True:
-            ix=s[:,None]+off
-            if ix.max()>=H: raise RuntimeError('Horizonte insuficiente')
-            need=off[None,:]<d[:,None]
-            clash=(use[br[:,None],role,ix]+a['people']>AV[role,ix]+1e-5)&need
-            if j in protected_ids: clash|=blocked[ix]&need
-            bad=clash.any(axis=1)
-            if not bad.any(): break
-            # Salto hasta despues del primer dia ocupado/prohibido.
-            s[bad]+=clash[bad].argmax(axis=1)+1
-        ix=s[:,None]+off; need=off[None,:]<d[:,None]
-        use[br[:,None],role,ix]+=need*a['people']
-        starts[:,j]=s; ends[:,j]=s+d-1
-    for role in range(len(RR)):
-        assert np.max(use[:,role]+BG[role]-CAP[role])<1e-4
-    hh={h:ends[:,jx].max(axis=1) for h,jx in hids.items()}
-    # Preparacion: todos los componentes, usuarios, acuerdos y equipos antes de evidencia.
-    e1=[j for j,a in enumerate(acts) if a['pkg'].startswith(('3.4.','3.7.','3.8.','6.5.')) or a['pkg'] in ('4.1.1','4.1.2','5.4.1','5.4.2','7.3.1')]
-    e2=[j for j,a in enumerate(acts) if a['pkg'].startswith(('3.5.','3.9.')) or a['pkg'] in ('3.6.5','3.6.6','4.1.3','7.3.2')]
-    F1=date(2028,5,4); F2=date(2028,10,5)
-    gates=[]
-    for ix,F,mbend,m in [(e1,F1,date(2028,4,30),15),(e2,F2,date(2028,9,30),20)]:
-        entry_pkg=(['3.8.7','3.7.5','4.1.1','4.1.2'] if m==15 else ['3.9.6','3.6.5','4.1.3'])
-        entry_ix=[j for j,a in enumerate(acts) if a['pkg'] in entry_pkg]
-        entry_date=date(2028,2,4) if m==15 else date(2028,8,4)
-        gates.append(ends[:,entry_ix].max(axis=1)<di(entry_date))
-        deadline=F-timedelta(days=28)
-        ready=ends[:,ix].max(axis=1)<di(deadline)
-        # Cota adversa R8-18: cuatro semanas adicionales, sin extender fecha contractual.
-        ready&=~on[:,17]
-        gates.append(ready)
-    return hh,gates,starts,ends
-def stats(hh,gates):
-    res={}
-    for h,v in hh.items():
-        good=v<=limits[h]; p=float(good.mean()); z=1.96; den=1+z*z/len(v)
-        center=(p+z*z/(2*len(v)))/den
-        half=z*math.sqrt(p*(1-p)/len(v)+z*z/(4*len(v)**2))/den
-        res[str(h)]={'P50':fmt(np.quantile(v,.5,method='higher')),'P80':fmt(np.quantile(v,.8,method='higher')),
-                     'p':p,'ci':[max(0,center-half),min(1,center+half)],'limit':fmt(limits[h])}
-    allh=np.logical_and.reduce([v<=limits[h] for h,v in hh.items()])
-    res['joint_delivery']=float(allh.mean())
-    res['H6_ready']=float(gates[0].mean()); res['gate_E1']=float(gates[1].mean())
-    res['H11_ready']=float(gates[2].mean()); res['gate_E2']=float(gates[3].mean())
-    res['joint_readiness']=float((allh&np.logical_and.reduce(gates)).mean())
-    res['readiness_ci']={}
-    for key in ['H6_ready','gate_E1','H11_ready','gate_E2','joint_delivery','joint_readiness']:
-        p=res[key]; z=1.96; den=1+z*z/len(v)
-        center=(p+z*z/(2*len(v)))/den
-        half=z*math.sqrt(p*(1-p)/len(v)+z*z/(4*len(v)**2))/den
-        res['readiness_ci'][key]=[max(0,center-half),min(1,center+half)]
-    return res
-def run(corr=False,remove=None):
-    rng=np.random.Generator(np.random.PCG64(SEED))
-    factors=rng.beta(3,3,size=(N,len(psorted)))*.5+.75
-    u=rng.random((N,32))
-    if corr:
-        for g in GROUPS: u[:,g]=u[:,g[0],None]
-    on=u<prob
-    if remove is not None: on[:,remove]=False
-    hhout={h:[] for h in hids}; gout=[[],[],[],[]]
-    for lo in range(0,N,250):
-        hh,gg,_,_=schedule(factors[lo:lo+250],on[lo:lo+250])
-        for h,v in hh.items(): hhout[h].append(v)
-        for i,v in enumerate(gg): gout[i].append(v)
-    return stats({h:np.concatenate(v) for h,v in hhout.items()},[np.concatenate(v) for v in gout])
-st=time.time()
-zero=schedule(np.ones((1,len(ap))),np.zeros((1,32),bool))
-out={'n':N,'seed':SEED,'numpy':np.__version__,'hashes':{str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in [T15,T7,A7]},
-     'packages':pkg,'expanded':expanded,'map':MAP,'controls':CONTROL,'prob':prob.tolist(),'frac':frac.tolist(),
-     'X':X.tolist(),'EC':EC.tolist(),'ER':ER.tolist(),'CC':CC.tolist(),
-     'raw':raw,'portfolio':float(EC.sum()),'residual':float(ER.sum()),'correlated_cost':float(CC.sum()),
-     'absorbed':float(absorbed),'additional':float(EC.sum()-absorbed),
-     'base':stats(zero[0],zero[1]),'source_precedence_errors':source_errors,
-     'source_peak_excess':dict(zip(RR,source_peak.tolist())),'jp_requested_capacity':float(CAP[0,0]),
-     'missing_activity_references':missing,'added_dependency_edges':added_edges,
-     'base_delayed_activities':int(np.sum(zero[2][0]>np.array([di(parse(a['start'])) for a in acts]))),
-     'base_p80_dates':{str(h):fmt(v[0]) for h,v in zero[0].items()},
-     'activity_count':len(acts),'product_packages':len(ap),'r11_count':len(expanded[10]),
-     'r11_role_hh':{r:float(sum(pm[k][:,i].sum() for k in expanded[10])) for i,r in enumerate(ROLES)},
-     'independent':run(),'adverse':run(True)}
-print('BASE_AND_MAIN_READY '+json.dumps({k:out[k] for k in ['portfolio','raw','additional','base','independent','adverse','source_peak_excess','source_precedence_errors']},ensure_ascii=False),file=sys.stderr,flush=True)
-out['sensitivity']={}
-for i in [10,13,14,18,22,30,31,5]:
-    out['sensitivity'][f'R8-{i+1:02}']=run(remove=i)
-    print('SENSITIVITY_DONE R8-%02d'%(i+1),file=sys.stderr,flush=True)
-out['elapsed']=time.time()-st
-print(json.dumps(out,ensure_ascii=False))
-~~~
+La simulación usa como entradas el Formulario T-15 (Tablas 4.2 y 6.1), las dependencias del Anexo 7.B, la Tabla B.1 (P e I de cada riesgo) y las Tablas B.3 y C.5 (paquetes afectados y controles). Los parámetros son los de esta sección: 5.000 iteraciones por escenario, semilla fija, factor PERT por paquete, nivelación diaria por rol y regla de entrega de los hitos. Antes de cada ejecución se comprueba que las 564 actividades sumen las HH de sus 163 paquetes, que los 222 paquetes sumen 190.366 HH y que ninguna precedencia del T-15 quede incumplida. JP conserva el modelo y sus resultados en el repositorio del proyecto, y CAL repite la corrida cuando cambia la línea base y en cada Comité de Proyecto con los datos de avance (E8-12).
 
 ## Anexo 8.D — Reservas, autorización y programación
 
-La Tabla D.1 distingue programación vigente, contingencia adicional y gestión (PMI, 2017, pp. 202 y 443). La valorización monetaria pertenece a Oferta Económica.
+La Tabla D.1 distingue la programación vigente de las reservas de contingencia y de gestión (PMI, 2017, pp. 202 y 443). La valorización monetaria pertenece a la Oferta Económica.
 
-**Tabla D.1 — Componentes de capacidad. Fuente: T-15 y B.2.**
+**Tabla D.1 — Componentes de capacidad. Fuente: T-15 y Tabla B.2.**
 
 | Componente | HH / ventana | Regla/autoridad |
 | --- | --- | --- |
-| Base paquetes | 190.366,00 | T-15 4.2, programada |
+| Base de paquetes | 190.366,00 | T-15, sección 4.2; programada |
 | Soporte puente | 9.336,00; meses 16–20 | Incluido; servicio, no corrección |
-| Protección E1 | 3.072,00; meses 13–20 | Incluida; 256 DES+128 CAL/mes; exclusiva E1 |
-| Programación vigente | 202.774,00 | Suma anterior; fuente conservada |
-| Cierre/estabilización 21–22 | 2.774,54 | Incluido; no añadir otra vez |
-| Contingencia registro | 35.219,98 | JP solicita cargo por evento/mes/perfil |
-| Absorción protegida demostrada | 0,00 | Coincidencia mes 13–20, E1, DES/CAL |
-| Contingencia adicional | 35.219,98 | Necesidad calculada; no integrada en T-15 |
-| Gestión | 400,00 =240 DES+160 CAL | Fuera de línea base; Comité Ejecutivo |
-| Cuatro semanas finales | 0 días de reserva | Evidencia obligatoria |
+| Protección E1 | 3.072,00; meses 13–20 | Incluida; 256 DES + 128 CAL por mes; exclusiva de la Etapa 1 |
+| Programación vigente | 202.774,00 | Suma de las tres filas anteriores |
+| Cierre y estabilización, meses 21–22 | 2.774,54 | Incluido en la programación; no se suma otra vez |
+| Contingencia del registro | 29.647,18 | JP solicita el cargo por evento, mes y perfil; T-15, sección 4.5 |
+| Absorción por la protección E1 | 0,00 | Ningún riesgo coincide con meses 13–20, Etapa 1 y perfiles DES/CAL |
+| Gestión | 1.600,00 | Fuera de la línea base; Comité Ejecutivo |
+| Cuatro semanas finales de cada marcha blanca | 0 días de reserva | Evidencia obligatoria |
 
-La integración técnica exigiría **237.993,98 HH**; incluyendo gestión, **238.393,98 HH**. Es necesidad calculada, no curva ya publicada ni contratación aprobada.
+Con ambas reservas, la capacidad que la oferta debe poder movilizar es de **234.021,18 HH**. El T-15, sección 4.5, compara su peak mensual con la dotación declarada.
 
-R8-02/R8-04 recaen en productos/pruebas anteriores al mes 13; R8-14 es trabajo E2. El descuento demostrado es **0,00 HH**. Las 3.072 HH siguen protegidas para correcciones E1 futuras: si una ocurrencia concreta coincide con ventana/perfil, se descuenta su cargo autorizado del adicional, nunca de nuevo del total base. No se inventa esa ocurrencia para reducir la reserva.
+R8-02 y R8-04 recaen en productos y pruebas anteriores al mes 13, y R8-14 es trabajo de la Etapa 2; por eso el descuento por capacidad protegida es **0,00 HH**. Las 3.072 HH siguen protegidas para correcciones futuras de la Etapa 1: si una ocurrencia concreta coincide con la ventana y el perfil, su cargo autorizado se descuenta de la contingencia, nunca de nuevo del total base.
 
-La Tabla D.2 reparte registro conjunto y contingencia adicional por mes/perfil. ARQ/DAT comparten capacidad, con columnas separadas de imputación. El reparto no garantiza recursos ni cumplimiento de cada ventana.
+La Tabla D.2 reparte la contingencia por mes y perfil. Arquitectura y datos comparten capacidad, con columnas separadas de imputación. El reparto ubica la necesidad; los recursos de cada ventana se verifican en el T-15, sección 4.5.
 
-**Tabla D.2 — Contingencia adicional por mes/perfil, HH. Fuente: B.3 y C.3.3.**
+**Tabla D.2 — Contingencia por mes y perfil, HH. Fuente: Tablas B.2 y B.3.**
 
 | Mes | JP | ARQ | SEG | DAT | DES | CAL | SRE | IMP | Total HH |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | 1 | 132,96 | 39,36 | 28,80 | 0,00 | 0,00 | 0,00 | 82,29 | 2,13 | 285,54 |
 | 2 | 66,72 | 202,56 | 100,80 | 81,60 | 0,00 | 89,60 | 61,71 | 59,73 | 662,73 |
-| 3 | 23,52 | 0,96 | 43,20 | 28,80 | 0,00 | 60,80 | 278,40 | 45,33 | 481,01 |
-| 4 | 9,12 | 87,36 | 43,20 | 28,80 | 0,75 | 30,40 | 446,40 | 57,60 | 703,63 |
+| 3 | 23,52 | 72,96 | 43,20 | 28,80 | 0,00 | 60,80 | 278,40 | 45,33 | 553,01 |
+| 4 | 9,12 | 15,36 | 43,20 | 28,80 | 0,75 | 30,40 | 446,40 | 57,60 | 631,63 |
 | 5 | 9,12 | 461,36 | 74,06 | 57,60 | 0,75 | 60,80 | 403,20 | 0,00 | 1.066,89 |
 | 6 | 9,12 | 419,76 | 236,34 | 28,80 | 1.226,55 | 0,00 | 28,80 | 0,00 | 1.949,37 |
 | 7 | 23,52 | 33,76 | 44,80 | 184,80 | 984,84 | 30,40 | 28,80 | 0,00 | 1.330,92 |
@@ -1369,57 +975,57 @@ La Tabla D.2 reparte registro conjunto y contingencia adicional por mes/perfil. 
 | 10 | 9,12 | 0,96 | 0,00 | 110,40 | 1,18 | 316,67 | 194,18 | 47,31 | 679,83 |
 | 11 | 9,12 | 0,96 | 0,00 | 393,60 | 1,18 | 30,40 | 224,58 | 61,71 | 721,56 |
 | 12 | 9,12 | 0,96 | 0,00 | 220,80 | 1,18 | 30,40 | 0,58 | 4,11 | 267,16 |
-| 13 | 9,12 | 96,96 | 125,28 | 0,00 | 29,98 | 0,00 | 256,54 | 81,05 | 598,93 |
-| 14 | 9,12 | 72,96 | 133,92 | 48,00 | 29,98 | 30,40 | 276,94 | 105,74 | 707,06 |
-| 15 | 23,52 | 1,87 | 129,60 | 241,92 | 957,34 | 0,00 | 256,54 | 1.528,59 | 3.139,39 |
-| 16 | 23,52 | 1,87 | 297,76 | 0,00 | 29,98 | 483,22 | 317,26 | 45,39 | 1.199,01 |
-| 17 | 29,92 | 1,87 | 129,60 | 0,00 | 79,35 | 26,48 | 266,74 | 70,08 | 604,05 |
-| 18 | 9,12 | 1,87 | 133,92 | 0,00 | 79,35 | 0,00 | 266,74 | 94,08 | 585,09 |
-| 19 | 9,12 | 1,87 | 133,92 | 0,00 | 46,44 | 0,00 | 276,94 | 26,88 | 495,17 |
-| 20 | 9,12 | 1,87 | 129,60 | 0,00 | 1,18 | 0,00 | 266,74 | 1.505,28 | 1.913,80 |
-| 21 | 48,21 | 1,87 | 137,76 | 1,44 | 22,08 | 1,28 | 275,44 | 7,68 | 495,77 |
-| 22 | 5,01 | 0,96 | 133,44 | 1,44 | 7,68 | 1,28 | 275,44 | 8,64 | 433,89 |
-| 23 | 5,01 | 0,96 | 137,76 | 1,44 | 7,68 | 1,28 | 275,44 | 8,64 | 438,21 |
-| 24 | 4,16 | 0,96 | 137,76 | 1,44 | 7,68 | 1,28 | 285,64 | 9,84 | 448,76 |
-| 25 | 4,16 | 0,96 | 124,80 | 1,44 | 7,68 | 1,28 | 255,04 | 9,84 | 405,20 |
-| 26 | 4,16 | 0,96 | 137,76 | 1,44 | 7,68 | 1,28 | 285,64 | 9,84 | 448,76 |
-| 27 | 4,16 | 0,96 | 133,44 | 1,44 | 7,68 | 1,28 | 265,24 | 8,88 | 423,08 |
-| 28 | 4,16 | 0,96 | 137,76 | 1,44 | 7,68 | 1,28 | 285,64 | 7,68 | 446,60 |
-| 29 | 4,16 | 0,96 | 133,44 | 1,44 | 7,68 | 1,28 | 275,44 | 7,68 | 432,08 |
-| 30 | 4,16 | 0,96 | 137,76 | 1,44 | 7,68 | 1,28 | 275,44 | 7,68 | 436,40 |
-| 31 | 4,16 | 0,96 | 137,76 | 1,44 | 7,68 | 1,28 | 285,64 | 7,68 | 446,60 |
-| 32 | 4,16 | 0,96 | 133,44 | 1,44 | 7,68 | 1,28 | 265,24 | 7,68 | 421,88 |
-| 33 | 4,16 | 0,96 | 137,76 | 1,44 | 7,68 | 1,28 | 285,64 | 7,68 | 446,60 |
-| 34 | 4,16 | 0,96 | 133,44 | 1,44 | 7,68 | 1,28 | 275,44 | 7,68 | 432,08 |
-| 35 | 4,16 | 0,96 | 137,76 | 1,44 | 7,68 | 1,28 | 275,44 | 7,68 | 436,40 |
-| 36 | 4,16 | 0,96 | 137,76 | 1,44 | 7,68 | 1,28 | 285,64 | 7,68 | 446,60 |
-| 37 | 4,16 | 0,96 | 124,80 | 1,44 | 7,68 | 1,28 | 255,04 | 7,68 | 403,04 |
-| 38 | 4,16 | 0,96 | 137,76 | 1,44 | 7,68 | 1,28 | 275,44 | 7,68 | 436,40 |
-| 39 | 4,16 | 0,96 | 133,44 | 1,44 | 7,68 | 1,28 | 275,44 | 7,68 | 432,08 |
-| 40 | 4,16 | 0,96 | 137,76 | 1,44 | 7,68 | 1,28 | 285,64 | 7,68 | 446,60 |
-| 41 | 4,16 | 0,96 | 133,44 | 1,44 | 7,68 | 1,28 | 265,24 | 7,68 | 421,88 |
-| 42 | 4,16 | 0,96 | 137,76 | 1,44 | 7,68 | 1,28 | 285,64 | 7,68 | 446,60 |
-| 43 | 4,16 | 0,96 | 137,76 | 1,44 | 7,68 | 1,28 | 285,64 | 7,68 | 446,60 |
-| 44 | 4,16 | 0,96 | 133,44 | 1,44 | 7,68 | 1,28 | 265,24 | 7,68 | 421,88 |
-| 45 | 4,16 | 0,96 | 137,76 | 1,44 | 7,68 | 1,28 | 285,64 | 7,68 | 446,60 |
-| 46 | 4,16 | 0,96 | 133,44 | 1,44 | 7,68 | 1,28 | 275,44 | 7,68 | 432,08 |
-| 47 | 4,16 | 0,96 | 137,76 | 1,44 | 7,68 | 1,28 | 275,44 | 7,68 | 436,40 |
-| 48 | 4,16 | 0,96 | 137,76 | 1,44 | 7,68 | 1,28 | 285,64 | 7,68 | 446,60 |
-| 49 | 4,16 | 0,96 | 124,80 | 1,44 | 7,68 | 1,28 | 255,04 | 7,68 | 403,04 |
-| 50 | 4,16 | 0,96 | 137,76 | 1,44 | 7,68 | 1,28 | 275,44 | 7,68 | 436,40 |
-| 51 | 4,16 | 0,96 | 133,44 | 1,44 | 7,68 | 1,28 | 275,44 | 7,68 | 432,08 |
-| 52 | 4,16 | 0,96 | 137,76 | 1,44 | 7,68 | 1,28 | 285,64 | 7,68 | 446,60 |
-| 53 | 4,16 | 0,96 | 133,44 | 1,44 | 7,68 | 1,28 | 265,24 | 7,68 | 421,88 |
-| 54 | 6,29 | 0,96 | 137,76 | 1,44 | 7,68 | 1,28 | 285,64 | 7,68 | 448,73 |
-| 55 | 6,29 | 0,96 | 137,76 | 1,44 | 7,68 | 1,28 | 275,44 | 7,68 | 438,53 |
-| 56 | 6,29 | 0,96 | 139,84 | 1,44 | 7,68 | 1,28 | 275,44 | 7,68 | 440,61 |
-| Total | 644,16 | 1.466,56 | 6.736,64 | 2.074,56 | 4.482,24 | 1.657,86 | 14.095,24 | 4.062,72 | 35.219,98 |
+| 13 | 9,12 | 96,96 | 0,00 | 0,00 | 29,98 | 0,00 | 256,54 | 81,05 | 473,65 |
+| 14 | 9,12 | 72,96 | 0,00 | 48,00 | 29,98 | 30,40 | 276,94 | 105,74 | 573,14 |
+| 15 | 23,52 | 1,87 | 0,00 | 241,92 | 957,34 | 0,00 | 256,54 | 1.528,59 | 3.009,79 |
+| 16 | 23,52 | 1,87 | 163,84 | 0,00 | 29,98 | 467,33 | 317,26 | 45,39 | 1.049,20 |
+| 17 | 29,92 | 1,87 | 0,00 | 0,00 | 79,35 | 42,37 | 266,74 | 70,08 | 490,34 |
+| 18 | 9,12 | 1,87 | 0,00 | 0,00 | 79,35 | 0,00 | 266,74 | 94,08 | 451,17 |
+| 19 | 9,12 | 1,87 | 0,00 | 0,00 | 46,44 | 0,00 | 276,94 | 26,88 | 361,25 |
+| 20 | 9,12 | 1,87 | 0,00 | 0,00 | 1,18 | 0,00 | 266,74 | 1.505,28 | 1.784,20 |
+| 21 | 48,21 | 1,87 | 9,60 | 1,44 | 22,08 | 1,28 | 275,44 | 7,68 | 367,61 |
+| 22 | 5,01 | 0,96 | 9,60 | 1,44 | 7,68 | 1,28 | 275,44 | 8,64 | 310,05 |
+| 23 | 5,01 | 0,96 | 9,60 | 1,44 | 7,68 | 1,28 | 275,44 | 8,64 | 310,05 |
+| 24 | 4,16 | 0,96 | 9,60 | 1,44 | 7,68 | 1,28 | 285,64 | 9,84 | 320,60 |
+| 25 | 4,16 | 0,96 | 9,60 | 1,44 | 7,68 | 1,28 | 255,04 | 9,84 | 290,00 |
+| 26 | 4,16 | 0,96 | 9,60 | 1,44 | 7,68 | 1,28 | 285,64 | 9,84 | 320,60 |
+| 27 | 4,16 | 0,96 | 9,60 | 1,44 | 7,68 | 1,28 | 265,24 | 8,88 | 299,24 |
+| 28 | 4,16 | 0,96 | 9,60 | 1,44 | 7,68 | 1,28 | 285,64 | 7,68 | 318,44 |
+| 29 | 4,16 | 0,96 | 9,60 | 1,44 | 7,68 | 1,28 | 275,44 | 7,68 | 308,24 |
+| 30 | 4,16 | 0,96 | 9,60 | 1,44 | 7,68 | 1,28 | 275,44 | 7,68 | 308,24 |
+| 31 | 4,16 | 0,96 | 9,60 | 1,44 | 7,68 | 1,28 | 285,64 | 7,68 | 318,44 |
+| 32 | 4,16 | 0,96 | 9,60 | 1,44 | 7,68 | 1,28 | 265,24 | 7,68 | 298,04 |
+| 33 | 4,16 | 0,96 | 9,60 | 1,44 | 7,68 | 1,28 | 285,64 | 7,68 | 318,44 |
+| 34 | 4,16 | 0,96 | 9,60 | 1,44 | 7,68 | 1,28 | 275,44 | 7,68 | 308,24 |
+| 35 | 4,16 | 0,96 | 9,60 | 1,44 | 7,68 | 1,28 | 275,44 | 7,68 | 308,24 |
+| 36 | 4,16 | 0,96 | 9,60 | 1,44 | 7,68 | 1,28 | 285,64 | 7,68 | 318,44 |
+| 37 | 4,16 | 0,96 | 9,60 | 1,44 | 7,68 | 1,28 | 255,04 | 7,68 | 287,84 |
+| 38 | 4,16 | 0,96 | 9,60 | 1,44 | 7,68 | 1,28 | 275,44 | 7,68 | 308,24 |
+| 39 | 4,16 | 0,96 | 9,60 | 1,44 | 7,68 | 1,28 | 275,44 | 7,68 | 308,24 |
+| 40 | 4,16 | 0,96 | 9,60 | 1,44 | 7,68 | 1,28 | 285,64 | 7,68 | 318,44 |
+| 41 | 4,16 | 0,96 | 9,60 | 1,44 | 7,68 | 1,28 | 265,24 | 7,68 | 298,04 |
+| 42 | 4,16 | 0,96 | 9,60 | 1,44 | 7,68 | 1,28 | 285,64 | 7,68 | 318,44 |
+| 43 | 4,16 | 0,96 | 9,60 | 1,44 | 7,68 | 1,28 | 285,64 | 7,68 | 318,44 |
+| 44 | 4,16 | 0,96 | 9,60 | 1,44 | 7,68 | 1,28 | 265,24 | 7,68 | 298,04 |
+| 45 | 4,16 | 0,96 | 9,60 | 1,44 | 7,68 | 1,28 | 285,64 | 7,68 | 318,44 |
+| 46 | 4,16 | 0,96 | 9,60 | 1,44 | 7,68 | 1,28 | 275,44 | 7,68 | 308,24 |
+| 47 | 4,16 | 0,96 | 9,60 | 1,44 | 7,68 | 1,28 | 275,44 | 7,68 | 308,24 |
+| 48 | 4,16 | 0,96 | 9,60 | 1,44 | 7,68 | 1,28 | 285,64 | 7,68 | 318,44 |
+| 49 | 4,16 | 0,96 | 9,60 | 1,44 | 7,68 | 1,28 | 255,04 | 7,68 | 287,84 |
+| 50 | 4,16 | 0,96 | 9,60 | 1,44 | 7,68 | 1,28 | 275,44 | 7,68 | 308,24 |
+| 51 | 4,16 | 0,96 | 9,60 | 1,44 | 7,68 | 1,28 | 275,44 | 7,68 | 308,24 |
+| 52 | 4,16 | 0,96 | 9,60 | 1,44 | 7,68 | 1,28 | 285,64 | 7,68 | 318,44 |
+| 53 | 4,16 | 0,96 | 9,60 | 1,44 | 7,68 | 1,28 | 265,24 | 7,68 | 298,04 |
+| 54 | 6,29 | 0,96 | 9,60 | 1,44 | 7,68 | 1,28 | 285,64 | 7,68 | 320,57 |
+| 55 | 6,29 | 0,96 | 9,60 | 1,44 | 7,68 | 1,28 | 275,44 | 7,68 | 310,37 |
+| 56 | 6,29 | 0,96 | 16,00 | 1,44 | 7,68 | 1,28 | 275,44 | 7,68 | 316,77 |
+| Total | 644,16 | 1.466,56 | 1.163,84 | 2.074,56 | 4.482,24 | 1.657,86 | 14.095,24 | 4.062,72 | 29.647,18 |
 
-Se conserva precisión de cálculo; cada celda se muestra a centésimas, por lo que sumas visibles pueden diferir en centésimas de totales sin redondear.
+Cada celda se muestra con dos decimales, por lo que las sumas visibles pueden diferir en centésimas de los totales.
 
-La reserva de gestión propuesta cubre un imprevisto adicional de 400 HH:240 DES/160 CAL, sin atribuir historia empresarial. Con capacidad ADICIONAL de 256 DES/128 CAL al mes, máximo(240/256,160/128)=1,25 meses. Para un mes faltan 32 HH CAL. No usa protección E1 ni declara personal contratado; Comité Ejecutivo autoriza y actualiza línea base sin ampliar hitos. Un cargo conocido de C-01/C-02 consume contingencia, no gestión y contingencia simultáneamente.
+La reserva de gestión cubre un evento que el registro no identifica: rehacer un módulo de clase D (960 HH DES), su integración (480 HH) y una certificación (160 HH CAL), 1.600 HH en total. Con 8 desarrolladores y 4 evaluadores adicionales, el desarrollo toma 960 / (8 × 128) = 0,94 meses y la integración y certificación 640 / (4 × 128) = 1,25 meses, unos 2,2 meses en secuencia. No usa la protección E1. El Comité Ejecutivo la autoriza y actualiza la línea base sin ampliar hitos. Un riesgo identificado, como los escenarios C-01 y C-02, consume contingencia y nunca gestión.
 
-Reserva de cronograma se compara con pronóstico real: no son disponibles las holguras incompatibles con liberaciones/predecesoras. H2/H8 y D-31 requieren cierre de 8.E. Cada consumo registra UUID de evento, paquete, etapa, mes, perfil, HH y evidencia; sólo misma corrección comparte cargo. Residual hipotético no se libera sin eficacia/cierre/autorización. Ninguna reserva deroga Art. 17.3 ni sus multas.
+La reserva de cronograma se compara con el pronóstico de cada hito en el seguimiento semanal. Cada consumo registra el identificador del evento, el paquete, la etapa, el mes, el perfil, las HH y la evidencia; sólo una misma corrección comparte cargo. El residual hipotético no se libera sin eficacia, cierre y autorización. Ninguna reserva deroga el Art. 17.3 ni sus multas.
 
 ## Anexo 8.E — Problemas, dependencias y condiciones de evidencia
 
@@ -1433,19 +1039,16 @@ Estas entradas son estados documentales actuales, no probabilidades FMEA. Tabla 
 | E8-02 | El cronograma de 564 actividades incluye dependencias, revisión Art. 18.3 y nivelación (T-15, secciones 5 y 6). El equipo valida plantillas, dotación y plazos en la línea base y repite el cálculo. LafroX emite la orden de compra de infraestructura en el mes 2 para instalar la sala desde el mes 3. El calendario de compra de hardware de terreno del CLIENTE se acuerda en el mes 1 y asegura disponibilidad antes de cada ola | JP/ARQ/SRE; antes línea base/H3 | R8-10/11/19 |
 | E8-03 | V-12 no confirma fecha/calendario hábil. Febrero 2027 es ejemplo; comprobar E2 antes enero 2029, congelamientos y 28 días | JP/CLIENTE; mes 1 antes H1 | R8-15/17/18 |
 | E8-04 | Objetivo 40 minutos/96 camiones sin ensayo. Demostrar versión operativa, DTE válidos y flujo sin interrupción; papel no acredita despacho | ARQ/SRE/Operaciones; antes H6/H11 | R8-01 |
-| E8-05 | RPO crítico≤15 min/RTO≤4 h por escenario. Si se destruye sitio con tres caminos caídos, identificar copia remota sobreviviente; NAS local destruido no recupera datos. RT-02.11 no deroga RT-07.04. AL-DR-01 y despacho por ensayos separados | ARQ/SRE; H5/H10 y operación | R8-05 |
+| E8-05 | RPO crítico ≤ 15 min y RTO ≤ 4 h por escenario. Si el sitio se destruye con los tres caminos caídos, el ensayo AL-DR-01 identifica la copia remota que sobrevive y la frontera en que se cumple el RPO; el NAS local destruido no aporta datos. El tratamiento del SD4 4.3.2.4 (RT-02.11) se demuestra junto con RT-07.04. AL-DR-01 y la continuidad del despacho se ensayan por separado | ARQ/SRE; H5/H10 y operación | R8-05 |
 | E8-06 | La coordinación de reserva y retención de INT-03/04 (SD4, apartado 4.1.4.4 y Anexo 4-G) está dimensionada en el Anexo 4-I, Tabla A.10, y Anexo 4-W, Tablas A.32 y A.33, con un máximo de cuatro mensajes por línea. La retención consumida no se libera y la holgura cubre líneas repartidas. AL-STOCK-01 mide la proporción de líneas con más de una retención. 3.8.4/3.9.3 verifican carga y drenaje, incluido el enlace de respaldo de Talca, sin sumar la coordinación al drenaje | ARQ/SRE; antes H5/H10 | R8-02/06 |
-| E8-07 | >2.200: tercer agente valle; >2.391 o cambio mezcla/tiempos: recalcular por franja/asignar capacidad. Medir 80 % antes 20 s, abandono≤5 % y resolución inicial≥70 %. El adicional de D.2 no está integrado en T-15 | SRE; H7 mes 16/H12 mes 21; diario | R8-22 |
+| E8-07 | La mesa base cubre los tres niveles de servicio hasta 2.283 contactos al mes (SD4, Anexo 4-W.7). Sobre 2.200 se activa el tercer agente valle; sobre 2.391, o con otra mezcla o tiempos, se recalcula por franja y se asigna capacidad. Se miden 80 % antes de 20 s, abandono ≤ 5 % y resolución inicial ≥ 70 %. La cota del tercer agente está en la contingencia (T-15, sección 4.5) | SRE; H7 mes 16/H12 mes 21; diario | R8-22 |
 | E8-08 | La suspensión del proveedor de lácteos, de marzo a septiembre de 2026, es antecedente anterior; V-13 sin restitución documentada. Confirmar condiciones/evidencia con CLIENTE/proveedor sin atribuir solución retroactiva | JP/DAT/Calidad CLIENTE; mes 1 y antes aceptación trazabilidad | R8-16/23 |
 | E8-09 | AL-STOCK-01/AL-ACT-01, carga, offline y conmutación descritos, no ejecutados. Aportar resultados reproducibles y resolver defectos críticos/altos | CAL/líderes; H5/H10/cierre aplicable | R8-02–07/16/18 |
 | E8-10 | Antecedentes, certificaciones y dotación del SD1 son declarados; su acreditación documental se entrega en el Sobre N.° 1 (SD1, sección 1.4). No usar las declaraciones como disponibilidad demostrada antes de asignar personas | JP; antes presentación correspondiente | R8-11 |
-| E8-11 | Separar diez días de revisión CLIENTE y diez de subsanación; reconocer hito sólo con acta. Reserva real depende de paquetes que gatillan hito; H2/H8 no llegan al límite y H10 pierde holgura al conservar D-31 | JP/CAL/CLIENTE; antes línea base | R8-12/17/18/31 |
+| E8-11 | Separar los diez días hábiles de revisión del CLIENTE de los diez de subsanación; reconocer el hito sólo con acta. La reserva de cada hito va de 4 a 35 días hábiles (T-15, Tabla 5.2). En el H1 y el H8, menores que el plazo de subsanación, el borrador se revisa una semana antes de la entrega y toda observación formal se subsana en cinco días hábiles (R8-12) | JP/CAL/CLIENTE; antes de la línea base | R8-12/17/18/31 |
 | E8-12 | La calibración de probabilidades e impactos de la sección 8.1.3 y la simulación usan juicio del equipo, no frecuencias medidas. Contrastar con los datos de avance y de incidentes desde el mes 3 y recalcular el valor esperado y la simulación en cada Comité de Proyecto | JP/CAL; trimestral desde el mes 3 | Todos |
-
-| E8-13 | T-15 Tabla 6.1 concluye 2.4.1 el28-05-2027/2.4.2 el30-03-2028, después de límites 17-05-2027/17-03-2028. Tabla 5.2 mide diseño 2.1.1/2.1.4; SD7 Tabla 7.5 requiere aprobación. Precisar entregable/revisión/acta sin mover meses | JP/ARQ/CLIENTE; antes línea base | R8-11/12/17 |
-| E8-14 | D-31 exige fin 3.9.1 antes de 3.9.2–5; sus A01 empiezan 01-05-2028 sin predecesora, pese a integración hasta 18-05. El modelo incorpora esas cuatro FC y H10 sin riesgos acaba 27-06-2028. Las referencias 1.2.2.A01/7.1.4.A02 no existen en las 564 actividades: anclas por extremo de ventana conservador, a precisar por ocurrencia | JP/CAL; antes línea base | R8-11/15/18/31 |
-| E8-15 | Distribuir esfuerzo continuo por hábil junto a productos alcanza 48,10 equivalentes DES frente 48. JP/documentación necesita 11 e IMP 30; confirmar distribución real y asignaciones. El modelo nivela sin superar capacidad, retrasando productos si hace falta | JP/DES/CAL/SRE; antes asignar | R8-11/14/32 |
-| E8-16 | Contingencia adicional 35.219,98 HH y gestión 400 HH no están en T-15. Reconciliar meses/perfiles/recursos; sumar HH no demuestra P80 conforme ni contratación. La corrida queda condicionada a disponibilidad/calendario | JP/SRE/Comité Ejecutivo; antes aprobar recursos | Todos |
+| E8-13 | La programación supone el inicio el 1 de febrero de 2027 y días hábiles de lunes a viernes, sin feriados del CLIENTE. Al confirmar V-12 se convierten los meses a fechas, se repite la nivelación y la simulación del Anexo 8.C, y se verifica que cada fecha P80 siga antes de su límite | JP/CAL; mes 1, antes de la línea base | R8-11/17 |
+| E8-14 | La carga de desarrollo llega a 48,10 personas equivalentes frente a 48 en un día de julio a septiembre de 2027. Si R8-18 se materializa, implantación llega a 34,9 y 36,8 equivalentes en los meses 15 y 20, frente a 30: el contrato del personal de implantación incluye una opción de hasta 8 personas adicionales por cuatro semanas, activable con cinco días hábiles de aviso. Asignar personas con nombre y firmar ese contrato antes del mes 11 | JP/DES/IMP; antes de asignar y antes del mes 11 | R8-11/14/18 |
 
 La regla de precio es única en la oferta: el SD2 (Anexo 2.2, S-09), el SD3 (Anexo 3.G, RNG-08) y el Formulario T-12 (RF-03.11 y RF-03.12) conservan el precio acordado al capturar el pedido. Su transmisión al ERP sin alteración se verifica en las pruebas de integración.
 
@@ -1487,12 +1090,12 @@ DAT/IMP conservan perfiles de esfuerzo; responsabilidad desde mes 22 pasa a Oper
 
 ## Referencias
 
-Las fuentes citadas en este documento se listan a continuación en formato APA 7.ª edición.
+Las fuentes citadas en este documento se listan en formato APA 7.ª edición. Las Bases se citan en el texto con su documento y el artículo, capítulo, sección o código del requisito.
 
-- Distribuidora Puelche S.A. (2026a). *Bases Administrativas de Licitación N.º TFEP-01/2026*, artículos 17, 18 y 50.2, y Formularios T-16 y T-22.
-- Distribuidora Puelche S.A. (2026b). *Bases Técnicas Transversales de Licitación N.º TFEP-01/2026*, RT-07.04, RT-07.07, RT-19.04, RT-21.06, RT-21.07 y RT-26.04.
-- Distribuidora Puelche S.A. (2026c). *Caso 02: Logística*, capítulos 10 a 14 y requisitos específicos citados.
-- Distribuidora Puelche S.A. (2026d). *Aclaraciones de la Licitación N.º TFEP-01/2026*, secciones 2, 4, 6, 7 y 11 (Capítulo 8).
+- Distribuidora Puelche S.A. (2026a). *Bases Administrativas de Licitación N.º TFEP-01/2026: Contratación de Solución Integral de Software y Servicios de Operación*.
+- Distribuidora Puelche S.A. (2026b). *Bases Técnicas Transversales de Licitación N.º TFEP-01/2026*.
+- Distribuidora Puelche S.A. (2026c). *Caso 02: Logística. Especificaciones del problema y operación de Distribuidora Puelche S.A.*
+- Distribuidora Puelche S.A. (2026d). *Aclaraciones de la Licitación N.º TFEP-01/2026*.
 - LafroX. (2026). Subdocumentos 1 a 7 y 13, con los anexos y formularios citados.
 - International Electrotechnical Commission. (2018). *IEC 60812:2018 Failure modes and effects analysis (FMEA and FMECA)*. IEC.
 - International Organization for Standardization. (2018). *ISO 31000:2018 Risk management — Guidelines*. ISO.

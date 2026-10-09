@@ -23,7 +23,7 @@ La sección 5 incorpora las revisiones del CLIENTE (Art. 18.3) como retardos, ca
 
 ## 2 Ruta crítica y holguras
 
-La ruta crítica se identifica sobre el cronograma por actividad de la sección 6.1, con la red de la sección 5. Con fechas de hito fijas, la holgura total de cada camino es su reserva hasta la fecha límite de entrega de la Tabla 5.2. La ruta crítica es la cadena de la Etapa 2: diseño (1.2.5, 2.1.4 y 2.4.2; H8, 13 días hábiles de reserva), módulos (3.5), prueba de integración (3.9.1; H9, 21 días hábiles y 89,9 % de probabilidad de entrega a tiempo en la simulación con riesgos del SD8) y certificación (3.9.2–3.9.7; H10, 28 días hábiles). Son caminos casi críticos la cadena de la Etapa 1 que nace en las interfaces sin documentación del ERP (1.2.3 → 3.3.2 → 3.4 → 3.8.1, H4 con 19 días; → 3.8.2–3.8.8, H5 con 35 días) y la sala técnica y los ambientes del H3 (2.3, 5.1.2, 6.1, 6.3, 6.6.3 y 3.1; 19 días). El H1 tiene la menor reserva absoluta, 6 días hábiles, con una desviación mínima (σ 0,58) y una probabilidad de entrega a tiempo superior al 99,9 %. Las marchas blancas (4.2.1, meses 13 a 15, y 4.3.1, meses 19 y 20) y los pasos a producción (H7 en el mes 16 y H12 en el mes 21) tienen fechas contractuales fijas.
+La ruta crítica se identifica sobre el cronograma por actividad de la sección 6.1, con la red de la sección 5. Con fechas de hito fijas, la holgura total de cada camino es su reserva hasta la fecha límite de entrega de la Tabla 5.2. La ruta crítica es la cadena de la Etapa 2: diseño (1.2.5, 2.1.4 y 2.4.2; H8, 4 días hábiles de reserva y 91,1 % de probabilidad de entrega a tiempo en la simulación con riesgos del SD8), módulos (3.5), prueba de integración (3.9.1; H9, 21 días hábiles) y certificación (3.9.2–3.9.7; H10, 25 días hábiles). Son caminos casi críticos la cadena de la Etapa 1 que nace en las interfaces sin documentación del ERP (1.2.3 → 3.3.2 → 3.4 → 3.8.1, H4 con 19 días; → 3.8.2–3.8.8, H5 con 35 días) y la sala técnica y los ambientes del H3 (2.3, 5.1.2, 6.1, 6.3, 6.6.3 y 3.1; 19 días). El H1 tiene la menor reserva absoluta, 6 días hábiles, con una desviación mínima (σ 0,58) y una probabilidad de entrega a tiempo superior al 99,9 %. Las marchas blancas (4.2.1, meses 13 a 15, y 4.3.1, meses 19 y 20) y los pasos a producción (H7 en el mes 16 y H12 en el mes 21) tienen fechas contractuales fijas.
 
   
 - Caminos casi críticos
@@ -35,7 +35,7 @@ La ruta crítica se identifica sobre el cronograma por actividad de la sección 
 
   <a id="fig:T15-ruta"></a>
 
-La figura presenta la secuencia mensual de la implementación y la convergencia de los caminos casi críticos en los hitos. En el Anexo 7.B, D-29 a D-31 forman la ruta crítica, D-02, D-04 y D-14 a D-25 forman la cadena casi crítica de la Etapa 1 y D-07 a D-13 convergen en el H3. También son caminos casi críticos la captura de las reglas de ruteo del planificador (1.2.2 y 3.4.7 M4 Rutas), antes de su jubilación; los acuerdos con los diez transportistas y con el sindicato (5.4.1 y 5.4.2), antes de la ola de reparto; y la certificación del intercambio electrónico con las cadenas (3.6.5 y 3.6.6), antes del mes 21.
+La figura presenta la secuencia mensual de la implementación y la convergencia de los caminos casi críticos en los hitos. En el Anexo 7.B, D-29 a D-31c forman la ruta crítica, D-02, D-04 y D-14 a D-25 forman la cadena casi crítica de la Etapa 1 y D-07 a D-13 convergen en el H3. También son caminos casi críticos la captura de las reglas de ruteo del planificador (1.2.2 y 3.4.7 M4 Rutas), antes de su jubilación; los acuerdos con los diez transportistas y con el sindicato (5.4.1 y 5.4.2), antes de la ola de reparto; y la certificación del intercambio electrónico con las cadenas (3.6.5 y 3.6.6), antes del mes 21.
 
 La holgura se gestiona en las instancias de gobierno de la EDT: el avance de la ruta crítica y de los caminos casi críticos se revisa en la reunión semanal y en el Comité de Proyecto quincenal (paquetes 1.3.5 y 1.8.3); toda desviación que comprometa un hito se escala al Comité Ejecutivo con su análisis de impacto (paquetes 1.4.3 y 1.8.2); y el informe mensual con valor ganado avisa toda desviación mayor al 10 % con su plan dentro de cinco días hábiles (paquete 1.8.6).
 
@@ -144,7 +144,7 @@ La tabla siguiente presenta las horas de cada paquete con sus tres estimaciones 
 | 2.3.1 | E | SRE | 1–2 | 180.00 | 240.00 | 300.00 | 240.00 |
 | 2.3.2 | E | SRE | 1–2 | 180.00 | 240.00 | 300.00 | 240.00 |
 | 2.3.3 | E | SRE | 2–2 | 180.00 | 240.00 | 300.00 | 240.00 |
-| 2.4.1 | E | ARQ | 4–4 | 180.00 | 240.00 | 300.00 | 240.00 |
+| 2.4.1 | E | ARQ | 3–3 | 180.00 | 240.00 | 300.00 | 240.00 |
 | 2.4.2 | E | ARQ | 14–14 | 180.00 | 240.00 | 300.00 | 240.00 |
 | 2.5.1 | E | SRE | 3–3 | 180.00 | 240.00 | 300.00 | 240.00 |
 | 2.5.2 | E | SRE | 3–3 | 180.00 | 240.00 | 300.00 | 240.00 |
@@ -347,8 +347,8 @@ La tabla siguiente presenta, mes a mes, las horas por etapa y las personas equiv
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | 1 | 1415.81 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 1415.81 | 5 | 2 | 2 | 0 | 0 | 0 | 4 | 1 | 14 |
 | 2 | 2909.52 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 2909.52 | 4 | 6 | 5 | 2 | 0 | 3 | 3 | 3 | 26 |
-| 3 | 2121.67 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 2121.67 | 2 | 1 | 3 | 1 | 0 | 2 | 9 | 3 | 21 |
-| 4 | 3382.78 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 3382.78 | 1 | 3 | 3 | 1 | 1 | 1 | 17 | 3 | 30 |
+| 3 | 2361.67 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 2361.67 | 2 | 2 | 3 | 1 | 0 | 2 | 9 | 3 | 22 |
+| 4 | 3142.78 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 3142.78 | 1 | 1 | 3 | 1 | 1 | 1 | 17 | 3 | 28 |
 | 5 | 4079.21 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 4079.21 | 1 | 10 | 4 | 2 | 1 | 2 | 15 | 0 | 35 |
 | 6 | 5925.05 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 5925.05 | 1 | 9 | 4 | 1 | 31 | 1 | 2 | 0 | 49 |
 | 7 | 4964.01 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 4964.01 | 2 | 1 | 1 | 5 | 30 | 1 | 2 | 0 | 42 |
@@ -360,8 +360,8 @@ La tabla siguiente presenta, mes a mes, las horas por etapa y las personas equiv
 | 13 | 0.00 | 3936.70 | 548.57 | 0.00 | 0.00 | 0.00 | 0.00 | 4485.27 | 1 | 3 | 6 | 0 | 3 | 2 | 1 | 23 | 39 |
 | 14 | 0.00 | 4317.79 | 571.43 | 0.00 | 0.00 | 0.00 | 0.00 | 4889.22 | 1 | 2 | 6 | 2 | 3 | 2 | 1 | 24 | 41 |
 | 15 | 0.00 | 4044.68 | 4160.00 | 0.00 | 0.00 | 0.00 | 0.00 | 8204.68 | 2 | 1 | 6 | 8 | 26 | 2 | 1 | 23 | 69 |
-| 16 | 0.00 | 0.00 | 3054.06 | 0.00 | 4699.00 | 0.00 | 0.00 | 7753.06 | 2 | 1 | 9 | 0 | 3 | 11 | 16 | 22 | 64 |
-| 17 | 0.00 | 0.00 | 1669.57 | 0.00 | 3482.00 | 0.00 | 0.00 | 5151.57 | 2 | 1 | 6 | 0 | 4 | 2 | 15 | 14 | 44 |
+| 16 | 0.00 | 0.00 | 2994.06 | 0.00 | 4699.00 | 0.00 | 0.00 | 7693.06 | 2 | 1 | 9 | 0 | 3 | 10 | 16 | 22 | 63 |
+| 17 | 0.00 | 0.00 | 1729.57 | 0.00 | 3482.00 | 0.00 | 0.00 | 5211.57 | 2 | 1 | 6 | 0 | 4 | 3 | 15 | 14 | 45 |
 | 18 | 0.00 | 0.00 | 1562.91 | 0.00 | 2738.00 | 0.00 | 0.00 | 4300.91 | 1 | 1 | 6 | 0 | 4 | 2 | 15 | 8 | 37 |
 | 19 | 0.00 | 0.00 | 0.00 | 3753.86 | 2779.00 | 0.00 | 0.00 | 6532.86 | 1 | 1 | 6 | 0 | 4 | 2 | 15 | 26 | 55 |
 | 20 | 0.00 | 0.00 | 0.00 | 3522.05 | 2966.00 | 0.00 | 0.00 | 6488.05 | 1 | 1 | 6 | 0 | 2 | 1 | 16 | 25 | 52 |
@@ -404,6 +404,23 @@ La tabla siguiente presenta, mes a mes, las horas por etapa y las personas equiv
 
 Factibilidad por capacidad aritmética: se debe dotar cada rol con la curva indicada. El registro nominal de personas y los turnos se aprueban junto con la línea base del H1. La reserva E1 es exclusiva; el trabajo de E2 usa capacidad adicional. La revisión de HH modifica conjuntamente dotación, cronograma y exposición de SD8.
 
+### 4.5 Reservas de contingencia y de gestión
+
+Las 202.774 HH de la sección 4.3 son la línea base programada. Sobre ella, el SD8 dimensiona dos reservas en horas: la de contingencia, de 29.647,18 HH, para los riesgos identificados del registro (SD8, sección 8.3.2), y la de gestión, de 1.600 HH, para un evento no identificado. Ninguna de las dos se programa como trabajo: se consumen sólo cuando un riesgo se materializa y el comité competente autoriza el cargo. Con ambas, la capacidad que la oferta debe poder movilizar llega a 234.021,18 HH. La reserva de cronograma de cada hito, en días hábiles, está en la Tabla 5.2.
+
+La tabla siguiente reparte la contingencia por período con la distribución mensual del SD8, Anexo 8.D, y compara el peak de personas equivalentes adicionales con la curva de la sección 4.4 y la dotación de la sección 5.7.
+
+| Período | HH de contingencia | Peak adicional (personas equivalentes) | Rol que más aporta | Capacidad que la cubre |
+| --- | --- | --- | --- | --- |
+| Meses 1–6 | 5.149,18 | 15,2 en el mes 6 | DES, 9,6 | Desarrollo: 31 + 9,6 = 40,6, dentro de las 48 personas. ARQ y DAT suman 16,1 equivalentes en el mes 5 frente a 15: ese exceso se nivela al mes 6, antes de la fecha límite del H3 |
+| Meses 7–12 | 5.104,75 | 10,4 | DAT, 3,1 en el mes 11 | Arquitectura y datos, y calidad, dentro de su límite |
+| Meses 13–15 | 4.056,58 | 23,5 en el mes 15 | IMP, 11,9 | Implantación: 23 + 11,9 = 34,9 frente a las 30 personas contratadas; la extensión de la marcha blanca E1 (R8-18) se cubre con la opción de hasta 8 personas del contrato de implantación (sección 5.7) |
+| Meses 16–21 | 4.503,76 | 13,9 | IMP, 11,8 en el mes 20 | Implantación: 25 + 11,8 = 36,8 en la marcha blanca E2, con la misma opción del contrato; calidad: 10 + 3,7 = 13,7 dentro de las 16 del mes 16 |
+| Meses 22–33 | 3.720,39 | 2,5 | SRE (mesa, R8-22) | SRE y NOC: dentro de las 44 personas |
+| Meses 34–56 | 7.112,52 | 2,5 | SRE (mesa, R8-22) | SRE y NOC: dentro de las 44 personas |
+
+Si todas las reservas se consumieran en el mes de mayor exposición, el mes 15 pasaría de 69 a 92,5 personas equivalentes; el único rol que supera su dotación es implantación, que ya se contrata para las marchas blancas (sección 5.7). La reserva de gestión equivale a rehacer un módulo de clase D no previsto (960 HH de desarrollo), su integración (480 HH) y una certificación (160 HH), con las unidades de la sección 4.1; con 8 desarrolladores y 4 evaluadores toma unos 2,2 meses en secuencia, por lo que el Comité Ejecutivo la autoriza sólo si el evento se detecta con esa anticipación respecto del hito afectado.
+
 ## 5 Red agregada, restricciones y escenarios de calendario
 
 ### 5.1 Cálculo reproducible
@@ -424,7 +441,7 @@ El resultado no tiene dependencias incumplidas, ningún paquete termina fuera de
 | --- | --- | --- | --- |
 | Alcance (H1) | 1.2.1, 1.2.4 | 01-02-2027 | 09-03-2027 |
 | Interfaces sin documentación | 1.2.3 | 01-02-2027 | 09-02-2027 |
-| Diseño E1 y seguridad (H2) | 2.1.1–2.1.3, 2.2.1, 2.2.4 | 01-03-2027 | 29-03-2027 |
+| Diseño E1, seguridad y aprobación (H2) | 2.1.1–2.1.3, 2.2.1, 2.2.3, 2.2.4, 2.4.1 | 01-03-2027 | 29-04-2027 |
 | Planos, especificación y sala técnica | 2.3.1, 2.3.2, 5.1.2, 6.1 | 01-02-2027 | 20-05-2027 |
 | Racks y borde de los CD (H3) | 6.3.1–6.3.3, 6.6 | 03-05-2027 | 29-06-2027 |
 | Servicios de nube y ambientes (H3) | 3.2.1, 3.2.2, 3.2.4, 3.2.5, 3.1 | 03-05-2027 | 21-06-2027 |
@@ -433,19 +450,21 @@ El resultado no tiene dependencias incumplidas, ningún paquete termina fuera de
 | Integraciones externas E1 | 3.6.1–3.6.4 | 06-08-2027 | 10-11-2027 |
 | Prueba de integración E1 (H4) | 3.8.1 | 01-10-2027 | 20-10-2027 |
 | Certificación E1 (H5) | 3.8.2–3.8.8 | 01-10-2027 | 29-11-2027 |
-| Diseño E2 (H8) | 1.2.5, 2.1.4, 2.4.2 | 01-02-2028 | 30-03-2028 |
+| Diseño E2 (H8) | 1.2.5, 2.1.4, 2.4.2 | 01-02-2028 | 13-03-2028 |
 | Módulos E2 | 3.5 | 03-04-2028 | 26-04-2028 |
 | Intercambio con las cadenas | 3.6.5, 3.6.6 | 01-02-2028 | 23-08-2028 |
 | Prueba de integración E2 (H9) | 3.9.1 | 01-05-2028 | 18-05-2028 |
-| Certificación E2 (H10) | 3.9.2–3.9.7 | 01-05-2028 | 07-06-2028 |
+| Certificación E2 (H10) | 3.9.2–3.9.7 | 01-05-2028 | 12-06-2028 |
 
 ### 5.2 Secuencias que hacen compatible el modelo
 
-El cálculo por actividad y la simulación del SD8 corrigieron cuatro supuestos de la programación mensual anterior.
+El cálculo por actividad y la simulación del SD8 corrigieron seis supuestos de la programación mensual anterior.
 
 - **Ventanas de módulos.** Un módulo no cabe en medio mes: su secuencia interna toma unos 18 días hábiles con 12 personas. Por eso las ventanas de 3.4.3 (meses 6 a 8), 3.4.7 y 3.4.8 (meses 7 a 9) y 3.4.9 y 3.4.10 (meses 8 y 9) se ampliaron, y las dependencias entre módulos pasaron a ser por interfaz.
 - **Sala técnica y ambientes.** La cadena deja reserva ante el H3: planos 2.3.1/2.3.2 en el mes 1, especificación y orden de compra emitida por LafroX en el mes 2 (5.1.2), instalación 6.1.1–6.1.4 en el mes 3 y recepción 6.1.5 en el mes 4. Los racks R01/R02 se montan en los meses 4 y 5, el gabinete de Concepción en el mes 4 y el borde de los CD entra en servicio en el mes 5 (6.6.3), junto con los ambientes en la nube. Los gabinetes de cross-docking se montan en el mes 9. El CLIENTE solo compra el equipamiento de terreno antes de cada ola. Las actas 5.1.3 acreditan la recepción técnica de ambos suministros.
-- **Certificación.** Las pruebas de aceptación y de operación sin conexión (3.8.2 y 3.8.3) empiezan al terminar la prueba de integración (D-21); las pruebas de carga, recuperación, seguridad ofensiva y respaldo (3.8.4 a 3.8.6 y 3.8.8) empiezan con la entrega de los módulos en QA (D-21b), porque no dependen del resultado funcional de la integración. En la Etapa 2, la integración (3.9.1) y la certificación (3.9.2 a 3.9.7) se adelantan al mes 16, una vez entregados los módulos. Todas corren en paralelo con la revisión del CLIENTE del H4 y del H9; si esa revisión formula observaciones sobre el software, la certificación repite los casos afectados dentro de su reserva.
+- **Certificación.** Las pruebas de aceptación y de operación sin conexión (3.8.2 y 3.8.3) empiezan al terminar la prueba de integración (D-21); las pruebas de carga, recuperación, seguridad ofensiva y respaldo (3.8.4 a 3.8.6 y 3.8.8) empiezan con la entrega de los módulos en QA (D-21b), porque no dependen del resultado funcional de la integración. En la Etapa 2 rige la misma regla: la aceptación 3.9.2 ejecuta sus ciclos al terminar 3.9.1, con su preparación en paralelo (D-31), y las pruebas de carga, recuperación y seguridad ofensiva (3.9.3 a 3.9.5) empiezan con los módulos en QA (D-31b); todas terminan en el mes 16 y el acta 3.9.6 se prepara en junio. Todas corren en paralelo con la revisión del CLIENTE del H4 y del H9; si esa revisión formula observaciones sobre el software, la certificación repite los casos afectados dentro de su reserva.
+- **Aprobaciones que gatillan el H2 y el H8.** Los documentos de aprobación 2.4.1 y 2.4.2 terminan antes de la fecha límite de su hito: 2.4.1 se elabora en abril de 2027, apenas se entregan la arquitectura, el plan de seguridad (2.2.3, con cuatro especialistas) y el modelo de datos, y queda en revisión del CLIENTE en mayo; 2.4.2 se elabora entre el 1 y el 13 de marzo de 2028, después del diseño 2.1.4, que se ejecuta con cuatro arquitectos en la primera quincena de febrero.
+- **Corte de la migración.** Sólo la conciliación final y el corte (3.7.5.A06) son una intervención productiva y se programan en días permitidos, después de los dos ensayos 3.7.3 y 3.7.4 (D-24); el análisis, el diseño y las pruebas del corte avanzan en paralelo con esos ensayos en ambientes no productivos.
 - **Refuerzo de calidad.** Durante las certificaciones (meses 9 a 12 y 16 a 18) el equipo de calidad se refuerza con evaluadores subcontratados hasta 16 personas por día (SD6, sección 6.1.3), para dejar ante el H5 y el H10 la reserva que exige la simulación del SD8.
 
 La nivelación concentra la construcción de la Etapa 1 entre julio y septiembre de 2027 con 48 personas de desarrollo, toda la división declarada. Las dependencias D-08 y D-12 del Anexo 7.B se precisaron por paquete, porque a nivel de cuenta bloqueaban sin necesidad: los ambientes no esperan a la plataforma de IoT (3.2.3), que precede a M12, ni la configuración de los CD espera a los gabinetes de cross-docking (6.3.4), que preceden al equipamiento de campo.
@@ -458,14 +477,14 @@ La duración PERT de cada paquete usa la tríada de la sección 4.1: O = 0,75 d,
 
 | Hito | Entrega programada | Fecha límite de entrega (acta − 10 días hábiles) | Reserva (días hábiles) | Camino de menor probabilidad (PERT) | σ del camino (días hábiles) | P(entrega a tiempo), PERT | P(entrega a tiempo), simulación con riesgos | Fecha P80 simulada |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| H1 | 09-03-2027 | 17-03-2027 | 6 | 1.2.1 | 0,58 | > 99,9 % | > 99,9 % | 10-03-2027 |
-| H2 | 29-03-2027 | 17-05-2027 | 35 | 2.1.1 | 1,75 | > 99,9 % | > 99,9 % | 09-04-2027 |
-| H3 | 21-06-2027 | 16-07-2027 | 19 | 3.1.1 | 1,25 | > 99,9 % | 98,6 % | 09-07-2027 |
-| H4 | 20-10-2027 | 16-11-2027 | 19 | 3.8.1 | 1,17 | > 99,9 % | > 99,9 % | 03-11-2027 |
-| H5 | 29-11-2027 | 17-01-2028 | 35 | 3.8.2 | 1,67 | > 99,9 % | 97,7 % | 05-01-2028 |
-| H8 | 29-02-2028 | 17-03-2028 | 13 | 2.1.4 | 1,75 | > 99,9 % | 99,3 % | 09-03-2028 |
-| H9 | 18-05-2028 | 16-06-2028 | 21 | 3.9.1 | 1,17 | > 99,9 % | 89,9 % | 14-06-2028 |
-| H10 | 07-06-2028 | 17-07-2028 | 28 | 3.9.2 | 1,67 | > 99,9 % | 97,7 % | 07-07-2028 |
+| H1 | 09-03-2027 | 17-03-2027 | 6 | 1.2.1 | 0,58 | > 99,9 % | > 99,9 % | 11-03-2027 |
+| H2 | 29-04-2027 | 17-05-2027 | 12 | 2.1.1 → 2.4.1 | 1,90 | > 99,9 % | 97,4 % | 10-05-2027 |
+| H3 | 21-06-2027 | 16-07-2027 | 19 | 3.1.1 | 1,25 | > 99,9 % | 88,3 % | 13-07-2027 |
+| H4 | 20-10-2027 | 16-11-2027 | 19 | 3.8.1 | 1,17 | > 99,9 % | > 99,9 % | 05-11-2027 |
+| H5 | 29-11-2027 | 17-01-2028 | 35 | 3.8.2 | 1,67 | > 99,9 % | 97,8 % | 04-01-2028 |
+| H8 | 13-03-2028 | 17-03-2028 | 4 | 2.4.2 | 0,75 | > 99,9 % | 91,1 % | 16-03-2028 |
+| H9 | 18-05-2028 | 16-06-2028 | 21 | 3.9.1 | 1,17 | > 99,9 % | > 99,9 % | 29-05-2028 |
+| H10 | 12-06-2028 | 17-07-2028 | 25 | 3.9.1 → 3.9.2 → 3.9.6 | 1,54 | > 99,9 % | > 99,9 % | 29-06-2028 |
 
 Ni el PERT ni la simulación incluyen un error sistemático en los tamaños supuestos que afecte a todos los paquetes a la vez, la falta de personas con las competencias requeridas ni un suministro de la infraestructura fuera de plazo más allá de lo modelado en R8-19. Esos casos se tratan con los disparadores del SD8, y su control es el seguimiento semanal de la reserva de cada hito.
 
@@ -492,9 +511,9 @@ La curva de la sección 4.4 y la carga diaria de la sección 6.1 se comparan con
 | DES | 31 equivalentes en el mes 6; 48 personas simultáneas entre julio y septiembre de 2027 | Desarrollo de software | 48 | La división trabaja en PHP/Laravel y Kotlin, el mismo stack de la oferta; el Líder de Desarrollo verifica la experiencia de cada persona asignada antes del mes 5. |
 | SRE | 17 equivalentes en el mes 4; 24 simultáneas en el mes 4; 15 a 18 en Operación | SRE y Cloud (12) y NOC 24×7 (32) | 44 | Los meses 3 a 6 concentran la instalación de sala, racks y sitios: energía, climatización e incendio (6.1.2–6.1.4) los ejecutan instaladores especializados supervisados por SRE. NOC y mesa se cubren con personal del NOC con turnos asignados. |
 | SEG | 9 en el mes 16 con el SOC; 6 simultáneas sin el SOC | CISO y especialistas en ciberseguridad | 7 | El puesto SOC 24×7 suma 744 HH en un mes de 31 días, es decir, 6 personas equivalentes con las 128 HH efectivas de la sección 4.1; el SD4, Anexo 4-W.7, lo cubre con 4 personas a 42 horas semanales (5 desde el 26-04-2028) y la diferencia corresponde a ausencias y relevos. Se cubre con contratación o con un servicio SOC subcontratado (RT-11.17), con las mismas horas de la sección 4.2. |
-| CAL | 11 equivalentes y 13 simultáneas en el mes 16 | Aseguramiento y automatización de pruebas | 10 | La división declara 10; durante las certificaciones se agregan evaluadores subcontratados hasta 16 por día (SD6, sección 6.1.3). |
+| CAL | 10 equivalentes y 13 simultáneas en el mes 16 | Aseguramiento y automatización de pruebas | 10 | La división declara 10; durante las certificaciones se agregan evaluadores subcontratados hasta 16 por día (SD6, sección 6.1.3). |
 | ARQ y DAT | 10 y 11 equivalentes; 15 simultáneas en conjunto en el mes 7 | Arquitectura de solución e integración | 15 | Datos y arquitectura comparten la división; la nivelación la limita a 15 personas por día. |
-| IMP | 26 equivalentes en el mes 19; 30 simultáneas en el mes 14 | La Tabla 1.1 no tiene una división de implantación | — | Los 13 puestos de acompañamiento se cubren con personal de implantación contratado para las marchas blancas y capacitado en 7.1. |
+| IMP | 26 equivalentes en el mes 19; 30 simultáneas en el mes 14 | La Tabla 1.1 no tiene una división de implantación | — | Los 13 puestos de acompañamiento se cubren con personal de implantación contratado para las marchas blancas y capacitado en 7.1. El contrato incluye una opción de hasta 8 personas adicionales por cuatro semanas para la contingencia de R8-18 (sección 4.5). |
 | JP | 5 en el mes 1 | Dirección de Operaciones, fuera de la Tabla 1.1 | — | Personas de dirección y documentación, no cinco jefes de proyecto. |
 
 Los roles mínimos del numeral 19.2 de las Bases Técnicas Transversales se imputan a las familias así. El Jefe de Proyecto (100 % en implementación) se imputa a JP en los meses 1–21. El Líder de Desarrollo (100 % en implementación) se imputa a ARQ en los meses 1–4, donde participa en el diseño 2.1 y en los prototipos 2.6.2, y a DES desde el mes 4 (3.11.3/3.11.4 y los módulos); por eso la curva muestra DES cero en los meses 1–3 sin que el rol quede sin horas. El Líder Funcional (100 % en implementación) se imputa a IMP en los meses 1–4 (1.2.2 y 2.6) y a CAL e IMP desde el mes 5 (pruebas de aceptación y olas). El Líder de Integración (permanente en implementación) se imputa a ARQ (1.2.3, 3.3 y 3.6). Ninguna de estas imputaciones agrega horas: forman parte de las horas de los paquetes donde trabajan. El SD1, sección 1.5, nomina a las personas que ocupan cada rol.
@@ -547,15 +566,15 @@ La Tabla 6.1 es el cronograma de las 564 actividades de los 163 paquetes con ent
 | 2.1.3.A01 | Levantamiento de insumos y análisis | DAT | 2 | 80 | 01-03-2027 | 09-03-2027 | 7 | — |
 | 2.1.3.A02 | Elaboración del entregable | DAT | 2 | 80 | 10-03-2027 | 18-03-2027 | 7 | 2.1.3.A01 |
 | 2.1.3.A03 | Revisión, corrección y presentación para aprobación | DAT | 2 | 80 | 19-03-2027 | 29-03-2027 | 7 | 2.1.3.A02 |
-| 2.1.4.A01 | Levantamiento de insumos y análisis | ARQ | 2 | 80 | 01-02-2028 | 09-02-2028 | 7 | — |
-| 2.1.4.A02 | Elaboración del entregable | ARQ | 2 | 80 | 10-02-2028 | 18-02-2028 | 7 | 2.1.4.A01 |
-| 2.1.4.A03 | Revisión, corrección y presentación para aprobación | ARQ | 2 | 80 | 21-02-2028 | 29-02-2028 | 7 | 2.1.4.A02 |
+| 2.1.4.A01 | Levantamiento de insumos y análisis | ARQ | 4 | 80 | 01-02-2028 | 04-02-2028 | 4 | — |
+| 2.1.4.A02 | Elaboración del entregable | ARQ | 4 | 80 | 07-02-2028 | 10-02-2028 | 4 | 2.1.4.A01 |
+| 2.1.4.A03 | Revisión, corrección y presentación para aprobación | ARQ | 4 | 80 | 11-02-2028 | 16-02-2028 | 4 | 2.1.4.A02 |
 | 2.2.1.A01 | Levantamiento de insumos y análisis | SEG | 2 | 80 | 01-03-2027 | 09-03-2027 | 7 | — |
 | 2.2.1.A02 | Elaboración del entregable | SEG | 2 | 80 | 10-03-2027 | 18-03-2027 | 7 | 2.2.1.A01 |
 | 2.2.1.A03 | Revisión, corrección y presentación para aprobación | SEG | 2 | 80 | 19-03-2027 | 29-03-2027 | 7 | 2.2.1.A02 |
-| 2.2.3.A01 | Levantamiento de insumos y análisis | SEG | 2 | 80 | 01-04-2027 | 09-04-2027 | 7 | — |
-| 2.2.3.A02 | Elaboración del entregable | SEG | 2 | 80 | 12-04-2027 | 20-04-2027 | 7 | 2.2.3.A01 |
-| 2.2.3.A03 | Revisión, corrección y presentación para aprobación | SEG | 2 | 80 | 21-04-2027 | 29-04-2027 | 7 | 2.2.3.A02 |
+| 2.2.3.A01 | Levantamiento de insumos y análisis | SEG | 4 | 80 | 01-04-2027 | 06-04-2027 | 4 | — |
+| 2.2.3.A02 | Elaboración del entregable | SEG | 4 | 80 | 07-04-2027 | 12-04-2027 | 4 | 2.2.3.A01 |
+| 2.2.3.A03 | Revisión, corrección y presentación para aprobación | SEG | 4 | 80 | 13-04-2027 | 16-04-2027 | 4 | 2.2.3.A02 |
 | 2.2.4.A01 | Levantamiento de insumos y análisis | SEG | 2 | 80 | 01-03-2027 | 09-03-2027 | 7 | — |
 | 2.2.4.A02 | Elaboración del entregable | SEG | 2 | 80 | 10-03-2027 | 18-03-2027 | 7 | 2.2.4.A01 |
 | 2.2.4.A03 | Revisión, corrección y presentación para aprobación | SEG | 2 | 80 | 19-03-2027 | 29-03-2027 | 7 | 2.2.4.A02 |
@@ -568,12 +587,12 @@ La Tabla 6.1 es el cronograma de las 564 actividades de los 163 paquetes con ent
 | 2.3.3.A01 | Levantamiento de insumos y análisis | SRE | 2 | 80 | 01-03-2027 | 09-03-2027 | 7 | — |
 | 2.3.3.A02 | Elaboración del entregable | SRE | 2 | 80 | 10-03-2027 | 18-03-2027 | 7 | 2.3.3.A01 |
 | 2.3.3.A03 | Revisión, corrección y presentación para aprobación | SRE | 2 | 80 | 19-03-2027 | 29-03-2027 | 7 | 2.3.3.A02 |
-| 2.4.1.A01 | Levantamiento de insumos y análisis | ARQ | 5 | 80 | 18-05-2027 | 20-05-2027 | 3 | — |
-| 2.4.1.A02 | Elaboración del entregable | ARQ | 5 | 80 | 21-05-2027 | 25-05-2027 | 3 | 2.4.1.A01 |
-| 2.4.1.A03 | Revisión, corrección y presentación para aprobación | ARQ | 5 | 80 | 26-05-2027 | 28-05-2027 | 3 | 2.4.1.A02 |
-| 2.4.2.A01 | Levantamiento de insumos y análisis | ARQ | 5 | 80 | 20-03-2028 | 22-03-2028 | 3 | — |
-| 2.4.2.A02 | Elaboración del entregable | ARQ | 5 | 80 | 23-03-2028 | 27-03-2028 | 3 | 2.4.2.A01 |
-| 2.4.2.A03 | Revisión, corrección y presentación para aprobación | ARQ | 5 | 80 | 28-03-2028 | 30-03-2028 | 3 | 2.4.2.A02 |
+| 2.4.1.A01 | Levantamiento de insumos y análisis | ARQ | 5 | 80 | 19-04-2027 | 21-04-2027 | 3 | 2.1.1.A03, 2.1.3.A03, 2.2.1.A03, 2.2.3.A03, 2.2.4.A03 |
+| 2.4.1.A02 | Elaboración del entregable | ARQ | 5 | 80 | 22-04-2027 | 26-04-2027 | 3 | 2.4.1.A01 |
+| 2.4.1.A03 | Revisión, corrección y presentación para aprobación | ARQ | 5 | 80 | 27-04-2027 | 29-04-2027 | 3 | 2.4.1.A02 |
+| 2.4.2.A01 | Levantamiento de insumos y análisis | ARQ | 5 | 80 | 01-03-2028 | 03-03-2028 | 3 | 1.2.5.A01, 2.1.4.A03 |
+| 2.4.2.A02 | Elaboración del entregable | ARQ | 5 | 80 | 06-03-2028 | 08-03-2028 | 3 | 2.4.2.A01 |
+| 2.4.2.A03 | Revisión, corrección y presentación para aprobación | ARQ | 5 | 80 | 09-03-2028 | 13-03-2028 | 3 | 2.4.2.A02 |
 | 2.5.1.A01 | Levantamiento de insumos y análisis | SRE | 2 | 80 | 01-04-2027 | 09-04-2027 | 7 | — |
 | 2.5.1.A02 | Elaboración del entregable | SRE | 2 | 80 | 12-04-2027 | 20-04-2027 | 7 | 2.5.1.A01 |
 | 2.5.1.A03 | Revisión, corrección y presentación para aprobación | SRE | 2 | 80 | 21-04-2027 | 29-04-2027 | 7 | 2.5.1.A02 |
@@ -730,7 +749,7 @@ La Tabla 6.1 es el cronograma de las 564 actividades de los 163 paquetes con ent
 | 3.4.6.A10 | Integración con la base compartida y pruebas en QA | DES | 6 | 80 | 23-07-2027 | 27-07-2027 | 3 | 3.4.6.A09 |
 | 3.4.6.A11 | Corrección de los defectos de QA | DES | 6 | 80 | 23-07-2027 | 27-07-2027 | 3 | 3.4.6.A09 |
 | 3.4.6.A12 | Documentación y entrega en QA | DES | 12 | 80 | 28-07-2027 | 29-07-2027 | 2 | 3.4.6.A10, 3.4.6.A11, 3.1.1.A03, 3.1.2.A03, 3.1.3.A03, 3.1.4.A03, 3.1.5.A03 |
-| 3.4.7.A01 | Análisis de los requerimientos del T-12 asignados y de sus criterios de aceptación | DES | 12 | 80 | 02-08-2027 | 03-08-2027 | 2 | 1.2.2.A01, 2.4.1.A03, 2.6.2.A03, 3.3.1.A01 (CC), 3.3.2.A01 (CC), 3.3.3.A01 (CC), 3.3.4.A01 (CC), 3.3.5.A01 (CC), 3.3.6.A01 (CC) |
+| 3.4.7.A01 | Análisis de los requerimientos del T-12 asignados y de sus criterios de aceptación | DES | 12 | 80 | 02-08-2027 | 03-08-2027 | 2 | 1.2.2, 2.4.1.A03, 2.6.2.A03, 3.3.1.A01 (CC), 3.3.2.A01 (CC), 3.3.3.A01 (CC), 3.3.4.A01 (CC), 3.3.5.A01 (CC), 3.3.6.A01 (CC) |
 | 3.4.7.A02 | Diseño detallado del módulo y de sus contratos de interfaz | DES | 12 | 80 | 04-08-2027 | 05-08-2027 | 2 | 3.4.7.A01 |
 | 3.4.7.A03 | Construcción, incremento 1 | DES | 2 | 80 | 06-08-2027 | 16-08-2027 | 7 | 3.4.7.A02, 3.4.3.A02, 3.4.6.A02 |
 | 3.4.7.A04 | Construcción, incremento 2 | DES | 2 | 80 | 06-08-2027 | 16-08-2027 | 7 | 3.4.7.A02, 3.4.3.A02, 3.4.6.A02 |
@@ -898,12 +917,12 @@ La Tabla 6.1 es el cronograma de las 564 actividades de los 163 paquetes con ent
 | 3.7.4.A04 | Construcción del adaptador, parte 2, con reintentos | DAT | 2 | 80 | 13-12-2027 | 21-12-2027 | 7 | 3.7.4.A02 |
 | 3.7.4.A05 | Pruebas de contrato, de falla y de lentitud de la contraparte | DAT | 4 | 80 | 22-12-2027 | 27-12-2027 | 4 | 3.7.4.A03, 3.7.4.A04 |
 | 3.7.4.A06 | Corrección, documentación y entrega en QA | DAT | 4 | 80 | 28-12-2027 | 31-12-2027 | 4 | 3.7.4.A05 |
-| 3.7.5.A01 | Análisis de la interfaz con muestras reales y horarios | DAT | 5 | 80 | 03-01-2028 | 05-01-2028 | 3 | 3.7.1.A06, 3.7.2.A06, 3.7.3.A06, 3.7.4.A06 |
+| 3.7.5.A01 | Análisis de la interfaz con muestras reales y horarios | DAT | 5 | 80 | 03-01-2028 | 05-01-2028 | 3 | 3.7.1.A06, 3.7.2.A06 |
 | 3.7.5.A02 | Diseño del contrato, del manejo de errores y de la idempotencia | DAT | 5 | 80 | 06-01-2028 | 10-01-2028 | 3 | 3.7.5.A01 |
 | 3.7.5.A03 | Construcción del adaptador, parte 1 | DAT | 2 | 80 | 11-01-2028 | 19-01-2028 | 7 | 3.7.5.A02 |
 | 3.7.5.A04 | Construcción del adaptador, parte 2, con reintentos | DAT | 2 | 80 | 11-01-2028 | 19-01-2028 | 7 | 3.7.5.A02 |
 | 3.7.5.A05 | Pruebas de contrato, de falla y de lentitud de la contraparte | DAT | 5 | 80 | 20-01-2028 | 24-01-2028 | 3 | 3.7.5.A03, 3.7.5.A04 |
-| 3.7.5.A06 | Corrección, documentación y entrega en QA | DAT | 5 | 80 | 25-01-2028 | 27-01-2028 | 3 | 3.7.5.A05 |
+| 3.7.5.A06 | Conciliación final, acta y corte en día permitido | DAT | 5 | 80 | 25-01-2028 | 27-01-2028 | 3 | 3.7.5.A05, 3.7.3.A06, 3.7.4.A06 |
 | 3.8.1.A01 | Preparación y ejecución de la prueba | CAL | 2 | 80 | 01-10-2027 | 11-10-2027 | 7 | 3.4.1.A12, 3.4.10.A12, 3.4.11.A12, 3.4.2.A12, 3.4.3.A12, 3.4.4.A12, 3.4.5.A12, 3.4.6.A12, 3.4.7.A12, 3.4.8.A12, 3.4.9.A12 |
 | 3.8.1.A02 | Registro de defectos, regresión e informe | CAL | 2 | 80 | 12-10-2027 | 20-10-2027 | 7 | 3.8.1.A01 |
 | 3.8.2.A01 | Preparación de casos, datos y ambiente de prueba | CAL | 3 | 80 | 21-10-2027 | 27-10-2027 | 5 | 3.8.1.A02 |
@@ -933,23 +952,23 @@ La Tabla 6.1 es el cronograma de las 564 actividades de los 163 paquetes con ent
 | 3.9.1.A01 | Preparación y ejecución de la prueba | CAL | 2 | 80 | 01-05-2028 | 09-05-2028 | 7 | 3.5.1.A12, 3.5.2.A12, 3.5.3.A12, 3.5.4.A12 |
 | 3.9.1.A02 | Registro de defectos, regresión e informe | CAL | 2 | 80 | 10-05-2028 | 18-05-2028 | 7 | 3.9.1.A01 |
 | 3.9.2.A01 | Preparación de casos, datos y ambiente de prueba | CAL | 3 | 80 | 01-05-2028 | 05-05-2028 | 5 | — |
-| 3.9.2.A02 | Ejecución de la prueba, ciclo 1 | CAL | 3 | 80 | 08-05-2028 | 12-05-2028 | 5 | 3.9.2.A01 |
-| 3.9.2.A03 | Ejecución de la prueba, ciclo 2, y registro de defectos | CAL | 3 | 80 | 15-05-2028 | 19-05-2028 | 5 | 3.9.2.A02 |
-| 3.9.2.A04 | Regresión e informe de resultados | CAL | 3 | 80 | 22-05-2028 | 26-05-2028 | 5 | 3.9.2.A03 |
-| 3.9.3.A01 | Preparación de casos, datos y ambiente de prueba | CAL | 3 | 80 | 01-05-2028 | 05-05-2028 | 5 | — |
+| 3.9.2.A02 | Ejecución de la prueba, ciclo 1 | CAL | 5 | 80 | 19-05-2028 | 23-05-2028 | 3 | 3.9.2.A01, 3.9.1.A02 |
+| 3.9.2.A03 | Ejecución de la prueba, ciclo 2, y registro de defectos | CAL | 5 | 80 | 24-05-2028 | 26-05-2028 | 3 | 3.9.2.A02 |
+| 3.9.2.A04 | Regresión e informe de resultados | CAL | 5 | 80 | 29-05-2028 | 31-05-2028 | 3 | 3.9.2.A03 |
+| 3.9.3.A01 | Preparación de casos, datos y ambiente de prueba | CAL | 3 | 80 | 01-05-2028 | 05-05-2028 | 5 | 3.5.1.A12, 3.5.2.A12, 3.5.3.A12, 3.5.4.A12 |
 | 3.9.3.A02 | Ejecución de la prueba, ciclo 1 | CAL | 3 | 80 | 08-05-2028 | 12-05-2028 | 5 | 3.9.3.A01 |
 | 3.9.3.A03 | Ejecución de la prueba, ciclo 2, y registro de defectos | CAL | 3 | 80 | 15-05-2028 | 19-05-2028 | 5 | 3.9.3.A02 |
 | 3.9.3.A04 | Regresión e informe de resultados | CAL | 3 | 80 | 22-05-2028 | 26-05-2028 | 5 | 3.9.3.A03 |
-| 3.9.4.A01 | Preparación de casos, datos y ambiente de prueba | CAL | 3 | 80 | 01-05-2028 | 05-05-2028 | 5 | — |
+| 3.9.4.A01 | Preparación de casos, datos y ambiente de prueba | CAL | 3 | 80 | 01-05-2028 | 05-05-2028 | 5 | 3.5.1.A12, 3.5.2.A12, 3.5.3.A12, 3.5.4.A12 |
 | 3.9.4.A02 | Ejecución de la prueba, ciclo 1 | CAL | 3 | 80 | 08-05-2028 | 12-05-2028 | 5 | 3.9.4.A01 |
 | 3.9.4.A03 | Ejecución de la prueba, ciclo 2, y registro de defectos | CAL | 3 | 80 | 15-05-2028 | 19-05-2028 | 5 | 3.9.4.A02 |
 | 3.9.4.A04 | Regresión e informe de resultados | CAL | 3 | 80 | 22-05-2028 | 26-05-2028 | 5 | 3.9.4.A03 |
-| 3.9.5.A01 | Preparación de casos, datos y ambiente de prueba | SEG | 3 | 80 | 01-05-2028 | 05-05-2028 | 5 | — |
+| 3.9.5.A01 | Preparación de casos, datos y ambiente de prueba | SEG | 3 | 80 | 01-05-2028 | 05-05-2028 | 5 | 3.5.1.A12, 3.5.2.A12, 3.5.3.A12, 3.5.4.A12 |
 | 3.9.5.A02 | Ejecución de la prueba, ciclo 1 | SEG | 3 | 80 | 08-05-2028 | 12-05-2028 | 5 | 3.9.5.A01 |
 | 3.9.5.A03 | Ejecución de la prueba, ciclo 2, y registro de defectos | SEG | 3 | 80 | 15-05-2028 | 19-05-2028 | 5 | 3.9.5.A02 |
 | 3.9.5.A04 | Regresión e informe de resultados | SEG | 3 | 80 | 22-05-2028 | 26-05-2028 | 5 | 3.9.5.A03 |
-| 3.9.6.A01 | Preparación y ejecución de la prueba | CAL | 4 | 80 | 29-05-2028 | 01-06-2028 | 4 | 3.9.1.A02, 3.9.2.A04, 3.9.3.A04, 3.9.4.A04, 3.9.5.A04 |
-| 3.9.6.A02 | Registro de defectos, regresión e informe | CAL | 4 | 80 | 02-06-2028 | 07-06-2028 | 4 | 3.9.6.A01 |
+| 3.9.6.A01 | Preparación y ejecución de la prueba | CAL | 4 | 80 | 01-06-2028 | 06-06-2028 | 4 | 3.9.1.A02, 3.9.2.A04, 3.9.3.A04, 3.9.4.A04, 3.9.5.A04 |
+| 3.9.6.A02 | Registro de defectos, regresión e informe | CAL | 4 | 80 | 07-06-2028 | 12-06-2028 | 4 | 3.9.6.A01 |
 | 3.9.7.A01 | Preparación y ejecución de la prueba | SRE | 2 | 80 | 01-05-2028 | 09-05-2028 | 7 | — |
 | 3.9.7.A02 | Registro de defectos, regresión e informe | SRE | 2 | 80 | 10-05-2028 | 18-05-2028 | 7 | 3.9.7.A01 |
 | 3.10.1.1.A01 | Levantamiento de insumos y análisis | DAT | 2 | 80 | 02-08-2027 | 10-08-2027 | 7 | — |
@@ -1003,8 +1022,8 @@ La Tabla 6.1 es el cronograma de las 564 actividades de los 163 paquetes con ent
 | 4.1.1.A01 | Elaboración, revisión y aprobación del entregable | IMP | 2 | 80 | 01-11-2027 | 09-11-2027 | 7 | — |
 | 4.1.2.A01 | Elaboración, revisión y aprobación del entregable | IMP | 2 | 80 | 01-12-2027 | 09-12-2027 | 7 | — |
 | 4.1.3.A01 | Elaboración, revisión y aprobación del entregable | IMP | 2 | 80 | 01-06-2028 | 09-06-2028 | 7 | — |
-| 4.2.3.A01 | Elaboración, revisión y aprobación del entregable | JP | 2 | 80 | 04-05-2028 | 12-05-2028 | 7 | 7.3.1.A02 |
-| 4.3.3.A01 | Elaboración, revisión y aprobación del entregable | JP | 2 | 80 | 11-10-2028 | 19-10-2028 | 7 | 4.3.4.A01, 7.1.4.A02, 7.3.2.A02 |
+| 4.2.3.A01 | Elaboración, revisión y aprobación del entregable | JP | 2 | 80 | 05-05-2028 | 15-05-2028 | 7 | 7.3.1.A02 |
+| 4.3.3.A01 | Elaboración, revisión y aprobación del entregable | JP | 2 | 80 | 11-10-2028 | 19-10-2028 | 7 | 4.3.4.A01, 7.1.4, 7.3.2.A02 |
 | 4.3.4.A01 | Elaboración, revisión y aprobación del entregable | JP | 2 | 80 | 02-10-2028 | 10-10-2028 | 7 | — |
 | 5.1.1.A01 | Elaboración, revisión y aprobación del entregable | ARQ | 2 | 80 | 01-03-2027 | 09-03-2027 | 7 | — |
 | 5.1.2.A01 | Elaboración, revisión y aprobación del entregable | ARQ | 2 | 80 | 02-03-2027 | 10-03-2027 | 7 | 2.3.1.A03, 2.3.2.A03 |
