@@ -1150,6 +1150,8 @@ Fuente: elaboración propia a partir de ISO (2022b, 2022c), RT de los capítulos
 
 La arquitectura impone HSTS en los portales HTTPS, TLS 1.3 en interfaces compatibles y rechazo de TLS 1.0/1.1. Un tercero con limitación de protocolo exige excepción documentada y tratamiento, no una reducción silenciosa del control. Entre sistemas se utiliza mTLS u OAuth con credenciales de cliente; nunca una clave estática en la URL. El catálogo público no muestra precios, conforme al caso. OWASP ASVS nivel 2 y API Security Top 10 orientan las pruebas de aplicación. La superficie exacta y la implantación de EDR/SIEM se realizan en la vista física; los permisos, eventos y pruebas permanecen definidos aquí.
 
+Seguridad aplica OWASP SAMM al inicio del desarrollo y lo reevalúa anualmente con evidencias de gobierno, diseño, implementación, verificación y operación ya previstas en los controles y el ciclo de entrega. Cada evaluación registra la madurez por práctica y las brechas, con acciones de mejora, responsable y seguimiento hasta su cierre (OWASP Foundation, s. f.; RT-11.28; Bases Técnicas Transversales, cap. 11, p. 24).
+
 ## Anexo 4-S — Puntos de vista y correspondencias
 
 <a id="anx:S"></a>
@@ -1638,6 +1640,8 @@ Las fuentes citadas en este documento se listan a continuación en formato APA 7
 
 - PHP. (2026). *Supported versions*. <https://www.php.net/supported-versions.php>
 
+- OWASP Foundation. (s. f.). *The SAMM model*. <https://owaspsamm.org/model/>
+
 - Distribuidora Puelche S.A. (2026c). *Caso 02: Logística. Especificaciones del problema y operación de Distribuidora Puelche S.A.* (Licitación N.º TFEP-01/2026).
 
 - Distribuidora Puelche S.A. (2026b). *Bases Técnicas Transversales de Licitación N.º TFEP-01/2026*.
@@ -1683,20 +1687,20 @@ En cumplimiento de la sección 7.2 de las Aclaraciones de la licitación, la tab
 | O | Codex | Especificación y trazabilidad. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
 | P | Codex | Especificación y trazabilidad; matriz de navegadores, versiones y actualización de la Tabla A.19. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
 | Q | Codex | Especificación y trazabilidad. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
-| R | Codex | Especificación y trazabilidad. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| R | Codex | Especificación y trazabilidad; evaluación inicial y anual de madurez con OWASP SAMM. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
 | S | Codex | Especificación y trazabilidad. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
 | T | Codex | Especificación y trazabilidad. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
 | U | Codex | Especificación y trazabilidad. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
 | V | Codex | Especificación y trazabilidad. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
 | 4.1.1 | OpenAI Codex | Especificaciones de tecnologías de software a utilizar | Alto | No aplica | [[REVISIÓN HUMANA]] |
 | 4.1.2 | OpenAI Codex | Principios de integracion | Alto | No aplica | [[REVISIÓN HUMANA]] |
-| 4.1.3 | OpenAI Codex | Capas de la arquitectura | Alto | Alto, con modelo del equipo | [[REVISIÓN HUMANA]] |
+| 4.1.3 | OpenAI Codex | Capas de arquitectura; navegación, diseño, preferencias, vista ligera, parámetros, flujos, auditoría y alertas históricas. | Alto | Alto, con modelo del equipo | [[REVISIÓN HUMANA]] |
 | 4.1.4 | OpenAI Codex | Modulos funcionales y limites de contexto | Alto | No aplica | [[REVISIÓN HUMANA]] |
 | 4.1.5 | OpenAI Codex | Modelo de datos conceptual | Alto | No aplica | [[REVISIÓN HUMANA]] |
-| 4.1.6 | OpenAI Codex | Catalogo de interfaces | Alto | No aplica | [[REVISIÓN HUMANA]] |
+| 4.1.6 | OpenAI Codex | Catálogo de interfaces; administración de plantillas y comprobantes HTML. | Alto | No aplica | [[REVISIÓN HUMANA]] |
 | 4.1.7 | OpenAI Codex | Detalle de tecnologias seleccionadas | Alto | No aplica | [[REVISIÓN HUMANA]] |
 | 4.1.8 | OpenAI Codex | Implantacion progresiva del backend laravel | Alto | No aplica | [[REVISIÓN HUMANA]] |
-| 4.1.9 | OpenAI Codex | Ambientes del ciclo de vida y promocion de componentes | Alto | No aplica | [[REVISIÓN HUMANA]] |
+| 4.1.9 | OpenAI Codex | Ambientes del ciclo de vida; simulación de cambios de parámetros en QA. | Alto | No aplica | [[REVISIÓN HUMANA]] |
 | 4.1.10 | OpenAI Codex | Patrones de diseño y continuidad | Alto | No aplica | [[REVISIÓN HUMANA]] |
 | 4.1.11 | OpenAI Codex | Registro de decisiones de arquitectura | Alto | No aplica | [[REVISIÓN HUMANA]] |
 | 4.1.12 | OpenAI Codex | Puntos únicos de falla y riesgos residuales | Alto | No aplica | [[REVISIÓN HUMANA]] |

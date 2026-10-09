@@ -1,5 +1,9 @@
 # CONTEXTO DE SESIÓN
 
+## Estado vigente — 9 de octubre de 2026 (noche): 14 RT más resueltos en SD4 con mínimo arrastre
+
+Preferencia del usuario: resolver los RT del SD4 con frases simples apoyadas en lo que ya existe, sin sobreingeniería ni cambios en otros documentos (sin tablas nuevas en SD5, sin horas nuevas, sin diagramas). Codex (gpt-6.1-sol, alto) aplicó y Claude revisó 14 de los 21 RT pendientes: obligatorios RT-13.05, 13.09, 16.04, 16.08, 16.12 y 16.19, y deseables RT-08.15, 08.19, 09.10, 11.28, 13.12, 14.09, 16.05 y 17.08, en SD4 4.1.3.1, 4.1.3.4, 4.1.3.7, 4.1.3.8, 4.1.6.2, 4.1.9, 4.2.1.2, 4.2.4.1.1 y Anexo 4-R; reutilizan `gob_auditoria`, `gob_asignacion`, `mae_parametro_version`, `not_plantilla`, QA y CloudWatch. Correcciones de Claude: RT-09.10 semanal y por versión candidata (QA se apaga fuera de horario), RT-14.09 con detección de anomalías nativa de CloudWatch, citas al SD5 como (LafroX, 2026a/2026b). Sin aplicar, por falta de dato o decisión: RT-05.24 (SD5 lo excluye), 06.15, 15.05, 15.06, 16.18 (falta TSA y actos con firma avanzada), 16.26 y 16.33 (falta estimar contactos evitados). T-12: Parte A 199/69/3; Parte B 236/106/32; 19 obligatorios o según caso en No cumple, todos fuera del SD4 salvo RT-16.18 y RT-16.33. Detalle en `Revision/t12_iter/propuestas_SD4_RT.md` e `informe_aplicacion_7RT.md`. Sin commit.
+
 ## Estado vigente — 9 de octubre de 2026: cuarta revisión de la Comisión del SD8
 
 Puntaje 0 sólo por las 18 celdas `[[REVISIÓN HUMANA]]`; contenido 80/100. Pendientes: (1) firmas reales; (2) H8: con observación formal, entrega 13-03-2028 + 10 días de revisión + 5 de subsanación = 03-04-2028, mes 15; declarar la revisión anticipada del borrador (semana del 6-03-2028) como control principal; (3) opción de 8 personas del contrato de implantación ausente en SD6 6.1.3; (4) revisión anticipada H1/H8 ausente en T-15 5.5. Sin commit.

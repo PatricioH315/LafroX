@@ -16,6 +16,10 @@ Las **15 integraciones** separan ocho contratos internos y siete externos. La in
 
 La [presentación](../04_arquitectura/LAFROX-Subdocumento4.md#4131-capa-de-presentaci%C3%B3n-capa-1) adapta portales y consola Angular 22/Tailwind a escritorio, tableta y teléfono y compromete navegación íntegra por teclado, foco lógico y atajos; Kotlin usa la pantalla fija de cada modelo Zebra. La Tabla A.19 del [Anexo 4-P](../04_arquitectura/LAFROX-Subdocumento4-Anexos.md#anx:P) declara Chrome, Edge, Firefox y Safari, sus versiones estables vigente y anterior y la actualización verificada contra el Baseline de Angular. [INT-11](../04_arquitectura/LAFROX-Subdocumento4.md#4162-integraciones-externas) separa avisos necesarios del servicio de comunicaciones comerciales, que incluyen baja, registro de la preferencia y bloqueo de envíos y reintentos desde la solicitud.
 
+La presentación limita a **tres interacciones** el acceso a cada función principal y define un sistema de diseño común a Angular/Tailwind y Kotlin. Incluye modo oscuro, preferencias visuales por persona y una vista ligera del Portal de Clientes. La [lógica de negocio](../04_arquitectura/LAFROX-Subdocumento4.md#4134-capa-de-l%C3%B3gica-de-negocio-capa-4) distingue parámetros de reglas implementadas de los cambios que requieren desarrollo; el CLIENTE configura responsables, plazos y niveles de aprobación de los flujos existentes, manteniendo la segregación de funciones.
+
+La consola consulta y exporta auditoría con los cuatro filtros exigidos y administra plantillas de avisos y comprobantes con salida HTML. QA simula cambios de parámetros, CI ejecuta carga de regresión en cada versión candidata, semanalmente y antes de liberar, y la detección de anomalías de CloudWatch alerta antes del impacto. El [Anexo 4-R](../04_arquitectura/LAFROX-Subdocumento4-Anexos.md#anx:R) incorpora evaluación inicial y anual con OWASP SAMM. Son compromisos de diseño y aceptación; su descripción no acredita ensayos ejecutados.
+
 ## Arquitectura física: nube y autonomía local
 
 La [arquitectura física](../04_arquitectura/LAFROX-Subdocumento4.md#42-arquitectura-f%C3%ADsica) combina servicios de AWS con operación local en Talca, Concepción y tres plataformas de cross-docking. Talca tiene un clúster local; Concepción y las plataformas cuentan con equipos activos y en espera. La conectividad combina fibra, red móvil y satélite según el sitio.
@@ -29,6 +33,8 @@ El [dimensionamiento](../04_arquitectura/LAFROX-Subdocumento4.md#426-dimensionam
 T-11 distingue unidades instaladas, repuestos y crecimiento. Por ejemplo, el parque inicial de reparto parte de **96 + 10 de reserva = 106** por tipo correspondiente; **110 instaladas + 11 de reserva = 121** es la proyección del año 3. La memoria permite comprobar el período de cada cantidad antes de comparar cifras.
 
 El [ciclo de vida](../04_arquitectura/LAFROX-Subdocumento4.md#4212-criterios-de-selecci%C3%B3n) exige sanitización verificable o destrucción de todo almacenamiento retirado, con certificado al CLIENTE, y disposición mediante gestor autorizado y registrado con su certificado. El [acceso de terceros a Talca](../04_arquitectura/LAFROX-Subdocumento4.md#4314-sitio-on-premise-cd-talca-sala-t%C3%A9cnica-secundaria) exige autorización, acompañamiento durante toda la visita, registro en bitácora y revocación del acceso temporal.
+
+LafroX provee una unidad de cada tipo y variante de dispositivo antes de la compra masiva, incorporándolas después al parque o reserva dimensionados. La vida útil esperada de **60 meses**, frente a los **56** del contrato, permite aplazar la renovación general y sus residuos **4 meses (7,1 % del período contractual)**; esa cifra expresa tiempo, sin estimar masa de residuos ni carbono.
 
 ## Recuperación y límites
 

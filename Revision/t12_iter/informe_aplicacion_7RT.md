@@ -96,3 +96,64 @@ Fuente: comparación de huellas iniciales/finales, validadores documentales ejec
 
 Los resultados acreditan coherencia documental de las ediciones. No se ejecutaron ensayos de aceptación, visitas reales, borrados de medios, controles de proveedor, implementación de las propuestas ni evaluación de presentación paginada.
 
+## Segunda aplicación (mínimo arrastre)
+
+En `rama-md` se incorporaron 14 RT con frases en SD4 o su Anexo 4-R, reutilizando Angular, Laravel, QA, CI, CloudWatch y los datos de SD5. La Tabla 3 identifica lo escrito por RT y su estado final; SD4 y SD4-Anexos conservan las rutas declaradas en la primera aplicación. Los siete RT no aplicados conservan No cumple y sus datos o decisiones faltantes figuran en `propuestas_SD4_RT.md`.
+
+**Tabla 3 — Texto incorporado y estado final de los RT**
+
+| RT | Lo escrito | Archivo y sección | Estado final T-12 |
+| --- | --- | --- | --- |
+| RT-05.24 | Sin texto nuevo; falta dato o decisión identificado en el informe de decisiones. | — | No cumple |
+| RT-06.15 | Sin texto nuevo; falta dato o decisión identificado en el informe de decisiones. | — | No cumple |
+| RT-08.15 | LafroX provee una unidad de cada tipo y variante del T-11 para aceptación antes de la compra masiva; se incorpora al parque o reserva dimensionados. | SD4 4.2.1.2 | Cumple |
+| RT-08.19 | Mantención y repuestos para vida útil esperada de 60 meses; sin renovación general al mes 56: residuos de esa renovación diferidos 4 meses, 7,1 % del período contractual. | SD4 4.2.1.2 | Cumple |
+| RT-09.10 | CI ejecuta carga de regresión automatizada en QA en cada versión candidata y al menos semanalmente, y antes de liberar en Preproducción; compara percentil 95, errores y colas con la versión aceptada y bloquea regresiones. | SD4 4.2.4.1.1; SD4-Anexos 4-W.12 | Cumple |
+| RT-11.28 | Seguridad aplica OWASP SAMM al inicio del desarrollo y anualmente; mide madurez por práctica y sigue acciones de mejora con responsable y evidencias. | SD4-Anexos 4-R | Cumple |
+| RT-13.05 | Accesos a todas las funciones principales de cada perfil Angular/Kotlin en un máximo de tres interacciones desde su inicio, comprobados en prototipos y aceptación. | SD4 4.1.3.1 | Cumple |
+| RT-13.09 | Sistema de diseño documentado común a Angular/Tailwind y Kotlin: hasta cinco colores principales, a lo más dos familias tipográficas, iconografía, retícula y componentes reutilizables. | SD4 4.1.3.1 | Cumple |
+| RT-13.12 | Modo claro/oscuro, tamaño de texto y densidad configurables por persona y conservados en su dispositivo; español para los perfiles del caso, sin exigencia de otros idiomas. | SD4 4.1.3.1 | Cumple |
+| RT-14.09 | Detección de anomalías de Amazon CloudWatch sobre la historia horaria y semanal de latencia, errores y colas; alerta al NOC/SRE antes de alcanzar los límites; aceptación con degradación gradual. | SD4 4.1.3.8 y 4.2.6.11 | Cumple |
+| RT-15.05 | Sin texto nuevo; falta dato o decisión identificado en el informe de decisiones. | — | No cumple |
+| RT-15.06 | Sin texto nuevo; falta dato o decisión identificado en el informe de decisiones. | — | No cumple |
+| RT-16.04 | Consola Angular/Laravel administra valores de reglas implementadas, catálogos, listas, textos y sitios con versión y auditoría; algoritmos, reglas nuevas, estados/transiciones, esquemas, contratos y transportes nuevos requieren desarrollo. | SD4 4.1.3.4; SD5-Anexos 5-A | Cumple |
+| RT-16.05 | QA simula cambios de parámetro con las mismas transacciones y datos controlados, compara valor vigente/propuesto y exige comprobación y aprobación antes de Producción. | SD4 4.1.9 y 4.2.4.1 | Cumple |
+| RT-16.08 | Consola Angular/API Laravel consulta gob_auditoria por persona, período, entidad y operación; exporta resultado filtrado CSV UTF-8/JSON con permisos, sin acceso a la base; trabajo asíncrono para grandes volúmenes. | SD4 4.1.3.7; SD5-Anexos 5-A; SD5 5.2.8 | Cumple |
+| RT-16.12 | CLIENTE configura en consola responsables por rol/sitio, plazos y niveles de aprobación de flujos existentes; gob_asignacion y mae_parametro_version conservan vigencias y parámetros, con segregación obligatoria. | SD4 4.1.3.4; SD4-Anexos 4-B; SD5-Anexos 5-A | Cumple |
+| RT-16.18 | Sin texto nuevo; falta dato o decisión identificado en el informe de decisiones. | — | No cumple |
+| RT-16.19 | CLIENTE administra plantillas versionadas de avisos y comprobantes en Angular; Laravel combina datos autorizados de pedido/entrega y descarga HTML abierto, reutilizando not_plantilla/cuerpo_ref. | SD4 4.1.6.2; SD5-Anexos 5-A | Cumple |
+| RT-16.26 | Sin texto nuevo; falta dato o decisión identificado en el informe de decisiones. | — | No cumple |
+| RT-16.33 | Sin texto nuevo; falta dato o decisión identificado en el informe de decisiones. | — | No cumple |
+| RT-17.08 | Vista ligera del Portal de Clientes para teléfonos de bajo costo o generaciones anteriores: imágenes bajo demanda, paginación y sin animaciones; navegadores/sistemas compatibles y aceptación en esos equipos. | SD4 4.1.3.1; SD4-Anexos 4-P (Tabla A.19) | Cumple |
+
+Fuente: textos aplicados a los archivos indicados y matriz T-12 vigente; requisitos de las Bases Técnicas Transversales y Caso 02, cap. 15.
+
+El cálculo de RT-08.19 usa exclusivamente cinco años de vida útil y 56 meses de contrato: 60 − 56 = 4 meses y 4 ÷ 56 × 100 = 7,1 %. Expresa aplazamiento de renovación y residuos; no es ahorro de masa, energía o carbono. Para RT-16.33 se contrastaron los 2.000 contactos/mes proyectados, la capacidad de 2.283 de 4-W.7 y la autoatención de 4.1.3.1/4.1.4.4: ninguno aporta una proporción de contactos evitables o adopción. Para RT-16.18, Caso 15 exige articular POD, guía y acuse, pero no acredita sello de tiempo o verificación tras vencer el certificado; la consulta V-18 no permite declarar cumplimiento.
+
+La Tabla 4 registra las cinco filas RF ajustadas; se conservaron ID y Descripción.
+
+**Tabla 4 — Coherencia de la Parte A**
+
+| RF | Estado final | Cobertura y límite | Sección |
+| --- | --- | --- | --- |
+| RF-17.02 | Cumple | Consola Angular/API Laravel administra umbrales, plazos, montos, tolerancias, catálogos, listas y textos de reglas implementadas; mae_parametro/mae_parametro_version y auditoría conservan versión, vigencia, autor y fecha. | SD4 4.1.3.4; SD4 4.1.4.2; SD5-Anexos 5-A; SD5 5.2.2 |
+| RF-17.05 | Cumple | Consola Angular/API Laravel consulta y exporta gob_auditoria con filtros por persona, período, entidad y operación; resultado filtrado CSV UTF-8/JSON, con permisos y sin acceso a base de datos. | SD4 4.1.3.7; SD5-Anexos 5-A; SD5 5.2.8 |
+| RF-17.06 | Cumple parcialmente | Flujos existentes con estados y transiciones; CLIENTE configura responsables, plazos y niveles en Angular mediante gob_asignacion/mae_parametro_version. Falta: configuración de estados y transiciones, escalamiento automático por vencimiento y delegación por ausencia. | SD4 4.1.3.4 y 4.1.3.5; SD4-Anexos 4-B; SD5-Anexos 5-A |
+| RF-17.09 | Cumple parcialmente | Plantillas administrables por el CLIENTE y comprobantes de pedido/entrega con datos transaccionales en HTML abierto. Falta: salida PDF, DOCX o XLSX. | SD4 4.1.6.2; SD5-Anexos 5-A |
+| RF-17.10 | Cumple parcialmente | INT-11 envía correo, SMS/WhatsApp y avisos en portal; CLIENTE administra cuerpo y versión de not_plantilla en consola Angular. Falta: coherencia de los dominios de canal entre not_plantilla y not_intento para WhatsApp y aviso en portal. | SD4 4.1.6.2; SD4-Anexos 4-H (INT-11); SD5-Anexos 5-A (Tabla A.8) |
+
+Fuente: comparación entre las descripciones intactas del T-12 y los textos aplicados al SD4 y sus datos de soporte en SD5.
+
+RF-17.03 permanece parcial: no se agregó aprobación de segundo perfil para todo cambio operacional ni su justificación. RF-18.01 sigue parcial por firma/certificado/sello de tiempo; RF-18.02, por preferencias de canal y frecuencia por persona (el tema visual no las satisface). RF-17.12 sigue parcial: la consulta de auditoría no equivale a listados generales ordenables y paginados. Se revisaron los RNF relacionados con interfaz, equipos y servicio sin atribuirles cobertura adicional.
+
+Se actualizaron solo las finalidades de las filas afectadas en las declaraciones de IA: cuerpo 4.1, 4.2 y 4-R; anexos R, 4.1.3, 4.1.6 y 4.1.9. Permanecen intactas las 28 marcas `[[REVISIÓN HUMANA]]` del cuerpo y las 43 de anexos. El resumen del SD4 recoge los nuevos compromisos. Las referencias nuevas son los dos documentos SD5 citados en el cuerpo y OWASP SAMM en 4-R, contrastado con su [modelo oficial](https://owaspsamm.org/model/).
+
+Verificación: 645 filas de cinco celdas e IDs únicos, ID/Descripción idénticos a HEAD; 19 filas modificadas solo en Cumple, Componente y Sección (14 RT y cinco RF). Parte A: 199 Cumple, 69 Cumple parcialmente y 3 No cumple; Parte B: 236, 106 y 32, respectivamente. Se conservaron figuras, tablas, memoria 4-W y T-11; no se modificaron SD3, SD5, SD8, T-14 ni T-15. Solo se editaron Markdown dentro de SD4, SD4-Anexos, T-12, resumen del SD4 y `Revision/t12_iter/`, mediante apply_patch; sin commit ni push.
+
+Estado para reanudación: esta segunda aplicación y el informe de decisiones representan las 21 decisiones actuales. RT-05.24, RT-06.15, RT-15.05, RT-15.06, RT-16.18, RT-16.26 y RT-16.33 siguen pendientes. Los compromisos documentales no acreditan implementación, ejecución de ensayos ni revisión humana.
+
+Control final: `git diff --check` limpio; siete archivos `.md` dentro del alcance; 351 enlaces locales contrastados por archivo y sección y 22 referencias explícitas SD de las filas editadas, además de anexos y referencias consecutivas. Se comprobó conservación exacta de todas las tablas ajenas a las declaraciones de IA, todos los encabezados y figuras del cuerpo/anexos y el contenido completo de 4-W. La rama continúa en `rama-md`.
+
+
+
+Ajustes posteriores de la revisión: RT-09.10 pasa de una ejecución nocturna a una ejecución por versión candidata y semanal dentro del horario de uso de QA, para no contradecir el apagado de ambientes no productivos de 4.2.4.1; RT-14.09 usa la detección de anomalías nativa de Amazon CloudWatch en lugar de un análisis propio en el planificador; las citas al Subdocumento 5 se simplifican a (LafroX, 2026a/2026b, sección o anexo).
