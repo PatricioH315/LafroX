@@ -7,7 +7,7 @@ Presentación reúne las superficies de trabajo; borde protege su entrada; puert
 
 Las capas 7 y 8 atraviesan las demás; no duplican reglas de negocio.
 
-La arquitectura se presenta primero mediante su vista general completa (Figura~\ref{fig:arql-general-completa}) y después mediante una síntesis de sus ocho capas (Figura~\ref{fig:arql-1}). Ambas vistas se complementan para relacionar las funciones de negocio con los componentes que las sostienen.
+La arquitectura se presenta primero mediante su vista general completa (Figura~\ref{fig:arql-general-completa}) y después mediante las vistas de sus ocho capas. La vista general relaciona los actores y las funciones de negocio con los componentes que las sostienen; cada vista por capa desarrolla sus responsabilidades e intercambios.
 
 \clearpage
 \begin{landscape}
@@ -21,16 +21,7 @@ La arquitectura se presenta primero mediante su vista general completa (Figura~\
 
 La vista general muestra cómo cada actor accede a la solución desde su aplicación, portal o consola y se relaciona con los módulos M1--M12. Se lee desde las personas hacia las reglas de negocio, las integraciones y los datos, distinguiendo los componentes de nube y los del sitio. Las conexiones representan intercambios sujetos a autorización, no acceso directo a las bases de datos. Seguridad y observabilidad acompañan todo el recorrido; sus controles y las condiciones de operación sin conexión se desarrollan en los apartados siguientes.
 
-\clearpage
-\begin{center}
-  \includegraphics[width=0.98\linewidth,height=0.65\textheight,keepaspectratio]{figuras/logica/ARQL-19_Vista_general_legible.pdf}
-  \captionof{figure}{Vista resumida de las ocho capas lógicas}
-  \label{fig:arql-1}
-\end{center}
-
-{\footnotesize Fuente: elaboración propia.\par}
-
-La vista resumida destaca la responsabilidad de cada capa: presentación captura y muestra información; borde protege la entrada; las puertas de servicio validan las solicitudes; el negocio aplica las reglas en Laravel; integración conserva y distribuye eventos; y acceso a datos administra la persistencia. Seguridad y observabilidad son transversales, no pasos finales del procesamiento. La puerta local permite que la bodega siga operando sin WAN, mientras las colas conservan el trabajo sin confirmar para reconciliarlo al recuperar la conexión.
+La lectura por capas destaca sus responsabilidades: presentación captura y muestra información; borde protege la entrada; las puertas de servicio validan las solicitudes; el negocio aplica las reglas en Laravel; integración conserva y distribuye eventos; y acceso a datos administra la persistencia. Seguridad y observabilidad son transversales, no pasos finales del procesamiento. La puerta local permite que la bodega siga operando sin WAN, mientras las colas conservan el trabajo sin confirmar para reconciliarlo al recuperar la conexión.
 
 \clearpage
 \begin{landscape}
@@ -69,7 +60,7 @@ Los portales web, implementados en Angular con Tailwind CSS, permiten a transpor
 \begin{itemize}
   \item El Portal de Clientes permite pedir en autoservicio y consultar el estado de entrega, los documentos y el saldo (RT-16.30 del caso; Bases Técnicas del caso, cap.~15, p.~27).
   \item Se publica además como aplicación web progresiva, instalable desde el navegador en el teléfono del almacenero, y constituye el perfil de autoatención con operación desconectada de RT-17.01 del caso (Bases Técnicas del caso, cap.~15, p.~27).
-  \item Sin señal, muestra el catálogo y los precios descargados con su fecha y permite armar el pedido, que queda en cola con su UUID y se envía por \texttt{/sync/v1} al recuperar cobertura. El pedido existe para la compañía solo cuando M3 lo recibe; la confirmación de stock, crédito y fecha de entrega espera esa recepción.
+  \item Sin señal, muestra el catálogo y los precios descargados con su fecha y permite armar el pedido, que queda en cola con su UUID y se envía por el servicio de sincronización al recuperar cobertura. El pedido existe para la compañía solo cuando M3 lo recibe; la confirmación de stock, crédito y fecha de entrega espera esa recepción.
   \item La cuenta se activa en la visita del preventista con un código enviado por SMS al teléfono registrado, y nadie queda obligado a usarla.
   \item El catálogo público admite consulta sin autenticación; las funciones privadas requieren identidad OIDC mediante Keycloak y permisos por rol.
   \item El acceso administrativo exige MFA y una ruta autorizada, definida físicamente en 4.2.
@@ -123,14 +114,14 @@ La entrada pública protege las APIs y rechaza el acceso directo a su origen. El
 La capa de borde delimita la entrada pública y la entrada de dispositivos de terreno y bodega, donde la conectividad es intermitente. Define las siguientes responsabilidades; su despliegue se especifica en 4.2:
 
 \begin{itemize}
-  \item \textbf{CDN (Amazon CloudFront).} Entrada pública de portales externos y APIs de negocio: distribuye contenido estático y encamina las rutas \texttt{/v1} y \texttt{/sync/v1} al API Gateway. El acceso directo al origen de esas APIs debe rechazarse y probarse. Las consolas internas usan acceso privado verificado; el transporte AS2 tiene una superficie separada, restringida a contrapartes registradas.
+  \item \textbf{CDN (Amazon CloudFront).} Entrada pública de portales externos y APIs de negocio: distribuye contenido estático y dirige las solicitudes de negocio y sincronización al API Gateway. El acceso directo al origen de esas APIs debe rechazarse y probarse. Las consolas internas usan acceso privado verificado; el transporte AS2 tiene una superficie separada, restringida a contrapartes registradas.
   \item \textbf{WAF gestionado (AWS WAF y AWS Shield Advanced).} Filtrado de tráfico con reglas OWASP Top 10 y reglas personalizadas por API; protección contra denegación de servicio en capas 3, 4 y 7.
   \item \textbf{Balanceador de carga (ALB).} Distribuye hacia los servicios privados el tráfico que API Gateway entrega mediante su integración privada. El flujo de acceso público es cliente $\rightarrow$ CloudFront/WAF $\rightarrow$ API Gateway $\rightarrow$ integración privada/ALB $\rightarrow$ servicio.
   \item \textbf{Acceso local y continuidad.} Los servicios del sitio aplican control de acceso propio y preservan la operación crítica aun cuando todos los enlaces externos estén indisponibles. En Talca y Concepción, Starlink fijo es el tercer camino en espera caliente tras fibra y LTE; en los cross-docking es el principal, con LTE de dos proveedores como respaldo y conmutación automática en menos de 30 segundos (ADR-02).
   \item \textbf{AWS IoT Greengrass.} Corre en tres gateways IoT industriales (Moxa UC-8200 o equivalente): dos en el CD Talca, que leen ambas cámaras por Modbus TCP para evitar un punto único de falla, y uno en el CD Concepción. Leen los sensores de cámara por Modbus y aplican la regla térmica local. Ante una excursión crítica y sostenida, bloquean el despacho en menos de 5 segundos desde su detección. Además, conservan 24 horas de datos sin enlace. No se instala en camiones: la posición de la flota llega por la API del tercero (INT-15). Los termógrafos registran toda la ruta en su memoria interna, avisan por BLE al terminal del conductor aun sin señal y este reenvía el aviso a la nube al recuperar cobertura; al volver el camión, el terminal descarga y envía el registro completo.
 \end{itemize}
 
-En los CD, Starlink permanece encendido con el túnel IPsec establecido y BGP de menor preferencia, por lo que toma tráfico solo cuando fallan fibra y LTE. En esa condición, la calidad de servicio prioriza DMS/WAL de Talca, la salida del broker y outbox, las guías hacia el ERP y el SII, la identidad y la telemetría crítica. Mantener el terminal encendido evita esperar la adquisición de satélites y la negociación del túnel durante la falla; la tarifa plana no añade costo por esa permanencia.
+En los CD, Starlink permanece encendido con el túnel IPsec establecido y BGP de menor preferencia, por lo que toma tráfico solo cuando fallan fibra y LTE. En esa condición, la calidad de servicio prioriza DMS/WAL de Talca, la salida del broker y bandeja transaccional de salida, las guías hacia el ERP y el SII, la identidad y la telemetría crítica. Mantener el terminal encendido evita esperar la adquisición de satélites y la negociación del túnel durante la falla; la tarifa plana no añade costo por esa permanencia.
 
 \begin{landscape}
 \subsubsection{Capa de puerta de enlace de servicios (Capa 3)}
@@ -154,27 +145,29 @@ El recorrido central valida la identidad y entrega solicitudes a servicios priva
 Amazon API Gateway concentra la publicación de servicios detrás de la entrada pública de CloudFront.
 
 \begin{itemize}
-  \item El diseño requiere validar la identidad emitida por Keycloak, controlar esquema, cuotas y tasa de solicitudes, y propagar un \texttt{transaction\_id}.
+  \item El diseño requiere validar la identidad emitida por Keycloak, controlar esquema, cuotas y tasa de solicitudes, y propagar un identificador de correlación.
   \item Se selecciona REST API con authorizer REQUEST que verifica firma, emisor, audiencia, expiración y alcance del JWT de Keycloak.
   \item Las operaciones sensibles no reutilizan autorizaciones almacenadas; el módulo verifica además recurso y revocación conocida.
   \item La integración privada usa VPC Link V2 hacia ALB; la validación básica de Gateway se complementa con el esquema completo en Laravel (Amazon Web Services [AWS], s.~f.-a, s.~f.-b, s.~f.-c; Anexo 4-O, ADR-13). El recorrido físico y el bloqueo efectivo del acceso directo al origen se deben comprobar en 4.2.
 \end{itemize}
 
-La capa publica dos conjuntos de APIs: las de negocio (\texttt{/v1}) y las de sincronización offline (\texttt{/sync/v1}). El Gateway aplica los controles de entrada y enruta las solicitudes. El servicio de negocio valida el contenido y garantiza la idempotencia de cada escritura mediante su UUID, una ventana de deduplicación documentada y el registro persistente del resultado (RT-02.06; Bases Técnicas Transversales, cap. 2, p. 7).
+La capa publica dos conjuntos de APIs: las de negocio y las de sincronización de operaciones capturadas sin conexión. El Gateway aplica los controles de entrada y enruta las solicitudes. El servicio de negocio valida el contenido y garantiza la idempotencia de cada escritura mediante su UUID, una ventana de deduplicación documentada y el registro persistente del resultado (RT-02.06; Bases Técnicas Transversales, cap. 2, p. 7).
 
 El ingreso por API Gateway corresponde a los servicios en nube. Durante una interrupción del enlace, la bodega utiliza los servicios de su sitio sin depender del Gateway remoto. Los terminales sin cobertura conservan sus eventos y los entregan al servicio local cuando recuperan comunicación; la reconciliación con la nube ocurre al restablecerse el enlace externo. Los contratos y las reglas de validación se mantienen en ambos recorridos.
 
-La bodega dispone además de una puerta de API \emph{local} como función del motor WMS A-01, en VM-01, VM-C01 y E-01, acotada a la red del sitio y a M1, M2, M5, la recepción física de retornos de M8 y la función local de bloqueo de M9. Los terminales de bodega no llaman a Amazon API Gateway durante un corte: el verificador local valida la autorización de turno y esta función aplica esquema, límites de tasa, tamaño de carga, UUID y registro de auditoría antes de entregar una orden al módulo correspondiente. Este control no publica una segunda entrada en internet ni emite identidades nuevas. La Figura~\ref{fig:arql-17} separa los dos recorridos y muestra cómo se conserva el trabajo hasta la reconexión.
+La bodega dispone además de una puerta de API \emph{local} como función del motor WMS A-01, en VM-01, VM-C01 y E-01, acotada a la red del sitio y a M1, M2, M5, la recepción física de retornos de M8 y la función local de bloqueo de M9. Los terminales de bodega no llaman a Amazon API Gateway durante un corte: el verificador local valida la autorización de turno y esta función aplica esquema, límites de tasa, tamaño de carga, UUID y registro de auditoría antes de entregar una orden al módulo correspondiente. Este control no publica una segunda entrada en internet ni emite identidades nuevas. La Figura~\ref{fig:arql-17} distingue la preparación del acceso antes del corte, la autorización local durante los relevos y la reconciliación al recuperar el enlace.
 
+\begin{landscape}
 \begin{center}
-  \includegraphics[width=0.96\linewidth,height=0.72\textheight,keepaspectratio]{figuras/logica/ARQL-17_Acceso_local_24h.png}
+  \includegraphics[width=\linewidth,height=0.83\textheight,keepaspectratio]{figuras/logica/complementarias/ARQL-17_Acceso_local_validado.pdf}
   \captionof{figure}{Identidad y puerta de API local durante un corte de 24 horas}
   \label{fig:arql-17}
 \end{center}
 
 {\footnotesize Fuente: elaboración propia.\par}
+\end{landscape}
 
-El manifiesto de turno firmado por Keycloak llega antes del corte; en cada relevo el verificador local, alojado junto a la caché, valida el manifiesto y un segundo factor local: el PIN personal sobre el terminal enrolado por MDM. El permiso queda limitado a funciones de bodega, mientras los eventos y la bitácora se envían después con su identificador original. La prueba debe iniciar el corte antes de dos relevos sucesivos y medir vencimiento, denegación, reintentos y recuperación; la caché de identidad de 24 horas no emite sesiones y el relevo lo habilita el verificador local.
+El manifiesto de turno firmado por Keycloak llega antes del corte; en cada relevo el verificador local, alojado junto a la caché, valida el manifiesto y un segundo factor local: el PIN personal sobre el terminal enrolado por MDM. El manifiesto cubre una ventana de 26 horas y se renueva al menos cada hora mientras hay enlace; esa vigencia no se confunde con el TTL de 24 horas de la caché ni con la duración de la credencial personal. Si la firma, el turno o los permisos no son válidos, el acceso se deniega y se audita. El permiso queda limitado a funciones de bodega, incluida la recepción física de retornos de M8 y las acciones autorizadas de M9, mientras los eventos y la bitácora se envían después con su identificador original. La prueba debe iniciar el corte antes de dos relevos sucesivos y medir vencimiento, denegación, reintentos y recuperación; la caché de identidad de 24 horas no emite sesiones y el relevo lo habilita el verificador local.
 
 \begin{landscape}
 \subsubsection{Capa de lógica de negocio (Capa 4)}
@@ -195,7 +188,7 @@ La Figura~\ref{fig:arql-capa-4} presenta las responsabilidades de esta capa.
 La figura reúne los doce módulos de negocio y sus funciones principales, junto con las tecnologías del backend y los sistemas externos con los que se relacionan. Los límites e intercambios de cada contexto se desarrollan en los apartados siguientes.
 
 
-La capa de servicios de negocio reúne M1--M12 en un monolito modular Laravel. Cada contexto separa \texttt{Domain}, \texttt{Application}, \texttt{Infrastructure} y \texttt{Http} bajo un espacio de nombres PSR-4.
+La capa de servicios de negocio reúne M1--M12 en un monolito modular Laravel. Cada contexto separa dominio, aplicación, infraestructura y acceso HTTP bajo un espacio de nombres PSR-4.
 
 \begin{itemize}
   \item Los controladores reciben y validan solicitudes;
@@ -211,7 +204,7 @@ La misma versión del artefacto Laravel ejecuta perfiles separados: API central,
   \item Cada perfil dispone de cola, concurrencia, permisos y métricas propios.
   \item El planificador de tareas tiene una sola autoridad por ambiente.
   \item Esta separación permite escalar y reiniciar sincronización, EDI y telemetría sin multiplicar el monolito completo.
-  \item Los componentes críticos se despliegan y revierten de forma independiente (RT-02.02; Bases Técnicas Transversales, cap. 2, p. 6): el perfil \texttt{wms\_only} se actualiza sitio por sitio sin tocar la API central, y \texttt{erp-sync} con la ACL, el shipper de cada sitio, el consumidor de reconciliación, el motor de rutas, el transporte AS2 y las consolas tienen su propio servicio, su versión desplegada y su reversión. Un sitio puede operar con la entrega previa mientras la nube ya opera la nueva, porque los contratos aceptan la edición vigente y la anterior. Además, cada capacidad se habilita por sitio con indicadores de funcionalidad.
+  \item Los componentes críticos se despliegan y revierten de forma independiente (RT-02.02; Bases Técnicas Transversales, cap. 2, p. 6): el perfil local de bodega se actualiza sitio por sitio sin tocar la API central, el servicio de integración con el ERP y la ACL, el agente de transferencia de cada sitio, el consumidor de reconciliación, el motor de rutas, el transporte AS2 y las consolas tienen su propio servicio, su versión desplegada y su reversión. Un sitio puede operar con la entrega previa mientras la nube ya opera la nueva, porque los contratos aceptan la edición vigente y la anterior. Además, cada capacidad se habilita por sitio con indicadores de funcionalidad.
 \end{itemize}
 
 Los módulos evitan estado durable en memoria y pueden crecer por réplicas o por trabajadores independientes, según la demanda. Los umbrales, límites de capacidad, emplazamiento y costos se especifican en 4.2 y en la oferta económica.
@@ -239,63 +232,67 @@ La capa de integración conecta la nueva operación con sistemas que Puelche ya 
 
 RabbitMQ conserva las colas de integración local. En nube, SQS FIFO ordena los mensajes de reconciliación dentro de cada grupo y SNS difunde eventos y alertas. Los avisos al cliente se entregan mediante SNS o la API del proveedor de notificaciones (INT-11). El orden no se presume global ni se atribuye a toda la cadena de eventos. Los consumidores aplican deduplicación, reintentos con espera creciente y una cola de mensajes fallidos (DLQ), con intervención trazable cuando el procesamiento no puede completarse (RT-02.07; Bases Técnicas Transversales, cap. 2, p. 7).
 
-El shipper publica en la cola SQS FIFO de reconciliación un sobre JSON independiente de PHP con versión, identidad, clave de orden y carga.
+El agente de transferencia publica en la cola SQS FIFO de reconciliación un sobre JSON independiente de PHP con versión, identidad, clave de orden y carga.
 
 \begin{itemize}
   \item Un consumidor PHP dedicado lee ese sobre mediante el SDK de AWS, valida su esquema, invoca el caso de uso Laravel y reconoce el mensaje solo después de persistir el resultado.
-  \item Las solicitudes al ERP viajan por otra cola, la cola FIFO de solicitudes al ERP, que solo lee \texttt{erp-sync} en VM-04 de Talca; cada respuesta vuelve a su sitio por una cola FIFO de respuesta propia, que el shipper del sitio lee por conexión saliente y entrega a RabbitMQ local.
+  \item Las solicitudes al ERP viajan por otra cola, la cola FIFO de solicitudes al ERP, que solo lee el servicio de integración con el ERP en VM-04 de Talca; cada respuesta vuelve a su sitio por una cola FIFO de respuesta propia, que el agente de transferencia del sitio lee por conexión saliente y entrega a RabbitMQ local.
   \item Los trabajos derivados propios de Laravel usan su conector SQS en colas distintas y declaran grupo y clave de deduplicación cuando requieren orden FIFO.
   \item Esta separación evita entregar mensajes externos al deserializador de trabajos del framework.
-  \item RabbitMQ local se conecta mediante un adaptador AMQP probado con \texttt{php-amqplib}; el shipper confirma la publicación en SQS antes de reconocer el mensaje local.
+  \item RabbitMQ local se conecta mediante un adaptador AMQP probado con \texttt{php-amqplib}; el agente de transferencia confirma la publicación en SQS antes de reconocer el mensaje local.
   \item No se introduce Redis ni Horizon en los sitios, donde la continuidad depende de PostgreSQL y RabbitMQ.
 \end{itemize}
 
 Las APIs de la plataforma reciben solicitudes por la Capa 3. Los servicios de negocio invocan sus adaptadores de integración cuando necesitan consultar pagos o mapas, con tiempo máximo de espera explícito (RT-02.08; Bases Técnicas Transversales, cap. 2, p. 7). Los intercambios diferidos con ERP, EDI, telemetría y notificaciones utilizan colas y reintentos. La emisión tributaria se canaliza por el ERP mediante la ACL; no se crea un segundo emisor de documentos ante el SII.
 
-El ERP de 2017 se conserva como única fuente de verdad tributaria y único emisor de DTE. La capa anticorrupción (ACL) traduce los contratos de la solución al formato del legado, sin reemplazarlo ni modificar su código. El flujo de rendición es: rendición aprobada $\rightarrow$ cola FIFO de solicitudes al ERP $\rightarrow$ \texttt{erp-sync} en VM-04 de Talca $\rightarrow$ ACL local $\rightarrow$ ERP. Dos procesos de \texttt{erp-sync} consumen además RabbitMQ local para las solicitudes del WMS de Talca; acceden a la cola de solicitudes mediante conexión saliente. Ningún módulo, portal o cadena escribe directamente en el ERP. El trabajador usa una clave idempotente por operación y conserva folio, estado y acuse para seguir cada documento hasta su origen; reintentar un trabajo no solicita un segundo documento. M5 solicita la guía al cerrar la carga nocturna; cualquier cambio de carga invalida la guía y exige una nueva. El ERP sigue como único emisor ante el SII por fibra, LTE o satélite.
+El ERP de 2017 se conserva como única fuente de verdad tributaria y único emisor de DTE. La capa anticorrupción (ACL) traduce los contratos de la solución al formato del legado, sin reemplazarlo ni modificar su código. El flujo de rendición es: rendición aprobada $\rightarrow$ cola FIFO de solicitudes al ERP $\rightarrow$ servicio de integración con el ERP en VM-04 de Talca $\rightarrow$ ACL local $\rightarrow$ ERP. Dos procesos del servicio de integración con el ERP consumen además RabbitMQ local para las solicitudes del WMS de Talca; acceden a la cola de solicitudes mediante conexión saliente. Ningún módulo, portal o cadena escribe directamente en el ERP. El trabajador usa una clave idempotente por operación y conserva folio, estado y acuse para seguir cada documento hasta su origen; reintentar un trabajo no solicita un segundo documento. M5 solicita la guía al cerrar la carga nocturna; cualquier cambio de carga invalida la guía y exige una nueva. El ERP sigue como único emisor ante el SII por fibra, LTE o satélite.
 
 La integración con las cadenas del canal moderno se resuelve con un hub EDI centralizado en nube. Utiliza mensajes comerciales EANCOM y GS1 XML, y eventos EPCIS para trazabilidad. Cada cadena dispone de un conector configurable, una tabla de equivalencias GTIN (RF-12.03) y una bandeja de excepciones (RF-12.06). El hub transforma los mensajes al modelo canónico y entrega al ERP, exclusivamente mediante la ACL, la información necesaria para sus documentos, incluida la guía de despacho electrónica (GDE). AS2 es uno de los transportes del hub. El canal moderno debe quedar operativo a más tardar en enero de 2029.
 
 \paragraph{Eventos canónicos del dominio}
 \label{subsubsec:eventos-canonicos}
 
-Los eventos son el vocabulario del sistema. Se nombran en pasado, son inmutables y llevan \texttt{event\_id} (UUID), \texttt{occurred\_at}, \texttt{site\_id} y \texttt{transaction\_id}. El catálogo de eventos canónicos del dominio se presenta en el Anexo 4-A. Cada evento declara productor único, consumidores registrados, clave de partición y política de reintento, y su origen se traza a un requisito del caso o a una decisión del numeral 16.1.
+Los eventos son el vocabulario del sistema. Se nombran en pasado, son inmutables y llevan identificador único del evento (UUID), fecha y hora del evento, identificador del sitio y identificador de correlación. El catálogo de eventos canónicos del dominio se presenta en el Anexo 4-A. Cada evento declara productor único, consumidores registrados, clave de partición y política de reintento, y su origen se traza a un requisito del caso o a una decisión del numeral 16.1.
 
 
 
-Los esquemas AsyncAPI 2.6 versionados por evento se gobiernan desde el Catálogo de interfaces (\S~\ref{sec:catalogo-interfaces}); \texttt{transaction\_id} conserva la correlación entre los módulos consumidores.
+Los esquemas AsyncAPI 2.6 versionados por evento se gobiernan desde el catálogo de interfaces (véase el apartado~\ref{sec:catalogo-interfaces}). El identificador de correlación permite seguir una operación entre los módulos consumidores.
 
 \paragraph{Orquestación y coreografía}
-M3 solicita a M2 la reserva de cada pedido y lo deja pendiente hasta que M2 central persiste el acuse de la retención en el sitio. La respuesta llega de forma asíncrona y queda visible para el preventista como confirmación o quiebre. Cuando el pedido queda confirmado, publica \texttt{PedidoConfirmado}; M4, M5 y M10 reaccionan a ese hecho; M11 también lo consume solo para pedidos de cadenas, a fin de responder a la cadena mediante su propio consumidor. Esa coreografía evita que M3 conozca el horario de preparación o el esquema analítico. La publicación se registra junto con el cambio de estado mediante una bandeja transaccional de salida (\textit{outbox}); el consumidor confirma su progreso solo después de persistir su resultado. Si falla un consumidor, la cola reintenta y termina en una bandeja de excepción, sin deshacer a ciegas el pedido ya confirmado.
+M3 solicita a M2 la reserva de cada pedido y lo deja pendiente hasta que M2 central persiste el acuse de la retención en el sitio. La respuesta llega de forma asíncrona y queda visible para el preventista como confirmación o quiebre. Cuando el pedido queda confirmado, publica \texttt{PedidoConfirmado}; M4, M5 y M10 reaccionan a ese hecho; M11 también lo consume solo para pedidos de cadenas, a fin de responder a la cadena mediante su propio consumidor. Esa coreografía evita que M3 conozca el horario de preparación o el esquema analítico. La publicación se registra junto con el cambio de estado mediante una bandeja transaccional de salida; el consumidor confirma su progreso solo después de persistir su resultado. Si falla un consumidor, la cola reintenta y termina en una bandeja de excepción, sin deshacer a ciegas el pedido ya confirmado.
 
 El despacho tiene una coordinación distinta: M5 no libera la carga hasta recibir el resultado de M9 sobre el lote y la guía emitida por el ERP a través de la ACL. Una excursión crítica y sostenida bloquea localmente la salida aun con el enlace caído; solo Calidad puede liberar el lote tras evaluación registrada. El conductor informa la incidencia y conserva la carga, pero no aprueba su liberación sanitaria. Las Figuras~\ref{fig:arql-15} y \ref{fig:arql-16} recorren el pedido con y sin conexión y hacen visible dónde cambia una captura sin confirmar a una operación confirmada.
 
+\begin{landscape}
 \begin{center}
-  \includegraphics[width=0.96\linewidth,height=0.75\textheight,keepaspectratio]{figuras/logica/ARQL-15_Pedido_con_conexion.png}
+  \includegraphics[width=\linewidth,height=0.83\textheight,keepaspectratio]{figuras/logica/complementarias/ARQL-15_Pedido_con_conexion_validado.pdf}
   \captionof{figure}{Secuencia lógica del pedido con conexión}
   \label{fig:arql-15}
 \end{center}
 
 {\footnotesize Fuente: elaboración propia.\par}
+\end{landscape}
 
-Con conexión, M2 devuelve una reserva explícita y M5 no comienza a preparar un pedido rechazado. La carga preparada sigue retenida si M9 informa un bloqueo o si el ERP no devuelve la guía electrónica. El flujo dibuja esos dos retornos porque un pedido confirmado no autoriza por sí mismo la salida física.
+Con conexión, la aplicación envía el pedido por la entrada pública autorizada y M3 valida sus reglas de precio y crédito antes de solicitar la reserva a M2 central. El agente de transferencia del sitio recoge la solicitud mediante conexión saliente; M2 local valida existencia y Calidad y persiste retención, auditoría y bandeja transaccional de salida. Solo después del acuse durable M2 central confirma la reserva y M3 confirma el pedido. La publicación de \texttt{PedidoConfirmado} habilita a M5; M4 y M10 también consumen ese evento conforme a sus contratos. La línea del sitio agrupa M2, su agente de transferencia y el broker local para explicar el protocolo; las flechas representan mensajes lógicos y no una conexión entrante de la nube al sitio. La secuencia se limita a la confirmación y habilitación de la preparación: la carga preparada sigue retenida si M9 informa un bloqueo o si el ERP no devuelve una guía válida para esa carga, según el apartado de POD, DTE y acuse. Un pedido confirmado no autoriza por sí mismo la salida física.
 
+\begin{landscape}
 \begin{center}
-  \includegraphics[width=0.96\linewidth,height=0.75\textheight,keepaspectratio]{figuras/logica/ARQL-16_Pedido_sin_conexion.png}
+  \includegraphics[width=\linewidth,height=0.83\textheight,keepaspectratio]{figuras/logica/complementarias/ARQL-16_Pedido_sin_conexion_validado.pdf}
   \captionof{figure}{Secuencia lógica del pedido capturado sin conexión}
   \label{fig:arql-16}
 \end{center}
 
 {\footnotesize Fuente: elaboración propia.\par}
+\end{landscape}
 
-Sin conexión, la aplicación conserva la intención de compra, no una reserva firme. El mismo UUID viaja en todos los reintentos; M3 y M2 producen un resultado durable con la regla y la causal de excepción. Si se pierde el acuse de respuesta, el dispositivo conserva el evento y pregunta por ese UUID antes de eliminarlo. Solo un pedido confirmado alimenta M5, lo que permite explicar al cliente un faltante sin duplicar la venta.
+Sin conexión, la aplicación conserva la intención de compra, no una reserva firme. Al recuperar cobertura envía el mismo UUID por el servicio de sincronización; M3 deduplica y solicita la reserva mediante el mismo protocolo de retención local y acuse durable mostrado en la secuencia conectada. M3 y M2 producen un resultado durable con la regla y la causal de excepción. Si se pierde el acuse de respuesta, el dispositivo conserva el evento y pregunta por ese UUID antes de eliminarlo. Sin acuse local durable, el pedido permanece pendiente. Solo un pedido confirmado alimenta M5, lo que permite explicar al cliente un faltante sin duplicar la venta.
 
 \paragraph{Contratos de integración}
 \label{subsubsec:contratos-integracion}
 
-Las APIs síncronas se describen en OpenAPI 3.1 por módulo y versión mayor. Cada operación declara dueño, esquema de solicitud y respuesta, identidad requerida, errores de negocio, límites de tasa y fecha de retirada. El Gateway valida la entrada, pero la decisión de negocio y la idempotencia pertenecen al servicio. Las interfaces de sincronización \texttt{/sync/v1} reciben lotes con UUID por operación y devuelven un resultado individual, de modo que un error de una entrega no obligue a repetir todas las demás.
+Las APIs síncronas se describen en OpenAPI 3.1 por módulo y versión mayor. Cada operación declara dueño, esquema de solicitud y respuesta, identidad requerida, errores de negocio, límites de tasa y fecha de retirada. El Gateway valida la entrada, pero la decisión de negocio y la idempotencia pertenecen al servicio. Las interfaces de sincronización reciben lotes con UUID por operación y devuelven un resultado individual, de modo que un error de una entrega no obligue a repetir todas las demás.
 
-Los eventos se describen en AsyncAPI 2.6 con productor único, consumidores, clave de partición, versión, política de reintento y cola de fallidos. Los mensajes viajan al menos una vez: cada consumidor deduplica por \texttt{event\_id} y preserva orden dentro del agregado que lo exige. OAuth con PKCE protege clientes interactivos; mTLS y credenciales rotadas protegen servicios. \texttt{transaction\_id} enlaza llamada, evento, resultado y evidencia de auditoría.
+Los eventos se describen en AsyncAPI 2.6 con productor único, consumidores, clave de partición, versión, política de reintento y cola de fallidos. Los mensajes viajan al menos una vez: cada consumidor deduplica por identificador único del evento y preserva orden dentro del agregado que lo exige. OAuth con PKCE protege clientes interactivos; mTLS y credenciales rotadas protegen servicios. El identificador de correlación enlaza llamada, evento, resultado y evidencia de auditoría.
 
 \paragraph{Capa anticorrupción y sustitución del WMS}
 \label{subsubsec:acl-estrangulamiento}
@@ -304,7 +301,7 @@ Los eventos se describen en AsyncAPI 2.6 con productor único, consumidores, cla
 
 \begin{itemize}
   \item El conocimiento del ERP queda concentrado y documentado en un solo componente, no disperso en doce módulos.
-  \item Ningún módulo, portal ni cadena de supermercados escribe al ERP: el trabajador \texttt{erp-sync} en VM-04 consume RabbitMQ local y, por salida, la cola FIFO de solicitudes al ERP, y llama a la ACL del mismo sitio mediante su contrato versionado.
+  \item Ningún módulo, portal ni cadena de supermercados escribe al ERP: el servicio de integración con el ERP en VM-04 consume RabbitMQ local y, por salida, la cola FIFO de solicitudes al ERP, y llama a la ACL del mismo sitio mediante su contrato versionado.
   \item Cuando una capacidad del ERP se absorbe en la plataforma, se retira de la ACL sin tocar a los consumidores.
 \end{itemize}
 
@@ -328,7 +325,7 @@ No se mantiene el WMS 2013 como sistema operativo en producción tras la Etapa 1
 \paragraph{Versionado y gobierno de integración}
 \label{subsubsec:versionado-gobierno}
 
-Los contratos siguen versiones \texttt{major.\allowbreak minor.\allowbreak patch}.
+La versión de cada contrato distingue cambios mayores, menores y de corrección.
 
 \begin{itemize}
   \item Un cambio aditivo conserva compatibilidad;
@@ -374,9 +371,9 @@ La capa de datos distingue quién conserva la información operativa, quién la 
 
 En la operación local:
 \begin{itemize}
-  \item \textbf{CD Talca:} PostgreSQL 16 con PostGIS y perfil \texttt{wms\_only} como autoridad de los movimientos físicos de Talca, con autonomía mínima de 24 horas.
-  \item \textbf{CD Concepción:} PostgreSQL y el mismo perfil \texttt{wms\_only}, capaz de sostener 24 horas de operación local sin depender de Talca, en un par de servidores activo y en espera (RT-03.14; Bases Técnicas Transversales, cap. 3, p. 9).
-  \item \textbf{Cross-docking de Curicó, Chillán y Los Ángeles:} el mismo perfil \texttt{wms\_only} en un par de equipos E-01, uno activo y otro en espera, para recepción, desconsolidación y despacho. Cada sitio publica su detalle por SQS FIFO hacia la consolidación en nube. Las tres horas indicadas en el caso son una ventana operativa, no una excepción a RT-03.10: el diseño lógico exige al menos 24 horas de continuidad local degradada, cuya suficiencia deberá demostrarse mediante pruebas.
+  \item \textbf{CD Talca:} PostgreSQL 16 con PostGIS y perfil local de bodega como autoridad de los movimientos físicos de Talca, con autonomía mínima de 24 horas.
+  \item \textbf{CD Concepción:} PostgreSQL y el mismo perfil local de bodega, capaz de sostener 24 horas de operación local sin depender de Talca, en un par de servidores activo y en espera (RT-03.14; Bases Técnicas Transversales, cap. 3, p. 9).
+  \item \textbf{Cross-docking de Curicó, Chillán y Los Ángeles:} el mismo perfil local de bodega en un par de equipos E-01, uno activo y otro en espera, para recepción, desconsolidación y despacho. Cada sitio publica su detalle por SQS FIFO hacia la consolidación en nube. Las tres horas indicadas en el caso son una ventana operativa, no una excepción a RT-03.10: el diseño lógico exige al menos 24 horas de continuidad local degradada, cuya suficiencia deberá demostrarse mediante pruebas.
 \end{itemize}
 
 En los servicios centrales, N-04/N-05 consolidan stock por sitio y la reserva de preventa mediante eventos idempotentes;
@@ -401,7 +398,7 @@ La vigencia de los datos de lectura es independiente de la identidad. Las creden
 
 La separación transaccional/analítica es estricta: la analítica no lee del transaccional para evitar degradar la ventana crítica de despacho. Las latencias comprometidas son: operación del día $\leq$ 5 minutos, cierre comercial $\leq$ 2 horas, gestión $\leq$ 4 horas.
 
-Cada evento conserva identidad, estado y resultado hasta recibir confirmación durable. DMS replica el WMS de Talca hacia un esquema de lectura; no escribe en las tablas de negocio centrales. Los consumidores de eventos actualizan estas últimas con deduplicación transaccional por sitio y UUID. Concepción y los cross-docking sincronizan sus eventos sin presumir un flujo DMS propio. Durante un corte cada sitio retiene sus cambios dentro de una capacidad comprobada para 24 horas. La extracción continua de DMS/WAL de Talca y de outbox por fibra, LTE y satélite sostiene RPO $\leq$ 15 minutos; AL-DR-01 del Anexo 4-M verifica la protección externa y 4.3.2 justifica el límite residual. El esquema 3-2-1-1-0, los medios de respaldo y la restauración se desarrollan en 4.2.
+Cada evento conserva identidad, estado y resultado hasta recibir confirmación durable. DMS replica el WMS de Talca hacia un esquema de lectura; no escribe en las tablas de negocio centrales. Los consumidores de eventos actualizan estas últimas con deduplicación transaccional por sitio y UUID. Concepción y los cross-docking sincronizan sus eventos sin presumir un flujo DMS propio. Durante un corte cada sitio retiene sus cambios dentro de una capacidad comprobada para 24 horas. La extracción continua de DMS/WAL de Talca y de la bandeja transaccional de salida por fibra, LTE y satélite sostiene RPO $\leq$ 15 minutos; AL-DR-01 del Anexo 4-M verifica la protección externa y 4.3.2 justifica el límite residual. El esquema 3-2-1-1-0, los medios de respaldo y la restauración se desarrollan en 4.2.
 
 \begin{landscape}
 \subsubsection{Capa de seguridad transversal (Capa 7)}
@@ -529,9 +526,9 @@ La correlación permite seguir una operación entre APIs, módulos y consumidore
 
 La observabilidad debe ayudar al equipo a responder preguntas operativas: qué pedido quedó sin confirmar, dónde se interrumpió una integración y qué entregas pueden verse afectadas. Para ello reúne métricas, registros y trazas de nube y sitios locales en una misma plataforma (RT-03.16; Bases Técnicas Transversales, cap. 3, p. 9; Bases Administrativas, art. 16.4, p. 12).
 
-La instrumentación utiliza OpenTelemetry para PHP/Laravel y las aplicaciones Kotlin, junto con los registros y métricas disponibles de API Gateway, RabbitMQ, SQS y Greengrass. El identificador \texttt{transaction\_id} acompaña las solicitudes y los mensajes; los trabajadores extraen el contexto de traza del sobre de evento para correlacionar la operación de negocio, incluidos los procesos asíncronos.
+La instrumentación utiliza OpenTelemetry para PHP/Laravel y las aplicaciones Kotlin, junto con los registros y métricas disponibles de API Gateway, RabbitMQ, SQS y Greengrass. El identificador de correlación acompaña las solicitudes y los mensajes; los trabajadores extraen el contexto de traza del sobre de evento para correlacionar la operación de negocio, incluidos los procesos asíncronos.
 
-En on-premise, los colectores ADOT, con buffer en disco de 24 horas, recolectan la telemetría local y la exportan a la plataforma única en Amazon CloudWatch: Logs conserva los registros técnicos 12 meses en línea y 24 meses en archivo; Metrics conserva las métricas 13 meses; las trazas y los tableros operacionales también se alojan en CloudWatch (ADR-14).
+En on-premise, los colectores ADOT, con almacenamiento temporal en disco de 24 horas, recolectan la telemetría local y la exportan a la plataforma única en Amazon CloudWatch: Logs conserva los registros técnicos 12 meses en línea y 24 meses en archivo; Metrics conserva las métricas 13 meses; las trazas y los tableros operacionales también se alojan en CloudWatch (ADR-14).
 
 Los tableros se estructuran en tres niveles:
 

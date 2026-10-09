@@ -14,10 +14,10 @@ Los cinco ambientes del RT-04.01 cumplen propósitos distintos.
 
 Los cinco deben estar operativos en el hito H3; su emplazamiento, capacidad y segregación de redes se demuestran en 4.2, no mediante el simple nombre del ambiente.
 
-La promoción conserva la identidad del artefacto PHP, \texttt{composer.lock} y la versión de esquema desde QA hasta producción.
+La promoción conserva la identidad del artefacto PHP, el archivo de versiones de dependencias y la versión de esquema desde QA hasta producción.
 
 \begin{itemize}
-  \item La revisión por pares, pruebas de contrato OpenAPI/AsyncAPI, PHPUnit, PHPStan/Larastan, \texttt{composer audit}, análisis de secretos e imágenes bloquean un despliegue defectuoso (RT-04.03--04.05; Bases Técnicas Transversales, cap. 4, p. 10).
+  \item La revisión por pares, pruebas de contrato OpenAPI/AsyncAPI, PHPUnit, PHPStan/Larastan, la auditoría de dependencias, análisis de secretos e imágenes bloquean un despliegue defectuoso (RT-04.03--04.05; Bases Técnicas Transversales, cap. 4, p. 10).
   \item Cada cambio registra requisito, commit, prueba, aprobación y despliegue; una migración incompatible con eventos sin confirmar se detiene o conserva un lector de la versión precedente.
   \item La recuperación ante desastres verifica además la lectura de datos y mensajes generados durante la contingencia antes del retorno al primario.
 \end{itemize}

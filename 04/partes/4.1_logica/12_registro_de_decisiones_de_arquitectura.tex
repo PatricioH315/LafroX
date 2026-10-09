@@ -17,10 +17,10 @@ Las 22 decisiones de arquitectura se resumen en la Tabla~\ref{tab:resumen-adr}. 
 \mbox{ADR-11} & Hub GS1 y OpenAS2 con ACL. & Conexiones EDI directas al ERP. & Contratos y aislamiento tributario. \\
 \mbox{ADR-12} & Aurora fija a 3$\times$ y Fargate por perfil. & Cambio de instancia en septiembre. & Peak probado sin intervención. \\
 \mbox{ADR-13} & API Gateway REST en nube y puerta de API local A-01. & Gateway solo en nube. & Validación local de esquema, tasa, UUID, permisos y auditoría sin WAN. \\
-\mbox{ADR-14} & CloudWatch con OpenTelemetry y ADOT. & Dos plataformas de observabilidad. & Correlación con buffer local. \\
+\mbox{ADR-14} & CloudWatch con OpenTelemetry y ADOT. & Dos plataformas de observabilidad. & Correlación con almacenamiento temporal local. \\
 \mbox{ADR-15} & Secrets Manager y Parameter Store. & Vault autoadministrado. & Rotación y custodia auditables. \\
 \mbox{ADR-16} & Verified Access para consolas. & Client VPN. & Acceso por aplicación y postura. \\
-\mbox{ADR-17} & \texttt{erp-sync} en VM-04 con doble cola. & Trabajador solo en nube. & Guía local válida sin WAN. \\
+\mbox{ADR-17} & Servicio de integración con el ERP en VM-04 con doble cola. & Trabajador solo en nube. & Guía local válida sin WAN. \\
 \mbox{ADR-18} & Extracción por tres caminos con RPO de 15 min. & Retención solo en el sitio. & Copia durable fuera del sitio. \\
 \mbox{ADR-19} & Regiones declaradas y aprobación del CLIENTE. & Una sola región. & Continuidad y licitud de transferencia. \\
 \mbox{ADR-20} & Angular con TypeScript y Portal de Clientes instalable. & Perfil del cliente en la aplicación Kotlin. & Separación entre clientes y trabajadores. \\

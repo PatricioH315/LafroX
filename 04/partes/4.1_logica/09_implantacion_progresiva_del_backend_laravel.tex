@@ -1,9 +1,7 @@
 \subsection{Implantación progresiva del backend Laravel}
 \label{sec:transicion-laravel}
 
-La implantación conserva los identificadores M1--M12, sus dueños de datos, las rutas y versiones públicas, los eventos JSON, la identidad Keycloak y las reglas offline. El Anexo 4-P muestra cómo se implementan las capacidades del backend; PostgreSQL/PostGIS, RabbitMQ, SQS y los clientes mantienen sus contratos.
-
-La implementación conserva rutas y contratos, repositorios PostgreSQL/PostGIS y eventos JSON. Sustituye el runtime por Laravel/PHP, separa consumidor de integración y trabajos internos, y prueba identidad, trazas y reversión antes de habilitar cada ola.
+La implantación progresiva de Laravel/PHP conserva los identificadores M1--M12, sus dueños de datos, los contratos públicos y sus versiones, los eventos JSON, la identidad Keycloak y las reglas sin conexión. Se separan los consumidores de integración de los trabajos internos y se prueban identidad, trazas y reversión antes de habilitar cada ola. El Anexo 4-P detalla las tecnologías que realizan estas capacidades; PostgreSQL/PostGIS, RabbitMQ, SQS y los clientes mantienen sus contratos durante el despliegue.
 
 
 La implantación comienza por fijar contratos, dueños de datos y un extracto conciliado del WMS de 2013 en Talca.

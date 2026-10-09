@@ -19,6 +19,9 @@ El catálogo conserva los identificadores de las ocho interfaces internas. Las f
 
 % Fichas del Anexo G. Compilación mediante anexos_4.1.tex desde la raíz.
 \subsection*{Parámetros comunes del catálogo}
+\paragraph{Nombres de servicios y campos de los contratos}
+En la explicación de 4.1, los servicios de negocio corresponden a la ruta \texttt{/v1}, y el servicio de sincronización, a \texttt{/sync/v1}. Son superficies versionadas de las APIs, no enlaces a secciones del documento. El identificador único del evento se denomina \texttt{event\_id}; su fecha y hora, \texttt{occurred\_at}; el sitio, \texttt{site\_id}; y el identificador de correlación, \texttt{transaction\_id}. El UUID de cada operación se conserva en todos sus reintentos. El catálogo de eventos del Anexo 4-A mantiene los nombres canónicos de productores y mensajes.
+
 Los contratos distinguirán aceptación durable de procesamiento concluido. Como valores iniciales de diseño, las consultas interactivas tendrán espera máxima de 5 segundos y las transferencias de lotes, 30 segundos; un timeout produce estado incierto, nunca aprobación. Los reintentos conservan UUID, aplican espera exponencial con dispersión y máximo de 5 minutos entre intentos. Los errores de validación pasan a excepción sin reintento automático. El agotamiento del presupuesto de intentos deriva a una cola de errores con alerta; no elimina la operación. Estos parámetros se ajustarán con la prueba de carga sin relajar los tiempos de negocio exigidos.
 
 \paragraph{INT-01. Preventa y consultas --- M3}

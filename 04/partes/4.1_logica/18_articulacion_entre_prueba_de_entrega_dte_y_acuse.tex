@@ -1,7 +1,7 @@
 \subsection{Articulación entre prueba de entrega, DTE y acuse}
 \label{sec:pod-dte-acuse}
 
-La guía de despacho electrónica debe estar vinculada a la salida de mercadería antes de iniciar el traslado. La aplicación no la emite: M5 entrega los datos de despacho a \texttt{erp-sync} en VM-04 y por la capa anticorrupción al ERP, que conserva la responsabilidad tributaria y devuelve folio, estado y documento. M6 captura después la recepción efectiva, incluidos bultos rechazados, identidad del receptor y evidencia. El acuse técnico de recepción o procesamiento ante el SII y el acuse de recepción de mercaderías del destinatario son hechos distintos; cada uno conserva su origen, fecha y estado.
+La guía de despacho electrónica debe estar vinculada a la salida de mercadería antes de iniciar el traslado. La aplicación no la emite: M5 entrega los datos de despacho al servicio de integración con el ERP en VM-04 y por la capa anticorrupción al ERP, que conserva la responsabilidad tributaria y devuelve folio, estado y documento. M6 captura después la recepción efectiva, incluidos bultos rechazados, identidad del receptor y evidencia. El acuse técnico de recepción o procesamiento ante el SII y el acuse de recepción de mercaderías del destinatario son hechos distintos; cada uno conserva su origen, fecha y estado.
 
 \subsubsection{Secuencia y excepciones}
 
@@ -9,14 +9,14 @@ La secuencia lógica es:
 
 \begin{enumerate}
   \item preparación confirmada en M5;
-  \item solicitud nocturna de guía al ERP mediante \texttt{erp-sync} y ACL de VM-04;
+  \item solicitud nocturna de guía al ERP mediante el servicio de integración con el ERP y ACL de VM-04;
   \item autorización de salida con el documento disponible;
   \item captura de POD y diferencias en M6;
   \item conciliación de la entrega en M7/M8;
   \item y, si corresponde, solicitud al ERP de factura, nota de crédito o tratamiento tributario de la devolución.
 \end{enumerate}
 
-Un mismo \texttt{transaction\_id} relaciona pedido, guía, entrega, evidencia, acuses y documentos posteriores. El acuse del destinatario se obtiene por el mecanismo que acuerde el CLIENTE conforme a la normativa aplicable; una fotografía o un QR no se presume equivalente por sí solo.
+Un mismo identificador de correlación relaciona pedido, guía, entrega, evidencia, acuses y documentos posteriores. El acuse del destinatario se obtiene por el mecanismo que acuerde el CLIENTE conforme a la normativa aplicable; una fotografía o un QR no se presume equivalente por sí solo.
 
 Si el ERP o su canal tributario no confirma la guía antes de la salida, M5 muestra el despacho como bloqueado y lo deriva al responsable de Operaciones y Tributación para aplicar únicamente la contingencia autorizada por el CLIENTE. La captura offline del POD permite registrar una entrega ya despachada; no autoriza emitir retroactivamente una guía desde el teléfono. Esta separación protege la continuidad de la evidencia sin atribuir a la aplicación facultades tributarias que permanecen en el ERP.
 
@@ -26,11 +26,11 @@ M5 conserva los estados carga confirmada, guía solicitada, resultado incierto, 
 
 \begin{itemize}
   \item La solicitud lleva una clave estable por despacho y versión de carga.
-  \item Ante un timeout se consulta el resultado de esa misma solicitud antes de repetirla; no se genera otra guía a ciegas.
+  \item Al agotarse el tiempo de espera se consulta el resultado de esa misma solicitud antes de repetirla; no se genera otra guía a ciegas.
   \item Solo se libera cuando la guía corresponde a la carga vigente y su evidencia está disponible localmente.
   \item Una modificación efectiva de carga invalida la guía y exige que el ERP anule el documento según su procedimiento y emita uno nuevo antes de la salida; si no hay conectividad para emitirlo, el cambio propuesto no se ejecuta y solo sale la carga original si su guía sigue vigente.
   \item Una guía ya anulada o invalidada no se reutiliza, aunque se reponga la carga anterior.
-  \item El acuse técnico del SII, el documento emitido y la autorización de traslado no se representan con un único booleano.
+  \item El acuse técnico del SII, el documento emitido y la autorización de traslado no se representan con un único indicador de sí o no.
 \end{itemize}
 
 Al cerrar la carga nocturna se solicita la guía por adelantado, sin confundir anticipación con contingencia.

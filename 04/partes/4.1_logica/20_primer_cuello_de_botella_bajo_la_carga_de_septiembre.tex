@@ -14,7 +14,7 @@ M2 en bodega & Crecen espera de reserva y bloqueos de stock. & Serializar por SK
 
 La emisión de guías debe medirse antes de atribuir el límite al cómputo escalable.
 
-Al cerrar la carga nocturna, \texttt{erp-sync} en VM-04 solicita la guía al ERP mediante la ACL local; el ERP dispone de fibra, LTE y satélite para comunicarse con el SII. Cualquier cambio de carga invalida la guía y exige otra antes de liberar. Se mide el número de guías sin confirmar antes de cada salida y se alerta al responsable de despacho; el camión afectado no se marca como liberado mientras falte el documento o una contingencia autorizada. La prueba de carga debe confirmar si el ERP es efectivamente el primer límite y ajustar esta hipótesis con medición, como exige RT-09.05.
+Al cerrar la carga nocturna, el servicio de integración con el ERP en VM-04 solicita la guía al ERP mediante la ACL local; el ERP dispone de fibra, LTE y satélite para comunicarse con el SII. Cualquier cambio de carga invalida la guía y exige otra antes de liberar. Se mide el número de guías sin confirmar antes de cada salida y se alerta al responsable de despacho; el camión afectado no se marca como liberado mientras falte el documento o una contingencia autorizada. La prueba de carga debe confirmar si el ERP es efectivamente el primer límite y ajustar esta hipótesis con medición, como exige RT-09.05.
 
 El Anexo 4-T especifica percentiles, ventanas de ensayo, carga de 1,5 veces el peak y escenario de crecimiento de tres veces, con colas y procesos aislados. Los resultados se deben medir; los cálculos de escenario no son evidencia de capacidad ejecutada.
 

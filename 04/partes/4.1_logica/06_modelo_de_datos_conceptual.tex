@@ -21,16 +21,18 @@ Los eventos usan verbos en pasado y son la base de los esquemas AsyncAPI. Toda e
 
 El almacenamiento se distribuye en quince dominios lógicos: BD\_INVENTARIO, BD\_PREVENTA, BD\_RUTAS (PostGIS), BD\_PREPARACION, BD\_REPARTO, BD\_COBRANZA\_FINANZAS, BD\_MAESTROS\_CONF, BD\_GOBIERNO\_ACCESO, BD\_CALIDAD\_TRAZABILIDAD, BD\_TELEMETRIA, BD\_EDI\_CANALMODERNO, BD\_BI\_GERENCIA, BD\_MAILS\_NOTIF, REDIS\_SESIONES\_CACHE y S3\_DOCS. El dominio de telemetría conserva la ingesta raw en DynamoDB y su serie consolidada en S3 Parquet y Redshift, procesada con Glue. Esta separación incluye bases transaccionales, almacenes analíticos, caché y objetos; no representa quince servidores físicos ni quince motores de base de datos independientes.
 
-La Figura~\ref{fig:arql-18} dibuja las relaciones mínimas necesarias para responder dos preguntas del caso: de qué lote provino una unidad entregada y a qué clientes llegó un lote que debe retirarse.
+La Figura~\ref{fig:arql-18} relaciona las entidades principales con los módulos responsables y sus intercambios. Esta vista de dominio permite seguir la confirmación del pedido, la custodia del lote y la entrega sin duplicar el detalle de atributos, claves y cardinalidades del Subdocumento 5. Ese detalle se desarrolla en 5.1 y sus anexos; la separación de autoridad entre reserva comercial y retención física se explica en 5.2. La lectura conjunta permite responder de qué lote provino una unidad entregada y a qué clientes llegó un lote que debe retirarse.
 
 \begin{anexohorizontal}
 \begin{center}
-  \includegraphics[width=0.96\linewidth,height=0.67\textheight,keepaspectratio]{figuras/logica/ARQL-18_Dominio_trazabilidad.png}
-  \captionof{figure}{Modelo conceptual del pedido, el lote y la entrega}
+  \includegraphics[width=\linewidth,height=0.83\textheight,keepaspectratio]{figuras/logica/complementarias/ARQL-18_Dominio_responsabilidades.pdf}
+  \captionof{figure}{Dominio lógico: entidades, módulos responsables y eventos}
   \label{fig:arql-18}
 \end{center}
 
 {\footnotesize Fuente: elaboración propia de LafroX.\par}
-
-La línea de pedido se asigna a un lote identificado por GTIN y lote del proveedor; los movimientos con SSCC conservan la cadena de custodia hasta la entrega. La entrega vincula la evidencia de recepción y el folio de la guía que el ERP emitió antes del traslado. Un pedido aún puede no tener entrega, y una entrega puede registrar más de una evidencia o un rechazo parcial: esas cardinalidades y estados conservan el identificador de origen.
 \end{anexohorizontal}
+
+M3 administra el pedido y sus líneas utilizando la referencia autorizada del cliente del ERP; M2 administra reserva, retención y movimientos por sitio; M5 enlaza misión y asignación a lote con la carga; M9 gobierna el estado sanitario, y M6 registra la entrega y su evidencia. El ERP conserva la emisión tributaria y los maestros autorizados. Los contratos del Anexo 4-A asignan un productor único a cada evento: M3 publica \texttt{PedidoConfirmado} y M6, \texttt{EntregaRegistrada}; compartir el proceso Laravel no permite que otro módulo escriba sus datos privados.
+
+La línea de pedido se asigna a un lote identificado por GTIN y lote del proveedor; los movimientos con SSCC conservan la cadena de custodia hasta la entrega. La entrega vincula la evidencia de recepción y el folio de la guía que el ERP emitió antes del traslado. Un pedido aún puede no tener entrega, y una entrega puede registrar más de una evidencia o un rechazo parcial; los estados conservan el identificador de origen y las cardinalidades se verifican en el modelo del Subdocumento 5. Las flechas de esta vista representan colaboración y contratos; no son claves foráneas ni conexiones directas con bases de datos. El POD no sustituye al DTE ni al acuse del receptor.

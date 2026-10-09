@@ -29,7 +29,7 @@ El modelo de dominios se organiza mediante límites de contexto explícitos. El 
 
 El mapa expone dependencias que deben permanecer bajo contratos versionados.
 
-El mapa asigna a cada relación un dueño de contrato y una superficie de intercambio. El catálogo de interfaces (\S~\ref{sec:catalogo-interfaces}) añade la versión y la conducta ante falla; una relación del Anexo 4-F no equivale por sí sola a un contrato ejecutable.
+El mapa asigna a cada relación un dueño de contrato y una superficie de intercambio. El catálogo de interfaces (véase el apartado~\ref{sec:catalogo-interfaces}) añade la versión y la conducta ante falla; una relación del Anexo 4-F no equivale por sí sola a un contrato ejecutable.
 
 \subsubsection{Módulo de calidad y trazabilidad (M9)}
 
@@ -37,7 +37,7 @@ El módulo de trazabilidad resuelve el problema central que motivó la licitaci�
 
 La unidad de trazabilidad sanitaria es el lote del proveedor, identificado por el producto (GTIN) y el número de lote. El vencimiento y los registros de temperatura se conservan como atributos asociados; FEFO es la regla de rotación por vencimiento, no parte del identificador. Cada movimiento vincula el lote con la unidad logística identificada mediante SSCC. Esta organización permite seguir el producto aunque cambie de caja o pallet. Como el 41\% de las recepciones carece de lote registrado, la captura en recepción es obligatoria para sostener la trazabilidad (RF-01).
 
-La trazabilidad forward/backward se implementa evento a evento conforme al estándar GS1 EPCIS, permitiendo al sistema responder en menos de 2 horas ante un retiro sanitario (Bases Técnicas del caso, cap. 18, p. 34), con identificación precisa de los lotes y puntos de entrega afectados.
+La trazabilidad hacia el origen y el destino se implementa evento a evento conforme al estándar GS1 EPCIS, permitiendo al sistema responder en menos de 2 horas ante un retiro sanitario (Bases Técnicas del caso, cap. 18, p. 34), con identificación precisa de los lotes y puntos de entrega afectados.
 
 \begin{itemize}
   \item Los registros de temperatura se capturan de forma continua en 21 puntos de temperatura en cámaras (15 en Talca y 6 en Concepción) y 28 termógrafos: 18 en camiones propios y 10 en camiones refrigerados de transportistas.
@@ -82,8 +82,8 @@ M2 central es dueño de la reserva comercial. M2 de cada sitio conserva la exist
 M2 central persiste la solicitud pendiente con UUID, correlación, sitio, época de autoridad, lote, ubicación, cantidad y versión.
 
 \begin{enumerate}
-  \item El shipper del sitio lee, por conexión saliente, una cola FIFO de coordinación propia y entrega la solicitud al broker local.
-  \item M2 local bloquea el agregado, valida la existencia y el estado de Calidad, y persiste la retención, la auditoría y el outbox.
+  \item El agente de transferencia del sitio lee, por conexión saliente, una cola FIFO de coordinación propia y entrega la solicitud al broker local.
+  \item M2 local bloquea el agregado, valida la existencia y el estado de Calidad, y persiste la retención, la auditoría y la bandeja transaccional de salida.
   \item INT-03/04 devuelve el resultado, y M2 central persiste el acuse antes de que M3 confirme.
   \item Un reenvío recupera el resultado de la misma clave sin descontar otra vez.
 \end{enumerate}
@@ -98,7 +98,7 @@ La cancelación o la expiración central inicia una liberación pendiente.
   \item Un cambio de autoridad exige conciliación y la revocación de la época anterior, y no se hace durante una partición.
 \end{itemize}
 
-La coordinación usa colas e identidades por sitio, separadas de las del ERP, de la reconciliación de eventos y de los trabajos de Laravel. La nube publica las solicitudes y cada shipper inicia su conexión. La única conexión iniciada desde la nube hacia un sitio sigue siendo DMS de Talca. El Anexo 4-G detalla este contrato dentro de INT-03/04, el Anexo 4-I cuantifica sus mensajes y AL-STOCK-01 del Anexo 4-V lo verifica. Su emplazamiento físico se describe en 4.2.
+La coordinación usa colas e identidades por sitio, separadas de las del ERP, de la reconciliación de eventos y de los trabajos de Laravel. La nube publica las solicitudes y cada agente de transferencia inicia su conexión. La única conexión iniciada desde la nube hacia un sitio sigue siendo DMS de Talca. El Anexo 4-G detalla este contrato dentro de INT-03/04, el Anexo 4-I cuantifica sus mensajes y AL-STOCK-01 del Anexo 4-V lo verifica. Su emplazamiento físico se describe en 4.2.
 
 \subsubsection{Módulo de planificación de rutas (M4)}
 
@@ -120,7 +120,7 @@ El módulo de rendición y cobro permite investigar las causas de las diferencia
 \begin{itemize}
   \item \textbf{Rendición digital individual (RF-07.02).} Cada conductor rinde sus cobros del turno de forma digital, con causales de descuadre clasificadas y trazables.
   \item \textbf{Cobranza en ruta (RF-07.05 y RF-07.09).} El conductor registra el cobro y conserva su evidencia para la rendición. En pagos con POS móvil, la captura local de una operación no se presenta como autorización bancaria. El tratamiento sin cobertura depende de las capacidades y condiciones acordadas con la pasarela; se concilia al reconectar sin generar cargos duplicados.
-  \item \textbf{Interfaz con ERP (RF-07.02 e INT-06).} La rendición aprobada se publica en la cola FIFO de solicitudes al ERP; dos procesos \texttt{erp-sync} en VM-04 de Talca consumen esa cola por conexión saliente y la cola RabbitMQ local, y entregan a la \textbf{capa anticorrupción (ACL)} de la misma VM; la ACL integra con el ERP. Nunca hay escritura directa al ERP. El ERP permanece como única fuente de verdad tributaria y único emisor de DTE.
+  \item \textbf{Interfaz con ERP (RF-07.02 e INT-06).} La rendición aprobada se publica en la cola FIFO de solicitudes al ERP; dos procesos del servicio de integración con el ERP en VM-04 de Talca consumen esa cola por conexión saliente y la cola RabbitMQ local, y entregan a la \textbf{capa anticorrupción (ACL)} de la misma VM; la ACL integra con el ERP. Nunca hay escritura directa al ERP. El ERP permanece como única fuente de verdad tributaria y único emisor de DTE.
   \item \textbf{Costo de servir (RF-11).} El módulo alimenta el tablero de BI con el costo real por entrega, incluyendo kilometraje real (telemetría M12), tiempo de servicio y deducciones por devoluciones.
 \end{itemize}
 
@@ -128,9 +128,9 @@ El módulo de rendición y cobro permite investigar las causas de las diferencia
 
 El módulo de inteligencia de negocio consolida la información operativa en tableros gerenciales de autoservicio (RT-05.27; Bases Técnicas Transversales, cap. 5, p. 13) con modelo semántico en el mismo lenguaje del negocio: OTIF, fill rate, costo por entrega, ocupación de flota y segmentación por canal/cliente.
 
-Los tableros se alimentan del almacén analítico (Redshift Serverless) con latencias comprometidas: operación del día $\leq$ 5 minutos, cierre comercial $\leq$ 2 horas, gestión $\leq$ 4 horas (RT-05.29; Bases Técnicas Transversales, cap. 5, p. 13). El modelo dimensional se estructura en hechos (ventas, entregas, stock, costo de servir) y dimensiones (cliente, SKU, tiempo, ruta, canal), con drill-down hasta línea de pedido y lote para trazabilidad sanitaria completa.
+Los tableros se alimentan del almacén analítico (Redshift Serverless) con latencias comprometidas: operación del día $\leq$ 5 minutos, cierre comercial $\leq$ 2 horas, gestión $\leq$ 4 horas (RT-05.29; Bases Técnicas Transversales, cap. 5, p. 13). El modelo dimensional se estructura en hechos (ventas, entregas, stock, costo de servir) y dimensiones (cliente, SKU, tiempo, ruta, canal), con consulta detallada hasta línea de pedido y lote para trazabilidad sanitaria completa.
 
-La información es de solo lectura para la analítica, sin acceder al transaccional en vivo, conforme al principio de separación transaccional/analítico. Los informes se programan (diarios, semanales, mensuales) y se exportan de forma asíncrona con firma y checksum (RT-05.28; Bases Técnicas Transversales, cap. 5, p. 13).
+La información es de solo lectura para la analítica, sin acceder al transaccional en vivo, conforme al principio de separación transaccional/analítico. Los informes se programan (diarios, semanales, mensuales) y se exportan de forma asíncrona con firma y suma de comprobación (RT-05.28; Bases Técnicas Transversales, cap. 5, p. 13).
 
 El módulo prioriza la calidad de la captura y la disponibilidad de indicadores verificables, dado que el caso informa un 41 \% de recepciones sin lote registrado.
 
@@ -142,7 +142,7 @@ Comercial y Finanzas consultan indicadores sobre el mismo modelo semántico, per
 
 El proveedor consulta el estado de su orden y de la recepción; no accede a las reglas internas de inventario ni confirma unilateralmente un lote.
 
-\textbf{M5 Preparación} toma pedidos confirmados y ubicaciones de M2, aplica FEFO y genera misiones verificables con lectura GS1. Conserva localmente cada lectura y la causal de faltante. Una carga no se libera por el mero hecho de estar preparada: la guía se solicita al ERP por \texttt{erp-sync} y la ACL al cerrar la carga nocturna. Un cambio de carga invalida la guía, exige una nueva y mantiene bloqueada la salida hasta disponer del documento válido.
+\textbf{M5 Preparación} toma pedidos confirmados y ubicaciones de M2, aplica FEFO y genera misiones verificables con lectura GS1. Conserva localmente cada lectura y la causal de faltante. Una carga no se libera por el mero hecho de estar preparada: la guía se solicita al ERP por el servicio de integración con el ERP y la ACL al cerrar la carga nocturna. Un cambio de carga invalida la guía, exige una nueva y mantiene bloqueada la salida hasta disponer del documento válido.
 
 El preparador confirma cada lectura en el servicio local; la pérdida del enlace externo no borra la misión ni convierte una carga preparada en una salida autorizada.
 

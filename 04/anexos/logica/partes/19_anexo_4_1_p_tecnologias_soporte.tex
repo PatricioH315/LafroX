@@ -3,6 +3,11 @@
 \phantomsection
 \label{anx:P}
 \addcontentsline{toc}{section}{Anexo 4-P --- Tecnologías, soporte y actualización}
+\paragraph{Correspondencia entre nombres funcionales y técnicos}
+El inventario de servicios AWS comprende CloudFront, AWS WAF, AWS Shield Advanced, ALB, Network Load Balancer, API Gateway, Verified Access, Aurora, ElastiCache, DynamoDB, S3, Redshift Serverless, ECS Fargate, Lambda (solo como autorizador), Route 53, Secrets Manager, Systems Manager, KMS, IAM, Organizations, IAM Identity Center, CloudWatch, Transit Gateway, NAT Gateway, VPC Endpoints, Site-to-Site VPN, SQS, SNS, AWS Backup, GuardDuty, Security Hub, Security Lake, Macie, Inspector, Config, Database Migration Service, Glue, QuickSight, Elastic Container Registry, CodeBuild, Control Tower, CloudTrail e IoT Core+Greengrass.
+
+El perfil local de bodega se identifica técnicamente como \texttt{wms\_only}; el servicio de integración con el ERP, como \texttt{erp-sync}; el agente de transferencia del sitio, como \textit{shipper}; y la bandeja transaccional de salida, como \textit{outbox}. La separación interna de dominio, aplicación, infraestructura y acceso HTTP corresponde a \texttt{Domain}, \texttt{Application}, \texttt{Infrastructure} y \texttt{Http}, respectivamente. Composer fija las versiones de dependencias en \texttt{composer.lock} y las audita mediante \texttt{composer audit}. El versionado mayor, menor y de corrección corresponde a \texttt{major.minor.patch}. Estas equivalencias conservan los nombres de implementación utilizados por los contratos, los ADR y el despliegue de 4.2.
+
 El inventario distingue versión de referencia de una imagen exacta de producción. Cada liberación fija parches, hashes y compatibilidad en los archivos de bloqueo y SBOM; las versiones futuras se aprueban mediante pruebas antes de promoverse. La hoja de ruta cubre los 56 meses mediante actualizaciones, no suponiendo soporte de una misma versión durante todo el contrato (Bases Técnicas Transversales, numeral 1.6, pp. 4--5).
 
 \begin{tablalafrox}{Ciclo de soporte del núcleo lógico}{tab:soporte-logico}{F{0.16} F{0.15} F{0.23} Y}{\cab{Producto} & \cab{Referencia} & \cab{Fin de soporte publicado} & \cab{Plan de actualización}}

@@ -19,3 +19,7 @@ La comprobación confirmó coincidencia en los 23 archivos; trece cambiaron de o
 El documento principal se compiló con LuaLaTeX hasta estabilizar sus referencias: 162 páginas, sin referencias indefinidas, errores LaTeX ni desbordamientos `Overfull` en el registro final. Se revisaron páginas renderizadas de presentación, seguridad, reserva comercial, tecnologías, implantación, ambientes, operación offline, reconciliación, secuencia tributaria y conductores. Se ajustó la continuidad de las viñetas de recuperación sin cambiar su texto.
 
 Los diagramas incorporados en la tarea precedente, su límite de letra impresa y los asuntos de coherencia técnica conservan su estado. Esta reorganización editorial no resuelve esas brechas ni modifica decisiones técnicas. No se editaron fuentes de 4.2, 4.3, anexos ni formularios.
+
+## Corrección posterior de símbolos en referencias
+
+Por instrucción del usuario se retiró el símbolo de sección que precedía al enlace numérico del Catálogo de interfaces en integración y eventos y en el mapa de límites de contexto. Las dos referencias conservan su destino y presentan únicamente el número entre paréntesis. No se cambian decisiones técnicas ni otras referencias.
