@@ -13,34 +13,32 @@
 %%     mover la carpeta rompe el capitulo.
 %% ============================================================================
 \setcounter{chapter}{5}
-\chapter{Metodologias del proyecto y software}
+\chapter{Introducción a las metodologías del proyecto y software}
 \label{cap:metodologias}
 
-Para que el desarrollo del producto final sea un éxito total, 
-se debe por necesidad seguir metodologías asociadas a la gestión de proyecto y a su vez, 
-metodologías para el desarrollo de software, estas metodolgías seran las siguientes
-%\texttt{main.tex}.
+El capítulo presenta las metodologías de gestión de proyecto y de desarrollo de software que se adoptaran en el proyecto. La gestión del proyecto aplica la Guía del PMBOK, sexta edición (PMI, 2017), adaptada a un proyecto de 56 meses con dos etapas, solapamiento entre ellas y una operación que no puede detenerse; se usan los procesos de integración, alcance, cronograma, calidad, recursos, comunicaciones, riesgos, adquisiciones e interesados, con la profundidad que exige cada uno. El alcance y el cronograma tienen líneas base formales, porque los hitos del Formulario E-25 son fechas fijas y se aceptan por acta. El avance se mide con valor ganado y no con porcentajes declarados (RT-19.07). El flujo diario del equipo se gestiona con un tablero Kanban, que no reemplaza la línea base ni la aceptación formal de los entregables.
 
+La sección 6.1 presenta el como LafroX gestionara el proyecto desde el inicio hasta la entrega final, ademas de gestionar los interesados, las comunicaciones y las adquisiciones. La sección 6.2 describe la metodología de desarrollo de software que se aplicara en el proyecto, incluyendo la planificación, el desarrollo iterativo, la gestión de cambios y la calidad del software.
+
+Este capítulo
 
 \section{Metodología de gestión de proyecto}
 
-La gestión del proyecto aplica la Guía del PMBOK, sexta edición (PMI, 2017), adaptada a un proyecto de 56 meses con dos etapas, solapamiento entre ellas y una operación que no puede detenerse; se usan los procesos de integración, alcance, cronograma, calidad, recursos, comunicaciones, riesgos, adquisiciones e interesados, con la profundidad que exige cada uno. El alcance y el cronograma tienen líneas base formales, porque los hitos del Formulario E-25 son fechas fijas y se aceptan por acta. El avance se mide con valor ganado y no con porcentajes declarados (RT-19.07). El flujo diario del equipo se gestiona con un tablero Kanban, que no reemplaza la línea base ni la aceptación formal de los entregables.
+La gestión del proyecto sentara las bases para como el equipo se coordinara, planificara y ejecutara las entregas. Tener claro esos aspectos es vital para que el proyecto cumpla con los objetivos a tiempo siguiendo el cronograma contractual de 56 meses.
 
-La planificación define los entregables, sus responsables, los recursos, los plazos y las dependencias entre actividades, considerando las restricciones de la operación. La línea base de alcance (paquete 1.2.1, H1) y la de cronograma (1.3.3) sirven para medir el avance y evaluar las desviaciones.
+Gestionar el proyecto no basta solamente con planificar y coordinar el equipo, tambien consiste en la gestión de las personas que estan envueltas en el proyecto, la forma en la que nos comunicaremos con ellos y como manejaremos los contratos, ordenes de compra y acuerdos de nivel de servicio que se requieran para implementar la solución.
 
-El proyecto se ejecuta mediante entregas incrementales dentro de las dos etapas contractuales. La distribución propuesta prioriza primero la calidad y disponibilidad de la información operacional, y luego las capacidades que dependen de esos datos para optimizar y analizar la operación. En la Etapa 1 se implementan las capacidades de preventa, recepción, bodega, preparación y cross-docking; la trazabilidad de los lotes y de la cadena de frío; la planificación de rutas basada en el conocimiento del planificador, con el acuse de recibo de los conductores; y el manejo de efectivo y los retiros de los pedidos. En la Etapa 2 se implementan los portales y el intercambio electrónico con los clientes y, por último, el costo de servir.
+Para ello, nuestra gestión de proyecto se basa en la Guía del PMBOK, sexta edición (PMI, 2017), donde lo adaptamos a los 56 meses de contrato establecidos, con todas las 2 etapas, su solapamiento y la operación continua.
 
-La planificación respeta el cronograma contractual: desarrollo de la Etapa 1 entre los meses 1 y 12, marcha blanca entre los meses 13 y 15 y paso a producción en el mes 16. El desarrollo de la Etapa 2 ocupa los meses 13 a 18, la marcha blanca los meses 19 y 20 y el paso a producción el mes 21. El trabajo de la Etapa 2 se coordina con la marcha blanca y la estabilización de la Etapa 1, resguardando la continuidad operacional y la integridad de los datos compartidos.
+El proyecto se ejecuta mediante entregas incrementales dentro de las 2 etapas contractuales, priorizando la calidad y disponibilidad de la información.
 
-El tablero Kanban muestra el trabajo pendiente, en ejecución, en revisión y terminado, con responsables y bloqueos, y fija límites de trabajo en curso. Cada tarea tiene una definición de terminado y, cuando corresponde, evidencia asociada a los criterios de aceptación del entregable al que contribuye. La gestión del proyecto se complementa con los procesos de los apartados siguientes.
+Para limitar el trabajo en curso, se hara uso de tablero kanban, que muestra el trabajo pendiente, en ejecución, en revisión y terminado, delegando responsables a cada tarea, que tiene su definición de terminado y la evidencia a los criterios de aceptación.
 
 \subsection{Gestión de interesados}
 
 La gestión de interesados identifica a las personas, grupos y organizaciones que pueden influir en el proyecto o verse afectados por sus resultados. Para cada interesado se registran sus necesidades, expectativas, nivel de influencia, impacto potencial y disposición frente a los cambios. El análisis distingue quiénes participan en decisiones, quiénes aportan conocimiento operacional, quiénes validan entregables y quiénes son afectados o ejercen supervisión externa.
 
 El jefe de proyecto mantiene actualizado el registro de interesados (paquete 1.4.1) y planifica su involucramiento de acuerdo con el alcance de cada entrega. La participación puede incluir levantamiento de necesidades, revisión de procesos, validación de criterios, pruebas y retroalimentación. Las inquietudes, resistencias, acuerdos y compromisos relevantes se registran con su responsable y seguimiento; los conflictos que no puedan resolverse en la instancia de trabajo se elevan a la autoridad correspondiente.
-
-\parte{tablas/interesados}
 
 La tabla resume los principales grupos y roles identificados, sus intereses y la contribución esperada. La participación concreta se acuerda según las responsabilidades de cada interesado y las actividades de cada entrega; la inclusión en la tabla no implica que todos participen en todas las decisiones ni que tengan atribuciones de aprobación.
 
@@ -59,8 +57,6 @@ Antes de cada entrega incremental se informa a los interesados pertinentes sobre
 La gestión de adquisiciones planifica, contrata y controla los bienes y servicios que requiere la solución: contratos, órdenes de compra, acuerdos con terceros y acuerdos de nivel de servicio. Cada adquisición tiene un responsable, una fecha de necesidad derivada del cronograma, una dependencia con los paquetes que la usan y una evidencia de recepción.
 
 El CLIENTE compra el equipamiento de terreno y el de la sala técnica conforme a la especificación de cantidades y características que prepara LafroX (Caso 02, capítulo 11; SD3 E-09; paquetes 5.1.1 y 5.1.2). Esa compra no traslada al CLIENTE la instalación: LafroX habilita el recinto técnico en el espacio que proporciona el CLIENTE, instala y configura los equipos (fase 6 de la EDT) y contrata los servicios que le corresponden. Las licencias de terceros se constituyen a nombre del CLIENTE (5.2.3).
-
-\parte{tablas/adquisiciones}
 
 Cada fila tiene en el registro de adquisiciones su estado, su proveedor y su fecha comprometida. Un atraso que amenace el H3 o una ola se escala al Comité Ejecutivo con su análisis de impacto.
 
