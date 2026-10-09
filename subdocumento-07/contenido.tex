@@ -311,34 +311,9 @@ Una ola avanza a la siguiente cuando cumple su criterio durante cuatro semanas c
 La programación de olas usa fechas reales y no una equivalencia de meses a 13 semanas: todos los grupos deben estar operativos antes del inicio de los 28 días finales de marcha blanca. T-18 §6.1 propone Talca/Concepción/plataformas/remanentes en semanas 5/\allowbreak{}6/\allowbreak{}7/\allowbreak{}8 para la ola de reparto, subordinadas a fechas permitidas y al límite F − 28 días. Se permite superposición por dominios sin intervenir simultáneamente el mismo proceso ni doble escritura.
 
 \clearpage
-\begin{figure}[p]
+\begin{figure}[htbp]
   \centering
-  \begin{tikzpicture}[font=\LFXcuerpofigura]
-    \node[draw,rounded corners,align=center,text width=2.5cm,minimum height=9mm]
-      (w5) at (0,0) {\textbf{Semana 5}\\Talca};
-    \node[draw,rounded corners,align=center,text width=2.5cm,minimum height=9mm]
-      (w6) at (3,0) {\textbf{Semana 6}\\Concepción};
-    \node[draw,rounded corners,align=center,text width=2.5cm,minimum height=9mm]
-      (w7) at (6,0) {\textbf{Semana 7}\\Plataformas};
-    \node[draw,rounded corners,align=center,text width=2.5cm,minimum height=9mm]
-      (w8) at (9,0) {\textbf{Semana 8}\\Remanentes};
-    \draw[->] (w5) -- (w6);
-    \draw[->] (w6) -- (w7);
-    \draw[->] (w7) -- (w8);
-    \node[draw,rounded corners,align=center,text width=11.4cm,minimum height=10mm]
-      (gate) at (4.5,-1.25)
-      {Antes de comenzar los últimos 28 días: todo el alcance activo,\\
-       con fechas sujetas a ventanas permitidas y sin doble escritura};
-    \draw[->] (w8.south) -- ++(0,-4mm) -| (gate.north east);
-    \node[draw,rounded corners,align=center,text width=11.4cm,minimum height=11mm]
-      (evidence) at (4.5,-2.65)
-      {\textbf{Últimos 28 días de marcha blanca (referencia: semanas 10--13)}\\
-       Volumen real completo en todas las zonas + criterios sostenidos durante cuatro semanas consecutivas};
-    \draw[->] (gate) -- (evidence);
-    \node[align=center] at (4.5,-3.55)
-      {\textbf{H7 / mes 16:} cierre con acta de la Contraparte Técnica};
-    \draw[->] (evidence) -- (4.5,-3.32);
-  \end{tikzpicture}
+  \includegraphics[width=0.96\linewidth,trim=0 500bp 0 0,clip]{imagenes/Diagramas que faltaban/Fig_7-21.pdf}
   \caption{Secuencia de olas de la Etapa 1 durante la marcha blanca. Fuente: elaboración propia a partir del Capítulo 3, sección 3.4.4, y del Formulario T-18.}
   \label{fig:7-olas}
 \end{figure}
@@ -352,46 +327,9 @@ La reversión tiene dos niveles, que la Tabla \ref{tab:7-reversion} distingue.
 La reversión operacional se dispara con señales observables: pedidos sin sincronizar al inicio de la carga, rutas del día no disponibles o un defecto crítico en la ventana de despacho. El plazo de las 05:30 protege la salida de los 96 camiones y no es el tiempo de recuperación ante desastres. La Figura \ref{fig:7-reversion} presenta el procedimiento por rol.
 
 \clearpage
-\begin{figure}[p]
+\begin{figure}[htbp]
   \centering
-  \begin{tikzpicture}[font=\LFXcuerpofigura]
-    \node[draw,rounded corners,align=center,text width=5.1cm,minimum height=9mm]
-      (detect) at (0,0)
-      {\textbf{Turno de noche}\\Se detecta una señal que amenaza el despacho};
-    \node[draw,rounded corners,align=center,text width=5.1cm,minimum height=9mm]
-      (check) at (0,-1.45)
-      {Acompañante verifica el impacto y lo informa a Operaciones del CLIENTE};
-    \node[draw,rounded corners,align=center,text width=4.4cm,minimum height=9mm]
-      (decision) at (0,-2.9)
-      {\textbf{¿Amenaza el despacho?}};
-    \node[draw,rounded corners,align=center,text width=4cm,minimum height=10mm]
-      (continue) at (-4.3,-4.35)
-      {\textbf{No}\\Corregir; la ola continúa};
-    \node[draw,rounded corners,align=center,text width=4cm,minimum height=10mm]
-      (authorize) at (4.3,-4.35)
-      {\textbf{Sí}\\CLIENTE autoriza la reversión};
-    \draw[->] (detect) -- (check);
-    \draw[->] (check) -- (decision);
-    \draw[->] (decision.south west) -- (continue.north);
-    \draw[->] (decision.south east) -- (authorize.north);
-    \node[draw,rounded corners,align=center,text width=4cm,minimum height=12mm]
-      (operational) at (1.8,-6.0)
-      {\textbf{Operacional}\\Versión local y documentos ERP válidos antes de las 05:30};
-    \node[draw,rounded corners,align=center,text width=4cm,minimum height=12mm]
-      (technical) at (6.6,-6.0)
-      {\textbf{Técnica}\\Volver a versión anterior o desactivar el interruptor};
-    \draw[->] (authorize.south) -- (operational.north east);
-    \draw[->] (authorize.south) -- (technical.north west);
-    \node[draw,rounded corners,align=center,text width=9.7cm,minimum height=10mm]
-      (reconcile) at (4.2,-7.8)
-      {Al retomar, conciliar los registros que quedaron en cola, sin pérdida ni duplicación};
-    \draw[->] (operational.south) -- (reconcile.north west);
-    \draw[->] (technical.south) -- (reconcile.north east);
-    \node[draw,rounded corners,align=center,text width=9.7cm,minimum height=9mm]
-      (restart) at (4.2,-9.1)
-      {\textbf{La ola reinicia su período de cuatro semanas}};
-    \draw[->] (reconcile) -- (restart);
-  \end{tikzpicture}
+  \includegraphics[width=0.96\linewidth,trim=0 300bp 0 0,clip]{imagenes/Diagramas que faltaban/Fig_7-22.pdf}
   \caption{Procedimiento de reversión de la Etapa 1 en la ventana de despacho. Fuente: elaboración propia a partir del Formulario T-18.}
   \label{fig:7-reversion}
 \end{figure}
@@ -406,44 +344,30 @@ La marcha blanca de la Etapa 1 son tres meses de operación supervisada con dato
 
 Los indicadores reproducen las condiciones del Art. 17.3 con umbrales que se pueden medir cada día, de modo que el cierre no depende de un juicio al final del período. El volumen comprometido es la operación real completa de cada proceso y no una muestra; con las cifras del caso (sección 14.1), son cerca de 1.150 recepciones de proveedor y 260.000 líneas de preparación al mes, unos 31.000 pedidos al mes y alrededor de 1.400 entregas por día hábil, o 2.600 si las semanas de cierre coinciden con el peak de septiembre. El detalle por proceso está en el Formulario T-18, Tabla T-18.1.
 
-La sexta condición del Art. 17.3 es el acta de la Contraparte Técnica, que en la Etapa 1 es el H7 del mes 16. Si una condición no se cumple al término del mes 15, la marcha blanca se extiende a costo de LafroX, sin mover las fechas siguientes (Art. 17.3). La Figura \ref{fig:7-ciclo} resume cómo opera cada día de marcha blanca y cuándo se cierra.
+La sexta condición del Art. 17.3 es el acta de la Contraparte Técnica, que en la Etapa 1 es el H7 del mes 16. Si una condición no se cumple al término del mes 15, la marcha blanca se extiende a costo de LafroX, sin mover las fechas siguientes (Art. 17.3). La Figura \ref{fig:7-ciclo} resume el ciclo diario de control; las condiciones de cierre se enumeran debajo.
 
 \clearpage
-\begin{figure}[p]
+\begin{figure}[htbp]
   \centering
-  \begin{tikzpicture}[font=\LFXcuerpofigura]
-    \node[draw,rounded corners,align=center,text width=3cm,minimum height=10mm]
-      (measure) at (0,0)
-      {\textbf{Medir}\\Indicadores del día};
-    \node[draw,rounded corners,align=center,text width=3cm,minimum height=10mm]
-      (compare) at (3.5,0)
-      {\textbf{Comparar}\\Resultados con umbrales};
-    \node[draw,rounded corners,align=center,text width=3.1cm,minimum height=10mm]
-      (act) at (7,0)
-      {\textbf{Decidir}\\Continuar, corregir o revertir};
-    \node[draw,rounded corners,align=center,text width=3.1cm,minimum height=10mm]
-      (publish) at (10.5,0)
-      {\textbf{Conciliar y publicar}\\Resultado diario};
-    \draw[->] (measure) -- (compare);
-    \draw[->] (compare) -- (act);
-    \draw[->] (act) -- (publish);
-    \draw[->] (publish.south) -- ++(0,-3mm) -| (measure.south);
-    \node[draw,rounded corners,align=left,text width=13.5cm,inner sep=5pt]
-      at (5.25,-2.75)
-      {\fontsize{8pt}{9.5pt}\selectfont
-       \textbf{Cierre: las seis condiciones simultáneas del Art. 17.3}\\
-       1. Cero incidentes críticos o altos abiertos.\\
-       2. Volumen real completo durante las últimas cuatro semanas.\\
-       3. Sin indisponibilidad en despacho; disponibilidad y respuesta dentro de umbral.\\
-       4. Sin diferencias inexplicadas ni pedidos perdidos o duplicados.\\
-       5. 100\,\% de usuarios capacitados y certificados.\\
-       6. Acta de aceptación de la Contraparte Técnica (H7).};
-  \end{tikzpicture}
-  \caption{Ciclo diario de la marcha blanca y condiciones de cierre según el Art. 17.3. Fuente: elaboración propia a partir de las Bases Administrativas, Art. 17.3, y del RT-20.04.}
+  \includegraphics[width=0.96\linewidth,trim=0 650bp 0 0,clip]{imagenes/Diagramas que faltaban/Fig_7-23.pdf}
+  \caption{Ciclo diario de la marcha blanca. Fuente: elaboración propia a partir de las Bases Administrativas, Art. 17.3, y del RT-20.04.}
   \label{fig:7-ciclo}
 \end{figure}
 
-El ciclo de la izquierda se repite cada día: se miden los indicadores, se comparan con su umbral y se decide entre continuar, corregir o revertir, antes de conciliar y publicar el resultado. La lista de la derecha muestra que el cierre exige las seis condiciones a la vez; ninguna compensa a otra.
+El ciclo de la Figura \ref{fig:7-ciclo} se repite cada día: se miden los indicadores y se concilian los registros, se comparan los resultados con sus umbrales, se decide entre continuar, corregir o revertir y se publica el resultado diario. Si una incidencia amenaza de inmediato el despacho, se activa el procedimiento de reversión de la Figura \ref{fig:7-reversion} sin esperar la publicación diaria.
+
+El cierre exige cumplir simultáneamente las seis condiciones del artículo 17.3 de las Bases Administrativas:
+
+\begin{enumerate}
+  \item Cero incidentes críticos o altos abiertos.
+  \item Volumen real completo durante las últimas cuatro semanas.
+  \item Sin indisponibilidad en despacho; disponibilidad y respuesta dentro de umbral.
+  \item Sin diferencias inexplicadas ni pedidos perdidos o duplicados.
+  \item 100\,\% de usuarios capacitados y certificados.
+  \item Acta de aceptación de la Contraparte Técnica (H7).
+\end{enumerate}
+
+Ninguna de estas condiciones compensa a otra.
 
 La capacitación se hace en el puesto y en la ruta con las cuatro modalidades del Art. 90.2. Cada perfil se certifica antes del cierre, porque el Art. 17.3 exige que el personal del CLIENTE esté «capacitado y certificado conforme al plan de capacitación aprobado», y los usuarios administradores y el equipo técnico del CLIENTE se certifican además conforme al Art. 90.4. Los perfiles operativos, tomados del Capítulo 3, Anexo 3.I, son 120 preparadores, con un tutor por turno y un aprendizaje en el puesto de dos horas como máximo; 62 preventistas, en su propia ruta; 84 integrantes de la tripulación propia; y cerca de 160 conductores de transportistas, que se incorporan en el andén al asignarse a una ruta.
 
@@ -458,35 +382,14 @@ Esta marcha blanca dura unas 8,7 semanas (2 \ensuremath{\times} 52 / 12). Como e
 A los indicadores de la Tabla \ref{tab:7-indicadores} se suman los propios del alcance de la Etapa 2: los pedidos de las cadenas certificadas recibidos por vía electrónica, los avisos de despacho dentro de dos minutos, las entregas con costo de servir calculado y la ausencia de degradación de los indicadores de la Etapa 1 (Formulario T-18, sección 3.3). La Figura \ref{fig:7-convivencia} muestra cómo fluyen los datos entre ambas etapas.
 
 \clearpage
-\begin{figure}[p]
+\begin{figure}[htbp]
   \centering
-  \begin{tikzpicture}[font=\LFXcuerpofigura]
-    \node[draw,rounded corners,align=center,text width=2.6cm,minimum height=13mm]
-      (erp) at (0,0)
-      {\textbf{ERP}\\Registro contable y emisor único de guías};
-    \node[draw,rounded corners,align=center,text width=3.2cm,minimum height=13mm]
-      (stage1) at (4,0)
-      {\textbf{Etapa 1}\\Producción estable};
-    \node[draw,rounded corners,align=center,text width=4.1cm,minimum height=13mm]
-      (shared) at (8.8,0)
-      {\textbf{Registro compartido}\\Pedidos, clientes, guías, entregas, lotes y cobros};
-    \node[draw,rounded corners,align=center,text width=4cm,minimum height=15mm]
-      (stage2) at (8.8,-2.2)
-      {\textbf{Etapa 2 en marcha blanca}\\M11 Canal moderno, portales y costo de servir};
-    \draw[->] (erp) -- node[above,align=center]{documentos\\válidos} (stage1);
-    \draw[->] (stage1) -- node[above,align=center]{opera y escribe} (shared);
-    \draw[->] (shared.south) -- node[right,align=left]{lee} (stage2.north);
-    \draw[->] (stage2.west) -- ++(-1.1,0) |- node[pos=0.25,left,align=right]{extiende\\los datos} (shared.south);
-    \node[draw,rounded corners,align=center,text width=12.8cm,minimum height=12mm]
-      at (4.4,-3.8)
-      {Una sola fuente de verdad y un escritor autorizado por dato.\\
-       Etapa 2 no duplica datos ni modifica funciones estabilizadas de Etapa 1.};
-  \end{tikzpicture}
+  \includegraphics[width=0.96\linewidth,trim=0 450bp 0 0,clip]{imagenes/Diagramas que faltaban/Fig_7-24.pdf}
   \caption{Convivencia de la Etapa 1 en producción con la Etapa 2 en marcha blanca. Fuente: elaboración propia a partir de la arquitectura lógica del Capítulo 4.}
   \label{fig:7-convivencia}
 \end{figure}
 
-La figura muestra que la Etapa 2 no tiene un segundo registro de los datos de la Etapa 1: lee el registro único y lo extiende con sus propios datos, de modo que no existe una doble digitación que conciliar. El ERP se mantiene como registro contable y único emisor de la guía de despacho para ambas etapas. El paso a producción del mes 21 es la aceptación final de la implementación (H12) y el inicio de la Operación con ambos alcances (Art. 17.2, punto 4).
+Se mantiene una sola fuente de verdad y un escritor autorizado por dato. La Etapa 2 no duplica datos ni modifica las funciones estabilizadas de la Etapa 1. Lee el registro único y lo extiende con sus propios datos, de modo que no existe una doble digitación que conciliar. El ERP se mantiene como registro contable y único emisor de la guía de despacho para ambas etapas. El paso a producción del mes 21 es la aceptación final de la implementación (H12) y el inicio de la Operación con ambos alcances (Art. 17.2, punto 4).
 
 \subsection{Estabilización y transferencia}
 
