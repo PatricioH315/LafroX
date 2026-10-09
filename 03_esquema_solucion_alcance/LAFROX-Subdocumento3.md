@@ -1,6 +1,6 @@
 # 3 Introducción al Alcance de la Solución
 
-Este capítulo define qué construye LafroX para Distribuidora Puelche S.A., en qué etapa, bajo qué condiciones y cómo se acepta. Responde a los tres problemas descritos en el Subdocumento 2 y se apoya en la estructura de proyecto del Subdocumento 1.
+Este capítulo define qué construye LafroX para Distribuidora Puelche S.A., en qué etapa, bajo qué condiciones y cómo se acepta. Responde a los tres problemas descritos en el Subdocumento 2 y se apoya en la estructura de proyecto del Subdocumento 1. El detalle de requerimientos y antecedentes de alcance se presenta en los anexos del Subdocumento 3, y su respuesta y trazabilidad se registran en el Formulario T-12.
 
 ## 3.1 Resumen Ejecutivo de la Solución
 
@@ -22,15 +22,15 @@ El ERP se conserva como registro contable y único emisor de documentos tributar
 
 El despliegue es híbrido, con carga en nube y componentes on-premise. El turno móvil sin cobertura y la continuidad del centro de distribución ante un corte del enlace forman parte del alcance desde su definición; no se agregan como contingencias al final del desarrollo.
 
-La solución organiza estas capacidades en doce módulos de negocio: M1 Recepción, M2 Inventario, M3 Preventa, M4 Rutas, M5 Preparación, M6 Reparto, M7 Cobranza y rendición, M8 Devoluciones y envases, M9 Calidad y trazabilidad, M10 Analítica, M11 Canal moderno y M12 Telemetría. Una base compartida provee identidad, integración, registro auditable, operación desconectada y observabilidad. La carga principal se ejecuta en nube pública y el borde operacional del CD sostiene recepción, preparación y despacho durante la pérdida de enlace. El detalle de servicios, red y dimensionamiento corresponde a la arquitectura de la oferta.
+La solución organiza estas capacidades en doce módulos de negocio: M1 Recepción, M2 Inventario, M3 Preventa, M4 Rutas, M5 Preparación, M6 Reparto, M7 Cobranza y rendición, M8 Devoluciones y envases, M9 Calidad y trazabilidad, M10 BI Gerencia, M11 EDI Canal Moderno y M12 Telemetría. Una base compartida provee identidad, integración, registro auditable, operación desconectada y observabilidad. La carga principal se ejecuta en nube pública y el borde operacional del CD sostiene recepción, preparación y despacho durante la pérdida de enlace. El detalle de servicios, red y dimensionamiento corresponde a la arquitectura de la oferta.
 
 ### 3.1.2 Implementación, implantación y operación
 
 La Tabla 3.1 sitúa el alcance en los meses del contrato.
 
-**Tabla 3.1 — Marco contractual de las etapas. Fuente: Bases Administrativas, art. 17.**
+**Tabla 3.1 — Marco contractual de las etapas. Fuente: elaboración propia a partir de *Bases Administrativas* (2026, art. 17.1, p. 12).**
 
-| **Etapa** | **Desarrollo** | **Marcha blanca** | **Producción / operación** |
+| Etapa | Desarrollo | Marcha blanca | Producción / operación |
 | --- | --- | --- | --- |
 | Etapa 1 | Meses 1–12 | Meses 13–15 | Producción: mes 16 |
 | Etapa 2 | Meses 13–18 | Meses 19–20 | Producción: mes 21 |
@@ -41,12 +41,10 @@ La superposición de los meses 13 a 20 obliga a sostener dos frentes: estabiliza
 La fecha de inicio del contrato no está definida (consulta V-12), pero el calendario puede analizarse de antemano. Si el mes 1 es el mes calendario *m*, el mes 16 cae en *m* + 3 y el mes 21 en *m* + 8, en aritmética de doce meses. Por lo tanto:
 
 - un inicio en junio o septiembre ubica el paso a producción de la Etapa 1 en septiembre o diciembre;
-
 - un inicio en enero o abril ubica el paso a producción de la Etapa 2 en septiembre o diciembre;
-
 - los inicios en febrero, marzo, mayo, julio, agosto, octubre, noviembre y diciembre no generan conflicto.
 
-El caso prohíbe el paso a producción en todo septiembre y en todo diciembre, además de los tres primeros días hábiles de cada mes. El congelamiento del 1 al 25 de septiembre (Anexo 3.E, R-08) no abre una ventana entre el 26 y el fin de mes para un paso a producción. El Art. 17° fija los meses 16 y 21, de modo que no es posible adelantarlos ni postergarlos sin alterar el cronograma obligatorio. Por eso LafroX supone que el contrato se inicia en uno de los ocho meses sin conflicto (Anexo 3.C, S-17). La eventual incompatibilidad entre los meses contractuales de paso a producción y las ventanas de prohibición del caso se plantea al mandante mediante V-17, por escrito, a través del canal oficial y durante el período de consultas de la licitación; su resolución requiere una respuesta formal (Anexo 3.H, V-17). En cualquier mes, el paso a producción evita los tres primeros días hábiles por el cierre contable.
+El caso prohíbe el paso a producción en todo septiembre y en todo diciembre, además de los tres primeros días hábiles de cada mes. El congelamiento del 1 al 25 de septiembre (Anexo 3.E, R-08) no abre una ventana entre el 26 y el fin de mes para un paso a producción. Las Bases Administrativas fijan los pasos a producción en los meses 16 y 21 (*Bases Administrativas*, 2026, art. 17.1, p. 12), de modo que no es posible adelantarlos ni postergarlos sin alterar el cronograma obligatorio. Por eso LafroX supone que el contrato se inicia en uno de los ocho meses sin conflicto (Anexo 3.C, S-17). La eventual incompatibilidad entre los meses contractuales de paso a producción y las ventanas de prohibición del caso se plantea al mandante mediante V-17, por escrito, a través del canal oficial y durante el período de consultas de la licitación; su resolución requiere una respuesta formal (Anexo 3.H, V-17). En cualquier mes, el paso a producción evita los tres primeros días hábiles por el cierre contable.
 
 El hito de enero de 2029 exige que el canal moderno esté en producción antes de esa fecha. Como el mes 21 no puede caer en diciembre, el inicio de contrato debe ser a más tardar en marzo de 2027, con lo que el mes 21 cae en noviembre de 2028. De los meses compatibles con S-17, diciembre de 2026 —si la contratación permite iniciar ese mes— y febrero o marzo de 2027 permiten comenzar después de los resultados de la licitación y poner la Etapa 2 en producción antes de enero de 2029. La fecha efectiva de inicio debe confirmarse mediante V-12.
 
@@ -64,7 +62,7 @@ La Tabla 3.2 resume la asignación de las familias F-01 a F-14 a las etapas. La 
 
 **Tabla 3.2 — Alcance funcional por etapa. Fuente: Subdocumento 2, Anexo 2.1; Anexo 3.A.**
 
-| **Capacidad** | **Familias SD2** | **Etapa** | **Dependencia principal** |
+| Capacidad | Familias SD2 | Etapa | Dependencia principal |
 | --- | --- | --- | --- |
 | Preventa, recepción, bodega y preparación | F-01 a F-05 | 1 | Datos comerciales, lotes e inventario. |
 | Rutas, frío, entrega y acuse | F-06 a F-09 | 1 | Pedidos y movimientos registrados. |
@@ -77,13 +75,9 @@ La captura precede a la explotación de los datos. Sin registrar el lote en rece
 La justificación de cada grupo de familias es la siguiente:
 
 - **F-01 a F-05 (preventa, recepción, bodega, preparación y cross-docking), Etapa 1.** Son la puerta de entrada de los datos. Sin lote en recepción no hay retiro sanitario; sin stock confiable la preventa sigue prometiendo productos agotados; y sin medir la transferencia en las plataformas la brecha de 16 horas del cross-docking sigue sin explicación.
-
 - **F-06 a F-09 (rutas, frío, entrega y acuse), Etapa 1.** Las rutas se adelantan por la jubilación del planificador. El frío y la entrega sostienen dos resultados sanitarios y comerciales que el caso fija sin margen, y el acuse de la guía cierra el ciclo documental que hoy se pierde en el 1,1 % de los casos.
-
 - **F-10 y F-11 (efectivo y retiro sanitario), Etapa 1.** Dependen de que la entrega quede registrada: la rendición vincula cada cobro con su entrega, y el retiro recorre los destinos del lote. Ambos pueden probarse en la marcha blanca de la Etapa 1.
-
 - **F-12 y F-13 (portal e intercambio electrónico), Etapa 2.** Necesitan pedidos, entregas y evidencias ya confiables para exponerlos a clientes y cadenas. La principal cadena exige el pedido electrónico y el aviso de despacho desde enero de 2029, fecha compatible con la producción del mes 21.
-
 - **F-14 (costo de servir), Etapa 2.** Necesita meses de hechos de entrega registrados; el cálculo básico por entrega y el costo real se habilitan juntos en la Etapa 2, con una sola definición.
 
 La planificación de rutas permanece en la Etapa 1, como indica F-06. El Subdocumento 2 prevé una elicitación formal del conocimiento del planificador durante los primeros meses (sección «Arbitraje de tensiones operacionales y comerciales», tensión 5) y su captura en la Etapa 1 antes de la jubilación (Anexo 2.2, S-16). LafroX concreta esa decisión con talleres en los meses 1 a 3 (Anexo 3.C, S-16). El módulo M10 entrega en la Etapa 1 la medición diaria de OTIF; el costo de servir por cliente y entrega se habilita en la Etapa 2.
@@ -102,15 +96,15 @@ Las restricciones del Anexo 3.E mantienen el despacho de 05:30 a 07:00, la conti
 
 El reemplazo modular progresivo del WMS de 2013 es una decisión ya declarada en el Subdocumento 2, Anexo 2.2, S-14, y en el inventario de sistemas legados del Anexo 2.3. La solución lo materializa en los módulos M2 y M5, preservando al ERP como fuente contable y tributaria.
 
-El Anexo 3.C registra 41 supuestos. Los dieciséis primeros provienen de las decisiones del Subdocumento 2, Anexo 2.2. Destacan la reserva de stock al confirmar el pedido, el precio acordado al tomar el pedido, que se conserva aunque cambie posteriormente la lista de precios, el reagendamiento ante local cerrado, el control de envases por saldo y la devolución registrada en terreno. La promesa de entrega sigue el arbitraje del Subdocumento 2: **24 horas para clientes urbanos con pedidos ingresados antes de las 14:00, y 48 horas para clientes rurales, periféricos o abastecidos por cross-docking** (sección «Arbitraje de tensiones operacionales y comerciales», tensión 1). Esta promesa es distinta de la ventana de 30 minutos del canal moderno. Una excursión térmica menor y transitoria genera una alerta preventiva en cabina; ante una excursión crítica y sostenida, el sistema bloquea preventivamente el lote y notifica a Calidad, que decide su liberación, bloqueo o rechazo (Anexo 2.2, S-04).
+El Anexo 3.C registra 41 supuestos. Los dieciséis primeros provienen de las decisiones del Subdocumento 2, Anexo 2.2. Destacan la reserva de stock al confirmar el pedido, el precio acordado al tomar el pedido, que se conserva aunque cambie posteriormente la lista de precios, el reagendamiento ante local cerrado, el control de envases por saldo y la devolución registrada en terreno. La promesa de entrega sigue el arbitraje del Subdocumento 2: **24 horas para clientes urbanos con pedidos ingresados antes de las 14:00, y 48 horas para clientes rurales, periféricos o abastecidos por cross-docking** (sección «Arbitraje de tensiones operacionales y comerciales», tensión 1). Para los pedidos urbanos ingresados a las 14:00 o después, LafroX fija una promesa de 48 horas (Anexo 3.G, RNG-15; Anexo 3.C, S-21). Esta promesa es distinta de la ventana de 30 minutos del canal moderno. Una excursión térmica menor y transitoria genera una alerta preventiva en cabina; ante una excursión crítica y sostenida, el sistema bloquea preventivamente el lote y notifica a Calidad, que decide su liberación, bloqueo o rechazo (Anexo 2.2, S-04).
 
 ### 3.2.3 Catálogo de requerimientos y correspondencia
 
-El catálogo funcional ofertado suma **175 requerimientos**: 134 del caso, 34 derivados de las Bases Técnicas Transversales y 7 requisitos propios de LafroX (Tabla 3.A.3b). Además, 6 materias funcionales no se ofertan como función independiente: una no se oferta con su fundamento y cinco las absorbe un requisito transversal (Tabla 3.A.3a). Por eso el Formulario T-12 tiene 181 filas RF. El catálogo no funcional ofertado suma **86 requerimientos**: 24 del caso, 58 de las Bases y 4 propios de LafroX (Tabla 3.A.5b). A ellos se agregan 1 alias y 3 materias absorbidas por un requisito transversal (Tabla 3.A.5a), por lo que el T-12 tiene 90 filas RNF. Cada requerimiento funcional tiene actor, descripción, precondición, resultado esperado, prioridad, origen y etapa, como exige la sección 17.1 del caso. Cada requerimiento no funcional indica materia, umbral, verificación prevista, prioridad, etapa y origen.
+El catálogo ofertado reúne **261 requerimientos**: **175 funcionales**, de los cuales 134 provienen del caso, 34 de las Bases Técnicas Transversales y 7 son propios de LafroX (Tablas 3.A.1, 3.A.3 y 3.A.3b); y **86 no funcionales**, de los cuales 24 provienen del caso, 58 de las Bases y 4 son propios de LafroX (Tablas 3.A.4, 3.A.5 y 3.A.5b). Además, 6 materias funcionales no se ofertan como función independiente: una no se oferta con su fundamento y cinco las absorbe un requisito transversal (Tabla 3.A.3a). Por eso el Formulario T-12 tiene 181 filas RF. A los requerimientos no funcionales se agregan 1 alias y 3 materias absorbidas por un requisito transversal (Tabla 3.A.5a), por lo que el T-12 tiene 90 filas RNF. Cada requerimiento funcional identifica actor, descripción, precondición, resultado esperado, prioridad, origen y etapa, conforme a la sección 17.1 del caso. Cada requerimiento no funcional indica materia, umbral, verificación prevista, prioridad, etapa y origen.
 
 La Tabla 3.A.2 relaciona las catorce familias del Subdocumento 2 con los requerimientos detallados (los indicadores de gestión de la Etapa 1 se agrupan aparte, porque el Subdocumento 2 no les asigna familia), y la Tabla 3.A.5a hace lo mismo con sus cinco condiciones rectoras. La numeración RF-xx.yy no coincide con la de las familias F-xx. Cinco identificadores coinciden en número con significado distinto (RF-14.01 a RF-14.05: telemetría en el caso y seguridad en las Bases).
 
-La prioridad usa la escala Crítica, Alta y Media del Subdocumento 2, Anexo 2.1, con una regla explícita: un requerimiento funcional del caso no supera la prioridad de su familia en ese anexo, y «Crítica» se reserva a lo que sostiene un límite del capítulo 18, una restricción del capítulo 10, un hito externo de la sección 13.2 o una condición rectora del Subdocumento 2. El resultado es de 54 requerimientos críticos, 157 altos y 39 medios sobre los 250 del catálogo. Los once requisitos propios ofertados (7 funcionales de la Tabla 3.A.3b y 4 no funcionales de la Tabla 3.A.5b) siguen la misma regla: 2 críticos, 5 altos y 4 medios. El Formulario T-12 responde cada requerimiento con componente, sección, prueba prevista y criterio de aceptación. El paquete de trabajo de cada uno se asigna en el plan de trabajo de la oferta.
+La prioridad usa la escala Crítica, Alta y Media del Subdocumento 2, Anexo 2.1. Cada requerimiento funcional del caso asociado a una familia de ese anexo conserva como máximo la prioridad de su familia; los funcionales del caso sin familia y los derivados de las Bases quedan como máximo en «Alta». Los requisitos propios se clasifican según su aporte a los resultados y condiciones de la solución. La categoría «Crítica» se reserva a los que sostienen un resultado obligatorio de aceptación, una restricción operacional, un hito externo o una condición rectora del Subdocumento 2. De los 250 requerimientos del caso y de las Bases, 54 son críticos, 157 altos y 39 medios. Los 11 requisitos propios de LafroX se distribuyen en 2 críticos, 5 altos y 4 medios. En conjunto, los **261 requerimientos ofertados** se distribuyen en **56 críticos, 162 altos y 43 medios**. El Formulario T-12 responde cada requerimiento con componente, sección, prueba prevista y criterio de aceptación. El paquete de trabajo de cada uno se asigna en el plan de trabajo de la oferta.
 
 ### 3.2.4 Reglas de negocio y consultas
 
@@ -119,26 +113,22 @@ Las reglas del Anexo 3.G fijan el uso operacional de las capacidades. El stock s
 Cinco reglas concentran las decisiones más sensibles del caso, y cada una responde a un conflicto registrado en el Subdocumento 2:
 
 - **Reserva de stock (RNG-01).** La reserva firme se realiza al confirmar el pedido en el servidor central, por orden de recepción y con correlativo de desempate. Un pedido capturado sin señal utiliza stock indicativo y entra en ese orden al sincronizar. Si dos preventistas solicitan el mismo producto y el stock no alcanza para ambos, se reserva según ese orden y se notifica el quiebre al preventista cuyo pedido no puede cubrirse.
-
-- **Excursión térmica (RNG-04).** La respuesta se gradúa: advertencia ante una excursión menor y transitoria, y retención preventiva del lote ante una crítica y sostenida. La disposición final es siempre de Calidad. La regla evita tanto el bloqueo ciego que teme Operaciones como la liberación sin evidencia que teme Calidad. Mientras Calidad no apruebe los parámetros de un tipo de producto, toda lectura fuera del rango de almacenamiento de su ficha se trata como crítica.
-
-- **Corte y promesa (RNG-15).** Un pedido urbano ingresado antes de las 14:00 se promete a 24 horas; uno urbano ingresado desde las 14:00, o uno rural, periférico o abastecido por cross-docking, a 48 horas. La preventa muestra la fecha prometida y el OTIF se mide contra ella. La regla reemplaza la promesa de 24 horas a todo evento que Operaciones considera imposible.
-
+- **Excursión térmica (RNG-04).** La respuesta se gradúa: advertencia ante una excursión menor y transitoria, y retención preventiva del lote ante una crítica y sostenida. La disposición final es siempre de Calidad. La regla evita tanto el bloqueo ciego que teme Operaciones como la liberación sin evidencia que teme Calidad. Como criterio provisional pendiente de validación por Calidad, mientras esta no apruebe los parámetros para un tipo de producto, toda lectura fuera del rango de almacenamiento de su ficha se trata como crítica; Calidad conserva la decisión final sobre el lote.
+- **Corte y promesa (RNG-15).** Un pedido urbano ingresado antes de las 14:00 se promete a 24 horas; uno urbano ingresado a las 14:00 o después, o uno rural, periférico o abastecido por cross-docking, a 48 horas. La preventa muestra la fecha prometida y el OTIF se mide contra la fecha y ventana pactadas, conforme a RNG-09. La regla reemplaza la promesa de 24 horas a todo evento que Operaciones considera imposible.
 - **Efectivo y rendición.** Cada cobro queda asociado a su entrega en el momento en que ocurre, con comprobante para el cliente. La rendición no se cierra con diferencias sin causal ni responsable. La regla no elimina el efectivo del canal tradicional; elimina la imposibilidad de saber en qué entrega se produjo el descuadre.
-
 - **Local cerrado y reentrega (RNG-05).** El conductor registra el intento y la entrega se reagenda a la siguiente ventana disponible; no se entrega a terceros. Si el cliente continúa ausente, la mercadería retorna al centro de distribución con trazabilidad del evento. La regla convierte cada reentrega en un evento con causa, que alimenta el OTIF y, en la Etapa 2, el costo de servir del cliente.
 
-El Anexo 3.H registra 18 consultas con su pregunta, efecto en el alcance, supuesto de oferta y responsable. Tres se dirigen al mandante porque tratan diferencias internas de las Bases: la suma del Formulario T-21, el número de ambientes y la compatibilización formal del calendario contractual del Art. 17° con las ventanas de prohibición de pasos a producción de la sección 13.3 del caso cuando la fecha de inicio ubica un paso a producción en septiembre o diciembre. LafroX adopta cinco ambientes (DEV, QA, PREPROD, PROD y DR), en coherencia con el Subdocumento 1, sección «Presentación de la empresa». El universo de instalaciones difiere entre las entrevistas (cinco) y la volumetría (seis) del caso; la solución se parametriza por sitio y se confirma en el mes 1.
+El Anexo 3.H registra 18 consultas con su pregunta, efecto en el alcance, supuesto de oferta y responsable. Tres se dirigen al mandante porque tratan diferencias entre las condiciones de la licitación: la suma del Formulario T-21, el número de ambientes y la compatibilización del calendario contractual (*Bases Administrativas*, 2026, art. 17.1, p. 12) con la prohibición de realizar pasos a producción en septiembre o diciembre (caso, sección 13.3). Esta última incompatibilidad aparece si la fecha de inicio sitúa el paso a producción del mes 16 o del mes 21 en uno de esos meses; la consulta V-17 requiere una respuesta formal del mandante, sin alterar por sí sola los hitos contractuales. LafroX adopta cinco ambientes (DEV, QA, PREPROD, PROD y DR), en coherencia con el Subdocumento 1, sección «Presentación de la empresa». El universo de instalaciones difiere entre las entrevistas (cinco) y la volumetría (seis) del caso; la solución se parametriza por sitio y se confirma en el mes 1.
 
 ### 3.2.5 Criterios de aceptación
 
-El Anexo 3.J fija meta, momento y método para los dieciséis resultados del capítulo 18 del caso. Entre los límites expresos están obtener la lista de clientes afectados por lote en menos de dos horas, registrar lote en el 100 % de las recepciones que lo requieren, mantener registro térmico continuo, no perder ni duplicar pedidos por falta de señal y generar la ruta siguiente en menos de veinte minutos.
+El Anexo 3.J establece la meta, el momento y el método de verificación de los dieciséis resultados de aceptación de la solución. Entre los límites expresos están obtener la lista de clientes afectados por lote en menos de dos horas, registrar lote en el 100 % de las recepciones que lo requieren, mantener registro térmico continuo, no perder ni duplicar pedidos por falta de señal y generar la ruta siguiente en menos de veinte minutos.
 
 La Tabla 3.3 relaciona los tres problemas con resultados verificables. Distingue los límites fijados por el CLIENTE de las metas que corresponden al proponente.
 
-**Tabla 3.3 — Síntesis de resultados de aceptación. Fuente: caso, cap. 18; Anexo 3.J.**
+**Tabla 3.3 — Síntesis de resultados de aceptación. Fuente: Información entregada por Puelche**
 
-| **Problema** | **Resultado exigido** | **Meta** | **Registro** |
+| Problema | Resultado exigido | Meta | Registro |
 | --- | --- | --- | --- |
 | Trazabilidad sanitaria | Clientes afectados por lote con evidencia. | Menos de 2 horas (caso). | R18-01 |
 | Confiabilidad del servicio | OTIF medido de una sola forma. | 90 % mes 15; 93 % mes 19; 95 % mes 32 (metas propias de LafroX; referencia del caso: sobre 95 %). | R18-04 |
@@ -147,23 +137,16 @@ La Tabla 3.3 relaciona los tres problemas con resultados verificables. Distingue
 La verificación de los resultados críticos se diseña para que la Contraparte Técnica firme sobre evidencia y no sobre declaraciones:
 
 - **Retiro sanitario (R18-01):** Se ejecuta un simulacro con un lote real elegido por Calidad sin aviso previo. Se mide el tiempo desde la solicitud hasta la lista de clientes afectados con guía, fecha y cantidad, y se contrasta la lista con los registros de despacho. La evidencia es el archivo exportado y el acta del simulacro.
-
 - **Lote en recepción (R18-02):** Se comparan las recepciones del período con los productos que exigen lote. El resultado es un porcentaje con numerador y denominador trazables, no una muestra.
-
 - **Registro térmico (R18-03):** Durante la marcha blanca se auditan las series térmicas de cámaras y vehículos con frío y se comprueba que el CLIENTE pueda consultarlas e identificar la cámara o vehículo, fecha y hora de cada lectura. Una brecha en la serie constituye incumplimiento, aunque las lecturas disponibles estén dentro del rango.
-
 - **Pedidos sin señal (R18-06):** Se ejecuta una prueba de desconexión de 14 horas con dispositivos reales y se concilia pedido por pedido lo capturado con lo recibido en el servidor. El criterio es cero pérdidas y cero duplicados.
-
 - **Ruta del día siguiente (R18-07):** Se mide diariamente el tiempo de generación y se registra cada corrección manual con su motivo. Las correcciones alimentan la parametrización de las reglas del planificador.
-
 - **Rendición (R18-10):** Se verifica que cada diferencia del día tenga causal y responsable antes del cierre, y que la suma de los cobros por entrega cuadre con lo depositado.
 
 La aceptación exige demostrar resultados, no solo disponibilidad de pantallas. Un reporte de lotes sin evidencia no satisface R18-01, y registrar pedidos sin comprobar la reconciliación no acredita R18-06. La meta de OTIF parte del 82,4 % actual (Subdocumento 2, Tabla 2.1) y alcanza el 95 % en el mes 32, como compromiso propio de LafroX. El caso señala como referencia un valor superior al 95 % y establece como criterio de aceptación alcanzar la meta comprometida por el proponente. Se fija un año después de la producción de la Etapa 2 (mes 21) porque requiere las dos etapas estabilizadas: rutas, preventa y entrega de la Etapa 1, y pedido electrónico y aviso de despacho de la Etapa 2, operando durante un ciclo anual completo que incluya los peaks de septiembre y diciembre. La ventana de 30 minutos que exigirá la principal cadena desde enero de 2029 no depende de este tramo: se mide con su propio indicador de llegada dentro de la ventana (Anexo 3.A, RF-12.10 y RF-12.11) desde la Etapa 2. Los tramos intermedios son propios de LafroX y siguen la entrada de las capacidades:
 
 - 90 % al cierre de la marcha blanca de la Etapa 1 (mes 15), con preventa con stock y crédito visibles y rutas generadas por el sistema, todavía en convivencia con el papel.
-
 - 93 % en el mes 19, tras tres meses de producción sin papel.
-
 - 95 % en el mes 32, tras un ciclo anual completo con ambas etapas en producción.
 
 La línea base de 82,4 % se mide hoy de forma distinta por cada área. Si la medición con la definición única de S-01 arroja otra cifra, los tramos se recalculan en el comité del mes 1 conservando la meta final (Anexo 3.C, S-01; Anexo 3.H, V-10).
@@ -171,46 +154,41 @@ La línea base de 82,4 % se mide hoy de forma distinta por cada área. Si la med
 El caso no fija la meta de pérdida de envases (R18-12) ni el umbral de ocupación (R18-14), y el CLIENTE no ha declarado un valor. LafroX formula ambos como supuestos de oferta, que se validan en el mes 2 (Anexo 3.C, S-26 y S-27):
 
 - **R18-12:** pérdida anual de envases no superior al 7 % del parque, conforme al Subdocumento 2, Tabla 2.1; la línea base es el 14 % estimado del parque al año. Una revisión de la línea base no modifica esa meta.
-
 - **R18-14:** cada camión sale a reparto con una ocupación mínima del 60 % de su capacidad volumétrica útil, incluidas las rutas rurales y sin excepciones. La ocupación promedio supera el 68 % actual, cumpliendo simultáneamente las restricciones de peso y condición térmica y la promesa de entrega de S-21. Cada resultado lo acepta la Contraparte Técnica en el acta de cierre de la marcha blanca. La pérdida anual de envases solo puede medirse sobre un año: R18-12 se acepta de forma provisional en ese cierre, con el saldo conciliado, y de forma definitiva tras 12 meses de operación. Lo mismo ocurre con el tramo final de OTIF, que se confirma en el mes 32 (Anexo 3.J).
 
 ## 3.3 Esquema de solución
 
-Los siguientes esquemas representan el modelo conceptual de la solución: procesos, módulos y circulación de información. No representan capas técnicas ni emplazamiento físico. Cada figura se describe mediante sus elementos y relaciones, y se explica después.
+Las tres figuras presentan aspectos complementarios de la solución: el ciclo logístico, la trazabilidad del lote y la continuidad durante una pérdida de conexión. Cada esquema muestra sus relaciones principales y se acompaña de una explicación de su funcionamiento.
 
 ### 3.3.1 Vista conceptual del ciclo logístico
 
-La Figura 3.1 conecta la captura comercial con la ejecución y el cierre, e indica el módulo responsable de cada capacidad. Los pedidos confirmados alimentan la planificación; la asignación y secuencia de ruta orientan la preparación y la carga. El reparto puede salir directamente del centro de distribución o pasar por una plataforma de cross-docking. Las líneas continuas muestran relaciones operacionales y las discontinuas, intercambios con el ERP.
+La Figura 3.1 muestra cómo los pedidos de preventa, del canal moderno y del portal se conectan con la planificación, preparación, entrega y cierre de la operación. Las líneas continuas relacionan las actividades y los datos que generan, las discontinuas representan el envío de información al ERP.
 
-**Figura 3.1 — Relación conceptual de capacidades y módulos. Fuente: elaboración propia a partir del Subdocumento 2, Anexo 2.1.**
+[Figura 3.1 — Ciclo logístico de la solución. Fuente: elaboración propia.](figures/figura%203.1.pdf)
 
-> Diagrama en blanco y negro con once recuadros de esquinas redondeadas. En la parte superior aparecen preventa, canal moderno y portal, y recepción e inventario. Las dos primeras capacidades envían pedidos confirmados a planificación de rutas; recepción e inventario conduce a preparación y carga. Planificación envía la asignación y secuencia de carga a preparación. Desde preparación salen dos caminos hacia entrega digital: reparto directo y vía plataforma, pasando este último por cross-docking. Entrega se conecta con devoluciones y envases, rendición y análisis; rendición también conduce a análisis. Las flechas continuas representan relaciones operacionales. Las líneas discontinuas conectan preparación con ERP (A), entrega con ERP en ambos sentidos (B) y devoluciones con ERP mediante datos de devolución. Los cruces de líneas no representan una conexión. Bajo el diagrama aparece la explicación de esos intercambios.
+Los pedidos confirmados alimentan la planificación de rutas, cuya asignación y secuencia orientan la preparación y carga. El inventario aporta los productos disponibles para preparar cada pedido. El reparto llega al cliente directamente o a través de una plataforma de cross-docking. La entrega registra su resultado, los cobros y las devoluciones o envases asociados; esos datos permiten conciliar el efectivo y alimentar el análisis del costo de servir.
 
-La figura muestra por qué la analítica depende de la captura en terreno: el costo de servir necesita hechos de entrega, no solamente totales contables. Los pedidos capturados sin señal ingresan a la planificación una vez confirmados; la reserva central se explica en la sección 3.3.3. La preparación envía al ERP cantidades y lotes para la emisión de la guía de despacho (RF-05.06); la entrega aporta la evidencia de recepción y recibe el estado del acuse. Las devoluciones aportan los datos para que el ERP emita la nota de crédito cuando corresponda. El ERP conserva la emisión tributaria.
+El ERP recibe el detalle preparado, con SKU, cantidad efectivamente recolectada y lote por línea vinculados al pedido, para emitir la guía de despacho (RF-05.06); recibe también la evidencia de recepción de la entrega y los datos de devolución para emitir la nota de crédito cuando corresponde. Conserva el registro contable y es el único emisor tributario. El estado del acuse se consulta al ERP para completar la conciliación documental. Los pedidos tomados sin señal ingresan a la planificación después de sincronizarse y confirmarse, como se explica en la sección 3.3.3.
 
 ### 3.3.2 Trazabilidad y cadena de frío
 
-La Figura 3.2 reúne la información de recepción, movimientos y existencias, transporte y entrega que permite reconstruir el origen y los destinos de un lote. La evidencia térmica se asocia a esa trayectoria para respaldar sus condiciones de almacenamiento y transporte y responder a un retiro sanitario.
+La Figura 3.2 distingue el recorrido del lote de la información que se conserva para consultarlo. Las líneas continuas muestran el paso por recepción, bodega y preparación, y transporte y entrega; las discontinuas indican los datos que alimentan la información y consulta de trazabilidad.
 
-**Figura 3.2 — Información necesaria para trazabilidad sanitaria. Fuente: elaboración propia a partir del caso, cap. 18, criterios 1 a 3.**
+[Figura 3.2 — Información para trazabilidad y cadena de frío. Fuente: elaboración propia.](figures/figura%203.2.pdf)
 
-> Diagrama en blanco y negro con cinco recuadros rectangulares. Recepción, con lote y vencimiento, conduce a bodega y preparación, con movimientos del lote, y a consulta sanitaria, con origen y clientes afectados. Bodega y preparación conduce a transporte y entrega, con destino y evidencia; transporte y entrega conduce a consulta sanitaria. Un recuadro ancho inferior representa el registro continuo de temperatura en cámaras y vehículos y envía flechas a consulta sanitaria y a transporte y entrega.
+En recepción se registran el lote y su vencimiento; en bodega, sus movimientos y existencias; y en la entrega, el cliente de destino, la guía, la fecha y la cantidad recibida. El cuadro «Información y consulta de trazabilidad» reúne esos registros para reconstruir el origen y los destinos del lote. Ante un retiro sanitario, permite obtener la lista de clientes afectados con evidencia en menos de dos horas.
 
-La consulta relaciona recepción, movimientos y existencias con las entregas para identificar el origen y los clientes afectados, con guía, fecha y cantidad por destino (RF-02.10, RF-09.01 y RF-09.02). Ante un retiro, la lista de afectados se obtiene con evidencia en menos de dos horas (caso, cap. 18, criterio 1). Las lecturas térmicas se asocian a la trayectoria del lote mediante la cámara o el vehículo y el período correspondiente, para construir la evidencia del envío sin reconstrucción manual (RF-09.03, RF-09.04 y RF-09.09). Ante una excursión menor, el conductor recibe una alerta en cabina; ante una crítica y sostenida, el sistema retiene preventivamente el lote y notifica a Calidad, que registra la liberación, el bloqueo o el rechazo con su fundamento (Subdocumento 2, arbitraje, tensión 2).
+Este cuadro reúne también los registros de temperatura. Los sensores de cámaras y vehículos con equipo de frío capturan las lecturas automática y continuamente; estas se vinculan al lote mediante su ubicación o viaje y el período correspondiente. Así, la consulta permite revisar las condiciones de almacenamiento y transporte y obtener la evidencia térmica del envío sin reconstrucción manual.
 
 ### 3.3.3 Continuidad e integración
 
-La Figura 3.3 distingue los ámbitos cuya operación debe sostenerse ante pérdida de conectividad y su relación con la nube. El ERP conserva su responsabilidad contable y tributaria.
+La Figura 3.3 muestra dos recorridos de izquierda a derecha: la operación de preventa y reparto, y la del centro de distribución. Ambos parten del trabajo sin conexión y terminan en la información conciliada en la plataforma central.
 
-**Figura 3.3 — Ámbitos de continuidad e intercambio, sin topología física. Fuente: elaboración propia; BA, art. 16; caso, cap. 10 y 15.**
+[Figura 3.3 — Continuidad durante cortes y recuperación de la información. Fuente: elaboración propia.](figures/figura%203.3.pdf)
 
-> Diagrama en blanco y negro con cuatro recuadros dispuestos en dos filas y dos columnas. Arriba se muestran preventa y reparto, con un turno sin señal de 14 horas, y carga principal en nube, con intercambio de información. Abajo aparecen el centro de distribución, con autonomía de al menos 24 horas, y el ERP conservado, con registro contable y emisión. Flechas discontinuas de doble sentido conectan la nube con preventa y reparto, bajo el rótulo «Reconexión», y con el centro de distribución. Una flecha continua de doble sentido conecta la nube con el ERP. La figura no representa una topología física.
+Durante la desconexión, los dispositivos de preventa y reparto guardan los registros de su jornada durante un turno de 14 horas. El centro de distribución mantiene la recepción, preparación y despacho con registros locales durante al menos 24 horas. Al recuperar la conexión, la sincronización es automática: el dispositivo de reparto debe completarla en un máximo de diez minutos tras ese turno, y el centro, en un máximo de dos horas tras un corte de 24 horas.
 
-La autonomía permite sostener el turno móvil y la recepción, preparación y despacho del centro de distribución durante un corte; la sincronización posterior reconcilia los registros sin perder ni duplicar pedidos. El caso exige que el dispositivo de reparto sincronice tras el turno completo sin señal en no más de diez minutos y el centro tras un corte de 24 horas en no más de dos horas. Se usa el código RT-03.12 de las Bases Técnicas Transversales para la sincronización y se registra el valor del caso.
-
-La plataforma conserva una cola local e idempotente de transacciones, de modo que la reconexión reconcilia cada registro por su identificador único y deja una bitácora de conflictos. La reserva firme ocurre en el servicio central al confirmar; la consulta sin conexión muestra la antigüedad del dato y no promete stock antes de esa confirmación. Los protocolos y componentes se especifican en la arquitectura de la oferta.
-
-Un corte de enlace de 24 horas en un centro de distribución recorre tres momentos. Durante el corte, el borde local sigue recibiendo, preparando y despachando, con el stock y las reglas vigentes al momento de la desconexión; las transacciones quedan en cola con su identificador único. Al volver el enlace, la cola se envía en orden y cada registro se reconcilia con la nube. Al restablecerse el enlace, los conflictos se reconcilian automáticamente conforme a la regla determinista documentada, sin sobrescritura silenciosa de conflictos de versión y con una bitácora auditable de las decisiones aplicadas. Después, los indicadores del día se recalculan con los datos completos. El mismo patrón rige para un turno de preventa o reparto de 14 horas sin señal. La fibra se corta cuatro veces al año y Concepción no tiene respaldo, de modo que este comportamiento no es una contingencia excepcional, sino una condición normal de operación que se prueba antes de cada paso a producción.
+La plataforma conserva una cola local durable e idempotente: cada transacción lleva un identificador único y, al restablecerse el enlace, se envía en orden y se reconcilia sin perder ni duplicar pedidos. Los conflictos de versión se resuelven mediante una regla determinista documentada, sin sobrescritura silenciosa y con una bitácora auditable de cada decisión (Anexo 3.G, RNG-12). Después de integrar los registros pendientes se recalculan los indicadores del día. En preventa, la consulta sin conexión muestra la antigüedad del dato y el stock es indicativo; la reserva firme se realiza al confirmar el pedido en el servidor central. Por ello, un pedido capturado sin señal queda pendiente de sincronización y confirmación antes de incorporarse a la planificación.
 
 ## 3.4 Explicación de la Solución
 
@@ -227,65 +205,63 @@ Al cerrar la operación, la rendición vincula cobros con entregas y explica las
 La jornada completa muestra cómo se encadenan las capacidades:
 
 - **22:00 a 06:00, bodega.** Los preparadores reciben las olas en su dispositivo y confirman cada línea por lectura. En la cámara a -22 °C trabajan con guantes, sin señal, con la sincronización diferida al salir. Un faltante se registra con su causa en el momento. Si el enlace de Talca o Concepción se corta, el borde del centro de distribución sostiene la preparación y la carga, y la reconciliación con la nube ocurre al volver el enlace.
-
 - **Madrugada, cross-docking.** El camión de línea llega a cada plataforma y sus unidades se leen a la llegada y al cargarse en el reparto. Queda medido cuánto dura cada tramo y qué excepciones ocurren, que es la información que hoy falta para explicar la brecha de 16 horas.
-
 - **05:30 a 07:00, despacho.** Salen los 96 camiones. La ventana no admite indisponibilidad; por eso ningún cambio se despliega en ella y la operación local no depende del enlace.
-
 - **Durante el día, calle.** El preventista toma pedidos con stock y crédito a la vista y la promesa que corresponde al cliente; sin señal, el pedido queda en cola y ocupa su lugar al sincronizar. El conductor registra entrega, evidencia, devoluciones, envases y cobro. Ante una excursión térmica menor y transitoria, el conductor recibe una advertencia; ante una crítica y sostenida, el sistema retiene preventivamente el lote y notifica a Calidad, que decide su liberación, bloqueo o rechazo.
-
 - **15:00 a 18:30, planificación.** Los pedidos confirmados quedan disponibles para la ruta del día siguiente, que se genera en minutos y el planificador corrige. Cada corrección queda registrada.
-
 - **Retorno, rendición y cierre.** Al volver, el camión rinde contra sus cobros por entrega; toda diferencia tiene causal antes de cerrar. La evidencia de entrega ya está en el ERP, que registra el acuse de cada guía.
 
 Si en cualquier momento se detecta un lote sospechoso, Calidad obtiene los destinos con guía, fecha y cantidad, y el retiro se ejecuta sobre clientes identificados, no sobre estimaciones.
 
-### 3.4.2 Correspondencia con la arquitectura lógica
+### 3.4.2 Vista general de la solución
 
-La Figura 3.4 presenta una vista general de los actores, las interfaces de acceso, los doce módulos de negocio y las integraciones de la solución. Complementa las vistas del ciclo logístico de la sección 3.3 al mostrar cómo cada grupo de usuarios accede a las capacidades que necesita.
+La Figura 3.4 reúne los actores, las interfaces, los módulos de negocio y los sistemas externos de la solución. A continuación se muestra la vista general y, posteriormente, sus cuatro partes por separado.
 
-**Figura 3.4 — Vista general de actores, interfaces, módulos e integraciones de la solución. Fuente: elaboración propia a partir del Anexo 3.I y del Capítulo 4, sección 4.1.**
+[Figura 3.4 — Vista general de la solución. Fuente: elaboración propia.](figures/Diagrama%20de%20la%20solución.pdf)
 
-Descripción: quince actores se relacionan con las aplicaciones de preventa, reparto y bodega, los portales de clientes, transportistas y proveedores, y las consolas de gestión. Estas interfaces acceden a M1–M12; ERP, geolocalización y pagos son sistemas externos. Los cruces de líneas no representan conexiones. La definición textual de los actores y de sus interacciones se desarrolla a continuación.
+La vista se lee de arriba hacia abajo: los actores acceden mediante aplicaciones y portales a los módulos de negocio, que se relacionan con los sistemas externos.
 
-La lectura se realiza de arriba hacia abajo: los actores utilizan las aplicaciones de preventa, reparto y bodega, los portales o las consolas de gestión; estas interfaces dan acceso a los módulos M1 a M12. Las líneas de colores permiten seguir las relaciones de acceso de los actores, y las líneas negras inferiores representan relaciones con sistemas externos. Los cruces de líneas no indican una conexión. La figura sintetiza responsabilidades funcionales; no define permisos detallados, protocolos de integración ni emplazamiento físico.
+[Figura 3.5 — Actores que interactúan con la solución. Fuente: elaboración propia.](figures/DIAGRAMA-ACTORES.pdf)
 
-El ERP se conserva como registro contable y único emisor tributario. El sistema de geolocalización aporta mapas y datos de posición para rutas y telemetría; Transbank representa la integración de pagos indicada en el esquema. Los portales de proveedores y transportistas se interpretan dentro de los requerimientos ofertados y de las exclusiones de la sección 3.2.2: su representación no amplía por sí sola el alcance contractual. El portal de clientes y el canal moderno se habilitan en la Etapa 2; M10 entrega OTIF en la Etapa 1 y costo de servir en la Etapa 2. El acceso del canal tradicional al portal es opcional y no exige al almacenero disponer de un dispositivo o conexión propia.
+La Figura 3.5 muestra a los usuarios de terreno, clientes, proveedores, transportistas y responsables de gestión que participan en la solución. Cada color identifica un actor y permite seguir sus relaciones en las vistas siguientes.
 
-La Tabla 3.4 vincula capacidades y módulos de negocio. Los nombres M1 a M12 son los que usa la arquitectura lógica de la oferta.
+La Figura 3.5 identifica quince actores que interactúan con la solución: Preventista, Conductor propio, Conductor externo, Preparador, Cliente del canal tradicional, Cliente del canal moderno, Empresa transportista, Proveedor, Jefa de Calidad, Gerente Comercial, Gerente de Finanzas, Planificador de Rutas, Jefe de TI, Gerente de Operaciones y Jefa de Bodega. Son distintos de los diecinueve interesados en el proyecto del Subdocumento 2: participar en el gobierno, formular una necesidad o recibir un informe no confiere acceso a una aplicación. El Anexo 3.I, Tabla 3.A.12a, relaciona cada actor de la figura con su interfaz, interacción, módulo y etapa.
 
-**Tabla 3.4 — Correspondencia entre capacidades del alcance y módulos lógicos. Fuente: elaboración propia a partir del Anexo 3.A y del Capítulo 4, sección 4.2.**
+Empresa transportista y Proveedor acceden mediante representantes identificados y limitados a los datos de su organización; Conductor externo conserva una identidad personal vinculada a su empresa, vehículo, ruta y turno. El portal del Cliente del canal tradicional es opcional desde la Etapa 2: la compra por preventista y el pago en efectivo continúan sin exigir cuenta ni conexión propia. El segmento *food service* se registra como atributo comercial del cliente y no crea por sí solo un actor adicional. La Gerenta General, el Sindicato de Choferes, la Autoridad Sanitaria y los peonetas participan o reciben información según su función, sin obtener por ese hecho una sesión o perfil de los quince actores. Las conexiones de las Figuras 3.4 a 3.8 indican relaciones funcionales, no permisos irrestrictos; estos se delimitan por acción y ámbito, conforme al catálogo del Anexo 3.A y a la arquitectura de la oferta.
 
-| **Capacidad** | **Módulo** | **Resultado que habilita** | **Etapa** |
+[Figura 3.6 — Interfaces de acceso a la solución. Fuente: elaboración propia.](figures/DIAGRAMA-INTERFACES.pdf)
+
+La Figura 3.6 presenta las aplicaciones de preventa, reparto y bodega, junto con los portales y las consolas de gestión. Son los medios de acceso de cada actor; el portal de clientes se habilita en la Etapa 2 y su uso es opcional para el canal tradicional.
+
+[Figura 3.7 — Relación entre interfaces y módulos de negocio. Fuente: elaboración propia.](figures/DIAGRAMA-%20MODULOS.pdf)
+
+La Figura 3.7 vincula las interfaces con los módulos M1 a M12, que cubren la operación logística, la gestión y los nuevos canales. M10 entrega OTIF en la Etapa 1 y costo de servir en la Etapa 2; M11 incorpora el canal moderno en la segunda etapa.
+
+[Figura 3.8 — Relaciones con sistemas externos. Fuente: elaboración propia.](figures/DIAGRAMA-EXTERNO.pdf)
+
+La Figura 3.8 muestra las relaciones con el ERP, Transbank y el sistema de geolocalización. El ERP conserva el registro contable y la emisión tributaria; Transbank representa los pagos, y la geolocalización aporta mapas y posición para rutas y telemetría.
+
+La Tabla 3.4 resume cómo las capacidades del alcance se distribuyen entre los módulos que presenta la Figura 3.7. No sustituye las relaciones de acceso, interfaces e integraciones de las Figuras 3.4 a 3.8.
+
+**Tabla 3.4 — Correspondencia entre capacidades del alcance y módulos de negocio. Fuente: elaboración propia a partir de las Figuras 3.4 a 3.8 y del Anexo 3.A.**
+
+| Capacidad | Módulo responsable | Resultado que habilita | Etapa |
 | --- | --- | --- | --- |
 | Recepción, lote y vencimiento | M1 Recepción | Trazabilidad de ingreso y calidad de datos. | 1 |
-| Inventario, FEFO, reposición, cross-docking y preparación | M2 Inventario; M5 Preparación | Stock confiable y despacho controlado. | 1 |
-| Preventa y ruteo | M3 Preventa; M4 Rutas | Pedido confirmable y ruta corregible. | 1 |
-| Entrega, acuse, cobro y retorno | M6 Reparto; M7 Cobranza y rendición; M8 Devoluciones y envases | POD, conciliación y control de envases. | 1 |
-| Calidad, evidencia y flota | M9 Calidad y trazabilidad; M12 Telemetría | Retiro sanitario y control de cadena de frío. | 1 |
-| Gestión y nuevos canales | M10 Analítica; M11 Canal moderno | OTIF diario, costo de servir e intercambio estructurado. | 1 / 2 |
+| Inventario, FEFO, reposición, *cross-docking* y preparación | M2 Inventario; M5 Preparación | Stock confiable y despacho controlado. | 1 |
+| Preventa y planificación de rutas | M3 Preventa; M4 Rutas | Pedido confirmable y ruta corregible. | 1 |
+| Entrega, acuse, cobro y retorno | M6 Reparto; M7 Cobranza y rendición; M8 Devoluciones y envases | Evidencia de entrega, conciliación y control de envases. | 1 |
+| Calidad, trazabilidad y telemetría | M9 Calidad y trazabilidad; M12 Telemetría | Retiro sanitario y evidencia de cadena de frío. | 1 |
+| Indicadores y costo de servir | M10 BI Gerencia | OTIF diario; costo de servir en la segunda etapa. | 1/2 |
+| Canal moderno e intercambio electrónico | M11 EDI Canal Moderno | Pedido electrónico y aviso de despacho. | 2 |
 
-La tabla permite verificar que cada flujo de la sección 3.3 tiene una responsabilidad lógica. M10 entrega los indicadores operacionales de la Etapa 1 y el costo de servir en la Etapa 2; M11 se incorpora con el canal moderno en la segunda etapa. Los requerimientos transversales de las Bases se asignan a la base compartida (Formulario T-12).
-
-#### 3.4.2.1 Actores del sistema y relación con los actores del negocio
-
-La solución distingue a las personas y organizaciones interesadas en el resultado del proyecto de quienes interactúan directamente con una aplicación, portal o consola. Un actor puede desempeñar ambos papeles. Participar en un comité, formular una necesidad o recibir un informe no concede por sí mismo acceso a una función.
-
-La Figura 3.4 y el catálogo de actores del Anexo 3.I establecen quince actores del sistema: Preventista, Conductor propio, Conductor externo, Preparador, Cliente del canal tradicional, Cliente del canal moderno, Empresa transportista, Proveedor, Jefa de Calidad, Gerente Comercial, Gerente de Finanzas, Planificador de Rutas, Jefe de TI, Gerente de Operaciones y Jefa de Bodega. El catálogo y su correspondencia funcional se desarrollan en el [Anexo 3.I](LAFROX-Subdocumento3-Anexos.md#actores-del-sistema). El apartado 4.1.3.1 y el Anexo 4-N del Subdocumento 4 realizan esta definición mediante interfaces y permisos.
-
-Empresa transportista y Proveedor identifican organizaciones externas. La sesión pertenece a una persona representante verificada y queda limitada a los datos de su organización. Conductor externo mantiene una identidad distinta y permisos sobre su turno, vehículo y ruta; la representación de la empresa no permite firmar una entrega en nombre del conductor. Los usuarios comparten aplicaciones según su función, con permisos por acción y recurso.
-
-El acceso del Cliente del canal tradicional a autoatención es opcional y se habilita en Etapa 2. Su compra por preventista y su pago en efectivo continúan desde Etapa 1, sin exigirle cuenta o conexión. El segmento food service permanece dentro del alcance comercial; su segmento se registra como atributo del cliente y el perfil de acceso se determina por el canal de atención acordado, sin crear un decimosexto actor ni suponer que pertenece automáticamente al canal moderno.
-
-La Gerenta General participa en gobierno y recibe indicadores; el Sindicato de Choferes participa en los acuerdos laborales y de privacidad; la Autoridad Sanitaria recibe evidencia canalizada por Calidad. El catálogo validado no les atribuye acceso directo. El peoneta forma parte de la tripulación del negocio, pero no recibe por esa pertenencia una sesión del conductor ni un perfil propio. Cualquier ampliación de estos accesos requiere un requerimiento y una decisión coordinada de alcance.
-
-ERP, geolocalización, telemetría de terceros y pasarela de pagos son sistemas externos con contratos y credenciales técnicas. El actor Cliente del canal moderno puede consultar mediante portal, mientras la integración EDI utiliza una identidad de sistema distinta. Las flechas de la Figura 3.4 representan relaciones funcionales; no autorizan acceso completo a cada módulo. La columna Actor del catálogo de requisitos identifica al interesado funcional; el ejecutor efectivo y la autorización se precisan por la precondición, el resultado y la matriz del Anexo 4-N.
+El *cross-docking* se controla mediante inventario, preparación, rutas y reparto, sin crear un decimotercer módulo. Los requerimientos transversales se asignan a la base compartida y se trazan en el Formulario T-12.
 
 ### 3.4.3 Implementación
 
 La implementación construye primero la base compartida: identidad, integración con el ERP, registro auditable, operación desconectada y observabilidad. Sobre ella trabajan tres frentes en la Etapa 1: bodega y calidad (M1, M2, M5, M9, M12); preventa, rutas y reparto (M3, M4, M6, M8); y datos y rendición (M7, M10). La Etapa 2 agrega el frente de canal moderno y costo de servir (M11 y M10).
 
-Cada incremento recorre el mismo camino. Parte de un conjunto de requerimientos del Anexo 3.A con su criterio de aceptación. Se desarrolla en una rama versionada junto con su configuración y sus reglas parametrizables. Pasa por revisión de pares y por pruebas automatizadas en la cadena de integración continua, con un umbral bloqueante de 80 % de cobertura de pruebas unitarias (Subdocumento 1, sección «Gobierno interno Calidad, Seguridad y Conocimiento»), superior al 70 % mínimo de las Bases (RT-04.11). Luego se promueve por los ambientes DEV, QA y PREPROD. En PREPROD se ejecutan las pruebas del perfil operacional: desconexión de 14 horas para preventa y reparto, corte de 24 horas para el CD y uso con guantes a -22 °C.
+Cada incremento recorre el mismo camino. Parte de un conjunto de requerimientos del Anexo 3.A con su criterio de aceptación. Se desarrolla en una rama versionada junto con su configuración y sus reglas parametrizables. Pasa por revisión de pares y por pruebas automatizadas en la cadena de integración continua, con un umbral bloqueante de 80 % de cobertura de pruebas unitarias (LafroX, 2026b, Subdocumento 1, sección «Gobierno interno Calidad, Seguridad y Conocimiento»), superior al 70 % mínimo exigido (*Bases Técnicas Transversales*, 2026, cap. 4, RT-04.11, p. 11). Luego se promueve por los ambientes DEV, QA y PREPROD. En PREPROD se ejecutan las pruebas del perfil operacional: desconexión de 14 horas para preventa y reparto, corte de 24 horas para el CD y uso con guantes a -22 °C.
 
 Un incremento no se promueve a producción si tiene defectos críticos o altos abiertos, si la sincronización pierde o duplica registros, o si cae dentro de una ventana de congelamiento. Durante los meses 13 a 20, los cambios de la Etapa 2 se despliegan fuera de la ventana de despacho y sin modificar las funciones estabilizadas de la Etapa 1. La metodología completa y el plan de trabajo se detallan en los capítulos correspondientes de la oferta.
 
@@ -293,34 +269,27 @@ El orden de construcción sigue las dependencias de datos. Primero se estabiliza
 
 ### 3.4.4 Implantación
 
-La implantación respeta las siete condiciones de la sección 13.3 del caso; la condición 2 (ningún paso a producción en septiembre, diciembre ni los tres primeros días hábiles) se resuelve en la sección 3.1.2. Cada proceso convive con la forma actual de trabajar durante la marcha blanca, con conciliación entre ambos registros y posibilidad de volver atrás. El despliegue se hace por proceso, sitio o zona, considera el turno nocturno y capacita en terreno sin detener venta ni reparto. La incorporación de cada transportista requiere un acuerdo operacional propio.
+La implantación respeta las siete condiciones de la sección 13.3 del caso. La programación de los pasos a producción evita septiembre, diciembre y los tres primeros días hábiles de cada mes, conforme al análisis de la sección 3.1.2. Cada proceso convive con la forma actual de trabajar durante la marcha blanca, con conciliación entre ambos registros y posibilidad de volver atrás. El despliegue se hace por proceso, sitio o zona, considera el turno nocturno y capacita en terreno sin detener venta ni reparto. La incorporación de cada transportista requiere un acuerdo operacional propio. La estabilización de cada ola declara duración y dotación, incluida la presencia en bodega y el acompañamiento en ruta.
 
-La secuencia comienza por datos maestros y trazabilidad de recepción, continúa por bodega y preparación, y culmina con preventa, reparto y rendición por zonas. En cada ola se define cuál es el registro oficial. Mientras dura la convivencia, la hoja de picking impresa y la guía en papel siguen siendo el respaldo; se retiran cuando la ola cumple su criterio de avance durante cuatro semanas consecutivas a volumen real.
+La secuencia comienza por datos maestros y trazabilidad de recepción, continúa por bodega y preparación, y culmina con preventa, reparto y rendición por zonas. En cada ola se define cuál es el registro oficial y se mantiene un único escritor por dominio. Durante la convivencia, la hoja de picking impresa y los documentos en papel sirven para consulta y tareas auxiliares; no sustituyen la operación local probada ni la emisión tributaria exclusiva del ERP. El respaldo en papel se retira cuando la ola cumple su criterio de avance durante cuatro semanas consecutivas a volumen real.
 
 El criterio de avance de una ola exige:
 
 - Ausencia de defectos críticos o altos abiertos;
-
 - Conciliación diaria sin diferencias no explicadas;
-
 - Volumen real de operación comprometido alcanzado e indicadores de disponibilidad y tiempo de respuesta cumplidos de forma sostenida durante al menos las cuatro últimas semanas;
-
 - Criterios de aceptación correspondientes al alcance de la ola verificados según los métodos y períodos del Anexo 3.J, con aceptación provisional cuando corresponda y verificación definitiva al completar el período previsto;
-
 - Usuarios certificados por perfil;
-
 - Acta firmada por la Contraparte Técnica.
 
-La reversión la autoriza el responsable operativo del CLIENTE ante pedidos no sincronizados, rutas no disponibles o un defecto crítico. La restitución del servicio de despacho debe completarse antes de las 05:30 y sostener los 96 camiones entre 05:30 y 07:00 sin interrupción. Volver al papel no demuestra esa capacidad: la continuidad depende de la versión operativa local probada, colas durables, rutas disponibles y documentos válidos emitidos exclusivamente por ERP. Una guía ausente o invalidada requiere su reemisión autorizada; la solución no emite DTE alternativos. El papel es respaldo de consulta y contingencia de tareas auxiliares, no una sustitución manual del despacho crítico.
+La reversión la autoriza el responsable operativo del CLIENTE ante pedidos no sincronizados, rutas no disponibles o un defecto crítico. La restitución del servicio de despacho debe completarse antes de las 05:30 y sostener la salida de los 96 camiones entre las 05:30 y las 07:00 sin interrupción. Volver al papel no demuestra esa capacidad: la continuidad depende de una versión operativa local probada, colas durables, rutas disponibles y documentos válidos emitidos exclusivamente por el ERP. Una guía ausente o invalidada requiere su reemisión autorizada; la solución no emite documentos tributarios alternativos. El papel es respaldo de consulta y contingencia de tareas auxiliares, no una sustitución manual del despacho crítico.
 
-El ensayo previo a cada corte mide tiempos, pérdida/duplicación, conciliación y volumen. El Formulario T-18, sección 6.4, fija un objetivo de 40 minutos, con término a las 05:25 si la decisión se toma a las 04:45; el ensayo debe confirmar ese objetivo. No se autoriza el corte sin evidencia del flujo completo. La conservación de registros en cola se comprueba en el ensayo; no se presume. El RTO de recuperación general no concede interrupciones en la ventana de despacho.
+El ensayo previo a cada corte mide tiempos, pérdida o duplicación, conciliación y volumen. El Formulario T-18, sección 6.4, fija para el procedimiento de reversión un objetivo de 40 minutos: decisión límite a las 04:45 y término a las 05:25, con cinco minutos de margen antes del despacho. El ensayo en PREPROD debe confirmar ese objetivo antes de cada corte; no se autoriza el corte sin evidencia del flujo completo, incluidas las rutas, las guías válidas y la conservación de los registros en cola. El RTO de recuperación general de la sección 3.4.5 no concede interrupciones en la ventana de despacho.
 
 Después de cada paso a producción, la estabilización incluye presencia en bodega durante el turno de noche y acompañamiento en ruta a preventistas y conductores. Su duración es de cuatro semanas por ola, el mismo período que exige el criterio de avance. La dotación se deriva de la operación del caso:
 
 - **Bodega:** la preparación es nocturna, de 22:00 a 06:00, en Talca y Concepción. Se asigna una persona de LafroX por centro de distribución en cada turno de noche de la ola, es decir, dos personas. Cada plataforma de cross-docking recibe una persona durante la recepción de madrugada y el despacho de la mañana en su ola, es decir, tres personas.
-
 - **Calle:** cada día salen 96 camiones y trabajan 62 preventistas, lo que suma 158 rutas diarias. Para acompañar cada ruta al menos una vez en las cuatro semanas (24 días de lunes a sábado) se necesitan 158 / 24 ≈ 6,6 personas. Se asignan siete acompañantes en ruta durante las olas de preventa y reparto. Si la ola cubre solo una zona, la dotación se reduce en proporción a sus rutas.
-
 - **Coordinación:** el Líder de Implantación coordina a este equipo y reporta el avance de cada ola al comité.
 
 Los conductores externos se incorporan en el andén al asignarse a una ruta, con un mecanismo que sobrevive a la rotación sin aviso.
@@ -328,18 +297,15 @@ Los conductores externos se incorporan en el andén al asignarse a una ruta, con
 La adopción se mide por perfil y por ola con los indicadores del Anexo 3.I. La meta es que el 100 % de los usuarios de la ola esté certificado en su perfil y que el 100 % de las transacciones de la ola se registre en la solución al retirar el papel. Si una ola no alcanza esa meta, no avanza y se extiende el acompañamiento. El plan distingue dos grupos:
 
 - **Personal con 20 o 30 años en la compañía:** acompañamiento individual en su puesto o ruta, y reconocimiento formal de su conocimiento. El caso advierte que un proyecto que pase por encima de estas personas fracasará.
-
 - **Personal rotativo de preparación (38 % anual):** aprendizaje en el puesto de dos horas como máximo (RNF-05.03) y un tutor por turno.
 
 La migración de datos acompaña la secuencia de olas. El WMS de 2013 opera en Talca y Concepción usa planillas (Subdocumento 2, Anexo 2.3). En Talca se migran los saldos por SKU, ubicación y lote de sus 11.400 posiciones. En Concepción se cargan los saldos desde un conteo físico. En ambos casos el maestro cubre los 8.400 SKU activos, 1.100 de ellos refrigerados o congelados. Cada sitio sigue el mismo procedimiento:
 
 - Carga inicial en PREPROD.
-
 - Conciliación contra un conteo físico, separada por dominio: los documentos y los lotes deben coincidir sin diferencias; las diferencias de inventario se investigan y los ajustes se justifican antes del corte. El 2,3 % del valor contado es la línea base del problema descrito en el Subdocumento 2, Tabla 2.1, y no una tolerancia automática de migración (Anexo 3.C, S-29). Las diferencias se clasifican en conteo físico, saldo inicial, lote o error de migración y se presentan a la Contraparte Técnica con su explicación.
-
 - Corte fuera de las ventanas de congelamiento.
 
-El WMS se conserva en solo lectura hasta el cierre de la marcha blanca del sitio como respaldo de consulta (Anexo 3.C, S-14). La reversión conserva una versión operativa local probada y un único escritor por dominio; el papel sólo apoya consulta y tareas auxiliares. El CLIENTE conserva la autoridad sobre los datos y se concilian las transacciones del período; el despacho crítico requiere la evidencia y condiciones descritas arriba. La reversión se ensaya en PREPROD antes de cada corte.
+El WMS se conserva en solo lectura hasta el cierre de la marcha blanca del sitio como respaldo de consulta (Anexo 3.C, S-14). La reversión conserva una versión operativa local probada y un único escritor por dominio; el papel solo apoya consulta y tareas auxiliares. El CLIENTE conserva la autoridad sobre los datos y las transacciones del período se concilian al retomar. La reversión se ensaya en PREPROD antes de cada corte con las condiciones de despacho indicadas arriba.
 
 ### 3.4.5 Operación
 
@@ -347,12 +313,12 @@ La operación cubre los 36 meses contractuales y complementa al equipo de cuatro
 
 La Tabla 3.5 resume los objetivos de servicio de la operación.
 
-**Tabla 3.5 — Objetivos de servicio. Fuente: BA, art. 78.2; BTT, secciones 7.2 y 10; caso, cap. 10 y 15.**
+**Tabla 3.5 — Objetivos de servicio. Fuente: elaboración propia a partir de *Bases Administrativas* (2026, arts. 78.2–78.3, p. 40), *Bases Técnicas Transversales* (2026, cap. 7, sección 7.2, pp. 17–18; RT-07.04 y RT-07.07, p. 17; cap. 10, RT-10.01, p. 22), y Anexo 3.E, R-01.**
 
-| **Servicio** | **Indicador** | **Objetivo** | **Medición** |
+| Servicio | Indicador | Objetivo | Medición |
 | --- | --- | --- | --- |
-| Infraestructura | Disponibilidad mensual | ≥ 99,95 % | Mensual, por componente. |
-| Transacción crítica | Disponibilidad mensual | ≥ 99,9 % | Mensual, de extremo a extremo. |
+| Infraestructura | Disponibilidad mensual | ≥ 99,95 \ | Mensual, por componente. |
+| Transacción crítica | Disponibilidad mensual | ≥ 99,9 \ | Mensual, de extremo a extremo. |
 | Despacho 05:30–07:00 | Indisponibilidad en la ventana | Cero | Diaria. |
 | Recuperación | RTO / RPO de servicios críticos | ≤ 4 h / ≤ 15 min | Prueba semestral. |
 | Incidentes críticos / altos | Respuesta y resolución, 24×7×365 | 15 min y 4 h / 1 h y 8 h | Por incidente; informe mensual. |
@@ -369,64 +335,54 @@ El equipo de cuatro personas del CLIENTE conserva la gestión de sus sistemas y 
 
 La estrategia de apoyo mantiene los 19 actores del Subdocumento 2, Anexo 2.3, con sus nombres. El Anexo 3.I asigna a cada uno actividad, momento, responsable LafroX, indicador y respuesta ante resistencia. Los responsables son los roles de la estructura de proyecto del Subdocumento 1, sección «Estructura para Proyecto».
 
-El comité ejecutivo, presidido por la gerenta general, arbitra prioridades y aprueba estratégicamente el cierre de cada marcha blanca, sujeto al cumplimiento de las condiciones de aceptación y al acta firmada por la Contraparte Técnica. Operaciones y Calidad resuelven las tensiones entre continuidad y tratamiento sanitario. El planificador tiene influencia Alta e interés Muy Alto: participa desde el mes 1 en los talleres de reglas y valida las rutas propuestas. Bodega, preventistas, conductores y peonetas validan los flujos en sus condiciones reales de trabajo. El sindicato participa en la definición de finalidades y controles de privacidad de la telemetría operacional; su acuerdo previo se exige antes de utilizar GPS para control de jornada. Sin ese acuerdo se mantiene la telemetría de vehículo, ruta y carga con controles de privacidad y no se utiliza GPS para control de jornada. Clientes, proveedores y autoridad reciben evidencias e intercambios acordes a su función, sin obligaciones tecnológicas ajenas al caso (LafroX, 2026b, sección «Actores y Grupos de Interés» y Anexos 2.2 y 2.3).
+El comité ejecutivo, presidido por la gerenta general, arbitra prioridades y aprueba estratégicamente el cierre de cada marcha blanca, sujeto al cumplimiento de las condiciones de aceptación y al acta firmada por la Contraparte Técnica. Operaciones y Calidad resuelven las tensiones entre continuidad y tratamiento sanitario. El planificador tiene influencia Alta e interés Muy Alto: participa desde el mes 1 en los talleres de reglas y valida las rutas propuestas. Bodega, preventistas, conductores y peonetas validan los flujos en sus condiciones reales de trabajo. El sindicato participa en la definición de finalidades y controles de privacidad de la telemetría operacional; su acuerdo previo se exige antes de utilizar GPS para control de jornada. Sin ese acuerdo se mantiene la telemetría de vehículo, ruta y carga con controles de privacidad y no se utiliza GPS para control de jornada. Clientes, proveedores y autoridad reciben evidencias e intercambios acordes a su función, sin obligaciones tecnológicas ajenas al caso (LafroX, 2026c, sección «Actores y Grupos de Interés»; LafroX, 2026a, anexos 2.2 y 2.3).
 
 La gerenta general advirtió que un proyecto que pase por encima de las personas será rechazado sin decirlo. Por eso la adopción se mide por perfil y por ola, y una ola no avanza si sus usuarios no están certificados.
 
 La estrategia por grupo responde a las resistencias concretas que registra el caso:
 
 - **Planificador de rutas.** Su conocimiento es el activo que la solución debe preservar. Los talleres de los meses 1 a 3 convierten sus reglas en parámetros que él valida, y la ruta propuesta se compara con la suya antes de reemplazarla. Se reconoce formalmente su aporte.
-
 - **Personal con 20 o 30 años en la compañía.** El acompañamiento es individual y en su puesto. Sus observaciones sobre la ruta, la bodega o la caja se registran y se responden, porque el caso advierte que un proyecto que pase por encima de ellos será rechazado.
-
 - **Preparadores con rotación de 38 %.** La interfaz se aprende en dos horas en el puesto, con un tutor por turno, de modo que la rotación no degrade la operación.
-
 - **Conductores de transportistas.** No son trabajadores de la compañía y rotan sin aviso. Se incorporan en el andén con un mecanismo de identificación rápido, acordado con cada una de las diez empresas.
-
 - **Sindicato.** No se instalan cámaras en cabina. El GPS para control de jornada requiere acuerdo previo con el sindicato. La telemetría operacional gestiona vehículo, ruta y carga con controles de privacidad, considerando que la ubicación del vehículo puede revelar la del conductor.
-
 - **Clientes del canal tradicional.** Conservan su forma de compra y pago; reciben comprobante y evidencia sin necesitar teléfono ni internet.
 
 ## Referencias
 
-Las citas indican artículo, capítulo, sección o código de cada fuente.
+Las Bases se citan en el texto con sus títulos abreviados: *Bases Administrativas* y *Bases Técnicas Transversales*. Los artículos, capítulos y códigos identifican las disposiciones utilizadas. Las claves LafroX 2026a–c se conservan conforme a las citas del cuerpo y los anexos.
 
-- Distribuidora Puelche S.A. (2026a). *Bases Administrativas de Licitación N.º TFEP-01/2026*.
-
-- Distribuidora Puelche S.A. (2026b). *Bases Técnicas Transversales de Licitación N.º TFEP-01/2026*.
-
-- Distribuidora Puelche S.A. (2026c). *Caso 02: Logística*.
-
-- Distribuidora Puelche S.A. (2026d). *Aclaraciones de la Licitación N.º TFEP-01/2026*.
-
-- LafroX. (2026a). *Subdocumento 1: Presentación de la empresa*.
-
-- LafroX. (2026b). *Subdocumento 2: Comprensión del problema y de la necesidad*, y sus anexos 2.1 a 2.3.
+Distribuidora Puelche S.A. (2026a). *Bases Administrativas de Licitación N.o TFEP-01/2026*.
+Distribuidora Puelche S.A. (2026b). *Bases Técnicas Transversales de Licitación N.o TFEP-01/2026*.
+Distribuidora Puelche S.A. (2026c). *Caso 02: Logística*.
+Distribuidora Puelche S.A. (2026d). *Aclaraciones de la Licitación N.o TFEP-01/2026*.
+LafroX. (2026a). *Anexos del Subdocumento 02*.
+LafroX. (2026b). *Subdocumento 1: Presentación de la empresa*.
+LafroX. (2026c). *Subdocumento 2: Comprensión del problema y de la necesidad*.
 
 ## Declaración de uso de IA
 
-En cumplimiento de la sección 7.2 de las Aclaraciones de la licitación, la tabla siguiente declara el uso de herramientas de inteligencia artificial en este subdocumento, con la revisión humana de cada parte. La declaración se consolida en el Formulario A-6.
+En cumplimiento de la sección 7.2 de las Aclaraciones de la licitación, la Tabla 3.6 declara el uso de herramientas de inteligencia artificial por sección, anexo y formulario asociado. Esta declaración se consolida en el Formulario A-6. La columna de revisión humana identifica lo comprobado cuando el equipo documenta esa revisión; «No documentada» no acredita que se haya realizado.
 
 **Tabla 3.6 — Declaración de uso de IA. Fuente: registro del equipo.**
 
 | Sección | Herramienta | Finalidad del uso | Nivel en texto | Nivel en diagramas | Revisión humana (quién y qué verificó) |
 | --- | --- | --- | --- | --- | --- |
-| 3.1 | Codex; Claude Code | Contraste con las Bases y redacción. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
-| 3.2 | Codex; Claude Code | Contraste con las Bases y los Subdocumentos 1 y 2; redacción. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
-| 3.3 | Codex; Claude Code | Descripción estructurada de las figuras. | Alto | Alto | [[REVISIÓN HUMANA]] |
-| 3.4 | Codex; Claude Code | Redacción de implementación, implantación y operación. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
-| Anexo 3.A | Codex; Claude Code | Conversión del catálogo funcional. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
-| Anexo 3.B | Codex; Claude Code | Conversión del catálogo no funcional. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
-| Anexo 3.C | Codex; Claude Code | Redacción de supuestos. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
-| Anexo 3.D | Codex; Claude Code | Redacción de registros. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
-| Anexo 3.E | Codex; Claude Code | Redacción de registros. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
-| Anexo 3.F | Codex; Claude Code | Redacción de registros. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
-| Anexo 3.G | Codex; Claude Code | Redacción de reglas. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
-| Anexo 3.H | Codex; Claude Code | Redacción de consultas. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
-| Anexo 3.I | Codex; Claude Code | Redacción de la participación de actores. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
-| Anexo 3.J | Codex; Claude Code | Redacción de criterios de aceptación. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
-| Anexo 3.K | Codex; Claude Code | Glosario. | Medio | Ninguno | [[REVISIÓN HUMANA]] |
-| Formulario T-12 | Codex; Claude Code | Generación de la matriz de cumplimiento. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
-| 3.3 y Anexo 3.H: RNG-04 y RNG-15 | Claude Code | Regla provisoria de excursión térmica y promesa de pedidos urbanos desde las 14:00. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
-| Formulario T-12: EDT y pruebas | Claude Code | Asignación de paquetes y corrección de pruebas. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
-| Correcciones de coherencia | Codex | Corrección de continuidad/reversión, ERP/DTE y uso auxiliar del papel | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| 3.1 | Codex; Claude Code | Contraste con las Bases y redacción. | Alto | Ninguno | No documentada. |
+| 3.2 | Codex; Claude Code | Contraste con las Bases y los Subdocumentos 1 y 2; redacción. | Alto | Ninguno | No documentada. |
+| 3.3 | Codex; Claude Code | Descripción estructurada de las figuras. | Alto | Alto | No documentada. |
+| 3.4 | Codex; Claude Code | Redacción de implementación, implantación y operación. | Alto | Ninguno | No documentada. |
+| Anexo 3.A | Codex; Claude Code | Conversión del catálogo funcional. | Alto | Ninguno | No documentada. |
+| Anexo 3.B | Codex; Claude Code | Conversión del catálogo no funcional. | Alto | Ninguno | No documentada. |
+| Anexo 3.C | Codex; Claude Code | Redacción de supuestos. | Alto | Ninguno | No documentada. |
+| Anexo 3.D | Codex; Claude Code | Redacción de registros. | Alto | Ninguno | No documentada. |
+| Anexo 3.E | Codex; Claude Code | Redacción de registros. | Alto | Ninguno | No documentada. |
+| Anexo 3.F | Codex; Claude Code | Redacción de registros. | Alto | Ninguno | No documentada. |
+| Anexo 3.G | Codex; Claude Code | Redacción de reglas. | Alto | Ninguno | No documentada. |
+| Anexo 3.H | Codex; Claude Code | Redacción de consultas. | Alto | Ninguno | No documentada. |
+| Anexo 3.I | Codex; Claude Code | Redacción de la participación de actores. | Alto | Ninguno | No documentada. |
+| Anexo 3.J | Codex; Claude Code | Redacción de criterios de aceptación. | Alto | Ninguno | No documentada. |
+| Anexo 3.K | Codex; Claude Code | Glosario. | Medio | Ninguno | No documentada. |
+| Formulario T-12 | Codex; Claude Code | Generación de la matriz de cumplimiento. | Alto | Ninguno | No documentada. |
+| 3.2 y Anexo 3.G (7-10-2026) | Claude Code | Propuestas para RNG-04 y RNG-15; los parámetros térmicos de RNG-04 siguen sujetos a validación de Calidad. | Alto | Ninguno | No documentada. |
+| 3.3 y 3.4 (9-10-2026) | Codex | Revisión y redacción de continuidad, reversión, actores, módulos y referencias. | Alto | Ninguno | No documentada. |
