@@ -6,29 +6,29 @@
 
 - [Anexos del Subdocumento 4](#anexos-del-subdocumento-4)
 - [Catálogo de anexos y trazabilidad](#catálogo-de-anexos-y-trazabilidad)
-- [Anexo 4-A — Catálogo de eventos canónicos](#anexo-4-a-catálogo-de-eventos-canónicos)
-- [Anexo 4-B — Gobierno de la integración](#anexo-4-b-gobierno-de-la-integración)
-- [Anexo 4-C — Escenarios de carga masiva](#anexo-4-c-escenarios-de-carga-masiva)
-- [Anexo 4-D — Matriz de los doce módulos](#anexo-4-d-matriz-de-los-doce-módulos)
-- [Anexo 4-E — Trazabilidad funcional](#anexo-4-e-trazabilidad-funcional)
-- [Anexo 4-F — Mapa de límites de contexto](#anexo-4-f-mapa-de-límites-de-contexto)
-- [Anexo 4-G — Catálogo de interfaces internas](#anexo-4-g-catálogo-de-interfaces-internas)
-- [Anexo 4-H — Catálogo de interfaces externas](#anexo-4-h-catálogo-de-interfaces-externas)
-- [Anexo 4-I — Volumen de mensajes](#anexo-4-i-volumen-de-mensajes)
-- [Anexo 4-J — Funciones sin conexión](#anexo-4-j-funciones-sin-conexión)
-- [Anexo 4-K — Reglas de reconciliación](#anexo-4-k-reglas-de-reconciliación)
-- [Anexo 4-L — Decisiones del numeral 16.1](#anexo-4-l-decisiones-del-numeral-161)
-- [Anexo 4-M — Verificación de continuidad lógica](#anexo-4-m-verificación-de-continuidad-lógica)
-- [Anexo 4-N — Correspondencia de componentes lógicos](#anexo-4-n-correspondencia-de-componentes-lógicos)
-- [Anexo 4-O — Registro de decisiones de arquitectura](#anexo-4-o-registro-de-decisiones-de-arquitectura)
-- [Anexo 4-P — Tecnologías, soporte y actualización](#anexo-4-p-tecnologías-soporte-y-actualización)
-- [Anexo 4-Q — Modelado de amenazas lógicas](#anexo-4-q-modelado-de-amenazas-lógicas)
-- [Anexo 4-R — Controles de seguridad y evidencia](#anexo-4-r-controles-de-seguridad-y-evidencia)
-- [Anexo 4-S — Puntos de vista y correspondencias](#anexo-4-s-puntos-de-vista-y-correspondencias)
-- [Anexo 4-T — Desempeño y aceptación lógica](#anexo-4-t-desempeño-y-aceptación-lógica)
-- [Anexo 4-U — Prueba de entrega, guía y acuses](#anexo-4-u-prueba-de-entrega-guía-y-acuses)
-- [Anexo 4-V — Protocolos de aceptación](#anexo-4-v-protocolos-de-aceptación)
-- [Anexo 4-W — Memoria de cálculo del dimensionamiento](#anexo-4-w-memoria-de-cálculo-del-dimensionamiento)
+- [Anexo 4-A — Catálogo de eventos canónicos](#anx:A)
+- [Anexo 4-B — Gobierno de la integración](#anx:B)
+- [Anexo 4-C — Escenarios de carga masiva](#anx:C)
+- [Anexo 4-D — Matriz de los doce módulos](#anx:D)
+- [Anexo 4-E — Trazabilidad funcional](#anx:E)
+- [Anexo 4-F — Mapa de límites de contexto](#anx:F)
+- [Anexo 4-G — Catálogo de interfaces internas](#anx:G)
+- [Anexo 4-H — Catálogo de interfaces externas](#anx:H)
+- [Anexo 4-I — Volumen de mensajes](#anx:I)
+- [Anexo 4-J — Funciones sin conexión](#anx:J)
+- [Anexo 4-K — Reglas de reconciliación](#anx:K)
+- [Anexo 4-L — Decisiones del numeral 16.1](#anx:L)
+- [Anexo 4-M — Verificación de continuidad lógica](#anx:M)
+- [Anexo 4-N — Correspondencia de componentes lógicos](#anx:N)
+- [Anexo 4-O — Registro de decisiones de arquitectura](#anx:O)
+- [Anexo 4-P — Tecnologías, soporte y actualización](#anx:P)
+- [Anexo 4-Q — Modelado de amenazas lógicas](#anx:Q)
+- [Anexo 4-R — Controles de seguridad y evidencia](#anx:R)
+- [Anexo 4-S — Puntos de vista y correspondencias](#anx:S)
+- [Anexo 4-T — Desempeño y aceptación lógica](#anx:T)
+- [Anexo 4-U — Prueba de entrega, guía y acuses](#anx:U)
+- [Anexo 4-V — Protocolos de aceptación](#anx:V)
+- [Anexo 4-W — Memoria de cálculo del dimensionamiento](#anx:42A)
 - [4-W.1 Entradas, requisitos, parámetros y supuestos](#4-w1-entradas-requisitos-parámetros-y-supuestos)
 - [4-W.2 Dimensiones 1–3: transacciones por segundo](#4-w2-dimensiones-13-transacciones-por-segundo)
 - [4-W.3 Dimensiones 4–6: personas, concurrencia y dispositivos](#4-w3-dimensiones-46-personas-concurrencia-y-dispositivos)
@@ -42,7 +42,7 @@
 - [4-W.11 Umbrales de quiebre y cuello de botella](#4-w11-umbrales-de-quiebre-y-cuello-de-botella)
 - [4-W.12 Pruebas de carga, estrés y operación](#4-w12-pruebas-de-carga-estrés-y-operación)
 - [Referencias](#referencias)
-- [Declaración de uso de IA](#declaración-de-uso-de-ia)
+
 
 # Anexos del Subdocumento 4
 
@@ -258,6 +258,10 @@ Fuente: elaboración propia a partir de RT-02.06 y RT-03.12 (Bases Técnicas Tra
 
 **Parámetros comunes del catálogo**
 
+##### Nombres de servicios y campos de los contratos
+
+En la explicación de 4.1, los servicios de negocio corresponden a la ruta `/v1`, y el servicio de sincronización, a `/sync/v1`. Son superficies versionadas de las APIs, no enlaces a secciones del documento. El identificador único del evento se denomina `event_id`; su fecha y hora, `occurred_at`; el sitio, `site_id`; y el identificador de correlación, `transaction_id`. El UUID de cada operación se conserva en todos sus reintentos. El catálogo de eventos del Anexo 4-A mantiene los nombres canónicos de productores y mensajes.
+
 Los contratos distinguirán aceptación durable de procesamiento concluido. Como valores iniciales de diseño, las consultas interactivas tendrán espera máxima de 5 segundos y las transferencias de lotes, 30 segundos; un timeout produce estado incierto, nunca aprobación. Los reintentos conservan UUID, aplican espera exponencial con dispersión y máximo de 5 minutos entre intentos. Los errores de validación pasan a excepción sin reintento automático. El agotamiento del presupuesto de intentos deriva a una cola de errores con alerta; no elimina la operación. Estos parámetros se ajustarán con la prueba de carga sin relajar los tiempos de negocio exigidos.
 
 ##### INT-01. Preventa y consultas — M3
@@ -350,7 +354,7 @@ Modo síncrono para consultas y asíncrono para cálculos extensos. Volumen norm
 
 Modo asíncrono mediante trabajos Laravel y SNS/API de canal. Dos avisos por entrega: 2.800/5.200 mensajes/día (1.400/2.600 entregas). Contraparte requerida 24×7; las franjas permitidas de contacto se parametrizan por canal y cliente. Timeout de 10 segundos; reintento con clave de aviso y vigencia. Un aviso de ETA vencido se descarta con registro, no se envía al día siguiente. El estado enviado se distingue de recibido y no condiciona el registro de entrega. Falla persistente produce aviso operacional y canal alternativo acordado.
 
-Correo, SMS/WhatsApp y aviso en portal aplican la separación de comunicaciones y la baja de 4.1.6.2 del Subdocumento 4 (RT-16.25; Bases Técnicas Transversales, cap. 16, p. 30). Los avisos transaccionales necesarios para el servicio no admiten baja comercial ni contenido promocional. Los mensajes comerciales incluyen identificación del remitente y una vía expedita de suspensión en cada canal; el correo incorpora asunto y dirección válida para solicitarla. La preferencia conserva destinatario, alcance, canal, fecha y origen de la baja; el trabajador la verifica antes de cada envío y reintento y suprime desde la solicitud toda comunicación comercial alcanzada, incluidas las que están en cola. La aceptación prueba cada vía de suspensión, su registro y el bloqueo de reintentos, sin impedir los avisos necesarios del servicio (Ley N.º 19.496, 1997, art. 28 B).
+Correo, SMS/WhatsApp y aviso en portal aplican la separación de comunicaciones y la baja de 4.1.6.2 del Subdocumento 4 (RT-16.25; Bases Técnicas Transversales, cap. 16, p. 30). Los avisos transaccionales necesarios para el servicio no admiten baja comercial ni contenido promocional. Los mensajes comerciales incluyen identificación del remitente y una vía expedita de suspensión en cada canal; el correo incorpora asunto y dirección válida para solicitarla. La baja desactiva la preferencia del cliente para todas las versiones de las plantillas comerciales y queda registrada en la auditoría existente; el trabajador la verifica antes de cada envío y reintento y suprime desde la solicitud toda comunicación comercial alcanzada, incluidas las que están en cola. La aceptación prueba cada vía de suspensión, su registro y el bloqueo de reintentos, sin impedir los avisos necesarios del servicio (Ley N.º 19.496, 1997, art. 28 B).
 
 ##### INT-15. Telemetría de flota — M12
 
@@ -590,7 +594,7 @@ Los siguientes 37 identificadores complementan los doce módulos: el inventario 
 
 **Correspondencia de actores y permisos del sistema**
 
-La Tabla [A.16](LAFROX-Subdocumento4-Anexos.md#tab:actores-permisos) realiza el catálogo de quince actores del apartado 3.4.2.1 del Subdocumento 3. Cada acción se autoriza por separado sobre el ámbito indicado. Ni el cargo ni el acceso a una consola conceden todos los permisos de un módulo.
+La Tabla [A.16](LAFROX-Subdocumento4-Anexos.md#tab:actores-permisos) realiza el catálogo de quince actores del apartado 3.4.2 del Subdocumento 3. Cada acción se autoriza por separado sobre el ámbito indicado. Ni el cargo ni el acceso a una consola conceden todos los permisos de un módulo.
 
 <a id="tab:actores-permisos"></a>
 
@@ -614,7 +618,7 @@ La Tabla [A.16](LAFROX-Subdocumento4-Anexos.md#tab:actores-permisos) realiza el 
 | Gerente de Operaciones | Consola operacional; M2/M4/M5/M6 | Supervisar despacho y excepciones | Sitio; no omite guía ni Calidad | 1 |
 | Jefa de Bodega | Consola de bodega; M1/M2/M5/M8 | Recepción, inventario, FEFO, preparación y retornos | Sitio; ajustes justificados | 1 |
 
-Fuente: elaboración propia a partir del apartado 3.4.2.1 y del Anexo 3.I del Subdocumento 3.
+Fuente: elaboración propia a partir del apartado 3.4.2 y del Anexo 3.I del Subdocumento 3.
 
 Recepción, despacho, catálogo, abastecimiento y Tesorería son funciones asignadas a personas nominadas con permisos específicos dentro de estos perfiles autorizados del CLIENTE. La función de abastecimiento aprueba la sugerencia de reposición de M2 sin crear un actor adicional. AL-ACT-01 del Anexo 4-V verifica cada fila con una operación permitida y una denegada.
 
@@ -795,7 +799,7 @@ Fuente: elaboración propia a partir de RT-02.04 (Bases Técnicas Transversales,
 **ADR-10. Plataforma on-premise: virtualización y almacenamiento**
 
 <a id="sub:adr-10"></a>
-**Decisión adoptada.** Talca usa tres nodos Proxmox de 16 núcleos y 64 GB cada uno, arranque M.2 en RAID 1, dos NVMe Ceph por nodo sin RAID y doble fuente; Ceph usa réplica `size`=3, `min_size`=2 y tres monitores. El NAS tiene doble fuente, RAID 6 y WORM. Concepción y cada cross-docking usan un par de equipos idénticos, uno activo y otro en espera, con réplica sincrónica de PostgreSQL.
+**Decisión adoptada.** Talca usa tres nodos Proxmox de 16 núcleos y 64 GB cada uno, arranque M.2 en RAID 1, dos NVMe Ceph por nodo sin RAID y doble fuente; Ceph usa réplica `size`=3, `min_size`=2 y tres monitores. El NAS tiene doble fuente, RAID 6 y WORM. Concepción y cada cross-docking usan un par de equipos idénticos, uno activo y otro en espera, con réplica sincrónica de PostgreSQL. La promoción exige exclusión comprobada del escritor anterior y el retorno se realiza como réplica, conforme a 4.2.4.3; perder ambas redes no autoriza por sí solo la promoción.
 
 **Alternativas evaluadas.** Ceph sobre RAID 10 duplica protección y reduce capacidad; un almacenamiento sin quórum pierde tolerancia a nodo. Un equipo único por sitio, aun con RAID y doble fuente, no tolera la falla del equipo, y un clúster Proxmox de dos nodos exige un tercer voto de quórum que esos sitios no tienen.
 
@@ -990,6 +994,14 @@ Fuente: elaboración propia a partir de RT-02.04 (Bases Técnicas Transversales,
 ## Anexo 4-P — Tecnologías, soporte y actualización
 
 <a id="anx:P"></a>
+
+Este anexo relaciona los nombres funcionales con los servicios técnicos y declara, por tecnología, su versión, soporte y política de actualización.
+
+##### Correspondencia entre nombres funcionales y técnicos
+
+El inventario de servicios AWS comprende CloudFront, AWS WAF, AWS Shield Advanced, ALB, Network Load Balancer, API Gateway, Verified Access, Aurora, ElastiCache, DynamoDB, S3, Redshift Serverless, ECS Fargate, Lambda (solo como autorizador), Route 53, Secrets Manager, Systems Manager, KMS, IAM, Organizations, IAM Identity Center, CloudWatch, Transit Gateway, NAT Gateway, VPC Endpoints, Site-to-Site VPN, SQS, SNS, AWS Backup, GuardDuty, Security Hub, Security Lake, Macie, Inspector, Config, Database Migration Service, Glue, QuickSight, Elastic Container Registry, CodeBuild, Control Tower, CloudTrail e IoT Core+Greengrass.
+
+El perfil local de bodega se identifica técnicamente como `wms_only`; el servicio de integración con el ERP, como `erp-sync`; el agente de transferencia del sitio, como *shipper*; y la bandeja transaccional de salida, como *outbox*. La separación interna de dominio, aplicación, infraestructura y acceso HTTP corresponde a `Domain`, `Application`, `Infrastructure` y `Http`, respectivamente. Composer fija las versiones de dependencias en `composer.lock` y las audita mediante `composer audit`. El versionado mayor, menor y de corrección corresponde a `major.minor.patch`. En 4.1, el registro versionado de parámetros corresponde a `mae_parametro` y `mae_parametro_version`; el registro de asignaciones, a `gob_asignacion`; el registro de auditoría, a `gob_auditoria`; y la plantilla de notificación, a `not_plantilla` con su `cuerpo_ref`. Estas equivalencias conservan los nombres de implementación utilizados por los contratos, los ADR y el despliegue de 4.2.
 
 El inventario distingue versión de referencia de una imagen exacta de producción. Cada liberación fija parches, hashes y compatibilidad en los archivos de bloqueo y SBOM; las versiones futuras se aprueban mediante pruebas antes de promoverse. La hoja de ruta cubre los 56 meses mediante actualizaciones, no suponiendo soporte de una misma versión durante todo el contrato (Bases Técnicas Transversales, numeral 1.6, pp. 4–5).
 
@@ -1276,8 +1288,6 @@ Cada fila del Anexo 4-N se prueba con una operación permitida y una denegada. S
 
 La memoria avanza desde los datos del caso hasta la capacidad de cada sitio y de la nube, en doce secciones.
 
-4-W.section
-anexo42A.section
 
 ## 4-W.1 Entradas, requisitos, parámetros y supuestos
 
@@ -1508,7 +1518,7 @@ La mesa de ayuda se dimensiona en cuatro pasos:
 
 - Dotación simultánea: (7 + 17 × 2) × 6 = 246 horas-posición semanales; 246 ÷ 42 = 5,86, pero la dotación no puede ser menor que las 7 posiciones simultáneas, por lo que la mesa requiere **7 personas**.
 
-- Capacidad máxima de la dotación: la franja que limita es la de dos agentes. Con A = λ/μ, μ = 6 contactos/hora, C = [Ac/c! × c/(c − A)] ÷ [Σ(k = 0…c − 1) Ak/k! + Ac/c! × c/(c − A)] y SL(20 s) = 1 − C × e−(cμ − λ) × 20/3.600, el límite es 2.283 contactos/mes: 2.283 × 75 % ÷ 22,14 ÷ 17 = 4,55 contactos/hora y SL = 80,0 % con dos agentes, mientras la hora cargada recibe 25,78 contactos/hora y SL = 83,5 % con siete. La hora cargada sola admitiría 2.391 contactos/mes, pero con esa demanda las otras franjas bajan a 78,3 %. El escenario base de 2.000 contactos cumple (90,6 % y 84,2 %), y el del año 3, 2.258 contactos, queda a 1,1 % del límite. Por eso, desde el mes 25, cuando empieza el tercer año del contrato y la demanda proyectada se acerca al límite, la dotación base incluye un tercer agente en las franjas valle: (7 + 17 × 3) × 6 = 348 horas-posición semanales; 348 ÷ 42 = 8,29, es decir **9 personas**, y el límite pasa a 2.391 contactos/mes, fijado por la hora cargada. Sobre ese límite se recalcula por franja.
+- Capacidad máxima de la dotación: la franja que limita es la de dos agentes. Con A = λ/μ, μ = 6 contactos/hora, C = [Ac/c! × c/(c − A)] ÷ [Σ(k = 0…c − 1) Ak/k! + Ac/c! × c/(c − A)] y SL(20 s) = 1 − C × e−(cμ − λ) × 20/3.600, el límite es 2.283 contactos/mes: 2.283 × 75 % ÷ 22,14 ÷ 17 = 4,55 contactos/hora y SL = 80,0 % con dos agentes, mientras la hora cargada recibe 25,78 contactos/hora y SL = 83,5 % con siete. La hora cargada sola admitiría 2.391 contactos/mes, pero con esa demanda las otras franjas bajan a 78,3 %. El escenario base de 2.000 contactos cumple (90,6 % y 84,2 %), y el del año 3, 2.258 contactos, queda a 1,1 % del límite. Por eso, desde el mes 25, cuando empieza el tercer año del contrato y la demanda proyectada se acerca al límite, la dotación base incluye un tercer agente en las franjas valle: (7 + 17 × 3) × 6 = 348 horas-posición semanales; 348 ÷ 40 = 8,70 (jornada vigente en ese período), es decir **9 personas**, y el límite pasa a 2.391 contactos/mes, fijado por la hora cargada. Sobre ese límite se recalcula por franja.
 
 La cobertura 24×7 de septiembre y diciembre requiere, además, al menos una posición de mesa en las horas 22:00–04:00 de lunes a sábado y durante los domingos: 6 × 6 + 24 = 60 horas-posición semanales; 60 ÷ 42 = 1,43, por lo que se agregan **2 personas** y la mesa peak queda en 9. Un NOC y un SOC de una posición cada uno requieren 2 × (168 ÷ 42) = **8 personas**; desde el 26-04-2028 requieren 2 × 5 = **10 personas**, porque 168 ÷ 40 = 4,2 se redondea hacia arriba a 5 personas por posición. A 42 horas semanales, la dotación total es **15 personas en operación normal y 17 en septiembre/diciembre**; desde el 26-04-2028, a 40 horas semanales, es **17 en operación normal y 19 en peak**. Desde el mes 25, con el tercer agente de la mesa (9 personas, 11 en peak), la dotación total es **19 en operación normal y 21 en peak**. Las funciones NOC/SOC pueden ser subcontratadas conforme a RT-21.01 (Bases Técnicas Transversales, cap. 21, p. 35) y RT-11.17 (Bases Técnicas Transversales, cap. 11, p. 24).
 
@@ -1624,6 +1634,12 @@ Las fuentes citadas en este documento se listan a continuación en formato APA 7
 
 - Angular. (2026b). *Version compatibility*. <https://angular.dev/reference/versions>
 
+- Distribuidora Puelche S.A. (2026a). *Bases Administrativas de Licitación N.º TFEP-01/2026*.
+
+- Distribuidora Puelche S.A. (2026b). *Bases Técnicas Transversales de Licitación N.º TFEP-01/2026*.
+
+- Distribuidora Puelche S.A. (2026c). *Caso 02: Logística. Especificaciones del problema y operación de Distribuidora Puelche S.A.* (Licitación N.º TFEP-01/2026).
+
 - International Organization for Standardization. (2022a). *ISO/IEC/IEEE 42010:2022: Software, systems and enterprise—Architecture description*. <https://www.iso.org/standard/74393.html>
 
 - International Organization for Standardization. (2022b). *ISO/IEC 27001:2022*. <https://www.iso.org/standard/27001>
@@ -1632,21 +1648,15 @@ Las fuentes citadas en este documento se listan a continuación en formato APA 7
 
 - Laravel. (2026). *Release notes*. <https://laravel.com/framework/docs/releases>
 
-- Ley N.° 21.719. (2024). *Regula la protección y el tratamiento de los datos personales y crea la Agencia de Protección de Datos Personales*. Diario Oficial de la República de Chile.
-
 - Ley N.º 19.496. (1997). *Establece normas sobre protección de los derechos de los consumidores*. Diario Oficial de la República de Chile. <https://www.bcn.cl/leychile/navegar?idNorma=61438>
+
+- Ley N.º 21.719. (2024). *Regula la protección y el tratamiento de los datos personales y crea la Agencia de Protección de Datos Personales*. Diario Oficial de la República de Chile.
 
 - National Institute of Standards and Technology. (2020). *Zero trust architecture* (Special Publication 800-207). U.S. Department of Commerce. <https://doi.org/10.6028/NIST.SP.800-207>
 
-- PHP. (2026). *Supported versions*. <https://www.php.net/supported-versions.php>
-
 - OWASP Foundation. (s. f.). *The SAMM model*. <https://owaspsamm.org/model/>
 
-- Distribuidora Puelche S.A. (2026c). *Caso 02: Logística. Especificaciones del problema y operación de Distribuidora Puelche S.A.* (Licitación N.º TFEP-01/2026).
-
-- Distribuidora Puelche S.A. (2026b). *Bases Técnicas Transversales de Licitación N.º TFEP-01/2026*.
-
-- Distribuidora Puelche S.A. (2026a). *Bases Administrativas de Licitación N.º TFEP-01/2026*.
+- PHP. (2026). *Supported versions*. <https://www.php.net/supported-versions.php>
 
 - PostgreSQL. (2026). *Versioning policy*. <https://www.postgresql.org/support/versioning/>
 
@@ -1659,57 +1669,3 @@ Las fuentes citadas en este documento se listan a continuación en formato APA 7
 - Servicio de Impuestos Internos. (s. f.-b). *Formato de recibos*. <https://www.sii.cl/factura_electronica/desc_19983.pdf>
 
 - Servicio de Impuestos Internos. (s. f.-c). *Contingencia de emisión*. <https://www.sii.cl/preguntas_frecuentes/factura_electronica/001_003_6624.htm>
-
-## Declaración de uso de IA
-
-En cumplimiento de la sección 7.2 de las Aclaraciones de la licitación, la tabla siguiente declara el uso de herramientas de inteligencia artificial en estos anexos, con la revisión humana de cada parte. La declaración se consolida en el Formulario A-6.
-
-**Tabla A.37 — Uso de IA en los anexos lógicos**
-
-<a id="tab:uso-ia-anexos"></a>
-
-| Sección | Herramienta | Finalidad del uso | Nivel en texto | Nivel en diagramas | Revisión humana (quién y qué verificó) |
-| --- | --- | --- | --- | --- | --- |
-| A | Codex | Eventos canónicos. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
-| B | Codex | Gobierno de integración. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
-| C | Codex | Carga masiva. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
-| D | Codex | Módulos y responsabilidades. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
-| E | Codex | Trazabilidad funcional. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
-| F | Codex | Límites de contexto. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
-| G | Codex | Interfaces internas. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
-| H | Codex | Interfaces externas; separación de avisos transaccionales y comerciales, baja y control de reintentos en INT-11. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
-| I | Codex | Cálculos de volumen. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
-| J | Codex | Funciones offline. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
-| K | Codex | Reconciliación. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
-| L | Codex | Decisiones del caso. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
-| M | Codex | Protocolos de aceptación. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
-| N | Codex | Correspondencia lógica. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
-| O | Codex | Especificación y trazabilidad. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
-| P | Codex | Especificación y trazabilidad; matriz de navegadores, versiones y actualización de la Tabla A.19. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
-| Q | Codex | Especificación y trazabilidad. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
-| R | Codex | Especificación y trazabilidad; evaluación inicial y anual de madurez con OWASP SAMM. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
-| S | Codex | Especificación y trazabilidad. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
-| T | Codex | Especificación y trazabilidad. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
-| U | Codex | Especificación y trazabilidad. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
-| V | Codex | Especificación y trazabilidad. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
-| 4.1.1 | OpenAI Codex | Especificaciones de tecnologías de software a utilizar | Alto | No aplica | [[REVISIÓN HUMANA]] |
-| 4.1.2 | OpenAI Codex | Principios de integracion | Alto | No aplica | [[REVISIÓN HUMANA]] |
-| 4.1.3 | OpenAI Codex | Capas de arquitectura; navegación, diseño, preferencias, vista ligera, parámetros, flujos, auditoría y alertas históricas. | Alto | Alto, con modelo del equipo | [[REVISIÓN HUMANA]] |
-| 4.1.4 | OpenAI Codex | Modulos funcionales y limites de contexto | Alto | No aplica | [[REVISIÓN HUMANA]] |
-| 4.1.5 | OpenAI Codex | Modelo de datos conceptual | Alto | No aplica | [[REVISIÓN HUMANA]] |
-| 4.1.6 | OpenAI Codex | Catálogo de interfaces; administración de plantillas y comprobantes HTML. | Alto | No aplica | [[REVISIÓN HUMANA]] |
-| 4.1.7 | OpenAI Codex | Detalle de tecnologias seleccionadas | Alto | No aplica | [[REVISIÓN HUMANA]] |
-| 4.1.8 | OpenAI Codex | Implantacion progresiva del backend laravel | Alto | No aplica | [[REVISIÓN HUMANA]] |
-| 4.1.9 | OpenAI Codex | Ambientes del ciclo de vida; simulación de cambios de parámetros en QA. | Alto | No aplica | [[REVISIÓN HUMANA]] |
-| 4.1.10 | OpenAI Codex | Patrones de diseño y continuidad | Alto | No aplica | [[REVISIÓN HUMANA]] |
-| 4.1.11 | OpenAI Codex | Registro de decisiones de arquitectura | Alto | No aplica | [[REVISIÓN HUMANA]] |
-| 4.1.12 | OpenAI Codex | Puntos únicos de falla y riesgos residuales | Alto | No aplica | [[REVISIÓN HUMANA]] |
-| 4.1.13 | OpenAI Codex | Comparacion de alternativas arquitectonicas | Alto | No aplica | [[REVISIÓN HUMANA]] |
-| 4.1.14 | OpenAI Codex | Relacion entre las vistas de arquitectura | Alto | No aplica | [[REVISIÓN HUMANA]] |
-| 4.1.15 | OpenAI Codex | Funciones disponibles y no disponibles sin conexion | Alto | No aplica | [[REVISIÓN HUMANA]] |
-| 4.1.16 | OpenAI Codex | Reglas de reconciliación | Alto | No aplica | [[REVISIÓN HUMANA]] |
-| 4.1.17 | OpenAI Codex | Articulacion entre prueba de entrega dte y acuse | Alto | No aplica | [[REVISIÓN HUMANA]] |
-| 4.1.18 | OpenAI Codex | Identidad y ciclo de vida de conductores externos | Alto | No aplica | [[REVISIÓN HUMANA]] |
-| 4.1.19 | OpenAI Codex | Primer cuello de botella bajo la carga de septiembre | Alto | No aplica | [[REVISIÓN HUMANA]] |
-| 4.1.20 | OpenAI Codex | Decisiones del numeral 16 1 del caso | Alto | No aplica | [[REVISIÓN HUMANA]] |
-| 4.1.21 | OpenAI Codex | Condiciones y supuestos de diseño | Alto | No aplica | [[REVISIÓN HUMANA]] |

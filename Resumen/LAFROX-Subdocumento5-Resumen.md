@@ -4,6 +4,8 @@
 
 ## Para qué sirve
 
+La ficha versionada conserva tipo y rango térmico de origen. Antes de aprobación de Calidad, una regla PREVENTIVA_FICHA bloquea a la primera lectura válida fuera de rango; ausencia de parámetros mantiene el lote retenido. Plantillas, preferencias e intentos comparten cuatro canales y la baja comercial persiste entre versiones.
+
 Explica qué información registra la solución, quién puede modificarla, cómo se conserva y cómo se migra desde los sistemas actuales. Su objetivo es que lotes, pedidos, entregas y cobros mantengan una historia verificable.
 
 ## El modelo en lenguaje de negocio

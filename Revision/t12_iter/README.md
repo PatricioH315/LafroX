@@ -13,8 +13,8 @@ Revisión exhaustiva, fila por fila, de `03_esquema_solucion_alcance/LAFROX-Form
 | `B3_informe.md` | RT-13 a RT-17. |
 | `B4_informe.md` | RT-18 a RT-26. |
 | `informe_coherencia.md` | Pares Parte A / Parte B con la misma materia y su estado final. **Prevalece sobre los informes de lote** cuando el estado de una fila difiere. |
-| `informe_aplicacion_7RT.md` | Primera aplicación de siete RT y RF-18.02; segunda aplicación con mínimo arrastre: 14 RT y cinco RF. **La segunda aplicación prevalece para sus 19 filas.** |
-| `propuestas_SD4_RT.md` | Decisiones actuales para 21 RT: 14 aplicados y siete no aplicados, con dato o decisión exacta pendiente. |
+| `informe_aplicacion_7RT.md` | Primera aplicación de siete RT y RF-18.02; segunda aplicación: 14 RT y cinco RF; tercera aplicación: cuatro RT y ajuste parcial de RF-18.01. **La tercera aplicación prevalece para sus cinco filas.** |
+| `propuestas_SD4_RT.md` | Decisiones actuales para 21 RT: 18 aplicados y tres no aplicados por decisión del usuario. |
 
 ## Criterios aplicados
 
@@ -26,6 +26,6 @@ Revisión exhaustiva, fila por fila, de `03_esquema_solucion_alcance/LAFROX-Form
 ## Resultado
 
 - Parte A: 197 Cumple, 69 parciales y 5 no cumple. Parte B: 215 Cumple, 106 parciales y 53 no cumple.
-- Primera aplicación: Parte A 197/69/5; Parte B 222/106/46. Segunda aplicación vigente: Parte A **199 Cumple, 69 parciales y 3 No cumple**; Parte B **236 Cumple, 106 parciales y 32 No cumple**. Se mantienen 645 filas, cinco columnas, IDs y descripciones intactos.
-- Obligatorios o «según caso» en No cumple: 32 antes de la primera aplicación, 25 después y **19 tras la segunda** (RT-16.18, 16.33, 21.02, 21.08, 21.13, 21.16, 23.05, 23.06, 24.01, 24.02, 24.04–24.06, 25.02, 25.04–25.07, 25.09). Los 14 RT de la segunda aplicación quedaron en Cumple; los siete no aplicados requieren los datos o decisiones de `propuestas_SD4_RT.md`.
+- Primera aplicación: Parte A 197/69/5; Parte B 222/106/46. Segunda aplicación: Parte A 199/69/3; Parte B 236/106/32. Tercera aplicación vigente: Parte A **199 Cumple, 69 parciales y 3 No cumple**; Parte B **240 Cumple, 106 parciales y 28 No cumple**. Se mantienen 645 filas, cinco columnas, IDs y descripciones intactos.
+- Obligatorios o «según caso» en No cumple: 32 antes de la primera aplicación, 25 después, 19 tras la segunda y **17 tras la tercera** (RT-21.02, 21.08, 21.13, 21.16, 23.05, 23.06, 24.01, 24.02, 24.04–24.06, 25.02, 25.04–25.07, 25.09). Los 18 RT aplicados de `propuestas_SD4_RT.md` están en Cumple; RT-05.24, RT-15.05 y RT-16.26 permanecen No cumple por decisión del usuario.
 - Las declaraciones faltantes de los informes de lote fueron redactadas antes de la pasada de coherencia; confirmar el estado vigente en el T-12 antes de usarlas.

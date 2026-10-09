@@ -4,6 +4,8 @@
 
 ## Para qué sirve
 
+Los anexos 5-A–5-C definen rango/ficha térmica versionados, reglas preventivas sin aprobador y distribución local con acuse. El catálogo común CORREO/SMS/WHATSAPP/AVISO_EN_PORTAL se aplica a plantillas, preferencias e intentos; la baja se identifica por cliente, finalidad, categoría y canal. La retención conserva la decisión mientras el cliente pueda ser destinatario, sin habilitar publicidad por borrar registros.
+
 Esta guía explica los 13 anexos del capítulo 5 por separado. Permite elegir el listado, protocolo o cálculo que se necesita sin recorrer todas sus tablas. Los identificadores conservan la nomenclatura del original.
 
 ## Anexo 5-A. Diccionario de datos atributo por atributo

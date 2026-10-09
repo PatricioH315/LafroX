@@ -4,6 +4,8 @@
 
 ## Para qué sirve
 
+La síntesis y 4-W.7 incluyen desde el mes 25 mesa de 9 personas (11 en peak) más NOC/SOC de 10: totales 19/21. El índice usa las anclas explícitas A–W. ADR-10 exige excluir al escritor anterior antes de promover y no autoriza promoción por pérdida de ambas redes.
+
 Esta guía explica los 23 anexos del capítulo 4 por separado. Permite elegir el listado, protocolo o cálculo que se necesita sin recorrer todas sus tablas. Los identificadores conservan la nomenclatura del original.
 
 ## Anexo 4-A — Catálogo de eventos canónicos

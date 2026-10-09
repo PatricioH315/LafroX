@@ -158,6 +158,8 @@ Cada registro de promesa tiene UUID propio como PK; version ordena sus cambios c
 
 ### 5.1.3 Maestros compartidos e identidad única
 
+La ficha de producto conserva tipo de almacenamiento, límites térmicos y referencia/versionado del documento de origen en `mae_producto` (5-A). Los límites no se deducen de un promedio ni se inventan al importar. Su publicación a cada sitio y gateway conserva versión y acuse; una ficha incompleta mantiene retenido el lote hasta contar con parámetros verificables.
+
 Un maestro tiene dueño funcional, UUID estable e historial; la integración traduce códigos externos mediante equivalencias versionadas y nunca crea identidades paralelas. Producto conserva un GTIN canónico único cuando aplica; otros GTIN/códigos se resuelven por equivalencia aprobada, sin compartir identidad sanitaria entre productos. Corregir descripción o vencimiento no cambia el identificador ni rompe historia.
 
 La Figura A5.1 del Anexo 5-M dibuja maestros, puntos, instalaciones y equivalencias. Un cliente puede tener varios puntos; sitio representa instalación operativa y no cada cliente. Comercial valida productos/clientes, Finanzas condiciones de crédito y Calidad reglas sanitarias; el módulo dueño publica la versión y las copias locales registran instante de actualización. Los conflictos de código se aíslan y concilian antes de publicar, conforme RT-05.09 y 5.2.4.
@@ -210,6 +212,8 @@ Las líneas del intento conservan asignación, lote/unidad, cantidad aceptada/re
 
 ### 5.1.7 Trazabilidad sanitaria y cadena de custodia
 
+Antes de la aprobación de Calidad, `cal_regla_termica` materializa el rango de ficha como `PREVENTIVA_FICHA`, con severidad CRITICA y duración cero. No lleva aprobador ni permite liberar: la primera lectura válida fuera de rango retiene el lote. Calidad crea después una versión APROBADA; la excursión conserva la regla y ficha efectivamente usadas, sin reinterpretación histórica (5-A, 5-B y 5-C; SD4 4.1.4.8).
+
 La Figura 5.5 relaciona evento, objetos, documentos, sensor, asociación temporal y resolución de Calidad. EPCIS 2.0 y CBV 2.0 tienen versiones separadas; perfil_evento identifica el contrato versionado de la solución descrito en 5-C (GS1, 2022a, 2022b). parent_event_id representa causalidad interna y admite NULL en raíz. epcis_parent_id identifica el contenedor de una agregación y no un evento causal.
 
 ![Figura 5.5 — Cadena de custodia de lote y de unidad logística en formato EPCIS](Diagramas/Fig_5-5_Custodia_EPCIS.png)
@@ -243,6 +247,8 @@ Un timeout de POS mantiene pago incierto: consulta, conciliación y eventual can
 <a id="sec-5-1-9"></a>
 
 ### 5.1.9 Intercambio electrónico, notificaciones y gobierno del acceso
+
+Plantillas, preferencias e intentos comparten CORREO, SMS, WHATSAPP y AVISO_EN_PORTAL. La preferencia vigente se identifica por cliente, finalidad, categoría y canal; la plantilla/versionado de referencia acredita la elección inicial, sin limitar la baja a esa edición. Antes de emitir o reintentar se comprueba la baja comercial, que persiste hasta nueva decisión expresa. Los avisos operacionales obligatorios se distinguen de los comerciales. Los atributos, nulabilidad y restricciones vigentes se especifican en 5-A–5-C; las vistas gráficas resumen sus relaciones.
 
 La Figura A5.2 de 5-M desarrolla perfil de cadena, equivalencias, mensajes/ASN, avisos, asignación de roles, auditoría y excepciones. El perfil establece esquema y campos admitidos; se conserva mensaje original, hash, identidad externa y correlación. Un reintento devuelve resultado previo sin duplicar efecto. Un código de cadena se traduce a identidad canónica; no crea cliente/producto por defecto.
 
@@ -595,13 +601,13 @@ En cumplimiento de la sección 7.2 de las Aclaraciones de la licitación, la tab
 | --- | --- | --- | --- | --- | --- |
 | 5.1.1 | Asistente de programación | Estructuración de dominios y almacenes lógicos a partir de S4 y RT-05.01 | Alto | No aplica | [[REVISIÓN HUMANA]] |
 | 5.1.2 | Asistente de programación | Redacción del modelo conceptual y construcción de las Figuras 5.1 y 5.2 | Alto | Alto | [[REVISIÓN HUMANA]] |
-| 5.1.3 | Asistente de programación | Redacción de identidad compartida y equivalencias | Alto | Alto | [[REVISIÓN HUMANA]] |
+| 5.1.3 | OpenAI Codex | Identidad compartida, equivalencias y origen/versionado del rango térmico de producto | Alto | Alto | [[REVISIÓN HUMANA]] |
 | 5.1.4 | Asistente de programación | Redacción de recepción, lote y unidad logística | Alto | Alto | [[REVISIÓN HUMANA]] |
 | 5.1.5 | Asistente de programación | Redacción de preventa, reserva y preparación | Alto | Alto | [[REVISIÓN HUMANA]] |
 | 5.1.6 | Asistente de programación | Redacción de ruta, entrega, intento y devolución | Alto | Alto | [[REVISIÓN HUMANA]] |
-| 5.1.7 | Asistente de programación | Redacción de custodia,Excursión y asociación temporal | Alto | Alto | [[REVISIÓN HUMANA]] |
+| 5.1.7 | OpenAI Codex | Custodia, excursión, asociación temporal y regla preventiva previa a aprobación | Alto | Alto | [[REVISIÓN HUMANA]] |
 | 5.1.8 | Asistente de programación | Redacción de cobranza, documentos y POD | Alto | Alto | [[REVISIÓN HUMANA]] |
-| 5.1.9 | Asistente de programación | Redacción de intercambio y gobierno del acceso | Alto | Alto | [[REVISIÓN HUMANA]] |
+| 5.1.9 | OpenAI Codex | Intercambio, gobierno del acceso, catálogo común de canales y persistencia de bajas | Alto | Alto | [[REVISIÓN HUMANA]] |
 | 5.1.10 | Asistente de programación | Redacción de telemetría, caché y objetos | Alto | Alto | [[REVISIÓN HUMANA]] |
 | 5.1.11 | Asistente de programación | Redacción del modelo dimensional de explotación | Alto | Alto | [[REVISIÓN HUMANA]] |
 | 5.1.12 | Asistente de programación | Redacción de reglas relacionales resueltas | Alto | No aplica | [[REVISIÓN HUMANA]] |

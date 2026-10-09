@@ -1,5 +1,37 @@
 # CONTEXTO DE SESIÓN
 
+## Estado vigente — 9 de octubre de 2026: correcciones y segunda revisión de coherencia SD4
+
+Por instrucción del usuario se corrigieron SD4 cuerpo/anexos/T-11, SD5 cuerpo/anexos, T-12 y los cuatro resúmenes afectados en `rama-md`, preservando cambios preexistentes. Se distinguió recuperación funcional crítica ≤4 h e histórico completo ≤8 h; promoción con exclusión comprobada y retorno como réplica; calendario sin excepciones supuestas y plazos de vulnerabilidades desde publicación/detección; dotación mes 25 de 19/21; canales comunes y bajas persistentes; ficha/rango térmico versionados y regla PREVENTIVA_FICHA sin aprobador. RT-16.02, RT-16.21 y RF-17.10 pasan a Cumple; RT-11.04 sigue parcial por la aclaración contractual pendiente. T-12 conserva sus 645 IDs y descripciones: A 200/68/3; B 242/104/28.
+
+Se retiró la figura redundante sin objeto y se renumeraron 25 figuras, con referencias coincidentes. Los trece PDF vigentes quedaron como enlaces de apertura, no falsa sintaxis de imagen; NO hay PNG/SVG actuales equivalentes y las versiones antiguas contradicen quince actores y otras reglas. Pendiente su integración gráfica compatible; no generar derivados fuera de la rama para eludir la regla exclusivamente Markdown. Índice de anexos: 23 destinos explícitos válidos; retirados tres residuos restantes y citas 3.4.2.1. Erlang C revalidado (2.283: valle 80,00 %; 2.391: peak 80,02 %, valle con tres 95,26 %); desde mes 25 cálculo a 40 h, sin cambiar personas ni HH.
+
+Informe actualizado: `Revision/revision_coherencia_SD4.md`: 10 hallazgos documentales cerrados; H03 parcial por definición formal del CLIENTE; H09 parcial por presentación gráfica. Conservadas 28 revisiones humanas pendientes en SD4. No afirmar 100 % de cierre ni ensayos ejecutados; quedaron controles de aceptación de partición/retorno y restauración. No se tocaron catálogos originales, archivos LaTeX/PDF/PNG ni se hizo commit/push. Esta nota supersede el estado de la revisión inicial de más abajo.
+
+
+## Estado vigente — 9 de octubre de 2026 (noche, final): 18 de 21 RT del SD4 aplicados
+
+Decisiones del usuario aplicadas por Codex (gpt-6.1-sol, medio) y revisadas por Claude: RT-16.33 con supuesto S-42 (al menos 15 % menos consultas asistidas de estado de entrega, saldo y documentos al cierre del primer año, línea base en marcha blanca) e indicador en SD4 4.1.3.1; RT-16.18 en Cumple por decisión del usuario (guía firmada por el ERP; XML, acuse SII y POD con hash y Object Lock seis años en 4.1.17), con la advertencia de que una marca de tiempo de registro no es un sello acreditado; RT-06.15 con paneles ciegos y sellado en 4.3.1.4; RT-15.06 con supuesto S-43 (lunes a viernes 08:00–20:00; meta de al menos 60 % menos horas de cómputo no productivo, excepción para correcciones críticas). RT-05.24, RT-15.05 y RT-16.26 quedan en No cumple por decisión del usuario. Una revisión independiente de los 25 RT agregados llevó a seis ajustes (RT-08.18, 08.19, 14.09 sin IA por D-09, 15.06, 16.25 y RF-17.06), SD3 a 43 supuestos, texto de caída en el Anexo 4-P y retiro del residuo «[1]8pt / #12pt». T-12: Parte A 199/69/3; Parte B 240/106/28. Se conservaron los cambios sin commit del usuario (coordinación MD–LaTeX en SD4, anexos y T-11). Pendiente en SD5: dominios de canal de `not_plantilla` (CORREO/WHATSAPP/AVISO_EN_PORTAAL, con errata) frente a EMAIL/SMS/PUSH. Sin commit.
+
+## Estado vigente — 9 de octubre de 2026: revisión de coherencia del SD4 tras reintento
+
+Revisión solicitada desde `rama-md`, sobre HEAD `e76e0c7` más los cambios preexistentes en SD4, anexos, T-11 y T-12. La evidencia se revalidó tras cambios externos. Informe: `Revision/revision_coherencia_SD4.md`, con doce hallazgos: criticidad/restauración 4–8 h; exclusión del escritor al promover standby; congelamientos y correcciones críticas; dotación mes 25 omitida en Tabla 33; justificaciones RT-16.02/21; canales y vigencia de bajas; fuente del rango térmico previo a aprobación; Figura 17 sin objeto; trece PDF usados como imágenes; citas a 3.4.2.1 inexistente; 23 fragmentos del índice de anexos; cinco restos del conversor. La declaración consolidada conserva 28 revisiones humanas pendientes. No se corrigieron entregables: solo informe y esta nota; sin commit/push. Figuras remotas y presentación PDF sin acreditación visual completa. Las afirmaciones de limpieza del registro anterior deben contrastarse con H12: los cinco restos siguen en la versión actual.
+
+## Estado vigente — 9 de octubre de 2026: SD4 alineado entre Markdown y LaTeX
+
+Por decisión del usuario, el MD de `04_arquitectura/` es la base y queda alineado con el LaTeX de `subdoc-4` (`9329485`). Se trajeron desde el LaTeX:
+
+- las figuras nuevas de 4.1 (general, ocho capas y cuatro complementarias, enlazadas a `9329485`), el retiro de la vista resumida y la renumeración de figuras (el T-12 cita ahora las Figuras 25 y 26);
+- el texto de 4.1.5 y de las secuencias;
+- los nombres funcionales en el cuerpo de 4.1, con sus equivalencias en los Anexos 4-G y 4-P;
+- el inventario AWS en el Anexo 4-P y las viñetas de 4.1.
+
+Hay una sola declaración de IA, al final del cuerpo; se quitaron las de los anexos y el T-11. Las referencias están en orden alfabético y sin enlaces a archivos. Se limpiaron restos del conversor.
+
+El contenido del MD (RF-10, nombres del SD3, párrafos RT del T-12, 4.2.1.2, mes 25, etc.) se trasladó al LaTeX en el worktree `../LafroX-subdoc4` (rama `subdoc-4`), por autorización expresa del usuario. Compila limpio (cuerpo de 173 p., anexos de 83 p.). Al reconvertirlo con `tex2md.py` se obtiene este MD, salvo artefactos del conversor. El registro está en `../LafroX-subdoc4/00/trazabilidad/ALINEACION_MD_LATEX_2026-10-09.md`.
+
+Pendiente de decisión: el SD4 cita el SD5 (LafroX 2026a/b). Ninguna de las dos ramas tiene commit.
+
 ## Estado vigente — 9 de octubre de 2026: planilla de la carta Gantt actualizada
 
 `07_.../Diagramas/LafroX-Carta-Gantt-SD7.xlsx` regenerada desde el T-15 vigente (respaldo previo en el scratchpad): 222 paquetes y 49 cuentas con meses y HH actuales (204.527 HH), hitos con entregas, probabilidades y P80 del SD8 vigente (H4 86,5 %), hoja «Actividades» renombrada a «Actividades hasta H2» con las 108 actividades de la Tabla 6.1b, 8.1.2 = 54.239 HH, Léeme y Glosario actualizados (planificación gradual, 40 desarrolladores, 216.935 HH). Fórmulas y formato condicional conservados; Excel recalcula al abrir. Sin commit.
