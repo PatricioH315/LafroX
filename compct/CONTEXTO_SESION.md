@@ -1,5 +1,9 @@
 # CONTEXTO DE SESIÓN
 
+## Estado vigente — 8 de octubre de 2026 (noche): revisión de cumplimiento del T-12
+
+Decisión del usuario: el T-12 contiene todos los RF y RNF del Anexo del SD3 y los 374 RT de las BTT, con las cinco columnas del formulario de las BA (p. 62/77): ID requerimiento, Descripción, Cumple, Componente que lo satisface, Sección de la propuesta. Se revisó cada fila contra SD1–SD8, SD13, anexos y formularios; el resultado está en `Revision/T12_mapeo_cumplimiento.md` (Parte A 271 filas: 224 cumple, 34 parcial, 13 no; Parte B 374: 239, 76, 59). El T-12 vigente no se modificó. Hallazgos clave: secciones del T-12 apuntan al SD3 y no al desarrollo real; «Base compartida» sin producto ni versión; seis RT «No ofertado» que SD4 sí compromete; códigos del Caso cap. 15 que no coinciden con las BTT (RT-03.13, 03.24, 05.10, 09.01, 15.02, 16.14, 16.21, 16.30, 21.06); RT-13, RT-16, RT-21 y RT-15.03 casi sin desarrollo; RF del caso sin soporte en el modelo de datos del SD5; duplicados RF-19.xx / RF-14.xx-BTT y RF-07.10/07.11. Pendiente: decisión del usuario para aplicar el mapeo al T-12. Sin commit.
+
 ## Estado vigente — 8 de octubre de 2026 (noche): coherencia entre subdocumentos aplicada
 
 Decisiones del usuario aplicadas a los Markdown de `rama-md` (sin commit):
