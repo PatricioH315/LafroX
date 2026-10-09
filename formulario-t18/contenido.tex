@@ -9,21 +9,21 @@ La propuesta aplica las siete condiciones que el Caso 02 impone a toda estrategi
 Las dos etapas siguen las mismas ocho reglas, y cada una responde a una condición del caso o de las Bases:
 
 \begin{itemize}
-  \item \textbf{Convivencia antes del cambio.} Nada entra en producción sin haber convivido con la forma actual de trabajar durante su marcha blanca, con conciliación diaria y posibilidad de volver atrás (Caso 02, sección 13.3, condición 1; RT-20.03).
+\item \textbf{Convivencia antes del cambio.} Nada entra en producción sin haber convivido con la forma actual de trabajar durante su marcha blanca, con conciliación diaria y posibilidad de volver atrás (Caso 02, sección 13.3, condición 1; RT-20.03).
 
-  \item \textbf{Fechas prohibidas.} Ningún despliegue, paso a producción, inicio de ola ni corte de datos ocurre durante todo septiembre, durante diciembre ni en los tres primeros días hábiles de cada mes (Capítulo 4, Tabla 14, apartado 4.2.4.1.4). Del 1 al 25 de septiembre no se interviene ningún sistema (Caso 02, RT-10.05).
+\item \textbf{Fechas prohibidas.} Ningún despliegue, paso a producción, inicio de ola ni corte de datos ocurre durante todo septiembre, durante diciembre ni en los tres primeros días hábiles de cada mes (Capítulo 4, Tabla 14, apartado 4.2.4.1.4). Del 1 al 25 de septiembre no se interviene ningún sistema (Caso 02, RT-10.05).
 
-  \item \textbf{Olas, no un evento único.} El despliegue avanza por proceso, por sitio y por zona comercial, y nunca afecta a la vez a la bodega, la preventa, el reparto y la facturación (condición 3; RT-20.01).
+\item \textbf{Olas, no un evento único.} El despliegue avanza por proceso, por sitio y por zona comercial, y nunca afecta a la vez a la bodega, la preventa, el reparto y la facturación (condición 3; RT-20.01).
 
-  \item \textbf{Ventana de despacho protegida.} No se despliega durante la ventana de 05:30 a 07:00, que no admite indisponibilidad (RT-10.05 del caso). Las intervenciones en bodega se programan y acompañan en el turno de noche, de 22:00 a 06:00 (condición 4).
+\item \textbf{Ventana de despacho protegida.} No se despliega durante la ventana de 05:30 a 07:00, que no admite indisponibilidad (RT-10.05 del caso). Las intervenciones en bodega se programan y acompañan en el turno de noche, de 22:00 a 06:00 (condición 4).
 
-  \item \textbf{Despliegue azul-verde con indicadores de funcionalidad (feature flags).} Cada capacidad nueva se publica en un entorno paralelo y se habilita por sitio y por ola mediante indicadores de funcionalidad, de modo que la reversión técnica consiste en volver a la entrega previa por azul-verde/canario o desactivar el indicador (Capítulo 4, apartado 4.2.4.1.2). Cada operación tiene un único escritor autorizado: no se habilita doble escritura de stock, cobros ni guías de despacho (Capítulo 4, apartado 4.1.8).
+\item \textbf{Despliegue azul-verde con indicadores de funcionalidad (feature flags).} Cada capacidad nueva se publica en un entorno paralelo y se habilita por sitio y por ola mediante indicadores de funcionalidad, de modo que la reversión técnica consiste en volver a la entrega previa por azul-verde/canario o desactivar el indicador (Capítulo 4, apartado 4.2.4.1.2). Cada operación tiene un único escritor autorizado: no se habilita doble escritura de stock, cobros ni guías de despacho (Capítulo 4, apartado 4.1.8).
 
-  \item \textbf{Reversión en dos niveles.} El nivel técnico vuelve a la entrega previa mediante azul-verde/canario o desactiva el indicador de funcionalidad. El operacional conserva o restituye la versión operativa local probada con un único escritor; lo ordena Operaciones del CLIENTE y debe completarse antes de las 05:30. Papel y consultas son apoyo, no sustitución manual del despacho crítico. Los registros capturados permanecen en cola y se concilian al retomar (Capítulo 3, sección 3.4.4; RT-20.02).
+\item \textbf{Reversión en dos niveles.} El nivel técnico vuelve a la entrega previa mediante azul-verde/canario o desactiva el indicador de funcionalidad. El operacional conserva o restituye la versión operativa local probada con un único escritor; lo ordena Operaciones del CLIENTE y debe completarse antes de las 05:30. Papel y consultas son apoyo, no sustitución manual del despacho crítico. Los registros capturados permanecen en cola y se concilian al retomar (Capítulo 3, sección 3.4.4; RT-20.02).
 
-  \item \textbf{Estabilización declarada.} Cada paso a producción tiene una estabilización de cuatro semanas por ola, con la dotación declarada en la sección 2.6 y sin costo adicional (condición 7; RT-20.05 y RT-20.06).
+\item \textbf{Estabilización declarada.} Cada paso a producción tiene una estabilización de cuatro semanas por ola, con la dotación declarada en la sección 2.6 y sin costo adicional (condición 7; RT-20.05 y RT-20.06).
 
-  \item \textbf{Definición de terminado y aceptación.} Ningún entregable de implantación se da por terminado sin código, pruebas, documentación, seguridad y despliegue verificados (RT-20.07). Cada hito se acepta con un protocolo de criterios objetivos y verificables, firmado por la Contraparte Técnica (RT-20.08; Bases Administrativas, Art. 18.1).
+\item \textbf{Definición de terminado y aceptación.} Ningún entregable de implantación se da por terminado sin código, pruebas, documentación, seguridad y despliegue verificados (RT-20.07). Cada hito se acepta con un protocolo de criterios objetivos y verificables, firmado por la Contraparte Técnica (RT-20.08; Bases Administrativas, Art. 18.1).
 
 \end{itemize}
 \section{Etapa 1: marcha blanca de los meses 13 a 15 y producción desde el mes 16}
@@ -32,7 +32,7 @@ La Etapa 1 pone en producción la mayor parte del alcance y incluye verificacion
 
 \subsection{Alcance y olas}
 
-La Etapa 1 pone en producción la trazabilidad de recepción, la bodega con FEFO y la preparación nocturna, la cadena de frío, la preventa sin conexión, la planificación de rutas, el reparto con prueba de entrega digital, las devoluciones y envases, la rendición y los indicadores operacionales: los módulos M1 a M10 y M12 (paquetes 3.4.1 a 3.4.11 del Formulario T-14). La implantación sigue el orden de las dependencias de datos en tres olas (Capítulo 3, sección 3.4.4; paquete 4.1.1), como presenta la Tabla T18.1.
+La Etapa 1 pone en producción la trazabilidad de recepción, la bodega con FEFO y la preparación nocturna, la cadena de frío, la preventa sin conexión, la planificación de rutas, el reparto con prueba de entrega digital, las devoluciones y envases, la rendición y los indicadores operacionales: los módulos M1 a M10 y M12 (paquetes 3.4.1 a 3.4.11 del Formulario T-14). La implantación sigue el orden de las dependencias de datos en tres olas (Capítulo 3, sección 3.4.4; paquete 4.1.1), como presenta la Tabla \ref{tab:T18-olas}.
 
 \parte{tablas/tab_T18_olas}
 
@@ -102,7 +102,7 @@ La segunda condición del Art. 17.3 exige alcanzar «el volumen de operación re
 
 El compromiso es que el 100 \% del volumen de cada proceso se registre en la solución durante las cuatro últimas semanas, con los demás indicadores en su umbral. Se registra el 100 \% de la operación efectivamente generada cada día, incluido su aumento durante el peak; no se exige generar pedidos artificiales ni mantener 2.600 entregas todos los días del período. Los ensayos previos verifican separadamente 1,5 veces la carga peak aplicable. Una ola que cubre una sola zona compromete el volumen de esa zona hasta que entran las demás; al cierre de la marcha blanca, todas las zonas están dentro.
 
-Los indicadores se miden y publican cada día con el umbral que exige el Art. 17.3 para cerrar la marcha blanca (RT-20.04), como presenta la Tabla T18.4.
+Los indicadores se miden y publican cada día con el umbral que exige el Art. 17.3 para cerrar la marcha blanca (RT-20.04), como presenta la Tabla \ref{tab:T18-indicadores}.
 
 \parte{tablas/tab_T18_indicadores}
 
@@ -196,7 +196,7 @@ El procedimiento debe conservar información: los registros capturados quedan en
 
 \subsection{Acompañamiento en terreno y estabilización}
 
-Después de cada paso a producción hay cuatro semanas de estabilización por ola, el mismo período que exige el criterio de avance. La dotación se deriva de la operación del caso (Capítulo 3, sección 3.4.4; paquete 4.2.2), como muestra la Tabla T18.5.
+Después de cada paso a producción hay cuatro semanas de estabilización por ola, el mismo período que exige el criterio de avance. La dotación se deriva de la operación del caso (Capítulo 3, sección 3.4.4; paquete 4.2.2), como muestra la Tabla \ref{tab:T18-dotacion}.
 
 \parte{tablas/tab_T18_dotacion}
 
@@ -242,7 +242,7 @@ Antes del paso a producción del mes 21 se aprueban las mismas pruebas de la sec
 
 \subsection{Indicadores diarios y umbrales de cierre}
 
-Se aplican los indicadores de la sección 2.4 a los usuarios y transacciones de la Etapa 2, más los propios de su alcance, que presenta la Tabla T18.7.
+Se aplican los indicadores de la sección 2.4 a los usuarios y transacciones de la Etapa 2, más los propios de su alcance, que presenta la Tabla \ref{tab:T18-ind2}.
 
 \parte{tablas/tab_T18_ind2}
 
@@ -312,7 +312,7 @@ Las olas incorporan todo el alcance de cada etapa en el orden siguiente.
 
 Las semanas son relativas a H6 y son supuestos de preparación; al confirmar fechas se convierten a días permitidos. El piloto en Talca facilita probar la integración con WMS/ERP, pero no se presume aprobado. No se inventa un número de zonas: el plan de rutas vigente del CLIENTE define los grupos y su volumen. El responsable de Operaciones y el Líder de Implantación registran sitio, rutas, módulos, usuarios, escritor autorizado y fecha de activación en el acta de cada grupo. Si un grupo no está listo, no se sustituye su volumen por una muestra para acreditar cierre.
 
-Los dominios pueden habilitarse en paralelo sin intervenir simultáneamente el mismo proceso/sitio ni crear doble escritura. Una recepción habilitada alimenta bodega con conciliación diaria, mientras se acumula su evidencia; el retiro del respaldo exige cuatro semanas consecutivas por grupo. El último grupo se propone en semana 8 y nunca después de F − 28 días. Con apertura del período de H6 el 1 de febrero de 2028, sin activar cambios durante los primeros tres días hábiles, y cierre al comenzar el 1 de mayo de 2028, la evidencia comprende 3–30 de abril; todos los grupos deben estar operativos antes del 3 de abril. La semana 8 cae dentro de marzo y evita depender de la semana 9 de abril. Es un ejemplo calendario, no una fecha aprobada: el calendario hábil del CLIENTE y las fechas efectivas determinan las activaciones. H7/H12 respetan también los primeros tres días hábiles de su mes; la continuidad y evidencia se mantienen hasta el acta, sin usar esa espera para recortar la marcha blanca.
+Los dominios pueden habilitarse en paralelo sin intervenir simultáneamente el mismo proceso/sitio ni crear doble escritura. Una recepción habilitada alimenta bodega con conciliación diaria, mientras se acumula su evidencia; el retiro del respaldo exige cuatro semanas consecutivas por grupo. El último grupo se propone en semana 8 y nunca después de F − 28 días. Con apertura del período de H6 el 1 de febrero de 2028, sin activar cambios durante los primeros tres días hábiles, y cierre al comenzar el 1 de mayo de 2028, la evidencia comprende 3–30 de abril; todos los grupos deben estar operativos antes del 3 de abril. La semana 8 cae dentro de marzo y evita depender de la semana 9 de abril. Es un ejemplo calendario, no una fecha aprobada: el calendario hábil del CLIENTE y las fechas efectivas determinan las activaciones. H7/\allowbreak{}H12 respetan también los primeros tres días hábiles de su mes; la continuidad y evidencia se mantienen hasta el acta, sin usar esa espera para recortar la marcha blanca.
 
 El costo de servir de M10 Analítica se reserva a E2; sus indicadores operacionales pertenecen a E1. M9 Calidad y trazabilidad y M12 Telemetría se activan desde la primera ola y amplían cobertura conforme al proceso.
 
@@ -330,7 +330,7 @@ Se mantiene el mínimo simultáneo de 13 puestos de acompañamiento derivado del
 
 Las previsiones mensuales son una curva inicial, no una retirada automática. El JP y Operaciones autorizan cada decremento en un acta con indicadores diarios y cobertura por perfil; si falla un indicador, se retiene o restituye el nivel anterior sin desplazar hitos. Toda extensión requiere recalcular HH, relevos y capacidad disponible del T-15. Para E2 se prevén cuatro semanas de atención reforzada; después se integra a F8 si la Contraparte Técnica confirma estabilidad.
 
-Desde H7 y hasta el mes 20, el paquete 4.2.2 incluye soporte puente: NOC 24\ensuremath{\times}7, mesa 04:00–22:00 de lunes a sábado y 24\ensuremath{\times}7 en septiembre/diciembre, especialistas para críticos/altos 24\ensuremath{\times}7 y escalamiento operativo. El T-15 separa cobertura y reserva de correcciones de acompañamiento. En el mes 21 se transfiere a 8.1.1/8.1.2 sin brecha de atención. Los responsables de incidentes, escalamiento y datos son los mismos en ambas etapas; E2 no dispone de un segundo escritor de los datos E1.
+Desde H7 y hasta el mes 20, el paquete 4.2.2 incluye soporte puente: NOC 24\ensuremath{\times}7, mesa 04:00–22:00 de lunes a sábado y 24\ensuremath{\times}7 en septiembre/diciembre, especialistas para críticos/altos 24\ensuremath{\times}7 y escalamiento operativo. El T-15 separa cobertura y reserva de correcciones de acompañamiento. En el mes 21 se transfiere a 8.1.1/\allowbreak{}8.1.2 sin brecha de atención. Los responsables de incidentes, escalamiento y datos son los mismos en ambas etapas; E2 no dispone de un segundo escritor de los datos E1.
 
 \subsection{Tiempo de reversión y ensayo de capacidad}
 
@@ -344,7 +344,7 @@ Durante congelamientos, se aplica la continuidad previamente autorizada por el C
 
 \subsection{Controles nuevos de coordinación y aceptación}
 
-Los paquetes 3.3.6, 3.4.2 y 3.4.6 incluyen la coordinación de reserva y retención (SD4, apartado 4.1.4.4 y Anexo 4-G): retención local por lote/ubicación, acuse durable antes de confirmar pedido, UUID e idempotencia y época de autoridad. 3.8.1/3.8.3 incluyen AL-STOCK-01 y AL-ACT-01 con corte, reintento, concurrencia y ausencia de doble descuento o retención duplicada. El dimensionamiento se recoge en el Anexo 4-I, Tabla A.10, y el Anexo 4-W, Tablas A.32 y A.33: 46.968 mensajes/día normales y 87.228 en peak, con un máximo de cuatro mensajes por línea. La retención consumida no se libera, por lo que esa holgura cubre líneas repartidas entre lotes o sitios. AL-STOCK-01 mide la proporción de líneas con más de una retención y 3.8.4/3.9.3 verifican la carga y el drenaje, sin sumar la coordinación al drenaje tras un corte (4-W.5).
+Los paquetes 3.3.6, 3.4.2 y 3.4.6 incluyen la coordinación de reserva y retención (SD4, apartado 4.1.4.4 y Anexo 4-G): retención local por lote/ubicación, acuse durable antes de confirmar pedido, UUID e idempotencia y época de autoridad. 3.8.1/\allowbreak{}3.8.3 incluyen AL-STOCK-01 y AL-ACT-01 con corte, reintento, concurrencia y ausencia de doble descuento o retención duplicada. El dimensionamiento se recoge en el Anexo 4-I, Tabla A.10, y el Anexo 4-W, Tablas A.32 y A.33: 46.968 mensajes/día normales y 87.228 en peak, con un máximo de cuatro mensajes por línea. La retención consumida no se libera, por lo que esa holgura cubre líneas repartidas entre lotes o sitios. AL-STOCK-01 mide la proporción de líneas con más de una retención y 3.8.4/\allowbreak{}3.9.3 verifican la carga y el drenaje, sin sumar la coordinación al drenaje tras un corte (4-W.5).
 
 El RPO \ensuremath{\leq}15 min se cumple con fibra, LTE y Starlink. La falla simultánea de los tres caminos seguida de la destrucción del sitio antes de reponer alguno es el riesgo residual declarado en SD4 4.3.2.4 (RT-02.11), gestionado en SD8 con R8-05. AL-DR-01 verifica las alarmas de retraso a 5 y 15 min, la reposición del enlace, la preemisión de guías y el NAS WORM, y mide el RPO y el RTO en conmutación real antes del H5 y del H10.
 
@@ -353,11 +353,11 @@ El RPO \ensuremath{\leq}15 min se cumple con fibra, LTE y Starlink. La falla sim
 Las Bases se citan con su documento y el artículo, capítulo, sección o código del requisito.
 
 \begin{itemize}
-  \item Distribuidora Puelche S.A. (2026a). \emph{Bases Administrativas de Licitación N.º TFEP-01/2026: Contratación de Solución Integral de Software y Servicios de Operación}.
+\item Distribuidora Puelche S.A. (2026a). \emph{Bases Administrativas de Licitación N.º TFEP-01/\allowbreak{}2026: Contratación de Solución Integral de Software y Servicios de Operación}.
 
-  \item Distribuidora Puelche S.A. (2026b). \emph{Bases Técnicas Transversales de Licitación N.º TFEP-01/2026}.
+\item Distribuidora Puelche S.A. (2026b). \emph{Bases Técnicas Transversales de Licitación N.º TFEP-01/\allowbreak{}2026}.
 
-  \item Distribuidora Puelche S.A. (2026c). \emph{Caso 02: Logística. Especificaciones del problema y operación de Distribuidora Puelche S.A.}
+\item Distribuidora Puelche S.A. (2026c). \emph{Caso 02: Logística. Especificaciones del problema y operación de Distribuidora Puelche S.A.}
 
 \end{itemize}
 \section{Declaración de uso de IA}

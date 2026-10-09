@@ -38,7 +38,7 @@ Las otras cinco fases agrupan el trabajo que no es desarrollo de software, pero 
 
 La descomposición sigue la regla del 100 \%: la suma del trabajo de los niveles inferiores reproduce el trabajo del nivel superior, sin omitir ni agregar alcance (Project Management Institute [PMI], 2017, p. 161). El segundo nivel son 49 cuentas de control, puntos de gestión donde se integran el alcance, el cronograma y el esfuerzo para medir el desempeño. El nivel inferior son 222 paquetes de trabajo, cada uno con un entregable verificable, un criterio de aceptación y un único responsable (PMI, 2017, pp. 161–162). En la cuenta de las innovaciones, cada innovación agrupa sus paquetes en un cuarto nivel.
 
-El último nivel de la EDT es el paquete de trabajo, con su entregable, su responsable y su criterio de aceptación. Fuera de la EDT, cada paquete se descompone en actividades que cumplen la regla del 8/80, entre 8 y 80 horas hombre de esfuerzo, y la regla del período de reporte: ninguna actividad dura más de una quincena, el período con que informa el Comité de Proyecto (PMI, 2017, pp. 183–185). Los paquetes de producto se dividen con una plantilla por clase; por ejemplo, un módulo de 960 HH se divide en 12 actividades de 80 HH, desde el análisis de sus requerimientos hasta su entrega en QA. Así se definen 564 actividades para los 163 paquetes con entregable, cada una con fecha, personas y predecesoras. Los 59 paquetes de esfuerzo continuo, como la cobertura del NOC, las reuniones periódicas o la mentoría posterior al H12, no se descomponen en actividades distintas: se programan por quincena u ocurrencia, en relevos de hasta 64 HH cada uno. La lista de actividades y las reglas de programación están en el Formulario T-15, sección 6.
+El último nivel de la EDT es el paquete de trabajo, con su entregable, su responsable y su criterio de aceptación. Fuera de la EDT, cada paquete se descompone en actividades que cumplen la regla del 8/\allowbreak{}80, entre 8 y 80 horas hombre de esfuerzo, y la regla del período de reporte: ninguna actividad dura más de una quincena, el período con que informa el Comité de Proyecto (PMI, 2017, pp. 183–185). Los paquetes de producto se dividen con una plantilla por clase; por ejemplo, un módulo de 960 HH se divide en 12 actividades de 80 HH, desde el análisis de sus requerimientos hasta su entrega en QA. Los 163 paquetes con entregable se programan con fecha, personas y predecesoras; sus actividades se detallan hasta el H2 y, después, por planificación gradual antes de cada fase, cuando el equipo conoce el trabajo (PMI, 2017, p. 185). Así el cronograma no fija hoy el día de una actividad que ocurrirá en 2028, y cada fase se planifica como las iteraciones del proceso RUP del Capítulo 6. El Formulario T-15, Figura T15.3, muestra los puntos de replanificación (antes del H2, el H4, el H8 y el H9). Los 59 paquetes de esfuerzo continuo, como la cobertura del NOC, las reuniones periódicas o la mentoría posterior al H12, no se descomponen en actividades distintas: se programan por quincena u ocurrencia, en relevos de hasta 64 HH cada uno. La lista de actividades y las reglas de programación están en el Formulario T-15, sección 6.
 
 Los paquetes de la fase de Operación son paquetes de esfuerzo continuo. Cada uno cubre un servicio durante los 36 meses y se controla con entregables periódicos, como los informes mensuales de servicio, los informes de pruebas y las actualizaciones anuales, que funcionan como sus puntos de verificación.
 
@@ -173,10 +173,10 @@ La tabla muestra que ninguna exigencia descansa en un paquete genérico. La segu
 La Figura \ref{fig:7-cobertura} ubica esos paquetes por fase y muestra en qué parte de la EDT y, por lo tanto, del cronograma quedan las actividades de cada categoría.
 
 \begin{figure}[htbp]
-  \LFXfiguraPendiente
-  \nota{Descripción textual de figura: Innovaciones / 23 PT Seguridad / 17 PT Calidad / 19 PT Migración / 6 PT Implantación / 23 PT 1 Inicio — 1.9.2, 1.9.3, 1.9.4 1.5.1, 1.5.2 — — 2 Elaboración — 2.2.1–2.2.4 — — — 3 Construcción 3.10.1 INN-01 / 3.10.2 INN-02 / 3.10.3 INN-03 / 3.10.4 INN-05 3.2.5, 3.3.1 / 3.8.6, 3.9.5 / 3.11.4 3.8.1–3.8.8 / 3.9.1–3.9.7 / 3.11.3 3.3.3 / 3.7.1–3.7.5 — 4 Transición — — — — 4.1.1–4.1.3 / 4.2.1–4.2.3 / 4.3.1–4.3.4 5 Adquisiciones 5.4.3 INN-04 — — — — 6 Infraestructura — 6.4.1–6.4.3 — — — 7 Capacitación — — — — 7.1.1–7.1.6 / 7.2.1–7.2.5 / 7.3.1, 7.3.2 8 Operación 8.3.1–8.3.6 / INN-02 a INN-05 8.1.5, 8.2.2 8.2.4 — — 9 Cierre — — — — —}
-  \caption{Ubicación en la EDT de las innovaciones y de la seguridad, la calidad, la migración y la implantación. Fuente: elaboración propia a partir del Formulario T-14 y de las Aclaraciones, sección 11.}
-  \label{fig:7-cobertura}
+\LFXfiguraPendiente
+\nota{Descripción textual de figura: Innovaciones / 23 PT Seguridad / 17 PT Calidad / 19 PT Migración / 6 PT Implantación / 23 PT 1 Inicio — 1.9.2, 1.9.3, 1.9.4 1.5.1, 1.5.2 — — 2 Elaboración — 2.2.1–2.2.4 — — — 3 Construcción 3.10.1 INN-01 / 3.10.2 INN-02 / 3.10.3 INN-03 / 3.10.4 INN-05 3.2.5, 3.3.1 / 3.8.6, 3.9.5 / 3.11.4 3.8.1–3.8.8 / 3.9.1–3.9.7 / 3.11.3 3.3.3 / 3.7.1–3.7.5 — 4 Transición — — — — 4.1.1–4.1.3 / 4.2.1–4.2.3 / 4.3.1–4.3.4 5 Adquisiciones 5.4.3 INN-04 — — — — 6 Infraestructura — 6.4.1–6.4.3 — — — 7 Capacitación — — — — 7.1.1–7.1.6 / 7.2.1–7.2.5 / 7.3.1, 7.3.2 8 Operación 8.3.1–8.3.6 / INN-02 a INN-05 8.1.5, 8.2.2 8.2.4 — — 9 Cierre — — — — —}
+\caption{Ubicación en la EDT de las innovaciones y de la seguridad, la calidad, la migración y la implantación. Fuente: elaboración propia a partir del Formulario T-14 y de las Aclaraciones, sección 11.}
+\label{fig:7-cobertura}
 \end{figure}
 
 La matriz confirma que las cinco categorías se distribuyen desde el diseño hasta la operación. Las innovaciones tienen paquetes en las fases donde se construyen, se contratan y se operan: INN-01, INN-02, INN-03 e INN-05 se construyen en la cuenta 3.10; la fórmula contractual de INN-04 se aprueba en la cuenta 5.4, porque es una innovación de modelo de contratación y no tiene paquete de construcción; e INN-02 a INN-05 tienen su parte de operación en la cuenta 8.3. Cada innovación tiene sus meses en el Anexo 7.D (Bases Administrativas, Art. 29°, punto 4).
@@ -208,10 +208,10 @@ La construcción de la Etapa 1 parte por la base compartida, porque si falla, fa
 La Figura \ref{fig:7-red} presenta esa red de precedencias entre cuentas de control. El Anexo 7.B lista las 34 dependencias entre paquetes con su fundamento.
 
 \begin{figure}[htbp]
-  \LFXfiguraPendiente
-  \nota{Descripción textual de figura: Etapa 1 (meses 1 a 16) Etapa 2 (meses 13 a 21) 1.2 Alcance del proyecto 2.1 Arquitectura de la solución 2.4 Validación de diseños 2.2 Diseño de la seguridad 3.3 Base compartida 3.4 Módulos de la Etapa 1 3.8 Pruebas de la Etapa 1 4.2 Marcha blanca y producción E1 2.6 Experiencia de usuario 2.3 Diseño de sala y racks 5.1 Hardware e infraestructura 6.1 Sala técnica de Talca 6.3 Racks y gabinetes 6.6 Infraestructura de los sitios 5.2 Nube y licencias 3.2 Servicios de nube 3.1 Ambientes 5.4 Acuerdos con terceros 6.5 Equipamiento de campo 3.7 Migración de datos 4.1 Plan de implantación 7.3 Certificación de usuarios 1.2.5 y 2.4.2 Línea base y diseño E2 3.5 Módulos de la Etapa 2 3.9 Pruebas de la Etapa 2 4.3 Marcha blanca y producción E2 8 Operación (meses 21 a 56) 9.1 Cierre de la implementación 3.6.5 y 3.6.6 Cadenas 7.1.4 y 7.3.2 Traspaso y certificación E2 Cadena crítica de la Etapa 2 Precedencia fin-comienzo (CC: comienzo-comienzo) Hito del Formulario E-25}
-  \caption{Red de precedencias entre cuentas de control e hitos. Fuente: elaboración propia a partir del Anexo 7.B y del Formulario E-25.}
-  \label{fig:7-red}
+\LFXfiguraPendiente
+\nota{Descripción textual de figura: Etapa 1 (meses 1 a 16) Etapa 2 (meses 13 a 21) 1.2 Alcance del proyecto 2.1 Arquitectura de la solución 2.4 Validación de diseños 2.2 Diseño de la seguridad 3.3 Base compartida 3.4 Módulos de la Etapa 1 3.8 Pruebas de la Etapa 1 4.2 Marcha blanca y producción E1 2.6 Experiencia de usuario 2.3 Diseño de sala y racks 5.1 Hardware e infraestructura 6.1 Sala técnica de Talca 6.3 Racks y gabinetes 6.6 Infraestructura de los sitios 5.2 Nube y licencias 3.2 Servicios de nube 3.1 Ambientes 5.4 Acuerdos con terceros 6.5 Equipamiento de campo 3.7 Migración de datos 4.1 Plan de implantación 7.3 Certificación de usuarios 1.2.5 y 2.4.2 Línea base y diseño E2 3.5 Módulos de la Etapa 2 3.9 Pruebas de la Etapa 2 4.3 Marcha blanca y producción E2 8 Operación (meses 21 a 56) 9.1 Cierre de la implementación 3.6.5 y 3.6.6 Cadenas 7.1.4 y 7.3.2 Traspaso y certificación E2 Cadena crítica de la Etapa 2 Precedencia fin-comienzo (CC: comienzo-comienzo) Hito del Formulario E-25}
+\caption{Red de precedencias entre cuentas de control e hitos. Fuente: elaboración propia a partir del Anexo 7.B y del Formulario E-25.}
+\label{fig:7-red}
 \end{figure}
 
 La red muestra tres convergencias. En el H3 se juntan la cadena de la nube (5.2, 3.2 y 3.1) y la de la sala técnica (2.3, 5.1, 6.1, 6.3 y 6.6). En los hitos H4 y H5 se juntan los módulos, la base compartida, el diseño aprobado y la experiencia de usuario. Al cierre de la marcha blanca se juntan la solución certificada, la migración, el equipamiento de cada ola, la certificación de los usuarios y, en la ola de reparto, los acuerdos con los transportistas y el sindicato. Un atraso en cualquiera de esas ramas se propaga al hito aunque no sea de software. La ruta crítica corresponde al diseño, los módulos y la certificación de la Etapa 2, que la sección 7.3.1 analiza.
@@ -230,17 +230,17 @@ La Tabla \ref{tab_SD7_13} resume el resultado de la estimación por etapa contra
 
 \parte{tablas/tab_SD7_13}
 
-La operación concentra el 56 \% de las horas programadas (114.213 de 202.774 HH), porque cubre 36 meses de servicio continuo del centro de operaciones, la mesa y el SOC. La implementación propiamente tal, de los meses 1 a 22, suma 88.561 HH, y su tramo más denso son los meses 13 a 15, cuando la marcha blanca de la Etapa 1 y el desarrollo de la Etapa 2 suman 17.579 HH (4.485 + 4.889 + 8.205, según la curva del Formulario T-15, sección 4.4), con el máximo de 69 personas equivalentes en el mes 15. Las 3.072 HH de reserva se asignan sólo a la Etapa 1, de modo que una corrección en su marcha blanca no se financia con horas de la Etapa 2.
+La operación concentra el 59 \% de las horas programadas (128.374 de 216.935 HH), porque cubre 36 meses de servicio continuo del centro de operaciones, la mesa y el SOC; la mesa incluye desde el mes 25, cuando la demanda proyectada se acerca a su límite, un tercer agente en las franjas de menor demanda, con el que cubre sus niveles de servicio hasta 2.391 contactos al mes. Son puestos de turno 24\ensuremath{\times}7 y de mesa, no personas dedicadas a otras tareas. La implementación propiamente tal, de los meses 1 a 22, suma 88.561 HH, y su tramo más denso son los meses 13 a 15, cuando la marcha blanca de la Etapa 1 y el desarrollo de la Etapa 2 suman 17.465 HH (4.485 + 4.889 + 8.090, según la curva del Formulario T-15, sección 4.4), con el máximo de 68 personas equivalentes en el mes 15. Las 3.072 HH de reserva se asignan sólo a la Etapa 1, de modo que una corrección en su marcha blanca no se financia con horas de la Etapa 2.
 
 \subsection{Frentes de trabajo y sincronización}
 
 El trabajo se organiza en ocho frentes. Cada frente es un equipo con un responsable que avanza en paralelo con los demás sobre un conjunto de cuentas de control. La Figura \ref{fig:7-frentes} presenta los frentes, su rol líder, sus cuentas de control y su ventana de actividad entre los meses 1 y 21; la correspondencia completa está en el Formulario T-15.
 
 \begin{figure}[htbp]
-  \LFXfiguraPendiente
-  \nota{Descripción textual de figura: Solapamiento / meses 13 a 15 Solapamiento / meses 19 y 20 \textbf{F8 Operación} / Líder de Operación / SRE 8.1–8.3, 8.5: desde el mes 21 hasta el 56}
-  \caption{Frentes de trabajo de los meses 1 a 21. Fuente: elaboración propia a partir de los Formularios T-14 y T-15.}
-  \label{fig:7-frentes}
+\LFXfiguraPendiente
+\nota{Descripción textual de figura: Solapamiento / meses 13 a 15 Solapamiento / meses 19 y 20 \textbf{F8 Operación} / Líder de Operación / SRE 8.1–8.3, 8.5: desde el mes 21 hasta el 56}
+\caption{Frentes de trabajo de los meses 1 a 21. Fuente: elaboración propia a partir de los Formularios T-14 y T-15.}
+\label{fig:7-frentes}
 \end{figure}
 
 La figura muestra que en ningún mes trabaja un solo frente: entre los meses 1 y 15 avanzan a la vez la dirección, la arquitectura, la construcción de la Etapa 1, la plataforma y la calidad, y desde el mes 9 se suma la implantación. Los frentes se sincronizan en tres instancias. La primera son los hitos del Formulario E-25, porque cada hito exige que varios frentes entreguen a la vez. La segunda son los comités del Art. 71°: el de Proyecto es quincenal y los de Arquitectura y Operación son mensuales, y sus actas registran los acuerdos entre frentes en dos días hábiles (RT-19.09). La tercera son las ventanas de calendario, que son comunes a todos los frentes.
@@ -261,16 +261,16 @@ El cronograma aplica el Art. 17° mes a mes y la implantación aplica las condic
 
 La ruta crítica se calcula con el método de la ruta crítica sobre la red del Anexo 7.B (PMI, 2017, pp. 210–211). Una pasada hacia adelante da las fechas tempranas de cada paquete; una pasada hacia atrás, desde los meses fijos del Art. 17°, da las tardías; LS − ES es la holgura total; la libre se mide contra el ES de los sucesores. Como los hitos del Formulario E-25 son fechas fijas, un camino que no llega a su hito tiene holgura negativa y obliga a replanificar.
 
-La ruta crítica corresponde a la Etapa 2: diseño (1.2.5, 2.1.4 y 2.4.2; H8, 13 días hábiles de reserva) \ensuremath{\rightarrow} módulos (3.5) \ensuremath{\rightarrow} prueba de integración (3.9.1; H9, 21 días hábiles y 89,9 \% de cumplimiento en la simulación con riesgos) \ensuremath{\rightarrow} certificación (3.9.2–3.9.7; H10, 28 días hábiles). La holgura total de cada camino es su reserva hasta la fecha límite del hito (Formulario T-15, Tabla 5.2). Son casi críticos la cadena de la Etapa 1 que nace en las interfaces sin documentación del ERP (1.2.3 \ensuremath{\rightarrow} 3.3.2 \ensuremath{\rightarrow} 3.4 \ensuremath{\rightarrow} 3.8.1, H4 con 19 días; \ensuremath{\rightarrow} 3.8.2–3.8.8, H5 con 35 días), la sala y los ambientes del H3 (2.3, 5.1.2, 6.1, 6.3, 6.6.3 y 3.1; 19 días), la captura de reglas del planificador (1.2.2 y 3.4.7), los acuerdos con transportistas y sindicato (5.4.1 y 5.4.2) y la certificación de las cadenas (3.6.5 y 3.6.6). El H1 tiene la menor reserva absoluta, 6 días, pero su desviación es mínima (\ensuremath{\sigma} 0,58; cumplimiento > 99,9 \%). Las marchas blancas y los pasos a producción tienen fechas contractuales fijas. La Figura \ref{fig:7-ruta} sitúa la cadena de la Etapa 2 y los caminos casi críticos en los meses del contrato.
+La ruta crítica corresponde a la Etapa 2: diseño (1.2.5, 2.1.4 y 2.4.2; H8, 4 días hábiles de reserva y 91,1 \% de cumplimiento en la simulación con riesgos) \ensuremath{\rightarrow} módulos (3.5) \ensuremath{\rightarrow} prueba de integración (3.9.1; H9, 21 días hábiles) \ensuremath{\rightarrow} certificación (3.9.2–3.9.7; H10, 25 días hábiles). La holgura total de cada camino es su reserva hasta la fecha límite del hito (Formulario T-15, Tabla 5.2). Son casi críticos la cadena de la Etapa 1 que nace en las interfaces sin documentación del ERP (1.2.3 \ensuremath{\rightarrow} 3.3.2 \ensuremath{\rightarrow} 3.4 \ensuremath{\rightarrow} 3.8.1, H4 con 19 días; \ensuremath{\rightarrow} 3.8.2–3.8.8, H5 con 35 días), la sala y los ambientes del H3 (2.3, 5.1.2, 6.1, 6.3, 6.6.3 y 3.1; 19 días), la captura de reglas del planificador (1.2.2 y 3.4.7), los acuerdos con transportistas y sindicato (5.4.1 y 5.4.2) y la certificación de las cadenas (3.6.5 y 3.6.6). El H1 tiene la menor reserva absoluta, 6 días, pero su desviación es mínima (\ensuremath{\sigma} 0,58; cumplimiento > 99,9 \%). Las marchas blancas y los pasos a producción tienen fechas contractuales fijas. La Figura \ref{fig:7-ruta} sitúa la cadena de la Etapa 2 y los caminos casi críticos en los meses del contrato.
 
 \begin{figure}[htbp]
-  \LFXfiguraPendiente
-  \nota{Descripción textual de figura: Caminos casi críticos 2.3, 5.1.2, 6.1, 6.3, 6.6.3 y 3.1 convergen en el H3 Marcha / blanca E1 Marcha / blanca E2}
-  \caption{Ruta crítica identificada y caminos casi críticos de la implementación. Fuente: elaboración propia a partir del Anexo 7.B y de los períodos del Formulario T-14.}
-  \label{fig:7-ruta}
+\LFXfiguraPendiente
+\nota{Descripción textual de figura: Caminos casi críticos 2.3, 5.1.2, 6.1, 6.3, 6.6.3 y 3.1 convergen en el H3 Marcha / blanca E1 Marcha / blanca E2}
+\caption{Ruta crítica identificada y caminos casi críticos de la implementación. Fuente: elaboración propia a partir del Anexo 7.B y de los períodos del Formulario T-14.}
+\label{fig:7-ruta}
 \end{figure}
 
-La Figura \ref{fig:7-ruta} relaciona las cadenas de diseño, construcción y certificación con sus hitos y con las marchas blancas de ambas etapas. El Formulario T-15 programa las 564 actividades de los paquetes con entregable, día por día, con sus dependencias, los diez días hábiles de revisión del Art. 18.3 antes de cada hito y la dotación declarada en el SD1 como tope diario, reforzada con evaluadores subcontratados durante las certificaciones. Cada hito tiene una reserva entre su entrega y su fecha límite, de 6 a 35 días hábiles, dimensionada con la simulación de Monte Carlo del SD8, Anexo 8.C: con los riesgos del registro, cada hito se entrega a tiempo en al menos el 89,9 \% de los escenarios, y su fecha P80 queda antes de la fecha límite (Formulario T-15, Tabla 5.2). Las marchas blancas y sus cuatro semanas finales no aportan reserva utilizable.
+La Figura \ref{fig:7-ruta} relaciona las cadenas de diseño, construcción y certificación con sus hitos y con las marchas blancas de ambas etapas. El Formulario T-15 programa los paquetes con entregable con sus dependencias, los diez días hábiles de revisión del Art. 18.3 antes de cada hito y un tope diario de dotación: hasta 40 de los 48 desarrolladores del SD1, escalonados entre junio y octubre de 2027, y evaluadores subcontratados durante las certificaciones. Cada hito tiene una reserva entre su entrega y su fecha límite, de 4 a 35 días hábiles, dimensionada con la simulación de Monte Carlo del SD8, Anexo 8.C: con los riesgos del registro, cada hito se entrega a tiempo en al menos el 86,5 \% de los escenarios (el menor es el H4, que exige todas las integraciones externas de la Etapa 1), y su fecha P80 queda antes de la fecha límite (Formulario T-15, Tabla 5.2). Las marchas blancas y sus cuatro semanas finales no aportan reserva utilizable.
 
 La holgura se gestiona en las instancias de gobierno de la EDT. El avance de cada paquete de la ruta crítica y de los caminos casi críticos se revisa en la reunión semanal de seguimiento y en el Comité de Proyecto quincenal (paquetes 1.3.5 y 1.8.3). Toda amenaza a un hito se escala al Comité Ejecutivo cuando la desviación proyectada supera la mitad de su reserva, sin esperar a consumirla, con su análisis de impacto (paquetes 1.4.3 y 1.8.2). El informe mensual con valor ganado avisa toda desviación mayor al 10 \% con su plan dentro de cinco días hábiles (paquete 1.8.6). H7 y H12 dependen además de la aceptación copulativa de la marcha blanca, que no tiene una probabilidad calculada.
 
@@ -291,10 +291,10 @@ Ningún inicio admisible deja las dos marchas blancas completas fuera de septiem
 La Figura \ref{fig:7-gantt} presenta la carta Gantt resumida de los 56 meses con ese supuesto de inicio, por período contractual. La carta vigente por cuenta de control, generada desde las ventanas reconciliadas de los 222 paquetes, está en el Formulario T-14, sección 3.1.
 
 \begin{figure}[htbp]
-  \LFXfiguraPendiente
-  \nota{Descripción textual de figura: Periodos del Art. 17° e hitos del E-25 hito mensual Fases de la EDT Marcha blanca Continua o a demanda Septiembre y diciembre (sin pasos a producción) Hito del Formulario E-25}
-  \caption{Carta Gantt resumida de los 56 meses, con inicio en febrero de 2027. Fuente: elaboración propia a partir de las Bases Administrativas, Art. 17°, del Formulario E-25 y del Formulario T-14.}
-  \label{fig:7-gantt}
+\LFXfiguraPendiente
+\nota{Descripción textual de figura: Periodos del Art. 17° e hitos del E-25 hito mensual Fases de la EDT Marcha blanca Continua o a demanda Septiembre y diciembre (sin pasos a producción) Hito del Formulario E-25}
+\caption{Carta Gantt resumida de los 56 meses, con inicio en febrero de 2027. Fuente: elaboración propia a partir de las Bases Administrativas, Art. 17°, del Formulario E-25 y del Formulario T-14.}
+\label{fig:7-gantt}
 \end{figure}
 
 La carta muestra que los periodos fijos del Art. 17° se respetan mes a mes y que ningún paso a producción cae en una columna de congelamiento: el mes 16 es mayo de 2028 y el mes 21, octubre de 2028. Las fases de desarrollo aparecen dos veces, una por etapa, y la capacitación continúa durante la operación por la rotación de la bodega. Las columnas rayadas del mes 20 y del mes 23 confirman lo que anticipa la Tabla \ref{tab:7-inicio}: el cierre de la marcha blanca de la Etapa 2 ocurre en septiembre y el primer diciembre de operación llega dos meses después de la aceptación final.
@@ -311,7 +311,7 @@ La Etapa 1 entra en tres olas, en el orden de las dependencias de datos (Capítu
 
 Una ola avanza a la siguiente cuando cumple su criterio durante cuatro semanas consecutivas a volumen real: sin defectos críticos ni altos, con conciliación diaria sin diferencias no explicadas, con los indicadores de disponibilidad y tiempo de respuesta cumplidos, con los usuarios certificados y con el acta de la Contraparte Técnica (Capítulo 3, sección 3.4.4).
 
-La programación de olas usa fechas reales y no una equivalencia de meses a 13 semanas: todos los grupos deben estar operativos antes del inicio de los 28 días finales de marcha blanca. T-18 §6.1 propone Talca/Concepción/plataformas/remanentes en semanas 5/6/7/8 para la ola de reparto, subordinadas a fechas permitidas y al límite F − 28 días. Se permite superposición por dominios sin intervenir simultáneamente el mismo proceso ni doble escritura.
+La programación de olas usa fechas reales y no una equivalencia de meses a 13 semanas: todos los grupos deben estar operativos antes del inicio de los 28 días finales de marcha blanca. T-18 §6.1 propone Talca/Concepción/plataformas/remanentes en semanas 5/\allowbreak{}6/\allowbreak{}7/\allowbreak{}8 para la ola de reparto, subordinadas a fechas permitidas y al límite F − 28 días. Se permite superposición por dominios sin intervenir simultáneamente el mismo proceso ni doble escritura.
 
 \clearpage
 \begin{figure}[p]
@@ -493,7 +493,7 @@ La figura muestra que la Etapa 2 no tiene un segundo registro de los datos de la
 
 \subsection{Estabilización y transferencia}
 
-Después de cada paso a producción hay una estabilización de cuatro semanas por ola, con atención reforzada y sin costo adicional (RT-20.06). La dotación se deriva de la operación del caso, como muestra la Tabla 7.10.
+Después de cada paso a producción hay una estabilización de cuatro semanas por ola, con atención reforzada y sin costo adicional (RT-20.06). La dotación se deriva de la operación del caso, como muestra la Tabla \ref{tab:7-estabilizacion}.
 
 \parte{tablas/tab_SD7_9}
 
@@ -509,7 +509,7 @@ El Caso 02 exige indicar en qué momento del cronograma se alcanza cada resultad
 
 Doce de los dieciséis resultados se aceptan en la marcha blanca de la Etapa 1. Otros dos también se verifican allí: R18-04, con su tramo del mes 15, y R18-12, de forma provisional. Son catorce resultados con verificaciones en ese período, conforme al Anexo 7.C y al Formulario T-18. Por eso el volumen real y la certificación de usuarios de ese período son la principal concentración de riesgo de aceptación del proyecto, y por eso el plan dedica a esa marcha blanca su mayor dotación de acompañamiento.
 
-Las innovaciones también tienen su momento en el cronograma (Art. 29°, punto 4), como resume la Tabla 7.12.
+Las innovaciones también tienen su momento en el cronograma (Art. 29°, punto 4), como resume la Tabla \ref{tab:7-innovaciones}.
 
 \parte{tablas/tab_SD7_11}
 
@@ -517,7 +517,7 @@ Tres innovaciones se validan en la marcha blanca de la Etapa 1. La innovación 5
 
 \subsection{Base de planificación y recursos}
 
-El Formulario T-15, sección 4, estima las horas de los 222 paquetes con tres valores (optimista, más probable y pesimista) por clase de tamaño, y separa las curvas mensuales de implementación, soporte puente de la Etapa 1 y Operación. La cobertura del centro de operaciones, la mesa de servicio y el SOC sigue las posiciones dimensionadas en el Capítulo 4, Anexo 4-W.7. Con esa base, el total programado es de 202.774 HH (190.366 HH de implementación, 9.336 HH de soporte puente de la Etapa 1 y 3.072 HH de reserva del frente de construcción y de calidad) y el máximo mensual es de 69 personas equivalentes en el mes 15, cuando coinciden la marcha blanca de la Etapa 1 y el desarrollo de la Etapa 2. La sección 5 del mismo formulario calcula la red y el PERT sobre las actividades niveladas y compara la curva con la dotación del Capítulo 1. Las capacidades protegidas de la Etapa 1 no se prestan al desarrollo de la Etapa 2.
+El Formulario T-15, sección 4, estima las horas de los 222 paquetes con tres valores (optimista, más probable y pesimista) por clase de tamaño, y separa las curvas mensuales de implementación, soporte puente de la Etapa 1 y Operación. La cobertura del centro de operaciones, la mesa de servicio y el SOC sigue las posiciones dimensionadas en el Capítulo 4, Anexo 4-W.7. Con esa base, el total programado es de 216.935 HH (204.527 HH de paquetes, 9.336 HH de soporte puente de la Etapa 1 y 3.072 HH de reserva del frente de construcción y de calidad) y el máximo mensual es de 68 personas equivalentes en el mes 15, cuando coinciden la marcha blanca de la Etapa 1 y el desarrollo de la Etapa 2. La sección 5 del mismo formulario calcula la red y el PERT sobre los paquetes nivelados y compara la curva con la dotación del Capítulo 1. Las capacidades protegidas de la Etapa 1 no se prestan al desarrollo de la Etapa 2.
 
 La gestión del plan sigue el Capítulo 6: la sección 6.1 fija el PMBOK adaptado, el tablero Kanban, el valor ganado y el control de cambios, y la sección 6.2 fija el proceso RUP iterativo con DevSecOps. La Construcción avanza en las iteraciones definidas en la sección 6.2, con revisión semanal de avance y bloqueos y una demostración de incremento verificable al cierre de cada iteración; una demostración no implica un paso a producción. El Jefe de Proyecto registra la capacidad y los criterios de terminado antes de seleccionar el trabajo de cada iteración, y los cambios se aprueban según la sección 6.1.4.
 
@@ -532,17 +532,17 @@ El Anexo 7.F traslada al Capítulo 8 los supuestos, disparadores, responsables y
 Las Bases se citan con su documento y el artículo, capítulo, sección o código del requisito; las referencias internas a otros capítulos de esta oferta se indican por su número de capítulo y sección.
 
 \begin{itemize}
-  \item Distribuidora Puelche S.A. (2026a). \emph{Bases Administrativas de Licitación N.º TFEP-01/2026: Contratación de Solución Integral de Software y Servicios de Operación}.
+\item Distribuidora Puelche S.A. (2026a). \emph{Bases Administrativas de Licitación N.º TFEP-01/\allowbreak{}2026: Contratación de Solución Integral de Software y Servicios de Operación}.
 
-  \item Distribuidora Puelche S.A. (2026b). \emph{Bases Técnicas Transversales de Licitación N.º TFEP-01/2026}.
+\item Distribuidora Puelche S.A. (2026b). \emph{Bases Técnicas Transversales de Licitación N.º TFEP-01/\allowbreak{}2026}.
 
-  \item Distribuidora Puelche S.A. (2026c). \emph{Caso 02: Logística. Especificaciones del problema y operación de Distribuidora Puelche S.A.}
+\item Distribuidora Puelche S.A. (2026c). \emph{Caso 02: Logística. Especificaciones del problema y operación de Distribuidora Puelche S.A.}
 
-  \item Distribuidora Puelche S.A. (2026d). \emph{Aclaraciones de la Licitación N.º TFEP-01/2026}.
+\item Distribuidora Puelche S.A. (2026d). \emph{Aclaraciones de la Licitación N.º TFEP-01/\allowbreak{}2026}.
 
-  \item Malcolm, D. G., Roseboom, J. H., Clark, C. E., \& Fazar, W. (1959). Application of a technique for research and development program evaluation. \emph{Operations Research, 7}(5), 646–669.
+\item Malcolm, D. G., Roseboom, J. H., Clark, C. E., \& Fazar, W. (1959). Application of a technique for research and development program evaluation. \emph{Operations Research, 7}(5), 646–669.
 
-  \item Project Management Institute. (2017). \emph{La guía de los fundamentos para la dirección de proyectos (Guía del PMBOK®)} (6.ª ed.). Project Management Institute.
+\item Project Management Institute. (2017). \emph{La guía de los fundamentos para la dirección de proyectos (Guía del PMBOK®)} (6.ª ed.). Project Management Institute.
 
 \end{itemize}
 \section{Declaración de uso de IA}
