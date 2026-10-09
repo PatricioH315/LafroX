@@ -14,8 +14,14 @@ INT-01 y INT-02 conservan el UUID de cada operación hasta obtener acuse durable
 
 Las siete interfaces con terceros se encapsulan para que un cambio de proveedor no altere doce módulos a la vez. El Anexo 4-H separa el tercero, el dueño interno del contrato y la conducta ante falla.
 
+INT-06 traspasa la sugerencia de reposición aprobada de M2 al módulo de compras del ERP mediante la ACL (RF-10.03). El ERP conserva la emisión de las órdenes de compra (Subdocumento 3, D-05).
+
 
 La integración tributaria INT-07 pasa por el ERP, único emisor de DTE; M5 no llama al SII. La falla de INT-09 impide afirmar que un cargo quedó aprobado. Para INT-08 se preservan el mensaje original, su equivalencia y la respuesta enviada a cada cadena.
+
+INT-11 distribuye avisos por correo electrónico, SMS/WhatsApp y portal, separando los operacionales o transaccionales de las comunicaciones comerciales o promocionales. Los avisos necesarios para prestar el servicio, como confirmaciones de pedido, ETA e incidencias de entrega, no admiten baja comercial y no incorporan publicidad. Cada mensaje comercial identifica al remitente y su finalidad e incluye una vía expedita de baja: dirección válida y enlace en correo, enlace de suspensión en SMS/WhatsApp y control equivalente en portal. La baja registra destinatario, alcance, canal, fecha y origen en la preferencia de notificación; el trabajador Laravel consulta esa preferencia inmediatamente antes del envío y descarta también los mensajes comerciales pendientes o reintentados cuando existe una suspensión, que rige desde la solicitud. La aceptación comprueba la baja en cada canal y la continuidad de los avisos necesarios sin contenido promocional (Ley N.º 19.496, 1997, art. 28 B; RT-16.25; Bases Técnicas Transversales, cap. 16, p. 30).
+
+Desde la consola Angular, el CLIENTE administra el cuerpo y la versión de las plantillas de avisos y comprobantes de pedido y entrega; Laravel combina la plantilla con los datos autorizados de la transacción y permite descargar el comprobante en HTML, formato abierto. Se reutilizan la plantilla de notificación, su cuerpo versionado y los tipos PEDIDO y ENTREGA, sin alterar la emisión tributaria del ERP; el editor admite texto y campos permitidos, sin ejecutar código de la plantilla (LafroX, 2026b, Anexo 5-A; RT-16.19; Bases Técnicas Transversales, cap. 16, p. 30).
 
 \textbf{Volumen de mensajes por integración.} Los anexos 4-G y 4-H declaran las quince interfaces; el Anexo 4-I resume órdenes de magnitud y cálculos. No se usa la suma de eventos, consultas, muestras y reenvíos como número de transacciones únicas: una misma operación cruza varias interfaces. La prueba mide además tamaño de mensajes, objetos y WAL. La telemetría se ingiere y consolida por su flujo específico sin competir con las escrituras críticas de despacho (ADR-04).
 

@@ -14,6 +14,8 @@ Los cinco ambientes del RT-04.01 cumplen propósitos distintos.
 
 Los cinco deben estar operativos en el hito H3; su emplazamiento, capacidad y segregación de redes se demuestran en 4.2, no mediante el simple nombre del ambiente.
 
+QA funciona también como ambiente de simulación de parámetros: el CLIENTE compara el resultado de las mismas transacciones de prueba con el valor vigente y el propuesto, usando datos controlados y los adaptadores simulados existentes. Solo después de comprobar el efecto y aprobar la versión se habilita su vigencia en Producción (RT-16.05; Bases Técnicas Transversales, cap. 16, p. 29).
+
 La promoción conserva la identidad del artefacto PHP, el archivo de versiones de dependencias y la versión de esquema desde QA hasta producción.
 
 \begin{itemize}

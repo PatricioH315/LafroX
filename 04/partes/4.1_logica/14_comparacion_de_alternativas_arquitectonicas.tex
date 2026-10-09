@@ -5,7 +5,7 @@ La comparación considera la carga real, la continuidad desconectada, la reversi
 
 \begin{tablalafrox}{Alternativas lógicas y criterio de selección}{tab:alternativas}{F{0.18} F{0.27} F{0.27} Y}{\cab{Decisión} & \cab{Seleccionada} & \cab{Alternativa viable} & \cab{Criterio decisivo}}
 Estilo del núcleo & Monolito modular M1--M12 con perfiles separados. & Servicios por dominio. & Menor carga operativa con 31.000 pedidos/mes. \\
-Framework backend & Laravel 13/PHP 8.5 con límites PSR-4. & Django/Python con los mismos contratos. & Un runtime PHP y pruebas de paridad de contratos, datos y colas. \\
+Framework backend & Laravel 13/PHP 8.5 con límites PSR-4. & Django/Python con los mismos contratos. & Un solo runtime PHP para APIs, colas y trabajos. \\
 Aplicación terreno & Kotlin nativo. & Desarrollo multiplataforma. & Integración Zebra y persistencia local. \\
 Mensajería & Broker local y cola de nube. & Broker solo en nube. & Conservación del trabajo con enlace caído. \\
 WMS 2013 & Reemplazo por olas M1/M2/M5. & Sustitución simultánea. & Reversión por sitio y capacidad. \\

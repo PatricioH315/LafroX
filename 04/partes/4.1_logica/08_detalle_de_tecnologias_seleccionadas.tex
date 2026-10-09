@@ -27,16 +27,16 @@ A continuación se resume la tecnología de cada capa y su justificación princi
 
 El Anexo 4-P reúne el inventario completo de servicios AWS y las equivalencias entre nombres funcionales y técnicos. La descripción por capa explica la responsabilidad de cada tecnología; el inventario permite comprobar su correspondencia con el despliegue.
 
-Laravel conserva una superficie de APIs, políticas y colas coherente para los doce módulos;
+Laravel conserva una superficie de APIs, políticas y colas coherente para los doce módulos. Las demás selecciones se fundamentan así:
 
 \begin{itemize}
-  \item Django también permitiría el monolito. Se selecciona un único entorno Laravel/PHP para evitar operar dos cadenas de dependencias y dos familias de trabajadores.
-  \item La equivalencia se acepta por contratos y pruebas, no por parecido de bibliotecas.
+  \item Django también permitiría el monolito. Se descarta porque un único entorno Laravel/PHP cubre las APIs, las políticas, las colas y los trabajos de los doce módulos, sin operar dos cadenas de dependencias ni dos familias de trabajadores.
+  \item La implementación se verifica mediante contratos y pruebas.
   \item PostgreSQL/PostGIS se prefiere a MariaDB por la combinación de transacciones y consultas geográficas del dominio de rutas y sitios; la prueba cubre consultas espaciales y migración.
   \item Keycloak se prefiere a un proveedor de identidad exclusivamente en nube porque permite administrar personal propio y externo sin trasladar la autorización de negocio fuera de M1--M12; el relevo local requiere la prueba de 24 horas.
   \item API Gateway reduce administración frente a un gateway propio, sujeto a prueba de cuotas y costo bajo el pico.
   \item RabbitMQ local más SQS FIFO conserva el trabajo del sitio sin enlace; la deduplicación y el orden por partición se prueban en los consumidores.
-  \item Angular se conserva por sus componentes y contratos TypeScript.
+  \item Angular se selecciona por su organización en componentes y sus contratos TypeScript.
 \end{itemize}
 
 Los costos, el emplazamiento y la redundancia se comprueban en 4.2 y en el registro ADR.

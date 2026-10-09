@@ -1,4 +1,4 @@
-\subsection{Implantación progresiva del backend Laravel}
+\subsection{Implantación progresiva por olas}
 \label{sec:transicion-laravel}
 
 La implantación progresiva de Laravel/PHP conserva los identificadores M1--M12, sus dueños de datos, los contratos públicos y sus versiones, los eventos JSON, la identidad Keycloak y las reglas sin conexión. Se separan los consumidores de integración de los trabajos internos y se prueban identidad, trazas y reversión antes de habilitar cada ola. El Anexo 4-P detalla las tecnologías que realizan estas capacidades; PostgreSQL/PostGIS, RabbitMQ, SQS y los clientes mantienen sus contratos durante el despliegue.

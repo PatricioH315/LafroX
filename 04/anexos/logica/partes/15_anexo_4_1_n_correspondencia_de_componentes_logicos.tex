@@ -20,7 +20,7 @@ M12 & Telemetría & INT-15 & Adaptador de solo lectura y consulta de ruta real. 
 \end{tablalafrox}
 {\footnotesize Fuente: elaboración propia.\par}
 
-La tabla verifica la correspondencia de los doce módulos con sus capacidades, contratos y realizaciones; la Tabla 8 del apartado 4.2.2 completa el enlace físico. Las capacidades transversales también se corresponden: presentación y borde con aplicaciones, CloudFront y acceso privado; puerta de enlace con API central y puerta local; eventos con RabbitMQ, shipper y SQS; datos con bases, réplica de lectura y objetos; identidad con Keycloak y verificador local; secretos y auditoría con sus servicios de custodia; observabilidad con OpenTelemetry/ADOT, alarma local y CloudWatch. Notificaciones se traza a INT-11; el motor de optimización de M4 conserva contrato separado y no se presume implementado en PHP por la elección del backend.
+La tabla verifica la correspondencia de los doce módulos con sus capacidades, contratos y realizaciones; la Tabla 8 del apartado 4.2.2 completa el enlace físico. Las capacidades transversales también se corresponden: presentación y borde con aplicaciones, CloudFront y acceso privado; puerta de enlace con API central y puerta local; eventos con RabbitMQ, shipper y SQS; datos con bases, réplica de lectura y objetos; identidad con Keycloak y verificador local; secretos y auditoría con sus servicios de custodia; observabilidad con OpenTelemetry/ADOT, alarma local y CloudWatch. Notificaciones se traza a INT-11; el motor de optimización de M4 se integra mediante un contrato separado y se ejecuta en su propio contenedor.
 
 La correspondencia entre 3.3, 3.4, 4.1 y 4.2.2 se verifica en ambos sentidos mediante identificador, contrato, responsable y realización física.
 \subsection*{Inventario trazable de capacidades transversales}
@@ -86,4 +86,4 @@ Jefa de Bodega & Consola de bodega; M1/M2/M5/M8 & Recepción, inventario, FEFO, 
 \end{tablalafrox}
 {\footnotesize Fuente: elaboración propia a partir del apartado 3.4.2.1 y del Anexo 3.I del Subdocumento 3.\par}
 
-Recepción, despacho, catálogo y Tesorería son funciones asignadas a personas nominadas dentro de estos perfiles. AL-ACT-01 del Anexo 4-V verifica cada fila con una operación permitida y una denegada.
+Recepción, despacho, catálogo, abastecimiento y Tesorería son funciones asignadas a personas nominadas con permisos específicos dentro de estos perfiles autorizados del CLIENTE. La función de abastecimiento aprueba la sugerencia de reposición de M2 sin crear un actor adicional. AL-ACT-01 del Anexo 4-V verifica cada fila con una operación permitida y una denegada.
