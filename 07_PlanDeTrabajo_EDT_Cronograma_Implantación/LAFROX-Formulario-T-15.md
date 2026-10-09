@@ -514,6 +514,8 @@ El H1 y el H8 tienen reservas de 6 y 4 días hábiles, menores que los diez día
 
 ### 5.6 Medición de los niveles de atención
 
+Durante la atención de 04:00 a 22:00 de lunes a sábado y su cobertura 24×7 en los peaks de septiembre y diciembre y ante incidentes críticos en la ventana de despacho, LafroX atenderá al menos el 80 % de los contactos antes de 20 segundos, resolverá al menos el 70 % en el primer contacto y mantendrá el abandono en un máximo del 5 %. Estos resultados se medirán y reportarán mensualmente y activarán las medidas de recalibración y refuerzo previstas en esta sección (Bases Técnicas Transversales, RT-21.06; Caso 02, cap. 15).
+
 El Erlang C de la mesa (SD4, Anexo 4-W.7) dimensiona la espera con llegadas de Poisson, atención exponencial y paciencia infinita. Sirve para el 80 % de respuestas antes de 20 segundos, pero no modela el abandono ni la resolución al primer contacto del RT-21.06 de las Bases Técnicas Transversales. Para ambos se aplica medición: desde la marcha blanca de la Etapa 1, la mesa registra por contacto la hora de llegada, de respuesta o de abandono y si se resolvió sin escalar. Con al menos cuatro semanas de registros se calibra un modelo con abandono (Erlang A) usando la paciencia observada, y se recalcula la dotación de 8.1.2 antes del mes 21. La resolución al primer contacto se sostiene con la base de conocimiento de 3.11 y la capacitación de 7.1, y se informa mensualmente. Si un indicador no se cumple durante dos meses seguidos, se aumenta la dotación de la franja afectada sin esperar la revisión anual.
 
 ### 5.7 Dotación requerida, roles mínimos y dotación declarada
@@ -923,6 +925,9 @@ Así, los 222 paquetes quedan programados de dos formas: los 163 paquetes con en
 
 Las fuentes de método citadas en este formulario son las siguientes.
 
+- Distribuidora Puelche S.A. (2026b). *Bases Técnicas Transversales de Licitación N.º TFEP-01/2026*.
+- Distribuidora Puelche S.A. (2026c). *Caso 02: Logística. Especificaciones del problema y operación de Distribuidora Puelche S.A.*
+
   
 -  Malcolm, D. G., Roseboom, J. H., Clark, C. E., & Fazar, W. (1959). Application of a technique for research and development program evaluation. *Operations Research, 7*(5), 646–669.
   
@@ -937,4 +942,4 @@ En cumplimiento de la sección 7.2 de las Aclaraciones de la licitación, la tab
 | 1 a 3 | Claude Code; Codex | Redacción del método, ruta crítica y frentes | Alto | Alto (descripciones de figuras) | [[REVISIÓN HUMANA]] |
 | 4 Modelo de recursos | Codex; Claude Code | Cálculo de HH, curvas, calendario real y cobertura de mesa/SOC | Alto | Ninguno | [[REVISIÓN HUMANA]] |
 | 6 Lista de actividades | Claude Code | Descomposición de los 222 paquetes en actividades con la regla del 8/80 y del período de reporte | Alto | Ninguno | [[REVISIÓN HUMANA]] |
-| 5 Red, PERT y dotación | Claude Code | Red con revisiones Art. 18.3, PERT de duración, medición de atención y comparación con la dotación declarada | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| 5 Red, PERT y dotación | Claude Code; Codex | Red con revisiones Art. 18.3, PERT de duración, medición de atención y comparación con la dotación declarada; precisión de compromisos de respuesta, resolución al primer contacto y abandono en 5.6 | Alto | Ninguno | [[REVISIÓN HUMANA]] |

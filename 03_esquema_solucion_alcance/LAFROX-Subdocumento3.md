@@ -313,6 +313,8 @@ La operación cubre los 36 meses contractuales y complementa al equipo de cuatro
 
 La Tabla 3.5 resume los objetivos de servicio de la operación.
 
+El canal único registrará tanto incidentes como solicitudes, con número de ticket, clasificación por severidad y seguimiento del ciclo completo hasta el cierre conforme del CLIENTE (*Bases Técnicas Transversales*, 2026, RT-21.15; RNF-21.06 del Anexo 3.B).
+
 **Tabla 3.5 — Objetivos de servicio. Fuente: elaboración propia a partir de *Bases Administrativas* (2026, arts. 78.2–78.3, p. 40), *Bases Técnicas Transversales* (2026, cap. 7, sección 7.2, pp. 17–18; RT-07.04 y RT-07.07, p. 17; cap. 10, RT-10.01, p. 22), y Anexo 3.E, R-01.**
 
 | Servicio | Indicador | Objetivo | Medición |
@@ -371,7 +373,7 @@ En cumplimiento de la sección 7.2 de las Aclaraciones de la licitación, la Tab
 | 3.1 | Codex; Claude Code | Contraste con las Bases y redacción. | Alto | Ninguno | No documentada. |
 | 3.2 | Codex; Claude Code | Contraste con las Bases y los Subdocumentos 1 y 2; redacción. | Alto | Ninguno | No documentada. |
 | 3.3 | Codex; Claude Code | Descripción estructurada de las figuras. | Alto | Alto | No documentada. |
-| 3.4 | Codex; Claude Code | Redacción de implementación, implantación y operación. | Alto | Ninguno | No documentada. |
+| 3.4 | Codex; Claude Code | Redacción de implementación, implantación y operación; registro de solicitudes en el canal único de servicio. | Alto | Ninguno | No documentada. |
 | Anexo 3.A | Codex; Claude Code | Conversión del catálogo funcional. | Alto | Ninguno | No documentada. |
 | Anexo 3.B | Codex; Claude Code | Conversión del catálogo no funcional. | Alto | Ninguno | No documentada. |
 | Anexo 3.C | Codex; Claude Code | Redacción de supuestos. | Alto | Ninguno | No documentada. |

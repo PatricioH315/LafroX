@@ -178,6 +178,8 @@ La Figura 5.2 distingue recepción, lote, unidad, contenido, saldo, movimiento, 
 
 El saldo tiene grano sitio+ubicación+producto+lote+unidad de medida; la conversión se valida antes de comparar o reservar. La transacción bloquea el saldo, valida disponibilidad y registra movimiento/outbox sin duplicar reintentos. Varias asignaciones abastecen una línea de pedido. secuencia_documento solo existe si el documento de origen aporta ordinal; no se inventa para identificar un hecho histórico. Los ajustes y anulaciones de 5-C conservan causa, dirección y movimiento original; no sobrescriben saldo ni evidencia sin autorización.
 
+El inventario en tránsito se deriva de los eventos de despacho con carga confirmada sin recepción confirmada correlacionada, mediante la transacción, la unidad logística y las cantidades de custodia de 5-A, y se muestra como disponibilidad futura separada del stock físico, comprometido y disponible, con fecha y hora estimada de llegada. La recepción física confirmada en destino cierra ese tránsito y habilita el stock físico local, conservando su registro offline y sincronización idempotente; la fecha de registro no sustituye el hito de recepción. Cada transferencia genera el movimiento inter-bodegas en el ERP mediante la ACL de INT-06, con encolamiento y reintento automático ante indisponibilidad y sin duplicar el efecto contable (LafroX SpA., 2026b, Anexo 3.A, RF-02.06; 2026a, Anexo 4-H, INT-06).
+
 <a id="sec-5-1-5"></a>
 
 ### 5.1.5 Preventa, preparación y misión de preparación
@@ -379,6 +381,8 @@ Integridad de recepción considera exclusivamente líneas de productos que requi
 
 La analítica pesada se ejecuta en Redshift y S3 mediante Glue, separada de OLTP. Las consultas operativas puntuales usan API/proyecciones y las marcas de frescura; la CDC de Talca permanece en el esquema lector separado y no duplica el efecto de los eventos canónicos de negocio. El CLIENTE dispone de filtros, profundización y exportación autónoma del catálogo de 5-H.
 
+La exclusión de predicción de esta ampliación no comprende la estimación determinista de vida útil remanente INN-03, ofertada en 13.3.2 del Subdocumento 13 y sustentada en las series y la asociación sensor–lote de 5.1.7 (LafroX SpA., 2026e, sección 13.3.2; Distribuidora Puelche S.A., 2026b, RT-05.30). Esta estimación emplea parámetros cinéticos documentados y no modelos aprendidos.
+
 La creación autónoma de informes usa la autoría QuickSight integrada en las consolas, con permisos distintos de lectura y creación, conforme S4 §4.1.4.7 y §4.2.2.4, componente N-10. El modelo semántico de 5.1.11/5-H fija grano, relaciones, fórmulas y casos sin base; los informes admiten filtros guardados y envío por calendario bajo los mismos permisos, sin intervención del ADJUDICATARIO.
 
 El Anexo 5-H concentra el catálogo por audiencia, etapa, fórmula y latencia.
@@ -402,6 +406,8 @@ Se propone una exportación íntegra, autónoma y sin cobro adicional, operada p
 El trabajo registra snapshot por autoridad, instante de corte y marcas de agua; captura los deltas hasta una frontera común conciliada y publica la relación de autoridades rezagadas. Una exportación incompleta se declara parcial y no se ofrece como copia íntegra. El manifiesto contiene versión de esquema, alcance, conteos, sumas de control, hashes SHA-256 y referencias de objetos; la validación compara la descarga con ese manifiesto.
 
 El CLIENTE inicia, consulta avance y descarga por enlace autenticado/temporal. Se auditan solicitante, alcance y accesos. Como parámetros iniciales de diseño, el enlace vence en 24 h y puede renovarse sin repetir paquetes; estos se purgan a siete días conservando auditoría. Identidad de trabajo y bloques verificados permiten reanudación sin duplicar/omitir datos. La aceptación ensayará reconstrucción de datos y apertura de objetos fuera de la plataforma.
+
+La exportación de gran volumen se ejecutará como trabajo asíncrono y mantendrá disponible la sesión para las demás operaciones autorizadas. Al completarse, el servicio de notificaciones existente avisará a la persona solicitante y ofrecerá acceso a la descarga bajo sus permisos (Distribuidora Puelche S.A., 2026b, RT-16.29).
 
 La carga masiva operativa de RT-05.22 usa consolas y trabajos por lotes de S4, Anexo 4-C. Un rol CLIENTE autorizado carga CSV UTF-8/JSON según contrato versionado del módulo. Se validan formato, permisos, claves, dominios y referencias antes de aplicar, conservando identidad de origen/operación. Se aceptan registros válidos independientes; dependencias/agregados inseparables se rechazan completos. El informe consultable/descargable contiene estado, conteos y fila/clave, causa y regla de cada rechazo. Corregir y reenviar rechazados conserva identidad sin repetir aceptados; negocio, auditoría y acuse siguen 5.2.2. Descarga y exportación programada mantienen permisos, formatos y manifiesto.
 
@@ -582,6 +588,7 @@ Estas fuentes sostienen las reglas y decisiones citadas en este ítem. Las fuent
 - LafroX SpA. (2026c). *Problema y necesidad*, Subdocumento 2..
 - LafroX SpA. (2026b). *Esquema de solución y alcance*, Subdocumento 3 y anexos..
 - LafroX SpA. (2026a). *Arquitectura*, Subdocumento 4, anexos y formularios T-11/T-12..
+- LafroX SpA. (2026e). *Innovaciones*, Subdocumento 13.
 - International Organization for Standardization. (2008). *ISO/IEC 25012:2008, Software engineering — SQuaRE — Data quality model*. Dimensiones de calidad citadas en 5.2.5; no es fuente de umbrales numéricos.
 - GS1. (2022a). *EPCIS Standard*, release 2.0, junio de 2022. [Estándar](https://ref.gs1.org/standards/epcis/2.0.1/).
 - GS1. (2022b). *Core Business Vocabulary Standard*, release 2.0. [Estándar](https://ref.gs1.org/standards/cbv/2.0.0/).
@@ -602,7 +609,7 @@ En cumplimiento de la sección 7.2 de las Aclaraciones de la licitación, la tab
 | 5.1.1 | Asistente de programación | Estructuración de dominios y almacenes lógicos a partir de S4 y RT-05.01 | Alto | No aplica | [[REVISIÓN HUMANA]] |
 | 5.1.2 | Asistente de programación | Redacción del modelo conceptual y construcción de las Figuras 5.1 y 5.2 | Alto | Alto | [[REVISIÓN HUMANA]] |
 | 5.1.3 | OpenAI Codex | Identidad compartida, equivalencias y origen/versionado del rango térmico de producto | Alto | Alto | [[REVISIÓN HUMANA]] |
-| 5.1.4 | Asistente de programación | Redacción de recepción, lote y unidad logística | Alto | Alto | [[REVISIÓN HUMANA]] |
+| 5.1.4 | Asistente de programación; OpenAI Codex | Redacción de recepción, lote y unidad logística; derivación del tránsito y transferencia ERP | Alto | Alto | [[REVISIÓN HUMANA]] |
 | 5.1.5 | Asistente de programación | Redacción de preventa, reserva y preparación | Alto | Alto | [[REVISIÓN HUMANA]] |
 | 5.1.6 | Asistente de programación | Redacción de ruta, entrega, intento y devolución | Alto | Alto | [[REVISIÓN HUMANA]] |
 | 5.1.7 | OpenAI Codex | Custodia, excursión, asociación temporal y regla preventiva previa a aprobación | Alto | Alto | [[REVISIÓN HUMANA]] |
@@ -616,9 +623,9 @@ En cumplimiento de la sección 7.2 de las Aclaraciones de la licitación, la tab
 | 5.2.3 | Asistente de programación | Redacción de autoridad de escritura y comportamiento en partición | Alto | No aplica | [[REVISIÓN HUMANA]] |
 | 5.2.4 | Asistente de programación | Redacción de la gestión de datos maestros | Alto | No aplica | [[REVISIÓN HUMANA]] |
 | 5.2.5 | Asistente de programación | Redacción de controles de calidad | Alto | No aplica | [[REVISIÓN HUMANA]] |
-| 5.2.6 | Asistente de programación | Redacción de la separación analítica y fórmulas | Alto | No aplica | [[REVISIÓN HUMANA]] |
+| 5.2.6 | Asistente de programación; OpenAI Codex | Redacción de la separación analítica y fórmulas; excepción determinista INN-03 | Alto | No aplica | [[REVISIÓN HUMANA]] |
 | 5.2.7 | Asistente de programación | Redacción de retención, archivado y eliminación | Alto | No aplica | [[REVISIÓN HUMANA]] |
-| 5.2.8 | Asistente de programación | Redacción de exportación e intercambio masivo | Alto | No aplica | [[REVISIÓN HUMANA]] |
+| 5.2.8 | Asistente de programación; OpenAI Codex | Redacción de exportación e intercambio masivo; aviso de término y continuidad de sesión | Alto | No aplica | [[REVISIÓN HUMANA]] |
 | 5.3.1 | Asistente de programación | Cálculo del volumen migrable y redacción del alcance | Alto | No aplica | [[REVISIÓN HUMANA]] |
 | 5.3.2 | Asistente de programación | Redacción del perfilado, saneamiento y causas de rechazo | Alto | Alto | [[REVISIÓN HUMANA]] |
 | 5.3.3 | Asistente de programación | Redacción de transformación y artefactos versionados | Alto | No aplica | [[REVISIÓN HUMANA]] |
@@ -631,5 +638,5 @@ En cumplimiento de la sección 7.2 de las Aclaraciones de la licitación, la tab
 | 5.4.4 | Asistente de programación | Redacción de cachés y copia local del dispositivo | Alto | No aplica | [[REVISIÓN HUMANA]] |
 | 5.4.5 | Asistente de programación | Redacción de conexiones, concurrencia y colas | Alto | No aplica | [[REVISIÓN HUMANA]] |
 | 5.4.6 | Asistente de programación | Redacción del protocolo de medición y pruebas | Alto | No aplica | [[REVISIÓN HUMANA]] |
-| Referencias | Asistente de programación | Comprobación de existencia y formato de las fuentes citadas | Medio | No aplica | [[REVISIÓN HUMANA]] |
+| Referencias | Asistente de programación; OpenAI Codex | Comprobación de existencia y formato de las fuentes citadas; incorporación del Subdocumento 13 para INN-03 | Medio | No aplica | [[REVISIÓN HUMANA]] |
 | Declaración de uso de IA | Asistente de programación | Redacción de esta declaración de trazabilidad | Medio | No aplica | [[REVISIÓN HUMANA]] |

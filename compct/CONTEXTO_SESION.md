@@ -1,5 +1,13 @@
 # CONTEXTO DE SESIÓN
 
+## Estado vigente — 9 de octubre de 2026 (noche): 101 parciales A+B aplicados
+
+Se aplicaron las 101 filas A (ya cubiertas) y B (frase simple) de `Revision/t12_iter/parciales_evaluacion.md` en SD4, SD4-Anexos, T-11, T-14, T-15, T-18, SD1, SD3, SD5, SD6 y SD13 (gpt-6.1-sol medio en tres grupos sin archivos compartidos; el grupo SD4 agotó el límite de uso de Codex tras editar y Claude redactó sus filas). Claude revisó y corrigió: páginas de cita, la ventana dominical de RT-17.03/04 (4.2.6.12), la periodicidad de intrusión del SD1 («al menos anual», compatible con T-14 8.2.2) y RF-18.02/RNF-14.06 a Cumple por cobertura cruzada. T-12: Parte A 237/31/3; Parte B 304/42/28. Detalle en `Revision/t12_iter/parciales_aplicacion.md`. Categoría C (29): plan en `Revision/t12_iter/plan_C_datos.md` con 12 C1 que LafroX puede proponer con fundamento y 17 C2 que requieren datos reales (precios, fichas, certificaciones, misión/visión, carbono); las BA prohíben precios en la Oferta Técnica. Categoría D (45) queda en parcial. Pendiente: actualizar los `Resumen/` de los documentos tocados en esta pasada. Sin commit.
+
+## Decisión vigente — 9 de octubre de 2026: figuras PDF aceptadas
+
+El usuario confirmó expresamente que los enlaces a los PDF de las trece figuras lógicas vigentes están bien. H09 se retira del informe de coherencia y de los pendientes; no exigir PNG/SVG ni conversión por el visor Markdown. Se conservan los objetos y enlaces actuales. Balance vigente: diez hallazgos corregidos, uno retirado por criterio confirmado (H09) y uno parcial (H03, definición del CLIENTE sobre congelamientos/intervenciones urgentes). Las 28 revisiones humanas y los ensayos futuros mantienen su estado. Esta decisión supersede las menciones a integración gráfica pendiente de los registros anteriores.
+
 ## Estado vigente — 9 de octubre de 2026: correcciones y segunda revisión de coherencia SD4
 
 Por instrucción del usuario se corrigieron SD4 cuerpo/anexos/T-11, SD5 cuerpo/anexos, T-12 y los cuatro resúmenes afectados en `rama-md`, preservando cambios preexistentes. Se distinguió recuperación funcional crítica ≤4 h e histórico completo ≤8 h; promoción con exclusión comprobada y retorno como réplica; calendario sin excepciones supuestas y plazos de vulnerabilidades desde publicación/detección; dotación mes 25 de 19/21; canales comunes y bajas persistentes; ficha/rango térmico versionados y regla PREVENTIVA_FICHA sin aprobador. RT-16.02, RT-16.21 y RF-17.10 pasan a Cumple; RT-11.04 sigue parcial por la aclaración contractual pendiente. T-12 conserva sus 645 IDs y descripciones: A 200/68/3; B 242/104/28.

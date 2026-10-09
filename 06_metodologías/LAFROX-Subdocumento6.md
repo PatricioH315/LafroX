@@ -41,9 +41,13 @@ La gestión de interesados identifica y clasifica a las personas, grupos y organ
 
 La gestión de las comunicaciones mantiene informados a los responsables de Puelche y a los demás interesados sobre los avances, facilita decisiones y da seguimiento a los compromisos. Los acuerdos, decisiones y acciones se documentan con responsables y plazos. Los cambios que puedan afectar los compromisos se comunican oportunamente; antes de cada entrega se informa a los interesados pertinentes sobre cambios previstos, validaciones y apoyos requeridos, y las observaciones se registran y atienden, canalizando por solicitud de cambio las que excedan lo acordado. El Formulario T-9 contiene los destinatarios, las cadencias, los registros y la matriz detallada de comunicaciones.
 
+Cada informe mensual de avance incluirá estado del cronograma, avance físico y financiero, entregables del período, desviaciones, riesgos, incidencias y compromisos del período siguiente, con responsables y fechas (Distribuidora Puelche S.A., 2026b, RT-19.06). El avance y las desviaciones se sustentarán en las líneas base, el valor ganado y los registros de ejecución de 6.1.5.
+
 ### 6.1.3 Gestión de adquisiciones
 
 La gestión de adquisiciones planifica y controla las compras y contrataciones según las necesidades, dependencias y cronograma. El CLIENTE compra el equipamiento de terreno conforme a las especificaciones de LafroX; para los equipos de la sala técnica, incluidos racks, servidores y equipos de borde, T-14 asigna a LafroX la orden de compra en el mes 2 y la instalación en el mes 3. La recepción técnica de los equipos y la recepción de la sala son hitos distintos: T-15 sitúa la recepción de la sala en el mes 4, sin que ello establezca aquí una fecha de recepción técnica ni de puesta en servicio/commissioning. El servicio SOC 24x7 es condicional a su subcontratación; RT-11.17 presenta cumplimiento parcial porque la ubicación del SOC no está declarada. Esta referencia no significa que el servicio ya esté contratado ni que exista cumplimiento completo. LafroX habilita el espacio proporcionado por el CLIENTE y configura los equipos; las evidencias y el registro completo de adquisiciones se detallan en T-9.
+
+LafroX garantiza contractualmente que los datos del CLIENTE no serán utilizados para entrenar modelos de terceros, salvo autorización previa, expresa y escrita del CLIENTE. Esta obligación se exigirá también a los proveedores y subcontratistas que tengan acceso a dichos datos (Distribuidora Puelche S.A., 2026b, RT-18.02).
 
 ### 6.1.4 Gestión de integración
 
@@ -91,7 +95,7 @@ La tabla declara el uso de herramientas de inteligencia artificial en este subdo
 | Sección | Herramienta | Finalidad del uso | Nivel en texto | Nivel en diagramas | Revisión humana (quién y qué verificó) |
 |---|---|---|---|---|---|
 | Introducción | Claude Code | Redacción de la introducción y conexión con SD4 y SD7 (7 de octubre de 2026) | Alto | Ninguno | No documentada |
-| 6.1 Metodología de Gestión de Proyectos | Codex; Claude Code | Responsabilidades de adquisición y cadencias (6 de octubre de 2026); PMBOK adaptado, valor ganado, matriz de adquisiciones y Comité de Operación (7 de octubre de 2026) | Alto | Ninguno | No documentada |
+| 6.1 Metodología de Gestión de Proyectos | Codex; Claude Code | Responsabilidades de adquisición y cadencias (6 de octubre de 2026); PMBOK adaptado, valor ganado, matriz de adquisiciones y Comité de Operación (7 de octubre de 2026); contenido del informe mensual y garantía sobre entrenamiento de modelos de terceros | Alto | Ninguno | No documentada |
 | 6.2 Metodología de Desarrollo Software | Claude Code | Compuertas DevSecOps, herramientas del SD4, cadencia de iteraciones y artefactos (7 de octubre de 2026) | Alto | Ninguno | No documentada |
 | Formulario T-9 | Claude Code | Portada y adaptación a Markdown del contenido metodológico detallado y sus tablas | Alto | Ninguno | No documentada |
 | Formulario T-10 | Claude Code | Portada y adaptación a Markdown del contenido metodológico detallado y sus tablas | Alto | Ninguno | No documentada |

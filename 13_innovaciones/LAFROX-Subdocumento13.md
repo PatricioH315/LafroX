@@ -212,6 +212,8 @@ La tecnología se compone de las siguientes piezas:
 - **Correlación:** la traza viaja con OpenTelemetry hacia la capa 8 de observabilidad, en Amazon CloudWatch.
 - **Límites:** el frío, los guantes y la batería no se simulan; requieren prueba física con el dispositivo.
 
+Cada ejecución de reproducción vinculada a una incidencia creará automáticamente sus recursos mediante Terraform desde GitLab CI y los destruirá al finalizar, incluso si la prueba falla (Distribuidora Puelche S.A., 2026b, RT-04.14). La ejecución se realizará dentro de QA o Preproducción, de lunes a viernes de 08:00 a 20:00, salvo ventanas de prueba programadas por el CLIENTE y la activación prevista para correcciones críticas, conforme al supuesto S-43 (LafroX, 2026, Subdocumento 3, Anexo 3.C).
+
 La práctica se apoya en la entrega continua (Shahin et al., 2017). Las métricas de tasa de fallo de cambio y de tiempo de recuperación del informe DORA (2024) se usan como referencia para comparar el diagnóstico antes y después.
 
 ### 13.2.3 Nivel de madurez
@@ -666,7 +668,7 @@ Las Bases se citan con su documento y el artículo, capítulo, sección o códig
 
 - DORA. (2024). *Accelerate state of DevOps report 2024*. Google Cloud. https://dora.dev/research/2024/dora-report/
 - Distribuidora Puelche S.A. (2026a). *Bases Administrativas de Licitación N.º TFEP-01/2026: Contratación de Solución Integral de Software y Servicios de Operación*, artículos 17, 26, 28, 29, 30 y 50.2, y Formularios E-21, E-25 y T-19.
-- Distribuidora Puelche S.A. (2026b). *Bases Técnicas Transversales de Licitación N.º TFEP-01/2026*, RT-04.01, RT-05.30, RT-10.07, RT-13.07, RT-14.06, RT-16.32, RT-18.08 y capítulo 26.
+- Distribuidora Puelche S.A. (2026b). *Bases Técnicas Transversales de Licitación N.º TFEP-01/2026*, RT-04.01, RT-04.14, RT-05.30, RT-10.07, RT-13.07, RT-14.06, RT-16.32, RT-18.08 y capítulo 26.
 - Distribuidora Puelche S.A. (2026c). *Caso 02: Logística. Especificaciones del problema y operación de Distribuidora Puelche S.A.*, capítulos 1, 2, 4, 6, 8, 10, 13 y 18.
 - Distribuidora Puelche S.A. (2026d). *Aclaraciones de la Licitación N.º TFEP-01/2026*, secciones 8 y 11 (Capítulo 13).
 - European Commission. (2016). Technology readiness levels (TRL). En *Horizon 2020 work programme 2016–2017: General annexes* (Anexo G). https://ec.europa.eu/research/participants/data/ref/h2020/other/wp/2016_2017/annexes/h2020-wp1617-annex-g-trl_en.pdf
@@ -675,6 +677,7 @@ Las Bases se citan con su documento y el artículo, capítulo, sección o códig
 - Hundepool, A., Domingo-Ferrer, J., Franconi, L., Giessing, S., Lenz, R., Naylor, J., Schulte Nordholt, E., Seri, G., De Wolf, P.-P., Tent, R., Młodak, A., Gussenbauer, J., & Wilak, K. (2026). *Handbook on statistical disclosure control* (2.ª ed.). Center of Excellence SDC. https://sdctools.github.io/HandbookSDC/
 - Jedermann, R., Nicometo, M., Uysal, I., & Lang, W. (2014). Reducing food losses by intelligent food logistics. *Philosophical Transactions of the Royal Society A, 372*(2017), 20130302. https://doi.org/10.1098/rsta.2013.0302
 - Koutsoumanis, K., Taoukis, P. S., & Nychas, G.-J. E. (2005). Development of a Safety Monitoring and Assurance System for chilled food products. *International Journal of Food Microbiology, 100*(1–3), 253–260. https://doi.org/10.1016/j.ijfoodmicro.2004.10.024
+- LafroX. (2026). *Subdocumento 3: Esquema de solución y alcance*, Anexo 3.C.
 - Ley N.º 21.719. (2024). Regula la protección y el tratamiento de los datos personales y crea la Agencia de Protección de Datos Personales. Diario Oficial, 13 de diciembre de 2024. https://www.bcn.cl/leychile/navegar?idNorma=1209272
 - Riesenegger, L., Santos, M. J., Ostermeier, M., Martins, S., Amorim, P., & Hübner, A. (2023). Minimizing food waste in grocery store operations: Literature review and research agenda. *Sustainability Analytics and Modeling, 3*, 100023. https://doi.org/10.1016/j.samod.2023.100023
 - Shahin, M., Babar, M. A., & Zhu, L. (2017). Continuous integration, delivery and deployment: A systematic review on approaches, tools, challenges and practices. *IEEE Access, 5*, 3909–3943. https://doi.org/10.1109/ACCESS.2017.2685629
@@ -692,7 +695,7 @@ En cumplimiento de la sección 7.2 de las Aclaraciones de la licitación, la tab
 | --- | --- | --- | --- | --- | --- |
 | Introducción | Claude Code | Redacción del resumen y de la conexión con los demás capítulos | Alto | Medio (descripción textual de la figura) | [[REVISIÓN HUMANA]] |
 | 13.1 Innovación 1 | Claude Code | Ordenamiento en los siete elementos y cotejo con el Capítulo 3, el Formulario T-12 y el Anexo 7.D | Medio | Ninguno | [[REVISIÓN HUMANA]] |
-| 13.2 Innovación 2 | Claude Code | Ordenamiento en los siete elementos y cotejo con los Capítulos 4 y 6 | Medio | Ninguno | [[REVISIÓN HUMANA]] |
+| 13.2 Innovación 2 | Claude Code; OpenAI Codex | Ordenamiento en los siete elementos y cotejo con los Capítulos 4 y 6; automatización del ciclo de recursos efímeros por incidencia | Medio | Ninguno | [[REVISIÓN HUMANA]] |
 | 13.3 Innovación 3 | Claude Code | Ordenamiento en los siete elementos, cotejo con el Capítulo 4 y documentación del RT-05.30 | Medio | Ninguno | [[REVISIÓN HUMANA]] |
 | 13.4 Innovación 4 | Claude Code | Ordenamiento en los siete elementos y cotejo con el Formulario E-25 y el Capítulo 3 | Medio | Ninguno | [[REVISIÓN HUMANA]] |
 | 13.5 Innovación 5 | Claude Code | Ordenamiento en los siete elementos y cotejo con el Formulario T-11 | Medio | Ninguno | [[REVISIÓN HUMANA]] |
