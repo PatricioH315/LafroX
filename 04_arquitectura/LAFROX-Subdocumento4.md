@@ -243,6 +243,12 @@ Los portales web, implementados en Angular con Tailwind CSS, permiten a transpor
 
 Las consolas de rutas, calidad, BI y administración TI acceden a sus dominios mediante APIs autorizadas. Ningún navegador se conecta directamente a las bases de datos. Esta separación permite aplicar las mismas reglas de acceso y auditoría con independencia de la pantalla utilizada.
 
+Los portales y la consola web en Angular 22 con Tailwind CSS adaptan su contenido a escritorio, tableta y teléfono conforme a RT-13.02 (Bases Técnicas Transversales, cap. 13, p. 26). El diseño parte de la pantalla pequeña y utiliza los puntos de quiebre de Tailwind: `sm` 40 rem, `md` 48 rem, `lg` 64 rem, `xl` 80 rem y `2xl` 96 rem, equivalentes a 640, 768, 1.024, 1.280 y 1.536 píxeles con la referencia de 16 píxeles por rem (Tailwind Labs, s. f.). En teléfono, la navegación se recoge en un menú, los formularios se ordenan en una columna y los listados presentan tarjetas con acceso al detalle; en tableta se distribuyen los controles y en escritorio se muestran paneles y columnas adicionales. Se conservan todas las operaciones y los datos necesarios, sin reducir simplemente la escala. La aceptación comprueba cada transición y ambas orientaciones. Los terminales Zebra con Kotlin nativo usan la pantalla fija de cada modelo y un diseño específico para su perfil, con tamaños legibles y controles accesibles.
+
+La matriz de navegadores, versiones y actualización de la Tabla A.19 del Anexo 4-P se aplica a los portales y a la consola web (RT-13.10; Bases Técnicas Transversales, cap. 13, p. 26). Las versiones exactas se registran antes de cada liberación y se contrastan con el conjunto Baseline de la versión de Angular utilizada (Angular, 2026b); el soporte del framework no sustituye las pruebas de la aplicación.
+
+Todas las interfaces permiten recorrer y ejecutar íntegramente sus funciones por teclado, con orden de foco acorde con la lectura y la secuencia de trabajo, foco visible, acceso directo al contenido y ausencia de bloqueos del foco. Los diálogos reciben el foco al abrirse y lo devuelven al control de origen al cerrarse; tablas, menús y formularios tienen controles semánticos operables mediante Tab, Shift+Tab, flechas, Enter y Escape según corresponda. Se ofrecen atajos documentados y desactivables para buscar, guardar un borrador y volver al inicio del perfil, sin interferir con los del navegador, del sistema ni con la escritura en campos. En Kotlin se verifica además la navegación con teclado físico o conectado al terminal. La aceptación recorre cada flujo por teclado, comprueba el orden y la recuperación del foco y conserva la conformidad WCAG 2.2 AA comprometida (World Wide Web Consortium [W3C], 2023; RT-13.11; Bases Técnicas Transversales, cap. 13, p. 26).
+
 ##### Actores del sistema, interfaces y autorización
 
 El apartado 3.4.2.1 y el Anexo 3.I del Subdocumento 3 fijan quince actores del sistema: Preventista, Conductor propio, Conductor externo, Preparador, Cliente del canal tradicional, Cliente del canal moderno, Empresa transportista, Proveedor, Jefa de Calidad, Gerente Comercial, Gerente de Finanzas, Planificador de Rutas, Jefe de TI, Gerente de Operaciones y Jefa de Bodega. El Anexo 4-N relaciona cada actor con su interfaz, sus acciones, su ámbito de datos y su etapa. Una relación gráfica entre un actor y un módulo no concede acceso a todas sus funciones.
@@ -756,6 +762,8 @@ La ACL aísla el ERP; ninguna falla de tercero convierte un estado sin confirmar
 
 La integración tributaria INT-07 pasa por el ERP, único emisor de DTE; M5 no llama al SII. La falla de INT-09 impide afirmar que un cargo quedó aprobado. Para INT-08 se preservan el mensaje original, su equivalencia y la respuesta enviada a cada cadena.
 
+INT-11 distribuye avisos por correo electrónico, SMS/WhatsApp y portal, separando los operacionales o transaccionales de las comunicaciones comerciales o promocionales. Los avisos necesarios para prestar el servicio, como confirmaciones de pedido, ETA e incidencias de entrega, no admiten baja comercial y no incorporan publicidad. Cada mensaje comercial identifica al remitente y su finalidad e incluye una vía expedita de baja: dirección válida y enlace en correo, enlace de suspensión en SMS/WhatsApp y control equivalente en portal. La baja registra destinatario, alcance, canal, fecha y origen en la preferencia de notificación; el trabajador Laravel consulta esa preferencia inmediatamente antes del envío y descarta también los mensajes comerciales pendientes o reintentados cuando existe una suspensión, que rige desde la solicitud. La aceptación comprueba la baja en cada canal y la continuidad de los avisos necesarios sin contenido promocional (Ley N.º 19.496, 1997, art. 28 B; RT-16.25; Bases Técnicas Transversales, cap. 16, p. 30).
+
 **Volumen de mensajes por integración.** Los anexos 4-G y 4-H declaran las quince interfaces; el Anexo 4-I resume órdenes de magnitud y cálculos. No se usa la suma de eventos, consultas, muestras y reenvíos como número de transacciones únicas: una misma operación cruza varias interfaces. La prueba mide además tamaño de mensajes, objetos y WAL. La telemetría se ingiere y consolida por su flujo específico sin competir con las escrituras críticas de despacho (ADR-04).
 
 ### 4.1.7 Detalle de tecnologías seleccionadas
@@ -1188,6 +1196,10 @@ En la sala técnica se aplica redundancia sin sobrecompra:
 Los equipos de infraestructura cumplen RT-08.04 (Bases Técnicas Transversales, cap. 8, p. 18) con doble fuente y conexión a circuitos distintos. Los terminales móviles tienen batería, los puntos de acceso reciben PoE de switches con doble fuente, y las impresoras, balanzas y estaciones de trabajo se cubren mediante unidades alternativas y circuitos protegidos.
 
 Todo el equipamiento es nuevo, sin uso previo y con garantía de fábrica vigente desde la recepción conforme (RT-08.06; Bases Técnicas Transversales, cap. 8, p. 18). Su vida útil esperada es de cinco años, mayor que los 56 meses del contrato. Los repuestos provienen de la reserva del 10 % y de la garantía del fabricante. Cada unidad dada de baja se repone desde esa reserva (RT-08.13; Bases Técnicas Transversales, cap. 8, p. 19).
+
+Todo medio de almacenamiento que salga de servicio se identifica por activo y número de serie y permanece bajo custodia hasta completar su sanitización segura y verificable. El procedimiento cubre servidores, NAS y sus discos, HDD y SSD, los SSD de mini-PC, el almacenamiento de terminales móviles y el medio físico rotativo de respaldo. Tras comprobar la conservación de los datos exigibles y la ausencia de una obligación de retención sobre la única copia, se aplica un método de purga adecuado al medio y a la sensibilidad de sus datos, conforme a NIST SP 800-88 Rev. 2; un borrado de archivos o un restablecimiento de fábrica sin evidencia de eficacia no acredita la sanitización. El borrado criptográfico exige comprobar su aplicabilidad y la eliminación de todas las claves pertinentes; un medio averiado o no sanitizable se destruye bajo custodia. Se verifican los resultados y se entrega al CLIENTE un certificado de sanitización o destrucción con identificación del medio, método, fecha, ejecutor, verificador y evidencia del resultado antes de autorizar su salida (National Institute of Standards and Technology [NIST], 2025; RT-08.17; Bases Técnicas Transversales, cap. 8, p. 20).
+
+La disposición final del equipamiento electrónico se efectúa mediante un gestor autorizado y registrado conforme a la normativa de residuos aplicable y a la Ley N.º 20.920 (2016). LafroX comprueba la autorización y el registro del gestor para las operaciones y residuos correspondientes, conserva la trazabilidad desde la entrega hasta el destino final y entrega al CLIENTE el certificado de disposición, con identificación de los equipos, cantidades, gestor, tratamiento, destino y fecha. Los equipos con almacenamiento solo se entregan tras acreditar su sanitización o mediante una cadena de custodia que asegure su destrucción certificada; el certificado de disposición no reemplaza al de sanitización o destrucción. Estas actividades forman parte del ciclo de vida del equipamiento, desarrollado en el paquete 8.2.7 del Formulario T-14 (RT-08.18; Bases Técnicas Transversales, cap. 8, p. 20).
 
 ### 4.2.1.3 Software y licenciamiento
 
@@ -2637,6 +2649,8 @@ El control de acceso y la seguridad física del recinto comprenden:
 
 Las instalaciones sanitarias, las zonas de seguridad ante emergencia y las áreas exteriores existentes en el edificio del CLIENTE se utilizan, sin implementarlas nuevamente dentro del recinto. La bitácora auditable se conserva por un período de retención no inferior a cinco años, coherente con el piso de retención de la auditoría que fija RT-16.10 (Bases Técnicas Transversales, cap. 16, p. 29).
 
+El ingreso de terceros a la sala técnica —fabricantes, mantenedores y auditores— requiere una solicitud con identidad, entidad, motivo, equipos afectados y ventana de trabajo, autorizada previamente por la contraparte responsable del CLIENTE. Antes de ingresar se verifica la identidad y se habilita el acceso temporal mediante el control biométrico; un integrante autorizado acompaña al tercero durante toda la permanencia, sin acceso autónomo ni uso compartido de credenciales. La bitácora registra tercero, autorización, acompañante, fecha y horas de ingreso y egreso, motivo, equipos intervenidos y resultado de la visita. Al salir se comprueba el cierre de la intervención y se revoca la habilitación temporal; una intervención urgente conserva la autorización, el acompañamiento y el registro. Este procedimiento utiliza el control de acceso del Formulario T-11 y se verifica mediante una visita de prueba y su registro completo (RT-06.25; Bases Técnicas Transversales, cap. 6, p. 16).
+
 Los equipos de energía y climatización y los controles de acceso descritos se ordenan físicamente como muestra la Figura [27](LAFROX-Subdocumento4.md#fig:recinto-talca), que distribuye el recinto por zonas y líneas de acceso.
 
 **Figura 27 — Distribución interna del recinto técnico del CD Talca por zonas y líneas de acceso**
@@ -2795,7 +2809,13 @@ Las fuentes citadas en este documento se listan a continuación en formato APA 7
 
 - Ley N.° 21.719. (2024). *Regula la protección y el tratamiento de los datos personales y crea la Agencia de Protección de Datos Personales*. Diario Oficial de la República de Chile.
 
+- Ley N.º 19.496. (1997). *Establece normas sobre protección de los derechos de los consumidores*. Diario Oficial de la República de Chile. <https://www.bcn.cl/leychile/navegar?idNorma=61438>
+
+- Ley N.º 20.920. (2016). *Establece marco para la gestión de residuos, la responsabilidad extendida del productor y fomento al reciclaje*. Diario Oficial de la República de Chile. <https://www.bcn.cl/leychile/navegar?idNorma=1090894>
+
 - National Institute of Standards and Technology. (2020). *Zero trust architecture* (Special Publication 800-207). U.S. Department of Commerce. <https://doi.org/10.6028/NIST.SP.800-207>
+
+- National Institute of Standards and Technology. (2025). *Guidelines for media sanitization* (Special Publication 800-88 Rev. 2). U.S. Department of Commerce. <https://doi.org/10.6028/NIST.SP.800-88r2>
 
 - PHP. (2026). *Supported versions*. <https://www.php.net/supported-versions.php>
 
@@ -2815,6 +2835,10 @@ Las fuentes citadas en este documento se listan a continuación en formato APA 7
 
 - Servicio de Impuestos Internos. (s. f.-b). *Formato de recibos*. <https://www.sii.cl/factura_electronica/desc_19983.pdf>
 
+- Tailwind Labs. (s. f.). *Responsive design*. <https://tailwindcss.com/docs/responsive-design>
+
+- World Wide Web Consortium. (2023). *Web Content Accessibility Guidelines (WCAG) 2.2*. <https://www.w3.org/TR/WCAG22/>
+
 # Declaración de uso de IA
 
 En cumplimiento de la sección 7.2 de las Aclaraciones de la licitación, la tabla siguiente declara el uso de herramientas de inteligencia artificial en este subdocumento, con la revisión humana de cada parte. La declaración se consolida en el Formulario A-6.
@@ -2825,10 +2849,10 @@ En cumplimiento de la sección 7.2 de las Aclaraciones de la licitación, la tab
 
 | Sección | Herramienta | Finalidad del uso | Nivel en texto | Nivel en diagramas | Revisión humana (quién y qué verificó) |
 | --- | --- | --- | --- | --- | --- |
-| 4.1 | OpenAI Codex | Redacción, coherencia y verificación documental. | Alto | Alto en vistas asistidas | [[REVISIÓN HUMANA]] |
+| 4.1 | OpenAI Codex | Redacción, coherencia y verificación documental; diseño responsivo, soporte de navegadores y teclado en 4.1.3.1 y reglas de comunicaciones y baja de INT-11 en 4.1.6.2. | Alto | Alto en vistas asistidas | [[REVISIÓN HUMANA]] |
 | 4.1.1 | OpenAI Codex | Especificaciones y soporte de tecnologías. | Alto | No aplica | [[REVISIÓN HUMANA]] |
-| 4.2 | Codex | Apoyo a la redacción y verificación de consistencia del apartado | Alto | Ninguno | [[REVISIÓN HUMANA]] |
-| 4.3 | Codex | Apoyo a la redacción y verificación de consistencia del apartado | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| 4.2 | Codex | Apoyo a la redacción y verificación de consistencia; sanitización certificada y disposición final en 4.2.1.2. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| 4.3 | Codex | Apoyo a la redacción y verificación de consistencia; acceso acompañado y registrado de terceros en 4.3.1.4. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
 | 4-A | Codex | Eventos canónicos. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
 | 4-B | Codex | Gobierno de integración. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
 | 4-C | Codex | Carga masiva. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
@@ -2836,7 +2860,7 @@ En cumplimiento de la sección 7.2 de las Aclaraciones de la licitación, la tab
 | 4-E | Codex | Trazabilidad funcional. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
 | 4-F | Codex | Límites de contexto. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
 | 4-G | Codex | Interfaces internas. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
-| 4-H | Codex | Interfaces externas. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| 4-H | Codex | Interfaces externas y correspondencia de INT-11 con las reglas de comunicaciones comerciales y baja. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
 | 4-I | Codex | Cálculos de volumen. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
 | 4-J | Codex | Funciones offline. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
 | 4-K | Codex | Reconciliación. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
@@ -2844,7 +2868,7 @@ En cumplimiento de la sección 7.2 de las Aclaraciones de la licitación, la tab
 | 4-M | Codex | Protocolos de aceptación. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
 | 4-N | Codex | Correspondencia lógica. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
 | 4-O | Codex | Especificación y trazabilidad. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
-| 4-P | Codex | Especificación y trazabilidad. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| 4-P | Codex | Especificación y trazabilidad; matriz de navegadores, versiones soportadas y actualización en la Tabla A.19. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
 | 4-Q | Codex | Especificación y trazabilidad. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
 | 4-R | Codex | Especificación y trazabilidad. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
 | 4-S | Codex | Especificación y trazabilidad. | Alto | Ninguno | [[REVISIÓN HUMANA]] |

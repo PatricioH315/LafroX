@@ -14,6 +14,8 @@ El núcleo usa **Laravel 13 y PHP 8.5** como monolito modular: una base de códi
 
 Las **15 integraciones** separan ocho contratos internos y siete externos. La integración con ERP se encapsula; el ERP conserva emisión fiscal. La prueba de entrega, la guía tributaria y los acuses son registros distintos. Los reintentos usan identificadores únicos para evitar efectos duplicados. Véanse [el catálogo](../04_arquitectura/LAFROX-Subdocumento4.md#416-cat%C3%A1logo-de-interfaces) y [la articulación documental](../04_arquitectura/LAFROX-Subdocumento4.md#4117-articulaci%C3%B3n-entre-prueba-de-entrega-dte-y-acuse).
 
+La [presentación](../04_arquitectura/LAFROX-Subdocumento4.md#4131-capa-de-presentaci%C3%B3n-capa-1) adapta portales y consola Angular 22/Tailwind a escritorio, tableta y teléfono y compromete navegación íntegra por teclado, foco lógico y atajos; Kotlin usa la pantalla fija de cada modelo Zebra. La Tabla A.19 del [Anexo 4-P](../04_arquitectura/LAFROX-Subdocumento4-Anexos.md#anx:P) declara Chrome, Edge, Firefox y Safari, sus versiones estables vigente y anterior y la actualización verificada contra el Baseline de Angular. [INT-11](../04_arquitectura/LAFROX-Subdocumento4.md#4162-integraciones-externas) separa avisos necesarios del servicio de comunicaciones comerciales, que incluyen baja, registro de la preferencia y bloqueo de envíos y reintentos desde la solicitud.
+
 ## Arquitectura física: nube y autonomía local
 
 La [arquitectura física](../04_arquitectura/LAFROX-Subdocumento4.md#42-arquitectura-f%C3%ADsica) combina servicios de AWS con operación local en Talca, Concepción y tres plataformas de cross-docking. Talca tiene un clúster local; Concepción y las plataformas cuentan con equipos activos y en espera. La conectividad combina fibra, red móvil y satélite según el sitio.
@@ -25,6 +27,8 @@ Los cinco ambientes separan construcción, pruebas y operación. La promoción u
 El [dimensionamiento](../04_arquitectura/LAFROX-Subdocumento4.md#426-dimensionamiento-y-plan-de-capacidad) parte de escenarios y supuestos, con detalle en Anexo 4-W. Las quince integraciones representan **230.252 mensajes diarios normales** y **353.333 en peak**; no son transacciones únicas sumables. La telemetría térmica aporta **10.920 muestras diarias**. La prueba de carga de referencia es **21,99 TPS**, transacciones por segundo, distribuida por lugar.
 
 T-11 distingue unidades instaladas, repuestos y crecimiento. Por ejemplo, el parque inicial de reparto parte de **96 + 10 de reserva = 106** por tipo correspondiente; **110 instaladas + 11 de reserva = 121** es la proyección del año 3. La memoria permite comprobar el período de cada cantidad antes de comparar cifras.
+
+El [ciclo de vida](../04_arquitectura/LAFROX-Subdocumento4.md#4212-criterios-de-selecci%C3%B3n) exige sanitización verificable o destrucción de todo almacenamiento retirado, con certificado al CLIENTE, y disposición mediante gestor autorizado y registrado con su certificado. El [acceso de terceros a Talca](../04_arquitectura/LAFROX-Subdocumento4.md#4314-sitio-on-premise-cd-talca-sala-t%C3%A9cnica-secundaria) exige autorización, acompañamiento durante toda la visita, registro en bitácora y revocación del acceso temporal.
 
 ## Recuperación y límites
 
@@ -38,4 +42,4 @@ SD5 detalla los datos; T-11 las especificaciones; SD7 el despliegue; SD8 los rie
 
 ---
 
-**Fuente y actualización:** documento local vigente al 8 de octubre de 2026. Resumen elaborado con asistencia de Codex; no acredita aprobación del CLIENTE ni revisión humana adicional.
+**Fuente y actualización:** documento local vigente al 9 de octubre de 2026. Resumen elaborado con asistencia de Codex; no acredita aprobación del CLIENTE ni revisión humana adicional.
