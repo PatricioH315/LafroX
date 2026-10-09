@@ -1,7 +1,5 @@
 # LafroX SpA
 
-**VERSIÓN FINAL PARA ENTREGA**
-
 
 ## LICITACIÓN PÚBLICA
 
@@ -55,14 +53,14 @@ Jefe de Proyecto y Apoderado · LafroX SpA
 | 1.1.2 Servicios Profesionales | 7 |
 | 1.1.3 Servicios de Infraestructura y Conectividad | 7 |
 | 1.2 Estructura Organizacional | 7 |
-| 1.3 Gobierno interno Calidad, Seguridad y Conocimiento | 9 |
-| 1.3.1 Modelo de Gobierno de Calidad | 9 |
+| 1.3 Gobierno interno Calidad, Seguridad y Conocimiento | 10 |
+| 1.3.1 Modelo de Gobierno de Calidad | 10 |
 | 1.3.2 Modelo de Gobierno de Seguridad de la Información | 10 |
 | 1.3.3 Modelo de Gobierno de Gestión del Conocimiento | 10 |
-| 1.4 Experiencia y Certificaciones | 10 |
-| 1.4.1 Cartera de Clientes | 12 |
+| 1.4 Experiencia y Certificaciones | 11 |
+| 1.4.1 Cartera de Clientes | 13 |
 | 1.5 Estructura para Proyecto | 13 |
-| 1.6 Alianzas | 14 |
+| 1.6 Alianzas | 17 |
 
 ---
 
@@ -70,8 +68,8 @@ Jefe de Proyecto y Apoderado · LafroX SpA
 
 - Tabla 1.1 Distribución de la dotación técnica de planta de LafroX. Fuente: Elaboración propia. — 9
 - Tabla 1.2 Equivalencia entre el Caso 02 y los proyectos del Formulario T-6. Fuente: elaboración propia a partir del caso y del Formulario T-6. — 12
-- Tabla 1.3 Roles mínimos del numeral 19.2 y su asignación. Fuente: elaboración propia a partir de las Bases Técnicas Transversales, numeral 19.2. — 14
-- Tabla 1.4 Declaración de uso de IA por sección del Subdocumento 1. Fuente: registro del equipo. — 16
+- Tabla 1.3 Roles mínimos del numeral 19.2 y su asignación. Fuente: elaboración propia a partir de Distribuidora Puelche S.A. (2026b, numeral 19.2). — 15
+- Tabla 1.4 Declaración de uso de IA por sección del Subdocumento 1. Fuente: registro del equipo. — 19
 
 ---
 
@@ -135,7 +133,7 @@ Los servicios de infraestructura y conectividad comprenden:
 
 LafroX posee una estructura organizacional funcional y matricial diseñada para garantizar tanto la excelencia en la ejecución técnica de los proyectos como la continuidad operacional ininterrumpida de los servicios en producción. La dotación técnica de planta asignable a proyectos está compuesta por 124 especialistas contratados por la empresa.
 
-La Figura 1.1 ilustra el organigrama corporativo de la compañía, donde se identifican las líneas jerárquicas y funcionales de reporte.
+La Figura 1.1 ilustra el organigrama corporativo de la compañía, donde se identifican las líneas jerárquicas y funcionales de reporte. La Gerencia General dirige la Dirección de Operaciones, de la que dependen las divisiones de Ingeniería, Infraestructura y Calidad; el CISO mantiene una línea de reporte funcional independiente hacia la Gerencia General.
 
 > **Descripción de imagen — Figura 1.1:** Organigrama vertical de la estructura organizacional corporativa de LafroX. En la parte superior aparece un recuadro de color claro con borde naranja identificado como “Oficial de Seguridad (CISO) Independiente”. Desde este recuadro baja una línea discontinua con flecha y la etiqueta “Seguridad independiente” hacia un recuadro central gris denominado “Gerencia General / Dirección Estratégica”. Desde la Gerencia General desciende una flecha continua hacia “Dirección de Operaciones / Gestión de Entrega y Servicios”, representada en un recuadro claro con borde naranja. Desde Dirección de Operaciones se desprenden tres ramas hacia tres unidades ubicadas en el nivel inferior: a la izquierda “División de Ingeniería / Desarrollo, Datos y Arq”; al centro “División de Infraestructura / NOC 24x7, SRE y Redes”; y a la derecha “División de Calidad (QA) / Pruebas y Procesos CMMI”. Las líneas y flechas representan las relaciones jerárquicas y funcionales de reporte mostradas en la figura.
 
@@ -202,7 +200,7 @@ La idoneidad técnica y metodológica de LafroX está validada por certificacion
 
 Las certificaciones con vencimiento durante el contrato se renuevan mediante auditoría de recertificación ante el mismo organismo antes de su fecha de término: ISO/IEC 27001 antes de enero de 2027, ISO/IEC 20000-1 antes de mayo de 2027 e ISO 9001 antes de noviembre de 2028. La evaluación CMMI-DEV se renueva con una nueva evaluación SCAMPI A antes de noviembre de 2026. LafroX acredita la vigencia de cada certificado ante la Contraparte Técnica durante los 56 meses del contrato. Las Bases Técnicas Transversales admiten, para ISO/IEC 27001, un certificado vigente o un plan de certificación con hitos dentro de los primeros doce meses, y para ISO/IEC 20000-1 un certificado vigente o un plan declarado (Distribuidora Puelche S.A., 2026b, sección 15.2; 2026a, Art. 34°). LafroX supera ese mínimo: acredita ambos certificados vigentes a la fecha de la oferta, junto con ISO 9001.
 
-En concordancia con el Artículo 34° de las Bases Administrativas (Distribuidora Puelche S.A., 2026a) y la aclaración oficial de la licitación, LafroX presenta en el Formulario T-6 el detalle de tres proyectos finalizados en los últimos cinco años y en operación continua, los cuales demuestran experiencia en complejidad técnica y volumétrica equivalente a la del Caso 02:
+En concordancia con el Artículo 34° de las Bases Administrativas (Distribuidora Puelche S.A., 2026a) y con las reglas de entrega de formularios (Distribuidora Puelche S.A., 2026d, sección 1), LafroX presenta en el Formulario T-6 el detalle de tres proyectos finalizados en los últimos cinco años y en operación continua, los cuales demuestran experiencia en complejidad técnica y volumétrica equivalente a la del Caso 02:
 
 1. **Sistema Híbrido de Reparto y Gestión Logística (LogiNacional S.A.):** Ejecutado entre 2021 y 2022, integró un núcleo logístico modular, ERP y facturación electrónica sobre nube pública y servidores de borde en 14 centros de distribución. Soporta 420 camiones y 22.000 entregas diarias bajo SLA contractual de 99,5 %.
 2. **Plataforma de Telemetría y Cadena de Frío IoT (FarmaRed S.A.):** Ejecutada entre 2022 y 2023, monitorea cámaras a −22 °C y una flota refrigerada; procesa más de 12 millones de mediciones mensuales bajo SLA de 99,9 %.
@@ -254,9 +252,9 @@ El proyecto será liderado de forma exclusiva y continua por el Jefe de Proyecto
 - **Líder de Operación / SRE (Guillermo Castillo):** Responsable de la disponibilidad continua 24×7, observabilidad de infraestructura y gestión de niveles de servicio.
 - **Líder de Implantación y Gestión del Cambio (Patricio Henríquez):** Responsable de la adopción en terreno, capacitación de preventistas y conductores, y marchas blancas.
 
-El numeral 19.2 de las Bases Técnicas Transversales exige diez roles mínimos. La Tabla 1.3 asigna cada uno a una persona nominada, con su dedicación. Dos roles no tienen un líder separado y se asignan a líderes cuyo ámbito los contiene: el Líder de Integración, al Arquitecto de Solución, cuya división es Arquitectura de Solución e Integración, y el Líder Funcional, al Líder de Implantación y Gestión del Cambio, que dirige el conocimiento del proceso del CLIENTE desde el levantamiento. Por esa asignación, ambos líderes tienen dedicación completa durante la implementación.
+El numeral 19.2 de las Bases Técnicas Transversales exige diez roles mínimos (Distribuidora Puelche S.A., 2026b, numeral 19.2). La Tabla 1.3 asigna cada uno a una persona nominada, con su dedicación. Dos roles no tienen un líder separado y se asignan a líderes cuyo ámbito los contiene: el Líder de Integración, al Arquitecto de Solución, cuya división es Arquitectura de Solución e Integración, y el Líder Funcional, al Líder de Implantación y Gestión del Cambio, que dirige el conocimiento del proceso del CLIENTE desde el levantamiento. Por esa asignación, ambos líderes tienen dedicación completa durante la implementación.
 
-**Tabla 1.3** Roles mínimos del numeral 19.2 y su asignación. Fuente: elaboración propia a partir de las Bases Técnicas Transversales, numeral 19.2.
+**Tabla 1.3** Roles mínimos del numeral 19.2 y su asignación. Fuente: elaboración propia a partir de Distribuidora Puelche S.A. (2026b, numeral 19.2).
 
 | Rol del numeral 19.2 | Dedicación mínima exigida | Persona nominada | Dedicación asignada | Ámbito que le corresponde |
 |---|---|---|---|---|
@@ -299,7 +297,7 @@ Las fuentes citadas en este documento se listan a continuación en formato APA 7
 
 # Declaración de uso de IA
 
-En cumplimiento de la sección 7.2 de las Aclaraciones de la licitación, la tabla siguiente declara el uso de herramientas de inteligencia artificial en este subdocumento, con la revisión humana de cada parte. La declaración se consolida en el Formulario A-6.
+En cumplimiento de la sección 7.2 de las Aclaraciones de la licitación (Distribuidora Puelche S.A., 2026d), la Tabla 1.4 declara el uso asistido de herramientas de inteligencia artificial en la elaboración del presente subdocumento y el estado de su revisión humana. La declaración se consolida en el Formulario A-6.
 
 **Tabla 1.4** Declaración de uso de IA por sección del Subdocumento 1. Fuente: registro del equipo.
 
@@ -312,4 +310,4 @@ En cumplimiento de la sección 7.2 de las Aclaraciones de la licitación, la tab
 | 1.5 Estructura Proy. | Claude / Gemini | Alineación de roles institucionales | Bajo | Ninguno | Patricio Henríquez (Gest): Trazabilidad con los roles del numeral 19.2 de las Bases Técnicas Transversales |
 | 1.6 Alianzas | Claude / Gemini | Redacción de convenios de hardware | Bajo | Ninguno | Bastián Trejo (Arq): Coherencia con diseño híbrido |
 | Formulario T-6 | Claude / Gemini | Disposición tabular del formulario | Bajo | Ninguno | Alex Aravena (JP): Validación de los 11 campos exigidos y coherencia con la sección 1.4 |
-| 1.5 Estructura Proy., Tabla 1.3 | Claude Code | Asignación de los roles mínimos del numeral 19.2 | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| 1.5 Estructura Proy., Tabla 1.3 | Claude Code | Asignación de los roles mínimos del numeral 19.2 | Alto | Ninguno | Revisión humana pendiente de identificar |
