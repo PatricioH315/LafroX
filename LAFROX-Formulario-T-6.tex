@@ -1,0 +1,93 @@
+%% ============================================================================
+%%  Formulario T-6 --- Experiencia en proyectos similares
+%% ============================================================================
+
+\documentclass[carta,firma]{lafrox}
+
+\datoslafrox{
+  subtitulo    = {Formulario T-6 --- Experiencia en proyectos similares},
+  alcance      = {Formulario T-6},
+  formulario   = {Formulario T-6},
+  nomenclatura = {LAFROX-Formulario-T-6.pdf},
+}
+
+\begin{document}
+
+\portadalafrox
+\preliminareslafrox
+
+\setcounter{chapter}{0}
+\chapter*{Formulario T-6: Experiencia del Proponente}
+\addcontentsline{toc}{chapter}{Formulario T-6: Experiencia del Proponente}
+
+El presente formulario detalla tres proyectos de misión crítica finalizados y en operación continua desarrollados por \textbf{LafroX} en los últimos cinco años, en estricto cumplimiento con los requisitos del Artículo 34° de las Bases Administrativas (experiencia en la industria logística, arquitectura híbrida y operación bajo SLA de disponibilidad $\ge 99,5\%$). Los Proyectos 1 y 2 son híbridos (nube pública y componentes on-premise); los Proyectos 1, 2 y 3 operan con SLA $\ge 99,5\%$.
+
+\begin{landscape}
+\begin{xltabular}{\linewidth}{>{\bfseries\raggedright\arraybackslash}p{4cm} >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}X}
+\caption{Detalle de Experiencia de LafroX (Proyectos de Complejidad Equivalente)}\label{tab:experiencia_t6} \\
+\toprule
+Campo & Proyecto 1 & Proyecto 2 & Proyecto 3 \\
+\midrule
+\endfirsthead
+\caption[]{Detalle de Experiencia de LafroX (Continuación)} \\
+\toprule
+Campo & Proyecto 1 & Proyecto 2 & Proyecto 3 \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+\bottomrule
+\endlastfoot
+
+\textbf{Nombre del proyecto} & Sistema Híbrido de Reparto y Gestión Logística & Plataforma de Telemetría y Cadena de Frío IoT & Sistema Móvil de Preventa y Ruteo Desconectado \\
+\midrule
+
+\textbf{Cliente / mandante} & LogiNacional S.A. & Red Distribución Farmacéutica (FarmaRed S.A.) & Comercializadora Lácteos del Sur S.A. \\
+\midrule
+
+\textbf{Industria} & Distribución mayorista y logística de consumo masivo & Distribución farmacéutica y cadena de frío regulada & Alimentos perecibles y consumo masivo \\
+\midrule
+
+\textbf{Año de inicio y de término} & 2021 -- 2022 (Operación activa 2022 a la fecha) & 2022 -- 2023 (Operación activa 2023 a la fecha) & 2023 -- 2024 (Operación activa 2024 a la fecha) \\
+\midrule
+
+\textbf{Monto del contrato (rango)} & 25.000 a 35.000 UF & 18.000 a 25.000 UF & 12.000 a 18.000 UF \\
+\midrule
+
+\textbf{Alcance ejecutado} & Diseño, desarrollo, despliegue híbrido y soporte 24$\times$7 del software central de logística, cross-docking y facturación en ruta. & Implementación de plataforma IoT para monitoreo térmico en tiempo real en cámaras ($-22\,^{\circ}\mathrm{C}$) y flota, con alertas normativas. & Desarrollo de aplicación móvil off-line first, motor de sincronización asíncrona bidireccional y módulo de crédito comercial. \\
+\midrule
+
+\textbf{Arquitectura (nube / on-premise / híbrida)} & Híbrida: Cargas transaccionales en nube pública AWS y servidores locales de borde en 14 centros de distribución. & Híbrida: Procesamiento central en AWS e integración de sensores de telemetría y gateways industriales on-premise. & Nube pública central con operación desconectada: persistencia local SQLite cifrada en terminales móviles robustos Android, sin componentes on-premise. \\
+\midrule
+
+\textbf{Nivel de servicio comprometido} & 99,5\% anual de disponibilidad (SLA) bajo contrato de operación 24$\times$7. & 99,9\% anual de disponibilidad (SLA) para telemetría crítica y reportes regulatorios. & 99,5\% mensual de disponibilidad del servicio central de conciliación y pedidos. \\
+\midrule
+
+\textbf{Volumen de operación soportado} & 420 camiones de flota activa, 22.000 puntos de entrega diarios en 3 regiones. & 12 cámaras de congelación, 180 vehículos refrigerados, 12 millones de registros/mes. & 280 preventistas en terreno, 18.000 transacciones comerciales procesadas al día. \\
+\midrule
+
+\textbf{Rol de la empresa (principal / socio)} & Contratista Principal (responsable único de ingeniería, infraestructura y soporte). & Contratista Principal (integración de hardware, desarrollo de software y soporte especializado). & Contratista Principal (desarrollo de software aplicativo, QA y gestión del cambio). \\
+\midrule
+
+\textbf{Contraparte de referencia y contacto} & Roberto Morales Valenzuela\newline Gerente de Operaciones y TI\newline {\small\texttt{r.morales@loginacional.cl}}\newline +56 9 8451 2290 & Dra. Cecilia Valenzuela Gómez\newline Directora de Calidad y Logística\newline {\small\texttt{c.valenzuela@farmared.cl}}\newline +56 9 7320 4418 & Andrés Sepúlveda Miranda\newline Subgerente de TI y Distribución\newline {\small\texttt{asepulveda@lacteosdelsur.cl}}\newline +56 9 9124 5531 \\
+
+\end{xltabular}
+\end{landscape}
+
+\section*{Declaración de uso de IA}
+
+En cumplimiento de la sección 7.2 de las Aclaraciones de la licitación, la tabla siguiente declara el uso de herramientas de inteligencia artificial en este formulario, con la revisión humana de cada parte. La declaración se consolida en el Formulario A-6.
+
+\begin{table}[hbt!]
+\centering
+\small
+\begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}p{2.5cm} >{\raggedright\arraybackslash}p{2.2cm} >{\raggedright\arraybackslash}X >{\centering\arraybackslash}p{1.4cm} >{\centering\arraybackslash}p{1.7cm} >{\raggedright\arraybackslash}p{3.5cm}}
+\toprule
+\textbf{Sección} & \textbf{Herramienta} & \textbf{Finalidad del uso} & \textbf{Nivel en texto} & \textbf{Nivel en diagramas} & \textbf{Revisión humana (quién y qué verificó)} \\
+\midrule
+Formulario T-6 & Claude / Gemini & Disposición tabular del formulario & Bajo & Ninguno & Alex Aravena (JP): Validación de los 11 campos exigidos y coherencia con la sección 1.4 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\end{document}

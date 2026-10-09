@@ -1,7 +1,9 @@
-# LuaLaTeX obligatorio para lafrox.cls.
-$pdf_mode = 4;
-$lualatex = 'lualatex --interaction=nonstopmode --synctex=1 %O %S';
+# latexmkrc -- clase lafrox
+# LuaLaTeX obligatorio (fontspec + TikZ overlay en la portada).
+$pdf_mode = 4;                      # 4 = lualatex
+$lualatex = 'lualatex --interaction=nonstopmode --shell-escape --synctex=1 %O %S';
 $bibtex_use = 2;
-$biber = 'biber %O %B'; # Se utiliza con la opción de clase [apa].
+$biber = 'biber %O %B';             # solo se usa con la opcion de clase [apa]
 $clean_ext = 'synctex.gz run.xml bbl bcf loc lol nav snm vrb';
-# Configurar el visor y las rutas personales en cada equipo.
+
+@default_files = ('LAFROX-Subdocumento1.tex', 'LAFROX-Formulario-T-6.tex');
