@@ -350,6 +350,8 @@ Modo síncrono para consultas y asíncrono para cálculos extensos. Volumen norm
 
 Modo asíncrono mediante trabajos Laravel y SNS/API de canal. Dos avisos por entrega: 2.800/5.200 mensajes/día (1.400/2.600 entregas). Contraparte requerida 24×7; las franjas permitidas de contacto se parametrizan por canal y cliente. Timeout de 10 segundos; reintento con clave de aviso y vigencia. Un aviso de ETA vencido se descarta con registro, no se envía al día siguiente. El estado enviado se distingue de recibido y no condiciona el registro de entrega. Falla persistente produce aviso operacional y canal alternativo acordado.
 
+Correo, SMS/WhatsApp y aviso en portal aplican la separación de comunicaciones y la baja de 4.1.6.2 del Subdocumento 4 (RT-16.25; Bases Técnicas Transversales, cap. 16, p. 30). Los avisos transaccionales necesarios para el servicio no admiten baja comercial ni contenido promocional. Los mensajes comerciales incluyen identificación del remitente y una vía expedita de suspensión en cada canal; el correo incorpora asunto y dirección válida para solicitarla. La preferencia conserva destinatario, alcance, canal, fecha y origen de la baja; el trabajador la verifica antes de cada envío y reintento y suprime desde la solicitud toda comunicación comercial alcanzada, incluidas las que están en cola. La aceptación prueba cada vía de suspensión, su registro y el bloqueo de reintentos, sin impedir los avisos necesarios del servicio (Ley N.º 19.496, 1997, art. 28 B).
+
 ##### INT-15. Telemetría de flota — M12
 
 Modo asíncrono o extracción periódica de solo lectura según API existente. Volumen normal/peak: 60.480/60.480 posiciones/día, calculadas para 42 camiones × 120 posiciones/h × 12 h; el peak no aumenta esta fuente. Contraparte requerida 24×7 para conservar historial y cubrir turnos. Timeout de 10 segundos por consulta o 30 por lote; reanudación por cursor y deduplicación. Sin datos se muestra posición fechada y ruta prevista, nunca una posición presuntamente actual. La geolocalización no sustituye al POD.
@@ -1008,6 +1010,8 @@ Fuente: Laravel (2026), PHP (2026), PostgreSQL (2026), Angular (2026a, 2026b) y 
 
 Laravel, PHP, PostgreSQL y Angular tienen horizontes inferiores al contrato: el responsable de Desarrollo registra cada trimestre su soporte y planifica la sustitución antes de vencimiento. RabbitMQ requiere una actualización temprana antes del fin comunitario de la rama de referencia, aun durante desarrollo. No se atribuye al CLIENTE un contrato de soporte comercial no contratado.
 
+La Tabla A.19 reúne el inventario complementario y la matriz de navegadores, versiones y actualización que se aplica a los portales y a la consola web.
+
 <a id="tab:inventario-software"></a>
 
 **Tabla A.19 — Inventario complementario y control de vigencia**
@@ -1019,6 +1023,10 @@ Laravel, PHP, PostgreSQL y Angular tienen horizontes inferiores al contrato: el 
 | Room/SQLite | Versión estable de AndroidX Room y SQLite incorporada. | Parches fijados por Gradle; migración de cola sin perder registros sin confirmar. |
 | Keycloak | 26.x, parche soportado al liberar. | Revisión trimestral del ciclo oficial; migrar junto al adaptador OIDC. |
 | Tailwind/Node/RxJS | Versiones compatibles con Angular y su toolchain. | Archivo de bloqueo y matriz de compatibilidad; Node solo construye el cliente. |
+| Google Chrome — Windows, macOS, Linux y Android | Versión estable mayor vigente y la inmediatamente anterior, con sus parches disponibles. | Registrar versiones exactas y verificar ambas contra el Baseline de Angular y los flujos de los portales y consola. |
+| Microsoft Edge — Windows, macOS y Linux | Versión estable mayor vigente y la inmediatamente anterior, con sus parches disponibles. | Registrar versiones exactas y verificar ambas contra el Baseline de Angular y los flujos de los portales y consola. |
+| Mozilla Firefox — Windows, macOS, Linux y Android | Versión estable mayor vigente y la inmediatamente anterior, con sus parches disponibles. | Registrar versiones exactas y verificar ambas contra el Baseline de Angular y los flujos de los portales y consola. |
+| Apple Safari — macOS, iOS y iPadOS | Versión estable mayor vigente y la inmediatamente anterior, en sistemas compatibles. | Registrar versión del navegador y del sistema y verificar ambas contra el Baseline de Angular y los flujos de los portales y consola. |
 | Composer/PHPUnit/PHPStan/Pint | Versiones compatibles con PHP 8.5 y Laravel 13. | Composer lock, análisis de licencia, audit y regresión; no entran herramientas de prueba al runtime. |
 | php-amqplib/AWS SDK/swagger-php | Bibliotecas mantenidas compatibles con PHP 8.5. | Contrato AMQP, sobre JSON y generación OpenAPI bloquean cambios incompatibles. |
 | OpenAS2/JVM | Rama soportada compatible con perfiles de las cadenas. | Certificados, licencia, runtime Java y pruebas MDN registrados antes de habilitar INT-08. |
@@ -1027,7 +1035,9 @@ Laravel, PHP, PostgreSQL y Angular tienen horizontes inferiores al contrato: el 
 | Servicios AWS | API/engine gestionados declarados por servicio. | Avisos de retiro trimestrales; prueba de adaptación. Aurora conserva versión de engine y fecha de soporte del proveedor. |
 | MDM/Android Enterprise | Servicio y plan compatibles con el parque. | Contrato de soporte y actualización de dispositivos durante todo el período. |
 
-Fuente: decisiones de arquitectura lógica y política de configuración de la propuesta.
+Fuente: decisiones de arquitectura lógica y política de configuración de la propuesta; compatibilidad de navegadores según Angular (2026b).
+
+La Tabla A.19 incorpora la matriz de navegadores y versiones soportadas de RT-13.10 (Bases Técnicas Transversales, cap. 13, p. 26), aplicable a los portales y a la consola web de 4.1.3.1. La matriz utiliza versiones relativas para mantener el soporte durante el contrato; antes de cada liberación se registra el número exacto, sistema operativo, resultado y fecha de las pruebas. Angular 22 usa el conjunto Baseline del 7 de mayo de 2026; las versiones ofertadas deben pertenecer a ese conjunto y, al migrar Angular, al de la versión adoptada (Angular, 2026b). Cada nueva versión estable de navegador activa pruebas de autenticación, navegación, formularios, teclado y adaptación de pantallas en QA antes de sustituir la versión más antigua de la matriz; un fallo genera corrección y repetición de pruebas antes de declarar su compatibilidad. Los parches de seguridad se comprueban y se incorporan a la matriz con prioridad. La revisión trimestral de soporte del framework se complementa con esta comprobación por cada versión estable del navegador.
 
 El fin de soporte no publicado se registra como *no publicado*, con responsable y frecuencia de revisión; no significa soporte indefinido. Antes de aprobar una dependencia se verifica licencia, mantenimiento, vulnerabilidades y alternativa de sustitución (RT-11.26). La ficha de liberación identifica versión exacta, EOL conocido o política aplicable, prueba, rollback y responsable. La aceptación rechaza una imagen fuera de soporte.
 
@@ -1622,6 +1632,8 @@ Las fuentes citadas en este documento se listan a continuación en formato APA 7
 
 - Ley N.° 21.719. (2024). *Regula la protección y el tratamiento de los datos personales y crea la Agencia de Protección de Datos Personales*. Diario Oficial de la República de Chile.
 
+- Ley N.º 19.496. (1997). *Establece normas sobre protección de los derechos de los consumidores*. Diario Oficial de la República de Chile. <https://www.bcn.cl/leychile/navegar?idNorma=61438>
+
 - National Institute of Standards and Technology. (2020). *Zero trust architecture* (Special Publication 800-207). U.S. Department of Commerce. <https://doi.org/10.6028/NIST.SP.800-207>
 
 - PHP. (2026). *Supported versions*. <https://www.php.net/supported-versions.php>
@@ -1661,7 +1673,7 @@ En cumplimiento de la sección 7.2 de las Aclaraciones de la licitación, la tab
 | E | Codex | Trazabilidad funcional. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
 | F | Codex | Límites de contexto. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
 | G | Codex | Interfaces internas. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
-| H | Codex | Interfaces externas. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| H | Codex | Interfaces externas; separación de avisos transaccionales y comerciales, baja y control de reintentos en INT-11. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
 | I | Codex | Cálculos de volumen. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
 | J | Codex | Funciones offline. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
 | K | Codex | Reconciliación. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
@@ -1669,7 +1681,7 @@ En cumplimiento de la sección 7.2 de las Aclaraciones de la licitación, la tab
 | M | Codex | Protocolos de aceptación. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
 | N | Codex | Correspondencia lógica. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
 | O | Codex | Especificación y trazabilidad. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
-| P | Codex | Especificación y trazabilidad. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| P | Codex | Especificación y trazabilidad; matriz de navegadores, versiones y actualización de la Tabla A.19. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
 | Q | Codex | Especificación y trazabilidad. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
 | R | Codex | Especificación y trazabilidad. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
 | S | Codex | Especificación y trazabilidad. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
