@@ -1,5 +1,17 @@
 \chapter{Formulario T-15: Nivelación de recursos}
 
+\newcommand{\figuraDiagramaHorizontal}[3]{%
+  \par\clearpage
+  \begin{anexohorizontal}
+    \thispagestyle{empty}
+    \begin{center}
+      \includegraphics[width=0.97\linewidth,height=0.78\textheight,keepaspectratio]{#1}
+      \captionsetup{hypcap=false}
+      \captionof{figure}{#2}\label{#3}
+    \end{center}
+  \end{anexohorizontal}
+  \clearpage}
+
 Este formulario presenta la información de planificación que pide el Formulario T-15 de las Bases Administrativas para el Subdocumento 7: el método con que se estiman las horas hombre de cada paquete, la programación sobre la red de dependencias, la ruta crítica y sus holguras, y los frentes de trabajo, con el detalle de los solapamientos de los meses 13 a 15 y 19 a 20. Los paquetes de trabajo son los de la EDT del Formulario T-14. Este formulario no contiene precios ni costos (Art. 50.2).
 
 \section{Método de estimación y de programación}
@@ -25,12 +37,9 @@ La sección 5 incorpora las revisiones del CLIENTE (Art. 18.3) como retardos, ca
 
 La ruta crítica se identifica sobre el cronograma por actividad de la sección 6.1, con la red de la sección 5. Con fechas de hito fijas, la holgura total de cada camino es su reserva hasta la fecha límite de entrega de la Tabla \ref{tab_T15_7}. La ruta crítica es la cadena de la Etapa 2: diseño (1.2.5, 2.1.4 y 2.4.2; H8, 4 días hábiles de reserva y 91,1 \% de probabilidad de entrega a tiempo en la simulación con riesgos del SD8), módulos (3.5), prueba de integración (3.9.1; H9, 21 días hábiles) y certificación (3.9.2–3.9.7; H10, 25 días hábiles). Son caminos casi críticos la cadena de la Etapa 1 que nace en las interfaces sin documentación del ERP (1.2.3 \ensuremath{\rightarrow} 3.3.2 \ensuremath{\rightarrow} 3.4 \ensuremath{\rightarrow} 3.8.1, H4 con 19 días; \ensuremath{\rightarrow} 3.8.2–3.8.8, H5 con 35 días) y la sala técnica y los ambientes del H3 (2.3, 5.1.2, 6.1, 6.3, 6.6.3 y 3.1; 19 días). El H1 tiene la menor reserva absoluta, 6 días hábiles, con una desviación mínima (\ensuremath{\sigma} 0,58) y una probabilidad de entrega a tiempo superior al 99,9 \%. Las marchas blancas (4.2.1, meses 13 a 15, y 4.3.1, meses 19 y 20) y los pasos a producción (H7 en el mes 16 y H12 en el mes 21) tienen fechas contractuales fijas.
 
-\begin{figure}[htbp]
-\LFXfiguraPendiente
-\nota{Descripción textual de figura: Caminos casi críticos 5.1.2 y 6.1 a 6.6 terminan en el H3 Marcha / blanca E1 Marcha / blanca E2}
-\caption{Ruta crítica identificada y caminos casi críticos de la implementación. Fuente: elaboración propia a partir del Anexo 7.B del Subdocumento 7 y de los períodos del Formulario T-14.}
-\label{fig:T15-ruta}
-\end{figure}
+\figuraDiagramaHorizontal{imagenes/Diagramas que faltaban/Fig_7-7_T15-1_Ruta_Critica.drawio.png}
+  {Ruta crítica identificada y caminos casi críticos de la implementación. Fuente: elaboración propia a partir del Anexo 7.B del Subdocumento 7 y de los períodos del Formulario T-14.}
+  {fig:T15-ruta}
 
 La figura presenta la secuencia mensual de la implementación y la convergencia de los caminos casi críticos en los hitos. En el Anexo 7.B, D-29 a D-31c forman la ruta crítica, D-02, D-04 y D-14 a D-25 forman la cadena casi crítica de la Etapa 1 y D-07 a D-13 convergen en el H3. También son caminos casi críticos la captura de las reglas de ruteo del planificador (1.2.2 y 3.4.7 M4 Rutas), antes de su jubilación; los acuerdos con los diez transportistas y con el sindicato (5.4.1 y 5.4.2), antes de la ola de reparto; y la certificación del intercambio electrónico con las cadenas (3.6.5 y 3.6.6), antes del mes 21.
 
@@ -44,12 +53,9 @@ Un frente de trabajo es un equipo con un responsable y un conjunto de cuentas de
 
 Los frentes se sincronizan en los hitos del Formulario E-25 y en los comités del Art. 71°, cuyas actas registran los acuerdos entre frentes (paquetes 1.8.2 a 1.8.5). La Figura \ref{fig:T15-frentes} presenta su ventana de actividad entre los meses 1 y 21.
 
-\begin{figure}[htbp]
-\LFXfiguraPendiente
-\nota{Descripción textual de figura: Solapamiento / meses 13 a 15 Solapamiento / meses 19 y 20 \textbf{F8 Operación} / Líder de Operación / SRE 8.1–8.3, 8.5: desde el mes 21 hasta el 56}
-\caption{Frentes de trabajo de los meses 1 a 21 y solapamientos del Art. 17.2. Fuente: elaboración propia a partir de la Tabla T-15.1 y del Formulario T-14.}
-\label{fig:T15-frentes}
-\end{figure}
+\figuraDiagramaHorizontal{imagenes/Diagramas que faltaban/Fig_7-6_T15-2_Frentes_Trabajo.drawio.png}
+  {Frentes de trabajo de los meses 1 a 21 y solapamientos del Art. 17.2. Fuente: elaboración propia a partir de la Tabla T-15.1 y del Formulario T-14.}
+  {fig:T15-frentes}
 
 En los meses 13 a 15 trabajan a la vez F7, en la marcha blanca de la Etapa 1; F3, en las correcciones de esa marcha blanca; F4, en el desarrollo de la Etapa 2; F6, en las pruebas de ambas etapas; y F1 y F2. F3 y F4 dependen del mismo rol, el Líder de Desarrollo, y por eso son equipos distintos: el equipo que atiende la marcha blanca no puede ser el que desarrolla la Etapa 2 (Art. 17.2, punto 1). En los meses 19 y 20 trabajan F7, en la marcha blanca de la Etapa 2; F4, en sus correcciones; F6; y el soporte de la Etapa 1 en producción.
 
@@ -199,23 +205,9 @@ Cada paquete se descompone en actividades de 8 a 80 HH que caben en una quincena
 
 La Figura \ref{fig:T15-gradual} muestra qué parte del cronograma se detalla en la oferta y en qué momento se detalla el resto.
 
-\clearpage
-\begin{figure}[p]
-\centering
-\begin{tikzpicture}
-\node[draw=lafroxFuerte,rounded corners,align=left,text width=12cm,inner sep=7pt] (g0) at (0,-0.0) {Inicio, alcance y diseño E1 (hasta el H2)};
-\node[draw=lafroxFuerte,rounded corners,align=left,text width=12cm,inner sep=7pt] (g1) at (0,-1.5) {Construcción E1 · se detalla antes del H2};
-\draw[->,lafroxFuerte] (g0.south) -- (g1.north);
-\node[draw=lafroxFuerte,rounded corners,align=left,text width=12cm,inner sep=7pt] (g2) at (0,-3.0) {Certificación y marcha blanca E1 · antes del H4};
-\draw[->,lafroxFuerte] (g1.south) -- (g2.north);
-\node[draw=lafroxFuerte,rounded corners,align=left,text width=12cm,inner sep=7pt] (g3) at (0,-4.5) {Diseño y construcción E2 · antes del H8};
-\draw[->,lafroxFuerte] (g2.south) -- (g3.north);
-\node[draw=lafroxFuerte,rounded corners,align=left,text width=12cm,inner sep=7pt] (g4) at (0,-6.0) {Certificación y marcha blanca E2 · antes del H9};
-\draw[->,lafroxFuerte] (g3.south) -- (g4.north);
-\end{tikzpicture}
-\caption{Planificación gradual del cronograma. Fuente: elaboración propia a partir de las Tablas \ref{tab_T15_paquetes} y \ref{tab_T15_9}.}
-\label{fig:T15-gradual}
-\end{figure}
+\figuraDiagramaHorizontal{imagenes/Diagramas que faltaban/Fig_T15-3_Planificacion_Gradual.drawio.png}
+  {Planificación gradual del cronograma. Fuente: elaboración propia a partir de las Tablas \ref{tab_T15_paquetes} y \ref{tab_T15_9}.}
+  {fig:T15-gradual}
 
 La figura muestra que sólo los cuatro primeros meses, hasta el H2, se presentan descompuestos en actividades. Cada fase posterior tiene sus paquetes, fechas y dependencias fijos, y se detalla en un punto de replanificación ubicado antes del hito que la precede, cuando el equipo ya conoce el trabajo: así el cronograma no promete el día exacto de una actividad que ocurrirá un año después.
 
@@ -254,4 +246,3 @@ Las fuentes de método citadas en este formulario son las siguientes.
 En cumplimiento de la sección 7.2 de las Aclaraciones de la licitación, la tabla siguiente declara el uso de herramientas de inteligencia artificial en este formulario, con la revisión humana de cada parte. La declaración se consolida en el Formulario A-6.
 
 \parte{tablas/tab_T15_11}
-
