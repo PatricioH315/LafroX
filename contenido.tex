@@ -107,7 +107,7 @@ Las restricciones del Anexo 3.E mantienen el despacho de 05:30 a 07:00, la conti
 
 El reemplazo modular progresivo del WMS de 2013 es una decisión ya declarada en el Subdocumento 2, Anexo 2.2, S-14, y en el inventario de sistemas legados del Anexo 2.3. La solución lo materializa en los módulos M2 y M5, preservando al ERP como fuente contable y tributaria.
 
-El Anexo 3.C registra 41 supuestos. Los dieciséis primeros provienen de las decisiones del Subdocumento 2, Anexo 2.2. Destacan la reserva de stock al confirmar el pedido, el precio acordado al tomar el pedido, que se conserva aunque cambie posteriormente la lista de precios, el reagendamiento ante local cerrado, el control de envases por saldo y la devolución registrada en terreno. La promesa de entrega sigue el arbitraje del Subdocumento 2: \textbf{24 horas para clientes urbanos con pedidos ingresados antes de las 14:00, y 48 horas para clientes rurales, periféricos o abastecidos por cross-docking} (sección «Arbitraje de tensiones operacionales y comerciales», tensión 1). Esta promesa es distinta de la ventana de 30 minutos del canal moderno. Una excursión térmica menor y transitoria genera una alerta preventiva en cabina; ante una excursión crítica y sostenida, el sistema bloquea preventivamente el lote y notifica a Calidad, que decide su liberación, bloqueo o rechazo (Anexo 2.2, S-04).
+El Anexo 3.C registra 41 supuestos. Los dieciséis primeros provienen de las decisiones del Subdocumento 2, Anexo 2.2. Destacan la reserva de stock al confirmar el pedido, el precio acordado al tomar el pedido, que se conserva aunque cambie posteriormente la lista de precios, el reagendamiento ante local cerrado, el control de envases por saldo y la devolución registrada en terreno. La promesa de entrega sigue el arbitraje del Subdocumento 2: \textbf{24 horas para clientes urbanos con pedidos ingresados antes de las 14:00, y 48 horas para clientes rurales, periféricos o abastecidos por cross-docking} (sección «Arbitraje de tensiones operacionales y comerciales», tensión 1). Para los pedidos urbanos ingresados a las 14:00 o después, LafroX fija una promesa de 48 horas (Anexo 3.G, RNG-15; Anexo 3.C, S-21). Esta promesa es distinta de la ventana de 30 minutos del canal moderno. Una excursión térmica menor y transitoria genera una alerta preventiva en cabina; ante una excursión crítica y sostenida, el sistema bloquea preventivamente el lote y notifica a Calidad, que decide su liberación, bloqueo o rechazo (Anexo 2.2, S-04).
 
 \subsection{Catálogo de requerimientos y correspondencia}
 
@@ -126,7 +126,7 @@ Cinco reglas concentran las decisiones más sensibles del caso, y cada una respo
 \begin{itemize}
   \item \textbf{Reserva de stock (RNG-01).} La reserva firme se realiza al confirmar el pedido en el servidor central, por orden de recepción y con correlativo de desempate. Un pedido capturado sin señal utiliza stock indicativo y entra en ese orden al sincronizar. Si dos preventistas solicitan el mismo producto y el stock no alcanza para ambos, se reserva según ese orden y se notifica el quiebre al preventista cuyo pedido no puede cubrirse.
   \item \textbf{Excursión térmica (RNG-04).} La respuesta se gradúa: advertencia ante una excursión menor y transitoria, y retención preventiva del lote ante una crítica y sostenida. La disposición final es siempre de Calidad. La regla evita tanto el bloqueo ciego que teme Operaciones como la liberación sin evidencia que teme Calidad. Como criterio provisional pendiente de validación por Calidad, mientras esta no apruebe los parámetros para un tipo de producto, toda lectura fuera del rango de almacenamiento de su ficha se trata como crítica; Calidad conserva la decisión final sobre el lote.
-  \item \textbf{Corte y promesa (RNG-15).} Un pedido urbano ingresado antes de las 14:00 se promete a 24 horas; uno rural, periférico o abastecido por cross-docking, a 48 horas. La preventa muestra la fecha prometida y el OTIF se mide contra la fecha y ventana pactadas, conforme a RNG-09. La regla reemplaza la promesa de 24 horas a todo evento que Operaciones considera imposible.
+  \item \textbf{Corte y promesa (RNG-15).} Un pedido urbano ingresado antes de las 14:00 se promete a 24 horas; uno urbano ingresado a las 14:00 o después, o uno rural, periférico o abastecido por cross-docking, a 48 horas. La preventa muestra la fecha prometida y el OTIF se mide contra la fecha y ventana pactadas, conforme a RNG-09. La regla reemplaza la promesa de 24 horas a todo evento que Operaciones considera imposible.
   \item \textbf{Efectivo y rendición.} Cada cobro queda asociado a su entrega en el momento en que ocurre, con comprobante para el cliente. La rendición no se cierra con diferencias sin causal ni responsable. La regla no elimina el efectivo del canal tradicional; elimina la imposibilidad de saber en qué entrega se produjo el descuadre.
   \item \textbf{Local cerrado y reentrega (RNG-05).} El conductor registra el intento y la entrega se reagenda a la siguiente ventana disponible; no se entrega a terceros. Si el cliente continúa ausente, la mercadería retorna al centro de distribución con trazabilidad del evento. La regla convierte cada reentrega en un evento con causa, que alimenta el OTIF y, en la Etapa 2, el costo de servir del cliente.
 \end{itemize}
@@ -236,7 +236,7 @@ La Figura 3.3 muestra dos recorridos de izquierda a derecha: la operación de pr
 Durante la desconexión, los dispositivos de preventa y reparto guardan los registros de su jornada durante un turno de 14 horas. El centro de distribución mantiene la recepción, preparación y despacho con registros locales durante al menos 24 horas. Al recuperar la conexión, la sincronización es automática: el dispositivo de reparto debe completarla en un máximo de diez minutos tras ese turno, y el centro, en un máximo de dos horas tras un corte de 24 horas.
 
 \par\smallskip
-La conciliación integra los registros locales, evita la pérdida o duplicación de pedidos y resuelve los conflictos de stock mediante reglas documentadas y una bitácora auditable. En preventa, el stock consultado sin conexión es indicativo; la reserva firme se realiza al confirmar el pedido en el servidor central. Por ello, un pedido capturado sin señal queda pendiente de sincronización y confirmación antes de incorporarse a la planificación.
+La plataforma conserva una cola local durable e idempotente: cada transacción lleva un identificador único y, al restablecerse el enlace, se envía en orden y se reconcilia sin perder ni duplicar pedidos. Los conflictos de versión se resuelven mediante una regla determinista documentada, sin sobrescritura silenciosa y con una bitácora auditable de cada decisión (Anexo 3.G, RNG-12). Después de integrar los registros pendientes se recalculan los indicadores del día. En preventa, la consulta sin conexión muestra la antigüedad del dato y el stock es indicativo; la reserva firme se realiza al confirmar el pedido en el servidor central. Por ello, un pedido capturado sin señal queda pendiente de sincronización y confirmación antes de incorporarse a la planificación.
 \end{minipage}
 \par\medskip
 
@@ -292,6 +292,10 @@ La Figura 3.5 muestra a los usuarios de terreno, clientes, proveedores, transpor
 \end{minipage}
 \par\medskip
 
+La Figura 3.5 identifica quince actores que interactúan con la solución: Preventista, Conductor propio, Conductor externo, Preparador, Cliente del canal tradicional, Cliente del canal moderno, Empresa transportista, Proveedor, Jefa de Calidad, Gerente Comercial, Gerente de Finanzas, Planificador de Rutas, Jefe de TI, Gerente de Operaciones y Jefa de Bodega. Son distintos de los diecinueve interesados en el proyecto del Subdocumento 2: participar en el gobierno, formular una necesidad o recibir un informe no confiere acceso a una aplicación. El Anexo 3.I, Tabla 3.A.12a, relaciona cada actor de la figura con su interfaz, interacción, módulo y etapa.
+
+Empresa transportista y Proveedor acceden mediante representantes identificados y limitados a los datos de su organización; Conductor externo conserva una identidad personal vinculada a su empresa, vehículo, ruta y turno. El portal del Cliente del canal tradicional es opcional desde la Etapa 2: la compra por preventista y el pago en efectivo continúan sin exigir cuenta ni conexión propia. El segmento \textit{food service} se registra como atributo comercial del cliente y no crea por sí solo un actor adicional. La Gerenta General, el Sindicato de Choferes, la Autoridad Sanitaria y los peonetas participan o reciben información según su función, sin obtener por ese hecho una sesión o perfil de los quince actores. Las conexiones de las Figuras 3.4 a 3.8 indican relaciones funcionales, no permisos irrestrictos; estos se delimitan por acción y ámbito, conforme al catálogo del Anexo 3.A y a la arquitectura de la oferta.
+
 \renewcommand{\thefigure}{3.6}
 \noindent\begin{minipage}{\linewidth}
 \centering
@@ -325,6 +329,24 @@ La Figura 3.8 muestra las relaciones con el ERP, Transbank y el sistema de geolo
 \end{minipage}
 \par\medskip
 
+La Tabla 3.4 resume cómo las capacidades del alcance se distribuyen entre los módulos que presenta la Figura 3.7. No sustituye las relaciones de acceso, interfaces e integraciones de las Figuras 3.4 a 3.8.
+
+\renewcommand{\thetable}{3.4}
+\begin{tablalafrox}{Correspondencia entre capacidades del alcance y módulos de negocio. Fuente: elaboración propia a partir de las Figuras 3.4 a 3.8 y del Anexo 3.A.}%
+  {tab:3-4}%
+  {F{0.29} F{0.25} Y F{0.09}}%
+  {\cab{Capacidad} & \cab{Módulo responsable} & \cab{Resultado que habilita} & \cab{Etapa}}
+  Recepción, lote y vencimiento & M1 Recepción & Trazabilidad de ingreso y calidad de datos. & 1 \\
+  Inventario, FEFO, reposición, \textit{cross-docking} y preparación & M2 Inventario; M5 Preparación & Stock confiable y despacho controlado. & 1 \\
+  Preventa y planificación de rutas & M3 Preventa; M4 Rutas & Pedido confirmable y ruta corregible. & 1 \\
+  Entrega, acuse, cobro y retorno & M6 Reparto; M7 Cobranza y rendición; M8 Devoluciones y envases & Evidencia de entrega, conciliación y control de envases. & 1 \\
+  Calidad, trazabilidad y telemetría & M9 Calidad y trazabilidad; M12 Telemetría & Retiro sanitario y evidencia de cadena de frío. & 1 \\
+  Indicadores y costo de servir & M10 BI Gerencia & OTIF diario; costo de servir en la segunda etapa. & 1/2 \\
+  Canal moderno e intercambio electrónico & M11 EDI Canal Moderno & Pedido electrónico y aviso de despacho. & 2 \\
+\end{tablalafrox}
+
+El \textit{cross-docking} se controla mediante inventario, preparación, rutas y reparto, sin crear un decimotercer módulo. Los requerimientos transversales se asignan a la base compartida y se trazan en el Formulario T-12.
+
 \subsection{Implementación}
 
 La implementación construye primero la base compartida: identidad, integración con el ERP, registro auditable, operación desconectada y observabilidad. Sobre ella trabajan tres frentes en la Etapa 1: bodega y calidad (M1, M2, M5, M9, M12); preventa, rutas y reparto (M3, M4, M6, M8); y datos y rendición (M7, M10). La Etapa 2 agrega el frente de canal moderno y costo de servir (M11 y M10).
@@ -337,9 +359,9 @@ El orden de construcción sigue las dependencias de datos. Primero se estabiliza
 
 \subsection{Implantación}
 
-La implantación respeta las condiciones operacionales de Distribuidora Puelche. La programación de los pasos a producción evita septiembre, diciembre y los tres primeros días hábiles de cada mes, conforme al análisis de la sección 3.1.2. Cada proceso convive con la forma actual de trabajar durante la marcha blanca, con conciliación entre ambos registros y posibilidad de volver atrás. El despliegue se hace por proceso, sitio o zona, considera el turno nocturno y capacita en terreno sin detener venta ni reparto. La incorporación de cada transportista requiere un acuerdo operacional propio.
+La implantación respeta las siete condiciones de la sección 13.3 del caso. La programación de los pasos a producción evita septiembre, diciembre y los tres primeros días hábiles de cada mes, conforme al análisis de la sección 3.1.2. Cada proceso convive con la forma actual de trabajar durante la marcha blanca, con conciliación entre ambos registros y posibilidad de volver atrás. El despliegue se hace por proceso, sitio o zona, considera el turno nocturno y capacita en terreno sin detener venta ni reparto. La incorporación de cada transportista requiere un acuerdo operacional propio. La estabilización de cada ola declara duración y dotación, incluida la presencia en bodega y el acompañamiento en ruta.
 
-La secuencia comienza por datos maestros y trazabilidad de recepción, continúa por bodega y preparación, y culmina con preventa, reparto y rendición por zonas. En cada ola se define cuál es el registro oficial. Mientras dura la convivencia, la hoja de picking impresa y la guía en papel siguen siendo el respaldo; se retiran cuando la ola cumple su criterio de avance durante cuatro semanas consecutivas a volumen real.
+La secuencia comienza por datos maestros y trazabilidad de recepción, continúa por bodega y preparación, y culmina con preventa, reparto y rendición por zonas. En cada ola se define cuál es el registro oficial y se mantiene un único escritor por dominio. Durante la convivencia, la hoja de picking impresa y los documentos en papel sirven para consulta y tareas auxiliares; no sustituyen la operación local probada ni la emisión tributaria exclusiva del ERP. El respaldo en papel se retira cuando la ola cumple su criterio de avance durante cuatro semanas consecutivas a volumen real.
 
 El criterio de avance de una ola exige:
 
@@ -352,7 +374,9 @@ El criterio de avance de una ola exige:
   \item Acta firmada por la Contraparte Técnica.
 \end{itemize}
 
-La reversión la autoriza el responsable operativo del CLIENTE cuando un indicador amenaza el despacho. Su disparador es observable: pedidos sin sincronizar al inicio de la carga, rutas del día no disponibles para cargar o un defecto crítico en la ventana de despacho. La vuelta al procedimiento anterior debe completarse antes de las 05:30. Por eso se decide en el turno de noche, con la hoja de picking y la guía en papel disponibles. Los registros capturados durante la ola permanecen en cola y se concilian al retomar; no se pierden. Este tiempo de vuelta no es el RTO de la sección 3.4.5: es el plazo para no afectar el despacho.
+La reversión la autoriza el responsable operativo del CLIENTE ante pedidos no sincronizados, rutas no disponibles o un defecto crítico. La restitución del servicio de despacho debe completarse antes de las 05:30 y sostener la salida de los 96 camiones entre las 05:30 y las 07:00 sin interrupción. Volver al papel no demuestra esa capacidad: la continuidad depende de una versión operativa local probada, colas durables, rutas disponibles y documentos válidos emitidos exclusivamente por el ERP. Una guía ausente o invalidada requiere su reemisión autorizada; la solución no emite documentos tributarios alternativos. El papel es respaldo de consulta y contingencia de tareas auxiliares, no una sustitución manual del despacho crítico.
+
+El ensayo previo a cada corte mide tiempos, pérdida o duplicación, conciliación y volumen. El Formulario T-18, sección 6.4, fija para el procedimiento de reversión un objetivo de 40 minutos: decisión límite a las 04:45 y término a las 05:25, con cinco minutos de margen antes del despacho. El ensayo en PREPROD debe confirmar ese objetivo antes de cada corte; no se autoriza el corte sin evidencia del flujo completo, incluidas las rutas, las guías válidas y la conservación de los registros en cola. El RTO de recuperación general de la sección 3.4.5 no concede interrupciones en la ventana de despacho.
 
 Después de cada paso a producción, la estabilización incluye presencia en bodega durante el turno de noche y acompañamiento en ruta a preventistas y conductores. Su duración es de cuatro semanas por ola, el mismo período que exige el criterio de avance. La dotación se deriva de la operación del caso:
 
@@ -379,18 +403,18 @@ La migración de datos acompaña la secuencia de olas. El WMS de 2013 opera en T
   \item Corte fuera de las ventanas de congelamiento.
 \end{itemize}
 
-El WMS se conserva en solo lectura hasta el cierre de la marcha blanca del sitio como respaldo de consulta (Anexo 3.C, S-14). La vía operacional de reversión es el procedimiento manual con hoja de picking y guía en papel descrito arriba; el CLIENTE conserva la autoridad sobre los datos, y las transacciones del período se concilian al retomar. La reversión se ensaya en PREPROD antes de cada corte.
+El WMS se conserva en solo lectura hasta el cierre de la marcha blanca del sitio como respaldo de consulta (Anexo 3.C, S-14). La reversión conserva una versión operativa local probada y un único escritor por dominio; el papel solo apoya consulta y tareas auxiliares. El CLIENTE conserva la autoridad sobre los datos y las transacciones del período se concilian al retomar. La reversión se ensaya en PREPROD antes de cada corte con las condiciones de despacho indicadas arriba.
 
 \subsection{Operación}
 
 La operación cubre los 36 meses contractuales y complementa al equipo de cuatro personas del CLIENTE con monitoreo, gestión de incidentes, continuidad, seguridad, datos y evolución controlada. Distingue dos servicios. El centro de operaciones de red monitorea la plataforma 24$\times$7 (RNF-21.01). Los incidentes críticos y altos se atienden 24$\times$7$\times$365, con respuesta en 15 minutos y 1 hora, y resolución en 4 y 8 horas, respectivamente. La atención general de la mesa de servicio es de 04:00 a 22:00 de lunes a sábado, con cobertura 24$\times$7 en septiembre y diciembre (RT-21.06). La atención incluye un canal asistido para clientes tradicionales; la autoatención no se impone como condición para recibir soporte.
 
 \clearpage
-La Tabla 3.4 resume los objetivos de servicio de la operación.
+La Tabla 3.5 resume los objetivos de servicio de la operación.
 
-\renewcommand{\thetable}{3.4}
+\renewcommand{\thetable}{3.5}
 \begin{tablalafrox}{Objetivos de servicio. Fuente: elaboración propia a partir de \textit{Bases Administrativas} (2026, arts. 78.2--78.3, p. 40), \textit{Bases Técnicas Transversales} (2026, cap. 7, sección 7.2, pp. 17--18; RT-07.04 y RT-07.07, p. 17; cap. 10, RT-10.01, p. 22), y Anexo 3.E, R-01.}%
-  {tab:3-4}%
+  {tab:3-5}%
   {F{0.222} Y F{0.154} F{0.256}}%
   {\cab{Servicio} & \cab{Indicador} & \cab{Objetivo} & \cab{Medición}}
   Infraestructura & Disponibilidad mensual & $\ge$ 99,95 \% & Mensual, por componente. \\
@@ -430,11 +454,13 @@ La estrategia por grupo responde a las resistencias concretas que registra el ca
 \section*{Referencias}
 \addcontentsline{toc}{section}{Referencias}
 
-Las Bases se citan con sus títulos abreviados: \textit{Bases Administrativas} y \textit{Bases Técnicas Transversales}. Los artículos, capítulos y códigos identifican las disposiciones utilizadas.
+Las Bases se citan en el texto con sus títulos abreviados: \textit{Bases Administrativas} y \textit{Bases Técnicas Transversales}. Los artículos, capítulos y códigos identifican las disposiciones utilizadas. Las claves LafroX 2026a--c se conservan conforme a las citas del cuerpo y los anexos.
 
 {\setlength{\parindent}{0pt}
-\hangindent=1.27cm\hangafter=1 \textit{Bases administrativas para la preparación de la propuesta} (Versión 1.0). (2026).\par\medskip
-\hangindent=1.27cm\hangafter=1 \textit{Bases técnicas transversales para la preparación de la propuesta} (Versión 1.0). (2026).\par\medskip
+\hangindent=1.27cm\hangafter=1 Distribuidora Puelche S.A. (2026a). \textit{Bases Administrativas de Licitación N.\textsuperscript{o} TFEP-01/2026}.\par\medskip
+\hangindent=1.27cm\hangafter=1 Distribuidora Puelche S.A. (2026b). \textit{Bases Técnicas Transversales de Licitación N.\textsuperscript{o} TFEP-01/2026}.\par\medskip
+\hangindent=1.27cm\hangafter=1 Distribuidora Puelche S.A. (2026c). \textit{Caso 02: Logística}.\par\medskip
+\hangindent=1.27cm\hangafter=1 Distribuidora Puelche S.A. (2026d). \textit{Aclaraciones de la Licitación N.\textsuperscript{o} TFEP-01/2026}.\par\medskip
 \hangindent=1.27cm\hangafter=1 LafroX. (2026a). \textit{Anexos del Subdocumento 02}.\par\medskip
 \hangindent=1.27cm\hangafter=1 LafroX. (2026b). \textit{Subdocumento 1: Presentación de la empresa}.\par\medskip
 \hangindent=1.27cm\hangafter=1 LafroX. (2026c). \textit{Subdocumento 2: Comprensión del problema y de la necesidad}.\par\medskip
@@ -443,13 +469,13 @@ Las Bases se citan con sus títulos abreviados: \textit{Bases Administrativas} y
 \section*{Declaración de uso de IA}
 \addcontentsline{toc}{section}{Declaración de uso de IA}
 
-La Tabla 3.5 registra la asistencia de IA por sección, anexo y formulario. La revisión humana se registra cuando el equipo la realiza.
+En cumplimiento de la sección 7.2 de las Aclaraciones de la licitación, la Tabla 3.6 declara el uso de herramientas de inteligencia artificial por sección, anexo y formulario asociado. Esta declaración se consolida en el Formulario A-6. La columna de revisión humana identifica lo comprobado cuando el equipo documenta esa revisión; «No documentada» no acredita que se haya realizado.
 
-\renewcommand{\thetable}{3.5}
+\renewcommand{\thetable}{3.6}
 \begin{tablalafrox}{Declaración de uso de IA. Fuente: registro del equipo.}%
-  {tab:3-5}%
-  {F{0.100} F{0.199} Y F{0.060} F{0.091} F{0.170}}%
-  {\cab{Sección} & \cab{Herramienta} & \cab{Finalidad} & \cab{Nivel texto} & \cab{Nivel diagramas} & \cab{Revisión humana}}
+  {tab:3-6}%
+  {F{0.090} F{0.170} Y F{0.090} F{0.100} F{0.200}}%
+  {\cab{Sección} & \cab{Herramienta} & \cab{Finalidad del uso} & \cab{Nivel en texto} & \cab{Nivel en diagramas} & \cab{Revisión humana (quién y qué verificó)}}
   3.1 & Codex; Claude Code & Contraste con las Bases y redacción. & Alto & Ninguno & No documentada. \\
   3.2 & Codex; Claude Code & Contraste con las Bases y los Subdocumentos 1 y 2; redacción. & Alto & Ninguno & No documentada. \\
   3.3 & Codex; Claude Code & Descripción estructurada de las figuras. & Alto & Alto & No documentada. \\
@@ -466,4 +492,6 @@ La Tabla 3.5 registra la asistencia de IA por sección, anexo y formulario. La r
   Anexo 3.J & Codex; Claude Code & Redacción de criterios de aceptación. & Alto & Ninguno & No documentada. \\
   Anexo 3.K & Codex; Claude Code & Glosario. & Medio & Ninguno & No documentada. \\
   Formulario T-12 & Codex; Claude Code & Generación de la matriz de cumplimiento. & Alto & Ninguno & No documentada. \\
+  3.2 y Anexo 3.G (7-10-2026) & Claude Code & Propuestas para RNG-04 y RNG-15; los parámetros térmicos de RNG-04 siguen sujetos a validación de Calidad. & Alto & Ninguno & No documentada. \\
+  3.3 y 3.4 (9-10-2026) & Codex & Revisión y redacción de continuidad, reversión, actores, módulos y referencias. & Alto & Ninguno & No documentada. \\
 \end{tablalafrox}

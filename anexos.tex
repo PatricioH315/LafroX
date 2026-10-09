@@ -128,7 +128,7 @@ La Tabla 3.A.10 presenta el registro de reglas de negocio.
 
 \input{tablas_anexo/reglas_negocio.tex}
 
-Las reglas RNG-01, RNG-04, RNG-05 y RNG-07 recogen las decisiones adoptadas en los registros S-08, S-04, S-03 y S-10, respectivamente, del Anexo 2.2 del Subdocumento 2 (LafroX, 2026a). RNG-15 conserva la promesa del arbitraje 1 del Subdocumento 2 (LafroX, 2026c); permanece pendiente definir el tratamiento de pedidos urbanos posteriores a las 14:00. Los parámetros se configuran sin desarrollo (RF-17.02), conservando los compromisos del SD2; la configuración no constituye una validación de los valores pendientes.
+Las reglas RNG-01, RNG-04, RNG-05 y RNG-07 recogen las decisiones adoptadas en los registros S-08, S-04, S-03 y S-10, respectivamente, del Anexo 2.2 del Subdocumento 2 (LafroX, 2026a). RNG-15 conserva la promesa del arbitraje 1 del Subdocumento 2 (LafroX, 2026c) y la completa con la regla de LafroX: un pedido urbano ingresado a las 14:00 o después recibe una promesa de 48 horas. La fecha prometida se muestra al confirmar el pedido y se conserva para medir OTIF; el Gerente Comercial y Operaciones verifican su aplicación operacional en el mes 2 (S-21). Mientras Calidad no apruebe los parámetros térmicos por tipo de producto (V-11), RNG-04 trata preventivamente como crítica toda lectura fuera del rango de almacenamiento declarado en la ficha del SKU. Los parámetros se configuran sin desarrollo (RF-17.02); esta configuración no constituye una aprobación de los valores pendientes.
 
 \section*{Anexo 3.H — Registro de vacíos y consultas}
 \addcontentsline{toc}{section}{Anexo 3.H — Registro de vacíos y consultas}
@@ -152,6 +152,16 @@ La Tabla 3.A.12 presenta la participación de cada actor.
 
 El planificador tiene influencia Alta e interés Muy Alto según el Anexo 2.3 del Subdocumento 2 (LafroX, 2026a); por eso participa desde el mes 1 y no solo como informado. El portal de transportistas no incluye liquidación de pagos, que la exclusión E-05 deja fuera del alcance.
 
+\subsection*{Actores del sistema e interacción funcional}
+Los quince actores de la Figura 3.5 del Subdocumento 3 se distinguen de los diecinueve interesados de la estrategia de participación. La tabla siguiente indica la interfaz, la interacción, los módulos responsables y la etapa de cada actor. La asignación a un módulo no otorga por sí sola acceso irrestricto a sus datos; los permisos se definen por acción y ámbito.
+
+\begin{landscape}
+\setlength{\textwidth}{\linewidth}\setlength{\tabcolsep}{3pt}
+\input{tablas_anexo/actores_sistema.tex}
+\end{landscape}
+
+La Figura 3.5 y los requerimientos del Anexo 3.A sustentan el catálogo funcional; sus permisos concretos se validan con el CLIENTE durante el levantamiento. Los diecinueve interesados del Anexo 2.3 siguen presentes en la tabla de participación y no equivalen a diecinueve cuentas de acceso. Sindicato y autoridad sanitaria conservan el tratamiento del Subdocumento 3; food service mantiene su segmento, el peoneta no comparte credenciales y las empresas transportistas acceden mediante representantes. Recepción, catálogo, abastecimiento, despacho y Tesorería son funciones con permisos específicos dentro de perfiles autorizados. El jefe de abastecimiento que figura en RF-10.01 a RF-10.03 ejerce la función de abastecimiento: revisa y aprueba la sugerencia de reposición de M2 Inventario (D-05).
+
 \section*{Anexo 3.J — Criterios de aceptación}
 \addcontentsline{toc}{section}{Anexo 3.J — Criterios de aceptación}
 
@@ -161,7 +171,7 @@ La Tabla 3.A.13 presenta los criterios de aceptación.
 
 \input{tablas_anexo/criterios_aceptacion.tex}
 
-Las metas de R18-04 y R18-16 son propias de LafroX. La meta de R18-04 alcanza el 95 \% en el mes 32, tras un ciclo anual con ambas etapas en producción; la ventana de 30 minutos de la principal cadena se mide aparte (RF-12.10 y RF-12.11). Los tramos se derivan en la sección 3.2.5 del Subdocumento 3. Las metas de R18-12 y R18-14 son supuestos de oferta (S-26 y S-27), sujetos a validación con el CLIENTE. La aceptación de cada resultado la firma la Contraparte Técnica en el acta de cierre de la marcha blanca (\textit{Bases Administrativas}, 2026, art. 17.3, p. 13). Hay dos excepciones, que se aceptan en el cierre de forma provisional y se confirman en operación: R18-04, en su tramo del mes 32, y R18-12, tras 12 meses.
+Las metas de R18-04 y R18-16 son propias de LafroX. La meta de R18-04 alcanza el 95 \% en el mes 32, tras un ciclo anual con ambas etapas en producción; el Caso 02, tabla 7.1, muestra una referencia \emph{sobre} el 95 \%, por lo que el 95 \% exacto es un compromiso de LafroX y no una transcripción de esa referencia. La ventana de 30 minutos de la principal cadena se mide aparte (RF-12.10 y RF-12.11). Los tramos se derivan en la sección 3.2.5 del Subdocumento 3. Las metas de R18-12 y R18-14 son supuestos de oferta (S-26 y S-27), sujetos a validación con el CLIENTE. La aceptación de cada resultado la firma la Contraparte Técnica en el acta de cierre de la marcha blanca (\textit{Bases Administrativas}, 2026, art. 17.3, p. 13). Hay dos excepciones, que se aceptan en el cierre de forma provisional y se confirman en operación: R18-04, en su tramo del mes 32, y R18-12, tras 12 meses.
 
 R18-12 conserva la meta de la Tabla 2.1 del Subdocumento 2 (LafroX, 2026c): pérdida anual de envases no superior al 7 \% del parque. La medición no utiliza el número de despachos como denominador. Se conserva también la meta de merma por vencimiento del mismo cuadro: no superior al 1,0 \% del valor del inventario al año, verificada tras 12 meses de operación y sin aumentar los quiebres de stock. Su verificación compara la merma anual valorizada y los quiebres de stock con la línea base del Subdocumento 2; este compromiso complementa los dieciséis resultados de aceptación.
 
@@ -179,11 +189,14 @@ La Tabla 3.A.14 presenta las siglas y códigos utilizados.
 
 Las fuentes se citan en cada tabla con su capítulo, artículo, sección o código.
 
+Las referencias a «Bases Administrativas», «Bases Técnicas Transversales» y «Caso 02» en las tablas corresponden, respectivamente, a Distribuidora Puelche S.A. (2026a), Distribuidora Puelche S.A. (2026b) y Distribuidora Puelche S.A. (2026c), conforme a la identificación utilizada en los Subdocumentos 1 y 2 de LafroX.
+
 {\setlength{\parindent}{0pt}
 \setlength{\parskip}{0pt}
 \linespread{2}\selectfont
-\hangindent=1.27cm\hangafter=1 \textit{Bases administrativas para la preparación de la propuesta}. (2026). (Versión 1.0).\par
-\hangindent=1.27cm\hangafter=1 \textit{Bases técnicas transversales para la preparación de la propuesta}. (2026). (Versión 1.0).\par
+\hangindent=1.27cm\hangafter=1 Distribuidora Puelche S.A. (2026a). \textit{Bases Administrativas de Licitación N.º TFEP-01/2026: Contratación de Solución Integral de Software y Servicios de Operación}.\par
+\hangindent=1.27cm\hangafter=1 Distribuidora Puelche S.A. (2026b). \textit{Bases Técnicas Transversales de Licitación N.º TFEP-01/2026}.\par
+\hangindent=1.27cm\hangafter=1 Distribuidora Puelche S.A. (2026c). \textit{Caso 02: Logística — Especificaciones del Problema y Operación de Distribuidora Puelche S.A.}\par
 \hangindent=1.27cm\hangafter=1 LafroX. (2026a). \textit{Anexos del Subdocumento 02}.\par
 \hangindent=1.27cm\hangafter=1 LafroX. (2026b). \textit{Subdocumento 1: Presentación de la empresa}.\par
 \hangindent=1.27cm\hangafter=1 LafroX. (2026c). \textit{Subdocumento 2: Comprensión del problema y de la necesidad}.\par
@@ -194,8 +207,11 @@ Las fuentes se citan en cada tabla con su capítulo, artículo, sección o códi
 \section*{Declaración de uso de IA}
 \addcontentsline{toc}{section}{Declaración de uso de IA}
 
-La tabla declara la asistencia de IA en cada anexo. La revisión humana se registra cuando el equipo la realiza.
+Según la declaración del Subdocumento 1 (LafroX, 2026b), la sección 7.2 de las Aclaraciones de la licitación exige declarar el uso de inteligencia artificial y consolidarlo en el Formulario A-6. La tabla registra la asistencia en estos anexos. La columna de revisión humana queda pendiente de completar con el responsable y lo verificado cuando el equipo efectúe esa revisión; este estado no acredita aprobación del CLIENTE.
 
 La Tabla 3.A.15 registra la asistencia utilizada.
 
+\begin{landscape}
+\setlength{\textwidth}{\linewidth}\setlength{\tabcolsep}{3pt}
 \input{tablas_anexo/declaracion_ia.tex}
+\end{landscape}

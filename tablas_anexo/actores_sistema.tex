@@ -1,0 +1,21 @@
+\renewcommand{\thetable}{3.A.12a}
+\begin{tablalafrox}{Actores del sistema e interacción funcional. Fuente: Figura 3.5 del Subdocumento 3 y requerimientos del Anexo 3.A.}%
+  {tab:3-A-12a}%
+  {F{0.145} F{0.140} Y F{0.195} F{0.115}}%
+  {\cab{Actor del sistema} & \cab{Interfaz} & \cab{Interacción funcional} & \cab{Módulos responsables} & \cab{Etapa}}
+  Preventista & App de preventa & Consulta comercial, captura de pedido y sincronización; sin reserva firme local. & M3; consulta a M2 y M7. & E1 \\
+  Conductor propio & App de reparto & Entrega, POD, cobro, devolución y envases de su ruta. & M6, M7, M8. & E1 \\
+  Conductor externo & App de reparto & Mismas operaciones de reparto, bajo asignación personal empresa--vehículo--turno. & M6, M7, M8. & E1 \\
+  Preparador & App de bodega/HHT & Ejecuta misión, confirma lecturas y registra faltantes; la recepción requiere autorización funcional. & M5; operaciones autorizadas de M1/M2. & E1 \\
+  Cliente del canal tradicional & Portal de clientes opcional & Pedido en autoatención y consulta de entregas, documentos y saldo. & Canal M11; negocio M3, M6, M7. & E2; atención por preventista desde E1 \\
+  Cliente del canal moderno & Portal de clientes; integración EDI de la cadena & Consulta y pedido; el intercambio EDI utiliza identidad técnica separada. & M11; negocio M3, M6, M7. & E2 \\
+  Empresa transportista & Portal de transportistas mediante representante & Consulta rutas y documentos; confirma conductor y vehículo de su empresa. & Canal M11; M4/M6 y vínculo de M12. & E2; asignación por despacho en E1 \\
+  Proveedor & Portal de proveedores mediante representante & Consulta sus órdenes y recepciones sin aprobar el ingreso físico. & Canal M11; M1. & E2 \\
+  Jefa de Calidad & Consola de Calidad & Parámetros térmicos, evaluación, bloqueo o liberación y retiro con evidencia. & M9; acciones autorizadas en M2/M5. & E1 \\
+  Gerente Comercial & Consola comercial y tableros & Reglas y excepciones comerciales; consulta operacional; excepciones del canal moderno. & M3/M7; M10 y M11. & E1; canal moderno y costo de servir en E2 \\
+  Gerente de Finanzas & Consola financiera y tableros & Consulta y supervisión de rendición y reglas financieras; costo de servir. & M7; M10. & E1; costo de servir en E2 \\
+  Planificador de Rutas & Consola de planificación & Genera, corrige y aprueba rutas; registra restricciones y consulta recorrido. & M4 y M12. & E1 \\
+  Jefe de TI & Consola de administración & Identidad, configuración, interfaces, observabilidad y operación técnica con privilegios controlados. & Base compartida; configuración autorizada por dominio. & E1/E2 \\
+  Gerente de Operaciones & Consola operacional & Supervisa despacho, excepciones, rutas y continuidad de las olas. & M2, M4, M5, M6; consulta M9/M10/M12. & E1; funciones ampliadas según E2 \\
+  Jefa de Bodega & Consola de bodega & Supervisa recepción, inventario, FEFO, preparación y recepción física de retornos. & M1, M2, M5 y M8. & E1 \\
+\end{tablalafrox}
