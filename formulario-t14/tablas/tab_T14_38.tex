@@ -1,10 +1,8 @@
-% Fragmento traído con \parte{tablas/tab_T14_38} desde contenido.tex
-
-\begin{tablalafrox}{Diccionario de la cuenta 6.3. Fuente: elaboración propia.}{tab_T14_38}%
-  {Y Y Y Y Y Y}%
+\begin{tablalafrox}{Diccionario de la cuenta 6.3. Fuente: elaboración propia.}{tab:T-14-38}
+  {Y Y Y Y Y Y}
   {\cab{Código} & \cab{Paquete de trabajo} & \cab{Entregable} & \cab{Criterio de aceptación} & \cab{Resp.} & \cab{Período}}
-  6.3.1 & Rack R01 de servidores montado: clúster de tres nodos, respaldo local y consola KVM & Rack montado, energizado por los dos caminos y conectado. & Cada equipo tiene doble fuente en circuitos distintos; el clúster sigue funcionando con un nodo apagado. & SRE & Antes del H3. \\
+  6.3.1 & Rack R01 de servidores montado: clúster de tres nodos, respaldo local, consola KVM y traslado del servidor del ERP del CLIENTE & Rack montado, energizado por los dos caminos y conectado. Servidor del ERP de 2017 trasladado desde la sala actual de 25 m² a R01 (U25–U26), con respaldo completo verificado, en ventana dominical y sin cambios de software. & Cada equipo tiene doble fuente en circuitos distintos. El clúster sigue funcionando con un nodo apagado. El traslado del ERP a R01 se realiza después del H3 y antes de la marcha blanca de Talca, con respaldo completo verificado, en ventana dominical y sin cambios de software (SD4, 4.3.1.4; T-11). & SRE & Montaje antes del H3. Traslado del ERP después del H3 y antes de la marcha blanca de Talca. \\
   6.3.2 & Rack R02 de comunicaciones montado: firewalls, switches de núcleo y de gestión, y distribución de fibra & Rack montado y conectado. & Al apagar un firewall o un switch, el tráfico sigue sin cortarse. & SRE & Antes del H3. \\
-  6.3.3 & Gabinete de borde de Concepción montado: servidor, firewalls, switches, UPS, climatización y monitoreo & Gabinete montado y monitoreado. & El gabinete reporta su estado al centro de operaciones, y la falla de un firewall no corta la red. & SRE & Antes del H3. \\
-  6.3.4 & Gabinetes de borde montados en Curicó, Chillán y Los Ángeles & Tres gabinetes montados. & Cada plataforma opera su ventana de madrugada con el enlace cortado. & SRE & Antes de la ola de cross-docking. \\
+  6.3.3 & Gabinete de borde de Concepción montado: servidores activo y en espera, firewalls, switches, UPS, climatización y monitoreo & Gabinete montado y monitoreado, con dos servidores HPE DL20 (activo y en espera). & El gabinete reporta su estado al centro de operaciones, la falla de un firewall no corta la red y el servidor de espera toma el servicio si falla el activo. & SRE & Antes del H3. \\
+  6.3.4 & Gabinetes de borde montados en Curicó, Chillán y Los Ángeles, con dos mini-PC (activo y en espera) por plataforma & Tres gabinetes montados, cada uno con dos mini-PC industriales E-01 (activo y en espera). & Cada plataforma opera su ventana de madrugada con el enlace cortado y el mini-PC de espera toma el servicio si falla el activo. & SRE & Antes de la ola de cross-docking. \\
 \end{tablalafrox}

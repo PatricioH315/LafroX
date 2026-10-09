@@ -1,9 +1,7 @@
-% Fragmento traído con \parte{tablas/tab_SD7_7} desde contenido.tex
-
-\begin{tablalafrox}{Niveles de reversión. Fuente: Capítulo 3, sección 3.4.4; Capítulo 4, sección 4.1.8; y Formulario T-18.}{tab_SD7_7}%
-  {Y Y Y Y}%
+\begin{tablalafrox}{Niveles de reversión. Fuente: Capítulo 3, sección 3.4.4; Capítulo 4, apartados 4.2.4.1.2 (liberación y reversión) y 4.1.8 (único escritor); y Formulario T-18.}{tab:7-reversion}
+  {Y Y Y Y}
   {\cab{Nivel} & \cab{Qué hace} & \cab{Quién decide} & \cab{Plazo}}
-  Técnico & Vuelve a la versión anterior por azul-verde o por interruptor de funcionalidad & Líder de Operación / SRE & Sin reinstalar, fuera de la ventana de despacho \\
+  Técnico & Devuelve el tráfico a la entrega previa por azul-verde/canario o desactiva el indicador de funcionalidad (feature flag) & Líder de Operación / SRE & Objetivo \ensuremath{\leq}10 minutos, medido en cada ensayo en Preproducción, fuera de la ventana de despacho \\
   Operacional, Etapa 1 & Conserva/restaura versión operativa local probada, único escritor y DTE válidos; papel sólo de apoyo & Responsable de operaciones del CLIENTE & Completo antes de las 05:30 \\
   Operacional, Etapa 2 & Desactiva la capacidad de la Etapa 2 que falla, sin tocar la Etapa 1 & Responsable de operaciones del CLIENTE & Fuera de la ventana de 05:30 a 07:00 \\
 \end{tablalafrox}

@@ -1,24 +1,12 @@
-%% ============================================================================
-%%  subdocumento-07-anexos/contenido.tex
-%%
-%%  Traslado fiel desde: LAFROX-Subdocumento7-Anexos.md
-%%  Reglas de la carpeta:
-%%   - Este archivo SIEMPRE se llama contenido.tex y empieza por \chapter.
-%%   - Las tablas van en tablas/ y se traen con \parte{tablas/nombre}.
-%%   - Ninguna ruta usa ../ ni rutas absolutas.
-%% ============================================================================
-
 \chapter{Anexos del Subdocumento 7}
 
 Estos anexos detallan los listados que el Subdocumento 7 resume. La EDT, el diccionario y la carta Gantt están en el Formulario T-14; el método de estimación y programación, la ruta crítica y los frentes de trabajo, en el Formulario T-15; y la implantación, en el Formulario T-18.
 
 \section{Anexo 7.A — Meses contractuales y ventanas de congelamiento según la fecha de inicio}
 
-El Art. 17° de las Bases Administrativas fija los meses del contrato, no sus fechas. El mes 1 es el primer mes completo de ejecución (Bases Administrativas, Art. 10°, numeral 2). Si el contrato se inicia en el mes calendario $m$, el mes contractual $n$ cae en el mes calendario $m + (n - 1)$, contado en aritmética de doce meses.
+El Art. 17° de las Bases Administrativas fija los meses del contrato, no sus fechas. El mes 1 es el primer mes completo de ejecución (Bases Administrativas, Art. 10°, numeral 2). Si el contrato se inicia en el mes calendario m, el mes contractual n cae en el mes calendario \(m + (n - 1)\), contado en aritmética de doce meses.
 
-El caso fija las ventanas del año: congelamiento total del 1 al 25 de septiembre y durante todo diciembre; congelamiento en los tres primeros días hábiles de cada mes (Caso 02, RT-10.05); y ningún paso a producción en septiembre ni en diciembre (sección 13.3, condición 2). El Capítulo 3, sección 3.1.2, deriva de esa regla los ocho meses de inicio que no ponen los meses 16 ni 21 en septiembre o diciembre (supuesto S-17). La Tabla \ref{tab:7A1} aplica la misma fórmula a los meses de marcha blanca; los meses en \textbf{negrita} caen en una ventana de congelamiento.
-
-\nota{Fuente: elaboración propia a partir de las Bases Administrativas, Art. 17°, y del Caso 02, secciones 13.2 y 13.3.}
+El caso fija las ventanas del año: congelamiento total del 1 al 25 de septiembre y durante todo diciembre; congelamiento en los tres primeros días hábiles de cada mes (Caso 02, RT-10.05); y ningún paso a producción en septiembre ni en diciembre (sección 13.3, condición 2). El Capítulo 3, sección 3.1.2, deriva de esa regla los ocho meses de inicio que no ponen los meses 16 ni 21 en septiembre o diciembre (supuesto S-17). La Tabla \ref{tab:7A1} aplica la misma fórmula a los meses de marcha blanca; los meses en negrita caen en una ventana de congelamiento.
 
 \parte{tablas/tab_7A1}
 
@@ -30,19 +18,15 @@ Durante un mes de congelamiento que cae dentro de una marcha blanca no se inicia
 
 \section{Anexo 7.B — Dependencias entre paquetes de trabajo}
 
-La Tabla \ref{tab:7B1} lista las dependencias que estructuran la red del cronograma. Son de tipo fin-comienzo (FC), salvo las marcadas como comienzo-comienzo (CC), y cada una indica su fundamento. Sobre esta red se identifica la ruta crítica del Subdocumento 7, sección 7.3.1, y se aplica el método de programación del Formulario T-15.
-
-\nota{Fuente: elaboración propia a partir de los Formularios T-14 y T-18 y de los capítulos indicados.}
+La Tabla \ref{tab:7B1} lista las dependencias que estructuran la red del cronograma. Son de tipo fin-comienzo (FC), salvo las marcadas como comienzo-comienzo (CC) y las de tipo «por interfaz», en que el sucesor espera los contratos del predecesor para construir y su entrega para integrar; cada una indica su fundamento. El Formulario T-15, sección 6.1, aplica estas dependencias actividad por actividad. Sobre esta red se identifica la ruta crítica del Subdocumento 7, sección 7.3.1, y se aplica el método de programación del Formulario T-15.
 
 \parte{tablas/tab_7B1}
 
-Las dependencias D-02, D-04 y D-14 a D-25 forman la cadena que llega a la marcha blanca de la Etapa 1 y contienen la ruta crítica. Las dependencias D-07 a D-13 son las dos cadenas que convergen en el H3, y las D-29 a D-34 forman la secuencia de la Etapa 2.
+Las dependencias D-29 a D-31 forman la ruta crítica de la Etapa 2. D-02, D-04 y D-14 a D-25 forman la cadena casi crítica de la Etapa 1. D-07 a D-13 convergen en el H3. D-32 a D-34 enlazan la certificación de la Etapa 2 con su marcha blanca, aceptación y operación.
 
 \section{Anexo 7.C — Momento de los resultados de aceptación del caso}
 
 El Caso 02, capítulo 18, exige indicar en qué momento del cronograma se alcanza cada resultado y cómo se mide. La Tabla \ref{tab:7C1} ubica en el cronograma las metas y métodos del Capítulo 3, Anexo 3.J.
-
-\nota{Fuente: elaboración propia a partir del Caso 02, capítulo 18, y del Capítulo 3, Anexo 3.J.}
 
 \parte{tablas/tab_7C1}
 
@@ -52,8 +36,6 @@ Los resultados R18-01 a R18-10 y R18-12/R18-14/R18-15/R18-16 tienen verificacion
 
 Cada innovación declara sus paquetes de la EDT y sus meses del cronograma, como exige el Art. 29°, punto 4, de las Bases Administrativas. La Tabla \ref{tab:7D1} los presenta con su código de innovación y sus meses.
 
-\nota{Fuente: elaboración propia a partir del Formulario T-14.}
-
 \parte{tablas/tab_7D1}
 
 Las innovaciones 1 a 3 concentran su construcción entre los meses 2 y 10 y se validan en la marcha blanca de la Etapa 1, por lo que su riesgo queda acotado antes del H7. La innovación 5 sigue el calendario de la Etapa 2 y se extiende a las rutas durante los primeros meses de operación, y la innovación 4 liquida desde el mes 24, después de su línea base y de tres liquidaciones en sombra.
@@ -62,38 +44,37 @@ Las innovaciones 1 a 3 concentran su construcción entre los meses 2 y 10 y se v
 
 La EDT contiene la arquitectura cuando cada módulo y cada interfaz del Capítulo 4 tienen al menos un paquete que los construye y prueba. La Tabla \ref{tab:7E1} presenta esa correspondencia para los doce módulos, y la Tabla \ref{tab:7E2}, para las quince interfaces.
 
-\nota{Fuente: elaboración propia a partir del Capítulo 3, Tabla 3.4, y del Formulario T-14.}
-
 \parte{tablas/tab_7E1}
 
 Once de los doce módulos se construyen en la cuenta 3.4 y se prueban en la 3.8; M10 Analítica es el único módulo con trabajo en ambas etapas, porque sus indicadores operacionales entran en la Etapa 1 y el costo de servir en la Etapa 2.
-
-\nota{Fuente: elaboración propia a partir del Capítulo 4, Anexos 4.1-G y 4.1-H, y del Formulario T-14.}
 
 \parte{tablas/tab_7E2}
 
 Las quince interfaces tienen un paquete que las construye, y las interfaces internas (INT-01 a INT-05 e INT-12 a INT-14) dependen de la base compartida o de los módulos que las usan. Además de estas interfaces, el paquete 3.6.1 construye el intercambio de lote y trazabilidad con los proveedores.
 
-\section{Anexo 7.F — Supuestos y dependencias para preparar SD8}
+\section{Anexo 7.F — Supuestos de planificación y dependencias para la gestión de riesgos}
 
-Esta matriz es entrada de planificación al SD8; no reemplaza T-16, una RBS ni la evaluación cuantitativa de riesgos. No se inventan probabilidades ni importes. Los códigos P7 sirven para trazabilidad interna y no renumeran T-12.
+Esta matriz traslada al Capítulo 8 los supuestos de la planificación que condicionan el cronograma, con su responsable y el control que los vigila. El Capítulo 8 los evalúa con su escala y los registra en el Formulario T-16. Los códigos P7 son identificadores de esta matriz y no renumeran el Formulario T-12.
 
 \parte{tablas/tab_7F1}
 
-\subsection{Política de reservas que recibe SD8}
+Los once supuestos se concentran en tres frentes: el tamaño de las estimaciones (P7-01 a P7-03), la fecha efectiva y las ventanas de corte (P7-04 a P7-06) y las dependencias técnicas con la arquitectura (P7-08 a P7-10). Cada uno tiene un control que se revisa en el Comité de Proyecto, y el Capítulo 8 asigna a los de mayor exposición una reserva de contingencia.
 
-El modelo protege 3.072 HH para correcciones E1 meses 13–20, además del trabajo base y cobertura. T-15 5 deja reserva de calendario cero antes de H4/H5/H9/H10. La holgura local de convergencia no se suma como reserva adicional. Las últimas cuatro semanas de marcha blanca no son reserva. La reserva de gestión monetaria no está determinada: requiere escenarios de costo y autoridad de uso en el documento competente; SD7 no contiene precios.
+\subsection{Política de reservas que recibe el Capítulo 8}
 
-\subsection{Condición para comenzar y condición para entregar}
+El modelo protege 3.072 HH para correcciones de la Etapa 1 en los meses 13 a 20, además del trabajo base y de la cobertura de servicio. El Formulario T-15, Tabla 5.2, fija reservas en días hábiles: H1 6, H2 35, H3 19, H4 19, H5 35, H8 13, H9 21 y H10 28. La subsanación de observaciones del CLIENTE consume la reserva del hito (T-15, sección 5.5). Toda amenaza se escala cuando la desviación proyectada supera la mitad de su reserva, sin esperar a consumirla. La holgura local de convergencia no se suma como reserva adicional. Las últimas cuatro semanas de marcha blanca no son reserva. La reserva de gestión se define en la Oferta Económica, porque la Oferta Técnica no contiene precios.
 
-Puede comenzar la identificación, RBS, evaluación y respuesta de riesgos del SD8 usando los paquetes, supuestos y controles anteriores. Para entregar una oferta cerrada se requieren estimación validada, red detallada, personas y turnos asignados, fecha efectiva, conformidad de decisiones con el CLIENTE y evidencias de ensayo. La preparación no equivale a declarar cumplidas estas condiciones.
+\subsection{Condiciones para aprobar la línea base}
+
+Antes de aprobar la línea base del cronograma en el H1, el Jefe de Proyecto presenta al Comité de Proyecto la estimación validada por los líderes de frente, la red detallada, las personas y turnos asignados a cada frente, la fecha efectiva de inicio confirmada por el CLIENTE y las decisiones de la consulta V-12. La evidencia de los ensayos se incorpora a medida que cada hito la produce.
 
 \section{Referencias}
 
-Bases Administrativas, Art. 17°/18° y Formularios T-14/T-15/T-18; Bases Técnicas Transversales, RT-20.02/05/06; Caso 02, 13.3/17.6; Aclaraciones, Capítulos 7/8; SD3 3.4.4; SD4 y anexos lógicos; SD6 6.1/6.2; formularios del SD7.
+Bases Administrativas, Art. 17°/18° y Formularios T-14/T-15/T-18; Bases Técnicas Transversales, RT-20.02/05/06; Caso 02, §13.3/§17.6; Aclaraciones, Capítulos 7/8; SD3 §3.4.4; SD4 y anexos lógicos; SD6 §6.1/§6.2; formularios del SD7.
 
 \section{Declaración de uso de IA}
 
-Se conserva la declaración histórica del cuerpo SD7. Codex apoyó la coherencia documental y la construcción del modelo de planificación y de este anexo el 6 de octubre de 2026 (nivel alto en texto; figuras sólo como descripción textual). Revisión humana no documentada. Los controles de consistencia no sustituyen la aprobación del equipo ni se atribuyen como revisión humana.
+En cumplimiento de la sección 7.2 de las Aclaraciones de la licitación, la tabla siguiente declara el uso de herramientas de inteligencia artificial en estos anexos, con la revisión humana de cada parte. La declaración se consolida en el Formulario A-6.
 
 \parte{tablas/tab_IA}
+

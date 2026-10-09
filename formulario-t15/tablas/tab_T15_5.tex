@@ -1,38 +1,20 @@
-% Fragmento traído con \parte{tablas/tab_T15_5} desde contenido.tex
-
-\begin{tablalafrox}{Red agregada, restricciones y escenarios de calendario. Fuente: elaboraci?n propia a partir del Anexo 7.B y del Formulario T-14.}{tab_T15_5}%
-  {Y Y Y Y Y Y Y Y Y Y Y}%
-  {\cab{ID} & \cab{Bloque} & \cab{d meses} & \cab{Liberación t} & \cab{Predecesores FC} & \cab{ES} & \cab{EF} & \cab{LS} & \cab{LF} & \cab{HT} & \cab{HL}}
-  N01 & Alcance: 1.2.1, 1.2.4 & 1.50 & 0.00 & — & 0.00 & 1.50 & 0.00 & 1.50 & 0.00 & 0.00 \\
-  R-H1 & Revisión Art. 18.3 & 0.50 & 0.00 & N01 & 1.50 & 2.00 & 1.50 & 2.00 & 0.00 & 0.00 \\
-  N02 & Diseño E1: 2.1, 2.2, 2.4.1 & 1.50 & 0.00 & N01 & 1.50 & 3.00 & 2.00 & 3.50 & 0.50 & 0.50 \\
-  N03 & Interfaces: 1.2.3 & 3.50 & 0.00 & — & 0.00 & 3.50 & 0.00 & 3.50 & 0.00 & 0.00 \\
-  R-H2 & Revisión Art. 18.3 & 0.50 & 0.00 & N02, N03 & 3.50 & 4.00 & 3.50 & 4.00 & 0.00 & 0.00 \\
-  H2 & Aprobación H2 & 0.00 & 4.00 & R-H2 & 4.00 & 4.00 & 4.00 & 4.00 & 0.00 & 0.00 \\
-  N04 & Plataforma/borde H3 & 1.50 & 0.00 & H2 & 4.00 & 5.50 & 4.00 & 5.50 & 0.00 & 0.00 \\
-  R-H3 & Revisión Art. 18.3 & 0.50 & 0.00 & N04 & 5.50 & 6.00 & 5.50 & 6.00 & 0.00 & 0.00 \\
-  H3 & Ambientes H3 & 0.00 & 6.00 & R-H3 & 6.00 & 6.00 & 6.00 & 6.00 & 0.00 & 1.00 \\
-  N05 & Recepción/inventario: 3.4.1/2 & 3.00 & 0.00 & H2 & 4.00 & 7.00 & 4.00 & 7.00 & 0.00 & 0.00 \\
-  N06 & ERP/base: 3.3; cierre fin m9 & 5.00 & 0.00 & H2 & 4.00 & 9.00 & 4.00 & 9.00 & 0.00 & 0.00 \\
-  N07 & Resto E1: 3.4.3–11; cierre m9 & 2.00 & 0.00 & N05, H3 & 7.00 & 9.00 & 7.00 & 9.00 & 0.00 & 0.00 \\
-  N08 & Integración E1: 3.8.1, primera mitad m10 & 0.50 & 0.00 & N06, N07 & 9.00 & 9.50 & 9.00 & 9.50 & 0.00 & 0.00 \\
-  R-H4 & Revisión Art. 18.3 & 0.50 & 0.00 & N08 & 9.50 & 10.00 & 9.50 & 10.00 & 0.00 & 0.00 \\
-  H4 & Integración H4 & 0.00 & 10.00 & R-H4 & 10.00 & 10.00 & 10.00 & 10.00 & 0.00 & 0.00 \\
-  N09 & Certificación E1: 3.8.2–8 & 1.50 & 0.00 & H4 & 10.00 & 11.50 & 10.00 & 11.50 & 0.00 & 0.00 \\
-  R-H5 & Revisión Art. 18.3 & 0.50 & 0.00 & N09 & 11.50 & 12.00 & 11.50 & 12.00 & 0.00 & 0.00 \\
-  H5 & Certificación H5 & 0.00 & 12.00 & R-H5 & 12.00 & 12.00 & 12.00 & 12.00 & 0.00 & 0.00 \\
-  N10 & Marcha blanca E1 & 3.00 & 12.00 & H5 & 12.00 & 15.00 & 12.00 & 15.00 & 0.00 & 0.00 \\
-  H7 & Frontera producción E1; mes 16 & 0.00 & 15.00 & N10 & 15.00 & 15.00 & 15.00 & 15.00 & 0.00 & 0.00 \\
-  N11 & Diseño E2: 1.2.5, 2.1.4, 2.4.2 & 1.50 & 12.00 & — & 12.00 & 13.50 & 12.00 & 13.50 & 0.00 & 0.00 \\
-  R-H8 & Revisión Art. 18.3 & 0.50 & 0.00 & N11 & 13.50 & 14.00 & 13.50 & 14.00 & 0.00 & 0.00 \\
-  H8 & Diseño H8 & 0.00 & 14.00 & R-H8 & 14.00 & 14.00 & 14.00 & 14.00 & 0.00 & 0.00 \\
-  N12 & Módulos E2: 3.5; cierre m16 & 2.00 & 0.00 & H8 & 14.00 & 16.00 & 14.00 & 16.00 & 0.00 & 0.00 \\
-  N13 & Integración E2: 3.9.1; primera mitad m17 & 0.50 & 0.00 & N12 & 16.00 & 16.50 & 16.00 & 16.50 & 0.00 & 0.00 \\
-  R-H9 & Revisión Art. 18.3 & 0.50 & 0.00 & N13 & 16.50 & 17.00 & 16.50 & 17.00 & 0.00 & 0.00 \\
-  H9 & Integración H9 & 0.00 & 17.00 & R-H9 & 17.00 & 17.00 & 17.00 & 17.00 & 0.00 & 0.00 \\
-  N14 & Certificación E2: 3.9.2–7; primera mitad m18 & 0.50 & 0.00 & H9 & 17.00 & 17.50 & 17.00 & 17.50 & 0.00 & 0.00 \\
-  R-H10 & Revisión Art. 18.3 & 0.50 & 0.00 & N14 & 17.50 & 18.00 & 17.50 & 18.00 & 0.00 & 0.00 \\
-  H10 & Certificación H10 & 0.00 & 18.00 & R-H10 & 18.00 & 18.00 & 18.00 & 18.00 & 0.00 & 0.00 \\
-  N15 & Marcha blanca E2 & 2.00 & 18.00 & H10 & 18.00 & 20.00 & 18.00 & 20.00 & 0.00 & 0.00 \\
-  H12 & Frontera producción E2; mes 21 & 0.00 & 20.00 & N15 & 20.00 & 20.00 & 20.00 & 20.00 & 0.00 & 0.00 \\
+\begin{tablalafrox}{Fechas programadas por grupo de paquetes. Fuente: elaboración propia a partir de la sección 6.1.}{tab_T15_5}
+  {Y Y Y Y}
+  {\cab{Grupo} & \cab{Paquetes} & \cab{Inicio} & \cab{Fin}}
+  Alcance (H1) & 1.2.1, 1.2.4 & 01-02-2027 & 09-03-2027 \\
+  Interfaces sin documentación & 1.2.3 & 01-02-2027 & 09-02-2027 \\
+  Diseño E1 y seguridad (H2) & 2.1.1–2.1.3, 2.2.1, 2.2.4 & 01-03-2027 & 29-03-2027 \\
+  Planos, especificación y sala técnica & 2.3.1, 2.3.2, 5.1.2, 6.1 & 01-02-2027 & 20-05-2027 \\
+  Racks y borde de los CD (H3) & 6.3.1–6.3.3, 6.6 & 03-05-2027 & 29-06-2027 \\
+  Servicios de nube y ambientes (H3) & 3.2.1, 3.2.2, 3.2.4, 3.2.5, 3.1 & 03-05-2027 & 21-06-2027 \\
+  Base compartida & 3.3 & 01-06-2027 & 05-08-2027 \\
+  Módulos E1 & 3.4 & 06-07-2027 & 27-09-2027 \\
+  Integraciones externas E1 & 3.6.1–3.6.4 & 06-08-2027 & 10-11-2027 \\
+  Prueba de integración E1 (H4) & 3.8.1 & 01-10-2027 & 20-10-2027 \\
+  Certificación E1 (H5) & 3.8.2–3.8.8 & 01-10-2027 & 29-11-2027 \\
+  Diseño E2 (H8) & 1.2.5, 2.1.4, 2.4.2 & 01-02-2028 & 30-03-2028 \\
+  Módulos E2 & 3.5 & 03-04-2028 & 26-04-2028 \\
+  Intercambio con las cadenas & 3.6.5, 3.6.6 & 01-02-2028 & 23-08-2028 \\
+  Prueba de integración E2 (H9) & 3.9.1 & 01-05-2028 & 18-05-2028 \\
+  Certificación E2 (H10) & 3.9.2–3.9.7 & 01-05-2028 & 07-06-2028 \\
 \end{tablalafrox}
