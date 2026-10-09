@@ -497,7 +497,7 @@ La construcción concentra 79 de los 222 paquetes, y las fases que no son softwa
       
 -  4.1.1 Plan de olas de la Etapa 1 por sitio y zona: Talca, Concepción y plataformas de cross-docking
       
--  4.1.2 Procedimiento de reversión de la Etapa 1 antes de las 05:30, con hoja de picking y guía en papel
+-  4.1.2 Procedimiento de reversión de la Etapa 1 antes de las 05:30, con versión operativa local y DTE emitidos por el ERP
       
 -  4.1.3 Plan de implantación y reversión de la Etapa 2 fuera de la ventana de 05:30 a 07:00
     
@@ -541,9 +541,9 @@ La construcción concentra 79 de los 222 paquetes, y las fases que no son softwa
       
 -  5.1.1 Especificación de compra del equipamiento de terreno para el CLIENTE
       
--  5.1.2 Especificación de compra de la sala técnica, los racks y los gabinetes de borde para el CLIENTE
+-  5.1.2 Especificación y compra de la sala técnica, los racks, los servidores y los gabinetes de borde
       
--  5.1.3 Actas de recepción técnica de los equipos comprados por el CLIENTE
+-  5.1.3 Actas de recepción técnica del equipamiento de terreno comprado por el CLIENTE y de la infraestructura provista por LafroX
     
 
     
@@ -565,9 +565,9 @@ La construcción concentra 79 de los 222 paquetes, y las fases que no son softwa
       
 -  5.3.1 Contrato de fibra óptica de los CD de Talca y Concepción
       
--  5.3.2 Contrato de planes LTE con dos proveedores
+-  5.3.2 Contrato de planes LTE con dos proveedores (ocho planes)
       
--  5.3.3 Contrato de Starlink para las tres plataformas de cross-docking
+-  5.3.3 Contrato de Starlink para los cinco sitios: Talca, Concepción y las tres plataformas de cross-docking
     
 
     
@@ -595,7 +595,7 @@ La construcción concentra 79 de los 222 paquetes, y las fases que no son softwa
     
 
       
--  6.1.1 Obra civil y piso técnico de la sala
+-  6.1.1 Coordinación de la obra civil de separación, a cargo del CLIENTE (RT-06.06), y piso técnico de la sala
       
 -  6.1.2 Hardware de energía instalado: UPS modular N+1, generador con 24 horas de autonomía, transferencia automática y PDU A/B
       
@@ -623,13 +623,13 @@ La construcción concentra 79 de los 222 paquetes, y las fases que no son softwa
     
 
       
--  6.3.1 Rack R01 de servidores montado: clúster de tres nodos, respaldo local y consola KVM
+-  6.3.1 Rack R01 de servidores montado: clúster de tres nodos, respaldo local, consola KVM y traslado del servidor del ERP del CLIENTE a U25–U26, con respaldo completo verificado, en ventana dominical después del H3 y antes de la marcha blanca de Talca, sin cambios de software
       
 -  6.3.2 Rack R02 de comunicaciones montado: firewalls, switches de núcleo y de gestión, y distribución de fibra
       
--  6.3.3 Gabinete de borde de Concepción montado: servidor, firewalls, switches, UPS, climatización y monitoreo
+-  6.3.3 Gabinete de borde de Concepción montado: servidores activo y en espera, firewalls, switches, UPS, climatización y monitoreo, con toma del servicio por el de espera si falla el activo
       
--  6.3.4 Gabinetes de borde montados en Curicó, Chillán y Los Ángeles
+-  6.3.4 Gabinetes de borde montados en Curicó, Chillán y Los Ángeles, con dos mini-PC (activo y en espera) por plataforma
     
 
     
@@ -1359,8 +1359,8 @@ La Tabla T14.29 presenta sus paquetes.
 | Código | Paquete de trabajo | Entregable | Criterio de aceptación | Resp. | Período |
 | --- | --- | --- | --- | --- | --- |
 | 4.1.1 | Plan de olas de la Etapa 1 por sitio y zona: Talca, Concepción y plataformas de cross-docking | Plan de implantación por sitio y perfil. | Cada ola tiene su sitio, su zona, su criterio de avance escrito y su registro oficial. | IMP | Antes del H6. |
-| 4.1.2 | Procedimiento de reversión de la Etapa 1 antes de las 05:30, con hoja de picking y guía en papel | Procedimiento escrito y ensayado. | Ensayo de reversión con tiempos medidos, 96 despachos sin interrupción, DTE válidos emitidos sólo por ERP, WMS sólo lectura y cero pérdida/duplicación; final antes de 05:30 y fechas permitidas. | IMP | Antes de cada corte. |
-| 4.1.3 | Plan de implantación y reversión de la Etapa 2 fuera de la ventana de 05:30 a 07:00 | Plan de implantación de la Etapa 2. | Ensayo de reversión con tiempos medidos, 96 despachos sin interrupción, DTE válidos emitidos sólo por ERP, WMS sólo lectura y cero pérdida/duplicación; final antes de 05:30 y fechas permitidas. | IMP | Antes del H11. |
+| 4.1.2 | Procedimiento de reversión de la Etapa 1 antes de las 05:30, con versión operativa local y DTE emitidos por el ERP | Procedimiento escrito y ensayado. | Ensayo de reversión con tiempos medidos, 96 despachos sin interrupción, DTE válidos emitidos sólo por ERP, WMS sólo lectura y cero pérdida/duplicación; final antes de 05:30 y fechas permitidas. | IMP | Antes de cada corte. |
+| 4.1.3 | Plan de implantación y reversión de la Etapa 2 fuera de la ventana de 05:30 a 07:00 | Plan de implantación de la Etapa 2. | La reversión desactiva la capacidad de la Etapa 2 que falla sin tocar ni degradar la Etapa 1. El ensayo se realiza fuera de la ventana de 05:30 a 07:00 y de las fechas prohibidas, con tiempos medidos y sin pérdida ni duplicación de datos. | IMP | Antes del H11. |
 
 #### Cuenta 4.2 — Marcha blanca y producción de la Etapa 1
 
@@ -1401,7 +1401,7 @@ La fase 5 reúne 4 cuentas de control y 13 paquetes de trabajo.
 
 #### Cuenta 5.1 — Hardware e infraestructura
 
-Esta cuenta de control reúne lo necesario para que el CLIENTE compre el hardware correcto y para comprobar que llegó bien.
+Esta cuenta de control reúne la especificación del equipamiento de terreno que compra el CLIENTE, la especificación y compra de la infraestructura que provee LafroX y su recepción técnica. LafroX provee, instala, integra y mantiene la infraestructura dentro del precio del contrato (Bases Administrativas, art. 14.2), con valorización en la Oferta Económica (art. 50.2).
 
 La Tabla T14.32 presenta sus paquetes.
 
@@ -1411,9 +1411,9 @@ La Tabla T14.32 presenta sus paquetes.
 
 | Código | Paquete de trabajo | Entregable | Criterio de aceptación | Resp. | Período |
 | --- | --- | --- | --- | --- | --- |
-| 5.1.1 | Especificación de compra del equipamiento de terreno para el CLIENTE | Especificación de compra con su calendario. | Cada partida del T-11 tiene modelo, cantidad y fecha de necesidad, y el CLIENTE la aprueba. | ARQ | Mes 2. |
-| 5.1.2 | Especificación de compra de la sala técnica, los racks y los gabinetes de borde para el CLIENTE | Especificación de compra. | Coincide con los planos de la fase 2 (2.3) y con el T-11, y llega a tiempo para el H3. | ARQ | Mes 2, después de 2.3.1 y 2.3.2 (D-09). |
-| 5.1.3 | Actas de recepción técnica de los equipos comprados por el CLIENTE | Actas de recepción. | El 100 % de lo especificado se recibe conforme antes de su instalación (fase 6). | SRE | Según el calendario de compra. |
+| 5.1.1 | Especificación de compra del equipamiento de terreno para el CLIENTE | Especificación de compra con su calendario. | Cada partida de equipamiento de terreno del T-11 tiene modelo, cantidad y fecha de necesidad antes de su ola, y el CLIENTE la aprueba. | ARQ | Mes 2. |
+| 5.1.2 | Especificación y compra de la sala técnica, los racks, los servidores y los gabinetes de borde | Especificación y orden de compra emitida por LafroX. | Coincide con los planos de la fase 2 (2.3) y con el T-11. LafroX emite la orden de compra en el mes 2 para instalar la sala en el mes 3. | ARQ | Mes 2. |
+| 5.1.3 | Actas de recepción técnica del equipamiento de terreno comprado por el CLIENTE y de la infraestructura provista por LafroX | Actas de recepción. | El 100 % de lo especificado se recibe conforme antes de su instalación (fase 6). | SRE | Según el calendario de compra. |
 
 #### Cuenta 5.2 — Servicios de nube y licencias
 
@@ -1433,7 +1433,7 @@ La Tabla T14.33 presenta sus paquetes.
 
 #### Cuenta 5.3 — Enlaces de comunicaciones
 
-Esta cuenta de control reúne los contratos de conexión de los sitios. El caso nombra la dependencia de un solo enlace en Concepción como un riesgo, y Los Ángeles tiene señal intermitente justo en su ventana de madrugada. Por eso cada sitio tiene un enlace principal y uno de respaldo de otro proveedor.
+Esta cuenta de control reúne los contratos de conexión de los sitios que contrata LafroX. El caso nombra la dependencia de un solo enlace en Concepción como un riesgo, y Los Ángeles tiene señal intermitente justo en su ventana de madrugada. Cada CD tiene fibra como enlace principal, LTE de respaldo y Starlink como tercer camino en espera caliente. Cada plataforma de cross-docking tiene Starlink como enlace principal y LTE de dos proveedores como respaldo.
 
 La Tabla T14.34 presenta sus paquetes.
 
@@ -1444,8 +1444,8 @@ La Tabla T14.34 presenta sus paquetes.
 | Código | Paquete de trabajo | Entregable | Criterio de aceptación | Resp. | Período |
 | --- | --- | --- | --- | --- | --- |
 | 5.3.1 | Contrato de fibra óptica de los CD de Talca y Concepción | Contrato y fecha de instalación. | La capacidad contratada coincide con la del T-11. | SRE | Antes del H3. |
-| 5.3.2 | Contrato de planes LTE con dos proveedores | Contratos. | Cada sitio tiene un respaldo de un proveedor distinto al de su enlace principal. | SRE | Antes del H3. |
-| 5.3.3 | Contrato de Starlink para las tres plataformas de cross-docking | Contratos y equipos. | Cubren los 56 meses del contrato en los tres sitios. | SRE | Antes del H3. |
+| 5.3.2 | Contrato de planes LTE con dos proveedores (ocho planes) | Contratos. | Los ocho planes cubren un respaldo LTE en Talca, uno en Concepción y dos de proveedores distintos en cada plataforma de cross-docking. | SRE | Antes del H3. |
+| 5.3.3 | Contrato de Starlink para los cinco sitios: Talca, Concepción y las tres plataformas de cross-docking | Contratos y equipos. | Cubren los 56 meses del contrato en los cinco sitios. | SRE | Antes del H3. |
 
 #### Cuenta 5.4 — Acuerdos con terceros
 
@@ -1480,7 +1480,7 @@ La Tabla T14.36 presenta sus paquetes.
 
 | Código | Paquete de trabajo | Entregable | Criterio de aceptación | Resp. | Período |
 | --- | --- | --- | --- | --- | --- |
-| 6.1.1 | Obra civil y piso técnico de la sala | Sala acondicionada según el plano. | El recinto coincide con el plano aprobado, incluido el blindaje perimetral especificado, y está listo para recibir los equipos. | SRE | Mes 3, después de la especificación 5.1.2 (D-10). |
+| 6.1.1 | Coordinación de la obra civil de separación, a cargo del CLIENTE (RT-06.06), y piso técnico de la sala | Sala acondicionada según el plano, con obra civil de separación especificada y coordinada por LafroX y piso técnico provisto por LafroX. | El recinto coincide con el plano aprobado, incluido el blindaje perimetral especificado, y está listo para recibir los equipos. | SRE | Mes 3, después de la especificación 5.1.2 (D-10). |
 | 6.1.2 | Hardware de energía instalado: UPS modular N+1, generador con 24 horas de autonomía, transferencia automática y PDU A/B | Sistema de energía instalado y probado. | En una prueba con carga real, el corte de la red pasa a la UPS y al generador sin que se apague ningún equipo. | SRE | Mes 3. |
 | 6.1.3 | Hardware de climatización de precisión N+1 instalado | Climatización instalada y probada. | Con un equipo apagado, la sala se mantiene en el rango de temperatura del fabricante. | SRE | Mes 3. |
 | 6.1.4 | Hardware de detección temprana de incendio y extinción por agente limpio instalado | Sistema instalado y conectado al monitoreo. | Una prueba de detección genera la alarma en el monitoreo, y la extinción queda armada. | SRE | Mes 3. |
@@ -1514,10 +1514,10 @@ La Tabla T14.38 presenta sus paquetes.
 
 | Código | Paquete de trabajo | Entregable | Criterio de aceptación | Resp. | Período |
 | --- | --- | --- | --- | --- | --- |
-| 6.3.1 | Rack R01 de servidores montado: clúster de tres nodos, respaldo local y consola KVM | Rack montado, energizado por los dos caminos y conectado. | Cada equipo tiene doble fuente en circuitos distintos; el clúster sigue funcionando con un nodo apagado. | SRE | Antes del H3. |
+| 6.3.1 | Rack R01 de servidores montado: clúster de tres nodos, respaldo local, consola KVM y traslado del servidor del ERP del CLIENTE | Rack montado, energizado por los dos caminos y conectado. Servidor del ERP de 2017 trasladado desde la sala actual de 25 m² a R01 (U25–U26), con respaldo completo verificado, en ventana dominical y sin cambios de software. | Cada equipo tiene doble fuente en circuitos distintos. El clúster sigue funcionando con un nodo apagado. El traslado del ERP a R01 se realiza después del H3 y antes de la marcha blanca de Talca, con respaldo completo verificado, en ventana dominical y sin cambios de software (SD4, 4.3.1.4; T-11). | SRE | Montaje antes del H3. Traslado del ERP después del H3 y antes de la marcha blanca de Talca. |
 | 6.3.2 | Rack R02 de comunicaciones montado: firewalls, switches de núcleo y de gestión, y distribución de fibra | Rack montado y conectado. | Al apagar un firewall o un switch, el tráfico sigue sin cortarse. | SRE | Antes del H3. |
-| 6.3.3 | Gabinete de borde de Concepción montado: servidor, firewalls, switches, UPS, climatización y monitoreo | Gabinete montado y monitoreado. | El gabinete reporta su estado al centro de operaciones, y la falla de un firewall no corta la red. | SRE | Antes del H3. |
-| 6.3.4 | Gabinetes de borde montados en Curicó, Chillán y Los Ángeles | Tres gabinetes montados. | Cada plataforma opera su ventana de madrugada con el enlace cortado. | SRE | Antes de la ola de cross-docking. |
+| 6.3.3 | Gabinete de borde de Concepción montado: servidores activo y en espera, firewalls, switches, UPS, climatización y monitoreo | Gabinete montado y monitoreado, con dos servidores HPE DL20 (activo y en espera). | El gabinete reporta su estado al centro de operaciones, la falla de un firewall no corta la red y el servidor de espera toma el servicio si falla el activo. | SRE | Antes del H3. |
+| 6.3.4 | Gabinetes de borde montados en Curicó, Chillán y Los Ángeles, con dos mini-PC (activo y en espera) por plataforma | Tres gabinetes montados, cada uno con dos mini-PC industriales E-01 (activo y en espera). | Cada plataforma opera su ventana de madrugada con el enlace cortado y el mini-PC de espera toma el servicio si falla el activo. | SRE | Antes de la ola de cross-docking. |
 
 #### Cuenta 6.4 — Sistemas de seguridad física
 
@@ -1876,9 +1876,9 @@ gantt
 
 ## Criterios vigentes de programación y recursos
 
-Las ventanas mensuales de asignación y las HH por paquete están en T-15 §4. La estimación es provisional y no cambia las aceptaciones de la EDT. 6.6.3 entrega borde operativo antes de H3 (mes 6), con pruebas ampliadas antes de H5. 6.1.1–6.1.4 deben completar la instalación necesaria para su recepción antes de 6.1.5; la recepción habilita 6.3 y ésta la configuración 6.6. Las fechas dentro del mes 6 deben ordenarse y aprobarse antes de iniciar compras: que varias actividades indiquen mes 6 no demuestra esa secuencia. Si la compra no llega a tiempo, se activa el riesgo de H3 y se recalcula la red, sin trasladar el requisito al H5.
+Las ventanas mensuales de asignación y las HH por paquete están en el T-15, sección 4. La preparación del H3 sigue esta secuencia: planos 2.3.1/2.3.2 en el mes 1, especificación y orden de compra de LafroX 5.1.2 en el mes 2, instalación 6.1.1–6.1.4 en el mes 3 y recepción 6.1.5 en el mes 4. Los racks R01/R02 se montan en los meses 4 y 5, el gabinete de Concepción en el mes 4 y el borde de los CD entra en servicio mediante 6.6.3 en el mes 5. Los gabinetes de cross-docking se montan en el mes 9. El CLIENTE compra el equipamiento de terreno antes de cada ola.
 
-4.2.2 incorpora estabilización y soporte puente E1 meses 16–20, después del paso a producción del H7. No adelanta la fase contractual de Operación. 4.3.2 comprende cuatro semanas reforzadas posteriores a H12, imputadas a los meses 21 y 22; T-18 §6 declara dotación y regla de decremento. 8.3.2 realiza revisión INN-03.P5 cada seis meses: meses 26, 32, 38, 44, 50 y 56, contados desde el inicio de Operación. El esfuerzo equivalente mensual del T-15 no cambia esta frecuencia. CD-05 y AL-STOCK-01/AL-ACT-01 se incorporan a paquetes existentes conforme a T-18 §6.5, sin renumerar T-12 ni inventar nuevos requerimientos.
+4.2.2 incorpora estabilización y soporte puente E1 en los meses 16–20, después del paso a producción del H7. La fase contractual de Operación comienza en el mes 21. 4.3.2 comprende cuatro semanas reforzadas posteriores al H12, imputadas a los meses 21 y 22. El T-18, sección 6, declara la dotación y la regla de decremento. 8.3.2 realiza la revisión INN-03.P5 cada seis meses: meses 26, 32, 38, 44, 50 y 56, contados desde el inicio de Operación. El esfuerzo equivalente mensual del T-15 conserva esta frecuencia. La coordinación de reserva y retención (SD4, apartado 4.1.4.4) y las pruebas AL-STOCK-01/AL-ACT-01 se incorporan a los paquetes existentes conforme al T-18, sección 6.5. AL-STOCK-01 mide la proporción de líneas con más de una retención y las pruebas de carga 3.8.4/3.9.3 verifican el drenaje.
 
 
 ## Referencias

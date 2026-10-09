@@ -2,7 +2,7 @@
 
 Este formulario presenta la propuesta de implantación y puesta en marcha controlada que exige el Formulario T-18 de las Bases Administrativas. Cubre por separado la Etapa 1 (marcha blanca de los meses 13 a 15 y producción desde el mes 16) y la Etapa 2 (marcha blanca de los meses 19 y 20 y producción desde el mes 21), el plan de convivencia entre ambas y el procedimiento de reversión. El Subdocumento 7, sección 7.3, resume y analiza esta propuesta.
 
-La propuesta aplica las siete condiciones que el Caso 02 impone a toda estrategia de puesta en producción (sección 13.3), responde los nueve puntos de la sección 17.6 y cumple los requisitos RT-20.01 a RT-20.08 de las Bases Técnicas Transversales. La secuencia de olas, el criterio de avance, la dotación de estabilización y la medición de la adopción son los declarados en el Capítulo 3, sección 3.4.4. La estrategia técnica de despliegue es la de la arquitectura del Capítulo 4, sección 4.1.8, y los paquetes de trabajo citados son los de la EDT del Formulario T-14.
+La propuesta aplica las siete condiciones que el Caso 02 impone a toda estrategia de puesta en producción (sección 13.3), responde los nueve puntos de la sección 17.6 y cumple los requisitos RT-20.01 a RT-20.08 de las Bases Técnicas Transversales. La secuencia de olas, el criterio de avance, la dotación de estabilización y la medición de la adopción son los declarados en el Capítulo 3, sección 3.4.4. La estrategia técnica de despliegue es la del Capítulo 4, apartado 4.2.4.1.2 «Liberación y reversión», con único escritor y olas conforme al apartado 4.1.8, y los paquetes de trabajo citados son los de la EDT del Formulario T-14.
 
 ## 1 Reglas comunes de implantación
 
@@ -11,15 +11,15 @@ Las dos etapas siguen las mismas ocho reglas, y cada una responde a una condici�
   
 -  **Convivencia antes del cambio.** Nada entra en producción sin haber convivido con la forma actual de trabajar durante su marcha blanca, con conciliación diaria y posibilidad de volver atrás (Caso 02, sección 13.3, condición 1; RT-20.03).
   
--  **Fechas prohibidas.** Ningún paso a producción, inicio de ola, corte de datos ni despliegue con impacto en la facturación o en el inventario valorizado ocurre en septiembre, en diciembre ni en los tres primeros días hábiles de un mes (sección 13.3, condición 2; RT-10.05 del caso). Durante el congelamiento total (1 al 25 de septiembre y todo diciembre) no se despliegan cambios.
+-  **Fechas prohibidas.** Ningún despliegue, paso a producción, inicio de ola ni corte de datos ocurre durante todo septiembre, durante diciembre ni en los tres primeros días hábiles de cada mes (Capítulo 4, Tabla 14, apartado 4.2.4.1.4). Del 1 al 25 de septiembre no se interviene ningún sistema (Caso 02, RT-10.05).
   
 -  **Olas, no un evento único.** El despliegue avanza por proceso, por sitio y por zona comercial, y nunca afecta a la vez a la bodega, la preventa, el reparto y la facturación (condición 3; RT-20.01).
   
 -  **Ventana de despacho protegida.** No se despliega durante la ventana de 05:30 a 07:00, que no admite indisponibilidad (RT-10.05 del caso). Las intervenciones en bodega se programan y acompañan en el turno de noche, de 22:00 a 06:00 (condición 4).
   
--  **Despliegue azul-verde con interruptores de funcionalidad.** Cada capacidad nueva se publica en un entorno paralelo y se habilita por sitio y por ola mediante interruptores de funcionalidad, de modo que la reversión técnica consiste en volver a la versión anterior sin reinstalar. Cada operación tiene un único escritor autorizado: no se habilita doble escritura de stock, cobros ni guías de despacho (Capítulo 4, sección 4.1.8 y Tabla 4.1).
+-  **Despliegue azul-verde con indicadores de funcionalidad (feature flags).** Cada capacidad nueva se publica en un entorno paralelo y se habilita por sitio y por ola mediante indicadores de funcionalidad, de modo que la reversión técnica consiste en volver a la entrega previa por azul-verde/canario o desactivar el indicador (Capítulo 4, apartado 4.2.4.1.2). Cada operación tiene un único escritor autorizado: no se habilita doble escritura de stock, cobros ni guías de despacho (Capítulo 4, apartado 4.1.8).
   
--  **Reversión en dos niveles.** El nivel técnico vuelve a la versión anterior de la solución mediante azul-verde o el interruptor de funcionalidad. El operacional conserva o restituye la versión operativa local probada con un único escritor; lo ordena Operaciones del CLIENTE y debe completarse antes de las 05:30. Papel y consultas son apoyo, no sustitución manual del despacho crítico. Los registros capturados permanecen en cola y se concilian al retomar (Capítulo 3, sección 3.4.4; RT-20.02).
+-  **Reversión en dos niveles.** El nivel técnico vuelve a la entrega previa mediante azul-verde/canario o desactiva el indicador de funcionalidad. El operacional conserva o restituye la versión operativa local probada con un único escritor; lo ordena Operaciones del CLIENTE y debe completarse antes de las 05:30. Papel y consultas son apoyo, no sustitución manual del despacho crítico. Los registros capturados permanecen en cola y se concilian al retomar (Capítulo 3, sección 3.4.4; RT-20.02).
   
 -  **Estabilización declarada.** Cada paso a producción tiene una estabilización de cuatro semanas por ola, con la dotación declarada en la sección 2.6 y sin costo adicional (condición 7; RT-20.05 y RT-20.06).
   
@@ -61,7 +61,7 @@ El calendario de olas respeta los meses 13–15, pero su cierre se calcula con f
 
   <a id="fig:T18-olas"></a>
 
-La figura conserva la representación histórica. La programación vigente es §6.1: activaciones hasta semana 8 sujetas a fechas permitidas y al límite F − 28 días; los períodos de evidencia se superponen por dominios sin doble escritura.
+La figura presenta la secuencia de las tres olas y la acumulación de evidencia por dominio. La sección 6.1 programa las activaciones hasta la semana 8, sujetas a fechas permitidas y al límite F − 28 días. Los períodos de evidencia se superponen por dominios sin doble escritura.
 
 ### 2.2 Pruebas previas a la marcha blanca y al paso a producción
 
@@ -157,7 +157,7 @@ La reversión la autoriza el responsable de operaciones del CLIENTE cuando un in
 - No: se corrige y la ola continúa
 - Restitución operativa probada antes de las 05:30
 - Operacional: versión local, único escritor y DTE del ERP; papel de apoyo
-- Técnica: interruptor o versión anterior
+- Técnica: indicador de funcionalidad o entrega previa
 - Al retomar, se concilia lo que quedó en cola
 - La ola reinicia sus 4 semanas
   
@@ -251,7 +251,7 @@ Los dos últimos indicadores protegen a la Etapa 1 durante la convivencia. R18-1
 
 ### 3.4 Reversión
 
-La reversión de la Etapa 2 no toca la Etapa 1. Desactiva por interruptor de funcionalidad la capacidad de la Etapa 2 que falla, y la operación vuelve al procedimiento anterior de esa capacidad: carga manual controlada de los pedidos de la cadena, atención asistida a clientes y transportistas, o el cálculo vigente de costos. Estos procedimientos sostienen contingencia auxiliar y no acreditan R18-13 ni habilitan cierre mientras una capacidad requerida esté desactivada. Ningún despliegue ni reversión ocurre en la ventana de 05:30 a 07:00 ni en fechas prohibidas (paquete 4.1.3).
+La reversión de la Etapa 2 no toca la Etapa 1. Desactiva mediante un indicador de funcionalidad la capacidad de la Etapa 2 que falla, y la operación vuelve al procedimiento anterior de esa capacidad: carga manual controlada de los pedidos de la cadena, atención asistida a clientes y transportistas, o el cálculo vigente de costos. Estos procedimientos sostienen contingencia auxiliar y no acreditan R18-13 ni habilitan cierre mientras una capacidad requerida esté desactivada. Ningún despliegue ni reversión ocurre en la ventana de 05:30 a 07:00 ni en fechas prohibidas (paquete 4.1.3).
 
 ### 3.5 Estabilización, capacitación y certificación
 
@@ -298,15 +298,15 @@ Las olas incorporan todo el alcance de cada etapa en el orden siguiente.
 
 | Ola | Módulos y alcance | Secuencia propuesta | Condición previa |
 | --- | --- | --- | --- |
-| 1 Recepción y trazabilidad | M1; M9 captura/retención por lote; M12 adquisición de temperatura; M10 indicadores de recepción | Talca como piloto propuesto en semana 1; Concepción y las tres plataformas en semana 2 | Lotes, sensores, contratos de integración y conciliación probados; recepción sin duplicar escritor |
-| 2 Bodega y preparación | M2/M5; M9 retiro sanitario y liberación; M12 alertas térmicas; M10 inventario/faltantes | Talca en semana 3; demás sitios en semana 4 | Datos de recepción conciliados y disponibilidad de funciones de ola 1, sin retirar respaldos antes de cuatro semanas de criterio |
-| 3 Preventa a rendición | M3/M4/M6/M8/M7; M9 trazabilidad hasta destinatario; M12 temperatura de transporte; M10 OTIF y reparto | Grupos de rutas vinculados a Talca semana 5, a Concepción semana 6, a plataformas semana 7; remanentes semana 8 | Pedido/stock/preparación disponibles, usuarios certificados, acuerdos con transportistas y sindicato; coordinación de reserva/custodia probada |
+| 1 Recepción y trazabilidad | M1 Recepción; M9 Calidad y trazabilidad: captura/retención por lote; M12 Telemetría: adquisición de temperatura; M10 Analítica: indicadores de recepción | Talca como piloto propuesto en semana 1; Concepción y las tres plataformas en semana 2 | Lotes, sensores, contratos de integración y conciliación probados; recepción sin duplicar escritor |
+| 2 Bodega y preparación | M2 Inventario/M5 Preparación; M9 Calidad y trazabilidad: retiro sanitario y liberación; M12 Telemetría: alertas térmicas; M10 Analítica: inventario/faltantes | Talca en semana 3; demás sitios en semana 4 | Datos de recepción conciliados y disponibilidad de funciones de ola 1, sin retirar respaldos antes de cuatro semanas de criterio |
+| 3 Preventa a rendición | M3 Preventa/M4 Rutas/M6 Reparto/M8 Devoluciones y envases/M7 Cobranza y rendición; M9 Calidad y trazabilidad: trazabilidad hasta destinatario; M12 Telemetría: temperatura de transporte; M10 Analítica: OTIF y reparto | Grupos de rutas vinculados a Talca semana 5, a Concepción semana 6, a plataformas semana 7; remanentes semana 8 | Pedido/stock/preparación disponibles, usuarios certificados, acuerdos con transportistas y sindicato; coordinación de reserva y retención probada |
 
 Las semanas son relativas a H6 y son supuestos de preparación; al confirmar fechas se convierten a días permitidos. El piloto en Talca facilita probar la integración con WMS/ERP, pero no se presume aprobado. No se inventa un número de zonas: el plan de rutas vigente del CLIENTE define los grupos y su volumen. El responsable de Operaciones y el Líder de Implantación registran sitio, rutas, módulos, usuarios, escritor autorizado y fecha de activación en el acta de cada grupo. Si un grupo no está listo, no se sustituye su volumen por una muestra para acreditar cierre.
 
 Los dominios pueden habilitarse en paralelo sin intervenir simultáneamente el mismo proceso/sitio ni crear doble escritura. Una recepción habilitada alimenta bodega con conciliación diaria, mientras se acumula su evidencia; el retiro del respaldo exige cuatro semanas consecutivas por grupo. El último grupo se propone en semana 8 y nunca después de F − 28 días. Con apertura del período de H6 el 1 de febrero de 2028, sin activar cambios durante los primeros tres días hábiles, y cierre al comenzar el 1 de mayo de 2028, la evidencia comprende 3–30 de abril; todos los grupos deben estar operativos antes del 3 de abril. La semana 8 cae dentro de marzo y evita depender de la semana 9 de abril. Es un ejemplo calendario, no una fecha aprobada: el calendario hábil del CLIENTE y las fechas efectivas determinan las activaciones. H7/H12 respetan también los primeros tres días hábiles de su mes; la continuidad y evidencia se mantienen hasta el acta, sin usar esa espera para recortar la marcha blanca.
 
-M10 costo de servir se reserva a E2; sus indicadores operacionales pertenecen a E1. M9/M12 se activan desde la primera ola y amplían cobertura conforme al proceso; no quedan como una cuarta ola sin fecha.
+El costo de servir de M10 Analítica se reserva a E2; sus indicadores operacionales pertenecen a E1. M9 Calidad y trazabilidad y M12 Telemetría se activan desde la primera ola y amplían cobertura conforme al proceso.
 
 ### 6.2 Orden de cadenas, portales y cierre E2
 
@@ -332,17 +332,19 @@ Desde H7 y hasta el mes 20, el paquete 4.2.2 incluye soporte puente: NOC 24×7, 
 
 ### 6.4 Tiempo de reversión y ensayo de capacidad
 
-Objetivos propuestos para el ensayo previo a cada corte: nivel técnico ≤10 minutos; preparación de contingencia operacional ≤30 minutos en paralelo; verificación y autorización de despacho ≤10 minutos adicionales. Tiempo total objetivo = máximo(10,30) + 10 = 40 minutos. Decisión límite propuesta 04:45; restauración operacional objetivo 05:25, con cinco minutos antes de las 05:30. Son objetivos de diseño, no tiempos medidos ni una garantía de salida de 96 camiones.
+Objetivos propuestos para el ensayo previo a cada corte: nivel técnico ≤10 minutos; preparación de contingencia operacional ≤30 minutos en paralelo; verificación y autorización de despacho ≤10 minutos adicionales. Tiempo total objetivo = máximo(10,30) + 10 = 40 minutos. Decisión límite propuesta 04:45; restauración operacional objetivo 05:25, con cinco minutos antes de las 05:30. Son los objetivos que el ensayo mide antes de cada corte en Preproducción. El tiempo de restauración de incidentes críticos ≤4 horas del Art. 78.3 es una métrica mensual de operación distinta de estos objetivos de reversión.
 
-El ensayo de 4.1.2 registra detección, decisión, comienzo/fin técnico, disponibilidad de la versión local, conciliación mínima, guías emitidas por ERP, disponibilidad de rutas y autorización del CLIENTE. Debe demostrar el flujo completo de los 96 despachos y las integraciones fallidas, sin pérdida/duplicación ni emisión tributaria por un sistema no autorizado. Si no termina antes de las 05:30 o no acredita ese volumen, el corte no se autoriza y se registra el riesgo para SD8. La falla del ERP requiere su contingencia tributaria aprobada; disponer de papel no prueba que se puedan emitir DTE ni cumplir el despacho.
+El ensayo de 4.1.2 registra detección, decisión, comienzo/fin técnico, disponibilidad de la versión local, conciliación mínima, guías emitidas por ERP, disponibilidad de rutas y autorización del CLIENTE. Debe demostrar el flujo completo de los 96 despachos y las integraciones fallidas, sin pérdida/duplicación ni emisión tributaria por un sistema no autorizado. Si no termina antes de las 05:30 o no acredita ese volumen, el corte no se autoriza y se activa el riesgo R8-01 del Subdocumento 8. La falla del ERP requiere su contingencia tributaria aprobada; disponer de papel no prueba que se puedan emitir DTE ni cumplir el despacho.
 
 WMS permanece en solo lectura como respaldo de consulta conforme a S-14: no se reactiva su escritura para revertir. La vuelta operacional mantiene o restituye una versión local probada, único escritor y documentos válidos del ERP; conserva UUID/colas para conciliar. El papel y la carga asistida sólo sostienen tareas auxiliares y no reemplazan el despacho de 96 camiones. Ante cualquier evidencia de pérdida o duplicación se bloquea la aceptación; la conservación se comprueba, no se presume.
 
-Durante congelamientos, se aplica la continuidad previamente autorizada por el CLIENTE; no se afirma que un interruptor de funcionalidad esté exento de las prohibiciones de cambio. Si deshabilitar una función modifica producción, su ejecución requiere el procedimiento de emergencia acordado y la autoridad correspondiente. La reversión no puede degradar E1 ni crear doble digitación. Fuera de emergencia, las habilitaciones, cortes y cambios respetan todas las fechas y ventanas prohibidas.
+Durante congelamientos, se aplica la continuidad previamente autorizada por el CLIENTE. Los indicadores de funcionalidad están sujetos a las prohibiciones de cambio. Si deshabilitar una función modifica producción, su ejecución requiere el procedimiento de emergencia acordado y la autoridad correspondiente. La reversión no puede degradar E1 ni crear doble digitación. Fuera de emergencia, las habilitaciones, cortes y cambios respetan todas las fechas y ventanas prohibidas.
 
 ### 6.5 Controles nuevos de coordinación y aceptación
 
-Los paquetes 3.3.6, 3.4.2 y 3.4.6 incluyen el contrato CD-05: retención local por lote/ubicación, acuse durable antes de confirmar pedido, UUID e idempotencia y época de autoridad. 3.8.1/3.8.3 incluyen AL-STOCK-01 y AL-ACT-01 con corte, reintento, concurrencia y ausencia de doble descuento o custodia duplicada. La fuente es SD4 §4.1 y sus anexos lógicos; son pruebas planificadas, no ejecutadas. SD4 Anexo A31 ya dimensiona CD-05 con 4L mensajes y A32 incorpora su tráfico en enlaces. La relación con 2N + 2L exige comprobar N = L y la multiplicidad de retenciones; si un pedido usa varios lotes o ubicaciones, se mide el mayor volumen y el drenaje de cola. 3.8.4/3.9.3 verifican esa hipótesis; no se afirma que CD-05 esté ausente de la memoria. El límite residual de RPO continúa abierto ante pérdida simultánea del sitio y su respaldo local, sin alterar aquí la arquitectura física.
+Los paquetes 3.3.6, 3.4.2 y 3.4.6 incluyen la coordinación de reserva y retención (SD4, apartado 4.1.4.4 y Anexo 4-G): retención local por lote/ubicación, acuse durable antes de confirmar pedido, UUID e idempotencia y época de autoridad. 3.8.1/3.8.3 incluyen AL-STOCK-01 y AL-ACT-01 con corte, reintento, concurrencia y ausencia de doble descuento o retención duplicada. El dimensionamiento se recoge en el Anexo 4-I, Tabla A.10, y el Anexo 4-W, Tablas A.32 y A.33: 46.968 mensajes/día normales y 87.228 en peak, con un máximo de cuatro mensajes por línea. La retención consumida no se libera, por lo que esa holgura cubre líneas repartidas entre lotes o sitios. AL-STOCK-01 mide la proporción de líneas con más de una retención y 3.8.4/3.9.3 verifican la carga y el drenaje, sin sumar la coordinación al drenaje tras un corte (4-W.5).
+
+El RPO ≤15 min se cumple con fibra, LTE y Starlink. La falla simultánea de los tres caminos seguida de la destrucción del sitio antes de reponer alguno es el riesgo residual declarado en SD4 4.3.2.4 (RT-02.11), gestionado en SD8 con R8-05. AL-DR-01 verifica las alarmas de retraso a 5 y 15 min, la reposición del enlace, la preemisión de guías y el NAS WORM, y mide el RPO y el RTO en conmutación real antes del H5 y del H10.
 
 
 ## Referencias

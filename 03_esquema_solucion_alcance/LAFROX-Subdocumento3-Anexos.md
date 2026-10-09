@@ -633,7 +633,7 @@ Los quince actores de la Figura 3.4 y del apartado 3.4.2.1 conservan sus nombres
 
 Fuente: Figura 3.4 y requerimientos del Anexo 3.A. El catálogo define actores funcionales; su validación con el CLIENTE se realiza en el levantamiento de la fase de Inicio.
 
-Los diecinueve interesados del Anexo 2.3 siguen presentes en la estrategia de participación anterior. Sus categorías no se cuentan como diecinueve cuentas de acceso. Sindicato y autoridad sanitaria reciben el tratamiento descrito en 3.4.2.1; food service conserva su segmento; el peoneta no comparte credenciales; la empresa transportista accede mediante representantes. Recepción, catálogo, despacho y Tesorería son funciones con permisos específicos dentro de los perfiles autorizados y no amplían por sí mismas el catálogo nominal de quince actores.
+Los diecinueve interesados del Anexo 2.3 siguen presentes en la estrategia de participación anterior. Sus categorías no se cuentan como diecinueve cuentas de acceso. Sindicato y autoridad sanitaria reciben el tratamiento descrito en 3.4.2.1; food service conserva su segmento; el peoneta no comparte credenciales; la empresa transportista accede mediante representantes. Recepción, catálogo, abastecimiento, despacho y Tesorería son funciones con permisos específicos dentro de los perfiles autorizados y no amplían por sí mismas el catálogo nominal de quince actores. El jefe de abastecimiento que figura en RF-10.01 a RF-10.03 ejerce así la función de abastecimiento: revisa y aprueba la sugerencia de reposición de M2 Inventario (D-05).
 
 ## Anexo 3.J — Criterios de aceptación
 

@@ -23,7 +23,7 @@ Véase [la tabla completa](../04_arquitectura/LAFROX-Formulario-T-11.md#formular
 
 Las reservas de dispositivos y componentes críticos siguen el **10 % redondeado hacia arriba**, con excepciones justificadas por componente. El parque inicial de reparto usa **96 instalados + 10 de reserva = 106** por fila correspondiente; el año 3 pasa a **110 + 11 = 121**. Los termógrafos son **28 + 3 = 31**; los repuestos no aumentan la ingesta térmica normal.
 
-El formulario asigna compra de hardware de terreno al CLIENTE y provisión on-premise al adjudicatario; este último instala, integra y mantiene. SD6 asigna al CLIENTE la compra de sala técnica: la responsabilidad difiere entre fuentes y requiere coordinación, sin que el resumen la resuelva.
+El formulario asigna compra de hardware de terreno al CLIENTE y provisión on-premise al adjudicatario; este último instala, integra y mantiene. SD6, T-14 y T-15 aplican el mismo reparto: el CLIENTE compra solo el hardware de terreno y LafroX especifica, compra e instala la sala técnica, los servidores y los gabinetes de borde, con valorización en la Oferta Económica.
 
 ## Dónde está el fundamento
 

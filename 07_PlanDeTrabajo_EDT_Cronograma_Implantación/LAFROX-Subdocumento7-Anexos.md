@@ -47,8 +47,8 @@ La Tabla 7.B.1 lista las dependencias que estructuran la red del cronograma. Son
 | D-06 | 2.2.1 Plan de seguridad | 3.3.1 Identidad y control de acceso | FC | La identidad aplica el plan de seguridad aprobado en el H2 |
 | D-07 | 5.2.1 Contrato de los servicios de AWS | 3.2 Servicios de nube | FC | Servicios activos antes de configurar ambientes |
 | D-08 | 3.2.1, 3.2.2, 3.2.4 y 3.2.5 Servicios de nube de aplicación, datos, respaldo y seguridad | 3.1.1 a 3.1.3 Ambientes en la nube (H3) | FC | Los ambientes usan los servicios configurados. La ingesta de IoT 3.2.3 precede a M12 (3.4.5) y la gestión de dispositivos 3.2.6 precede a la configuración de terminales (6.5.1); no condicionan los ambientes |
-| D-09 | 2.3.1 y 2.3.2 Planos de sala y racks | 5.1.2 Especificación de compra de sala y racks | FC | Se especifica lo diseñado; planos en los meses 1 y 2 y especificación en los meses 2 y 3 |
-| D-10 | 5.1.2 Especificación de compra | 6.1 Sala técnica de Talca | FC | Se instala el suministro recibido conforme a responsabilidades BTT/SD4/T-11; la compra de terreno del CLIENTE no transfiere toda provisión de sala/racks. 6.1 empieza en el mes 3, por lo que el CLIENTE compra dentro del mes siguiente a la aprobación de la especificación |
+| D-09 | 2.3.1 y 2.3.2 Planos de sala y racks | 5.1.2 Especificación y compra de la sala técnica, los racks, los servidores y los gabinetes de borde | FC | Planos en el mes 1; LafroX especifica y emite la orden de compra en el mes 2 |
+| D-10 | 5.1.2 Especificación y compra de la sala técnica, los racks, los servidores y los gabinetes de borde | 6.1 Sala técnica de Talca | FC | LafroX compra lo especificado en el mes 2 y recibe el suministro antes del montaje. La instalación 6.1 empieza en el mes 3. El CLIENTE compra solo el hardware de terreno, antes de cada ola |
 | D-11 | 6.1.5 Recepción técnica de la sala | 6.3.1 y 6.3.2 Racks R01 y R02 | FC | El acta de la sala habilita el montaje; 6.1.5 se firma después de 6.1.2 a 6.1.4 (Formulario T-15, Tabla 6.1) |
 | D-12 | 6.3.1 a 6.3.3 Racks de Talca y gabinete de Concepción | 6.6 Configuración de los sitios | FC | El software de base se instala sobre el hardware montado. Los gabinetes de cross-docking (6.3.4) se montan junto con el equipamiento de campo de cada ola (6.5.1, CC) y no condicionan la configuración de los CD |
 | D-13 | 6.6.3 Borde de los CD en servicio y validación inicial | H3 (mes 6); pruebas ampliadas antes de H5 | FC | Infraestructura híbrida del H3 (Formulario E-25) |
@@ -75,7 +75,7 @@ La Tabla 7.B.1 lista las dependencias que estructuran la red del cronograma. Son
 | D-33 | 4.3.1, 7.3.2, 7.1.4 y 4.3.4 | 4.3.3 Aceptación final (H12) | FC | Bases Administrativas, Art. 17.3 y 37.1 |
 | D-34 | 4.3.3 Aceptación final (H12) | 8 Operación y 9.1 Cierre de la implementación | FC | Bases Administrativas, Art. 17.2, punto 4 |
 
-Las dependencias D-02, D-04 y D-14 a D-25 forman la cadena que llega a la marcha blanca de la Etapa 1 y contienen la ruta crítica. Las dependencias D-07 a D-13 son las dos cadenas que convergen en el H3, y las D-29 a D-34 forman la secuencia de la Etapa 2.
+Las dependencias D-29 a D-31 forman la ruta crítica de la Etapa 2. D-02, D-04 y D-14 a D-25 forman la cadena casi crítica de la Etapa 1. D-07 a D-13 convergen en el H3. D-32 a D-34 enlazan la certificación de la Etapa 2 con su marcha blanca, aceptación y operación.
 
 ## Anexo 7.C — Momento de los resultados de aceptación del caso
 
@@ -171,21 +171,21 @@ Once de los doce módulos se construyen en la cuenta 3.4 y se prueban en la 3.8;
 
 | Interfaz | Propósito | Paquetes |
 | --- | --- | --- |
-| INT-01 | Pedido de preventa y consulta | 3.4.6, 3.3.6 |
-| INT-02 | Entrega, prueba de entrega y cobro | 3.4.8, 3.4.9, 3.4.10, 3.3.6 |
-| INT-03 | Eventos de bodega a la nube | 3.4.2, 3.4.3, 3.3.6 |
-| INT-04 | Detalle de cross-docking a Talca | 3.4.2, 6.3.4 |
+| INT-01 | Pedido preventa y consulta | 3.4.6, 3.3.6 |
+| INT-02 | Entrega, POD y cobro | 3.4.8, 3.4.9, 3.4.10, 3.3.6 |
+| INT-03 | Eventos bodega a nube | 3.4.2, 3.4.3, 3.3.6 |
+| INT-04 | Detalle de cross-docking a la nube | 3.4.2, 6.3.4 |
 | INT-05 | Eventos de temperatura | 3.4.4, 3.4.5, 6.5.3 |
-| INT-06 | ERP de 2017 | 3.3.2 |
-| INT-07 | Emisor de documentos tributarios del ERP | 3.3.2 |
-| INT-08 | Cadenas del canal moderno | 3.6.5, 3.6.6 |
+| INT-06 | ERP 2017 | 3.3.2 |
+| INT-07 | Emisor DTE del ERP y SII | 3.3.2 |
+| INT-08 | Cadenas modernas | 3.6.5, 3.6.6 |
 | INT-09 | Pasarela de pago | 3.6.2 |
 | INT-10 | Mapas y geocodificación | 3.6.3 |
 | INT-11 | Avisos al cliente | 3.6.4 |
-| INT-12 | Réplica de cambios de datos del WMS | 3.3.3 |
-| INT-13 | Identidad en el sitio | 3.3.1 |
-| INT-14 | Métricas y trazas | 3.1.5 |
-| INT-15 | Telemetría existente de la flota | 3.3.4 |
+| INT-12 | Réplica de lectura del WMS de Talca | 3.2.2 |
+| INT-13 | Identidad y manifiestos | 3.3.1 |
+| INT-14 | Métricas, logs y trazas | 3.1.5 |
+| INT-15 | Telemetría de flota | 3.3.4 |
 
 Las quince interfaces tienen un paquete que las construye, y las interfaces internas (INT-01 a INT-05 e INT-12 a INT-14) dependen de la base compartida o de los módulos que las usan. Además de estas interfaces, el paquete 3.6.1 construye el intercambio de lote y trazabilidad con los proveedores.
 
@@ -195,23 +195,23 @@ Esta matriz traslada al Capítulo 8 los supuestos de la planificación que condi
 
 | ID | Riesgo / supuesto | EDT / hitos | Responsable de tratamiento | Disparador o control |
 | --- | --- | --- | --- | --- |
-| P7-01 | Productividad y tamaños HH por clase no medidos | Los 222 paquetes; T-15 §4 | JP y líderes de frente | Sustituir tamaños por estimación de equipo trazable a T-12, cantidades y ensayos; recalcular si demanda supera capacidad |
-| P7-02 | Cronograma por actividad depende de tamaños y equipos supuestos | D-01–D-34; H2/H3/H4/H5/H9/H10 | JP/ARQ | T-15 §5–§6 programa 564 actividades con dependencias, revisión Art. 18.3 y nivelación; reservas de 3 a 35 días hábiles por hito. Reestimar con el equipo y repetir el cálculo; una reserva consumida a la mitad activa replanificación |
+| P7-01 | Validación de productividad y tamaños HH por clase | Los 222 paquetes; T-15, sección 4 | JP y líderes de frente | Se valida con el equipo en la línea base (H1), con trazabilidad a T-12, cantidades y ensayos. Se recalcula si la demanda supera la capacidad |
+| P7-02 | Cronograma por actividad depende de tamaños y equipos supuestos | D-01–D-34; H2/H3/H4/H5/H9/H10 | JP/ARQ | T-15, secciones 5 y 6, programa 564 actividades con dependencias, revisión Art. 18.3 y nivelación; reservas de 6 a 35 días hábiles por hito. Se valida con el equipo en la línea base (H1) y se repite el cálculo. Se escala y replanifica cuando la desviación proyectada supera la mitad de la reserva |
 | P7-03 | Solapamientos compiten por especialistas | 4.2.1/4.2.2, 3.5, 4.3.1; meses 13–15/19–20 | Líder DES y CAL | Mantener 256 HH DES + 128 HH CAL/mes protegidas E1, sin préstamo a F4; asignar personas nominales |
 | P7-04 | Fecha efectiva cambia congelamientos | 1.1.3, 4.1; V-12/H6/H11/H7/H12 | JP/CLIENTE | Confirmar fecha y transformar meses relativos en calendario; no iniciar corte en fechas prohibidas |
 | P7-05 | Ola/cadena no lista antes de cuatro semanas de cierre | 4.2.1/4.3.1, 7.3, 3.6.5/6 | IMP/Comercial/Operaciones | Registro de todo el alcance, activación antes del tramo final, cero incidentes críticos/altos; no reemplazar alcance por muestra |
 | P7-06 | Reversión manual no soporta despacho o falla DTE | 4.1.2/3.3.2; H6/H11 | Operaciones/ARQ/SRE | Ensayo de 96 despachos, objetivo total 40 minutos, final antes de 05:30; contingencia ERP aprobada |
 | P7-07 | Retiro temprano de acompañamiento o capacidad de mesa insuficiente | 4.2.2/4.3.2/8.1.1/8.1.2/8.1.5 | IMP/SRE | Decremento sólo con acta e indicadores sostenidos; mesa con las posiciones del SD4 y SOC 24×7 en T-15; medir abandono y resolución al primer contacto y calibrar Erlang A (T-15 §5.6) |
-| P7-08 | Compra/sala/borde incumple H3 | 5.1.2/6.1/6.3/6.6.3 | SRE/CLIENTE | Recepción de sala antes de racks y configuración; H3 exige borde mes 6, no mes 12 |
-| P7-09 | Reserva de stock/custodia duplica o confirma sin acuse | 3.3.6/3.4.2/3.4.6/3.8.1/3.8.3 | ARQ/DES/CAL | CD-05; AL-STOCK-01/AL-ACT-01 con concurrencia/corte/reintento; acuse durable y autoridad por época |
-| P7-10 | Tráfico adicional o recuperación excede diseño | 3.8.4/3.9.3; SD4 física/DR | ARQ/SRE | Verificar 4L de A31/A32 frente a 2N + 2L y retenciones múltiples; medir carga/drenaje y límite residual DR/RPO |
+| P7-08 | Compra/sala/borde incumple H3 | 5.1.2/6.1/6.3/6.6.3 | SRE | LafroX emite la orden de compra en el mes 2. La sala se instala en el mes 3 y se recibe en el mes 4, antes de racks y configuración. El borde de los CD entra en servicio en el mes 5 para el H3 |
+| P7-09 | Reserva de stock/retención duplica o confirma sin acuse | 3.3.6/3.4.2/3.4.6/3.8.1/3.8.3 | ARQ/DES/CAL | La coordinación de reserva y retención (SD4, apartado 4.1.4.4) se valida antes del H4 con AL-STOCK-01/AL-ACT-01: concurrencia, corte, reintento, acuse durable y autoridad por época |
+| P7-10 | Tráfico adicional o recuperación excede diseño | 3.8.4/3.9.3; SD4 física/DR | ARQ/SRE | AL-STOCK-01 mide la proporción de líneas con más de una retención y 3.8.4/3.9.3 verifican carga y drenaje conforme al Anexo 4-I, Tabla A.10, y Anexo 4-W, Tablas A.32 y A.33, sin sumar la coordinación al drenaje. El riesgo residual de falla de los tres caminos seguida de destrucción del sitio (SD4 4.3.2.4; R8-05) se verifica con AL-DR-01 y sus alarmas de 5 y 15 min, reposición del enlace, preemisión de guías y NAS WORM |
 | P7-11 | Control de conservación del precio pactado | 1.2.1/3.4.6; SD2 S-09, RF-03.11/12 y SD3 RNG-08 | Comercial/JP | Probar cambio de lista entre pedido y despacho y detectar diferencias ERP |
 
 Los once supuestos se concentran en tres frentes: el tamaño de las estimaciones (P7-01 a P7-03), la fecha efectiva y las ventanas de corte (P7-04 a P7-06) y las dependencias técnicas con la arquitectura (P7-08 a P7-10). Cada uno tiene un control que se revisa en el Comité de Proyecto, y el Capítulo 8 asigna a los de mayor exposición una reserva de contingencia.
 
 ### Política de reservas que recibe el Capítulo 8
 
-El modelo protege 3.072 HH para correcciones de la Etapa 1 en los meses 13 a 20, además del trabajo base y de la cobertura de servicio. El Formulario T-15, sección 5, no deja reserva de calendario antes de H4, H5, H9 y H10, y la holgura local de convergencia no se suma como reserva adicional. Las últimas cuatro semanas de marcha blanca no son reserva. La reserva de gestión se define en la Oferta Económica, porque la Oferta Técnica no contiene precios.
+El modelo protege 3.072 HH para correcciones de la Etapa 1 en los meses 13 a 20, además del trabajo base y de la cobertura de servicio. El Formulario T-15, Tabla 5.2, fija reservas en días hábiles: H1 6, H2 35, H3 19, H4 19, H5 35, H8 13, H9 21 y H10 28. La subsanación de observaciones del CLIENTE consume la reserva del hito (T-15, sección 5.5). Toda amenaza se escala cuando la desviación proyectada supera la mitad de su reserva, sin esperar a consumirla. La holgura local de convergencia no se suma como reserva adicional. Las últimas cuatro semanas de marcha blanca no son reserva. La reserva de gestión se define en la Oferta Económica, porque la Oferta Técnica no contiene precios.
 
 ### Condiciones para aprobar la línea base
 

@@ -26,7 +26,7 @@ La estabilización dura **cuatro semanas por ola**, con **13 puestos simultáneo
 
 ## Restricciones y relaciones
 
-No se activa/corta en fechas prohibidas ni en ventana crítica. La reversión E2 desactiva su capacidad sin alterar E1, pero una capacidad obligatoria desactivada impide cerrar aceptación. CD-05 y sus pruebas AL-STOCK-01/AL-ACT-01 permanecen planificados.
+No se activa/corta en fechas prohibidas ni en ventana crítica. La reversión E2 desactiva su capacidad sin alterar E1, pero una capacidad obligatoria desactivada impide cerrar aceptación. La coordinación de reserva y retención del SD4 (apartado 4.1.4.4) se prueba con AL-STOCK-01 y AL-ACT-01 antes del H4.
 
 [T-15](LAFROX-Formulario-T-15-Resumen.md) aporta personas y capacidad; [SD3](LAFROX-Subdocumento3-Resumen.md), criterios; [SD4](LAFROX-Subdocumento4-Resumen.md), continuidad técnica.
 

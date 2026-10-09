@@ -72,7 +72,7 @@ Detalla siete interfaces externas, dueño interno, contrato y respuesta ante fal
 
 ## Anexo 4-I — Volumen de mensajes
 
-Reúne órdenes de magnitud de mensajes por interfaz, con sus unidades y supuestos. Permite comparar demanda, sin sumar todos los recorridos como operaciones únicas. La coordinación CD-05 agrega mensajes de reserva/custodia y debe incluirse en capacidad y drenaje.
+Reúne órdenes de magnitud de mensajes por interfaz, con sus unidades y supuestos. Permite comparar demanda, sin sumar todos los recorridos como operaciones únicas. La coordinación de reserva y retención suma 46.968 mensajes diarios (87.228 en peak), con un máximo de cuatro por línea, y no se suma al drenaje tras un corte.
 
 **Cuándo consultarlo:** para comprobar si un cálculo usa mensajes, transacciones, lecturas o tráfico encadenado.
 

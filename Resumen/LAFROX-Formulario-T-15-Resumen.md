@@ -29,7 +29,7 @@ La red usa **febrero de 2027 como mes 1 supuesto**, días de lunes a viernes, de
 
 ## Límites y relaciones
 
-Los tamaños por clase, productividad, compras y fecha de inicio deben validarse. La sala se adelanta a meses 3–4 en la red, mientras SD6 indica necesidad en mes 5. La simulación del SD8 usa esta programación y sus supuestos; un percentil no demuestra ejecución.
+Los tamaños por clase, productividad, compras y fecha de inicio deben validarse. La sala sigue la secuencia planos en el mes 1, orden de compra de LafroX en el mes 2, instalación en el mes 3 y recepción en el mes 4, igual que SD6 y T-14. La ruta crítica es la cadena de la Etapa 2 (H8, H9 y H10). La simulación del SD8 usa esta programación y sus supuestos; un percentil no demuestra ejecución.
 
 Consultar [T-14](LAFROX-Formulario-T-14-Resumen.md) para entregables, [T-18](LAFROX-Formulario-T-18-Resumen.md) para activación/reversión y [anexos 7.B/7.F](LAFROX-Subdocumento7-Anexos-Resumen.md) para dependencias y condiciones.
 

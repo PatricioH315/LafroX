@@ -33,7 +33,7 @@ La gestión del proyecto aplica la Guía del PMBOK, sexta edición (PMI, 2017), 
 
 La planificación define los entregables, sus responsables, los recursos, los plazos y las dependencias entre actividades, considerando las restricciones de la operación. La línea base de alcance (paquete 1.2.1, H1) y la de cronograma (1.3.3) sirven para medir el avance y evaluar las desviaciones.
 
-El proyecto se ejecuta mediante entregas incrementales dentro de las dos etapas contractuales. La distribución propuesta prioriza primero la calidad y disponibilidad de la información operacional, y luego las capacidades que dependen de esos datos para optimizar y analizar la operación. En la Etapa 1 se implementan las capacidades de preventa, recepción, bodega, preparación y cross-docking; la trazabilidad de los lotes y de la cadena de frío; la planificación de rutas basada en el conocimiento del planificador, con el acuse de recibo de los conductores; y el manejo de efectivo y los retiros de los pedidos. En la Etapa 2 se implementan los portales y el intercambio electrónico con los clientes y, por último, el costo de servir.
+El proyecto se ejecuta mediante entregas incrementales dentro de las dos etapas contractuales. La distribución propuesta prioriza primero la calidad y disponibilidad de la información operacional, y luego las capacidades que dependen de esos datos para optimizar y analizar la operación. En la Etapa 1 se implementan las capacidades de preventa, recepción, bodega, preparación y cross-docking, incluida la reposición de compras. Se incorporan la trazabilidad de los lotes y de la cadena de frío, la planificación de rutas basada en el conocimiento del planificador, la captura de la evidencia de entrega y del acuse de recibo de la guía de despacho que registra el ERP, el manejo de efectivo y el retiro sanitario de lotes. En la Etapa 2 se implementan los portales y el intercambio electrónico con los clientes y, por último, el costo de servir.
 
 La planificación respeta el cronograma contractual: desarrollo de la Etapa 1 entre los meses 1 y 12, marcha blanca entre los meses 13 y 15 y paso a producción en el mes 16. El desarrollo de la Etapa 2 ocupa los meses 13 a 18, la marcha blanca los meses 19 y 20 y el paso a producción el mes 21. El trabajo de la Etapa 2 se coordina con la marcha blanca y la estabilización de la Etapa 1, resguardando la continuidad operacional y la integridad de los datos compartidos.
 
@@ -56,6 +56,7 @@ El jefe de proyecto mantiene actualizado el registro de interesados (paquete 1.4
 | Gerencia comercial | Cumplimiento de la promesa de entrega e información confiable | Aportar y validar políticas comerciales, procesos de preventa y necesidades de servicio |
 | Cadenas de supermercados | Recepción completa y oportuna de pedidos e intercambio electrónico | Participar en la definición y validación de los flujos de aviso de despacho y evidencia de entrega |
 | Clientes del canal tradicional | Recepción correcta de pedidos, pagos y atención | Aportar retroalimentación sobre recepción, comprobantes y atención |
+| Clientes de food service | Frescura, puntualidad y evidencia térmica de la entrega | Validar sus ventanas de entrega y la evidencia térmica del viaje |
 | Preventistas | Consulta de stock y crédito, y registro confiable de pedidos | Participar en el levantamiento y prueba de los flujos de preventa y cobranza |
 | Sindicato de conductores | Condiciones de trabajo y uso de tecnologías | Canalizar inquietudes y aportar observaciones sobre los cambios que afecten a los conductores |
 | Conductores propios | Registro de entregas, devoluciones y cobros | Participar en pruebas de ruta y validar la usabilidad de los dispositivos |
@@ -64,10 +65,11 @@ El jefe de proyecto mantiene actualizado el registro de interesados (paquete 1.4
 | Gerencia de operaciones | Continuidad del despacho y cumplimiento de entregas | Aportar prioridades operacionales y validar procedimientos y cambios que afecten la operación |
 | Administración y finanzas | Control de cobros, conciliación y costos de servir | Definir y validar reglas de rendición, conciliación e indicadores financieros |
 | Equipo de TI | Integración con sistemas existentes y mantenibilidad de la solución | Coordinar accesos e integraciones, y revisar documentación y transferencia de conocimiento |
+| Empresas transportistas | Asignación de conductores y vehículos, y uso de terminales | Firmar el acuerdo operacional y confirmar conductor y vehículo antes del despacho |
 | Conductores de transportistas externos | Acceso a la solución y registro de actividades de reparto | Participar en pruebas de los flujos que les correspondan y aportar observaciones de uso |
 | Proveedores | Intercambio de información de productos, lotes, despacho y órdenes de compra | Coordinar formatos de intercambio y participar en pruebas de recepción, trazabilidad y del portal de proveedores |
 
-La tabla resume los principales grupos y roles identificados, sus intereses y la contribución esperada. La participación concreta se acuerda según las responsabilidades de cada interesado y las actividades de cada entrega; la inclusión en la tabla no implica que todos participen en todas las decisiones ni que tengan atribuciones de aprobación.
+La tabla agrupa los diecinueve actores del Subdocumento 2, Anexo 2.3, con sus intereses y la contribución esperada; las gerencias y jefaturas se nombran por su área. La participación concreta se acuerda según las responsabilidades de cada interesado y las actividades de cada entrega; la inclusión en la tabla no implica que todos participen en todas las decisiones ni que tengan atribuciones de aprobación.
 
 ### 6.1.2 Gestión de comunicaciones
 
@@ -93,22 +95,25 @@ La Tabla 6.2 muestra que el Jefe de Proyecto concentra cuatro de las cinco comun
 
 La gestión de adquisiciones planifica, contrata y controla los bienes y servicios que requiere la solución: contratos, órdenes de compra, acuerdos con terceros y acuerdos de nivel de servicio. Cada adquisición tiene un responsable, una fecha de necesidad derivada del cronograma, una dependencia con los paquetes que la usan y una evidencia de recepción.
 
-El CLIENTE compra el equipamiento de terreno y el de la sala técnica conforme a la especificación de cantidades y características que prepara LafroX (Caso 02, capítulo 11; SD3 E-09; paquetes 5.1.1 y 5.1.2). Esa compra no traslada al CLIENTE la instalación: LafroX habilita el recinto técnico en el espacio que proporciona el CLIENTE, instala y configura los equipos (fase 6 de la EDT) y contrata los servicios que le corresponden. Las licencias de terceros se constituyen a nombre del CLIENTE (5.2.3).
+El CLIENTE compra solo el equipamiento de terreno conforme a la especificación de LafroX (Caso 02, capítulo 11; SD3 E-09; paquete 5.1.1). LafroX provee, instala, integra y mantiene la sala técnica, los racks, los servidores, el almacenamiento, los firewalls, los switches, los servidores de Concepción, los mini-PC de borde y los gabinetes dentro del precio del contrato (Bases Administrativas, art. 14.2). Su especificación y compra corresponden al paquete 5.1.2 y su valorización se incluye en la Oferta Económica (art. 50.2). La obra civil de separación es de cargo del CLIENTE y LafroX la especifica y coordina (RT-06.06). El piso técnico, la energía, la climatización y los sistemas de incendio son provistos por LafroX. La recepción se acredita con las actas 5.1.3 y 6.1.5. Las licencias de terceros se constituyen a nombre del CLIENTE (5.2.3).
 
 **Tabla 6.3. Adquisiciones — Fuente: elaboración propia a partir del Formulario T-14, fase 5, y del Formulario T-11**
 
 | Bien o servicio | Necesidad asociada | Responsable del contrato / de LafroX | Fecha de necesidad | Paquetes que dependen y evidencia |
 | --- | --- | --- | --- | --- |
 | Equipamiento de terreno: terminales de preventa, reparto y bodega, impresoras, sensores de temperatura, termógrafos y gateways IoT | Operación de las aplicaciones y registro de frío | CLIENTE, según la especificación 5.1.1 / Arquitecto (especificación); SRE (recepción) | Antes de cada ola; sensores antes de 6.5 | 6.5, 4.2.1; Actas 5.1.3 |
-| Sala técnica de Talca: UPS, generador, climatización de precisión, detección y extinción, racks y gabinetes de borde | Recinto técnico del H3 | CLIENTE, según la especificación 5.1.2 / Arquitecto (especificación); SRE (recepción) | Mes 5 | 6.1, 6.3, 6.6; Actas 5.1.3 y 6.1.5 |
-| Servidores, almacenamiento, firewalls, switches y mini-PC de borde | Cómputo y red de los sitios | CLIENTE, según la especificación 5.1.2 / SRE | Mes 5 | 6.3, 6.6; Actas 5.1.3 |
-| Obra civil, piso técnico e instalación de energía, climatización e incendio | Habilitación del recinto | LafroX, con instaladores especializados / SRE | Meses 5 y 6 | 6.1.1 a 6.1.4; Acta 6.1.5 |
+| Sala técnica de Talca: UPS, generador, transferencia automática, climatización de precisión, detección y extinción | Recinto técnico del H3 | LafroX, especificación y compra 5.1.2 / Arquitecto (especificación); SRE (recepción) | Mes 3 | 6.1; Actas 5.1.3 y 6.1.5 |
+| Servidores, almacenamiento, firewalls y switches de Talca y Concepción | Cómputo y red de los CD | LafroX, especificación y compra 5.1.2 / SRE | Mes 4 | 6.3, 6.6; Actas 5.1.3 |
+| Racks R01/R02 y gabinete de borde de Concepción | Montaje del cómputo y las comunicaciones | LafroX, especificación y compra 5.1.2 / SRE | Racks: meses 4 y 5; gabinete de Concepción: mes 4 | 6.3.1 a 6.3.3; Actas 5.1.3 |
+| Mini-PC y gabinetes de borde de cross-docking | Cómputo local de las plataformas | LafroX, especificación y compra 5.1.2 / SRE | Mes 9 | 6.3.4; Actas 5.1.3 |
+| Obra civil de separación | Separación del recinto técnico | CLIENTE; LafroX la especifica y coordina (RT-06.06) / SRE | Mes 3 | 6.1.1; Acta 6.1.5 |
+| Piso técnico, energía, climatización e incendio | Habilitación del recinto | LafroX, con instaladores especializados / SRE | Mes 3 | 6.1.1 a 6.1.4; Actas 5.1.3 y 6.1.5 |
 | Servicios de AWS | Plataforma de nube y ambientes | LafroX (5.2.1) / SRE | Antes del mes 4 | 3.1, 3.2; Cuentas y servicios activos |
 | Gestión de dispositivos y detección en endpoints | Enrolamiento y seguridad de los terminales | LafroX (5.2.2) / SRE | Antes del enrolamiento | 6.5, 7.1; Suscripciones activas |
 | Licencias de software de terceros | Productos de la arquitectura | A nombre del CLIENTE (5.2.3) / Arquitecto | Antes de usar cada producto | 3.1 a 3.6; Registro de licencias |
 | Fibra óptica de Talca y Concepción | Enlace principal | LafroX (5.3.1) / SRE | Antes del H3 | 6.6; Contrato y fecha de instalación |
-| Planes LTE de dos proveedores | Respaldo de enlace | LafroX (5.3.2) / SRE | Antes del H3 | 6.6; Contratos |
-| Starlink de las tres plataformas | Enlace de los cross-docking | LafroX (5.3.3) / SRE | Antes del H3 | 6.6; Contratos y equipos |
+| Planes LTE: dos proveedores; ocho planes | Respaldo de enlace: uno por CD y dos por plataforma de cross-docking | LafroX (5.3.2) / SRE | Antes del H3 | 6.6; Contratos |
+| Starlink de los cinco sitios: Talca, Concepción y las tres plataformas | En los CD, tercer camino en espera caliente detrás de fibra y LTE; en cross-docking, enlace principal | LafroX (5.3.3) / SRE | Antes del H3 | 6.6; Contratos y equipos |
 | Acuerdos con los diez transportistas | Uso de terminales y suplentes enrolados | LafroX con el CLIENTE (5.4.1) / Implantación | Antes del H6 | 4.2.1, ola de reparto; Diez acuerdos firmados |
 | Acta con el sindicato | Terminales, GPS y cámaras | CLIENTE y sindicato (5.4.2) / Implantación | Antes del H6 | 4.2.1; Acta firmada |
 | Custodia de fuentes | Continuidad ante insolvencia o incumplimiento | LafroX (5.4.4) / Jefe de proyecto | Antes del H4 | 9.2; Contrato y primer depósito |
@@ -145,7 +150,7 @@ La Tabla 6.4 aplica el cálculo al corte del H4 (mes 10). El valor planificado a
 | SPI | EV / PV = 33.256 / 35.006 | 0,95 | Atraso del 5 %, sobre el umbral de 0,90 |
 | CPI | EV / AC = 33.256 / 34.300 | 0,97 | Se usan 3 % más horas que las ganadas |
 
-Con estos valores ningún índice cruza el umbral de 0,90, pero el SPI de 0,95 a un mes del H4 obliga a revisar en el Comité de Proyecto los paquetes de la ruta crítica que lo explican, porque el Formulario T-15 no deja reserva de calendario antes de ese hito.
+Con estos valores ningún índice cruza el umbral de 0,90, pero el SPI de 0,95 a un mes del H4 obliga a revisar en el Comité de Proyecto los paquetes que lo explican y su efecto sobre los 19 días hábiles de reserva del hito (Formulario T-15, Tabla 5.2). La amenaza se escala cuando la desviación proyectada supera la mitad de esa reserva.
 
 Las reservas se controlan por separado: la capacidad protegida de la Etapa 1 y las necesidades de contingencia del SD8 sólo se usan con autorización registrada, y su consumo se informa en el mismo informe mensual.
 
@@ -178,7 +183,7 @@ RUP se organiza en las siguientes fases:
 
 Las iteraciones producen resultados verificables, pero no implican una puesta en producción o una marcha blanca. La marcha blanca y la aceptación formal se realizan en los momentos definidos para cada etapa contractual. Los casos de uso expresan y siguen los requisitos funcionales, y la matriz del Formulario T-12 los vincula con su prueba.
 
-La secuencia de iteraciones se coordina con las dos etapas contractuales: en la Etapa 1, preventa, recepción, bodega, preparación y cross-docking; trazabilidad de lotes y de la cadena de frío; planificación de rutas; confirmación de recepción por los conductores; y manejo de efectivo y retiros. En la Etapa 2, los portales y el intercambio electrónico con los clientes y, luego, el costo de servir. La transición sigue el cronograma: marcha blanca de la Etapa 1 entre los meses 13 y 15 y paso a producción en el mes 16; marcha blanca de la Etapa 2 en los meses 19 y 20 y paso a producción en el mes 21.
+La secuencia de iteraciones se coordina con las dos etapas contractuales. La Etapa 1 comprende preventa, recepción, bodega, preparación y cross-docking, reposición de compras, trazabilidad de lotes y de la cadena de frío, planificación de rutas, captura de la evidencia de entrega y del acuse de recibo de la guía de despacho que registra el ERP, manejo de efectivo y retiro sanitario de lotes. En la Etapa 2 se implementan los portales y el intercambio electrónico con los clientes y, luego, el costo de servir. La transición sigue el cronograma: marcha blanca de la Etapa 1 entre los meses 13 y 15 y paso a producción en el mes 16; marcha blanca de la Etapa 2 en los meses 19 y 20 y paso a producción en el mes 21.
 
 ### 6.2.1 Arquitectura evolutiva, refactorización y deuda técnica
 
@@ -195,7 +200,7 @@ Las compuertas son bloqueantes, no opcionales. El pipeline detiene la promoción
 - un hallazgo de seguridad crítico o alto en dependencias, código, secretos o imagen;
 - un contrato público roto sin una nueva edición de la interfaz;
 - una cobertura de la lógica de negocio inferior al 70 % (RT-04.11);
-- una cobertura de líneas por pruebas unitarias del código modificado inferior al 80 %, política corporativa de LafroX (paquete 1.5.2);
+- una cobertura de pruebas unitarias inferior al 80 %, política corporativa de LafroX (Subdocumento 1, sección 1.3.1; paquete 1.5.2);
 - una deuda técnica bloqueante o una prueba en falla.
 
 La imagen aprobada se firma, se publica en Elastic Container Registry y se promueve por su digest, de modo que ningún ambiente recompila. La infraestructura de los cinco ambientes se describe como código: Terraform administra los recursos con estados separados por ambiente y Ansible configura los hosts; cada recurso tiene un único propietario de código. Las migraciones de base de datos siguen la estrategia de expandir y contraer y declaran su reversión.

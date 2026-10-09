@@ -163,14 +163,14 @@ La matriz asigna a cada módulo su requisito funcional, su responsabilidad, su i
 | **Módulo / RF** | **Responsabilidad** | **Interfaz principal** | **Actor principal** | **Etapa** |
 | --- | --- | --- | --- | --- |
 | M1 Recepción / RF-01 | Lote y recepción GS1. | Evento a M2; ACL con ERP. | Jefa de Bodega; Proveedor. | 1 |
-| M2 Inventario / RF-02 | Movimientos por sitio, reserva central y FEFO. | Consulta de M3/M5. | Jefa de Bodega. | 1 |
+| M2 Inventario / RF-02 y RF-10 | Movimientos por sitio, reserva central, FEFO y sugerencia de reposición de compras por SKU y proveedor con promociones comprometidas. | Consulta de M3/M5; sugerencia aprobada al ERP por la ACL de INT-06. | Jefa de Bodega; función de abastecimiento dentro de los perfiles autorizados. | 1 |
 | M3 Preventa / RF-03 | Pedido y precio pactado; autoatención desde el Portal de Clientes. | Reserva coordinada en M2; sincronización. | Preventista; clientes autorizados. | 1; autoatención en 2 |
 | M4 Rutas / RF-04 | Secuencia y restricciones. | Ruta aprobada a M6. | Planificador de Rutas. | 1 |
 | M5 Preparación / RF-05 | Misión y carga confirmada. | Guía nocturna vía `erp-sync` y ACL en VM-04. | Preparador; Jefa de Bodega. | 1 |
 | M6 Reparto / RF-06 | Entrega y POD. | Evento a M7/M8. | Conductor propio; Conductor externo. | 1 |
-| M7 Rendición / RF-07 | Cobro y descuadre. | ACL al ERP; evento a M10. | Conductores; Gerente de Finanzas. | 1 |
-| M8 Devoluciones / RF-08 | Retorno y saldo de envases. | Evento a M2/M7. | Conductores; Jefa de Bodega. | 1 |
-| M9 Calidad / RF-09 | Lote, frío y bloqueo. | Bloqueo a M5; alerta. | Jefa de Calidad. | 1 |
+| M7 Cobranza y rendición / RF-07 | Cobro y descuadre. | ACL al ERP; evento a M10. | Conductores; Gerente de Finanzas. | 1 |
+| M8 Devoluciones y envases / RF-08 | Retorno y saldo de envases. | Evento a M2/M7. | Conductores; Jefa de Bodega. | 1 |
+| M9 Calidad y trazabilidad / RF-09 | Lote, frío y bloqueo. | Bloqueo a M5; alerta. | Jefa de Calidad. | 1 |
 | M10 Analítica / RF-11 | OTIF operacional y costo de servir. | Consume eventos sin escribir. | Gerentes Comercial, de Finanzas y de Operaciones; Jefa de Calidad. | 1 OTIF; 2 costo |
 | M11 Canal moderno / RF-12 | Pedido EDI y excepciones. | Contrato por cadena; M3. | Cliente del canal moderno; Gerente Comercial. | 2 |
 | M12 Telemetría / RF-14 | Ruta real, desviación y datos para costo. | GPS a M4/M10. | Planificador de Rutas; Gerente de Operaciones. | 1; costo en 2 |
@@ -195,11 +195,13 @@ La tabla sigue cada grupo de requisitos funcionales hasta el módulo responsable
 | RF-04 | M4 Rutas | 1, 4 y 5 | Ruta revisada en menos de 20 min. |
 | RF-05 | M5 Preparación | 1, 4, 5 y 6 | Lectura y carga por lote. |
 | RF-06 | M6 Reparto | 1, 4, 5 y 6 | POD unido a entrega. |
-| RF-07 | M7 Rendición | 1, 4 y 5 | Descuadre y aprobación segregados. |
-| RF-08 | M8 Devoluciones | 1, 4, 5 y 6 | Saldo y causal conciliados. |
-| RF-09 | M9 Calidad | 2, 4, 5 y 6 | Bloqueo y liberación por Calidad. |
+| RF-07 | M7 Cobranza y rendición | 1, 4 y 5 | Descuadre y aprobación segregados. |
+| RF-08 | M8 Devoluciones y envases | 1, 4, 5 y 6 | Saldo y causal conciliados. |
+| RF-09 | M9 Calidad y trazabilidad | 2, 4, 5 y 6 | Bloqueo y liberación por Calidad. |
+| RF-10 | M2 Inventario | 4, 5 y 6 | Sugerencia por SKU y proveedor con promociones comprometidas, aprobada por abastecimiento y traspasada al ERP por la ACL de INT-06. |
 | RF-11 | M10 Analítica | 4, 5 y 6 | OTIF y costo trazables al evento. |
 | RF-12 | M11 Canal moderno | 3, 4 y 5 | Pedido EDI normalizado. |
+| RF-13 | Base compartida | Transversal | Entregables de arquitectura y contratos trazables a los requisitos. |
 | RF-14 | M12 Telemetría | 2, 4 y 5 | Ruta real correlacionada. |
 
 Fuente: elaboración propia a partir del catálogo de requerimientos del capítulo 3 y de la Tabla [A.5](LAFROX-Subdocumento4-Anexos.md#tab:modulos-funcionales).
@@ -222,9 +224,9 @@ El mapa indica, para cada módulo, el tipo de relación con sus interlocutores, 
 | M4 Rutas | Adapta fuente | M3, M6 y GIS | Ruta aprobada. | GIS no decide ruta. |
 | M5 Preparación | Proveedor de evento | M2, M6 y ACL | Misión preparada. | ERP emite guía por `erp-sync` local. |
 | M6 Reparto | Proveedor de evento | M4, M7 y M8 | Entrega registrada. | No liquida cobro. |
-| M7 Rendición | Traducción por ACL | M6 y ERP | Rendición aprobada. | ERP sigue tributario. |
-| M8 Devoluciones | Lenguaje publicado | M2 y M7 | Devolución y envase. | No ajusta DTE. |
-| M9 Calidad | Proveedor de bloqueo | M1, M5 y sensores | Lote bloqueado. | Calidad libera. |
+| M7 Cobranza y rendición | Traducción por ACL | M6 y ERP | Rendición aprobada. | ERP sigue tributario. |
+| M8 Devoluciones y envases | Lenguaje publicado | M2 y M7 | Devolución y envase. | No ajusta DTE. |
+| M9 Calidad y trazabilidad | Proveedor de bloqueo | M1, M5 y sensores | Lote bloqueado. | Calidad libera. |
 | M10 Analítica | Consumidor de eventos | M1–M9 y M12 | Indicadores consolidados. | Solo lectura. |
 | M11 Canal moderno | Traducción EDI | Cadena, M3 y ACL | Pedido normalizado. | M3 gobierna pedido. |
 | M12 Telemetría | Adapta telemetría | GPS, M4 y M10 | Ruta observada. | No registra entrega. |
@@ -310,7 +312,7 @@ La tabla identifica, para cada integración con terceros, el dueño interno, el 
 
 | **ID** | **Tercero** | **Dueño interno** | **Contrato** | **Falla** |
 | --- | --- | --- | --- | --- |
-| INT-06 | ERP 2017 | ACL/M7 | Adaptador versionado. | Cola; sin escritura directa. |
+| INT-06 | ERP 2017 | ACL/M2/M7 | Adaptador versionado; sugerencia de reposición aprobada al módulo de compras. | Cola; sin escritura directa. |
 | INT-07 | Emisor DTE del ERP y SII | ACL/M5 | Guía y estado tributario. | Bloquear nueva salida afectada. |
 | INT-08 | Cadenas modernas | M11 | Perfil EDI por cadena. | Bandeja y aviso acordado. |
 | INT-09 | Pasarela de pago | M7 | Autorización con clave única. | Efectivo o crédito aprobado. |
@@ -324,9 +326,9 @@ Fuente: elaboración propia a partir de las Bases Técnicas del caso (cap. 5, p.
 
 Las ventanas siguientes expresan la disponibilidad que requiere Puelche. El catálogo no atribuye un SLA no acreditado al ERP, SII, cadenas ni proveedores. Antes de habilitar cada integración se incorporarán al contrato su horario efectivo, mantenimientos, cuotas y escalamiento; una ventana inferior a la requerida exige ajuste contractual u operativo. Los timeouts son parámetros iniciales del adaptador, sujetos a ensayo y al contrato de contraparte.
 
-##### INT-06. ERP 2017 — ACL/M7
+##### INT-06. ERP 2017 — ACL/M2/M7
 
-Modo asíncrono para intercambio de negocio; consulta síncrona de estado cuando una escritura queda incierta. Volumen normal/peak: 2.025/3.762 mensajes/día, calculados con los flujos diarios y equivalentes de 22,14 días; peak con factor 1,857. Contraparte requerida 24×7, especialmente preparación 22:00–06:00 y despacho 05:30–07:00. Timeout de 10 segundos por llamada. Ante lentitud se abre cortacircuito, se conserva la solicitud y se prioriza despacho; ante respuesta perdida se consulta por clave externa antes de repetir. Un error funcional va a excepción. No se escribe directamente en tablas del ERP.
+Modo asíncrono para intercambio de negocio; consulta síncrona de estado cuando una escritura queda incierta. M2 traspasa la sugerencia de reposición aprobada por la función de abastecimiento al módulo de compras del ERP mediante la ACL (RF-10.03). El ERP conserva la emisión de las órdenes de compra (Subdocumento 3, D-05). Volumen normal/peak: 2.025/3.762 mensajes/día, calculados con los flujos diarios y equivalentes de 22,14 días; peak con factor 1,857. Contraparte requerida 24×7, especialmente preparación 22:00–06:00 y despacho 05:30–07:00. Timeout de 10 segundos por llamada. Ante lentitud se abre cortacircuito, se conserva la solicitud y se prioriza despacho; ante respuesta perdida se consulta por clave externa antes de repetir. Un error funcional va a excepción. No se escribe directamente en tablas del ERP.
 
 ##### INT-07. Emisión y estados DTE — ACL/M5
 
@@ -532,7 +534,7 @@ La matriz identifica los doce módulos y los servicios transversales para coteja
 
 Fuente: elaboración propia.
 
-La tabla verifica la correspondencia de los doce módulos con sus capacidades, contratos y realizaciones; la Tabla 8 del apartado 4.2.2 completa el enlace físico. Las capacidades transversales también se corresponden: presentación y borde con aplicaciones, CloudFront y acceso privado; puerta de enlace con API central y puerta local; eventos con RabbitMQ, shipper y SQS; datos con bases, réplica de lectura y objetos; identidad con Keycloak y verificador local; secretos y auditoría con sus servicios de custodia; observabilidad con OpenTelemetry/ADOT, alarma local y CloudWatch. Notificaciones se traza a INT-11; el motor de optimización de M4 conserva contrato separado y no se presume implementado en PHP por la elección del backend.
+La tabla verifica la correspondencia de los doce módulos con sus capacidades, contratos y realizaciones; la Tabla 8 del apartado 4.2.2 completa el enlace físico. Las capacidades transversales también se corresponden: presentación y borde con aplicaciones, CloudFront y acceso privado; puerta de enlace con API central y puerta local; eventos con RabbitMQ, shipper y SQS; datos con bases, réplica de lectura y objetos; identidad con Keycloak y verificador local; secretos y auditoría con sus servicios de custodia; observabilidad con OpenTelemetry/ADOT, alarma local y CloudWatch. Notificaciones se traza a INT-11; el motor de optimización de M4 se integra mediante un contrato separado y se ejecuta en su propio contenedor.
 
 La correspondencia entre 3.3, 3.4, 4.1 y 4.2.2 se verifica en ambos sentidos mediante identificador, contrato, responsable y realización física.
 
@@ -612,7 +614,7 @@ La Tabla [A.16](LAFROX-Subdocumento4-Anexos.md#tab:actores-permisos) realiza el 
 
 Fuente: elaboración propia a partir del apartado 3.4.2.1 y del Anexo 3.I del Subdocumento 3.
 
-Recepción, despacho, catálogo y Tesorería son funciones asignadas a personas nominadas dentro de estos perfiles. AL-ACT-01 del Anexo 4-V verifica cada fila con una operación permitida y una denegada.
+Recepción, despacho, catálogo, abastecimiento y Tesorería son funciones asignadas a personas nominadas con permisos específicos dentro de estos perfiles autorizados del CLIENTE. La función de abastecimiento aprueba la sugerencia de reposición de M2 sin crear un actor adicional. AL-ACT-01 del Anexo 4-V verifica cada fila con una operación permitida y una denegada.
 
 ## Anexo 4-O — Registro de decisiones de arquitectura
 
@@ -1029,11 +1031,11 @@ Fuente: decisiones de arquitectura lógica y política de configuración de la p
 
 El fin de soporte no publicado se registra como *no publicado*, con responsable y frecuencia de revisión; no significa soporte indefinido. Antes de aprobar una dependencia se verifica licencia, mantenimiento, vulnerabilidades y alternativa de sustitución (RT-11.26). La ficha de liberación identifica versión exacta, EOL conocido o política aplicable, prueba, rollback y responsable. La aceptación rechaza una imagen fuera de soporte.
 
-Las alternativas se evalúan por operación offline, integración industrial, transacciones, geografía, carga del equipo y reversibilidad. PostgreSQL/PostGIS se selecciona frente a MariaDB por el dominio espacial; Angular se conserva frente a cambiar la plataforma web por sus contratos y componentes existentes; Kotlin se selecciona frente a una capa móvil adicional por validación del parque; Keycloak mantiene identidad propia frente a delegar el dominio de autorizaciones a un IdP propietario. Las herramientas de construcción no cambian esos contratos. Los criterios concretos se verifican en ADR-04/06/07/20/21 y el Anexo 4-T.
+Las alternativas se evalúan por operación offline, integración industrial, transacciones, geografía, carga del equipo y reversibilidad. PostgreSQL/PostGIS se selecciona frente a MariaDB por el dominio espacial; Angular se selecciona por su organización en componentes y sus contratos TypeScript; Kotlin se selecciona frente a una capa móvil adicional por validación del parque; Keycloak mantiene identidad propia frente a delegar el dominio de autorizaciones a un IdP propietario. Las herramientas de construcción no cambian esos contratos. Los criterios concretos se verifican en ADR-04/06/07/20/21 y el Anexo 4-T.
 
-**Implementación compatible del backend**
+**Implementación del backend**
 
-La tabla relaciona cada capacidad del backend con su implementación en Laravel/PHP y con la comprobación que acredita su equivalencia.
+La tabla relaciona cada capacidad del backend con su implementación en Laravel/PHP y con la comprobación que verifica sus contratos.
 
 <a id="tab:mapeo-laravel"></a>
 
@@ -1042,11 +1044,11 @@ La tabla relaciona cada capacidad del backend con su implementación en Laravel/
 | **Capacidad** | **Implementación Laravel/PHP** | **Comprobación** |
 | --- | --- | --- |
 | APIs y módulos | Rutas y controladores Laravel; servicios por contexto PSR-4. | Contratos OpenAPI y límites de módulo. |
-| Persistencia y geografía | PDO/Query Builder y SQL PostGIS parametrizado; migraciones Laravel basales. | Datos, índices y consultas espaciales equivalentes. |
+| Persistencia y geografía | PDO/Query Builder y SQL PostGIS parametrizado; migraciones Laravel basales. | Datos, índices y consultas espaciales verificados. |
 | Tareas y planificación | Consumidor PHP de JSON en SQS FIFO; trabajos Laravel en colas separadas y planificador único. | Orden por grupo, reintentos y tareas únicas. |
 | Cola local y shipper | Adaptador AMQP con `php-amqplib` y sobre JSON. | Corte de 24 h, confirmación y drenaje sin pérdida. |
 | Identidad y administración | Guard OIDC, políticas por recurso y portal Angular. | Permisos, baja y relevos de turno. |
-| Contratos, pruebas y trazas | `swagger-php`, AsyncAPI, PHPUnit y OpenTelemetry PHP. | Paridad de API, eventos y correlación. |
+| Contratos, pruebas y trazas | `swagger-php`, AsyncAPI, PHPUnit y OpenTelemetry PHP. | Contratos de API y eventos verificados, con correlación. |
 
 ## Anexo 4-Q — Modelado de amenazas lógicas
 

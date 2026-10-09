@@ -20,11 +20,11 @@ El avance se mide con **valor ganado**: se reconoce trabajo aceptable en puntos 
 
 ## Compras y condiciones de ejecución
 
-[Las adquisiciones](../06_metodolog%C3%ADas/LAFROX-Subdocumento6.md#613-gesti%C3%B3n-de-adquisiciones) asignan responsable, fecha necesaria, dependencia y evidencia de recepción. El documento asigna al CLIENTE la compra del terreno y sala técnica; LafroX especifica e instala. Para las certificaciones contempla refuerzo de Calidad con evaluadores subcontratados hasta **16 por día** en las ventanas indicadas.
+[Las adquisiciones](../06_metodolog%C3%ADas/LAFROX-Subdocumento6.md#613-gesti%C3%B3n-de-adquisiciones) asignan responsable, fecha necesaria, dependencia y evidencia de recepción. El CLIENTE compra solo el hardware de terreno; LafroX especifica, compra e instala la sala técnica, los servidores, la red y los gabinetes de borde dentro del precio del contrato, y contrata cinco enlaces Starlink. Para las certificaciones contempla refuerzo de Calidad con evaluadores subcontratados hasta **16 por día** en las ventanas indicadas.
 
 ## Relaciones y aspectos pendientes
 
-T-14 describe entregables y T-15 programa personas y revisión del CLIENTE. La Tabla 6.3 ubica necesidad de equipamiento de sala en **mes 5**, mientras la secuencia del T-15 adelanta su habilitación a meses **3–4**. Además, T-11 declara provisión on-premise por el adjudicatario, frente a la compra de sala asignada al CLIENTE aquí. Son diferencias documentales que requieren coordinación; el resumen conserva ambas fuentes.
+T-14 describe entregables y T-15 programa personas y revisión del CLIENTE. La Tabla 6.3 usa las mismas fechas que T-14 y T-15: sala en el **mes 3** y servidores y racks en los **meses 4 y 5**, con provisión on-premise de LafroX como en T-11.
 
 La metodología es una propuesta de ejecución. Los ensayos, la dotación nominal y la revisión humana pendiente no se consideran cumplidos por estar descritos.
 

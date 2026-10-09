@@ -146,7 +146,7 @@ La fase de Construcción produce los cinco ambientes y los servicios de nube; la
 
   <a id="fig:7-edt-sop"></a>
 
-La Figura 7.3 muestra que el trabajo que no es software tiene cuentas propias con responsable. La fase de Adquisiciones y contrataciones separa lo que compra el CLIENTE de lo que contrata LafroX: el CLIENTE compra el hardware de terreno y de la sala, que LafroX especifica y recibe, y LafroX contrata la nube, los enlaces y las licencias. Esta fase reúne también los acuerdos sin los cuales la solución no sale a la ruta, con las diez empresas transportistas y con el sindicato, y la fórmula contractual de la innovación 4.
+La Figura 7.3 muestra que el trabajo que no es software tiene cuentas propias con responsable. El CLIENTE compra solo el hardware de terreno, que LafroX especifica y recibe técnicamente. LafroX especifica, compra e instala la sala técnica, los servidores, la red y los gabinetes de borde, y contrata la nube, los enlaces y las licencias. La obra civil de separación del recinto es de cargo del CLIENTE y LafroX la especifica y coordina. Esta fase reúne también los acuerdos sin los cuales la solución no sale a la ruta, con las diez empresas transportistas y con el sindicato, y la fórmula contractual de la innovación 4.
 
 La fase de Infraestructura física y sitios instala la sala de Talca, con energía, climatización y extinción; los racks y los gabinetes de borde de Concepción y de las tres plataformas de cross-docking; los terminales, los sensores de cámara y los termógrafos de los 28 camiones con frío; y los enlaces con su respaldo. Termina con la prueba de autonomía de 24 horas del centro de distribución.
 
@@ -162,7 +162,7 @@ Las Aclaraciones de la licitación exigen que la EDT contenga explícitamente la
 
 | Componente | Elementos | PT | Cuentas de control | Exigencia |
 | --- | --- | --- | --- | --- |
-| Módulos | M1 a M12 y dos portales | 15 | 3.4, 3.5 | Caso 02, cap. 19 |
+| Módulos | M1–M12 y los portales de clientes y de transportistas; el portal de proveedores se construye con M11 Canal moderno (3.5.1) | 15 | 3.4, 3.5 | Caso 02, cap. 19 |
 | Interfaces | INT-01 a INT-15 | 21 | 3.1, 3.3, 3.4, 3.6, 6.3, 6.5 | Caso 02, cap. 19 |
 | Innovaciones | INN-01 a INN-05 | 23 | 3.10, 5.4, 8.3 | Aclaraciones; BA, Art. 29° |
 | Seguridad | Diseño, construcción, pruebas y operación | 17 | 1.9, 2.2, 3.2, 3.3, 3.8, 3.9, 3.11, 6.4, 8.1, 8.2 | Aclaraciones |
@@ -314,7 +314,7 @@ La Figura 7.5 presenta esa red de precedencias entre cuentas de control. El Anex
 - 9.1 Cierre de la implementación
 - 3.6.5 y 3.6.6 Cadenas
 - 7.1.4 y 7.3.2 Traspaso y certificación E2
-- Cadena crítica identificada
+- Cadena crítica de la Etapa 2
 - Precedencia fin-comienzo (CC: comienzo-comienzo)
 - Hito del Formulario E-25
   
@@ -322,7 +322,7 @@ La Figura 7.5 presenta esa red de precedencias entre cuentas de control. El Anex
 
   <a id="fig:7-red"></a>
 
-La red muestra tres convergencias. En el H3 se juntan la cadena de la nube (5.2, 3.2 y 3.1) y la de la sala técnica (2.3, 5.1, 6.1, 6.3 y 6.6). En los hitos H4 y H5 se juntan los módulos, la base compartida, el diseño aprobado y la experiencia de usuario. Al cierre de la marcha blanca se juntan la solución certificada, la migración, el equipamiento de cada ola, la certificación de los usuarios y, en la ola de reparto, los acuerdos con los transportistas y el sindicato. Un atraso en cualquiera de esas ramas se propaga al hito aunque no sea de software. La cadena marcada en rojo es la ruta crítica identificada, que la sección 7.3.1 analiza.
+La red muestra tres convergencias. En el H3 se juntan la cadena de la nube (5.2, 3.2 y 3.1) y la de la sala técnica (2.3, 5.1, 6.1, 6.3 y 6.6). En los hitos H4 y H5 se juntan los módulos, la base compartida, el diseño aprobado y la experiencia de usuario. Al cierre de la marcha blanca se juntan la solución certificada, la migración, el equipamiento de cada ola, la certificación de los usuarios y, en la ola de reparto, los acuerdos con los transportistas y el sindicato. Un atraso en cualquiera de esas ramas se propaga al hito aunque no sea de software. La ruta crítica corresponde al diseño, los módulos y la certificación de la Etapa 2, que la sección 7.3.1 analiza.
 
 El secuenciamiento incorpora además las condiciones de la operación de Puelche que el caso exige ver en el plan (sección 17.5). Los congelamientos de septiembre y diciembre, y el cierre de los tres primeros días hábiles de cada mes, son restricciones de calendario para todo corte, despliegue e inicio de ola (paquete 1.3.1). La implantación en bodega y su acompañamiento se programan en el turno de noche, entre las 22:00 y las 06:00 (paquete 4.2.2), y la rotación del 38 % se atiende con capacitación continua y no con un evento único (paquete 7.1.2). Los 62 preventistas y los cerca de 200 conductores se capacitan en su ruta, sin detener la venta ni el reparto (paquetes 7.1.1 y 4.2.2).
 
@@ -383,11 +383,11 @@ El cronograma aplica el Art. 17° mes a mes y la implantación aplica las condic
 
 La ruta crítica se calcula con el método de la ruta crítica sobre la red del Anexo 7.B (PMI, 2017, pp. 210–211). Una pasada hacia adelante da las fechas tempranas de cada paquete; una pasada hacia atrás, desde los meses fijos del Art. 17°, da las tardías; LS − ES es la holgura total; la libre se mide contra el ES de los sucesores. Como los hitos del Formulario E-25 son fechas fijas, un camino que no llega a su hito tiene holgura negativa y obliga a replanificar.
 
-La cadena crítica nace en las interfaces sin documentación del sistema de gestión, que el caso señala expresamente (sección 17.5), y recorre la especificación de las interfaces (1.2.3), la integración con el ERP (3.3.2), los módulos de la Etapa 1 (3.4), las pruebas de integración (H4, mes 10), la certificación (H5, mes 12), la marcha blanca (H6, mes 13) y el paso a producción (H7, mes 16). La Figura 7.7 ubica esa cadena y los caminos casi críticos sobre los meses del contrato.
+La ruta crítica corresponde a la Etapa 2: diseño (1.2.5, 2.1.4 y 2.4.2; H8, 13 días hábiles de reserva) → módulos (3.5) → prueba de integración (3.9.1; H9, 21 días hábiles y 89,9 % de cumplimiento en la simulación con riesgos) → certificación (3.9.2–3.9.7; H10, 28 días hábiles). La holgura total de cada camino es su reserva hasta la fecha límite del hito (Formulario T-15, Tabla 5.2). Son casi críticos la cadena de la Etapa 1 que nace en las interfaces sin documentación del ERP (1.2.3 → 3.3.2 → 3.4 → 3.8.1, H4 con 19 días; → 3.8.2–3.8.8, H5 con 35 días), la sala y los ambientes del H3 (2.3, 5.1.2, 6.1, 6.3, 6.6.3 y 3.1; 19 días), la captura de reglas del planificador (1.2.2 y 3.4.7), los acuerdos con transportistas y sindicato (5.4.1 y 5.4.2) y la certificación de las cadenas (3.6.5 y 3.6.6). El H1 tiene la menor reserva absoluta, 6 días, pero su desviación es mínima (σ 0,58; cumplimiento > 99,9 %). Las marchas blancas y los pasos a producción tienen fechas contractuales fijas. La Figura 7.7 sitúa la cadena de la Etapa 2 y los caminos casi críticos en los meses del contrato.
 
   
 - Caminos casi críticos
-- 5.1.2 y 6.1 a 6.6 terminan en el H3
+- 2.3, 5.1.2, 6.1, 6.3, 6.6.3 y 3.1 convergen en el H3
 - Marcha / blanca E1
 - Marcha / blanca E2
   
@@ -395,9 +395,9 @@ La cadena crítica nace en las interfaces sin documentación del sistema de gest
 
   <a id="fig:7-ruta"></a>
 
-La figura conserva la lectura por meses. El Formulario T-15 programa ahora las 564 actividades de los paquetes con entregable, día por día, con sus dependencias, los diez días hábiles de revisión del Art. 18.3 antes de cada hito y la dotación declarada en el SD1 como tope diario, reforzada con evaluadores subcontratados durante las certificaciones. Cada hito tiene una reserva entre su entrega y su fecha límite, de 6 a 35 días hábiles, dimensionada con la simulación de Monte Carlo del SD8, Anexo 8.C: con los riesgos del registro, cada hito se entrega a tiempo en al menos el 89,9 % de los escenarios, y su fecha P80 queda antes de la fecha límite (Formulario T-15, Tabla 5.2). Las marchas blancas y sus cuatro semanas finales no aportan reserva utilizable.
+La Figura 7.7 relaciona las cadenas de diseño, construcción y certificación con sus hitos y con las marchas blancas de ambas etapas. El Formulario T-15 programa las 564 actividades de los paquetes con entregable, día por día, con sus dependencias, los diez días hábiles de revisión del Art. 18.3 antes de cada hito y la dotación declarada en el SD1 como tope diario, reforzada con evaluadores subcontratados durante las certificaciones. Cada hito tiene una reserva entre su entrega y su fecha límite, de 6 a 35 días hábiles, dimensionada con la simulación de Monte Carlo del SD8, Anexo 8.C: con los riesgos del registro, cada hito se entrega a tiempo en al menos el 89,9 % de los escenarios, y su fecha P80 queda antes de la fecha límite (Formulario T-15, Tabla 5.2). Las marchas blancas y sus cuatro semanas finales no aportan reserva utilizable.
 
-La holgura se gestiona en las instancias de gobierno de la EDT. El avance de cada paquete de la ruta crítica y de los caminos casi críticos se revisa en la reunión semanal de seguimiento y en el Comité de Proyecto quincenal (paquetes 1.3.5 y 1.8.3). Toda desviación que comprometa un hito se escala al Comité Ejecutivo con su análisis de impacto (paquetes 1.4.3 y 1.8.2), y el informe mensual con valor ganado avisa toda desviación mayor al 10 % con su plan dentro de cinco días hábiles (paquete 1.8.6). H7 y H12 dependen además de la aceptación copulativa de la marcha blanca, que no tiene una probabilidad calculada.
+La holgura se gestiona en las instancias de gobierno de la EDT. El avance de cada paquete de la ruta crítica y de los caminos casi críticos se revisa en la reunión semanal de seguimiento y en el Comité de Proyecto quincenal (paquetes 1.3.5 y 1.8.3). Toda amenaza a un hito se escala al Comité Ejecutivo cuando la desviación proyectada supera la mitad de su reserva, sin esperar a consumirla, con su análisis de impacto (paquetes 1.4.3 y 1.8.2). El informe mensual con valor ganado avisa toda desviación mayor al 10 % con su plan dentro de cinco días hábiles (paquete 1.8.6). H7 y H12 dependen además de la aceptación copulativa de la marcha blanca, que no tiene una probabilidad calculada.
 
 ### 7.3.2 Carta Gantt y calendario
 
@@ -459,7 +459,7 @@ Antes de cada paso a producción, el cronograma reserva las pruebas que exige el
 
 ### 7.3.3 Plan de implantación y puesta en marcha
 
-La implantación sigue el principio que impone el caso: nada entra en producción sin haber convivido con la forma actual de trabajar, y nada se despliega como un único evento (sección 13.3, condiciones 1 y 3). Técnicamente, cada capacidad se publica con un despliegue azul-verde y se habilita por sitio y por ola mediante interruptores de funcionalidad. Así, cada ola puede revertirse sin reinstalar y cada operación tiene un único escritor autorizado (Capítulo 4, sección 4.1.8). Ningún despliegue ocurre en la ventana de despacho de 05:30 a 07:00, que no admite indisponibilidad, ni en fechas de congelamiento (Caso 02, RT-10.05).
+La implantación sigue el principio que impone el caso: nada entra en producción sin haber convivido con la forma actual de trabajar, y nada se despliega como un único evento (sección 13.3, condiciones 1 y 3). Técnicamente, cada capacidad se publica con un despliegue azul-verde y se habilita por sitio y por ola mediante indicadores de funcionalidad (feature flags), conforme al Capítulo 4, apartado 4.2.4.1.2. Así, cada ola puede revertirse sin reinstalar y cada operación tiene un único escritor autorizado (Capítulo 4, sección 4.1.8). Ningún despliegue ocurre en la ventana de despacho de 05:30 a 07:00, que no admite indisponibilidad, ni en fechas de congelamiento (Caso 02, RT-10.05).
 
 La Etapa 1 entra en tres olas, en el orden de las dependencias de datos (Capítulo 3, sección 3.4.4). La Tabla 7.7 las presenta.
 
@@ -497,13 +497,13 @@ El avance de cada grupo exige su criterio y acompañamiento. Las cuatro semanas 
 
 La reversión tiene dos niveles, que la Tabla 7.8 distingue.
 
-**Tabla 7.8. Niveles de reversión. Fuente: Capítulo 3, sección 3.4.4; Capítulo 4, sección 4.1.8; y Formulario T-18.**
+**Tabla 7.8. Niveles de reversión. Fuente: Capítulo 3, sección 3.4.4; Capítulo 4, apartados 4.2.4.1.2 (liberación y reversión) y 4.1.8 (único escritor); y Formulario T-18.**
 
 <a id="tab:7-reversion"></a>
 
 | Nivel | Qué hace | Quién decide | Plazo |
 | --- | --- | --- | --- |
-| Técnico | Vuelve a la versión anterior por azul-verde o por interruptor de funcionalidad | Líder de Operación / SRE | Sin reinstalar, fuera de la ventana de despacho |
+| Técnico | Devuelve el tráfico a la entrega previa por azul-verde/canario o desactiva el indicador de funcionalidad (feature flag) | Líder de Operación / SRE | Objetivo ≤10 minutos, medido en cada ensayo en Preproducción, fuera de la ventana de despacho |
 | Operacional, Etapa 1 | Conserva/restaura versión operativa local probada, único escritor y DTE válidos; papel sólo de apoyo | Responsable de operaciones del CLIENTE | Completo antes de las 05:30 |
 | Operacional, Etapa 2 | Desactiva la capacidad de la Etapa 2 que falla, sin tocar la Etapa 1 | Responsable de operaciones del CLIENTE | Fuera de la ventana de 05:30 a 07:00 |
 
@@ -517,7 +517,7 @@ La reversión operacional se dispara con señales observables: pedidos sin sincr
 - No: se corrige y la ola continúa
 - Restitución operativa probada antes de las 05:30
 - Operacional: versión local y documentos ERP; papel sólo de apoyo
-- Técnica: interruptor o versión anterior
+- Técnica: indicador de funcionalidad o entrega previa
 - Al retomar, se concilia lo que quedó en cola
 - La ola reinicia sus 4 semanas
   
@@ -627,7 +627,7 @@ El Caso 02 exige indicar en qué momento del cronograma se alcanza cada resultad
 | Tramos durante el contrato | R18-04: OTIF de 90 % en el mes 15, 93 % en el mes 19 y 95 % en el mes 32 | 1 | Revisión mensual en comité |
 | Provisional y final | R18-12: provisional en la marcha blanca de la Etapa 1 y final tras 12 meses de operación | 1 | H7 y operación |
 
-Doce de los dieciséis resultados se verifican en la marcha blanca de la Etapa 1. Por eso el volumen real y la certificación de usuarios de ese período son la principal concentración de riesgo de aceptación del proyecto, y por eso el plan dedica a esa marcha blanca su mayor dotación de acompañamiento.
+Doce de los dieciséis resultados se aceptan en la marcha blanca de la Etapa 1. Otros dos también se verifican allí: R18-04, con su tramo del mes 15, y R18-12, de forma provisional. Son catorce resultados con verificaciones en ese período, conforme al Anexo 7.C y al Formulario T-18. Por eso el volumen real y la certificación de usuarios de ese período son la principal concentración de riesgo de aceptación del proyecto, y por eso el plan dedica a esa marcha blanca su mayor dotación de acompañamiento.
 
 Las innovaciones también tienen su momento en el cronograma (Art. 29°, punto 4), como resume la Tabla 7.12.
 
@@ -643,7 +643,7 @@ Las innovaciones también tienen su momento en el cronograma (Art. 29°, punto 4
 | 4 · Tramo variable de la Operación ligado al costo de servir | 5.4.3; 8.3.3; 8.3.4 | 17 a 20; 21 a 23; 24 a 56 | Hito mensual |
 | 5 · Hoja de negocio del almacenero | 3.10.4.1 a 3.10.4.4; 8.3.5; 8.3.6 | 13 a 27 | H9, H10 y H12 |
 
-Tres innovaciones se validan en la marcha blanca de la Etapa 1. La innovación 5 sigue el calendario de la Etapa 2, y la innovación 4 empieza a liquidar recién desde el mes 24, después de una línea base y tres liquidaciones en sombra. Así, ninguna innovación agrega trabajo a la ruta crítica de la Etapa 1 después del H4.
+Tres innovaciones se validan en la marcha blanca de la Etapa 1. La innovación 5 sigue el calendario de la Etapa 2, y la innovación 4 empieza a liquidar recién desde el mes 24, después de una línea base y tres liquidaciones en sombra. Así, ninguna innovación agrega trabajo a la cadena casi crítica de la Etapa 1 después del H4.
 
 ### 7.3.8 Base de planificación y recursos
 
@@ -655,7 +655,7 @@ El cronograma rector usa meses contractuales 1 a 56. El Anexo 7.A traduce esos m
 
 El Formulario T-18, sección 6, define la cobertura por ola de M9, M12 y M10, propone Talca como sitio piloto, ordena las olas por sitio, por rutas y por certificación de cadenas, declara la estabilización de la Etapa 2 y el soporte de la Etapa 1 en los meses 16 a 20, y fija un objetivo de 40 minutos para el ensayo de reversión. El corte exige un ensayo con volumen real y la contingencia tributaria; el respaldo manual por sí solo no sustituye ese ensayo para los 96 despachos. El WMS queda en modo de solo lectura conforme al supuesto S-14.
 
-El Anexo 7.F traslada al Capítulo 8 los supuestos, disparadores, responsables y paquetes de la planificación. La regla de precio es única en la oferta: el precio acordado al capturar el pedido (Capítulo 2, Anexo 2.2, S-09; RF-03.11 y RF-03.12). La coordinación de reserva y custodia CD-05 está dimensionada en el Capítulo 4 (A31 y A32), y su multiplicidad y carga se verifican en la prueba de concurrencia previa al H4 (riesgo R8-02). El límite residual de RPO, la continuidad crítica y la capacidad nominal se gestionan como condiciones de evidencia del Anexo 8.E, con responsable y hito límite.
+El Anexo 7.F traslada al Capítulo 8 los supuestos, disparadores, responsables y paquetes de la planificación. La regla de precio es única en la oferta: el precio acordado al capturar el pedido (Capítulo 2, Anexo 2.2, S-09; RF-03.11 y RF-03.12). La coordinación de reserva y retención (SD4, apartado 4.1.4.4) está dimensionada en el Anexo 4-I, Tabla A.10, y el Anexo 4-W, Tablas A.32 y A.33. El máximo de cuatro mensajes por línea incluye una holgura porque la retención consumida no se libera. La proporción de líneas con más de una retención se mide con AL-STOCK-01 antes del H4 (R8-02), y la carga y el drenaje se verifican en 3.8.4 y 3.9.3, sin sumar la coordinación al drenaje tras un corte. El RPO ≤ 15 min se cumple con fibra, LTE y Starlink. La falla simultánea de los tres caminos seguida de la destrucción del sitio antes de reponer alguno es el riesgo residual declarado en SD4 4.3.2.4, gestionado en SD8 con R8-05 y verificado con AL-DR-01. Sus medidas son alarmas de retraso a 5 y 15 min, reposición del enlace, preemisión de guías y NAS WORM. La continuidad crítica y la capacidad nominal se verifican conforme al Anexo 8.E, con responsable y hito límite.
 
 ## Referencias
 

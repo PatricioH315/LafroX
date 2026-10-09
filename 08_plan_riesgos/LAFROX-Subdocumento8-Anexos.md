@@ -50,7 +50,7 @@ Emisión tributaria concentrada en ERP; si falta una guía o cambia la carga, po
 Cortes/reintentos podrían confirmar sin acuse durable o repetir descuentos, alterando stock y trazabilidad.
 
 - Análisis / categoría: Solución / Técnico.
-- Fuente y EDT: SD4, coordinación de reserva de INT-03/04 (Anexo 4-G); AL-STOCK-01 y AL-ACT-01 (Anexo 4-V); 3.3.6, 3.4.2, 3.4.6, 3.8.1.
+- Fuente y EDT: SD4, coordinación de reserva y retención de INT-03/04 (apartado 4.1.4.4 y Anexo 4-G); AL-STOCK-01 y AL-ACT-01 (Anexo 4-V); 3.3.6, 3.4.2, 3.4.6, 3.8.1.
 - Evaluación inicial: P=4; I=5; D=3; E=20; NPR=60. Horizonte: hasta la regresión del H9 y cada cambio de la coordinación de reserva. P=4 porque la reserva se coordina entre sitios que se desconectan y reintentan a diario; D=3 porque la conciliación diaria y AL-STOCK-01 lo detectan, pero después de confirmar.
 - Responsable de respuesta: DES, con su equipo y contrapartes de su ámbito.
 - Disparador: Confirmación sin acuse, UUID repetido o dos autoridades.
@@ -101,7 +101,7 @@ Dispositivos/reintentos podrían perder pedidos, entregas o cobros al reconectar
 
 ### R8-05 — Pérdida del sitio supera RPO
 
-Falla simultánea de comunicaciones seguida de destrucción del sitio podría eliminar respaldo local y dejar copia remota con más de 15 minutos de pérdida.
+El RPO ≤15 min se cumple con fibra, LTE y Starlink. La falla simultánea de los tres caminos seguida de la destrucción del sitio antes de reponer alguno podría eliminar el respaldo local y dejar una copia remota con más de 15 minutos de pérdida. Es el riesgo residual declarado en SD4 4.3.2.4 (RT-02.11).
 
 - Análisis / categoría: Solución / Operación.
 - Fuente y EDT: BTT RT-02.11, RT-07.04/07; SD4 4.3.2.4 riesgo residual DR; 3.8.5, 3.9.4, 8.2.7.
@@ -111,7 +111,7 @@ Falla simultánea de comunicaciones seguida de destrucción del sitio podría el
 - Plazo: Ensayar antes H5/H10.
 - Mitigación: Aplicar las medidas del SD4 (4.3.2.4): alarmas de retraso de replicación a los 5 y 15 min, reposición del enlace por el proveedor, preemisión de guías al cerrar la carga y conservación local en el NAS WORM de Talca.
 - Contingencia: Aplicar DR probado (imagen del WMS de Talca en Fargate de la región activa), recuperar los datos del NAS WORM y de la última copia remota, y registrar el incidente con la pérdida efectiva.
-- Evidencia de cierre: Conmutación real con RPO ≤ 15 min y RTO ≤ 4 h; continuidad de despacho por ensayo separado.
+- Evidencia de cierre: AL-DR-01 verifica las medidas de mitigación y la conmutación real con RPO ≤ 15 min y RTO ≤ 4 h; continuidad de despacho por ensayo separado.
 - Estrategia: Mitigar, porque LafroX controla la causa y el control reduce la probabilidad.
 - Efecto esperado y residual: al verificar el control, P baja de 3 (40 %) a 2 (20 %); el valor esperado baja de 111 HH a 56 HH residuales.
 - Riesgo secundario: no se identifica.
@@ -119,15 +119,15 @@ Falla simultánea de comunicaciones seguida de destrucción del sitio podría el
 
 ### R8-06 — Carga y cola de la coordinación de reserva exceden capacidad
 
-El SD4 (Anexo 4-I) supone cuatro mensajes por línea de pedido. Si muchas líneas se reparten entre lotes o sitios y sus retenciones se liberan, el tráfico supera esa cifra, y el peak y el drenaje podrían saturar enlaces o cómputo.
+La coordinación de reserva y retención del SD4 (apartado 4.1.4.4 y Anexo 4-G) se dimensiona con un máximo de cuatro mensajes por línea de pedido. La retención consumida no se libera, y esa holgura cubre líneas repartidas entre lotes o sitios. Si la multiplicidad medida supera esa cobertura, el tráfico peak podría saturar enlaces o cómputo. La coordinación no se suma al drenaje tras un corte (Anexo 4-W, apartado 4-W.5).
 
 - Análisis / categoría: Solución / Técnico.
-- Fuente y EDT: SD4, Anexo 4-I y sección 4-W.5; Caso RT-09.01; 3.8.4, 3.9.3.
+- Fuente y EDT: SD4, Anexo 4-I, Tabla A.10, y Anexo 4-W, Tablas A.32 y A.33; Caso RT-09.01; AL-STOCK-01; 3.8.4, 3.9.3.
 - Evaluación inicial: P=4; I=5; D=3; E=20; NPR=60. Horizonte: H5 a H10 y crecimiento anual. P=4 porque las líneas repartidas entre más de un lote o ubicación son habituales; D=3 porque la cola se monitorea, pero su saturación se confirma con prueba de carga.
 - Responsable de respuesta: SRE, con su equipo y contrapartes de su ámbito.
 - Disparador: Más de cuatro mensajes por línea de pedido, cola creciente o latencia incumplida.
 - Plazo: Antes H5/H10; vigilancia mensual.
-- Mitigación: Medir la proporción de líneas repartidas y de retenciones liberadas, y probar 1,5 veces el peak, el crecimiento y el drenaje.
+- Mitigación: AL-STOCK-01 mide la proporción de líneas con más de una retención y de retenciones liberadas. Las pruebas 3.8.4 y 3.9.3 verifican 1,5 veces el peak, el crecimiento y el drenaje, sin sumar la coordinación al drenaje tras un corte.
 - Contingencia: Priorizar transacciones y limitar tráfico auxiliar; escalar capacidad por arquitectura sin reducir volumen obligatorio.
 - Evidencia de cierre: Carga/latencias y drenaje conformes a multiplicidad medida.
 - Estrategia: Mitigar, porque LafroX controla la causa y el control reduce la probabilidad.
@@ -353,21 +353,21 @@ Defecto alto, volumen incompleto o diferencias podrían persistir en cierre e im
 
 ### R8-19 — Suministros o sala fuera de secuencia
 
-La sala se instala desde el mes 3, por lo que el CLIENTE debe comprar lo especificado dentro del mes siguiente a la aprobación de 5.1.2; una compra, recepción o configuración tardía podría bloquear el H3 o una ola pese a HH disponibles.
+LafroX especifica y compra la sala técnica, los racks, los servidores y los gabinetes de borde mediante la orden de compra del mes 2 (5.1.2). La instalación de la sala empieza en el mes 3 y su recepción ocurre en el mes 4. El CLIENTE compra solo el hardware de terreno antes de cada ola. Una compra, recepción o configuración tardía podría bloquear el H3 o una ola pese a HH disponibles.
 
 - Análisis / categoría: Implantación / Proyecto.
 - Fuente y EDT: BTT recinto; Caso cap. 11; SD7 D-09–13/26; 5.1.2, 6.1,6.3, 6.6.3, 6.5.
-- Evaluación inicial: P=3; I=5; D=3; E=15; NPR=45. Horizonte: hasta el H3. P=3 porque la compra del CLIENTE debe cerrarse en un mes y la instalación depende de proveedores externos; D=3 porque las actas de recepción lo revelan.
+- Evaluación inicial: P=3; I=5; D=3; E=15; NPR=45. Horizonte: hasta el H3. P=3 porque LafroX debe emitir su orden de compra en el mes 2 para iniciar la instalación en el mes 3 y el suministro depende de proveedores externos; D=3 porque las actas de recepción lo revelan.
 - Responsable de respuesta: SRE, con su equipo y contrapartes de su ámbito.
-- Disparador: Orden de compra del CLIENTE no emitida al cierre del mes 3, suministro posterior a montaje o dispositivo ausente.
+- Disparador: Orden de compra de LafroX no emitida al cierre del mes 2, suministro posterior al montaje o dispositivo de terreno ausente antes de la ola.
 - Plazo: Sala, racks y borde antes H3; terreno antes ola.
-- Mitigación: Acordar en el mes 1 el calendario de compra del CLIENTE (1.1.3 y 5.1.3); confirmar responsabilidades BTT/SD4; recibir antes de montar.
+- Mitigación: Acordar en el mes 1 el calendario de compra del hardware de terreno del CLIENTE (1.1.3 y 5.1.3). LafroX emite su orden de compra en el mes 2 (5.1.2) y recibe el suministro antes de montar. Las actas 5.1.3 registran la recepción técnica del terreno comprado por el CLIENTE y de la infraestructura provista por LafroX.
 - Contingencia: Recuperar suministro/instalación con capacidad específica; no activar equipos inexistentes.
 - Evidencia de cierre: Actas y pruebas en secuencia sala, racks, borde y terreno.
 - Estrategia: Mitigar, porque LafroX controla la causa y el control reduce la probabilidad.
 - Efecto esperado y residual: al verificar el control, P baja de 3 (40 %) a 2 (20 %); el valor esperado baja de 317 HH a 158 HH residuales.
 - Riesgo secundario: no se identifica.
-- Costo-beneficio técnico: el control es el paquete 5.1.2, especificación de compra, y 5.1.3, actas de recepción, de 160 HH ya incluidas en el T-15. Ahorra 158 HH de valor esperado; retorno 0,99: el retorno en HH es menor que 1 y el control se aplica por la regla del nivel crítico (SD8, sección 8.1.3) (Anexo 8.C, Tabla C.5).
+- Costo-beneficio técnico: el control es el paquete 5.1.2, especificación y compra de la sala técnica, los racks, los servidores y los gabinetes de borde, y 5.1.3, actas de recepción, de 160 HH ya incluidas en el T-15. Ahorra 158 HH de valor esperado; retorno 0,99: el retorno en HH es menor que 1 y el control se aplica por la regla del nivel crítico (SD8, sección 8.1.3) (Anexo 8.C, Tabla C.5).
 
 ### R8-20 — Rotación y resistencia reducen adopción
 
@@ -737,7 +737,7 @@ Una respuesta se justifica si reduce el valor esperado más de lo que cuesta (PM
 | R8-16 | 3.7.1, perfilamiento y saneamiento de datos | 480 | 432 | 288 | 144 | 0,3 |
 | R8-17 | 1.1.3, acta de fecha de inicio y ventanas de paso a producción | 80 | 43 | 29 | 14 | 0,2 |
 | R8-18 | 4.1.1, plan de olas, y 7.3.1, certificación de usuarios | 240 | 1.478 | 986 | 493 | 2,1 |
-| R8-19 | 5.1.2, especificación de compra, y 5.1.3, actas de recepción | 160 | 317 | 158 | 158 | 0,99 |
+| R8-19 | 5.1.2, especificación y compra de la sala técnica, los racks, los servidores y los gabinetes de borde, y 5.1.3, actas de recepción | 160 | 317 | 158 | 158 | 0,99 |
 | R8-20 | 7.3.1, certificación de usuarios de la Etapa 1 | 160 | 150 | 100 | 50 | 0,3 |
 | R8-22 | Sin control previo; medición dentro de 8.1.2 | — | 3.182 | 3.182 | 0 | — |
 | R8-23 | 6.5.3, sensores y gateways instalados y calibrados | 160 | 403 | 269 | 134 | 0,8 |
@@ -785,7 +785,7 @@ R8-18 y R8-22 no se simulan porque afectan la duración de las marchas blancas y
 | Sin R8-32 Evaluadores subcontratados | 98,9 % | 99,1 % | 89,9 % | 99,9 % |
 | Sin R8-06 Carga de la coordinación de reserva | 99,2 % | 97,6 % | 90,0 % | 98,8 % |
 
-La lectura es la del diagrama de tornado (PMI, 2017, p. 434): el H9 depende sobre todo de mantener separada la capacidad de la Etapa 1 (R8-14), de la productividad (R8-11) y de la certificación de las cadenas (R8-15); el H10, de R8-14 y del refuerzo de calidad (R8-32, R8-31); el H5, de la evidencia de frío (R8-23), la productividad y el refuerzo de calidad; el H3, de la compra del CLIENTE (R8-19). Esos riesgos tienen seguimiento semanal en el Comité de Proyecto. La Tabla C.4 se compara contra su propia fila «Con todos los riesgos», calculada con 3.000 iteraciones; por eso difiere en décimas de la Tabla C.3, de 5.000. Las diferencias menores a un punto, incluidas las que dejan una fila bajo esa base, están dentro del error de muestreo.
+La lectura es la del diagrama de tornado (PMI, 2017, p. 434): el H9 depende sobre todo de mantener separada la capacidad de la Etapa 1 (R8-14), de la productividad (R8-11) y de la certificación de las cadenas (R8-15); el H10, de R8-14 y del refuerzo de calidad (R8-32, R8-31); el H5, de la evidencia de frío (R8-23), la productividad y el refuerzo de calidad; el H3, del suministro de la sala y del borde (R8-19). Esos riesgos tienen seguimiento en la reunión semanal de seguimiento y en el Comité de Proyecto quincenal. La Tabla C.4 se compara contra su propia fila «Con todos los riesgos», calculada con 3.000 iteraciones; por eso difiere en décimas de la Tabla C.3, de 5.000. Las diferencias menores a un punto, incluidas las que dejan una fila bajo esa base, están dentro del error de muestreo.
 
 ## Anexo 8.D — Reservas, autorización y programación
 
@@ -810,11 +810,11 @@ Estas entradas son estados documentales actuales, no probabilidades FMEA. El rie
 | ID | Estado y condición de cierre | Responsable / límite | Riesgos asociados |
 | --- | --- | --- | --- |
 | E8-01 | T-15 estima por clases de tamaño fundadas en los requerimientos del T-12 y las cantidades del T-11 (SD7, sección 7.2.2), con tríada de ±25 %; la productividad de 128 HH efectivas por persona y mes aún no se contrasta con el avance real; peak 69 en el mes 15, 48 personas simultáneas de desarrollo entre julio y septiembre de 2027, brechas de dotación en SEG e IMP (T-15 §5.7) y capacidad por subventana sin asignación. Refinar la estimación con el equipo y comprobar personas, competencias, relevos y cero sobreasignación | JP/DES/CAL; antes línea base | R8-11/14 |
-| E8-02 | Cronograma de 564 actividades calculado con dependencias, revisión Art. 18.3 y nivelación (T-15 §5–§6); sus plantillas, equipos y compras del CLIENTE no están validados. Reestimar con el equipo, confirmar plazos de compra y repetir el cálculo | JP/ARQ/SRE; antes línea base/H3 | R8-10/11/19 |
+| E8-02 | El cronograma de 564 actividades incluye dependencias, revisión Art. 18.3 y nivelación (T-15, secciones 5 y 6). El equipo valida plantillas, dotación y plazos en la línea base y repite el cálculo. LafroX emite la orden de compra de infraestructura en el mes 2 para instalar la sala desde el mes 3. El calendario de compra de hardware de terreno del CLIENTE se acuerda en el mes 1 y asegura disponibilidad antes de cada ola | JP/ARQ/SRE; antes línea base/H3 | R8-10/11/19 |
 | E8-03 | V-12 no confirma fecha/calendario hábil. Febrero 2027 es ejemplo; comprobar E2 antes enero 2029, congelamientos y 28 días | JP/CLIENTE; mes 1 antes H1 | R8-15/17/18 |
 | E8-04 | Objetivo 40 minutos/96 camiones sin ensayo. Demostrar versión operativa, DTE válidos y flujo sin interrupción; papel no acredita despacho | ARQ/SRE/Operaciones; antes H6/H11 | R8-01 |
-| E8-05 | SD4 cumple RPO ≤15 min con tres caminos independientes y declara como riesgo residual la falla simultánea de los tres seguida de la destrucción del sitio (4.3.2.4; RT-02.11). Verificar las alarmas de replicación de 5 y 15 min y medir RPO/RTO en conmutación real | ARQ/SRE; antes H5/H10 | R8-05 |
-| E8-06 | La coordinación de reserva de INT-03/04 está dimensionada en el SD4 (Anexo 4-I y sección 4-W.5) con cuatro mensajes por línea de pedido. Medir la proporción de líneas repartidas entre lotes o sitios, la carga y el drenaje de la cola, incluido el enlace de respaldo de Talca | ARQ/SRE; antes H5/H10 | R8-02/06 |
+| E8-05 | SD4 cumple RPO ≤15 min con fibra, LTE y Starlink y declara como riesgo residual la falla simultánea de los tres caminos seguida de la destrucción del sitio antes de reponer alguno (4.3.2.4; RT-02.11). AL-DR-01 verifica las alarmas de replicación de 5 y 15 min, reposición del enlace, preemisión de guías y NAS WORM, y mide RPO/RTO en conmutación real | ARQ/SRE; antes H5/H10 | R8-05 |
+| E8-06 | La coordinación de reserva y retención de INT-03/04 (SD4, apartado 4.1.4.4 y Anexo 4-G) está dimensionada en el Anexo 4-I, Tabla A.10, y Anexo 4-W, Tablas A.32 y A.33, con un máximo de cuatro mensajes por línea. La retención consumida no se libera y la holgura cubre líneas repartidas. AL-STOCK-01 mide la proporción de líneas con más de una retención. 3.8.4/3.9.3 verifican carga y drenaje, incluido el enlace de respaldo de Talca, sin sumar la coordinación al drenaje | ARQ/SRE; antes H5/H10 | R8-02/06 |
 | E8-07 | T-15 ya imputa las posiciones de mesa del SD4 y el SOC 24×7, pero el Erlang C no verifica abandono ni resolución al primer contacto, y el límite es 2.283 contactos/mes. Medir por contacto desde la marcha blanca y calibrar Erlang A (T-15 §5.6). BTT RT-21.06 y Caso RT-21.06 tienen contenido distinto | SRE; antes del H7 (mes 16) y del H12 (mes 21) | R8-22 |
 | E8-08 | La suspensión del proveedor de lácteos, de marzo a septiembre de 2026, es antecedente anterior; V-13 sin restitución documentada. Confirmar condiciones/evidencia con CLIENTE/proveedor sin atribuir solución retroactiva | JP/DAT/Calidad CLIENTE; mes 1 y antes aceptación trazabilidad | R8-16/23 |
 | E8-09 | AL-STOCK-01/AL-ACT-01, carga, offline y conmutación descritos, no ejecutados. Aportar resultados reproducibles y resolver defectos críticos/altos | CAL/líderes; H5/H10/cierre aplicable | R8-02–07/16/18 |

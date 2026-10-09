@@ -1,5 +1,24 @@
 # CONTEXTO DE SESIÓN
 
+## Estado vigente — 8 de octubre de 2026 (noche): coherencia entre subdocumentos aplicada
+
+Decisiones del usuario aplicadas a los Markdown de `rama-md` (sin commit):
+- Infraestructura on-premise: la provee LafroX dentro del precio del contrato (BA art. 14.2; valorización en la Oferta Económica, art. 50.2). El CLIENTE compra solo el hardware de terreno (E-09). Obra civil de separación: cargo del CLIENTE, LafroX especifica y coordina (RT-06.06). SD6 6.1.3, SD7 7.1.2 y 7.B, T-14 5.1/6.1.1, T-15 §4.1/§5.2/§5.3, SD8 R8-19, C.4, E8-02 y T-16 alineados.
+- Fechas de la sala (cronograma por actividad): planos mes 1, orden de compra de LafroX mes 2, instalación mes 3, recepción mes 4, racks meses 4–5, borde de los CD mes 5, gabinetes de cross-docking mes 9.
+- Starlink en cinco sitios (Talca, Concepción y tres cross-docking) y ocho planes LTE en SD6 y T-14 5.3; SD1 1.6 menciona los CD.
+- Ruta crítica: cadena de la Etapa 2 (H8 13 días, H9 21 días y 89,9 %, H10 28 días). La cadena del ERP (H4/H5), el H3, el planificador, los acuerdos y las cadenas son casi críticos. SD7 7.2.1/7.3.1, 7.B y T-15 §2 alineados.
+- Reservas por hito: las de T-15 Tabla 5.2 (6 a 35 días); escalamiento al superar la mitad de la reserva. Corregidos 7.F, T-15 §5.4 y SD6 6.1.5.
+- «CD-05» era el complemento de coordinación de datos del SD5 (3-oct); en SD4 es la coordinación de reserva y retención (4.1.4.4; Anexo 4-G; Tabla A.10; Tablas A.32 y A.33). «A31/A32» eran esas tablas antes de renumerarse. Reemplazado en SD7, 7.F, T-14, T-18, SD8 y T-16.
+- Laravel: SD4 sin rastro de una versión Django (4.1.7, 4.1.8 «Implantación progresiva por olas», 4.2.4.1.3 «Implantación por olas en los sitios», Anexo 4-P).
+- Nombres de módulos de SD3 en todo SD4 (títulos 4.1.4.x, Tabla 8, Anexos 4-D, 4-E, 4-F) y en T-18.
+- Reversión técnica ≤ 10 min en SD4 4.2.4.1.2, SD7 Tabla 7.8 y T-18; los 4 h del Art. 78.3 son restauración de incidentes.
+- RF-10 (reposición) en SD4 M2, INT-06 y Anexos 4-D/4-E/4-N; la función de abastecimiento se ejerce dentro de perfiles autorizados (SD3 Anexo 3.I), sin actor 16.
+- Traslado del servidor del ERP dentro de T-14 6.3.1; T-14 6.3.3/6.3.4 con servidores y mini-PC activo/espera; T-14 4.1.2/4.1.3 corregidos; T-18 fechas prohibidas según SD4 Tabla 14.
+- SD4 4.1.21 cita S-22/V-01 (instalaciones); SD4 4.3.1.4 especifica el blindaje junto a la explicación del plano del recinto (RT-06.02) y T-12 RT-06.xx remite a SD4 4.3.1.4.
+- SD6: interesados alineados con los 19 actores del SD2; umbral de cobertura igual a SD1. SD2 remite la arquitectura al SD4. T-15 §5.7 explica 6 equivalentes del SOC frente a 4–5 personas del SD4.
+- Resumen: T-11, T-15, T-18, SD4-Anexos y SD6 actualizados.
+- Pendiente fuera del Markdown: figuras 7.5 y 7.7 del SD7 (marcar la ruta crítica de la Etapa 2) y replicar todo en LaTeX. Ediciones con gpt-6-astra medio (gpt-6.1-sol no disponible) revisadas por Claude; la revisión GPT posterior no se ejecutó por el límite de uso de Codex.
+
 ## Estado vigente — 8 de octubre de 2026: SD8 alineado con FEP04 y PMBOK 6 cap. 11
 
 Contraste con FEP04 (d. 6–9, 18–21, 42–54, 59–68, 105, 112) y PMBOK pp. 202, 433–436, 442–444 y 456. Corregido: la Tabla C.5 usaba impacto / costo; ahora usa ahorro esperado (VE inicial − residual, con P un nivel más baja) / HH del control, y sólo R8-11 (17,0), R8-14 (4,2) y R8-18 (2,1) superan 1; los otros 18 críticos se aplican por la regla del nivel crítico. Cada ficha tiene estrategia PMBOK (Mitigar 28, Escalar R8-12/R8-17, Evitar R8-14, Aceptar activamente R8-22), efecto esperado, residual y riesgo secundario; T-16 antepone la estrategia. VE residual del registro 10.803 HH; liberable 4.273 HH. La contingencia sigue en 15.076 HH (VE inicial, FEP04 d. 47–48), forma parte de la línea base y se libera al verificar controles. 8.1.3 declara zonas de acción, tolerancia y umbral; 8.1.1 agrega análisis de reserva, auditoría de riesgos en H5/H10 e informe mensual; O8-01 con estrategia «mejorar». Resúmenes del SD8 actualizados. Pendiente: no hay riesgos de la rama externa de la RBS del PMBOK (cambio normativo, por ejemplo del SII o de la Ley 21.719); agregarlo cambia el VE total y la contingencia citada en SD7, SD13 y T-15. Sin commit.

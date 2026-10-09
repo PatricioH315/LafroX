@@ -19,19 +19,19 @@
 - [4.1.3.8 Capa de observabilidad transversal (Capa 8)](#4138-capa-de-observabilidad-transversal-capa-8)
 - [4.1.4 Módulos funcionales y límites de contexto](#414-módulos-funcionales-y-límites-de-contexto)
 - [4.1.4.1 Mapa de límites de contexto](#4141-mapa-de-límites-de-contexto)
-- [4.1.4.2 Módulo de calidad y trazabilidad (M9)](#4142-módulo-de-calidad-y-trazabilidad-m9)
-- [4.1.4.3 Módulo de inventario (M2)](#4143-módulo-de-inventario-m2)
-- [4.1.4.4 Módulo de preventa móvil (M3)](#4144-módulo-de-preventa-móvil-m3)
-- [4.1.4.5 Módulo de planificación de rutas (M4)](#4145-módulo-de-planificación-de-rutas-m4)
-- [4.1.4.6 Módulo de rendición y cobro (M7)](#4146-módulo-de-rendición-y-cobro-m7)
-- [4.1.4.7 Módulo de analítica y costo de servir (M10)](#4147-módulo-de-analítica-y-costo-de-servir-m10)
+- [4.1.4.2 Módulo M9 Calidad y trazabilidad](#4142-módulo-m9-calidad-y-trazabilidad)
+- [4.1.4.3 Módulo M2 Inventario](#4143-módulo-m2-inventario)
+- [4.1.4.4 Módulo M3 Preventa](#4144-módulo-m3-preventa)
+- [4.1.4.5 Módulo M4 Rutas](#4145-módulo-m4-rutas)
+- [4.1.4.6 Módulo M7 Cobranza y rendición](#4146-módulo-m7-cobranza-y-rendición)
+- [4.1.4.7 Módulo M10 Analítica](#4147-módulo-m10-analítica)
 - [4.1.4.8 Recepción, preparación, reparto y servicios asociados](#4148-recepción-preparación-reparto-y-servicios-asociados)
 - [4.1.5 Modelo de datos conceptual](#415-modelo-de-datos-conceptual)
 - [4.1.6 Catálogo de interfaces](#416-catálogo-de-interfaces)
 - [4.1.6.1 Integraciones internas](#4161-integraciones-internas)
 - [4.1.6.2 Integraciones externas](#4162-integraciones-externas)
 - [4.1.7 Detalle de tecnologías seleccionadas](#417-detalle-de-tecnologías-seleccionadas)
-- [4.1.8 Implantación progresiva del backend Laravel](#418-implantación-progresiva-del-backend-laravel)
+- [4.1.8 Implantación progresiva por olas](#418-implantación-progresiva-por-olas)
 - [4.1.9 Ambientes del ciclo de vida y promoción de componentes](#419-ambientes-del-ciclo-de-vida-y-promoción-de-componentes)
 - [4.1.10 Patrones de diseño y continuidad](#4110-patrones-de-diseño-y-continuidad)
 - [4.1.10.1 SOLID aplicado a los contratos de negocio](#41101-solid-aplicado-a-los-contratos-de-negocio)
@@ -71,7 +71,7 @@
 - [4.2.4.1 Ambientes y ciclo de entrega](#4241-ambientes-y-ciclo-de-entrega)
 - [4.2.4.1.1 Artefacto y perfiles de ejecución](#42411-artefacto-y-perfiles-de-ejecución)
 - [4.2.4.1.2 Liberación y reversión](#42412-liberación-y-reversión)
-- [4.2.4.1.3 Transición al backend Laravel](#42413-transición-al-backend-laravel)
+- [4.2.4.1.3 Implantación por olas en los sitios](#42413-implantación-por-olas-en-los-sitios)
 - [4.2.4.1.4 Calendario y cadencia](#42414-calendario-y-cadencia)
 - [4.2.4.2 Red de despliegue](#4242-red-de-despliegue)
 - [4.2.4.3 Alta disponibilidad](#4243-alta-disponibilidad)
@@ -584,7 +584,7 @@ El mapa expone dependencias que deben permanecer bajo contratos versionados.
 
 El mapa asigna a cada relación un dueño de contrato y una superficie de intercambio. El catálogo de interfaces (§ [4.1.6](LAFROX-Subdocumento4.md#sec:catalogo-interfaces)) añade la versión y la conducta ante falla; una relación del Anexo 4-F no equivale por sí sola a un contrato ejecutable.
 
-#### 4.1.4.2 Módulo de calidad y trazabilidad (M9)
+#### 4.1.4.2 Módulo M9 Calidad y trazabilidad
 
 El módulo de trazabilidad resuelve el problema central que motivó la licitación: la incapacidad de responder en tiempo real ante un retiro sanitario. En marzo de 2026, un retiro preventivo de queso fresco tomó 9 días en resolverse de forma inexacta, con la apertura de un sumario sanitario y la suspensión como distribuidor autorizado por un proveedor clave por seis meses.
 
@@ -592,7 +592,7 @@ La unidad de trazabilidad sanitaria es el lote del proveedor, identificado por e
 
 La trazabilidad forward/backward se implementa evento a evento conforme al estándar GS1 EPCIS, permitiendo al sistema responder en menos de 2 horas ante un retiro sanitario (Bases Técnicas del caso, cap. 18, p. 34), con identificación precisa de los lotes y puntos de entrega afectados. Los registros de temperatura se capturan de forma continua en 21 puntos de temperatura en cámaras (15 en Talca y 6 en Concepción) y 28 termógrafos: 18 en camiones propios y 10 en camiones refrigerados de transportistas. Una excursión menor y transitoria genera una advertencia. Una excursión crítica y sostenida, según el umbral y la duración parametrizados por producto, genera retención preventiva automática en M2 y M5, también sin enlace (RNG-04 y RF-09.05/06/07 del Subdocumento 3). Mientras Calidad no apruebe los parámetros de un tipo de producto, toda lectura fuera del rango de almacenamiento de la ficha del SKU se trata como crítica. El sistema registra la versión de la regla, el umbral, la duración, el sensor y el lote. La jefatura de Calidad evalúa la excursión y es la única que autoriza una liberación trazada o dispone rechazo. El conductor no puede levantar el bloqueo. M9 integra los sensores de cámara mediante los tres gateways con Greengrass (Capa 2), los termógrafos mediante el terminal del conductor, inventario (M2), preparación (M5) y observabilidad (Capa 8), con evidencia exportable de la decisión.
 
-#### 4.1.4.3 Módulo de inventario (M2)
+#### 4.1.4.3 Módulo M2 Inventario
 
 El módulo de inventario permite saber qué stock existe, dónde está y qué parte puede comprometerse. Mantiene la operación distribuida entre Talca, Concepción y los tres cross-docks; la casa matriz consulta la información consolidada. Sus capacidades son las siguientes:
 
@@ -604,7 +604,9 @@ El módulo de inventario permite saber qué stock existe, dónde está y qué pa
 
 - **Stock disponible.** Con conexión se consulta la disponibilidad mediante APIs. Sin conexión se utiliza la copia autorizada descargada al inicio del turno y almacenada en SQLite/Room. La reserva comercial se confirma en M2 central después del acuse durable de la retención en M2 del sitio. Los pedidos capturados sin señal permanecen a la espera de validación. Los conflictos se resuelven con reglas documentadas de asignación y prioridad, no mediante la sola comparación de marcas de tiempo.
 
-#### 4.1.4.4 Módulo de preventa móvil (M3)
+- **Reposición de compras (RF-10.01 a RF-10.03).** M2 sugiere la reposición por SKU y proveedor a partir de la venta real, la estacionalidad, las promociones comprometidas y el plazo de cada proveedor. La función de abastecimiento revisa y aprueba la sugerencia con permisos específicos dentro de los perfiles autorizados del CLIENTE. Cada modificación registra responsable y motivo. La sugerencia aprobada se traspasa al módulo de compras del ERP mediante la ACL de INT-06. El ERP conserva la emisión de las órdenes de compra (Subdocumento 3, D-05).
+
+#### 4.1.4.4 Módulo M3 Preventa
 
 Para los 62 preventistas, tomar un pedido debe seguir siendo posible aun cuando la ruta no tenga cobertura. El módulo reemplaza una aplicación que no consulta stock ni crédito y presenta caídas y duplicación de pedidos. La nueva interacción distingue con claridad lo registrado en el dispositivo de lo confirmado por el servidor:
 
@@ -630,7 +632,7 @@ La cancelación o la expiración central inicia una liberación pendiente. El st
 
 La coordinación usa colas e identidades por sitio, separadas de las del ERP, de la reconciliación de eventos y de los trabajos de Laravel. La nube publica las solicitudes y cada shipper inicia su conexión. La única conexión iniciada desde la nube hacia un sitio sigue siendo DMS de Talca. El Anexo 4-G detalla este contrato dentro de INT-03/04, el Anexo 4-I cuantifica sus mensajes y AL-STOCK-01 del Anexo 4-V lo verifica. Su emplazamiento físico se describe en 4.2.
 
-#### 4.1.4.5 Módulo de planificación de rutas (M4)
+#### 4.1.4.5 Módulo M4 Rutas
 
 El módulo de planificación de rutas automatiza un proceso que actualmente depende de una sola persona (21 años de conocimiento concentrado, con retiro programado en 2 años) que administra una planilla de 11 hojas. El módulo implementa:
 
@@ -644,7 +646,7 @@ El módulo de planificación de rutas automatiza un proceso que actualmente depe
 
 La propuesta automática no convierte las excepciones del planificador en reglas opacas: M4 conserva restricción, motivo de ajuste y autor de la ruta aprobada para transferir conocimiento y comprobar el criterio de aceptación.
 
-#### 4.1.4.6 Módulo de rendición y cobro (M7)
+#### 4.1.4.6 Módulo M7 Cobranza y rendición
 
 El módulo de rendición y cobro permite investigar las causas de las diferencias de rendición que hoy quedan sin explicación. Implementa:
 
@@ -656,7 +658,7 @@ El módulo de rendición y cobro permite investigar las causas de las diferencia
 
 - **Costo de servir (RF-11).** El módulo alimenta el tablero de BI con el costo real por entrega, incluyendo kilometraje real (telemetría M12), tiempo de servicio y deducciones por devoluciones.
 
-#### 4.1.4.7 Módulo de analítica y costo de servir (M10)
+#### 4.1.4.7 Módulo M10 Analítica
 
 El módulo de inteligencia de negocio consolida la información operativa en tableros gerenciales de autoservicio (RT-05.27; Bases Técnicas Transversales, cap. 5, p. 13) con modelo semántico en el mismo lenguaje del negocio: OTIF, fill rate, costo por entrega, ocupación de flota y segmentación por canal/cliente.
 
@@ -678,7 +680,7 @@ El proveedor consulta el estado de su orden y de la recepción; no accede a las 
 
 El preparador confirma cada lectura en el servicio local; la pérdida del enlace externo no borra la misión ni convierte una carga preparada en una salida autorizada.
 
-**M6 Reparto y entrega** recibe de M4 la ruta y de M5 la carga liberada. El conductor registra receptor, cantidad recibida, rechazos y POD en el dispositivo aun sin señal. M6 no liquida cobros ni emite documentos tributarios; publica el resultado para M7 y M8 y mantiene visible el estado de sincronización por confirmar.
+**M6 Reparto** recibe de M4 la ruta y de M5 la carga liberada. El conductor registra receptor, cantidad recibida, rechazos y POD en el dispositivo aun sin señal. M6 no liquida cobros ni emite documentos tributarios; publica el resultado para M7 y M8 y mantiene visible el estado de sincronización por confirmar.
 
 El conductor propio y el externo utilizan el mismo contrato de entrega con identidades personales distintas. La evidencia queda ligada al turno y al receptor, sin exigir que el almacén instale una aplicación.
 
@@ -750,7 +752,7 @@ INT-01 y INT-02 conservan el UUID de cada operación hasta obtener acuse durable
 
 Las siete interfaces con terceros se encapsulan para que un cambio de proveedor no altere doce módulos a la vez. El Anexo 4-H separa el tercero, el dueño interno del contrato y la conducta ante falla.
 
-La ACL aísla el ERP; ninguna falla de tercero convierte un estado sin confirmar en aprobado.
+La ACL aísla el ERP; ninguna falla de tercero convierte un estado sin confirmar en aprobado. INT-06 traspasa la sugerencia de reposición aprobada de M2 al módulo de compras del ERP mediante la ACL (RF-10.03). El ERP conserva la emisión de las órdenes de compra (Subdocumento 3, D-05).
 
 La integración tributaria INT-07 pasa por el ERP, único emisor de DTE; M5 no llama al SII. La falla de INT-09 impide afirmar que un cargo quedó aprobado. Para INT-08 se preservan el mensaje original, su equivalencia y la respuesta enviada a cada cadena.
 
@@ -802,19 +804,19 @@ A continuación se resume la tecnología de cada capa y su justificación princi
 
 Los servicios AWS consumidos incluyen: CloudFront, AWS WAF, AWS Shield Advanced, ALB, Network Load Balancer, API Gateway, Verified Access, Aurora, ElastiCache, DynamoDB, S3, Redshift Serverless, ECS Fargate, Lambda (solo como autorizador), Route 53, Secrets Manager, Systems Manager, KMS, IAM, Organizations, IAM Identity Center, CloudWatch, Transit Gateway, NAT Gateway, VPC Endpoints, Site-to-Site VPN, SQS, SNS, AWS Backup, GuardDuty, Security Hub, Security Lake, Macie, Inspector, Config, Database Migration Service, Glue, QuickSight, Elastic Container Registry, CodeBuild, Control Tower, CloudTrail e IoT Core+Greengrass.
 
-Laravel conserva una superficie de APIs, políticas y colas coherente para los doce módulos; Django también permitiría el monolito, pero mantener su runtime junto al nuevo obligaría a operar dos cadenas de dependencias y dos familias de trabajadores. La equivalencia se acepta por contratos y pruebas, no por parecido de bibliotecas. PostgreSQL/PostGIS se prefiere a MariaDB por la combinación de transacciones y consultas geográficas del dominio de rutas y sitios; la prueba cubre consultas espaciales y migración. Keycloak se prefiere a un proveedor de identidad exclusivamente en nube porque permite administrar personal propio y externo sin trasladar la autorización de negocio fuera de M1–M12; el relevo local requiere la prueba de 24 horas. API Gateway reduce administración frente a un gateway propio, sujeto a prueba de cuotas y costo bajo el pico. RabbitMQ local más SQS FIFO conserva el trabajo del sitio sin enlace; la deduplicación y el orden por partición se prueban en los consumidores. Angular se conserva por sus componentes y contratos TypeScript. Los costos, el emplazamiento y la redundancia se comprueban en 4.2 y en el registro ADR.
+Django también permitiría el monolito. Se descarta porque Laravel cubre con un solo runtime las APIs, las políticas, las colas y los trabajos de los doce módulos. La implementación se verifica mediante contratos y pruebas. PostgreSQL/PostGIS se prefiere a MariaDB por la combinación de transacciones y consultas geográficas del dominio de rutas y sitios; la prueba cubre consultas espaciales y migración. Keycloak se prefiere a un proveedor de identidad exclusivamente en nube porque permite administrar personal propio y externo sin trasladar la autorización de negocio fuera de M1–M12; el relevo local requiere la prueba de 24 horas. API Gateway reduce administración frente a un gateway propio, sujeto a prueba de cuotas y costo bajo el pico. RabbitMQ local más SQS FIFO conserva el trabajo del sitio sin enlace; la deduplicación y el orden por partición se prueban en los consumidores. Angular se selecciona por su organización en componentes y sus contratos TypeScript. Los costos, el emplazamiento y la redundancia se comprueban en 4.2 y en el registro ADR.
 
 El núcleo utiliza tecnologías con alternativas de despliegue como Laravel, Angular, PostgreSQL, RabbitMQ y Keycloak. Eso facilita la portabilidad, pero no elimina la dependencia de los servicios administrados de AWS. La reversibilidad documenta contratos, exportación de datos y sustitución de adaptadores, junto con el esfuerzo de migración exigido por RT-03.07, que 4.2 acota por servicio.
 
 El Anexo 4-P reúne versiones de referencia, soporte y criterios de actualización. Las versiones menores se fijan en archivos de bloqueo y SBOM y se promueven mediante pruebas de contrato; no se congela una versión sin soporte por los 56 meses. Laravel, PHP, PostgreSQL, Angular y RabbitMQ se revisan conforme a sus políticas oficiales (Laravel, 2026; PHP, 2026; PostgreSQL, 2026; Angular, 2026a, 2026b; RabbitMQ, 2026).
 
-### 4.1.8 Implantación progresiva del backend Laravel
+### 4.1.8 Implantación progresiva por olas
 
 <a id="sec:transicion-laravel"></a>
 
 La implantación conserva los identificadores M1–M12, sus dueños de datos, las rutas y versiones públicas, los eventos JSON, la identidad Keycloak y las reglas offline. El Anexo 4-P muestra cómo se implementan las capacidades del backend; PostgreSQL/PostGIS, RabbitMQ, SQS y los clientes mantienen sus contratos.
 
-La implementación conserva rutas y contratos, repositorios PostgreSQL/PostGIS y eventos JSON. Sustituye el runtime por Laravel/PHP, separa consumidor de integración y trabajos internos, y prueba identidad, trazas y reversión antes de habilitar cada ola.
+La implementación en Laravel/PHP utiliza rutas y contratos, repositorios PostgreSQL/PostGIS y eventos JSON. Separa el consumidor de integración y los trabajos internos, y prueba identidad, trazas y reversión antes de habilitar cada ola.
 
 La implantación comienza por fijar contratos, dueños de datos y un extracto conciliado del WMS de 2013 en Talca. Concepción inicia sus saldos con un conteo físico, porque hoy controla su stock por planilla. El esquema PostgreSQL de destino lo define el modelo de datos de la solución, sin suponer el motor del sistema antiguo. Las migraciones Laravel son aditivas y compatibles con los lectores de la ola previa. M1/M2/M5 se ensayan primero en un sitio piloto y después se habilitan los demás sitios, módulos y trabajadores. El WMS antiguo deja de escribir en cuanto se habilita cada ola y se retira al cerrar la marcha blanca de Talca, con sus datos ya migrados y conciliados. En coexistencia, cada operación tiene un único escritor autorizado y no hay doble escritura de stock, cobros o DTE. Una reversión de software vuelve a la versión compatible anterior del nuevo servicio, con el mismo estado y el mismo escritor. No reactiva el WMS antiguo como escritor de stock. La contingencia manual del Subdocumento 3 conserva el picking y la evidencia, pero no permite ejecutar a mano los 96 despachos de 05:30 a 07:00. Por eso la decisión de revertir se toma antes de esa ventana, con guías válidas emitidas por el ERP, conciliación previa y autorización del CLIENTE. Todo evento entre versiones usa JSON versionado. Cada ola se acepta con pruebas de 14 horas en terreno, 24 horas por sitio con dos relevos, guía previa al despacho, 96 salidas en la ventana crítica y reconciliación sin pedidos duplicados.
 
@@ -940,7 +942,7 @@ La comparación considera la carga real, la continuidad desconectada, la reversi
 | **Decisión** | **Seleccionada** | **Alternativa viable** | **Criterio decisivo** |
 | --- | --- | --- | --- |
 | Estilo del núcleo | Monolito modular M1–M12 con perfiles separados. | Servicios por dominio. | Menor carga operativa con 31.000 pedidos/mes. |
-| Framework backend | Laravel 13/PHP 8.5 con límites PSR-4. | Django/Python con los mismos contratos. | Un runtime PHP y pruebas de paridad de contratos, datos y colas. |
+| Framework backend | Laravel 13/PHP 8.5 con límites PSR-4. | Django/Python con los mismos contratos. | Un solo runtime PHP para APIs, colas y trabajos. |
 | Aplicación terreno | Kotlin nativo. | Desarrollo multiplataforma. | Integración Zebra y persistencia local. |
 | Mensajería | Broker local y cola de nube. | Broker solo en nube. | Conservación del trabajo con enlace caído. |
 | WMS 2013 | Reemplazo por olas M1/M2/M5. | Sustitución simultánea. | Reversión por sitio y capacidad. |
@@ -1044,7 +1046,7 @@ El Anexo 4-T especifica percentiles, ventanas de ensayo, carga de 1,5 veces el p
 
 <a id="sec:16-decisiones-caso"></a>
 
-El Anexo 4-L conserva el número y la pregunta de cada una de las dieciséis decisiones del caso. Distingue una regla de diseño de una validación que todavía requiere al CLIENTE: una fila marcada para validación no equivale a una aprobación suya. El registro de supuestos del capítulo 3 debe conservar el fundamento, impacto e instancia de validación de cada decisión.
+El Anexo 4-L conserva el número y la pregunta de cada una de las dieciséis decisiones del caso. Distingue una regla de diseño de una validación que todavía requiere al CLIENTE: una fila marcada para validación no equivale a una aprobación suya. El registro de supuestos del Subdocumento 3 (Anexo 3.C) conserva el fundamento, impacto e instancia de validación de cada decisión.
 
 Las validaciones se identifican por su número de origen para consulta al CLIENTE.
 
@@ -1054,7 +1056,7 @@ La matriz permite comprobar qué decisión implementa cada módulo. En particula
 
 <a id="sec:contradicciones"></a>
 
-La lógica adopta seis instalaciones en total, de las cuales cinco son sitios logísticos con servicio local y la sexta es la casa matriz de Talca, contigua al CD principal y sin cómputo propio (Bases Técnicas del caso, cap. 2, p. 5). La parametrización de sitios evita codificar el número en cada módulo.
+La solución se parametriza por sitio y el número de instalaciones se confirma en el mes 1, conforme a S-22 y V-01 del Subdocumento 3. El diseño cubre cinco sitios logísticos con servicio local: CD Talca, CD Concepción y tres cross-docking. La sexta instalación de la volumetría del caso se interpreta como la casa matriz de Talca, contigua al CD principal y sin cómputo propio (Bases Técnicas del caso, cap. 2, p. 5). Si el mes 1 confirma otra instalación con operación, se equipa con la tipología de Concepción (Subdocumento 3, S-40). La parametrización de sitios evita codificar el número en cada módulo.
 
 Los cortes frecuentes de dos horas descritos en la operación son el escenario ordinario. Los límites de diseño son más exigentes: un turno de 14 horas en terreno y 24 horas en cada centro de distribución. No se reduce la autonomía porque el incidente más común sea más corto.
 
@@ -1271,9 +1273,9 @@ La Tabla [8](LAFROX-Subdocumento4.md#tab:mapeo-logica) asocia cada módulo y cad
 | M4 Rutas | N-04 y N-05; motor de optimización en su propio contenedor | Nube |
 | M5 Preparación | A-01 y A-02, con C-03 y C-04 | Sitio |
 | M6 Reparto | C-02 en el terminal; N-04 y N-05, con la evidencia en S3 | Terreno y nube |
-| M7 Rendición | C-02; N-04; A-04 hacia el ERP | Terreno, nube y VM-04 |
-| M8 Devoluciones | C-02; N-04; A-01 para la recepción física de retornos mediante la puerta de API local | Terreno, nube y sitio |
-| M9 Calidad | B-01, B-02 con la función local de bloqueo en el borde y B-03; N-06 y N-08 | Sitio, camiones y nube |
+| M7 Cobranza y rendición | C-02; N-04; A-04 hacia el ERP | Terreno, nube y VM-04 |
+| M8 Devoluciones y envases | C-02; N-04; A-01 para la recepción física de retornos mediante la puerta de API local | Terreno, nube y sitio |
+| M9 Calidad y trazabilidad | B-01, B-02 con la función local de bloqueo en el borde y B-03; N-06 y N-08 | Sitio, camiones y nube |
 | M10 Analítica | N-10 | Nube |
 | M11 Canal moderno | N-04 con el perfil EDI y el transporte AS2; A-04 | Nube y VM-04 |
 | M12 Telemetría | N-04 y N-06, con la API del proveedor de telemetría | Nube |
@@ -1800,23 +1802,23 @@ Así, ningún reinicio, escalado o despliegue deja un trabajo a medias.
 
 Cada entrega se libera con estrategia azul-verde: la entrega nueva se despliega junto a la vigente y recibe tráfico de forma gradual, en etapas de canario, después de haberse demostrado el mismo procedimiento en Preproducción (RT-04.07; Bases Técnicas Transversales, cap. 4, p. 11). La puesta en producción avanza por proceso, por sitio o por zona comercial, nunca como un evento único que afecte a la vez a la bodega, la preventa, el reparto y la facturación. En la sustitución del WMS de 2013 por olas, cada capacidad se activa además por sitio mediante indicadores de funcionalidad (*feature flags*), sin volver a desplegar. Revertir una ola devuelve el tráfico a la entrega previa del nuevo servicio. El WMS de 2013 ya no escribe stock y se retira al cerrar la marcha blanca de Talca.
 
-Mientras dura el canario, la entrega previa permanece desplegada, por lo que revertir es devolverle el tráfico, sin recompilar ni volver a desplegar. La reversión es automática y se dispara cuando el percentil 95 de una transacción supera su umbral comprometido (Tabla [31](LAFROX-Subdocumento4.md#tab:t84)) o cuando la entrega nueva registra más errores que la estable en la misma ventana de observación. No se pierde ninguna transacción confirmada: las operaciones en curso quedan en los buffers locales, 24 horas por sitio en el broker y la caché de turno en los dispositivos, y se reprocesan de forma idempotente contra la entrega restituida. El esquema no necesita revertirse durante el canario, porque la migración de la entrega solo agregó estructuras. Si hiciera falta, la reversión declarada de la migración lo devuelve a la entrega previa. La reversión cambia la imagen en servicio sin perder operaciones. El tiempo efectivo de reversión se mide en cada ensayo en Preproducción y tiene como objetivo 4 horas, el mismo valor del tiempo medio de restauración de incidentes críticos que el Artículo 78.3 mide cada mes (Bases Administrativas, art. 78.3, p. 40).
+Mientras dura el canario, la entrega previa permanece desplegada, por lo que revertir es devolverle el tráfico, sin recompilar ni volver a desplegar. La reversión es automática y se dispara cuando el percentil 95 de una transacción supera su umbral comprometido (Tabla [31](LAFROX-Subdocumento4.md#tab:t84)) o cuando la entrega nueva registra más errores que la estable en la misma ventana de observación. No se pierde ninguna transacción confirmada: las operaciones en curso quedan en los buffers locales, 24 horas por sitio en el broker y la caché de turno en los dispositivos, y se reprocesan de forma idempotente contra la entrega restituida. El esquema no necesita revertirse durante el canario, porque la migración de la entrega solo agregó estructuras. Si hiciera falta, la reversión declarada de la migración lo devuelve a la entrega previa. La reversión cambia la imagen en servicio sin perder operaciones. El tiempo efectivo de reversión tiene un objetivo ≤ 10 minutos, medido en cada ensayo en Preproducción. El tiempo medio de restauración de incidentes críticos ≤ 4 horas es una métrica mensual de operación distinta de la reversión técnica (Bases Administrativas, art. 78.3, p. 40).
 
 Si la falla de un despliegue se manifestara durante la ventana de despacho, la bodega y el reparto continuarían con su operación local (Tabla [10](LAFROX-Subdocumento4.md#tab:t29)) mientras se revierte, sin detener la salida de los camiones.
 
 Cada promoción ensaya además la compatibilidad de los mensajes retenidos. Un sitio puede volver de un corte de 24 horas con sobres publicados por la entrega previa, de modo que el consumidor de reconciliación acepta la edición vigente y la inmediatamente previa del sobre JSON, y rechaza hacia la cola de mensajes fallidos cualquier edición que no reconozca, sin aplicarla. Preproducción reproduce ese caso —sitio emulado desconectado, promoción de la entrega nueva y reconexión— antes de cada paso a producción.
 
-#### 4.2.4.1.3 Transición al backend Laravel
+#### 4.2.4.1.3 Implantación por olas en los sitios
 
-La arquitectura lógica fija la implantación progresiva del backend (apartado 4.1). Su secuencia física es la siguiente:
+La arquitectura lógica fija la implantación progresiva por olas (apartado 4.1.8). Su secuencia física es la siguiente:
 
 - Se registran los contratos OpenAPI y AsyncAPI, el sobre JSON, el esquema PostgreSQL de destino definido por el modelo de datos de la solución, que es la línea base de las migraciones Laravel, y el extracto conciliado del WMS de 2013 de Talca.
 
 - Se construye el backend y se prueban las colas y la capa anticorrupción con fallas inducidas: corte de enlace, ERP caído, mensajes duplicados y fuera de orden.
 
-- Se habilita un sitio piloto, dimensionado por su capacidad real, y el WMS de 2013 deja de escribir cada capacidad que se migra. El tráfico se migra por olas con un único escritor autorizado para cada operación. Nunca escriben a la vez el sistema de origen y el nuevo sobre el stock, los cobros o los documentos tributarios.
+- Se habilita un sitio piloto, dimensionado por su capacidad real, y el WMS de 2013 deja de escribir cada capacidad que se migra. El tráfico se migra por olas con un único escritor autorizado para cada operación. Nunca escriben a la vez el WMS de 2013 y la solución sobre el stock, los cobros o los documentos tributarios.
 
-- Antes de cada corte se drenan los mensajes que el sistema nuevo no puede leer. Si algún ambiente conservara mensajes serializados por un framework de origen, se drenan o se transforman al sobre JSON antes del corte, porque Laravel no puede consumirlos.
+- Antes de cada corte se drenan o se transforman al sobre JSON vigente los mensajes de ediciones anteriores del propio sobre que el consumidor no admita.
 
 - Cada ola cierra verificando saldos de stock, cobros y folios contra el extracto del origen, y se revierte por sitio si falla un umbral acordado con el CLIENTE.
 
@@ -2645,7 +2647,7 @@ Fuente: elaboración propia.
 
 <a id="fig:recinto-talca"></a>
 
-La distribución ordena el recinto en profundidad progresiva. En el exterior quedan el grupo electrógeno con su estanque, el empalme con la transferencia automática entre red y generador, las condensadoras de la climatización y la llegada independiente de fibra, LTE y Starlink. La fibra y LTE ingresan al edificio por puntos separados y siguen ductos independientes hasta la sala, conforme a RT-06.32 (Bases Técnicas Transversales, cap. 6, p. 17); Starlink constituye el tercer camino. La línea técnica reúne la sala de UPS y baterías, el tablero eléctrico independiente del recinto y la acometida de comunicaciones, junto con la zona de trabajo y la zona de respaldo. La línea restringida contiene solo la sala de servidores y comunicaciones, con los racks R01 y R02, la climatización de precisión y la detección y extinción. El ingreso sigue un único recorrido: acceso principal, pasillo de control con espacio de enrolamiento, esclusa que admite una persona a la vez con nueva verificación y, recién entonces, la sala; la estación de enrolamiento y los baños quedan fuera del recinto. Los puestos de trabajo y el área de respaldo quedan en la línea técnica, separados de la sala de equipos, de modo que las labores habituales de operación no exigen ingresar a la línea restringida. La separación física de generadores y baterías respecto del área de servidores evita que una falla de energía o de clima contamine el cómputo, y deja al proveedor de fibra y al de climatización sin cruzar la última línea del recinto.
+La distribución ordena el recinto en profundidad progresiva. En el exterior quedan el grupo electrógeno con su estanque, el empalme con la transferencia automática entre red y generador, las condensadoras de la climatización y la llegada independiente de fibra, LTE y Starlink. La fibra y LTE ingresan al edificio por puntos separados y siguen ductos independientes hasta la sala, conforme a RT-06.32 (Bases Técnicas Transversales, cap. 6, p. 17); Starlink constituye el tercer camino. La línea técnica reúne la sala de UPS y baterías, el tablero eléctrico independiente del recinto y la acometida de comunicaciones, junto con la zona de trabajo y la zona de respaldo. La línea restringida contiene solo la sala de servidores y comunicaciones, con los racks R01 y R02, la climatización de precisión y la detección y extinción. Sus muros no estructurales llevan blindaje perimetral de plancha de acero de 3 mm sobre albañilería reforzada, con resistencia al fuego F-120 (RT-06.02). El ingreso sigue un único recorrido: acceso principal, pasillo de control con espacio de enrolamiento, esclusa que admite una persona a la vez con nueva verificación y, recién entonces, la sala; la estación de enrolamiento y los baños quedan fuera del recinto. Los puestos de trabajo y el área de respaldo quedan en la línea técnica, separados de la sala de equipos, de modo que las labores habituales de operación no exigen ingresar a la línea restringida. La separación física de generadores y baterías respecto del área de servidores evita que una falla de energía o de clima contamine el cómputo, y deja al proveedor de fibra y al de climatización sin cruzar la última línea del recinto.
 
 El sitio monitorea en línea la temperatura, la humedad y la presencia de agua, con alertamiento integrado a la plataforma de observabilidad. El estado de los puntos controlados del recinto converge en la plataforma de monitoreo, con destinatario, canal, tiempo de respuesta y procedimiento escrito. La observabilidad reutiliza el mecanismo del sitio on-premise hacia la nube que define la arquitectura de despliegue del apartado [4.2.4](LAFROX-Subdocumento4.md#sec:despliegue). La convergencia en un solo tablero constituye la plataforma de observabilidad del sitio. No se declara una plataforma DCIM/BMS de terceros porque las Bases no la exigen y el monitoreo ambiental y de alertas se satisface con el monitoreo en línea y su alertamiento integrado.
 
