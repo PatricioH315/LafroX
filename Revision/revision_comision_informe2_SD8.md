@@ -1,115 +1,72 @@
 # LAFROX · GRUPO 2 · INFORME 2 · Caso 2 · Distribuidora Puelche S.A.
 
-**Revisión de la Comisión Evaluadora sobre fuentes Markdown, sólo del Subdocumento 8.** Es la cuarta corrida de `Revision/prompt_revision_comision_informe2.md`, sobre el estado del 9 de octubre de 2026, después de corregir la fecha F1, las reservas del H1 y el H8, los suplentes y la capacidad de implantación. Reemplaza la revisión anterior, cuyo contenido valía 60. La evidencia se cita por archivo y sección. Paginación, folio, firma y legibilidad quedan pendientes del PDF.
-
-**Archivos recibidos:** `LAFROX-Subdocumento8.md`, `LAFROX-Subdocumento8-Anexos.md` y `LAFROX-Formulario-T-16.md`, con la nomenclatura de la Aclaración §1.
-
-**Fuentes contrastadas:**
-- Bases Administrativas: Arts. 17, 18.3 y 50.2; formularios T-16 y E-25.
-- Bases Técnicas Transversales: RT-02.11, RT-07.04, RT-19.04 y RT-21.06.
-- Caso 02: caps. 10, 13.2, 13.3, 17 y 19.
-- Aclaraciones: §1–§7 y §11, capítulo 8.
-- Otros documentos de la oferta: SD1 Tabla 1.3, SD6 6.1.3, SD7 7.3.1 y Anexo 7.B, y el T-15 (secciones 4.5, 5.2, 5.5, 5.7 y 6.1).
+**Revisión de la Comisión Evaluadora sobre fuentes Markdown — SD8 y su cronograma (SD6, SD7, T-14, T-15).** Sexta corrida de `Revision/prompt_revision_comision_informe2.md`, después de pasar el cronograma a paquetes con planificación gradual, de bajar el tope a 40 desarrolladores y de incluir la mesa con tres agentes en el plan base. Contrasta con las Bases, con las clases (FEP02 y FEP04) y con el PMBOK 6, caps. 6 y 11, y se pregunta otra vez si lo que se propone tiene sentido. La evidencia se cita por archivo y sección.
 
 ---
 
 ## Dictamen
 
-**Ítem 8 — Puntaje 0/100 (peso 10 %, ponderado 0,0).** La única causal es la del §7.1 d / §7.2: hay **18 celdas `[[REVISIÓN HUMANA]]`** sin completar (11 en el cuerpo, 6 en los anexos y 1 en el T-16). El grupo dejó en `Revision/plantilla_revision_humana_IA.md` una verificación concreta y un revisor propuesto para cada celda. Eso es preparación interna y no acredita revisión: la Comisión evalúa el entregable, y en él las celdas siguen vacías.
+**Ítem 8 — Puntaje 0/100 (peso 10 %).** La causal sigue siendo la del §7.1 d / §7.2: 18 celdas `[[REVISIÓN HUMANA]]` en el SD8, sus anexos y el T-16. También hay celdas sin revisar en las secciones editadas del SD6 (5), el SD7 (11), el Anexo 7 (3), el T-14 (3), el T-15 (4) y el T-18 (1).
 
-**Diagnóstico de contenido sin §7.1: 80/100** (antes 60). El árbol llega al paso 8:
-- El registro es propio de Puelche.
-- Los títulos obligatorios están completos.
-- El cálculo cuantitativo está ejecutado y se puede seguir.
-- Coincide con el SD7 y el T-15.
-- Las reservas se reflejan en el plan.
-- Corrige las cuatro observaciones de la revisión anterior.
+**Diagnóstico de contenido sin §7.1: 80/100.** El cronograma ya no muestra precisión falsa:
+- La Tabla 6.1 tiene 163 paquetes y la 6.1b detalla actividades sólo hasta el H2, con planificación gradual según PMBOK, cap. 6, p. 185.
+- La contingencia baja a 19.448,58 HH (9,4 %).
+- El pico de desarrollo baja a 40 simultáneos (29 equivalentes).
+- Todo cuadra entre el SD8, el T-15, el SD7 y los resúmenes.
 
-No llega a 100 porque quedan dos propagaciones menores a otros subdocumentos y las probabilidades siguen siendo juicio sin medición.
+No sube a 100 por las preguntas de las secciones 2 y 3.
 
----
+## 1. Lo que quedó bien
+- **T-15 «a modo de resumen»** (BA, Formulario T-15): HH por paquete y etapa, curvas, personas, Tabla 6.1 por paquete y Figura T15.3 de planificación gradual. Coherente con el RUP del SD6 6.2.
+- **Regla 8/80 aplicada al paquete** (FEP02) y tabla de clases de tamaño con ejemplos (T-15 §4.1).
+- **Cifras coherentes:** la Tabla 4.2 suma 206.312 HH, igual que los 163 paquetes de la Tabla 6.1; la curva 4.4 suma 218.720 HH y cuadra por etapa con la §4.3. Sin cifras antiguas en los entregables.
+- **Hitos dentro de su límite:** los P80 de los ocho hitos quedan antes de su fecha (Tabla 5.2 = Tabla 8.5 = Tabla C.3); los ocho juntos se cumplen en el 77,8 %.
+- **Reservas reflejadas en el plan** (T-15 §4.5). El modelo de `compct/` reproduce las tablas a partir de los archivos del repositorio.
 
-## Correcciones respecto de la revisión anterior
+## 2. Preguntas que siguen abiertas (contenido)
 
-| Observación anterior | Estado | Evidencia |
-| --- | --- | --- |
-| Revisión humana | **No corregido** | Siguen las 18 celdas; la plantilla interna está preparada |
-| F1 = 04-05-2028, tercer día hábil (Caso 13.3, punto 2) | Corregido | F1 = 05-05-2028 en el SD8 (C-07 y C.3.1) y en el T-15 (4.2.3.A01, del 5 al 15 de mayo); no queda «04-05-2028» en los entregables |
-| Reservas del H1 y del H8 menores que la subsanación del Art. 18.3 | Corregido | R8-12 (mitigación y contingencia), T-16 R8-12 y E8-11: revisión del borrador una semana antes de la entrega y subsanación en cinco días hábiles |
-| Concentración en una persona desde el mes 22 | Corregido | SD8 8.1.2: Trejo es suplente en DAT y DES, y Miño en IMP; ambos siguen hasta el mes 56 según SD1 Tabla 1.3 |
-| Implantación sobre su dotación en los meses 15 y 20 | Corregido | Opción de hasta 8 personas por cuatro semanas, firmada antes del mes 11 (R8-18, E8-14, T-15 4.5 y 5.7); cubre el exceso de 4,9 y 6,8 equivalentes |
+**P1. ¿El H4 entrega la Etapa 1 completa?** La prueba de integración 3.8.1 corre del 1 al 20 de octubre de 2027, pero tres integraciones de la Etapa 1 terminan durante esa prueba o después:
 
-**Resultado:** 4 de 5 corregidos. No hay regresiones. La simulación, repetida con el nuevo F1, da las mismas cifras de las Tablas 8.5, C.3, C.4 y C.6.
+| Integración | Termina |
+| --- | --- |
+| 3.6.2 Pasarela de pago | 06-10-2027 |
+| 3.6.3 Mapas y geocodificación | 15-10-2027 |
+| 3.6.4 Avisos al cliente | 15-10-2027 |
+| 3.6.1 Trazabilidad con proveedores | 10-11-2027, después de la entrega del H4 |
 
----
+Antes del cambio, 3.6.2–3.6.4 terminaban en agosto o septiembre; la nivelación con 40 desarrolladores las retrasó. El Formulario E-25 define el H4 como el «software de la Etapa 1 para pruebas, con QA superado», y M4 Rutas depende de la geocodificación. **Esto es una regresión del cambio**: hay que ponerle a 3.8.1 la predecesora de 3.6.2–3.6.4 (o declarar qué se prueba con simuladores) y adelantar esas integraciones dentro de la capacidad de 40. Para 3.6.1, explicar que se integra en el H5 o adelantarla.
 
-## Paso 1 — Causales duras
+**P2. ¿Los módulos duran lo que parecen?** En la Tabla 6.1, varios módulos de 960 HH ocupan de 8 a 15 semanas: 3.4.4, 3.4.9 y 3.4.10 van del 14-06 al 24-09-2027, con un máximo de 12 personas. Es el efecto de empezar el análisis en junio y construir cuando hay capacidad. Para un evaluador se lee como equipos que entran y salen. **Sugerencia:** fijar el inicio de cada módulo cerca de su construcción, o explicar en el T-15 §5.1 que el análisis y el diseño de contratos se adelantan a propósito para que la base compartida y los contratos de interfaz se cierren antes de construir.
 
-- **Crítico (§7.1 d / §7.2):** las 18 celdas de revisión humana en blanco.
-- **Precios:** sin hallazgos. OK.
-- **T-16:** presente, con los ocho campos y 32 filas coherentes con la Tabla B.1. OK.
-- **Art. 17° y E-25:** producción E1 en el mes 16 (5 de mayo de 2028) y E2 en el mes 21 (5 de octubre de 2028), ambas en días permitidos. Todos los P80 de entrega caen dentro del mes de su hito. OK.
-- **Folio y firma:** pendientes del PDF.
+**P3. ¿Hace falta el tercer agente de la mesa desde el mes 21?** El SD4 (4-W.7 y tabla de proyecciones) estima 2.000 contactos al mes al inicio y 2.258 en el año 3; los dos agentes cubren hasta 2.283. Programarlo desde el mes 21 agrega 15.946 HH durante 36 meses, aunque los dos primeros años la demanda quede bajo el límite. Es prudente, pero el Caso penaliza el sobredimensionamiento tanto como el subdimensionamiento. **Alternativas:** programarlo desde el mes 33 (año 3), cuando la proyección llega a 2.258, o mantenerlo y justificar con una frase que el margen protege el nivel de servicio en los peaks y ante la incertidumbre de una demanda que todavía no se mide.
 
----
+**P4. ¿P = 3 es coherente para R8-22?** La ficha justifica P = 3 con un margen del 19,6 % (2.391 frente a 2.000), pero el SD4 proyecta 2.258 en el año 3, un margen de sólo 5,9 %. Con la proyección del propio SD4, P = 4 parece más defendible: cambiaría la exposición a 12 y la contingencia en unas 375 HH. Hay que alinear la justificación con la proyección del año 3.
 
-## 8. Plan de riesgos — Formulario T-16 (10 %)
+**P5. ¿Es suficiente la reserva del H8?** Cuatro días hábiles y 91,1 % de entrega a tiempo. Depende de la revisión anticipada del borrador (R8-12, T-15 §5.5). Está tratada, pero es el hito más frágil después del H3: conviene que el Comité de Proyecto lo siga como hito con vigilancia especial.
 
-**Revisión: (Puntaje 0; contenido 80)**
+**P6. ¿Se deduce bien la «Personas (máx.)» de la Tabla 6.1?** En los módulos aparece 12, un valor que se da sólo en las actividades de equipo completo. El lector puede leer «12 personas durante 8 a 15 semanas», que serían 3.000 a 5.000 HH, contra las 960 del paquete. Agregar una nota que explique que es el máximo simultáneo y no la dotación permanente, o mostrar en su lugar las personas promedio.
 
-**Veredicto.** El contenido satisface el índice obligatorio y es coherente con la propuesta. Sólo la causal de revisión humana impide puntuarlo.
+**P7. ¿Las predecesoras de la Tabla 6.1 se pueden leer?** Los módulos listan más de 15 predecesoras (2.4.1, 2.6.2, 3.1.1–3.1.5, 3.3.x…). Es correcto, pero denso. El Anexo 7.B ya las resume por cuenta (D-04, D-05, D-14 a D-19); conviene mostrar en la tabla la dependencia del Anexo 7.B (por ejemplo, «D-04, D-05, D-15») en vez de la lista completa.
 
-### Introducción a los Riesgos
-- OK: conecta las restricciones del cap. 10 con SD2–SD7, los anexos y el T-16.
-- Observación menor: hay dos títulos de nivel 1 seguidos; resolverlo en la portada del PDF.
+## 3. Contraste con las Bases
+- **Art. 17° y E-25:** meses y producciones sin cambios (5-05-2028 y 5-10-2028, días permitidos). Si se acepta la P1, el H4 mantiene su contenido.
+- **Art. 18.3:** las reservas del H1 y el H8 son menores que el plazo de subsanación; la respuesta está en R8-12 y en el T-15 §5.5. OK.
+- **Formulario T-15 «a modo de resumen»:** cumple.
+- **Aclaraciones §11, cap. 8:** cumple los títulos e incluye reservas y su reflejo en el cronograma.
+- **Caso cap. 6.1 (proporción):** ver P3.
 
-### 8.1 Plan de riesgos
-- OK: ciclo ISO 31000 (RT-19.04), comités con cadencia, escalas definidas y calibradas, apetito, tolerancia y escalamiento.
-- OK: responsables por familia con relevo en el mes 22 y suplentes nominados, coherente con SD1 Tabla 1.3 y T-15 F8.
+## 4. Diagramas
+- Fig_7-7 (barra 3.4 desde el 10-06), Fig_T14-2 (3.4 y 3.6), Fig_7-8 (nota de planificación gradual) y la nueva Fig_T15-3 son coherentes con la Tabla 6.1.
+- **Si se acepta la P1**, hay que corregir las barras de 3.6 en las Fig_T14-2 y Fig_7-7. Falta la revisión visual en draw.io.
 
-### 8.2 Identificación y Análisis de Riesgos
-- OK: RBS dibujada; los tres análisis del T-22; los temas obligatorios de las Aclaraciones §11; los siete riesgos del Caso cap. 19.
-- OK: FMEA, valor esperado y Monte Carlo con nivelación diaria, intervalos de confianza y sensibilidad. Todos los P80 quedan dentro de su límite. El hito más expuesto es el H3 (88,3 %, por R8-19) y las ocho entregas se cumplen juntas en el 78,0 %.
-- Observación: las probabilidades y la correlación siguen siendo juicio del equipo. E8-12 obliga a recalibrarlas desde el mes 3, lo que se acepta como tratamiento.
+## Qué se espera
+1. Resolver la P1 (H4 con integraciones completas) y volver a nivelar y simular.
+2. Decidir la P3 y alinear la P4.
+3. Ajustar la presentación de la Tabla 6.1 (P2, P6 y P7).
+4. Completar las revisiones humanas.
 
-### 8.3 Plan de Acción a Riesgos
-- OK: 32 fichas completas; costo-beneficio de todas las respuestas en HH; contingencia de 29.647,18 HH y gestión de 1.600 HH, reflejadas en el T-15, sección 4.5; reserva de cronograma por hito en la Tabla 5.2.
-- OK: la respuesta para el H1 y el H8 cumple el Art. 18.3. La subsanación en cinco días deja el acta dentro del mes. En el H8: entrega el 13-03-2028, más 10 días de revisión, da el 27-03; más 5 de subsanación, el 03-04-2028. Eso cae en el mes 15, no en el 14. Ver la observación de consistencia siguiente.
-- **Observación (BA Art. 18.3 y E-25, H8):** el cálculo anterior muestra que, incluso con la subsanación en cinco días, una observación formal del H8 lleva el acta al 3 de abril de 2028, fuera del mes 14. La revisión anticipada del borrador es el control que evita ese caso, y debe declararse como control principal del H8, con fecha (por ejemplo, la semana del 6 de marzo de 2028), no sólo como mitigación genérica. En el H1 (entrega el 9 de marzo de 2027) el acta con subsanación queda dentro del mes 2. OK.
-
-### Consistencia
-
-| Decisión | SD8 | Otro documento | Resultado |
-| --- | --- | --- | --- |
-| Hitos, P80 y reservas | Tablas 8.5 y C.3; 8.3.2 | T-15 Tabla 5.2; SD7 7.3.1 | Coinciden |
-| Contingencia y gestión | 29.647,18 / 1.600 HH | T-15 4.5; resúmenes | Coinciden |
-| F1 y F2 | 05-05-2028 / 05-10-2028 | T-15 6.1 (4.2.3, 4.3.3) | Coinciden |
-| Opción del contrato de implantación | R8-18, E8-14 | T-15 4.5 y 5.7 | Coinciden; **no figura en las adquisiciones del SD6 6.1.3** |
-| Revisión anticipada del H1 y del H8 | R8-12, E8-11, T-16 | T-15 5.5; SD7 7.3.1 | **No figura en el procedimiento de entrega del T-15 5.5** |
-| Relevo y suplentes | 8.1.2 | SD1 Tabla 1.3 | Coinciden |
-
-Las dos diferencias marcadas no contradicen ninguna decisión. Son omisiones de propagación: el SD6 y el T-15 no repiten algo que el SD8 compromete. No constituyen un indicio §7.1 c, pero deben cerrarse antes del PDF.
-
-### Forma e indicios de uso de IA
-- **Crítico:** 18 celdas `[[REVISIÓN HUMANA]]`.
-- OK: no hay código, rutas, marcadores, notas de versión ni voz de auditor. Las citas APA tienen correspondencia 1:1, y las Bases se citan con el formato del SD6 y el SD7.
-- Observación menor: la redacción telegráfica persiste en algunas fichas y en 8.1.3.
-
-## Paso 4 — Contraste con el caso
-- Congelamientos: no hay pasos a producción ni cortes en septiembre, diciembre ni en los tres primeros días hábiles del mes, contando los feriados de mayo y octubre de 2028. OK.
-- Restricciones del cap. 10 y riesgos del cap. 19: cubiertos. OK.
-- Inicio supuesto el 1 de febrero de 2027 y feriados del CLIENTE sujetos a V-12, con recálculo obligatorio (E8-13). OK.
-
-## Qué se espera en el Informe 3
-1. Cada integrante propuesto revisa y firma su fila (18 celdas), con nombre y verificación, y la declaración se consolida en el A-6.
-2. Declarar la revisión anticipada del H8 como control principal, con fecha, porque la subsanación formal llevaría el acta al mes 15.
-3. Agregar la opción de hasta 8 personas del contrato de implantación a las adquisiciones del SD6 6.1.3.
-4. Agregar la revisión anticipada del H1 y el H8 al procedimiento de entrega del T-15 5.5.
-
-## Tabla final
-
-| Ítem | Peso T-21 (Informe 2) | Puntaje | Ponderado |
+| Ítem | Peso | Puntaje | Ponderado |
 | --- | --- | --- | --- |
 | 8. Plan de riesgos — T-16 | 10 % | **0** | **0,0** |
 
-Diagnóstico de contenido sin la causal del §7.1: **80/100**.
+Contenido sin la causal del §7.1: **80/100**.

@@ -53,7 +53,7 @@ P/I/D se asignan como juicios ordinales iniciales sustentados en exposición y c
 
 Exposición E = P × I (1–25): baja 1–3, moderada 4–7, alta 8–14 y crítica 15–25. FMEA agrega NPR = P × I × D (1–125), para ordenar dentro del nivel; desempates por impacto y proximidad del plazo. I = 5 exige escalamiento aunque E no alcance 15. No se asigna D = 1 a un control por describirlo.
 
-El apetito de riesgo del proyecto se fija por nivel de exposición, con una regla de acción por zona. Un riesgo crítico (E de 15 a 25) o con I = 5 se evita, se mitiga o se escala antes de su hito, con su control como paquete de la EDT, aunque su retorno en HH sea menor que 1; si el control falla, se cambia el diseño. Si su causa no admite un control previo, como la demanda real de la mesa (R8-22), se acepta activamente con la contingencia ya dimensionada y su disparador. Uno alto (8 a 14) se mitiga con un control de la EDT y revisión quincenal en el Comité de Proyecto. Uno moderado (4 a 7) se acepta activamente, con reserva y disparador. Uno bajo (1 a 3) se acepta pasivamente, con revisión mensual. La tolerancia es cero días de atraso en los hitos del Art. 17° y en el despacho de 05:30 a 07:00, y ningún riesgo que afecte un requisito obligatorio se acepta sin tratamiento. El umbral de escalamiento es cualquier riesgo crítico o con I = 5, o un consumo de la reserva de contingencia mayor que el previsto para el período en la Tabla 8.6.
+El apetito de riesgo del proyecto se fija por nivel de exposición, con una regla de acción por zona. Un riesgo crítico (E de 15 a 25) o con I = 5 se evita, se mitiga o se escala antes de su hito, con su control como paquete de la EDT, aunque su retorno en HH sea menor que 1; si el control falla, se cambia el diseño. Si su causa no admite un control previo, se acepta activamente con la contingencia ya dimensionada y su disparador. Uno alto (8 a 14) se mitiga con un control de la EDT y revisión quincenal en el Comité de Proyecto. Uno moderado (4 a 7) se acepta activamente, con reserva y disparador. Uno bajo (1 a 3) se acepta pasivamente, con revisión mensual. La tolerancia es cero días de atraso en los hitos del Art. 17° y en el despacho de 05:30 a 07:00, y ningún riesgo que afecte un requisito obligatorio se acepta sin tratamiento. El umbral de escalamiento es cualquier riesgo crítico o con I = 5, o un consumo de la reserva de contingencia mayor que el previsto para el período en la Tabla 8.6.
 
 Para el análisis cuantitativo, cada valor de P se calibra con un tramo de probabilidad y cada valor de I con la fracción del esfuerzo de los paquetes afectados que el evento agregaría como retrabajo o trabajo adicional. Los paquetes afectados son los que cada ficha del Anexo 8.A nombra en «Fuente y EDT», con sus HH del Formulario T-15. La calibración es un juicio del equipo, no una frecuencia medida, y se revisa con los datos del proyecto. La Tabla 8.3 fija los valores usados.
 
@@ -100,7 +100,7 @@ flowchart TD
 
 **Figura 8.1 — Estructura de desglose de riesgos (RBS). Fuente: elaboración propia a partir del Anexo 8.A.**
 
-La figura muestra que la solución concentra 13 de los 32 riesgos y 11 de los 22 de nivel crítico de la Tabla B.1, porque reúne la continuidad del despacho, la reserva de stock y la evidencia de frío. Los dos riesgos de seguridad (R8-07 y R8-24) pertenecen a la rama de la solución, porque sus fichas los originan en los portales, móviles, integraciones y trazas que la arquitectura expone. El desarrollo se concentra en la categoría de proyecto (dotación, capacidad protegida de la Etapa 1, certificación de cadenas y revisión del CLIENTE), y la implantación, en la organizacional (rotación, transportistas, sindicato y adopción de innovaciones).
+La figura muestra que la solución concentra 13 de los 32 riesgos y 11 de los 21 de nivel crítico de la Tabla B.1, porque reúne la continuidad del despacho, la reserva de stock y la evidencia de frío. Los dos riesgos de seguridad (R8-07 y R8-24) pertenecen a la rama de la solución, porque sus fichas los originan en los portales, móviles, integraciones y trazas que la arquitectura expone. El desarrollo se concentra en la categoría de proyecto (dotación, capacidad protegida de la Etapa 1, certificación de cadenas y revisión del CLIENTE), y la implantación, en la organizacional (rotación, transportistas, sindicato y adopción de innovaciones).
 
 Solución: integridad de stock/custodia, ERP/DTE, autonomía, capacidad, RPO, seguridad, obsolescencia y proveedores. Desarrollo: interfaces sin documentación, recursos, contrapartes, conocimiento de rutas, migración, certificación externa, certificación paralela a la revisión del CLIENTE y refuerzo subcontratado de calidad. Implantación: congelamientos, cuatro semanas completas, suministros, adopción, relevos y atención. Anexo 8.A desarrolla 32 amenazas; 8.F cubre las cinco innovaciones y una oportunidad de diagnóstico con INN-02. Las tres ramas permiten preparar los análisis separados exigidos por T-22.
 
@@ -130,9 +130,9 @@ No se suman puntuaciones como probabilidad del proyecto. Las relaciones importan
 
 El análisis combina exposición individual, registro conjunto y calendario con recursos (PMI, 2017, pp. 433–434). La Tabla B.3 permite seguir cada cifra hasta sus paquetes, meses, perfiles y controles. R8-11 abarca 162 paquetes con entregable de implementación, que suman 45.040,00 HH y se desglosan en la Tabla B.4. El esfuerzo recurrente cubre toda su ventana; la probabilidad no se convierte en una tasa mensual.
 
-Los valores esperados individuales suman 30.396,36 HH. Al contar una sola vez una misma corrección de capacidad o interfaz, el registro conjunto suma **29.647,18 HH** bajo independencia y **29.183,56 HH** en el escenario correlacionado. La contingencia adopta el mayor de los dos registros conjuntos. Es una necesidad de capacidad bajo los supuestos del análisis, no un consumo cierto ni una frecuencia medida. Dos riesgos concentran el 66,8 %: R8-22, la demanda de la mesa (11.699,40 HH), y R8-11, la productividad o dotación (8.107,20 HH).
+Los valores esperados individuales suman 20.948,16 HH. Al contar una sola vez una misma corrección de capacidad o interfaz, el registro conjunto suma **20.198,98 HH** bajo independencia y **19.735,36 HH** en el escenario correlacionado. La contingencia adopta el mayor de los dos registros conjuntos. Es una necesidad de capacidad bajo los supuestos del análisis, no un consumo cierto ni una frecuencia medida. Dos riesgos concentran el 54,8 %: R8-11, la productividad o dotación (8.107,20 HH), y R8-18, la marcha blanca (2.956,80 HH). El tercer agente de la mesa forma parte de la dotación base del T-15 desde el mes 25 (8.1.2); R8-22 cubre la demanda que supere la dotación de cada período.
 
-La simulación de Monte Carlo ejecuta 5.000 iteraciones sobre las 564 actividades del Formulario T-15, con duraciones PERT por paquete, la ocurrencia de cada riesgo y una nueva nivelación diaria por rol en cada iteración. Conserva las fechas contractuales y las precedencias del Anexo 7.B. Para cada hito mide la fecha en que se entrega el paquete que lo gatilla y la compara con su fecha límite: el último día hábil del mes del hito menos los diez días hábiles de revisión del CLIENTE (BA Art. 18.3). La Tabla 8.5 resume el escenario independiente; el Anexo 8.C agrega el escenario correlacionado, los intervalos de confianza, la sensibilidad y la preparación de las marchas blancas.
+La simulación de Monte Carlo ejecuta 5.000 iteraciones sobre los paquetes con entregable del Formulario T-15 y sus actividades de plantilla, con duraciones PERT por paquete, la ocurrencia de cada riesgo y una nueva nivelación diaria por rol en cada iteración. Conserva las fechas contractuales y las precedencias del Anexo 7.B. Para cada hito mide la fecha en que se entrega el paquete que lo gatilla y la compara con su fecha límite: el último día hábil del mes del hito menos los diez días hábiles de revisión del CLIENTE (BA Art. 18.3). La Tabla 8.5 resume el escenario independiente; el Anexo 8.C agrega el escenario correlacionado, los intervalos de confianza, la sensibilidad y la preparación de las marchas blancas.
 
 **Tabla 8.5 — Entrega por hito con recursos y riesgos. Fuente: Anexo 8.C, Tabla C.3.**
 
@@ -141,17 +141,17 @@ La simulación de Monte Carlo ejecuta 5.000 iteraciones sobre las 564 actividade
 | H1 | 17-03-2027 | 10-03-2027 | 11-03-2027 | 100,0 % |
 | H2 | 17-05-2027 | 05-05-2027 | 10-05-2027 | 97,4 % |
 | H3 | 16-07-2027 | 07-07-2027 | 13-07-2027 | 88,3 % |
-| H4 | 16-11-2027 | 29-10-2027 | 05-11-2027 | 99,9 % |
-| H5 | 17-01-2028 | 24-12-2027 | 04-01-2028 | 97,8 % |
+| H4 | 16-11-2027 | 05-11-2027 | 15-11-2027 | 86,5 % |
+| H5 | 17-01-2028 | 31-12-2027 | 13-01-2028 | 88,8 % |
 | H8 | 17-03-2028 | 16-03-2028 | 16-03-2028 | 91,1 % |
 | H9 | 16-06-2028 | 24-05-2028 | 29-05-2028 | 100,0 % |
 | H10 | 17-07-2028 | 27-06-2028 | 29-06-2028 | 100,0 % |
 
-La fecha P80 de todos los hitos queda antes de su límite. El hito más expuesto es el H3 (88,3 %), por el suministro de la sala y los racks (R8-19): sin ese riesgo llega al 100 %. Le sigue el H8 (91,1 %), cuya aprobación de diseño tiene cuatro días hábiles de reserva. Las ocho entregas se cumplen juntas en el 78,0 % de las iteraciones; ese valor exige que ningún hito se atrase en la misma iteración y por eso es menor que el de cada hito. La sensibilidad del Anexo 8.C muestra que R8-11 es el riesgo que más pesa en el plazo: sin él, todos los hitos llegan al 100 %. Por eso su control (1.3.4) se revisa cada semana contra la reserva de cada hito.
+La fecha P80 de todos los hitos queda antes de su límite. El hito más expuesto es el H4 (86,5 %), porque su prueba de integración 3.8.1 exige terminar antes todas las integraciones externas de la Etapa 1 (3.6.1 a 3.6.4); le siguen el H3 (88,3 %), por el suministro de la sala y los racks (R8-19), y el H5 (88,8 %). Las ocho entregas se cumplen juntas en el 67,6 % de las iteraciones; ese valor exige que ningún hito se atrase en la misma iteración y por eso es menor que el de cada hito. La sensibilidad del Anexo 8.C muestra que R8-11 es el riesgo que más pesa en el plazo: sin él, todos los hitos llegan al 100 %. Por eso su control (1.3.4) se revisa cada semana contra la reserva de cada hito.
 
 La preparación del H6 (prerrequisitos D-25 a tiempo para el acta del mes 13) se cumple en el 96,5 % de las iteraciones y la del H11 en el 100 % (Tabla C.6). Una fecha fija no elimina la incertidumbre de la marcha blanca: las seis condiciones del Art. 17.3 se miden durante sus cuatro semanas finales, y su riesgo de no cumplirse es R8-18, que tiene su propia contingencia.
 
-El T-15 conserva 202.774 HH de línea base, incluidas 9.336 HH de soporte puente y 3.072 HH de capacidad protegida E1. Las 9.336 HH forman parte de las 16.664 HH del período 16–20 del SD7. Las reservas de contingencia y de gestión se reflejan en el T-15, sección 4.5, por período y con la capacidad que las cubre.
+El T-15 programa 216.935 HH de línea base, incluidas 9.336 HH de soporte puente, 3.072 HH de capacidad protegida E1 y el tercer agente de la mesa desde el mes 25 (14.161 HH). La construcción de la Etapa 1 usa como máximo 40 de los 48 desarrolladores de la división, escalonada entre junio y octubre de 2027. Las 9.336 HH forman parte de las 16.664 HH del período 16–20 del SD7. Las reservas de contingencia y de gestión se reflejan en el T-15, sección 4.5, por período y con la capacidad que las cubre.
 
 ## 8.3 Plan de Acción a Riesgos
 
@@ -159,15 +159,15 @@ Esta sección fija las respuestas a los riesgos analizados, las reservas que las
 
 ### 8.3.1 Respuestas y costo-beneficio técnico
 
-Cada ficha del Anexo 8.A define estrategia, responsable temporal, disparador, plazo, mitigación, contingencia, residual hipotético, riesgo secundario y evidencia. Se mitigan 29 amenazas, incluida R8-14; R8-12 y R8-17 se escalan, y R8-22 se acepta activamente con medición y escalamiento. La subcontratación no traslada la obligación final de LafroX.
+Cada ficha del Anexo 8.A define estrategia, responsable temporal, disparador, plazo, mitigación, contingencia, residual hipotético, riesgo secundario y evidencia. Se mitigan 29 amenazas, incluida R8-14; R8-12 y R8-17 se escalan, y R8-22 se acepta activamente con medición y recálculo de la dotación de la mesa. La subcontratación no traslada la obligación final de LafroX.
 
 La Tabla C.5 compara las 32 respuestas en HH (PMI, 2017, pp. 442–443). Los 35 paquetes de control únicos suman 6.768,00 HH ya programadas. Su costo se cuenta una vez, aunque un control proteja varios riesgos; los retornos individuales no se suman. Se descarta toda alternativa que incumpla sanidad, despacho, integridad de datos o una función obligatoria.
 
-Si la probabilidad disminuyera un nivel, el registro conjunto residual sería 23.503,37 HH, frente a las 29.647,18 HH iniciales. Esta hipótesis no acredita eficacia ni permite liberar automáticamente la diferencia de 6.143,81 HH. CAL comprueba resultados y JP solicita cambios con evidencia, remanente y ventana de uso. La certificación paralela origina R8-31; el refuerzo de calidad, R8-32; la captura de trazas, R8-24; y la separación de equipos mantiene presión sobre R8-11.
+Si la probabilidad disminuyera un nivel, el registro conjunto residual sería 14.055,17 HH, frente a las 20.198,98 HH iniciales. Esta hipótesis no acredita eficacia ni permite liberar automáticamente la diferencia de 6.143,81 HH. CAL comprueba resultados y JP solicita cambios con evidencia, remanente y ventana de uso. La certificación paralela origina R8-31; el refuerzo de calidad, R8-32; la captura de trazas, R8-24; y la separación de equipos mantiene presión sobre R8-11.
 
 ### 8.3.2 Reservas y cronograma
 
-La reserva de contingencia cubre los riesgos identificados: **29.647,18 HH**, el 15,57 % de las 190.366 HH base de los paquetes. La capacidad protegida E1 sólo se descuenta cuando coinciden los meses 13–20, la Etapa 1 y los perfiles DES/CAL; los paquetes de R8-02 y R8-04 terminan antes del mes 13 y los de R8-14 son trabajo de la Etapa 2, de modo que no se descuenta nada y las 3.072 HH quedan protegidas para correcciones futuras de la Etapa 1, sin prestarse a la Etapa 2.
+La reserva de contingencia cubre los riesgos identificados: **20.198,98 HH**, el 9,88 % de las 204.527 HH base de los paquetes. R8-11 y R8-18 concentran el 54,8 % de ella. La capacidad protegida E1 sólo se descuenta cuando coinciden los meses 13–20, la Etapa 1 y los perfiles DES/CAL; los paquetes de R8-02 y R8-04 terminan antes del mes 13 y los de R8-14 son trabajo de la Etapa 2, de modo que no se descuenta nada y las 3.072 HH quedan protegidas para correcciones futuras de la Etapa 1, sin prestarse a la Etapa 2.
 
 La Tabla 8.6 resume la contingencia por período; la Tabla D.2 la detalla por mes y perfil. El T-15, sección 4.5, la refleja en el plan: compara, período a período, el peak de personas equivalentes adicionales con la dotación. Toda la contingencia cabe en la dotación declarada, salvo implantación en los meses 15 y 20, donde la extensión de la marcha blanca (R8-18) se cubre con la opción de hasta 8 personas adicionales del contrato de implantación (E8-14).
 
@@ -175,13 +175,13 @@ La Tabla 8.6 resume la contingencia por período; la Tabla D.2 la detalla por me
 
 | Período | HH de contingencia |
 | --- | --- |
-| Meses 1–6 | 5.149,18 |
-| Meses 7–12 | 5.104,75 |
-| Meses 13–15 | 4.056,58 |
-| Meses 16–21 | 4.503,76 |
-| Meses 22–33 | 3.720,39 |
-| Meses 34–56 | 7.112,52 |
-| Total | 29.647,18 |
+| Meses 1–6 | 5.000,78 |
+| Meses 7–12 | 5.253,15 |
+| Meses 13–15 | 3.230,04 |
+| Meses 16–21 | 2.995,70 |
+| Meses 22–33 | 1.278,99 |
+| Meses 34–56 | 2.440,32 |
+| Total | 20.198,98 |
 
 La distribución mantiene reserva hasta el mes 56. Cada cargo identifica evento, paquete, etapa, perfil, mes, HH y evidencia para impedir el doble consumo. Sólo una misma corrección comparte cargo; el residual hipotético no se libera sin cierre y autorización.
 

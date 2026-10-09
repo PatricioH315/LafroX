@@ -2518,7 +2518,7 @@ La Tabla [33](LAFROX-Subdocumento4.md#tab:t72) reúne cada dimensión con el nom
 | 12 | Ancho de banda requerido por sitio, en régimen y en peak | 3,29 / 0,71 / 0,06 Mbps cargados | 5,16 / 2,14 / 0,41 Mbps peor caso | Anexo 4-W, sección 4-W.5 |
 | 13 | Volumen de datos generado por un dispositivo de reparto en un turno completo sin señal | 5,36 MB promedio | 9,83 MB, ruta de 34 clientes | Anexo 4-W, sección 4-W.6 |
 | 14 | Tiempo de sincronización de la flota al regresar al centro de distribución | 10 min por dispositivo | 10 min después del último camión | Anexo 4-W, sección 4-W.6 |
-| 15 | Contactos mensuales a la mesa de ayuda | 2.000 contactos/mes | 2.000 contactos/mes en el escenario conservador; 7 agentes en la hora cargada y 2 en las demás cubren hasta 2.283 | Anexo 4-W, sección 4-W.7 |
+| 15 | Contactos mensuales a la mesa de ayuda | 2.000 contactos/mes | 2.000 contactos/mes en el escenario conservador; 7 agentes en la hora cargada y 2 en las demás cubren hasta 2.283; desde el mes 25, con 3 en las demás, cubren hasta 2.391 | Anexo 4-W, sección 4-W.7 |
 | 16 | Dotación de la mesa de ayuda y del equipo de operación | Son 15 personas a 42 h y 17 desde el 26-04-2028 a 40 h. | Son 17 personas en septiembre y diciembre a 42 h y 19 desde el 26-04-2028 a 40 h. | Anexo 4-W, sección 4-W.7 |
 
 Fuente: elaboración propia.

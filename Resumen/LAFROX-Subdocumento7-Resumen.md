@@ -18,7 +18,7 @@ Cada paquete tiene un entregable, criterio de aceptación, responsable y períod
 
 El esfuerzo usa estimación **PERT**, con escenarios optimista, probable y pesimista. Se organizan **ocho frentes**, y los meses 13–15 y 19–20 necesitan equipos simultáneos: atender E1 no debe consumir la capacidad asignada a E2.
 
-La [base de recursos](../07_PlanDeTrabajo_EDT_Cronograma_Implantaci%C3%B3n/LAFROX-Subdocumento7.md#738-base-de-planificaci%C3%B3n-y-recursos) programa **202.774 HH** —horas hombre—: **190.366** de trabajo base, **9.336** de soporte puente E1 y **3.072** de correcciones protegidas. El máximo de la curva es **69 personas equivalentes en mes 15**. El total incluye **114.213 HH de Operación**; no representa únicamente construcción de software. Una equivalencia mensual no demuestra disponibilidad de personas con la competencia requerida cada día.
+La [base de recursos](../07_PlanDeTrabajo_EDT_Cronograma_Implantaci%C3%B3n/LAFROX-Subdocumento7.md#738-base-de-planificaci%C3%B3n-y-recursos) programa **216.935 HH** —horas hombre—: **204.527** de trabajo base, **9.336** de soporte puente E1 y **3.072** de correcciones protegidas. El máximo de la curva es **68 personas equivalentes en mes 15**, con hasta 40 desarrolladores simultáneos en la construcción E1. El total incluye **128.374 HH de Operación**, con el tercer agente de la mesa desde el mes 25; no representa únicamente construcción de software. Una equivalencia mensual no demuestra disponibilidad de personas con la competencia requerida cada día.
 
 ## Calendario e implantación
 
@@ -28,7 +28,7 @@ El contrato tiene **56 meses**. E1 pasa a producción en **mes 16** y E2 en **me
 
 ## Dónde consultar y qué no está confirmado
 
-T-15 descompone **163 paquetes con entregable en 564 actividades** y trata **59 paquetes continuos** por ocurrencia o quincena. T-18 desarrolla olas, reversión y transferencia; los anexos relacionan calendario, dependencias, aceptación, innovación y riesgos.
+T-15 programa **163 paquetes con entregable**, con actividades hasta el H2 y planificación gradual después, y trata **59 paquetes continuos** por ocurrencia o quincena. T-18 desarrolla olas, reversión y transferencia; los anexos relacionan calendario, dependencias, aceptación, innovación y riesgos.
 
 El cuerpo menciona doce resultados verificados en E1 mientras Anexo 7.C/T-18 detallan catorce con verificaciones en esa marcha blanca. Son diferencias internas que se señalan sin reconciliarlas. Los tamaños, equipos, fecha de inicio y pruebas deben validarse antes de tratar el plan como una ejecución acreditada.
 
