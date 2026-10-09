@@ -1,5 +1,15 @@
 # CONTEXTO DE SESIÓN
 
+## Estado vigente — 8 de octubre de 2026: nueva revisión integral del SD8
+
+Por petición del usuario se volvió a aplicar `Revision/prompt_revision_comision_informe2.md` al SD8, Anexos 8.A–8.F y T-16, contrastando las cuatro Bases y los entregables vigentes SD1–SD7 y SD13. Se reemplazó íntegramente `Revision/revision_comision_informe2_SD8.md`; su revisión anterior y nota posterior ya no representan el estado actual. La revisión general conserva carácter histórico para S8.
+
+- Puntaje del prompt: 0/100 en el ítem 8 (10 % del Informe 2), por 15 filas de revisión humana pendientes: 7 cuerpo, 7 anexos y 1 T-16. No se inventó revisión humana. Diagnóstico de contenido sin §7.1: 40/100, sin efecto en el puntaje.
+- Se retiraron hallazgos ya corregidos: RBS ahora Mermaid, apetito, Concepción/peak septiembre, costo-beneficio de 22 críticos, plazos H7/H12, H9 89,9 %, compra/sala, citas y suspensión láctea.
+- Se registraron 16 hallazgos identificados H01–H16, con evidencia y acciones: revisión humana; relevo DAT/IMP después del mes 21; horizonte R8-11; simulación sin nueva nivelación, correlación y evidencia reproducible; sensibilidad y exclusión de marchas blancas; contingencia adicional sin curva en T-15; elegibilidad temporal de capacidad protegida; año de impacto para horizontes largos; residual uniforme/estrategia evitar; gestión sin magnitud; costo-beneficio de diez altos; demanda de mesa y base 22.640 HH de R8-11.
+- Verificación: 32 fichas/FMEA/T-16 coherentes en P/I/D y productos; 222 paquetes T-15 suman 190.366 HH; VE exacto 15.075,84, residual hipotético 10.802,56 y contingencia adicional declarada 13.223,04 HH. No se ejecutó Monte Carlo ni se acreditaron probabilidades, ensayos o contratos.
+- Se comprobó conservación de las huellas SHA-256 de los 26 entregables originales. Sólo se modificaron el informe de revisión y este contexto, ambos Markdown. No se modificó la planilla, el prompt ni las Bases; sin commit ni publicación. Controles exclusivos de PDF pendientes.
+
 ## Estado vigente — 8 de octubre de 2026 (noche): coherencia entre subdocumentos aplicada
 
 Decisiones del usuario aplicadas a los Markdown de `rama-md` (sin commit):
