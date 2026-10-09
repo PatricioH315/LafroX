@@ -1,0 +1,14 @@
+# Restos de compilación LaTeX
+*.aux
+*.lof
+*.log
+*.lot
+*.toc
+*.out
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.xdv
+
+# PDF compilados y carpeta de entrega
+entrega/
