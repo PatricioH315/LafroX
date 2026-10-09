@@ -118,6 +118,7 @@ El CLIENTE compra solo el equipamiento de terreno conforme a la especificación 
 | Acta con el sindicato | Terminales, GPS y cámaras | CLIENTE y sindicato (5.4.2) / Implantación | Antes del H6 | 4.2.1; Acta firmada |
 | Custodia de fuentes | Continuidad ante insolvencia o incumplimiento | LafroX (5.4.4) / Jefe de proyecto | Antes del H4 | 9.2; Contrato y primer depósito |
 | Evaluadores de pruebas subcontratados | Refuerzo de calidad durante las certificaciones, hasta 16 personas por día | LafroX / Líder de Calidad | Meses 9 a 12 y 16 a 18 | 3.8.2 a 3.8.8 y 3.9.2 a 3.9.7; Contrato con perfiles y disponibilidad por quincena |
+| Personal de implantación para las marchas blancas | Acompañamiento en turno y en calle, con opción de hasta 8 personas adicionales por cuatro semanas, activable con cinco días hábiles de aviso, para extender una marcha blanca (SD8, R8-18) | LafroX / Líder de Implantación | Firma antes del mes 11; meses 13 a 20 | 4.2.1, 4.2.2, 4.3.1 y 4.3.2; contrato con la opción y su plazo de activación |
 | Servicio SOC 24×7, si se subcontrata | Monitoreo de seguridad desde el mes 13 | LafroX (8.1.5; RT-11.17) / Encargado de Seguridad | Mes 13 | 8.1.5; Contrato con cobertura y niveles de servicio |
 
 Cada fila tiene en el registro de adquisiciones su estado, su proveedor y su fecha comprometida. Un atraso que amenace el H3 o una ola se escala al Comité Ejecutivo con su análisis de impacto.
@@ -184,6 +185,8 @@ RUP se organiza en las siguientes fases:
 Las iteraciones producen resultados verificables, pero no implican una puesta en producción o una marcha blanca. La marcha blanca y la aceptación formal se realizan en los momentos definidos para cada etapa contractual. Los casos de uso expresan y siguen los requisitos funcionales, y la matriz del Formulario T-12 los vincula con su prueba.
 
 La secuencia de iteraciones se coordina con las dos etapas contractuales. La Etapa 1 comprende preventa, recepción, bodega, preparación y cross-docking, reposición de compras, trazabilidad de lotes y de la cadena de frío, planificación de rutas, captura de la evidencia de entrega y del acuse de recibo de la guía de despacho que registra el ERP, manejo de efectivo y retiro sanitario de lotes. En la Etapa 2 se implementan los portales y el intercambio electrónico con los clientes y, luego, el costo de servir. La transición sigue el cronograma: marcha blanca de la Etapa 1 entre los meses 13 y 15 y paso a producción en el mes 16; marcha blanca de la Etapa 2 en los meses 19 y 20 y paso a producción en el mes 21.
+
+El cronograma usa planificación gradual, coherente con este proceso iterativo (PMI, 2017, p. 185). El Formulario T-15 fija los paquetes, sus fechas y sus dependencias para todo el contrato, pero detalla en actividades sólo el trabajo hasta el H2. Antes de cada fase (H2, H4, H8 y H9), el Líder de Desarrollo, con el Arquitecto y el Líder de Calidad, descompone los paquetes de la fase siguiente en iteraciones de dos semanas con objetivo y criterio de terminado (por ejemplo, «preventa sin conexión con reserva de stock»), y el Comité de Proyecto las aprueba sin mover hitos ni fechas límite. En la construcción de la Etapa 1, entre junio y octubre de 2027, trabajan como máximo 40 de los 48 desarrolladores de la división, en equipos escalonados por módulo.
 
 ### 6.2.1 Arquitectura evolutiva, refactorización y deuda técnica
 

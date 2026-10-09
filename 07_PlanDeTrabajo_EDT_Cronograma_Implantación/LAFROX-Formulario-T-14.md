@@ -1190,14 +1190,14 @@ La Tabla T14.21 presenta sus paquetes.
 | --- | --- | --- | --- | --- | --- |
 | 3.4.1 | Recepción de mercadería con captura de lote y vencimiento (M1 Recepción) | M1 en QA. | Los requerimientos del T-12 asignados al módulo pasan sus pruebas; además, ningún producto con trazabilidad obligatoria se recibe sin lote. | DES | H4. |
 | 3.4.2 | Inventario por ubicación y lote, con FEFO y conteo cíclico (M2 Inventario) | M2 en QA. | Los requerimientos del T-12 asignados al módulo pasan sus pruebas; además, cada diferencia de conteo queda con su causa. | DES | H4. |
-| 3.4.3 | Preparación de pedidos en el turno de noche y en la cámara de congelado (M5 Preparación) | M5 en QA. | Los requerimientos del T-12 asignados al módulo pasan sus pruebas; además, se opera con guantes en el terminal de congelado, y cada faltante queda con su causa. | DES | Meses 6 y 7; construye después de los contratos de 3.4.1/3.4.2 e integra después de su entrega (D-16). |
+| 3.4.3 | Preparación de pedidos en el turno de noche y en la cámara de congelado (M5 Preparación) | M5 en QA. | Los requerimientos del T-12 asignados al módulo pasan sus pruebas; además, se opera con guantes en el terminal de congelado, y cada faltante queda con su causa. | DES | Meses 5 a 7; construye después de los contratos de 3.4.1/3.4.2 e integra después de su entrega (D-16). |
 | 3.4.4 | Cadena de frío, retención de lotes y retiro sanitario (M9 Calidad y trazabilidad) | M9 en QA. | Los requerimientos del T-12 asignados al módulo pasan sus pruebas; además, un retiro simulado entrega la lista de clientes en menos de 2 horas. | DES | H4. |
 | 3.4.5 | Ingesta de temperatura y posición de la flota (M12 Telemetría) | M12 en QA. | Los requerimientos del T-12 asignados al módulo pasan sus pruebas; además, las series no tienen brechas sin registrar. | DES | H4. |
 | 3.4.6 | Aplicación móvil de preventa sin conexión, con stock y crédito (M3 Preventa) | M3 en QA. | Los requerimientos del T-12 asignados al módulo pasan sus pruebas; además, ningún pedido se pierde ni se duplica al recuperar la señal. | DES | H4. |
-| 3.4.7 | Planificación de rutas corregible por el planificador (M4 Rutas) | M4 en QA. | Los requerimientos del T-12 asignados al módulo pasan sus pruebas; además, la ruta se genera en menos de 20 minutos y don Hugo la valida. | DES | Mes 7; construye después de los contratos de 3.4.3 y 3.4.6 e integra después de su entrega (D-18); H4. |
-| 3.4.8 | Aplicación móvil de reparto con prueba de entrega digital (M6 Reparto) | M6 en QA. | Los requerimientos del T-12 asignados al módulo pasan sus pruebas; además, funciona sin señal, y la prueba de entrega llega al ERP el mismo día. | DES | Mes 7; construye después de los contratos de 3.4.3 y 3.4.6 e integra después de su entrega (D-18); H4. |
-| 3.4.9 | Devoluciones en terreno y control de envases (M8 Devoluciones y envases) | M8 en QA. | Los requerimientos del T-12 asignados al módulo pasan sus pruebas; además, cada devolución queda con su causa. | DES | Mes 8; H4. |
-| 3.4.10 | Cobro en ruta, rendición y conciliación (M7 Cobranza y rendición) | M7 en QA. | Los requerimientos del T-12 asignados al módulo pasan sus pruebas; además, cada cobro queda unido a su entrega. | DES | Mes 8; construye después de los contratos de 3.4.8 e integra después de su entrega (D-19); H4. |
+| 3.4.7 | Planificación de rutas corregible por el planificador (M4 Rutas) | M4 en QA. | Los requerimientos del T-12 asignados al módulo pasan sus pruebas; además, la ruta se genera en menos de 20 minutos y don Hugo la valida. | DES | Meses 5 a 7; construye después de los contratos de 3.4.3 y 3.4.6 e integra después de su entrega (D-18); H4. |
+| 3.4.8 | Aplicación móvil de reparto con prueba de entrega digital (M6 Reparto) | M6 en QA. | Los requerimientos del T-12 asignados al módulo pasan sus pruebas; además, funciona sin señal, y la prueba de entrega llega al ERP el mismo día. | DES | Meses 5 a 8; construye después de los contratos de 3.4.3 y 3.4.6 e integra después de su entrega (D-18); H4. |
+| 3.4.9 | Devoluciones en terreno y control de envases (M8 Devoluciones y envases) | M8 en QA. | Los requerimientos del T-12 asignados al módulo pasan sus pruebas; además, cada devolución queda con su causa. | DES | Meses 5 a 8; H4. |
+| 3.4.10 | Cobro en ruta, rendición y conciliación (M7 Cobranza y rendición) | M7 en QA. | Los requerimientos del T-12 asignados al módulo pasan sus pruebas; además, cada cobro queda unido a su entrega. | DES | Meses 5 a 8; construye después de los contratos de 3.4.8 e integra después de su entrega (D-19); H4. |
 | 3.4.11 | Indicadores operacionales y OTIF diario (M10 Analítica) | Indicadores publicados. | Los requerimientos del T-12 asignados al módulo pasan sus pruebas; además, operaciones reproduce el cálculo sobre una muestra. | DAT | Mes 8; H4. |
 
 #### Cuenta 3.5 — Módulos de la Etapa 2
@@ -1794,7 +1794,7 @@ Según la carta de la sección 3.1, la sala técnica y el borde de los sitios se
 
 ### 3.1 Carta Gantt por cuenta de control
 
-La carta siguiente reemplaza como fuente vigente a las figuras anteriores, que conservan la programación previa a la reconciliación de ventanas. Cada barra va desde el primer mes del primer paquete de la cuenta hasta el último mes del último paquete, según el cronograma por actividad del Formulario T-15 (secciones 4.2 y 6.1); los hitos se ubican al cierre de su mes, salvo H6 y H11, que marcan el inicio de una marcha blanca. El detalle por paquete, con sus 222 ventanas, está en esa misma sección, y la red con revisiones del CLIENTE y ruta crítica, en su sección 5. Las cuentas recurrentes (1.4, 1.8, 1.9, 7.1 y 8) se muestran como barras continuas, aunque su trabajo se ejecute con la frecuencia que fija este diccionario.
+La carta siguiente reemplaza como fuente vigente a las figuras anteriores, que conservan la programación previa a la reconciliación de ventanas. Cada barra va desde el primer mes del primer paquete de la cuenta hasta el último mes del último paquete, según la programación por paquete del Formulario T-15 (secciones 4.2 y 6.1); los hitos se ubican al cierre de su mes, salvo H6 y H11, que marcan el inicio de una marcha blanca. El detalle por paquete, con sus 222 ventanas, está en esa misma sección, y la red con revisiones del CLIENTE y ruta crítica, en su sección 5. Las cuentas recurrentes (1.4, 1.8, 1.9, 7.1 y 8) se muestran como barras continuas, aunque su trabajo se ejecute con la frecuencia que fija este diccionario.
 
 ```mermaid
 gantt
@@ -1828,14 +1828,14 @@ gantt
     2.1 Arquitectura de la solución (meses 2–13) : 2027-03-01, 2028-02-29
     2.2 Diseño de la seguridad (meses 2–10) : 2027-03-01, 2027-11-30
     2.3 Diseño de la sala técnica y de los racks (meses 1–2) : 2027-02-01, 2027-03-31
-    2.4 Validación de diseños (meses 4–14) : 2027-05-01, 2028-03-31
+    2.4 Validación de diseños (meses 3–14) : 2027-04-01, 2028-03-31
     2.5 Continuidad del negocio (meses 3–3) : 2027-04-01, 2027-04-30
     2.6 Experiencia de usuario (meses 2–4) : 2027-03-01, 2027-05-31
     section Fase 3 Construcción
     3.1 Ambientes y cadena de desarrollo (meses 4–5) : 2027-05-01, 2027-06-30
     3.2 Servicios de nube de la plataforma (meses 4–5) : 2027-05-01, 2027-06-30
     3.3 Base compartida (meses 5–7) : 2027-06-01, 2027-08-31
-    3.4 Módulos de la Etapa 1 (meses 6–8) : 2027-07-01, 2027-09-30
+    3.4 Módulos de la Etapa 1 (meses 5–8) : 2027-06-01, 2027-09-30
     3.5 Módulos de la Etapa 2 (meses 15–15) : 2028-04-01, 2028-04-30
     3.6 Integraciones externas (meses 7–19) : 2027-08-01, 2028-08-31
     3.7 Migración de datos (meses 7–12) : 2027-08-01, 2028-01-31

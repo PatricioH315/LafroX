@@ -1,5 +1,33 @@
 # CONTEXTO DE SESIÓN
 
+## Estado vigente — 9 de octubre de 2026: planilla de la carta Gantt actualizada
+
+`07_.../Diagramas/LafroX-Carta-Gantt-SD7.xlsx` regenerada desde el T-15 vigente (respaldo previo en el scratchpad): 222 paquetes y 49 cuentas con meses y HH actuales (204.527 HH), hitos con entregas, probabilidades y P80 del SD8 vigente (H4 86,5 %), hoja «Actividades» renombrada a «Actividades hasta H2» con las 108 actividades de la Tabla 6.1b, 8.1.2 = 54.239 HH, Léeme y Glosario actualizados (planificación gradual, 40 desarrolladores, 216.935 HH). Fórmulas y formato condicional conservados; Excel recalcula al abrir. Sin commit.
+
+## Estado vigente — 9 de octubre de 2026: hallazgos P1–P7 de la sexta revisión corregidos
+
+- P1: 3.6.1–3.6.4 (integraciones externas E1) son predecesoras de 3.8.1 (D-20 ampliada en el Anexo 7.B y nodo nuevo en Fig_7-5); terminan entre el 02-08 y el 01-09-2027; ventanas 6–7 y 7–8. H4 se entrega el 20-10-2027, pero con riesgos baja a 86,5 % (P80 15-11-2027) y H5 a 88,8 % (P80 13-01-2028); ocho juntas 67,6 %.
+- P3: el tercer agente de la mesa pasa al mes 25 (14.161 HH); 8.1.2 = 54.239; base 204.527; total 216.935; operación 128.373,67. SD4 4-W.7 y tabla 15 actualizados.
+- P4: R8-22 P4 I3 E12 NPR36, VE 2.251,20; contingencia 20.198,98 (9,88 %), residual 14.055,17, capacidad movilizable 238.733,98.
+- P2/P6/P7: Tabla 6.1 con «Personas (prom. / máx.)», predecesoras agrupadas por cuenta y nota sobre el análisis adelantado de los módulos.
+- Propagado a T-15, SD8, T-16, SD7, Anexo 7.B, SD4 y resúmenes; Fig_T14-2 (barra 3.6 m6–19). El modelo de `compct/` reproduce desde el repositorio. Sin commit.
+
+## Estado vigente — 9 de octubre de 2026: cronograma por paquetes, 40 desarrolladores y mesa en la base
+
+Plan aprobado (`~/.claude/plans/planifica-los-arreglos-diagrmas-compressed-blum.md`) ejecutado. Decisiones: Gantt por paquetes con planificación gradual; R8-22 al plan base; tope de desarrollo 40 (con 30–36 el H4 caía a 50–70 %, se consultó y el usuario eligió 40).
+- T-15: §6.1 = Tabla 6.1 de 163 paquetes + Tabla 6.1b (108 actividades de 56 paquetes hasta el H2) + Figura T15.3; las 564 actividades quedan como respaldo en `compct/T15_actividades_internas.md`. Módulos E1 desde el 10-06-2027 (3.3.1/3.3.5/3.3.6 desde el 01-06), nivelados con 40 DES; ventanas 4.2 actualizadas; tabla de clases de tamaño en §4.1; 8.1.2 = 56.024 HH (tercer agente desde el mes 21, 15.946 HH); base 206.312, programación 218.720, operación 130.158,67; peak 68 (mes 15), DES 29 equivalentes (mes 7); §4.5 con contingencia 19.448,58 y total movilizable 239.768,58; Tabla 5.2 (H4 99,6 %, H5 97,8 %).
+- SD8/T-16: R8-22 «Demanda de la mesa supera la dotación base», P3 I3 E9, cota 4 h × L–S meses 21–56 = 3.752 HH, VE 1.500,80; registro conjunto 19.448,58 (9,43 %), individual 20.197,76, correlacionado 18.984,96, residual 13.304,77; ocho entregas juntas 77,84 %; 21 críticos. Modelo en `compct/modelo_montecarlo_SD8.md` (DES 40, lee el respaldo interno) reproduce las tablas.
+- SD7 (7.2, Tabla 7.4, 7.3.1, 7.3.8), Anexo 7.F, T-14 (Gantt mermaid y diccionario 3.4.x), SD6 6.2 (planificación gradual e iteraciones), SD4 4-W.7 y tabla 15 (tercer agente desde el mes 21: 9 personas, límite 2.391), resúmenes T-15/SD7/SD8.
+- Diagramas: Fig_7-7 (barra 3.4), Fig_T14-2 (barras 3.4 y 3.6), Fig_7-8 (nota de planificación gradual), nueva Fig_T15-3_Planificacion_Gradual.drawio. Sin commit. Pendiente: revisión humana y revisión visual en draw.io.
+
+## Estado vigente — 9 de octubre de 2026: quinta revisión del SD8 (Bases, clases y EDT)
+
+EDT_Puelche.drawio = Figuras 7.1–7.3; contiene los 222 paquetes del T-15 y no requiere cambios. Corregidas contradicciones residuales: Anexo 7.F (P7-02 «4 a 35»; política de reservas H2 12, H8 4, H10 25), frase de versión en T-15 5.2, fila de contrato de implantación con opción de 8 personas en SD6 Tabla 6.3, revisión anticipada del H1/H8 en T-15 5.5 y R8-12 (H8: semana del 6-03-2028, control principal). Puntaje 0 por revisión humana; contenido 80. Contraste con FEP04/PMBOK conforme; sugerencia: justificar en 8.3.2 la contingencia de 15,6 % frente al 8 % del ejemplo del curso. Sin commit.
+
+## Estado vigente — 9 de octubre de 2026: diagramas draw.io del SD7 actualizados
+
+El usuario subió `07_.../Diagramas/*.drawio` (7 archivos). Editados: Fig_7-7_T15-1 (barras 1.2.5·2.1.4 y 2.4.2, reserva H8 4 días y 91,1 %, H9 100 %, barra 3.9.2–3.9.7 hasta 12-06-2028, reserva H10 25 días, leyenda D-29 a D-31c), Fig_7-5 (2.4 elaboración m3 y acta m4; D-31c), Fig_T14-2 (barra 2.4 desde 19-04-2027 a 13-03-2028, m3–14; barra 3.9 hasta 12-06-2028). Sin cambios necesarios: Fig_7-4, Fig_7-6_T15-2, Fig_7-8_T14-1, Fig_T14-3. Faltan en la carpeta (no afectados por los cambios del SD8): Figuras 7.1–7.3 (EDT; existe EDT_Puelche.drawio), 7.9–7.12. Sin commit.
+
 ## Estado vigente — 9 de octubre de 2026: cuarta revisión de la Comisión del SD8
 
 Puntaje 0 sólo por las 18 celdas `[[REVISIÓN HUMANA]]`; contenido 80/100. Pendientes: (1) firmas reales; (2) H8: con observación formal, entrega 13-03-2028 + 10 días de revisión + 5 de subsanación = 03-04-2028, mes 15; declarar la revisión anticipada del borrador (semana del 6-03-2028) como control principal; (3) opción de 8 personas del contrato de implantación ausente en SD6 6.1.3; (4) revisión anticipada H1/H8 ausente en T-15 5.5. Sin commit.

@@ -1,6 +1,6 @@
 # Modelo de Monte Carlo del SD8 (nota de trabajo, no entregable)
 
-Código usado para las Tablas B.2, C.3, C.4, C.6 y D.2 del SD8. Se ejecuta con: python -I modelo.py <carpeta LafroX> 5000 > salida.json. Requiere Python 3.12 y NumPy. Lee T-15, SD7, Anexo 7.B y la Tabla B.1 del Anexo 8.B.
+Código usado para las Tablas B.2, C.3, C.4, C.6 y D.2 del SD8. Ejecutar: python -I modelo.py <carpeta LafroX> 5000 > salida.json. Requiere Python 3.12 y NumPy. Lee el T-15, compct/T15_actividades_internas.md (respaldo de la nivelación), el SD7, el Anexo 7.B y la Tabla B.1 del Anexo 8.B.
 
 ~~~python
 import sys, re, json, hashlib, calendar, math, time
@@ -27,7 +27,7 @@ for c in pr:
     if re.fullmatch(r'\d+(?:\.\d+)+',c[0]):
         a,b=map(int,c[3].split('–'))
         pkg[c[0]]={'id':c[0],'class':c[1],'role':c[2],'a':a,'b':b,'hh':float(c[7])}
-ar=rows(t.split('### 6.1 Paquetes')[1].split('### 6.2')[0])
+ar=rows(read(ROOT/'compct'/'T15_actividades_internas.md').split('### 6.1 Paquetes')[1].split('### 6.2')[0])
 acts=[]
 for c in ar:
     if re.fullmatch(r'\d+(?:\.\d+)+\.A\d+',c[0]):
@@ -36,7 +36,7 @@ for c in ar:
                      'people':int(c[3]),'hh':float(c[4]),'start':c[5],
                      'end':c[6],'days':int(c[7]),'dep':dep})
 assert len(pkg)==222 and len(acts)==564
-assert abs(sum(p['hh'] for p in pkg.values())-190366)<1e-6
+assert abs(sum(p['hh'] for p in pkg.values())-204527)<1e-6
 ap={a['pkg'] for a in acts}
 assert len(ap)==163
 for k in ap: assert abs(sum(a['hh'] for a in acts if a['pkg']==k)-pkg[k]['hh'])<1e-6
@@ -74,7 +74,7 @@ for k,p in pkg.items():
             for m in ms:
                 d=monthdate(m); nd=calendar.monthrange(d.year,d.month)[1]
                 ls=sum(date(d.year,d.month,j).weekday()<6 for j in range(1,nd+1))
-                su=nd-ls; weights.append(ls*41+(ls*6+su*24 if d.month in (9,12) else 0))
+                su=nd-ls; weights.append((ls*58 if m>=25 else ls*41)+(ls*6+su*24 if d.month in (9,12) else 0))
             weights=np.array(weights,float)
         for m,w in zip(ms,weights/np.sum(weights)):
             v[m-1,ri]+=p['hh']*w
@@ -116,9 +116,9 @@ for i,mp in enumerate(MAP):
     X[i]=sum((pm[k] for k in ks),np.zeros((56,8)))*frac[i]
 X[17]=0; X[17,14,7]=2464; X[17,19,7]=2464
 X[21]=0
-for m in range(13,57):
+for m in range(21,57):
     d=monthdate(m); nd=calendar.monthrange(d.year,d.month)[1]
-    X[21,m-1,6]=17*sum(date(d.year,d.month,j).weekday()<6 for j in range(1,nd+1))
+    X[21,m-1,6]=4*sum(date(d.year,d.month,j).weekday()<6 for j in range(1,nd+1))
 # Una correccion por paquete/perfil. Los dos grupos comparten efecto de capacidad o interfaz.
 GROUPS=[[10,13,31],[9,14]]
 def cost_expected(ps,correlated=False):
@@ -153,7 +153,7 @@ absorbed=np.minimum(eligible,mask).sum()
 RR=['JP','ARQ+DAT','SEG','DES','CAL','SRE','IMP']
 ri=[0,1,2,1,3,4,5,6]
 rmap=dict(zip(ROLES,ri))
-CAP=np.tile(np.array([5.,15,7,48,10,44,30])[:,None],(1,H))
+CAP=np.tile(np.array([5.,15,7,40,10,44,30])[:,None],(1,H))
 cert=((MONTH>=9)&(MONTH<=12))|((MONTH>=16)&(MONTH<=18))
 CAP[4,cert]=16 # capacidad TOTAL durante certificacion, lectura conservadora de T-15.
 BG=np.zeros_like(CAP)

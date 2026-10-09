@@ -15,9 +15,9 @@ Las secciones 1–3 explican estimación **PERT**, programación, ruta crítica 
 ## Cifras clave
 
 - **222 paquetes**: 163 con entregable y 59 de esfuerzo continuo.
-- **564 actividades** para paquetes con entregable, de **8 a 80 HH** y duración máxima de una quincena de reporte.
-- **202.774 HH** programadas: **190.366** base, **9.336** de soporte puente y **3.072** protegidas para correcciones E1.
-- Máximo mensual: **69 personas equivalentes en mes 15**.
+- **163 paquetes con entregable** con fecha; actividades de **8 a 80 HH** y una quincena como máximo, detalladas hasta el H2 y luego por planificación gradual de reporte.
+- **216.935 HH** programadas: **204.527** base (incluye el tercer agente de la mesa desde el mes 25), **9.336** de soporte puente y **3.072** protegidas para correcciones E1.
+- Máximo mensual: **68 personas equivalentes en mes 15**; hasta **40 desarrolladores** simultáneos en la construcción E1.
 
 No se suma nuevamente la reserva ni se agregan máximos de etapas que ocurren en momentos distintos. Los servicios continuos se controlan por ocurrencia, relevo o quincena; no se simulan como un entregable único.
 
@@ -25,7 +25,7 @@ No se suma nuevamente la reserva ni se agregan máximos de etapas que ocurren en
 
 La red usa **febrero de 2027 como mes 1 supuesto**, días de lunes a viernes, dependencias del Anexo 7.B, nivelación y al menos **diez días hábiles de revisión del CLIENTE** dentro de los hitos. Las reservas dependen de esa red; no sustituyen fechas contractuales ni las cuatro semanas de evidencia.
 
-[La dotación](../07_PlanDeTrabajo_EDT_Cronograma_Implantaci%C3%B3n/LAFROX-Formulario-T-15.md#57-dotaci%C3%B3n-requerida-roles-m%C3%ADnimos-y-dotaci%C3%B3n-declarada) distingue equivalentes mensuales de personas simultáneas. Desarrollo alcanza **48 personas simultáneas**; la dotación declarada usa PHP/Laravel y Kotlin, y el Líder de Desarrollo verifica la experiencia de cada persona antes del mes 5. Seguridad, Calidad e Implantación requieren asignación, contratación o servicios externos; Calidad contempla evaluadores hasta **16 por día**. Estos refuerzos son condiciones de planificación, no disponibilidad acreditada.
+[La dotación](../07_PlanDeTrabajo_EDT_Cronograma_Implantaci%C3%B3n/LAFROX-Formulario-T-15.md#57-dotaci%C3%B3n-requerida-roles-m%C3%ADnimos-y-dotaci%C3%B3n-declarada) distingue equivalentes mensuales de personas simultáneas. Desarrollo usa hasta **40 personas simultáneas** de las 48 de la división; la dotación declarada usa PHP/Laravel y Kotlin, y el Líder de Desarrollo verifica la experiencia de cada persona antes del mes 5. Seguridad, Calidad e Implantación requieren asignación, contratación o servicios externos; Calidad contempla evaluadores hasta **16 por día**. Estos refuerzos son condiciones de planificación, no disponibilidad acreditada.
 
 ## Límites y relaciones
 
