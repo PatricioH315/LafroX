@@ -1,38 +1,31 @@
 # Subdocumento 8 — Plan de riesgos
 
-`contenido.tex` monta el cuerpo, los anexos 8.A–8.F y el formulario T-16.
-El documento raíz `main.tex` fija el capítulo en 8 y conserva el formato
-compartido de `lafrox.cls` y la portada.
+Las fuentes LaTeX reproducen el cuerpo, los Anexos 8.A–8.F y el T-16 vigentes.
+Se conservan texto, cifras y los 18 campos pendientes de revisión humana.
+La RBS se dibuja en TikZ y el modelo Python se mantiene literal con ajuste de líneas.
 
-## Fuentes
+## Entradas independientes
 
-Se trasladaron los tres Markdown de
-`Bases PTE/Git Markdown/LafroX/08_plan_riesgos/`:
+Compilar desde la raíz del proyecto con LuaLaTeX:
 
-- `LAFROX-Subdocumento8.md`
-- `LAFROX-Subdocumento8-Anexos.md`
-- `LAFROX-Formulario-T-16.md`
+~~~powershell
+lualatex --interaction=nonstopmode --halt-on-error --jobname=LAFROX-Subdocumento8 08_plan_riesgos/LAFROX-Subdocumento8.tex
+lualatex --interaction=nonstopmode --halt-on-error --jobname=LAFROX-Subdocumento8-Anexos 08_plan_riesgos/LAFROX-Subdocumento8-Anexos.tex
+lualatex --interaction=nonstopmode --halt-on-error --jobname=LAFROX-Formulario-T-16 08_plan_riesgos/LAFROX-Formulario-T-16.tex
+~~~
 
-El texto, las cifras, las citas y las declaraciones de IA se conservan.
-El diagrama Mermaid se traduce a TikZ con la misma jerarquía y los 32 riesgos.
-Las tablas usan `tablalafrox`, con encabezados repetidos y páginas verticales.
-Las tablas sin rótulo en la fuente reciben rótulos auxiliares; B.1 y C.1
-se identifican según las referencias del propio texto.
+Repetir hasta estabilizar índices y referencias. main.tex monta sólo el cuerpo:
+anexos y formulario son independientes. Se conservan la clase lafrox.cls,
+la portada, los logotipos y la configuración común. Las tablas extensas de
+anexos/formulario usan páginas horizontales con encabezado repetido; el cuerpo
+permanece vertical. La fecha de entrega no se inventa y queda vacía.
 
-Para actualizar la conversión, desde la raíz del repositorio:
+## Actualizar desde Markdown
 
-```powershell
-python convertir_sd8.py
-```
+~~~powershell
+python convertir_sd8.py --apply
+~~~
 
-El conversor comprueba que todos los párrafos, viñetas y celdas de las
-fuentes están presentes en las salidas. El diagrama se mantiene por separado.
-
-## Pendientes de entrega y validación
-
-- Completar la fecha de entrega y confirmar la nomenclatura oficial en `main.tex`.
-- Completar los campos `[[REVISIÓN HUMANA]]` que vienen de las fuentes.
-- Compilar con LuaLaTeX y revisar visualmente el PDF. En esta sesión MiKTeX
-  no logró iniciar, incluso para `--version`, y no generó PDF ni registro
-  de compilación. La disposición final de tablas y páginas queda pendiente
-  de esa revisión.
+Sin --apply, el conversor verifica párrafos, celdas y código sin escribir.
+La presentación se valida compilando y revisando el PDF. Los marcadores de
+revisión humana sólo se completan después de una revisión real.

@@ -1,27 +1,27 @@
 % Conversión del Mermaid de la fuente: misma jerarquía y mismos 32 riesgos.
 \begin{figure}[htbp]
 \centering
-\begin{tikzpicture}[every node/.style={font=\small,align=center},
-  rama/.style={draw=lafroxNaranja,rounded corners,fill=lafroxNaranja!7,text width=4.7cm,inner sep=8pt},
-  detalle/.style={draw=lafroxGris!40,rounded corners,text width=4.7cm,inner sep=7pt}]
+\begin{tikzpicture}[every node/.style={font=\fontsize{9.5}{11.5}\selectfont,align=center},
+  rama/.style={draw=lafroxGris,rounded corners,text width=4.05cm,inner sep=5pt},
+  detalle/.style={draw=lafroxGris!40,rounded corners,text width=4.05cm,inner sep=5pt}]
 \node[rama,text width=7cm] (raiz) at (0,0) {\textbf{Riesgos de la propuesta LafroX}\\32 riesgos};
-\node[rama] (s) at (-5.3,-1.7) {\textbf{Solución}\\13 riesgos};
+\node[rama] (s) at (-4.75,-1.7) {\textbf{Solución}\\13 riesgos};
 \node[rama] (d) at (0,-1.7) {\textbf{Desarrollo}\\10 riesgos};
-\node[rama] (i) at (5.3,-1.7) {\textbf{Implantación}\\9 riesgos};
-\node[detalle] (st) at (-5.3,-3.7) {\textbf{Técnico}\\R8-02 · R8-04 · R8-06 · R8-08\\R8-09 · R8-27 · R8-30};
-\node[detalle] (so) at (-5.3,-5.6) {\textbf{Operación}\\R8-01 · R8-03 · R8-05 · R8-23};
-\node[detalle] (ss) at (-5.3,-7.3) {\textbf{Seguridad}\\R8-07 · R8-24};
-\node[detalle] (dp) at (0,-3.7) {\textbf{Proyecto}\\R8-11 · R8-14 · R8-15 · R8-31};
-\node[detalle] (dt) at (0,-5.6) {\textbf{Técnico}\\R8-10 · R8-16 · R8-26};
-\node[detalle] (do) at (0,-7.3) {\textbf{Organizacional}\\R8-12 · R8-13 · R8-32};
-\node[detalle] (io) at (5.3,-3.7) {\textbf{Organizacional}\\R8-20 · R8-21 · R8-25 · R8-29};
-\node[detalle] (ip) at (5.3,-5.6) {\textbf{Proyecto}\\R8-17 · R8-19 · R8-28};
-\node[detalle] (ix) at (5.3,-7.3) {\textbf{Operación}\\R8-18 · R8-22};
+\node[rama] (i) at (4.75,-1.7) {\textbf{Implantación}\\9 riesgos};
+\node[detalle] (st) at (-4.75,-3.7) {\textbf{Técnico}\\\mbox{R8-02} · \mbox{R8-04} · \mbox{R8-06}\\\mbox{R8-08} · \mbox{R8-09} · \mbox{R8-27}\\\mbox{R8-30}};
+\node[detalle] (so) at (-4.75,-6.0) {\textbf{Operación}\\\mbox{R8-01} · \mbox{R8-03}\\\mbox{R8-05} · \mbox{R8-23}};
+\node[detalle] (ss) at (-4.75,-8.0) {\textbf{Seguridad}\\\mbox{R8-07} · \mbox{R8-24}};
+\node[detalle] (dp) at (0,-3.7) {\textbf{Proyecto}\\\mbox{R8-11} · \mbox{R8-14}\\\mbox{R8-15} · \mbox{R8-31}};
+\node[detalle] (dt) at (0,-6.0) {\textbf{Técnico}\\\mbox{R8-10} · \mbox{R8-16} · \mbox{R8-26}};
+\node[detalle] (do) at (0,-8.0) {\textbf{Organizacional}\\\mbox{R8-12} · \mbox{R8-13} · \mbox{R8-32}};
+\node[detalle] (io) at (4.75,-3.7) {\textbf{Organizacional}\\\mbox{R8-20} · \mbox{R8-21}\\\mbox{R8-25} · \mbox{R8-29}};
+\node[detalle] (ip) at (4.75,-6.0) {\textbf{Proyecto}\\\mbox{R8-17} · \mbox{R8-19} · \mbox{R8-28}};
+\node[detalle] (ix) at (4.75,-8.0) {\textbf{Operación}\\\mbox{R8-18} · \mbox{R8-22}};
 \foreach \a in {s,d,i} {\draw[->,lafroxGris] (raiz.south) -- (\a.north);}
 \foreach \a/\b/\c/\e in {s/st/so/ss,d/dp/dt/do,i/io/ip/ix} {
   \draw[->,lafroxGris] (\a.south) -- (\b.north);
-  \draw[->,lafroxGris] (\a.west) -- ++(-0.25,0) |- (\c.west);
-  \draw[->,lafroxGris] (\a.west) -- ++(-0.25,0) |- (\e.west);
+  \draw[->,lafroxGris] (\a.west) -- ++(-0.18,0) |- (\c.west);
+  \draw[->,lafroxGris] (\a.west) -- ++(-0.18,0) |- (\e.west);
 }
 \end{tikzpicture}
 \caption{Estructura de desglose de riesgos (RBS). Fuente: elaboración propia a partir del Anexo 8.A.}
