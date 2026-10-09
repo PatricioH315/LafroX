@@ -1,0 +1,32 @@
+%% ============================================================================
+%%  02_problema_necesidad/main.tex -- Render independiente del Subdocumento 02
+%%
+%%  Copia adaptada de la plantilla LafroX (ver Plantilla LafroX/main.tex y
+%%  lafrox.cls). Compila SOLO este subdocumento como documento autonomo, con
+%%  su propia portada. lafrox.cls, lafrox-portada.tex y latexmkrc son copia
+%%  local de la plantilla: no se editan aqui, se actualizan reemplazando la
+%%  copia desde Plantilla LafroX/ si la plantilla madre cambia.
+%%
+%%  Compilar:  latexmk main.tex   (LuaLaTeX obligatorio, ver latexmkrc)
+%%  Limpiar:   latexmk -c
+%% ============================================================================
+
+\documentclass[carta,firma]{lafrox}
+
+%  Todo valor con coma va entre llaves: pgfkeys, si no, la lee como
+%  separador de claves (advertencia del propio lafrox.cls).
+\datoslafrox{
+  subtitulo    = {Subdocumento 02 --- Problema y necesidad},
+  alcance      = {Subdocumento 02},
+  formulario   = {Formulario T-7},
+  nomenclatura = {LAFROX-Subdocumento2.pdf},
+}
+
+\begin{document}
+
+\portadalafrox
+\preliminareslafrox
+
+\subdocumento{.}
+
+\end{document}
