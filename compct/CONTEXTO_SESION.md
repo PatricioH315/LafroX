@@ -1,5 +1,9 @@
 # CONTEXTO DE SESIÓN
 
+## Estado vigente — 9 de octubre de 2026: Anexo 9.C sincronizado con T-12
+
+Por solicitud del usuario se corrigieron solo las 99 celdas de estado desfasadas de la Tabla 9.C.2: 23 RF, 14 RNF y 62 RT pasaron de «Cumple parcialmente» a «Cumple», conforme al T-12 vigente. Ambos documentos contienen los mismos 645 ID y ya no presentan diferencias de estado: 541 «Cumple», 73 «Cumple parcialmente» y 31 «No cumple». No se cambiaron pruebas, casos estimados ni el T-12; el Anexo 9.C conserva 1.282 casos y 9 identificadores absorbidos o alias. No se introdujeron precios, tarifas, valores unitarios ni montos de la oferta en la Oferta Técnica (Bases Administrativas art. 50.2; Aclaraciones). Verificación: cotejo automático de todos los ID y estados, cero diferencias; `git diff --check` sin errores. Los cambios preexistentes de SD1 y `Revision/t12_iter/introspeccion_T12.md` permanecieron intactos. Sin commit.
+
 ## Estado vigente — 9 de octubre de 2026: coherencia cruzada SD9 aplicada
 
 Por autorización posterior del usuario se aplicaron cambios fuera del SD9 para alinear los documentos relacionados con las correcciones del plan de calidad. Se editaron sólo Markdown.
