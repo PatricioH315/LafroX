@@ -1,5 +1,11 @@
 # CONTEXTO DE SESIÓN
 
+## Cierre vigente — 10 de octubre de 2026: consistencia documental CD-01
+
+Correcciones verificadas independientemente y registradas en 8463b7b (28 Markdown). La revisión focal confirmó la independencia del montaje de Concepción y septiembre como fin de construcción/QA de módulos E1, sin mover integración de octubre. CD-01 cerrada; CD-02 y siete asuntos de decisión permanecen abiertos, empezando por innovaciones/H4. Detalle y comprobaciones en odd/tasks/consistencia-documental.md y Revision/revision_consistencia_documental.md. Sin publicación remota. Engram y revisión nativa no disponibles; no se afirma coherencia total ni cierre de figuras, firmas o ensayos.
+
+
+
 ## Estado vigente — 10 de octubre de 2026: consistencia documental CD-01 aplicada, pendiente de verificación independiente
 
 Autorización actual: revisar y aplicar correcciones simples/medias del informe de consistencia en `rama-md`, sólo Markdown; sin publicación remota. Trabajo y restricciones recuperables en `odd/tasks/consistencia-documental.md`. Se alinearon unidades/ancla SD3, A.31/A.36 y 12,34 TPS SD5, extremos agregados 3.4/3.6 y construcción junio–septiembre, adquisiciones SD6/T-9 con decisiones previas de sala/obra civil/cinco Starlink, C-05 por período e I-04A desde mes 24 con meta mes 36. En 3.B se revisaron 86 filas activas y sólo se cambiaron 36 métodos; no requisitos ni estados. Se sincronizaron resúmenes existentes; no existe guía separada de Anexos SD6 y no se creó una copia auxiliar. Informe: tabla vigente más registro inicial explícitamente histórico, con descarte del falso conteo siete/seis y reconocimiento de cobertura/T-12 ya alineados.

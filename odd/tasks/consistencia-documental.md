@@ -10,7 +10,7 @@ Solo Markdown, en rama-md según autorizaciones posteriores del contexto; sin ca
 
 ## Tareas
 
-- [ ] CD-01 — Corrección documental respaldada y verificación cruzada.
+- [x] CD-01 — Corrección documental respaldada y verificación cruzada.
   - Referencias A.36, ancla SD3 y unidades SLA.
   - Extremos agregados del cronograma y equivalencia meses 5–8.
   - Secuencia de sala, responsabilidad civil y cinco sitios Starlink conforme a decisiones previas.
@@ -55,3 +55,9 @@ CD-01 implementada por el escritor, pendiente de revisión independiente y commi
 La comprobación independiente detectó dos ajustes documentales: delimitar la precedencia de recepción de sala sólo a los racks de Talca, manteniendo Concepción paralelo, y propagar septiembre al QA por módulo del T-15 y a R8-11/E8-01. Se aplicaron sin cambiar fechas, HH ni integración/certificación de octubre. Evidencia: T-15 6.1.5 termina 20-05-2027; 6.3.1/6.3.2 comienzan 21-05; 6.3.3 ejecuta 03–20-05 sin predecesora. CD-01 continúa abierta hasta comprobación de estas correcciones; sin commit ni aprobación nativa.
 
 Comprobación focal del escritor: readback y aserciones satisfechas para precedencia sólo Talca, las cuatro filas de fechas/predecesoras conservadas contra HEAD, QA agosto–septiembre con integración 20 de octubre preservada y dos referencias R8-11/E8-01 junio–septiembre sin residuo octubre. git diff --check sin diagnósticos después de la corrección. Revalidación independiente aún pendiente. El primer script focal tenía un error de interpolación PowerShell y no ejecutó comprobaciones; corregido antes de este resultado.
+
+## Cierre verificado — CD-01
+
+Commit: 8463b7b6f7e6fa86882d51477e8bfad62290385c (docs: reconcile cross-document consistency). 28 archivos Markdown; 179 adiciones y 81 eliminaciones. La verificación independiente detectó y confirmó la corrección de la dependencia de Concepción y tres referencias residuales al calendario. Readback focal y git diff --check pasaron; comprobación del padre repetida antes del commit. No se alteraron requisitos ni estados de cumplimiento.
+
+CD-01 queda cerrada; las menciones anteriores a verificación/commit pendientes describen etapas previas. CD-02 sigue abierta: consultar primero la reprogramación de innovaciones para preservar el núcleo funcional verificable en H4; no hay fechas factibles acreditadas todavía. Revisión nativa no disponible (comando gentle-ai ausente), espejo Engram pendiente. Sin push/PR, ensayos, revisión PDF ni firmas humanas. Primer intento de commit bloqueado por permisos del índice Git; reintento con permiso ampliado completado, sin pérdida de cambios.
