@@ -20,6 +20,10 @@ Solo Markdown, en rama-md según autorizaciones posteriores del contexto; sin ca
 - [ ] CD-02 — Resolver decisiones pendientes con el usuario; no autoriza nuevas soluciones por sí sola.
   - Innovaciones/H4; H12 y HH; cobranza; réplica térmica; capacitación; figuras; sincronización en cámara.
 
+- [x] CD-03 — Reescribir el informe con los pendientes interdocumentales vigentes.
+  - Seis grupos de contradicciones/ambigüedades y catorce figuras ausentes como dependencia separada.
+  - Excluir auditoría de cumplimiento del T-12 y requisitos parciales independientes.
+  - Revalidar fuentes, distinguir decisiones reales, resumir cierres y conservar originales sin cambios.
 ## Ruta y comprobaciones
 
 CD-01: delegada; lectura preparatoria y múltiples documentos no triviales. Un único escritor y verificación independiente porque gentle-ai no está disponible y el riesgo nativo es desconocido. CD-02: discusión antes de implementación.
@@ -61,3 +65,11 @@ Comprobación focal del escritor: readback y aserciones satisfechas para precede
 Commit: 8463b7b6f7e6fa86882d51477e8bfad62290385c (docs: reconcile cross-document consistency). 28 archivos Markdown; 179 adiciones y 81 eliminaciones. La verificación independiente detectó y confirmó la corrección de la dependencia de Concepción y tres referencias residuales al calendario. Readback focal y git diff --check pasaron; comprobación del padre repetida antes del commit. No se alteraron requisitos ni estados de cumplimiento.
 
 CD-01 queda cerrada; las menciones anteriores a verificación/commit pendientes describen etapas previas. CD-02 sigue abierta: consultar primero la reprogramación de innovaciones para preservar el núcleo funcional verificable en H4; no hay fechas factibles acreditadas todavía. Revisión nativa no disponible (comando gentle-ai ausente), espejo Engram pendiente. Sin push/PR, ensayos, revisión PDF ni firmas humanas. Primer intento de commit bloqueado por permisos del índice Git; reintento con permiso ampliado completado, sin pérdida de cambios.
+
+## Estado y evidencia — CD-03
+
+Informe reescrito por petición y aclaración del usuario: seis pendientes interdocumentales P01–P06; figuras ausentes en dependencia D01 separada. No se audita T-12 ni se lista RNF-12.03 como pendiente de coherencia. Ruta delegada por lectura preparatoria y reescritura; únicamente informe, contexto y tareas. Documentación pasiva: RED/GREEN ejecutable N/A; revisión nativa no corresponde a esta edición pasiva.
+
+Comprobaciones del escritor: seis IDs únicos y D01; nueve destinos de referencia locales y 22 envelopes de citas con líneas existentes; afirmaciones pendientes contrastadas con originales; catorce destinos gráficos aún ausentes; git diff --check sin errores, sólo advertencia de normalización LF/CRLF de este archivo antes de normalizarlo. Originales sin cambios. CD-03 permanece sin marcar hasta readback del padre; sin commit ni publicación por el escritor. El padre gestiona el commit y push solicitados al terminar.
+
+Readback del padre completado: P01–P06 y D01 separados; corregido límite de entrega H4 y distinción entre construcción y cierre QA en síntesis. CD-03 verificada; commit y push autorizados por el usuario a rama-md. Engram no disponible; recuperación conservada en estos Markdown. Publicación pendiente de resultado Git; no se afirma éxito anticipado.

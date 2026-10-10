@@ -1,5 +1,9 @@
 # CONTEXTO DE SESIÓN
 
+## Estado vigente — 10 de octubre de 2026: informe de pendientes interdocumentales CD-03
+
+Por aclaración expresa del usuario, `Revision/revision_consistencia_documental.md` se reescribe como informe actual de coherencia ENTRE documentos, no auditoría de cumplimiento del T-12. Quedan seis grupos P01–P06: innovaciones/H4; H12 con acta, cierre dependiente y HH; cobranza por preventistas; reconexión dentro/fuera de cámara; conjuntos térmicos y réplica regional; cobertura de capacitación de Concepción. Las catorce figuras SD2/SD3 ausentes forman D01, dependencia gráfica separada, no contradicción semántica. No se lista RNF-12.03 parcial como pendiente de coherencia. Se retiran tablas históricas de defectos corregidos; la historia sigue en Git y entradas anteriores de este contexto. CD-01 conserva su cierre en 8463b7b/9c386e1. CD-03 pendiente de readback del padre; no se alteran originales. El usuario solicita commit y push al terminar; los ejecuta el padre después de comprobar. Engram no disponible, espejo pendiente.
+
 ## Cierre vigente — 10 de octubre de 2026: consistencia documental CD-01
 
 Correcciones verificadas independientemente y registradas en 8463b7b (28 Markdown). La revisión focal confirmó la independencia del montaje de Concepción y septiembre como fin de construcción/QA de módulos E1, sin mover integración de octubre. CD-01 cerrada; CD-02 y siete asuntos de decisión permanecen abiertos, empezando por innovaciones/H4. Detalle y comprobaciones en odd/tasks/consistencia-documental.md y Revision/revision_consistencia_documental.md. Sin publicación remota. Engram y revisión nativa no disponibles; no se afirma coherencia total ni cierre de figuras, firmas o ensayos.
