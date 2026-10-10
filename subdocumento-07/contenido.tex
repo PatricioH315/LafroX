@@ -14,6 +14,16 @@
   \end{anexohorizontal}
   \clearpage}
 
+\newcommand{\figuraRutaCritica}[3]{%
+  \par\clearpage
+  \thispagestyle{empty}
+  \vspace*{\fill}
+  \noindent\makebox[\textwidth][c]{\includegraphics[width=1.18\textwidth,height=0.75\textheight,keepaspectratio,trim=0 330 0 0,clip]{#1}}\par
+  \captionsetup{hypcap=false}
+  \captionof{figure}{#2}\label{#3}
+  \vspace*{\fill}
+  \clearpage}
+
 \newcommand{\figuraEDT}[3]{%
   \par\addvspace{5pt}%
   \begin{center}
@@ -280,7 +290,7 @@ La ruta crítica se calcula con el método de la ruta crítica sobre la red del 
 
 La ruta crítica corresponde a la Etapa 2: diseño (1.2.5, 2.1.4 y 2.4.2; H8, 4 días hábiles de reserva y 91,1 \% de cumplimiento en la simulación con riesgos) \ensuremath{\rightarrow} módulos (3.5) \ensuremath{\rightarrow} prueba de integración (3.9.1; H9, 21 días hábiles) \ensuremath{\rightarrow} certificación (3.9.2–3.9.7; H10, 25 días hábiles). La holgura total de cada camino es su reserva hasta la fecha límite del hito (Formulario T-15, Tabla 5.2). Son casi críticos la cadena de la Etapa 1 que nace en las interfaces sin documentación del ERP (1.2.3 \ensuremath{\rightarrow} 3.3.2 \ensuremath{\rightarrow} 3.4 \ensuremath{\rightarrow} 3.8.1, H4 con 19 días; \ensuremath{\rightarrow} 3.8.2–3.8.8, H5 con 35 días), la sala y los ambientes del H3 (2.3, 5.1.2, 6.1, 6.3, 6.6.3 y 3.1; 19 días), la captura de reglas del planificador (1.2.2 y 3.4.7), los acuerdos con transportistas y sindicato (5.4.1 y 5.4.2) y la certificación de las cadenas (3.6.5 y 3.6.6). El H1 tiene la menor reserva absoluta, 6 días, pero su desviación es mínima (\ensuremath{\sigma} 0,58; cumplimiento > 99,9 \%). Las marchas blancas y los pasos a producción tienen fechas contractuales fijas. La Figura \ref{fig:7-ruta} sitúa la cadena de la Etapa 2 y los caminos casi críticos en los meses del contrato.
 
-\figuraDiagramaHorizontal{imagenes/Diagramas que faltaban/Fig_7-7_T15-1_Ruta_Critica.drawio.png}
+\figuraRutaCritica{imagenes/Diagramas que faltaban/Fig_7-7_T15-1_Ruta_Critica.pdf}
   {Ruta crítica identificada y caminos casi críticos de la implementación. Fuente: elaboración propia a partir del Anexo 7.B y de los períodos del Formulario T-14.}
   {fig:7-ruta}
 

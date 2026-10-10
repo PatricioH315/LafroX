@@ -12,6 +12,16 @@
   \end{anexohorizontal}
   \clearpage}
 
+\newcommand{\figuraRutaCritica}[3]{%
+  \par\clearpage
+  \thispagestyle{empty}
+  \vspace*{\fill}
+  \noindent\makebox[\textwidth][c]{\includegraphics[width=1.18\textwidth,height=0.75\textheight,keepaspectratio,trim=0 330 0 0,clip]{#1}}\par
+  \captionsetup{hypcap=false}
+  \captionof{figure}{#2}\label{#3}
+  \vspace*{\fill}
+  \clearpage}
+
 Este formulario presenta la información de planificación que pide el Formulario T-15 de las Bases Administrativas para el Subdocumento 7: el método con que se estiman las horas hombre de cada paquete, la programación sobre la red de dependencias, la ruta crítica y sus holguras, y los frentes de trabajo, con el detalle de los solapamientos de los meses 13 a 15 y 19 a 20. Los paquetes de trabajo son los de la EDT del Formulario T-14. Este formulario no contiene precios ni costos (Art. 50.2).
 
 \section{Método de estimación y de programación}
@@ -37,7 +47,7 @@ La sección 5 incorpora las revisiones del CLIENTE (Art. 18.3) como retardos, ca
 
 La ruta crítica se identifica sobre el cronograma por actividad de la sección 6.1, con la red de la sección 5. Con fechas de hito fijas, la holgura total de cada camino es su reserva hasta la fecha límite de entrega de la Tabla \ref{tab_T15_7}. La ruta crítica es la cadena de la Etapa 2: diseño (1.2.5, 2.1.4 y 2.4.2; H8, 4 días hábiles de reserva y 91,1 \% de probabilidad de entrega a tiempo en la simulación con riesgos del SD8), módulos (3.5), prueba de integración (3.9.1; H9, 21 días hábiles) y certificación (3.9.2–3.9.7; H10, 25 días hábiles). Son caminos casi críticos la cadena de la Etapa 1 que nace en las interfaces sin documentación del ERP (1.2.3 \ensuremath{\rightarrow} 3.3.2 \ensuremath{\rightarrow} 3.4 \ensuremath{\rightarrow} 3.8.1, H4 con 19 días; \ensuremath{\rightarrow} 3.8.2–3.8.8, H5 con 35 días) y la sala técnica y los ambientes del H3 (2.3, 5.1.2, 6.1, 6.3, 6.6.3 y 3.1; 19 días). El H1 tiene la menor reserva absoluta, 6 días hábiles, con una desviación mínima (\ensuremath{\sigma} 0,58) y una probabilidad de entrega a tiempo superior al 99,9 \%. Las marchas blancas (4.2.1, meses 13 a 15, y 4.3.1, meses 19 y 20) y los pasos a producción (H7 en el mes 16 y H12 en el mes 21) tienen fechas contractuales fijas.
 
-\figuraDiagramaHorizontal{imagenes/Diagramas que faltaban/Fig_7-7_T15-1_Ruta_Critica.drawio.png}
+\figuraRutaCritica{imagenes/Diagramas que faltaban/Fig_7-7_T15-1_Ruta_Critica.pdf}
   {Ruta crítica identificada y caminos casi críticos de la implementación. Fuente: elaboración propia a partir del Anexo 7.B del Subdocumento 7 y de los períodos del Formulario T-14.}
   {fig:T15-ruta}
 
