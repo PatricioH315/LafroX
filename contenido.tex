@@ -16,6 +16,8 @@ Fundada en 2012 en Santiago de Chile, LafroX es una empresa de ingeniería de so
 
 Entre los principales hitos de su trayectoria destacan la puesta en marcha de su primera plataforma de ruteo y telemetría en 2015, la acreditación como integrador certificado de hardware industrial para cadenas de frío en 2018, la primera certificación corporativa en normas de calidad y seguridad en 2021, mantenida desde entonces mediante auditorías de seguimiento y renovación, y la consolidación de su arquitectura modular híbrida en 2024, sosteniendo a la fecha dos operaciones diarias de gran volumen en terreno: 22.000 entregas diarias en el Proyecto 1 y 18.000 transacciones comerciales diarias en el Proyecto 3 del Formulario T-6. Son unidades distintas y no se suman.
 
+LafroX mantiene un sitio web corporativo en \url{https://lafrox.github.io/}, publicado con certificado TLS válido, diseño responsivo y criterios WCAG 2.2 nivel AA. El sitio presenta el giro, la trayectoria, la misión, la visión y los valores de la empresa, su organigrama directivo, su Sede Central y su domicilio, el equipo, los casos de éxito del Formulario T-6, las certificaciones vigentes y las alianzas tecnológicas. Incluye además un centro de recursos con artículos técnicos, un recorrido guiado por la solución, el estado del servicio medido en vivo y una calculadora de ahorro para operaciones logísticas. LafroX mantiene el sitio activo y disponible durante todo el proceso de licitación, desde el registro del participante hasta la adjudicación (RT-23.01 a RT-23.10).
+
 La oferta de LafroX cuenta con tres líneas de negocio especializadas:
 \begin{enumerate}
     \item \textbf{Ingeniería de software en el borde (Edge Computing):} Desarrollo de aplicaciones móviles y sistemas locales con arquitectura \textit{offline-first}. Implementan almacenamiento local cifrado mediante bases de datos SQLite en terminales móviles, sincronización asíncrona bidireccional y resolución determinista de conflictos al restablecer el enlace de comunicaciones, eliminando el riesgo de pérdida transaccional en zonas rurales o almacenes sin cobertura de red.
@@ -26,7 +28,7 @@ La oferta de LafroX cuenta con tres líneas de negocio especializadas:
 Para soportar estas líneas, LafroX dispone de capacidad instalada distribuida y de un catálogo de productos y servicios que se describe a continuación.
 \begin{itemize}
     \item \textbf{Infraestructura y ambientes:} Plataforma de cómputo en nube pública y dos centros de datos (primario y secundario en configuración activo-pasivo) que soportan cinco ambientes segregados: Desarrollo (DEV), Aseguramiento de Calidad (QA), Preproducción (PREPROD), Producción (PROD) y Recuperación ante Desastres (DR). La capacitación utiliza datos ficticios en un espacio aislado del ambiente que corresponda; no constituye un sexto ambiente. El entorno DR es sometido a auditorías y simulacros semestrales, con objetivos de RTO $\le 4$ horas y RPO $\le 15$ minutos.
-    \item \textbf{Centro de Operaciones y Mesa de Servicios:} Centro de Operaciones de Red (NOC) y Mesa de Servicios con niveles de escalamiento L1, L2 y L3. Para Puelche, los incidentes de severidad crítica y alta se atienden 24$\times$7$\times$365, como exige el Artículo 78.2 de las Bases Administrativas; la mesa de servicio atiende al usuario de 04:00 a 22:00 de lunes a sábado, con cobertura 24$\times$7 en septiembre y diciembre (Subdocumento 3, sección 3.4.5). Su capacidad se recalibra con los tickets observados en la marcha blanca; la capacidad corporativa no constituye un compromiso de volumen para el CLIENTE.
+    \item \textbf{Centro de Operaciones y Mesa de Servicios:} Centro de Operaciones de Red (NOC), Centro de Operaciones de Seguridad (SOC) y Mesa de Servicios con niveles de escalamiento L1, L2 y L3, en el Centro de Operaciones de LafroX en Valparaíso (Av. Brasil 2241). Para Puelche, los incidentes de severidad crítica y alta se atienden 24$\times$7$\times$365, como exige el Artículo 78.2 de las Bases Administrativas; la mesa de servicio atiende al usuario de 04:00 a 22:00 de lunes a sábado, con cobertura 24$\times$7 en septiembre y diciembre (Subdocumento 3, sección 3.4.5). Su capacidad se recalibra con los tickets observados en la marcha blanca; la capacidad corporativa no constituye un compromiso de volumen para el CLIENTE.
 \end{itemize}
 
 El catálogo de la empresa se organiza en productos de software, servicios profesionales y servicios de infraestructura y conectividad.
@@ -97,8 +99,8 @@ Para sostener estos procesos, la dotación técnica de 124 ingenieros y especial
 \midrule
 División de Ingeniería & Desarrollo Software (PHP/Laravel, móvil Kotlin) & Sede Central (Santiago) & 48 \\
 División de Ingeniería & Arquitectura de Solución e Integración & Sede Central (Santiago) & 15 \\
-División de Infraestructura & Centro de Operaciones de Red (NOC 24$\times$7) & Centro de Operaciones & 32 \\
-División de Infraestructura & Ingeniería de Confiabilidad (SRE) y Cloud & Centro de Operaciones & 12 \\
+División de Infraestructura & Centro de Operaciones de Red (NOC 24$\times$7) & Centro de Operaciones (Valparaíso) & 32 \\
+División de Infraestructura & Ingeniería de Confiabilidad (SRE) y Cloud & Centro de Operaciones (Valparaíso) & 12 \\
 División de Calidad (QA) & Aseguramiento y Automatización de Pruebas & Sede Central (Santiago) & 10 \\
 Oficialía de Seguridad & CISO y Especialistas en Ciberseguridad & Sede Central (Santiago) & 7 \\
 \midrule
@@ -107,7 +109,7 @@ Oficialía de Seguridad & CISO y Especialistas en Ciberseguridad & Sede Central 
 \end{tabularx}
 \end{table}
 
-A partir de los datos presentados en la Tabla~\ref{tab:dotacion}, el Centro de Operaciones de Red concentra 32 profesionales para monitoreo y resolución de incidentes. Su programación de turnos y respaldos se ajusta en cada contrato de operación; para Puelche, el monitoreo es 24$\times$7 y el horario de la mesa de servicio es el declarado en el Subdocumento 3, sección 3.4.5.
+A partir de los datos presentados en la Tabla~\ref{tab:dotacion}, el Centro de Operaciones de Red concentra 32 profesionales para monitoreo y resolución de incidentes. Su programación de turnos y respaldos se ajusta en cada contrato de operación; para Puelche, el monitoreo es 24$\times$7 y el horario de la mesa de servicio es el declarado en el Subdocumento 3, sección 3.4.5. El mismo centro aloja el puesto SOC 24$\times$7 de Puelche, propio de LafroX, con analistas contratados para el proyecto bajo la dirección del Encargado de Seguridad de la Información.
 
 
 \section{Gobierno interno Calidad, Seguridad y Conocimiento}
@@ -116,6 +118,9 @@ El modelo de gobierno interno de LafroX se fundamenta en políticas explícitas,
 
 \subsection{Modelo de Gobierno de Calidad}
 La calidad de los procesos de LafroX se rige por un Sistema de Gestión de Calidad certificado conforme a ISO 9001:2015 y por prácticas evaluadas bajo CMMI-DEV Nivel 3.
+
+Los métodos de diseño, desarrollo, implementación, integración y soporte se ejecutan bajo los procesos de ese Sistema de Gestión de Calidad, cuyo alcance y vigencia se identifican en 1.4. En esta oferta se aplican mediante RUP y DevSecOps (LafroX, 2026a, Subdocumento 6, sección 6.2); CMMI-DEV Nivel 3 acredita la madurez de procesos declarada, sin constituir una certificación independiente de esas metodologías (Distribuidora Puelche S.A., 2026b, RT-23.04).
+
 \begin{itemize}
     \item \textbf{Instancia colegiada:} El Comité de Calidad y Procesos, presidido mensualmente por el Jefe de QA y con participación de los líderes de proyecto, analiza la adherencia metodológica y métricas de defecto.
     \item \textbf{Políticas y controles de ingeniería:} Se implementan compuertas de calidad automáticas (\textit{quality gates}) en los canales de integración continua (CI/CD). Es política corporativa estricta rechazar cualquier compilación con cobertura de pruebas unitarias inferior al 80\% o con hallazgos bloqueantes del análisis estático de código (PHPStan/Larastan y Pint).
@@ -126,9 +131,11 @@ La calidad de los procesos de LafroX se rige por un Sistema de Gestión de Calid
 El marco de seguridad corporativo está alineado y certificado bajo la norma ISO/IEC 27001:2022, implementando un enfoque de confianza cero (\textit{Zero Trust}) y gestión continua del riesgo.
 \begin{itemize}
     \item \textbf{Responsable e instancias:} El Oficial de Seguridad de la Información (CISO) lidera el Comité de Seguridad y Privacidad, sesionando con periodicidad mensual para revisar incidentes, vectores de ataque y evaluar la gestión de vulnerabilidades.
-    \item \textbf{Procesos DevSecOps:} Se integran análisis estáticos de seguridad de código (SAST) y análisis de composición de software (SCA) en cada confirmación de código. Se realizan pruebas de penetración (\textit{ethical hacking}) externas de forma semestral.
+    \item \textbf{Procesos DevSecOps:} Se integran análisis estáticos de seguridad de código (SAST) y análisis de composición de software (SCA) en cada confirmación de código. Se realizan pruebas de penetración (\textit{ethical hacking}) externas de forma semestral. Esta cadencia es una política corporativa más exigente que el mínimo contractual, prueba de intrusión anual y antes de cada paso a producción (Distribuidora Puelche S.A., 2026b, RT-11.20), al que incluye y supera.
     \item \textbf{Continuidad operacional:} Se gestionan planes de continuidad de negocio (BCP) y de recuperación ante desastres (DRP), sometidos a simulacros semestrales con corte controlado para verificar los umbrales de RTO $\le 4$ horas y RPO $\le 15$ minutos.
 \end{itemize}
+
+Para Puelche, las pruebas de intrusión serán realizadas por un tercero independiente de LafroX, con periodicidad al menos anual durante la Operación y antes de cada paso a producción. LafroX entregará al CLIENTE cada informe íntegro y su plan de remediación con responsables y plazos (Distribuidora Puelche S.A., 2026b, RT-11.20).
 
 \subsection{Modelo de Gobierno de Gestión del Conocimiento}
 Para mitigar el riesgo de dependencia del conocimiento tácito individual de ingenieros sénior y especialistas operacionales, LafroX cuenta con un proceso formal de Transferencia y Preservación del Conocimiento:
@@ -149,7 +156,7 @@ La idoneidad técnica y metodológica de LafroX está validada por certificacion
     \item \textbf{ISO/IEC 20000-1:2018 (Sistema de Gestión de Servicios de TI):} Certificado N° CL21/8190 emitido por SGS (SGS, 2024). Alcance: ``Provisión de servicios de TI, gestión de incidentes y mesa de ayuda 24$\times$7 para infraestructuras logísticas críticas''. Vigente hasta mayo de 2027.
 \end{itemize}
 
-Las certificaciones con vencimiento durante el contrato se renuevan mediante auditoría de recertificación ante el mismo organismo antes de su fecha de término: ISO/IEC 27001 antes de enero de 2027, ISO/IEC 20000-1 antes de mayo de 2027 e ISO 9001 antes de noviembre de 2028. La evaluación CMMI-DEV se renueva con una nueva evaluación SCAMPI A antes de noviembre de 2026. LafroX acredita la vigencia de cada certificado ante la Contraparte Técnica durante los 56 meses del contrato. Las Bases Técnicas Transversales admiten, para ISO/IEC 27001, un certificado vigente o un plan de certificación con hitos dentro de los primeros doce meses, y para ISO/IEC 20000-1 un certificado vigente o un plan declarado (Distribuidora Puelche S.A., 2026b, sección 15.2; 2026a, art. 34). LafroX supera ese mínimo: acredita ambos certificados vigentes a la fecha de la oferta, junto con ISO 9001.
+Las certificaciones con vencimiento durante el contrato se renuevan mediante auditoría de recertificación ante el mismo organismo antes de su fecha de término: ISO/IEC 27001 antes de enero de 2027, ISO/IEC 20000-1 antes de mayo de 2027 e ISO 9001 antes de noviembre de 2028. La evaluación CMMI-DEV se renueva con una nueva evaluación SCAMPI A antes de noviembre de 2026, y su renovación se presenta ante la Contraparte Técnica junto con la línea base del H1. Mientras no se acredite, el proyecto no invoca ese nivel como garantía y se rige por los procesos auditados bajo ISO 9001 (LafroX, 2026b, Subdocumento 9, sección 9.1.2). LafroX acredita la vigencia de cada certificado ante la Contraparte Técnica durante los 56 meses del contrato. Las Bases Técnicas Transversales admiten, para ISO/IEC 27001, un certificado vigente o un plan de certificación con hitos dentro de los primeros doce meses, y para ISO/IEC 20000-1 un certificado vigente o un plan declarado (Distribuidora Puelche S.A., 2026b, sección 15.2; 2026a, Art. 34°). LafroX supera ese mínimo: acredita ambos certificados vigentes a la fecha de la oferta, junto con ISO 9001.
 
 En concordancia con el artículo 34 de las Bases Administrativas (Distribuidora Puelche S.A., 2026a) y con las reglas de entrega de formularios (Distribuidora Puelche S.A., 2026d, sección 1), LafroX presenta en el Formulario T-6 el detalle de tres proyectos finalizados en los últimos cinco años y en operación continua, los cuales demuestran experiencia en complejidad técnica y volumétrica equivalente a la del Caso 02:
 \begin{enumerate}
@@ -158,7 +165,7 @@ En concordancia con el artículo 34 de las Bases Administrativas (Distribuidora 
     \item \textbf{Sistema Móvil de Preventa y Ruteo Desconectado (Comercializadora Lácteos del Sur S.A.):} Ejecutado entre 2023 y 2024, habilita a 280 preventistas y procesa 18.000 transacciones comerciales diarias mediante sincronización determinista en diferido y políticas de crédito locales.
 \end{enumerate}
 
-La Tabla~\ref{tab:equivalencia} verifica cifra por cifra la equivalencia de estos proyectos con el Caso 02 (Distribuidora Puelche S.A., 2026c, secciones 2.2--2.4 y cap. 10).
+La Tabla~\ref{tab:equivalencia} verifica cifra por cifra la equivalencia de estos proyectos con el Caso 02 (Distribuidora Puelche S.A., 2026c, secciones 2.2 a 2.4 y cap. 10).
 
 \begin{table}[hbt!]
 \centering
@@ -246,6 +253,10 @@ Líder de Implantación y Gestión del Cambio & Desde el mes 8 & Patricio Henrí
 
 La acumulación de dos roles en una persona se compensa con equipos: el Arquitecto de Solución dirige un equipo de arquitectura e integración, y el Líder Funcional cuenta con analistas funcionales y con el equipo de implantación de las marchas blancas, cuya dotación se programa en el Formulario T-15 del Subdocumento 7, sección 5.7. Si la carga de las marchas blancas lo requiere, LafroX nomina un Líder de Implantación separado sin reducir la dedicación del Líder Funcional. La experiencia exigida para cada rol y las cartas de compromiso se acreditan conforme a las Bases Administrativas.
 
+Alex Aravena, Jefe de Proyecto y apoderado de LafroX, tendrá facultades para comprometer al ADJUDICATARIO en materias de ejecución durante toda la implementación, manteniendo la dedicación exclusiva declarada. Los cambios de alcance, plazo o costo se someterán a las instancias de aprobación previstas (Distribuidora Puelche S.A., 2026b, RT-19.02).
+
+LafroX mantendrá vigentes las certificaciones del equipo asignado durante todo el contrato y, ante la salida de una persona certificada, propondrá un reemplazo de perfil igual o superior, con certificación vigente y dedicación equivalente. El reemplazo requerirá autorización previa y escrita del CLIENTE, acreditación documental y traslape mínimo de quince días hábiles, sin costo adicional (Distribuidora Puelche S.A., 2026b, RT-15.09; 2026a, Art. 76°).
+
 \section{Alianzas}
 
 Para viabilizar el despliegue del modelo híbrido obligatorio (Artículo 16° de las Bases Administrativas) y asegurar soporte de clase empresarial en los componentes físicos de terreno, LafroX mantiene alianzas tecnológicas estratégicas y vigentes. Cada alianza con vencimiento durante el contrato se renueva antes de su fecha de término, y su vigencia se acredita ante la Contraparte Técnica durante los 56 meses:
@@ -270,6 +281,8 @@ Las fuentes citadas en este documento se listan a continuación en formato APA 7
 \hangindent=1.27cm\hangafter=1 Distribuidora Puelche S.A. (2026b). \textit{Bases Técnicas Transversales de Licitación N° TFEP-01/2026}.\par\medskip
 \hangindent=1.27cm\hangafter=1 Distribuidora Puelche S.A. (2026c). \textit{Caso 02: Logística -- Especificaciones del Problema y Operación de Distribuidora Puelche S.A.}\par\medskip
 \hangindent=1.27cm\hangafter=1 Distribuidora Puelche S.A. (2026d). \textit{Aclaraciones de la Licitación N° TFEP-01/2026}.\par\medskip
+\hangindent=1.27cm\hangafter=1 LafroX. (2026a). \textit{Subdocumento 6: Metodologías}.\par\medskip
+\hangindent=1.27cm\hangafter=1 LafroX. (2026b). \textit{Subdocumento 9: Plan de calidad}.\par\medskip
 \hangindent=1.27cm\hangafter=1 SGS. (2024). \textit{Certificado de Sistema de Gestión de Servicios de TI ISO/IEC 20000-1:2018 N° CL21/8190}. SGS United Kingdom Ltd.\par\medskip
 }
 
@@ -289,9 +302,9 @@ En cumplimiento de la sección 7.2 de las Aclaraciones de la licitación (Distri
 \midrule
 1.1 Presentación & Claude / Gemini & Formato y redacción de capacidades & Bajo & Ninguno & Alex Aravena (JP): Coherencia con líneas de negocio \\
 1.2 Estructura Org. & Claude / Gemini & Organización de la descripción de la estructura corporativa y la dotación técnica & Bajo & Medio & Bastián Trejo (Arq): Revisión de líneas de reporte y distribución de la dotación \\
-1.3 Gobierno interno & Claude / Gemini & Estructuración de políticas y comités & Bajo & Ninguno & Álvaro Catalán (Seg): Verificación normas 27001/CMMI \\
+1.3 Gobierno interno & Claude / Gemini; OpenAI Codex & Estructuración de políticas y comités; vínculo de métodos con procesos certificados y entrega de informes de intrusión & Bajo & Ninguno & Álvaro Catalán (Seg): Verificación normas 27001/CMMI \\
 1.4 Experiencia & Claude / Gemini & Redacción de proyectos equivalentes & Bajo & Ninguno & Alex Aravena (JP): Verificación de volumetrías \\
-1.5 Estructura Proy. & Claude / Gemini & Alineación de roles institucionales & Bajo & Ninguno & Patricio Henríquez (Gest): Trazabilidad con los roles del numeral 19.2 de las Bases Técnicas Transversales \\
+1.5 Estructura Proy. & Claude / Gemini; OpenAI Codex & Alineación de roles institucionales; facultades de ejecución del JP y continuidad de certificaciones personales & Bajo & Ninguno & Patricio Henríquez (Gest): Trazabilidad con los roles del numeral 19.2 de las Bases Técnicas Transversales \\
 1.6 Alianzas & Claude / Gemini & Redacción de convenios de hardware & Bajo & Ninguno & Bastián Trejo (Arq): Coherencia con diseño híbrido \\
 Formulario T-6 & Claude / Gemini & Disposición tabular del formulario & Bajo & Ninguno & Alex Aravena (JP): Validación de los 11 campos exigidos y coherencia con la sección 1.4 \\
 1.5 Estructura Proy., Tabla~\ref{tab:roles_minimos} & Claude Code & Asignación de los roles mínimos del numeral 19.2 & Alto & Ninguno & Revisión humana pendiente de identificar \\
