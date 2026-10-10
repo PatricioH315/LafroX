@@ -83,6 +83,8 @@ Durante la Operación se compromete reducir en al menos 60~\% las horas de cómp
 
 En las cargas variables, Fargate cobra solo mientras las tareas se ejecutan y permite liberar las adicionales cuando termina la demanda; una instancia permanente, en cambio, cobra la capacidad aunque no se use. Por eso las corridas de rutas y el aumento de septiembre usan capacidad bajo demanda, y la capacidad base permanente se cubre con Savings Plans (RT-03.09; Bases Técnicas Transversales, cap. 3, p. 8).
 
+El compromiso de capacidad base mediante Savings Plans y su costo se reflejan en la estructura de costos que se declara en la Oferta Económica (Bases Administrativas, art. 50.2). El valor monetario del ahorro medido en horas de cómputo no productivo, con meta de reducción de al menos 60~\% conforme a S-43, se declara en la Oferta Económica (Bases Administrativas, art. 50.2).
+
 \subsection{Topología de los servicios}
 
 La Figura~\ref{fig:nube} ubica en la topología de AWS los servicios de la Tabla~\ref{tab:servicios-nube} y los recursos de la región secundaria: el borde global, la región primaria sa-east-1 con sus dos zonas de disponibilidad y la región de recuperación us-east-1. Los servicios de gobierno de cuentas de la tabla (Control Tower, Organizations, Cost Explorer y Budgets) se aplican sobre las cuentas y no ocupan un lugar en la topología, por lo que no se dibujan.

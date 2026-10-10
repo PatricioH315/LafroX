@@ -3,7 +3,16 @@
 
 La guía de despacho electrónica debe estar vinculada a la salida de mercadería antes de iniciar el traslado. La aplicación no la emite: M5 entrega los datos de despacho al servicio de integración con el ERP en VM-04 y por la capa anticorrupción al ERP, que conserva la responsabilidad tributaria y devuelve folio, estado y documento. M6 captura después la recepción efectiva, incluidos bultos rechazados, identidad del receptor y evidencia. El acuse técnico de recepción o procesamiento ante el SII y el acuse de recepción de mercaderías del destinatario son hechos distintos; cada uno conserva su origen, fecha y estado.
 
-En este caso, el documento firmado es la guía de despacho electrónica, que firma el ERP como emisor ante el SII. La solución no emite firma electrónica avanzada: la prueba de entrega del receptor es evidencia vinculada a la guía. Se conservan el XML firmado de la guía, el acuse del SII, la evidencia de entrega con su hash, la marca de tiempo del registro, que actúa como sello de tiempo, y la cadena de verificación disponible. Todo se guarda en Amazon S3 con Object Lock durante seis años, según la retención de la Tabla~\ref{tab:jd12}, lo que permite verificar el documento aun después del vencimiento del certificado (RT-16.18; Bases Técnicas Transversales, cap. 16, p. 30).
+La firma se aplica según el acto, conforme a la Ley N.º 19.799 (2002) y al mecanismo que el caso pide proponer para un receptor habitual sin firma electrónica avanzada (RT-16.17; Bases Técnicas Transversales, cap. 16, p. 30; RT-16.14; Bases Técnicas del caso, cap. 15, p. 27):
+
+\begin{itemize}
+  \item Guía de despacho electrónica: es el acto del caso que exige firma electrónica avanzada. La aplica el ERP como emisor ante el SII con el certificado del CLIENTE; la solución no emite firma avanzada. Antes de vincular la guía al despacho, el servicio de integración con el ERP verifica la firma del XML y que el certificado estuviera vigente a la fecha de firma; si la verificación falla, M5 mantiene el despacho bloqueado y lo deriva conforme a 4.1.17.1.
+  \item Acuse de un receptor electrónico habilitado: lo firma el propio receptor y llega por el mecanismo tributario del ERP o por el canal EDI acordado; la solución conserva el XML, verifica su firma y la vigencia del certificado del firmante a la fecha de firma e identifica al firmante (Anexo 4-U).
+  \item Recepción por una persona natural sin firma electrónica avanzada: su firma en pantalla es una firma electrónica simple (Ley N.º 19.799, 2002, art. 2, letra f) que se conserva como evidencia vinculada a la guía, junto con la constancia en representación impresa cuando corresponde; no se le exige firma avanzada, y su valor como acuse depende del mecanismo que acuerde el CLIENTE (consulta V-18 del Subdocumento 3).
+  \item Otros actos: el caso no exige firma avanzada para otros actos de la solución.
+\end{itemize}
+
+Se conservan el XML firmado de la guía, el acuse del SII, la evidencia de entrega con su hash, la marca de tiempo del registro, que actúa como sello de tiempo, y la cadena de verificación disponible. Todo se guarda en Amazon S3 con Object Lock durante seis años, según la retención de la Tabla~\ref{tab:jd12}, lo que permite verificar el documento aun después del vencimiento del certificado (RT-16.18; Bases Técnicas Transversales, cap. 16, p. 30).
 
 \subsubsection{Secuencia y excepciones}
 
@@ -19,6 +28,8 @@ La secuencia lógica es:
 \end{enumerate}
 
 Un mismo identificador de correlación relaciona pedido, guía, entrega, evidencia, acuses y documentos posteriores. El acuse del destinatario se obtiene por el mecanismo que acuerde el CLIENTE conforme a la normativa aplicable; una fotografía o un QR no se presume equivalente por sí solo.
+
+M11 enviará por INT-08/OpenAS2 el acuse comercial digital dentro de los 30 minutos desde la descarga, junto con el aviso de despacho ASN de la misma guía (RNF-12.03, RF-12.09 y RF-12.13; LafroX, 2026c, Anexos 3.A y 3.B). Este plazo no se acredita con el MDN de transporte ni con el acuse tributario.
 
 Si el ERP o su canal tributario no confirma la guía antes de la salida, M5 muestra el despacho como bloqueado y lo deriva al responsable de Operaciones y Tributación para aplicar únicamente la contingencia autorizada por el CLIENTE. La captura offline del POD permite registrar una entrega ya despachada; no autoriza emitir retroactivamente una guía desde el teléfono. Esta separación protege la continuidad de la evidencia sin atribuir a la aplicación facultades tributarias que permanecen en el ERP.
 

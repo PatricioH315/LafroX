@@ -149,6 +149,8 @@ La dimensión 13, «Volumen de datos generado por un dispositivo de reparto en u
 
 La dimensión 14, «Tiempo de sincronización de la flota al regresar al centro de distribución», se expresa en tiempo: cada dispositivo sincroniza en diez minutos con al menos 0,13 Mbps efectivos. Los 64 camiones de la hora punta se reparten por SV-03: aproximadamente 43 en Talca y 21 en Concepción, con 0,93 y 0,47 Mbps respectivamente en la Wi-Fi y el enlace de cada centro. La flota completa requiere 1,40 Mbps en esa hora. La cota de 34 clientes corresponde a la ruta rural más larga descrita en el caso (Bases Técnicas del caso, cap. 8, p. 16, entrevista al conductor de la ruta Cauquenes); en los centros de distribución la sincronización ocurre por Wi-Fi.
 
+El consumo de batería por turno se declara como un máximo comprometido, porque solo puede medirse con la aplicación construida: con la aplicación en uso real, cada terminal de bodega y de preventa termina su turno o su jornada con al menos 20~\% de carga, es decir, consume como máximo el 80~\% de la batería especificada en 4.2.1.2; en reparto, el cargador del vehículo cubre la ruta. Para cumplirlo, la aplicación sincroniza por lotes en lugar de mantener una conexión permanente y el lector se activa solo con el gatillo. La prueba de aceptación lo mide con la unidad de prueba de cada modelo antes de la compra masiva (RT-17.07 y RT-08.15).
+
 \subsection{Capacidad on-premise}
 \label{sec:dimensionamiento-onpremise}
 

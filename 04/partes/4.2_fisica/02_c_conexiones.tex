@@ -56,21 +56,21 @@ Los cinco sitios tienen caminos alternativos hacia la nube. Ninguna instalación
 \subsection{Superficie de exposición}
 \label{sub:superficie}
 
-La Tabla~\ref{tab:superficie} delimita las únicas entradas desde redes externas. Cada entrada usa un subdominio propio del dominio del CLIENTE gestionado en Route 53.
+La Tabla~\ref{tab:superficie} delimita las únicas entradas desde redes externas. Cada entrada usa un subdominio propio del dominio del CLIENTE gestionado en Route 53; en la tabla, \texttt{\textless{}dominio\textgreater{}} representa ese dominio institucional, que el CLIENTE confirma al inicio del proyecto.
 
 \begin{tablalafrox}{Superficie de exposición}{tab:superficie}%
-  {F{0.17} F{0.26} Y F{0.28}}%
-  {\cab{Entrada} & \cab{Servicio y puerto} & \cab{Quién accede} & \cab{Control}}
-  Portales y API & CloudFront, HTTPS 443 & Clientes, transportistas, proveedores y terminales de terreno & WAF, protección contra bots, Shield Advanced y autorizador \\
-  Identidad & OIDC de Keycloak por CloudFront, HTTPS 443 & Personas usuarias & WAF y límites de tasa \\
-  Consolas & Verified Access, HTTPS 443 & Oficina y trabajo remoto & Identidad, MFA y postura \\
-  Canal AS2 & Network Load Balancer, TCP 443 con TLS 1.3 & Cadenas registradas & Lista de IP, certificados, firma y MDN \\
-  Túneles de sitio & VPN del Transit Gateway, IPsec UDP 500 y 4500 & Firewalls D-01 de los cinco sitios & Autenticación IKE y cifrado IPsec \\
+  {F{0.12} F{0.31} F{0.14} Y F{0.16}}%
+  {\cab{Entrada} & \cab{Nombre de dominio (FQDN)} & \cab{Servicio y puerto} & \cab{Quién accede} & \cab{Control}}
+  Portales y API & \texttt{clientes.\textless{}dominio\textgreater{}}, \texttt{transportistas.\textless{}dominio\textgreater{}}, \texttt{proveedores.\textless{}dominio\textgreater{}} y \texttt{api.\textless{}dominio\textgreater{}} & CloudFront, HTTPS 443 & Clientes, transportistas, proveedores y terminales de terreno & WAF, protección contra bots, Shield Advanced y autorizador \\
+  Identidad & \texttt{id.\textless{}dominio\textgreater{}} & OIDC de Keycloak por CloudFront, HTTPS 443 & Personas usuarias & WAF y límites de tasa \\
+  Consolas & \texttt{consola.\textless{}dominio\textgreater{}} y \texttt{admin-id.\textless{}dominio\textgreater{}} (administración de Keycloak) & Verified Access, HTTPS 443 & Oficina y trabajo remoto & Identidad, MFA y postura \\
+  Canal AS2 & \texttt{as2.\textless{}dominio\textgreater{}} & Network Load Balancer, TCP 443 con TLS 1.3 & Cadenas registradas & Lista de IP, certificados, firma y MDN \\
+  Túneles de sitio & Sin nombre de dominio: dos direcciones IP públicas de AWS por túnel, registradas en los firewalls & VPN del Transit Gateway, IPsec UDP 500 y 4500 & Firewalls D-01 de los cinco sitios & Autenticación IKE y cifrado IPsec \\
 \end{tablalafrox}
 
 {\footnotesize Fuente: elaboración propia.\par}
 
-La tabla excluye toda otra entrada desde fuera de la red del CLIENTE. En recuperación ante desastres se activan las mismas entradas en us-east-1. MDM, EDR, SII, Transbank, GIS, notificaciones y telemetría de flota son dependencias de salida, detalladas en el Formulario T-11.
+La tabla excluye toda otra entrada desde fuera de la red del CLIENTE. En recuperación ante desastres se activan las mismas entradas en us-east-1, con los mismos nombres de dominio redirigidos por Route 53. MDM, EDR, SII, Transbank, GIS, notificaciones y telemetría de flota son dependencias de salida, detalladas en el Formulario T-11.
 
 \subsection{Puntos de falla en los sitios y en los enlaces}
 
