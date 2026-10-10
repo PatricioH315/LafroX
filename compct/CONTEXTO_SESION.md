@@ -1,5 +1,104 @@
 # CONTEXTO DE SESIÓN
 
+## Estado vigente — 9 de octubre de 2026: segunda iteración de correcciones SD9 aplicada
+
+Por instrucción del usuario se corrigieron sólo los materiales del SD9 (`09_plan_calidad/`): cuerpo, anexos, T-13 y T-17. No se tocaron otros subdocumentos.
+
+- **Secuencia de pruebas:** en T-13 las pruebas de carga, resiliencia, DR, seguridad, despliegue, aceptación y perfil operacional comienzan después de la integración/regresión de cada etapa; SD9 9.3.2 explicita que la certificación se ejecuta después de integración.
+- **H7/H12:** SD9, T-13 y T-17 exigen repetir antes del cierre de marcha blanca la intrusión por tercero, resiliencia y carga aplicable sobre la versión de cierre; si el alcance se acota por correcciones menores, igual debe haber ejecución e informe, no una mera declaración de ausencia de cambios.
+- **Periodicidad:** DR queda en meses 27, 33, 39, 45, 51 y 54; resiliencia en 26, 32, 38, 44, 50 y 55, con regla de separación máxima de seis meses. Falta fijar días concretos si se quiere acreditar matemáticamente el máximo de seis meses dentro de cada par de meses.
+- **Datos y DR:** se distingue QA/PREPROD/Terreno como ambientes de prueba sin datos productivos no anonimizados, y DR como réplica productiva restringida, auditada y para conmutación real.
+- **Anonimización:** se retiró la presunción de irreversibilidad; Anexo 9.D exige prueba documentada de reidentificación además de Macie y bloquea la carga ante atribución a personas o claves mal protegidas.
+- **Accesibilidad:** cualquier incumplimiento WCAG 2.2 A/AA confirmado por herramienta o revisión manual bloquea G4; regla 9B-23 alineada.
+- **Aceptación:** T-17 y SD9 distinguen H6/H11 como condiciones de entrada a marcha blanca y H7/H12 como cierre con Art. 17.3. H6/H11 separan reversión técnica ≤10 min y reversión operativa documentada.
+- **Referencias internas:** Anexo 9.A reemplazó `Carga_Estres` y `Metricas_Codigo` por referencias a secciones reales.
+
+Verificación: conteo de líneas y marcadores en los cuatro archivos, búsqueda de residuos (`Carga_Estres`, `Metricas_Codigo`, regla WCAG grave, meses 26/33 y 27/34, declaración de ausencia de cambios), y `git diff --check` sobre las cuatro rutas; sin diagnósticos. Persisten 13 celdas `[[REVISIÓN HUMANA]]`, que sólo el equipo puede completar. `09_plan_calidad/` sigue sin seguimiento en Git y contiene `.drawio`/`.xlsx` preexistentes; la regla Markdown-only aplica a creación/edición/versionado, no se modificaron esos binarios. Sin commit.
+
+Cambios recomendados fuera del SD9, no aplicados por alcance: alinear T-14 con los nuevos meses de DR/resiliencia si enumera fechas; revisar T-15 si todavía programa 3.8.4–3.8.8 o 3.9.3–3.9.7 en paralelo con integración; revisar SD4/SD6 si hablan de reutilizar evidencia o de criterios WCAG sólo graves; revisar informes de revisión para reflejar el nuevo estado.
+
+## Estado vigente — 9 de octubre de 2026: correcciones internas del SD9 aplicadas
+
+Por instrucción del usuario se aplicaron sólo las correcciones del SD9: cuerpo, anexos, T-13, T-17 y figuras.
+
+- **Figuras:** se retiró «R18» de las figuras y se definió R18-01 a R18-16 en 9.2.5. La Figura 9.7 Mermaid incluye ahora el ejemplo de RF-09.01, y la 9.9 las pruebas periódicas y los congelamientos de la Operación. Fig_9-7.drawio se regeneró.
+- **Cuerpo:**
+  - la Tabla 9.4 tiene las cuatro métricas DORA (se agregó la frecuencia de despliegue);
+  - 9.1.3 dice ahora «siete de ocho» umbrales de las Bases o del Caso;
+  - ISO/IEC 25012:2008 e ISO 9001:2015 se citan y están en Referencias;
+  - en las puertas G3 y G4 ningún hallazgo de seguridad admite excepción; sólo la regresión de desempeño 9B-22 la admite, también en el Anexo 9.B;
+  - 9.3.2 y el T-13 8.1 fundamentan el H6 y el H11 como primer paso a producción y repiten la intrusión acotada y la resiliencia antes del H7 y del H12 si cambió la superficie expuesta, con cargo a R8-07.
+- **T-13:** define las siglas de los roles.
+- **Anexo 9.D:** deriva los 26 días hábiles.
+
+El Anexo se regenera con `anexos.py` del scratchpad, que ya incluye esos ajustes. Las 14 correcciones pendientes en otros subdocumentos (T-14 1.5.2, SD4 4.1.1 y 4.2.4.1, SD6 6.2.2 y T-10, predecesoras del T-15, SD1 1.3.2 y 1.4, SD3 3.2, 3.J y RNF-14.07, T-12 RNF-06.02/06.03/11.03/11.04, T-14 3.8.7/3.9.1/3.9.6, SD6 6.1.3 y T-15 3.7.3) están listadas al final de `Revision/revision_comision_informe2_SD9.md`. Siguen abiertas las 13 celdas `[[REVISIÓN HUMANA]]` y las páginas de las citas a las Bases. Sin commit.
+
+## Estado vigente — 9 de octubre de 2026: figuras draw.io del SD9 y revisión de la Comisión
+
+**Figuras.** Se crearon las 10 figuras en `09_plan_calidad/Diagramas/` (Fig_9-1 a Fig_9-10, `.drawio`), con el estilo del SD7 y texto de 10 a 14 pt. Son XML válido y se revisaron visualmente con el visor de draw.io. Difieren en detalle de las figuras Mermaid del Markdown (9.4, 9.7 y 9.9 traen más contenido).
+
+**Revisión.** `Revision/revision_comision_informe2_SD9.md` aplica el prompt del Informe 2. Puntaje 0 por el §7.1: 13 celdas `[[REVISIÓN HUMANA]]` y «R18» sin glosario en las figuras 9.6 y 9.7. El diagnóstico de contenido es 20 por contradicciones con otros documentos:
+- cobertura: SD9 dice global y el T-14 1.5.2 dice «código modificado»;
+- en G3, el Líder de Calidad puede levantar una vulnerabilidad alta de imagen, y eso choca con el SD6 6.2.2 y el RT-04.05;
+- 16 herramientas no figuran en el SD4 4.1.1 ni en el SD6;
+- el T-15 programa 3.8.4–3.8.8 y 3.9.3–3.9.7 en paralelo con 3.8.1 y 3.9.1, contra la puerta G4.
+
+Errores menores:
+- la Tabla 9.4 trae tres métricas DORA, no cuatro;
+- el conteo «seis de ocho» de 9.1.3 está mal;
+- ISO/IEC 25012 e ISO 9001 no están en Referencias;
+- DES no se define en el T-13;
+- falta derivar los 26 días hábiles;
+- 18 de 27 citas a las Bases no indican página.
+
+RNF-14.06 ya dice «anual»; sólo el SD1 1.3.2 dice semestral. No se modificó ningún entregable en la revisión. Sin commit.
+
+## Estado vigente — 9 de octubre de 2026: SD9 completo (cuerpo, anexos, T-13 y T-17)
+
+Se crearon tres archivos en `09_plan_calidad/`:
+- `LAFROX-Subdocumento9-Anexos.md`, con cuatro anexos:
+  - 9.A: 29 métricas ISO 25010.
+  - 9.B: 24 reglas de análisis y la configuración de las herramientas.
+  - 9.C: matriz de 645 IDs generada desde el T-12 y las prioridades del SD3. Da 605 IDs con prueba, 31 «No cumple» y 9 absorbidos o alias, con 1.192 casos más 90 de contrato, en total 1.282.
+  - 9.D: 10 juegos de datos y reglas de anonimización.
+- `LAFROX-Formulario-T-13.md`, con niveles, ambientes, criterios de entrada y salida, automatización y calendario con fechas del T-15 y meses de la Operación.
+- `LAFROX-Formulario-T-17.md`, con el procedimiento del Art. 18, fichas de H1 a H12 y los R18 del producto final.
+
+El cuerpo se ajustó a 1.282 casos, a 1.026 automatizados y a 64 HH manuales. La planilla quedó actualizada en `Diagramas/`.
+
+Inconsistencias nuevas:
+- RNF-06.02, 06.03, 11.03 y 11.04 aparecen como «Cumple» con componente propio en el T-12, pero el SD3 (Tabla 3.A.5a) los declara absorbidos o alias.
+- El SD3 cuenta 261 requisitos y el T-12 tiene 271 filas.
+
+Faltan los .drawio y la revisión humana.
+
+## Estado anterior — 9 de octubre de 2026: cuerpo del SD9 redactado
+
+Se creó `09_plan_calidad/LAFROX-Subdocumento9.md`, con introducción y las secciones 9.1 (marco, madurez CMMI/TMMi, ISO 25010, métricas de código, proceso y COQ), 9.2 (puertas G0–G6, análisis, 29119, datos de prueba, trazabilidad, defectos) y 9.3 (EDT, hitos, Operación). Tiene 10 figuras Mermaid (9.1–9.10), 9 tablas, referencias APA y la declaración de IA con `[[REVISIÓN HUMANA]]`.
+
+Cifras del documento, tomadas de la planilla:
+- 21,99 TPS, 1.163 usuarios, 237 dispositivos, 43,98 TPS a 3× y 10,41 TPS en la ventana de despacho;
+- presupuesto de error de 43,2 min;
+- 1.288 casos y regresión de 4,3 h con dos ejecutores;
+- 10.848 HH de calidad (5,0 %);
+- COQ: prevención 3.984, evaluación 6.864, fallas internas 358,4 y externas 2.956,8;
+- holgura de H1 −4 y de H8 −6.
+
+El T-12 vigente tiene RT 242/104/28, RF 136/44/1 y RNF 64/24/2. La planilla se regeneró con esos valores y con la hoja de ejecutores paralelos, pero el archivo de la carpeta estaba abierto en Excel y no se pudo reemplazar.
+
+Faltan: Anexos 9.A–9.D, Formularios T-13 y T-17, los .drawio de las figuras, y la propagación de las decisiones de cobertura y pentest a T-14, SD4, SD1 y RNF-14.06. Sin commit.
+
+## Estado vigente — 9 de octubre de 2026: plan del SD9 y planilla de cálculos
+
+Se planificó el SD9 «Plan de calidad». El plan está en `compct/plan_SD9.md` y cubre la estructura 9.1–9.3, las preguntas por sección, las 10 figuras draw.io, los datos obligatorios, los cálculos y las inconsistencias. Se creó `09_plan_calidad/Diagramas/LafroX-Calculos-SD9.xlsx`, con 14 hojas y fórmulas vivas que leen de la hoja Datos_Base. Valores verificados con pycel:
+- carga a 1,5×: 21,99 TPS, 1.163 usuarios y 237 dispositivos;
+- presupuesto de error crítico: 43,2 min al mes;
+- HH: 4.656 HH CAL y 10.848 HH ligadas a calidad (5,0 % de 216.935);
+- calendario: 6 pruebas DR, 36 restauraciones, 3 pentests y 6 pruebas de resiliencia en Operación, sin conflictos con congelamientos;
+- H1 y H8 con holgura negativa ante observaciones (revisión anticipada).
+
+Decisiones del usuario: cobertura ≥70 % en lógica de negocio Y ≥80 % unitaria global; pentest anual y antes de cada paso a producción. Las correcciones a T-14 1.5.2, SD4 §4.2.4, SD1 §1.3 y RNF-14.06 quedan para la etapa de redacción. Los supuestos (casos por requisito, umbrales de complejidad, duplicación y deuda, meses de las pruebas en Operación) están en amarillo y deben confirmarse. Aún no se redactan el SD9, el T-13, el T-17 ni los .drawio. Sin commit.
+
 ## Estado vigente — 9 de octubre de 2026: correcciones y segunda revisión de coherencia SD4
 
 Por instrucción del usuario se corrigieron SD4 cuerpo/anexos/T-11, SD5 cuerpo/anexos, T-12 y los cuatro resúmenes afectados en `rama-md`, preservando cambios preexistentes. Se distinguió recuperación funcional crítica ≤4 h e histórico completo ≤8 h; promoción con exclusión comprobada y retorno como réplica; calendario sin excepciones supuestas y plazos de vulnerabilidades desde publicación/detección; dotación mes 25 de 19/21; canales comunes y bajas persistentes; ficha/rango térmico versionados y regla PREVENTIVA_FICHA sin aprobador. RT-16.02, RT-16.21 y RF-17.10 pasan a Cumple; RT-11.04 sigue parcial por la aclaración contractual pendiente. T-12 conserva sus 645 IDs y descripciones: A 200/68/3; B 242/104/28.
