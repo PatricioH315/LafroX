@@ -102,7 +102,7 @@ La oferta de LafroX cuenta con tres líneas de negocio especializadas:
 Para soportar estas líneas, LafroX dispone de capacidad instalada distribuida y de un catálogo de productos y servicios que se describe a continuación.
 
 - **Infraestructura y ambientes:** Plataforma de cómputo en nube pública y dos centros de datos (primario y secundario en configuración activo-pasivo) que soportan cinco ambientes segregados: Desarrollo (DEV), Aseguramiento de Calidad (QA), Preproducción (PREPROD), Producción (PROD) y Recuperación ante Desastres (DR). La capacitación utiliza datos ficticios en un espacio aislado del ambiente que corresponda; no constituye un sexto ambiente. El entorno DR es sometido a auditorías y simulacros semestrales, con objetivos de RTO ≤ 4 horas y RPO ≤ 15 minutos.
-- **Centro de Operaciones y Mesa de Servicios:** Centro de Operaciones de Red (NOC) y Mesa de Servicios con niveles de escalamiento L1, L2 y L3. Para Puelche, los incidentes de severidad crítica y alta se atienden 24×7×365, como exige el Artículo 78.2 de las Bases Administrativas; la mesa de servicio atiende al usuario de 04:00 a 22:00 de lunes a sábado, con cobertura 24×7 en septiembre y diciembre (Subdocumento 3, sección 3.4.5). Su capacidad se recalibra con los tickets observados en la marcha blanca; la capacidad corporativa no constituye un compromiso de volumen para el CLIENTE.
+- **Centro de Operaciones y Mesa de Servicios:** Centro de Operaciones de Red (NOC), Centro de Operaciones de Seguridad (SOC) y Mesa de Servicios con niveles de escalamiento L1, L2 y L3, en el Centro de Operaciones de LafroX en Valparaíso (Av. Brasil 2241). Para Puelche, los incidentes de severidad crítica y alta se atienden 24×7×365, como exige el Artículo 78.2 de las Bases Administrativas; la mesa de servicio atiende al usuario de 04:00 a 22:00 de lunes a sábado, con cobertura 24×7 en septiembre y diciembre (Subdocumento 3, sección 3.4.5). Su capacidad se recalibra con los tickets observados en la marcha blanca; la capacidad corporativa no constituye un compromiso de volumen para el CLIENTE.
 
 El catálogo de la empresa se organiza en productos de software, servicios profesionales y servicios de infraestructura y conectividad.
 
@@ -154,13 +154,13 @@ Para sostener estos procesos, la dotación técnica de 124 ingenieros y especial
 |---|---|---|---:|
 | División de Ingeniería | Desarrollo Software (PHP/Laravel, móvil Kotlin) | Sede Central (Santiago) | 48 |
 | División de Ingeniería | Arquitectura de Solución e Integración | Sede Central (Santiago) | 15 |
-| División de Infraestructura | Centro de Operaciones de Red (NOC 24×7) | Centro de Operaciones | 32 |
-| División de Infraestructura | Ingeniería de Confiabilidad (SRE) y Cloud | Centro de Operaciones | 12 |
+| División de Infraestructura | Centro de Operaciones de Red (NOC 24×7) | Centro de Operaciones (Valparaíso) | 32 |
+| División de Infraestructura | Ingeniería de Confiabilidad (SRE) y Cloud | Centro de Operaciones (Valparaíso) | 12 |
 | División de Calidad (QA) | Aseguramiento y Automatización de Pruebas | Sede Central (Santiago) | 10 |
 | Oficialía de Seguridad | CISO y Especialistas en Ciberseguridad | Sede Central (Santiago) | 7 |
 | **Total dotación técnica** |  |  | **124** |
 
-A partir de los datos presentados en la Tabla 1.1, el Centro de Operaciones de Red concentra 32 profesionales para monitoreo y resolución de incidentes. Su programación de turnos y respaldos se ajusta en cada contrato de operación; para Puelche, el monitoreo es 24×7 y el horario de la mesa de servicio es el declarado en el Subdocumento 3, sección 3.4.5.
+A partir de los datos presentados en la Tabla 1.1, el Centro de Operaciones de Red concentra 32 profesionales para monitoreo y resolución de incidentes. Su programación de turnos y respaldos se ajusta en cada contrato de operación; para Puelche, el monitoreo es 24×7 y el horario de la mesa de servicio es el declarado en el Subdocumento 3, sección 3.4.5. El mismo centro aloja el puesto SOC 24×7 de Puelche, propio de LafroX, con analistas contratados para el proyecto bajo la dirección del Encargado de Seguridad de la Información.
 
 ## 1.3 Gobierno interno Calidad, Seguridad y Conocimiento
 

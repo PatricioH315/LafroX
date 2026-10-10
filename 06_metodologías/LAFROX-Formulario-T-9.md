@@ -91,7 +91,7 @@ La siguiente tabla reproduce las responsabilidades, necesidades, plazos y eviden
 | Acuerdos con los diez transportistas | Uso de terminales y suplentes enrolados | LafroX con el CLIENTE (5.4.1); Implantación. Antes de H6. Paquetes 4.2.1, ola de reparto. Diez acuerdos firmados. |
 | Acta con el sindicato | Terminales, GPS y cámaras | CLIENTE y sindicato (5.4.2); Implantación. Antes de H6. Paquete 4.2.1. Acta firmada. |
 | Custodia de fuentes | Continuidad ante insolvencia o incumplimiento | LafroX (5.4.4); jefe de proyecto. Antes de H4. Paquete 9.2. Contrato y primer depósito. |
-| Servicio SOC 24×7, condicional a subcontratación | Monitoreo de seguridad desde el mes 13 | LafroX (8.1.5; RT-11.17 de cumplimiento parcial por ubicación no declarada). Encargado de Seguridad. Mes 13. No se acredita como contratado ni plenamente conforme; cobertura y niveles de servicio quedan sujetos a contratación. |
+| Analistas del SOC 24×7 propio | Monitoreo de seguridad desde el mes 13 | LafroX (8.1.5; RT-11.17). Encargado de Seguridad. Antes del mes 13. SOC propio en el Centro de Operaciones de LafroX en Valparaíso; evidencia: contratos de los analistas y turnos 24×7 asignados antes de la primera marcha blanca. |
 
 ## 5. Gestión de integración y control de cambios
 

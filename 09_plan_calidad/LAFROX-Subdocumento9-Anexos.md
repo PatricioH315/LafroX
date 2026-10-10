@@ -241,7 +241,7 @@ La Tabla 9.C.2 presenta la matriz completa, en el orden del Formulario T-12.
 | RF-09.02 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 | H4 · H5 | 5 |
 | RF-09.03 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 | H4 · H5 | 5 |
 | RF-09.04 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 | H4 · H5 | 5 |
-| RF-09.05 | Cumple parcialmente | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 | H4 · H5 | 5 |
+| RF-09.05 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 | H4 · H5 | 5 |
 | RF-09.06 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 | H4 · H5 | 2 |
 | RF-09.07 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 | H4 · H5 | 5 |
 | RF-09.08 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 | H4 · H5 | 5 |
@@ -300,7 +300,7 @@ La Tabla 9.C.2 presenta la matriz completa, en el orden del Formulario T-12.
 | RF-14.06 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 | H4 · H5 | 2 |
 | RF-14.01-BTT | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 · 3.9.1 · 3.9.2 | H4 · H5 · H9 · H10 | 3 |
 | RF-14.02-BTT | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 · 3.9.1 · 3.9.2 | H4 · H5 · H9 · H10 | 3 |
-| RF-14.03-BTT | Cumple parcialmente | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 · 3.9.1 · 3.9.2 | H4 · H5 · H9 · H10 | 3 |
+| RF-14.03-BTT | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 · 3.9.1 · 3.9.2 | H4 · H5 · H9 · H10 | 3 |
 | RF-14.04-BTT | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 · 3.9.1 · 3.9.2 | H4 · H5 · H9 · H10 | 3 |
 | RF-14.05-BTT | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 · 3.9.1 · 3.9.2 | H4 · H5 · H9 · H10 | 3 |
 | RF-15.01 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 · 3.9.1 · 3.9.2 | H4 · H5 · H9 · H10 | 3 |
@@ -330,7 +330,7 @@ La Tabla 9.C.2 presenta la matriz completa, en el orden del Formulario T-12.
 | RF-18.03 | Cumple parcialmente | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 · 3.9.1 · 3.9.2 | H4 · H5 · H9 · H10 | 3 |
 | RF-19.01 | Cumple | Se verifica con RT-11.03 | — | — | — | 0 |
 | RF-19.02 | Cumple | Se verifica con RT-11.05 | — | — | — | 0 |
-| RF-19.03 | Cumple parcialmente | Se verifica con RT-11.13 | — | — | — | 0 |
+| RF-19.03 | Cumple | Se verifica con RT-11.13 | — | — | — | 0 |
 | RF-19.04 | Cumple | Se verifica con RT-11.18 | — | — | — | 0 |
 | RF-19.05 | Cumple | Se verifica con RT-11.19 | — | — | — | 0 |
 | RNF-01.01 | Cumple | Carga a 1,5× el peak y estrés | PREPROD | 3.8.4 | H5 | 3 |
@@ -372,11 +372,11 @@ La Tabla 9.C.2 presenta la matriz completa, en el orden del Formulario T-12.
 | RNF-13.07 | Cumple | Recuperación ante desastres con conmutación real | DR | 3.8.5 · 3.9.4 | H5 · H10 | 3 |
 | RNF-13.08 | Cumple | Inspección del expediente de certificación | — | 3.8.7 · 3.9.6 | H5 · H10 | 3 |
 | RNF-13.09 | Cumple | Inspección del expediente de certificación | — | 3.8.7 · 3.9.6 | H5 · H10 | 3 |
-| RNF-14.01 | Cumple parcialmente | Carga a 1,5× el peak y estrés | PREPROD | 3.8.4 · 3.9.3 | H5 · H10 | 5 |
+| RNF-14.01 | Cumple | Carga a 1,5× el peak y estrés | PREPROD | 3.8.4 · 3.9.3 | H5 · H10 | 5 |
 | RNF-14.02 | Cumple | Revisión de configuración, SAST/DAST y pentest | QA · PREPROD | 3.8.6 · 3.9.5 | H5 · H10 | 5 |
 | RNF-14.03 | Cumple | Prueba funcional en marcha blanca | PROD | 4.2 · 4.3 | H7 · H12 | 3 |
 | RNF-14.04 | Cumple | Revisión de configuración, SAST/DAST y pentest | QA · PREPROD | 3.8.6 · 3.9.5 | H5 · H10 | 3 |
-| RNF-14.05 | Cumple parcialmente | Carga a 1,5× el peak y estrés | PREPROD | 3.8.4 · 3.9.3 | H5 · H10 | 3 |
+| RNF-14.05 | Cumple | Carga a 1,5× el peak y estrés | PREPROD | 3.8.4 · 3.9.3 | H5 · H10 | 3 |
 | RNF-14.06 | Cumple | Inspección del expediente de certificación | — | 3.8.7 · 3.9.6 | H5 · H10 | 3 |
 | RNF-14.07 | Cumple | SAST en G2 y DAST en G4 | QA | 1.5.2 · 3.8.6 | H4 · H5 | 3 |
 | RNF-14.08 | Cumple | Prueba funcional en marcha blanca | PROD | 4.2 · 4.3 | H7 · H12 | 3 |
@@ -402,9 +402,9 @@ La Tabla 9.C.2 presenta la matriz completa, en el orden del Formulario T-12.
 | RNF-20.03 | Cumple | Inspección del expediente de certificación | — | 3.8.7 · 3.9.6 | H5 · H10 | 5 |
 | RNF-20.04 | Cumple | Carga a 1,5× el peak y estrés | PREPROD | 3.8.4 · 3.9.3 | H5 · H10 | 3 |
 | RNF-20.05 | Cumple | Inspección del expediente de certificación | — | 3.8.7 · 3.9.6 | H5 · H10 | 3 |
-| RNF-20.06 | Cumple parcialmente | Inspección del expediente de certificación | — | 3.8.7 · 3.9.6 | H5 · H10 | 5 |
+| RNF-20.06 | Cumple | Inspección del expediente de certificación | — | 3.8.7 · 3.9.6 | H5 · H10 | 5 |
 | RNF-20.07 | Cumple | Recuperación ante desastres con conmutación real | DR | 3.8.5 · 3.9.4 | H5 · H10 | 5 |
-| RNF-21.01 | Cumple parcialmente | Inspección del expediente de certificación | — | 3.8.7 · 3.9.6 | H5 · H10 | 5 |
+| RNF-21.01 | Cumple | Inspección del expediente de certificación | — | 3.8.7 · 3.9.6 | H5 · H10 | 5 |
 | RNF-21.02 | No cumple | Sin prueba: no ofertado | — | — | — | 0 |
 | RNF-21.03 | Cumple | Carga a 1,5× el peak y estrés | PREPROD | 3.8.4 · 3.9.3 | H5 · H10 | 3 |
 | RNF-21.04 | Cumple | Prueba funcional en marcha blanca | PROD | 4.2 · 4.3 | H7 · H12 | 3 |
@@ -419,10 +419,10 @@ La Tabla 9.C.2 presenta la matriz completa, en el orden del Formulario T-12.
 | RNF-22.04 | Cumple | Prueba funcional en marcha blanca | PROD | 4.2 · 4.3 | H7 · H12 | 3 |
 | RNF-22.05 | Cumple | Prueba funcional en marcha blanca | PROD | 4.2 · 4.3 | H7 · H12 | 3 |
 | RNF-22.06 | Cumple | Prueba funcional en marcha blanca | PROD | 4.2 · 4.3 | H7 · H12 | 3 |
-| RNF-23.01 | Cumple parcialmente | Inspección del expediente de certificación | — | 3.8.7 · 3.9.6 | H5 · H10 | 3 |
-| RNF-23.02 | Cumple parcialmente | Inspección del expediente de certificación | — | 3.8.7 · 3.9.6 | H5 · H10 | 3 |
+| RNF-23.01 | Cumple | Inspección del expediente de certificación | — | 3.8.7 · 3.9.6 | H5 · H10 | 3 |
+| RNF-23.02 | Cumple | Inspección del expediente de certificación | — | 3.8.7 · 3.9.6 | H5 · H10 | 3 |
 | RNF-23.03 | Cumple | Inspección del expediente de certificación | — | 3.8.7 · 3.9.6 | H5 · H10 | 3 |
-| RNF-23.04 | Cumple parcialmente | Inspección del expediente de certificación | — | 3.8.7 · 3.9.6 | H5 · H10 | 3 |
+| RNF-23.04 | Cumple | Inspección del expediente de certificación | — | 3.8.7 · 3.9.6 | H5 · H10 | 3 |
 | RT-02.01 | Cumple | Revisión de arquitectura y prueba de integración | QA | 2.1 · 3.8.1 | H2 · H4 | 1 |
 | RT-02.02 | Cumple | Revisión de arquitectura y prueba de integración | QA | 2.1 · 3.8.1 | H2 · H4 | 1 |
 | RT-02.03 | Cumple | Revisión de arquitectura y prueba de integración | QA | 2.1 · 3.8.1 | H2 · H4 | 1 |
@@ -508,7 +508,7 @@ La Tabla 9.C.2 presenta la matriz completa, en el orden del Formulario T-12.
 | RT-06.01 | Cumple | Inspección y recepción técnica del recinto | Sitio Talca | Cuentas 5 y 6 | H3 | 1 |
 | RT-06.02 | Cumple | Inspección y recepción técnica del recinto | Sitio Talca | Cuentas 5 y 6 | H3 | 1 |
 | RT-06.03 | Cumple | Inspección y recepción técnica del recinto | Sitio Talca | Cuentas 5 y 6 | H3 | 1 |
-| RT-06.04 | Cumple parcialmente | Inspección y recepción técnica del recinto | Sitio Talca | Cuentas 5 y 6 | H3 | 1 |
+| RT-06.04 | Cumple | Inspección y recepción técnica del recinto | Sitio Talca | Cuentas 5 y 6 | H3 | 1 |
 | RT-06.05 | Cumple | Inspección y recepción técnica del recinto | Sitio Talca | Cuentas 5 y 6 | H3 | 1 |
 | RT-06.06 | Cumple | Inspección y recepción técnica del recinto | Sitio Talca | Cuentas 5 y 6 | H3 | 1 |
 | RT-06.07 | Cumple | Inspección y recepción técnica del recinto | Sitio Talca | Cuentas 5 y 6 | H3 | 1 |
@@ -533,7 +533,7 @@ La Tabla 9.C.2 presenta la matriz completa, en el orden del Formulario T-12.
 | RT-06.26 | Cumple | Inspección y recepción técnica del recinto | Sitio Talca | Cuentas 5 y 6 | H3 | 1 |
 | RT-06.27 | Cumple | Inspección y recepción técnica del recinto | Sitio Talca | Cuentas 5 y 6 | H3 | 1 |
 | RT-06.28 | Cumple | Inspección y recepción técnica del recinto | Sitio Talca | Cuentas 5 y 6 | H3 | 1 |
-| RT-06.29 | Cumple parcialmente | Inspección y recepción técnica del recinto | Sitio Talca | Cuentas 5 y 6 | H3 | 1 |
+| RT-06.29 | Cumple | Inspección y recepción técnica del recinto | Sitio Talca | Cuentas 5 y 6 | H3 | 1 |
 | RT-06.30 | Cumple | Inspección y recepción técnica del recinto | Sitio Talca | Cuentas 5 y 6 | H3 | 1 |
 | RT-06.31 | Cumple | Inspección y recepción técnica del recinto | Sitio Talca | Cuentas 5 y 6 | H3 | 1 |
 | RT-06.32 | Cumple | Inspección y recepción técnica del recinto | Sitio Talca | Cuentas 5 y 6 | H3 | 1 |
@@ -542,7 +542,7 @@ La Tabla 9.C.2 presenta la matriz completa, en el orden del Formulario T-12.
 | RT-07.01 | Cumple | Recuperación ante desastres y restauración | DR | 3.8.5 · 3.9.4 · 8.1.3 · 8.1.6 | H5 · H10 · semestral | 1 |
 | RT-07.02 | Cumple | Recuperación ante desastres y restauración | DR | 3.8.5 · 3.9.4 · 8.1.3 · 8.1.6 | H5 · H10 · semestral | 1 |
 | RT-07.03 | Cumple | Recuperación ante desastres y restauración | DR | 3.8.5 · 3.9.4 · 8.1.3 · 8.1.6 | H5 · H10 · semestral | 1 |
-| RT-07.04 | Cumple parcialmente | Recuperación ante desastres y restauración | DR | 3.8.5 · 3.9.4 · 8.1.3 · 8.1.6 | H5 · H10 · semestral | 1 |
+| RT-07.04 | Cumple | Recuperación ante desastres y restauración | DR | 3.8.5 · 3.9.4 · 8.1.3 · 8.1.6 | H5 · H10 · semestral | 1 |
 | RT-07.05 | Cumple | Recuperación ante desastres y restauración | DR | 3.8.5 · 3.9.4 · 8.1.3 · 8.1.6 | H5 · H10 · semestral | 1 |
 | RT-07.06 | Cumple | Recuperación ante desastres y restauración | DR | 3.8.5 · 3.9.4 · 8.1.3 · 8.1.6 | H5 · H10 · semestral | 1 |
 | RT-07.07 | Cumple | Recuperación ante desastres y restauración | DR | 3.8.5 · 3.9.4 · 8.1.3 · 8.1.6 | H5 · H10 · semestral | 1 |
@@ -562,11 +562,11 @@ La Tabla 9.C.2 presenta la matriz completa, en el orden del Formulario T-12.
 | RT-08.07 | Cumple | Recepción técnica y prueba de dispositivos | Terreno | 3.8.3 | H5 | 1 |
 | RT-08.08 | Cumple | Recepción técnica y prueba de dispositivos | Terreno | 3.8.3 | H5 | 1 |
 | RT-08.09 | Cumple | Recepción técnica y prueba de dispositivos | Terreno | 3.8.3 | H5 | 1 |
-| RT-08.10 | Cumple parcialmente | Recepción técnica y prueba de dispositivos | Terreno | 3.8.3 | H5 | 1 |
-| RT-08.11 | Cumple parcialmente | Recepción técnica y prueba de dispositivos | Terreno | 3.8.3 | H5 | 1 |
-| RT-08.12 | Cumple parcialmente | Recepción técnica y prueba de dispositivos | Terreno | 3.8.3 | H5 | 1 |
+| RT-08.10 | Cumple | Recepción técnica y prueba de dispositivos | Terreno | 3.8.3 | H5 | 1 |
+| RT-08.11 | Cumple | Recepción técnica y prueba de dispositivos | Terreno | 3.8.3 | H5 | 1 |
+| RT-08.12 | Cumple | Recepción técnica y prueba de dispositivos | Terreno | 3.8.3 | H5 | 1 |
 | RT-08.13 | Cumple | Recepción técnica y prueba de dispositivos | Terreno | 3.8.3 | H5 | 1 |
-| RT-08.14 | Cumple parcialmente | Recepción técnica y prueba de dispositivos | Terreno | 3.8.3 | H5 | 1 |
+| RT-08.14 | Cumple | Recepción técnica y prueba de dispositivos | Terreno | 3.8.3 | H5 | 1 |
 | RT-08.15 | Cumple | Recepción técnica y prueba de dispositivos | Terreno | 3.8.3 | H5 | 1 |
 | RT-08.16 | Cumple | Recepción técnica y prueba de dispositivos | Terreno | 3.8.3 | H5 | 1 |
 | RT-08.17 | Cumple | Recepción técnica y prueba de dispositivos | Terreno | 3.8.3 | H5 | 1 |
@@ -594,20 +594,20 @@ La Tabla 9.C.2 presenta la matriz completa, en el orden del Formulario T-12.
 | RT-11.01 | Cumple | SAST, SCA, DAST y prueba de intrusión | QA · PREPROD | 1.5.2 · 3.8.6 · 3.9.5 · 8.2.2 | H5 · H10 · anual | 1 |
 | RT-11.02 | Cumple | SAST, SCA, DAST y prueba de intrusión | QA · PREPROD | 1.5.2 · 3.8.6 · 3.9.5 · 8.2.2 | H5 · H10 · anual | 1 |
 | RT-11.03 | Cumple | SAST, SCA, DAST y prueba de intrusión | QA · PREPROD | 1.5.2 · 3.8.6 · 3.9.5 · 8.2.2 | H5 · H10 · anual | 1 |
-| RT-11.04 | Cumple parcialmente | SAST, SCA, DAST y prueba de intrusión | QA · PREPROD | 1.5.2 · 3.8.6 · 3.9.5 · 8.2.2 | H5 · H10 · anual | 1 |
+| RT-11.04 | Cumple | SAST, SCA, DAST y prueba de intrusión | QA · PREPROD | 1.5.2 · 3.8.6 · 3.9.5 · 8.2.2 | H5 · H10 · anual | 1 |
 | RT-11.05 | Cumple | SAST, SCA, DAST y prueba de intrusión | QA · PREPROD | 1.5.2 · 3.8.6 · 3.9.5 · 8.2.2 | H5 · H10 · anual | 1 |
 | RT-11.06 | Cumple | SAST, SCA, DAST y prueba de intrusión | QA · PREPROD | 1.5.2 · 3.8.6 · 3.9.5 · 8.2.2 | H5 · H10 · anual | 1 |
 | RT-11.07 | Cumple | SAST, SCA, DAST y prueba de intrusión | QA · PREPROD | 1.5.2 · 3.8.6 · 3.9.5 · 8.2.2 | H5 · H10 · anual | 1 |
-| RT-11.08 | Cumple parcialmente | SAST, SCA, DAST y prueba de intrusión | QA · PREPROD | 1.5.2 · 3.8.6 · 3.9.5 · 8.2.2 | H5 · H10 · anual | 1 |
+| RT-11.08 | Cumple | SAST, SCA, DAST y prueba de intrusión | QA · PREPROD | 1.5.2 · 3.8.6 · 3.9.5 · 8.2.2 | H5 · H10 · anual | 1 |
 | RT-11.09 | Cumple | SAST, SCA, DAST y prueba de intrusión | QA · PREPROD | 1.5.2 · 3.8.6 · 3.9.5 · 8.2.2 | H5 · H10 · anual | 1 |
 | RT-11.10 | Cumple | SAST, SCA, DAST y prueba de intrusión | QA · PREPROD | 1.5.2 · 3.8.6 · 3.9.5 · 8.2.2 | H5 · H10 · anual | 1 |
 | RT-11.11 | Cumple | SAST, SCA, DAST y prueba de intrusión | QA · PREPROD | 1.5.2 · 3.8.6 · 3.9.5 · 8.2.2 | H5 · H10 · anual | 1 |
 | RT-11.12 | Cumple | SAST, SCA, DAST y prueba de intrusión | QA · PREPROD | 1.5.2 · 3.8.6 · 3.9.5 · 8.2.2 | H5 · H10 · anual | 1 |
-| RT-11.13 | Cumple parcialmente | SAST, SCA, DAST y prueba de intrusión | QA · PREPROD | 1.5.2 · 3.8.6 · 3.9.5 · 8.2.2 | H5 · H10 · anual | 1 |
+| RT-11.13 | Cumple | SAST, SCA, DAST y prueba de intrusión | QA · PREPROD | 1.5.2 · 3.8.6 · 3.9.5 · 8.2.2 | H5 · H10 · anual | 1 |
 | RT-11.14 | Cumple | SAST, SCA, DAST y prueba de intrusión | QA · PREPROD | 1.5.2 · 3.8.6 · 3.9.5 · 8.2.2 | H5 · H10 · anual | 1 |
 | RT-11.15 | Cumple | SAST, SCA, DAST y prueba de intrusión | QA · PREPROD | 1.5.2 · 3.8.6 · 3.9.5 · 8.2.2 | H5 · H10 · anual | 1 |
-| RT-11.16 | Cumple parcialmente | SAST, SCA, DAST y prueba de intrusión | QA · PREPROD | 1.5.2 · 3.8.6 · 3.9.5 · 8.2.2 | H5 · H10 · anual | 1 |
-| RT-11.17 | Cumple parcialmente | SAST, SCA, DAST y prueba de intrusión | QA · PREPROD | 1.5.2 · 3.8.6 · 3.9.5 · 8.2.2 | H5 · H10 · anual | 1 |
+| RT-11.16 | Cumple | SAST, SCA, DAST y prueba de intrusión | QA · PREPROD | 1.5.2 · 3.8.6 · 3.9.5 · 8.2.2 | H5 · H10 · anual | 1 |
+| RT-11.17 | Cumple | SAST, SCA, DAST y prueba de intrusión | QA · PREPROD | 1.5.2 · 3.8.6 · 3.9.5 · 8.2.2 | H5 · H10 · anual | 1 |
 | RT-11.18 | Cumple | SAST, SCA, DAST y prueba de intrusión | QA · PREPROD | 1.5.2 · 3.8.6 · 3.9.5 · 8.2.2 | H5 · H10 · anual | 1 |
 | RT-11.19 | Cumple | SAST, SCA, DAST y prueba de intrusión | QA · PREPROD | 1.5.2 · 3.8.6 · 3.9.5 · 8.2.2 | H5 · H10 · anual | 1 |
 | RT-11.20 | Cumple | SAST, SCA, DAST y prueba de intrusión | QA · PREPROD | 1.5.2 · 3.8.6 · 3.9.5 · 8.2.2 | H5 · H10 · anual | 1 |
@@ -702,7 +702,7 @@ La Tabla 9.C.2 presenta la matriz completa, en el orden del Formulario T-12.
 | RT-17.04 | Cumple | Perfil operacional móvil | Terreno | 3.8.3 | H5 | 1 |
 | RT-17.05 | Cumple | Perfil operacional móvil | Terreno | 3.8.3 | H5 | 1 |
 | RT-17.06 | Cumple | Perfil operacional móvil | Terreno | 3.8.3 | H5 | 1 |
-| RT-17.07 | Cumple parcialmente | Perfil operacional móvil | Terreno | 3.8.3 | H5 | 1 |
+| RT-17.07 | Cumple | Perfil operacional móvil | Terreno | 3.8.3 | H5 | 1 |
 | RT-17.08 | Cumple | Perfil operacional móvil | Terreno | 3.8.3 | H5 | 1 |
 | RT-18.01 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 | H4 · H5 | 1 |
 | RT-18.02 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 | H4 · H5 | 1 |
@@ -732,7 +732,7 @@ La Tabla 9.C.2 presenta la matriz completa, en el orden del Formulario T-12.
 | RT-20.06 | Cumple | Aceptación y cierre de marcha blanca | PROD | 4.2 · 4.3 | H7 · H12 | 1 |
 | RT-20.07 | Cumple | Aceptación y cierre de marcha blanca | PROD | 4.2 · 4.3 | H7 · H12 | 1 |
 | RT-20.08 | Cumple | Aceptación y cierre de marcha blanca | PROD | 4.2 · 4.3 | H7 · H12 | 1 |
-| RT-21.01 | Cumple parcialmente | Medición mensual de niveles de servicio | PROD | Cuentas 8.1 y 8.2 | Mensual | 1 |
+| RT-21.01 | Cumple | Medición mensual de niveles de servicio | PROD | Cuentas 8.1 y 8.2 | Mensual | 1 |
 | RT-21.02 | No cumple | Sin prueba: no ofertado | — | — | — | 0 |
 | RT-21.03 | Cumple parcialmente | Medición mensual de niveles de servicio | PROD | Cuentas 8.1 y 8.2 | Mensual | 1 |
 | RT-21.04 | Cumple | Medición mensual de niveles de servicio | PROD | Cuentas 8.1 y 8.2 | Mensual | 1 |
@@ -763,8 +763,8 @@ La Tabla 9.C.2 presenta la matriz completa, en el orden del Formulario T-12.
 | RT-22.07 | Cumple | Certificación de usuarios | PREPROD · PROD | 7.3.1 · 7.3.2 | H6 · H11 | 1 |
 | RT-22.08 | Cumple | Certificación de usuarios | PREPROD · PROD | 7.3.1 · 7.3.2 | H6 · H11 | 1 |
 | RT-22.09 | Cumple | Certificación de usuarios | PREPROD · PROD | 7.3.1 · 7.3.2 | H6 · H11 | 1 |
-| RT-23.01 | Cumple parcialmente | Inspección del entregable de la oferta | — | — | Presentación de la oferta | 1 |
-| RT-23.02 | Cumple parcialmente | Inspección del entregable de la oferta | — | — | Presentación de la oferta | 1 |
+| RT-23.01 | Cumple | Inspección del entregable de la oferta | — | — | Presentación de la oferta | 1 |
+| RT-23.02 | Cumple | Inspección del entregable de la oferta | — | — | Presentación de la oferta | 1 |
 | RT-23.03 | Cumple parcialmente | Inspección del entregable de la oferta | — | — | Presentación de la oferta | 1 |
 | RT-23.04 | Cumple | Inspección del entregable de la oferta | — | — | Presentación de la oferta | 1 |
 | RT-23.05 | No cumple | Sin prueba: no ofertado | — | — | — | 0 |

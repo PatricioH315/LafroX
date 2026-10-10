@@ -44,7 +44,7 @@ La contención de los dos racks de Talca usa paneles ciegos en unidades libres, 
 
 ## Recuperación y límites
 
-La recuperación funcional de datos críticos de temperatura, POD y DTE es ≤4 h; el histórico completo puede continuar hasta 8 h. En Concepción y cross-docking, la promoción exige excluir al escritor anterior y el retorno ocurre como réplica; una partición no autoriza la promoción. Desde el mes 25 la operación requiere 19 personas normales y 21 en peak. El calendario distingue restauración del servicio de un parche nuevo; cualquier intervención prohibida requiere aclaración formal del CLIENTE, sin suspensión automática de los plazos.
+La recuperación funcional de datos críticos de temperatura, POD y DTE es ≤4 h; el histórico completo puede continuar hasta 8 h. En Concepción y cross-docking, la promoción exige excluir al escritor anterior y el retorno ocurre como réplica; una partición no autoriza la promoción. Desde el mes 25 la operación requiere 19 personas normales y 21 en peak. El calendario distingue restauración del servicio de un parche nuevo; si una remediación exige intervenir en un período prohibido, se solicita al CLIENTE un cambio de emergencia el mismo día y, sin su autorización escrita, se mantiene la contención con aceptación del riesgo por el CLIENTE.
 
 La [estrategia de centros de datos](../04_arquitectura/LAFROX-Subdocumento4.md#43-data-center) usa región primaria **sa-east-1** y secundaria **us-east-1**. Los objetivos críticos son **RTO ≤ 4 h** —tiempo de recuperación— y **RPO ≤ 15 min** —antigüedad máxima de la copia recuperable—. Infraestructura **99,95 %**, transacción crítica **99,9 %** y cero interrupción en despacho son obligaciones diferentes.
 

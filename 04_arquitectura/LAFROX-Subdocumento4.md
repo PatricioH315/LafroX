@@ -340,7 +340,7 @@ La capa de borde delimita la entrada pública y la entrada de dispositivos de te
 
 - **Acceso local y continuidad.** Los servicios del sitio aplican control de acceso propio y preservan la operación crítica aun cuando todos los enlaces externos estén indisponibles. En Talca y Concepción, Starlink fijo es el tercer camino en espera caliente tras fibra y LTE; en los cross-docking es el principal, con LTE de dos proveedores como respaldo y conmutación automática en menos de 30 segundos (ADR-02).
 
-- **AWS IoT Greengrass.** Corre en tres gateways IoT industriales (Moxa UC-8200 o equivalente): dos en el CD Talca, que leen ambas cámaras por Modbus TCP para evitar un punto único de falla, y uno en el CD Concepción. Leen los sensores de cámara por Modbus y aplican la regla térmica local. Ante una excursión crítica y sostenida, bloquean el despacho en menos de 5 segundos desde su detección. Además, conservan 24 horas de datos sin enlace. No se instala en camiones: la posición de la flota llega por la API del tercero (INT-15). Los termógrafos registran toda la ruta en su memoria interna, avisan por BLE al terminal del conductor aun sin señal y este reenvía el aviso a la nube al recuperar cobertura; al volver el camión, el terminal descarga y envía el registro completo.
+- **AWS IoT Greengrass.** Corre en tres gateways IoT industriales (Moxa UC-8200 o equivalente): dos en el CD Talca, que leen ambas cámaras por Modbus TCP para evitar un punto único de falla, y uno en el CD Concepción. Leen los sensores de cámara por Modbus y aplican la regla térmica local. Ante una excursión crítica y sostenida, bloquean el despacho en menos de 5 segundos desde su detección. Además, conservan 24 horas de datos sin enlace. No se instala en camiones: la posición de la flota llega por la API del tercero (INT-15). Los termógrafos registran toda la ruta en su memoria interna y difunden por BLE la temperatura medida; el terminal del conductor evalúa esa lectura, alerta la excursión en la cabina aun sin señal y reenvía la alerta a la nube por la red celular, de inmediato con cobertura o al recuperarla; al volver el camión, el terminal descarga y envía el registro completo.
 
 En los CD, Starlink permanece encendido con el túnel IPsec establecido y BGP de menor preferencia, por lo que toma tráfico solo cuando fallan fibra y LTE. En esa condición, la calidad de servicio prioriza DMS/WAL de Talca, la salida del broker y bandeja transaccional de salida, las guías hacia el ERP y el SII, la identidad y la telemetría crítica. Mantener el terminal encendido evita esperar la adquisición de satélites y la negociación del túnel durante la falla; la tarifa plana no añade costo por esa permanencia.
 
@@ -448,7 +448,7 @@ El sitio conserva los eventos hasta confirmar su publicación y el consumidor co
 
 La capa de integración conecta la nueva operación con sistemas que Puelche ya utiliza. Sus límites son especialmente importantes ante el ERP de 2017 sin interfaces documentadas y el WMS de 2013. También concentra el intercambio con cadenas del canal moderno, los servicios de pago, los mapas y la telemetría, de modo que un cambio externo no obligue a modificar cada módulo de negocio.
 
-RabbitMQ conserva las colas de integración local. En nube, SQS FIFO ordena los mensajes de reconciliación dentro de cada grupo y SNS difunde eventos y alertas. Los avisos al cliente se entregan mediante SNS o la API del proveedor de notificaciones (INT-11). El orden no se presume global ni se atribuye a toda la cadena de eventos. Los consumidores aplican deduplicación, reintentos con espera creciente y una cola de mensajes fallidos (DLQ), con intervención trazable cuando el procesamiento no puede completarse (RT-02.07; Bases Técnicas Transversales, cap. 2, p. 7).
+RabbitMQ conserva las colas de integración local. En nube, SQS FIFO ordena los mensajes de reconciliación dentro de cada grupo y SNS difunde eventos y alertas. Los avisos al cliente se entregan por correo con Amazon SES, por SMS con Amazon SNS y por WhatsApp con AWS End User Messaging Social (INT-11). El orden no se presume global ni se atribuye a toda la cadena de eventos. Los consumidores aplican deduplicación, reintentos con espera creciente y una cola de mensajes fallidos (DLQ), con intervención trazable cuando el procesamiento no puede completarse (RT-02.07; Bases Técnicas Transversales, cap. 2, p. 7).
 
 El agente de transferencia publica en la cola SQS FIFO de reconciliación un sobre JSON independiente de PHP con versión, identidad, clave de orden y carga.
 
@@ -722,7 +722,7 @@ La Tabla [2](LAFROX-Subdocumento4.md#tab:seguridad-clasificacion) resume cómo c
 
 Fuente: elaboración propia a partir de RT-11.03, RT-11.09 y RT-11.10 (Bases Técnicas Transversales, cap. 11, p. 23; Bases Técnicas del caso, cap. 15, p. 27).
 
-La categoría confidencial exige separar quién puede usar el dato de quién administra su almacenamiento: el acceso a la base no revela por sí solo comportamiento de pago ni geolocalización. Todo dato en reposo se cifra; los campos sensibles del caso reciben además cifrado por campo. En tránsito se exige TLS 1.3 para las interfaces compatibles, se prohíben TLS 1.0 y 1.1, se automatiza la gestión de certificados y se emplea mTLS entre servicios. La custodia y rotación de claves mantienen separación de funciones. El PAN de tarjetas no se almacena; se usa la tokenización de la pasarela. El RUT requiere una técnica de seudonimización con acceso a la clave separado y una finalidad documentada, sin confundir cifrado reversible con anonimización. La geolocalización de personas conserva la retención de 12 meses del caso y un registro de consultas; la región primaria sa-east-1 y la secundaria us-east-1 implican transferencias internacionales sujetas a aprobación del CLIENTE. AWS actúa como encargado bajo contrato con cláusulas tipo; el CLIENTE administra KMS y la geolocalización de personas se excluye de la réplica secundaria, conforme se desarrolla en 4.3.2 (Bases Técnicas del caso, cap. 15, pp. 26–30; Bases Técnicas Transversales, cap. 11, pp. 23–24; RT-11.08–11.10 y RT-16.09).
+La categoría confidencial exige separar quién puede usar el dato de quién administra su almacenamiento: el acceso a la base no revela por sí solo comportamiento de pago ni geolocalización. Todo dato en reposo se cifra; los campos sensibles del caso reciben además cifrado por campo. En tránsito se exige TLS 1.3 en las entradas externas y entre los componentes de la solución, se prohíben TLS 1.0 y 1.1, se automatiza la gestión de certificados con alerta previa a su vencimiento y se emplea mTLS entre servicios; la configuración y sus excepciones documentadas se detallan en el Anexo 4-R. La custodia y rotación de claves mantienen separación de funciones. El PAN de tarjetas no se almacena; se usa la tokenización de la pasarela. El RUT requiere una técnica de seudonimización con acceso a la clave separado y una finalidad documentada, sin confundir cifrado reversible con anonimización. La geolocalización de personas conserva la retención de 12 meses del caso y un registro de consultas; la región primaria sa-east-1 y la secundaria us-east-1 implican transferencias internacionales sujetas a aprobación del CLIENTE. AWS actúa como encargado bajo contrato con cláusulas tipo; el CLIENTE administra KMS y la geolocalización de personas se excluye de la réplica secundaria, conforme se desarrolla en 4.3.2 (Bases Técnicas del caso, cap. 15, pp. 26–30; Bases Técnicas Transversales, cap. 11, pp. 23–24; RT-11.08–11.10 y RT-16.09).
 
 El CLIENTE consulta y exporta la auditoría desde la consola Angular mediante la API Laravel, con filtros combinables por persona, período, entidad y tipo de operación, sin acceso a la base de datos. La consulta reutiliza los campos del registro de auditoría y exporta el resultado filtrado en CSV UTF-8 o JSON bajo los permisos del perfil; para volúmenes extensos emplea el trabajo asíncrono, seguimiento y descarga protegida de 5.2.8 (LafroX, 2026a, sección 5.2.8; LafroX, 2026b, Anexo 5-A; RT-16.08; Bases Técnicas Transversales, cap. 16, p. 29).
 
@@ -772,6 +772,8 @@ La instrumentación utiliza OpenTelemetry para PHP/Laravel y las aplicaciones Ko
 
 En on-premise, los colectores ADOT, con almacenamiento temporal en disco de 24 horas, recolectan la telemetría local y la exportan a la plataforma única en Amazon CloudWatch: Logs conserva los registros técnicos 12 meses en línea y 24 meses en archivo; Metrics conserva las métricas 13 meses; las trazas y los tableros operacionales también se alojan en CloudWatch (ADR-14).
 
+LafroX compromete 30 días de retención en línea para las trazas en el grupo `aws/spans` de CloudWatch Logs mediante Transaction Search, con `retentionInDays = 30`, valor admitido por AWS, sin archivado adicional de trazas (RT-14.08; Bases Técnicas Transversales, cap. 14; Amazon Web Services, s. f.-f, s. f.-g). El costo de retención de métricas, registros y trazas, distinguiendo almacenamiento en línea y archivado, se declara en la Oferta Económica (Bases Administrativas, art. 50.2).
+
 Los tableros se estructuran en tres niveles:
 
 - operacional (para el equipo de TI y SRE),
@@ -779,6 +781,8 @@ Los tableros se estructuran en tres niveles:
 - gerencial (para la gerencia y jefes)
 
 - y del mandante (para Puelche, solo lectura con auditoría de consultas, conforme a RT-14.02; Bases Técnicas Transversales, cap. 14, p. 27). Las alertas se formulan por síntomas de negocio, no por causas técnicas, con ventanas de evaluación para evitar falsos positivos y escalamiento por criticidad.
+
+El tablero de solo lectura del CLIENTE abrirá los indicadores clave de soporte de RT-21.06 —atención dentro del plazo, resolución al primer contacto y abandono—, y limitará los indicadores específicos según el nivel de autorización de cada usuario, con auditoría de consultas (RT-21.13; Bases Técnicas Transversales, cap. 21).
 
 Un trabajo programado compara la latencia, los errores y la longitud de colas de Amazon CloudWatch con su comportamiento histórico en la misma franja horaria y día de la semana, mediante reglas estadísticas deterministas, sin componentes de inteligencia artificial. Emite una alerta preventiva al NOC/SRE cuando la desviación o la tendencia anticipa que se alcanzarán los límites de 4.2.6.11, antes de que el incidente afecte la operación; la aceptación reproduce una degradación gradual y comprueba ese aviso anticipado (RT-14.09; Bases Técnicas Transversales, cap. 14, p. 27).
 
@@ -1070,7 +1074,7 @@ A continuación se resume la tecnología de cada capa y su justificación princi
 
 - **Base de datos nube (OLTP y recuperación).** Amazon Aurora PostgreSQL, con despliegue Multi-AZ y una ventana propuesta de recuperación a un punto en el tiempo (PITR) de 35 días. Los tiempos de conmutación y restauración se verifican mediante pruebas frente a los objetivos RTO/RPO establecidos.
 
-- **Ingesta IoT / frío.** Amazon DynamoDB e IoT Core reciben las lecturas; Greengrass corre en tres gateways Moxa UC-8200 o equivalentes: dos en Talca, que leen ambas cámaras por Modbus TCP para evitar un punto único de falla, y uno en Concepción; leen sensores por Modbus, bloquean el despacho ante una excursión crítica y sostenida en menos de 5 segundos y conservan 24 horas sin enlace. Los termógrafos de los camiones registran toda la ruta en memoria interna y alertan por BLE al terminal, que reenvía el aviso al recuperar cobertura y descarga el registro completo al volver. Escrituras serverless con TTL nativo (raw 30 días).
+- **Ingesta IoT / frío.** Amazon DynamoDB e IoT Core reciben las lecturas; Greengrass corre en tres gateways Moxa UC-8200 o equivalentes: dos en Talca, que leen ambas cámaras por Modbus TCP para evitar un punto único de falla, y uno en Concepción; leen sensores por Modbus, bloquean el despacho ante una excursión crítica y sostenida en menos de 5 segundos y conservan 24 horas sin enlace. Los termógrafos de los camiones registran toda la ruta en memoria interna y difunden por BLE la temperatura; el terminal alerta la excursión en la cabina, reenvía la alerta por la red celular, de inmediato con cobertura o al recuperarla, y descarga el registro completo al volver. Escrituras serverless con TTL nativo (raw 30 días).
 
 - **Serie consolidada (OLAP).** S3 Parquet + AWS Glue + Redshift Serverless. OLAP por diseño: DynamoDB raw → Glue → S3 Parquet → Redshift, sin motor de series adicional.
 
@@ -1402,6 +1406,8 @@ La secuencia lógica es:
 
 Un mismo identificador de correlación relaciona pedido, guía, entrega, evidencia, acuses y documentos posteriores. El acuse del destinatario se obtiene por el mecanismo que acuerde el CLIENTE conforme a la normativa aplicable; una fotografía o un QR no se presume equivalente por sí solo.
 
+M11 enviará por INT-08/OpenAS2 el acuse comercial digital dentro de los 30 minutos desde la descarga, junto con el aviso de despacho ASN de la misma guía (RNF-12.03, RF-12.09 y RF-12.13; LafroX, 2026c, Anexos 3.A y 3.B). Este plazo no se acredita con el MDN de transporte ni con el acuse tributario.
+
 Si el ERP o su canal tributario no confirma la guía antes de la salida, M5 muestra el despacho como bloqueado y lo deriva al responsable de Operaciones y Tributación para aplicar únicamente la contingencia autorizada por el CLIENTE. La captura offline del POD permite registrar una entrega ya despachada; no autoriza emitir retroactivamente una guía desde el teléfono. Esta separación protege la continuidad de la evidencia sin atribuir a la aplicación facultades tributarias que permanecen en el ERP.
 
 #### 4.1.17.2 Control de liberación en la ventana crítica
@@ -1638,7 +1644,18 @@ Cada familia se especifica contra una condición del caso que el equipamiento de
 
 - Los mini-PC de los cross-docking son de rango industrial, porque las naves no tienen climatización y el supuesto de diseño es de hasta 50 °C bajo la techumbre en verano.
 
-- Los 28 termógrafos en operación cubren los 18 camiones propios y los 10 refrigerados de los transportistas que declara el caso, porque el instrumento viaja con la carga y su registro ampara la cadena de frío aun cuando el vehículo no sea del CLIENTE; en los camiones de terceros se instala con el acuerdo de cada transportista (S-28). Están calibrados contra un patrón NIST en dos puntos, porque su registro es la prueba de la cadena de frío ante un cliente o ante la autoridad sanitaria.
+- Los 28 termógrafos en operación cubren los 18 camiones propios y los 10 refrigerados de los transportistas que declara el caso, porque el instrumento viaja con la carga y su registro ampara la cadena de frío aun cuando el vehículo no sea del CLIENTE; en los camiones de terceros se instala con el acuerdo de cada transportista (S-28). Son registradores conformes con la norma EN 12830:2018 para el transporte de alimentos refrigerados y congelados, y la compra exige su certificado de calibración según EN 13486, porque su registro es la prueba de la cadena de frío ante un cliente o ante la autoridad sanitaria.
+
+La autonomía y las condiciones de uso de cada dispositivo de terreno con batería se declaran con la ficha del fabricante y se comprueban con la unidad de prueba antes de la compra masiva (RT-08.11 y RT-08.15; Bases Técnicas Transversales, cap. 8, p. 19):
+
+- MC9400 estándar: turno de bodega de 8 h, y el equipo pasa de un turno al siguiente. La batería de 7.000 mAh cubre un turno completo según el fabricante, y al traspasar el equipo se cambia en caliente por una de las 81 baterías de repuesto del año 3: como todos los MC9400 estándar de Talca y Concepción trabajan de noche, cada una de las 73 personas de un turno de día (S-44) recibe un equipo que viene del turno anterior, y se agrega el 10 %; las baterías retiradas se recargan antes del traspaso siguiente. Las 40 cunas de carga dan una posición por equipo en operación. Humedad de 5 a 95 % sin condensación, IP65 e IP68, vibración de 4 g entre 5 Hz y 2 kHz y pantalla de 600 nits.
+- MC9400 Cold Storage Freezer: turno de 8 h a -22 °C, con batería de 5.000 mAh y una batería de repuesto por equipo. Humedad de 5 a 95 % con condensación, porque calefacciona la ventana del lector y la pantalla; IP65 e IP68; vibración de 4 g entre 5 Hz y 2 kHz, y pantalla de 600 nits operable con guantes gruesos.
+- TC58e: ruta de hasta 14,5 h, de 05:30 a 20:00. La batería extendida de 7.000 mAh se recarga con el cargador del vehículo durante la conducción. Humedad de 5 a 95 % sin condensación, IP65 e IP68 y pantalla de 600 nits operable con guantes y mojada; el fabricante no publica una especificación de vibración, por lo que la prueba de aceptación la comprueba en el vehículo.
+- EC55: jornada en terreno de lunes a sábado, con batería extendida de 4.180 mAh, porque el fabricante declara un turno completo con la estándar de 3.060 mAh solo para un uso típico. Humedad de 5 a 95 % sin condensación, IP67, vibración de 4 g entre 5 Hz y 2 kHz y pantalla de 450 nits. El fabricante no declara lectura bajo sol directo ni uso con guantes; ambas se comprueban en la prueba de aceptación.
+- ZQ620 Plus: ruta de hasta 14,5 h, con batería de 3.250 mAh y una batería de reemplazo por impresora. IP54, humedad de 10 a 90 % sin condensación y operación de -20 a +50 °C; el fabricante no declara vibración ni altura de caída en la ficha consultada, por lo que la compra exige una caída de al menos 1,5 m y la prueba de aceptación comprueba la impresora en el vehículo.
+- PAX A920 Pro: ruta de hasta 14,5 h, con batería de 5.150 mAh y cargador de vehículo USB-C que la recarga entre entregas. El fabricante no declara grado IP, caída ni vibración en sus fichas publicadas: se usa bajo el resguardo de la cabina o del local del cliente, y la prueba de aceptación lo comprueba en ruta.
+
+Zebra DNA informa la salud de la batería de cada terminal Zebra, y una batería se repone cuando su capacidad baja del 80 % de la nominal; como el resto del hardware de terreno, la compra el CLIENTE con la especificación de LafroX (RT-08.13; Bases Técnicas Transversales, cap. 8, p. 19).
 
 La interfaz de picking en el MC9400 Cold Storage Freezer tendrá controles de al menos 15 × 15 mm, operables con guantes y sin exigir deslizamiento, pellizco ni doble toque. La aceptación comprobará una operación continua de al menos 30 minutos a −22 °C con el dispositivo y la aplicación ofertados (RNF-05.02; LafroX, 2026c, Anexo 3.B).
 
@@ -1869,7 +1886,7 @@ Los doce componentes híbridos tienen una parte en cada dominio. Para cada uno, 
 
 - **A-05 Identidad** (conectividad): el IdP maestro Keycloak corre en Fargate y sus cachés de solo lectura en VM-05, VM-C03 y E-01 validan las sesiones de bodega y de cross-docking sin enlace; en el mismo nodo, un verificador local habilita cada relevo de turno durante un corte con el manifiesto de turno firmado y un segundo factor local, el PIN personal.
 
-- **B-03 Termógrafos de camión** (conectividad): los 28 termógrafos —18 en los camiones propios y 10 en los de los transportistas, instalados con el acuerdo de cada uno (S-28)— registran la temperatura durante toda la ruta sin señal y sincronizan por Bluetooth con el terminal del conductor, que alerta la excursión térmica en el momento y la reenvía a la nube cuando recupera cobertura; al volver el camión, el mismo terminal descarga el registro completo y lo envía a la nube para que IoT Core lo valide.
+- **B-03 Termógrafos de camión** (conectividad): los 28 termógrafos —18 en los camiones propios y 10 en los de los transportistas, instalados con el acuerdo de cada uno (S-28)— registran la temperatura durante toda la ruta sin señal y la difunden por Bluetooth; el terminal del conductor la lee, evalúa la regla de excursión, alerta en la cabina en el momento y reenvía la alerta a la nube por la red celular, de inmediato con cobertura o al recuperarla; al volver el camión, el mismo terminal descarga el registro completo, comprueba su control de integridad y lo envía a la nube para que IoT Core lo valide.
 
 - **C-01 App de preventa** (conectividad): toma pedidos contra el almacén local del terminal cuando no hay señal y sincroniza por CloudFront al reconectar, sin duplicar pedidos (sección [4.2.5](LAFROX-Subdocumento4.md#sec:conexiones)).
 
@@ -1881,7 +1898,7 @@ Los doce componentes híbridos tienen una parte en cada dominio. Para cada uno, 
 
 - **F-01 Telemetría de observabilidad** (conectividad): los colectores ADOT de VM-06, VM-C04 y E-01 guardan hasta 24 h de métricas y trazas en disco y las envían a CloudWatch al reconectar.
 
-- **F-03 Detección en endpoints** (regulación): los agentes EDR de cada nodo y estación reportan a una consola central, lo que da una sola respuesta ante incidentes en nube y on-premise. El servidor del ERP del CLIENTE no lleva agente, porque se traslada sin cambios de software. El firewall de Talca solo le permite el tráfico de la ACL en VM-04 y la administración del CLIENTE.
+- **F-03 Detección en endpoints** (regulación): los agentes EDR de cada nodo y estación reportan a una consola central, lo que da una sola respuesta ante incidentes en nube y on-premise. El servidor del ERP es un activo del CLIENTE que no forma parte de la solución: LafroX lo traslada sin cambiar su software, y el firewall de Talca solo le permite el tráfico de la ACL en VM-04 y la administración del CLIENTE.
 
 Los componentes híbridos siguen todos el mismo patrón: la parte que atiende la operación queda en el sitio y la parte que consolida queda en la nube, unidas por un mecanismo que tolera el corte. En el núcleo de bodega, Talca replica su base por DMS y los demás sitios sincronizan eventos por colas; en el terreno, el almacén local del dispositivo; y en la observabilidad, el buffer en disco de los colectores. Por eso la conectividad es el criterio dominante en siete de los doce: cada uno existe en dos lugares precisamente porque el enlace entre ellos no es confiable.
 
@@ -1997,6 +2014,8 @@ Los servicios se contratan por uso, con la capacidad base comprometida mediante 
 Durante la Operación se compromete reducir al menos 60 % las horas de cómputo de Desarrollo, QA y Preproducción respecto de su funcionamiento continuo. S-43 del Anexo 3.C del Subdocumento 3 (LafroX, 2026c) fija el horario de uso de lunes a viernes, de 08:00 a 20:00: 60 de 168 horas semanales, con reducción potencial de 1 − 60 ÷ 168 = 64,3 %. Fuera de ese horario se reducen o apagan, salvo ventanas de prueba programadas por el CLIENTE y la activación inmediata para correcciones críticas. La reducción efectiva, incluidas esas ventanas, se mide mensualmente con los registros de uso de la nube y se reporta cada año junto con la estimación de huella del paquete 8.4.3 del Formulario T-14; las pruebas de carga de 4.2.4.1.1 se mantienen por versión candidata y al menos una vez por semana dentro del horario de uso (RT-15.06; Bases Técnicas Transversales, cap. 15, p. 28).
 
 En las cargas variables, Fargate factura la capacidad durante su ejecución y permite liberar las tareas adicionales al terminar la demanda; una instancia permanente mantiene el costo de la capacidad provisionada durante los períodos sin uso. Por ello se utiliza capacidad bajo demanda para las corridas de rutas y el incremento de septiembre, mientras la capacidad base permanente se cubre mediante Savings Plans (RT-03.09; Bases Técnicas Transversales, cap. 3, p. 8).
+
+El compromiso de capacidad base mediante Savings Plans y su costo se reflejan en la estructura de costos que se declara en la Oferta Económica (Bases Administrativas, art. 50.2). El valor monetario del ahorro medido en horas de cómputo no productivo, con meta de reducción de al menos 60 % conforme a S-43, se declara en la Oferta Económica (Bases Administrativas, art. 50.2).
 
 ### 4.2.3.5 Topología de los servicios
 
@@ -2265,6 +2284,8 @@ La aplicación se construye una sola vez por entrega como una imagen PHP 8.5 con
 
 Fuente: elaboración propia.
 
+LafroX compromete escalamiento horizontal automático mediante ECS Service Auto Scaling, entre dos y cuatro tareas por perfil y con métricas de un minuto: consumidor de reconciliación por `ApproximateAgeOfOldestMessage` de SQS >60 s; trabajos por `ApproximateNumberOfMessagesVisible` >100 mensajes en cualquier cola, conforme a N-04 del T-11 (RT-02.10; Bases Técnicas Transversales, cap. 2; Amazon Web Services, s. f.-h, s. f.-i). El costo del escalamiento de aplicación e integración se declara en la Oferta Económica (Bases Administrativas, art. 50.2).
+
 Los perfiles comparten la revisión de código y el esquema de datos, pero cada uno tiene su propio rol de IAM o credencial local, con solo los permisos que su función necesita: el perfil de API no puede leer la cola de reconciliación, el consumidor no puede escribir en las colas de trabajos, el shipper solo puede enviar a las colas de reconciliación y de solicitudes al ERP y leer la respuesta y la coordinación de reservas de su sitio, y `erp-sync` es el único lector de las solicitudes al ERP. El planificador corre como una sola tarea por ambiente, con despliegue que detiene la tarea en ejecución antes de iniciar la nueva, y cada tarea periódica toma además un bloqueo en la base de datos para impedir ejecuciones superpuestas. Los sitios no ejecutan planificador: sus procesos permanentes son el servidor del WMS y el shipper, además de `erp-sync` en VM-04 de Talca. En los centros de distribución, el perfil `wms_only`, que es el Motor WMS A-01, corre como contenedor en VM-01 y VM-C01, y el shipper corre junto al broker de colas A-03, RabbitMQ, en VM-03 y VM-C04, todos sobre las máquinas virtuales de Proxmox. En cada cross-docking, el perfil `wms_only` y el shipper se orquestan con Docker Compose en E-01, junto a PostgreSQL, RabbitMQ y la caché de identidad. En Concepción y en cada cross-docking, el equipo en espera mantiene detenidos el WMS y el shipper; solo ejecuta la réplica de PostgreSQL, la caché de identidad y el colector de observabilidad hasta que toma el control. Los sitios descargan la imagen desde Elastic Container Registry por la VPN, a través de la VPC Hub, y los endpoints de interfaz de la VPC de Producción, en conexiones salientes y sin tráfico por Internet. Ansible (F-02), con el que se declara como código la configuración de los cinco sitios, actualiza sus contenedores sitio por sitio. Elastic Container Registry replica cada imagen liberada de sa-east-1 a us-east-1 mediante replicación entre regiones, de modo que la réplica reducida y la plataforma promovida en una conmutación usan el mismo digest sin depender del registro primario. En us-east-1, la infraestructura como código deja creadas y vacías las colas SQS FIFO y SQS, y los temas SNS equivalentes, a las que se redirigen los shippers y `erp-sync` durante la conmutación. Fuera de la imagen Laravel quedan el frontend Angular de las consolas, el motor de rutas M4 y el transporte AS2 M11, los tres en contenedores propios sobre ECS Fargate (N-04) y construidos por el mismo pipeline. M11 opera tras contratos versionados (ADR-11, Anexo 4-O).
 
 El transporte AS2 y el frontend de consolas mantienen dos tareas cada uno, distribuidas entre dos zonas de disponibilidad (RT-03.02; Bases Técnicas Transversales, cap. 3, p. 8). El motor de rutas ejecuta una tarea por corrida. Si falla, ECS la relanza en otra zona y repite la corrida dentro de la planificación de 15:00 a 18:30, y la prueba de aceptación mide el plazo de 20 min por corrida.
@@ -2329,7 +2350,7 @@ El despliegue sin interrupción es la regla. Las ventanas horarias habilitadas d
 
 Un incidente crítico activa de inmediato el procedimiento de recuperación: conmutación segura, restauración o retorno a una versión ya instalada y aceptada, cuando sean compatibles con la prohibición de intervención. Restaurar el servicio en 4 h no implica terminar un desarrollo nuevo en ese plazo. Una corrección de código utiliza el mismo pipeline y tiene prioridad fuera de la cadencia quincenal, pero no recibe por ello autorización para intervenir fechas prohibidas. El programa de vulnerabilidades conserva los máximos de 7, 15 y 30 días corridos para severidades crítica, alta y media, desde su publicación o detección (Bases Administrativas, art. 21.1; RT-11.04). La contención se registra separadamente y no equivale por sí sola a remediación.
 
-Si la recuperación o remediación exige una intervención prohibida, el NOC/SOC escala al CLIENTE al detectar el conflicto, conserva evidencia del plazo y solicita aclaración formal sobre el procedimiento admisible. No se presupone una excepción ni se suspende unilateralmente el plazo. La compatibilidad entre congelamiento y remediación queda condicionada a esa definición; no se declara cumplimiento incondicional para ese escenario. El presupuesto de error por servicio crítico es el complemento de 99,9 % mensual, unos 43 minutos al mes; al agotarlo se suspenden los despliegues no correctivos hasta el mes siguiente, manteniendo los congelamientos (RT-10.09).
+Si la recuperación o la remediación de una vulnerabilidad exige una intervención prohibida, el NOC/SOC lo comunica al CLIENTE el mismo día en que detecta el conflicto y le solicita un cambio de emergencia, con la evidencia del plazo y de la contención aplicada. Con autorización escrita del CLIENTE, el cambio se ejecuta por el mismo pipeline, con reversión preparada y fuera de la ventana de despacho. Si el CLIENTE no lo autoriza, LafroX mantiene la contención, registra la aceptación del riesgo por parte del CLIENTE y remedia en la primera fecha habilitada; el plazo que se exceda por esa decisión queda trazado como decisión del CLIENTE. El presupuesto de error por servicio crítico es el complemento de 99,9 % mensual, unos 43 minutos al mes; al agotarlo se suspenden los despliegues no correctivos hasta el mes siguiente, manteniendo los congelamientos (RT-10.09).
 
 ### 4.2.4.2 Red de despliegue
 
@@ -2560,23 +2581,23 @@ Los cinco sitios tienen caminos alternativos hacia la nube. Ninguna instalación
 
 <a id="sub:superficie"></a>
 
-La Tabla [19](LAFROX-Subdocumento4.md#tab:superficie) delimita las únicas entradas desde redes externas. Cada entrada usa un subdominio propio del dominio del CLIENTE gestionado en Route 53.
+La Tabla [19](LAFROX-Subdocumento4.md#tab:superficie) delimita las únicas entradas desde redes externas. Cada entrada usa un subdominio propio del dominio del CLIENTE gestionado en Route 53; en la tabla, `<dominio>` representa ese dominio institucional, que el CLIENTE confirma al inicio del proyecto.
 
 <a id="tab:superficie"></a>
 
 **Tabla 19 — Superficie de exposición**
 
-| **Entrada** | **Servicio y puerto** | **Quién accede** | **Control** |
-| --- | --- | --- | --- |
-| Portales y API | CloudFront, HTTPS 443 | Clientes, transportistas, proveedores y terminales de terreno | WAF, protección contra bots, Shield Advanced y autorizador |
-| Identidad | OIDC de Keycloak por CloudFront, HTTPS 443 | Personas usuarias | WAF y límites de tasa |
-| Consolas | Verified Access, HTTPS 443 | Oficina y trabajo remoto | Identidad, MFA y postura |
-| Canal AS2 | Network Load Balancer, TCP 443 con TLS 1.3 | Cadenas registradas | Lista de IP, certificados, firma y MDN |
-| Túneles de sitio | VPN del Transit Gateway, IPsec UDP 500 y 4500 | Firewalls D-01 de los cinco sitios | Autenticación IKE y cifrado IPsec |
+| **Entrada** | **Nombre de dominio (FQDN)** | **Servicio y puerto** | **Quién accede** | **Control** |
+| --- | --- | --- | --- | --- |
+| Portales y API | `clientes.<dominio>`, `transportistas.<dominio>`, `proveedores.<dominio>` y `api.<dominio>` | CloudFront, HTTPS 443 | Clientes, transportistas, proveedores y terminales de terreno | WAF, protección contra bots, Shield Advanced y autorizador |
+| Identidad | `id.<dominio>` | OIDC de Keycloak por CloudFront, HTTPS 443 | Personas usuarias | WAF y límites de tasa |
+| Consolas | `consola.<dominio>` y `admin-id.<dominio>` (administración de Keycloak) | Verified Access, HTTPS 443 | Oficina y trabajo remoto | Identidad, MFA y postura |
+| Canal AS2 | `as2.<dominio>` | Network Load Balancer, TCP 443 con TLS 1.3 | Cadenas registradas | Lista de IP, certificados, firma y MDN |
+| Túneles de sitio | Sin nombre de dominio: dos direcciones IP públicas de AWS por túnel, registradas en los firewalls | VPN del Transit Gateway, IPsec UDP 500 y 4500 | Firewalls D-01 de los cinco sitios | Autenticación IKE y cifrado IPsec |
 
 Fuente: elaboración propia.
 
-La tabla excluye toda otra entrada desde fuera de la red del CLIENTE. En recuperación ante desastres se activan las mismas entradas en us-east-1. MDM, EDR, SII, Transbank, GIS, notificaciones y telemetría de flota son dependencias de salida, detalladas en el Formulario T-11.
+La tabla excluye toda otra entrada desde fuera de la red del CLIENTE. En recuperación ante desastres se activan las mismas entradas en us-east-1, con los mismos nombres de dominio redirigidos por Route 53. MDM, EDR, SII, Transbank, GIS, notificaciones y telemetría de flota son dependencias de salida, detalladas en el Formulario T-11.
 
 ### 4.2.5.3 Puntos de falla en los sitios y en los enlaces
 
@@ -2816,6 +2837,8 @@ D-03 es fibra, D-04 es LTE y D-06 es satélite, calculado conservadoramente con 
 La dimensión 13, «Volumen de datos generado por un dispositivo de reparto en un turno completo sin señal», es 9,83 MB para la ruta de 34 clientes; una ruta promedio genera 5,36 MB normales y 8,24 MB en septiembre. La cifra incluye evidencia, una fotografía adicional cuando corresponde y 2 MB de datos locales.
 
 La dimensión 14, «Tiempo de sincronización de la flota al regresar al centro de distribución», se expresa en tiempo: cada dispositivo sincroniza en diez minutos con al menos 0,13 Mbps efectivos. Los 64 camiones de la hora punta se reparten por SV-03: aproximadamente 43 en Talca y 21 en Concepción, con 0,93 y 0,47 Mbps respectivamente en la Wi-Fi y el enlace de cada centro. La flota completa requiere 1,40 Mbps en esa hora. La cota de 34 clientes corresponde a la ruta rural más larga descrita en el caso (Bases Técnicas del caso, cap. 8, p. 16, entrevista al conductor de la ruta Cauquenes); en los centros de distribución la sincronización ocurre por Wi-Fi.
+
+El consumo de batería por turno se declara como un máximo comprometido, porque solo puede medirse con la aplicación construida: con la aplicación en uso real, cada terminal de bodega y de preventa termina su turno o su jornada con al menos 20 % de carga, es decir, consume como máximo el 80 % de la batería especificada en 4.2.1.2; en reparto, el cargador del vehículo cubre la ruta. Para cumplirlo, la aplicación sincroniza por lotes en lugar de mantener una conexión permanente y el lector se activa solo con el gatillo. La prueba de aceptación lo mide con la unidad de prueba de cada modelo antes de la compra masiva (RT-17.07 y RT-08.15).
 
 ### 4.2.6.8 Capacidad on-premise
 
@@ -3223,7 +3246,7 @@ Fuente: elaboración propia.
 
 El RPO de la tabla se sustenta en la extracción continua de datos críticos por tres dominios de falla distintos en los CD: fibra terrestre D-03, red celular D-04 y satélite D-06. En Talca y Concepción, Starlink permanece encendido como tercer camino en espera caliente, con el túnel IPsec establecido y BGP con menor preferencia; toma el tráfico solo si fallan fibra y LTE. En esa situación, la calidad de servicio prioriza DMS y WAL de Talca, la salida del broker y el outbox, las guías hacia el ERP y el SII, la identidad y la telemetría crítica. El terminal encendido evita los minutos necesarios para adquirir satélites y negociar el túnel durante la falla, sin costo adicional por la tarifa plana. La caída simultánea de fibra y LTE, incluso ante un terremoto que afecte la infraestructura terrestre, permite mantener la réplica de Talca y la publicación de eventos dentro del RPO mediante Starlink. En los cross-docking, Starlink es el camino principal y LTE de dos proveedores constituye el respaldo. La bodega conserva 24 h de operación local aunque cambie el camino WAN.
 
-Queda como riesgo residual la falla simultánea de los tres caminos seguida de la destrucción del sitio antes de reponer alguno: en esa secuencia, la última copia remota podría exceder 15 min. Se mitiga con alarmas de retraso de replicación a los 5 y 15 min, reposición del enlace por el proveedor, preemisión de guías al cerrar la carga y conservación local en el NAS WORM de Talca. La autonomía local de 24 h se mantiene durante la atención del incidente. El RTO se verifica levantando la misma imagen del WMS de Talca en Fargate de la región activa y conectando sus terminales por la VPN.
+El RPO comprometido cubre los escenarios de diseño: pérdida de la región primaria, pérdida de uno o dos caminos y pérdida de un sitio con al menos un camino activo. Queda fuera de esa base de diseño, como riesgo residual registrado en R8-05 del Subdocumento 8, una secuencia que exige tres fallas independientes y además la destrucción del sitio: la caída simultánea de los tres caminos seguida de la destrucción del sitio antes de reponer alguno. En esa secuencia, la última copia remota podría exceder 15 min. Se mitiga con alarmas de retraso de replicación a los 5 y 15 min, reposición del enlace por el proveedor, preemisión de guías al cerrar la carga y conservación local en el NAS WORM de Talca. La autonomía local de 24 h se mantiene durante la atención del incidente. El RTO se verifica levantando la misma imagen del WMS de Talca en Fargate de la región activa y conectando sus terminales por la VPN.
 
 ### 4.3.2.5 Procedimiento de conmutación
 
@@ -3275,6 +3298,24 @@ Las fuentes citadas en este documento se listan a continuación en formato APA 7
 - Amazon Web Services. (s. f.-d). *GuardDuty Runtime Monitoring*. <https://docs.aws.amazon.com/guardduty/latest/ug/runtime-monitoring.html>
 
 - Amazon Web Services. (s. f.-e). *How Runtime Monitoring works with Fargate (Amazon ECS only)*. <https://docs.aws.amazon.com/guardduty/latest/ug/how-runtime-monitoring-works-ecs-fargate.html>
+
+- Amazon Web Services. (s. f.-f). *Transaction Search*. <https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Transaction-Search.html>
+
+- Amazon Web Services. (s. f.-g). *PutRetentionPolicy*. <https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutRetentionPolicy.html>
+
+- Amazon Web Services. (s. f.-h). *Available CloudWatch metrics for Amazon SQS*. <https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-available-cloudwatch-metrics.html>
+
+- Amazon Web Services. (s. f.-i). *Use predefined increments based on CloudWatch alarms to scale Amazon ECS services*. <https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-autoscaling-stepscaling.html>
+
+- Amazon Web Services. (s. f.-j). *Monitor email sending using Amazon SES event publishing*. <https://docs.aws.amazon.com/ses/latest/dg/monitor-using-event-publishing.html>
+
+- Amazon Web Services. (s. f.-k). *Amazon SNS SMS delivery monitoring with Amazon CloudWatch metrics and logs*. <https://docs.aws.amazon.com/sns/latest/dg/sms_stats_cloudwatch.html>
+
+- Amazon Web Services. (s. f.-l). *What is AWS End User Messaging Social?*. <https://docs.aws.amazon.com/social-messaging/latest/userguide/what-is-service.html>
+
+- Amazon Web Services. (s. f.-m). *WhatsApp message status*. <https://docs.aws.amazon.com/social-messaging/latest/userguide/managing-event-destinations-status.html>
+
+- Amazon Web Services. (s. f.-n). *Configuring custom domains to handle open and click tracking*. <https://docs.aws.amazon.com/ses/latest/dg/configure-custom-open-click-domains.html>
 
 - Angular. (2026a). *Release policy*. <https://angular.dev/reference/releases>
 
