@@ -35,9 +35,9 @@
 
 Este capítulo establece cómo LafroX asegura y demuestra que la plataforma de Distribuidora Puelche cumple lo comprometido. La exigencia es concreta: confirmar una línea de picking en un segundo bajo el peak de septiembre, operar un turno de 14 horas sin señal sin perder ni duplicar un registro, despachar 96 camiones entre las 05:30 y las 07:00 sin indisponibilidad, y entregar al CLIENTE, ante un retiro sanitario, la lista de clientes afectados en menos de dos horas (Distribuidora Puelche S.A., 2026c, caps. 15 y 18). El plan convierte esas exigencias en umbrales medibles, en controles automáticos que bloquean un cambio que no los cumple y en pruebas con fecha, ambiente, datos y criterio de salida.
 
-La sección 9.1 fija el marco: ISO/IEC 25010 para el producto, ISO/IEC 25012 para los datos, ISO/IEC/IEEE 29119 para las pruebas y el PMBOK para el proceso, junto con los modelos de madurez y las métricas de código y de proceso. La sección 9.2 describe la estrategia: puertas de calidad, revisión por pares, análisis estático y dinámico, niveles y tipos de prueba en los cinco ambientes del SD4, datos de prueba, trazabilidad y gestión de defectos. La sección 9.3 ubica cada actividad de calidad en la EDT y en el cronograma del SD7.
+La sección 9.1 fija el marco: ISO/IEC 25010 para el producto, ISO/IEC 25012 para los datos, ISO/IEC/IEEE 29119 para las pruebas y el PMBOK para el proceso, junto con los modelos de madurez y las métricas de código y de proceso. La sección 9.2 describe la estrategia: puertas de calidad, revisión por pares, análisis estático y dinámico, niveles y tipos de prueba en los cinco ambientes del Subdocumento 4 (en adelante, SD4; la sigla SD seguida de un número designa cada subdocumento de esta propuesta), datos de prueba, trazabilidad y gestión de defectos. La sección 9.3 ubica cada actividad de calidad en la EDT y en el cronograma del SD7.
 
-El capítulo toma los requisitos del catálogo del SD3 y del Formulario T-12, los umbrales de desempeño, los ambientes y la cadena de entrega del SD4, sección 4.2, las reglas de calidad de datos y de migración del SD5, las compuertas y la definición de terminado del SD6, sección 6.2, los paquetes y los hitos del SD7 y de los Formularios T-14 y T-15, los riesgos de calidad del SD8 (R8-18, R8-31 y R8-32) y la innovación INN-02 del SD13 (LafroX, 2026). El detalle se entrega por separado. El Formulario T-13 contiene el plan de pruebas y validación, con criterios de entrada y salida y calendario. El Formulario T-17 contiene el protocolo de aceptación de cada hito y del producto final. Los Anexos 9.A a 9.D contienen los umbrales completos por subcaracterística, el catálogo de reglas de análisis estático, la matriz de trazabilidad entre pruebas y requisitos y la especificación de los datos de prueba.
+El capítulo toma los requisitos del catálogo del SD3 y del Formulario T-12, los umbrales de desempeño, los ambientes y la cadena de entrega del SD4, sección 4.2, las reglas de calidad de datos y de migración del SD5, las compuertas y la definición de terminado del SD6, sección 6.2, los paquetes y los hitos del SD7 y de los Formularios T-14 y T-15, los riesgos de calidad del registro del SD8, cuyos códigos R8-nn identifican cada riesgo (R8-18, marcha blanca que no cumple las seis condiciones; R8-31, observaciones que obligan a repetir una certificación; R8-32, evaluadores subcontratados no disponibles), y la innovación INN-02 del SD13, reproducción de incidentes de terreno (LafroX, 2026). El detalle se entrega por separado. El Formulario T-13 contiene el plan de pruebas y validación, con criterios de entrada y salida y calendario. El Formulario T-17 contiene el protocolo de aceptación de cada hito y del producto final. Los Anexos 9.A a 9.D contienen los umbrales completos por subcaracterística, el catálogo de reglas de análisis estático, la matriz de trazabilidad entre pruebas y requisitos y la especificación de los datos de prueba.
 
 ## 9.1 Plan de Calidad
 
@@ -45,7 +45,7 @@ Esta sección define con qué normas se juzga la calidad, quién decide sobre el
 
 ### 9.1.1 Marco de aseguramiento y gobierno de la calidad
 
-La Figura 9.1 presenta el marco completo, de las normas a la aceptación. Cada norma gobierna un objeto distinto, y ninguna se cita sin el mecanismo que la hace verificable, como exige el Art. 4.3 de las Bases Administrativas (Distribuidora Puelche S.A., 2026a).
+La Figura 9.1 presenta el marco completo, de las normas a la aceptación. En ella, G0 a G6 son las siete puertas de calidad de la sección 9.2.1; DRE es la eficiencia de remoción de defectos, y DORA designa las cuatro métricas de entrega del programa DevOps Research and Assessment que describen Forsgren, Humble y Kim (2018), ambas en la sección 9.1.5. Cada norma gobierna un objeto distinto, y ninguna se cita sin el mecanismo que la hace verificable, como exige el Art. 4.3 de las Bases Administrativas (Distribuidora Puelche S.A., 2026a).
 
 ```mermaid
 flowchart LR
@@ -92,7 +92,7 @@ La calidad de datos es parte del marco y no un apéndice. Las siete dimensiones 
 
 LafroX opera un sistema de gestión de calidad certificado conforme a ISO 9001:2015 (ISO, 2015) y prácticas de desarrollo evaluadas en el nivel 3 de CMMI-DEV (SD1, secciones 1.3.1 y 1.4). El nivel 3 significa procesos definidos para la organización y adaptados al proyecto. Para este contrato, eso se traduce en tres áreas de práctica que el plan aplica explícitamente: verificación y validación (las pruebas de la sección 9.2.3), revisión entre pares (sección 9.2.2) y aseguramiento de la calidad del proceso, ejercido por las auditorías trimestrales de trazabilidad entre requisito, código y prueba que exige la política de LafroX (CMMI Institute, 2018).
 
-La evaluación SCAMPI A de CMMI-DEV declarada en el SD1 vence en noviembre de 2026, antes del inicio del contrato. LafroX presenta su renovación ante la Contraparte Técnica junto con la línea base del H1. Mientras no la acredite, el proyecto no invoca ese nivel como garantía y se rige por los procesos auditados bajo ISO 9001.
+La evaluación SCAMPI A N° 58190 de CMMI-DEV declarada en el SD1 (CMMI Institute, 2023) vence en noviembre de 2026, antes del inicio del contrato. LafroX presenta su renovación ante la Contraparte Técnica junto con la línea base del H1, el primero de los doce hitos contractuales H1 a H12 del Formulario E-25 (Distribuidora Puelche S.A., 2026a, art. 18.1), que la sección 9.3.2 relaciona con las pruebas. Mientras no la acredite, el proyecto no invoca ese nivel como garantía y se rige por los procesos auditados bajo ISO 9001.
 
 CMMI evalúa la organización de desarrollo, pero no la madurez del proceso de pruebas. Para ello, el plan adopta como referencia el modelo TMMi (TMMi Foundation, 2018), cuyo nivel 3, «Definido», exige una organización de pruebas independiente, un programa de capacitación en pruebas, integración de las pruebas en el ciclo de vida, pruebas no funcionales y revisiones entre pares. La Tabla 9.1 muestra cómo el plan cubre cada área de proceso de ese nivel.
 
@@ -181,7 +181,7 @@ El código puede cumplir sus umbrales y el proceso puede seguir dejando escapar 
 
 Las cuatro métricas de entrega (frecuencia de despliegue, tasa de cambios fallidos, tiempo del commit a producción y tiempo de restauración) son las de Forsgren, Humble y Kim (2018), y sus metas son las que el SD4 ya comprometió con el RT-04.12. La frecuencia se mide sólo sobre los períodos habilitados, porque septiembre, diciembre y los tres primeros días hábiles de cada mes no admiten despliegues (SD4, sección 4.2.4.1.4). El presupuesto de error se obtiene de la disponibilidad: (1 − 0,999) × 30 días × 1.440 minutos = 43,2 minutos al mes para un servicio crítico, y 216, 432 y 864 minutos para los niveles alto, medio y bajo de la Tabla 16 del SD4. Al agotarse, se suspenden los despliegues no correctivos hasta el mes siguiente (SD4, sección 4.2.4.1.4). Así, la calidad en operación frena el ritmo de cambio en vez de competir con él.
 
-El costo de la calidad se expresa en horas hombre, porque la Oferta Técnica no admite montos (Distribuidora Puelche S.A., 2026a, art. 50.2). Siguiendo las cuatro categorías del PMBOK (PMI, 2017, p. 283), la prevención suma 3.984 HH. Esa cifra reúne la matriz de trazabilidad, el plan de calidad, las puertas automáticas, la investigación y las pruebas de usabilidad, la captura de evidencia de INN-02 y la gestión de deuda técnica. La evaluación suma 6.864 HH: pruebas de las Etapas 1 y 2, ensayos de reversión, certificación de usuarios y pruebas periódicas de la Operación. Ambas cifras se suman paquete por paquete desde el Formulario T-15. Las fallas se valorizan con el valor esperado de sus riesgos en el SD8. Las fallas internas suman 358,4 HH: una certificación repetida (R8-31, 153,6 HH) y evaluadores no disponibles (R8-32, 204,8 HH). Las fallas externas suman 2.956,8 HH: una marcha blanca que no cierra y se extiende a costo de LafroX (R8-18). Las 10.848 HH de conformidad son 3,3 veces las 3.315,2 HH de no conformidad esperada, y equivalen al 5,0 % de las 216.935 HH del proyecto. La conclusión es que el plan invierte en evaluación antes de cada hito para no pagar la falla más cara: una marcha blanca extendida sin desplazar las fechas contractuales (Distribuidora Puelche S.A., 2026a, art. 17.3).
+El costo de la calidad se expresa en horas hombre, porque la Oferta Técnica no admite montos (Distribuidora Puelche S.A., 2026a, art. 50.2). Siguiendo las cuatro categorías del PMBOK (PMI, 2017, p. 283), la prevención suma 4.224 HH: la matriz de trazabilidad, el plan de calidad y las puertas automáticas (1.2.4, 1.5.1 y 1.5.2, 240 HH), la investigación y las pruebas de usabilidad (2.6.1 a 2.6.3, 720 HH), la captura de evidencia de INN-02 (3.10.2.1 a 3.10.2.4, 960 HH) y la gestión de deuda técnica (8.2.4, 2.304 HH). La evaluación suma 6.624 HH: pruebas de la Etapa 1 (3.8, 2.080 HH) y de la Etapa 2 (3.9, 1.760 HH), ensayo de reversión y certificación de usuarios (4.1.2, 7.3.1 y 7.3.2, 400 HH) y pruebas periódicas de la Operación (8.1.3, 8.1.6, 8.2.2 y 8.3.1, 2.384 HH). Ambas cifras se suman paquete por paquete desde el Formulario T-15, y 4.224 + 6.624 = 10.848 HH. Las fallas se valorizan con el valor esperado de sus riesgos en el SD8. Las fallas internas suman 358,4 HH: una certificación repetida (R8-31, 153,6 HH) y evaluadores no disponibles (R8-32, 204,8 HH). Las fallas externas suman 2.956,8 HH: una marcha blanca que no cierra y se extiende a costo de LafroX (R8-18). Las 10.848 HH de conformidad son 3,3 veces las 3.315,2 HH de no conformidad esperada, y equivalen al 5,0 % de las 216.935 HH del proyecto. La conclusión es que el plan invierte en evaluación antes de cada hito para no pagar la falla más cara: una marcha blanca extendida sin desplazar las fechas contractuales (Distribuidora Puelche S.A., 2026a, art. 17.3).
 
 ## 9.2 Estrategia de Aseguramiento de Calidad
 
@@ -197,16 +197,16 @@ flowchart LR
     G1 --> G2["G2 · Integración continua<br/>cobertura 70/80 · estático · SAST/SCA<br/>contratos · deptrac · complejidad"]
     G2 --> G3["G3 · Promoción a QA<br/>imagen sin vulnerabilidades altas<br/>regresión p95 ≤ 10 %"]
     G3 --> G4["G4 · Promoción a PREPROD<br/>regresión completa · DAST · WCAG"]
-    G4 --> G5["G5 · Paso a PROD<br/>carga 1,5× · resiliencia · DR<br/>pentest · aceptación firmada"]
+    G4 --> G5["G5 · Paso a PROD<br/>carga 1,5× · resiliencia · DR · pentest<br/>0 defectos críticos o altos<br/>más acta de la Contraparte Técnica"]
     G5 --> G6["G6 · Operación<br/>presupuesto de error · reversión automática"]
     G2 -. "bloquea" .-> X["Cambio rechazado<br/>vuelve al autor"]
     G4 -. "bloquea" .-> X
     G5 -. "bloquea" .-> X
 ```
 
-**Figura 9.3 — Puertas de calidad en la cadena de entrega. Fuente: elaboración propia a partir del SD4, sección 4.2.4.1, y del SD6, sección 6.2.2.**
+**Figura 9.3 — Puertas de calidad en la cadena de entrega. Fuente: elaboración propia a partir del SD4, sección 4.2.4.1, y del Formulario T-10, sección 6.2.2.**
 
-La figura muestra que el control es más barato cuanto antes ocurre. G0 a G2 se ejecutan en minutos y en cada cambio; G5 se ejecuta pocas veces y exige semanas de prueba. Las cinco compuertas bloqueantes que define el SD6, sección 6.2.2, viven en G2 y G3: hallazgo crítico o alto, contrato roto, cobertura de negocio bajo 70 %, cobertura global bajo 80 % y deuda bloqueante o prueba en falla. Este plan agrega las puertas de promoción G4 y G5, que el SD6 no detalla, y la de operación G6, que conecta la calidad con el presupuesto de error. La Tabla 9.5 resume lo que bloquea cada puerta y quién puede levantarla.
+La figura muestra que el control es más barato cuanto antes ocurre. G0 a G2 se ejecutan en minutos y en cada cambio; G5 se ejecuta pocas veces y exige semanas de prueba. Las cinco compuertas bloqueantes que define el Formulario T-10, sección 6.2.2, que acompaña al SD6, viven en G2 y G3: hallazgo crítico o alto, contrato roto, cobertura de negocio bajo 70 %, cobertura global bajo 80 % y deuda bloqueante o prueba en falla. Este plan agrega las puertas de promoción G4 y G5, que el SD6 no detalla, y la de operación G6, que conecta la calidad con el presupuesto de error. La Tabla 9.5 resume lo que bloquea cada puerta y quién puede levantarla.
 
 **Tabla 9.5 — Criterios de bloqueo y autoridad por puerta. Fuente: elaboración propia.**
 
@@ -216,9 +216,10 @@ La figura muestra que el control es más barato cuanto antes ocurre. G0 a G2 se 
 | G2 | Cada ejecución del pipeline | Falla un umbral de la Tabla 9.3, hay hallazgo crítico o alto, contrato roto o prueba en falla | Nadie; se corrige |
 | G3 | Promoción a QA | Imagen con vulnerabilidad crítica o alta, o p95 empeora más de 10 % | Nadie para la vulnerabilidad; Líder de Calidad para la regresión de desempeño, con registro de deuda |
 | G4 | Promoción a PREPROD | Regresión con fallas, alerta alta de DAST, incumplimiento WCAG AA o defecto crítico o alto abierto | Nadie; se corrige |
-| G5 | Paso a producción | Prueba de la Tabla 9.6 no aprobada o defecto crítico o alto abierto | Contraparte Técnica, con acta |
+| G5 | Paso a producción | Prueba de la Tabla 9.6 no aprobada, defecto crítico o alto abierto, o falta el acta de la Contraparte Técnica | Nadie; se corrige. El acta de la Contraparte Técnica es una condición adicional de G5 y no levanta una prueba fallida ni un defecto crítico o alto |
+| G6 | Cada despliegue en Producción y cada mes de Operación | Canario con un p95 sobre su umbral o con más errores que la entrega estable; presupuesto de error crítico del mes agotado | Nadie; la reversión del canario es automática y los despliegues no correctivos quedan suspendidos hasta el mes siguiente |
 
-Se concluye que ningún hallazgo de seguridad crítico o alto admite excepción en ninguna puerta, conforme al SD6, sección 6.2.2, y al RT-04.05, que exige bloqueo automático (Distribuidora Puelche S.A., 2026b, cap. 4). La única excepción que el plan admite es la regresión de desempeño de G3: el Líder de Calidad puede aceptarla con registro de deuda y fecha de cierre cuando la causa está identificada y no afecta un umbral p95 de la Tabla 9.2. G5 sólo se supera con el acta de la Contraparte Técnica, porque es la condición del paso a producción del Art. 18.1 (Distribuidora Puelche S.A., 2026a). La regresión de desempeño de G3 se apoya en la prueba de carga automática que el SD4, sección 4.2.4.1.4, ejecuta en QA sobre cada versión candidata y al menos una vez por semana. El 10 % es la tolerancia de LafroX al ruido de medición antes de declarar una regresión.
+Se concluye que ningún hallazgo de seguridad crítico o alto admite excepción en ninguna puerta, conforme al Formulario T-10, sección 6.2.2, y al RT-04.05, que exige bloqueo automático (Distribuidora Puelche S.A., 2026b, cap. 4). La única excepción que el plan admite es la regresión de desempeño de G3: el Líder de Calidad puede aceptarla con registro de deuda y fecha de cierre cuando la causa está identificada y no afecta un umbral p95 de la Tabla 9.2. G5 sólo se supera con el acta de la Contraparte Técnica, porque es la condición del paso a producción del Art. 18.1 (Distribuidora Puelche S.A., 2026a). El acta se suma a las pruebas aprobadas y no las reemplaza: no levanta una prueba de la Tabla 9.6 no aprobada ni un defecto crítico o alto abierto, que el Art. 17.3 tampoco admite al cierre de la marcha blanca. G6 aplica en Producción las dos reglas del SD4: la reversión automática del canario (sección 4.2.4.1.2) y la suspensión de los despliegues no correctivos al agotarse el presupuesto de error (sección 4.2.4.1.4). La regresión de desempeño de G3 se apoya en la prueba de carga automática que el SD4, sección 4.2.4.1.4, ejecuta en QA sobre cada versión candidata y al menos una vez por semana. El 10 % es la tolerancia de LafroX al ruido de medición antes de declarar una regresión.
 
 ### 9.2.2 Revisión por pares y análisis estático y dinámico
 
@@ -252,7 +253,7 @@ flowchart TB
     end
     subgraph PRE["Preproducción"]
         P1["Aceptación de usuario"]
-        P2["Carga 1,5× peak · estrés hasta el quiebre"]
+        P2["Carga 1,5× peak · estrés hasta el quiebre<br/>certificación, cierre de etapa y carga anual"]
         P3["Resiliencia con AWS FIS<br/>corte de enlace 24 h"]
         P4["Ensayos de migración · despliegue y reversión"]
     end
@@ -262,7 +263,7 @@ flowchart TB
     subgraph PROD["Producción"]
         R1["Marcha blanca · indicadores diarios"]
         R2["Pentest por tercero"]
-        R3["Resiliencia y carga<br/>antes de cierre de etapa"]
+        R3["Resiliencia<br/>antes de cierre de etapa"]
     end
     subgraph DR["Recuperación"]
         X1["Conmutación real<br/>RTO ≤ 4 h · RPO ≤ 15 min"]
@@ -293,13 +294,13 @@ La figura sigue la regla del SD4, Tabla 12: el software se prueba en un ambiente
 
 La carga de la prueba se deriva del dimensionamiento y no se elige. El peak de septiembre del SD4, Tabla 33, es de 14,66 TPS; por 1,5 da 21,99 TPS (RT-09.06; Distribuidora Puelche S.A., 2026b, cap. 9, p. 21). Con el mismo factor, los 775,33 usuarios concurrentes de la cota extrema pasan a 1.163, y los 158 dispositivos de terreno simultáneos pasan a 237. El escalón de 3× (43,98 TPS) verifica el crecimiento de tres veces sin rediseño del RT-09.03. El de 4× busca el punto de quiebre y comprueba que, al superarse la capacidad, la solución encola y avisa en vez de perder transacciones (RT-09.08). La prueba se ejecuta con k6, distribuyendo la carga por lugar de proceso según el perfil horario del SD4. Además de la prueba de septiembre, se reproduce la ventana de despacho de 05:30 a 07:00 a 1,5 × 6,94 TPS = 10,41 TPS, con la emisión de guías concentrada en 90 minutos. Su criterio no es sólo el tiempo de respuesta: no puede haber un minuto de indisponibilidad. La resiliencia usa AWS Fault Injection Service en la nube y desconexiones controladas en el sitio emulado de Preproducción. La prueba de terreno usa Espresso para automatizar los flujos de la aplicación y personas del CLIENTE con guantes térmicos en la cámara de −22 °C, porque la operabilidad con guantes no se automatiza.
 
-La automatización es el criterio por defecto. Una prueba es manual sólo si exige el juicio de una persona usuaria, una condición física o un tercero. Con la estimación del Anexo 9.C, el catálogo inicial tiene unos 1.282 casos:
+La automatización es el criterio por defecto. Una prueba es manual sólo si exige el juicio de una persona usuaria, una condición física o un tercero. Con la estimación del Anexo 9.C, el catálogo inicial tiene unos 1.297 casos:
 
 - 846 casos para los 259 requisitos funcionales y no funcionales ofertados del T-12 que se prueban directamente (56 críticos, 160 altos y 43 medios según su prioridad en el SD3), a razón de cinco por requisito crítico, tres por alto y dos por medio. Los nueve absorbidos por otra fila se prueban con ella. Las 271 filas RF y RNF del T-12 se concilian así: 259 con prueba propia, 9 absorbidas y 3 en «No cumple» (RF-07.11, RNF-21.02 y RNF-21.07), que no se prueban;
 - 346 casos para los RT en estado «Cumple» o «Cumple parcialmente»;
-- 90 casos de contrato para las 15 integraciones, seis por integración: éxito, error, lentitud, duplicado, orden y versión, conforme al RT-10.08.
+- 105 casos de contrato para las 15 integraciones, siete por integración: éxito, dependencia que no responde, respuesta con error, respuesta con lentitud, duplicado, orden y versión. Los tres casos de falla son los que distingue el RT-10.08 (Distribuidora Puelche S.A., 2026b, cap. 10).
 
-Si el 80 % se automatiza, a medio minuto por caso, la regresión completa de 1.026 casos tarda unas 8,6 horas en un ejecutor. Repartida en dos ejecutores paralelos baja a 4,3 horas y cabe en una ejecución nocturna antes de cada promoción a Preproducción. Los 256 casos restantes requieren unas 64 HH por ciclo, a 15 minutos por caso, que se planifican con los evaluadores en los meses de certificación.
+El total es 846 + 346 + 105 = 1.297 casos. Si el 80 % se automatiza, a medio minuto por caso, la regresión completa de 0,8 × 1.297 ≈ 1.038 casos tarda 1.038 × 0,5 / 60 ≈ 8,7 horas en un ejecutor. Repartida en dos ejecutores paralelos baja a 4,3 horas y cabe en una ejecución nocturna antes de cada promoción a Preproducción. Los 259 casos restantes requieren 259 × 15 / 60 ≈ 65 HH por ciclo, a 15 minutos por caso, que se planifican con los evaluadores en los meses de certificación.
 
 ### 9.2.4 Datos de prueba
 
@@ -351,13 +352,13 @@ flowchart LR
 
 La figura muestra que la verificación termina en la certificación de cada etapa (H5 y H10), mientras que la validación termina en la marcha blanca (H7 y H12). Recién en Producción, con usuarios y volumen reales, se puede comprobar que la lista de un retiro sanitario se obtiene en menos de dos horas o que el indicador de entregas completas y a tiempo se mide de una sola forma. Por eso los 16 resultados del Caso, capítulo 18, que el SD3 y el Formulario T-17 identifican como R18-01 a R18-16, se aceptan con el protocolo del Formulario T-17, en el mes que fija el SD3, Anexo 3.J, Tabla 3.A.13, y no con la certificación técnica.
 
-La trazabilidad es la cadena que pide el Caso, sección 17.1: origen, requisito, componente, paquete de la EDT, prueba de verificación y criterio de aceptación. El RT-04.04 le agrega el cambio de código y el despliegue (Distribuidora Puelche S.A., 2026b, cap. 4, p. 10). La Figura 9.7 presenta la cadena con los identificadores que la sostienen.
+La trazabilidad es la cadena que pide el Caso, sección 17.1: origen, requisito, componente, paquete de la EDT, prueba de verificación y criterio de aceptación. El RT-04.04 le agrega el cambio de código y el despliegue (Distribuidora Puelche S.A., 2026b, cap. 4, p. 10). La Figura 9.7 presenta la cadena con los identificadores que la sostienen: M1 a M12 son los doce módulos del monolito modular y INT-01 a INT-15, las quince integraciones de la solución (SD4, sección 4.1).
 
 ```mermaid
 flowchart LR
     O["Origen<br/>párrafo del Caso · RT<br/><i>Caso cap. 18, resultado 1:<br/>retiro en menos de 2 h</i>"] --> R["Requisito<br/>RF · RNF · RT del T-12 (645 ID)<br/><i>RF-09.01 trazabilidad<br/>hacia adelante</i>"]
     R --> C["Componente<br/>M1–M12 · INT-01–15<br/><i>M9 Calidad y trazabilidad</i>"]
-    C --> E["Paquete EDT<br/>T-14<br/><i>3.4.4 Cadena de frío<br/>y retiro sanitario</i>"]
+    C --> E["Paquete EDT<br/>T-14<br/><i>3.4.4 Cadena de frío, retención<br/>de lotes y retiro sanitario</i>"]
     E --> K["Caso de prueba<br/>CP-ID requisito-nn<br/><i>CP-RF-09.01-01 a -05<br/>en 3.8.1 y 3.8.2</i>"]
     K --> G["Cambio<br/>solicitud de fusión con ID<br/><i>aprobada por un par</i>"]
     G --> D["Despliegue<br/>digest de imagen<br/><i>imagen firmada en PROD</i>"]
@@ -389,7 +390,7 @@ stateDiagram-v2
 
 **Figura 9.8 — Ciclo de vida del defecto. Fuente: elaboración propia.**
 
-En la figura, un defecto sólo se cierra cuando la prueba que lo detectó pasa y queda incorporada a la regresión. Así, un defecto corregido no puede volver sin que una prueba lo detecte. La severidad usa las cuatro clases de los niveles de servicio del SD4, Tabla 16, para que un defecto y un incidente se midan con la misma vara. Un defecto es crítico si impide la preparación, el despacho o la emisión de la guía en la ventana de 05:30 a 07:00, si compromete la seguridad o la integridad de datos, o si impide el bloqueo por excursión térmica. Es alto si afecta un servicio de nivel alto sin alternativa. Es medio o bajo en los demás casos. Ningún defecto crítico o alto abierto pasa la puerta G4. Ninguna marcha blanca se cierra con incidentes críticos o altos abiertos atribuibles a la solución (Distribuidora Puelche S.A., 2026a, art. 17.3). Un defecto reabierto dos veces por la misma causa pasa a análisis de causa raíz en el Comité de Calidad, con el mismo formato que el Art. 25 de las Bases Administrativas exige para los incidentes críticos.
+En la figura, un defecto sólo se cierra cuando la prueba que lo detectó pasa y queda incorporada a la regresión. Así, un defecto corregido no puede volver sin que una prueba lo detecte. La severidad usa las cuatro clases de los niveles de servicio del SD4, Tabla 16, para que un defecto y un incidente se midan con la misma vara. Un defecto es crítico si impide la preparación, el despacho o la emisión de la guía en la ventana de 05:30 a 07:00, si compromete la seguridad o la integridad de datos, o si impide el bloqueo por excursión térmica. Es alto si afecta un servicio de nivel alto, que sólo tiene una alternativa costosa, como la captura sin conexión de la toma de pedido, la entrega o la consulta de stock y crédito. Es medio si el servicio afectado dispone de una alternativa operativa, y bajo si no impide operar. Ningún defecto crítico o alto abierto pasa la puerta G4. Ninguna marcha blanca se cierra con incidentes críticos o altos abiertos atribuibles a la solución (Distribuidora Puelche S.A., 2026a, art. 17.3). Un defecto reabierto dos veces por la misma causa pasa a análisis de causa raíz en el Comité de Calidad, con el mismo formato que el Art. 25 de las Bases Administrativas exige para los incidentes críticos.
 
 ## 9.3 Alineación con Plan de Trabajo
 
@@ -397,7 +398,7 @@ Esta sección muestra dónde quedan las actividades de calidad en la EDT y en el
 
 ### 9.3.1 Actividades de calidad en la EDT
 
-La EDT del Formulario T-14 no tiene una rama de calidad aislada. Las actividades de calidad están en las cuentas donde se produce lo que verifican, como muestra la matriz de cobertura del SD7, Figura 7.4. La Tabla 9.7 agrupa esos paquetes por cuenta, con sus horas del Formulario T-15.
+La EDT del Formulario T-14 no tiene una rama de calidad aislada. Las actividades de calidad están en las cuentas donde se produce lo que verifican, como muestran la matriz de cobertura del SD7, Tabla 7.2, y su Figura 7.16. La Tabla 9.7 agrupa esos paquetes por cuenta, con sus horas del Formulario T-15.
 
 **Tabla 9.7 — Paquetes de calidad de la EDT por cuenta. Fuente: elaboración propia a partir de los Formularios T-14 y T-15.**
 
@@ -441,14 +442,14 @@ gantt
     Recuperación abr-29                    :milestone, 2029-04-15, 0d
     Intrusión may-29                       :milestone, 2029-05-15, 0d
     Carga ago-29                           :milestone, 2029-08-15, 0d
-    Resiliencia oct-29                     :milestone, 2029-10-15, 0d
-    Recuperación nov-29                    :milestone, 2029-11-15, 0d
+    Resiliencia sep-29 (días 26-30)        :milestone, 2029-09-27, 0d
+    Recuperación oct-29                    :milestone, 2029-10-15, 0d
     Resiliencia mar-30                     :milestone, 2030-03-15, 0d
     Recuperación abr-30                    :milestone, 2030-04-15, 0d
     Intrusión may-30                       :milestone, 2030-05-15, 0d
     Carga ago-30                           :milestone, 2030-08-15, 0d
-    Resiliencia oct-30                     :milestone, 2030-10-15, 0d
-    Recuperación nov-30                    :milestone, 2030-11-15, 0d
+    Resiliencia sep-30 (días 26-30)        :milestone, 2030-09-27, 0d
+    Recuperación oct-30                    :milestone, 2030-10-15, 0d
     Resiliencia mar-31                     :milestone, 2031-03-15, 0d
     Recuperación abr-31                    :milestone, 2031-04-15, 0d
     Intrusión may-31                       :milestone, 2031-05-15, 0d
@@ -468,7 +469,7 @@ gantt
 
 **Figura 9.9 — Actividades de calidad en el cronograma del contrato. Fuente: elaboración propia a partir del Formulario T-15, sección 6.1.**
 
-La figura muestra que ninguna prueba de certificación ni ninguna prueba periódica de la Operación cae en un congelamiento. Las de la Etapa 1 terminan en noviembre de 2027, antes de diciembre, y las de la Etapa 2 en junio de 2028. La marcha blanca de la Etapa 2 coincide con el peak de septiembre de 2028, pero no introduce cambios técnicos durante el congelamiento: es operación supervisada, y su medición diaria con el volumen de peak es justamente la exigencia más dura sobre la solución (Distribuidora Puelche S.A., 2026c, cap. 13). El refuerzo de evaluadores subcontratados, de hasta 16 por día (SD6, sección 6.1.3), cubre los meses 9 a 12 y 16 a 18. Su capacidad máxima, 16 × 21 días hábiles × 8 horas = 2.688 HH mensuales, supera las horas de prueba programadas en cada uno de esos meses. Por eso queda disponible para la subsanación de observaciones de los meses 11, 12 y 18, que el riesgo R8-31 cuantifica en 153,6 HH esperadas (SD8, Anexo 8.A). Los evaluadores reciben antes de su primer turno una inducción en las herramientas, los datos de prueba y los criterios de este plan, registrada como parte del programa de capacitación de la sección 9.1.2.
+La figura muestra que ninguna prueba de certificación ni ninguna prueba periódica de la Operación cae en un congelamiento. Las resiliencias de septiembre de 2029 y de 2030 (meses 32 y 44) se ejecutan entre los días 26 y 30, después del congelamiento del 1 al 25, como fija la sección 9.3.3. Las de la Etapa 1 terminan en noviembre de 2027, antes de diciembre, y las de la Etapa 2 en junio de 2028. La marcha blanca de la Etapa 2 coincide con el peak de septiembre de 2028, pero no introduce cambios técnicos durante el congelamiento: es operación supervisada, y su medición diaria con el volumen de peak es justamente la exigencia más dura sobre la solución (Distribuidora Puelche S.A., 2026c, cap. 13). El refuerzo de evaluadores subcontratados, de hasta 16 por día (SD6, sección 6.1.3), cubre los meses 9 a 12 y 16 a 18. Su capacidad máxima, 16 × 21 días hábiles × 6,4 HH efectivas por persona y día = 2.150,4 HH mensuales (Formulario T-15, sección 5.1), supera las horas de prueba programadas en cada uno de esos meses. Por eso queda disponible para la subsanación de observaciones de los meses 11, 12 y 18, que el riesgo R8-31 cuantifica en 153,6 HH esperadas (SD8, Anexo 8.A). Los evaluadores reciben antes de su primer turno una inducción en las herramientas, los datos de prueba y los criterios de este plan, registrada como parte del programa de capacitación de la sección 9.1.2.
 
 Las Bases exigen pruebas de carga, resiliencia y seguridad ofensiva antes de cada paso a producción (Distribuidora Puelche S.A., 2026b, sección 20.1, RT-10.07 y RT-11.20). En cada etapa, el primer paso a Producción es el inicio de la marcha blanca (H6 y H11), porque la marcha blanca ya opera en Producción con datos y usuarios reales (SD4, sección 4.2.4.1). Las pruebas de certificación de los paquetes 3.8 y 3.9 se ejecutan después de la integración y regresión de su alcance y antes de ese primer paso. Entre el inicio de la marcha blanca y el paso a producción definitivo (H7 y H12), la versión cambia sólo por correcciones. Cada corrección pasa por las puertas G0 a G5 con regresión completa, DAST y la prueba de carga de regresión semanal. Antes del H7 y del H12 se repiten obligatoriamente la prueba de intrusión por tercero, la prueba de resiliencia y la prueba de carga aplicable sobre la versión que cerrará la marcha blanca. Si las correcciones no cambiaron toda la superficie de la etapa, el alcance de esas ejecuciones se acota a los componentes modificados y a sus dependencias, pero no se reemplaza por una declaración de ausencia de cambios. El costo se carga a la reserva de contingencia del riesgo R8-07 del SD8.
 
@@ -515,15 +516,16 @@ Durante los 36 meses de Operación, las Bases exigen pruebas con frecuencia mín
 | Resiliencia por inyección de fallas | Semestral, con separación máxima de seis meses (RT-10.07) | 26, 32, 38, 44, 50, 55 | 6 | 8.2.2 |
 | Prueba de intrusión por tercero | Anual (RT-11.20) | 28, 40, 52 | 3 | 8.2.2 |
 | Restauración de respaldos | Mensual (RT-07.12) | 21 a 56 | 36 | 8.1.6 |
-| Carga previa al peak de septiembre | Anual (propuesta LafroX) | 31, 43, 55 | 3 | 8.2 |
+| Carga previa al peak de septiembre, en Preproducción | Anual (propuesta LafroX) | 31, 43, 55 | 3 | 8.2 |
 
-Las cantidades coinciden con los entregables del Formulario T-14: seis pruebas de recuperación ante desastres, 36 informes de restauración y tres pruebas de intrusión en la Operación. Ninguna prueba que interviene Producción cae en diciembre ni en los tres primeros días hábiles; las dos pruebas de resiliencia de septiembre, en los meses 32 y 44, se ejecutan entre los días 26 y 30, en una ventana aprobada fuera del congelamiento del 1 al 25. La recuperación ante desastres y la resiliencia se alternan en meses distintos, para no ensayar dos fallas mayores en el mismo período, y mantienen una separación máxima de seis meses entre ejecuciones del mismo tipo. La prueba de carga anual en agosto no la exige el contrato: la agrega LafroX porque el peak de septiembre es la mayor exigencia de cada año y el congelamiento impide corregir durante él (Distribuidora Puelche S.A., 2026c, cap. 13). Cada prueba produce un informe con el resultado medido, la comparación con su umbral y el plan de corrección de las brechas, conforme al RT-07.07. Las brechas entran al registro de deuda técnica y al presupuesto de capacidad de la mantención, que el Capítulo 11 desarrolla.
+Las cantidades coinciden con los entregables del Formulario T-14: seis pruebas de recuperación ante desastres, 36 informes de restauración y tres pruebas de intrusión en la Operación. Ninguna prueba que interviene Producción cae en diciembre ni en los tres primeros días hábiles; las dos pruebas de resiliencia de septiembre, en los meses 32 y 44, se ejecutan entre los días 26 y 30, en una ventana aprobada fuera del congelamiento del 1 al 25. La recuperación ante desastres y la resiliencia se alternan en meses distintos, para no ensayar dos fallas mayores en el mismo período, y mantienen una separación máxima de seis meses entre ejecuciones del mismo tipo. La prueba de carga anual en agosto no la exige el contrato y se ejecuta en Preproducción, como toda prueba de carga (Distribuidora Puelche S.A., 2026a, art. 24; 2026b, RT-09.06): la agrega LafroX porque el peak de septiembre es la mayor exigencia de cada año y el congelamiento impide corregir durante él (Distribuidora Puelche S.A., 2026c, cap. 13). Cada prueba produce un informe con el resultado medido, la comparación con su umbral y el plan de corrección de las brechas, conforme al RT-07.07. Las brechas entran al registro de deuda técnica del paquete 8.2.4 y a la gestión de la capacidad del paquete 8.4.1 del Formulario T-14, cuya proyección trimestral propone el ajuste que corresponda.
 
 ## Referencias
 
 Las fuentes citadas en este documento se listan en formato APA 7.ª edición. Las Bases se citan en el texto con su documento y el artículo, capítulo, sección o código del requisito.
 
 - CMMI Institute. (2018). *CMMI Development V2.0*. CMMI Institute.
+- CMMI Institute. (2023). *CMMI for Development, Version 2.0: Maturity Level 3 SCAMPI A Appraisal Report N° 58190*. CMMI Institute.
 - Distribuidora Puelche S.A. (2026a). *Bases Administrativas de Licitación N.º TFEP-01/2026: Contratación de Solución Integral de Software y Servicios de Operación*.
 - Distribuidora Puelche S.A. (2026b). *Bases Técnicas Transversales de Licitación N.º TFEP-01/2026*.
 - Distribuidora Puelche S.A. (2026c). *Caso 02: Logística. Especificaciones del problema y operación de Distribuidora Puelche S.A.*
@@ -534,7 +536,7 @@ Las fuentes citadas en este documento se listan en formato APA 7.ª edición. La
 - International Organization for Standardization & International Electrotechnical Commission. (2023). *ISO/IEC 25010:2023 Systems and software engineering — Systems and software Quality Requirements and Evaluation (SQuaRE) — Product quality model*. ISO.
 - International Organization for Standardization, International Electrotechnical Commission, & Institute of Electrical and Electronics Engineers. (2021). *ISO/IEC/IEEE 29119-4:2021 Software and systems engineering — Software testing — Part 4: Test techniques*. ISO.
 - International Organization for Standardization, International Electrotechnical Commission, & Institute of Electrical and Electronics Engineers. (2022). *ISO/IEC/IEEE 29119-1:2022 Software and systems engineering — Software testing — Part 1: General concepts*. ISO.
-- LafroX. (2026). Subdocumentos 1 a 8 y 13, con los anexos y formularios citados.
+- LafroX. (2026). Subdocumentos 1, 3 a 8 y 13, con sus anexos, y Formularios T-10, T-12, T-13, T-14, T-15 y T-17.
 - Ley N.º 21.719. (2024). *Regula la protección y el tratamiento de los datos personales y crea la Agencia de Protección de Datos Personales*. Diario Oficial de la República de Chile.
 - McCabe, T. J. (1976). A complexity measure. *IEEE Transactions on Software Engineering, SE-2*(4), 308–320.
 - Project Management Institute. (2017). *La guía de los fundamentos para la dirección de proyectos (Guía del PMBOK®)* (6.ª ed.), capítulo 8. Project Management Institute.
@@ -551,6 +553,9 @@ La tabla declara el apoyo de IA conforme a las Aclaraciones, §7.2. La revisión
 | 9.1 Plan de Calidad | Claude Code | Marco, madurez, umbrales ISO/IEC 25010, métricas y costo de la calidad | Alto | Medio | [[REVISIÓN HUMANA]] |
 | 9.2 Estrategia de Aseguramiento de Calidad | Claude Code | Puertas, análisis, estrategia de pruebas, datos, trazabilidad y defectos | Alto | Medio | [[REVISIÓN HUMANA]] |
 | 9.3 Alineación con Plan de Trabajo | Claude Code | Paquetes, horas, hitos y calendario de pruebas | Alto | Medio | [[REVISIÓN HUMANA]] |
-| Anexos 9.A–9.D | Claude Code | Ver declaración propia de los anexos | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| Anexo 9.A | Claude Code | Métricas y umbrales por subcaracterística; ver declaración propia de los anexos | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| Anexo 9.B | Claude Code | Reglas y configuración de análisis; ver declaración propia de los anexos | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| Anexo 9.C | Claude Code | Matriz de trazabilidad desde el T-12 y el SD3; ver declaración propia de los anexos | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| Anexo 9.D | Claude Code | Juegos de datos y reglas de anonimización; ver declaración propia de los anexos | Alto | Ninguno | [[REVISIÓN HUMANA]] |
 | Formulario T-13 | Claude Code | Ver declaración propia del formulario | Alto | Ninguno | [[REVISIÓN HUMANA]] |
 | Formulario T-17 | Claude Code | Ver declaración propia del formulario | Alto | Ninguno | [[REVISIÓN HUMANA]] |
