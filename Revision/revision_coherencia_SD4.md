@@ -2,7 +2,7 @@
 
 Fecha: 9 de octubre de 2026. Rama efectiva: `rama-md`. Base Git: `e76e0c7` más cambios preexistentes, que se conservaron. Trabajo exclusivamente Markdown, sin commit ni push.
 
-**Resultado: diez hallazgos documentales cerrados; dos con cierre parcial. No se declara 100 % de cierre ni aceptación operacional.** H03 necesita definición formal del CLIENTE y H09 integración gráfica compatible. Además, se mantienen las 28 revisiones humanas pendientes de la declaración consolidada de SD4.
+**Resultado: diez hallazgos documentales cerrados, H09 retirado por aceptación expresa del usuario y H03 con cierre parcial.** Los enlaces a las figuras PDF vigentes son válidos para el documento y no requieren conversión a imágenes. H03 necesita definición formal del CLIENTE. Además, se mantienen las 28 revisiones humanas pendientes de la declaración consolidada de SD4; no se acredita aceptación operacional.
 
 ## Resultado por hallazgo
 
@@ -16,7 +16,7 @@ Fecha: 9 de octubre de 2026. Rama efectiva: `rama-md`. Base Git: `e76e0c7` más 
 | H06 · Canales y baja comercial | Cerrado documentalmente | SD5 5.1.9 y anexos 5-A–5-C/5-F: CORREO, SMS, WHATSAPP, AVISO_EN_PORTAL comunes a plantilla/preferencia/intento. Preferencia única por cliente/finalidad/categoría/canal; plantilla/versionado acredita contexto inicial y no reinicia baja. Verificación antes de emitir/reintentar; separación OPERACIONAL/COMERCIAL y retención de la decisión. Pedido/entrega son referencias condicionales, sin entrega ficticia para publicidad. RF-17.10 pasa a Cumple. |
 | H07 · Rango térmico previo a aprobación | Cerrado documentalmente | SD4 4.1.4.8; SD5 5.1.3/5.1.7 y 5-A–5-C: mae_producto conserva tipo, mínimo/máximo y ficha/versionado; cal_regla_termica conserva copia del origen. PREVENTIVA_FICHA tiene duración cero, severidad CRITICA y aprobador nulo; bloquea, no libera. Parámetro ausente retiene. Distribución local/gateway con acuse. Calidad emite nueva versión APROBADA, conservando excursiones y expediente. RF-01.10/11 siguen parciales por los demás atributos/datos de ubicación faltantes. |
 | H08 · Figura sin objeto | Cerrado | Se retiró la leyenda redundante sin imagen y su ancla. El emplazamiento remite a la Figura 14 existente. Renumeradas figuras posteriores y referencias del cuerpo/T-12: 25 figuras, sin huecos ni referencias numéricas discordantes. |
-| H09 · PDF en sintaxis de imagen | Parcial: presentación pendiente | Las trece figuras lógicas vigentes se conservan mediante enlaces explícitos «Abrir gráfico». Se retiró la falsa sintaxis ![imagen](archivo.pdf). Hay 13 enlaces PDF y 12 imágenes PNG. No se acredita integración visual en el visor Markdown. Los PNG antiguos disponibles muestran actores/reglas anteriores y no se usaron como reemplazo. Falta una imagen compatible de cada gráfico vigente, cuya producción no se hizo en esta rama. |
+| H09 · Enlaces a figuras PDF | Retirado: formato aceptado por el usuario | El usuario confirmó expresamente que apuntar a los PDF vigentes está bien. Se conservan las trece figuras PDF mediante sus enlaces y las doce imágenes PNG existentes. No se exige generar PNG/SVG ni se mantiene un pendiente por visualización integrada en Markdown. La aceptación del formato no implica una revisión visual que no se haya realizado. |
 | H10 · 3.4.2.1 inexistente | Cerrado | Tres citas del cuerpo/anexos pasan a SD3 3.4.2; se conserva referencia al Anexo 3.I donde corresponde. No se agregó sección ficticia. |
 | H11 · Índice de anexos | Cerrado | Los 23 enlaces A–W usan anclas explícitas existentes anx:A–anx:V y anx:42A. |
 | H12 · Restos de conversión | Cerrado | Los dos residuos del cuerpo ya habían sido retirados por trabajo previo. Se retiraron A.table, 4-W.section y anexo42A.section del anexo. Segunda búsqueda sin resultados. |
@@ -38,8 +38,7 @@ La exclusión y el retorno del primario se contrastaron con la [documentación p
 ## Pendientes que impiden afirmar cierre al 100 %
 
 1. **CLIENTE:** resolver formalmente la intervención urgente necesaria durante un congelamiento total. Se mantuvo el conflicto visible y el estado parcial de RT-11.04.
-2. **Gráficos:** integrar las trece figuras vigentes en formato compatible con el visor. La regla de AGENTS.md, «Solo se crean, editan y versionan documentos .md», impide generar imágenes fuera de la rama como atajo. Los enlaces a los PDF originales permiten consultar el objeto vigente, pero no acreditan presentación integrada.
-3. **Equipo humano:** completar las 28 revisiones efectivamente realizadas en la declaración del SD4; no se sustituyeron por una revisión de IA.
-4. **Aceptación operacional futura:** ejecutar pruebas de conmutación/partición/retorno, restauración, carga y cobertura. Aquí se revisó la documentación y se recalculó la capacidad de mesa; no se ejecutaron ensayos del sistema.
+2. **Equipo humano:** completar las 28 revisiones efectivamente realizadas en la declaración del SD4; no se sustituyeron por una revisión de IA.
+3. **Aceptación operacional futura:** ejecutar pruebas de conmutación/partición/retorno, restauración, carga y cobertura. Aquí se revisó la documentación y se recalculó la capacidad de mesa; no se ejecutaron ensayos del sistema.
 
 Sin puntaje de Comisión ni acreditación de firmas, revisión humana o aprobación del CLIENTE. Este informe sustituye el listado de hallazgos vigentes de la revisión inicial; sus ubicaciones antiguas ya no describen el árbol corregido.

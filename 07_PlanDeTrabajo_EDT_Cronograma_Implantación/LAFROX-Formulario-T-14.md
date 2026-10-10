@@ -1328,6 +1328,8 @@ La Tabla T14.27 presenta sus paquetes.
 
 Esta cuenta de control reúne lo que permite entender, mantener y traspasar la solución. Lo exige el Art. 77°.
 
+Cada versión liberada se entregará al CLIENTE junto con su SBOM de 3.11.4 en formato CycloneDX o SPDX, identificando los componentes, sus versiones y licencias (Bases Técnicas Transversales, RT-11.23).
+
 La Tabla T14.28 presenta sus paquetes.
 
 **Tabla T14.28. Diccionario de la cuenta 3.11. Fuente: elaboración propia.**
@@ -1578,6 +1580,10 @@ La fase 7 reúne 3 cuentas de control y 13 paquetes de trabajo.
 
 Esta cuenta de control reúne la capacitación de cada grupo según su rol y su situación.
 
+Todo el material de capacitación de 7.1.5, incluidos manuales por perfil, guías rápidas, preguntas frecuentes y videos tutoriales, y la base de conocimiento consultable de 3.11.2 y 8.5.3 se entregarán en español, en formato editable y serán de propiedad del CLIENTE (Bases Técnicas Transversales, RT-22.03).
+
+El plan de 7.1.1 acordará con el CLIENTE un calendario para todos los perfiles, por turno y horario, sin afectar la preparación nocturna, el despacho de 05:30 a 07:00 ni las labores en calle de lunes a sábado, y considerando los peaks de septiembre y diciembre. La capacitación de conductores externos se acordará con cada transportista mediante 5.4.1, y la inducción continua de preparadores de 7.1.2 atenderá la rotación anual del 38 % sin detener la operación (Bases Técnicas Transversales, RT-22.04; Caso 02, cap. 15).
+
 La Tabla T14.42 presenta sus paquetes.
 
 **Tabla T14.42. Diccionario de la cuenta 7.1. Fuente: elaboración propia.**
@@ -1634,6 +1640,14 @@ La fase 8 reúne 5 cuentas de control y 26 paquetes de trabajo.
 
 Esta cuenta de control reúne los servicios que mantienen la solución funcionando cada día y la actualización anual del Plan de Reversibilidad, que exige el Art. 77°.
 
+El SOC de 8.1.5 notificará al CLIENTE toda brecha de seguridad o de datos personales dentro de las 24 horas de su detección, adjuntando un informe preliminar, y entregará su análisis de causa raíz dentro de los cinco días hábiles siguientes a la detección (Bases Técnicas Transversales, RT-11.19). Durante Operación realizará al menos un ejercicio de simulación de incidente por año con participación del CLIENTE, conservando el escenario, la bitácora y las acciones de mejora (RT-11.21).
+
+En 8.1.2, cada incidente crítico tendrá un análisis de causa raíz obligatorio entregado al CLIENTE dentro de cinco días hábiles desde el incidente, con acciones correctivas, responsables y plazos; SRE seguirá cada acción hasta su cierre verificado en la gestión de problemas (Bases Técnicas Transversales, RT-14.06). La documentación operativa reunirá el libro de operación y una guía de resolución para cada escenario de falla previsible, incluidos los de los contratos de integración y el plan de continuidad; el servicio mantendrá estos procedimientos y automatizará progresivamente las tareas repetitivas con las herramientas de operación previstas (RT-14.05).
+
+El canal único de la mesa registrará incidentes y solicitudes con número de ticket, clasificación por severidad y seguimiento de todas sus actuaciones y estados hasta el cierre conforme, con el escalamiento L1–L3 previsto (Bases Técnicas Transversales, RT-21.15). El cierre de cada ticket requerirá la confirmación de la persona usuaria registrada en él; mientras falte, permanecerá pendiente de cierre y sujeto al seguimiento de la mesa (RT-21.17).
+
+El servicio conservará un registro histórico de todas las actividades de soporte, vinculadas a su ticket, con clasificación, actuaciones, responsables y resultado (Bases Técnicas Transversales, RT-21.09). El informe mensual de niveles de servicio de 8.1.2 analizará las tendencias de los principales requerimientos, detallará el cumplimiento por severidad y analizará cada incumplimiento, indicando causa, impacto y acción correctiva con responsable y plazo; sus resultados se revisarán en el Comité de Operación (RT-21.09 y RT-21.18).
+
 La Tabla T14.45 presenta sus paquetes.
 
 **Tabla T14.45. Diccionario de la cuenta 8.1. Fuente: elaboración propia.**
@@ -1652,6 +1666,8 @@ La Tabla T14.45 presenta sus paquetes.
 #### Cuenta 8.2 — Mantenimiento
 
 Esta cuenta de control reúne el trabajo que mantiene la solución sana y actualizada, separado por tipo: software, ciberseguridad y hardware.
+
+LafroX destinará las 2.304 HH DES de 8.2.4 a reducir la deuda técnica durante los 36 meses de Operación, equivalentes al 1,7948 % de las 128.373,67 HH de esa etapa: 2.304 ÷ 128.373,67 × 100 = 1,7948 %. Esa capacidad equivale a 2.304 ÷ 36 = 64 HH mensuales y 64 × 12 = 768 HH anuales, con seguimiento en el registro cuantificado y el informe trimestral existentes; la fracción corresponde al total del período (Bases Técnicas Transversales, RT-21.21; Formulario T-15, secciones 4.2, 4.3 y 6.2).
 
 La Tabla T14.46 presenta sus paquetes.
 
@@ -1692,6 +1708,8 @@ La Tabla T14.47 presenta sus paquetes.
 
 Esta cuenta de control reúne los informes y las tareas que las Bases fijan con una periodicidad durante la Operación y que no forman parte de los servicios diarios.
 
+Cada propuesta trimestral de ajuste de dimensionamiento de 8.4.1 incluirá su efecto en el costo de infraestructura, nube, licencias y enlaces respecto de la base contratada, para decisión del CLIENTE antes de ejecutarla. La comparación empleará los consumos observados y las condiciones económicas vigentes (Bases Técnicas Transversales, RT-09.09).
+
 La Tabla T14.48 presenta sus paquetes.
 
 **Tabla T14.48. Diccionario de la cuenta 8.4. Fuente: elaboración propia.**
@@ -1708,6 +1726,8 @@ La Tabla T14.48 presenta sus paquetes.
 #### Cuenta 8.5 — Capacitación y transferencia en operación
 
 Esta cuenta de control reúne la capacitación y el traspaso de conocimiento que las Bases exigen después de la implementación.
+
+El centro de soporte revisará los tickets y la retroalimentación de las personas usuarias para identificar necesidades recurrentes y complejidades de la operación. Incorporará las soluciones y lecciones validadas en la base de conocimiento de 8.5.3 y revisará trimestralmente su uso y utilidad para ajustar los procedimientos de atención (Bases Técnicas Transversales, RT-21.10).
 
 La Tabla T14.49 presenta sus paquetes.
 
@@ -1887,10 +1907,14 @@ Las Bases se citan con su documento y el artículo, capítulo o sección.
 
   
 -  Distribuidora Puelche S.A. (2026a). *Bases Administrativas de Licitación N.º TFEP-01/2026: Contratación de Solución Integral de Software y Servicios de Operación*.
+
+-  Distribuidora Puelche S.A. (2026b). *Bases Técnicas Transversales de Licitación N.º TFEP-01/2026*.
   
 -  Distribuidora Puelche S.A. (2026c). *Caso 02: Logística. Especificaciones del problema y operación de Distribuidora Puelche S.A.*
   
 -  Distribuidora Puelche S.A. (2026d). *Aclaraciones de la Licitación N.º TFEP-01/2026*.
+
+-  LafroX. (2026). *Formulario T-15: Nivelación de recursos*. Propuesta técnica TFEP-01/2026.
 
 ## Declaración de uso de IA
 
@@ -1899,5 +1923,5 @@ En cumplimiento de la sección 7.2 de las Aclaraciones de la licitación, la tab
 | Sección | Herramienta | Finalidad del uso | Nivel en texto | Nivel en diagramas | Revisión humana (quién y qué verificó) |
 | --- | --- | --- | --- | --- | --- |
 | 1 EDT | Claude Code | Estructura a partir de la EDT de trabajo del equipo | Alto | Alto (descripción de figura) | [[REVISIÓN HUMANA]] |
-| 2 Diccionario | Claude Code; Codex | Diccionario, periodos y criterios; ajustes de periodos, reversibilidad, salida y calidad | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| 2 Diccionario | Claude Code; Codex | Diccionario, periodos y criterios; ajustes de periodos, reversibilidad, salida y calidad; precisión de compromisos de documentación, capacitación, soporte, seguridad, capacidad y deuda técnica en 2.3, 2.7 y 2.8 | Alto | Ninguno | [[REVISIÓN HUMANA]] |
 | 3 Carta Gantt | Claude Code | Estructura contractual; carta vigente en Mermaid generada desde las ventanas del T-15 | Alto | Alto | [[REVISIÓN HUMANA]] |

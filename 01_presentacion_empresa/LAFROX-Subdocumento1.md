@@ -168,6 +168,8 @@ El modelo de gobierno interno de LafroX se fundamenta en políticas explícitas,
 
 La calidad de los procesos de LafroX se rige por un Sistema de Gestión de Calidad certificado conforme a ISO 9001:2015 y por prácticas evaluadas bajo CMMI-DEV Nivel 3.
 
+Los métodos de diseño, desarrollo, implementación, integración y soporte se ejecutan bajo los procesos de ese Sistema de Gestión de Calidad, cuyo alcance y vigencia se identifican en 1.4. En esta oferta se aplican mediante RUP y DevSecOps (LafroX, 2026, Subdocumento 6, sección 6.2); CMMI-DEV Nivel 3 acredita la madurez de procesos declarada, sin constituir una certificación independiente de esas metodologías (Distribuidora Puelche S.A., 2026b, RT-23.04).
+
 - **Instancia colegiada:** El Comité de Calidad y Procesos, presidido mensualmente por el Jefe de QA y con participación de los líderes de proyecto, analiza la adherencia metodológica y métricas de defecto.
 - **Políticas y controles de ingeniería:** Se implementan compuertas de calidad automáticas (quality gates) en los canales de integración continua (CI/CD). Es política corporativa estricta rechazar cualquier compilación con cobertura de pruebas unitarias inferior al 80 % o con hallazgos bloqueantes del análisis estático de código (PHPStan/Larastan y Pint).
 - **Auditorías internas:** Se ejecutan auditorías internas trimestrales a cargo de auditores líderes certificados, orientadas a evaluar la trazabilidad entre requerimientos, código y matrices de prueba.
@@ -179,6 +181,8 @@ El marco de seguridad corporativo está alineado y certificado bajo la norma ISO
 - **Responsable e instancias:** El Oficial de Seguridad de la Información (CISO) lidera el Comité de Seguridad y Privacidad, sesionando con periodicidad mensual para revisar incidentes, vectores de ataque y evaluar la gestión de vulnerabilidades.
 - **Procesos DevSecOps:** Se integran análisis estáticos de seguridad de código (SAST) y análisis de composición de software (SCA) en cada confirmación de código. Se realizan pruebas de penetración (ethical hacking) externas de forma semestral.
 - **Continuidad operacional:** Se gestionan planes de continuidad de negocio (BCP) y de recuperación ante desastres (DRP), sometidos a simulacros semestrales con corte controlado para verificar los umbrales de RTO ≤ 4 horas y RPO ≤ 15 minutos.
+
+Para Puelche, las pruebas de intrusión serán realizadas por un tercero independiente de LafroX, con periodicidad al menos anual durante la Operación y antes de cada paso a producción. LafroX entregará al CLIENTE cada informe íntegro y su plan de remediación con responsables y plazos (Distribuidora Puelche S.A., 2026b, RT-11.20).
 
 ### 1.3.3 Modelo de Gobierno de Gestión del Conocimiento
 
@@ -271,6 +275,10 @@ El numeral 19.2 de las Bases Técnicas Transversales exige diez roles mínimos (
 
 La acumulación de dos roles en una persona se compensa con equipos: el Arquitecto de Solución dirige un equipo de arquitectura e integración, y el Líder Funcional cuenta con analistas funcionales y con el equipo de implantación de las marchas blancas, cuya dotación se programa en el Formulario T-15 del Subdocumento 7, sección 5.7. Si la carga de las marchas blancas lo requiere, LafroX nomina un Líder de Implantación separado sin reducir la dedicación del Líder Funcional. La experiencia exigida para cada rol y las cartas de compromiso se acreditan conforme a las Bases Administrativas.
 
+Alex Aravena, Jefe de Proyecto y apoderado de LafroX, tendrá facultades para comprometer al ADJUDICATARIO en materias de ejecución durante toda la implementación, manteniendo la dedicación exclusiva declarada. Los cambios de alcance, plazo o costo se someterán a las instancias de aprobación previstas (Distribuidora Puelche S.A., 2026b, RT-19.02).
+
+LafroX mantendrá vigentes las certificaciones del equipo asignado durante todo el contrato y, ante la salida de una persona certificada, propondrá un reemplazo de perfil igual o superior, con certificación vigente y dedicación equivalente. El reemplazo requerirá autorización previa y escrita del CLIENTE, acreditación documental y traslape mínimo de quince días hábiles, sin costo adicional (Distribuidora Puelche S.A., 2026b, RT-15.09; 2026a, Art. 76°).
+
 ## 1.6 Alianzas
 
 Para viabilizar el despliegue del modelo híbrido obligatorio (Artículo 16° de las Bases Administrativas) y asegurar soporte de clase empresarial en los componentes físicos de terreno, LafroX mantiene alianzas tecnológicas estratégicas y vigentes. Cada alianza con vencimiento durante el contrato se renueva antes de su fecha de término, y su vigencia se acredita ante la Contraparte Técnica durante los 56 meses:
@@ -293,6 +301,7 @@ Las fuentes citadas en este documento se listan a continuación en formato APA 7
 - Distribuidora Puelche S.A. (2026b). *Bases Técnicas Transversales de Licitación N° TFEP-01/2026.*
 - Distribuidora Puelche S.A. (2026c). *Caso 02: Logística – Especificaciones del Problema y Operación de Distribuidora Puelche S.A.*
 - Distribuidora Puelche S.A. (2026d). *Aclaraciones de la Licitación N° TFEP-01/2026.*
+- LafroX. (2026). *Subdocumento 6: Metodologías*.
 - SGS. (2024). *Certificado de Sistema de Gestión de Servicios de TI ISO/IEC 20000-1:2018 N° CL21/8190.* SGS United Kingdom Ltd.
 
 # Declaración de uso de IA
@@ -305,9 +314,9 @@ En cumplimiento de la sección 7.2 de las Aclaraciones de la licitación (Distri
 | --- | --- | --- | --- | --- | --- |
 | 1.1 Presentación | Claude / Gemini | Formato y redacción de capacidades | Bajo | Ninguno | Alex Aravena (JP): Coherencia con líneas de negocio |
 | 1.2 Estructura Org. | Claude / Gemini | Organización de la descripción de la estructura corporativa y la dotación técnica | Bajo | Medio | Bastián Trejo (Arq): Revisión de líneas de reporte y distribución de la dotación |
-| 1.3 Gobierno interno | Claude / Gemini | Estructuración de políticas y comités | Bajo | Ninguno | Álvaro Catalán (Seg): Verificación normas 27001/CMMI |
+| 1.3 Gobierno interno | Claude / Gemini; OpenAI Codex | Estructuración de políticas y comités; vínculo de métodos con procesos certificados y entrega de informes de intrusión | Bajo | Ninguno | Álvaro Catalán (Seg): Verificación normas 27001/CMMI |
 | 1.4 Experiencia | Claude / Gemini | Redacción de proyectos equivalentes | Bajo | Ninguno | Alex Aravena (JP): Verificación de volumetrías |
-| 1.5 Estructura Proy. | Claude / Gemini | Alineación de roles institucionales | Bajo | Ninguno | Patricio Henríquez (Gest): Trazabilidad con los roles del numeral 19.2 de las Bases Técnicas Transversales |
+| 1.5 Estructura Proy. | Claude / Gemini; OpenAI Codex | Alineación de roles institucionales; facultades de ejecución del JP y continuidad de certificaciones personales | Bajo | Ninguno | Patricio Henríquez (Gest): Trazabilidad con los roles del numeral 19.2 de las Bases Técnicas Transversales |
 | 1.6 Alianzas | Claude / Gemini | Redacción de convenios de hardware | Bajo | Ninguno | Bastián Trejo (Arq): Coherencia con diseño híbrido |
 | Formulario T-6 | Claude / Gemini | Disposición tabular del formulario | Bajo | Ninguno | Alex Aravena (JP): Validación de los 11 campos exigidos y coherencia con la sección 1.4 |
 | 1.5 Estructura Proy., Tabla 1.3 | Claude Code | Asignación de los roles mínimos del numeral 19.2 | Alto | Ninguno | Revisión humana pendiente de identificar |

@@ -23,7 +23,7 @@ Las dos etapas siguen las mismas ocho reglas, y cada una responde a una condici�
   
 -  **Estabilización declarada.** Cada paso a producción tiene una estabilización de cuatro semanas por ola, con la dotación declarada en la sección 2.6 y sin costo adicional (condición 7; RT-20.05 y RT-20.06).
   
--  **Definición de terminado y aceptación.** Ningún entregable de implantación se da por terminado sin código, pruebas, documentación, seguridad y despliegue verificados (RT-20.07). Cada hito se acepta con un protocolo de criterios objetivos y verificables, firmado por la Contraparte Técnica (RT-20.08; Bases Administrativas, Art. 18.1).
+-  **Definición de terminado y aceptación.** La definición de terminado se acordará con el CLIENTE para cada entregable antes de su ejecución e incluirá código, pruebas, documentación, seguridad y despliegue; su cumplimiento se verificará con las evidencias y los criterios de aceptación del paquete correspondiente (RT-20.07). El protocolo de aceptación de cada hito se formalizará conforme al Formulario T-17, con criterios objetivos y verificables y las evidencias del hito, firmado por la Contraparte Técnica (RT-20.08; Bases Administrativas, Art. 18.1).
 
 ## 2 Etapa 1: marcha blanca de los meses 13 a 15 y producción desde el mes 16
 
@@ -185,6 +185,10 @@ Después de cada paso a producción hay cuatro semanas de estabilización por ol
 Si la ola cubre solo una zona, la dotación de calle se reduce en proporción a sus rutas, y la dotación decrece según la curva de adopción, como exige el RT-20.05.
 
 ### 2.7 Capacitación y certificación
+
+Cada preparador nuevo, sin experiencia previa con el sistema, completará una misión de al menos 20 líneas con una tasa de error máxima del 5 % después de un máximo de dos horas de entrenamiento asistido en su puesto dentro de la bodega. No se exigirán sesiones fuera del recinto de bodega ni materiales impresos de más de dos páginas (Capítulo 3, Anexo 3.B, RNF-05.03).
+
+La capacitación se programará por turnos y en horarios acordados con el CLIENTE, sin interrumpir el despacho de mañana ni la preparación nocturna. El calendario considerará los peaks de septiembre y diciembre y utilizará las modalidades de acompañamiento y autoformación previstas para mantener la operación (Bases Técnicas Transversales, RT-22.04; Caso 02, cap. 15).
 
 La capacitación se hace en el puesto y en la ruta, sin detener la venta ni el reparto (Caso 02, sección 13.3, condición 5). Usa las cuatro modalidades del Art. 90.2: presencial en cada sitio, en línea sincrónica, autoformación en línea y acompañamiento en el puesto durante la marcha blanca. Cada perfil se certifica antes de cerrar la marcha blanca, porque el Art. 17.3 exige personal «capacitado y certificado conforme al plan de capacitación aprobado» (paquetes 7.1.1 a 7.1.6 y 7.3.1). Los usuarios administradores y el equipo técnico del CLIENTE se certifican además conforme al Art. 90.4. La Tabla T18.6 presenta los perfiles operativos.
 
@@ -358,10 +362,12 @@ Las Bases se citan con su documento y el artículo, capítulo, sección o códig
   
 -  Distribuidora Puelche S.A. (2026c). *Caso 02: Logística. Especificaciones del problema y operación de Distribuidora Puelche S.A.*
 
+-  LafroX. (2026). *Subdocumento 3: Esquema de solución y alcance — Anexos*. Propuesta técnica TFEP-01/2026.
+
 ## Declaración de uso de IA
 
 En cumplimiento de la sección 7.2 de las Aclaraciones de la licitación, la tabla siguiente declara el uso de herramientas de inteligencia artificial en este formulario, con la revisión humana de cada parte. La declaración se consolida en el Formulario A-6.
 
 | Sección | Herramienta | Finalidad del uso | Nivel en texto | Nivel en diagramas | Revisión humana (quién y qué verificó) |
 | --- | --- | --- | --- | --- | --- |
-| Formulario T-18 | Codex | Correcciones de coherencia y planificación de la implantación | Alto | Medio (descripciones de figuras) | [[REVISIÓN HUMANA]] |
+| Formulario T-18 | Codex | Correcciones de coherencia y planificación de la implantación; precisión de acuerdos de terminado y aceptación en 1 y de aprendizaje y programación de capacitación en 2.7 | Alto | Medio (descripciones de figuras) | [[REVISIÓN HUMANA]] |

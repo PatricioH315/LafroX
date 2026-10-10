@@ -131,6 +131,8 @@ La tabla asigna a cada mecanismo de gobierno de la integración su forma de oper
 
 Fuente: elaboración propia a partir de las Bases Técnicas Transversales (caps. 2 y 5, pp. 6–13).
 
+El libro de operación y las guías de resolución cubrirán cada escenario de falla previsible del catálogo de integraciones y los procedimientos de continuidad, con diagnóstico, responsable, pasos y comprobación de recuperación. SRE incorporará progresivamente las tareas repetitivas a los trabajos y procedimientos automatizados existentes, conservando aprobación y evidencia de ejecución (RT-14.05; Bases Técnicas Transversales, cap. 14, p. 27).
+
 ## Anexo 4-C — Escenarios de carga masiva
 
 <a id="anx:C"></a>
@@ -359,6 +361,8 @@ Correo, SMS/WhatsApp y aviso en portal aplican la separación de comunicaciones 
 ##### INT-15. Telemetría de flota — M12
 
 Modo asíncrono o extracción periódica de solo lectura según API existente. Volumen normal/peak: 60.480/60.480 posiciones/día, calculadas para 42 camiones × 120 posiciones/h × 12 h; el peak no aumenta esta fuente. Contraparte requerida 24×7 para conservar historial y cubrir turnos. Timeout de 10 segundos por consulta o 30 por lote; reanudación por cursor y deduplicación. Sin datos se muestra posición fechada y ruta prevista, nunca una posición presuntamente actual. La geolocalización no sustituye al POD.
+
+INT-15 consumirá de la plataforma existente posición GPS, velocidad y kilometraje de los 42 camiones propios; M12 presentará los valores recibidos con su fecha y entregará el kilometraje a M10. La velocidad se consultará en la fuente, sin estimarla entre posiciones; el acceso a la API conserva la condición de S-19 del Subdocumento 3 (LafroX, 2026, Anexo 3.C).
 
 Fuente: elaboración propia a partir de las Bases Técnicas del caso (cap. 14, p. 24) y RT-05.21 (Bases Técnicas Transversales, cap. 5, p. 13). Los SLA de terceros requieren respaldo contractual; los supuestos de dimensionamiento se distinguen de la volumetría del caso.
 
@@ -762,6 +766,8 @@ Fuente: elaboración propia a partir de RT-02.04 (Bases Técnicas Transversales,
 
 **Consecuencias.** Se mantiene un artefacto para preventa, reparto y picking con perfiles de permiso; inventario, configuración, actualizaciones y bloqueo de dispositivos se administran remotamente.
 
+En mantención, Kotlin nativo permite conservar un único artefacto con perfiles de preventa, reparto y bodega y aprovechar el equipo Kotlin declarado por LafroX. Frente a Flutter evita mantener una capa adicional de adaptación y validación de periféricos; frente a una PWA concentra en el desarrollo Android la persistencia desconectada y la integración industrial que motivan la elección, conservando la mantención propia del Portal de Clientes PWA (RT-17.02; Bases Técnicas Transversales, cap. 17, p. 31).
+
 **Evidencia exigida.** Ensayo de 14 horas sin señal, sincronización, periféricos y operación a -22 ^°C.
 
 **Requisitos que la sustentan.** RT-03.10, RT-03.18; Caso, parque móvil.
@@ -1049,6 +1055,8 @@ La Tabla A.19 reúne el inventario complementario y la matriz de navegadores, ve
 
 Fuente: decisiones de arquitectura lógica y política de configuración de la propuesta; compatibilidad de navegadores según Angular (2026b).
 
+La aplicación Android de terreno soportará la versión mayor vigente y las dos inmediatamente anteriores, verificando flujos y periféricos en la matriz por modelo antes de cada liberación. Cada paquete Kotlin se firmará y distribuirá mediante la gestión de flota Android Enterprise y Zebra DNA; antes de instalar o actualizar se verificarán firma y huella contra el artefacto aprobado, rechazando paquetes alterados o de origen no autorizado. Las actualizaciones seguirán las tandas por sitio y enlace de la ventana dominical de 4.2.6.12 del Subdocumento 4, conservando los plazos de corrección de vulnerabilidades y sus restricciones de calendario (RT-17.03 y RT-17.04; Bases Técnicas Transversales, cap. 17, p. 31).
+
 La Tabla A.19 incorpora la matriz de navegadores y versiones soportadas de RT-13.10 (Bases Técnicas Transversales, cap. 13, p. 26), aplicable a los portales y a la consola web de 4.1.3.1. La matriz utiliza versiones relativas para mantener el soporte durante el contrato; antes de cada liberación se registra el número exacto, sistema operativo, resultado y fecha de las pruebas. Angular 22 usa el conjunto Baseline del 7 de mayo de 2026; las versiones ofertadas deben pertenecer a ese conjunto y, al migrar Angular, al de la versión adoptada (Angular, 2026b). Cada nueva versión estable de navegador activa pruebas de autenticación, navegación, formularios, teclado y adaptación de pantallas en QA antes de sustituir la versión más antigua de la matriz; un fallo genera corrección y repetición de pruebas antes de declarar su compatibilidad. Los parches de seguridad se comprueban y se incorporan a la matriz con prioridad. La revisión trimestral de soporte del framework se complementa con esta comprobación por cada versión estable del navegador.
 
 El fin de soporte no publicado se registra como *no publicado*, con responsable y frecuencia de revisión; no significa soporte indefinido. Antes de aprobar una dependencia se verifica licencia, mantenimiento, vulnerabilidades y alternativa de sustitución (RT-11.26). La ficha de liberación identifica versión exacta, EOL conocido o política aplicable, prueba, rollback y responsable. La aceptación rechaza una imagen fuera de soporte.
@@ -1159,6 +1167,8 @@ Esta matriz vincula controles de ISO/IEC 27001:2022, Anexo A, y su guía ISO/IEC
 | 8.29/8.31/8.32 | RT-04.02–04.05; RT-11.27 | Pruebas, ambientes segregados y promoción aprobada. | Commit, ensayo y despliegue correlacionados. |
 
 Fuente: elaboración propia a partir de ISO (2022b, 2022c), RT de los capítulos 4, 5, 7, 10, 11, 12 y 16 (Bases Técnicas Transversales, caps. 4–16, pp. 10–29), y contratos lógicos. Seguridad verifica aplicabilidad con el responsable del sistema de gestión.
+
+El registro de vulnerabilidades conservará la fecha de publicación o detección que inicia el plazo, tomando el primero de ambos eventos aplicable al componente afectado, y la evidencia de cierre. Los máximos de 7 días corridos para críticas, 15 para altas y 30 para medias conservarán las restricciones de congelamiento y el escalamiento al CLIENTE de 4.2.4.1.4 del Subdocumento 4, sin equiparar contención con remediación (RT-11.04; Bases Técnicas Transversales, cap. 11, p. 23).
 
 La arquitectura impone HSTS en los portales HTTPS, TLS 1.3 en interfaces compatibles y rechazo de TLS 1.0/1.1. Un tercero con limitación de protocolo exige excepción documentada y tratamiento, no una reducción silenciosa del control. Entre sistemas se utiliza mTLS u OAuth con credenciales de cliente; nunca una clave estática en la URL. El catálogo público no muestra precios, conforme al caso. OWASP ASVS nivel 2 y API Security Top 10 orientan las pruebas de aplicación. La superficie exacta y la implantación de EDR/SIEM se realizan en la vista física; los permisos, eventos y pruebas permanecen definidos aquí.
 
@@ -1645,6 +1655,8 @@ Las fuentes citadas en este documento se listan a continuación en formato APA 7
 - International Organization for Standardization. (2022b). *ISO/IEC 27001:2022*. <https://www.iso.org/standard/27001>
 
 - International Organization for Standardization. (2022c). *ISO/IEC 27002:2022*. <https://www.iso.org/standard/75652.html>
+
+- LafroX. (2026). *Subdocumento 3: Esquema de solución y alcance. Anexos*. Licitación TFEP-01/2026, Caso 02 — Logística.
 
 - Laravel. (2026). *Release notes*. <https://laravel.com/framework/docs/releases>
 

@@ -1,5 +1,6 @@
 # CONTEXTO DE SESIÓN
 
+
 ## Estado vigente — 9 de octubre de 2026: segunda iteración de correcciones SD9 aplicada
 
 Por instrucción del usuario se corrigieron sólo los materiales del SD9 (`09_plan_calidad/`): cuerpo, anexos, T-13 y T-17. No se tocaron otros subdocumentos.
@@ -98,6 +99,15 @@ Se planificó el SD9 «Plan de calidad». El plan está en `compct/plan_SD9.md` 
 - H1 y H8 con holgura negativa ante observaciones (revisión anticipada).
 
 Decisiones del usuario: cobertura ≥70 % en lógica de negocio Y ≥80 % unitaria global; pentest anual y antes de cada paso a producción. Las correcciones a T-14 1.5.2, SD4 §4.2.4, SD1 §1.3 y RNF-14.06 quedan para la etapa de redacción. Los supuestos (casos por requisito, umbrales de complejidad, duplicación y deuda, meses de las pruebas en Operación) están en amarillo y deben confirmarse. Aún no se redactan el SD9, el T-13, el T-17 ni los .drawio. Sin commit.
+
+## Estado vigente — 9 de octubre de 2026 (noche): 101 parciales A+B aplicados
+
+Se aplicaron las 101 filas A (ya cubiertas) y B (frase simple) de `Revision/t12_iter/parciales_evaluacion.md` en SD4, SD4-Anexos, T-11, T-14, T-15, T-18, SD1, SD3, SD5, SD6 y SD13 (gpt-6.1-sol medio en tres grupos sin archivos compartidos; el grupo SD4 agotó el límite de uso de Codex tras editar y Claude redactó sus filas). Claude revisó y corrigió: páginas de cita, la ventana dominical de RT-17.03/04 (4.2.6.12), la periodicidad de intrusión del SD1 («al menos anual», compatible con T-14 8.2.2) y RF-18.02/RNF-14.06 a Cumple por cobertura cruzada. T-12: Parte A 237/31/3; Parte B 304/42/28. Detalle en `Revision/t12_iter/parciales_aplicacion.md`. Categoría C (29): plan en `Revision/t12_iter/plan_C_datos.md` con 12 C1 que LafroX puede proponer con fundamento y 17 C2 que requieren datos reales (precios, fichas, certificaciones, misión/visión, carbono); las BA prohíben precios en la Oferta Técnica. Categoría D (45) queda en parcial. Pendiente: actualizar los `Resumen/` de los documentos tocados en esta pasada. Sin commit.
+
+## Decisión vigente — 9 de octubre de 2026: figuras PDF aceptadas
+
+El usuario confirmó expresamente que los enlaces a los PDF de las trece figuras lógicas vigentes están bien. H09 se retira del informe de coherencia y de los pendientes; no exigir PNG/SVG ni conversión por el visor Markdown. Se conservan los objetos y enlaces actuales. Balance vigente: diez hallazgos corregidos, uno retirado por criterio confirmado (H09) y uno parcial (H03, definición del CLIENTE sobre congelamientos/intervenciones urgentes). Las 28 revisiones humanas y los ensayos futuros mantienen su estado. Esta decisión supersede las menciones a integración gráfica pendiente de los registros anteriores.
+
 
 ## Estado vigente — 9 de octubre de 2026: correcciones y segunda revisión de coherencia SD4
 
