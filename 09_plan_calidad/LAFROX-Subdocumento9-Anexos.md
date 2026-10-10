@@ -127,7 +127,7 @@ La Tabla 9.C.1 resume la matriz.
 | Contratos de las 15 integraciones | — | — | — | 90 |
 | **Total** | **645** | **605** | **40** | **1.282** |
 
-La matriz asigna prueba propia a 605 de los 645 identificadores. Los 40 restantes son 31 en estado «No cumple» y 9 absorbidos por otra fila. Con los 90 casos de contrato de las integraciones. el catálogo suma 1.282 casos. la cifra que usa la sección 9.2.3 del Subdocumento 9.
+La matriz asigna prueba propia a 605 de los 645 identificadores. Los 40 restantes son 31 en estado «No cumple» y 9 absorbidos por otra fila. Con los 90 casos de contrato de las integraciones, el catálogo suma 1.282 casos, la cifra que usa la sección 9.2.3 del Subdocumento 9.
 
 ### 9.C.2 Matriz
 

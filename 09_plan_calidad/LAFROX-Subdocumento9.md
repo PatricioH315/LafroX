@@ -295,7 +295,7 @@ La carga de la prueba se deriva del dimensionamiento y no se elige. El peak de s
 
 La automatización es el criterio por defecto. Una prueba es manual sólo si exige el juicio de una persona usuaria, una condición física o un tercero. Con la estimación del Anexo 9.C, el catálogo inicial tiene unos 1.282 casos:
 
-- 846 casos para los 259 requisitos funcionales y no funcionales ofertados del T-12 que se prueban directamente (56 críticos, 160 altos y 43 medios según su prioridad en el SD3), a razón de cinco por requisito crítico, tres por alto y dos por medio. Los nueve absorbidos por otra fila se prueban con ella;
+- 846 casos para los 259 requisitos funcionales y no funcionales ofertados del T-12 que se prueban directamente (56 críticos, 160 altos y 43 medios según su prioridad en el SD3), a razón de cinco por requisito crítico, tres por alto y dos por medio. Los nueve absorbidos por otra fila se prueban con ella. Las 271 filas RF y RNF del T-12 se concilian así: 259 con prueba propia, 9 absorbidas y 3 en «No cumple» (RF-07.11, RNF-21.02 y RNF-21.07), que no se prueban;
 - 346 casos para los RT en estado «Cumple» o «Cumple parcialmente»;
 - 90 casos de contrato para las 15 integraciones, seis por integración: éxito, error, lentitud, duplicado, orden y versión, conforme al RT-10.08.
 
@@ -505,7 +505,7 @@ La figura muestra que el plan sólo dispone de una oportunidad de subsanación: 
 
 ### 9.3.3 Pruebas periódicas durante la Operación
 
-Durante los 36 meses de Operación, las Bases exigen pruebas con frecuencia mínima. Este plan las fija en meses que evitan el congelamiento de septiembre y diciembre y los tres primeros días hábiles de cada mes (Distribuidora Puelche S.A., 2026c, cap. 15, RT-10.05). La Tabla 9.9 resume el calendario. El Formulario T-13 lo detalla mes a mes.
+Durante los 36 meses de Operación, las Bases exigen pruebas con frecuencia mínima. Este plan las fija fuera del congelamiento del 1 al 25 de septiembre, de diciembre y de los tres primeros días hábiles de cada mes (Distribuidora Puelche S.A., 2026c, cap. 15, RT-10.05). La Tabla 9.9 resume el calendario. El Formulario T-13 lo detalla mes a mes.
 
 **Tabla 9.9 — Pruebas periódicas de la Operación (meses 21 a 56). Fuente: elaboración propia a partir de las Bases y del Formulario T-14.**
 
@@ -517,7 +517,7 @@ Durante los 36 meses de Operación, las Bases exigen pruebas con frecuencia mín
 | Restauración de respaldos | Mensual (RT-07.12) | 21 a 56 | 36 | 8.1.6 |
 | Carga previa al peak de septiembre | Anual (propuesta LafroX) | 31, 43, 55 | 3 | 8.2 |
 
-Las cantidades coinciden con los entregables del Formulario T-14: seis pruebas de recuperación ante desastres, 36 informes de restauración y tres pruebas de intrusión en la Operación. Ninguna prueba que interviene Producción cae en diciembre ni en los tres primeros días hábiles; cuando se programa en septiembre, se ejecuta en una ventana aprobada fuera del congelamiento del 1 al 25. La recuperación ante desastres y la resiliencia se alternan en meses distintos, para no ensayar dos fallas mayores en el mismo período, y mantienen una separación máxima de seis meses entre ejecuciones del mismo tipo. La prueba de carga anual en agosto no la exige el contrato: la agrega LafroX porque el peak de septiembre es la mayor exigencia de cada año y el congelamiento impide corregir durante él (Distribuidora Puelche S.A., 2026c, cap. 13). Cada prueba produce un informe con el resultado medido, la comparación con su umbral y el plan de corrección de las brechas, conforme al RT-07.07. Las brechas entran al registro de deuda técnica y al presupuesto de capacidad de la mantención, que el Capítulo 11 desarrolla.
+Las cantidades coinciden con los entregables del Formulario T-14: seis pruebas de recuperación ante desastres, 36 informes de restauración y tres pruebas de intrusión en la Operación. Ninguna prueba que interviene Producción cae en diciembre ni en los tres primeros días hábiles; las dos pruebas de resiliencia de septiembre, en los meses 32 y 44, se ejecutan entre los días 26 y 30, en una ventana aprobada fuera del congelamiento del 1 al 25. La recuperación ante desastres y la resiliencia se alternan en meses distintos, para no ensayar dos fallas mayores en el mismo período, y mantienen una separación máxima de seis meses entre ejecuciones del mismo tipo. La prueba de carga anual en agosto no la exige el contrato: la agrega LafroX porque el peak de septiembre es la mayor exigencia de cada año y el congelamiento impide corregir durante él (Distribuidora Puelche S.A., 2026c, cap. 13). Cada prueba produce un informe con el resultado medido, la comparación con su umbral y el plan de corrección de las brechas, conforme al RT-07.07. Las brechas entran al registro de deuda técnica y al presupuesto de capacidad de la mantención, que el Capítulo 11 desarrolla.
 
 ## Referencias
 

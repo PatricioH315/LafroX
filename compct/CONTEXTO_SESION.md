@@ -1,8 +1,19 @@
 # CONTEXTO DE SESIÓN
 
-## Estado vigente — 9 de octubre de 2026: Anexo 9.C sincronizado con T-12
+## Estado vigente — 9 de octubre de 2026: pendientes cruzados 1–9 cerrados y tercera revisión del SD9
 
-Por solicitud del usuario se corrigieron solo las 99 celdas de estado desfasadas de la Tabla 9.C.2: 23 RF, 14 RNF y 62 RT pasaron de «Cumple parcialmente» a «Cumple», conforme al T-12 vigente. Ambos documentos contienen los mismos 645 ID y ya no presentan diferencias de estado: 541 «Cumple», 73 «Cumple parcialmente» y 31 «No cumple». No se cambiaron pruebas, casos estimados ni el T-12; el Anexo 9.C conserva 1.282 casos y 9 identificadores absorbidos o alias. No se introdujeron precios, tarifas, valores unitarios ni montos de la oferta en la Oferta Técnica (Bases Administrativas art. 50.2; Aclaraciones). Verificación: cotejo automático de todos los ID y estados, cero diferencias; `git diff --check` sin errores. Los cambios preexistentes de SD1 y `Revision/t12_iter/introspeccion_T12.md` permanecieron intactos. Sin commit.
+Por instrucción del usuario se cerraron los pendientes cruzados listados en la revisión del SD9. Sólo Markdown, en `rama-md`; sin commit.
+
+- **SD1:** 1.3.2 presenta la intrusión semestral como política corporativa más estricta que incluye el mínimo de RT-11.20 (anual y antes de cada paso a producción). 1.4 declara la renovación de CMMI-DEV N3 junto con la línea base H1; mientras no se acredite, no se invoca el nivel y rigen los procesos ISO 9001 (coherente con SD9 9.1.2).
+- **SD3/Anexos/T-12:** el T-12 se describe con sus cinco columnas; prueba en SD9 Anexo 9.C y criterio en T-17 (SD3 3.2 y Anexo 3.J). RNF-06.02 (→ RT-03.11 y S-24), RNF-06.03 (alias de RT-03.12, verificado con RNF-02.01), RNF-11.03 (→ RF-11.07) y RNF-11.04 (→ RT-05.29) siguen «Cumple», con remisión al requisito que los absorbe. RNF-14.07 se verifica con SAST en G2 y OWASP ZAP en G4.
+- **Conteos vigentes:** catálogo de 261 requerimientos (175 RF + 86 RNF; 56/162/43). Se ofertan 259, porque RNF-21.02 y RNF-21.07 (Alta) figuran «No cumple»; lo ofertado se distribuye en 56/160/43 y el catálogo RNF ofertado es de 84. T-12 Parte A = 271 filas = 261 + 10 alias/absorbidas (181 RF, 90 RNF). Conciliación con SD9: 271 = 259 con prueba propia + 9 absorbidas + 3 «No cumple» (RF-07.11, RNF-21.02, RNF-21.07). «Ofertados» ya no se usa para los 261.
+- **T-14:** 3.8.7, 3.9.1 y 3.9.6 separan mes de ejecución y mes del hito E-25 (10 → H5 mes 12; 16 → H9 mes 17; 16–17 → H10 mes 18).
+- **SD6 6.1.3:** se agregó el refuerzo de evaluadores (hasta 16 por día, meses 9–12 y 16–18), con los meses 11, 12 y 18 reservados a subsanaciones, como SD9 9.3.2.
+- **T-15 3.7.3:** la carga de saldos del WMS de Talca en diciembre de 2027 es ensayo en Preproducción; Producción sólo se interviene en el corte 3.7.5 (desde 03-01-2028). Sin conflicto con el congelamiento.
+- **SD9/T-13/T-17:** conciliación 259 + 9 + 3 en SD9 9.x (línea ~298); R18 definido en su primer uso en T-17 (hoja H7); septiembre ya no se declara evitado: las resiliencias de los meses 32 y 44 (sep-2029 y sep-2030) se ejecutan entre los días 26 y 30, fuera del congelamiento del 1 al 25 (SD9 ~508/520; T-13 110 y 156); errata de puntuación en SD9-Anexos 130.
+- **Revisión:** `Revision/revision_comision_informe2_SD9_v2.md` (la anterior se conserva): 0/100 por las 13 celdas `[[REVISIÓN HUMANA]]` (§7.1 d); contenido sin esa causal, 80 en la escala discreta 0/20/40/60/80/100 (el «70» anterior no es un valor válido). Sus hallazgos 2–5 quedaron corregidos después de emitirla.
+
+Pendientes reales: 13 celdas `[[REVISIÓN HUMANA]]` (sólo un integrante); páginas de 16 de 24 citas a las Bases (requiere PDF final); verificación visual de las figuras .drawio frente al Markdown. El usuario descartó fijar días exactos de las pruebas semestrales. Esta nota supersede la lista de pendientes de la entrada siguiente.
 
 ## Estado vigente — 9 de octubre de 2026: coherencia cruzada SD9 aplicada
 
