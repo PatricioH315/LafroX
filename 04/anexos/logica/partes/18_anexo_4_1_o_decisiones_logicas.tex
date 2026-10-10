@@ -129,6 +129,8 @@ ADR-22 & Cadena de frío en el borde & 5 de octubre de 2026 & Propuesta en la of
 
 \textbf{Consecuencias.} Se mantiene un artefacto para preventa, reparto y picking con perfiles de permiso; inventario, configuración, actualizaciones y bloqueo de dispositivos se administran remotamente.
 
+En la mantención, Kotlin nativo permite conservar un único artefacto con perfiles de preventa, reparto y bodega, y aprovechar el equipo Kotlin de LafroX. Frente a Flutter, evita mantener una capa adicional para adaptar y validar los periféricos; frente a una PWA, concentra en Android la persistencia sin conexión y la integración industrial que motivan la elección. El Portal de Clientes mantiene su propia mantención como PWA (RT-17.02; Bases Técnicas Transversales, cap. 17, p. 31).
+
 \textbf{Evidencia exigida.} Ensayo de 14 horas sin señal, sincronización, periféricos y operación a $-22\,^\circ$C.
 
 \textbf{Requisitos que la sustentan.} RT-03.10, RT-03.18; Caso, parque móvil.
@@ -163,7 +165,7 @@ ADR-22 & Cadena de frío en el borde & 5 de octubre de 2026 & Propuesta en la of
 
 \subsection*{ADR-10. Plataforma on-premise: virtualización y almacenamiento}
 \label{sub:adr-10}
-\textbf{Decisión adoptada.} Talca usa tres nodos Proxmox de 16 núcleos y 64 GB cada uno, arranque M.2 en RAID 1, dos NVMe Ceph por nodo sin RAID y doble fuente; Ceph usa réplica \texttt{size}=3, \texttt{min\_size}=2 y tres monitores. El NAS tiene doble fuente, RAID 6 y WORM. Concepción y cada cross-docking usan un par de equipos idénticos, uno activo y otro en espera, con réplica sincrónica de PostgreSQL.
+\textbf{Decisión adoptada.} Talca usa tres nodos Proxmox de 16 núcleos y 64 GB cada uno, arranque M.2 en RAID 1, dos NVMe Ceph por nodo sin RAID y doble fuente; Ceph usa réplica \texttt{size}=3, \texttt{min\_size}=2 y tres monitores. El NAS tiene doble fuente, RAID 6 y WORM. Concepción y cada cross-docking usan un par de equipos idénticos, uno activo y otro en espera, con réplica sincrónica de PostgreSQL. La promoción exige comprobar antes la exclusión del escritor anterior y el equipo repuesto vuelve como réplica, según 4.2.4.3 del Subdocumento 4; perder ambas redes no autoriza por sí solo la promoción.
 
 \textbf{Alternativas evaluadas.} Ceph sobre RAID 10 duplica protección y reduce capacidad; un almacenamiento sin quórum pierde tolerancia a nodo. Un equipo único por sitio, aun con RAID y doble fuente, no tolera la falla del equipo, y un clúster Proxmox de dos nodos exige un tercer voto de quórum que esos sitios no tienen.
 

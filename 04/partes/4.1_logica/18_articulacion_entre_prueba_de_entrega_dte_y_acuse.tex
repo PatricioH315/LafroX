@@ -3,6 +3,8 @@
 
 La guía de despacho electrónica debe estar vinculada a la salida de mercadería antes de iniciar el traslado. La aplicación no la emite: M5 entrega los datos de despacho al servicio de integración con el ERP en VM-04 y por la capa anticorrupción al ERP, que conserva la responsabilidad tributaria y devuelve folio, estado y documento. M6 captura después la recepción efectiva, incluidos bultos rechazados, identidad del receptor y evidencia. El acuse técnico de recepción o procesamiento ante el SII y el acuse de recepción de mercaderías del destinatario son hechos distintos; cada uno conserva su origen, fecha y estado.
 
+En este caso, el documento firmado es la guía de despacho electrónica, que firma el ERP como emisor ante el SII. La solución no emite firma electrónica avanzada: la prueba de entrega del receptor es evidencia vinculada a la guía. Se conservan el XML firmado de la guía, el acuse del SII, la evidencia de entrega con su hash, la marca de tiempo del registro, que actúa como sello de tiempo, y la cadena de verificación disponible. Todo se guarda en Amazon S3 con Object Lock durante seis años, según la retención de la Tabla~\ref{tab:jd12}, lo que permite verificar el documento aun después del vencimiento del certificado (RT-16.18; Bases Técnicas Transversales, cap. 16, p. 30).
+
 \subsubsection{Secuencia y excepciones}
 
 La secuencia lógica es:

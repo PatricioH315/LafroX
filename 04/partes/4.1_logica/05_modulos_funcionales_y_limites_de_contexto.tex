@@ -43,12 +43,14 @@ La trazabilidad hacia el origen y el destino se implementa evento a evento confo
   \item Los registros de temperatura se capturan de forma continua en 21 puntos de temperatura en cámaras (15 en Talca y 6 en Concepción) y 28 termógrafos: 18 en camiones propios y 10 en camiones refrigerados de transportistas.
   \item Una excursión menor y transitoria genera una advertencia.
   \item Una excursión crítica y sostenida, según el umbral y la duración parametrizados por producto, genera retención preventiva automática en M2 y M5, también sin enlace (RNG-04 y RF-09.05/06/07 del Subdocumento 3).
-  \item Mientras Calidad no apruebe los parámetros de un tipo de producto, toda lectura fuera del rango de almacenamiento de la ficha del SKU se trata como crítica.
+  \item Mientras Calidad no apruebe los parámetros de un producto, rige una regla preventiva versionada, derivada del rango de almacenamiento de su ficha: severidad crítica y duración cero, de modo que la primera lectura válida fuera de rango retiene el lote. La ficha y la regla se distribuyen a los sitios junto con los maestros, y el gateway local confirma la versión instalada. Si falta la ficha o su rango, el lote queda retenido por parámetro ausente y no se inventa un umbral. La regla preventiva no equivale a una aprobación de Calidad ni libera lotes; cuando Calidad aprueba la regla definitiva, esta la reemplaza como nueva versión y la anterior queda en el expediente.
   \item El sistema registra la versión de la regla, el umbral, la duración, el sensor y el lote.
   \item La jefatura de Calidad evalúa la excursión y es la única que autoriza una liberación trazada o dispone rechazo.
   \item El conductor no puede levantar el bloqueo.
   \item M9 integra los sensores de cámara mediante los tres gateways con Greengrass (Capa 2), los termógrafos mediante el terminal del conductor, inventario (M2), preparación (M5) y observabilidad (Capa 8), con evidencia exportable de la decisión.
 \end{itemize}
+
+La frecuencia de registro térmico es parametrizable por tipo de producto, con un intervalo inicial de cinco minutos: 1.440 ÷ 288 = 5 minutos por punto de cámara y (14,5 × 60) ÷ 174 = 5 minutos por termógrafo (4-W.5). El gateway y el terminal detectan una desviación de 2 °C sostenida durante 15 minutos y registran como evento todo intervalo sin lectura. La aceptación comprueba la detección y su tiempo efectivo en cámara y en vehículo (RNF-09.05; LafroX, 2026c, Anexo 3.B).
 
 \subsubsection{Módulo M2 Inventario}
 
@@ -61,6 +63,8 @@ El módulo de inventario permite saber qué stock existe, dónde está y qué pa
   \item \textbf{Stock disponible.} Con conexión se consulta la disponibilidad mediante APIs. Sin conexión se utiliza la copia autorizada descargada al inicio del turno y almacenada en SQLite/Room. La reserva comercial se confirma en M2 central después del acuse durable de la retención en M2 del sitio. Los pedidos capturados sin señal permanecen a la espera de validación. Los conflictos se resuelven con reglas documentadas de asignación y prioridad, no mediante la sola comparación de marcas de tiempo.
   \item \textbf{Reposición de compras (RF-10.01 a RF-10.03).} M2 sugiere la reposición por SKU y proveedor a partir de la venta real, la estacionalidad, las promociones comprometidas y el plazo de cada proveedor. La función de abastecimiento revisa y aprueba la sugerencia con permisos específicos dentro de los perfiles autorizados del CLIENTE. Cada modificación registra responsable y motivo. La sugerencia aprobada se traspasa al módulo de compras del ERP mediante la ACL de INT-06. El ERP conserva la emisión de las órdenes de compra (Subdocumento 3, D-05).
 \end{itemize}
+
+Para incorporar un nuevo sitio se parametrizan en los maestros su identificador, su bodega, sus rutas y la cartera de clientes asignada, con los permisos de administración que correspondan. El sitio reutiliza el perfil local de bodega y la infraestructura como código ya descritos, sin rediseñar la arquitectura (RT-02.12; Bases Técnicas Transversales, cap. 2, p. 7).
 
 \subsubsection{Módulo M3 Preventa}
 
@@ -114,6 +118,10 @@ El módulo de planificación de rutas automatiza un proceso que actualmente depe
 
 La propuesta automática no convierte las excepciones del planificador en reglas opacas: M4 conserva restricción, motivo de ajuste y autor de la ruta aprobada para transferir conocimiento y comprobar el criterio de aceptación.
 
+Al confirmar la ruta, M4 envía por INT-11 un aviso al contacto del cliente, al teléfono registrado en su ficha, con la hora estimada de llegada y una ventana de 30 minutos. El aviso sale antes de que parta el camión. La aceptación comprueba que fue recibido antes de la partida; el estado «enviado» no basta (RF-04.06; LafroX, 2026c, Anexo 3.A).
+
+El planificador autorizado mantiene las franjas de recepción de cada cliente activo en su ficha maestra, como parámetros versionados de tipo intervalo asociados al cliente. M4 las aplica al crear o recalcular las paradas y no asigna una hora estimada fuera de una franja vigente (RF-04.07; LafroX, 2026c, Anexo 3.A).
+
 \subsubsection{Módulo M7 Cobranza y rendición}
 
 El módulo de rendición y cobro permite investigar las causas de las diferencias de rendición que hoy quedan sin explicación. Implementa:
@@ -137,6 +145,8 @@ El módulo prioriza la calidad de la captura y la disponibilidad de indicadores 
 
 Comercial y Finanzas consultan indicadores sobre el mismo modelo semántico, pero solo Tesorería, del área de Finanzas, aprueba las diferencias de rendición; M10 no recibe permiso para modificar cobros.
 
+Las exportaciones de gran volumen se ejecutan como trabajos asíncronos, de modo que el usuario puede seguir trabajando. Al terminar, INT-11 envía un aviso con un enlace de descarga autenticado, sujeto a los permisos y al plazo de vencimiento del archivo (RNF-17.02; LafroX, 2026c, Anexo 3.B).
+
 \subsubsection{Recepción, preparación, reparto y servicios asociados}
 
 \textbf{M1 Recepción} compara lo recibido con la orden de compra, identifica GTIN, lote, vencimiento y SSCC, y registra cuarentena cuando falta evidencia o hay una diferencia. Publica \texttt{RecepcionConfirmada} para que M2 ubique el stock; no lo reserva para venta. La información del ERP entra y sale exclusivamente por la capa anticorrupción.
@@ -145,6 +155,8 @@ El proveedor consulta el estado de su orden y de la recepción; no accede a las 
 
 \textbf{M5 Preparación} toma pedidos confirmados y ubicaciones de M2, aplica FEFO y genera misiones verificables con lectura GS1. Conserva localmente cada lectura y la causal de faltante. Una carga no se libera por el mero hecho de estar preparada: la guía se solicita al ERP por el servicio de integración con el ERP y la ACL al cerrar la carga nocturna. Un cambio de carga invalida la guía, exige una nueva y mantiene bloqueada la salida hasta disponer del documento válido.
 
+Si la cantidad recogida es menor que la solicitada, M5 exige elegir una causa de una lista parametrizada por el CLIENTE y no permite confirmar la línea hasta hacerlo. La causa se guarda con la lectura local y en la auditoría de la confirmación (RF-05.03; LafroX, 2026c, Anexo 3.A).
+
 El preparador confirma cada lectura en el servicio local; la pérdida del enlace externo no borra la misión ni convierte una carga preparada en una salida autorizada.
 
 \textbf{M6 Reparto} recibe de M4 la ruta y de M5 la carga liberada. El conductor registra receptor, cantidad recibida, rechazos y POD en el dispositivo aun sin señal. M6 no liquida cobros ni emite documentos tributarios; publica el resultado para M7 y M8 y mantiene visible el estado de sincronización por confirmar.
@@ -152,6 +164,8 @@ El preparador confirma cada lectura en el servicio local; la pérdida del enlace
 El conductor propio y el externo utilizan el mismo contrato de entrega con identidades personales distintas. La evidencia queda ligada al turno y al receptor, sin exigir que el almacén instale una aplicación.
 
 \textbf{M8 Devoluciones y envases} separa la mercadería que regresa de los activos retornables. Cada devolución conserva cantidad, lote, causal y vínculo con la entrega; el ajuste tributario se solicita al ERP por la ACL. Los canastillos y pallets se controlan por saldo de cliente y movimientos firmados, sujetos a conciliación en la rendición.
+
+Al registrar la entrega, el conductor captura en M8 la cantidad, el tipo y el estado físico de los canastillos y pallets devueltos. El estado declarado queda en la evidencia del movimiento de envases, junto con la cantidad y el tipo (RF-06.09; LafroX, 2026c, Anexo 3.A).
 
 \textbf{M11 Canal moderno} recibe pedidos mediante contratos EDI configurados por cadena, traduce códigos a un vocabulario común y envía el pedido normalizado a M3. Las diferencias de formato y equivalencias van a una bandeja de excepciones; M11 no se convierte en un segundo dueño del pedido ni del inventario.
 

@@ -201,6 +201,8 @@ La Tabla~\ref{tab:dimensionamiento-plan} mantiene separadas la proyección del a
 
 La nube escala automáticamente dentro del techo declarado; nodos, almacenamiento local, Wi-Fi y enlaces requieren revisión planificada. La gestión trimestral compara la proyección observada con la cota de 3× y con la incorporación de nuevas unidades.
 
+Respecto de la carga proyectada del año 3, los márgenes de capacidad del escenario 3× de la Tabla~\ref{tab:dimensionamiento-plan} son: WMS Talca, (8,05 ÷ 3,15 − 1) × 100 = 155,6~\%; cada cross-docking, (6,50 ÷ 2,58 − 1) × 100 = 151,9~\%; aplicación en nube, (43,98 ÷ 17,03 − 1) × 100 = 158,3~\%. La revisión trimestral activa las ampliaciones de esa tabla antes de agotar los límites. Estos márgenes se verifican en las pruebas de carga y no se aplican a enlaces, parque de terminales ni mesa de ayuda (RT-08.05; Bases Técnicas Transversales, cap. 8, p. 18).
+
 \subsection{Cuello de botella, umbrales y degradación controlada}
 \label{sec:dimensionamiento-cuello}
 
@@ -226,7 +228,7 @@ La Tabla~\ref{tab:t84} fija los umbrales de respuesta que se observan en percent
   Navegación & 1 s & Bases Técnicas Transversales, cap. 9, p. 21 \\
   API de consulta & 500 ms & Bases Técnicas Transversales, cap. 9, p. 21 \\
   API de escritura & 800 ms & Bases Técnicas Transversales, cap. 9, p. 21 \\
-  Búsqueda compuesta & 3 s & Bases Técnicas Transversales, cap. 9, p. 21 \\
+  Búsqueda compuesta & 3 s; búsqueda global (RF-17.11) $\leq$ 2 s & Bases Técnicas Transversales, cap. 9, p. 21; LafroX (2026c), Anexo 3.A \\
   Informe estándar & 30 s & Bases Técnicas Transversales, cap. 9, p. 21 \\
 \end{tablalafrox}
 
@@ -273,7 +275,7 @@ La Tabla~\ref{tab:t72} reúne cada dimensión con el nombre literal del Caso 14.
   13 & Volumen de datos generado por un dispositivo de reparto en un turno completo sin señal & 5,36 MB promedio & 9,83 MB, ruta de 34 clientes & Anexo 4-W, sección 4-W.6 \\
   14 & Tiempo de sincronización de la flota al regresar al centro de distribución & 10 min por dispositivo & 10 min después del último camión & Anexo 4-W, sección 4-W.6 \\
   15 & Contactos mensuales a la mesa de ayuda & 2.000 contactos/mes & 2.000 contactos/mes en el escenario conservador; 7 agentes en la hora cargada y 2 en las demás cubren hasta 2.283; desde el mes 25, con 3 en las demás, cubren hasta 2.391 & Anexo 4-W, sección 4-W.7 \\
-  16 & Dotación de la mesa de ayuda y del equipo de operación & Son 15 personas a 42 h y 17 desde el 26-04-2028 a 40 h. & Son 17 personas en septiembre y diciembre a 42 h y 19 desde el 26-04-2028 a 40 h. & Anexo 4-W, sección 4-W.7 \\
+  16 & Dotación de la mesa de ayuda y del equipo de operación & 15 personas a 42 h; 17 desde el 26-04-2028 a 40 h hasta el mes 24; 19 desde el mes 25 (mesa 9 + NOC/SOC 10). & 17 personas en septiembre y diciembre a 42 h; 19 a 40 h hasta el mes 24; 21 desde el mes 25 (mesa 11 + NOC/SOC 10). & Anexo 4-W, sección 4-W.7 \\
 \end{tablalafrox}
 
 {\footnotesize Fuente: elaboración propia.\par}

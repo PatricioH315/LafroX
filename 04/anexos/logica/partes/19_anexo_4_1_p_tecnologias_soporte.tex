@@ -3,6 +3,8 @@
 \phantomsection
 \label{anx:P}
 \addcontentsline{toc}{section}{Anexo 4-P --- Tecnologías, soporte y actualización}
+
+Este anexo relaciona los nombres funcionales con los servicios técnicos y declara, para cada tecnología, su versión, su soporte y su política de actualización.
 \paragraph{Correspondencia entre nombres funcionales y técnicos}
 El inventario de servicios AWS comprende CloudFront, AWS WAF, AWS Shield Advanced, ALB, Network Load Balancer, API Gateway, Verified Access, Aurora, ElastiCache, DynamoDB, S3, Redshift Serverless, ECS Fargate, Lambda (solo como autorizador), Route 53, Secrets Manager, Systems Manager, KMS, IAM, Organizations, IAM Identity Center, CloudWatch, Transit Gateway, NAT Gateway, VPC Endpoints, Site-to-Site VPN, SQS, SNS, AWS Backup, GuardDuty, Security Hub, Security Lake, Macie, Inspector, Config, Database Migration Service, Glue, QuickSight, Elastic Container Registry, CodeBuild, Control Tower, CloudTrail e IoT Core+Greengrass.
 
@@ -34,7 +36,9 @@ Google Chrome --- Windows, macOS, Linux y Android & Versión estable mayor vigen
 Microsoft Edge --- Windows, macOS y Linux & Versión estable mayor vigente y la inmediatamente anterior, con sus parches disponibles. & Registrar versiones exactas y verificar ambas contra el Baseline de Angular y los flujos de los portales y consola. \\
 Mozilla Firefox --- Windows, macOS, Linux y Android & Versión estable mayor vigente y la inmediatamente anterior, con sus parches disponibles. & Registrar versiones exactas y verificar ambas contra el Baseline de Angular y los flujos de los portales y consola. \\
 Apple Safari --- macOS, iOS y iPadOS & Versión estable mayor vigente y la inmediatamente anterior, en sistemas compatibles. & Registrar versión del navegador y del sistema y verificar ambas contra el Baseline de Angular y los flujos de los portales y consola. \\
-Composer/PHPUnit/PHPStan/Pint & Versiones compatibles con PHP 8.5 y Laravel 13. & Composer lock, análisis de licencia, audit y regresión; no entran herramientas de prueba al runtime. \\
+Composer\slash PHPUnit\slash PCOV\slash PHPStan\slash Pint\slash PHPMD\slash PHPCPD\slash PhpMetrics\slash deptrac & Versiones compatibles con PHP 8.5 y Laravel 13. & Composer lock, análisis de licencia, audit, cobertura, complejidad, duplicación, deuda, fronteras entre módulos y regresión; no entran herramientas de prueba al runtime. \\
+JUnit 5/Kover/Espresso/detekt/ktlint & Versiones compatibles con Kotlin, Android y el parque Zebra. & Cobertura de dominio y sincronización, pruebas de interfaz y controles de estilo y complejidad antes de liberar el artefacto móvil. \\
+Jest/ESLint/axe-core/OWASP ZAP/k6/AWS Fault Injection Service & Versiones compatibles con Angular, las APIs y los ambientes AWS. & Regresión de portales, lint, accesibilidad WCAG 2.2 A/AA, DAST, carga y estrés e inyección controlada de fallas en QA y Preproducción. \\
 php-amqplib/AWS SDK/swagger-php & Bibliotecas mantenidas compatibles con PHP 8.5. & Contrato AMQP, sobre JSON y generación OpenAPI bloquean cambios incompatibles. \\
 OpenAS2/JVM & Rama soportada compatible con perfiles de las cadenas. & Certificados, licencia, runtime Java y pruebas MDN registrados antes de habilitar INT-08. \\
 OpenTelemetry/ADOT & Versiones estables de SDK y colector. & Ensayo de recepción OTLP, correlación, buffer y exportación tras corte. \\
@@ -43,6 +47,8 @@ Servicios AWS & API/engine gestionados declarados por servicio. & Avisos de reti
 MDM/Android Enterprise & Servicio y plan compatibles con el parque. & Contrato de soporte y actualización de dispositivos durante todo el período. \\
 \end{tablalafrox}
 {\footnotesize Fuente: decisiones de arquitectura lógica y política de configuración de la propuesta; compatibilidad de navegadores según Angular (2026b).\par}
+
+La aplicación Android de terreno soporta la versión mayor vigente de Android y las dos anteriores; antes de cada liberación se verifican los flujos y periféricos en la matriz por modelo. Cada paquete Kotlin se firma y se distribuye con la gestión de flota de Android Enterprise y Zebra DNA. Antes de instalar o actualizar, se verifican la firma y la huella contra el artefacto aprobado y se rechazan los paquetes alterados o de origen no autorizado. Las actualizaciones siguen las tandas por sitio y enlace de la ventana dominical descrita en 4.2.6.6 del Subdocumento 4, sin alterar los plazos de corrección de vulnerabilidades ni sus restricciones de calendario (RT-17.03 y RT-17.04; Bases Técnicas Transversales, cap. 17, p. 31).
 
 La Tabla A.19 incorpora la matriz de navegadores y versiones soportadas de RT-13.10 (Bases Técnicas Transversales, cap. 13, p. 26), aplicable a los portales y a la consola web de 4.1.3.1. La matriz utiliza versiones relativas para mantener el soporte durante el contrato; antes de cada liberación se registra el número exacto, sistema operativo, resultado y fecha de las pruebas. Angular 22 usa el conjunto Baseline del 7 de mayo de 2026; las versiones ofertadas deben pertenecer a ese conjunto y, al migrar Angular, al de la versión adoptada (Angular, 2026b). Cada nueva versión estable de navegador activa pruebas de autenticación, navegación, formularios, teclado y adaptación de pantallas en QA antes de sustituir la versión más antigua de la matriz; un fallo genera corrección y repetición de pruebas antes de declarar su compatibilidad. Los parches de seguridad se comprueban y se incorporan a la matriz con prioridad. La revisión trimestral de soporte del framework se complementa con esta comprobación por cada versión estable del navegador.
 
