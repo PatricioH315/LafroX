@@ -151,7 +151,7 @@ La fecha P80 de todos los hitos queda antes de su límite. El hito más expuesto
 
 La preparación del H6 (prerrequisitos D-25 a tiempo para el acta del mes 13) se cumple en el 96,5 % de las iteraciones y la del H11 en el 100 % (Tabla C.6). Una fecha fija no elimina la incertidumbre de la marcha blanca: las seis condiciones del Art. 17.3 se miden durante sus cuatro semanas finales, y su riesgo de no cumplirse es R8-18, que tiene su propia contingencia.
 
-El T-15 programa 216.935 HH de línea base, incluidas 9.336 HH de soporte puente, 3.072 HH de capacidad protegida E1 y el tercer agente de la mesa desde el mes 25 (14.161 HH). La construcción de la Etapa 1 usa como máximo 40 de los 48 desarrolladores de la división, escalonada entre junio y octubre de 2027. Las 9.336 HH forman parte de las 16.664 HH del período 16–20 del SD7. Las reservas de contingencia y de gestión se reflejan en el T-15, sección 4.5, por período y con la capacidad que las cubre.
+El T-15 programa 216.935 HH de línea base, incluidas 9.336 HH de soporte puente, 3.072 HH de capacidad protegida E1 y el tercer agente de la mesa desde el mes 25 (14.161 HH). La construcción de la Etapa 1 usa como máximo 40 de los 48 desarrolladores de la división, escalonada entre junio y septiembre de 2027. Las 9.336 HH forman parte de las 16.664 HH del período 16–20 del SD7. Las reservas de contingencia y de gestión se reflejan en el T-15, sección 4.5, por período y con la capacidad que las cubre.
 
 ## 8.3 Plan de Acción a Riesgos
 

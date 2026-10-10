@@ -16,7 +16,7 @@ Detalla los 175 requisitos funcionales ofertados: 134 del caso, 34 de las Bases 
 
 ## Anexo 3.B — Catálogo de requerimientos no funcionales
 
-Define los umbrales y verificaciones de disponibilidad, autonomía, desempeño, seguridad y operación. El conjunto ofertado suma 86 RNF al incluir requisitos propios; el T-12 contiene 90 filas al agregar alias y materias absorbidas. Las pruebas tienen que demostrar el umbral en el escenario aplicable: no basta con describir un mecanismo técnico.
+Define los umbrales y verificaciones de disponibilidad, autonomía, desempeño, seguridad y operación. El catálogo suma 86 RNF al incluir requisitos propios; se ofertan 84, porque RNF-21.02 y RNF-21.07 figuran «No cumple». El T-12 contiene 90 filas al agregar alias y materias absorbidas. Las verificaciones se vinculan al criterio: medición mensual E2E para disponibilidad, configuración y pruebas de rechazo para TLS, conmutación medida para DR e inspección de idioma, editabilidad y propiedad para materiales. Describir un mecanismo no demuestra el umbral, y estos métodos son previstos, no ensayos ejecutados.
 
 **Cuándo consultarlo:** para convertir una cualidad como «resiliente» o «rápido» en una condición verificable.
 

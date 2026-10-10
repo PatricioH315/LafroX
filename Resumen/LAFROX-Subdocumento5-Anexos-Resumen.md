@@ -82,7 +82,7 @@ Relaciona RT-05 con sección y evidencia. RT-05.10 y RT-05.24 siguen como deseab
 
 ## Anexo 5-J. Protocolo de aceptación de datos y pruebas propuestas
 
-Propone pruebas de perfilado, conciliación, integridad, desempeño, exportación y recuperación. El retiro en menos de dos horas contempla sedes y hechos pendientes, identificando exposición potencial. Su presupuesto de 85 min es una estimación de diseño; una lista parcial sin cubrir el universo no demuestra aceptación.
+Propone pruebas de perfilado, conciliación, integridad, desempeño, exportación y recuperación. La carga normal es **12,34 TPS**, coherente con SD4, Anexo 4-W. El retiro en menos de dos horas contempla sedes y hechos pendientes, identificando exposición potencial. Su presupuesto de 85 min es una estimación de diseño; una lista parcial sin cubrir el universo no demuestra aceptación.
 
 **Cuándo consultarlo:** para preparar ensayos y precisar qué evidencia debe producir cada uno.
 

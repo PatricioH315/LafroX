@@ -1604,7 +1604,7 @@ En las pruebas de A.22, p95 se mide desde la acción de la persona usuaria, con 
 
 | Prueba | Precondición y carga | Acción | Umbral numérico de aceptación | Periodo y responsable |
 | --- | --- | --- | --- | --- |
-| Carga normal | 12,30 TPS sostenidos, con el reparto de contribución declarado entre componentes | Ejecución de la mezcla de operaciones declarada | Cero pérdida y cero duplicado; p95 por operación dentro de los máximos numéricos precedentes | Medido por quince minutos; arquitectura |
+| Carga normal | 12,34 TPS sostenidos, con el reparto de contribución declarado entre componentes | Ejecución de la mezcla de operaciones declarada | Cero pérdida y cero duplicado; p95 por operación dentro de los máximos numéricos precedentes | Medido por quince minutos; arquitectura |
 | Carga de pico | 14,66 TPS sostenidos | misma mezcla | Cero pérdida; p95 por operación dentro de los máximos numéricos precedentes | Medido por quince minutos; arquitectura |
 | Carga de holgura | 21,99 TPS sostenidos, que es 1,5 veces el pico | misma mezcla | Cero pérdida y cero duplicado; p95 por operación dentro de los máximos precedentes; retraso de consolidación ≤10 min móvil/≤2 h sitio desde reconexión | Medido por quince minutos; arquitectura |
 | Crecimiento esperado | 17,03 TPS en nube/portal y 3,15 TPS en Talca | misma mezcla | Cero pérdida dentro del reparto declarado de capacidad | Medido por quince minutos; arquitectura |

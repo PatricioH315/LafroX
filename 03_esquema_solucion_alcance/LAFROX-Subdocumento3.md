@@ -319,8 +319,8 @@ El canal único registrará tanto incidentes como solicitudes, con número de ti
 
 | Servicio | Indicador | Objetivo | Medición |
 | --- | --- | --- | --- |
-| Infraestructura | Disponibilidad mensual | ≥ 99,95 \ | Mensual, por componente. |
-| Transacción crítica | Disponibilidad mensual | ≥ 99,9 \ | Mensual, de extremo a extremo. |
+| Infraestructura | Disponibilidad mensual | ≥ 99,95 % | Mensual, por componente. |
+| Transacción crítica | Disponibilidad mensual | ≥ 99,9 % | Mensual, de extremo a extremo. |
 | Despacho 05:30–07:00 | Indisponibilidad en la ventana | Cero | Diaria. |
 | Recuperación | RTO / RPO de servicios críticos | ≤ 4 h / ≤ 15 min | Prueba semestral. |
 | Incidentes críticos / altos | Respuesta y resolución, 24×7×365 | 15 min y 4 h / 1 h y 8 h | Por incidente; informe mensual. |

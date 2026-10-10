@@ -75,6 +75,7 @@ La **reserva de cronograma** son las reservas de cada hito del T-15, de 4 a 35 d
 [El cierre del plan](../08_plan_riesgos/LAFROX-Subdocumento8.md#833-factibilidad-y-aceptaci%C3%B3n) remite al Anexo 8.E, con **catorce condiciones de evidencia E8-01–E8-14** que tienen responsable y hito límite. Las principales:
 
 - **RPO:** el SD4 cumple el RPO ≤ 15 min con tres caminos independientes. La caída de los tres seguida de la destrucción del sitio queda como riesgo residual justificado (SD4, sección 4.3.2.4). R8-05 lo trata con alarmas de replicación a los 5 y 15 min, preemisión de guías y almacenamiento local inalterable, y la conmutación real lo mide antes del H5 y del H10.
+- **Calendario de construcción E1:** junio a septiembre de 2027; octubre corresponde a integración y certificación, no amplía el grupo de módulos 3.4.
 - **Coordinación de reserva:** su carga, con cuatro mensajes por línea de pedido (SD4, Anexo 4-I), se verifica en la prueba de concurrencia previa al H4.
 - **Proveedor de lácteos:** la suspensión, de marzo a septiembre de 2026, es un antecedente. La consulta V-13 precisa en el mes 1 qué evidencia de trazabilidad restablece la relación.
 - **Además:** dotación nominal antes de la línea base, continuidad de los 96 despachos y calidad de atención de la mesa.

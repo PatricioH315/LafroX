@@ -24,7 +24,7 @@ Traza innovación hacia capas/componentes, módulos, paquetes, materialización,
 
 ## Anexo 13.C — Indicadores y riesgos de la cartera
 
-Reúne indicadores I-01–I-05, líneas base, metas y momentos. Seis indicadores de tres innovaciones se miden antes del mes 16; los ahorros de producción se evalúan después. Los riesgos sanitarios de INN-03 alcanzan exposición 20: la estimación nunca extiende fecha impresa. Las HH de riesgo se remiten a 8.B, sin duplicar reservas.
+Reúne indicadores I-01–I-05, líneas base, metas y momentos. Seis indicadores de tres innovaciones se miden antes del mes 16; las metas de ahorro de producción se evalúan después. I-04A se sigue mensualmente desde **mes 24** y su meta se evalúa en **mes 36**. Los riesgos sanitarios de INN-03 alcanzan exposición 20: la estimación nunca extiende fecha impresa. Las HH de riesgo se remiten a 8.B, sin duplicar reservas.
 
 **Cuándo consultarlo:** para preparar validación de pilotos y distinguir desempeño del servicio de ahorro posterior.
 

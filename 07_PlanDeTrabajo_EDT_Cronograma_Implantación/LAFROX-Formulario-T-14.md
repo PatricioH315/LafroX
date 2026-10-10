@@ -1857,7 +1857,7 @@ gantt
     3.3 Base compartida (meses 5–7) : 2027-06-01, 2027-08-31
     3.4 Módulos de la Etapa 1 (meses 5–8) : 2027-06-01, 2027-09-30
     3.5 Módulos de la Etapa 2 (meses 15–15) : 2028-04-01, 2028-04-30
-    3.6 Integraciones externas (meses 7–19) : 2027-08-01, 2028-08-31
+    3.6 Integraciones externas (meses 6–19) : 2027-07-01, 2028-08-31
     3.7 Migración de datos (meses 7–12) : 2027-08-01, 2028-01-31
     3.8 Pruebas de la Etapa 1 (meses 9–10) : 2027-10-01, 2027-11-30
     3.9 Pruebas de la Etapa 2 (meses 16–17) : 2028-05-01, 2028-06-30

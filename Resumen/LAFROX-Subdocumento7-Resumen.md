@@ -18,7 +18,7 @@ Cada paquete tiene un entregable, criterio de aceptación, responsable y períod
 
 El esfuerzo usa estimación **PERT**, con escenarios optimista, probable y pesimista. Se organizan **ocho frentes**, y los meses 13–15 y 19–20 necesitan equipos simultáneos: atender E1 no debe consumir la capacidad asignada a E2.
 
-La [base de recursos](../07_PlanDeTrabajo_EDT_Cronograma_Implantaci%C3%B3n/LAFROX-Subdocumento7.md#738-base-de-planificaci%C3%B3n-y-recursos) programa **216.935 HH** —horas hombre—: **204.527** de trabajo base, **9.336** de soporte puente E1 y **3.072** de correcciones protegidas. El máximo de la curva es **68 personas equivalentes en mes 15**, con hasta 40 desarrolladores simultáneos en la construcción E1. El total incluye **128.374 HH de Operación**, con el tercer agente de la mesa desde el mes 25; no representa únicamente construcción de software. Una equivalencia mensual no demuestra disponibilidad de personas con la competencia requerida cada día.
+La [base de recursos](../07_PlanDeTrabajo_EDT_Cronograma_Implantaci%C3%B3n/LAFROX-Subdocumento7.md#738-base-de-planificaci%C3%B3n-y-recursos) programa **216.935 HH** —horas hombre—: **204.527** de trabajo base, **9.336** de soporte puente E1 y **3.072** de correcciones protegidas. El máximo de la curva es **68 personas equivalentes en mes 15**, con hasta 40 desarrolladores simultáneos en la construcción E1, de junio a septiembre de 2027. El total incluye **128.374 HH de Operación**, con el tercer agente de la mesa desde el mes 25; no representa únicamente construcción de software. Una equivalencia mensual no demuestra disponibilidad de personas con la competencia requerida cada día.
 
 ## Calendario e implantación
 

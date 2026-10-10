@@ -22,7 +22,7 @@ Las innovaciones se distribuyen entre cuenta 3.10, acuerdo 5.4.3 y operación 8.
 
 ## Cómo evitar una lectura equivocada
 
-Los períodos de Gantt deben contrastarse con [los criterios vigentes](../07_PlanDeTrabajo_EDT_Cronograma_Implantaci%C3%B3n/LAFROX-Formulario-T-14.md#criterios-vigentes-de-programaci%C3%B3n-y-recursos) y con la red diaria de T-15. Una celda mensual no permite ignorar dependencia, fecha prohibida o revisión del CLIENTE.
+Los períodos de Gantt deben contrastarse con [los criterios vigentes](../07_PlanDeTrabajo_EDT_Cronograma_Implantaci%C3%B3n/LAFROX-Formulario-T-14.md#criterios-vigentes-de-programaci%C3%B3n-y-recursos) y con la red diaria de T-15. Una celda mensual no permite ignorar dependencia, fecha prohibida o revisión del CLIENTE. El agregado de integraciones externas 3.6 cubre **meses 6–19**, desde julio de 2027, conforme al inicio de sus paquetes hijos.
 
 El [resumen del SD7](LAFROX-Subdocumento7-Resumen.md) explica el conjunto; [T-15](LAFROX-Formulario-T-15-Resumen.md) calcula capacidad y fechas; [T-18](LAFROX-Formulario-T-18-Resumen.md) desarrolla implantación. La programación no acredita aceptación de paquetes ni asignación nominal de todo el personal.
 

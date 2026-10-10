@@ -30,7 +30,7 @@ La [retención](../05_modelo_datos/LAFROX-Subdocumento5.md#527-retenci%C3%B3n-ar
 
 La [migración](../05_modelo_datos/LAFROX-Subdocumento5.md#53-estrategia-de-migraci%C3%B3n) incluye maestros, ventas de tres años, inventario de dos años, trazabilidad disponible y cartera viva con historia. La base estimada es **16,05478 GB** de fuente y **32,10956 GB** de destino con factor 2; son estimaciones sujetas a perfilado. No se inventan lotes, fechas ni columnas del legado.
 
-Se requieren al menos dos ensayos completos, conciliación, deltas del período y reversión con un escritor único. [Las pruebas de desempeño](../05_modelo_datos/LAFROX-Subdocumento5.md#54-estrategia-de-desempe%C3%B1o) usan escenarios de SD4; el retiro en menos de dos horas debe cubrir también exposición potencial y datos pendientes de sedes desconectadas.
+Se requieren al menos dos ensayos completos, conciliación, deltas del período y reversión con un escritor único. [Las pruebas de desempeño](../05_modelo_datos/LAFROX-Subdocumento5.md#54-estrategia-de-desempe%C3%B1o) usan escenarios de SD4: **12,34 TPS** en régimen normal, a partir del perfil horario A.31, y capacidad futura de A.36; el retiro en menos de dos horas debe cubrir también exposición potencial y datos pendientes de sedes desconectadas.
 
 ## Relaciones y estados
 

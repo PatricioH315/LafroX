@@ -14,7 +14,7 @@ El [calendario contractual](../03_esquema_solucion_alcance/LAFROX-Subdocumento3.
 
 ## Cómo funcionaría
 
-Doce módulos de negocio comparten identidad, integración, auditoría y operación desconectada. La captura en terreno conserva información hasta sincronizar; una captura sin señal no equivale a stock reservado ni a un pedido central confirmado. El ERP sigue siendo el único emisor de documentos tributarios. La [definición de actores](../03_esquema_solucion_alcance/LAFROX-Subdocumento3.md#3421-actores-del-sistema-y-relaci%C3%B3n-con-los-actores-del-negocio) distingue **15 actores del sistema** de los **19 interesados del negocio**; participar en un comité no concede una cuenta de acceso.
+Doce módulos de negocio comparten identidad, integración, auditoría y operación desconectada. La captura en terreno conserva información hasta sincronizar; una captura sin señal no equivale a stock reservado ni a un pedido central confirmado. El ERP sigue siendo el único emisor de documentos tributarios. La [definición de actores](../03_esquema_solucion_alcance/LAFROX-Subdocumento3.md#342-vista-general-de-la-soluci%C3%B3n) distingue **15 actores del sistema** de los **19 interesados del negocio**; participar en un comité no concede una cuenta de acceso.
 
 Las [reglas de negocio](../03_esquema_solucion_alcance/LAFROX-Subdocumento3.md#324-reglas-de-negocio-y-consultas) mantienen el precio acordado al capturar el pedido, registran excepciones de crédito y reservan stock al confirmar en el servidor central. Calidad dispone sobre lotes con excursiones térmicas. El canal tradicional conserva la visita y el efectivo.
 

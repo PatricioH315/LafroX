@@ -512,19 +512,19 @@ La Tabla 5.3 relaciona los escenarios de S4 con su efecto sobre el modelo y la p
 
 | Escenario | Base de cálculo | Resultado declarado | Consecuencia sobre el modelo | Verificación prevista |
 | --- | --- | --- | --- | --- |
-| Régimen normal a las 12:00 | 31.000 pedidos y 260.000 líneas mensuales | 12,30 TPS totales | Un hecho transaccional por línea y por operación, sin duplicar cabecera | Prueba de carga de RT-09.06 |
+| Régimen normal a las 12:00 | 31.000 pedidos y 260.000 líneas mensuales | 12,34 TPS totales | Un hecho transaccional por línea y por operación, sin duplicar cabecera | Prueba de carga de RT-09.06 |
 | Ventana de despacho de 05:30 a 07:00 | WMS de Talca en hora cargada con guías | 1,46 TPS normal / 2,68 peak en Talca; total despacho 3,76 / 6,94 | Saldos y reservas locales, sin escritura remota en la ventana | Prueba de corte de 24 horas |
 | Peak de septiembre | Factor 2.600 sobre 1.400 | 14,66 TPS a las 12:00 | Índices sobre lote, unidad logística y pedido, no sobre fecha sola | Ensayo de pico de septiembre |
 | Prueba exigida por RT-09.06 | 14,66 × 1,5 | 21,99 TPS | Colas con trabajo acotado y encolamiento declarado, no espera indefinida | Informe de curva de respuesta |
 | Año 3, nube y portal | 36.000 pedidos y 305.000 líneas | 17,03 solicitudes por segundo | Índices y mantenimiento acotado; partición mensual solo en detalle sanitario y series/hechos analíticos | Revisión trimestral de crecimiento |
-| Año 3, WMS de Talca | Proyección de S4, Tabla A.34 | 3,15 TPS | Saldo/reserva con identidad estable; índices selectivos y mantenimiento sin pérdida de operaciones | Revisión trimestral de CPU y IOPS |
+| Año 3, WMS de Talca | Proyección de S4, Tabla A.36 | 3,15 TPS | Saldo/reserva con identidad estable; índices selectivos y mantenimiento sin pérdida de operaciones | Revisión trimestral de CPU y IOPS |
 | Escenario 3× de RT-09.03 | 93.000 pedidos y 780.000 líneas | 43,98 en nube y 8,05 en Talca | Escalamiento horizontal sin cambiar el esquema ni los índices | Prueba de estrés hasta el quiebre |
 
 **Tabla 5.3 — Escenarios de carga vigentes del dimensionamiento**
 
-*Fuente: Subdocumento 4, Anexo 4-W, §§4-W.2 y 4-W.10, Tablas A.29 y A.34 y los umbrales de RT-09.01 a RT-09.03 y RT-09.06 de las Bases Técnicas Transversales (Distribuidora Puelche S.A., 2026b).*
+*Fuente: Subdocumento 4, Anexo 4-W, §§4-W.2 y 4-W.10, Tablas A.31 y A.36 y los umbrales de RT-09.01 a RT-09.03 y RT-09.06 de las Bases Técnicas Transversales (Distribuidora Puelche S.A., 2026b).*
 
-El máximo global combina preventa, reparto y portal; despacho distingue total distribuido y WMS Talca. Se adoptan los resultados de A.34 (3,15/8,05), cuya base visible 2,68 está redondeada, sin recalcular desde ese redondeo. Los índices priorizan lote/unidad y filtros operativos.
+El máximo global combina preventa, reparto y portal; despacho distingue total distribuido y WMS Talca. Se adoptan los resultados de A.36 (3,15/8,05), cuya base visible 2,68 está redondeada, sin recalcular desde ese redondeo. Los índices priorizan lote/unidad y filtros operativos.
 
 Los escenarios conservan identidades/restricciones, UUID internos y equivalencias de origen. Son cálculos de diseño; 5.4.6 define su ensayo en PREPROD.
 

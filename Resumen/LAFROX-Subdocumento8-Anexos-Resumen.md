@@ -16,7 +16,7 @@ Desarrolla las 32 fichas R8-01–R8-32: causa, evento, consecuencia, P/I/D, hori
 
 ## Anexo 8.B — FMEA y exposición inicial
 
-B.1 ordena exposición y NPR de FMEA; B.2 convierte probabilidad e impacto calibrados en HH. La suma individual es 20.948,16 HH y el registro conjunto 20.198,98 HH; R8-11 y R8-18 concentran el 54,8 %. Las probabilidades proceden de juicio calibrado, no de frecuencias observadas.
+B.1 ordena exposición y NPR de FMEA; B.2 convierte probabilidad e impacto calibrados en HH. La suma individual es 20.948,16 HH y el registro conjunto 20.198,98 HH; R8-11 y R8-18 concentran el 54,8 %. Las probabilidades proceden de juicio calibrado, no de frecuencias observadas. R8-22 y C-05 usan límites de demanda por período: **2.283 contactos/mes en meses 21–24** y **2.391 desde mes 25**; la activación exige recalcular por franja.
 
 **Cuándo consultarlo:** para priorizar tratamiento y seguir la base de la contingencia.
 

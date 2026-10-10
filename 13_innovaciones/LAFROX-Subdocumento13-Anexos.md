@@ -66,9 +66,9 @@ La Tabla 13.C.1 reúne los indicadores de las cinco innovaciones, ordenados por 
 | I-01C | Meses 13 a 15 | −20 % relativo | Mes 28 | No |
 | I-03D | Meses 13 a 15 | −20 % relativo | Mes 28 | No |
 | I-05C | Período previo por ruta | Estimar el efecto | Mes 33 | No |
-| I-04A | Canasta de los meses 21 a 23 | ≥ 5 % con OTIF ≥ 95 % | Mes 36 | No |
+| I-04A | Canasta de los meses 21 a 23 | ≥ 5 % con OTIF ≥ 95 % | Mensual desde el mes 24; evaluación de la meta en el mes 36 | No |
 
-Seis indicadores de tres innovaciones se miden antes del mes 16, durante la marcha blanca de la Etapa 1. Con ellos LafroX oferta el RT-26.08 (Distribuidora Puelche S.A., 2026b, RT-26.08). Los indicadores de ahorro (I-01B, I-01C, I-03D, I-04A e I-05C) se miden después de al menos doce meses de producción, para que la comparación incluya un ciclo anual completo con el peak de septiembre.
+Seis indicadores de tres innovaciones se miden antes del mes 16, durante la marcha blanca de la Etapa 1. Con ellos LafroX oferta el RT-26.08 (Distribuidora Puelche S.A., 2026b, RT-26.08). Las metas de ahorro (I-01B, I-01C, I-03D, I-04A e I-05C) se evalúan después de al menos doce meses de producción, para que la comparación incluya un ciclo anual completo con el peak de septiembre.
 
 La Tabla 13.C.2 reúne los riesgos de adopción con su evaluación en la escala ordinal del Capítulo 8, sección 8.1.3, donde la probabilidad 3 equivale a un 40 % y la 4 a un 60 %, y el impacto se mide como fracción del esfuerzo afectado.
 

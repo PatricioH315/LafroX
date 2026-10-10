@@ -4,7 +4,41 @@
 **Alcance:** documentos de propuesta, subdocumentos, formularios, anexos y resúmenes Markdown. Se excluyó completamente `Requerimientos/` y no se usó como evidencia.  
 **Criterio:** complejidad estima el esfuerzo/coordinación para resolver, no la gravedad del incumplimiento.
 
-## 1. Contradicciones e inconsistencias confirmadas
+## Estado vigente — 10 de octubre de 2026
+
+Se revalidó el registro inicial contra los documentos actuales, las Bases y las decisiones del contexto. La tabla siguiente gobierna el seguimiento; las secciones posteriores conservan la fotografía inicial y no deben leerse como lista vigente de defectos. Se aplicaron únicamente correcciones documentales respaldadas, sin cambiar estados de cumplimiento, fechas de aceptación, HH ni requisitos. La comprobación estructural del escritor no sustituye la revisión independiente ni la revisión humana del equipo.
+
+| Tema del registro inicial | Estado vigente | Evidencia o límite |
+|---|---|---|
+| Sala: secuencia, responsabilidad civil e instalación por sitio | Corregido | SD6 6.1.3, T-9 sección 4 y Anexo 6.B distinguen sistemas mes 3, recepción mes 4, racks meses 4–5, Concepción mes 4, borde CD mes 5 y gabinetes cross-docking mes 9. Obra civil CLIENTE; LafroX especifica/coordina y provee piso técnico, conforme a BTT RT-06.06 y decisiones anteriores. |
+| Starlink: tres frente a cinco sitios | Corregido | T-9 y Anexo 6.B incluyen Talca, Concepción y tres plataformas, como T-14 5.3.3. |
+| Equivalencia meses 5–8 y fin de módulos 3.4 | Corregido | Junio–septiembre de 2027; agregado T-15 5.1 termina 30-09-2027, máximo de sus hijos en Tabla 6.1. No se modificaron fechas de hijos. |
+| Inicio agregado de integraciones 3.6 | Corregido | Gantt T-14 inicia julio de 2027, mes 6; T-15 3.6.2–3.6.4 comienza 01-07-2027. |
+| Throughput normal y referencias de capacidad | Corregido | SD5 y protocolo usan 12,34 TPS = 2,71 + 9,63 del perfil SD4 A.31; crecimiento de capacidad remite a A.36, no A.34. |
+| Disparador C-05 | Corregido | 2.283 contactos/mes en meses 21–24; 2.391 desde mes 25, conforme a R8-22 y T-16. |
+| Ancla del resumen SD3 y unidades SLA | Corregido | Enlace a 3.4.2 Vista general de la solución; objetivos 99,95 % y 99,9 % con unidad explícita. |
+| Primera medición I-04A | Corregido | Seguimiento mensual desde mes 24; evaluación de meta mes 36, conforme a SD13 13.4.6 y T-19. |
+| Seis frente a siete indicadores anticipados | Hallazgo inicial descartado | Tabla 13.C.1 contiene exactamente seis filas «Sí»; I-03C, mes 16, dice «No». Se mantiene seis. |
+| Métodos de verificación RNF | Corrección documental aplicada | Se revisaron las 86 filas activas con método en 3.B y se ajustaron 36 para medir el criterio real: latencia, TLS/EDR, disponibilidad mensual, DR, atención, materiales y capacitación, entre otros. Sólo cambia la columna de método; las pruebas siguen pendientes de ejecución. Catálogos originales y colección complementaria se conservan. |
+| Universo de cobertura 80 % | Ya alineado antes de esta intervención | SD4 4.2.4.1 y T-10 compuertas exigen lógica de negocio ≥70 % y cobertura unitaria global ≥80 %. No persiste «sólo código modificado». |
+| Descripción de las columnas T-12 | Ya alineada antes de esta intervención | SD3 3.2 y Anexo 3.J describen cinco columnas; prueba en SD9 Anexo 9.C y criterio en T-17. |
+| Portal opcional para canal tradicional | No se acredita contradicción por canal | SD3 3.4.2 y Tabla 3.A.12a lo ofrecen opcional en E2; SD4 4.1.1 diferencia activación asistida tradicional y autorregistro moderno. Caso, restricción 5, impide exigir conexión/cuenta, no ofrecer portal. No se amplió alcance. |
+| Acuse comercial y MDN técnico | Cumplimiento parcial pendiente, no contradicción directa de estados | RF-12.13 compromete acuse/POD; RNF-12.03 añade plazo de 30 min y aviso vinculado. T-12 mantiene RNF-12.03 parcial por falta de evidencia de esas condiciones; MDN técnico no las demuestra. No se declaró completo. |
+| Reversión técnica y recuperación operacional | Sin contradicción | Objetivos distintos: 10 min técnicos y 40 min operacionales; se conservan. |
+| Conteos de requisitos y aceptación | Conciliados, con denominadores distintos | Catálogo 261 = 175 RF + 86 RNF; ofertados 259, con 84 RNF. T-12 A tiene 271 filas incluyendo alias/absorbidos. Doce aceptados E1 y catorce con verificaciones están explicados en SD7. Resumen de Anexo 3.B corregido a catálogo/oferta. |
+| RPO y pérdida de sitio tras caída de tres enlaces | Excepción residual ya documentada; no cumplimiento universal | SD4 4.3.2.4 y R8-05 explican el escenario; la decisión anterior está en el contexto. Mantener este límite en la lectura de continuidad, sin convertir aceptación del riesgo en garantía técnica. |
+| Innovaciones comprometidas para H4 | Requiere decisión | T-14 3.10.1.2/3.10.1.3/3.10.3.3 exigen productos en H4; T-15 los termina el 19-11-2027, después de la entrega 20-10. Resolver compromiso o programación conjunta. |
+| H12, acta y paquetes dependientes | Requiere decisión | T-15 4.1 supone firma 05-10-2028; 4.3.3 termina 19-10 y 9.1.2 termina 10-10 pese a requerirse posterior a H12. No se alteraron fechas. |
+| HH de estabilización entre meses 21/22 | Pendiente de fecha H12 y recálculo | El supuesto reparte 2.361,33/102,67 HH; la curva no distribuye el segundo importe. No corregir curva aislada ni acortar cuatro semanas. |
+| Cobranza de preventistas RF-07.10/07.11 | Requiere decisión | T-12 conserva Cumple/No cumple para funciones solapadas. Resolver alias o exclusión efectiva antes de afectar conciliación y SD9. |
+| Sincronización en cámara de frío | Requiere confirmar compromiso | RNF-09.04 conserva conectividad recuperada dentro; solución/T-12 sincronizan al salir. Caso 10, restricción 7, exige operar sin señal interior; no impone reconexión interior. No se retiró un eventual compromiso adicional sin consultar. |
+| Copia regional de registros térmicos | Requiere identificar conjuntos y destino | SD5 5-D limita réplica de tel_archivo_termino; SD4 4.3.2 describe copia térmica/analítica en us-east-1. No asumir que son conjuntos diferentes ni ampliar réplica. |
+| Población de capacitación | Requiere confirmar alcance de Concepción | 120 preparadores de Talca están documentados; 60 simultáneos en Concepción son supuesto S-39, no nómina adicional acreditada. No convertir automáticamente a 180 personas únicas. |
+| Catorce PDF locales sin destino | Dependencia externa pendiente | Seis destinos de SD2 y ocho de SD3 siguen ausentes localmente. No se crearon PDF ni se retiraron figuras. La aceptación anterior de trece PDF del SD4 no resuelve estos destinos. |
+
+**Comprobaciones y pendientes:** lectura cruzada de fuentes, métodos y resúmenes; comprobación aritmética y de extremos agregados; control de cambios exclusivamente Markdown. Firmas/revisión humana, figuras ausentes, presentación PDF y ensayos siguen pendientes. El registro de comandos y la revisión independiente se conserva en `odd/tasks/consistencia-documental.md`; no se afirma aceptación del CLIENTE ni aprobación nativa.
+
+## 1. Registro inicial — contradicciones e inconsistencias reportadas
 
 | Prioridad | Tema | Evidencia | Resolución necesaria |
 |---|---|---|---|
@@ -27,7 +61,7 @@
 | Media | Universo de medición de cobertura del 80 % | SD4 `04_arquitectura/LAFROX-Subdocumento4.md:2230` formula la compuerta sobre la versión; T-10 `06_metodologías/LAFROX-Formulario-T-10.md:70,73` la limita al código modificado. | Aclarar si el umbral aplica a toda la versión o solo a líneas modificadas. |
 | Media | Método de prueba no demuestra siempre el requisito | Anexo SD3 `03_esquema_solucion_alcance/LAFROX-Subdocumento3-Anexos.md:307,313,330,347` asocia pruebas de seguridad, RTO/RPO, recuperación o disponibilidad mensual con propiedades diferentes. | Revisar la trazabilidad requisito–criterio–método de verificación. |
 
-## 2. Diferencias, ambigüedades y referencias por aclarar
+## 2. Registro inicial — diferencias, ambigüedades y referencias
 
 | Tema | Evidencia | Estado / aclaración sugerida |
 |---|---|---|
@@ -42,7 +76,7 @@
 | Reversión técnica frente a recuperación operacional | SD4/T-18 distinguen reversión técnica ≤10 minutos y recuperación operacional de 40 minutos. | No se clasificó como contradicción: son objetivos distintos descritos explícitamente. |
 | Conteos de requisitos y aceptación | Las cifras 175 RF/86 RNF ofertados frente a 181/90 filas de T-12 tienen explicación por alias/materias complementarias. Doce resultados aceptados E1 frente a catorce verificados también está explicado en SD7. | No se clasificaron como contradicciones vigentes. |
 
-## 3. Clasificación por complejidad de solución
+## 3. Registro inicial — clasificación por complejidad
 
 | Complejidad | Inconsistencia | Motivo de complejidad | Alcance típico de la corrección |
 |---|---|---|---|
@@ -75,7 +109,7 @@
 | Alta | Portal para canal tradicional | Requiere definir funciones, identidad y precondiciones por canal. | Resolver alcance con actores, seguridad, integración y requisitos. |
 | Alta | Umbral 80 % de pruebas usa distinto universo | Cambia la compuerta de promoción y el esfuerzo de pruebas. | Definir universo de medición y armonizar SD4/T-10. |
 
-## Estado de los resúmenes y de la revisión
+## Registro inicial — estado de los resúmenes y de la revisión
 
 Se cotejaron 26 resúmenes; 13 se actualizaron y 13 se conservaron. Entre los cambios se encuentran T-9, T-10, T-12, T-6, SD3-Anexos, SD4, SD4-Anexos, SD6, SD7, SD7-Anexos, SD8, SD8-Anexos y T-16. Se corrigieron, entre otros puntos, la matriz y los enlaces de T-12, fechas y contenidos metodológicos de SD6, aceptación/reservas de SD7 y cifras/clasificaciones de SD8.
 
