@@ -86,7 +86,7 @@ La figura muestra que el marco tiene una sola salida: la evidencia que el CLIENT
 
 El gobierno distingue aseguramiento de control (PMI, 2017, p. 290). El aseguramiento, es decir, que el proceso produzca calidad, está a cargo del Líder de Calidad del proyecto, Maximiliano Miño, con dedicación entre los meses 1 y 56 (SD1, sección 1.5). Lo apoya el Comité de Calidad y Procesos de LafroX, que sesiona mensualmente, analiza la adherencia metodológica y las métricas de defectos y puede vetar una promoción (SD1, sección 1.3.1). El control, es decir, que cada entregable cumpla, lo ejecutan las puertas automáticas y el equipo de pruebas (rol CAL del Formulario T-15). La aceptación la decide el CLIENTE por medio de la Contraparte Técnica (Distribuidora Puelche S.A., 2026a, art. 70.2), con el Líder Funcional, Patricio Henríquez, como responsable de LafroX en las pruebas de aceptación de usuario. El Líder de Calidad no responde ante el equipo de desarrollo. Escala al Jefe de Proyecto y, en desacuerdo, al Comité Ejecutivo, para que la presión del plazo no relaje un umbral.
 
-La calidad de datos es parte del marco y no un apéndice. Las siete dimensiones de ISO/IEC 25012 (ISO & IEC, 2008) (completitud, exactitud, consistencia, unicidad, validez, oportunidad y credibilidad) y sus 16 indicadores ya están definidos en el SD5, sección 5.2. Este plan los incorpora como criterio de salida de las pruebas de migración y como indicador de la marcha blanca, sin redefinirlos.
+La calidad de datos es parte del marco y no un apéndice. El SD5, sección 5.2.5, usa ISO/IEC 25012 (ISO & IEC, 2008) como modelo de dimensiones —completitud, exactitud, consistencia, unicidad, validez, oportunidad y credibilidad— y define reglas de captura, rechazo y tablero en sus anexos. Este plan no declara que la norma aporte umbrales por sí misma: toma esas reglas como base y agrega en el Anexo 9.A los criterios medibles de completitud, exactitud y consistencia que se verifican en migración, marcha blanca y operación.
 
 ### 9.1.2 Modelos de madurez
 
@@ -127,7 +127,7 @@ flowchart TD
 
 **Figura 9.2 — Modelo de calidad del producto aplicado a la solución. Fuente: elaboración propia a partir de ISO & IEC (2011) y de los umbrales de las Bases y del SD4.**
 
-En la figura, cada característica tiene al menos una métrica que nace de la operación de Puelche y no de un valor genérico. La Tabla 9.2 resume la métrica principal de cada característica, su umbral y su origen. El Anexo 9.A detalla las 29 métricas por subcaracterística, con método, ambiente y paquete de la EDT.
+En la figura, cada característica tiene al menos una métrica que nace de la operación de Puelche y no de un valor genérico. La Tabla 9.2 resume la métrica principal de cada característica, su umbral y su origen. El Anexo 9.A detalla las 29 métricas por subcaracterística, con método, ambiente y paquete de la EDT, y agrega los indicadores de calidad de datos que el RT-05.04 exige para completitud, exactitud y consistencia.
 
 **Tabla 9.2 — Umbral principal por característica de ISO/IEC 25010. Fuente: elaboración propia a partir de las Bases, del SD3 y del SD4.**
 
@@ -155,7 +155,7 @@ La mantenibilidad se juzga sobre el código mientras se escribe, no al final. La
 | Cobertura de lógica de negocio | ≥ 70 % | PHPUnit con PCOV · Kover · Jest | G2 |
 | Cobertura unitaria global | ≥ 80 % | PHPUnit con PCOV · Kover · Jest | G2 |
 | Complejidad ciclomática por método | ≤ 10 | PHPMD · detekt · ESLint | G2 |
-| Complejidad cognitiva por método | ≤ 15 | PHPMD · detekt · eslint-plugin-sonarjs | G2 |
+| Complejidad cognitiva por método | ≤ 15 | PhpMetrics · detekt · eslint-plugin-sonarjs | G2 |
 | Dependencias prohibidas entre módulos | 0 | deptrac | G2 |
 | Duplicación de código | ≤ 3 % | PHPCPD · jscpd | G2 |
 | Razón de deuda técnica | ≤ 5 % | Análisis estático y registro de deuda | G2 |
@@ -225,7 +225,7 @@ Se concluye que ningún hallazgo de seguridad crítico o alto admite excepción 
 
 Toda modificación entra a la rama principal por una solicitud de fusión. La rama principal está protegida y la escritura directa está prohibida (RT-04.03; Distribuidora Puelche S.A., 2026b, cap. 4, p. 10). La fusión requiere la aprobación de al menos un par que no haya escrito el cambio. Los cambios en módulos de criticidad alta del SD4, Tabla 16, requieren además la aprobación del arquitecto del frente: emisión de guía, bloqueo por excursión térmica, reserva de stock y sincronización. Los cambios en autenticación, cifrado o datos personales requieren la del Encargado de Seguridad. El revisor verifica tres cosas que una herramienta no ve: que el cambio implemente el requisito citado, que las pruebas prueben la regla y no sólo recorran líneas, y que el nombre de los componentes sea el del SD3 y del SD4.
 
-El análisis estático se ejecuta en G1 y G2 sobre cada cambio. En PHP, PHPStan con Larastan en nivel 8 y Laravel Pint, ya incorporados al pipeline del SD4, se complementan con PHPMD para complejidad, PHPCPD para duplicación y deptrac para dependencias entre módulos. En Kotlin, detekt y ktlint cumplen esa misma función, y en TypeScript, ESLint. El análisis de seguridad estático usa el analizador SAST de GitLab, la auditoría de dependencias (`composer audit` y `npm audit`), la detección de secretos y el escaneo de imágenes de Amazon Inspector, que cubren los cinco análisis mínimos del RT-04.05 (Distribuidora Puelche S.A., 2026b, cap. 4, p. 10).
+El análisis estático se ejecuta en G1 y G2 sobre cada cambio. En PHP, PHPStan con Larastan en nivel 8 y Laravel Pint, ya incorporados al pipeline del SD4, se complementan con PHPMD para complejidad ciclomática, PhpMetrics para complejidad cognitiva e inestabilidad, PHPCPD para duplicación y deptrac para dependencias entre módulos. En Kotlin, detekt y ktlint cumplen esa misma función, y en TypeScript, ESLint con eslint-plugin-sonarjs. El análisis de seguridad estático usa el analizador SAST de GitLab, la auditoría de dependencias (`composer audit` y `npm audit`), la detección de secretos y el escaneo de imágenes de Amazon Inspector, que cubren los cinco análisis mínimos del RT-04.05 (Distribuidora Puelche S.A., 2026b, cap. 4, p. 10).
 
 El análisis dinámico ejecuta el software. En QA, OWASP ZAP recorre los portales y las API publicadas con la definición OpenAPI 3.1 de cada contrato. Una alerta alta detiene G4. La herramienta axe-core evalúa automáticamente las vistas de los portales y de la aplicación contra WCAG 2.2 AA (World Wide Web Consortium [W3C], 2023). La revisión manual complementa la herramienta con navegación por teclado, lector de pantalla y contraste bajo sol directo, porque el RT-13.01 exige ambas verificaciones (Distribuidora Puelche S.A., 2026b). La inyección de fallas, la carga y el estrés son también análisis dinámico y se describen en la sección siguiente.
 
@@ -258,7 +258,7 @@ flowchart TB
         P4["Ensayos de migración · despliegue y reversión"]
     end
     subgraph TER["Terreno y cámara"]
-        T1["14 h sin señal · −22 °C con guantes<br/>Espresso + prueba con usuarios"]
+        T1["14 h sin señal · −22 °C con guantes<br/>lluvia · >34 °C · sol directo · una mano"]
     end
     subgraph PROD["Producción"]
         R1["Marcha blanca · indicadores diarios"]
@@ -286,13 +286,13 @@ La figura sigue la regla del SD4, Tabla 12: el software se prueba en un ambiente
 | Carga | PREPROD | 21,99 TPS, 1.163 usuarios y 237 dispositivos | Todos los p95 de la Tabla 9.2 |
 | Estrés | PREPROD | Escalones de 2×, 3× (43,98 TPS) y 4× | Punto de quiebre registrado, degradación controlada, sin pérdida |
 | Resiliencia | PREPROD | Caída de instancia, zona, dependencia, latencia y disco | Recuperación sin intervención |
-| Perfil operacional | Terreno y PREPROD | 14 h sin señal, 24 h sin enlace, −22 °C | 0 pérdidas y 0 duplicados; sincronización ≤ 10 min y ≤ 2 h |
+| Perfil operacional | Terreno y PREPROD | 14 h sin señal, 24 h sin enlace, −22 °C con guantes, lluvia, >34 °C, sol directo y operación a una mano | 0 pérdidas y 0 duplicados; sincronización ≤ 10 min y ≤ 2 h; RT-13.04 y RT-13.08 medidos por perfil |
 | Recuperación ante desastres | DR | Conmutación regional real | RTO ≤ 4 h y RPO ≤ 15 min |
 | Seguridad ofensiva | PREPROD | Tercero independiente | 0 hallazgos críticos o altos abiertos |
 | Accesibilidad | QA y PREPROD | axe-core y revisión manual | Conformidad WCAG 2.2 AA documentada |
 | Migración | PREPROD | Dos ensayos completos, 32,11 GB | 0 diferencias no explicadas |
 
-La carga de la prueba se deriva del dimensionamiento y no se elige. El peak de septiembre del SD4, Tabla 33, es de 14,66 TPS; por 1,5 da 21,99 TPS (RT-09.06; Distribuidora Puelche S.A., 2026b, cap. 9, p. 21). Con el mismo factor, los 775,33 usuarios concurrentes de la cota extrema pasan a 1.163, y los 158 dispositivos de terreno simultáneos pasan a 237. El escalón de 3× (43,98 TPS) verifica el crecimiento de tres veces sin rediseño del RT-09.03. El de 4× busca el punto de quiebre y comprueba que, al superarse la capacidad, la solución encola y avisa en vez de perder transacciones (RT-09.08). La prueba se ejecuta con k6, distribuyendo la carga por lugar de proceso según el perfil horario del SD4. Además de la prueba de septiembre, se reproduce la ventana de despacho de 05:30 a 07:00 a 1,5 × 6,94 TPS = 10,41 TPS, con la emisión de guías concentrada en 90 minutos. Su criterio no es sólo el tiempo de respuesta: no puede haber un minuto de indisponibilidad. La resiliencia usa AWS Fault Injection Service en la nube y desconexiones controladas en el sitio emulado de Preproducción. La prueba de terreno usa Espresso para automatizar los flujos de la aplicación y personas del CLIENTE con guantes térmicos en la cámara de −22 °C, porque la operabilidad con guantes no se automatiza.
+La carga de la prueba se deriva del dimensionamiento y no se elige. El peak de septiembre del SD4, Tabla 33, es de 14,66 TPS; por 1,5 da 21,99 TPS (RT-09.06; Distribuidora Puelche S.A., 2026b, cap. 9, p. 21). Con el mismo factor, los 775,33 usuarios concurrentes de la cota extrema pasan a 1.163, y los 158 dispositivos de terreno simultáneos pasan a 237. El escalón de 3× (43,98 TPS) verifica el crecimiento de tres veces sin rediseño del RT-09.03. El de 4× busca el punto de quiebre y comprueba que, al superarse la capacidad, la solución encola y avisa en vez de perder transacciones (RT-09.08). La prueba se ejecuta con k6, distribuyendo la carga por lugar de proceso según el perfil horario del SD4. Además de la prueba de septiembre, se reproduce la ventana de despacho de 05:30 a 07:00 a 1,5 × 6,94 TPS = 10,41 TPS, con la emisión de guías concentrada en 90 minutos. Su criterio no es sólo el tiempo de respuesta: no puede haber un minuto de indisponibilidad. La resiliencia usa AWS Fault Injection Service en la nube y desconexiones controladas en el sitio emulado de Preproducción. La prueba de terreno usa Espresso para automatizar los flujos repetibles de la aplicación y personas del CLIENTE en las condiciones físicas que el RT-13.08 exige: cámara de −22 °C con guantes, lluvia, temperatura superior a 34 °C, lectura bajo sol directo, operación a una mano y turno sin señal. Las pruebas moderadas miden por perfil el tiempo, los pasos, la tasa de error y el aprendizaje del RT-13.04.
 
 La automatización es el criterio por defecto. Una prueba es manual sólo si exige el juicio de una persona usuaria, una condición física o un tercero. Con la estimación del Anexo 9.C, el catálogo inicial tiene unos 1.297 casos:
 
@@ -438,23 +438,24 @@ gantt
     section Operación
     Restauración mensual                   :2028-10-01, 2031-09-30
     section Pruebas periódicas
-    Resiliencia mar-29                     :milestone, 2029-03-15, 0d
-    Recuperación abr-29                    :milestone, 2029-04-15, 0d
+    Resiliencia dic-28 (Preprod)           :milestone, 2028-12-15, 0d
+    Recuperación ene-29                    :milestone, 2029-01-15, 0d
+    Resiliencia jun-29                     :milestone, 2029-06-15, 0d
+    Recuperación jul-29                    :milestone, 2029-07-15, 0d
     Intrusión may-29                       :milestone, 2029-05-15, 0d
     Carga ago-29                           :milestone, 2029-08-15, 0d
-    Resiliencia sep-29 (días 26-30)        :milestone, 2029-09-27, 0d
-    Recuperación oct-29                    :milestone, 2029-10-15, 0d
-    Resiliencia mar-30                     :milestone, 2030-03-15, 0d
-    Recuperación abr-30                    :milestone, 2030-04-15, 0d
+    Resiliencia dic-29 (Preprod)           :milestone, 2029-12-15, 0d
+    Recuperación ene-30                    :milestone, 2030-01-15, 0d
+    Resiliencia jun-30                     :milestone, 2030-06-15, 0d
+    Recuperación jul-30                    :milestone, 2030-07-15, 0d
     Intrusión may-30                       :milestone, 2030-05-15, 0d
     Carga ago-30                           :milestone, 2030-08-15, 0d
-    Resiliencia sep-30 (días 26-30)        :milestone, 2030-09-27, 0d
-    Recuperación oct-30                    :milestone, 2030-10-15, 0d
-    Resiliencia mar-31                     :milestone, 2031-03-15, 0d
-    Recuperación abr-31                    :milestone, 2031-04-15, 0d
-    Intrusión may-31                       :milestone, 2031-05-15, 0d
+    Resiliencia dic-30 (Preprod)           :milestone, 2030-12-15, 0d
+    Recuperación ene-31                    :milestone, 2031-01-15, 0d
+    Resiliencia jun-31                     :milestone, 2031-06-15, 0d
     Recuperación jul-31                    :milestone, 2031-07-15, 0d
-    Resiliencia y carga ago-31             :milestone, 2031-08-15, 0d
+    Intrusión may-31                       :milestone, 2031-05-15, 0d
+    Carga ago-31                           :milestone, 2031-08-15, 0d
     section Congelamiento
     Septiembre 2027                        :crit, 2027-09-01, 2027-09-25
     Diciembre 2027                         :crit, 2027-12-01, 2027-12-31
@@ -469,9 +470,9 @@ gantt
 
 **Figura 9.9 — Actividades de calidad en el cronograma del contrato. Fuente: elaboración propia a partir del Formulario T-15, sección 6.1.**
 
-La figura muestra que ninguna prueba de certificación ni ninguna prueba periódica de la Operación cae en un congelamiento. Las resiliencias de septiembre de 2029 y de 2030 (meses 32 y 44) se ejecutan entre los días 26 y 30, después del congelamiento del 1 al 25, como fija la sección 9.3.3. Las de la Etapa 1 terminan en noviembre de 2027, antes de diciembre, y las de la Etapa 2 en junio de 2028. La marcha blanca de la Etapa 2 coincide con el peak de septiembre de 2028, pero no introduce cambios técnicos durante el congelamiento: es operación supervisada, y su medición diaria con el volumen de peak es justamente la exigencia más dura sobre la solución (Distribuidora Puelche S.A., 2026c, cap. 13). El refuerzo de evaluadores subcontratados, de hasta 16 por día (SD6, sección 6.1.3), cubre los meses 9 a 12 y 16 a 18. Su capacidad máxima, 16 × 21 días hábiles × 6,4 HH efectivas por persona y día = 2.150,4 HH mensuales (Formulario T-15, sección 5.1), supera las horas de prueba programadas en cada uno de esos meses. Por eso queda disponible para la subsanación de observaciones de los meses 11, 12 y 18, que el riesgo R8-31 cuantifica en 153,6 HH esperadas (SD8, Anexo 8.A). Los evaluadores reciben antes de su primer turno una inducción en las herramientas, los datos de prueba y los criterios de este plan, registrada como parte del programa de capacitación de la sección 9.1.2.
+La figura muestra que ninguna prueba de certificación ni ninguna prueba periódica productiva de la Operación cae en un congelamiento. Las resiliencias semestrales de Operación se ejecutan en Preproducción o sitio emulado; por eso las ejecuciones de diciembre no intervienen Producción ni el sitio de recuperación. Las de la Etapa 1 terminan en noviembre de 2027, antes de diciembre, y las de la Etapa 2 en junio de 2028. La marcha blanca de la Etapa 2 coincide con el peak de septiembre de 2028, pero no introduce cambios técnicos durante el congelamiento: es operación supervisada, y su medición diaria con el volumen de peak es justamente la exigencia más dura sobre la solución (Distribuidora Puelche S.A., 2026c, cap. 13). El refuerzo de evaluadores subcontratados, de hasta 16 por día (SD6, sección 6.1.3), cubre los meses 9 a 12 y 16 a 18. Su capacidad máxima, 16 × 21 días hábiles × 6,4 HH efectivas por persona y día = 2.150,4 HH mensuales (Formulario T-15, sección 5.1), supera las horas de prueba programadas en cada uno de esos meses. Por eso queda disponible para la subsanación de observaciones de los meses 11, 12 y 18, que el riesgo R8-31 cuantifica en 153,6 HH esperadas (SD8, Anexo 8.A). Los evaluadores reciben antes de su primer turno una inducción en las herramientas, los datos de prueba y los criterios de este plan, registrada como parte del programa de capacitación de la sección 9.1.2.
 
-Las Bases exigen pruebas de carga, resiliencia y seguridad ofensiva antes de cada paso a producción (Distribuidora Puelche S.A., 2026b, sección 20.1, RT-10.07 y RT-11.20). En cada etapa, el primer paso a Producción es el inicio de la marcha blanca (H6 y H11), porque la marcha blanca ya opera en Producción con datos y usuarios reales (SD4, sección 4.2.4.1). Las pruebas de certificación de los paquetes 3.8 y 3.9 se ejecutan después de la integración y regresión de su alcance y antes de ese primer paso. Entre el inicio de la marcha blanca y el paso a producción definitivo (H7 y H12), la versión cambia sólo por correcciones. Cada corrección pasa por las puertas G0 a G5 con regresión completa, DAST y la prueba de carga de regresión semanal. Antes del H7 y del H12 se repiten obligatoriamente la prueba de intrusión por tercero, la prueba de resiliencia y la prueba de carga aplicable sobre la versión que cerrará la marcha blanca. Si las correcciones no cambiaron toda la superficie de la etapa, el alcance de esas ejecuciones se acota a los componentes modificados y a sus dependencias, pero no se reemplaza por una declaración de ausencia de cambios. El costo se carga a la reserva de contingencia del riesgo R8-07 del SD8.
+Las Bases exigen pruebas de carga, resiliencia y seguridad ofensiva antes de cada paso a producción (Distribuidora Puelche S.A., 2026b, sección 20.1, RT-10.07 y RT-11.20). En el Formulario E-25, los pasos a producción contractuales son H7 para la Etapa 1 y H12 para la Etapa 2. H6 y H11 habilitan el inicio de la marcha blanca: operan con datos y usuarios reales, pero siguen siendo operación supervisada con condiciones de entrada, no el cierre contractual de producción. Por eso las pruebas de certificación de los paquetes 3.8 y 3.9 se ejecutan después de la integración y regresión de su alcance y antes de H6/H11, y se repiten antes de H7/H12 sobre la versión que cerrará la marcha blanca. Cada corrección de marcha blanca pasa por las puertas G0 a G5 con regresión completa, DAST y la prueba de carga de regresión semanal. Antes del H7 y del H12 se repiten obligatoriamente la prueba de intrusión por tercero, la prueba de resiliencia y la prueba de carga aplicable; si las correcciones no cambiaron toda la superficie de la etapa, el alcance se acota a los componentes modificados y a sus dependencias, pero no se reemplaza por una declaración de ausencia de cambios. Estas ejecuciones son trabajo de certificación de cierre de etapa y deben quedar dentro de la línea base o de una replanificación aprobada; no se cargan como si fueran materialización del riesgo R8-07.
 
 Cada hito de la Tabla 9.8 se acepta con el protocolo del Formulario T-17. El entregable se presenta con su evidencia objetiva y la trazabilidad a los requisitos que satisface (Distribuidora Puelche S.A., 2026a, art. 18.2), al menos 10 días hábiles antes del último día hábil del mes del hito (Formulario T-15, sección 5.5). La tabla compara, para los hitos con fecha de entrega programada, la reserva del Formulario T-15 con los 10 días de una eventual subsanación.
 
@@ -512,13 +513,13 @@ Durante los 36 meses de Operación, las Bases exigen pruebas con frecuencia mín
 
 | Prueba | Frecuencia exigida | Meses propuestos | Cantidad | Paquete |
 | --- | --- | --- | --- | --- |
-| Recuperación ante desastres con conmutación real | Semestral, con separación máxima de seis meses (RT-07.07) | 27, 33, 39, 45, 51, 54 | 6 | 8.1.3 |
-| Resiliencia por inyección de fallas | Semestral, con separación máxima de seis meses (RT-10.07) | 26, 32, 38, 44, 50, 55 | 6 | 8.2.2 |
+| Recuperación ante desastres con conmutación real | Semestral, con separación máxima de seis meses (RT-07.07) | 24, 30, 36, 42, 48, 54 | 6 | 8.1.3 |
+| Resiliencia por inyección de fallas | Semestral, con separación máxima de seis meses (RT-10.07) | 23, 29, 35, 41, 47, 53 | 6 | 8.2.2 |
 | Prueba de intrusión por tercero | Anual (RT-11.20) | 28, 40, 52 | 3 | 8.2.2 |
 | Restauración de respaldos | Mensual (RT-07.12) | 21 a 56 | 36 | 8.1.6 |
 | Carga previa al peak de septiembre, en Preproducción | Anual (propuesta LafroX) | 31, 43, 55 | 3 | 8.2 |
 
-Las cantidades coinciden con los entregables del Formulario T-14: seis pruebas de recuperación ante desastres, 36 informes de restauración y tres pruebas de intrusión en la Operación. Ninguna prueba que interviene Producción cae en diciembre ni en los tres primeros días hábiles; las dos pruebas de resiliencia de septiembre, en los meses 32 y 44, se ejecutan entre los días 26 y 30, en una ventana aprobada fuera del congelamiento del 1 al 25. La recuperación ante desastres y la resiliencia se alternan en meses distintos, para no ensayar dos fallas mayores en el mismo período, y mantienen una separación máxima de seis meses entre ejecuciones del mismo tipo. La prueba de carga anual en agosto no la exige el contrato y se ejecuta en Preproducción, como toda prueba de carga (Distribuidora Puelche S.A., 2026a, art. 24; 2026b, RT-09.06): la agrega LafroX porque el peak de septiembre es la mayor exigencia de cada año y el congelamiento impide corregir durante él (Distribuidora Puelche S.A., 2026c, cap. 13). Cada prueba produce un informe con el resultado medido, la comparación con su umbral y el plan de corrección de las brechas, conforme al RT-07.07. Las brechas entran al registro de deuda técnica del paquete 8.2.4 y a la gestión de la capacidad del paquete 8.4.1 del Formulario T-14, cuya proyección trimestral propone el ajuste que corresponda.
+Las cantidades coinciden con los entregables del Formulario T-14: seis pruebas de recuperación ante desastres, 36 informes de restauración y tres pruebas de intrusión en la Operación. La primera recuperación ante desastres queda dentro del primer semestre de Operación (mes 24), y desde ahí se repite cada seis meses; la resiliencia se alterna en los meses intermedios para no ensayar dos fallas mayores en el mismo período. Ninguna prueba que interviene Producción cae en diciembre ni en los tres primeros días hábiles. La prueba de carga anual en agosto no la exige el contrato y se ejecuta en Preproducción, como toda prueba de carga (Distribuidora Puelche S.A., 2026a, art. 24; 2026b, RT-09.06): la agrega LafroX porque el peak de septiembre es la mayor exigencia de cada año y el congelamiento impide corregir durante él (Distribuidora Puelche S.A., 2026c, cap. 13). Cada prueba produce un informe con el resultado medido, la comparación con su umbral y el plan de corrección de las brechas, conforme al RT-07.07. Las brechas entran al registro de deuda técnica del paquete 8.2.4 y a la gestión de la capacidad del paquete 8.4.1 del Formulario T-14, cuya proyección trimestral propone el ajuste que corresponda.
 
 ## Referencias
 
