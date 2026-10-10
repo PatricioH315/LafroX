@@ -131,7 +131,7 @@ La tabla asigna a cada mecanismo de gobierno de la integración su forma de oper
 
 Fuente: elaboración propia a partir de las Bases Técnicas Transversales (caps. 2 y 5, pp. 6–13).
 
-El libro de operación y las guías de resolución cubrirán cada escenario de falla previsible del catálogo de integraciones y los procedimientos de continuidad, con diagnóstico, responsable, pasos y comprobación de recuperación. SRE incorporará progresivamente las tareas repetitivas a los trabajos y procedimientos automatizados existentes, conservando aprobación y evidencia de ejecución (RT-14.05; Bases Técnicas Transversales, cap. 14, p. 27).
+El libro de operación y las guías de resolución cubren cada falla previsible del catálogo de integraciones y los procedimientos de continuidad, con diagnóstico, responsable, pasos y comprobación de la recuperación. SRE automatiza progresivamente las tareas repetitivas con los trabajos y procedimientos ya definidos, manteniendo la aprobación y la evidencia de cada ejecución (RT-14.05; Bases Técnicas Transversales, cap. 14, p. 27).
 
 ## Anexo 4-C — Escenarios de carga masiva
 
@@ -360,13 +360,13 @@ LafroX proveerá correo mediante Amazon SES, SMS mediante Amazon SNS, WhatsApp m
 
 Se registrará por mensaje la apertura cuando el canal la informe: evento `Open` de SES con seguimiento habilitado, estado `read` de WhatsApp con publicación de eventos habilitada o apertura autenticada del aviso persistente en el portal (RT-16.23; Bases Técnicas Transversales, cap. 16; Amazon Web Services, s. f.-j, s. f.-m, s. f.-n, referencias del Subdocumento 4). SMS/SNS no informa apertura; WhatsApp requiere confirmaciones de lectura habilitadas y SES depende de la descarga del píxel, por lo que una entrega técnica o la ausencia de evento no acreditan lectura.
 
-Correo, SMS/WhatsApp y aviso en portal aplican la separación de comunicaciones y la baja de 4.1.6.2 del Subdocumento 4 (RT-16.25; Bases Técnicas Transversales, cap. 16, p. 30). Los avisos transaccionales necesarios para el servicio no admiten baja comercial ni contenido promocional. Los mensajes comerciales incluyen identificación del remitente y una vía expedita de suspensión en cada canal; el correo incorpora asunto y dirección válida para solicitarla. La baja desactiva la preferencia del cliente para todas las versiones de las plantillas comerciales y queda registrada en la auditoría existente; el trabajador la verifica antes de cada envío y reintento y suprime desde la solicitud toda comunicación comercial alcanzada, incluidas las que están en cola. La aceptación prueba cada vía de suspensión, su registro y el bloqueo de reintentos, sin impedir los avisos necesarios del servicio (Ley N.º 19.496, 1997, art. 28 B).
+Correo, SMS/WhatsApp y aviso en portal aplican la separación de comunicaciones y la baja de 4.1.6.2 del Subdocumento 4 (RT-16.25; Bases Técnicas Transversales, cap. 16, p. 30). Los avisos transaccionales necesarios para el servicio no admiten baja comercial ni contenido promocional. Los mensajes comerciales incluyen identificación del remitente y una vía expedita de suspensión en cada canal; el correo incorpora asunto y dirección válida para solicitarla. La baja desactiva la preferencia del cliente para todas las versiones de las plantillas comerciales y queda registrada en la auditoría; el trabajador la verifica antes de cada envío y reintento y suprime desde la solicitud toda comunicación comercial alcanzada, incluidas las que están en cola. La aceptación prueba cada vía de suspensión, su registro y el bloqueo de reintentos, sin impedir los avisos necesarios del servicio (Ley N.º 19.496, 1997, art. 28 B).
 
 ##### INT-15. Telemetría de flota — M12
 
 Modo asíncrono o extracción periódica de solo lectura según API existente. Volumen normal/peak: 60.480/60.480 posiciones/día, calculadas para 42 camiones × 120 posiciones/h × 12 h; el peak no aumenta esta fuente. Contraparte requerida 24×7 para conservar historial y cubrir turnos. Timeout de 10 segundos por consulta o 30 por lote; reanudación por cursor y deduplicación. Sin datos se muestra posición fechada y ruta prevista, nunca una posición presuntamente actual. La geolocalización no sustituye al POD.
 
-INT-15 consumirá de la plataforma existente posición GPS, velocidad y kilometraje de los 42 camiones propios; M12 presentará los valores recibidos con su fecha y entregará el kilometraje a M10. La velocidad se consultará en la fuente, sin estimarla entre posiciones; el acceso a la API conserva la condición de S-19 del Subdocumento 3 (LafroX, 2026, Anexo 3.C).
+INT-15 obtiene de la plataforma de telemetría la posición GPS, la velocidad y el kilometraje de los 42 camiones propios. M12 muestra los valores recibidos con su fecha y entrega el kilometraje a M10. La velocidad se toma de la fuente, sin estimarla entre posiciones, y el acceso a la API mantiene la condición de S-19 del Subdocumento 3 (LafroX, 2026, Anexo 3.C).
 
 Fuente: elaboración propia a partir de las Bases Técnicas del caso (cap. 14, p. 24) y RT-05.21 (Bases Técnicas Transversales, cap. 5, p. 13). Los SLA de terceros requieren respaldo contractual; los supuestos de dimensionamiento se distinguen de la volumetría del caso.
 
@@ -770,7 +770,7 @@ Fuente: elaboración propia a partir de RT-02.04 (Bases Técnicas Transversales,
 
 **Consecuencias.** Se mantiene un artefacto para preventa, reparto y picking con perfiles de permiso; inventario, configuración, actualizaciones y bloqueo de dispositivos se administran remotamente.
 
-En mantención, Kotlin nativo permite conservar un único artefacto con perfiles de preventa, reparto y bodega y aprovechar el equipo Kotlin declarado por LafroX. Frente a Flutter evita mantener una capa adicional de adaptación y validación de periféricos; frente a una PWA concentra en el desarrollo Android la persistencia desconectada y la integración industrial que motivan la elección, conservando la mantención propia del Portal de Clientes PWA (RT-17.02; Bases Técnicas Transversales, cap. 17, p. 31).
+En la mantención, Kotlin nativo permite conservar un único artefacto con perfiles de preventa, reparto y bodega, y aprovechar el equipo Kotlin de LafroX. Frente a Flutter, evita mantener una capa adicional para adaptar y validar los periféricos; frente a una PWA, concentra en Android la persistencia sin conexión y la integración industrial que motivan la elección. El Portal de Clientes mantiene su propia mantención como PWA (RT-17.02; Bases Técnicas Transversales, cap. 17, p. 31).
 
 **Evidencia exigida.** Ensayo de 14 horas sin señal, sincronización, periféricos y operación a -22 ^°C.
 
@@ -809,7 +809,7 @@ En mantención, Kotlin nativo permite conservar un único artefacto con perfiles
 **ADR-10. Plataforma on-premise: virtualización y almacenamiento**
 
 <a id="sub:adr-10"></a>
-**Decisión adoptada.** Talca usa tres nodos Proxmox de 16 núcleos y 64 GB cada uno, arranque M.2 en RAID 1, dos NVMe Ceph por nodo sin RAID y doble fuente; Ceph usa réplica `size`=3, `min_size`=2 y tres monitores. El NAS tiene doble fuente, RAID 6 y WORM. Concepción y cada cross-docking usan un par de equipos idénticos, uno activo y otro en espera, con réplica sincrónica de PostgreSQL. La promoción exige exclusión comprobada del escritor anterior y el retorno se realiza como réplica, conforme a 4.2.4.3; perder ambas redes no autoriza por sí solo la promoción.
+**Decisión adoptada.** Talca usa tres nodos Proxmox de 16 núcleos y 64 GB cada uno, arranque M.2 en RAID 1, dos NVMe Ceph por nodo sin RAID y doble fuente; Ceph usa réplica `size`=3, `min_size`=2 y tres monitores. El NAS tiene doble fuente, RAID 6 y WORM. Concepción y cada cross-docking usan un par de equipos idénticos, uno activo y otro en espera, con réplica sincrónica de PostgreSQL. La promoción exige comprobar antes la exclusión del escritor anterior y el equipo repuesto vuelve como réplica, según 4.2.4.3 del Subdocumento 4; perder ambas redes no autoriza por sí solo la promoción.
 
 **Alternativas evaluadas.** Ceph sobre RAID 10 duplica protección y reduce capacidad; un almacenamiento sin quórum pierde tolerancia a nodo. Un equipo único por sitio, aun con RAID y doble fuente, no tolera la falla del equipo, y un clúster Proxmox de dos nodos exige un tercer voto de quórum que esos sitios no tienen.
 
@@ -1005,7 +1005,7 @@ En mantención, Kotlin nativo permite conservar un único artefacto con perfiles
 
 <a id="anx:P"></a>
 
-Este anexo relaciona los nombres funcionales con los servicios técnicos y declara, por tecnología, su versión, soporte y política de actualización.
+Este anexo relaciona los nombres funcionales con los servicios técnicos y declara, para cada tecnología, su versión, su soporte y su política de actualización.
 
 ##### Correspondencia entre nombres funcionales y técnicos
 
@@ -1049,9 +1049,9 @@ La Tabla A.19 reúne el inventario complementario y la matriz de navegadores, ve
 | Microsoft Edge — Windows, macOS y Linux | Versión estable mayor vigente y la inmediatamente anterior, con sus parches disponibles. | Registrar versiones exactas y verificar ambas contra el Baseline de Angular y los flujos de los portales y consola. |
 | Mozilla Firefox — Windows, macOS, Linux y Android | Versión estable mayor vigente y la inmediatamente anterior, con sus parches disponibles. | Registrar versiones exactas y verificar ambas contra el Baseline de Angular y los flujos de los portales y consola. |
 | Apple Safari — macOS, iOS y iPadOS | Versión estable mayor vigente y la inmediatamente anterior, en sistemas compatibles. | Registrar versión del navegador y del sistema y verificar ambas contra el Baseline de Angular y los flujos de los portales y consola. |
-| Composer/PHPUnit/PCOV/PHPStan/Pint/PHPMD/PHPCPD/PhpMetrics/deptrac | Versiones compatibles con PHP 8.5 y Laravel 13. | Composer lock, análisis de licencia, audit, cobertura, complejidad, duplicación, deuda, fronteras modulares y regresión; no entran herramientas de prueba al runtime. |
+| Composer/PHPUnit/PCOV/PHPStan/Pint/PHPMD/PHPCPD/PhpMetrics/deptrac | Versiones compatibles con PHP 8.5 y Laravel 13. | Composer lock, análisis de licencia, audit, cobertura, complejidad, duplicación, deuda, fronteras entre módulos y regresión; no entran herramientas de prueba al runtime. |
 | JUnit 5/Kover/Espresso/detekt/ktlint | Versiones compatibles con Kotlin, Android y el parque Zebra. | Cobertura de dominio y sincronización, pruebas de interfaz y controles de estilo y complejidad antes de liberar el artefacto móvil. |
-| Jest/ESLint/axe-core/OWASP ZAP/k6/AWS Fault Injection Service | Versiones compatibles con Angular, APIs y ambientes AWS. | Regresión de portales, lint, accesibilidad WCAG 2.2 A/AA, DAST, carga/estrés e inyección controlada de fallas en QA/Preproducción según el plan de calidad. |
+| Jest/ESLint/axe-core/OWASP ZAP/k6/AWS Fault Injection Service | Versiones compatibles con Angular, las APIs y los ambientes AWS. | Regresión de portales, lint, accesibilidad WCAG 2.2 A/AA, DAST, carga y estrés e inyección controlada de fallas en QA y Preproducción. |
 | php-amqplib/AWS SDK/swagger-php | Bibliotecas mantenidas compatibles con PHP 8.5. | Contrato AMQP, sobre JSON y generación OpenAPI bloquean cambios incompatibles. |
 | OpenAS2/JVM | Rama soportada compatible con perfiles de las cadenas. | Certificados, licencia, runtime Java y pruebas MDN registrados antes de habilitar INT-08. |
 | OpenTelemetry/ADOT | Versiones estables de SDK y colector. | Ensayo de recepción OTLP, correlación, buffer y exportación tras corte. |
@@ -1061,7 +1061,7 @@ La Tabla A.19 reúne el inventario complementario y la matriz de navegadores, ve
 
 Fuente: decisiones de arquitectura lógica y política de configuración de la propuesta; compatibilidad de navegadores según Angular (2026b).
 
-La aplicación Android de terreno soportará la versión mayor vigente y las dos inmediatamente anteriores, verificando flujos y periféricos en la matriz por modelo antes de cada liberación. Cada paquete Kotlin se firmará y distribuirá mediante la gestión de flota Android Enterprise y Zebra DNA; antes de instalar o actualizar se verificarán firma y huella contra el artefacto aprobado, rechazando paquetes alterados o de origen no autorizado. Las actualizaciones seguirán las tandas por sitio y enlace de la ventana dominical de 4.2.6.12 del Subdocumento 4, conservando los plazos de corrección de vulnerabilidades y sus restricciones de calendario (RT-17.03 y RT-17.04; Bases Técnicas Transversales, cap. 17, p. 31).
+La aplicación Android de terreno soporta la versión mayor vigente de Android y las dos anteriores; antes de cada liberación se verifican los flujos y periféricos en la matriz por modelo. Cada paquete Kotlin se firma y se distribuye con la gestión de flota de Android Enterprise y Zebra DNA. Antes de instalar o actualizar, se verifican la firma y la huella contra el artefacto aprobado y se rechazan los paquetes alterados o de origen no autorizado. Las actualizaciones siguen las tandas por sitio y enlace de la ventana dominical descrita en 4.2.6.6 del Subdocumento 4, sin alterar los plazos de corrección de vulnerabilidades ni sus restricciones de calendario (RT-17.03 y RT-17.04; Bases Técnicas Transversales, cap. 17, p. 31).
 
 La Tabla A.19 incorpora la matriz de navegadores y versiones soportadas de RT-13.10 (Bases Técnicas Transversales, cap. 13, p. 26), aplicable a los portales y a la consola web de 4.1.3.1. La matriz utiliza versiones relativas para mantener el soporte durante el contrato; antes de cada liberación se registra el número exacto, sistema operativo, resultado y fecha de las pruebas. Angular 22 usa el conjunto Baseline del 7 de mayo de 2026; las versiones ofertadas deben pertenecer a ese conjunto y, al migrar Angular, al de la versión adoptada (Angular, 2026b). Cada nueva versión estable de navegador activa pruebas de autenticación, navegación, formularios, teclado y adaptación de pantallas en QA antes de sustituir la versión más antigua de la matriz; un fallo genera corrección y repetición de pruebas antes de declarar su compatibilidad. Los parches de seguridad se comprueban y se incorporan a la matriz con prioridad. La revisión trimestral de soporte del framework se complementa con esta comprobación por cada versión estable del navegador.
 
@@ -1174,7 +1174,7 @@ Esta matriz vincula controles de ISO/IEC 27001:2022, Anexo A, y su guía ISO/IEC
 
 Fuente: elaboración propia a partir de ISO (2022b, 2022c), RT de los capítulos 4, 5, 7, 10, 11, 12 y 16 (Bases Técnicas Transversales, caps. 4–16, pp. 10–29), y contratos lógicos. Seguridad verifica aplicabilidad con el responsable del sistema de gestión.
 
-El registro de vulnerabilidades conservará la fecha de publicación o detección que inicia el plazo, tomando el primero de ambos eventos aplicable al componente afectado, y la evidencia de cierre. Los máximos de 7 días corridos para críticas, 15 para altas y 30 para medias conservarán las restricciones de congelamiento y el escalamiento al CLIENTE de 4.2.4.1.4 del Subdocumento 4, sin equiparar contención con remediación (RT-11.04; Bases Técnicas Transversales, cap. 11, p. 23).
+El registro de vulnerabilidades guarda la fecha que inicia el plazo, que es la primera entre la publicación y la detección para el componente afectado, y la evidencia de cierre. Los plazos máximos de 7 días corridos para críticas, 15 para altas y 30 para medias respetan los congelamientos y el escalamiento al CLIENTE descritos en 4.2.4.1.4 del Subdocumento 4. Contener una vulnerabilidad no equivale a remediarla (RT-11.04; Bases Técnicas Transversales, cap. 11, p. 23).
 
 La arquitectura impone TLS 1.3 en las entradas de la Tabla 19 del Subdocumento 4 y en las conexiones entre componentes de la solución, y rechaza TLS 1.0 y 1.1. CloudFront aplica a portales, API e identidad la política TLSv1.3_2025, que solo admite TLS 1.3 con los conjuntos de cifrado AES-GCM (TLS_AES_128_GCM_SHA256 y TLS_AES_256_GCM_SHA384), y el canal AS2 termina TLS 1.3 en el contenedor OpenAS2. Los portales HTTPS envían HSTS con vigencia de un año, `includeSubDomains` y `preload`, y el dominio se inscribe en la lista de precarga de los navegadores. AWS Certificate Manager emite y renueva automáticamente los certificados públicos, y sus avisos de vencimiento próximo, emitidos desde 45 días antes, generan una alerta al NOC. Las interfaces del ERP de 2017 no están documentadas y su levantamiento es parte del proyecto (Bases Técnicas del caso, cap. 5, p. 10): si muestra que el ERP no admite TLS 1.3, su conexión con la ACL en VM-04, que no sale de la sala de Talca, usa TLS 1.2 como excepción documentada. La misma regla rige para un tercero con limitación de protocolo; ninguna excepción admite TLS 1.0 ni 1.1 ni reduce el control en silencio. Entre sistemas se utiliza mTLS u OAuth con credenciales de cliente; nunca una clave estática en la URL. El catálogo público no muestra precios, conforme al caso. OWASP ASVS nivel 2 y API Security Top 10 orientan las pruebas de aplicación. La superficie exacta y la implantación de EDR/SIEM se realizan en la vista física; los permisos, eventos y pruebas permanecen definidos aquí.
 
@@ -1576,11 +1576,11 @@ La energía de los gabinetes de borde y de piso se calcula con el método de la 
 | --- | --- | --- | --- |
 | Borde de Concepción | 2 servidores × 2 × 500 W; 2 firewalls × 150 W; 2 switches de núcleo × 150 W; Starlink 100 W; gateway IoT 10 W; total 2.710 W | 3.252 W; 3,42 kVA | 5 kVA; 68 % |
 | Piso de Talca y de Concepción | Switch de acceso con fuente de 600 W, que incluye 370 W de PoE para los puntos de acceso; impresora de andén 98 W; total 698 W | 838 W; 0,88 kVA | 1,5 kVA; 59 % |
-| Borde de cross-docking | 2 mini-PC × 45 W; 2 firewalls × 24 W; 2 switches × 18,96 W; 2 puntos de acceso PoE+ × 30 W; Starlink 100 W; total 336 W | 403 W; 0,42 kVA | 0,75 kVA; 57 % |
+| Borde de cross-docking | 2 mini-PC × 59,44 W; 2 firewalls × 24 W; 2 switches × 18,96 W; 2 puntos de acceso PoE+ × 30 W; Starlink 100 W; total 365 W | 438 W; 0,46 kVA | 0,75 kVA; 61 % |
 
 Fuente: elaboración propia; consumos según la ficha técnica de cada modelo de referencia del Formulario T-11.
 
-En los tres casos la UPS requerida, que es la carga de diseño dividida por 0,8, queda bajo la capacidad ofertada: 4,28, 1,10 y 0,53 kVA. Cada UPS lleva baterías para 30 minutos a su carga de diseño. Los consumos declarados de los servidores de Concepción y de los mini-PC satisfacen RT-08.01 (Bases Técnicas Transversales, cap. 8, p. 18).
+En los tres casos la UPS requerida, que es la carga de diseño dividida por 0,8, queda bajo la capacidad ofertada: 4,28, 1,10 y 0,58 kVA. Cada UPS lleva baterías para 30 minutos a su carga de diseño. Los consumos declarados de los servidores de Concepción y de los mini-PC satisfacen RT-08.01 (Bases Técnicas Transversales, cap. 8, p. 18).
 
 ## 4-W.9 Capacidad en nube
 
