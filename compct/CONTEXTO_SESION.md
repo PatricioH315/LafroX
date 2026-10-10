@@ -1,5 +1,16 @@
 # CONTEXTO DE SESIÓN
 
+## Estado vigente — 9 de octubre de 2026: coherencia cruzada SD9 aplicada
+
+Por autorización posterior del usuario se aplicaron cambios fuera del SD9 para alinear los documentos relacionados con las correcciones del plan de calidad. Se editaron sólo Markdown.
+
+- **T-14:** paquete 1.5.2 usa cobertura unitaria global ≥80 % y lógica de negocio ≥70 %; 8.1.3 fija DR en meses 27, 33, 39, 45, 51 y 54; 8.2.2 fija intrusión en 28, 40 y 52 y resiliencia en 26, 32, 38, 44, 50 y 55.
+- **T-15:** la certificación E1 del resumen inicia el 21-10-2027 y la E2 el 19-05-2028; el texto de 5.2 y la Tabla 6.1 hacen depender 3.8.4/3.8.5/3.8.6/3.8.8 de 3.8.1 y 3.9.3/3.9.4/3.9.5/3.9.7 de 3.9.1. La aceptación 3.9.2 queda 27-05 a 31-05.
+- **SD4/T-11/Anexo 4-P:** se incorporaron las herramientas del SD9 al pipeline e inventario (PCOV, JUnit 5, Kover, Jest, PHPMD, PHPCPD, PhpMetrics, deptrac, detekt, ktlint, ESLint, OWASP ZAP, axe-core, k6, AWS Fault Injection Service, Amazon Inspector/ECR). SD4 explicita que cualquier incumplimiento WCAG 2.2 A/AA confirmado bloquea promoción/aceptación.
+- **SD6/T-10/Resumen SD6:** cobertura actualizada a lógica de negocio ≥70 % y unitaria global ≥80 %; T-10 incorpora herramientas del pipeline.
+- **Revisión SD9:** `Revision/revision_comision_informe2_SD9.md` se actualizó con diagnóstico de contenido 70 sin causal §7.1, seguimiento de correcciones cruzadas y pendientes reales.
+
+Verificación: `git diff --check` sin errores (sólo advertencia CRLF futura en `Revision/revision_comision_informe2_SD9.md`), greps dirigidos sin residuos vigentes de la secuencia/cobertura anteriores salvo archivos históricos (`Revision/revision_comision_informe2.md`, `compct/plan_SD9.md` y estados antiguos del propio contexto), y conteo de archivos. Pendientes: 13 celdas `[[REVISIÓN HUMANA]]`; páginas de citas en PDF; fecha/día exacto si se quiere probar separación semestral con precisión diaria; asuntos no abordados de SD1/SD3/T-12/T-14 3.8.7/3.9.1/3.9.6/SD6 6.1.3/T-15 3.7.3 listados en la revisión. Sin commit.
 
 ## Estado vigente — 9 de octubre de 2026: segunda iteración de correcciones SD9 aplicada
 

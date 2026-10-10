@@ -73,7 +73,7 @@ La arquitectura se establece y valida tempranamente, y evoluciona cuando los req
 
 ### 6.2.2 DevSecOps, integración y entrega continuas, infraestructura como código y pruebas automatizadas
 
-El pipeline automatizado integra construcción, pruebas y controles de seguridad y calidad. Sus compuertas bloquean la promoción cuando fallan los controles aplicables, incluidos los requisitos de cobertura: al menos 70 % de cobertura de lógica de negocio según RT-04.11 y al menos 80 % de cobertura de líneas para el código modificado según la política LafroX. Son requisitos distintos y no umbrales intercambiables. Los artefactos aprobados se promueven con trazabilidad entre ambientes, sin reconstruirlos. La infraestructura como código y las migraciones compatibles y reversibles permiten una entrega controlada. El Formulario T-10 detalla las herramientas, las reglas precisas de las compuertas, la infraestructura como código y los procedimientos de despliegue.
+El pipeline automatizado integra construcción, pruebas y controles de seguridad y calidad. Sus compuertas bloquean la promoción cuando fallan los controles aplicables, incluidos los requisitos de cobertura: al menos 70 % de cobertura de lógica de negocio según RT-04.11 y al menos 80 % de cobertura unitaria global según la política LafroX. Son requisitos distintos y no umbrales intercambiables. Los artefactos aprobados se promueven con trazabilidad entre ambientes, sin reconstruirlos. La infraestructura como código y las migraciones compatibles y reversibles permiten una entrega controlada. El Formulario T-10 detalla las herramientas, las reglas precisas de las compuertas, la infraestructura como código y los procedimientos de despliegue.
 
 ### 6.2.3 Ceremonias, cadencias y decisiones del desarrollo
 

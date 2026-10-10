@@ -34,9 +34,9 @@ No aplica. El SD9 no se presentó en el Informe 1 ni en la revisión anterior de
 
 **Revisión: (Puntaje 0)**
 
-**Veredicto.** El subdocumento se tiene por no presentado por un indicio del §7.1 letra d: 13 celdas `[[REVISIÓN HUMANA]]` vacías en la declaración de IA. Son 7 en el cuerpo, 4 en los anexos, 1 en el T-13 y 1 en el T-17, y son cuadros de aprobación en blanco. A eso se suma un código interno sin glosario en tres figuras del cuerpo («R18»).
+**Veredicto actualizado tras las correcciones del 9 de octubre de 2026.** El subdocumento sigue formalmente en 0 por el §7.1 letra d: 13 celdas `[[REVISIÓN HUMANA]]` vacías en la declaración de IA. Son 7 en el cuerpo, 4 en los anexos, 1 en el T-13 y 1 en el T-17, y son cuadros de aprobación en blanco. Esa causal sólo la puede cerrar el equipo humano.
 
-Sin esa causal, el diagnóstico de contenido es 20. El núcleo existe y es propio de Puelche: 29 métricas con umbral, 24 reglas bloqueantes, pruebas del caso calculadas desde la volumetría y una matriz de 645 identificadores. Pero contradice a otros subdocumentos en un umbral de calidad (cobertura, T-14 1.5.2), en la regla de bloqueo de imágenes vulnerables (SD6, sección 6.2.2) y en el conjunto de herramientas: 16 herramientas de prueba y análisis que no figuran en el SD4, sección 4.1.1, ni en el SD6, sección 6.2. Si se corrigen las contradicciones y se firma la revisión humana, el contenido justificaría 60 a 80.
+Sin esa causal, el diagnóstico de contenido sube a 70. El núcleo existe y es propio de Puelche: 29 métricas con umbral, 24 reglas bloqueantes, pruebas del caso calculadas desde la volumetría y una matriz de 645 identificadores. Las contradicciones principales detectadas en cobertura, bloqueo de vulnerabilidades, herramientas del pipeline, secuencia T-15 y pruebas antes de H7/H12 fueron corregidas en SD9 y propagadas a T-14, T-15, SD4, SD6, T-10, T-11, Anexo 4-P y el resumen del SD6. Siguen pendientes la revisión humana, las páginas de citas a las Bases y controles dependientes del PDF final; además, si se quiere demostrar la separación máxima semestral con precisión diaria, faltan fechas exactas de ejecución dentro de cada mes.
 
 ### Introducción al Plan de calidad
 
@@ -56,10 +56,10 @@ Sin esa causal, el diagnóstico de contenido es 20. El núcleo existe y es propi
   - lo de conformidad equivale al 5,0 % de 216.935 HH.
 
   No hay montos (Art. 50.2).
-- Contradicción con otro subdocumento (§7.1 c). SD9, 9.1.4 exige «≥ 80 %» de cobertura unitaria sobre «todo el código». El Formulario T-14, paquete 1.5.2, bloquea la versión «si la cobertura de líneas por pruebas unitarias del código modificado es inferior al 80 %». Global y código modificado son métricas distintas. El paquete que implementa la puerta mide otra cosa que la que el plan declara.
-- SD9, 9.1.5 afirma: «Las cuatro métricas de entrega son las de Forsgren, Humble y Kim (2018)». La Tabla 9.4 muestra tres: tasa de cambios fallidos, tiempo del commit a producción y tiempo de restauración. Falta la frecuencia de despliegue, aunque el SD4, sección 4.2.4.1.4, la compromete (cadencia quincenal) y el RT-04.12 la exige.
-- SD9, 9.1.3 afirma que «seis de los ocho umbrales vienen fijados por las Bases o por el caso. Los dos restantes, cobertura global y promoción del mismo artefacto, son compromisos de LafroX». La promoción del mismo artefacto es el RT-04.08 de las Bases, y la propia Tabla 9.2 lo cita como origen. El conteo es incorrecto.
-- Las normas ISO/IEC 25012 (tres menciones) e ISO 9001:2015 (dos menciones) se citan en el texto sin entrada en Referencias. Eso incumple la correspondencia 1:1 entre citas y lista (Aclaraciones §6).
+- Cerrado: la cobertura unitaria se alineó como global ≥ 80 % y la lógica de negocio como ≥ 70 % en SD9, T-14 1.5.2, SD6 6.2.2, T-10 y el resumen del SD6.
+- Cerrado: la Tabla 9.4 incluye las cuatro métricas DORA, incluida la frecuencia de despliegue.
+- Cerrado: 9.1.3 corrige el conteo y no trata la promoción del mismo artefacto como umbral propio de LafroX.
+- Cerrado: ISO/IEC 25012 e ISO 9001:2015 tienen entrada en Referencias.
 
 ### 9.2 Estrategia de Aseguramiento de Calidad
 
@@ -76,20 +76,11 @@ Sin esa causal, el diagnóstico de contenido es 20. El núcleo existe y es propi
   - 14 h sin señal, 24 h sin enlace, −22 °C con guantes, sincronización en 10 min y 2 h, recuperación ante desastres y dos ensayos de migración (Tabla 9.6).
 - OK: los cinco ambientes del SD4, Tabla 12, más terreno (Figura 9.4). Los datos de prueba son sintéticos y anonimizados, con Macie y la Ley 21.719 (Figura 9.5, Anexo 9.D).
 - OK: la trazabilidad es de extremo a extremo y coherente con el T-12. La matriz de 645 identificadores (Anexo 9.C) cuadra: 605 con prueba propia, 31 «No cumple» y 9 absorbidos, 1.192 casos más 90 de contrato, 1.282 en total, con 1.026 casos de regresión automatizada en 4,3 h.
-- Contradicción con otro subdocumento (§7.1 c) e interna. La Tabla 9.5 permite que el Líder de Calidad levante G3 ante una «Imagen con vulnerabilidad alta» con registro de deuda. Choca con tres cosas:
-  - el SD6, sección 6.2.2, que detiene la promoción ante «un hallazgo de seguridad crítico o alto en dependencias, código, secretos o imagen»;
-  - el RT-04.05, que exige «criterios de bloqueo automático»;
-  - la frase siguiente del propio SD9: «ninguna puerta automática se levanta por decisión de una persona».
-- Herramientas que no aparecen en la arquitectura ni en la metodología (Paso 5, S6; Paso 7). Ninguna de estas 16 herramientas figura en el SD4 ni en el SD6, T-10 incluido:
-  - k6, OWASP ZAP, axe-core y AWS Fault Injection Service;
-  - Kover, JUnit 5, Espresso, Jest y PCOV;
-  - deptrac, PHPMD, PHPCPD y PhpMetrics;
-  - detekt, ktlint y ESLint.
-
-  La única coincidencia es Amazon Inspector. La Comisión lee esto como texto generado por separado. El SD4, sección 4.1.1, debe registrarlas con su alternativa y criterio, y el SD6, sección 6.2.2, debe incorporarlas al pipeline.
-- Incoherencia entre el plan y el cronograma. El T-13, Tabla T13.3, exige para la prueba de intrusión una «Versión congelada en Preproducción». La puerta G4 exige la regresión completa antes de promover a Preproducción. Pero el T-15 programa 3.8.4, 3.8.5, 3.8.6 y 3.8.8 desde el 01-10-2027, con predecesora 3.4, mientras la integración y regresión 3.8.1 termina el 20-10-2027. En la Etapa 2 pasa lo mismo: 3.9.3–3.9.5 empiezan el 01-05-2028, igual que 3.9.1. Con la regla del propio plan, las pruebas de Preproducción no pueden empezar antes de cerrar 3.8.1 y 3.9.1.
-- «Antes de cada paso a producción» (BTT §20.1; RT-11.20; RT-10.07). La seguridad ofensiva y la resiliencia de la Etapa 1 se ejecutan en octubre y noviembre de 2027. El paso a producción del H7 es en mayo de 2028, después de tres meses de correcciones de marcha blanca. El documento no explica por qué la versión que pasa en el H7 no requiere repetir esas pruebas. El T-13, sección 8.1, sólo afirma que la marcha blanca es «el primer paso a Producción».
-- El Anexo 9.D y el T-13 dividen los volúmenes mensuales por «26 días hábiles» sin mostrar la derivación: 6 días por semana × 52 semanas / 12 = 26 (§7.1 b; Aclaraciones §3).
+- Cerrado: G3 ya no permite levantar vulnerabilidades críticas o altas de imagen; sólo la regresión de desempeño 9B-22 admite excepción controlada sin incumplir p95 contractual.
+- Cerrado: las herramientas de prueba y análisis fueron incorporadas a SD4 4.2.4.1, T-11, Anexo 4-P, SD6 6.2.2 y T-10: k6, OWASP ZAP, axe-core, AWS Fault Injection Service, Kover, JUnit 5, Espresso, Jest, PCOV, deptrac, PHPMD, PHPCPD, PhpMetrics, detekt, ktlint y ESLint.
+- Cerrado: T-15 ahora programa 3.8.4, 3.8.5, 3.8.6 y 3.8.8 desde el 21-10-2027, con predecesora 3.8.1, y 3.9.3, 3.9.4, 3.9.5 y 3.9.7 desde el 19-05-2028, con predecesora 3.9.1. La aceptación 3.9.2 se ubica después de 3.9.1.
+- Cerrado: SD9, T-13 y T-17 exigen repetir intrusión por tercero, resiliencia y carga aplicable antes de H7/H12; puede acotarse el alcance a componentes modificados, pero no sustituirse por una declaración de ausencia de cambios.
+- Cerrado: Anexo 9.D deriva 26 días hábiles como 6 × 52 / 12.
 
 ### 9.3 Alineación con Plan de Trabajo
 
@@ -113,11 +104,11 @@ Sin esa causal, el diagnóstico de contenido es 20. El núcleo existe y es propi
 
 | Decisión | SD9 | Otro documento | Estado |
 | --- | --- | --- | --- |
-| Cobertura unitaria | ≥ 80 % global | T-14 1.5.2: 80 % del código modificado | Contradicción |
-| Imagen con vulnerabilidad alta | G3 levantable por el Líder de Calidad | SD6 6.2.2: detiene la promoción | Contradicción |
-| Herramientas de prueba y análisis | 16 herramientas | SD4 4.1.1 y SD6 6.2.2: no figuran | Contradicción |
-| Pruebas de intrusión | Anuales y antes de cada paso | SD1 1.3.2: «de forma semestral» (política corporativa); RNF-14.06 y T-14 8.2.2: anuales | Diferencia que debe explicarse en el SD1 |
-| Inicio de las pruebas de Preproducción | Después de G4 (regresión completa) | T-15: 3.8.4–3.8.8 desde el 01-10-2027, en paralelo con 3.8.1 | Incoherencia |
+| Cobertura unitaria | ≥ 80 % global | T-14 1.5.2, SD6, T-10 y resumen SD6 alineados a 80 % global | OK |
+| Imagen con vulnerabilidad alta | No admite excepción | SD6 6.2.2 detiene la promoción | OK |
+| Herramientas de prueba y análisis | 16 herramientas | SD4, T-11, Anexo 4-P, SD6 y T-10 las registran | OK |
+| Pruebas de intrusión | Anuales, antes de cada paso y repetidas antes de H7/H12 | T-14 8.2.2 anual; SD1 pendiente de armonización si mantiene política semestral | Parcial |
+| Inicio de las pruebas de Preproducción | Después de integración/regresión | T-15 alinea 3.8.4–3.8.8 con 3.8.1 y 3.9.3–3.9.7 con 3.9.1 | OK |
 | RNF-06.02, 06.03, 11.03, 11.04 | Verificados con la fila que los absorbe (Anexo 9.C) | T-12: «Cumple» con componente propio; SD3 Tabla 3.A.5a: absorbidos o alias | Diferencia entre SD3 y T-12 |
 | RTO, RPO, ambientes, despliegue, p95 | 4 h, 15 min, 5 ambientes, azul-verde con canario, Tabla 31 | SD4 | OK |
 | Hitos y meses | E-25 y T-15 Tabla 5.2 | SD7, T-15 | OK |
@@ -125,7 +116,7 @@ Sin esa causal, el diagnóstico de contenido es 20. El núcleo existe y es propi
 ### Forma e indicios de uso de IA
 
 - Crítico: 13 celdas `[[REVISIÓN HUMANA]]` en las declaraciones de IA de los cuatro archivos (Aclaraciones §7.1 d, cuadros de aprobación en blanco). Desde el Informe 2, el subdocumento se tiene por no presentado.
-- Crítico: «R18» aparece en tres figuras del cuerpo sin definición en el texto: Figura 9.6, «Necesidad y resultados R18» y «Marcha blanca y R18»; Figura 9.7, «acta T-17 · R18». El prompt lo lista como código interno sin glosario. El cuerpo sí dice «los 16 resultados del Caso, capítulo 18», pero no los asocia al código.
+- Cerrado: el código R18 quedó definido como R18-01 a R18-16 en el cuerpo y las figuras principales usan «16 resultados del Caso» o ejemplos concretos. La revisión visual final debe confirmar que la versión `.drawio` insertada en el PDF coincide con el Markdown.
 - Las figuras del Markdown están en Mermaid y las fuentes `.drawio` difieren en detalle. La 9.4 agrega filas: DAST, corte de enlace y marcha blanca. La 9.7 trae un ejemplo concreto: RF-09.01, M9, 3.4.4. La 9.9 agrega las pruebas periódicas por mes. El texto que explica cada figura debe corresponder a la versión que se inserte en el PDF.
 - Citas a las Bases: 18 de 27 no indican página (Aclaraciones §6). Se verifica en el PDF.
 - Ningún título va seguido directamente de otra cosa que no sea texto: 0 casos en los cuatro archivos. Las 9 tablas del cuerpo tienen 5 columnas o menos y llevan análisis posterior. Las 10 figuras se citan antes y se explican después.
@@ -135,11 +126,10 @@ Sin esa causal, el diagnóstico de contenido es 20. El núcleo existe y es propi
 ### Qué se espera en el Informe 3
 
 - Las 13 celdas de revisión humana firmadas por un integrante, con lo que efectivamente verificó.
-- Una sola regla de cobertura en SD1, SD6, T-14 1.5.2, SD4 4.2.4.1 y SD9.
-- Una sola regla de bloqueo de imágenes en SD6 y SD9, y la frase de la Tabla 9.5 coherente con ella.
-- Las 16 herramientas registradas en el SD4, sección 4.1.1, con su alternativa y criterio, e incorporadas al pipeline del SD6, sección 6.2.2.
-- Las predecesoras de 3.8.4–3.8.8 y 3.9.3–3.9.7 en el T-15 alineadas con la puerta G4, o una justificación de por qué esas pruebas pueden empezar antes. Además, una regla explícita para repetir la intrusión y la resiliencia antes del H7 y del H12, o el fundamento para no hacerlo.
-- La Tabla 9.4 con las cuatro métricas DORA, el conteo de 9.1.3 corregido, ISO/IEC 25012 e ISO 9001 en Referencias, «R18» definido y DES definido en el T-13.
+- Confirmar en PDF que las figuras insertadas no reintroduzcan códigos sin glosario ni diferencias con el Markdown.
+- Completar las páginas de las citas a las Bases cuando exista el PDF final paginado.
+- Mantener la coherencia ya aplicada de cobertura, bloqueo de imágenes, herramientas del pipeline, predecesoras de certificación y repetición de intrusión/resiliencia/carga antes de H7/H12.
+- Decidir si se acreditarán fechas exactas por día para demostrar la separación máxima de seis meses en las pruebas semestrales.
 
 ## CONSIDERACIONES TRANSVERSALES
 
@@ -153,15 +143,15 @@ Sin esa causal, el diagnóstico de contenido es 20. El núcleo existe y es propi
   7. Resultado R18-01 en el cierre de la marcha blanca E1 (T-17, Tabla T17.2).
 
   La cadena que la revisión anterior daba por cortada en el S9 queda cerrada en estos archivos.
-- **Coherencia entre plan, equipo y arquitectura.** Las HH de calidad del SD9 coinciden con el T-15. La dotación CAL del mes 16 (10 personas) y el refuerzo de evaluadores cubren las horas programadas. Las herramientas, en cambio, no están en la arquitectura.
+- **Coherencia entre plan, equipo y arquitectura.** Las HH de calidad del SD9 coinciden con el T-15. La dotación CAL del mes 16 (10 personas) y el refuerzo de evaluadores cubren las horas programadas. Las herramientas de prueba y análisis ya fueron incorporadas al SD4, al T-11, al Anexo 4-P, al SD6 y al T-10.
 - **Fundamentación ingenieril.** Las cargas de prueba, el presupuesto de error de 43,2 minutos, el número de casos, la duración de la regresión, el costo de la calidad y las holguras de los hitos están calculados y se reproducen desde los datos citados.
-- **Uso de IA.** Las causales son las celdas de revisión humana y el código «R18» sin glosario. No hay otros marcadores.
+- **Uso de IA.** La causal vigente son las celdas de revisión humana. El código R18 ya fue definido; queda pendiente la confirmación visual de las figuras finales.
 - **Cumplimiento.** No hay precios, plazos fuera del Art. 17° ni archivos mal nominados.
 
 | Ítem | Peso | Puntaje | Ponderado |
 | --- | --- | --- | --- |
 | 9. Plan de calidad — T-13 y T-17 | 8 % | 0 | 0,0 |
-| Diagnóstico de contenido sin la causal §7.1 (no suma) | — | 20 | — |
+| Diagnóstico de contenido sin la causal §7.1 (no suma) | — | 70 | — |
 
 ## Seguimiento — correcciones aplicadas en el SD9 (9 de octubre de 2026)
 
@@ -183,21 +173,28 @@ Siguen abiertos dentro del SD9:
 - Las 13 celdas `[[REVISIÓN HUMANA]]`. Sólo puede cerrarlas un integrante que haya hecho la revisión.
 - La página de las 18 citas a las Bases que no la indican. Se agrega al compilar el PDF, para no inventar páginas.
 
-### Correcciones pendientes en otros subdocumentos (no aplicadas)
+### Seguimiento — correcciones cruzadas aplicadas
 
-| N.° | Documento y sección | Qué dice hoy | Qué debe decir para ser coherente con el SD9 |
-| --- | --- | --- | --- |
-| 1 | T-14, paquete 1.5.2 | Bloqueo si la cobertura del «código modificado» es inferior al 80 % | Cobertura unitaria global ≥ 80 % y de lógica de negocio ≥ 70 %, ambas bloqueantes |
-| 2 | SD4, sección 4.2.4.1 (pipeline) | Mide «cobertura» sin distinguir las dos métricas | Las dos métricas de cobertura con sus umbrales |
-| 3 | SD4, sección 4.1.1 | No registra las herramientas de prueba y análisis | Registrar k6, OWASP ZAP, axe-core, AWS Fault Injection Service, JUnit 5, Espresso, Kover, Jest, PCOV, PHPMD, PHPCPD, PhpMetrics, deptrac, detekt, ktlint y ESLint, con alternativa y criterio |
-| 4 | SD6, sección 6.2.2, y Formulario T-10 | El pipeline lista PHPUnit, PHPStan, Larastan, Pint, auditoría, contratos y escaneos | Incorporar las mismas herramientas y las puertas G0–G6 del SD9 |
-| 5 | T-15, sección 6.1 (predecesoras) | 3.8.4, 3.8.5, 3.8.6 y 3.8.8 empiezan el 01-10-2027 con predecesora 3.4; 3.9.3–3.9.5 y 3.9.7 empiezan el 01-05-2028 con 3.5 | Predecesora 3.8.1 y 3.9.1 (o su regresión), coherente con la puerta G4. Recalcular fechas y reservas del H5 y del H10 en la Tabla 5.2, y propagar a SD7, SD8 y la planilla del Gantt |
-| 6 | SD1, sección 1.3.2 | Pruebas de intrusión externas «de forma semestral» | Aclarar que es la política corporativa y que en este contrato son anuales y antes de cada paso (RT-11.20), o igualar la frecuencia |
-| 7 | SD3, sección 3.2, y Anexo 3.J | El T-12 trae «prueba prevista y criterio de aceptación»; los protocolos van «en el plan de calidad de la oferta» | Remitir al Anexo 9.C (prueba) y al Formulario T-17 (criterio), porque el T-12 tiene cinco columnas |
-| 8 | T-12, filas RNF-06.02, RNF-06.03, RNF-11.03 y RNF-11.04 | «Cumple» con componente propio | Indicar la fila que los absorbe, como en el SD3, Tabla 3.A.5a |
-| 9 | SD3, sección 3.2 | 261 requisitos (175 RF y 86 RNF) | Explicar la diferencia con las 271 filas del T-12 (filas absorbidas, alias y no ofertadas) |
-| 10 | SD1, sección 1.4 | CMMI-DEV N3 válido hasta noviembre de 2026 | Declarar la renovación o el régimen mientras se tramita, coherente con el SD9, 9.1.2 |
-| 11 | SD3, Anexo 3.B, RNF-14.07 | SAST/DAST verificado con «ejercicio de recuperación» | Verificación con las puertas G2 y G4 (SAST y OWASP ZAP), como en el Anexo 9.C |
-| 12 | T-14, paquetes 3.8.7, 3.9.1 y 3.9.6 | «Mes 10 (H5)», «Mes 16 (H9)», «Meses 16 y 17 (H10)» | Separar el mes de ejecución del mes del hito del E-25 (H5 mes 12, H9 mes 17, H10 mes 18) |
-| 13 | SD6, sección 6.1.3 | Refuerzo de evaluadores en los meses 9–12 y 16–18 | Precisar que los meses 11, 12 y 18 cubren la subsanación, como explica el SD9, 9.3.2 |
-| 14 | T-15, paquete 3.7.3 | Saldos migrados del WMS de Talca entre el 01-12 y el 31-12-2027 | Verificar si la carga toca Producción durante el congelamiento de diciembre |
+| N.° | Documento y sección | Estado vigente |
+| --- | --- | --- |
+| 1 | T-14, paquete 1.5.2 | Corregido: cobertura unitaria global ≥ 80 % y lógica de negocio ≥ 70 %, ambas bloqueantes. |
+| 2 | SD4, sección 4.2.4.1 (pipeline) | Corregido: distingue cobertura de lógica de negocio y cobertura unitaria global, e incorpora el catálogo de herramientas del SD9. |
+| 3 | SD4, T-11 y Anexo 4-P | Corregido: registran k6, OWASP ZAP, axe-core, AWS Fault Injection Service, JUnit 5, Espresso, Kover, Jest, PCOV, PHPMD, PHPCPD, PhpMetrics, deptrac, detekt, ktlint y ESLint con su función. |
+| 4 | SD6, sección 6.2.2, y Formulario T-10 | Corregido: cobertura global ≥ 80 % e incorporación de las herramientas del pipeline. |
+| 5 | T-15, sección 5.2 y Tabla 6.1 | Corregido: 3.8.4, 3.8.5, 3.8.6 y 3.8.8 dependen de 3.8.1; 3.9.3, 3.9.4, 3.9.5 y 3.9.7 dependen de 3.9.1. |
+| 6 | T-14, paquetes 8.1.3 y 8.2.2 | Corregido: DR en meses 27, 33, 39, 45, 51 y 54; resiliencia en 26, 32, 38, 44, 50 y 55; intrusión anual en 28, 40 y 52. |
+| 7 | Resumen del SD6 | Corregido: cobertura unitaria global ≥ 80 %. |
+
+### Pendientes fuera de esta iteración
+
+| N.° | Documento y sección | Pendiente |
+| --- | --- | --- |
+| 1 | SD1, sección 1.3.2 | Si mantiene pruebas de intrusión externas «semestrales», aclarar que es política corporativa y que este contrato exige anuales y antes de cada paso, o igualar la frecuencia. |
+| 2 | SD3, sección 3.2, y Anexo 3.J | Remitir al Anexo 9.C (prueba) y al Formulario T-17 (criterio), porque el T-12 tiene cinco columnas. |
+| 3 | T-12, filas RNF-06.02, RNF-06.03, RNF-11.03 y RNF-11.04 | Indicar la fila que los absorbe, como en el SD3, Tabla 3.A.5a. |
+| 4 | SD3, sección 3.2 | Explicar la diferencia entre 261 requisitos del SD3 y 271 filas del T-12. |
+| 5 | SD1, sección 1.4 | Declarar la renovación CMMI-DEV N3 o el régimen mientras se tramita, coherente con SD9, 9.1.2. |
+| 6 | SD3, Anexo 3.B, RNF-14.07 | Reemplazar «ejercicio de recuperación» por verificación con puertas G2 y G4 (SAST y OWASP ZAP), como en el Anexo 9.C. |
+| 7 | T-14, paquetes 3.8.7, 3.9.1 y 3.9.6 | Separar el mes de ejecución del mes del hito del E-25 si aún inducen confusión. |
+| 8 | SD6, sección 6.1.3 | Precisar que los meses 11, 12 y 18 cubren la subsanación, como explica SD9, 9.3.2. |
+| 9 | T-15, paquete 3.7.3 | Verificar si la carga de saldos migrados toca Producción durante el congelamiento de diciembre. |

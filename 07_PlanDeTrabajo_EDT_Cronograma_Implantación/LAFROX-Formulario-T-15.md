@@ -460,12 +460,12 @@ El resultado no tiene dependencias incumplidas, ningún paquete termina fuera de
 | Módulos E1 | 3.4 | 10-06-2027 | 27-09-2027 |
 | Integraciones externas E1 | 3.6.1–3.6.4 | 01-07-2027 | 01-09-2027 |
 | Prueba de integración E1 (H4) | 3.8.1 | 01-10-2027 | 20-10-2027 |
-| Certificación E1 (H5) | 3.8.2–3.8.8 | 01-10-2027 | 29-11-2027 |
+| Certificación E1 (H5) | 3.8.2–3.8.8 | 21-10-2027 | 29-11-2027 |
 | Diseño E2 (H8) | 1.2.5, 2.1.4, 2.4.2 | 01-02-2028 | 13-03-2028 |
 | Módulos E2 | 3.5 | 03-04-2028 | 26-04-2028 |
 | Intercambio con las cadenas | 3.6.5, 3.6.6 | 01-02-2028 | 23-08-2028 |
 | Prueba de integración E2 (H9) | 3.9.1 | 01-05-2028 | 18-05-2028 |
-| Certificación E2 (H10) | 3.9.2–3.9.7 | 01-05-2028 | 12-06-2028 |
+| Certificación E2 (H10) | 3.9.2–3.9.7 | 19-05-2028 | 12-06-2028 |
 
 ### 5.2 Secuencias que hacen compatible el modelo
 
@@ -473,7 +473,7 @@ El cálculo por actividad y la simulación del SD8 fijan siete reglas de secuenc
 
 - **Ventanas de módulos.** Los módulos de la Etapa 1 ocupan los meses 5 a 8 (junio a octubre de 2027): el análisis y el diseño de contratos empiezan con la base compartida, y la construcción se escalona para no superar 40 desarrolladores simultáneos. Las dependencias entre módulos son por interfaz.
 - **Sala técnica y ambientes.** La cadena deja reserva ante el H3: planos 2.3.1/2.3.2 en el mes 1, especificación y orden de compra emitida por LafroX en el mes 2 (5.1.2), instalación 6.1.1–6.1.4 en el mes 3 y recepción 6.1.5 en el mes 4. Los racks R01/R02 se montan en los meses 4 y 5, el gabinete de Concepción en el mes 4 y el borde de los CD entra en servicio en el mes 5 (6.6.3), junto con los ambientes en la nube. Los gabinetes de cross-docking se montan en el mes 9. El CLIENTE solo compra el equipamiento de terreno antes de cada ola. Las actas 5.1.3 acreditan la recepción técnica de ambos suministros.
-- **Certificación.** Las pruebas de aceptación y de operación sin conexión (3.8.2 y 3.8.3) empiezan al terminar la prueba de integración (D-21); las pruebas de carga, recuperación, seguridad ofensiva y respaldo (3.8.4 a 3.8.6 y 3.8.8) empiezan con la entrega de los módulos en QA (D-21b), porque no dependen del resultado funcional de la integración. En la Etapa 2 rige la misma regla: la aceptación 3.9.2 ejecuta sus ciclos al terminar 3.9.1, con su preparación en paralelo (D-31), y las pruebas de carga, recuperación y seguridad ofensiva (3.9.3 a 3.9.5) empiezan con los módulos en QA (D-31b); todas terminan en el mes 16 y el acta 3.9.6 se prepara en junio. Todas corren en paralelo con la revisión del CLIENTE del H4 y del H9; si esa revisión formula observaciones sobre el software, la certificación repite los casos afectados dentro de su reserva.
+- **Certificación.** Las pruebas de aceptación y de operación sin conexión (3.8.2 y 3.8.3) empiezan al terminar la prueba de integración (D-21). Las pruebas de carga, recuperación, seguridad ofensiva y despliegue sin interrupción (3.8.4 a 3.8.6 y 3.8.8) también quedan condicionadas al cierre de 3.8.1, porque certifican la versión integrada que habilita el H5. En la Etapa 2 rige la misma regla: la aceptación 3.9.2 ejecuta sus ciclos al terminar 3.9.1, y las pruebas de carga, recuperación, seguridad ofensiva y despliegue (3.9.3 a 3.9.5 y 3.9.7) comienzan después de la integración y regresión de la Etapa 2; todas terminan en el mes 16 y el acta 3.9.6 se prepara en junio. Estas pruebas corren en paralelo con la revisión del CLIENTE del H4 y del H9, no con la integración que les da base; si esa revisión formula observaciones sobre el software, la certificación repite los casos afectados dentro de su reserva.
 - **Integraciones de la Etapa 1 antes del H4.** Las integraciones con proveedores, pago, mapas y avisos (3.6.1 a 3.6.4) terminan entre agosto y septiembre de 2027 y son predecesoras de la prueba de integración 3.8.1, de modo que el software del H4 incluye todas las interfaces externas de la Etapa 1 (Formulario E-25).
 - **Aprobaciones que gatillan el H2 y el H8.** Los documentos de aprobación 2.4.1 y 2.4.2 terminan antes de la fecha límite de su hito: 2.4.1 se elabora en abril de 2027, apenas se entregan la arquitectura, el plan de seguridad (2.2.3, con cuatro especialistas) y el modelo de datos, y queda en revisión del CLIENTE en mayo; 2.4.2 se elabora entre el 1 y el 13 de marzo de 2028, después del diseño 2.1.4, que se ejecuta con cuatro arquitectos en la primera quincena de febrero.
 - **Corte de la migración.** Sólo la conciliación final y el corte (3.7.5.A06) son una intervención productiva y se programan en días permitidos, después de los dos ensayos 3.7.3 y 3.7.4 (D-24); el análisis, el diseño y las pruebas del corte avanzan en paralelo con esos ensayos en ambientes no productivos.
@@ -651,18 +651,18 @@ La figura muestra que sólo los cuatro primeros meses, hasta el H2, se presentan
 | 3.8.1 | CAL | 1,8 / 2 | 160 | 01-10-2027 | 20-10-2027 | 3.4, 3.6 |
 | 3.8.2 | CAL | 2,5 / 3 | 320 | 21-10-2027 | 17-11-2027 | 3.8.1 |
 | 3.8.3 | CAL | 2,5 / 3 | 320 | 21-10-2027 | 17-11-2027 | 3.8.1 |
-| 3.8.4 | CAL | 1,8 / 2 | 320 | 01-10-2027 | 09-11-2027 | 3.4 |
-| 3.8.5 | CAL | 1,8 / 2 | 320 | 01-10-2027 | 09-11-2027 | 3.1, 3.4 |
-| 3.8.6 | SEG | 1,8 / 2 | 160 | 01-10-2027 | 20-10-2027 | 3.4 |
+| 3.8.4 | CAL | 1,8 / 2 | 320 | 21-10-2027 | 09-11-2027 | 3.8.1 |
+| 3.8.5 | CAL | 1,8 / 2 | 320 | 21-10-2027 | 09-11-2027 | 3.8.1 |
+| 3.8.6 | SEG | 1,8 / 2 | 160 | 21-10-2027 | 09-11-2027 | 3.8.1 |
 | 3.8.7 | CAL | 3,1 / 4 | 160 | 18-11-2027 | 29-11-2027 | 3.8.2, 3.8.3, 3.8.4, 3.8.5, 3.8.6 |
-| 3.8.8 | SRE | 1,8 / 2 | 320 | 01-10-2027 | 09-11-2027 | 3.4 |
+| 3.8.8 | SRE | 1,8 / 2 | 320 | 21-10-2027 | 09-11-2027 | 3.8.1 |
 | 3.9.1 | CAL | 1,8 / 2 | 160 | 01-05-2028 | 18-05-2028 | 3.5 |
-| 3.9.2 | CAL | 3,6 / 5 | 320 | 01-05-2028 | 31-05-2028 | 3.9.1 |
-| 3.9.3 | CAL | 2,5 / 3 | 320 | 01-05-2028 | 26-05-2028 | 3.5 |
-| 3.9.4 | CAL | 2,5 / 3 | 320 | 01-05-2028 | 26-05-2028 | 3.5 |
-| 3.9.5 | SEG | 2,5 / 3 | 320 | 01-05-2028 | 26-05-2028 | 3.5 |
+| 3.9.2 | CAL | 3,6 / 5 | 320 | 27-05-2028 | 31-05-2028 | 3.9.1 |
+| 3.9.3 | CAL | 2,5 / 3 | 320 | 19-05-2028 | 26-05-2028 | 3.9.1 |
+| 3.9.4 | CAL | 2,5 / 3 | 320 | 19-05-2028 | 26-05-2028 | 3.9.1 |
+| 3.9.5 | SEG | 2,5 / 3 | 320 | 19-05-2028 | 26-05-2028 | 3.9.1 |
 | 3.9.6 | CAL | 3,1 / 4 | 160 | 01-06-2028 | 12-06-2028 | 3.9.1, 3.9.2, 3.9.3, 3.9.4, 3.9.5 |
-| 3.9.7 | SRE | 1,8 / 2 | 160 | 01-05-2028 | 18-05-2028 | — |
+| 3.9.7 | SRE | 1,8 / 2 | 160 | 19-05-2028 | 26-05-2028 | 3.9.1 |
 | 3.10.1.1 | DAT | 1,8 / 2 | 240 | 02-08-2027 | 08-10-2027 | — |
 | 3.10.1.2 | DAT | 1,8 / 2 | 240 | 01-10-2027 | 19-11-2027 | — |
 | 3.10.1.3 | DAT | 1,8 / 2 | 240 | 01-10-2027 | 19-11-2027 | — |

@@ -16,7 +16,7 @@ El avance se mide con **valor ganado**: se reconoce trabajo aceptable en puntos 
 
 [El desarrollo](../06_metodolog%C3%ADas/LAFROX-Subdocumento6.md#62-metodolog%C3%ADa-de-desarrollo-software) usa **RUP**, proceso iterativo con Inicio, Elaboración, Construcción y Transición. La arquitectura se valida temprano y el software avanza en iteraciones de **dos semanas**, con demostración y revisión del incremento. La deuda técnica y los ajustes de arquitectura quedan registrados.
 
-[DevSecOps](../06_metodolog%C3%ADas/LAFROX-Subdocumento6.md#622-devsecops-integraci%C3%B3n-y-entrega-continuas-infraestructura-como-c%C3%B3digo-y-pruebas-automatizadas) incorpora seguridad y pruebas en la entrega. GitLab CI y CodeBuild construyen un artefacto verificable, que se promueve sin recompilar entre ambientes. Se bloquea la promoción ante fallas, contratos rotos, hallazgos altos/críticos o deuda bloqueante. Los umbrales distinguen **70 % de cobertura de lógica de negocio** exigida y **80 % de cobertura unitaria del código modificado** como política corporativa.
+[DevSecOps](../06_metodolog%C3%ADas/LAFROX-Subdocumento6.md#622-devsecops-integraci%C3%B3n-y-entrega-continuas-infraestructura-como-c%C3%B3digo-y-pruebas-automatizadas) incorpora seguridad y pruebas en la entrega. GitLab CI y CodeBuild construyen un artefacto verificable, que se promueve sin recompilar entre ambientes. Se bloquea la promoción ante fallas, contratos rotos, hallazgos altos/críticos o deuda bloqueante. Los umbrales distinguen **70 % de cobertura de lógica de negocio** exigida y **80 % de cobertura unitaria global** como política corporativa.
 
 ## Compras y condiciones de ejecución
 

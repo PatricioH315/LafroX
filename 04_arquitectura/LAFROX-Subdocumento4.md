@@ -278,7 +278,7 @@ Todas las interfaces permiten recorrer y ejecutar íntegramente sus funciones po
 
 Para el canal moderno, el Portal de Clientes permite autorregistro con RUT de empresa, correo corporativo y contraseña mediante Keycloak, previa verificación por la integración con el ERP de que el RUT corresponde a un cliente activo habilitado por Puelche. Envía el correo de confirmación y, si el RUT no está habilitado, indica que debe contactar a su ejecutivo comercial; la activación asistida por SMS del canal tradicional conserva su carácter opcional (RF-12.25; LafroX, 2026c, Anexo 3.A).
 
-LafroX verificará WCAG 2.2 nivel AA en todas las interfaces destinadas a personas mediante herramientas automatizadas y pruebas manuales de los flujos, incluidos teclado y tecnologías de asistencia. Entregará al CLIENTE el informe de conformidad y las evidencias de corrección en los expedientes de aceptación existentes (RT-13.01; Bases Técnicas Transversales, cap. 13, p. 26).
+LafroX verificará WCAG 2.2 nivel AA en todas las interfaces destinadas a personas mediante herramientas automatizadas y pruebas manuales de los flujos, incluidos teclado y tecnologías de asistencia. Cualquier incumplimiento WCAG 2.2 A o AA confirmado por herramienta o revisión manual bloquea la promoción a Preproducción y la aceptación hasta corregirse. Entregará al CLIENTE el informe de conformidad y las evidencias de corrección en los expedientes de aceptación existentes (RT-13.01; Bases Técnicas Transversales, cap. 13, p. 26).
 
 Ante cada acción, la interfaz mostrará un resultado visual claro, distinguiendo operación confirmada, pendiente de sincronización y rechazada. Los errores explicarán qué ocurrió y qué debe hacer la persona en lenguaje comprensible, sin mostrar códigos, trazas ni mensajes técnicos al usuario final (RT-13.06; Bases Técnicas Transversales, cap. 13, p. 26).
 
@@ -2219,13 +2219,15 @@ Las cinco figuras comparten la misma cadena de entrega y la misma imagen firmada
 
 El paso de un ambiente a otro lo controla el pipeline de integración continua: GitLab CI lo orquesta y AWS CodeBuild construye cada imagen de forma hermética, con procedencia SLSA nivel 3. Cada cambio instala las dependencias exactamente como las fija `composer.lock` y pasa por estos controles (RT-04.05; Bases Técnicas Transversales, cap. 4, p. 10):
 
-- Auditoría de dependencias con `composer audit` y pruebas PHPUnit.
+- Auditoría de dependencias con `composer audit`, pruebas PHPUnit con PCOV, JUnit 5/Kover para Kotlin y Jest para TypeScript.
 
-- Análisis estático con PHPStan y Larastan, y formato con Laravel Pint.
+- Análisis estático con PHPStan y Larastan, formato con Laravel Pint, complejidad con PHPMD/detekt/ESLint, duplicación con PHPCPD/jscpd, dependencias entre módulos con deptrac y deuda técnica con PhpMetrics y el registro del paquete 8.2.4.
 
 - Pruebas de contrato contra OpenAPI 3.1 y AsyncAPI 2.6.
 
-- Escaneo de secretos y de imágenes de contenedor, y medición de cobertura.
+- Escaneo de secretos, SAST/SCA, escaneo de imágenes de contenedor con Amazon Inspector/ECR, DAST con OWASP ZAP, accesibilidad con axe-core más revisión manual, carga con k6 y resiliencia con AWS Fault Injection Service.
+
+- Medición de cobertura de lógica de negocio y cobertura unitaria global.
 
 El pipeline bloquea el despliegue ante un hallazgo crítico o alto, ante un contrato público roto sin nueva edición o ante una cobertura de la lógica de negocio inferior al 70 % (RT-04.11; Bases Técnicas Transversales, cap. 4, p. 11). Además aplica la política corporativa de LafroX del Subdocumento 1 (sección 1.3.1): bloquea toda versión con cobertura de pruebas unitarias inferior al 80 %. Son dos métricas distintas, medidas en la misma ejecución del pipeline, y una versión debe superar ambas. Primero, la imagen aprobada se firma, se publica en Elastic Container Registry y se promueve por su digest, de modo que ningún ambiente recompila. El paso a Producción es automático una vez que la imagen supera los controles del pipeline y el ensayo en Preproducción, dentro de las ventanas de la Tabla [14](LAFROX-Subdocumento4.md#tab:jd02) (RT-04.06; Bases Técnicas Transversales, cap. 4, p. 11). Segundo, la configuración no sensible se externaliza por ambiente en SSM Parameter Store y los secretos se gestionan en AWS Secrets Manager con rotación automática (ADR-15, Anexo 4-O). La imagen no contiene secretos ni el archivo de entorno (RT-04.08 y RT-04.09; Bases Técnicas Transversales, cap. 4, p. 11). Tercero, las migraciones de base de datos son migraciones Laravel basales y aditivas, que siguen la estrategia de expandir y contraer: se ejecutan como un paso único del despliegue antes de cambiar el tráfico, cada entrega solo agrega estructuras, de modo que la entrega previa y la nueva de la aplicación funcionan sobre el mismo esquema durante el despliegue, y las estructuras obsoletas se eliminan en una entrega posterior. Cada migración declara además su reversión, de modo que el esquema puede volver a la entrega previa (RT-04.10; Bases Técnicas Transversales, cap. 4, p. 11). Luego, el código reside en un repositorio con ramas protegidas, revisión obligatoria por pares y sin escritura directa sobre la rama principal (RT-04.03; Bases Técnicas Transversales, cap. 4, p. 10).
 
