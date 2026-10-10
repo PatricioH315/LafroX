@@ -24,7 +24,7 @@ B.1 ordena exposición y NPR de FMEA; B.2 convierte probabilidad e impacto calib
 
 ## Anexo 8.C — Escenarios deterministas y costo-beneficio
 
-Distingue escenarios deterministas, costo-beneficio y simulación. La Tabla C.5 calcula el costo-beneficio de las 32 respuestas como en el PMBOK: ahorro esperado (valor esperado inicial menos residual) dividido por las HH del paquete de control. R8-11, R8-14, R8-18, R8-12 y R8-32 superan 1; los demás controles se aplican por sanidad, continuidad, datos o aceptación obligatoria. C.3 simula 5.000 veces los paquetes del T-15 con sus actividades de plantilla con duraciones PERT, eventos de riesgo y nivelación diaria, y mide además la preparación de las marchas blancas y la sensibilidad por riesgo.
+Distingue escenarios deterministas, costo-beneficio y simulación. La Tabla C.5 calcula el costo-beneficio de las 32 respuestas como en el PMBOK: ahorro esperado (valor esperado inicial menos residual) dividido por las HH del paquete de control. Cinco retornos superan 1: R8-11 (33,78), R8-12 (2,03), R8-14 (4,20), R8-18 (2,46) y R8-32 (1,28); veintiséis son menores que 1 y R8-22 figura No aplica, sin costo adicional de control ni ahorro hipotético. Los 35 paquetes de control únicos suman 6.768,00 HH ya programadas, sin duplicar cargos compartidos; los controles de bajo retorno se aplican por sanidad, continuidad, datos o aceptación obligatoria. C.3 simula 5.000 veces los paquetes del T-15 con sus actividades de plantilla con duraciones PERT, eventos de riesgo y nivelación diaria, y mide además la preparación de las marchas blancas y la sensibilidad por riesgo.
 
 **Cuándo consultarlo:** para entender qué supone una demora o probabilidad calculada y cuáles son sus límites.
 
@@ -40,7 +40,7 @@ Define autorización y registro de consumo por riesgo, ventana y perfil. La cont
 
 ## Anexo 8.E — Problemas, dependencias y condiciones de evidencia
 
-Registra problemas y condiciones actuales de cierre, separados de eventos inciertos: dotación/productividad, fechas y revisión, continuidad de despacho, RPO, atención y evidencias. La regla de precio se conserva en SD2/SD3/T-12. RTO de 4 h y RPO de 15 min no autorizan detener despacho entre 05:30 y 07:00.
+Registra **catorce condiciones E8-01–E8-14** de línea base y aceptación, separadas de eventos inciertos: dotación/productividad, fechas y revisión, continuidad de despacho, RPO, atención y evidencias. La regla de precio se conserva en SD2/SD3/T-12. RTO de 4 h y RPO de 15 min no autorizan detener despacho entre 05:30 y 07:00.
 
 **Cuándo consultarlo:** antes de declarar factibilidad o aceptación; cada condición exige responsable y evidencia.
 

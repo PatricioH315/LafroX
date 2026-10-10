@@ -8,7 +8,7 @@ Explica cómo se implementa técnicamente el alcance, dónde se ejecuta cada com
 
 ## Arquitectura lógica: responsabilidades e intercambios
 
-La [arquitectura lógica](../04_arquitectura/LAFROX-Subdocumento4.md#41-arquitectura-l%C3%B3gica) organiza **ocho capas**: presentación, borde, puerta de servicios, negocio, integración, datos, seguridad y observabilidad. El negocio se divide en **doce módulos M1–M12**, con responsabilidad y propiedad de datos definidas.
+La [arquitectura lógica](../04_arquitectura/LAFROX-Subdocumento4.md#41-arquitectura-l%C3%B3gica) organiza **ocho capas**: presentación, borde y exposición, puerta de enlace de servicios, lógica de negocio, integración y eventos, acceso a datos, seguridad transversal y observabilidad transversal. El negocio se divide en **doce módulos M1–M12**, con responsabilidad y propiedad de datos definidas.
 
 El núcleo usa **Laravel 13 y PHP 8.5** como monolito modular: una base de código con procesos críticos separables, para mantener un despliegue operable por el pequeño equipo TI. PostgreSQL/PostGIS sostiene datos transaccionales; las aplicaciones móviles conservan capturas locales. Keycloak gestiona identidad y CloudWatch reúne observabilidad. Estas son tecnologías declaradas en la fuente, no una verificación de sus versiones externas.
 
@@ -28,7 +28,7 @@ La [arquitectura física](../04_arquitectura/LAFROX-Subdocumento4.md#42-arquitec
 
 Los cinco ambientes separan construcción, pruebas y operación. La promoción usa artefactos verificados y reversión controlada; la bodega conserva **24 horas** de autonomía y terreno **14 horas**. La reserva central y las decisiones que dependen de terceros no se convierten en confirmaciones locales por perder conexión.
 
-Desarrollo, QA y Preproducción usan el horario S-43 de **lunes a viernes, 08:00–20:00** (60/168 h; reducción potencial 64,3 %). La meta es al menos **60 % menos horas de cómputo** frente a funcionamiento continuo, medida mensualmente y reportada cada año con la huella de T-14 8.4.3. Se permiten pruebas programadas por el CLIENTE fuera del horario; la carga por versión candidata y semanal permanece dentro del horario de uso.
+Desarrollo, QA y Preproducción usan el horario S-43 de **lunes a viernes, 08:00–20:00** (60/168 h; reducción potencial 64,3 %). La meta es al menos **60 % menos horas de cómputo** frente a funcionamiento continuo, medida mensualmente y reportada cada año con la huella de T-14 8.4.3. Se permiten ventanas de prueba programadas por el CLIENTE y activación inmediata para correcciones críticas fuera del horario; la carga por versión candidata y semanal permanece dentro del horario de uso.
 
 ## Capacidad y equipos
 

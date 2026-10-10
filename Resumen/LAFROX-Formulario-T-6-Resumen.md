@@ -4,15 +4,15 @@
 
 ## Para qué sirve y cómo leerlo
 
-Presenta tres proyectos declarados como experiencia comparable. La tabla se lee **por proyecto**, siguiendo once campos: nombre, cliente, industria, fechas, rango de contrato, alcance, arquitectura, nivel de servicio, volumen, rol y referencia. Sus tres partes continúan la misma tabla.
+Presenta tres proyectos declarados como experiencia comparable. La tabla se lee **por proyecto**, siguiendo once campos: nombre, cliente, industria, fechas, rango de contrato, alcance, arquitectura, nivel de servicio, volumen, rol y referencia. Los tres proyectos se presentan en una única tabla.
 
 ## Qué aporta cada experiencia
 
-- **Proyecto 1, LogiNacional (2021–2022):** logística híbrida AWS/borde en **14 centros**, **420 camiones** y **22.000 entregas diarias**, con **99,5 % anual** de disponibilidad.
+- **Proyecto 1, LogiNacional (2021–2022):** logística híbrida AWS/borde en **14 centros**, **420 camiones** y **22.000 puntos de entrega diarios**, con **99,5 % anual** de disponibilidad.
 - **Proyecto 2, FarmaRed (2022–2023):** telemetría y cadena de frío con **12 cámaras**, **180 vehículos refrigerados** y **12 millones de registros al mes**, con **99,9 % anual**.
 - **Proyecto 3, Lácteos del Sur (2023–2024):** **280 preventistas** y **18.000 transacciones comerciales diarias**, con **99,5 % mensual** del servicio central. Tiene operación móvil desconectada; no incorpora componentes on-premise.
 
-Véase [la tabla de experiencia](../01_presentacion_empresa/LAFROX-Formulario-T-6.md#tabla-1-detalle-de-experiencia-de-lafrox-proyectos-de-complejidad-equivalente). Las entregas, transacciones y mediciones son unidades diferentes; no se suman. También difiere el período de medición de disponibilidad.
+Véase [la tabla de experiencia](../01_presentacion_empresa/LAFROX-Formulario-T-6.md#tabla-1-detalle-de-experiencia-de-lafrox-proyectos-de-complejidad-equivalente). Los puntos de entrega, transacciones y mediciones son unidades diferentes; no se suman. También difiere el período de medición de disponibilidad.
 
 ## Para interpretar la comparación
 

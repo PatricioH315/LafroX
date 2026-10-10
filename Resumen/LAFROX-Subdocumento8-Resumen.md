@@ -12,7 +12,7 @@ Identifica qué podría impedir la aceptación o la continuidad de la solución,
 
 [Las escalas](../08_plan_riesgos/LAFROX-Subdocumento8.md#813-escalas-previas-al-an%C3%A1lisis) **P, I y D** (probabilidad, impacto y dificultad de detección) van de **1 a 5**. La exposición es **P × I** y se clasifica en baja, moderada, alta (8–14) y crítica (15–25). Para cuantificar, cada nivel de P equivale a un tramo de probabilidad (por ejemplo, 4 = 60 %) y cada nivel de I a una fracción del esfuerzo de los paquetes afectados (por ejemplo, 5 = 30 %).
 
-El **apetito de riesgo** fija una regla de acción por zona. Un riesgo crítico, o con impacto 5, se evita, se mitiga o se escala antes de su hito, aunque su retorno en horas sea bajo. Uno alto se mitiga con un control de la EDT. Uno moderado se acepta activamente, con reserva y disparador, y uno bajo, pasivamente. La **tolerancia** es cero días de atraso en los hitos del Art. 17° y en el despacho de la madrugada, y el **umbral** de escalamiento es todo riesgo crítico o un consumo de reserva mayor que el previsto. Al cierre de cada etapa, una auditoría de riesgos comprueba que el proceso funciona.
+El **apetito de riesgo** fija una regla de acción por zona. Un riesgo crítico, o con impacto 5, se evita, se mitiga o se escala antes de su hito, aunque su retorno en horas sea bajo; si su causa no admite control previo, se acepta activamente con contingencia dimensionada y disparador. Uno alto se mitiga con un control de la EDT. Uno moderado se acepta activamente, con reserva y disparador, y uno bajo, pasivamente. La **tolerancia** es cero días de atraso en los hitos del Art. 17° y en el despacho de la madrugada, y el **umbral** de escalamiento es todo riesgo crítico o un consumo de reserva mayor que el previsto. Al cierre de cada etapa, una auditoría de riesgos comprueba que el proceso funciona.
 
 ## Qué riesgos se identificaron
 
@@ -50,18 +50,19 @@ Cada ficha del Anexo 8.A fija responsable, estrategia, disparador, plazo, mitiga
 
 | Estrategia | Riesgos | Por qué |
 | --- | --- | --- |
-| Mitigar | 28 | LafroX controla la causa |
+| Mitigar | 29, incluida R8-14 | Se reduce la exposición; separar equipos no elimina todos los efectos |
 | Escalar | R8-12 y R8-17 | Dependen de decisiones del CLIENTE |
-| Evitar | R8-14 | Separar los equipos de las dos etapas elimina la causa |
+| Evitar | Ninguno | Ninguna ficha vigente adopta esta estrategia |
 | Aceptar activamente | R8-22 | La demanda de la mesa sobre la dotación base sólo se conoce al medir; hay contingencia y disparador |
 | Transferir | Ninguno | Contratar a un tercero no traslada la obligación de LafroX |
 
-Cada respuesta deja un **residual**: con la probabilidad un nivel más baja tras verificar cada control, el registro conjunto baja de 20.198,98 a **14.055,17 HH**. Las respuestas también crean **riesgos secundarios**, anotados en cada ficha; algunos son riesgos propios, como R8-31, que nace de certificar en paralelo a la revisión del CLIENTE.
+Cada respuesta deja un **residual hipotético**: si la probabilidad disminuyera un nivel, salvo R8-22 que se acepta activamente, el registro conjunto sería **14.055,17 HH** frente a 20.198,98 HH. La diferencia de **6.143,81 HH** no acredita eficacia ni se libera automáticamente. Las respuestas también crean **riesgos secundarios**, anotados en cada ficha; algunos son riesgos propios, como R8-31, que nace de certificar en paralelo a la revisión del CLIENTE.
 
-[El costo-beneficio](../08_plan_riesgos/LAFROX-Subdocumento8.md#831-respuestas-y-costo-beneficio-t%C3%A9cnico) sigue la regla del PMBOK: una respuesta se justifica si reduce el valor esperado más de lo que cuesta. El Anexo 8.C, Tabla C.5, divide el ahorro esperado de cada riesgo crítico por las HH de su paquete de control, ya incluido en el T-15:
+[El costo-beneficio](../08_plan_riesgos/LAFROX-Subdocumento8.md#831-respuestas-y-costo-beneficio-t%C3%A9cnico) sigue la regla del PMBOK: una respuesta se justifica si reduce el valor esperado más de lo que cuesta. El Anexo 8.C, Tabla C.5, compara las **32 respuestas**, dividiendo el ahorro hipotético (VE inicial menos residual) por las HH del control ya incluidas en T-15:
 
-- En **3 de 21** el retorno supera 1: la nivelación de recursos frente a R8-11 (17,0) y R8-14 (4,2), y el plan de olas con la certificación de usuarios frente a R8-18 (2,1).
-- En los **otros 18** el ahorro medido sólo en HH de retrabajo es menor que el costo, porque ese impacto no incluye la detención del despacho, la sanción sanitaria ni el atraso de un hito. Se aplican igual por la regla del nivel crítico, y la mayoría son pruebas o actas que las Bases exigen.
+- **Cinco retornos superan 1:** R8-11 **33,78**, R8-12 **2,03**, R8-14 **4,20**, R8-18 **2,46** y R8-32 **1,28**.
+- **Veintiséis retornos son menores que 1**; R8-22 figura **No aplica**: la medición dentro de 8.1.2 tiene costo adicional de control **cero** y ahorro hipotético **cero**. Los controles de bajo retorno se aplican por sanidad, continuidad, datos o aceptación obligatoria.
+- Los **35 paquetes de control únicos suman 6.768,00 HH**. No se suman retornos individuales ni se cobra dos veces un control compartido.
 
 ## Reservas
 
@@ -71,7 +72,7 @@ La **reserva de cronograma** son las reservas de cada hito del T-15, de 4 a 35 d
 
 ## Condiciones antes de declarar la propuesta factible
 
-[El cierre del plan](../08_plan_riesgos/LAFROX-Subdocumento8.md#833-factibilidad-y-aceptaci%C3%B3n) remite al Anexo 8.E, con doce condiciones de evidencia que tienen responsable y hito límite. Las principales:
+[El cierre del plan](../08_plan_riesgos/LAFROX-Subdocumento8.md#833-factibilidad-y-aceptaci%C3%B3n) remite al Anexo 8.E, con **catorce condiciones de evidencia E8-01–E8-14** que tienen responsable y hito límite. Las principales:
 
 - **RPO:** el SD4 cumple el RPO ≤ 15 min con tres caminos independientes. La caída de los tres seguida de la destrucción del sitio queda como riesgo residual justificado (SD4, sección 4.3.2.4). R8-05 lo trata con alarmas de replicación a los 5 y 15 min, preemisión de guías y almacenamiento local inalterable, y la conmutación real lo mide antes del H5 y del H10.
 - **Coordinación de reserva:** su carga, con cuatro mensajes por línea de pedido (SD4, Anexo 4-I), se verifica en la prueba de concurrencia previa al H4.
@@ -92,7 +93,7 @@ Ningún riesgo se da por cerrado con sólo escribir su mitigación: el cierre ex
 | Condiciones de evidencia actuales | Anexo 8.E |
 | Riesgos de adopción de las innovaciones | Anexo 8.F |
 
-**Siguen abiertos:** la revisión humana de la Declaración de uso de IA, la sensibilidad de la Tabla C.4, hoy con 3.000 iteraciones, y la imagen de la Figura 8.1 para el PDF.
+La **Tabla C.4 ya contiene sensibilidad con 5.000 muestras comunes**, desactivando un riesgo por vez y conservando calendario, dependencias y nivelación. **Siguen abiertos:** la revisión humana de la Declaración de uso de IA y la imagen de la Figura 8.1 para el PDF.
 
 ---
 

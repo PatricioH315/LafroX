@@ -24,7 +24,7 @@ Define los umbrales y verificaciones de disponibilidad, autonomía, desempeño, 
 
 ## Anexo 3.C — Registro de supuestos
 
-Registra S-01–S-43 con fundamento, impacto y validación. Los primeros dieciséis conservan decisiones del SD2; los demás desarrollan metas, capacidad y condiciones de implantación. S-42 compromete al menos 15 % menos consultas asistidas por cliente activo al cierre del primer año de Operación, con línea base en marcha blanca. S-43 fija Desarrollo, QA y Preproducción de lunes a viernes de 08:00 a 20:00, salvo pruebas programadas por el CLIENTE; 60/168 horas fundamentan una meta de al menos 60 % menos cómputo. No acredita aprobación del CLIENTE. Por ejemplo, los datos incompletos de inventario se investigan: el 2,3 % de diferencia actual no es tolerancia automática de migración.
+Registra S-01–S-43 con fundamento, impacto y validación. Los primeros dieciséis conservan decisiones del SD2; los demás desarrollan metas, capacidad y condiciones de implantación. S-42 compromete al menos 15 % menos consultas asistidas por cliente activo al cierre del primer año de Operación, con línea base en marcha blanca. S-43 fija Desarrollo, QA y Preproducción de lunes a viernes de 08:00 a 20:00, salvo ventanas de prueba programadas por el CLIENTE y activación inmediata para correcciones críticas; 60/168 horas fundamentan una meta de al menos 60 % menos cómputo. No acredita aprobación del CLIENTE. Por ejemplo, los datos incompletos de inventario se investigan: el 2,3 % de diferencia actual no es tolerancia automática de migración.
 
 **Cuándo consultarlo:** cuando una cantidad, plazo o comportamiento dependa de una hipótesis aún por confirmar.
 

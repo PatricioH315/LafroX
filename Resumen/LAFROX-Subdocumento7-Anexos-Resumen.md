@@ -24,7 +24,7 @@ Relaciona paquetes predecesores/sucesores y fundamento de dependencia. FC signif
 
 ## Anexo 7.C — Momento de los resultados de aceptación del caso
 
-Ubica los dieciséis resultados R18 con meta, momento y paquete. Catorce tienen verificaciones en la marcha blanca E1 y R18-11/R18-13 corresponden a E2; algunos se confirman después, como mejoras anuales. El cuerpo de SD7 menciona doce resultados de E1: se conserva la diferencia sin sustituir el detalle del anexo.
+Ubica los dieciséis resultados R18 con meta, momento y paquete. Catorce tienen verificaciones en la marcha blanca E1: doce se aceptan allí y dos tienen verificaciones adicionales, R18-04 con el tramo del mes 15 y R18-12 de forma provisional. R18-11/R18-13 corresponden a E2; el OTIF del mes 32 y la pérdida anual de envases se confirman en Operación. Esta distinción coincide con el cuerpo del SD7.
 
 **Cuándo consultarlo:** para saber qué debe demostrarse antes de cerrar una etapa y qué requiere seguimiento posterior.
 
@@ -48,7 +48,7 @@ Traza doce módulos y quince interfaces hacia construcción/pruebas de EDT. M10 
 
 ## Anexo 7.F — Supuestos de planificación y dependencias para la gestión de riesgos
 
-Registra once supuestos P7 sobre tamaños HH, productividad, fecha, restricciones y dependencias técnicas. Define responsables y disparadores para SD8. Protege 3.072 HH de corrección E1 y separa reservas de gestión de la oferta económica. Conserva una descripción de falta de reserva ante ciertos hitos que debe leerse junto a las reservas actualizadas de T-15.
+Registra once supuestos P7 sobre tamaños HH, productividad, fecha, restricciones y dependencias técnicas. Define responsables y disparadores para SD8. Protege 3.072 HH de corrección E1 y separa reservas de gestión de la oferta económica. Las reservas de T-15 son **H1 6, H2 12, H3 19, H4 19, H5 35, H8 4, H9 21 y H10 25 días hábiles**. La subsanación consume esa reserva; H1/H8 requieren revisión anticipada del borrador. Se escala al superar la mitad de la reserva y las cuatro semanas finales de marcha blanca no son reserva adicional.
 
 **Cuándo consultarlo:** antes de aprobar línea base o evaluar si un cambio consume una capacidad ya comprometida.
 

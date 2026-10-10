@@ -6,7 +6,7 @@
 
 Presenta **32 riesgos R8-01–R8-32** con categoría, probabilidad, impacto, exposición, mitigación y responsable. Es la vista breve del registro; disparadores, plazos, contingencias y evidencia se amplían en Anexo 8.A.
 
-**Prob. e Impacto** usan escala de **1 a 5**. **Expos. = Prob. × Impacto**: un 20 significa exposición ordinal alta dentro de esa escala, no 20 % de probabilidad. La dificultad de detección y el NPR se consultan en 8.B; no se confunden con la columna Expos.
+**Prob. e Impacto** usan escala de **1 a 5**. **Expos. = Prob. × Impacto**: un 20 significa exposición ordinal crítica dentro de esa escala, no 20 % de probabilidad. La dificultad de detección y el NPR se consultan en 8.B; no se confunden con la columna Expos.
 
 ## Qué riesgos prioriza
 

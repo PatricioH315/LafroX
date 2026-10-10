@@ -34,7 +34,7 @@ Describe cargas y descargas masivas y los controles que identifican cada lote pr
 
 ## Anexo 4-D — Matriz de los doce módulos
 
-Relaciona doce módulos con función, responsabilidad, interfaz, actor y etapa. Recepción, inventario, preventa, rutas, preparación, reparto, rendición, devoluciones, calidad, analítica, canal moderno y frío forman capacidades separadas. M10 tiene indicadores de E1 y costo de servir de E2.
+Relaciona doce módulos con función, responsabilidad, interfaz, actor y etapa. Recepción, Inventario, Preventa, Rutas, Preparación, Reparto, Cobranza y rendición, Devoluciones y envases, Calidad y trazabilidad, Analítica, Canal moderno y Telemetría son los nombres de M1–M12. M9 trata lote, frío y bloqueo; M12 aporta ruta real y desviaciones. M10 tiene indicadores de E1 y costo de servir de E2.
 
 **Cuándo consultarlo:** para ubicar al responsable de una capacidad y no confundir acceso con propiedad de datos.
 
@@ -58,7 +58,7 @@ Explica las fronteras entre módulos, su colaboración y los contratos compartid
 
 ## Anexo 4-G — Catálogo de interfaces internas
 
-Detalla ocho interfaces internas con identificación estable, modo, volumen, ventana y conducta ante error. Incluye recorridos entre dispositivos, sedes y nube y la coordinación de reserva/custodia. Los volúmenes son escenarios de diseño; el mismo hecho puede atravesar varios contratos.
+Detalla ocho interfaces internas con identificación estable, modo, volumen, ventana y conducta ante error. Incluye recorridos entre dispositivos, sedes y nube y la coordinación de reserva y retención de INT-03/04. Los volúmenes son escenarios de diseño; el mismo hecho puede atravesar varios contratos.
 
 **Cuándo consultarlo:** para sincronización, reintentos, permisos técnicos o autonomía de los intercambios internos.
 
@@ -130,7 +130,7 @@ Reúne 22 decisiones ADR, con alternativas descartadas, criterio, consecuencias 
 
 ## Anexo 4-P — Tecnologías, soporte y actualización
 
-Distingue versiones de referencia de imágenes exactas de producción y describe soporte/actualización durante 56 meses. Las liberaciones fijan parches, huellas y componentes; versiones posteriores requieren compatibilidad y pruebas. También sitúa la transición del backend y sus controles.
+Distingue versiones de referencia de imágenes exactas de producción y describe soporte/actualización durante 56 meses. Las liberaciones fijan parches, huellas y componentes; versiones posteriores requieren compatibilidad y pruebas. Identifica los perfiles y servicios del monolito Laravel/PHP y sus controles de compatibilidad, sin plantear una migración desde otro backend.
 
 **Cuándo consultarlo:** para mantenimiento, fin de soporte, actualización o revisión de compatibilidad.
 
