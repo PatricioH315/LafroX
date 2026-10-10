@@ -1,5 +1,20 @@
 # CONTEXTO DE SESIÓN
 
+## Estado vigente — 10 de octubre de 2026 (noche): RT-16.14 y RT-08.04 en Cumple
+
+Informe 2 reprogramado al lunes 12-10-2026 (SD1–9 y 13). Por instrucción del usuario, sólo Markdown en rama-md, sin commit. RT-16.14 (Deseable en BTT; el Caso cap. 15 usa el mismo código para firma/POD): SD4 4.1.3.4 agrega motor de reglas sobre Symfony ExpressionLanguage (evaluación en ejecución sin compilar, variables declaradas por punto de decisión, versión en el registro de parámetros, aprobación de segundo perfil, auditoría con regla/versión/resultado); la frase de RT-16.04 dice ahora «nuevos puntos de decisión» en vez de «nuevas reglas»; referencia Symfony (s. f.). RT-08.04: acotado a la sección 8.1 de BTT; SD4 4.2.1.2 y T-11 declaran dos circuitos por gabinete (PDU A/B en Talca; UPS + circuito directo en borde y piso), segunda fuente del switch de acceso y gateway IoT en circuito distinto, PDU A/B en el borde de Concepción y fila nueva «Conmutador de transferencia de gabinete» (4: Concepción y cross-docking) para Starlink y ONT/router LTE; en Talca van al ATS de rack existente. T-12 590/32/23 (B 339/15/20); 9.C sincronizado (casos sin cambio, 1.305). Planilla SD9 Datos_Base C42–C44 queda en 337/17/20 (no editada). LaTeX de T-12 y SD4 queda desfasado. Validación de numeración: T-12 Parte A y SD3-Anexos tienen los mismos 271 IDs; el catálogo consolidado no tiene RF-07.01 y el SD3 corrió la épica 7 (RF-07.02–07.11 → RF-07.01–07.10); la fila RF-07.11 «No cumple» (T-12 y Tabla 3.A.3a) es residuo de la numeración original y equivale a RF-07.10 «Cumple»: pendiente de decisión. Textos T-12 ≠ Tabla 3.A.1 en RF-03.11 y RF-03.12 (T-12 más estricto: bloquea y notifica), y redacción distinta pero equivalente en RF-18.01 y RNF-23.04. RF-18.03/RT-16.23 (apertura) los levanta el usuario. Propuestos sin aplicar: RNF-21.02/RT-21.02 (JP de Operación como gerente de servicio, T-14 cuenta 8.1) y RNF-21.07/RT-21.16 (traslados N2/N3).
+
+## Estado vigente — 10 de octubre de 2026 (noche): LaTeX de SD1–SD3 alineado con el MD
+
+Por instrucción del usuario, el MD es la fuente y el LaTeX se alineó con él en worktrees separados (`../LafroX-sd1-latex`, `../LafroX-sd2-latex` y `../LafroX-sd3-latex`, ramas locales `LafroX-Subdoc{1,2,3}-LateX` desde origin). No se tocó LaTeX en rama-md. Informe de diferencias: `Revision/revision_md_vs_latex_SD1-SD3.md`.
+
+- El T-12 LaTeX se regeneró completo desde el MD: 5 columnas, escala Cumple/Parcial/No cumple y longtable apaisada (217 p.).
+- SD1, SD2 y SD3 (cuerpo y anexos) recibieron los párrafos, filas y tablas del MD: 36 filas RNF, la Tabla 3.A.4a, S-42 a S-44 y las declaraciones de IA.
+- Correcciones al MD: referencias LafroX 2026a/2026b en el SD1 (incluye el SD9), autor en la cita (2026c, anexo B.2) y orden de Referencias del SD2, párrafo partido del SD2 y residuos `|}` en dos filas del SD3-Anexos.
+- Todo compila. La comparación final solo deja diferencias de maquetación.
+- Pendientes: decidir sobre `LAFROX-Subdocumento1-Anexos` (solo existe en LaTeX); RF-03.11 y RF-03.12 difieren entre el T-12 MD y la Tabla 3.A.1; 28 celdas «Origen» truncadas («).») en el SD3-Anexos, presentes en ambos formatos.
+- Commit y push en las 4 ramas: rama-md (incluye RT-16.14 y RT-08.04 de la sesión paralela) y LafroX-Subdoc{1,2,3}-LateX. El T-12 LaTeX se regeneró con esos dos cambios. Si el T-12 MD vuelve a cambiar, hay que regenerar su LaTeX.
+
 # CONTEXTO DE SESIÓN
 
 ## Estado vigente — 10 de octubre de 2026: correcciones Markdown del SD9 tras revisión

@@ -569,7 +569,7 @@ La Tabla 9.C.2 presenta la matriz completa, en el orden del Formulario T-12.
 | RT-08.01 | Cumple | Recepción técnica y prueba de dispositivos | Terreno | 3.8.3 | H5 | 1 |
 | RT-08.02 | Cumple | Recepción técnica y prueba de dispositivos | Terreno | 3.8.3 | H5 | 1 |
 | RT-08.03 | Cumple | Recepción técnica y prueba de dispositivos | Terreno | 3.8.3 | H5 | 1 |
-| RT-08.04 | Cumple parcialmente | Recepción técnica y prueba de dispositivos | Terreno | 3.8.3 | H5 | 1 |
+| RT-08.04 | Cumple | Recepción técnica y prueba de dispositivos | Terreno | 3.8.3 | H5 | 1 |
 | RT-08.05 | Cumple | Recepción técnica y prueba de dispositivos | Terreno | 3.8.3 | H5 | 1 |
 | RT-08.06 | Cumple | Recepción técnica y prueba de dispositivos | Terreno | 3.8.3 | H5 | 1 |
 | RT-08.07 | Cumple | Recepción técnica y prueba de dispositivos | Terreno | 3.8.3 | H5 | 1 |
@@ -688,7 +688,7 @@ La Tabla 9.C.2 presenta la matriz completa, en el orden del Formulario T-12.
 | RT-16.11 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 · 3.9.2 | H4 · H5 · H10 | 1 |
 | RT-16.12 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 · 3.9.2 | H4 · H5 · H10 | 1 |
 | RT-16.13 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 · 3.9.2 | H4 · H5 · H10 | 1 |
-| RT-16.14 | Cumple parcialmente | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 · 3.9.2 | H4 · H5 · H10 | 1 |
+| RT-16.14 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 · 3.9.2 | H4 · H5 · H10 | 1 |
 | RT-16.15 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 · 3.9.2 | H4 · H5 · H10 | 1 |
 | RT-16.16 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 · 3.9.2 | H4 · H5 · H10 | 1 |
 | RT-16.17 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 · 3.9.2 | H4 · H5 · H10 | 1 |

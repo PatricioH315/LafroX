@@ -30,9 +30,7 @@ En concordancia con el análisis prescrito en las Bases de Licitación, la probl
 
 1. Habilitación sanitaria y comercial comprometida: El cumplimiento del Reglamento Sanitario de los Alimentos (Decreto 977) exige el control riguroso de la cadena de frío (congelados a −18 °C o menos; la cámara de congelado de Talca opera a −22 °C) (Ministerio de Salud, 1996) y la trazabilidad bidireccional inmediata de lotes. En la actualidad, el registro de temperatura es discontinuo e instrumentalizado por el propio conductor, sin alarmas automáticas ante excursiones térmicas. Al recibir mercadería de los 180 proveedores, el personal revisa las fechas de vencimiento por muestreo y registra el lote de manera incompleta, en un campo de texto libre. La trazabilidad depende del papel de recepción y de la memoria de quienes despacharon, sin estar disponible de forma consultable en los sistemas. Esta carencia expone a Puelche a sanciones de la autoridad sanitaria, que ya observó la ausencia de registro continuo de temperatura en su última fiscalización. También le impide acreditar ante el proveedor de lácteos la capacidad de trazabilidad que este exige para restablecer la relación tras la suspensión, que vence en septiembre de 2026.
 
-2. Pérdida de competitividad del servicio: El nivel de servicio actual (OTIF 82,4 % y fill rate 91,3 %) está lejos de las referencias de 95 % y 97 % que el caso asocia a esos indicadores. Además, la principal cadena exigirá desde enero de 2029 pedido electrónico, aviso de despacho, ventana de entrega de 30 minutos con penalización y prueba de entrega digital.
-
-Hoy Puelche entrega entre las 08:00 y las 18:00. Los clientes del canal tradicional (11.600 almacenes) y food service (2.100 puntos) enfrentan faltantes y retrasos. La falta de visibilidad en preventa y la rigidez de las rutas provocan reentregas equivalentes al 4,2 % de las entregas. Sobre la referencia de 1.400 entregas diarias, ello equivale a aproximadamente 59 reentregas al día (1.400 × 0,042 = 58,8).
+2. Pérdida de competitividad del servicio: El nivel de servicio actual (OTIF 82,4 % y fill rate 91,3 %) está lejos de las referencias de 95 % y 97 % que el caso asocia a esos indicadores. Además, la principal cadena exigirá desde enero de 2029 pedido electrónico, aviso de despacho, ventana de entrega de 30 minutos con penalización y prueba de entrega digital. Hoy Puelche entrega entre las 08:00 y las 18:00. Los clientes del canal tradicional (11.600 almacenes) y food service (2.100 puntos) enfrentan faltantes y retrasos. La falta de visibilidad en preventa y la rigidez de las rutas provocan reentregas equivalentes al 4,2 % de las entregas. Sobre la referencia de 1.400 entregas diarias, ello equivale a aproximadamente 59 reentregas al día (1.400 × 0,042 = 58,8).
 
 3. Desconocimiento estructural del costo de servir: La fijación de precios y márgenes se calcula sobre un costo de transporte promedio estático que data de 2016. Puelche desconoce el costo real de atender a cada cliente, subsidiando rutas rurales remotas de baja densidad a expensas de clientes urbanos de alta rotación. La ocupación promedio de la flota es 68 % y cae a 41 % en días de baja utilización. La rotación anual de preparadores de pedidos alcanza 38 %, lo que incrementa el esfuerzo de capacitación e induce errores recurrentes en el armado de pedidos.
 
@@ -50,7 +48,7 @@ La comprensión del negocio de Distribuidora Puelche S.A. exige interpretar sus 
 
 - Estándares sectoriales GS1 y EDI: (GS1 Chile, 2020). Demanda la adopción de identificadores universales (GTIN para productos, GLN para puntos de entrega, GS1-128 para unidades logísticas de carga) e intercambio electrónico de datos (EDI) para órdenes de compra, avisos de despacho (DESADV) y facturación electrónica con el gran retail chileno.
 
-A este marco se añade el impacto crítico de la estacionalidad, durante las tres primeras semanas de septiembre el volumen diario casi se duplica, de ≈ 1.400 a ≈ 2.600 entregas (2026c, anexo B.2). Este pico satura la ventana de preparación nocturna (22:00 a 06:00 hrs) y genera congestión severa en la ventana crítica de despacho matinal (05:30 a 07:00 hrs). Un dimensionamiento informático o de flota calculado para promedios mensuales colapsa inevitablemente en este período. Similar tensión ocurre en diciembre y durante los cierres mensuales, mientras que en invierno los caminos rurales empeoran y alargan los tramos sin señal, que en rutas de hasta 240 km ya llegan a dos horas.
+A este marco se añade el impacto crítico de la estacionalidad, durante las tres primeras semanas de septiembre el volumen diario casi se duplica, de ≈ 1.400 a ≈ 2.600 entregas (Distribuidora Puelche S.A., 2026c, anexo B.2). Este pico satura la ventana de preparación nocturna (22:00 a 06:00 hrs) y genera congestión severa en la ventana crítica de despacho matinal (05:30 a 07:00 hrs). Un dimensionamiento informático o de flota calculado para promedios mensuales colapsa inevitablemente en este período. Similar tensión ocurre en diciembre y durante los cierres mensuales, mientras que en invierno los caminos rurales empeoran y alargan los tramos sin señal, que en rutas de hasta 240 km ya llegan a dos horas.
 
 ### 2.2.3 Arbitraje de tensiones operacionales y comerciales
 
@@ -311,9 +309,9 @@ Las fuentes citadas en este documento se listan a continuación en formato APA 7
 
 - GS1 Chile. (2020). Estándares de Identificación y Trazabilidad Logística GS1: Guía de Aplicación para Consumo Masivo y Retail (Versión 20.0). GS1.
 
-- Ministerio de Salud. (1996). Decreto Supremo N° 977: Aprueba Reglamento Sanitario de los Alimentos. Diario Oficial de la República de Chile.
-
 - Ley N.º 21.719. (2024, 13 de diciembre). *Regula la protección y el tratamiento de los datos personales y crea la Agencia de Protección de Datos Personales*. Diario Oficial de la República de Chile. https://www.bcn.cl/leychile/navegar?idNorma=1209272
+
+- Ministerio de Salud. (1996). Decreto Supremo N° 977: Aprueba Reglamento Sanitario de los Alimentos. Diario Oficial de la República de Chile.
 
 - Ministerio del Trabajo y Previsión Social. (2002). Código del Trabajo de la República de Chile: Artículo 25 bis sobre jornada especial de transporte de carga. Edición oficial.
 
