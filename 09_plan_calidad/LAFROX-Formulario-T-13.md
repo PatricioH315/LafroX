@@ -47,7 +47,7 @@ La Tabla T13.1 define cada tipo de prueba, su nivel según ISO/IEC/IEEE 29119, s
 | Aceptación de usuario | Aceptación | Validación con personas del CLIENTE | Escenarios de operación por perfil | CAL e IMP |
 | Usabilidad | Aceptación | Indicadores de usabilidad del RT-13.04 | Pruebas moderadas con tareas medidas | IMP |
 | Accesibilidad | Sistema | Conformidad WCAG 2.2 AA | Herramienta automática y revisión manual | CAL |
-| Perfil operacional | Sistema | 14 h sin señal, 24 h sin enlace, −22 °C con guantes | Escenarios de terreno con dispositivos reales | CAL |
+| Perfil operacional | Sistema | 14 h sin señal, 24 h sin enlace, −22 °C con guantes, lluvia, >34 °C, sol directo y una mano | Escenarios de terreno con dispositivos reales | CAL |
 | Carga y estrés | Sistema | Umbrales p95 a 1,5× el peak y punto de quiebre | Perfil horario del SD4, escalones de carga | CAL y SRE |
 | Resiliencia | Sistema | Degradación controlada y recuperación sin intervención | Inyección de fallas | CAL y SRE |
 | Recuperación ante desastres | Sistema | RTO ≤ 4 h y RPO ≤ 15 min | Conmutación regional real | CAL y SRE |
@@ -67,7 +67,7 @@ Cada tipo de prueba se ejecuta en el ambiente más bajo donde su resultado es v�
 | QA | Integración, sistema, regresión, DAST, accesibilidad, regresión de desempeño semanal | JD-01, JD-02, JD-06, JD-09, JD-10 | Horario de uso; ejecución nocturna de la regresión |
 | Preproducción | Aceptación, carga y estrés, resiliencia, corte de enlace, migración, despliegue y reversión | JD-01 a JD-09 | Por ventana de prueba programada |
 | Terreno y cámara | Perfil operacional con dispositivos reales | JD-04 | Programada con Operaciones del CLIENTE |
-| Producción | Marcha blanca, prueba de intrusión anual, resiliencia semestral | Datos reales | Fuera de la ventana de 05:30 a 07:00 y de los congelamientos |
+| Producción | Marcha blanca y prueba de intrusión anual | Datos reales | Fuera de la ventana de 05:30 a 07:00 y de los congelamientos |
 | Recuperación ante Desastres | Conmutación regional | Réplica productiva del ambiente Producción, con acceso restringido y auditado | Programada, fuera de congelamientos |
 
 ## 4. Datos de prueba
@@ -87,14 +87,14 @@ Una prueba no comienza si no se cumple su criterio de entrada, y no se da por ap
 | Integración | Versión candidata en QA; adaptadores simulados disponibles | 15 de 15 flujos sin error; 0 regresiones |
 | Sistema y regresión | Integración aprobada; datos JD-02 restituidos | Batería completa sin fallas; 0 defectos críticos o altos abiertos |
 | Aceptación de usuario | Sistema aprobado; usuarios del CLIENTE capacitados en el escenario | Casos firmados por la Contraparte Técnica |
-| Usabilidad | Prototipo o versión del flujo crítico | 20 líneas en ≤ 2 h con error ≤ 5 %; indicadores del RT-13.04 cumplidos |
+| Usabilidad | Prototipo o versión del flujo crítico | Preventista: 20 líneas en ≤ 2 h y error ≤ 5 %; conductor/reparto: entrega completa en ≤ 3 min, ≤ 8 pasos y error ≤ 5 %; bodega: confirmación de línea en ≤ 1 s y error ≤ 5 %; aprendizaje: primer flujo asistido y segundo sin asistencia por perfil |
 | Accesibilidad | Vistas completas en QA | 0 incumplimientos WCAG 2.2 A y AA; informe de conformidad |
-| Perfil operacional | Dispositivos del modelo comprometido; JD-04 cargado | 0 pérdidas y 0 duplicados; dispositivo sincronizado en ≤ 10 min; CD en ≤ 2 h; operación con guantes a −22 °C; conflictos de stock del corte del CD resueltos de forma determinista con la regla del SD4, Anexo 4-K, Tabla A.12 (orden de recepción central y correlativo de desempate; la solicitud no cubierta queda en excepción con aviso), verificada con un caso que repite dos veces la reconciliación de reservas concurrentes del mismo stock (preventa sin conexión frente a preventa en línea) y obtiene el mismo resultado y la misma bitácora, sin sobrescritura silenciosa |
+| Perfil operacional | Dispositivos del modelo comprometido; JD-04 cargado | 0 pérdidas y 0 duplicados; dispositivo sincronizado en ≤ 10 min; CD en ≤ 2 h; operación con guantes a −22 °C; operación bajo lluvia, sobre 34 °C, a una mano y con pantalla legible bajo sol directo; conflictos de stock del corte del CD resueltos de forma determinista con la regla del SD4, Anexo 4-K, Tabla A.12 (orden de recepción central y correlativo de desempate; la solicitud no cubierta queda en excepción con aviso), verificada con un caso que repite dos veces la reconciliación de reservas concurrentes del mismo stock (preventa sin conexión frente a preventa en línea) y obtiene el mismo resultado y la misma bitácora, sin sobrescritura silenciosa |
 | Carga y estrés | Preproducción equivalente a Producción; JD-03 cargado; observabilidad activa | p95 de la Tabla 9.2 a 21,99 TPS; punto de quiebre registrado; sin pérdida al superar la capacidad |
 | Resiliencia | Carga sostenida en curso; escenarios de falla aprobados | Recuperación sin intervención en cada escenario; 0 transacciones perdidas |
 | Recuperación ante desastres | Réplica sincronizada; procedimiento aprobado | RTO ≤ 4 h y RPO ≤ 15 min medidos |
 | Seguridad ofensiva | Versión congelada en Preproducción; alcance firmado con el tercero | 0 hallazgos críticos o altos abiertos; plan de remediación de los demás |
-| Migración | Perfilado y saneamiento aprobados (3.7.1) | 0 diferencias no explicadas en la conciliación por dominio |
+| Migración | Perfilado y saneamiento aprobados (3.7.1) | 0 diferencias no explicadas en la conciliación por dominio; completitud 100 % en entidades críticas; exactitud de saldos y lotes 100 % contra conciliación aprobada; consistencia referencial 100 % |
 | Despliegue y reversión | Versión aprobada en sistema | Despliegue sin interrupción; reversión ≤ 10 min |
 
 ## 6. Suspensión y reanudación
@@ -143,7 +143,7 @@ La Tabla T13.5 presenta las pruebas de la implementación con sus fechas y el hi
 | Recuperación ante desastres E1 | 3.8.5 | 21-10-2027 | 09-11-2027 | H5 |
 | Despliegue sin interrupción E1 | 3.8.8 | 21-10-2027 | 09-11-2027 | H5 |
 | Aceptación y accesibilidad E1 | 3.8.2 | 21-10-2027 | 17-11-2027 | H5 |
-| Perfil operacional: sin señal, sin enlace, −22 °C | 3.8.3 | 21-10-2027 | 17-11-2027 | H5 |
+| Perfil operacional: sin señal, sin enlace, −22 °C, lluvia, >34 °C y sol directo | 3.8.3 | 21-10-2027 | 17-11-2027 | H5 |
 | Certificación E1 | 3.8.7 | 18-11-2027 | 29-11-2027 | H5 |
 | Ensayo de reversión de la Etapa 1 | 4.1.2 | 01-12-2027 | 09-12-2027 | H6 |
 | Integración y regresión E2 | 3.9.1 | 01-05-2028 | 18-05-2028 | H9 |
@@ -154,7 +154,7 @@ La Tabla T13.5 presenta las pruebas de la implementación con sus fechas y el hi
 | Aceptación y accesibilidad E2 | 3.9.2 | 27-05-2028 | 31-05-2028 | H10 |
 | Certificación E2 | 3.9.6 | 01-06-2028 | 12-06-2028 | H10 |
 
-Las pruebas de carga, resiliencia, recuperación y seguridad ofensiva de cada etapa comienzan después de la integración y regresión de su alcance, terminan antes de su certificación y terminan antes del inicio de la marcha blanca, que es el primer paso a Producción de cada alcance (H6 en el mes 13 y H11 en el mes 19). Antes del H7 y del H12 se repiten la prueba de intrusión por tercero, la prueba de resiliencia y la prueba de carga aplicable sobre la versión que cerrará la marcha blanca. Si durante la marcha blanca sólo hubo correcciones menores, el alcance de esas pruebas se acota a los componentes y superficies expuestas afectados, pero la ejecución y su informe son obligatorios. Ninguna prueba cae en un congelamiento. El ensayo de reversión se ejecuta en Preproducción en diciembre y no interviene Producción.
+Las pruebas de carga, resiliencia, recuperación y seguridad ofensiva de cada etapa comienzan después de la integración y regresión de su alcance, terminan antes de su certificación y entregan la evidencia para iniciar la marcha blanca en H6 y H11. Los pasos a producción contractuales del Formulario E-25 son H7 y H12; por eso antes de esos hitos se repiten la prueba de intrusión por tercero, la prueba de resiliencia y la prueba de carga aplicable sobre la versión que cerrará la marcha blanca. Si durante la marcha blanca sólo hubo correcciones menores, el alcance de esas pruebas se acota a los componentes y superficies expuestas afectados, pero la ejecución y su informe son obligatorios. Ninguna prueba cae en un congelamiento. El ensayo de reversión se ejecuta en Preproducción en diciembre y no interviene Producción.
 
 ### 8.2 Operación (meses 21 a 56)
 
@@ -164,13 +164,13 @@ La Tabla T13.6 presenta las pruebas periódicas de la Operación, con el mes del
 
 | Prueba | Frecuencia | Meses del contrato | Meses calendario | Cantidad |
 | --- | --- | --- | --- | --- |
-| Resiliencia por inyección de fallas | Semestral, con separación máxima de seis meses | 26, 32, 38, 44, 50, 55 | mar-2029, sep-2029, mar-2030, sep-2030, mar-2031, ago-2031 | 6 |
-| Recuperación ante desastres | Semestral, con separación máxima de seis meses | 27, 33, 39, 45, 51, 54 | abr-2029, oct-2029, abr-2030, oct-2030, abr-2031, jul-2031 | 6 |
+| Resiliencia por inyección de fallas | Semestral, con separación máxima de seis meses | 23, 29, 35, 41, 47, 53 | dic-2028, jun-2029, dic-2029, jun-2030, dic-2030, jun-2031 | 6 |
+| Recuperación ante desastres | Semestral, con separación máxima de seis meses | 24, 30, 36, 42, 48, 54 | ene-2029, jul-2029, ene-2030, jul-2030, ene-2031, jul-2031 | 6 |
 | Seguridad ofensiva por tercero | Anual | 28, 40, 52 | may-2029, may-2030, may-2031 | 3 |
 | Carga previa al peak de septiembre | Anual | 31, 43, 55 | ago-2029, ago-2030, ago-2031 | 3 |
 | Restauración de respaldos | Mensual | 21 a 56 | oct-2028 a sep-2031 | 36 |
 
-Las cantidades coinciden con los entregables de los paquetes 8.1.3, 8.1.6 y 8.2.2 del Formulario T-14. Las pruebas que intervienen Producción o el sitio de recuperación se programan después del tercer día hábil del mes y fuera de la ventana de 05:30 a 07:00. La programación mantiene una separación máxima de seis meses entre ejecuciones del mismo tipo; las pruebas de septiembre se ejecutan entre los días 26 y 30, en una ventana aprobada, para respetar el congelamiento operacional.
+Las cantidades coinciden con los entregables de los paquetes 8.1.3, 8.1.6 y 8.2.2 del Formulario T-14. Las pruebas que intervienen Producción o el sitio de recuperación se programan después del tercer día hábil del mes y fuera de la ventana de 05:30 a 07:00. La programación ubica la primera recuperación ante desastres dentro del primer semestre de Operación y mantiene una separación máxima de seis meses entre ejecuciones del mismo tipo. Las pruebas de resiliencia de diciembre se ejecutan en Preproducción o sitio emulado, sin intervención productiva, para respetar el congelamiento operacional.
 
 ## 9. Roles y responsabilidades
 

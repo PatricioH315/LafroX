@@ -39,9 +39,9 @@ La Tabla 9.A.1 presenta las 29 métricas.
 | 9A-10 | Compatibilidad | Interoperabilidad | Contratos OpenAPI 3.1 / AsyncAPI sin ruptura | 0 contratos rotos | BA Art. 23; SD6 §6.2 | Pruebas de contrato en CI | DEV/QA | 1.5.2 |
 | 9A-11 | Compatibilidad | Interoperabilidad | Flujos de las 15 integraciones ejecutados sin error | 15 de 15 | BTT §20.1 (integración) | Pruebas de integración en QA | QA | 3.8.1, 3.9.1 |
 | 9A-12 | Compatibilidad | Coexistencia | Regresiones de la Etapa 1 al integrar la Etapa 2 | 0 | BA Art. 17.2 | Regresión completa con E1 en producción | QA/PREPROD | 3.9.1 |
-| 9A-13 | Usabilidad | Aprendizaje | Tiempo para registrar 20 líneas sin asistencia y, por perfil, tiempo, pasos, error y aprendizaje de la Tabla 3.A.4a del SD3 | ≤ 2 h, error ≤ 5 %; valores de la Tabla 3.A.4a | SD3 Anexos RNF; BTT RT-13.04 | Prueba de usabilidad con usuarios reales | PREPROD | 2.6.2, 2.6.3 |
+| 9A-13 | Usabilidad | Aprendizaje | Tiempo, pasos, error y aprendizaje por perfil; registrar 20 líneas sin asistencia y, por perfil, tiempos de la Tabla 3.A.4a del SD3 | Preventista: 20 líneas en ≤ 2 h y error ≤ 5 %; conductor/reparto: entrega completa en ≤ 3 min, ≤ 8 pasos y error ≤ 5 %; bodega: confirmación de línea en ≤ 1 s y error ≤ 5 %; segundo flujo sin asistencia por perfil; valores de la Tabla 3.A.4a | SD3 Anexos RNF; BTT RT-13.04 | Prueba de usabilidad con usuarios reales por perfil | PREPROD/Terreno | 2.6.2, 2.6.3 |
 | 9A-14 | Usabilidad | Accesibilidad | Conformidad WCAG 2.2 AA (axe-core + manual) | 0 incumplimientos A/AA | BTT RT-13.01; W3C (2023) | Herramienta automática + revisión manual | QA/PREPROD | 3.8.2, 3.9.2 |
-| 9A-15 | Usabilidad | Operabilidad en terreno | Uso con guantes a −22 °C, una mano, objetivos táctiles | ≥ 15×15 mm; 30 min a −22 °C | Caso cap. 15 RT-13.08; SD3 Anexos | Prueba del perfil operacional en cámara | Terreno | 3.8.3 |
+| 9A-15 | Usabilidad | Operabilidad en terreno | Uso con guantes a −22 °C, lluvia, >34 °C, sol directo, una mano y objetivos táctiles | ≥ 15×15 mm; 30 min a −22 °C; flujo completado bajo lluvia, >34 °C y sol directo sin pérdida ni error crítico | Caso cap. 15 RT-13.08; SD3 Anexos | Prueba del perfil operacional en cámara y terreno | Terreno | 3.8.3 |
 | 9A-16 | Fiabilidad | Disponibilidad | Disponibilidad mensual de servicios críticos | ≥ 99,9 %; 0 min en 05:30–07:00 | BTT RT-10.01; Caso RT-10.05 | Medición sobre transacción real (marcha blanca y Operación) | PROD | 4.2, 8.1 |
 | 9A-17 | Fiabilidad | Tolerancia a fallos | Operación sin enlace del CD / sin señal del dispositivo | 24 h / 14 h, 0 pérdidas ni duplicados | Caso RT-03.10 | Prueba de desconexión controlada | PREPROD/Terreno | 3.8.3 |
 | 9A-18 | Fiabilidad | Recuperabilidad | RTO / RPO en conmutación real | ≤ 4 h / ≤ 15 min | SD4 Tabla 38 | Prueba DR antes del paso y semestral | DR | 3.8.5, 3.9.4, 8.1.3 |
@@ -51,13 +51,25 @@ La Tabla 9.A.1 presenta las 29 métricas.
 | 9A-22 | Seguridad | Responsabilidad | Trazas de auditoría de acceso a datos sensibles | 100 % de consultas registradas | Caso RT-16.09 | Prueba funcional de auditoría | QA | 3.8.2 |
 | 9A-23 | Mantenibilidad | Capacidad de prueba | Cobertura lógica de negocio / global | ≥ 70 % / ≥ 80 % | BA Art. 24; SD1; SD6 | Puerta G2 en CI | DEV/CI | 1.5.2 |
 | 9A-24 | Mantenibilidad | Modularidad | Dependencias prohibidas entre los 12 módulos | 0 violaciones | BTT RT-02.02; SD4 §4.1 | deptrac en CI | DEV/CI | 1.5.2 |
-| 9A-25 | Mantenibilidad | Analizabilidad | Complejidad ciclomática por método / cognitiva | ≤ 10 / ≤ 15 | Supuesto LafroX (Subdocumento 9, sección 9.1.4) | Análisis estático en CI | DEV/CI | 1.5.2 |
+| 9A-25 | Mantenibilidad | Analizabilidad | Complejidad ciclomática por método / cognitiva | ≤ 10 / ≤ 15 | Supuesto LafroX (Subdocumento 9, sección 9.1.4) | PHPMD mide ciclomática; PhpMetrics, detekt y eslint-plugin-sonarjs miden cognitiva según lenguaje | DEV/CI | 1.5.2 |
 | 9A-26 | Mantenibilidad | Modificabilidad | Duplicación / razón de deuda técnica | ≤ 3 % / ≤ 5 % | Supuesto LafroX; BA Art. 24 (deuda) | Análisis estático; registro 8.2.4 | DEV/CI | 1.5.2, 8.2.4 |
 | 9A-27 | Portabilidad | Instalabilidad | Mismo artefacto promovido QA → PREPROD → PROD sin recompilar | 100 % de despliegues | BTT RT-04.08 | Promoción por digest de imagen firmada | QA→PROD | 3.8.8, 3.9.7 |
 | 9A-28 | Portabilidad | Adaptabilidad | Ambientes reconstruidos desde IaC (Terraform/Ansible) | 100 %; ambiente efímero ≤ 30 min (supuesto) | SD4 §4.2; BTT RT-04.14 | Reconstrucción desde código en QA | QA | 1.5.2 |
 | 9A-29 | Portabilidad | Reemplazabilidad | Exportación completa en formato abierto | 100 % de entidades | BA Art. 23 | Prueba de exportación | PREPROD | 3.9.2 |
 
 La tabla reúne 29 métricas: funcionalidad 3, desempeño 6, compatibilidad 3, usabilidad 3, fiabilidad 4, seguridad 3, mantenibilidad 4, portabilidad 3. El desempeño y la fiabilidad concentran más métricas porque son las características de las que depende el despacho en la ventana de 05:30 a 07:00 y la operación sin enlace. Las métricas 9A-04 a 9A-07 cubren los 11 umbrales p95 de la Tabla 31 del SD4. Las métricas 9A-09, 9A-25, 9A-26 y 9A-28 usan umbrales propuestos por LafroX; las demás reproducen un valor de las Bases, del Caso o del SD4.
+
+La calidad de datos se mide con los indicadores del SD5 y no se deriva de ISO/IEC 25012 como si la norma fijara cifras. La Tabla 9.A.2 explicita los tres indicadores que este plan agrega como criterio de salida para migración, marcha blanca y operación.
+
+**Tabla 9.A.2 — Indicadores de calidad de datos ISO/IEC 25012 usados por el plan. Fuente: SD5, sección 5.2.5 y Anexos 5-C y 5-H.**
+
+| Dimensión | Indicador | Umbral | Punto de medición | Prueba / paquete |
+| --- | --- | --- | --- | --- |
+| Completitud | Entidades críticas migradas con clave, estado y trazabilidad exigida | 100 % en SKU, clientes, ubicaciones, lotes, saldos, documentos y reglas vigentes | Ensayos de migración y corte | T-13 Migración; 3.7.2–3.7.5 |
+| Exactitud | Saldos, lotes y documentos conciliados contra origen aprobado | 0 diferencias no explicadas; diferencias justificadas con acta del responsable de datos | Ensayos de migración, marcha blanca y cierre de hito | T-13 Migración; T-17 H5/H10/H12 |
+| Consistencia | Integridad referencial y reglas de dominio de 5-C aprobadas | 100 % de reglas críticas sin rechazo abierto; todo rechazo con causa y tratamiento | Carga en Preproducción, marcha blanca y tablero de datos | T-13 Sistema y migración; paquete 8.1 |
+
+Estos indicadores cubren el mínimo que exige el RT-05.04 —completitud, exactitud y consistencia— y remiten las demás dimensiones de ISO/IEC 25012 al tablero y las reglas del SD5.
 
 ## Anexo 9.B — Catálogo de reglas de análisis estático y dinámico
 
@@ -79,7 +91,7 @@ La Tabla 9.B.1 lista las 24 reglas, con la herramienta en cada lenguaje.
 | 9B-06 | Errores de análisis estático (nivel 8) | PHP / Laravel | PHPStan + Larastan | ≤ 0 | G2 | SD4 sección 4.2.4; SD6 |
 | 9B-07 | Infracciones de estilo | PHP / Laravel | Laravel Pint | ≤ 0 | G1 | SD4 sección 4.2.4 |
 | 9B-08 | Complejidad ciclomática máxima por método | PHP / Kotlin / TS | PHPMD · detekt · ESLint complexity | ≤ 10 | G2 | Supuesto LafroX (McCabe, 1976) |
-| 9B-09 | Complejidad cognitiva máxima por método | PHP / Kotlin / TS | PHPMD · detekt · eslint-plugin-sonarjs | ≤ 15 | G2 | Supuesto LafroX |
+| 9B-09 | Complejidad cognitiva máxima por método | PHP / Kotlin / TS | PhpMetrics · detekt · eslint-plugin-sonarjs | ≤ 15 | G2 | Supuesto LafroX |
 | 9B-10 | Violaciones de dependencia entre módulos | PHP / Laravel | deptrac | ≤ 0 | G2 | BTT RT-02.02; SD4 sección 4.1 |
 | 9B-11 | Inestabilidad de los módulos núcleo (Ce/(Ca+Ce)) | PHP / Laravel | PhpMetrics | ≤ 0,5 | G2 | Supuesto LafroX (Martin, 2003) |
 | 9B-12 | Duplicación de código | Todos | PHPCPD · jscpd | ≤ 3 % | G2 | Supuesto LafroX |
@@ -108,7 +120,8 @@ La configuración de cada herramienta se versiona en el repositorio de cada comp
 | --- | --- | --- |
 | PHP 8.5 / Laravel 13 | PHPStan + Larastan | Nivel 8; sin línea base de errores heredados; análisis de los 12 módulos y sus pruebas. |
 | PHP 8.5 / Laravel 13 | Laravel Pint | Preajuste laravel; verificación en modo de prueba, sin reescritura en CI. |
-| PHP 8.5 / Laravel 13 | PHPMD | Reglas de tamaño y complejidad: CyclomaticComplexity 10, NPathComplexity 200, ExcessiveMethodLength 60 líneas. |
+| PHP 8.5 / Laravel 13 | PHPMD | Reglas de tamaño y complejidad ciclomática: CyclomaticComplexity 10, NPathComplexity 200, ExcessiveMethodLength 60 líneas. |
+| PHP 8.5 / Laravel 13 | PhpMetrics | Complejidad cognitiva máxima 15 e inestabilidad de módulos núcleo ≤ 0,5. |
 | PHP 8.5 / Laravel 13 | deptrac | Una capa por módulo M1 a M12 más la capa compartida; cada módulo sólo accede a otro por su contrato público (interfaces y eventos). |
 | PHP 8.5 / Laravel 13 | PHPUnit con PCOV | Informe Cobertura por paquete; la lógica de negocio son los espacios de nombres Domain y Application de cada módulo. |
 | Kotlin / Android | detekt + ktlint | Conjunto por defecto con ComplexMethod 10, CognitiveComplexMethod 15 y LongMethod 60; ktlint estándar. |
