@@ -2,6 +2,21 @@
 
 Este archivo contiene el detalle que el Subdocumento 9 resume. El Anexo 9.A lista las métricas de calidad del producto por subcaracterística de ISO/IEC 25010; el Anexo 9.B, las reglas de análisis estático y dinámico con su umbral y su puerta; el Anexo 9.C, la matriz de trazabilidad entre los 645 identificadores del Formulario T-12 y su prueba de verificación; y el Anexo 9.D, la especificación de los datos de prueba. El plan de pruebas y validación está en el Formulario T-13 y el protocolo de aceptación, en el Formulario T-17.
 
+## Índice
+
+- [Anexo 9.A — Umbrales de calidad del producto por subcaracterística](#anexo-9a--umbrales-de-calidad-del-producto-por-subcaracterística)
+- [Anexo 9.B — Catálogo de reglas de análisis estático y dinámico](#anexo-9b--catálogo-de-reglas-de-análisis-estático-y-dinámico)
+  - [9.B.1 Reglas y umbrales](#9b1-reglas-y-umbrales)
+  - [9.B.2 Configuración por lenguaje](#9b2-configuración-por-lenguaje)
+- [Anexo 9.C — Matriz de trazabilidad entre requisitos y pruebas](#anexo-9c--matriz-de-trazabilidad-entre-requisitos-y-pruebas)
+  - [9.C.1 Reglas de construcción](#9c1-reglas-de-construcción)
+  - [9.C.2 Matriz](#9c2-matriz)
+- [Anexo 9.D — Especificación de los datos de prueba](#anexo-9d--especificación-de-los-datos-de-prueba)
+  - [9.D.1 Volumen de los juegos de datos](#9d1-volumen-de-los-juegos-de-datos)
+  - [9.D.2 Reglas de anonimización](#9d2-reglas-de-anonimización)
+- [Referencias](#referencias)
+- [Declaración de uso de IA](#declaración-de-uso-de-ia)
+
 ## Anexo 9.A — Umbrales de calidad del producto por subcaracterística
 
 Este anexo desarrolla la Tabla 9.2 del Subdocumento 9. Cada fila es una métrica exigible: su umbral es criterio de salida de la prueba indicada, en el ambiente y en el paquete de la EDT que la ejecutan. Los umbrales provienen de las Bases, del Caso o de un subdocumento anterior; los que propone LafroX se identifican como tales en la columna de fuente.
@@ -16,21 +31,21 @@ La Tabla 9.A.1 presenta las 29 métricas.
 | 9A-02 | Funcionalidad | Corrección funcional | Casos de aceptación firmados sin defecto crítico/alto abierto | 100 % / 0 | BTT §20.1; BA Art. 17.3 | Pruebas de aceptación con la Contraparte Técnica | PREPROD | 3.8.2, 3.9.2 |
 | 9A-03 | Funcionalidad | Pertinencia funcional | Resultados R18 medidos con su método en el mes comprometido | 16 de 16 | Caso cap. 18; SD3 Tabla 3.A.13 | Protocolo de aceptación T-17 | PROD | 4.2, 4.3 |
 | 9A-04 | Desempeño | Comportamiento temporal | p95 confirmación de línea de picking | ≤ 1 s | Caso cap. 15 RT-09.01; SD4 Tabla 31 | Prueba de carga a 1,5× el peak | PREPROD | 3.8.4, 3.9.3 |
-| 9A-05 | Desempeño | Comportamiento temporal | p95 registro de entrega en el local | ≤ 2 s | Caso cap. 15 RT-09.01 | Prueba de carga y prueba de terreno | PREPROD | 3.8.4, 3.8.3 |
-| 9A-06 | Desempeño | Comportamiento temporal | p95 línea de preventa / consulta de stock y crédito | ≤ 1,5 s / ≤ 2 s | Caso cap. 15 RT-09.01 | Prueba de carga | PREPROD | 3.8.4 |
-| 9A-07 | Desempeño | Comportamiento temporal | p95 API consulta / escritura / carga de página | ≤ 500 ms / ≤ 800 ms / ≤ 2 s | BTT §9.1; SD4 Tabla 31 | Prueba de carga + regresión de desempeño semanal | QA/PREPROD | 1.5.2, 3.8.4 |
+| 9A-05 | Desempeño | Comportamiento temporal | p95 registro de entrega en el local / otra transacción crítica de terreno, de extremo a extremo | ≤ 2 s / ≤ 3 s | Caso cap. 15 RT-09.01; BTT §9.1; SD4 Tabla 31 | Prueba de carga y prueba de terreno | PREPROD | 3.8.4, 3.8.3 |
+| 9A-06 | Desempeño | Comportamiento temporal | p95 línea de preventa / consulta de stock y crédito / búsqueda con criterios compuestos (búsqueda global de RF-17.11) / informe estándar en línea | ≤ 1,5 s / ≤ 2 s / ≤ 3 s (≤ 2 s) / ≤ 30 s | Caso cap. 15 RT-09.01; BTT §9.1; SD3 Anexo 3.A, RF-17.11; SD4 Tabla 31 | Prueba de carga | PREPROD | 3.8.4, 3.9.3 |
+| 9A-07 | Desempeño | Comportamiento temporal | p95 API consulta / escritura / carga de página / navegación entre vistas ya cargadas | ≤ 500 ms / ≤ 800 ms / ≤ 2 s / ≤ 1 s | BTT §9.1; SD4 Tabla 31 | Prueba de carga con medición en el navegador + regresión de desempeño semanal | QA/PREPROD | 1.5.2, 3.8.4 |
 | 9A-08 | Desempeño | Capacidad | TPS sostenidos sin violar los p95 | ≥ 21,99 TPS (Subdocumento 9, sección 9.2.3) | BTT RT-09.06; SD4 §4.2 | Prueba de carga y estrés hasta el quiebre | PREPROD | 3.8.4, 3.9.3 |
 | 9A-09 | Desempeño | Utilización de recursos | CPU/memoria en el peak × 1,5 | ≤ 70 % (supuesto) | SD4 plan de capacidad | Telemetría OpenTelemetry durante la prueba | PREPROD | 3.8.4 |
 | 9A-10 | Compatibilidad | Interoperabilidad | Contratos OpenAPI 3.1 / AsyncAPI sin ruptura | 0 contratos rotos | BA Art. 23; SD6 §6.2 | Pruebas de contrato en CI | DEV/QA | 1.5.2 |
 | 9A-11 | Compatibilidad | Interoperabilidad | Flujos de las 15 integraciones ejecutados sin error | 15 de 15 | BTT §20.1 (integración) | Pruebas de integración en QA | QA | 3.8.1, 3.9.1 |
 | 9A-12 | Compatibilidad | Coexistencia | Regresiones de la Etapa 1 al integrar la Etapa 2 | 0 | BA Art. 17.2 | Regresión completa con E1 en producción | QA/PREPROD | 3.9.1 |
 | 9A-13 | Usabilidad | Aprendizaje | Tiempo para registrar 20 líneas sin asistencia | ≤ 2 h, error ≤ 5 % | SD3 Anexos RNF; BTT RT-13.04 | Prueba de usabilidad con usuarios reales | PREPROD | 2.6.2, 2.6.3 |
-| 9A-14 | Usabilidad | Accesibilidad | Conformidad WCAG 2.2 AA (axe-core + manual) | 0 incumplimientos A/AA | BTT RT-13.01 | Herramienta automática + revisión manual | QA/PREPROD | 3.8.2, 3.9.2 |
+| 9A-14 | Usabilidad | Accesibilidad | Conformidad WCAG 2.2 AA (axe-core + manual) | 0 incumplimientos A/AA | BTT RT-13.01; W3C (2023) | Herramienta automática + revisión manual | QA/PREPROD | 3.8.2, 3.9.2 |
 | 9A-15 | Usabilidad | Operabilidad en terreno | Uso con guantes a −22 °C, una mano, objetivos táctiles | ≥ 15×15 mm; 30 min a −22 °C | Caso cap. 15 RT-13.08; SD3 Anexos | Prueba del perfil operacional en cámara | Terreno | 3.8.3 |
 | 9A-16 | Fiabilidad | Disponibilidad | Disponibilidad mensual de servicios críticos | ≥ 99,9 %; 0 min en 05:30–07:00 | BTT RT-10.01; Caso RT-10.05 | Medición sobre transacción real (marcha blanca y Operación) | PROD | 4.2, 8.1 |
 | 9A-17 | Fiabilidad | Tolerancia a fallos | Operación sin enlace del CD / sin señal del dispositivo | 24 h / 14 h, 0 pérdidas ni duplicados | Caso RT-03.10 | Prueba de desconexión controlada | PREPROD/Terreno | 3.8.3 |
 | 9A-18 | Fiabilidad | Recuperabilidad | RTO / RPO en conmutación real | ≤ 4 h / ≤ 15 min | SD4 Tabla 38 | Prueba DR antes del paso y semestral | DR | 3.8.5, 3.9.4, 8.1.3 |
-| 9A-19 | Fiabilidad | Recuperabilidad | Sincronización tras reconexión | Dispositivo ≤ 10 min; CD ≤ 2 h | Caso RT-03.13 | Prueba de desconexión controlada | PREPROD | 3.8.3 |
+| 9A-19 | Fiabilidad | Recuperabilidad | Sincronización tras reconexión y resolución de conflictos de stock del CD | Dispositivo ≤ 10 min; CD ≤ 2 h; 100 % de los conflictos de stock resueltos con la regla del SD4, Anexo 4-K, Tabla A.12, con el mismo resultado al repetir la reconciliación | Caso RT-03.13; BTT RT-03.12; SD4 Anexo 4-K | Prueba de desconexión controlada con reservas concurrentes del mismo stock, reconciliadas dos veces sobre los mismos eventos y comparadas con su bitácora | PREPROD | 3.8.3 |
 | 9A-20 | Seguridad | Integridad / confidencialidad | Hallazgos críticos o altos abiertos (SAST, SCA, DAST, pentest) | 0 | BTT RT-04.05, RT-11.20; BTT §20.1 | Puertas G2/G4 y pentest por tercero | QA/PREPROD | 1.5.2, 3.8.6, 3.9.5 |
 | 9A-21 | Seguridad | Confidencialidad | Datos productivos en ambientes no productivos de prueba | 0 registros sin anonimización verificada; DR se trata como réplica productiva restringida | SD3 Anexos RNF; Ley 21.719 | Escaneo Macie de QA y PREPROD y prueba de reidentificación | QA/PREPROD | 1.5.1 |
 | 9A-22 | Seguridad | Responsabilidad | Trazas de auditoría de acceso a datos sensibles | 100 % de consultas registradas | Caso RT-16.09 | Prueba funcional de auditoría | QA | 3.8.2 |
@@ -42,7 +57,7 @@ La Tabla 9.A.1 presenta las 29 métricas.
 | 9A-28 | Portabilidad | Adaptabilidad | Ambientes reconstruidos desde IaC (Terraform/Ansible) | 100 %; ambiente efímero ≤ 30 min (supuesto) | SD4 §4.2; BTT RT-04.14 | Reconstrucción desde código en QA | QA | 1.5.2 |
 | 9A-29 | Portabilidad | Reemplazabilidad | Exportación completa en formato abierto | 100 % de entidades | BA Art. 23 | Prueba de exportación | PREPROD | 3.9.2 |
 
-La tabla reúne 29 métricas: funcionalidad 3, desempeño 6, compatibilidad 3, usabilidad 3, fiabilidad 4, seguridad 3, mantenibilidad 4, portabilidad 3. El desempeño y la fiabilidad concentran más métricas porque son las características de las que depende el despacho en la ventana de 05:30 a 07:00 y la operación sin enlace. Las métricas 9A-09, 9A-25, 9A-26 y 9A-28 usan umbrales propuestos por LafroX; las demás reproducen un valor de las Bases, del Caso o del SD4.
+La tabla reúne 29 métricas: funcionalidad 3, desempeño 6, compatibilidad 3, usabilidad 3, fiabilidad 4, seguridad 3, mantenibilidad 4, portabilidad 3. El desempeño y la fiabilidad concentran más métricas porque son las características de las que depende el despacho en la ventana de 05:30 a 07:00 y la operación sin enlace. Las métricas 9A-04 a 9A-07 cubren los 11 umbrales p95 de la Tabla 31 del SD4. Las métricas 9A-09, 9A-25, 9A-26 y 9A-28 usan umbrales propuestos por LafroX; las demás reproducen un valor de las Bases, del Caso o del SD4.
 
 ## Anexo 9.B — Catálogo de reglas de análisis estático y dinámico
 
@@ -63,10 +78,10 @@ La Tabla 9.B.1 lista las 24 reglas, con la herramienta en cada lenguaje.
 | 9B-05 | Cobertura unitaria global | Angular / TypeScript | Jest (Istanbul) | ≥ 80 % | G2 | SD1 sección 1.3; SD6 sección 6.2 |
 | 9B-06 | Errores de análisis estático (nivel 8) | PHP / Laravel | PHPStan + Larastan | ≤ 0 | G2 | SD4 sección 4.2.4; SD6 |
 | 9B-07 | Infracciones de estilo | PHP / Laravel | Laravel Pint | ≤ 0 | G1 | SD4 sección 4.2.4 |
-| 9B-08 | Complejidad ciclomática máxima por método | PHP / Kotlin / TS | PHPMD · detekt · ESLint complexity | ≤ 10 | G2 | Supuesto LafroX (McCabe) |
+| 9B-08 | Complejidad ciclomática máxima por método | PHP / Kotlin / TS | PHPMD · detekt · ESLint complexity | ≤ 10 | G2 | Supuesto LafroX (McCabe, 1976) |
 | 9B-09 | Complejidad cognitiva máxima por método | PHP / Kotlin / TS | PHPMD · detekt · eslint-plugin-sonarjs | ≤ 15 | G2 | Supuesto LafroX |
 | 9B-10 | Violaciones de dependencia entre módulos | PHP / Laravel | deptrac | ≤ 0 | G2 | BTT RT-02.02; SD4 sección 4.1 |
-| 9B-11 | Inestabilidad de los módulos núcleo (Ce/(Ca+Ce)) | PHP / Laravel | PhpMetrics | ≤ 0,5 | G2 | Supuesto LafroX (Martin) |
+| 9B-11 | Inestabilidad de los módulos núcleo (Ce/(Ca+Ce)) | PHP / Laravel | PhpMetrics | ≤ 0,5 | G2 | Supuesto LafroX (Martin, 2003) |
 | 9B-12 | Duplicación de código | Todos | PHPCPD · jscpd | ≤ 3 % | G2 | Supuesto LafroX |
 | 9B-13 | Razón de deuda técnica (esfuerzo de remediación / desarrollo) | Todos | Registro 8.2.4 + análisis estático | ≤ 5 % | G2 | BA Art. 24 (gestión de deuda); supuesto |
 | 9B-14 | Infracciones de estilo / lint | Kotlin / Android | detekt + ktlint | ≤ 0 | G1 | Supuesto LafroX |
@@ -124,10 +139,10 @@ La Tabla 9.C.1 resume la matriz.
 | RF | 181 | 175 | 6 | 544 |
 | RNF | 90 | 84 | 6 | 302 |
 | RT | 374 | 346 | 28 | 346 |
-| Contratos de las 15 integraciones | — | — | — | 90 |
-| **Total** | **645** | **605** | **40** | **1.282** |
+| Contratos de las 15 integraciones | — | — | — | 105 |
+| **Total** | **645** | **605** | **40** | **1.297** |
 
-La matriz asigna prueba propia a 605 de los 645 identificadores. Los 40 restantes son 31 en estado «No cumple» y 9 absorbidos por otra fila. Con los 90 casos de contrato de las integraciones, el catálogo suma 1.282 casos, la cifra que usa la sección 9.2.3 del Subdocumento 9.
+La matriz asigna prueba propia a 605 de los 645 identificadores. Los 40 restantes son 31 en estado «No cumple» y 9 absorbidos por otra fila. Con los 105 casos de contrato de las integraciones, siete por cada una de las 15, el catálogo suma 544 + 302 + 346 + 105 = 1.297 casos, la cifra que usa la sección 9.2.3 del Subdocumento 9.
 
 ### 9.C.2 Matriz
 
@@ -805,7 +820,7 @@ Los volúmenes se derivan de la volumetría del Caso, sección 14.1. El juego de
 | JD-06 Frío | Series de temperatura de cámaras y vehículos con excursiones térmicas controladas | Lecturas por sensor durante 30 días, con excursiones en los límites del rango | Sintético | QA · PREPROD | Antes de cada ciclo |
 | JD-07 Retiro sanitario | Lote sembrado en recepción y distribuido a clientes para el simulacro de retiro | 1 lote trazado de recepción a entrega | Sintético | PREPROD | Antes de cada simulacro |
 | JD-08 Migración | Históricos del CLIENTE anonimizados para los dos ensayos | 32,11 GB de destino | Histórico anonimizado | PREPROD | Por ensayo; se elimina al cerrar el ensayo |
-| JD-09 Integraciones | Mensajes de las 15 integraciones, con casos de error, lentitud, duplicado y orden | 353.333 mensajes diarios en peak | Sintético | QA · PREPROD | Antes de cada ciclo |
+| JD-09 Integraciones | Mensajes de las 15 integraciones, con casos de ausencia de respuesta, error, lentitud, duplicado y orden | 353.333 mensajes diarios en peak | Sintético | QA · PREPROD | Antes de cada ciclo |
 | JD-10 Incidentes de terreno | Evidencia de incidentes reproducidos por INN-02 | Según incidentes registrados | Evidencia anonimizada | QA | Permanente como regresión |
 
 Los juegos de día normal y de peak cubren el perfil horario que exige el Caso, porque se generan con la distribución de las cuatro ventanas del SD4: preventa entre 09:00 y 18:00, preparación entre 22:00 y 06:00, despacho entre 05:30 y 07:00 y sincronización entre 17:00 y 20:00. Los pedidos diarios del JD-02 se obtienen de 31.000 pedidos al mes en 26 días hábiles, y los cobros, de 11.800 cobros en efectivo al mes en el mismo período.
@@ -829,12 +844,17 @@ Toda copia transformada pasa por Amazon Macie y por la prueba de reidentificaci�
 
 ## Referencias
 
+Las fuentes citadas en estos anexos se listan en formato APA 7.ª edición. Las Bases se citan en el texto con su documento y el artículo, capítulo, sección o código del requisito.
+
 - Distribuidora Puelche S.A. (2026a). *Bases Administrativas de Licitación N.º TFEP-01/2026: Contratación de Solución Integral de Software y Servicios de Operación*.
 - Distribuidora Puelche S.A. (2026b). *Bases Técnicas Transversales de Licitación N.º TFEP-01/2026*.
 - Distribuidora Puelche S.A. (2026c). *Caso 02: Logística. Especificaciones del problema y operación de Distribuidora Puelche S.A.*
 - International Organization for Standardization & International Electrotechnical Commission. (2011). *ISO/IEC 25010:2011 Systems and software engineering — Systems and software Quality Requirements and Evaluation (SQuaRE) — System and software quality models*. ISO.
-- LafroX. (2026). Subdocumentos 3, 4, 5, 6 y 9, con los anexos y formularios citados.
+- LafroX. (2026). Subdocumentos 1, 3, 4, 5, 6, 9 y 13, con sus anexos, y Formularios T-12, T-13, T-14, T-17 y T-19.
 - Ley N.º 21.719. (2024). *Regula la protección y el tratamiento de los datos personales y crea la Agencia de Protección de Datos Personales*. Diario Oficial de la República de Chile.
+- Martin, R. C. (2003). *Agile software development: Principles, patterns, and practices*. Prentice Hall.
+- McCabe, T. J. (1976). A complexity measure. *IEEE Transactions on Software Engineering, SE-2*(4), 308–320.
+- World Wide Web Consortium. (2023). *Web Content Accessibility Guidelines (WCAG) 2.2*. W3C.
 
 ## Declaración de uso de IA
 

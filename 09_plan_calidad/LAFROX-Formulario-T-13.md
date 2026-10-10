@@ -1,6 +1,23 @@
 # Formulario T-13: Plan de pruebas y validación
 
-Este formulario adjunta el plan de pruebas conforme al Subdocumento 9, como exigen las Bases Administrativas para el Formulario T-13. Contiene los niveles, tipos, ambientes, datos de prueba, criterios de entrada y salida, la automatización y el calendario de las pruebas de carga, de resiliencia, de recuperación ante desastres y de seguridad ofensiva. Su estructura sigue la del plan de pruebas de ISO/IEC/IEEE 29119-3. La estrategia y su fundamento están en el Subdocumento 9, sección 9.2. Los umbrales, en el Anexo 9.A. La matriz entre requisitos y pruebas, en el Anexo 9.C. Los juegos de datos, en el Anexo 9.D.
+Este formulario adjunta el plan de pruebas conforme al Subdocumento 9, como exigen las Bases Administrativas para el Formulario T-13. Contiene los niveles, tipos, ambientes, datos de prueba, criterios de entrada y salida, la automatización y el calendario de las pruebas de carga, de resiliencia, de recuperación ante desastres y de seguridad ofensiva. Su estructura sigue la del plan de pruebas de ISO/IEC/IEEE 29119-3 (ISO, IEC & IEEE, 2021). La estrategia y su fundamento están en el Subdocumento 9, sección 9.2. Los umbrales, en el Anexo 9.A. La matriz entre requisitos y pruebas, en el Anexo 9.C. Los juegos de datos, en el Anexo 9.D.
+
+## Índice
+
+- [1. Alcance y elementos de prueba](#1-alcance-y-elementos-de-prueba)
+- [2. Niveles y tipos de prueba](#2-niveles-y-tipos-de-prueba)
+- [3. Ambientes de prueba](#3-ambientes-de-prueba)
+- [4. Datos de prueba](#4-datos-de-prueba)
+- [5. Criterios de entrada y salida](#5-criterios-de-entrada-y-salida)
+- [6. Suspensión y reanudación](#6-suspensión-y-reanudación)
+- [7. Automatización](#7-automatización)
+- [8. Calendario](#8-calendario)
+  - [8.1 Implementación (meses 1 a 21)](#81-implementación-meses-1-a-21)
+  - [8.2 Operación (meses 21 a 56)](#82-operación-meses-21-a-56)
+- [9. Roles y responsabilidades](#9-roles-y-responsabilidades)
+- [10. Informes y entregables de prueba](#10-informes-y-entregables-de-prueba)
+- [Referencias](#referencias)
+- [Declaración de uso de IA](#declaración-de-uso-de-ia)
 
 ## 1. Alcance y elementos de prueba
 
@@ -24,7 +41,7 @@ La Tabla T13.1 define cada tipo de prueba, su nivel según ISO/IEC/IEEE 29119, s
 | Tipo | Nivel | Objetivo | Técnica de diseño | Responsable |
 | --- | --- | --- | --- | --- |
 | Unitaria y de componente | Componente | Reglas de negocio de cada módulo | Particiones de equivalencia, valores límite, tablas de decisión | DES |
-| Contrato | Integración | Cumplimiento de OpenAPI 3.1 y AsyncAPI por proveedor y consumidor | Casos por contrato: éxito, error, lentitud, duplicado, orden, versión | DES |
+| Contrato | Integración | Cumplimiento de OpenAPI 3.1 y AsyncAPI por proveedor y consumidor | Casos por contrato: éxito, no responde, error, lentitud, duplicado, orden, versión | DES |
 | Integración | Integración | Flujos de las 15 integraciones de extremo a extremo | Casos de uso y transición de estados | CAL |
 | Sistema y regresión | Sistema | Comportamiento completo de la versión candidata | Casos de uso del SD3; batería automatizada | CAL |
 | Aceptación de usuario | Aceptación | Validación con personas del CLIENTE | Escenarios de operación por perfil | CAL e IMP |
@@ -72,7 +89,7 @@ Una prueba no comienza si no se cumple su criterio de entrada, y no se da por ap
 | Aceptación de usuario | Sistema aprobado; usuarios del CLIENTE capacitados en el escenario | Casos firmados por la Contraparte Técnica |
 | Usabilidad | Prototipo o versión del flujo crítico | 20 líneas en ≤ 2 h con error ≤ 5 %; indicadores del RT-13.04 cumplidos |
 | Accesibilidad | Vistas completas en QA | 0 incumplimientos WCAG 2.2 A y AA; informe de conformidad |
-| Perfil operacional | Dispositivos del modelo comprometido; JD-04 cargado | 0 pérdidas y 0 duplicados; dispositivo sincronizado en ≤ 10 min; CD en ≤ 2 h; operación con guantes a −22 °C |
+| Perfil operacional | Dispositivos del modelo comprometido; JD-04 cargado | 0 pérdidas y 0 duplicados; dispositivo sincronizado en ≤ 10 min; CD en ≤ 2 h; operación con guantes a −22 °C; conflictos de stock del corte del CD resueltos de forma determinista con la regla del SD4, Anexo 4-K, Tabla A.12 (orden de recepción central y correlativo de desempate; la solicitud no cubierta queda en excepción con aviso), verificada con un caso que repite dos veces la reconciliación de reservas concurrentes del mismo stock (preventa sin conexión frente a preventa en línea) y obtiene el mismo resultado y la misma bitácora, sin sobrescritura silenciosa |
 | Carga y estrés | Preproducción equivalente a Producción; JD-03 cargado; observabilidad activa | p95 de la Tabla 9.2 a 21,99 TPS; punto de quiebre registrado; sin pérdida al superar la capacidad |
 | Resiliencia | Carga sostenida en curso; escenarios de falla aprobados | Recuperación sin intervención en cada escenario; 0 transacciones perdidas |
 | Recuperación ante desastres | Réplica sincronizada; procedimiento aprobado | RTO ≤ 4 h y RPO ≤ 15 min medidos |
@@ -103,7 +120,7 @@ La automatización es el criterio por defecto. La Tabla T13.4 indica la herramie
 | Perfil operacional y usabilidad | Espresso y prueba con personas | Parcial | Por certificación |
 | Seguridad ofensiva | Tercero independiente | Manual | Antes de cada paso a producción y anual |
 
-Con 1.282 casos estimados y el 80 % automatizado, la regresión nocturna ejecuta 1.026 casos. Los 256 casos manuales requieren unas 64 HH por ciclo y se planifican con los evaluadores en los meses de certificación (Subdocumento 9, sección 9.2.3).
+Con 1.297 casos estimados y el 80 % automatizado, la regresión nocturna ejecuta unos 1.038 casos. Los 259 casos manuales requieren unas 65 HH por ciclo y se planifican con los evaluadores en los meses de certificación (Subdocumento 9, sección 9.2.3).
 
 ## 8. Calendario
 
@@ -125,8 +142,8 @@ La Tabla T13.5 presenta las pruebas de la implementación con sus fechas y el hi
 | Carga 1,5× peak, estrés y resiliencia E1 | 3.8.4 | 21-10-2027 | 09-11-2027 | H5 |
 | Recuperación ante desastres E1 | 3.8.5 | 21-10-2027 | 09-11-2027 | H5 |
 | Despliegue sin interrupción E1 | 3.8.8 | 21-10-2027 | 09-11-2027 | H5 |
-| Aceptación y accesibilidad E1 | 3.8.2 | 10-11-2027 | 17-11-2027 | H5 |
-| Perfil operacional: sin señal, sin enlace, −22 °C | 3.8.3 | 10-11-2027 | 17-11-2027 | H5 |
+| Aceptación y accesibilidad E1 | 3.8.2 | 21-10-2027 | 17-11-2027 | H5 |
+| Perfil operacional: sin señal, sin enlace, −22 °C | 3.8.3 | 21-10-2027 | 17-11-2027 | H5 |
 | Certificación E1 | 3.8.7 | 18-11-2027 | 29-11-2027 | H5 |
 | Ensayo de reversión de la Etapa 1 | 4.1.2 | 01-12-2027 | 09-12-2027 | H6 |
 | Integración y regresión E2 | 3.9.1 | 01-05-2028 | 18-05-2028 | H9 |
@@ -162,6 +179,16 @@ El Líder de Calidad, Maximiliano Miño, es dueño de este plan, aprueba los cri
 ## 10. Informes y entregables de prueba
 
 Cada prueba produce un informe con el alcance ejecutado, los resultados frente a cada criterio de salida, los defectos y su estado, y la evidencia: registros de ejecución, capturas, métricas y trazas. El informe de carga incluye la curva de tiempo de respuesta frente a carga, el punto de saturación, el consumo de recursos y el comportamiento durante y después del peak (RT-09.07). El informe de recuperación incluye el RTO y el RPO medidos y el plan de corrección de brechas (RT-07.07). La prueba de intrusión se entrega íntegra al CLIENTE con su plan de remediación (RT-11.20). El informe de accesibilidad separa el resultado automático de axe-core de la revisión manual; cualquier incumplimiento WCAG 2.2 A o AA confirmado queda como bloqueo de aceptación hasta corregirse. Los informes se agregan al expediente del hito que habilitan, conforme al Formulario T-17.
+
+## Referencias
+
+Las fuentes citadas en este formulario se listan en formato APA 7.ª edición. Las Bases se citan en el texto con su documento y el artículo, capítulo, sección o código del requisito.
+
+- Distribuidora Puelche S.A. (2026a). *Bases Administrativas de Licitación N.º TFEP-01/2026: Contratación de Solución Integral de Software y Servicios de Operación*.
+- Distribuidora Puelche S.A. (2026b). *Bases Técnicas Transversales de Licitación N.º TFEP-01/2026*.
+- Distribuidora Puelche S.A. (2026c). *Caso 02: Logística. Especificaciones del problema y operación de Distribuidora Puelche S.A.*
+- International Organization for Standardization, International Electrotechnical Commission, & Institute of Electrical and Electronics Engineers. (2021). *ISO/IEC/IEEE 29119-3:2021 Software and systems engineering — Software testing — Part 3: Test documentation*. ISO.
+- LafroX. (2026). Subdocumentos 3, 4, 8 y 9, con sus anexos, y Formularios T-14, T-15 y T-17.
 
 ## Declaración de uso de IA
 

@@ -16,11 +16,7 @@ El avance se mide con **valor ganado**, sin equiparar horas consumidas a resulta
 
 [El desarrollo](../06_metodolog%C3%ADas/LAFROX-Subdocumento6.md#62-metodolog%C3%ADa-de-desarrollo-software) usa **RUP**, proceso iterativo con Inicio, Elaboración, Construcción y Transición. La arquitectura se valida temprano y el software avanza en iteraciones regulares, cuya cadencia de **dos semanas**, demostración y revisión se detallan en **T-10**. La deuda técnica y los ajustes de arquitectura quedan registrados.
 
-<<<<<<< Updated upstream
-[DevSecOps](../06_metodolog%C3%ADas/LAFROX-Subdocumento6.md#622-devsecops-integraci%C3%B3n-y-entrega-continuas-infraestructura-como-c%C3%B3digo-y-pruebas-automatizadas) incorpora seguridad y pruebas en la entrega. GitLab CI y CodeBuild construyen un artefacto verificable, que se promueve sin recompilar entre ambientes. Se bloquea la promoción ante fallas, contratos rotos, hallazgos altos/críticos o deuda bloqueante. Los umbrales distinguen **70 % de cobertura de lógica de negocio** exigida y **80 % de cobertura unitaria global** como política corporativa.
-=======
-[DevSecOps](../06_metodolog%C3%ADas/LAFROX-Subdocumento6.md#622-devsecops-integraci%C3%B3n-y-entrega-continuas-infraestructura-como-c%C3%B3digo-y-pruebas-automatizadas) incorpora seguridad y pruebas en la entrega. SD6 sintetiza compuertas y promoción de artefactos sin reconstrucción; **T-10** detalla GitLab CI, CodeBuild, firma, infraestructura como código y migraciones reversibles. Se bloquea la promoción ante fallas, contratos rotos, hallazgos altos/críticos o deuda bloqueante. Los umbrales distinguen **70 % de cobertura de lógica de negocio** exigida y **80 % de cobertura unitaria del código modificado** como política corporativa.
->>>>>>> Stashed changes
+[DevSecOps](../06_metodolog%C3%ADas/LAFROX-Subdocumento6.md#622-devsecops-integraci%C3%B3n-y-entrega-continuas-infraestructura-como-c%C3%B3digo-y-pruebas-automatizadas) incorpora seguridad y pruebas en la entrega. SD6 sintetiza compuertas y promoción de artefactos sin reconstrucción; **T-10** detalla GitLab CI, CodeBuild, firma, infraestructura como código y migraciones reversibles. Se bloquea la promoción ante fallas, contratos rotos, hallazgos altos/críticos o deuda bloqueante. Los umbrales distinguen **70 % de cobertura de lógica de negocio** exigida y **80 % de cobertura unitaria global** como política corporativa.
 
 ## Compras y condiciones de ejecución
 

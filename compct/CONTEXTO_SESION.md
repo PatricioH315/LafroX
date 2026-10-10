@@ -1,5 +1,19 @@
 # CONTEXTO DE SESIÓN
 
+## Estado vigente — 10 de octubre de 2026: revisión v3 del SD9 y 15 correcciones sin decisión aplicadas
+
+Revisión `Revision/revision_comision_informe2_SD9_v3.md` (42 preguntas de comisión: 16 respondidas, 26 al plan; plan PC-01 a PC-32). Puntaje 0/100 por celdas `[[REVISIÓN HUMANA]]`; contenido 20 antes de corregir, por contradicciones nuevas (H02–H12). Por instrucción del usuario se aplicaron los 15 ítems sin decisión: PC-02, 03, 04, 07, 14, 15, 16, 17, 21, 22, 23, 25, 26, 30 y 31. Sin commit; se editaron también tres .drawio y la planilla, por autorización de esos ítems.
+
+- **Cifras vigentes del SD9:** 1.297 casos (846 + 346 + 105 de contrato, 7 por integración × 15; antes 1.282); ~1.038 automatizados; regresión 8,65 h con un ejecutor y 4,33 h con dos; 259 manuales, ~65 HH. Costo de calidad: prevención 4.224 HH y evaluación 6.624 HH (total 10.848; 3.10.2.4 pasa a prevención). Productividad 6,4 HH/día (T-15 5.1). Reversión operativa E2 ≤ 40 min (T-18 6.4).
+- **Anexo 9.C** regenerado desde el T-12: 0 diferencias en 645 IDs (RF 159/21/1, RNF 78/10/2, RT 304/42/28); 259/9/3 se mantiene.
+- **Referencias:** «Capítulo 11» → paquetes 8.2.4 y 8.4.1 del T-14; matriz de cobertura → SD7 Tabla 7.2 y Figura 7.16. T-12: 13 RT remiten a SD9/T-13/T-17. McCabe (1976), Martin (2003), W3C (2023), CMMI (2023) e ISO/IEC/IEEE 29119-3:2021 agregados.
+- **Contenido:** carga anual en Preproducción (Tabla 9.9, Fig. 9.4); G6 en Tabla 9.5 y Fig. 9.3; acta de la Contraparte Técnica como condición adicional de G5, sin levantar fallas ni defectos críticos/altos; p95 de navegación 1 s, transacción de terreno 3 s, búsqueda compuesta 3 s (RF-17.11 ≤ 2 s) e informe estándar 30 s en 9A-05/06/07 (siguen 29 métricas); resolución determinista de conflictos de stock (SD4 Anexo 4-K, Tabla A.12) en T-13 T13.3 y 9A-19; T-13 3.8.2/3.8.3 = 21-10 → 17-11-2027; siglas definidas en primer uso.
+- **Figuras:** Fig. 9.9 (Mermaid y .drawio) con resiliencia sep-29/sep-30 (días 26–30) y DR oct-29/oct-30; Fig. 9.7 .drawio con el nombre completo de 3.4.4.
+- **Formato:** declaración de IA con una fila por anexo; celdas `[[REVISIÓN HUMANA]]` pasan de 13 a 16. Índices en Anexos, T-13 y T-17.
+- **Planilla `LafroX-Calculos-SD9.xlsx`:** alineada (Casos_Prueba, HH_Calidad, COQ, Datos_Base fila 51, Calendario, ISO25010); respaldo en el scratchpad; sin recálculo (no hay LibreOffice; Excel recalcula al abrir).
+
+Pendientes nuevos detectados por la planilla: con 6,4 HH/día el mes 10 excede la capacidad de evaluadores (845,3 HH frente a 806,4); el T-15 usa 20 días/mes (128 HH) y el SD9 21; el mes 17 tiene evaluadores sin paquete de prueba ni justificación (85 HH). Pendientes con decisión del equipo: PC-01, 05, 06, 08–13, 18–20, 24, 27–29 y 32 de la v3; páginas de citas (requiere PDF). Esta nota supersede la lista de pendientes de la entrada siguiente.
+
 ## Estado vigente — 9 de octubre de 2026: pendientes cruzados 1–9 cerrados y tercera revisión del SD9
 
 Por instrucción del usuario se cerraron los pendientes cruzados listados en la revisión del SD9. Sólo Markdown, en `rama-md`; sin commit.

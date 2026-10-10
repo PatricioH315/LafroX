@@ -11,6 +11,29 @@ Este formulario adjunta la propuesta de Protocolo de Aceptación de cada hito y 
 
 El protocolo aplica los Arts. 17.3 y 18 de las Bases Administrativas. Las pruebas que generan la evidencia están en el Formulario T-13. Su fundamento, en el Subdocumento 9, sección 9.3.2.
 
+## Índice
+
+- [1. Procedimiento general](#1-procedimiento-general)
+  - [1.1 Expediente de aceptación](#11-expediente-de-aceptación)
+  - [1.2 Plazos](#12-plazos)
+  - [1.3 Observaciones y subsanación](#13-observaciones-y-subsanación)
+  - [1.4 Acta de conformidad](#14-acta-de-conformidad)
+- [2. Fichas por hito](#2-fichas-por-hito)
+  - [H1 — Línea base de alcance y matriz de trazabilidad (mes 2)](#h1--línea-base-de-alcance-y-matriz-de-trazabilidad-mes-2)
+  - [H2 — Arquitectura, plan de seguridad y modelo de datos (mes 4)](#h2--arquitectura-plan-de-seguridad-y-modelo-de-datos-mes-4)
+  - [H3 — Infraestructura híbrida y ambientes (mes 6)](#h3--infraestructura-híbrida-y-ambientes-mes-6)
+  - [H4 — Software de la Etapa 1 para pruebas (mes 10)](#h4--software-de-la-etapa-1-para-pruebas-mes-10)
+  - [H5 — Certificación de la Etapa 1 (mes 12)](#h5--certificación-de-la-etapa-1-mes-12)
+  - [H6 — Inicio de la marcha blanca de la Etapa 1 (mes 13)](#h6--inicio-de-la-marcha-blanca-de-la-etapa-1-mes-13)
+  - [H7 — Paso a producción de la Etapa 1 (mes 16)](#h7--paso-a-producción-de-la-etapa-1-mes-16)
+  - [H8 — Línea base y diseño de la Etapa 2 (mes 14)](#h8--línea-base-y-diseño-de-la-etapa-2-mes-14)
+  - [H9 — Software de la Etapa 2 para pruebas (mes 17)](#h9--software-de-la-etapa-2-para-pruebas-mes-17)
+  - [H10 — Certificación de la Etapa 2 y cierre del desarrollo (mes 18)](#h10--certificación-de-la-etapa-2-y-cierre-del-desarrollo-mes-18)
+  - [H11 — Inicio de la marcha blanca de la Etapa 2 (mes 19)](#h11--inicio-de-la-marcha-blanca-de-la-etapa-2-mes-19)
+  - [H12 — Paso a producción de la Etapa 2 y aceptación final (mes 21)](#h12--paso-a-producción-de-la-etapa-2-y-aceptación-final-mes-21)
+- [3. Aceptación del producto final](#3-aceptación-del-producto-final)
+- [Declaración de uso de IA](#declaración-de-uso-de-ia)
+
 ## 1. Procedimiento general
 
 El procedimiento es el mismo para todos los hitos. Cambian los entregables, los criterios y la evidencia, que se detallan en la sección 2.
@@ -180,7 +203,7 @@ La ficha del H11 habilita la operación supervisada de la Etapa 2 en convivencia
 | Campo | Contenido |
 | --- | --- |
 | Entregables | Plan de reversión de la Etapa 2; registro de usuarios capacitados (7.3.2); cadenas certificadas para la mensajería electrónica |
-| Criterios | Reversión técnica de la Etapa 2 en ≤ 10 minutos sin afectar la Etapa 1; reversión operativa de extremo a extremo documentada; 100 % de los usuarios definidos certificados; fuente única de verdad para los datos compartidos (Art. 17.2) |
+| Criterios | Reversión técnica de la Etapa 2 en ≤ 10 minutos sin afectar la Etapa 1; reversión operativa de extremo a extremo en ≤ 40 minutos, el mismo objetivo que el Formulario T-18, sección 6.4, fija para el ensayo previo a cada corte; 100 % de los usuarios definidos certificados; fuente única de verdad para los datos compartidos (Art. 17.2) |
 | Evidencia | Ensayo de reversión en Preproducción con cronómetro técnico y operativo; registro de certificación; informe de conciliación entre etapas |
 | Fechas | Fecha contractual fija: mes 19 (agosto de 2028) |
 | Responsable | Líder Funcional (IMP) |
