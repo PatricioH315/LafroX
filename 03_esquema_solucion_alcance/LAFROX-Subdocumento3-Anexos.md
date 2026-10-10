@@ -289,6 +289,17 @@ La Tabla 3.A.4 presenta los requerimientos no funcionales de Distribuidora Puelc
 
 Los identificadores RNF-03-01, RNF-03-02 y RNF-03-03 del catálogo consolidado se escriben RNF-03.01, RNF-03.02 y RNF-03.03 para uniformar la grafía; se trata del mismo requerimiento.
 
+RT-13.04 exige comprometer, para cada perfil, el tiempo máximo de la transacción operacional crítica, el número máximo de pasos, la tasa de error tolerada y el tiempo de aprendizaje (*Bases Técnicas Transversales*, 2026, cap. 13, RT-13.04). La Tabla 3.A.4a los fija para los cuatro perfiles que operan en bodega y en terreno. Los tiempos provienen de los requerimientos citados; los pasos y, fuera de la preparación, la tasa de error y el aprendizaje son compromisos de LafroX. Un paso es una interacción de la persona con el terminal, sin contar las validaciones automáticas, y la tasa de error es la proporción de transacciones que la persona debe corregir o rehacer. La prueba de usabilidad con personas reales de cada perfil los mide (Subdocumento 9, métrica 9A-13).
+
+**Tabla 3.A.4a — Indicadores de usabilidad comprometidos por perfil. Fuente: elaboración propia a partir de los requerimientos de Distribuidora Puelche, de las Bases Técnicas Transversales y del Formulario T-14.**
+
+| Perfil | Transacción operacional crítica | Tiempo máximo | Pasos máximos | Tasa de error tolerada | Tiempo de aprendizaje |
+| --- | --- | --- | --- | --- | --- |
+| Preparador | Confirmar una línea de picking | ≤ 1 s (RNF-05.01) | 3: escanear la ubicación, escanear el producto o lote y confirmar la cantidad | ≤ 5 % (RNF-05.03) | ≤ 2 h de entrenamiento asistido en el puesto (RNF-05.03) |
+| Recepción | Registrar un ítem recibido | ≤ 2 s (RNF-01.01) | 3: escanear el código GS1, verificar la cantidad y confirmar | ≤ 5 % | ≤ 2 h de entrenamiento asistido en el puesto |
+| Preventista | Registrar una línea de pedido | ≤ 1,5 s (RNF-03.01) | 3: elegir el producto, ingresar la cantidad y agregarla al pedido | ≤ 5 % | ≤ 4 h de capacitación antes de su ola, con acompañamiento en ruta (Anexo 3.I) |
+| Conductor propio o externo | Registrar una entrega conforme con su evidencia | ≤ 2 s por confirmación en el terminal | 3 sin cobro: marcar la guía, capturar la firma o la fotografía y cerrar; 4 con cobro | ≤ 5 % | ≤ 30 min en la inducción en el andén (Formulario T-14, paquete 7.1.3) |
+
 La Tabla 3.A.5 presenta los requerimientos no funcionales derivados de las Bases Técnicas Transversales.
 
 **Tabla 3.A.5 — Requerimientos no funcionales derivados de las Bases Técnicas Transversales. Fuente: elaboración propia a partir de las Bases Técnicas Transversales.**

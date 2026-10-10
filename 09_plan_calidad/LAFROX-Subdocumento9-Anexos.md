@@ -39,7 +39,7 @@ La Tabla 9.A.1 presenta las 29 métricas.
 | 9A-10 | Compatibilidad | Interoperabilidad | Contratos OpenAPI 3.1 / AsyncAPI sin ruptura | 0 contratos rotos | BA Art. 23; SD6 §6.2 | Pruebas de contrato en CI | DEV/QA | 1.5.2 |
 | 9A-11 | Compatibilidad | Interoperabilidad | Flujos de las 15 integraciones ejecutados sin error | 15 de 15 | BTT §20.1 (integración) | Pruebas de integración en QA | QA | 3.8.1, 3.9.1 |
 | 9A-12 | Compatibilidad | Coexistencia | Regresiones de la Etapa 1 al integrar la Etapa 2 | 0 | BA Art. 17.2 | Regresión completa con E1 en producción | QA/PREPROD | 3.9.1 |
-| 9A-13 | Usabilidad | Aprendizaje | Tiempo, pasos, error y aprendizaje por perfil | Preventista: 20 líneas en ≤ 2 h y error ≤ 5 %; conductor/reparto: entrega completa en ≤ 3 min, ≤ 8 pasos y error ≤ 5 %; bodega: confirmación de línea en ≤ 1 s y error ≤ 5 %; segundo flujo sin asistencia por perfil | SD3 Anexos RNF; BTT RT-13.04 | Prueba de usabilidad con usuarios reales por perfil | PREPROD/Terreno | 2.6.2, 2.6.3 |
+| 9A-13 | Usabilidad | Aprendizaje | Tiempo, pasos, error y aprendizaje por perfil; registrar 20 líneas sin asistencia y, por perfil, tiempos de la Tabla 3.A.4a del SD3 | Preventista: 20 líneas en ≤ 2 h y error ≤ 5 %; conductor/reparto: entrega completa en ≤ 3 min, ≤ 8 pasos y error ≤ 5 %; bodega: confirmación de línea en ≤ 1 s y error ≤ 5 %; segundo flujo sin asistencia por perfil; valores de la Tabla 3.A.4a | SD3 Anexos RNF; BTT RT-13.04 | Prueba de usabilidad con usuarios reales por perfil | PREPROD/Terreno | 2.6.2, 2.6.3 |
 | 9A-14 | Usabilidad | Accesibilidad | Conformidad WCAG 2.2 AA (axe-core + manual) | 0 incumplimientos A/AA | BTT RT-13.01; W3C (2023) | Herramienta automática + revisión manual | QA/PREPROD | 3.8.2, 3.9.2 |
 | 9A-15 | Usabilidad | Operabilidad en terreno | Uso con guantes a −22 °C, lluvia, >34 °C, sol directo, una mano y objetivos táctiles | ≥ 15×15 mm; 30 min a −22 °C; flujo completado bajo lluvia, >34 °C y sol directo sin pérdida ni error crítico | Caso cap. 15 RT-13.08; SD3 Anexos | Prueba del perfil operacional en cámara y terreno | Terreno | 3.8.3 |
 | 9A-16 | Fiabilidad | Disponibilidad | Disponibilidad mensual de servicios críticos | ≥ 99,9 %; 0 min en 05:30–07:00 | BTT RT-10.01; Caso RT-10.05 | Medición sobre transacción real (marcha blanca y Operación) | PROD | 4.2, 8.1 |
@@ -151,11 +151,11 @@ La Tabla 9.C.1 resume la matriz.
 | --- | --- | --- | --- | --- |
 | RF | 181 | 175 | 6 | 544 |
 | RNF | 90 | 84 | 6 | 302 |
-| RT | 374 | 346 | 28 | 346 |
+| RT | 374 | 354 | 20 | 354 |
 | Contratos de las 15 integraciones | — | — | — | 105 |
-| **Total** | **645** | **605** | **40** | **1.297** |
+| **Total** | **645** | **613** | **32** | **1.305** |
 
-La matriz asigna prueba propia a 605 de los 645 identificadores. Los 40 restantes son 31 en estado «No cumple» y 9 absorbidos por otra fila. Con los 105 casos de contrato de las integraciones, siete por cada una de las 15, el catálogo suma 544 + 302 + 346 + 105 = 1.297 casos, la cifra que usa la sección 9.2.3 del Subdocumento 9.
+La matriz asigna prueba propia a 613 de los 645 identificadores. Los 32 restantes son 23 en estado «No cumple» y 9 absorbidos por otra fila. Con los 105 casos de contrato de las integraciones, siete por cada una de las 15, el catálogo suma 544 + 302 + 354 + 105 = 1.305 casos, la cifra que usa la sección 9.2.3 del Subdocumento 9.
 
 ### 9.C.2 Matriz
 
@@ -322,7 +322,7 @@ La Tabla 9.C.2 presenta la matriz completa, en el orden del Formulario T-12.
 | RF-15.04 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 · 3.9.1 · 3.9.2 | H4 · H5 · H9 · H10 | 3 |
 | RF-15.05 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 · 3.9.1 · 3.9.2 | H4 · H5 · H9 · H10 | 3 |
 | RF-16.01 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 · 3.9.1 · 3.9.2 | H4 · H5 · H9 · H10 | 3 |
-| RF-16.02 | Cumple parcialmente | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 · 3.9.1 · 3.9.2 | H4 · H5 · H9 · H10 | 3 |
+| RF-16.02 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 · 3.9.1 · 3.9.2 | H4 · H5 · H9 · H10 | 3 |
 | RF-16.03 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 · 3.9.1 · 3.9.2 | H4 · H5 · H9 · H10 | 3 |
 | RF-16.04 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 · 3.9.1 · 3.9.2 | H4 · H5 · H9 · H10 | 3 |
 | RF-17.01 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 · 3.9.1 · 3.9.2 | H4 · H5 · H9 · H10 | 3 |
@@ -338,7 +338,7 @@ La Tabla 9.C.2 presenta la matriz completa, en el orden del Formulario T-12.
 | RF-17.11 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 · 3.9.1 · 3.9.2 | H4 · H5 · H9 · H10 | 3 |
 | RF-17.12 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 · 3.9.1 · 3.9.2 | H4 · H5 · H9 · H10 | 3 |
 | RF-17.13 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 · 3.9.1 · 3.9.2 | H4 · H5 · H9 · H10 | 2 |
-| RF-18.01 | Cumple parcialmente | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 · 3.9.1 · 3.9.2 | H4 · H5 · H9 · H10 | 3 |
+| RF-18.01 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 · 3.9.1 · 3.9.2 | H4 · H5 · H9 · H10 | 3 |
 | RF-18.02 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 · 3.9.1 · 3.9.2 | H4 · H5 · H9 · H10 | 2 |
 | RF-18.03 | Cumple parcialmente | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 · 3.9.1 · 3.9.2 | H4 · H5 · H9 · H10 | 3 |
 | RF-19.01 | Cumple | Se verifica con RT-11.03 | — | — | — | 0 |
@@ -375,7 +375,7 @@ La Tabla 9.C.2 presenta la matriz completa, en el orden del Formulario T-12.
 | RNF-11.04 | Cumple | Se verifica con RT-05.29 | — | — | — | 0 |
 | RNF-12.01 | Cumple | Prueba funcional en marcha blanca | PROD | 4.3 | H12 | 5 |
 | RNF-12.02 | Cumple | Prueba funcional en marcha blanca | PROD | 4.3 | H12 | 3 |
-| RNF-12.03 | Cumple parcialmente | Prueba funcional en marcha blanca | PROD | 4.3 | H12 | 3 |
+| RNF-12.03 | Cumple | Prueba funcional en marcha blanca | PROD | 4.3 | H12 | 3 |
 | RNF-13.01 | Cumple | Perfil operacional: sin señal y sin enlace | Terreno · PREPROD | 3.8.3 · 3.9.2 | H5 · H10 | 5 |
 | RNF-13.02 | Cumple | Inspección del expediente de certificación | — | 3.8.7 · 3.9.6 | H5 · H10 | 5 |
 | RNF-13.03 | Cumple | Prueba funcional en marcha blanca | PROD | 4.2 · 4.3 | H7 · H12 | 3 |
@@ -407,7 +407,7 @@ La Tabla 9.C.2 presenta la matriz completa, en el orden del Formulario T-12.
 | RNF-17.02 | Cumple | Revisión de configuración, SAST/DAST y pentest | QA · PREPROD | 3.8.6 · 3.9.5 | H5 · H10 | 3 |
 | RNF-17.03 | Cumple | Prueba funcional en marcha blanca | PROD | 4.2 · 4.3 | H7 · H12 | 3 |
 | RNF-19.01 | Cumple | Inspección del expediente de certificación | — | 3.8.7 · 3.9.6 | H5 · H10 | 3 |
-| RNF-19.02 | Cumple parcialmente | Prueba funcional en marcha blanca | PROD | 4.2 · 4.3 | H7 · H12 | 3 |
+| RNF-19.02 | Cumple | Prueba funcional en marcha blanca | PROD | 4.2 · 4.3 | H7 · H12 | 3 |
 | RNF-19.03 | Cumple | Inspección del expediente de certificación | — | 3.8.7 · 3.9.6 | H5 · H10 | 3 |
 | RNF-19.04 | Cumple | Carga a 1,5× el peak y estrés | PREPROD | 3.8.4 · 3.9.3 | H5 · H10 | 3 |
 | RNF-20.01 | Cumple | Recuperación ante desastres con conmutación real | DR | 3.8.5 · 3.9.4 | H5 · H10 | 5 |
@@ -445,7 +445,7 @@ La Tabla 9.C.2 presenta la matriz completa, en el orden del Formulario T-12.
 | RT-02.07 | Cumple | Revisión de arquitectura y prueba de integración | QA | 2.1 · 3.8.1 | H2 · H4 | 1 |
 | RT-02.08 | Cumple | Revisión de arquitectura y prueba de integración | QA | 2.1 · 3.8.1 | H2 · H4 | 1 |
 | RT-02.09 | Cumple | Revisión de arquitectura y prueba de integración | QA | 2.1 · 3.8.1 | H2 · H4 | 1 |
-| RT-02.10 | Cumple parcialmente | Revisión de arquitectura y prueba de integración | QA | 2.1 · 3.8.1 | H2 · H4 | 1 |
+| RT-02.10 | Cumple | Revisión de arquitectura y prueba de integración | QA | 2.1 · 3.8.1 | H2 · H4 | 1 |
 | RT-02.11 | Cumple | Revisión de arquitectura y prueba de integración | QA | 2.1 · 3.8.1 | H2 · H4 | 1 |
 | RT-02.12 | Cumple | Revisión de arquitectura y prueba de integración | QA | 2.1 · 3.8.1 | H2 · H4 | 1 |
 | RT-02.13 | Cumple | Revisión de arquitectura y prueba de integración | QA | 2.1 · 3.8.1 | H2 · H4 | 1 |
@@ -457,7 +457,7 @@ La Tabla 9.C.2 presenta la matriz completa, en el orden del Formulario T-12.
 | RT-03.05 | Cumple | Corte de enlace y resiliencia del modelo híbrido | PREPROD | 3.8.3 · 3.8.4 | H5 | 1 |
 | RT-03.06 | Cumple | Corte de enlace y resiliencia del modelo híbrido | PREPROD | 3.8.3 · 3.8.4 | H5 | 1 |
 | RT-03.07 | Cumple | Corte de enlace y resiliencia del modelo híbrido | PREPROD | 3.8.3 · 3.8.4 | H5 | 1 |
-| RT-03.08 | Cumple parcialmente | Corte de enlace y resiliencia del modelo híbrido | PREPROD | 3.8.3 · 3.8.4 | H5 | 1 |
+| RT-03.08 | Cumple | Corte de enlace y resiliencia del modelo híbrido | PREPROD | 3.8.3 · 3.8.4 | H5 | 1 |
 | RT-03.09 | Cumple | Corte de enlace y resiliencia del modelo híbrido | PREPROD | 3.8.3 · 3.8.4 | H5 | 1 |
 | RT-03.10 | Cumple | Corte de enlace y resiliencia del modelo híbrido | PREPROD | 3.8.3 · 3.8.4 | H5 | 1 |
 | RT-03.11 | Cumple | Corte de enlace y resiliencia del modelo híbrido | PREPROD | 3.8.3 · 3.8.4 | H5 | 1 |
@@ -486,7 +486,7 @@ La Tabla 9.C.2 presenta la matriz completa, en el orden del Formulario T-12.
 | RT-04.10 | Cumple | Puertas G1–G5 del pipeline | DEV · QA | 1.5.2 | H3 · H4 | 1 |
 | RT-04.11 | Cumple | Puertas G1–G5 del pipeline | DEV · QA | 1.5.2 | H3 · H4 | 1 |
 | RT-04.12 | Cumple | Puertas G1–G5 del pipeline | DEV · QA | 1.5.2 | H3 · H4 | 1 |
-| RT-04.13 | Cumple parcialmente | Puertas G1–G5 del pipeline | DEV · QA | 1.5.2 | H3 · H4 | 1 |
+| RT-04.13 | Cumple | Puertas G1–G5 del pipeline | DEV · QA | 1.5.2 | H3 · H4 | 1 |
 | RT-04.14 | Cumple | Puertas G1–G5 del pipeline | DEV · QA | 1.5.2 | H3 · H4 | 1 |
 | RT-05.01 | Cumple | Integración, contrato y ensayos de migración | QA · PREPROD | 3.7 · 3.8.1 | H4 · H5 | 1 |
 | RT-05.02 | Cumple | Integración, contrato y ensayos de migración | QA · PREPROD | 3.7 · 3.8.1 | H4 · H5 | 1 |
@@ -566,7 +566,7 @@ La Tabla 9.C.2 presenta la matriz completa, en el orden del Formulario T-12.
 | RT-07.12 | Cumple | Recuperación ante desastres y restauración | DR | 3.8.5 · 3.9.4 · 8.1.3 · 8.1.6 | H5 · H10 · semestral | 1 |
 | RT-07.13 | Cumple | Recuperación ante desastres y restauración | DR | 3.8.5 · 3.9.4 · 8.1.3 · 8.1.6 | H5 · H10 · semestral | 1 |
 | RT-07.14 | Cumple | Recuperación ante desastres y restauración | DR | 3.8.5 · 3.9.4 · 8.1.3 · 8.1.6 | H5 · H10 · semestral | 1 |
-| RT-08.01 | Cumple parcialmente | Recepción técnica y prueba de dispositivos | Terreno | 3.8.3 | H5 | 1 |
+| RT-08.01 | Cumple | Recepción técnica y prueba de dispositivos | Terreno | 3.8.3 | H5 | 1 |
 | RT-08.02 | Cumple | Recepción técnica y prueba de dispositivos | Terreno | 3.8.3 | H5 | 1 |
 | RT-08.03 | Cumple | Recepción técnica y prueba de dispositivos | Terreno | 3.8.3 | H5 | 1 |
 | RT-08.04 | Cumple parcialmente | Recepción técnica y prueba de dispositivos | Terreno | 3.8.3 | H5 | 1 |
@@ -648,7 +648,7 @@ La Tabla 9.C.2 presenta la matriz completa, en el orden del Formulario T-12.
 | RT-13.01 | Cumple | Accesibilidad WCAG 2.2 AA y usabilidad | QA · PREPROD · Terreno | 2.6.2 · 3.8.2 · 3.9.2 | H5 · H10 | 1 |
 | RT-13.02 | Cumple | Accesibilidad WCAG 2.2 AA y usabilidad | QA · PREPROD · Terreno | 2.6.2 · 3.8.2 · 3.9.2 | H5 · H10 | 1 |
 | RT-13.03 | Cumple | Accesibilidad WCAG 2.2 AA y usabilidad | QA · PREPROD · Terreno | 2.6.2 · 3.8.2 · 3.9.2 | H5 · H10 | 1 |
-| RT-13.04 | Cumple parcialmente | Accesibilidad WCAG 2.2 AA y usabilidad | QA · PREPROD · Terreno | 2.6.2 · 3.8.2 · 3.9.2 | H5 · H10 | 1 |
+| RT-13.04 | Cumple | Accesibilidad WCAG 2.2 AA y usabilidad | QA · PREPROD · Terreno | 2.6.2 · 3.8.2 · 3.9.2 | H5 · H10 | 1 |
 | RT-13.05 | Cumple | Accesibilidad WCAG 2.2 AA y usabilidad | QA · PREPROD · Terreno | 2.6.2 · 3.8.2 · 3.9.2 | H5 · H10 | 1 |
 | RT-13.06 | Cumple | Accesibilidad WCAG 2.2 AA y usabilidad | QA · PREPROD · Terreno | 2.6.2 · 3.8.2 · 3.9.2 | H5 · H10 | 1 |
 | RT-13.07 | Cumple | Accesibilidad WCAG 2.2 AA y usabilidad | QA · PREPROD · Terreno | 2.6.2 · 3.8.2 · 3.9.2 | H5 · H10 | 1 |
@@ -658,13 +658,13 @@ La Tabla 9.C.2 presenta la matriz completa, en el orden del Formulario T-12.
 | RT-13.11 | Cumple | Accesibilidad WCAG 2.2 AA y usabilidad | QA · PREPROD · Terreno | 2.6.2 · 3.8.2 · 3.9.2 | H5 · H10 | 1 |
 | RT-13.12 | Cumple | Accesibilidad WCAG 2.2 AA y usabilidad | QA · PREPROD · Terreno | 2.6.2 · 3.8.2 · 3.9.2 | H5 · H10 | 1 |
 | RT-14.01 | Cumple | Prueba de observabilidad y medición en marcha blanca | PREPROD · PROD | 3.8.4 · 4.2 | H5 · H7 | 1 |
-| RT-14.02 | Cumple parcialmente | Prueba de observabilidad y medición en marcha blanca | PREPROD · PROD | 3.8.4 · 4.2 | H5 · H7 | 1 |
+| RT-14.02 | Cumple | Prueba de observabilidad y medición en marcha blanca | PREPROD · PROD | 3.8.4 · 4.2 | H5 · H7 | 1 |
 | RT-14.03 | Cumple | Prueba de observabilidad y medición en marcha blanca | PREPROD · PROD | 3.8.4 · 4.2 | H5 · H7 | 1 |
 | RT-14.04 | Cumple | Prueba de observabilidad y medición en marcha blanca | PREPROD · PROD | 3.8.4 · 4.2 | H5 · H7 | 1 |
 | RT-14.05 | Cumple | Prueba de observabilidad y medición en marcha blanca | PREPROD · PROD | 3.8.4 · 4.2 | H5 · H7 | 1 |
 | RT-14.06 | Cumple | Prueba de observabilidad y medición en marcha blanca | PREPROD · PROD | 3.8.4 · 4.2 | H5 · H7 | 1 |
 | RT-14.07 | Cumple | Prueba de observabilidad y medición en marcha blanca | PREPROD · PROD | 3.8.4 · 4.2 | H5 · H7 | 1 |
-| RT-14.08 | Cumple parcialmente | Prueba de observabilidad y medición en marcha blanca | PREPROD · PROD | 3.8.4 · 4.2 | H5 · H7 | 1 |
+| RT-14.08 | Cumple | Prueba de observabilidad y medición en marcha blanca | PREPROD · PROD | 3.8.4 · 4.2 | H5 · H7 | 1 |
 | RT-14.09 | Cumple | Prueba de observabilidad y medición en marcha blanca | PREPROD · PROD | 3.8.4 · 4.2 | H5 · H7 | 1 |
 | RT-15.01 | Cumple | Inspección documental y medición | — | 3.8.7 | H5 | 1 |
 | RT-15.02 | Cumple parcialmente | Inspección documental y medición | — | 3.8.7 | H5 | 1 |
@@ -691,14 +691,14 @@ La Tabla 9.C.2 presenta la matriz completa, en el orden del Formulario T-12.
 | RT-16.14 | Cumple parcialmente | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 · 3.9.2 | H4 · H5 · H10 | 1 |
 | RT-16.15 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 · 3.9.2 | H4 · H5 · H10 | 1 |
 | RT-16.16 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 · 3.9.2 | H4 · H5 · H10 | 1 |
-| RT-16.17 | Cumple parcialmente | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 · 3.9.2 | H4 · H5 · H10 | 1 |
+| RT-16.17 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 · 3.9.2 | H4 · H5 · H10 | 1 |
 | RT-16.18 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 · 3.9.2 | H4 · H5 · H10 | 1 |
 | RT-16.19 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 · 3.9.2 | H4 · H5 · H10 | 1 |
 | RT-16.20 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 · 3.9.2 | H4 · H5 · H10 | 1 |
 | RT-16.21 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 · 3.9.2 | H4 · H5 · H10 | 1 |
 | RT-16.22 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 · 3.9.2 | H4 · H5 · H10 | 1 |
 | RT-16.23 | Cumple parcialmente | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 · 3.9.2 | H4 · H5 · H10 | 1 |
-| RT-16.24 | Cumple parcialmente | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 · 3.9.2 | H4 · H5 · H10 | 1 |
+| RT-16.24 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 · 3.9.2 | H4 · H5 · H10 | 1 |
 | RT-16.25 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 · 3.9.2 | H4 · H5 · H10 | 1 |
 | RT-16.26 | No cumple | Sin prueba: no ofertado | — | — | — | 0 |
 | RT-16.27 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 · 3.9.2 | H4 · H5 · H10 | 1 |
@@ -752,12 +752,12 @@ La Tabla 9.C.2 presenta la matriz completa, en el orden del Formulario T-12.
 | RT-21.05 | Cumple | Medición mensual de niveles de servicio | PROD | Cuentas 8.1 y 8.2 | Mensual | 1 |
 | RT-21.06 | Cumple | Medición mensual de niveles de servicio | PROD | Cuentas 8.1 y 8.2 | Mensual | 1 |
 | RT-21.07 | Cumple | Medición mensual de niveles de servicio | PROD | Cuentas 8.1 y 8.2 | Mensual | 1 |
-| RT-21.08 | No cumple | Sin prueba: no ofertado | — | — | — | 0 |
+| RT-21.08 | Cumple | Revisión mensual de la atención por nivel y de la base de conocimiento | PROD | Cuentas 8.1 y 8.5 | Mensual | 1 |
 | RT-21.09 | Cumple | Medición mensual de niveles de servicio | PROD | Cuentas 8.1 y 8.2 | Mensual | 1 |
 | RT-21.10 | Cumple | Medición mensual de niveles de servicio | PROD | Cuentas 8.1 y 8.2 | Mensual | 1 |
 | RT-21.11 | Cumple | Medición mensual de niveles de servicio | PROD | Cuentas 8.1 y 8.2 | Mensual | 1 |
 | RT-21.12 | No cumple | Sin prueba: no ofertado | — | — | — | 0 |
-| RT-21.13 | No cumple | Sin prueba: no ofertado | — | — | — | 0 |
+| RT-21.13 | Cumple | Inspección del tablero del CLIENTE y de sus permisos | PROD | Cuenta 8.1 | Mensual | 1 |
 | RT-21.14 | Cumple | Medición mensual de niveles de servicio | PROD | Cuentas 8.1 y 8.2 | Mensual | 1 |
 | RT-21.15 | Cumple | Medición mensual de niveles de servicio | PROD | Cuentas 8.1 y 8.2 | Mensual | 1 |
 | RT-21.16 | No cumple | Sin prueba: no ofertado | — | — | — | 0 |
@@ -780,12 +780,12 @@ La Tabla 9.C.2 presenta la matriz completa, en el orden del Formulario T-12.
 | RT-23.02 | Cumple | Inspección del entregable de la oferta | — | — | Presentación de la oferta | 1 |
 | RT-23.03 | Cumple parcialmente | Inspección del entregable de la oferta | — | — | Presentación de la oferta | 1 |
 | RT-23.04 | Cumple | Inspección del entregable de la oferta | — | — | Presentación de la oferta | 1 |
-| RT-23.05 | No cumple | Sin prueba: no ofertado | — | — | — | 0 |
-| RT-23.06 | No cumple | Sin prueba: no ofertado | — | — | — | 0 |
-| RT-23.07 | No cumple | Sin prueba: no ofertado | — | — | — | 0 |
-| RT-23.08 | No cumple | Sin prueba: no ofertado | — | — | — | 0 |
-| RT-23.09 | No cumple | Sin prueba: no ofertado | — | — | — | 0 |
-| RT-23.10 | No cumple | Sin prueba: no ofertado | — | — | — | 0 |
+| RT-23.05 | Cumple | Inspección del entregable de la oferta | — | — | Presentación de la oferta | 1 |
+| RT-23.06 | Cumple | Inspección del entregable de la oferta | — | — | Presentación de la oferta | 1 |
+| RT-23.07 | Cumple | Inspección del entregable de la oferta | — | — | Presentación de la oferta | 1 |
+| RT-23.08 | Cumple | Inspección del entregable de la oferta | — | — | Presentación de la oferta | 1 |
+| RT-23.09 | Cumple | Inspección del entregable de la oferta | — | — | Presentación de la oferta | 1 |
+| RT-23.10 | Cumple | Inspección del entregable de la oferta | — | — | Presentación de la oferta | 1 |
 | RT-24.01 | No cumple | Sin prueba: no ofertado | — | — | — | 0 |
 | RT-24.02 | No cumple | Sin prueba: no ofertado | — | — | — | 0 |
 | RT-24.03 | No cumple | Sin prueba: no ofertado | — | — | — | 0 |
