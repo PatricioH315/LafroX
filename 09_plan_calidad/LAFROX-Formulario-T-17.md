@@ -131,7 +131,7 @@ La ficha del H7 cierra la marcha blanca con las seis condiciones copulativas del
 
 | Campo | Contenido |
 | --- | --- |
-| Entregables | Informe de cierre de la marcha blanca con los indicadores diarios del SD7, Tabla 7.9; informe de los resultados R18 de la Etapa 1 |
+| Entregables | Informe de cierre de la marcha blanca con los indicadores diarios del SD7, Tabla 7.9; informe de los resultados de aceptación del Caso 02, capítulo 18 (R18, sección 3), que corresponden a la Etapa 1 |
 | Criterios | 0 incidentes críticos o altos abiertos; 100 % del volumen real durante las cuatro últimas semanas; 0 minutos de indisponibilidad entre 05:30 y 07:00 y disponibilidad ≥ 99,9 %; p95 cumplidos; 0 diferencias de conciliación sin explicar; 100 % de usuarios certificados; prueba de intrusión por tercero, resiliencia y carga aplicable repetidas sobre la versión de cierre; resultados R18 de la Etapa 1 en su meta (sección 3) |
 | Evidencia | Serie diaria de los indicadores de las cuatro últimas semanas; registros de conciliación; registro de certificación de usuarios; informes de intrusión, resiliencia y carga del cierre de marcha blanca |
 | Fechas | Fecha contractual fija: mes 16 (mayo de 2028) |

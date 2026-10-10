@@ -107,7 +107,7 @@ Con 1.282 casos estimados y el 80 % automatizado, la regresión nocturna ejecuta
 
 ## 8. Calendario
 
-El calendario de la implementación usa las fechas de los paquetes del Formulario T-15, sección 6.1. El de la Operación fija meses que evitan el congelamiento del 1 al 25 de septiembre, todo diciembre y los tres primeros días hábiles de cada mes (Caso 02, capítulo 15, RT-10.05).
+El calendario de la implementación usa las fechas de los paquetes del Formulario T-15, sección 6.1. El de la Operación fija las pruebas fuera del congelamiento del 1 al 25 de septiembre, de todo diciembre y de los tres primeros días hábiles de cada mes (Caso 02, capítulo 15, RT-10.05).
 
 ### 8.1 Implementación (meses 1 a 21)
 
@@ -153,7 +153,7 @@ La Tabla T13.6 presenta las pruebas periódicas de la Operación, con el mes del
 | Carga previa al peak de septiembre | Anual | 31, 43, 55 | ago-2029, ago-2030, ago-2031 | 3 |
 | Restauración de respaldos | Mensual | 21 a 56 | oct-2028 a sep-2031 | 36 |
 
-Las cantidades coinciden con los entregables de los paquetes 8.1.3, 8.1.6 y 8.2.2 del Formulario T-14. Las pruebas que intervienen Producción o el sitio de recuperación se programan después del tercer día hábil del mes y fuera de la ventana de 05:30 a 07:00. La programación mantiene una separación máxima de seis meses entre ejecuciones del mismo tipo; las pruebas de septiembre se ejecutan antes del día 1 o después del día 25, según la ventana aprobada, para respetar el congelamiento operacional.
+Las cantidades coinciden con los entregables de los paquetes 8.1.3, 8.1.6 y 8.2.2 del Formulario T-14. Las pruebas que intervienen Producción o el sitio de recuperación se programan después del tercer día hábil del mes y fuera de la ventana de 05:30 a 07:00. La programación mantiene una separación máxima de seis meses entre ejecuciones del mismo tipo; las pruebas de septiembre se ejecutan entre los días 26 y 30, en una ventana aprobada, para respetar el congelamiento operacional.
 
 ## 9. Roles y responsabilidades
 

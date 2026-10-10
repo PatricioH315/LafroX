@@ -1272,7 +1272,7 @@ La Tabla T14.25 presenta sus paquetes.
 | 3.8.4 | Pruebas de carga con el peak de septiembre y de resiliencia | Informe de carga y resiliencia. | Se cumplen los tiempos exigidos a 1,5 veces el peak, y la solución se recupera sin intervención. | CAL | Antes del H5. |
 | 3.8.5 | Prueba de recuperación ante desastres con conmutación real | Informe de la prueba. | Se alcanzan el RTO y el RPO comprometidos. | CAL | Antes del H5. |
 | 3.8.6 | Prueba de seguridad ofensiva de la Etapa 1, por un tercero independiente | Informe íntegro del tercero y evidencia de las correcciones. | No quedan hallazgos críticos ni altos abiertos. | SEG | Antes del H5. |
-| 3.8.7 | Acta de certificación de la Etapa 1 (H5) | Acta del H5 con su expediente de evidencia. | Las pruebas 3.8.2 a 3.8.6 están aprobadas y el acta está firmada. | CAL | Mes 10 (H5). |
+| 3.8.7 | Acta de certificación de la Etapa 1 (H5) | Acta del H5 con su expediente de evidencia. | Las pruebas 3.8.2 a 3.8.6 están aprobadas y el acta está firmada. | CAL | Ejecución: mes 10. Hito H5 del Formulario E-25: mes 12. |
 | 3.8.8 | Demostración en Preproducción del despliegue sin interrupción de la Etapa 1 | Informe de la demostración. | La versión se despliega y se revierte en Preproducción sin interrupción y sin intervención manual. | SRE | Antes del H5 y antes de cada paso a producción. |
 
 #### Cuenta 3.9 — Pruebas de la Etapa 2
@@ -1287,12 +1287,12 @@ La Tabla T14.26 presenta sus paquetes.
 
 | Código | Paquete de trabajo | Entregable | Criterio de aceptación | Resp. | Período |
 | --- | --- | --- | --- | --- | --- |
-| 3.9.1 | Pruebas de integración y regresión sin afectar la Etapa 1 en producción (H9) | Informe de pruebas. | No hay regresiones en la Etapa 1. | CAL | Mes 16 (H9). |
+| 3.9.1 | Pruebas de integración y regresión sin afectar la Etapa 1 en producción (H9) | Informe de pruebas. | No hay regresiones en la Etapa 1. | CAL | Ejecución: mes 16. Hito H9 del Formulario E-25: mes 17. |
 | 3.9.2 | Pruebas de aceptación y de accesibilidad con cadenas, transportistas, Comercial y Finanzas | Casos firmados. | Los casos están firmados por la Contraparte Técnica, y los portales cumplen WCAG 2.2 AA. | CAL | Antes del H10. |
 | 3.9.3 | Pruebas de carga con ambas etapas activas y de resiliencia | Informe. | Se cumplen los tiempos a 1,5 veces el peak. | CAL | Antes del H10. |
 | 3.9.4 | Prueba de recuperación ante desastres con ambas etapas | Informe. | Se alcanzan el RTO y el RPO comprometidos. | CAL | Antes del H10. |
 | 3.9.5 | Prueba de seguridad ofensiva de la Etapa 2, por un tercero independiente | Informe y correcciones. | No quedan hallazgos críticos ni altos abiertos. | SEG | Antes del H10. |
-| 3.9.6 | Acta de certificación de la Etapa 2 y cierre del desarrollo (H10) | Acta del H10. | Las pruebas 3.9.2 a 3.9.5 están aprobadas y el acta está firmada. | CAL | Meses 16 y 17 (H10). |
+| 3.9.6 | Acta de certificación de la Etapa 2 y cierre del desarrollo (H10) | Acta del H10. | Las pruebas 3.9.2 a 3.9.5 están aprobadas y el acta está firmada. | CAL | Ejecución: meses 16 y 17. Hito H10 del Formulario E-25: mes 18. |
 | 3.9.7 | Demostración en Preproducción del despliegue sin interrupción de la Etapa 2 | Informe de la demostración. | La versión se despliega y se revierte sin interrumpir ninguna de las dos etapas. | SRE | Antes del H10. |
 
 #### Cuenta 3.10 — Innovaciones
