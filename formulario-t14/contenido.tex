@@ -831,6 +831,8 @@ La Tabla \ref{tab:T-14-27} presenta sus paquetes.
 
 Esta cuenta de control reúne lo que permite entender, mantener y traspasar la solución. Lo exige el Art. 77°.
 
+Cada versión liberada se entregará al CLIENTE junto con su SBOM de 3.11.4 en formato CycloneDX o SPDX, identificando los componentes, sus versiones y licencias (Bases Técnicas Transversales, RT-11.23).
+
 La Tabla \ref{tab:T-14-28} presenta sus paquetes.
 
 \parte{tablas/tab_T14_28}
@@ -959,6 +961,10 @@ La fase 7 reúne 3 cuentas de control y 13 paquetes de trabajo.
 
 Esta cuenta de control reúne la capacitación de cada grupo según su rol y su situación.
 
+Todo el material de capacitación de 7.1.5, incluidos manuales por perfil, guías rápidas, preguntas frecuentes y videos tutoriales, y la base de conocimiento consultable de 3.11.2 y 8.5.3 se entregarán en español, en formato editable y serán de propiedad del CLIENTE (Bases Técnicas Transversales, RT-22.03).
+
+El plan de 7.1.1 acordará con el CLIENTE un calendario para todos los perfiles, por turno y horario, sin afectar la preparación nocturna, el despacho de 05:30 a 07:00 ni las labores en calle de lunes a sábado, y considerando los peaks de septiembre y diciembre. La capacitación de conductores externos se acordará con cada transportista mediante 5.4.1, y la inducción continua de preparadores de 7.1.2 atenderá la rotación anual del 38 \% sin detener la operación (Bases Técnicas Transversales, RT-22.04; Caso 02, cap. 15).
+
 La Tabla \ref{tab:T-14-42} presenta sus paquetes.
 
 \parte{tablas/tab_T14_42}
@@ -987,6 +993,14 @@ La fase 8 reúne 5 cuentas de control y 26 paquetes de trabajo.
 
 Esta cuenta de control reúne los servicios que mantienen la solución funcionando cada día y la actualización anual del Plan de Reversibilidad, que exige el Art. 77°.
 
+El SOC de 8.1.5 notificará al CLIENTE toda brecha de seguridad o de datos personales dentro de las 24 horas de su detección, adjuntando un informe preliminar, y entregará su análisis de causa raíz dentro de los cinco días hábiles siguientes a la detección (Bases Técnicas Transversales, RT-11.19). Durante Operación realizará al menos un ejercicio de simulación de incidente por año con participación del CLIENTE, conservando el escenario, la bitácora y las acciones de mejora (RT-11.21).
+
+En 8.1.2, cada incidente crítico tendrá un análisis de causa raíz obligatorio entregado al CLIENTE dentro de cinco días hábiles desde el incidente, con acciones correctivas, responsables y plazos; SRE seguirá cada acción hasta su cierre verificado en la gestión de problemas (Bases Técnicas Transversales, RT-14.06). La documentación operativa reunirá el libro de operación y una guía de resolución para cada escenario de falla previsible, incluidos los de los contratos de integración y el plan de continuidad; el servicio mantendrá estos procedimientos y automatizará progresivamente las tareas repetitivas con las herramientas de operación previstas (RT-14.05).
+
+El canal único de la mesa registrará incidentes y solicitudes con número de ticket, clasificación por severidad y seguimiento de todas sus actuaciones y estados hasta el cierre conforme, con el escalamiento L1–L3 previsto (Bases Técnicas Transversales, RT-21.15). El cierre de cada ticket requerirá la confirmación de la persona usuaria registrada en él; mientras falte, permanecerá pendiente de cierre y sujeto al seguimiento de la mesa (RT-21.17).
+
+El servicio conservará un registro histórico de todas las actividades de soporte, vinculadas a su ticket, con clasificación, actuaciones, responsables y resultado (Bases Técnicas Transversales, RT-21.09). El informe mensual de niveles de servicio de 8.1.2 analizará las tendencias de los principales requerimientos, detallará el cumplimiento por severidad y analizará cada incumplimiento, indicando causa, impacto y acción correctiva con responsable y plazo; sus resultados se revisarán en el Comité de Operación (RT-21.09 y RT-21.18).
+
 La Tabla \ref{tab:T-14-45} presenta sus paquetes.
 
 \parte{tablas/tab_T14_45}
@@ -994,6 +1008,8 @@ La Tabla \ref{tab:T-14-45} presenta sus paquetes.
 \subsubsection{Cuenta 8.2 — Mantenimiento}
 
 Esta cuenta de control reúne el trabajo que mantiene la solución sana y actualizada, separado por tipo: software, ciberseguridad y hardware.
+
+LafroX destinará las 2.304 HH DES de 8.2.4 a reducir la deuda técnica durante los 36 meses de Operación, equivalentes al 1,7948 \% de las 128.373,67 HH de esa etapa: 2.304 \ensuremath{\div} 128.373,67 \ensuremath{\times} 100 = 1,7948 \%. Esa capacidad equivale a 2.304 \ensuremath{\div} 36 = 64 HH mensuales y 64 \ensuremath{\times} 12 = 768 HH anuales, con seguimiento en el registro cuantificado y el informe trimestral existentes; la fracción corresponde al total del período (Bases Técnicas Transversales, RT-21.21; Formulario T-15, secciones 4.2, 4.3 y 6.2).
 
 La Tabla \ref{tab:T-14-46} presenta sus paquetes.
 
@@ -1011,6 +1027,8 @@ La Tabla \ref{tab:T-14-47} presenta sus paquetes.
 
 Esta cuenta de control reúne los informes y las tareas que las Bases fijan con una periodicidad durante la Operación y que no forman parte de los servicios diarios.
 
+Cada propuesta trimestral de ajuste de dimensionamiento de 8.4.1 incluirá su efecto en el costo de infraestructura, nube, licencias y enlaces respecto de la base contratada, para decisión del CLIENTE antes de ejecutarla. La comparación empleará los consumos observados y las condiciones económicas vigentes (Bases Técnicas Transversales, RT-09.09).
+
 La Tabla \ref{tab:T-14-48} presenta sus paquetes.
 
 \parte{tablas/tab_T14_48}
@@ -1018,6 +1036,8 @@ La Tabla \ref{tab:T-14-48} presenta sus paquetes.
 \subsubsection{Cuenta 8.5 — Capacitación y transferencia en operación}
 
 Esta cuenta de control reúne la capacitación y el traspaso de conocimiento que las Bases exigen después de la implementación.
+
+El centro de soporte revisará los tickets y la retroalimentación de las personas usuarias para identificar necesidades recurrentes y complejidades de la operación. Incorporará las soluciones y lecciones validadas en la base de conocimiento de 8.5.3 y revisará trimestralmente su uso y utilidad para ajustar los procedimientos de atención (Bases Técnicas Transversales, RT-21.10).
 
 La Tabla \ref{tab:T-14-49} presenta sus paquetes.
 
@@ -1057,11 +1077,11 @@ Ningún paso a producción, inicio de ola, corte de datos ni intervención con i
 
 La carta confirma que los períodos fijos del Art. 17° se cumplen mes a mes y que ningún paso a producción cae en una columna de congelamiento. La sección 3.1 detalla la programación por cuenta de control.
 
-Según la carta de la sección 3.1, la sala técnica se habilita entre los meses 3 y 4, el cableado y los racks se completan entre los meses 4 y 9 y la infraestructura de los sitios entra en servicio en el mes 5. La base compartida y los módulos de la Etapa 1 se construyen entre los meses 5 y 8, y las pruebas de integración y certificación de esa etapa ocupan los meses 9 y 10, antes del H5 del mes 12. Las cuentas de la Etapa 2 (3.5, 3.9, 4.3 y la segunda parte de 5.4) se ubican entre los meses 13 y 22, con los módulos en el mes 15 y la integración y certificación en los meses 16 y 17. Las cuentas de capacitación y de gestión del cambio se intensifican desde el mes 10, en preparación de cada marcha blanca.
+Según la carta de la sección 3.1, la sala técnica y el borde de los sitios se instalan entre los meses 3 y 5, la base compartida y los módulos de la Etapa 1 se construyen entre los meses 5 y 8, y las pruebas de integración y certificación de la Etapa 1 ocupan los meses 9 y 10, antes del H5 del mes 12. Las cuentas de la Etapa 2 (3.5, 3.9, 4.3 y la segunda parte de 5.4) se ubican entre los meses 13 y 22, con los módulos en el mes 15 y la integración y certificación en los meses 16 y 17. Las cuentas de capacitación y de gestión del cambio se intensifican desde el mes 10, en preparación de cada marcha blanca.
 
 \subsection{Carta Gantt actualizada por cuenta de control}
 
-Las siguientes vistas actualizadas detallan las cuentas de control de los meses 1 a 21: la primera, las fases 1 a 3; la segunda, las fases 4 a 7. La carta de 56 meses de la Figura \ref{fig:T14-56} presenta el panorama contractual completo. Cada barra y hito se interpretan junto con las ventanas del diccionario y las fechas de los Formularios T-14 y T-15; las cuentas recurrentes se muestran como barras continuas, aunque su trabajo se ejecute con la frecuencia que fija este diccionario.
+Las siguientes vistas actualizadas detallan las cuentas de control de los meses 1 a 21: la primera, las fases 1 a 3; la segunda, las fases 4 a 7. Reemplazan como fuente vigente a las figuras anteriores, que conservan la programación previa a la reconciliación de ventanas. La carta de 56 meses de la Figura \ref{fig:T14-56} presenta el panorama contractual completo. Cada barra va desde el primer mes del primer paquete de la cuenta hasta el último mes del último paquete, según la programación por paquete del Formulario T-15 (secciones 4.2 y 6.1); los hitos se ubican al cierre de su mes, salvo H6 y H11, que marcan el inicio de una marcha blanca. El detalle por paquete, con sus 222 ventanas, está en esa misma sección, y la red con revisiones del CLIENTE y ruta crítica, en su sección 5. Las cuentas recurrentes (1.4, 1.8, 1.9, 7.1 y 8) se muestran como barras continuas, aunque su trabajo se ejecute con la frecuencia que fija este diccionario.
 
 \figuraDiagramaHorizontal{imagenes/Diagramas que faltaban/Fig_T14-2_Cuentas_m1-21_Fases1-3.drawio.png}
   {Carta Gantt actualizada por cuenta de control, meses 1 a 21, fases 1 a 3. Fuente: elaboración propia a partir del Formulario T-14 y del cronograma del Formulario T-15.}
