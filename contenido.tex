@@ -8,24 +8,24 @@
 \chapter{Introducción}
 \label{cap:empresa}
 
-El presente subdocumento expone las credenciales corporativas, organizacionales y técnicas de LafroX como proponente para la licitación del Caso 02 de Distribuidora Puelche S.A. Presenta la trayectoria, capacidad instalada y líneas de negocio de la empresa; después desarrolla su estructura organizacional, su gobierno interno y su experiencia verificable en el Formulario T-6. La organización del equipo nominado y las alianzas específicas del proyecto se complementan en el capítulo de equipo de trabajo de la oferta.
+Este capítulo presenta la trayectoria, los servicios y la organización de LafroX para el Caso 02 de Distribuidora Puelche S.A. Explica cómo se distribuyen las responsabilidades de calidad, seguridad y operación, y compara la experiencia de la empresa con las exigencias del caso. El Formulario T-6 acompaña el capítulo con el detalle de tres proyectos. La arquitectura y el plan de trabajo se desarrollan en los Subdocumentos 4 y 7; el equipo nominado y las alianzas específicas corresponden al Capítulo 12.
 
 \section{Presentación de la empresa}
 
-Fundada en 2012 en Santiago de Chile, LafroX es una empresa de ingeniería de software e integración de sistemas dedicada a diseñar, implantar y operar soluciones tecnológicas de misión crítica en sectores logísticos, distribución comercial de consumo masivo y transporte de carga. Durante catorce años de actividad ininterrumpida, la compañía ha desarrollado proyectos en entornos operacionales complejos caracterizados por alta dispersión geográfica, baja conectividad y con una estricta regulación técnica detrás.
+LafroX fue fundada en 2012 en Santiago de Chile. Se dedica al desarrollo, la integración y la operación de sistemas para logística, distribución de consumo masivo y transporte de carga. Su experiencia se concentra en operaciones con instalaciones dispersas, conectividad intermitente y exigencias de trazabilidad.
 
 Entre los principales hitos de su trayectoria destacan la puesta en marcha de su primera plataforma de ruteo y telemetría en 2015, la acreditación como integrador certificado de hardware industrial para cadenas de frío en 2018, la primera certificación corporativa en normas de calidad y seguridad en 2021, mantenida desde entonces mediante auditorías de seguimiento y renovación, y la consolidación de su arquitectura modular híbrida en 2024, sosteniendo a la fecha dos operaciones diarias de gran volumen en terreno: 22.000 entregas diarias en el Proyecto 1 y 18.000 transacciones comerciales diarias en el Proyecto 3 del Formulario T-6. Son unidades distintas y no se suman.
 
 LafroX mantiene un sitio web corporativo en \url{https://lafrox.github.io/}, publicado con certificado TLS válido, diseño responsivo y criterios WCAG 2.2 nivel AA. El sitio presenta el giro, la trayectoria, la misión, la visión y los valores de la empresa, su organigrama directivo, su Sede Central y su domicilio, el equipo, los casos de éxito del Formulario T-6, las certificaciones vigentes y las alianzas tecnológicas. Incluye además un centro de recursos con artículos técnicos, un recorrido guiado por la solución, el estado del servicio medido en vivo y una calculadora de ahorro para operaciones logísticas. LafroX mantiene el sitio activo y disponible durante todo el proceso de licitación, desde el registro del participante hasta la adjudicación (RT-23.01 a RT-23.10).
 
-La oferta de LafroX cuenta con tres líneas de negocio especializadas:
+LafroX trabaja en tres líneas de negocio:
 \begin{enumerate}
-    \item \textbf{Ingeniería de software en el borde (Edge Computing):} Desarrollo de aplicaciones móviles y sistemas locales con arquitectura \textit{offline-first}. Implementan almacenamiento local cifrado mediante bases de datos SQLite en terminales móviles, sincronización asíncrona bidireccional y resolución determinista de conflictos al restablecer el enlace de comunicaciones, eliminando el riesgo de pérdida transaccional en zonas rurales o almacenes sin cobertura de red.
-    \item \textbf{Trazabilidad y telemetría de frío industrial:} Integración de hardware especializado de terreno, tales como termógrafos vehiculares, sensores inalámbricos y capturadores robustos aptos para operar bajo frío extremo. Esta línea asegura el monitoreo térmico continuo y la captura de eventos de custodia y transporte, en cumplimiento con el Reglamento Sanitario de los Alimentos (RSA) y normativas de retiro de producto.
-    \item \textbf{Arquitecturas modulares híbridas de misión crítica:} Diseño, despliegue y soporte continuo de plataformas que combinan un núcleo transaccional en nube pública con componentes de borde desplegados en centros de distribución físicos (\textit{on-premise}), asegurando alta resiliencia y autonomía operativa ante cortes de conectividad externa. La línea trabaja habitualmente con monolitos modulares en PHP y Laravel sobre PostgreSQL, con aplicaciones móviles nativas en Kotlin, con límites de contexto explícitos, contratos de interfaz versionados y despliegue independiente de los componentes críticos. La arquitectura concreta para Puelche, con su justificación frente al Artículo 19° de las Bases Administrativas y al RT-02.02 de las Bases Técnicas Transversales, se presenta en la arquitectura de la oferta.
+    \item \textbf{Ingeniería de software en el borde (Edge Computing):} Desarrollo de aplicaciones móviles y sistemas locales con arquitectura \textit{offline-first}. Implementan almacenamiento local cifrado mediante bases de datos SQLite en terminales móviles, sincronización asíncrona bidireccional y resolución determinista de conflictos al restablecer el enlace de comunicaciones, para conservar las operaciones capturadas sin señal y sincronizarlas al recuperar la conexión.
+    \item \textbf{Trazabilidad y telemetría de frío industrial:} Integración de hardware especializado de terreno, tales como termógrafos vehiculares, sensores inalámbricos y capturadores robustos aptos para operar bajo frío extremo. Esta línea registra temperaturas y eventos de custodia para apoyar los controles del Reglamento Sanitario de los Alimentos (RSA) y los procedimientos de retiro de productos.
+    \item \textbf{Arquitecturas modulares híbridas de misión crítica:} Diseño, despliegue y soporte continuo de plataformas que combinan un núcleo transaccional en nube pública con componentes de borde desplegados en centros de distribución físicos (\textit{on-premise}), con mecanismos de continuidad local ante cortes de conectividad externa. La línea trabaja habitualmente con monolitos modulares en PHP y Laravel sobre PostgreSQL, con aplicaciones móviles nativas en Kotlin, con límites de contexto explícitos, contratos de interfaz versionados y despliegue independiente de los componentes críticos. La arquitectura concreta para Puelche, con su justificación frente al Artículo 19° de las Bases Administrativas y al RT-02.02 de las Bases Técnicas Transversales, se presenta en la arquitectura de la oferta.
 \end{enumerate}
 
-Para soportar estas líneas, LafroX dispone de capacidad instalada distribuida y de un catálogo de productos y servicios que se describe a continuación.
+Estas líneas se apoyan en dos capacidades operativas:
 \begin{itemize}
     \item \textbf{Infraestructura y ambientes:} Plataforma de cómputo en nube pública y dos centros de datos (primario y secundario en configuración activo-pasivo) que soportan cinco ambientes segregados: Desarrollo (DEV), Aseguramiento de Calidad (QA), Preproducción (PREPROD), Producción (PROD) y Recuperación ante Desastres (DR). La capacitación utiliza datos ficticios en un espacio aislado del ambiente que corresponda; no constituye un sexto ambiente. El entorno DR es sometido a auditorías y simulacros semestrales, con objetivos de RTO $\le 4$ horas y RPO $\le 15$ minutos.
     \item \textbf{Centro de Operaciones y Mesa de Servicios:} Centro de Operaciones de Red (NOC), Centro de Operaciones de Seguridad (SOC) y Mesa de Servicios con niveles de escalamiento L1, L2 y L3, en el Centro de Operaciones de LafroX en Valparaíso (Av. Brasil 2241). Para Puelche, los incidentes de severidad crítica y alta se atienden 24$\times$7$\times$365, como exige el Artículo 78.2 de las Bases Administrativas; la mesa de servicio atiende al usuario de 04:00 a 22:00 de lunes a sábado, con cobertura 24$\times$7 en septiembre y diciembre (Subdocumento 3, sección 3.4.5). Su capacidad se recalibra con los tickets observados en la marcha blanca; la capacidad corporativa no constituye un compromiso de volumen para el CLIENTE.
@@ -35,7 +35,7 @@ El catálogo de la empresa se organiza en productos de software, servicios profe
 
 \subsection{Productos de Software}
 
-La línea de productos de software de LafroX comprende:
+Los productos cubren tres necesidades de la operación:
 
 \begin{itemize}
     \item \textbf{Aplicaciones móviles de terreno:} Soluciones \textit{offline-first} para fuerzas de venta, reparto y captura de información en campo, con sincronización asíncrona y resolución determinista de conflictos ante intermitencia de red.
@@ -45,7 +45,7 @@ La línea de productos de software de LafroX comprende:
 
 \subsection{Servicios Profesionales}
 
-Los servicios profesionales de LafroX son los siguientes:
+Los servicios profesionales acompañan la construcción y la adopción del sistema:
 
 \begin{itemize}
     \item \textbf{Implementación e integración de sistemas:} Diseño, despliegue y puesta en marcha de soluciones integradas con sistemas existentes del cliente.
@@ -56,7 +56,7 @@ Los servicios profesionales de LafroX son los siguientes:
 
 \subsection{Servicios de Infraestructura y Conectividad}
 
-Los servicios de infraestructura y conectividad comprenden:
+La empresa también presta servicios para sostener la operación en terreno:
 
 \begin{itemize}
     \item \textbf{Suministro de hardware especializado:} Provisión y soporte de equipamiento tecnológico para operaciones de terreno, mediante alianzas con proveedores certificados.
@@ -66,29 +66,27 @@ Los servicios de infraestructura y conectividad comprenden:
 
 \section{Estructura Organizacional}
 
-LafroX posee una estructura organizacional funcional y matricial diseñada para garantizar tanto la excelencia en la ejecución técnica de los proyectos como la continuidad operacional ininterrumpida de los servicios en producción. La dotación técnica de planta asignable a proyectos está compuesta por 124 especialistas contratados por la empresa.
+LafroX organiza su trabajo en las áreas de Ingeniería, Infraestructura, Calidad y Seguridad. La dotación técnica de planta asignable a proyectos es de 124 especialistas. La Figura~\ref{fig:organigrama} muestra cómo estas áreas se relacionan con la Gerencia General y la Dirección de Operaciones.
 
-La Figura~\ref{fig:organigrama} ilustra el organigrama corporativo de la compañía, donde se identifican las líneas jerárquicas y funcionales de reporte. La Gerencia General dirige la Dirección de Operaciones, de la que dependen las divisiones de Ingeniería, Infraestructura y Calidad; el CISO mantiene una línea de reporte funcional independiente hacia la Gerencia General.
-
-\begin{figure}[hbt!]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.92\linewidth,trim={85bp 425bp 135bp 70bp},clip]{figuras/Figura 1.1.pdf}
 \caption{Estructura organizacional corporativa de LafroX. Fuente: Elaboración propia.}
 \label{fig:organigrama}
 \end{figure}
-\newpage
-\begin{quote}
-\small\textbf{Descripción de imagen -- Figura~\ref{fig:organigrama}:} Organigrama vertical de la estructura organizacional corporativa de LafroX. En la parte superior aparece un recuadro de color claro con borde naranja identificado como «Oficial de Seguridad (CISO) Independiente». Desde este recuadro baja una línea discontinua con flecha y la etiqueta «Seguridad independiente» hacia un recuadro central gris denominado «Gerencia General / Dirección Estratégica». Desde la Gerencia General desciende una flecha continua hacia «Dirección de Operaciones / Gestión de Entrega y Servicios», representada en un recuadro claro con borde naranja. Desde Dirección de Operaciones se desprenden tres ramas hacia tres unidades ubicadas en el nivel inferior: a la izquierda «División de Ingeniería / Desarrollo, Datos y Arq»; al centro «División de Infraestructura / NOC 24x7, SRE y Redes»; y a la derecha «División de Calidad (QA) / Pruebas y Procesos CMMI». Las líneas y flechas representan las relaciones jerárquicas y funcionales de reporte mostradas en la figura.
-\end{quote}
-Del análisis de la Figura~\ref{fig:organigrama} se desprenden dos decisiones fundamentales de gobierno corporativo:
-\begin{enumerate}
-    \item \textbf{Independencia del control de seguridad y calidad:} El Oficial de Seguridad de la Información (CISO) mantiene una línea de dependencia funcional y reporte directo a la Gerencia General, garantizando que las decisiones de seguridad no se subordinen a los plazos operacionales de los proyectos. La División de Calidad (QA) depende jerárquicamente de la Dirección de Operaciones, pero su veto sobre los pasos a producción se ejerce ante el Comité de Calidad y Procesos y, en caso de desacuerdo, se escala directamente a la Gerencia General, de modo que un plazo de entrega no puede levantarlo.
-    \item \textbf{Especialización operativa y de ingeniería:} La Dirección de Operaciones coordina horizontalmente los recursos para asegurar que la ingeniería de desarrollo mantenga foco en la construcción de software, mientras que la infraestructura y el NOC garantizan de forma ininterrumpida los acuerdos de nivel de servicio (SLA).
-\end{enumerate}
 
-Para sostener estos procesos, la dotación técnica de 124 ingenieros y especialistas se distribuye como se expone en la Tabla~\ref{tab:dotacion}. La tabla no incluye la Gerencia General, la Dirección de Operaciones ni las funciones de gestión, comercial y administración, que no se asignan a proyectos y no se cuantifican en este subdocumento.
+La Dirección de Operaciones coordina tres divisiones, cada una con una responsabilidad distinta:
+\begin{itemize}
+    \item \textbf{Ingeniería:} desarrolla el software y reúne las especialidades de datos, arquitectura e integración.
+    \item \textbf{Infraestructura:} sostiene la operación de los servicios mediante el NOC, los equipos de confiabilidad (SRE) y redes.
+    \item \textbf{Calidad:} realiza las pruebas y revisa la aplicación de los procesos de ingeniería.
+\end{itemize}
 
-\begin{table}[hbt!]
+El CISO reporta directamente a la Gerencia General, por una línea independiente de la Dirección de Operaciones. Así, los asuntos de seguridad pueden escalarse sin pasar por los responsables de entrega. Calidad depende de Operaciones, pero ejerce su veto sobre los pasos a producción ante el Comité de Calidad y Procesos. Si hay desacuerdo, lo eleva a la Gerencia General; un plazo de entrega no permite levantar ese veto.
+
+La Tabla~\ref{tab:dotacion} distribuye los 124 especialistas por área y sede. No incluye a la Gerencia General, la Dirección de Operaciones ni las funciones de gestión, comercial y administración, que no se asignan a proyectos.
+
+\begin{table}[H]
 \centering
 \caption{Distribución de la dotación técnica de planta de LafroX. Fuente: Elaboración propia.}
 \label{tab:dotacion}
@@ -109,12 +107,13 @@ Oficialía de Seguridad & CISO y Especialistas en Ciberseguridad & Sede Central 
 \end{tabularx}
 \end{table}
 
-A partir de los datos presentados en la Tabla~\ref{tab:dotacion}, el Centro de Operaciones de Red concentra 32 profesionales para monitoreo y resolución de incidentes. Su programación de turnos y respaldos se ajusta en cada contrato de operación; para Puelche, el monitoreo es 24$\times$7 y el horario de la mesa de servicio es el declarado en el Subdocumento 3, sección 3.4.5. El mismo centro aloja el puesto SOC 24$\times$7 de Puelche, propio de LafroX, con analistas contratados para el proyecto bajo la dirección del Encargado de Seguridad de la Información.
+La dotación se concentra en dos frentes: Ingeniería reúne $48 + 15 = 63$ especialistas e Infraestructura, $32 + 12 = 44$. Calidad aporta 10 y Seguridad, 7; la suma es $63 + 44 + 10 + 7 = 124$. Esta distribución distingue la construcción del software de su operación y de sus controles.
 
+Los 32 profesionales del NOC pertenecen a la capacidad corporativa; no se asignan íntegramente a Puelche por el solo hecho de figurar en la tabla. Los turnos y respaldos se organizan por contrato. Para Puelche, el monitoreo es 24$\times$7 y la mesa conserva el horario de 3.4.5 del Subdocumento 3. El Centro de Operaciones también aloja el SOC del proyecto, con analistas contratados bajo la dirección del Encargado de Seguridad.
 
 \section{Gobierno interno Calidad, Seguridad y Conocimiento}
 
-El modelo de gobierno interno de LafroX se fundamenta en políticas explícitas, comités de gestión colegiados y procesos auditables y medibles mediante indicadores cuantitativos.
+El gobierno interno define quién revisa la calidad, quién decide sobre seguridad y cómo se conserva el conocimiento técnico. Cada ámbito tiene responsables, actividades de seguimiento y reglas de escalamiento.
 
 \subsection{Modelo de Gobierno de Calidad}
 La calidad de los procesos de LafroX se rige por un Sistema de Gestión de Calidad certificado conforme a ISO 9001:2015 y por prácticas evaluadas bajo CMMI-DEV Nivel 3.
@@ -138,7 +137,7 @@ El marco de seguridad corporativo está alineado y certificado bajo la norma ISO
 Para Puelche, las pruebas de intrusión serán realizadas por un tercero independiente de LafroX, con periodicidad al menos anual durante la Operación y antes de cada paso a producción. LafroX entregará al CLIENTE cada informe íntegro y su plan de remediación con responsables y plazos (Distribuidora Puelche S.A., 2026b, RT-11.20).
 
 \subsection{Modelo de Gobierno de Gestión del Conocimiento}
-Para mitigar el riesgo de dependencia del conocimiento tácito individual de ingenieros sénior y especialistas operacionales, LafroX cuenta con un proceso formal de Transferencia y Preservación del Conocimiento:
+La gestión del conocimiento busca que la operación no dependa de una sola persona. LafroX conserva las decisiones y los procedimientos mediante dos prácticas:
 \begin{itemize}
     \item \textbf{Repositorio corporativo institucional:} El Jefe de QA administra una base centralizada de arquitectura, estándares de codificación, guías de despliegue y recuperación. Todo cierre de incidente crítico (P1 o P2) exige un informe post-mortem aprobado por el responsable técnico y publicado en la base.
     \item \textbf{Talleres de elicitación y traspaso:} Los líderes de dominio realizan sesiones trimestrales para transformar conocimiento no estructurado en manuales reproducibles. El Comité de Calidad revisa semestralmente su vigencia y asigna responsables de actualización.
@@ -148,7 +147,7 @@ Para mitigar el riesgo de dependencia del conocimiento tácito individual de ing
 
 Los proyectos, volúmenes, números de certificado y alianzas de este capítulo son declarados por LafroX; su acreditación documental (certificados y cartas de referencia del Art. 34°) se entrega en el Sobre N° 1.
 
-La idoneidad técnica y metodológica de LafroX está validada por certificaciones institucionales vigentes otorgadas por casas certificadoras reconocidas internacionalmente:
+Los antecedentes institucionales declarados son los siguientes:
 \begin{itemize}
     \item \textbf{ISO 9001:2015 (Sistema de Gestión de la Calidad):} Certificado N° BV-CH-94821 emitido por Bureau Veritas en su renovación de noviembre de 2025 (Bureau Veritas, 2025). Alcance: ``Diseño, desarrollo, implementación, integración y soporte de sistemas de software logístico y transaccional''. Vigente hasta noviembre de 2028.
     \item \textbf{ISO/IEC 27001:2022 (Sistema de Gestión de Seguridad de la Información):} Certificado N° SI-0312/2023 emitido por AENOR (AENOR, 2023). Alcance: ``Operación de servicios cloud, centros de datos on-premise y procesos de ingeniería de software de misión crítica''. Vigente hasta enero de 2027.
@@ -165,9 +164,9 @@ En concordancia con el artículo 34 de las Bases Administrativas (Distribuidora 
     \item \textbf{Sistema Móvil de Preventa y Ruteo Desconectado (Comercializadora Lácteos del Sur S.A.):} Ejecutado entre 2023 y 2024, habilita a 280 preventistas y procesa 18.000 transacciones comerciales diarias mediante sincronización determinista en diferido y políticas de crédito locales.
 \end{enumerate}
 
-La Tabla~\ref{tab:equivalencia} verifica cifra por cifra la equivalencia de estos proyectos con el Caso 02 (Distribuidora Puelche S.A., 2026c, secciones 2.2 a 2.4 y cap. 10).
+La Tabla~\ref{tab:equivalencia} compara la flota, los sitios, la preventa y la temperatura de trabajo de las referencias con Puelche. La disponibilidad se incluye para distinguir los SLA históricos de la exigencia de infraestructura del caso (Distribuidora Puelche S.A., 2026c, secciones 2.2 a 2.4 y cap. 10).
 
-\begin{table}[hbt!]
+\begin{table}[H]
 \centering
 \caption{Equivalencia entre el Caso 02 y los proyectos del Formulario T-6. Fuente: elaboración propia a partir del caso y del Formulario T-6.}
 \label{tab:equivalencia}
@@ -186,11 +185,13 @@ Disponibilidad & 99,95\,\% de infraestructura & 1 y 2 & 99,5\,\% y 99,9\,\% \\
 \end{tabularx}
 \end{table}
 
-Los proyectos superan a Puelche en volumen, flota, sitios y preventa, e igualan la temperatura de operación. La única dimensión en que la exigencia del caso es mayor es la disponibilidad de infraestructura: 99,95\,\% frente a 99,9\,\%. Es una exigencia superior a la experiencia acreditada, y la oferta la responde en su arquitectura física y de centros de datos. El Proyecto 3 no es híbrido en el sentido del Artículo 16°, pero aporta la experiencia de preventa sin señal que exige la restricción 3 del caso.
+Las referencias aportan experiencia en operaciones de mayor escala: el Proyecto 1 combina 14 centros de distribución y 420 camiones; el Proyecto 2 trabaja con cadena de frío; y el Proyecto 3 cubre la preventa sin señal. Este último no es híbrido según el Artículo 16°, por lo que su aporte es la operación móvil desconectada, no la infraestructura local.
+
+Los SLA de 99,5\% y 99,9\% del T-6 corresponden a servicios de esos proyectos; el 99,95\% de Puelche corresponde a infraestructura. No son mediciones equivalentes ni una prueba de cumplimiento del nuevo contrato. La propuesta debe responder a esa exigencia mediante su diseño y sus pruebas de aceptación.
 
 \subsection{Cartera de Clientes}
 
-A lo largo de sus catorce años de operación ininterrumpida, LafroX ha consolidado una cartera de clientes concentrada en los sectores logístico, de distribución comercial de consumo masivo y de transporte de carga, ámbitos que constituyen el foco estratégico declarado de la compañía. 
+La cartera declarada reúne clientes de logística, distribución de consumo masivo y transporte. Esos sectores comparten con Puelche necesidades de coordinación entre centros, trazabilidad y trabajo en terreno.
 
 Entre los clientes activos y relaciones comerciales vigentes de LafroX, destacan:
 
@@ -205,11 +206,11 @@ Entre los clientes activos y relaciones comerciales vigentes de LafroX, destacan
     \item \textbf{Distribuidora Andes Retail S.A.} -- Distribuidora mayorista de productos de consumo masivo con operación multirregional y bodegas de tránsito.
 \end{itemize}
 
-Esta base de clientes evidencia la capacidad de LafroX para operar de manera simultánea en múltiples industrias con requerimientos técnicos, regulatorios y logísticos diferenciados, sosteniendo relaciones comerciales de largo plazo por sobre contratos puntuales de corta duración.
+Los tres primeros clientes corresponden a los proyectos detallados en el T-6. Las demás referencias amplían la cartera declarada, pero no reemplazan los antecedentes de experiencia exigidos en ese formulario.
 
 \section{Estructura para Proyecto}
 
-Para garantizar el cumplimiento de los 56 meses de contrato estipulados en el Artículo 17° de las Bases Administrativas, LafroX establece una estructura de gobernanza de proyecto dedicada, centralizada y con líneas de autoridad unívocas.
+La organización del proyecto mantiene una jefatura responsable durante los 56 meses del contrato y separa la dirección de las especialidades técnicas (Distribuidora Puelche S.A., 2026a, Art. 17°).
 
 El proyecto será liderado de forma exclusiva y continua por el Jefe de Proyecto nominado, \textbf{Alex Aravena}, quien actuará como interlocutor único frente a la contraparte técnica y directiva del cliente. Reportando directamente al Jefe de Proyecto, se constituye un comité técnico compuesto por siete líderes de dominio especializados, que cubren los roles mínimos del numeral 19.2 de las Bases Técnicas Transversales según la Tabla~\ref{tab:roles_minimos}:
 \begin{itemize}
@@ -222,36 +223,34 @@ El proyecto será liderado de forma exclusiva y continua por el Jefe de Proyecto
     \item \textbf{Líder de Implantación y Gestión del Cambio (Patricio Henríquez):} Responsable de la adopción en terreno, capacitación de preventistas y conductores, y marchas blancas.
 \end{itemize}
 
-El numeral 19.2 de las Bases Técnicas Transversales exige diez roles mínimos (Distribuidora Puelche S.A., 2026b, numeral 19.2). La Tabla~\ref{tab:roles_minimos} asigna cada uno a una persona nominada, con su dedicación. Dos roles no tienen un líder separado y se asignan a líderes cuyo ámbito los contiene: el Líder de Integración, al Arquitecto de Solución, cuya división es Arquitectura de Solución e Integración, y el Líder Funcional, al Líder de Implantación y Gestión del Cambio, que dirige el conocimiento del proceso del CLIENTE desde el levantamiento. Por esa asignación, ambos líderes tienen dedicación completa durante la implementación.
+La Tabla~\ref{tab:roles_minimos} resume la asignación y el período de participación de los diez roles del numeral 19.2 (Distribuidora Puelche S.A., 2026b). Las funciones se explican en el texto anterior; aquí se comparan responsables y dedicaciones, sin repetir su descripción.
 
-\begin{landscape}
-\begin{xltabular}{\linewidth}{>{\raggedright\arraybackslash}p{3.5cm} >{\raggedright\arraybackslash}p{3.3cm} >{\raggedright\arraybackslash}p{2.7cm} >{\raggedright\arraybackslash}p{3.5cm} >{\raggedright\arraybackslash}X}
-\caption{Roles mínimos del numeral 19.2 y su asignación. Fuente: elaboración propia a partir de Distribuidora Puelche S.A. (2026b, numeral 19.2).}\label{tab:roles_minimos} \\
+\begin{table}[H]
+\centering
+\caption{Asignación y dedicación de los roles del proyecto. Fuente: elaboración propia a partir de las Bases Técnicas Transversales, numeral 19.2.}
+\label{tab:roles_minimos}
+\small
+\begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}p{4.1cm} >{\raggedright\arraybackslash}p{3.2cm} >{\raggedright\arraybackslash}X}
 \toprule
-\textbf{Rol del numeral 19.2} & \textbf{Dedicación mínima exigida} & \textbf{Persona nominada} & \textbf{Dedicación asignada} & \textbf{Ámbito que le corresponde} \\
+\textbf{Rol} & \textbf{Responsable} & \textbf{Dedicación asignada} \\
 \midrule
-\endfirsthead
-\caption[]{Roles mínimos del numeral 19.2 y su asignación (continuación)} \\
-\toprule
-\textbf{Rol del numeral 19.2} & \textbf{Dedicación mínima exigida} & \textbf{Persona nominada} & \textbf{Dedicación asignada} & \textbf{Ámbito que le corresponde} \\
-\midrule
-\endhead
+Jefe de Proyecto & Alex Aravena & 100\% meses 1--21; dirección en Operación \\
+Arquitecto de Solución & Bastián Trejo & 100\% meses 1--21; Comité hasta mes 56 \\
+Líder de Integración & Bastián Trejo & Incluido en el 100\% de meses 1--21 \\
+Encargado de Seguridad & Álvaro Catalán & Meses 1--56 \\
+Líder de Datos & Leandro Chamorro & Meses 1--21 \\
+Líder de Desarrollo & Tomás Pérez & 100\% meses 1--21 \\
+Líder Funcional & Patricio Henríquez & 100\% meses 1--21 \\
+Líder de Calidad y Pruebas & Maximiliano Miño & Meses 1--56 \\
+Líder de Operación / SRE & Guillermo Castillo & Meses 1--56; 100\% en Operación (21--56) \\
+Líder de Implantación & Patricio Henríquez & Incluido en el 100\% de meses 1--21 \\
 \bottomrule
-\endfoot
-Jefe de Proyecto & 100\% en implementación & Alex Aravena & 100\% meses 1 a 21; dirección del contrato en Operación & Dirección, gobierno y control \\
-Arquitecto de Solución & Alta en diseño, permanente en el Comité de Arquitectura & Bastián Trejo & 100\% meses 1 a 21; Comité de Arquitectura hasta el mes 56 & Arquitectura y registro de decisiones \\
-Líder de Integración & Permanente en implementación & Bastián Trejo & Incluido en su dedicación de 100\% meses 1 a 21 & Interfaces sin documentación, ERP y terceros (1.2.3, 3.3 y 3.6) \\
-Encargado de Seguridad de la Información & Permanente & Álvaro Catalán & Meses 1 a 56 & Seguridad, identidad y SOC \\
-Líder de Datos & Permanente en implementación & Leandro Chamorro & Meses 1 a 21 & Modelo de datos y migración \\
-Líder de Desarrollo & 100\% en implementación & Tomás Pérez & 100\% meses 1 a 21 & Construcción Laravel/PHP y móvil; en los meses 1 a 4, diseño y prototipos \\
-Líder Funcional & 100\% en implementación & Patricio Henríquez & 100\% meses 1 a 21 & Levantamiento de procesos, reglas de negocio, prototipos y pruebas de aceptación \\
-Líder de Calidad y Pruebas & Permanente & Maximiliano Miño & Meses 1 a 56 & Plan de pruebas y puertas de calidad \\
-Líder de Operación / SRE & Desde el mes 6, permanente en Operación & Guillermo Castillo & Meses 1 a 56; 100 \% en Operación (meses 21 a 56) & Plataforma, sitios, NOC, mesa y niveles de servicio; gerente de servicio y contraparte permanente del CLIENTE en Operación \\
-Líder de Implantación y Gestión del Cambio & Desde el mes 8 & Patricio Henríquez & Incluido en su dedicación de 100\% meses 1 a 21 & Olas, capacitación y marchas blancas \\
-\end{xltabular}
-\end{landscape}
+\end{tabularx}
+\end{table}
 
-La acumulación de dos roles en una persona se compensa con equipos: el Arquitecto de Solución dirige un equipo de arquitectura e integración, y el Líder Funcional cuenta con analistas funcionales y con el equipo de implantación de las marchas blancas, cuya dotación se programa en el Formulario T-15 del Subdocumento 7, sección 5.7. Si la carga de las marchas blancas lo requiere, LafroX nomina un Líder de Implantación separado sin reducir la dedicación del Líder Funcional. La experiencia exigida para cada rol y las cartas de compromiso se acreditan conforme a las Bases Administrativas.
+Los diez roles se distribuyen entre ocho personas: Trejo asume Arquitectura e Integración y Henríquez, el frente Funcional y la Implantación. Esa acumulación no suma dos dedicaciones de 100\% para una misma persona. Trejo dirige el equipo de interfaces con ERP y terceros; Henríquez coordina el levantamiento, las reglas de negocio, los prototipos y las pruebas de aceptación con analistas funcionales y el equipo de implantación. Los recursos de apoyo se programan en el T-15, sección 5.7 del Subdocumento 7.
+
+La participación de Operación desde el mes 1 cubre el mínimo de incorporación desde el mes 6; Implantación participa desde el mes 1 y cubre el mínimo del mes 8. Si la carga de las marchas blancas lo requiere, se nomina un Líder de Implantación separado sin reducir la dedicación del Líder Funcional. La experiencia y las cartas de compromiso se acreditan conforme a las Bases. Durante los meses 1--4, Desarrollo trabaja en diseño y prototipos, antes de la construcción.
 
 Alex Aravena, Jefe de Proyecto y apoderado de LafroX, tendrá facultades para comprometer al ADJUDICATARIO en materias de ejecución durante toda la implementación, manteniendo la dedicación exclusiva declarada. Los cambios de alcance, plazo o costo se someterán a las instancias de aprobación previstas (Distribuidora Puelche S.A., 2026b, RT-19.02).
 
@@ -259,16 +258,15 @@ LafroX mantendrá vigentes las certificaciones del equipo asignado durante todo 
 
 \section{Alianzas}
 
-Para viabilizar el despliegue del modelo híbrido obligatorio (Artículo 16° de las Bases Administrativas) y asegurar soporte de clase empresarial en los componentes físicos de terreno, LafroX mantiene alianzas tecnológicas estratégicas y vigentes. Cada alianza con vencimiento durante el contrato se renueva antes de su fecha de término, y su vigencia se acredita ante la Contraparte Técnica durante los 56 meses:
+Las alianzas corporativas cubren nube, equipos de terreno y comunicaciones. Su relación con el modelo híbrido exigido por el Artículo 16° se explica a continuación. Las alianzas que vencen durante el contrato se renuevan antes de su término y su vigencia se presenta a la Contraparte Técnica:
 \begin{itemize}
-    \item \textbf{Amazon Web Services (AWS Partner Network -- Advanced Tier Services):} LafroX es socio tecnológico nivel Advanced, con competencias certificadas en DevOps y Migración. Esta alianza garantiza acceso a soporte empresarial de nivel 3 directo con ingenieros de la nube, créditos de prueba de conceptos y revisiones arquitectónicas formales bajo el marco Well-Architected. Vigente hasta marzo de 2027.
+    \item \textbf{Amazon Web Services (AWS Partner Network -- Advanced Tier Services):} LafroX es socio tecnológico nivel Advanced, con competencias certificadas en DevOps y Migración. El vínculo contempla soporte empresarial, pruebas de concepto y revisiones arquitectónicas bajo Well-Architected, según las condiciones del programa y del servicio contratado. Vigente hasta marzo de 2027.
     \item \textbf{Zebra Technologies (Premier Solution Partner):} Alianza formal para el suministro, soporte de fábrica y mantenimiento de terminales móviles industriales, lectores de códigos de barra e impresoras térmicas portátiles con certificación de operación en ambientes hostiles y cámaras de congelación a $-25\,^{\circ}\mathrm{C}$. Vigente hasta junio de 2027.
     \item \textbf{Fortinet / Cisco (Select Partner):} Alianza para el aprovisionamiento de equipamiento de conectividad de borde, switches industriales y firewalls de red SD-WAN requeridos para enlazar de manera segura los centros de distribución y salas técnicas on-premise. Vigente hasta septiembre de 2027.
-    \item \textbf{Starlink Business (Authorized Enterprise Reseller):} Convenio para la provisión e integración de terminales satelitales de baja órbita con prioridad de tráfico corporativo, garantizando redundancia de comunicaciones ante caídas de enlace en centros de distribución, cross-dockings y almacenes remotos. Vigente hasta diciembre de 2027.
+    \item \textbf{Starlink Business (Authorized Enterprise Reseller):} Convenio para la provisión e integración de terminales satelitales de baja órbita con prioridad de tráfico corporativo, como medio alternativo de comunicación ante caídas de enlace en centros de distribución, cross-dockings y almacenes remotos. Vigente hasta diciembre de 2027.
 \end{itemize}
 
-Las especificaciones particulares de hardware e implementos que estas alianzas suministran al proyecto se detallan en el Formulario T-11 del Subdocumento 4.
-\newpage
+Estas alianzas cubren funciones distintas: AWS aporta servicios de nube; Zebra, equipos de captura; Fortinet/Cisco, redes de borde; y Starlink, un enlace alternativo. Ninguna sustituye la verificación de los equipos ni las pruebas de continuidad. Las especificaciones de los implementos se detallan en el Formulario T-11 del Subdocumento 4; la participación de socios en este proyecto corresponde a 12.3.
 \section*{Referencias}
 
 Las fuentes citadas en este documento se listan a continuación en formato APA 7.ª edición.
@@ -287,26 +285,26 @@ Las fuentes citadas en este documento se listan a continuación en formato APA 7
 
 \section*{Declaración de uso de IA}
 
-En cumplimiento de la sección 7.2 de las Aclaraciones de la licitación (Distribuidora Puelche S.A., 2026d), la Tabla~\ref{tab:declaracion_ia} declara el uso asistido de herramientas de inteligencia artificial en la elaboración del presente subdocumento y el estado de su revisión humana. La declaración se consolida en el Formulario A-6.
+La Tabla~\ref{tab:declaracion_ia} identifica las herramientas y el alcance de la asistencia utilizada, conforme a la sección 7.2 de las Aclaraciones (Distribuidora Puelche S.A., 2026d). La declaración se consolida en el Formulario A-6.
 
-\begin{table}[hbt!]
+\begin{table}[H]
 \centering
-\caption{Declaración de uso de IA por sección del Subdocumento 1. Fuente: registro del equipo.}
+\caption{Uso de IA por sección y formulario. Fuente: registro del equipo.}
 \label{tab:declaracion_ia}
-\small
-\renewcommand{\arraystretch}{0.96}
-\begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}p{2.4cm} >{\raggedright\arraybackslash}p{2.4cm} >{\raggedright\arraybackslash}X >{\centering\arraybackslash}p{1.3cm} >{\centering\arraybackslash}p{1.5cm} >{\raggedright\arraybackslash}p{3.5cm}}
+\fontsize{9.5pt}{12pt}\selectfont
+\begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}p{1.4cm} >{\raggedright\arraybackslash}p{1.95cm} >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}p{1.15cm} >{\raggedright\arraybackslash}p{1.65cm} >{\raggedright\arraybackslash}p{3.0cm}}
 \toprule
-\textbf{Sección} & \textbf{Herramienta} & \textbf{Finalidad del uso} & \textbf{Nivel en texto} & \textbf{Nivel en diagramas} & \textbf{Revisión humana (quién y qué verificó)} \\
+\textbf{Sección} & \textbf{Herramienta} & \textbf{Finalidad del uso} & \textbf{Nivel en texto} & \textbf{\makecell[l]{Nivel en\\diagramas}} & \textbf{Revisión humana (quién y qué verificó)} \\
 \midrule
-1.1 Presentación & Claude / Gemini & Formato y redacción de capacidades & Bajo & Ninguno & Alex Aravena (JP): Coherencia con líneas de negocio \\
-1.2 Estructura Org. & Claude / Gemini & Organización de la descripción de la estructura corporativa y la dotación técnica & Bajo & Medio & Bastián Trejo (Arq): Revisión de líneas de reporte y distribución de la dotación \\
-1.3 Gobierno interno & Claude / Gemini; OpenAI Codex & Estructuración de políticas y comités; vínculo de métodos con procesos certificados y entrega de informes de intrusión & Bajo & Ninguno & Álvaro Catalán (Seg): Verificación normas 27001/CMMI \\
-1.4 Experiencia & Claude / Gemini & Redacción de proyectos equivalentes & Bajo & Ninguno & Alex Aravena (JP): Verificación de volumetrías \\
-1.5 Estructura Proy. & Claude / Gemini; OpenAI Codex & Alineación de roles institucionales; facultades de ejecución del JP y continuidad de certificaciones personales & Bajo & Ninguno & Patricio Henríquez (Gest): Trazabilidad con los roles del numeral 19.2 de las Bases Técnicas Transversales \\
-1.6 Alianzas & Claude / Gemini & Redacción de convenios de hardware & Bajo & Ninguno & Bastián Trejo (Arq): Coherencia con diseño híbrido \\
-Formulario T-6 & Claude / Gemini & Disposición tabular del formulario & Bajo & Ninguno & Alex Aravena (JP): Validación de los 11 campos exigidos y coherencia con la sección 1.4 \\
-1.5 Estructura Proy., Tabla~\ref{tab:roles_minimos} & Claude Code & Asignación de los roles mínimos del numeral 19.2 & Alto & Ninguno & Revisión humana pendiente de identificar \\
+1.1 & Claude / Gemini; OpenAI Codex & Redacción de trayectoria y servicios & Alto & Ninguno & [[REVISIÓN HUMANA]] \\
+1.2 & Claude / Gemini; OpenAI Codex & Explicación del organigrama y análisis de dotación & Alto & Medio & [[REVISIÓN HUMANA]] \\
+1.3 & Claude / Gemini; OpenAI Codex & Redacción de gobierno y responsabilidades & Alto & Ninguno & [[REVISIÓN HUMANA]] \\
+1.4 & Claude / Gemini; OpenAI Codex & Comparación de experiencia y SLA & Alto & Ninguno & [[REVISIÓN HUMANA]] \\
+1.5 & Claude / Gemini; Claude Code; OpenAI Codex & Síntesis de roles y dedicaciones & Alto & Ninguno & [[REVISIÓN HUMANA]] \\
+1.6 & Claude / Gemini; OpenAI Codex & Redacción de alcance de alianzas & Alto & Ninguno & [[REVISIÓN HUMANA]] \\
+T-6 & Claude / Gemini & Disposición del formulario & Bajo & Ninguno & Alex Aravena (JP): once campos y coherencia con 1.4 \\
 \bottomrule
 \end{tabularx}
 \end{table}
+
+La asistencia en texto se concentra en la redacción y la síntesis del capítulo; el organigrama conserva el nivel de asistencia declarado para su elaboración. Las seis secciones requieren revisión humana de su versión actual. La revisión consignada para el T-6 corresponde al formulario, no valida por sí sola la nueva redacción del capítulo.
