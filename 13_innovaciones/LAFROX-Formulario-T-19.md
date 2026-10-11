@@ -1,5 +1,16 @@
 # LafroX — Formulario T-19: Fichas de innovación
 
+## Índice
+
+- [Ficha 1 — Innovación 1](#ficha-1--innovación-1)
+- [Ficha 2 — Innovación 2](#ficha-2--innovación-2)
+- [Ficha 3 — Innovación 3](#ficha-3--innovación-3)
+- [Ficha 4 — Innovación 4](#ficha-4--innovación-4)
+- [Ficha 5 — Innovación 5](#ficha-5--innovación-5)
+- [Referencias](#referencias)
+- [Declaración de uso de IA](#declaración-de-uso-de-ia)
+
+
 Este formulario contiene una ficha por cada una de las cinco innovaciones obligatorias del Artículo 28° de las Bases Administrativas, con los campos del Formulario T-19 en su orden (Distribuidora Puelche S.A., 2026a, Art. 29° y Formulario T-19). El análisis de cada innovación está en el Capítulo 13, secciones 13.1 a 13.5. Los campos de inversión, costo operacional y beneficio se expresan sin montos, por la restricción del Art. 50.2; su valorización está en la Oferta Económica, Entregable 2, ítem 2.7. Los requisitos RT citados corresponden a las Bases Técnicas Transversales (Distribuidora Puelche S.A., 2026b). La probabilidad y el impacto usan la escala ordinal 1 a 5 del Capítulo 8, sección 8.1.3.
 
 ## Ficha 1 — Innovación 1
@@ -12,9 +23,9 @@ Ficha de la innovación 1, «Seguimiento de vencimiento posentrega en el local»
 | 2. Nombre de la innovación | Seguimiento de vencimiento posentrega en el local (INN-01) |
 | 3. Problema u oportunidad del caso que resuelve | Merma por vencimiento de 1,7 % del valor del inventario al año, detectada incluso en la góndola del cliente (Distribuidora Puelche S.A., 2026c, cap. 4.8); la preventista ve producto vencido de Puelche y no tiene dónde registrarlo (cap. 8). La pérdida posterior a la entrega no tiene medición ni momento para evitarse. |
 | 4. Tecnología, práctica o modelo que la sustenta | Regla de cobertura por par lote–local: saldo estimado (entregas menos devoluciones, confirmado en la visita) dividido por el ritmo de reposición del historial de M3 (RF-03.14), comparado con la vida útil remanente del lote (innovación 3 o fecha impresa, RF-01.03). Aviso con acción de un catálogo aprobado por Comercial y Calidad. Agrega a lo obligatorio el seguimiento en el local y antes de la pérdida. |
-| 5. Nivel de madurez y escala utilizada | Escala TRL de la Comisión Europea. Cálculo de cobertura: aritmética conocida. Servicio integrado: TRL 2; objetivo TRL 4 al mes 10 y TRL 6 al mes 15. |
+| 5. Nivel de madurez y escala utilizada | Escala TRL de la Comisión Europea. Cálculo de cobertura: aritmética conocida. Servicio integrado: TRL 2; objetivo TRL 4 al mes 10 y TRL 6 al mes 15. Investigación adicional: precisión del ritmo de reposición en el canal tradicional (3.10.1.2 y 3.10.1.4). |
 | 6. Fuentes citadas (APA 7.ª ed.) | European Commission (2016); Riesenegger et al. (2023). |
-| 7. Dónde se inserta en la arquitectura | M10 Analítica (capa 4, datos en N-10, capa 6) calcula la lista nocturna con datos de M2, M9 y M3; M3 Preventa la entrega en el terminal C-01 (capa 1) sin señal; la respuesta vuelve por la cola de sincronización (capa 5). Contrato `inn01.aviso-vencimiento-local.v1` y `inn01.respuesta-visita.v1` (Anexo 13.A). |
+| 7. Dónde se inserta en la arquitectura | M10 Analítica (capa 4, datos en N-10, capa 6) calcula la lista nocturna con datos de M2, M9 y M3; M3 Preventa la entrega en la aplicación de preventa C-01 (capa 1) sin señal; la respuesta vuelve por la cola de sincronización (capa 5). Contrato `inn01.aviso-vencimiento-local.v1` y `inn01.respuesta-visita.v1` (Anexo 13.A). |
 | 8. Paquetes de la EDT que la ejecutan | 3.10.1.1 (INN-01.P1), 3.10.1.2 (P2), 3.10.1.3 (P3) y 3.10.1.4 (P4); en operación, mantenimiento dentro de 8.2.1. Responsable: DAT. |
 | 9. Mes del cronograma en que se materializa | Mes 16 (piloto en la marcha blanca de los meses 13 a 15). |
 | 10. Inversión requerida | Horas de datos, desarrollo móvil y diseño del catálogo (meses 7 a 15) y acompañamiento del piloto en terreno (meses 13 a 15). Sin hardware ni licencias. |
@@ -36,9 +47,9 @@ Ficha de la innovación 2, «Reproducción de incidentes de terreno», desarroll
 | 2. Nombre de la innovación | Reproducción de incidentes de terreno (INN-02) |
 | 3. Problema u oportunidad del caso que resuelve | Pedidos perdidos o duplicados por falta de señal «semanalmente, sin medición» (Distribuidora Puelche S.A., 2026c, cap. 18, criterio 6; cap. 8); rutas con tramos sin señal de hasta dos horas (cap. 6). Los fallos llegan a la mesa como relatos no reproducibles. |
 | 4. Tecnología, práctica o modelo que la sustenta | Circuito incidente → paquete sanitizado con el orden causal de la cola local, reintentos y conectividad → reproducción en QA o Preproducción con recursos efímeros (Terraform) → corrección validada contra el paquete → regresión permanente en GitLab CI. Agrega a lo obligatorio (RT-10.07, RT-14.06) la cobertura de incidentes no críticos y el cierre por reproducción. |
-| 5. Nivel de madurez y escala utilizada | Escala TRL de la Comisión Europea. Piezas (CI/CD, entornos efímeros, trazas): TRL 9. Circuito para terminales sin señal: TRL 2; objetivo TRL 4 al mes 5 y TRL 6 al mes 15. |
+| 5. Nivel de madurez y escala utilizada | Escala TRL de la Comisión Europea. Piezas (CI/CD, entornos efímeros, trazas): TRL 9. Circuito para terminales sin señal: TRL 2; objetivo TRL 4 al mes 5 y TRL 6 al mes 15. Investigación adicional: reproducción de los reordenamientos de la cola en la reconexión (3.10.2.2 y 3.10.2.4). |
 | 6. Fuentes citadas (APA 7.ª ed.) | Shahin et al. (2017); DORA (2024); European Commission (2016). |
-| 7. Dónde se inserta en la arquitectura | Terminales C-01 (M3), C-03 (M5) y C-02 (M6) en la capa 1 emiten la evidencia; capa 8 (OpenTelemetry y Amazon CloudWatch) correlaciona; capa 7 sanitiza y controla el acceso; reproducción dentro de QA y Preproducción, sin un sexto ambiente. Contrato `inn02.paquete-reproduccion.v1` (Anexo 13.A). |
+| 7. Dónde se inserta en la arquitectura | La aplicación de preventa C-01 (M3), los terminales de bodega C-03 (M5) y la aplicación de reparto C-02 (M6), en la capa 1, emiten la evidencia; capa 8 (OpenTelemetry y Amazon CloudWatch) correlaciona; capa 7 sanitiza y controla el acceso; reproducción dentro de QA y Preproducción, sin un sexto ambiente. Contrato `inn02.paquete-reproduccion.v1` (Anexo 13.A). |
 | 8. Paquetes de la EDT que la ejecutan | 3.10.2.1 (INN-02.P1), 3.10.2.2 (P2), 3.10.2.3 (P3), 3.10.2.4 (P4, primera parte) y 8.3.1 (P4, segunda parte). Responsable: CAL. |
 | 9. Mes del cronograma en que se materializa | Circuito inicial en el mes 5; beneficio medido en el mes 15. |
 | 10. Inversión requerida | Horas de instrumentación de terminales y sanitización (meses 2 a 5) y de cobertura de M3, M5 y M6 (meses 5 a 10). No duplica las pruebas obligatorias de la cuenta 3.8. |
@@ -60,7 +71,7 @@ Ficha de la innovación 3, «Vida útil remanente por historia térmica del lote
 | 2. Nombre de la innovación | Vida útil remanente por historia térmica del lote (INN-03) |
 | 3. Problema u oportunidad del caso que resuelve | Mil cien productos refrigerados y congelados sin registro continuo de temperatura (Distribuidora Puelche S.A., 2026c, cap. 4.9); rechazo de un camión completo sin poder demostrar la cadena de frío (cap. 4.9); la jefa de Calidad no sabe qué consecuencia tiene una excursión (cap. 8); exclusión por el proveedor de lácteos hasta acreditar trazabilidad (cap. 1 y 13.2). |
 | 4. Tecnología, práctica o modelo que la sustenta | Eventos EPCIS 2.0 con datos de sensor por cada movimiento del lote; asociación lote–sensor por lugar y tiempo sin rellenar tramos; modelo cinético determinista por familia (Arrhenius o Q10) con parámetros aprobados por Calidad; cálculo en el borde (B-02) y en la nube (N-10). Agrega a lo obligatorio (criterio 3, RF-09.03 a RF-09.10, RNG-04) una vida útil remanente por lote. Oferta el RT-05.30. |
-| 5. Nivel de madurez y escala utilizada | Escala TRL de la Comisión Europea. EPCIS 2.0: estándar publicado. Modelos cinéticos: validados experimentalmente. Integración en Puelche: TRL 2; objetivo TRL 4 al mes 10 y TRL 6 al mes 15. |
+| 5. Nivel de madurez y escala utilizada | Escala TRL de la Comisión Europea. EPCIS 2.0: estándar publicado. Modelos cinéticos: validados experimentalmente. Integración en Puelche: TRL 2; objetivo TRL 4 al mes 10 y TRL 6 al mes 15. Investigación adicional: parámetros cinéticos por familia para los productos de Puelche (3.10.3.1 y 3.10.3.4). |
 | 6. Fuentes citadas (APA 7.ª ed.) | GS1 AISBL (2022); Koutsoumanis et al. (2005); Jedermann et al. (2014); European Commission (2016). |
 | 7. Dónde se inserta en la arquitectura | B-01, B-02, B-03 y C-02 (borde y capa 1); N-08 Ingesta de IoT y N-06 Telemetría cruda, con los 10.920 mensajes diarios ya dimensionados; capa 5 con eventos EPCIS; M9 muestra y Calidad dispone; M2 y M5 reciben orden sugerido; M10 sobre N-10 (capa 6) calcula; capa 7 versiona el modelo. Contrato `inn03.historia-termica-lote.v1` (Anexo 13.A). |
 | 8. Paquetes de la EDT que la ejecutan | 3.10.3.1 (INN-03.P1), 3.10.3.2 (P2), 3.10.3.3 (P3), 3.10.3.4 (P4) y 8.3.2 (P5). Responsable: DAT. |
@@ -84,7 +95,7 @@ Ficha de la innovación 4, «Tramo variable de la Operación ligado al costo de 
 | 2. Nombre de la innovación | Tramo variable de la Operación ligado al costo de servir (INN-04) |
 | 3. Problema u oportunidad del caso que resuelve | Costo logístico prorrateado por zona con un criterio de 2016; Finanzas no sabe cuánto cuesta atender a un almacén de Empedrado (Distribuidora Puelche S.A., 2026c, cap. 1; criterio 11). TI de cuatro personas: toda función especializada debe ofrecerse como servicio costeado (cap. 10, restricción 9). |
 | 4. Tecnología, práctica o modelo que la sustenta | Pago fijo más tramo variable con techo, ligado a la reducción comparable del costo por entrega sobre una canasta congelada, con índices de ajuste y protección del OTIF; acompañamiento comercial con la segmentación del RF-11.08. Agrega a lo obligatorio (F-14, componentes variables del E-25) una métrica de negocio del CLIENTE. |
-| 5. Nivel de madurez y escala utilizada | Escala TRL de la Comisión Europea aplicada a la práctica contractual. Pago por nivel de servicio: TRL 9. Pago ligado al costo de servir: TRL 2; TRL 4 en el mes 20, TRL 6 en el 23 y TRL 7 en el 24. |
+| 5. Nivel de madurez y escala utilizada | Escala TRL de la Comisión Europea aplicada a la práctica contractual. Pago por nivel de servicio: TRL 9. Pago ligado al costo de servir: TRL 2; TRL 4 en el mes 20, TRL 6 en el 23 y TRL 7 en el 24. Investigación adicional: canasta, índices y regla estacional con datos reales de la Etapa 2 (5.4.3 y 8.3.3). |
 | 6. Fuentes citadas (APA 7.ª ed.) | FitzGerald et al. (2023); European Commission (2016). |
 | 7. Dónde se inserta en la arquitectura | M6, M7 y M8 aportan hechos; M10 calcula costo comparable y OTIF sobre N-10 (capa 6); la capa 6 versiona la base; la capa 7 audita la cifra; el dato contable vive en el ERP. Contrato `inn04.liquidacion-tramo.v1` (Anexo 13.A). |
 | 8. Paquetes de la EDT que la ejecutan | 5.4.3 (INN-04.P1), 8.3.3 (P2) y 8.3.4 (P3). Responsable: JP. |
@@ -108,9 +119,9 @@ Ficha de la innovación 5, «Hoja de negocio del almacenero», desarrollada en e
 | 2. Nombre de la innovación | Hoja de negocio del almacenero (INN-05) |
 | 3. Problema u oportunidad del caso que resuelve | 11.600 almacenes y minimarkets (Distribuidora Puelche S.A., 2026c, cap. 2.2) a los que no se puede exigir internet ni dispositivo (cap. 10, restricción 5); 38 % de la venta del canal se cobra en efectivo (cap. 4.7); un competidor ofrece una aplicación de autoatención (cap. 1). Puelche no devuelve al local la información de sus compras. |
 | 4. Tecnología, práctica o modelo que la sustenta | Hoja por local con cuatro bloques (compras, productos dejados de pedir, por vencer, comparación agregada opcional), entregada en pantalla del terminal sin señal o impresa en la cabina; control de divulgación estadística y k-anonimidad para el bloque 4. Agrega a lo obligatorio (RF-11.08, RT-16.32, portal) una lectura del propio negocio sin internet. |
-| 5. Nivel de madurez y escala utilizada | Escala TRL de la Comisión Europea. Informe sobre datos propios y control de divulgación: TRL 9. Uso en el micro-comercio sin conectividad: TRL 2; objetivo TRL 4 en los meses 13 y 14 y TRL 6 en los meses 19 y 20. |
+| 5. Nivel de madurez y escala utilizada | Escala TRL de la Comisión Europea. Informe sobre datos propios y control de divulgación: TRL 9. Uso en el micro-comercio sin conectividad: TRL 2; objetivo TRL 4 en los meses 13 y 14 y TRL 6 en los meses 19 y 20. Investigación adicional: comprensión de la hoja (3.10.4.1) y dictamen legal del bloque 4 (8.3.6). |
 | 6. Fuentes citadas (APA 7.ª ed.) | Hundepool et al. (2026); Sweeney (2002); Ley N.º 21.719 (2024); European Commission (2016). |
-| 7. Dónde se inserta en la arquitectura | M10 calcula sobre N-10 (capa 6); M3 muestra en el terminal C-01 (capa 1); M6 imprime con la impresora de cabina del camión (Formulario T-11); la capa 7 limita la hoja al receptor y audita el tratamiento. Contrato `inn05.hoja-negocio.v1` (Anexo 13.A). |
+| 7. Dónde se inserta en la arquitectura | M10 calcula sobre N-10 (capa 6); M3 muestra en la aplicación de preventa C-01 (capa 1); M6 imprime con la impresora de cabina del camión (Formulario T-11); la capa 7 limita la hoja al receptor y audita el tratamiento. Contrato `inn05.hoja-negocio.v1` (Anexo 13.A). |
 | 8. Paquetes de la EDT que la ejecutan | 3.10.4.1 (INN-05.P1), 3.10.4.2 (P2), 3.10.4.3 (P3), 3.10.4.4 y 8.3.5 (P4) y 8.3.6 (P5). Responsable: IMP. |
 | 9. Mes del cronograma en que se materializa | Mes 21 para los bloques 1 a 3; bloque 4 desde el mes 27, solo con dictamen legal favorable. |
 | 10. Inversión requerida | Investigación con usuarios y prueba de comprensión (meses 13 y 14); privacidad, cálculo, precarga e impresión en cabina (meses 14 a 18); revisión legal del bloque 4 (meses 24 a 27). Sin hardware adicional. |

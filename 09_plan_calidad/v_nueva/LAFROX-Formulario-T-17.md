@@ -6,11 +6,13 @@ Este formulario acompaña al Subdocumento 9, Plan de calidad (SD9). Contiene el 
 
 El protocolo recibe los entregables que el control de calidad ya verificó con el plan de pruebas del Formulario T-13. Verificar le corresponde a LafroX; aceptar le corresponde al CLIENTE, por medio de su Contraparte Técnica (Project Management Institute [PMI], 2017, p. 305).
 
-Mes 1 del contrato = febrero de 2027. Paquetes de trabajo del Formulario T-14; fechas del calendario efectivo del Formulario T-15, secciones 5.3 a 5.5, que descuenta los feriados.
+Mes 1 del contrato = febrero de 2027. Paquetes de trabajo del Formulario T-14; fechas del calendario efectivo de este formulario, sección 4.1, que descuenta los feriados; el Formulario T-15, secciones 5.3 a 5.5, conserva el escenario nominal y remite a este calendario para la recepción formal.
 
 ---
 
 ## 1. Base contractual
+
+Las reglas siguientes vinculan cada decisión del protocolo con su fundamento y con la evidencia que debe acompañar el hito.
 
 | Regla | Fuente | Aplicación en este protocolo |
 |---|---|---|
@@ -26,7 +28,11 @@ Mes 1 del contrato = febrero de 2027. Paquetes de trabajo del Formulario T-14; f
 
 ## 2. Procedimiento de aceptación
 
+La aceptación exige entrega formal, revisión y pronunciamiento del CLIENTE. Las revisiones preliminares ayudan a preparar el expediente, pero no sustituyen esos pasos.
+
 ### 2.1 Pasos
+
+El procedimiento distingue conformidad sin observaciones y subsanación. Ningún hito se declara cumplido antes de su acta.
 
 | Paso | Responsable | Plazo | Resultado |
 |---|---|---|---|
@@ -60,7 +66,11 @@ Los entregables que admiten revisión por partes se presentan por incrementos. E
 
 ## 3. Expediente de aceptación
 
+El expediente permite reconstruir qué se entrega, qué se verificó y qué observaciones se resolvieron; se comprueba antes de su recepción formal.
+
 ### 3.1 Contenido mínimo (Art. 18.2)
+
+Los cuatro componentes siguientes acompañan toda presentación. La evidencia debe corresponder a la misma versión del artefacto entregado.
 
 | Componente | Contenido |
 |---|---|
@@ -83,6 +93,8 @@ Un entregable de software está terminado cuando cumple las cinco condiciones si
 
 ### 3.3 Lista de verificación antes de la entrega
 
+El Líder de Calidad aplica esta lista al expediente y registra el resultado antes de presentarlo a la Contraparte Técnica.
+
 | Comprobación | Criterio |
 |---|---|
 | Correspondencia con las Bases y con el alcance ofertado | Cada criterio del hito tiene su evidencia en el expediente |
@@ -95,7 +107,11 @@ Un entregable de software está terminado cuando cumple las cinco condiciones si
 
 ## 4. Protocolo por hito
 
+Se distinguen los hitos documentales de la entrada al ambiente productivo y de la aceptación de las marchas blancas.
+
 ### 4.1 Fechas de entrega
+
+La recepción y su límite usan días hábiles efectivos. La reserva interna no se confunde con el plazo contractual de revisión del CLIENTE.
 
 | Hito | Mes | Entrega programada | Fecha límite de entrega | Reserva (días hábiles) |
 |---|---|---|---|---|
@@ -112,6 +128,8 @@ El T-15 mantiene un escenario nominal de lunes a viernes sin feriados; esta tabl
 
 ### 4.2 Hitos de entregables (H1 a H5 y H8 a H10)
 
+Cada hito documental se acepta por su artefacto y por la evidencia asociada; la presentación de un informe no demuestra por sí sola el cumplimiento.
+
 | Hito | Entregable y paquete T-14 | Criterios de aceptación | Evidencia |
 |---|---|---|---|
 | H1 (mes 2) | Línea base de alcance (1.2.1) y matriz de trazabilidad (1.2.4); plan de calidad y de pruebas (1.5.1) | Ningún requisito ofertado del T-12 queda sin paquete ni sin prueba prevista; cada tipo de prueba de la BTT 20.1 tiene su ambiente, calendario y criterio de salida; definición de terminado acordada | Matriz; plan; acta de la revisión de la versión preliminar |
@@ -124,6 +142,8 @@ El T-15 mantiene un escenario nominal de lunes a viernes sin feriados; esta tabl
 | H10 (mes 18) | Certificación de la Etapa 2 y cierre del desarrollo (3.9.6) | Pruebas 3.9.2 a 3.9.5 y 3.9.7 aprobadas, incluidos el perfil operacional del alcance cambiado y los protocolos del SD4, Anexo 4-V, que aplican a la Etapa 2; 0 defectos críticos o altos abiertos | Informes y casos firmados |
 
 ### 4.3 Hitos de operación supervisada (H6, H7, H11 y H12)
+
+H6 y H11 habilitan la operación supervisada con G5; H7 y H12 aceptan el cierre contractual de la marcha blanca con las seis condiciones copulativas.
 
 | Hito | Paquete T-14 | Criterios de aceptación | Evidencia |
 |---|---|---|---|
@@ -189,6 +209,8 @@ El acta se emite por hito y contiene lo siguiente. Un acta sin alguno de estos c
 
 ## 7. Roles
 
+La Contraparte Técnica acepta; LafroX prepara, verifica y subsana. La tabla delimita esas responsabilidades sin transferir la aceptación al equipo de pruebas.
+
 | Rol | Persona | Responsabilidad en el protocolo |
 |---|---|---|
 | Contraparte Técnica | Designada por Distribuidora Puelche (Art. 70.2) | Revisa, observa y firma el acta |
@@ -200,6 +222,8 @@ El acta se emite por hito y contiene lo siguiente. Un acta sin alguno de estos c
 ---
 
 ## Referencias
+
+Las fuentes siguientes sustentan los criterios citados en este documento; sus referencias se leen junto con el artículo, requisito o sección indicado en el lugar de uso.
 
 - Distribuidora Puelche S.A. (2026a). *Bases Administrativas, Licitación TFEP-01/2026*.
 - Distribuidora Puelche S.A. (2026b). *Bases Técnicas Transversales, Licitación TFEP-01/2026*.

@@ -212,9 +212,9 @@ El código puede cumplir sus umbrales y el proceso puede seguir dejando escapar 
 
 Las cuatro métricas de entrega del RT-04.12 (frecuencia de despliegue, tiempo del cambio a producción, tasa de cambios fallidos y tiempo de restauración) se miden con las metas que declara el SD4; la frecuencia es quincenal y se mide solo en los períodos que las ventanas del Caso habilitan. Dos de esas metas (tasa de cambios fallidos y tiempo de restauración) vienen del Art. 78.3 y rigen en la Operación. La reincidencia también proviene del Art. 78.3, pero no es una métrica de entrega. Otras dos, la de defectos escapados y la de observaciones repetidas, protegen la aceptación de los hitos de la implementación.
 
-**Costo de la calidad.** El PMBOK distingue el costo de conformidad, que se gasta para evitar fallas (prevención y evaluación), del costo de no conformidad, que se paga por las fallas (internas, si las encuentra el proyecto; externas, si las encuentra el cliente) (PMI, 2017, pp. 274 y 282–283). El plan lo calcula en horas-hombre, porque la Oferta Técnica no puede contener montos (BA, Art. 50.2). La Tabla 9.6 sintetiza el cálculo del Anexo 9.C.
+**Costo de la calidad y subtotal de conformidad.** El PMBOK distingue el costo de conformidad, que se gasta para evitar fallas (prevención y evaluación), del costo de no conformidad, que se paga por las fallas (internas, si las encuentra el proyecto; externas, si las encuentra el cliente) (PMI, 2017, pp. 274 y 282–283). El plan lo calcula en horas-hombre, porque la Oferta Técnica no puede contener montos (BA, Art. 50.2). La Tabla 9.6 sintetiza el subtotal de conformidad del Anexo 9.C.1; el Anexo 9.C.2 estima separadamente el retrabajo interno y externo por evento y evita sumarlo dos veces a la línea base.
 
-**Tabla 9.6 — Costo de la calidad en horas-hombre. Fuente: elaboración a partir de los Formularios T-14 y T-15, del cálculo del Anexo 9.C.**
+**Tabla 9.6 — Subtotal de conformidad en horas-hombre. Fuente: elaboración a partir de los Formularios T-14 y T-15, del cálculo del Anexo 9.C.**
 
 | Categoría | HH | Proporción | Paquetes principales |
 |---|---|---|---|
@@ -222,7 +222,7 @@ Las cuatro métricas de entrega del RT-04.12 (frecuencia de despliegue, tiempo d
 | Evaluación | 6.912,00 | 62,1 % | Certificaciones, restauraciones puente y pruebas en Operación |
 | **Total programado** | **11.136,00** | **100,0 %** | Sin importes esperados de fallas |
 
-La conformidad programada suma 11.136 HH, el 5,1 % de las 217.543 HH de la línea base (11.136 / 217.543 = 0,0512). Incluye 128 HH de restauraciones anteriores a Operación y la reestimación por ocurrencia del T-15. La evaluación pesa más que la prevención por las certificaciones y pruebas periódicas exigidas. No se mezclan estos paquetes con horas esperadas de riesgos: las fallas internas y externas requieren estimación del incidente, análisis de capacidad y autorización de recursos. Su ausencia en el total no significa cero esfuerzo ni reserva garantizada. El mantenimiento correctivo comparte 8.2.1 con el evolutivo y los defectos escapados se siguen como métrica.
+La conformidad programada suma 11.136 HH, el 5,1 % de las 217.543 HH de la línea base (11.136 / 217.543 = 0,0512). Incluye 128 HH de restauraciones anteriores a Operación y la reestimación por ocurrencia del T-15. La evaluación pesa más que la prevención por las certificaciones y pruebas periódicas exigidas. La no conformidad se estima por evento y por rol: los escenarios de referencia del Anexo 9.C.2 suman 93,8 HH por falla interna y 109,8 HH por falla externa, incluida una regresión manual completa. Son parámetros de planificación, no frecuencia prevista ni reserva garantizada. Para calcular el costo integral se añade el esfuerzo de fallas efectivamente previsto o consumido, descontando el trabajo ya incluido en la línea base. El mantenimiento correctivo comparte 8.2.1 con el evolutivo y los defectos escapados se siguen como métrica.
 
 ---
 
@@ -317,7 +317,7 @@ flowchart TB
 
 La figura sigue la regla de los ambientes del SD4: el software se prueba en un ambiente cada vez más parecido a producción y lo que se promueve es la misma imagen. Desarrollo concentra las pruebas rápidas y aisladas; QA, las de integración y regresión con datos controlados; Preproducción, equivalente a producción en topología y configuración (RT-04.02), las que dependen de la escala y de las fallas. Las pruebas propias del caso, como el turno sin señal y la cámara de congelado, no caben en un ambiente de nube y se ejecutan en terreno con dispositivos reales.
 
-Las campañas de certificación coinciden en el tiempo y no pueden compartir el ambiente: la resiliencia necesita carga sostenida, la intrusión exige una versión congelada y la aceptación necesita datos estables. Por eso cada campaña usa su propia instancia de Preproducción, reconstruida desde el mismo código; siguen siendo Preproducción y no un sexto ambiente (T-13, sección 4.1).
+Las campañas de certificación con estados incompatibles no pueden compartir la misma instancia al mismo tiempo: la resiliencia necesita carga sostenida, la intrusión exige una versión congelada y la aceptación necesita datos estables. Migración, intrusión y aceptación usan instancias separadas; carga, resiliencia y despliegue comparten PRE-C en sesiones sucesivas con restitución entre ellas (T-13, sección 4.1). Todas se reconstruyen desde el mismo código y siguen siendo Preproducción, no un sexto ambiente.
 
 **Pruebas aplicables por etapa y antes de cada entrada a Producción.** La BTT, sección 20.1, fija diez tipos de prueba con su momento y su criterio de salida. La Tabla 9.8 presenta los diez tipos y dos pruebas adicionales, con alcance en ambas etapas; el T-13, secciones 6 y 7, los especifica con sus criterios de entrada y salida.
 

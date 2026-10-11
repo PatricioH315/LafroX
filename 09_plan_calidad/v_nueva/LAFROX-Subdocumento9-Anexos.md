@@ -19,6 +19,8 @@ Las métricas siguen el modelo de calidad del producto de ISO/IEC 25010 (Interna
 
 ### 9.A.1 Funcionalidad
 
+La funcionalidad se verifica contra los requisitos ofertados y los casos que acepta la Contraparte Técnica.
+
 | ID | Subcaracterística | Métrica | Umbral | Origen | Verificación | Paquete |
 |---|---|---|---|---|---|---|
 | 9A-01 | Completitud | Requisitos ofertados del T-12 con prueba aprobada | 100 % | Caso, 17.1 | Matriz de trazabilidad generada desde la cadena de integración | 3.8.1; 3.9.1 |
@@ -26,6 +28,8 @@ Las métricas siguen el modelo de calidad del producto de ISO/IEC 25010 (Interna
 | 9A-03 | Pertinencia | Casos de aceptación firmados por la Contraparte Técnica | 100 % de los casos de la etapa | BTT 20.1 | Aceptación en Preproducción | 3.8.2; 3.9.2 |
 
 ### 9.A.2 Desempeño
+
+El desempeño se mide en percentil 95 con la carga de peak y la concurrencia de la solución; no se sustituye por tiempos promedio.
 
 | ID | Subcaracterística | Métrica | Umbral | Origen | Verificación | Paquete |
 |---|---|---|---|---|---|---|
@@ -41,6 +45,8 @@ Las métricas siguen el modelo de calidad del producto de ISO/IEC 25010 (Interna
 
 ### 9.A.3 Compatibilidad
 
+La compatibilidad se verifica sobre los quince flujos y sus contratos, incluida la convivencia con los sistemas del CLIENTE.
+
 | ID | Subcaracterística | Métrica | Umbral | Origen | Verificación | Paquete |
 |---|---|---|---|---|---|---|
 | 9A-13 | Interoperabilidad | Flujos de integración ejecutados sin error | 15 de 15 | BTT 20.1; SD4, sección 4.1 | Integración en QA | 3.8.1; 3.9.1 |
@@ -48,6 +54,8 @@ Las métricas siguen el modelo de calidad del producto de ISO/IEC 25010 (Interna
 | 9A-15 | Coexistencia | Regresiones de la Etapa 1 al integrar la Etapa 2 | 0 | Art. 17.2, regla 3 | Regresión de la Etapa 1 | 3.9.1 |
 
 ### 9.A.4 Usabilidad
+
+La usabilidad combina accesibilidad y resultados medidos por perfil en los dispositivos y condiciones reales de trabajo.
 
 | ID | Subcaracterística | Métrica | Umbral | Origen | Verificación | Paquete |
 |---|---|---|---|---|---|---|
@@ -57,6 +65,8 @@ Las métricas siguen el modelo de calidad del producto de ISO/IEC 25010 (Interna
 | 9A-19 | Adaptabilidad de la interfaz | Funciones completas en escritorio, tableta y teléfono | 100 % de las vistas de portales y consolas | RT-13.02 | Regresión visual con Playwright | 3.8.1; 3.9.1 |
 
 ### 9.A.5 Fiabilidad
+
+La fiabilidad se verifica mediante disponibilidad, recuperación e inyección de fallas, con umbrales por nivel de servicio.
 
 | ID | Subcaracterística | Métrica | Umbral | Origen | Verificación | Paquete |
 |---|---|---|---|---|---|---|
@@ -69,6 +79,8 @@ Las métricas siguen el modelo de calidad del producto de ISO/IEC 25010 (Interna
 
 ### 9.A.6 Seguridad
 
+La seguridad se evalúa por hallazgos abiertos y por la aplicación efectiva de los controles de identidad y datos.
+
 | ID | Subcaracterística | Métrica | Umbral | Origen | Verificación | Paquete |
 |---|---|---|---|---|---|---|
 | 9A-26 | Resistencia | Hallazgos críticos o altos abiertos (SAST, SCA, DAST, imágenes, intrusión) | 0 | RT-04.05; RT-11.20 | Cadena de integración; tercero independiente | 1.5.2; 3.8.6; 3.9.5; 8.2.2 |
@@ -77,6 +89,8 @@ Las métricas siguen el modelo de calidad del producto de ISO/IEC 25010 (Interna
 | 9A-29 | Confidencialidad | Secretos en código, imágenes o configuración | 0 | RT-04.09 | Escaneo de secretos | 1.5.2 |
 
 ### 9.A.7 Mantenibilidad
+
+La mantenibilidad se controla antes de fusionar código. Cada métrica debe producir evidencia verificable y bloquear el cambio que exceda su umbral.
 
 | ID | Subcaracterística | Métrica | Umbral | Origen | Verificación | Paquete |
 |---|---|---|---|---|---|---|
@@ -89,6 +103,8 @@ Las métricas siguen el modelo de calidad del producto de ISO/IEC 25010 (Interna
 
 ### 9.A.8 Portabilidad
 
+La portabilidad se comprueba promoviendo el mismo artefacto y reconstruyendo el ambiente desde sus definiciones versionadas.
+
 | ID | Subcaracterística | Métrica | Umbral | Origen | Verificación | Paquete |
 |---|---|---|---|---|---|---|
 | 9A-36 | Instalabilidad | Despliegues que promueven el mismo artefacto sin recompilar | 100 % | RT-04.08 | Digest de la imagen en cada ambiente | 3.8.8; 3.9.7 |
@@ -96,6 +112,8 @@ Las métricas siguen el modelo de calidad del producto de ISO/IEC 25010 (Interna
 | 9A-38 | Reemplazabilidad | Despliegue y reversión sin interrupción | 0 interrupciones; 0 intervenciones manuales | RT-04.06; RT-04.07 | Demostración en Preproducción | 3.8.8; 3.9.7 |
 
 ### 9.A.9 Calidad de datos (ISO/IEC 25012)
+
+La calidad de datos se mide sobre registros del negocio. Se distinguen completitud, exactitud, consistencia y actualidad para no ocultar errores con un único indicador.
 
 | ID | Dimensión | Métrica | Umbral | Origen | Verificación | Paquete |
 |---|---|---|---|---|---|---|
@@ -107,6 +125,8 @@ Las métricas siguen el modelo de calidad del producto de ISO/IEC 25010 (Interna
 ---
 
 ## Anexo 9.B — Puertas de calidad y reglas de bloqueo
+
+Las reglas siguientes concretan qué impide una promoción en cada puerta y qué evidencia se exige para corregirlo; ninguna aprobación sustituye una prueba fallida.
 
 | Puerta | Momento | Reglas que bloquean | Herramienta (PHP · Kotlin · TypeScript) | Quién puede levantar el bloqueo |
 |---|---|---|---|---|
@@ -129,6 +149,8 @@ Los umbrales de las puertas son **tolerancias**: el rango que un requisito acept
 El costo de la calidad se expresa en horas-hombre y no en dinero, porque la Oferta Técnica no puede contener cifras que permitan inferir el monto de la oferta (Art. 50.2). Las categorías son las del PMBOK: prevención, evaluación y fallas (PMI, 2017, pp. 274 y 282–283).
 
 ### 9.C.1 Costos de conformidad (programados en la línea base)
+
+El subtotal reúne los paquetes de prevención y evaluación identificables en la línea base. Cada paquete se cuenta una sola vez.
 
 | Categoría | Paquete T-14 | Contenido | HH (T-15) |
 |---|---|---|---|
@@ -156,9 +178,25 @@ Las 11.136 HH equivalen al 5,1 % de las 217.543 HH de la línea base (11.136 / 2
 
 ### 9.C.2 Fallas y autorización de recursos
 
-Las fallas no se valoran con importes copiados de un registro de riesgos. Cada observación o incidente requiere estimar corrección y repetición por rol, verificar capacidad y aprobar su financiación por control de cambios. No cuantificarlas aquí no equivale a asignar cero HH. Las fallas externas se registran y atienden por 8.2.1, sin presumir que toda corrección cabe en su esfuerzo programado.
+El costo de no conformidad se estima por evento y por especialidad, sin usar importes esperados de un registro de riesgos. Se distingue falla interna, detectada por LafroX antes de entregar, de falla externa, detectada en el uso del CLIENTE. Las cantidades siguientes son dos escenarios de referencia de LafroX para planificar retrabajo: no son mediciones, frecuencia prevista ni reserva autorizada.
+
+En ambos escenarios se supone una corrección acotada que exige un ciclo manual completo de 263 casos a 15 minutos: 263 × 15 / 60 = 65,75 HH, presentado como 65,8 HH. La regresión automática completa dura 8,8 horas transcurridas en un ejecutor; ese tiempo no se suma como si fueran 8,8 HH de una persona. Las HH de preparación, supervisión y análisis de ese ciclo están incluidas en SRE y CAL. Si una corrección modifica la arquitectura, los datos o la superficie de seguridad, se reestima también la campaña especializada afectada.
+
+| Rol | Falla interna, HH/evento | Falla externa, HH/evento | Desglose de referencia |
+|---|---|---|---|
+| Desarrollo (DES) | 16 | 24 | Interna: 4 análisis + 8 corrección + 4 pruebas unitarias; externa: 8 + 12 + 4 |
+| Calidad (CAL) | 73,8 | 73,8 | 65,8 de ejecución manual + 4 de análisis + 4 de evidencia |
+| Operación (SRE) | 4 | 8 | Interna: 2 de restitución + 2 de supervisión; externa: 4 de diagnóstico + 4 de promoción y verificación |
+| Implantación y coordinación (IMP) | 0 | 4 | Comunicación y coordinación con las personas afectadas por la falla externa |
+| **Total de referencia** | **93,8** | **109,8** | HH por evento; no constituyen dotación ni autorización de gasto |
+
+Para nI fallas internas y nE externas de este alcance, el esfuerzo de referencia es 93,8 × nI + 109,8 × nE. Un evento de cada tipo representa 203,6 HH. El costo de calidad del escenario sería 11.136 + 203,6 = 11.339,6 HH únicamente si esas horas fueran adicionales y no estuvieran ya incluidas en los paquetes de la línea base. No se adopta ese escenario como pronóstico del contrato: las cantidades nI y nE se revisan con los defectos observados desde las primeras campañas.
+
+Cada evento registra su requisito, severidad, etapa, causa, versión, HH previstas y reales por rol, pruebas repetidas y paquete de imputación. Se diferencia la repetición causada por el defecto de las pruebas planificadas que ya pertenecen a evaluación. Antes de agregar esfuerzo a la línea base se descuentan las HH ya incluidas y asignadas al mismo trabajo; no se vuelve a sumar la capacidad protegida del T-15 ni la atención correctiva incluida en 8.2.1. El Líder de Calidad informa mensualmente costos internos y externos consumidos y el Jefe de Proyecto autoriza los recursos por control de cambios tras verificar capacidad, sin consumir cobertura de servicio ni reservas protegidas de otro frente.
 
 ### 9.C.3 Distribución del esfuerzo programado
+
+Las proporciones siguientes comparan prevención y evaluación dentro del subtotal de conformidad; no representan la distribución del costo integral con fallas.
 
 | Categoría | HH | Proporción |
 |---|---|---|
@@ -198,6 +236,8 @@ Este anexo muestra el tramo final de la cadena del Caso, 17.1, para los diecisé
 ---
 
 ## Referencias
+
+Las fuentes siguientes sustentan los criterios citados en este documento; sus referencias se leen junto con el artículo, requisito o sección indicado en el lugar de uso.
 
 - Distribuidora Puelche S.A. (2026a). *Bases Administrativas, Licitación TFEP-01/2026*.
 - Distribuidora Puelche S.A. (2026b). *Bases Técnicas Transversales, Licitación TFEP-01/2026*.
