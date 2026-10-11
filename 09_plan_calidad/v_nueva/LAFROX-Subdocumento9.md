@@ -250,7 +250,7 @@ flowchart LR
 
 **Figura 9.3 — Puertas de calidad en la cadena de entrega. Fuente: elaboración a partir del SD4, sección 4.2.4.1, y del Formulario T-10.**
 
-G5 se aplica en el momento en que cada etapa entra a Producción, al iniciar su marcha blanca (H6 y H11), porque desde ese día la solución opera con datos y pedidos reales de Puelche. Exige el H5 o el H10 aceptado, las pruebas aplicables del T-13 aprobadas, la reversión ensayada, la conciliación sin diferencias no explicadas y los usuarios de la ola capacitados (T-17, 4.3). Los hitos H7 y H12 no son una puerta: aceptan la operación supervisada con las seis condiciones copulativas del Art. 17.3 y su acta. Las correcciones durante una marcha blanca no repiten G5: pasan por G0 a G4 y G6.
+G5 se aplica en el momento en que cada etapa entra a Producción, al iniciar su marcha blanca (H6 y H11), porque desde ese día la solución opera con datos y pedidos reales de Puelche. Exige el H5 o el H10 aceptado, las pruebas aplicables del T-13 aprobadas, la reversión ensayada, la conciliación sin diferencias no explicadas y los usuarios de la ola capacitados (T-17, 4.3). Los hitos H7 y H12 no son una puerta técnica: son el paso a producción contractual del Formulario E-25, que se acepta con las seis condiciones copulativas del Art. 17.3 y su acta. G5 no adelanta ese paso; habilita el ambiente de Producción para que la marcha blanca opere con datos reales bajo control.
 
 Las puertas están ordenadas por costo: el control es más barato cuanto antes ocurre. G0 a G2 se ejecutan en minutos sobre cada cambio; G5 se ejecuta dos veces en el contrato y exige semanas de prueba. La Tabla 9.7 resume qué bloquea cada puerta y quién puede levantarla; el Anexo 9.B detalla las reglas y herramientas.
 
@@ -493,7 +493,7 @@ gantt
     section Etapa 1
     Desarrollo E1 :2027-02-01, 2028-02-01
     Marcha blanca E1 :2028-02-01, 2028-05-01
-    Producción E1 :2028-05-01, 2028-10-01
+    E1 aceptada en producción :2028-05-01, 2028-10-01
     section Etapa 2
     Desarrollo E2 :2028-02-01, 2028-08-01
     Marcha blanca E2 :2028-08-01, 2028-10-01

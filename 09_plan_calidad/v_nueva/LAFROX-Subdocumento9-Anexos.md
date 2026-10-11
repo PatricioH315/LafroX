@@ -15,7 +15,7 @@ Estos anexos contienen el detalle que el cuerpo del Subdocumento 9 (SD9) resume.
 
 ## Anexo 9.A — Métricas de calidad del producto
 
-Las métricas siguen el modelo de calidad del producto de ISO/IEC 25010 (International Organization for Standardization [ISO] & International Electrotechnical Commission [IEC], 2011) y el modelo de calidad de datos de ISO/IEC 25012 (ISO & IEC, 2008). Cada métrica indica su umbral, su origen, el método con que se verifica, el ambiente y el paquete del Formulario T-14 donde se ejecuta. Los nombres de las características son los del Art. 24 de las Bases Administrativas.
+Las métricas siguen el modelo de calidad del producto de ISO/IEC 25010 (International Organization for Standardization [ISO] & International Electrotechnical Commission [IEC], 2011) y el modelo de calidad de datos de ISO/IEC 25012 (ISO & IEC, 2008). Cada métrica indica su umbral, su origen, el método con que se verifica y el paquete del Formulario T-14 donde se ejecuta. Los nombres de las características son los del Art. 24 de las Bases Administrativas.
 
 ### 9.A.1 Funcionalidad
 
@@ -63,9 +63,9 @@ Las métricas siguen el modelo de calidad del producto de ISO/IEC 25010 (Interna
 | 9A-20 | Disponibilidad | Disponibilidad mensual por nivel de servicio y de la infraestructura | Crítico ≥ 99,9 %; alto ≥ 99,5 %; medio ≥ 99,0 %; bajo ≥ 98,0 %; infraestructura (energía, climatización, red, cómputo, base de datos y portal) ≥ 99,95 % | Art. 78.2; BTT 7.2; SD4, Tabla 16 | Observabilidad en marcha blanca y Operación | 4.2.1; 4.3.1; Operación |
 | 9A-21 | Disponibilidad | Indisponibilidad entre 05:30 y 07:00, lunes a sábado | 0 minutos | Caso, RT-10.05 | Indicador diario de la marcha blanca | 4.2.1; 4.3.1 |
 | 9A-22 | Tolerancia a fallos | Escenarios de inyección superados sin intervención | 8 de 8 (T-13, sección 7.2) | RT-10.07; SD4, Anexo 4-V | AWS FIS, sitio emulado y gateways de frío | 3.8.4; 3.9.3; 8.2.2 |
-| 9A-23 | Recuperabilidad | RTO y RPO en conmutación real | RTO ≤ 4 h; RPO ≤ 15 min | RT-07.04; RT-07.07 | Conmutación regional | 3.8.5; 3.9.4; 8.1.3 |
+| 9A-23 | Recuperabilidad | RTO y RPO en conmutación real | RTO ≤ 4 h; RPO ≤ 15 min | RT-07.04; RT-07.07 | Conmutación regional y recuperación del WMS de Talca en la nube (AL-DR-01) | 3.8.5; 3.9.4; 8.1.3 |
 | 9A-24 | Recuperabilidad | Restauraciones mensuales exitosas, con tiempo medido | 100 % | RT-07.12 | Restauración de muestra | 4.2.1; 4.2.2; 4.3.1; 8.1.6 |
-| 9A-25 | Operación desconectada | Registros perdidos o duplicados tras 14 h sin señal y 24 h sin enlace | 0; sincronización ≤ 10 min (dispositivo) y ≤ 2 h (centro de distribución) | Caso, RT-03.10 y RT-03.13 | Perfil operacional y resiliencia | 3.8.3; 3.8.4 |
+| 9A-25 | Operación desconectada | Registros perdidos o duplicados tras 14 h sin señal y 24 h sin enlace | 0; sincronización ≤ 10 min (dispositivo) y ≤ 2 h (centro de distribución) | Caso, RT-03.10 y RT-03.13 | Perfil operacional y resiliencia; regresión del alcance cambiado E2 | 3.8.3; 3.8.4; 3.9.1; 3.9.2 |
 
 ### 9.A.6 Seguridad
 
@@ -118,7 +118,7 @@ Las métricas siguen el modelo de calidad del producto de ISO/IEC 25010 (Interna
 | G5 | Entrada de cada etapa a Producción (H6 y H11) | Una prueba del T-13 que habilita la entrada no está aprobada; defecto crítico o alto abierto; falta el acta de certificación de la etapa (H5 o H10) | Expediente del T-17 | Nadie. El acta es una condición adicional y no levanta una prueba fallida |
 | G6 | Producción desde H6/H11 y Operación | Canario con p95 sobre su umbral o con más errores que la versión estable; presupuesto de error crítico del mes agotado | Cadena de entrega del SD4; observabilidad | Nadie. La reversión del canario es automática; se suspenden los despliegues no correctivos hasta el mes siguiente |
 
-G5 es la puerta de entrada de cada etapa a Producción en el H6 y el H11 (T-17, 4.3): bloquea la habilitación sin certificación H5/H10 aceptada, pruebas aplicables aprobadas, reversión ensayada, conciliación y capacitación. El H7 y el H12 no son una puerta: aceptan la marcha blanca con las seis condiciones del Art. 17.3.
+G5 es la puerta de entrada de cada etapa a Producción en el H6 y el H11 (T-17, 4.3): bloquea la habilitación sin certificación H5/H10 aceptada, pruebas aplicables aprobadas, reversión ensayada, conciliación y capacitación. El H7 y el H12 no son una puerta técnica: son el paso a producción contractual del Formulario E-25 y aceptan la marcha blanca con las seis condiciones del Art. 17.3.
 
 Los umbrales de las puertas son **tolerancias**: el rango que un requisito acepta, como el p95 de 1 s de la línea de preparación. Son distintos de los **límites de control** de la sección 9.2.6 del SD9, que se calculan con la variación histórica de una métrica y sirven para detectar un proceso inestable antes de que llegue a la tolerancia (PMI, 2017, pp. 274 y 304).
 
@@ -181,7 +181,7 @@ Este anexo muestra el tramo final de la cadena del Caso, 17.1, para los diecisé
 | R18-01 Retiro sanitario en < 2 h | Simulacro sobre datos sintéticos (sección 7.4) | 4.2.1 | H7 |
 | R18-02 100 % de recepciones con lote | Casos de recepción; 9A-39 | 4.2.1 | H7 |
 | R18-03 Registro continuo de temperatura | Series con excursiones controladas; bloqueo del despacho (sección 7.4) | 4.2.1 | H7 |
-| R18-04 OTIF medido de una forma | Revisión del modelo analítico; 9A-41 | 4.2.1 y Operación | Por tramo (meses 15, 19 y 32) |
+| R18-04 OTIF medido de una forma | Revisión del modelo analítico; 9A-41 | 4.2.1, 4.3.1 y Operación | Por tramo (meses 15, 19 y 32) |
 | R18-05 Stock y crédito en la preventa | 9A-07 | 4.2.1 | H7 |
 | R18-06 Ningún pedido perdido sin señal | Jornada de 14 h sin señal (sección 7.3); 9A-25 | 4.2.1 | H7 |
 | R18-07 Ruta en < 20 min | Generación con volumen de peak (sección 7.4) | 4.2.1 | H7 |
