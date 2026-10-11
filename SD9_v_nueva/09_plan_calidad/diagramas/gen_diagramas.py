@@ -148,8 +148,9 @@ def fig3():
         "<b>G2 · Integración continua</b><br>coberturas · complejidad · acoplamiento · duplicación · SAST/SCA · contratos",
         "<b>G3 · Promoción a QA</b><br>imagen sin vulnerabilidades altas · sin regresión de desempeño",
         "<b>G4 · Promoción a Preproducción</b><br>regresión · DAST · WCAG",
-        "<b>G5 · Paso a producción (H7 y H12)</b><br>pruebas del T-13 · acta del T-17",
-        "<b>G6 · Operación</b><br>canario · presupuesto de error",
+        "<b>Control técnico previo H6/H11</b><br>certificación · reversión · datos · capacitación",
+        "<b>G5 · Paso contractual a producción (H7 y H12)</b><br>pruebas del T-13 · acta T-17",
+        "<b>G6 · Producción supervisada y Operación</b><br>canario · presupuesto de error",
     ]
     ids = []
     for i, g in enumerate(gates):
@@ -157,7 +158,9 @@ def fig3():
     for a, b in zip(ids, ids[1:]):
         d.edge(a, b)
     rej = d.box("Cambio rechazado<br>vuelve al autor", 450, 2 * 82 + 60, 140, 200, BOXACC)
-    for i, ey in ((2, 0.1), (4, 0.5), (5, 0.9)):
+    d.edge(ids[5], ids[7], EDGEDASH, exit_=(1, 0.5), entry=(1, 0.5))
+    d.box("Monitoreo desde H6/H11", 450, 530, 140, 40, TEXT)
+    for i, ey in ((2, 0.1), (4, 0.5), (6, 0.9)):
         d.edge(ids[i], rej, EDGEDASH, label="bloquea", exit_=(1, 0.5), entry=(0, ey))
     d.save()
 
@@ -218,7 +221,7 @@ def fig6():
     d = Diagram("Fig_9-6_Modelo_V")
     left = ["Necesidad y 16 resultados<br>Caso cap. 18", "Requisitos<br>SD3 · T-12 (H1)",
             "Arquitectura y datos<br>SD4 · SD5 (H2)", "Diseño de módulo y contrato", "Código"]
-    right = ["Marcha blanca y resultados del caso (H7 · H12)", "Aceptación de usuario<br>(H5 · H10)",
+    right = ["Resultados: H7/H12<br>OTIF por tramos · envases a 12 meses", "Aceptación de usuario<br>(H5 · H10)",
              "Sistema, carga, resiliencia, recuperación (H5 · H10)", "Integración y contrato<br>(H4 · H9)",
              "Unitarias"]
     lids, rids = [], []

@@ -17,15 +17,15 @@
 \contentsline {subsection}{7.3 Perfil operacional de terreno}{13}{table.8.10}%
 \contentsline {subsection}{7.4 Pruebas de los resultados del caso}{14}{table.8.11}%
 \contentsline {section}{8. Automatización}{14}{table.8.12}%
-\contentsline {subsection}{8.1 Criterio}{14}{table.8.12}%
+\contentsline {subsection}{8.1 Criterio}{15}{table.8.12}%
 \contentsline {subsection}{8.2 Tamaño estimado del catálogo}{15}{table.8.12}%
 \contentsline {subsection}{8.3 Duración de la regresión}{15}{table.8.13}%
-\contentsline {section}{9. Calendario}{15}{table.8.13}%
-\contentsline {subsection}{9.1 Implementación}{15}{table.8.13}%
-\contentsline {subsection}{9.2 Marchas blancas}{17}{table.8.14}%
-\contentsline {subsection}{9.3 Operación (meses 21 a 56)}{17}{table.8.15}%
-\contentsline {section}{10. Defectos}{18}{table.8.16}%
+\contentsline {section}{9. Calendario}{16}{table.8.13}%
+\contentsline {subsection}{9.1 Implementación}{16}{table.8.13}%
+\contentsline {subsection}{9.2 Marchas blancas y soporte puente}{17}{table.8.14}%
+\contentsline {subsection}{9.3 Operación (meses 21 a 56)}{18}{table.8.15}%
+\contentsline {section}{10. Defectos}{19}{table.8.16}%
 \contentsline {section}{11. Roles}{19}{table.8.17}%
-\contentsline {section}{12. Informes de prueba}{19}{table.8.18}%
-\contentsline {section}{Referencias}{20}{table.8.19}%
+\contentsline {section}{12. Informes de prueba}{20}{table.8.18}%
+\contentsline {section}{Referencias}{21}{table.8.19}%
 \contentsfinish 

@@ -6,7 +6,7 @@ Distribuidora Puelche tardó nueve días en identificar a los clientes afectados
 
 El capítulo responde tres preguntas. La sección 9.1 define con qué se juzga la calidad: los objetivos, las normas, el modelo de calidad del producto, los modelos de madurez, las métricas con umbral y el costo de la calidad. La sección 9.2 describe cómo se asegura y se controla: las puertas de calidad, la revisión y el análisis del código, la estrategia de pruebas, los datos de prueba, la trazabilidad y el ciclo de mejora. La sección 9.3 muestra dónde quedan esas actividades en la EDT y en el cronograma.
 
-El plan se conecta con el resto de la propuesta. Toma los requisitos y criterios de aceptación del Subdocumento 3 (SD3) y del Formulario T-12; los ambientes, la cadena de entrega, los umbrales de respuesta y el dimensionamiento del Subdocumento 4 (SD4); las reglas de calidad de datos y de migración del Subdocumento 5 (SD5); las compuertas y herramientas del Subdocumento 6 (SD6) y su Formulario T-10; los paquetes, fechas y horas del Subdocumento 7 (SD7) y sus Formularios T-14 y T-15; y los riesgos de calidad del Subdocumento 8 (SD8). El detalle se entrega por separado. El \textbf{Formulario T-13} contiene el plan de pruebas y validación. El \textbf{Formulario T-17} contiene el protocolo de aceptación de cada hito y del producto final. Los \textbf{Anexos 9.A a 9.D} contienen las métricas por subcaracterística, las reglas de las puertas, el cálculo del costo de la calidad y la trazabilidad de los resultados del caso.
+El plan se conecta con el resto de la propuesta. Toma los requisitos y criterios de aceptación del Subdocumento 3 (SD3) y del Formulario T-12; los ambientes, la cadena de entrega, los umbrales de respuesta y el dimensionamiento del Subdocumento 4 (SD4); las reglas de calidad de datos y de migración del Subdocumento 5 (SD5); las compuertas y herramientas del Subdocumento 6 (SD6) y su Formulario T-10; los paquetes, fechas y horas del Subdocumento 7 (SD7) y sus Formularios T-14 y T-15; y la coordinación con la gestión de riesgos. El detalle se entrega por separado. El \textbf{Formulario T-13} contiene el plan de pruebas y validación. El \textbf{Formulario T-17} contiene el protocolo de aceptación de cada hito y del producto final. Los \textbf{Anexos 9.A a 9.D} contienen las métricas por subcaracterística, las reglas de las puertas, el cálculo del costo de la calidad y la trazabilidad de los resultados del caso.
 
 En este capítulo, BA, BTT y Caso designan las Bases Administrativas (Distribuidora Puelche S.A., 2026a), las Bases Técnicas Transversales (2026b) y las Bases Técnicas del Caso 02 (2026c). El mes 1 del contrato es febrero de 2027.
 
@@ -124,19 +124,18 @@ Tiempo medio de restauración de incidentes críticos & Suma de tiempos de resta
 Reincidencia por la misma causa raíz & Incidentes con causa raíz repetida & ≤ 1 por trimestre & BA, Art. 78.3 \\
 \end{tablalafrox}
 
-Las cuatro métricas de entrega del RT-04.12 (frecuencia de despliegue, tiempo del cambio a producción, tasa de cambios fallidos y tiempo de restauración) se miden con las metas que declara el SD4; la frecuencia es quincenal y se mide solo en los períodos que las ventanas del Caso habilitan. Tres de esas metas vienen del Art. 78.3 y rigen en la Operación; otras dos, la de defectos escapados y la de observaciones repetidas, protegen la aceptación de los hitos de la implementación.
+Las cuatro métricas de entrega del RT-04.12 (frecuencia de despliegue, tiempo del cambio a producción, tasa de cambios fallidos y tiempo de restauración) se miden con las metas que declara el SD4; la frecuencia es quincenal y se mide solo en los períodos que las ventanas del Caso habilitan. Dos de esas metas (tasa de cambios fallidos y tiempo de restauración) vienen del Art. 78.3 y rigen en la Operación. La reincidencia también proviene del Art. 78.3, pero no es una métrica de entrega. Otras dos, la de defectos escapados y la de observaciones repetidas, protegen la aceptación de los hitos de la implementación.
 
 \textbf{Costo de la calidad.} El PMBOK distingue el costo de conformidad, que se gasta para evitar fallas (prevención y evaluación), del costo de no conformidad, que se paga por las fallas (internas, si las encuentra el proyecto; externas, si las encuentra el cliente) (PMI, 2017, pp. 274 y 282–283). El plan lo calcula en horas-hombre, porque la Oferta Técnica no puede contener montos (BA, Art. 50.2). La Tabla~\ref{tab:sd9-6} sintetiza el cálculo del Anexo 9.C.
 
-\begin{tablalafrox}{Costo de la calidad en horas-hombre. Fuente: elaboración a partir de los Formularios T-14 y T-15, del SD8, Anexo 8.B, Tabla B.2, y del cálculo del Anexo 9.C.}{tab:sd9-6}{>{\hsize=0.77\hsize\linewidth=\hsize}Y >{\hsize=0.457\hsize\linewidth=\hsize}Y >{\hsize=0.488\hsize\linewidth=\hsize}Y >{\hsize=2.285\hsize\linewidth=\hsize}Y}
+\begin{tablalafrox}{Costo de la calidad en horas-hombre. Fuente: elaboración a partir de los Formularios T-14 y T-15, del cálculo del Anexo 9.C.}{tab:sd9-6}{>{\hsize=0.77\hsize\linewidth=\hsize}Y >{\hsize=0.457\hsize\linewidth=\hsize}Y >{\hsize=0.488\hsize\linewidth=\hsize}Y >{\hsize=2.285\hsize\linewidth=\hsize}Y}
   {\cab{Categoría} & \cab{HH} & \cab{Proporción} & \cab{Paquetes principales}}
-Prevención & 4.224,00 & 31,0 \% & 2.6 (usabilidad), 3.10.2 (INN-02), 8.2.4 (deuda técnica) \\
-Evaluación & 6.304,00 & 46,2 \% & 3.8 y 3.9 (certificaciones), 8.1.6 y 8.2.2 (pruebas en Operación) \\
-Fallas internas esperadas & 3.110,40 & 22,8 \% & Riesgos R8-18 y R8-31 del SD8 \\
-\textbf{Total} & \textbf{13.638,40} & \textbf{100,0 \%} &  \\
+Prevención & 4.224,00 & 37,9 \% & 2.6, 3.10.2 y 8.2.4 \\
+Evaluación & 6.912,00 & 62,1 \% & Certificaciones, restauraciones puente y pruebas en Operación \\
+\textbf{Total programado} & \textbf{11.136,00} & \textbf{100,0 \%} & Sin importes esperados de fallas \\
 \end{tablalafrox}
 
-El cálculo deja tres conclusiones. Primero, la conformidad programada suma 10.528 HH, el 4,9 \% de las 216.935 HH de la línea base (Formulario T-15, sección 4.3); esa proporción resulta de sumar paquetes estimados uno a uno y no se fijó de antemano. Segundo, la evaluación pesa más que la prevención porque las Bases exigen pruebas costosas antes de cada paso a producción (carga, resiliencia, recuperación con conmutación real e intrusión por un tercero). Tercero, la falla interna esperada se concentra en un solo riesgo: que una marcha blanca no cumpla las seis condiciones del Art. 17.3 (R8-18, con 2.956,80 HH esperadas). Por eso las pruebas de certificación replican en Preproducción las condiciones que la marcha blanca medirá en Producción. Las fallas externas no se estiman en horas, porque su corrección comparte el paquete 8.2.1 con el mantenimiento evolutivo; se controlan con la métrica de defectos escapados.
+La conformidad programada suma 11.136 HH, el 5,1 \% de las 217.543 HH de la línea base (11.136 / 217.543 = 0,0512). Incluye 128 HH de restauraciones anteriores a Operación y la reestimación por ocurrencia del T-15. La evaluación pesa más que la prevención por las certificaciones y pruebas periódicas exigidas. No se mezclan estos paquetes con horas esperadas de riesgos: las fallas internas y externas requieren estimación del incidente, análisis de capacidad y autorización de recursos. Su ausencia en el total no significa cero esfuerzo ni reserva garantizada. El mantenimiento correctivo comparte 8.2.1 con el evolutivo y los defectos escapados se siguen como métrica.
 
 \section{Estrategia de Aseguramiento de Calidad}
 
@@ -148,6 +147,8 @@ Una puerta de calidad es un punto del recorrido de un cambio donde un criterio o
 
 \figuralafrox{0.951}{diagramas/Fig_9-3_Puertas_Calidad.pdf}{Puertas de calidad en la cadena de entrega. Fuente: elaboración a partir del SD4, sección 4.2.4.1, y del Formulario T-10.}{fig:sd9-3}
 
+El ambiente Producción se utiliza desde el inicio de las marchas blancas (H6/H11), sin que ello cierre su aceptación contractual. Antes de habilitarlo, el control técnico exige H5/H10 aceptado, pruebas aplicables del T-13 aprobadas, reversión ensayada, conciliación sin diferencias no explicadas y usuarios de la ola capacitados (T-17, 4.3). G5 permanece en H7/H12 y exige además las seis condiciones copulativas del Art. 17.3 y su acta. El control previo no reemplaza G5.
+
 Las puertas están ordenadas por costo: el control es más barato cuanto antes ocurre. G0 a G2 se ejecutan en minutos sobre cada cambio; G5 se ejecuta dos veces en el contrato y exige semanas de prueba. La Tabla~\ref{tab:sd9-7} resume qué bloquea cada puerta y quién puede levantarla; el Anexo 9.B detalla las reglas y herramientas.
 
 \begin{tablalafrox}{Bloqueo y autoridad por puerta. Fuente: elaboración a partir de las BTT, RT-04.05; el Formulario T-10, y el SD4, sección 4.2.4.1.4.}{tab:sd9-7}{>{\hsize=0.305\hsize\linewidth=\hsize}Y >{\hsize=0.724\hsize\linewidth=\hsize}Y >{\hsize=1.931\hsize\linewidth=\hsize}Y >{\hsize=1.04\hsize\linewidth=\hsize}Y}
@@ -156,8 +157,8 @@ G0–G1 & Compromiso y solicitud de fusión & Falta la aprobación de un par; ha
 G2 & Integración continua & Falla un umbral de la Tabla~\ref{tab:sd9-4}; hallazgo crítico o alto; contrato roto & Nadie \\
 G3 & Promoción a QA & Imagen con vulnerabilidad crítica o alta; p95, errores o colas peores que en la última versión aceptada & Nadie; se corrige \\
 G4 & Promoción a Preproducción & Regresión con fallas; alerta alta de DAST; incumplimiento WCAG; defecto crítico o alto abierto & Nadie \\
-G5 & Paso a producción (H7 y H12) & Prueba habilitante no aprobada; defecto crítico o alto abierto; falta el acta & Nadie; el acta no levanta una prueba fallida \\
-G6 & Operación & Canario fuera de umbral; presupuesto de error crítico del mes agotado & Nadie; reversión automática y suspensión de despliegues no correctivos \\
+G5 & Paso contractual a producción (H7 y H12) & Prueba habilitante no aprobada; defecto crítico o alto abierto; falta el acta & Nadie; el acta no levanta una prueba fallida \\
+G6 & Producción desde H6/H11 y Operación & Canario fuera de umbral; presupuesto de error crítico del mes agotado & Nadie; reversión automática y suspensión de despliegues no correctivos \\
 \end{tablalafrox}
 
 Ninguna puerta admite excepciones. Una regresión de desempeño en G3 bloquea la promoción hasta corregirla, como dispone el SD4, sección 4.2.4.1.4, y ningún hallazgo de seguridad crítico o alto se acepta con registro de deuda, como exige el RT-04.05. Las correcciones durante una marcha blanca no son un paso a producción contractual: pasan por G0 a G4 y G6, con regresión completa, y repiten la prueba de certificación que su cambio afecta (sección 9.3.2).
@@ -182,23 +183,25 @@ La figura sigue la regla de los ambientes del SD4: el software se prueba en un a
 
 Las campañas de certificación coinciden en el tiempo y no pueden compartir el ambiente: la resiliencia necesita carga sostenida, la intrusión exige una versión congelada y la aceptación necesita datos estables. Por eso cada campaña usa su propia instancia de Preproducción, reconstruida desde el mismo código; siguen siendo Preproducción y no un sexto ambiente (T-13, sección 4.1).
 
-\textbf{Pruebas que habilitan un paso a producción.} La BTT, sección 20.1, fija diez tipos de prueba con su momento y su criterio de salida. La Tabla~\ref{tab:sd9-8} los sintetiza; el T-13, secciones 6 y 7, los especifica con sus criterios de entrada y salida.
+\textbf{Pruebas aplicables por etapa y antes del paso contractual a producción.} La BTT, sección 20.1, fija diez tipos de prueba con su momento y su criterio de salida. La Tabla~\ref{tab:sd9-8} presenta los diez tipos y dos pruebas adicionales, con alcance en ambas etapas; el T-13, secciones 6 y 7, los especifica con sus criterios de entrada y salida.
 
-\begin{tablalafrox}{Pruebas que habilitan cada paso a producción. Fuente: elaboración a partir de las BA, Art. 24; las BTT, sección 20.1; el Caso, cap. 15, y el SD4, Tabla 33.}{tab:sd9-8}{>{\hsize=0.66\hsize\linewidth=\hsize}Y >{\hsize=0.662\hsize\linewidth=\hsize}Y >{\hsize=1.346\hsize\linewidth=\hsize}Y >{\hsize=1.332\hsize\linewidth=\hsize}Y}
+\begin{tablalafrox}{Pruebas aplicables por etapa y antes del paso contractual a producción. Fuente: elaboración a partir de las BA, Art. 24; las BTT, sección 20.1; el Caso, cap. 15, y el SD4, Tabla 33.}{tab:sd9-8}{>{\hsize=0.66\hsize\linewidth=\hsize}Y >{\hsize=0.662\hsize\linewidth=\hsize}Y >{\hsize=1.346\hsize\linewidth=\hsize}Y >{\hsize=1.332\hsize\linewidth=\hsize}Y}
   {\cab{Prueba} & \cab{Ambiente} & \cab{Carga o escenario} & \cab{Criterio de salida}}
-Integración y regresión & QA & 15 integraciones y batería completa & 0 fallas y 0 regresiones \\
+Unitarias y de componente & Desarrollo/CI & Lógica de negocio y componentes, ambas etapas & Cobertura ≥ 70 \% negocio y ≥ 80 \% global; 0 pruebas fallidas \\
+Integración & QA & 15 integraciones; alcance E2 y regresión E1 & 0 flujos con error \\
+Sistema y regresión & QA y Preproducción & Batería completa antes de promover, ambas etapas & 0 fallas y 0 regresiones \\
 Aceptación de usuario & Preproducción & Casos del SD3 con preventistas, conductores y bodega & Casos firmados por la Contraparte Técnica \\
 Carga y estrés & Preproducción & 21,99 TPS; escalones de 3× y 4× & p95 de la Tabla~\ref{tab:sd9-3}; punto de quiebre sin pérdida \\
 Resiliencia & Preproducción & Caída de instancia, zona y dependencia; latencia; disco; 24 h sin enlace & Recuperación sin intervención \\
-Perfil operacional & Terreno & 14 h sin señal; \ensuremath{-}22 °C con guantes; lluvia; sol; una mano & 0 pérdidas y 0 duplicados; sincronización ≤ 10 min \\
+Perfil operacional & Terreno & −22 °C con guantes; lluvia; > 34 °C; sol; una mano (E1 y regresión del alcance cambiado en E2); desconexión de 14 h por separado & 5 de 5 condiciones; 0 pérdidas/duplicados y sincronización ≤ 10 min en desconexión \\
 Recuperación ante desastres & Recuperación & Conmutación regional real & RTO ≤ 4 h; RPO ≤ 15 min \\
 Seguridad ofensiva & Preproducción & Tercero independiente & 0 hallazgos críticos o altos abiertos \\
-Accesibilidad & QA y Preproducción & axe-core y revisión manual & WCAG 2.2 AA documentado \\
+Accesibilidad & QA y Preproducción & axe-core y revisión manual & 0 incumplimientos WCAG 2.2 A/AA, con informe \\
 Migración & Preproducción & Dos ensayos con 32,11 GB & 0 diferencias no explicadas \\
 Despliegue sin interrupción & Preproducción & Canario con reversión & Sin interrupción ni intervención manual \\
 \end{tablalafrox}
 
-Respecto de la BTT, se suman dos pruebas, ambas exigidas por el Caso: el perfil operacional, por los RT-03.10, RT-03.13 y RT-13.08, y el despliegue sin interrupción, por el Art. 24. Ninguna prueba tiene un criterio de salida cualitativo: todas terminan en un número o en una firma.
+Respecto de la BTT, se suman dos pruebas, adicionales a los diez tipos: el perfil operacional, por los RT-03.10, RT-03.13 y RT-13.08, y el despliegue sin interrupción, por las BA, Art. 24. Ninguna prueba tiene un criterio de salida cualitativo: todas terminan en un número o en una firma.
 
 \textbf{Carga derivada del dimensionamiento.} La carga de prueba no se elige: se deriva del SD4, Tabla 33, aplicando el factor 1,5 que exigen el Art. 24 y el RT-09.06. La Tabla~\ref{tab:sd9-9} muestra la derivación.
 
@@ -231,7 +234,7 @@ La verificación comprueba que cada producto cumpla su especificación; la valid
 
 \figuralafrox{0.969}{diagramas/Fig_9-6_Modelo_V.pdf}{Verificación y validación por nivel y por hito. Fuente: elaboración a partir de las BA, Formulario E-25.}{fig:sd9-6}
 
-La certificación técnica de cada etapa (H5 y H10) no basta para aceptar los resultados del negocio. Los dieciséis resultados del Caso, capítulo 18, se aceptan con medición en operación real durante las marchas blancas (H7 y H12), conforme al Formulario T-17, sección 5. La aceptación no libera de responsabilidad por defectos posteriores (BA, Art. 18.4).
+La certificación técnica de cada etapa (H5 y H10) no basta para aceptar los resultados del negocio. Los dieciséis resultados del Caso, capítulo 18, tienen aceptación diferenciada según el T-17, sección 5, y el Anexo 9.D: doce se aceptan definitivamente en H7 y dos en H12. R18-04 (OTIF) se acepta por tramos en los meses 15, 19 y 32; R18-12 (envases) tiene aceptación provisional en H7 y final tras doce meses de operación medida. Las actas H7/H12 no anticipan estas dos aceptaciones pendientes. La aceptación no libera de responsabilidad por defectos posteriores (BA, Art. 18.4).
 
 \textbf{Trazabilidad.} La cadena que exige el Caso, sección 17.1, va del origen al criterio de aceptación: origen, requisito, componente, paquete de la EDT, prueba y criterio. El RT-04.04 le agrega el cambio de código y el despliegue. La Figura~\ref{fig:sd9-7} presenta la cadena con un requisito crítico como ejemplo: la lista de clientes afectados por un lote en menos de dos horas.
 
@@ -269,15 +272,16 @@ La EDT no tiene una rama de calidad aislada. Las actividades de calidad están e
   {\cab{Cuenta} & \cab{Paquetes} & \cab{Meses} & \cab{HH}}
 1.2 y 1.5: trazabilidad, plan y puertas & 1.2.4; 1.5.1; 1.5.2 & 2; 6 a 20 & 240 \\
 2.6: usabilidad con personas usuarias & 2.6.1 a 2.6.3 & 2 a 4 & 720 \\
-3.8: pruebas y certificación de la Etapa 1 & 3.8.1 a 3.8.8 & 9 y 10 & 2.080 \\
-3.9: pruebas y certificación de la Etapa 2 & 3.9.1 a 3.9.7 & 16 y 17 & 1.760 \\
+3.8: pruebas y certificación de la Etapa 1 & 3.8.1 a 3.8.8 & 9 y 10 & 2.240 \\
+3.9: pruebas y certificación de la Etapa 2 & 3.9.1 a 3.9.7 & 16 y 17 & 1.600 \\
 3.10.2: INN-02, reproducción de incidentes & 3.10.2.1 a 3.10.2.4 & 2 a 15 & 960 \\
 4.1.2: ensayo de reversión & 4.1.2 & 11 & 80 \\
-8.1 a 8.3: pruebas y deuda en la Operación & 8.1.3; 8.1.6; 8.2.2; 8.2.4; 8.3.1 & 21 a 56 & 4.688 \\
-\textbf{Total} &  &  & \textbf{10.528} \\
+8.1 a 8.3: pruebas y deuda en la Operación & 8.1.3; 8.1.6; 8.2.2; 8.2.4; 8.3.1 & 21 a 56 & 5.168 \\
+4.2.1; 4.2.2; 4.3.1: restauraciones previas & Componentes SRE separados & 13 a 20 & 128 \\
+\textbf{Total} &  &  & \textbf{11.136} \\
 \end{tablalafrox}
 
-La tabla suma las mismas 10.528 HH de conformidad del costo de la calidad (9.1.6). Las pruebas de cada etapa se concentran en dos bloques: la cuenta 3.8 en los meses 9 y 10, y la 3.9 en los meses 16 y 17. Empiezan cuando los módulos están integrados y terminan con margen para la revisión del CLIENTE y una eventual subsanación antes del hito. Durante esos bloques, el equipo de calidad se refuerza con hasta 16 evaluadores subcontratados por día, en los meses 9 a 12 y 16 a 18 (SD6, sección 6.1.3). Las 4.688 HH de la Operación muestran que la calidad no termina con la aceptación final.
+La tabla suma las mismas 11.136 HH de conformidad del costo de la calidad (9.1.6). Las pruebas de cada etapa se concentran en dos bloques: la cuenta 3.8 en los meses 9 y 10, y la 3.9 en los meses 16 y 17. Empiezan cuando los módulos están integrados y terminan con margen para la revisión del CLIENTE y una eventual subsanación antes del hito. La disponibilidad posterior a las campañas cubre subsanaciones y repetición de pruebas, no una campaña ininterrumpida. Durante esos bloques, el equipo de calidad se refuerza con hasta 16 evaluadores subcontratados por día, en los meses 9 a 12 y 16 a 18 (SD6, sección 6.1.3). Las 5.168 HH de la Operación muestran que la calidad no termina con la aceptación final.
 
 \subsection{Calidad en el cronograma y en los hitos}
 
@@ -285,11 +289,11 @@ La Figura~\ref{fig:sd9-9} presenta la vista general de los 56 meses del contrato
 
 \figuralafrox{0.987}{diagramas/Fig_9-9_Calidad_Cronograma.pdf}{Vista general de las actividades de calidad en el cronograma del contrato. Fuente: elaboración a partir del Caso, RT-10.05; de las BA, Formulario E-25, y de los Formularios T-14 y T-15, sección 6.1.}{fig:sd9-9}
 
-La vista general muestra dos concentraciones de calidad. La primera son las certificaciones de los meses 9 y 10 y 16 y 17, que preceden a cada marcha blanca. La segunda son las pruebas periódicas de la Operación: siete recuperaciones, seis resiliencias y tres intrusiones, repartidas con una separación máxima de seis meses. Solo dos de esas pruebas caen en una banda de congelamiento, las resiliencias de los meses 32 y 44, y por eso se ejecutan en Preproducción. La restauración de respaldos corre todos los meses desde el 13, cuando la marcha blanca empieza a operar con datos reales. Las Tablas~\ref{tab:sd9-mes1} y~\ref{tab:sd9-mes2} detallan mes a mes la implementación, meses 1 a 21. La fila que encabeza cada fase indica las actividades que corren durante toda la fase; cada mes muestra lo que empieza o se entrega en él, con su paquete de la EDT, y el hito que se acepta. Los meses 8, 11 y 20 están congelados por el Caso.
+La vista general muestra dos concentraciones de calidad. La primera son las certificaciones de los meses 9 y 10 y 16 y 17, que preceden a cada marcha blanca. La segunda son las pruebas periódicas de la Operación: siete recuperaciones, seis resiliencias y tres intrusiones, con separación máxima de seis meses para recuperación y resiliencia y de doce meses para intrusión. Solo dos de esas pruebas caen en una banda de congelamiento, las resiliencias de los meses 32 y 44, y por eso se ejecutan en Preproducción. La restauración de respaldos corre todos los meses desde el 13, cuando la marcha blanca empieza a operar con datos reales. Las Tablas~\ref{tab:sd9-mes1} y~\ref{tab:sd9-mes2} detallan mes a mes la implementación, meses 1 a 21. La fila que encabeza cada fase indica las actividades que corren durante toda la fase; cada mes muestra lo que empieza o se entrega en él, con su paquete de la EDT, y el hito que se acepta. Los meses 8, 11 y 20 están congelados por el Caso.
 
 \begin{tablalafrox}{Actividades de calidad mes a mes en la Etapa 1, meses 1 a 12. Fuente: elaboración a partir de las BA, Formulario E-25; del Caso, RT-10.05, y de los Formularios T-14 y T-15, sección 6.1.}{tab:sd9-mes1}{>{\hsize=0.66\hsize\linewidth=\hsize}Y >{\hsize=2.04\hsize\linewidth=\hsize}Y >{\hsize=0.3\hsize\linewidth=\hsize}Y}
   {\cab{Mes} & \cab{Actividades de calidad que empiezan o se entregan (paquete EDT)} & \cab{Hito}}
-\multicolumn{3}{>{\RaggedRight\arraybackslash}p{\dimexpr\textwidth-2\tabcolsep\relax}}{\cab{Etapa 1 · desarrollo, meses 1 a 12. Continuas: INN-02 (3.10.2) desde el mes 2; puertas automáticas (1.5.2) desde el mes 6; evaluadores subcontratados en los meses 9 a 12}} \\
+\textbf{Fase} & Etapa 1 · desarrollo, meses 1 a 12. Continuas: INN-02 (3.10.2) desde el mes 2; puertas automáticas (1.5.2) desde el mes 6; evaluadores subcontratados en los meses 9 a 12 &  \\
 1 · feb 2027 & — &  \\
 2 · mar 2027 & Matriz de trazabilidad (1.2.4); plan de calidad y de pruebas (1.5.1); investigación con usuarios (2.6.1) & \textbf{H1} \\
 3 · abr 2027 & Prototipos y pruebas de usabilidad (2.6.2) &  \\
@@ -306,42 +310,42 @@ La vista general muestra dos concentraciones de calidad. La primera son las cert
 
 \begin{tablalafrox}{Actividades de calidad mes a mes en las marchas blancas, la Etapa 2 y la entrada a la Operación, meses 13 a 21. Fuente: elaboración a partir de las BA, Formulario E-25; del Caso, RT-10.05, y de los Formularios T-14 y T-15, sección 6.1.}{tab:sd9-mes2}{>{\hsize=0.66\hsize\linewidth=\hsize}Y >{\hsize=2.04\hsize\linewidth=\hsize}Y >{\hsize=0.3\hsize\linewidth=\hsize}Y}
   {\cab{Mes} & \cab{Actividades de calidad que empiezan o se entregan (paquete EDT)} & \cab{Hito}}
-\multicolumn{3}{>{\RaggedRight\arraybackslash}p{\dimexpr\textwidth-2\tabcolsep\relax}}{\cab{Etapa 1 · marcha blanca y Etapa 2 · desarrollo, meses 13 a 15. Continuas: indicadores diarios y restauración mensual de respaldos (4.2.1); INN-02 hasta el mes 15}} \\
+\textbf{Fase} & Etapa 1 · marcha blanca y Etapa 2 · desarrollo, meses 13 a 15. Continuas: indicadores diarios y restauración mensual de respaldos (4.2.1); INN-02 hasta el mes 15 &  \\
 13 · feb 2028 & Inicio de la marcha blanca de la Etapa 1 (4.2.1) & \textbf{H6} \\
 14 · mar 2028 & — & \textbf{H8} \\
 15 · abr 2028 & Cierre de INN-02 en la implementación (3.10.2.4) &  \\
-\multicolumn{3}{>{\RaggedRight\arraybackslash}p{\dimexpr\textwidth-2\tabcolsep\relax}}{\cab{Etapa 1 en producción y Etapa 2 · desarrollo, meses 16 a 18. Continuas: restauración mensual; evaluadores subcontratados}} \\
+\textbf{Fase} & Etapa 1 en producción y Etapa 2 · desarrollo, meses 16 a 18. Continuas: restauración mensual; evaluadores subcontratados &  \\
 16 · may 2028 & Acta de paso a producción de la Etapa 1 (4.2.3); integración y regresión E2 (3.9.1); certificación E2 (3.9.2 a 3.9.7) & \textbf{H7} \\
 17 · jun 2028 & Acta de certificación E2 (3.9.6) & \textbf{H9} \\
 18 · jul 2028 & — & \textbf{H10} \\
-\multicolumn{3}{>{\RaggedRight\arraybackslash}p{\dimexpr\textwidth-2\tabcolsep\relax}}{\cab{Etapa 2 · marcha blanca, meses 19 y 20. Continuas: indicadores diarios y restauración mensual (4.3.1)}} \\
+\textbf{Fase} & Etapa 2 · marcha blanca, meses 19 y 20. Continuas: indicadores diarios y restauración mensual (4.3.1) &  \\
 19 · ago 2028 & Inicio de la marcha blanca en convivencia con la Etapa 1 (4.3.1) & \textbf{H11} \\
 20 · sep 2028, congelado & Marcha blanca con el peak de septiembre &  \\
-\multicolumn{3}{>{\RaggedRight\arraybackslash}p{\dimexpr\textwidth-2\tabcolsep\relax}}{\cab{Operación, desde el mes 21}} \\
+\textbf{Fase} & Operación, desde el mes 21 &  \\
 21 · oct 2028 & Acta de aceptación final (4.3.3); primera recuperación con conmutación real (8.1.3); restauración mensual (8.1.6) & \textbf{H12} \\
 \end{tablalafrox}
 
 Las dos tablas muestran que la carga de calidad se concentra en los meses 9 a 12 y 16 a 18, que son los meses en que entra el refuerzo de evaluadores subcontratados, y que ninguno de los tres meses congelados tiene una certificación.
 
-Ninguna certificación cae en un congelamiento. Las pruebas de la Etapa 1 terminan en noviembre de 2027, antes de diciembre; los ensayos de migración que coinciden con diciembre corren en Preproducción y no tocan Producción. La marcha blanca de la Etapa 2 coincide con el peak de septiembre de 2028 y con su congelamiento: es la exigencia más dura sobre la solución, porque se mide con el mayor volumen del año (Caso, cap. B, sección B.2). Durante ese congelamiento solo se corrige un defecto crítico o alto que impediría cumplir el Art. 17.3, por el procedimiento de cambio de emergencia del SD4, sección 4.2.4.1.4, con autorización escrita de la Contraparte Técnica y después de pasar G0 a G4 y repetir en Preproducción la prueba afectada.
+Ninguna certificación cae en un congelamiento. La ventana total de 3.8.5 incluye preparación/análisis; su intervención real se ejecuta del 26 al 29 de octubre de 2027, fuera del feriado del 1 de noviembre y de los primeros tres hábiles (2, 3 y 4). Las pruebas de la Etapa 1 terminan en noviembre de 2027, antes de diciembre; los ensayos de migración que coinciden con diciembre corren en Preproducción y no tocan Producción. La marcha blanca de la Etapa 2 coincide con el peak de septiembre de 2028 y con su congelamiento: es la exigencia más dura sobre la solución, porque se mide con el mayor volumen del año (Caso, cap. B, sección B.2). Durante ese congelamiento solo se corrige un defecto crítico o alto que impediría cumplir el Art. 17.3, por el procedimiento de cambio de emergencia del SD4, sección 4.2.4.1.4, con autorización escrita de la Contraparte Técnica y después de pasar G0 a G4 y repetir en Preproducción la prueba afectada.
 
 \textbf{Hitos y holgura.} Cada hito se acepta con el protocolo del T-17: el entregable se presenta con su evidencia y su trazabilidad (BA, Art. 18.2), el CLIENTE tiene 10 días hábiles para revisarlo y LafroX tiene otros 10 para subsanar observaciones (Art. 18.3). La Tabla~\ref{tab:sd9-11} compara la reserva de cada hito con la duración de una subsanación.
 
-\begin{tablalafrox}{Reserva y holgura de los hitos ante una subsanación. Fuente: elaboración a partir de las BA, Art. 18.3, y del Formulario T-15, Tabla 5.2 y sección 5.5.}{tab:sd9-11}{>{\hsize=0.451\hsize\linewidth=\hsize}Y >{\hsize=2.194\hsize\linewidth=\hsize}Y >{\hsize=0.451\hsize\linewidth=\hsize}Y >{\hsize=0.904\hsize\linewidth=\hsize}Y}
-  {\cab{Hito (mes)} & \cab{Entregable que lo habilita} & \cab{Reserva (días hábiles)} & \cab{Holgura tras subsanar (días hábiles)}}
-H1 (2) & Matriz de trazabilidad y plan de calidad & 6 & 6 \ensuremath{-} 5 = 1 \\
-H2 (4) & Arquitectura, plan de seguridad y modelo de datos & 12 & 12 \ensuremath{-} 10 = 2 \\
-H3 (6) & Ambientes y puertas G0 a G3 activas & 19 & 19 \ensuremath{-} 10 = 9 \\
-H4 (10) & Integración y regresión de la Etapa 1 & 19 & 19 \ensuremath{-} 10 = 9 \\
-H5 (12) & Certificación de la Etapa 1 & 35 & 35 \ensuremath{-} 10 = 25 \\
-H8 (14) & Línea base y diseño de la Etapa 2 & 4 & 4 \ensuremath{-} 4 = 0 \\
-H9 (17) & Integración y regresión de la Etapa 2 & 21 & 21 \ensuremath{-} 10 = 11 \\
-H10 (18) & Certificación de la Etapa 2 & 25 & 25 \ensuremath{-} 10 = 15 \\
+\begin{tablalafrox}{Reserva y holgura de los hitos ante una subsanación. Fuente: elaboración a partir de las BA, Art. 18.3; del calendario efectivo del T-17, 4.1, y del escenario nominal del T-15, 5.2/5.5.}{tab:sd9-11}{>{\hsize=0.451\hsize\linewidth=\hsize}Y >{\hsize=2.194\hsize\linewidth=\hsize}Y >{\hsize=0.451\hsize\linewidth=\hsize}Y >{\hsize=0.904\hsize\linewidth=\hsize}Y}
+  {\cab{Hito (mes)} & \cab{Entregable que lo habilita} & \cab{Reserva (días hábiles)} & \cab{Margen interno tras subsanación objetivo (días hábiles)}}
+H1 (2) & Matriz de trazabilidad y plan de calidad & 5 & 5 − 5 = 0 \\
+H2 (4) & Arquitectura, plan de seguridad y modelo de datos & 11 & 11 − 10 = 1 \\
+H3 (6) & Ambientes y puertas G0 a G3 activas & 16 & 16 − 10 = 6 \\
+H4 (10) & Integración y regresión de la Etapa 1 & 18 & 18 − 10 = 8 \\
+H5 (12) & Certificación de la Etapa 1 & 34 & 34 − 10 = 24 \\
+H8 (14) & Línea base y diseño de la Etapa 2 & 4 & 4 − 4 = 0 \\
+H9 (17) & Integración y regresión de la Etapa 2 & 19 & 19 − 10 = 9 \\
+H10 (18) & Certificación de la Etapa 2 & 23 & 23 − 10 = 13 \\
 \end{tablalafrox}
 
-Ningún hito tiene holgura negativa. Los dos más ajustados son el H1 y el H8, cuyas reservas son menores que los 10 días de subsanación del Art. 18.3. Por eso su versión preliminar se revisa con la Contraparte Técnica una semana antes de la entrega formal, y sus subsanaciones se comprometen en 5 y 4 días (T-15, sección 5.5; SD8, riesgo R8-12, contrapartes del CLIENTE no disponibles). La única oportunidad de subsanación es también la razón de la lista de verificación del T-17, sección 3.3: una segunda presentación con observaciones de la misma naturaleza es atraso imputable. Los hitos H6, H7, H11 y H12 no se habilitan con un documento sino con la operación supervisada, y se aceptan con las seis condiciones del Art. 17.3 (T-17, sección 4.3).
+La tabla mide margen interno tras una subsanación objetivo; no prueba que alcance para ambos ciclos de revisión del CLIENTE. H1/H8 tienen reserva efectiva de cinco/cuatro días, menor que diez días, por lo que emplean borrador progresivo y objetivos internos de cinco/cuatro días sin reducir los diez contractuales (T-17, 2.3). No se garantiza el acta dentro del mes si aparecen observaciones: se escala y registra el efecto sin desplazar automáticamente obligaciones posteriores. La segunda revisión tampoco se presume instantánea. H6/H11 verifican preparación técnica; H7/H12 cierran con las seis condiciones del Art. 17.3.
 
-\textbf{Repetición de una prueba tras una corrección.} Si una corrección durante la marcha blanca modifica un componente que cubrió una prueba de certificación, el Líder de Calidad repite esa prueba sobre la versión corregida antes de promoverla. La repetición no supera las horas del paquete original y se financia con la reserva de contingencia del SD8: la del riesgo R8-31 si la repetición deriva de observaciones a una certificación, y la del R8-18 si deriva de una corrección en la marcha blanca.
+\textbf{Repetición de una prueba tras una corrección.} Si una corrección durante la marcha blanca modifica un componente que cubrió una prueba de certificación, el Líder de Calidad repite esa prueba sobre la versión corregida antes de promoverla. Su alcance, HH por especialidad y ventana se estiman a partir del defecto y se autorizan por control de cambios. Primero se comprueba capacidad disponible sin consumir la cobertura de servicio ni la reserva protegida de otra etapa; si no alcanza, se acuerdan recursos y medidas correctivas. No se garantiza que baste el paquete original ni se presupone una reserva de un riesgo concreto.
 
 \subsection{Pruebas periódicas durante la Operación}
 
@@ -355,7 +359,7 @@ Intrusión por un tercero & Anual (RT-11.20) & 28, 40 y 52 & 8.2.2 \\
 Restauración de respaldos & Mensual (RT-07.12) & 13 a 20 (marcha blanca) y 21 a 56 & 4.2.1; 4.3.1; 8.1.6 \\
 \end{tablalafrox}
 
-Las cantidades coinciden con los entregables del T-14: siete pruebas de recuperación, seis de resiliencia, tres de intrusión y 36 restauraciones. La restauración mensual empieza antes, en el mes 13, porque desde la marcha blanca hay datos productivos: en los meses 13 a 20 la ejecuta SRE dentro de los paquetes 4.2.1 y 4.3.1, con el mismo procedimiento de 8.1.6. Cada tipo mantiene una separación máxima de seis meses. Las resiliencias de los meses 32 y 44 caen en septiembre y por eso se ejecutan en Preproducción, que no está congelada. Cada prueba produce un informe con el resultado medido, la comparación con su umbral y el plan de corrección de las brechas (RT-07.07); las brechas entran al registro de deuda técnica (8.2.4) y a la gestión de la capacidad (8.4.1).
+Las cantidades coinciden con los entregables del T-14: siete pruebas de recuperación, seis de resiliencia, tres de intrusión y 36 restauraciones. La restauración mensual empieza antes, en el mes 13, porque desde la marcha blanca hay datos productivos: en los meses 13–15 la ejecuta SRE en 4.2.1, en 16–18 en el soporte puente 4.2.2 y en 19–20 en 4.3.1; esos ocho informes y sus 128 HH son distintos de los 36 informes de 8.1.6, con el mismo procedimiento de 8.1.6. Recuperación y resiliencia mantienen una separación máxima de seis meses; intrusión mantiene periodicidad anual (meses 28, 40 y 52). Las resiliencias de los meses 32 y 44 caen en septiembre y por eso se ejecutan en Preproducción, que no está congelada. Cada prueba produce un informe con el resultado medido, la comparación con su umbral y el plan de corrección de las brechas (RT-07.07); las brechas entran al registro de deuda técnica (8.2.4) y a la gestión de la capacidad (8.4.1).
 
 \section*{Referencias}
 \addcontentsline{toc}{section}{Referencias}
@@ -391,9 +395,9 @@ El grupo usó inteligencia artificial generativa como apoyo en la redacción, en
 \begin{tablasimple}{>{\hsize=1.083\hsize\linewidth=\hsize}Y >{\hsize=0.879\hsize\linewidth=\hsize}Y >{\hsize=1.974\hsize\linewidth=\hsize}Y >{\hsize=0.39\hsize\linewidth=\hsize}Y >{\hsize=0.736\hsize\linewidth=\hsize}Y >{\hsize=0.938\hsize\linewidth=\hsize}Y}
   {\cab{Sección} & \cab{Herramienta} & \cab{Finalidad del uso} & \cab{Nivel en texto} & \cab{Nivel en diagramas} & \cab{Revisión humana (quién y qué verificó)}}
 Introducción & Claude Code & Redacción a partir de las Bases y de la estructura de las Aclaraciones & Alto & Ninguno & [[REVISIÓN HUMANA]] \\
-9.1 Plan de Calidad & Claude Code & Redacción; derivación de umbrales; cálculo del costo de la calidad; diseño y generación de las Figuras 9.1 y 9.2 (script que produce los archivos de draw.io) & Alto & Alto & [[REVISIÓN HUMANA]] \\
-9.2 Estrategia de Aseguramiento de Calidad & Claude Code & Redacción; derivación de la carga de prueba y del tamaño del catálogo; diseño y generación de las Figuras 9.3 a 9.8 (script que produce los archivos de draw.io) & Alto & Alto & [[REVISIÓN HUMANA]] \\
-9.3 Alineación con Plan de Trabajo & Claude Code & Redacción; conciliación con los Formularios T-14 y T-15; diseño y generación de la Figura 9.9 (script que produce el archivo de draw.io) & Alto & Alto & [[REVISIÓN HUMANA]] \\
+9.1 Plan de Calidad & Claude Code & Redacción; derivación de umbrales; cálculo del costo de la calidad; diseño y generación de las Figuras~\ref{fig:sd9-1} y 9.2 (script que produce los archivos de draw.io) & Alto & Alto & [[REVISIÓN HUMANA]] \\
+9.2 Estrategia de Aseguramiento de Calidad & Claude Code & Redacción; derivación de la carga de prueba y del tamaño del catálogo; diseño y generación de las Figuras~\ref{fig:sd9-3} a 9.8 (script que produce los archivos de draw.io) & Alto & Alto & [[REVISIÓN HUMANA]] \\
+9.3 Alineación con Plan de Trabajo & Claude Code & Redacción; conciliación con los Formularios T-14 y T-15; diseño y generación de la Figura~\ref{fig:sd9-9} (script que produce el archivo de draw.io) & Alto & Alto & [[REVISIÓN HUMANA]] \\
 Anexos 9.A a 9.D & Claude Code & Redacción y cálculos & Alto & Ninguno & [[REVISIÓN HUMANA]] \\
 Formulario T-13 & Claude Code & Redacción; calendario desde el T-15 & Alto & Ninguno & [[REVISIÓN HUMANA]] \\
 Formulario T-17 & Claude Code & Redacción; protocolo desde las BA, Arts. 17 y 18, y el SD3, Anexo 3.J & Alto & Ninguno & [[REVISIÓN HUMANA]] \\

@@ -1,6 +1,5 @@
-This is LuaHBTeX, Version 1.25.7 (MiKTeX 26.5) (format=lualatex 2026.9.17)  11 OCT 2026 12:40
+This is LuaHBTeX, Version 1.25.7 (MiKTeX 26.5) (format=lualatex 2026.9.17)  11 OCT 2026 16:02
  system commands enabled.
- file:line:error style messages enabled.
 **LAFROX-Subdocumento9-Anexos.tex
 (./LAFROX-Subdocumento9-Anexos.tex
 LaTeX2e <2026-06-01>
@@ -1979,19 +1978,19 @@ LaTeX Info: Redefining \% on input line 91.
  [7]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 114.
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 104.
 
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 114.
-LaTeX Info: Redefining \% on input line 114.
+LaTeX Info: Redefining \. on input line 104.
+LaTeX Info: Redefining \% on input line 104.
  [8]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 127.
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 125.
 
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 127.
-LaTeX Info: Redefining \% on input line 127.
+LaTeX Info: Redefining \. on input line 125.
+LaTeX Info: Redefining \% on input line 125.
 
 [9]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
@@ -2004,35 +2003,35 @@ LaTeX Info: Redefining \% on input line 139.
  [10]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 169.
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 150.
 
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 169.
-LaTeX Info: Redefining \% on input line 169.
+LaTeX Info: Redefining \. on input line 150.
+LaTeX Info: Redefining \% on input line 150.
  [11]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 183.
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 176.
 
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 183.
-LaTeX Info: Redefining \% on input line 183.
+LaTeX Info: Redefining \. on input line 176.
+LaTeX Info: Redefining \% on input line 176.
  [12]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 225.
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 220.
 
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 225.
-LaTeX Info: Redefining \% on input line 225.
+LaTeX Info: Redefining \. on input line 220.
+LaTeX Info: Redefining \% on input line 220.
  [13]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 225.
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 220.
 
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 225.
-LaTeX Info: Redefining \% on input line 225.
+LaTeX Info: Redefining \. on input line 220.
+LaTeX Info: Redefining \% on input line 220.
  [14])
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
@@ -2054,30 +2053,28 @@ L3 programming layer <2026-07-20>
 )
 
 Here is how much of LuaTeX's memory you used:
- 36624 strings out of 475695
- 125007,2373549 words of node,token memory allocated
+ 36622 strings out of 475695
+ 156265,2373549 words of node,token memory allocated
  745 words of node memory still in use:
    8 hlist, 2 vlist, 2 rule, 1 local_par, 6 glue, 5 kern, 1 penalty, 1 margin_ke
 rn, 4 glyph, 20 attribute, 79 glue_spec, 11 attribute_list, 2 write nodes
-   avail lists: 1:5,2:4004,3:840,4:468,5:1433,6:262,7:8920,8:3,9:2441,10:14,11:8
-91
- 58310 multiletter control sequences out of 65536+600000
- 120 fonts using 47021503 bytes
+   avail lists: 1:6,2:3954,3:840,4:476,5:1671,6:262,7:9786,8:3,9:2441,10:14,11:1
+061
+ 58309 multiletter control sequences out of 65536+600000
+ 120 fonts using 46965183 bytes
  107i,18n,128p,1508b,2770s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/henri/AppData/Local/Programs/MiKTeX/fonts/opentype/adobe/sourceserif/S
 ourceSerif4-RegularIt.otf><C:/Users/henri/AppData/Local/Programs/MiKTeX/fonts/op
 entype/adobe/sourceserif/SourceSerif4-Semibold.otf><C:/Users/henri/AppData/Local
-/Programs/MiKTeX/fonts/opentype/public/stix2-otf/STIXTwoMath-Regular.otf><C:/Use
-rs/henri/AppData/Local/Programs/MiKTeX/fonts/opentype/adobe/sourceserif/SourceSe
-rif4-Regular.otf><C:/Users/henri/AppData/Local/Programs/MiKTeX/fonts/opentype/ib
-m/plex/IBMPlexMono-Regular.otf><C:/Users/henri/AppData/Local/Programs/MiKTeX/fon
-ts/opentype/adobe/sourcesans/SourceSans3-Regular.otf><c:/users/henri/appdata/loc
-al/programs/miktex/fonts/opentype/adobe/sourcesans/sourcesans3-medium.otf><C:/Us
-ers/henri/AppData/Local/Programs/MiKTeX/fonts/opentype/adobe/sourcesans/SourceSa
-ns3-Semibold.otf>
-Output written on LAFROX-Subdocumento9-Anexos.pdf (15 pages, 113901 bytes).
+/Programs/MiKTeX/fonts/opentype/adobe/sourceserif/SourceSerif4-Regular.otf><C:/U
+sers/henri/AppData/Local/Programs/MiKTeX/fonts/opentype/ibm/plex/IBMPlexMono-Reg
+ular.otf><C:/Users/henri/AppData/Local/Programs/MiKTeX/fonts/opentype/adobe/sour
+cesans/SourceSans3-Regular.otf><c:/users/henri/appdata/local/programs/miktex/fon
+ts/opentype/adobe/sourcesans/sourcesans3-medium.otf><C:/Users/henri/AppData/Loca
+l/Programs/MiKTeX/fonts/opentype/adobe/sourcesans/SourceSans3-Semibold.otf>
+Output written on LAFROX-Subdocumento9-Anexos.pdf (15 pages, 112441 bytes).
 
-PDF statistics: 256 PDF objects out of 1000 (max. 8388607)
- 33 named destinations out of 1000 (max. 1048576)
+PDF statistics: 246 PDF objects out of 1000 (max. 8388607)
+ 32 named destinations out of 1000 (max. 1048576)
  168 words of extra memory for PDF output out of 10000 (max. 100000000)
 

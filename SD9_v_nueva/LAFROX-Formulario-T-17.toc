@@ -13,7 +13,7 @@
 \contentsline {subsection}{3.3 Lista de verificación antes de la entrega}{6}{table.8.5}%
 \contentsline {section}{4. Protocolo por hito}{7}{table.8.6}%
 \contentsline {subsection}{4.1 Fechas de entrega}{7}{table.8.6}%
-\contentsline {subsection}{4.2 Hitos de entregables (H1 a H5 y H8 a H10)}{7}{table.8.7}%
+\contentsline {subsection}{4.2 Hitos de entregables (H1 a H5 y H8 a H10)}{8}{table.8.7}%
 \contentsline {subsection}{4.3 Hitos de operación supervisada (H6, H7, H11 y H12)}{9}{table.8.8}%
 \contentsline {section}{5. Aceptación de los resultados del caso (producto final)}{10}{table.8.10}%
 \contentsline {section}{6. Acta de conformidad}{12}{table.8.11}%
