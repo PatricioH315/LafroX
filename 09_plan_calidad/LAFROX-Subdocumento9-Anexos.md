@@ -150,12 +150,12 @@ La Tabla 9.C.1 resume la matriz.
 | Grupo | Identificadores | Con prueba propia | Sin prueba propia | Casos estimados |
 | --- | --- | --- | --- | --- |
 | RF | 181 | 176 | 5 | 547 |
-| RNF | 90 | 84 | 6 | 302 |
-| RT | 374 | 354 | 20 | 354 |
+| RNF | 90 | 86 | 4 | 308 |
+| RT | 374 | 356 | 18 | 356 |
 | Contratos de las 15 integraciones | — | — | — | 105 |
-| **Total** | **645** | **614** | **31** | **1.308** |
+| **Total** | **645** | **618** | **27** | **1.316** |
 
-La matriz asigna prueba propia a 614 de los 645 identificadores. Los 31 restantes son 22 en estado «No cumple» y 9 absorbidos por otra fila. Con los 105 casos de contrato de las integraciones, siete por cada una de las 15, el catálogo suma 547 + 302 + 354 + 105 = 1.308 casos, la cifra que usa la sección 9.2.3 del Subdocumento 9.
+La matriz asigna prueba propia a 618 de los 645 identificadores. Los 27 restantes son 18 en estado «No cumple» y 9 absorbidos por otra fila. Con los 105 casos de contrato de las integraciones, siete por cada una de las 15, el catálogo suma 547 + 308 + 356 + 105 = 1.316 casos, la cifra que usa la sección 9.2.3 del Subdocumento 9.
 
 ### 9.C.2 Matriz
 
@@ -418,13 +418,13 @@ La Tabla 9.C.2 presenta la matriz completa, en el orden del Formulario T-12.
 | RNF-20.06 | Cumple | Inspección del expediente de certificación | — | 3.8.7 · 3.9.6 | H5 · H10 | 5 |
 | RNF-20.07 | Cumple | Recuperación ante desastres con conmutación real | DR | 3.8.5 · 3.9.4 | H5 · H10 | 5 |
 | RNF-21.01 | Cumple | Inspección del expediente de certificación | — | 3.8.7 · 3.9.6 | H5 · H10 | 5 |
-| RNF-21.02 | No cumple | Sin prueba: no ofertado | — | — | — | 0 |
+| RNF-21.02 | Cumple | Medición mensual de niveles de servicio | PROD | Cuentas 8.1 y 8.2 | Mensual | 3 |
 | RNF-21.03 | Cumple | Carga a 1,5× el peak y estrés | PREPROD | 3.8.4 · 3.9.3 | H5 · H10 | 3 |
 | RNF-21.04 | Cumple | Prueba funcional en marcha blanca | PROD | 4.2 · 4.3 | H7 · H12 | 3 |
 | RNF-21.05 | Cumple | Inspección del expediente de certificación | — | 3.8.7 · 3.9.6 | H5 · H10 | 3 |
 | RNF-21.06 | Cumple | Prueba funcional en marcha blanca | PROD | 4.2 · 4.3 | H7 · H12 | 3 |
-| RNF-21.07 | No cumple | Sin prueba: no ofertado | — | — | — | 0 |
-| RNF-21.08 | Cumple parcialmente | Inspección del expediente de certificación | — | 3.8.7 · 3.9.6 | H5 · H10 | 3 |
+| RNF-21.07 | Cumple | Medición mensual de niveles de servicio | PROD | Cuentas 8.1 y 8.2 | Mensual | 3 |
+| RNF-21.08 | Cumple | Inspección del expediente de certificación | — | 3.8.7 · 3.9.6 | H5 · H10 | 3 |
 | RNF-21.09 | Cumple | Inspección del expediente de certificación | — | 3.8.7 · 3.9.6 | H5 · H10 | 3 |
 | RNF-22.01 | Cumple | Inspección del expediente de certificación | — | 3.8.7 · 3.9.6 | H5 · H10 | 3 |
 | RNF-22.02 | Cumple | Recuperación ante desastres con conmutación real | DR | 3.8.5 · 3.9.4 | H5 · H10 | 3 |
@@ -746,7 +746,7 @@ La Tabla 9.C.2 presenta la matriz completa, en el orden del Formulario T-12.
 | RT-20.07 | Cumple | Aceptación y cierre de marcha blanca | PROD | 4.2 · 4.3 | H7 · H12 | 1 |
 | RT-20.08 | Cumple | Aceptación y cierre de marcha blanca | PROD | 4.2 · 4.3 | H7 · H12 | 1 |
 | RT-21.01 | Cumple | Medición mensual de niveles de servicio | PROD | Cuentas 8.1 y 8.2 | Mensual | 1 |
-| RT-21.02 | No cumple | Sin prueba: no ofertado | — | — | — | 0 |
+| RT-21.02 | Cumple | Medición mensual de niveles de servicio | PROD | Cuentas 8.1 y 8.2 | Mensual | 1 |
 | RT-21.03 | Cumple parcialmente | Medición mensual de niveles de servicio | PROD | Cuentas 8.1 y 8.2 | Mensual | 1 |
 | RT-21.04 | Cumple | Medición mensual de niveles de servicio | PROD | Cuentas 8.1 y 8.2 | Mensual | 1 |
 | RT-21.05 | Cumple | Medición mensual de niveles de servicio | PROD | Cuentas 8.1 y 8.2 | Mensual | 1 |
@@ -760,10 +760,10 @@ La Tabla 9.C.2 presenta la matriz completa, en el orden del Formulario T-12.
 | RT-21.13 | Cumple | Inspección del tablero del CLIENTE y de sus permisos | PROD | Cuenta 8.1 | Mensual | 1 |
 | RT-21.14 | Cumple | Medición mensual de niveles de servicio | PROD | Cuentas 8.1 y 8.2 | Mensual | 1 |
 | RT-21.15 | Cumple | Medición mensual de niveles de servicio | PROD | Cuentas 8.1 y 8.2 | Mensual | 1 |
-| RT-21.16 | No cumple | Sin prueba: no ofertado | — | — | — | 0 |
+| RT-21.16 | Cumple | Medición mensual de niveles de servicio | PROD | Cuentas 8.1 y 8.2 | Mensual | 1 |
 | RT-21.17 | Cumple | Medición mensual de niveles de servicio | PROD | Cuentas 8.1 y 8.2 | Mensual | 1 |
 | RT-21.18 | Cumple | Medición mensual de niveles de servicio | PROD | Cuentas 8.1 y 8.2 | Mensual | 1 |
-| RT-21.19 | Cumple parcialmente | Medición mensual de niveles de servicio | PROD | Cuentas 8.1 y 8.2 | Mensual | 1 |
+| RT-21.19 | Cumple | Medición mensual de niveles de servicio | PROD | Cuentas 8.1 y 8.2 | Mensual | 1 |
 | RT-21.20 | Cumple | Medición mensual de niveles de servicio | PROD | Cuentas 8.1 y 8.2 | Mensual | 1 |
 | RT-21.21 | Cumple | Medición mensual de niveles de servicio | PROD | Cuentas 8.1 y 8.2 | Mensual | 1 |
 | RT-21.22 | Cumple | Medición mensual de niveles de servicio | PROD | Cuentas 8.1 y 8.2 | Mensual | 1 |

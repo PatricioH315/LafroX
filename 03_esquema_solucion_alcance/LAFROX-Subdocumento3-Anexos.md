@@ -6,7 +6,7 @@ El índice siguiente ordena el contenido de este archivo.
 
 El catálogo funcional reúne **176 requerimientos**. Cada requerimiento identifica actor, descripción verificable, precondición, resultado esperado, prioridad, origen y etapa comprometida.
 
-La etapa se asigna con el criterio de la sección 3.2.1 del Subdocumento 3: la Etapa 1 concentra captura, trazabilidad, entrega, efectivo y rutas; la Etapa 2 incorpora canal moderno, portal y costo de servir. Los requerimientos transversales de las Bases rigen en ambas etapas. La prioridad usa la escala Crítica, Alta y Media del Anexo 2.1 del Subdocumento 2 (LafroX, 2026a); la categoría «Muy Alta» del catálogo consolidado se expresa como «Crítica». Cada requerimiento funcional asociado a una familia del Subdocumento 2, Anexo 2.1, conserva como máximo la prioridad asignada a esa familia; los requerimientos sin familia y los derivados de las Bases quedan como máximo en «Alta». La categoría «Crítica» se reserva a los requerimientos que sostienen un resultado obligatorio de aceptación, una restricción operacional, un hito externo o una condición rectora del Subdocumento 2. El catálogo completo reúne **262 requerimientos: 56 críticos, 163 altos y 43 medios**. De ellos se ofertan 260: RNF-21.02 y RNF-21.07, ambos de prioridad Alta, figuran como «No cumple» en el Formulario T-12.
+La etapa se asigna con el criterio de la sección 3.2.1 del Subdocumento 3: la Etapa 1 concentra captura, trazabilidad, entrega, efectivo y rutas; la Etapa 2 incorpora canal moderno, portal y costo de servir. Los requerimientos transversales de las Bases rigen en ambas etapas. La prioridad usa la escala Crítica, Alta y Media del Anexo 2.1 del Subdocumento 2 (LafroX, 2026a); la categoría «Muy Alta» del catálogo consolidado se expresa como «Crítica». Cada requerimiento funcional asociado a una familia del Subdocumento 2, Anexo 2.1, conserva como máximo la prioridad asignada a esa familia; los requerimientos sin familia y los derivados de las Bases quedan como máximo en «Alta». La categoría «Crítica» se reserva a los requerimientos que sostienen un resultado obligatorio de aceptación, una restricción operacional, un hito externo o una condición rectora del Subdocumento 2. El catálogo completo reúne **262 requerimientos: 56 críticos, 163 altos y 43 medios**. Todos se ofertan y figuran como «Cumple» en el Formulario T-12.
 
 Cuando un parámetro no está definido entre los requisitos del CLIENTE, LafroX propone su valor y lo somete a validación durante el levantamiento. Esta regla rige para todos los anexos y para el Formulario T-12.
 
@@ -255,7 +255,7 @@ La tabla distingue dos grupos. Los ofertados (RF-06.06, RF-07.01, RF-09.10 y RF-
 
 ## Anexo 3.B — Catálogo de requerimientos no funcionales
 
-El catálogo no funcional reúne **86 requerimientos**, de los cuales se ofertan 84 (RNF-21.02 y RNF-21.07 figuran como «No cumple» en el Formulario T-12), detallados en las Tablas 3.A.4, 3.A.5 y 3.A.5b. Cada fila indica el umbral o criterio binario, la verificación prevista y el origen. Los protocolos detallados, datos y ambientes de prueba se desarrollan en el plan de calidad de la oferta.
+El catálogo no funcional reúne **86 requerimientos**, todos ofertados en el Formulario T-12, detallados en las Tablas 3.A.4, 3.A.5 y 3.A.5b. Cada fila indica el umbral o criterio binario, la verificación prevista y el origen. Los protocolos detallados, datos y ambientes de prueba se desarrollan en el plan de calidad de la oferta.
 
 La Tabla 3.A.4 presenta los requerimientos no funcionales de Distribuidora Puelche.
 
