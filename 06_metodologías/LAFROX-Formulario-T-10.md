@@ -73,10 +73,13 @@ Las compuertas son obligatorias y bloquean la promoción ante cualquiera de esta
 - contrato público roto sin una nueva edición de la interfaz;
 - cobertura de la lógica de negocio inferior al **70 %**, conforme a RT-04.11;
 - cobertura unitaria global inferior al **80 %**, conforme a la política corporativa de LafroX (paquete 1.5.2);
+- complejidad ciclomática superior a **10** en un método;
+- dependencia prohibida entre módulos, es decir, un módulo que invoca clases internas de otro fuera de su contrato (Bases Administrativas, Art. 19);
+- acoplamiento eferente superior a **20 clases** en una clase, regla de LafroX;
 - duplicación de código superior al **3 %** de las líneas;
 - deuda técnica bloqueante o una prueba fallida.
 
-Los dos porcentajes son criterios independientes: el 70 % corresponde a cobertura de lógica de negocio según RT-04.11; el 80 % corresponde a cobertura unitaria global según la política de LafroX. No son métricas intercambiables.
+Los dos porcentajes son criterios independientes: el 70 % corresponde a cobertura de lógica de negocio según RT-04.11; el 80 % corresponde a cobertura unitaria global según la política de LafroX. No son métricas intercambiables. La complejidad, las dependencias entre módulos y el acoplamiento se miden con PHPMD, deptrac y PhpMetrics en PHP, con detekt en Kotlin y con ESLint en TypeScript. Las siete métricas de código bloquean en la integración continua, que es la puerta G2 del plan de calidad (SD9, Tabla 9.4, y Anexo 9.B).
 
 ### Artefactos, infraestructura y migraciones
 

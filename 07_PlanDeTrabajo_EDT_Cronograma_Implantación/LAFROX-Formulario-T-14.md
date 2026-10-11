@@ -1266,13 +1266,13 @@ La Tabla T14.25 presenta sus paquetes.
 
 | Código | Paquete de trabajo | Entregable | Criterio de aceptación | Resp. | Período |
 | --- | --- | --- | --- | --- | --- |
-| 3.8.1 | Pruebas de integración, regresión e idempotencia en QA (H4) | Informe de pruebas. | Todos los flujos se ejecutan sin error, y no hay regresiones. | CAL | Mes 9 (H4). |
+| 3.8.1 | Pruebas de integración, regresión e idempotencia en QA (H4) | Informe de pruebas. | Todos los flujos se ejecutan sin error, y no hay regresiones. | CAL | Ejecución: mes 9. Hito H4 del Formulario E-25: mes 10. |
 | 3.8.2 | Pruebas de aceptación y de accesibilidad con preventistas, conductores y bodega | Casos de aceptación firmados. | Los casos están firmados por la Contraparte Técnica, y la accesibilidad cumple WCAG 2.2 AA. | CAL | Antes del H5. |
 | 3.8.3 | Cinco condiciones físicas: −22 °C con guantes, lluvia, calor > 34 °C, sol directo y una mano; desconexión separada de 14 h | Informe de cinco condiciones y de desconexión, con 9A-17/9A-25. | 5 de 5 condiciones; 0 pérdida/duplicado; sincronización ≤ 10 min. | CAL | Antes del H5. |
 | 3.8.4 | Pruebas de carga con el peak de septiembre y de resiliencia | Informe de carga y resiliencia. | Se cumplen los tiempos exigidos a 1,5 veces el peak, y la solución se recupera sin intervención. | CAL | Antes del H5. |
 | 3.8.5 | Prueba de recuperación ante desastres con conmutación real | Informe de la prueba. | Se alcanzan el RTO y el RPO comprometidos. | CAL | Antes del H5. |
 | 3.8.6 | Prueba de seguridad ofensiva de la Etapa 1, por un tercero independiente | Informe íntegro del tercero y evidencia de las correcciones. | No quedan hallazgos críticos ni altos abiertos. | SEG | Antes del H5. |
-| 3.8.7 | Acta de certificación de la Etapa 1 (H5) | Acta del H5 con su expediente de evidencia. | Las pruebas 3.8.2 a 3.8.6 están aprobadas y el acta está firmada. | CAL | Ejecución: mes 10. Hito H5 del Formulario E-25: mes 12. |
+| 3.8.7 | Acta de certificación de la Etapa 1 (H5) | Acta del H5 con su expediente de evidencia. | Las pruebas 3.8.2 a 3.8.6 y la demostración del despliegue sin interrupción (3.8.8) están aprobadas, y el acta está firmada. | CAL | Ejecución: mes 10. Hito H5 del Formulario E-25: mes 12. |
 | 3.8.8 | Demostración en Preproducción del despliegue sin interrupción de la Etapa 1 | Informe de la demostración. | La versión se despliega y se revierte en Preproducción sin interrupción y sin intervención manual. | SRE | Antes del H5 y antes de cada paso a producción. |
 
 #### Cuenta 3.9 — Pruebas de la Etapa 2
@@ -1292,7 +1292,7 @@ La Tabla T14.26 presenta sus paquetes.
 | 3.9.3 | Pruebas de carga con ambas etapas activas y de resiliencia | Informe. | Se cumplen los tiempos a 1,5 veces el peak. | CAL | Antes del H10. |
 | 3.9.4 | Prueba de recuperación ante desastres con ambas etapas | Informe. | Se alcanzan el RTO y el RPO comprometidos. | CAL | Antes del H10. |
 | 3.9.5 | Prueba de seguridad ofensiva de la Etapa 2, por un tercero independiente | Informe y correcciones. | No quedan hallazgos críticos ni altos abiertos. | SEG | Antes del H10. |
-| 3.9.6 | Acta de certificación de la Etapa 2 y cierre del desarrollo (H10) | Acta del H10. | Las pruebas 3.9.2 a 3.9.5 están aprobadas y el acta está firmada. | CAL | Ejecución: meses 16 y 17. Hito H10 del Formulario E-25: mes 18. |
+| 3.9.6 | Acta de certificación de la Etapa 2 y cierre del desarrollo (H10) | Acta del H10. | Las pruebas 3.9.2 a 3.9.5 y la demostración del despliegue sin interrupción (3.9.7) están aprobadas, y el acta está firmada. | CAL | Ejecución: meses 16 y 17. Hito H10 del Formulario E-25: mes 18. |
 | 3.9.7 | Demostración en Preproducción del despliegue sin interrupción de la Etapa 2 | Informe de la demostración. | La versión se despliega y se revierte sin interrumpir ninguna de las dos etapas. | SRE | Antes del H10. |
 
 #### Cuenta 3.10 — Innovaciones
@@ -1904,7 +1904,7 @@ gantt
 
 Las ventanas mensuales de asignación y las HH por paquete están en el T-15, sección 4. La preparación del H3 sigue esta secuencia: planos 2.3.1/2.3.2 en el mes 1, especificación y orden de compra de LafroX 5.1.2 en el mes 2, instalación 6.1.1–6.1.4 en el mes 3 y recepción 6.1.5 en el mes 4. Los racks R01/R02 se montan en los meses 4 y 5, el gabinete de Concepción en el mes 4 y el borde de los CD entra en servicio mediante 6.6.3 en el mes 5. Los gabinetes de cross-docking se montan en el mes 9. El CLIENTE compra el equipamiento de terreno antes de cada ola.
 
-3.9.1/3.9.2 repiten el perfil físico y desconexión del alcance cambiado en E2, con evidencia de cobertura de condiciones no modificadas. 4.2.1 agrega tres restauraciones de 16 HH SRE y 4.3.1 dos; no se confunden con las 36 de 8.1.6. 4.2.2 incorpora estabilización y soporte puente E1 en los meses 16–20, después del paso a producción del H7. La fase contractual de Operación comienza en el mes 21. 4.3.2 comprende cuatro semanas reforzadas posteriores al H12, imputadas a los meses 21 y 22. El T-18, sección 6, declara la dotación y la regla de decremento. 8.3.2 realiza la revisión INN-03.P5 cada seis meses: meses 26, 32, 38, 44, 50 y 56, contados desde el inicio de Operación. El esfuerzo equivalente mensual del T-15 conserva esta frecuencia. La coordinación de reserva y retención (SD4, apartado 4.1.4.4) y las pruebas AL-STOCK-01/AL-ACT-01 se incorporan a los paquetes existentes conforme al T-18, sección 6.5. AL-STOCK-01 mide la proporción de líneas con más de una retención y las pruebas de carga 3.8.4/3.9.3 verifican el drenaje.
+3.9.1/3.9.2 repiten el perfil físico y desconexión del alcance cambiado en E2, con evidencia de cobertura de condiciones no modificadas. 4.2.1 agrega tres restauraciones de 16 HH SRE, 4.2.2 otras tres y 4.3.1 dos (ocho en los meses 13 a 20, T-15, sección 4.2); no se confunden con las 36 de 8.1.6. 4.2.2 incorpora estabilización y soporte puente E1 en los meses 16–20, después del paso a producción del H7. La fase contractual de Operación comienza en el mes 21. 4.3.2 comprende cuatro semanas reforzadas posteriores al H12, imputadas a los meses 21 y 22. El T-18, sección 6, declara la dotación y la regla de decremento. 8.3.2 realiza la revisión INN-03.P5 cada seis meses: meses 26, 32, 38, 44, 50 y 56, contados desde el inicio de Operación. El esfuerzo equivalente mensual del T-15 conserva esta frecuencia. La coordinación de reserva y retención (SD4, apartado 4.1.4.4) y las pruebas AL-STOCK-01/AL-ACT-01 se incorporan a los paquetes existentes conforme al T-18, sección 6.5. AL-STOCK-01 mide la proporción de líneas con más de una retención y las pruebas de carga 3.8.4/3.9.3 verifican el drenaje.
 
 
 ## Referencias
