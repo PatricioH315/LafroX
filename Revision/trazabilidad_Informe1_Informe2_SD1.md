@@ -1,5 +1,7 @@
 # LafroX — Trazabilidad de observaciones del Informe 1: Subdocumento 1
 
+Este registro corresponde al cotejo inicial de los archivos Markdown, no de los PDF. Para la revisión solicitada de la rama LaTeX, usar [la tabla revisada del SD1 y T-6](trazabilidad_Informe1_Informe2_SD1_LaTeX.md).
+
 ## Alcance y criterio de lectura
 
 Tabla de observación–respuesta–sección modificada exigida por las Bases Administrativas, artículo 46° y Formulario T-22, apartado «Informe y presentación 2». Se contrastan las observaciones de `Revision_informe.md`, apartado «SUBDOCUMENTO 1», y las observaciones generales aplicables, con el cuerpo y el Formulario T-6 actuales.
@@ -37,7 +39,7 @@ Tabla de observación–respuesta–sección modificada exigida por las Bases Ad
 
 | Observación del Informe 1 | Respuesta / corrección comprobable en el informe actual | Sección modificada / ubicación actual |
 |---|---|---|
-| G1-01. Falta identidad empresarial y las portadas contienen datos del curso o se rotulan como T-22. | **Parcial.** Las portadas actuales identifican LafroX, licitación, mandante, proponente y representante legal, sin asignatura ni profesor ni rótulo T-22. No se comprobaron logotipo, paleta, encabezados, pies ni plantilla visual del PDF. Además, la portada del cuerpo conserva el rótulo erróneo «Subdocumento 01 · Formulario T-7», que debe corregirse. | SD1 y T-6, portadas. |
+| G1-01. Falta identidad empresarial y las portadas contienen datos del curso o se rotulan como T-22. | Las portadas actuales identifican LafroX, licitación, mandante, proponente y representante legal, sin asignatura ni profesor ni rótulo T-22. En este cotejo de Markdown no se comprobaron logotipo, paleta, encabezados, pies ni plantilla visual del PDF. El rótulo T-7 es correcto: corresponde al contenido y estructura de la propuesta, conforme a las Bases y Aclaraciones §11. | SD1 y T-6, portadas. |
 | G1-02. Faltan índice, foliación y firma. | **Parcial.** Ambos archivos tienen índice y bloque de firma con nombre del representante. Esto no acredita firma efectiva ni foliación continua y correcta en el PDF final. | SD1 y T-6, «Índice general» y «FIRMA DEL REPRESENTANTE LEGAL». |
 | G1-03. El tamaño de página, tipografía y formateo incumplen las instrucciones; tablas y títulos presentan problemas de legibilidad. | **Pendiente de comprobación del PDF final.** El Markdown no permite acreditar tamaño carta/oficio, puntos tipográficos, repetición de encabezados, saltos, títulos huérfanos ni uniformidad de la plantilla. | SD1 y T-6, documentos completos y tablas. |
 | G1-04. Faltan figuras propias, legibles, numeradas, citadas y explicadas; el SD1 no contiene imágenes. | **Parcial / pendiente.** La Figura 1.1 está numerada, citada y explicada, pero sin imagen enlazada en el Markdown. La descripción no resuelve la ausencia gráfica; debe incorporarse el objeto real y comprobar su legibilidad en la entrega. | SD1, §1.2 y Figura 1.1. |
@@ -47,7 +49,6 @@ Tabla de observación–respuesta–sección modificada exigida por las Bases Ad
 ## Pendientes antes de usar la tabla como registro de cierre
 
 - Incorporar la imagen real del organigrama y cotejar la figura final.
-- Corregir el rótulo T-7 de la portada del SD1.
 - Resolver las partes no documentadas de dotación, turnos, equipamiento y capacidad corporativa de mesa; no inventar antigüedades ni acreditaciones.
 - Comprobar los antecedentes declarados de experiencia, certificados y alianzas con la documentación que corresponda, sin confundir una declaración con evidencia.
 - Completar la revisión humana pendiente sólo por el integrante que efectivamente la realice, y acreditar lectura y firma final.

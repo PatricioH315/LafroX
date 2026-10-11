@@ -4,9 +4,9 @@ El presente documento recopila los listados detallados que sustentan el análisi
 
 ## Anexo 2.1: Listado de Requerimientos del Cliente
 
-A partir de la narrativa del Caso 02, las entrevistas a los actores clave y las Bases Técnicas Transversales, se identifican catorce familias funcionales prioritarias y cinco condiciones no funcionales rectoras. Los códigos F-01 a F-14 identifican familias de síntesis de este anexo; el catálogo atómico y sus códigos RF/RNF se desarrollan en el Subdocumento 3 y en el Formulario T-12.
+A partir de la narrativa del caso, de las entrevistas a los actores clave (Distribuidora Puelche S.A., 2026c, cap. 8, pp. 13–17) y de las Bases Técnicas Transversales, se identifican catorce familias funcionales prioritarias y cinco condiciones no funcionales rectoras. Los códigos F-01 a F-14 identifican familias de síntesis de este anexo; el catálogo atómico y sus códigos RF/RNF se desarrollan en el Subdocumento 3 y en el Formulario T-12.
 
-Tabla 2.A.1 Catálogo consolidado de Requerimientos Funcionales del Caso 02. Fuente: Distribuidora Puelche S.A. (2026c); BTT.
+Tabla 2.A.1 Catálogo consolidado de requerimientos funcionales del caso. Fuente: elaboración propia a partir de Distribuidora Puelche S.A. (2026c, caps. 9 y 18, pp. 18–19 y 34–35).
 
 | Familia | Nombre del Requerimiento | Descripción Operativa y Criterio de Verificación | Prioridad | Etapa |
 | --- | --- | --- | --- | --- |
@@ -27,21 +27,21 @@ Tabla 2.A.1 Catálogo consolidado de Requerimientos Funcionales del Caso 02. Fue
 | F-13 | Integración EDI Canal Moderno | Intercambio electrónico estándar GS1/EDI de órdenes de compra y avisos de despacho que la principal cadena exigirá desde enero de 2029. | Alta | Etapa 2 |
 | F-14 | Analítica de Costo de Servir | Modelación granular del costo real de distribución por cliente, canal, ruta y tipología de carga, superando el prorrateo estático de 2016. | Media | Etapa 2 |
 
-Tabla 2.A.2 Requerimientos No Funcionales rectores del proyecto. Fuente: caso, cap. 10 y 15; BTT.
+Tabla 2.A.2 Requerimientos no funcionales rectores del proyecto. Fuente: Distribuidora Puelche S.A. (2026a, 2026b y 2026c), ISO/IEC (2022) y Ley N.º 21.719 (2024), según se indica en cada fila.
 
-| Código | Dimensión de Calidad | Criterio y Métrica de Aceptación | Estándar / Base |
+| Código | Dimensión de Calidad | Criterio y Métrica de Aceptación | Fuente |
 | --- | --- | --- | --- |
-| RNF-DISP | Disponibilidad del Servicio | Disponibilidad mensual ≥ 99,95 % para los componentes de infraestructura y ≥ 99,9 % para la transacción crítica de extremo a extremo. | BTT, §7.2; Art. 78° BA |
-| RNF-REND | Sincronización tras reconexión | Sincronización móvil completa en un máximo de 10 minutos tras 14 horas sin señal y sincronización de un centro de distribución en un máximo de 2 horas tras 24 horas desconectado. | Caso, Cap. 15; BTT, RT-03.12 |
-| RNF-RESIL | Autonomía Desconectada | Capacidad de operación autónoma en terminales móviles de 14 horas de turno y en centros de distribución de ≥ 24 horas sin enlace WAN. | Caso, Cap. 10; BTT, RT-03.10 |
-| RNF-SEG | Ciberseguridad y Privacidad | Cifrado de datos locales y en tránsito, autenticación multifactor y preparación para el cumplimiento de Ley 21.719 desde su entrada en vigencia. | ISO/IEC 27001:2022; Ley 21.719 |
-| RNF-DR | Continuidad y Recuperación | Centro de datos secundario con RTO ≤ 4 horas y RPO ≤ 15 minutos, validado mediante simulacros semestrales obligatorios. | BTT, RT-07.04 y RT-07.07 |
+| RNF-DISP | Disponibilidad del Servicio | Disponibilidad mensual ≥ 99,95 % para los componentes de infraestructura y ≥ 99,9 % para la transacción crítica de extremo a extremo. | Distribuidora Puelche S.A. (2026b, cap. 7, pp. 17–18; 2026a, art. 78, p. 40) |
+| RNF-REND | Sincronización tras reconexión | Sincronización móvil completa en un máximo de 10 minutos tras 14 horas sin señal y sincronización de un centro de distribución en un máximo de 2 horas tras 24 horas desconectado. | Distribuidora Puelche S.A. (2026c, cap. 15, p. 26; 2026b, RT-03.12, p. 9) |
+| RNF-RESIL | Autonomía Desconectada | Capacidad de operación autónoma en terminales móviles de 14 horas de turno y en centros de distribución de ≥ 24 horas sin enlace WAN. | Distribuidora Puelche S.A. (2026c, cap. 10, p. 19; 2026b, RT-03.10, p. 9) |
+| RNF-SEG | Ciberseguridad y Privacidad | Cifrado de datos locales y en tránsito, autenticación multifactor y preparación para el cumplimiento de Ley 21.719 desde su entrada en vigencia. | ISO/IEC (2022); Ley N.º 21.719 (2024) |
+| RNF-DR | Continuidad y Recuperación | Centro de datos secundario con RTO ≤ 4 horas y RPO ≤ 15 minutos, validado mediante simulacros semestrales obligatorios. | Distribuidora Puelche S.A. (2026b, RT-07.04 y RT-07.07, p. 17) |
 
 ## Anexo 2.2: Listado de Supuestos, Exclusiones y Restricciones
 
-La Tabla 2.A.3 registra como supuestos de formulación las dieciséis decisiones que el numeral 16.1 del caso deja abiertas y que LafroX resuelve; el supuesto S-N responde a la decisión N (Distribuidora Puelche S.A., 2026c, sección 16.1). Cada fila explicita la conducta adoptada, la consecuencia que asume el diseño, el efecto si el supuesto resulta falso y la instancia del CLIENTE que lo valida. La trazabilidad a requisitos detallados se desarrolla en el Subdocumento 3, Anexo 3.C.
+La Tabla 2.A.3 registra como supuestos de formulación las dieciséis decisiones que el numeral 16.1 del caso deja abiertas y que LafroX resuelve; el supuesto S-N responde a la decisión N (Distribuidora Puelche S.A., 2026c, sección 16.1, pp. 28–29). Cada fila explicita la conducta adoptada, la consecuencia que asume el diseño, el efecto si el supuesto resulta falso y la instancia del CLIENTE que lo valida. La trazabilidad a requisitos detallados se desarrolla en el Subdocumento 3, Anexo 3.C.
 
-Tabla 2.A.3 Supuestos de formulación derivados de las decisiones abiertas del caso. Fuente: caso, sección 16.1.
+Tabla 2.A.3 Supuestos de formulación derivados de las decisiones abiertas del caso. Fuente: elaboración propia a partir de Distribuidora Puelche S.A. (2026c, sección 16.1, pp. 28–29).
 
 | ID | Supuesto adoptado | Consecuencia asumida | Si resulta falso | Validación |
 | --- | --- | --- | --- | --- |
@@ -71,14 +71,14 @@ Tabla 2.A.4 Supuestos propios del diagnóstico. Fuente: elaboración propia.
 
 | ID | Supuesto | Fundamento | Si resulta falso | Validación |
 | --- | --- | --- | --- | --- |
-| SP-01 | La tasa de reentregas de 4,2 % se aplica sobre las ≈ 1.400 entregas diarias de un día hábil normal, y cada reentrega corresponde a una entrega. | Caso, secciones 2.2 y 7.1. | Cambia la estimación de ≈ 59 reentregas diarias. | Gerencia de Operaciones, con los registros de reentrega, mes 1. |
-| SP-02 | La brecha de 16 horas entre la reducción prometida y la lograda en cross-docking se origina, al menos en parte, en la consolidación, la desconsolidación y la validación manual. | Sospecha interna registrada en el caso: el tiempo se perdería en la consolidación en Talca, sin datos que lo confirmen (cap. 3); descripción de las plataformas (sección 2.3) y tabla 7.2. | La mejora del control de cross-docking no reduce la brecha y la causa debe buscarse en el transporte troncal o en las esperas. | Medición de tiempos en Talca y en las tres plataformas, meses 1 a 3. |
+| SP-01 | La tasa de reentregas de 4,2 % se aplica sobre las ≈ 1.400 entregas diarias de un día hábil normal, y cada reentrega corresponde a una entrega. | Distribuidora Puelche S.A. (2026c, secciones 2.2 y 7.1, pp. 5 y 11). | Cambia la estimación de ≈ 59 reentregas diarias. | Gerencia de Operaciones, con los registros de reentrega, mes 1. |
+| SP-02 | La brecha de 16 horas entre la reducción prometida y la lograda en cross-docking se origina, al menos en parte, en la consolidación, la desconsolidación y la validación manual. | Sospecha interna registrada en el caso: el tiempo se perdería en la consolidación en Talca, sin datos que lo confirmen (Distribuidora Puelche S.A., 2026c, cap. 3, p. 6); descripción de las plataformas (sección 2.3, p. 5) y tabla 7.2 (p. 12). | La mejora del control de cross-docking no reduce la brecha y la causa debe buscarse en el transporte troncal o en las esperas. | Medición de tiempos en Talca y en las tres plataformas, meses 1 a 3. |
 
-| SP-03 | La falta de registro de lote no se limita al producto del retiro de marzo, aunque su magnitud general se desconoce. | El lote se anota «en un campo de texto libre, cuando se anota» (caso, sección 4.1). | La brecha de captura es menor y la meta de 100 % se alcanza antes. | Jefa de Calidad, con la medición de cobertura de lote en las recepciones del mes 1. |
+| SP-03 | La falta de registro de lote no se limita al producto del retiro de marzo, aunque su magnitud general se desconoce. | El lote se anota «en un campo de texto libre, cuando se anota» (Distribuidora Puelche S.A., 2026c, sección 4.1, p. 7). | La brecha de captura es menor y la meta de 100 % se alcanza antes. | Jefa de Calidad, con la medición de cobertura de lote en las recepciones del mes 1. |
 
 La Tabla 2.A.5 detalla las exclusiones explícitas de alcance que delimitan la responsabilidad contractual del proponente, garantizando la viabilidad del proyecto.
 
-Tabla 2.A.5 Exclusiones explícitas del alcance del proyecto. Fuente: caso, cap. 11.
+Tabla 2.A.5 Exclusiones explícitas del alcance del proyecto. Fuente: Distribuidora Puelche S.A. (2026c, cap. 11, p. 20).
 
 | N° | Exclusión de Alcance | Justificación Técnica y Contractual | Manejo / Mitigación |
 | --- | --- | --- | --- |
@@ -95,7 +95,7 @@ Tabla 2.A.5 Exclusiones explícitas del alcance del proyecto. Fuente: caso, cap.
 
 La Tabla 2.A.6 reproduce las doce restricciones no negociables que condicionan la solución. No son supuestos ni exclusiones: su cumplimiento es obligatorio y debe demostrarse en arquitectura, plan de trabajo y pruebas.
 
-Tabla 2.A.6 Restricciones no negociables del Caso 02. Fuente: caso, cap. 10.
+Tabla 2.A.6 Restricciones no negociables del caso. Fuente: Distribuidora Puelche S.A. (2026c, cap. 10, pp. 19–20).
 
 | N° | Restricción | Implicación para la propuesta |
 | --- | --- | --- |
@@ -117,19 +117,19 @@ Tabla 2.A.6 Restricciones no negociables del Caso 02. Fuente: caso, cap. 10.
 
 La Tabla 2.A.7 presenta el catálogo nominal y extendido de los 19 actores que componen el ecosistema humano y operacional de Distribuidora Puelche S.A.
 
-Tabla 2.A.7 Catálogo nominal extendido de los 19 actores del ecosistema Puelche. Fuente: caso, caps. 2, 4, 8 y 13.
+Tabla 2.A.7 Catálogo nominal extendido de los 19 actores del ecosistema Puelche. Fuente: elaboración propia a partir de Distribuidora Puelche S.A. (2026c, caps. 2, 4, 8 y 13, pp. 4–9, 13–17 y 22–23).
 
 | Actor / Cargo | Rol en el Ecosistema | Ineficiencia que enfrenta en la situación actual | Influencia | Interés | Estrategia de participación |
 | --- | --- | --- | --- | --- | --- |
-| Gerenta General | Patrocinadora y Alta Dirección | Retiro de 9 días con suspensión del proveedor de lácteos; una operación que sigue dependiendo de «una libreta»; advierte por la jubilación del planificador. | Muy Alta | Muy Alto | Preside el comité que arbitra prioridades y valida el cierre de cada etapa. |
-| Gerente Comercial | Conducción de Ventas | Competidor con entrega en 24 horas y pedido autónomo; preventistas sin stock; condiciones 2029 de la principal cadena. | Muy Alta | Muy Alto | Valida la promesa de entrega y las reglas comerciales en el levantamiento. |
-| Gerente de Operaciones | Ejecución Logística | Brecha no investigada entre la reducción prometida (24 h) y la observada (8 h) en cross-docking; promesa de 24 h que considera imposible. | Alta | Muy Alto | Participa en la medición de tiempos y aprueba cada cambio operacional antes de aplicarlo. |
-| Gerente de Finanzas | Control Financiero | Diferencias de rendición de $4,2 millones al mes sin investigar; costo de servir prorrateado con un criterio de 2016. | Muy Alta | Muy Alto | Define las causales de diferencia y la metodología de costo de servir. |
-| Jefa de Calidad | Aseguramiento Sanitario | Sin registro continuo de temperatura, observado por la autoridad; lote en texto libre; retiro de 9 días. | Alta | Muy Alto | Define la regla térmica y conduce el simulacro de retiro. |
-| Jefa de Bodega | Custodia de Inventarios | Conteo cíclico con 2,3 % de diferencia y merma de 1,7 %; preparación nocturna con planillas impresas. | Alta | Muy Alto | Valida los flujos de bodega en el turno de noche. |
-| Jefe de TI | Operación Tecnológica | Equipo de 4 personas; la fibra se corta cuatro veces al año; interfaces del ERP y del WMS sin documentación. | Alta | Muy Alto | Valida interfaces y recibe la transferencia de operación. |
+| Gerenta General | Patrocinadora y Alta Dirección | Retiro de 9 días con suspensión del proveedor de lácteos; una operación que sigue dependiendo de «una libreta»; advierte por la jubilación del planificador. | Muy alta | Muy alto | Preside el comité que arbitra prioridades y valida el cierre de cada etapa. |
+| Gerente Comercial | Conducción de Ventas | Competidor con entrega en 24 horas y pedido autónomo; preventistas sin stock; condiciones 2029 de la principal cadena. | Muy alta | Muy alto | Valida la promesa de entrega y las reglas comerciales en el levantamiento. |
+| Gerente de Operaciones | Ejecución Logística | Brecha no investigada entre la reducción prometida (24 h) y la observada (8 h) en cross-docking; promesa de 24 h que considera imposible. | Alta | Muy alto | Participa en la medición de tiempos y aprueba cada cambio operacional antes de aplicarlo. |
+| Gerente de Finanzas | Control Financiero | Diferencias de rendición de $4,2 millones al mes sin investigar; costo de servir prorrateado con un criterio de 2016. | Muy alta | Muy alto | Define las causales de diferencia y la metodología de costo de servir. |
+| Jefa de Calidad | Aseguramiento Sanitario | Sin registro continuo de temperatura, observado por la autoridad; lote en texto libre; retiro de 9 días. | Alta | Muy alto | Define la regla térmica y conduce el simulacro de retiro. |
+| Jefa de Bodega | Custodia de Inventarios | Conteo cíclico con 2,3 % de diferencia y merma de 1,7 %; preparación nocturna con planillas impresas. | Alta | Muy alto | Valida los flujos de bodega en el turno de noche. |
+| Jefe de TI | Operación Tecnológica | Equipo de 4 personas; la fibra se corta cuatro veces al año; interfaces del ERP y del WMS sin documentación. | Alta | Muy alto | Valida interfaces y recibe la transferencia de operación. |
 
-| Planificador de Rutas | Diagramación Logística | Planilla de once hojas que solo él entiende; 3,5 horas diarias; jubilación en dos años. | Alta | Muy Alto | Participa en talleres de reglas con reconocimiento formal de su conocimiento. |
+| Planificador de Rutas | Diagramación Logística | Planilla de once hojas que solo él entiende; 3,5 horas diarias; jubilación en dos años. | Alta | Muy alto | Participa en talleres de reglas con reconocimiento formal de su conocimiento. |
 | Preventistas (62 personas) | Captura de Pedidos | Aplicación de 2016 sin stock, crédito ni historial; 7,8 % de las líneas con quiebre de stock. | Alta | Alto | Prueban los cambios en su propia ruta antes de adoptarlos. |
 | Tripulación propia y peoneta (84 personas) | Despacho y Cobranza | Rendición en caja a la mañana siguiente; guías en papel (1,1 % extraviadas); termógrafo manual con tres lecturas por viaje. | Alta | Alto | Validan el registro de entrega y la rendición antes de su adopción. |
 | Conductores externos (aprox. 160 personas) | Flota Tercerizada | No son trabajadores de la compañía; rotan sin aviso; sus camiones no tienen telemetría. | Alta | Alto | Incorporación acordada con cada transportista. |
@@ -143,10 +143,10 @@ Tabla 2.A.7 Catálogo nominal extendido de los 19 actores del ecosistema Puelche
 | Proveedores (180 empresas) | Suministro de Carga | Lote anotado en texto libre, cuando se anota; el proveedor de lácteos suspendió a Puelche por seis meses. | Media-alta | Alto | Aviso anticipado de requisitos de rotulado. |
 | Autoridad Sanitaria | Fiscalización SEREMI | Observó en su última fiscalización la ausencia de registro continuo de temperatura. | Media-alta | Alto | Canal formal para entregar evidencia de trazabilidad y temperatura. |
 
-La Tabla 2.A.8 resume los ocho sistemas y registros que operan actualmente en Distribuidora Puelche S.A., con el destino que el caso les asigna (Distribuidora Puelche S.A., 2026c, cap. 5).
+La Tabla 2.A.8 resume los ocho sistemas y registros que operan actualmente en Distribuidora Puelche S.A., con el destino que el caso les asigna (Distribuidora Puelche S.A., 2026c, cap. 5, p. 10).
 
 
-Tabla 2.A.8 Inventario de sistemas legados de Distribuidora Puelche S.A. Fuente: caso, cap. 5.
+Tabla 2.A.8 Inventario de sistemas legados de Distribuidora Puelche S.A. Fuente: Distribuidora Puelche S.A. (2026c, cap. 5, p. 10).
 
 | Sistema / Aplicación | Tipo | Año de inicio | Estado operacional y deficiencias | Destino según el caso |
 | --- | --- | --- | --- | --- |
@@ -161,14 +161,19 @@ Tabla 2.A.8 Inventario de sistemas legados de Distribuidora Puelche S.A. Fuente:
 
 ## Referencias
 
-Bases Administrativas TFEP-01/2026; Bases Técnicas Transversales; Caso 02 — Logística; Aclaraciones de licitación; SD3 y SD7 para las correspondencias de alcance y gobierno.
+Las fuentes citadas en estos anexos se listan a continuación en formato APA 7.ª edición.
 
-- International Organization for Standardization e International Electrotechnical Commission. (2022). *ISO/IEC 27001:2022: Information security, cybersecurity and privacy protection — Information security management systems — Requirements*. https://www.iso.org/standard/27001
+- Distribuidora Puelche S.A. (2026a). *Bases Administrativas de Licitación N° TFEP-01/2026: Contratación de Solución Integral de Software y Servicios de Operación*.
+- Distribuidora Puelche S.A. (2026b). *Bases Técnicas Transversales de Licitación N° TFEP-01/2026*.
+- Distribuidora Puelche S.A. (2026c). *Bases Técnicas – Logística: trazabilidad, promesa de entrega y costo de servir en una distribuidora de consumo masivo*.
+- International Organization for Standardization e International Electrotechnical Commission [ISO/IEC]. (2022). *ISO/IEC 27001:2022: Information security, cybersecurity and privacy protection — Information security management systems — Requirements*. https://www.iso.org/standard/27001
 - Ley N.º 21.719. (2024, 13 de diciembre). *Regula la protección y el tratamiento de los datos personales y crea la Agencia de Protección de Datos Personales*. Diario Oficial de la República de Chile. https://www.bcn.cl/leychile/navegar?idNorma=1209272
 
 ## Declaración de uso de IA
 
-En cumplimiento de la sección 7.2 de las Aclaraciones de la licitación, la tabla siguiente declara el uso de herramientas de inteligencia artificial en estos anexos, con la revisión humana de cada parte. La declaración se consolida en el Formulario A-6.
+En cumplimiento de la sección 7.2 de las Aclaraciones de la licitación, la Tabla 2.A.9 declara el uso de herramientas de inteligencia artificial en estos anexos, con la revisión humana de cada parte. La declaración se consolida en el Formulario A-6.
+
+Tabla 2.A.9 Declaración de uso de IA en los Anexos del Subdocumento 2. Fuente: registro del equipo.
 
 | Sección | Herramienta | Finalidad del uso | Texto | Diag. | Revisión humana |
 | --- | --- | --- | --- | --- | --- |

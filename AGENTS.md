@@ -24,7 +24,7 @@ Esta copia trabaja en `alvaro-md`; `branch-md` en el registro heredado identific
 - Si el resultado solicitado es Markdown en esta rama, guardar aquí sólo el `.md`; fuentes, auxiliares, logs y PDF de compilación permanecen en el checkout LaTeX autorizado.
 - Antes de operar, comprobar la rama y ruta del checkout de destino, leer sus instrucciones aplicables y preservar cambios existentes. Preferir un checkout existente antes de cambiar la rama del checkout Markdown. Un cambio de rama requiere que el usuario lo haya pedido expresamente y no debe sobrescribir cambios locales.
 - Las excepciones no autorizan por sí mismas commit, push, eliminación de archivos, ampliación a otros subdocumentos ni omitir permisos del entorno. Registrar en `compct/CONTEXTO_SESION.md` la autorización, alcance, destino y resultado.
-- **Autorización vigente del SD1:** el usuario pidió revisar la rama LaTeX del Subdocumento 1, compilarla y generar en `rama-md` la tabla de trazabilidad contra `Revision_informe.md`. Se permite leer y compilar el checkout LaTeX del SD1 y escribir el registro Markdown aquí; no modificar las fuentes LaTeX ni publicar cambios.
+- **Autorización vigente del SD1:** el usuario pidió revisar la rama LaTeX del Subdocumento 1, compilarla y generar en `rama-md` la tabla de trazabilidad contra `Revision_informe.md`. La petición posterior amplía el alcance a corregir la redacción y diagramación de todo el SD1 conforme a las Aclaraciones aportadas, y recompilarlo. Se permite editar las fuentes del SD1 en su checkout LaTeX y actualizar el registro Markdown aquí; no publicar cambios ni fabricar datos, firmas o revisiones humanas.
 
 ## Proyecto
 

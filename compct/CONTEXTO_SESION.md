@@ -1,5 +1,110 @@
 # CONTEXTO DE SESIÓN
 
+## Descubrimiento — remisión IA mal numerada en Aclaraciones, 11 de octubre de 2026
+
+Consulta del usuario sobre «sección 9.1» en declaración IA. Cotejo de ambas copias de Aclaraciones (aportada y Bases del repositorio): regla de prohibición, indicios y sanciones está en §7.1; §9 se titula Recordatorios formales y no tiene §9.1. Art.9.1 BA versa sobre moneda de oferta, no IA. La remisión 9.1 es inconsistente; interpretación por contenido apunta a §7.1, no afirmar origen histórico sin fuente. BA13.5 y A-6 sustentan declaración/revisión/responsabilidad. No se corrigieron Bases ni entregables. Declarar Alto no acredita elaboración o revisión humana ni evita sanciones por los indicios de §7.1; no equivale por sí solo a rechazo automático. Memoria agent-attributed suspendida por identidad runtime ausente; hallazgo preservado localmente.
+
+
+## Publicación final de ajustes SD1 — 11 de octubre de 2026
+
+Por petición explícita «comitea y pushea», se creó y publicó **f1ef0f0858c3c6a47b91cad1e1c1d3f6123d03ad** en https://github.com/PatricioH315/LafroX.git, rama LafroX-Subdoc1-LateX. HEAD y ls-remote coinciden; commit y push salida 0. Incluye exactamente ocho archivos: contenido.tex, anexos.tex, las raíces SD1/SD1-Anexos/T-6 y sus tres PDF. Diff-check conforme; no se incluyeron imágenes de revisión, otros subdocumentos ni cambios de rama-md. Publicados reemplazo «Caso 02» por «caso», revisión de anexos y presentación del formulario T-6. Las declaraciones de revisión humana y firmas siguen pendientes; no se declara entrega aprobada. Los cambios SD3/T-12 de denominación no forman parte de esta publicación. Objetivo commit/push SD1 completado; registro Markdown permanece local. Memoria agent-attributed suspendida por identidad runtime ausente.
+
+
+## Revisión autorizada de anexos y T-6 del SD1 — 11 de octubre de 2026
+
+**Objetivo e instrucciones:** usuario confirmó revisar anexos y formulario conforme a Aclaraciones; límites de una página/cinco columnas sólo para cuerpo, no aplicados a estos documentos. T-6 debe conservar detalle de formulario, análisis en cuerpo. Denominación «caso» sin número académico mantenida.
+
+**Realizado:** en checkout externo SD1, rama LafroX-Subdoc1-LateX comprobada, se reformuló anexos.tex sin inventar anexos ausentes ni trasladar cartas del Sobre 1. Referencias coherentes Distribuidora Puelche 2026a/d; IA antes ausente agregada. Se retiraron índices vacíos de tablas/figuras del anexo, manteniendo índice detallado. T-6 mantiene portada, índice y lista de tablas; eliminado índice vacío de figuras. Introducción breve integrada en la primera hoja horizontal de campos, no como capítulo explicativo separado; Referencias y declaración IA final, ambas en índice. Once campos de los tres proyectos preservados exactamente mediante comparación de bloque antes/después; se mantienen orientación horizontal, tres hojas de tabla, encabezados repetidos y filas completas. No cambian montos históricos, contactos, SLA ni otras cifras.
+
+**Coordinación y verificación:** declaración del cuerpo incluye ahora fila de anexos y T-6 revisado, herramientas declaradas y [[REVISIÓN HUMANA]] reales pendientes, sin reutilizar aprobación antigua del formulario. Tres pasadas LuaLaTeX por archivo con salida 0: cuerpo18, anexos3, T-6 7páginas. Inspección visual de todas las páginas de anexos y T-6 y tabla IA del cuerpo; sin desbordes ni referencias indefinidas; cero «Caso 02» en los tres PDF. Encabezados experiencia repetidos p4/5/6; campos íntegros, sin reducirlos para forzar una página. Diff-check externo conforme. Vistas quedan fuera de rama-md.
+
+**Archivos:** externos anexos.tex, LAFROX-Subdocumento1-Anexos.tex, LAFROX-Formulario-T-6.tex, contenido.tex (sólo coordinación IA), PDF/auxiliares. Markdown: registro de trazabilidad SD1 LaTeX y contexto. SD3/T-12, clase común, Bases y otros cambios previos intactos. No se creó nuevo commit/push. Cuerpo y formularios Markdown aún no sincronizados con la versión LaTeX.
+
+**Pendientes:** revisión humana de seis secciones más anexos/T-6, firmas de las portadas y datos corporativos S1-10/S1-18. No se acredita envío ni conformidad global. Memoria agent-attributed suspendida por identidad runtime ausente; resumen local preservado. Siguiente: autorización de publicación si se solicita o sincronización MD explícita, preservando cambios concurrentes.
+
+
+## Ampliación explícita — denominación del caso en anexos y T-12, 11 de octubre de 2026
+
+El usuario amplió el reemplazo de «Caso 02» por «caso» a anexos y T-12. Se identificó correctamente T-12 como SD3 (T-6 es SD1). Checkout externo `C:/Users/alexa/Desktop/Universidad/FEP/LafroX/LafroX-sd3-latex`, rama comprobada `LafroX-Subdoc3-LateX`. Cambios acotados a anexos.tex (3 menciones), T-12 (34), tablas activas criterios_aceptacion (1), glosario (1), supuestos (16) y vacios (3), más metadato de portada en ambas raíces. Se revisaron 23 fuentes activas; sin cambios de códigos, requisitos, cifras o cuerpo SD3. La clase común y Bases permanecen intactas. PDF SD3/cambios de compilación previos preservados. No extender este reemplazo al cuerpo SD3 sin petición posterior.
+
+Verificado por extracción integral: SD1 18 páginas, anexos SD1 5 y T-6 9, cero menciones «Caso 02» incluyendo portadas, leyendas y referencia. Anexos SD3 y T-12 recompilados con tres pasadas LuaLaTeX, salida 0: 169 y 222 páginas respectivamente. Extracción textual integral verifica cero menciones «Caso 02» en ambos PDF. Estos cambios son locales, no incluidos en commit/push 914b2ca anterior. Cuerpos Markdown no sincronizados. Sin publicación nueva ni edición funcional del formulario. Preferencia del usuario: referirse al caso sin su número académico también en referencias y formularios.
+
+
+## Estado SD1 — 11 de octubre de 2026: denominación natural del caso
+
+Petición explícita: reemplazar «Caso 02» por «caso», incluida la referencia, para evitar lenguaje académico frente al cliente. En checkout LaTeX SD1 se corrigieron cuatro menciones de contenido.tex: introducción, presentación de experiencia, leyenda Tabla 1.2 y referencia 2026c («Caso: Logística — Especificaciones del Problema y Operación de Distribuidora Puelche S.A.»). En las tres raíces (cuerpo, anexos y T-6) se sobreescribió sólo el metadato de portada a «Caso — Logística», sin cambiar clase compartida, campos del T-6 ni contenido del anexo. Bases originales y títulos de archivos permanecen intactos. Cifras, fuentes y marcadores humanos preservados. Compilación de tres PDF terminada con salida 0 y comprobación integral de ausencia de «Caso 02» conforme; sin nuevo commit/push solicitado.
+
+Corrección del registro previo: push del commit 914b2caa90714ee6ba9ae866f51b477509fffd36 sí se completó tras autorización específica del usuario; ls-remote y HEAD coincidieron. Esa publicación precede al cambio de denominación actual. Estado anterior «push pendiente» supersedido. Memoria agent-attributed suspendida por identidad runtime no confirmada.
+
+
+## Publicación SD1 — 11 de octubre de 2026
+
+El usuario pidió commit y push, y preguntó si se editaron anexos y formulario. Commit local **914b2ca** creado en `LafroX-Subdoc1-LateX`: sólo contenido.tex, LAFROX-Subdocumento1.tex y LAFROX-Subdocumento1.pdf. Diff-check corregido y conforme. No se incluyeron vistas PNG, T-6 recompilado ni cambios de rama-md/otros subdocumentos. Push no ejecutado: auto-review bloqueó transmisión al GitHub por exigir autorización específica del destino y payload. Se solicitó confirmar `https://github.com/PatricioH315/LafroX.git`, rama `LafroX-Subdoc1-LateX`, para esos tres archivos.
+
+Comprobación adicional: anexos.tex sólo declara ausencia de anexos complementarios y remite al T-6; no fue editado. T-6 conserva portada, preliminares, breve introducción, once campos para tres proyectos y declaración IA; tampoco fue editado. No afirmar que se humanizaron los anexos/formulario. El usuario plantea preferencia por formulario sin desarrollo de capítulo: mantener detalle en campos, análisis en cuerpo; cambios al formato aún no aplicados. Pendiente aprobación del remoto y eventual petición de simplificar T-6/anexos. Identidad de memoria sigue no confirmada; no efectuar escrituras agent-attributed.
+
+
+## Estado vigente — 11 de octubre de 2026: redacción y diagramación completas del SD1 LaTeX
+
+**Petición y alcance:** el usuario amplió la revisión del organigrama a todo el SD1: redacción natural, punteos útiles y análisis después de cada tabla, conforme al archivo aportado `C:/Users/alexa/Desktop/Universidad/FEP/aclaraciones-licitacion.md`. Autorización de edición y recompilación registrada en AGENTS.md. Rama principal comprobada `rama-md`; fuentes y derivados se editaron sólo en `C:/Users/alexa/Desktop/Universidad/FEP/LafroX/LafroX-sd1-latex` (rama previamente comprobada `LafroX-Subdoc1-LateX`), mediante permisos externos aprobados.
+
+**Accomplished:** se reescribieron las seis secciones sin cambiar títulos obligatorios. Se retiró «Descripción de imagen» y se explicó la figura real mediante responsabilidades y reporte del CISO; listas y párrafos simplificados, sin promesas de riesgo cero ni beneficios de alianzas garantizados. Se agregó análisis de dotación (63+44+10+7=124), experiencia y diferencias entre SLA de servicio e infraestructura, y concentración de diez roles en ocho personas. Tabla 1.3 resumida a tres columnas verticales; cuatro tablas con cita previa y análisis posterior. Se corrigió desborde de IA y salto que dejaba casi vacía la antigua p19. Posición fija de figura/tablas evita que interrumpan listas o adelanten las conclusiones; paquete float sólo en raíz SD1, sin cambiar clase ni T-6. Tres pasadas LuaLaTeX por ajuste con --no-shell-escape; PDF final de 18 páginas, inspección visual integral, sin cajas desbordadas ni referencias indefinidas. Tablas 1.1/1.2/1.3/1.4 en p9/13/15/18; figura y explicación p8. Aviso de MiKTeX sobre comprobación de actualizaciones no afecta salida 0.
+
+**Revisión humana y límites:** declaración de IA conserva seis columnas exigidas, siete filas (seis secciones y T-6), tipografía 9,5pt. Se incorporó OpenAI Codex y se dejaron seis [[REVISIÓN HUMANA]] porque las aprobaciones del texto anterior no validan lo reescrito. T-6 no editado: nueve páginas y revisión anterior preservada. No se fabricaron antigüedad, turnos NOC, inventario/capacidad corporativa, firmas ni revisores. Pendientes S1-10, S1-18 y firmas G1-02/G1-05. No se acredita conformidad final ni autenticación externa de antecedentes. Cuerpo Markdown aún no sincronizado con esta edición; la tabla de trazabilidad actual sí refiere al PDF corregido.
+
+**Archivos relevantes:** checkout externo: contenido.tex y LAFROX-Subdocumento1.tex (float), PDF/auxiliares y vistas; rama-md: AGENTS.md, Revision/trazabilidad_Informe1_Informe2_SD1_LaTeX.md y este contexto. Registro actualizado con 28 filas y páginas nuevas. Sin commit, push ni cambio de rama. Preservar cambios concurrentes SD2/SD3/SD9 y demás historial. Memoria agent-attributed suspendida por falta de identidad runtime confirmada; este resumen local conserva el estado, sin sustituir atribución Engram.
+
+**Next Steps:** revisión del integrante, datos corporativos faltantes y firma. Si se solicita espejo MD, trasladar esta versión sin sobrescribir ajustes de coherencia independientes del cuerpo Markdown.
+
+
+## Estado vigente — 11 de octubre de 2026: revisión completa y redacción directa de la trazabilidad SD1
+
+El usuario exigió revisar todas las respuestas del registro SD1 y eliminar etiquetas repetitivas como «Documentado». Se reescribieron las28 filas de `Revision/trazabilidad_Informe1_Informe2_SD1_LaTeX.md` con corrección concreta y página, sin prefijos de estado ni cautelas genéricas por fila. Se inspeccionaron las30 páginas (21SD1+9T6) mediante vistas completas y extracción textual. Sólo faltas concretas permanecen: promesas absolutas; antigüedad/turnosNOC; equipamiento/capacidadmesa; Tabla1.4 invade pie y p19 casi vacía; firma y revisión humana pendiente.
+
+Correcciones de errores del asistente: T-7 es válido por BA FormularioT7 y Aclaraciones§11 (estructura de propuesta); T-6 es el formulario complementario de experiencia. Montos históricos son campo obligatorio del T6, no precios ofertados. El evaluador solicita proyectos ficticios/verosímiles: no exigir existencia real en cada respuesta. Se retiró ficha adicional de métricas no exigida. También se corrigió falsa alerta T7 en registro inicial Markdown y se enlazó la tabla LaTeX vigente. Las menciones históricas de T7 «incorrecto» más abajo quedan supersedidas por este cotejo de Bases.
+
+No se editaron fuentes LaTeX, firma o revisores ni se aplicaron arreglos a losPDF; sólo registro y contexto Markdown, más vistas externas autorizadas. Sin commit/push. Preferencia estable: responder qué cambió/dónde y mencionar pendiente sólo cuando falta algo específico. Engram no disponible; resumen y preferencia guardados localmente. Siguiente: equipo decide reparaciones/revisiones humanas; la tabla no debe volver a usar «Documentado» en todas las filas.
+
+## Preferencia de redacción — trazabilidad SD1
+
+El usuario considera artificial y confusa la respuesta «Documentado; entrega pendiente de comprobar» sobre el T-6. Prefiere respuestas directas que describan la corrección visible, sin cautelas genéricas sobre el envío. Se simplificó S1-01 del registro basado en LaTeX: T-6 incorporado como PDF separado, tres proyectos y once campos, con páginas verificadas 5–8. El PDF de nueve páginas fue compilado en la sesión; no confundir acreditaciones pendientes con ausencia del formulario. Engram no disponible; preferencia registrada aquí.
+
+## Estado vigente — 11 de octubre de 2026: revisión exhaustiva y recompilación del SD2 LaTeX
+
+Por instrucción del usuario («revisa todo exhaustivamente, compila y vuelve a revisar»), se auditó por script el PDF del SD2: orden cita → figura/tabla → análisis, tamaño de letra, ocupación de páginas, cortes de listas y avisos del compilador. También se revisaron visualmente las 25 páginas del cuerpo y las 20 de los anexos.
+
+Cambios en el checkout LaTeX:
+- Figuras fijadas con `[H]` (paquete float) para que no se adelanten a su explicación.
+- Lista de pasos antes o después de cada figura, elegida entre 32 combinaciones compiladas por el menor espacio en blanco: después en los procesos 1, 3 y 6.
+- Listas de pasos que no se cortan entre páginas (`needspace`); `needspace` también antes de 2.3.1 y de la Tabla 2.2.
+- `\hyphenation` para Figura, Tabla, Anexo y Restricciones; título 2.5 con salto manual.
+- Espacios no separables en «Figura~2.x», «Tabla~2.x» y «Anexo~2.x».
+- Signos menos tipográficos.
+- Conclusiones nuevas tras la Tabla 2.1 y la Tabla 2.4.
+- Anexos: columnas de identificadores y de «Fuente» más anchas; «Muy alta/Muy alto» unificado.
+
+Resultado: cuerpo de 25 páginas y anexos de 20, sin errores, desbordes ni avisos. Todo el texto de las figuras queda en 9,1–9,2 pt. Quedan páginas parcialmente vacías junto a las figuras horizontales (pp. 13 y 17) y antes de las Tablas 2.1 y 2.2 (pp. 9 y 20): son consecuencia de mantener figura y tabla juntas sin violar el orden. MD alineado (orden de figuras de los procesos 1, 3 y 6, frases nuevas, signos menos y mayúsculas). Trazabilidad SD2 reescrita con las páginas finales. Sin commit.
+
+## Estado anterior — 11 de octubre de 2026: SD2 LaTeX ajustado a las Aclaraciones (tablas, figuras y referencias)
+
+Autorización explícita del usuario: dejar el LaTeX del SD2 (`../LafroX-sd2-latex`, rama `LafroX-Subdoc2-LateX`) cumpliendo las Aclaraciones, en especial tablas y figuras, y reemplazar «Caso 02» por «caso», también en la referencia. Se editaron `contenido.tex`, `anexos.tex` y los dos `.tex` raíz, y se recompiló sin errores ni cajas desbordadas: cuerpo de 24 páginas y anexos de 20, sin commit. Cambios:
+- Figuras: escala para que todo el texto quede en 9 pt o más (medido entre 9,1 y 9,2), recorte solo de margen en blanco, 2.1 y 2.5 en página horizontal (pdflscape) y la 2.5 armada con las dos páginas de su exportación, sin alterar la imagen.
+- Tablas del cuerpo:
+  - Tabla 2.1: 4 columnas, una frase por celda, cifras a la derecha, en una página (needspace) y con análisis de sus columnas.
+  - Tabla 2.2: sin columna de estrategia, con nuevo análisis de influencia e interés.
+  - Tabla 2.3: sin la columna «Origen», que repetía el mismo valor.
+  - Tabla 2.4: anchos sin palabras cortadas; guiones desactivados en las tablas del cuerpo.
+- Citas a las Bases con página, cotejada en los PDF originales: caso p. 3–39, BA art. 16.1 p. 11 y art. 78 p. 40, BTT cap. 7 pp. 17–18 y RT-03.10/03.12 p. 9. Se agregaron citas a BA (modelo híbrido) y BTT (disponibilidad) para que toda la lista quede citada.
+- Anexos: referencias APA completas; tabla de IA renumerada como 2.A.9; sin lista de figuras vacía.
+- MD de rama-md alineado con todos estos cambios de texto.
+- Trazabilidad SD2 actualizada con las páginas nuevas.
+
+Pendientes: marcador «[[REVISIÓN HUMANA]]» en la 2.A.9 (bloqueante); fila 2.3 de la Tabla 2.4 desactualizada; erratas dentro de las imágenes; fecha de portada 05-10; la plantilla común imprime «Caso 02 — Logística» en todas las portadas (no se tocó).
+
+## Estado vigente — 11 de octubre de 2026: análisis AS-IS del SD2 (observación S2-03)
+
+Por petición del usuario se reescribieron en el MD del SD2 los seis párrafos de análisis de §2.3.2 («breve, redacción humana»). Cada párrafo indica dónde se pierde el dato, su efecto aguas abajo y qué falta medir. Se agregó un párrafo final que conecta los seis procesos con §2.2.1. Solo se usaron cifras ya presentes en el SD2 o en el caso (cap. 4.4: 3,5 h, once hojas, caída de 6 a 9 puntos; $4,2 millones). S2-03 pasa a «Documentado en MD; LaTeX pendiente». La fila 2.3 de la Tabla 2.4 de IA (revisión de Tomás Pérez) es anterior a este cambio y debe volver a revisarse. No se tocó el LaTeX; sin commit.
+
 ## Estado vigente — 11 de octubre de 2026: trazabilidad de observaciones del Informe 1 para SD3
 
 Por petición del usuario se recompiló con `latexmk -g` el checkout `../LafroX-sd3-latex` (commit ddee65e), sin errores: cuerpo de 33 páginas, anexos de 169 y T-12 de 222, en carta. Solo cambiaron los PDF y los auxiliares de ese checkout; quedan sin commit. Se creó `Revision/trazabilidad_Informe1_Informe2_SD3.md`, con 38 filas específicas (S3-00 a S3-37) y 5 generales. Pendiente bloqueante: la Tabla 3.6 de IA tiene «No documentada» en las 18 filas y fechas de edición (7-10 y 9-10-2026). Otros pendientes: la Figura 3.4 es ilegible; no hay columna de EDT en el T-12; las prioridades son 84 % Crítica o Alta; faltan automatización y enfoque SRE en §3.4.5; el umbral de §3.4.3 no coincide con D-12; el LaTeX está desfasado de 55b65c6; la fecha de portada es 05-10. No se editaron fuentes ni imágenes; sin commit.
