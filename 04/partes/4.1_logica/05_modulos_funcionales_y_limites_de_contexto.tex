@@ -127,9 +127,9 @@ El planificador autorizado mantiene las franjas de recepción de cada cliente ac
 El módulo de rendición y cobro permite investigar las causas de las diferencias de rendición que hoy quedan sin explicación. Implementa:
 
 \begin{itemize}
-  \item \textbf{Rendición digital individual (RF-07.02).} Cada conductor rinde sus cobros del turno de forma digital, con causales de descuadre clasificadas y trazables.
-  \item \textbf{Cobranza en ruta (RF-07.05 y RF-07.09).} El conductor registra el cobro y conserva su evidencia para la rendición. En pagos con POS móvil, la captura local de una operación no se presenta como autorización bancaria. El tratamiento sin cobertura depende de las capacidades y condiciones acordadas con la pasarela; se concilia al reconectar sin generar cargos duplicados.
-  \item \textbf{Interfaz con ERP (RF-07.02 e INT-06).} La rendición aprobada se publica en la cola FIFO de solicitudes al ERP; dos procesos del servicio de integración con el ERP en VM-04 de Talca consumen esa cola por conexión saliente y la cola RabbitMQ local, y entregan a la \textbf{capa anticorrupción (ACL)} de la misma VM; la ACL integra con el ERP. Nunca hay escritura directa al ERP. El ERP permanece como única fuente de verdad tributaria y único emisor de DTE.
+  \item \textbf{Rendición digital individual (RF-07.01 a RF-07.03).} M7 calcula para cada camión y turno el monto esperado de rendición con las entregas al contado confirmadas y los cobros registrados en ruta. Cada conductor rinde sus cobros del turno de forma digital contra ese monto, con causales de descuadre clasificadas y trazables.
+  \item \textbf{Cobranza en ruta (RF-07.06 y RF-07.10).} El conductor registra el cobro y conserva su evidencia para la rendición. En pagos con POS móvil, la captura local de una operación no se presenta como autorización bancaria. El tratamiento sin cobertura depende de las capacidades y condiciones acordadas con la pasarela; se concilia al reconectar sin generar cargos duplicados.
+  \item \textbf{Interfaz con ERP (RF-07.09 e INT-06).} La rendición aprobada se publica en la cola FIFO de solicitudes al ERP; dos procesos del servicio de integración con el ERP en VM-04 de Talca consumen esa cola por conexión saliente y la cola RabbitMQ local, y entregan a la \textbf{capa anticorrupción (ACL)} de la misma VM; la ACL integra con el ERP. Nunca hay escritura directa al ERP. El ERP permanece como única fuente de verdad tributaria y único emisor de DTE.
   \item \textbf{Costo de servir (RF-11).} El módulo alimenta el tablero de BI con el costo real por entrega, incluyendo kilometraje real (telemetría M12), tiempo de servicio y deducciones por devoluciones.
 \end{itemize}
 
@@ -139,7 +139,7 @@ El módulo de inteligencia de negocio consolida la información operativa en tab
 
 Los tableros se alimentan del almacén analítico (Redshift Serverless) con latencias comprometidas: operación del día $\leq$ 5 minutos, cierre comercial $\leq$ 2 horas, gestión $\leq$ 4 horas (RT-05.29; Bases Técnicas Transversales, cap. 5, p. 13). El modelo dimensional se estructura en hechos (ventas, entregas, stock, costo de servir) y dimensiones (cliente, SKU, tiempo, ruta, canal), con consulta detallada hasta línea de pedido y lote para trazabilidad sanitaria completa.
 
-La información es de solo lectura para la analítica, sin acceder al transaccional en vivo, conforme al principio de separación transaccional/analítico. Los informes se programan (diarios, semanales, mensuales) y se exportan de forma asíncrona con firma y suma de comprobación (RT-05.28; Bases Técnicas Transversales, cap. 5, p. 13).
+Los informes históricos y gerenciales de M10 son de solo lectura sobre el almacén analítico, sin consultas BI directas al transaccional en vivo. Los indicadores operativos actuales que 4.2 y T-11 obtienen por la API de negocio conservan la autorización y los contratos de sus módulos; no constituyen acceso directo de M10 a la base ni sustituyen el modelo analítico. Los informes se programan (diarios, semanales, mensuales) y se exportan de forma asíncrona con firma y suma de comprobación (RT-05.28; Bases Técnicas Transversales, cap. 5, p. 13).
 
 El módulo prioriza la calidad de la captura y la disponibilidad de indicadores verificables, dado que el caso informa un 41 \% de recepciones sin lote registrado.
 

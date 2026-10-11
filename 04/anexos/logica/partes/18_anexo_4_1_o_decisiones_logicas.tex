@@ -157,7 +157,7 @@ En la mantención, Kotlin nativo permite conservar un único artefacto con perfi
 
 \textbf{Criterio de selección.} RTO $\leq$ 4 horas y RPO $\leq$ 15 minutos con dominios de falla separados.
 
-\textbf{Consecuencias.} Talca habilita la copia para escritura al detener DMS; terminales acceden por VPN y el retorno invierte la réplica tras reconstruir VM-02. La conmutación redirige los shippers y \texttt{erp-sync} a las colas de la región secundaria sin depender de la primaria.
+\textbf{Consecuencias.} Talca habilita la copia para escritura solo tras excluir el escritor anterior, detener DMS y registrar la transferencia de autoridad de M2. Los terminales acceden por VPN con LAN, firewall y un camino WAN disponibles o restituidos. El retorno reconstruye VM-02 como réplica del escritor de contingencia, concilia sus datos y transfiere la autoridad de forma controlada; el antiguo escritor no se reactiva automáticamente (4.3.2.5 y 4.3.2.6). La conmutación redirige los shippers y \texttt{erp-sync} a las colas de la región secundaria sin depender de la primaria.
 
 \textbf{Evidencia exigida.} AL-DR-01 recupera Talca en nube y ensaya promoción regional, escritura y retorno.
 
@@ -171,7 +171,7 @@ En la mantención, Kotlin nativo permite conservar un único artefacto con perfi
 
 \textbf{Criterio de selección.} Capacidad y quórum N+1 con demanda del Anexo 4-W.
 
-\textbf{Consecuencias.} Se reservan recursos de OSD y monitor; seis OSD ofrecen cerca de 1,92 TB útiles y unos 1,5 TB al 80\% de llenado. Frente a RT-03.14, el nivel declarado es Ceph sin RAID por hardware con réplica de tres copias, que tolera la falla de un disco y de un nodo. Cada servidor de Concepción usa RAID 10 y doble fuente. Cada E-01 usa dos SSD en RAID 1 por software, que tolera la falla de un disco con holgura para los 50 GB requeridos; RAID 5 o RAID 10 exigirían tres o cuatro discos que el mini-PC industrial no aloja. E-01 y sus switches tienen alimentación redundante. La falla del equipo activo de Concepción o de un cross-docking la cubre su par en espera, que toma el control en menos de un minuto.
+\textbf{Consecuencias.} Se reservan recursos de OSD y monitor; seis OSD ofrecen cerca de 1,92 TB útiles y unos 1,5 TB al 80\% de llenado. Frente a RT-03.14, el nivel declarado es Ceph sin RAID por hardware con réplica de tres copias, que tolera la falla de un disco y de un nodo. Cada servidor de Concepción usa RAID 10 y doble fuente. Cada E-01 usa dos SSD en RAID 1 por software, que tolera la falla de un disco con holgura para los 50 GB requeridos; RAID 5 o RAID 10 exigirían tres o cuatro discos que el mini-PC industrial no aloja. E-01 y sus switches tienen alimentación redundante. La falla del equipo activo de Concepción o de un cross-docking la cubre su par en espera, que toma el control en menos de un minuto desde la exclusión comprobada del escritor anterior. Si esa exclusión requiere intervención presencial, se registra el tiempo completo dentro del RTO de 4 horas; una partición de red no autoriza por sí sola la promoción (4.2.4.3).
 
 \textbf{Evidencia exigida.} Prueba de pérdida de nodo, reconstrucción, latencia y carga de cientos de IOPS a 3$\times$ frente a decenas de miles de IOPS de NVMe. Apagado del equipo activo de Concepción y de un cross-docking durante su ventana, sin pérdida de transacciones confirmadas.
 
@@ -201,7 +201,7 @@ En la mantención, Kotlin nativo permite conservar un único artefacto con perfi
 
 \textbf{Consecuencias.} Los perfiles tienen colas, conexiones y cuotas separadas; no se interviene del 1 al 25 de septiembre.
 
-\textbf{Evidencia exigida.} Carga de 3$\times$ y sensibilidad de 91,70 solicitudes/s con medición de PHP-FPM, tareas API, conexiones, bloqueo de base y edad de colas.
+\textbf{Evidencia exigida.} Carga de 3$\times$, sensibilidad de 91,70 solicitudes/s y cota completa de 111,70 solicitudes/s con la cuota del canal tradicional; medición de PHP-FPM, tareas API, conexiones, bloqueo de base, latencia y edad de colas.
 
 \textbf{Requisitos que la sustentan.} RT-09.03, RT-09.06; Caso, peak de septiembre.
 

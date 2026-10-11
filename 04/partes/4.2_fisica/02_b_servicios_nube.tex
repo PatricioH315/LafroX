@@ -27,7 +27,7 @@ La Tabla~\ref{tab:servicios-nube} agrupa los servicios contratados por la funci�
   Entrada pública & Route 53, CloudFront, AWS WAF, Shield Advanced, API Gateway pública & N-01 a N-03, N-12 & Global y sa-east-1 \\
   Acceso interno & Verified Access, API Gateway privada y endpoint execute-api & N-04, N-12 & sa-east-1 y us-east-1 \\
   Cómputo de aplicación & ECS Fargate, Application Load Balancer privado, Lambda autorizadora & N-04, A-05 & sa-east-1 y us-east-1 \\
-  Datos operacionales & Aurora PostgreSQL, Database Migration Service, DynamoDB, ElastiCache & N-05, A-02, N-06, N-07 & sa-east-1 y us-east-1 \\
+  Datos operacionales & Aurora PostgreSQL, Database Migration Service, DynamoDB, ElastiCache & N-05, A-02, N-06, N-07 & sa-east-1 y us-east-1 para las réplicas declaradas; ElastiCache se reconstruye durante la recuperación \\
   Mensajería & SQS FIFO para la reconciliación, para las solicitudes al ERP y sus respuestas, y para la coordinación de reservas por sitio, SQS para los trabajos de Laravel y SNS, con equivalentes vacíos creados por infraestructura como código en us-east-1 & N-09, A-03 & sa-east-1 y us-east-1 \\
   Integración B2B & Network Load Balancer y OpenAS2 en Fargate & N-04 (M11) & sa-east-1 \\
   Internet de las cosas & IoT Core, IoT Greengrass & N-08, B-02, B-03 & sa-east-1 y borde \\

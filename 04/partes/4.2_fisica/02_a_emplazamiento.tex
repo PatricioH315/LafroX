@@ -138,7 +138,7 @@ En la nube, la región primaria es sa-east-1 y cada servicio se despliega en al 
   \fuentefigura
 \end{figure}
 
-La figura muestra que ninguna instalación depende de los sistemas de otra para operar, aunque Concepción siga recibiendo parte de su surtido desde Talca. Talca y Concepción tienen cada uno su WMS, su base, su broker y su caché de identidad; los cross-docking reúnen esas mismas funciones en un par de mini-PC, uno activo y otro en espera; y el terreno lleva su propio almacén local en el dispositivo. La nube concentra lo que es común a todos los sitios: los portales, el transaccional compartido, la analítica y los servicios de seguridad. Los doce componentes híbridos aparecen en los dos dominios porque cada uno tiene una parte que debe seguir operando en el sitio y otra que consolida en la nube.
+La figura muestra que cada instalación mantiene su operación local contra sus propios datos, dentro de las funciones y condiciones de 4.1.15 y del Anexo 4-J, aunque Concepción siga recibiendo parte de su surtido desde Talca. Esa autonomía no incluye emitir nuevas guías sin el ERP de Talca ni confirmar autorizaciones externas sin respuesta válida. Talca y Concepción tienen cada uno su WMS, su base, su broker y su caché de identidad; los cross-docking reúnen esas mismas funciones en un par de mini-PC, uno activo y otro en espera; y el terreno lleva su propio almacén local en el dispositivo. La nube concentra lo que es común a todos los sitios: los portales, el transaccional compartido, la analítica y los servicios de seguridad. Los doce componentes híbridos aparecen en los dos dominios porque cada uno tiene una parte que debe seguir operando en el sitio y otra que consolida en la nube.
 
 \subsection{Correspondencia con la arquitectura lógica}
 
@@ -260,7 +260,7 @@ Los doce componentes híbridos tienen una parte en cada dominio. Para cada uno, 
   \item \textbf{D-01 Firewall y Customer Gateway} (criticidad): el par de firewalls de cada uno de los cinco sitios termina los túneles IPsec hacia el Transit Gateway de AWS y conmutan de enlace en menos de 30 s.
   \item \textbf{D-05 Respaldo local} (conectividad): el NAS WORM de Talca restaura el WMS en 4 h sin depender del enlace, y su complemento inmutable vive en S3 Object Lock.
   \item \textbf{F-01 Telemetría de observabilidad} (conectividad): los colectores ADOT de VM-06, VM-C04 y E-01 guardan hasta 24 h de métricas y trazas en disco y las envían a CloudWatch al reconectar.
-  \item \textbf{F-03 Detección en endpoints} (regulación): los agentes EDR de cada nodo y estación reportan a una consola central, lo que da una sola respuesta ante incidentes en nube y on-premise. El servidor del ERP es un activo del CLIENTE que no forma parte de la solución: LafroX lo traslada sin cambiar su software, y el firewall de Talca solo le permite el tráfico de la ACL en VM-04 y la administración del CLIENTE.
+  \item \textbf{F-03 Detección en endpoints} (regulación): los agentes EDR de cada nodo y estación reportan a una consola central, lo que da una sola respuesta ante incidentes en nube y on-premise. El servidor del ERP es un activo del CLIENTE que no forma parte de la solución: LafroX lo traslada sin cambiar su software, y el firewall de Talca restringe las entradas al tráfico de la ACL en VM-04 y a la administración autorizada del CLIENTE. Permite las salidas tributarias del ERP hacia el SII por los caminos habilitados, con destinos, puertos y reglas documentados en el levantamiento de INT-07; esto no habilita escrituras directas de los módulos al ERP.
 \end{itemize}
 
 Los componentes híbridos siguen todos el mismo patrón: la parte que atiende la operación queda en el sitio y la parte que consolida queda en la nube, unidas por un mecanismo que tolera el corte. En el núcleo de bodega, Talca replica su base por DMS y los demás sitios sincronizan eventos por colas; en el terreno, el almacén local del dispositivo; y en la observabilidad, el buffer en disco de los colectores. Por eso la conectividad es el criterio dominante en siete de los doce: cada uno existe en dos lugares precisamente porque el enlace entre ellos no es confiable.
@@ -280,14 +280,14 @@ El emplazamiento descrito se verifica en lo que cada ámbito puede hacer cuando 
 
 {\footnotesize Fuente: elaboración propia.\par}
 
-Durante la autonomía, cada ámbito mantiene su operación completa contra sus datos locales:
+Durante la autonomía, cada ámbito mantiene las funciones habilitadas contra sus datos locales, con permisos vigentes, bloqueos sanitarios y las condiciones del Anexo 4-J:
 
 \begin{itemize}
-  \item El centro de distribución sigue con recepción, preparación, despacho, conteo cíclico y trazabilidad contra la base local.
+  \item El centro de distribución sigue con recepción, preparación, conteo cíclico y trazabilidad contra la base local. El despacho exige una guía válida que ampare la carga y una autorización sanitaria vigente; una nueva guía o una nueva liberación no se presume por ausencia de conexión.
   \item El terreno sigue con toma de pedido, entrega, evidencia, devoluciones y cobros contra el almacén local del dispositivo.
   \item El cross-docking mantiene recepción, desconsolidación, lectura del termógrafo en la recepción y re-despacho.
 \end{itemize}
 
 Al reconectar, el vuelco ocurre en orden estricto, sin duplicados y con reconciliación determinista.
 
-La autonomía de cada ámbito cubre el corte más largo que describe el caso para ese lugar. Las seis horas del peor corte de fibra de Talca quedan dentro de las 24 horas del centro de distribución, y la ruta rural que recupera cobertura solo al regresar queda dentro del turno de 14 horas del terreno. Los tiempos de sincronización se sostienen con los enlaces dimensionados en la sección~\ref{sec:dimensionamiento}, y lo que ocurre ante cada falla se desarrolla en la sección~\ref{sec:conexiones}.
+Las seis horas del peor corte de fibra de Talca quedan dentro de las 24 horas del centro de distribución. En terreno se distinguen las 14 horas de captura autorizada sin señal de la ventana física de ruta de hasta 14,5 horas de 4.2.1.2. El inicio y término de la credencial se registran por turno: una ruta que exceda su vigencia requiere renovación con conexión; la batería y el registro continuo del termógrafo no amplían los permisos. Los tiempos de sincronización se sostienen con los enlaces dimensionados en la sección~\ref{sec:dimensionamiento}, y lo que ocurre ante cada falla se desarrolla en la sección~\ref{sec:conexiones}.

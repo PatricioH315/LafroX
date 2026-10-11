@@ -56,7 +56,7 @@ La Tabla~\ref{tab:t76} presenta los lugares de proceso y separa el portal de la 
 \begin{tablalafrox}{Transacciones por segundo por lugar de proceso}{tab:t76}{F{0.24} G{0.16} G{0.16} G{0.16} Y}{\cab{Lugar o flujo} & \cab{Régimen normal} & \cab{Ventana de despacho} & \cab{Peak septiembre} & \cab{Derivación}}
   WMS de Talca & 1,46 TPS & 1,46 TPS & 2,68 TPS & preparación y despacho según perfil horario y SV-03 \\
   WMS de Concepción & 0,73 TPS & 0,73 TPS & 1,34 TPS & 2/3 y 1/3 de preparación y despacho; SV-03 \\
-  Cada cross-docking & 1,17 TPS & 0,78 TPS & 2,17 TPS & Tres operaciones de llegada y una de despacho \\
+  Conjunto de los tres cross-docking & 1,17 TPS & 0,78 TPS & 2,17 TPS & Tres operaciones de llegada y una de despacho sobre el volumen agregado \\
   Nube, sin portal & 2,71 TPS & 0,79 TPS & 5,03 TPS & preventa, reparto, recepción, trazabilidad, guías y sincronización \\
   Portal & 9,63 TPS & -- & 9,63 TPS & 2.600 ÷ 9 × 2 por SV-04 × 60 ÷ 3.600 \\
   Total & 12,34 TPS & 3,76 / 6,94 TPS & 14,66 TPS & El máximo global de septiembre ocurre a las 12:00 con preventa y portal, y el máximo de despacho entre 05:30 y 07:00 llega a 6,94 TPS con guías y re-despacho. \\
@@ -113,14 +113,14 @@ La migración no supone eventos históricos digitales de trazabilidad: el caso d
 \subsection{Integraciones y ancho de banda por sitio: dimensiones 11--12}
 \label{sec:dimensionamiento-enlaces}
 
-La dimensión 11, «Número de integraciones y volumen de mensajes por integración», cuenta únicamente INT-01 a INT-15 del catálogo del apartado 4.1. Portal y llamadas internas a la API quedan fuera. La Tabla~\ref{tab:dimensionamiento-integraciones} resume sus 230.252 mensajes diarios normales y 353.333 en peak, incluida la coordinación de reserva de INT-03/04; INT-14 considera 13 nodos activos, seis VMs en Talca, cuatro en Concepción y un mini-PC activo por cada cross-docking, con 1.000 eventos por nodo al día. Suma además 7 nodos en espera, cuatro VMs en Concepción y un mini-PC por cross-docking, con 200 eventos al día, porque no atienden transacciones.
+La dimensión 11, «Número de integraciones y volumen de mensajes por integración», cuenta únicamente INT-01 a INT-15 del catálogo del apartado 4.1. Portal y llamadas internas a la API quedan fuera. La Tabla~\ref{tab:dimensionamiento-integraciones} resume sus 224.652 mensajes diarios normales y 342.933 en peak, incluida la coordinación de reserva de INT-03/04; INT-14 considera 13 nodos activos, seis VMs en Talca, cuatro en Concepción y un mini-PC activo por cada cross-docking, con 1.000 eventos por nodo al día. Suma además 7 nodos en espera, cuatro VMs en Concepción y un mini-PC por cross-docking, con 200 eventos al día, porque no atienden transacciones.
 
 \begin{tablalafrox}{Mensajes de integración por grupo}{tab:dimensionamiento-integraciones}{F{0.26} G{0.18} G{0.18} Y}{\cab{Integraciones} & \cab{Normal} & \cab{Peak} & \cab{Origen}}
-  INT-01 a INT-04 & 119.678/día & 222.260/día & Pedidos, entregas, eventos, coordinación de reserva y cota de cross-docking \\
+  INT-01 a INT-04 & 114.078/día & 211.860/día & Pedidos, entregas, eventos y coordinación de reserva; INT-04 incluido en INT-03 \\
   INT-05 & 10.920/día & 10.920/día & 6.048 cámaras + 4.872 termógrafos \\
   INT-06 a INT-10 & 8.608/día & 15.905/día & ERP, DTE, EDI, pagos y mapas \\
   INT-11 a INT-15 & 91.046/día & 104.248/día & Avisos, réplica, identidad, ADOT y telemetría \\
-  \textbf{Total} & \textbf{230.252/día} & \textbf{353.333/día} & \textbf{15 integraciones} \\
+  \textbf{Total} & \textbf{224.652/día} & \textbf{342.933/día} & \textbf{15 integraciones} \\
 \end{tablalafrox}
 
 {\footnotesize Fuente: elaboración propia.\par}
@@ -147,7 +147,7 @@ D-03 es fibra, D-04 es LTE y D-06 es satélite, calculado conservadoramente con 
 
 La dimensión 13, «Volumen de datos generado por un dispositivo de reparto en un turno completo sin señal», es 9,83 MB para la ruta de 34 clientes; una ruta promedio genera 5,36 MB normales y 8,24 MB en septiembre. La cifra incluye evidencia, una fotografía adicional cuando corresponde y 2 MB de datos locales.
 
-La dimensión 14, «Tiempo de sincronización de la flota al regresar al centro de distribución», se expresa en tiempo: cada dispositivo sincroniza en diez minutos con al menos 0,13 Mbps efectivos. Los 64 camiones de la hora punta se reparten por SV-03: aproximadamente 43 en Talca y 21 en Concepción, con 0,93 y 0,47 Mbps respectivamente en la Wi-Fi y el enlace de cada centro. La flota completa requiere 1,40 Mbps en esa hora. La cota de 34 clientes corresponde a la ruta rural más larga descrita en el caso (Bases Técnicas del caso, cap. 8, p. 16, entrevista al conductor de la ruta Cauquenes); en los centros de distribución la sincronización ocurre por Wi-Fi.
+La dimensión 14, «Tiempo de sincronización de la flota al regresar al centro de distribución», se expresa en tiempo: cada dispositivo sincroniza en diez minutos con al menos 0,13 Mbps efectivos. Los 64 camiones de la hora punta se reparten por SV-03: aproximadamente 43 en Talca y 21 en Concepción, con 0,93 y 0,47 Mbps respectivamente en la Wi-Fi y el enlace de cada centro. La flota completa requiere 1,40 Mbps como promedio de esa hora, no como garantía de diez minutos ante llegadas simultáneas. AL-OFF-01 y la prueba de sincronización verifican además los dispositivos concurrentes, el caudal efectivo y la cola de espera, conforme al Anexo 4-W.6. La cota de 34 clientes corresponde a la ruta rural más larga descrita en el caso (Bases Técnicas del caso, cap. 8, p. 16, entrevista al conductor de la ruta Cauquenes); en los centros de distribución la sincronización ocurre por Wi-Fi.
 
 El consumo de batería por turno se declara como un máximo comprometido, porque solo puede medirse con la aplicación construida: con la aplicación en uso real, cada terminal de bodega y de preventa termina su turno o su jornada con al menos 20~\% de carga, es decir, consume como máximo el 80~\% de la batería especificada en 4.2.1.2; en reparto, el cargador del vehículo cubre la ruta. Para cumplirlo, la aplicación sincroniza por lotes en lugar de mantener una conexión permanente y el lector se activa solo con el gatillo. La prueba de aceptación lo mide con la unidad de prueba de cada modelo antes de la compra masiva (RT-17.07 y RT-08.15).
 
@@ -178,11 +178,12 @@ La plataforma utiliza Fargate, Aurora, ElastiCache, SQS, IoT Core, DynamoDB y S3
   Prueba RT-09.06 (Bases Técnicas Transversales, cap. 9, p. 21) & 21,99 solicitudes/s totales, distribuido por perfil horario & 2 & 8 & Una sola multiplicación \\
   Cota extrema & 48,37 solicitudes/s (5,03 + 43,33) & 4 & 8 & Bajo el techo \\
   Sensibilidad 120 solicitudes & 21,97 / 91,70 solicitudes/s; régimen / cota & 2 / 7 & 8 & Bajo el techo \\
+  Cota extrema más canal tradicional & 111,70 solicitudes/s (91,70 + cuota de 20) & 8 & 8 & Cota completa de ADR-12; verificar mezcla y latencia \\
 \end{tablalafrox}
 
 {\footnotesize Fuente: elaboración propia.\par}
 
-El portal en régimen usa 9,63 solicitudes/s y 96,30 sesiones concurrentes; su cota extrema usa 43,33 solicitudes/s y 433,33 sesiones concurrentes. Con 120 solicitudes por sesión, manteniendo las sesiones repartidas en la hora, el portal alcanza 19,26 solicitudes/s en régimen y 86,67 en la cota extrema; al sumar la nube resultan 21,97 y 91,70 solicitudes/s, que requieren 2 y 7 tareas. El parámetro se mantiene bajo el techo de ocho, pero se perfila en la prueba de carga.
+El portal en régimen usa 9,63 solicitudes/s y 96,30 sesiones concurrentes; su cota extrema usa 43,33 solicitudes/s y 433,33 sesiones concurrentes. Con 120 solicitudes por sesión, manteniendo las sesiones repartidas en la hora, el portal alcanza 19,26 solicitudes/s en régimen y 86,67 en la cota extrema; al sumar la nube resultan 21,97 y 91,70 solicitudes/s, que requieren 2 y 7 tareas. Con la cuota agregada de 20 solicitudes/s del canal tradicional, la cota completa alcanza 111,70 solicitudes/s y requiere las ocho tareas; no conserva capacidad para aumentar esa cuota. La prueba de carga verifica esta mezcla, la base dimensionada en el Anexo 4-W.9 y el tiempo de escalado, además del escenario de siete tareas.
 
 \subsection{Plan de capacidad}
 \label{sec:dimensionamiento-plan}
@@ -272,7 +273,7 @@ La Tabla~\ref{tab:t72} reúne cada dimensión con el nombre literal del Caso 14.
   8 & Volumen anual de almacenamiento de evidencia de entrega, firmas y fotografías & 87,72 GB/año & 13,58 GB mes peak & Anexo 4-W, sección 4-W.4 \\
   9 & Volumen anual de almacenamiento de series de temperatura y de posicionamiento & 0,58 + 3,20 GB/año crudos & 2,89 + 3,20 GB crudos retenidos & Anexo 4-W, sección 4-W.4 \\
   10 & Volumen total de datos históricos a migrar & 32,11 GB & 30,73--33,49 GB de sensibilidad & Anexo 4-W, sección 4-W.4 \\
-  11 & Número de integraciones y volumen de mensajes por integración & 15; 230.252 mensajes/día & 353.333 mensajes/día & Anexo 4-W, sección 4-W.5 \\
+  11 & Número de integraciones y volumen de mensajes por integración & 15; 224.652 mensajes/día & 342.933 mensajes/día & Anexo 4-W, sección 4-W.5 \\
   12 & Ancho de banda requerido por sitio, en régimen y en peak & 3,29 / 0,71 / 0,06 Mbps cargados & 5,16 / 2,14 / 0,41 Mbps peor caso & Anexo 4-W, sección 4-W.5 \\
   13 & Volumen de datos generado por un dispositivo de reparto en un turno completo sin señal & 5,36 MB promedio & 9,83 MB, ruta de 34 clientes & Anexo 4-W, sección 4-W.6 \\
   14 & Tiempo de sincronización de la flota al regresar al centro de distribución & 10 min por dispositivo & 10 min después del último camión & Anexo 4-W, sección 4-W.6 \\

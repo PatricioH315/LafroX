@@ -10,7 +10,7 @@ Las pruebas siguientes se ejecutan en Preproducción y antes de la ola aplicable
 \mbox{AL-POD-01} & Ensayar entrega total, parcial y receptor sustituto sin señal. & El POD conserva autor, objeto y acuse aplicable. & Firma, hash y trazas. \\
 \mbox{AL-SLA-01} & Simular ventanas y cuotas de ERP, SII y contrapartes. & Reintentos y escalamiento respetan cada contrato. & Contratos, logs y tiempos. \\
 \mbox{AL-OFF-01} & Aislar cada sitio 24 horas con dos relevos y despachar con guía preemitida. & Operación local y conciliación sin duplicados; solo sale carga amparada. & Bitácora, guías, colas y acta. \\
-\mbox{AL-CLI-01} & Armar pedidos sin señal en el Portal de Clientes instalado y reconectar. & Ningún pedido se pierde ni se duplica; M3 reserva solo al recibirlo. & UUID, respuesta de M3 y acta. \\
+\mbox{AL-CLI-01} & Armar pedidos sin señal en el Portal de Clientes instalado y reconectar. & Ningún pedido se pierde ni se duplica; M3 confirma solo al recibirlo y obtener la retención de M2 y el control de crédito de M7. & UUID, respuesta de M3 y acta. \\
 \mbox{AL-DR-01} & Cortar caminos y recuperar Talca en nube. & RTO $\leq$ 4 horas y RPO $\leq$ 15 minutos. & Marcas de agua y acta. \\
 \mbox{AL-PERF-01} & Aplicar carga de 3$\times$ con mamparos por perfil. & Latencias y colas cumplen el Anexo 4-T. & Métricas y reporte. \\
 \mbox{AL-STOCK-01} & Pedir la última unidad desde preventa, portal y EDI, con cortes y acuses perdidos. & Una sola reserva confirmada con retención durable; nunca stock negativo. & Estado central y local, p95 y acta. \\
