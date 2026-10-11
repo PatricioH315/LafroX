@@ -159,12 +159,12 @@ La Tabla 9.C.1 resume la matriz.
 | Grupo | Identificadores | Con prueba propia | Sin prueba propia | Casos estimados |
 | --- | --- | --- | --- | --- |
 | RF | 181 | 176 | 5 | 547 |
-| RNF | 90 | 84 | 6 | 302 |
-| RT | 374 | 354 | 20 | 354 |
+| RNF | 90 | 86 | 4 | 308 |
+| RT | 374 | 356 | 18 | 356 |
 | Contratos de las 15 integraciones | — | — | — | 105 |
-| **Total** | **645** | **614** | **31** | **1.308** |
+| **Total** | **645** | **618** | **27** | **1.316** |
 
-La matriz asigna prueba propia a 614 de los 645 identificadores. Los 31 restantes son 22 en estado «No cumple» y 9 absorbidos por otra fila. Con los 105 casos de contrato de las integraciones, siete por cada una de las 15, el catálogo suma 547 + 302 + 354 + 105 = 1.308 casos, la cifra que usa la sección 9.2.3 del Subdocumento 9.
+La matriz asigna prueba propia a 618 de los 645 identificadores. Los 27 restantes son 18 en estado «No cumple» y 9 absorbidos por otra fila. Con los 105 casos de contrato de las integraciones, siete por cada una de las 15, el catálogo suma 547 + 308 + 356 + 105 = 1.316 casos, la cifra que usa la sección 9.2.3 del Subdocumento 9.
 
 ### 9.C.2 Matriz
 
@@ -382,144 +382,144 @@ La Tabla 9.C.2 presenta la matriz completa, en el orden del Formulario T-12.
 | RNF-11.02 | Cumple | Prueba funcional en marcha blanca | PROD | 4.2 | H7 | 3 · CP-RNF-11.02-01 a -03 |
 | RNF-11.03 | Cumple | Se verifica con RF-11.07 | — | — | — | 0 |
 | RNF-11.04 | Cumple | Se verifica con RT-05.29 | — | — | — | 0 |
-| RNF-12.01 | Cumple | Prueba funcional en marcha blanca | PROD | 4.3 | H12 | 5 · CP-RNF-12.01-01 a -05 |
-| RNF-12.02 | Cumple | Prueba funcional en marcha blanca | PROD | 4.3 | H12 | 3 · CP-RNF-12.02-01 a -03 |
-| RNF-12.03 | Cumple | Prueba funcional en marcha blanca | PROD | 4.3 | H12 | 3 · CP-RNF-12.03-01 a -03 |
-| RNF-13.01 | Cumple | Perfil operacional: sin señal y sin enlace | Terreno · PREPROD | 3.8.3 · 3.9.2 | H5 · H10 | 5 · CP-RNF-13.01-01 a -05 |
-| RNF-13.02 | Cumple | Inspección del expediente de certificación | — | 3.8.7 · 3.9.6 | H5 · H10 | 5 · CP-RNF-13.02-01 a -05 |
-| RNF-13.03 | Cumple | Prueba funcional en marcha blanca | PROD | 4.2 · 4.3 | H7 · H12 | 3 · CP-RNF-13.03-01 a -03 |
-| RNF-13.04 | Cumple | Prueba funcional en marcha blanca | PROD | 4.2 · 4.3 | H7 · H12 | 3 · CP-RNF-13.04-01 a -03 |
-| RNF-13.05 | Cumple | Inspección del expediente de certificación | — | 3.8.7 · 3.9.6 | H5 · H10 | 3 · CP-RNF-13.05-01 a -03 |
-| RNF-13.06 | Cumple | Prueba funcional en marcha blanca | PROD | 4.2 · 4.3 | H7 · H12 | 3 · CP-RNF-13.06-01 a -03 |
-| RNF-13.07 | Cumple | Recuperación ante desastres con conmutación real | DR | 3.8.5 · 3.9.4 | H5 · H10 | 3 · CP-RNF-13.07-01 a -03 |
-| RNF-13.08 | Cumple | Inspección del expediente de certificación | — | 3.8.7 · 3.9.6 | H5 · H10 | 3 · CP-RNF-13.08-01 a -03 |
-| RNF-13.09 | Cumple | Inspección del expediente de certificación | — | 3.8.7 · 3.9.6 | H5 · H10 | 3 · CP-RNF-13.09-01 a -03 |
-| RNF-14.01 | Cumple | Carga a 1,5× el peak y estrés | PREPROD | 3.8.4 · 3.9.3 | H5 · H10 | 5 · CP-RNF-14.01-01 a -05 |
-| RNF-14.02 | Cumple | Revisión de configuración, SAST/DAST y pentest | QA · PREPROD | 3.8.6 · 3.9.5 | H5 · H10 | 5 · CP-RNF-14.02-01 a -05 |
-| RNF-14.03 | Cumple | Prueba funcional en marcha blanca | PROD | 4.2 · 4.3 | H7 · H12 | 3 · CP-RNF-14.03-01 a -03 |
-| RNF-14.04 | Cumple | Revisión de configuración, SAST/DAST y pentest | QA · PREPROD | 3.8.6 · 3.9.5 | H5 · H10 | 3 · CP-RNF-14.04-01 a -03 |
-| RNF-14.05 | Cumple | Carga a 1,5× el peak y estrés | PREPROD | 3.8.4 · 3.9.3 | H5 · H10 | 3 · CP-RNF-14.05-01 a -03 |
-| RNF-14.06 | Cumple | Inspección del expediente de certificación | — | 3.8.7 · 3.9.6 | H5 · H10 | 3 · CP-RNF-14.06-01 a -03 |
-| RNF-14.07 | Cumple | SAST en G2 y DAST en G4 | QA | 1.5.2 · 3.8.6 | H4 · H5 | 3 · CP-RNF-14.07-01 a -03 |
-| RNF-14.08 | Cumple | Prueba funcional en marcha blanca | PROD | 4.2 · 4.3 | H7 · H12 | 3 · CP-RNF-14.08-01 a -03 |
-| RNF-14.09 | Cumple | Prueba funcional en marcha blanca | PROD | 4.2 · 4.3 | H7 · H12 | 3 · CP-RNF-14.09-01 a -03 |
-| RNF-14.10 | Cumple | Prueba funcional en marcha blanca | PROD | 4.2 · 4.3 | H7 · H12 | 3 · CP-RNF-14.10-01 a -03 |
-| RNF-14.11 | Cumple | Revisión de configuración, SAST/DAST y pentest | QA · PREPROD | 3.8.6 | H5 | 5 · CP-RNF-14.11-01 a -05 |
-| RNF-14.12 | Cumple | Revisión de configuración, SAST/DAST y pentest | QA · PREPROD | 3.8.6 | H5 | 3 · CP-RNF-14.12-01 a -03 |
-| RNF-15.01 | Cumple | Revisión de configuración, SAST/DAST y pentest | QA · PREPROD | 3.8.6 · 3.9.5 | H5 · H10 | 5 · CP-RNF-15.01-01 a -05 |
-| RNF-15.02 | Cumple | Revisión de configuración, SAST/DAST y pentest | QA · PREPROD | 3.8.6 · 3.9.5 | H5 · H10 | 5 · CP-RNF-15.02-01 a -05 |
-| RNF-15.03 | Cumple | Restauración de muestra y política de retención | DR | 3.8.5 · 3.9.4 | H5 · H10 | 3 · CP-RNF-15.03-01 a -03 |
-| RNF-16.01 | Cumple | Carga a 1,5× el peak y estrés | PREPROD | 3.8.4 · 3.9.3 | H5 · H10 | 3 · CP-RNF-16.01-01 a -03 |
-| RNF-16.02 | Cumple | Inspección del expediente de certificación | — | 3.8.7 · 3.9.6 | H5 · H10 | 3 · CP-RNF-16.02-01 a -03 |
-| RNF-16.03 | Cumple | Revisión de configuración, SAST/DAST y pentest | QA · PREPROD | 3.8.6 · 3.9.5 | H5 · H10 | 5 · CP-RNF-16.03-01 a -05 |
-| RNF-17.01 | Cumple | Restauración de muestra y política de retención | DR | 3.8.5 · 3.9.4 | H5 · H10 | 3 · CP-RNF-17.01-01 a -03 |
-| RNF-17.02 | Cumple | Revisión de configuración, SAST/DAST y pentest | QA · PREPROD | 3.8.6 · 3.9.5 | H5 · H10 | 3 · CP-RNF-17.02-01 a -03 |
-| RNF-17.03 | Cumple | Prueba funcional en marcha blanca | PROD | 4.2 · 4.3 | H7 · H12 | 3 · CP-RNF-17.03-01 a -03 |
-| RNF-19.01 | Cumple | Inspección del expediente de certificación | — | 3.8.7 · 3.9.6 | H5 · H10 | 3 · CP-RNF-19.01-01 a -03 |
-| RNF-19.02 | Cumple | Prueba funcional en marcha blanca | PROD | 4.2 · 4.3 | H7 · H12 | 3 · CP-RNF-19.02-01 a -03 |
-| RNF-19.03 | Cumple | Inspección del expediente de certificación | — | 3.8.7 · 3.9.6 | H5 · H10 | 3 · CP-RNF-19.03-01 a -03 |
-| RNF-19.04 | Cumple | Carga a 1,5× el peak y estrés | PREPROD | 3.8.4 · 3.9.3 | H5 · H10 | 3 · CP-RNF-19.04-01 a -03 |
-| RNF-20.01 | Cumple | Recuperación ante desastres con conmutación real | DR | 3.8.5 · 3.9.4 | H5 · H10 | 5 · CP-RNF-20.01-01 a -05 |
-| RNF-20.02 | Cumple | Inspección del expediente de certificación | — | 3.8.7 · 3.9.6 | H5 · H10 | 5 · CP-RNF-20.02-01 a -05 |
-| RNF-20.03 | Cumple | Inspección del expediente de certificación | — | 3.8.7 · 3.9.6 | H5 · H10 | 5 · CP-RNF-20.03-01 a -05 |
-| RNF-20.04 | Cumple | Carga a 1,5× el peak y estrés | PREPROD | 3.8.4 · 3.9.3 | H5 · H10 | 3 · CP-RNF-20.04-01 a -03 |
-| RNF-20.05 | Cumple | Inspección del expediente de certificación | — | 3.8.7 · 3.9.6 | H5 · H10 | 3 · CP-RNF-20.05-01 a -03 |
-| RNF-20.06 | Cumple | Inspección del expediente de certificación | — | 3.8.7 · 3.9.6 | H5 · H10 | 5 · CP-RNF-20.06-01 a -05 |
-| RNF-20.07 | Cumple | Recuperación ante desastres con conmutación real | DR | 3.8.5 · 3.9.4 | H5 · H10 | 5 · CP-RNF-20.07-01 a -05 |
-| RNF-21.01 | Cumple | Inspección del expediente de certificación | — | 3.8.7 · 3.9.6 | H5 · H10 | 5 · CP-RNF-21.01-01 a -05 |
-| RNF-21.02 | No cumple | Sin prueba: no ofertado | — | — | — | 0 |
-| RNF-21.03 | Cumple | Carga a 1,5× el peak y estrés | PREPROD | 3.8.4 · 3.9.3 | H5 · H10 | 3 · CP-RNF-21.03-01 a -03 |
-| RNF-21.04 | Cumple | Prueba funcional en marcha blanca | PROD | 4.2 · 4.3 | H7 · H12 | 3 · CP-RNF-21.04-01 a -03 |
-| RNF-21.05 | Cumple | Inspección del expediente de certificación | — | 3.8.7 · 3.9.6 | H5 · H10 | 3 · CP-RNF-21.05-01 a -03 |
-| RNF-21.06 | Cumple | Prueba funcional en marcha blanca | PROD | 4.2 · 4.3 | H7 · H12 | 3 · CP-RNF-21.06-01 a -03 |
-| RNF-21.07 | No cumple | Sin prueba: no ofertado | — | — | — | 0 |
-| RNF-21.08 | Cumple parcialmente | Inspección del expediente de certificación | — | 3.8.7 · 3.9.6 | H5 · H10 | 3 · CP-RNF-21.08-01 a -03 |
-| RNF-21.09 | Cumple | Inspección del expediente de certificación | — | 3.8.7 · 3.9.6 | H5 · H10 | 3 · CP-RNF-21.09-01 a -03 |
-| RNF-22.01 | Cumple | Inspección del expediente de certificación | — | 3.8.7 · 3.9.6 | H5 · H10 | 3 · CP-RNF-22.01-01 a -03 |
-| RNF-22.02 | Cumple | Recuperación ante desastres con conmutación real | DR | 3.8.5 · 3.9.4 | H5 · H10 | 3 · CP-RNF-22.02-01 a -03 |
-| RNF-22.03 | Cumple | Prueba funcional en marcha blanca | PROD | 4.2 · 4.3 | H7 · H12 | 3 · CP-RNF-22.03-01 a -03 |
-| RNF-22.04 | Cumple | Prueba funcional en marcha blanca | PROD | 4.2 · 4.3 | H7 · H12 | 3 · CP-RNF-22.04-01 a -03 |
-| RNF-22.05 | Cumple | Prueba funcional en marcha blanca | PROD | 4.2 · 4.3 | H7 · H12 | 3 · CP-RNF-22.05-01 a -03 |
-| RNF-22.06 | Cumple | Prueba funcional en marcha blanca | PROD | 4.2 · 4.3 | H7 · H12 | 3 · CP-RNF-22.06-01 a -03 |
-| RNF-23.01 | Cumple | Inspección del expediente de certificación | — | 3.8.7 · 3.9.6 | H5 · H10 | 3 · CP-RNF-23.01-01 a -03 |
-| RNF-23.02 | Cumple | Inspección del expediente de certificación | — | 3.8.7 · 3.9.6 | H5 · H10 | 3 · CP-RNF-23.02-01 a -03 |
-| RNF-23.03 | Cumple | Inspección del expediente de certificación | — | 3.8.7 · 3.9.6 | H5 · H10 | 3 · CP-RNF-23.03-01 a -03 |
-| RNF-23.04 | Cumple | Inspección del expediente de certificación | — | 3.8.7 · 3.9.6 | H5 · H10 | 3 · CP-RNF-23.04-01 a -03 |
-| RT-02.01 | Cumple | Revisión de arquitectura y prueba de integración | QA | 2.1 · 3.8.1 | H2 · H4 | 1 · CP-RT-02.01-01 |
-| RT-02.02 | Cumple | Revisión de arquitectura y prueba de integración | QA | 2.1 · 3.8.1 | H2 · H4 | 1 · CP-RT-02.02-01 |
-| RT-02.03 | Cumple | Revisión de arquitectura y prueba de integración | QA | 2.1 · 3.8.1 | H2 · H4 | 1 · CP-RT-02.03-01 |
-| RT-02.04 | Cumple | Revisión de arquitectura y prueba de integración | QA | 2.1 · 3.8.1 | H2 · H4 | 1 · CP-RT-02.04-01 |
-| RT-02.05 | Cumple | Revisión de arquitectura y prueba de integración | QA | 2.1 · 3.8.1 | H2 · H4 | 1 · CP-RT-02.05-01 |
-| RT-02.06 | Cumple | Revisión de arquitectura y prueba de integración | QA | 2.1 · 3.8.1 | H2 · H4 | 1 · CP-RT-02.06-01 |
-| RT-02.07 | Cumple | Revisión de arquitectura y prueba de integración | QA | 2.1 · 3.8.1 | H2 · H4 | 1 · CP-RT-02.07-01 |
-| RT-02.08 | Cumple | Revisión de arquitectura y prueba de integración | QA | 2.1 · 3.8.1 | H2 · H4 | 1 · CP-RT-02.08-01 |
-| RT-02.09 | Cumple | Revisión de arquitectura y prueba de integración | QA | 2.1 · 3.8.1 | H2 · H4 | 1 · CP-RT-02.09-01 |
-| RT-02.10 | Cumple | Revisión de arquitectura y prueba de integración | QA | 2.1 · 3.8.1 | H2 · H4 | 1 · CP-RT-02.10-01 |
-| RT-02.11 | Cumple | Revisión de arquitectura y prueba de integración | QA | 2.1 · 3.8.1 | H2 · H4 | 1 · CP-RT-02.11-01 |
-| RT-02.12 | Cumple | Revisión de arquitectura y prueba de integración | QA | 2.1 · 3.8.1 | H2 · H4 | 1 · CP-RT-02.12-01 |
-| RT-02.13 | Cumple | Revisión de arquitectura y prueba de integración | QA | 2.1 · 3.8.1 | H2 · H4 | 1 · CP-RT-02.13-01 |
-| RT-02.14 | Cumple | Revisión de arquitectura y prueba de integración | QA | 2.1 · 3.8.1 | H2 · H4 | 1 · CP-RT-02.14-01 |
-| RT-03.01 | Cumple | Corte de enlace y resiliencia del modelo híbrido | PREPROD | 3.8.3 · 3.8.4 | H5 | 1 · CP-RT-03.01-01 |
-| RT-03.02 | Cumple | Corte de enlace y resiliencia del modelo híbrido | PREPROD | 3.8.3 · 3.8.4 | H5 | 1 · CP-RT-03.02-01 |
-| RT-03.03 | Cumple | Corte de enlace y resiliencia del modelo híbrido | PREPROD | 3.8.3 · 3.8.4 | H5 | 1 · CP-RT-03.03-01 |
-| RT-03.04 | Cumple | Corte de enlace y resiliencia del modelo híbrido | PREPROD | 3.8.3 · 3.8.4 | H5 | 1 · CP-RT-03.04-01 |
-| RT-03.05 | Cumple | Corte de enlace y resiliencia del modelo híbrido | PREPROD | 3.8.3 · 3.8.4 | H5 | 1 · CP-RT-03.05-01 |
-| RT-03.06 | Cumple | Corte de enlace y resiliencia del modelo híbrido | PREPROD | 3.8.3 · 3.8.4 | H5 | 1 · CP-RT-03.06-01 |
-| RT-03.07 | Cumple | Corte de enlace y resiliencia del modelo híbrido | PREPROD | 3.8.3 · 3.8.4 | H5 | 1 · CP-RT-03.07-01 |
-| RT-03.08 | Cumple | Corte de enlace y resiliencia del modelo híbrido | PREPROD | 3.8.3 · 3.8.4 | H5 | 1 · CP-RT-03.08-01 |
-| RT-03.09 | Cumple | Corte de enlace y resiliencia del modelo híbrido | PREPROD | 3.8.3 · 3.8.4 | H5 | 1 · CP-RT-03.09-01 |
-| RT-03.10 | Cumple | Corte de enlace y resiliencia del modelo híbrido | PREPROD | 3.8.3 · 3.8.4 | H5 | 1 · CP-RT-03.10-01 |
-| RT-03.11 | Cumple | Corte de enlace y resiliencia del modelo híbrido | PREPROD | 3.8.3 · 3.8.4 | H5 | 1 · CP-RT-03.11-01 |
-| RT-03.12 | Cumple | Corte de enlace y resiliencia del modelo híbrido | PREPROD | 3.8.3 · 3.8.4 | H5 | 1 · CP-RT-03.12-01 |
-| RT-03.13 | Cumple | Corte de enlace y resiliencia del modelo híbrido | PREPROD | 3.8.3 · 3.8.4 | H5 | 1 · CP-RT-03.13-01 |
-| RT-03.14 | Cumple | Corte de enlace y resiliencia del modelo híbrido | PREPROD | 3.8.3 · 3.8.4 | H5 | 1 · CP-RT-03.14-01 |
-| RT-03.15 | Cumple | Corte de enlace y resiliencia del modelo híbrido | PREPROD | 3.8.3 · 3.8.4 | H5 | 1 · CP-RT-03.15-01 |
-| RT-03.16 | Cumple | Corte de enlace y resiliencia del modelo híbrido | PREPROD | 3.8.3 · 3.8.4 | H5 | 1 · CP-RT-03.16-01 |
-| RT-03.17 | Cumple | Corte de enlace y resiliencia del modelo híbrido | PREPROD | 3.8.3 · 3.8.4 | H5 | 1 · CP-RT-03.17-01 |
-| RT-03.18 | Cumple | Corte de enlace y resiliencia del modelo híbrido | PREPROD | 3.8.3 · 3.8.4 | H5 | 1 · CP-RT-03.18-01 |
-| RT-03.19 | Cumple | Corte de enlace y resiliencia del modelo híbrido | PREPROD | 3.8.3 · 3.8.4 | H5 | 1 · CP-RT-03.19-01 |
-| RT-03.20 | Cumple | Corte de enlace y resiliencia del modelo híbrido | PREPROD | 3.8.3 · 3.8.4 | H5 | 1 · CP-RT-03.20-01 |
-| RT-03.21 | Cumple | Corte de enlace y resiliencia del modelo híbrido | PREPROD | 3.8.3 · 3.8.4 | H5 | 1 · CP-RT-03.21-01 |
-| RT-03.22 | Cumple | Corte de enlace y resiliencia del modelo híbrido | PREPROD | 3.8.3 · 3.8.4 | H5 | 1 · CP-RT-03.22-01 |
-| RT-03.23 | Cumple | Corte de enlace y resiliencia del modelo híbrido | PREPROD | 3.8.3 · 3.8.4 | H5 | 1 · CP-RT-03.23-01 |
-| RT-03.24 | Cumple | Corte de enlace y resiliencia del modelo híbrido | PREPROD | 3.8.3 · 3.8.4 | H5 | 1 · CP-RT-03.24-01 |
-| RT-04.01 | Cumple | Puertas G0–G3 del pipeline | DEV · QA | 1.5.2 | H3 · H4 | 1 · CP-RT-04.01-01 |
-| RT-04.02 | Cumple | Puertas G0–G3 del pipeline | DEV · QA | 1.5.2 | H3 · H4 | 1 · CP-RT-04.02-01 |
-| RT-04.03 | Cumple | Puertas G0–G3 del pipeline | DEV · QA | 1.5.2 | H3 · H4 | 1 · CP-RT-04.03-01 |
-| RT-04.04 | Cumple | Puertas G0–G3 del pipeline | DEV · QA | 1.5.2 | H3 · H4 | 1 · CP-RT-04.04-01 |
-| RT-04.05 | Cumple | Puertas G0–G3 del pipeline | DEV · QA | 1.5.2 | H3 · H4 | 1 · CP-RT-04.05-01 |
-| RT-04.06 | Cumple | Puertas G0–G3 del pipeline | DEV · QA | 1.5.2 | H3 · H4 | 1 · CP-RT-04.06-01 |
-| RT-04.07 | Cumple | Puertas G0–G3 del pipeline | DEV · QA | 1.5.2 | H3 · H4 | 1 · CP-RT-04.07-01 |
-| RT-04.08 | Cumple | Puertas G0–G3 del pipeline | DEV · QA | 1.5.2 | H3 · H4 | 1 · CP-RT-04.08-01 |
-| RT-04.09 | Cumple | Puertas G0–G3 del pipeline | DEV · QA | 1.5.2 | H3 · H4 | 1 · CP-RT-04.09-01 |
-| RT-04.10 | Cumple | Puertas G0–G3 del pipeline | DEV · QA | 1.5.2 | H3 · H4 | 1 · CP-RT-04.10-01 |
-| RT-04.11 | Cumple | Puertas G0–G3 del pipeline | DEV · QA | 1.5.2 | H3 · H4 | 1 · CP-RT-04.11-01 |
-| RT-04.12 | Cumple | Puertas G0–G3 del pipeline | DEV · QA | 1.5.2 | H3 · H4 | 1 · CP-RT-04.12-01 |
-| RT-04.13 | Cumple | Puertas G0–G3 del pipeline | DEV · QA | 1.5.2 | H3 · H4 | 1 · CP-RT-04.13-01 |
-| RT-04.14 | Cumple | Puertas G0–G3 del pipeline | DEV · QA | 1.5.2 | H3 · H4 | 1 · CP-RT-04.14-01 |
-| RT-05.01 | Cumple | Integración, contrato y ensayos de migración | QA · PREPROD | 3.7 · 3.8.1 | H4 · H5 | 1 · CP-RT-05.01-01 |
-| RT-05.02 | Cumple | Integración, contrato y ensayos de migración | QA · PREPROD | 3.7 · 3.8.1 | H4 · H5 | 1 · CP-RT-05.02-01 |
-| RT-05.03 | Cumple | Integración, contrato y ensayos de migración | QA · PREPROD | 3.7 · 3.8.1 | H4 · H5 | 1 · CP-RT-05.03-01 |
-| RT-05.04 | Cumple | Integración, contrato y ensayos de migración | QA · PREPROD | 3.7 · 3.8.1 | H4 · H5 | 1 · CP-RT-05.04-01 |
-| RT-05.05 | Cumple | Integración, contrato y ensayos de migración | QA · PREPROD | 3.7 · 3.8.1 | H4 · H5 | 1 · CP-RT-05.05-01 |
-| RT-05.06 | Cumple | Integración, contrato y ensayos de migración | QA · PREPROD | 3.7 · 3.8.1 | H4 · H5 | 1 · CP-RT-05.06-01 |
-| RT-05.07 | Cumple | Integración, contrato y ensayos de migración | QA · PREPROD | 3.7 · 3.8.1 | H4 · H5 | 1 · CP-RT-05.07-01 |
-| RT-05.08 | Cumple | Integración, contrato y ensayos de migración | QA · PREPROD | 3.7 · 3.8.1 | H4 · H5 | 1 · CP-RT-05.08-01 |
-| RT-05.09 | Cumple | Integración, contrato y ensayos de migración | QA · PREPROD | 3.7 · 3.8.1 | H4 · H5 | 1 · CP-RT-05.09-01 |
-| RT-05.10 | Cumple parcialmente | Integración, contrato y ensayos de migración | QA · PREPROD | 3.7 · 3.8.1 | H4 · H5 | 1 · CP-RT-05.10-01 |
-| RT-05.11 | Cumple | Integración, contrato y ensayos de migración | QA · PREPROD | 3.7 · 3.8.1 | H4 · H5 | 1 · CP-RT-05.11-01 |
-| RT-05.12 | Cumple | Integración, contrato y ensayos de migración | QA · PREPROD | 3.7 · 3.8.1 | H4 · H5 | 1 · CP-RT-05.12-01 |
-| RT-05.13 | Cumple | Integración, contrato y ensayos de migración | QA · PREPROD | 3.7 · 3.8.1 | H4 · H5 | 1 · CP-RT-05.13-01 |
-| RT-05.14 | Cumple | Integración, contrato y ensayos de migración | QA · PREPROD | 3.7 · 3.8.1 | H4 · H5 | 1 · CP-RT-05.14-01 |
-| RT-05.15 | Cumple | Integración, contrato y ensayos de migración | QA · PREPROD | 3.7 · 3.8.1 | H4 · H5 | 1 · CP-RT-05.15-01 |
-| RT-05.16 | Cumple | Integración, contrato y ensayos de migración | QA · PREPROD | 3.7 · 3.8.1 | H4 · H5 | 1 · CP-RT-05.16-01 |
-| RT-05.17 | Cumple | Integración, contrato y ensayos de migración | QA · PREPROD | 3.7 · 3.8.1 | H4 · H5 | 1 · CP-RT-05.17-01 |
-| RT-05.18 | Cumple | Integración, contrato y ensayos de migración | QA · PREPROD | 3.7 · 3.8.1 | H4 · H5 | 1 · CP-RT-05.18-01 |
-| RT-05.19 | Cumple | Integración, contrato y ensayos de migración | QA · PREPROD | 3.7 · 3.8.1 | H4 · H5 | 1 · CP-RT-05.19-01 |
-| RT-05.20 | Cumple | Integración, contrato y ensayos de migración | QA · PREPROD | 3.7 · 3.8.1 | H4 · H5 | 1 · CP-RT-05.20-01 |
-| RT-05.21 | Cumple | Integración, contrato y ensayos de migración | QA · PREPROD | 3.7 · 3.8.1 | H4 · H5 | 1 · CP-RT-05.21-01 |
-| RT-05.22 | Cumple | Integración, contrato y ensayos de migración | QA · PREPROD | 3.7 · 3.8.1 | H4 · H5 | 1 · CP-RT-05.22-01 |
-| RT-05.23 | Cumple | Integración, contrato y ensayos de migración | QA · PREPROD | 3.7 · 3.8.1 | H4 · H5 | 1 · CP-RT-05.23-01 |
+| RNF-12.01 | Cumple | Prueba funcional en marcha blanca | PROD | 4.3 | H12 | 5 |
+| RNF-12.02 | Cumple | Prueba funcional en marcha blanca | PROD | 4.3 | H12 | 3 |
+| RNF-12.03 | Cumple | Prueba funcional en marcha blanca | PROD | 4.3 | H12 | 3 |
+| RNF-13.01 | Cumple | Perfil operacional: sin señal y sin enlace | Terreno · PREPROD | 3.8.3 · 3.9.2 | H5 · H10 | 5 |
+| RNF-13.02 | Cumple | Inspección del expediente de certificación | — | 3.8.7 · 3.9.6 | H5 · H10 | 5 |
+| RNF-13.03 | Cumple | Prueba funcional en marcha blanca | PROD | 4.2 · 4.3 | H7 · H12 | 3 |
+| RNF-13.04 | Cumple | Prueba funcional en marcha blanca | PROD | 4.2 · 4.3 | H7 · H12 | 3 |
+| RNF-13.05 | Cumple | Inspección del expediente de certificación | — | 3.8.7 · 3.9.6 | H5 · H10 | 3 |
+| RNF-13.06 | Cumple | Prueba funcional en marcha blanca | PROD | 4.2 · 4.3 | H7 · H12 | 3 |
+| RNF-13.07 | Cumple | Recuperación ante desastres con conmutación real | DR | 3.8.5 · 3.9.4 | H5 · H10 | 3 |
+| RNF-13.08 | Cumple | Inspección del expediente de certificación | — | 3.8.7 · 3.9.6 | H5 · H10 | 3 |
+| RNF-13.09 | Cumple | Inspección del expediente de certificación | — | 3.8.7 · 3.9.6 | H5 · H10 | 3 |
+| RNF-14.01 | Cumple | Carga a 1,5× el peak y estrés | PREPROD | 3.8.4 · 3.9.3 | H5 · H10 | 5 |
+| RNF-14.02 | Cumple | Revisión de configuración, SAST/DAST y pentest | QA · PREPROD | 3.8.6 · 3.9.5 | H5 · H10 | 5 |
+| RNF-14.03 | Cumple | Prueba funcional en marcha blanca | PROD | 4.2 · 4.3 | H7 · H12 | 3 |
+| RNF-14.04 | Cumple | Revisión de configuración, SAST/DAST y pentest | QA · PREPROD | 3.8.6 · 3.9.5 | H5 · H10 | 3 |
+| RNF-14.05 | Cumple | Carga a 1,5× el peak y estrés | PREPROD | 3.8.4 · 3.9.3 | H5 · H10 | 3 |
+| RNF-14.06 | Cumple | Inspección del expediente de certificación | — | 3.8.7 · 3.9.6 | H5 · H10 | 3 |
+| RNF-14.07 | Cumple | SAST en G2 y DAST en G4 | QA | 1.5.2 · 3.8.6 | H4 · H5 | 3 |
+| RNF-14.08 | Cumple | Prueba funcional en marcha blanca | PROD | 4.2 · 4.3 | H7 · H12 | 3 |
+| RNF-14.09 | Cumple | Prueba funcional en marcha blanca | PROD | 4.2 · 4.3 | H7 · H12 | 3 |
+| RNF-14.10 | Cumple | Prueba funcional en marcha blanca | PROD | 4.2 · 4.3 | H7 · H12 | 3 |
+| RNF-14.11 | Cumple | Revisión de configuración, SAST/DAST y pentest | QA · PREPROD | 3.8.6 | H5 | 5 |
+| RNF-14.12 | Cumple | Revisión de configuración, SAST/DAST y pentest | QA · PREPROD | 3.8.6 | H5 | 3 |
+| RNF-15.01 | Cumple | Revisión de configuración, SAST/DAST y pentest | QA · PREPROD | 3.8.6 · 3.9.5 | H5 · H10 | 5 |
+| RNF-15.02 | Cumple | Revisión de configuración, SAST/DAST y pentest | QA · PREPROD | 3.8.6 · 3.9.5 | H5 · H10 | 5 |
+| RNF-15.03 | Cumple | Restauración de muestra y política de retención | DR | 3.8.5 · 3.9.4 | H5 · H10 | 3 |
+| RNF-16.01 | Cumple | Carga a 1,5× el peak y estrés | PREPROD | 3.8.4 · 3.9.3 | H5 · H10 | 3 |
+| RNF-16.02 | Cumple | Inspección del expediente de certificación | — | 3.8.7 · 3.9.6 | H5 · H10 | 3 |
+| RNF-16.03 | Cumple | Revisión de configuración, SAST/DAST y pentest | QA · PREPROD | 3.8.6 · 3.9.5 | H5 · H10 | 5 |
+| RNF-17.01 | Cumple | Restauración de muestra y política de retención | DR | 3.8.5 · 3.9.4 | H5 · H10 | 3 |
+| RNF-17.02 | Cumple | Revisión de configuración, SAST/DAST y pentest | QA · PREPROD | 3.8.6 · 3.9.5 | H5 · H10 | 3 |
+| RNF-17.03 | Cumple | Prueba funcional en marcha blanca | PROD | 4.2 · 4.3 | H7 · H12 | 3 |
+| RNF-19.01 | Cumple | Inspección del expediente de certificación | — | 3.8.7 · 3.9.6 | H5 · H10 | 3 |
+| RNF-19.02 | Cumple | Prueba funcional en marcha blanca | PROD | 4.2 · 4.3 | H7 · H12 | 3 |
+| RNF-19.03 | Cumple | Inspección del expediente de certificación | — | 3.8.7 · 3.9.6 | H5 · H10 | 3 |
+| RNF-19.04 | Cumple | Carga a 1,5× el peak y estrés | PREPROD | 3.8.4 · 3.9.3 | H5 · H10 | 3 |
+| RNF-20.01 | Cumple | Recuperación ante desastres con conmutación real | DR | 3.8.5 · 3.9.4 | H5 · H10 | 5 |
+| RNF-20.02 | Cumple | Inspección del expediente de certificación | — | 3.8.7 · 3.9.6 | H5 · H10 | 5 |
+| RNF-20.03 | Cumple | Inspección del expediente de certificación | — | 3.8.7 · 3.9.6 | H5 · H10 | 5 |
+| RNF-20.04 | Cumple | Carga a 1,5× el peak y estrés | PREPROD | 3.8.4 · 3.9.3 | H5 · H10 | 3 |
+| RNF-20.05 | Cumple | Inspección del expediente de certificación | — | 3.8.7 · 3.9.6 | H5 · H10 | 3 |
+| RNF-20.06 | Cumple | Inspección del expediente de certificación | — | 3.8.7 · 3.9.6 | H5 · H10 | 5 |
+| RNF-20.07 | Cumple | Recuperación ante desastres con conmutación real | DR | 3.8.5 · 3.9.4 | H5 · H10 | 5 |
+| RNF-21.01 | Cumple | Inspección del expediente de certificación | — | 3.8.7 · 3.9.6 | H5 · H10 | 5 |
+| RNF-21.02 | Cumple | Medición mensual de niveles de servicio | PROD | Cuentas 8.1 y 8.2 | Mensual | 3 |
+| RNF-21.03 | Cumple | Carga a 1,5× el peak y estrés | PREPROD | 3.8.4 · 3.9.3 | H5 · H10 | 3 |
+| RNF-21.04 | Cumple | Prueba funcional en marcha blanca | PROD | 4.2 · 4.3 | H7 · H12 | 3 |
+| RNF-21.05 | Cumple | Inspección del expediente de certificación | — | 3.8.7 · 3.9.6 | H5 · H10 | 3 |
+| RNF-21.06 | Cumple | Prueba funcional en marcha blanca | PROD | 4.2 · 4.3 | H7 · H12 | 3 |
+| RNF-21.07 | Cumple | Medición mensual de niveles de servicio | PROD | Cuentas 8.1 y 8.2 | Mensual | 3 |
+| RNF-21.08 | Cumple | Inspección del expediente de certificación | — | 3.8.7 · 3.9.6 | H5 · H10 | 3 |
+| RNF-21.09 | Cumple | Inspección del expediente de certificación | — | 3.8.7 · 3.9.6 | H5 · H10 | 3 |
+| RNF-22.01 | Cumple | Inspección del expediente de certificación | — | 3.8.7 · 3.9.6 | H5 · H10 | 3 |
+| RNF-22.02 | Cumple | Recuperación ante desastres con conmutación real | DR | 3.8.5 · 3.9.4 | H5 · H10 | 3 |
+| RNF-22.03 | Cumple | Prueba funcional en marcha blanca | PROD | 4.2 · 4.3 | H7 · H12 | 3 |
+| RNF-22.04 | Cumple | Prueba funcional en marcha blanca | PROD | 4.2 · 4.3 | H7 · H12 | 3 |
+| RNF-22.05 | Cumple | Prueba funcional en marcha blanca | PROD | 4.2 · 4.3 | H7 · H12 | 3 |
+| RNF-22.06 | Cumple | Prueba funcional en marcha blanca | PROD | 4.2 · 4.3 | H7 · H12 | 3 |
+| RNF-23.01 | Cumple | Inspección del expediente de certificación | — | 3.8.7 · 3.9.6 | H5 · H10 | 3 |
+| RNF-23.02 | Cumple | Inspección del expediente de certificación | — | 3.8.7 · 3.9.6 | H5 · H10 | 3 |
+| RNF-23.03 | Cumple | Inspección del expediente de certificación | — | 3.8.7 · 3.9.6 | H5 · H10 | 3 |
+| RNF-23.04 | Cumple | Inspección del expediente de certificación | — | 3.8.7 · 3.9.6 | H5 · H10 | 3 |
+| RT-02.01 | Cumple | Revisión de arquitectura y prueba de integración | QA | 2.1 · 3.8.1 | H2 · H4 | 1 |
+| RT-02.02 | Cumple | Revisión de arquitectura y prueba de integración | QA | 2.1 · 3.8.1 | H2 · H4 | 1 |
+| RT-02.03 | Cumple | Revisión de arquitectura y prueba de integración | QA | 2.1 · 3.8.1 | H2 · H4 | 1 |
+| RT-02.04 | Cumple | Revisión de arquitectura y prueba de integración | QA | 2.1 · 3.8.1 | H2 · H4 | 1 |
+| RT-02.05 | Cumple | Revisión de arquitectura y prueba de integración | QA | 2.1 · 3.8.1 | H2 · H4 | 1 |
+| RT-02.06 | Cumple | Revisión de arquitectura y prueba de integración | QA | 2.1 · 3.8.1 | H2 · H4 | 1 |
+| RT-02.07 | Cumple | Revisión de arquitectura y prueba de integración | QA | 2.1 · 3.8.1 | H2 · H4 | 1 |
+| RT-02.08 | Cumple | Revisión de arquitectura y prueba de integración | QA | 2.1 · 3.8.1 | H2 · H4 | 1 |
+| RT-02.09 | Cumple | Revisión de arquitectura y prueba de integración | QA | 2.1 · 3.8.1 | H2 · H4 | 1 |
+| RT-02.10 | Cumple | Revisión de arquitectura y prueba de integración | QA | 2.1 · 3.8.1 | H2 · H4 | 1 |
+| RT-02.11 | Cumple | Revisión de arquitectura y prueba de integración | QA | 2.1 · 3.8.1 | H2 · H4 | 1 |
+| RT-02.12 | Cumple | Revisión de arquitectura y prueba de integración | QA | 2.1 · 3.8.1 | H2 · H4 | 1 |
+| RT-02.13 | Cumple | Revisión de arquitectura y prueba de integración | QA | 2.1 · 3.8.1 | H2 · H4 | 1 |
+| RT-02.14 | Cumple | Revisión de arquitectura y prueba de integración | QA | 2.1 · 3.8.1 | H2 · H4 | 1 |
+| RT-03.01 | Cumple | Corte de enlace y resiliencia del modelo híbrido | PREPROD | 3.8.3 · 3.8.4 | H5 | 1 |
+| RT-03.02 | Cumple | Corte de enlace y resiliencia del modelo híbrido | PREPROD | 3.8.3 · 3.8.4 | H5 | 1 |
+| RT-03.03 | Cumple | Corte de enlace y resiliencia del modelo híbrido | PREPROD | 3.8.3 · 3.8.4 | H5 | 1 |
+| RT-03.04 | Cumple | Corte de enlace y resiliencia del modelo híbrido | PREPROD | 3.8.3 · 3.8.4 | H5 | 1 |
+| RT-03.05 | Cumple | Corte de enlace y resiliencia del modelo híbrido | PREPROD | 3.8.3 · 3.8.4 | H5 | 1 |
+| RT-03.06 | Cumple | Corte de enlace y resiliencia del modelo híbrido | PREPROD | 3.8.3 · 3.8.4 | H5 | 1 |
+| RT-03.07 | Cumple | Corte de enlace y resiliencia del modelo híbrido | PREPROD | 3.8.3 · 3.8.4 | H5 | 1 |
+| RT-03.08 | Cumple | Corte de enlace y resiliencia del modelo híbrido | PREPROD | 3.8.3 · 3.8.4 | H5 | 1 |
+| RT-03.09 | Cumple | Corte de enlace y resiliencia del modelo híbrido | PREPROD | 3.8.3 · 3.8.4 | H5 | 1 |
+| RT-03.10 | Cumple | Corte de enlace y resiliencia del modelo híbrido | PREPROD | 3.8.3 · 3.8.4 | H5 | 1 |
+| RT-03.11 | Cumple | Corte de enlace y resiliencia del modelo híbrido | PREPROD | 3.8.3 · 3.8.4 | H5 | 1 |
+| RT-03.12 | Cumple | Corte de enlace y resiliencia del modelo híbrido | PREPROD | 3.8.3 · 3.8.4 | H5 | 1 |
+| RT-03.13 | Cumple | Corte de enlace y resiliencia del modelo híbrido | PREPROD | 3.8.3 · 3.8.4 | H5 | 1 |
+| RT-03.14 | Cumple | Corte de enlace y resiliencia del modelo híbrido | PREPROD | 3.8.3 · 3.8.4 | H5 | 1 |
+| RT-03.15 | Cumple | Corte de enlace y resiliencia del modelo híbrido | PREPROD | 3.8.3 · 3.8.4 | H5 | 1 |
+| RT-03.16 | Cumple | Corte de enlace y resiliencia del modelo híbrido | PREPROD | 3.8.3 · 3.8.4 | H5 | 1 |
+| RT-03.17 | Cumple | Corte de enlace y resiliencia del modelo híbrido | PREPROD | 3.8.3 · 3.8.4 | H5 | 1 |
+| RT-03.18 | Cumple | Corte de enlace y resiliencia del modelo híbrido | PREPROD | 3.8.3 · 3.8.4 | H5 | 1 |
+| RT-03.19 | Cumple | Corte de enlace y resiliencia del modelo híbrido | PREPROD | 3.8.3 · 3.8.4 | H5 | 1 |
+| RT-03.20 | Cumple | Corte de enlace y resiliencia del modelo híbrido | PREPROD | 3.8.3 · 3.8.4 | H5 | 1 |
+| RT-03.21 | Cumple | Corte de enlace y resiliencia del modelo híbrido | PREPROD | 3.8.3 · 3.8.4 | H5 | 1 |
+| RT-03.22 | Cumple | Corte de enlace y resiliencia del modelo híbrido | PREPROD | 3.8.3 · 3.8.4 | H5 | 1 |
+| RT-03.23 | Cumple | Corte de enlace y resiliencia del modelo híbrido | PREPROD | 3.8.3 · 3.8.4 | H5 | 1 |
+| RT-03.24 | Cumple | Corte de enlace y resiliencia del modelo híbrido | PREPROD | 3.8.3 · 3.8.4 | H5 | 1 |
+| RT-04.01 | Cumple | Puertas G1–G5 del pipeline | DEV · QA | 1.5.2 | H3 · H4 | 1 |
+| RT-04.02 | Cumple | Puertas G1–G5 del pipeline | DEV · QA | 1.5.2 | H3 · H4 | 1 |
+| RT-04.03 | Cumple | Puertas G1–G5 del pipeline | DEV · QA | 1.5.2 | H3 · H4 | 1 |
+| RT-04.04 | Cumple | Puertas G1–G5 del pipeline | DEV · QA | 1.5.2 | H3 · H4 | 1 |
+| RT-04.05 | Cumple | Puertas G1–G5 del pipeline | DEV · QA | 1.5.2 | H3 · H4 | 1 |
+| RT-04.06 | Cumple | Puertas G1–G5 del pipeline | DEV · QA | 1.5.2 | H3 · H4 | 1 |
+| RT-04.07 | Cumple | Puertas G1–G5 del pipeline | DEV · QA | 1.5.2 | H3 · H4 | 1 |
+| RT-04.08 | Cumple | Puertas G1–G5 del pipeline | DEV · QA | 1.5.2 | H3 · H4 | 1 |
+| RT-04.09 | Cumple | Puertas G1–G5 del pipeline | DEV · QA | 1.5.2 | H3 · H4 | 1 |
+| RT-04.10 | Cumple | Puertas G1–G5 del pipeline | DEV · QA | 1.5.2 | H3 · H4 | 1 |
+| RT-04.11 | Cumple | Puertas G1–G5 del pipeline | DEV · QA | 1.5.2 | H3 · H4 | 1 |
+| RT-04.12 | Cumple | Puertas G1–G5 del pipeline | DEV · QA | 1.5.2 | H3 · H4 | 1 |
+| RT-04.13 | Cumple | Puertas G1–G5 del pipeline | DEV · QA | 1.5.2 | H3 · H4 | 1 |
+| RT-04.14 | Cumple | Puertas G1–G5 del pipeline | DEV · QA | 1.5.2 | H3 · H4 | 1 |
+| RT-05.01 | Cumple | Integración, contrato y ensayos de migración | QA · PREPROD | 3.7 · 3.8.1 | H4 · H5 | 1 |
+| RT-05.02 | Cumple | Integración, contrato y ensayos de migración | QA · PREPROD | 3.7 · 3.8.1 | H4 · H5 | 1 |
+| RT-05.03 | Cumple | Integración, contrato y ensayos de migración | QA · PREPROD | 3.7 · 3.8.1 | H4 · H5 | 1 |
+| RT-05.04 | Cumple | Integración, contrato y ensayos de migración | QA · PREPROD | 3.7 · 3.8.1 | H4 · H5 | 1 |
+| RT-05.05 | Cumple | Integración, contrato y ensayos de migración | QA · PREPROD | 3.7 · 3.8.1 | H4 · H5 | 1 |
+| RT-05.06 | Cumple | Integración, contrato y ensayos de migración | QA · PREPROD | 3.7 · 3.8.1 | H4 · H5 | 1 |
+| RT-05.07 | Cumple | Integración, contrato y ensayos de migración | QA · PREPROD | 3.7 · 3.8.1 | H4 · H5 | 1 |
+| RT-05.08 | Cumple | Integración, contrato y ensayos de migración | QA · PREPROD | 3.7 · 3.8.1 | H4 · H5 | 1 |
+| RT-05.09 | Cumple | Integración, contrato y ensayos de migración | QA · PREPROD | 3.7 · 3.8.1 | H4 · H5 | 1 |
+| RT-05.10 | Cumple parcialmente | Integración, contrato y ensayos de migración | QA · PREPROD | 3.7 · 3.8.1 | H4 · H5 | 1 |
+| RT-05.11 | Cumple | Integración, contrato y ensayos de migración | QA · PREPROD | 3.7 · 3.8.1 | H4 · H5 | 1 |
+| RT-05.12 | Cumple | Integración, contrato y ensayos de migración | QA · PREPROD | 3.7 · 3.8.1 | H4 · H5 | 1 |
+| RT-05.13 | Cumple | Integración, contrato y ensayos de migración | QA · PREPROD | 3.7 · 3.8.1 | H4 · H5 | 1 |
+| RT-05.14 | Cumple | Integración, contrato y ensayos de migración | QA · PREPROD | 3.7 · 3.8.1 | H4 · H5 | 1 |
+| RT-05.15 | Cumple | Integración, contrato y ensayos de migración | QA · PREPROD | 3.7 · 3.8.1 | H4 · H5 | 1 |
+| RT-05.16 | Cumple | Integración, contrato y ensayos de migración | QA · PREPROD | 3.7 · 3.8.1 | H4 · H5 | 1 |
+| RT-05.17 | Cumple | Integración, contrato y ensayos de migración | QA · PREPROD | 3.7 · 3.8.1 | H4 · H5 | 1 |
+| RT-05.18 | Cumple | Integración, contrato y ensayos de migración | QA · PREPROD | 3.7 · 3.8.1 | H4 · H5 | 1 |
+| RT-05.19 | Cumple | Integración, contrato y ensayos de migración | QA · PREPROD | 3.7 · 3.8.1 | H4 · H5 | 1 |
+| RT-05.20 | Cumple | Integración, contrato y ensayos de migración | QA · PREPROD | 3.7 · 3.8.1 | H4 · H5 | 1 |
+| RT-05.21 | Cumple | Integración, contrato y ensayos de migración | QA · PREPROD | 3.7 · 3.8.1 | H4 · H5 | 1 |
+| RT-05.22 | Cumple | Integración, contrato y ensayos de migración | QA · PREPROD | 3.7 · 3.8.1 | H4 · H5 | 1 |
+| RT-05.23 | Cumple | Integración, contrato y ensayos de migración | QA · PREPROD | 3.7 · 3.8.1 | H4 · H5 | 1 |
 | RT-05.24 | No cumple | Sin prueba: no ofertado | — | — | — | 0 |
 | RT-05.25 | Cumple | Integración, contrato y ensayos de migración | QA · PREPROD | 3.7 · 3.8.1 | H4 · H5 | 1 · CP-RT-05.25-01 |
 | RT-05.26 | Cumple | Integración, contrato y ensayos de migración | QA · PREPROD | 3.7 · 3.8.1 | H4 · H5 | 1 · CP-RT-05.26-01 |
@@ -736,65 +736,65 @@ La Tabla 9.C.2 presenta la matriz completa, en el orden del Formulario T-12.
 | RT-18.08 | Cumple | Sistema y aceptación de usuario — Los modelos predictivos declararán sus variables de entrada, su métrica de desempeño, su línea base y su plan de reentrenamiento y de detección de deriva. | QA · PREPROD | 3.8.1 · 3.8.2 | H4 · H5 | 1 · CP-RT-18.08-01 |
 | RT-18.09 | Cumple | Sistema y aceptación de usuario — La responsabilidad por los resultados de los componentes de inteligencia artificial recae íntegramente en el ADJUDICATARIO, conforme al Artículo 86° de las Bases Administrativas. | QA · PREPROD | 3.8.1 · 3.8.2 | H4 · H5 | 1 · CP-RT-18.09-01 |
 | RT-18.10 | No cumple | Sin prueba: no ofertado | — | — | — | 0 |
-| RT-19.01 | Cumple | Auditoría de gobierno: actas, informe y tablero | — | Cuenta 1 | H1 · mensual | 1 · CP-RT-19.01-01 |
-| RT-19.02 | Cumple | Auditoría de gobierno: actas, informe y tablero | — | Cuenta 1 | H1 · mensual | 1 · CP-RT-19.02-01 |
-| RT-19.03 | Cumple | Auditoría de gobierno: actas, informe y tablero | — | Cuenta 1 | H1 · mensual | 1 · CP-RT-19.03-01 |
-| RT-19.04 | Cumple | Auditoría de gobierno: actas, informe y tablero | — | Cuenta 1 | H1 · mensual | 1 · CP-RT-19.04-01 |
-| RT-19.05 | Cumple | Auditoría de gobierno: actas, informe y tablero | — | Cuenta 1 | H1 · mensual | 1 · CP-RT-19.05-01 |
-| RT-19.06 | Cumple | Auditoría de gobierno: actas, informe y tablero | — | Cuenta 1 | H1 · mensual | 1 · CP-RT-19.06-01 |
-| RT-19.07 | Cumple | Auditoría de gobierno: actas, informe y tablero | — | Cuenta 1 | H1 · mensual | 1 · CP-RT-19.07-01 |
-| RT-19.08 | Cumple | Auditoría de gobierno: actas, informe y tablero | — | Cuenta 1 | H1 · mensual | 1 · CP-RT-19.08-01 |
-| RT-19.09 | Cumple | Auditoría de gobierno: actas, informe y tablero | — | Cuenta 1 | H1 · mensual | 1 · CP-RT-19.09-01 |
-| RT-19.10 | Cumple | Auditoría de gobierno: actas, informe y tablero | — | Cuenta 1 | H1 · mensual | 1 · CP-RT-19.10-01 |
-| RT-20.01 | Cumple | Aceptación y cierre de marcha blanca | PROD | 4.2 · 4.3 | H7 · H12 | 1 · CP-RT-20.01-01 |
-| RT-20.02 | Cumple | Aceptación y cierre de marcha blanca | PROD | 4.2 · 4.3 | H7 · H12 | 1 · CP-RT-20.02-01 |
-| RT-20.03 | Cumple | Aceptación y cierre de marcha blanca | PROD | 4.2 · 4.3 | H7 · H12 | 1 · CP-RT-20.03-01 |
-| RT-20.04 | Cumple | Aceptación y cierre de marcha blanca | PROD | 4.2 · 4.3 | H7 · H12 | 1 · CP-RT-20.04-01 |
-| RT-20.05 | Cumple | Aceptación y cierre de marcha blanca | PROD | 4.2 · 4.3 | H7 · H12 | 1 · CP-RT-20.05-01 |
-| RT-20.06 | Cumple | Aceptación y cierre de marcha blanca | PROD | 4.2 · 4.3 | H7 · H12 | 1 · CP-RT-20.06-01 |
-| RT-20.07 | Cumple | Aceptación y cierre de marcha blanca | PROD | 4.2 · 4.3 | H7 · H12 | 1 · CP-RT-20.07-01 |
-| RT-20.08 | Cumple | Aceptación y cierre de marcha blanca | PROD | 4.2 · 4.3 | H7 · H12 | 1 · CP-RT-20.08-01 |
-| RT-21.01 | Cumple | Medición mensual de niveles de servicio | PROD | Cuentas 8.1 y 8.2 | Mensual | 1 · CP-RT-21.01-01 |
-| RT-21.02 | No cumple | Sin prueba: no ofertado | — | — | — | 0 |
-| RT-21.03 | Cumple parcialmente | Medición mensual de niveles de servicio | PROD | Cuentas 8.1 y 8.2 | Mensual | 1 · CP-RT-21.03-01 |
-| RT-21.04 | Cumple | Medición mensual de niveles de servicio | PROD | Cuentas 8.1 y 8.2 | Mensual | 1 · CP-RT-21.04-01 |
-| RT-21.05 | Cumple | Medición mensual de niveles de servicio | PROD | Cuentas 8.1 y 8.2 | Mensual | 1 · CP-RT-21.05-01 |
-| RT-21.06 | Cumple | Medición mensual de niveles de servicio | PROD | Cuentas 8.1 y 8.2 | Mensual | 1 · CP-RT-21.06-01 |
-| RT-21.07 | Cumple | Medición mensual de niveles de servicio | PROD | Cuentas 8.1 y 8.2 | Mensual | 1 · CP-RT-21.07-01 |
-| RT-21.08 | Cumple | Revisión mensual de la atención por nivel y de la base de conocimiento | PROD | Cuentas 8.1 y 8.5 | Mensual | 1 · CP-RT-21.08-01 |
-| RT-21.09 | Cumple | Medición mensual de niveles de servicio | PROD | Cuentas 8.1 y 8.2 | Mensual | 1 · CP-RT-21.09-01 |
-| RT-21.10 | Cumple | Medición mensual de niveles de servicio | PROD | Cuentas 8.1 y 8.2 | Mensual | 1 · CP-RT-21.10-01 |
-| RT-21.11 | Cumple | Medición mensual de niveles de servicio | PROD | Cuentas 8.1 y 8.2 | Mensual | 1 · CP-RT-21.11-01 |
+| RT-19.01 | Cumple | Auditoría de gobierno: actas, informe y tablero | — | Cuenta 1 | H1 · mensual | 1 |
+| RT-19.02 | Cumple | Auditoría de gobierno: actas, informe y tablero | — | Cuenta 1 | H1 · mensual | 1 |
+| RT-19.03 | Cumple | Auditoría de gobierno: actas, informe y tablero | — | Cuenta 1 | H1 · mensual | 1 |
+| RT-19.04 | Cumple | Auditoría de gobierno: actas, informe y tablero | — | Cuenta 1 | H1 · mensual | 1 |
+| RT-19.05 | Cumple | Auditoría de gobierno: actas, informe y tablero | — | Cuenta 1 | H1 · mensual | 1 |
+| RT-19.06 | Cumple | Auditoría de gobierno: actas, informe y tablero | — | Cuenta 1 | H1 · mensual | 1 |
+| RT-19.07 | Cumple | Auditoría de gobierno: actas, informe y tablero | — | Cuenta 1 | H1 · mensual | 1 |
+| RT-19.08 | Cumple | Auditoría de gobierno: actas, informe y tablero | — | Cuenta 1 | H1 · mensual | 1 |
+| RT-19.09 | Cumple | Auditoría de gobierno: actas, informe y tablero | — | Cuenta 1 | H1 · mensual | 1 |
+| RT-19.10 | Cumple | Auditoría de gobierno: actas, informe y tablero | — | Cuenta 1 | H1 · mensual | 1 |
+| RT-20.01 | Cumple | Aceptación y cierre de marcha blanca | PROD | 4.2 · 4.3 | H7 · H12 | 1 |
+| RT-20.02 | Cumple | Aceptación y cierre de marcha blanca | PROD | 4.2 · 4.3 | H7 · H12 | 1 |
+| RT-20.03 | Cumple | Aceptación y cierre de marcha blanca | PROD | 4.2 · 4.3 | H7 · H12 | 1 |
+| RT-20.04 | Cumple | Aceptación y cierre de marcha blanca | PROD | 4.2 · 4.3 | H7 · H12 | 1 |
+| RT-20.05 | Cumple | Aceptación y cierre de marcha blanca | PROD | 4.2 · 4.3 | H7 · H12 | 1 |
+| RT-20.06 | Cumple | Aceptación y cierre de marcha blanca | PROD | 4.2 · 4.3 | H7 · H12 | 1 |
+| RT-20.07 | Cumple | Aceptación y cierre de marcha blanca | PROD | 4.2 · 4.3 | H7 · H12 | 1 |
+| RT-20.08 | Cumple | Aceptación y cierre de marcha blanca | PROD | 4.2 · 4.3 | H7 · H12 | 1 |
+| RT-21.01 | Cumple | Medición mensual de niveles de servicio | PROD | Cuentas 8.1 y 8.2 | Mensual | 1 |
+| RT-21.02 | Cumple | Medición mensual de niveles de servicio | PROD | Cuentas 8.1 y 8.2 | Mensual | 1 |
+| RT-21.03 | Cumple parcialmente | Medición mensual de niveles de servicio | PROD | Cuentas 8.1 y 8.2 | Mensual | 1 |
+| RT-21.04 | Cumple | Medición mensual de niveles de servicio | PROD | Cuentas 8.1 y 8.2 | Mensual | 1 |
+| RT-21.05 | Cumple | Medición mensual de niveles de servicio | PROD | Cuentas 8.1 y 8.2 | Mensual | 1 |
+| RT-21.06 | Cumple | Medición mensual de niveles de servicio | PROD | Cuentas 8.1 y 8.2 | Mensual | 1 |
+| RT-21.07 | Cumple | Medición mensual de niveles de servicio | PROD | Cuentas 8.1 y 8.2 | Mensual | 1 |
+| RT-21.08 | Cumple | Revisión mensual de la atención por nivel y de la base de conocimiento | PROD | Cuentas 8.1 y 8.5 | Mensual | 1 |
+| RT-21.09 | Cumple | Medición mensual de niveles de servicio | PROD | Cuentas 8.1 y 8.2 | Mensual | 1 |
+| RT-21.10 | Cumple | Medición mensual de niveles de servicio | PROD | Cuentas 8.1 y 8.2 | Mensual | 1 |
+| RT-21.11 | Cumple | Medición mensual de niveles de servicio | PROD | Cuentas 8.1 y 8.2 | Mensual | 1 |
 | RT-21.12 | No cumple | Sin prueba: no ofertado | — | — | — | 0 |
-| RT-21.13 | Cumple | Inspección del tablero del CLIENTE y de sus permisos | PROD | Cuenta 8.1 | Mensual | 1 · CP-RT-21.13-01 |
-| RT-21.14 | Cumple | Medición mensual de niveles de servicio | PROD | Cuentas 8.1 y 8.2 | Mensual | 1 · CP-RT-21.14-01 |
-| RT-21.15 | Cumple | Medición mensual de niveles de servicio | PROD | Cuentas 8.1 y 8.2 | Mensual | 1 · CP-RT-21.15-01 |
-| RT-21.16 | No cumple | Sin prueba: no ofertado | — | — | — | 0 |
-| RT-21.17 | Cumple | Medición mensual de niveles de servicio | PROD | Cuentas 8.1 y 8.2 | Mensual | 1 · CP-RT-21.17-01 |
-| RT-21.18 | Cumple | Medición mensual de niveles de servicio | PROD | Cuentas 8.1 y 8.2 | Mensual | 1 · CP-RT-21.18-01 |
-| RT-21.19 | Cumple parcialmente | Medición mensual de niveles de servicio | PROD | Cuentas 8.1 y 8.2 | Mensual | 1 · CP-RT-21.19-01 |
-| RT-21.20 | Cumple | Medición mensual de niveles de servicio | PROD | Cuentas 8.1 y 8.2 | Mensual | 1 · CP-RT-21.20-01 |
-| RT-21.21 | Cumple | Medición mensual de niveles de servicio | PROD | Cuentas 8.1 y 8.2 | Mensual | 1 · CP-RT-21.21-01 |
-| RT-21.22 | Cumple | Medición mensual de niveles de servicio | PROD | Cuentas 8.1 y 8.2 | Mensual | 1 · CP-RT-21.22-01 |
-| RT-22.01 | Cumple | Certificación de usuarios | PREPROD · PROD | 7.3.1 · 7.3.2 | H6 · H11 | 1 · CP-RT-22.01-01 |
-| RT-22.02 | Cumple | Certificación de usuarios | PREPROD · PROD | 7.3.1 · 7.3.2 | H6 · H11 | 1 · CP-RT-22.02-01 |
-| RT-22.03 | Cumple | Certificación de usuarios | PREPROD · PROD | 7.3.1 · 7.3.2 | H6 · H11 | 1 · CP-RT-22.03-01 |
-| RT-22.04 | Cumple | Certificación de usuarios | PREPROD · PROD | 7.3.1 · 7.3.2 | H6 · H11 | 1 · CP-RT-22.04-01 |
-| RT-22.05 | Cumple | Certificación de usuarios | PREPROD · PROD | 7.3.1 · 7.3.2 | H6 · H11 | 1 · CP-RT-22.05-01 |
-| RT-22.06 | Cumple | Certificación de usuarios | PREPROD · PROD | 7.3.1 · 7.3.2 | H6 · H11 | 1 · CP-RT-22.06-01 |
-| RT-22.07 | Cumple | Certificación de usuarios | PREPROD · PROD | 7.3.1 · 7.3.2 | H6 · H11 | 1 · CP-RT-22.07-01 |
-| RT-22.08 | Cumple | Certificación de usuarios | PREPROD · PROD | 7.3.1 · 7.3.2 | H6 · H11 | 1 · CP-RT-22.08-01 |
-| RT-22.09 | Cumple | Certificación de usuarios | PREPROD · PROD | 7.3.1 · 7.3.2 | H6 · H11 | 1 · CP-RT-22.09-01 |
-| RT-23.01 | Cumple | Inspección del entregable de la oferta | Documento de la oferta | Sin paquete de la EDT | Presentación de la oferta | 1 · CP-RT-23.01-01 |
-| RT-23.02 | Cumple | Inspección del entregable de la oferta | Documento de la oferta | Sin paquete de la EDT | Presentación de la oferta | 1 · CP-RT-23.02-01 |
-| RT-23.03 | Cumple parcialmente | Inspección del entregable de la oferta | Documento de la oferta | Sin paquete de la EDT | Presentación de la oferta | 1 · CP-RT-23.03-01 |
-| RT-23.04 | Cumple | Inspección del entregable de la oferta | Documento de la oferta | Sin paquete de la EDT | Presentación de la oferta | 1 · CP-RT-23.04-01 |
-| RT-23.05 | Cumple | Inspección del entregable de la oferta | Documento de la oferta | Sin paquete de la EDT | Presentación de la oferta | 1 · CP-RT-23.05-01 |
-| RT-23.06 | Cumple | Inspección del entregable de la oferta | Documento de la oferta | Sin paquete de la EDT | Presentación de la oferta | 1 · CP-RT-23.06-01 |
-| RT-23.07 | Cumple | Inspección del entregable de la oferta | Documento de la oferta | Sin paquete de la EDT | Presentación de la oferta | 1 · CP-RT-23.07-01 |
-| RT-23.08 | Cumple | Inspección del entregable de la oferta | Documento de la oferta | Sin paquete de la EDT | Presentación de la oferta | 1 · CP-RT-23.08-01 |
-| RT-23.09 | Cumple | Inspección del entregable de la oferta | Documento de la oferta | Sin paquete de la EDT | Presentación de la oferta | 1 · CP-RT-23.09-01 |
-| RT-23.10 | Cumple | Inspección del entregable de la oferta | Documento de la oferta | Sin paquete de la EDT | Presentación de la oferta | 1 · CP-RT-23.10-01 |
+| RT-21.13 | Cumple | Inspección del tablero del CLIENTE y de sus permisos | PROD | Cuenta 8.1 | Mensual | 1 |
+| RT-21.14 | Cumple | Medición mensual de niveles de servicio | PROD | Cuentas 8.1 y 8.2 | Mensual | 1 |
+| RT-21.15 | Cumple | Medición mensual de niveles de servicio | PROD | Cuentas 8.1 y 8.2 | Mensual | 1 |
+| RT-21.16 | Cumple | Medición mensual de niveles de servicio | PROD | Cuentas 8.1 y 8.2 | Mensual | 1 |
+| RT-21.17 | Cumple | Medición mensual de niveles de servicio | PROD | Cuentas 8.1 y 8.2 | Mensual | 1 |
+| RT-21.18 | Cumple | Medición mensual de niveles de servicio | PROD | Cuentas 8.1 y 8.2 | Mensual | 1 |
+| RT-21.19 | Cumple | Medición mensual de niveles de servicio | PROD | Cuentas 8.1 y 8.2 | Mensual | 1 |
+| RT-21.20 | Cumple | Medición mensual de niveles de servicio | PROD | Cuentas 8.1 y 8.2 | Mensual | 1 |
+| RT-21.21 | Cumple | Medición mensual de niveles de servicio | PROD | Cuentas 8.1 y 8.2 | Mensual | 1 |
+| RT-21.22 | Cumple | Medición mensual de niveles de servicio | PROD | Cuentas 8.1 y 8.2 | Mensual | 1 |
+| RT-22.01 | Cumple | Certificación de usuarios | PREPROD · PROD | 7.3.1 · 7.3.2 | H6 · H11 | 1 |
+| RT-22.02 | Cumple | Certificación de usuarios | PREPROD · PROD | 7.3.1 · 7.3.2 | H6 · H11 | 1 |
+| RT-22.03 | Cumple | Certificación de usuarios | PREPROD · PROD | 7.3.1 · 7.3.2 | H6 · H11 | 1 |
+| RT-22.04 | Cumple | Certificación de usuarios | PREPROD · PROD | 7.3.1 · 7.3.2 | H6 · H11 | 1 |
+| RT-22.05 | Cumple | Certificación de usuarios | PREPROD · PROD | 7.3.1 · 7.3.2 | H6 · H11 | 1 |
+| RT-22.06 | Cumple | Certificación de usuarios | PREPROD · PROD | 7.3.1 · 7.3.2 | H6 · H11 | 1 |
+| RT-22.07 | Cumple | Certificación de usuarios | PREPROD · PROD | 7.3.1 · 7.3.2 | H6 · H11 | 1 |
+| RT-22.08 | Cumple | Certificación de usuarios | PREPROD · PROD | 7.3.1 · 7.3.2 | H6 · H11 | 1 |
+| RT-22.09 | Cumple | Certificación de usuarios | PREPROD · PROD | 7.3.1 · 7.3.2 | H6 · H11 | 1 |
+| RT-23.01 | Cumple | Inspección del entregable de la oferta | — | — | Presentación de la oferta | 1 |
+| RT-23.02 | Cumple | Inspección del entregable de la oferta | — | — | Presentación de la oferta | 1 |
+| RT-23.03 | Cumple parcialmente | Inspección del entregable de la oferta | — | — | Presentación de la oferta | 1 |
+| RT-23.04 | Cumple | Inspección del entregable de la oferta | — | — | Presentación de la oferta | 1 |
+| RT-23.05 | Cumple | Inspección del entregable de la oferta | — | — | Presentación de la oferta | 1 |
+| RT-23.06 | Cumple | Inspección del entregable de la oferta | — | — | Presentación de la oferta | 1 |
+| RT-23.07 | Cumple | Inspección del entregable de la oferta | — | — | Presentación de la oferta | 1 |
+| RT-23.08 | Cumple | Inspección del entregable de la oferta | — | — | Presentación de la oferta | 1 |
+| RT-23.09 | Cumple | Inspección del entregable de la oferta | — | — | Presentación de la oferta | 1 |
+| RT-23.10 | Cumple | Inspección del entregable de la oferta | — | — | Presentación de la oferta | 1 |
 | RT-24.01 | No cumple | Sin prueba: no ofertado | — | — | — | 0 |
 | RT-24.02 | No cumple | Sin prueba: no ofertado | — | — | — | 0 |
 | RT-24.03 | No cumple | Sin prueba: no ofertado | — | — | — | 0 |

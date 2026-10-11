@@ -308,32 +308,16 @@ La figura sigue la regla del SD4, Tabla 12: el software se prueba en un ambiente
 
 La carga de la prueba se deriva del dimensionamiento y no se elige. El peak de septiembre del SD4, Tabla 33, es de 14,66 TPS; por 1,5 da 21,99 TPS (RT-09.06; Distribuidora Puelche S.A., 2026b, cap. 9, p. 21). Con el mismo factor, los 775,33 usuarios concurrentes de la cota extrema pasan a 1.163, y los 158 dispositivos de terreno simultáneos pasan a 237. El escalón de 3× (43,98 TPS) verifica el crecimiento de tres veces sin rediseño del RT-09.03. El de 4× busca el punto de quiebre y comprueba que, al superarse la capacidad, la solución encola y avisa en vez de perder transacciones (RT-09.08). La prueba se ejecuta con k6, distribuyendo la carga por lugar de proceso según el perfil horario del SD4. Además de la prueba de septiembre, se reproduce la ventana de despacho de 05:30 a 07:00 a 1,5 × 6,94 TPS = 10,41 TPS, con la emisión de guías concentrada en 90 minutos. Su criterio no es sólo el tiempo de respuesta: no puede haber un minuto de indisponibilidad. La resiliencia usa AWS Fault Injection Service en la nube y desconexiones controladas en el sitio emulado de Preproducción. La prueba de terreno usa Espresso para automatizar los flujos repetibles de la aplicación y personas del CLIENTE en las condiciones físicas que el RT-13.08 exige: cámara de −22 °C con guantes, lluvia, temperatura superior a 34 °C, lectura bajo sol directo, operación a una mano y turno sin señal. Las pruebas moderadas miden por perfil el tiempo, los pasos, la tasa de error y el aprendizaje del RT-13.04.
 
-La automatización es el criterio por defecto, y LafroX se compromete a que al menos el 80 % de los casos esté automatizado en el informe de integración y regresión de cada etapa (paquetes 3.8.1 y 3.9.1). Una prueba es manual sólo si exige el juicio de una persona usuaria, una condición física o un tercero. Con la estimación del Anexo 9.C, el catálogo inicial tiene unos 1.308 casos:
+La automatización es el criterio por defecto. Una prueba es manual sólo si exige el juicio de una persona usuaria, una condición física o un tercero. Con la estimación del Anexo 9.C, el catálogo inicial tiene unos 1.316 casos:
 
-- 849 casos para los 260 requisitos funcionales y no funcionales ofertados del T-12 que se prueban directamente (56 críticos, 161 altos y 43 medios según su prioridad en el SD3), a razón de cinco por requisito crítico, tres por alto y dos por medio. Los nueve absorbidos por otra fila se prueban con ella. Las 271 filas RF y RNF del T-12 se concilian así: 260 con prueba propia, 9 absorbidas y 2 en «No cumple» (RNF-21.02 y RNF-21.07), que no se prueban;
-- 354 casos para los RT en estado «Cumple» o «Cumple parcialmente»;
+- 855 casos para los 262 requisitos funcionales y no funcionales ofertados del T-12 que se prueban directamente (56 críticos, 163 altos y 43 medios según su prioridad en el SD3), a razón de cinco por requisito crítico, tres por alto y dos por medio. Los nueve absorbidos por otra fila se prueban con ella. Las 271 filas RF y RNF del T-12 se concilian así: 262 con prueba propia y 9 absorbidas; ninguna figura en «No cumple»;
+- 356 casos para los RT en estado «Cumple» o «Cumple parcialmente»;
+
+- 855 casos para los 262 requisitos funcionales y no funcionales ofertados del T-12 que se prueban directamente (56 críticos, 163 altos y 43 medios según su prioridad en el SD3), a razón de cinco por requisito crítico, tres por alto y dos por medio. Los nueve absorbidos por otra fila se prueban con ella. Las 271 filas RF y RNF del T-12 se concilian así: 262 con prueba propia y 9 absorbidas; ninguna figura en «No cumple»;
+- 356 casos para los RT en estado «Cumple» o «Cumple parcialmente»;
 - 105 casos de contrato para las 15 integraciones, siete por integración: éxito, dependencia que no responde, respuesta con error, respuesta con lentitud, duplicado, orden y versión. Los tres casos de falla son los que distingue el RT-10.08 (Distribuidora Puelche S.A., 2026b, cap. 10).
 
-El total es 849 + 354 + 105 = 1.308 casos. Con el 80 % automatizado, la regresión automática ejecuta 0,8 × 1.308 ≈ 1.046 casos. Para dimensionar su duración se usan dos supuestos de planificación: 0,5 minutos de ejecución por caso automatizado, como promedio de casos de API, que son rápidos, y de interfaz con Playwright y Espresso, que son más lentos; y 15 minutos por caso manual, que incluyen restituir el juego de datos, ejecutar el caso y registrar el resultado. Con el primero, la regresión tarda 1.046 × 0,5 / 60 ≈ 8,7 horas en un ejecutor y 4,36 horas repartida en dos ejecutores paralelos, y cabe en una ejecución nocturna antes de cada promoción a Preproducción. Con el segundo, los 262 casos manuales requieren 262 × 15 / 60 ≈ 65,5 HH por ciclo, que se planifican con los evaluadores en los meses de certificación. Ambos supuestos se miden en la primera regresión de QA y se reemplazan por el promedio real. Si el promedio automatizado fuera de un minuto, la regresión tardaría 17,4 horas en un ejecutor, y cuatro ejecutores paralelos la devolverían a 4,36 horas sin cambiar el número de casos.
-
-#### Intensidad de la prueba según el riesgo
-
-La prioridad del requisito en el SD3 fija el mínimo de casos: cinco, tres o dos (Anexo 9.C.1). Los riesgos técnicos del registro del SD8 agregan pruebas de otro tipo sobre los componentes que nombran y fijan el hito en que se repiten. La Tabla 9.7 relaciona los riesgos de mayor puntaje con la prueba que los controla.
-
-**Tabla 9.7 — Riesgos técnicos del SD8 y la prueba que los controla. Fuente: elaboración propia a partir del Formulario T-16 y de los Formularios T-13 y T-15.**
-
-| Riesgo (SD8) | Prueba que lo controla | Ambiente | Cuándo se ejecuta y se repite |
-| --- | --- | --- | --- |
-| R8-01 ERP indisponible o guía invalidada | Ensayo de caída del ERP con 96 camiones: preemisión nocturna y conciliación entre carga y guía | PREPROD | Antes del H6; se repite antes del H11 |
-| R8-02 Doble reserva o custodia | Concurrencia, UUID, idempotencia y época de autoridad sobre el mismo stock | QA | Antes del H4; regresión en el H9 |
-| R8-03 CD sin 24 horas de enlace | Corte de enlace de 24 h con procesos completos y reconciliación en Talca y Concepción | PREPROD | Antes del H5; se repite antes del H10 |
-| R8-04 Pérdida o duplicación tras 14 h sin señal | 14 h sin señal, reinicio, UUID y reconciliación | Terreno | Antes del H5 y con cada versión móvil |
-| R8-05 Pérdida del sitio supera el RPO | Conmutación regional real con RPO medido | DR | Por certificación y semestral |
-| R8-06 Carga y cola de reservas exceden la capacidad | Carga a 1,5× el peak, crecimiento y drenaje de la cola | PREPROD | Paquetes 3.8.4 y 3.9.3 |
-| R8-07 Ataque o exposición de datos críticos | Prueba de intrusión por tercero, DAST, SAST y SCA | QA y PREPROD | Antes del H5 y del H10; anual |
-| R8-16 Migración altera saldos o pierde lotes | Dos ensayos y conciliación por SKU, lote y ubicación | PREPROD | Antes del corte y del H6 |
-| R8-23 Frío o sensores sin evidencia íntegra | Autonomía, calibración y asociación entre sensor, lote y tiempo | Terreno y cámara | Antes de la ola 1 y de la ola de reparto |
-| R8-27 Estimación insegura de vida remanente | Validación con Calidad y regla conservadora | QA y PREPROD | Antes del uso, en los meses 11 a 15 |
+El total es 855 + 356 + 105 = 1.316 casos. Si el 80 % se automatiza, a medio minuto por caso, la regresión completa de 0,8 × 1.316 ≈ 1.053 casos tarda 1.053 × 0,5 / 60 ≈ 8,8 horas en un ejecutor. Repartida en dos ejecutores paralelos baja a 4,39 horas y cabe en una ejecución nocturna antes de cada promoción a Preproducción. Los 263 casos restantes requieren 263 × 15 / 60 ≈ 65,8 HH por ciclo, a 15 minutos por caso, que se planifican con los evaluadores en los meses de certificación.
 
 ### 9.2.4 Datos de prueba
 

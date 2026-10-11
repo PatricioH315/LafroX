@@ -103,9 +103,9 @@ La tabla identifica, para cada evento canónico, su productor, sus consumidores,
 | EntregaRegistrada | M6 | M7, M8, M10, ACL | entrega_id | Decisión 16.1 N° 1: entrega cumplida / OTIF |
 | DevolucionRegistrada | M8 | M2, M7, M10 | entrega_id | Decisión 16.1 N° 12: efecto sobre DTE emitido |
 | EnvaseMovido | M8 | M2, M10 | cliente_id | Decisión 16.1 N° 10: 68.000 canastillos, 9.400 pallets, 14% pérdida |
-| ExcursionTermicaDetectada | M9 (borde) | M5 (bloqueo), M10, alertas | shipment_id | Decisión 16.1 N° 4: bloqueo local < 5 s |
+| ExcursionTermicaDetectada | M9 (borde) | M2 (retención), M5 (bloqueo), M10, alertas | shipment_id | Decisión 16.1 N° 4: bloqueo local < 5 s |
 | RendicionCerrada | M7 | M10, ACL→ERP | conductor_id | Control efectivo que circula en ruta |
-| DesviacionDeRutaDetectada | M12 | M10, M9 | ruta_id | Costo de servir; no control de jornada. |
+| DesviacionDeRutaDetectada | M12 | M10, M9 | ruta_id | Costo de servir y alerta al centro de control sobre 3 km de desvío; no control de jornada. |
 
 Fuente: elaboración propia a partir de las Bases Técnicas del caso (cap. 16, pp. 28–29) y de los flujos del apartado 4.1.
 
@@ -385,7 +385,7 @@ Esta síntesis permite contrastar órdenes de magnitud. Los anexos 4-G y 4-H son
 | INT-01 Pedido preventa | 1.400 msg/día | 2.600 | Entregas diarias habituales y peak de septiembre |
 | INT-02 Entrega, POD y cobro | 7.000 msg/día | 13.000 | Cinco operaciones por entrega |
 | INT-03 Eventos bodega a nube | 58.710 msg/día | 109.032 | 260.000 líneas ÷ 22,14 × 5; peak × 1,857 |
-| INT-04 Detalle de cross-docking a la nube | 5.600 msg/día | 10.400 | Cuatro operaciones por entrega |
+| INT-04 Detalle de cross-docking a la nube | 5.600 msg/día, incluidos en INT-03 | 10.400, incluidos en INT-03 | Cuatro operaciones por entrega; subconjunto, no sumando adicional |
 | INT-03/04 Coordinación de reserva | 46.968 msg/día | 87.228 | 260.000 líneas ÷ 22,14 × 4; peak: 21.807 líneas × 4 |
 | INT-05 Temperatura | 10.920 msg/día | 10.920 | 21 × 288 lecturas de cámara + 28 × 174 de termógrafo |
 | INT-06 ERP 2017 | 2.025 msg/día | 3.762 | Flujos ERP sobre 22,14 días; peak × 1,857 |
@@ -398,7 +398,7 @@ Esta síntesis permite contrastar órdenes de magnitud. Los anexos 4-G y 4-H son
 | INT-13 Identidad y manifiestos | 764 eventos/día | 764 | 382 dispositivos × 2 |
 | INT-14 Métricas, logs y trazas | 14.400 eventos/día | 14.400 | 13 nodos activos × 1.000 + 7 en espera × 200 |
 | INT-15 Telemetría de flota | 60.480 posiciones/día | 60.480 | 42 camiones × 120 posiciones/h × 12 h |
-| **Total** | **230.252/día** | **353.333/día** | **15 integraciones** |
+| **Total** | **224.652/día** | **342.933/día** | **15 integraciones** |
 
 Fuente: elaboración propia a partir de las Bases Técnicas del caso (cap. 14, p. 24). Los cálculos se indican en la columna de derivación.
 
@@ -416,16 +416,17 @@ La tabla declara qué funciones siguen disponibles sin enlace, cómo continúan 
 
 | **Función** | **Estado** | **Continuidad local** | **Al reconectar** |
 | --- | --- | --- | --- |
-| Pedido preventa | Captura 14 h | Precio y stock informativos; pedido sin confirmar. | M2 valida reserva y crédito. |
-| Pedido de autoatención | Captura en el portal instalado | Catálogo y precios con fecha; pedido en cola con UUID. | M3 valida stock y crédito y responde al cliente. |
+| Pedido preventa | Captura 14 h | Precio y stock informativos; pedido sin confirmar. | M3 coordina la confirmación; M2 valida y retiene stock, y M7 aporta el control de crédito. |
+| Pedido de autoatención | Captura en el portal instalado | Catálogo y precios con fecha; pedido en cola con UUID. | M3 responde al cliente tras la retención de M2 y el control de crédito de M7. |
 | Entrega y POD | Captura 14 h | Evidencia cifrada y cola persistente. | M6 confirma o abre excepción. |
 | Recepción y preparación | Opera 24 h | Registro GS1 y bloqueo térmico local. | Eventos a nube y conciliación. |
 | Cobro en efectivo | Captura 14 h | Comprobante y custodia según política. | M7 rinde y concilia. |
 | Autorización POS | No disponible | Efectivo o crédito autorizado; sin cargo presunto. | Autorizar una sola vez. |
-| Nueva guía electrónica | Talca: disponible por RabbitMQ local; otros sitios: preemitida. | `erp-sync` en VM-04 consume RabbitMQ de Talca sin WAN y, por salida, la cola FIFO de solicitudes al ERP de los demás sitios, que reciben la respuesta por su cola; fuera de Talca se requiere un camino del sitio y uno de Talca. | M5 libera solo la carga amparada por la guía vigente; un ajuste sin camino hasta el ERP pasa a la ruta siguiente. Una guía anulada no se reutiliza: esa salida espera un documento válido. |
+| Nueva guía electrónica | Talca: integración local si ERP y comunicación tributaria están disponibles; otros sitios: guía preemitida o conexión hasta Talca. | `erp-sync` en VM-04 consume RabbitMQ de Talca sin depender de la nube; la emisión sigue requiriendo el ERP y su comunicación tributaria. Por salida consume la cola FIFO de solicitudes de los demás sitios, que reciben la respuesta por su cola; fuera de Talca se requiere un camino del sitio y uno de Talca. | M5 libera solo la carga amparada por la guía vigente; un ajuste sin camino hasta el ERP pasa a la ruta siguiente. Una guía anulada no se reutiliza: esa salida espera un documento válido. |
 | Ruteo y mapas en línea | No disponible | Usar secuencia y mapas precargados. | Recalcular cambios sin confirmar. |
 | EDI de supermercados | No disponible | Registrar incidente y aviso acordado con cadena. | Cola y bandeja de excepciones. |
 | Tablero central | No disponible | Alarmas y bitácora local sostienen despacho. | Reponer telemetría y estado. |
+| Nueva liberación sanitaria | No disponible por la consola central sin conexión; acceso local sujeto a aceptación. | M9 mantiene el bloqueo; M2/M5 no liberan el lote por falta de respuesta. | Calidad evalúa y registra la decisión con sus permisos, conforme a 4.1.3.5 y 4.1.3.7. |
 
 Fuente: elaboración propia a partir de RT-03.10 y RT-03.13 (Bases Técnicas Transversales, cap. 3, pp. 8–9).
 
@@ -499,13 +500,13 @@ El ensayo inyecta caída de fibra y LTE, respuesta extraviada del ERP, reintento
 
 RT-07.04 fija RTO ≤ 4 horas y RPO ≤ 15 minutos para servicios críticos. Se mide RPO_observado=t_incidente-t_ultimo_punto_consistente con UUID, secuencia y la última transacción confirmada recuperable fuera del sitio.
 
-El protocolo mantiene carga de negocio y corta fibra, LTE y satélite de uno en uno y en pares; verifica que el camino restante transporte DMS/WAL de Talca, broker, outbox e identidad con retraso inferior a 15 minutos. En cada CD se provoca luego pérdida de sala o servidor con al menos un camino de extracción activo. Para Talca se detiene DMS, se habilita su copia de Aurora para escritura y se levanta `wms_only` en ECS Fargate; terminales y periféricos acceden por VPN. Con la sala de Talca perdida se comprueba que salen las cargas con guía preemitida y que una carga nueva queda bloqueada hasta restituir el ERP. También se ensaya promoción de us-east-1 si sa-east-1 falla. En Concepción, el servidor en espera toma el control en menos de un minuto. Solo la pérdida de ambos obliga a reconstruir su base desde los eventos centrales. Concepción no recibe la carga de Talca.
+El protocolo mantiene carga de negocio y corta fibra, LTE y satélite de uno en uno y en pares; verifica que el camino restante transporte DMS/WAL de Talca, broker, outbox e identidad con retraso inferior a 15 minutos. En cada CD se provoca luego pérdida de sala o servidor con al menos un camino de extracción activo. Para Talca se comprueba la exclusión de VM-02, se detiene DMS y se registra la transferencia de autoridad de M2 antes de habilitar la copia de Aurora y levantar `wms_only` en ECS Fargate. Se distinguen pérdida de cómputo con red disponible y pérdida de sala: los terminales y periféricos acceden por VPN solo tras verificar o restituir LAN, firewall y un camino WAN. El RTO incluye esa restitución. Con la sala de Talca perdida se comprueba que salen las cargas con guía preemitida y que una carga nueva queda bloqueada hasta restituir el ERP. También se ensaya promoción de us-east-1 si sa-east-1 falla. En Concepción, el servidor en espera toma el control en menos de un minuto contado desde la exclusión comprobada del escritor anterior; la intervención para conseguir esa exclusión se mide por separado dentro del RTO de 4 horas, conforme a 4.2.4.3. Solo la pérdida de ambos obliga a reconstruir su base desde los eventos centrales. Concepción no recibe la carga de Talca.
 
-Se contrastan pedidos, stock por sitio, preparación, bloqueos sanitarios y evidencias con el oráculo de prueba y se miden RTO y RPO completos. Una prueba separada mantiene el sitio operativo sin los tres caminos durante 24 horas para verificar autonomía y alarmas; el límite residual de pérdida simultánea de los tres medios seguida de destrucción del sitio se justifica en 4.3.2.
+Se contrastan pedidos, stock por sitio, preparación, bloqueos sanitarios y evidencias con el oráculo de prueba y se miden RTO y RPO completos. Se registra por separado la recuperación de la consulta sanitaria de lotes y destinos en menos de 2 horas (4.2.4.5); el presupuesto regional de 135 minutos no acredita ese objetivo por sí solo. Una prueba separada mantiene el sitio operativo sin los tres caminos durante 24 horas para verificar autonomía y alarmas; el límite residual de pérdida simultánea de los tres medios seguida de destrucción del sitio se justifica en 4.3.2.
 
 El ensayo semestral mide RPO ≤ 15 minutos para transacciones en nube, WMS de Talca, mensajes críticos, evidencias y documentos tributarios en S3 y telemetría de temperatura; analítica y mensajes no críticos tienen objetivo ≤ 24 horas, y las posiciones de flota, ≤ 24 horas dentro de sa-east-1. En S3 se verifica Replication Time Control, su objetivo de 99,99% de objetos en 15 minutos, los objetos pendientes y el evento de umbral que dispara la recopia; en DynamoDB Global Tables se mide ReplicationLatency y se comprueba la alarma a 60 segundos.
 
-La conmutación regional ensaya la decisión del CLIENTE con autorizador titular y suplente facultado: si el titular no responde en 15 minutos, decide el suplente, y el paso de autorización no supera 30 minutos. El acta registra los ocho pasos y su peor caso secuencial de 5 + 30 + 20 + 30 + 15 + 15 + 5 + 15 = 135 minutos, dentro del RTO de 4 horas; el último paso redirige los shippers y `erp-sync` a las colas equivalentes, creadas vacías en la región secundaria. Luego se comprueba que el reenvío del outbox de 24 h y de las reservas pendientes no deja mensajes perdidos ni duplicados.
+La conmutación regional ensaya la decisión del CLIENTE con autorizador titular y suplente facultado: si el titular no responde en 15 minutos, decide el suplente, y el paso de autorización no supera 30 minutos. El acta registra los ocho pasos y su peor caso secuencial de 5 + 30 + 20 + 30 + 15 + 15 + 15 + 5 = 135 minutos, dentro del RTO de 4 horas. El paso 6 reconecta túneles y brokers y redirige los shippers y `erp-sync` a las colas equivalentes, creadas vacías en la región secundaria; el paso 7 valida el recorrido completo y el paso 8 cambia el tráfico. Luego se comprueba que el reenvío del outbox de 24 h y de las reservas pendientes no deja mensajes perdidos ni duplicados.
 
 **AL-OFF-01. Autonomía de 24 horas con dos relevos**
 
@@ -513,13 +514,13 @@ El ensayo cubre Talca, Concepción y cada cross-docking con el mismo perfil `wms
 
 A las 8 y 16 horas, personas distintas se identifican con PIN personal en terminal enrolado. Se comprueban firma, vigencia, sitio, rol y turno; se rechazan manifiesto alterado, PIN incorrecto, dispositivo no autorizado y privilegio nuevo. Se reinicia un componente y se verifica persistencia de outbox, bitácora y permisos. Durante el corte se ejecutan recepción, retención local, preparación, bloqueo térmico y despacho con guía válida preemitida; al reconectar se drenan eventos repetidos y fuera de orden.
 
-La aceptación exige dos relevos autorizados, operaciones confirmadas aplicadas una sola vez, conflictos conciliados y auditoría completa. Se registran ocupación, retraso de cola y tiempo de drenaje con carga de septiembre; AL-DTE-01 verifica por separado una nueva guía y la invalidación de una guía preemitida.
+La aceptación exige dos relevos autorizados, operaciones confirmadas aplicadas una sola vez, conflictos conciliados y auditoría completa. Una excursión térmica mantiene el lote bloqueado: se comprueba que no pueda liberarlo un perfil distinto de Calidad ni la falta de respuesta de la consola. Para acreditar una nueva liberación sin nube se exige además demostrar el recorrido local de Calidad, sus permisos y su auditoría; el bloqueo local por sí solo no acredita esa capacidad. Se registran ocupación, retraso de cola y tiempo de drenaje con carga de septiembre; AL-DTE-01 verifica por separado una nueva guía y la invalidación de una guía preemitida.
 
 **AL-CLI-01. Pedido de autoatención sin señal**
 
 El ensayo usa el Portal de Clientes instalado en un teléfono Android y en uno iOS de gama básica, con cuentas activadas por el procedimiento del preventista. Con el teléfono sin red se consulta el catálogo descargado, se arma un pedido nuevo y se repite uno anterior; luego se cierra la aplicación y se reinicia el teléfono.
 
-Al recuperar cobertura se verifica que cada pedido se envía una sola vez, aunque se repita el envío con el mismo UUID, y que M3 responde confirmado o con diferencias de stock, crédito o precio. Se rechazan el pedido con sesión vencida y el pedido de una cuenta bloqueada. La aceptación exige que ningún pedido armado sin señal se pierda o se duplique y que la reserva de stock ocurra solo al recibirlo M3.
+Al recuperar cobertura se verifica que cada pedido se envía una sola vez, aunque se repita el envío con el mismo UUID, y que M3 responde confirmado o con diferencias de stock, crédito o precio. Se rechazan el pedido con sesión vencida y el pedido de una cuenta bloqueada. La aceptación exige que ningún pedido armado sin señal se pierda o se duplique: M3 recibe y valida el pedido, solicita la reserva a M2 y solo confirma tras el acuse durable de la retención local y el control de crédito.
 
 ## Anexo 4-N — Correspondencia de componentes lógicos
 
@@ -800,7 +801,7 @@ En la mantención, Kotlin nativo permite conservar un único artefacto con perfi
 
 **Criterio de selección.** RTO ≤ 4 horas y RPO ≤ 15 minutos con dominios de falla separados.
 
-**Consecuencias.** Talca habilita la copia para escritura al detener DMS; terminales acceden por VPN y el retorno invierte la réplica tras reconstruir VM-02. La conmutación redirige los shippers y `erp-sync` a las colas de la región secundaria sin depender de la primaria.
+**Consecuencias.** Talca habilita la copia para escritura solo tras excluir el escritor anterior, detener DMS y registrar la transferencia de autoridad de M2. Los terminales acceden por VPN con LAN, firewall y un camino WAN disponibles o restituidos. El retorno reconstruye VM-02 como réplica del escritor de contingencia, concilia sus datos y transfiere la autoridad de forma controlada; el antiguo escritor no se reactiva automáticamente (4.3.2.5 y 4.3.2.6). La conmutación redirige los shippers y `erp-sync` a las colas de la región secundaria sin depender de la primaria.
 
 **Evidencia exigida.** AL-DR-01 recupera Talca en nube y ensaya promoción regional, escritura y retorno.
 
@@ -815,7 +816,7 @@ En la mantención, Kotlin nativo permite conservar un único artefacto con perfi
 
 **Criterio de selección.** Capacidad y quórum N+1 con demanda del Anexo 4-W.
 
-**Consecuencias.** Se reservan recursos de OSD y monitor; seis OSD ofrecen cerca de 1,92 TB útiles y unos 1,5 TB al 80% de llenado. Frente a RT-03.14, el nivel declarado es Ceph sin RAID por hardware con réplica de tres copias, que tolera la falla de un disco y de un nodo. Cada servidor de Concepción usa RAID 10 y doble fuente. Cada E-01 usa dos SSD en RAID 1 por software, que tolera la falla de un disco con holgura para los 50 GB requeridos; RAID 5 o RAID 10 exigirían tres o cuatro discos que el mini-PC industrial no aloja. E-01 y sus switches tienen alimentación redundante. La falla del equipo activo de Concepción o de un cross-docking la cubre su par en espera, que toma el control en menos de un minuto.
+**Consecuencias.** Se reservan recursos de OSD y monitor; seis OSD ofrecen cerca de 1,92 TB útiles y unos 1,5 TB al 80% de llenado. Frente a RT-03.14, el nivel declarado es Ceph sin RAID por hardware con réplica de tres copias, que tolera la falla de un disco y de un nodo. Cada servidor de Concepción usa RAID 10 y doble fuente. Cada E-01 usa dos SSD en RAID 1 por software, que tolera la falla de un disco con holgura para los 50 GB requeridos; RAID 5 o RAID 10 exigirían tres o cuatro discos que el mini-PC industrial no aloja. E-01 y sus switches tienen alimentación redundante. La falla del equipo activo de Concepción o de un cross-docking la cubre su par en espera, que toma el control en menos de un minuto desde la exclusión comprobada del escritor anterior. Si esa exclusión requiere intervención presencial, se registra el tiempo completo dentro del RTO de 4 horas; una partición de red no autoriza por sí sola la promoción (4.2.4.3).
 
 **Evidencia exigida.** Prueba de pérdida de nodo, reconstrucción, latencia y carga de cientos de IOPS a 3× frente a decenas de miles de IOPS de NVMe. Apagado del equipo activo de Concepción y de un cross-docking durante su ventana, sin pérdida de transacciones confirmadas.
 
@@ -847,7 +848,7 @@ En la mantención, Kotlin nativo permite conservar un único artefacto con perfi
 
 **Consecuencias.** Los perfiles tienen colas, conexiones y cuotas separadas; no se interviene del 1 al 25 de septiembre.
 
-**Evidencia exigida.** Carga de 3× y sensibilidad de 91,70 solicitudes/s con medición de PHP-FPM, tareas API, conexiones, bloqueo de base y edad de colas.
+**Evidencia exigida.** Carga de 3×, sensibilidad de 91,70 solicitudes/s y cota completa de 111,70 solicitudes/s con la cuota del canal tradicional; medición de PHP-FPM, tareas API, conexiones, bloqueo de base, latencia y edad de colas.
 
 **Requisitos que la sustentan.** RT-09.03, RT-09.06; Caso, peak de septiembre.
 
@@ -1052,6 +1053,7 @@ La Tabla A.19 reúne el inventario complementario y la matriz de navegadores, ve
 | Composer/PHPUnit/PCOV/PHPStan/Pint/PHPMD/PHPCPD/PhpMetrics/deptrac | Versiones compatibles con PHP 8.5 y Laravel 13. | Composer lock, análisis de licencia, audit, cobertura, complejidad, duplicación, deuda, fronteras entre módulos y regresión; no entran herramientas de prueba al runtime. |
 | JUnit 5/Kover/Espresso/detekt/ktlint | Versiones compatibles con Kotlin, Android y el parque Zebra. | Cobertura de dominio y sincronización, pruebas de interfaz y controles de estilo y complejidad antes de liberar el artefacto móvil. |
 | Jest/Playwright/ESLint/axe-core/OWASP ZAP/Pact/Spectral/MobSF/k6/AWS Fault Injection Service | Versiones compatibles con Angular, Android, las APIs y los ambientes AWS. | Regresión y pruebas de extremo a extremo de portales, lint, accesibilidad WCAG 2.2 A/AA, DAST, contratos, análisis de la aplicación Android, carga y estrés e inyección controlada de fallas en QA y Preproducción. |
+| Symfony ExpressionLanguage | Versión mantenida compatible con PHP 8.5 y Laravel 13, fijada en Composer lock. | Motor de reglas de 4.1.3.4: registrar versión y soporte, revisar vulnerabilidades y probar resultados de reglas y reversión antes de actualizar. |
 | php-amqplib/AWS SDK/swagger-php | Bibliotecas mantenidas compatibles con PHP 8.5. | Contrato AMQP, sobre JSON y generación OpenAPI bloquean cambios incompatibles. |
 | OpenAS2/JVM | Rama soportada compatible con perfiles de las cadenas. | Certificados, licencia, runtime Java y pruebas MDN registrados antes de habilitar INT-08. |
 | OpenTelemetry/ADOT | Versiones estables de SDK y colector. | Ensayo de recepción OTLP, correlación, buffer y exportación tras corte. |
@@ -1176,7 +1178,7 @@ Fuente: elaboración propia a partir de ISO (2022b, 2022c), RT de los capítulos
 
 El registro de vulnerabilidades guarda la fecha que inicia el plazo, que es la primera entre la publicación y la detección para el componente afectado, y la evidencia de cierre. Los plazos máximos de 7 días corridos para críticas, 15 para altas y 30 para medias respetan los congelamientos y el escalamiento al CLIENTE descritos en 4.2.4.1.4 del Subdocumento 4. Contener una vulnerabilidad no equivale a remediarla (RT-11.04; Bases Técnicas Transversales, cap. 11, p. 23).
 
-La arquitectura impone TLS 1.3 en las entradas de la Tabla 19 del Subdocumento 4 y en las conexiones entre componentes de la solución, y rechaza TLS 1.0 y 1.1. CloudFront aplica a portales, API e identidad la política TLSv1.3_2025, que solo admite TLS 1.3 con los conjuntos de cifrado AES-GCM (TLS_AES_128_GCM_SHA256 y TLS_AES_256_GCM_SHA384), y el canal AS2 termina TLS 1.3 en el contenedor OpenAS2. Los portales HTTPS envían HSTS con vigencia de un año, `includeSubDomains` y `preload`, y el dominio se inscribe en la lista de precarga de los navegadores. AWS Certificate Manager emite y renueva automáticamente los certificados públicos, y sus avisos de vencimiento próximo, emitidos desde 45 días antes, generan una alerta al NOC. Las interfaces del ERP de 2017 no están documentadas y su levantamiento es parte del proyecto (Bases Técnicas del caso, cap. 5, p. 10): si muestra que el ERP no admite TLS 1.3, su conexión con la ACL en VM-04, que no sale de la sala de Talca, usa TLS 1.2 como excepción documentada. La misma regla rige para un tercero con limitación de protocolo; ninguna excepción admite TLS 1.0 ni 1.1 ni reduce el control en silencio. Entre sistemas se utiliza mTLS u OAuth con credenciales de cliente; nunca una clave estática en la URL. El catálogo público no muestra precios, conforme al caso. OWASP ASVS nivel 2 y API Security Top 10 orientan las pruebas de aplicación. La superficie exacta y la implantación de EDR/SIEM se realizan en la vista física; los permisos, eventos y pruebas permanecen definidos aquí.
+La arquitectura impone TLS 1.3 en las entradas HTTPS de la Tabla 19 del Subdocumento 4 y en las conexiones TLS entre componentes de la solución, y rechaza TLS 1.0 y 1.1. Los túneles de sitio utilizan el cifrado y la autenticación IPsec/IKE declarados en esa tabla. CloudFront aplica a portales, API e identidad la política TLSv1.3_2025, que solo admite TLS 1.3 con los conjuntos de cifrado AES-GCM (TLS_AES_128_GCM_SHA256 y TLS_AES_256_GCM_SHA384), y el canal AS2 termina TLS 1.3 en el contenedor OpenAS2. Los portales HTTPS envían HSTS con vigencia de un año, `includeSubDomains` y `preload`, y el dominio se inscribe en la lista de precarga de los navegadores. AWS Certificate Manager emite y renueva automáticamente los certificados públicos, y sus avisos de vencimiento próximo, emitidos desde 45 días antes, generan una alerta al NOC. Las interfaces del ERP de 2017 no están documentadas y su levantamiento es parte del proyecto (Bases Técnicas del caso, cap. 5, p. 10): si muestra que el ERP no admite TLS 1.3, su conexión con la ACL en VM-04, que no sale de la sala de Talca, usa TLS 1.2 como excepción documentada. La misma regla rige para un tercero con limitación de protocolo; ninguna excepción admite TLS 1.0 ni 1.1 ni reduce el control en silencio. Entre servicios de la solución se utiliza mTLS para autenticar el canal, conforme a 4.1.3.7; OAuth con credenciales de cliente controla la autorización cuando corresponde y no sustituye mTLS. En interfaces de terceros se documenta el mecanismo admitido por cada contrato, manteniendo el cifrado exigido; nunca una clave estática en la URL. El catálogo público no muestra precios, conforme al caso. OWASP ASVS nivel 2 y API Security Top 10 orientan las pruebas de aplicación. La superficie exacta y la implantación de EDR/SIEM se realizan en la vista física; los permisos, eventos y pruebas permanecen definidos aquí.
 
 Seguridad aplica OWASP SAMM al inicio del desarrollo y lo reevalúa anualmente con evidencias de gobierno, diseño, implementación, verificación y operación ya previstas en los controles y el ciclo de entrega. Cada evaluación registra la madurez por práctica y las brechas, con acciones de mejora, responsable y seguimiento hasta su cierre (OWASP Foundation, s. f.; RT-11.28; Bases Técnicas Transversales, cap. 11, p. 24).
 
@@ -1280,7 +1282,7 @@ Las pruebas siguientes se ejecutan en Preproducción y antes de la ola aplicable
 | AL-POD-01 | Ensayar entrega total, parcial y receptor sustituto sin señal. | El POD conserva autor, objeto y acuse aplicable. | Firma, hash y trazas. |
 | AL-SLA-01 | Simular ventanas y cuotas de ERP, SII y contrapartes. | Reintentos y escalamiento respetan cada contrato. | Contratos, logs y tiempos. |
 | AL-OFF-01 | Aislar cada sitio 24 horas con dos relevos y despachar con guía preemitida. | Operación local y conciliación sin duplicados; solo sale carga amparada. | Bitácora, guías, colas y acta. |
-| AL-CLI-01 | Armar pedidos sin señal en el Portal de Clientes instalado y reconectar. | Ningún pedido se pierde ni se duplica; M3 reserva solo al recibirlo. | UUID, respuesta de M3 y acta. |
+| AL-CLI-01 | Armar pedidos sin señal en el Portal de Clientes instalado y reconectar. | Ningún pedido se pierde ni se duplica; M3 confirma solo al recibirlo y obtener la retención de M2 y el control de crédito de M7. | UUID, respuesta de M3 y acta. |
 | AL-DR-01 | Cortar caminos y recuperar Talca en nube. | RTO ≤ 4 horas y RPO ≤ 15 minutos. | Marcas de agua y acta. |
 | AL-PERF-01 | Aplicar carga de 3× con mamparos por perfil. | Latencias y colas cumplen el Anexo 4-T. | Métricas y reporte. |
 | AL-STOCK-01 | Pedir la última unidad desde preventa, portal y EDI, con cortes y acuses perdidos. | Una sola reserva confirmada con retención durable; nunca stock negativo. | Estado central y local, p95 y acta. |
@@ -1370,7 +1372,7 @@ La Tabla [A.30](LAFROX-Subdocumento4-Anexos.md#tab:anexo-4b-supuestos) declara e
 
 Se calcula el máximo horario de cada lugar para no sumar ventanas que no coinciden. Los días equivalentes son 31.000 ÷ 1.400 = 22,14 días (los cálculos usan el cociente sin redondear, 22,142857) y el control cruzado es 2.100 ÷ 96 = 21,88 días. El factor de septiembre es 2.600 ÷ 1.400 = 1,857.
 
-Las operaciones de cada entrega en cross-docking se reparten en recepción, escaneo y desconsolidación de 03:00 a 05:00, y despacho de 05:00 a 06:00; SV-04 concentra sólo la hora cargada de cada tramo. La preparación normal de Talca se calcula como 11.742 líneas por noche × 2 operaciones × 2/3 ÷ 28.800 segundos = 0,54 TPS de media; la hora cargada de SV-04 alcanza 1,09 TPS. El despacho se distribuye entre Talca y Concepción según SV-03; a las 05:00 el WMS alcanza 1,46 TPS normal y 2,68 TPS en septiembre en Talca, y 0,73 y 1,34 TPS en Concepción.
+El volumen de cross-docking de la Tabla A.31 corresponde al conjunto de las tres plataformas y se suma una sola vez al total. No se declara ese volumen completo como carga medida de cada sitio; el dimensionamiento de cada equipo puede usarlo como cota conservadora sin multiplicarlo en el total global. Las operaciones de cada entrega se reparten en recepción, escaneo y desconsolidación de 03:00 a 05:00, y despacho de 05:00 a 06:00; SV-04 concentra sólo la hora cargada de cada tramo. La preparación normal de Talca se calcula como 11.742 líneas por noche × 2 operaciones × 2/3 ÷ 28.800 segundos = 0,54 TPS de media; la hora cargada de SV-04 alcanza 1,09 TPS. El despacho se distribuye entre Talca y Concepción según SV-03; a las 05:00 el WMS alcanza 1,46 TPS normal y 2,68 TPS en septiembre en Talca, y 0,73 y 1,34 TPS en Concepción.
 
 La nube suma preventa, reparto, recepción, trazabilidad, guías, sincronización y el escenario EDI. Los aproximadamente 2.852 documentos/día peak son el total de DTE (34.000 ÷ 22,14 × 1,857), no sólo guías; tomarlos todos como guías a emitir antes de la salida es una cota conservadora. El portal queda separado: 2.600 ÷ 9 × 2 por SV-04 = 578 sesiones en la hora cargada; 578 × 60 ÷ 3.600 = 9,63 solicitudes/s y 578 × 10 ÷ 60 = 96,30 concurrentes. La cota extrema es 2.600 × 60 ÷ 3.600 = 43,33 solicitudes/s y 433,33 concurrentes. Las 2.600 sesiones diarias del portal son un parámetro de diseño: se toma una sesión por cada cliente de food service y de cadenas, 2.100 + 500 = 2.600 (Bases Técnicas del caso, cap. 2, p. 4). La cota cubre esos dos canales y no al canal tradicional, cuyo uso del portal es opcional y no tiene medición en el caso. Ese canal se admite con una cuota propia en la puerta de enlace: 20 solicitudes/s agregadas para los clientes tradicionales, que es la capacidad remanente bajo el techo de 8 tareas en la cota extrema (8 × 14,00 − 91,70 = 20,30 solicitudes/s). Si la adopción medida acerca el uso a esa cuota, se amplía la capacidad antes de subirla. La cuota no rechaza pedidos de preventa, que usan su propio perfil. No son las 2.600 visitas diarias de preventa (Bases Técnicas del caso, anexo B, p. 38); que las dos cifras coincidan es casualidad.
 
@@ -1382,7 +1384,7 @@ La Tabla [A.31](LAFROX-Subdocumento4-Anexos.md#tab:anexo-4b-horario) conserva el
 
 **Tabla A.31 — Perfil horario por lugar de proceso**
 
-| **Hora** | **Talca N/P** | **Concepción N/P** | Cross-docking N/P | **Nube N/P** | **Portal N/P** | **Total N/P** |
+| **Hora** | **Talca N/P** | **Concepción N/P** | Cross-docking agregado N/P | **Nube N/P** | **Portal N/P** | **Total N/P** |
 | --- | --- | --- | --- | --- | --- | --- |
 | 00:00 | 0,54 / 1,01 | 0,27 / 0,50 | 0,00 / 0,00 | 0,74 / 1,37 | 0,00 / 0,00 | 1,55 / 2,88 |
 | 01:00 | 0,54 / 1,01 | 0,27 / 0,50 | 0,00 / 0,00 | 0,74 / 1,37 | 0,00 / 0,00 | 1,55 / 2,88 |
@@ -1461,7 +1463,7 @@ La suma de 16.054.780 KB × 2 ÷ 1.000.000 = **32,11 GB**. Con 10 o 30 líneas p
 
 <a id="sec:anexo-4b-dimensiones-11-12"></a>
 
-La dimensión 11 cuenta los quince contratos INT-01 a INT-15 del apartado 4.1. La Tabla [A.32](LAFROX-Subdocumento4-Anexos.md#tab:anexo-4b-integraciones) deja el volumen por integración; las solicitudes del portal y las llamadas internas no aparecen.
+La dimensión 11 cuenta los quince contratos INT-01 a INT-15 del apartado 4.1. INT-04 detalla un subconjunto de INT-03 y no se suma otra vez: el total normal es 230.252 − 5.600 = 224.652 y el peak es 353.333 − 10.400 = 342.933 mensajes/día. Los quince contratos no equivalen a quince sumandos independientes. La Tabla [A.32](LAFROX-Subdocumento4-Anexos.md#tab:anexo-4b-integraciones) deja el volumen por integración; las solicitudes del portal y las llamadas internas no aparecen.
 
 <a id="tab:anexo-4b-integraciones"></a>
 
@@ -1472,7 +1474,7 @@ La dimensión 11 cuenta los quince contratos INT-01 a INT-15 del apartado 4.1. L
 | INT-01 Pedido preventa y consulta | 1.400 | 2.600 | 1.400 × 1; 2.600 × 1, por SV-01 |
 | INT-02 Entrega, POD y cobro | 7.000 | 13.000 | 1.400 × 5; 2.600 × 5 |
 | INT-03 Eventos de bodega a nube | 58.710 | 109.032 | 260.000 ÷ 22,14 × 5; peak × 1,857 |
-| INT-04 Detalle cross-docking a la nube | 5.600 | 10.400 | 1.400 × 4; cota de una plataforma |
+| INT-04 Detalle cross-docking a la nube | 5.600, incluidos en INT-03 | 10.400, incluidos en INT-03 | 1.400 × 4; cota agregada de cross-docking dentro de los eventos de bodega |
 | INT-03/04 Coordinación de reserva | 46.968 | 87.228 | 260.000 ÷ 22,14 × 4; peak: 21.807 líneas × 4 |
 | INT-05 Eventos de temperatura | 10.920 | 10.920 | 6.048 + 4.872 lecturas/día |
 | INT-06 ERP 2017 | 2.025 | 3.762 | 1.400 + 1.150 ÷ 22,14 + 900 ÷ 22,14 + 11.800 ÷ 22,14; peak × 1,857 |
@@ -1485,7 +1487,7 @@ La dimensión 11 cuenta los quince contratos INT-01 a INT-15 del apartado 4.1. L
 | INT-13 Identidad a sitio | 764 | 764 | 382 dispositivos × 2 |
 | INT-14 Métricas y trazas | 14.400 | 14.400 | 13 nodos activos × 1.000 + 7 en espera × 200 |
 | INT-15 Telemetría existente | 60.480 | 60.480 | 42 × 12 × 120 |
-| **Total** | **230.252** | **353.333** | **15 integraciones** |
+| **Total** | **224.652** | **342.933** | **15 integraciones** |
 
 Para la dimensión 12, el drenaje se obtiene sumando los aportes acumulados en 24 horas y dividiendo por 2 horas:
 
@@ -1520,7 +1522,7 @@ La ventana dominical usa ocho horas sin operación de bodega ni reparto. Cada si
 
 La peor ruta produce 34 × 235,81 KB ÷ 1.024 + 2 MB = **9,83 MB**. La ruta promedio produce 5,36 MB normales y 8,24 MB en septiembre. Para diez minutos, el umbral es 9,83 MB × 8 ÷ 600 segundos = **0,13 Mbps efectivos**.
 
-La dimensión 14 es un tiempo. Los 96 camiones regresan entre 17:00 y 20:00; con SV-04, 96 ÷ 3 × 2 = **64 camiones** llegan en la hora punta. Según SV-03, se reparten entre Talca y Concepción en una proporción de 2/3 y 1/3: requieren 0,93 y 0,47 Mbps, respectivamente, en la Wi-Fi y el enlace de cada centro (1,40 Mbps en total). La flota completa agrega 0,70 Mbps durante las tres horas y queda sincronizada aproximadamente diez minutos después del último camión.
+La dimensión 14 es un tiempo. Los 96 camiones regresan entre 17:00 y 20:00; con SV-04, 96 ÷ 3 × 2 = **64 camiones** llegan en la hora punta. Según SV-03, se reparten entre Talca y Concepción en una proporción de 2/3 y 1/3: requieren 0,93 y 0,47 Mbps, respectivamente, en la Wi-Fi y el enlace de cada centro (1,40 Mbps en total). La flota completa agrega 0,70 Mbps como promedio durante las tres horas. Esos promedios suponen llegadas distribuidas; no demuestran por sí solos la sincronización de cada dispositivo en diez minutos. La prueba mide desde la reconexión, incluida la espera por contención, y añade una sensibilidad de 64 retornos simultáneos: 64 × 9,83 MB × 8 ÷ 600 s = 8,39 Mbps agregados de carga útil, aproximadamente 5,64 Mbps en Talca para 43 dispositivos y 2,75 Mbps en Concepción para 21, antes de los protocolos y del resto del tráfico. Esta sensibilidad es una condición de prueba, no una cifra observada del caso; si el caudal medido no la sostiene, el acta identifica el límite y la adecuación necesaria antes de acreditar el plazo.
 
 ## 4-W.7 Dimensiones 15–16: mesa de ayuda y operación
 
@@ -1586,7 +1588,7 @@ En los tres casos la UPS requerida, que es la carga de diseño dividida por 0,8,
 
 <a id="sec:anexo-4b-nube"></a>
 
-El perfil de API atiende aplicaciones y portales N-01 a N-03. Una tarea Fargate entrega 0,70 ÷ 0,05 = **14,00 solicitudes/s**. La tabla de carga es: régimen, 12,34 solicitudes/s de nube más portal y 2 tareas; peak, 14,66 y 2; RT-09.06 (Bases Técnicas Transversales, cap. 9, p. 21), 21,99 y 2; cota extrema, 5,03 + 43,33 = 48,37 y 4. La sensibilidad de 120 solicitudes por sesión conserva las sesiones repartidas en la hora: 2,71 + 19,26 = 21,97 y 2 tareas en régimen; 5,03 + 86,67 = 91,70 y 7 tareas en cota. Todos los casos quedan bajo el techo de 8 tareas.
+El perfil de API atiende aplicaciones y portales N-01 a N-03. Una tarea Fargate entrega 0,70 ÷ 0,05 = **14,00 solicitudes/s**. La tabla de carga es: régimen, 12,34 solicitudes/s de nube más portal y 2 tareas; peak, 14,66 y 2; RT-09.06 (Bases Técnicas Transversales, cap. 9, p. 21), 21,99 y 2; cota extrema, 5,03 + 43,33 = 48,37 y 4. La sensibilidad de 120 solicitudes por sesión conserva las sesiones repartidas en la hora: 2,71 + 19,26 = 21,97 y 2 tareas en régimen; 5,03 + 86,67 = 91,70 y 7 tareas en cota. Con la cuota agregada del canal tradicional, la cota de 91,70 aumenta a 111,70 solicitudes/s y requiere 8 tareas; este caso alcanza el techo y se prueba con la mezcla real antes de ampliar la cuota.
 
 Aurora se dimensiona con la misma cota que la API, para que la base no sea el límite de un escenario que la API admite. Como cota, cada solicitud consume en la base los mismos 50 ms de CPU que en la aplicación, sin descontar la parte que atiendan el lector o la caché. Así se cubre también la falla del lector, cuando el escritor recibe toda la carga. La carga de nube a 3×, 43,98 solicitudes/s, exige 43,98 × 0,05 ÷ 0,70 = 3,14 vCPU. La cota extrema con la cuota del canal tradicional, 91,70 + 20 = 111,70 solicitudes/s, exige 111,70 × 0,05 = 5,59 vCPU, que sobre 8 vCPU es un uso de 69,8 %, bajo el 70 %. Se adopta db.r6g.2xlarge, de 8 vCPU y 64 GiB, para el escritor y el lector de sa-east-1 y para la instancia de us-east-1, que hereda la carga al conmutar. El peak actual, 14,66 × 0,05 = 0,73 vCPU, cabría en una instancia menor, pero cambiar de clase exigiría intervenir en el congelamiento de septiembre (ADR-12). Por eso la capacidad queda fija desde el inicio y se verifica en la prueba RT-09.06 (Bases Técnicas Transversales, cap. 9, p. 21), midiendo la mezcla real de lecturas y escrituras.
 

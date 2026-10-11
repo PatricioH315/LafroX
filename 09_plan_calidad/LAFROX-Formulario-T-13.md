@@ -126,7 +126,7 @@ La automatización es el criterio por defecto. La Tabla T13.4 indica la herramie
 | Perfil operacional y usabilidad | Espresso y prueba con personas | Parcial | Por certificación |
 | Seguridad ofensiva | Tercero independiente | Manual | Antes de cada paso a producción y anual |
 
-LafroX se compromete a automatizar al menos el 80 % de los casos antes del H4 y del H9. Con 1.308 casos estimados y esa meta, la regresión nocturna ejecuta unos 1.046 casos. Los 262 casos manuales requieren unas 65,5 HH por ciclo y se planifican con los evaluadores en los meses de certificación. Los tiempos de 0,5 minutos por caso automatizado y 15 minutos por caso manual son supuestos de planificación que la primera regresión de QA reemplaza por el promedio medido (Subdocumento 9, sección 9.2.3).
+LafroX se compromete a automatizar al menos el 80 % de los casos antes del H4 y del H9. Con 1.316 casos estimados y esa meta, la regresión nocturna ejecuta unos 1.053 casos. Los 263 casos manuales requieren unas 65,8 HH por ciclo y se planifican con los evaluadores en los meses de certificación. Los tiempos de 0,5 minutos por caso automatizado y 15 minutos por caso manual son supuestos de planificación que la primera regresión de QA reemplaza por el promedio medido (Subdocumento 9, sección 9.2.3).
 
 ## 8. Calendario
 

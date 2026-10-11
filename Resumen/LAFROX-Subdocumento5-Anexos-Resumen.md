@@ -10,7 +10,7 @@ Esta guía explica los 13 anexos del capítulo 5 por separado. Permite elegir el
 
 ## Anexo 5-A. Diccionario de datos atributo por atributo
 
-Diccionario completo de 111 entidades y 791 atributos: tipo, dominio, obligatoriedad, dueño y sensibilidad. Explica qué significa cada dato y cuándo puede estar ausente legítimamente. Las abreviaturas de dominio y controles complementan las vistas del cuerpo; no sustituyen las restricciones de integridad.
+Diccionario completo de 121 entidades y 987 atributos: tipo, dominio, obligatoriedad, dueño y sensibilidad. Explica qué significa cada dato y cuándo puede estar ausente legítimamente. Las abreviaturas de dominio y controles complementan las vistas del cuerpo; no sustituyen las restricciones de integridad.
 
 **Cuándo consultarlo:** para implementar campos, interpretar columnas o verificar que una captura tiene significado y dueño.
 
