@@ -1,7 +1,7 @@
 \section{Gestión de datos}
 \label{sec:sd5-5-2}
 
-Esta sección desarrolla RT-05.02--10: motor y paradigma, consistencia y disponibilidad, garantías de escritura, autoridad offline, gobierno de maestros, calidad, separación analítica, retención y exportación. Cada decisión se aplica a los dominios de 5.1 y define su comportamiento ante fallos.
+Esta sección desarrolla RT-05.02–10: motor y paradigma, consistencia y disponibilidad, garantías de escritura, autoridad offline, gobierno de maestros, calidad, separación analítica, retención y exportación. Cada decisión se aplica a los dominios de 5.1 y define su comportamiento ante fallos.
 
 \subsection{Paradigma y motor de persistencia por dominio}
 \label{sec:sd5-5-2-1}
@@ -19,7 +19,7 @@ Negocio, auditoría y outbox se escriben en la misma transacción del módulo du
 
 Inbox y efecto se confirman en una transacción: caída previa revierte ambos; posterior al commit devuelve el resultado, sin repetir efectos. Las proyecciones no retroceden versión, pero hechos aditivos/sanitarios/financieros tardíos se conservan. Un gap reordena y solicita faltantes; tras agotar reintentos escala y concilia. Actor, dispositivo, correlación, esquema/versión e instantes de ocurrencia/registro permiten reconstrucción RT-05.03/.19.
 
-Offline, Room/SQLite persiste hecho e identidad/evidencia antes del acuse $\le$2~s. El móvil verifica autorización preemitida por Keycloak; puede cerrar localmente la entrega autorizada con consolidación pendiente. La carga/hash central confirma después el objeto. La aceptación local no afirma que la nube ya conoce el hecho ni concede autoridad para reservar contra una copia de consulta.
+Offline, Room/SQLite persiste hecho e identidad/evidencia antes del acuse \ensuremath{\leq}2 s. El móvil verifica autorización preemitida por Keycloak; puede cerrar localmente la entrega autorizada con consolidación pendiente. La carga/hash central confirma después el objeto. La aceptación local no afirma que la nube ya conoce el hecho ni concede autoridad para reservar contra una copia de consulta.
 
 \subsection{Autoridad de escritura y comportamiento en partición}
 \label{sec:sd5-5-2-3}
@@ -28,11 +28,11 @@ Cada agregado conserva un escritor autorizado. Sin WAN, bodega consulta y escrib
 
 Sin WAN, el móvil registra intentos, entregas, cobros permitidos y evidencias bajo permisos preemitidos; stock, precio y crédito descargados son indicativos para decisiones centrales. La incertidumbre POS, autorización segregada de pago alternativo y conciliación siguen 5.1.8: un timeout no prueba rechazo ni garantiza ausencia de doble cargo.
 
-La Tabla~\ref{tab:sd5-limites-offline} compara los límites heredados de S4 y su consecuencia observable.
+La Tabla 5.1 compara los límites heredados de S4 y su consecuencia observable.
 
 \parte{tablas/limites_offline}
 
-Estos plazos miden objetos distintos. La vigencia del manifiesto no extiende una credencial de turno vencida. Los relevos preinscritos de 8/16~h se verifican sin enlace; Keycloak firma y renueva con conexión. La carga central del POD no bloquea el acuse durable ni el cierre local autorizado.
+Estos plazos miden objetos distintos. La vigencia del manifiesto no extiende una credencial de turno vencida. Los relevos preinscritos de 8/16 h se verifican sin enlace; Keycloak firma y renueva con conexión. La carga central del POD no bloquea el acuse durable ni el cierre local autorizado.
 
 \subsection{Gestión de datos maestros}
 \label{sec:sd5-5-2-4}
@@ -44,20 +44,22 @@ La capa anticorrupción de S4 traduce ERP/WMS/cadenas a las claves y unidades ca
 \subsection{Calidad de datos}
 \label{sec:sd5-5-2-5}
 
-La calidad se valida en captura, integración y explotación con original preservado, regla/versionado, causa, dueño y resolución. La línea base del caso es 41\,\% de recepciones del producto retirado sin lote; el cierre operativo exige 100\,\% de líneas de productos con lote obligatorio completas, y SSCC solo al hito de unidad que lo requiere. VACIA/ABIERTA y producto exento admiten ausencia legítima.
+La calidad se valida en captura, integración y explotación con original preservado, regla/versionado, causa, dueño y resolución. La línea base del caso es 41 \% de recepciones del producto retirado sin lote; el cierre operativo exige 100 \% de líneas de productos con lote obligatorio completas, y SSCC solo al hito de unidad que lo requiere. VACIA/ABIERTA y producto exento admiten ausencia legítima.
 
-ISO/IEC 25012 (International Organization for Standardization, 2008) orienta dimensiones de completitud, exactitud, consistencia, unicidad, validez, oportunidad y credibilidad. 5-C fija dominios/rechazos; 5-H fija fórmulas y tablero de calidad con profundización a registro/decisión. Inventario monetario se compara contra valor contable del sitio con desviación $\le$0,3\,\%, separado de exactitud por cantidades; toda diferencia debe explicarse. La línea base 2,3\,\% no es tolerancia. Se conservan lecturas térmicas inválidas marcadas y se mide cobertura perdida, sin destruir evidencia para mejorar el indicador. El linaje de RT-05.10 es documental, conforme T-12.
+ISO/IEC 25012 (International Organization for Standardization, 2008) orienta dimensiones de completitud, exactitud, consistencia, unicidad, validez, oportunidad y credibilidad. 5-C fija dominios/rechazos; 5-H fija fórmulas y tablero de calidad con profundización a registro/decisión. Inventario monetario se compara contra valor contado del sitio con desviación \ensuremath{\leq}0,3 \%, separado de exactitud por cantidades; toda diferencia debe explicarse. La línea base 2,3 \% no es tolerancia. Se conservan lecturas térmicas inválidas marcadas y se mide cobertura perdida, sin destruir evidencia para mejorar el indicador. El linaje de RT-05.10 es documental, conforme T-12.
 
 \subsection{Separación transaccional-analítica y modelo de explotación}
 \label{sec:sd5-5-2-6}
 
-OTIF = 100 $\times$ pedidos comprometidos entregados completos dentro de la ventana ORIGINAL / total de pedidos comprometidos del período, contando cada pedido una vez e incluyendo no entregados. La promesa original se busca por tipo ORIGINAL sin filtro de vigencia; las revisiones no cambian esa base. Metas S3: 90\,\% M15, 93\,\% M19 y 95\,\% M32. Denominador cero se muestra no aplicable, nunca 100\,\% inventado.
+OTIF = 100 \ensuremath{\times} pedidos comprometidos entregados completos dentro de la ventana ORIGINAL / total de pedidos comprometidos del período, contando cada pedido una vez e incluyendo no entregados. La promesa original se busca por tipo ORIGINAL sin filtro de vigencia; las revisiones no cambian esa base. Metas S3: 90 \% M15, 93 \% M19 y 95 \% M32. Denominador cero se muestra no aplicable, nunca 100 \% inventado.
 
-Exactitud por cantidad = 100 $\times$ máx(0, 1 $-$ $\Sigma$\textbar cantidad sistema $-$ cantidad conteo\textbar{} / $\Sigma$\textbar cantidad conteo\textbar), con cantidades homologadas por unidad y grano sitio/ubicación/producto/lote/unidad. Si la base física es cero y sistema también cero se informa sin base; si sistema no es cero se informa diferencia y no aplicable porcentual, sin ocultarla. La desviación monetaria = 100 $\times$ $\Sigma$\textbar valor sistema $-$ valor físico\textbar{} / valor contable del sitio en CLP y misma valorización; base contable cero requiere decisión registrada. Umbral contractual $\le$0,3\,\%, independiente de exactitud por cantidades.
+Exactitud por cantidad = 100 \ensuremath{\times} max(0, 1 \ensuremath{-} \ensuremath{\Sigma}|cantidad sistema \ensuremath{-} cantidad conteo| / \ensuremath{\Sigma}|cantidad conteo|), con cantidades homologadas por unidad y grano sitio/ubicación/producto/lote/unidad. Si la base física es cero y sistema también cero se informa sin base; si sistema no es cero se informa diferencia y no aplicable porcentual, sin ocultarla. La desviación monetaria = 100 \ensuremath{\times} \ensuremath{\Sigma}|valor sistema \ensuremath{-} valor físico| / valor contado del sitio en CLP y misma valorización; base contada cero requiere decisión registrada. Criterio de aceptación de LafroX \ensuremath{\leq}0,3 \%, independiente de exactitud por cantidades.
 
-Integridad de recepción considera exclusivamente líneas de productos que requieren lote al cierre; SSCC se exige en la unidad logística al hito correspondiente, sin penalizar VACIA/ABIERTA ni productos exentos. Los tableros operativos se consultan por API/proyecciones separadas con frescura $\le$5~min; cierre $\le$2~h desde último retorno de camión y gerencial $\le$4~h en Redshift/QuickSight. El catálogo 5-H declara audiencia, período/sitio/producto/canal, drill al hecho y documento, exportación y linaje documental. Costo de servicio inicia E2. No se ofertan por esta ampliación linaje automatizado, portal de desarrolladores ni predicción deseables excluidos en S3/S4.
+Integridad de recepción considera exclusivamente líneas de productos que requieren lote al cierre; SSCC se exige en la unidad logística al hito correspondiente, sin penalizar VACIA/ABIERTA ni productos exentos. Los tableros operativos se consultan por API/proyecciones separadas con frescura \ensuremath{\leq}5 min; cierre \ensuremath{\leq}2 h desde último retorno de camión y gerencial \ensuremath{\leq}4 h en Redshift/QuickSight. El catálogo 5-H declara audiencia, período/sitio/producto/canal, drill al hecho y documento, exportación y linaje documental. Costo de servicio inicia E2. No se ofertan por esta ampliación linaje automatizado, portal de desarrolladores ni predicción deseables excluidos en S3/S4.
 
 La analítica pesada se ejecuta en Redshift y S3 mediante Glue, separada de OLTP. Las consultas operativas puntuales usan API/proyecciones y las marcas de frescura; la CDC de Talca permanece en el esquema lector separado y no duplica el efecto de los eventos canónicos de negocio. El CLIENTE dispone de filtros, profundización y exportación autónoma del catálogo de 5-H.
+
+La exclusión de predicción de esta ampliación no comprende la estimación determinista de vida útil remanente INN-03, ofertada en 13.3.2 del Subdocumento 13 y sustentada en las series y la asociación sensor–lote de 5.1.7 (LafroX SpA., 2026e, sección 13.3.2; Distribuidora Puelche S.A., 2026b, RT-05.30). Esta estimación emplea parámetros cinéticos documentados y no modelos aprendidos.
 
 La creación autónoma de informes usa la autoría QuickSight integrada en las consolas, con permisos distintos de lectura y creación, conforme S4 §4.1.4.7 y §4.2.2.4, componente N-10. El modelo semántico de 5.1.11/5-H fija grano, relaciones, fórmulas y casos sin base; los informes admiten filtros guardados y envío por calendario bajo los mismos permisos, sin intervención del ADJUDICATARIO.
 
@@ -79,6 +81,8 @@ Se propone una exportación íntegra, autónoma y sin cobro adicional, operada p
 
 El trabajo registra snapshot por autoridad, instante de corte y marcas de agua; captura los deltas hasta una frontera común conciliada y publica la relación de autoridades rezagadas. Una exportación incompleta se declara parcial y no se ofrece como copia íntegra. El manifiesto contiene versión de esquema, alcance, conteos, sumas de control, hashes SHA-256 y referencias de objetos; la validación compara la descarga con ese manifiesto.
 
-El CLIENTE inicia, consulta avance y descarga por enlace autenticado/temporal. Se auditan solicitante, alcance y accesos. Como parámetros iniciales de diseño, el enlace vence en 24~h y puede renovarse sin repetir paquetes; estos se purgan a siete días conservando auditoría. Identidad de trabajo y bloques verificados permiten reanudación sin duplicar/omitir datos. La aceptación ensayará reconstrucción de datos y apertura de objetos fuera de la plataforma.
+El CLIENTE inicia, consulta avance y descarga por enlace autenticado/temporal. Se auditan solicitante, alcance y accesos. Como parámetros iniciales de diseño, el enlace vence en 24 h y puede renovarse sin repetir paquetes; estos se purgan a siete días conservando auditoría. Identidad de trabajo y bloques verificados permiten reanudación sin duplicar/omitir datos. La aceptación ensayará reconstrucción de datos y apertura de objetos fuera de la plataforma.
+
+La exportación de gran volumen se ejecutará como trabajo asíncrono y mantendrá disponible la sesión para las demás operaciones autorizadas. Al completarse, el servicio de notificaciones existente avisará a la persona solicitante y ofrecerá acceso a la descarga bajo sus permisos (Distribuidora Puelche S.A., 2026b, RT-16.29).
 
 La carga masiva operativa de RT-05.22 usa consolas y trabajos por lotes de S4, Anexo 4-C. Un rol CLIENTE autorizado carga CSV UTF-8/JSON según contrato versionado del módulo. Se validan formato, permisos, claves, dominios y referencias antes de aplicar, conservando identidad de origen/operación. Se aceptan registros válidos independientes; dependencias/agregados inseparables se rechazan completos. El informe consultable/descargable contiene estado, conteos y fila/clave, causa y regla de cada rechazo. Corregir y reenviar rechazados conserva identidad sin repetir aceptados; negocio, auditoría y acuse siguen 5.2.2. Descarga y exportación programada mantienen permisos, formatos y manifiesto.
