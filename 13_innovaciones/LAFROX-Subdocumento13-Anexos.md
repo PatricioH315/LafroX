@@ -82,7 +82,7 @@ La Tabla 13.C.1 reúne los indicadores de las cinco innovaciones, ordenados por 
 | I-03A | 0 | ≥ 95 % | Mes 15 | Sí |
 | I-03B | Sin medición | ≥ 80 % con ≥ 60 lotes por familia | Mes 15 | Sí |
 | I-03C | 0 | 100 % | Mes 16 | No |
-| I-05B | Prototipo de los meses 13 y 14 | ≥ 80 % de 24 | Antes del mes 19 | No |
+| I-05B | Prototipo de los meses 13 y 14 | ≥ 80 %: al menos 20 de 24 participantes | Antes del mes 19 | No |
 | I-02C | Sin medición | 0 | Mes 21 | No |
 | I-04B | Sin modelo | 3 de 3 | Meses 21 a 23 | No |
 | I-04C | Sin registro | 100 % | Mes 21 | No |
@@ -94,7 +94,7 @@ La Tabla 13.C.1 reúne los indicadores de las cinco innovaciones, ordenados por 
 | I-05C | Período previo por ruta | Estimar el efecto | Mes 33 | No |
 | I-04A | Canasta de los meses 21 a 23 | ≥ 5 % con OTIF ≥ 95 % | Mensual desde el mes 24; evaluación de la meta en el mes 36 | No |
 
-Seis indicadores de tres innovaciones se miden antes del mes 16, durante la marcha blanca de la Etapa 1. Con ellos LafroX oferta el RT-26.08 (Distribuidora Puelche S.A., 2026b, RT-26.08). Las metas de ahorro (I-01B, I-01C, I-03D, I-04A e I-05C) se evalúan después de al menos doce meses de producción, para que la comparación incluya un ciclo anual completo con el peak de septiembre.
+Los indicadores tempranos de INN-01 e INN-03 comprueban condiciones de habilitación durante la marcha blanca de la Etapa 1. El beneficio temprano se mide mediante I-02A, reducción del tiempo de diagnóstico de INN-02. Con ese indicador LafroX oferta el RT-26.08 (Distribuidora Puelche S.A., 2026b, RT-26.08). Las metas de ahorro (I-01B, I-01C, I-03D, I-04A e I-05C) se evalúan después de al menos doce meses de producción, para que la comparación incluya un ciclo anual completo con el peak de septiembre.
 
 La Tabla 13.C.2 reúne los riesgos de adopción con su evaluación en la escala ordinal del Capítulo 8, sección 8.1.3, donde la probabilidad 3 equivale a un 40 % y la 4 a un 60 %, y el impacto se mide como fracción del esfuerzo afectado.
 
@@ -126,7 +126,7 @@ El Art. 46 de las Bases Administrativas pide resolver en forma explícita las ob
 | --- | --- | --- | --- |
 | 1 | El impacto económico no puede contener precios | Todo impacto se expresa por rubro, clase y mes, sin montos; la valorización va en la Oferta Económica, Entregable 2, ítem 2.7 | 13.1.5 a 13.5.5; Formulario T-19, campos 10 a 12 |
 | 2 | La innovación 1 coincidía con un requisito | Se rehízo como seguimiento en el local, después de la entrega; se separa de la alerta en bodega del RF-02.09 y de la meta de merma del Capítulo 2 | 13.1.2 |
-| 3 | La innovación 3 coincidía con un requisito | Se rehízo como vida útil remanente por historia térmica del lote; el registro continuo (criterio 3) queda declarado como base obligatoria y no como innovación | 13.3, 13.3.2 |
+| 3 | La innovación 3 coincidía con un requisito | Se separa el registro continuo obligatorio de la incorporación propuesta por lote; 13.3.2 distingue el modelo cinético que sustenta RT-05.30 de su integración distribuida y del uso operativo por Calidad, sin atribuir novedad al modelo | 13.3, 13.3.2 |
 | 4 | La innovación 5 debe funcionar con el cliente sin internet | La hoja se entrega en la visita, en pantalla del terminal sin señal o impresa en la entrega siguiente, sin dispositivo ni registro del almacenero | 13.5.2 |
 | 5 | Faltaban las fichas T-19 con los siete elementos | Se presenta el Formulario T-19 con una ficha por innovación y los 17 campos del formulario | Formulario T-19 |
 | 6 | Cada innovación debe ubicarse en arquitectura, EDT y flujo de caja, con indicador, línea base, meta y mes | Cada innovación declara capas, componentes, módulos, paquetes del T-14, mes de materialización, rubros del flujo de caja e indicadores | Subsecciones 4 a 6 de 13.1 a 13.5; Anexo 13.B |
@@ -134,7 +134,7 @@ El Art. 46 de las Bases Administrativas pide resolver en forma explícita las ob
 | 8 | El Capítulo 13 y el Formulario T-19 deben presentarse completos, con 13.1 a 13.5 y el filtro del Art. 30° | Se presentan los cinco títulos; cada innovación incluye una tabla de lo que ya es alcance obligatorio y de lo que agrega | 13.1.2 a 13.5.2 |
 | 9 | La innovación 2 debe justificar por qué no es práctica estándar | Se explica que el defecto típico es un reordenamiento de la cola en la reconexión, que no deja rastro en un reporte de fallos, y se separa del RT-14.06 | 13.2.2 |
 
-Las nueve observaciones se responden en este capítulo y en su formulario. Ninguna requirió cambiar los paquetes, los meses ni las horas de la EDT del Capítulo 7.
+La tabla documenta la respuesta dada a las nueve observaciones. La separación respecto del registro continuo no basta por sí sola para acreditar el filtro del Art. 30°: la incorporación propuesta debe distinguirse técnicamente de las funcionalidades ya exigidas. La verificación del filtro considera el alcance descrito en 13.3.2 y no solo el nombre de la innovación. Ninguna requirió cambiar los paquetes, los meses ni las horas de la EDT del Capítulo 7.
 
 ## Referencias
 
@@ -152,5 +152,5 @@ En cumplimiento de la sección 7.2 de las Aclaraciones de la licitación, la tab
 | --- | --- | --- | --- | --- | --- |
 | Anexo 13.A | Claude Code | Definición de los contratos a partir de los Capítulos 4 y 5 | Alto | Ninguno | [[REVISIÓN HUMANA]] |
 | Anexo 13.B | Claude Code | Matriz de trazabilidad y tabla de alcance refinado cotejadas con el Formulario T-14, el Anexo 7.D y el Anexo 8.A | Alto | Ninguno | [[REVISIÓN HUMANA]] |
-| Anexo 13.C | Claude Code | Consolidación de indicadores y riesgos | Alto | Ninguno | [[REVISIÓN HUMANA]] |
-| Anexo 13.D | Claude Code | Tabla de observaciones y respuestas | Medio | Ninguno | [[REVISIÓN HUMANA]] |
+| Anexo 13.C | Claude Code; OpenAI Codex | Consolidación de indicadores y riesgos; precisión de indicadores y de respuesta a observaciones | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| Anexo 13.D | Claude Code; OpenAI Codex | Tabla de observaciones y respuestas; precisión de indicadores y de respuesta a observaciones | Medio | Ninguno | [[REVISIÓN HUMANA]] |

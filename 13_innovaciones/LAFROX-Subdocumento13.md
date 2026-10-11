@@ -59,10 +59,10 @@ Las cinco se eligieron por su pertinencia al caso y no por su novedad, como pide
 
 El capítulo se conecta con el resto de la oferta de la siguiente forma:
 
-- **Arquitectura.** Cada innovación declara en este capítulo qué capas, componentes y módulos utiliza, como exige el RT-26.01. Esos elementos son los que definen el Capítulo 4 (capas en la sección 4.1.3, módulos en la sección 4.1.4 y emplazamiento en la sección 4.2.2) y que el Capítulo 3 resume en la sección 3.4.2. Ninguna innovación agrega componentes ni hardware al Formulario T-11, por lo que los Capítulos 3 y 4 no requieren elementos adicionales para soportarlas. La correspondencia completa está en el Anexo 13.B.
+- **Arquitectura.** Cada innovación declara en este capítulo qué capas, componentes y módulos utiliza, como exige el RT-26.01. Esos elementos son los que definen el Capítulo 4 (capas en la sección 4.1.3, módulos en la sección 4.1.4 y emplazamiento en la sección 4.2.2) y que el Capítulo 3 resume en la sección 3.4.2. Las innovaciones reutilizan los componentes ofertados y agregan las responsabilidades funcionales y los contratos descritos en este capítulo, sin incorporar hardware adicional al Formulario T-11. El Anexo 13.B identifica los componentes utilizados; la suficiencia de cómputo y almacenamiento debe comprobarse considerando también el procesamiento que agrega cada innovación, no solo la ingesta ya dimensionada.
 - **EDT y cronograma.** Sus paquetes están en la cuenta de control 3.10 «Innovaciones», en el paquete 5.4.3 y en la cuenta 8.3 «Innovaciones en operación» del Formulario T-14, con los meses del Anexo 7.D (RT-26.02).
 - **Riesgos.** Su riesgo de adopción está registrado en las fichas R8-25 a R8-29 del Anexo 8.A y en el Formulario T-16, con la escala ordinal del Capítulo 8, sección 8.1.3 (RT-26.04).
-- **Flujo de caja.** El impacto económico se expresa por rubro, clase y mes, sin montos, porque la Oferta Técnica no puede contener cifras que permitan inferir el precio (Distribuidora Puelche S.A., 2026a, Art. 50.2). La valorización va en el Entregable 2 de la Oferta Económica, ítem 2.7.
+- **Flujo de caja.** El impacto económico se expresa por rubro, clase y mes, sin montos, porque la Oferta Técnica no puede contener cifras que permitan inferir el precio (Distribuidora Puelche S.A., 2026a, Art. 50.2). La valorización se desarrolla para el Informe 3 y se incorpora al Entregable 2 de la Oferta Económica, ítem 2.7; no se presentan costos ni precios de la oferta en este capítulo.
 - **Inteligencia artificial.** Ninguna innovación incorpora un modelo aprendido. Por eso no se les aplica el Capítulo 18 de las Bases Técnicas (RT-26.06).
 
 El detalle está en el archivo de anexos y en un formulario. El Anexo 13.A define los contratos de datos de cada innovación. El Anexo 13.B presenta la matriz de trazabilidad con la arquitectura, la EDT, los riesgos y el flujo de caja, y el alcance refinado de cada innovación con la investigación adicional que requiere. El Anexo 13.C reúne los indicadores y los riesgos en una sola vista. El Anexo 13.D responde las observaciones de la instancia anterior. Las cinco fichas formales del Artículo 29° están en el Formulario T-19.
@@ -81,7 +81,7 @@ La Tabla 13.1 resume la cartera.
 | 4 | Modelo de negocio o de contratación | Tramo variable de la Operación ligado al costo de servir | Costo de servir prorrateado con un criterio de 2016 | Mes 21 (acompañamiento); mes 24 (primera liquidación) |
 | 5 | Experiencia de usuario o impacto social | Hoja de negocio del almacenero | Cliente sin internet que no recibe la información de sus compras | Mes 21 |
 
-Tres de las cinco innovaciones (1, 2 y 3) miden su beneficio en la marcha blanca de la Etapa 1, antes del mes 16. Con eso LafroX oferta el RT-26.08, que valora al menos una innovación verificable en ese período (Distribuidora Puelche S.A., 2026b, RT-26.08). Las innovaciones 4 y 5 dependen del costo de servir y de los canales de la Etapa 2, por lo que se materializan desde el mes 21.
+La innovación 2 permite medir la reducción del tiempo de diagnóstico antes del mes 16 mediante I-02A. Con ese beneficio LafroX oferta el RT-26.08 (Distribuidora Puelche S.A., 2026b, RT-26.08). Las innovaciones 1 y 3 verifican durante la marcha blanca sus condiciones de habilitación; sus beneficios posteriores se evalúan en los momentos definidos para cada indicador. Una condición de habilitación no se contabiliza como ahorro ya demostrado. Las innovaciones 4 y 5 dependen del costo de servir y de los canales de la Etapa 2, por lo que se materializan desde el mes 21.
 
 La Figura 13.1 ubica las cinco innovaciones sobre las capas de la arquitectura del Capítulo 4. Cada caja es un componente o módulo ya ofertado, y entre paréntesis se indican las innovaciones que lo usan.
 
@@ -194,6 +194,14 @@ Riesenegger et al. (2023) revisan las prácticas contra la merma de alimentos en
 
 M10 Analítica calcula la lista de avisos cada noche con datos de M2 Inventario, de M9 Calidad y trazabilidad y del historial de compra de M3 Preventa; sus datos residen en N-10 (capa 6). M3 Preventa entrega la lista en la aplicación de preventa C-01 (capa 1). La lista viaja en el terminal y funciona sin señal (Capítulo 4, sección 4.1.15), y la respuesta de la visita vuelve por la cola de sincronización de M3 (capa 5). La innovación no abre una interfaz pública; su contrato de datos está en el Anexo 13.A.
 
+La Figura 13.2 recorre el servicio desde los datos de origen hasta la verificación del beneficio en el local.
+
+[Figura 13.2](diagramas/Fig_13-2_Recorrido_INN01.pdf)
+
+**Figura 13.2. Seguimiento posentrega: del dato del lote al cierre de la visita. Fuente: elaboración propia a partir de la sección 13.1.4 y del contrato de datos del Anexo 13.A.**
+
+El recorrido distingue el cálculo nocturno de la confirmación en terreno. La precarga permite consultar el aviso sin señal y la cola devuelve la respuesta cuando vuelve la conexión. El cierre comercial no altera el inventario oficial ni reemplaza la decisión sanitaria de Calidad; por eso el beneficio se contrasta con vencimiento posentrega y no con la merma de bodega.
+
 El piloto se hace en 120 locales de 12 rutas, con al menos 100 avisos evaluables. El tamaño es una decisión de diseño que permite evaluar el indicador I-01A, no una muestra representativa del canal. La Tabla 13.3 presenta los paquetes de la EDT que ejecutan la innovación.
 
 **Tabla 13.3. Paquetes de la EDT de la innovación 1. Fuente: Formulario T-14 y Anexo 7.D.**
@@ -230,6 +238,8 @@ El beneficio se calcula como unidades vencidas evitadas en el local por su costo
 ### 13.1.6 Indicador de verificación
 
 La Tabla 13.5 define los indicadores, con su línea base, su meta y su momento de medición.
+
+Las reducciones de I-01B e I-01C son metas propuestas de diseño, no mediciones obtenidas ni ahorros garantizados. El mecanismo esperado es detectar el riesgo antes del vencimiento y cerrar una acción autorizada en el local. La línea base se levanta durante la marcha blanca y el contraste del mes 28 determina el efecto observado; sin ese contraste no se atribuye ahorro a la innovación.
 
 **Tabla 13.5. Indicadores de la innovación 1. Fuente: elaboración propia.**
 
@@ -320,6 +330,14 @@ Las piezas por separado, la integración y la entrega continuas, los entornos ef
 
 La aplicación de preventa C-01 (M3 Preventa), los terminales de bodega C-03 (M5 Preparación) y la aplicación de reparto C-02 (M6 Reparto), en la capa 1, emiten la evidencia con un cupo de tamaño y frecuencia para no competir con la sincronización de pedidos. La capa 8 correlaciona las trazas, y la capa 7 sanitiza y controla el acceso a los paquetes. Como la innovación modifica el tratamiento de datos de la capa de seguridad, el Encargado de Seguridad de la Información, Álvaro Catalán, aprueba la sanitización con su propio modelado de amenazas (RT-26.07).
 
+La Figura 13.3 muestra cómo un incidente real se transforma en un escenario reproducible y una prueba de regresión.
+
+[Figura 13.3](diagramas/Fig_13-3_Recorrido_INN02.pdf)
+
+**Figura 13.3. Incidente de terreno: evidencia, reproducción y cierre comprobado. Fuente: elaboración propia a partir de la sección 13.2.4 y del contrato de datos del Anexo 13.A.**
+
+La secuencia separa la captura por el terminal, la protección de la evidencia, la admisión por Calidad y la corrección por Desarrollo. El cierre depende de reproducir satisfactoriamente el caso y de la confirmación del actor de terreno, no solo de redactar una causa. Los recursos efímeros se destruyen al terminar incluso ante una falla; el diagnóstico convencional permanece como contingencia.
+
 El flujo de responsabilidades es el siguiente: Operación/SRE recoge la evidencia, Calidad admite el paquete y Desarrollo corrige. La Tabla 13.8 presenta los paquetes de la EDT.
 
 **Tabla 13.8. Paquetes de la EDT de la innovación 2. Fuente: Formulario T-14 y Anexo 7.D.**
@@ -356,6 +374,8 @@ El beneficio son horas de diagnóstico y regresiones repetidas evitadas. «Cero 
 ### 13.2.6 Indicador de verificación
 
 La Tabla 13.10 define los indicadores de la innovación 2.
+
+La reducción del 30 % de I-02A es una meta propuesta de diseño. Se espera reducir el tiempo dedicado a reconstruir manualmente la secuencia del incidente mediante su paquete causal. La comparación de al menos veinte pares equivalentes permite evaluar la meta; no demuestra anticipadamente que esa magnitud se alcanzará ni autoriza a descontar esfuerzo del plan.
 
 **Tabla 13.10. Indicadores de la innovación 2. Fuente: elaboración propia.**
 
@@ -429,18 +449,17 @@ La tecnología tiene cuatro componentes:
 
 El contrato de datos es `inn03.historia-termica-lote.v1` y se detalla en el Anexo 13.A.
 
-**Oferta del RT-05.30.** Este requisito deseable valora la analítica predictiva pertinente al caso «con el modelo, sus variables, su métrica de desempeño y su plan de reentrenamiento documentados» (Distribuidora Puelche S.A., 2026b, RT-05.30). La innovación 3 es la forma en que LafroX lo oferta, y la Tabla 13.13 documenta los cuatro elementos.
-
-**Tabla 13.13. Elementos del RT-05.30 en la innovación 3. Fuente: elaboración propia a partir de las Bases Técnicas Transversales, RT-05.30.**
+**Modelo analítico y alcance propio de la incorporación.** El RT-05.30 valora una capacidad analítica con modelo, variables, métrica de desempeño y plan de reentrenamiento documentados (Distribuidora Puelche S.A., 2026b, RT-05.30). El modelo cinético sustenta esa capacidad y no se presenta como una invención de LafroX. La incorporación propuesta integra la historia térmica de cada lote con el cálculo en cámara sin enlace, la reconstrucción central y su uso por Calidad y por los módulos consumidores. Su aporte se argumenta por ese recorrido operativo, no por renombrar el registro de temperatura ni por atribuir novedad a Arrhenius o Q10. Los cuatro elementos del modelo se especifican a continuación.
 
 <a id="tab:13-3-rt0530"></a>
 
-| Elemento | Definición en la innovación 3 |
-| --- | --- |
-| Modelo | Cinética de deterioro por familia (Arrhenius o Q10) integrada sobre la historia térmica del lote; determinista |
-| Variables | Serie de temperatura por tramo, tiempo en cada tramo, familia, vida útil nominal del proveedor y parámetros cinéticos aprobados |
-| Métrica de desempeño | Proporción de lotes con vida remanente estimada dentro de ±15 % de la vida nominal respecto de la evaluación de Calidad (I-03B) |
-| Plan de reentrenamiento | Recalibración semestral de los parámetros por familia con los lotes evaluados del período (paquete 8.3.2); recalibración extraordinaria si I-03B baja del 80 % en dos cortes seguidos |
+**Modelo.** La cinética de deterioro por familia, mediante Arrhenius o Q10, se integra sobre la historia térmica del lote. El cálculo es determinista y conserva la versión de los parámetros aprobados por Calidad.
+
+**Variables.** Se utilizan la serie de temperatura y el tiempo de cada tramo, la familia del producto, la vida útil nominal informada por el proveedor y los parámetros cinéticos aprobados. Los tramos sin dato se identifican expresamente y no se completan por inferencia.
+
+**Métrica de desempeño.** I-03B mide la proporción de lotes cuya estimación difiere de la evaluación de Calidad en no más del 15 % de la vida nominal. La habilitación se decide por familia con la muestra y el umbral definidos en la sección 13.3.6; no se confunde esta precisión con el ahorro posterior de I-03D.
+
+**Recalibración.** Al no ser un modelo aprendido, se revisan los parámetros y no se reentrena un algoritmo de aprendizaje. El paquete 8.3.2 ejecuta la revisión semestral con los lotes evaluados del período, en los meses 26, 32, 38, 44, 50 y 56. Se realiza además una recalibración extraordinaria si I-03B baja del 80 % en dos cortes seguidos.
 
 Al no ser un modelo aprendido, no se le aplica el Capítulo 18 de las Bases Técnicas (RT-26.06). Aun así declara línea base, métrica de desempeño y detección de deriva, como pediría el RT-18.08 a un modelo predictivo.
 
@@ -454,9 +473,17 @@ EPCIS 2.0 es un estándar publicado (GS1 AISBL, 2022). Los modelos cinéticos de
 
 La innovación usa componentes que la arquitectura ya contiene. Los sensores B-01 y los termógrafos B-03 son la fuente de las series; el gateway B-02 acumula la carga térmica sin enlace; la aplicación de reparto C-02 trae el registro de ruta. N-08 Ingesta de IoT y N-06 Telemetría cruda reciben las series y reutilizan los 10.920 mensajes diarios ya dimensionados (21 puntos × 288 lecturas más 28 termógrafos × 174 lecturas; Capítulo 4, sección 4.2), sin agregar ingesta. La capa 5 transporta los eventos EPCIS con datos de sensor. M9 Calidad y trazabilidad muestra la historia y la estimación, y en ella Calidad dispone y aprueba los parámetros. M2 Inventario y M5 Preparación reciben el orden de salida sugerido, habilitado por familia. M10 Analítica, sobre N-10, ejecuta el modelo, recalcula y publica, y conserva las series cinco años. La capa 7 versiona y aprueba el modelo y sus parámetros.
 
-La Tabla 13.14 presenta los paquetes de la EDT.
+La Figura 13.4 distingue la captura en cámara y en ruta, la asociación al lote y el uso posterior de la estimación.
 
-**Tabla 13.14. Paquetes de la EDT de la innovación 3. Fuente: Formulario T-14 y Anexo 7.D.**
+[Figura 13.4](diagramas/Fig_13-4_Recorrido_INN03.pdf)
+
+**Figura 13.4. Historia térmica: del sensor a la decisión de Calidad. Fuente: elaboración propia a partir de la sección 13.3.4 y del contrato de datos del Anexo 13.A.**
+
+El recorrido no supone cálculo continuo en el camión: C-02 alerta durante la ruta y el registro completo se descarga al retorno. En cámara, B-02 acumula carga térmica sin enlace. Después, la asociación temporal y el modelo versionado producen una estimación que Calidad contrasta antes de habilitar su uso por familia. La sugerencia no sustituye el FEFO ni autoriza alargar la fecha impresa.
+
+La Tabla 13.13 presenta los paquetes de la EDT.
+
+**Tabla 13.13. Paquetes de la EDT de la innovación 3. Fuente: Formulario T-14 y Anexo 7.D.**
 
 <a id="tab:13-3-edt"></a>
 
@@ -472,9 +499,9 @@ Los lácteos son la primera familia priorizada, por la relación con su proveedo
 
 ### 13.3.5 Impacto económico
 
-La innovación no agrega hardware ni ingesta. Si la validación con lotes reales requiere un laboratorio externo, se contrata como servicio de terceros dentro del paquete 3.10.3.4. La Tabla 13.15 ubica sus rubros en el flujo de caja.
+La innovación no agrega hardware ni ingesta. Si la validación con lotes reales requiere un laboratorio externo, se contrata como servicio de terceros dentro del paquete 3.10.3.4. La Tabla 13.14 ubica sus rubros en el flujo de caja.
 
-**Tabla 13.15. Ubicación de la innovación 3 en el flujo de caja. Fuente: elaboración propia; la valorización está en la Oferta Económica, Entregable 2, ítem 2.7.**
+**Tabla 13.14. Ubicación de la innovación 3 en el flujo de caja. Fuente: elaboración propia; la valorización está en la Oferta Económica, Entregable 2, ítem 2.7.**
 
 <a id="tab:13-3-caja"></a>
 
@@ -491,9 +518,11 @@ El beneficio llega por tres vías: menos lotes retenidos o descartados sin justi
 
 ### 13.3.6 Indicador de verificación
 
-La Tabla 13.16 define los indicadores de la innovación 3.
+La Tabla 13.15 define los indicadores de la innovación 3.
 
-**Tabla 13.16. Indicadores de la innovación 3. Fuente: elaboración propia.**
+La reducción del 20 % de I-03D es una meta propuesta de diseño, no un resultado de los modelos citados ni una garantía de ahorro. Su mecanismo esperado es aportar a Calidad evidencia del deterioro para disponer cada lote y habilitar sugerencias por familia. El contraste del mes 28 se efectúa con la línea base de los meses 13 a 15, sin sumar otra vez beneficios atribuidos a merma de inventario o a INN-01.
+
+**Tabla 13.15. Indicadores de la innovación 3. Fuente: elaboración propia.**
 
 <a id="tab:13-3-ind"></a>
 
@@ -508,9 +537,9 @@ I-03A e I-03B se miden antes del mes 16 y son la condición para habilitar cada 
 
 ### 13.3.7 Riesgo de adopción
 
-El riesgo de adopción está registrado como R8-27 en el Anexo 8.A, con probabilidad 4 e impacto 5 (exposición 20, nivel crítico). La asociación entre sensor y lote está cubierta además por R8-23. La Tabla 13.17 resume las causas.
+El riesgo de adopción está registrado como R8-27 en el Anexo 8.A, con probabilidad 4 e impacto 5 (exposición 20, nivel crítico). La asociación entre sensor y lote está cubierta además por R8-23. La Tabla 13.16 resume las causas.
 
-**Tabla 13.17. Riesgos de adopción de la innovación 3. Fuente: Anexo 8.A, fichas R8-23 y R8-27, y Formulario T-16.**
+**Tabla 13.16. Riesgos de adopción de la innovación 3. Fuente: Anexo 8.A, fichas R8-23 y R8-27, y Formulario T-16.**
 
 <a id="tab:13-3-riesgo"></a>
 
@@ -534,9 +563,9 @@ Conocer el costo de servir es obligatorio (criterio 11 del caso). Que ese dato s
 
 ### 13.4.2 Tecnología, práctica o modelo
 
-La Tabla 13.18 separa lo que ya es alcance obligatorio de lo que esta innovación agrega.
+La Tabla 13.17 separa lo que ya es alcance obligatorio de lo que esta innovación agrega.
 
-**Tabla 13.18. Alcance obligatorio en el ámbito de la innovación 4. Fuente: elaboración propia a partir de las Bases Administrativas, del Caso 02, del Capítulo 3 y del Anexo 3.C.**
+**Tabla 13.17. Alcance obligatorio en el ámbito de la innovación 4. Fuente: elaboración propia a partir de las Bases Administrativas, del Caso 02, del Capítulo 3 y del Anexo 3.C.**
 
 <a id="tab:13-4-deslinde"></a>
 
@@ -563,9 +592,9 @@ El modelo de pago tiene los siguientes elementos:
 
 La madurez se declara con la escala TRL de la Comisión Europea (European Commission, 2016), aplicada a la práctica contractual y no a un componente tecnológico. Por separado, los contratos con pago ligado al nivel de servicio son práctica corriente en los servicios de tecnología (TRL 9). Ligar el variable a una métrica del negocio del cliente, el costo de servir, no lo es, y por eso el conjunto parte en TRL 2.
 
-FitzGerald et al. (2023) analizan contratos por resultados y muestran que la forma en que se especifica el resultado y su lógica de pago determinan si el contrato es liquidable o termina en disputa; la especificación débil es su modo de falla más frecuente. Por eso la canasta, los índices y la protección del OTIF se fijan antes de la primera liquidación. La Tabla 13.19 traduce cada nivel a un hito verificable del contrato.
+FitzGerald et al. (2023) analizan contratos por resultados y muestran que la forma en que se especifica el resultado y su lógica de pago determinan si el contrato es liquidable o termina en disputa; la especificación débil es su modo de falla más frecuente. Por eso la canasta, los índices y la protección del OTIF se fijan antes de la primera liquidación. La Tabla 13.18 traduce cada nivel a un hito verificable del contrato.
 
-**Tabla 13.19. Niveles de madurez de la innovación 4. Fuente: elaboración propia a partir de European Commission (2016).**
+**Tabla 13.18. Niveles de madurez de la innovación 4. Fuente: elaboración propia a partir de European Commission (2016).**
 
 <a id="tab:13-4-trl"></a>
 
@@ -582,9 +611,17 @@ Cada nivel tiene un entregable que Finanzas del CLIENTE puede revisar, por lo qu
 
 ### 13.4.4 Diseño de la incorporación
 
-M6 Reparto y M7 Cobranza y rendición aportan los hechos de cada entrega, y M8 Devoluciones y envases aporta los retornos. M10 Analítica calcula el costo comparable y el OTIF sobre N-10 (capa 6). La capa 6 versiona la línea base y la canasta, y la capa 7 audita la cifra liquidada. El dato contable definitivo vive en el ERP. La Tabla 13.20 presenta los paquetes de la EDT.
+M6 Reparto y M7 Cobranza y rendición aportan los hechos de cada entrega, y M8 Devoluciones y envases aporta los retornos. M10 Analítica calcula el costo comparable y el OTIF sobre N-10 (capa 6). La capa 6 versiona la línea base y la canasta, y la capa 7 audita la cifra liquidada. El dato contable definitivo vive en el ERP. La Tabla 13.19 presenta los paquetes de la EDT.
 
-**Tabla 13.20. Paquetes de la EDT de la innovación 4. Fuente: Formulario T-14 y Anexo 7.D.**
+La Figura 13.5 recorre la formación de la referencia comparable, el ensayo en sombra y la liquidación con efecto de pago.
+
+[Figura 13.5](diagramas/Fig_13-5_Recorrido_INN04.pdf)
+
+**Figura 13.5. Costo de servir: de los hechos a la liquidación auditable. Fuente: elaboración propia a partir de la sección 13.4.4 y del contrato de datos del Anexo 13.A.**
+
+La referencia de los meses 21 a 23 precede a cualquier pago variable por este mecanismo. Finanzas debe reproducir las tres liquidaciones en sombra, y desde el mes 24 el cálculo sigue condicionado por la meta OTIF vigente. La canasta evita que una reducción aparente de costo provenga de excluir entregas; la decisión sobre la malla de atención sigue en Comercial del CLIENTE.
+
+**Tabla 13.19. Paquetes de la EDT de la innovación 4. Fuente: Formulario T-14 y Anexo 7.D.**
 
 <a id="tab:13-4-edt"></a>
 
@@ -598,9 +635,9 @@ El primer paquete está en la fase 5 de la EDT porque es un acuerdo con el CLIEN
 
 ### 13.4.5 Impacto económico
 
-Al ser una innovación de contratación, su impacto se separa en lo que es costo de LafroX, lo que es ingreso de LafroX y lo que es beneficio del CLIENTE. El tramo vale cero en los meses 21 a 23; desde el mes 24 se paga la puntuación por el tramo máximo, a mes vencido, como establece el Formulario E-25. Para Puelche, el modelo significa pagar menos si la solución no rinde y nunca más que el máximo; para LafroX, el tramo es un ingreso contingente. La Tabla 13.21 ubica los rubros.
+Al ser una innovación de contratación, su impacto se separa en lo que es costo de LafroX, lo que es ingreso de LafroX y lo que es beneficio del CLIENTE. El tramo vale cero en los meses 21 a 23; desde el mes 24 se paga la puntuación por el tramo máximo, a mes vencido, como establece el Formulario E-25. Para Puelche, el modelo significa pagar menos si la solución no rinde y nunca más que el máximo; para LafroX, el tramo es un ingreso contingente. La Tabla 13.20 ubica los rubros.
 
-**Tabla 13.21. Ubicación de la innovación 4 en el flujo de caja. Fuente: elaboración propia; la valorización está en la Oferta Económica, Entregable 2, ítem 2.7.**
+**Tabla 13.20. Ubicación de la innovación 4 en el flujo de caja. Fuente: elaboración propia; la valorización está en la Oferta Económica, Entregable 2, ítem 2.7.**
 
 <a id="tab:13-4-caja"></a>
 
@@ -618,9 +655,11 @@ El beneficio del CLIENTE es el ahorro operacional verificable, sin sumar lo ya a
 
 ### 13.4.6 Indicador de verificación
 
-La Tabla 13.22 define los indicadores de la innovación 4.
+La Tabla 13.21 define los indicadores de la innovación 4.
 
-**Tabla 13.22. Indicadores de la innovación 4. Fuente: elaboración propia.**
+El 5 % de I-04A es una meta propuesta y una referencia de puntuación contractual; la fórmula no demuestra por sí sola que el ahorro sea alcanzable. El mecanismo esperado combina recomendaciones de atención con comparación sobre una canasta estable y protección del OTIF. La referencia de los meses 21 a 23 y el seguimiento posterior permiten comprobar el efecto, separándolo de cambios de combustible, mezcla y estacionalidad.
+
+**Tabla 13.21. Indicadores de la innovación 4. Fuente: elaboración propia.**
 
 <a id="tab:13-4-ind"></a>
 
@@ -634,9 +673,9 @@ La meta de I-04A se exige con OTIF de 95 % porque en el mes 36 ya rige el tramo 
 
 ### 13.4.7 Riesgo de adopción
 
-El riesgo de adopción está registrado como R8-28 en el Anexo 8.A, con probabilidad 3 e impacto 4 (exposición 12, nivel alto). La Tabla 13.23 resume sus causas.
+El riesgo de adopción está registrado como R8-28 en el Anexo 8.A, con probabilidad 3 e impacto 4 (exposición 12, nivel alto). La Tabla 13.22 resume sus causas.
 
-**Tabla 13.23. Riesgo de adopción de la innovación 4. Fuente: Anexo 8.A, ficha R8-28, y Formulario T-16.**
+**Tabla 13.22. Riesgo de adopción de la innovación 4. Fuente: Anexo 8.A, ficha R8-28, y Formulario T-16.**
 
 <a id="tab:13-4-riesgo"></a>
 
@@ -659,9 +698,9 @@ Puelche sabe qué compra cada local, qué dejó de pedir y qué tiene por vencer
 
 ### 13.5.2 Tecnología, práctica o modelo
 
-La Tabla 13.24 separa lo que ya es alcance obligatorio de lo que esta innovación agrega.
+La Tabla 13.23 separa lo que ya es alcance obligatorio de lo que esta innovación agrega.
 
-**Tabla 13.24. Alcance obligatorio en el ámbito de la innovación 5. Fuente: elaboración propia a partir de las Bases Administrativas, de las Bases Técnicas Transversales, del Caso 02 y del Formulario T-12.**
+**Tabla 13.23. Alcance obligatorio en el ámbito de la innovación 5. Fuente: elaboración propia a partir de las Bases Administrativas, de las Bases Técnicas Transversales, del Caso 02 y del Formulario T-12.**
 
 <a id="tab:13-5-deslinde"></a>
 
@@ -697,9 +736,17 @@ El informe sobre datos propios y el control de divulgación estadística son pr�
 
 ### 13.5.4 Diseño de la incorporación
 
-M10 Analítica calcula los bloques sobre N-10 (capa 6). M3 Preventa los muestra en la aplicación de preventa C-01 (capa 1), y M6 Reparto imprime la copia con la impresora de cabina del camión. La capa 7 limita la hoja a su receptor y audita el tratamiento en el registro de actividades de tratamiento. La Tabla 13.25 presenta los paquetes de la EDT.
+M10 Analítica calcula los bloques sobre N-10 (capa 6). M3 Preventa los muestra en la aplicación de preventa C-01 (capa 1), y M6 Reparto imprime la copia con la impresora de cabina del camión. La capa 7 limita la hoja a su receptor y audita el tratamiento en el registro de actividades de tratamiento. La Tabla 13.24 presenta los paquetes de la EDT.
 
-**Tabla 13.25. Paquetes de la EDT de la innovación 5. Fuente: Formulario T-14 y Anexo 7.D.**
+La Figura 13.6 muestra las dos vías de entrega de la hoja y el control de su cobertura efectiva.
+
+[Figura 13.6](diagramas/Fig_13-6_Recorrido_INN05.pdf)
+
+**Figura 13.6. Hoja de negocio: preparación, visita sin señal y copia solicitada. Fuente: elaboración propia a partir de la sección 13.5.4 y del contrato de datos del Anexo 13.A.**
+
+La información se prepara antes de la ruta y se muestra en el terminal del preventista, sin exigir conexión ni dispositivo al almacenero. La impresión es una vía posterior y opcional: si no hay pedido, no hay entrega inmediata de la copia. Por eso I-05A separa las hojas mostradas de las copias pedidas y entregadas. El bloque comparativo permanece condicionado a la aprobación legal y no impide utilizar los bloques de datos propios.
+
+**Tabla 13.24. Paquetes de la EDT de la innovación 5. Fuente: Formulario T-14 y Anexo 7.D.**
 
 <a id="tab:13-5-edt"></a>
 
@@ -715,9 +762,9 @@ La cuenta 3.10.4 de la EDT corresponde a la innovación 5, porque la innovación
 
 ### 13.5.5 Impacto económico
 
-La impresora de cabina ya está ofertada, por lo que la innovación no agrega hardware. La Tabla 13.26 ubica sus rubros en el flujo de caja.
+La impresora de cabina ya está ofertada, por lo que la innovación no agrega hardware. La Tabla 13.25 ubica sus rubros en el flujo de caja.
 
-**Tabla 13.26. Ubicación de la innovación 5 en el flujo de caja. Fuente: elaboración propia; la valorización está en la Oferta Económica, Entregable 2, ítem 2.7.**
+**Tabla 13.25. Ubicación de la innovación 5 en el flujo de caja. Fuente: elaboración propia; la valorización está en la Oferta Económica, Entregable 2, ítem 2.7.**
 
 <a id="tab:13-5-caja"></a>
 
@@ -734,26 +781,28 @@ El beneficio comercial es la frecuencia y el tamaño del pedido en los locales q
 
 ### 13.5.6 Indicador de verificación
 
-La Tabla 13.27 define los indicadores de la innovación 5.
+La Tabla 13.26 define los indicadores de la innovación 5.
 
-**Tabla 13.27. Indicadores de la innovación 5. Fuente: elaboración propia.**
+**Tabla 13.26. Indicadores de la innovación 5. Fuente: elaboración propia.**
 
 <a id="tab:13-5-ind"></a>
 
 | Id | Indicador | Línea base | Meta | Momento |
 | --- | --- | --- | --- | --- |
 | I-05A | Locales con hoja mostrada / locales elegibles que la aceptan; copias impresas entregadas / copias pedidas | 0 (la hoja no existe) | ≥ 90 % de hojas mostradas; ≥ 85 % de copias entregadas dentro de dos ciclos de visita | Mes 27 |
-| I-05B | Participantes que interpretan bien 3 preguntas / participantes | Prototipo de los meses 13 y 14 | ≥ 80 % de 24 | Antes del mes 19 |
+| I-05B | Participantes que interpretan bien las tres preguntas / participantes | Prototipo de los meses 13 y 14 | ≥ 80 %: al menos 20 de 24 participantes | Antes del mes 19 |
 | I-05C | Frecuencia y tamaño de compra en rutas con hoja frente a rutas aún sin hoja | Período previo por ruta | Estimar el efecto; no se promete un alza | Mes 33 |
 | I-05D | Emisiones del bloque 4 con todos los grupos sobre el umbral / emisiones del bloque 4 | No aplica antes de activar | 100 % | Cada emisión |
+
+En I-05B, 19 de 24 participantes equivalen al 79,17 % y no cumplen; 20 de 24 equivalen al 83,33 % y sí cumplen. Cada participante contabilizado debe interpretar correctamente las tres preguntas.
 
 I-05A también se informa sobre el total de 11.600 locales, para mostrar la cobertura real del canal. I-05C usa el despliegue gradual por rutas como comparación: las rutas que aún no reciben la hoja sirven de referencia, y por eso la meta es estimar el efecto y no prometer un alza que hoy no tiene evidencia.
 
 ### 13.5.7 Riesgo de adopción
 
-El riesgo de adopción está registrado como R8-29 en el Anexo 8.A, con probabilidad 4 e impacto 3 (exposición 12, nivel alto). La Tabla 13.28 resume sus causas.
+El riesgo de adopción está registrado como R8-29 en el Anexo 8.A, con probabilidad 4 e impacto 3 (exposición 12, nivel alto). La Tabla 13.27 resume sus causas.
 
-**Tabla 13.28. Riesgos de adopción de la innovación 5. Fuente: Anexo 8.A, ficha R8-29, y Formulario T-16.**
+**Tabla 13.27. Riesgos de adopción de la innovación 5. Fuente: Anexo 8.A, ficha R8-29, y Formulario T-16.**
 
 <a id="tab:13-5-riesgo"></a>
 
@@ -789,17 +838,17 @@ Las Bases se citan con su documento y el artículo, capítulo, sección o códig
 
 En cumplimiento de la sección 7.2 de las Aclaraciones de la licitación, la tabla siguiente declara el uso de herramientas de inteligencia artificial en este subdocumento, con la revisión humana de cada parte. La declaración se consolida en el Formulario A-6.
 
-**Tabla 13.29. Declaración de uso de IA. Fuente: registro del equipo.**
+**Tabla 13.28. Declaración de uso de IA. Fuente: registro del equipo.**
 
 <a id="tab:13-ia"></a>
 
 | Sección | Herramienta | Finalidad del uso | Nivel en texto | Nivel en diagramas | Revisión humana (quién y qué verificó) |
 | --- | --- | --- | --- | --- | --- |
 | Introducción | Claude Code | Redacción del resumen y de la conexión con los demás capítulos; diagrama de la Figura 13.1 | Alto | Alto (Figura 13.1) | [[REVISIÓN HUMANA]] |
-| 13.1 Innovación 1 | Claude Code | Ordenamiento en los siete elementos y cotejo con el Capítulo 3, el Formulario T-12 y el Anexo 7.D | Medio | Ninguno | [[REVISIÓN HUMANA]] |
-| 13.2 Innovación 2 | Claude Code; OpenAI Codex | Ordenamiento en los siete elementos y cotejo con los Capítulos 4 y 6; automatización del ciclo de recursos efímeros por incidencia | Medio | Ninguno | [[REVISIÓN HUMANA]] |
-| 13.3 Innovación 3 | Claude Code | Ordenamiento en los siete elementos, cotejo con el Capítulo 4 y documentación del RT-05.30 | Medio | Ninguno | [[REVISIÓN HUMANA]] |
-| 13.4 Innovación 4 | Claude Code | Ordenamiento en los siete elementos y cotejo con el Formulario E-25 y el Capítulo 3 | Medio | Ninguno | [[REVISIÓN HUMANA]] |
-| 13.5 Innovación 5 | Claude Code | Ordenamiento en los siete elementos y cotejo con el Formulario T-11 | Medio | Ninguno | [[REVISIÓN HUMANA]] |
+| 13.1 Innovación 1 | Claude Code; OpenAI Codex | Estructuración y cotejo del contenido; precisión de alcance e indicadores; recorrido de la Figura 13.2 | Medio | Alto (Figura 13.2) | [[REVISIÓN HUMANA]] |
+| 13.2 Innovación 2 | Claude Code; OpenAI Codex | Estructuración y cotejo del contenido; precisión de alcance e indicadores; recorrido de la Figura 13.3 | Medio | Alto (Figura 13.3) | [[REVISIÓN HUMANA]] |
+| 13.3 Innovación 3 | Claude Code; OpenAI Codex | Estructuración y cotejo del contenido; precisión de alcance e indicadores; recorrido de la Figura 13.4 | Medio | Alto (Figura 13.4) | [[REVISIÓN HUMANA]] |
+| 13.4 Innovación 4 | Claude Code; OpenAI Codex | Estructuración y cotejo del contenido; precisión de alcance e indicadores; recorrido de la Figura 13.5 | Medio | Alto (Figura 13.5) | [[REVISIÓN HUMANA]] |
+| 13.5 Innovación 5 | Claude Code; OpenAI Codex | Estructuración y cotejo del contenido; precisión de alcance e indicadores; recorrido de la Figura 13.6 | Medio | Alto (Figura 13.6) | [[REVISIÓN HUMANA]] |
 | Anexos 13.A a 13.D | Claude Code | Ver la declaración de los anexos | Alto | Ninguno | [[REVISIÓN HUMANA]] |
 | Formulario T-19 | Claude Code | Ver la declaración del formulario | Alto | Ninguno | [[REVISIÓN HUMANA]] |
