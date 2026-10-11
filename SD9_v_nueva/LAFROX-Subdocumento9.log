@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.25.7 (MiKTeX 26.5) (format=lualatex 2026.9.17)  11 OCT 2026 16:04
+This is LuaHBTeX, Version 1.25.7 (MiKTeX 26.5) (format=lualatex 2026.9.17)  11 OCT 2026 17:20
  system commands enabled.
 **LAFROX-Subdocumento9.tex
 (./LAFROX-Subdocumento9.tex
@@ -1977,7 +1977,7 @@ Capítulo 9.
 ]
 warning  (file 09_plan_calidad/diagramas/Fig_9-1_Marco_Calidad.pdf) (pdf inclusi
 on): PDF inclusion: found PDF version '1.7', but at most version '1.5' allowed
-<09_plan_calidad/diagramas/Fig_9-1_Marco_Calidad.pdf, id=219, 435.54718pt x 334
+<09_plan_calidad/diagramas/Fig_9-1_Marco_Calidad.pdf, id=220, 435.54718pt x 334
 .3692pt>
 File: 09_plan_calidad/diagramas/Fig_9-1_Marco_Calidad.pdf Graphic file (type pd
 f)
@@ -2020,7 +2020,7 @@ LaTeX Info: Redefining \% on input line 59.
 warning  (file 09_plan_calidad/diagramas/Fig_9-2_Modelo_ISO25010.pdf) (pdf inclu
 sion): PDF inclusion: found PDF version '1.7', but at most version '1.5' allowed
 
-<09_plan_calidad/diagramas/Fig_9-2_Modelo_ISO25010.pdf, id=249, 435.54718pt x 3
+<09_plan_calidad/diagramas/Fig_9-2_Modelo_ISO25010.pdf, id=250, 435.54718pt x 3
 19.1925pt>
 File: 09_plan_calidad/diagramas/Fig_9-2_Modelo_ISO25010.pdf Graphic file (type 
 pdf)
@@ -2030,225 +2030,239 @@ Package luatex.def Info: 09_plan_calidad/diagramas/Fig_9-2_Modelo_ISO25010.pdf
 (luatex.def)             Requested size: 435.33897pt x 319.05046pt.
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 90.
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 89.
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 90.
-LaTeX Info: Redefining \% on input line 90.
+LaTeX Info: Redefining \. on input line 89.
+LaTeX Info: Redefining \% on input line 89.
 [9]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 90.
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 89.
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 90.
-LaTeX Info: Redefining \% on input line 90.
+LaTeX Info: Redefining \. on input line 89.
+LaTeX Info: Redefining \% on input line 89.
  [10<./09_plan_calidad/diagramas/Fig_9-2_Modelo_ISO25010.pdf>]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 90.
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 89.
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 90.
-LaTeX Info: Redefining \% on input line 90.
+LaTeX Info: Redefining \. on input line 89.
+LaTeX Info: Redefining \% on input line 89.
  [11]
-File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
-<use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 108.
-
-(luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 108.
-LaTeX Info: Redefining \% on input line 108.
- [12]
-Underfull \hbox (badness 10000) in alignment at lines 125--125
-[][][][]
- []
-
-
-Underfull \hbox (badness 10000) in alignment at lines 136--136
+Underfull \hbox (badness 10000) in alignment at lines 126--126
 [][][][]
  []
 
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 147.
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 129.
 
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 147.
-LaTeX Info: Redefining \% on input line 147.
+LaTeX Info: Redefining \. on input line 129.
+LaTeX Info: Redefining \% on input line 129.
+[12]
+Underfull \hbox (badness 10000) in alignment at lines 137--137
+[][][][]
+ []
+
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 140.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 140.
+LaTeX Info: Redefining \% on input line 140.
 [13]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 147.
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 140.
 
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 147.
-LaTeX Info: Redefining \% on input line 147.
+LaTeX Info: Redefining \. on input line 140.
+LaTeX Info: Redefining \% on input line 140.
  [14]
 warning  (file 09_plan_calidad/diagramas/Fig_9-3_Puertas_Calidad.pdf) (pdf inclu
 sion): PDF inclusion: found PDF version '1.7', but at most version '1.5' allowed
 
-<09_plan_calidad/diagramas/Fig_9-3_Puertas_Calidad.pdf, id=297, 427.5975pt x 46
-0.6008pt>
+<09_plan_calidad/diagramas/Fig_9-3_Puertas_Calidad.pdf, id=298, 427.5975pt x 41
+2.4208pt>
 File: 09_plan_calidad/diagramas/Fig_9-3_Puertas_Calidad.pdf Graphic file (type 
 pdf)
 <use 09_plan_calidad/diagramas/Fig_9-3_Puertas_Calidad.pdf>
 Package luatex.def Info: 09_plan_calidad/diagramas/Fig_9-3_Puertas_Calidad.pdf 
- used on input line 148.
-(luatex.def)             Requested size: 427.25658pt x 460.23419pt.
+ used on input line 149.
+(luatex.def)             Requested size: 427.25658pt x 412.09254pt.
 
-Underfull \hbox (badness 1189) in paragraph at lines 162--162
+Underfull \hbox (badness 1189) in paragraph at lines 163--163
 \TU/SourceSerif4(0)/m/n/9.5 au-to-má-ti-ca y 
  []
 
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 165.
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 166.
 
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 165.
-LaTeX Info: Redefining \% on input line 165.
+LaTeX Info: Redefining \. on input line 166.
+LaTeX Info: Redefining \% on input line 166.
 [15]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 165.
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 166.
 
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 165.
-LaTeX Info: Redefining \% on input line 165.
+LaTeX Info: Redefining \. on input line 166.
+LaTeX Info: Redefining \% on input line 166.
  [16<./09_plan_calidad/diagramas/Fig_9-3_Puertas_Calidad.pdf>]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 166.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 166.
+LaTeX Info: Redefining \% on input line 166.
+ [17]
 warning  (file 09_plan_calidad/diagramas/Fig_9-4_Niveles_Ambientes.pdf) (pdf inc
 lusion): PDF inclusion: found PDF version '1.7', but at most version '1.5' allow
 ed
-<09_plan_calidad/diagramas/Fig_9-4_Niveles_Ambientes.pdf, id=330, 435.54718pt x
+<09_plan_calidad/diagramas/Fig_9-4_Niveles_Ambientes.pdf, id=336, 435.54718pt x
  355.3275pt>
 File: 09_plan_calidad/diagramas/Fig_9-4_Niveles_Ambientes.pdf Graphic file (typ
 e pdf)
 <use 09_plan_calidad/diagramas/Fig_9-4_Niveles_Ambientes.pdf>
 Package luatex.def Info: 09_plan_calidad/diagramas/Fig_9-4_Niveles_Ambientes.pd
-f  used on input line 180.
+f  used on input line 181.
 (luatex.def)             Requested size: 435.33897pt x 355.16937pt.
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 180.
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 184.
 
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 180.
-LaTeX Info: Redefining \% on input line 180.
-[17]
+LaTeX Info: Redefining \. on input line 184.
+LaTeX Info: Redefining \% on input line 184.
+[18]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 187.
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 184.
 
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 187.
-LaTeX Info: Redefining \% on input line 187.
- [18<./09_plan_calidad/diagramas/Fig_9-4_Niveles_Ambientes.pdf>]
-Underfull \hbox (badness 1342) in paragraph at lines 202--202
+LaTeX Info: Redefining \. on input line 184.
+LaTeX Info: Redefining \% on input line 184.
+ [19<./09_plan_calidad/diagramas/Fig_9-4_Niveles_Ambientes.pdf>]
+Underfull \hbox (badness 1342) in paragraph at lines 203--203
 []|\TU/SourceSerif4(0)/m/n/9.5 Ló-gi-ca de ne-go-cio y 
  []
 
 
-Underfull \hbox (badness 1430) in paragraph at lines 202--202
+Underfull \hbox (badness 1430) in paragraph at lines 203--203
 []|\TU/SourceSerif4(0)/m/n/9.5 Sin in-te-rrup-ción ni 
  []
 
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 223.
 
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 223.
+LaTeX Info: Redefining \% on input line 223.
+[20]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 223.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 223.
+LaTeX Info: Redefining \% on input line 223.
+ [21]
 warning  (file 09_plan_calidad/diagramas/Fig_9-5_Datos_Prueba.pdf) (pdf inclusio
 n): PDF inclusion: found PDF version '1.7', but at most version '1.5' allowed
-<09_plan_calidad/diagramas/Fig_9-5_Datos_Prueba.pdf, id=359, 427.5975pt x 294.1
+<09_plan_calidad/diagramas/Fig_9-5_Datos_Prueba.pdf, id=378, 427.5975pt x 294.1
 3892pt>
 File: 09_plan_calidad/diagramas/Fig_9-5_Datos_Prueba.pdf Graphic file (type pdf
 )
 <use 09_plan_calidad/diagramas/Fig_9-5_Datos_Prueba.pdf>
 Package luatex.def Info: 09_plan_calidad/diagramas/Fig_9-5_Datos_Prueba.pdf  us
-ed on input line 227.
+ed on input line 230.
 (luatex.def)             Requested size: 427.25658pt x 293.90479pt.
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 231.
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 237.
 
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 231.
-LaTeX Info: Redefining \% on input line 231.
-[19]
+LaTeX Info: Redefining \. on input line 237.
+LaTeX Info: Redefining \% on input line 237.
+[22]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 231.
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 237.
 
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 231.
-LaTeX Info: Redefining \% on input line 231.
- [20]
-File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
-<use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 231.
-
-(luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 231.
-LaTeX Info: Redefining \% on input line 231.
- [21<./09_plan_calidad/diagramas/Fig_9-5_Datos_Prueba.pdf>]
+LaTeX Info: Redefining \. on input line 237.
+LaTeX Info: Redefining \% on input line 237.
+ [23<./09_plan_calidad/diagramas/Fig_9-5_Datos_Prueba.pdf>]
 warning  (file 09_plan_calidad/diagramas/Fig_9-6_Modelo_V.pdf) (pdf inclusion): 
 PDF inclusion: found PDF version '1.7', but at most version '1.5' allowed
-<09_plan_calidad/diagramas/Fig_9-6_Modelo_V.pdf, id=389, 435.54718pt x 262.0992
+<09_plan_calidad/diagramas/Fig_9-6_Modelo_V.pdf, id=402, 435.54718pt x 262.0992
 pt>
 File: 09_plan_calidad/diagramas/Fig_9-6_Modelo_V.pdf Graphic file (type pdf)
 <use 09_plan_calidad/diagramas/Fig_9-6_Modelo_V.pdf>
 Package luatex.def Info: 09_plan_calidad/diagramas/Fig_9-6_Modelo_V.pdf  used o
-n input line 235.
+n input line 238.
 (luatex.def)             Requested size: 435.33897pt x 261.98256pt.
 
 warning  (file 09_plan_calidad/diagramas/Fig_9-7_Cadena_Trazabilidad.pdf) (pdf i
 nclusion): PDF inclusion: found PDF version '1.7', but at most version '1.5' all
 owed
-<09_plan_calidad/diagramas/Fig_9-7_Cadena_Trazabilidad.pdf, id=391, 434.58359pt
+<09_plan_calidad/diagramas/Fig_9-7_Cadena_Trazabilidad.pdf, id=404, 434.58359pt
  x 370.5042pt>
 File: 09_plan_calidad/diagramas/Fig_9-7_Cadena_Trazabilidad.pdf Graphic file (t
 ype pdf)
 <use 09_plan_calidad/diagramas/Fig_9-7_Cadena_Trazabilidad.pdf>
 Package luatex.def Info: 09_plan_calidad/diagramas/Fig_9-7_Cadena_Trazabilidad.
-pdf  used on input line 241.
+pdf  used on input line 244.
 (luatex.def)             Requested size: 433.99533pt x 370.01707pt.
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 244.
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 247.
 
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 244.
-LaTeX Info: Redefining \% on input line 244.
-[22<./09_plan_calidad/diagramas/Fig_9-6_Modelo_V.pdf>]
+LaTeX Info: Redefining \. on input line 247.
+LaTeX Info: Redefining \% on input line 247.
+[24<./09_plan_calidad/diagramas/Fig_9-6_Modelo_V.pdf>]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 244.
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 247.
 
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 244.
-LaTeX Info: Redefining \% on input line 244.
- [23<./09_plan_calidad/diagramas/Fig_9-7_Cadena_Trazabilidad.pdf>]
+LaTeX Info: Redefining \. on input line 247.
+LaTeX Info: Redefining \% on input line 247.
+ [25<./09_plan_calidad/diagramas/Fig_9-7_Cadena_Trazabilidad.pdf>]
 warning  (file 09_plan_calidad/diagramas/Fig_9-8_Ciclo_Mejora.pdf) (pdf inclusio
 n): PDF inclusion: found PDF version '1.7', but at most version '1.5' allowed
-<09_plan_calidad/diagramas/Fig_9-8_Ciclo_Mejora.pdf, id=428, 435.54718pt x 283.
+<09_plan_calidad/diagramas/Fig_9-8_Ciclo_Mejora.pdf, id=441, 435.54718pt x 283.
 0575pt>
 File: 09_plan_calidad/diagramas/Fig_9-8_Ciclo_Mejora.pdf Graphic file (type pdf
 )
 <use 09_plan_calidad/diagramas/Fig_9-8_Ciclo_Mejora.pdf>
 Package luatex.def Info: 09_plan_calidad/diagramas/Fig_9-8_Ciclo_Mejora.pdf  us
-ed on input line 257.
+ed on input line 260.
 (luatex.def)             Requested size: 435.33897pt x 282.93153pt.
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 257.
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 263.
 
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 257.
-LaTeX Info: Redefining \% on input line 257.
-[24]
+LaTeX Info: Redefining \. on input line 263.
+LaTeX Info: Redefining \% on input line 263.
+[26]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 267.
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 263.
 
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 267.
-LaTeX Info: Redefining \% on input line 267.
- [25<./09_plan_calidad/diagramas/Fig_9-8_Ciclo_Mejora.pdf>]
-Underfull \hbox (badness 10000) in alignment at lines 282--282
+LaTeX Info: Redefining \. on input line 263.
+LaTeX Info: Redefining \% on input line 263.
+ [27<./09_plan_calidad/diagramas/Fig_9-8_Ciclo_Mejora.pdf>]
+Underfull \hbox (badness 10000) in alignment at lines 285--285
 [][][][]
  []
 
@@ -2256,102 +2270,102 @@ Underfull \hbox (badness 10000) in alignment at lines 282--282
 warning  (file 09_plan_calidad/diagramas/Fig_9-9_Calidad_Cronograma.pdf) (pdf in
 clusion): PDF inclusion: found PDF version '1.7', but at most version '1.5' allo
 wed
-<09_plan_calidad/diagramas/Fig_9-9_Calidad_Cronograma.pdf, id=453, 443.7378pt x
+<09_plan_calidad/diagramas/Fig_9-9_Calidad_Cronograma.pdf, id=466, 443.7378pt x
  259.93109pt>
 File: 09_plan_calidad/diagramas/Fig_9-9_Calidad_Cronograma.pdf Graphic file (ty
 pe pdf)
 <use 09_plan_calidad/diagramas/Fig_9-9_Calidad_Cronograma.pdf>
 Package luatex.def Info: 09_plan_calidad/diagramas/Fig_9-9_Calidad_Cronograma.p
-df  used on input line 290.
+df  used on input line 293.
 (luatex.def)             Requested size: 443.42822pt x 259.75987pt.
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 293.
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 296.
 
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 293.
-LaTeX Info: Redefining \% on input line 293.
-[26]
-Underfull \hbox (badness 1596) in paragraph at lines 309--309
+LaTeX Info: Redefining \. on input line 296.
+LaTeX Info: Redefining \% on input line 296.
+[28]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 296.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 296.
+LaTeX Info: Redefining \% on input line 296.
+ [29<./09_plan_calidad/diagramas/Fig_9-9_Calidad_Cronograma.pdf>]
+Underfull \hbox (badness 1596) in paragraph at lines 312--312
 []|\TU/SourceSerif4(0)/m/n/9.5 En-sa-yo de re-ver-sión (4.1.2); en-sa-yo de mi-
 gra-ción 2 en 
  []
 
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 331.
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 334.
 
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 331.
-LaTeX Info: Redefining \% on input line 331.
-[27<./09_plan_calidad/diagramas/Fig_9-9_Calidad_Cronograma.pdf>]
+LaTeX Info: Redefining \. on input line 334.
+LaTeX Info: Redefining \% on input line 334.
+[30]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 331.
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 334.
 
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 331.
-LaTeX Info: Redefining \% on input line 331.
- [28]
-File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
-<use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 331.
-
-(luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 331.
-LaTeX Info: Redefining \% on input line 331.
- [29]
-Underfull \hbox (badness 10000) in alignment at lines 344--344
+LaTeX Info: Redefining \. on input line 334.
+LaTeX Info: Redefining \% on input line 334.
+ [31]
+Underfull \hbox (badness 10000) in alignment at lines 347--347
 [][][][]
  []
 
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 353.
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 352.
 
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 353.
-LaTeX Info: Redefining \% on input line 353.
-[30]
-Underfull \hbox (badness 1515) in paragraph at lines 360--360
+LaTeX Info: Redefining \. on input line 352.
+LaTeX Info: Redefining \% on input line 352.
+[32]
+Underfull \hbox (badness 1515) in paragraph at lines 363--363
 []|\TU/SourceSerif4(0)/m/n/9.5 Re-cu-pe-ra-ción con 
  []
 
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 374.
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 373.
 
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 374.
-LaTeX Info: Redefining \% on input line 374.
-[31]
+LaTeX Info: Redefining \. on input line 373.
+LaTeX Info: Redefining \% on input line 373.
+[33]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 394.
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 390.
 
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 394.
-LaTeX Info: Redefining \% on input line 394.
- [32]
-Underfull \hbox (badness 1648) in paragraph at lines 404--404
+LaTeX Info: Redefining \. on input line 390.
+LaTeX Info: Redefining \% on input line 390.
+ [34]
+Underfull \hbox (badness 1648) in paragraph at lines 407--407
 []|\TU/SourceSerif4(0)/m/n/9.5 9.2 
  []
 
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 404.
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 407.
 
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 404.
-LaTeX Info: Redefining \% on input line 404.
-[33])
+LaTeX Info: Redefining \. on input line 407.
+LaTeX Info: Redefining \% on input line 407.
+[35])
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
 Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 20.
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
 LaTeX Info: Redefining \. on input line 20.
 LaTeX Info: Redefining \% on input line 20.
- [34] 
+ [36] 
 enddocument/afterlastpage (AED): lastpage setting LastPage.
 (./LAFROX-Subdocumento9.aux
 LaTeX Info: Redefining \. on input line 9.
@@ -2364,29 +2378,31 @@ L3 programming layer <2026-07-20>
 )
 
 Here is how much of LuaTeX's memory you used:
- 37423 strings out of 475695
+ 37475 strings out of 475695
  156267,1977958 words of node,token memory allocated
  1021 words of node memory still in use:
    8 hlist, 2 vlist, 2 rule, 1 local_par, 6 glue, 5 kern, 1 penalty, 1 margin_ke
 rn, 4 glyph, 66 attribute, 79 glue_spec, 34 attribute_list, 2 write, 23 pdf_acti
 on nodes
-   avail lists: 1:6,2:2801,3:767,4:319,5:2253,6:176,7:11269,8:2,9:1609,10:26,11:
-1326
- 58471 multiletter control sequences out of 65536+600000
- 119 fonts using 46785827 bytes
+   avail lists: 1:5,2:2733,3:766,4:315,5:2443,6:163,7:12032,8:2,9:1473,10:26,11:
+1412
+ 58473 multiletter control sequences out of 65536+600000
+ 118 fonts using 46549499 bytes
  107i,18n,128p,1501b,2770s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/henri/AppData/Local/Programs/MiKTeX/fonts/opentype/adobe/sourceserif/S
 ourceSerif4-RegularIt.otf><C:/Users/henri/AppData/Local/Programs/MiKTeX/fonts/op
-entype/adobe/sourceserif/SourceSerif4-Semibold.otf><C:/Users/henri/AppData/Local
-/Programs/MiKTeX/fonts/opentype/adobe/sourceserif/SourceSerif4-Regular.otf><C:/U
-sers/henri/AppData/Local/Programs/MiKTeX/fonts/opentype/ibm/plex/IBMPlexMono-Reg
-ular.otf><C:/Users/henri/AppData/Local/Programs/MiKTeX/fonts/opentype/adobe/sour
-cesans/SourceSans3-Regular.otf><c:/users/henri/appdata/local/programs/miktex/fon
-ts/opentype/adobe/sourcesans/sourcesans3-medium.otf><C:/Users/henri/AppData/Loca
-l/Programs/MiKTeX/fonts/opentype/adobe/sourcesans/SourceSans3-Semibold.otf>
-Output written on LAFROX-Subdocumento9.pdf (34 pages, 631574 bytes).
+entype/public/stix2-otf/STIXTwoMath-Regular.otf><C:/Users/henri/AppData/Local/Pr
+ograms/MiKTeX/fonts/opentype/adobe/sourceserif/SourceSerif4-Semibold.otf><C:/Use
+rs/henri/AppData/Local/Programs/MiKTeX/fonts/opentype/adobe/sourceserif/SourceSe
+rif4-Regular.otf><C:/Users/henri/AppData/Local/Programs/MiKTeX/fonts/opentype/ib
+m/plex/IBMPlexMono-Regular.otf><C:/Users/henri/AppData/Local/Programs/MiKTeX/fon
+ts/opentype/adobe/sourcesans/SourceSans3-Regular.otf><c:/users/henri/appdata/loc
+al/programs/miktex/fonts/opentype/adobe/sourcesans/sourcesans3-medium.otf><C:/Us
+ers/henri/AppData/Local/Programs/MiKTeX/fonts/opentype/adobe/sourcesans/SourceSa
+ns3-Semibold.otf>
+Output written on LAFROX-Subdocumento9.pdf (36 pages, 639911 bytes).
 
-PDF statistics: 639 PDF objects out of 1000 (max. 8388607)
- 81 named destinations out of 1000 (max. 1048576)
+PDF statistics: 659 PDF objects out of 1000 (max. 8388607)
+ 83 named destinations out of 1000 (max. 1048576)
  208 words of extra memory for PDF output out of 10000 (max. 100000000)
 

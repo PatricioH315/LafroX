@@ -1,5 +1,5 @@
 # Fdb version 4
-["lualatex"] 1791745414.88997 "LAFROX-Formulario-T-13.tex" "LAFROX-Formulario-T-13.pdf" "LAFROX-Formulario-T-13" 1791745434.5363 0
+["lualatex"] 1791750102.83728 "LAFROX-Formulario-T-13.tex" "LAFROX-Formulario-T-13.pdf" "LAFROX-Formulario-T-13" 1791750125.06639 0
   "C:/Users/henri/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1791525708 943208 89da4836ee0e92c381435be35a3241b0 ""
   "C:/Users/henri/AppData/Local/MiKTeX/luatex-cache/generic/fonts/otl/ibmplexmono-bold.luc" 1789666459 133158 36dbf7e1a08000fd32d51ed3b4d29d2b ""
   "C:/Users/henri/AppData/Local/MiKTeX/luatex-cache/generic/fonts/otl/ibmplexmono-bolditalic.luc" 1789666460 131896 cb43e2365ea4940c7ade3e2649cbe7ba ""
@@ -258,10 +258,10 @@
   "C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/luatex/luaotfload/luaotfload-unicode.lua" 1740607740 7918 4272855a25780b80472f3b58edd95e33 ""
   "C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/luatex/luaotfload/luaotfload.lua" 1740607740 13566 16df94dd2de231b2bca0aaa0190941fe ""
   "C:/Users/henri/AppData/Roaming/MiKTeX/tex/generic/config/language.dat" 1786480571 2269 c2be9efecb8e53facf8213ae101f16af ""
-  "LAFROX-Formulario-T-13.aux" 1791745432 19394 daf62c492bf3040efc86f99bfb283bf6 "lualatex"
+  "LAFROX-Formulario-T-13.aux" 1791750122 20731 9f1966e49fdbc1ca6af89fb611e5ef6e "lualatex"
   "LAFROX-Formulario-T-13.tex" 1791730114 563 554aaff8ce179a60e217d1047758315d ""
-  "LAFROX-Formulario-T-13.toc" 1791745432 2119 f52fbf57dc2c2497f1b669c188bf8208 "lualatex"
-  "T13/contenido.tex" 1791745248 37882 f6e97e7d8cc711a56cb7a90479c2af2f ""
+  "LAFROX-Formulario-T-13.toc" 1791750122 2229 6ff2a0b0e561bec014b4d903ff0209a9 "lualatex"
+  "T13/contenido.tex" 1791749983 46252 55fbec7dcb107d6bd80355d4e6879f5e ""
   "c:/users/henri/appdata/local/programs/miktex/fonts/opentype/adobe/sourcesans/sourcesans3-medium.otf" 1777831523 336848 e7d038378399e1c26443887c39d891d8 ""
   "lafrox-portada.tex" 1791728244 15837 437aa1d9362343ea062beae1fa189664 ""
   "lafrox.cls" 1791728244 43048 b826318122ca96cdf068d3373ac0f9bf ""

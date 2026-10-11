@@ -6,16 +6,16 @@
 \contentsline {subsection}{9.A.2 Desempeño}{4}{table.8.2}%
 \contentsline {subsection}{9.A.3 Compatibilidad}{5}{table.8.3}%
 \contentsline {subsection}{9.A.4 Usabilidad}{6}{table.8.4}%
-\contentsline {subsection}{9.A.5 Fiabilidad}{6}{table.8.5}%
-\contentsline {subsection}{9.A.6 Seguridad}{7}{table.8.6}%
-\contentsline {subsection}{9.A.7 Mantenibilidad}{8}{table.8.7}%
-\contentsline {subsection}{9.A.8 Portabilidad}{9}{table.8.8}%
-\contentsline {subsection}{9.A.9 Calidad de datos (ISO/IEC 25012)}{10}{table.8.9}%
-\contentsline {section}{Anexo 9.B — Puertas de calidad y reglas de bloqueo}{10}{table.8.10}%
-\contentsline {section}{Anexo 9.C — Costo de la calidad en horas-hombre}{11}{table.8.11}%
-\contentsline {subsection}{9.C.1 Costos de conformidad (programados en la línea base)}{12}{table.8.11}%
-\contentsline {subsection}{9.C.2 Fallas y autorización de recursos}{13}{table.8.12}%
-\contentsline {subsection}{9.C.3 Distribución del esfuerzo programado}{13}{table.8.12}%
-\contentsline {section}{Anexo 9.D — Trazabilidad de los resultados del caso}{13}{table.8.13}%
-\contentsline {section}{Referencias}{15}{table.8.14}%
+\contentsline {subsection}{9.A.5 Fiabilidad}{7}{table.8.5}%
+\contentsline {subsection}{9.A.6 Seguridad}{9}{table.8.6}%
+\contentsline {subsection}{9.A.7 Mantenibilidad}{9}{table.8.7}%
+\contentsline {subsection}{9.A.8 Portabilidad}{10}{table.8.8}%
+\contentsline {subsection}{9.A.9 Calidad de datos (ISO/IEC 25012)}{11}{table.8.9}%
+\contentsline {section}{Anexo 9.B — Puertas de calidad y reglas de bloqueo}{12}{table.8.10}%
+\contentsline {section}{Anexo 9.C — Costo de la calidad en horas-hombre}{13}{table.8.11}%
+\contentsline {subsection}{9.C.1 Costos de conformidad (programados en la línea base)}{14}{table.8.11}%
+\contentsline {subsection}{9.C.2 Fallas y autorización de recursos}{15}{table.8.12}%
+\contentsline {subsection}{9.C.3 Distribución del esfuerzo programado}{16}{table.8.13}%
+\contentsline {section}{Anexo 9.D — Trazabilidad de los resultados del caso}{16}{table.8.14}%
+\contentsline {section}{Referencias}{18}{table.8.15}%
 \contentsfinish 

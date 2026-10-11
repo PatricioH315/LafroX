@@ -94,7 +94,7 @@ def fig1():
     n2 = d.box("ISO/IEC 25012<br>datos", 306, 30, 135, 56)
     n4 = d.box("PMBOK cap. 8<br>proceso", 455, 30, 135, 56)
     m1 = d.box("42 métricas de producto y datos (Anexo 9.A)", 160, 150, 160, 56)
-    m2 = d.box("6 métricas de código bloqueantes", 335, 150, 110, 56)
+    m2 = d.box("7 métricas de código bloqueantes", 335, 150, 110, 56)
     m3 = d.box("Métricas de proceso y costo de la calidad", 455, 150, 135, 56)
     c2 = d.box("Pruebas por nivel y ambiente (T-13)", 10, 270, 250, 56)
     c1 = d.box("Puertas G0 a G6", 335, 270, 255, 56)
@@ -120,8 +120,8 @@ def fig2():
         ("<b>Funcionalidad</b><br>100 % de requisitos ofertados con prueba aprobada", 0),
         ("<b>Desempeño</b><br>preparación ≤ 1 s · entrega ≤ 2 s · preventa ≤ 1,5 s; p95 a 21,99 TPS", 0),
         ("<b>Compatibilidad</b><br>15 de 15 integraciones · 0 contratos rotos", 0),
-        ("<b>Usabilidad</b><br>WCAG 2.2 AA · guantes a −22 °C · una mano", 0),
-        ("<b>Fiabilidad</b><br>99,9 % críticos · 0 min de 05:30 a 07:00 · RTO ≤ 4 h · RPO ≤ 15 min", 1),
+        ("<b>Usabilidad</b><br>WCAG 2.2 AA · métricas por perfil<br>guantes a −22 °C · una mano", 0),
+        ("<b>Fiabilidad</b><br>99,9 % críticos · 99,95 % infraestructura<br>0 min de 05:30 a 07:00 · RTO ≤ 4 h · RPO ≤ 15 min", 1),
         ("<b>Seguridad</b><br>0 hallazgos críticos o altos abiertos", 1),
         ("<b>Mantenibilidad</b><br>cobertura 70 % negocio y 80 % global", 1),
         ("<b>Portabilidad</b><br>mismo artefacto de QA a Producción", 1),
@@ -148,20 +148,18 @@ def fig3():
         "<b>G2 · Integración continua</b><br>coberturas · complejidad · acoplamiento · duplicación · SAST/SCA · contratos",
         "<b>G3 · Promoción a QA</b><br>imagen sin vulnerabilidades altas · sin regresión de desempeño",
         "<b>G4 · Promoción a Preproducción</b><br>regresión · DAST · WCAG",
-        "<b>Control técnico previo H6/H11</b><br>certificación · reversión · datos · capacitación",
-        "<b>G5 · Paso contractual a producción (H7 y H12)</b><br>pruebas del T-13 · acta T-17",
+        "<b>G5 · Entrada a Producción (H6 y H11)</b><br>pruebas T-13 · certificación H5/H10 · reversión · datos · capacitación",
         "<b>G6 · Producción supervisada y Operación</b><br>canario · presupuesto de error",
     ]
-    ids = []
-    for i, g in enumerate(gates):
-        ids.append(d.box(g, 0, i * 82, 380, 62, BOXDARK if i in (2, 4, 5) else BOX))
+    ids = [d.box(g, 0, i * 82, 380, 62, BOXDARK if i in (2, 4, 5) else BOX)
+           for i, g in enumerate(gates)]
     for a, b in zip(ids, ids[1:]):
         d.edge(a, b)
-    rej = d.box("Cambio rechazado<br>vuelve al autor", 450, 2 * 82 + 60, 140, 200, BOXACC)
-    d.edge(ids[5], ids[7], EDGEDASH, exit_=(1, 0.5), entry=(1, 0.5))
-    d.box("Monitoreo desde H6/H11", 450, 530, 140, 40, TEXT)
-    for i, ey in ((2, 0.1), (4, 0.5), (6, 0.9)):
+    rej = d.box("Cambio rechazado<br>vuelve al autor", 450, 224, 140, 200, BOXACC)
+    for i, ey in ((2, 0.1), (4, 0.5), (5, 0.9)):
         d.edge(ids[i], rej, EDGEDASH, label="bloquea", exit_=(1, 0.5), entry=(0, ey))
+    acta = d.box("<b>Aceptación H7/H12</b><br>seis condiciones<br>Art. 17.3<br>acta T-17", 450, 478, 140, 90, BOXDARK)
+    d.edge(ids[6], acta, EDGEDASH, exit_=(1, 0.5), entry=(0, 0.5))
     d.save()
 
 
@@ -171,7 +169,7 @@ def fig4():
     groups = [
         ("Desarrollo", 0, ["Unitarias y de componente<br>PHPUnit · JUnit 5 · Jest", "Contrato<br>Pact · Spectral"]),
         ("QA", 100, ["Integración de los 15 flujos", "Sistema y regresión automatizada", "DAST · accesibilidad · carga de regresión"]),
-        ("Preproducción", 200, ["Aceptación de usuario", "Carga 1,5× y estrés", "Resiliencia con inyección de fallas", "Migración · despliegue y reversión", "Intrusión por un tercero"]),
+        ("Preproducción", 200, ["Aceptación de usuario", "Carga 1,5× y estrés", "Resiliencia · sitios aislados 24 h<br>gateways de frío", "Migración · despliegue y reversión", "Intrusión por un tercero"]),
         ("Producción", 400, ["Marcha blanca: indicadores diarios"]),
     ]
     gids = {}
@@ -188,9 +186,9 @@ def fig4():
                 bw = 128 if len(items) == 3 else (195 if len(items) == 2 else 400)
                 d.box(it, 10 + col * (bw + 8), y + 28, bw, 52)
     ter = d.box("Terreno y cámara", 450, 200, 150, 190, GROUP)
-    d.box("14 h sin señal<br>−22 °C con guantes<br>lluvia · sol directo<br>una mano", 460, 230, 130, 150)
+    d.box("14 h sin señal<br>−22 °C con guantes<br>lluvia · sobre 34 °C<br>sol directo · una mano", 460, 230, 130, 150)
     dr = d.box("Recuperación", 450, 400, 150, 90, GROUP)
-    d.box("Conmutación real<br>RTO ≤ 4 h<br>RPO ≤ 15 min", 460, 428, 130, 56)
+    d.box("Conmutación real<br>nube y WMS Talca<br>RTO ≤ 4 h<br>RPO ≤ 15 min", 460, 420, 130, 66)
     d.edge(gids["Desarrollo"], gids["QA"]); d.edge(gids["QA"], gids["Preproducción"])
     d.edge(gids["Preproducción"], gids["Producción"])
     d.edge(gids["Preproducción"], ter, exit_=(1, 0.5), entry=(0, 0.5))

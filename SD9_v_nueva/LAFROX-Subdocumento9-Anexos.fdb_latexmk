@@ -1,6 +1,6 @@
 # Fdb version 4
-["lualatex"] 1791745378.16275 "LAFROX-Subdocumento9-Anexos.tex" "LAFROX-Subdocumento9-Anexos.pdf" "LAFROX-Subdocumento9-Anexos" 1791745394.26108 0
-  "09_anexos/contenido.tex" 1791745248 25034 b43715e0dd7fc293e3504115c5991993 ""
+["lualatex"] 1791750057.71703 "LAFROX-Subdocumento9-Anexos.tex" "LAFROX-Subdocumento9-Anexos.pdf" "LAFROX-Subdocumento9-Anexos" 1791750078.18087 0
+  "09_anexos/contenido.tex" 1791749983 30173 bd4b487252ab5b16ea4998c1bd3ccd18 ""
   "C:/Users/henri/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1791525708 943208 89da4836ee0e92c381435be35a3241b0 ""
   "C:/Users/henri/AppData/Local/MiKTeX/luatex-cache/generic/fonts/otl/ibmplexmono-bold.luc" 1789666459 133158 36dbf7e1a08000fd32d51ed3b4d29d2b ""
   "C:/Users/henri/AppData/Local/MiKTeX/luatex-cache/generic/fonts/otl/ibmplexmono-bolditalic.luc" 1789666460 131896 cb43e2365ea4940c7ade3e2649cbe7ba ""
@@ -25,6 +25,7 @@
   "C:/Users/henri/AppData/Local/Programs/MiKTeX/fonts/opentype/adobe/sourceserif/SourceSerif4-RegularIt.otf" 1772379221 169132 86a4fb6fcd9ea3f7a62c57e77354326b ""
   "C:/Users/henri/AppData/Local/Programs/MiKTeX/fonts/opentype/adobe/sourceserif/SourceSerif4-Semibold.otf" 1772379221 252852 589abef344005deebd774bf224588432 ""
   "C:/Users/henri/AppData/Local/Programs/MiKTeX/fonts/opentype/ibm/plex/IBMPlexMono-Regular.otf" 1753649167 82328 0590b5d38e962cf3df3dbc89c8b844fb ""
+  "C:/Users/henri/AppData/Local/Programs/MiKTeX/fonts/opentype/public/stix2-otf/STIXTwoMath-Regular.otf" 1617329927 838508 e3f43ea8f47db5b77db8e5941a3a2a7d ""
   "C:/Users/henri/AppData/Local/Programs/MiKTeX/fonts/tfm/public/cm/cmmi10.tfm" 1136765053 1528 abec98dbc43e172678c11b3b9031252a ""
   "C:/Users/henri/AppData/Local/Programs/MiKTeX/fonts/tfm/public/cm/cmmi5.tfm" 1136765053 1508 3b32edd0d68f6498a5a375e78f9edc5e ""
   "C:/Users/henri/AppData/Local/Programs/MiKTeX/fonts/tfm/public/cm/cmmi6.tfm" 1136765053 1512 f21f83efb36853c0b70002322c1ab3ad ""
@@ -258,9 +259,9 @@
   "C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/luatex/luaotfload/luaotfload-unicode.lua" 1740607740 7918 4272855a25780b80472f3b58edd95e33 ""
   "C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/luatex/luaotfload/luaotfload.lua" 1740607740 13566 16df94dd2de231b2bca0aaa0190941fe ""
   "C:/Users/henri/AppData/Roaming/MiKTeX/tex/generic/config/language.dat" 1786480571 2269 c2be9efecb8e53facf8213ae101f16af ""
-  "LAFROX-Subdocumento9-Anexos.aux" 1791745392 14911 bb45ca04185a42ae3e0cae02b9f7c74d "lualatex"
+  "LAFROX-Subdocumento9-Anexos.aux" 1791750075 15167 4a3918d55e389ea2aac6f27d15fb80d4 "lualatex"
   "LAFROX-Subdocumento9-Anexos.tex" 1791730114 585 6214c57796994a7eaaec886e4341cee5 ""
-  "LAFROX-Subdocumento9-Anexos.toc" 1791745392 1468 c684abd17fb1ac56bbec752c78a56963 "lualatex"
+  "LAFROX-Subdocumento9-Anexos.toc" 1791750075 1469 1ea73c03f97d085d2333530b61f45a3c "lualatex"
   "c:/users/henri/appdata/local/programs/miktex/fonts/opentype/adobe/sourcesans/sourcesans3-medium.otf" 1777831523 336848 e7d038378399e1c26443887c39d891d8 ""
   "lafrox-portada.tex" 1791728244 15837 437aa1d9362343ea062beae1fa189664 ""
   "lafrox.cls" 1791728244 43048 b826318122ca96cdf068d3373ac0f9bf ""
