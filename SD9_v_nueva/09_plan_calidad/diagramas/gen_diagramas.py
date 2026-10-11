@@ -5,6 +5,8 @@ Texto a 13 px (~9,4 pt) y ancho <= 600 px para insertar a tamaño natural
 (ancho de texto de la clase lafrox = 448 pt ~ 622 px).
 """
 import html
+
+import pymupdf
 import subprocess
 import sys
 from pathlib import Path
@@ -277,51 +279,236 @@ def fig8():
     d.save()
 
 
+BAR = "rounded=0;html=1;strokeColor=none;fillColor=%s;"
+DIAM = "rhombus;html=1;strokeColor=none;fillColor=%s;"
+BANDA = "rounded=0;html=1;strokeColor=none;fillColor=#FDE8DA;"
+REJ = "rounded=0;html=1;strokeColor=none;fillColor=#C7C7C7;"
+TXTC = TEXT + "align=center;"
+C_DES, C_MB, C_OPE, C_CERT, C_PUNTO = "#555555", "#E8641B", "#BBBBBB", "#111111", "#111111"
+# Congelamientos del Caso (RT-10.05): septiembre = mes 8 + 12k; diciembre = mes 11 + 12k
+CONGELADOS = [m for k in range(5) for m in (8 + 12 * k, 11 + 12 * k) if m <= 56]
+
+
+def leyenda(d, y, items):
+    x = 0
+    for txt, estilo in items:
+        d.box("", x, y + 5, 14, 12, estilo)
+        w = 9 + 7 * len(txt)
+        d.box(txt, x + 18, y, w, 22, TEXT)
+        x += 18 + w + 10
+        if x > 470:
+            x = 0
+            y += 22
+    return y + 22
+
+
 def fig9():
+    """Vista general de los 56 meses: fases, certificaciones, hitos y cada
+    prueba periodica de la Operacion en su mes."""
     d = Diagram("Fig_9-9_Calidad_Cronograma")
-    LW, PX = 190, 7.4   # ancho de rotulos y px por mes (56 meses = 414 px)
+    LW, PX, RH = 186, 7.4, 26
     X0 = LW + 6
 
-    def mx(m):  # inicio del mes m (1 = feb-2027)
+    def mx(m):
         return X0 + (m - 1) * PX
 
-    # Eje de anos: feb-27 es mes 1; enero de cada ano: m = 12k
-    years = [("feb 2027", 1), ("2028", 12), ("2029", 24), ("2030", 36), ("2031", 48)]
-    for yr, m in years:
-        d.box(str(yr), mx(m) + 2, 0, 70, 20, TEXT + "align=left;")
-    rows = [
-        ("Matriz y plan (H1)", 2, 2),
-        ("Usabilidad con usuarios", 2, 4),
-        ("Puertas automáticas (1.5.2)", 6, 20),
-        ("Ensayos de migración", 9, 11),
-        ("Integración y regresión E1 (H4)", 9, 9),
-        ("Certificación E1 (H5)", 9, 10),
-        ("Marcha blanca E1", 13, 15),
-        ("Integración y regresión E2 (H9)", 16, 16),
-        ("Certificación E2 (H10)", 16, 17),
-        ("Marcha blanca E2", 19, 20),
-        ("Pruebas de la Operación", 21, 56),
-    ]
-    y0 = 28
-    for i, (lab, a, b) in enumerate(rows):
-        y = y0 + i * 26
-        d.box(lab, 0, y, LW, 22, TEXT)
-        d.box("", mx(a), y + 4, (b - a + 1) * PX, 14,
-              "rounded=0;html=1;fillColor=#333333;strokeColor=none;")
-    yfz = y0 + len(rows) * 26
-    d.box("Congelamientos (sep. y dic.)", 0, yfz, LW, 22, TEXT)
-    # septiembre = mes 8 + 12k; diciembre = mes 11 + 12k (k = 0..4)
-    for k in range(5):
-        for m in (8 + 12 * k, 11 + 12 * k):
-            if m <= 56:
-                d.box("", mx(m), yfz + 4, PX, 14,
-                      "rounded=0;html=1;fillColor=#E8641B;strokeColor=none;")
-    # rejilla anual
-    for yr, m in years:
-        d.box("", mx(m), 22, 0.6, yfz + 22 - 22 + 4,
-              "rounded=0;html=1;fillColor=#C7C7C7;strokeColor=none;")
+    filas = 10
+    yA = 44
+    alto = filas * RH
+    for m in CONGELADOS:                      # bandas de congelamiento al fondo
+        d.box("", mx(m), yA - 4, PX, alto + 4, BANDA)
+    for etq, m in (("2027", 1), ("2028", 12), ("2029", 24), ("2030", 36), ("2031", 48)):
+        d.box(etq, mx(m) + 2, 0, 44, 20, TEXT)
+        d.box("", mx(m), 20, 0.6, alto + 24, REJ)
+    for m in (1, 13, 21, 32, 44, 56):          # meses de referencia
+        d.box(str(m), mx(m) - 6, 20, 20, 20, TXTC)
+    d.box("mes", 0, 20, LW, 20, TEXT + "fontColor=#5F5F5F;")
+
+    def fila(i, rotulo):
+        y = yA + i * RH
+        d.box(rotulo, 0, y, LW, 22, TEXT)
+        return y
+
+    y = fila(0, "Etapa 1")
+    d.box("", mx(1), y + 4, 12 * PX, 14, BAR % C_DES)
+    d.box("", mx(13), y + 4, 3 * PX, 14, BAR % C_MB)
+    d.box("", mx(16), y + 4, 5 * PX, 14, BAR % C_OPE)
+    y = fila(1, "Etapa 2")
+    d.box("", mx(13), y + 4, 6 * PX, 14, BAR % C_DES)
+    d.box("", mx(19), y + 4, 2 * PX, 14, BAR % C_MB)
+    y = fila(2, "Operación (36 meses)")
+    d.box("", mx(21), y + 4, 36 * PX, 14, BAR % C_OPE)
+    y = fila(3, "Certificaciones 3.8 y 3.9")
+    for a, b in ((9, 10), (16, 17)):
+        d.box("", mx(a), y + 4, (b - a + 1) * PX, 14, BAR % C_CERT)
+    y = fila(4, "Hitos H1 a H12")
+    for m in (2, 4, 6, 10, 12, 13, 14, 16, 17, 18, 19, 21):
+        d.box("", mx(m), y + 5, PX, 12, DIAM % C_PUNTO)
+    y = fila(5, "Recuperación (8.1.3)")
+    for m in (21, 27, 33, 39, 45, 51, 54):
+        d.box("", mx(m) - 2, y + 4, PX + 4, 14, DIAM % C_PUNTO)
+    y = fila(6, "Resiliencia (8.2.2)")
+    for m in (26, 32, 38, 44, 50, 55):
+        d.box("", mx(m) - 2, y + 4, PX + 4, 14, DIAM % C_PUNTO)
+    y = fila(7, "Intrusión (8.2.2)")
+    for m in (28, 40, 52):
+        d.box("", mx(m) - 2, y + 4, PX + 4, 14, DIAM % C_PUNTO)
+    y = fila(8, "Restauración mensual")
+    d.box("", mx(13), y + 8, 44 * PX, 6, BAR % C_PUNTO)
+    y = fila(9, "Puertas automáticas")
+    d.box("", mx(6), y + 8, 51 * PX, 6, BAR % C_PUNTO)
+
+    leyenda(d, yA + alto + 10, [
+        ("Desarrollo", BAR % C_DES), ("Marcha blanca", BAR % C_MB),
+        ("Producción y Operación", BAR % C_OPE), ("Certificación", BAR % C_CERT),
+        ("Hito o prueba puntual", DIAM % C_PUNTO), ("Congelamiento (sep. y dic.)", BANDA),
+    ])
     d.save()
 
 
-for f in (fig1, fig2, fig3, fig4, fig5, fig6, fig7, fig8, fig9):
-    f()
+def fig10():
+    """Detalle de la implementacion (meses 1 a 21) a escala mensual."""
+    d = Diagram("Fig_9-10_Calidad_Implementacion")
+    LW, PX, RH = 210, 18, 24
+    X0 = LW + 4
+
+    def mx(m):
+        return X0 + (m - 1) * PX
+
+    filas = [
+        ("1.2.4 · 1.5.1 Matriz y plan", [(2, 2)]),
+        ("2.6.1–2.6.3 Usabilidad", [(2, 4)]),
+        ("3.10.2 INN-02", [(2, 15)]),
+        ("1.5.2 Puertas automáticas", [(6, 20)]),
+        ("3.7.2–3.7.5 Migración y corte", [(9, 12)]),
+        ("3.8.1 Integración E1", [(9, 9)]),
+        ("3.8.2–3.8.8 Certificación E1", [(9, 10)]),
+        ("Evaluadores subcontratados", [(9, 12), (16, 18)]),
+        ("4.1.2 Ensayo de reversión", [(11, 11)]),
+        ("4.2.1 Marcha blanca E1", [(13, 15)]),
+        ("3.9.1 Integración E2", [(16, 16)]),
+        ("3.9.2–3.9.7 Certificación E2", [(16, 17)]),
+        ("4.3.1 Marcha blanca E2", [(19, 20)]),
+    ]
+    yA = 66
+    n = len(filas) + 2                         # + restauracion + hitos
+    alto = n * RH + 24
+    for m in (8, 11, 20):                      # sep-2027, dic-2027, sep-2028
+        d.box("", mx(m), yA - 4, PX, alto, BANDA)
+    # encabezado: ano, inicial del mes y numero de mes (mes 1 = febrero de 2027)
+    d.box("2027", mx(1), 0, 11 * PX, 20, TXTC + "fontStyle=1;")
+    d.box("2028", mx(12), 0, 10 * PX, 20, TXTC + "fontStyle=1;")
+    d.box("", mx(12), 0, 0.8, alto + yA - 4, REJ)
+    iniciales = "FMAMJJASONDEFMAMJJASO"
+    for m in range(1, 22):
+        d.box(iniciales[m - 1], mx(m), 20, PX, 20, TXTC)
+        d.box(str(m), mx(m) - 2, 40, PX + 4, 20, TXTC + "fontColor=#5F5F5F;")
+    d.box("mes del contrato", 0, 40, LW, 20, TEXT + "fontColor=#5F5F5F;")
+
+    for i, (rot, tramos) in enumerate(filas):
+        y = yA + i * RH
+        d.box(rot, 0, y, LW, 22, TEXT)
+        es_mb = "Marcha blanca" in rot
+        es_cert = "Certificación" in rot
+        color = C_MB if es_mb else (C_CERT if es_cert else C_DES)
+        for a, b in tramos:
+            d.box("", mx(a) + 1, y + 4, (b - a + 1) * PX - 2, 14, BAR % color)
+    y = yA + len(filas) * RH
+    d.box("Restauración de respaldos", 0, y, LW, 22, TEXT)
+    for m in range(13, 21):
+        d.box("", mx(m) + 3, y + 5, PX - 6, 12, DIAM % C_PUNTO)
+    y += RH
+    d.box("Hitos del E-25", 0, y + 6, LW, 22, TEXT)
+    hitos = [("H1", 2), ("H2", 4), ("H3", 6), ("H4", 10), ("H5", 12), ("H6", 13),
+             ("H8", 14), ("H7", 16), ("H9", 17), ("H10", 18), ("H11", 19), ("H12", 21)]
+    for k, (h, m) in enumerate(hitos):
+        d.box("", mx(m) + 3, y + 12, PX - 6, 12, DIAM % C_PUNTO)
+        ty = y - 6 if k % 2 == 0 else y + 26
+        d.box(h, mx(m) - 8, ty, PX + 16, 18, TXTC)
+
+    leyenda(d, yA + alto + 8, [
+        ("Paquete de calidad", BAR % C_DES), ("Certificación", BAR % C_CERT),
+        ("Marcha blanca", BAR % C_MB), ("Hito o restauración", DIAM % C_PUNTO),
+        ("Congelamiento", BANDA),
+    ])
+    d.save()
+
+
+def fig10v():
+    """Detalle de la implementacion en vertical: una fila por mes (1 a 21)."""
+    d = Diagram("Fig_9-10_Calidad_Implementacion_vertical")
+    CM, CF, CA, CH = 104, 128, 316, 52        # anchos: mes, fase, actividades, hito
+    X = [0, CM, CM + CF, CM + CF + CA]
+    W = CM + CF + CA + CH
+    CAB = TEXT + "fontStyle=1;verticalAlign=middle;"
+    for x, w, t in zip(X, (CM, CF, CA, CH), ("Mes", "Fase del contrato", "Actividades de calidad (paquete EDT)", "Hito")):
+        d.box(t, x + 4, 0, w - 4, 24, CAB)
+    d.box("", 0, 25, W, 1.2, "rounded=0;html=1;strokeColor=none;fillColor=#111111;")
+    meses = ["feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic", "ene",
+             "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct"]
+    fase = {**{m: "E1 · desarrollo" for m in range(1, 13)},
+            **{m: "E1 · marcha blanca<br>E2 · desarrollo" for m in (13, 14, 15)},
+            **{m: "E1 · producción<br>E2 · desarrollo" for m in (16, 17, 18)},
+            19: "E2 · marcha blanca", 20: "E2 · marcha blanca", 21: "Operación"}
+    act = {
+        1: "—",
+        2: "Matriz de trazabilidad (1.2.4) · plan de calidad y de pruebas (1.5.1) · investigación con usuarios (2.6.1) · inicio de INN-02 (3.10.2)",
+        3: "Prototipos y pruebas de usabilidad (2.6.2) · INN-02",
+        4: "Indicadores de usabilidad (2.6.3) · INN-02",
+        5: "INN-02",
+        6: "Puertas automáticas activas (1.5.2) · INN-02",
+        7: "Puertas automáticas · INN-02",
+        8: "Puertas automáticas · INN-02",
+        9: "Integración y regresión E1 (3.8.1) · inicio de la certificación E1 (3.8.2–3.8.8) · ensayo de migración 1 (3.7.2) · evaluadores",
+        10: "Certificación E1 y acta (3.8.7) · evaluadores",
+        11: "Ensayo de reversión (4.1.2) · ensayo de migración 2 en Preproducción (3.7.3–3.7.4) · evaluadores",
+        12: "Acta de conciliación y corte (3.7.5) · evaluadores",
+        13: "Marcha blanca E1 con indicadores diarios (4.2.1) · restauración mensual",
+        14: "Marcha blanca E1 · restauración mensual · INN-02",
+        15: "Marcha blanca E1 · restauración mensual · cierre de INN-02 (3.10.2.4)",
+        16: "Integración y regresión E2 (3.9.1) · certificación E2 (3.9.2–3.9.7) · restauración mensual · evaluadores",
+        17: "Acta de certificación E2 (3.9.6) · restauración mensual · evaluadores",
+        18: "Restauración mensual · evaluadores",
+        19: "Marcha blanca E2 en convivencia (4.3.1) · restauración mensual",
+        20: "Marcha blanca E2 con el peak de septiembre · restauración mensual",
+        21: "Inicio de la Operación · primera recuperación con conmutación real (8.1.3) · restauración (8.1.6)",
+    }
+    hito = {2: "H1", 4: "H2", 6: "H3", 10: "H4", 12: "H5", 13: "H6", 14: "H8", 16: "H7",
+            17: "H9", 18: "H10", 19: "H11", 21: "H12"}
+    congelado = {8, 11, 20}
+    helv = pymupdf.Font("helv")
+
+    def lineas_de(txt, ancho):
+        n, linea = 1, ""
+        for w in txt.split(" "):
+            prueba = (linea + " " + w).strip()
+            if helv.text_length(prueba, fontsize=13) > ancho and linea:
+                n, linea = n + 1, w
+            else:
+                linea = prueba
+        return n
+    y = 30
+    LIN = 16                                  # alto de linea a 13 px
+    for m in range(1, 22):
+        lin_act = lineas_de(act[m], CA - 16)
+        lineas = max(lin_act, 2 if "<br>" in fase[m] else 1, 2 if m in congelado else 1)
+        h = lineas * LIN + 6
+        if m in congelado:
+            d.box("", 0, y, W, h, BANDA)
+        año = "2027" if m <= 11 else "2028"
+        etiqueta = f"<b>{m}</b> · {meses[m - 1]} {año}" + ("<br><i>congelamiento</i>" if m in congelado else "")
+        d.box(etiqueta, X[0] + 4, y, CM - 4, h, TEXT)
+        d.box(fase[m], X[1] + 4, y, CF - 4, h, TEXT)
+        d.box(act[m], X[2] + 4, y, CA - 8, h, TEXT)
+        if m in hito:
+            d.box(f"<b>{hito[m]}</b>", X[3] + 4, y, CH - 4, h, TEXT)
+        y += h
+        d.box("", 0, y, W, 0.6, REJ)
+    d.save()
+
+
+if __name__ == "__main__":
+    pedidas = set(sys.argv[2:])
+    for f in (fig1, fig2, fig3, fig4, fig5, fig6, fig7, fig8, fig9, fig10, fig10v):
+        if not pedidas or f.__name__ in pedidas:
+            f()

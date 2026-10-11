@@ -20,7 +20,7 @@
 \contentsline {section}{\numberline {9.3}Alineación con Plan de Trabajo}{25}{section.9.3}%
 \contentsline {subsection}{\numberline {9.3.1}Actividades de calidad en la EDT}{26}{subsection.9.3.1}%
 \contentsline {subsection}{\numberline {9.3.2}Calidad en el cronograma y en los hitos}{26}{subsection.9.3.2}%
-\contentsline {subsection}{\numberline {9.3.3}Pruebas periódicas durante la Operación}{28}{subsection.9.3.3}%
-\contentsline {section}{Referencias}{28}{table.caption.24}%
-\contentsline {section}{Declaración de uso de IA}{30}{table.caption.24}%
+\contentsline {subsection}{\numberline {9.3.3}Pruebas periódicas durante la Operación}{30}{subsection.9.3.3}%
+\contentsline {section}{Referencias}{31}{table.caption.26}%
+\contentsline {section}{Declaración de uso de IA}{32}{table.caption.26}%
 \contentsfinish 
