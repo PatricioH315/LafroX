@@ -4,7 +4,7 @@ Licitación TFEP-01/2026 · Caso 02 — Logística · Distribuidora Puelche S.A.
 
 Este formulario acompaña al Subdocumento 9, Plan de calidad (en adelante, SD9). Contiene el plan de pruebas y validación que exige el Formulario T-13 de las Bases Administrativas: niveles, tipos, ambientes, datos de prueba, criterios de entrada y salida, automatización, y calendario de las pruebas de carga, resiliencia, recuperación ante desastres y seguridad ofensiva (Distribuidora Puelche S.A., 2026a, Formulario T-13). El SD9 resume y analiza este plan; el protocolo con el que el CLIENTE acepta cada hito está en el Formulario T-17.
 
-Mes 1 del contrato = febrero de 2027. Los paquetes de trabajo son los del Formulario T-14 y las fechas y horas, las del Formulario T-15.
+En este formulario, BA, BTT y Caso designan las Bases Administrativas (Distribuidora Puelche S.A., 2026a), las Bases Técnicas Transversales (2026b) y las Bases Técnicas del Caso 02 (2026c). Mes 1 del contrato = febrero de 2027. Los paquetes de trabajo son los del Formulario T-14 y las fechas y horas, las del Formulario T-15.
 
 ---
 
@@ -125,7 +125,7 @@ Varias campañas de certificación coinciden en el tiempo y no pueden compartir 
 | Unitaria y componente | Cambio con solicitud de fusión que cita su requisito o incidencia | Cobertura de lógica de negocio ≥ 70 % y global ≥ 80 %; 0 pruebas en falla; complejidad ciclomática ≤ 10 por método; 0 dependencias prohibidas entre módulos; duplicación ≤ 3 % (T-10) |
 | Contrato | Contratos OpenAPI 3.1 y AsyncAPI 2.6 versionados | 0 contratos rotos |
 | Integración | Imagen promovida a QA sin vulnerabilidades críticas ni altas; simuladores de los 15 flujos disponibles | 15 de 15 flujos sin error (BTT 20.1) |
-| Sistema y regresión | Integración aprobada; juego de datos restituido | 100 % de la batería aprobada; 0 regresiones; p95 de la carga de regresión sin deterioro mayor al 10 % frente a la versión anterior |
+| Sistema y regresión | Integración aprobada; juego de datos restituido | 100 % de la batería aprobada; 0 regresiones; p95, errores y colas de la carga de regresión no peores que en la última versión aceptada (SD4, sección 4.2.4.1.4) |
 | Análisis dinámico | Versión desplegada en QA | 0 alertas altas de DAST; 0 hallazgos críticos o altos de MobSF |
 | Aceptación de usuario | Regresión aprobada; 0 defectos críticos o altos abiertos; personas del CLIENTE convocadas y con inducción | Casos de aceptación firmados por la Contraparte Técnica (BTT 20.1) |
 | Accesibilidad | Vistas completas en QA | 0 incumplimientos WCAG 2.2 A y AA; informe de conformidad entregado (RT-13.01) |
@@ -211,7 +211,7 @@ La automatización es la regla. Una prueba es manual solo si exige el juicio de 
 
 ### 8.2 Tamaño estimado del catálogo
 
-El catálogo se dimensiona por riesgo, con la prioridad de cada requisito en el SD3, Anexos:
+El catálogo se dimensiona por riesgo, con la prioridad de cada requisito en el SD3, Anexos. Los casos por requisito (cinco, tres y dos según la prioridad; uno por RT; siete por integración) son supuestos de estimación de LafroX, que el plan del H1 confirma con el diseño de los casos:
 
 | Grupo | Cantidad | Casos por requisito | Casos |
 |---|---|---|---|
@@ -226,7 +226,7 @@ Los 262 RF y RNF con prioridad propia son los del catálogo del SD3. Las nueve f
 
 ### 8.3 Duración de la regresión
 
-Con el 80 % automatizado: 0,8 × 1.316 ≈ 1.053 casos automáticos. A 30 segundos por caso, la regresión completa toma 1.053 × 0,5 / 60 ≈ 8,8 horas en un ejecutor y ≈ 4,4 horas en dos ejecutores paralelos. Cabe en una ejecución nocturna antes de cada promoción a Preproducción.
+El cálculo usa tres supuestos de LafroX: 80 % de los casos automatizados, 30 segundos por caso automático y 15 minutos por caso manual. Con ellos: 0,8 × 1.316 ≈ 1.053 casos automáticos. A 30 segundos por caso, la regresión completa toma 1.053 × 0,5 / 60 ≈ 8,8 horas en un ejecutor y ≈ 4,4 horas en dos ejecutores paralelos. Cabe en una ejecución nocturna antes de cada promoción a Preproducción.
 
 Los 263 casos manuales, a 15 minutos cada uno, requieren 263 × 15 / 60 ≈ 65,8 HH por ciclo. Se planifican con los evaluadores en los meses de certificación.
 
@@ -297,7 +297,7 @@ Las resiliencias de septiembre (meses 32 y 44) se ejecutan en Preproducción, po
 | Media | Afecta un servicio de nivel medio con alternativa operativa | Se registra y se planifica |
 | Baja | Afecta la reportería sin impedir operar | Se registra y se planifica |
 
-Cada defecto se registra en GitLab con el caso de prueba, el requisito, el ambiente, la versión y la evidencia. Se cierra solo cuando la prueba que lo detectó pasa y queda incorporada a la regresión. Los hallazgos de seguridad conservan su severidad propia y sus plazos de corrección de 7, 15 y 30 días (SD4, sección 4.2.4.1.4).
+Cada defecto se registra en GitLab con el caso de prueba, el requisito, el ambiente, la versión y la evidencia. Se cierra solo cuando la prueba que lo detectó pasa y queda incorporada a la regresión. Los hallazgos de seguridad conservan su severidad propia y sus plazos de corrección de 7, 15 y 30 días corridos para severidad crítica, alta y media (BA, Art. 21.1; SD4, sección 4.2.4.1.4).
 
 ---
 

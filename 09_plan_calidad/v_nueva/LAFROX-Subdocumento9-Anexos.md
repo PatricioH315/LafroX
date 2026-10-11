@@ -2,7 +2,7 @@
 
 Licitación TFEP-01/2026 · Caso 02 — Logística · Distribuidora Puelche S.A.
 
-Estos anexos contienen el detalle que el cuerpo del Subdocumento 9 (SD9) resume. El plan de pruebas está en el Formulario T-13 y el protocolo de aceptación, en el Formulario T-17.
+Estos anexos contienen el detalle que el cuerpo del Subdocumento 9 (SD9) resume. El plan de pruebas está en el Formulario T-13 y el protocolo de aceptación, en el Formulario T-17. En estos anexos, BA, BTT y Caso designan las Bases Administrativas (Distribuidora Puelche S.A., 2026a), las Bases Técnicas Transversales (2026b) y las Bases Técnicas del Caso 02 (2026c).
 
 | Anexo | Contenido | Sección del SD9 que lo cita |
 |---|---|---|
@@ -15,7 +15,7 @@ Estos anexos contienen el detalle que el cuerpo del Subdocumento 9 (SD9) resume.
 
 ## Anexo 9.A — Métricas de calidad del producto
 
-Cada métrica indica su umbral, su origen, el método con que se verifica, el ambiente y el paquete del Formulario T-14 donde se ejecuta. Los nombres de las características son los del Art. 24 de las Bases Administrativas.
+Las métricas siguen el modelo de calidad del producto de ISO/IEC 25010 (International Organization for Standardization [ISO] & International Electrotechnical Commission [IEC], 2011) y el modelo de calidad de datos de ISO/IEC 25012 (ISO & IEC, 2008). Cada métrica indica su umbral, su origen, el método con que se verifica, el ambiente y el paquete del Formulario T-14 donde se ejecuta. Los nombres de las características son los del Art. 24 de las Bases Administrativas.
 
 ### 9.A.1 Funcionalidad
 
@@ -72,7 +72,7 @@ Cada métrica indica su umbral, su origen, el método con que se verifica, el am
 | ID | Subcaracterística | Métrica | Umbral | Origen | Verificación | Paquete |
 |---|---|---|---|---|---|---|
 | 9A-26 | Resistencia | Hallazgos críticos o altos abiertos (SAST, SCA, DAST, imágenes, intrusión) | 0 | RT-04.05; RT-11.20 | Cadena de integración; tercero independiente | 1.5.2; 3.8.6; 3.9.5; 8.2.2 |
-| 9A-27 | Resistencia | Plazo de corrección de hallazgos | Crítico 7 días; alto 15; medio 30 | SD4, sección 4.2.4.1.4 | Registro de vulnerabilidades | 8.2.2 |
+| 9A-27 | Resistencia | Plazo de corrección de hallazgos | Crítico 7 días corridos; alto 15; medio 30 | BA, Art. 21.1; SD4, sección 4.2.4.1.4 | Registro de vulnerabilidades | 8.2.2 |
 | 9A-28 | Confidencialidad | Datos productivos sin anonimizar fuera de Producción | 0; 0 hallazgos de Amazon Macie | Ley N.º 21.719; Caso, RT-11.10 | Verificación previa a la liberación de cada juego | Todas las campañas |
 | 9A-29 | Confidencialidad | Secretos en código, imágenes o configuración | 0 | RT-04.09 | Escaneo de secretos | 1.5.2 |
 
@@ -112,13 +112,13 @@ Cada métrica indica su umbral, su origen, el método con que se verifica, el am
 |---|---|---|---|---|
 | G0 | Compromiso local | Formato; pruebas del módulo en falla | Laravel Pint · ktlint · ESLint; pruebas unitarias | Nadie; se corrige |
 | G1 | Solicitud de fusión | Falta la aprobación de un par; secreto detectado; error de lint | Revisión en GitLab; escaneo de secretos | Nadie |
-| G2 | Integración continua | 9A-30 a 9A-35 incumplidos; hallazgo crítico o alto de SAST o SCA; contrato roto (9A-14); prueba en falla | PHPStan con Larastan, PHPMD, PHPCPD, PhpMetrics, deptrac · detekt, Kover, jscpd · ESLint, Jest; SAST de GitLab; `composer audit`, `npm audit`; Pact; Spectral | Nadie |
-| G3 | Promoción a QA | Imagen con vulnerabilidad crítica o alta; p95 de la carga de regresión peor en más de 10 % que la versión anterior | Amazon Inspector; k6 | Nadie para la vulnerabilidad; el Líder de Calidad para la regresión de desempeño, con registro de deuda y fecha de cierre |
+| G2 | Integración continua | 9A-30 a 9A-35 incumplidos; hallazgo crítico o alto de SAST o SCA; contrato roto (9A-14); prueba en falla | PHPStan con Larastan, PHPMD, PHPCPD, PhpMetrics, deptrac · detekt, Kover, jscpd · ESLint, Jest; SAST de GitLab; `composer audit`; Pact; Spectral | Nadie |
+| G3 | Promoción a QA | Imagen con vulnerabilidad crítica o alta; regresión de desempeño: p95, errores o colas de la carga de regresión peores que en la última versión aceptada, bajo la misma carga y configuración (SD4, sección 4.2.4.1.4) | Amazon Inspector; k6 | Nadie; se corrige |
 | G4 | Promoción a Preproducción | Regresión con fallas; alerta alta de DAST o MobSF; incumplimiento de WCAG 2.2 AA; defecto crítico o alto abierto | Playwright; Espresso; OWASP ZAP; MobSF; axe-core | Nadie |
 | G5 | Paso a producción contractual (H7 y H12) | Una prueba del T-13 que habilita el paso no está aprobada; defecto crítico o alto abierto; falta el acta de la Contraparte Técnica | Expediente del T-17 | Nadie. El acta es una condición adicional y no levanta una prueba fallida |
 | G6 | Operación | Canario con p95 sobre su umbral o con más errores que la versión estable; presupuesto de error crítico del mes agotado | Cadena de entrega del SD4; observabilidad | Nadie. La reversión del canario es automática; se suspenden los despliegues no correctivos hasta el mes siguiente |
 
-El 10 % de G3 es una **tolerancia**: el máximo deterioro que se acepta frente a la versión anterior. Es distinto de los **límites de control** de la sección 9.2.6 del SD9, que se calculan con la variación histórica de la misma métrica y sirven para detectar un proceso inestable antes de que llegue a la tolerancia (PMI, 2017, pp. 274 y 304).
+Los umbrales de las puertas son **tolerancias**: el rango que un requisito acepta, como el p95 de 1 s de la línea de preparación. Son distintos de los **límites de control** de la sección 9.2.6 del SD9, que se calculan con la variación histórica de una métrica y sirven para detectar un proceso inestable antes de que llegue a la tolerancia (PMI, 2017, pp. 274 y 304).
 
 ---
 
@@ -153,7 +153,7 @@ Las 10.528 HH equivalen al 4,9 % de las 216.935 HH de la línea base (10.528 / 2
 
 ### 9.C.2 Costos de no conformidad (esperados en la reserva de contingencia)
 
-| Categoría | Riesgo del SD8 | Evento | HH esperadas (SD8, Anexo 8.A) |
+| Categoría | Riesgo del SD8 | Evento | HH esperadas (SD8, Anexo 8.B, Tabla B.2) |
 |---|---|---|---|
 | Falla interna | R8-31 | Observaciones de revisión que obligan a repetir una certificación | 153,60 |
 | Falla interna | R8-18 | Marcha blanca que no cumple las seis condiciones del Art. 17.3 | 2.956,80 |
@@ -206,6 +206,8 @@ Este anexo muestra el tramo final de la cadena del Caso, 17.1, para los diecisé
 - Distribuidora Puelche S.A. (2026a). *Bases Administrativas, Licitación TFEP-01/2026*.
 - Distribuidora Puelche S.A. (2026b). *Bases Técnicas Transversales, Licitación TFEP-01/2026*.
 - Distribuidora Puelche S.A. (2026c). *Bases Técnicas del Caso 02 — Logística*.
+- International Organization for Standardization & International Electrotechnical Commission. (2008). *ISO/IEC 25012:2008. Software engineering — Software product Quality Requirements and Evaluation (SQuaRE) — Data quality model*.
+- International Organization for Standardization & International Electrotechnical Commission. (2011). *ISO/IEC 25010:2011. Systems and software engineering — Systems and software Quality Requirements and Evaluation (SQuaRE) — System and software quality models*.
 - Ley N.º 21.719. (2024). *Regula la protección y el tratamiento de los datos personales y crea la Agencia de Protección de Datos Personales*. Diario Oficial de la República de Chile.
 - McCabe, T. J. (1976). A complexity measure. *IEEE Transactions on Software Engineering, SE-2*(4), 308–320.
 - Project Management Institute. (2017). *Guía de los fundamentos para la dirección de proyectos (Guía del PMBOK)* (6.ª ed.). Project Management Institute.
