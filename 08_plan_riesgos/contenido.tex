@@ -57,16 +57,16 @@ Las responsabilidades de DAT e IMP se transfieren al frente F8 de Operación, co
 
 Para poder realizar un buen análisis de riegos, debemos de definir la probabilidad (P), el impacto (I) y la prioridad (P x I).
 
-La probabilidad corresponde al grado de probabilidad (P) de que un riesgo ocurra durante un ciclo de vida del proyecto. La valoración se realiza en una escala de \textbf{1 a 5}, según la tabla 8.2, donde 1 representa la probabilidad muy baja y 5 una probabilidad muy alta.
+La probabilidad corresponde al grado de probabilidad (P) de que un riesgo ocurra durante un ciclo de vida del proyecto. La valoración se realiza en una escala de \textbf{1 a 5}, según la tabla 8.2, donde 1 representa la probabilidad muy baja y 5 una probabilidad muy alta. La valoración se divide entre percentiles según su probabilidad de que ocurra.
 
 \begin{tablalafrox}{Escala de probabilidad -- Fuente: elaboración propia}{tab:tabla-probabilidad}%
-  {F{0.24} Y Y}%
-  {\cab{Valor} & \cab{Descripción} & \cab{Criterio cualitativo}}
-  1 & Muy baja & Poco probable que ocurra; condiciones excepcionales \\
-  2 & Baja & Puede ocurrir en casos aislados \\
-  3 & Media & Podria ocurrir algunas veces durante el proyecto \\
-  4 & Alta & Ocurrira con frecuencia si no se mitiga \\
-  5 & Muy alta & Casi seguro de que ocurra \\
+  {G{0.08} G{0.16} Y Y}%
+  {\cab{Valor} & \cab{Percentil} & \cab{Descripción} & \cab{Criterio cualitativo}}
+  1 & 0-20\% &Muy baja & Poco probable que ocurra; condiciones excepcionales \\
+  2 & 20-40\% & Baja & Puede ocurrir en casos aislados \\
+  3 & 40-60\% &Media & Podria ocurrir algunas veces durante el proyecto \\
+  4 & 60-80\% &Alta & Ocurrira con frecuencia si no se mitiga \\
+  5 & 80-100\% &Muy alta & Casi seguro de que ocurra \\
 \end{tablalafrox}
 
 Por otro lado, el impacto (I) representa el nivel de afectación que tendria el riesgo si llegara a materializarse. Se evalúa también en una escala de \textbf{1 a 5}, donde 1 representa un impacto insignificante y 5 un impacto muy alto.
