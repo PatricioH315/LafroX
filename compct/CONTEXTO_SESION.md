@@ -86,7 +86,11 @@ No se editaron fuentes LaTeX, firma o revisores ni se aplicaron arreglos a losPD
 
 El usuario considera artificial y confusa la respuesta «Documentado; entrega pendiente de comprobar» sobre el T-6. Prefiere respuestas directas que describan la corrección visible, sin cautelas genéricas sobre el envío. Se simplificó S1-01 del registro basado en LaTeX: T-6 incorporado como PDF separado, tres proyectos y once campos, con páginas verificadas 5–8. El PDF de nueve páginas fue compilado en la sesión; no confundir acreditaciones pendientes con ausencia del formulario. Engram no disponible; preferencia registrada aquí.
 
-## Estado vigente — 11 de octubre de 2026: revisión exhaustiva y recompilación del SD2 LaTeX
+## Estado vigente — 11 de octubre de 2026: SD2 LaTeX publicado con fecha de entrega
+
+Por instrucción del usuario, la fecha de emisión de las portadas del SD2 (cuerpo y anexos) queda en «12 de octubre de 2026». Se fijó con la clave `fecha` de `\datoslafrox` en los dos `.tex` raíz, sin tocar la plantilla común. Se recompiló sin errores ni desbordes (25 y 20 páginas) y se hizo commit y push en `LafroX-Subdoc2-LateX` (0a6f788). En rama-md, los cambios MD del SD2 ya estaban publicados por el usuario (97d7321); se actualizaron la trazabilidad del SD2 y este contexto. Pendientes del SD2: marcador «[[REVISIÓN HUMANA]]» en la Tabla 2.A.9, fila 2.3 de la Tabla 2.4, erratas dentro de las imágenes y «Caso 02» en la plantilla común de portadas.
+
+## Estado anterior — 11 de octubre de 2026: revisión exhaustiva y recompilación del SD2 LaTeX
 
 Por instrucción del usuario («revisa todo exhaustivamente, compila y vuelve a revisar»), se auditó por script el PDF del SD2: orden cita → figura/tabla → análisis, tamaño de letra, ocupación de páginas, cortes de listas y avisos del compilador. También se revisaron visualmente las 25 páginas del cuerpo y las 20 de los anexos.
 

@@ -5,7 +5,7 @@
 Tabla de observación–respuesta–sección modificada exigida por las Bases Administrativas, artículo 46° y Formulario T-22, apartado «Informe y presentación 2». Se contrastan las observaciones de `Revision_informe.md`, apartado «SUBDOCUMENTO 2», y las observaciones generales que alcanzan al SD2, con:
 
 - el Markdown actual de `rama-md`: `02_problema_necesidad/LAFROX-Subdocumento2.md` y `LAFROX-Subdocumento2-Anexos.md`;
-- el checkout LaTeX del SD2 (`../LafroX-sd2-latex`, rama `LafroX-Subdoc2-LateX`), ajustado el 11-10-2026 a las Aclaraciones y recompilado sin errores, cajas desbordadas ni avisos: cuerpo de 25 páginas y anexos de 20, ambos en tamaño carta. Estos cambios todavía no tienen commit.
+- el checkout LaTeX del SD2 (`../LafroX-sd2-latex`, rama `LafroX-Subdoc2-LateX`), ajustado el 11-10-2026 a las Aclaraciones y recompilado sin errores, cajas desbordadas ni avisos: cuerpo de 25 páginas y anexos de 20, ambos en tamaño carta. Cambios publicados en el commit 0a6f788 de esa rama.
 
 Las páginas de la tercera columna son las de esos PDF («p.» = cuerpo; «Anexos p.» = PDF de anexos) y coinciden con sus índices impresos. Si se recompilan, hay que cotejarlas de nuevo.
 
@@ -44,7 +44,7 @@ Las páginas de la tercera columna son las de esos PDF («p.» = cuerpo; «Anexo
 | Observación del Informe 1 | Respuesta / corrección comprobable en el informe actual | Sección modificada / ubicación actual |
 |---|---|---|
 | G2-01. Sin identidad de empresa. | **Documentado.** Se usa la plantilla `lafrox.cls`, con logotipo, encabezado y pie con folio. | Cuerpo y anexos, todas las páginas. |
-| G2-02. Las portadas rompen la ficción y se rotulan «Formulario T-22». | **Documentado.** Las portadas no tienen datos del curso y se rotulan «Formulario T-7». Pendientes: la fecha de emisión dice 05-10-2026 y debe ser la de entrega; la plantilla común imprime «Caso 02 — Logística» en todas las portadas. | Cuerpo y anexos, p. 1. |
+| G2-02. Las portadas rompen la ficción y se rotulan «Formulario T-22». | **Documentado.** Las portadas no tienen datos del curso y se rotulan «Formulario T-7». La fecha de emisión es el 12 de octubre de 2026. Pendiente: la plantilla común imprime «Caso 02 — Logística» en todas las portadas. | Cuerpo y anexos, p. 1. |
 | G2-03. A4 y cuerpo menor a 11 pt. | **Documentado.** Tamaño carta y cuerpo de 11 pt. | `lafrox.cls`. |
 | G2-04. Sin índice, folio ni firma. | **Parcial.** Hay índice enlazable, listas y folio; los anexos ya no traen una lista de figuras vacía. La firma efectiva no se puede comprobar en el archivo. | Cuerpo, p. 1–4; anexos, p. 1–3. |
 | G2-05. El documento resume y el anexo lista. | **Documentado.** | SD2, §2.5, p. 22–23; Anexos, p. 4–19. |
@@ -58,8 +58,7 @@ Las páginas de la tercera columna son las de esos PDF («p.» = cuerpo; «Anexo
 1. **Bloqueante:** completar la revisión humana de la Tabla 2.A.9 y actualizar la fila 2.3 de la Tabla 2.4 (G2-07).
 2. Corregir en draw.io las erratas de las Figuras 2.1, 2.2, 2.5 y 2.6, el texto pegado al borde en la 2.4 y la numeración de las cajas; las imágenes no se editaron (S2-23).
 3. Decidir si se agrega una figura de matriz influencia–interés (S2-16), supuestos propios sobre volumetría, ERP y telemetría (S2-20) y las materias pendientes del 16.2 (S2-11).
-4. Ajustar la fecha de portada y decidir si la plantilla común deja de mostrar «Caso 02» en las portadas de todos los subdocumentos.
-5. Hacer commit de los cambios del checkout LaTeX cuando el equipo los revise.
+4. Decidir si la plantilla común deja de mostrar «Caso 02» en las portadas de todos los subdocumentos.
 
 ## Fuentes de cotejo
 
