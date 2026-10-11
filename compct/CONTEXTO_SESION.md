@@ -1,4 +1,19 @@
 # CONTEXTO DE SESIÓN
+
+## S1-10 implementado y tres entregables SD1 alineados — 11 de octubre de 2026
+
+**Autorización:** usuario aprobó rangos ficticios de antigüedad y esquema NOC, pidió ejecución en el mismo LaTeX, revisión exhaustiva y alineación con rama-md. S1-18 sólo propuesta, sin implementarlo. Principal rama-md y externo LafroX-Subdoc1-LateX comprobados. No autoriza nuevo commit/push.
+
+**Implementado:** tabla dotación cinco columnas: 48 desarrollo1–8años;15arquitectura3–10;32NOC1–7;12SRE2–8;10QA2–9;7seguridad2–8. Son antecedentes ficticios autorizados del ejercicio, no datos reales ni revisión humana. NOC cuatro equipos7+4reemplazos=32; seis puestos activos (responsable+5operadores), séptimo de equipo releva. Tres franjas00–08/08–16/16–24 y rotación/descansos por cuadrante, reglas relevo/reemplazos/escalamiento, ajuste horario Chile, NOC separado de mesa/SOC y no exclusivo32paraPuelche. Cálculo conservador40h:1280brutas−1008cobertura=272margen para formación, pausas y ausencias; no demuestra por sí solo un cuadrante nominal legal ni capacidad adicional vendible. Consulta DT confirma reducción42en2026/40en2028 (https://dt.gob.cl/portal/1626/w3-article-129225.html), modelo40no depende de42; no se agregó consejo legal ni se afirma aprobación laboral.
+
+**Coherencia y espejo:** se detectó política QA previa sólo en MD:70%negocio+80%global. Preservada trasladándola primero a contenido.tex. Refs/IA agregadas al índice PDF cuerpo. SD1MD y T6MD sincronizados completamente; creado MD de anexos antes ausente. Figura real enlazada desde checkout LaTeX; cero descripciones sustitutorias. Se conserva portada/nomenclatura y títulos obligatorios; índices MD navegables sin folios ficticios. Sólo .md escritos en rama-md. Fuentes/PDF/vistas sólo externos con permisos aprobados. No se cambiaron Bases ni SD2/SD3/SD4/SD9; cambios concurrentes preservados.
+
+**Verificación:** tres pasadas LuaLaTeX cuerpo salida0,19p; anexos3p y T6 7p conservados.29p inspeccionadas visualmente, cinco tablas cuerpo/tres fuera, cero cajas desbordadas/ref indefinidas/Caso02, encabezados completos tras ampliar Personas. Fuente T6/campos intactos; Markdown conserva11campos,6rangos,5+1+2tablas y8+1+1marcadoreshumanos. Links internos y figura comprobados; aritmética124/32/24h/1280/1008/272 y70/80 verificada; diff-check conforme. Registro trazabilidad28filas actualizado, S1-10 incorporado sujeto a revisión del integrante; S1-18 pendiente, firmas y revisión real pendientes.
+
+**Propuesta S1-18 a presentar:** inventario ficticio aún no aprobado:92equipos para Ingeniería/QA/Seguridad/SRE (48+15+10+7+12),8puestos compartidosNOC (6activos+2relevo),8puestosmesa (7hora cargada+1reserva),4equiposrepuesto;total112. No son equipos actuales comprobados ni compras para CLIENTE; requerir aprobación antes de añadirlos a la oferta.  separar inventario corporativo (tipo/cantidad/sede/uso, sin copiar equipos futuros del CLIENTE) y capacidad de mesa. Reusar cálculo vigente tabla de volumetría del SD4 y Anexo4-W.7 y T15:demanda2000contactos/mes,capacidad2283 inicial y2391desde25; son contactos y capacidad del proyecto, no usuarios ni capacidad total corporativa. La dotación global de mesa no figura entre124; cualquier propuesta de personal adicional requiere definir/aprobar su relación con ese conteo. No transformar horas/productividad en prueba de SLA80%/20s ni intercambiar contactos por tickets sin definición.
+
+**Archivos:** externo contenido.tex y PDF/auxiliares; Markdown01_presentacion_empresa/LAFROX-Subdocumento1.md, LAFROX-Subdocumento1-Anexos.md, LAFROX-Formulario-T-6.md; Revision/trazabilidad_Informe1_Informe2_SD1_LaTeX.md; este contexto. Siguiente:definir y autorizar inventario/capacidadcorporativaS1-18 y revisiónhumana. Identidad runtime memoria no confirmada: no escrituras agent-attributed; resumen local preservado.
+
 ## Estado vigente — 11 de octubre de 2026: correcciones de revisión SD9
 
 Se corrigieron sólo los cuatro Markdown de SD9 v_nueva: 42 textos de caída, referencia al calendario efectivo T-17 4.1, subtotal de conformidad y modelo paramétrico de no conformidad (93,8 HH por evento interno y 109,8 externo; no pronóstico ni reserva), secuencia PRE-C con restitución y capacidad neta pendiente de confirmación. LaTeX y diagramas actualizados en el repositorio independiente Subdoc/LafroX/SD9_v_nueva, cuatro PDF recompilados. Se conservaron las siete marcas de revisión humana y las firmas pendientes. Bases disponibles sólo en Markdown: lista de 220 pasajes para agregar páginas manualmente en Subdoc/Revision/citas_Bases_SD9_paginas_pendientes.md. No se recuperaron cifras desactualizadas de SD8. Informe de cierre en Subdoc/Revision/correcciones_SD9_2026-10-11.md. No se modificaron los cambios ajenos de SD13 ni se hizo commit.
@@ -86,7 +101,21 @@ No se editaron fuentes LaTeX, firma o revisores ni se aplicaron arreglos a losPD
 
 El usuario considera artificial y confusa la respuesta «Documentado; entrega pendiente de comprobar» sobre el T-6. Prefiere respuestas directas que describan la corrección visible, sin cautelas genéricas sobre el envío. Se simplificó S1-01 del registro basado en LaTeX: T-6 incorporado como PDF separado, tres proyectos y once campos, con páginas verificadas 5–8. El PDF de nueve páginas fue compilado en la sesión; no confundir acreditaciones pendientes con ausencia del formulario. Engram no disponible; preferencia registrada aquí.
 
-## Estado vigente — 11 de octubre de 2026: revisión exhaustiva y recompilación del SD2 LaTeX
+## Estado vigente — 11 de octubre de 2026: MD del SD2 sincronizado con el LaTeX (0a6f788)
+
+Por petición del usuario, se tomó el LaTeX como fuente y se cotejó el MD por bloques (párrafos, ítems, filas de tabla, leyendas y títulos, en orden) en modo estricto y luego por formato (negritas y cursivas). El contenido ya coincidía; se corrigieron en el MD:
+- signo menos en «−22 °C» (anexos);
+- «$ 4,2 millones» (cuerpo);
+- 41 negritas y cursivas en el cuerpo: rótulos de listas, «Decisión que requiere la necesidad:», términos como *fill rate*, *cross-docking*, *AS-IS* y *recall*, y títulos APA de las referencias;
+- 4 marcas en los anexos.
+
+Resultado: 0 diferencias de contenido y de formato. Pendiente de decisión: los enlaces del MD `figuras/figura 2.x.pdf` apuntan a una carpeta que solo existe en el checkout LaTeX. Sin commit.
+
+## Estado anterior — 11 de octubre de 2026: SD2 LaTeX publicado con fecha de entrega
+
+Por instrucción del usuario, la fecha de emisión de las portadas del SD2 (cuerpo y anexos) queda en «12 de octubre de 2026». Se fijó con la clave `fecha` de `\datoslafrox` en los dos `.tex` raíz, sin tocar la plantilla común. Se recompiló sin errores ni desbordes (25 y 20 páginas) y se hizo commit y push en `LafroX-Subdoc2-LateX` (0a6f788). En rama-md, los cambios MD del SD2 ya estaban publicados por el usuario (97d7321); se actualizaron la trazabilidad del SD2 y este contexto. Pendientes del SD2: marcador «[[REVISIÓN HUMANA]]» en la Tabla 2.A.9, fila 2.3 de la Tabla 2.4, erratas dentro de las imágenes y «Caso 02» en la plantilla común de portadas.
+
+## Estado anterior — 11 de octubre de 2026: revisión exhaustiva y recompilación del SD2 LaTeX
 
 Por instrucción del usuario («revisa todo exhaustivamente, compila y vuelve a revisar»), se auditó por script el PDF del SD2: orden cita → figura/tabla → análisis, tamaño de letra, ocupación de páginas, cortes de listas y avisos del compilador. También se revisaron visualmente las 25 páginas del cuerpo y las 20 de los anexos.
 
