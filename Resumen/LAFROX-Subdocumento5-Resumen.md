@@ -12,7 +12,7 @@ Explica qué información registra la solución, quién puede modificarla, cómo
 
 El [modelo](../05_modelo_datos/LAFROX-Subdocumento5.md#51-modelo) separa producto, lote sanitario y unidad logística; también distingue pedido, promesa, reserva, misión de preparación, entrega e intento. Esa separación evita que una segunda visita cuente como otro pedido o que un código externo cree un producto distinto.
 
-El diccionario de Anexo 5-A contiene **111 entidades y 791 atributos**. Los quince almacenes lógicos distribuyen responsabilidades; no significan quince motores independientes. Una referencia entre dominios no se presenta automáticamente como una clave física de base de datos.
+El diccionario de Anexo 5-A contiene **121 entidades y 987 atributos**. Los quince almacenes lógicos distribuyen responsabilidades; no significan quince motores independientes. Una referencia entre dominios no se presenta automáticamente como una clave física de base de datos.
 
 ## Autoridad y operación sin conexión
 

@@ -645,7 +645,7 @@ La Tabla A.6 desarrolla los atributos de ruta, reparto y envases, con sus condic
 | `rep_devolucion_linea` | `unidad_logistica_id` | Identificador de unidad logistica | uuid, 128 bits | UUID del registro referenciado | Obligatorio; referencia válida | Referencia a `inv_unidad_logistica.unidad_logistica_id`; integridad según 5-B | `REP` | `ME`; `P27` |
 | `rep_devolucion_linea` | `cantidad` | Cantidad | decimal(18,3) | Numérico no negativo, tres decimales, en la unidad de medida declarada | Obligatorio | Sin clave | `REP` | `ME`; `P27` |
 | `rep_devolucion_linea` | `motivo` | Motivo | string(512) | Texto libre normalizado, hasta 512 caracteres, con el detalle que exige el registro | Obligatorio | Sin clave | `REP` | `ME`; `P27` |
-| `rep_devolucion_linea` | `disposicion` | Disposicion | string(32), catálogo | REINGRESO, MERMA, DESTRUCCION | Obligatoria al evaluar/cerrar; NULL mientras se decide | Sin clave | `REP` | `ME`; `P27` |
+| `rep_devolucion_linea` | `disposicion` | Disposicion | string(32), catálogo | REINGRESO, VENTA_DESCUENTO, DEVOLUCION_PROVEEDOR, MERMA, DESTRUCCION | Obligatoria al evaluar/cerrar; NULL mientras se decide | Sin clave | `REP` | `ME`; `P27` |
 | `env_cuenta_corriente` | `cuenta_id` | Identificador de cuenta | uuid, 128 bits | UUID generado; independiente del código comercial | Obligatorio, clave primaria | Clave primaria | `REP` | `ME`; `P27` |
 | `env_cuenta_corriente` | `cliente_id` | Identificador de cliente | uuid, 128 bits | UUID del registro referenciado | Obligatorio; referencia válida | Referencia a `mae_cliente.cliente_id`; integridad según 5-B | `REP` | `ME`; `P27` |
 | `env_cuenta_corriente` | `tipo_envase` | unica cuenta por cliente y tipo | string(32), catálogo | Código activo del maestro versionado de tipos de envase del CLIENTE; 1–32 caracteres, sin serialización individual ni alta por defecto; validación y rechazo DOMINIO_NO_ADMITIDO según 5-C | Obligatorio | Sin clave | `REP` | `ME`; `P27` |
@@ -1444,7 +1444,7 @@ Cada regla de calidad declara dominio, punto de aplicación y causa tipificada. 
 | cob_cobro.origen, cob_rendicion.origen | REPARTO, PREVENTA | Mismo origen/responsable al rendir | ORIGEN_COBRO_INVALIDO |
 | cob_gestion.tipo, resultado | CONTACTO/COMPROMISO/SEGUIMIENTO/CIERRE; CONTACTADO/SIN_CONTACTO/COMPROMISO/INCUMPLIDO/PAGADO | Compromiso exige monto/fecha y seguimiento exige recontacto | GESTION_INCOMPLETA |
 | cob_saldo_documento.tramo_antiguedad, hech_cartera_antiguedad.tramo_antiguedad | CORRIENTE, HASTA_30, HASTA_60, HASTA_90, MAS_90 | Tramos exhaustivos y excluyentes según 5-H | CARTERA_INCONSISTENTE |
-| rep_devolucion_linea.disposicion, inv_merma.origen, causa | REINGRESO/MERMA/DESTRUCCION; CONTEO/PREPARACION/GONDOLA/DEVOLUCION; VENCIMIENTO/DANO/RUPTURA_FRIO/OTRO | Disposición de Calidad auditada y origen trazable | MERMA_SIN_ORIGEN |
+| rep_devolucion_linea.disposicion, inv_merma.origen, causa | REINGRESO/VENTA_DESCUENTO/DEVOLUCION_PROVEEDOR/MERMA/DESTRUCCION; CONTEO/PREPARACION/GONDOLA/DEVOLUCION; VENCIMIENTO/DANO/RUPTURA_FRIO/OTRO | Disposición de Calidad auditada y origen trazable | MERMA_SIN_ORIGEN |
 
 **Tabla A.12 - Dominios de valores cerrados y su validación**
 

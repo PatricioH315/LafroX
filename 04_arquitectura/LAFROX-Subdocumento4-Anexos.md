@@ -105,7 +105,7 @@ La tabla identifica, para cada evento canónico, su productor, sus consumidores,
 | EnvaseMovido | M8 | M2, M10 | cliente_id | Decisión 16.1 N° 10: 68.000 canastillos, 9.400 pallets, 14% pérdida |
 | ExcursionTermicaDetectada | M9 (borde) | M2 (retención), M5 (bloqueo), M10, alertas | shipment_id | Decisión 16.1 N° 4: bloqueo local < 5 s |
 | RendicionCerrada | M7 | M10, ACL→ERP | conductor_id | Control efectivo que circula en ruta |
-| DesviacionDeRutaDetectada | M12 | M10, M9 | ruta_id | Costo de servir; no control de jornada. |
+| DesviacionDeRutaDetectada | M12 | M10, M9 | ruta_id | Costo de servir y alerta al centro de control sobre 3 km de desvío; no control de jornada. |
 
 Fuente: elaboración propia a partir de las Bases Técnicas del caso (cap. 16, pp. 28–29) y de los flujos del apartado 4.1.
 
