@@ -1,0 +1,20 @@
+% !LW recipe = latexmk (lualatex)
+% !TEX program = lualatex
+%% LAFROX-Subdocumento13.tex -- documento raiz. Compilar: latexmk LAFROX-Subdocumento13.tex
+\documentclass[carta,firma,final]{lafrox}
+\datoslafrox{
+  documento    = {Propuesta Técnica},
+  subtitulo    = {Informe 2},
+  alcance      = {Subdocumento 13 --- Innovaciones},
+  formulario   = {Cuerpo del subdocumento},
+  nomenclatura = {LAFROX-Subdocumento13.pdf},
+}
+\input{sd13-comun.tex}
+\LFXsincortestrue
+\LFXtablasflotantes
+\begin{document}
+\portadalafrox
+\preliminareslafrox
+\setcounter{chapter}{12}
+\subdocumento{13_innovaciones}
+\end{document}
