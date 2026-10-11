@@ -20,7 +20,7 @@ Las [reglas de negocio](../03_esquema_solucion_alcance/LAFROX-Subdocumento3.md#3
 
 ## Cifras y aceptación
 
-El [catálogo ofertado](../03_esquema_solucion_alcance/LAFROX-Subdocumento3.md#323-cat%C3%A1logo-de-requerimientos-y-correspondencia) contiene **175 requerimientos funcionales** y **86 no funcionales**. T-12 incluye **181 filas RF y 90 RNF** al añadir materias absorbidas, alias o no ofertadas; no son conteos intercambiables.
+El [catálogo ofertado](../03_esquema_solucion_alcance/LAFROX-Subdocumento3.md#323-cat%C3%A1logo-de-requerimientos-y-correspondencia) contiene **176 requerimientos funcionales** y **86 no funcionales**. T-12 incluye **181 filas RF y 90 RNF** al añadir materias absorbidas y alias; no son conteos intercambiables.
 
 La aceptación exige, entre otros resultados, identificar afectados por lote en **menos de 2 horas**, capturar lote donde corresponde y sincronizar sin perder ni duplicar pedidos. Las metas propias de OTIF son **90 % en mes 15, 93 % en mes 19 y 95 % en mes 32**; no son resultados ya alcanzados. Véase [cómo se verifica](../03_esquema_solucion_alcance/LAFROX-Subdocumento3.md#325-criterios-de-aceptaci%C3%B3n).
 

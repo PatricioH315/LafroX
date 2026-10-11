@@ -149,13 +149,13 @@ La Tabla 9.C.1 resume la matriz.
 
 | Grupo | Identificadores | Con prueba propia | Sin prueba propia | Casos estimados |
 | --- | --- | --- | --- | --- |
-| RF | 181 | 175 | 6 | 544 |
+| RF | 181 | 176 | 5 | 547 |
 | RNF | 90 | 84 | 6 | 302 |
 | RT | 374 | 354 | 20 | 354 |
 | Contratos de las 15 integraciones | — | — | — | 105 |
-| **Total** | **645** | **613** | **32** | **1.305** |
+| **Total** | **645** | **614** | **31** | **1.308** |
 
-La matriz asigna prueba propia a 613 de los 645 identificadores. Los 32 restantes son 23 en estado «No cumple» y 9 absorbidos por otra fila. Con los 105 casos de contrato de las integraciones, siete por cada una de las 15, el catálogo suma 544 + 302 + 354 + 105 = 1.305 casos, la cifra que usa la sección 9.2.3 del Subdocumento 9.
+La matriz asigna prueba propia a 614 de los 645 identificadores. Los 31 restantes son 22 en estado «No cumple» y 9 absorbidos por otra fila. Con los 105 casos de contrato de las integraciones, siete por cada una de las 15, el catálogo suma 547 + 302 + 354 + 105 = 1.308 casos, la cifra que usa la sección 9.2.3 del Subdocumento 9.
 
 ### 9.C.2 Matriz
 
@@ -172,18 +172,18 @@ La Tabla 9.C.2 presenta la matriz completa, en el orden del Formulario T-12.
 | RF-01.05 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 | H4 · H5 | 3 |
 | RF-01.06 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 | H4 · H5 | 3 |
 | RF-01.07 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 | H4 · H5 | 2 |
-| RF-01.08 | Cumple parcialmente | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 | H4 · H5 | 2 |
+| RF-01.08 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 | H4 · H5 | 2 |
 | RF-01.09 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 | H4 · H5 | 5 |
-| RF-01.10 | Cumple parcialmente | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 | H4 · H5 | 5 |
-| RF-01.11 | Cumple parcialmente | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 | H4 · H5 | 5 |
-| RF-02.01 | Cumple parcialmente | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 | H4 · H5 | 3 |
+| RF-01.10 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 | H4 · H5 | 5 |
+| RF-01.11 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 | H4 · H5 | 5 |
+| RF-02.01 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 | H4 · H5 | 3 |
 | RF-02.02 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 | H4 · H5 | 3 |
-| RF-02.03 | Cumple parcialmente | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 | H4 · H5 | 3 |
+| RF-02.03 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 | H4 · H5 | 3 |
 | RF-02.04 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 | H4 · H5 | 3 |
 | RF-02.05 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 | H4 · H5 | 3 |
 | RF-02.06 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 | H4 · H5 | 2 |
-| RF-02.07 | Cumple parcialmente | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 | H4 · H5 | 3 |
-| RF-02.08 | Cumple parcialmente | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 | H4 · H5 | 3 |
+| RF-02.07 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 | H4 · H5 | 3 |
+| RF-02.08 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 | H4 · H5 | 3 |
 | RF-02.09 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 | H4 · H5 | 3 |
 | RF-02.10 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 | H4 · H5 | 3 |
 | RF-02.11 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 | H4 · H5 | 3 |
@@ -198,14 +198,14 @@ La Tabla 9.C.2 presenta la matriz completa, en el orden del Formulario T-12.
 | RF-03.09 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 | H4 · H5 | 5 |
 | RF-03.10 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 | H4 · H5 | 3 |
 | RF-03.11 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 | H4 · H5 | 2 |
-| RF-03.12 | Cumple parcialmente | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 | H4 · H5 | 2 |
+| RF-03.12 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 | H4 · H5 | 2 |
 | RF-03.13 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 | H4 · H5 | 5 |
 | RF-03.14 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 | H4 · H5 | 3 |
 | RF-03.15 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 | H4 · H5 | 5 |
 | RF-03.16 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 | H4 · H5 | 5 |
-| RF-04.01 | Cumple parcialmente | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 | H4 · H5 | 3 |
+| RF-04.01 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 | H4 · H5 | 3 |
 | RF-04.02 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 | H4 · H5 | 2 |
-| RF-04.03 | Cumple parcialmente | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 | H4 · H5 | 3 |
+| RF-04.03 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 | H4 · H5 | 3 |
 | RF-04.04 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 | H4 · H5 | 3 |
 | RF-04.05 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 | H4 · H5 | 3 |
 | RF-04.06 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 | H4 · H5 | 2 |
@@ -234,22 +234,22 @@ La Tabla 9.C.2 presenta la matriz completa, en el orden del Formulario T-12.
 | RF-06.14 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 | H4 · H5 | 3 |
 | RF-07.01 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 | H4 · H5 | 3 |
 | RF-07.02 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 | H4 · H5 | 3 |
-| RF-07.03 | Cumple parcialmente | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 | H4 · H5 | 3 |
-| RF-07.04 | Cumple parcialmente | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 | H4 · H5 | 3 |
+| RF-07.03 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 | H4 · H5 | 3 |
+| RF-07.04 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 | H4 · H5 | 3 |
 | RF-07.05 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 | H4 · H5 | 3 |
-| RF-07.06 | Cumple parcialmente | Sistema y aceptación de usuario | QA · PREPROD | 3.9.1 · 3.9.2 | H9 · H10 | 3 |
+| RF-07.06 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 | H4 · H5 | 3 |
 | RF-07.07 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.9.1 · 3.9.2 | H9 · H10 | 3 |
-| RF-07.08 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 | H4 · H5 | 3 |
+| RF-07.08 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.9.1 · 3.9.2 | H9 · H10 | 3 |
 | RF-07.09 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 | H4 · H5 | 3 |
 | RF-07.10 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 | H4 · H5 | 3 |
-| RF-07.11 | No cumple | Sin prueba: no ofertado | — | — | — | 0 |
+| RF-07.11 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 | H4 · H5 | 3 |
 | RF-08.01 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 | H4 · H5 | 5 |
 | RF-08.02 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 | H4 · H5 | 5 |
 | RF-08.03 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 | H4 · H5 | 3 |
 | RF-08.04 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 | H4 · H5 | 3 |
 | RF-08.05 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 | H4 · H5 | 3 |
 | RF-08.06 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 | H4 · H5 | 3 |
-| RF-08.07 | Cumple parcialmente | Sistema y aceptación de usuario | QA · PREPROD | 3.9.1 · 3.9.2 | H9 · H10 | 3 |
+| RF-08.07 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.9.1 · 3.9.2 | H9 · H10 | 3 |
 | RF-09.01 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 | H4 · H5 | 5 |
 | RF-09.02 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 | H4 · H5 | 5 |
 | RF-09.03 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 | H4 · H5 | 5 |
@@ -267,7 +267,7 @@ La Tabla 9.C.2 presenta la matriz completa, en el orden del Formulario T-12.
 | RF-11.02 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.9.1 · 3.9.2 | H9 · H10 | 2 |
 | RF-11.03 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 | H4 · H5 | 3 |
 | RF-11.04 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 | H4 · H5 | 3 |
-| RF-11.05 | Cumple parcialmente | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 | H4 · H5 | 3 |
+| RF-11.05 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 | H4 · H5 | 3 |
 | RF-11.06 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 | H4 · H5 | 3 |
 | RF-11.07 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 | H4 · H5 | 3 |
 | RF-11.08 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.9.1 · 3.9.2 | H9 · H10 | 2 |
@@ -340,7 +340,7 @@ La Tabla 9.C.2 presenta la matriz completa, en el orden del Formulario T-12.
 | RF-17.13 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 · 3.9.1 · 3.9.2 | H4 · H5 · H9 · H10 | 2 |
 | RF-18.01 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 · 3.9.1 · 3.9.2 | H4 · H5 · H9 · H10 | 3 |
 | RF-18.02 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 · 3.9.1 · 3.9.2 | H4 · H5 · H9 · H10 | 2 |
-| RF-18.03 | Cumple parcialmente | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 · 3.9.1 · 3.9.2 | H4 · H5 · H9 · H10 | 3 |
+| RF-18.03 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 · 3.9.1 · 3.9.2 | H4 · H5 · H9 · H10 | 3 |
 | RF-19.01 | Cumple | Se verifica con RT-11.03 | — | — | — | 0 |
 | RF-19.02 | Cumple | Se verifica con RT-11.05 | — | — | — | 0 |
 | RF-19.03 | Cumple | Se verifica con RT-11.13 | — | — | — | 0 |
@@ -697,7 +697,7 @@ La Tabla 9.C.2 presenta la matriz completa, en el orden del Formulario T-12.
 | RT-16.20 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 · 3.9.2 | H4 · H5 · H10 | 1 |
 | RT-16.21 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 · 3.9.2 | H4 · H5 · H10 | 1 |
 | RT-16.22 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 · 3.9.2 | H4 · H5 · H10 | 1 |
-| RT-16.23 | Cumple parcialmente | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 · 3.9.2 | H4 · H5 · H10 | 1 |
+| RT-16.23 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 · 3.9.2 | H4 · H5 · H10 | 1 |
 | RT-16.24 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 · 3.9.2 | H4 · H5 · H10 | 1 |
 | RT-16.25 | Cumple | Sistema y aceptación de usuario | QA · PREPROD | 3.8.1 · 3.8.2 · 3.9.2 | H4 · H5 · H10 | 1 |
 | RT-16.26 | No cumple | Sin prueba: no ofertado | — | — | — | 0 |

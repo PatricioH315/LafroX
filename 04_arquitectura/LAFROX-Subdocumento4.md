@@ -934,11 +934,11 @@ El planificador autorizado mantiene las franjas de recepción de cada cliente ac
 
 El módulo de rendición y cobro permite investigar las causas de las diferencias de rendición que hoy quedan sin explicación. Implementa:
 
-- **Rendición digital individual (RF-07.02).** Cada conductor rinde sus cobros del turno de forma digital, con causales de descuadre clasificadas y trazables.
+- **Rendición digital individual (RF-07.01 a RF-07.03).** M7 calcula para cada camión y turno el monto esperado de rendición con las entregas al contado confirmadas y los cobros registrados en ruta. Cada conductor rinde sus cobros del turno de forma digital contra ese monto, con causales de descuadre clasificadas y trazables.
 
-- **Cobranza en ruta (RF-07.05 y RF-07.09).** El conductor registra el cobro y conserva su evidencia para la rendición. En pagos con POS móvil, la captura local de una operación no se presenta como autorización bancaria. El tratamiento sin cobertura depende de las capacidades y condiciones acordadas con la pasarela; se concilia al reconectar sin generar cargos duplicados.
+- **Cobranza en ruta (RF-07.06 y RF-07.10).** El conductor registra el cobro y conserva su evidencia para la rendición. En pagos con POS móvil, la captura local de una operación no se presenta como autorización bancaria. El tratamiento sin cobertura depende de las capacidades y condiciones acordadas con la pasarela; se concilia al reconectar sin generar cargos duplicados.
 
-- **Interfaz con ERP (RF-07.02 e INT-06).** La rendición aprobada se publica en la cola FIFO de solicitudes al ERP; dos procesos del servicio de integración con el ERP en VM-04 de Talca consumen esa cola por conexión saliente y la cola RabbitMQ local, y entregan a la **capa anticorrupción (ACL)** de la misma VM; la ACL integra con el ERP. Nunca hay escritura directa al ERP. El ERP permanece como única fuente de verdad tributaria y único emisor de DTE.
+- **Interfaz con ERP (RF-07.09 e INT-06).** La rendición aprobada se publica en la cola FIFO de solicitudes al ERP; dos procesos del servicio de integración con el ERP en VM-04 de Talca consumen esa cola por conexión saliente y la cola RabbitMQ local, y entregan a la **capa anticorrupción (ACL)** de la misma VM; la ACL integra con el ERP. Nunca hay escritura directa al ERP. El ERP permanece como única fuente de verdad tributaria y único emisor de DTE.
 
 - **Costo de servir (RF-11).** El módulo alimenta el tablero de BI con el costo real por entrega, incluyendo kilometraje real (telemetría M12), tiempo de servicio y deducciones por devoluciones.
 
