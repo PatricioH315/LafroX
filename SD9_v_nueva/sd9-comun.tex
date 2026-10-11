@@ -1,4 +1,22 @@
 %% Preambulo comun de los cuatro documentos del Subdocumento 9.
+
+%% Legibilidad (BA Art. 40.4; Aclaraciones secciones 4 y 5)
+%% 1. Sin expansion de fuente de microtype: con ella el cuerpo de 11 pt se
+%%    compone a 10,8-10,9 pt y las tablas por debajo de su cuerpo nominal.
+\microtypesetup{expansion=false}
+%% 2. Titulos de tablas y figuras a 9,5 pt: \footnotesize da 8,9-9,0 pt,
+%%    en el limite del minimo de 9 pt.
+\DeclareCaptionFont{lfxcap}{\fontsize{9.5pt}{11.5pt}\selectfont}
+\captionsetup{font={lfxcap,color=lafroxGris}}
+%% 3. Sin palabras cortadas por guion dentro de las celdas (Aclaraciones,
+%%    seccion 5: "sin palabras cortadas por columnas angostas"). La seccion 5
+%%    rige solo para el cuerpo del subdocumento: el documento raiz del cuerpo
+%%    activa \LFXsincortestrue; anexos y formularios conservan el corte.
+\newif\ifLFXsincortes \LFXsincortesfalse
+\renewcommand{\LFXcuerpotabla}{%
+  \fontsize{9.5pt}{12.5pt}\selectfont
+  \ifLFXsincortes\hyphenpenalty=10000\exhyphenpenalty=10000\fi}
+
 %% tablasimple: tabla sin titulo (anexos y formularios), mismo estilo que
 %% tablalafrox, con cabecera repetida y filetes entre filas.
 \NewDocumentEnvironment{tablasimple}{m m +b}{%

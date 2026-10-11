@@ -9,14 +9,14 @@
 \contentsline {subsection}{2.4 Entrega por incrementos}{5}{table.8.3}%
 \contentsline {section}{3. Expediente de aceptación}{5}{table.8.3}%
 \contentsline {subsection}{3.1 Contenido mínimo (Art. 18.2)}{5}{table.8.3}%
-\contentsline {subsection}{3.2 Definición de terminado (RT-20.07)}{5}{table.8.4}%
+\contentsline {subsection}{3.2 Definición de terminado (RT-20.07)}{6}{table.8.4}%
 \contentsline {subsection}{3.3 Lista de verificación antes de la entrega}{6}{table.8.5}%
-\contentsline {section}{4. Protocolo por hito}{6}{table.8.6}%
-\contentsline {subsection}{4.1 Fechas de entrega}{6}{table.8.6}%
+\contentsline {section}{4. Protocolo por hito}{7}{table.8.6}%
+\contentsline {subsection}{4.1 Fechas de entrega}{7}{table.8.6}%
 \contentsline {subsection}{4.2 Hitos de entregables (H1 a H5 y H8 a H10)}{7}{table.8.7}%
-\contentsline {subsection}{4.3 Hitos de operación supervisada (H6, H7, H11 y H12)}{8}{table.8.8}%
+\contentsline {subsection}{4.3 Hitos de operación supervisada (H6, H7, H11 y H12)}{9}{table.8.8}%
 \contentsline {section}{5. Aceptación de los resultados del caso (producto final)}{10}{table.8.10}%
 \contentsline {section}{6. Acta de conformidad}{12}{table.8.11}%
 \contentsline {section}{7. Roles}{12}{table.8.12}%
-\contentsline {section}{Referencias}{12}{table.8.13}%
+\contentsline {section}{Referencias}{13}{table.8.13}%
 \contentsfinish 
