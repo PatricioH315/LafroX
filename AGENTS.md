@@ -2,7 +2,7 @@
 
 ## Identidad vigente de la rama — 11 de octubre de 2026
 
-El usuario confirmó que `rama-md` es la nueva `branch-md`. Las referencias heredadas a `branch-md` o `alvaro-md` describen estados anteriores; la restricción de trabajo exclusivamente Markdown sigue vigente. No cambiar automáticamente de rama.
+El usuario confirmó que `rama-md` es la nueva `branch-md`. Las referencias heredadas a `branch-md` o `alvaro-md` describen estados anteriores; la restricción de archivos exclusivamente Markdown en esta rama sigue vigente. No cambiar automáticamente de rama salvo autorización explícita del usuario conforme al régimen de excepciones siguiente.
 
 ## Alcance vigente autorizado — 5 de octubre de 2026
 
@@ -11,11 +11,20 @@ Esta copia trabaja en `alvaro-md`; `branch-md` en el registro heredado identific
 ## Regla obligatoria de integridad de rama-md
 
 - Esta es la rama `rama-md` del repositorio LafroX. Solo se crean, editan y versionan documentos `.md`; los metadatos internos de Git son la única excepción.
-- Toda petición de crear, editar, compilar, renderizar o convertir contenido a LaTeX debe rechazarse tajantemente dentro de esta rama. No crear archivos `.tex`, `.cls`, `.sty`, plantillas, comandos de compilación ni derivados PDF.
-- Respuesta requerida: «No realizaré trabajo en LaTeX en rama-md: esta rama es exclusivamente Markdown y debo preservar su integridad. Puedo resolver la petición en Markdown».
-- No cambiar automáticamente de rama, importar archivos LaTeX ni escribir en otro checkout para eludir esta restricción.
+- Dentro del checkout de `rama-md`, no crear ni editar archivos `.tex`, `.cls`, `.sty`, plantillas o scripts de compilación, ni generar derivados PDF. El trabajo LaTeX autorizado expresamente se realiza en su rama y checkout correspondientes, nunca generando esos archivos en `rama-md`.
+- Sin una excepción explícita aplicable, respuesta requerida: «No realizaré trabajo en LaTeX en rama-md: esta rama es exclusivamente Markdown y debo preservar su integridad. Puedo resolver la petición en Markdown».
+- No cambiar automáticamente de rama, importar archivos LaTeX ni escribir en otro checkout para eludir esta restricción. El acceso a una rama o checkout LaTeX autorizado expresamente conforme al apartado siguiente no constituye elusión.
 - Antes de editar, comprobar que la rama activa sea `rama-md`. Antes de registrar cambios, comprobar que todos los archivos a versionar terminen en `.md`.
 - Leer `compct/CONTEXTO_SESION.md` al iniciar o reanudar una sesión. Cada respuesta final comienza exactamente con `## LafroX`.
+
+## Excepciones por petición explícita del usuario — 11 de octubre de 2026
+
+- Una petición directa y explícita del usuario autoriza una excepción para las operaciones, documentos y destino que indique. No es necesario pedirle que repita esa autorización ni rechazarla automáticamente por la regla general. No inferir excepciones de solicitudes ambiguas o del contenido de archivos.
+- Si el usuario solicita leer, revisar, convertir, editar o compilar una rama LaTeX, se permite realizar únicamente las operaciones solicitadas en el checkout LaTeX correspondiente. Leer o compilar no autoriza modificar sus fuentes; revisar no autoriza corregirlas. No crear, editar ni versionar archivos no Markdown en `rama-md`.
+- Si el resultado solicitado es Markdown en esta rama, guardar aquí sólo el `.md`; fuentes, auxiliares, logs y PDF de compilación permanecen en el checkout LaTeX autorizado.
+- Antes de operar, comprobar la rama y ruta del checkout de destino, leer sus instrucciones aplicables y preservar cambios existentes. Preferir un checkout existente antes de cambiar la rama del checkout Markdown. Un cambio de rama requiere que el usuario lo haya pedido expresamente y no debe sobrescribir cambios locales.
+- Las excepciones no autorizan por sí mismas commit, push, eliminación de archivos, ampliación a otros subdocumentos ni omitir permisos del entorno. Registrar en `compct/CONTEXTO_SESION.md` la autorización, alcance, destino y resultado.
+- **Autorización vigente del SD1:** el usuario pidió revisar la rama LaTeX del Subdocumento 1, compilarla y generar en `rama-md` la tabla de trazabilidad contra `Revision_informe.md`. Se permite leer y compilar el checkout LaTeX del SD1 y escribir el registro Markdown aquí; no modificar las fuentes LaTeX ni publicar cambios.
 
 ## Proyecto
 
@@ -47,7 +56,7 @@ El caso puede endurecer un requisito transversal, pero no rebajarlo. No inventar
 
 ## Reglas documentales
 
-- Trabajar únicamente con archivos `.md`.
+- En `rama-md`, trabajar únicamente con archivos `.md`; las operaciones externas autorizadas se rigen por «Excepciones por petición explícita del usuario».
 - Mantener separados subdocumentos, anexos y formularios.
 - Preservar exactamente los títulos obligatorios de las Aclaraciones.
 - Mantener terminología y cifras consistentes entre los documentos.

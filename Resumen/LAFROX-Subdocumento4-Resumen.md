@@ -28,11 +28,13 @@ La [arquitectura física](../04_arquitectura/LAFROX-Subdocumento4.md#42-arquitec
 
 Los cinco ambientes separan construcción, pruebas y operación. La promoción usa artefactos verificados y reversión controlada; la bodega conserva **24 horas** de autonomía y terreno **14 horas**. La reserva central y las decisiones que dependen de terceros no se convierten en confirmaciones locales por perder conexión.
 
+La [Figura 24](../04_arquitectura/LAFROX-Subdocumento4.md#fig:red-sitios-regiones) distingue producción y recuperación: cinco conexiones VPN por región, con dos túneles por sitio. La [Figura 17](../04_arquitectura/LAFROX-Subdocumento4.md#fig:emplazamiento-dominios) sitúa los componentes por dominio. Calidad dispone de un perfil Kotlin local autorizado para evaluar y disponer lotes durante un corte, con evidencia, vigencia de permiso y reconciliación; no puede modificar umbrales ni roles.
+
 Desarrollo, QA y Preproducción usan el horario S-43 de **lunes a viernes, 08:00–20:00** (60/168 h; reducción potencial 64,3 %). La meta es al menos **60 % menos horas de cómputo** frente a funcionamiento continuo, medida mensualmente y reportada cada año con la huella de T-14 8.4.3. Se permiten ventanas de prueba programadas por el CLIENTE y activación inmediata para correcciones críticas fuera del horario; la carga por versión candidata y semanal permanece dentro del horario de uso.
 
 ## Capacidad y equipos
 
-El [dimensionamiento](../04_arquitectura/LAFROX-Subdocumento4.md#426-dimensionamiento-y-plan-de-capacidad) parte de escenarios y supuestos, con detalle en Anexo 4-W. Las quince integraciones representan **230.252 mensajes diarios normales** y **353.333 en peak**; no son transacciones únicas sumables. La telemetría térmica aporta **10.920 muestras diarias**. La prueba de carga de referencia es **21,99 TPS**, transacciones por segundo, distribuida por lugar.
+El [dimensionamiento](../04_arquitectura/LAFROX-Subdocumento4.md#426-dimensionamiento-y-plan-de-capacidad) parte de escenarios y supuestos, con detalle en Anexo 4-W. Las quince integraciones representan **224.652 mensajes diarios normales** y **342.933 en peak**, con INT-04 incluido en INT-03; no son transacciones únicas sumables. La telemetría térmica aporta **10.920 muestras diarias**. La prueba de carga de referencia es **21,99 TPS**, transacciones por segundo, distribuida por lugar.
 
 T-11 distingue unidades instaladas, repuestos y crecimiento. Por ejemplo, el parque inicial de reparto parte de **96 + 10 de reserva = 106** por tipo correspondiente; **110 instaladas + 11 de reserva = 121** es la proyección del año 3. La memoria permite comprobar el período de cada cantidad antes de comparar cifras.
 
@@ -50,10 +52,12 @@ La [estrategia de centros de datos](../04_arquitectura/LAFROX-Subdocumento4.md#4
 
 [El riesgo residual](../04_arquitectura/LAFROX-Subdocumento4.md#4324-rpo-y-rto) es perder los tres caminos de comunicación y después el sitio antes de reponer un enlace: la última copia remota podría superar 15 minutos. Las colas locales no demuestran por sí solas ese RPO. Los anexos 4-M y 4-V fijan ensayos; su descripción no acredita ejecución.
 
+La consulta sanitaria de emergencia usa M9 de solo lectura, Aurora y S3 secundarios, sin promover el escritor ni esperar el cambio general de DNS. Su presupuesto de **75 minutos** y los mínimos de subida de respaldo de **10 Mbps en Talca y 6 Mbps en Concepción** son criterios de aceptación pendientes de prueba, no mediciones ni excepciones aprobadas al RPO.
+
 ## Dónde continuar
 
 SD5 detalla los datos; T-11 las especificaciones; SD7 el despliegue; SD8 los riesgos. Los anexos 4-A–4-W permiten consultar eventos, interfaces, decisiones, seguridad y cálculos sin recorrer nuevamente todo el capítulo.
 
 ---
 
-**Fuente y actualización:** documento local vigente al 9 de octubre de 2026. Resumen elaborado con asistencia de Codex; no acredita aprobación del CLIENTE ni revisión humana adicional.
+**Fuente y actualización:** documento local vigente al 11 de octubre de 2026. Resumen elaborado con asistencia de Codex; no acredita aprobación del CLIENTE ni revisión humana adicional.
