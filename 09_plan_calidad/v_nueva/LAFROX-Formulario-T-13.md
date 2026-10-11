@@ -41,6 +41,8 @@ La intensidad de la prueba sigue el riesgo del producto, como dispone ISO/IEC/IE
 
 ### 2.1 Técnicas de diseño (ISO/IEC/IEEE 29119-4)
 
+El equipo elige la técnica según la regla que debe comprobar. La tabla muestra su aplicación a los procesos de Puelche.
+
 | Tipo de regla | Técnica | Ejemplo en Puelche |
 |---|---|---|
 | Umbrales numéricos | Partición de equivalencia y valores límite | Rango térmico de un producto refrigerado; límite de crédito del cliente en la preventa |
@@ -53,6 +55,8 @@ La intensidad de la prueba sigue el riesgo del producto, como dispone ISO/IEC/IE
 ---
 
 ## 3. Niveles y tipos de prueba
+
+Cada nivel y tipo se vincula con su ambiente, herramientas, grado de automatización y paquete de trabajo; esa correspondencia determina quién prepara y ejecuta la campaña.
 
 | Nivel o tipo | Ambiente | Herramienta | Automatización | Paquete T-14 | Exigencia |
 |---|---|---|---|---|---|
@@ -81,6 +85,8 @@ Las herramientas son las declaradas en el Formulario T-10 (SD6) y en la cadena d
 
 ## 4. Ambientes de prueba
 
+Los cinco ambientes se diferencian por sus datos y por el control que permiten. Antes de cada ciclo se verifica el estado indicado en la tabla.
+
 | Ambiente | Pruebas que aloja | Datos | Estado antes de cada ciclo |
 |---|---|---|---|
 | Desarrollo | Unitarias, de componente y de contrato | Sintéticos | Reconstruible desde código |
@@ -91,7 +97,7 @@ Las herramientas son las declaradas en el Formulario T-10 (SD6) y en la cadena d
 
 ### 4.1 Instancias de Preproducción por campaña
 
-Varias campañas de certificación coinciden en el tiempo y no pueden compartir el ambiente. La resiliencia necesita carga sostenida; la prueba de intrusión exige una versión congelada; la migración carga datos históricos; la aceptación necesita datos estables. Por eso cada campaña usa su propia instancia de Preproducción, reconstruida desde el mismo código y con la misma topología y configuración. Siguen siendo Preproducción y no constituyen un sexto ambiente; se destruyen al cerrar la campaña (RT-04.02; RT-04.14).
+Varias campañas coinciden en el calendario, pero las que requieren estados incompatibles no comparten la misma instancia al mismo tiempo. La resiliencia necesita carga sostenida; la prueba de intrusión exige una versión congelada; la migración carga datos históricos; la aceptación necesita datos estables. Por eso migración, intrusión y aceptación usan instancias aisladas; carga, resiliencia y despliegue usan sesiones sucesivas en PRE-C. Cada instancia de Preproducción se reconstruye desde el mismo código y con la misma topología y configuración. Siguen siendo Preproducción y no constituyen un sexto ambiente; se destruyen al cerrar la campaña (RT-04.02; RT-04.14).
 
 | Instancia | Campaña | Condición que exige separarla |
 |---|---|---|
@@ -99,6 +105,18 @@ Varias campañas de certificación coinciden en el tiempo y no pueden compartir 
 | PRE-C | Carga y estrés, luego resiliencia bajo carga, luego despliegue sin interrupción | La resiliencia y el despliegue se miden bajo la carga sostenida, en secuencia |
 | PRE-S | Seguridad ofensiva | Versión congelada; no admite inyección de fallas en paralelo |
 | PRE-A | Aceptación de usuario y accesibilidad | Las personas usuarias necesitan datos estables |
+
+
+**Secuencia de sesiones en PRE-C.** Carga y resiliencia forman una campaña compatible; despliegue y reversión usan después el mismo entorno, no se ejecutan sobre él mientras se inyectan fallas. La preparación de scripts, revisión y elaboración de informes pueden correr en paralelo fuera de PRE-C. Las subventanas siguientes se incluyen en las fechas y HH de los paquetes existentes y no añaden esfuerzo a la línea base.
+
+| Etapa y paquetes | Sesiones de carga y resiliencia | Restitución y comprobación | Sesiones de despliegue y reversión |
+|---|---|---|---|
+| E1: 3.8.4 y 3.8.8 | 21–28 octubre 2027 | 29 octubre; snapshot de datos y versión, reinicio de colas y comprobación de observabilidad | 2–5 noviembre; análisis e informes de ambos paquetes hasta 9 noviembre |
+| E2: 3.9.3 y 3.9.7 | 19–22 mayo 2028; el 21 de mayo no se programa trabajo humano ordinario | 23 mayo; mismo procedimiento de restitución | 24–25 mayo; informes hasta 26 mayo |
+
+La prueba continua de aislamiento de 24 horas requiere una ventana y un turno explícitos; si cruza un día no laborable, se autoriza el turno de observación antes de empezar. La fecha de sesión no implica dotación disponible. CAL y SRE confirman personas nominales y capacidad neta, descontando recuperación, soporte y otros frentes, antes de aprobar la campaña. Las 320/320 HH de E1 y 320/160 HH de E2 son esfuerzo total por paquete, no duración de las sesiones invasivas ni cuatro campañas que puedan ocupar simultáneamente PRE-C. Si la dotación vigente no alcanza, el Jefe de Proyecto debe asignar recursos y aprobar la nivelación antes de G5; no se presume suficiencia del escenario histórico del T-15.
+
+Sólo una sesión puede reservar PRE-C a la vez. Su salida deja un informe con el digest, estado de datos, colas y controles; la siguiente sesión no inicia sin restitución aprobada y carga basal dentro de umbral. PRE-M, PRE-S y PRE-A permanecen aisladas. El Arquitecto confirma capacidad, cuotas y equivalencia del conjunto de instancias antes de la primera campaña; los resultados se registran en el plan del H1 y se vuelven a comprobar al preparar H5/H10.
 
 ---
 
@@ -119,7 +137,11 @@ Varias campañas de certificación coinciden en el tiempo y no pueden compartir 
 
 ## 6. Criterios de entrada y de salida
 
+La campaña comienza sólo cuando cumple sus condiciones de entrada y termina con evidencia de los criterios de salida; la suspensión no equivale a aprobación.
+
 ### 6.1 Por nivel de prueba
+
+Las condiciones siguientes se verifican antes y después de cada ejecución. Las fallas bloqueantes se resuelven antes de promover el artefacto.
 
 | Nivel | Criterio de entrada | Criterio de salida |
 |---|---|---|
@@ -147,6 +169,8 @@ Una campaña se suspende cuando aparece un defecto crítico que impide seguir ej
 
 ## 7. Especificación de las pruebas que habilitan cada entrada a Producción
 
+Las pruebas siguientes comprueban carga, fallas, operación de terreno y continuidad híbrida antes de habilitar la ola aplicable.
+
 ### 7.1 Carga y estrés
 
 La carga se deriva del dimensionamiento del SD4, Tabla 33, y no se elige:
@@ -168,6 +192,8 @@ La carga se deriva del dimensionamiento del SD4, Tabla 33, y no se elige:
 
 ### 7.2 Resiliencia
 
+La inyección reproduce fallas de nube, enlace y equipamiento local. El resultado se compara con la continuidad y los tiempos comprometidos, sin sustituir una falla por una excepción.
+
 | Escenario (RT-10.07) | Forma de inyección | Resultado esperado |
 |---|---|---|
 | Caída de instancia | AWS FIS detiene tareas ECS Fargate | Reemplazo automático sin pérdida |
@@ -182,6 +208,8 @@ La carga se deriva del dimensionamiento del SD4, Tabla 33, y no se elige:
 Los dos últimos escenarios prueban la parte on-premise de la arquitectura híbrida, que el RT-10.07 no enumera pero que el SD4 declara crítica para el despacho y para la cadena de frío.
 
 ### 7.3 Perfil operacional de terreno
+
+Las pruebas usan dispositivos reales y personas del perfil correspondiente. Una prueba de laboratorio no reemplaza las condiciones físicas del turno y la descarga.
 
 | Condición (Caso, cap. 15) | Prueba | Criterio de salida |
 |---|---|---|
@@ -229,6 +257,8 @@ Cada protocolo deja su acta con la carga, la falla inyectada, el resultado obser
 
 ## 8. Automatización
 
+Se automatizan los flujos repetibles y se conserva la intervención humana donde el juicio, la condición física o la independencia de la prueba lo requieren.
+
 ### 8.1 Criterio
 
 La automatización es la regla. Una prueba es manual solo si exige el juicio de una persona usuaria (aceptación, usabilidad, accesibilidad manual), una condición física (perfil operacional) o un tercero independiente (seguridad ofensiva).
@@ -258,7 +288,11 @@ Los 263 casos manuales, a 15 minutos cada uno, requieren 263 × 15 / 60 ≈ 65,8
 
 ## 9. Calendario
 
+El calendario vincula las campañas con los hitos y distingue implementación, marchas blancas y Operación. Las subventanas de ejecución se controlan sin cambiar los meses contractuales.
+
 ### 9.1 Implementación
+
+Las fechas delimitan el trabajo de cada paquete, incluida su preparación e informe; no significan que todas las intervenciones sean simultáneas.
 
 | Campaña | Paquete | Instancia o ambiente | Inicio | Término | HH (T-15) |
 |---|---|---|---|---|---|
@@ -297,6 +331,8 @@ Ninguna ejecución invasiva de campaña que intervenga Producción o el sitio de
 
 ### 9.2 Marchas blancas y soporte puente
 
+Durante la operación supervisada se miden indicadores y se prueban respaldos. Cada corrección repite la verificación del alcance afectado antes de promoverse.
+
 | Período | Prueba | Frecuencia |
 |---|---|---|
 | Meses 13 a 15 (E1) y 19 a 20 (E2) | Indicadores diarios del Art. 17.3 (SD7, Tabla 7.9) y conciliación con el registro vigente | Diaria |
@@ -306,6 +342,8 @@ Ninguna ejecución invasiva de campaña que intervenga Producción o el sitio de
 Cada restauración previa tiene 16 HH SRE (4 preparación, 4 ejecución, 4 validación y 4 informe); se agregan 48 HH a 4.2.1, 48 a 4.2.2 y 32 a 4.3.1 como componentes separados de la cobertura NOC/mesa. Las siete conmutaciones operacionales requieren 560 HH y la recuperación inicial 320 HH según el desglose por actividades/roles del T-15; el mismo formulario justifica 320/160 HH de intrusión E1/E2.
 
 ### 9.3 Operación (meses 21 a 56)
+
+Las pruebas periódicas verifican la continuidad del servicio durante los 36 meses. Su frecuencia y sus informes son distintos de las certificaciones iniciales.
 
 | Prueba | Exigencia | Meses | Fechas | Cantidad | Paquete |
 |---|---|---|---|---|---|
@@ -321,6 +359,8 @@ Las resiliencias de septiembre (meses 32 y 44) se ejecutan en Preproducción, po
 
 ## 10. Defectos
 
+La severidad se asigna según el servicio afectado y determina el bloqueo de la promoción. El registro conserva requisito, versión, prueba y evidencia de cierre.
+
 | Severidad | Definición (alineada con el SD4, Tabla 16) | Efecto en las pruebas |
 |---|---|---|
 | Crítica | Afecta un servicio de nivel crítico: preparación y despacho con emisión de guía en la ventana de 05:30 a 07:00, bloqueo por excursión térmica o identidad de bodega | Detiene la promoción; puede suspender la campaña |
@@ -333,6 +373,8 @@ Cada defecto se registra en GitLab con el caso de prueba, el requisito, el ambie
 ---
 
 ## 11. Roles
+
+Las responsabilidades siguientes separan el diseño y ejecución de las pruebas de la aceptación contractual que corresponde al CLIENTE.
 
 | Rol | Persona o equipo | Responsabilidad en este plan |
 |---|---|---|
@@ -348,6 +390,8 @@ Cada defecto se registra en GitLab con el caso de prueba, el requisito, el ambie
 
 ## 12. Informes de prueba
 
+Los informes conservan la comparación entre resultado observado y criterio de salida, y se entregan al destinatario indicado con la frecuencia del plan.
+
 | Informe | Contenido mínimo | Destinatario | Frecuencia |
 |---|---|---|---|
 | Informe de ejecución de la cadena de integración | Resultados por requisito, cobertura, métricas de código | Equipo y Líder de Calidad | Cada ejecución |
@@ -360,6 +404,8 @@ Cada defecto se registra en GitLab con el caso de prueba, el requisito, el ambie
 ---
 
 ## Referencias
+
+Las fuentes siguientes sustentan los criterios citados en este documento; sus referencias se leen junto con el artículo, requisito o sección indicado en el lugar de uso.
 
 - Distribuidora Puelche S.A. (2026a). *Bases Administrativas, Licitación TFEP-01/2026*.
 - Distribuidora Puelche S.A. (2026b). *Bases Técnicas Transversales, Licitación TFEP-01/2026*.

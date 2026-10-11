@@ -1,6 +1,16 @@
 # LafroX — Subdocumento 13: Anexos
 
-Estos anexos detallan lo que el Capítulo 13 resume. El Anexo 13.A define los contratos de datos que cada innovación consume o expone. El Anexo 13.B traza cada innovación con la arquitectura, la EDT, los riesgos y el flujo de caja. El Anexo 13.C reúne en una vista los indicadores y los riesgos de las cinco. El Anexo 13.D responde las observaciones de la instancia anterior. Las fichas formales del Artículo 29° están en el Formulario T-19.
+## Índice
+
+- [Anexo 13.A — Contratos de datos de las innovaciones](#anexo-13a--contratos-de-datos-de-las-innovaciones)
+- [Anexo 13.B — Matriz de trazabilidad](#anexo-13b--matriz-de-trazabilidad)
+- [Anexo 13.C — Indicadores y riesgos de la cartera](#anexo-13c--indicadores-y-riesgos-de-la-cartera)
+- [Anexo 13.D — Resolución de observaciones de la instancia anterior](#anexo-13d--resolución-de-observaciones-de-la-instancia-anterior)
+- [Referencias](#referencias)
+- [Declaración de uso de IA](#declaración-de-uso-de-ia)
+
+
+Estos anexos detallan lo que el Capítulo 13 resume. El Anexo 13.A define los contratos de datos que cada innovación consume o expone. El Anexo 13.B traza cada innovación con la arquitectura, la EDT, los riesgos y el flujo de caja, y delimita su alcance con la investigación adicional que requiere. El Anexo 13.C reúne en una vista los indicadores y los riesgos de las cinco. El Anexo 13.D responde las observaciones de la instancia anterior. Las fichas formales del Artículo 29° están en el Formulario T-19.
 
 ## Anexo 13.A — Contratos de datos de las innovaciones
 
@@ -12,12 +22,12 @@ El RT-26.01 pide declarar qué interfaces consume o expone cada innovación (Dis
 
 | Contrato | Productor → consumidor | Transporte y capa | Campos principales | Exclusiones y retención |
 | --- | --- | --- | --- | --- |
-| `inn01.aviso-vencimiento-local.v1` | M10 → M3 (terminal C-01) | Precarga nocturna en la cola de sincronización de M3; capas 5 y 6 | Local, lote, GTIN, saldo estimado, ritmo de reposición, vida útil remanente y su origen (fecha impresa o innovación 3), confianza, acción del catálogo | Sin datos personales del almacenero; retención igual a la del historial de preventa |
-| `inn01.respuesta-visita.v1` | M3 (terminal C-01) → M10 | Cola de sincronización de M3, al recuperar señal; capa 5 | Aviso, saldo confirmado, acción aplicada, resultado, preventista seudonimizado | El saldo confirmado no entra al inventario oficial |
-| `inn02.paquete-reproduccion.v1` | Terminales C-01, C-02 y C-03 → QA y Preproducción | Envío con cupo de tamaño y frecuencia; trazas OpenTelemetry hacia la capa 8; acceso controlado por la capa 7 | Correlación seudonimizada, versión de la aplicación, transiciones de estado, cola local, reintentos, orden causal, estado de conectividad | Excluye nombres, credenciales, firmas, fotos y contenido comercial; se borra al cerrar el incidente, salvo el escenario de regresión sintetizado |
+| `inn01.aviso-vencimiento-local.v1` | M10 → M3 (aplicación de preventa C-01) | Precarga nocturna en la cola de sincronización de M3; capas 5 y 6 | Local, lote, GTIN, saldo estimado, ritmo de reposición, vida útil remanente y su origen (fecha impresa o innovación 3), confianza, acción del catálogo | Sin datos personales del almacenero; retención igual a la del historial de preventa |
+| `inn01.respuesta-visita.v1` | M3 (aplicación de preventa C-01) → M10 | Cola de sincronización de M3, al recuperar señal; capa 5 | Aviso, saldo confirmado, acción aplicada, resultado, preventista seudonimizado | El saldo confirmado no entra al inventario oficial |
+| `inn02.paquete-reproduccion.v1` | C-01 App de preventa, C-02 App de reparto y C-03 Terminales de bodega → QA y Preproducción | Envío con cupo de tamaño y frecuencia; trazas OpenTelemetry hacia la capa 8; acceso controlado por la capa 7 | Correlación seudonimizada, versión de la aplicación, transiciones de estado, cola local, reintentos, orden causal, estado de conectividad | Excluye nombres, credenciales, firmas, fotos y contenido comercial; se borra al cerrar el incidente, salvo el escenario de regresión sintetizado |
 | `inn03.historia-termica-lote.v1` | B-02 y N-10 → M9, M2, M5 y M10 | Eventos EPCIS 2.0 con datos de sensor (capa 5); series en N-06 y N-10 (capa 6) | Lote, GTIN, familia, tramos (lugar, desde, hasta, sensor, resumen, sin dato), carga acumulada, vida remanente con intervalo, versión del modelo y de los parámetros | Los tramos sin dato nunca se rellenan; series retenidas cinco años |
 | `inn04.liquidacion-tramo.v1` | M10 → Finanzas del CLIENTE y ERP | Informe mensual auditado por la capa 7; base versionada en la capa 6 | Período, canasta, índices aplicados, costo comparable, OTIF del período, puntuación, recomendación y respuesta | El dato contable definitivo vive en el ERP; los montos se expresan solo en la Oferta Económica |
-| `inn05.hoja-negocio.v1` | M10 → M3 (terminal C-01) y M6 (impresora de cabina) | Precarga cifrada en el terminal; capa 7 limita la hoja al receptor | Local, bloques 1 a 3, bloque 4 si está activo, estado de la copia (pedida, entregada, en espera) | Bloque 4 con umbral mínimo de locales por grupo y supresión de celdas; registro de actividades de tratamiento |
+| `inn05.hoja-negocio.v1` | M10 → M3 (aplicación de preventa C-01) y M6 (impresora de cabina) | Precarga cifrada en el terminal; capa 7 limita la hoja al receptor | Local, bloques 1 a 3, bloque 4 si está activo, estado de la copia (pedida, entregada, en espera) | Bloque 4 con umbral mínimo de locales por grupo y supresión de celdas; registro de actividades de tratamiento |
 
 Cada contrato tiene una versión explícita en su nombre. Un cambio de campos produce una versión nueva y convive con la anterior durante la transición, como el resto de los contratos del Capítulo 4. Los contratos de las innovaciones 2 y 5 tratan datos que pasan por la capa de seguridad; por eso el Encargado de Seguridad de la Información los aprueba con su modelado de amenazas (RT-26.07).
 
@@ -31,13 +41,29 @@ La Tabla 13.B.1 traza cada innovación con la arquitectura (RT-26.01), con la ED
 
 | Innovación | Capas, componentes y módulos | Paquetes de la EDT y mes de materialización | Riesgo | Flujo de caja (sin montos) |
 | --- | --- | --- | --- | --- |
-| 1 · Seguimiento de vencimiento posentrega en el local | Capas 1, 4, 5 y 6; C-01; M2, M3, M9 y M10; N-10 | 3.10.1.1 a 3.10.1.4 (meses 7 a 15); materializa en el mes 16; mantenimiento en 8.2.1 | R8-25 | Inversión 7 a 15; costo operacional 16 a 56; beneficio desde el 16 |
+| 1 · Seguimiento de vencimiento posentrega en el local | Capas 1, 4, 5 y 6; C-01 App de preventa; M2, M3, M9 y M10; N-10 | 3.10.1.1 a 3.10.1.4 (meses 7 a 15); materializa en el mes 16; mantenimiento en 8.2.1 | R8-25 | Inversión 7 a 15; costo operacional 16 a 56; beneficio desde el 16 |
 | 2 · Reproducción de incidentes de terreno | Capas 1, 7 y 8; C-01, C-02 y C-03; M3, M5 y M6; QA y Preproducción | 3.10.2.1 a 3.10.2.4 (meses 2 a 15) y 8.3.1 (21 a 56); circuito en el mes 5 | R8-26 y R8-24 | Inversión 2 a 10; costo operacional 5 a 56; beneficio desde el 13 |
 | 3 · Vida útil remanente por historia térmica del lote | Capas 1, 4, 5, 6 y 7; B-01, B-02, B-03 y C-02; N-06, N-08 y N-10; M2, M5, M9 y M10 | 3.10.3.1 a 3.10.3.4 (meses 3 a 15) y 8.3.2 (26 a 56, semestral); materializa en el mes 16 | R8-27 y R8-23 | Inversión 3 a 15; costo operacional 16 a 56; beneficio desde el 16 |
 | 4 · Tramo variable de la Operación ligado al costo de servir | Capas 4, 6 y 7; M6, M7, M8 y M10; N-10; ERP | 5.4.3 (meses 17 a 20), 8.3.3 (21 a 23) y 8.3.4 (24 a 56); primera liquidación en el mes 24 | R8-28 | Inversión 17 a 23; costo operacional 21 a 56; ingreso fijo 21 a 56; ingreso contingente 24 a 56; beneficio desde el 24 |
 | 5 · Hoja de negocio del almacenero | Capas 1, 4, 6 y 7; C-01 e impresora de cabina; M3, M6 y M10; N-10 | 3.10.4.1 a 3.10.4.4 (meses 13 a 21), 8.3.5 (22 a 26) y 8.3.6 (24 a 27); materializa en el mes 21 | R8-29 | Inversión 13 a 18 y 24 a 27; costo operacional 21 a 56; beneficio desde el 33 |
 
 La matriz muestra que las cinco innovaciones tienen al menos un paquete de la EDT, un mes de materialización, una ficha de riesgo y un rubro en cada clase del flujo de caja. Los meses coinciden con el Formulario T-14 y con el Anexo 7.D. Las horas de cada paquete están en el Formulario T-15, sección 4.
+
+La Tabla 13.B.2 delimita el alcance de cada innovación: lo que entrega, lo que deliberadamente no hace y la investigación adicional que requiere, con el paquete de la EDT donde esa investigación se resuelve.
+
+**Tabla 13.B.2. Alcance refinado e investigación adicional de cada innovación. Fuente: elaboración propia a partir de las secciones 13.1 a 13.5, del Formulario T-14 y del Anexo 7.D.**
+
+<a id="tab:13B2"></a>
+
+| Innovación | Entrega | No incluye | Investigación adicional y dónde se resuelve |
+| --- | --- | --- | --- |
+| 1 · Seguimiento de vencimiento posentrega en el local | Lista nocturna de avisos por par lote–local con acción del catálogo aprobado y registro de la respuesta de la visita | Ajustes al inventario oficial, bloqueo de ventas y disposición sanitaria, que siguen en M2 y M9 | Precisión del ritmo de reposición en el canal tradicional: 3.10.1.2 (meses 9 y 10) y piloto 3.10.1.4 (meses 11 a 15), con I-01A |
+| 2 · Reproducción de incidentes de terreno | Paquete sanitizado de evidencia, reproducción en QA o Preproducción con recursos efímeros, cierre por reproducción y escenario de regresión permanente | Un sexto ambiente, la simulación de frío, guantes o batería, y las pruebas obligatorias de la cuenta 3.8 | Reproducción de los reordenamientos de la cola en la reconexión: 3.10.2.2 (meses 3 a 5) y validación 3.10.2.4 (meses 11 a 15), con I-02A e I-02B |
+| 3 · Vida útil remanente por historia térmica del lote | Historia térmica por lote, vida útil remanente estimada en M9 y orden de salida sugerido por familia habilitada | Extender la vida útil más allá de la fecha impresa, cambiar RNG-04 o el bloqueo de B-02, y hardware o ingesta adicionales | Parámetros cinéticos por familia para los productos de Puelche: 3.10.3.1 (meses 3 a 5) y validación 3.10.3.4 (meses 11 a 15), con I-03B |
+| 4 · Tramo variable de la Operación ligado al costo de servir | Fórmula de atribución, canasta congelada, índices, liquidación mensual auditada y acompañamiento comercial | Compensar multas, excluir entregas fallidas del denominador o superar el precio máximo | Canasta, índices y regla estacional con datos reales de la Etapa 2: 5.4.3 (meses 17 a 20) y liquidaciones en sombra 8.3.3 (meses 21 a 23), con I-04B |
+| 5 · Hoja de negocio del almacenero | Hoja por local con bloques 1 a 3, en pantalla sin señal o impresa en la entrega siguiente | Exigir dispositivo, conexión o registro al almacenero, y mostrar un local identificable en el bloque 4 | Comprensión de la hoja y dictamen legal del bloque 4: 3.10.4.1 (meses 13 y 14), con I-05B, y 8.3.6 (meses 24 a 27) |
+
+La tabla muestra que toda la investigación adicional queda dentro de la EDT: cada una tiene un paquete, un mes y un indicador que decide si la innovación avanza. Cada investigación se cierra antes de que su innovación se materialice o, en la innovación 4, antes de la primera liquidación con efecto de pago del mes 24. La excepción es el bloque 4 de la innovación 5, que solo se activa con dictamen legal favorable.
 
 ## Anexo 13.C — Indicadores y riesgos de la cartera
 
@@ -125,6 +151,6 @@ En cumplimiento de la sección 7.2 de las Aclaraciones de la licitación, la tab
 | Sección | Herramienta | Finalidad del uso | Nivel en texto | Nivel en diagramas | Revisión humana (quién y qué verificó) |
 | --- | --- | --- | --- | --- | --- |
 | Anexo 13.A | Claude Code | Definición de los contratos a partir de los Capítulos 4 y 5 | Alto | Ninguno | [[REVISIÓN HUMANA]] |
-| Anexo 13.B | Claude Code | Matriz de trazabilidad cotejada con el Formulario T-14 y el Anexo 8.A | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| Anexo 13.B | Claude Code | Matriz de trazabilidad y tabla de alcance refinado cotejadas con el Formulario T-14, el Anexo 7.D y el Anexo 8.A | Alto | Ninguno | [[REVISIÓN HUMANA]] |
 | Anexo 13.C | Claude Code | Consolidación de indicadores y riesgos | Alto | Ninguno | [[REVISIÓN HUMANA]] |
 | Anexo 13.D | Claude Code | Tabla de observaciones y respuestas | Medio | Ninguno | [[REVISIÓN HUMANA]] |

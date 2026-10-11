@@ -104,6 +104,7 @@ La tabla identifica, para cada evento canónico, su productor, sus consumidores,
 | DevolucionRegistrada | M8 | M2, M7, M10 | entrega_id | Decisión 16.1 N° 12: efecto sobre DTE emitido |
 | EnvaseMovido | M8 | M2, M10 | cliente_id | Decisión 16.1 N° 10: 68.000 canastillos, 9.400 pallets, 14% pérdida |
 | ExcursionTermicaDetectada | M9 (borde) | M2 (retención), M5 (bloqueo), M10, alertas | shipment_id | Decisión 16.1 N° 4: bloqueo local < 5 s |
+| DisposicionSanitariaRegistrada | M9 | M2, M5, M10 | sitio y lote | Decisión 16.1 N° 4: solo Calidad dispone; UUID, versión, motivo y evidencia registrados antes de continuar. |
 | RendicionCerrada | M7 | M10, ACL→ERP | conductor_id | Control efectivo que circula en ruta |
 | DesviacionDeRutaDetectada | M12 | M10, M9 | ruta_id | Costo de servir y alerta al centro de control sobre 3 km de desvío; no control de jornada. |
 
@@ -172,7 +173,7 @@ La matriz asigna a cada módulo su requisito funcional, su responsabilidad, su i
 | M6 Reparto / RF-06 | Entrega y POD. | Evento a M7/M8. | Conductor propio; Conductor externo. | 1 |
 | M7 Cobranza y rendición / RF-07 | Cobro y descuadre. | ACL al ERP; evento a M10. | Conductores; Gerente de Finanzas. | 1 |
 | M8 Devoluciones y envases / RF-08 | Retorno y saldo de envases. | Evento a M2/M7. | Conductores; Jefa de Bodega. | 1 |
-| M9 Calidad y trazabilidad / RF-09 | Lote, frío y bloqueo. | Bloqueo a M5; alerta. | Jefa de Calidad. | 1 |
+| M9 Calidad y trazabilidad / RF-09 | Lote, frío, bloqueo y disposición sanitaria autorizada. | Estado sanitario a M2/M5; alerta y expediente. | Jefa de Calidad. | 1 |
 | M10 Analítica / RF-11 | OTIF operacional y costo de servir. | Consume eventos sin escribir. | Gerentes Comercial, de Finanzas y de Operaciones; Jefa de Calidad. | 1 OTIF; 2 costo |
 | M11 Canal moderno / RF-12 | Pedido EDI y excepciones. | Contrato por cadena; M3. | Cliente del canal moderno; Gerente Comercial. | 2 |
 | M12 Telemetría / RF-14 | Ruta real, desviación y datos para costo. | GPS a M4/M10. | Planificador de Rutas; Gerente de Operaciones. | 1; costo en 2 |
@@ -199,14 +200,23 @@ La tabla sigue cada grupo de requisitos funcionales hasta el módulo responsable
 | RF-06 | M6 Reparto | 1, 4, 5 y 6 | POD unido a entrega. |
 | RF-07 | M7 Cobranza y rendición | 1, 4 y 5 | Descuadre y aprobación segregados. |
 | RF-08 | M8 Devoluciones y envases | 1, 4, 5 y 6 | Saldo y causal conciliados. |
-| RF-09 | M9 Calidad y trazabilidad | 2, 4, 5 y 6 | Bloqueo y liberación por Calidad. |
+| RF-09 | M9 Calidad y trazabilidad | 1, 2, 3, 4, 5, 6 y 7 | Bloqueo local, evaluación por Calidad con permiso vigente y decisión durable a M2/M5. |
 | RF-10 | M2 Inventario | 4, 5 y 6 | Sugerencia por SKU y proveedor con promociones comprometidas, aprobada por abastecimiento y traspasada al ERP por la ACL de INT-06. |
 | RF-11 | M10 Analítica | 4, 5 y 6 | OTIF y costo trazables al evento. |
 | RF-12 | M11 Canal moderno | 3, 4 y 5 | Pedido EDI normalizado. |
 | RF-13 | Base compartida | Transversal | Entregables de arquitectura y contratos trazables a los requisitos. |
 | RF-14 | M12 Telemetría | 2, 4 y 5 | Ruta real correlacionada. |
+| RF-15 | Identidad y acceso | 1, 3 y 7 | Autoridad Keycloak, sesiones, permisos y verificador local; 4.1.3.7 y Anexo 4-N. |
+| RF-16 | Observabilidad | 4, 5 y 8 | Correlación, métricas, trazas y buffer local; 4.1.3.8 y Anexo 4-N. |
+| RF-17 | Administración e interacción transversal | 1, 3, 4, 6 y 7 | Interfaces autorizadas, parametrización versionada y funciones comunes; 4.1.3.1 y 4.1.3.4. |
+| RF-18 | Firma, documentos y notificaciones | 1, 4, 5, 6 y 7 | Firma por acto, POD, DTE, acuse y entrega de avisos; 4.1.17, INT-11 y Anexo 4-U. |
+| RF-19 | Gobierno y clasificación de información | 4, 6 y 7 | Clasificación, permisos, cifrado y retención; 4.1.3.6–4.1.3.7 y Anexo 4-R. |
 
 Fuente: elaboración propia a partir del catálogo de requerimientos del capítulo 3 y de la Tabla [A.5](LAFROX-Subdocumento4-Anexos.md#tab:modulos-funcionales).
+
+La tabla agrupa familias para facilitar la lectura. La trazabilidad individual de RF, RNF y RT se conserva en el [Formulario T-12](../03_esquema_solucion_alcance/LAFROX-Formulario-T-12.md), que identifica el componente y la sección que desarrolla cada requisito. Los anexos 4-D, 4-F y 4-N aportan responsabilidad, contrato, capas y realización física; T-11 identifica el recurso ofertado. El estado de cumplimiento de T-12 no demuestra por sí solo una prueba ejecutada.
+
+Los RNF se siguen por la capacidad que condicionan: desempeño y concurrencia en 4.2.6 y Anexo 4-T; autonomía y sincronización en 4.1.15–4.1.16 y anexos 4-J/4-K; identidad, seguridad y auditoría en 4.1.3.7 y anexos 4-Q/4-R; disponibilidad y recuperación en 4.2.4–4.3.2; observabilidad en 4.1.3.8. Para soporte y capacitación, SD4 declara los recursos y dependencias arquitectónicas, mientras sus planes y evidencias se desarrollan en los subdocumentos respectivos. Así se conserva la correspondencia sin atribuir al capítulo 4 responsabilidades de ejecución ajenas.
 
 ## Anexo 4-F — Mapa de límites de contexto
 
@@ -228,7 +238,7 @@ El mapa indica, para cada módulo, el tipo de relación con sus interlocutores, 
 | M6 Reparto | Proveedor de evento | M4, M7 y M8 | Entrega registrada. | No liquida cobro. |
 | M7 Cobranza y rendición | Traducción por ACL | M6 y ERP | Rendición aprobada. | ERP sigue tributario. |
 | M8 Devoluciones y envases | Lenguaje publicado | M2 y M7 | Devolución y envase. | No ajusta DTE. |
-| M9 Calidad y trazabilidad | Proveedor de bloqueo | M1, M5 y sensores | Lote bloqueado. | Calidad libera. |
+| M9 Calidad y trazabilidad | Proveedor de estado sanitario | M1, M2, M5 y sensores | Lote bloqueado o dispuesto con evaluación registrada. | Solo Calidad dispone; M2/M5 respetan la versión vigente. |
 | M10 Analítica | Consumidor de eventos | M1–M9 y M12 | Indicadores consolidados. | Solo lectura. |
 | M11 Canal moderno | Traducción EDI | Cadena, M3 y ACL | Pedido normalizado. | M3 gobierna pedido. |
 | M12 Telemetría | Adapta telemetría | GPS, M4 y M10 | Ruta observada. | No registra entrega. |
@@ -404,6 +414,8 @@ Fuente: elaboración propia a partir de las Bases Técnicas del caso (cap. 14, p
 
 La coordinación de reserva supone una retención por línea de pedido. Cada retención usa como máximo cuatro mensajes: solicitud y resultado de la retención, y solicitud y resultado de una liberación. La cifra supone que toda retención se libera, lo que sobrestima el flujo porque una retención consumida por la preparación no genera liberación. Esa holgura cubre las líneas repartidas entre lotes o sitios, cuya proporción mide AL-STOCK-01. Este flujo no duplica los movimientos físicos de INT-03 ni las operaciones de INT-04.
 
+Los eventos de excepción sanitaria del Anexo 4-A, incluida DisposicionSanitariaRegistrada, viajan por INT-03; no se suman como una integración nueva. La cota de cinco eventos por línea debe contrastarse con su frecuencia y con los reintentos en AL-OFF-01 antes de acreditar la volumetría.
+
 ## Anexo 4-J — Funciones sin conexión
 
 <a id="anx:J"></a>
@@ -426,7 +438,7 @@ La tabla declara qué funciones siguen disponibles sin enlace, cómo continúan 
 | Ruteo y mapas en línea | No disponible | Usar secuencia y mapas precargados. | Recalcular cambios sin confirmar. |
 | EDI de supermercados | No disponible | Registrar incidente y aviso acordado con cadena. | Cola y bandeja de excepciones. |
 | Tablero central | No disponible | Alarmas y bitácora local sostienen despacho. | Reponer telemetría y estado. |
-| Nueva liberación sanitaria | No disponible por la consola central sin conexión; acceso local sujeto a aceptación. | M9 mantiene el bloqueo; M2/M5 no liberan el lote por falta de respuesta. | Calidad evalúa y registra la decisión con sus permisos, conforme a 4.1.3.5 y 4.1.3.7. |
+| Nueva liberación sanitaria | Disponible localmente para Calidad preinscrita; consola central requiere enlace. | Perfil Kotlin en terminal enrolado → puerta local A-01 → M9. Exige permiso vigente, expediente local suficiente y decisión durable; si falta una condición, continúa el bloqueo. | M9 publica su decisión con UUID, versión, motivo y evidencia; Calidad resuelve conflictos sin liberación automática. |
 
 Fuente: elaboración propia a partir de RT-03.10 y RT-03.13 (Bases Técnicas Transversales, cap. 3, pp. 8–9).
 
@@ -502,11 +514,11 @@ RT-07.04 fija RTO ≤ 4 horas y RPO ≤ 15 minutos para servicios críticos. Se 
 
 El protocolo mantiene carga de negocio y corta fibra, LTE y satélite de uno en uno y en pares; verifica que el camino restante transporte DMS/WAL de Talca, broker, outbox e identidad con retraso inferior a 15 minutos. En cada CD se provoca luego pérdida de sala o servidor con al menos un camino de extracción activo. Para Talca se comprueba la exclusión de VM-02, se detiene DMS y se registra la transferencia de autoridad de M2 antes de habilitar la copia de Aurora y levantar `wms_only` en ECS Fargate. Se distinguen pérdida de cómputo con red disponible y pérdida de sala: los terminales y periféricos acceden por VPN solo tras verificar o restituir LAN, firewall y un camino WAN. El RTO incluye esa restitución. Con la sala de Talca perdida se comprueba que salen las cargas con guía preemitida y que una carga nueva queda bloqueada hasta restituir el ERP. También se ensaya promoción de us-east-1 si sa-east-1 falla. En Concepción, el servidor en espera toma el control en menos de un minuto contado desde la exclusión comprobada del escritor anterior; la intervención para conseguir esa exclusión se mide por separado dentro del RTO de 4 horas, conforme a 4.2.4.3. Solo la pérdida de ambos obliga a reconstruir su base desde los eventos centrales. Concepción no recibe la carga de Talca.
 
-Se contrastan pedidos, stock por sitio, preparación, bloqueos sanitarios y evidencias con el oráculo de prueba y se miden RTO y RPO completos. Se registra por separado la recuperación de la consulta sanitaria de lotes y destinos en menos de 2 horas (4.2.4.5); el presupuesto regional de 135 minutos no acredita ese objetivo por sí solo. Una prueba separada mantiene el sitio operativo sin los tres caminos durante 24 horas para verificar autonomía y alarmas; el límite residual de pérdida simultánea de los tres medios seguida de destrucción del sitio se justifica en 4.3.2.
+Se contrastan pedidos, stock por sitio, preparación, bloqueos y evidencias con el oráculo de prueba. AL-DR-01 mide por separado recuperación crítica ≤ 4 h y consulta sanitaria < 2 h desde la solicitud, incluida una pérdida simultánea de sa-east-1. La consulta secundaria de M9 debe disponer de identidad, acceso privado, estado por lote y objetos verificables; se contrastan clientes y evidencias contra el conjunto esperado. Si hay eventos u objetos sin replicar, se informa la cobertura y no se aprueba una lista incompleta como resultado definitivo. El aislamiento de los tres enlaces seguido de destrucción se prueba como brecha de RPO, sin dar por aceptada una excepción. Un ensayo distinto mantiene el sitio operativo durante 24 h sin WAN.
 
 El ensayo semestral mide RPO ≤ 15 minutos para transacciones en nube, WMS de Talca, mensajes críticos, evidencias y documentos tributarios en S3 y telemetría de temperatura; analítica y mensajes no críticos tienen objetivo ≤ 24 horas, y las posiciones de flota, ≤ 24 horas dentro de sa-east-1. En S3 se verifica Replication Time Control, su objetivo de 99,99% de objetos en 15 minutos, los objetos pendientes y el evento de umbral que dispara la recopia; en DynamoDB Global Tables se mide ReplicationLatency y se comprueba la alarma a 60 segundos.
 
-La conmutación regional ensaya la decisión del CLIENTE con autorizador titular y suplente facultado: si el titular no responde en 15 minutos, decide el suplente, y el paso de autorización no supera 30 minutos. El acta registra los ocho pasos y su peor caso secuencial de 5 + 30 + 20 + 30 + 15 + 15 + 15 + 5 = 135 minutos, dentro del RTO de 4 horas. El paso 6 reconecta túneles y brokers y redirige los shippers y `erp-sync` a las colas equivalentes, creadas vacías en la región secundaria; el paso 7 valida el recorrido completo y el paso 8 cambia el tráfico. Luego se comprueba que el reenvío del outbox de 24 h y de las reservas pendientes no deja mensajes perdidos ni duplicados.
+La conmutación regional ensaya la decisión del CLIENTE con autorizador titular y suplente facultado: si el titular no responde en 15 minutos, decide el suplente, y el paso de autorización no supera 30 minutos. El acta registra los ocho pasos y su peor caso secuencial de 5 + 30 + 20 + 30 + 15 + 15 + 15 + 5 = 135 minutos, dentro del RTO de 4 horas. Los pasos 4 y 5 restituyen consola, optimizador, AS2 e ingesta IoT junto con el núcleo, las APIs y la identidad, según 4.3.2.5; se conservan los mismos presupuestos y se mide su suficiencia. El paso 6 reconecta túneles y brokers y redirige los shippers y `erp-sync` a las colas equivalentes, creadas vacías en la región secundaria; el paso 7 valida el recorrido completo y el estado de cada canal y el paso 8 cambia el tráfico. Luego se comprueba que el reenvío del outbox de 24 h y de las reservas pendientes no deja mensajes perdidos ni duplicados.
 
 **AL-OFF-01. Autonomía de 24 horas con dos relevos**
 
@@ -514,7 +526,7 @@ El ensayo cubre Talca, Concepción y cada cross-docking con el mismo perfil `wms
 
 A las 8 y 16 horas, personas distintas se identifican con PIN personal en terminal enrolado. Se comprueban firma, vigencia, sitio, rol y turno; se rechazan manifiesto alterado, PIN incorrecto, dispositivo no autorizado y privilegio nuevo. Se reinicia un componente y se verifica persistencia de outbox, bitácora y permisos. Durante el corte se ejecutan recepción, retención local, preparación, bloqueo térmico y despacho con guía válida preemitida; al reconectar se drenan eventos repetidos y fuera de orden.
 
-La aceptación exige dos relevos autorizados, operaciones confirmadas aplicadas una sola vez, conflictos conciliados y auditoría completa. Una excursión térmica mantiene el lote bloqueado: se comprueba que no pueda liberarlo un perfil distinto de Calidad ni la falta de respuesta de la consola. Para acreditar una nueva liberación sin nube se exige además demostrar el recorrido local de Calidad, sus permisos y su auditoría; el bloqueo local por sí solo no acredita esa capacidad. Se registran ocupación, retraso de cola y tiempo de drenaje con carga de septiembre; AL-DTE-01 verifica por separado una nueva guía y la invalidación de una guía preemitida.
+La aceptación exige dos relevos autorizados, operaciones confirmadas aplicadas una sola vez, conflictos conciliados y auditoría completa. Una excursión térmica mantiene el lote bloqueado: se comprueba que no pueda liberarlo un perfil distinto de Calidad ni la falta de respuesta de la consola. El perfil personal de Calidad ingresa desde el terminal Kotlin enrolado a la puerta local de A-01: se ensaya evaluación con evidencia suficiente, rechazo por expediente incompleto o permiso vencido, persistencia de la decisión en M9 y aplicación de la misma versión en M2/M5. El reinicio no elimina la bitácora, el reenvío no repite la disposición y una nueva excursión crítica vuelve a bloquear. Se registran ocupación, retraso de cola y tiempo de drenaje con carga de septiembre; AL-DTE-01 verifica por separado una nueva guía y la invalidación de una guía preemitida.
 
 **AL-CLI-01. Pedido de autoatención sin señal**
 
@@ -542,7 +554,7 @@ La matriz identifica los doce módulos y los servicios transversales para coteja
 | M6 | Entrega y POD | INT-02 | App de reparto, API y almacenamiento de evidencia. |
 | M7 | Rendición y cartera | INT-02/06/09 | API, trabajadores Laravel y ACL de cobranza. |
 | M8 | Devoluciones | INT-02/03/06 | Registro móvil/local y servicios de conciliación. |
-| M9 | Trazabilidad y frío | INT-03/05 | Bloqueo local, ingesta IoT y consulta de lotes. |
+| M9 | Trazabilidad y frío | INT-03/05 y API local autorizada | A-01/A-02/C-03: evaluación y disposición local; B-01/B-02/B-03: captura y bloqueo; N-04/N-06/N-08: ingesta y consulta centrales. |
 | M10 | Analítica | Eventos canónicos | Ingesta a lago y servicios de consulta analítica. |
 | M11 | Canal moderno | INT-08 | Reglas Laravel, OpenAS2 y conector por cadena. |
 | M12 | Telemetría | INT-15 | Adaptador de solo lectura y consulta de ruta real. |
@@ -555,51 +567,51 @@ La correspondencia entre 3.3, 3.4, 4.1 y 4.2.2 se verifica en ambos sentidos med
 
 **Inventario trazable de capacidades transversales**
 
-Los siguientes 37 identificadores complementan los doce módulos: el inventario lógico tiene 49 unidades verificables. La última columna resume el criterio de correspondencia; la realización física de cada identificador está en la Tabla 8 del apartado 4.2.2.
+Los siguientes 37 identificadores complementan los doce módulos: el inventario lógico tiene 49 unidades verificables. La última columna identifica los recursos de 4.2 y T-11 que realizan cada capacidad, además de su límite de responsabilidad. La Tabla 8 resume el mapeo por módulo y capa; esta tabla permite verificar los componentes transversales por separado.
 
 <a id="tab:inventario-transversal"></a>
 
 **Tabla A.15 — Inventario transversal y realización física**
 
-| **ID** | **Componente** | **Capacidad** | **Contrato** | **Correspondencia 4.2.2** |
+| **ID** | **Componente** | **Capacidad** | **Contrato** | **Realización física y límite** |
 | --- | --- | --- | --- | --- |
-| UI-MOV | Apps Kotlin / Room | preventa y entrega | INT-01/02 | M3/M6/M7/M8 |
-| UI-HHT | Terminales de bodega | preparación | INT-03 / API local | M1/M2/M5 |
-| UI-WEB | Portales Angular | Administración; portales | API autorizada | Roles por empresa |
-| BOR-PUB | CloudFront / AWS WAF / AWS Shield Advanced | seguridad | HTTPS | Entrada pública única |
-| BOR-B2B | Superficie AS2 | canal moderno | INT-08 | Contrapartes registradas |
-| GW-CENT | REST API / authorizer | plataforma | API / sincronización | ADR-13 |
-| GW-LOCAL | Puerta API de sitio | WMS | INT-03 | Validación sin WAN |
-| AUTH-CENT | Keycloak | seguridad | INT-13 / OIDC | Autoridad de identidad |
-| AUTH-LOCAL | Verificador de turnos | continuidad | Manifiesto firmado | PIN, turno y sitio |
-| WMS-SITE | Perfil WMS local | WMS | INT-03 | Un escritor por sitio |
-| INT-BROKER | RabbitMQ | integración | AMQP | Persistencia y DLQ |
-| INT-SHIPPER | Shipper local a nube | integración | JSON / SQS | Acuse después de envío |
-| INT-CONSUMER | Consumidor PHP | integración | AsyncAPI / JSON | Persistir antes de acuse |
-| INT-JOBS | Trabajadores Laravel | notificaciones y EDI | Colas internas | Perfil de trabajos en N-04 (Fargate) |
-| INT-SCHED | Planificador | administración | Tareas versionadas | Un líder por ambiente |
-| INT-ACL | Adaptador ERP | ERP / DTE | INT-06/07 | ERP único emisor |
-| INT-EDI | OpenAS2 / perfiles | canal moderno | INT-08 | MDN no es acuse comercial |
-| INT-GIS | Adaptador de mapas | rutas | INT-10 | Tiempo máximo / precarga |
-| INT-OPT | Optimizador M4 | rutas | Trabajo versionado | Restricciones de ruta |
-| INT-GPS | Adaptador de flota | telemetría | INT-15 | Solo lectura |
-| INT-NOTIF | Notificaciones | administración | INT-11 | Vigencia por canal |
-| INT-IOT | Captura térmica local | frío | INT-05 | Bloqueo local |
-| DAT-OLTP | PostgreSQL / PostGIS | inventario | Repositorios propios | Autoridad por sitio |
-| DAT-CDC | Réplica de Talca | continuidad | INT-12 | Lectura, no doble escritor |
-| DAT-OLAP | DynamoDB / Glue / S3 / Redshift | analítica | ETL / eventos | Separado de OLTP |
-| DAT-OBJ | Objetos POD / DTE | entrega | Hash y objeto | Retención por dominio |
-| DAT-CACHE | Redis central | plataforma | Lecturas autorizadas | No reserva stock |
-| DAT-LOCAL | Room / cola cifrada | movilidad | UUID / sincronización | Separar fotos y registros sin confirmar |
-| SEC-SECRETS | Custodia de claves | seguridad | Identidad de servicio | Rotación segregada |
-| SEC-AUDIT | Auditoría inalterable | administración | Evento de decisión | Sujeto, regla y resultado |
-| SEC-SIEM | Detección y correlación | seguridad | Alertas | Casos Q/R |
-| OBS-COLLECT | OpenTelemetry / ADOT | observabilidad | INT-14 / OTLP | Buffer de 24 horas |
-| OBS-LOCAL | Alarmas del sitio | continuidad | Alerta local | No depende de WAN |
-| OBS-CENT | CloudWatch | observabilidad | INT-14 | Plataforma única |
-| DEV-PIPE | CI/CD y SBOM | plataforma | Artefacto firmado | Promoción por contrato |
-| DEV-IAC | Terraform / Ansible | infraestructura | Estado y configuración | Propietario único |
-| DEV-MDM | Gestión de terminales | seguridad | Enrolamiento | Política y borrado |
+| UI-MOV | Apps Kotlin / Room | preventa y entrega | INT-01/02 | C-01/C-02 en terreno; N-04 en nube. M3/M6/M7/M8 |
+| UI-HHT | Terminales de bodega | preparación y disposición sanitaria autorizada | INT-03 / API local | C-03 y A-01 en los cinco sitios; perfiles separados para M1/M2/M5 y Calidad en M9. |
+| UI-WEB | Portales Angular | Administración; portales | API autorizada | N-01/N-02 y frontend N-04 en nube. Roles por empresa |
+| BOR-PUB | CloudFront / AWS WAF / AWS Shield Advanced | seguridad | HTTPS | N-01/N-02/N-12 en nube. Entrada pública única |
+| BOR-B2B | Superficie AS2 | canal moderno | INT-08 | N-04, OpenAS2 y NLB en nube. Contrapartes registradas |
+| GW-CENT | REST API / authorizer | plataforma | API / sincronización | N-03, API Gateway y authorizer en nube. ADR-13 |
+| GW-LOCAL | Puerta API de sitio | WMS | INT-03 | A-01 en VM-01, VM-C01 y E-01. Validación sin WAN |
+| AUTH-CENT | Keycloak | seguridad | INT-13 / OIDC | A-05 en Fargate y N-05 en nube. Autoridad de identidad |
+| AUTH-LOCAL | Verificador de turnos | continuidad | Manifiesto firmado | A-05 en VM-05, VM-C03 y E-01. PIN, turno y sitio |
+| WMS-SITE | Perfil WMS local | WMS | INT-03 | A-01/A-02 en VM-01/02, VM-C01/02 y E-01. Un escritor por sitio |
+| INT-BROKER | RabbitMQ | integración | AMQP | A-03 en VM-03, VM-C04 y E-01. Persistencia y DLQ |
+| INT-SHIPPER | Shipper local a nube | integración | JSON / SQS | A-01 en VM-03, VM-C04 y E-01; N-09. Conserva outbox hasta acuse de recepción; confirmación de negocio exige resultado durable del consumidor. |
+| INT-CONSUMER | Consumidor PHP | integración | AsyncAPI / JSON | N-04 con acceso a N-05/N-09. Persistir antes de acuse |
+| INT-JOBS | Trabajadores Laravel | notificaciones y EDI | Colas internas | N-04/N-09 en nube. Perfil de trabajos en N-04 (Fargate) |
+| INT-SCHED | Planificador | administración | Tareas versionadas | N-04 en nube. Un líder por ambiente |
+| INT-ACL | Adaptador ERP | ERP / DTE | INT-06/07 | A-04 en VM-04 de Talca. ERP único emisor |
+| INT-EDI | OpenAS2 / perfiles | canal moderno | INT-08 | N-04 en nube; A-04 para intercambio ERP. MDN no es acuse comercial |
+| INT-GIS | Adaptador de mapas | rutas | INT-10 | N-04 y contraparte GIS de INT-10. Tiempo máximo / precarga |
+| INT-OPT | Optimizador M4 | rutas | Trabajo versionado | Contenedor propio N-04 en nube. Restricciones de ruta |
+| INT-GPS | Adaptador de flota | telemetría | INT-15 | N-04/N-06 y contraparte de INT-15. Solo lectura |
+| INT-NOTIF | Notificaciones | administración | INT-11 | N-04 y SES/SNS/End User Messaging Social de INT-11. Vigencia por canal |
+| INT-IOT | Captura térmica local | frío | INT-05 | B-01/B-02 en CD y B-03/C-02 en camiones; N-08. Bloqueo local |
+| DAT-OLTP | PostgreSQL / PostGIS | inventario | Repositorios propios | A-02 por sitio; N-05 en nube. Autoridad por sitio |
+| DAT-CDC | Réplica de Talca | continuidad | INT-12 | VM-02 y DMS/Aurora de N-05. Lectura, no doble escritor |
+| DAT-OLAP | DynamoDB / Glue / S3 / Redshift | analítica | ETL / eventos | N-06/N-10 en nube; posiciones excluidas de us-east-1. Separado de OLTP |
+| DAT-OBJ | Objetos POD / DTE | entrega | Hash y objeto | S3 de N-11 en nube. Retención por dominio |
+| DAT-CACHE | Redis central | plataforma | Lecturas autorizadas | N-07 en nube. No reserva stock |
+| DAT-LOCAL | Room / cola cifrada | movilidad | UUID / sincronización | SQLite/Room en C-01/C-02/C-03. Separar fotos y registros sin confirmar |
+| SEC-SECRETS | Custodia de claves | seguridad | Identidad de servicio | KMS, Secrets Manager y Parameter Store de N-12. Rotación segregada |
+| SEC-AUDIT | Auditoría inalterable | administración | Evento de decisión | S3 Object Lock de N-11 y CloudTrail de N-12; bitácora local A-02. Sujeto, regla y resultado |
+| SEC-SIEM | Detección y correlación | seguridad | Alertas | F-03 y servicios de detección de N-12. Casos Q/R |
+| OBS-COLLECT | OpenTelemetry / ADOT | observabilidad | INT-14 / OTLP | F-01 en VM-06, VM-C04 y E-01. Buffer de 24 horas |
+| OBS-LOCAL | Alarmas del sitio | continuidad | Alerta local | B-02, C-02 y colectores F-01 en sitios. No depende de WAN |
+| OBS-CENT | CloudWatch | observabilidad | INT-14 | CloudWatch de N-12 en nube. Plataforma única |
+| DEV-PIPE | CI/CD y SBOM | plataforma | Artefacto firmado | Pipeline del CLIENTE, CodeBuild/ECR de N-04; T-11, entrega continua. Promoción por contrato |
+| DEV-IAC | Terraform / Ansible | infraestructura | Estado y configuración | F-02, repositorio del CLIENTE y cuentas de los cinco ambientes. Propietario único |
+| DEV-MDM | Gestión de terminales | seguridad | Enrolamiento | N-13 en nube y agentes en C-01/C-02/C-03. Política y borrado |
 
 **Correspondencia de actores y permisos del sistema**
 
@@ -619,7 +631,7 @@ La Tabla [A.16](LAFROX-Subdocumento4-Anexos.md#tab:actores-permisos) realiza el 
 | Cliente del canal moderno | Portal y conector EDI; M11/M3 | Pedidos, consultas y mensajes EDI | Su cadena; sesión humana y técnica separadas | 2 |
 | Empresa transportista | Portal por representante; M4/M6/M12 | Ver rutas y documentos; confirmar conductor y vehículo | Su empresa; no firma POD | 2; registro por despacho en 1 |
 | Proveedor | Portal por representante; M1 | Consultar órdenes y recepciones | Su organización; solo lectura | 2 |
-| Jefa de Calidad | Consola de Calidad; M9, acciones M2/M5 | Fijar umbral y duración; liberar, bloquear o retirar | Lote e instalación; decisión exclusiva | 1 |
+| Jefa de Calidad | Consola Angular central y perfil Kotlin de Calidad por puerta local; M9, acciones M2/M5 | En conexión: fijar umbral y duración. En el sitio: evaluar, liberar, bloquear o retirar con evidencia | Lote e instalación; decisión exclusiva y permiso personal vigente; sin cambiar maestros offline | 1 |
 | Gerente Comercial | Consola comercial; M3/M7/M10/M11 | Reglas, excepciones e indicadores | Política y canal, con historial | 1; canal moderno en 2 |
 | Gerente de Finanzas | Consola financiera; M7/M10 | Supervisar rendición y reglas financieras | Tesorería nominada; quien registra no aprueba | 1; costo en 2 |
 | Planificador de Rutas | Consola de rutas; M4/M12 | Generar, corregir y aprobar rutas | Motivo auditado; no altera cobros | 1 |
@@ -769,7 +781,7 @@ Fuente: elaboración propia a partir de RT-02.04 (Bases Técnicas Transversales,
 
 **Criterio de selección.** Escaneo, impresión y captura fiables en frío y sin señal.
 
-**Consecuencias.** Se mantiene un artefacto para preventa, reparto y picking con perfiles de permiso; inventario, configuración, actualizaciones y bloqueo de dispositivos se administran remotamente.
+**Consecuencias.** Se mantiene un artefacto para preventa, reparto y bodega con perfiles de permiso, incluido el perfil local de Calidad para evaluar y disponer lotes del sitio por la puerta de A-01. La consola central conserva parametrización y consulta consolidada; inventario, configuración, actualizaciones y bloqueo de dispositivos se administran remotamente.
 
 En la mantención, Kotlin nativo permite conservar un único artefacto con perfiles de preventa, reparto y bodega, y aprovechar el equipo Kotlin de LafroX. Frente a Flutter, evita mantener una capa adicional para adaptar y validar los periféricos; frente a una PWA, concentra en Android la persistencia sin conexión y la integración industrial que motivan la elección. El Portal de Clientes mantiene su propia mantención como PWA (RT-17.02; Bases Técnicas Transversales, cap. 17, p. 31).
 
@@ -795,7 +807,7 @@ En la mantención, Kotlin nativo permite conservar un único artefacto con perfi
 **ADR-09. Estrategia de recuperación ante desastres**
 
 <a id="sub:adr-09"></a>
-**Decisión adoptada.** Aurora Global Database protege la región; el WMS de Talca se recupera en ECS Fargate sobre su copia en Aurora. ECR replica las imágenes entre regiones y la infraestructura como código crea en la secundaria las colas SQS FIFO, SQS y SNS equivalentes, inicialmente vacías.
+**Decisión adoptada.** Aurora Global Database protege la región; el WMS de Talca se recupera en ECS Fargate sobre su copia en Aurora. ECR replica las imágenes entre regiones y la infraestructura como código crea en la secundaria las colas SQS FIFO, SQS y SNS equivalentes, inicialmente vacías. La recuperación restituye también consolas, rutas y AS2 desde imágenes y configuración preparadas, e ingesta IoT y accesos desde su configuración regional. El RTO incluye estas dependencias y, para Talca, la red de piso y el camino WAN; el escalado del núcleo no equivale a recuperar todos los canales.
 
 **Alternativas evaluadas.** Concepción como DR de Talca consume su capacidad y mantiene amenaza terrestre; restauración fría no alcanza cuatro horas.
 
@@ -803,7 +815,9 @@ En la mantención, Kotlin nativo permite conservar un único artefacto con perfi
 
 **Consecuencias.** Talca habilita la copia para escritura solo tras excluir el escritor anterior, detener DMS y registrar la transferencia de autoridad de M2. Los terminales acceden por VPN con LAN, firewall y un camino WAN disponibles o restituidos. El retorno reconstruye VM-02 como réplica del escritor de contingencia, concilia sus datos y transfiere la autoridad de forma controlada; el antiguo escritor no se reactiva automáticamente (4.3.2.5 y 4.3.2.6). La conmutación redirige los shippers y `erp-sync` a las colas de la región secundaria sin depender de la primaria.
 
-**Evidencia exigida.** AL-DR-01 recupera Talca en nube y ensaya promoción regional, escritura y retorno.
+**Evidencia exigida.** AL-DR-01 recupera Talca en nube y ensaya promoción regional, escritura y retorno. Ensaya también la consulta sanitaria privada de M9 sobre el lector de Aurora y los originales S3 de us-east-1, con la región primaria indisponible y permisos de solo lectura: acceso ≤ 15 min y resultado verificado ≤ 60 min adicionales, desde la solicitud. Si falta evidencia, el ensayo no acredita el retiro en menos de 2 h.
+
+**Alternativas para la consulta sanitaria.** Esperar la recuperación completa vincula el retiro al RTO de 4 h; duplicar toda la plataforma incrementa capacidad y coordinación. Se selecciona mantener preparada una ruta restringida de M9 sobre los recursos secundarios ya declarados, sin un segundo escritor ni un almacén analítico nuevo. El acceso y las claves regionales forman parte de la disponibilidad del servicio, no de un procedimiento dependiente de la región caída.
 
 **Requisitos que la sustentan.** RT-07.04; Caso, continuidad.
 
@@ -840,7 +854,7 @@ En la mantención, Kotlin nativo permite conservar un único artefacto con perfi
 **ADR-12. Capacidad y peak**
 
 <a id="sub:adr-12"></a>
-**Decisión adoptada.** Aurora mantiene capacidad fija, sin escalado automático, dimensionada para la cota extrema de la API más la cuota del canal tradicional, 111,70 solicitudes/s. Fargate escala la API de 2 a 4 tareas en los casos base y a 7 en la sensibilidad de 91,70 solicitudes/s, bajo el techo de 8, que también cubre esa cuota. El consumidor y los trabajos de notificaciones y EDI escalan de 2 a 4 tareas por perfil.
+**Decisión adoptada.** Aurora mantiene capacidad fija, sin escalado automático, dimensionada para la cota extrema de la API más la cuota del canal tradicional, 111,70 solicitudes/s. Fargate escala la API de 2 a 4 tareas en los casos base, a 7 en la sensibilidad de 91,70 solicitudes/s y a las 8 del techo al incluir la cuota de 20 del canal tradicional. Esta última cota no deja margen para subir la cuota sin ampliar y verificar capacidad. El consumidor y los trabajos de notificaciones y EDI escalan de 2 a 4 tareas por perfil.
 
 **Alternativas evaluadas.** Cambiar la clase de Aurora en septiembre introduce intervención en congelamiento; un proceso único comparte saturación entre perfiles.
 
@@ -936,7 +950,7 @@ En la mantención, Kotlin nativo permite conservar un único artefacto con perfi
 
 **Criterio de selección.** Tres medios con dominios de falla distintos y confirmación durable externa.
 
-**Consecuencias.** Se alerta a los 5 y 15 minutos; la autonomía local permanece y el límite residual se justifica en 4.3.2.
+**Consecuencias.** Se alerta a los 5 y 15 minutos y se mantiene la autonomía local. El aislamiento de los tres medios seguido de destrucción puede exceder el RPO; el registro R8-05 no constituye aceptación del mandante. El escenario, su pérdida potencial y las alternativas de comunicación requieren resolución contractual explícita.
 
 **Evidencia exigida.** AL-DR-01 mide puntos consistentes y recupera el WMS de Talca en nube con los tres caminos ensayados.
 
@@ -1007,6 +1021,52 @@ En la mantención, Kotlin nativo permite conservar un único artefacto con perfi
 <a id="anx:P"></a>
 
 Este anexo relaciona los nombres funcionales con los servicios técnicos y declara, para cada tecnología, su versión, su soporte y su política de actualización.
+
+##### Detalle de selección por capa
+
+- **Backend (12 módulos).** Laravel 13 sobre PHP 8.5, con Composer y el archivo de versiones de dependencias, organizado en contextos M1–M12. PostgreSQL/PostGIS conserva los datos geográficos; M4 usa repositorios espaciales con SQL parametrizado vía PDO/Query Builder y pruebas de consultas. Laravel 13 requiere PHP 8.3 o superior y admite PHP 8.5 (Laravel, 2026); ambos componentes se actualizarán a versiones con soporte durante los 56 meses.
+
+- **Frontend web.** Angular 22 con Tailwind CSS y TypeScript 6.0 compatible con su matriz oficial. La integración con Keycloak se implementa mediante OIDC y se mantiene junto con las dependencias del cliente. Las versiones deben actualizarse durante el contrato conforme a sus ciclos de soporte.
+
+- **Apps de campo (preventa y reparto).** Kotlin Android nativo. Nativo del parque Zebra/Android, escáner GS1 vía Zebra DataWedge, SQLite/Room offline, acceso nativo a GPS, POS y térmica.
+
+- **Borde y continuidad del acceso (Capa 2).** CloudFront, AWS WAF, AWS Shield Advanced y ALB en nube, con control de acceso local. En los CD, Starlink fijo permanece encendido con IPsec establecido y BGP de menor preferencia tras fibra y LTE; en los cross-docking es el camino principal, con LTE de dos proveedores como respaldo y conmutación automática en menos de 30 segundos (ADR-02), sin sustituir la autonomía del servicio local.
+
+- **Puerta de enlace de servicios (Capa 3).** Amazon API Gateway para publicar las APIs y aplicar controles de entrada. La configuración debe cubrir la validación de identidad de Keycloak, las cuotas y los límites de solicitudes, conforme a la modalidad de API seleccionada y al flujo descrito en la capa de puerta de enlace de este apartado.
+
+- **Base de datos transaccional on-premise.** PostgreSQL + PostGIS por sitio con el mismo perfil local de bodega; cada sitio es autoridad de sus movimientos y N-04/N-05 consolida stock y reservas en nube.
+
+- **Base de datos nube (OLTP y recuperación).** Amazon Aurora PostgreSQL, con despliegue Multi-AZ y una ventana propuesta de recuperación a un punto en el tiempo (PITR) de 35 días. Los tiempos de conmutación y restauración se verifican mediante pruebas frente a los objetivos RTO/RPO establecidos.
+
+- **Ingesta IoT / frío.** Amazon DynamoDB e IoT Core reciben las lecturas; Greengrass corre en tres gateways Moxa UC-8200 o equivalentes: dos en Talca, que leen ambas cámaras por Modbus TCP para evitar un punto único de falla, y uno en Concepción; leen sensores por Modbus, bloquean el despacho ante una excursión crítica y sostenida en menos de 5 segundos y conservan 24 horas sin enlace. Los termógrafos de los camiones registran toda la ruta en memoria interna y difunden por BLE la temperatura; el terminal alerta la excursión en la cabina, reenvía la alerta por la red celular, de inmediato con cobertura o al recuperarla, y descarga el registro completo al volver. Escrituras serverless con TTL nativo (raw 30 días).
+
+- **Serie consolidada (OLAP).** S3 Parquet + AWS Glue + Redshift Serverless. OLAP por diseño: DynamoDB raw → Glue → S3 Parquet → Redshift, sin motor de series adicional.
+
+- **Caché y datos de turno.** Redis acelera las lecturas centrales; no se exige Redis en cada sitio. Las APIs entregan una copia cifrada para SQLite/Room y conservan por separado la cola de escrituras sin confirmar. La identidad usa credenciales de 8 horas en bodega y 14 horas en terreno; su caché local de solo lectura tiene TTL de 24 horas en VM-05, VM-C03 y cada E-01, junto al verificador local de relevos (ADR-06).
+
+- **Mensajería asíncrona (Capa 5).** RabbitMQ en on-premise mediante adaptador AMQP `php-amqplib`; SQS FIFO con sobre JSON y consumidor PHP para reconciliación, colas SQS separadas para trabajos Laravel, y SNS para difusión y alertas en nube. Un único planificador Laravel programa las tareas periódicas. **Dos procesos del servicio de integración con el ERP en VM-04 consumen RabbitMQ local y, por salida, la cola FIFO de solicitudes al ERP; ERP integrado exclusivamente vía ACL; Hub EDI GS1 centralizado en nube (EANCOM, GS1 XML, EPCIS), AS2 como transporte.**
+
+- **Analítica / BI.** S3 Data Lake, Redshift Serverless y Glue ETL. Consultas históricas sin degradar el procesamiento transaccional.
+
+- **Objetos / documentos.** Amazon S3 con Intelligent-Tiering y Object Lock.
+
+- **IAM / Identidad (Capa 7).** Keycloak (OIDC, SAML, SSO, MFA) como IdP maestro en nube, con caché local de solo lectura de TTL 24 horas y verificador local con manifiesto firmado y PIN personal en VM-05, VM-C03 y cada E-01.
+
+- **Gestión de secretos (Capa 7).** AWS Secrets Manager y SSM Parameter Store con rotación automática. Cuenta de emergencia fuera de banda, con doble autorización, registro de uso y rotación posterior de credenciales.
+
+- **Observabilidad (Capa 8).** OpenTelemetry para PHP/Laravel y colectores ADOT on-premise con almacenamiento temporal en disco de 24 horas; plataforma única Amazon CloudWatch para logs (12 meses en línea + 24 en archivo), métricas (13 meses), trazas y tableros (ADR-14).
+
+- **Gestión de dispositivos (RT-03.18; Bases Técnicas Transversales, cap. 3, p. 9).** Gestión centralizada mediante MDM (Android Enterprise / Zebra DNA, SaaS), con inventario, configuración, actualización de firmware y aplicaciones, bloqueo y borrado remoto del parque móvil.
+
+- **Contenedores / orquestación.** Imagen PHP 8.5 con servidor HTTP/PHP-FPM para APIs y procesos PHP CLI separados para colas y programación. ECS Fargate aloja los perfiles centrales; Talca y Concepción ejecutan el perfil local de bodega sobre máquinas virtuales Proxmox, y Docker Compose ejecuta el mismo perfil local de bodega en los equipos E-01 de los cross-docking. El código y las migraciones de esquema proceden del mismo artefacto versionado.
+
+- **Infraestructura como Código.** Terraform administra recursos mediante proveedores y estados separados por ambiente; Ansible configura hosts. CDK no administra los mismos recursos: cada activo tiene un único propietario de infraestructura como código.
+
+- **CI/CD.** GitLab CI como orquestador + AWS CodeBuild para construcción hermética con procedencia SLSA 3; la auditoría de dependencias, PHPUnit, PHPStan/Larastan y Laravel Pint verifican dependencias, comportamiento, análisis estático y formato. `swagger-php` genera OpenAPI 3.1 desde atributos PHP; los esquemas AsyncAPI 2.6 se validan y publican en la misma puerta de calidad.
+
+##### Administración del parque por familia de dispositivo
+
+Mantiene inventario central, configura, actualiza firmware y aplicación, bloquea y borra de forma remota el parque de terreno y bodega (RT-03.18; Bases Técnicas Transversales, cap. 3, p. 9); las reservas se entregan precargadas (Bases Técnicas Transversales, cap. 8, p. 19). El resto de los dispositivos se gestiona desde la consola de su fabricante e ingresa al mismo inventario: las impresoras ZQ620 Plus y ZT411 con Zebra Printer Profile Manager Enterprise sobre Link-OS; los terminales PAX A920 Pro con PAXSTORE, que permite configurar, actualizar, bloquear y retirar cada equipo; los gateways IoT con la gestión de flota de AWS IoT Greengrass, y los termógrafos con ELA Device Manager por NFC, mientras la aplicación de reparto supervisa su batería y su registro en cada ruta. Las balanzas y los módulos de sensores no tienen sistema operativo administrable: se registran en el inventario y su firmware se actualiza en la mantención (RT-08.14; Bases Técnicas Transversales, cap. 8, p. 19).
 
 ##### Correspondencia entre nombres funcionales y técnicos
 
@@ -1493,7 +1553,7 @@ Para la dimensión 12, el drenaje se obtiene sumando los aportes acumulados en 2
 
 - Aportes en Talca: los cambios de 0,041 GB/día viajan como WAL, que no se suma aparte: WAL = 3 × 0,041 = 0,123 GB/día; broker = 0,5 × 0,041 = 0,020 GB/día; telemetría = 10.920 × 145 ÷ 1.000.000.000 ÷ 2 = 0,001 GB/día; observabilidad = 6 × 0,25 = 1,50 GB/día; incremental de respaldo = 0,041 GB/día.
 
-- Resultado por sitio: Talca acumula 1,68 GB/día y drena 1,87 Mbps; su hora cargada de oficina y retorno de flota suma 3,29 Mbps, por lo que el peor caso es 3,29 + 1,87 = **5,16 Mbps**. Concepción acumula 1,29 GB/día y drena 1,44 Mbps; cada cross-docking acumula 0,32 GB/día y drena 0,35 Mbps. Su observabilidad incluye el equipo en espera, que no atiende transacciones: no genera trazas y sus métricas y registros se estiman en 20 % de un nodo activo, 0,05 GB/día. Concepción suma 4 × 0,25 + 4 × 0,05 = 1,20 GB/día y cada cross-docking 0,25 + 0,05 = 0,30 GB/día. La prueba de corte mide ese valor.
+- Resultado por sitio: Talca acumula 1,68 GB/día y drena 1,87 Mbps; su hora cargada de oficina y retorno de flota suma 3,29 Mbps, de modo que el escenario horario distribuido requiere 3,29 + 1,87 = **5,16 Mbps**. Concepción acumula 1,29 GB/día y drena 1,44 Mbps; cada cross-docking acumula 0,32 GB/día y drena 0,35 Mbps. Su observabilidad incluye el equipo en espera, que no atiende transacciones: no genera trazas y sus métricas y registros se estiman en 20 % de un nodo activo, 0,05 GB/día. Concepción suma 4 × 0,25 + 4 × 0,05 = 1,20 GB/día y cada cross-docking 0,25 + 0,05 = 0,30 GB/día. La prueba de corte mide ese valor.
 
 - Tráfico prioritario continuo: Talca 0,014 Mbps; Concepción 0,007 Mbps; cada cross-docking 0,002 Mbps, con WAL, broker/outbox, guías y SII, identidad y telemetría crítica.
 
@@ -1503,16 +1563,16 @@ Para la dimensión 12, el drenaje se obtiene sumando los aportes acumulados en 2
 
 | **Sitio** | **Camino** | **Subida** | **Carga** | **Uso** |
 | --- | --- | --- | --- | --- |
-| Talca | D-03 fibra | 20 Mbps | 5,16 Mbps, peor caso | 25,80 % |
-| Talca | D-04 LTE | 5 Mbps | 1,87 Mbps, drenaje | 37,43 % |
-| Talca | D-06 satélite | 2 Mbps | 1,87 Mbps, drenaje | 93,59 % |
-| Concepción | D-03 fibra | 10 Mbps | 2,14 Mbps, peor caso | 21,41 % |
-| Concepción | D-04 LTE | 3 Mbps | 1,44 Mbps, drenaje | 47,86 % |
-| Concepción | D-06 satélite | 2 Mbps | 1,44 Mbps, drenaje | 71,79 % |
+| Talca | D-03 fibra | 20 Mbps | 9,87 Mbps: retorno simultáneo, drenaje y oficina | 49,35 % |
+| Talca | D-04 LTE | 10 Mbps mínimo de aceptación | 7,51 Mbps útiles; 8,64 con margen de transporte | 86,4 % de diseño |
+| Talca | D-06 satélite | 10 Mbps mínimo de aceptación | 7,51 Mbps útiles; 8,64 con margen de transporte | 86,4 % de diseño |
+| Concepción | D-03 fibra | 10 Mbps | 4,42 Mbps: retorno simultáneo, drenaje y oficina | 44,2 % |
+| Concepción | D-04 LTE | 6 Mbps mínimo de aceptación | 4,19 Mbps útiles; 4,82 con margen de transporte | 80,3 % de diseño |
+| Concepción | D-06 satélite | 6 Mbps mínimo de aceptación | 4,19 Mbps útiles; 4,82 con margen de transporte | 80,3 % de diseño |
 | Cada cross-docking | D-06 satélite | 2 Mbps | 0,41 Mbps, peor caso | 20,65 % |
 | Cada cross-docking | D-04 LTE | 2 Mbps | 0,35 Mbps, drenaje | 17,70 % |
 
-La coordinación de reserva no se suma al drenaje: durante un aislamiento la nube no confirma reservas remotas del sitio, por lo que sus solicitudes esperan en la cola de la nube y no en el sitio. Su tasa continua es de 87.228 × 1 KB ÷ 86.400 s, unos 0,008 Mbps sumando todos los sitios, y no cambia la utilización de la tabla. La tasa prioritaria suma WAL, broker y telemetría crítica a los mensajes de guía, respuesta del SII e identidad, con una cota de 1 KB por mensaje; se divide el volumen diario por 86.400 segundos. Los 12.602/23.404 cambios diarios de INT-12 son una cota conservadora basada en movimientos de todos los sitios, aplicada al dimensionamiento de Talca y no un conteo medido allí. La utilización de respaldo divide el drenaje por la capacidad de cada camino. En Talca y Concepción, D-06 permanece encendido en espera caliente, con túnel IPsec establecido y BGP de menor preferencia; solo toma tráfico si fallan fibra y LTE, cuando prioriza DMS/WAL de Talca, salida del broker y outbox, guías hacia ERP y SII, identidad y telemetría crítica. La tarifa plana no agrega costo por mantenerlo encendido. En los cross-docking Starlink es el camino principal y LTE de dos proveedores da respaldo. El tercer camino de los CD sostiene la salida continua de datos exigida por el RPO de 15 minutos; la oficina cede prioridad durante la recuperación.
+La coordinación de reserva no se suma al drenaje: durante un aislamiento la nube no confirma reservas remotas del sitio, por lo que sus solicitudes esperan en la cola de la nube y no en el sitio. Su tasa continua es de 87.228 × 1 KB ÷ 86.400 s, unos 0,008 Mbps sumando todos los sitios, y no cambia la utilización de la tabla. La tasa prioritaria suma WAL, broker y telemetría crítica a los mensajes de guía, respuesta del SII e identidad, con una cota de 1 KB por mensaje; se divide el volumen diario por 86.400 segundos. Los 12.602/23.404 cambios diarios de INT-12 son una cota conservadora basada en movimientos de todos los sitios, aplicada al dimensionamiento de Talca y no un conteo medido allí. La utilización de respaldo incluye retorno simultáneo y drenaje con 15 % de margen, según la Tabla A.33. En Talca y Concepción, D-06 permanece encendido en espera caliente, con túnel IPsec establecido y BGP de menor preferencia; solo toma tráfico si fallan fibra y LTE, cuando prioriza DMS/WAL de Talca, salida del broker y outbox, guías hacia ERP y SII, identidad y telemetría crítica. La tarifa plana no agrega costo por mantenerlo encendido. En los cross-docking Starlink es el camino principal y LTE de dos proveedores da respaldo. El tercer camino de los CD sostiene la salida continua de datos exigida por el RPO de 15 minutos; la oficina cede prioridad durante la recuperación.
 
 La ventana dominical usa ocho horas sin operación de bodega ni reparto. Cada sitio actualiza sus terminales de bodega y los equipos de reparto de los camiones que estacionan en él, repartidos por SV-03: 71 de los 106 en Talca y 35 en Concepción. En Talca, el respaldo completo de 15,12 GB se transfiere a 20 Mbps en 1,68 horas y la aplicación de sus 203 equipos, 20,30 GB, en 2,26 horas; juntas requieren 3,94 horas. Una tanda de 18 sistemas operativos de 2 GB agrega 4,00 horas y ocupa 7,94 horas; una ronda completa ocupa 12 domingos. En Concepción, el respaldo completo de 7,76 GB y la aplicación de sus 101 equipos, 10,10 GB, requieren 3,97 horas; una tanda de 9 sistemas operativos ocupa 7,97 horas y la ronda completa, 12 domingos. Los 69 terminales de preventa no usan esta ventana: trabajan en la calle y el MDM los actualiza por la red móvil. En cada cross-docking, el respaldo de 1,89 GB y la aplicación de sus 2 terminales, 0,20 GB, requieren 2,33 horas sobre la capacidad supuesta de 2 Mbps; con los 2 sistemas operativos, la ventana ocupa 6,77 horas y la ronda requiere un domingo. La aplicación se actualiza en un domingo por sitio; el sistema operativo se distribuye en tandas dominicales con cadencia semestral, dentro de los aproximadamente 43 domingos disponibles al año tras los congelamientos de septiembre y diciembre.
 
@@ -1604,7 +1664,7 @@ La proyección de año 3 del numeral 14.1 de las Bases Técnicas del caso (cap. 
 
 - Evidencia = 87,72 × (36.000 ÷ 31.000) = 101,87 GB/año.
 
-- Enlace de Talca = 5,20 Mbps a año 3 y 5,64 Mbps a 3×.
+- Enlace de Talca, escenario horario distribuido = 5,20 Mbps a año 3 y 5,64 Mbps a 3×; el retorno simultáneo se verifica por separado en 4-W.5–4-W.6.
 
 - Terminales de bodega de Talca = (23 + 3) de congelado + (113 + 12) estándar = 151.
 
@@ -1619,10 +1679,10 @@ Por separado, RT-09.03 (Bases Técnicas Transversales, cap. 9, p. 21) exige 3×:
 | **Componente** | **Año 1** | **Año 3** | **3×** | **Acción** |
 | --- | --- | --- | --- | --- |
 | WMS de Talca, TPS peak | 2,68 | 3,15 | 8,05 | Revisar CPU e IOPS trimestralmente |
-| Cada cross-docking, TPS peak | 2,17 | 2,58 | 6,50 | Revisar CPU e IOPS trimestralmente |
+| Cota por cross-docking con carga agregada de las tres plataformas | 2,17 | 2,58 | 6,50 | Contrastar distribución real por sitio; revisar CPU e IOPS trimestralmente |
 | Nube, TPS peak / tareas | 14,66 / 2 | 17,03 / 2 | 43,98 / 4 | Escalamiento y prueba trimestral |
 | Evidencia anual | 87,72 GB | 101,87 GB | 263,16 GB | Escalar S3 y retención |
-| Enlace de Talca, peor caso | 5,16 Mbps | 5,20 Mbps | 5,64 Mbps | Ampliar D-03 si p95 supera la cota |
+| Enlace de Talca, escenario horario distribuido | 5,16 Mbps | 5,20 Mbps | 5,64 Mbps | Contrastar además el retorno simultáneo de la Tabla A.33 |
 | Terminales de bodega de Talca | 132 | 151 | no aplica | Ajustar parque a la dotación |
 | Mesa, contactos mensuales | 2.000 | 2.258 | 6.000 | Recalibrar Erlang C |
 
@@ -1632,7 +1692,7 @@ La prueba RT-09.06 (Bases Técnicas Transversales, cap. 9, p. 21) usa una sola m
 
 <a id="sec:anexo-4b-umbrales"></a>
 
-La sensibilidad de SV-04 antes de alcanzar la capacidad CPU calculada es Talca 333,73×, Concepción 166,87×, cada cross-docking 12,92× y nube más portal 7,64×. La peor ruta exige 0,13 Mbps efectivos y la hora punta de retorno exige 1,40 Mbps agregados.
+La sensibilidad CPU calculada es Talca 333,73×, Concepción 166,87×, cada cross-docking 12,92× y nube más portal 7,64× respecto del perfil indicado. Son resultados del modelo, sujetos a medición. La peor ruta exige 0,13 Mbps útiles por dispositivo; 1,40 Mbps es el promedio horario de retorno y 8,39 Mbps la sensibilidad de 64 retornos simultáneos, según 4-W.6.
 
 La emisión tributaria es el primer candidato a cuello de botella: tratar los 2.852 DTE peak como guías admite 9,47 segundos cada una en la preparación completa, 4,42 segundos al final del turno y 1,89 segundos en la ventana actual. Se observan guías aún no emitidas frente a la salida, tiempo del ERP, cola, base WMS, IOPS, Wi-Fi y drenaje en percentil 95. La degradación controlada encola con clave idempotente, aplica límite de tasa y muestra un mensaje explícito; el ERP sigue siendo el único emisor.
 
