@@ -104,59 +104,23 @@ Esta sección identifica los riesgos con una RBS y los analiza en dos niveles: u
 
 \subsection{RBS y análisis separados}
 
-La estructura de desglose de riesgos (RBS) tiene raíz «Riesgos de la propuesta LafroX» y tres ramas, una por cada análisis que exige el Formulario T-22: riesgo de la solución, del desarrollo y de la implantación. Dentro de cada rama, los riesgos se agrupan en las categorías técnica, organizacional, de proyecto, de seguridad y de operación que les corresponden. Los ID son únicos aunque una causa afecte varias ramas. La Figura 8.1 presenta la estructura con los 32 riesgos del Anexo 8.A.
+La estructura de desglose de riesgos (EDR, o RBS por sus siglas en inglés) tiene como raíz «Riesgos del proyecto LafroX» y organiza los 45 riesgos del registro actualizado, identificados desde R-001 hasta R-045. La Figura~\ref{fig:sd8-rbs} los distribuye en siete ramas según la fuente o dependencia predominante: Solución y tecnología (14), Integración y legado (7), Operación del cliente (8), Personas y adopción (7), Contrato y licitación (4), Regulatorio y externo (2) y Empresa proveedora (3). Cada riesgo conserva un ID único y una ubicación en la EDR, aunque sus consecuencias alcancen varias áreas.
 
 \parte{figuras/rbs}
 
-La figura muestra que la solución concentra 13 de los 32 riesgos y 11 de los 21 de nivel crítico de la Tabla B.1, porque reúne la continuidad del despacho, la reserva de stock y la evidencia de frío. Los dos riesgos de seguridad (R8-07 y R8-24) pertenecen a la rama de la solución, porque sus fichas los originan en los portales, móviles, integraciones y trazas que la arquitectura expone. El desarrollo se concentra en la categoría de proyecto (dotación, capacidad protegida de la Etapa 1, certificación de cadenas y revisión del CLIENTE), y la implantación, en la organizacional (rotación, transportistas, sindicato y adopción de innovaciones).
+La rama \textbf{Solución y tecnología} reúne los riesgos del funcionamiento y la continuidad de la solución: calidad de datos, reconexión, autonomía móvil, operación en frío, trazabilidad sanitaria, capacidad, recuperación, seguridad y dependencias tecnológicas. Incluye, por ejemplo, los conflictos y duplicados tras reconexión (R-005), el retiro sanitario sin trazabilidad completa (R-012) y la recuperación y el retorno que exceden RTO/RPO (R-015). También incorpora las innovaciones de reproducción de incidentes (INN-02, R-037) y estimación de vida útil (INN-03, R-038). Es la rama con más riesgos; esa cantidad describe la distribución del registro y no determina por sí sola su prioridad.
 
-Solución: integridad de stock/custodia, ERP/DTE, autonomía, capacidad, RPO, seguridad, obsolescencia y proveedores. Desarrollo: interfaces sin documentación, recursos, contrapartes, conocimiento de rutas, migración, certificación externa, certificación paralela a la revisión del CLIENTE y refuerzo subcontratado de calidad. Implantación: congelamientos, cuatro semanas completas, suministros, adopción, relevos y atención. Anexo 8.A desarrolla 32 amenazas; 8.F cubre las cinco innovaciones y una oportunidad de diagnóstico con INN-02. Las tres ramas permiten preparar los análisis separados exigidos por T-22.
+\textbf{Integración y legado} agrupa las dependencias de interfaces del ERP, telemetría de terceros, convivencia del WMS, certificación EDI, avisos, pagos y datos de ruteo; entre ellas están las interfaces del ERP no utilizables (R-001) y la certificación EDI dependiente de las cadenas (R-030). \textbf{Operación del cliente} reúne las condiciones de conectividad, infraestructura, disponibilidad de contrapartes, ventanas de intervención, instalaciones y control de los flujos físicos y de efectivo. Ejemplos son la caída simultánea de enlaces de Concepción (R-006), las contrapartes que no validan a tiempo (R-022) y las devoluciones y envases que alteran saldo o custodia (R-044).
 
-Los siete riesgos que el Caso 02 espera encontrar en este plan (Distribuidora Puelche S.A., 2026c, Cap. 19) tienen ficha propia: la pérdida del conocimiento de rutas (R8-13), la objeción sindical y el rechazo de los conductores de terceros (R8-21), la rotación en bodega (R8-20) y la ausencia de documentación de interfaces (R8-10). La dependencia de un solo enlace en Concepción la resuelve el SD4 con tres caminos independientes, y R8-03 la verifica con la prueba de 24 horas sin WAN en cada centro de distribución. El peak de septiembre coincide con las semanas de cierre de la marcha blanca de la Etapa 2, y R8-18 lo trata con la habilitación completa en agosto y la prueba de carga a 1,5 veces el peak antes del H11.
+\textbf{Personas y adopción} aborda la objeción sindical y la privacidad de geolocalización (R-017), la incorporación de conductores rotativos por los transportistas (R-018), la rotación y el aprendizaje en bodega nocturna (R-019), la capacitación y la pérdida del conocimiento de rutas (R-021). En esta rama también se ubican el seguimiento de stock posentrega de INN-01 (R-036) y la comprensión y privacidad de la hoja del almacenero de INN-05 (R-040). Así, la EDR distingue las dependencias humanas de las condiciones técnicas y operativas que pueden afectar el mismo proceso.
 
-La RBS se denomina también estructura de desglose de riesgos (EDR). La rama indica el objeto principal afectado, no la fase en que se descubre el evento: \textbf{Solución} agrupa la capacidad, continuidad, integridad y seguridad de la solución ofrecida durante su uso; \textbf{Desarrollo}, la construcción y certificación de sus productos, incluidas sus dependencias de equipo y de información; \textbf{Implantación}, la habilitación, aceptación y adopción del servicio en el CLIENTE. Por eso una migración que obliga a corregir productos figura en Desarrollo, aunque se ejecute cerca del corte, y la demanda de la mesa figura en Implantación, aunque continúe en Operación.
+\textbf{Contrato y licitación} concentra la aceptación y marcha blanca (R-026), los cambios de alcance, los incentivos de costo de servir de INN-04 y la transferencia y salida. \textbf{Regulatorio y externo} cubre la evidencia verificable del POD y la guía (R-029), junto con los cambios de retención o normativa aplicable (R-042). \textbf{Empresa proveedora} reúne la suficiencia de dotación compartida entre etapas (R-025), la capacidad de mesa, NOC y soporte de sitio (R-034), y la estimación de costos variables y caja del proveedor (R-035).
 
-La categoría expresa la causa o dependencia predominante dentro de esa rama: \textbf{Técnico}, comportamiento, integración o límites de componentes; \textbf{Organizacional}, personas, conocimiento, coordinación y adopción; \textbf{Proyecto}, recursos, secuencia, fechas, aprobaciones y compromisos; \textbf{Seguridad}, acceso y exposición de información; \textbf{Operación}, continuidad del proceso y evidencia del servicio. Se conserva una sola ubicación por ID, la de su ficha del Anexo 8.A; los efectos transversales se tratan en la respuesta y no generan una segunda amenaza ni otro cargo de reserva. La Tabla 8.3a permite recorrer esas asignaciones sin volver a valorar los riesgos.
+Los temas de riesgo señalados en el Caso 02 (Distribuidora Puelche S.A., 2026c, Cap. 19) se pueden recorrer con estos códigos: interfaces del ERP (R-001), enlaces de Concepción (R-006), objeción sindical (R-017), conductores de terceros (R-018), rotación en bodega (R-019), conocimiento de rutas (R-021) y capacidad ante el despacho crítico o el peak (R-013). Su distribución entre ramas permite reconocer las distintas fuentes de riesgo sin reunirlas artificialmente bajo una sola fase del proyecto.
 
-\begingroup
-\renewcommand{\thetable}{8.3a}
-\begin{tablalafrox}{Índice de la EDR por rama, categoría y ficha. Fuente: Figura 8.1 y Anexo 8.A.}{tab:sd8-cuerpo-edr}{>{\hsize=0.65\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X >{\hsize=0.75\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X >{\hsize=0.85\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X >{\hsize=1.75\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X}{\cab{Rama} & \cab{Categoría} & \cab{ID y ficha} & \cab{Riesgo}}
-Solución & Operación & R8-01 & ERP indisponible o guía invalidada \\
-Solución & Técnico & R8-02 & Doble reserva o custodia en la coordinación de reserva \\
-Solución & Operación & R8-03 & CD no sostiene 24 horas sin WAN \\
-Solución & Técnico & R8-04 & Pérdida o duplicación tras 14 horas offline \\
-Solución & Operación & R8-05 & Pérdida del sitio supera RPO \\
-Solución & Técnico & R8-06 & Carga y cola de la coordinación de reserva exceden capacidad \\
-Solución & Seguridad & R8-07 & Ataque o exposición de datos críticos \\
-Solución & Técnico & R8-08 & Bloqueo por proveedor \\
-Solución & Técnico & R8-09 & Obsolescencia durante 56 meses \\
-Desarrollo & Técnico & R8-10 & Interfaces no documentadas exigen retrabajo \\
-Desarrollo & Proyecto & R8-11 & Productividad o dotación inferior al modelo \\
-Desarrollo & Organizacional & R8-12 & Contrapartes CLIENTE no disponibles \\
-Desarrollo & Organizacional & R8-13 & Conocimiento de ruteo no transferido \\
-Desarrollo & Proyecto & R8-14 & E2 consume capacidad protegida E1 \\
-Desarrollo & Proyecto & R8-15 & Perfiles EDI no certificados a tiempo \\
-Desarrollo & Técnico & R8-16 & Migración altera saldos o pierde lotes \\
-Implantación & Proyecto & R8-17 & Fecha efectiva elimina ventanas permitidas \\
-Implantación & Operación & R8-18 & Marcha blanca no cumple seis condiciones \\
-Implantación & Proyecto & R8-19 & Suministros o sala fuera de secuencia \\
-Implantación & Organizacional & R8-20 & Rotación y resistencia reducen adopción \\
-Implantación & Organizacional & R8-21 & Transportistas o sindicato rechazan dispositivos \\
-Implantación & Operación & R8-22 & Demanda de la mesa supera la dotación base \\
-Solución & Operación & R8-23 & Frío o sensores no producen evidencia íntegra \\
-Solución & Seguridad & R8-24 & Filtración en telemetría o reproducción \\
-Implantación & Organizacional & R8-25 & INN-01 no logra seguimiento posentrega \\
-Desarrollo & Técnico & R8-26 & INN-02 no reproduce fallas relevantes \\
-Solución & Técnico & R8-27 & INN-03 estima vida remanente insegura \\
-Implantación & Proyecto & R8-28 & INN-04 medición variable genera disputa \\
-Implantación & Organizacional & R8-29 & INN-05 baja adopción de hoja del almacenero \\
-Solución & Técnico & R8-30 & Crecimiento o nuevo CD supera parametrización \\
-Desarrollo & Proyecto & R8-31 & Observaciones de revisión obligan a repetir certificación paralela \\
-Desarrollo & Organizacional & R8-32 & Evaluadores subcontratados no disponibles para las certificaciones \\
-\end{tablalafrox}
-\endgroup
+Los análisis de \textbf{solución}, \textbf{desarrollo} e \textbf{implantación} exigidos por el Formulario T-22 se mantienen como perspectivas de evaluación, no como ramas de esta EDR. Solución examina el comportamiento, la integridad y la continuidad durante el uso; Desarrollo, la construcción, integración y certificación de los productos; e Implantación, la habilitación, aceptación y adopción del servicio en el CLIENTE. Un mismo riesgo puede afectar más de una perspectiva: la certificación EDI (R-030), por ejemplo, condiciona tanto el desarrollo de la integración como su habilitación. El análisis transversal conserva el ID sin duplicar riesgos.
 
-La tabla es un índice de lectura: la ficha enlazada conserva la causa, el disparador, la valoración y la respuesta vigentes. El Anexo 8.G relaciona su control con la verificación y la evidencia previstas, sin sustituir el registro vivo.
+La figura presenta la clasificación del registro actualizado de 45 riesgos, utilizada también en el Formulario T-16. Los análisis y anexos que conservan la codificación anterior R8 corresponden a una versión previa del registro; sus valoraciones y resultados no se atribuyen automáticamente a los códigos R-001 a R-045. La EDR permite localizar las fuentes de riesgo, mientras que el registro detalla sus causas, consecuencias, responsables y respuestas.
 
 \subsection{Resultados cualitativos y FMEA}
 
