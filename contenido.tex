@@ -84,32 +84,62 @@ La Dirección de Operaciones coordina tres divisiones, cada una con una responsa
 
 El CISO reporta directamente a la Gerencia General, por una línea independiente de la Dirección de Operaciones. Así, los asuntos de seguridad pueden escalarse sin pasar por los responsables de entrega. Calidad depende de Operaciones, pero ejerce su veto sobre los pasos a producción ante el Comité de Calidad y Procesos. Si hay desacuerdo, lo eleva a la Gerencia General; un plazo de entrega no permite levantar ese veto.
 
-La Tabla~\ref{tab:dotacion} distribuye los 124 especialistas por área y sede. No incluye a la Gerencia General, la Dirección de Operaciones ni las funciones de gestión, comercial y administración, que no se asignan a proyectos.
+La Tabla~\ref{tab:dotacion} distribuye los 124 especialistas por área y sede e indica su antigüedad en LafroX. No incluye a la Gerencia General, la Dirección de Operaciones ni las funciones de gestión, comercial y administración, que no se asignan a proyectos.
 
 \begin{table}[H]
 \centering
-\caption{Distribución de la dotación técnica de planta de LafroX. Fuente: Elaboración propia.}
+\caption{Dotación técnica por área, sede y antigüedad. Fuente: antecedentes corporativos declarados por LafroX.}
 \label{tab:dotacion}
 \small
-\begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}p{3.8cm} >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}p{3.8cm} >{\raggedleft\arraybackslash}p{1.6cm}}
+\begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}p{2.5cm} >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}p{2.8cm} >{\raggedleft\arraybackslash}p{1.7cm} >{\raggedright\arraybackslash}p{2.15cm}}
 \toprule
-\textbf{División Organizacional} & \textbf{Área / Rol Principal} & \textbf{Ubicación de Trabajo} & \textbf{Cantidad} \\
+\textbf{División} & \textbf{Área / rol principal} & \textbf{Sede} & \textbf{Personas} & \textbf{Antigüedad en LafroX} \\
 \midrule
-División de Ingeniería & Desarrollo Software (PHP/Laravel, móvil Kotlin) & Sede Central (Santiago) & 48 \\
-División de Ingeniería & Arquitectura de Solución e Integración & Sede Central (Santiago) & 15 \\
-División de Infraestructura & Centro de Operaciones de Red (NOC 24$\times$7) & Centro de Operaciones (Valparaíso) & 32 \\
-División de Infraestructura & Ingeniería de Confiabilidad (SRE) y Cloud & Centro de Operaciones (Valparaíso) & 12 \\
-División de Calidad (QA) & Aseguramiento y Automatización de Pruebas & Sede Central (Santiago) & 10 \\
-Oficialía de Seguridad & CISO y Especialistas en Ciberseguridad & Sede Central (Santiago) & 7 \\
+Ingeniería & Desarrollo de software (PHP/Laravel, móvil Kotlin) & Central (Santiago) & 48 & 1--8 años \\
+Ingeniería & Arquitectura e integración & Central (Santiago) & 15 & 3--10 años \\
+Infraestructura & NOC 24$\times$7 & Operaciones (Valparaíso) & 32 & 1--7 años \\
+Infraestructura & SRE y Cloud & Operaciones (Valparaíso) & 12 & 2--8 años \\
+Calidad & Aseguramiento y automatización de pruebas & Central (Santiago) & 10 & 2--9 años \\
+Seguridad & CISO y especialistas en ciberseguridad & Central (Santiago) & 7 & 2--8 años \\
 \midrule
-\textbf{Total dotación técnica} & & & \textbf{124} \\
+\textbf{Total} & & & \textbf{124} & \\
 \bottomrule
 \end{tabularx}
 \end{table}
 
 La dotación se concentra en dos frentes: Ingeniería reúne $48 + 15 = 63$ especialistas e Infraestructura, $32 + 12 = 44$. Calidad aporta 10 y Seguridad, 7; la suma es $63 + 44 + 10 + 7 = 124$. Esta distribución distingue la construcción del software de su operación y de sus controles.
 
-Los 32 profesionales del NOC pertenecen a la capacidad corporativa; no se asignan íntegramente a Puelche por el solo hecho de figurar en la tabla. Los turnos y respaldos se organizan por contrato. Para Puelche, el monitoreo es 24$\times$7 y la mesa conserva el horario de 3.4.5 del Subdocumento 3. El Centro de Operaciones también aloja el SOC del proyecto, con analistas contratados bajo la dirección del Encargado de Seguridad.
+La antigüedad corresponde al tiempo de permanencia en LafroX, no a los años totales de experiencia profesional. Los rangos combinan personal estable con incorporaciones recientes; en Arquitectura e Integración, la permanencia de 3--10 años favorece la continuidad de las decisiones y el conocimiento de las interfaces.
+
+Los 32 profesionales del NOC se organizan en cuatro equipos de siete y cuatro reemplazos comunes: $4\times7+4=32$. Cada equipo reúne un responsable de turno, cinco operadores y una persona habilitada para relevar puestos durante pausas y traspasos. La Tabla~\ref{tab:turnos_noc} resume esta distribución corporativa; los equipos rotan entre franjas y días de descanso, no trabajan todos los días ni quedan asignados permanentemente al turno nocturno.
+
+\begin{table}[H]
+\centering
+\caption{Distribución de los 32 profesionales del NOC. Fuente: esquema de operación declarado por LafroX.}
+\label{tab:turnos_noc}
+\small
+\begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}X >{\raggedleft\arraybackslash}p{3cm}}
+\toprule
+\textbf{Asignación} & \textbf{Personas} \\
+\midrule
+Cuatro equipos rotativos de siete integrantes & 28 \\
+Reemplazos comunes habilitados para cubrir puestos & 4 \\
+\midrule
+\textbf{Total NOC} & \textbf{32} \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Los turnos cubren las franjas 00:00--08:00, 08:00--16:00 y 16:00--24:00, hora local de Chile: $3\times8=24$ horas diarias. Se mantienen seis puestos activos, mientras el séptimo integrante del equipo y los cuatro reemplazos comunes permiten organizar relevos y ausencias. El dimensionamiento usa 40 horas semanales por persona: $32\times40=\text{1.280}$ horas de dotación frente a $6\times24\times7=\text{1.008}$ horas de cobertura continua. Las 272 horas de diferencia se destinan a descansos dentro del turno, traspasos, formación y ausencias; son un margen bruto de planificación, no horas disponibles para otro contrato. El cuadrante mensual distribuye los turnos y los descansos de cada persona e incorpora los cambios de horario de Chile, sin depender de horas extraordinarias permanentes.
+
+La continuidad se sostiene con tres reglas:
+\begin{itemize}
+    \item \textbf{Relevo:} el turno saliente registra los incidentes abiertos, su prioridad, la siguiente acción y el responsable. El entrante confirma la recepción en el mismo registro; el cambio de turno no cierra ni reinicia los plazos del incidente.
+    \item \textbf{Reemplazos:} vacaciones y formación se programan en el cuadrante. Ante una ausencia imprevista se activa un reemplazo habilitado para el puesto, incluido el de responsable de turno. Si el margen no alcanza, Operaciones incorpora un reemplazo adicional antes de dejar un puesto sin cobertura.
+    \item \textbf{Escalamiento:} el responsable de turno coordina la atención y deriva a SRE o al especialista que corresponda. El relevo conserva la responsabilidad del incidente hasta que otro equipo acepta expresamente su atención.
+\end{itemize}
+
+Esta dotación atiende el NOC corporativo y no equivale a 32 personas dedicadas exclusivamente a Puelche. Para el CLIENTE, el monitoreo es 24$\times$7; la mesa de ayuda conserva el horario de la sección 3.4.5 del Subdocumento 3. El SOC del proyecto se organiza por separado, con analistas bajo la dirección del Encargado de Seguridad. Los recursos del NOC no se cuentan como puestos de mesa ni de SOC.
 
 \section{Gobierno interno Calidad, Seguridad y Conocimiento}
 
@@ -122,7 +152,7 @@ Los métodos de diseño, desarrollo, implementación, integración y soporte se 
 
 \begin{itemize}
     \item \textbf{Instancia colegiada:} El Comité de Calidad y Procesos, presidido mensualmente por el Jefe de QA y con participación de los líderes de proyecto, analiza la adherencia metodológica y métricas de defecto.
-    \item \textbf{Políticas y controles de ingeniería:} Se implementan compuertas de calidad automáticas (\textit{quality gates}) en los canales de integración continua (CI/CD). Es política corporativa estricta rechazar cualquier compilación con cobertura de pruebas unitarias inferior al 80\% o con hallazgos bloqueantes del análisis estático de código (PHPStan/Larastan y Pint).
+    \item \textbf{Políticas y controles de ingeniería:} Se implementan compuertas de calidad automáticas (\textit{quality gates}) en los canales de integración continua (CI/CD). Es política corporativa rechazar cualquier compilación con cobertura unitaria global inferior al 80\% o con hallazgos bloqueantes del análisis estático de código (PHPStan/Larastan y Pint). Esta política no reemplaza la cobertura mínima del 70\% de la lógica de negocio exigida para este proyecto: ambos umbrales se verifican de forma independiente en el Formulario T-10.
     \item \textbf{Auditorías internas:} Se ejecutan auditorías internas trimestrales a cargo de auditores líderes certificados, orientadas a evaluar la trazabilidad entre requerimientos, código y matrices de prueba.
 \end{itemize}
 
@@ -268,6 +298,7 @@ Las alianzas corporativas cubren nube, equipos de terreno y comunicaciones. Su r
 
 Estas alianzas cubren funciones distintas: AWS aporta servicios de nube; Zebra, equipos de captura; Fortinet/Cisco, redes de borde; y Starlink, un enlace alternativo. Ninguna sustituye la verificación de los equipos ni las pruebas de continuidad. Las especificaciones de los implementos se detallan en el Formulario T-11 del Subdocumento 4; la participación de socios en este proyecto corresponde a 12.3.
 \section*{Referencias}
+\addcontentsline{toc}{section}{Referencias}
 
 Las fuentes citadas en este documento se listan a continuación en formato APA 7.ª edición.
 
@@ -284,6 +315,7 @@ Las fuentes citadas en este documento se listan a continuación en formato APA 7
 }
 
 \section*{Declaración de uso de IA}
+\addcontentsline{toc}{section}{Declaración de uso de IA}
 
 La Tabla~\ref{tab:declaracion_ia} identifica las herramientas y el alcance de la asistencia utilizada, conforme a la sección 7.2 de las Aclaraciones (Distribuidora Puelche S.A., 2026d). La declaración se consolida en el Formulario A-6.
 
@@ -297,7 +329,7 @@ La Tabla~\ref{tab:declaracion_ia} identifica las herramientas y el alcance de la
 \textbf{Sección} & \textbf{Herramienta} & \textbf{Finalidad del uso} & \textbf{Nivel en texto} & \textbf{\makecell[l]{Nivel en\\diagramas}} & \textbf{Revisión humana (quién y qué verificó)} \\
 \midrule
 1.1 & Claude / Gemini; OpenAI Codex & Redacción de trayectoria y servicios & Alto & Ninguno & [[REVISIÓN HUMANA]] \\
-1.2 & Claude / Gemini; OpenAI Codex & Explicación del organigrama y análisis de dotación & Alto & Medio & [[REVISIÓN HUMANA]] \\
+1.2 & Claude / Gemini; OpenAI Codex & Organigrama, antigüedad, turnos y respaldos del NOC & Alto & Medio & [[REVISIÓN HUMANA]] \\
 1.3 & Claude / Gemini; OpenAI Codex & Redacción de gobierno y responsabilidades & Alto & Ninguno & [[REVISIÓN HUMANA]] \\
 1.4 & Claude / Gemini; OpenAI Codex & Comparación de experiencia y SLA & Alto & Ninguno & [[REVISIÓN HUMANA]] \\
 1.5 & Claude / Gemini; Claude Code; OpenAI Codex & Síntesis de roles y dedicaciones & Alto & Ninguno & [[REVISIÓN HUMANA]] \\
