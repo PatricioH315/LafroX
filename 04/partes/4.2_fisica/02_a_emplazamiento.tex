@@ -145,31 +145,33 @@ La figura muestra que cada instalación mantiene su operación local contra sus 
 La Tabla~\ref{tab:mapeo-logica} asocia cada módulo y cada capa transversal de la arquitectura lógica del apartado 4.1 con el componente físico que lo ejecuta y con el lugar donde corre. Es la traza que permite seguir una responsabilidad lógica hasta su emplazamiento. Los componentes físicos se identifican con un catálogo único, agrupado por letra: A para el núcleo de bodega, B para la cadena de frío, C para los dispositivos de operación, D para la red, E para los cross-docking, F para la observabilidad y la seguridad de los nodos, y N para la nube.
 
 \begin{tablalafrox}{Correspondencia entre la arquitectura lógica y la física}{tab:mapeo-logica}%
-  {F{0.28} Y F{0.24}}%
-  {\cab{Módulo o capa (4.1)} & \cab{Componente físico (4.2)} & \cab{Dónde se ejecuta}}
-  M1 Recepción & A-01 y A-02, con C-03 y C-05 & Sitio \\
-  M2 Inventario & A-01 y A-02 en el sitio; N-04 y N-05 para el consolidado & Sitio y nube \\
-  M3 Preventa & C-01 en el terminal; N-04, N-05 y N-07 & Terreno y nube \\
-  M4 Rutas & N-04 y N-05; motor de optimización en su propio contenedor & Nube \\
-  M5 Preparación & A-01 y A-02, con C-03 y C-04 & Sitio \\
-  M6 Reparto & C-02 en el terminal; N-04 y N-05, con la evidencia en S3 & Terreno y nube \\
-  M7 Cobranza y rendición & C-02; N-04; A-04 hacia el ERP & Terreno, nube y VM-04 \\
-  M8 Devoluciones y envases & C-02; N-04; A-01 para la recepción física de retornos mediante la puerta de API local & Terreno, nube y sitio \\
-  M9 Calidad y trazabilidad & B-01, B-02 con la función local de bloqueo en el borde y B-03; N-06 y N-08 & Sitio, camiones y nube \\
-  M10 Analítica & N-10 & Nube \\
-  M11 Canal moderno & N-04 con el perfil EDI y el transporte AS2; A-04 & Nube y VM-04 \\
-  M12 Telemetría & N-04 y N-06, con la API del proveedor de telemetría & Nube \\
-  Capa 1, portales y consolas & N-01 a N-03 y frontend de consolas en N-04 & Nube \\
-  Capas 2 y 3, entrada y puerta de enlace & CloudFront, WAF y API Gateway (N-01 a N-03 y N-12); puerta de API local en A-01 & Nube y sitio \\
-  Capa 5, integración y eventos & A-03; N-09; A-04 & Sitio y nube \\
-  Capa 6, datos & A-02; N-05, N-06, N-07, N-10 y N-11 & Sitio y nube \\
-  Capa 7, seguridad e identidad & A-05 con el verificador local; F-03; N-12 & Nube y sitio \\
-  Capa 8, observabilidad & F-01 y CloudWatch (N-12) & Sitio y nube \\
+  {F{0.25} F{0.20} Y F{0.12}}%
+  {\cab{Capacidad de 3.3–3.4} & \cab{Módulo o capa (4.1)} & \cab{Componente físico (4.2)} & \cab{Dónde se ejecuta}}
+ 3.3.1–3.3.2; recepción en 3.4.1  &  M1 Recepción  &  A-01 y A-02, con C-03 y C-05  &  Sitio  \\
+ 3.3.1–3.3.3; FEFO, reserva y cross-docking en 3.4.1  &  M2 Inventario  &  A-01 y A-02 en el sitio; N-04 y N-05 para el consolidado  &  Sitio y nube  \\
+ 3.3.1 y 3.3.3; toma de pedido en 3.4.1  &  M3 Preventa  &  C-01 en el terminal; N-04, N-05 y N-07  &  Terreno y nube  \\
+ 3.3.1; planificación en 3.4.1  &  M4 Rutas  &  N-04 y N-05; motor de optimización en su propio contenedor  &  Nube  \\
+ 3.3.1–3.3.3; preparación y despacho en 3.4.1  &  M5 Preparación  &  A-01 y A-02, con C-03 y C-04  &  Sitio  \\
+ 3.3.1–3.3.3; entrega en 3.4.1  &  M6 Reparto  &  C-02 en el terminal; N-04 y N-05, con la evidencia en S3  &  Terreno y nube  \\
+ 3.3.1; rendición y cierre en 3.4.1  &  M7 Cobranza y rendición  &  C-02; N-04; A-04 hacia el ERP  &  Terreno, nube y VM-04  \\
+ 3.3.1; devoluciones y cierre en 3.4.1  &  M8 Devoluciones y envases  &  C-02; N-04; A-01 para la recepción física de retornos mediante la puerta de API local  &  Terreno, nube y sitio  \\
+ 3.3.2; excursión y retiro sanitario en 3.4.1  &  M9 Calidad y trazabilidad  &  A-01/A-02 y C-03 para disposición local autorizada; B-01/B-02 para captura y bloqueo, B-03 en camiones; N-04/N-06/N-08 para consulta e ingesta centrales  &  Sitio, camiones y nube  \\
+  3.3.1 y 3.3.3; indicadores y costo de servir en 3.4.1 & M10 Analítica & N-10 & Nube \\
+ 3.3.1 y 3.4.2; pedidos EDI  &  M11 Canal moderno  &  N-04 con el perfil EDI y el transporte AS2; A-04  &  Nube y VM-04  \\
+ 3.4.2; módulos y sistemas externos  &  M12 Telemetría  &  N-04 y N-06, con la API del proveedor de telemetría  &  Nube  \\
+ 3.4.2; quince actores e interfaces  &  Capa 1, portales y consolas  &  N-01 a N-03 y frontend de consolas en N-04  &  Nube  \\
+ 3.3.3 y 3.4.2; continuidad y accesos  &  Capas 2 y 3, entrada y puerta de enlace  &  CloudFront, WAF y API Gateway (N-01 a N-03 y N-12); puerta de API local en A-01  &  Nube y sitio  \\
+ 3.3.1–3.3.3; ERP, continuidad y datos conciliados  &  Capa 5, integración y eventos  &  A-03; N-09; A-04  &  Sitio y nube  \\
+ 3.3.1–3.3.3; lote, reserva, evidencia y consolidación  &  Capa 6, datos  &  A-02; N-05, N-06, N-07, N-10 y N-11  &  Sitio y nube  \\
+ 3.3.3 y 3.4.2; acceso por actor y turno  &  Capa 7, seguridad e identidad  &  A-05 con el verificador local; F-03; N-12  &  Nube y sitio  \\
+ 3.3.3; continuidad, incidentes y reconciliación  &  Capa 8, observabilidad  &  F-01 y CloudWatch (N-12)  &  Sitio y nube  \\
 \end{tablalafrox}
 
 {\footnotesize Fuente: elaboración propia.\par}
 
-El perfil local cubre M1, M2, M5, la función de bloqueo de M9 y la recepción física de retornos de M8 a través de la puerta de API local. Los módulos compartidos corren en N-04 y el terreno captura en su terminal. Los perfiles de ejecución se especifican en la sección~\ref{sec:despliegue}.
+El perfil local cubre M1, M2, M5, el bloqueo y la disposición sanitaria autorizada de M9 y la recepción física de retornos de M8 a través de la puerta de API local. Los módulos compartidos corren en N-04 y el terreno captura en su terminal. Los perfiles de ejecución se especifican en la sección \hyperref[sec:despliegue]{4.2.4}.
+
+El recorrido de trazabilidad parte de la capacidad de 3.3–3.4, identifica su módulo y capa en 4.1 y llega al recurso de 4.2 y T-11. El \href{LAFROX-Subdocumento4-Anexos.pdf}{Anexo 4-N} completa los doce módulos y los 37 componentes transversales con sus contratos y recursos, y el \href{LAFROX-Subdocumento4-Anexos.pdf}{Anexo 4-E} enlaza las familias con las filas individuales de T-12. Un recurso que sirve a varios módulos conserva un identificador único; compartir Fargate o PostgreSQL no fusiona sus responsabilidades.
 
 \subsection{Síntesis del emplazamiento por dominio y criterio}
 
@@ -283,7 +285,7 @@ El emplazamiento descrito se verifica en lo que cada ámbito puede hacer cuando 
 Durante la autonomía, cada ámbito mantiene las funciones habilitadas contra sus datos locales, con permisos vigentes, bloqueos sanitarios y las condiciones del Anexo 4-J:
 
 \begin{itemize}
-  \item El centro de distribución sigue con recepción, preparación, conteo cíclico y trazabilidad contra la base local. El despacho exige una guía válida que ampare la carga y una autorización sanitaria vigente; una nueva guía o una nueva liberación no se presume por ausencia de conexión.
+\item El centro de distribución sigue con recepción, preparación, conteo cíclico y trazabilidad contra la base local. El despacho exige una guía válida que ampare la carga y una autorización sanitaria vigente; Calidad dispone los lotes del sitio desde su perfil Kotlin autorizado y con evidencia local suficiente. Si falta permiso o evidencia, el bloqueo continúa. Una nueva guía requiere ERP y comunicación tributaria; la falta de conexión no equivale a autorización.
   \item El terreno sigue con toma de pedido, entrega, evidencia, devoluciones y cobros contra el almacén local del dispositivo.
   \item El cross-docking mantiene recepción, desconsolidación, lectura del termógrafo en la recepción y re-despacho.
 \end{itemize}

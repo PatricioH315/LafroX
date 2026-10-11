@@ -13,7 +13,7 @@ M5 & Picking y carga & INT-03/07 & HHT, puerta local y WMS con control de guía.
 M6 & Entrega y POD & INT-02 & App de reparto, API y almacenamiento de evidencia. \\
 M7 & Rendición y cartera & INT-02/06/09 & API, trabajadores Laravel y ACL de cobranza. \\
 M8 & Devoluciones & INT-02/03/06 & Registro móvil/local y servicios de conciliación. \\
-M9 & Trazabilidad y frío & INT-03/05 & Bloqueo local, ingesta IoT y consulta de lotes. \\
+ M9  &  Trazabilidad y frío  &  INT-03/05 y API local autorizada  &  A-01/A-02/C-03: evaluación y disposición local; B-01/B-02/B-03: captura y bloqueo; N-04/N-06/N-08: ingesta y consulta centrales.  \\
 M10 & Analítica & Eventos canónicos & Ingesta a lago y servicios de consulta analítica. \\
 M11 & Canal moderno & INT-08 & Reglas Laravel, OpenAS2 y conector por cadena. \\
 M12 & Telemetría & INT-15 & Adaptador de solo lectura y consulta de ruta real. \\
@@ -24,45 +24,45 @@ La tabla verifica la correspondencia de los doce módulos con sus capacidades, c
 
 La correspondencia entre 3.3, 3.4, 4.1 y 4.2.2 se verifica en ambos sentidos mediante identificador, contrato, responsable y realización física.
 \subsection*{Inventario trazable de capacidades transversales}
-Los siguientes 37 identificadores complementan los doce módulos: el inventario lógico tiene 49 unidades verificables. La última columna resume el criterio de correspondencia; la realización física de cada identificador está en la Tabla 8 del apartado 4.2.2.
-\begin{tablalafrox}{Inventario transversal y realización física}{tab:inventario-transversal}{F{0.16} F{0.23} F{0.22} F{0.15} Y}{\cab{ID} & \cab{Componente} & \cab{Capacidad} & \cab{Contrato} & \cab{Correspondencia 4.2.2}}
-UI-MOV & Apps Kotlin / Room & preventa y entrega & INT-01/02 & M3/M6/M7/M8 \\
-UI-HHT & Terminales de bodega & preparación & INT-03 / API local & M1/M2/M5 \\
-UI-WEB & Portales Angular & Administración; portales & API autorizada & Roles por empresa \\
-BOR-PUB & CloudFront / AWS WAF / AWS Shield Advanced & seguridad & HTTPS & Entrada pública única \\
-BOR-B2B & Superficie AS2 & canal moderno & INT-08 & Contrapartes registradas \\
-GW-CENT & REST API / authorizer & plataforma & API / sincronización & ADR-13 \\
-GW-LOCAL & Puerta API de sitio & WMS & INT-03 & Validación sin WAN \\
-AUTH-CENT & Keycloak & seguridad & INT-13 / OIDC & Autoridad de identidad \\
-AUTH-LOCAL & Verificador de turnos & continuidad & Manifiesto firmado & PIN, turno y sitio \\
-WMS-SITE & Perfil WMS local & WMS & INT-03 & Un escritor por sitio \\
-INT-BROKER & RabbitMQ & integración & AMQP & Persistencia y DLQ \\
-INT-SHIPPER & Shipper local a nube & integración & JSON / SQS & Acuse después de envío \\
-INT-CONSUMER & Consumidor PHP & integración & AsyncAPI / JSON & Persistir antes de acuse \\
-INT-JOBS & Trabajadores Laravel & notificaciones y EDI & Colas internas & Perfil de trabajos en N-04 (Fargate) \\
-INT-SCHED & Planificador & administración & Tareas versionadas & Un líder por ambiente \\
-INT-ACL & Adaptador ERP & ERP / DTE & INT-06/07 & ERP único emisor \\
-INT-EDI & OpenAS2 / perfiles & canal moderno & INT-08 & MDN no es acuse comercial \\
-INT-GIS & Adaptador de mapas & rutas & INT-10 & Tiempo máximo / precarga \\
-INT-OPT & Optimizador M4 & rutas & Trabajo versionado & Restricciones de ruta \\
-INT-GPS & Adaptador de flota & telemetría & INT-15 & Solo lectura \\
-INT-NOTIF & Notificaciones & administración & INT-11 & Vigencia por canal \\
-INT-IOT & Captura térmica local & frío & INT-05 & Bloqueo local \\
-DAT-OLTP & PostgreSQL / PostGIS & inventario & Repositorios propios & Autoridad por sitio \\
-DAT-CDC & Réplica de Talca & continuidad & INT-12 & Lectura, no doble escritor \\
-DAT-OLAP & DynamoDB / Glue / S3 / Redshift & analítica & ETL / eventos & Separado de OLTP \\
-DAT-OBJ & Objetos POD / DTE & entrega & Hash y objeto & Retención por dominio \\
-DAT-CACHE & Redis central & plataforma & Lecturas autorizadas & No reserva stock \\
-DAT-LOCAL & Room / cola cifrada & movilidad & UUID / sincronización & Separar fotos y registros sin confirmar \\
-SEC-SECRETS & Custodia de claves & seguridad & Identidad de servicio & Rotación segregada \\
-SEC-AUDIT & Auditoría inalterable & administración & Evento de decisión & Sujeto, regla y resultado \\
-SEC-SIEM & Detección y correlación & seguridad & Alertas & Casos Q/R \\
-OBS-COLLECT & OpenTelemetry / ADOT & observabilidad & INT-14 / OTLP & Buffer de 24 horas \\
-OBS-LOCAL & Alarmas del sitio & continuidad & Alerta local & No depende de WAN \\
-OBS-CENT & CloudWatch & observabilidad & INT-14 & Plataforma única \\
-DEV-PIPE & CI/CD y SBOM & plataforma & Artefacto firmado & Promoción por contrato \\
-DEV-IAC & Terraform / Ansible & infraestructura & Estado y configuración & Propietario único \\
-DEV-MDM & Gestión de terminales & seguridad & Enrolamiento & Política y borrado \\
+Los siguientes 37 identificadores complementan los doce módulos: el inventario lógico tiene 49 unidades verificables. La última columna identifica los recursos de 4.2 y T-11 que realizan cada capacidad, además de su límite de responsabilidad. La Tabla 8 resume el mapeo por módulo y capa; esta tabla permite verificar los componentes transversales por separado.
+\begin{tablalafrox}{Inventario transversal y realización física}{tab:inventario-transversal}{F{0.16} F{0.17} F{0.17} F{0.15} Y}{\cab{ID} & \cab{Componente} & \cab{Capacidad} & \cab{Contrato} & \cab{Realización física y límite}}
+ UI-MOV  &  Apps Kotlin / Room  &  preventa y entrega  &  INT-01/02  &  C-01/C-02 en terreno; N-04 en nube. M3/M6/M7/M8  \\
+ UI-HHT  &  Terminales de bodega  &  preparación y disposición sanitaria autorizada  &  INT-03 / API local  &  C-03 y A-01 en los cinco sitios; perfiles separados para M1/M2/M5 y Calidad en M9.  \\
+ UI-WEB  &  Portales Angular  &  Administración; portales  &  API autorizada  &  N-01/N-02 y frontend N-04 en nube. Roles por empresa  \\
+ BOR-PUB  &  CloudFront / AWS WAF / AWS Shield Advanced  &  seguridad  &  HTTPS  &  N-01/N-02/N-12 en nube. Entrada pública única  \\
+ BOR-B2B  &  Superficie AS2  &  canal moderno  &  INT-08  &  N-04, OpenAS2 y NLB en nube. Contrapartes registradas  \\
+ GW-CENT  &  REST API / authorizer  &  plataforma  &  API / sincronización  &  N-03, API Gateway y authorizer en nube. ADR-13  \\
+ GW-LOCAL  &  Puerta API de sitio  &  WMS  &  INT-03  &  A-01 en VM-01, VM-C01 y E-01. Validación sin WAN  \\
+ AUTH-CENT  &  Keycloak  &  seguridad  &  INT-13 / OIDC  &  A-05 en Fargate y N-05 en nube. Autoridad de identidad  \\
+ AUTH-LOCAL  &  Verificador de turnos  &  continuidad  &  Manifiesto firmado  &  A-05 en VM-05, VM-C03 y E-01. PIN, turno y sitio  \\
+ WMS-SITE  &  Perfil WMS local  &  WMS  &  INT-03  &  A-01/A-02 en VM-01/02, VM-C01/02 y E-01. Un escritor por sitio  \\
+ INT-BROKER  &  RabbitMQ  &  integración  &  AMQP  &  A-03 en VM-03, VM-C04 y E-01. Persistencia y DLQ  \\
+ INT-SHIPPER  &  Shipper local a nube  &  integración  &  JSON / SQS  &  A-01 en VM-03, VM-C04 y E-01; N-09. Conserva outbox hasta acuse de recepción; confirmación de negocio exige resultado durable del consumidor.  \\
+ INT-CONSUMER  &  Consumidor PHP  &  integración  &  AsyncAPI / JSON  &  N-04 con acceso a N-05/N-09. Persistir antes de acuse  \\
+ INT-JOBS  &  Trabajadores Laravel  &  notificaciones y EDI  &  Colas internas  &  N-04/N-09 en nube. Perfil de trabajos en N-04 (Fargate)  \\
+ INT-SCHED  &  Planificador  &  administración  &  Tareas versionadas  &  N-04 en nube. Un líder por ambiente  \\
+ INT-ACL  &  Adaptador ERP  &  ERP / DTE  &  INT-06/07  &  A-04 en VM-04 de Talca. ERP único emisor  \\
+ INT-EDI  &  OpenAS2 / perfiles  &  canal moderno  &  INT-08  &  N-04 en nube; A-04 para intercambio ERP. MDN no es acuse comercial  \\
+ INT-GIS  &  Adaptador de mapas  &  rutas  &  INT-10  &  N-04 y contraparte GIS de INT-10. Tiempo máximo / precarga  \\
+ INT-OPT  &  Optimizador M4  &  rutas  &  Trabajo versionado  &  Contenedor propio N-04 en nube. Restricciones de ruta  \\
+ INT-GPS  &  Adaptador de flota  &  telemetría  &  INT-15  &  N-04/N-06 y contraparte de INT-15. Solo lectura  \\
+ INT-NOTIF  &  Notificaciones  &  administración  &  INT-11  &  N-04 y SES/SNS/End User Messaging Social de INT-11. Vigencia por canal  \\
+ INT-IOT  &  Captura térmica local  &  frío  &  INT-05  &  B-01/B-02 en CD y B-03/C-02 en camiones; N-08. Bloqueo local  \\
+ DAT-OLTP  &  PostgreSQL / PostGIS  &  inventario  &  Repositorios propios  &  A-02 por sitio; N-05 en nube. Autoridad por sitio  \\
+ DAT-CDC  &  Réplica de Talca  &  continuidad  &  INT-12  &  VM-02 y DMS/Aurora de N-05. Lectura, no doble escritor  \\
+ DAT-OLAP  &  DynamoDB / Glue / S3 / Redshift  &  analítica  &  ETL / eventos  &  N-06/N-10 en nube; posiciones excluidas de us-east-1. Separado de OLTP  \\
+ DAT-OBJ  &  Objetos POD / DTE  &  entrega  &  Hash y objeto  &  S3 de N-11 en nube. Retención por dominio  \\
+ DAT-CACHE  &  Redis central  &  plataforma  &  Lecturas autorizadas  &  N-07 en nube. No reserva stock  \\
+ DAT-LOCAL  &  Room / cola cifrada  &  movilidad  &  UUID / sincronización  &  SQLite/Room en C-01/C-02/C-03. Separar fotos y registros sin confirmar  \\
+ SEC-SECRETS  &  Custodia de claves  &  seguridad  &  Identidad de servicio  &  KMS, Secrets Manager y Parameter Store de N-12. Rotación segregada  \\
+ SEC-AUDIT  &  Auditoría inalterable  &  administración  &  Evento de decisión  &  S3 Object Lock de N-11 y CloudTrail de N-12; bitácora local A-02. Sujeto, regla y resultado  \\
+ SEC-SIEM  &  Detección y correlación  &  seguridad  &  Alertas  &  F-03 y servicios de detección de N-12. Casos Q/R  \\
+ OBS-COLLECT  &  OpenTelemetry / ADOT  &  observabilidad  &  INT-14 / OTLP  &  F-01 en VM-06, VM-C04 y E-01. Buffer de 24 horas  \\
+ OBS-LOCAL  &  Alarmas del sitio  &  continuidad  &  Alerta local  &  B-02, C-02 y colectores F-01 en sitios. No depende de WAN  \\
+ OBS-CENT  &  CloudWatch  &  observabilidad  &  INT-14  &  CloudWatch de N-12 en nube. Plataforma única  \\
+ DEV-PIPE  &  CI/CD y SBOM  &  plataforma  &  Artefacto firmado  &  Pipeline del CLIENTE, CodeBuild/ECR de N-04; T-11, entrega continua. Promoción por contrato  \\
+ DEV-IAC  &  Terraform / Ansible  &  infraestructura  &  Estado y configuración  &  F-02, repositorio del CLIENTE y cuentas de los cinco ambientes. Propietario único  \\
+ DEV-MDM  &  Gestión de terminales  &  seguridad  &  Enrolamiento  &  N-13 en nube y agentes en C-01/C-02/C-03. Política y borrado  \\
 \end{tablalafrox}
 \subsection*{Correspondencia de actores y permisos del sistema}
 La Tabla~\ref{tab:actores-permisos} realiza el catálogo de quince actores del apartado 3.4.2 del Subdocumento 3. Cada acción se autoriza por separado sobre el ámbito indicado. Ni el cargo ni el acceso a una consola conceden todos los permisos de un módulo.
@@ -76,7 +76,7 @@ Cliente del canal tradicional & Portal opcional; M3/M6/M7 & Armar pedidos; ver e
 Cliente del canal moderno & Portal y conector EDI; M11/M3 & Pedidos, consultas y mensajes EDI & Su cadena; sesión humana y técnica separadas & 2 \\
 Empresa transportista & Portal por representante; M4/M6/M12 & Ver rutas y documentos; confirmar conductor y vehículo & Su empresa; no firma POD & 2; registro por despacho en 1 \\
 Proveedor & Portal por representante; M1 & Consultar órdenes y recepciones & Su organización; solo lectura & 2 \\
-Jefa de Calidad & Consola de Calidad; M9, acciones M2/M5 & Fijar umbral y duración; liberar, bloquear o retirar & Lote e instalación; decisión exclusiva & 1 \\
+ Jefa de Calidad  &  Consola Angular central y perfil Kotlin de Calidad por puerta local; M9, acciones M2/M5  &  En conexión: fijar umbral y duración. En el sitio: evaluar, liberar, bloquear o retirar con evidencia  &  Lote e instalación; decisión exclusiva y permiso personal vigente; sin cambiar maestros offline  &  1  \\
 Gerente Comercial & Consola comercial; M3/M7/M10/M11 & Reglas, excepciones e indicadores & Política y canal, con historial & 1; canal moderno en 2 \\
 Gerente de Finanzas & Consola financiera; M7/M10 & Supervisar rendición y reglas financieras & Tesorería nominada; quien registra no aprueba & 1; costo en 2 \\
 Planificador de Rutas & Consola de rutas; M4/M12 & Generar, corregir y aprobar rutas & Motivo auditado; no altera cobros & 1 \\

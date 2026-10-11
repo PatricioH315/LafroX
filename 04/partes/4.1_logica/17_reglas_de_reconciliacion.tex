@@ -9,4 +9,4 @@ Toda reconciliación se resuelve por regla de negocio declarada, nunca por la so
 \end{itemize}
 
 
-La replicación es un flujo de continuidad, no una regla para resolver conflictos. INT-12 usa DMS desde Talca hacia una réplica de lectura; los demás sitios sincronizan eventos mediante INT-03 e INT-04. Durante un corte, la base de cada sitio conserva autoridad sobre su operación y retiene cambios hasta el acuse durable, dentro de la capacidad dimensionada. La extracción continua por fibra, LTE y satélite en los CD conserva una copia durable fuera del sitio y sostiene RPO $\leq$ 15 minutos. AL-DR-01 del Anexo 4-M mide el punto recuperable; el límite residual se justifica en 4.3.2.
+La replicación protege la continuidad y no resuelve conflictos de negocio. INT-12 replica Talca para lectura; INT-03/04 sincroniza los eventos de los cinco sitios. Cada sitio conserva su autoridad y su outbox hasta el acuse durable. El RPO, los escenarios cubiertos y el límite de aislamiento seguido de destrucción se definen en 4.3.2; AL-DR-01 los verifica.

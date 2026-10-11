@@ -27,3 +27,5 @@ INT-15 Telemetría de flota & 60.480 posiciones/día & 60.480 & 42 camiones $\ti
 {\footnotesize Fuente: elaboración propia a partir de las Bases Técnicas del caso (cap.~14, p.~24). Los cálculos se indican en la columna de derivación.\par}
 
 La coordinación de reserva supone una retención por línea de pedido. Cada retención usa como máximo cuatro mensajes: solicitud y resultado de la retención, y solicitud y resultado de una liberación. La cifra supone que toda retención se libera, lo que sobrestima el flujo porque una retención consumida por la preparación no genera liberación. Esa holgura cubre las líneas repartidas entre lotes o sitios, cuya proporción mide AL-STOCK-01. Este flujo no duplica los movimientos físicos de INT-03 ni las operaciones de INT-04.
+
+Los eventos de excepción sanitaria del Anexo 4-A, incluida DisposicionSanitariaRegistrada, viajan por INT-03; no se suman como una integración nueva. La cota de cinco eventos por línea debe contrastarse con su frecuencia y con los reintentos en AL-OFF-01 antes de acreditar la volumetría.

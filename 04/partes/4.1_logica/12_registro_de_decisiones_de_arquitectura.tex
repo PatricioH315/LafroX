@@ -20,7 +20,7 @@ Las 22 decisiones de arquitectura se resumen en la Tabla~\ref{tab:resumen-adr}. 
 \mbox{ADR-14} & CloudWatch con OpenTelemetry y ADOT. & Dos plataformas de observabilidad. & Correlación con almacenamiento temporal local. \\
 \mbox{ADR-15} & Secrets Manager y Parameter Store. & Vault autoadministrado. & Rotación y custodia auditables. \\
 \mbox{ADR-16} & Verified Access para consolas. & Client VPN. & Acceso por aplicación y postura. \\
-\mbox{ADR-17} & Servicio de integración con el ERP en VM-04 con doble cola. & Trabajador solo en nube. & Guía local válida sin WAN. \\
+ ADR-17  &  Servicio de integración con el ERP en VM-04 con doble cola.  &  Trabajador solo en nube.  &  Guía preemitida durante el aislamiento; nueva guía con ERP y comunicación tributaria disponibles.  \\
 \mbox{ADR-18} & Extracción por tres caminos con RPO de 15 min. & Retención solo en el sitio. & Copia durable fuera del sitio. \\
 \mbox{ADR-19} & Regiones declaradas y aprobación del CLIENTE. & Una sola región. & Continuidad y licitud de transferencia. \\
 \mbox{ADR-20} & Angular con TypeScript y Portal de Clientes instalable. & Perfil del cliente en la aplicación Kotlin. & Separación entre clientes y trabajadores. \\
@@ -30,4 +30,4 @@ Las 22 decisiones de arquitectura se resumen en la Tabla~\ref{tab:resumen-adr}. 
 
 {\footnotesize Fuente: elaboración propia a partir del Anexo 4-O.\par}
 
-La evidencia asociada a cada ficha permite verificar límites de módulo, continuidad por sitio, protección de datos, desempeño bajo el peak y recuperación del WMS de Talca en la nube. En ADR-12, la API utiliza de 2 a 4 tareas en el caso base y 7 en la sensibilidad de 91,70 solicitudes/s, siempre bajo el techo de 8 tareas.
+La evidencia asociada a cada ficha permite verificar límites de módulo, continuidad por sitio, protección de datos, desempeño bajo el peak y recuperación del WMS de Talca en la nube. En ADR-12, la API utiliza de 2 a 4 tareas en el caso base, 7 en la sensibilidad de 91,70 solicitudes/s y las 8 del techo en la cota completa de 111,70 solicitudes/s, incluida la cuota de 20 solicitudes/s del canal tradicional. Esta última cota no deja margen para aumentar la cuota sin revisar capacidad y latencia.

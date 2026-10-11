@@ -27,9 +27,9 @@ La secuencia lógica es:
   \item y, si corresponde, solicitud al ERP de factura, nota de crédito o tratamiento tributario de la devolución.
 \end{enumerate}
 
-Un mismo identificador de correlación relaciona pedido, guía, entrega, evidencia, acuses y documentos posteriores. El acuse del destinatario se obtiene por el mecanismo que acuerde el CLIENTE conforme a la normativa aplicable; una fotografía o un QR no se presume equivalente por sí solo.
+Un mismo identificador de correlación relaciona pedido, guía, entrega, evidencia, acuses y documentos posteriores. El acuse del destinatario se obtiene por el mecanismo que acuerde el CLIENTE conforme a la normativa aplicable; una fotografía o un QR no se presume equivalente por sí solo. La evidencia de recepción de cada guía (firma, fotografía, nombre del receptor o confirmación QR) se envía al ERP por la ACL; el estado del acuse que registra el ERP vuelve y se concilia con la guía el mismo día, y una guía sin acuse genera una alerta para su gestión (RF-06.14; LafroX, 2026c, Anexo 3.A).
 
-M11 enviará por INT-08/OpenAS2 el acuse comercial digital dentro de los 30 minutos desde la descarga, junto con el aviso de despacho ASN de la misma guía (RNF-12.03, RF-12.09 y RF-12.13; LafroX, 2026c, Anexos 3.A y 3.B). Este plazo no se acredita con el MDN de transporte ni con el acuse tributario.
+M11 envía por INT-08/OpenAS2 el aviso de despacho ASN cuando el pedido queda cargado en el camión, con referencia a la guía ya emitida, productos, cantidades y hora estimada de llegada (RF-12.09). Después envía el acuse comercial digital dentro de los 30 minutos desde la descarga, referido a la misma guía y a su ASN (RNF-12.03 y RF-12.13; LafroX, 2026c, Anexos 3.A y 3.B). Este plazo no se acredita con el MDN de transporte ni con el acuse tributario.
 
 Si el ERP o su canal tributario no confirma la guía antes de la salida, M5 muestra el despacho como bloqueado y lo deriva al responsable de Operaciones y Tributación para aplicar únicamente la contingencia autorizada por el CLIENTE. La captura offline del POD permite registrar una entrega ya despachada; no autoriza emitir retroactivamente una guía desde el teléfono. Esta separación protege la continuidad de la evidencia sin atribuir a la aplicación facultades tributarias que permanecen en el ERP.
 

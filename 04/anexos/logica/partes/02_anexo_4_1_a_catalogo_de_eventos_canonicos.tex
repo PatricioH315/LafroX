@@ -12,9 +12,11 @@ MisionPreparada & M5 & M6, ACL$\rightarrow$ERP & pedido\_id & Cierra ciclo bodeg
 EntregaRegistrada & M6 & M7, M8, M10, ACL & entrega\_id & Decisión 16.1 N\textdegree{} 1: entrega cumplida / OTIF \\
 DevolucionRegistrada & M8 & M2, M7, M10 & entrega\_id & Decisión 16.1 N\textdegree{} 12: efecto sobre DTE emitido \\
 EnvaseMovido & M8 & M2, M10 & cliente\_id & Decisión 16.1 N\textdegree{} 10: 68.000 canastillos, 9.400 pallets, 14\% pérdida \\
-ExcursionTermicaDetectada & M9 (borde) & M2 (retención), M5 (bloqueo), M10, alertas & shipment\_id & Decisión 16.1 N\textdegree{} 4: bloqueo local < 5 s \\
+ ExcursionTermicaDetectada  &  M9 (borde)  &  M2 (retención), M5 (bloqueo), M10, alertas  &  shipment\_id  &  Decisión 16.1 N° 4: bloqueo local < 5 s  \\
+
+ DisposicionSanitariaRegistrada  &  M9  &  M2, M5, M10  &  sitio y lote  &  Decisión 16.1 N° 4: solo Calidad dispone; UUID, versión, motivo y evidencia registrados antes de continuar.  \\
 RendicionCerrada & M7 & M10, ACL$\rightarrow$ERP & conductor\_id & Control efectivo que circula en ruta \\
-DesviacionDeRutaDetectada & M12 & M10, M9 & ruta\_id & Costo de servir; no control de jornada. \\
+ DesviacionDeRutaDetectada  &  M12  &  M10, M9  &  ruta\_id  &  Costo de servir y alerta al centro de control sobre 3 km de desvío; no control de jornada.  \\
 \end{tablalafrox}
 
 {\footnotesize Fuente: elaboración propia a partir de las Bases Técnicas del caso (cap.~16, pp.~28--29) y de los flujos del apartado 4.1.\par}

@@ -58,6 +58,8 @@ Preproducción es equivalente a Producción en versiones, configuración, dimens
   \item Preproducción emula el sitio on-premise dentro de su propia VPC, con la misma imagen wms\_only, el mismo broker y el mismo verificador local, pero sin túnel hacia las bodegas, para que un ensayo no pueda alcanzar la operación real.
 \end{enumerate}
 
+Durante las campañas de certificación coinciden pruebas que alteran el estado del ambiente o que exigen una versión congelada: la migración, la carga con la resiliencia y el despliegue, la prueba de intrusión y la aceptación de usuario. Cada una usa su propia instancia de Preproducción, reconstruida desde el mismo código con la misma topología, configuración y dimensionamiento, y se apaga al terminar su campaña; siguen siendo un solo ambiente lógico, no un sexto ambiente. El Subdocumento 9, Tabla 9.11, asigna cada campaña a su instancia.
+
 La emulación reproduce la topología del sitio y no su hardware. Por eso, la primera instalación de cada entrega en los centros de distribución y los cross-docking avanza sitio por sitio, como se describe en la liberación. Durante las pruebas de carga y estrés de la Tabla~\ref{tab:t86} opera con el dimensionamiento completo de Producción.
 
 Las figuras siguientes muestran cada uno de los cinco ambientes. Desarrollo, QA y Preproducción residen solo en la nube. Producción abarca la nube y los sitios on-premise. Recuperación ante Desastres cubre la pérdida de la región primaria mediante us-east-1 y la pérdida de la sala de Talca mediante el WMS levantado en la plataforma de nube (numeral 4.1 de las Bases Técnicas Transversales; Bases Técnicas Transversales, cap. 4, p. 10). Concepción opera su propia bodega en Producción.
@@ -192,9 +194,9 @@ El paso de un ambiente a otro lo controla el pipeline de integración continua: 
 
 \begin{itemize}
   \item Auditoría de dependencias con \texttt{composer audit}, pruebas PHPUnit con PCOV, JUnit 5 con Kover para Kotlin y Jest para TypeScript.
-  \item Análisis estático con PHPStan y Larastan, formato con Laravel Pint, complejidad con PHPMD, detekt y ESLint, duplicación con PHPCPD y jscpd, dependencias entre módulos con deptrac y deuda técnica con PhpMetrics.
+\item Análisis estático con PHPStan y Larastan, formato con Laravel Pint, complejidad con PHPMD, detekt y ESLint, duplicación con PHPCPD y jscpd, con bloqueo sobre el 3 \% de las líneas, dependencias entre módulos con deptrac y deuda técnica con PhpMetrics.
   \item Pruebas de contrato contra OpenAPI 3.1 y AsyncAPI 2.6.
-  \item Escaneo de secretos, SAST y SCA, escaneo de imágenes de contenedor con Amazon Inspector en ECR, DAST con OWASP ZAP, accesibilidad con axe-core y revisión manual, carga con k6 y resiliencia con AWS Fault Injection Service.
+\item Escaneo de secretos, SAST y SCA, escaneo de imágenes de contenedor con Amazon Inspector en ECR, análisis de la aplicación Android con MobSF, DAST con OWASP ZAP, contratos con Pact y Spectral, pruebas de extremo a extremo con Playwright, accesibilidad con axe-core y revisión manual, carga con k6 y resiliencia con AWS Fault Injection Service.
   \item Medición de la cobertura de la lógica de negocio y de la cobertura unitaria global.
 \end{itemize}
 
@@ -222,7 +224,7 @@ La aplicación se construye una sola vez por entrega como una imagen PHP 8.5 con
   {F{0.20} Y F{0.24} F{0.18}}%
   {\cab{Perfil} & \cab{Proceso y función} & \cab{Dónde corre} & \cab{Escala por}}
   API & Servidor web y PHP-FPM con las APIs de M1--M12 para portales, preventa y reparto & N-04, ECS Fargate en 2 zonas & Procesos PHP-FPM ocupados sobre 70~\%, de 2 a 4 tareas y techo de 8 \\
-  \texttt{wms\_only} & Servidor web y PHP-FPM con M1, M2, M5, la función local de bloqueo de M9 y la recepción física de retornos de M8, con la puerta de API local & VM-01, VM-C01 y E-01 & Fijo, dimensionado al sitio \\
+ \texttt{wms\_only}  &  Servidor web y PHP-FPM con M1, M2, M5, bloqueo y disposición sanitaria autorizada de M9 y recepción física de retornos de M8, con la puerta de API local  &  VM-01, VM-C01 y E-01  &  Fijo, dimensionado al sitio  \\
   Shipper & PHP CLI que lee RabbitMQ con \texttt{php-amqplib}, publica sobres JSON en las colas FIFO de reconciliación y de solicitudes al ERP, fuera de Talca, recibe las respuestas de su sitio y lee la cola de coordinación de reservas de su sitio & VM-03, VM-C04 y E-01 & Uno activo por sitio \\
   Consumidor de reconciliación & PHP CLI con el SDK de AWS que aplica los sobres al estado central & N-04, ECS Fargate & Edad del mensaje más antiguo, de 2 a 4 tareas \\
   Trabajos & PHP CLI con el trabajador de colas de Laravel, con notificaciones y EDI en colas separadas & N-04, ECS Fargate & Profundidad de cada cola, de 2 a 4 tareas \\
@@ -302,6 +304,18 @@ La sección de conexiones describe los caminos entre los sitios, el terreno y la
 
 Los túneles de AWS Site-to-Site VPN de los cinco sitios llegan a la VPC Hub de sa-east-1, donde el Transit Gateway los une solo a la VPC de Producción. La región us-east-1 dispone de su propio Transit Gateway y de su VPN para reconectar los sitios durante una conmutación. La de Producción es la única VPC con enlace hacia los sitios, coherente con que el on-premise es producción: Desarrollo, QA y Preproducción no tienen conectividad con las bodegas, de modo que un error en un ambiente de prueba no puede alcanzarlas. El direccionamiento se asigna sin solapamiento, según la Tabla~\ref{tab:t64}, y el bloque de recuperación 10.201.0.0/16 corresponde al ambiente de Recuperación ante Desastres de la Tabla~\ref{tab:t62}.
 
+La Figura~\ref{fig:red-sitios-regiones} sitúa las cinco instalaciones con cómputo en el centro, la región primaria a la izquierda y la secundaria a la derecha. Cada trazo WAN representa los dos túneles IPsec con BGP de un sitio hacia una región: las líneas azules muestran la conectividad de producción y las violetas discontinuas, las conexiones preparadas para la recuperación. Las líneas de replicación distinguen Aurora Global Database y S3; este último permanece fuera de las VPC como servicio regional. El direccionamiento local se detalla en la Tabla~\ref{tab:t64}, y los caminos de enlace y su prioridad, en la sección~\ref{sec:conexiones}.
+
+\begin{landscape}
+\begin{figure}[p]
+  \centering
+  \includegraphics[width=\linewidth,height=0.9\textheight,keepaspectratio]{figuras/fisica/Red_general_sitios_regiones.pdf}
+  \caption{Red de los cinco sitios operacionales y las regiones de producción y recuperación}
+  \label{fig:red-sitios-regiones}
+  \fuentefigura
+\end{figure}
+\end{landscape}
+
 \begin{tablalafrox}{Direccionamiento y segmentación}{tab:t64}%
   {F{0.30} F{0.27} Y}%
   {\cab{Dominio} & \cab{Bloque} & \cab{Segmentación}}
@@ -318,7 +332,7 @@ Los túneles de AWS Site-to-Site VPN de los cinco sitios llegan a la VPC Hub de 
 
 Cada sitio con cómputo dispone de un bloque propio. La séptima instalación que el caso proyecta a tres años y el centro de distribución que Puelche evalúa abrir hacia 2030 en la Región de Los Lagos tienen reservados 10.6.0.0/16 y 10.7.0.0/16, de modo que su incorporación es una parametrización de la infraestructura como código (RT-02.12; Bases Técnicas Transversales, cap. 2, p. 7; Bases Técnicas del caso, cap. 15, p. 26). En la nube, los ALB de aplicación y consolas son privados, y la subred pública solo aloja NAT y el Network Load Balancer del canal AS2. Los portales residen en S3 privado, servido únicamente por CloudFront. La VPC de Producción usa endpoints de interfaz execute-api, IoT Core, SQS, SSM y Elastic Container Registry, y endpoints de puerta de enlace para DynamoDB y S3. Como los de puerta de enlace no son alcanzables desde los sitios por la VPN, los sitios descargan la imagen por el endpoint de interfaz de Elastic Container Registry y por un endpoint de interfaz de S3, donde se almacenan las capas de las imágenes, sin salir a Internet.
 
-El tráfico externo sigue las entradas de la sección~\ref{sub:superficie}. Route 53 cambia el tráfico regional después de la autorización del CLIENTE, la promoción de Aurora, la restitución de la identidad, las API pública y privada y Verified Access, y la validación funcional. Luego se reconectan la VPN y los brokers (Tabla~\ref{tab:4-3-6}).
+El tráfico externo sigue las entradas de la sección \hyperref[sub:superficie]{4.2.5.2}. Tras la autorización del CLIENTE se promueve Aurora, se restituyen aplicación, identidad y accesos, y se reconectan la VPN, los brokers y los shippers. La validación funcional recorre las escrituras y sus acuses locales antes de que Route 53 cambie el tráfico; la reconexión no se posterga hasta después de publicar el servicio (Tabla \hyperref[tab:4-3-6]{39}).
 
 La red también debe devolver a la normalidad a un sitio que operó desconectado. El compromiso es resincronizar la flota en hasta 10 minutos y un centro de distribución en hasta 2 horas después de un corte de 24 horas (Tabla~\ref{tab:t29}). Un corte de 24 horas acumula los cambios de la base con su registro de escritura anticipada, el vaciado del broker, la telemetría, la observabilidad y el incremental de respaldo: unos 1,68 GB en Talca, 1,29 GB en Concepción y 0,32 GB en cada cross-docking, que se drenan en 2 horas con 1,87, 1,44 y 0,35 Mbps, respectivamente (Tabla~\ref{tab:t81}; Anexo 4-W). La evidencia de entrega no se suma al drenaje, porque durante el corte del centro de distribución el terminal la envía por la red celular. Las reservas de capacidad y la prioridad de cada camino se detallan en la Tabla de ancho de banda de 4.2.6. La operación de bodega conserva su autonomía mientras se drenan los mensajes. Al reconectar, la calidad de servicio prioriza el broker y el registro de escritura anticipada sobre la telemetría.
 
@@ -381,7 +395,7 @@ Estos tiempos corresponden a los que AWS declara como habituales para cada servi
 \subsection{Recuperación ante desastres}
 \label{sub:4-recuperacion-ante-desastres-ba-art-20-rt}
 
-La recuperación ante desastres es activo-pasiva en caliente: la región us-east-1 mantiene una réplica reducida pero funcional de la plataforma, escalable a carga completa en menos de 30 minutos, que se promueve solo cuando se pierde la región primaria. Los objetivos son un RTO de hasta 4 horas y un RPO de hasta 15 minutos para los servicios críticos (RT-07.04; Bases Técnicas Transversales, cap. 7, p. 17). Cada dominio de datos alcanza ese RPO con su propio mecanismo de replicación (Tabla~\ref{tab:4-3-4}): Aurora Global Database mantiene en us-east-1 la réplica promovible de la base en nube, DynamoDB Global Tables la telemetría, y la replicación de S3 entre regiones lleva la evidencia, los documentos y las copias de AWS Backup (N-11).
+La recuperación ante desastres es activo-pasiva en caliente: la región us-east-1 mantiene el núcleo de aplicación y los datos replicados con capacidad reducida; su escalado tiene un presupuesto de hasta 30 minutos y se promueve ante pérdida de la región primaria. Los canales, accesos e ingesta se restituyen según 4.3.2.5; el escalado no representa el RTO completo. Los objetivos son un RTO de hasta 4 horas y un RPO de hasta 15 minutos para los servicios críticos (RT-07.04; Bases Técnicas Transversales, cap. 7, p. 17). Cada dominio de datos alcanza ese RPO con su propio mecanismo de replicación (Tabla \hyperref[tab:4-3-4]{37}): Aurora Global Database mantiene en us-east-1 la réplica promovible de la base en nube, DynamoDB Global Tables los datos de temperatura —las posiciones de flota permanecen solo en sa-east-1—, y la replicación de S3 entre regiones lleva la evidencia, los documentos y las copias de AWS Backup (N-11).
 
 Si Talca pierde fibra y LTE, Starlink D-06, mantenido en espera caliente con el túnel IPsec establecido y BGP de menor preferencia, sostiene la lectura continua de AWS DMS sobre VM-02 y el envío de eventos críticos. La operación local conserva al menos 24 horas de autonomía. El límite residual del RPO y sus mitigaciones se exponen en 4.3.2, bajo «RPO y RTO». El registro retenido se acota con un tope de 5 GB por slot, frente a los unos 0,123 GB diarios de registro de escritura anticipada que estima el dimensionamiento para Talca: cubre con amplio margen un corte de 24 horas y ocupa como máximo la cuarta parte de los 20 GB actuales de VM-02, que crecen a 31 GB a 3$\times$, sin arriesgarlo (Anexo 4-W). El retraso de replicación y el tamaño del registro retenido se miden de forma continua y generan alarma a los 5 y a los 15 minutos de retraso.
 
@@ -389,7 +403,7 @@ La réplica por DMS y la reconciliación por eventos cumplen funciones distintas
 
 \subsubsection{Conmutación y retorno}
 
-La conmutación de región y el retorno siguen el procedimiento de la sección~\ref{sub:conmutacion-regional} (Tabla~\ref{tab:4-3-6}): la promoción de la base exige la autorización del CLIENTE y el enrutamiento hacia us-east-1 cambia después de la validación funcional. El retorno se ejecuta de forma coordinada tras la reconciliación. Si la contingencia afecta solo a la sala de Talca, su WMS se levanta en Fargate sobre su copia en Aurora de la región activa. Los dominios de recuperación y sus amenazas comunes se analizan en la Tabla~\ref{tab:4-3-3}.
+La conmutación de región y el retorno siguen el procedimiento de la sección \hyperref[sub:conmutacion-regional]{4.3.2.5} (Tabla \hyperref[tab:4-3-6]{39}): la promoción de la base exige la autorización del CLIENTE y el enrutamiento hacia us-east-1 cambia después de la validación funcional. El retorno se ejecuta de forma coordinada tras la reconciliación. Si la contingencia afecta solo a la sala de Talca, su WMS se levanta en Fargate sobre su copia en Aurora de la región activa, tras excluir VM-02 y transferir la autoridad de M2. El RTO incluye verificar o restituir LAN, firewalls, un camino WAN y acceso de los terminales, según 4.3.2.5. Los dominios de recuperación y sus amenazas comunes se analizan en la Tabla \hyperref[tab:4-3-3]{36}.
 
 \subsubsection{Operación durante una contingencia regional}
 
@@ -418,7 +432,7 @@ La Tabla~\ref{tab:jd12} muestra, para cada dominio de datos, con qué frecuencia
   Transaccional de bodega & Continua, con copia local D-05 en Talca y, en Concepción y los cross-docking, reconstrucción desde el estado central & 35 días & $\leq$ 4 h \\
   Transaccional en nube & Diaria y recuperación continua & 35 días & $\leq$ 4 h \\
   Identidad & Diaria y recuperación continua & 35 días & $\leq$ 4 h \\
-  Trazabilidad sanitaria & Continua & Vida útil + 6 meses, mínimo 5 años & $<$ 2 h, objetivo específico que se verifica por separado de la recuperación regional completa \\
+ Trazabilidad sanitaria & Continua & Vida útil + 6 meses, mínimo 5 años & Recuperación crítica $\leq$ 4 h; consulta de emergencia de afectados con evidencia < 2 h desde la solicitud, también ante pérdida regional \\
   Registros de temperatura & Diaria y continua & 5 años & $\leq$ 4 h la recuperación funcional crítica; $\leq$ 8 h el histórico completo \\
   Evidencia de entrega & Continua con versionado & 6 años & $\leq$ 4 h la recuperación funcional crítica; $\leq$ 8 h el histórico completo \\
   Respaldo de documentos tributarios & Continua con versionado & 6 años & $\leq$ 4 h la recuperación funcional crítica; $\leq$ 8 h el histórico completo \\
@@ -430,7 +444,7 @@ La Tabla~\ref{tab:jd12} muestra, para cada dominio de datos, con qué frecuencia
 
 La recuperación funcional restituye primero los datos, índices y objetos necesarios para preparar y despachar con identidad, bloqueo térmico y guía válida. Para temperatura, prueba de entrega y documentos tributarios, esa parte cumple RTO $\leq$ 4 h y RPO $\leq$ 15 min, e incluye las reglas vigentes, las lecturas que deciden un bloqueo y los originales de las cargas pendientes. El histórico completo puede seguir restaurándose hasta 8 horas sin impedir las operaciones ni las consultas críticas. Los ensayos miden ambos tiempos por separado y comprueban las dependencias, no solo el arranque del servicio.
 
-Cada tiempo de recuperación funcional corresponde al plazo de resolución que el Artículo 78.2 de las Bases Administrativas (art. 78.2, p. 40) asigna al servicio más crítico que usa el dato: la base transaccional en nube se restaura en 4 horas porque sostiene también la identidad, que es crítica, porque Keycloak guarda en Aurora sus datos (ADR-06, Anexo 4-O). La trazabilidad sanitaria tiene un objetivo específico de recuperación inferior a 2 horas, ligado al plazo de respuesta a un retiro sanitario (Bases Técnicas del caso, cap. 18, p. 34). El presupuesto regional completo de 135 minutos de 4.3.2.5 no demuestra ese objetivo: AL-DR-01 debe medir por separado la disponibilidad de la consulta de lotes y destinos y sus dependencias antes de las 2 horas. Si depende de terminar toda la conmutación, se registra la brecha y no se acredita ese plazo con el RTO general de 4 horas. Las retenciones cumplen o superan las del caso. La restauración, además, puede ser parcial: la recuperación de Aurora a un instante específico, sobre una instancia temporal, permite restituir un registro, una tabla, un módulo o el sistema completo sin intervenir el ambiente productivo (RT-07.14; Bases Técnicas Transversales, cap. 7, p. 18).
+La recuperación funcional crítica tiene RTO $\leq$ 4 horas (RT-07.04; Bases Administrativas, art. 78.2, p. 40). La consulta sanitaria tiene un objetivo distinto: lista de clientes afectados con evidencia en menos de 2 horas desde la solicitud, incluso si coincide con una pérdida regional. M9 dispone de una consulta de emergencia de solo lectura en us-east-1, descrita en 4.3.2.5, sobre Aurora y los objetos replicados. La aceptación mide acceso, consulta, cobertura y evidencias; una copia incompleta no acredita el resultado sanitario. Las retenciones y la restauración parcial a un instante específico se mantienen por dominio (RT-07.14; Bases Técnicas Transversales, cap. 7, p. 18).
 
 AWS Backup aplica a Aurora y DynamoDB los respaldos y la recuperación a un instante específico, mientras S3 aporta versionado, Object Lock y réplica entre regiones para los documentos legales. Object Lock protege también los registros de seguridad y auditoría. Los plazos y las retenciones por dominio constan en la Tabla~\ref{tab:jd12}.
 

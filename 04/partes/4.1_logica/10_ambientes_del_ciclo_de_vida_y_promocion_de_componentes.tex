@@ -5,14 +5,14 @@ Los cinco ambientes del RT-04.01 cumplen propósitos distintos.
 \begin{itemize}
   \item En \textbf{Desarrollo}, el equipo construye los módulos Laravel y las aplicaciones Kotlin, los contratos y las migraciones con datos sintéticos o anonimizados; las pruebas unitarias no necesitan conectarse al ERP real.
   \item En \textbf{QA}, se despliegan M1--M12, el verificador local y los adaptadores simulados para ensayar integración, regresión, idempotencia y fallas de enlace con datos controlados.
-  \item En \textbf{Preproducción}, el mismo artefacto y las mismas versiones de contratos se ensayan con topología equivalente a producción y volumen representativo de septiembre; se prueban los 186 terminales de bodega, el relevo de turnos, la emisión de guía por el ERP y la reconciliación. Toda diferencia de escala o configuración se declara antes de aceptar el ensayo, conforme a RT-04.02.
+\item En \textbf{Preproducción}, el mismo artefacto y las mismas versiones de contratos se ensayan con topología equivalente a producción y volumen representativo de septiembre; se prueban los 207 terminales de bodega, el relevo de turnos, la emisión de guía por el ERP y la reconciliación. Toda diferencia de escala o configuración se declara antes de aceptar el ensayo, conforme a RT-04.02.
   \item En \textbf{Producción}, los módulos sirven datos reales con acceso restringido y auditado; los desarrolladores no corrigen transacciones directamente.
   \begin{samepage}
   \item El ambiente de \textbf{Recuperación ante desastres} conserva la versión compatible de los componentes y permite ensayar conmutación y retorno al menos dos veces al año, sin presumir que una réplica remota contiene eventos aún no enviados desde un sitio aislado.
   \par\end{samepage}
 \end{itemize}
 
-Los cinco deben estar operativos en el hito H3; su emplazamiento, capacidad y segregación de redes se demuestran en 4.2, no mediante el simple nombre del ambiente.
+Los cinco ambientes deben estar operativos en H3. Su emplazamiento, segregación, dimensionamiento y recorrido de promoción se desarrollan en 4.2.4.1.
 
 QA funciona también como ambiente de simulación de parámetros: el CLIENTE compara el resultado de las mismas transacciones de prueba con el valor vigente y el propuesto, usando datos controlados y los adaptadores simulados existentes. Solo después de comprobar el efecto y aprobar la versión se habilita su vigencia en Producción (RT-16.05; Bases Técnicas Transversales, cap. 16, p. 29).
 

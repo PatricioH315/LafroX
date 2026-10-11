@@ -5,6 +5,54 @@
 \addcontentsline{toc}{section}{Anexo 4-P --- Tecnologías, soporte y actualización}
 
 Este anexo relaciona los nombres funcionales con los servicios técnicos y declara, para cada tecnología, su versión, su soporte y su política de actualización.
+\subsection*{Detalle de selección por capa}
+
+\begin{itemize}
+\item \textbf{Backend (12 módulos).} Laravel 13 sobre PHP 8.5, con Composer y el archivo de versiones de dependencias, organizado en contextos M1–M12. PostgreSQL/PostGIS conserva los datos geográficos; M4 usa repositorios espaciales con SQL parametrizado vía PDO/Query Builder y pruebas de consultas. Laravel 13 requiere PHP 8.3 o superior y admite PHP 8.5 (Laravel, 2026); ambos componentes se actualizarán a versiones con soporte durante los 56 meses.
+
+\item \textbf{Frontend web.} Angular 22 con Tailwind CSS y TypeScript 6.0 compatible con su matriz oficial. La integración con Keycloak se implementa mediante OIDC y se mantiene junto con las dependencias del cliente. Las versiones deben actualizarse durante el contrato conforme a sus ciclos de soporte.
+
+\item \textbf{Apps de campo (preventa y reparto).} Kotlin Android nativo. Nativo del parque Zebra/Android, escáner GS1 vía Zebra DataWedge, SQLite/Room offline, acceso nativo a GPS, POS y térmica.
+
+\item \textbf{Borde y continuidad del acceso (Capa 2).} CloudFront, AWS WAF, AWS Shield Advanced y ALB en nube, con control de acceso local. En los CD, Starlink fijo permanece encendido con IPsec establecido y BGP de menor preferencia tras fibra y LTE; en los cross-docking es el camino principal, con LTE de dos proveedores como respaldo y conmutación automática en menos de 30 segundos (ADR-02), sin sustituir la autonomía del servicio local.
+
+\item \textbf{Puerta de enlace de servicios (Capa 3).} Amazon API Gateway para publicar las APIs y aplicar controles de entrada. La configuración debe cubrir la validación de identidad de Keycloak, las cuotas y los límites de solicitudes, conforme a la modalidad de API seleccionada y al flujo descrito en la capa de puerta de enlace de este apartado.
+
+\item \textbf{Base de datos transaccional on-premise.} PostgreSQL + PostGIS por sitio con el mismo perfil local de bodega; cada sitio es autoridad de sus movimientos y N-04/N-05 consolida stock y reservas en nube.
+
+\item \textbf{Base de datos nube (OLTP y recuperación).} Amazon Aurora PostgreSQL, con despliegue Multi-AZ y una ventana propuesta de recuperación a un punto en el tiempo (PITR) de 35 días. Los tiempos de conmutación y restauración se verifican mediante pruebas frente a los objetivos RTO/RPO establecidos.
+
+\item \textbf{Ingesta IoT / frío.} Amazon DynamoDB e IoT Core reciben las lecturas; Greengrass corre en tres gateways Moxa UC-8200 o equivalentes: dos en Talca, que leen ambas cámaras por Modbus TCP para evitar un punto único de falla, y uno en Concepción; leen sensores por Modbus, bloquean el despacho ante una excursión crítica y sostenida en menos de 5 segundos y conservan 24 horas sin enlace. Los termógrafos de los camiones registran toda la ruta en memoria interna y difunden por BLE la temperatura; el terminal alerta la excursión en la cabina, reenvía la alerta por la red celular, de inmediato con cobertura o al recuperarla, y descarga el registro completo al volver. Escrituras serverless con TTL nativo (raw 30 días).
+
+\item \textbf{Serie consolidada (OLAP).} S3 Parquet + AWS Glue + Redshift Serverless. OLAP por diseño: DynamoDB raw → Glue → S3 Parquet → Redshift, sin motor de series adicional.
+
+\item \textbf{Caché y datos de turno.} Redis acelera las lecturas centrales; no se exige Redis en cada sitio. Las APIs entregan una copia cifrada para SQLite/Room y conservan por separado la cola de escrituras sin confirmar. La identidad usa credenciales de 8 horas en bodega y 14 horas en terreno; su caché local de solo lectura tiene TTL de 24 horas en VM-05, VM-C03 y cada E-01, junto al verificador local de relevos (ADR-06).
+
+\item \textbf{Mensajería asíncrona (Capa 5).} RabbitMQ en on-premise mediante adaptador AMQP \texttt{php-amqplib}; SQS FIFO con sobre JSON y consumidor PHP para reconciliación, colas SQS separadas para trabajos Laravel, y SNS para difusión y alertas en nube. Un único planificador Laravel programa las tareas periódicas. \textbf{Dos procesos del servicio de integración con el ERP en VM-04 consumen RabbitMQ local y, por salida, la cola FIFO de solicitudes al ERP; ERP integrado exclusivamente vía ACL; Hub EDI GS1 centralizado en nube (EANCOM, GS1 XML, EPCIS), AS2 como transporte.}
+
+\item \textbf{Analítica / BI.} S3 Data Lake, Redshift Serverless y Glue ETL. Consultas históricas sin degradar el procesamiento transaccional.
+
+\item \textbf{Objetos / documentos.} Amazon S3 con Intelligent-Tiering y Object Lock.
+
+\item \textbf{IAM / Identidad (Capa 7).} Keycloak (OIDC, SAML, SSO, MFA) como IdP maestro en nube, con caché local de solo lectura de TTL 24 horas y verificador local con manifiesto firmado y PIN personal en VM-05, VM-C03 y cada E-01.
+
+\item \textbf{Gestión de secretos (Capa 7).} AWS Secrets Manager y SSM Parameter Store con rotación automática. Cuenta de emergencia fuera de banda, con doble autorización, registro de uso y rotación posterior de credenciales.
+
+\item \textbf{Observabilidad (Capa 8).} OpenTelemetry para PHP/Laravel y colectores ADOT on-premise con almacenamiento temporal en disco de 24 horas; plataforma única Amazon CloudWatch para logs (12 meses en línea + 24 en archivo), métricas (13 meses), trazas y tableros (ADR-14).
+
+\item \textbf{Gestión de dispositivos (RT-03.18; Bases Técnicas Transversales, cap. 3, p. 9).} Gestión centralizada mediante MDM (Android Enterprise / Zebra DNA, SaaS), con inventario, configuración, actualización de firmware y aplicaciones, bloqueo y borrado remoto del parque móvil.
+
+\item \textbf{Contenedores / orquestación.} Imagen PHP 8.5 con servidor HTTP/PHP-FPM para APIs y procesos PHP CLI separados para colas y programación. ECS Fargate aloja los perfiles centrales; Talca y Concepción ejecutan el perfil local de bodega sobre máquinas virtuales Proxmox, y Docker Compose ejecuta el mismo perfil local de bodega en los equipos E-01 de los cross-docking. El código y las migraciones de esquema proceden del mismo artefacto versionado.
+
+\item \textbf{Infraestructura como Código.} Terraform administra recursos mediante proveedores y estados separados por ambiente; Ansible configura hosts. CDK no administra los mismos recursos: cada activo tiene un único propietario de infraestructura como código.
+
+\item \textbf{CI/CD.} GitLab CI como orquestador + AWS CodeBuild para construcción hermética con procedencia SLSA 3; la auditoría de dependencias, PHPUnit, PHPStan/Larastan y Laravel Pint verifican dependencias, comportamiento, análisis estático y formato. \texttt{swagger-php} genera OpenAPI 3.1 desde atributos PHP; los esquemas AsyncAPI 2.6 se validan y publican en la misma puerta de calidad.
+\end{itemize}
+
+\paragraph{Administración del parque por familia de dispositivo}
+
+Mantiene inventario central, configura, actualiza firmware y aplicación, bloquea y borra de forma remota el parque de terreno y bodega (RT-03.18; Bases Técnicas Transversales, cap. 3, p. 9); las reservas se entregan precargadas (Bases Técnicas Transversales, cap. 8, p. 19). El resto de los dispositivos se gestiona desde la consola de su fabricante e ingresa al mismo inventario: las impresoras ZQ620 Plus y ZT411 con Zebra Printer Profile Manager Enterprise sobre Link-OS; los terminales PAX A920 Pro con PAXSTORE, que permite configurar, actualizar, bloquear y retirar cada equipo; los gateways IoT con la gestión de flota de AWS IoT Greengrass, y los termógrafos con ELA Device Manager por NFC, mientras la aplicación de reparto supervisa su batería y su registro en cada ruta. Las balanzas y los módulos de sensores no tienen sistema operativo administrable: se registran en el inventario y su firmware se actualiza en la mantención (RT-08.14; Bases Técnicas Transversales, cap. 8, p. 19).
+
 \paragraph{Correspondencia entre nombres funcionales y técnicos}
 El inventario de servicios AWS comprende CloudFront, AWS WAF, AWS Shield Advanced, ALB, Network Load Balancer, API Gateway, Verified Access, Aurora, ElastiCache, DynamoDB, S3, Redshift Serverless, ECS Fargate, Lambda (solo como autorizador), Route 53, Secrets Manager, Systems Manager, KMS, IAM, Organizations, IAM Identity Center, CloudWatch, Transit Gateway, NAT Gateway, VPC Endpoints, Site-to-Site VPN, SQS, SNS, AWS Backup, GuardDuty, Security Hub, Security Lake, Macie, Inspector, Config, Database Migration Service, Glue, QuickSight, Elastic Container Registry, CodeBuild, Control Tower, CloudTrail e IoT Core+Greengrass.
 
@@ -38,7 +86,7 @@ Mozilla Firefox --- Windows, macOS, Linux y Android & Versión estable mayor vig
 Apple Safari --- macOS, iOS y iPadOS & Versión estable mayor vigente y la inmediatamente anterior, en sistemas compatibles. & Registrar versión del navegador y del sistema y verificar ambas contra el Baseline de Angular y los flujos de los portales y consola. \\
 Composer\slash PHPUnit\slash PCOV\slash PHPStan\slash Pint\slash PHPMD\slash PHPCPD\slash PhpMetrics\slash deptrac & Versiones compatibles con PHP 8.5 y Laravel 13. & Composer lock, análisis de licencia, audit, cobertura, complejidad, duplicación, deuda, fronteras entre módulos y regresión; no entran herramientas de prueba al runtime. \\
 JUnit 5/Kover/Espresso/detekt/ktlint & Versiones compatibles con Kotlin, Android y el parque Zebra. & Cobertura de dominio y sincronización, pruebas de interfaz y controles de estilo y complejidad antes de liberar el artefacto móvil. \\
-Jest/ESLint/axe-core/OWASP ZAP/k6/AWS Fault Injection Service & Versiones compatibles con Angular, las APIs y los ambientes AWS. & Regresión de portales, lint, accesibilidad WCAG 2.2 A/AA, DAST, carga y estrés e inyección controlada de fallas en QA y Preproducción. \\
+ Jest\slash Playwright\slash ESLint\slash axe-core\slash OWASP ZAP\slash Pact\slash Spectral\slash MobSF\slash k6\slash AWS Fault Injection Service  &  Versiones compatibles con Angular, Android, las APIs y los ambientes AWS.  &  Regresión y pruebas de extremo a extremo de portales, lint, accesibilidad WCAG 2.2 A/AA, DAST, contratos, análisis de la aplicación Android, carga y estrés e inyección controlada de fallas en QA y Preproducción.  \\
 Symfony ExpressionLanguage & Versión mantenida compatible con PHP 8.5 y Laravel 13, fijada en Composer lock. & Motor de reglas de 4.1.3.4: registrar versión y soporte, revisar vulnerabilidades y probar resultados de reglas y reversión antes de actualizar. \\
 php-amqplib/AWS SDK/swagger-php & Bibliotecas mantenidas compatibles con PHP 8.5. & Contrato AMQP, sobre JSON y generación OpenAPI bloquean cambios incompatibles. \\
 OpenAS2/JVM & Rama soportada compatible con perfiles de las cadenas. & Certificados, licencia, runtime Java y pruebas MDN registrados antes de habilitar INT-08. \\
