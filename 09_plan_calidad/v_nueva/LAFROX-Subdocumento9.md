@@ -1,0 +1,579 @@
+# LafroX — Propuesta Técnica
+
+## Subdocumento 9: Plan de calidad
+
+Licitación TFEP-01/2026 · Caso 02 — Logística · Distribuidora Puelche S.A.
+
+---
+
+## Índice
+
+- [Introducción al Plan de calidad](#introducción-al-plan-de-calidad)
+- [9.1 Plan de Calidad](#91-plan-de-calidad)
+  - [9.1.1 Objetivos y gobierno de la calidad](#911-objetivos-y-gobierno-de-la-calidad)
+  - [9.1.2 Estándares aplicados y forma de acreditarlos](#912-estándares-aplicados-y-forma-de-acreditarlos)
+  - [9.1.3 Modelo de calidad del producto según ISO/IEC 25010](#913-modelo-de-calidad-del-producto-según-isoiec-25010)
+  - [9.1.4 Modelos de madurez](#914-modelos-de-madurez)
+  - [9.1.5 Métricas de código con umbral bloqueante](#915-métricas-de-código-con-umbral-bloqueante)
+  - [9.1.6 Métricas de proceso y costo de la calidad](#916-métricas-de-proceso-y-costo-de-la-calidad)
+- [9.2 Estrategia de Aseguramiento de Calidad](#92-estrategia-de-aseguramiento-de-calidad)
+  - [9.2.1 Puertas de calidad](#921-puertas-de-calidad)
+  - [9.2.2 Revisión por pares y análisis estático y dinámico](#922-revisión-por-pares-y-análisis-estático-y-dinámico)
+  - [9.2.3 Estrategia de pruebas conforme a ISO/IEC/IEEE 29119](#923-estrategia-de-pruebas-conforme-a-isoiecieee-29119)
+  - [9.2.4 Datos de prueba](#924-datos-de-prueba)
+  - [9.2.5 Verificación, validación y trazabilidad](#925-verificación-validación-y-trazabilidad)
+  - [9.2.6 Control de la calidad y mejora continua](#926-control-de-la-calidad-y-mejora-continua)
+- [9.3 Alineación con Plan de Trabajo](#93-alineación-con-plan-de-trabajo)
+  - [9.3.1 Actividades de calidad en la EDT](#931-actividades-de-calidad-en-la-edt)
+  - [9.3.2 Calidad en el cronograma y en los hitos](#932-calidad-en-el-cronograma-y-en-los-hitos)
+  - [9.3.3 Pruebas periódicas durante la Operación](#933-pruebas-periódicas-durante-la-operación)
+- [Referencias](#referencias)
+- [Declaración de uso de IA](#declaración-de-uso-de-ia)
+
+---
+
+## Introducción al Plan de calidad
+
+Distribuidora Puelche tardó nueve días en identificar a los clientes afectados por un retiro sanitario y entregó una estimación, no una lista (Distribuidora Puelche S.A., 2026c, cap. 1 y cap. 7.3). Su Jefa de Calidad pidió en la entrevista de levantamiento algo más exigente que un sistema que registre: que bloquee el despacho ante una excursión de temperatura fuera de rango (2026c, cap. 8). Ese es el nivel de exigencia de este plan. La solución opera alimentos bajo fiscalización sanitaria, y en industrias reguladas el control de calidad es más estricto que en otras (Project Management Institute [PMI], 2017, p. 300).
+
+El capítulo responde tres preguntas. La sección 9.1 define con qué se juzga la calidad: los objetivos, las normas, el modelo de calidad del producto, los modelos de madurez, las métricas con umbral y el costo de la calidad. La sección 9.2 describe cómo se asegura y se controla: las puertas de calidad, la revisión y el análisis del código, la estrategia de pruebas, los datos de prueba, la trazabilidad y el ciclo de mejora. La sección 9.3 muestra dónde quedan esas actividades en la EDT y en el cronograma.
+
+El plan se conecta con el resto de la propuesta. Toma los requisitos y criterios de aceptación del Subdocumento 3 (SD3) y del Formulario T-12; los ambientes, la cadena de entrega, los umbrales de respuesta y el dimensionamiento del Subdocumento 4 (SD4); las reglas de calidad de datos y de migración del Subdocumento 5 (SD5); las compuertas y herramientas del Subdocumento 6 (SD6) y su Formulario T-10; los paquetes, fechas y horas del Subdocumento 7 (SD7) y sus Formularios T-14 y T-15; y los riesgos de calidad del Subdocumento 8 (SD8). El detalle se entrega por separado. El **Formulario T-13** contiene el plan de pruebas y validación. El **Formulario T-17** contiene el protocolo de aceptación de cada hito y del producto final. Los **Anexos 9.A a 9.D** contienen las métricas por subcaracterística, las reglas de las puertas, el cálculo del costo de la calidad y la trazabilidad de los resultados del caso.
+
+En este capítulo, BA, BTT y Caso designan las Bases Administrativas, las Bases Técnicas Transversales y las Bases Técnicas del Caso 02. El mes 1 del contrato es febrero de 2027.
+
+---
+
+## 9.1 Plan de Calidad
+
+Esta sección fija qué significa calidad para este proyecto y cómo se mide. Sigue los componentes que el PMBOK asigna al plan de gestión de la calidad: estándares, objetivos, roles, entregables sujetos a revisión, actividades, herramientas y tratamiento de las no conformidades (PMI, 2017, p. 286).
+
+### 9.1.1 Objetivos y gobierno de la calidad
+
+El plan parte de un principio del PMBOK: la prevención es preferible a la inspección, porque corregir un error cuesta menos cuanto antes se detecta (PMI, 2017, p. 274). Por eso la mayor parte del control ocurre mientras el código se escribe y no al final de cada etapa.
+
+**Objetivos.** Los objetivos de calidad del proyecto se derivan de lo que el CLIENTE usará para juzgar el éxito: los dieciséis resultados del Caso, capítulo 18, y las condiciones de cierre de marcha blanca del Art. 17.3. La Tabla 9.1 los agrupa en cuatro objetivos medibles.
+
+**Tabla 9.1 — Objetivos de calidad del proyecto. Fuente: elaboración propia a partir de las BA, Arts. 17.3 y 24, y del Caso, caps. 15 y 18.**
+
+| Objetivo | Indicador | Meta | Origen |
+|---|---|---|---|
+| Entregar lo ofertado, probado | Requisitos ofertados del T-12 con prueba aprobada | 100 % antes de su hito | Caso, 17.1 |
+| Llegar a producción sin defectos graves | Defectos críticos o altos abiertos al cierre de cada marcha blanca | 0 | BA, Art. 17.3 |
+| Sostener la operación de Puelche | Indisponibilidad entre 05:30 y 07:00; p95 de las cuatro transacciones críticas | 0 minutos; dentro del umbral del Caso | Caso, RT-10.05 y RT-09.01 |
+| Lograr los resultados del negocio | Resultados del Caso, cap. 18, aceptados en su momento | 16 de 16 | Caso, cap. 18 |
+
+Los cuatro objetivos van de lo técnico a lo comercial. Los dos primeros los controla LafroX con sus puertas y sus pruebas. El tercero se mide en operación real durante la marcha blanca. El cuarto depende además de la adopción por las personas del CLIENTE, y por eso se acepta con medición en operación y no con una prueba de laboratorio (Formulario T-17, sección 5).
+
+**Gobierno.** El gobierno separa el aseguramiento del control (PMI, 2017, p. 290). El aseguramiento comprueba que el proceso produzca calidad y está a cargo del Líder de Calidad y Pruebas, Maximiliano Miño, con dedicación en los meses 1 a 56 (SD1, sección 1.5). Lo apoya el Comité de Calidad y Procesos de LafroX, que sesiona mensualmente y analiza la adherencia metodológica y las métricas de defectos (SD1, sección 1.3.1). El control comprueba que cada entregable cumpla y lo ejecutan las puertas automáticas y el equipo de pruebas. La aceptación la decide el CLIENTE por medio de su Contraparte Técnica (BA, Art. 70.2).
+
+El Líder de Calidad no responde ante el Líder de Desarrollo. Puede vetar una promoción y, si hay desacuerdo, el Comité de Calidad lo resuelve y escala a la Gerencia General de LafroX (SD1, sección 1.2). Esa independencia evita que la presión del plazo relaje un umbral.
+
+La Figura 9.1 presenta el marco completo, desde las normas hasta la aceptación.
+
+```mermaid
+flowchart LR
+    subgraph N["Normas"]
+        N1["ISO/IEC 25010<br/>producto"]
+        N2["ISO/IEC 25012<br/>datos"]
+        N3["ISO/IEC/IEEE 29119<br/>pruebas"]
+        N4["PMBOK cap. 8<br/>proceso"]
+    end
+    subgraph M["Métricas con umbral"]
+        M1["42 métricas de producto<br/>y de datos (Anexo 9.A)"]
+        M2["6 métricas de código<br/>bloqueantes"]
+        M3["Métricas de proceso<br/>y costo de la calidad"]
+    end
+    subgraph C["Control"]
+        C1["Puertas G0 a G6"]
+        C2["Pruebas por nivel<br/>y por ambiente (T-13)"]
+    end
+    subgraph E["Aceptación"]
+        E1["Expediente y matriz<br/>de trazabilidad"]
+        E2["Acta por hito (T-17)"]
+    end
+    N1 --> M1
+    N2 --> M1
+    N3 --> C2
+    N4 --> M3
+    M1 --> C2
+    M2 --> C1
+    M3 --> C1
+    C1 --> E1
+    C2 --> E1
+    E1 --> E2
+```
+
+**Figura 9.1 — Marco de aseguramiento de la calidad. Fuente: elaboración propia.**
+
+La figura muestra que el marco tiene una sola salida: la evidencia que la Contraparte Técnica revisa para firmar cada acta (BA, Art. 18.2). Cada norma gobierna un objeto distinto y ninguna se queda en una mención: cada una se traduce en métricas con umbral, y esas métricas se aplican en una puerta o en una prueba. Las métricas no llegan al CLIENTE como declaraciones, sino como resultados de ejecución en el expediente.
+
+### 9.1.2 Estándares aplicados y forma de acreditarlos
+
+El Art. 4.3 de las BA exige acreditar cada estándar y advierte que mencionarlo sin evidencia de cómo se satisface vale puntaje cero. La Tabla 9.2 indica, para cada estándar del ámbito de la calidad, cómo se aplica y dónde queda la evidencia.
+
+**Tabla 9.2 — Estándares de calidad y su mecanismo de verificación. Fuente: elaboración propia a partir de las BA, Art. 4.3.**
+
+| Estándar | Objeto | Mecanismo en este plan | Evidencia |
+|---|---|---|---|
+| ISO/IEC 25010 | Calidad del producto | Ocho características con métrica y umbral (9.1.3) | Anexo 9.A; informes del T-13 |
+| ISO/IEC 25012 | Calidad de los datos | Completitud, exactitud, consistencia y actualidad medidas (9.1.3) | Anexo 9.A.9; conciliaciones |
+| ISO/IEC/IEEE 29119 | Proceso, documentación y técnicas de prueba | Tres niveles de proceso; técnicas de diseño por tipo de regla (9.2.3) | T-13, secciones 2 y 3 |
+| PMBOK (PMI, 2017) | Gestión de la calidad del proyecto | Planificar, gestionar y controlar la calidad; costo de la calidad (9.1.6) | Informes mensuales; Anexo 9.C |
+| WCAG 2.2 AA | Accesibilidad | Herramienta automática y revisión manual (9.2.2) | Informe de conformidad (RT-13.01) |
+| OWASP ASVS, Top 10, SAMM | Seguridad del software | Análisis estático y dinámico; evaluación de madurez (9.1.4, 9.2.2) | Informes de G2, G4 y de intrusión |
+
+La tabla muestra que el plan cubre los estándares de calidad del producto, de los datos y de las pruebas, y que cada uno tiene un responsable de evidencia distinto. Los estándares de seguridad, continuidad y arquitectura se acreditan en el SD4; este plan solo verifica su cumplimiento mediante pruebas.
+
+### 9.1.3 Modelo de calidad del producto según ISO/IEC 25010
+
+El Art. 24 de las BA exige criterios de calidad conforme a ISO/IEC 25010, con umbrales numéricos para ocho características: funcionalidad, desempeño, compatibilidad, usabilidad, fiabilidad, seguridad, mantenibilidad y portabilidad. Son las características de la versión de 2011 de la norma (International Organization for Standardization [ISO] & International Electrotechnical Commission [IEC], 2011). La revisión de 2023 renombra usabilidad como capacidad de interacción y portabilidad como flexibilidad, y agrega la seguridad operacional (ISO & IEC, 2023). El plan usa los nombres de las Bases para que el contrato y el plan hablen el mismo idioma, y cubre la seguridad operacional dentro de la fiabilidad: el bloqueo del despacho ante una excursión térmica es un comportamiento seguro ante una falla del producto.
+
+Cada umbral se escribe como un requisito verificable: ante un estímulo, en una condición de operación, la solución responde con una métrica y un valor. No se usan promedios para el desempeño. El p95 representa la experiencia de casi todas las personas usuarias, y un promedio esconde la cola lenta que sufre el preparador en la cámara o el conductor sin señal (BTT, cap. D, «Percentil 95»).
+
+La Figura 9.2 presenta las ocho características con el umbral que las hace exigibles en Puelche.
+
+```mermaid
+flowchart TD
+    Q["Calidad del producto<br/>ISO/IEC 25010"]
+    Q --> F["Funcionalidad<br/>100 % de requisitos ofertados con prueba aprobada"]
+    Q --> D["Desempeño<br/>preparación ≤ 1 s · entrega ≤ 2 s · preventa ≤ 1,5 s<br/>p95 a 21,99 TPS"]
+    Q --> C["Compatibilidad<br/>15 de 15 integraciones · 0 contratos rotos"]
+    Q --> U["Usabilidad<br/>WCAG 2.2 AA · guantes a −22 °C · una mano"]
+    Q --> R["Fiabilidad<br/>99,9 % servicios críticos · 0 min de 05:30 a 07:00<br/>RTO ≤ 4 h · RPO ≤ 15 min · 14 h sin señal sin pérdida"]
+    Q --> S["Seguridad<br/>0 hallazgos críticos o altos abiertos"]
+    Q --> M["Mantenibilidad<br/>cobertura 70 % negocio y 80 % global"]
+    Q --> P["Portabilidad<br/>mismo artefacto de QA a Producción"]
+```
+
+**Figura 9.2 — Modelo de calidad del producto aplicado a la solución. Fuente: elaboración propia a partir de ISO & IEC (2011), de las Bases y del SD4.**
+
+En la figura, cada característica tiene al menos una métrica que nace de la operación de Puelche. La Tabla 9.3 resume la métrica principal de cada una. El Anexo 9.A detalla las 42 métricas por subcaracterística, con método de verificación y paquete de la EDT, e incluye cuatro métricas de calidad de datos según ISO/IEC 25012 (ISO & IEC, 2008).
+
+**Tabla 9.3 — Umbral principal por característica. Fuente: elaboración propia a partir de las BA, las BTT, el Caso y el SD4.**
+
+| Característica | Métrica principal | Umbral | Origen |
+|---|---|---|---|
+| Funcionalidad | Requisitos ofertados con prueba aprobada | 100 % | Caso, 17.1 |
+| Desempeño | p95 de las transacciones críticas a 1,5 × el peak | Preparación ≤ 1 s; entrega ≤ 2 s; preventa ≤ 1,5 s; stock y crédito ≤ 2 s | Caso, RT-09.01 |
+| Compatibilidad | Integraciones sin error | 15 de 15 | BTT 20.1 |
+| Usabilidad | Conformidad de accesibilidad | WCAG 2.2 AA sin incumplimientos | RT-13.01 |
+| Fiabilidad | Disponibilidad de servicios críticos | ≥ 99,9 % mensual y 0 minutos entre 05:30 y 07:00 | BA, Art. 78.2; Caso, RT-10.05 |
+| Seguridad | Hallazgos críticos o altos abiertos | 0 | RT-04.05; RT-11.20 |
+| Mantenibilidad | Cobertura de lógica de negocio y global | ≥ 70 % y ≥ 80 % | BA, Art. 24; SD1, 1.3.1 |
+| Portabilidad | Despliegues con el mismo artefacto | 100 % | RT-04.08 |
+
+Siete de los ocho umbrales los fijan las Bases o el Caso. El octavo, el de mantenibilidad, suma al 70 % exigido en la lógica de negocio el 80 % de cobertura global que es política de LafroX (SD1, sección 1.3.1). El desempeño y la fiabilidad concentran el modelo porque la operación de Puelche depende de transacciones de segundos en la ventana de despacho y de que el despacho continúe sin enlace y sin señal.
+
+### 9.1.4 Modelos de madurez
+
+El plan usa tres referentes con funciones distintas. ISO 9001:2015 es el sistema de gestión de calidad de LafroX y aporta el marco de auditoría de los registros del proyecto (ISO, 2015). CMMI-DEV es el modelo de madurez del proceso de desarrollo y de pruebas; LafroX declara prácticas evaluadas en nivel 3 (SD1, sección 1.3.1; CMMI Institute, 2018). OWASP SAMM es el modelo de madurez del desarrollo seguro que exige el Art. 4.3 de las BA.
+
+El nivel 3 de CMMI-DEV significa procesos definidos para la organización y adaptados al proyecto. En este contrato se traduce en tres áreas de práctica que el plan mide: verificación y validación, que es el proceso de pruebas de 9.2.3; revisión entre pares, de 9.2.2; y aseguramiento de la calidad del proceso, ejercido por las auditorías trimestrales de trazabilidad entre requisito, código y prueba que exige la política de LafroX (SD1, sección 1.3.1). Esas auditorías siguen el criterio del PMBOK: las hace un equipo independiente del proyecto y buscan no conformidades, buenas prácticas y lecciones para otros proyectos (PMI, 2017, p. 294).
+
+El modelo se usa para mejorar el proceso durante el contrato. El Líder de Calidad hace una autoevaluación de las tres áreas al aprobar el plan, en el H1, y la repite cada seis meses. El Encargado de Seguridad hace lo mismo con SAMM al iniciar el desarrollo y cada año. Cada brecha entra al ciclo de mejora de 9.2.6. La meta es el cuarto de los cinco niveles de gestión de la calidad que describe el PMBOK: incorporar la calidad en la planificación y el diseño, y no solo detectar defectos (PMI, 2017, p. 275).
+
+### 9.1.5 Métricas de código con umbral bloqueante
+
+La mantenibilidad se juzga sobre el código mientras se escribe. La Tabla 9.4 fija los umbrales que bloquean una fusión en los tres lenguajes de la solución: PHP con Laravel en el monolito modular, Kotlin en la aplicación Android y TypeScript con Angular en consolas y portales (SD4, sección 4.1.1).
+
+**Tabla 9.4 — Métricas de código con umbral bloqueante. Fuente: elaboración propia a partir de las BA, Art. 24, del SD1 y del Formulario T-10.**
+
+| Métrica | Umbral bloqueante | Puerta | Origen del umbral |
+|---|---|---|---|
+| Cobertura de lógica de negocio | ≥ 70 % | G2 | BA, Art. 24; RT-04.11 |
+| Cobertura unitaria global | ≥ 80 % | G2 | Política de LafroX (SD1, 1.3.1) |
+| Complejidad ciclomática por método | ≤ 10 | G2 | McCabe (1976) |
+| Dependencias prohibidas entre módulos | 0 | G2 | BA, Art. 19 (acoplamiento débil) |
+| Duplicación de código | ≤ 3 % de las líneas | G2 | Formulario T-10 |
+| Deuda técnica clasificada como bloqueante | 0 | G2 | BA, Art. 24; Formulario T-10 |
+
+Las seis métricas bloquean en la misma puerta, la integración continua, porque ahí el costo de corregir es mínimo: el autor todavía tiene el cambio en la cabeza. Los dos umbrales de cobertura son independientes y se exigen ambos. Una cobertura global alta lograda con pruebas sobre controladores y vistas podría dejar sin probar la regla de asignación de stock o la de excursión térmica; el 70 % medido sobre las clases de dominio y de casos de uso lo impide. El límite de complejidad de 10 es la cota que McCabe (1976) propone para un módulo comprobable. El acoplamiento se controla en la frontera que importa a esta arquitectura: ningún módulo invoca clases internas de otro fuera de su contrato. Las herramientas por lenguaje están en el Anexo 9.B.
+
+El Comité de Calidad puede endurecer estos umbrales con datos del proyecto, pero no relajarlos sin acta del Comité de Arquitectura.
+
+### 9.1.6 Métricas de proceso y costo de la calidad
+
+El código puede cumplir sus umbrales y el proceso puede seguir dejando escapar defectos. Por eso el plan mide también el proceso. La Tabla 9.5 fija las métricas con que el Comité de Calidad lo juzga cada mes.
+
+**Tabla 9.5 — Métricas de proceso. Fuente: elaboración propia a partir de las BA, Arts. 17.3, 18.3 y 78.3, del RT-04.12 y del SD4, sección 4.2.4.1.4.**
+
+| Métrica | Fórmula | Meta | Origen |
+|---|---|---|---|
+| Defectos escapados | Defectos críticos o altos hallados en un ambiente posterior al que debió detectarlos / total de críticos o altos | 0 en Producción durante la marcha blanca | BA, Art. 17.3 |
+| Densidad de defectos | Defectos confirmados / casos ejecutados, por módulo | Se mide y se usa para priorizar | Elaboración propia |
+| Observaciones repetidas del CLIENTE | Observaciones de la misma naturaleza en una segunda presentación | 0 | BA, Art. 18.3 |
+| Tasa de cambios fallidos | Despliegues que requieren reversión o corrección / despliegues del mes | ≤ 5 % | BA, Art. 78.3; SD4 |
+| Tiempo del cambio a producción | Días hábiles habilitados desde que se confirma el cambio | ≤ 5 días | RT-04.12; SD4 |
+| Tiempo medio de restauración de incidentes críticos | Suma de tiempos de restauración / incidentes críticos del mes | ≤ 4 h | BA, Art. 78.3 |
+| Reincidencia por la misma causa raíz | Incidentes con causa raíz repetida | ≤ 1 por trimestre | BA, Art. 78.3 |
+
+Las cuatro métricas de entrega del RT-04.12 (frecuencia de despliegue, tiempo del cambio a producción, tasa de cambios fallidos y tiempo de restauración) se miden con las metas que declara el SD4; la frecuencia es quincenal y se mide solo en los períodos que las ventanas del Caso habilitan. La tabla muestra que tres metas vienen del Art. 78.3 y rigen en la Operación, y que dos (defectos escapados y observaciones repetidas) protegen la aceptación de los hitos de la implementación.
+
+**Costo de la calidad.** El PMBOK distingue el costo de conformidad, que se gasta para evitar fallas (prevención y evaluación), del costo de no conformidad, que se paga por las fallas (internas, si las encuentra el proyecto; externas, si las encuentra el cliente) (PMI, 2017, pp. 274 y 282–283). El plan lo calcula en horas-hombre, porque la Oferta Técnica no puede contener montos (BA, Art. 50.2). La Tabla 9.6 sintetiza el cálculo del Anexo 9.C.
+
+**Tabla 9.6 — Costo de la calidad en horas-hombre. Fuente: elaboración propia a partir de los Formularios T-14 y T-15 y del SD8, Anexo 8.A.**
+
+| Categoría | HH | Proporción | Paquetes principales |
+|---|---|---|---|
+| Prevención | 4.224,00 | 31,0 % | 2.6 (usabilidad), 3.10.2 (INN-02), 8.2.4 (deuda técnica) |
+| Evaluación | 6.304,00 | 46,2 % | 3.8 y 3.9 (certificaciones), 8.1.6 y 8.2.2 (pruebas en Operación) |
+| Fallas internas esperadas | 3.110,40 | 22,8 % | Riesgos R8-18 y R8-31 del SD8 |
+| **Total** | **13.638,40** | **100,0 %** | |
+
+Del cálculo se concluyen tres cosas. Primero, la conformidad programada suma 10.528 HH, el 4,9 % de las 216.935 HH de la línea base (Formulario T-15, sección 4.3); esa proporción resulta de sumar paquetes estimados uno a uno y no se fijó de antemano. Segundo, la evaluación pesa más que la prevención porque las Bases exigen pruebas costosas antes de cada paso a producción (carga, resiliencia, recuperación con conmutación real e intrusión por un tercero). Tercero, la falla interna esperada se concentra en un solo riesgo: que una marcha blanca no cumpla las seis condiciones del Art. 17.3 (R8-18, con 2.956,80 HH esperadas). Por eso las pruebas de certificación replican en Preproducción las condiciones que la marcha blanca medirá en Producción. Las fallas externas no se estiman en horas, porque su corrección comparte el paquete 8.2.1 con el mantenimiento evolutivo; se controlan con la métrica de defectos escapados.
+
+---
+
+## 9.2 Estrategia de Aseguramiento de Calidad
+
+Esta sección describe cómo se aplican los umbrales de 9.1. Las puertas y la revisión del código aseguran el proceso; las pruebas controlan el producto; la trazabilidad une ambos con la aceptación; y el ciclo de mejora corrige el proceso cuando los resultados lo piden.
+
+### 9.2.1 Puertas de calidad
+
+Una puerta de calidad es un punto del recorrido de un cambio donde un criterio objetivo decide si avanza. La Figura 9.3 presenta las siete puertas sobre la cadena de entrega del SD4, desde el computador del desarrollador hasta la operación.
+
+```mermaid
+flowchart LR
+    G0["G0 · Compromiso local<br/>formato y pruebas del módulo"] --> G1["G1 · Solicitud de fusión<br/>revisión por pares · secretos"]
+    G1 --> G2["G2 · Integración continua<br/>coberturas · complejidad · acoplamiento<br/>duplicación · SAST/SCA · contratos"]
+    G2 --> G3["G3 · Promoción a QA<br/>imagen sin vulnerabilidades altas<br/>p95 sin deterioro mayor al 10 %"]
+    G3 --> G4["G4 · Promoción a Preproducción<br/>regresión · DAST · WCAG"]
+    G4 --> G5["G5 · Paso a producción (H7 y H12)<br/>pruebas del T-13 · acta T-17"]
+    G5 --> G6["G6 · Operación<br/>canario · presupuesto de error"]
+    G2 -. bloquea .-> X["Cambio rechazado<br/>vuelve al autor"]
+    G4 -. bloquea .-> X
+    G5 -. bloquea .-> X
+```
+
+**Figura 9.3 — Puertas de calidad en la cadena de entrega. Fuente: elaboración propia a partir del SD4, sección 4.2.4.1, y del Formulario T-10.**
+
+La figura muestra que el control es más barato cuanto antes ocurre. G0 a G2 se ejecutan en minutos sobre cada cambio; G5 se ejecuta dos veces en el contrato y exige semanas de prueba. La Tabla 9.7 resume qué bloquea cada puerta y quién puede levantarla; el Anexo 9.B detalla las reglas y herramientas.
+
+**Tabla 9.7 — Bloqueo y autoridad por puerta. Fuente: elaboración propia a partir del Formulario T-10 y del SD4.**
+
+| Puerta | Momento | Bloquea si | Quién puede levantar el bloqueo |
+|---|---|---|---|
+| G0–G1 | Compromiso y solicitud de fusión | Falta la aprobación de un par; hay un secreto o un error de formato | Nadie; se corrige |
+| G2 | Integración continua | Falla un umbral de la Tabla 9.4; hallazgo crítico o alto; contrato roto | Nadie |
+| G3 | Promoción a QA | Imagen con vulnerabilidad crítica o alta; p95 peor en más de 10 % | Nadie para la vulnerabilidad; Líder de Calidad para el desempeño, con registro de deuda |
+| G4 | Promoción a Preproducción | Regresión con fallas; alerta alta de DAST; incumplimiento WCAG; defecto crítico o alto abierto | Nadie |
+| G5 | Paso a producción (H7 y H12) | Prueba habilitante no aprobada; defecto crítico o alto abierto; falta el acta | Nadie; el acta no levanta una prueba fallida |
+| G6 | Operación | Canario fuera de umbral; presupuesto de error crítico del mes agotado | Nadie; reversión automática y suspensión de despliegues no correctivos |
+
+La única excepción que el plan admite es la regresión de desempeño en G3, y solo cuando su causa está identificada y no compromete un umbral del Caso. Ningún hallazgo de seguridad crítico o alto admite excepción en ninguna puerta, como exige el RT-04.05. Las correcciones durante una marcha blanca no son un paso a producción contractual: pasan por G0 a G4 y G6, con regresión completa, y repiten la prueba de certificación que su cambio afecta (sección 9.3.2).
+
+### 9.2.2 Revisión por pares y análisis estático y dinámico
+
+Toda modificación entra a la rama principal por una solicitud de fusión. La rama está protegida y la escritura directa está prohibida (RT-04.03). La fusión requiere la aprobación de un par que no haya escrito el cambio. Los cambios en servicios de nivel crítico o alto del SD4, Tabla 16, requieren además al arquitecto del frente, y los cambios en autenticación, cifrado o datos personales, al Encargado de Seguridad. La revisión entre pares es una forma de inspección (PMI, 2017, p. 303): el revisor verifica lo que una herramienta no ve, es decir, que el cambio implemente el requisito citado, que las pruebas prueben la regla y no solo recorran líneas, y que los nombres de los componentes sean los del SD3 y del SD4.
+
+**Análisis estático.** Se ejecuta en G1 y G2 sobre cada cambio. En PHP: PHPStan con Larastan, PHPMD, PHPCPD, PhpMetrics y deptrac; en Kotlin: detekt; en TypeScript: ESLint. El análisis de seguridad cubre los cinco controles mínimos del RT-04.05: análisis estático de código, composición de software, secretos, imágenes de contenedor y pruebas unitarias, con bloqueo automático. Los contratos OpenAPI 3.1 y AsyncAPI 2.6 se validan con Spectral y se prueban con Pact (Formulario T-10).
+
+**Análisis dinámico.** Ejecuta el software. En QA, OWASP ZAP recorre portales y API, y MobSF analiza la aplicación Android sobre un dispositivo; una alerta alta detiene G4. La accesibilidad se evalúa con axe-core y con revisión manual (teclado, lector de pantalla y contraste bajo sol directo), porque el RT-13.01 exige ambas verificaciones. La carga, el estrés y la inyección de fallas también son análisis dinámico y se describen en 9.2.3.
+
+### 9.2.3 Estrategia de pruebas conforme a ISO/IEC/IEEE 29119
+
+La estrategia sigue los tres niveles de proceso de ISO/IEC/IEEE 29119-2. En el nivel organizacional rige la política de pruebas de LafroX. En el nivel de gestión, el plan de pruebas del proyecto, que es el Formulario T-13, se monitorea y se cierra en cada hito. En el nivel dinámico se diseñan, ejecutan e informan los casos (ISO, IEC & Institute of Electrical and Electronics Engineers [IEEE], 2021a). La intensidad de la prueba sigue el riesgo (ISO, IEC & IEEE, 2022): un requisito de prioridad crítica recibe cinco casos; uno alto, tres; uno medio, dos. Las técnicas de diseño se eligen por tipo de regla (ISO, IEC & IEEE, 2021b): valores límite para los umbrales térmicos y de crédito, tablas de decisión para la asignación de stock, transición de estados para el ciclo del pedido y de la guía, y casos de uso para los flujos del SD3.
+
+**Niveles, tipos y ambientes.** La Figura 9.4 ubica cada nivel y tipo de prueba en el ambiente donde se ejecuta.
+
+```mermaid
+flowchart TB
+    subgraph DEV["Desarrollo"]
+        D1["Unitarias y de componente<br/>PHPUnit · JUnit 5 · Jest"]
+        D2["Contrato<br/>Pact · Spectral"]
+    end
+    subgraph QA["QA"]
+        Q1["Integración de los 15 flujos"]
+        Q2["Sistema y regresión automatizada"]
+        Q3["DAST · accesibilidad · carga de regresión"]
+    end
+    subgraph PRE["Preproducción"]
+        P1["Aceptación de usuario"]
+        P2["Carga 1,5× y estrés hasta el quiebre"]
+        P3["Resiliencia con inyección de fallas"]
+        P4["Migración · despliegue y reversión"]
+        P5["Intrusión por un tercero"]
+    end
+    subgraph TER["Terreno y cámara"]
+        T1["14 h sin señal · −22 °C con guantes<br/>lluvia · sol directo · una mano"]
+    end
+    subgraph PROD["Producción"]
+        R1["Marcha blanca<br/>indicadores diarios"]
+    end
+    subgraph DR["Recuperación"]
+        X1["Conmutación real<br/>RTO ≤ 4 h · RPO ≤ 15 min"]
+    end
+    DEV --> QA --> PRE --> PROD
+    PRE --> TER
+    PROD --> DR
+```
+
+**Figura 9.4 — Niveles y tipos de prueba por ambiente. Fuente: elaboración propia a partir del SD4, Tabla 12, y de las BTT, sección 4.1.**
+
+La figura sigue la regla de los ambientes del SD4: el software se prueba en un ambiente cada vez más parecido a producción y lo que se promueve es la misma imagen. Desarrollo concentra las pruebas rápidas y aisladas; QA, las de integración y regresión con datos controlados; Preproducción, equivalente a producción en topología y configuración (RT-04.02), las que dependen de la escala y de las fallas. Las pruebas propias del caso, como el turno sin señal y la cámara de congelado, no caben en un ambiente de nube y se ejecutan en terreno con dispositivos reales.
+
+Las campañas de certificación coinciden en el tiempo y no pueden compartir el ambiente: la resiliencia necesita carga sostenida, la intrusión exige una versión congelada y la aceptación necesita datos estables. Por eso cada campaña usa su propia instancia de Preproducción, reconstruida desde el mismo código; siguen siendo Preproducción y no un sexto ambiente (T-13, sección 4.1).
+
+**Pruebas que habilitan un paso a producción.** La BTT, sección 20.1, fija diez tipos de prueba con su momento y su criterio de salida. La Tabla 9.8 los sintetiza; el T-13, secciones 6 y 7, los especifica con sus criterios de entrada y salida.
+
+**Tabla 9.8 — Pruebas que habilitan cada paso a producción. Fuente: elaboración propia a partir de las BTT, sección 20.1, y del Caso, cap. 15.**
+
+| Prueba | Ambiente | Carga o escenario | Criterio de salida |
+|---|---|---|---|
+| Integración y regresión | QA | 15 integraciones y batería completa | 0 fallas y 0 regresiones |
+| Aceptación de usuario | Preproducción | Casos del SD3 con preventistas, conductores y bodega | Casos firmados por la Contraparte Técnica |
+| Carga y estrés | Preproducción | 21,99 TPS; escalones de 3× y 4× | p95 de la Tabla 9.3; punto de quiebre sin pérdida |
+| Resiliencia | Preproducción | Caída de instancia, zona y dependencia; latencia; disco; 24 h sin enlace | Recuperación sin intervención |
+| Perfil operacional | Terreno | 14 h sin señal; −22 °C con guantes; lluvia; sol; una mano | 0 pérdidas y 0 duplicados; sincronización ≤ 10 min |
+| Recuperación ante desastres | Recuperación | Conmutación regional real | RTO ≤ 4 h; RPO ≤ 15 min |
+| Seguridad ofensiva | Preproducción | Tercero independiente | 0 hallazgos críticos o altos abiertos |
+| Accesibilidad | QA y Preproducción | axe-core y revisión manual | WCAG 2.2 AA documentado |
+| Migración | Preproducción | Dos ensayos con 32,11 GB | 0 diferencias no explicadas |
+| Despliegue sin interrupción | Preproducción | Canario con reversión | Sin interrupción ni intervención manual |
+
+La tabla agrega dos pruebas a las de la BTT, ambas exigidas por el Caso: el perfil operacional, por los RT-03.10, RT-03.13 y RT-13.08, y el despliegue sin interrupción, por el Art. 24. Ninguna prueba tiene un criterio de salida cualitativo: todas terminan en un número o en una firma.
+
+**Carga derivada del dimensionamiento.** La carga de prueba no se elige: se deriva del SD4, Tabla 33, aplicando el factor 1,5 que exigen el Art. 24 y el RT-09.06. La Tabla 9.9 muestra la derivación.
+
+**Tabla 9.9 — Derivación de la carga de prueba. Fuente: elaboración propia a partir del SD4, Tabla 33.**
+
+| Magnitud | Peak declarado | Carga de prueba |
+|---|---|---|
+| TPS máximo de septiembre | 14,66 TPS | 1,5 × 14,66 = 21,99 TPS |
+| TPS máximo de la ventana de 05:30 a 07:00 | 6,94 TPS | 1,5 × 6,94 = 10,41 TPS, durante 90 minutos |
+| Personas usuarias concurrentes | 775,33 | 1,5 × 775,33 = 1.163 |
+| Dispositivos de terreno simultáneos | 158 | 1,5 × 158 = 237 |
+| Crecimiento sin rediseño (RT-09.03) | 14,66 TPS | 3 × 14,66 = 43,98 TPS |
+
+La prueba de la ventana de despacho tiene un criterio adicional: cero minutos de indisponibilidad, porque el Caso no admite ninguno entre 05:30 y 07:00 (RT-10.05). El escalón de 3× comprueba el crecimiento que exige el RT-09.03; el de 4× busca el punto de quiebre y verifica que, al superarse la capacidad, la solución encole y avise en vez de perder transacciones (RT-09.08).
+
+**Automatización.** La automatización es la regla; una prueba es manual solo si exige el juicio de una persona, una condición física o un tercero. Con la prioridad de los 262 requisitos funcionales y no funcionales del SD3 (56 críticos, 163 altos y 43 medios), los 356 RT ofertados en estado «Cumple» o «Cumple parcialmente» del T-12 y siete casos por cada una de las 15 integraciones, el catálogo inicial suma 1.316 casos (T-13, sección 8.2). Con el 80 % automatizado, la regresión completa tiene unos 1.053 casos; a 30 segundos cada uno, tarda 8,8 horas en un ejecutor y 4,4 en dos ejecutores paralelos, y cabe en una noche antes de cada promoción a Preproducción. Los 263 casos manuales requieren unas 65,8 HH por ciclo, a 15 minutos cada uno.
+
+### 9.2.4 Datos de prueba
+
+Ningún ambiente no productivo contiene datos productivos reales sin anonimización verificada. La regla protege los datos personales de clientes, de conductores de terceros y la geolocalización de trabajadores (Ley N.º 21.719, 2024), y los campos que el Caso, RT-11.10, exige cifrar. El ambiente de Recuperación ante Desastres no es un ambiente de prueba funcional: es una réplica productiva protegida que solo se usa para la conmutación real.
+
+La Figura 9.5 muestra de dónde vienen los datos de cada ambiente.
+
+```mermaid
+flowchart LR
+    V["Volumetría del Caso<br/>14.200 clientes · 8.400 SKU<br/>31.000 pedidos al mes"] --> G["Generador sintético<br/>reglas del SD3 y del SD5"]
+    H["Datos históricos del CLIENTE<br/>32,11 GB"] --> A["Anonimización"]
+    A --> MZ["Verificación con Amazon Macie<br/>y prueba de reidentificación"]
+    G --> J["Juegos versionados<br/>restituidos antes de cada ciclo"]
+    J --> QA["QA"]
+    J --> PRE["Preproducción<br/>volumen de peak"]
+    MZ --> PM["Preproducción<br/>solo ensayos de migración"]
+    P["Producción"] -. "sin copia a QA ni a Preproducción" .-> X["Prohibido"]
+```
+
+**Figura 9.5 — Origen y control de los datos de prueba. Fuente: elaboración propia a partir del SD4, sección 4.2.4.1, y del SD5, sección 5.3.**
+
+La figura muestra dos fuentes. Los datos sintéticos se generan desde la volumetría del Caso, sección 14.1, y respetan las reglas del negocio: lotes con vencimiento, productos refrigerados con su rango térmico y clientes con crédito. Así, la prueba de carga opera sobre un volumen comparable al del peak. Los datos históricos se usan solo en los ensayos de migración, después de anonimizarlos y de verificar con Amazon Macie que no queden datos personales. QA restituye sus juegos a un estado conocido antes de cada ciclo, para que un fallo sea reproducible. Esa misma propiedad usa la innovación INN-02 para convertir un incidente de terreno en una prueba de regresión permanente (SD13, sección 13.2). El T-13, sección 5, especifica cada juego.
+
+### 9.2.5 Verificación, validación y trazabilidad
+
+La verificación comprueba que cada producto cumpla su especificación; la validación comprueba que la solución resuelva el problema de Puelche. El PMBOK separa ambos momentos: controlar la calidad lo hace el equipo y produce entregables verificados; validar el alcance lo hace el cliente y produce entregables aceptados (PMI, 2017, p. 305). La Figura 9.6 empareja cada artefacto de diseño con la prueba que lo verifica o lo valida y con el hito que lo cierra.
+
+```mermaid
+flowchart LR
+    subgraph IZQ["Definición"]
+        A1["Necesidad y 16 resultados<br/>Caso cap. 18"] --> A2["Requisitos<br/>SD3 · T-12 (H1)"]
+        A2 --> A3["Arquitectura y datos<br/>SD4 · SD5 (H2)"]
+        A3 --> A4["Diseño de módulo y contrato"]
+        A4 --> A5["Código"]
+    end
+    subgraph DER["Prueba"]
+        B5["Unitarias"] --> B4["Integración y contrato<br/>(H4 · H9)"]
+        B4 --> B3["Sistema, carga, resiliencia,<br/>recuperación (H5 · H10)"]
+        B3 --> B2["Aceptación de usuario<br/>(H5 · H10)"]
+        B2 --> B1["Marcha blanca y resultados<br/>del caso (H7 · H12)"]
+    end
+    A5 --> B5
+    A4 -. verifica .- B4
+    A3 -. verifica .- B3
+    A2 -. valida .- B2
+    A1 -. valida .- B1
+```
+
+**Figura 9.6 — Verificación y validación por nivel y por hito. Fuente: elaboración propia a partir del Formulario E-25.**
+
+La figura muestra que la certificación técnica de cada etapa (H5 y H10) no acepta por sí sola los resultados del negocio. Los dieciséis resultados del Caso, capítulo 18, se aceptan con medición en operación real durante las marchas blancas (H7 y H12), conforme al Formulario T-17, sección 5. La aceptación no libera de responsabilidad por defectos posteriores (BA, Art. 18.4).
+
+**Trazabilidad.** La cadena que exige el Caso, sección 17.1, va del origen al criterio de aceptación: origen, requisito, componente, paquete de la EDT, prueba y criterio. El RT-04.04 le agrega el cambio de código y el despliegue. La Figura 9.7 presenta la cadena con un requisito crítico como ejemplo: la lista de clientes afectados por un lote en menos de dos horas.
+
+```mermaid
+flowchart LR
+    O["Origen<br/><i>Caso cap. 18, resultado 1</i>"] --> R["Requisito<br/><i>RF-09.01 trazabilidad<br/>hacia adelante (T-12)</i>"]
+    R --> C["Componente<br/><i>M9 Calidad y trazabilidad (SD4)</i>"]
+    C --> E["Paquete EDT<br/><i>3.4.4 Cadena de frío, retención<br/>de lotes y retiro sanitario (T-14)</i>"]
+    E --> K["Caso de prueba<br/><i>simulacro de retiro (T-13, 7.4)</i>"]
+    K --> G["Cambio de código<br/><i>solicitud de fusión con su ID</i>"]
+    G --> D["Despliegue<br/><i>digest de la imagen</i>"]
+    D --> A["Aceptación<br/><i>acta del H7 (T-17)</i>"]
+```
+
+**Figura 9.7 — Cadena de trazabilidad de extremo a extremo. Fuente: elaboración propia a partir del Caso, sección 17.1, y del RT-04.04.**
+
+La figura muestra que cada eslabón se apoya en un identificador que ya existe en la propuesta. La matriz se lee en dos sentidos: hacia atrás explica por qué existe cada componente; hacia adelante, dónde quedó implementado y probado cada requisito. Cada caso de prueba lleva el identificador de su requisito, cada solicitud de fusión cita el requisito o la incidencia que atiende, y cada despliegue registra el digest de su imagen. Con esos enlaces, la matriz se genera desde el repositorio y el historial de la cadena de integración, y no se mantiene a mano. La meta es que el 100 % de los requisitos ofertados tenga al menos una prueba aprobada antes de su hito. Los 18 RT en estado «No cumple» quedan en la matriz sin prueba, para que la Contraparte Técnica vea la brecha en lugar de un vacío. El Anexo 9.D muestra el tramo final de la cadena para los dieciséis resultados del caso.
+
+### 9.2.6 Control de la calidad y mejora continua
+
+Controlar la calidad es comparar el resultado con su criterio y actuar cuando no lo cumple (PMI, 2017, p. 298). Esta sección describe cómo se tratan los defectos, cómo se detecta un proceso que se sale de control y cómo se mejora.
+
+**Defectos.** Un defecto es toda diferencia entre el resultado esperado de una prueba y el obtenido. Se registra en GitLab con el caso de prueba, el requisito, el ambiente, la versión y la evidencia. La severidad usa las cuatro clases de nivel de servicio del SD4, Tabla 16, para que un defecto y un incidente se midan con la misma vara: es crítico si afecta la preparación, el despacho o la emisión de la guía en la ventana de 05:30 a 07:00, el bloqueo por excursión térmica o la identidad de bodega. Un defecto se cierra solo cuando la prueba que lo detectó pasa y queda incorporada a la regresión. Ningún defecto crítico o alto abierto pasa G4, y ninguna marcha blanca se cierra con uno abierto (BA, Art. 17.3).
+
+**Detección de un proceso fuera de control.** El plan distingue tolerancia de límite de control (PMI, 2017, pp. 274 y 304). La tolerancia es el rango aceptable que fija un requisito; por ejemplo, el p95 de la línea de preparación no puede superar 1 s. El límite de control se calcula con la variación histórica de una métrica y marca cuándo el proceso deja de ser estable, aunque siga dentro de la tolerancia. El Comité de Calidad lleva diagramas de control de dos métricas: el p95 de la carga de regresión semanal en QA y la densidad de defectos por módulo. Los límites se calculan con las primeras ocho mediciones de cada métrica y se actualizan cada trimestre. Un punto fuera de los límites, o siete puntos seguidos del mismo lado de la media, abre un análisis antes de que la tendencia llegue a la tolerancia. Las causas de los defectos se ordenan cada mes en un diagrama de Pareto, para atacar primero las que explican la mayor parte.
+
+**Causa raíz.** Un defecto reabierto dos veces por la misma causa, un defecto escapado a Producción y todo incidente crítico pasan a análisis de causa raíz (PMI, 2017, p. 292). El análisis usa un diagrama de causa y efecto con las categorías de personas, proceso, herramientas, datos, ambiente y gestión, y el formato que el Art. 25 de las BA exige para los incidentes críticos. La reincidencia por la misma causa raíz no puede superar un evento por trimestre en la Operación (BA, Art. 78.3).
+
+**Ciclo de mejora.** Las acciones siguen el ciclo planificar-hacer-verificar-actuar (PMI, 2017, p. 296). La Figura 9.8 muestra el ciclo y sus entradas.
+
+```mermaid
+flowchart LR
+    IN["Entradas<br/>métricas 9.1.5 y 9.1.6 · diagramas de control<br/>auditorías · observaciones del CLIENTE<br/>retrospectivas"] --> P["Planificar<br/>causa raíz · acción · dueño · plazo"]
+    P --> H["Hacer<br/>corregir proceso, control o prueba"]
+    H --> V["Verificar<br/>en el siguiente comité mensual,<br/>contra el mismo criterio"]
+    V --> A["Actuar<br/>cerrar con evidencia o escalar"]
+    A --> LL["Registro de lecciones aprendidas"]
+    A -. "si toca la línea base" .-> SC["Solicitud de cambio<br/>(Formulario T-9)"]
+    LL --> IN
+```
+
+**Figura 9.8 — Ciclo de mejora de la calidad. Fuente: elaboración propia a partir de PMI (2017, pp. 296–297).**
+
+La figura muestra dos salidas que el PMBOK exige y que suelen faltar. La primera es el registro de lecciones aprendidas, que se alimenta de cada acción cerrada y de una retrospectiva al término de cada certificación (H5 y H10) y de cada marcha blanca (H7 y H12); cada retrospectiva revisa qué funcionó, qué se debe cambiar y qué se lleva a la Etapa 2 o a la Operación (PMI, 2017, p. 305). La segunda es la solicitud de cambio: si una acción de mejora toca la línea base del alcance, del cronograma o de un umbral, pasa por el control integrado de cambios del Formulario T-9 (PMI, 2017, p. 296). Una acción se cierra solo cuando el comité siguiente comprueba su eficacia con el mismo criterio que detectó la desviación.
+
+**Informes de calidad.** El Líder de Calidad emite un informe mensual al Comité de Calidad y a la Contraparte Técnica con las métricas de proceso, los defectos por severidad y por módulo, el estado de la matriz de trazabilidad, los diagramas de control y las acciones de mejora abiertas (T-13, sección 12).
+
+---
+
+## 9.3 Alineación con Plan de Trabajo
+
+Esta sección muestra dónde quedan las actividades de calidad en la EDT del Formulario T-14 y en el cronograma del SD7, con sus horas, sus meses y los hitos que habilitan.
+
+### 9.3.1 Actividades de calidad en la EDT
+
+La EDT no tiene una rama de calidad aislada. Las actividades de calidad están en las cuentas donde se produce lo que verifican, y el diccionario de cada paquete registra su criterio de aceptación, como indica el PMBOK para los requisitos de calidad (PMI, 2017, p. 287). La Tabla 9.10 agrupa esos paquetes.
+
+**Tabla 9.10 — Paquetes de calidad de la EDT. Fuente: elaboración propia a partir de los Formularios T-14 y T-15.**
+
+| Cuenta | Paquetes | Meses | HH |
+|---|---|---|---|
+| 1.2 y 1.5: trazabilidad, plan y puertas | 1.2.4; 1.5.1; 1.5.2 | 2; 6 a 20 | 240 |
+| 2.6: usabilidad con personas usuarias | 2.6.1 a 2.6.3 | 2 a 4 | 720 |
+| 3.8: pruebas y certificación de la Etapa 1 | 3.8.1 a 3.8.8 | 9 y 10 | 2.080 |
+| 3.9: pruebas y certificación de la Etapa 2 | 3.9.1 a 3.9.7 | 16 y 17 | 1.760 |
+| 3.10.2: INN-02, reproducción de incidentes | 3.10.2.1 a 3.10.2.4 | 2 a 15 | 960 |
+| 4.1.2: ensayo de reversión | 4.1.2 | 11 | 80 |
+| 8.1 a 8.3: pruebas y deuda en la Operación | 8.1.3; 8.1.6; 8.2.2; 8.2.4; 8.3.1 | 21 a 56 | 4.688 |
+| **Total** | | | **10.528** |
+
+La tabla suma las mismas 10.528 HH de conformidad del costo de la calidad (9.1.6). Las pruebas de cada etapa se concentran en dos bloques: la cuenta 3.8 en los meses 9 y 10, y la 3.9 en los meses 16 y 17. Empiezan cuando los módulos están integrados y terminan con margen para la revisión del CLIENTE y una eventual subsanación antes del hito. Durante esos bloques, el equipo de calidad se refuerza con hasta 16 evaluadores subcontratados por día, en los meses 9 a 12 y 16 a 18 (SD6, sección 6.1.3). Las 4.688 HH de la Operación muestran que la calidad no termina con la aceptación final.
+
+### 9.3.2 Calidad en el cronograma y en los hitos
+
+La Figura 9.9 ubica las actividades de calidad en los 56 meses del contrato, junto con los congelamientos del Caso.
+
+```mermaid
+gantt
+    title Actividades de calidad (mes 1 = febrero de 2027)
+    dateFormat YYYY-MM-DD
+    axisFormat %b-%y
+    section Planificación
+    Matriz y plan (H1)                     :2027-03-01, 2027-03-09
+    Usabilidad con usuarios                :2027-03-01, 2027-05-31
+    Puertas automáticas (1.5.2)            :2027-07-01, 2028-09-30
+    section Etapa 1
+    Ensayos de migración                   :2027-10-04, 2027-12-31
+    Integración y regresión (H4)           :2027-10-01, 2027-10-20
+    Certificación (H5)                     :2027-10-21, 2027-11-29
+    Marcha blanca E1                       :2028-02-01, 2028-04-30
+    section Etapa 2
+    Integración y regresión (H9)           :2028-05-01, 2028-05-18
+    Certificación (H10)                    :2028-05-19, 2028-06-12
+    Marcha blanca E2                       :2028-08-01, 2028-09-30
+    section Operación
+    Pruebas periódicas (8.1.3 · 8.1.6 · 8.2.2) :2028-10-01, 2031-09-30
+    section Congelamiento
+    Sep-2027                               :crit, 2027-09-01, 2027-09-25
+    Dic-2027                               :crit, 2027-12-01, 2027-12-31
+    Sep-2028                               :crit, 2028-09-01, 2028-09-25
+    Dic-2028                               :crit, 2028-12-01, 2028-12-31
+```
+
+**Figura 9.9 — Actividades de calidad en el cronograma. Fuente: elaboración propia a partir del Formulario T-15, sección 6.1, y del Caso, RT-10.05.**
+
+La figura muestra que ninguna certificación cae en un congelamiento. Las pruebas de la Etapa 1 terminan en noviembre de 2027, antes de diciembre; los ensayos de migración que coinciden con diciembre corren en Preproducción y no tocan Producción. La marcha blanca de la Etapa 2 coincide con el peak de septiembre de 2028 y con su congelamiento: es la exigencia más dura sobre la solución, porque se mide con el mayor volumen del año (Caso, anexo B.2). Durante ese congelamiento solo se corrige un defecto crítico o alto que impediría cumplir el Art. 17.3, por el procedimiento de cambio de emergencia del SD4, sección 4.2.4.1.4, con autorización escrita de la Contraparte Técnica y después de pasar G0 a G4 y repetir en Preproducción la prueba afectada.
+
+**Hitos y holgura.** Cada hito se acepta con el protocolo del T-17: el entregable se presenta con su evidencia y su trazabilidad (BA, Art. 18.2), el CLIENTE tiene 10 días hábiles para revisarlo y LafroX tiene otros 10 para subsanar observaciones (Art. 18.3). La Tabla 9.11 compara la reserva de cada hito con la duración de una subsanación.
+
+**Tabla 9.11 — Reserva y holgura de los hitos ante una subsanación. Fuente: elaboración propia a partir del Formulario T-15, Tabla 5.2 y sección 5.5.**
+
+| Hito (mes) | Entregable que lo habilita | Reserva (días hábiles) | Holgura tras subsanar (días hábiles) |
+|---|---|---|---|
+| H1 (2) | Matriz de trazabilidad y plan de calidad | 6 | 6 − 5 = 1 |
+| H2 (4) | Arquitectura, plan de seguridad y modelo de datos | 12 | 12 − 10 = 2 |
+| H3 (6) | Ambientes y puertas G0 a G3 activas | 19 | 19 − 10 = 9 |
+| H4 (10) | Integración y regresión de la Etapa 1 | 19 | 19 − 10 = 9 |
+| H5 (12) | Certificación de la Etapa 1 | 35 | 35 − 10 = 25 |
+| H8 (14) | Línea base y diseño de la Etapa 2 | 4 | 4 − 4 = 0 |
+| H9 (17) | Integración y regresión de la Etapa 2 | 21 | 21 − 10 = 11 |
+| H10 (18) | Certificación de la Etapa 2 | 25 | 25 − 10 = 15 |
+
+Ningún hito tiene holgura negativa. Los dos más ajustados son el H1 y el H8, cuyas reservas son menores que los 10 días de subsanación del Art. 18.3. Por eso su versión preliminar se revisa con la Contraparte Técnica una semana antes de la entrega formal, y sus subsanaciones se comprometen en 5 y 4 días (T-15, sección 5.5; SD8, R8-12). La única oportunidad de subsanación es también la razón de la lista de verificación del T-17, sección 3.3: una segunda presentación con observaciones de la misma naturaleza es atraso imputable. Los hitos H6, H7, H11 y H12 no se habilitan con un documento sino con la operación supervisada, y se aceptan con las seis condiciones del Art. 17.3 (T-17, sección 4.3).
+
+**Repetición de una prueba tras una corrección.** Si una corrección durante la marcha blanca modifica un componente que cubrió una prueba de certificación, el Líder de Calidad repite esa prueba sobre la versión corregida antes de promoverla. La repetición no supera las horas del paquete original y se financia con la reserva de contingencia del riesgo R8-18 (SD8).
+
+### 9.3.3 Pruebas periódicas durante la Operación
+
+Durante los 36 meses de Operación, las Bases exigen pruebas con frecuencia mínima. Toda prueba que intervenga Producción o el sitio de recuperación se programa fuera de los congelamientos de septiembre y diciembre y de los tres primeros días hábiles de cada mes (Caso, RT-10.05). La Tabla 9.12 resume el calendario; el T-13, sección 9.3, lo detalla.
+
+**Tabla 9.12 — Pruebas periódicas de la Operación. Fuente: elaboración propia a partir de las BTT y del Formulario T-14.**
+
+| Prueba | Exigencia | Meses | Paquete |
+|---|---|---|---|
+| Recuperación con conmutación real | Dos veces al año (RT-07.07) | 21, 27, 33, 39, 45, 51 y 54 | 8.1.3 |
+| Resiliencia por inyección de fallas | Una vez por semestre (RT-10.07) | 26, 32, 38, 44, 50 y 55 | 8.2.2 |
+| Intrusión por un tercero | Anual (RT-11.20) | 28, 40 y 52 | 8.2.2 |
+| Restauración de respaldos | Mensual (RT-07.12) | 21 a 56 | 8.1.6 |
+
+Las cantidades coinciden con los entregables del T-14: siete pruebas de recuperación, seis de resiliencia, tres de intrusión y 36 restauraciones. Cada tipo mantiene una separación máxima de seis meses. Las resiliencias de los meses 32 y 44 caen en septiembre y por eso se ejecutan en Preproducción, que no está congelada. Cada prueba produce un informe con el resultado medido, la comparación con su umbral y el plan de corrección de las brechas (RT-07.07); las brechas entran al registro de deuda técnica (8.2.4) y a la gestión de la capacidad (8.4.1).
+
+---
+
+## Referencias
+
+Las fuentes citadas en este subdocumento se listan en formato APA 7.ª edición. Las Bases se citan en el texto con su documento y el artículo, capítulo, sección o código del requisito.
+
+- CMMI Institute. (2018). *CMMI Development V2.0*. CMMI Institute.
+- Distribuidora Puelche S.A. (2026a). *Bases Administrativas, Licitación TFEP-01/2026*.
+- Distribuidora Puelche S.A. (2026b). *Bases Técnicas Transversales, Licitación TFEP-01/2026*.
+- Distribuidora Puelche S.A. (2026c). *Bases Técnicas del Caso 02 — Logística*.
+- International Organization for Standardization. (2015). *ISO 9001:2015. Sistemas de gestión de la calidad — Requisitos*.
+- International Organization for Standardization & International Electrotechnical Commission. (2008). *ISO/IEC 25012:2008. Software engineering — Software product Quality Requirements and Evaluation (SQuaRE) — Data quality model*.
+- International Organization for Standardization & International Electrotechnical Commission. (2011). *ISO/IEC 25010:2011. Systems and software engineering — Systems and software Quality Requirements and Evaluation (SQuaRE) — System and software quality models*.
+- International Organization for Standardization & International Electrotechnical Commission. (2023). *ISO/IEC 25010:2023. Systems and software engineering — Systems and software Quality Requirements and Evaluation (SQuaRE) — Product quality model*.
+- International Organization for Standardization, International Electrotechnical Commission, & Institute of Electrical and Electronics Engineers. (2021a). *ISO/IEC/IEEE 29119-2:2021. Software and systems engineering — Software testing — Part 2: Test processes*.
+- International Organization for Standardization, International Electrotechnical Commission, & Institute of Electrical and Electronics Engineers. (2021b). *ISO/IEC/IEEE 29119-4:2021. Software and systems engineering — Software testing — Part 4: Test techniques*.
+- International Organization for Standardization, International Electrotechnical Commission, & Institute of Electrical and Electronics Engineers. (2022). *ISO/IEC/IEEE 29119-1:2022. Software and systems engineering — Software testing — Part 1: General concepts*.
+- Ley N.º 21.719. (2024). *Regula la protección y el tratamiento de los datos personales y crea la Agencia de Protección de Datos Personales*. Diario Oficial de la República de Chile.
+- McCabe, T. J. (1976). A complexity measure. *IEEE Transactions on Software Engineering, SE-2*(4), 308–320.
+- Project Management Institute. (2017). *Guía de los fundamentos para la dirección de proyectos (Guía del PMBOK)* (6.ª ed.). Project Management Institute.
+
+---
+
+## Declaración de uso de IA
+
+El grupo usó inteligencia artificial generativa como apoyo en la redacción y en la verificación cruzada de cifras de este subdocumento, de sus anexos y de sus formularios. Las decisiones, las cifras y los cálculos derivan de las Bases y de los demás subdocumentos de la propuesta. La revisión humana de cada sección la registran los integrantes que la efectuaron.
+
+| Sección | Herramienta | Finalidad del uso | Nivel en texto | Nivel en diagramas | Revisión humana (quién y qué verificó) |
+|---|---|---|---|---|---|
+| Introducción | Claude Code | Redacción a partir de las Bases y de la estructura de las Aclaraciones | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| 9.1 Plan de Calidad | Claude Code | Redacción; derivación de umbrales; cálculo del costo de la calidad | Alto | Medio | [[REVISIÓN HUMANA]] |
+| 9.2 Estrategia de Aseguramiento de Calidad | Claude Code | Redacción; derivación de la carga de prueba y del tamaño del catálogo | Alto | Medio | [[REVISIÓN HUMANA]] |
+| 9.3 Alineación con Plan de Trabajo | Claude Code | Redacción; conciliación con los Formularios T-14 y T-15 | Alto | Medio | [[REVISIÓN HUMANA]] |
+| Anexos 9.A a 9.D | Claude Code | Redacción y cálculos | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| Formulario T-13 | Claude Code | Redacción; calendario desde el T-15 | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| Formulario T-17 | Claude Code | Redacción; protocolo desde las BA, Arts. 17 y 18, y el SD3, Anexo 3.J | Alto | Ninguno | [[REVISIÓN HUMANA]] |
