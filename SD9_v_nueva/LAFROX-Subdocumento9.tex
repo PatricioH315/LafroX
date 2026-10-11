@@ -1,0 +1,18 @@
+% !LW recipe = latexmk (lualatex)
+% !TEX program = lualatex
+%% LAFROX-Subdocumento9.tex -- documento raiz. Compilar: latexmk LAFROX-Subdocumento9.tex
+\documentclass[carta,firma,final]{lafrox}
+\datoslafrox{
+  documento    = {Propuesta Técnica},
+  subtitulo    = {Informe 2},
+  alcance      = {Subdocumento 9 --- Plan de calidad},
+  formulario   = {Cuerpo del subdocumento},
+  nomenclatura = {LAFROX-Subdocumento9.pdf},
+}
+\input{sd9-comun.tex}
+\begin{document}
+\portadalafrox
+\preliminareslafrox
+\setcounter{chapter}{8}
+\subdocumento{09_plan_calidad}
+\end{document}

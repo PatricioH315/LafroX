@@ -1,0 +1,19 @@
+%% Preambulo comun de los cuatro documentos del Subdocumento 9.
+%% tablasimple: tabla sin titulo (anexos y formularios), mismo estilo que
+%% tablalafrox, con cabecera repetida y filetes entre filas.
+\NewDocumentEnvironment{tablasimple}{m m +b}{%
+  \par
+  \LFXfiletear{#3}%
+  \LFXcuerpotabla
+  \setlength{\LTpre}{8pt}\setlength{\LTpost}{14pt}%
+  \LFXconcuerpo{%
+  \begin{xltabular}{\textwidth}{#1}
+    \LFXtopruleoriginal #2 \\ \midrule
+    \endfirsthead
+    \LFXtopruleoriginal #2 \\ \midrule
+    \endhead
+    \midrule
+    \endfoot
+    \bottomrule
+    \endlastfoot}%
+}{}

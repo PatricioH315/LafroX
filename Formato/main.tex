@@ -1,0 +1,84 @@
+%% ============================================================================
+%%  main.tex -- Esqueleto de armado del informe
+%%
+%%  Este archivo NO contiene texto de la propuesta: solo metadatos y el orden
+%%  de los subdocumentos. Todo el contenido vive en carpetas, una por
+%%  subdocumento del Formulario T-7.
+%%
+%%  Compilar:  latexmk main.tex
+%%  Limpiar:   latexmk -c
+%%
+%%  COMO AGREGAR UN SUBDOCUMENTO
+%%  ----------------------------
+%%  1. Deja la carpeta al lado de este archivo (o en cualquier ruta relativa).
+%%  2. Dentro debe haber un contenido.tex que empiece por \chapter{...}.
+%%  3. Agrega una linea \subdocumento{nombre_de_la_carpeta} en el orden que
+%%     corresponda. Eso es todo: no hay que tocar nada mas.
+%%
+%%  La carpeta es autocontenida. Sus figuras van en figuras/ y se llaman por
+%%  ruta relativa (figuras/edt.png); sus fragmentos, con \parte{tablas/x}.
+%%  Nada dentro del capitulo sabe donde esta montado, asi que reubicarlo es
+%%  mover la carpeta y cambiar la ruta de esta llamada.
+%% ============================================================================
+
+% Opciones: borrador | final | firma | sinfirma | carta | oficio | apa | sinnotas
+\documentclass[carta,firma,borrador]{lafrox}
+
+% ---------------------------------------------------------------------------
+%  Metadatos de la oferta. Se editan SOLO aqui: caratula, encabezados, pies y
+%  metadatos del PDF se alimentan de estas claves. Las que no se declaran
+%  toman el valor por defecto de lafrox.cls (seccion 6).
+% ---------------------------------------------------------------------------
+\datoslafrox{
+  documento  = Propuesta Técnica TODOS ESTOS DATOS SE MODIFICAN EN MAIN PONERSE DE ACUERDO,
+  subtitulo  = Informe NÚMERO,
+  alcance    = Subdocumentos 1--9 y 13,
+  formulario = Formulario T-22,
+  fecha      = 05 de octubre de 2026,
+  version    = 1.0,
+  %  Art. 50.3: SOBRE2_[EMPRESA]_OFERTA_TECNICA_AAAAMMDD.ZIP. Sin esta clave,
+  %  \LFXnomenclatura queda indefinida y la portada aborta la compilacion:
+  %  lafrox.cls la declara en la seccion 6 pero no le da valor por defecto.
+  nomenclatura = {SOBRE2\_LAFROX\_OFERTA\_TECNICA\_20261005.ZIP},
+}
+
+\begin{document}
+
+\portadalafrox
+\preliminareslafrox
+
+% ---------------------------------------------------------------------------
+%  SUBDOCUMENTOS DEL FORMULARIO T-7
+%
+%  Descomenta cada linea a medida que su carpeta exista. El orden de estas
+%  llamadas ES el orden del informe; la numeracion de capitulos, figuras y
+%  tablas se recalcula sola.
+%
+%  El Informe 2 (T-22, 05-10-2026) cubre los subdocumentos 1 a 9 y el 13.
+% ---------------------------------------------------------------------------
+
+% \subdocumento{subdoc}   % <- carpetas de ejemplo de la plantilla
+% \subdocumento{subdocumento-ejemplo}
+%
+%  Los subdocumentos reales del proyecto (01, 02, 03, 05, 13) se movieron a la
+%  raiz del repo (NN_subdoc/contenido.tex), junto a README.md, entrega_1/ y
+%  entrega_2/. Esta plantilla queda generica: no monta contenido real. Pendiente
+%  decidir donde vive el main.tex que arma el documento real del proyecto.
+% \subdocumento{01_presentacion_empresa}     % <- movido a la raiz
+% \subdocumento{02_problema_necesidad}       % <- movido a la raiz
+% \subdocumento{03_esquema_solucion_alcance} % <- movido a la raiz
+% \subdocumento{04_arquitectura}     % <- 4.1 y 4.2 en revision, no traspasados
+% \subdocumento{05_modelo_datos}     % <- movido a la raiz
+% \subdocumento{06_metodologias}     % <- sin contenido en entrega_2
+% \subdocumento{07_plan_trabajo_edt} % <- sin contenido en entrega_2
+% \subdocumento{08_plan_riesgos}     % <- sin contenido en entrega_2
+% \subdocumento{09_plan_calidad}     % <- sin contenido en entrega_2
+% \subdocumento{13_innovaciones}     % <- movido a la raiz
+
+%  Subdocumentos 10, 11, 12 y 14: entran en el Informe 3.
+% \subdocumento{10_operacion_niveles_servicio}
+% \subdocumento{11_planes_operacion}
+% \subdocumento{12_equipo_subcontrataciones}
+% \subdocumento{14_ventajas_beneficios_consolidacion}
+
+\end{document}

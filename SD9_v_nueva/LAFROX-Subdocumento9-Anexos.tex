@@ -1,0 +1,18 @@
+% !LW recipe = latexmk (lualatex)
+% !TEX program = lualatex
+%% LAFROX-Subdocumento9-Anexos.tex -- documento raiz. Compilar: latexmk LAFROX-Subdocumento9-Anexos.tex
+\documentclass[carta,firma,final]{lafrox}
+\datoslafrox{
+  documento    = {Propuesta Técnica},
+  subtitulo    = {Informe 2},
+  alcance      = {Subdocumento 9 --- Plan de calidad},
+  formulario   = {Anexos 9.A a 9.D},
+  nomenclatura = {LAFROX-Subdocumento9-Anexos.pdf},
+}
+\input{sd9-comun.tex}
+\begin{document}
+\portadalafrox
+\indicelafrox
+\setcounter{chapter}{8}
+\subdocumento{09_anexos}
+\end{document}

@@ -1,0 +1,18 @@
+% !LW recipe = latexmk (lualatex)
+% !TEX program = lualatex
+%% LAFROX-Formulario-T-13.tex -- documento raiz. Compilar: latexmk LAFROX-Formulario-T-13.tex
+\documentclass[carta,firma,final]{lafrox}
+\datoslafrox{
+  documento    = {Propuesta Técnica},
+  subtitulo    = {Informe 2},
+  alcance      = {Subdocumento 9 --- Plan de calidad},
+  formulario   = {Formulario T-13},
+  nomenclatura = {LAFROX-Formulario-T-13.pdf},
+}
+\input{sd9-comun.tex}
+\begin{document}
+\portadalafrox
+\indicelafrox
+\setcounter{chapter}{8}
+\subdocumento{T13}
+\end{document}

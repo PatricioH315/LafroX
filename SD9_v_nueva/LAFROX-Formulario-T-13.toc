@@ -1,0 +1,31 @@
+\babel@toc {spanish}{}\relax 
+\contentsline {chapter}{Índice general}{2}{section*.1}%
+\contentsline {chapter}{Formulario T-13: Plan de pruebas y validación}{3}{chapter*.2}%
+\contentsline {section}{1. Objeto, alcance y fuentes}{3}{chapter*.2}%
+\contentsline {section}{2. Proceso de pruebas según ISO/IEC/IEEE 29119}{4}{table.8.1}%
+\contentsline {subsection}{2.1 Técnicas de diseño (ISO/IEC/IEEE 29119-4)}{5}{table.8.2}%
+\contentsline {section}{3. Niveles y tipos de prueba}{5}{table.8.3}%
+\contentsline {section}{4. Ambientes de prueba}{7}{table.8.4}%
+\contentsline {subsection}{4.1 Instancias de Preproducción por campaña}{8}{table.8.5}%
+\contentsline {section}{5. Datos de prueba}{9}{table.8.6}%
+\contentsline {section}{6. Criterios de entrada y de salida}{10}{table.8.7}%
+\contentsline {subsection}{6.1 Por nivel de prueba}{10}{table.8.7}%
+\contentsline {subsection}{6.2 Suspensión y reanudación}{11}{table.8.8}%
+\contentsline {section}{7. Especificación de las pruebas que habilitan un paso a producción}{12}{table.8.8}%
+\contentsline {subsection}{7.1 Carga y estrés}{12}{table.8.8}%
+\contentsline {subsection}{7.2 Resiliencia}{12}{table.8.9}%
+\contentsline {subsection}{7.3 Perfil operacional de terreno}{13}{table.8.10}%
+\contentsline {subsection}{7.4 Pruebas de los resultados del caso}{14}{table.8.11}%
+\contentsline {section}{8. Automatización}{14}{table.8.12}%
+\contentsline {subsection}{8.1 Criterio}{14}{table.8.12}%
+\contentsline {subsection}{8.2 Tamaño estimado del catálogo}{14}{table.8.12}%
+\contentsline {subsection}{8.3 Duración de la regresión}{15}{table.8.13}%
+\contentsline {section}{9. Calendario}{15}{table.8.13}%
+\contentsline {subsection}{9.1 Implementación}{15}{table.8.13}%
+\contentsline {subsection}{9.2 Marchas blancas}{17}{table.8.14}%
+\contentsline {subsection}{9.3 Operación (meses 21 a 56)}{17}{table.8.15}%
+\contentsline {section}{10. Defectos}{18}{table.8.16}%
+\contentsline {section}{11. Roles}{19}{table.8.17}%
+\contentsline {section}{12. Informes de prueba}{19}{table.8.18}%
+\contentsline {section}{Referencias}{20}{table.8.19}%
+\contentsfinish 
