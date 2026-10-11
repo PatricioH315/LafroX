@@ -262,16 +262,18 @@ La Tabla 7.4 resume el resultado de la estimación por etapa contractual, con la
 
 | Etapa | Meses | HH base y cobertura | HH de reserva protegida | HH programadas |
 | --- | --- | --- | --- | --- |
-| Etapa 1 · Desarrollo | 1 a 12 | 37.981 | 0 | 37.981 |
-| Etapa 1 · Marcha blanca | 13 a 15 | 11.147 | 1.152 | 12.299 |
-| Etapa 2 · Desarrollo | 13 a 18 | 11.567 | 0 | 11.567 |
-| Etapa 2 · Marcha blanca | 19 y 20 | 7.276 | 0 | 7.276 |
-| Soporte puente de la Etapa 1 | 16 a 20 | 14.744 | 1.920 | 16.664 |
-| Cierre y estabilización de la implementación | 21 y 22 | 2.775 | 0 | 2.775 |
-| Operación | 21 a 56 | 128.374 | 0 | 128.374 |
-| **Total** |  | **213.863** | **3.072** | **216.935** |
+| Etapa 1 · Desarrollo | 1 a 12 | 38.141 | 0 | 38.141 |
+| Etapa 1 · Marcha blanca | 13 a 15 | 11.195 | 1.152 | 12.347 |
+| Etapa 2 · Desarrollo | 13 a 18 | 11.407 | 0 | 11.407 |
+| Etapa 2 · Marcha blanca | 19 y 20 | 7.308 | 0 | 7.308 |
+| Soporte puente de la Etapa 1 | 16 a 20 | 14.792 | 1.920 | 16.712 |
+| Cierre y estabilización de la implementación | 21 y 22 | 2.774 | 0 | 2.774 |
+| Operación | 21 a 56 | 128.854 | 0 | 128.854 |
+| **Total** |  | **214.471** | **3.072** | **217.543** |
 
-La operación concentra el 59 % de las horas programadas (128.374 de 216.935 HH), porque cubre 36 meses de servicio continuo del centro de operaciones y la mesa, y el SOC desde la primera marcha blanca del mes 13; la mesa incluye desde el mes 25, cuando la demanda proyectada se acerca a su límite, un tercer agente en las franjas de menor demanda, con el que cubre sus niveles de servicio hasta 2.391 contactos al mes. Son puestos de turno 24×7 y de mesa, no personas dedicadas a otras tareas. La implementación propiamente tal, de los meses 1 a 22, suma 88.561 HH, y su tramo más denso son los meses 13 a 15, cuando la marcha blanca de la Etapa 1 y el desarrollo de la Etapa 2 suman 17.465 HH (4.485 + 4.889 + 8.090, según la curva del Formulario T-15, sección 4.4), con el máximo de 68 personas equivalentes en el mes 15. Las 3.072 HH de reserva se asignan sólo a la Etapa 1, de modo que una corrección en su marcha blanca no se financia con horas de la Etapa 2.
+Los enteros de la tabla se concilian por mayor resto con el total exacto del T-15; el cierre conserva 2.774,54 HH exactas aunque se presenta como 2.774.
+
+La operación concentra el 59 % de las horas programadas (128.854 de 217.543 HH), porque cubre 36 meses de servicio continuo del centro de operaciones y la mesa, y el SOC desde la primera marcha blanca del mes 13; la mesa incluye desde el mes 25, cuando la demanda proyectada se acerca a su límite, un tercer agente en las franjas de menor demanda, con el que cubre sus niveles de servicio hasta 2.391 contactos al mes. Son puestos de turno 24×7 y de mesa, no personas dedicadas a otras tareas. La implementación propiamente tal, de los meses 1 a 22, suma 88.689 HH, y su tramo más denso son los meses 13 a 15, cuando la marcha blanca de la Etapa 1 y el desarrollo de la Etapa 2 suman 17.513 HH (4.501,27 + 4.905,22 + 8.106,39, según la curva del Formulario T-15, sección 4.4), con el máximo de 69 personas equivalentes en el mes 15. Las 3.072 HH de reserva se asignan sólo a la Etapa 1, de modo que una corrección en su marcha blanca no se financia con horas de la Etapa 2.
 
 ### 7.2.3 Frentes de trabajo y sincronización
 
@@ -514,7 +516,7 @@ Tres innovaciones se validan en la marcha blanca de la Etapa 1. La innovación 5
 
 ### 7.3.8 Base de planificación y recursos
 
-El Formulario T-15, sección 4, estima las horas de los 222 paquetes con tres valores (optimista, más probable y pesimista) por clase de tamaño, y separa las curvas mensuales de implementación, soporte puente de la Etapa 1 y Operación. La cobertura del centro de operaciones, la mesa de servicio y el SOC sigue las posiciones dimensionadas en el Capítulo 4, Anexo 4-W.7. Con esa base, el total programado es de 216.935 HH (204.527 HH de paquetes, 9.336 HH de soporte puente de la Etapa 1 y 3.072 HH de reserva del frente de construcción y de calidad) y el máximo mensual es de 68 personas equivalentes en el mes 15, cuando coinciden la marcha blanca de la Etapa 1 y el desarrollo de la Etapa 2. La sección 5 del mismo formulario calcula la red y el PERT sobre los paquetes nivelados y compara la curva con la dotación del Capítulo 1. Las capacidades protegidas de la Etapa 1 no se prestan al desarrollo de la Etapa 2.
+El Formulario T-15, sección 4, estima las horas de los 222 paquetes con tres valores (optimista, más probable y pesimista) por clase de tamaño, y separa las curvas mensuales de implementación, soporte puente de la Etapa 1 y Operación. La cobertura del centro de operaciones, la mesa de servicio y el SOC sigue las posiciones dimensionadas en el Capítulo 4, Anexo 4-W.7. Con esa base, el total programado es de 217.543 HH (205.135 HH de paquetes, 9.336 HH de soporte puente de la Etapa 1 y 3.072 HH de reserva del frente de construcción y de calidad) y el máximo mensual es de 69 personas equivalentes en el mes 15, cuando coinciden la marcha blanca de la Etapa 1 y el desarrollo de la Etapa 2. La curva de personas conserva techos anteriores cuando se reduce esfuerzo y añade techos por incremento positivo de cada especialidad; es una envolvente conservadora, no disponibilidad acreditada. La sección 5 del mismo formulario conserva el escenario nominal de red y PERT sobre los paquetes nivelados y compara la curva con la dotación del Capítulo 1. Las capacidades protegidas de la Etapa 1 no se prestan al desarrollo de la Etapa 2.
 
 La gestión del plan sigue el Capítulo 6: la sección 6.1 fija el PMBOK adaptado, el tablero Kanban, el valor ganado y el control de cambios, y la sección 6.2 fija el proceso RUP iterativo con DevSecOps. La Construcción avanza en las iteraciones definidas en la sección 6.2, con revisión semanal de avance y bloqueos y una demostración de incremento verificable al cierre de cada iteración; una demostración no implica un paso a producción. El Jefe de Proyecto registra la capacidad y los criterios de terminado antes de seleccionar el trabajo de cada iteración, y los cambios se aprueban según la sección 6.1.4.
 

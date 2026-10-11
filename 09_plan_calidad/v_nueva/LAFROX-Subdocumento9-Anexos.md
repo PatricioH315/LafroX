@@ -52,7 +52,7 @@ Las métricas siguen el modelo de calidad del producto de ISO/IEC 25010 (Interna
 | ID | Subcaracterística | Métrica | Umbral | Origen | Verificación | Paquete |
 |---|---|---|---|---|---|---|
 | 9A-16 | Accesibilidad | Incumplimientos de WCAG 2.2 A y AA | 0, con informe de conformidad | RT-13.01; Art. 4.3 | axe-core y revisión manual | 3.8.2; 3.9.2 |
-| 9A-17 | Operabilidad | Condiciones de terreno superadas: guantes a −22 °C, lluvia, sobre 34 °C, sol directo, una mano | 5 de 5 | Caso, RT-13.08 | Prueba de perfil operacional | 3.8.3 |
+| 9A-17 | Operabilidad | Condiciones de terreno superadas: guantes a −22 °C, lluvia, sobre 34 °C, sol directo, una mano | 5 de 5 | Caso, RT-13.08 | Prueba de las cinco condiciones físicas, separada de 9A-25; regresión del alcance cambiado E2 | 3.8.3; 3.9.1; 3.9.2 |
 | 9A-18 | Eficiencia de uso y aprendizaje | Tiempo, pasos, tasa de error y tiempo de aprendizaje por perfil | Valores comprometidos en el paquete 2.6.3 | RT-13.04 | Pruebas moderadas por perfil | 2.6.3; 3.8.2 |
 | 9A-19 | Adaptabilidad de la interfaz | Funciones completas en escritorio, tableta y teléfono | 100 % de las vistas de portales y consolas | RT-13.02 | Regresión visual con Playwright | 3.8.1; 3.9.1 |
 
@@ -64,7 +64,7 @@ Las métricas siguen el modelo de calidad del producto de ISO/IEC 25010 (Interna
 | 9A-21 | Disponibilidad | Indisponibilidad entre 05:30 y 07:00, lunes a sábado | 0 minutos | Caso, RT-10.05 | Indicador diario de la marcha blanca | 4.2.1; 4.3.1 |
 | 9A-22 | Tolerancia a fallos | Escenarios de inyección superados sin intervención | 6 de 6 (T-13, sección 7.2) | RT-10.07 | AWS FIS y sitio emulado | 3.8.4; 3.9.3; 8.2.2 |
 | 9A-23 | Recuperabilidad | RTO y RPO en conmutación real | RTO ≤ 4 h; RPO ≤ 15 min | RT-07.04; RT-07.07 | Conmutación regional | 3.8.5; 3.9.4; 8.1.3 |
-| 9A-24 | Recuperabilidad | Restauraciones mensuales exitosas, con tiempo medido | 100 % | RT-07.12 | Restauración de muestra | Marcha blanca; 8.1.6 |
+| 9A-24 | Recuperabilidad | Restauraciones mensuales exitosas, con tiempo medido | 100 % | RT-07.12 | Restauración de muestra | 4.2.1; 4.2.2; 4.3.1; 8.1.6 |
 | 9A-25 | Operación desconectada | Registros perdidos o duplicados tras 14 h sin señal y 24 h sin enlace | 0; sincronización ≤ 10 min (dispositivo) y ≤ 2 h (centro de distribución) | Caso, RT-03.10 y RT-03.13 | Perfil operacional y resiliencia | 3.8.3; 3.8.4 |
 
 ### 9.A.6 Seguridad
@@ -92,7 +92,7 @@ Las métricas siguen el modelo de calidad del producto de ISO/IEC 25010 (Interna
 | ID | Subcaracterística | Métrica | Umbral | Origen | Verificación | Paquete |
 |---|---|---|---|---|---|---|
 | 9A-36 | Instalabilidad | Despliegues que promueven el mismo artefacto sin recompilar | 100 % | RT-04.08 | Digest de la imagen en cada ambiente | 3.8.8; 3.9.7 |
-| 9A-37 | Adaptabilidad | Ambientes reconstruibles desde código | 5 de 5 | BTT 4.1 | Reconstrucción de las instancias de Preproducción por campaña | 3.1 |
+| 9A-37 | Adaptabilidad | Ambientes reconstruibles desde código | 5 de 5 | BTT 4.1 | Inventario y código de los cinco ambientes; reconstrucción aislada de cada configuración con datos sintéticos y evidencia de equivalencia. Producción/Recuperación se validan sin destruir instancias activas | 3.1 |
 | 9A-38 | Reemplazabilidad | Despliegue y reversión sin interrupción | 0 interrupciones; 0 intervenciones manuales | RT-04.06; RT-04.07 | Demostración en Preproducción | 3.8.8; 3.9.7 |
 
 ### 9.A.9 Calidad de datos (ISO/IEC 25012)
@@ -116,7 +116,9 @@ Las métricas siguen el modelo de calidad del producto de ISO/IEC 25010 (Interna
 | G3 | Promoción a QA | Imagen con vulnerabilidad crítica o alta; regresión de desempeño: p95, errores o colas de la carga de regresión peores que en la última versión aceptada, bajo la misma carga y configuración (SD4, sección 4.2.4.1.4) | Amazon Inspector; k6 | Nadie; se corrige |
 | G4 | Promoción a Preproducción | Regresión con fallas; alerta alta de DAST o MobSF; incumplimiento de WCAG 2.2 AA; defecto crítico o alto abierto | Playwright; Espresso; OWASP ZAP; MobSF; axe-core | Nadie |
 | G5 | Paso a producción contractual (H7 y H12) | Una prueba del T-13 que habilita el paso no está aprobada; defecto crítico o alto abierto; falta el acta de la Contraparte Técnica | Expediente del T-17 | Nadie. El acta es una condición adicional y no levanta una prueba fallida |
-| G6 | Operación | Canario con p95 sobre su umbral o con más errores que la versión estable; presupuesto de error crítico del mes agotado | Cadena de entrega del SD4; observabilidad | Nadie. La reversión del canario es automática; se suspenden los despliegues no correctivos hasta el mes siguiente |
+| G6 | Producción desde H6/H11 y Operación | Canario con p95 sobre su umbral o con más errores que la versión estable; presupuesto de error crítico del mes agotado | Cadena de entrega del SD4; observabilidad | Nadie. La reversión del canario es automática; se suspenden los despliegues no correctivos hasta el mes siguiente |
+
+Antes de H6/H11, el control técnico del T-17, 4.3, bloquea la habilitación de Producción sin certificación H5/H10 aceptada, pruebas aplicables aprobadas, reversión ensayada, conciliación y capacitación. G5 cierra la marcha blanca y no autoriza por primera vez el ambiente.
 
 Los umbrales de las puertas son **tolerancias**: el rango que un requisito acepta, como el p95 de 1 s de la línea de preparación. Son distintos de los **límites de control** de la sección 9.2.6 del SD9, que se calculan con la variación histórica de una métrica y sirven para detectar un proceso inestable antes de que llegue a la tolerancia (PMI, 2017, pp. 274 y 304).
 
@@ -137,40 +139,34 @@ El costo de la calidad se expresa en horas-hombre y no en dinero, porque la Ofer
 | Prevención | 3.10.2.1 a 3.10.2.4 | INN-02: reproducción de incidentes de terreno | 960 |
 | Prevención | 8.2.4 | Registro y reducción de la deuda técnica en la Operación | 2.304 |
 | **Subtotal prevención** | | | **4.224** |
-| Evaluación | 3.8.1 a 3.8.8 | Pruebas y certificación de la Etapa 1 | 2.080 |
-| Evaluación | 3.9.1 a 3.9.7 | Pruebas y certificación de la Etapa 2 | 1.760 |
+| Evaluación | 3.8.1 a 3.8.8 | Pruebas y certificación de la Etapa 1 | 2.240 |
+| Evaluación | 3.9.1 a 3.9.7 | Pruebas y certificación de la Etapa 2 | 1.600 |
 | Evaluación | 4.1.2 | Ensayo del procedimiento de reversión | 80 |
-| Evaluación | 8.1.3 | Pruebas de recuperación ante desastres en la Operación | 80 |
+| Evaluación | 8.1.3 | Pruebas de recuperación ante desastres en la Operación | 560 |
 | Evaluación | 8.1.6 | Restauraciones mensuales en la Operación | 576 |
 | Evaluación | 8.2.2 | Vulnerabilidades, intrusión anual e inyección de fallas | 1.152 |
 | Evaluación | 8.3.1 | Regresión de INN-02 en la Operación | 576 |
-| **Subtotal evaluación** | | | **6.304** |
-| **Total de conformidad** | | | **10.528** |
+| Evaluación | 4.2.1; 4.2.2; 4.3.1 | Ocho restauraciones previas a Operación, componentes SRE adicionales | 128 |
+| **Subtotal evaluación** | | | **6.912** |
+| **Total de conformidad** | | | **11.136** |
 
-Las 10.528 HH equivalen al 4,9 % de las 216.935 HH de la línea base (10.528 / 216.935 = 0,0485).
+Las 11.136 HH equivalen al 5,1 % de las 217.543 HH de la línea base (11.136 / 217.543 = 0,0512).
 
 **Partidas excluidas.** No se cuentan la migración de datos (cuenta 3.7), cuyos ensayos forman parte del trabajo de migración y no se pueden separar de él, ni la certificación de los usuarios del CLIENTE (7.3.1 y 7.3.2), que verifica personas y no el producto.
 
-### 9.C.2 Costos de no conformidad (esperados en la reserva de contingencia)
+### 9.C.2 Fallas y autorización de recursos
 
-| Categoría | Riesgo del SD8 | Evento | HH esperadas (SD8, Anexo 8.B, Tabla B.2) |
-|---|---|---|---|
-| Falla interna | R8-31 | Observaciones de revisión que obligan a repetir una certificación | 153,60 |
-| Falla interna | R8-18 | Marcha blanca que no cumple las seis condiciones del Art. 17.3 | 2.956,80 |
-| **Total esperado de fallas internas** | | | **3.110,40** |
+Las fallas no se valoran con importes copiados de un registro de riesgos. Cada observación o incidente requiere estimar corrección y repetición por rol, verificar capacidad y aprobar su financiación por control de cambios. No cuantificarlas aquí no equivale a asignar cero HH. Las fallas externas se registran y atienden por 8.2.1, sin presumir que toda corrección cabe en su esfuerzo programado.
 
-Las fallas externas, es decir, los defectos que encuentra el CLIENTE después de la aceptación, se corrigen dentro del mantenimiento correctivo y evolutivo (8.2.1), que no separa ambas clases de trabajo. Por eso no se estiman en horas: se miden en la Operación con la métrica de defectos escapados del SD9, sección 9.1.6, y quedan acotadas por los niveles de servicio del Art. 78.
-
-### 9.C.3 Distribución
+### 9.C.3 Distribución del esfuerzo programado
 
 | Categoría | HH | Proporción |
 |---|---|---|
-| Prevención | 4.224,00 | 31,0 % |
-| Evaluación | 6.304,00 | 46,2 % |
-| Fallas internas esperadas | 3.110,40 | 22,8 % |
-| **Total** | **13.638,40** | **100,0 %** |
+| Prevención | 4.224 | 37,9 % |
+| Evaluación | 6.912 | 62,1 % |
+| **Total programado** | **11.136** | **100,0 %** |
 
-Proporciones: 4.224 / 13.638,4 = 0,310; 6.304 / 13.638,4 = 0,462; 3.110,4 / 13.638,4 = 0,228.
+Proporciones: 4.224 / 11.136 = 0,3793; 6.912 / 11.136 = 0,6207. El T-15 desglosa campañas por actividad y rol: recuperación inicial 320 HH; siete conmutaciones operacionales de 80 HH (560); intrusión E1/E2 de 320/160 HH. Son estimaciones de planificación, no resultados ejecutados ni valores derivados sólo de la proporción de alcance.
 
 ---
 

@@ -4,7 +4,7 @@ Licitación TFEP-01/2026 · Caso 02 — Logística · Distribuidora Puelche S.A.
 
 Este formulario acompaña al Subdocumento 9, Plan de calidad (en adelante, SD9). Contiene el plan de pruebas y validación que exige el Formulario T-13 de las Bases Administrativas: niveles, tipos, ambientes, datos de prueba, criterios de entrada y salida, automatización, y calendario de las pruebas de carga, resiliencia, recuperación ante desastres y seguridad ofensiva (Distribuidora Puelche S.A., 2026a, Formulario T-13). El SD9 resume y analiza este plan; el protocolo con el que el CLIENTE acepta cada hito está en el Formulario T-17.
 
-En este formulario, BA, BTT y Caso designan las Bases Administrativas (Distribuidora Puelche S.A., 2026a), las Bases Técnicas Transversales (2026b) y las Bases Técnicas del Caso 02 (2026c). Mes 1 del contrato = febrero de 2027. Los paquetes de trabajo son los del Formulario T-14 y las fechas y horas, las del Formulario T-15.
+En este formulario, BA, BTT y Caso designan las Bases Administrativas (Distribuidora Puelche S.A., 2026a), las Bases Técnicas Transversales (2026b) y las Bases Técnicas del Caso 02 (2026c). Mes 1 del contrato = febrero de 2027. Los paquetes de trabajo son los del Formulario T-14 y las fechas y horas, las del Formulario T-15. CAL, SEG, SRE, DAT e IMP designan los roles de calidad y pruebas, seguridad, operación y confiabilidad, datos e implantación del Formulario T-15; la sección 11 indica quién los ejerce.
 
 ---
 
@@ -65,7 +65,7 @@ La intensidad de la prueba sigue el riesgo del producto, como dispone ISO/IEC/IE
 | Accesibilidad | QA y Preproducción | axe-core y revisión manual con teclado y lector de pantalla | Parcial | 3.8.2; 3.9.2 | RT-13.01 |
 | Usabilidad con personas usuarias | Prototipos y Preproducción | Pruebas moderadas por perfil | Manual | 2.6.2; 2.6.3; 3.8.2; 3.9.2 | RT-13.03; RT-13.04 |
 | Aceptación de usuario | Preproducción | Casos del SD3 ejecutados por personas del CLIENTE | Manual | 3.8.2; 3.9.2 | BTT 20.1 |
-| Perfil operacional de terreno | Terreno, cámara de congelado y Preproducción | Dispositivos reales, Espresso para los flujos repetibles | Parcial | 3.8.3 | RT-03.10; RT-03.13; RT-13.08 |
+| Perfil operacional de terreno | Terreno, cámara de congelado y Preproducción | Dispositivos reales, Espresso para los flujos repetibles | Parcial | 3.8.3; 3.9.1; 3.9.2 | RT-03.10; RT-03.13; RT-13.08 |
 | Carga y estrés | Preproducción | k6 | Total | 3.8.4; 3.9.3 | Art. 24; RT-09.06 a RT-09.08 |
 | Resiliencia | Preproducción | AWS Fault Injection Service y desconexiones controladas del sitio emulado | Total en la inyección; manual en la observación | 3.8.4; 3.9.3; 8.2.2 | RT-10.07 |
 | Recuperación ante desastres | Recuperación ante Desastres (us-east-1) | Conmutación regional real | Procedimiento automatizado con verificación manual | 3.8.5; 3.9.4; 8.1.3 | RT-07.07 |
@@ -182,7 +182,8 @@ La carga se deriva del dimensionamiento del SD4, Tabla 33, y no se elige:
 |---|---|---|
 | Turno completo de 14 h sin cobertura | Jornada completa de un repartidor rural, incluida la ruta de 34 clientes (SD4, Tabla 33, dimensión 13) | 0 registros perdidos o duplicados; sincronización ≤ 10 min tras reconectar |
 | −22 °C con guantes térmicos | Preparación y recepción en cámara de congelado | Transacción completada con guantes; indicadores RT-13.04 del perfil dentro de umbral |
-| Lluvia y sobre 34 °C | Entrega a la intemperie | Transacción completada; dispositivo operativo |
+| Lluvia | Entrega a la intemperie bajo lluvia | Transacción completada; dispositivo operativo |
+| Sobre 34 °C | Entrega a la intemperie con calor | Transacción completada; dispositivo operativo |
 | Sol directo | Lectura de la pantalla en la puerta del local | Lectura sin error de la persona usuaria |
 | Una sola mano durante la descarga | Registro de entrega | Transacción completada con una mano |
 
@@ -249,7 +250,7 @@ Los 263 casos manuales, a 15 minutos cada uno, requieren 263 × 15 / 60 ≈ 65,8
 | Perfil operacional E1 | 3.8.3 | Terreno y cámara | 21-10-2027 | 17-11-2027 | 320 |
 | Carga, estrés y resiliencia E1 | 3.8.4 | PRE-C | 21-10-2027 | 09-11-2027 | 320 |
 | Recuperación ante desastres E1 | 3.8.5 | Recuperación | 21-10-2027 | 09-11-2027 | 320 |
-| Seguridad ofensiva E1 | 3.8.6 | PRE-S | 21-10-2027 | 09-11-2027 | 160 |
+| Seguridad ofensiva E1 | 3.8.6 | PRE-S | 21-10-2027 | 09-11-2027 | 320 |
 | Despliegue sin interrupción E1 | 3.8.8 | PRE-C | 21-10-2027 | 09-11-2027 | 320 |
 | Acta de certificación E1 (H5) | 3.8.7 | — | 18-11-2027 | 29-11-2027 | 160 |
 | Ensayo de migración 2 | 3.7.3; 3.7.4 | PRE-M | 01-12-2027 | 31-12-2027 | (en las HH de los paquetes) |
@@ -257,22 +258,28 @@ Los 263 casos manuales, a 15 minutos cada uno, requieren 263 × 15 / 60 ≈ 65,8
 | Integración y regresión E2 sin afectar E1 (H9) | 3.9.1 | QA | 01-05-2028 | 18-05-2028 | 160 |
 | Carga con ambas etapas y resiliencia | 3.9.3 | PRE-C | 19-05-2028 | 26-05-2028 | 320 |
 | Recuperación ante desastres con ambas etapas | 3.9.4 | Recuperación | 19-05-2028 | 26-05-2028 | 320 |
-| Seguridad ofensiva E2 | 3.9.5 | PRE-S | 19-05-2028 | 26-05-2028 | 320 |
+| Seguridad ofensiva E2 | 3.9.5 | PRE-S | 19-05-2028 | 26-05-2028 | 160 |
 | Despliegue sin interrupción E2 | 3.9.7 | PRE-C | 19-05-2028 | 26-05-2028 | 160 |
 | Aceptación y accesibilidad E2 | 3.9.2 | PRE-A | 27-05-2028 | 31-05-2028 | 320 |
 | Acta de certificación E2 (H10) | 3.9.6 | — | 01-06-2028 | 12-06-2028 | 160 |
 
+En E2, 3.9.1/3.9.2 incluyen regresión de las cinco condiciones físicas y de desconexión sobre funciones/dispositivos modificados, con evidencia de cobertura para condiciones no modificadas; no se omite el perfil por ausencia de un paquete nuevo.
+
 La campaña de aceptación de la Etapa 2 es breve porque cubre solo el alcance incremental. Los flujos de la Etapa 1 se verifican con la regresión de 3.9.1, que corre antes.
 
-Ninguna campaña que intervenga Producción o el sitio de recuperación cae en un congelamiento (septiembre y diciembre) ni en los tres primeros días hábiles del mes (Caso, RT-10.05). Las campañas en Preproducción pueden hacerlo, porque no tocan Producción.
+La ventana 21-10 a 09-11-2027 de 3.8.5 comprende preparación no invasiva del 21 al 25 de octubre, ejecución/conmutación y reversión del 26 al 29 de octubre, y análisis/informe hasta el 9 de noviembre. No se interviene el sitio el 1 de noviembre (feriado) ni los días 2, 3 y 4 (primeros tres hábiles efectivos); el análisis no modifica el sitio. La autorización precisa además horario fuera de despacho y reversión segura.
 
-### 9.2 Marchas blancas
+Ninguna ejecución invasiva de campaña que intervenga Producción o el sitio de recuperación cae en un congelamiento (septiembre y diciembre) ni en los tres primeros días hábiles del mes (Caso, RT-10.05). Las campañas en Preproducción pueden hacerlo, porque no tocan Producción.
+
+### 9.2 Marchas blancas y soporte puente
 
 | Período | Prueba | Frecuencia |
 |---|---|---|
 | Meses 13 a 15 (E1) y 19 a 20 (E2) | Indicadores diarios del Art. 17.3 (SD7, Tabla 7.9) y conciliación con el registro vigente | Diaria |
-| Meses 13 a 20 | Restauración de respaldos sobre una muestra representativa, con tiempo medido (RT-07.12) | Mensual |
+| Meses 13 a 20 | Restauración de respaldos sobre una muestra representativa, con tiempo medido (RT-07.12), por SRE: 4.2.1 (13–15), 4.2.2 (16–18) y 4.3.1 (19–20); ocho informes distintos de los 36 de 8.1.6 | Mensual |
 | Cada corrección | Puertas G0 a G4 y G6, regresión completa, DAST y carga de regresión; repetición de la prueba de certificación afectada | Por corrección |
+
+Cada restauración previa tiene 16 HH SRE (4 preparación, 4 ejecución, 4 validación y 4 informe); se agregan 48 HH a 4.2.1, 48 a 4.2.2 y 32 a 4.3.1 como componentes separados de la cobertura NOC/mesa. Las siete conmutaciones operacionales requieren 560 HH y la recuperación inicial 320 HH según el desglose por actividades/roles del T-15; el mismo formulario justifica 320/160 HH de intrusión E1/E2.
 
 ### 9.3 Operación (meses 21 a 56)
 

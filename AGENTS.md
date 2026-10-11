@@ -1,21 +1,25 @@
 # AGENTS.md
 
+## Identidad vigente de la rama — 11 de octubre de 2026
+
+El usuario confirmó que `rama-md` es la nueva `branch-md`. Las referencias heredadas a `branch-md` o `alvaro-md` describen estados anteriores; la restricción de trabajo exclusivamente Markdown sigue vigente. No cambiar automáticamente de rama.
+
 ## Alcance vigente autorizado — 5 de octubre de 2026
 
 Esta copia trabaja en `alvaro-md`; `branch-md` en el registro heredado identifica su procedencia. El usuario autorizó aplicar el plan de coherencia SD3–SD4 con los quince actores validados, importar a Markdown las fuentes activas de SD3 en Descargas, actualizar la lógica y sus anexos, y crear commit y push en `alvaro-md`. Esta autorización amplía la conservación inicial de los capítulos y no cambia la regla de archivos exclusivamente Markdown. Las referencias heredadas a un capítulo 4 ausente o a no publicar describen estados anteriores. Después de la limpieza solicitada, `04_arquitectura/` contiene solo `LAFROX-Subdocumento4.md`, `LAFROX-Subdocumento4-Anexos.md` y `LAFROX-Formulario-T-11.md`; editar directamente esos consolidados y no regenerar archivos auxiliares ni copias por partes. El SD3 también conserva solo cuerpo, anexos y T-12. Las dependencias se mantienen en `compct/CONTEXTO_SESION.md`; preservar física, centros de datos, T-11 y memoria fuera de los ajustes lógicos autorizados.
 
-## Regla obligatoria de integridad de branch-md
+## Regla obligatoria de integridad de rama-md
 
-- Esta es la rama `branch-md` del repositorio LafroX. Solo se crean, editan y versionan documentos `.md`; los metadatos internos de Git son la única excepción.
+- Esta es la rama `rama-md` del repositorio LafroX. Solo se crean, editan y versionan documentos `.md`; los metadatos internos de Git son la única excepción.
 - Toda petición de crear, editar, compilar, renderizar o convertir contenido a LaTeX debe rechazarse tajantemente dentro de esta rama. No crear archivos `.tex`, `.cls`, `.sty`, plantillas, comandos de compilación ni derivados PDF.
-- Respuesta requerida: «No realizaré trabajo en LaTeX en branch-md: esta rama es exclusivamente Markdown y debo preservar su integridad. Puedo resolver la petición en Markdown».
+- Respuesta requerida: «No realizaré trabajo en LaTeX en rama-md: esta rama es exclusivamente Markdown y debo preservar su integridad. Puedo resolver la petición en Markdown».
 - No cambiar automáticamente de rama, importar archivos LaTeX ni escribir en otro checkout para eludir esta restricción.
-- Antes de editar, comprobar que la rama activa sea `branch-md`. Antes de registrar cambios, comprobar que todos los archivos a versionar terminen en `.md`.
+- Antes de editar, comprobar que la rama activa sea `rama-md`. Antes de registrar cambios, comprobar que todos los archivos a versionar terminen en `.md`.
 - Leer `compct/CONTEXTO_SESION.md` al iniciar o reanudar una sesión. Cada respuesta final comienza exactamente con `## LafroX`.
 
 ## Proyecto
 
-La rama `branch-md` de este repositorio contiene material exclusivamente Markdown para preparar los Subdocumentos 1, 2 y 3 de la propuesta técnica de LafroX para la licitación ficticia TFEP-01/2026, Caso 02 — Logística.
+La rama `rama-md` de este repositorio contiene material exclusivamente Markdown para preparar los Subdocumentos 1, 2 y 3 de la propuesta técnica de LafroX para la licitación ficticia TFEP-01/2026, Caso 02 — Logística.
 
 ## Protocolo de sesión
 

@@ -28,6 +28,8 @@ T-14 describe entregables y T-15 programa personas y revisión del CLIENTE. Las 
 
 La metodología es una propuesta de ejecución. Los ensayos, la dotación nominal y la revisión humana pendiente no se consideran cumplidos por estar descritos.
 
+La coordinación de calidad requiere especialistas SRE/CAL para conmutaciones y restauraciones según el T-15; su asignación nominal y disponibilidad por mes deben confirmarse sin reducir turnos NOC/mesa. El máximo conservador es 69 personas en el mes 15, no una disponibilidad acreditada.
+
 ---
 
 **Fuente y actualización:** documento local vigente al 8 de octubre de 2026. Resumen elaborado con asistencia de Codex; no acredita aprobación del CLIENTE ni revisión humana adicional.

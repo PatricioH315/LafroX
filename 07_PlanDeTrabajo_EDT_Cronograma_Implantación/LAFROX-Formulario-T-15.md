@@ -210,14 +210,14 @@ La tabla siguiente presenta las horas de cada paquete con sus tres estimaciones 
 | 3.8.3 | V | CAL | 9–10 | 240.00 | 320.00 | 400.00 | 320.00 |
 | 3.8.4 | V | CAL | 9–10 | 240.00 | 320.00 | 400.00 | 320.00 |
 | 3.8.5 | V | CAL | 9–10 | 240.00 | 320.00 | 400.00 | 320.00 |
-| 3.8.6 | V | SEG | 9–9 | 120.00 | 160.00 | 200.00 | 160.00 |
+| 3.8.6 | V | SEG | 9–10 | 240.00 | 320.00 | 400.00 | 320.00 |
 | 3.8.7 | V | CAL | 10–10 | 120.00 | 160.00 | 200.00 | 160.00 |
 | 3.8.8 | V | SRE | 9–10 | 240.00 | 320.00 | 400.00 | 320.00 |
 | 3.9.1 | V | CAL | 16–16 | 120.00 | 160.00 | 200.00 | 160.00 |
 | 3.9.2 | V | CAL | 16–16 | 240.00 | 320.00 | 400.00 | 320.00 |
 | 3.9.3 | V | CAL | 16–16 | 240.00 | 320.00 | 400.00 | 320.00 |
 | 3.9.4 | V | CAL | 16–16 | 240.00 | 320.00 | 400.00 | 320.00 |
-| 3.9.5 | V | SEG | 16–16 | 240.00 | 320.00 | 400.00 | 320.00 |
+| 3.9.5 | V | SEG | 16–16 | 120.00 | 160.00 | 200.00 | 160.00 |
 | 3.9.6 | V | CAL | 16–17 | 120.00 | 160.00 | 200.00 | 160.00 |
 | 3.9.7 | V | SRE | 16–16 | 120.00 | 160.00 | 200.00 | 160.00 |
 | 3.10.1.1 | E | DAT | 7–9 | 180.00 | 240.00 | 300.00 | 240.00 |
@@ -303,7 +303,7 @@ La tabla siguiente presenta las horas de cada paquete con sus tres estimaciones 
 | 7.3.2 | T | IMP | 18–18 | 120.00 | 160.00 | 200.00 | 160.00 |
 | 8.1.1 | C | SRE | 21–56 | 26280.00 | 26280.00 | 26280.00 | 26280.00 |
 | 8.1.2 | C | SRE | 21–56 | 54239.00 | 54239.00 | 54239.00 | 54239.00 |
-| 8.1.3 | G | SRE | 21–56 | 60.00 | 80.00 | 100.00 | 80.00 |
+| 8.1.3 | V | SRE | 21–56 | 420.00 | 560.00 | 700.00 | 560.00 |
 | 8.1.4 | R | JP | 21–56 | 216.00 | 288.00 | 360.00 | 288.00 |
 | 8.1.5 | C | SEG | 13–56 | 32112.00 | 32112.00 | 32112.00 | 32112.00 |
 | 8.1.6 | R | SRE | 21–56 | 432.00 | 576.00 | 720.00 | 576.00 |
@@ -332,7 +332,51 @@ La tabla siguiente presenta las horas de cada paquete con sus tres estimaciones 
 | 9.2.1 | G | JP | 54–56 | 60.00 | 80.00 | 100.00 | 80.00 |
 | 9.2.2 | G | SEG | 56–56 | 60.00 | 80.00 | 100.00 | 80.00 |
 
-Se agregan explícitamente soporte puente SRE de 4.2.2 = 9336.00 HH y reserva F3/QA = 8 × (256 + 128) = 3.072 HH. Son componentes separados de las filas base (204.527 HH), incluidos en las curvas siguientes.
+Los componentes de restauración anteriores a Operación se imputan al paquete existente, sin crear paquetes ni reducir cobertura continua:
+
+| Componente del paquete | Clase | Rol | Meses | O | M | P | E (HH) |
+|---|---|---|---|---|---|---|---|
+| 4.2.1: restauraciones | R | SRE | 13–15 | 36 | 48 | 60 | 48 |
+| 4.2.2: restauraciones | R | SRE | 16–18 | 36 | 48 | 60 | 48 |
+| 4.3.1: restauraciones | R | SRE | 19–20 | 24 | 32 | 40 | 32 |
+
+#### Desglose de campañas por actividad y especialidad
+
+Son supuestos de estimación de LafroX, no acreditación de productividad ni compromisos obtenidos de un tercero. O = 0,75M y P = 1,25M; PERT conserva E = M. El responsable del paquete coordina los roles de esta tabla, que no se suman otra vez a sus HH. El tercero ejecuta intrusión dentro de SEG; su disponibilidad y alcance se confirman antes de certificar.
+
+| Campaña y fase | CAL HH | SRE HH | SEG HH | Total HH |
+|---|---|---|---|---|
+| DR inicial E1/E2: preparar escenarios, datos y reversión | 40 | 40 | 0 | 80 |
+| DR inicial E1/E2: ejecutar conmutación regional | 16 | 64 | 0 | 80 |
+| DR inicial E1/E2: observar, medir y conciliar | 48 | 32 | 0 | 80 |
+| DR inicial E1/E2: informe, corrección y repetición acotada | 56 | 24 | 0 | 80 |
+| **Cada certificación DR inicial** | **160** | **160** | **0** | **320** |
+| DR operacional: preparar con procedimiento ya certificado | 0 | 16 | 0 | 16 |
+| DR operacional: ejecutar conmutación y reversión | 0 | 16 | 0 | 16 |
+| DR operacional: observar y medir | 0 | 16 | 0 | 16 |
+| DR operacional: informar | 8 | 8 | 0 | 16 |
+| DR operacional: repetición acotada y cierre | 8 | 8 | 0 | 16 |
+| **Cada conmutación operacional; siete ocurrencias** | **16** | **64** | **0** | **80** |
+| Intrusión E1: preparar inventario completo y reglas | 16 | 0 | 48 | 64 |
+| Intrusión E1: ejecutar escenarios (dos actividades de 80 HH) | 32 | 0 | 128 | 160 |
+| Intrusión E1: clasificar y elaborar informe | 16 | 0 | 48 | 64 |
+| Intrusión E1: repetir casos corregidos | 16 | 0 | 16 | 32 |
+| **Intrusión E1** | **80** | **0** | **240** | **320** |
+| Intrusión E2: analizar diferencias sobre inventario existente | 8 | 0 | 24 | 32 |
+| Intrusión E2: ejecutar alcance nuevo y regresión de seguridad | 16 | 0 | 64 | 80 |
+| Intrusión E2: clasificar e informar | 8 | 0 | 24 | 32 |
+| Intrusión E2: repetir casos corregidos | 8 | 0 | 8 | 16 |
+| **Intrusión E2** | **40** | **0** | **120** | **160** |
+
+DR inicial establece o recertifica escenarios, recuperación y datos de la etapa integrada; la campaña operacional reutiliza el procedimiento sin diseñar una certificación nueva, pero mantiene conmutación real y medición RTO/RPO. Por eso 320 HH y 80 HH no representan el mismo trabajo. Si el procedimiento o arquitectura cambia, se reestima; las HH de repetición acotada no garantizan cubrir cualquier defecto. Las siete campañas requieren 7 × 80 = 560 HH, no 80 HH en total. Intrusión E1 establece el inventario completo; E2 analiza diferencias y regresión, con reutilización condicionada a que no cambie la superficie previamente certificada. Si cambia, se amplía su alcance y estimación por control de cambios, no se mantiene 160 HH por obligación.
+
+El dimensionamiento diario de estas campañas usa 6,4 HH por persona-día y excluye el 1 de noviembre. DR E1 prepara del 21 al 25 de octubre (40 CAL/40 SRE; tres hábiles), ejecuta y observa del 26 al 29 (64 CAL/96 SRE; cuatro hábiles) y cierra entre el 2 y 9 de noviembre (56 CAL/24 SRE; seis hábiles, sin intervención del sitio). El máximo de su subventana invasiva exige tres CAL y cuatro SRE; el promedio global es 320/(13 × 6,4) = 3,85 personas. DR E2 prepara el 19/22 de mayo (40 CAL/40 SRE), ejecuta/observa el 23/24 (64 CAL/96 SRE) y cierra el 25/26 (56 CAL/24 SRE): máximos de cinco CAL y ocho SRE para el bloque de dos días, trece en conjunto; la tabla reserva trece como máximo por rol. Cada ventana requiere asignación nominal, no basta el equivalente mensual.
+
+Intrusión E1 distribuye preparación 21–22 de octubre, ejecución 25 de octubre–2 de noviembre excluyendo el feriado, informe 3–5 y repetición 8–9 de noviembre: máximos seis personas (cuatro SEG/dos CAL en preparación), con 13 hábiles totales. Intrusión E2 prepara el 19 de mayo, ejecuta el 22–24, informa el 25 y repite el 26: máximo seis personas (cuatro SEG/dos CAL), seis hábiles. Los promedios de la Tabla 6.1 se calculan con estas ventanas: 320/(13 × 6,4) y 160/(6 × 6,4). La envolvente no confirma disponibilidad del tercero ni de personal concurrente; antes de ejecutar se suma la carga diaria de las demás campañas por especialidad y se compara con las personas efectivamente asignadas.
+
+Ocho restauraciones de 16 HH SRE suman 128 HH (4 preparación + 4 ejecución + 4 validación + 4 informe por mes). 4.2.1 conserva 7.392 HH IMP y agrega 48 SRE; 4.2.2 conserva 5.408 IMP y 9.336 de cobertura NOC/mesa y agrega 48 SRE; 4.3.1 conserva 4.928 IMP y agrega 32 SRE. 8.1.6 mantiene 36 × 16 = 576 HH: 44 informes, sin doble imputación ni reducción de turnos.
+
+Se agregan explícitamente soporte puente SRE de 4.2.2 = 9336.00 HH y reserva F3/QA = 8 × (256 + 128) = 3.072 HH. Son componentes separados de las filas base (205.135 HH), incluidos en las curvas siguientes.
 
 ### 4.3 Resumen T-15
 
@@ -340,15 +384,15 @@ La tabla siguiente resume las horas programadas por etapa contractual.
 
 | Etapa | HH base y cobertura | HH reserva protegida | HH programadas | Frentes | Meses |
 | --- | --- | --- | --- | --- | --- |
-| E1 Desarrollo | 37981.17 | 0 | 37981.17 | F1,F2,F3,F5,F6,F7 | 1–12 |
-| E1 Marcha blanca | 11147.17 | 1152 | 12299.17 | F1,F2,F3,F5,F6,F7 | 13–15 |
-| E2 Desarrollo | 11566.54 | 0 | 11566.54 | F1,F2,F4,F5,F6,F7 | 13–18 |
-| E2 Marcha blanca | 7275.91 | 0 | 7275.91 | F1,F2,F4,F6,F7 | 19–20 |
-| E1 Soporte puente | 14744.00 | 1920 | 16664.00 | F3,F5,F6,F7 | 16–20 |
-| Operación | 128373.67 | 0 | 128373.67 | F1,F8 | 21–56 |
+| E1 Desarrollo | 38141.17 | 0 | 38141.17 | F1,F2,F3,F5,F6,F7 | 1–12 |
+| E1 Marcha blanca | 11195.17 | 1152 | 12347.17 | F1,F2,F3,F5,F6,F7 | 13–15 |
+| E2 Desarrollo | 11406.54 | 0 | 11406.54 | F1,F2,F4,F5,F6,F7 | 13–18 |
+| E2 Marcha blanca | 7307.91 | 0 | 7307.91 | F1,F2,F4,F6,F7 | 19–20 |
+| E1 Soporte puente | 14792.00 | 1920 | 16712.00 | F3,F5,F6,F7 | 16–20 |
+| Operación | 128853.67 | 0 | 128853.67 | F1,F8 | 21–56 |
 | Cierre y estabilización implementación | 2774.54 | 0 | 2774.54 | F1,F2,F4,F6,F7 | 21–22 |
 
-Total exacto de paquetes y componentes = 216935.00 HH (204.527 base + 9.336 puente + 3.072 reserva); peak mensual conjunto = 68 personas equivalentes en el mes 15, cuando coinciden la construcción de los módulos de la Etapa 2, la marcha blanca de la Etapa 1 y su acompañamiento. La mesa y el SOC dimensionados en el SD4, aplicados sobre el calendario real, determinan las horas de operación y de soporte puente. La implementación imputada a los meses 21 y 22 se separa de Operación; las actividades generales que continúan como servicio permanecen en Operación. Los peaks de etapas no se suman. Las centésimas de presentación se distribuyen por mayor resto entre meses y se concilian por etapa; la suma publicada conserva 216.935 HH exactas. La mesa de ayuda de 8.1.2 incluye desde el mes 25, cuando empieza el tercer año del contrato y la demanda proyectada llega a 2.258 contactos al mes, un tercer agente en las franjas de menor demanda (17 horas por día de lunes a sábado, 14.161 HH), con el que la dotación base cubre los tres niveles de servicio hasta 2.391 contactos al mes (SD4, Anexo 4-W.7). En los meses 21 a 24, con 2.000 contactos estimados, bastan dos agentes en esas franjas (límite 2.283).
+Total exacto de paquetes y componentes = 217543.00 HH (205.135 base + 9.336 puente + 3.072 reserva); peak mensual conjunto = 69 personas equivalentes en el mes 15, cuando coinciden la construcción de los módulos de la Etapa 2, la marcha blanca de la Etapa 1 y su acompañamiento. La mesa y el SOC dimensionados en el SD4, aplicados sobre el calendario real, determinan las horas de operación y de soporte puente. La implementación imputada a los meses 21 y 22 se separa de Operación; las actividades generales que continúan como servicio permanecen en Operación. Los peaks de etapas no se suman. Las centésimas de presentación se distribuyen por mayor resto entre meses y se concilian por etapa; la suma publicada conserva 217.543 HH exactas. La mesa de ayuda de 8.1.2 incluye desde el mes 25, cuando empieza el tercer año del contrato y la demanda proyectada llega a 2.258 contactos al mes, un tercer agente en las franjas de menor demanda (17 horas por día de lunes a sábado, 14.161 HH), con el que la dotación base cubre los tres niveles de servicio hasta 2.391 contactos al mes (SD4, Anexo 4-W.7). En los meses 21 a 24, con 2.000 contactos estimados, bastan dos agentes en esas franjas (límite 2.283).
 
 ### 4.4 Curvas mensuales: horas por etapa y personas por rol
 
@@ -364,75 +408,72 @@ La tabla siguiente presenta, mes a mes, las horas por etapa y las personas equiv
 | 6 | 5335.52 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 5335.52 | 1 | 8 | 4 | 1 | 28 | 1 | 2 | 0 | 45 |
 | 7 | 5107.82 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 5107.82 | 2 | 1 | 1 | 8 | 28 | 1 | 2 | 0 | 43 |
 | 8 | 4640.86 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 4640.86 | 1 | 1 | 1 | 10 | 26 | 1 | 0 | 0 | 40 |
-| 9 | 3071.92 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 3071.92 | 1 | 1 | 2 | 8 | 1 | 8 | 5 | 2 | 28 |
-| 10 | 1980.57 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 1980.57 | 1 | 1 | 1 | 3 | 1 | 6 | 4 | 3 | 20 |
+| 9 | 3151.92 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 3151.92 | 1 | 1 | 3 | 8 | 1 | 8 | 6 | 2 | 30 |
+| 10 | 2060.57 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 2060.57 | 1 | 1 | 2 | 3 | 1 | 6 | 5 | 3 | 22 |
 | 11 | 1676.35 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 1676.35 | 1 | 1 | 1 | 9 | 1 | 1 | 1 | 3 | 18 |
 | 12 | 1299.14 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 1299.14 | 1 | 1 | 1 | 5 | 0 | 1 | 4 | 1 | 14 |
-| 13 | 0.00 | 3936.70 | 548.57 | 0.00 | 0.00 | 0.00 | 0.00 | 4485.27 | 1 | 3 | 6 | 0 | 3 | 2 | 1 | 23 | 39 |
-| 14 | 0.00 | 4317.79 | 571.43 | 0.00 | 0.00 | 0.00 | 0.00 | 4889.22 | 1 | 2 | 6 | 2 | 3 | 2 | 1 | 24 | 41 |
-| 15 | 0.00 | 4044.68 | 4045.71 | 0.00 | 0.00 | 0.00 | 0.00 | 8090.39 | 2 | 1 | 6 | 8 | 25 | 2 | 1 | 23 | 68 |
-| 16 | 0.00 | 0.00 | 3108.35 | 0.00 | 4699.00 | 0.00 | 0.00 | 7807.35 | 2 | 1 | 9 | 0 | 4 | 10 | 16 | 22 | 64 |
-| 17 | 0.00 | 0.00 | 1729.57 | 0.00 | 3482.00 | 0.00 | 0.00 | 5211.57 | 2 | 1 | 6 | 0 | 4 | 3 | 15 | 14 | 45 |
-| 18 | 0.00 | 0.00 | 1562.91 | 0.00 | 2738.00 | 0.00 | 0.00 | 4300.91 | 1 | 1 | 6 | 0 | 4 | 2 | 15 | 8 | 37 |
-| 19 | 0.00 | 0.00 | 0.00 | 3753.86 | 2779.00 | 0.00 | 0.00 | 6532.86 | 1 | 1 | 6 | 0 | 4 | 2 | 15 | 26 | 55 |
-| 20 | 0.00 | 0.00 | 0.00 | 3522.05 | 2966.00 | 0.00 | 0.00 | 6488.05 | 1 | 1 | 6 | 0 | 2 | 1 | 16 | 25 | 52 |
-| 21 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 3120.48 | 2774.54 | 5895.02 | 3 | 1 | 7 | 1 | 3 | 1 | 16 | 20 | 52 |
-| 22 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 3234.77 | 0.00 | 3234.77 | 1 | 1 | 6 | 1 | 2 | 1 | 16 | 2 | 30 |
-| 23 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 3442.76 | 0.00 | 3442.76 | 1 | 1 | 7 | 1 | 2 | 1 | 18 | 1 | 32 |
-| 24 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 3250.14 | 0.00 | 3250.14 | 1 | 1 | 7 | 1 | 2 | 1 | 16 | 2 | 31 |
-| 25 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 3343.72 | 0.00 | 3343.72 | 1 | 1 | 6 | 1 | 2 | 1 | 18 | 1 | 31 |
-| 26 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 3690.43 | 0.00 | 3690.43 | 1 | 1 | 7 | 1 | 2 | 1 | 20 | 2 | 35 |
-| 27 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 3508.05 | 0.00 | 3508.05 | 1 | 1 | 6 | 1 | 2 | 1 | 19 | 1 | 32 |
-| 28 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 3638.00 | 0.00 | 3638.00 | 1 | 1 | 7 | 1 | 2 | 1 | 20 | 1 | 34 |
-| 29 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 3532.00 | 0.00 | 3532.00 | 1 | 1 | 6 | 1 | 2 | 1 | 19 | 1 | 32 |
-| 30 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 3580.00 | 0.00 | 3580.00 | 1 | 1 | 7 | 1 | 2 | 1 | 19 | 1 | 33 |
-| 31 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 3638.00 | 0.00 | 3638.00 | 1 | 1 | 7 | 1 | 2 | 1 | 20 | 1 | 34 |
-| 32 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 3744.00 | 0.00 | 3744.00 | 1 | 1 | 6 | 1 | 2 | 1 | 21 | 1 | 34 |
-| 33 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 3651.33 | 0.00 | 3651.33 | 1 | 1 | 7 | 1 | 2 | 1 | 20 | 1 | 34 |
-| 34 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 3532.00 | 0.00 | 3532.00 | 1 | 1 | 6 | 1 | 2 | 1 | 19 | 1 | 32 |
-| 35 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 3856.00 | 0.00 | 3856.00 | 1 | 1 | 7 | 1 | 2 | 1 | 21 | 1 | 35 |
-| 36 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 3638.00 | 0.00 | 3638.00 | 1 | 1 | 7 | 1 | 2 | 1 | 20 | 1 | 34 |
-| 37 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 3320.00 | 0.00 | 3320.00 | 1 | 1 | 6 | 1 | 2 | 1 | 18 | 1 | 31 |
-| 38 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 3580.00 | 0.00 | 3580.00 | 1 | 1 | 7 | 1 | 2 | 1 | 19 | 1 | 33 |
-| 39 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 3545.33 | 0.00 | 3545.33 | 1 | 1 | 6 | 1 | 2 | 1 | 19 | 1 | 32 |
-| 40 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 3638.00 | 0.00 | 3638.00 | 1 | 1 | 7 | 1 | 2 | 1 | 20 | 1 | 34 |
-| 41 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 3474.00 | 0.00 | 3474.00 | 1 | 1 | 6 | 1 | 2 | 1 | 19 | 1 | 32 |
-| 42 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 3638.00 | 0.00 | 3638.00 | 1 | 1 | 7 | 1 | 2 | 1 | 20 | 1 | 34 |
-| 43 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 3638.00 | 0.00 | 3638.00 | 1 | 1 | 7 | 1 | 2 | 1 | 20 | 1 | 34 |
-| 44 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 3744.00 | 0.00 | 3744.00 | 1 | 1 | 6 | 1 | 2 | 1 | 21 | 1 | 34 |
-| 45 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 3651.33 | 0.00 | 3651.33 | 1 | 1 | 7 | 1 | 2 | 1 | 20 | 1 | 34 |
-| 46 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 3532.00 | 0.00 | 3532.00 | 1 | 1 | 6 | 1 | 2 | 1 | 19 | 1 | 32 |
-| 47 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 3856.00 | 0.00 | 3856.00 | 1 | 1 | 7 | 1 | 2 | 1 | 21 | 1 | 35 |
-| 48 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 3638.00 | 0.00 | 3638.00 | 1 | 1 | 7 | 1 | 2 | 1 | 20 | 1 | 34 |
-| 49 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 3320.00 | 0.00 | 3320.00 | 1 | 1 | 6 | 1 | 2 | 1 | 18 | 1 | 31 |
-| 50 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 3580.00 | 0.00 | 3580.00 | 1 | 1 | 7 | 1 | 2 | 1 | 19 | 1 | 33 |
-| 51 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 3545.33 | 0.00 | 3545.33 | 1 | 1 | 6 | 1 | 2 | 1 | 19 | 1 | 32 |
-| 52 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 3638.00 | 0.00 | 3638.00 | 1 | 1 | 7 | 1 | 2 | 1 | 20 | 1 | 34 |
-| 53 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 3474.00 | 0.00 | 3474.00 | 1 | 1 | 6 | 1 | 2 | 1 | 19 | 1 | 32 |
-| 54 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 3669.11 | 0.00 | 3669.11 | 1 | 1 | 7 | 1 | 2 | 1 | 20 | 1 | 34 |
-| 55 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 3602.22 | 0.00 | 3602.22 | 1 | 1 | 7 | 1 | 2 | 1 | 19 | 1 | 33 |
-| 56 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 3890.67 | 0.00 | 3890.67 | 1 | 1 | 7 | 1 | 2 | 1 | 21 | 1 | 35 |
+| 13 | 0.00 | 3952.70 | 548.57 | 0.00 | 0.00 | 0.00 | 0.00 | 4501.27 | 1 | 3 | 6 | 0 | 3 | 2 | 2 | 23 | 40 |
+| 14 | 0.00 | 4333.79 | 571.43 | 0.00 | 0.00 | 0.00 | 0.00 | 4905.22 | 1 | 2 | 6 | 2 | 3 | 2 | 2 | 24 | 42 |
+| 15 | 0.00 | 4060.68 | 4045.71 | 0.00 | 0.00 | 0.00 | 0.00 | 8106.39 | 2 | 1 | 6 | 8 | 25 | 2 | 2 | 23 | 69 |
+| 16 | 0.00 | 0.00 | 2948.35 | 0.00 | 4715.00 | 0.00 | 0.00 | 7663.35 | 2 | 1 | 9 | 0 | 4 | 10 | 18 | 22 | 66 |
+| 17 | 0.00 | 0.00 | 1729.57 | 0.00 | 3498.00 | 0.00 | 0.00 | 5227.57 | 2 | 1 | 6 | 0 | 4 | 3 | 16 | 14 | 46 |
+| 18 | 0.00 | 0.00 | 1562.91 | 0.00 | 2754.00 | 0.00 | 0.00 | 4316.91 | 1 | 1 | 6 | 0 | 4 | 2 | 16 | 8 | 38 |
+| 19 | 0.00 | 0.00 | 0.00 | 3769.86 | 2779.00 | 0.00 | 0.00 | 6548.86 | 1 | 1 | 6 | 0 | 4 | 2 | 16 | 26 | 56 |
+| 20 | 0.00 | 0.00 | 0.00 | 3538.05 | 2966.00 | 0.00 | 0.00 | 6504.05 | 1 | 1 | 6 | 0 | 2 | 1 | 17 | 25 | 53 |
+| 21 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 3198.26 | 2774.54 | 5972.80 | 3 | 1 | 7 | 1 | 3 | 2 | 17 | 20 | 54 |
+| 22 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 3232.55 | 0.00 | 3232.55 | 1 | 1 | 6 | 1 | 2 | 1 | 16 | 2 | 30 |
+| 23 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 3440.54 | 0.00 | 3440.54 | 1 | 1 | 7 | 1 | 2 | 1 | 18 | 1 | 32 |
+| 24 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 3247.92 | 0.00 | 3247.92 | 1 | 1 | 7 | 1 | 2 | 1 | 16 | 2 | 31 |
+| 25 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 3341.50 | 0.00 | 3341.50 | 1 | 1 | 6 | 1 | 2 | 1 | 18 | 1 | 31 |
+| 26 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 3688.21 | 0.00 | 3688.21 | 1 | 1 | 7 | 1 | 2 | 1 | 20 | 2 | 35 |
+| 27 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 3585.83 | 0.00 | 3585.83 | 1 | 1 | 6 | 1 | 2 | 2 | 20 | 1 | 34 |
+| 28 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 3635.78 | 0.00 | 3635.78 | 1 | 1 | 7 | 1 | 2 | 1 | 20 | 1 | 34 |
+| 29 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 3529.78 | 0.00 | 3529.78 | 1 | 1 | 6 | 1 | 2 | 1 | 19 | 1 | 32 |
+| 30 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 3577.78 | 0.00 | 3577.78 | 1 | 1 | 7 | 1 | 2 | 1 | 19 | 1 | 33 |
+| 31 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 3635.78 | 0.00 | 3635.78 | 1 | 1 | 7 | 1 | 2 | 1 | 20 | 1 | 34 |
+| 32 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 3741.78 | 0.00 | 3741.78 | 1 | 1 | 6 | 1 | 2 | 1 | 21 | 1 | 34 |
+| 33 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 3729.11 | 0.00 | 3729.11 | 1 | 1 | 7 | 1 | 2 | 2 | 21 | 1 | 36 |
+| 34 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 3529.78 | 0.00 | 3529.78 | 1 | 1 | 6 | 1 | 2 | 1 | 19 | 1 | 32 |
+| 35 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 3853.78 | 0.00 | 3853.78 | 1 | 1 | 7 | 1 | 2 | 1 | 21 | 1 | 35 |
+| 36 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 3635.78 | 0.00 | 3635.78 | 1 | 1 | 7 | 1 | 2 | 1 | 20 | 1 | 34 |
+| 37 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 3317.78 | 0.00 | 3317.78 | 1 | 1 | 6 | 1 | 2 | 1 | 18 | 1 | 31 |
+| 38 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 3577.78 | 0.00 | 3577.78 | 1 | 1 | 7 | 1 | 2 | 1 | 19 | 1 | 33 |
+| 39 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 3623.11 | 0.00 | 3623.11 | 1 | 1 | 6 | 1 | 2 | 2 | 20 | 1 | 34 |
+| 40 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 3635.78 | 0.00 | 3635.78 | 1 | 1 | 7 | 1 | 2 | 1 | 20 | 1 | 34 |
+| 41 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 3471.78 | 0.00 | 3471.78 | 1 | 1 | 6 | 1 | 2 | 1 | 19 | 1 | 32 |
+| 42 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 3635.78 | 0.00 | 3635.78 | 1 | 1 | 7 | 1 | 2 | 1 | 20 | 1 | 34 |
+| 43 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 3635.78 | 0.00 | 3635.78 | 1 | 1 | 7 | 1 | 2 | 1 | 20 | 1 | 34 |
+| 44 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 3741.78 | 0.00 | 3741.78 | 1 | 1 | 6 | 1 | 2 | 1 | 21 | 1 | 34 |
+| 45 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 3729.11 | 0.00 | 3729.11 | 1 | 1 | 7 | 1 | 2 | 2 | 21 | 1 | 36 |
+| 46 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 3529.78 | 0.00 | 3529.78 | 1 | 1 | 6 | 1 | 2 | 1 | 19 | 1 | 32 |
+| 47 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 3853.78 | 0.00 | 3853.78 | 1 | 1 | 7 | 1 | 2 | 1 | 21 | 1 | 35 |
+| 48 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 3635.78 | 0.00 | 3635.78 | 1 | 1 | 7 | 1 | 2 | 1 | 20 | 1 | 34 |
+| 49 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 3317.77 | 0.00 | 3317.77 | 1 | 1 | 6 | 1 | 2 | 1 | 18 | 1 | 31 |
+| 50 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 3577.77 | 0.00 | 3577.77 | 1 | 1 | 7 | 1 | 2 | 1 | 19 | 1 | 33 |
+| 51 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 3623.10 | 0.00 | 3623.10 | 1 | 1 | 6 | 1 | 2 | 2 | 20 | 1 | 34 |
+| 52 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 3635.77 | 0.00 | 3635.77 | 1 | 1 | 7 | 1 | 2 | 1 | 20 | 1 | 34 |
+| 53 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 3471.77 | 0.00 | 3471.77 | 1 | 1 | 6 | 1 | 2 | 1 | 19 | 1 | 32 |
+| 54 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 3746.88 | 0.00 | 3746.88 | 1 | 1 | 7 | 1 | 2 | 2 | 21 | 1 | 36 |
+| 55 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 3599.99 | 0.00 | 3599.99 | 1 | 1 | 7 | 1 | 2 | 1 | 19 | 1 | 33 |
+| 56 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 3888.44 | 0.00 | 3888.44 | 1 | 1 | 7 | 1 | 2 | 1 | 21 | 1 | 35 |
 
-Factibilidad por capacidad aritmética: se debe dotar cada rol con la curva indicada. El registro nominal de personas y los turnos se aprueban junto con la línea base del H1. La reserva E1 es exclusiva; el trabajo de E2 usa capacidad adicional. La revisión de HH modifica conjuntamente dotación, cronograma y exposición de SD8.
+La curva HH concilia el esfuerzo, pero no demuestra disponibilidad nominal ni factibilidad por especialidad. Las personas publicadas son una envolvente conservadora: se conservan techos anteriores cuando una familia reduce HH y se agregan techo(ΔHH positivas/128) por rol/mes. No son el mínimo optimizado ni se calculan sumando sólo el incremento neto del proyecto. El registro nominal de personas y los turnos se aprueban junto con la línea base del H1. La reserva E1 es exclusiva; el trabajo de E2 usa capacidad adicional. La revisión de HH modifica conjuntamente dotación y cronograma, y comunica la nueva línea base al responsable de gestión de riesgos sin copiar sus reservas.
+
+La corrección de roles asigna en meses 9/10 CAL −40, SRE +80 y SEG +40 HH por mes; en mes 16 CAL −120, SRE +160 y SEG −200. Las restauraciones agregan SRE +16 HH en cada mes 13–20. En Operación se sustituye la imputación uniforme anterior 80/36 HH SRE por 64 HH SRE y 16 HH CAL en los siete meses de campaña; las centésimas se concilian por mayor resto. Las HH reducidas no se reutilizan automáticamente entre especialidades.
+
+El máximo conjunto pasa de 68 a 69 en el mes 15 por el componente SRE de restauración. Antes del H1, el responsable de cada familia presenta calendario nominal, competencias y horas disponibles después de otros contratos; se comprueba HH por rol y mes ≤ capacidad efectiva asignada, y simultaneidad diaria durante conmutaciones/intrusión. Mientras falte esa asignación no se declara capacidad suficiente; los 44 integrantes corporativos SRE/NOC no acreditan disponibilidad para este proyecto.
 
 ### 4.5 Reservas de contingencia y de gestión
 
-Las 216.935 HH de la sección 4.3 son la línea base programada. Sobre ella, el SD8 dimensiona dos reservas en horas: la de contingencia, de 20.198,98 HH, para los riesgos identificados del registro (SD8, sección 8.3.2), y la de gestión, de 1.600 HH, para un evento no identificado. Ninguna de las dos se programa como trabajo: se consumen sólo cuando un riesgo se materializa y el comité competente autoriza el cargo. Con ambas, la capacidad que la oferta debe poder movilizar llega a 238.733,98 HH. La reserva de cronograma de cada hito, en días hábiles, está en la Tabla 5.2.
+Las 217.543 HH de la sección 4.3 son la línea base programada e incluyen las 3.072 HH protegidas de correcciones E1. Esa capacidad no se suma nuevamente ni prueba que cubra cualquier contingencia. Las reservas de cronograma se expresan en días y se distinguen del esfuerzo y de la capacidad disponible por especialidad; el T-17, 4.1, presenta el calendario efectivo y la Tabla 5.2 conserva el escenario nominal histórico.
 
-La tabla siguiente reparte la contingencia por período con la distribución mensual del SD8, Anexo 8.D, y compara el peak de personas equivalentes adicionales con la curva de la sección 4.4 y la dotación de la sección 5.7.
+La gestión de riesgos mantiene las contingencias de eventos identificados y la reserva de gestión para eventos no identificados, sin importar aquí cifras, distribuciones o identificadores de otra versión documental. Ante un evento se estima su respuesta, corrección y repetición de pruebas por actividad, rol y mes; se verifica disponibilidad nominal, simultaneidad diaria, competencias y turnos después de las obligaciones existentes. Se distingue capacidad ya incluida, capacidad adicional y financiación pendiente, sin descontar cobertura NOC/mesa ni prestar la reserva protegida a otra etapa.
 
-| Período | HH de contingencia | Peak adicional (personas equivalentes) | Rol que más aporta | Capacidad que la cubre |
-| --- | --- | --- | --- | --- |
-| Meses 1–6 | 5.000,78 | 11,6 en el mes 6 | DES, 6,7 | Desarrollo: 28 + 6,7 = 34,7, dentro de las 40 programadas. ARQ y DAT suman 17,4 equivalentes en el mes 5 frente a 15: ese exceso se nivela al mes 6, antes de la fecha límite del H3 |
-| Meses 7–12 | 5.253,15 | 11,8 en el mes 7 | DES, 8,6 | Desarrollo: 28 + 8,6 = 36,6, dentro de las 40 programadas |
-| Meses 13–15 | 3.230,04 | 21,2 en el mes 15 | IMP, 11,9 | Implantación: 23 + 11,9 = 34,9 frente a 30, con la opción de hasta 8 personas del contrato de implantación (sección 5.7) |
-| Meses 16–21 | 2.995,70 | 11,9 en el mes 20 | IMP, 11,8 | Implantación: 25 + 11,8 = 36,8 con la misma opción; calidad: 10 + 3,7 = 13,7 dentro de las 16 del mes 16 |
-| Meses 22–33 | 1.278,99 | 0,9 | SRE y SEG | SRE y NOC: dentro de las 44 personas |
-| Meses 34–56 | 2.440,32 | 0,9 | SRE y SEG | SRE y NOC: dentro de las 44 personas |
-
-Si todas las reservas se consumieran en el mes de mayor exposición, el mes 15 pasaría de 68 a 89,2 personas equivalentes; el único rol que supera su dotación es implantación, cubierta por la opción de su contrato. La reserva de gestión equivale a rehacer un módulo de clase D no previsto (960 HH de desarrollo), su integración (480 HH) y una certificación (160 HH), con las unidades de esta sección; con 8 desarrolladores y 4 evaluadores toma unos 2,2 meses en secuencia, por lo que el Comité Ejecutivo la autoriza sólo si el evento se detecta con esa anticipación respecto del hito afectado.
+El comité competente autoriza el alcance, los recursos, su financiación y el cargo antes de ejecutar. Si las personas o la ventana no están confirmadas, se registran la brecha y las medidas necesarias; no se garantiza cobertura por el tamaño de una división, una opción de contratación o una suma global de HH. El responsable de gestión de riesgos recibe la línea base vigente para recalcular sus escenarios, sin que este formulario declare reconciliada una reserva externa ni una capacidad total movilizable.
 
 ## 5 Red agregada, restricciones y escenarios de calendario
+
+Las secciones 5.1–5.4 conservan el método, las secuencias y los resultados históricos del escenario nominal anterior a la reestimación de la sección 4.2 y al calendario efectivo del T-17. Sus probabilidades, fechas simuladas y afirmaciones de nivelación no están reconciliadas con la línea base vigente de 217.543 HH ni acreditan capacidad disponible o cumplimiento actual. Las dependencias contractuales se conservan; el uso de estos resultados para decidir requiere recalcular la red con esfuerzo por especialidad, asignaciones nominales y feriados vigentes.
 
 ### 5.1 Cálculo reproducible
 
@@ -444,7 +485,7 @@ La red se calcula sobre los paquetes con entregable de la sección 6 y sus activ
 - **Revisión del CLIENTE.** Cada hito se cumple con el acta de aceptación (Art. 18.1), y el CLIENTE dispone de diez días hábiles para revisar (Art. 18.3). Por eso los paquetes que gatillan un hito terminan, a más tardar, diez días hábiles antes del último día hábil del mes del hito, y antes de esa fecha límite se deja la reserva que pide el PERT (sección 5.3). La subsanación no se programa como trabajo normal: si se necesita, consume la reserva.
 - **Nivelación de recursos.** Los paquetes se programan en el orden de su holgura y cada uno en la primera fecha en que no supera la dotación declarada en el SD1: 40 personas de desarrollo (de las 48 de la división; las 8 restantes quedan disponibles), 44 de SRE y NOC, 15 de arquitectura y datos en conjunto, 7 de seguridad sin contar los analistas del SOC propio, contratados aparte y 10 de calidad, que se refuerza con evaluadores subcontratados hasta 16 durante las certificaciones (PMI, 2017, pp. 211–212). La carga diaria suma las actividades y el esfuerzo continuo del mes.
 
-El resultado no tiene dependencias incumplidas, ningún paquete termina fuera de su ventana y ningún día supera la dotación declarada. La Tabla 5.1 resume las fechas de los grupos de paquetes; la sección 6.1 da las fechas de cada paquete.
+El escenario histórico nominal reportó dependencias satisfechas, paquetes dentro de su ventana y dotación suficiente según sus supuestos. Ese resultado no constituye una comprobación de la programación y capacidad vigentes. La Tabla 5.1 resume las fechas de los grupos de paquetes; la sección 6.1 da las fechas de cada paquete.
 
 **Tabla 5.1 — Fechas programadas por grupo de paquetes. Fuente: elaboración propia a partir de la sección 6.1.**
 
@@ -469,7 +510,7 @@ El resultado no tiene dependencias incumplidas, ningún paquete termina fuera de
 
 ### 5.2 Secuencias que hacen compatible el modelo
 
-El cálculo por actividad y la simulación del SD8 fijan siete reglas de secuencia que hacen compatible el cronograma con los hitos.
+Se conservan siete reglas de secuencia del cálculo histórico por actividad y de su simulación de riesgos. Sus resultados son antecedentes nominales, no una conciliación con el SD8 vigente ni garantía de compatibilidad del calendario actualizado con todos los hitos.
 
 - **Ventanas de módulos.** Los módulos de la Etapa 1 ocupan los meses 5 a 8 (junio a septiembre de 2027): el análisis y el diseño de contratos empiezan con la base compartida, y la construcción se escalona para no superar 40 desarrolladores simultáneos. Las dependencias entre módulos son por interfaz.
 - **Sala técnica y ambientes.** La cadena deja reserva ante el H3: planos 2.3.1/2.3.2 en el mes 1, especificación y orden de compra emitida por LafroX en el mes 2 (5.1.2), instalación 6.1.1–6.1.4 en el mes 3 y recepción 6.1.5 en el mes 4. Los racks R01/R02 se montan en los meses 4 y 5, el gabinete de Concepción en el mes 4 y el borde de los CD entra en servicio en el mes 5 (6.6.3), junto con los ambientes en la nube. Los gabinetes de cross-docking se montan en el mes 9. El CLIENTE solo compra el equipamiento de terreno antes de cada ola. Las actas 5.1.3 acreditan la recepción técnica de ambos suministros.
@@ -483,7 +524,7 @@ La nivelación reparte la construcción de la Etapa 1 entre junio y septiembre d
 
 ### 5.3 Reservas y análisis PERT de duración
 
-La duración PERT de cada paquete usa la tríada de la sección 4.1: O = 0,75 d, M = d y P = 1,25 d, con el equipo programado. Por eso T_E = d y σ = d/12. Para cada hito se recorren todos los caminos que llegan a sus paquetes, desde la fecha de liberación de su primer paquete; la varianza de un camino es la suma de las varianzas de sus paquetes, y la probabilidad de entregar a tiempo es Φ(reserva/σ). Esa probabilidad sólo mide la variación de las horas. El SD8, Anexo 8.C, agrega una simulación de Monte Carlo sobre la misma red que suma la ocurrencia de los riesgos del registro; la Tabla 5.2 muestra ambos resultados.
+La duración PERT de cada paquete usa la tríada de la sección 4.1: O = 0,75 d, M = d y P = 1,25 d, con el equipo programado. Por eso T_E = d y σ = d/12. Para cada hito se recorren todos los caminos que llegan a sus paquetes, desde la fecha de liberación de su primer paquete; la varianza de un camino es la suma de las varianzas de sus paquetes, y la probabilidad de entregar a tiempo es Φ(reserva/σ). Esa probabilidad sólo mide la variación de las horas. La columna de simulación con riesgos y las fechas P80 de la Tabla 5.2 provienen del escenario histórico de Monte Carlo; se conservan como antecedentes no reconciliados. No se presume que correspondan al registro de riesgos vigente ni a las nuevas HH o al calendario efectivo.
 
 **Tabla 5.2 — Entrega, reserva y probabilidad por hito. Fuente: elaboración propia a partir de la sección 6.1 y del SD8, Anexo 8.C.**
 
@@ -498,7 +539,7 @@ La duración PERT de cada paquete usa la tríada de la sección 4.1: O = 0,75 d,
 | H9 | 18-05-2028 | 16-06-2028 | 21 | 3.9.1 | 1,17 | > 99,9 % | > 99,9 % | 29-05-2028 |
 | H10 | 12-06-2028 | 17-07-2028 | 25 | 3.9.1 → 3.9.2 → 3.9.6 | 1,54 | > 99,9 % | > 99,9 % | 29-06-2028 |
 
-La tabla cuenta días hábiles de lunes a viernes sin descontar feriados, como declara la sección 5.1; la conversión a fechas efectivas es la acción del riesgo R8-17 en el mes 1. Dos fechas límite coinciden con un feriado: los diez días hábiles que van del 17 al 31 de mayo de 2027 incluyen el feriado del 21-05, de modo que el límite del H2 pasa del 17-05-2027 al 14-05-2027 y su reserva, a 11 días hábiles; el límite del H3, 16-07-2027, es feriado y pasa al 15-07-2027, con una reserva de 18. Las probabilidades de esta tabla se recalculan con esas reservas al confirmar el calendario.
+La tabla y sus probabilidades conservan el escenario nominal de lunes a viernes sin feriados. La programación de recepción usa el calendario efectivo del T-17, 4.1: H1 16-03/5 días, H2 14-05/11, H3 15-07/16 con recepción el 22-06, H4 16-11/18, H5 17-01/34, H8 17-03/4, H9 14-06/19 y H10 17-07/23. La reserva excluye recepción e incluye límite. Estas cifras reemplazan la conversión parcial anterior H3=18; se consideran todos los feriados aplicables. Las probabilidades nominales no se presentan como probabilidades efectivas: requieren recalcular PERT/red con calendario confirmado; no se atribuye esa simulación a esta tabla.
 
 Ni el PERT ni la simulación incluyen un error sistemático en los tamaños supuestos que afecte a todos los paquetes a la vez, la falta de personas con las competencias requeridas ni un suministro de la infraestructura fuera de plazo más allá de lo modelado en R8-19. Esos casos se tratan con los disparadores del SD8, y su control es el seguimiento semanal de la reserva de cada hito.
 
@@ -506,13 +547,13 @@ Ni el PERT ni la simulación incluyen un error sistemático en los tamaños supu
 
 Las ventanas mensuales de acompañamiento son una imputación inicial: cuatro semanas desde un acta en día permitido pueden cruzar al mes siguiente, como ocurre con 4.3.2. Confirmada la fecha, se redistribuyen las mismas HH entre meses y se recalculan relevos; no se acorta el acompañamiento para mantener una celda mensual.
 
-El JP revisa semanalmente fechas pronosticadas, consumo de capacidad y restricciones. Toda amenaza a un hito se escala cuando la desviación proyectada supera la mitad de su reserva de la Tabla 5.2, sin esperar a consumirla. La actualización de tareas, equipos o duración obliga a repetir el cálculo y conservar D-01–D-34; se mantienen los 56 meses y las condiciones del Art. 17.3. Ver SD8, Anexos 8.C/8.D, para escenarios, reservas y condiciones de evidencia.
+El JP revisa semanalmente fechas pronosticadas, consumo de capacidad y restricciones. Toda amenaza a un hito se escala cuando la desviación proyectada supera la mitad de su reserva efectiva del T-17, sección 4.1, sin esperar a consumirla. La actualización de tareas, equipos o duración obliga a repetir el cálculo y conservar D-01–D-34; se mantienen los 56 meses y las condiciones del Art. 17.3. El seguimiento usa el calendario efectivo del T-17 y la capacidad por especialidad pendiente de confirmación. Los escenarios históricos de 5.2/5.3 no justifican reservas disponibles; las respuestas a riesgos se estiman y autorizan conforme a 4.5.
 
 ### 5.5 Presentación de entregables y revisión del CLIENTE
 
-Cada entregable que gatilla un hito se presenta en la fecha de entrega de la Tabla 5.2, con al menos diez días hábiles antes del último día hábil del mes del hito, para que la revisión del Art. 18.3 termine dentro de ese mes. Los entregables que admiten revisión por partes se presentan por incrementos: el informe de QA de cada módulo de la Etapa 1 se entrega al terminar el módulo, entre agosto y septiembre de 2027, y el informe de integración al terminar 3.8.1, el 20 de octubre de 2027. Así, la revisión final del H4 cubre sólo el último incremento. Si el CLIENTE formula observaciones, la subsanación de diez días hábiles usa la reserva del hito, y el hito no se da por cumplido hasta el acta. Este procedimiento no supone que el CLIENTE renuncie a su plazo ni que firme el acta el mismo día de la entrega.
+Cada entregable que gatilla un hito se presenta en la fecha efectiva de recepción del T-17, 4.1, sin exceder su límite calculado con feriados; la Tabla 5.2 conserva el escenario nominal. Se reservan diez días hábiles antes del último día hábil del mes del hito, para que la revisión del Art. 18.3 termine dentro de ese mes. Los entregables que admiten revisión por partes se presentan por incrementos: el informe de QA de cada módulo de la Etapa 1 se entrega al terminar el módulo, entre agosto y septiembre de 2027, y el informe de integración al terminar 3.8.1, el 20 de octubre de 2027. Así, la revisión final del H4 cubre sólo el último incremento. Si el CLIENTE formula observaciones, la subsanación de diez días hábiles usa la reserva del hito, y el hito no se da por cumplido hasta el acta. Este procedimiento no supone que el CLIENTE renuncie a su plazo ni que firme el acta el mismo día de la entrega.
 
-El H1 y el H8 tienen reservas de 6 y 4 días hábiles, menores que los diez días de subsanación del Art. 18.3. Por eso su borrador se revisa con la Contraparte Técnica una semana antes de la entrega formal: el del H1 en la semana del 1 de marzo de 2027 y el del H8 en la semana del 6 de marzo de 2028. Ese control es el principal del H8, porque una observación formal llevaría su acta al 3 de abril de 2028, fuera del mes 14. Si aun así se formulan observaciones, el equipo del entregable las subsana en cinco días hábiles en el H1 y en cuatro en el H8, igual a la reserva de cada hito (SD8, R8-12).
+H1/H8 mantienen reservas nominales de 6/4 días y efectivas de 5/4; no son los diez días de revisión contractual del CLIENTE. H1 se elabora progresivamente del 1 al 4 de marzo (40 HH), se revisa preliminarmente el 5 (16 HH) y se cierra el 8–9 (24 HH): total 80 HH dentro de 1.5.1. Para las 16 HH de la revisión de un día se asignan tres participantes del equipo (capacidad 19,2 HH a 6,4 cada uno); la asistencia del CLIENTE no se suma a las HH de LafroX. H8 conserva revisión del borrador en la semana del 6 de marzo de 2028. Ambas reuniones se confirman con la Contraparte Técnica y no equivalen a aceptación formal. Las subsanaciones de cinco/cuatro días son objetivos internos, no sustituyen los diez contractuales. La segunda revisión requiere plazo acordado; si observaciones impiden el acta dentro del mes, se registra el efecto y se escala sin garantizar cumplimiento ni alterar automáticamente hitos siguientes.
 
 ### 5.6 Medición de los niveles de atención
 
@@ -529,7 +570,7 @@ La curva de la sección 4.4 y la carga diaria de la sección 6.1 se comparan con
 | DES | 28 equivalentes en los meses 6 y 7; 40 simultáneas como máximo entre junio y septiembre de 2027 | Desarrollo de software | 48 | La división trabaja en PHP/Laravel y Kotlin, el mismo stack de la oferta; el Líder de Desarrollo verifica la experiencia de cada persona asignada antes del mes 5. |
 | SRE | 17 equivalentes en el mes 4; 24 simultáneas en el mes 4; 16 a 21 en Operación; el tercer agente de la mesa se suma desde el mes 25 | SRE y Cloud (12) y NOC 24×7 (32) | 44 | Los meses 3 a 6 concentran la instalación de sala, racks y sitios: energía, climatización e incendio (6.1.2–6.1.4) los ejecutan instaladores especializados supervisados por SRE. NOC y mesa se cubren con personal del NOC con turnos asignados. |
 | SEG | 9 en el mes 16 con el SOC; 6 simultáneas sin el SOC | CISO y especialistas en ciberseguridad | 7 | El puesto SOC 24×7 suma 744 HH en un mes de 31 días, es decir, 6 personas equivalentes con las 128 HH efectivas de la sección 4.1; el SD4, Anexo 4-W.7, lo cubre con 4 personas a 42 horas semanales (5 desde el 26-04-2028) y la diferencia corresponde a ausencias y relevos. Se cubre con un SOC propio en el Centro de Operaciones de LafroX en Valparaíso, con analistas contratados antes del mes 13 bajo el Encargado de Seguridad (RT-11.17), con las mismas horas de la sección 4.2. |
-| CAL | 10 equivalentes y 13 simultáneas en el mes 16 | Aseguramiento y automatización de pruebas | 10 | La división declara 10; durante las certificaciones se agregan evaluadores subcontratados hasta 16 por día (SD6, sección 6.1.3). |
+| CAL | Envolvente mensual de la sección 4.4; máximo diario sujeto a sumar campañas concurrentes con el desglose de 4.2 | Aseguramiento y automatización de pruebas | 10 | La división declara 10; durante las certificaciones se agregan evaluadores subcontratados hasta 16 por día (SD6, sección 6.1.3). |
 | ARQ y DAT | 10 y 11 equivalentes; 15 simultáneas en conjunto en el mes 7 | Arquitectura de solución e integración | 15 | Datos y arquitectura comparten la división; la nivelación la limita a 15 personas por día. |
 | IMP | 26 equivalentes en el mes 19; 30 simultáneas en el mes 14 | La Tabla 1.1 no tiene una división de implantación | — | Los 13 puestos de acompañamiento se cubren con personal de implantación contratado para las marchas blancas y capacitado en 7.1. El contrato incluye una opción de hasta 8 personas adicionales por cuatro semanas para la contingencia de R8-18 (sección 4.5). |
 | JP | 5 en el mes 1 | Dirección de Operaciones, fuera de la Tabla 1.1 | — | Personas de dirección y documentación, no cinco jefes de proyecto. |
@@ -583,7 +624,7 @@ La figura muestra que sólo los cuatro primeros meses, hasta el H2, se presentan
 | 1.3.4 | JP | 1,8 / 2 | 80 | 01-03-2027 | 09-03-2027 | — |
 | 1.4.1 | JP | 1,8 / 2 | 80 | 01-02-2027 | 09-02-2027 | — |
 | 1.4.2 | JP | 1,8 / 2 | 80 | 01-02-2027 | 09-02-2027 | — |
-| 1.5.1 | CAL | 1,8 / 2 | 80 | 01-03-2027 | 09-03-2027 | — |
+| 1.5.1 | CAL | 1,8 / 3 | 80 | 01-03-2027 | 09-03-2027 | — |
 | 1.6.1 | JP | 1,8 / 2 | 80 | 01-03-2027 | 09-03-2027 | — |
 | 1.7.1 | JP | 1,8 / 2 | 80 | 01-04-2027 | 09-04-2027 | — |
 | 1.7.2 | JP | 1,8 / 2 | 80 | 03-04-2028 | 11-04-2028 | — |
@@ -654,15 +695,15 @@ La figura muestra que sólo los cuatro primeros meses, hasta el H2, se presentan
 | 3.8.2 | CAL | 2,5 / 3 | 320 | 21-10-2027 | 17-11-2027 | 3.8.1 |
 | 3.8.3 | CAL | 2,5 / 3 | 320 | 21-10-2027 | 17-11-2027 | 3.8.1 |
 | 3.8.4 | CAL | 1,8 / 2 | 320 | 21-10-2027 | 09-11-2027 | 3.8.1 |
-| 3.8.5 | CAL | 1,8 / 2 | 320 | 21-10-2027 | 09-11-2027 | 3.8.1 |
-| 3.8.6 | SEG | 1,8 / 2 | 160 | 21-10-2027 | 09-11-2027 | 3.8.1 |
+| 3.8.5 | CAL/SRE | 3,9 / 7 | 320 | 21-10-2027 | 09-11-2027 | 3.8.1 |
+| 3.8.6 | SEG/CAL | 3,9 / 6 | 320 | 21-10-2027 | 09-11-2027 | 3.8.1 |
 | 3.8.7 | CAL | 3,1 / 4 | 160 | 18-11-2027 | 29-11-2027 | 3.8.2, 3.8.3, 3.8.4, 3.8.5, 3.8.6 |
 | 3.8.8 | SRE | 1,8 / 2 | 320 | 21-10-2027 | 09-11-2027 | 3.8.1 |
 | 3.9.1 | CAL | 1,8 / 2 | 160 | 01-05-2028 | 18-05-2028 | 3.5 |
 | 3.9.2 | CAL | 3,6 / 5 | 320 | 27-05-2028 | 31-05-2028 | 3.9.1 |
 | 3.9.3 | CAL | 2,5 / 3 | 320 | 19-05-2028 | 26-05-2028 | 3.9.1 |
-| 3.9.4 | CAL | 2,5 / 3 | 320 | 19-05-2028 | 26-05-2028 | 3.9.1 |
-| 3.9.5 | SEG | 2,5 / 3 | 320 | 19-05-2028 | 26-05-2028 | 3.9.1 |
+| 3.9.4 | CAL/SRE | 8,3 / 13 | 320 | 19-05-2028 | 26-05-2028 | 3.9.1 |
+| 3.9.5 | SEG/CAL | 4,2 / 6 | 160 | 19-05-2028 | 26-05-2028 | 3.9.1 |
 | 3.9.6 | CAL | 3,1 / 4 | 160 | 01-06-2028 | 12-06-2028 | 3.9.1, 3.9.2, 3.9.3, 3.9.4, 3.9.5 |
 | 3.9.7 | SRE | 1,8 / 2 | 160 | 19-05-2028 | 26-05-2028 | 3.9.1 |
 | 3.10.1.1 | DAT | 1,8 / 2 | 240 | 02-08-2027 | 08-10-2027 | — |
@@ -750,7 +791,9 @@ La figura muestra que sólo los cuatro primeros meses, hasta el H2, se presentan
 | 1.3.4.A01 | Elaboración, revisión y aprobación del entregable | JP | 2 | 80 | 01-03-2027 | 09-03-2027 | 7 | — |
 | 1.4.1.A01 | Elaboración, revisión y aprobación del entregable | JP | 2 | 80 | 01-02-2027 | 09-02-2027 | 7 | — |
 | 1.4.2.A01 | Elaboración, revisión y aprobación del entregable | JP | 2 | 80 | 01-02-2027 | 09-02-2027 | 7 | — |
-| 1.5.1.A01 | Elaboración, revisión y aprobación del entregable | CAL | 2 | 80 | 01-03-2027 | 09-03-2027 | 7 | — |
+| 1.5.1.A01 | Borrador progresivo del plan | CAL | 2 | 40 | 01-03-2027 | 04-03-2027 | 4 | — |
+| 1.5.1.A02 | Revisión preliminar con Contraparte Técnica | CAL | 3 | 16 | 05-03-2027 | 05-03-2027 | 1 | 1.5.1.A01 |
+| 1.5.1.A03 | Resolver comentarios y cerrar expediente | CAL | 2 | 24 | 08-03-2027 | 09-03-2027 | 2 | 1.5.1.A02 |
 | 1.6.1.A01 | Elaboración, revisión y aprobación del entregable | JP | 2 | 80 | 01-03-2027 | 09-03-2027 | 7 | — |
 | 1.7.1.A01 | Elaboración, revisión y aprobación del entregable | JP | 2 | 80 | 01-04-2027 | 09-04-2027 | 7 | — |
 | 1.9.1.A01 | Elaboración, revisión y aprobación del entregable | SEG | 2 | 80 | 01-02-2027 | 09-02-2027 | 7 | — |
@@ -895,7 +938,7 @@ Estos 59 paquetes no se descomponen en una lista de actividades distintas, porqu
 | 7.2.5 | T | IMP | 13–21 | 160 | Una actividad por quincena, por presencia continua o periódica | 18 | 8.9 |
 | 8.1.1 | C | SRE | 21–56 | 26280 | Una actividad de nivel de esfuerzo por quincena, dividida en relevos o puestos según la HH de cada mes | 432 | 62.0 |
 | 8.1.2 | C | SRE | 21–56 | 54239 | Una actividad de nivel de esfuerzo por quincena, dividida en relevos o puestos según la HH de cada mes | 679 | 79.9 |
-| 8.1.3 | G | SRE | 21–56 | 80 | 7 ocurrencias en la ventana, por presencia continua o periódica | 7 | 11.4 |
+| 8.1.3 | V | SRE/CAL | 21–56 | 560 | Siete campañas reales de 80 HH; cinco actividades de 16 HH por campaña | 35 | 16.0 |
 | 8.1.4 | R | JP | 21–56 | 288 | Una actividad por ocurrencia (anual), ejecutada dentro de una quincena; 2 actividad(es) por ocurrencia | 6 | 48.0 |
 | 8.1.5 | C | SEG | 13–56 | 32112 | Una actividad de nivel de esfuerzo por quincena, dividida en relevos o puestos según la HH de cada mes | 528 | 62.0 |
 | 8.1.6 | R | SRE | 21–56 | 576 | Una actividad por ocurrencia (mensual), ejecutada dentro de una quincena; 1 actividad(es) por ocurrencia | 36 | 16.0 |
