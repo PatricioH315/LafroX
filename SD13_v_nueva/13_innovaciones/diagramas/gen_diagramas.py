@@ -1,7 +1,7 @@
 """Genera los diagramas draw.io del SD13 y los exporta a PDF.
 
 Mismo estilo que el SD9: 1 px de draw.io = 0,72 pt en el PDF exportado.
-Texto a 13 px (~9,4 pt) y ancho ~600 px para insertar a tamaño natural
+Texto a 14 px (~10 pt) para conservar al menos 9 pt tras ajustar el ancho
 (ancho de texto de la clase lafrox = 448 pt ~ 622 px).
 
 Uso: python gen_diagramas.py <carpeta_salida>
@@ -17,7 +17,7 @@ DRAWIO = r"C:\Users\henri\AppData\Local\Programs\draw.io\draw.io.exe"
 OUT = Path(sys.argv[1]) if len(sys.argv) > 1 else Path(__file__).parent
 OUT.mkdir(parents=True, exist_ok=True)
 
-FS = 13
+FS = 14
 BOX = (f"rounded=1;whiteSpace=wrap;html=1;fontSize={FS};fontFamily=Helvetica;"
        "fillColor=#FFFFFF;strokeColor=#333333;fontColor=#111111;arcSize=8;")
 BOXACC = (f"rounded=1;whiteSpace=wrap;html=1;fontSize={FS};fontFamily=Helvetica;"
@@ -30,7 +30,7 @@ EDGE = ("edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#333333;"
 EDGEDASH = EDGE + "dashed=1;"
 
 HELV = pymupdf.Font("helv")
-LINE = 16  # alto de línea a 13 px
+LINE = 17  # alto de línea a 14 px
 
 
 def alto(texto, ancho, minimo=40):

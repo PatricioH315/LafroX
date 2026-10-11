@@ -8,41 +8,41 @@
 \contentsline {subsection}{\numberline {13.1.2}Tecnología, práctica o modelo}{10}{subsection.13.1.2}%
 \contentsline {subsection}{\numberline {13.1.3}Nivel de madurez}{11}{subsection.13.1.3}%
 \contentsline {subsection}{\numberline {13.1.4}Diseño de la incorporación}{12}{subsection.13.1.4}%
-\contentsline {subsection}{\numberline {13.1.5}Impacto económico}{12}{subsection.13.1.5}%
-\contentsline {subsection}{\numberline {13.1.6}Indicador de verificación}{13}{subsection.13.1.6}%
-\contentsline {subsection}{\numberline {13.1.7}Riesgo de adopción}{14}{subsection.13.1.7}%
-\contentsline {section}{\numberline {13.2}Innovación 2}{14}{section.13.2}%
-\contentsline {subsection}{\numberline {13.2.1}Problema u oportunidad}{14}{subsection.13.2.1}%
-\contentsline {subsection}{\numberline {13.2.2}Tecnología, práctica o modelo}{15}{subsection.13.2.2}%
-\contentsline {subsection}{\numberline {13.2.3}Nivel de madurez}{16}{subsection.13.2.3}%
-\contentsline {subsection}{\numberline {13.2.4}Diseño de la incorporación}{17}{subsection.13.2.4}%
-\contentsline {subsection}{\numberline {13.2.5}Impacto económico}{17}{subsection.13.2.5}%
-\contentsline {subsection}{\numberline {13.2.6}Indicador de verificación}{18}{subsection.13.2.6}%
-\contentsline {subsection}{\numberline {13.2.7}Riesgo de adopción}{18}{subsection.13.2.7}%
-\contentsline {section}{\numberline {13.3}Innovación 3}{18}{section.13.3}%
-\contentsline {subsection}{\numberline {13.3.1}Problema u oportunidad}{20}{subsection.13.3.1}%
-\contentsline {subsection}{\numberline {13.3.2}Tecnología, práctica o modelo}{20}{subsection.13.3.2}%
-\contentsline {subsection}{\numberline {13.3.3}Nivel de madurez}{22}{subsection.13.3.3}%
-\contentsline {subsection}{\numberline {13.3.4}Diseño de la incorporación}{23}{subsection.13.3.4}%
-\contentsline {subsection}{\numberline {13.3.5}Impacto económico}{24}{subsection.13.3.5}%
-\contentsline {subsection}{\numberline {13.3.6}Indicador de verificación}{24}{subsection.13.3.6}%
-\contentsline {subsection}{\numberline {13.3.7}Riesgo de adopción}{26}{subsection.13.3.7}%
-\contentsline {section}{\numberline {13.4}Innovación 4}{26}{section.13.4}%
-\contentsline {subsection}{\numberline {13.4.1}Problema u oportunidad}{26}{subsection.13.4.1}%
-\contentsline {subsection}{\numberline {13.4.2}Tecnología, práctica o modelo}{27}{subsection.13.4.2}%
-\contentsline {subsection}{\numberline {13.4.3}Nivel de madurez}{28}{subsection.13.4.3}%
-\contentsline {subsection}{\numberline {13.4.4}Diseño de la incorporación}{29}{subsection.13.4.4}%
-\contentsline {subsection}{\numberline {13.4.5}Impacto económico}{29}{subsection.13.4.5}%
-\contentsline {subsection}{\numberline {13.4.6}Indicador de verificación}{29}{subsection.13.4.6}%
-\contentsline {subsection}{\numberline {13.4.7}Riesgo de adopción}{31}{subsection.13.4.7}%
-\contentsline {section}{\numberline {13.5}Innovación 5}{31}{section.13.5}%
-\contentsline {subsection}{\numberline {13.5.1}Problema u oportunidad}{31}{subsection.13.5.1}%
-\contentsline {subsection}{\numberline {13.5.2}Tecnología, práctica o modelo}{32}{subsection.13.5.2}%
-\contentsline {subsection}{\numberline {13.5.3}Nivel de madurez}{33}{subsection.13.5.3}%
-\contentsline {subsection}{\numberline {13.5.4}Diseño de la incorporación}{33}{subsection.13.5.4}%
-\contentsline {subsection}{\numberline {13.5.5}Impacto económico}{34}{subsection.13.5.5}%
-\contentsline {subsection}{\numberline {13.5.6}Indicador de verificación}{34}{subsection.13.5.6}%
-\contentsline {subsection}{\numberline {13.5.7}Riesgo de adopción}{35}{subsection.13.5.7}%
-\contentsline {section}{Referencias}{35}{table.caption.32}%
-\contentsline {section}{Declaración de uso de IA}{37}{table.caption.32}%
+\contentsline {subsection}{\numberline {13.1.5}Impacto económico}{14}{subsection.13.1.5}%
+\contentsline {subsection}{\numberline {13.1.6}Indicador de verificación}{15}{subsection.13.1.6}%
+\contentsline {subsection}{\numberline {13.1.7}Riesgo de adopción}{15}{subsection.13.1.7}%
+\contentsline {section}{\numberline {13.2}Innovación 2}{15}{section.13.2}%
+\contentsline {subsection}{\numberline {13.2.1}Problema u oportunidad}{16}{subsection.13.2.1}%
+\contentsline {subsection}{\numberline {13.2.2}Tecnología, práctica o modelo}{16}{subsection.13.2.2}%
+\contentsline {subsection}{\numberline {13.2.3}Nivel de madurez}{18}{subsection.13.2.3}%
+\contentsline {subsection}{\numberline {13.2.4}Diseño de la incorporación}{18}{subsection.13.2.4}%
+\contentsline {subsection}{\numberline {13.2.5}Impacto económico}{20}{subsection.13.2.5}%
+\contentsline {subsection}{\numberline {13.2.6}Indicador de verificación}{21}{subsection.13.2.6}%
+\contentsline {subsection}{\numberline {13.2.7}Riesgo de adopción}{21}{subsection.13.2.7}%
+\contentsline {section}{\numberline {13.3}Innovación 3}{22}{section.13.3}%
+\contentsline {subsection}{\numberline {13.3.1}Problema u oportunidad}{22}{subsection.13.3.1}%
+\contentsline {subsection}{\numberline {13.3.2}Tecnología, práctica o modelo}{23}{subsection.13.3.2}%
+\contentsline {subsection}{\numberline {13.3.3}Nivel de madurez}{24}{subsection.13.3.3}%
+\contentsline {subsection}{\numberline {13.3.4}Diseño de la incorporación}{25}{subsection.13.3.4}%
+\contentsline {subsection}{\numberline {13.3.5}Impacto económico}{27}{subsection.13.3.5}%
+\contentsline {subsection}{\numberline {13.3.6}Indicador de verificación}{27}{subsection.13.3.6}%
+\contentsline {subsection}{\numberline {13.3.7}Riesgo de adopción}{29}{subsection.13.3.7}%
+\contentsline {section}{\numberline {13.4}Innovación 4}{29}{section.13.4}%
+\contentsline {subsection}{\numberline {13.4.1}Problema u oportunidad}{29}{subsection.13.4.1}%
+\contentsline {subsection}{\numberline {13.4.2}Tecnología, práctica o modelo}{30}{subsection.13.4.2}%
+\contentsline {subsection}{\numberline {13.4.3}Nivel de madurez}{31}{subsection.13.4.3}%
+\contentsline {subsection}{\numberline {13.4.4}Diseño de la incorporación}{32}{subsection.13.4.4}%
+\contentsline {subsection}{\numberline {13.4.5}Impacto económico}{34}{subsection.13.4.5}%
+\contentsline {subsection}{\numberline {13.4.6}Indicador de verificación}{35}{subsection.13.4.6}%
+\contentsline {subsection}{\numberline {13.4.7}Riesgo de adopción}{35}{subsection.13.4.7}%
+\contentsline {section}{\numberline {13.5}Innovación 5}{36}{section.13.5}%
+\contentsline {subsection}{\numberline {13.5.1}Problema u oportunidad}{36}{subsection.13.5.1}%
+\contentsline {subsection}{\numberline {13.5.2}Tecnología, práctica o modelo}{36}{subsection.13.5.2}%
+\contentsline {subsection}{\numberline {13.5.3}Nivel de madurez}{37}{subsection.13.5.3}%
+\contentsline {subsection}{\numberline {13.5.4}Diseño de la incorporación}{38}{subsection.13.5.4}%
+\contentsline {subsection}{\numberline {13.5.5}Impacto económico}{39}{subsection.13.5.5}%
+\contentsline {subsection}{\numberline {13.5.6}Indicador de verificación}{39}{subsection.13.5.6}%
+\contentsline {subsection}{\numberline {13.5.7}Riesgo de adopción}{41}{subsection.13.5.7}%
+\contentsline {section}{Referencias}{41}{table.caption.37}%
+\contentsline {section}{Declaración de uso de IA}{42}{table.caption.37}%
 \contentsfinish 

@@ -34,7 +34,7 @@ Tres de las cinco innovaciones (1, 2 y 3) miden su beneficio en la marcha blanca
 
 La Figura~\ref{fig:sd13-1} ubica las cinco innovaciones sobre las capas de la arquitectura del Capítulo 4. Cada caja es un componente o módulo ya ofertado, y entre paréntesis se indican las innovaciones que lo usan.
 
-\figuralafrox{1}{diagramas/Fig_13-1_Mapa_Innovaciones.pdf}{Ubicación de las cinco innovaciones en la arquitectura. Fuente: elaboración propia a partir del Capítulo 4, secciones 4.1.3, 4.1.4 y 4.2.2, y del Formulario T-11.}{fig:sd13-1}
+\recorridolafrox{1}{diagramas/Fig_13-1_Mapa_Innovaciones.pdf}{Ubicación de las cinco innovaciones en la arquitectura. Fuente: elaboración propia a partir del Capítulo 4, secciones 4.1.3, 4.1.4 y 4.2.2, y del Formulario T-11.}{fig:sd13-1}
 
 La figura muestra que las cinco innovaciones se apoyan en los mismos componentes ya ofertados. Cuatro de ellas pasan por M10 Analítica y tres por la cola de sincronización de los terminales, que es la pieza que permite trabajar sin señal. Ninguna crea un sistema paralelo: cada una agrega una regla, un contrato de datos o un circuito de trabajo sobre la plataforma del Capítulo 4. La matriz completa está en el Anexo 13.B.
 
@@ -87,6 +87,12 @@ Riesenegger et al. (2023) revisan las prácticas contra la merma de alimentos en
 \subsection{Diseño de la incorporación}
 
 M10 Analítica calcula la lista de avisos cada noche con datos de M2 Inventario, de M9 Calidad y trazabilidad y del historial de compra de M3 Preventa; sus datos residen en N-10 (capa 6). M3 Preventa entrega la lista en la aplicación de preventa C-01 (capa 1). La lista viaja en el terminal y funciona sin señal (Capítulo 4, sección 4.1.15), y la respuesta de la visita vuelve por la cola de sincronización de M3 (capa 5). La innovación no abre una interfaz pública; su contrato de datos está en el Anexo 13.A.
+
+La Figura~\ref{fig:sd13-2} recorre el servicio desde los datos de origen hasta la verificación del beneficio en el local.
+
+\recorridolafrox{0.98}{diagramas/Fig_13-2_Recorrido_INN01.pdf}{Seguimiento posentrega: del dato del lote al cierre de la visita. Fuente: elaboración propia a partir de la sección 13.1.4 y del contrato de datos del Anexo 13.A.}{fig:sd13-2}
+
+El recorrido distingue el cálculo nocturno de la confirmación en terreno. La precarga permite consultar el aviso sin señal y la cola devuelve la respuesta cuando vuelve la conexión. El cierre comercial no altera el inventario oficial ni reemplaza la decisión sanitaria de Calidad; por eso el beneficio se contrasta con vencimiento posentrega y no con la merma de bodega.
 
 El piloto se hace en 120 locales de 12 rutas, con al menos 100 avisos evaluables. El tamaño es una decisión de diseño que permite evaluar el indicador I-01A, no una muestra representativa del canal. La Tabla~\ref{tab:sd13-3} presenta los paquetes de la EDT que ejecutan la innovación.
 
@@ -202,6 +208,12 @@ Las piezas por separado, la integración y la entrega continuas, los entornos ef
 \subsection{Diseño de la incorporación}
 
 La aplicación de preventa C-01 (M3 Preventa), los terminales de bodega C-03 (M5 Preparación) y la aplicación de reparto C-02 (M6 Reparto), en la capa 1, emiten la evidencia con un cupo de tamaño y frecuencia para no competir con la sincronización de pedidos. La capa 8 correlaciona las trazas, y la capa 7 sanitiza y controla el acceso a los paquetes. Como la innovación modifica el tratamiento de datos de la capa de seguridad, el Encargado de Seguridad de la Información, Álvaro Catalán, aprueba la sanitización con su propio modelado de amenazas (RT-26.07).
+
+La Figura~\ref{fig:sd13-3} muestra cómo un incidente real se transforma en un escenario reproducible y una prueba de regresión.
+
+\recorridolafrox{0.98}{diagramas/Fig_13-3_Recorrido_INN02.pdf}{Incidente de terreno: evidencia, reproducción y cierre comprobado. Fuente: elaboración propia a partir de la sección 13.2.4 y del contrato de datos del Anexo 13.A.}{fig:sd13-3}
+
+La secuencia separa la captura por el terminal, la protección de la evidencia, la admisión por Calidad y la corrección por Desarrollo. El cierre depende de reproducir satisfactoriamente el caso y de la confirmación del actor de terreno, no solo de redactar una causa. Los recursos efímeros se destruyen al terminar incluso ante una falla; el diagnóstico convencional permanece como contingencia.
 
 El flujo de responsabilidades es el siguiente: Operación/SRE recoge la evidencia, Calidad admite el paquete y Desarrollo corrige. La Tabla~\ref{tab:sd13-8} presenta los paquetes de la EDT.
 
@@ -321,6 +333,12 @@ EPCIS 2.0 es un estándar publicado (GS1 AISBL, 2022). Los modelos cinéticos de
 
 La innovación usa componentes que la arquitectura ya contiene. Los sensores B-01 y los termógrafos B-03 son la fuente de las series; el gateway B-02 acumula la carga térmica sin enlace; la aplicación de reparto C-02 trae el registro de ruta. N-08 Ingesta de IoT y N-06 Telemetría cruda reciben las series y reutilizan los 10.920 mensajes diarios ya dimensionados (21 puntos × 288 lecturas más 28 termógrafos × 174 lecturas; Capítulo 4, sección 4.2), sin agregar ingesta. La capa 5 transporta los eventos EPCIS con datos de sensor. M9 Calidad y trazabilidad muestra la historia y la estimación, y en ella Calidad dispone y aprueba los parámetros. M2 Inventario y M5 Preparación reciben el orden de salida sugerido, habilitado por familia. M10 Analítica, sobre N-10, ejecuta el modelo, recalcula y publica, y conserva las series cinco años. La capa 7 versiona y aprueba el modelo y sus parámetros.
 
+La Figura~\ref{fig:sd13-4} distingue la captura en cámara y en ruta, la asociación al lote y el uso posterior de la estimación.
+
+\recorridolafrox{0.98}{diagramas/Fig_13-4_Recorrido_INN03.pdf}{Historia térmica: del sensor a la decisión de Calidad. Fuente: elaboración propia a partir de la sección 13.3.4 y del contrato de datos del Anexo 13.A.}{fig:sd13-4}
+
+El recorrido no supone cálculo continuo en el camión: C-02 alerta durante la ruta y el registro completo se descarga al retorno. En cámara, B-02 acumula carga térmica sin enlace. Después, la asociación temporal y el modelo versionado producen una estimación que Calidad contrasta antes de habilitar su uso por familia. La sugerencia no sustituye el FEFO ni autoriza alargar la fecha impresa.
+
 La Tabla~\ref{tab:sd13-14} presenta los paquetes de la EDT.
 
 \begin{tablalafrox}{Paquetes de la EDT de la innovación 3. Fuente: Formulario T-14 y Anexo 7.D.}{tab:sd13-14}{>{\hsize=0.718\hsize\linewidth=\hsize}Y >{\hsize=0.649\hsize\linewidth=\hsize}Y >{\hsize=0.519\hsize\linewidth=\hsize}Y >{\hsize=2.669\hsize\linewidth=\hsize}Y >{\hsize=0.445\hsize\linewidth=\hsize}Y}
@@ -435,6 +453,12 @@ Cada nivel tiene un entregable que Finanzas del CLIENTE puede revisar, por lo qu
 
 M6 Reparto y M7 Cobranza y rendición aportan los hechos de cada entrega, y M8 Devoluciones y envases aporta los retornos. M10 Analítica calcula el costo comparable y el OTIF sobre N-10 (capa 6). La capa 6 versiona la línea base y la canasta, y la capa 7 audita la cifra liquidada. El dato contable definitivo vive en el ERP. La Tabla~\ref{tab:sd13-20} presenta los paquetes de la EDT.
 
+La Figura~\ref{fig:sd13-5} recorre la formación de la referencia comparable, el ensayo en sombra y la liquidación con efecto de pago.
+
+\recorridolafrox{0.98}{diagramas/Fig_13-5_Recorrido_INN04.pdf}{Costo de servir: de los hechos a la liquidación auditable. Fuente: elaboración propia a partir de la sección 13.4.4 y del contrato de datos del Anexo 13.A.}{fig:sd13-5}
+
+La referencia de los meses 21 a 23 precede a cualquier pago variable por este mecanismo. Finanzas debe reproducir las tres liquidaciones en sombra, y desde el mes 24 el cálculo sigue condicionado por la meta OTIF vigente. La canasta evita que una reducción aparente de costo provenga de excluir entregas; la decisión sobre la malla de atención sigue en Comercial del CLIENTE.
+
 \begin{tablalafrox}{Paquetes de la EDT de la innovación 4. Fuente: Formulario T-14 y Anexo 7.D.}{tab:sd13-20}{>{\hsize=0.718\hsize\linewidth=\hsize}Y >{\hsize=0.445\hsize\linewidth=\hsize}Y >{\hsize=0.516\hsize\linewidth=\hsize}Y >{\hsize=2.877\hsize\linewidth=\hsize}Y >{\hsize=0.445\hsize\linewidth=\hsize}Y}
   {\cab{Paquete} & \cab{EDT} & \cab{Meses} & \cab{Entregable} & \cab{Resp.}}
 INN-04.P1 & 5.4.3 & 17 a 20 & Reglas de atribución, canasta, índices y traducción a la Oferta Económica & JP \\
@@ -539,6 +563,12 @@ El informe sobre datos propios y el control de divulgación estadística son pr�
 
 M10 Analítica calcula los bloques sobre N-10 (capa 6). M3 Preventa los muestra en la aplicación de preventa C-01 (capa 1), y M6 Reparto imprime la copia con la impresora de cabina del camión. La capa 7 limita la hoja a su receptor y audita el tratamiento en el registro de actividades de tratamiento. La Tabla~\ref{tab:sd13-25} presenta los paquetes de la EDT.
 
+La Figura~\ref{fig:sd13-6} muestra las dos vías de entrega de la hoja y el control de su cobertura efectiva.
+
+\recorridolafrox{0.98}{diagramas/Fig_13-6_Recorrido_INN05.pdf}{Hoja de negocio: preparación, visita sin señal y copia solicitada. Fuente: elaboración propia a partir de la sección 13.5.4 y del contrato de datos del Anexo 13.A.}{fig:sd13-6}
+
+La información se prepara antes de la ruta y se muestra en el terminal del preventista, sin exigir conexión ni dispositivo al almacenero. La impresión es una vía posterior y opcional: si no hay pedido, no hay entrega inmediata de la copia. Por eso I-05A separa las hojas mostradas de las copias pedidas y entregadas. El bloque comparativo permanece condicionado a la aprobación legal y no impide utilizar los bloques de datos propios.
+
 \begin{tablalafrox}{Paquetes de la EDT de la innovación 5. Fuente: Formulario T-14 y Anexo 7.D.}{tab:sd13-25}{>{\hsize=0.718\hsize\linewidth=\hsize}Y >{\hsize=0.649\hsize\linewidth=\hsize}Y >{\hsize=0.512\hsize\linewidth=\hsize}Y >{\hsize=2.676\hsize\linewidth=\hsize}Y >{\hsize=0.445\hsize\linewidth=\hsize}Y}
   {\cab{Paquete} & \cab{EDT} & \cab{Meses} & \cab{Entregable} & \cab{Resp.}}
 INN-05.P1 & 3.10.4.1 & 13 y 14 & Prototipo en papel y pantalla; prueba de comprensión con 24 locales & IMP \\
@@ -624,11 +654,11 @@ En cumplimiento de la sección 7.2 de las Aclaraciones de la licitación, la tab
 \begin{tablalafroxlarga}{Declaración de uso de IA. Fuente: registro del equipo.}{tab:sd13-29}{>{\hsize=1.143\hsize\linewidth=\hsize}Y >{\hsize=1.058\hsize\linewidth=\hsize}Y >{\hsize=1.387\hsize\linewidth=\hsize}Y >{\hsize=0.551\hsize\linewidth=\hsize}Y >{\hsize=0.889\hsize\linewidth=\hsize}Y >{\hsize=0.973\hsize\linewidth=\hsize}Y}
   {\cab{Sección} & \cab{Herramienta} & \cab{Finalidad del uso} & \cab{Nivel en texto} & \cab{Nivel en diagramas} & \cab{Revisión humana (quién y qué verificó)}}
 Introducción & Claude Code & Redacción del resumen y de la conexión con los demás capítulos; diagrama de la Figura~\ref{fig:sd13-1} & Alto & Alto (Figura~\ref{fig:sd13-1}) & [[REVISIÓN HUMANA]] \\
-13.1 Innovación 1 & Claude Code & Ordenamiento en los siete elementos y cotejo con el Capítulo 3, el Formulario T-12 y el Anexo 7.D & Medio & Ninguno & [[REVISIÓN HUMANA]] \\
-13.2 Innovación 2 & Claude Code; OpenAI Codex & Ordenamiento en los siete elementos y cotejo con los Capítulos 4 y 6; automatización del ciclo de recursos efímeros por incidencia & Medio & Ninguno & [[REVISIÓN HUMANA]] \\
-13.3 Innovación 3 & Claude Code & Ordenamiento en los siete elementos, cotejo con el Capítulo 4 y documentación del RT-05.30 & Medio & Ninguno & [[REVISIÓN HUMANA]] \\
-13.4 Innovación 4 & Claude Code & Ordenamiento en los siete elementos y cotejo con el Formulario E-25 y el Capítulo 3 & Medio & Ninguno & [[REVISIÓN HUMANA]] \\
-13.5 Innovación 5 & Claude Code & Ordenamiento en los siete elementos y cotejo con el Formulario T-11 & Medio & Ninguno & [[REVISIÓN HUMANA]] \\
+13.1 Innovación 1 & Claude Code; OpenAI Codex & Ordenamiento en los siete elementos y cotejo con el Capítulo 3, el Formulario T-12 y el Anexo 7.D; diseño del recorrido de la Figura~\ref{fig:sd13-2} & Medio & Alto (Figura~\ref{fig:sd13-2}) & [[REVISIÓN HUMANA]] \\
+13.2 Innovación 2 & Claude Code; OpenAI Codex & Ordenamiento en los siete elementos y cotejo con los Capítulos 4 y 6; automatización del ciclo de recursos efímeros por incidencia; diseño del recorrido de la Figura~\ref{fig:sd13-3} & Medio & Alto (Figura~\ref{fig:sd13-3}) & [[REVISIÓN HUMANA]] \\
+13.3 Innovación 3 & Claude Code; OpenAI Codex & Ordenamiento en los siete elementos, cotejo con el Capítulo 4 y documentación del RT-05.30; diseño del recorrido de la Figura~\ref{fig:sd13-4} & Medio & Alto (Figura~\ref{fig:sd13-4}) & [[REVISIÓN HUMANA]] \\
+13.4 Innovación 4 & Claude Code; OpenAI Codex & Ordenamiento en los siete elementos y cotejo con el Formulario E-25 y el Capítulo 3; diseño del recorrido de la Figura~\ref{fig:sd13-5} & Medio & Alto (Figura~\ref{fig:sd13-5}) & [[REVISIÓN HUMANA]] \\
+13.5 Innovación 5 & Claude Code; OpenAI Codex & Ordenamiento en los siete elementos y cotejo con el Formulario T-11; diseño del recorrido de la Figura~\ref{fig:sd13-6} & Medio & Alto (Figura~\ref{fig:sd13-6}) & [[REVISIÓN HUMANA]] \\
 Anexos 13.A a 13.D & Claude Code & Ver la declaración de los anexos & Alto & Ninguno & [[REVISIÓN HUMANA]] \\
 Formulario T-19 & Claude Code & Ver la declaración del formulario & Alto & Ninguno & [[REVISIÓN HUMANA]] \\
 \end{tablalafroxlarga}
