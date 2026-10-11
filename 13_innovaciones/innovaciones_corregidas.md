@@ -491,7 +491,7 @@ Al no ser un modelo aprendido, no se aplica el capítulo 18 de las Bases Técnic
 |---|---|
 | Segmentación por rentabilidad, construida **para** Comercial y Finanzas | RF-11.08 (M10, Etapa 2) |
 | Autoatención de saldo, pedido y última entrega | RT-16.32 |
-| Portal web con estado de cuenta, saldo, entregas y documentos (requiere sesión e internet) | RF-07.06, RF-12.15 a RF-12.18 |
+| Portal web con estado de cuenta, saldo, entregas y documentos (requiere sesión e internet) | RF-07.07, RF-12.15 a RF-12.18 |
 | Personas usuarias con baja alfabetización digital | Bases Adm., Art. 26° |
 | Comprobante de entrega | Criterio 8 |
 

@@ -78,7 +78,7 @@ Las decisiones de este ítem aplican las Bases Administrativas (Distribuidora Pu
 
 Los antecedentes de empresa, problema, alcance y arquitectura proceden de los Subdocumentos 1, 2, 3 y 4, respectivamente (LafroX SpA, 2026d, 2026c, 2026b, 2026a); sus remisiones señalan el apartado específico utilizado.
 
-El diccionario 5-A contiene una fila por cada uno de los 791 atributos de 111 entidades del esquema lógico, dibujado entre el cuerpo y 5-M. Conserva nombre, significado, tipo, dominio, obligatoriedad, referencia, propietario y sensibilidad/política, conforme RT-05.01.
+El diccionario 5-A contiene una fila por cada uno de los 987 atributos de 121 entidades del esquema lógico de los dominios desarrollados en el cuerpo y 5-M. Conserva nombre, significado, tipo, dominio, obligatoriedad, referencia, propietario y sensibilidad/política, conforme RT-05.01.
 
 Las nueve tablas agrupan dominios sin resumir atributos. json representa jsonb en PostgreSQL y datetime timestamp UTC; cachés/documentos no son tablas SQL por aparecer en una vista ER. Las políticas P01 y siguientes evitan repetir retención/control por fila y se desarrollan en la leyenda posterior y 5-D/5-E.
 
@@ -121,12 +121,15 @@ La Tabla A.2 desarrolla los atributos de maestros e identidades, con sus condici
 | `mae_cliente` | `razon_social` | Razón Social | string(255) | Razón social del interviniente con la grafía del documento oficial | Obligatorio | Sin clave | `MAE` | `ME`; `P01` |
 | `mae_cliente` | `canal` | Canal | string(32), catálogo | Catálogo: TRADICIONAL, MODERNO, FOOD_SERVICE, CADENA, HORECA | Obligatorio | Sin clave | `MAE` | `ME`; `P01` |
 | `mae_cliente` | `condicion_credito` | Condicion Credito | string(32), catálogo | Catálogo: CREDITO, CONTADO, PREPAGO | Obligatorio | Sin clave | `MAE` | `AL`; `P03` |
+| `mae_cliente` | `limite_credito` | Limite credito | decimal(18,2), CLP | Cupo aprobado informado por ERP; cero significa sin crédito, NULL desconocido no se convierte en cero | Obligatorio antes de habilitar crédito; NULL si ERP no lo informó, sin impedir contado autorizado | Sin clave | `MAE` | `AL`; `P30` |
 | `mae_cliente_punto` | `cliente_punto_id` | Identificador de cliente punto | uuid, 128 bits | UUID generado; independiente del código comercial | Obligatorio, clave primaria | Clave primaria | `MAE` | `ME`; `P01` |
 | `mae_cliente_punto` | `cliente_id` | Identificador de cliente | uuid, 128 bits | UUID del registro referenciado | Obligatorio; referencia válida | Referencia a `mae_cliente.cliente_id`; integridad según 5-B | `MAE` | `ME`; `P01` |
 | `mae_cliente_punto` | `sitio_id` | instalacion que atiende | uuid, 128 bits | UUID del registro referenciado | Obligatorio; referencia válida | Referencia a `mae_sitio.sitio_id`; integridad según 5-B | `MAE` | `ME`; `P01` |
 | `mae_cliente_punto` | `codigo_punto` | identificador del punto de entrega | string(64) | Texto normalizado, sin espacios iniciales o finales ni duplicados | Obligatorio | Sin clave | `MAE` | `ME`; `P01` |
 | `mae_cliente_punto` | `tipo_punto` | Tipo Punto | string(32), catálogo | Catálogo: BODEGA, LOCAL, CENTRO, CANAL | Obligatorio | Sin clave | `MAE` | `ME`; `P01` |
 | `mae_cliente_punto` | `activo` | Activo | boolean | Verdadero o falso explícito y validado; sin convertir desconocido en falso | Obligatorio; valor explícito sin default de dato desconocido | Sin clave | `MAE` | `ME`; `P01` |
+| `mae_cliente_punto` | `ubicacion` | Ubicacion | geometry(Point,4326) | Coordenadas del punto de entrega; longitud y latitud válidas | Obligatorio | Sin clave | `MAE` | `ME`; `P01` |
+| `mae_cliente_punto` | `zona_reparto` | Zona reparto | string(64) | Código de zona logística aprobado para asignación de rutas | Obligatorio | Sin clave | `MAE` | `ME`; `P01` |
 | `mae_proveedor` | `proveedor_id` | Identificador de proveedor | uuid, 128 bits | UUID generado; independiente del código comercial | Obligatorio, clave primaria | Clave primaria | `MAE` | `ME`; `P01` |
 | `mae_proveedor` | `rut` | Rut | string(12), RUT sin puntos | RUT chileno de representación de RUT con dígito verificador numérico o K sin puntos ni guiones, con dígito verificador válido | Obligatorio | Valor único | `MAE` | `CR`; `P02` |
 | `mae_proveedor` | `gln` | Gln | string(13), GLN GS1 | GLN de 13 dígitos | Obligatorio | Sin clave | `MAE` | `ME`; `P01` |
@@ -134,13 +137,25 @@ La Tabla A.2 desarrolla los atributos de maestros e identidades, con sus condici
 | `mae_producto` | `producto_id` | Identificador de producto | uuid, 128 bits | UUID generado; independiente del código comercial | Obligatorio, clave primaria | Clave primaria | `MAE` | `ME`; `P01` |
 | `mae_producto` | `gtin` | GTIN canónico del producto; único cuando aplica | string(14), GTIN GS1 | GTIN de 8, 12, 13 o 14 dígitos con dígito verificador válido | Obligatorio | Único para GTIN canónico no nulo; equivalencias alternas controladas | `MAE` | `ME`; `P01` |
 | `mae_producto` | `descripcion` | Descripción | string(512) | Texto libre normalizado, hasta 512 caracteres, con el detalle que exige el registro | Obligatorio | Sin clave | `MAE` | `ME`; `P01` |
-| `mae_producto` | `requiere_lote` | obligatoriedad del lote segun producto | boolean | Verdadero o falso explícito y validado; sin convertir desconocido en falso | Obligatorio; valor explícito sin default de dato desconocido | Sin clave | `MAE` | `ME`; `P01` |
+| `mae_producto` | `requiere_lote` | Indicador de trazabilidad por lote | boolean | true exige lote en hitos de recepción, preparación y salida; false solo para producto exento aprobado | Obligatorio; valor explícito sin default de dato desconocido | Sin clave | `MAE` | `ME`; `P01` |
 | `mae_producto` | `vida_util_dias` | atributo de calculo, no parte de la identidad | integer, 32 bits | Entero dentro del rango del tipo; negativo solo en una diferencia o un descuadre declarado | Obligatorio | Sin clave | `MAE` | `ME`; `P01` |
 | `mae_producto` | `tipo_almacenamiento` | Tipo de almacenamiento de la ficha | string(32), catálogo | AMBIENTE, REFRIGERADO, CONGELADO; procede de ficha verificable | Condicional: obligatorio antes de habilitar el producto | Sin clave | `MAE` | `ME`; `P01` |
 | `mae_producto` | `temperatura_min_c` | Límite inferior de almacenamiento | decimal(18,3), °C | Valor de la ficha; menor o igual al máximo; sin default | Condicional: obligatorio antes de habilitar el producto | Sin clave | `MAE` | `ME`; `P01` |
 | `mae_producto` | `temperatura_max_c` | Límite superior de almacenamiento | decimal(18,3), °C | Valor de la ficha; mayor o igual al mínimo; sin default | Condicional: obligatorio antes de habilitar el producto | Sin clave | `MAE` | `ME`; `P01` |
 | `mae_producto` | `ficha_ref` | Referencia documental de origen | string(512) | Ficha del fabricante/proveedor conservada con huella en obj_objeto; sin inventar rangos | Condicional: obligatoria antes de habilitar el producto | Referencia lógica verificada según 5-B | `MAE` | `ME`; `P01` |
 | `mae_producto` | `ficha_version` | Versión del origen térmico | integer, 32 bits | Positivo; cambio conserva ficha anterior y auditoría | Condicional: obligatoria antes de habilitar el producto | Sin clave | `MAE` | `ME`; `P01` |
+| `mae_producto` | `formato` | Formato | string(64) | Texto normalizado; conservar valor de origen | Obligatorio | Sin clave | `MAE` | `ME`; `P01` |
+| `mae_producto` | `sku_interno` | Sku interno | string(32) | Código interno único; historial de cambios en gob_auditoria | Obligatorio | Valor único | `MAE` | `ME`; `P01` |
+| `mae_producto` | `familia` | Familia | string(255) | Código de familia aprobado por Comercial y versionado en origen | Obligatorio | Sin clave | `MAE` | `ME`; `P01` |
+| `mae_producto` | `peso_neto_kg` | Peso neto kg | decimal(18,3) | Mayor que cero, en la unidad declarada | Obligatorio | Sin clave | `MAE` | `ME`; `P01` |
+| `mae_producto` | `alto_cm` | Alto cm | decimal(18,2) | Mayor que cero, en la unidad declarada | Obligatorio | Sin clave | `MAE` | `ME`; `P01` |
+| `mae_producto` | `ancho_cm` | Ancho cm | decimal(18,2) | Mayor que cero, en la unidad declarada | Obligatorio | Sin clave | `MAE` | `ME`; `P01` |
+| `mae_producto` | `largo_cm` | Largo cm | decimal(18,2) | Mayor que cero, en la unidad declarada | Obligatorio | Sin clave | `MAE` | `ME`; `P01` |
+| `mae_producto` | `volumen_m3` | Volumen m3 | decimal(18,6) | Derivado: alto_cm * ancho_cm * largo_cm / 1000000; volumen externo embalado | Obligatorio | Sin clave | `MAE` | `ME`; `P01` |
+| `mae_producto` | `controla_vencimiento` | Controla vencimiento | boolean | true o false explícito; sin default desconocido | Obligatorio | Sin clave | `MAE` | `ME`; `P01` |
+| `mae_producto` | `clasificacion_sanitaria` | Clasificacion sanitaria | string(32), catálogo | Código y versión del catálogo sanitario del CLIENTE aprobado por Calidad; desconocido se rechaza | Obligatorio | Sin clave | `MAE` | `ME`; `P01` |
+| `mae_producto` | `proveedor_id` | Proveedor id | uuid, 128 bits | UUID existente; validación según 5-B | Obligatorio | Referencia a `mae_proveedor.proveedor_id`; FK solo co-residente | `MAE` | `ME`; `P01` |
+| `mae_producto` | `peso_bruto_kg` | Peso bruto kg | decimal(18,3) | Peso de la unidad logística de venta con embalaje; mayor o igual a peso_neto_kg, base de capacidad vehicular | Obligatorio | Sin clave | `MAE` | `ME`; `P01` |
 | `mae_unidad` | `unidad_id` | Identificador de unidad | uuid, 128 bits | UUID generado; independiente del código comercial | Obligatorio, clave primaria | Clave primaria | `MAE` | `ME`; `P01` |
 | `mae_unidad` | `codigo` | Código | string(64) | Texto normalizado, sin espacios iniciales o finales ni duplicados | Obligatorio | Valor único | `MAE` | `ME`; `P01` |
 | `mae_unidad` | `descripcion` | Descripción | string(512) | Texto libre normalizado, hasta 512 caracteres, con el detalle que exige el registro | Obligatorio | Sin clave | `MAE` | `ME`; `P01` |
@@ -156,10 +171,27 @@ La Tabla A.2 desarrolla los atributos de maestros e identidades, con sus condici
 | `mae_sitio` | `tipo` | Tipo | string(32), catálogo | CENTRO_DISTRIBUCION, CROSS_DOCKING, CASA_MATRIZ, INSTALACION_CLIENTE; validación y rechazo DOMINIO_NO_ADMITIDO según 5-C | Obligatorio | Sin clave | `MAE` | `ME`; `P01` |
 | `mae_sitio` | `region` | Region | string(255) | Valor del catálogo territorial aprobado del CLIENTE; hasta 255 caracteres; conservar código/versión de origen y validar equivalencia | Obligatorio | Sin clave | `MAE` | `ME`; `P01` |
 | `mae_sitio` | `zona_horaria` | Zona Horaria | string(255) | Identificador de zona horaria IANA del sitio, por ejemplo `America/Santiago` | Obligatorio | Sin clave | `MAE` | `ME`; `P01` |
+| `mae_zona` | `zona_id` | Zona id | uuid, 128 bits | UUID estable de la entidad | Obligatorio, clave primaria | Clave primaria | `MAE` | `ME`; `P01` |
+| `mae_zona` | `sitio_id` | Sitio id | uuid, 128 bits | UUID existente; validación según 5-B | Obligatorio | Referencia a `mae_sitio.sitio_id`; FK solo co-residente | `MAE` | `ME`; `P01` |
+| `mae_zona` | `codigo` | Codigo | string(32) | Texto normalizado; conservar valor de origen | Obligatorio | Sin clave | `MAE` | `ME`; `P01` |
+| `mae_zona` | `tipo_zona` | Tipo zona | string(32), catálogo | SECO, REFRIGERADO, CONGELADO | Obligatorio | Sin clave | `MAE` | `ME`; `P01` |
+| `mae_zona` | `temperatura_min_c` | Temperatura min c | decimal(6,2) | Límite inferior aprobado; admite temperaturas negativas | Obligatorio | Sin clave | `MAE` | `ME`; `P01` |
+| `mae_zona` | `temperatura_max_c` | Temperatura max c | decimal(6,2) | Límite superior aprobado; mayor o igual al mínimo | Obligatorio | Sin clave | `MAE` | `ME`; `P01` |
+| `mae_zona` | `habilitada` | Habilitada | boolean | Valor explícito; deshabilitar conserva historia | Obligatorio | Sin clave | `MAE` | `ME`; `P01` |
 | `mae_ubicacion` | `ubicacion_id` | Identificador de ubicacion | uuid, 128 bits | UUID generado; independiente del código comercial | Obligatorio, clave primaria | Clave primaria | `MAE` | `ME`; `P01` |
 | `mae_ubicacion` | `gln` | Gln | string(13), GLN GS1 | GLN de 13 dígitos | Obligatorio | Valor único | `MAE` | `ME`; `P01` |
 | `mae_ubicacion` | `sitio_id` | Identificador de sitio | uuid, 128 bits | UUID del registro referenciado | Obligatorio; referencia válida | Referencia a `mae_sitio.sitio_id`; integridad según 5-B | `MAE` | `ME`; `P01` |
 | `mae_ubicacion` | `gln_padre` | Gln Padre | string(13), GLN GS1 | GLN de 13 dígitos | Condicional: con la condición que declara el dominio | Sin clave | `MAE` | `ME`; `P01` |
+| `mae_ubicacion` | `zona_id` | Zona id | uuid, 128 bits | UUID existente; validación según 5-B | Obligatorio | Referencia a `mae_zona.zona_id`; FK solo co-residente | `MAE` | `ME`; `P01` |
+| `mae_ubicacion` | `pasillo` | Pasillo | string(16) | Texto normalizado; conservar valor de origen | Obligatorio | Sin clave | `MAE` | `ME`; `P01` |
+| `mae_ubicacion` | `columna` | Columna | string(16) | Código del rack/columna | Obligatorio | Sin clave | `MAE` | `ME`; `P01` |
+| `mae_ubicacion` | `nivel` | Nivel | string(8) | Texto normalizado; conservar valor de origen | Obligatorio | Sin clave | `MAE` | `ME`; `P01` |
+| `mae_ubicacion` | `posicion` | Posicion | string(16) | Texto normalizado; conservar valor de origen | Obligatorio | Sin clave | `MAE` | `ME`; `P01` |
+| `mae_ubicacion` | `orden_recorrido` | Orden recorrido | integer, 32 bits | Mayor que cero, en la unidad declarada | Obligatorio | Sin clave | `MAE` | `ME`; `P01` |
+| `mae_ubicacion` | `distancia_anden_m` | Distancia anden m | decimal(18,2) | Distancia no negativa al andén de salida | Obligatorio | Sin clave | `MAE` | `ME`; `P01` |
+| `mae_ubicacion` | `capacidad_volumen_m3` | Capacidad volumen m3 | decimal(18,6) | Mayor que cero, en la unidad declarada | Obligatorio | Sin clave | `MAE` | `ME`; `P01` |
+| `mae_ubicacion` | `capacidad_peso_kg` | Capacidad peso kg | decimal(18,3) | Mayor que cero, en la unidad declarada | Obligatorio | Sin clave | `MAE` | `ME`; `P01` |
+| `mae_ubicacion` | `habilitada` | Habilitada | boolean | Valor explícito; false impide nueva asignación sin borrar historia | Obligatorio | Sin clave | `MAE` | `ME`; `P01` |
 | `mae_equivalencia_cliente` | `equivalencia_id` | Identificador de equivalencia | uuid, 128 bits | UUID generado; independiente del código comercial | Obligatorio, clave primaria | Clave primaria | `MAE` | `AL`; `P03` |
 | `mae_equivalencia_cliente` | `cliente_id` | Identificador de cliente | uuid, 128 bits | UUID del registro referenciado | Obligatorio; referencia válida | Referencia a `mae_cliente.cliente_id`; integridad según 5-B | `MAE` | `ME`; `P01` |
 | `mae_equivalencia_cliente` | `sistema` | Sistema | string(255) | Identidad del sistema externo habilitado en contratos S4; hasta 255 caracteres; no admite alta tácita | Obligatorio | Sin clave | `MAE` | `ME`; `P01` |
@@ -189,6 +221,8 @@ La Tabla A.2 desarrolla los atributos de maestros e identidades, con sus condici
 | `mae_vehiculo` | `patente` | Patente | string(255) | Patente vigente en Chile, sin guiones ni caracteres especiales | Obligatorio | Valor único | `MAE` | `CR`; `P02` |
 | `mae_vehiculo` | `transportista_id` | Identificador de transportista | uuid, 128 bits | UUID del registro referenciado | Obligatorio; referencia válida | Clave foránea a `mae_transportista.transportista_id` | `MAE` | `ME`; `P01` |
 | `mae_vehiculo` | `refrigerado` | Refrigerado | boolean | Verdadero o falso explícito y validado; sin convertir desconocido en falso | Obligatorio; valor explícito sin default de dato desconocido | Sin clave | `MAE` | `ME`; `P01` |
+| `mae_vehiculo` | `capacidad_peso_kg` | Capacidad peso kg | decimal(18,3) | Mayor que cero, en la unidad declarada | Obligatorio | Sin clave | `MAE` | `ME`; `P01` |
+| `mae_vehiculo` | `capacidad_volumen_m3` | Capacidad volumen m3 | decimal(18,6) | Mayor que cero, en la unidad declarada | Obligatorio | Sin clave | `MAE` | `ME`; `P01` |
 | `mae_actor` | `actor_id` | Identificador de actor | uuid, 128 bits | UUID generado; independiente del código comercial | Obligatorio, clave primaria | Clave primaria | `GOB` | `ME`; `P06` |
 | `mae_actor` | `tipo` | Tipo | string(32), catálogo | Catálogo: PERSONA, USUARIO, DISPOSITIVO, INTEGRACION | Obligatorio | Sin clave | `GOB` | `ME`; `P06` |
 | `mae_actor` | `identificacion` | Identificacion | string(255) | Identificador del actor: RUT, código de empleado o identificador entregado por el canal | Obligatorio | Sin clave | `GOB` | `CR`; `P07` |
@@ -233,6 +267,7 @@ La Tabla A.3 desarrolla los atributos de recepción e inventario, con sus condic
 | `inv_unidad_logistica` | `sitio_id` | Identificador de sitio | uuid, 128 bits | UUID del registro referenciado | Obligatorio; referencia válida | Referencia a `mae_sitio.sitio_id`; integridad según 5-B | `INV` | `ME`; `P08` |
 | `inv_unidad_logistica` | `recepcion_id` | Identificador de recepcion | uuid, 128 bits | UUID del registro referenciado | Obligatorio; referencia válida | Clave foránea a `inv_recepcion.recepcion_id` | `INV` | `ME`; `P08` |
 | `inv_unidad_logistica` | `fecha_cierre` | nulo mientras la unidad siga vacia o abierta | timestamp with time zone, UTC | Instante ISO 8601 en UTC, con zona horaria explícita | Condicional: obligatoria al cerrar la unidad; nula mientras siga vacía o abierta | Sin clave | `INV` | `ME`; `P08` |
+| `inv_unidad_logistica` | `ubicacion_id` | Ubicacion id | uuid, 128 bits | UUID existente; validación según 5-B | NULL antes de putaway o en tránsito; obligatorio mientras esté almacenada | Referencia a `mae_ubicacion.ubicacion_id`; FK solo co-residente | `INV` | `ME`; `P08` |
 | `inv_unidad_contenido` | `contenido_id` | Identificador de contenido | uuid, 128 bits | UUID generado; independiente del código comercial | Obligatorio, clave primaria | Clave primaria | `INV` | `ME`; `P08` |
 | `inv_unidad_contenido` | `unidad_logistica_id` | Identificador de unidad logistica | uuid, 128 bits | UUID del registro referenciado | Obligatorio; referencia válida | Referencia a `inv_unidad_logistica.unidad_logistica_id`; integridad según 5-B | `INV` | `ME`; `P08` |
 | `inv_unidad_contenido` | `lote_id` | Identificador de lote | uuid, 128 bits | UUID del registro referenciado | Obligatorio para producto con lote exigido; NULL si producto exento | Referencia a `inv_lote.lote_id`; integridad según 5-B | `INV` | `ME`; `P08` |
@@ -256,10 +291,14 @@ La Tabla A.3 desarrolla los atributos de recepción e inventario, con sus condic
 | `inv_movimiento` | `lote_id` | Identificador de lote | uuid, 128 bits | UUID del registro referenciado | Obligatorio para producto con lote exigido; NULL si producto exento | Referencia a `inv_lote.lote_id`; integridad según 5-B | `INV` | `ME`; `P08` |
 | `inv_movimiento` | `unidad_logistica_id` | Identificador de unidad logistica | uuid, 128 bits | UUID del registro referenciado | Obligatorio; referencia válida | Referencia a `inv_unidad_logistica.unidad_logistica_id`; integridad según 5-B | `INV` | `ME`; `P08` |
 | `inv_movimiento` | `cantidad` | Cantidad | decimal(18,3) | Numérico no negativo, tres decimales, en la unidad de medida declarada | Obligatorio | Sin clave | `INV` | `ME`; `P08` |
-| `inv_movimiento` | `documento_origen_tipo` | Documento Origen Tipo | string(32), catálogo | RECEPCION, PREPARACION, ENTREGA, DEVOLUCION, CONTEO, MOVIMIENTO; catálogo tipado de origen. ANULACION exige MOVIMIENTO | Obligatorio | Sin clave | `INV` | `ME`; `P08` |
-| `inv_movimiento` | `documento_origen_id` | Identificador de documento origen | uuid, 128 bits | UUID del registro referenciado | Obligatorio; referencia válida | Referencia tipada según documento_origen_tipo; ANULACION remite a inv_movimiento.movimiento_id original. FK solo co-residente | `INV` | `ME`; `P08` |
+| `inv_movimiento` | `documento_origen_tipo` | Documento Origen Tipo | string(32), catálogo | RECEPCION, PREPARACION, ENTREGA, DEVOLUCION, CONTEO, MOVIMIENTO, REUBICACION, MERMA; ANULACION exige MOVIMIENTO | Obligatorio | Sin clave | `INV` | `ME`; `P08` |
+| `inv_movimiento` | `documento_origen_id` | Identificador de documento origen | uuid, 128 bits | UUID del registro referenciado | Obligatorio; referencia válida | Referencia tipada: REUBICACION a inv_reubicacion_propuesta.propuesta_id; MERMA a inv_merma.merma_id; ANULACION a inv_movimiento.movimiento_id original; otras según 5-B; FK solo co-residente | `INV` | `ME`; `P08` |
 | `inv_movimiento` | `fecha_ocurrencia` | Fecha Ocurrencia | timestamp with time zone, UTC | Instante ISO 8601 en UTC, con zona horaria explícita | Obligatorio | Sin clave | `INV` | `ME`; `P08` |
 | `inv_movimiento` | `fecha_registro` | Fecha Registro | timestamp with time zone, UTC | Instante ISO 8601 en UTC, con zona horaria explícita | Obligatorio | Sin clave | `INV` | `ME`; `P08` |
+| `inv_movimiento` | `causa_ajuste` | Causa ajuste | string(32), catálogo | MERMA, SOBRANTE, FALTANTE, ERROR_UBICACION, DANO, VENCIMIENTO, OTRO | Obligatoria para AJUSTE; NULL en otros tipos | Sin clave | `INV` | `ME`; `P08` |
+| `inv_movimiento` | `causa_detalle` | Causa detalle | string(512) | Texto normalizado; conservar valor de origen | Obligatorio si causa_ajuste=OTRO; NULL si no aplica | Sin clave | `INV` | `ME`; `P08` |
+| `inv_movimiento` | `propuesta_id` | Propuesta id | uuid, 128 bits | UUID existente; validación según 5-B | Obligatorio si el TRASLADO ejecuta slotting; NULL si no aplica | Referencia a `inv_reubicacion_propuesta.propuesta_id`; FK solo co-residente | `INV` | `ME`; `P08` |
+| `inv_movimiento` | `operario_id` | Operario id | uuid, 128 bits | UUID existente; validación según 5-B | Obligatorio en operación manual/slotting; NULL en movimiento automático, cuyo actor técnico queda en gob_auditoria | Referencia a `mae_actor.actor_id`; FK solo co-residente | `INV` | `ME`; `P08` |
 | `inv_reserva` | `reserva_id` | Identificador de reserva | uuid, 128 bits | UUID generado; independiente del código comercial | Obligatorio, clave primaria | Clave primaria | `INV` | `ME`; `P12` |
 | `inv_reserva` | `pedido_id` | Identificador de pedido | uuid, 128 bits | UUID del registro referenciado | Obligatorio; referencia válida | Referencia a `prv_pedido.pedido_id`; integridad según 5-B | `INV` | `ME`; `P12` |
 | `inv_reserva` | `sitio_id` | Identificador de sitio | uuid, 128 bits | UUID del registro referenciado | Obligatorio; referencia válida | Referencia a `mae_sitio.sitio_id`; integridad según 5-B | `INV` | `ME`; `P12` |
@@ -287,7 +326,42 @@ La Tabla A.3 desarrolla los atributos de recepción e inventario, con sus condic
 | `inv_conteo_detalle` | `cantidad_contada` | Cantidad Contada | decimal(18,3) | Numérico no negativo, tres decimales, en la unidad de medida declarada | Obligatorio | Sin clave | `INV` | `ME`; `P12` |
 | `inv_conteo_detalle` | `diferencia` | Diferencia | decimal(18,3) | Numérico con la precisión declarada en la columna de tipo; no admite dígitos no significativos | Obligatorio | Sin clave | `INV` | `ME`; `P12` |
 | `inv_conteo_detalle` | `causa` | Causa | string(255) | SIN_DIFERENCIA, CAPTURA, UBICACION, CONVERSION, MERMA, NO_DETERMINADA; requiere decisión para ajustar | Obligatorio | Sin clave | `INV` | `ME`; `P12` |
-
+| `inv_reubicacion_propuesta` | `propuesta_id` | Propuesta id | uuid, 128 bits | UUID estable de la entidad | Obligatorio, clave primaria | Clave primaria | `INV` | `ME`; `P12` |
+| `inv_reubicacion_propuesta` | `producto_id` | Producto id | uuid, 128 bits | UUID existente; validación según 5-B | Obligatorio | Referencia a `mae_producto.producto_id`; FK solo co-residente | `INV` | `ME`; `P12` |
+| `inv_reubicacion_propuesta` | `ubicacion_actual_id` | Ubicacion actual id | uuid, 128 bits | UUID existente; validación según 5-B | Obligatorio | Referencia a `mae_ubicacion.ubicacion_id`; FK solo co-residente | `INV` | `ME`; `P12` |
+| `inv_reubicacion_propuesta` | `ubicacion_propuesta_id` | Ubicacion propuesta id | uuid, 128 bits | UUID existente; validación según 5-B | Obligatorio | Referencia a `mae_ubicacion.ubicacion_id`; FK solo co-residente | `INV` | `ME`; `P12` |
+| `inv_reubicacion_propuesta` | `clase_abc` | Clase abc | string(32), catálogo | A, B, C | Obligatorio | Sin clave | `INV` | `ME`; `P12` |
+| `inv_reubicacion_propuesta` | `periodo_desde` | Periodo desde | timestamp with time zone, UTC | Instante UTC; conservar zona IANA de origen | Obligatorio | Sin clave | `INV` | `ME`; `P12` |
+| `inv_reubicacion_propuesta` | `periodo_hasta` | Periodo hasta | timestamp with time zone, UTC | Instante UTC; conservar zona IANA de origen | Obligatorio | Sin clave | `INV` | `ME`; `P12` |
+| `inv_reubicacion_propuesta` | `motivo` | Motivo | string(32), catálogo | ABC, PESO, VOLUMEN, ZONA | Obligatorio | Sin clave | `INV` | `ME`; `P12` |
+| `inv_reubicacion_propuesta` | `estado` | Estado | string(32), catálogo | PROPUESTA, MODIFICADA, APROBADA, RECHAZADA, EJECUTADA | Obligatorio | Sin clave | `INV` | `ME`; `P12` |
+| `inv_reubicacion_propuesta` | `aprobador_id` | Aprobador id | uuid, 128 bits | UUID existente; validación según 5-B | Obligatorio al aprobar o rechazar; NULL en propuesta | Referencia a `mae_actor.actor_id`; FK solo co-residente | `INV` | `ME`; `P12` |
+| `inv_reubicacion_propuesta` | `fecha` | Fecha | timestamp with time zone, UTC | Instante UTC; conservar zona IANA de origen | Obligatorio | Sin clave | `INV` | `ME`; `P12` |
+| `inv_reubicacion_propuesta` | `fecha_aprobacion` | Fecha aprobacion | timestamp with time zone, UTC | Instante UTC; conservar zona IANA de origen | Obligatoria al aprobar; NULL antes | Sin clave | `INV` | `ME`; `P12` |
+| `inv_reubicacion_propuesta` | `operario_id` | Operario id | uuid, 128 bits | UUID existente; validación según 5-B | Obligatorio al ejecutar; NULL antes | Referencia a `mae_actor.actor_id`; FK solo co-residente | `INV` | `ME`; `P12` |
+| `inv_reubicacion_propuesta` | `fecha_ejecucion` | Fecha ejecucion | timestamp with time zone, UTC | Instante UTC; conservar zona IANA de origen | Obligatoria al ejecutar; NULL antes | Sin clave | `INV` | `ME`; `P12` |
+| `inv_reubicacion_propuesta` | `cantidad` | Cantidad | decimal(18,3) | Mayor que cero, en la unidad declarada | Obligatorio | Sin clave | `INV` | `ME`; `P12` |
+| `inv_reubicacion_propuesta` | `unidad_id` | Unidad id | uuid, 128 bits | UUID existente; validación según 5-B | Obligatorio | Referencia a `mae_unidad.unidad_id`; FK solo co-residente | `INV` | `ME`; `P12` |
+| `inv_reubicacion_propuesta` | `abc_parametro_version_id` | Abc parametro version id | uuid, 128 bits | UUID existente; validación según 5-B | Obligatorio | Referencia a `mae_parametro_version.version_id`; FK solo co-residente | `INV` | `ME`; `P12` |
+| `inv_reubicacion_propuesta` | `clave_idempotencia` | Clave idempotencia | string(64) | Texto normalizado; conservar valor de origen | Obligatorio | Valor único | `INV` | `ME`; `P12` |
+| `inv_merma` | `merma_id` | Merma id | uuid, 128 bits | UUID estable de la entidad | Obligatorio, clave primaria | Clave primaria | `INV` | `AL`; `P30` |
+| `inv_merma` | `producto_id` | Producto id | uuid, 128 bits | UUID existente; validación según 5-B | Obligatorio | Referencia a `mae_producto.producto_id`; FK solo co-residente | `INV` | `AL`; `P30` |
+| `inv_merma` | `lote_id` | Lote id | uuid, 128 bits | UUID existente; validación según 5-B | Obligatorio para producto trazable; NULL solo si está exento | Referencia a `inv_lote.lote_id`; FK solo co-residente | `INV` | `AL`; `P30` |
+| `inv_merma` | `sitio_id` | Sitio id | uuid, 128 bits | UUID existente; validación según 5-B | Obligatorio | Referencia a `mae_sitio.sitio_id`; FK solo co-residente | `INV` | `AL`; `P30` |
+| `inv_merma` | `cliente_id` | Cliente id | uuid, 128 bits | UUID existente; validación según 5-B | Obligatorio si atribuible a cliente; NULL para merma interna no asignada | Referencia a `mae_cliente.cliente_id`; FK solo co-residente | `INV` | `AL`; `P30` |
+| `inv_merma` | `devolucion_linea_id` | Devolucion linea id | uuid, 128 bits | UUID existente; validación según 5-B | Obligatorio si origen=DEVOLUCION; NULL en los demás | Referencia a `rep_devolucion_linea.devolucion_linea_id`; FK solo co-residente | `INV` | `AL`; `P30` |
+| `inv_merma` | `origen` | Origen | string(32), catálogo | CONTEO, PREPARACION, GONDOLA, DEVOLUCION | Obligatorio | Sin clave | `INV` | `AL`; `P30` |
+| `inv_merma` | `causa` | Causa | string(32), catálogo | VENCIMIENTO, DANO, RUPTURA_FRIO, OTRO | Obligatorio | Sin clave | `INV` | `AL`; `P30` |
+| `inv_merma` | `causa_detalle` | Causa detalle | string(512) | Texto normalizado; conservar valor de origen | Obligatoria si causa=OTRO; NULL si no aplica | Sin clave | `INV` | `AL`; `P30` |
+| `inv_merma` | `cantidad` | Cantidad | decimal(18,3) | Mayor que cero, en la unidad declarada | Obligatorio | Sin clave | `INV` | `AL`; `P30` |
+| `inv_merma` | `unidad_id` | Unidad id | uuid, 128 bits | UUID existente; validación según 5-B | Obligatorio | Referencia a `mae_unidad.unidad_id`; FK solo co-residente | `INV` | `AL`; `P30` |
+| `inv_merma` | `movimiento_id` | Movimiento id | uuid, 128 bits | UUID existente; validación según 5-B | Obligatorio al confirmar descuento de stock propio; NULL si góndola fuera del stock propio | Referencia a `inv_movimiento.movimiento_id`; FK solo co-residente | `INV` | `AL`; `P30` |
+| `inv_merma` | `costo_unitario_erp` | Costo unitario erp | decimal(18,2), CLP | Importe no negativo en CLP; no es precio de la oferta | NULL hasta obtener evidencia ERP | Sin clave | `INV` | `AL`; `P30` |
+| `inv_merma` | `importe_merma` | Importe merma | decimal(18,2), CLP | Importe no negativo en CLP; no es precio de la oferta | NULL hasta valorizar; cantidad homologada * costo_unitario_erp | Sin clave | `INV` | `AL`; `P30` |
+| `inv_merma` | `referencia_costo_erp` | Referencia costo erp | string(255) | Identidad y versión del registro de costo ERP | Obligatorio al valorizar; NULL antes | Sin clave | `INV` | `AL`; `P30` |
+| `inv_merma` | `fecha_costo_erp` | Fecha costo erp | timestamp with time zone, UTC | Instante UTC; conservar zona IANA de origen | Obligatoria al valorizar; NULL antes | Sin clave | `INV` | `AL`; `P30` |
+| `inv_merma` | `fecha` | Fecha | timestamp with time zone, UTC | Instante UTC; conservar zona IANA de origen | Obligatorio | Sin clave | `INV` | `AL`; `P30` |
+| `inv_merma` | `actor_id` | Actor id | uuid, 128 bits | UUID existente; validación según 5-B | Obligatorio | Referencia a `mae_actor.actor_id`; FK solo co-residente | `INV` | `AL`; `P30` |
 | `inv_saldo` | `producto_id` | Producto del saldo, aun cuando no requiere lote | uuid, 128 bits | UUID de mae_producto; si existe lote, su producto_id coincide | Obligatorio | Referencia a mae_producto.producto_id; integridad según 5-B | `INV` | `ME`; `P10` |
 
 **Tabla A.3 - Diccionario de atributos: Recepción, inventario, lote y unidad logística**
@@ -439,6 +513,11 @@ La Tabla A.5 desarrolla los atributos de pedido y preparación, con sus condicio
 | `prv_pedido_linea` | `moneda` | CLP | string(32), catálogo | CLP; validación y rechazo DOMINIO_NO_ADMITIDO según 5-C | Obligatorio | Sin clave | `PRE` | `ME`; `P19` |
 | `prv_pedido_linea` | `tarifa_id` | version de tarifa efectivamente aplicada | uuid, 128 bits | UUID del registro referenciado | Obligatorio; referencia válida | Clave foránea a `prv_tarifa.tarifa_id` | `PRE` | `ME`; `P19` |
 | `prv_pedido_linea` | `tarifa_version` | Tarifa Versión | integer, 32 bits | Entero no negativo; cero admitido en un conteo, una cantidad o una secuencia | Obligatorio; referencia válida | Parte de la clave foránea compuesta (`tarifa_id`, `tarifa_version`) a `prv_tarifa(tarifa_id, version)` | `PRE` | `ME`; `P19` |
+| `prv_pedido_linea` | `precio_facturacion` | Precio facturacion | decimal(18,2), CLP | Importe no negativo en CLP; no es precio de la oferta | NULL hasta recibir el cálculo del ERP; no es emisión | Sin clave | `PRE` | `AL`; `P19` |
+| `prv_pedido_linea` | `diferencia_precio` | Diferencia precio | decimal(18,2), CLP | Derivado: precio_facturacion - precio_unitario, misma unidad y moneda | NULL hasta recibir precio_facturacion | Sin clave | `PRE` | `AL`; `P19` |
+| `prv_pedido_linea` | `estado_precio` | Estado precio | string(32), catálogo | PENDIENTE_ERP, SIN_DIFERENCIA, BLOQUEADA, CONCILIADA | Obligatorio | Sin clave | `PRE` | `AL`; `P19` |
+| `prv_pedido_linea` | `conciliado_por` | Conciliado por | uuid, 128 bits | UUID existente; validación según 5-B | Obligatorio en CONCILIADA; NULL antes | Referencia a `mae_actor.actor_id`; FK solo co-residente | `PRE` | `AL`; `P19` |
+| `prv_pedido_linea` | `fecha_conciliacion` | Fecha conciliacion | timestamp with time zone, UTC | Instante UTC; conservar zona IANA de origen | Obligatoria en CONCILIADA; NULL antes | Sin clave | `PRE` | `AL`; `P19` |
 | `prv_pedido_promesa` | `promesa_id` | Identificador de promesa | uuid, 128 bits | UUID propio de cada registro ORIGINAL o REVISION | Obligatorio, clave primaria | Clave primaria individual | `PRE` | `ME`; `P19` |
 | `prv_pedido_promesa` | `pedido_id` | Identificador de pedido | uuid, 128 bits | UUID del registro referenciado | Obligatorio; referencia válida | Referencia a `prv_pedido.pedido_id`; integridad según 5-B | `PRE` | `ME`; `P19` |
 | `prv_pedido_promesa` | `fecha_prometida` | Fecha Prometida | timestamp with time zone, UTC | Instante y ventana comprometidos en UTC; ORIGINAL inmutable; zona de origen conservada en contrato | Obligatorio | Sin clave | `PRE` | `ME`; `P19` |
@@ -459,7 +538,7 @@ La Tabla A.5 desarrolla los atributos de pedido y preparación, con sus condicio
 | `prp_mision` | `mision_id` | Identificador de mision | uuid, 128 bits | UUID generado; independiente del código comercial | Obligatorio, clave primaria | Clave primaria | `PREP` | `ME`; `P19` |
 | `prp_mision` | `pedido_id` | Identificador de pedido | uuid, 128 bits | UUID del registro referenciado | Obligatorio; referencia válida | Referencia a `prv_pedido.pedido_id`; integridad según 5-B | `PREP` | `ME`; `P19` |
 | `prp_mision` | `sitio_id` | Identificador de sitio | uuid, 128 bits | UUID del registro referenciado | Obligatorio; referencia válida | Referencia a `mae_sitio.sitio_id`; integridad según 5-B | `PREP` | `ME`; `P19` |
-| `prp_mision` | `ola` | Ola | string(255) | Tiempo objetivo de atención en minutos, contados desde el evento que origina laacción | Obligatorio | Sin clave | `PREP` | `ME`; `P19` |
+| `prp_mision` | `ola` | Identificador de la ola de preparación | string(255) | Código de agrupación de misiones por sitio y ventana de preparación; no es una duración | Obligatorio | Sin clave | `PREP` | `ME`; `P19` |
 | `prp_mision` | `estado` | PLANIFICADA, EN CURSO, CERRADA, CANCELADA | string(32), catálogo | PLANIFICADA, EN_CURSO, CERRADA, CANCELADA; validación y rechazo DOMINIO_NO_ADMITIDO según 5-C | Obligatorio | Sin clave | `PREP` | `ME`; `P19` |
 | `prp_mision` | `fecha_inicio` | Fecha Inicio | timestamp with time zone, UTC | Instante ISO 8601 en UTC, con zona horaria explícita | Obligatorio | Sin clave | `PREP` | `ME`; `P19` |
 | `prp_mision_linea` | `mision_linea_id` | Identificador de mision linea | uuid, 128 bits | UUID generado; independiente del código comercial | Obligatorio, clave primaria | Clave primaria | `PREP` | `ME`; `P19` |
@@ -468,6 +547,10 @@ La Tabla A.5 desarrolla los atributos de pedido y preparación, con sus condicio
 | `prp_mision_linea` | `cantidad_confirmada` | Cantidad Confirmada | decimal(18,3) | Numérico no negativo, tres decimales, en la unidad de medida declarada | Obligatorio | Sin clave | `PREP` | `CR`; `P22` |
 | `prp_mision_linea` | `cantidad_faltante` | Cantidad Faltante | decimal(18,3) | Numérico no negativo, tres decimales, en la unidad de medida declarada | Obligatorio | Sin clave | `PREP` | `ME`; `P19` |
 | `prp_mision_linea` | `cantidad_rechazada` | Cantidad Rechazada | decimal(18,3) | Numérico no negativo, tres decimales, en la unidad de medida declarada | Obligatorio, admite cero; no puede superar la cantidad de referencia | Sin clave | `PREP` | `ME`; `P19` |
+| `prp_mision_linea` | `ubicacion_id` | Ubicacion id | uuid, 128 bits | UUID existente; validación según 5-B | Obligatorio | Referencia a `mae_ubicacion.ubicacion_id`; FK solo co-residente | `PREP` | `ME`; `P19` |
+| `prp_mision_linea` | `secuencia_recorrido` | Secuencia recorrido | integer, 32 bits | Mayor que cero, en la unidad declarada | Obligatorio | Sin clave | `PREP` | `ME`; `P19` |
+| `prp_mision_linea` | `causa_faltante` | Causa faltante | string(32), catálogo | SIN_STOCK, PRODUCTO_DANADO, PRODUCTO_VENCIDO, ERROR_UBICACION, OTRO | Obligatoria si cantidad_faltante > 0; NULL si no hay faltante | Sin clave | `PREP` | `ME`; `P19` |
+| `prp_mision_linea` | `causa_detalle` | Causa detalle | string(512) | Texto normalizado; conservar valor de origen | Obligatoria si causa_faltante=OTRO; NULL si no aplica | Sin clave | `PREP` | `ME`; `P19` |
 | `prp_picking_confirmacion` | `confirmacion_id` | Identificador de confirmacion | uuid, 128 bits | UUID generado; independiente del código comercial | Obligatorio, clave primaria | Clave primaria | `PREP` | `CR`; `P22` |
 | `prp_picking_confirmacion` | `mision_linea_id` | Identificador de mision linea | uuid, 128 bits | UUID del registro referenciado | Obligatorio; referencia válida | Clave foránea a `prp_mision_linea.mision_linea_id` | `PREP` | `ME`; `P19` |
 | `prp_picking_confirmacion` | `lote_id` | Identificador de lote | uuid, 128 bits | UUID del registro referenciado | Obligatorio para producto con lote exigido; NULL si producto exento | Referencia a `inv_lote.lote_id`; integridad según 5-B | `PREP` | `ME`; `P19` |
@@ -502,6 +585,10 @@ La Tabla A.6 desarrolla los atributos de ruta, reparto y envases, con sus condic
 | `rut_viaje` | `salida_prevista` | Salida Prevista | timestamp with time zone, UTC | Instante ISO 8601 en UTC, con zona horaria explícita | Obligatorio | Sin clave | `RUT` | `ME`; `P23` |
 | `rut_viaje` | `llegada_real` | Llegada Real | timestamp with time zone, UTC | Instante ISO 8601 en UTC, con zona horaria explícita | Obligatorio | Sin clave | `RUT` | `ME`; `P23` |
 | `rut_viaje` | `estado` | Estado | string(32), catálogo | PLANIFICADO, EN_CURSO, RETORNADO, CERRADO, CANCELADO; validación y rechazo DOMINIO_NO_ADMITIDO según 5-C | Obligatorio | Sin clave | `RUT` | `ME`; `P23` |
+| `rut_viaje` | `peso_cargado_kg` | Peso cargado kg | decimal(18,3) | Derivado no negativo de líneas asignadas y conversiones aprobadas | Obligatorio | Sin clave | `RUT` | `ME`; `P23` |
+| `rut_viaje` | `volumen_cargado_m3` | Volumen cargado m3 | decimal(18,6) | Derivado no negativo del volumen embalado y unidades asignadas | Obligatorio | Sin clave | `RUT` | `ME`; `P23` |
+| `rut_viaje` | `sitio_salida_id` | Sitio salida id | uuid, 128 bits | UUID existente; validación según 5-B | Obligatorio | Referencia a `mae_sitio.sitio_id`; FK solo co-residente | `RUT` | `ME`; `P23` |
+| `rut_viaje` | `salida_real` | Salida real | timestamp with time zone, UTC | Instante UTC; conservar zona IANA de origen | NULL antes de salida; obligatoria al despachar | Sin clave | `RUT` | `ME`; `P23` |
 | `rut_parada` | `parada_id` | Identificador de parada | uuid, 128 bits | UUID generado; independiente del código comercial | Obligatorio, clave primaria | Clave primaria | `RUT` | `ME`; `P23` |
 | `rut_parada` | `viaje_id` | Identificador de viaje | uuid, 128 bits | UUID del registro referenciado | Obligatorio; referencia válida | Clave foránea a `rut_viaje.viaje_id` | `RUT` | `ME`; `P23` |
 | `rut_parada` | `secuencia` | Secuencia | integer, 32 bits | Entero no negativo; cero admitido en un conteo, una cantidad o una secuencia | Obligatorio | Sin clave | `RUT` | `ME`; `P23` |
@@ -558,6 +645,7 @@ La Tabla A.6 desarrolla los atributos de ruta, reparto y envases, con sus condic
 | `rep_devolucion_linea` | `unidad_logistica_id` | Identificador de unidad logistica | uuid, 128 bits | UUID del registro referenciado | Obligatorio; referencia válida | Referencia a `inv_unidad_logistica.unidad_logistica_id`; integridad según 5-B | `REP` | `ME`; `P27` |
 | `rep_devolucion_linea` | `cantidad` | Cantidad | decimal(18,3) | Numérico no negativo, tres decimales, en la unidad de medida declarada | Obligatorio | Sin clave | `REP` | `ME`; `P27` |
 | `rep_devolucion_linea` | `motivo` | Motivo | string(512) | Texto libre normalizado, hasta 512 caracteres, con el detalle que exige el registro | Obligatorio | Sin clave | `REP` | `ME`; `P27` |
+| `rep_devolucion_linea` | `disposicion` | Disposicion | string(32), catálogo | REINGRESO, MERMA, DESTRUCCION | Obligatoria al evaluar/cerrar; NULL mientras se decide | Sin clave | `REP` | `ME`; `P27` |
 | `env_cuenta_corriente` | `cuenta_id` | Identificador de cuenta | uuid, 128 bits | UUID generado; independiente del código comercial | Obligatorio, clave primaria | Clave primaria | `REP` | `ME`; `P27` |
 | `env_cuenta_corriente` | `cliente_id` | Identificador de cliente | uuid, 128 bits | UUID del registro referenciado | Obligatorio; referencia válida | Referencia a `mae_cliente.cliente_id`; integridad según 5-B | `REP` | `ME`; `P27` |
 | `env_cuenta_corriente` | `tipo_envase` | unica cuenta por cliente y tipo | string(32), catálogo | Código activo del maestro versionado de tipos de envase del CLIENTE; 1–32 caracteres, sin serialización individual ni alta por defecto; validación y rechazo DOMINIO_NO_ADMITIDO según 5-C | Obligatorio | Sin clave | `REP` | `ME`; `P27` |
@@ -588,16 +676,44 @@ La Tabla A.7 desarrolla los atributos de cobranza y documentos, con sus condicio
 | `cob_saldo` | `monto_total` | monto adeudado | decimal(18,2), CLP | Numérico con la precisión declarada en la columna de tipo; no admite dígitos no significativos | Obligatorio | Sin clave | `COB` | `AL`; `P30` |
 | `cob_saldo` | `monto_vencido` | Monto Vencido | decimal(18,2), CLP | Numérico con la precisión declarada en la columna de tipo; no admite dígitos no significativos | Obligatorio | Sin clave | `COB` | `AL`; `P30` |
 | `cob_saldo` | `fecha_corte` | Fecha Corte | timestamp with time zone, UTC | Instante ISO 8601 en UTC, con zona horaria explícita | Obligatorio | Sin clave | `COB` | `ME`; `P31` |
+| `cob_cartera_asignacion` | `asignacion_id` | Asignacion id | uuid, 128 bits | UUID estable de la entidad | Obligatorio, clave primaria | Clave primaria | `COB` | `AL`; `P30` |
+| `cob_cartera_asignacion` | `cliente_id` | Cliente id | uuid, 128 bits | UUID existente; validación según 5-B | Obligatorio | Referencia a `mae_cliente.cliente_id`; FK solo co-residente | `COB` | `AL`; `P30` |
+| `cob_cartera_asignacion` | `ejecutivo_id` | Ejecutivo id | uuid, 128 bits | UUID existente; validación según 5-B | Obligatorio | Referencia a `mae_actor.actor_id`; FK solo co-residente | `COB` | `AL`; `P30` |
+| `cob_cartera_asignacion` | `vigente_desde` | Vigente desde | timestamp with time zone, UTC | Inicio del intervalo de asignación | Obligatorio | Sin clave | `COB` | `AL`; `P30` |
+| `cob_cartera_asignacion` | `vigente_hasta` | Vigente hasta | timestamp with time zone, UTC | Fin exclusivo posterior al inicio | NULL mientras no tenga fin | Sin clave | `COB` | `AL`; `P30` |
+| `cob_gestion` | `gestion_id` | Gestion id | uuid, 128 bits | UUID estable de la entidad | Obligatorio, clave primaria | Clave primaria | `COB` | `AL`; `P30` |
+| `cob_gestion` | `cliente_id` | Cliente id | uuid, 128 bits | UUID existente; validación según 5-B | Obligatorio | Referencia a `mae_cliente.cliente_id`; FK solo co-residente | `COB` | `AL`; `P30` |
+| `cob_gestion` | `ejecutivo_id` | Ejecutivo id | uuid, 128 bits | UUID existente; validación según 5-B | Obligatorio | Referencia a `mae_actor.actor_id`; FK solo co-residente | `COB` | `AL`; `P30` |
+| `cob_gestion` | `fecha` | Fecha | timestamp with time zone, UTC | Instante UTC; conservar zona IANA de origen | Obligatorio | Sin clave | `COB` | `AL`; `P30` |
+| `cob_gestion` | `tipo` | Tipo | string(32), catálogo | CONTACTO, COMPROMISO, SEGUIMIENTO, CIERRE | Obligatorio | Sin clave | `COB` | `AL`; `P30` |
+| `cob_gestion` | `resultado` | Resultado | string(32), catálogo | CONTACTADO, SIN_CONTACTO, COMPROMISO, INCUMPLIDO, PAGADO | Obligatorio | Sin clave | `COB` | `AL`; `P30` |
+| `cob_gestion` | `compromiso_monto` | Compromiso monto | decimal(18,2), CLP | Importe no negativo en CLP; no es precio de la oferta | Obligatorio en COMPROMISO; NULL si no aplica | Sin clave | `COB` | `AL`; `P30` |
+| `cob_gestion` | `compromiso_fecha` | Compromiso fecha | date | Fecha pactada de pago | Obligatoria en COMPROMISO; NULL si no aplica | Sin clave | `COB` | `AL`; `P30` |
+| `cob_gestion` | `fecha_recontacto` | Fecha recontacto | date | Fecha de la tarea de seguimiento | Obligatoria si requiere seguimiento; NULL al cerrar | Sin clave | `COB` | `AL`; `P30` |
+| `cob_saldo_documento` | `saldo_documento_id` | Saldo documento id | uuid, 128 bits | UUID estable de la entidad | Obligatorio, clave primaria | Clave primaria | `COB` | `AL`; `P30` |
+| `cob_saldo_documento` | `documento_id` | Documento id | uuid, 128 bits | UUID existente; validación según 5-B | Obligatorio | Referencia a `doc_documento.documento_id`; FK solo co-residente | `COB` | `AL`; `P30` |
+| `cob_saldo_documento` | `cliente_id` | Cliente id | uuid, 128 bits | UUID existente; validación según 5-B | Obligatorio | Referencia a `mae_cliente.cliente_id`; FK solo co-residente | `COB` | `AL`; `P30` |
+| `cob_saldo_documento` | `fecha_vencimiento` | Fecha vencimiento | date | Fecha de vencimiento informada por ERP; coincide con factura | Obligatorio | Sin clave | `COB` | `AL`; `P30` |
+| `cob_saldo_documento` | `monto_original` | Monto original | decimal(18,2), CLP | Importe no negativo en CLP; no es precio de la oferta | Obligatorio | Sin clave | `COB` | `AL`; `P30` |
+| `cob_saldo_documento` | `monto_pendiente` | Monto pendiente | decimal(18,2), CLP | Importe no negativo en CLP; no es precio de la oferta | Obligatorio | Sin clave | `COB` | `AL`; `P30` |
+| `cob_saldo_documento` | `dias_mora` | Dias mora | integer, 32 bits | Derivado: max(0, fecha de corte local - fecha_vencimiento); no depende del reloj de carga | Obligatorio | Sin clave | `COB` | `AL`; `P30` |
+| `cob_saldo_documento` | `tramo_antiguedad` | Tramo antiguedad | string(32), catálogo | CORRIENTE, HASTA_30, HASTA_60, HASTA_90, MAS_90; derivado según 5-H | Obligatorio | Sin clave | `COB` | `AL`; `P30` |
+| `cob_saldo_documento` | `fecha_corte` | Fecha corte | timestamp with time zone, UTC | Instante UTC; conservar zona IANA de origen | Obligatorio | Sin clave | `COB` | `AL`; `P30` |
+| `cob_saldo_documento` | `version_erp` | Version erp | string(255) | Texto normalizado; conservar valor de origen | Obligatorio | Sin clave | `COB` | `AL`; `P30` |
 | `cob_cobro` | `cobro_id` | Identificador de cobro | uuid, 128 bits | UUID generado; independiente del código comercial | Obligatorio, clave primaria | Clave primaria | `COB` | `ME`; `P31` |
-| `cob_cobro` | `entrega_id` | Identificador de entrega | uuid, 128 bits | UUID del registro referenciado | Obligatorio; referencia válida | Referencia a `rep_entrega.entrega_id`; integridad según 5-B | `COB` | `ME`; `P31` |
+| `cob_cobro` | `entrega_id` | Identificador de entrega | uuid, 128 bits | UUID del registro referenciado | Obligatoria en REPARTO; NULL en PREVENTA | Referencia a `rep_entrega.entrega_id`; integridad según 5-B | `COB` | `ME`; `P31` |
 | `cob_cobro` | `monto` | Monto | decimal(18,2), CLP | Importe monetario en pesos chilenos; precisión 2 decimales | Obligatorio | Sin clave | `COB` | `AL`; `P30` |
 | `cob_cobro` | `moneda` | CLP | string(32), catálogo | CLP; validación y rechazo DOMINIO_NO_ADMITIDO según 5-C | Obligatorio | Sin clave | `COB` | `ME`; `P31` |
 | `cob_cobro` | `clave_idempotencia` | Clave Idempotencia | string(255) | Identificador de hasta 64 caracteres generado por el emisor; con el tipo de operación permite reintentar sin duplicar el efecto | Obligatorio | Valor único | `COB` | `ME`; `P31` |
 | `cob_cobro` | `estado` | Estado | string(32), catálogo | Catálogo: REGISTRADO, ACEPTADO, ANULADO, PENDIENTE_ALTERNATIVO | Obligatorio | Sin clave | `COB` | `ME`; `P31` |
-| `cob_cobro` | `rendicion_id` | nulo hasta que el conductor lo declara | uuid, 128 bits | UUID del registro referenciado | Nullable al capturar cobro; obligatorio en el hito de rendición/cierre. Referencia a cob_rendicion.rendicion_id | Clave foránea a `cob_rendicion.rendicion_id` | `COB` | `ME`; `P31` |
+| `cob_cobro` | `rendicion_id` | Rendición diaria del cobrador | uuid, 128 bits | UUID del registro referenciado | NULL al capturar; obligatoria al cierre diario del responsable, también en PREVENTA | Clave foránea a `cob_rendicion.rendicion_id` | `COB` | `ME`; `P31` |
 | `cob_cobro` | `ajuste_redondeo` | Ajuste monetario aplicado al importe del cobro | decimal(18,2), CLP | Diferencia con signo entre importe registrado y monto autorizado externo, exclusivamente para tarjeta con autorización comprobable. Cero si coinciden; NULL para efectivo o crédito sin autorización externa. No modifica por sí solo el saldo | Obligatorio al conciliar tarjeta con importe autorizado disponible; NULL si no existe tal importe | Sin clave | `COB` | `AL`; `P30` |
-| `cob_cobro` | `medio` | Medio | string(32), catálogo | Catálogo: EFECTIVO, CREDITO, TARJETA | Obligatorio | Sin clave | `COB` | `ME`; `P31` |
+| `cob_cobro` | `medio` | Medio | string(32), catálogo | EFECTIVO, CREDITO, TARJETA; PREVENTA admite exclusivamente EFECTIVO | Obligatorio | Sin clave | `COB` | `ME`; `P31` |
 | `cob_cobro` | `fecha` | Fecha | timestamp with time zone, UTC | Instante ISO 8601 en UTC, con zona horaria explícita | Obligatorio | Sin clave | `COB` | `ME`; `P31` |
+| `cob_cobro` | `origen` | Origen | string(32), catálogo | REPARTO, PREVENTA | Obligatorio | Sin clave | `COB` | `ME`; `P31` |
+| `cob_cobro` | `cliente_id` | Cliente id | uuid, 128 bits | UUID existente; validación según 5-B | Obligatorio | Referencia a `mae_cliente.cliente_id`; FK solo co-residente | `COB` | `ME`; `P31` |
+| `cob_cobro` | `cobrador_id` | Cobrador id | uuid, 128 bits | UUID existente; validación según 5-B | Obligatorio | Referencia a `mae_actor.actor_id`; FK solo co-residente | `COB` | `ME`; `P31` |
+| `cob_cobro` | `recibo_folio` | Recibo folio | string(64) | Folio provisional único dentro del cobrador; preasignado para captura offline | Obligatorio en PREVENTA; NULL si no aplica | Sin clave | `COB` | `ME`; `P31` |
 | `cob_pos_operacion` | `pos_id` | Identificador de pos | uuid, 128 bits | UUID generado; independiente del código comercial | Obligatorio, clave primaria | Clave primaria | `COB` | `ME`; `P31` |
 | `cob_pos_operacion` | `cobro_id` | Identificador de cobro | uuid, 128 bits | UUID del registro referenciado | Obligatorio; referencia válida | Clave foránea a `cob_cobro.cobro_id` | `COB` | `ME`; `P31` |
 | `cob_pos_operacion` | `operacion_id` | mismo id para consulta y compensacion | string(255) | Texto libre normalizado; mismo id para consulta y compensacion | Obligatorio | Valor único | `COB` | `ME`; `P31` |
@@ -619,13 +735,14 @@ La Tabla A.7 desarrolla los atributos de cobranza y documentos, con sus condicio
 | `cob_aplicacion` | `monto_aplicado` | Monto Aplicado | decimal(18,2), CLP | Importe aplicado en CLP | Obligatorio | Sin clave | `COB` | `AL`; `P30` |
 | `cob_aplicacion` | `moneda` | Moneda | string(32), catálogo | CLP; validación y rechazo DOMINIO_NO_ADMITIDO según 5-C | Obligatorio | Sin clave | `COB` | `ME`; `P31` |
 | `cob_rendicion` | `rendicion_id` | Identificador de rendicion | uuid, 128 bits | UUID generado; independiente del código comercial | Obligatorio, clave primaria | Clave primaria | `COB` | `ME`; `P31` |
-| `cob_rendicion` | `conductor_id` | Identificador de conductor | uuid, 128 bits | UUID del registro referenciado | Obligatorio; referencia válida | Clave foránea a `mae_actor.actor_id` | `COB` | `CR`; `P32` |
-| `cob_rendicion` | `vehiculo_id` | Identificador de vehiculo | uuid, 128 bits | UUID del registro referenciado | Obligatorio; referencia válida | Clave foránea a `mae_vehiculo.vehiculo_id` | `COB` | `ME`; `P31` |
+| `cob_rendicion` | `responsable_id` | Actor responsable: conductor o preventista | uuid, 128 bits | UUID del registro referenciado | Obligatorio; referencia válida | Clave foránea a `mae_actor.actor_id` | `COB` | `CR`; `P32` |
+| `cob_rendicion` | `vehiculo_id` | Identificador de vehiculo | uuid, 128 bits | UUID del registro referenciado | Obligatoria en REPARTO; NULL en PREVENTA | Clave foránea a `mae_vehiculo.vehiculo_id` | `COB` | `ME`; `P31` |
 | `cob_rendicion` | `caja_codigo` | Caja Código | string(64) | Texto normalizado, sin espacios iniciales o finales ni duplicados | Obligatorio | Sin clave | `COB` | `ME`; `P31` |
 | `cob_rendicion` | `turno` | Turno | string(255) | Identidad del turno preinscrito de S4, actor/sitio e inicio; hasta 255 caracteres, referencia verificable | Obligatorio | Sin clave | `COB` | `ME`; `P31` |
-| `cob_rendicion` | `fecha_retorno` | Fecha Retorno | timestamp with time zone, UTC | Instante ISO 8601 en UTC, con zona horaria explícita | Obligatorio | Sin clave | `COB` | `ME`; `P31` |
+| `cob_rendicion` | `fecha_retorno` | Instante de retorno y rendición en caja del responsable | timestamp with time zone, UTC | Instante ISO 8601 en UTC, con zona horaria explícita | Obligatorio | Sin clave | `COB` | `ME`; `P31` |
 | `cob_rendicion` | `monto_declarado` | Monto Declarado | decimal(18,2), CLP | Monto declarado en rendición (CLP) | Obligatorio | Sin clave | `COB` | `AL`; `P30` |
 | `cob_rendicion` | `estado` | Estado | string(32), catálogo | Catálogo: ABIERTA, CERRADA, CON_DESCUADRE | Obligatorio | Sin clave | `COB` | `ME`; `P31` |
+| `cob_rendicion` | `origen` | Origen | string(32), catálogo | REPARTO, PREVENTA | Obligatorio | Sin clave | `COB` | `ME`; `P31` |
 | `cob_cuadratura` | `cuadratura_id` | Identificador de cuadratura | uuid, 128 bits | UUID generado; independiente del código comercial | Obligatorio, clave primaria | Clave primaria | `COB` | `ME`; `P31` |
 | `cob_cuadratura` | `rendicion_id` | Identificador de rendicion | uuid, 128 bits | UUID del registro referenciado | Obligatorio; referencia válida | Clave foránea a `cob_rendicion.rendicion_id` | `COB` | `ME`; `P31` |
 | `cob_cuadratura` | `monto_sistema` | Monto Sistema | decimal(18,2), CLP | Monto según sistema en CLP | Obligatorio | Sin clave | `COB` | `AL`; `P30` |
@@ -662,7 +779,9 @@ La Tabla A.7 desarrolla los atributos de cobranza y documentos, con sus condicio
 | `doc_documento` | `fecha_emision` | Fecha Emision | timestamp with time zone, UTC | Instante ISO 8601 en UTC, con zona horaria explícita | Obligatorio | Sin clave | `DOC` | `ME`; `P33` |
 | `doc_documento` | `estado` | Estado | string(32), catálogo | Catálogo: EMITIDO, VALIDADO, INCERTO, ANULADO | Obligatorio | Sin clave | `DOC` | `ME`; `P33` |
 | `doc_documento` | `version` | version del documento ante reimpresion o anulacion | integer, 32 bits | Entero no negativo; cero admitido en un conteo, una cantidad o una secuencia | Obligatorio | Parte de la clave de la versión | `DOC` | `ME`; `P33` |
-| `doc_documento` | `carga_id` | Identificador de carga | uuid, 128 bits | UUID del registro referenciado | Obligatorio; referencia válida | Clave foránea a `desp_carga.carga_id` | `DOC` | `ME`; `P33` |
+| `doc_documento` | `carga_id` | Identificador de carga | uuid, 128 bits | UUID del registro referenciado | Obligatoria para guía de despacho; NULL en factura ERP sin carga; si existe se valida | Clave foránea a `desp_carga.carga_id` | `DOC` | `ME`; `P33` |
+| `doc_documento` | `cliente_id` | Cliente id | uuid, 128 bits | UUID existente; validación según 5-B | Obligatorio para factura/cobro de cliente; NULL en documento de transferencia interna sin cliente | Referencia a `mae_cliente.cliente_id`; FK solo co-residente | `DOC` | `ME`; `P33` |
+| `doc_documento` | `fecha_vencimiento` | Fecha vencimiento | date | Fecha real informada por ERP; no sustituir por fecha de emisión | Obligatoria para factura a crédito; NULL si no aplica | Sin clave | `DOC` | `ME`; `P33` |
 | `doc_referencia` | `referencia_id` | Identificador de referencia | uuid, 128 bits | UUID generado; independiente del código comercial | Obligatorio, clave primaria | Clave primaria | `DOC` | `ME`; `P33` |
 | `doc_referencia` | `documento_id` | Identificador de documento | uuid, 128 bits | UUID del registro referenciado | Obligatorio; referencia válida | Clave foránea a `doc_documento.documento_id` | `DOC` | `ME`; `P33` |
 | `doc_referencia` | `carga_id` | Identificador de carga | uuid, 128 bits | UUID del registro referenciado | Obligatorio; referencia válida | Clave foránea a `desp_carga.carga_id` | `DOC` | `ME`; `P33` |
@@ -778,7 +897,29 @@ La Tabla A.8 desarrolla los atributos de EDI, notificaciones y gobierno, con sus
 | `not_intento` | `aviso_id` | Identificador de aviso | uuid, 128 bits | UUID del registro referenciado | Obligatorio; referencia válida | Clave foránea a `not_aviso.aviso_id` | `NOT` | `ME`; `P39` |
 | `not_intento` | `canal` | Canal | string(32), catálogo | CORREO, SMS, WHATSAPP, AVISO_EN_PORTAL; debe coincidir con la plantilla versionada; rechazo DOMINIO_NO_ADMITIDO según 5-C | Obligatorio | Sin clave | `NOT` | `ME`; `P39` |
 | `not_intento` | `fecha` | Fecha | timestamp with time zone, UTC | Instante ISO 8601 en UTC, con zona horaria explícita | Obligatorio | Sin clave | `NOT` | `ME`; `P39` |
-| `not_intento` | `resultado` | Resultado | string(32), catálogo | PENDIENTE, ENVIADO, CONFIRMADO, FALLIDO; validación y rechazo DOMINIO_NO_ADMITIDO según 5-C | Obligatorio | Sin clave | `NOT` | `ME`; `P39` |
+| `not_intento` | `resultado` | Resultado | string(32), catálogo | PENDIENTE, ENVIADO, CONFIRMADO, FALLIDO; ENVIADO solo aceptación del envío, CONFIRMADO exige entrega_fecha, no apertura | Obligatorio | Sin clave | `NOT` | `ME`; `P39` |
+| `not_intento` | `numero` | Ordinal por aviso y canal | integer, 32 bits | Entero positivo, nueva tentativa incrementa ordinal, retransmisión técnica conserva intento_id | Obligatorio | Único con aviso_id y canal | `NOT` | `ME`; `P39` |
+| `not_intento` | `proveedor` | Ámbito del emisor de evidencia | string(128) | Proveedor/cuenta, PORTAL o INTERNO, sin credenciales | Obligatorio al despachar o registrar evidencia, NULL antes | Sin clave | `NOT` | `ME`; `P39` |
+| `not_intento` | `mensaje_proveedor_id` | Identidad del envío externo | string(255) | Identificador retornado por proveedor, correlacionado con intento_id | Obligatorio cuando el proveedor lo retorna, NULL antes o si no aplica | Sin clave | `NOT` | `ME`; `P39` |
+| `not_intento` | `entrega_fecha` | Primera entrega confirmada | timestamp with time zone, UTC | Instante de evidencia de entrega, aceptar envío no equivale a entregarlo | Obligatoria con resultado CONFIRMADO, NULL sin confirmación | Sin clave | `NOT` | `ME`; `P39` |
+| `not_intento` | `apertura_estado` | Observabilidad de apertura | string(32), catálogo | INFORMADA, NO_INFORMADA, NO_SOPORTADA, según 5-C | Obligatorio | Sin clave | `NOT` | `ME`; `P39` |
+| `not_intento` | `apertura_fecha` | Primera apertura observada | timestamp with time zone, UTC | Instante de señal del proveedor o visualización explícita del aviso en portal, no certifica lectura humana | Obligatoria solo en INFORMADA, NULL en los otros estados | Sin clave | `NOT` | `AL`; `P40` |
+| `not_intento` | `apertura_origen` | Fuente de apertura | string(32), catálogo | PROVEEDOR, PORTAL, NO_OBSERVADA, portal no acredita lectura del SMS | Obligatorio | Sin clave | `NOT` | `AL`; `P40` |
+| `not_intento` | `apertura_proveedor` | Ámbito del emisor de apertura | string(128) | Proveedor/cuenta del evento de apertura o PORTAL, independiente del proveedor del envío | Obligatorio en INFORMADA, NULL sin apertura | Sin clave | `NOT` | `AL`; `P40` |
+| `not_intento` | `proveedor_evento_id` | Evento que sustenta la primera apertura | string(255) | ID nativo o DERIVADO:sha256 según 5-B, el emisor puede ser PORTAL | Obligatorio en INFORMADA, NULL sin apertura | Referencia compuesta (apertura_proveedor, proveedor_evento_id) a not_evento(proveedor, evento_proveedor_id), mismo intento | `NOT` | `AL`; `P40` |
+| `not_intento` | `error_codigo` | Último código de error observado | string(128) | Código del proveedor o normalizado por adaptador, sin secretos | Obligatorio si existe evento ERROR, NULL sin error | Sin clave | `NOT` | `ME`; `P39` |
+| `not_intento` | `error_detalle` | Causa del error | string(512) | Descripción depurada, sin contenido del mensaje, secretos ni datos personales innecesarios | Obligatorio con error_codigo, NULL sin error | Sin clave | `NOT` | `AL`; `P40` |
+| `not_intento` | `error_fecha` | Instante del último error observado | timestamp with time zone, UTC | Fecha de ocurrencia, historial conservado en not_evento | Obligatorio con error_codigo, NULL sin error | Sin clave | `NOT` | `ME`; `P39` |
+| `not_evento` | `evento_id` | Identidad interna de evidencia de notificación | uuid, 128 bits | UUID estable generado al aceptar el evento | Obligatorio, clave primaria | Clave primaria | `NOT` | `ME`; `P39` |
+| `not_evento` | `intento_id` | Intento del evento | uuid, 128 bits | UUID existente, correlación y autenticidad validadas según el origen en 5-B | Obligatorio | Clave foránea a not_intento.intento_id | `NOT` | `ME`; `P39` |
+| `not_evento` | `proveedor` | Ámbito de unicidad del emisor | string(128) | Proveedor/cuenta, PORTAL o INTERNO, sin credenciales | Obligatorio | Único con evento_proveedor_id | `NOT` | `ME`; `P39` |
+| `not_evento` | `evento_proveedor_id` | Identidad original o derivada del evento | string(255) | ID nativo o DERIVADO:sha256 del contenido semántico canónico estable, sin fecha de recepción | Obligatorio | Único con proveedor | `NOT` | `ME`; `P39` |
+| `not_evento` | `origen` | Procedencia de evidencia | string(32), catálogo | PROVEEDOR, PORTAL, INTERNO | Obligatorio | Sin clave | `NOT` | `ME`; `P39` |
+| `not_evento` | `tipo` | Hito observado | string(32), catálogo | ACEPTACION, ENTREGA, APERTURA, ERROR, aceptación no acredita entrega | Obligatorio | Sin clave | `NOT` | `ME`; `P39` |
+| `not_evento` | `fecha_ocurrencia` | Instante informado por la fuente | timestamp with time zone, UTC | Instante real de evidencia, no inventado desde recepción | Obligatorio para ENTREGA/APERTURA/ERROR, NULL solo si ACEPTACION externa omite hora | Sin clave | `NOT` | `ME`; `P39` |
+| `not_evento` | `fecha_registro` | Instante de aceptación local del evento | timestamp with time zone, UTC | Hora del servidor, distinta de ocurrencia y excluida de identidad derivada | Obligatorio | Sin clave | `NOT` | `ME`; `P39` |
+| `not_evento` | `evidencia` | Evidencia mínima verificable | jsonb | Versión de canonicalización, emisor, mensaje, tipo, instante y autenticidad verificada, portal agrega aviso y acción explícita, sin tokens ni cuerpo del mensaje | Obligatorio | Sin clave | `NOT` | `AL`; `P40` |
+| `not_evento` | `hash_evidencia` | Huella de evidencia canónica | string(64), SHA-256 hexadecimal | Huella del subconjunto semántico canónico versionado, sin campos de transporte variables | Obligatorio | Sin clave | `NOT` | `ME`; `P39` |
 | `gob_auditoria` | `auditoria_id` | Identificador de auditoria | uuid, 128 bits | UUID generado; independiente del código comercial | Obligatorio, clave primaria | Clave primaria | `GOB` | `ME`; `P41` |
 | `gob_auditoria` | `actor_id` | Identificador de actor | uuid, 128 bits | UUID del registro referenciado | Obligatorio; referencia válida | Referencia a `mae_actor.actor_id`; integridad según 5-B | `GOB` | `ME`; `P41` |
 | `gob_auditoria` | `entidad` | Entidad | string(255) | Nombre de la entidad agregada auditada, del catálogo del modelo | Obligatorio | Sin clave | `GOB` | `ME`; `P41` |
@@ -876,6 +1017,11 @@ La Tabla A.9 desarrolla los atributos de telemetría y copias de consulta, con s
 | `cache_credito` | `expira_en` | Expira En | timestamp with time zone, UTC | Instante ISO 8601 en UTC; la entrada deja de ser válida en ese instante | Obligatorio | Sin clave | `DER` | `AL`; `P50` |
 | `cache_credito` | `invalida_por` | Invalida Por | string(32), catálogo | Catálogo de motivos: SALDO, TARIFA, CREDITO, MANIFIESTO | Obligatorio | Sin clave | `DER` | `AL`; `P50` |
 | `cache_credito` | `origen` | Origen | string(32), catálogo | Texto o número normalizado definido por la entrada | Obligatorio | Sin clave | `DER` | `AL`; `P50` |
+| `cache_credito` | `limite_credito` | Limite credito | decimal(18,2), CLP | Importe no negativo en CLP; no es precio de la oferta | Obligatorio | Sin clave | `DER` | `AL`; `P51` |
+| `cache_credito` | `saldo_utilizado` | Saldo utilizado | decimal(18,2), CLP | Importe no negativo en CLP; no es precio de la oferta | Obligatorio | Sin clave | `DER` | `AL`; `P51` |
+| `cache_credito` | `dias_mora_max` | Dias mora max | integer, 32 bits | Máxima mora no negativa de deuda pendiente a fecha_corte | Obligatorio | Sin clave | `DER` | `AL`; `P51` |
+| `cache_credito` | `bloqueado` | Bloqueado | boolean | true si mora > 30 días o cupo excedido; conservar bloqueo ERP | Obligatorio | Sin clave | `DER` | `AL`; `P51` |
+| `cache_credito` | `fecha_corte` | Fecha corte | timestamp with time zone, UTC | Instante UTC; conservar zona IANA de origen | Obligatorio | Sin clave | `DER` | `AL`; `P51` |
 | `cache_identidad` | `actor_id` | Identificador de actor | uuid, 128 bits | Texto o número normalizado definido por la entrada | Obligatorio, clave primaria | Clave primaria | `DER` | `ME`; `P50` |
 | `cache_identidad` | `rol` | Rol | string(255) | Texto o número normalizado definido por la entrada | Obligatorio | Sin clave | `DER` | `ME`; `P50` |
 | `cache_identidad` | `permisos` | Permisos | JSON, documento de consulta | Permisos preemitidos por Keycloak con versión, vigencia y firma; solo lectura, sin crear autorización offline | Obligatorio | Sin clave | `DER` | `ME`; `P50` |
@@ -1004,20 +1150,24 @@ La Tabla A.10 desarrolla los atributos de hechos y dimensiones analíticas, con 
 | `hech_movimiento_stock` | `cantidad` | Cantidad | decimal(18,3) | Numérico no negativo, tres decimales, en la unidad de medida declarada | Obligatorio | Sin clave | `ANA` | `ME`; `P53` |
 | `hech_movimiento_stock` | `unidad_medida` | Unidad Medida | string(255) | Unidad de medida registrada en `mae_unidad`; no es texto libre | Obligatorio | Sin clave | `ANA` | `ME`; `P53` |
 | `hech_actividad_costo` | `actividad_costo_sk` | Actividad Costo Sk | uuid, 128 bits | UUID generado; independiente del código comercial | Obligatorio, clave primaria | Clave primaria | `ANA` | `AL`; `P55` |
-| `hech_actividad_costo` | `entrega_id` | clave de origen del coste asignado | uuid, 128 bits | UUID generado; independiente del código comercial | Obligatorio | Sin clave | `ANA` | `ME`; `P53` |
-| `hech_actividad_costo` | `entrega_sk` | Entrega Sk | uuid, 128 bits | UUID del registro referenciado | Obligatorio; referencia válida | Clave foránea a `hech_entrega.entrega_sk` | `ANA` | `ME`; `P53` |
+| `hech_actividad_costo` | `entrega_id` | clave de origen del coste asignado | uuid, 128 bits | UUID real de rep_entrega cuando el origen está vinculado a entrega; no generar uno ficticio | NULL si el costo del cliente no corresponde a entrega/ruta; referencia válida cuando existe | Sin clave | `ANA` | `ME`; `P53` |
+| `hech_actividad_costo` | `entrega_sk` | Entrega Sk | uuid, 128 bits | UUID del registro referenciado | NULL si el costo del cliente no corresponde a entrega/ruta; referencia válida cuando existe | Clave foránea a `hech_entrega.entrega_sk` | `ANA` | `ME`; `P53` |
 | `hech_actividad_costo` | `cliente_sk` | Cliente Sk | uuid, 128 bits | UUID del registro referenciado | Obligatorio; referencia válida | Clave foránea a `dim_cliente.cliente_sk` | `ANA` | `ME`; `P53` |
-| `hech_actividad_costo` | `ruta_sk` | Ruta Sk | uuid, 128 bits | UUID del registro referenciado | Obligatorio; referencia válida | Clave foránea a `dim_ruta.ruta_sk` | `ANA` | `ME`; `P53` |
+| `hech_actividad_costo` | `ruta_sk` | Ruta Sk | uuid, 128 bits | UUID del registro referenciado | NULL si el costo del cliente no corresponde a entrega/ruta; referencia válida cuando existe | Clave foránea a `dim_ruta.ruta_sk` | `ANA` | `ME`; `P53` |
 | `hech_actividad_costo` | `sitio_sk` | Sitio Sk | uuid, 128 bits | UUID del registro referenciado | Obligatorio; referencia válida | Clave foránea a `dim_sitio.sitio_sk` | `ANA` | `ME`; `P53` |
 | `hech_actividad_costo` | `fecha_key` | Fecha Key | date | Fecha ISO 8601 de negocio del hecho; derivación del origen y zona del sitio según 5-H; no es la fecha de carga ETL | Obligatorio; referencia válida | Clave foránea a `dim_fecha.fecha_key` | `ANA` | `ME`; `P53` |
 | `hech_actividad_costo` | `centro_costo` | Centro Costo | string(64) | Código de centro de costo proveniente de maestro. No es un importe monetario. | Obligatorio | Sin clave | `ANA` | `AL`; `P55` |
 | `hech_actividad_costo` | `criterio_asignacion` | Criterio Asignación | string(32), catálogo | Catálogo: KILOMETRAJE, TIEMPO, ENTREGA, PESO | Obligatorio | Sin clave | `ANA` | `ME`; `P53` |
-| `hech_actividad_costo` | `importe_costo` | Importe Costo | decimal(18,2), CLP | Importe monetario en CLP | Obligatorio | Sin clave | `ANA` | `AL`; `P55` |
-| `hech_actividad_costo` | `km_recorridos` | Km Recorridos | decimal(18,6) | Numérico no negativo en kilómetros, tres decimales | Obligatorio | Sin clave | `ANA` | `ME`; `P53` |
-| `hech_actividad_costo` | `minutos_ruta` | Minutos Ruta | integer, 32 bits | Entero dentro del rango del tipo; negativo solo en una diferencia o un descuadre declarado | Obligatorio | Sin clave | `ANA` | `ME`; `P53` |
-| `hech_actividad_costo` | `cantidad_entregada` | Cantidad Entregada | decimal(18,3) | Numérico no negativo, tres decimales, en la unidad de medida declarada | Obligatorio, admite cero; no puede superar la cantidad de referencia | Sin clave | `ANA` | `ME`; `P53` |
-| `hech_actividad_costo` | `envases_retornados` | Envases Retornados | integer, 32 bits | Entero no negativo; cero admitido en un conteo, una cantidad o una secuencia | Obligatorio | Sin clave | `ANA` | `ME`; `P53` |
+| `hech_actividad_costo` | `importe_costo` | Importe Costo | decimal(18,2), CLP | Costo operativo contable asignado; excluye devolución y merma que se suman por separado | Obligatorio | Sin clave | `ANA` | `AL`; `P55` |
+| `hech_actividad_costo` | `km_recorridos` | Km Recorridos | decimal(18,6) | Numérico no negativo en kilómetros, tres decimales | NULL si el origen no tiene esta medida; cero solo comprobado | Sin clave | `ANA` | `ME`; `P53` |
+| `hech_actividad_costo` | `minutos_ruta` | Minutos Ruta | integer, 32 bits | Entero dentro del rango del tipo; negativo solo en una diferencia o un descuadre declarado | NULL si el origen no tiene esta medida; cero solo comprobado | Sin clave | `ANA` | `ME`; `P53` |
+| `hech_actividad_costo` | `cantidad_entregada` | Cantidad Entregada | decimal(18,3) | Numérico no negativo, tres decimales, en la unidad de medida declarada | NULL si el origen no tiene esta medida; cero solo comprobado | Sin clave | `ANA` | `ME`; `P53` |
+| `hech_actividad_costo` | `envases_retornados` | Envases Retornados | integer, 32 bits | Entero no negativo; cero admitido en un conteo, una cantidad o una secuencia | NULL si el origen no tiene esta medida; cero solo comprobado | Sin clave | `ANA` | `ME`; `P53` |
 | `hech_actividad_costo` | `importe_devoluciones` | Importe Devoluciones | decimal(18,2), CLP | Importe monetario en CLP | Obligatorio | Sin clave | `ANA` | `AL`; `P55` |
+| `hech_actividad_costo` | `importe_merma` | Importe merma | decimal(18,2), CLP | Importe no negativo en CLP; no es precio de la oferta | NULL si existe merma no valorizada; cero solo cuando no existe merma | Sin clave | `ANA` | `AL`; `P55` |
+| `hech_actividad_costo` | `origen_tipo` | Origen tipo | string(32), catálogo | OPERACION, DEVOLUCION, MERMA | Obligatorio | Sin clave | `ANA` | `AL`; `P55` |
+| `hech_actividad_costo` | `origen_id` | Origen id | uuid, 128 bits | Identidad estable de actividad ERP, devolución o merma; contrato tipado según origen_tipo | Obligatorio | Sin clave | `ANA` | `AL`; `P55` |
+| `hech_actividad_costo` | `fraccion_asignacion` | Fraccion asignacion | decimal(18,6) | Mayor que cero y menor o igual a 1; suma por origen=1 entre asignaciones válidas | Obligatorio | Sin clave | `ANA` | `AL`; `P55` |
 | `hech_excursion` | `excursion_sk` | Excursión Sk | uuid, 128 bits | UUID generado; independiente del código comercial | Obligatorio, clave primaria | Clave primaria | `ANA` | `ME`; `P53` |
 | `hech_excursion` | `excursion_id` | clave de origen | uuid, 128 bits | UUID generado; independiente del código comercial | Obligatorio | Valor único | `ANA` | `ME`; `P53` |
 | `hech_excursion` | `producto_sk` | Producto Sk | uuid, 128 bits | UUID del registro referenciado | Obligatorio; referencia válida | Clave foránea a `dim_producto.producto_sk` | `ANA` | `ME`; `P53` |
@@ -1026,6 +1176,35 @@ La Tabla A.10 desarrolla los atributos de hechos y dimensiones analíticas, con 
 | `hech_excursion` | `duracion_minutos` | Duracion Minutos | integer, 32 bits | Entero dentro del rango del tipo; negativo solo en una diferencia o un descuadre declarado | Obligatorio | Sin clave | `ANA` | `ME`; `P53` |
 | `hech_excursion` | `severidad` | Severidad | string(32), catálogo | MENOR, CRITICA; validación y rechazo DOMINIO_NO_ADMITIDO según 5-C | Obligatorio | Sin clave | `ANA` | `ME`; `P53` |
 | `hech_excursion` | `con_bloqueo` | Con Bloqueo | boolean | Verdadero o falso explícito y validado; sin convertir desconocido en falso | Obligatorio; valor explícito sin default de dato desconocido | Sin clave | `ANA` | `ME`; `P53` |
+| `hech_ocupacion_diaria` | `ocupacion_sk` | Ocupacion sk | uuid, 128 bits | UUID estable de la entidad | Obligatorio, clave primaria | Clave primaria | `ANA` | `ME`; `P56` |
+| `hech_ocupacion_diaria` | `fecha_key` | Fecha key | date | Fecha de cierre local del sitio | Obligatorio | Referencia a dim_fecha.fecha_key | `ANA` | `ME`; `P56` |
+| `hech_ocupacion_diaria` | `sitio_sk` | Sitio sk | uuid, 128 bits | UUID existente; validación según 5-B | Obligatorio | Referencia a `dim_sitio.sitio_sk`; FK solo co-residente | `ANA` | `ME`; `P56` |
+| `hech_ocupacion_diaria` | `zona_id` | Zona id | uuid, 128 bits | UUID existente; validación según 5-B | Obligatorio | Referencia a `mae_zona.zona_id`; FK solo co-residente | `ANA` | `ME`; `P56` |
+| `hech_ocupacion_diaria` | `tipo_zona` | Tipo zona | string(32), catálogo | SECO, REFRIGERADO, CONGELADO | Obligatorio | Sin clave | `ANA` | `ME`; `P56` |
+| `hech_ocupacion_diaria` | `posiciones_totales` | Posiciones totales | integer, 32 bits | Conteo no negativo de posiciones habilitadas al cierre | Obligatorio | Sin clave | `ANA` | `ME`; `P56` |
+| `hech_ocupacion_diaria` | `posiciones_ocupadas` | Posiciones ocupadas | integer, 32 bits | Conteo distinto de posiciones con stock físico positivo, sin duplicar lotes/SSCC | Obligatorio | Sin clave | `ANA` | `ME`; `P56` |
+| `hech_ocupacion_diaria` | `porcentaje` | Porcentaje | decimal(7,4) | 100 * posiciones_ocupadas / posiciones_totales | NULL si posiciones_totales=0 | Sin clave | `ANA` | `ME`; `P56` |
+| `hech_cartera_antiguedad` | `cartera_sk` | Cartera sk | uuid, 128 bits | UUID estable de la entidad | Obligatorio, clave primaria | Clave primaria | `ANA` | `AL`; `P55` |
+| `hech_cartera_antiguedad` | `cliente_sk` | Cliente sk | uuid, 128 bits | UUID existente; validación según 5-B | Obligatorio | Referencia a `dim_cliente.cliente_sk`; FK solo co-residente | `ANA` | `AL`; `P55` |
+| `hech_cartera_antiguedad` | `fecha_corte` | Fecha corte | date | Día local de corte de cartola | Obligatorio | Sin clave | `ANA` | `AL`; `P55` |
+| `hech_cartera_antiguedad` | `tramo_antiguedad` | Tramo antiguedad | string(32), catálogo | CORRIENTE, HASTA_30, HASTA_60, HASTA_90, MAS_90 | Obligatorio | Sin clave | `ANA` | `AL`; `P55` |
+| `hech_cartera_antiguedad` | `monto_pendiente` | Monto pendiente | decimal(18,2), CLP | Importe no negativo en CLP; no es precio de la oferta | Obligatorio | Sin clave | `ANA` | `AL`; `P55` |
+| `hech_cartera_antiguedad` | `moneda` | Moneda | string(32), catálogo | CLP | Obligatorio | Sin clave | `ANA` | `AL`; `P55` |
+| `hech_viaje` | `viaje_sk` | Viaje sk | uuid, 128 bits | UUID estable de la entidad | Obligatorio, clave primaria | Clave primaria | `ANA` | `ME`; `P53` |
+| `hech_viaje` | `viaje_id` | Viaje id | uuid, 128 bits | UUID existente; validación según 5-B | Obligatorio | Referencia a `rut_viaje.viaje_id`; FK solo co-residente | `ANA` | `ME`; `P53` |
+| `hech_viaje` | `fecha_key` | Fecha key | date | Fecha local de salida del sitio | Obligatorio | Referencia a dim_fecha.fecha_key | `ANA` | `ME`; `P53` |
+| `hech_viaje` | `sitio_sk` | Sitio sk | uuid, 128 bits | UUID existente; validación según 5-B | Obligatorio | Referencia a `dim_sitio.sitio_sk`; FK solo co-residente | `ANA` | `ME`; `P53` |
+| `hech_viaje` | `vehiculo_id` | Vehiculo id | uuid, 128 bits | UUID existente; validación según 5-B | Obligatorio | Referencia a `mae_vehiculo.vehiculo_id`; FK solo co-residente | `ANA` | `ME`; `P53` |
+| `hech_viaje` | `fecha_salida` | Fecha salida | timestamp with time zone, UTC | Instante UTC; conservar zona IANA de origen | Obligatorio | Sin clave | `ANA` | `ME`; `P53` |
+| `hech_viaje` | `capacidad_peso_kg` | Capacidad peso kg | decimal(18,3) | Mayor que cero, en la unidad declarada | Obligatorio | Sin clave | `ANA` | `ME`; `P53` |
+| `hech_viaje` | `capacidad_volumen_m3` | Capacidad volumen m3 | decimal(18,6) | Mayor que cero, en la unidad declarada | Obligatorio | Sin clave | `ANA` | `ME`; `P53` |
+| `hech_viaje` | `peso_cargado_kg` | Peso cargado kg | decimal(18,3) | Carga no negativa al despacho | Obligatorio | Sin clave | `ANA` | `ME`; `P53` |
+| `hech_viaje` | `volumen_cargado_m3` | Volumen cargado m3 | decimal(18,6) | Volumen no negativo al despacho | Obligatorio | Sin clave | `ANA` | `ME`; `P53` |
+| `hech_viaje` | `pct_peso` | Pct peso | decimal(7,4) | 100 * peso_cargado_kg / capacidad_peso_kg | Obligatorio | Sin clave | `ANA` | `ME`; `P53` |
+| `hech_viaje` | `pct_volumen` | Pct volumen | decimal(7,4) | 100 * volumen_cargado_m3 / capacidad_volumen_m3 | Obligatorio | Sin clave | `ANA` | `ME`; `P53` |
+| `hech_viaje` | `umbral_ocupacion_pct` | Umbral ocupacion pct | decimal(7,4) | Umbral aprobado entre 0 y 100; referencia inicial 65 % | Obligatorio | Sin clave | `ANA` | `ME`; `P53` |
+| `hech_viaje` | `parametro_version_id` | Parametro version id | uuid, 128 bits | UUID existente; validación según 5-B | Obligatorio | Referencia a `mae_parametro_version.version_id`; FK solo co-residente | `ANA` | `ME`; `P53` |
+| `hech_viaje` | `bajo_umbral` | Bajo umbral | boolean | true si max(pct_peso,pct_volumen) < umbral; ambos porcentajes siempre visibles | Obligatorio | Sin clave | `ANA` | `ME`; `P53` |
 
 **Tabla A.10 - Diccionario de atributos: Modelo dimensional de explotación**
 
@@ -1092,6 +1271,7 @@ Cada fila conserva sensibilidad y código de política. Los códigos siguientes 
 - `P52`: Sin retención: es derivada y se reconstruye; Cifrado a nivel de campo, acceso reforzado y consulta auditada; Proyección derivada: no es fuente y no confirma una reserva.
 - `P53`: Alineada a la retención de su fuente transaccional; Se publica al warehouse sin dato crítico ni sin cifrar.
 - `P54`: Alineada a la retención de su fuente transaccional; Cifrado a nivel de campo, acceso reforzado y consulta auditada; Se publica al warehouse sin dato crítico ni sin cifrar.
+- `P56`: 12 meses completos de historia diaria de ocupación; conservar topología de cierre y aplicar acceso por rol.
 - `P55`: Alineada a la retención de su fuente transaccional; Cifrado a nivel de campo; Se publica al warehouse sin dato crítico ni sin cifrar.
 
 <a id="anexo-5b"></a>
@@ -1126,11 +1306,15 @@ Movimientos conservan saldo origen/destino según dirección, ajuste y reversió
 | Cobranza y finanzas | BD_COBRANZA_FINANZAS | PostgreSQL central; captura durable móvil | Autoridad financiera central | Captura offline permitida, rendición y conciliación; POS incierto no es aprobación |
 | Documentos y objetos | `S3_DOCS` | Almacenamiento de objetos con bloqueo de versión | Central y copia por región | La referencia es por clave lógica y huella, nunca por ruta física |
 | Intercambio con canal moderno | `BD_EDI_CANALMODERNO` | PostgreSQL 16 central | Central | Contrato versionado y mensajes idempotentes |
-| Notificaciones al cliente | BD_MAILS_NOTIF | PostgreSQL central | Central | Plantillas/preferencias versionadas; tres canales |
+| Notificaciones al cliente | BD_MAILS_NOTIF | PostgreSQL central | Central | Plantillas/preferencias, intentos y not_evento para entrega/apertura/error, canales de 5-C |
 | Telemetría y caché de lectura | BD_TELEMETRIA / REDIS_SESIONES_CACHE | DynamoDB raw; S3 Parquet/Glue/Redshift series; Redis caché | M12 ingiere; central consolida; metadatos/calibraciones en Calidad | Caché reconstruible, sin confirmar reservas/pagos |
 | Analítica de explotación | `BD_BI_GERENCIA` | Amazon S3, AWS Glue, Amazon Redshift Serverless y QuickSight embebido | Región `sa-east-1` | Consulta sin escritura en el almacén transaccional |
 | Bus de eventos | Cola administrada de brokerage de S4 | Broker de mensajería | Central y por sitio | Publicación con reintento y confirmación durable |
 | Copia local del dispositivo | Persistencia local de captura/consulta | Room/SQLite nativo; IndexedDB en PWA | Dispositivo/cuenta | UUID, payload pendiente y acuse durable; sin autoridad comercial autónoma |
+| Topología y capacidad ampliadas | BD_MAESTROS_CONF, M1 | PostgreSQL 16 | mae_zona, ubicaciones y capacidades; publicación central versionada | Copia local solo lectura; inventario por sitio |
+| Slotting y merma | BD_INVENTARIO, M1/M2 | PostgreSQL 16 local | inv_reubicacion_propuesta e inv_merma; Calidad decide disposición | Aprobación auditada; costo ERP por contrato |
+| Cartera y gestiones | BD_COBRANZA_FINANZAS, M7 | PostgreSQL central | cob_cartera_asignacion, cob_gestion, cob_saldo_documento | ERP autoridad de deuda/cupo; captura móvil durable |
+| Ocupación, viajes y antigüedad | BD_BI_GERENCIA, M10 | Redshift/S3/Glue | hech_ocupacion_diaria, hech_viaje, hech_cartera_antiguedad | Proyecciones derivadas sin escritura en OLTP |
 
 **Tabla A.11 - Módulo, almacén lógico y motor por dominio**
 
@@ -1140,12 +1324,21 @@ Las relaciones de negocio no usan borrado en cascada de evidencia. Se cierran es
 
 En PostgreSQL 16 la UK particionada incluye toda la clave de partición; unicidad local no equivale a identidad global. 5-F fija ámbito y restricciones. Una FK hacia tabla particionada requiere clave referenciada válida; entre motores se valida el contrato de identidad.
 
+**Topología y asignaciones.** Un sitio tiene varias zonas y una zona varias ubicaciones; toda ubicación pertenece a una zona del mismo sitio. La coordenada física única es sitio/pasillo/columna/nivel/posición; columna identifica el rack. Una unidad tiene cero o una ubicación actual y una ubicación admite varias unidades; saldo y movimiento conservan historia. Una propuesta une producto y dos ubicaciones distintas del mismo sitio; movimientos parciales pueden ejecutarla sin exceder cantidad/unidad aprobadas; no se autoriza parcial fuera de la capacidad disponible. El cambio de destino exige nueva aprobación. La misión resuelve producto, lote, unidad y cantidad mediante su asignación; su ubicación debe coincidir con el saldo reservado.
+
+**Cartera y cobranza por origen.** Un cliente tiene asignaciones históricas de cartera sin solapamiento de ejecutivo responsable; cada gestión identifica cliente y ejecutivo. Cada documento tiene como máximo un saldo vivo por cliente; documento, saldo y aplicaciones corresponden al mismo cliente. REPARTO exige entrega del cliente y rendición de conductor/vehículo; PREVENTA exige cobrador preventista, EFECTIVO, folio provisional y entrega NULL. cob_aplicacion relaciona el pago con una o más facturas vencidas del cliente; no se añade documento_id redundante al cobro. La captura offline conserva aplicaciones e identidades en la misma operación durable, pendientes de validación central; se acepta el cobro al validar facturas y suma aplicada. Todo cobro de preventa entra en su bolsa diaria y exige rendición en caja, sin vehículo ficticio.
+
+**Merma y costo.** inv_merma identifica el hecho, cliente atribuible, origen y eventual devolución. La disposición MERMA/DESTRUCCION genera una sola merma; movimiento y devolución no crean cargos analíticos duplicados. La góndola fuera de stock propio conserva evidencia sin descontar bodega. Las referencias entre motores se concilian por contrato; una merma de cliente sin entrega no obliga a inventar una entrega.
+
+La propuesta de reubicación conserva cantidad/unidad, regla ABC versionada y clave idempotente; antes de ejecutar se revalidan capacidad y saldo. Cada movimiento TRASLADO asociado descuenta la cantidad pendiente de la propuesta; solo al completarla se marca EJECUTADA. salida_real y sitio_salida_id del viaje determinan el día/zona IANA del snapshot y la ventana de bitácora, sin usar salida_prevista como salida acreditada.
 
 <a id="anexo-5c"></a>
 
 ## Anexo 5-C. Dominios de valores, reglas de validación y causas de rechazo
 
 **Reglas térmicas previas a aprobación.** Antes de habilitar un SKU se verifica la ficha y su rango mínimo/máximo. Se materializa una versión `PREVENTIVA_FICHA` con los mismos límites, severidad CRITICA, duración cero y sin aprobador. La primera lectura válida fuera de rango bloquea; ficha ausente, rango inválido o versión local sin acuse mantiene el lote retenido por `PARAMETRO_TERMICO_AUSENTE`. Calidad emite una versión APROBADA con su identidad; la transición no borra excursiones ni libera bloqueos automáticamente. Cada sitio y gateway recibe y acusa la regla/ficha vigente antes de usarla. Un cambio de ficha conserva el origen anterior mediante objeto y auditoría; no reinterpreta el expediente histórico.
+
+**Entrega, apertura y error (RF-18.03 / RT-16.23).** Un aviso tiene cero o varios intentos, únicos por aviso/canal/numero; cada intento tiene cero o varios not_evento. La pareja proveedor/evento_proveedor_id es única en BD_MAILS_NOTIF: proveedor incluye la cuenta del contrato. Un callback autenticado correlaciona mensaje e intento; insertar evento y actualizar la proyección not_intento es una transacción. Igual identidad/huella devuelve el resultado previo; igual identidad con otra huella se aísla. Sin ID nativo, el adaptador usa DERIVADO:sha256 de evidencia semántica canónica versionada (emisor, mensaje, tipo, ocurrencia y discriminantes estables), conservando su origen derivado; sin identidad correlacionable no actualiza estados. La recepción no participa en esa identidad. not_evento conserva entrega, apertura y todos los errores; not_intento resume primera entrega/apertura y último error por ocurrencia. La referencia (apertura_proveedor, proveedor_evento_id) resuelve el evento APERTURA del mismo intento. apertura_proveedor identifica al emisor de esa evidencia sin cambiar proveedor/mensaje_proveedor_id del envío externo. apertura_fecha, apertura_proveedor y proveedor_evento_id permanecen NULL sin apertura.
 
 **Canales y preferencias.** Los cuatro códigos de canal son comunes a plantillas, preferencias e intentos. AVISO_EN_PORTAL es el aviso persistente visible dentro de la aplicación; un aviso push es un mecanismo auxiliar para abrirlo, sin sustituir su persistencia ni su confirmación. EMAIL se normaliza a CORREO en el adaptador; un registro legado PUSH se conserva en staging hasta verificar a qué aviso persistente corresponde, sin conversión ciega. El CLIENTE elige canales por cliente, incluidos SMS para despacho/llegada y WhatsApp para canal tradicional. Sin preferencia comprobable no se habilitan comunicaciones comerciales. La baja comercial bloquea nuevas emisiones y reintentos aún no enviados, y se verifica nuevamente antes de cada envío; una versión nueva no la revoca. Los avisos OPERACIONAL obligatorios definidos por CLIENTE se tramitan por un canal disponible con evidencia; no se reclasifica publicidad como obligatoria. Solo una nueva decisión expresa y auditada habilita de nuevo el ámbito dado de baja.
 
@@ -1231,6 +1424,9 @@ Cada regla de calidad declara dominio, punto de aplicación y causa tipificada. 
 | `not_plantilla.tipo_aviso`, `not_preferencia.tipo_aviso` y `not_aviso.tipo` | PEDIDO, PREPARACION, DESPACHO, ENTREGA, INCIDENCIA, COBRANZA, RETIRO, COMERCIAL | Validación al capturar/transformar; versión del dueño | `DOMINIO_NO_ADMITIDO`: aislar original y resolver antes de publicar |
 | `not_plantilla.canal`, `not_preferencia.canal` y `not_intento.canal` | CORREO, SMS, WHATSAPP, AVISO_EN_PORTAL | Validación al capturar/transformar; versión del dueño | `DOMINIO_NO_ADMITIDO`: aislar original y resolver antes de publicar |
 | `not_intento.resultado` | PENDIENTE, ENVIADO, CONFIRMADO, FALLIDO | Validación al capturar/transformar; versión del dueño | `DOMINIO_NO_ADMITIDO`: aislar original y resolver antes de publicar |
+| not_intento.apertura_estado | INFORMADA, NO_INFORMADA, NO_SOPORTADA | INFORMADA exige fecha, origen, apertura_proveedor y evento, las otras conservan fecha/emisor/evento NULL | APERTURA_INCONSISTENTE |
+| not_intento.apertura_origen, not_evento.origen | PROVEEDOR/PORTAL/NO_OBSERVADA en intento, PROVEEDOR/PORTAL/INTERNO en evento | Fuente explícita, NO_OBSERVADA solo sin apertura, INTERNO no acredita apertura | APERTURA_INCONSISTENTE |
+| not_evento.tipo | ACEPTACION, ENTREGA, APERTURA, ERROR | Emisor, mensaje e intento correlacionados, callback autenticado, fecha/evidencia según 5-B | EVENTO_NOTIFICACION_INVALIDO |
 | `gob_excepcion_sync.tipo` | DUPLICADO, CONFLICTO_VERSION, GAP_VERSION, REFERENCIA_AUSENTE, VALIDACION, PAGO_INCIERTO | Validación al capturar/transformar; versión del dueño | `DOMINIO_NO_ADMITIDO`: aislar original y resolver antes de publicar |
 | `dim_cliente.canal` | TRADICIONAL, MODERNO, FOOD_SERVICE, CADENA, HORECA | Validación al capturar/transformar; versión del dueño | `DOMINIO_NO_ADMITIDO`: aislar original y resolver antes de publicar |
 | `dim_sitio.tipo` | CENTRO_DISTRIBUCION, CROSS_DOCKING, CASA_MATRIZ, INSTALACION_CLIENTE | Validación al capturar/transformar; versión del dueño | `DOMINIO_NO_ADMITIDO`: aislar original y resolver antes de publicar |
@@ -1240,6 +1436,15 @@ Cada regla de calidad declara dominio, punto de aplicación y causa tipificada. 
 | `hech_linea_venta.moneda` | CLP | Validación al capturar/transformar; versión del dueño | `DOMINIO_NO_ADMITIDO`: aislar original y resolver antes de publicar |
 | `hech_movimiento_stock.tipo_movimiento` | RECEPCION, SALIDA, TRASLADO, AJUSTE, ANULACION | Validación al capturar/transformar; versión del dueño | `DOMINIO_NO_ADMITIDO`: aislar original y resolver antes de publicar |
 | `hech_excursion.severidad` | MENOR, CRITICA | Validación al capturar/transformar; versión del dueño | `DOMINIO_NO_ADMITIDO`: aislar original y resolver antes de publicar |
+| mae_zona.tipo_zona | SECO, REFRIGERADO, CONGELADO | AMBIENTE del producto equivale a SECO; rango de zona contenido en ficha | INCOMPATIBILIDAD_TERMICA |
+| mae_producto.clasificacion_sanitaria | Código/versión aprobados por Calidad | Sin códigos inventados; ficha completa antes de guardar | FICHA_PRODUCTO_INCOMPLETA |
+| inv_reubicacion_propuesta.estado, motivo, clase_abc | PROPUESTA/MODIFICADA/APROBADA/RECHAZADA/EJECUTADA; ABC/PESO/VOLUMEN/ZONA; A/B/C | Solo APROBADA habilita movimiento | REUBICACION_NO_APROBADA |
+| prp_mision_linea.causa_faltante | SIN_STOCK, PRODUCTO_DANADO, PRODUCTO_VENCIDO, ERROR_UBICACION, OTRO | Obligatoria con faltante; OTRO exige detalle | FALTANTE_SIN_CAUSA |
+| prv_pedido_linea.estado_precio | PENDIENTE_ERP, SIN_DIFERENCIA, BLOQUEADA, CONCILIADA | Precio pactado inmutable; corregir ERP antes de facturar | PRECIO_DISCREPANTE |
+| cob_cobro.origen, cob_rendicion.origen | REPARTO, PREVENTA | Mismo origen/responsable al rendir | ORIGEN_COBRO_INVALIDO |
+| cob_gestion.tipo, resultado | CONTACTO/COMPROMISO/SEGUIMIENTO/CIERRE; CONTACTADO/SIN_CONTACTO/COMPROMISO/INCUMPLIDO/PAGADO | Compromiso exige monto/fecha y seguimiento exige recontacto | GESTION_INCOMPLETA |
+| cob_saldo_documento.tramo_antiguedad, hech_cartera_antiguedad.tramo_antiguedad | CORRIENTE, HASTA_30, HASTA_60, HASTA_90, MAS_90 | Tramos exhaustivos y excluyentes según 5-H | CARTERA_INCONSISTENTE |
+| rep_devolucion_linea.disposicion, inv_merma.origen, causa | REINGRESO/MERMA/DESTRUCCION; CONTEO/PREPARACION/GONDOLA/DEVOLUCION; VENCIMIENTO/DANO/RUPTURA_FRIO/OTRO | Disposición de Calidad auditada y origen trazable | MERMA_SIN_ORIGEN |
 
 **Tabla A.12 - Dominios de valores cerrados y su validación**
 
@@ -1276,6 +1481,15 @@ Cada regla de calidad declara dominio, punto de aplicación y causa tipificada. 
 | `VERSION_VIGENTE_DUPLICADA` | Publicación de versión de parámetro | Rechazo de la publicación | Cuarentena de la versión duplicada |
 | `IMPORTE_NEGATIVO`, `MONEDA_AUSENTE` | Captura de importe | Rechazo | Cuarentena con el importe original |
 | `AUDITORIA_INCOMPLETA` | Cierre de la operación | Rechazo del registro de auditoría | La operación no se carga sin su auditoría |
+| APERTURA_INCONSISTENTE, EVENTO_NOTIFICACION_INVALIDO | Apertura sin evidencia, emisor no autenticado, intento ajeno o ID repetido con otra huella | No actualizar proyección, aislar y registrar causa | Conciliar evidencia verificable, duplicado idéntico devuelve resultado previo |
+| FICHA_PRODUCTO_INCOMPLETA, TOPOLOGIA_INVALIDA | Ficha vacía, posición sin zona o coordenada repetida | Rechazar ficha canónica/posición | Aislar original para Comercial/Bodega/Calidad |
+| INCOMPATIBILIDAD_TERMICA | Tipo o rango incompatibles al putaway | Bloquear ubicación con mensaje descriptivo | Conservar origen y resolver zona/ficha |
+| REUBICACION_NO_APROBADA, FALTANTE_SIN_CAUSA | Slotting sin aprobación o faltante sin causa/detalle | Impedir instrucción/confirmación | Aislar instrucciones y completar evidencia |
+| PRECIO_DISCREPANTE | Cálculo ERP diferente al pedido | Bloquear facturación y avisar a Comercial | Conciliar sin sobrescribir precio pactado |
+| CAPACIDAD_VEHICULO_EXCEDIDA | Carga excede peso o volumen nominal | Rechazar adición y bloquear cierre hasta redistribuir | Aislar carga y resolver capacidades/unidades |
+| COBRO_PREVENTA_INVALIDO, ORIGEN_COBRO_INVALIDO | Sin factura vencida aplicada, no efectivo, falta recibo o responsable/origen discordante | Excepción sin aplicación financiera; conciliar | Conservar original y revisar con Finanzas |
+| CARTERA_INCONSISTENTE, CREDITO_BLOQUEADO, GESTION_INCOMPLETA | Deuda/cupo desconocidos, mora >30, cupo excedido o gestión incompleta | Bloquear crédito/gestión inválida; permitir contado/cobro autorizados | Conciliar ERP y completar campos sin inventarlos |
+| MERMA_SIN_ORIGEN, COSTO_ERP_AUSENTE | Origen no trazable o costo no disponible | Conservar hecho; indicador incompleto | Consultar Finanzas; nunca costo cero inventado |
 
 **Tabla A.13 - Causas de rechazo y su tratamiento en operación y en migración**
 
@@ -1283,6 +1497,19 @@ Cada regla de calidad declara dominio, punto de aplicación y causa tipificada. 
 
 A.13 distingue rechazo (sin carga y con causa accionable), cuarentena (original íntegro consultable, defecto y resolución posterior) y decisión registrada (corrección/equivalencia aprobada con regla/versión en perfilado). Se prohíbe carga corregida silenciosa o historia inferida: resultado/causa ausentes permanecen aislados con original visible.
 
+**Ficha, zona y putaway.** No se guarda ficha canónica con campos obligatorios de RF-01.10 vacíos; staging conserva originales incompletos sin habilitarlos. volumen_m3 deriva de dimensiones externas embaladas homologadas a unidad de venta. GTIN/SKU y topología registran antes/después, actor y fecha en gob_auditoria. Rangos iniciales de RF-02.01: SECO [15,25], REFRIGERADO [2,8], CONGELADO [-25,-18] grados Celsius; mínimo <= máximo. AMBIENTE equivale a SECO. Se exige tipo compatible y rango de zona dentro del permitido por ficha: producto.min <= zona.min y zona.max <= producto.max. No se invierte esta contención. Putaway escanea SSCC/ubicación, valida sitio/zona habilitados, capacidad y compatibilidad de todo el contenido, y confirma unidad/ubicación, TRASLADO, auditoría y outbox en transacción local. Un fallo no cambia ubicación.
+
+**Slotting y picking.** El período ABC configurable se guarda en la propuesta; movimientos homologados y regla de clasificación versionada en mae_parametro sustentan el cálculo. Clase A prioriza proximidad al andén sin violar zona, peso ni volumen disponibles. Jefa de Bodega aprueba/rechaza o modifica cada propuesta; modificar invalida aprobación anterior. La instrucción asigna operario, origen/destino y cantidad; la ejecución confirma movimiento, actor y fecha sin duplicación. Picking ordena por zona térmica/recorrido respetando FEFO y saldo reservado; faltante positivo exige causa y OTRO detalle antes de confirmar y avisar a Comercial.
+
+**Observabilidad y envío de avisos.** Cada intento nace con NO_INFORMADA si el contrato puede aportar apertura o NO_SOPORTADA si carece de señal nativa (SMS); ninguno significa «no leído». INFORMADA exige evento APERTURA, fecha real y origen PROVEEDOR o PORTAL. Correo/WhatsApp registran solo señal efectivamente recibida, sin inferir apertura de entrega, falta de confirmación o espera vencida. Una señal técnica del proveedor acredita observación, no lectura humana comprobada. Acceder desde un enlace SMS al aviso del portal puede generar APERTURA de origen PORTAL al mostrarlo por acción explícita de una sesión autorizada, correlacionada con aviso/intento; resolver el enlace, una vista previa o un bot no bastan. Permite pasar de NO_SOPORTADA a INFORMADA sin afirmar lectura del SMS. El modelo admite esa evidencia; el mecanismo del enlace depende del contrato INT-11 de S4 y no se declara implementado aquí.
+
+Aviso, clave idempotente y outbox se confirman juntos. Un trabajador despacha asíncronamente y programa reintentos de fallas recuperables según política versionada (espera, máximo y escalamiento); la solicitud de negocio no espera al proveedor. Cada tentativa real recibe ordinal e intento propios; retransmitir una solicitud incierta conserva intento_id y clave estable de envío. Antes de reenviar se consulta/concilia la identidad externa según contrato, sin interpretar timeout como rechazo ni prometer deduplicación externa sin soporte del proveedor. Error no recuperable o máximo agotado escala con causa, sin crear aviso duplicado. Se revalida preferencia antes de despachar. CONFIRMADO en un intento exige evento ENTREGA y entrega_fecha; APERTURA no confirma por sí sola entrega. El estado del aviso se deriva según los canales exigidos por su política; CONFIRMADO requiere todas las entregas exigidas acreditadas. Un canal ya confirmado no se reenvía por un error tardío. ERROR exige código, detalle depurado y fecha, sin borrar una entrega/apertura previa. Eventos tardíos conservan historia y no hacen retroceder hitos acreditados.
+
+**Precio y capacidad.** diferencia_precio usa misma unidad/moneda; se compara también el importe total calculado para despacho/facturación con el pedido, incluidos componentes ERP. Ausencia de cálculo conserva PENDIENTE_ERP; diferencia bloquea la línea y crea not_aviso INCIDENCIA vinculado a pedido/cliente, entregado al rol Comercial autenticado. La clave idempotente identifica pedido/línea/versión del cálculo; gob_auditoria conserva destinatario, respuesta y resolución. CONCILIADA exige actor/fecha y cálculo ERP corregido al precio pactado, sin sobrescribir precio_unitario. No se emite factura antes de conciliar. La carga se recalcula bajo bloqueo del viaje: cantidad homologada * peso bruto y volumen embalado; unidades/embalaje se validan antes. Exceder peso o volumen rechaza adición y bloquea cierre hasta redistribuir. Datos desconocidos no equivalen a carga cero.
+
+**Deuda, aplicaciones y recibo.** Vencimiento de factura a crédito viene del ERP y coincide con cob_saldo_documento; monto_pendiente entre cero y monto_original tras aplicaciones/anulaciones conciliadas. Cupo/estado ERP conservan versión/fecha; mora máxima >30 o saldo utilizado >cupo bloquea crédito, y un pedido nuevo no puede exceder cupo disponible. Sin dato vigente no se autoriza crédito desde caché; contado/cobro siguen permisos. PREVENTA exige suma aplicada igual al efectivo, facturas vencidas del mismo cliente y sin sobreaplicar deuda; concurrencia bloquea saldo/documentos e idempotencia evita doble efecto. Folio provisional único por cobrador, preasignado offline, no es DTE. Rendición diaria no cierra con efectivo fuera de bolsa; responsable/origen coinciden con sus cobros.
+
+**Valorización de merma.** Finanzas valida costo unitario contable, unidad, fecha y referencia/versionado ERP; importe_merma=cantidad homologada * costo_unitario_erp. Sin evidencia queda NULL, nunca precio de venta. Una devolución MERMA/DESTRUCCION produce una merma y un componente de costo; REINGRESO no imputa pérdida de producto. OTRO exige causa_detalle. Publicaciones conservan original y validación.
 
 <a id="anexo-5d"></a>
 
@@ -1310,12 +1537,15 @@ La Tabla A.14 detalla inicio, ubicación y eliminación por dominio/atributo. Lo
 | `prv_pedido`, `prv_pedido_linea`, `prv_pedido_promesa` y `prp_*` | Cierre del pedido | 6 años por el compromiso con el cliente | Ninguno | Central con copia de lectura | Eliminación por ejercicio después de cumplir el plazo documental |
 | `mae_*` con su historial de versiones | Fecha de inicio de vigencia | Vigente más cinco años de historial | Ninguno | Maestro central y copias locales | Ninguna versión se elimina mientras una entidad viva la referencie |
 | `edi_mensaje`, `edi_asn`, `edi_perfil_cadena` | Recepción del mensaje | 6 años | Ninguno | Central | Eliminación por clase con el conteo de mensajes y su correlativo |
-| `not_aviso`, `not_intento`, `not_plantilla` y `not_preferencia` | Envío del aviso | 12 meses de registro; 6 años la evidencia de notificación al cliente | Ninguno | Central | Intentos/avisos según plazo; la preferencia y evidencia de baja permanecen mientras el cliente pueda ser destinatario y hasta nueva decisión expresa. Purgar un registro no habilita envíos comerciales |
+| `not_aviso`, `not_intento`, `not_evento`, `not_plantilla` y `not_preferencia` | Envío del aviso | 12 meses de registro; 6 años la evidencia de notificación al cliente | Ninguno | Central | Intentos, eventos de entrega/apertura/error e identidades de deduplicación según plazo; evidencia tardía conserva el inicio del plazo del aviso original. Conservar cabeceras mínimas de aviso/intento mientras sus eventos sigan retenidos, con purga conjunta de referencias. La preferencia y evidencia de baja permanecen mientras el cliente pueda ser destinatario y hasta nueva decisión expresa. Purgar un registro no habilita envíos comerciales |
 | `gob_auditoria` y `gob_excepcion_sync` | Registro de la operación | 7 años | Compresión por año | Central | Eliminación con autorización de dos perfiles y registro de la ejecución |
 | Registros técnicos de aplicación y de acceso | Emisión del registro | 12 meses | 24 meses de archivo | Central | Eliminación por clase, distinta de la retención de auditoría y seguridad |
 | Respaldo transaccional y de identidad | Cada copia | 35 días | Ninguno | Copia por sitio | Rotación automática verificada por conteo y fecha |
 | `cache_*` y copias locales de lectura | Publicación de la entrada | Sin retención: es derivada y se reconstruye | Ninguno | Memoria caché del proceso y almacenamiento del dispositivo | Expiración por vigencia; purga verificable y auditada al vencer la entrada, cerrar sesión o retirar autorización |
 | `hech_*` y `dim_*` | Cierre del hecho o de la versión | Alineada a la retención de su fuente transaccional | Ninguno | Redshift Serverless | Compactación por partición; la agregación no extiende el plazo de la fuente |
+| hech_ocupacion_diaria | Cierre del día local | Al menos 12 meses diarios completos | Ninguno | Redshift/S3; topología de cierre retenida | Purga por día elegible sin perder mínimo de historia |
+| inv_reubicacion_propuesta e inv_merma | Ejecución/cierre del expediente | 6 años; ampliar si expediente sanitario vigente | Ninguno | Autoridad local y consolidado | Conservar aprobación, costo ERP y movimiento |
+| hech_viaje y hech_cartera_antiguedad | Salida/corte | 6 años alineados con ruta/dossier financiero | Ninguno | Redshift/S3 | Eliminar derivados/copias solo cuando la fuente sea elegible |
 
 **Tabla A.14 - Retención declarada por dominio y por atributo**
 
@@ -1343,12 +1573,15 @@ RT-05.08 y Art. 85 exigen seudonimización/cifrado de campo para datos personale
 | Datos de clientes y maestro comercial | `ME` con `CR` en RUT y representante | Sí | Sí en RUT y representante | Acceso por rol de maestro, con auditoría de modificación |
 | Objetos almacenados de evidencia | `ME` con `AL` en el documento que contienen | Sí, con bloqueo de versión | No | Acceso por referencia de clave lógica y huella verificada, nunca por ruta física |
 | Registros de auditoría y de seguridad | `AL` | Sí | Sí en los valores anterior y posterior | Consulta por perfil de auditoría, con registro de la propia consulta |
+| Notificaciones: apertura, errores y evidencia de eventos | `AL` | Sí | Sí en apertura, detalle y evidencia | Roles de notificación/auditoría y cliente sobre avisos propios, datos mínimos sin tokens ni secretos, P39/P40 |
 | Registros técnicos de aplicación y de acceso | `ME` | Sí | No | Acceso por rol de seguridad, con retención de doce meses distinta de la auditoría |
 | Parámetros, catálogos y equivalencias | `ME` | Sí | No | Acceso por rol de configuración, con versión y responsable del cambio |
 | Credenciales de turno y manifiesto firmado del dispositivo | `AL` | Sí | No | Vida de 8 horas en bodega y 14 en terreno, con manifiesto de 26 horas renovado cada hora |
 | Copias locales de identidad, precio, crédito y saldo | `CR` | Sí en el almacén del dispositivo | Sí | Copia de identidad de solo lectura por 24 horas; la copia local no confirma reservas ni precios |
 | Lectura cruda de telemetría | `ME` | Sí | No | Acceso al proceso de ingesta; retención de 30 días |
 | Hechos y dimensiones analíticas | `ME` con `AL` en importes | Sí en el almacén analítico | Sí en importes | Publicación sin dato crudo y con el mismo criterio de acceso que la fuente |
+| Cartera por factura, cupo, gestiones, compromiso y costo de merma | AL | Sí | Sí, importes/gestiones y referencias personales según 5-A | Finanzas/ejecutivo asignado; portal solo cliente autenticado; consulta auditada |
+| Topología, slotting y ocupación/viaje sin datos personales | ME | Sí | No para medidas; actores/coordenadas personales conservan su control propio | Bodega/planificador y rol de datos; publicación versionada |
 
 **Tabla A.15 - Clasificación por sensibilidad y control declarado**
 
@@ -1408,6 +1641,11 @@ En PostgreSQL 16, una unicidad particionada incluye la clave de partición; un �
 | `rep_entrega` | `pedido_id` | Único | Sin partición | Una entrega por pedido, varios intentos; entrega_id conserva identidad |
 | `rep_entrega_linea` | `entrega_id`, `intento_id`, `linea_id`, `asignacion_id`, `unidad_logistica_id` | Único NULLS NOT DISTINCT | Sin partición | Grano fragmento de asignación por intento y unidad; NULL legítimos se comparan iguales. entrega_linea_id conserva identidad idempotente; varias asignaciones se distinguen por asignacion_id |
 | `cob_cobro` | `clave_idempotencia` | Único | Global, con independencia del mes de registro | Reintento del cobro sin duplicar el efecto. La restricción es global y se evalúa dentro de la misma transacción que inscribe el cobro y su imputación, de modo que dos intentos concurrentes de la misma operación no pueden pasar ambos |
+| `not_aviso` | `clave_idempotencia` | Único | Sin partición | Un aviso por operación lógica ante reintentos |
+| `not_intento` | `aviso_id`, `canal`, `numero` | Único | Sin partición | Tentativa real distinta, retransmisión técnica conserva intento_id |
+| `not_intento` | `proveedor`, `mensaje_proveedor_id` | Único parcial IS NOT NULL | Sin partición | Correlación inequívoca de callback con intento |
+| `not_evento` | `proveedor`, `evento_proveedor_id` | Único | Sin partición | Deduplicación durable de eventos nativos/derivados |
+| `not_evento` | `intento_id`, `fecha_ocurrencia`, `evento_id` | No único | Sin partición | Historia de entrega/apertura/error y fuente de proyecciones |
 | `edi_mensaje` | `clave_idempotencia` | Único | Global, con independencia del mes de recepción | Mensaje recibido dos veces con el mismo efecto. La unicidad se comprueba en la ingesta, antes de que el mensaje produzca hechos, y la rechaza completa si ya existe |
 | `edi_asn_linea` | `asn_id`, `unidad_logistica_id` | Único | Con el mes de recepción en el ámbito | Varias unidades en un aviso, una línea por unidad; el SSCC se resuelve en `inv_unidad_logistica` y no se almacena en la línea del aviso |
 | `gob_auditoria` | `transaction_id` | No único | Sin partición; filtro temporal cuando aplica | Reintento idempotente de una escritura y reconstrucción de su antes y después |
@@ -1419,6 +1657,27 @@ En PostgreSQL 16, una unicidad particionada incluye la clave de partición; un �
 | `cache_stock`, `cache_precio`, `cache_credito`, `cache_identidad`, `cache_manifiesto` | No aplica | No aplica | No aplica | La caché en memoria no admite índice SQL: la versión viaja en el valor y la invalidación la publica el proceso que escribe la fuente |
 | `inv_unidad_contenido` | `lote_id`, `unidad_logistica_id` | No único | Por sitio | Recorrido sanitario inverso: localizar todas las unidades de un lote |
 | `cal_evento_custodia` | `evento_id`, `ts_ocurrencia` | Único | Sin partición | Destino de FK compuesta de detalle; fuerza timestamp único por identidad de cabecera |
+| `mae_producto` | `sku_interno` | Único | Sin partición | Código interno sin duplicados |
+| `mae_zona` | `sitio_id`, `codigo` | Único | Sin partición | Zona dentro del sitio |
+| `mae_ubicacion` | `sitio_id`, `pasillo`, `columna`, `nivel`, `posicion` | Único | Sin partición | Coordenada física completa |
+| `mae_ubicacion` | `zona_id`, `habilitada` | No único | Sin partición | Topología y ocupación |
+| `inv_unidad_logistica` | `ubicacion_id` | No único | Sin partición | SSCC por posición |
+| `inv_reubicacion_propuesta` | `estado`, `fecha` | No único | Sin partición | Aprobación/ejecución pendientes |
+| `inv_merma` | `devolucion_linea_id` | Único parcial IS NOT NULL | Sin partición | Una merma por línea dispuesta a pérdida |
+| `inv_merma` | `cliente_id`, `fecha` | No único | Sin partición | Merma/costo del cliente |
+| `prp_mision_linea` | `mision_id`, `secuencia_recorrido` | Único | Sin partición | Orden por misión |
+| `cob_cartera_asignacion` | `cliente_id`, `vigente_desde` | Único más exclusión temporal por cliente | Sin partición | Un ejecutivo responsable por intervalo [desde,hasta) |
+| `cob_gestion` | `ejecutivo_id`, `fecha_recontacto` | No único | Sin partición | Tareas de seguimiento |
+| `cob_saldo_documento` | `documento_id` | Único | Sin partición | Saldo vivo por documento |
+| `cob_saldo_documento` | `cliente_id`, `fecha_vencimiento` | No único | Sin partición | Mora a fecha de corte |
+| `cob_cobro` | `cobrador_id`, `recibo_folio` | Único parcial origen=PREVENTA | Sin partición | Folio sin doble recibo |
+| `cob_rendicion` | `responsable_id`, `origen`, `fecha_retorno` | No único | Sin partición | Rendición diaria |
+| `doc_documento` | `cliente_id`, `fecha_vencimiento` | No único | Sin partición | Facturas vencidas |
+| `hech_ocupacion_diaria` | `fecha_key`, `sitio_sk`, `zona_id` | Único | Sin partición | Una fila diaria por zona |
+| `hech_cartera_antiguedad` | `cliente_sk`, `fecha_corte`, `tramo_antiguedad` | Único | Sin partición | Cliente/día/tramo |
+| `hech_viaje` | `viaje_id` | Único | Sin partición | Snapshot definitivo por viaje |
+| `hech_actividad_costo` | `origen_tipo`, `origen_id`, `cliente_sk`, `entrega_sk` | Único NULLS NOT DISTINCT | Sin partición | Una asignación por origen/cliente/entrega; suma fracciones=1 |
+| `inv_reubicacion_propuesta` | `clave_idempotencia` | Único | Sin partición | Reintentos de propuesta/instrucción sin duplicación |
 
 **Tabla A.16 - Índices declarados, columnas, orden y ámbito de unicidad**
 
@@ -1439,6 +1698,7 @@ Documento usa identidad fiscal, no hash único. Lote se relaciona con unidad por
 | `inv_movimiento` | Sin partición | UUID global referenciado; índices selectivos y mantenimiento acotado | Archivo/borrado por lotes elegibles, conservando expediente vigente |
 | `doc_pod` | Sin partición | UUID global referenciado; índices selectivos y mantenimiento acotado | Archivo/borrado por lotes elegibles, conservando expediente vigente |
 | `hech_entrega`, `hech_entrega_intento`, `hech_linea_venta` y `hech_actividad_costo` | Mes del hecho | Hechos inmutables de alta escritura | La retención sigue a la fuente transaccional del hecho |
+| hech_ocupacion_diaria, hech_viaje, hech_cartera_antiguedad | Sin partición lógica; filtro por fecha | Claves globales y snapshot de grano único | Archivo por lotes elegibles; ocupación conserva mínimo doce meses |
 
 **Tabla A.17 - Particionamiento declarado y su relación con la retención**
 
@@ -1459,8 +1719,8 @@ Las claves/versiones siguen cache_* de 5-A y S4 §§4.1.3.6–7, Anexo 4-O, ADR-
 - **Identidad de consulta:** cliente/sitio/versión, 24 h; cambio de maestro/manifiesto refresca, sin autorizar operaciones.
 - **Saldo:** sitio/ubicación/producto/lote/unidad/versión, 5 min en pantalla; movimiento invalida y refresca o marca dato indicativo.
 - **Precio:** GTIN/canal/versión hasta vigente_hasta; nueva tarifa invalida, con vigencia pendiente hasta validación.
-- **Crédito:** cliente/versión hasta cambio de condición o 8 h de credencial; cambio de saldo/condición invalida, con restricción visible.
-- **Maestros:** familia/clave/versión hasta nueva publicación; reemplazo refresca sitios, productos y unidades.
+- **Crédito:** cliente/versión con cupo, saldo utilizado, mora máxima, bloqueo y fecha de corte ERP; cambio de saldo/cupo/condición invalida. La credencial no acredita frescura financiera. La copia muestra bloqueo en menos de 2 s al seleccionar cliente y no habilita crédito sin validar autoridad.
+- **Maestros:** familia/clave/versión hasta nueva publicación; reemplazo refresca sitios, zonas, ubicaciones, productos y unidades; topología versionada completa disponible offline. Deshabilitar una posición invalida la proyección sin borrar historia.
 - **Evidencia:** clave lógica/huella/versión; captura/intercambio refresca objetos y exige hash antes de aceptar.
 - **Consulta local:** objeto/versión de manifiesto, 24 h; actualización refresca stock/precio/crédito. PWA conserva catálogo/precios fechados, validación definitiva en M3.
 - **Pendientes:** dispositivo o cuenta/UUID/versión de cola, sin TTL antes de resolución. Room/SQLite o IndexedDB conserva payload/evidencia/resultado; UUID vincula al pedido central tras acuse. Resolución publica estado; purga sigue 5-D, sin tratar evidencia como caché.
@@ -1493,7 +1753,10 @@ La Tabla A.18 define fórmula, grano, período, casos sin dato y linaje de cada 
 | Rendición y diferencia de turno | Por turno, sitio y responsable: diferencia entre efectivo declarado y efectivo contado, en moneda | `cob_rendicion`, `cob_cuadratura`, `cob_descuadre` | Cierre de turno | Un turno sin conteo declarado se reporta como no evaluable |
 | Cobranza y aplicación | Por mes y cliente: importe aplicado sobre importe facturado del período | `cob_cobro`, `cob_aplicacion`, `cob_saldo`, `cob_compensacion` | Cierre mensual | Un cobro sin aplicación se informa como pendiente con su antigüedad, no como aplicado |
 | Disponibilidad de la explotación analítica | Marca de última consolidación expuesta y vigente, por ambiente y por tablero | `hech_entrega_intento` y marca de consolidación | Cinco minutos en el día, dos horas en el cierre, cuatro horas en la gestión | Un tablero sin marca vigente se declara no disponible y no publica un valor antiguo como actual |
-| Costo por cliente y entrega | Suma del costo asignado por entrega y por cliente según el criterio declarado, sobre el número de entregas completas | `hech_actividad_costo`, `hech_entrega`, `dim_cliente` | Cierre mensual, a partir de E2 | Una entrega sin actividad de costo se informa como sin dato de costo, no como costo cero |
+| Costo por cliente y entrega | Por cliente/mes: Σ(importe_costo + importe_devoluciones + importe_merma), sin duplicar orígenes; promedio por entrega = total / entregas completas | hech_actividad_costo, inv_merma, rep_devolucion_linea, hech_entrega, dim_cliente | Cierre mensual, desde E2 | Costo ERP faltante: total incompleto; cero entregas: total y promedio N/A |
+| Ocupación por zona y sitio | 100 * posiciones ocupadas distintas / posiciones habilitadas al cierre; total sitio usa sumas, no promedio simple | mae_ubicacion, mae_zona, inv_saldo, hech_ocupacion_diaria | Diario por sitio/zona; historia de al menos 12 meses | Base cero N/A; stock en posición deshabilitada se reporta como excepción |
+| Utilización por viaje | pct_peso=100 * carga_kg/capacidad_kg; pct_volumen=100 * carga_m3/capacidad_m3; alerta si max(ambos)<umbral vigente | mae_vehiculo, rut_viaje, hech_viaje, mae_parametro_version | Cada salida; bitácora 05:30 a 07:00 | Capacidad ausente/cero impide despacho y cálculo |
+| Antigüedad de cartera | Σ deuda por cliente/corte/tramo; CORRIENTE: corte <= vencimiento; 1 a 30, 31 a 60, 61 a 90, más de 90 días | doc_documento, cob_saldo_documento, cob_aplicacion, hech_cartera_antiguedad | Corte diario; portal E2 | Factura a crédito sin vencimiento: aislar e informar deuda no clasificable |
 
 **Tabla A.18 - Fórmulas exactas, granularidad y linaje documental**
 
@@ -1512,6 +1775,9 @@ OTIF usa todos los pedidos comprometidos del período una vez, incluidos no entr
 | Cobranza y finanzas | Cobranza y tesorería | Recuperación y control de caja | Cobranza y aplicación, rendición y diferencia de turno, cuentas de envases | Mes, cliente, turno, responsable, causal | Hasta cobro, pago y documento | Diaria y de cierre de turno; dos horas | CSV y Parquet programado |
 | Gestión | Gerencia | Cumplimiento del contrato y del caso | OTIF consolidado, cobertura del plan, costo por cliente y entrega en E2, calidad de datos | Mes, cliente, sitio, producto, canal | Hasta pedido, entrega y documento | Cierre diario; cuatro horas | Exportación integral con manifiesto |
 | Plataforma | Responsable de datos de LAFROX | Salud de la plataforma | Latencia de consolidación, cobertura de datos, excepciones de sincronización, incidentes | Ambiente, módulo, dispositivo, periodo | Hasta tablero, consulta y excepción | Continua; cinco minutos | CSV y Parquet programado |
+| Bodega E1 | Bodega/Operaciones | Capacidad física | Ocupación total y por zona; historia de al menos 12 meses | Sitio/zona/fecha | Posición y stock | Diario; <=5 min consulta operativa | XLSX |
+| Despacho E1 | Planificador/Comercial | Balanceo de carga | Peso/volumen por viaje, alerta de subutilización | Sitio/vehículo/viaje/día | Líneas y capacidad versionada | Cada despacho 05:30 a 07:00; <=5 min | XLSX y bitácora |
+| Cartera E1; portal E2 | Finanzas/ejecutivo; cliente autenticado | Mora y seguimiento | Deuda, tramos, cupo, compromisos/recontactos | Cliente/ejecutivo/corte | Factura/aplicación/gestión | Corte diario; alerta móvil <2 s | PDF/XLSX por cliente autenticado |
 
 **Tabla A.19 - Catálogo de indicadores por fase, audiencia, latencia y exportación**
 
@@ -1519,6 +1785,11 @@ OTIF usa todos los pedidos comprometidos del período una vez, incluidos no entr
 
 Consulta operativa puntual usa API/caché válida; BI pesado usa Redshift. Latencias: ≤5 min operativo, ≤2 h desde último retorno para cierre y ≤4 h gerencial. Cada tablero muestra consolidación y pendientes; la exportación programada conserva alcance/manifest/hash/conteo según 5.2.8.
 
+**Grano y fórmulas complementarias.** Ocupación conserva fecha local, sitio, zona, tipo y conteos del cierre: una posición con stock positivo cuenta una vez aunque contenga varios lotes/SSCC; el denominador son posiciones habilitadas. Deshabilitar conserva snapshots anteriores; stock en posición deshabilitada se reporta para corregirlo. Cartera deriva días sobre vencimiento, no emisión, y concilia suma de tramos con saldo vivo. La etiqueta 90+ corresponde a MAS_90 (>90), con 61 a 90 separado, sin omitir ni duplicar días.
+
+hech_viaje conserva capacidades y cargas de salida, no las actuales del maestro. Se publican ambos porcentajes; alerta usa la mayor utilización porque peso o volumen pueden ser la restricción dominante. Umbral inicial 65 %, configurable/versionado en mae_parametro; la bitácora recoge salidas 05:30 a 07:00. Fuera de esa ventana se conserva también snapshot.
+
+Costo de servir integra operación, devoluciones y mermas atribuibles al cliente. Cada origen se asigna una sola vez, con fracciones cuya suma es 1. Si una devolución se destruye, la pérdida de producto entra en importe_merma; importe_devoluciones incluye manejo/logística, no esa misma pérdida. Una merma de cliente sin entrega entra en el total mensual con entrega/ruta NULL; una interna no se imputa arbitrariamente a un cliente. Cero solo representa componente ausente comprobado. Costo ERP sin evidencia deja NULL e indicador incompleto.
 
 <a id="anexo-5i"></a>
 
@@ -1529,7 +1800,7 @@ A.20 vincula cada RT-05 con desarrollo verificable en cuerpo/anexo. RT-05.10/.24
 
 | Requisito | Apartado que lo atiende | Evidencia comprobable en la fuente | Anexo que lo desarrolla |
 | --- | --- | --- | --- |
-| RT-05.01 Modelo y diccionario | 5.1.1 a 5.1.11 | Nueve vistas lógicas distribuidas entre cuerpo y 5-M, sin duplicaciones; diccionario de 111 entidades y 791 atributos con tipo, dominio, obligatoriedad, propietario y sensibilidad | 5-A y 5-B |
+| RT-05.01 Modelo y diccionario | 5.1.1 a 5.1.11 | Vistas lógicas distribuidas entre cuerpo y 5-M; diccionario de 121 entidades y 987 atributos con tipo, dominio, obligatoriedad, propietario y sensibilidad | 5-A y 5-B |
 | RT-05.02 Paradigma y motor por dominio | 5.1.1 y 5.2.1 | Tabla de índices y almacenes; posición declarada entre consistencia y disponibilidad por dominio; sin credenciales contadas como tecnología de persistencia | 5-B |
 | RT-05.03 Trazabilidad de la operación | 5.2.2 | el contrato de escritura de 5.2.2 con cambio, auditoría y outbox en la misma transacción del motor dueño; `gob_auditoria` con actor, dispositivo, instante, resultado y valores anterior y posterior | 5-A y 5-J |
 | RT-05.04 Calidad de datos | 5.2.5 | Perfil por población, regla, umbral, dueño, resolución y tablero con profundización; ISO/IEC 25012 (International Organization for Standardization, 2008) como referencia de dimensiones, no de cifras propias | 5-C y 5-H |
@@ -1643,6 +1914,12 @@ En las pruebas de A.22, p95 se mide desde la acción de la persona usuaria, con 
 | Serie térmica de cinco años | Serie detallada y sus asociaciones, regla y calibración | Consulta e interpretación de una serie de hace más de un año | La serie detallada sigue disponible e interpretable con la versión de regla y la calibración vigentes a la fecha de la lectura | Evidencia de la serie; calidad |
 | Eliminación de ubicación vencida | Punto con más de doce meses y su respaldo | Verificación de la eliminación y de la imposibilidad de reconstruir la posición | Cero punto, cero derivado y cero copia legible del punto vencido; la auditoría conservada no permite reconstruirlo | Registro de la eliminación y su verificación; seguridad |
 | Carga masiva operativa parcial | Rol CLIENTE y lote con registros válidos, inválidos, dependencias y duplicados | Carga, consulta de informe y reenvío de rechazados corregidos | Aceptados+rechazados=100 % del lote; cero rechazos sin causa/clave; cero agregados parcialmente inconsistentes; cero efectos duplicados al reenviar | Informe por registro, conteos y auditoría; responsable del módulo y CLIENTE |
+| Topología, ficha y putaway | Ficha incompleta, posición sin zona y SSCC incompatible | Guardar y ubicar; repetir sin WAN con topología válida | Cero aceptaciones inválidas; putaway válido confirma ubicación/movimiento/auditoría | Originales y resultados; Bodega/Calidad |
+| Slotting y picking | Propuesta A, destino modificado y faltante OTRO | Aprobar, cambiar destino y confirmar faltante | Cero ejecución sin reaprobación; causa/detalle obligatorios; acuse <=1 s | Movimiento e identidad/fecha; Bodega |
+| Precio y capacidad | ERP difiere del pactado; línea supera kg o m³ | Facturar y añadir carga | Cero facturas discrepantes/cargas excedidas; aviso Comercial | Respuesta ERP y rechazo; Comercial/Planificador |
+| Cartera y preventa | Mora 30/31 días, cupo excedido, factura sin carga y cobro sin entrega | Seleccionar cliente, cobrar efectivo y rendir | 31 días/cupo bloquean crédito; alerta <2 s; suma aplicada=cobro; una rendición diaria | Recibo, aplicaciones, caja; Finanzas |
+| Notificación asíncrona RF-18.03 / RT-16.23 | Falla recuperable, timeout, eventos duplicados/tardíos, SMS sin apertura nativa y acceso explícito al portal | Encolar, reintentar por política, ingerir evidencias y repetir callbacks | Solicitud desacoplada, cero duplicados internos, CONFIRMADO solo con entrega, apertura sin señal queda NO_INFORMADA/NO_SOPORTADA con fecha NULL, acceso válido registra PORTAL, error conserva causa, igual ID/otra huella se aísla | Outbox, política, intentos/eventos y proyecciones, TI/CLIENTE |
+| Ocupación, viaje y merma | Dos SSCC en posición; capacidad inválida; devolución destruida | Consolidar y despachar | Una posición ocupada; cero despacho sin capacidad; una merma por devolución; sin costo resultado incompleto | Snapshots/costo ERP; Datos/Finanzas |
 
 **Tabla A.23 - Pruebas de aceptación de trazabilidad, calidad, operación y seguridad**
 
@@ -1689,8 +1966,13 @@ La Tabla A.25 relaciona conjuntos y campos críticos con las entidades reales de
 | ERP: ventas/pedidos tres años; pedido/línea, fecha, cantidad, precio, moneda, cliente | prv_pedido/pedido_linea, tarifa y promesa si existe compromiso comprobado; clave origen+pedido+línea | UTC según zona de origen, unidades homologadas, decimal exacto; no fabricar promesa histórica | Claves/importe por mes y moneda; promesa no disponible declarada y consultable | Datos + Comercial/Finanzas CLIENTE |
 | WMS/ERP: recepción y trace hasta cinco años disponibles; producto/lote/GTIN, cantidad, unidad, fecha, documento | inv_recepcion/linea, inv_lote, cal_evento_custodia/objeto solo con hecho comprobado | Preservar ordinal externo cuando existe y equivalencias aprobadas; conservar originales | Lote/fecha/actor ausentes no se inventan; cobertura, claves y cantidades conciliadas | Datos + Calidad/bodega CLIENTE |
 | WMS/conteos: inventario dos años; sitio/ubicación/producto/lote/unidad/saldo | inv_saldo, inv_movimiento y conteo según hecho de origen; clave de saldo completa | Conversión de unidad versionada y saldo original; ajuste solo con aprobación | Ubicación desconocida aislada; totales por grano, conteo físico y desviación CLP ≤0,3 % | Datos + bodega/Finanzas CLIENTE |
-| ERP: toda cartera viva + dos años; cliente/documento/vencimiento/saldo y pagos | cob_saldo y cob_cobro según evidencia; clave externa de documento/pago | Preservar deuda anterior, moneda y relación fiscal; no convertir timeout en pago | Saldos por cliente/documento, identidad y sumas; deuda ausente impide corte | Datos + Finanzas CLIENTE |
+| ERP: toda cartera viva + dos años; cliente/documento/vencimiento/saldo y pagos | doc_documento, cob_saldo_documento, cob_saldo y cob_cobro según evidencia; clave externa de documento/pago | Preservar deuda anterior, moneda y relación fiscal; no convertir timeout en pago | Saldos por cliente/documento, identidad y sumas; deuda ausente impide corte | Datos + Finanzas CLIENTE |
 | ERP/archivos: copias fiscales/POD y conjuntos no migrados | doc_documento, doc_pod, obj_objeto o archivo de consulta; tipo/emisor/folio/versión, hash | Original inmutable, sin reemisión; referencias y permisos según clase | Hash/conteo/consulta de originales y retención comprobables | Datos + Finanzas/Calidad CLIENTE |
+| ERP/WMS: ficha, proveedor, dimensiones, peso, unidad, SKU/GTIN y clasificación | mae_producto, mae_proveedor, mae_equivalencia_producto; clave origen versionada | Homologar cm/kg/unidad; volumen derivado y peso bruto comprobado | Completitud RF-01.10 y unicidad; faltante bloquea ficha | Comercial/Calidad/Datos |
+| WMS/configuración de sitio: zonas, pasillo/rack/nivel/posición, capacidad y SSCC | mae_zona, mae_ubicacion, inv_unidad_logistica.ubicacion_id | Validar sitio/zona y coordenada; configuración ausente se levanta/aprueba antes del piloto | Posiciones/ocupación y SSCC por ubicación; sin inventar historia | Bodega/Datos |
+| ERP: cupos, vencimientos, deuda/documento, ejecutivos y gestiones disponibles | mae_cliente.limite_credito, doc_documento, cob_saldo_documento, cob_cartera_asignacion, cob_gestion | Misma identidad cliente/factura; deuda viva anterior y fecha real | Sumas por cliente/documento/tramo contra ERP | Finanzas/Datos |
+| ERP y merma/devolución: costo contable, cantidad, unidad y cliente | inv_merma y hech_actividad_costo | Conservar fecha/versión de costo y origen único; NULL si no valorizado | Cantidades/importes sin duplicación devolución/merma | Finanzas/Calidad |
+| Histórico disponible de avisos/acuse/error de canales autorizados | not_aviso, not_intento y not_evento, identidad externa/cuenta/intento | Conservar evidencia real, sin apertura observable usar NO_INFORMADA o NO_SOPORTADA, fecha NULL y NO_OBSERVADA | Deduplicar por emisor/evento, no inventar lectura, entrega ni fecha, aceptar solo evidencia correlacionable | TI/Datos/CLIENTE |
 
 **Tabla A.25 — Mapeo semántico y validación de migración**
 

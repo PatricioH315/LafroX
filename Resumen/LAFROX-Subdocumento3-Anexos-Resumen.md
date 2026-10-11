@@ -8,9 +8,9 @@ Esta guía explica los 11 anexos del capítulo 3 por separado. Permite elegir el
 
 ## Anexo 3.A — Catálogo de requerimientos funcionales
 
-Detalla los 175 requisitos funcionales ofertados: 134 del caso, 34 de las Bases y 7 propios. Identifica actor, comportamiento, precondición, resultado, prioridad y etapa. Relaciona las familias F-01–F-14 con requisitos atómicos. Los códigos RF-14.01–05-BTT distinguen obligaciones de seguridad de los códigos de telemetría del caso; compartir número no hace equivalentes ambas obligaciones.
+Detalla los 176 requisitos funcionales del catálogo: 134 del caso, 34 de las Bases y 8 propios. Identifica actor, comportamiento, precondición, resultado, prioridad y etapa. Relaciona las familias F-01–F-14 con requisitos atómicos. Los códigos RF-14.01–05-BTT distinguen obligaciones de seguridad de los códigos de telemetría del caso; compartir número no hace equivalentes ambas obligaciones.
 
-**Cuándo consultarlo:** para conocer exactamente qué debe hacer una función y evitar confundir 175 compromisos con las 181 filas RF del T-12.
+**Cuándo consultarlo:** para conocer exactamente qué debe hacer una función y evitar confundir 176 compromisos con las 181 filas RF del T-12.
 
 [Ver este anexo en el original](../03_esquema_solucion_alcance/LAFROX-Subdocumento3-Anexos.md#anexo-3a--cat%C3%A1logo-de-requerimientos-funcionales)
 

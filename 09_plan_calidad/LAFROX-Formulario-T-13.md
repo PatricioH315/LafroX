@@ -120,7 +120,7 @@ La automatización es el criterio por defecto. La Tabla T13.4 indica la herramie
 | Perfil operacional y usabilidad | Espresso y prueba con personas | Parcial | Por certificación |
 | Seguridad ofensiva | Tercero independiente | Manual | Antes de cada paso a producción y anual |
 
-Con 1.305 casos estimados y el 80 % automatizado, la regresión nocturna ejecuta unos 1.044 casos. Los 261 casos manuales requieren unas 65 HH por ciclo y se planifican con los evaluadores en los meses de certificación (Subdocumento 9, sección 9.2.3).
+Con 1.308 casos estimados y el 80 % automatizado, la regresión nocturna ejecuta unos 1.046 casos. Los 262 casos manuales requieren unas 65,5 HH por ciclo y se planifican con los evaluadores en los meses de certificación (Subdocumento 9, sección 9.2.3).
 
 ## 8. Calendario
 

@@ -569,7 +569,7 @@ La Tabla 13.24 separa lo que ya es alcance obligatorio de lo que esta innovació
 | --- | --- |
 | Segmentación por rentabilidad, construida para Comercial y Finanzas | RF-11.08 (M10, Etapa 2) |
 | Autoatención de las consultas más frecuentes | RT-16.32 |
-| Portal web con estado de cuenta, saldo, entregas y documentos, con usuario, clave e internet | RF-07.06 y RF-12.15 a RF-12.18 |
+| Portal web con estado de cuenta, saldo, entregas y documentos, con usuario, clave e internet | RF-07.07 y RF-12.15 a RF-12.18 |
 | Atención a personas usuarias con baja alfabetización digital | Bases Administrativas, Art. 26°; RT-13.07 |
 | Comprobante de entrega | Criterio 8 del caso |
 
