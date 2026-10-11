@@ -122,28 +122,27 @@ Los análisis de \textbf{solución}, \textbf{desarrollo} e \textbf{implantación
 
 La figura presenta la clasificación del registro actualizado de 45 riesgos, utilizada también en el Formulario T-16. Los análisis y anexos que conservan la codificación anterior R8 corresponden a una versión previa del registro; sus valoraciones y resultados no se atribuyen automáticamente a los códigos R-001 a R-045. La EDR permite localizar las fuentes de riesgo, mientras que el registro detalla sus causas, consecuencias, responsables y respuestas.
 
-\subsection{Resultados cualitativos y FMEA}
+\subsection{Análisis cualitativo de riesgos}
 
-El análisis de modos de falla y sus efectos (FMEA) sigue la IEC 60812 (International Electrotechnical Commission [IEC], 2018): a la probabilidad y el impacto agrega la detección, y su producto da el número de prioridad del riesgo (NPR). Anexo 8.B presenta P/I/D, exposición y NPR. La prioridad inicial se concentra en continuidad, RPO, ERP/DTE, seguridad, capacidad y aceptación. T-16 compara exposición; NPR no reemplaza su columna Expos.
-
-La Tabla 8.4 extrae del Anexo 8.B, Tabla B.1, los cinco riesgos con mayor número de prioridad (NPR); el registro completo de los 32 está en ese anexo.
+El análisis cualitativo del T-16 combina probabilidad e impacto ordinales en una escala de 1 a 5. Su producto ($P\times I$) expresa la exposición, que se interpreta con las bandas de prioridad definidas en SD8. La Tabla 8.4 presenta los diez riesgos con mayor exposición, ordenados de mayor a menor valor; en caso de empate, se prioriza el ID ascendente.
 
 \begingroup
 \renewcommand{\thetable}{8.4}
-\begin{tablalafrox}{Riesgos con mayor NPR. Fuente: Anexo 8.B, Tabla B.1}{tab:sd8-cuerpo-4}{>{\hsize=2.74513\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X >{\hsize=0.44728\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X >{\hsize=0.44728\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X >{\hsize=0.44728\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X >{\hsize=0.91302\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X}{\cab{Riesgo} & \cab{P} & \cab{I} & \cab{D} & \cab{NPR = P \ensuremath{\times} I \ensuremath{\times} D}}
-R8-01 ERP indisponible o guía invalidada & 4 & 5 & 4 & 80 \\
-R8-07 Ataque o exposición de datos críticos & 4 & 5 & 4 & 80 \\
-R8-27 INN-03 estima vida remanente insegura & 4 & 5 & 4 & 80 \\
-R8-05 Pérdida del sitio supera RPO & 3 & 5 & 5 & 75 \\
-R8-02 Doble reserva o custodia en la coordinación de reserva & 4 & 5 & 3 & 60 \\
+\begin{tablalafrox}{Valoración cualitativa vigente de riesgos. Fuente: T-16; bandas de prioridad SD8.}{tab:sd8-cuerpo-4}{>{\hsize=0.8\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X >{\hsize=1.1\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X >{\hsize=1.05\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X >{\hsize=1.1\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X >{\hsize=1.4\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X}{\cab{ID} & \cab{Prob. ordinal} & \cab{Impacto ordinal} & \cab{Exposición ($P\times I$)} & \cab{Nivel de prioridad}}
+R-012 & 3 & 4 & 12 & Alta \\
+R-015 & 3 & 4 & 12 & Alta \\
+R-005 & 2 & 4 & 8 & Media \\
+R-006 & 2 & 4 & 8 & Media \\
+R-011 & 2 & 4 & 8 & Media \\
+R-013 & 2 & 4 & 8 & Media \\
+R-014 & 2 & 4 & 8 & Media \\
+R-016 & 2 & 4 & 8 & Media \\
+R-001 & 3 & 2 & 6 & Media \\
+R-003 & 3 & 2 & 6 & Media \\
 \end{tablalafrox}
 \endgroup
 
-Los cinco pertenecen a la rama de la solución y todos tienen impacto 5. Lo que los separa es la detección: R8-05 tiene la probabilidad más baja, pero su D = 5 (sólo se aprecia al perder el sitio) lo deja en el cuarto lugar, por sobre riesgos más probables. R8-02 desempata NPR 60 por control antes de H4. Por eso sus respuestas privilegian controles que se prueban antes del corte (ensayo de caída del ERP, prueba de concurrencia y ejercicio de recuperación) en vez de controles que sólo reaccionan cuando el evento ocurre.
-
-No se suman puntuaciones como probabilidad del proyecto. Las relaciones importan: ausencia de contraparte puede atrasar interfaces/cadenas y eliminar semanas de evidencia; migración deficiente puede invalidar trazabilidad y aceptación. Los mismos efectos o consumos no se contabilizan dos veces.
-
-La lectura ejecutiva empieza por los cinco riesgos de la Tabla 8.4: continuidad del ERP, seguridad, estimación sanitaria, recuperación del sitio y reserva/custodia de stock. La tabla conserva su orden por NPR sin reproducirlo en otro registro. Para decidir, se abre la ficha correspondiente del Anexo 8.A, se comprueba su disparador y plazo, y se consulta en el Anexo 8.G qué evidencia debe aportar su responsable. La valoración vigente se mantiene en 8.B y T-16; el extracto mensual previsto en 8.1.1 se obtiene del registro único, no de una clasificación paralela.
+Entre los diez seleccionados, R-012 y R-015 tienen la mayor exposición (12, prioridad Alta). Les siguen seis riesgos con exposición 8 y prioridad Media, y dos con exposición 6 y prioridad Media. El corte en exposición 6 deja varios riesgos empatados; para mantener exactamente diez filas se incluyen R-001 y R-003, los primeros por ID ascendente. La prioridad es relativa a la escala cualitativa y no equivale a un impacto estimado en horas hombre.
 
 \subsection{Análisis cuantitativo}
 
