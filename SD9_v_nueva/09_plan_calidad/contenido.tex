@@ -20,7 +20,7 @@ El plan parte de un principio del PMBOK: la prevención es preferible a la inspe
 
 \textbf{Objetivos.} Los objetivos de calidad del proyecto se derivan de lo que el CLIENTE usará para juzgar el éxito: los dieciséis resultados del Caso, capítulo 18, y las condiciones de cierre de marcha blanca del Art. 17.3. La Tabla 9.1 los agrupa en cuatro objetivos medibles.
 
-\begin{tablalafrox}{Objetivos de calidad del proyecto. Fuente: elaboración propia a partir de las BA, Art. 17.3, y del Caso, caps. 15, 17 y 18.}{tab:sd9-1}{>{\hsize=1.074\hsize\linewidth=\hsize}Y >{\hsize=1.829\hsize\linewidth=\hsize}Y >{\hsize=0.549\hsize\linewidth=\hsize}Y >{\hsize=0.548\hsize\linewidth=\hsize}Y}
+\begin{tablalafrox}{Objetivos de calidad del proyecto. Fuente: elaboración a partir de las BA, Art. 17.3, y del Caso, caps. 15, 17 y 18.}{tab:sd9-1}{>{\hsize=1.074\hsize\linewidth=\hsize}Y >{\hsize=1.829\hsize\linewidth=\hsize}Y >{\hsize=0.549\hsize\linewidth=\hsize}Y >{\hsize=0.548\hsize\linewidth=\hsize}Y}
   {\cab{Objetivo} & \cab{Indicador} & \cab{Meta} & \cab{Origen}}
 Entregar lo ofertado, probado & Requisitos ofertados del T-12 con prueba aprobada & 100 \% antes de su hito & Caso, 17.1 \\
 Llegar a producción sin defectos graves & Defectos críticos o altos abiertos al cierre de cada marcha blanca & 0 & BA, Art. 17.3 \\
@@ -36,7 +36,7 @@ El Líder de Calidad no responde ante el Líder de Desarrollo. Puede vetar una p
 
 La Figura 9.1 presenta el marco completo, desde las normas hasta la aceptación.
 
-\figuralafrox{0.969}{diagramas/Fig_9-1_Marco_Calidad.pdf}{Marco de aseguramiento de la calidad. Fuente: elaboración propia a partir de las BA, Arts. 4.3 y 18.2, y de PMI (2017, pp. 271–306).}{fig:sd9-1}
+\figuralafrox{0.969}{diagramas/Fig_9-1_Marco_Calidad.pdf}{Marco de aseguramiento de la calidad. Fuente: elaboración a partir de las BA, Arts. 4.3 y 18.2, y de PMI (2017, pp. 271–306).}{fig:sd9-1}
 
 Todo el marco converge en una sola salida: la evidencia que la Contraparte Técnica revisa para firmar cada acta (BA, Art. 18.2). Cada norma gobierna un objeto distinto y ninguna se queda en una mención: cada una se traduce en métricas con umbral, y esas métricas se aplican en una puerta o en una prueba. Las métricas no llegan al CLIENTE como declaraciones, sino como resultados de ejecución en el expediente. Las puertas G0 a G6 que aparecen en la figura son los siete puntos de control de la cadena de entrega, desde el computador del desarrollador hasta la operación; la sección 9.2.1 las describe una por una.
 
@@ -44,7 +44,7 @@ Todo el marco converge en una sola salida: la evidencia que la Contraparte Técn
 
 El Art. 4.3 de las BA exige acreditar cada estándar y advierte que mencionarlo sin evidencia de cómo se satisface vale puntaje cero. La Tabla 9.2 indica, para cada estándar del ámbito de la calidad, cómo se aplica y dónde queda la evidencia.
 
-\begin{tablalafrox}{Estándares de calidad y su mecanismo de verificación. Fuente: elaboración propia a partir de las BA, Art. 4.3.}{tab:sd9-2}{>{\hsize=0.719\hsize\linewidth=\hsize}Y >{\hsize=0.737\hsize\linewidth=\hsize}Y >{\hsize=1.68\hsize\linewidth=\hsize}Y >{\hsize=0.864\hsize\linewidth=\hsize}Y}
+\begin{tablalafrox}{Estándares de calidad y su mecanismo de verificación. Fuente: elaboración a partir de las BA, Art. 4.3.}{tab:sd9-2}{>{\hsize=0.719\hsize\linewidth=\hsize}Y >{\hsize=0.737\hsize\linewidth=\hsize}Y >{\hsize=1.68\hsize\linewidth=\hsize}Y >{\hsize=0.864\hsize\linewidth=\hsize}Y}
   {\cab{Estándar} & \cab{Objeto} & \cab{Mecanismo en este plan} & \cab{Evidencia}}
 ISO/IEC 25010 & Calidad del producto & Ocho características con métrica y umbral (9.1.3) & Anexo 9.A; informes del T-13 \\
 ISO/IEC 25012 & Calidad de los datos & Completitud, exactitud, consistencia y actualidad medidas (9.1.3) & Anexo 9.A.9; conciliaciones \\
@@ -64,11 +64,11 @@ Cada umbral se escribe como un requisito verificable: ante un estímulo, en una 
 
 La Figura 9.2 presenta las ocho características con el umbral que las hace exigibles en Puelche.
 
-\figuralafrox{0.969}{diagramas/Fig_9-2_Modelo_ISO25010.pdf}{Modelo de calidad del producto aplicado a la solución. Fuente: elaboración propia a partir de ISO \& IEC (2011) y de los umbrales de las Bases y del SD4.}{fig:sd9-2}
+\figuralafrox{0.969}{diagramas/Fig_9-2_Modelo_ISO25010.pdf}{Modelo de calidad del producto aplicado a la solución. Fuente: elaboración a partir de ISO \& IEC (2011) y de los umbrales de las Bases y del SD4.}{fig:sd9-2}
 
 Ninguna de las ocho características queda con un valor genérico: cada una tiene al menos una métrica que nace de la operación de Puelche. La Tabla 9.3 resume la métrica principal de cada una. El Anexo 9.A detalla las 42 métricas por subcaracterística, con método de verificación y paquete de la EDT, e incluye cuatro métricas de calidad de datos según ISO/IEC 25012 (ISO \& IEC, 2008).
 
-\begin{tablalafrox}{Umbral principal por característica. Fuente: elaboración propia a partir de las BA, Arts. 24 y 78.2; las BTT, sección 20.1 y RT-04.05, RT-04.08, RT-11.20 y RT-13.01; el Caso, sección 17.1, RT-09.01 y RT-10.05; el SD1, sección 1.3.1, y el SD4.}{tab:sd9-3}{>{\hsize=0.686\hsize\linewidth=\hsize}Y >{\hsize=1.604\hsize\linewidth=\hsize}Y >{\hsize=1.023\hsize\linewidth=\hsize}Y >{\hsize=0.687\hsize\linewidth=\hsize}Y}
+\begin{tablalafrox}{Umbral principal por característica. Fuente: elaboración a partir de las BA, Arts. 24 y 78.2; las BTT, sección 20.1 y RT-04.05, RT-04.08, RT-11.20 y RT-13.01; el Caso, sección 17.1, RT-09.01 y RT-10.05; el SD1, sección 1.3.1, y el SD4.}{tab:sd9-3}{>{\hsize=0.686\hsize\linewidth=\hsize}Y >{\hsize=1.604\hsize\linewidth=\hsize}Y >{\hsize=1.023\hsize\linewidth=\hsize}Y >{\hsize=0.687\hsize\linewidth=\hsize}Y}
   {\cab{Característica} & \cab{Métrica principal} & \cab{Umbral} & \cab{Origen}}
 Funcionalidad & Requisitos ofertados con prueba aprobada & 100 \% & Caso, 17.1 \\
 Desempeño & p95 de las transacciones críticas a 1,5 × el peak & Preparación ≤ 1 s; entrega ≤ 2 s; preventa ≤ 1,5 s; stock y crédito ≤ 2 s & Caso, RT-09.01 \\
@@ -94,7 +94,7 @@ El modelo se usa para mejorar el proceso durante el contrato. El Líder de Calid
 
 La mantenibilidad se juzga sobre el código mientras se escribe. La columna «Puerta» de la Tabla 9.4 indica el punto de control donde se aplica cada umbral: G2 es la integración continua, que se ejecuta sobre cada cambio (sección 9.2.1). La Tabla 9.4 fija los umbrales que bloquean una fusión en los tres lenguajes de la solución: PHP con Laravel en el monolito modular, Kotlin en la aplicación Android y TypeScript con Angular en consolas y portales (SD4, sección 4.1.1).
 
-\begin{tablalafrox}{Métricas de código con umbral bloqueante. Fuente: elaboración propia a partir de las BA, Arts. 19 y 24; las BTT, RT-04.11; el SD1, sección 1.3.1; el Formulario T-10, y McCabe (1976).}{tab:sd9-4}{>{\hsize=1.685\hsize\linewidth=\hsize}Y >{\hsize=0.501\hsize\linewidth=\hsize}Y >{\hsize=0.415\hsize\linewidth=\hsize}Y >{\hsize=1.399\hsize\linewidth=\hsize}Y}
+\begin{tablalafrox}{Métricas de código con umbral bloqueante. Fuente: elaboración a partir de las BA, Arts. 19 y 24; las BTT, RT-04.11; el SD1, sección 1.3.1; el Formulario T-10, y McCabe (1976).}{tab:sd9-4}{>{\hsize=1.685\hsize\linewidth=\hsize}Y >{\hsize=0.501\hsize\linewidth=\hsize}Y >{\hsize=0.415\hsize\linewidth=\hsize}Y >{\hsize=1.399\hsize\linewidth=\hsize}Y}
   {\cab{Métrica} & \cab{Umbral bloqueante} & \cab{Puerta} & \cab{Origen del umbral}}
 Cobertura de lógica de negocio & ≥ 70 \% & G2 & BA, Art. 24; RT-04.11 \\
 Cobertura unitaria global & ≥ 80 \% & G2 & Política de LafroX (SD1, 1.3.1) \\
@@ -112,7 +112,7 @@ El Comité de Calidad puede endurecer estos umbrales con datos del proyecto, per
 
 El código puede cumplir sus umbrales y el proceso puede seguir dejando escapar defectos. Por eso el plan mide también el proceso. La Tabla 9.5 fija las métricas con que el Comité de Calidad lo juzga cada mes.
 
-\begin{tablalafrox}{Métricas de proceso. Fuente: elaboración propia a partir de las BA, Arts. 17.3, 18.3 y 78.3; las BTT, RT-04.12, y el SD4, sección 4.2.4.1.4.}{tab:sd9-5}{>{\hsize=1.02\hsize\linewidth=\hsize}Y >{\hsize=1.939\hsize\linewidth=\hsize}Y >{\hsize=0.518\hsize\linewidth=\hsize}Y >{\hsize=0.523\hsize\linewidth=\hsize}Y}
+\begin{tablalafrox}{Métricas de proceso. Fuente: elaboración a partir de las BA, Arts. 17.3, 18.3 y 78.3; las BTT, RT-04.12, y el SD4, sección 4.2.4.1.4.}{tab:sd9-5}{>{\hsize=1.02\hsize\linewidth=\hsize}Y >{\hsize=1.939\hsize\linewidth=\hsize}Y >{\hsize=0.518\hsize\linewidth=\hsize}Y >{\hsize=0.523\hsize\linewidth=\hsize}Y}
   {\cab{Métrica} & \cab{Fórmula} & \cab{Meta} & \cab{Origen}}
 Defectos escapados & Defectos críticos o altos hallados en un ambiente posterior al que debió detectarlos / total de críticos o altos & 0 en Producción durante la marcha blanca & BA, Art. 17.3 \\
 Densidad de defectos & Defectos confirmados / casos ejecutados, por módulo & Se mide y se usa para priorizar & Propuesta de LafroX \\
@@ -128,7 +128,7 @@ Las cuatro métricas de entrega del RT-04.12 (frecuencia de despliegue, tiempo d
 
 \textbf{Costo de la calidad.} El PMBOK distingue el costo de conformidad, que se gasta para evitar fallas (prevención y evaluación), del costo de no conformidad, que se paga por las fallas (internas, si las encuentra el proyecto; externas, si las encuentra el cliente) (PMI, 2017, pp. 274 y 282–283). El plan lo calcula en horas-hombre, porque la Oferta Técnica no puede contener montos (BA, Art. 50.2). La Tabla 9.6 sintetiza el cálculo del Anexo 9.C.
 
-\begin{tablalafrox}{Costo de la calidad en horas-hombre. Fuente: elaboración propia a partir de los Formularios T-14 y T-15, del SD8, Anexo 8.B, Tabla B.2, y del cálculo del Anexo 9.C.}{tab:sd9-6}{>{\hsize=0.77\hsize\linewidth=\hsize}Y >{\hsize=0.457\hsize\linewidth=\hsize}Y >{\hsize=0.488\hsize\linewidth=\hsize}Y >{\hsize=2.285\hsize\linewidth=\hsize}Y}
+\begin{tablalafrox}{Costo de la calidad en horas-hombre. Fuente: elaboración a partir de los Formularios T-14 y T-15, del SD8, Anexo 8.B, Tabla B.2, y del cálculo del Anexo 9.C.}{tab:sd9-6}{>{\hsize=0.77\hsize\linewidth=\hsize}Y >{\hsize=0.457\hsize\linewidth=\hsize}Y >{\hsize=0.488\hsize\linewidth=\hsize}Y >{\hsize=2.285\hsize\linewidth=\hsize}Y}
   {\cab{Categoría} & \cab{HH} & \cab{Proporción} & \cab{Paquetes principales}}
 Prevención & 4.224,00 & 31,0 \% & 2.6 (usabilidad), 3.10.2 (INN-02), 8.2.4 (deuda técnica) \\
 Evaluación & 6.304,00 & 46,2 \% & 3.8 y 3.9 (certificaciones), 8.1.6 y 8.2.2 (pruebas en Operación) \\
@@ -146,11 +146,11 @@ Esta sección describe cómo se aplican los umbrales de 9.1. Las puertas y la re
 
 Una puerta de calidad es un punto del recorrido de un cambio donde un criterio objetivo decide si avanza. La Figura 9.3 presenta las siete puertas sobre la cadena de entrega del SD4, desde el computador del desarrollador hasta la operación.
 
-\figuralafrox{0.951}{diagramas/Fig_9-3_Puertas_Calidad.pdf}{Puertas de calidad en la cadena de entrega. Fuente: elaboración propia a partir del SD4, sección 4.2.4.1, y del Formulario T-10.}{fig:sd9-3}
+\figuralafrox{0.951}{diagramas/Fig_9-3_Puertas_Calidad.pdf}{Puertas de calidad en la cadena de entrega. Fuente: elaboración a partir del SD4, sección 4.2.4.1, y del Formulario T-10.}{fig:sd9-3}
 
 Las puertas están ordenadas por costo: el control es más barato cuanto antes ocurre. G0 a G2 se ejecutan en minutos sobre cada cambio; G5 se ejecuta dos veces en el contrato y exige semanas de prueba. La Tabla 9.7 resume qué bloquea cada puerta y quién puede levantarla; el Anexo 9.B detalla las reglas y herramientas.
 
-\begin{tablalafrox}{Bloqueo y autoridad por puerta. Fuente: elaboración propia a partir de las BTT, RT-04.05; el Formulario T-10, y el SD4, sección 4.2.4.1.4.}{tab:sd9-7}{>{\hsize=0.305\hsize\linewidth=\hsize}Y >{\hsize=0.724\hsize\linewidth=\hsize}Y >{\hsize=1.931\hsize\linewidth=\hsize}Y >{\hsize=1.04\hsize\linewidth=\hsize}Y}
+\begin{tablalafrox}{Bloqueo y autoridad por puerta. Fuente: elaboración a partir de las BTT, RT-04.05; el Formulario T-10, y el SD4, sección 4.2.4.1.4.}{tab:sd9-7}{>{\hsize=0.305\hsize\linewidth=\hsize}Y >{\hsize=0.724\hsize\linewidth=\hsize}Y >{\hsize=1.931\hsize\linewidth=\hsize}Y >{\hsize=1.04\hsize\linewidth=\hsize}Y}
   {\cab{Puerta} & \cab{Momento} & \cab{Bloquea si} & \cab{Quién puede levantar el bloqueo}}
 G0–G1 & Compromiso y solicitud de fusión & Falta la aprobación de un par; hay un secreto o un error de formato & Nadie; se corrige \\
 G2 & Integración continua & Falla un umbral de la Tabla 9.4; hallazgo crítico o alto; contrato roto & Nadie \\
@@ -176,7 +176,7 @@ La estrategia sigue los tres niveles de proceso de ISO/IEC/IEEE 29119-2. En el n
 
 \textbf{Niveles, tipos y ambientes.} La Figura 9.4 ubica cada nivel y tipo de prueba en el ambiente donde se ejecuta.
 
-\figuralafrox{0.969}{diagramas/Fig_9-4_Niveles_Ambientes.pdf}{Niveles y tipos de prueba por ambiente. Fuente: elaboración propia a partir de las BTT, sección 4.1; el Caso, cap. 15; el SD4, Tabla 12, y el Formulario T-10.}{fig:sd9-4}
+\figuralafrox{0.969}{diagramas/Fig_9-4_Niveles_Ambientes.pdf}{Niveles y tipos de prueba por ambiente. Fuente: elaboración a partir de las BTT, sección 4.1; el Caso, cap. 15; el SD4, Tabla 12, y el Formulario T-10.}{fig:sd9-4}
 
 La figura sigue la regla de los ambientes del SD4: el software se prueba en un ambiente cada vez más parecido a producción y lo que se promueve es la misma imagen. Desarrollo concentra las pruebas rápidas y aisladas; QA, las de integración y regresión con datos controlados; Preproducción, equivalente a producción en topología y configuración (RT-04.02), las que dependen de la escala y de las fallas. Las pruebas propias del caso, como el turno sin señal y la cámara de congelado, no caben en un ambiente de nube y se ejecutan en terreno con dispositivos reales.
 
@@ -184,7 +184,7 @@ Las campañas de certificación coinciden en el tiempo y no pueden compartir el 
 
 \textbf{Pruebas que habilitan un paso a producción.} La BTT, sección 20.1, fija diez tipos de prueba con su momento y su criterio de salida. La Tabla 9.8 los sintetiza; el T-13, secciones 6 y 7, los especifica con sus criterios de entrada y salida.
 
-\begin{tablalafrox}{Pruebas que habilitan cada paso a producción. Fuente: elaboración propia a partir de las BA, Art. 24; las BTT, sección 20.1; el Caso, cap. 15, y el SD4, Tabla 33.}{tab:sd9-8}{>{\hsize=0.669\hsize\linewidth=\hsize}Y >{\hsize=0.662\hsize\linewidth=\hsize}Y >{\hsize=1.363\hsize\linewidth=\hsize}Y >{\hsize=1.306\hsize\linewidth=\hsize}Y}
+\begin{tablalafrox}{Pruebas que habilitan cada paso a producción. Fuente: elaboración a partir de las BA, Art. 24; las BTT, sección 20.1; el Caso, cap. 15, y el SD4, Tabla 33.}{tab:sd9-8}{>{\hsize=0.669\hsize\linewidth=\hsize}Y >{\hsize=0.662\hsize\linewidth=\hsize}Y >{\hsize=1.363\hsize\linewidth=\hsize}Y >{\hsize=1.306\hsize\linewidth=\hsize}Y}
   {\cab{Prueba} & \cab{Ambiente} & \cab{Carga o escenario} & \cab{Criterio de salida}}
 Integración y regresión & QA & 15 integraciones y batería completa & 0 fallas y 0 regresiones \\
 Aceptación de usuario & Preproducción & Casos del SD3 con preventistas, conductores y bodega & Casos firmados por la Contraparte Técnica \\
@@ -202,7 +202,7 @@ Respecto de la BTT, se suman dos pruebas, ambas exigidas por el Caso: el perfil 
 
 \textbf{Carga derivada del dimensionamiento.} La carga de prueba no se elige: se deriva del SD4, Tabla 33, aplicando el factor 1,5 que exigen el Art. 24 y el RT-09.06. La Tabla 9.9 muestra la derivación.
 
-\begin{tablalafrox}{Derivación de la carga de prueba. Fuente: elaboración propia a partir de las BA, Art. 24; las BTT, RT-09.03 y RT-09.06, y el SD4, Tabla 33.}{tab:sd9-9}{>{\hsize=1.43\hsize\linewidth=\hsize}Y >{\hsize=0.405\hsize\linewidth=\hsize}Y >{\hsize=1.165\hsize\linewidth=\hsize}Y}
+\begin{tablalafrox}{Derivación de la carga de prueba. Fuente: elaboración a partir de las BA, Art. 24; las BTT, RT-09.03 y RT-09.06, y el SD4, Tabla 33.}{tab:sd9-9}{>{\hsize=1.43\hsize\linewidth=\hsize}Y >{\hsize=0.405\hsize\linewidth=\hsize}Y >{\hsize=1.165\hsize\linewidth=\hsize}Y}
   {\cab{Magnitud} & \cab{Peak declarado} & \cab{Carga de prueba}}
 TPS máximo de septiembre & 14,66 TPS & 1,5 × 14,66 = 21,99 TPS \\
 TPS máximo de la ventana de 05:30 a 07:00 & 6,94 TPS & 1,5 × 6,94 = 10,41 TPS, durante 90 minutos \\
@@ -221,7 +221,7 @@ Ningún ambiente no productivo contiene datos productivos reales sin anonimizaci
 
 La Figura 9.5 muestra de dónde vienen los datos de cada ambiente.
 
-\figuralafrox{0.951}{diagramas/Fig_9-5_Datos_Prueba.pdf}{Origen y control de los datos de prueba. Fuente: elaboración propia a partir de el Caso, sección 14.1; el SD4, sección 4.2.4.1 y Tabla 33, y el SD5, sección 5.3.}{fig:sd9-5}
+\figuralafrox{0.951}{diagramas/Fig_9-5_Datos_Prueba.pdf}{Origen y control de los datos de prueba. Fuente: elaboración a partir de el Caso, sección 14.1; el SD4, sección 4.2.4.1 y Tabla 33, y el SD5, sección 5.3.}{fig:sd9-5}
 
 Los ambientes de prueba se alimentan de dos fuentes. Los datos sintéticos se generan desde la volumetría del Caso, sección 14.1, y respetan las reglas del negocio: lotes con vencimiento, productos refrigerados con su rango térmico y clientes con crédito. Así, la prueba de carga opera sobre un volumen comparable al del peak. Los datos históricos se usan solo en los ensayos de migración, después de anonimizarlos y de verificar con Amazon Macie que no queden datos personales. QA restituye sus juegos a un estado conocido antes de cada ciclo, para que un fallo sea reproducible. Esa misma propiedad usa la innovación INN-02 para convertir un incidente de terreno en una prueba de regresión permanente (SD13, sección 13.2). El T-13, sección 5, especifica cada juego.
 
@@ -229,13 +229,13 @@ Los ambientes de prueba se alimentan de dos fuentes. Los datos sintéticos se ge
 
 La verificación comprueba que cada producto cumpla su especificación; la validación comprueba que la solución resuelva el problema de Puelche. El PMBOK separa ambos momentos: controlar la calidad lo hace el equipo y produce entregables verificados; validar el alcance lo hace el cliente y produce entregables aceptados (PMI, 2017, p. 305). La Figura 9.6 empareja cada artefacto de diseño con la prueba que lo verifica o lo valida y con el hito que lo cierra.
 
-\figuralafrox{0.969}{diagramas/Fig_9-6_Modelo_V.pdf}{Verificación y validación por nivel y por hito. Fuente: elaboración propia a partir de las BA, Formulario E-25.}{fig:sd9-6}
+\figuralafrox{0.969}{diagramas/Fig_9-6_Modelo_V.pdf}{Verificación y validación por nivel y por hito. Fuente: elaboración a partir de las BA, Formulario E-25.}{fig:sd9-6}
 
 La certificación técnica de cada etapa (H5 y H10) no basta para aceptar los resultados del negocio. Los dieciséis resultados del Caso, capítulo 18, se aceptan con medición en operación real durante las marchas blancas (H7 y H12), conforme al Formulario T-17, sección 5. La aceptación no libera de responsabilidad por defectos posteriores (BA, Art. 18.4).
 
 \textbf{Trazabilidad.} La cadena que exige el Caso, sección 17.1, va del origen al criterio de aceptación: origen, requisito, componente, paquete de la EDT, prueba y criterio. El RT-04.04 le agrega el cambio de código y el despliegue. La Figura 9.7 presenta la cadena con un requisito crítico como ejemplo: la lista de clientes afectados por un lote en menos de dos horas.
 
-\figuralafrox{0.966}{diagramas/Fig_9-7_Cadena_Trazabilidad.pdf}{Cadena de trazabilidad de extremo a extremo. Fuente: elaboración propia a partir de el Caso, sección 17.1; las BTT, RT-04.04, y los Formularios T-12, T-13, T-14 y T-17 y el SD4.}{fig:sd9-7}
+\figuralafrox{0.966}{diagramas/Fig_9-7_Cadena_Trazabilidad.pdf}{Cadena de trazabilidad de extremo a extremo. Fuente: elaboración a partir de el Caso, sección 17.1; las BTT, RT-04.04, y los Formularios T-12, T-13, T-14 y T-17 y el SD4.}{fig:sd9-7}
 
 Ningún eslabón de la cadena es nuevo: cada uno se apoya en un identificador que ya existe en la propuesta. La matriz se lee en dos sentidos: hacia atrás explica por qué existe cada componente; hacia adelante, dónde quedó implementado y probado cada requisito. Cada caso de prueba lleva el identificador de su requisito, cada solicitud de fusión cita el requisito o la incidencia que atiende, y cada despliegue registra el digest de su imagen. Con esos enlaces, la matriz se genera desde el repositorio y el historial de la cadena de integración, y no se mantiene a mano. La meta es que el 100 \% de los requisitos ofertados tenga al menos una prueba aprobada antes de su hito. Los 18 RT en estado «No cumple» quedan en la matriz sin prueba, para que la Contraparte Técnica vea la brecha en lugar de un vacío. El Anexo 9.D muestra el tramo final de la cadena para los dieciséis resultados del caso.
 
@@ -251,7 +251,7 @@ Controlar la calidad es comparar el resultado con su criterio y actuar cuando no
 
 \textbf{Ciclo de mejora.} Las acciones siguen el ciclo planificar-hacer-verificar-actuar (PMI, 2017, p. 296). La Figura 9.8 muestra el ciclo y sus entradas.
 
-\figuralafrox{0.969}{diagramas/Fig_9-8_Ciclo_Mejora.pdf}{Ciclo de mejora de la calidad. Fuente: elaboración propia a partir de PMI (2017, pp. 296–297) y del Formulario T-9.}{fig:sd9-8}
+\figuralafrox{0.969}{diagramas/Fig_9-8_Ciclo_Mejora.pdf}{Ciclo de mejora de la calidad. Fuente: elaboración a partir de PMI (2017, pp. 296–297) y del Formulario T-9.}{fig:sd9-8}
 
 El ciclo tiene dos salidas que el PMBOK exige y que suelen faltar en un plan de calidad. La primera es el registro de lecciones aprendidas, que se alimenta de cada acción cerrada y de una retrospectiva al término de cada certificación (H5 y H10) y de cada marcha blanca (H7 y H12); cada retrospectiva revisa qué funcionó, qué se debe cambiar y qué se lleva a la Etapa 2 o a la Operación (PMI, 2017, p. 305). La segunda es la solicitud de cambio: si una acción de mejora toca la línea base del alcance, del cronograma o de un umbral, pasa por el control integrado de cambios del Formulario T-9 (PMI, 2017, p. 296). Una acción se cierra solo cuando el comité siguiente comprueba su eficacia con el mismo criterio que detectó la desviación.
 
@@ -265,7 +265,7 @@ Esta sección muestra dónde quedan las actividades de calidad en la EDT del For
 
 La EDT no tiene una rama de calidad aislada. Las actividades de calidad están en las cuentas donde se produce lo que verifican, y el diccionario de cada paquete registra su criterio de aceptación, como indica el PMBOK para los requisitos de calidad (PMI, 2017, p. 287). La Tabla 9.10 agrupa esos paquetes.
 
-\begin{tablalafrox}{Paquetes de calidad de la EDT. Fuente: elaboración propia a partir de los Formularios T-14 y T-15.}{tab:sd9-10}{>{\hsize=2.113\hsize\linewidth=\hsize}Y >{\hsize=0.925\hsize\linewidth=\hsize}Y >{\hsize=0.481\hsize\linewidth=\hsize}Y >{\hsize=0.481\hsize\linewidth=\hsize}Y}
+\begin{tablalafrox}{Paquetes de calidad de la EDT. Fuente: elaboración a partir de los Formularios T-14 y T-15.}{tab:sd9-10}{>{\hsize=2.113\hsize\linewidth=\hsize}Y >{\hsize=0.925\hsize\linewidth=\hsize}Y >{\hsize=0.481\hsize\linewidth=\hsize}Y >{\hsize=0.481\hsize\linewidth=\hsize}Y}
   {\cab{Cuenta} & \cab{Paquetes} & \cab{Meses} & \cab{HH}}
 1.2 y 1.5: trazabilidad, plan y puertas & 1.2.4; 1.5.1; 1.5.2 & 2; 6 a 20 & 240 \\
 2.6: usabilidad con personas usuarias & 2.6.1 a 2.6.3 & 2 a 4 & 720 \\
@@ -283,13 +283,13 @@ La tabla suma las mismas 10.528 HH de conformidad del costo de la calidad (9.1.6
 
 La Figura 9.9 ubica las actividades de calidad en los 56 meses del contrato, junto con los congelamientos del Caso.
 
-\figuralafrox{0.991}{diagramas/Fig_9-9_Calidad_Cronograma.pdf}{Actividades de calidad en el cronograma. Fuente: elaboración propia a partir de el Caso, RT-10.05, y los Formularios T-14 y T-15, sección 6.1.}{fig:sd9-9}
+\figuralafrox{0.991}{diagramas/Fig_9-9_Calidad_Cronograma.pdf}{Actividades de calidad en el cronograma. Fuente: elaboración a partir de el Caso, RT-10.05, y los Formularios T-14 y T-15, sección 6.1.}{fig:sd9-9}
 
 Ninguna certificación cae en un congelamiento. Las pruebas de la Etapa 1 terminan en noviembre de 2027, antes de diciembre; los ensayos de migración que coinciden con diciembre corren en Preproducción y no tocan Producción. La marcha blanca de la Etapa 2 coincide con el peak de septiembre de 2028 y con su congelamiento: es la exigencia más dura sobre la solución, porque se mide con el mayor volumen del año (Caso, cap. B, sección B.2). Durante ese congelamiento solo se corrige un defecto crítico o alto que impediría cumplir el Art. 17.3, por el procedimiento de cambio de emergencia del SD4, sección 4.2.4.1.4, con autorización escrita de la Contraparte Técnica y después de pasar G0 a G4 y repetir en Preproducción la prueba afectada.
 
 \textbf{Hitos y holgura.} Cada hito se acepta con el protocolo del T-17: el entregable se presenta con su evidencia y su trazabilidad (BA, Art. 18.2), el CLIENTE tiene 10 días hábiles para revisarlo y LafroX tiene otros 10 para subsanar observaciones (Art. 18.3). La Tabla 9.11 compara la reserva de cada hito con la duración de una subsanación.
 
-\begin{tablalafrox}{Reserva y holgura de los hitos ante una subsanación. Fuente: elaboración propia a partir de las BA, Art. 18.3, y del Formulario T-15, Tabla 5.2 y sección 5.5.}{tab:sd9-11}{>{\hsize=0.451\hsize\linewidth=\hsize}Y >{\hsize=2.194\hsize\linewidth=\hsize}Y >{\hsize=0.451\hsize\linewidth=\hsize}Y >{\hsize=0.904\hsize\linewidth=\hsize}Y}
+\begin{tablalafrox}{Reserva y holgura de los hitos ante una subsanación. Fuente: elaboración a partir de las BA, Art. 18.3, y del Formulario T-15, Tabla 5.2 y sección 5.5.}{tab:sd9-11}{>{\hsize=0.451\hsize\linewidth=\hsize}Y >{\hsize=2.194\hsize\linewidth=\hsize}Y >{\hsize=0.451\hsize\linewidth=\hsize}Y >{\hsize=0.904\hsize\linewidth=\hsize}Y}
   {\cab{Hito (mes)} & \cab{Entregable que lo habilita} & \cab{Reserva (días hábiles)} & \cab{Holgura tras subsanar (días hábiles)}}
 H1 (2) & Matriz de trazabilidad y plan de calidad & 6 & 6 \ensuremath{-} 5 = 1 \\
 H2 (4) & Arquitectura, plan de seguridad y modelo de datos & 12 & 12 \ensuremath{-} 10 = 2 \\
@@ -309,7 +309,7 @@ Ningún hito tiene holgura negativa. Los dos más ajustados son el H1 y el H8, c
 
 Durante los 36 meses de Operación, las Bases exigen pruebas con frecuencia mínima. Toda prueba que intervenga Producción o el sitio de recuperación se programa fuera de los congelamientos de septiembre y diciembre y de los tres primeros días hábiles de cada mes (Caso, RT-10.05). La Tabla 9.12 resume el calendario; el T-13, sección 9.3, lo detalla.
 
-\begin{tablalafrox}{Pruebas periódicas de la Operación. Fuente: elaboración propia a partir de las BTT, RT-07.07, RT-07.12, RT-10.07 y RT-11.20, y del Formulario T-14.}{tab:sd9-12}{>{\hsize=1.416\hsize\linewidth=\hsize}Y >{\hsize=1.163\hsize\linewidth=\hsize}Y >{\hsize=0.84\hsize\linewidth=\hsize}Y >{\hsize=0.581\hsize\linewidth=\hsize}Y}
+\begin{tablalafrox}{Pruebas periódicas de la Operación. Fuente: elaboración a partir de las BTT, RT-07.07, RT-07.12, RT-10.07 y RT-11.20, y del Formulario T-14.}{tab:sd9-12}{>{\hsize=1.416\hsize\linewidth=\hsize}Y >{\hsize=1.163\hsize\linewidth=\hsize}Y >{\hsize=0.84\hsize\linewidth=\hsize}Y >{\hsize=0.581\hsize\linewidth=\hsize}Y}
   {\cab{Prueba} & \cab{Exigencia} & \cab{Meses} & \cab{Paquete}}
 Recuperación con conmutación real & Dos veces al año (RT-07.07) & 21, 27, 33, 39, 45, 51 y 54 & 8.1.3 \\
 Resiliencia por inyección de fallas & Una vez por semestre (RT-10.07) & 26, 32, 38, 44, 50 y 55 & 8.2.2 \\
