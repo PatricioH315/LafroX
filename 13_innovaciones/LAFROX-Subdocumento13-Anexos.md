@@ -10,11 +10,11 @@
 - [Declaración de uso de IA](#declaración-de-uso-de-ia)
 
 
-Estos anexos detallan lo que el Capítulo 13 resume. El Anexo 13.A define los contratos de datos que cada innovación consume o expone. El Anexo 13.B traza cada innovación con la arquitectura, la EDT, los riesgos y el flujo de caja, y delimita su alcance con la investigación adicional que requiere. El Anexo 13.C reúne en una vista los indicadores y los riesgos de las cinco. El Anexo 13.D responde las observaciones de la instancia anterior. Las fichas formales del Artículo 29° están en el Formulario T-19.
+Estos anexos detallan lo que el Capítulo 13 resume. El Anexo 13.A define los contratos de datos que cada innovación consume o expone. El Anexo 13.B traza cada innovación con la arquitectura, la EDT, los riesgos y el flujo de caja, y delimita su alcance con la investigación adicional que requiere. El Anexo 13.C reúne en una vista los indicadores y los riesgos de las cinco. El Anexo 13.D responde las observaciones de la instancia anterior. Las fichas formales del Artículo 29° están en el Formulario T-19 (Bases Administrativas, pp. 19–20 y 64).
 
 ## Anexo 13.A — Contratos de datos de las innovaciones
 
-El RT-26.01 pide declarar qué interfaces consume o expone cada innovación (Distribuidora Puelche S.A., 2026b, RT-26.01). Ninguna innovación abre una interfaz externa nueva: todas viajan por las interfaces del Capítulo 4, sección 4.1.6, y por la cola de sincronización de los terminales. Lo que cada una agrega es un contrato de datos versionado, que se presenta en la Tabla 13.A.1.
+El RT-26.01 pide declarar qué interfaces consume o expone cada innovación (Distribuidora Puelche S.A., 2026b, RT-26.01, cap. 26, p. 44). Ninguna innovación abre una interfaz externa nueva: todas viajan por las interfaces del Capítulo 4, sección 4.1.6, y por la cola de sincronización de los terminales. Lo que cada una agrega es un contrato de datos versionado, que se presenta en la Tabla 13.A.1.
 
 **Tabla 13.A.1. Contratos de datos de las innovaciones. Fuente: elaboración propia a partir del Capítulo 4, secciones 4.1 y 4.2, y del Capítulo 5.**
 
@@ -29,11 +29,11 @@ El RT-26.01 pide declarar qué interfaces consume o expone cada innovación (Dis
 | `inn04.liquidacion-tramo.v1` | M10 → Finanzas del CLIENTE y ERP | Informe mensual auditado por la capa 7; base versionada en la capa 6 | Período, canasta, índices aplicados, costo comparable, OTIF del período, puntuación, recomendación y respuesta | El dato contable definitivo vive en el ERP; los montos se expresan solo en la Oferta Económica |
 | `inn05.hoja-negocio.v1` | M10 → M3 (aplicación de preventa C-01) y M6 (impresora de cabina) | Precarga cifrada en el terminal; capa 7 limita la hoja al receptor | Local, bloques 1 a 3, bloque 4 si está activo, estado de la copia (pedida, entregada, en espera) | Bloque 4 con umbral mínimo de locales por grupo y supresión de celdas; registro de actividades de tratamiento |
 
-Cada contrato tiene una versión explícita en su nombre. Un cambio de campos produce una versión nueva y convive con la anterior durante la transición, como el resto de los contratos del Capítulo 4. Los contratos de las innovaciones 2 y 5 tratan datos que pasan por la capa de seguridad; por eso el Encargado de Seguridad de la Información los aprueba con su modelado de amenazas (RT-26.07).
+Cada contrato tiene una versión explícita en su nombre. Un cambio de campos produce una versión nueva y convive con la anterior durante la transición, como el resto de los contratos del Capítulo 4. Los contratos de las innovaciones 2 y 5 tratan datos que pasan por la capa de seguridad; por eso el Encargado de Seguridad de la Información los aprueba con su modelado de amenazas (Bases Técnicas Transversales, cap. 26, RT-26.07, p. 45).
 
 ## Anexo 13.B — Matriz de trazabilidad
 
-La Tabla 13.B.1 traza cada innovación con la arquitectura (RT-26.01), con la EDT y el cronograma (RT-26.02), con su riesgo (RT-26.04) y con su ubicación en el flujo de caja (Art. 28.2).
+La Tabla 13.B.1 traza cada innovación con la arquitectura (RT-26.01), con la EDT y el cronograma (Bases Técnicas Transversales, cap. 26, RT-26.02, p. 44), con su riesgo (Bases Técnicas Transversales, cap. 26, RT-26.04, p. 44) y con su ubicación en el flujo de caja (Bases Administrativas, Art. 28.2, p. 19).
 
 **Tabla 13.B.1. Trazabilidad de las innovaciones. Fuente: elaboración propia a partir de los Capítulos 3 y 4, del Formulario T-14, del Anexo 7.D y del Anexo 8.A.**
 
@@ -80,7 +80,7 @@ La Tabla 13.C.1 reúne los indicadores de las cinco innovaciones, ordenados por 
 | I-02B | Sin medición | ≥ 80 % | Mes 15 | Sí |
 | I-02D | Cero por diseño | 0 | Cada liberación | Sí |
 | I-03A | 0 | ≥ 95 % | Mes 15 | Sí |
-| I-03B | Sin medición | ≥ 80 % con ≥ 60 lotes por familia | Mes 15 | Sí |
+| I-03B | Sin medición histórica; referencia inicial por familia en meses 11 a 15 | ≥ 80 % con ≥ 60 lotes por familia | Mes 15 | Sí |
 | I-03C | 0 | 100 % | Mes 16 | No |
 | I-05B | Prototipo de los meses 13 y 14 | ≥ 80 %: al menos 20 de 24 participantes | Antes del mes 19 | No |
 | I-02C | Sin medición | 0 | Mes 21 | No |
@@ -94,7 +94,9 @@ La Tabla 13.C.1 reúne los indicadores de las cinco innovaciones, ordenados por 
 | I-05C | Período previo por ruta | Estimar el efecto | Mes 33 | No |
 | I-04A | Canasta de los meses 21 a 23 | ≥ 5 % con OTIF ≥ 95 % | Mensual desde el mes 24; evaluación de la meta en el mes 36 | No |
 
-Los indicadores tempranos de INN-01 e INN-03 comprueban condiciones de habilitación durante la marcha blanca de la Etapa 1. El beneficio temprano se mide mediante I-02A, reducción del tiempo de diagnóstico de INN-02. Con ese indicador LafroX oferta el RT-26.08 (Distribuidora Puelche S.A., 2026b, RT-26.08). Las metas de ahorro (I-01B, I-01C, I-03D, I-04A e I-05C) se evalúan después de al menos doce meses de producción, para que la comparación incluya un ciclo anual completo con el peak de septiembre.
+La validación inicial de los meses 11 a 15 documentará el valor observado de I-03B por familia, con al menos 60 lotes evaluados, el período de evaluación y la versión de parámetros utilizada. Ese resultado constituirá la referencia inicial para el seguimiento posterior; el 80 % es el umbral de aceptación, no la línea base. No se declara un valor histórico inexistente ni se sustituye por cero.
+
+Los indicadores tempranos de INN-01 e INN-03 comprueban condiciones de habilitación durante la marcha blanca de la Etapa 1. El beneficio temprano se mide mediante I-02A, reducción del tiempo de diagnóstico de INN-02. Con ese indicador LafroX oferta el RT-26.08 (Distribuidora Puelche S.A., 2026b, RT-26.08, cap. 26, p. 45). Las metas de ahorro (I-01B, I-01C, I-03D, I-04A e I-05C) se evalúan después de al menos doce meses de producción, para que la comparación incluya un ciclo anual completo con el peak de septiembre.
 
 La Tabla 13.C.2 reúne los riesgos de adopción con su evaluación en la escala ordinal del Capítulo 8, sección 8.1.3, donde la probabilidad 3 equivale a un 40 % y la 4 a un 60 %, y el impacto se mide como fracción del esfuerzo afectado.
 
@@ -116,7 +118,7 @@ La innovación 3 concentra la mayor exposición, porque su error afectaría una 
 
 ## Anexo 13.D — Resolución de observaciones de la instancia anterior
 
-El Art. 46 de las Bases Administrativas pide resolver en forma explícita las observaciones de la instancia anterior, con una tabla de trazabilidad observación–respuesta–sección modificada (Distribuidora Puelche S.A., 2026a, Art. 46). La Tabla 13.D.1 responde las observaciones formuladas al Capítulo 13.
+El Art. 46 de las Bases Administrativas pide resolver en forma explícita las observaciones de la instancia anterior, con una tabla de trazabilidad observación–respuesta–sección modificada (Distribuidora Puelche S.A., 2026a, Art. 46, p. 28). La Tabla 13.D.1 responde las observaciones formuladas al Capítulo 13.
 
 **Tabla 13.D.1. Trazabilidad de observaciones del Capítulo 13. Fuente: elaboración propia a partir de las observaciones del CLIENTE.**
 
@@ -134,14 +136,15 @@ El Art. 46 de las Bases Administrativas pide resolver en forma explícita las ob
 | 8 | El Capítulo 13 y el Formulario T-19 deben presentarse completos, con 13.1 a 13.5 y el filtro del Art. 30° | Se presentan los cinco títulos; cada innovación incluye una tabla de lo que ya es alcance obligatorio y de lo que agrega | 13.1.2 a 13.5.2 |
 | 9 | La innovación 2 debe justificar por qué no es práctica estándar | Se explica que el defecto típico es un reordenamiento de la cola en la reconexión, que no deja rastro en un reporte de fallos, y se separa del RT-14.06 | 13.2.2 |
 
-La tabla documenta la respuesta dada a las nueve observaciones. La separación respecto del registro continuo no basta por sí sola para acreditar el filtro del Art. 30°: la incorporación propuesta debe distinguirse técnicamente de las funcionalidades ya exigidas. La verificación del filtro considera el alcance descrito en 13.3.2 y no solo el nombre de la innovación. Ninguna requirió cambiar los paquetes, los meses ni las horas de la EDT del Capítulo 7.
+La tabla documenta la respuesta dada a las nueve observaciones. La separación respecto del registro continuo no basta por sí sola para acreditar el filtro del Art. 30° de las Bases Administrativas (p. 20): la incorporación propuesta debe distinguirse técnicamente de las funcionalidades ya exigidas. La verificación del filtro considera el alcance descrito en 13.3.2 y no solo el nombre de la innovación. Ninguna requirió cambiar los paquetes, los meses ni las horas de la EDT del Capítulo 7.
 
 ## Referencias
 
-Las Bases se citan con su documento y el artículo o código del requisito.
+Las citas a las Bases Administrativas y a las Bases Técnicas Transversales identifican el artículo o capítulo y la página impresa del PDF original, además del código RT cuando corresponde. Las referencias al caso se localizan por capítulo, sección o entrevista, sin exigir paginación. Las Aclaraciones se identifican por sección en la fuente disponible.
 
-- Distribuidora Puelche S.A. (2026a). *Bases Administrativas de Licitación N.º TFEP-01/2026: Contratación de Solución Integral de Software y Servicios de Operación*, artículos 28 y 46.
-- Distribuidora Puelche S.A. (2026b). *Bases Técnicas Transversales de Licitación N.º TFEP-01/2026*, RT-26.01, RT-26.07 y RT-26.08.
+- Distribuidora Puelche S.A. (2026a). *Bases Administrativas de Licitación N.º TFEP-01/2026: Contratación de Solución Integral de Software y Servicios de Operación*, artículos 28 y 30, pp. 19–20, y artículo 46, p. 28.
+- Distribuidora Puelche S.A. (2026b). *Bases Técnicas Transversales de Licitación N.º TFEP-01/2026*, capítulo 26, RT-26.01 (p. 44), RT-26.07 y RT-26.08 (p. 45).
+- Distribuidora Puelche S.A. (2026d). *Aclaraciones de la Licitación N.º TFEP-01/2026*, secciones 7.2 y 8.
 - GS1 AISBL. (2022). *EPC Information Services (EPCIS) standard* (versión 2.0). https://ref.gs1.org/standards/epcis/2.0.0/
 
 ## Declaración de uso de IA
@@ -150,7 +153,7 @@ En cumplimiento de la sección 7.2 de las Aclaraciones de la licitación, la tab
 
 | Sección | Herramienta | Finalidad del uso | Nivel en texto | Nivel en diagramas | Revisión humana (quién y qué verificó) |
 | --- | --- | --- | --- | --- | --- |
-| Anexo 13.A | Claude Code | Definición de los contratos a partir de los Capítulos 4 y 5 | Alto | Ninguno | [[REVISIÓN HUMANA]] |
-| Anexo 13.B | Claude Code | Matriz de trazabilidad y tabla de alcance refinado cotejadas con el Formulario T-14, el Anexo 7.D y el Anexo 8.A | Alto | Ninguno | [[REVISIÓN HUMANA]] |
-| Anexo 13.C | Claude Code; OpenAI Codex | Consolidación de indicadores y riesgos; precisión de indicadores y de respuesta a observaciones | Alto | Ninguno | [[REVISIÓN HUMANA]] |
-| Anexo 13.D | Claude Code; OpenAI Codex | Tabla de observaciones y respuestas; precisión de indicadores y de respuesta a observaciones | Medio | Ninguno | [[REVISIÓN HUMANA]] |
+| Anexo 13.A | Claude Code | Definición de los contratos a partir de los Capítulos 4 y 5 | Alto | Ninguno | No acreditada |
+| Anexo 13.B | Claude Code | Matriz de trazabilidad y tabla de alcance refinado cotejadas con el Formulario T-14, el Anexo 7.D y el Anexo 8.A | Alto | Ninguno | No acreditada |
+| Anexo 13.C | Claude Code; OpenAI Codex | Consolidación de indicadores y riesgos; precisión de indicadores y de respuesta a observaciones | Alto | Ninguno | No acreditada |
+| Anexo 13.D | Claude Code; OpenAI Codex | Tabla de observaciones y respuestas; precisión de indicadores y de respuesta a observaciones | Medio | Ninguno | No acreditada |
