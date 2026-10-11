@@ -13,6 +13,15 @@
 
 \documentclass[carta,firma]{lafrox}
 
+%  Aclaraciones §4 y §5: figuras de gran formato en página horizontal y
+%  tablas sin palabras cortadas por columnas angostas.
+\usepackage{pdflscape}
+\usepackage{needspace}
+\usepackage{float}
+%  Rótulos de referencia que no se cortan con guion a fin de línea.
+\hyphenation{Figura Figuras Tabla Tablas Anexo Anexos Restricciones}
+\AddToHook{env/tablalafrox/begin}{\hyphenpenalty=10000 \exhyphenpenalty=10000}
+
 %  Todo valor con coma va entre llaves: pgfkeys, si no, la lee como
 %  separador de claves (advertencia del propio lafrox.cls).
 \datoslafrox{
@@ -20,6 +29,7 @@
   alcance      = {Subdocumento 02},
   formulario   = {Formulario T-7},
   nomenclatura = {LAFROX-Subdocumento2.pdf},
+  fecha        = {12 de octubre de 2026},
 }
 
 \begin{document}
