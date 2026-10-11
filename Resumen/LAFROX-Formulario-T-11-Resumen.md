@@ -25,6 +25,8 @@ Las reservas de dispositivos y componentes críticos siguen el **10 % redondeado
 
 El formulario asigna compra de hardware de terreno al CLIENTE y provisión on-premise al adjudicatario; este último instala, integra y mantiene. SD6, T-14 y T-15 aplican el mismo reparto: el CLIENTE compra solo el hardware de terreno y LafroX especifica, compra e instala la sala técnica, los servidores y los gabinetes de borde, con valorización en la Oferta Económica.
 
+El MC9400 estándar se oferta en configuración premium con cámara trasera de **16 MP** para registrar no conformidades de recepción. La fila de integración y entrega continuas declara Playwright, Pact, Spectral y MobSF. Los mínimos de subida de respaldo de los CD son **10 Mbps en Talca y 6 Mbps en Concepción**, sujetos a aceptación medida con los flujos simultáneos.
+
 ## Dónde está el fundamento
 
 SD4 §4.2.1 explica selección, §4.2.2 ubicación y Anexo 4-W los cálculos. La cantidad inalámbrica depende del estudio de cobertura; cantidades y características declaradas no acreditan entrega, instalación ni ensayo.
@@ -33,4 +35,4 @@ El [resumen del SD4](LAFROX-Subdocumento4-Resumen.md) permite ubicar el conjunto
 
 ---
 
-**Fuente y actualización:** documento local vigente al 8 de octubre de 2026. Resumen elaborado con asistencia de Codex; no acredita aprobación del CLIENTE ni revisión humana adicional.
+**Fuente y actualización:** documento local vigente al 11 de octubre de 2026. Resumen elaborado con asistencia de Codex; no acredita aprobación del CLIENTE ni revisión humana adicional.

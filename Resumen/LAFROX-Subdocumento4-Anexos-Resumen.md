@@ -132,6 +132,8 @@ Reúne 22 decisiones ADR, con alternativas descartadas, criterio, consecuencias 
 
 Distingue versiones de referencia de imágenes exactas de producción y describe soporte/actualización durante 56 meses. Las liberaciones fijan parches, huellas y componentes; versiones posteriores requieren compatibilidad y pruebas. Identifica los perfiles y servicios del monolito Laravel/PHP y sus controles de compatibilidad, sin plantear una migración desde otro backend.
 
+Concentra el inventario detallado que el cuerpo resume: incorpora Playwright para extremo a extremo, Pact y Spectral para contratos y MobSF para la aplicación Android, junto con las herramientas de calidad ya declaradas. Este inventario no acredita que las pruebas se hayan ejecutado.
+
 **Cuándo consultarlo:** para mantenimiento, fin de soporte, actualización o revisión de compatibilidad.
 
 [Ver este anexo en el original](../04_arquitectura/LAFROX-Subdocumento4-Anexos.md#anexo-4-p--tecnolog%C3%ADas-soporte-y-actualizaci%C3%B3n)
@@ -200,4 +202,4 @@ El [resumen del Subdocumento 4](LAFROX-Subdocumento4-Resumen.md) explica las dec
 
 ---
 
-**Fuente y actualización:** documento local vigente al 8 de octubre de 2026. Resumen elaborado con asistencia de Codex; no acredita aprobación del CLIENTE ni revisión humana adicional.
+**Fuente y actualización:** documento local vigente al 11 de octubre de 2026. Resumen elaborado con asistencia de Codex; no acredita aprobación del CLIENTE ni revisión humana adicional.
