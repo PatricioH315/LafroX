@@ -229,7 +229,7 @@ Clases HH/128 HH efectivas no medidas podrían subestimar esfuerzo y especialist
 - Responsable de respuesta: JP, con su equipo y contrapartes de su ámbito.
 - Disparador: Estimación supera capacidad por rol/subventana o personas no asignadas.
 - Plazo: Antes línea base; semanal.
-- Mitigación: Refinar con el equipo la estimación por clase, trazada al T-12 y a las cantidades del T-11; asignar competencias y relevos; comprobar el peak de 68 (mes 15), los 40 desarrolladores simultáneos y la dotación declarada (T-15 §5.7); vigilar semanalmente la reserva de cada hito (T-15, Tabla 5.2).
+- Mitigación: Refinar con el equipo la estimación por clase, trazada al T-12 y a las cantidades del T-11; asignar competencias y relevos; comprobar el peak de 69 (mes 15), los 40 desarrolladores simultáneos y la dotación declarada (T-15 §5.7); vigilar semanalmente la reserva de cada hito (T-15, Tabla 5.2).
 - Contingencia: Reordenar dentro de hitos y sustentar capacidad adicional; no prestar E1 a E2.
 - Evidencia de cierre: Asignaciones nominales y cero sobreasignación por subventana.
 - Estrategia: Mitigar, porque LafroX controla la causa y el control reduce la probabilidad.
@@ -934,7 +934,7 @@ R8-11 es el riesgo que gobierna el plazo: sin él, todas las entregas se cumplen
 
 ### C.3.3 Entradas y reproducción
 
-La simulación usa como entradas el Formulario T-15 (Tablas 4.2 y 6.1), las dependencias del Anexo 7.B, la Tabla B.1 (P e I de cada riesgo) y las Tablas B.3 y C.5 (paquetes afectados y controles). Los parámetros son los de esta sección: 5.000 iteraciones por escenario, semilla fija, factor PERT por paquete, nivelación diaria por rol y regla de entrega de los hitos. Antes de cada ejecución se comprueba que las actividades de plantilla sumen las HH de sus 163 paquetes, que los 222 paquetes sumen 204.527 HH y que ninguna precedencia del T-15 quede incumplida. JP conserva el modelo y sus resultados en el repositorio del proyecto, y CAL repite la corrida cuando cambia la línea base y en cada Comité de Proyecto con los datos de avance (E8-12).
+La simulación usa como entradas el Formulario T-15 (Tablas 4.2 y 6.1), las dependencias del Anexo 7.B, la Tabla B.1 (P e I de cada riesgo) y las Tablas B.3 y C.5 (paquetes afectados y controles). Los parámetros son los de esta sección: 5.000 iteraciones por escenario, semilla fija, factor PERT por paquete, nivelación diaria por rol y regla de entrega de los hitos. Antes de cada ejecución se comprueba que las actividades de plantilla sumen las HH de sus 163 paquetes, que los 222 paquetes sumen 205.135 HH y que ninguna precedencia del T-15 quede incumplida. JP conserva el modelo y sus resultados en el repositorio del proyecto, y CAL repite la corrida cuando cambia la línea base y en cada Comité de Proyecto con los datos de avance (E8-12).
 
 ## Anexo 8.D — Reservas, autorización y programación
 
@@ -944,10 +944,10 @@ La Tabla D.1 distingue la programación vigente de las reservas de contingencia 
 
 | Componente | HH / ventana | Regla/autoridad |
 | --- | --- | --- |
-| Base de paquetes | 204.527,00 | T-15, sección 4.2; programada; incluye el tercer agente de la mesa desde el mes 25 |
+| Base de paquetes | 205.135,00 | T-15, sección 4.2; programada; incluye el tercer agente de la mesa desde el mes 25 |
 | Soporte puente | 9.336,00; meses 16–20 | Incluido; servicio, no corrección |
 | Protección E1 | 3.072,00; meses 13–20 | Incluida; 256 DES + 128 CAL por mes; exclusiva de la Etapa 1 |
-| Programación vigente | 216.935,00 | Suma de las tres filas anteriores |
+| Programación vigente | 217.543,00 | Suma de las tres filas anteriores |
 | Cierre y estabilización, meses 21–22 | 2.774,54 | Incluido en la programación; no se suma otra vez |
 | Contingencia del registro | 20.198,98 | JP solicita el cargo por evento, mes y perfil; T-15, sección 4.5 |
 | Absorción por la protección E1 | 0,00 | Ningún riesgo coincide con meses 13–20, Etapa 1 y perfiles DES/CAL |
@@ -1036,7 +1036,7 @@ Estas entradas son estados documentales actuales, no probabilidades FMEA. Tabla 
 
 | ID | Estado y condición de cierre | Responsable / límite | Riesgos asociados |
 | --- | --- | --- | --- |
-| E8-01 | T-15 estima por clases de tamaño fundadas en los requerimientos del T-12 y las cantidades del T-11 (SD7, sección 7.2.2), con tríada de ±25 %; la productividad de 128 HH efectivas por persona y mes aún no se contrasta con el avance real; peak 68 en el mes 15, hasta 40 desarrolladores simultáneos entre junio y septiembre de 2027, brechas de dotación en SEG e IMP (T-15 §5.7) y capacidad por subventana sin asignación. Refinar la estimación con el equipo y comprobar personas, competencias, relevos y cero sobreasignación | JP/DES/CAL; antes línea base | R8-11/14 |
+| E8-01 | T-15 estima por clases de tamaño fundadas en los requerimientos del T-12 y las cantidades del T-11 (SD7, sección 7.2.2), con tríada de ±25 %; la productividad de 128 HH efectivas por persona y mes aún no se contrasta con el avance real; peak 69 en el mes 15, hasta 40 desarrolladores simultáneos entre junio y septiembre de 2027, brechas de dotación en SEG e IMP (T-15 §5.7) y capacidad por subventana sin asignación. Refinar la estimación con el equipo y comprobar personas, competencias, relevos y cero sobreasignación | JP/DES/CAL; antes línea base | R8-11/14 |
 | E8-02 | La programación por paquetes del T-15, con actividades hasta el H2 y planificación gradual después, incluye dependencias, revisión Art. 18.3 y nivelación (T-15, secciones 5 y 6). El equipo valida plantillas, dotación y plazos en la línea base y repite el cálculo. LafroX emite la orden de compra de infraestructura en el mes 2 para instalar la sala desde el mes 3. El calendario de compra de hardware de terreno del CLIENTE se acuerda en el mes 1 y asegura disponibilidad antes de cada ola | JP/ARQ/SRE; antes línea base/H3 | R8-10/11/19 |
 | E8-03 | V-12 no confirma fecha/calendario hábil. Febrero 2027 es ejemplo; comprobar E2 antes enero 2029, congelamientos y 28 días | JP/CLIENTE; mes 1 antes H1 | R8-15/17/18 |
 | E8-04 | Objetivo 40 minutos/96 camiones sin ensayo. Demostrar versión operativa, DTE válidos y flujo sin interrupción; papel no acredita despacho | ARQ/SRE/Operaciones; antes H6/H11 | R8-01 |

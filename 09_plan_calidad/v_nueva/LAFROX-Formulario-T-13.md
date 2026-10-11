@@ -67,9 +67,10 @@ La intensidad de la prueba sigue el riesgo del producto, como dispone ISO/IEC/IE
 | Aceptación de usuario | Preproducción | Casos del SD3 ejecutados por personas del CLIENTE | Manual | 3.8.2; 3.9.2 | BTT 20.1 |
 | Perfil operacional de terreno | Terreno, cámara de congelado y Preproducción | Dispositivos reales, Espresso para los flujos repetibles | Parcial | 3.8.3; 3.9.1; 3.9.2 | RT-03.10; RT-03.13; RT-13.08 |
 | Carga y estrés | Preproducción | k6 | Total | 3.8.4; 3.9.3 | Art. 24; RT-09.06 a RT-09.08 |
-| Resiliencia | Preproducción | AWS Fault Injection Service y desconexiones controladas del sitio emulado | Total en la inyección; manual en la observación | 3.8.4; 3.9.3; 8.2.2 | RT-10.07 |
-| Recuperación ante desastres | Recuperación ante Desastres (us-east-1) | Conmutación regional real | Procedimiento automatizado con verificación manual | 3.8.5; 3.9.4; 8.1.3 | RT-07.07 |
-| Restauración de respaldos | Producción y Recuperación | Restauración de una muestra representativa | Procedimiento automatizado | 8.1.6 | RT-07.12 |
+| Resiliencia | Preproducción | AWS Fault Injection Service; desconexiones controladas del sitio emulado; corte de gateways de frío y de enlaces | Total en la inyección; manual en la observación | 3.8.4; 3.9.3; 8.2.2 | RT-10.07 |
+| Continuidad de la arquitectura híbrida | Preproducción y sitio emulado | Nueve protocolos del SD4, Anexo 4-V (sección 7.5) | Parcial | 3.8.1; 3.8.3 a 3.8.5; 3.9.1; 3.9.3; 3.9.4 | RT-03.10; RT-07.04 |
+| Recuperación ante desastres | Recuperación ante Desastres (us-east-1) | Conmutación regional real y recuperación del WMS de Talca en la nube (AL-DR-01) | Procedimiento automatizado con verificación manual | 3.8.5; 3.9.4; 8.1.3 | RT-07.07 |
+| Restauración de respaldos | Producción y Recuperación | Restauración de una muestra representativa | Procedimiento automatizado | 4.2.1; 4.2.2; 4.3.1; 8.1.6 | RT-07.12 |
 | Seguridad ofensiva | Preproducción con versión congelada | Tercero independiente | Manual | 3.8.6; 3.9.5; 8.2.2 | RT-11.20 |
 | Despliegue sin interrupción y reversión | Preproducción | Cadena de entrega del SD4 (canario con reversión automática) | Total | 3.8.8; 3.9.7 | Art. 24; RT-04.07 |
 | Migración de datos | Preproducción | Procedimiento de extracción, carga y conciliación del SD5 | Parcial | 3.7.1 a 3.7.5 | BTT 20.1; RT-05.11 |
@@ -122,7 +123,7 @@ Varias campañas de certificación coinciden en el tiempo y no pueden compartir 
 
 | Nivel | Criterio de entrada | Criterio de salida |
 |---|---|---|
-| Unitaria y componente | Cambio con solicitud de fusión que cita su requisito o incidencia | Cobertura de lógica de negocio ≥ 70 % y global ≥ 80 %; 0 pruebas en falla; complejidad ciclomática ≤ 10 por método; 0 dependencias prohibidas entre módulos; duplicación ≤ 3 % (T-10) |
+| Unitaria y componente | Cambio con solicitud de fusión que cita su requisito o incidencia | Cobertura de lógica de negocio ≥ 70 % y global ≥ 80 %; 0 pruebas en falla; complejidad ciclomática ≤ 10 por método; 0 dependencias prohibidas entre módulos; acoplamiento eferente ≤ 20 clases por clase; duplicación ≤ 3 % (T-10) |
 | Contrato | Contratos OpenAPI 3.1 y AsyncAPI 2.6 versionados | 0 contratos rotos |
 | Integración | Imagen promovida a QA sin vulnerabilidades críticas ni altas; simuladores de los 15 flujos disponibles | 15 de 15 flujos sin error (BTT 20.1) |
 | Sistema y regresión | Integración aprobada; juego de datos restituido | 100 % de la batería aprobada; 0 regresiones; p95, errores y colas de la carga de regresión no peores que en la última versión aceptada (SD4, sección 4.2.4.1.4) |
@@ -132,7 +133,7 @@ Varias campañas de certificación coinciden en el tiempo y no pueden compartir 
 | Carga | Versión candidata en PRE-C; juego de peak cargado; monitoreo activo | Todos los p95 de la sección 7.1 a 21,99 TPS; 0 transacciones perdidas |
 | Estrés | Carga aprobada | Punto de quiebre identificado; degradación con encolamiento y mensaje explícito, sin pérdida (RT-09.08) |
 | Resiliencia | Carga sostenida en curso; escenarios de falla aprobados por el Arquitecto de Solución | Recuperación sin intervención en cada escenario; 0 pérdidas (RT-10.07) |
-| Recuperación ante desastres | Procedimiento de conmutación aprobado; fecha fuera de congelamiento y de la ventana de 05:30 a 07:00 | RTO ≤ 4 h y RPO ≤ 15 min medidos en conmutación real (RT-07.04, RT-07.07) |
+| Recuperación ante desastres | Procedimiento de conmutación aprobado; conmutación fuera de congelamiento, de la ventana de 05:30 a 07:00 y de los tres primeros días hábiles del mes | RTO ≤ 4 h y RPO ≤ 15 min medidos en conmutación real, regional y del WMS de Talca (RT-07.04, RT-07.07; AL-DR-01) |
 | Seguridad ofensiva | Versión congelada en PRE-S; alcance acordado con el tercero | 0 hallazgos críticos o altos abiertos (RT-11.20) |
 | Perfil operacional | Dispositivos de producción, uno de cada tipo; personas del CLIENTE convocadas | Ver sección 7.3 |
 | Migración | Perfilado y saneamiento cerrados (3.7.1); mapeo del SD5, Anexo 5-L | Conciliación sin diferencias no explicadas en cada ensayo; tiempos medidos compatibles con la ventana y con la reversión (SD5, 5.3.5) |
@@ -159,7 +160,7 @@ La carga se deriva del dimensionamiento del SD4, Tabla 33, y no se elige:
 | Escalón de crecimiento (RT-09.03) | 14,66 TPS | 3 | 43,98 TPS |
 | Escalón de quiebre | 14,66 TPS | 4 | 58,64 TPS |
 
-**Umbrales de salida (p95, SD4, Tabla 31):** confirmación de línea de preparación ≤ 1 s; registro de entrega ≤ 2 s; línea de preventa ≤ 1,5 s; consulta de stock y crédito ≤ 2 s; transacción crítica de terreno ≤ 3 s; carga inicial del portal ≤ 2 s; navegación ≤ 1 s; API de consulta ≤ 500 ms; API de escritura ≤ 800 ms.
+**Umbrales de salida (p95, SD4, Tabla 31):** confirmación de línea de preparación ≤ 1 s; registro de entrega ≤ 2 s; línea de preventa ≤ 1,5 s; consulta de stock y crédito ≤ 2 s; transacción crítica de terreno ≤ 3 s; carga inicial del portal ≤ 2 s; navegación ≤ 1 s; API de consulta ≤ 500 ms; API de escritura ≤ 800 ms; búsqueda compuesta ≤ 3 s y búsqueda global ≤ 2 s; informe estándar ≤ 30 s.
 
 **Ventana de despacho.** La prueba de 10,41 TPS concentra la emisión de guías en los 90 minutos. Su criterio de salida incluye 0 minutos de indisponibilidad (Caso, RT-10.05).
 
@@ -175,6 +176,10 @@ La carga se deriva del dimensionamiento del SD4, Tabla 33, y no se elige:
 | Latencia elevada | Inyección de latencia de red | Umbrales de la sección 7.1 o degradación controlada |
 | Saturación de disco | Llenado controlado del volumen | Alerta anticipada y continuidad |
 | Corte de enlace del centro de distribución por 24 h | Desconexión del sitio emulado | Operación local continua; sincronización ≤ 2 h tras reconectar, con conflictos de stock resueltos de forma determinista (RT-03.10, RT-03.13) |
+| Pérdida de fibra y LTE de un centro de distribución | Corte de ambos enlaces en el sitio emulado | Conmutación a Starlink en espera caliente; la emisión de guías por el ERP continúa (SD4, sección 4.1.3.2; AL-DTE-01) |
+| Caída de un gateway de frío de Talca | Detención de uno de los dos gateways con Greengrass | El otro gateway lee ambas cámaras; el bloqueo térmico local actúa en ≤ 5 s y la alerta llega a M9 (SD4, ADR-22) |
+
+Los dos últimos escenarios prueban la parte on-premise de la arquitectura híbrida, que el RT-10.07 no enumera pero que el SD4 declara crítica para el despacho y para la cadena de frío.
 
 ### 7.3 Perfil operacional de terreno
 
@@ -187,7 +192,7 @@ La carga se deriva del dimensionamiento del SD4, Tabla 33, y no se elige:
 | Sol directo | Lectura de la pantalla en la puerta del local | Lectura sin error de la persona usuaria |
 | Una sola mano durante la descarga | Registro de entrega | Transacción completada con una mano |
 
-Cada perfil mide los cuatro indicadores del RT-13.04: tiempo máximo de la transacción crítica, número de pasos, tasa de error y tiempo de aprendizaje, con los valores comprometidos en el paquete 2.6.3.
+Cada perfil mide los cuatro indicadores del RT-13.04 con los valores del SD3, Tabla 3.A.4a (métrica 9A-18): tasa de error ≤ 5 % en todos los perfiles y aprendizaje ≤ 2 h en bodega, ≤ 4 h para el preventista y ≤ 30 min para el conductor.
 
 ### 7.4 Pruebas de los resultados del caso
 
@@ -202,6 +207,24 @@ Las pruebas técnicas no aceptan por sí solas los resultados del Caso, cap. 18.
 
 Los dieciséis resultados se aceptan con el protocolo del Formulario T-17, en el momento que fija el SD7, Tabla 7.11.
 
+### 7.5 Protocolos de aceptación de la arquitectura híbrida
+
+El SD4, Anexo 4-V, define nueve protocolos que verifican la continuidad de la arquitectura en la nube y en los cinco sitios con servicio local. Se ejecutan en Preproducción antes de la ola aplicable, dentro de las campañas de este plan:
+
+| Protocolo | Qué verifica (SD4, Anexo 4-V) | Campaña de este plan |
+|---|---|---|
+| AL-DTE-01 | 96 guías por las rutas de Talca y de los demás sitios, con fallas y cambio de carga; emisión por fibra, LTE o Starlink | Resiliencia (3.8.4; 3.9.3) |
+| AL-POD-01 | Entrega total, parcial y con receptor sustituto sin señal | Perfil operacional (3.8.3) |
+| AL-SLA-01 | Ventanas y cuotas del ERP, del SII y de las contrapartes | Integración (3.8.1; 3.9.1) |
+| AL-OFF-01 | Aislamiento de cada sitio por 24 horas, con relevos y despacho con guía preemitida | Resiliencia (3.8.4; 3.9.3) |
+| AL-CLI-01 | Pedidos sin señal en el Portal de Clientes instalado y reconexión | Integración (3.8.1; 3.9.1) |
+| AL-DR-01 | Corte de los caminos y recuperación del WMS de Talca en la nube | Recuperación ante desastres (3.8.5; 3.9.4) |
+| AL-PERF-01 | Carga de 3× con mamparos por perfil | Carga y estrés (3.8.4; 3.9.3) |
+| AL-STOCK-01 | Última unidad pedida desde preventa, portal y EDI, con cortes y acuses perdidos | Integración (3.8.1; 3.9.1) |
+| AL-ACT-01 | Cada actor con una operación permitida y una denegada | Integración (3.8.1; 3.9.1) |
+
+Cada protocolo deja su acta con la carga, la falla inyectada, el resultado observado y los responsables, y esa acta forma parte del expediente del H5 o del H10 (T-17, sección 3.1).
+
 ---
 
 ## 8. Automatización
@@ -212,7 +235,7 @@ La automatización es la regla. Una prueba es manual solo si exige el juicio de 
 
 ### 8.2 Tamaño estimado del catálogo
 
-El catálogo se dimensiona por riesgo, con la prioridad de cada requisito en el SD3, Anexos. Los casos por requisito (cinco, tres y dos según la prioridad; uno por RT; siete por integración) son supuestos de estimación de LafroX, que el plan del H1 confirma con el diseño de los casos:
+El catálogo se dimensiona por riesgo, con la prioridad de cada requisito en el SD3, Anexos. Los casos por requisito (cinco, tres y dos según la prioridad; uno por RT; siete por integración) forman la regla de dimensionamiento por riesgo de LafroX, que el plan del H1 contrasta con el diseño real de los casos:
 
 | Grupo | Cantidad | Casos por requisito | Casos |
 |---|---|---|---|
@@ -227,7 +250,7 @@ Los 262 RF y RNF con prioridad propia son los del catálogo del SD3. Las nueve f
 
 ### 8.3 Duración de la regresión
 
-El cálculo usa tres supuestos de LafroX: 80 % de los casos automatizados, 30 segundos por caso automático y 15 minutos por caso manual. Con ellos: 0,8 × 1.316 ≈ 1.053 casos automáticos. A 30 segundos por caso, la regresión completa toma 1.053 × 0,5 / 60 ≈ 8,8 horas en un ejecutor y ≈ 4,4 horas en dos ejecutores paralelos. Cabe en una ejecución nocturna antes de cada promoción a Preproducción.
+El cálculo usa tres parámetros de diseño del plan: 80 % de los casos automatizados, 30 segundos por caso automático y 15 minutos por caso manual. Con ellos: 0,8 × 1.316 ≈ 1.053 casos automáticos. A 30 segundos por caso, la regresión completa toma 1.053 × 0,5 / 60 ≈ 8,8 horas en un ejecutor y ≈ 4,4 horas en dos ejecutores paralelos. Cabe en una ejecución nocturna antes de cada promoción a Preproducción.
 
 Los 263 casos manuales, a 15 minutos cada uno, requieren 263 × 15 / 60 ≈ 65,8 HH por ciclo. Se planifican con los evaluadores en los meses de certificación.
 
@@ -239,7 +262,8 @@ Los 263 casos manuales, a 15 minutos cada uno, requieren 263 × 15 / 60 ≈ 65,8
 
 | Campaña | Paquete | Instancia o ambiente | Inicio | Término | HH (T-15) |
 |---|---|---|---|---|---|
-| Plan de calidad y de pruebas | 1.5.1 | — | 01-03-2027 | 09-03-2027 | 80 |
+| Plan de calidad y de pruebas; revisión preliminar el 05-03-2027 | 1.5.1 | — | 01-03-2027 | 09-03-2027 | 80 |
+| Investigación con personas usuarias | 2.6.1 | Puestos de trabajo | 01-03-2027 | 29-03-2027 | 240 |
 | Matriz de trazabilidad (H1) | 1.2.4 | — | 01-03-2027 | 09-03-2027 | 80 |
 | Prototipos y pruebas de usabilidad | 2.6.2 | Prototipos | 01-04-2027 | 29-04-2027 | 240 |
 | Indicadores de usabilidad | 2.6.3 | — | 03-05-2027 | 31-05-2027 | 240 |

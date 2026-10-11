@@ -33,7 +33,7 @@ Las métricas siguen el modelo de calidad del producto de ISO/IEC 25010 (Interna
 | 9A-05 | Comportamiento temporal | p95 de registro de entrega | ≤ 2 s | Caso, RT-09.01 | Carga a 21,99 TPS | 3.8.4; 3.9.3 |
 | 9A-06 | Comportamiento temporal | p95 de línea de preventa | ≤ 1,5 s | Caso, RT-09.01 | Carga a 21,99 TPS | 3.8.4; 3.9.3 |
 | 9A-07 | Comportamiento temporal | p95 de consulta de stock y crédito | ≤ 2 s | Caso, RT-09.01 | Carga a 21,99 TPS | 3.8.4; 3.9.3 |
-| 9A-08 | Comportamiento temporal | p95 de transacción crítica de terreno, portal, navegación y API | ≤ 3 s; ≤ 2 s; ≤ 1 s; consulta ≤ 500 ms; escritura ≤ 800 ms | BTT, cap. 9; SD4, Tabla 31 | Carga a 21,99 TPS | 3.8.4; 3.9.3 |
+| 9A-08 | Comportamiento temporal | p95 de transacción crítica de terreno, portal, navegación, API, búsqueda e informe | ≤ 3 s; ≤ 2 s; ≤ 1 s; consulta ≤ 500 ms; escritura ≤ 800 ms; búsqueda compuesta ≤ 3 s y global ≤ 2 s; informe estándar ≤ 30 s | BTT, cap. 9; SD4, Tabla 31 | Carga a 21,99 TPS | 3.8.4; 3.9.3 |
 | 9A-09 | Capacidad | Carga sostenida sin violar 9A-04 a 9A-08 | 21,99 TPS; 1.163 personas usuarias; 237 dispositivos | Art. 24; RT-09.06; SD4, Tabla 33 | Carga en PRE-C | 3.8.4; 3.9.3 |
 | 9A-10 | Capacidad | Ventana de despacho a 1,5 × su peak | 10,41 TPS durante 90 minutos, 0 minutos de indisponibilidad | Caso, RT-10.05; SD4, Tabla 33 | Carga en PRE-C | 3.8.4; 3.9.3 |
 | 9A-11 | Capacidad | Crecimiento sin rediseño | 43,98 TPS (3 × el peak) sin cambio de arquitectura | RT-09.03 | Escalón de estrés | 3.8.4; 3.9.3 |
@@ -53,16 +53,16 @@ Las métricas siguen el modelo de calidad del producto de ISO/IEC 25010 (Interna
 |---|---|---|---|---|---|---|
 | 9A-16 | Accesibilidad | Incumplimientos de WCAG 2.2 A y AA | 0, con informe de conformidad | RT-13.01; Art. 4.3 | axe-core y revisión manual | 3.8.2; 3.9.2 |
 | 9A-17 | Operabilidad | Condiciones de terreno superadas: guantes a −22 °C, lluvia, sobre 34 °C, sol directo, una mano | 5 de 5 | Caso, RT-13.08 | Prueba de las cinco condiciones físicas, separada de 9A-25; regresión del alcance cambiado E2 | 3.8.3; 3.9.1; 3.9.2 |
-| 9A-18 | Eficiencia de uso y aprendizaje | Tiempo, pasos, tasa de error y tiempo de aprendizaje por perfil | Valores comprometidos en el paquete 2.6.3 | RT-13.04 | Pruebas moderadas por perfil | 2.6.3; 3.8.2 |
+| 9A-18 | Eficiencia de uso y aprendizaje | Tiempo, pasos, tasa de error y tiempo de aprendizaje por perfil | Preparador ≤ 1 s, 3 pasos, error ≤ 5 %, aprendizaje ≤ 2 h; recepción ≤ 2 s, 3 pasos, ≤ 5 %, ≤ 2 h; preventista ≤ 1,5 s, 3 pasos, ≤ 5 %, ≤ 4 h; conductor ≤ 2 s, 3 o 4 pasos, ≤ 5 %, ≤ 30 min | RT-13.04; SD3, Tabla 3.A.4a | Pruebas moderadas por perfil | 2.6.3; 3.8.2 |
 | 9A-19 | Adaptabilidad de la interfaz | Funciones completas en escritorio, tableta y teléfono | 100 % de las vistas de portales y consolas | RT-13.02 | Regresión visual con Playwright | 3.8.1; 3.9.1 |
 
 ### 9.A.5 Fiabilidad
 
 | ID | Subcaracterística | Métrica | Umbral | Origen | Verificación | Paquete |
 |---|---|---|---|---|---|---|
-| 9A-20 | Disponibilidad | Disponibilidad mensual por nivel de servicio | Crítico ≥ 99,9 %; alto ≥ 99,5 %; medio ≥ 99,0 %; bajo ≥ 98,0 % | Art. 78.2; SD4, Tabla 16 | Observabilidad en marcha blanca y Operación | 4.2.1; 4.3.1; Operación |
+| 9A-20 | Disponibilidad | Disponibilidad mensual por nivel de servicio y de la infraestructura | Crítico ≥ 99,9 %; alto ≥ 99,5 %; medio ≥ 99,0 %; bajo ≥ 98,0 %; infraestructura (energía, climatización, red, cómputo, base de datos y portal) ≥ 99,95 % | Art. 78.2; BTT 7.2; SD4, Tabla 16 | Observabilidad en marcha blanca y Operación | 4.2.1; 4.3.1; Operación |
 | 9A-21 | Disponibilidad | Indisponibilidad entre 05:30 y 07:00, lunes a sábado | 0 minutos | Caso, RT-10.05 | Indicador diario de la marcha blanca | 4.2.1; 4.3.1 |
-| 9A-22 | Tolerancia a fallos | Escenarios de inyección superados sin intervención | 6 de 6 (T-13, sección 7.2) | RT-10.07 | AWS FIS y sitio emulado | 3.8.4; 3.9.3; 8.2.2 |
+| 9A-22 | Tolerancia a fallos | Escenarios de inyección superados sin intervención | 8 de 8 (T-13, sección 7.2) | RT-10.07; SD4, Anexo 4-V | AWS FIS, sitio emulado y gateways de frío | 3.8.4; 3.9.3; 8.2.2 |
 | 9A-23 | Recuperabilidad | RTO y RPO en conmutación real | RTO ≤ 4 h; RPO ≤ 15 min | RT-07.04; RT-07.07 | Conmutación regional | 3.8.5; 3.9.4; 8.1.3 |
 | 9A-24 | Recuperabilidad | Restauraciones mensuales exitosas, con tiempo medido | 100 % | RT-07.12 | Restauración de muestra | 4.2.1; 4.2.2; 4.3.1; 8.1.6 |
 | 9A-25 | Operación desconectada | Registros perdidos o duplicados tras 14 h sin señal y 24 h sin enlace | 0; sincronización ≤ 10 min (dispositivo) y ≤ 2 h (centro de distribución) | Caso, RT-03.10 y RT-03.13 | Perfil operacional y resiliencia | 3.8.3; 3.8.4 |
@@ -83,7 +83,7 @@ Las métricas siguen el modelo de calidad del producto de ISO/IEC 25010 (Interna
 | 9A-30 | Testeabilidad | Cobertura de la lógica de negocio | ≥ 70 % | Art. 24; RT-04.11 | PHPUnit con PCOV; Kover; Jest | 1.5.2 |
 | 9A-31 | Testeabilidad | Cobertura unitaria global | ≥ 80 % | Política de LafroX (SD1, 1.3.1) | Ídem | 1.5.2 |
 | 9A-32 | Analizabilidad | Complejidad ciclomática por método | ≤ 10 | McCabe (1976) | PHPMD; detekt; ESLint | 1.5.2 |
-| 9A-33 | Modularidad | Dependencias prohibidas entre módulos | 0 | Art. 19 (acoplamiento débil) | deptrac; detekt; ESLint | 1.5.2 |
+| 9A-33 | Modularidad | Dependencias prohibidas entre módulos; acoplamiento eferente por clase | 0; ≤ 20 clases | Art. 19 (acoplamiento débil); regla de LafroX | deptrac; PhpMetrics; detekt; ESLint | 1.5.2 |
 | 9A-34 | Modificabilidad | Duplicación de código | ≤ 3 % de las líneas | Formulario T-10 | PHPCPD; jscpd | 1.5.2 |
 | 9A-35 | Modificabilidad | Deuda técnica clasificada como bloqueante | 0 | Art. 24; Formulario T-10 | PhpMetrics y registro de deuda | 1.5.2; 8.2.4 |
 
@@ -115,10 +115,10 @@ Las métricas siguen el modelo de calidad del producto de ISO/IEC 25010 (Interna
 | G2 | Integración continua | 9A-30 a 9A-35 incumplidos; hallazgo crítico o alto de SAST o SCA; contrato roto (9A-14); prueba en falla | PHPStan con Larastan, PHPMD, PHPCPD, PhpMetrics, deptrac · detekt, Kover, jscpd · ESLint, Jest; SAST de GitLab; `composer audit`; Pact; Spectral | Nadie |
 | G3 | Promoción a QA | Imagen con vulnerabilidad crítica o alta; regresión de desempeño: p95, errores o colas de la carga de regresión peores que en la última versión aceptada, bajo la misma carga y configuración (SD4, sección 4.2.4.1.4) | Amazon Inspector; k6 | Nadie; se corrige |
 | G4 | Promoción a Preproducción | Regresión con fallas; alerta alta de DAST o MobSF; incumplimiento de WCAG 2.2 AA; defecto crítico o alto abierto | Playwright; Espresso; OWASP ZAP; MobSF; axe-core | Nadie |
-| G5 | Paso a producción contractual (H7 y H12) | Una prueba del T-13 que habilita el paso no está aprobada; defecto crítico o alto abierto; falta el acta de la Contraparte Técnica | Expediente del T-17 | Nadie. El acta es una condición adicional y no levanta una prueba fallida |
+| G5 | Entrada de cada etapa a Producción (H6 y H11) | Una prueba del T-13 que habilita la entrada no está aprobada; defecto crítico o alto abierto; falta el acta de certificación de la etapa (H5 o H10) | Expediente del T-17 | Nadie. El acta es una condición adicional y no levanta una prueba fallida |
 | G6 | Producción desde H6/H11 y Operación | Canario con p95 sobre su umbral o con más errores que la versión estable; presupuesto de error crítico del mes agotado | Cadena de entrega del SD4; observabilidad | Nadie. La reversión del canario es automática; se suspenden los despliegues no correctivos hasta el mes siguiente |
 
-Antes de H6/H11, el control técnico del T-17, 4.3, bloquea la habilitación de Producción sin certificación H5/H10 aceptada, pruebas aplicables aprobadas, reversión ensayada, conciliación y capacitación. G5 cierra la marcha blanca y no autoriza por primera vez el ambiente.
+G5 es la puerta de entrada de cada etapa a Producción en el H6 y el H11 (T-17, 4.3): bloquea la habilitación sin certificación H5/H10 aceptada, pruebas aplicables aprobadas, reversión ensayada, conciliación y capacitación. El H7 y el H12 no son una puerta: aceptan la marcha blanca con las seis condiciones del Art. 17.3.
 
 Los umbrales de las puertas son **tolerancias**: el rango que un requisito acepta, como el p95 de 1 s de la línea de preparación. Son distintos de los **límites de control** de la sección 9.2.6 del SD9, que se calculan con la variación histórica de una métrica y sirven para detectar un proceso inestable antes de que llegue a la tolerancia (PMI, 2017, pp. 274 y 304).
 

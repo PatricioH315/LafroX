@@ -196,7 +196,7 @@ La fecha P80 de todos los hitos queda antes de su límite. El hito más expuesto
 
 La preparación del H6 (prerrequisitos D-25 a tiempo para el acta del mes 13) se cumple en el 96,5 % de las iteraciones y la del H11 en el 100 % (Tabla C.6). Una fecha fija no elimina la incertidumbre de la marcha blanca: las seis condiciones del Art. 17.3 se miden durante sus cuatro semanas finales, y su riesgo de no cumplirse es R8-18, que tiene su propia contingencia.
 
-El T-15 programa 216.935 HH de línea base, incluidas 9.336 HH de soporte puente, 3.072 HH de capacidad protegida E1 y el tercer agente de la mesa desde el mes 25 (14.161 HH). La construcción de la Etapa 1 usa como máximo 40 de los 48 desarrolladores de la división, escalonada entre junio y septiembre de 2027. Las 9.336 HH forman parte de las 16.664 HH del período 16–20 del SD7. Las reservas de contingencia y de gestión se reflejan en el T-15, sección 4.5, por período y con la capacidad que las cubre.
+El T-15 programa 217.543 HH de línea base, incluidas 9.336 HH de soporte puente, 3.072 HH de capacidad protegida E1 y el tercer agente de la mesa desde el mes 25 (14.161 HH). La construcción de la Etapa 1 usa como máximo 40 de los 48 desarrolladores de la división, escalonada entre junio y septiembre de 2027. Las 9.336 HH forman parte de las 16.712 HH del período 16–20 del SD7. Las reservas de contingencia y de gestión se gestionan en este subdocumento; el T-15, sección 4.5, no las replica y exige estimar, verificar la capacidad y autorizar la respuesta a cada evento antes de ejecutarla.
 
 ## 8.3 Plan de Acción a Riesgos
 
@@ -212,7 +212,7 @@ Si la probabilidad disminuyera un nivel, el registro conjunto residual sería 14
 
 ### 8.3.2 Reservas y cronograma
 
-La reserva de contingencia cubre los riesgos identificados: **20.198,98 HH**, el 9,88 % de las 204.527 HH base de los paquetes. R8-11 y R8-18 concentran el 54,8 % de ella. La capacidad protegida E1 sólo se descuenta cuando coinciden los meses 13–20, la Etapa 1 y los perfiles DES/CAL; los paquetes de R8-02 y R8-04 terminan antes del mes 13 y los de R8-14 son trabajo de la Etapa 2, de modo que no se descuenta nada y las 3.072 HH quedan protegidas para correcciones futuras de la Etapa 1, sin prestarse a la Etapa 2.
+La reserva de contingencia cubre los riesgos identificados: **20.198,98 HH**, el 9,85 % de las 205.135 HH base de los paquetes. R8-11 y R8-18 concentran el 54,8 % de ella. La capacidad protegida E1 sólo se descuenta cuando coinciden los meses 13–20, la Etapa 1 y los perfiles DES/CAL; los paquetes de R8-02 y R8-04 terminan antes del mes 13 y los de R8-14 son trabajo de la Etapa 2, de modo que no se descuenta nada y las 3.072 HH quedan protegidas para correcciones futuras de la Etapa 1, sin prestarse a la Etapa 2.
 
 La Tabla 8.6 resume la contingencia por período; la Tabla D.2 la detalla por mes y perfil. El T-15, sección 4.5, la refleja en el plan: compara, período a período, el peak de personas equivalentes adicionales con la dotación. Toda la contingencia cabe en la dotación declarada, salvo implantación en los meses 15 y 20, donde la extensión de la marcha blanca (R8-18) se cubre con la opción de hasta 8 personas adicionales del contrato de implantación (E8-14).
 

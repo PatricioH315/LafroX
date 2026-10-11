@@ -81,7 +81,7 @@ flowchart LR
     end
     subgraph M["Métricas con umbral"]
         M1["42 métricas de producto<br/>y de datos (Anexo 9.A)"]
-        M2["6 métricas de código<br/>bloqueantes"]
+        M2["7 métricas de código<br/>bloqueantes"]
         M3["Métricas de proceso<br/>y costo de la calidad"]
     end
     subgraph C["Control"]
@@ -139,8 +139,8 @@ flowchart TD
     Q --> F["Funcionalidad<br/>100 % de requisitos ofertados con prueba aprobada"]
     Q --> D["Desempeño<br/>preparación ≤ 1 s · entrega ≤ 2 s · preventa ≤ 1,5 s<br/>p95 a 21,99 TPS"]
     Q --> C["Compatibilidad<br/>15 de 15 integraciones · 0 contratos rotos"]
-    Q --> U["Usabilidad<br/>WCAG 2.2 AA · guantes a −22 °C · una mano"]
-    Q --> R["Fiabilidad<br/>99,9 % servicios críticos · 0 min de 05:30 a 07:00<br/>RTO ≤ 4 h · RPO ≤ 15 min · 14 h sin señal sin pérdida"]
+    Q --> U["Usabilidad<br/>error ≤ 5 % · aprendizaje por perfil<br/>WCAG 2.2 AA · guantes a −22 °C"]
+    Q --> R["Fiabilidad<br/>99,9 % transacción crítica · 99,95 % infraestructura<br/>0 min de 05:30 a 07:00 · RTO ≤ 4 h · RPO ≤ 15 min"]
     Q --> S["Seguridad<br/>0 hallazgos críticos o altos abiertos"]
     Q --> M["Mantenibilidad<br/>cobertura 70 % negocio y 80 % global"]
     Q --> P["Portabilidad<br/>mismo artefacto de QA a Producción"]
@@ -150,24 +150,24 @@ flowchart TD
 
 Ninguna de las ocho características queda con un valor genérico: cada una tiene al menos una métrica que nace de la operación de Puelche. La Tabla 9.3 resume la métrica principal de cada una. El Anexo 9.A detalla las 42 métricas por subcaracterística, con método de verificación y paquete de la EDT, e incluye cuatro métricas de calidad de datos según ISO/IEC 25012 (ISO & IEC, 2008).
 
-**Tabla 9.3 — Umbral principal por característica. Fuente: elaboración a partir de las BA, Arts. 24 y 78.2; las BTT, sección 20.1 y RT-04.05, RT-04.08, RT-11.20 y RT-13.01; el Caso, sección 17.1, RT-09.01 y RT-10.05; el SD1, sección 1.3.1, y el SD4.**
+**Tabla 9.3 — Umbral principal por característica. Fuente: elaboración a partir de las BA, Arts. 24 y 78.2; las BTT, sección 7.2, sección 20.1 y RT-04.05, RT-04.08, RT-11.20, RT-13.01 y RT-13.04; el Caso, sección 17.1, RT-09.01 y RT-10.05; el SD1, sección 1.3.1; el SD3, Tabla 3.A.4a, y el SD4.**
 
 | Característica | Métrica principal | Umbral | Origen |
 |---|---|---|---|
 | Funcionalidad | Requisitos ofertados con prueba aprobada | 100 % | Caso, 17.1 |
 | Desempeño | p95 de las transacciones críticas a 1,5 × el peak | Preparación ≤ 1 s; entrega ≤ 2 s; preventa ≤ 1,5 s; stock y crédito ≤ 2 s | Caso, RT-09.01 |
 | Compatibilidad | Integraciones sin error | 15 de 15 | BTT 20.1 |
-| Usabilidad | Conformidad de accesibilidad | WCAG 2.2 AA sin incumplimientos | RT-13.01 |
-| Fiabilidad | Disponibilidad de servicios críticos | ≥ 99,9 % mensual y 0 minutos entre 05:30 y 07:00 | BA, Art. 78.2; Caso, RT-10.05 |
+| Usabilidad | Tasa de error y aprendizaje por perfil; accesibilidad | Error ≤ 5 %; aprendizaje ≤ 2 h en bodega, ≤ 4 h preventista, ≤ 30 min conductor; WCAG 2.2 AA sin incumplimientos | RT-13.04 (SD3, Tabla 3.A.4a); RT-13.01 |
+| Fiabilidad | Disponibilidad mensual | Transacción crítica ≥ 99,9 %; infraestructura ≥ 99,95 %; 0 minutos entre 05:30 y 07:00 | BA, Art. 78.2; BTT 7.2; Caso, RT-10.05 |
 | Seguridad | Hallazgos críticos o altos abiertos | 0 | RT-04.05; RT-11.20 |
 | Mantenibilidad | Cobertura de lógica de negocio y global | ≥ 70 % y ≥ 80 % | BA, Art. 24; SD1, 1.3.1 |
 | Portabilidad | Despliegues con el mismo artefacto | 100 % | RT-04.08 |
 
-Siete de los ocho umbrales los fijan las Bases o el Caso. El octavo, el de mantenibilidad, suma al 70 % exigido en la lógica de negocio el 80 % de cobertura global que es política de LafroX (SD1, sección 1.3.1). El desempeño y la fiabilidad concentran el modelo porque la operación de Puelche depende de transacciones de segundos en la ventana de despacho y de que el despacho continúe sin enlace y sin señal.
+Seis de los ocho umbrales los fijan las Bases o el Caso. Los otros dos son compromisos de LafroX sobre una exigencia de las Bases: la usabilidad toma los indicadores por perfil que el SD3, Tabla 3.A.4a, compromete para el RT-13.04, y la mantenibilidad suma al 70 % exigido en la lógica de negocio el 80 % de cobertura global que es política de LafroX (SD1, sección 1.3.1). El desempeño y la fiabilidad concentran el modelo porque la operación de Puelche depende de transacciones de segundos en la ventana de despacho y de que el despacho continúe sin enlace y sin señal.
 
 ### 9.1.4 Modelos de madurez
 
-El plan usa tres referentes con funciones distintas. ISO 9001:2015 es el sistema de gestión de calidad de LafroX y aporta el marco de auditoría de los registros del proyecto (ISO, 2015). CMMI-DEV es el modelo de madurez del proceso de desarrollo y de pruebas (CMMI Institute, 2018). La evaluación SCAMPI A de nivel 3 que declara el SD1, sección 1.4, vence en noviembre de 2026, antes del inicio del contrato. Por eso la renovación se presenta a la Contraparte Técnica junto con el H1 y, mientras no se acredite, el plan no invoca el nivel 3 como garantía: los procesos se rigen por el sistema de gestión ISO 9001 auditado. OWASP SAMM es el modelo de madurez del desarrollo seguro que exige el Art. 4.3 de las BA.
+El plan usa tres referentes con funciones distintas. ISO 9001:2015 es el sistema de gestión de calidad de LafroX y aporta el marco de auditoría de los registros del proyecto (ISO, 2015). CMMI-DEV es el modelo de madurez del proceso de desarrollo y de pruebas (CMMI Institute, 2018). LafroX renueva su evaluación SCAMPI A de nivel 3 antes de noviembre de 2026 y presenta la renovación a la Contraparte Técnica junto con el H1 (SD1, sección 1.4). Los procesos del proyecto se auditan, además, con el sistema de gestión ISO 9001, de modo que su control no depende de una sola certificación. OWASP SAMM es el modelo de madurez del desarrollo seguro que exige el Art. 4.3 de las BA.
 
 El nivel 3 de CMMI-DEV significa procesos definidos para la organización y adaptados al proyecto. En este contrato se traduce en tres áreas de práctica que el plan mide: verificación y validación, que es el proceso de pruebas de 9.2.3; revisión entre pares, de 9.2.2; y aseguramiento de la calidad del proceso, ejercido por las auditorías trimestrales de trazabilidad entre requisito, código y prueba que exige la política de LafroX (SD1, sección 1.3.1). Esas auditorías siguen el criterio del PMBOK: las hace un equipo independiente del proyecto y buscan no conformidades, buenas prácticas y lecciones para otros proyectos (PMI, 2017, p. 294).
 
@@ -185,10 +185,11 @@ La mantenibilidad se juzga sobre el código mientras se escribe. La columna «Pu
 | Cobertura unitaria global | ≥ 80 % | G2 | Política de LafroX (SD1, 1.3.1) |
 | Complejidad ciclomática por método | ≤ 10 | G2 | McCabe (1976) |
 | Dependencias prohibidas entre módulos | 0 | G2 | BA, Art. 19 (acoplamiento débil) |
+| Acoplamiento eferente por clase | ≤ 20 clases | G2 | Regla de LafroX sobre BA, Art. 19; Formulario T-10 |
 | Duplicación de código | ≤ 3 % de las líneas | G2 | Formulario T-10 |
 | Deuda técnica clasificada como bloqueante | 0 | G2 | BA, Art. 24; Formulario T-10 |
 
-Las seis métricas bloquean en la misma puerta, la integración continua, porque ahí el costo de corregir es mínimo: el autor todavía tiene el cambio en la cabeza. Los dos umbrales de cobertura son independientes y se exigen ambos. Una cobertura global alta lograda con pruebas sobre controladores y vistas podría dejar sin probar la regla de asignación de stock o la de excursión térmica; el 70 % medido sobre las clases de dominio y de casos de uso lo impide. El límite de complejidad de 10 es la cota que McCabe (1976) propone para un módulo comprobable. El acoplamiento se controla en la frontera que importa a esta arquitectura: ningún módulo invoca clases internas de otro fuera de su contrato. Las herramientas por lenguaje están en el Anexo 9.B.
+Las siete métricas bloquean en la misma puerta, la integración continua, porque ahí el costo de corregir es mínimo: el autor todavía tiene el cambio en la cabeza. Los dos umbrales de cobertura son independientes y se exigen ambos. Una cobertura global alta lograda con pruebas sobre controladores y vistas podría dejar sin probar la regla de asignación de stock o la de excursión térmica; el 70 % medido sobre las clases de dominio y de casos de uso lo impide. El límite de complejidad de 10 es la cota que McCabe (1976) propone para un módulo comprobable. El acoplamiento se controla en dos niveles. Entre módulos, ninguno invoca clases internas de otro fuera de su contrato. Dentro de cada módulo, ninguna clase depende de más de 20 clases distintas; ese límite, que PhpMetrics y detekt miden en cada ejecución, detecta una clase que concentra demasiadas responsabilidades antes de que se vuelva difícil de probar. Las herramientas por lenguaje están en el Anexo 9.B.
 
 El Comité de Calidad puede endurecer estos umbrales con datos del proyecto, pero no relajarlos sin acta del Comité de Arquitectura.
 
@@ -201,7 +202,7 @@ El código puede cumplir sus umbrales y el proceso puede seguir dejando escapar 
 | Métrica | Fórmula | Meta | Origen |
 |---|---|---|---|
 | Defectos escapados | Defectos críticos o altos hallados en un ambiente posterior al que debió detectarlos / total de críticos o altos | 0 en Producción durante la marcha blanca | BA, Art. 17.3 |
-| Densidad de defectos | Defectos confirmados / casos ejecutados, por módulo | Se mide y se usa para priorizar | Propuesta de LafroX |
+| Densidad de defectos | Defectos confirmados / casos ejecutados, por módulo | Un módulo sobre 1,5 veces la mediana del proyecto pasa a análisis de causa raíz | Regla de LafroX |
 | Observaciones repetidas del CLIENTE | Observaciones de la misma naturaleza en una segunda presentación | 0 | BA, Art. 18.3 |
 | Frecuencia de despliegue | Despliegues a producción por período habilitado | Quincenal | RT-04.12; SD4 |
 | Tasa de cambios fallidos | Despliegues que requieren reversión o corrección / despliegues del mes | ≤ 5 % | BA, Art. 78.3; SD4 |
@@ -239,10 +240,9 @@ flowchart LR
     G1 --> G2["G2 · Integración continua<br/>coberturas · complejidad · acoplamiento<br/>duplicación · SAST/SCA · contratos"]
     G2 --> G3["G3 · Promoción a QA<br/>imagen sin vulnerabilidades altas<br/>sin regresión de desempeño"]
     G3 --> G4["G4 · Promoción a Preproducción<br/>regresión · DAST · WCAG"]
-    G4 --> MB["Control técnico previo H6/H11<br/>certificación · reversión · datos · capacitación"]
-    MB --> G5["G5 · Paso contractual a producción (H7 y H12)<br/>pruebas del T-13 · acta T-17"]
+    G4 --> G5["G5 · Entrada a Producción (H6 y H11)<br/>pruebas del T-13 · acta de certificación (H5 o H10)"]
     G5 --> G6["G6 · Producción supervisada y Operación<br/>canario · presupuesto de error"]
-    MB -. monitoreo desde H6/H11 .-> G6
+    G6 -. "aceptación de la marcha blanca (H7 y H12)<br/>seis condiciones del Art. 17.3" .-> AC["Acta del T-17"]
     G2 -. bloquea .-> X["Cambio rechazado<br/>vuelve al autor"]
     G4 -. bloquea .-> X
     G5 -. bloquea .-> X
@@ -250,7 +250,7 @@ flowchart LR
 
 **Figura 9.3 — Puertas de calidad en la cadena de entrega. Fuente: elaboración a partir del SD4, sección 4.2.4.1, y del Formulario T-10.**
 
-El ambiente Producción se utiliza desde el inicio de las marchas blancas (H6/H11), sin que ello cierre su aceptación contractual. Antes de habilitarlo, el control técnico exige H5/H10 aceptado, pruebas aplicables del T-13 aprobadas, reversión ensayada, conciliación sin diferencias no explicadas y usuarios de la ola capacitados (T-17, 4.3). G5 permanece en H7/H12 y exige además las seis condiciones copulativas del Art. 17.3 y su acta. El control previo no reemplaza G5.
+G5 se aplica en el momento en que cada etapa entra a Producción, al iniciar su marcha blanca (H6 y H11), porque desde ese día la solución opera con datos y pedidos reales de Puelche. Exige el H5 o el H10 aceptado, las pruebas aplicables del T-13 aprobadas, la reversión ensayada, la conciliación sin diferencias no explicadas y los usuarios de la ola capacitados (T-17, 4.3). Los hitos H7 y H12 no son una puerta: aceptan la operación supervisada con las seis condiciones copulativas del Art. 17.3 y su acta. Las correcciones durante una marcha blanca no repiten G5: pasan por G0 a G4 y G6.
 
 Las puertas están ordenadas por costo: el control es más barato cuanto antes ocurre. G0 a G2 se ejecutan en minutos sobre cada cambio; G5 se ejecuta dos veces en el contrato y exige semanas de prueba. La Tabla 9.7 resume qué bloquea cada puerta y quién puede levantarla; el Anexo 9.B detalla las reglas y herramientas.
 
@@ -262,10 +262,10 @@ Las puertas están ordenadas por costo: el control es más barato cuanto antes o
 | G2 | Integración continua | Falla un umbral de la Tabla 9.4; hallazgo crítico o alto; contrato roto | Nadie |
 | G3 | Promoción a QA | Imagen con vulnerabilidad crítica o alta; p95, errores o colas peores que en la última versión aceptada | Nadie; se corrige |
 | G4 | Promoción a Preproducción | Regresión con fallas; alerta alta de DAST; incumplimiento WCAG; defecto crítico o alto abierto | Nadie |
-| G5 | Paso contractual a producción (H7 y H12) | Prueba habilitante no aprobada; defecto crítico o alto abierto; falta el acta | Nadie; el acta no levanta una prueba fallida |
+| G5 | Entrada de cada etapa a Producción (H6 y H11) | Prueba habilitante no aprobada; defecto crítico o alto abierto; falta el acta de certificación (H5 o H10) | Nadie; el acta no levanta una prueba fallida |
 | G6 | Producción desde H6/H11 y Operación | Canario fuera de umbral; presupuesto de error crítico del mes agotado | Nadie; reversión automática y suspensión de despliegues no correctivos |
 
-Ninguna puerta admite excepciones. Una regresión de desempeño en G3 bloquea la promoción hasta corregirla, como dispone el SD4, sección 4.2.4.1.4, y ningún hallazgo de seguridad crítico o alto se acepta con registro de deuda, como exige el RT-04.05. Las correcciones durante una marcha blanca no son un paso a producción contractual: pasan por G0 a G4 y G6, con regresión completa, y repiten la prueba de certificación que su cambio afecta (sección 9.3.2).
+Ninguna puerta admite excepciones. Una regresión de desempeño en G3 bloquea la promoción hasta corregirla, como dispone el SD4, sección 4.2.4.1.4, y ningún hallazgo de seguridad crítico o alto se acepta con registro de deuda, como exige el RT-04.05. Las correcciones durante una marcha blanca no repiten G5: pasan por G0 a G4 y G6, con regresión completa, y repiten la prueba de certificación que su cambio afecta (sección 9.3.2).
 
 ### 9.2.2 Revisión por pares y análisis estático y dinámico
 
@@ -277,7 +277,7 @@ Toda modificación entra a la rama principal por una solicitud de fusión. La ra
 
 ### 9.2.3 Estrategia de pruebas conforme a ISO/IEC/IEEE 29119
 
-La estrategia sigue los tres niveles de proceso de ISO/IEC/IEEE 29119-2. En el nivel organizacional rige la política de pruebas de LafroX. En el nivel de gestión, el plan de pruebas del proyecto, que es el Formulario T-13, se monitorea y se cierra en cada hito. En el nivel dinámico se diseñan, ejecutan e informan los casos (ISO, IEC & Institute of Electrical and Electronics Engineers [IEEE], 2021a). La intensidad de la prueba sigue el riesgo (ISO, IEC & IEEE, 2022). Como supuesto de estimación de LafroX, un requisito de prioridad crítica recibe cinco casos; uno alto, tres; uno medio, dos. Las técnicas de diseño se eligen por tipo de regla (ISO, IEC & IEEE, 2021b): valores límite para los umbrales térmicos y de crédito, tablas de decisión para la asignación de stock, transición de estados para el ciclo del pedido y de la guía, y casos de uso para los flujos del SD3.
+La estrategia sigue los tres niveles de proceso de ISO/IEC/IEEE 29119-2. En el nivel organizacional rige la política de pruebas de LafroX. En el nivel de gestión, el plan de pruebas del proyecto, que es el Formulario T-13, se monitorea y se cierra en cada hito. En el nivel dinámico se diseñan, ejecutan e informan los casos (ISO, IEC & Institute of Electrical and Electronics Engineers [IEEE], 2021a). La intensidad de la prueba sigue el riesgo (ISO, IEC & IEEE, 2022). La regla de dimensionamiento por riesgo de LafroX asigna cinco casos a un requisito de prioridad crítica, tres a uno alto y dos a uno medio; el plan del H1 la contrasta con el diseño real de los casos. Las técnicas de diseño se eligen por tipo de regla (ISO, IEC & IEEE, 2021b): valores límite para los umbrales térmicos y de crédito, tablas de decisión para la asignación de stock, transición de estados para el ciclo del pedido y de la guía, y casos de uso para los flujos del SD3.
 
 **Niveles, tipos y ambientes.** La Figura 9.4 ubica cada nivel y tipo de prueba en el ambiente donde se ejecuta.
 
@@ -295,18 +295,18 @@ flowchart TB
     subgraph PRE["Preproducción"]
         P1["Aceptación de usuario"]
         P2["Carga 1,5× y estrés hasta el quiebre"]
-        P3["Resiliencia con inyección de fallas"]
+        P3["Resiliencia · sitios aislados 24 h<br/>gateways de frío"]
         P4["Migración · despliegue y reversión"]
         P5["Intrusión por un tercero"]
     end
     subgraph TER["Terreno y cámara"]
-        T1["14 h sin señal · −22 °C con guantes<br/>lluvia · sol directo · una mano"]
+        T1["14 h sin señal · −22 °C con guantes<br/>lluvia · sobre 34 °C · sol directo · una mano"]
     end
     subgraph PROD["Producción"]
         R1["Marcha blanca<br/>indicadores diarios"]
     end
     subgraph DR["Recuperación"]
-        X1["Conmutación real<br/>RTO ≤ 4 h · RPO ≤ 15 min"]
+        X1["Conmutación real<br/>nube y WMS de Talca<br/>RTO ≤ 4 h · RPO ≤ 15 min"]
     end
     DEV --> QA --> PRE --> PROD
     PRE --> TER
@@ -319,9 +319,9 @@ La figura sigue la regla de los ambientes del SD4: el software se prueba en un a
 
 Las campañas de certificación coinciden en el tiempo y no pueden compartir el ambiente: la resiliencia necesita carga sostenida, la intrusión exige una versión congelada y la aceptación necesita datos estables. Por eso cada campaña usa su propia instancia de Preproducción, reconstruida desde el mismo código; siguen siendo Preproducción y no un sexto ambiente (T-13, sección 4.1).
 
-**Pruebas aplicables por etapa y antes del paso contractual a producción.** La BTT, sección 20.1, fija diez tipos de prueba con su momento y su criterio de salida. La Tabla 9.8 presenta los diez tipos y dos pruebas adicionales, con alcance en ambas etapas; el T-13, secciones 6 y 7, los especifica con sus criterios de entrada y salida.
+**Pruebas aplicables por etapa y antes de cada entrada a Producción.** La BTT, sección 20.1, fija diez tipos de prueba con su momento y su criterio de salida. La Tabla 9.8 presenta los diez tipos y dos pruebas adicionales, con alcance en ambas etapas; el T-13, secciones 6 y 7, los especifica con sus criterios de entrada y salida.
 
-**Tabla 9.8 — Pruebas aplicables por etapa y antes del paso contractual a producción. Fuente: elaboración a partir de las BA, Art. 24; las BTT, sección 20.1; el Caso, cap. 15, y el SD4, Tabla 33.**
+**Tabla 9.8 — Pruebas aplicables por etapa y antes de cada entrada a Producción. Fuente: elaboración a partir de las BA, Art. 24; las BTT, sección 20.1; el Caso, cap. 15, y el SD4, Tabla 33.**
 
 | Prueba | Ambiente | Carga o escenario | Criterio de salida |
 |---|---|---|---|
@@ -330,15 +330,17 @@ Las campañas de certificación coinciden en el tiempo y no pueden compartir el 
 | Sistema y regresión | QA y Preproducción | Batería completa antes de promover, ambas etapas | 0 fallas y 0 regresiones |
 | Aceptación de usuario | Preproducción | Casos del SD3 con preventistas, conductores y bodega | Casos firmados por la Contraparte Técnica |
 | Carga y estrés | Preproducción | 21,99 TPS; escalones de 3× y 4× | p95 de la Tabla 9.3; punto de quiebre sin pérdida |
-| Resiliencia | Preproducción | Caída de instancia, zona y dependencia; latencia; disco; 24 h sin enlace | Recuperación sin intervención |
+| Resiliencia | Preproducción | Caída de instancia, zona y dependencia; latencia; disco; 24 h sin enlace en cada sitio; caída de un gateway de frío; pérdida de fibra y LTE | Recuperación sin intervención; bloqueo térmico local ≤ 5 s |
 | Perfil operacional | Terreno | −22 °C con guantes; lluvia; > 34 °C; sol; una mano (E1 y regresión del alcance cambiado en E2); desconexión de 14 h por separado | 5 de 5 condiciones; 0 pérdidas/duplicados y sincronización ≤ 10 min en desconexión |
-| Recuperación ante desastres | Recuperación | Conmutación regional real | RTO ≤ 4 h; RPO ≤ 15 min |
+| Recuperación ante desastres | Recuperación | Conmutación regional real y recuperación de la sala de Talca en la nube | RTO ≤ 4 h; RPO ≤ 15 min |
 | Seguridad ofensiva | Preproducción | Tercero independiente | 0 hallazgos críticos o altos abiertos |
 | Accesibilidad | QA y Preproducción | axe-core y revisión manual | 0 incumplimientos WCAG 2.2 A/AA, con informe |
 | Migración | Preproducción | Dos ensayos con 32,11 GB | 0 diferencias no explicadas |
 | Despliegue sin interrupción | Preproducción | Canario con reversión | Sin interrupción ni intervención manual |
 
 Respecto de la BTT, se suman dos pruebas, adicionales a los diez tipos: el perfil operacional, por los RT-03.10, RT-03.13 y RT-13.08, y el despliegue sin interrupción, por las BA, Art. 24. Ninguna prueba tiene un criterio de salida cualitativo: todas terminan en un número o en una firma.
+
+**Pruebas de la arquitectura híbrida.** La solución opera en la nube y en cinco sitios con servicio local: los CD de Talca y Concepción y tres cross-docking (SD4, secciones 4.1.3.2 y 4.1.21). Las pruebas de la Tabla 9.8 incluyen los nueve protocolos de aceptación que el SD4, Anexo 4-V, define para esa arquitectura. Entre ellos están el aislamiento de cada sitio por 24 horas con despacho de guías preemitidas (AL-OFF-01), las 96 guías emitidas por fibra, LTE y Starlink con fallas inyectadas (AL-DTE-01) y la recuperación en la nube del WMS de Talca dentro del RTO y el RPO (AL-DR-01). La resiliencia agrega la caída de uno de los dos gateways de frío de Talca: el otro lee ambas cámaras y el bloqueo térmico local actúa en menos de cinco segundos (SD4, sección 4.1.11, ADR-22). El T-13, sección 7.5, asigna cada protocolo a su campaña.
 
 **Carga derivada del dimensionamiento.** La carga de prueba no se elige: se deriva del SD4, Tabla 33, aplicando el factor 1,5 que exigen el Art. 24 y el RT-09.06. La Tabla 9.9 muestra la derivación.
 
@@ -354,7 +356,7 @@ Respecto de la BTT, se suman dos pruebas, adicionales a los diez tipos: el perfi
 
 La prueba de la ventana de despacho tiene un criterio adicional: cero minutos de indisponibilidad, porque el Caso no admite ninguno entre 05:30 y 07:00 (RT-10.05). El escalón de 3× comprueba el crecimiento que exige el RT-09.03; el de 4× busca el punto de quiebre y verifica que, al superarse la capacidad, la solución encole y avise en vez de perder transacciones (RT-09.08).
 
-**Automatización.** La automatización es la regla; una prueba es manual solo si exige el juicio de una persona, una condición física o un tercero. Con la prioridad de los 262 requisitos funcionales y no funcionales del SD3 (56 críticos, 163 altos y 43 medios), los 356 RT ofertados en estado «Cumple» o «Cumple parcialmente» del T-12 y siete casos por cada una de las 15 integraciones, el catálogo inicial suma 1.316 casos (T-13, sección 8.2). Con tres supuestos de LafroX (80 % de casos automatizados, 30 segundos por caso automático y 15 minutos por caso manual), la regresión completa tiene unos 1.053 casos; a 30 segundos cada uno, tarda 8,8 horas en un ejecutor y 4,4 en dos ejecutores paralelos, y cabe en una noche antes de cada promoción a Preproducción. Los 263 casos manuales requieren unas 65,8 HH por ciclo, a 15 minutos cada uno.
+**Automatización.** La automatización es la regla; una prueba es manual solo si exige el juicio de una persona, una condición física o un tercero. Con la prioridad de los 262 requisitos funcionales y no funcionales del SD3 (56 críticos, 163 altos y 43 medios), los 356 RT ofertados en estado «Cumple» o «Cumple parcialmente» del T-12 y siete casos por cada una de las 15 integraciones, el catálogo inicial suma 1.316 casos (T-13, sección 8.2). Con los parámetros de diseño del plan (80 % de casos automatizados, 30 segundos por caso automático y 15 minutos por caso manual), la regresión completa tiene unos 1.053 casos; a 30 segundos cada uno, tarda 8,8 horas en un ejecutor y 4,4 en dos ejecutores paralelos, y cabe en una noche antes de cada promoción a Preproducción. Los 263 casos manuales requieren unas 65,8 HH por ciclo, a 15 minutos cada uno.
 
 ### 9.2.4 Datos de prueba
 
@@ -563,9 +565,9 @@ La vista general muestra dos concentraciones de calidad. La primera son las cert
 | 6 · jul 2027 | Puertas automáticas activas en la cadena de integración (1.5.2) | **H3** |
 | 7 · ago 2027 | — |  |
 | 8 · sep 2027, congelado | — |  |
-| 9 · oct 2027 | Integración y regresión (3.8.1); inicio de la certificación (3.8.2 a 3.8.8); ensayo de migración 1 (3.7.2) |  |
-| 10 · nov 2027 | Acta de certificación (3.8.7) | **H4** |
-| 11 · dic 2027, congelado | Ensayo de reversión (4.1.2); ensayo de migración 2 en Preproducción (3.7.3 y 3.7.4) |  |
+| 9 · oct 2027 | Integración y regresión (3.8.1), entregable del H4; inicio de la certificación (3.8.2 a 3.8.8); ensayo de migración 1 (3.7.2) |  |
+| 10 · nov 2027 | Revisión del H4 por el CLIENTE; acta de certificación (3.8.7), entregable del H5 | **H4** |
+| 11 · dic 2027, congelado | Ensayo de reversión (4.1.2); ensayo de migración 2 en Preproducción (3.7.3 y 3.7.4); revisión del H5 por el CLIENTE |  |
 | 12 · ene 2028 | Acta de conciliación y corte (3.7.5) | **H5** |
 
 **Tabla 9.12 — Actividades de calidad mes a mes en las marchas blancas, la Etapa 2 y la entrada a la Operación, meses 13 a 21. Fuente: elaboración a partir de las BA, Formulario E-25; del Caso, RT-10.05, y de los Formularios T-14 y T-15, sección 6.1.**
@@ -573,20 +575,20 @@ La vista general muestra dos concentraciones de calidad. La primera son las cert
 | Mes | Actividades de calidad que empiezan o se entregan (paquete EDT) | Hito |
 |---|---|---|
 | **Fase** | Etapa 1 · marcha blanca y Etapa 2 · desarrollo, meses 13 a 15. Continuas: indicadores diarios y restauración mensual de respaldos (4.2.1); INN-02 hasta el mes 15 | |
-| 13 · feb 2028 | Inicio de la marcha blanca de la Etapa 1 (4.2.1) | **H6** |
-| 14 · mar 2028 | — | **H8** |
-| 15 · abr 2028 | Cierre de INN-02 en la implementación (3.10.2.4) |  |
-| **Fase** | Etapa 1 en producción y Etapa 2 · desarrollo, meses 16 a 18. Continuas: restauración mensual; evaluadores subcontratados | |
-| 16 · may 2028 | Acta de paso a producción de la Etapa 1 (4.2.3); integración y regresión E2 (3.9.1); certificación E2 (3.9.2 a 3.9.7) | **H7** |
-| 17 · jun 2028 | Acta de certificación E2 (3.9.6) | **H9** |
-| 18 · jul 2028 | — | **H10** |
+| 13 · feb 2028 | Puerta G5: entrada de la Etapa 1 a Producción; inicio de la marcha blanca (4.2.1) | **H6** |
+| 14 · mar 2028 | Línea base de alcance de la Etapa 2 con su matriz de trazabilidad (1.2.5) | **H8** |
+| 15 · abr 2028 | Cierre de INN-02 en la implementación (3.10.2.4); primer tramo del OTIF (R18-04) |  |
+| **Fase** | Etapa 1 en producción y Etapa 2 · desarrollo, meses 16 a 18. Continuas: restauración mensual (4.2.2); evaluadores subcontratados | |
+| 16 · may 2028 | Acta de paso a producción de la Etapa 1 (4.2.3); integración y regresión E2 (3.9.1), entregable del H9; certificación E2 (3.9.2 a 3.9.7), con el perfil operacional del alcance cambiado | **H7** |
+| 17 · jun 2028 | Revisión del H9 por el CLIENTE; acta de certificación E2 (3.9.6), entregable del H10 | **H9** |
+| 18 · jul 2028 | Revisión del H10 por el CLIENTE | **H10** |
 | **Fase** | Etapa 2 · marcha blanca, meses 19 y 20. Continuas: indicadores diarios y restauración mensual (4.3.1) | |
-| 19 · ago 2028 | Inicio de la marcha blanca en convivencia con la Etapa 1 (4.3.1) | **H11** |
+| 19 · ago 2028 | Puerta G5: entrada de la Etapa 2 a Producción; inicio de la marcha blanca en convivencia con la Etapa 1 (4.3.1); segundo tramo del OTIF | **H11** |
 | 20 · sep 2028, congelado | Marcha blanca con el peak de septiembre |  |
 | **Fase** | Operación, desde el mes 21 | |
 | 21 · oct 2028 | Acta de aceptación final (4.3.3); primera recuperación con conmutación real (8.1.3); restauración mensual (8.1.6) | **H12** |
 
-Las dos tablas muestran que la carga de calidad se concentra en los meses 9 a 12 y 16 a 18, que son los meses en que entra el refuerzo de evaluadores subcontratados, y que ninguno de los tres meses congelados tiene una certificación.
+Las dos tablas muestran que las campañas de prueba se concentran en los meses 9 y 10 y 16 y 17, que los meses 11, 12 y 18 se dedican a la revisión del CLIENTE y a las eventuales subsanaciones, y que ninguno de los tres meses congelados tiene una certificación.
 
 Ninguna certificación cae en un congelamiento. La ventana total de 3.8.5 incluye preparación/análisis; su intervención real se ejecuta del 26 al 29 de octubre de 2027, fuera del feriado del 1 de noviembre y de los primeros tres hábiles (2, 3 y 4). Las pruebas de la Etapa 1 terminan en noviembre de 2027, antes de diciembre; los ensayos de migración que coinciden con diciembre corren en Preproducción y no tocan Producción. La marcha blanca de la Etapa 2 coincide con el peak de septiembre de 2028 y con su congelamiento: es la exigencia más dura sobre la solución, porque se mide con el mayor volumen del año (Caso, cap. B, sección B.2). Durante ese congelamiento solo se corrige un defecto crítico o alto que impediría cumplir el Art. 17.3, por el procedimiento de cambio de emergencia del SD4, sección 4.2.4.1.4, con autorización escrita de la Contraparte Técnica y después de pasar G0 a G4 y repetir en Preproducción la prueba afectada.
 
@@ -605,7 +607,7 @@ Ninguna certificación cae en un congelamiento. La ventana total de 3.8.5 incluy
 | H9 (17) | Integración y regresión de la Etapa 2 | 19 | 19 − 10 = 9 |
 | H10 (18) | Certificación de la Etapa 2 | 23 | 23 − 10 = 13 |
 
-La tabla mide margen interno tras una subsanación objetivo; no prueba que alcance para ambos ciclos de revisión del CLIENTE. H1/H8 tienen reserva efectiva de cinco/cuatro días, menor que diez días, por lo que emplean borrador progresivo y objetivos internos de cinco/cuatro días sin reducir los diez contractuales (T-17, 2.3). No se garantiza el acta dentro del mes si aparecen observaciones: se escala y registra el efecto sin desplazar automáticamente obligaciones posteriores. La segunda revisión tampoco se presume instantánea. H6/H11 verifican preparación técnica; H7/H12 cierran con las seis condiciones del Art. 17.3.
+La tabla mide margen interno tras una subsanación objetivo; no prueba que alcance para ambos ciclos de revisión del CLIENTE. H1/H8 tienen reserva efectiva de cinco/cuatro días, menor que diez días, por lo que emplean borrador progresivo y objetivos internos de cinco/cuatro días sin reducir los diez contractuales (T-17, 2.3). No se garantiza el acta dentro del mes si aparecen observaciones: se escala y registra el efecto sin desplazar automáticamente obligaciones posteriores. La segunda revisión tampoco se presume instantánea. H6/H11 son la puerta G5 de entrada a Producción; H7/H12 cierran con las seis condiciones del Art. 17.3.
 
 **Repetición de una prueba tras una corrección.** Si una corrección durante la marcha blanca modifica un componente que cubrió una prueba de certificación, el Líder de Calidad repite esa prueba sobre la versión corregida antes de promoverla. Su alcance, HH por especialidad y ventana se estiman a partir del defecto y se autorizan por control de cambios. Primero se comprueba capacidad disponible sin consumir la cobertura de servicio ni la reserva protegida de otra etapa; si no alcanza, se acuerdan recursos y medidas correctivas. No se garantiza que baste el paquete original ni se presupone una reserva de un riesgo concreto.
 
@@ -620,7 +622,7 @@ Durante los 36 meses de Operación, las Bases exigen pruebas con frecuencia mín
 | Recuperación con conmutación real | Dos veces al año (RT-07.07) | 21, 27, 33, 39, 45, 51 y 54 | 8.1.3 |
 | Resiliencia por inyección de fallas | Una vez por semestre (RT-10.07) | 26, 32, 38, 44, 50 y 55 | 8.2.2 |
 | Intrusión por un tercero | Anual (RT-11.20) | 28, 40 y 52 | 8.2.2 |
-| Restauración de respaldos | Mensual (RT-07.12) | 13 a 20 (marcha blanca) y 21 a 56 | 4.2.1; 4.3.1; 8.1.6 |
+| Restauración de respaldos | Mensual (RT-07.12) | 13 a 20 y 21 a 56 | 4.2.1; 4.2.2; 4.3.1; 8.1.6 |
 
 Las cantidades coinciden con los entregables del T-14: siete pruebas de recuperación, seis de resiliencia, tres de intrusión y 36 restauraciones. La restauración mensual empieza antes, en el mes 13, porque desde la marcha blanca hay datos productivos: en los meses 13–15 la ejecuta SRE en 4.2.1, en 16–18 en el soporte puente 4.2.2 y en 19–20 en 4.3.1; esos ocho informes y sus 128 HH son distintos de los 36 informes de 8.1.6, con el mismo procedimiento de 8.1.6. Recuperación y resiliencia mantienen una separación máxima de seis meses; intrusión mantiene periodicidad anual (meses 28, 40 y 52). Las resiliencias de los meses 32 y 44 caen en septiembre y por eso se ejecutan en Preproducción, que no está congelada. Cada prueba produce un informe con el resultado medido, la comparación con su umbral y el plan de corrección de las brechas (RT-07.07); las brechas entran al registro de deuda técnica (8.2.4) y a la gestión de la capacidad (8.4.1).
 
