@@ -433,6 +433,8 @@ INPUT .\lafrox-portada.tex
 INPUT .\lafrox-portada.tex
 INPUT .\sd9-comun.tex
 INPUT .\sd9-comun.tex
+INPUT C:\Users\henri\AppData\Local\Programs\MiKTeX\tex\latex\base\flafter.sty
+INPUT C:\Users\henri\AppData\Local\Programs\MiKTeX\tex\latex\base\flafter.sty
 INPUT .\LAFROX-Formulario-T-17.aux
 INPUT .\LAFROX-Formulario-T-17.aux
 OUTPUT LAFROX-Formulario-T-17.aux

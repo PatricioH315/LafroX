@@ -36,9 +36,9 @@ El Líder de Calidad no responde ante el Líder de Desarrollo. Puede vetar una p
 
 La Figura 9.1 presenta el marco completo, desde las normas hasta la aceptación.
 
-\figuralafrox{0.969}{diagramas/Fig_9-1_Marco_Calidad.pdf}{Marco de aseguramiento de la calidad. Fuente: BA, Arts. 4.3 y 18.2; PMI (2017, pp. 271–306).}{fig:sd9-1}
+\figuralafrox{0.969}{diagramas/Fig_9-1_Marco_Calidad.pdf}{Marco de aseguramiento de la calidad. Fuente: elaboración propia a partir de las BA, Arts. 4.3 y 18.2, y de PMI (2017, pp. 271–306).}{fig:sd9-1}
 
-Todo el marco converge en una sola salida: la evidencia que la Contraparte Técnica revisa para firmar cada acta (BA, Art. 18.2). Cada norma gobierna un objeto distinto y ninguna se queda en una mención: cada una se traduce en métricas con umbral, y esas métricas se aplican en una puerta o en una prueba. Las métricas no llegan al CLIENTE como declaraciones, sino como resultados de ejecución en el expediente.
+Todo el marco converge en una sola salida: la evidencia que la Contraparte Técnica revisa para firmar cada acta (BA, Art. 18.2). Cada norma gobierna un objeto distinto y ninguna se queda en una mención: cada una se traduce en métricas con umbral, y esas métricas se aplican en una puerta o en una prueba. Las métricas no llegan al CLIENTE como declaraciones, sino como resultados de ejecución en el expediente. Las puertas G0 a G6 que aparecen en la figura son los siete puntos de control de la cadena de entrega, desde el computador del desarrollador hasta la operación; la sección 9.2.1 las describe una por una.
 
 \subsection{Estándares aplicados y forma de acreditarlos}
 
@@ -64,7 +64,7 @@ Cada umbral se escribe como un requisito verificable: ante un estímulo, en una 
 
 La Figura 9.2 presenta las ocho características con el umbral que las hace exigibles en Puelche.
 
-\figuralafrox{0.969}{diagramas/Fig_9-2_Modelo_ISO25010.pdf}{Modelo de calidad del producto aplicado a la solución. Fuente: ISO \& IEC (2011); umbrales de las Bases y del SD4.}{fig:sd9-2}
+\figuralafrox{0.969}{diagramas/Fig_9-2_Modelo_ISO25010.pdf}{Modelo de calidad del producto aplicado a la solución. Fuente: elaboración propia a partir de ISO \& IEC (2011) y de los umbrales de las Bases y del SD4.}{fig:sd9-2}
 
 Ninguna de las ocho características queda con un valor genérico: cada una tiene al menos una métrica que nace de la operación de Puelche. La Tabla 9.3 resume la métrica principal de cada una. El Anexo 9.A detalla las 42 métricas por subcaracterística, con método de verificación y paquete de la EDT, e incluye cuatro métricas de calidad de datos según ISO/IEC 25012 (ISO \& IEC, 2008).
 
@@ -92,7 +92,7 @@ El modelo se usa para mejorar el proceso durante el contrato. El Líder de Calid
 
 \subsection{Métricas de código con umbral bloqueante}
 
-La mantenibilidad se juzga sobre el código mientras se escribe. La Tabla 9.4 fija los umbrales que bloquean una fusión en los tres lenguajes de la solución: PHP con Laravel en el monolito modular, Kotlin en la aplicación Android y TypeScript con Angular en consolas y portales (SD4, sección 4.1.1).
+La mantenibilidad se juzga sobre el código mientras se escribe. La columna «Puerta» de la Tabla 9.4 indica el punto de control donde se aplica cada umbral: G2 es la integración continua, que se ejecuta sobre cada cambio (sección 9.2.1). La Tabla 9.4 fija los umbrales que bloquean una fusión en los tres lenguajes de la solución: PHP con Laravel en el monolito modular, Kotlin en la aplicación Android y TypeScript con Angular en consolas y portales (SD4, sección 4.1.1).
 
 \begin{tablalafrox}{Métricas de código con umbral bloqueante. Fuente: BA, Art. 24; SD1; Formulario T-10.}{tab:sd9-4}{>{\hsize=1.685\hsize\linewidth=\hsize}Y >{\hsize=0.501\hsize\linewidth=\hsize}Y >{\hsize=0.415\hsize\linewidth=\hsize}Y >{\hsize=1.399\hsize\linewidth=\hsize}Y}
   {\cab{Métrica} & \cab{Umbral bloqueante} & \cab{Puerta} & \cab{Origen del umbral}}
@@ -117,6 +117,7 @@ El código puede cumplir sus umbrales y el proceso puede seguir dejando escapar 
 Defectos escapados & Defectos críticos o altos hallados en un ambiente posterior al que debió detectarlos / total de críticos o altos & 0 en Producción durante la marcha blanca & BA, Art. 17.3 \\
 Densidad de defectos & Defectos confirmados / casos ejecutados, por módulo & Se mide y se usa para priorizar & Propuesta de LafroX \\
 Observaciones repetidas del CLIENTE & Observaciones de la misma naturaleza en una segunda presentación & 0 & BA, Art. 18.3 \\
+Frecuencia de despliegue & Despliegues a producción por período habilitado & Quincenal & RT-04.12; SD4 \\
 Tasa de cambios fallidos & Despliegues que requieren reversión o corrección / despliegues del mes & ≤ 5 \% & BA, Art. 78.3; SD4 \\
 Tiempo del cambio a producción & Días hábiles habilitados desde que se confirma el cambio & ≤ 5 días & RT-04.12; SD4 \\
 Tiempo medio de restauración de incidentes críticos & Suma de tiempos de restauración / incidentes críticos del mes & ≤ 4 h & BA, Art. 78.3 \\
@@ -145,7 +146,7 @@ Esta sección describe cómo se aplican los umbrales de 9.1. Las puertas y la re
 
 Una puerta de calidad es un punto del recorrido de un cambio donde un criterio objetivo decide si avanza. La Figura 9.3 presenta las siete puertas sobre la cadena de entrega del SD4, desde el computador del desarrollador hasta la operación.
 
-\figuralafrox{0.951}{diagramas/Fig_9-3_Puertas_Calidad.pdf}{Puertas de calidad en la cadena de entrega. Fuente: SD4, sección 4.2.4.1, y Formulario T-10.}{fig:sd9-3}
+\figuralafrox{0.951}{diagramas/Fig_9-3_Puertas_Calidad.pdf}{Puertas de calidad en la cadena de entrega. Fuente: elaboración propia a partir del SD4, sección 4.2.4.1, y del Formulario T-10.}{fig:sd9-3}
 
 Las puertas están ordenadas por costo: el control es más barato cuanto antes ocurre. G0 a G2 se ejecutan en minutos sobre cada cambio; G5 se ejecuta dos veces en el contrato y exige semanas de prueba. La Tabla 9.7 resume qué bloquea cada puerta y quién puede levantarla; el Anexo 9.B detalla las reglas y herramientas.
 
@@ -175,7 +176,7 @@ La estrategia sigue los tres niveles de proceso de ISO/IEC/IEEE 29119-2. En el n
 
 \textbf{Niveles, tipos y ambientes.} La Figura 9.4 ubica cada nivel y tipo de prueba en el ambiente donde se ejecuta.
 
-\figuralafrox{0.969}{diagramas/Fig_9-4_Niveles_Ambientes.pdf}{Niveles y tipos de prueba por ambiente. Fuente: SD4, Tabla 12, y BTT, sección 4.1.}{fig:sd9-4}
+\figuralafrox{0.969}{diagramas/Fig_9-4_Niveles_Ambientes.pdf}{Niveles y tipos de prueba por ambiente. Fuente: elaboración propia a partir del SD4, Tabla 12, y de las BTT, sección 4.1.}{fig:sd9-4}
 
 La figura sigue la regla de los ambientes del SD4: el software se prueba en un ambiente cada vez más parecido a producción y lo que se promueve es la misma imagen. Desarrollo concentra las pruebas rápidas y aisladas; QA, las de integración y regresión con datos controlados; Preproducción, equivalente a producción en topología y configuración (RT-04.02), las que dependen de la escala y de las fallas. Las pruebas propias del caso, como el turno sin señal y la cámara de congelado, no caben en un ambiente de nube y se ejecutan en terreno con dispositivos reales.
 
@@ -220,7 +221,7 @@ Ningún ambiente no productivo contiene datos productivos reales sin anonimizaci
 
 La Figura 9.5 muestra de dónde vienen los datos de cada ambiente.
 
-\figuralafrox{0.951}{diagramas/Fig_9-5_Datos_Prueba.pdf}{Origen y control de los datos de prueba. Fuente: SD4, sección 4.2.4.1, y SD5, sección 5.3.}{fig:sd9-5}
+\figuralafrox{0.951}{diagramas/Fig_9-5_Datos_Prueba.pdf}{Origen y control de los datos de prueba. Fuente: elaboración propia a partir del SD4, sección 4.2.4.1, y del SD5, sección 5.3.}{fig:sd9-5}
 
 Los ambientes de prueba se alimentan de dos fuentes. Los datos sintéticos se generan desde la volumetría del Caso, sección 14.1, y respetan las reglas del negocio: lotes con vencimiento, productos refrigerados con su rango térmico y clientes con crédito. Así, la prueba de carga opera sobre un volumen comparable al del peak. Los datos históricos se usan solo en los ensayos de migración, después de anonimizarlos y de verificar con Amazon Macie que no queden datos personales. QA restituye sus juegos a un estado conocido antes de cada ciclo, para que un fallo sea reproducible. Esa misma propiedad usa la innovación INN-02 para convertir un incidente de terreno en una prueba de regresión permanente (SD13, sección 13.2). El T-13, sección 5, especifica cada juego.
 
@@ -228,13 +229,13 @@ Los ambientes de prueba se alimentan de dos fuentes. Los datos sintéticos se ge
 
 La verificación comprueba que cada producto cumpla su especificación; la validación comprueba que la solución resuelva el problema de Puelche. El PMBOK separa ambos momentos: controlar la calidad lo hace el equipo y produce entregables verificados; validar el alcance lo hace el cliente y produce entregables aceptados (PMI, 2017, p. 305). La Figura 9.6 empareja cada artefacto de diseño con la prueba que lo verifica o lo valida y con el hito que lo cierra.
 
-\figuralafrox{0.969}{diagramas/Fig_9-6_Modelo_V.pdf}{Verificación y validación por nivel y por hito. Fuente: Formulario E-25.}{fig:sd9-6}
+\figuralafrox{0.969}{diagramas/Fig_9-6_Modelo_V.pdf}{Verificación y validación por nivel y por hito. Fuente: elaboración propia a partir del Formulario E-25.}{fig:sd9-6}
 
 La certificación técnica de cada etapa (H5 y H10) no basta para aceptar los resultados del negocio. Los dieciséis resultados del Caso, capítulo 18, se aceptan con medición en operación real durante las marchas blancas (H7 y H12), conforme al Formulario T-17, sección 5. La aceptación no libera de responsabilidad por defectos posteriores (BA, Art. 18.4).
 
 \textbf{Trazabilidad.} La cadena que exige el Caso, sección 17.1, va del origen al criterio de aceptación: origen, requisito, componente, paquete de la EDT, prueba y criterio. El RT-04.04 le agrega el cambio de código y el despliegue. La Figura 9.7 presenta la cadena con un requisito crítico como ejemplo: la lista de clientes afectados por un lote en menos de dos horas.
 
-\figuralafrox{0.966}{diagramas/Fig_9-7_Cadena_Trazabilidad.pdf}{Cadena de trazabilidad de extremo a extremo. Fuente: Caso, sección 17.1, y RT-04.04.}{fig:sd9-7}
+\figuralafrox{0.966}{diagramas/Fig_9-7_Cadena_Trazabilidad.pdf}{Cadena de trazabilidad de extremo a extremo. Fuente: elaboración propia a partir del Caso, sección 17.1, y del RT-04.04.}{fig:sd9-7}
 
 Ningún eslabón de la cadena es nuevo: cada uno se apoya en un identificador que ya existe en la propuesta. La matriz se lee en dos sentidos: hacia atrás explica por qué existe cada componente; hacia adelante, dónde quedó implementado y probado cada requisito. Cada caso de prueba lleva el identificador de su requisito, cada solicitud de fusión cita el requisito o la incidencia que atiende, y cada despliegue registra el digest de su imagen. Con esos enlaces, la matriz se genera desde el repositorio y el historial de la cadena de integración, y no se mantiene a mano. La meta es que el 100 \% de los requisitos ofertados tenga al menos una prueba aprobada antes de su hito. Los 18 RT en estado «No cumple» quedan en la matriz sin prueba, para que la Contraparte Técnica vea la brecha en lugar de un vacío. El Anexo 9.D muestra el tramo final de la cadena para los dieciséis resultados del caso.
 
@@ -250,7 +251,7 @@ Controlar la calidad es comparar el resultado con su criterio y actuar cuando no
 
 \textbf{Ciclo de mejora.} Las acciones siguen el ciclo planificar-hacer-verificar-actuar (PMI, 2017, p. 296). La Figura 9.8 muestra el ciclo y sus entradas.
 
-\figuralafrox{0.969}{diagramas/Fig_9-8_Ciclo_Mejora.pdf}{Ciclo de mejora de la calidad. Fuente: PMI (2017, pp. 296–297).}{fig:sd9-8}
+\figuralafrox{0.969}{diagramas/Fig_9-8_Ciclo_Mejora.pdf}{Ciclo de mejora de la calidad. Fuente: elaboración propia a partir de PMI (2017, pp. 296–297).}{fig:sd9-8}
 
 El ciclo tiene dos salidas que el PMBOK exige y que suelen faltar en un plan de calidad. La primera es el registro de lecciones aprendidas, que se alimenta de cada acción cerrada y de una retrospectiva al término de cada certificación (H5 y H10) y de cada marcha blanca (H7 y H12); cada retrospectiva revisa qué funcionó, qué se debe cambiar y qué se lleva a la Etapa 2 o a la Operación (PMI, 2017, p. 305). La segunda es la solicitud de cambio: si una acción de mejora toca la línea base del alcance, del cronograma o de un umbral, pasa por el control integrado de cambios del Formulario T-9 (PMI, 2017, p. 296). Una acción se cierra solo cuando el comité siguiente comprueba su eficacia con el mismo criterio que detectó la desviación.
 
@@ -282,7 +283,7 @@ La tabla suma las mismas 10.528 HH de conformidad del costo de la calidad (9.1.6
 
 La Figura 9.9 ubica las actividades de calidad en los 56 meses del contrato, junto con los congelamientos del Caso.
 
-\figuralafrox{0.991}{diagramas/Fig_9-9_Calidad_Cronograma.pdf}{Actividades de calidad en el cronograma. Fuente: Formulario T-15, sección 6.1, y Caso, RT-10.05.}{fig:sd9-9}
+\figuralafrox{0.991}{diagramas/Fig_9-9_Calidad_Cronograma.pdf}{Actividades de calidad en el cronograma. Fuente: elaboración propia a partir del Formulario T-15, sección 6.1, y del Caso, RT-10.05.}{fig:sd9-9}
 
 Ninguna certificación cae en un congelamiento. Las pruebas de la Etapa 1 terminan en noviembre de 2027, antes de diciembre; los ensayos de migración que coinciden con diciembre corren en Preproducción y no tocan Producción. La marcha blanca de la Etapa 2 coincide con el peak de septiembre de 2028 y con su congelamiento: es la exigencia más dura sobre la solución, porque se mide con el mayor volumen del año (Caso, cap. B, sección B.2). Durante ese congelamiento solo se corrige un defecto crítico o alto que impediría cumplir el Art. 17.3, por el procedimiento de cambio de emergencia del SD4, sección 4.2.4.1.4, con autorización escrita de la Contraparte Técnica y después de pasar G0 a G4 y repetir en Preproducción la prueba afectada.
 
@@ -300,7 +301,7 @@ H9 (17) & Integración y regresión de la Etapa 2 & 21 & 21 \ensuremath{-} 10 = 
 H10 (18) & Certificación de la Etapa 2 & 25 & 25 \ensuremath{-} 10 = 15 \\
 \end{tablalafrox}
 
-Ningún hito tiene holgura negativa. Los dos más ajustados son el H1 y el H8, cuyas reservas son menores que los 10 días de subsanación del Art. 18.3. Por eso su versión preliminar se revisa con la Contraparte Técnica una semana antes de la entrega formal, y sus subsanaciones se comprometen en 5 y 4 días (T-15, sección 5.5; SD8, R8-12). La única oportunidad de subsanación es también la razón de la lista de verificación del T-17, sección 3.3: una segunda presentación con observaciones de la misma naturaleza es atraso imputable. Los hitos H6, H7, H11 y H12 no se habilitan con un documento sino con la operación supervisada, y se aceptan con las seis condiciones del Art. 17.3 (T-17, sección 4.3).
+Ningún hito tiene holgura negativa. Los dos más ajustados son el H1 y el H8, cuyas reservas son menores que los 10 días de subsanación del Art. 18.3. Por eso su versión preliminar se revisa con la Contraparte Técnica una semana antes de la entrega formal, y sus subsanaciones se comprometen en 5 y 4 días (T-15, sección 5.5; SD8, riesgo R8-12, contrapartes del CLIENTE no disponibles). La única oportunidad de subsanación es también la razón de la lista de verificación del T-17, sección 3.3: una segunda presentación con observaciones de la misma naturaleza es atraso imputable. Los hitos H6, H7, H11 y H12 no se habilitan con un documento sino con la operación supervisada, y se aceptan con las seis condiciones del Art. 17.3 (T-17, sección 4.3).
 
 \textbf{Repetición de una prueba tras una corrección.} Si una corrección durante la marcha blanca modifica un componente que cubrió una prueba de certificación, el Líder de Calidad repite esa prueba sobre la versión corregida antes de promoverla. La repetición no supera las horas del paquete original y se financia con la reserva de contingencia del SD8: la del riesgo R8-31 si la repetición deriva de observaciones a una certificación, y la del R8-18 si deriva de una corrección en la marcha blanca.
 
@@ -313,14 +314,13 @@ Durante los 36 meses de Operación, las Bases exigen pruebas con frecuencia mín
 Recuperación con conmutación real & Dos veces al año (RT-07.07) & 21, 27, 33, 39, 45, 51 y 54 & 8.1.3 \\
 Resiliencia por inyección de fallas & Una vez por semestre (RT-10.07) & 26, 32, 38, 44, 50 y 55 & 8.2.2 \\
 Intrusión por un tercero & Anual (RT-11.20) & 28, 40 y 52 & 8.2.2 \\
-Restauración de respaldos & Mensual (RT-07.12) & 21 a 56 & 8.1.6 \\
+Restauración de respaldos & Mensual (RT-07.12) & 13 a 20 (marcha blanca) y 21 a 56 & 4.2.1; 4.3.1; 8.1.6 \\
 \end{tablalafrox}
 
-Las cantidades coinciden con los entregables del T-14: siete pruebas de recuperación, seis de resiliencia, tres de intrusión y 36 restauraciones. Cada tipo mantiene una separación máxima de seis meses. Las resiliencias de los meses 32 y 44 caen en septiembre y por eso se ejecutan en Preproducción, que no está congelada. Cada prueba produce un informe con el resultado medido, la comparación con su umbral y el plan de corrección de las brechas (RT-07.07); las brechas entran al registro de deuda técnica (8.2.4) y a la gestión de la capacidad (8.4.1).
+Las cantidades coinciden con los entregables del T-14: siete pruebas de recuperación, seis de resiliencia, tres de intrusión y 36 restauraciones. La restauración mensual empieza antes, en el mes 13, porque desde la marcha blanca hay datos productivos: en los meses 13 a 20 la ejecuta SRE dentro de los paquetes 4.2.1 y 4.3.1, con el mismo procedimiento de 8.1.6. Cada tipo mantiene una separación máxima de seis meses. Las resiliencias de los meses 32 y 44 caen en septiembre y por eso se ejecutan en Preproducción, que no está congelada. Cada prueba produce un informe con el resultado medido, la comparación con su umbral y el plan de corrección de las brechas (RT-07.07); las brechas entran al registro de deuda técnica (8.2.4) y a la gestión de la capacidad (8.4.1).
 
 \section*{Referencias}
 \addcontentsline{toc}{section}{Referencias}
-\markboth{Referencias}{}
 
 Las fuentes citadas en este subdocumento se listan en formato APA 7.ª edición. Las Bases se citan en el texto con su documento y el artículo, capítulo, sección o código del requisito.
 
@@ -347,7 +347,6 @@ Las fuentes citadas en este subdocumento se listan en formato APA 7.ª edición.
 
 \section*{Declaración de uso de IA}
 \addcontentsline{toc}{section}{Declaración de uso de IA}
-\markboth{Declaración de uso de IA}{}
 
 El grupo usó inteligencia artificial generativa como apoyo en la redacción y en la verificación cruzada de cifras de este subdocumento, de sus anexos y de sus formularios. Las decisiones, las cifras y los cálculos derivan de las Bases y de los demás subdocumentos de la propuesta. La revisión humana de cada sección la registran los integrantes que la efectuaron.
 

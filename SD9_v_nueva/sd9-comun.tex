@@ -17,6 +17,43 @@
   \fontsize{9.5pt}{12.5pt}\selectfont
   \ifLFXsincortes\hyphenpenalty=10000\exhyphenpenalty=10000\fi}
 
+%% Forma (BA Art. 40.2). Media firma del representante legal en el extremo
+%% inferior derecho de cada pagina: filete de firma y rotulo sobre el folio.
+%% La clase declara la opcion [firma] pero su pie derecho solo dibuja el
+%% folio. Esta redefinicion debe llevarse a lafrox.cls en la rama base
+%% (rama-formato-Latex-base) para que todos los subdocumentos la reciban.
+\renewcommand{\LFXpiederecho}{%
+  \begingroup\LFXpiebase
+  \begin{tabular}[b]{@{}r@{}}
+    {\color{lafroxGris}\rule{3.4cm}{0.4pt}}\\[-1pt]
+    {\LFXchico Media firma: \LFXrepresentante}\\
+    {\intermedium\fontsize{9pt}{11pt}\selectfont\color{lafroxTinta}\LFXfoliotexto}
+  \end{tabular}%
+  \endgroup}
+
+%% Portada: raya tipografica real. El valor por defecto de la clase usa
+%% "---", que la tipografia de la portada no convierte en raya.
+\datoslafrox{sobre = {Sobre N.\textdegree{} 2 — Oferta Técnica}}
+
+%% Tablas del cuerpo enteras en una pagina (Aclaraciones, seccion 5). En el
+%% cuerpo (\LFXsincortestrue) todas las tablas caben en una pagina, asi que
+%% tablalafrox se compone como flotante con tabularx: LaTeX la ubica donde
+%% cabe, sin partirla y sin dejar huecos. flafter impide que una tabla o una
+%% figura aparezca antes del punto del texto que la cita. Mismo estilo de la
+%% clase: titulo arriba, \toprule redefinido con filetes entre filas.
+\RequirePackage{flafter}
+\newcommand{\LFXtablasflotantes}{%
+  \RenewDocumentEnvironment{tablalafrox}{m m m m +b}{%
+    \begin{table}[htbp]
+      \LFXcuerpotabla
+      \caption{##1}\label{##2}
+      \begin{tabularx}{\textwidth}{##3}
+        \toprule ##4 \\ \midrule
+        ##5
+        \bottomrule
+      \end{tabularx}
+    \end{table}}{}}
+
 %% tablasimple: tabla sin titulo (anexos y formularios), mismo estilo que
 %% tablalafrox, con cabecera repetida y filetes entre filas.
 \NewDocumentEnvironment{tablasimple}{m m +b}{%

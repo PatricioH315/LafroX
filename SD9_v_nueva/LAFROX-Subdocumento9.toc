@@ -9,18 +9,18 @@
 \contentsline {subsection}{\numberline {9.1.3}Modelo de calidad del producto según ISO/IEC 25010}{9}{subsection.9.1.3}%
 \contentsline {subsection}{\numberline {9.1.4}Modelos de madurez}{10}{subsection.9.1.4}%
 \contentsline {subsection}{\numberline {9.1.5}Métricas de código con umbral bloqueante}{11}{subsection.9.1.5}%
-\contentsline {subsection}{\numberline {9.1.6}Métricas de proceso y costo de la calidad}{12}{subsection.9.1.6}%
+\contentsline {subsection}{\numberline {9.1.6}Métricas de proceso y costo de la calidad}{11}{subsection.9.1.6}%
 \contentsline {section}{\numberline {9.2}Estrategia de Aseguramiento de Calidad}{14}{section.9.2}%
 \contentsline {subsection}{\numberline {9.2.1}Puertas de calidad}{14}{subsection.9.2.1}%
-\contentsline {subsection}{\numberline {9.2.2}Revisión por pares y análisis estático y dinámico}{16}{subsection.9.2.2}%
-\contentsline {subsection}{\numberline {9.2.3}Estrategia de pruebas conforme a ISO/IEC/IEEE 29119}{17}{subsection.9.2.3}%
-\contentsline {subsection}{\numberline {9.2.4}Datos de prueba}{20}{subsection.9.2.4}%
-\contentsline {subsection}{\numberline {9.2.5}Verificación, validación y trazabilidad}{22}{subsection.9.2.5}%
-\contentsline {subsection}{\numberline {9.2.6}Control de la calidad y mejora continua}{24}{subsection.9.2.6}%
-\contentsline {section}{\numberline {9.3}Alineación con Plan de Trabajo}{25}{section.9.3}%
-\contentsline {subsection}{\numberline {9.3.1}Actividades de calidad en la EDT}{26}{subsection.9.3.1}%
-\contentsline {subsection}{\numberline {9.3.2}Calidad en el cronograma y en los hitos}{26}{subsection.9.3.2}%
-\contentsline {subsection}{\numberline {9.3.3}Pruebas periódicas durante la Operación}{28}{subsection.9.3.3}%
-\contentsline {section}{Referencias}{29}{table.9.12}%
-\contentsline {section}{Declaración de uso de IA}{30}{table.9.12}%
+\contentsline {subsection}{\numberline {9.2.2}Revisión por pares y análisis estático y dinámico}{15}{subsection.9.2.2}%
+\contentsline {subsection}{\numberline {9.2.3}Estrategia de pruebas conforme a ISO/IEC/IEEE 29119}{16}{subsection.9.2.3}%
+\contentsline {subsection}{\numberline {9.2.4}Datos de prueba}{19}{subsection.9.2.4}%
+\contentsline {subsection}{\numberline {9.2.5}Verificación, validación y trazabilidad}{21}{subsection.9.2.5}%
+\contentsline {subsection}{\numberline {9.2.6}Control de la calidad y mejora continua}{23}{subsection.9.2.6}%
+\contentsline {section}{\numberline {9.3}Alineación con Plan de Trabajo}{24}{section.9.3}%
+\contentsline {subsection}{\numberline {9.3.1}Actividades de calidad en la EDT}{25}{subsection.9.3.1}%
+\contentsline {subsection}{\numberline {9.3.2}Calidad en el cronograma y en los hitos}{25}{subsection.9.3.2}%
+\contentsline {subsection}{\numberline {9.3.3}Pruebas periódicas durante la Operación}{27}{subsection.9.3.3}%
+\contentsline {section}{Referencias}{28}{table.caption.24}%
+\contentsline {section}{Declaración de uso de IA}{29}{table.caption.24}%
 \contentsfinish 

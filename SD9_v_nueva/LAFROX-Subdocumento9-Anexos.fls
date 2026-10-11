@@ -433,6 +433,8 @@ INPUT .\lafrox-portada.tex
 INPUT .\lafrox-portada.tex
 INPUT .\sd9-comun.tex
 INPUT .\sd9-comun.tex
+INPUT C:\Users\henri\AppData\Local\Programs\MiKTeX\tex\latex\base\flafter.sty
+INPUT C:\Users\henri\AppData\Local\Programs\MiKTeX\tex\latex\base\flafter.sty
 INPUT .\LAFROX-Subdocumento9-Anexos.aux
 INPUT .\LAFROX-Subdocumento9-Anexos.aux
 OUTPUT LAFROX-Subdocumento9-Anexos.aux

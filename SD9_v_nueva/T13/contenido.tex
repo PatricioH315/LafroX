@@ -6,7 +6,7 @@
 
 Este formulario acompaña al Subdocumento 9, Plan de calidad (en adelante, SD9). Contiene el plan de pruebas y validación que exige el Formulario T-13 de las Bases Administrativas: niveles, tipos, ambientes, datos de prueba, criterios de entrada y salida, automatización, y calendario de las pruebas de carga, resiliencia, recuperación ante desastres y seguridad ofensiva (Distribuidora Puelche S.A., 2026a, Formulario T-13). El SD9 resume y analiza este plan; el protocolo con el que el CLIENTE acepta cada hito está en el Formulario T-17.
 
-En este formulario, BA, BTT y Caso designan las Bases Administrativas (Distribuidora Puelche S.A., 2026a), las Bases Técnicas Transversales (2026b) y las Bases Técnicas del Caso 02 (2026c). Mes 1 del contrato = febrero de 2027. Los paquetes de trabajo son los del Formulario T-14 y las fechas y horas, las del Formulario T-15.
+En este formulario, BA, BTT y Caso designan las Bases Administrativas (Distribuidora Puelche S.A., 2026a), las Bases Técnicas Transversales (2026b) y las Bases Técnicas del Caso 02 (2026c). Mes 1 del contrato = febrero de 2027. Los paquetes de trabajo son los del Formulario T-14 y las fechas y horas, las del Formulario T-15. CAL, SEG, SRE, DAT e IMP designan los roles de calidad y pruebas, seguridad, operación y confiabilidad, datos e implantación del Formulario T-15; la sección 11 indica quién los ejerce.
 
 \section*{1. Objeto, alcance y fuentes}
 \addcontentsline{toc}{section}{1. Objeto, alcance y fuentes}
@@ -291,7 +291,7 @@ Ninguna campaña que intervenga Producción o el sitio de recuperación cae en u
 \begin{tablasimple}{>{\hsize=0.56\hsize\linewidth=\hsize}Y >{\hsize=2.062\hsize\linewidth=\hsize}Y >{\hsize=0.378\hsize\linewidth=\hsize}Y}
   {\cab{Período} & \cab{Prueba} & \cab{Frecuencia}}
 Meses 13 a 15 (E1) y 19 a 20 (E2) & Indicadores diarios del Art. 17.3 (SD7, Tabla 7.9) y conciliación con el registro vigente & Diaria \\
-Meses 13 a 20 & Restauración de respaldos sobre una muestra representativa, con tiempo medido (RT-07.12) & Mensual \\
+Meses 13 a 20 & Restauración de respaldos sobre una muestra representativa, con tiempo medido (RT-07.12), por SRE en los paquetes 4.2.1 y 4.3.1 del T-14 & Mensual \\
 Cada corrección & Puertas G0 a G4 y G6, regresión completa, DAST y carga de regresión; repetición de la prueba de certificación afectada & Por corrección \\
 \end{tablasimple}
 
