@@ -19,11 +19,11 @@ Hacer explícitas la clasificación y la verificación de los 32 riesgos existen
 - [x] V-01 — SD8: explicar ramas/categorías; agregar índice EDR de 32 riesgos enlazado a sus fichas, síntesis ejecutiva sin cifras duplicadas y matriz de 32 verificaciones en anexos.
   - Ruta: delegada; lectura y escritura analítica en dos archivos no triviales.
   - Aceptación: asignaciones idénticas al diagrama/fichas; control, criterio, plazo y responsable sustentados en cada ficha; evidencia no presentada como obtenida.
-  - Commit de unidad: pendiente del coordinador.
+  - Commit de unidad: `ba815faf6a2e96985e9eab3697482331f42b956a` (unidad documental conjunta V-01/V-02).
 - [x] V-02 — SD9: agregar navegación, checklist documental antes de 9.2.6 y ciclo de mejora con verificación de eficacia en el siguiente Comité de Calidad mensual.
   - Ruta: delegada; tercera edición no trivial integrada con V-01.
   - Aceptación: mantener gobierno, títulos obligatorios, umbrales y aceptación contractual; checklist utilizable y cierre de acción sustentado por evidencia.
-  - Commit de unidad: pendiente del coordinador.
+  - Commit de unidad: `ba815faf6a2e96985e9eab3697482331f42b956a` (unidad documental conjunta V-01/V-02).
 
 ## Verificación
 
@@ -38,5 +38,5 @@ Hacer explícitas la clasificación y la verificación de los 32 riesgos existen
 
 - Estrategia: `ask-on-risk`; previsión de 190–260 líneas añadidas más eliminadas, incluidos registros. Heurística de 400 líneas orientativa, no límite de claridad.
 - Conteo observado: entregables 141 añadidas + 6 eliminadas = 147 líneas; registro operativo 42 líneas nuevas; total 189 antes de commits.
-- Espejo Engram: versión inicial confirmada por coordinador (#87); actualización final pendiente de espejo.
-- Próximo paso: coordinador actualiza espejo, comprueba una muestra y gestiona commits/política de revisión. V-01/V-02 completadas documentalmente; commits pendientes. No se ejecutaron ensayos ni simulación.
+- Espejo Engram: versión inicial confirmada (#87); versión final se sincroniza al cierre por el coordinador.
+- Cierre: lectura de muestra y `git diff --check` confirmados por coordinador. Evaluación nativa del commit frente a `1128e01`: `risk=passive`, `review_due=false`, razón `passive`; no requiere revisión con actores ni consentimiento. Unidad documental registrada, sin push. No se ejecutaron ensayos ni simulación. Pendiente: revisión humana real antes de entrega.
