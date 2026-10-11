@@ -113,7 +113,7 @@ Varias campañas de certificación coinciden en el tiempo y no pueden compartir 
 | Transacciones de peak | Generador sintético | Perfil de septiembre: ≈ 2.600 entregas por día (Caso, B.2) | Preproducción (PRE-C) | Versionado |
 | Lotes y temperatura | Generador sintético | Lotes con vencimiento; series de temperatura con excursiones controladas | QA y Preproducción | Incluye los casos límite del rango térmico |
 | Históricos para migración | Datos del ERP, del WMS de 2013 y de planillas del CLIENTE | 32,11 GB (SD4, Tabla 33, dimensión 10) | Solo PRE-M | Anonimización verificada con Amazon Macie (0 hallazgos) más una prueba de reidentificación sobre una muestra; se eliminan al cerrar el ensayo |
-| Incidentes reproducidos | Evidencia de terreno capturada por INN-02, sin datos personales | Según incidentes | QA | Convertidos en casos de regresión permanentes (SD13, sección 13.2) |
+| Incidentes reproducidos | Evidencia de terreno capturada por INN-02, sin datos personales | Según incidentes | Ambientes efímeros por incidencia en QA o Preproducción | Convertidos en casos de regresión permanentes (SD13, sección 13.2) |
 
 ---
 
@@ -145,7 +145,7 @@ Una campaña se suspende cuando aparece un defecto crítico que impide seguir ej
 
 ---
 
-## 7. Especificación de las pruebas que habilitan un paso a producción
+## 7. Especificación de las pruebas que habilitan cada entrada a Producción
 
 ### 7.1 Carga y estrés
 

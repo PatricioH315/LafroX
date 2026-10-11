@@ -6,7 +6,7 @@ Este formulario acompaña al Subdocumento 9, Plan de calidad (SD9). Contiene el 
 
 El protocolo recibe los entregables que el control de calidad ya verificó con el plan de pruebas del Formulario T-13. Verificar le corresponde a LafroX; aceptar le corresponde al CLIENTE, por medio de su Contraparte Técnica (Project Management Institute [PMI], 2017, p. 305).
 
-Mes 1 del contrato = febrero de 2027. Paquetes de trabajo del Formulario T-14; fechas del Formulario T-15, Tabla 5.2.
+Mes 1 del contrato = febrero de 2027. Paquetes de trabajo del Formulario T-14; fechas del calendario efectivo del Formulario T-15, secciones 5.3 a 5.5, que descuenta los feriados.
 
 ---
 
@@ -108,7 +108,7 @@ Un entregable de software está terminado cuando cumple las cinco condiciones si
 | H9 | 17 | 18-05-2028 | 14-06-2028 | 19 |
 | H10 | 18 | 12-06-2028 | 17-07-2028 | 23 |
 
-El T-15 mantiene un escenario nominal de lunes a viernes sin feriados; esta tabla aplica días hábiles efectivos, excluye la recepción e incluye el límite. El límite se obtiene restando diez días hábiles al último día hábil del mes contractual; no es una fecha fija día 17. H3 conserva fin nominal del paquete el 21-06, pero recepción formal el 22-06 porque el solsticio es feriado. Se descuentan Viernes Santo 26-03-2027, 21-05-2027, 28-06-2027 (traslado del 29), 16-07-2027, 01-11-2027, 08-12-2027, 20-06-2028 y 26-06-2028 (traslado del 29); los feriados en sábado/domingo no descuentan otro día. Normas: Ley 2.977, Ley 19.668, Ley 20.148 y Ley 21.357. Solsticios: 21-06-2027 14:11 UTC y 20-06-2028 20:02 UTC (NOAA/USNO), ambos en la misma fecha de Chile. Nuevos feriados o cambios del calendario requieren recalcular sin mover meses contractuales. Los hitos H6/H7/H11/H12 siguen la operación supervisada y el protocolo de 4.3.
+El T-15 mantiene un escenario nominal de lunes a viernes sin feriados; esta tabla aplica días hábiles efectivos, excluye la recepción e incluye el límite. El límite se obtiene restando diez días hábiles al último día hábil del mes contractual; no es una fecha fija día 17. H3 conserva fin nominal del paquete el 21-06, pero recepción formal el 22-06 porque el solsticio es feriado. Se descuentan Viernes Santo 26-03-2027, 21-05-2027, 28-06-2027 (traslado del 29), 16-07-2027, 01-11-2027, 08-12-2027, 20-06-2028 y 26-06-2028 (traslado del 29); los feriados en sábado/domingo no descuentan otro día. Los feriados siguen las Leyes N.º 2.977 (1915), N.º 19.668 (2000), N.º 20.148 (2007) y N.º 21.357 (2021). Los solsticios caen el 21-06-2027 a las 14:11 UTC y el 20-06-2028 a las 20:02 UTC, ambos en la misma fecha de Chile (National Weather Service, s.f.). Nuevos feriados o cambios del calendario requieren recalcular sin mover meses contractuales. Los hitos H6/H7/H11/H12 siguen la operación supervisada y el protocolo de 4.3.
 
 ### 4.2 Hitos de entregables (H1 a H5 y H8 a H10)
 
@@ -201,11 +201,12 @@ El acta se emite por hito y contiene lo siguiente. Un acta sin alguno de estos c
 
 ## Referencias
 
-- Chile. Ley 2.977, feriados legales; Ley 19.668, traslado de feriados; Ley 20.148, 16 de julio; Ley 21.357, solsticio. [LeyChile](https://www.bcn.cl/leychile/navegar?idNorma=23639), [traslado](https://www.bcn.cl/leychile/navegar?idNorma=160270), [16 de julio](https://www.bcn.cl/leychile/navegar?idNorma=257080), [solsticio](https://www.bcn.cl/leychile/navegar?idNorma=1161743).
-- National Weather Service. *Equinoxes and Solstices through 2030*, datos del U.S. Naval Observatory. [Tabla astronómica](https://www.weather.gov/dvn/Climate_Astronomical_Seasons).
-
-
 - Distribuidora Puelche S.A. (2026a). *Bases Administrativas, Licitación TFEP-01/2026*.
 - Distribuidora Puelche S.A. (2026b). *Bases Técnicas Transversales, Licitación TFEP-01/2026*.
 - Distribuidora Puelche S.A. (2026c). *Bases Técnicas del Caso 02 — Logística*.
+- Ley N.º 2.977. (1915). Diario Oficial de la República de Chile. Biblioteca del Congreso Nacional de Chile. https://www.bcn.cl/leychile/navegar?idNorma=23639
+- Ley N.º 19.668. (2000). Diario Oficial de la República de Chile. Biblioteca del Congreso Nacional de Chile. https://www.bcn.cl/leychile/navegar?idNorma=160270
+- Ley N.º 20.148. (2007). Diario Oficial de la República de Chile. Biblioteca del Congreso Nacional de Chile. https://www.bcn.cl/leychile/navegar?idNorma=257080
+- Ley N.º 21.357. (2021). Diario Oficial de la República de Chile. Biblioteca del Congreso Nacional de Chile. https://www.bcn.cl/leychile/navegar?idNorma=1161743
+- National Weather Service. (s.f.). *Equinoxes and solstices through 2030* [Datos del U.S. Naval Observatory]. https://www.weather.gov/dvn/Climate_Astronomical_Seasons
 - Project Management Institute. (2017). *Guía de los fundamentos para la dirección de proyectos (Guía del PMBOK)* (6.ª ed.). Project Management Institute.
