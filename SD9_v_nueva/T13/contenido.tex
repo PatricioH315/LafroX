@@ -4,9 +4,9 @@
 \markboth{Formulario T-13: Plan de pruebas y validación}{}
 \label{cap:t13}
 
-Este formulario acompaña al Subdocumento 9, Plan de calidad (en adelante, SD9). Contiene el plan de pruebas y validación que exige el Formulario T-13 de las Bases Administrativas: niveles, tipos, ambientes, datos de prueba, criterios de entrada y salida, automatización, y calendario de las pruebas de carga, resiliencia, recuperación ante desastres y seguridad ofensiva (Distribuidora Puelche S.A., 2026a, Formulario T-13). El SD9 resume y analiza este plan; el protocolo con el que el CLIENTE acepta cada hito está en el Formulario T-17.
+Este formulario acompaña al Subdocumento 9, Plan de calidad (en adelante, SD9). Contiene el plan de pruebas y validación que exige el Formulario T-13 de las Bases Administrativas: niveles, tipos, ambientes, datos de prueba, criterios de entrada y salida, automatización, y calendario de las pruebas de carga, resiliencia, recuperación ante desastres y seguridad ofensiva (Distribuidora Puelche S.A., 2026a, Formulario T-13, p. 62). El SD9 resume y analiza este plan; el protocolo con el que el CLIENTE acepta cada hito está en el Formulario T-17.
 
-En este formulario, BA, BTT y Caso designan las Bases Administrativas (Distribuidora Puelche S.A., 2026a), las Bases Técnicas Transversales (2026b) y las Bases Técnicas del Caso 02 (2026c). Mes 1 del contrato = febrero de 2027. Los paquetes de trabajo son los del Formulario T-14 y las fechas y horas, las del Formulario T-15. CAL, SEG, SRE, DAT e IMP designan los roles de calidad y pruebas, seguridad, operación y confiabilidad, datos e implantación del Formulario T-15; la sección 11 indica quién los ejerce.
+En este formulario, BA, BTT y Caso designan las Bases Administrativas (Distribuidora Puelche S.A., 2026a), las Bases Técnicas Transversales (2026b) y las Bases Técnicas del Caso Logística (2026c). Mes 1 del contrato = febrero de 2027. Los paquetes de trabajo son los del Formulario T-14 y las fechas y horas, las del Formulario T-15. CAL, SEG, SRE, DAT e IMP designan los roles de calidad y pruebas, seguridad, operación y confiabilidad, datos e implantación del Formulario T-15; la sección 11 indica quién los ejerce.
 
 \section*{1. Objeto, alcance y fuentes}
 \addcontentsline{toc}{section}{1. Objeto, alcance y fuentes}
@@ -17,14 +17,14 @@ Las exigencias que el plan satisface son las siguientes:
 
 \begin{tablasimple}{>{\hsize=0.559\hsize\linewidth=\hsize}Y >{\hsize=1.441\hsize\linewidth=\hsize}Y}
   {\cab{Fuente} & \cab{Exigencia que rige este plan}}
-Bases Administrativas, Art. 4.3 & ISO/IEC/IEEE 29119 para pruebas; ISO/IEC 25010 y 25012 para calidad del producto y de los datos \\
-Bases Administrativas, Art. 24 & Cuatro ambientes aislados; regresión automatizada; cobertura ≥ 70 \% de la lógica de negocio con umbral bloqueante; carga y estrés a 1,5 × el peak; resiliencia antes de cada paso a producción y semestral \\
-Bases Técnicas Transversales (BTT), sección 20.1 & Diez tipos de prueba, con su momento y su criterio de salida \\
-BTT, cap. 4 & Cinco ambientes y sus exigencias de datos (4.1); trazabilidad requisito–incidencia–código–prueba–despliegue (RT-04.04); flujo de integración con bloqueo automático (RT-04.05) \\
-BTT, cap. 9 & Pruebas de carga y de estrés hasta el punto de quiebre (RT-09.06), con el contenido mínimo de su informe (RT-09.07), y degradación controlada (RT-09.08) \\
-BTT, RT-07.07, RT-07.12, RT-10.07, RT-11.20 & Pruebas periódicas de la Operación \\
-Caso 02, cap. 15 & Umbrales de respuesta (RT-09.01), operación desconectada (RT-03.10, RT-03.13), ventana protegida y congelamientos (RT-10.05), interfaces de terreno (RT-13.08) \\
-Caso 02, cap. 18 & Dieciséis resultados de aceptación del caso (R18-01 a R18-16) \\
+Bases Administrativas, Art. 4.3 (BA, pp. 5--6) & ISO/IEC/IEEE 29119 para pruebas; ISO/IEC 25010 y 25012 para calidad del producto y de los datos \\
+Bases Administrativas, Art. 24 (BA, p. 17) & Cuatro ambientes aislados; regresión automatizada; cobertura ≥ 70 \% de la lógica de negocio con umbral bloqueante; carga y estrés a 1,5 × el peak; resiliencia antes de cada paso a producción y semestral \\
+Bases Técnicas Transversales (BTT), sección 20.1 (BTT, pp. 34--35) & Diez tipos de prueba, con su momento y su criterio de salida \\
+BTT, cap. 4 (BTT, pp. 10--11) & Cinco ambientes y sus exigencias de datos (4.1); trazabilidad requisito–incidencia–código–prueba–despliegue (RT-04.04); flujo de integración con bloqueo automático (RT-04.05) \\
+BTT, cap. 9 (BTT, pp. 21--22) & Pruebas de carga y de estrés hasta el punto de quiebre (RT-09.06), con el contenido mínimo de su informe (RT-09.07), y degradación controlada (RT-09.08) \\
+BTT, RT-07.07, RT-07.12, RT-10.07, RT-11.20 (BTT, pp. 17--18, 22, 24) & Pruebas periódicas de la Operación \\
+Caso Logística, cap. 15 & Umbrales de respuesta (RT-09.01), operación desconectada (RT-03.10, RT-03.13), ventana protegida y congelamientos (RT-10.05), interfaces de terreno (RT-13.08) \\
+Caso Logística, cap. 18 & Dieciséis resultados de aceptación del caso (R18-01 a R18-16) \\
 \end{tablasimple}
 
 \section*{2. Proceso de pruebas según ISO/IEC/IEEE 29119}
@@ -52,7 +52,7 @@ Umbrales numéricos & Partición de equivalencia y valores límite & Rango térm
 Reglas con varias condiciones & Tablas de decisión & Asignación de stock por vencimiento y lote; entrega con local cerrado \\
 Ciclos de vida & Transición de estados & Estados del pedido, de la guía de despacho y de la misión de preparación \\
 Flujos de usuario & Casos de uso y escenarios & Flujos del SD3 por perfil: preventista, preparador, conductor, bodega \\
-Integraciones & Pruebas de contrato & Siete casos por integración: éxito, sin respuesta, con error, con lentitud, duplicado, orden y versión (RT-10.08) \\
+Integraciones & Pruebas de contrato & Siete casos por integración: éxito, sin respuesta, con error, con lentitud, duplicado, orden y versión (RT-10.08) (BTT, p. 22) \\
 Concurrencia y reconexión & Escenarios con conflicto & Dos dispositivos que reservan el mismo lote sin señal y sincronizan después \\
 \end{tablasimple}
 
@@ -63,24 +63,24 @@ Cada nivel y tipo se vincula con su ambiente, herramientas, grado de automatizac
 
 \begin{tablasimple}{>{\hsize=1.084\hsize\linewidth=\hsize}Y >{\hsize=0.891\hsize\linewidth=\hsize}Y >{\hsize=2.231\hsize\linewidth=\hsize}Y >{\hsize=0.59\hsize\linewidth=\hsize}Y >{\hsize=0.558\hsize\linewidth=\hsize}Y >{\hsize=0.646\hsize\linewidth=\hsize}Y}
   {\cab{Nivel o tipo} & \cab{Ambiente} & \cab{Herramienta} & \cab{Automatización} & \cab{Paquete T-14} & \cab{Exigencia}}
-Unitaria y de componente & Desarrollo y cadena de integración & PHPUnit con PCOV (PHP); JUnit 5 con Kover (Kotlin); Jest (TypeScript) & Total & 1.5.2 & Art. 24; RT-04.11 \\
-Contrato de API y eventos & Cadena de integración & Pact; Spectral contra OpenAPI 3.1 y AsyncAPI 2.6 & Total & 1.5.2 & Art. 4.3; RT-10.08 \\
-Integración de los 15 flujos & QA & Pruebas automatizadas con simuladores del ERP y de terceros & Total & 3.8.1; 3.9.1 & BTT 20.1 \\
-Sistema y regresión & QA & Playwright (consolas y portales); Espresso (Android) & ≥ 80 \% de los casos & 3.8.1; 3.9.1 & BTT 20.1; Art. 24 \\
-Análisis estático y de seguridad & Cadena de integración & PHPStan con Larastan; PHPMD, PHPCPD, PhpMetrics, deptrac; detekt; ESLint; SAST, SCA, secretos e imágenes & Total & 1.5.2 & RT-04.05 \\
-Análisis dinámico de seguridad & QA & OWASP ZAP (web y API); MobSF (Android) & Total & 3.8.1; 3.9.1 & Art. 4.3 (OWASP) \\
-Accesibilidad & QA y Preproducción & axe-core y revisión manual con teclado y lector de pantalla & Parcial & 3.8.2; 3.9.2 & RT-13.01 \\
-Usabilidad con personas usuarias & Prototipos y Preproducción & Pruebas moderadas por perfil & Manual & 2.6.2; 2.6.3; 3.8.2; 3.9.2 & RT-13.03; RT-13.04 \\
-Aceptación de usuario & Preproducción & Casos del SD3 ejecutados por personas del CLIENTE & Manual & 3.8.2; 3.9.2 & BTT 20.1 \\
+Unitaria y de componente & Desarrollo y cadena de integración & PHPUnit con PCOV (PHP); JUnit 5 con Kover (Kotlin); Jest (TypeScript) & Total & 1.5.2 & Art. 24; RT-04.11 (BA, p. 17; BTT, p. 11) \\
+Contrato de API y eventos & Cadena de integración & Pact; Spectral contra OpenAPI 3.1 y AsyncAPI 2.6 & Total & 1.5.2 & Art. 4.3; RT-10.08 (BA, pp. 5--6; BTT, p. 22) \\
+Integración de los 15 flujos & QA & Pruebas automatizadas con simuladores del ERP y de terceros & Total & 3.8.1; 3.9.1 & BTT 20.1 (BTT, pp. 34--35) \\
+Sistema y regresión & QA & Playwright (consolas y portales); Espresso (Android) & ≥ 80 \% de los casos & 3.8.1; 3.9.1 & BTT 20.1; Art. 24 (BA, p. 17; BTT, pp. 34--35) \\
+Análisis estático y de seguridad & Cadena de integración & PHPStan con Larastan; PHPMD, PHPCPD, PhpMetrics, deptrac; detekt; ESLint; SAST, SCA, secretos e imágenes & Total & 1.5.2 & RT-04.05 (BTT, p. 10) \\
+Análisis dinámico de seguridad & QA & OWASP ZAP (web y API); MobSF (Android) & Total & 3.8.1; 3.9.1 & Art. 4.3 (OWASP) (BA, pp. 5--6) \\
+Accesibilidad & QA y Preproducción & axe-core y revisión manual con teclado y lector de pantalla & Parcial & 3.8.2; 3.9.2 & RT-13.01 (BTT, p. 26) \\
+Usabilidad con personas usuarias & Prototipos y Preproducción & Pruebas moderadas por perfil & Manual & 2.6.2; 2.6.3; 3.8.2; 3.9.2 & RT-13.03; RT-13.04 (BTT, p. 26) \\
+Aceptación de usuario & Preproducción & Casos del SD3 ejecutados por personas del CLIENTE & Manual & 3.8.2; 3.9.2 & BTT 20.1 (BTT, pp. 34--35) \\
 Perfil operacional de terreno & Terreno, cámara de congelado y Preproducción & Dispositivos reales, Espresso para los flujos repetibles & Parcial & 3.8.3; 3.9.1; 3.9.2 & RT-03.10; RT-03.13; RT-13.08 \\
-Carga y estrés & Preproducción & k6 & Total & 3.8.4; 3.9.3 & Art. 24; RT-09.06 a RT-09.08 \\
-Resiliencia & Preproducción & AWS Fault Injection Service; desconexiones controladas del sitio emulado; corte de gateways de frío y de enlaces & Total en la inyección; manual en la observación & 3.8.4; 3.9.3; 8.2.2 & RT-10.07 \\
-Continuidad de la arquitectura híbrida & Preproducción y sitio emulado & Nueve protocolos del SD4, Anexo 4-V (sección 7.5) & Parcial & 3.8.1; 3.8.3 a 3.8.5; 3.9.1; 3.9.3; 3.9.4 & RT-03.10; RT-07.04 \\
-Recuperación ante desastres & Recuperación ante Desastres (us-east-1) & Conmutación regional real y recuperación del WMS de Talca en la nube (AL-DR-01) & Procedimiento automatizado con verificación manual & 3.8.5; 3.9.4; 8.1.3 & RT-07.07 \\
-Restauración de respaldos & Producción y Recuperación & Restauración de una muestra representativa & Procedimiento automatizado & 4.2.1; 4.2.2; 4.3.1; 8.1.6 & RT-07.12 \\
-Seguridad ofensiva & Preproducción con versión congelada & Tercero independiente & Manual & 3.8.6; 3.9.5; 8.2.2 & RT-11.20 \\
-Despliegue sin interrupción y reversión & Preproducción & Cadena de entrega del SD4 (canario con reversión automática) & Total & 3.8.8; 3.9.7 & Art. 24; RT-04.07 \\
-Migración de datos & Preproducción & Procedimiento de extracción, carga y conciliación del SD5 & Parcial & 3.7.1 a 3.7.5 & BTT 20.1; RT-05.11 \\
+Carga y estrés & Preproducción & k6 & Total & 3.8.4; 3.9.3 & Art. 24; RT-09.06 a RT-09.08 (BA, p. 17; BTT, pp. 21--22) \\
+Resiliencia & Preproducción & AWS Fault Injection Service; desconexiones controladas del sitio emulado; corte de gateways de frío y de enlaces & Total en la inyección; manual en la observación & 3.8.4; 3.9.3; 8.2.2 & RT-10.07 (BTT, p. 22) \\
+Continuidad de la arquitectura híbrida & Preproducción y sitio emulado & Nueve protocolos del SD4, Anexo 4-V (sección 7.5) & Parcial & 3.8.1; 3.8.3 a 3.8.5; 3.9.1; 3.9.3; 3.9.4 & RT-03.10; RT-07.04 (BTT, p. 17) \\
+Recuperación ante desastres & Recuperación ante Desastres (us-east-1) & Conmutación regional real y recuperación del WMS de Talca en la nube (AL-DR-01) & Procedimiento automatizado con verificación manual & 3.8.5; 3.9.4; 8.1.3 & RT-07.07 (BTT, p. 17) \\
+Restauración de respaldos & Producción y Recuperación & Restauración de una muestra representativa & Procedimiento automatizado & 4.2.1; 4.2.2; 4.3.1; 8.1.6 & RT-07.12 (BTT, p. 18) \\
+Seguridad ofensiva & Preproducción con versión congelada & Tercero independiente & Manual & 3.8.6; 3.9.5; 8.2.2 & RT-11.20 (BTT, p. 24) \\
+Despliegue sin interrupción y reversión & Preproducción & Cadena de entrega del SD4 (canario con reversión automática) & Total & 3.8.8; 3.9.7 & Art. 24; RT-04.07 (BA, p. 17; BTT, p. 11) \\
+Migración de datos & Preproducción & Procedimiento de extracción, carga y conciliación del SD5 & Parcial & 3.7.1 a 3.7.5 & BTT 20.1; RT-05.11 (BTT, pp. 12, 34--35) \\
 \end{tablasimple}
 
 Las herramientas son las declaradas en el Formulario T-10 (SD6) y en la cadena de entrega del SD4. Este plan no agrega herramientas nuevas.
@@ -93,8 +93,8 @@ Los cinco ambientes se diferencian por sus datos y por el control que permiten. 
 \begin{tablasimple}{>{\hsize=0.33\hsize\linewidth=\hsize}Y >{\hsize=1.777\hsize\linewidth=\hsize}Y >{\hsize=0.745\hsize\linewidth=\hsize}Y >{\hsize=1.148\hsize\linewidth=\hsize}Y}
   {\cab{Ambiente} & \cab{Pruebas que aloja} & \cab{Datos} & \cab{Estado antes de cada ciclo}}
 Desarrollo & Unitarias, de componente y de contrato & Sintéticos & Reconstruible desde código \\
-QA & Integración, sistema, regresión, análisis dinámico, accesibilidad automatizada, carga de regresión semanal & Juegos sintéticos versionados & Restituido a un estado conocido (BTT 4.1) \\
-Preproducción & Aceptación, carga y estrés, resiliencia, ensayo del paso a producción, migración, seguridad ofensiva & Sintéticos con volumen de peak; históricos anonimizados solo para migración & Equivalente a Producción en topología, configuración y versiones (RT-04.02) \\
+QA & Integración, sistema, regresión, análisis dinámico, accesibilidad automatizada, carga de regresión semanal & Juegos sintéticos versionados & Restituido a un estado conocido (BTT 4.1, p. 10) \\
+Preproducción & Aceptación, carga y estrés, resiliencia, ensayo del paso a producción, migración, seguridad ofensiva & Sintéticos con volumen de peak; históricos anonimizados solo para migración & Equivalente a Producción en topología, configuración y versiones (RT-04.02) (BTT, p. 10) \\
 Producción & Verificación posterior al despliegue, indicadores diarios de la marcha blanca, restauración de respaldos & Reales & No se prueba con datos ficticios \\
 Recuperación ante Desastres & Conmutación real & Réplica productiva protegida & No se usa como ambiente funcional de prueba \\
 \end{tablasimple}
@@ -102,7 +102,7 @@ Recuperación ante Desastres & Conmutación real & Réplica productiva protegida
 \subsection*{4.1 Instancias de Preproducción por campaña}
 \addcontentsline{toc}{subsection}{4.1 Instancias de Preproducción por campaña}
 
-Varias campañas coinciden en el calendario, pero las que requieren estados incompatibles no comparten la misma instancia al mismo tiempo. La resiliencia necesita carga sostenida; la prueba de intrusión exige una versión congelada; la migración carga datos históricos; la aceptación necesita datos estables. Por eso migración, intrusión y aceptación usan instancias aisladas; carga, resiliencia y despliegue usan sesiones sucesivas en PRE-C. Cada instancia de Preproducción se reconstruye desde el mismo código y con la misma topología y configuración. Siguen siendo Preproducción y no constituyen un sexto ambiente; se destruyen al cerrar la campaña (RT-04.02; RT-04.14).
+Varias campañas coinciden en el calendario, pero las que requieren estados incompatibles no comparten la misma instancia al mismo tiempo. La resiliencia necesita carga sostenida; la prueba de intrusión exige una versión congelada; la migración carga datos históricos; la aceptación necesita datos estables. Por eso migración, intrusión y aceptación usan instancias aisladas; carga, resiliencia y despliegue usan sesiones sucesivas en PRE-C. Cada instancia de Preproducción se reconstruye desde el mismo código y con la misma topología y configuración. Siguen siendo Preproducción y no constituyen un sexto ambiente; se destruyen al cerrar la campaña (RT-04.02; RT-04.14) (BTT, pp. 10--11).
 
 \begin{tablasimple}{>{\hsize=0.338\hsize\linewidth=\hsize}Y >{\hsize=0.973\hsize\linewidth=\hsize}Y >{\hsize=1.689\hsize\linewidth=\hsize}Y}
   {\cab{Instancia} & \cab{Campaña} & \cab{Condición que exige separarla}}
@@ -153,19 +153,19 @@ Las condiciones siguientes se verifican antes y después de cada ejecución. Las
   {\cab{Nivel} & \cab{Criterio de entrada} & \cab{Criterio de salida}}
 Unitaria y componente & Cambio con solicitud de fusión que cita su requisito o incidencia & Cobertura de lógica de negocio ≥ 70 \% y global ≥ 80 \%; 0 pruebas en falla; complejidad ciclomática ≤ 10 por método; 0 dependencias prohibidas entre módulos; acoplamiento eferente ≤ 20 clases por clase; duplicación ≤ 3 \% (T-10) \\
 Contrato & Contratos OpenAPI 3.1 y AsyncAPI 2.6 versionados & 0 contratos rotos \\
-Integración & Imagen promovida a QA sin vulnerabilidades críticas ni altas; simuladores de los 15 flujos disponibles & 15 de 15 flujos sin error (BTT 20.1) \\
+Integración & Imagen promovida a QA sin vulnerabilidades críticas ni altas; simuladores de los 15 flujos disponibles & 15 de 15 flujos sin error (BTT 20.1, pp. 34-35) \\
 Sistema y regresión & Integración aprobada; juego de datos restituido & 100 \% de la batería aprobada; 0 regresiones; p95, errores y colas de la carga de regresión no peores que en la última versión aceptada (SD4, sección 4.2.4.1.4) \\
 Análisis dinámico & Versión desplegada en QA & 0 alertas altas de DAST; 0 hallazgos críticos o altos de MobSF \\
-Aceptación de usuario & Regresión aprobada; 0 defectos críticos o altos abiertos; personas del CLIENTE convocadas y con inducción & Casos de aceptación firmados por la Contraparte Técnica (BTT 20.1) \\
-Accesibilidad & Vistas completas en QA & 0 incumplimientos WCAG 2.2 A y AA; informe de conformidad entregado (RT-13.01) \\
+Aceptación de usuario & Regresión aprobada; 0 defectos críticos o altos abiertos; personas del CLIENTE convocadas y con inducción & Casos de aceptación firmados por la Contraparte Técnica (BTT 20.1, pp. 34-35) \\
+Accesibilidad & Vistas completas en QA & 0 incumplimientos WCAG 2.2 A y AA; informe de conformidad entregado (RT-13.01) (BTT, p. 26) \\
 Carga & Versión candidata en PRE-C; juego de peak cargado; monitoreo activo & Todos los p95 de la sección 7.1 a 21,99 TPS; 0 transacciones perdidas \\
-Estrés & Carga aprobada & Punto de quiebre identificado; degradación con encolamiento y mensaje explícito, sin pérdida (RT-09.08) \\
-Resiliencia & Carga sostenida en curso; escenarios de falla aprobados por el Arquitecto de Solución & Recuperación sin intervención en cada escenario; 0 pérdidas (RT-10.07) \\
-Recuperación ante desastres & Procedimiento de conmutación aprobado; conmutación fuera de congelamiento, de la ventana de 05:30 a 07:00 y de los tres primeros días hábiles del mes & RTO ≤ 4 h y RPO ≤ 15 min medidos en conmutación real, regional y del WMS de Talca (RT-07.04, RT-07.07; AL-DR-01) \\
-Seguridad ofensiva & Versión congelada en PRE-S; alcance acordado con el tercero & 0 hallazgos críticos o altos abiertos (RT-11.20) \\
+Estrés & Carga aprobada & Punto de quiebre identificado; degradación con encolamiento y mensaje explícito, sin pérdida (RT-09.08) (BTT, p. 22) \\
+Resiliencia & Carga sostenida en curso; escenarios de falla aprobados por el Arquitecto de Solución & Recuperación sin intervención en cada escenario; 0 pérdidas (RT-10.07) (BTT, p. 22) \\
+Recuperación ante desastres & Procedimiento de conmutación aprobado; conmutación fuera de congelamiento, de la ventana de 05:30 a 07:00 y de los tres primeros días hábiles del mes & RTO ≤ 4 h y RPO ≤ 15 min medidos en conmutación real, regional y del WMS de Talca (RT-07.04, RT-07.07; AL-DR-01) (BTT, p. 17) \\
+Seguridad ofensiva & Versión congelada en PRE-S; alcance acordado con el tercero & 0 hallazgos críticos o altos abiertos (RT-11.20) (BTT, p. 24) \\
 Perfil operacional & Dispositivos de producción, uno de cada tipo; personas del CLIENTE convocadas & Ver sección 7.3 \\
 Migración & Perfilado y saneamiento cerrados (3.7.1); mapeo del SD5, Anexo 5-L & Conciliación sin diferencias no explicadas en cada ensayo; tiempos medidos compatibles con la ventana y con la reversión (SD5, 5.3.5) \\
-Despliegue sin interrupción & Estrategia canario configurada & Despliegue y reversión sin interrupción del servicio y sin intervención manual (RT-04.06, RT-04.07) \\
+Despliegue sin interrupción & Estrategia canario configurada & Despliegue y reversión sin interrupción del servicio y sin intervención manual (RT-04.06, RT-04.07) (BTT, p. 11) \\
 \end{tablasimple}
 
 \subsection*{6.2 Suspensión y reanudación}
@@ -185,11 +185,11 @@ La carga se deriva del dimensionamiento del SD4, Tabla 33, y no se elige:
 
 \begin{tablasimple}{>{\hsize=1.899\hsize\linewidth=\hsize}Y >{\hsize=0.7\hsize\linewidth=\hsize}Y >{\hsize=0.7\hsize\linewidth=\hsize}Y >{\hsize=0.701\hsize\linewidth=\hsize}Y}
   {\cab{Magnitud} & \cab{Peak declarado (SD4)} & \cab{Factor} & \cab{Carga de prueba}}
-TPS máximo de septiembre (12:00) & 14,66 TPS & 1,5 (Art. 24; RT-09.06) & 21,99 TPS \\
+TPS máximo de septiembre (12:00) & 14,66 TPS & 1,5 (BA, Art. 24, p. 17; RT-09.06) & 21,99 TPS \\
 TPS máximo de la ventana de 05:30 a 07:00 & 6,94 TPS & 1,5 & 10,41 TPS, sostenidos 90 minutos \\
 Personas usuarias concurrentes (cota extrema) & 775,33 & 1,5 & 1.163 \\
 Dispositivos de terreno simultáneos & 158 & 1,5 & 237 \\
-Escalón de crecimiento (RT-09.03) & 14,66 TPS & 3 & 43,98 TPS \\
+Escalón de crecimiento (RT-09.03) (BTT, p. 21) & 14,66 TPS & 3 & 43,98 TPS \\
 Escalón de quiebre & 14,66 TPS & 4 & 58,64 TPS \\
 \end{tablasimple}
 
@@ -197,7 +197,7 @@ Escalón de quiebre & 14,66 TPS & 4 & 58,64 TPS \\
 
 \textbf{Ventana de despacho.} La prueba de 10,41 TPS concentra la emisión de guías en los 90 minutos. Su criterio de salida incluye 0 minutos de indisponibilidad (Caso, RT-10.05).
 
-\textbf{Informe (RT-09.07):} curva de tiempo de respuesta frente a carga, punto de saturación, consumo de recursos por componente, y comportamiento durante y después del peak. El informe identifica el primer cuello de botella declarado en el SD4 (RT-09.05) y compara su comportamiento observado con el previsto.
+\textbf{Informe (RT-09.07):} curva de tiempo de respuesta frente a carga, punto de saturación, consumo de recursos por componente, y comportamiento durante y después del peak. El informe identifica el primer cuello de botella declarado en el SD4 (RT-09.05) y compara su comportamiento observado con el previsto (BTT, p. 21).
 
 \subsection*{7.2 Resiliencia}
 \addcontentsline{toc}{subsection}{7.2 Resiliencia}
@@ -205,10 +205,10 @@ Escalón de quiebre & 14,66 TPS & 4 & 58,64 TPS \\
 La inyección reproduce fallas de nube, enlace y equipamiento local. El resultado se compara con la continuidad y los tiempos comprometidos, sin sustituir una falla por una excepción.
 
 \begin{tablasimple}{>{\hsize=0.808\hsize\linewidth=\hsize}Y >{\hsize=0.771\hsize\linewidth=\hsize}Y >{\hsize=1.421\hsize\linewidth=\hsize}Y}
-  {\cab{Escenario (RT-10.07)} & \cab{Forma de inyección} & \cab{Resultado esperado}}
+  {\cab{Escenario (RT-10.07)} (BTT, p. 22) & \cab{Forma de inyección} & \cab{Resultado esperado}}
 Caída de instancia & AWS FIS detiene tareas ECS Fargate & Reemplazo automático sin pérdida \\
 Caída de zona de disponibilidad & AWS FIS sobre una zona & Continuidad en las zonas restantes \\
-Dependencia externa sin respuesta, con error o lenta & Simulador de la integración afectada & Comportamiento declarado por integración (RT-10.08) \\
+Dependencia externa sin respuesta, con error o lenta & Simulador de la integración afectada & Comportamiento declarado por integración (RT-10.08) (BTT, p. 22) \\
 Latencia elevada & Inyección de latencia de red & Umbrales de la sección 7.1 o degradación controlada \\
 Saturación de disco & Llenado controlado del volumen & Alerta anticipada y continuidad \\
 Corte de enlace del centro de distribución por 24 h & Desconexión del sitio emulado & Operación local continua; sincronización ≤ 2 h tras reconectar, con conflictos de stock resueltos de forma determinista (RT-03.10, RT-03.13) \\
@@ -216,7 +216,7 @@ Pérdida de fibra y LTE de un centro de distribución & Corte de ambos enlaces e
 Caída de un gateway de frío de Talca & Detención de uno de los dos gateways con Greengrass & El otro gateway lee ambas cámaras; el bloqueo térmico local actúa en ≤ 5 s y la alerta llega a M9 (SD4, ADR-22) \\
 \end{tablasimple}
 
-Los dos últimos escenarios prueban la parte on-premise de la arquitectura híbrida, que el RT-10.07 no enumera pero que el SD4 declara crítica para el despacho y para la cadena de frío.
+Los dos últimos escenarios prueban la parte on-premise de la arquitectura híbrida, que el RT-10.07 no enumera pero que el SD4 declara crítica para el despacho y para la cadena de frío (BTT, p. 22).
 
 \subsection*{7.3 Perfil operacional de terreno}
 \addcontentsline{toc}{subsection}{7.3 Perfil operacional de terreno}
@@ -226,14 +226,14 @@ Las pruebas usan dispositivos reales y personas del perfil correspondiente. Una 
 \begin{tablasimple}{>{\hsize=0.637\hsize\linewidth=\hsize}Y >{\hsize=1.071\hsize\linewidth=\hsize}Y >{\hsize=1.292\hsize\linewidth=\hsize}Y}
   {\cab{Condición (Caso, cap. 15)} & \cab{Prueba} & \cab{Criterio de salida}}
 Turno completo de 14 h sin cobertura & Jornada completa de un repartidor rural, incluida la ruta de 34 clientes (SD4, Tabla 33, dimensión 13) & 0 registros perdidos o duplicados; sincronización ≤ 10 min tras reconectar \\
-\ensuremath{-}22 °C con guantes térmicos & Preparación y recepción en cámara de congelado & Transacción completada con guantes; indicadores RT-13.04 del perfil dentro de umbral \\
+\ensuremath{-}22 °C con guantes térmicos & Preparación y recepción en cámara de congelado & Transacción completada con guantes; indicadores RT-13.04 del perfil dentro de umbral (BTT, p. 26) \\
 Lluvia & Entrega a la intemperie bajo lluvia & Transacción completada; dispositivo operativo \\
 Sobre 34 °C & Entrega a la intemperie con calor & Transacción completada; dispositivo operativo \\
 Sol directo & Lectura de la pantalla en la puerta del local & Lectura sin error de la persona usuaria \\
 Una sola mano durante la descarga & Registro de entrega & Transacción completada con una mano \\
 \end{tablasimple}
 
-Cada perfil mide los cuatro indicadores del RT-13.04 con los valores del SD3, Tabla 3.A.4a (métrica 9A-18): tasa de error ≤ 5 \% en todos los perfiles y aprendizaje ≤ 2 h en bodega, ≤ 4 h para el preventista y ≤ 30 min para el conductor.
+Cada perfil mide los cuatro indicadores del RT-13.04 con los valores del SD3, Tabla 3.A.4a (métrica 9A-18): tasa de error ≤ 5 \% en todos los perfiles y aprendizaje ≤ 2 h en bodega, ≤ 4 h para el preventista y ≤ 30 min para el conductor (BTT, p. 26).
 
 \subsection*{7.4 Pruebas de los resultados del caso}
 \addcontentsline{toc}{subsection}{7.4 Pruebas de los resultados del caso}
@@ -357,8 +357,8 @@ Durante la operación supervisada se miden indicadores y se prueban respaldos. C
 
 \begin{tablasimple}{>{\hsize=0.56\hsize\linewidth=\hsize}Y >{\hsize=2.062\hsize\linewidth=\hsize}Y >{\hsize=0.378\hsize\linewidth=\hsize}Y}
   {\cab{Período} & \cab{Prueba} & \cab{Frecuencia}}
-Meses 13 a 15 (E1) y 19 a 20 (E2) & Indicadores diarios del Art. 17.3 (SD7, Tabla 7.9) y conciliación con el registro vigente & Diaria \\
-Meses 13 a 20 & Restauración de respaldos sobre una muestra representativa, con tiempo medido (RT-07.12), por SRE: 4.2.1 (13–15), 4.2.2 (16–18) y 4.3.1 (19–20); ocho informes distintos de los 36 de 8.1.6 & Mensual \\
+Meses 13 a 15 (E1) y 19 a 20 (E2) & Indicadores diarios del Art. 17.3 (SD7, Tabla 7.9) y conciliación con el registro vigente (BA, p. 13) & Diaria \\
+Meses 13 a 20 & Restauración de respaldos sobre una muestra representativa, con tiempo medido (RT-07.12), por SRE: 4.2.1 (13–15), 4.2.2 (16–18) y 4.3.1 (19–20); ocho informes distintos de los 36 de 8.1.6 (BTT, p. 18) & Mensual \\
 Cada corrección & Puertas G0 a G4 y G6, regresión completa, DAST y carga de regresión; repetición de la prueba de certificación afectada & Por corrección \\
 \end{tablasimple}
 
@@ -371,14 +371,14 @@ Las pruebas periódicas verifican la continuidad del servicio durante los 36 mes
 
 \begin{tablasimple}{>{\hsize=1.447\hsize\linewidth=\hsize}Y >{\hsize=1.41\hsize\linewidth=\hsize}Y >{\hsize=0.655\hsize\linewidth=\hsize}Y >{\hsize=1.334\hsize\linewidth=\hsize}Y >{\hsize=0.577\hsize\linewidth=\hsize}Y >{\hsize=0.577\hsize\linewidth=\hsize}Y}
   {\cab{Prueba} & \cab{Exigencia} & \cab{Meses} & \cab{Fechas} & \cab{Cantidad} & \cab{Paquete}}
-Recuperación ante desastres con conmutación real & Al menos dos veces al año (RT-07.07) & 21, 27, 33, 39, 45, 51, 54 & oct-28, abr-29, oct-29, abr-30, oct-30, abr-31, jul-31 & 7 & 8.1.3 \\
-Resiliencia por inyección de fallas & Al menos una vez por semestre (RT-10.07) & 26, 32, 38, 44, 50, 55 & mar-29, sep-29, mar-30, sep-30, mar-31, ago-31 & 6 & 8.2.2 \\
-Intrusión por tercero independiente & Anual (RT-11.20) & 28, 40, 52 & may-29, may-30, may-31 & 3 & 8.2.2 \\
-Restauración de respaldos & Al menos mensual (RT-07.12) & 21 a 56 & Mensual & 36 & 8.1.6 \\
+Recuperación ante desastres con conmutación real & Al menos dos veces al año (RT-07.07) (BTT, p. 17) & 21, 27, 33, 39, 45, 51, 54 & oct-28, abr-29, oct-29, abr-30, oct-30, abr-31, jul-31 & 7 & 8.1.3 \\
+Resiliencia por inyección de fallas & Al menos una vez por semestre (RT-10.07) (BTT, p. 22) & 26, 32, 38, 44, 50, 55 & mar-29, sep-29, mar-30, sep-30, mar-31, ago-31 & 6 & 8.2.2 \\
+Intrusión por tercero independiente & Anual (RT-11.20) (BTT, p. 24) & 28, 40, 52 & may-29, may-30, may-31 & 3 & 8.2.2 \\
+Restauración de respaldos & Al menos mensual (RT-07.12) (BTT, p. 18) & 21 a 56 & Mensual & 36 & 8.1.6 \\
 Regresión de INN-02 & Escenarios reproducidos de incidentes & 21 a 56 & Trimestral (informe) & 12 & 8.3.1 \\
 \end{tablasimple}
 
-Las resiliencias de septiembre (meses 32 y 44) se ejecutan en Preproducción, porque septiembre está congelado. Cada prueba periódica produce un informe con el resultado medido, la comparación con su umbral y el plan de corrección de las brechas (RT-07.07).
+Las resiliencias de septiembre (meses 32 y 44) se ejecutan en Preproducción, porque septiembre está congelado. Cada prueba periódica produce un informe con el resultado medido, la comparación con su umbral y el plan de corrección de las brechas (RT-07.07) (BTT, p. 17).
 
 \section*{10. Defectos}
 \addcontentsline{toc}{section}{10. Defectos}
@@ -393,7 +393,7 @@ Media & Afecta un servicio de nivel medio con alternativa operativa & Se registr
 Baja & Afecta la reportería sin impedir operar & Se registra y se planifica \\
 \end{tablasimple}
 
-Cada defecto se registra en GitLab con el caso de prueba, el requisito, el ambiente, la versión y la evidencia. Se cierra solo cuando la prueba que lo detectó pasa y queda incorporada a la regresión. Los hallazgos de seguridad conservan su severidad propia y sus plazos de corrección de 7, 15 y 30 días corridos para severidad crítica, alta y media (BA, Art. 21.1; SD4, sección 4.2.4.1.4).
+Cada defecto se registra en GitLab con el caso de prueba, el requisito, el ambiente, la versión y la evidencia. Se cierra solo cuando la prueba que lo detectó pasa y queda incorporada a la regresión. Los hallazgos de seguridad conservan su severidad propia y sus plazos de corrección de 7, 15 y 30 días corridos para severidad crítica, alta y media (BA, Art. 21.1, p. 15; SD4, sección 4.2.4.1.4).
 
 \section*{11. Roles}
 \addcontentsline{toc}{section}{11. Roles}
@@ -420,9 +420,9 @@ Los informes conservan la comparación entre resultado observado y criterio de s
   {\cab{Informe} & \cab{Contenido mínimo} & \cab{Destinatario} & \cab{Frecuencia}}
 Informe de ejecución de la cadena de integración & Resultados por requisito, cobertura, métricas de código & Equipo y Líder de Calidad & Cada ejecución \\
 Informe de campaña & Casos ejecutados, aprobados y fallidos; defectos por severidad; desviaciones del plan; conclusión de salida & Líder de Calidad y Contraparte Técnica & Al cierre de cada campaña \\
-Informe de carga & Contenido del RT-09.07 (sección 7.1) & Contraparte Técnica & Por campaña de carga \\
-Informe de recuperación ante desastres & RTO y RPO medidos; brechas y su plan de corrección (RT-07.07) & Contraparte Técnica & Por prueba \\
-Informe íntegro de intrusión & Hallazgos, severidad, plan de remediación con plazos (RT-11.20) & CLIENTE & Por prueba \\
+Informe de carga & Contenido del RT-09.07 (sección 7.1) (BTT, p. 21) & Contraparte Técnica & Por campaña de carga \\
+Informe de recuperación ante desastres & RTO y RPO medidos; brechas y su plan de corrección (RT-07.07) (BTT, p. 17) & Contraparte Técnica & Por prueba \\
+Informe íntegro de intrusión & Hallazgos, severidad, plan de remediación con plazos (RT-11.20) (BTT, p. 24) & CLIENTE & Por prueba \\
 Informe mensual de calidad & Métricas de proceso, defectos escapados, estado de la matriz de trazabilidad & Comité de Calidad y Contraparte Técnica & Mensual \\
 \end{tablasimple}
 
@@ -434,7 +434,7 @@ Las fuentes siguientes sustentan los criterios citados en este documento; sus re
 \begin{itemize}
   \item Distribuidora Puelche S.A. (2026a). \emph{Bases Administrativas, Licitación TFEP-01/2026}.
   \item Distribuidora Puelche S.A. (2026b). \emph{Bases Técnicas Transversales, Licitación TFEP-01/2026}.
-  \item Distribuidora Puelche S.A. (2026c). \emph{Bases Técnicas del Caso 02 — Logística}.
+  \item Distribuidora Puelche S.A. (2026c). \emph{Bases Técnicas del Caso Logística}.
   \item International Organization for Standardization, International Electrotechnical Commission, \& Institute of Electrical and Electronics Engineers. (2021a). \emph{ISO/IEC/IEEE 29119-2:2021. Software and systems engineering — Software testing — Part 2: Test processes}.
   \item International Organization for Standardization, International Electrotechnical Commission, \& Institute of Electrical and Electronics Engineers. (2021c). \emph{ISO/IEC/IEEE 29119-3:2021. Software and systems engineering — Software testing — Part 3: Test documentation}.
   \item International Organization for Standardization, International Electrotechnical Commission, \& Institute of Electrical and Electronics Engineers. (2021b). \emph{ISO/IEC/IEEE 29119-4:2021. Software and systems engineering — Software testing — Part 4: Test techniques}.

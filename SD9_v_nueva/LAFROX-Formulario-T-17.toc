@@ -6,7 +6,7 @@
 \contentsline {subsection}{2.1 Pasos}{4}{table.8.1}%
 \contentsline {subsection}{2.2 Tratamiento de las observaciones}{5}{table.8.2}%
 \contentsline {subsection}{2.3 Hitos con reserva menor que la subsanación}{5}{table.8.3}%
-\contentsline {subsection}{2.4 Entrega por incrementos}{5}{table.8.3}%
+\contentsline {subsection}{2.4 Entrega por incrementos}{6}{table.8.3}%
 \contentsline {section}{3. Expediente de aceptación}{6}{table.8.3}%
 \contentsline {subsection}{3.1 Contenido mínimo (Art. 18.2)}{6}{table.8.3}%
 \contentsline {subsection}{3.2 Definición de terminado (RT-20.07)}{6}{table.8.4}%
@@ -15,8 +15,8 @@
 \contentsline {subsection}{4.1 Fechas de entrega}{7}{table.8.6}%
 \contentsline {subsection}{4.2 Hitos de entregables (H1 a H5 y H8 a H10)}{8}{table.8.7}%
 \contentsline {subsection}{4.3 Hitos de operación supervisada (H6, H7, H11 y H12)}{10}{table.8.8}%
-\contentsline {section}{5. Aceptación de los resultados del caso (producto final)}{11}{table.8.10}%
+\contentsline {section}{5. Aceptación de los resultados del caso (producto final)}{12}{table.8.10}%
 \contentsline {section}{6. Acta de conformidad}{13}{table.8.11}%
-\contentsline {section}{7. Roles}{13}{table.8.12}%
+\contentsline {section}{7. Roles}{14}{table.8.12}%
 \contentsline {section}{Referencias}{14}{table.8.13}%
 \contentsfinish 

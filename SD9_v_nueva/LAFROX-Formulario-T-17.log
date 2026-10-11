@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.25.7 (MiKTeX 26.5) (format=lualatex 2026.9.17)  11 OCT 2026 17:22
+This is LuaHBTeX, Version 1.25.7 (MiKTeX 26.5) (format=lualatex 2026.9.17)  11 OCT 2026 18:14
  system commands enabled.
 **LAFROX-Formulario-T-17.tex
 (./LAFROX-Formulario-T-17.tex
@@ -1957,18 +1957,18 @@ Package babel Info: 'spanish' activates 'spanish' shorthands.
  [4]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 72.
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 71.
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 72.
-LaTeX Info: Redefining \% on input line 72.
+LaTeX Info: Redefining \. on input line 71.
+LaTeX Info: Redefining \% on input line 71.
  [5]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 104.
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 102.
 
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 104.
-LaTeX Info: Redefining \% on input line 104.
+LaTeX Info: Redefining \. on input line 102.
+LaTeX Info: Redefining \% on input line 102.
  [6]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
@@ -2004,11 +2004,11 @@ LaTeX Info: Redefining \% on input line 170.
  [10]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 209.
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 186.
 
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 209.
-LaTeX Info: Redefining \% on input line 209.
+LaTeX Info: Redefining \. on input line 186.
+LaTeX Info: Redefining \% on input line 186.
 
 [11]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
@@ -2047,15 +2047,15 @@ L3 programming layer <2026-07-20>
 )
 
 Here is how much of LuaTeX's memory you used:
- 36591 strings out of 475695
+ 36592 strings out of 475695
  156265,2373549 words of node,token memory allocated
  739 words of node memory still in use:
    8 hlist, 2 vlist, 2 rule, 1 local_par, 6 glue, 5 kern, 1 penalty, 1 margin_ke
 rn, 4 glyph, 18 attribute, 79 glue_spec, 10 attribute_list, 2 write nodes
-   avail lists: 1:5,2:4298,3:769,4:357,5:2007,6:225,7:11878,8:56,9:2147,10:23,11
-:1330
- 58304 multiletter control sequences out of 65536+600000
- 118 fonts using 46548935 bytes
+   avail lists: 1:5,2:3543,3:769,4:343,5:2016,6:213,7:12129,8:56,9:1996,10:23,11
+:1350
+ 58305 multiletter control sequences out of 65536+600000
+ 117 fonts using 46312455 bytes
  107i,18n,128p,1503b,2770s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/henri/AppData/Local/Programs/MiKTeX/fonts/opentype/adobe/sourceserif/S
 ourceSerif4-RegularIt.otf><C:/Users/henri/AppData/Local/Programs/MiKTeX/fonts/op
@@ -2066,7 +2066,7 @@ r.otf><C:/Users/henri/AppData/Local/Programs/MiKTeX/fonts/opentype/adobe/sources
 ans/SourceSans3-Regular.otf><c:/users/henri/appdata/local/programs/miktex/fonts/
 opentype/adobe/sourcesans/sourcesans3-medium.otf><C:/Users/henri/AppData/Local/P
 rograms/MiKTeX/fonts/opentype/adobe/sourcesans/SourceSans3-Semibold.otf>
-Output written on LAFROX-Formulario-T-17.pdf (14 pages, 109616 bytes).
+Output written on LAFROX-Formulario-T-17.pdf (14 pages, 109737 bytes).
 
 PDF statistics: 252 PDF objects out of 1000 (max. 8388607)
  30 named destinations out of 1000 (max. 1048576)

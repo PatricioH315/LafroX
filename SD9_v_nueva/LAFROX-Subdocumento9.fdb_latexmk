@@ -1,6 +1,6 @@
 # Fdb version 4
-["lualatex"] 1791750011.64223 "LAFROX-Subdocumento9.tex" "LAFROX-Subdocumento9.pdf" "LAFROX-Subdocumento9" 1791750035.71315 0
-  "09_plan_calidad/contenido.tex" 1791749982 64506 e1f0c0f88f2a47daa583b921a9c8171e ""
+["lualatex"] 1791753209.69728 "LAFROX-Subdocumento9.tex" "LAFROX-Subdocumento9.pdf" "LAFROX-Subdocumento9" 1791753231.32982 0
+  "09_plan_calidad/contenido.tex" 1791753203 65494 59a91ca4a42871b005a4f7a7abd08fe9 ""
   "09_plan_calidad/diagramas/Fig_9-1_Marco_Calidad.pdf" 1791749921 48633 d3718c308a57b0762459e3fd739e3ed0 ""
   "09_plan_calidad/diagramas/Fig_9-2_Modelo_ISO25010.pdf" 1791749924 52990 48ea7c24abd40d873b26745c5a79539d ""
   "09_plan_calidad/diagramas/Fig_9-3_Puertas_Calidad.pdf" 1791749927 55088 7f910c5ed63f95b411249a1e7bf005fb ""
@@ -268,14 +268,14 @@
   "C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/luatex/luaotfload/luaotfload-unicode.lua" 1740607740 7918 4272855a25780b80472f3b58edd95e33 ""
   "C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/luatex/luaotfload/luaotfload.lua" 1740607740 13566 16df94dd2de231b2bca0aaa0190941fe ""
   "C:/Users/henri/AppData/Roaming/MiKTeX/tex/generic/config/language.dat" 1786480571 2269 c2be9efecb8e53facf8213ae101f16af ""
-  "LAFROX-Subdocumento9.aux" 1791750032 29679 c21b2162953b1ba140df64b197639e1d "lualatex"
-  "LAFROX-Subdocumento9.lof" 1791750032 2098 af4ffa94fbb8ef88ba75f20891406cea "lualatex"
-  "LAFROX-Subdocumento9.lot" 1791750032 3433 a152b18953377331c6f07ce0c80c6462 "lualatex"
+  "LAFROX-Subdocumento9.aux" 1791753228 30399 c29611287f560f9bf52165292f20f0d5 "lualatex"
+  "LAFROX-Subdocumento9.lof" 1791753229 2177 a5f663ae5da7056154ffd1cb87a3f1c2 "lualatex"
+  "LAFROX-Subdocumento9.lot" 1791753229 3714 ed9a3ab8816aab550d10d1eb94ef40a7 "lualatex"
   "LAFROX-Subdocumento9.tex" 1791733089 623 28fc2861f8c73abe90217b40cb2121a4 ""
-  "LAFROX-Subdocumento9.toc" 1791750032 2329 53cdfd4d501d83290895dfa894eaca7e "lualatex"
+  "LAFROX-Subdocumento9.toc" 1791753229 2329 2de6fd40f825e145c66ba8131f15b094 "lualatex"
   "c:/users/henri/appdata/local/programs/miktex/fonts/opentype/adobe/sourcesans/sourcesans3-medium.otf" 1777831523 336848 e7d038378399e1c26443887c39d891d8 ""
   "lafrox-portada.tex" 1791728244 15837 437aa1d9362343ea062beae1fa189664 ""
-  "lafrox.cls" 1791728244 43048 b826318122ca96cdf068d3373ac0f9bf ""
+  "lafrox.cls" 1791753203 43031 15777f462dcd47802afa267535f04a13 ""
   "logo/lafrox_isotipo_naranja.pdf" 1791728244 3551 53a815340c8c86d6be9cfdb584630a55 ""
   "logo/lafrox_isotipo_negro.pdf" 1791728244 3533 402261340b0015f729460532cd94959a ""
   "sd9-comun.tex" 1791733089 3185 1a92ca2b6c1d83d33b8430a8db0cc1f2 ""

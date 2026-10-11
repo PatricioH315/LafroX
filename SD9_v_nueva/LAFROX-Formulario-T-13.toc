@@ -6,27 +6,27 @@
 \contentsline {subsection}{2.1 Técnicas de diseño (ISO/IEC/IEEE 29119-4)}{5}{table.8.2}%
 \contentsline {section}{3. Niveles y tipos de prueba}{5}{table.8.3}%
 \contentsline {section}{4. Ambientes de prueba}{8}{table.8.4}%
-\contentsline {subsection}{4.1 Instancias de Preproducción por campaña}{8}{table.8.5}%
-\contentsline {section}{5. Datos de prueba}{10}{table.8.7}%
-\contentsline {section}{6. Criterios de entrada y de salida}{11}{table.8.8}%
-\contentsline {subsection}{6.1 Por nivel de prueba}{11}{table.8.8}%
-\contentsline {subsection}{6.2 Suspensión y reanudación}{13}{table.8.9}%
-\contentsline {section}{7. Especificación de las pruebas que habilitan cada entrada a Producción}{13}{table.8.9}%
-\contentsline {subsection}{7.1 Carga y estrés}{13}{table.8.9}%
-\contentsline {subsection}{7.2 Resiliencia}{14}{table.8.10}%
-\contentsline {subsection}{7.3 Perfil operacional de terreno}{15}{table.8.11}%
+\contentsline {subsection}{4.1 Instancias de Preproducción por campaña}{9}{table.8.5}%
+\contentsline {section}{5. Datos de prueba}{11}{table.8.7}%
+\contentsline {section}{6. Criterios de entrada y de salida}{12}{table.8.8}%
+\contentsline {subsection}{6.1 Por nivel de prueba}{12}{table.8.8}%
+\contentsline {subsection}{6.2 Suspensión y reanudación}{14}{table.8.9}%
+\contentsline {section}{7. Especificación de las pruebas que habilitan cada entrada a Producción}{14}{table.8.9}%
+\contentsline {subsection}{7.1 Carga y estrés}{14}{table.8.9}%
+\contentsline {subsection}{7.2 Resiliencia}{15}{table.8.10}%
+\contentsline {subsection}{7.3 Perfil operacional de terreno}{16}{table.8.11}%
 \contentsline {subsection}{7.4 Pruebas de los resultados del caso}{16}{table.8.12}%
 \contentsline {subsection}{7.5 Protocolos de aceptación de la arquitectura híbrida}{17}{table.8.13}%
 \contentsline {section}{8. Automatización}{18}{table.8.14}%
 \contentsline {subsection}{8.1 Criterio}{18}{table.8.14}%
 \contentsline {subsection}{8.2 Tamaño estimado del catálogo}{18}{table.8.14}%
-\contentsline {subsection}{8.3 Duración de la regresión}{18}{table.8.15}%
+\contentsline {subsection}{8.3 Duración de la regresión}{19}{table.8.15}%
 \contentsline {section}{9. Calendario}{19}{table.8.15}%
 \contentsline {subsection}{9.1 Implementación}{19}{table.8.15}%
 \contentsline {subsection}{9.2 Marchas blancas y soporte puente}{21}{table.8.16}%
-\contentsline {subsection}{9.3 Operación (meses 21 a 56)}{21}{table.8.17}%
-\contentsline {section}{10. Defectos}{22}{table.8.18}%
+\contentsline {subsection}{9.3 Operación (meses 21 a 56)}{22}{table.8.17}%
+\contentsline {section}{10. Defectos}{23}{table.8.18}%
 \contentsline {section}{11. Roles}{23}{table.8.19}%
-\contentsline {section}{12. Informes de prueba}{23}{table.8.20}%
-\contentsline {section}{Referencias}{24}{table.8.21}%
+\contentsline {section}{12. Informes de prueba}{24}{table.8.20}%
+\contentsline {section}{Referencias}{25}{table.8.21}%
 \contentsfinish 

@@ -14,12 +14,12 @@
 \contentsline {subsection}{\numberline {9.2.1}Puertas de calidad}{15}{subsection.9.2.1}%
 \contentsline {subsection}{\numberline {9.2.2}Revisión por pares y análisis estático y dinámico}{18}{subsection.9.2.2}%
 \contentsline {subsection}{\numberline {9.2.3}Estrategia de pruebas conforme a ISO/IEC/IEEE 29119}{18}{subsection.9.2.3}%
-\contentsline {subsection}{\numberline {9.2.4}Datos de prueba}{22}{subsection.9.2.4}%
-\contentsline {subsection}{\numberline {9.2.5}Verificación, validación y trazabilidad}{24}{subsection.9.2.5}%
-\contentsline {subsection}{\numberline {9.2.6}Control de la calidad y mejora continua}{26}{subsection.9.2.6}%
+\contentsline {subsection}{\numberline {9.2.4}Datos de prueba}{20}{subsection.9.2.4}%
+\contentsline {subsection}{\numberline {9.2.5}Verificación, validación y trazabilidad}{22}{subsection.9.2.5}%
+\contentsline {subsection}{\numberline {9.2.6}Control de la calidad y mejora continua}{24}{subsection.9.2.6}%
 \contentsline {section}{\numberline {9.3}Alineación con Plan de Trabajo}{28}{section.9.3}%
 \contentsline {subsection}{\numberline {9.3.1}Actividades de calidad en la EDT}{28}{subsection.9.3.1}%
-\contentsline {subsection}{\numberline {9.3.2}Calidad en el cronograma y en los hitos}{28}{subsection.9.3.2}%
+\contentsline {subsection}{\numberline {9.3.2}Calidad en el cronograma y en los hitos}{29}{subsection.9.3.2}%
 \contentsline {subsection}{\numberline {9.3.3}Pruebas periódicas durante la Operación}{33}{subsection.9.3.3}%
 \contentsline {section}{Referencias}{34}{table.caption.26}%
 \contentsline {section}{Declaración de uso de IA}{35}{table.caption.26}%

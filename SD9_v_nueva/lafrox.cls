@@ -1,7 +1,7 @@
 %% ============================================================================
 %%  lafrox.cls -- Clase corporativa LafroX
 %%  Propuestas tecnicas para la Licitacion N. TFEP-01/2026
-%%  Caso 02 - Logistica (Distribuidora Puelche S.A.)
+%%  Caso Logística (Distribuidora Puelche S.A.)
 %%
 %%  Motor: LuaLaTeX (obligatorio -- usa fontspec)
 %%  Compilar: latexmk demo.tex     (el latexmkrc ya fija lualatex)
@@ -338,7 +338,7 @@
   cargo         = {Jefe de Proyecto y Apoderado},
   cliente       = {Distribuidora Puelche S.A.},
   licitacion    = {Licitación N.\textdegree{} TFEP-01/2026},
-  caso          = {Caso 02 --- Logística},
+  caso          = {Caso Logística},
   documento     = {Propuesta Técnica},
   subtitulo     = {Informe 2},
   alcance       = {Subdocumentos 1--9 y 13},
@@ -746,7 +746,7 @@
 %  que falta se escribe dentro de una \nota, que se apaga entera con [final].
 % ---------------------------------------------------------------------------
 
-% \begin{cita}{Caso 02 --- Logistica, Cap. 15}  ...  \end{cita}
+% \begin{cita}{Caso Logística, Cap. 15}  ...  \end{cita}
 \newenvironment{cita}[1]
   {\def\LFXcitafuente{#1}%
    \par\addvspace{11pt}%
