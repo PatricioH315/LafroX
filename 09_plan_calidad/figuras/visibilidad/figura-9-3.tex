@@ -1,0 +1,75 @@
+% Composición nativa basada en Fig_9-3_Puertas_Calidad.drawio. No usa recortes ni escalado de imágenes.
+\clearpage
+\begin{figure}[p]\centering
+\begin{tikzpicture}[font=\fontsize{9.5pt}{11.5pt}\selectfont,>=stealth]
+\tikzset{overview/.style={draw=lafroxFuerte,fill=lafroxFuerte!5,rounded corners=2pt,align=left,text width=8cm,minimum height=0.8cm,inner sep=5pt}}
+\node[overview] (c4) at (0,0.0) {\textbf{N1} -- G0};
+\node[overview] (c6) at (0,-1.35) {\textbf{N2} -- G1};
+\node[overview] (c8) at (0,-2.7) {\textbf{N3} -- G2};
+\node[overview] (c10) at (0,-4.050000000000001) {\textbf{N4} -- G3};
+\node[overview] (c12) at (0,-5.4) {\textbf{N5} -- G4};
+\node[overview] (c14) at (0,-6.75) {\textbf{N6} -- G5};
+\node[overview] (c16) at (0,-8.100000000000001) {\textbf{N7} -- G6};
+\node[overview] (c24) at (0,-9.450000000000001) {\textbf{N8} -- Cambio rechazado: vuelve al autor con el criterio incumplido};
+\draw[->,lafroxFuerte] (c4.south) -- (c6.north);
+\draw[->,lafroxFuerte] (c6.south) -- (c8.north);
+\draw[->,lafroxFuerte] (c8.south) -- (c10.north);
+\draw[->,lafroxFuerte] (c10.south) -- (c12.north);
+\draw[->,lafroxFuerte] (c12.south) -- (c14.north);
+\draw[->,lafroxFuerte] (c14.south) -- (c16.north);
+\draw[->,lafroxFuerte] (c8.east) -- (5.619999999999999,-2.7) -- node[right,fill=white,inner sep=1pt] {bloquea} (5.619999999999999,-9.450000000000001) -- (c24.east);
+\draw[->,lafroxFuerte] (c12.east) -- (5.79,-5.4) -- node[right,fill=white,inner sep=1pt] {bloquea} (5.79,-9.450000000000001) -- (c24.east);
+\draw[->,lafroxFuerte] (c14.east) -- (5.96,-6.75) -- node[right,fill=white,inner sep=1pt] {bloquea} (5.96,-9.450000000000001) -- (c24.east);
+\end{tikzpicture}
+\caption{Puertas de calidad en la cadena de entrega: vista general.}\label{fig:sd9-3}
+{\fontsize{9.5pt}{12pt}\selectfont Fuente: elaboración propia a partir del SD4, sección 4.2.4.1, y del Formulario T-10, sección 6.2.2.\par}
+\end{figure}\clearpage
+\clearpage\begin{figure}[p]\centering
+\begin{tikzpicture}[font=\fontsize{9.5pt}{12pt}\selectfont,>=stealth]
+\tikzset{detail/.style={draw=lafroxFuerte,fill=lafroxFuerte!4,rounded corners=2pt,align=left,text width=5.7cm,minimum height=1.55cm,inner sep=6pt}}
+\node[detail] (a0) at (0,0.0) {\textbf{N1}\\ G0\\ Compromiso local\\ Formato y pruebas del módulo};
+\node[detail] (b0) at (8.0,0.0) {\textbf{N2}\\ G1\\ Solicitud de fusión\\ Revisión por pares · secretos · lint};
+\draw[->,thick,lafroxFuerte] (a0.east) -- (b0.west);
+\node[detail] (a1) at (0,-3.3) {\textbf{N2}\\ G1\\ Solicitud de fusión\\ Revisión por pares · secretos · lint};
+\node[detail] (b1) at (8.0,-3.3) {\textbf{N3}\\ G2\\ Integración continua\\ Cobertura 70 \% / 80 \% · PHPStan nivel 8 · SAST/SCA · contratos · deptrac · complejidad};
+\draw[->,thick,lafroxFuerte] (a1.east) -- (b1.west);
+\node[detail] (a2) at (0,-6.6) {\textbf{N3}\\ G2\\ Integración continua\\ Cobertura 70 \% / 80 \% · PHPStan nivel 8 · SAST/SCA · contratos · deptrac · complejidad};
+\node[detail] (b2) at (8.0,-6.6) {\textbf{N4}\\ G3\\ Promoción a QA\\ Imagen sin vulnerabilidades críticas o altas · p95 no empeora más de 10 \%};
+\draw[->,thick,lafroxFuerte] (a2.east) -- (b2.west);
+\node[detail] (a3) at (0,-9.899999999999999) {\textbf{N4}\\ G3\\ Promoción a QA\\ Imagen sin vulnerabilidades críticas o altas · p95 no empeora más de 10 \%};
+\node[detail] (b3) at (8.0,-9.899999999999999) {\textbf{N5}\\ G4\\ Promoción a PREPROD\\ Regresión completa · DAST · WCAG 2.2 AA · 0 defectos críticos o altos};
+\draw[->,thick,lafroxFuerte] (a3.east) -- (b3.west);
+\end{tikzpicture}
+\caption*{Figura 9.3 - detalle de conexiones 1 a 4.}
+{\fontsize{9.5pt}{12pt}\selectfont Fuente: elaboración propia a partir del SD4, sección 4.2.4.1, y del Formulario T-10, sección 6.2.2.\par}
+\end{figure}\clearpage
+\clearpage\begin{figure}[p]\centering
+\begin{tikzpicture}[font=\fontsize{9.5pt}{12pt}\selectfont,>=stealth]
+\tikzset{detail/.style={draw=lafroxFuerte,fill=lafroxFuerte!4,rounded corners=2pt,align=left,text width=5.7cm,minimum height=1.55cm,inner sep=6pt}}
+\node[detail] (a0) at (0,0.0) {\textbf{N5}\\ G4\\ Promoción a PREPROD\\ Regresión completa · DAST · WCAG 2.2 AA · 0 defectos críticos o altos};
+\node[detail] (b0) at (8.0,0.0) {\textbf{N6}\\ G5\\ Paso a PROD\\ Carga 1,5× · resiliencia · DR · pentest · 0 defectos críticos o altos · más acta de la Contraparte Técnica};
+\draw[->,thick,lafroxFuerte] (a0.east) -- (b0.west);
+\node[detail] (a1) at (0,-3.3) {\textbf{N6}\\ G5\\ Paso a PROD\\ Carga 1,5× · resiliencia · DR · pentest · 0 defectos críticos o altos · más acta de la Contraparte Técnica};
+\node[detail] (b1) at (8.0,-3.3) {\textbf{N7}\\ G6\\ Operación\\ Presupuesto de error · reversión automática ≤ 10 min};
+\draw[->,thick,lafroxFuerte] (a1.east) -- (b1.west);
+\node[detail] (a2) at (0,-6.6) {\textbf{N3}\\ G2\\ Integración continua\\ Cobertura 70 \% / 80 \% · PHPStan nivel 8 · SAST/SCA · contratos · deptrac · complejidad};
+\node[detail] (b2) at (8.0,-6.6) {\textbf{N8}\\ Cambio rechazado: vuelve al autor con el criterio incumplido};
+\draw[->,thick,lafroxFuerte] (a2.east) -- node[above,fill=white] {bloquea} (b2.west);
+\node[detail] (a3) at (0,-9.899999999999999) {\textbf{N5}\\ G4\\ Promoción a PREPROD\\ Regresión completa · DAST · WCAG 2.2 AA · 0 defectos críticos o altos};
+\node[detail] (b3) at (8.0,-9.899999999999999) {\textbf{N8}\\ Cambio rechazado: vuelve al autor con el criterio incumplido};
+\draw[->,thick,lafroxFuerte] (a3.east) -- node[above,fill=white] {bloquea} (b3.west);
+\end{tikzpicture}
+\caption*{Figura 9.3 - detalle de conexiones 5 a 8.}
+{\fontsize{9.5pt}{12pt}\selectfont Fuente: elaboración propia a partir del SD4, sección 4.2.4.1, y del Formulario T-10, sección 6.2.2.\par}
+\end{figure}\clearpage
+\clearpage\begin{figure}[p]\centering
+\begin{tikzpicture}[font=\fontsize{9.5pt}{12pt}\selectfont,>=stealth]
+\tikzset{detail/.style={draw=lafroxFuerte,fill=lafroxFuerte!4,rounded corners=2pt,align=left,text width=5.7cm,minimum height=1.55cm,inner sep=6pt}}
+\node[detail] (a0) at (0,0.0) {\textbf{N6}\\ G5\\ Paso a PROD\\ Carga 1,5× · resiliencia · DR · pentest · 0 defectos críticos o altos · más acta de la Contraparte Técnica};
+\node[detail] (b0) at (8.0,0.0) {\textbf{N8}\\ Cambio rechazado: vuelve al autor con el criterio incumplido};
+\draw[->,thick,lafroxFuerte] (a0.east) -- node[above,fill=white] {bloquea} (b0.west);
+\end{tikzpicture}
+\caption*{Figura 9.3 - detalle de conexiones 9 a 9.}
+{\fontsize{9.5pt}{12pt}\selectfont Fuente: elaboración propia a partir del SD4, sección 4.2.4.1, y del Formulario T-10, sección 6.2.2.\par}
+\end{figure}\clearpage
+\noindent\textbf{Lectura complementaria de la Figura 9.3.} Formulario T-10, sección 6.2.2: las cinco compuertas bloqueantes viven en G2 y G3. El SD9 agrega G4, G5 y G6. El acta de la Contraparte Técnica es condición de G5 y no levanta pruebas fallidas ni defectos críticos o altos.\par

@@ -1,0 +1,63 @@
+% Composición nativa basada en Fig_9-10_Flujo_Aceptacion.drawio. No usa recortes ni escalado de imágenes.
+\clearpage
+\begin{figure}[p]\centering
+\begin{tikzpicture}[font=\fontsize{9.5pt}{11.5pt}\selectfont,>=stealth]
+\tikzset{overview/.style={draw=lafroxFuerte,fill=lafroxFuerte!5,rounded corners=2pt,align=left,text width=8cm,minimum height=0.8cm,inner sep=5pt}}
+\node[overview] (c4) at (0,0.0) {\textbf{N1} -- Entrega del expediente};
+\node[overview] (c5) at (0,-1.35) {\textbf{N2} -- Revisión del CLIENTE};
+\node[overview] (c6) at (0,-2.7) {\textbf{N3} -- ¿Observaciones?};
+\node[overview] (c7) at (0,-4.050000000000001) {\textbf{N4} -- Acta de conformidad};
+\node[overview] (c8) at (0,-5.4) {\textbf{N5} -- Subsanación de LafroX};
+\node[overview] (c9) at (0,-6.75) {\textbf{N6} -- Segunda revisión};
+\node[overview] (c10) at (0,-8.100000000000001) {\textbf{N7} -- ¿Misma observación?};
+\node[overview] (c11) at (0,-9.450000000000001) {\textbf{N8} -- Atraso imputable};
+\draw[->,lafroxFuerte] (c4.south) -- (c5.north);
+\draw[->,lafroxFuerte] (c5.south) -- (c6.north);
+\draw[->,lafroxFuerte] (c6.south) -- node[right] {no} (c7.north);
+\draw[->,lafroxFuerte] (c6.east) -- (5.109999999999999,-2.7) -- node[right,fill=white,inner sep=1pt] {sí} (5.109999999999999,-5.4) -- (c8.east);
+\draw[->,lafroxFuerte] (c8.south) -- (c9.north);
+\draw[->,lafroxFuerte] (c9.south) -- (c10.north);
+\draw[->,lafroxFuerte] (c10.south) -- node[right] {sí} (c11.north);
+\draw[->,lafroxFuerte] (c10.east) -- (5.79,-8.100000000000001) -- node[right,fill=white,inner sep=1pt] {no} (5.79,-4.050000000000001) -- (c7.east);
+\end{tikzpicture}
+\caption{Procedimiento de aceptación de un hito: vista general.}\label{fig:sd9-10}
+{\fontsize{9.5pt}{12pt}\selectfont Fuente: elaboración propia a partir de las Bases Administrativas, Art. 18.\par}
+\end{figure}\clearpage
+\clearpage\begin{figure}[p]\centering
+\begin{tikzpicture}[font=\fontsize{9.5pt}{12pt}\selectfont,>=stealth]
+\tikzset{detail/.style={draw=lafroxFuerte,fill=lafroxFuerte!4,rounded corners=2pt,align=left,text width=5.7cm,minimum height=1.55cm,inner sep=6pt}}
+\node[detail] (a0) at (0,0.0) {\textbf{N1}\\ Entrega del expediente\\ artefacto · evidencia · trazabilidad · observaciones previas (Art. 18.2)};
+\node[detail] (b0) at (8.0,0.0) {\textbf{N2}\\ Revisión del CLIENTE\\ 10 días hábiles};
+\draw[->,thick,lafroxFuerte] (a0.east) -- (b0.west);
+\node[detail] (a1) at (0,-3.3) {\textbf{N2}\\ Revisión del CLIENTE\\ 10 días hábiles};
+\node[detail] (b1) at (8.0,-3.3) {\textbf{N3}\\ ¿Observaciones?};
+\draw[->,thick,lafroxFuerte] (a1.east) -- (b1.west);
+\node[detail] (a2) at (0,-6.6) {\textbf{N3}\\ ¿Observaciones?};
+\node[detail] (b2) at (8.0,-6.6) {\textbf{N4}\\ Acta de conformidad\\ Contraparte Técnica (Art. 18.1)};
+\draw[->,thick,lafroxFuerte] (a2.east) -- node[above,fill=white] {no} (b2.west);
+\node[detail] (a3) at (0,-9.899999999999999) {\textbf{N3}\\ ¿Observaciones?};
+\node[detail] (b3) at (8.0,-9.899999999999999) {\textbf{N5}\\ Subsanación de LafroX\\ 10 días hábiles};
+\draw[->,thick,lafroxFuerte] (a3.east) -- node[above,fill=white] {sí} (b3.west);
+\end{tikzpicture}
+\caption*{Figura 9.10 - detalle de conexiones 1 a 4.}
+{\fontsize{9.5pt}{12pt}\selectfont Fuente: elaboración propia a partir de las Bases Administrativas, Art. 18.\par}
+\end{figure}\clearpage
+\clearpage\begin{figure}[p]\centering
+\begin{tikzpicture}[font=\fontsize{9.5pt}{12pt}\selectfont,>=stealth]
+\tikzset{detail/.style={draw=lafroxFuerte,fill=lafroxFuerte!4,rounded corners=2pt,align=left,text width=5.7cm,minimum height=1.55cm,inner sep=6pt}}
+\node[detail] (a0) at (0,0.0) {\textbf{N5}\\ Subsanación de LafroX\\ 10 días hábiles};
+\node[detail] (b0) at (8.0,0.0) {\textbf{N6}\\ Segunda revisión};
+\draw[->,thick,lafroxFuerte] (a0.east) -- (b0.west);
+\node[detail] (a1) at (0,-3.3) {\textbf{N6}\\ Segunda revisión};
+\node[detail] (b1) at (8.0,-3.3) {\textbf{N7}\\ ¿Misma observación?};
+\draw[->,thick,lafroxFuerte] (a1.east) -- (b1.west);
+\node[detail] (a2) at (0,-6.6) {\textbf{N7}\\ ¿Misma observación?};
+\node[detail] (b2) at (8.0,-6.6) {\textbf{N8}\\ Atraso imputable\\ Art. 18.3};
+\draw[->,thick,lafroxFuerte] (a2.east) -- node[above,fill=white] {sí} (b2.west);
+\node[detail] (a3) at (0,-9.899999999999999) {\textbf{N7}\\ ¿Misma observación?};
+\node[detail] (b3) at (8.0,-9.899999999999999) {\textbf{N4}\\ Acta de conformidad\\ Contraparte Técnica (Art. 18.1)};
+\draw[->,thick,lafroxFuerte] (a3.east) -- node[above,fill=white] {no} (b3.west);
+\end{tikzpicture}
+\caption*{Figura 9.10 - detalle de conexiones 5 a 8.}
+{\fontsize{9.5pt}{12pt}\selectfont Fuente: elaboración propia a partir de las Bases Administrativas, Art. 18.\par}
+\end{figure}\clearpage

@@ -1,0 +1,75 @@
+% Composición nativa basada en Fig_9-8_Ciclo_Defectos.drawio. No usa recortes ni escalado de imágenes.
+\clearpage
+\begin{figure}[p]\centering
+\begin{tikzpicture}[font=\fontsize{9.5pt}{11.5pt}\selectfont,>=stealth]
+\tikzset{overview/.style={draw=lafroxFuerte,fill=lafroxFuerte!5,rounded corners=2pt,align=left,text width=8cm,minimum height=0.8cm,inner sep=5pt}}
+\node[overview] (c4) at (0,0.0) {\textbf{N1} -- Inicio};
+\node[overview] (c5) at (0,-1.35) {\textbf{N2} -- Registrado};
+\node[overview] (c6) at (0,-2.7) {\textbf{N3} -- Clasificado};
+\node[overview] (c8) at (0,-4.050000000000001) {\textbf{N4} -- En corrección};
+\node[overview] (c7) at (0,-5.4) {\textbf{N5} -- Rechazado};
+\node[overview] (c9) at (0,-6.75) {\textbf{N6} -- En verificación};
+\node[overview] (c10) at (0,-8.100000000000001) {\textbf{N7} -- Cerrado};
+\node[overview] (c11) at (0,-9.450000000000001) {\textbf{N8} -- Reabierto};
+\draw[->,lafroxFuerte] (c4.south) -- (c5.north);
+\draw[->,lafroxFuerte] (c5.south) -- (c6.north);
+\draw[->,lafroxFuerte] (c6.south) -- node[right] {asignado} (c8.north);
+\draw[->,lafroxFuerte] (c6.east) -- (5.109999999999999,-2.7) -- (5.109999999999999,-5.4) -- (c7.east);
+\draw[->,lafroxFuerte] (c8.east) -- (5.279999999999999,-4.050000000000001) -- node[right,fill=white,inner sep=1pt] {fusionado} (5.279999999999999,-6.75) -- (c9.east);
+\draw[->,lafroxFuerte] (c9.south) -- node[right] {aprobada} (c10.north);
+\draw[->,lafroxFuerte] (c9.east) -- (5.619999999999999,-6.75) -- node[right,fill=white,inner sep=1pt] {persiste} (5.619999999999999,-4.050000000000001) -- (c8.east);
+\draw[->,lafroxFuerte] (c10.south) -- node[right] {reaparece} (c11.north);
+\draw[->,lafroxFuerte] (c11.east) -- (5.96,-9.450000000000001) -- (5.96,-4.050000000000001) -- (c8.east);
+\end{tikzpicture}
+\caption{Ciclo de vida del defecto: vista general.}\label{fig:sd9-8}
+{\fontsize{9.5pt}{12pt}\selectfont Fuente: elaboración propia. Severidad según los niveles de servicio del SD4, Tabla 16.\par}
+\end{figure}\clearpage
+\clearpage\begin{figure}[p]\centering
+\begin{tikzpicture}[font=\fontsize{9.5pt}{12pt}\selectfont,>=stealth]
+\tikzset{detail/.style={draw=lafroxFuerte,fill=lafroxFuerte!4,rounded corners=2pt,align=left,text width=5.7cm,minimum height=1.55cm,inner sep=6pt}}
+\node[detail] (a0) at (0,0.0) {\textbf{N1}\\ Inicio};
+\node[detail] (b0) at (8.0,0.0) {\textbf{N2}\\ Registrado\\ caso, requisito, versión};
+\draw[->,thick,lafroxFuerte] (a0.east) -- (b0.west);
+\node[detail] (a1) at (0,-3.3) {\textbf{N2}\\ Registrado\\ caso, requisito, versión};
+\node[detail] (b1) at (8.0,-3.3) {\textbf{N3}\\ Clasificado\\ severidad crítica, alta, media o baja};
+\draw[->,thick,lafroxFuerte] (a1.east) -- (b1.west);
+\node[detail] (a2) at (0,-6.6) {\textbf{N3}\\ Clasificado\\ severidad crítica, alta, media o baja};
+\node[detail] (b2) at (8.0,-6.6) {\textbf{N4}\\ En corrección};
+\draw[->,thick,lafroxFuerte] (a2.east) -- node[above,fill=white] {asignado} (b2.west);
+\node[detail] (a3) at (0,-9.899999999999999) {\textbf{N3}\\ Clasificado\\ severidad crítica, alta, media o baja};
+\node[detail] (b3) at (8.0,-9.899999999999999) {\textbf{N5}\\ Rechazado\\ no es defecto};
+\draw[->,thick,lafroxFuerte] (a3.east) -- (b3.west);
+\end{tikzpicture}
+\caption*{Figura 9.8 - detalle de conexiones 1 a 4.}
+{\fontsize{9.5pt}{12pt}\selectfont Fuente: elaboración propia. Severidad según los niveles de servicio del SD4, Tabla 16.\par}
+\end{figure}\clearpage
+\clearpage\begin{figure}[p]\centering
+\begin{tikzpicture}[font=\fontsize{9.5pt}{12pt}\selectfont,>=stealth]
+\tikzset{detail/.style={draw=lafroxFuerte,fill=lafroxFuerte!4,rounded corners=2pt,align=left,text width=5.7cm,minimum height=1.55cm,inner sep=6pt}}
+\node[detail] (a0) at (0,0.0) {\textbf{N4}\\ En corrección};
+\node[detail] (b0) at (8.0,0.0) {\textbf{N6}\\ En verificación\\ prueba repetida};
+\draw[->,thick,lafroxFuerte] (a0.east) -- node[above,fill=white] {fusionado} (b0.west);
+\node[detail] (a1) at (0,-3.3) {\textbf{N6}\\ En verificación\\ prueba repetida};
+\node[detail] (b1) at (8.0,-3.3) {\textbf{N7}\\ Cerrado\\ prueba aprobada y agregada a la regresión};
+\draw[->,thick,lafroxFuerte] (a1.east) -- node[above,fill=white] {aprobada} (b1.west);
+\node[detail] (a2) at (0,-6.6) {\textbf{N6}\\ En verificación\\ prueba repetida};
+\node[detail] (b2) at (8.0,-6.6) {\textbf{N4}\\ En corrección};
+\draw[->,thick,lafroxFuerte] (a2.east) -- node[above,fill=white] {persiste} (b2.west);
+\node[detail] (a3) at (0,-9.899999999999999) {\textbf{N7}\\ Cerrado\\ prueba aprobada y agregada a la regresión};
+\node[detail] (b3) at (8.0,-9.899999999999999) {\textbf{N8}\\ Reabierto};
+\draw[->,thick,lafroxFuerte] (a3.east) -- node[above,fill=white] {reaparece} (b3.west);
+\end{tikzpicture}
+\caption*{Figura 9.8 - detalle de conexiones 5 a 8.}
+{\fontsize{9.5pt}{12pt}\selectfont Fuente: elaboración propia. Severidad según los niveles de servicio del SD4, Tabla 16.\par}
+\end{figure}\clearpage
+\clearpage\begin{figure}[p]\centering
+\begin{tikzpicture}[font=\fontsize{9.5pt}{12pt}\selectfont,>=stealth]
+\tikzset{detail/.style={draw=lafroxFuerte,fill=lafroxFuerte!4,rounded corners=2pt,align=left,text width=5.7cm,minimum height=1.55cm,inner sep=6pt}}
+\node[detail] (a0) at (0,0.0) {\textbf{N8}\\ Reabierto};
+\node[detail] (b0) at (8.0,0.0) {\textbf{N4}\\ En corrección};
+\draw[->,thick,lafroxFuerte] (a0.east) -- (b0.west);
+\end{tikzpicture}
+\caption*{Figura 9.8 - detalle de conexiones 9 a 9.}
+{\fontsize{9.5pt}{12pt}\selectfont Fuente: elaboración propia. Severidad según los niveles de servicio del SD4, Tabla 16.\par}
+\end{figure}\clearpage
+\noindent\textbf{Lectura complementaria de la Figura 9.8.} Regla: ningún defecto crítico o alto abierto pasa G4, ni permite cerrar una marcha blanca (Art. 17.3). Dos reaperturas por la misma causa → análisis de causa raíz en el Comité de Calidad.\par

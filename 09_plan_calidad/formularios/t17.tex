@@ -44,7 +44,8 @@ El hito se entiende cumplido sólo con el acta firmada por la Contraparte Técni
 
 \textbf{Tabla T17.1 — Contenido del acta de conformidad. Fuente: elaboración propia a partir de las Bases Administrativas, Art. 18.}
 
-\begin{tablalafrox}{Detalle tabular 1 (bloque 1)}{tab:sd9-t17-1-1}{Y Y}{\cab{Campo} & \cab{Contenido}}
+\renewcommand{\thetable}{T17.1}
+\begin{tablalafrox}{Contenido del acta de conformidad}{tab:sd9-t17-1-1}{L{3.0cm} Y}{\cab{Campo} & \cab{Contenido}}
 Hito y entregables & Código del hito del Formulario E-25 y lista de entregables con su versión \\
 Fechas & Entrega, observaciones, subsanación y firma \\
 Criterios & Cada criterio de la ficha con su resultado: cumplido o no cumplido \\
@@ -61,7 +62,8 @@ Cada ficha resume el hito del Formulario E-25, su fecha de entrega y su fecha l�
 
 La ficha del H1 cierra el levantamiento.
 
-\begin{tablalafrox}{Detalle tabular 2 (bloque 1)}{tab:sd9-t17-2-1}{Y Y}{\cab{Campo} & \cab{Contenido}}
+\renewcommand{\thetable}{T17.H1}
+\begin{tablalafrox}{Protocolo de aceptación del hito H1}{tab:sd9-t17-2-1}{L{3.0cm} Y}{\cab{Campo} & \cab{Contenido}}
 Entregables & Línea base de alcance de la Etapa 1; matriz de trazabilidad (1.2.4); plan de calidad y de pruebas (1.5.1) \\
 Criterios & 100 \% de los requisitos ofertados con componente, paquete de la EDT y prueba prevista; cero requisitos sin origen; supuestos del SD3 validados o con consulta registrada \\
 Evidencia & Matriz exportada desde el repositorio; acta de validación de los supuestos \\
@@ -73,7 +75,8 @@ Responsable & Líder de Calidad (matriz) y Jefe de Proyecto (línea base) \\
 
 La ficha del H2 cierra el diseño de la Etapa 1.
 
-\begin{tablalafrox}{Detalle tabular 3 (bloque 1)}{tab:sd9-t17-3-1}{Y Y}{\cab{Campo} & \cab{Contenido}}
+\renewcommand{\thetable}{T17.H2}
+\begin{tablalafrox}{Protocolo de aceptación del hito H2}{tab:sd9-t17-3-1}{L{3.0cm} Y}{\cab{Campo} & \cab{Contenido}}
 Entregables & Documento de arquitectura y registro de decisiones; plan de seguridad; modelo de datos; informe de usabilidad (2.6.2) \\
 Criterios & Cada componente del SD3 mapeado en la arquitectura lógica y física; cada decisión con alternativas y criterio; modelo de datos que responde la consulta de un retiro sanitario; flujos críticos probados con usuarios \\
 Evidencia & Revisión del Comité de Arquitectura; informe de pruebas de usabilidad con hallazgos y cambios de diseño (RT-13.03) \\
@@ -85,7 +88,8 @@ Responsable & Arquitecto de Solución \\
 
 La ficha del H3 habilita los ambientes donde se ejecutan las pruebas.
 
-\begin{tablalafrox}{Detalle tabular 4 (bloque 1)}{tab:sd9-t17-4-1}{Y Y}{\cab{Campo} & \cab{Contenido}}
+\renewcommand{\thetable}{T17.H3}
+\begin{tablalafrox}{Protocolo de aceptación del hito H3}{tab:sd9-t17-4-1}{L{3.0cm} Y}{\cab{Campo} & \cab{Contenido}}
 Entregables & Ambientes de Desarrollo, QA, Preproducción, Producción y Recuperación ante Desastres; sala técnica de Talca; observabilidad operativa; pipeline con las puertas G0 a G3 \\
 Criterios & Cinco ambientes operativos (RT-04.01); Preproducción equivalente a Producción, con las diferencias declaradas en el SD4; ambientes reconstruibles desde código; puertas bloqueando con un cambio de prueba que incumple cada umbral \\
 Evidencia & Informe de habilitación por ambiente; ejecución del pipeline que muestra cada puerta bloqueando; tablero de observabilidad con trazas de extremo a extremo \\
@@ -97,7 +101,8 @@ Responsable & Líder de Operación (SRE) \\
 
 La ficha del H4 acredita que el software está listo para certificar.
 
-\begin{tablalafrox}{Detalle tabular 5 (bloque 1)}{tab:sd9-t17-5-1}{Y Y}{\cab{Campo} & \cab{Contenido}}
+\renewcommand{\thetable}{T17.H4}
+\begin{tablalafrox}{Protocolo de aceptación del hito H4}{tab:sd9-t17-5-1}{L{3.0cm} Y}{\cab{Campo} & \cab{Contenido}}
 Entregables & Versión etiquetada de la Etapa 1; informe de integración, regresión e idempotencia (3.8.1); informe de cobertura \\
 Criterios & 15 de 15 integraciones sin error; batería de regresión sin fallas; cobertura ≥ 70 \% en lógica de negocio y ≥ 80 \% global; 0 defectos críticos o altos abiertos \\
 Evidencia & Informes por módulo entregados entre agosto y octubre de 2027; informe final de 3.8.1; extracto de la matriz 9.C para la Etapa 1 \\
@@ -109,7 +114,8 @@ Responsable & Líder de Calidad \\
 
 La ficha del H5 certifica la Etapa 1 antes de su marcha blanca.
 
-\begin{tablalafrox}{Detalle tabular 6 (bloque 1)}{tab:sd9-t17-6-1}{Y Y}{\cab{Campo} & \cab{Contenido}}
+\renewcommand{\thetable}{T17.H5}
+\begin{tablalafrox}{Protocolo de aceptación del hito H5}{tab:sd9-t17-6-1}{L{3.0cm} Y}{\cab{Campo} & \cab{Contenido}}
 Entregables & Acta de certificación (3.8.7) con los informes de 3.8.2 a 3.8.6 y 3.8.8 \\
 Criterios & Casos de aceptación firmados; p95 de la Tabla 9.2 a 21,99 TPS; punto de quiebre registrado; recuperación sin intervención ante cada falla; RTO ≤ 4 h y RPO ≤ 15 min; 0 hallazgos críticos o altos de la prueba de intrusión; 0 pérdidas y 0 duplicados en 14 h sin señal y 24 h sin enlace; WCAG 2.2 AA; despliegue sin interrupción y reversión ≤ 10 min \\
 Evidencia & Informes del Formulario T-13, sección 10, incluidos la curva de carga (RT-09.07) y el informe íntegro del tercero (RT-11.20) \\
@@ -121,7 +127,8 @@ Responsable & Líder de Calidad \\
 
 La ficha del H6 habilita la operación supervisada.
 
-\begin{tablalafrox}{Detalle tabular 7 (bloque 1)}{tab:sd9-t17-7-1}{Y Y}{\cab{Campo} & \cab{Contenido}}
+\renewcommand{\thetable}{T17.H6}
+\begin{tablalafrox}{Protocolo de aceptación del hito H6}{tab:sd9-t17-7-1}{L{3.0cm} Y}{\cab{Campo} & \cab{Contenido}}
 Entregables & Plan de reversión ensayado (4.1.2); registro de usuarios capacitados de la primera ola; migración conciliada (3.7.5) \\
 Criterios & Reversión técnica ensayada en ≤ 10 minutos para el cambio de versión y reversión operativa de extremo a extremo en ≤ 40 minutos; 100 \% de los usuarios de la ola capacitados; 0 diferencias no explicadas en la conciliación de la migración \\
 Evidencia & Informe del ensayo de reversión con ambos cronómetros; registro de capacitación; acta de corte por sitio \\
@@ -133,7 +140,8 @@ Responsable & Líder Funcional (IMP) \\
 
 La ficha del H7 cierra la marcha blanca con las seis condiciones copulativas del Art. 17.3.
 
-\begin{tablalafrox}{Detalle tabular 8 (bloque 1)}{tab:sd9-t17-8-1}{Y Y}{\cab{Campo} & \cab{Contenido}}
+\renewcommand{\thetable}{T17.H7}
+\begin{tablalafrox}{Protocolo de aceptación del hito H7}{tab:sd9-t17-8-1}{L{3.0cm} Y}{\cab{Campo} & \cab{Contenido}}
 Entregables & Informe de cierre de la marcha blanca con los indicadores diarios del SD7, Tabla 7.9; informe de los resultados de aceptación del Caso 02, capítulo 18 (R18, sección 3), que corresponden a la Etapa 1 \\
 Criterios & 0 incidentes críticos o altos abiertos; 100 \% del volumen real durante las cuatro últimas semanas; 0 minutos de indisponibilidad entre 05:30 y 07:00 y disponibilidad ≥ 99,9 \%; p95 cumplidos; 0 diferencias de conciliación sin explicar; 100 \% de usuarios certificados; prueba de intrusión por tercero, resiliencia y carga aplicable repetidas sobre la versión de cierre; resultados R18 de la Etapa 1 en su meta (sección 3) \\
 Evidencia & Serie diaria de los indicadores de las cuatro últimas semanas; registros de conciliación; registro de certificación de usuarios; informes de intrusión, resiliencia y carga del cierre de marcha blanca \\
@@ -145,7 +153,8 @@ Responsable & Jefe de Proyecto \\
 
 La ficha del H8 cierra el diseño de la Etapa 2.
 
-\begin{tablalafrox}{Detalle tabular 9 (bloque 1)}{tab:sd9-t17-9-1}{Y Y}{\cab{Campo} & \cab{Contenido}}
+\renewcommand{\thetable}{T17.H8}
+\begin{tablalafrox}{Protocolo de aceptación del hito H8}{tab:sd9-t17-9-1}{L{3.0cm} Y}{\cab{Campo} & \cab{Contenido}}
 Entregables & Línea base de alcance de la Etapa 2; diseño detallado; matriz de trazabilidad actualizada \\
 Criterios & 100 \% de los requisitos de la Etapa 2 con componente, paquete y prueba prevista; diseño sin cambios a contratos de la Etapa 1 en producción sin nueva versión de la interfaz \\
 Evidencia & Matriz 9.C de la Etapa 2; registro de decisiones actualizado \\
@@ -157,7 +166,8 @@ Responsable & Arquitecto de Solución \\
 
 La ficha del H9 acredita que el software de la Etapa 2 está listo para certificar, sin afectar la Etapa 1.
 
-\begin{tablalafrox}{Detalle tabular 10 (bloque 1)}{tab:sd9-t17-10-1}{Y Y}{\cab{Campo} & \cab{Contenido}}
+\renewcommand{\thetable}{T17.H9}
+\begin{tablalafrox}{Protocolo de aceptación del hito H9}{tab:sd9-t17-10-1}{L{3.0cm} Y}{\cab{Campo} & \cab{Contenido}}
 Entregables & Versión etiquetada de la Etapa 2; informe de integración y regresión (3.9.1) \\
 Criterios & 0 regresiones en la Etapa 1; integraciones de la Etapa 2 sin error; cobertura ≥ 70 \% y ≥ 80 \%; 0 defectos críticos o altos abiertos \\
 Evidencia & Informe de 3.9.1; informe de cobertura; extracto de la matriz 9.C \\
@@ -169,7 +179,8 @@ Responsable & Líder de Calidad \\
 
 La ficha del H10 certifica la Etapa 2 con ambas etapas activas.
 
-\begin{tablalafrox}{Detalle tabular 11 (bloque 1)}{tab:sd9-t17-11-1}{Y Y}{\cab{Campo} & \cab{Contenido}}
+\renewcommand{\thetable}{T17.H10}
+\begin{tablalafrox}{Protocolo de aceptación del hito H10}{tab:sd9-t17-11-1}{L{3.0cm} Y}{\cab{Campo} & \cab{Contenido}}
 Entregables & Acta de certificación (3.9.6) con los informes de 3.9.2 a 3.9.5 y 3.9.7 \\
 Criterios & Casos de aceptación firmados por cadenas, transportistas, Comercial y Finanzas; p95 a 1,5× el peak con ambas etapas; RTO y RPO con ambas etapas; 0 hallazgos críticos o altos; WCAG 2.2 AA en los portales; despliegue sin interrumpir ninguna de las dos etapas \\
 Evidencia & Informes del Formulario T-13 para la Etapa 2 \\
@@ -177,11 +188,13 @@ Fechas & Entrega 12-06-2028; fecha límite 17-07-2028; reserva 25 días hábiles
 Responsable & Líder de Calidad \\
 \end{tablalafrox}
 
+\clearpage
 \subsection*{H11 — Inicio de la marcha blanca de la Etapa 2 (mes 19)}
 
 La ficha del H11 habilita la operación supervisada de la Etapa 2 en convivencia con la Etapa 1.
 
-\begin{tablalafrox}{Detalle tabular 12 (bloque 1)}{tab:sd9-t17-12-1}{Y Y}{\cab{Campo} & \cab{Contenido}}
+\renewcommand{\thetable}{T17.H11}
+\begin{tablalafrox}{Protocolo de aceptación del hito H11}{tab:sd9-t17-12-1}{L{3.0cm} Y}{\cab{Campo} & \cab{Contenido}}
 Entregables & Plan de reversión de la Etapa 2; registro de usuarios capacitados (7.3.2); cadenas certificadas para la mensajería electrónica \\
 Criterios & Reversión técnica de la Etapa 2 en ≤ 10 minutos sin afectar la Etapa 1; reversión operativa de extremo a extremo en ≤ 40 minutos, el mismo objetivo que el Formulario T-18, sección 6.4, fija para el ensayo previo a cada corte; 100 \% de los usuarios definidos certificados; fuente única de verdad para los datos compartidos (Art. 17.2) \\
 Evidencia & Ensayo de reversión en Preproducción con cronómetro técnico y operativo; registro de certificación; informe de conciliación entre etapas \\
@@ -193,7 +206,8 @@ Responsable & Líder Funcional (IMP) \\
 
 La ficha del H12 cierra la implementación y acepta el producto final.
 
-\begin{tablalafrox}{Detalle tabular 13 (bloque 1)}{tab:sd9-t17-13-1}{Y Y}{\cab{Campo} & \cab{Contenido}}
+\renewcommand{\thetable}{T17.H12}
+\begin{tablalafrox}{Protocolo de aceptación del hito H12}{tab:sd9-t17-13-1}{L{3.0cm} Y}{\cab{Campo} & \cab{Contenido}}
 Entregables & Informe de cierre de la marcha blanca de la Etapa 2; informe de los 16 resultados R18 (sección 3); expediente del producto final \\
 Criterios & Las seis condiciones del Art. 17.3 para la Etapa 2; disponibilidad, desempeño e integridad de la Etapa 1 no degradados (Art. 17.2); prueba de intrusión por tercero, resiliencia y carga aplicable repetidas sobre la versión de cierre; resultados R18 en su meta, con las aceptaciones provisionales de la sección 3 \\
 Evidencia & Serie diaria de indicadores; matriz 9.C completa con el estado de prueba de los 645 identificadores; informes de intrusión, resiliencia y carga del cierre de marcha blanca \\
@@ -207,7 +221,8 @@ El producto final se acepta en el H12 con los 16 resultados del Caso 02, capítu
 
 \textbf{Tabla T17.2 — Resultados de aceptación del Caso y su evidencia. Fuente: elaboración propia a partir del SD3, Anexo 3.J, Tabla 3.A.13.}
 
-\begin{tablalafrox}{Detalle tabular 14 (bloque 1)}{tab:sd9-t17-14-1}{Y Y Y Y}{\cab{ID} & \cab{Meta} & \cab{Momento} & \cab{Evidencia}}
+\renewcommand{\thetable}{T17.2}
+\begin{tablalafrox}{Resultados de aceptación del Caso y su evidencia}{tab:sd9-t17-14-1}{Y Y Y Y}{\cab{ID} & \cab{Meta} & \cab{Momento} & \cab{Evidencia}}
 R18-01 & Lista de clientes afectados por lote en < 2 h & Marcha blanca E1 & Simulacro de retiro con un lote real, cronometrado (JD-07 en el ensayo previo) \\
 R18-02 & 100 \% de recepciones con lote & Marcha blanca E1 & Recepciones con lote / recepciones que lo requieren, cuatro semanas \\
 R18-03 & 100 \% de cámaras y vehículos con registro térmico continuo & Marcha blanca E1 & Auditoría de series térmicas sin brechas y consulta del CLIENTE \\
@@ -232,7 +247,8 @@ Catorce resultados se aceptan al cierre de una marcha blanca. Dos se aceptan en 
 
 La tabla declara el apoyo de IA conforme a las Aclaraciones, §7.2.
 
-\begin{tablalafrox}{Detalle tabular 15 (bloque 1)}{tab:sd9-t17-15-1}{L{3.2cm} Y}{\cab{Campo} & \cab{Valor}}
+\renewcommand{\thetable}{T17.IA}
+\begin{tablalafrox}{Declaración de uso de IA}{tab:sd9-t17-15-1}{L{3.2cm} Y}{\cab{Campo} & \cab{Valor}}
 Sección & Formulario T-17 \\
 Herramienta & Claude Code \\
 Finalidad del uso & Procedimiento, fichas por hito y resultados R18 desde el SD3, el T-15 y el E-25 \\

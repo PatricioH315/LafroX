@@ -23,7 +23,8 @@ La Tabla T13.1 define cada tipo de prueba, su nivel según ISO/IEC/IEEE 29119, s
 
 \textbf{Tabla T13.1 — Niveles y tipos de prueba. Fuente: elaboración propia a partir del Subdocumento 9, sección 9.2.3, y de las Bases Técnicas Transversales, sección 20.1.}
 
-\begin{tablalafrox}{Detalle tabular 1 (bloque 1)}{tab:sd9-t13-1-1}{Y Y Y Y Y}{\cab{Tipo} & \cab{Nivel} & \cab{Objetivo} & \cab{Técnica de diseño} & \cab{Responsable}}
+\renewcommand{\thetable}{T13.1}
+\begin{tablalafrox}{Niveles y tipos de prueba}{tab:sd9-t13-1-1}{Y Y Y Y Y}{\cab{Tipo} & \cab{Nivel} & \cab{Objetivo} & \cab{Técnica de diseño} & \cab{Responsable}}
 Unitaria y de componente & Componente & Reglas de negocio de cada módulo & Particiones de equivalencia, valores límite, tablas de decisión & DES \\
 Contrato & Integración & Cumplimiento de OpenAPI 3.1 y AsyncAPI por proveedor y consumidor & Casos por contrato: éxito, no responde, error, lentitud, duplicado, orden, versión & DES \\
 Integración & Integración & Flujos de las 15 integraciones de extremo a extremo & Casos de uso y transición de estados & CAL \\
@@ -31,11 +32,11 @@ Sistema y regresión & Sistema & Comportamiento completo de la versión candidat
 Aceptación de usuario & Aceptación & Validación con personas del CLIENTE & Escenarios de operación por perfil & CAL e IMP \\
 Usabilidad & Aceptación & Indicadores de usabilidad del RT-13.04 & Pruebas moderadas con tareas medidas & IMP \\
 Accesibilidad & Sistema & Conformidad WCAG 2.2 AA & Herramienta automática y revisión manual & CAL \\
-Perfil operacional & Sistema & 14 h sin señal, 24 h sin enlace, −22 °C con guantes, lluvia, >34 °C, sol directo y una mano & Escenarios de terreno con dispositivos reales & CAL \\
+Perfil\newline operacional & Sistema & 14 h sin señal, 24 h sin enlace, −22 °C con guantes, lluvia, >34 °C, sol directo y una mano & Escenarios de terreno con dispositivos reales & CAL \\
 Carga y estrés & Sistema & Umbrales p95 a 1,5× el peak y punto de quiebre & Perfil horario del SD4, escalones de carga & CAL y SRE \\
 Resiliencia & Sistema & Degradación controlada y recuperación sin intervención & Inyección de fallas & CAL y SRE \\
 Recuperación ante desastres & Sistema & RTO ≤ 4 h y RPO ≤ 15 min & Conmutación regional real & CAL y SRE \\
-Seguridad ofensiva & Sistema & Sin hallazgos críticos ni altos & Prueba de intrusión por tercero independiente & SEG \\
+Seguridad\newline ofensiva & Sistema & Sin hallazgos críticos ni altos & Prueba de intrusión por tercero independiente & SEG \\
 Migración & Sistema & Conciliación sin diferencias no explicadas & Dos ensayos completos y conciliación por dominio & DAT y CAL \\
 Despliegue y reversión & Sistema & Paso sin interrupción y reversión ≤ 10 min & Ensayo azul-verde con canario & SRE \\
 \end{tablalafrox}
@@ -46,7 +47,8 @@ Cada tipo de prueba se ejecuta en el ambiente más bajo donde su resultado es v�
 
 \textbf{Tabla T13.2 — Pruebas por ambiente. Fuente: elaboración propia a partir del SD4, sección 4.2.4.1.}
 
-\begin{tablalafrox}{Detalle tabular 2 (bloque 1)}{tab:sd9-t13-2-1}{Y Y Y Y}{\cab{Ambiente} & \cab{Pruebas} & \cab{Juegos de datos (Anexo 9.D)} & \cab{Disponibilidad}}
+\renewcommand{\thetable}{T13.2}
+\begin{tablalafrox}{Pruebas por ambiente}{tab:sd9-t13-2-1}{Y Y Y Y}{\cab{Ambiente} & \cab{Pruebas} & \cab{Juegos de datos (Anexo 9.D)} & \cab{Disponibilidad}}
 Desarrollo & Unitaria, componente, contrato & JD-01 reducido & Horario de uso; efímero por rama \\
 QA & Integración, sistema, regresión, DAST, accesibilidad, regresión de desempeño semanal & JD-01, JD-02, JD-06, JD-09, JD-10 & Horario de uso; ejecución nocturna de la regresión \\
 Preproducción & Aceptación, carga y estrés, resiliencia, corte de enlace, migración, despliegue y reversión & JD-01 a JD-09 & Por ventana de prueba programada \\
@@ -65,7 +67,8 @@ Una prueba no comienza si no se cumple su criterio de entrada, y no se da por ap
 
 \textbf{Tabla T13.3 — Criterios de entrada y salida por tipo de prueba. Fuente: elaboración propia a partir de las Bases Técnicas Transversales, sección 20.1, del Caso 02, capítulo 15, y del SD4.}
 
-\begin{tablalafrox}{Detalle tabular 3 (bloque 1)}{tab:sd9-t13-3-1}{Y Y Y}{\cab{Tipo} & \cab{Criterio de entrada} & \cab{Criterio de salida}}
+\renewcommand{\thetable}{T13.3}
+\begin{tablalafrox}{Criterios de entrada y salida por tipo de prueba}{tab:sd9-t13-3-1}{L{2.5cm} L{4.6cm} Y}{\cab{Tipo} & \cab{Criterio de entrada} & \cab{Criterio de salida}}
 Unitaria y de componente & Cambio en solicitud de fusión & Cobertura ≥ 70 \% en lógica de negocio y ≥ 80 \% global; 0 pruebas en falla \\
 Contrato & Contrato publicado en el repositorio & 0 contratos rotos \\
 Integración & Versión candidata en QA; adaptadores simulados disponibles & 15 de 15 flujos sin error; 0 regresiones \\
@@ -73,11 +76,11 @@ Sistema y regresión & Integración aprobada; datos JD-02 restituidos & Batería
 Aceptación de usuario & Sistema aprobado; usuarios del CLIENTE capacitados en el escenario & Casos firmados por la Contraparte Técnica \\
 Usabilidad & Prototipo o versión del flujo crítico & Preventista: 20 líneas en ≤ 2 h y error ≤ 5 \%; conductor/reparto: entrega completa en ≤ 3 min, ≤ 8 pasos y error ≤ 5 \%; bodega: confirmación de línea en ≤ 1 s y error ≤ 5 \%; aprendizaje: primer flujo asistido y segundo sin asistencia por perfil \\
 Accesibilidad & Vistas completas en QA & 0 incumplimientos WCAG 2.2 A y AA; informe de conformidad \\
-Perfil operacional & Dispositivos del modelo comprometido; JD-04 cargado & 0 pérdidas y 0 duplicados; dispositivo sincronizado en ≤ 10 min; CD en ≤ 2 h; operación con guantes a −22 °C; operación bajo lluvia, sobre 34 °C, a una mano y con pantalla legible bajo sol directo; conflictos de stock del corte del CD resueltos de forma determinista con la regla del SD4, Anexo 4-K, Tabla A.12 (orden de recepción central y correlativo de desempate; la solicitud no cubierta queda en excepción con aviso), verificada con un caso que repite dos veces la reconciliación de reservas concurrentes del mismo stock (preventa sin conexión frente a preventa en línea) y obtiene el mismo resultado y la misma bitácora, sin sobrescritura silenciosa \\
+Perfil\newline operacional & Dispositivos del modelo comprometido; \newline JD-04 cargado & 0 pérdidas y 0 duplicados; \newline dispositivo sincronizado en ≤ 10 min; \newline CD en ≤ 2 h; \newline operación con guantes a −22 °C; \newline operación bajo lluvia, sobre 34 °C, a una mano y con pantalla legible bajo sol directo; \newline conflictos de stock del corte del CD resueltos de forma determinista con la regla del SD4, Anexo 4-K, Tabla A.12 (orden de recepción central y correlativo de desempate; \newline la solicitud no cubierta queda en excepción con aviso), verificada con un caso que repite dos veces la reconciliación de reservas concurrentes del mismo stock (preventa sin conexión frente a preventa en línea) y obtiene el mismo resultado y la misma bitácora, sin sobrescritura silenciosa \\
 Carga y estrés & Preproducción equivalente a Producción; JD-03 cargado; observabilidad activa & p95 de la Tabla 9.2 a 21,99 TPS; punto de quiebre registrado; sin pérdida al superar la capacidad \\
 Resiliencia & Carga sostenida en curso; escenarios de falla aprobados & Recuperación sin intervención en cada escenario; 0 transacciones perdidas \\
 Recuperación ante desastres & Réplica sincronizada; procedimiento aprobado & RTO ≤ 4 h y RPO ≤ 15 min medidos \\
-Seguridad ofensiva & Versión congelada en Preproducción; alcance firmado con el tercero & 0 hallazgos críticos o altos abiertos; plan de remediación de los demás \\
+Seguridad\newline ofensiva & Versión congelada en Preproducción; alcance firmado con el tercero & 0 hallazgos críticos o altos abiertos; plan de remediación de los demás \\
 Migración & Perfilado y saneamiento aprobados (3.7.1) & 0 diferencias no explicadas en la conciliación por dominio; completitud 100 \% en entidades críticas; exactitud de saldos y lotes 100 \% contra conciliación aprobada; consistencia referencial 100 \% \\
 Despliegue y reversión & Versión aprobada en sistema & Despliegue sin interrupción; reversión ≤ 10 min \\
 \end{tablalafrox}
@@ -92,7 +95,8 @@ La automatización es el criterio por defecto. La Tabla T13.4 indica la herramie
 
 \textbf{Tabla T13.4 — Automatización por tipo de prueba. Fuente: elaboración propia a partir del Subdocumento 9, secciones 9.2.2 y 9.2.3.}
 
-\begin{tablalafrox}{Detalle tabular 4 (bloque 1)}{tab:sd9-t13-4-1}{Y Y Y Y}{\cab{Tipo} & \cab{Herramienta} & \cab{Automatización} & \cab{Ejecución}}
+\renewcommand{\thetable}{T13.4}
+\begin{tablalafrox}{Automatización por tipo de prueba}{tab:sd9-t13-4-1}{Y Y Y Y}{\cab{Tipo} & \cab{Herramienta} & \cab{Automatización} & \cab{Ejecución}}
 Unitaria y de componente & PHPUnit, JUnit 5, Jest & Total & Cada cambio (G2) \\
 Contrato & Pruebas de contrato OpenAPI y AsyncAPI & Total & Cada cambio (G2) \\
 Integración y regresión & PHPUnit, Espresso, Jest & Mayoritaria & Nocturna, dos ejecutores paralelos (≈ 4,3 h) \\
@@ -102,7 +106,7 @@ Carga y estrés & k6 & Total & Regresión semanal en QA; prueba completa por cer
 Resiliencia & AWS Fault Injection Service; desconexión controlada del sitio emulado & Total & Por certificación y semestral \\
 Recuperación ante desastres & Procedimiento automatizado de conmutación (SD4, Tabla 39) & Mayoritaria & Por certificación y semestral \\
 Perfil operacional y usabilidad & Espresso y prueba con personas & Parcial & Por certificación \\
-Seguridad ofensiva & Tercero independiente & Manual & Antes de cada paso a producción y anual \\
+Seguridad\newline ofensiva & Tercero independiente & Manual & Antes de cada paso a producción y anual \\
 \end{tablalafrox}
 
 Con 1.305 casos estimados y el 80 \% automatizado, la regresión nocturna ejecuta unos 1.044 casos. Los 261 casos manuales requieren unas 65 HH por ciclo y se planifican con los evaluadores en los meses de certificación (Subdocumento 9, sección 9.2.3).
@@ -117,7 +121,8 @@ La Tabla T13.5 presenta las pruebas de la implementación con sus fechas y el hi
 
 \textbf{Tabla T13.5 — Calendario de pruebas de la implementación. Fuente: elaboración propia a partir del Formulario T-15, sección 6.1, y del Formulario E-25.}
 
-\begin{tablalafrox}{Detalle tabular 5 (bloque 1)}{tab:sd9-t13-5-1}{Y Y Y Y Y}{\cab{Prueba} & \cab{Paquete} & \cab{Inicio} & \cab{Término} & \cab{Hito}}
+\renewcommand{\thetable}{T13.5}
+\begin{tablalafrox}{Calendario de pruebas de la implementación}{tab:sd9-t13-5-1}{Y Y Y Y Y}{\cab{Prueba} & \cab{Paquete} & \cab{Inicio} & \cab{Término} & \cab{Hito}}
 Usabilidad con usuarios y prototipos & 2.6.2 & 01-04-2027 & 29-04-2027 & H2 \\
 Perfilado y saneamiento de datos & 3.7.1 & 04-08-2027 & 01-10-2027 & H4 \\
 Integración, regresión e idempotencia E1 & 3.8.1 & 01-10-2027 & 20-10-2027 & H4 \\
@@ -147,7 +152,8 @@ La Tabla T13.6 presenta las pruebas periódicas de la Operación, con el mes del
 
 \textbf{Tabla T13.6 — Calendario de pruebas periódicas de la Operación. Fuente: elaboración propia a partir del Subdocumento 9, Tabla 9.9.}
 
-\begin{tablalafrox}{Detalle tabular 6 (bloque 1)}{tab:sd9-t13-6-1}{Y Y Y Y Y}{\cab{Prueba} & \cab{Frecuencia} & \cab{Meses del contrato} & \cab{Meses calendario} & \cab{Cantidad}}
+\renewcommand{\thetable}{T13.6}
+\begin{tablalafrox}{Calendario de pruebas periódicas de la Operación}{tab:sd9-t13-6-1}{Y Y Y Y Y}{\cab{Prueba} & \cab{Frecuencia} & \cab{Meses del contrato} & \cab{Meses calendario} & \cab{Cantidad}}
 Resiliencia por inyección de fallas & Semestral, con separación máxima de seis meses & 23, 29, 35, 41, 47, 53 & dic-2028, jun-2029, dic-2029, jun-2030, dic-2030, jun-2031 & 6 \\
 Recuperación ante desastres & Semestral, con separación máxima de seis meses & 24, 30, 36, 42, 48, 54 & ene-2029, jul-2029, ene-2030, jul-2030, ene-2031, jul-2031 & 6 \\
 Seguridad ofensiva por tercero & Anual & 28, 40, 52 & may-2029, may-2030, may-2031 & 3 \\
@@ -181,7 +187,8 @@ Las fuentes citadas en este formulario se listan en formato APA 7.ª edición. L
 
 La tabla declara el apoyo de IA conforme a las Aclaraciones, §7.2.
 
-\begin{tablalafrox}{Detalle tabular 7 (bloque 1)}{tab:sd9-t13-7-1}{L{3.2cm} Y}{\cab{Campo} & \cab{Valor}}
+\renewcommand{\thetable}{T13.IA}
+\begin{tablalafrox}{Declaración de uso de IA}{tab:sd9-t13-7-1}{L{3.2cm} Y}{\cab{Campo} & \cab{Valor}}
 Sección & Formulario T-13 \\
 Herramienta & Claude Code \\
 Finalidad del uso & Estructura del plan, criterios y calendario desde el T-15 \\
