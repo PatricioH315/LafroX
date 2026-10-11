@@ -1,6 +1,6 @@
 # LafroX — Subdocumento 8: Anexos
 
-Los anexos desarrollan el registro de 32 amenazas, la evaluación FMEA, la cuantificación y las respuestas, con matrices de trazabilidad, un modelo reproducible y condiciones de aceptación. Complementan el análisis del cuerpo y el Formulario T-16.
+Los anexos desarrollan el registro de 32 amenazas, la evaluación FMEA, la cuantificación y las respuestas, con matrices de trazabilidad, un modelo reproducible y condiciones de aceptación. Complementan el análisis del cuerpo y el Formulario T-16; el Anexo 8.G reúne la verificación prevista de sus controles.
 
 ## Anexo 8.A — Registro ampliado de amenazas
 
@@ -1089,6 +1089,51 @@ O8-01 — Oportunidad de diagnóstico: si los casos protegidos INN-02 representa
 
 DAT/IMP conservan perfiles de esfuerzo; responsabilidad desde mes 22 pasa a Operación, con aprobaciones Calidad/Seguridad de Tabla 8.1 y SD13.
 
+## Anexo 8.G — Verificación de controles y evidencia de riesgos
+
+La Tabla G.1 es una vista de verificación **planificada**, no un registro de resultados obtenidos. Vincula los controles y las evidencias de cierre de las 32 fichas del Anexo 8.A con el medio que permite comprobarlos; no crea casos de prueba, umbrales ni hitos nuevos. Para las pruebas de software rigen además los ambientes y criterios del T-13 y las puertas del SD9; una inspección de contratos, agenda o dotación no se sustituye por una prueba automática. Los plazos reproducen el ciclo de la ficha cuando no existe un hito específico.
+
+El responsable de respuesta aporta el resultado y su evidencia; CAL verifica el cierre técnico, JP registra la decisión y el CLIENTE conserva la aceptación contractual conforme a 8.1.4 y al T-17. Los relevos posteriores al mes 21 siguen 8.1.2 y las fichas de R8-20, R8-27 y R8-29. Una ejecución fallida abre o actualiza el defecto o problema y mantiene el tratamiento; ni esta tabla ni un control descrito permiten declarar eficacia o liberar reserva.
+
+**Tabla G.1 — Riesgo, control y verificación prevista. Fuente: Anexo 8.A, SD9 y Formularios T-13/T-17.**
+
+| Riesgo y ficha | Control existente | Prueba o inspección prevista | Criterio / evidencia de cierre prevista | Hito o ciclo aplicable | Responsable de respuesta |
+| --- | --- | --- | --- | --- | --- |
+| [R8-01](#r8-01--erp-indisponible-o-guía-invalidada) | Preemisión y conciliación carga/guía | Ensayo de caída ERP con carga modificada y 96 salidas | Ensayo de 96 salidas sin interrupción, con caída ERP/carga modificada, sin pérdida ni duplicación | Antes H6; repetir antes H11 | ARQ |
+| [R8-02](#r8-02--doble-reserva-o-custodia-en-la-coordinación-de-reserva) | Concurrencia, UUID, idempotencia y autoridad | AL-STOCK-01/AL-ACT-01 | AL-STOCK-01/AL-ACT-01 con cero doble descuento/custodia | Antes H4; regresión H9 | DES |
+| [R8-03](#r8-03--cd-no-sostiene-24-horas-sin-wan) | Autonomía y reconciliación en ambos CD | Ensayo de 24 horas con los tres caminos WAN cortados | 24 horas de operación completa y drenaje sin diferencias inexplicadas | Antes H5; repetir antes H10 | SRE |
+| [R8-04](#r8-04--pérdida-o-duplicación-tras-14-horas-offline) | Persistencia offline y reconciliación | Ensayo de 14 horas offline, reinicio y reconexión | Registros/cobros completos y únicos al reconectar | Antes H5 y cada versión móvil | DES |
+| [R8-05](#r8-05--pérdida-del-sitio-supera-rpo) | Tratamiento de replicación y pérdida del sitio del SD4 4.3.2.4 | AL-DR-01 y ensayo de continuidad del despacho separado | AL-DR-01 mide RPO ≤ 15 min y RTO ≤ 4 h e identifica la copia remota que sobrevive cuando el NAS se destruye con el sitio; con ella se demuestra la frontera en que se cumple el RPO (RT-07.04) junto con el tratamiento del riesgo residual (RT-02.11). La continuidad del despacho se prueba en un ensayo separado | Ensayar antes H5/H10 | ARQ |
+| [R8-06](#r8-06--carga-y-cola-de-la-coordinación-de-reserva-exceden-capacidad) | Multiplicidad de retenciones y capacidad | AL-STOCK-01 y carga/drenaje 3.8.4/3.9.3 | Carga/latencias y drenaje conformes a multiplicidad medida | Antes H5/H10; vigilancia mensual | SRE |
+| [R8-07](#r8-07--ataque-o-exposición-de-datos-críticos) | Mínimo privilegio, aislamiento y credenciales | Prueba ofensiva y recuperación | Sin defectos de seguridad críticos/altos abiertos y prueba de recuperación | Antes H5/H10; vigilancia continua | SEG |
+| [R8-08](#r8-08--bloqueo-por-proveedor) | Dependencias, contratos y formatos portables | Inspección del inventario/contratos y ensayo de extracción/restauración | Exportación/restauración reproducibles y documentación CLIENTE | Diseño en el H2 y el H8; ensayo anual y salida en el mes 56 | ARQ |
+| [R8-09](#r8-09--obsolescencia-durante-56-meses) | Inventario de versiones y soporte | Inspección de soporte y regresión de compatibilidad en QA | Versiones soportadas y regresión sin degradación E1/E2 | Inventario H2; revisión mensual operación | SRE |
+| [R8-10](#r8-10--interfaces-no-documentadas-exigen-retrabajo) | Muestras y contratos de interfaz | Pruebas positivas/negativas con volumen representativo | Contratos y pruebas positivas/negativas con volumen representativo | Antes H2; integración H4 | ARQ |
+| [R8-11](#r8-11--productividad-o-dotación-inferior-al-modelo) | Estimación, competencias y relevos | Revisión de asignaciones nominales, capacidad y reserva por subventana | Asignaciones nominales y cero sobreasignación por subventana | Antes línea base; semanal | JP |
+| [R8-12](#r8-12--contrapartes-cliente-no-disponibles) | Agenda, suplentes y revisión anticipada | Inspección de decisiones y actas con responsables/fechas | Decisiones/actas explícitas con responsables y fechas | Agenda en el mes 1; cada comité quincenal | JP |
+| [R8-13](#r8-13--conocimiento-de-ruteo-no-transferido) | Reglas de ruteo y suplencia | Ensayo de dos semanas sin planificador y medición OTIF | Dos semanas sin planificador y OTIF conforme | Captura meses 1–3; probar antes H7 | IMP |
+| [R8-14](#r8-14--e2-consume-capacidad-protegida-e1) | Separación de equipos y protección E1 | Inspección de capacidad independiente y métricas E1 | Equipos/capacidad independientes y métricas E1 sostenidas | Antes del mes 13; semanal hasta el mes 20 | DES |
+| [R8-15](#r8-15--perfiles-edi-no-certificados-a-tiempo) | Pruebas y aprobaciones de perfiles EDI | Revisión de aprobaciones por cadena y evidencia de alcance | Aprobaciones por cadena y 100 % del alcance durante cuatro semanas | Principal antes H10; todas antes activación/F−28 días | DES |
+| [R8-16](#r8-16--migración-altera-saldos-o-pierde-lotes) | Perfilado y conciliación SKU/lote/ubicación | Dos ensayos de migración y conciliación del corte | Ensayos/corte con diferencias explicadas y trazabilidad completa | Dos ensayos antes corte/H6 | DAT |
+| [R8-17](#r8-17--fecha-efectiva-elimina-ventanas-permitidas) | Calendario con feriados y prohibiciones | Inspección del calendario convertido a fechas y ventanas de evidencia | Calendario compatible con hitos y evidencia completa | Mes 1, antes del H1; antes del H6 y del H11 | JP |
+| [R8-18](#r8-18--marcha-blanca-no-cumple-seis-condiciones) | Habilitación completa y seis condiciones simultáneas | Medición diaria de marcha blanca y expediente de cierre T-17 | 28 días completos, cero críticos/altos, conciliación, usuarios certificados y acta | Diario marcha blanca; H7/H12 | CAL |
+| [R8-19](#r8-19--suministros-o-sala-fuera-de-secuencia) | Compra y recepción en secuencia | Inspección de actas y pruebas de sala, racks, borde y terreno | Actas y pruebas en secuencia sala, racks, borde y terreno | Sala, racks y borde antes H3; terreno antes ola | SRE |
+| [R8-20](#r8-20--rotación-y-resistencia-reducen-adopción) | Tutoría, certificación y relevos | Revisión de certificación por perfil/turno y uso sostenido | Usuarios por perfil/turno certificados y uso sostenido | Antes cada ola; mensual | IMP hasta el mes 21; Guillermo Castillo (SRE) desde el mes 22. IMP conserva la familia de esfuerzo. CAL verifica certificación |
+| [R8-21](#r8-21--transportistas-o-sindicato-rechazan-dispositivos) | Acuerdos de instalación, uso y acceso | Inspección de acuerdos y pruebas de flota/rutas | Acuerdos/pruebas en toda flota y rutas requeridas | Antes ola de reparto | IMP |
+| [R8-22](#r8-22--demanda-de-la-mesa-supera-la-dotación-base) | Medición por intervalo y calibración de demanda | Prueba de demanda y turnos frente a niveles/horarios del servicio | Prueba de demanda y turnos con los tres niveles de servicio y horarios | Medición desde el H6; recálculo antes del H7 (mes 16) y del H12 (mes 21); diario en peaks | SRE |
+| [R8-23](#r8-23--frío-o-sensores-no-producen-evidencia-íntegra) | Autonomía, calibración y asociación sensor/lote/tiempo | Ensayo a −22 °C y sin señal y revisión de series | Serie completa y asociada al lote; ensayo a −22 °C y sin señal | Antes de la ola 1 y de la de reparto; continuo | SRE |
+| [R8-24](#r8-24--filtración-en-telemetría-o-reproducción) | Enmascaramiento, acceso y retención | Inspección de datos y permisos antes de usar trazas | Inspección de datos/permisos sin exposición indebida | Antes usar trazas; cada versión | SEG |
+| [R8-25](#r8-25--inn-01-no-logra-seguimiento-posentrega) | Piloto asistido y catálogo aprobado | Evaluación del piloto frente a I-01A y decisión de adopción | Resultado frente a objetivo previo y decisión de adopción | Piloto meses 11–15 | IMP |
+| [R8-26](#r8-26--inn-02-no-reproduce-fallas-relevantes) | Captura protegida y reproducción de incidentes | Ensayo de corte, reinicio y reintento y contraste del diagnóstico | Reproducción y diagnóstico contrastados | Validación meses 11–15; operación | CAL |
+| [R8-27](#r8-27--inn-03-estima-vida-remanente-insegura) | Regla conservadora y aprobación sanitaria | Validación de Calidad con trazabilidad modelo/datos | Validación Calidad con trazabilidad modelo/datos | Antes del uso en los meses 11–15; revisión en los meses 26, 32, 38, 44, 50 y 56 | DAT hasta el mes 21; Guillermo Castillo (SRE) desde el mes 22. DAT conserva la familia de esfuerzo. Miño/Calidad aprueban parámetros sanitarios |
+| [R8-28](#r8-28--inn-04-medición-variable-genera-disputa) | Fórmula, datos y auditoría de medición | Revisión de línea base y tres liquidaciones sombra | Línea base y tres liquidaciones sombra reconciliadas | Modelo en los meses 17–20; liquidaciones sombra en los meses 21–23; antes del mes 24 | JP |
+| [R8-29](#r8-29--inn-05-baja-adopción-de-hoja-del-almacenero) | Co-diseño/piloto y privacidad del bloque 4 | Contraste de utilidad/uso y decisión documentada | Utilidad/uso contrastados y decisión documentada | Piloto en la Etapa 2; evaluar en los meses 24–27 | IMP hasta el mes 21; Guillermo Castillo (SRE) desde el mes 22. IMP conserva la familia de esfuerzo. Catalán aprueba privacidad del bloque 4 |
+| [R8-30](#r8-30--crecimiento-o-nuevo-cd-supera-parametrización) | Distribución real y límites de plataforma | Ensayo de capacidad y acuerdo de alcance del nuevo sitio | Capacidad ensayada y alcance de nuevo sitio acordado | Antes H5/H10; anual | ARQ |
+| [R8-31](#r8-31--observaciones-de-revisión-obligan-a-repetir-certificación-paralela) | Entrega incremental y orden de certificación | Inspección de acta H4/H9 y casos ya certificados | Acta del H4/H9 sin observaciones abiertas sobre casos certificados | Revisión del H4 (mes 10) y del H9 (mes 17) | CAL |
+| [R8-32](#r8-32--evaluadores-subcontratados-no-disponibles-para-las-certificaciones) | Contratación anticipada e inducción | Revisión de asignaciones e inducción al inicio de certificación | Evaluadores asignados e inducidos al inicio de cada certificación | Contrato antes del mes 7 y del mes 14 | CAL |
+
+Los resultados se incorporan al registro único con versión, fecha, alcance ejecutado, criterio comparado y evidencia localizable. El expediente del hito correspondiente recoge las pruebas aplicables conforme al T-17; los controles recurrentes mantienen su periodicidad propia aunque exista un acta anterior.
+
 ## Referencias
 
 Las fuentes citadas en este documento se listan en formato APA 7.ª edición. Las Bases se citan en el texto con su documento y el artículo, capítulo, sección o código del requisito.
@@ -1097,7 +1142,7 @@ Las fuentes citadas en este documento se listan en formato APA 7.ª edición. La
 - Distribuidora Puelche S.A. (2026b). *Bases Técnicas Transversales de Licitación N.º TFEP-01/2026*.
 - Distribuidora Puelche S.A. (2026c). *Caso 02: Logística. Especificaciones del problema y operación de Distribuidora Puelche S.A.*
 - Distribuidora Puelche S.A. (2026d). *Aclaraciones de la Licitación N.º TFEP-01/2026*.
-- LafroX. (2026). Subdocumentos 1 a 7 y 13, con los anexos y formularios citados.
+- LafroX. (2026). Subdocumentos 1 a 9 y 13, con los anexos y formularios citados, incluidos los Formularios T-13 y T-17.
 - International Electrotechnical Commission. (2018). *IEC 60812:2018 Failure modes and effects analysis (FMEA and FMECA)*. IEC.
 - International Organization for Standardization. (2018). *ISO 31000:2018 Risk management — Guidelines*. ISO.
 - Project Management Institute. (2017). *La guía de los fundamentos para la dirección de proyectos (Guía del PMBOK®)* (6.ª ed.), capítulo 11. Project Management Institute.
@@ -1115,3 +1160,4 @@ La tabla declara apoyo de IA conforme a las Aclaraciones §7.2. La revisión hum
 | Anexo 8.D | Codex; Claude Code | Contingencia, gestión y curva por mes/perfil | Alto | Ninguno | [[REVISIÓN HUMANA]] |
 | Anexo 8.E | Codex; Claude Code | Compatibilidad y condiciones de evidencia | Alto | Ninguno | [[REVISIÓN HUMANA]] |
 | Anexo 8.F | Codex; Claude Code | Adopción de innovaciones y oportunidad | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| Anexo 8.G | Codex | Relación entre riesgos, controles y verificación prevista | Alto | Ninguno | [[REVISIÓN HUMANA]] |

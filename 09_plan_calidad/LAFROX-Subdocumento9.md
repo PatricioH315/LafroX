@@ -88,6 +88,19 @@ El gobierno distingue aseguramiento de control (PMI, 2017, p. 290). El asegurami
 
 La calidad de datos es parte del marco y no un apéndice. El SD5, sección 5.2.5, usa ISO/IEC 25012 (ISO & IEC, 2008) como modelo de dimensiones —completitud, exactitud, consistencia, unicidad, validez, oportunidad y credibilidad— y define reglas de captura, rechazo y tablero en sus anexos. Este plan no declara que la norma aporte umbrales por sí misma: toma esas reglas como base y agrega en el Anexo 9.A los criterios medibles de completitud, exactitud y consistencia que se verifican en migración, marcha blanca y operación.
 
+#### Guía de control y evidencia
+
+| Decisión que se necesita | Responsable existente | Dónde se desarrolla | Evidencia para comprobarla |
+| --- | --- | --- | --- |
+| Definir y vigilar calidad del proceso | Líder de Calidad y Comité de Calidad | 9.1.1 y 9.1.5 | Métricas mensuales, auditorías y acciones de mejora |
+| Autorizar la promoción de una versión | Responsables de puertas y Contraparte Técnica | 9.2.1; T-13, sección 5 | Resultados de pipeline y expediente; acta adicional en G5 |
+| Preparar y ejecutar las pruebas | CAL y especialistas de T-13, sección 9 | 9.2.3–9.2.4; T-13 | Informes, datos versionados y defectos con evidencia |
+| Confirmar cobertura y documentación | CAL y dueño del entregable | 9.2.5 y control documental | Matriz 9.C y lista de verificación del expediente |
+| Corregir y comprobar eficacia | Dueño de la acción y Comité de Calidad | 9.2.6 | Prueba de regresión o medición posterior frente al criterio existente |
+| Aceptar un hito o cerrar una etapa | Contraparte Técnica del CLIENTE | 9.3.2; T-17, secciones 1–3 | Acta y evidencia de los criterios aplicables |
+
+Esta guía remite a los responsables y registros existentes; no modifica sus atribuciones. La verificación de los controles de riesgo se consulta en el SD8, Anexo 8.G.
+
 ### 9.1.2 Modelos de madurez
 
 LafroX opera un sistema de gestión de calidad certificado conforme a ISO 9001:2015 (ISO, 2015) y prácticas de desarrollo evaluadas en el nivel 3 de CMMI-DEV (SD1, secciones 1.3.1 y 1.4). El nivel 3 significa procesos definidos para la organización y adaptados al proyecto. Para este contrato, eso se traduce en tres áreas de práctica que el plan aplica explícitamente: verificación y validación (las pruebas de la sección 9.2.3), revisión entre pares (sección 9.2.2) y aseguramiento de la calidad del proceso, ejercido por las auditorías trimestrales de trazabilidad entre requisito, código y prueba que exige la política de LafroX (CMMI Institute, 2018).
@@ -369,6 +382,22 @@ flowchart LR
 
 La figura muestra que cada eslabón se apoya en un identificador que ya existe en la propuesta, y la recorre en cursiva con un requisito crítico: la lista de clientes afectados por un lote en menos de dos horas. Los 645 ID del Formulario T-12 enlazan los requisitos con sus componentes y con la sección que los desarrolla. Cada caso de prueba lleva el ID del requisito en su nombre y, en el código, en una anotación de grupo de PHPUnit o en una etiqueta de JUnit. Así, el informe de cada ejecución del pipeline se agrupa por requisito sin trabajo manual. Cada solicitud de fusión cita el requisito o la incidencia que atiende, y cada despliegue registra el digest de la imagen que llevó. Con esos cuatro enlaces, la matriz del Anexo 9.C se genera desde el repositorio y el historial del pipeline, y no se mantiene a mano. La meta es que el 100 % de los ID con estado «Cumple» o «Cumple parcialmente» tenga al menos una prueba aprobada antes de su hito. Los 31 ID en estado «No cumple» (1 RF, 2 RNF y 28 RT) quedan en la matriz con esa condición y sin prueba, para que la Contraparte vea la brecha en vez de un vacío.
 
+#### Control documental de entregables
+
+Antes de presentar un entregable, CAL revisa con su dueño la lista siguiente y conserva el resultado en el expediente previsto por el T-17. Cada comprobación registra conforme, observación o no aplicable con justificación, referencia a la sección y evidencia; el dueño corrige y CAL verifica la corrección. La inspección no acredita la ejecución de las pruebas descritas ni reemplaza la revisión y el acta del CLIENTE.
+
+| Comprobación | Evidencia o criterio de revisión |
+| --- | --- |
+| Correspondencia con Bases y alcance ofertado | Fuente identificada, requisito y criterio de aceptación trazables; excepciones o dependencias visibles |
+| Estructura obligatoria | Títulos de las Aclaraciones conservados; cuerpo, anexos y formularios separados |
+| Cifras, unidades y cálculos | Fuente o cálculo mostrado; mismos valores en tablas, texto y formularios relacionados |
+| Trazabilidad | Requisito, diseño, paquete, prueba y criterio vinculados; estados de cumplimiento y pruebas consistentes |
+| Tablas, figuras y remisiones | Objeto identificable, numeración y referencias coherentes; enlaces al destino correcto; legibilidad revisada en el soporte de entrega |
+| Evidencia y estado real | Compromiso, supuesto, prueba prevista, resultado obtenido y aceptación distinguidos; sin aprobaciones ni ensayos atribuidos sin respaldo |
+| Referencias y declaración de IA | Fuentes localizables y declaración exigida por Aclaraciones; revisión humana identificada únicamente si fue realizada |
+
+Una observación se registra con responsable y plazo en el mismo expediente o registro de defectos, según corresponda. Las marcas de revisión humana pendientes no se completan por esta inspección ni se presentan como conformidad. La lista complementa, sin cambiar, los criterios y plazos de aceptación del T-17.
+
 ### 9.2.6 Gestión de defectos
 
 Un defecto es toda diferencia entre el resultado esperado de una prueba y el obtenido. Se registra en GitLab con el caso de prueba, el requisito, el ambiente, la versión y la evidencia. La Figura 9.8 presenta su ciclo de vida.
@@ -391,6 +420,20 @@ stateDiagram-v2
 **Figura 9.8 — Ciclo de vida del defecto. Fuente: elaboración propia.**
 
 En la figura, un defecto sólo se cierra cuando la prueba que lo detectó pasa y queda incorporada a la regresión. Así, un defecto corregido no puede volver sin que una prueba lo detecte. La severidad usa las cuatro clases de los niveles de servicio del SD4, Tabla 16, para que un defecto y un incidente se midan con la misma vara. Un defecto es crítico si impide la preparación, el despacho o la emisión de la guía en la ventana de 05:30 a 07:00, si compromete la seguridad o la integridad de datos, o si impide el bloqueo por excursión térmica. Es alto si afecta un servicio de nivel alto, que sólo tiene una alternativa costosa, como la captura sin conexión de la toma de pedido, la entrega o la consulta de stock y crédito. Es medio si el servicio afectado dispone de una alternativa operativa, y bajo si no impide operar. Ningún defecto crítico o alto abierto pasa la puerta G4. Ninguna marcha blanca se cierra con incidentes críticos o altos abiertos atribuibles a la solución (Distribuidora Puelche S.A., 2026a, art. 17.3). Un defecto reabierto dos veces por la misma causa pasa a análisis de causa raíz en el Comité de Calidad, con el mismo formato que el Art. 25 de las Bases Administrativas exige para los incidentes críticos.
+
+#### Mejora continua y comprobación de eficacia
+
+El Comité de Calidad mensual de 9.1.1 usa las métricas de 9.1.5, los defectos escapados o recurrentes, las auditorías y las observaciones de las personas usuarias para decidir mejoras. Cada acción conserva en el registro de defectos o de deuda técnica su causa, dueño, plazo, criterio vigente que debe recuperar y evidencia con la que se comprobará. No se abre un registro paralelo ni se cambia un umbral de aceptación mediante una acción de mejora.
+
+| Paso | Resultado verificable |
+| --- | --- |
+| Detectar y analizar | Desviación documentada frente al criterio existente y análisis de su causa; el defecto reabierto mantiene la regla de causa raíz de esta sección |
+| Acordar y ejecutar | Dueño y plazo asignados; corrección del proceso, capacitación o ajuste de control/prueba según la causa |
+| Prevenir repetición | Defecto escapado incorporado a la regresión; actualización del control y de la ficha R8 asociada cuando corresponda |
+| Comprobar eficacia | En el siguiente Comité de Calidad mensual, resultado de reejecución o medición posterior frente al mismo criterio y comparación con la desviación inicial |
+| Cerrar o escalar | Cierre sólo con evidencia de eficacia; si falla o falta evidencia, mantener abierta, corregir la acción y escalar según el gobierno de 9.1.1 |
+
+Una acción ejecutada no equivale a una acción eficaz. Si la verificación depende de una prueba todavía no programada para ese período, el comité registra el impedimento y su fecha aplicable y mantiene la acción abierta; no inventa una medición favorable. Una amenaza inmediata a seguridad, continuidad o hito se escala sin esperar el comité mensual por el ciclo del SD8. El cierre de mejora tampoco sustituye el cierre del defecto, la comprobación de riesgo residual ni la aceptación contractual.
 
 ## 9.3 Alineación con Plan de Trabajo
 
@@ -551,8 +594,8 @@ La tabla declara el apoyo de IA conforme a las Aclaraciones, §7.2. La revisión
 | Sección | Herramienta | Finalidad del uso | Nivel en texto | Nivel en diagramas | Revisión humana (quién y qué verificó) |
 | --- | --- | --- | --- | --- | --- |
 | Introducción | Claude Code | Conexión con los subdocumentos, anexos y formularios | Alto | Ninguno | [[REVISIÓN HUMANA]] |
-| 9.1 Plan de Calidad | Claude Code | Marco, madurez, umbrales ISO/IEC 25010, métricas y costo de la calidad | Alto | Medio | [[REVISIÓN HUMANA]] |
-| 9.2 Estrategia de Aseguramiento de Calidad | Claude Code | Puertas, análisis, estrategia de pruebas, datos, trazabilidad y defectos | Alto | Medio | [[REVISIÓN HUMANA]] |
+| 9.1 Plan de Calidad | Claude Code; Codex | Marco, madurez, umbrales ISO/IEC 25010, métricas y costo de la calidad | Alto | Medio | [[REVISIÓN HUMANA]] |
+| 9.2 Estrategia de Aseguramiento de Calidad | Claude Code; Codex | Puertas, análisis, estrategia de pruebas, datos, trazabilidad y defectos | Alto | Medio | [[REVISIÓN HUMANA]] |
 | 9.3 Alineación con Plan de Trabajo | Claude Code | Paquetes, horas, hitos y calendario de pruebas | Alto | Medio | [[REVISIÓN HUMANA]] |
 | Anexo 9.A | Claude Code | Métricas y umbrales por subcaracterística; ver declaración propia de los anexos | Alto | Ninguno | [[REVISIÓN HUMANA]] |
 | Anexo 9.B | Claude Code | Reglas y configuración de análisis; ver declaración propia de los anexos | Alto | Ninguno | [[REVISIÓN HUMANA]] |

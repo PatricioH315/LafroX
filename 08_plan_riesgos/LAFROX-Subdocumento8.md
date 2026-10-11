@@ -6,7 +6,7 @@ El plan establece tratamiento de riesgos de solución, desarrollo e implantació
 
 La solución de LafroX integra recepción y trazabilidad, inventario, frío, preventa, reparto y cobranza en E1, y canal moderno, portales y costo de servir en E2. Sus riesgos dependen de una operación que despacha 96 camiones entre 05:30 y 07:00, mantiene los CD 24 horas sin WAN y el terreno 14 horas sin señal, conserva ERP como único emisor tributario y despliega sin detener rutas (Distribuidora Puelche S.A., 2026c, Cap. 10). Este plan conecta las decisiones comerciales del SD2, alcance del SD3, contratos y dimensionamiento del SD4, gobierno del SD6 y programación del SD7 (LafroX, 2026).
 
-El cuerpo establece método y decisiones; los Anexos 8.A–8.F contienen registro ampliado, FMEA, escenarios, reservas y condiciones de evidencia; el T-16 conserva el formato obligatorio separado (Distribuidora Puelche S.A., 2026d, sección 11). Las condiciones que deben cerrarse antes de cada hito, incluida la verificación del RPO y del riesgo residual que el SD4 declara en la sección 4.3.2.4, se registran en el Anexo 8.E con responsable y plazo.
+El cuerpo establece método y decisiones; los Anexos 8.A–8.G contienen registro ampliado, FMEA, escenarios, reservas y condiciones de evidencia; el T-16 conserva el formato obligatorio separado (Distribuidora Puelche S.A., 2026d, sección 11). Las condiciones que deben cerrarse antes de cada hito, incluida la verificación del RPO y del riesgo residual que el SD4 declara en la sección 4.3.2.4, se registran en el Anexo 8.E con responsable y plazo.
 
 ## 8.1 Plan de riesgos
 
@@ -106,6 +106,49 @@ Solución: integridad de stock/custodia, ERP/DTE, autonomía, capacidad, RPO, se
 
 Los siete riesgos que el Caso 02 espera encontrar en este plan (Distribuidora Puelche S.A., 2026c, Cap. 19) tienen ficha propia: la pérdida del conocimiento de rutas (R8-13), la objeción sindical y el rechazo de los conductores de terceros (R8-21), la rotación en bodega (R8-20) y la ausencia de documentación de interfaces (R8-10). La dependencia de un solo enlace en Concepción la resuelve el SD4 con tres caminos independientes, y R8-03 la verifica con la prueba de 24 horas sin WAN en cada centro de distribución. El peak de septiembre coincide con las semanas de cierre de la marcha blanca de la Etapa 2, y R8-18 lo trata con la habilitación completa en agosto y la prueba de carga a 1,5 veces el peak antes del H11.
 
+La RBS se denomina también estructura de desglose de riesgos (EDR). La rama indica el objeto principal afectado, no la fase en que se descubre el evento: **Solución** agrupa la capacidad, continuidad, integridad y seguridad de la solución ofrecida durante su uso; **Desarrollo**, la construcción y certificación de sus productos, incluidas sus dependencias de equipo y de información; **Implantación**, la habilitación, aceptación y adopción del servicio en el CLIENTE. Por eso una migración que obliga a corregir productos figura en Desarrollo, aunque se ejecute cerca del corte, y la demanda de la mesa figura en Implantación, aunque continúe en Operación.
+
+La categoría expresa la causa o dependencia predominante dentro de esa rama: **Técnico**, comportamiento, integración o límites de componentes; **Organizacional**, personas, conocimiento, coordinación y adopción; **Proyecto**, recursos, secuencia, fechas, aprobaciones y compromisos; **Seguridad**, acceso y exposición de información; **Operación**, continuidad del proceso y evidencia del servicio. Se conserva una sola ubicación por ID, la de su ficha del Anexo 8.A; los efectos transversales se tratan en la respuesta y no generan una segunda amenaza ni otro cargo de reserva. La Tabla 8.3a permite recorrer esas asignaciones sin volver a valorar los riesgos.
+
+**Tabla 8.3a — Índice de la EDR por rama, categoría y ficha. Fuente: Figura 8.1 y Anexo 8.A.**
+
+| Rama | Categoría | ID y ficha | Riesgo |
+| --- | --- | --- | --- |
+| Solución | Operación | [R8-01](LAFROX-Subdocumento8-Anexos.md#r8-01--erp-indisponible-o-guía-invalidada) | ERP indisponible o guía invalidada |
+| Solución | Técnico | [R8-02](LAFROX-Subdocumento8-Anexos.md#r8-02--doble-reserva-o-custodia-en-la-coordinación-de-reserva) | Doble reserva o custodia en la coordinación de reserva |
+| Solución | Operación | [R8-03](LAFROX-Subdocumento8-Anexos.md#r8-03--cd-no-sostiene-24-horas-sin-wan) | CD no sostiene 24 horas sin WAN |
+| Solución | Técnico | [R8-04](LAFROX-Subdocumento8-Anexos.md#r8-04--pérdida-o-duplicación-tras-14-horas-offline) | Pérdida o duplicación tras 14 horas offline |
+| Solución | Operación | [R8-05](LAFROX-Subdocumento8-Anexos.md#r8-05--pérdida-del-sitio-supera-rpo) | Pérdida del sitio supera RPO |
+| Solución | Técnico | [R8-06](LAFROX-Subdocumento8-Anexos.md#r8-06--carga-y-cola-de-la-coordinación-de-reserva-exceden-capacidad) | Carga y cola de la coordinación de reserva exceden capacidad |
+| Solución | Seguridad | [R8-07](LAFROX-Subdocumento8-Anexos.md#r8-07--ataque-o-exposición-de-datos-críticos) | Ataque o exposición de datos críticos |
+| Solución | Técnico | [R8-08](LAFROX-Subdocumento8-Anexos.md#r8-08--bloqueo-por-proveedor) | Bloqueo por proveedor |
+| Solución | Técnico | [R8-09](LAFROX-Subdocumento8-Anexos.md#r8-09--obsolescencia-durante-56-meses) | Obsolescencia durante 56 meses |
+| Desarrollo | Técnico | [R8-10](LAFROX-Subdocumento8-Anexos.md#r8-10--interfaces-no-documentadas-exigen-retrabajo) | Interfaces no documentadas exigen retrabajo |
+| Desarrollo | Proyecto | [R8-11](LAFROX-Subdocumento8-Anexos.md#r8-11--productividad-o-dotación-inferior-al-modelo) | Productividad o dotación inferior al modelo |
+| Desarrollo | Organizacional | [R8-12](LAFROX-Subdocumento8-Anexos.md#r8-12--contrapartes-cliente-no-disponibles) | Contrapartes CLIENTE no disponibles |
+| Desarrollo | Organizacional | [R8-13](LAFROX-Subdocumento8-Anexos.md#r8-13--conocimiento-de-ruteo-no-transferido) | Conocimiento de ruteo no transferido |
+| Desarrollo | Proyecto | [R8-14](LAFROX-Subdocumento8-Anexos.md#r8-14--e2-consume-capacidad-protegida-e1) | E2 consume capacidad protegida E1 |
+| Desarrollo | Proyecto | [R8-15](LAFROX-Subdocumento8-Anexos.md#r8-15--perfiles-edi-no-certificados-a-tiempo) | Perfiles EDI no certificados a tiempo |
+| Desarrollo | Técnico | [R8-16](LAFROX-Subdocumento8-Anexos.md#r8-16--migración-altera-saldos-o-pierde-lotes) | Migración altera saldos o pierde lotes |
+| Implantación | Proyecto | [R8-17](LAFROX-Subdocumento8-Anexos.md#r8-17--fecha-efectiva-elimina-ventanas-permitidas) | Fecha efectiva elimina ventanas permitidas |
+| Implantación | Operación | [R8-18](LAFROX-Subdocumento8-Anexos.md#r8-18--marcha-blanca-no-cumple-seis-condiciones) | Marcha blanca no cumple seis condiciones |
+| Implantación | Proyecto | [R8-19](LAFROX-Subdocumento8-Anexos.md#r8-19--suministros-o-sala-fuera-de-secuencia) | Suministros o sala fuera de secuencia |
+| Implantación | Organizacional | [R8-20](LAFROX-Subdocumento8-Anexos.md#r8-20--rotación-y-resistencia-reducen-adopción) | Rotación y resistencia reducen adopción |
+| Implantación | Organizacional | [R8-21](LAFROX-Subdocumento8-Anexos.md#r8-21--transportistas-o-sindicato-rechazan-dispositivos) | Transportistas o sindicato rechazan dispositivos |
+| Implantación | Operación | [R8-22](LAFROX-Subdocumento8-Anexos.md#r8-22--demanda-de-la-mesa-supera-la-dotación-base) | Demanda de la mesa supera la dotación base |
+| Solución | Operación | [R8-23](LAFROX-Subdocumento8-Anexos.md#r8-23--frío-o-sensores-no-producen-evidencia-íntegra) | Frío o sensores no producen evidencia íntegra |
+| Solución | Seguridad | [R8-24](LAFROX-Subdocumento8-Anexos.md#r8-24--filtración-en-telemetría-o-reproducción) | Filtración en telemetría o reproducción |
+| Implantación | Organizacional | [R8-25](LAFROX-Subdocumento8-Anexos.md#r8-25--inn-01-no-logra-seguimiento-posentrega) | INN-01 no logra seguimiento posentrega |
+| Desarrollo | Técnico | [R8-26](LAFROX-Subdocumento8-Anexos.md#r8-26--inn-02-no-reproduce-fallas-relevantes) | INN-02 no reproduce fallas relevantes |
+| Solución | Técnico | [R8-27](LAFROX-Subdocumento8-Anexos.md#r8-27--inn-03-estima-vida-remanente-insegura) | INN-03 estima vida remanente insegura |
+| Implantación | Proyecto | [R8-28](LAFROX-Subdocumento8-Anexos.md#r8-28--inn-04-medición-variable-genera-disputa) | INN-04 medición variable genera disputa |
+| Implantación | Organizacional | [R8-29](LAFROX-Subdocumento8-Anexos.md#r8-29--inn-05-baja-adopción-de-hoja-del-almacenero) | INN-05 baja adopción de hoja del almacenero |
+| Solución | Técnico | [R8-30](LAFROX-Subdocumento8-Anexos.md#r8-30--crecimiento-o-nuevo-cd-supera-parametrización) | Crecimiento o nuevo CD supera parametrización |
+| Desarrollo | Proyecto | [R8-31](LAFROX-Subdocumento8-Anexos.md#r8-31--observaciones-de-revisión-obligan-a-repetir-certificación-paralela) | Observaciones de revisión obligan a repetir certificación paralela |
+| Desarrollo | Organizacional | [R8-32](LAFROX-Subdocumento8-Anexos.md#r8-32--evaluadores-subcontratados-no-disponibles-para-las-certificaciones) | Evaluadores subcontratados no disponibles para las certificaciones |
+
+La tabla es un índice de lectura: la ficha enlazada conserva la causa, el disparador, la valoración y la respuesta vigentes. El Anexo 8.G relaciona su control con la verificación y la evidencia previstas, sin sustituir el registro vivo.
+
 ### 8.2.2 Resultados cualitativos y FMEA
 
 El análisis de modos de falla y sus efectos (FMEA) sigue la IEC 60812 (International Electrotechnical Commission [IEC], 2018): a la probabilidad y el impacto agrega la detección, y su producto da el número de prioridad del riesgo (NPR). Anexo 8.B presenta P/I/D, exposición y NPR. La prioridad inicial se concentra en continuidad, RPO, ERP/DTE, seguridad, capacidad y aceptación. T-16 compara exposición; NPR no reemplaza su columna Expos.
@@ -125,6 +168,8 @@ La Tabla 8.4 extrae del Anexo 8.B, Tabla B.1, los cinco riesgos con mayor númer
 Los cinco pertenecen a la rama de la solución y todos tienen impacto 5. Lo que los separa es la detección: R8-05 tiene la probabilidad más baja, pero su D = 5 (sólo se aprecia al perder el sitio) lo deja en el cuarto lugar, por sobre riesgos más probables. R8-02 desempata NPR 60 por control antes de H4. Por eso sus respuestas privilegian controles que se prueban antes del corte (ensayo de caída del ERP, prueba de concurrencia y ejercicio de recuperación) en vez de controles que sólo reaccionan cuando el evento ocurre.
 
 No se suman puntuaciones como probabilidad del proyecto. Las relaciones importan: ausencia de contraparte puede atrasar interfaces/cadenas y eliminar semanas de evidencia; migración deficiente puede invalidar trazabilidad y aceptación. Los mismos efectos o consumos no se contabilizan dos veces.
+
+La lectura ejecutiva empieza por los cinco riesgos de la Tabla 8.4: continuidad del ERP, seguridad, estimación sanitaria, recuperación del sitio y reserva/custodia de stock. La tabla conserva su orden por NPR sin reproducirlo en otro registro. Para decidir, se abre la ficha correspondiente del Anexo 8.A, se comprueba su disparador y plazo, y se consulta en el Anexo 8.G qué evidencia debe aportar su responsable. La valoración vigente se mantiene en 8.B y T-16; el extracto mensual previsto en 8.1.1 se obtiene del registro único, no de una clasificación paralela.
 
 ### 8.2.3 Análisis cuantitativo
 
@@ -203,7 +248,7 @@ Las fuentes citadas en este documento se listan en formato APA 7.ª edición. La
 - Distribuidora Puelche S.A. (2026b). *Bases Técnicas Transversales de Licitación N.º TFEP-01/2026*.
 - Distribuidora Puelche S.A. (2026c). *Caso 02: Logística. Especificaciones del problema y operación de Distribuidora Puelche S.A.*
 - Distribuidora Puelche S.A. (2026d). *Aclaraciones de la Licitación N.º TFEP-01/2026*.
-- LafroX. (2026). Subdocumentos 1 a 7 y 13, con los anexos y formularios citados.
+- LafroX. (2026). Subdocumentos 1 a 9 y 13, con los anexos y formularios citados, incluidos los Formularios T-13 y T-17.
 - International Electrotechnical Commission. (2018). *IEC 60812:2018 Failure modes and effects analysis (FMEA and FMECA)*. IEC.
 - International Organization for Standardization. (2018). *ISO 31000:2018 Risk management — Guidelines*. ISO.
 - Project Management Institute. (2017). *La guía de los fundamentos para la dirección de proyectos (Guía del PMBOK®)* (6.ª ed.), capítulo 11. Project Management Institute.
@@ -224,4 +269,5 @@ La tabla declara apoyo de IA conforme a las Aclaraciones §7.2. La revisión hum
 | Anexo 8.D | Codex; Claude Code | Ver declaración propia de ese anexo | Alto | Ninguno | [[REVISIÓN HUMANA]] |
 | Anexo 8.E | Codex; Claude Code | Ver declaración propia de ese anexo | Alto | Ninguno | [[REVISIÓN HUMANA]] |
 | Anexo 8.F | Codex; Claude Code | Ver declaración propia de ese anexo | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| Anexo 8.G | Codex | Ver declaración propia de ese anexo | Alto | Ninguno | [[REVISIÓN HUMANA]] |
 | Formulario T-16 | Codex; Claude Code | Ver declaración propia del formulario | Alto | Ninguno | [[REVISIÓN HUMANA]] |
