@@ -1,9 +1,21 @@
 \clearpage
-\begin{landscape}
+\begingroup
+% Excepción local A3: el diagrama conserva al menos 9 pt en el PDF final.
+% newgeometry cambia el área de composición; LuaTeX fija el papel de esta hoja.
+\newgeometry{layoutwidth=420mm,layoutheight=297mm,layoutoffset={0mm,0mm},margin=20mm,headheight=27pt,headsep=16pt,includefoot,footskip=28pt}
+\setlength{\paperwidth}{420mm}
+\setlength{\paperheight}{297mm}
+\pagewidth=\paperwidth
+\pageheight=\paperheight
+\setlength{\headwidth}{\textwidth}
 \centering
-\includegraphics[width=\linewidth,height=0.92\textheight,keepaspectratio,trim=0pt 420pt 0pt 0pt,clip]{EDR_LafroX-Página-3.drawio.pdf}
-{\captionsetup{hypcap=false}
+\begin{minipage}{1000bp}
+\includegraphics[width=\linewidth]{EDR_LafroX-Página-3.drawio.pdf}
+{\captionsetup{hypcap=false,skip=6pt}
 \captionof{figure}{Estructura de desglose de riesgos (EDR/RBS) del proyecto LafroX: siete ramas y 45 riesgos. Fuente: elaboración propia a partir del registro de riesgos actualizado.}
 \label{fig:sd8-rbs}}
-\end{landscape}
-\clearpage
+\end{minipage}\par
+\restoregeometry
+\endgroup
+\pagewidth=\paperwidth
+\pageheight=\paperheight
