@@ -3,8 +3,10 @@
 %% ============================================================================
 
 \documentclass[carta,firma]{lafrox}
+\usepackage{float}
 
 \datoslafrox{
+  caso        = {Caso --- Logística},
   subtitulo    = {Formulario T-6 --- Experiencia en proyectos similares},
   alcance      = {Formulario T-6},
   formulario   = {Formulario T-6},
@@ -14,22 +16,23 @@
 \begin{document}
 
 \portadalafrox
-\preliminareslafrox
+\indicelafrox
+\listatablaslafrox
 
+\begin{landscape}
 \setcounter{chapter}{0}
 \chapter*{Formulario T-6: Experiencia del Proponente}
 \addcontentsline{toc}{chapter}{Formulario T-6: Experiencia del Proponente}
 
-El presente formulario detalla tres proyectos de misión crítica finalizados y en operación continua desarrollados por \textbf{LafroX} en los últimos cinco años, en estricto cumplimiento con los requisitos del Artículo 34° de las Bases Administrativas (experiencia en la industria logística, arquitectura híbrida y operación bajo SLA de disponibilidad $\ge 99,5\%$). Los Proyectos 1 y 2 son híbridos (nube pública y componentes on-premise); los Proyectos 1, 2 y 3 operan con SLA $\ge 99,5\%$.
+Este formulario reúne los once campos de experiencia de tres proyectos de LafroX finalizados y en operación durante los últimos cinco años (Distribuidora Puelche S.A., 2026a, Art. 34°). La Tabla~\ref{tab:experiencia_t6} presenta los antecedentes; su comparación con las necesidades del CLIENTE se desarrolla en la sección 1.4 del Subdocumento 1.
 
-\begin{landscape}
 \begin{xltabular}{\linewidth}{>{\bfseries\raggedright\arraybackslash}p{4cm} >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}X}
-\caption{Detalle de Experiencia de LafroX (Proyectos de Complejidad Equivalente)}\label{tab:experiencia_t6} \\
+\caption{Experiencia de LafroX en proyectos similares. Fuente: antecedentes declarados por LafroX.}\label{tab:experiencia_t6} \\
 \toprule
 Campo & Proyecto 1 & Proyecto 2 & Proyecto 3 \\
 \midrule
 \endfirsthead
-\caption[]{Detalle de Experiencia de LafroX (Continuación)} \\
+\caption[]{Experiencia de LafroX en proyectos similares (continuación).} \\
 \toprule
 Campo & Proyecto 1 & Proyecto 2 & Proyecto 3 \\
 \midrule
@@ -74,18 +77,31 @@ Campo & Proyecto 1 & Proyecto 2 & Proyecto 3 \\
 \end{xltabular}
 \end{landscape}
 
+\section*{Referencias}
+\addcontentsline{toc}{section}{Referencias}
+
+Las referencias corresponden a las reglas de experiencia y presentación citadas en este documento.
+
+{\setlength{\parindent}{0pt}
+\hangindent=1.27cm\hangafter=1 Distribuidora Puelche S.A. (2026a). \textit{Bases Administrativas de Licitación N° TFEP-01/2026: Contratación de Solución Integral de Software y Servicios de Operación}.\par\medskip
+\hangindent=1.27cm\hangafter=1 Distribuidora Puelche S.A. (2026d). \textit{Aclaraciones de la Licitación N° TFEP-01/2026}.\par\medskip
+}
+
 \section*{Declaración de uso de IA}
+\addcontentsline{toc}{section}{Declaración de uso de IA}
 
-En cumplimiento de la sección 7.2 de las Aclaraciones de la licitación, la tabla siguiente declara el uso de herramientas de inteligencia artificial en este formulario, con la revisión humana de cada parte. La declaración se consolida en el Formulario A-6.
+La Tabla~\ref{tab:ia_t6} declara la asistencia utilizada para presentar el formulario, conforme a la sección 7.2 de las Aclaraciones (Distribuidora Puelche S.A., 2026d). La declaración se consolida en el Formulario A-6.
 
-\begin{table}[hbt!]
+\begin{table}[H]
 \centering
-\small
-\begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}p{2.5cm} >{\raggedright\arraybackslash}p{2.2cm} >{\raggedright\arraybackslash}X >{\centering\arraybackslash}p{1.4cm} >{\centering\arraybackslash}p{1.7cm} >{\raggedright\arraybackslash}p{3.5cm}}
+\caption{Uso de IA en el Formulario T-6. Fuente: registro de uso de IA de LafroX.}
+\label{tab:ia_t6}
+\fontsize{9.5pt}{12pt}\selectfont
+\begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}p{1.4cm} >{\raggedright\arraybackslash}p{1.95cm} >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}p{1.15cm} >{\raggedright\arraybackslash}p{1.65cm} >{\raggedright\arraybackslash}p{3cm}}
 \toprule
-\textbf{Sección} & \textbf{Herramienta} & \textbf{Finalidad del uso} & \textbf{Nivel en texto} & \textbf{Nivel en diagramas} & \textbf{Revisión humana (quién y qué verificó)} \\
+\textbf{Sección} & \textbf{Herramienta} & \textbf{Finalidad del uso} & \textbf{Nivel en texto} & \textbf{\makecell[l]{Nivel en\\diagramas}} & \textbf{Revisión humana (quién y qué verificó)} \\
 \midrule
-Formulario T-6 & Claude / Gemini & Disposición tabular del formulario & Bajo & Ninguno & Alex Aravena (JP): Validación de los 11 campos exigidos y coherencia con la sección 1.4 \\
+T-6 & Claude / Gemini; OpenAI Codex & Formato del formulario, introducción y referencias & Bajo & Ninguno & [[REVISIÓN HUMANA]] \\
 \bottomrule
 \end{tabularx}
 \end{table}
