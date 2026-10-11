@@ -1,6 +1,6 @@
 # Formulario T-13: Plan de pruebas y validación
 
-Este formulario adjunta el plan de pruebas conforme al Subdocumento 9, como exigen las Bases Administrativas para el Formulario T-13. Contiene los niveles, tipos, ambientes, datos de prueba, criterios de entrada y salida, la automatización y el calendario de las pruebas de carga, de resiliencia, de recuperación ante desastres y de seguridad ofensiva. Su estructura sigue la del plan de pruebas de ISO/IEC/IEEE 29119-3 (ISO, IEC & IEEE, 2021). La estrategia y su fundamento están en el Subdocumento 9, sección 9.2. Los umbrales, en el Anexo 9.A. La matriz entre requisitos y pruebas, en el Anexo 9.C. Los juegos de datos, en el Anexo 9.D.
+Este formulario adjunta el plan de pruebas conforme al Subdocumento 9, como exigen las Bases Administrativas para el Formulario T-13. Contiene los niveles, tipos, ambientes, datos de prueba, criterios de entrada y salida, la automatización y el calendario de las pruebas de carga, de resiliencia, de recuperación ante desastres y de seguridad ofensiva. Su estructura sigue la del plan de pruebas de ISO/IEC/IEEE 29119-3 (ISO, IEC & IEEE, 2021). Las siglas se definen en la introducción del Subdocumento 9. La estrategia y su fundamento están en el Subdocumento 9, sección 9.2. Los umbrales, en el Anexo 9.A. La matriz entre requisitos y pruebas, en el Anexo 9.C. Los juegos de datos, en el Anexo 9.D.
 
 ## Índice
 
@@ -14,6 +14,7 @@ Este formulario adjunta el plan de pruebas conforme al Subdocumento 9, como exig
 - [8. Calendario](#8-calendario)
   - [8.1 Implementación (meses 1 a 21)](#81-implementación-meses-1-a-21)
   - [8.2 Operación (meses 21 a 56)](#82-operación-meses-21-a-56)
+  - [8.3 Correcciones durante el congelamiento de septiembre de 2028](#83-correcciones-durante-el-congelamiento-de-septiembre-de-2028)
 - [9. Roles y responsabilidades](#9-roles-y-responsabilidades)
 - [10. Informes y entregables de prueba](#10-informes-y-entregables-de-prueba)
 - [Referencias](#referencias)
@@ -49,9 +50,11 @@ La Tabla T13.1 define cada tipo de prueba, su nivel según ISO/IEC/IEEE 29119, s
 | Accesibilidad | Sistema | Conformidad WCAG 2.2 AA | Herramienta automática y revisión manual | CAL |
 | Perfil operacional | Sistema | 14 h sin señal, 24 h sin enlace, −22 °C con guantes, lluvia, >34 °C, sol directo y una mano | Escenarios de terreno con dispositivos reales | CAL |
 | Carga y estrés | Sistema | Umbrales p95 a 1,5× el peak y punto de quiebre | Perfil horario del SD4, escalones de carga | CAL y SRE |
+| Ventana de despacho | Sistema | 10,41 TPS (1,5 × 6,94 TPS) durante los 90 minutos de 05:30 a 07:00, con 0 minutos de indisponibilidad | Perfil de la ventana, con la emisión de guías concentrada | CAL y SRE |
 | Resiliencia | Sistema | Degradación controlada y recuperación sin intervención | Inyección de fallas | CAL y SRE |
 | Recuperación ante desastres | Sistema | RTO ≤ 4 h y RPO ≤ 15 min | Conmutación regional real | CAL y SRE |
 | Seguridad ofensiva | Sistema | Sin hallazgos críticos ni altos | Prueba de intrusión por tercero independiente | SEG |
+| Seguridad de la aplicación Android | Sistema | Sin hallazgos críticos ni altos contra OWASP MASVS | Análisis estático y dinámico con MobSF | SEG |
 | Migración | Sistema | Conciliación sin diferencias no explicadas | Dos ensayos completos y conciliación por dominio | DAT y CAL |
 | Despliegue y reversión | Sistema | Paso sin interrupción y reversión ≤ 10 min | Ensayo azul-verde con canario | SRE |
 
@@ -65,9 +68,9 @@ Cada tipo de prueba se ejecuta en el ambiente más bajo donde su resultado es v�
 | --- | --- | --- | --- |
 | Desarrollo | Unitaria, componente, contrato | JD-01 reducido | Horario de uso; efímero por rama |
 | QA | Integración, sistema, regresión, DAST, accesibilidad, regresión de desempeño semanal | JD-01, JD-02, JD-06, JD-09, JD-10 | Horario de uso; ejecución nocturna de la regresión |
-| Preproducción | Aceptación, carga y estrés, resiliencia, corte de enlace, migración, despliegue y reversión | JD-01 a JD-09 | Por ventana de prueba programada |
+| Preproducción | Aceptación, carga y estrés, ventana de despacho, resiliencia, corte de enlace, seguridad ofensiva (incluida la anual), migración, despliegue y reversión. Cada campaña que altera el estado o exige una versión congelada usa su propia instancia, reconstruida desde el mismo código (SD9, Tabla 9.11) | JD-01 a JD-09 | Por ventana de prueba programada |
 | Terreno y cámara | Perfil operacional con dispositivos reales | JD-04 | Programada con Operaciones del CLIENTE |
-| Producción | Marcha blanca y prueba de intrusión anual | Datos reales | Fuera de la ventana de 05:30 a 07:00 y de los congelamientos |
+| Producción | Marcha blanca y restauración mensual de respaldos desde el mes 13 | Datos reales | Fuera de la ventana de 05:30 a 07:00 y de los congelamientos |
 | Recuperación ante Desastres | Conmutación regional | Réplica productiva del ambiente Producción, con acceso restringido y auditado | Programada, fuera de congelamientos |
 
 ## 4. Datos de prueba
@@ -91,9 +94,11 @@ Una prueba no comienza si no se cumple su criterio de entrada, y no se da por ap
 | Accesibilidad | Vistas completas en QA | 0 incumplimientos WCAG 2.2 A y AA; informe de conformidad |
 | Perfil operacional | Dispositivos del modelo comprometido; JD-04 cargado | 0 pérdidas y 0 duplicados; dispositivo sincronizado en ≤ 10 min; CD en ≤ 2 h; operación con guantes a −22 °C; operación bajo lluvia, sobre 34 °C, a una mano y con pantalla legible bajo sol directo; conflictos de stock del corte del CD resueltos de forma determinista con la regla del SD4, Anexo 4-K, Tabla A.12 (orden de recepción central y correlativo de desempate; la solicitud no cubierta queda en excepción con aviso), verificada con un caso que repite dos veces la reconciliación de reservas concurrentes del mismo stock (preventa sin conexión frente a preventa en línea) y obtiene el mismo resultado y la misma bitácora, sin sobrescritura silenciosa |
 | Carga y estrés | Preproducción equivalente a Producción; JD-03 cargado; observabilidad activa | p95 de la Tabla 9.2 a 21,99 TPS; punto de quiebre registrado; sin pérdida al superar la capacidad |
+| Ventana de despacho | Preproducción equivalente a Producción; JD-03 cargado; emisión de guías concentrada en 90 minutos | A 10,41 TPS durante los 90 minutos de 05:30 a 07:00: 0 minutos de indisponibilidad y todos los p95 de la Tabla 9.2 |
 | Resiliencia | Carga sostenida en curso; escenarios de falla aprobados | Recuperación sin intervención en cada escenario; 0 transacciones perdidas |
 | Recuperación ante desastres | Réplica sincronizada; procedimiento aprobado | RTO ≤ 4 h y RPO ≤ 15 min medidos |
-| Seguridad ofensiva | Versión congelada en Preproducción; alcance firmado con el tercero | 0 hallazgos críticos o altos abiertos; plan de remediación de los demás |
+| Seguridad ofensiva | Versión congelada en una instancia propia de Preproducción; alcance firmado con el tercero | 0 hallazgos críticos o altos abiertos; plan de remediación de los demás |
+| Seguridad de la aplicación Android | Paquete de la versión candidata; dispositivo de QA | 0 hallazgos críticos o altos contra OWASP MASVS |
 | Migración | Perfilado y saneamiento aprobados (3.7.1) | 0 diferencias no explicadas en la conciliación por dominio; completitud 100 % en entidades críticas; exactitud de saldos y lotes 100 % contra conciliación aprobada; consistencia referencial 100 % |
 | Despliegue y reversión | Versión aprobada en sistema | Despliegue sin interrupción; reversión ≤ 10 min |
 
@@ -110,17 +115,18 @@ La automatización es el criterio por defecto. La Tabla T13.4 indica la herramie
 | Tipo | Herramienta | Automatización | Ejecución |
 | --- | --- | --- | --- |
 | Unitaria y de componente | PHPUnit, JUnit 5, Jest | Total | Cada cambio (G2) |
-| Contrato | Pruebas de contrato OpenAPI y AsyncAPI | Total | Cada cambio (G2) |
-| Integración y regresión | PHPUnit, Espresso, Jest | Mayoritaria | Nocturna, dos ejecutores paralelos (≈ 4,3 h) |
+| Contrato | Pact y Spectral sobre las definiciones OpenAPI 3.1 y AsyncAPI | Total | Cada cambio (G2) |
+| Integración y regresión | PHPUnit, Espresso, Playwright (consolas y portales Angular) | Mayoritaria | Nocturna, dos ejecutores paralelos (≈ 4,4 h) |
 | Accesibilidad | axe-core más revisión manual | Parcial | Cada promoción a Preproducción (G4); cualquier incumplimiento WCAG 2.2 A o AA confirmado bloquea |
 | DAST | OWASP ZAP | Total | Cada promoción a Preproducción (G4) |
-| Carga y estrés | k6 | Total | Regresión semanal en QA; prueba completa por certificación |
+| Seguridad de la aplicación Android | MobSF (OWASP MASVS) | Total | Estático en G2; dinámico antes de G4 |
+| Carga y estrés, y ventana de despacho | k6 | Total | Regresión semanal en QA; prueba completa por certificación |
 | Resiliencia | AWS Fault Injection Service; desconexión controlada del sitio emulado | Total | Por certificación y semestral |
 | Recuperación ante desastres | Procedimiento automatizado de conmutación (SD4, Tabla 39) | Mayoritaria | Por certificación y semestral |
 | Perfil operacional y usabilidad | Espresso y prueba con personas | Parcial | Por certificación |
 | Seguridad ofensiva | Tercero independiente | Manual | Antes de cada paso a producción y anual |
 
-Con 1.308 casos estimados y el 80 % automatizado, la regresión nocturna ejecuta unos 1.046 casos. Los 262 casos manuales requieren unas 65,5 HH por ciclo y se planifican con los evaluadores en los meses de certificación (Subdocumento 9, sección 9.2.3).
+LafroX se compromete a automatizar al menos el 80 % de los casos antes del H4 y del H9. Con 1.308 casos estimados y esa meta, la regresión nocturna ejecuta unos 1.046 casos. Los 262 casos manuales requieren unas 65,5 HH por ciclo y se planifican con los evaluadores en los meses de certificación. Los tiempos de 0,5 minutos por caso automatizado y 15 minutos por caso manual son supuestos de planificación que la primera regresión de QA reemplaza por el promedio medido (Subdocumento 9, sección 9.2.3).
 
 ## 8. Calendario
 
@@ -153,24 +159,30 @@ La Tabla T13.5 presenta las pruebas de la implementación con sus fechas y el hi
 | Seguridad ofensiva E2 | 3.9.5 | 19-05-2028 | 26-05-2028 | H10 |
 | Aceptación y accesibilidad E2 | 3.9.2 | 27-05-2028 | 31-05-2028 | H10 |
 | Certificación E2 | 3.9.6 | 01-06-2028 | 12-06-2028 | H10 |
+| Restauración mensual de respaldos en marcha blanca (meses 13 a 20) | 8.1.6 | 01-02-2028 | 30-09-2028 | H7 · H12 |
 
-Las pruebas de carga, resiliencia, recuperación y seguridad ofensiva de cada etapa comienzan después de la integración y regresión de su alcance, terminan antes de su certificación y entregan la evidencia para iniciar la marcha blanca en H6 y H11. Los pasos a producción contractuales del Formulario E-25 son H7 y H12; por eso antes de esos hitos se repiten la prueba de intrusión por tercero, la prueba de resiliencia y la prueba de carga aplicable sobre la versión que cerrará la marcha blanca. Si durante la marcha blanca sólo hubo correcciones menores, el alcance de esas pruebas se acota a los componentes y superficies expuestas afectados, pero la ejecución y su informe son obligatorios. Ninguna prueba cae en un congelamiento. El ensayo de reversión se ejecuta en Preproducción en diciembre y no interviene Producción.
+Las pruebas de carga, resiliencia, recuperación y seguridad ofensiva de cada etapa comienzan después de la integración y regresión de su alcance, terminan antes de su certificación y entregan la evidencia para iniciar la marcha blanca en H6 y H11. Los pasos a producción contractuales del Formulario E-25 son H7 y H12. Varias de estas campañas coinciden en la ventana del Formulario T-15; la Tabla 9.11 del Subdocumento 9 asigna cada una a su instancia de Preproducción: PRE-M para la migración, PRE-C para la carga, la resiliencia y el despliegue en secuencia, PRE-S para la intrusión sobre la versión congelada y PRE-A para la aceptación. Ninguna prueba cae en un congelamiento. El ensayo de reversión se ejecuta en Preproducción en diciembre y no interviene Producción.
+
+Una corrección de la marcha blanca pasa por las puertas G0 a G4 y G6, no por G5. Si modifica la superficie expuesta o un componente que cubrió una prueba de certificación, la prueba afectada se repite sobre la versión corregida antes de promoverla, con el paquete, la ventana, el responsable y las horas de la Tabla 9.12 del Subdocumento 9. Producción opera con datos reales desde el mes 13, por lo que la restauración de respaldos del RT-07.12 es mensual desde ese mes y no sólo desde la Operación.
 
 ### 8.2 Operación (meses 21 a 56)
 
 La Tabla T13.6 presenta las pruebas periódicas de la Operación, con el mes del contrato y su mes calendario.
 
-**Tabla T13.6 — Calendario de pruebas periódicas de la Operación. Fuente: elaboración propia a partir del Subdocumento 9, Tabla 9.9.**
+**Tabla T13.6 — Calendario de pruebas periódicas de la Operación. Fuente: elaboración propia a partir del Subdocumento 9, Tabla 9.14.**
 
 | Prueba | Frecuencia | Meses del contrato | Meses calendario | Cantidad |
 | --- | --- | --- | --- | --- |
-| Resiliencia por inyección de fallas | Semestral, con separación máxima de seis meses | 23, 29, 35, 41, 47, 53 | dic-2028, jun-2029, dic-2029, jun-2030, dic-2030, jun-2031 | 6 |
-| Recuperación ante desastres | Semestral, con separación máxima de seis meses | 24, 30, 36, 42, 48, 54 | ene-2029, jul-2029, ene-2030, jul-2030, ene-2031, jul-2031 | 6 |
+| Resiliencia por inyección de fallas | Al menos una vez por semestre (RT-10.07), con separación máxima de seis meses | 26, 32, 38, 44, 50, 55 | mar-2029, sep-2029, mar-2030, sep-2030, mar-2031, ago-2031 | 6 |
+| Recuperación ante desastres | Al menos dos veces al año (RT-07.07), con separación máxima de seis meses | 21, 27, 33, 39, 45, 51, 54 | oct-2028, abr-2029, oct-2029, abr-2030, oct-2030, abr-2031, jul-2031 | 7 |
 | Seguridad ofensiva por tercero | Anual | 28, 40, 52 | may-2029, may-2030, may-2031 | 3 |
-| Carga previa al peak de septiembre | Anual | 31, 43, 55 | ago-2029, ago-2030, ago-2031 | 3 |
-| Restauración de respaldos | Mensual | 21 a 56 | oct-2028 a sep-2031 | 36 |
+| Restauración de respaldos | Al menos mensual (RT-07.12) | 21 a 56 | oct-2028 a sep-2031 | 36 |
 
-Las cantidades coinciden con los entregables de los paquetes 8.1.3, 8.1.6 y 8.2.2 del Formulario T-14. Las pruebas que intervienen Producción o el sitio de recuperación se programan después del tercer día hábil del mes y fuera de la ventana de 05:30 a 07:00. La programación ubica la primera recuperación ante desastres dentro del primer semestre de Operación y mantiene una separación máxima de seis meses entre ejecuciones del mismo tipo. Las pruebas de resiliencia de diciembre se ejecutan en Preproducción o sitio emulado, sin intervención productiva, para respetar el congelamiento operacional.
+Las cantidades coinciden con los entregables de los paquetes 8.1.3, 8.1.6 y 8.2.2 del Formulario T-14. Las pruebas que intervienen Producción o el sitio de recuperación se programan después del tercer día hábil del mes y fuera de la ventana de 05:30 a 07:00. La programación coincide con los meses del paquete 8.1.3 y 8.2.2 del Formulario T-14. La primera recuperación ante desastres es el mes 21, el mes del H12, cinco meses después de la de la certificación de la Etapa 2; desde ahí se mantiene una separación máxima de seis meses entre ejecuciones del mismo tipo, y la primera resiliencia es el mes 26. Antes de la Operación, esas pruebas se ejecutan en la certificación de cada etapa (Tabla T13.5) y se repiten, cuando corresponde, tras una corrección de la marcha blanca. Las pruebas de resiliencia de los meses 32 y 44 caen en septiembre y se ejecutan en Preproducción o sitio emulado, sin intervención productiva, para respetar el congelamiento operacional.
+
+### 8.3 Correcciones durante el congelamiento de septiembre de 2028
+
+La marcha blanca de la Etapa 2 coincide con el congelamiento del 1 al 25 de septiembre de 2028. En ese período sólo se corrige un defecto crítico o alto atribuible a la solución, es decir, el que impediría cumplir el Art. 17.3 en el H12; los defectos medios y bajos se programan para después del 25 de septiembre. La corrección entra por el cambio de emergencia del SD4, sección 4.2.4.1.4: el NOC/SOC lo solicita al CLIENTE el mismo día en que detecta el defecto y lo autoriza por escrito la Contraparte Técnica. La versión corregida pasa por G0 a G4 y por la repetición de la prueba afectada en Preproducción, que el congelamiento no alcanza, antes de pedir la autorización. Si el CLIENTE no la concede, LafroX mantiene la contención, el CLIENTE acepta el riesgo y la corrección se ejecuta el 26 de septiembre. El H12 se cierra en octubre de 2028 con 0 defectos críticos o altos abiertos.
 
 ## 9. Roles y responsabilidades
 
@@ -188,7 +200,6 @@ Las fuentes citadas en este formulario se listan en formato APA 7.ª edición. L
 - Distribuidora Puelche S.A. (2026b). *Bases Técnicas Transversales de Licitación N.º TFEP-01/2026*.
 - Distribuidora Puelche S.A. (2026c). *Caso 02: Logística. Especificaciones del problema y operación de Distribuidora Puelche S.A.*
 - International Organization for Standardization, International Electrotechnical Commission, & Institute of Electrical and Electronics Engineers. (2021). *ISO/IEC/IEEE 29119-3:2021 Software and systems engineering — Software testing — Part 3: Test documentation*. ISO.
-- LafroX. (2026). Subdocumentos 3, 4, 8 y 9, con sus anexos, y Formularios T-14, T-15 y T-17.
 
 ## Declaración de uso de IA
 

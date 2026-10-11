@@ -53,13 +53,13 @@ Las limitaciones o compromisos técnicos que puedan dificultar cambios futuros s
 Cada cambio pasa por el pipeline de integración continua definido en SD4, sección 4.2. GitLab CI lo orquesta y AWS CodeBuild construye cada imagen de forma hermética, con procedencia SLSA nivel 3. El pipeline ejecuta:
 
 - auditoría de dependencias con `composer audit`;
-- pruebas con PHPUnit/PCOV, JUnit 5/Kover, Espresso y Jest;
+- pruebas con PHPUnit/PCOV, JUnit 5/Kover, Espresso, Jest y Playwright para los flujos de extremo a extremo de consolas y portales;
 - análisis estático con PHPStan y Larastan;
 - formato con Laravel Pint, detekt, ktlint y ESLint;
-- complejidad, duplicación, fronteras modulares y deuda con PHPMD, PHPCPD, PhpMetrics, deptrac y reglas equivalentes en Kotlin/TypeScript;
-- pruebas de contrato contra OpenAPI 3.1 y AsyncAPI 2.6;
+- complejidad, duplicación (bloqueo sobre el 3 % de las líneas), fronteras modulares y deuda con PHPMD, PHPCPD, PhpMetrics, deptrac y reglas equivalentes en Kotlin/TypeScript;
+- pruebas de contrato con Pact y validación con Spectral contra OpenAPI 3.1 y AsyncAPI 2.6;
 - SAST/SCA, escaneo de secretos y de imágenes de contenedor con Amazon Inspector/ECR;
-- DAST con OWASP ZAP;
+- DAST con OWASP ZAP y análisis de la aplicación Android con MobSF;
 - accesibilidad con axe-core y revisión manual;
 - carga y estrés con k6;
 - resiliencia con AWS Fault Injection Service;
@@ -73,6 +73,7 @@ Las compuertas son obligatorias y bloquean la promoción ante cualquiera de esta
 - contrato público roto sin una nueva edición de la interfaz;
 - cobertura de la lógica de negocio inferior al **70 %**, conforme a RT-04.11;
 - cobertura unitaria global inferior al **80 %**, conforme a la política corporativa de LafroX (paquete 1.5.2);
+- duplicación de código superior al **3 %** de las líneas;
 - deuda técnica bloqueante o una prueba fallida.
 
 Los dos porcentajes son criterios independientes: el 70 % corresponde a cobertura de lógica de negocio según RT-04.11; el 80 % corresponde a cobertura unitaria global según la política de LafroX. No son métricas intercambiables.

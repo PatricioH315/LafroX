@@ -9,7 +9,7 @@ Este formulario adjunta la propuesta de Protocolo de Aceptación de cada hito y 
 - el procedimiento de observaciones;
 - el acta de conformidad.
 
-El protocolo aplica los Arts. 17.3 y 18 de las Bases Administrativas. Las pruebas que generan la evidencia están en el Formulario T-13. Su fundamento, en el Subdocumento 9, sección 9.3.2.
+El protocolo aplica los Arts. 17.3 y 18 de las Bases Administrativas. Las siglas se definen en la introducción del Subdocumento 9. Las pruebas que generan la evidencia están en el Formulario T-13. Su fundamento, en el Subdocumento 9, sección 9.3.2.
 
 ## Índice
 
@@ -32,6 +32,7 @@ El protocolo aplica los Arts. 17.3 y 18 de las Bases Administrativas. Las prueba
   - [H11 — Inicio de la marcha blanca de la Etapa 2 (mes 19)](#h11--inicio-de-la-marcha-blanca-de-la-etapa-2-mes-19)
   - [H12 — Paso a producción de la Etapa 2 y aceptación final (mes 21)](#h12--paso-a-producción-de-la-etapa-2-y-aceptación-final-mes-21)
 - [3. Aceptación del producto final](#3-aceptación-del-producto-final)
+- [Referencias](#referencias)
 - [Declaración de uso de IA](#declaración-de-uso-de-ia)
 
 ## 1. Procedimiento general
@@ -51,7 +52,7 @@ Antes de entregarlo, el Líder de Calidad verifica que el expediente esté compl
 
 ### 1.2 Plazos
 
-El expediente se presenta en la fecha de entrega programada del Formulario T-15, Tabla 5.2, y nunca después de la fecha límite: diez días hábiles antes del último día hábil del mes del hito. El CLIENTE dispone de diez días hábiles para revisarlo y pronunciarse (Art. 18.3). Para los hitos H1 y H8, cuya reserva es menor que el plazo de subsanación, LafroX presenta una versión preliminar a la Contraparte Técnica una semana antes de la entrega, para resolver antes las observaciones de fondo (Formulario T-15, sección 5.5).
+El expediente se presenta en la fecha de entrega programada del Formulario T-15, Tabla 5.2, y nunca después de la fecha límite: diez días hábiles antes del último día hábil del mes del hito. El CLIENTE dispone de diez días hábiles para revisarlo y pronunciarse (Art. 18.3). Para los hitos H1 y H8, cuya reserva es menor que el plazo de subsanación, LafroX presenta una versión preliminar a la Contraparte Técnica una semana antes de la entrega, para resolver antes las observaciones de fondo; las que subsistan se subsanan en cinco días hábiles en el H1 y en cuatro en el H8 (Formulario T-15, sección 5.5; SD8, R8-12).
 
 ### 1.3 Observaciones y subsanación
 
@@ -97,7 +98,7 @@ La ficha del H2 cierra el diseño de la Etapa 1.
 | Entregables | Documento de arquitectura y registro de decisiones; plan de seguridad; modelo de datos; informe de usabilidad (2.6.2) |
 | Criterios | Cada componente del SD3 mapeado en la arquitectura lógica y física; cada decisión con alternativas y criterio; modelo de datos que responde la consulta de un retiro sanitario; flujos críticos probados con usuarios |
 | Evidencia | Revisión del Comité de Arquitectura; informe de pruebas de usabilidad con hallazgos y cambios de diseño (RT-13.03) |
-| Fechas | Entrega 29-04-2027; fecha límite 17-05-2027; reserva 12 días hábiles |
+| Fechas | Entrega 29-04-2027; fecha límite 17-05-2027, que pasa a 14-05-2027 al descontar el feriado del 21-05 (reserva de 12 a 11 días hábiles) |
 | Responsable | Arquitecto de Solución |
 
 ### H3 — Infraestructura híbrida y ambientes (mes 6)
@@ -107,9 +108,9 @@ La ficha del H3 habilita los ambientes donde se ejecutan las pruebas.
 | Campo | Contenido |
 | --- | --- |
 | Entregables | Ambientes de Desarrollo, QA, Preproducción, Producción y Recuperación ante Desastres; sala técnica de Talca; observabilidad operativa; pipeline con las puertas G0 a G3 |
-| Criterios | Cinco ambientes operativos (RT-04.01); Preproducción equivalente a Producción, con las diferencias declaradas en el SD4; ambientes reconstruibles desde código; puertas bloqueando con un cambio de prueba que incumple cada umbral |
-| Evidencia | Informe de habilitación por ambiente; ejecución del pipeline que muestra cada puerta bloqueando; tablero de observabilidad con trazas de extremo a extremo |
-| Fechas | Entrega 21-06-2027; fecha límite 16-07-2027; reserva 19 días hábiles |
+| Criterios | Cinco ambientes operativos (RT-04.01); Preproducción equivalente a Producción, con las diferencias declaradas en el SD4; ambientes reconstruibles desde código; puertas bloqueando con un cambio de prueba que incumple cada umbral. Sala técnica de Talca: cadena eléctrica con UPS de doble conversión en configuración N+1, autonomía mínima de 30 minutos a plena carga y generador con autonomía mínima de 24 horas; instalación eléctrica independiente de la del edificio y conforme a la NCh Elec. 2777; transferencia automática de red a UPS y a generador probada con carga; climatización, red, servidores y base de datos con disponibilidad mensual ≥ 99,95 % medida desde la habilitación (RT-06.10; BTT cap. 7, sección 7.2) |
+| Evidencia | Informe de habilitación por ambiente; ejecución del pipeline que muestra cada puerta bloqueando; tablero de observabilidad con trazas de extremo a extremo; informe de la medición eléctrica y de la prueba de transferencia de la sala de Talca |
+| Fechas | Entrega 21-06-2027; fecha límite 16-07-2027, que pasa a 15-07-2027 por ser feriado el 16-07 (reserva de 19 a 18 días hábiles) |
 | Responsable | Líder de Operación (SRE) |
 
 ### H4 — Software de la Etapa 1 para pruebas (mes 10)
@@ -131,7 +132,7 @@ La ficha del H5 certifica la Etapa 1 antes de su marcha blanca.
 | Campo | Contenido |
 | --- | --- |
 | Entregables | Acta de certificación (3.8.7) con los informes de 3.8.2 a 3.8.6 y 3.8.8 |
-| Criterios | Casos de aceptación firmados; p95 de la Tabla 9.2 a 21,99 TPS; punto de quiebre registrado; recuperación sin intervención ante cada falla; RTO ≤ 4 h y RPO ≤ 15 min; 0 hallazgos críticos o altos de la prueba de intrusión; 0 pérdidas y 0 duplicados en 14 h sin señal y 24 h sin enlace; WCAG 2.2 AA; despliegue sin interrupción y reversión ≤ 10 min |
+| Criterios | Casos de aceptación firmados; p95 de la Tabla 9.2 a 21,99 TPS; 0 minutos de indisponibilidad y p95 cumplidos a 10,41 TPS durante los 90 minutos de 05:30 a 07:00; punto de quiebre registrado; recuperación sin intervención ante cada falla; RTO ≤ 4 h y RPO ≤ 15 min; 0 hallazgos críticos o altos de la prueba de intrusión; 0 pérdidas y 0 duplicados en 14 h sin señal y 24 h sin enlace; WCAG 2.2 AA; despliegue sin interrupción y reversión ≤ 10 min |
 | Evidencia | Informes del Formulario T-13, sección 10, incluidos la curva de carga (RT-09.07) y el informe íntegro del tercero (RT-11.20) |
 | Fechas | Entrega 29-11-2027; fecha límite 17-01-2028; reserva 35 días hábiles |
 | Responsable | Líder de Calidad |
@@ -155,8 +156,8 @@ La ficha del H7 cierra la marcha blanca con las seis condiciones copulativas del
 | Campo | Contenido |
 | --- | --- |
 | Entregables | Informe de cierre de la marcha blanca con los indicadores diarios del SD7, Tabla 7.9; informe de los resultados de aceptación del Caso 02, capítulo 18 (R18, sección 3), que corresponden a la Etapa 1 |
-| Criterios | 0 incidentes críticos o altos abiertos; 100 % del volumen real durante las cuatro últimas semanas; 0 minutos de indisponibilidad entre 05:30 y 07:00 y disponibilidad ≥ 99,9 %; p95 cumplidos; 0 diferencias de conciliación sin explicar; 100 % de usuarios certificados; prueba de intrusión por tercero, resiliencia y carga aplicable repetidas sobre la versión de cierre; resultados R18 de la Etapa 1 en su meta (sección 3) |
-| Evidencia | Serie diaria de los indicadores de las cuatro últimas semanas; registros de conciliación; registro de certificación de usuarios; informes de intrusión, resiliencia y carga del cierre de marcha blanca |
+| Criterios | 0 incidentes críticos o altos abiertos; 100 % del volumen real durante las cuatro últimas semanas; 0 minutos de indisponibilidad entre 05:30 y 07:00 y disponibilidad ≥ 99,9 %; p95 cumplidos; 0 diferencias de conciliación sin explicar; 100 % de usuarios certificados; pruebas de certificación de la Etapa 1 aprobadas (acta H5) y, si una corrección cambió la superficie expuesta, la prueba afectada repetida sobre la versión corregida; resultados R18 de la Etapa 1 en su meta (sección 3) |
+| Evidencia | Serie diaria de los indicadores de las cuatro últimas semanas; registros de conciliación; registro de certificación de usuarios; acta de certificación (H5 o H10) e informes de las pruebas repetidas tras una corrección, cuando las hubo |
 | Fechas | Fecha contractual fija: mes 16 (mayo de 2028) |
 | Responsable | Jefe de Proyecto |
 
@@ -191,7 +192,7 @@ La ficha del H10 certifica la Etapa 2 con ambas etapas activas.
 | Campo | Contenido |
 | --- | --- |
 | Entregables | Acta de certificación (3.9.6) con los informes de 3.9.2 a 3.9.5 y 3.9.7 |
-| Criterios | Casos de aceptación firmados por cadenas, transportistas, Comercial y Finanzas; p95 a 1,5× el peak con ambas etapas; RTO y RPO con ambas etapas; 0 hallazgos críticos o altos; WCAG 2.2 AA en los portales; despliegue sin interrumpir ninguna de las dos etapas |
+| Criterios | Casos de aceptación firmados por cadenas, transportistas, Comercial y Finanzas; p95 a 1,5× el peak con ambas etapas; 0 minutos de indisponibilidad a 10,41 TPS en la ventana de 05:30 a 07:00; RTO y RPO con ambas etapas; 0 hallazgos críticos o altos; WCAG 2.2 AA en los portales; despliegue sin interrumpir ninguna de las dos etapas |
 | Evidencia | Informes del Formulario T-13 para la Etapa 2 |
 | Fechas | Entrega 12-06-2028; fecha límite 17-07-2028; reserva 25 días hábiles |
 | Responsable | Líder de Calidad |
@@ -215,8 +216,8 @@ La ficha del H12 cierra la implementación y acepta el producto final.
 | Campo | Contenido |
 | --- | --- |
 | Entregables | Informe de cierre de la marcha blanca de la Etapa 2; informe de los 16 resultados R18 (sección 3); expediente del producto final |
-| Criterios | Las seis condiciones del Art. 17.3 para la Etapa 2; disponibilidad, desempeño e integridad de la Etapa 1 no degradados (Art. 17.2); prueba de intrusión por tercero, resiliencia y carga aplicable repetidas sobre la versión de cierre; resultados R18 en su meta, con las aceptaciones provisionales de la sección 3 |
-| Evidencia | Serie diaria de indicadores; matriz 9.C completa con el estado de prueba de los 645 identificadores; informes de intrusión, resiliencia y carga del cierre de marcha blanca |
+| Criterios | Las seis condiciones del Art. 17.3 para la Etapa 2; disponibilidad, desempeño e integridad de la Etapa 1 no degradados (Art. 17.2); pruebas de certificación de la Etapa 2 aprobadas (acta H10) y, si una corrección cambió la superficie expuesta, la prueba afectada repetida sobre la versión corregida; resultados R18 en su meta, con las aceptaciones provisionales de la sección 3 |
+| Evidencia | Serie diaria de indicadores; matriz 9.C completa con el estado de prueba de los 645 identificadores; acta de certificación (H5 o H10) e informes de las pruebas repetidas tras una corrección, cuando las hubo |
 | Fechas | Fecha contractual fija: mes 21 (octubre de 2028) |
 | Responsable | Jefe de Proyecto |
 
@@ -241,11 +242,19 @@ El producto final se acepta en el H12 con los 16 resultados del Caso 02, capítu
 | R18-11 | 100 % de entregas con costo de servir | Marcha blanca E2 | Reconciliación con la contabilidad del mes |
 | R18-12 | Pérdida de envases ≤ 7 % del parque al año | Marcha blanca E1 y 12 meses de Operación | Saldo conciliado por cliente y transportista; aceptación final tras 12 meses |
 | R18-13 | 100 % de pedidos de cadenas certificadas por EDI | Marcha blanca E2 | Pedidos EDI / pedidos de cadenas y avisos de despacho en ≤ 2 min |
-| R18-14 | Ocupación mínima 60 % por camión y promedio > 68 % | Marcha blanca de la ola de reparto | Ocupación de cada salida durante cuatro semanas |
+| R18-14 | Ocupación mínima 60 % por camión y promedio > 68 % | Marcha blanca E1, últimas cuatro semanas, con la ola 3 (preventa a rendición) completa en las semanas 5 a 8 desde el H6 (T-18, sección 6.1) | Ocupación de cada salida durante cuatro semanas |
 | R18-15 | 100 % de faltantes con causa al producirse | Marcha blanca E1 | Trazabilidad del evento, incluso sin conexión |
 | R18-16 | OTIF sin caída sin el planificador | Marcha blanca E1 | Dos semanas sin el planificador frente a dos semanas comparables |
 
 Catorce resultados se aceptan al cierre de una marcha blanca. Dos se aceptan en forma provisional y se confirman en Operación: el tramo del mes 32 de R18-04 y la pérdida anual de R18-12, tras 12 meses. Para ellos, el acta del H12 registra la aceptación provisional, y la confirmación se registra en un acta posterior firmada por la Contraparte Técnica.
+
+## Referencias
+
+Las fuentes citadas en este formulario se listan en formato APA 7.ª edición. Las Bases se citan en el texto con su documento y el artículo, capítulo, sección o código del requisito.
+
+- Distribuidora Puelche S.A. (2026a). *Bases Administrativas de Licitación N.º TFEP-01/2026: Contratación de Solución Integral de Software y Servicios de Operación*.
+- Distribuidora Puelche S.A. (2026b). *Bases Técnicas Transversales de Licitación N.º TFEP-01/2026*.
+- Distribuidora Puelche S.A. (2026c). *Caso 02: Logística. Especificaciones del problema y operación de Distribuidora Puelche S.A.*
 
 ## Declaración de uso de IA
 

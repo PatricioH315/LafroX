@@ -498,6 +498,8 @@ La duración PERT de cada paquete usa la tríada de la sección 4.1: O = 0,75 d,
 | H9 | 18-05-2028 | 16-06-2028 | 21 | 3.9.1 | 1,17 | > 99,9 % | > 99,9 % | 29-05-2028 |
 | H10 | 12-06-2028 | 17-07-2028 | 25 | 3.9.1 → 3.9.2 → 3.9.6 | 1,54 | > 99,9 % | > 99,9 % | 29-06-2028 |
 
+La tabla cuenta días hábiles de lunes a viernes sin descontar feriados, como declara la sección 5.1; la conversión a fechas efectivas es la acción del riesgo R8-17 en el mes 1. Dos fechas límite coinciden con un feriado: los diez días hábiles que van del 17 al 31 de mayo de 2027 incluyen el feriado del 21-05, de modo que el límite del H2 pasa del 17-05-2027 al 14-05-2027 y su reserva, a 11 días hábiles; el límite del H3, 16-07-2027, es feriado y pasa al 15-07-2027, con una reserva de 18. Las probabilidades de esta tabla se recalculan con esas reservas al confirmar el calendario.
+
 Ni el PERT ni la simulación incluyen un error sistemático en los tamaños supuestos que afecte a todos los paquetes a la vez, la falta de personas con las competencias requeridas ni un suministro de la infraestructura fuera de plazo más allá de lo modelado en R8-19. Esos casos se tratan con los disparadores del SD8, y su control es el seguimiento semanal de la reserva de cada hito.
 
 ### 5.4 Gobierno
@@ -510,7 +512,7 @@ El JP revisa semanalmente fechas pronosticadas, consumo de capacidad y restricci
 
 Cada entregable que gatilla un hito se presenta en la fecha de entrega de la Tabla 5.2, con al menos diez días hábiles antes del último día hábil del mes del hito, para que la revisión del Art. 18.3 termine dentro de ese mes. Los entregables que admiten revisión por partes se presentan por incrementos: el informe de QA de cada módulo de la Etapa 1 se entrega al terminar el módulo, entre agosto y septiembre de 2027, y el informe de integración al terminar 3.8.1, el 20 de octubre de 2027. Así, la revisión final del H4 cubre sólo el último incremento. Si el CLIENTE formula observaciones, la subsanación de diez días hábiles usa la reserva del hito, y el hito no se da por cumplido hasta el acta. Este procedimiento no supone que el CLIENTE renuncie a su plazo ni que firme el acta el mismo día de la entrega.
 
-El H1 y el H8 tienen reservas de 6 y 4 días hábiles, menores que los diez días de subsanación del Art. 18.3. Por eso su borrador se revisa con la Contraparte Técnica una semana antes de la entrega formal: el del H1 en la semana del 1 de marzo de 2027 y el del H8 en la semana del 6 de marzo de 2028. Ese control es el principal del H8, porque una observación formal llevaría su acta al 3 de abril de 2028, fuera del mes 14. Si aun así se formulan observaciones, el equipo del entregable las subsana en cinco días hábiles (SD8, R8-12).
+El H1 y el H8 tienen reservas de 6 y 4 días hábiles, menores que los diez días de subsanación del Art. 18.3. Por eso su borrador se revisa con la Contraparte Técnica una semana antes de la entrega formal: el del H1 en la semana del 1 de marzo de 2027 y el del H8 en la semana del 6 de marzo de 2028. Ese control es el principal del H8, porque una observación formal llevaría su acta al 3 de abril de 2028, fuera del mes 14. Si aun así se formulan observaciones, el equipo del entregable las subsana en cinco días hábiles en el H1 y en cuatro en el H8, igual a la reserva de cada hito (SD8, R8-12).
 
 ### 5.6 Medición de los niveles de atención
 
@@ -893,7 +895,7 @@ Estos 59 paquetes no se descomponen en una lista de actividades distintas, porqu
 | 7.2.5 | T | IMP | 13–21 | 160 | Una actividad por quincena, por presencia continua o periódica | 18 | 8.9 |
 | 8.1.1 | C | SRE | 21–56 | 26280 | Una actividad de nivel de esfuerzo por quincena, dividida en relevos o puestos según la HH de cada mes | 432 | 62.0 |
 | 8.1.2 | C | SRE | 21–56 | 54239 | Una actividad de nivel de esfuerzo por quincena, dividida en relevos o puestos según la HH de cada mes | 679 | 79.9 |
-| 8.1.3 | G | SRE | 21–56 | 80 | 6 ocurrencias en la ventana, por presencia continua o periódica | 6 | 13.3 |
+| 8.1.3 | G | SRE | 21–56 | 80 | 7 ocurrencias en la ventana, por presencia continua o periódica | 7 | 11.4 |
 | 8.1.4 | R | JP | 21–56 | 288 | Una actividad por ocurrencia (anual), ejecutada dentro de una quincena; 2 actividad(es) por ocurrencia | 6 | 48.0 |
 | 8.1.5 | C | SEG | 13–56 | 32112 | Una actividad de nivel de esfuerzo por quincena, dividida en relevos o puestos según la HH de cada mes | 528 | 62.0 |
 | 8.1.6 | R | SRE | 21–56 | 576 | Una actividad por ocurrencia (mensual), ejecutada dentro de una quincena; 1 actividad(es) por ocurrencia | 36 | 16.0 |

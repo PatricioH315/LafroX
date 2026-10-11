@@ -2100,6 +2100,8 @@ Preproducción es equivalente a Producción en versiones, configuración, dimens
 
 - Preproducción emula el sitio on-premise dentro de su propia VPC, con la misma imagen wms_only, el mismo broker y el mismo verificador local, pero sin túnel hacia las bodegas, para que un ensayo no pueda alcanzar la operación real.
 
+Durante las campañas de certificación coinciden pruebas que alteran el estado del ambiente o que exigen una versión congelada: la migración, la carga con la resiliencia y el despliegue, la prueba de intrusión y la aceptación de usuario. Cada una usa su propia instancia de Preproducción, reconstruida desde el mismo código con la misma topología, configuración y dimensionamiento, y se apaga al terminar su campaña; siguen siendo un solo ambiente lógico, no un sexto ambiente. El Subdocumento 9, Tabla 9.11, asigna cada campaña a su instancia.
+
 La emulación reproduce la topología del sitio y no su hardware. Por eso, la primera instalación de cada entrega en los centros de distribución y los cross-docking avanza sitio por sitio, como se describe en la liberación. Durante las pruebas de carga y estrés de la Tabla [32](LAFROX-Subdocumento4.md#tab:t86) opera con el dimensionamiento completo de Producción.
 
 Las figuras siguientes muestran cada uno de los cinco ambientes. Desarrollo, QA y Preproducción residen solo en la nube. Producción abarca la nube y los sitios on-premise. Recuperación ante Desastres cubre la pérdida de la región primaria mediante us-east-1 y la pérdida de la sala de Talca mediante el WMS levantado en la plataforma de nube (numeral 4.1 de las Bases Técnicas Transversales; Bases Técnicas Transversales, cap. 4, p. 10). Concepción opera su propia bodega en Producción.
@@ -2252,11 +2254,11 @@ El paso de un ambiente a otro lo controla el pipeline de integración continua: 
 
 - Auditoría de dependencias con `composer audit`, pruebas PHPUnit con PCOV, JUnit 5 con Kover para Kotlin y Jest para TypeScript.
 
-- Análisis estático con PHPStan y Larastan, formato con Laravel Pint, complejidad con PHPMD, detekt y ESLint, duplicación con PHPCPD y jscpd, dependencias entre módulos con deptrac y deuda técnica con PhpMetrics.
+- Análisis estático con PHPStan y Larastan, formato con Laravel Pint, complejidad con PHPMD, detekt y ESLint, duplicación con PHPCPD y jscpd, con bloqueo sobre el 3 % de las líneas, dependencias entre módulos con deptrac y deuda técnica con PhpMetrics.
 
 - Pruebas de contrato contra OpenAPI 3.1 y AsyncAPI 2.6.
 
-- Escaneo de secretos, SAST y SCA, escaneo de imágenes de contenedor con Amazon Inspector en ECR, DAST con OWASP ZAP, accesibilidad con axe-core y revisión manual, carga con k6 y resiliencia con AWS Fault Injection Service.
+- Escaneo de secretos, SAST y SCA, escaneo de imágenes de contenedor con Amazon Inspector en ECR, análisis de la aplicación Android con MobSF, DAST con OWASP ZAP, contratos con Pact y Spectral, pruebas de extremo a extremo con Playwright, accesibilidad con axe-core y revisión manual, carga con k6 y resiliencia con AWS Fault Injection Service.
 
 - Medición de la cobertura de la lógica de negocio y de la cobertura unitaria global.
 
