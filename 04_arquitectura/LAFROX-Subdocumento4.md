@@ -2325,7 +2325,7 @@ La Figura [24](LAFROX-Subdocumento4.md#fig:red-sitios-regiones) sitúa las cinco
 
 **Figura 24 — Red de los cinco sitios operacionales y las regiones de producción y recuperación**
 
-[Abrir diagrama en PDF](D:/Usuario/Documents/Proyecto_Lafrox/LafroX-rama-latex/04/figuras/fisica/Red_01_general_legible.pdf)
+[Abrir diagrama en PDF](https://raw.githubusercontent.com/PatricioH315/LafroX/d42c58a0ca0490698344c995776d2aed08218b62/04/figuras/fisica/Red_01_general_legible.pdf)
 
 Fuente: elaboración propia.
 
@@ -2335,7 +2335,7 @@ La vista general distingue los cinco dominios locales y sus caminos regionales; 
 
 **Figura 25 — Red local y continuidad de Talca, Concepción y las plataformas de cross-docking**
 
-[Abrir diagrama en PDF](D:/Usuario/Documents/Proyecto_Lafrox/LafroX-rama-latex/04/figuras/fisica/Red_02_sitios_legible.pdf)
+[Abrir diagrama en PDF](https://raw.githubusercontent.com/PatricioH315/LafroX/d42c58a0ca0490698344c995776d2aed08218b62/04/figuras/fisica/Red_02_sitios_legible.pdf)
 
 Fuente: elaboración propia.
 
@@ -2345,7 +2345,7 @@ La red local conecta el cómputo redundante con dos switches y el par de firewal
 
 **Figura 26 — Conectividad regional, servicios privados y replicación de Aurora y S3**
 
-[Abrir diagrama en PDF](D:/Usuario/Documents/Proyecto_Lafrox/LafroX-rama-latex/04/figuras/fisica/Red_03_regiones_legible.pdf)
+[Abrir diagrama en PDF](https://raw.githubusercontent.com/PatricioH315/LafroX/d42c58a0ca0490698344c995776d2aed08218b62/04/figuras/fisica/Red_03_regiones_legible.pdf)
 
 Fuente: elaboración propia.
 
