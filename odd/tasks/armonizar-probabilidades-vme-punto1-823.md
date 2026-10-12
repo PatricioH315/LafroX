@@ -15,7 +15,8 @@ Implementar solamente el primer punto acordado: armonizar T-16 con las probabili
 1. [done] Armonizar las bandas cualitativas y los 45 porcentajes p₀ de T-16, preservando P ordinal y exposiciones.
 2. [done] Sustituir 8.2.3 por valor esperado HH, hacer autosuficiente Anexo 8.B y alinear las afirmaciones generales/IA; reparar referencias/numeración sin desarrollar el siguiente punto.
 3. [done] Verificar datos, referencias, `git diff --check` y compilar T-16/SD8 en rutas temporales. La comparación independiente previa pasó; una segunda invocación Python autorizada falló por un regex del verificador (`None.group`), no por una aserción de datos.
-4. [in_progress] Resolver la revisión nativa del candidato; el lineage `review-28d2b6de4050193f` sigue en `reviewing` con un slot de captura y los intentos de binding exacto fueron rechazados sin ejecutar reviewer.
+4. [pending] Reconciliar la revisión nativa del candidato; queda en pausa por instrucción del usuario mientras se actualiza T-16. El lineage `review-28d2b6de4050193f` sigue sin resolverse.
+5. [done] Diagnosticar el estado Git: los tres archivos fuente del punto 1 coinciden por blob entre worktree, HEAD y origin `b47ed536`; la historia/reflog muestra commits y un merge externos al trabajo de este agente. Actor no identificado.
 
 ## Evidencia de origen
 - Fuente de trabajo: `Datos externos/Tablas_tiesgos/(Nueva)LafroX-Riesgos-actualizadosr.xlsx - Riesgos LafroX.csv`.
@@ -30,4 +31,4 @@ Implementar solamente el primer punto acordado: armonizar T-16 con las probabili
 - No corresponde prueba unitaria para este cambio documental. No se sustituyeron PDFs del proyecto ni se creó commit.
 - La revisión nativa sigue abierta: lineage `review-28d2b6de4050193f`, transición `collect` (`reviewer_results_required`), lente `review-reliability`. Los intentos de captura rechazaron el binding con `mutation_performed:false`; no se ejecutó ni admitió resultado de reviewer. No se afirma aprobación.
 
-Punto 2 de la propuesta queda detenido hasta nueva instrucción explícita del usuario. Antes de avanzar debe resolverse la captura nativa pendiente. Rama local no sincronizada: un commit detrás de origin por cambios RBS/EDR; no se integró.
+El usuario dejó el punto 2 en pausa y ordenó modificar T-16 usando las ponderaciones de Probabilidad e Impacto de la Tabla 3 del CSV. La inspección de solo lectura confirma HEAD y origin en `b47ed536abd72bedfbdd35cdfc5615e401ef1ea5`; los blobs originales de T-16, cuerpo y Anexo 8.B coinciden con HEAD/origin. El reflog registra `234e7b9`, `a7276df` y un merge posterior a `b47ed53`; no se atribuye autoría al agente ni a una persona determinada. El candidate-view de Gentle permanece fijado en `234e7b9`; la autoridad `review-28d2b6de4050193f` no se pudo reconciliar. Se mantiene pendiente, sin reset/pull/commit/abandono.

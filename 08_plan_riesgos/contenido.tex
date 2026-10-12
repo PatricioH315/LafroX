@@ -57,16 +57,16 @@ Las responsabilidades de DAT e IMP se transfieren al frente F8 de Operación, co
 
 Para poder realizar un buen análisis de riegos, debemos de definir la probabilidad (P), el impacto (I) y la prioridad (P x I).
 
-La probabilidad cualitativa (P) expresa el juicio ordinal sobre la posibilidad de ocurrencia del riesgo. Se asigna en una escala de \textbf{1 a 5} mediante las bandas de ponderación cualitativa $q$ de la tabla 8.2. Estas bandas no se aplican a $p_0$, la estimación inicial porcentual de ocurrencia que se muestra por separado en T-16 y se usa para el valor esperado en HH.
+La probabilidad cualitativa (P) expresa el juicio ordinal sobre la posibilidad de ocurrencia del riesgo. Se asigna en una escala de \textbf{1 a 5} mediante las bandas de ponderación cualitativa $q$ de la tabla 8.2. Estas bandas no se aplican a $p_0$, la estimación inicial porcentual de ocurrencia que se presenta en el Anexo 8.B y se usa para el valor esperado en HH.
 
 \begin{tablalafrox}{Escala cualitativa de probabilidad -- Fuente: elaboración propia}{tab:tabla-probabilidad}%
   {G{0.08} G{0.16} Y Y}%
   {\cab{Valor} & \cab{Banda cualitativa ($q$)} & \cab{Descripción} & \cab{Criterio cualitativo}}
-  1 & $0\%\leq q<20\%$ &Muy baja & Poco probable que ocurra; condiciones excepcionales \\
-  2 & $20\%\leq q<40\%$ & Baja & Puede ocurrir en casos aislados \\
-  3 & $40\%\leq q<60\%$ &Media & Podría ocurrir algunas veces durante el proyecto \\
-  4 & $60\%\leq q<80\%$ &Alta & Ocurrirá con frecuencia si no se mitiga \\
-  5 & $80\%\leq q\leq100\%$ &Muy alta & Casi seguro de que ocurra \\
+  1 & $1\%\leq q\leq10\%$ &Muy baja & Poco probable que ocurra; condiciones excepcionales \\
+  2 & $11\%\leq q\leq30\%$ & Baja & Puede ocurrir en casos aislados \\
+  3 & $31\%\leq q\leq50\%$ &Media & Podría ocurrir algunas veces durante el proyecto \\
+  4 & $51\%\leq q \leq70\%$ &Alta & Ocurrirá con frecuencia si no se mitiga \\
+  5 & $ q\geq70\%$ &Muy alta & Casi seguro de que ocurra \\
 \end{tablalafrox}
 
 Por otro lado, el impacto (I) representa el nivel de afectación que tendria el riesgo si llegara a materializarse. Se evalúa también en una escala de \textbf{1 a 5}, donde 1 representa un impacto insignificante y 5 un impacto muy alto.
@@ -81,18 +81,7 @@ Por otro lado, el impacto (I) representa el nivel de afectación que tendria el 
   5 & Muy alto & Compromete el éxito total del proyecto \\
 \end{tablalafrox}
 
-Por último, luego de definir valores de P e I, se obtiene el producto $P \times I$, que nos da el nivel de prioridad del riesgo. El resultado se interpreta según la tabla 8.4, que clasifica los riesgos según su importancia relativa
-
-\begin{tablalafrox}{Matriz de prioridad -- Fuente: elaboración propia}{tab:tabla-prioridad}%
-  {F{0.24} Y Y}%
-  {\cab{PxI} & \cab{Nivel de prioridad}}
-  1 - 4 & Baja \\
-  5 - 9 & Media \\
-  10 - 16 & Alta \\
-  17 - 25 & Crítica \\
-\end{tablalafrox}
-
-La probabilidad ordinal y el impacto ordinal determinan la exposición cualitativa; el impacto en HH se mantiene separado.
+La ponderación decimal cualitativa de probabilidad e impacto produce la exposición $q_P\times q_I$. La zona de prioridad de cada riesgo es la zona registrada y adoptada del registro vigente; no se infiere a partir de umbrales sobre la exposición decimal. Los niveles ordinales de P e I se conservan junto con sus ponderaciones decimales. $p_0$ y las HH permanecen separados.
 
 \subsection{Registro y cierre}
 
@@ -100,7 +89,7 @@ El responsable actualiza fuente, estado, disparador, tratamiento, consumo de HH 
 
 \section{Identificación y Análisis de Riesgos}
 
-Esta sección identifica los riesgos con una RBS y los analiza cualitativamente mediante la exposición ordinal ($P\times I$) y cuantitativamente mediante el valor esperado de cada riesgo en horas-hombre. La simulación Monte Carlo del cronograma por actividad del SD7 queda pendiente de definir y validar sus insumos; en esta versión no se presentan resultados simulados.
+Esta sección identifica los riesgos con una RBS y los analiza cualitativamente mediante la exposición decimal ($q_P\times q_I$), junto con los niveles ordinales de P e I y la zona registrada para cada riesgo, y cuantitativamente mediante el valor esperado de cada riesgo en horas-hombre. La simulación Monte Carlo del cronograma por actividad del SD7 queda pendiente de definir y validar sus insumos; en esta versión no se presentan resultados simulados.
 
 \subsection{RBS y análisis separados}
 
@@ -124,25 +113,25 @@ La figura presenta la clasificación del registro actualizado de 45 riesgos, uti
 
 \subsection{Análisis cualitativo de riesgos}
 
-El análisis cualitativo del T-16 combina probabilidad e impacto ordinales en una escala de 1 a 5. Su producto ($P\times I$) expresa la exposición, que se interpreta con las bandas de prioridad definidas en SD8. La Tabla 8.4 presenta los diez riesgos con mayor exposición, ordenados de mayor a menor valor; en caso de empate, se prioriza el ID ascendente.
+El análisis cualitativo del T-16 presenta los niveles ordinales de probabilidad e impacto en una escala de 1 a 5 junto con sus ponderaciones decimales. La exposición corresponde al producto decimal ($q_P\times q_I$), y la zona de cada riesgo es la registrada y adoptada del registro vigente, sin inferirla mediante umbrales sobre ese producto. La Tabla 8.4 presenta los diez riesgos con mayor exposición decimal, ordenados de mayor a menor producto y, en caso de empate, por ID ascendente.
 
 \begingroup
 \renewcommand{\thetable}{8.4}
-\begin{tablalafrox}{Valoración cualitativa vigente de riesgos. Fuente: T-16; bandas de prioridad SD8.}{tab:sd8-cuerpo-4}{>{\hsize=0.8\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X >{\hsize=1.1\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X >{\hsize=1.05\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X >{\hsize=1.1\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X >{\hsize=1.4\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X}{\cab{ID} & \cab{Prob. ordinal} & \cab{Impacto ordinal} & \cab{Exposición ($P\times I$)} & \cab{Nivel de prioridad}}
-R-012 & 3 & 4 & 12 & Alta \\
-R-015 & 3 & 4 & 12 & Alta \\
-R-005 & 2 & 4 & 8 & Media \\
-R-006 & 2 & 4 & 8 & Media \\
-R-011 & 2 & 4 & 8 & Media \\
-R-013 & 2 & 4 & 8 & Media \\
-R-014 & 2 & 4 & 8 & Media \\
-R-016 & 2 & 4 & 8 & Media \\
-R-001 & 3 & 2 & 6 & Media \\
-R-003 & 3 & 2 & 6 & Media \\
+\begin{tablalafrox}{Valoración cualitativa vigente de riesgos. Fuente: T-16; zonas registradas.}{tab:sd8-cuerpo-4}{>{\hsize=0.8\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X >{\hsize=1.1\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X >{\hsize=1.05\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X >{\hsize=1.1\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X >{\hsize=1.4\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X}{\cab{ID} & \cab{P decimal} & \cab{I decimal} & \cab{Exposición decimal ($q_P\times q_I$)} & \cab{Zona registrada}}
+R-012 & 0,50 & 0,80 & 0,40 & Crítica \\
+R-015 & 0,50 & 0,80 & 0,40 & Crítica \\
+R-005 & 0,30 & 0,80 & 0,24 & Alta \\
+R-006 & 0,30 & 0,80 & 0,24 & Alta \\
+R-011 & 0,30 & 0,80 & 0,24 & Alta \\
+R-013 & 0,30 & 0,80 & 0,24 & Alta \\
+R-014 & 0,30 & 0,80 & 0,24 & Alta \\
+R-016 & 0,30 & 0,80 & 0,24 & Alta \\
+R-001 & 0,50 & 0,40 & 0,20 & Alta \\
+R-003 & 0,50 & 0,40 & 0,20 & Alta \\
 \end{tablalafrox}
 \endgroup
 
-Entre los diez seleccionados, R-012 y R-015 tienen la mayor exposición (12, prioridad Alta). Les siguen seis riesgos con exposición 8 y prioridad Media, y dos con exposición 6 y prioridad Media. El corte en exposición 6 deja varios riesgos empatados; para mantener exactamente diez filas se incluyen R-001 y R-003, los primeros por ID ascendente. La prioridad es relativa a la escala cualitativa y no equivale a un impacto estimado en horas hombre.
+Entre los diez seleccionados, R-012 y R-015 tienen exposición decimal 0,40 y zona Crítica; les siguen seis riesgos con 0,24 y zona Alta. El corte en 0,20 deja varios riesgos empatados; para mantener exactamente diez filas se incluyen R-001 y R-003, los primeros por ID ascendente. La exposición ponderada no equivale al impacto estimado en horas-hombre.
 
 \subsection{Análisis cuantitativo}
 
@@ -150,7 +139,7 @@ El valor esperado cuantifica el esfuerzo condicional de cada riesgo ponderado po
 
 La suma de los valores esperados de los 45 riesgos es \textbf{2.058,480 HH}. El detalle individual, las probabilidades iniciales y los impactos condicionales se presentan en el Anexo 8.B. Las estimaciones son de planificación y deben validarse con los responsables de riesgo.
 
-Este total es un valor esperado analítico; no representa una reserva, un percentil, un esfuerzo cierto ni un resultado de simulación. La exposición cualitativa continúa calculándose por separado con los niveles ordinales de probabilidad e impacto. En este punto no se informan resultados Monte Carlo.
+Este total es un valor esperado analítico; no representa una reserva, un percentil, un esfuerzo cierto ni un resultado de simulación. La exposición cualitativa decimal ($q_P\times q_I$) continúa calculándose por separado; los niveles ordinales de probabilidad e impacto y la zona registrada se muestran junto a ella. En este punto no se informan resultados Monte Carlo.
 
 \section{Plan de Acción a Riesgos}
 
