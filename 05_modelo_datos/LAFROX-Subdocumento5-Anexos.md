@@ -122,7 +122,7 @@ Un obligatorio vacío se rechaza en captura; un derivado lo calcula su proceso. 
 | `CR` | Datos críticos o identificadores que permiten reconstruir quién es la persona o dónde está | No aplica: código de sensibilidad | Cifrado a nivel de campo, acceso reforzado y consulta auditada |
 | `ME` | Datos de sensibilidad media: medidas de operación, catálogos, estados y referencias técnicas | No aplica: código de sensibilidad | Acceso por rol y cifrado en reposo del almacén |
 
-*Fuente: elaboración a partir de los quince nombres lógicos de persistencia de S4, de RT-05.01 y RT-16 de las Bases Técnicas Transversales (Distribuidora Puelche S.A., 2026c, cap. 5 y 16, pp. 11–13 y 29–30) y de la regla de propietario funcional del Anexo 5-B.*
+*Fuente: elaboración a partir de los quince nombres lógicos de persistencia de S4, de RT-05.01 y RT-16 de las Bases Técnicas Transversales y de la regla de propietario funcional del Anexo 5-B.*
 
 La Tabla A.2 desarrolla los atributos de maestros e identidades, con sus condiciones y políticas de conservación.
 
@@ -244,7 +244,7 @@ La Tabla A.2 desarrolla los atributos de maestros e identidades, con sus condici
 | `mae_actor` | `identificacion` | Identificacion | string(255) | Identificador del actor: RUT, código de empleado o identificador entregado por el canal | Obligatorio | Sin clave | `GOB` | `CR`, `P07` |
 | `mae_actor` | `transportista_id` | Transportista al que pertenece el actor | uuid, 128 bits | UUID del registro referenciado | Condicional: obligatorio cuando el actor ejecuta como transportista, ya sea en ruta o en reparto, nula para actores de la propia empresa, del sistema y de los roles de negocio que no pertenecen a un transportista | Clave foránea a `mae_transportista.transportista_id` | `GOB` | `ME`, `P06` |
 
-*Fuente: elaboración a partir del modelo lógico de la Figura 5.8 del Subdocumento 5, de RT-05.01 de las Bases Técnicas Transversales (Distribuidora Puelche S.A., 2026c, cap. 5, p. 11) y de la matriz de retención del Anexo 5-D.*
+*Fuente: elaboración a partir del modelo lógico de la Figura 5.8 del Subdocumento 5, de RT-05.01 de las Bases Técnicas Transversales y de la matriz de retención del Anexo 5-D.*
 
 La validación aplica la condición de cada fila al hito indicado, NULL legítimo se distingue de dato obligatorio ausente.
 
@@ -380,7 +380,7 @@ La Tabla A.3 desarrolla los atributos de recepción e inventario, con sus condic
 | `inv_merma` | `actor_id` | Actor id | uuid, 128 bits | UUID existente, validación según 5-B | Obligatorio | Referencia a `mae_actor.actor_id`, FK solo co-residente | `INV` | `AL`, `P30` |
 | `inv_saldo` | `producto_id` | Producto del saldo, aun cuando no requiere lote | uuid, 128 bits | UUID de mae_producto, si existe lote, su producto_id coincide | Obligatorio | Referencia a mae_producto.producto_id, integridad según 5-B | `INV` | `ME`, `P10` |
 
-*Fuente: elaboración a partir del modelo lógico de las Figuras 5.2 del Subdocumento 5 y 5.8 del Subdocumento 5, de RT-05.01 de las Bases Técnicas Transversales (Distribuidora Puelche S.A., 2026c, cap. 5, p. 11) y de la matriz de retención del Anexo 5-D.*
+*Fuente: elaboración a partir del modelo lógico de las Figuras 5.2 del Subdocumento 5 y 5.8 del Subdocumento 5, de RT-05.01 de las Bases Técnicas Transversales y de la matriz de retención del Anexo 5-D.*
 
 La Tabla A.4 desarrolla los atributos de custodia y frío, con sus condiciones y políticas de conservación.
 
@@ -491,7 +491,7 @@ La Tabla A.4 desarrolla los atributos de custodia y frío, con sus condiciones y
 | `cal_resolucion_calidad` | `fundamento` | Fundamento | string(512) | Texto libre normalizado, hasta 512 caracteres, con el detalle que exige el registro | Obligatorio | Sin clave | `CAL` | `ME`, `P14` |
 | `cal_resolucion_calidad` | `fecha` | Fecha | timestamp with time zone, UTC | Instante ISO 8601 en UTC, con zona horaria explícita | Obligatorio | Sin clave | `CAL` | `ME`, `P14` |
 
-*Fuente: elaboración a partir del modelo lógico de las Figuras 5.5 y 5.2 del Subdocumento 5 y 5.10 del Subdocumento 5, de RT-05.01 de las Bases Técnicas Transversales (Distribuidora Puelche S.A., 2026c, cap. 5, p. 11) y de la matriz de retención del Anexo 5-D.*
+*Fuente: elaboración a partir del modelo lógico de las Figuras 5.5 y 5.2 del Subdocumento 5 y 5.10 del Subdocumento 5, de RT-05.01 de las Bases Técnicas Transversales y de la matriz de retención del Anexo 5-D.*
 
 La validación aplica la condición de cada fila al hito indicado NULL legítimo se distingue de dato obligatorio ausente.
 
@@ -577,7 +577,7 @@ La Tabla A.5 desarrolla los atributos de pedido y preparación, con sus condicio
 | `prp_picking_confirmacion` | `cantidad_rechazada` | Cantidad Rechazada | decimal(18,3) | Numérico no negativo, tres decimales, en la unidad de medida declarada | Obligatorio, admite cero, no puede superar la cantidad de referencia | Sin clave | `PREP` | `ME`, `P19` |
 | `prp_picking_confirmacion` | `fecha` | Fecha | timestamp with time zone, UTC | Instante ISO 8601 en UTC, con zona horaria explícita | Obligatorio | Sin clave | `PREP` | `ME`, `P19` |
 
-*Fuente: elaboración a partir del modelo lógico de las Figuras 5.3 y 5.2 del Subdocumento 5, de RT-05.01 de las Bases Técnicas Transversales (Distribuidora Puelche S.A., 2026c, cap. 5, p. 11) y de la matriz de retención del Anexo 5-D.*
+*Fuente: elaboración a partir del modelo lógico de las Figuras 5.3 y 5.2 del Subdocumento 5, de RT-05.01 de las Bases Técnicas Transversales y de la matriz de retención del Anexo 5-D.*
 
 La validación aplica la condición de cada fila al hito indicado, NULL legítimo se distingue de dato obligatorio ausente.
 
@@ -675,7 +675,7 @@ La Tabla A.6 desarrolla los atributos de ruta, reparto y envases, con sus condic
 | `env_movimiento` | `conductor_id` | Identificador de conductor | uuid, 128 bits | UUID del registro referenciado | Obligatorio, referencia válida | Clave foránea a `mae_actor.actor_id` | `REP` | `CR`, `P28` |
 | `env_movimiento` | `evidencia_obj_id` | Identificador de evidencia obj | uuid, 128 bits | UUID del registro referenciado | Obligatorio, referencia válida | Clave foránea a `obj_objeto.objeto_id` | `REP` | `ME`, `P27` |
 
-*Fuente: elaboración a partir del modelo lógico de las Figuras 5.4 y 5.6 del Subdocumento 5, de RT-05.01 de las Bases Técnicas Transversales (Distribuidora Puelche S.A., 2026c, cap. 5, p. 11) y de la matriz de retención del Anexo 5-D.*
+*Fuente: elaboración a partir del modelo lógico de las Figuras 5.4 y 5.6 del Subdocumento 5, de RT-05.01 de las Bases Técnicas Transversales y de la matriz de retención del Anexo 5-D.*
 
 La validación aplica la condición de cada fila al hito indicado, NULL legítimo se distingue de dato obligatorio ausente.
 
@@ -834,7 +834,7 @@ La Tabla A.7 desarrolla los atributos de cobranza y documentos, con sus condicio
 | `obj_objeto` | `version` | Identificador textual de la versión del objeto | string(255) | Cadena no vacía de hasta 255 caracteres, coincidencia exacta, sin orden numérico ni lexicográfico para determinar vigencia | Obligatorio | Referencia a la versión concreta junto con `clave`, no sustituye la PK `objeto_id` | `DOC` | `ME`, `P33` |
 | `obj_objeto` | `cifrado` | Cifrado | boolean | true: cifrado de servidor verificado, false: no cifrado, aceptación según la protección obligatoria de 5-E | Obligatorio, valor explícito, sin asumir true por defecto | Sin clave | `DOC` | `ME`, `P33` |
 
-*Fuente: elaboración a partir del modelo lógico de las Figuras 5.6 y 5.4 del Subdocumento 5 y 5.10 del Subdocumento 5, de RT-05.01 de las Bases Técnicas Transversales (Distribuidora Puelche S.A., 2026c, cap. 5, p. 11) y de la matriz de retención del Anexo 5-D.*
+*Fuente: elaboración a partir del modelo lógico de las Figuras 5.6 y 5.4 del Subdocumento 5 y 5.10 del Subdocumento 5, de RT-05.01 de las Bases Técnicas Transversales y de la matriz de retención del Anexo 5-D.*
 
 La validación aplica la condición de cada fila al hito indicado, NULL legítimo se distingue de dato obligatorio ausente.
 
@@ -970,7 +970,7 @@ La Tabla A.8 desarrolla los atributos de EDI, notificaciones y gobierno, con sus
 | `gob_excepcion_sync` | `fecha` | Fecha de registro de la excepción | timestamp with time zone, UTC | Instante ISO 8601 en UTC, con zona horaria explícita | Obligatorio | Sin clave | `GOB` | `ME`, `P43` |
 | `gob_excepcion_sync` | `fecha_cierre` | Instante de resolución de la excepción | timestamp with time zone, UTC | Instante ISO 8601 en UTC, con zona horaria explícita | Condicional: obligatoria cuando la excepción pasa a RESUELTA o RECHAZADA, porque en esos dos estados la decisión está tomada, nula mientras la excepción siga ABIERTA | Sin clave | `GOB` | `ME`, `P43` |
 
-*Fuente: elaboración a partir del modelo lógico de la Figura 5.9 del Subdocumento 5, de RT-05.01 de las Bases Técnicas Transversales (Distribuidora Puelche S.A., 2026c, cap. 5, p. 11) y de la matriz de retención del Anexo 5-D.*
+*Fuente: elaboración a partir del modelo lógico de la Figura 5.9 del Subdocumento 5, de RT-05.01 de las Bases Técnicas Transversales y de la matriz de retención del Anexo 5-D.*
 
 La validación aplica la condición de cada fila al hito indicado, NULL legítimo se distingue de dato obligatorio ausente.
 
@@ -1063,7 +1063,7 @@ La Tabla A.9 desarrolla los atributos de telemetría y copias de consulta, con s
 | `obj_manifiesto_linea` | `bytes` | Tamaño del objeto en línea | bigint, unidad byte, rango no negativo | Entero no negativo, tamaño en bytes correspondiente al objeto asociado a la línea del manifiesto | Obligatorio | Sin clave | `DOC` | `ME`, `P33` |
 | `obj_manifiesto_linea` | `orden` | Orden | integer, 32 bits | Entero no negativo, cero admitido en un conteo, una cantidad o una secuencia | Obligatorio | Sin clave | `DOC` | `ME`, `P33` |
 
-*Fuente: elaboración a partir del modelo lógico de la Figura 5.10 del Subdocumento 5, de RT-05.01 de las Bases Técnicas Transversales (Distribuidora Puelche S.A., 2026c, cap. 5, p. 11) y de la matriz de retención del Anexo 5-D.*
+*Fuente: elaboración a partir del modelo lógico de la Figura 5.10 del Subdocumento 5, de RT-05.01 de las Bases Técnicas Transversales y de la matriz de retención del Anexo 5-D.*
 
 La validación aplica la condición de cada fila al hito indicado, NULL legítimo se distingue de dato obligatorio ausente.
 
@@ -1222,7 +1222,7 @@ La Tabla A.10 desarrolla los atributos de hechos y dimensiones analíticas, con 
 | `hech_viaje` | `parametro_version_id` | Parametro version id | uuid, 128 bits | UUID existente, validación según 5-B | Obligatorio | Referencia a `mae_parametro_version.version_id`, FK solo co-residente | `ANA` | `ME`, `P53` |
 | `hech_viaje` | `bajo_umbral` | Bajo umbral | boolean | true si max(pct_peso,pct_volumen) < umbral, ambos porcentajes siempre visibles | Obligatorio | Sin clave | `ANA` | `ME`, `P53` |
 
-*Fuente: elaboración a partir del modelo lógico de la Figura 5.7 del Subdocumento 5, de RT-05.01 de las Bases Técnicas Transversales (Distribuidora Puelche S.A., 2026c, cap. 5, p. 11) y de la matriz de retención del Anexo 5-D.*
+*Fuente: elaboración a partir del modelo lógico de la Figura 5.7 del Subdocumento 5, de RT-05.01 de las Bases Técnicas Transversales y de la matriz de retención del Anexo 5-D.*
 
 La validación aplica la condición de cada fila al hito indicado, NULL legítimo se distingue de dato obligatorio ausente.
 
@@ -1463,7 +1463,7 @@ Cada regla de calidad declara dominio, punto de aplicación y causa tipificada. 
 | cob_saldo_documento.tramo_antiguedad, hech_cartera_antiguedad.tramo_antiguedad | CORRIENTE, HASTA_30, HASTA_60, HASTA_90, MAS_90 | Tramos exhaustivos y excluyentes según 5-H | CARTERA_INCONSISTENTE |
 | rep_devolucion_linea.disposicion, inv_merma.origen, causa | REINGRESO/VENTA_DESCUENTO/DEVOLUCION_PROVEEDOR/MERMA/DESTRUCCION, CONTEO/PREPARACION/GONDOLA/DEVOLUCION, VENCIMIENTO/DANO/RUPTURA_FRIO/OTRO | Disposición de Calidad auditada y origen trazable | MERMA_SIN_ORIGEN |
 
-*Fuente: elaboración a partir del Anexo 5-A, de los perfiles de evento declarados en 5.1.7 y de RT-05.04 de las Bases Técnicas Transversales (Distribuidora Puelche S.A., 2026c, cap. 5, pp. 11–13).*
+*Fuente: elaboración a partir del Anexo 5-A, de los perfiles de evento declarados en 5.1.7 y de RT-05.04 de las Bases Técnicas Transversales.*
 
 <a id="tab-a13"></a>
 
@@ -1508,7 +1508,7 @@ Cada regla de calidad declara dominio, punto de aplicación y causa tipificada. 
 | CARTERA_INCONSISTENTE, CREDITO_BLOQUEADO, GESTION_INCOMPLETA | Deuda/cupo desconocidos, mora >30, cupo excedido o gestión incompleta | Bloquear crédito/gestión inválida, permitir contado/cobro autorizados | Conciliar ERP y completar campos sin inventarlos |
 | MERMA_SIN_ORIGEN, COSTO_ERP_AUSENTE | Origen no trazable o costo no disponible | Conservar hecho, indicador incompleto | Consultar Finanzas, nunca costo cero inventado |
 
-*Fuente: elaboración a partir de RT-05.04 y RT-05.12 de las Bases Técnicas Transversales (Distribuidora Puelche S.A., 2026c, cap. 5, pp. 11–13), del caso de estudio y de las reglas de saneamiento declaradas en 5.3.*
+*Fuente: elaboración a partir de RT-05.04 y RT-05.12 de las Bases Técnicas Transversales, del caso de estudio y de las reglas de saneamiento declaradas en 5.3.*
 
 A.13 distingue rechazo (sin carga y con causa accionable), cuarentena (original íntegro consultable, defecto y resolución posterior) y decisión registrada (corrección/equivalencia aprobada con regla/versión en perfilado). Se prohíbe carga corregida silenciosa o historia inferida: resultado/causa ausentes permanecen aislados con original visible.
 
@@ -1570,7 +1570,7 @@ La Tabla A.14 detalla inicio, ubicación y eliminación por dominio/atributo. Lo
 | inv_reubicacion_propuesta e inv_merma | Ejecución/cierre del expediente | 6 años, ampliar si expediente sanitario vigente | Ninguno | Autoridad local y consolidado | Conservar aprobación, costo ERP y movimiento |
 | hech_viaje y hech_cartera_antiguedad | Salida/corte | 6 años alineados con ruta/dossier financiero | Ninguno | Redshift/S3 | Eliminar derivados/copias solo cuando la fuente sea elegible |
 
-*Fuente: elaboración a partir de RT-05.07 de las Bases Técnicas Transversales (Distribuidora Puelche S.A., 2026c, cap. 5, pp. 11–13), de los plazos de retención del Subdocumento 4 y del Artículo 85 de las Bases Administrativas (Distribuidora Puelche S.A., 2026b, art. 85, p. 44).*
+*Fuente: elaboración a partir de RT-05.07 de las Bases Técnicas Transversales, de los plazos de retención del Subdocumento 4 y del Artículo 85 de las Bases Administrativas.*
 
 El respaldo y la salida de contrato se coordinan con S4: la eliminación comprueba clase, versiones, réplicas y plazo. Un bloqueo de conservación activo no se elude; se elimina al hacerse elegible y se audita la excepción. La evidencia vigente no pierde su clave compartida y las copias personales deben quedar ilegibles según el procedimiento aprobado, sin afirmar que una clave global pueda destruirse selectivamente.
 
@@ -1606,7 +1606,7 @@ RT-05.08 y Art. 85 exigen seudonimización/cifrado de campo para datos personale
 | Cartera por factura, cupo, gestiones, compromiso y costo de merma | AL | Sí | Sí, importes/gestiones y referencias personales según 5-A | Finanzas/ejecutivo asignado, portal solo cliente autenticado, consulta auditada |
 | Topología, slotting y ocupación/viaje sin datos personales | ME | Sí | No para medidas, actores/coordenadas personales conservan su control propio | Bodega/planificador y rol de datos, publicación versionada |
 
-*Fuente: elaboración a partir de RT-05.08 y RT-16 de las Bases Técnicas Transversales (Distribuidora Puelche S.A., 2026c, cap. 5 y 16, pp. 11–13 y 29–30), del Artículo 85 de las Bases Administrativas (Distribuidora Puelche S.A., 2026b, art. 85, p. 44) y de la clasificación por atributo del Anexo 5-A.*
+*Fuente: elaboración a partir de RT-05.08 y RT-16 de las Bases Técnicas Transversales, del Artículo 85 de las Bases Administrativas y de la clasificación por atributo del Anexo 5-A.*
 
 GPS se cifra por campo y desaparece a doce meses totales; la evidencia de operación puede subsistir, pero auditoría/respaldo no deben reconstruir la coordenada. DTE conserva acceso por rol y emisión única, justificando su control sin cifrado de campo. La copia de identidad de 24 h permite consulta, no autoriza reservas/precios ni reemplaza el control de acceso.
 
@@ -1732,7 +1732,7 @@ El detalle sanitario mantiene ts_evento=ts_ocurrencia y no admite cambios poster
 
 ## Anexo 5-G. Claves de caché, vigencia e invalidación
 
-Las claves/versiones siguen cache_* de 5-A y S4 §§4.1.3.6–7, Anexo 4-O, ADR-06. La autoridad incrementa versión e invalida por outbox, Redis se reconstruye desde ella. Sin enlace, lectura fechada/indicativa, reserva, cobro y precio requieren al escritor competente.
+Las claves/versiones siguen cache de 5-A y S4 4.1.3.6–7, Anexo 4-O, ADR-06. La autoridad incrementa versión e invalida por outbox, Redis se reconstruye desde ella. Sin enlace, lectura fechada/indicativa, reserva, cobro y precio requieren al escritor competente.
 
 - **Permisos:** actor/sitio/versión, credencial 8 h bodega o 14 h terreno. Cambio de rol/sitio invalida, vencimiento bloquea el turno. Relevos preinscritos se verifican con PIN.
 - **Manifiesto:** versión/huella/objetos, firmado por Keycloak, 26 h, renovación horaria con enlace o cambio de turno. Verificador comprueba firma/vigencia y avisa antes de vencer; no es Redis ni extiende la credencial.
@@ -1781,7 +1781,7 @@ La Tabla A.18 define fórmula, grano, período, casos sin dato y linaje de cada 
 | Utilización por viaje | pct_peso=100 × carga_kg/capacidad_kg, pct_volumen=100 × carga_m3/capacidad_m3, alerta si max(ambos)<umbral vigente | mae_vehiculo, rut_viaje, hech_viaje, mae_parametro_version | Cada salida, bitácora 05:30 a 07:00 | Capacidad ausente/cero impide despacho y cálculo |
 | Antigüedad de cartera | Σ deuda por cliente/corte/tramo, CORRIENTE: corte <= vencimiento, 1 a 30, 31 a 60, 61 a 90, más de 90 días | doc_documento, cob_saldo_documento, cob_aplicacion, hech_cartera_antiguedad | Corte diario, portal E2 | Factura a crédito sin vencimiento: aislar e informar deuda no clasificable |
 
-*Fuente: elaboración a partir de RT-05.25 a RT-05.29 de las Bases Técnicas Transversales (Distribuidora Puelche S.A., 2026c, cap. 5, p. 13), de S3 sobre indicadores y de los atributos del Anexo 5-A.*
+*Fuente: elaboración a partir de RT-05.25 a RT-05.29 de las Bases Técnicas Transversales, de S3 sobre indicadores y de los atributos del Anexo 5-A.*
 
 OTIF usa todos los pedidos comprometidos del período una vez, incluidos no entregados, y exige completar todas sus líneas dentro de la ventana ORIGINAL inmutable. La fila analítica se identifica por pedido_id y conserva la ORIGINAL, entrega_id y ruta_sk pueden ser NULL hasta que existan sus hechos operativos. No se crean entregas ni rutas ficticias para cargar el denominador. Las duraciones sin instantes suficientes son NULL, no cero; la ausencia de entrega no retira al pedido comprometido del cálculo. No filtra por vigencia actual ni por existencia de entrega. La exactitud por cantidades homologa unidades y declara base cero; la desviación monetaria usa valor contado del sitio y el umbral ≤0,3 %, sin confundir ambos indicadores.
 
@@ -1802,7 +1802,7 @@ OTIF usa todos los pedidos comprometidos del período una vez, incluidos no entr
 | Despacho E1 | Planificador/Comercial | Balanceo de carga | Peso/volumen por viaje, alerta de subutilización | Sitio/vehículo/viaje/día | Líneas y capacidad versionada | Cada despacho 05:30 a 07:00, <=5 min | XLSX y bitácora |
 | Cartera E1, portal E2 | Finanzas/ejecutivo, cliente autenticado | Mora y seguimiento | Deuda, tramos, cupo, compromisos/recontactos | Cliente/ejecutivo/corte | Factura/aplicación/gestión | Corte diario, alerta móvil <2 s | PDF/XLSX por cliente autenticado |
 
-*Fuente: elaboración a partir de S3 3.4, de RT-05.25 a RT-05.29 de las Bases Técnicas Transversales (Distribuidora Puelche S.A., 2026c, cap. 5, p. 13) y de las fases del Artículo 17 de las Bases Administrativas (Distribuidora Puelche S.A., 2026b, art. 17, pp. 12–13).*
+*Fuente: elaboración a partir de S3 3.4, de RT-05.25 a RT-05.29 de las Bases Técnicas Transversales y de las fases del Artículo 17 de las Bases Administrativas.*
 
 Consulta operativa puntual usa API/caché válida, BI pesado usa Redshift. Latencias: ≤5 min operativo, ≤2 h desde último retorno para cierre y ≤4 h gerencial. Cada tablero muestra consolidación y pendientes, la exportación programada conserva alcance/manifest/hash/conteo según 5.2.8.
 
@@ -1857,7 +1857,7 @@ A.20 vincula cada RT-05 con desarrollo verificable en cuerpo/anexo. RT-05.10/.24
 | RT-05.29 Latencia máxima de disponibilidad analítica | 5.2.6 y 5.4.1 | Operativa de hasta cinco minutos desde el hecho, cierre de hasta dos horas desde el último retorno y gerencial de hasta cuatro horas | 5-H y 5-J |
 | RT-05.30 Analítica predictiva, deseable | 5.1.7 y 5.2.6 | Modelo cinético determinista por familia sobre la serie térmica asociada al lote, modelo, variables, métrica y recalibración documentados en el SD13. La incorporación distribuida al proceso operacional se desarrolla como INN-03 | SD13, sección 13.3.2 |
 
-*Fuente: elaboración a partir del bloque RT-05 de las Bases Técnicas Transversales (Distribuidora Puelche S.A., 2026c, cap. 5, pp. 11–13), del Formulario T-12 sobre capacidades ofertadas y no ofertadas y del contenido de los apartados citados del Subdocumento 5.*
+*Fuente: elaboración a partir del bloque RT-05 de las Bases Técnicas Transversales, del Formulario T-12 sobre capacidades ofertadas y no ofertadas y del contenido de los apartados citados del Subdocumento 5.*
 
 RT-05.16/.17/.20 se desarrollan en S4: contratos desde código, versiones y capa anticorrupción. S5 conserva el vínculo y las reglas de datos, sin duplicar esa arquitectura.
 
@@ -1891,7 +1891,7 @@ Las pruebas son propuestas sin resultados ni aceptación del CLIENTE acreditados
 | Eventos fuera de orden y duplicados | Conjunto de mensajes con clave de idempotencia, versiones y tiempos de ocurrencia fuera de secuencia | Se reproducen mensajes duplicados, tardíos y desordenados dentro y fuera de la ventana de deduplicación | Cero efectos duplicados y cero eventos aplicados fuera de versión | Registro de inbox y de efectos, responsable técnico |
 | Cartera viva y no migrados | Cartera con saldos vivos más dos años de historia | Se carga la cartera viva y se habilita el repositorio de consulta de lo no migrado | Cien por ciento de los saldos vivos cargados con su saldo, acceso de consulta probado con evidencia de una búsqueda real | Acta de cierre de cartera, finanzas del CLIENTE |
 
-*Fuente: elaboración a partir de RT-05.11 a RT-05.15 de las Bases Técnicas Transversales (Distribuidora Puelche S.A., 2026c, cap. 5, pp. 11–13) y de la estrategia de migración de 5.3.*
+*Fuente: elaboración a partir de RT-05.11 a RT-05.15 de las Bases Técnicas Transversales y de la estrategia de migración de 5.3.*
 
 En las pruebas de A.22, p95 se mide desde la acción de la persona usuaria, con el perfil completo de 5.4.1 y resultados por operación, no solo la media global. Máximos: consulta simple API 500 ms, escritura API 800 ms, preparación 1 s, entrega/acuse durable local 2 s, línea de preventa 1,5 s, consulta stock/crédito extremo a extremo 2 s, búsqueda compuesta 3 s, informe estándar 30 s. Son umbrales de las Bases Técnicas Transversales, el acuse local no implica consolidación central, que mantiene 10 min móvil/2 h sitio desde reconexión. Cada ensayo dura al menos quince minutos por nivel de carga, estrés continúa hasta saturación y la recuperación debe volver a esos umbrales en ≤5 min tras retirar el exceso (Bases Técnicas Transversales; Distribuidora Puelche S.A., 2026c, cap. 9, pp. 21–22; Caso 02, 2026d, cap. 15, p. 26).
 
@@ -1914,7 +1914,7 @@ En las pruebas de A.22, p95 se mide desde la acción de la persona usuaria, con 
 | Reconstrucción de caché | Pérdida total de la caché de lectura | Reconstrucción desde la autoridad | Cien por ciento de las claves reconstruidas sin pérdida de dato y ninguna reserva o cobro confirmado por la caché | Medido, arquitectura |
 | Caída de red de área amplia | Registro en terreno sin conexión durante catorce horas y reconexión posterior | Captura, sincronización y conciliación | Cero pérdidas y cero duplicados, sincronización de dispositivo dentro de diez minutos y del centro dentro de dos horas tras la reconexión | Medido, operación |
 
-*Fuente: elaboración a partir de RT-05.29 de las Bases Técnicas Transversales (Distribuidora Puelche S.A., 2026c, cap. 5, p. 13), de los escenarios de carga de S4 declarados en 5.4.1 y de la matriz de retención del Anexo 5-D.*
+*Fuente: elaboración a partir de RT-05.29 de las Bases Técnicas Transversales, de los escenarios de carga de S4 declarados en 5.4.1 y de la matriz de retención del Anexo 5-D.*
 
 <a id="tab-a23"></a>
 
@@ -1947,7 +1947,7 @@ En las pruebas de A.22, p95 se mide desde la acción de la persona usuaria, con 
 | Notificación asíncrona RF-18.03 / RT-16.23 | Falla recuperable, timeout, eventos duplicados/tardíos, SMS sin apertura nativa y acceso explícito al portal | Encolar, reintentar por política, ingerir evidencias y repetir callbacks | Solicitud desacoplada, cero duplicados internos, CONFIRMADO solo con entrega, apertura sin señal queda NO_INFORMADA/NO_SOPORTADA con fecha NULL, acceso válido registra PORTAL, error conserva causa, igual ID/otra huella se aísla | Outbox, política, intentos/eventos y proyecciones, TI/CLIENTE |
 | Ocupación, viaje y merma | Dos SSCC en posición, capacidad inválida, devolución destruida | Consolidar y despachar | Una posición ocupada, cero despacho sin capacidad, una merma por devolución, sin costo resultado incompleto | Snapshots/costo ERP, Datos/Finanzas |
 
-*Fuente: elaboración a partir de RT-05.08/.14/.29 y RT-16.23 (Distribuidora Puelche S.A., 2026c, caps. 5 y 16, pp. 12–13 y 30), del Caso 02 (Distribuidora Puelche S.A., 2026d, cap. 18, criterio 1, p. 34), T-12 (LafroX SpA., 2026b, RF-18.03) y SD4 (LafroX SpA., 2026a, Anexo 4-M); recorridos de 5.1.7, retención de 5-D y criterios de 5-J.*
+*Fuente: elaboración a partir de RT-05.08/.14/.29 y RT-16.23, del Caso, T-12 y SD4, recorridos de 5.1.7, retención de 5-D y criterios de 5-J.*
 
 S4, Anexo 4-M, define ensayos complementarios. AL-DTE-01 comprueba 96 salidas con guía vigente, reintentos y cambios de carga en ambas rutas ERP, sin comunicación, conserva carga amparada y difiere ajustes. AL-CLI-01 reinicia el portal Android/iOS sin red, recupera catálogo/pedido y reenvía UUID: cero pérdida/duplicación, reserva tras validación M3, sesión vencida/cuenta bloqueada se rechazan. Rechazo esperado conserva causa/auditoría/mensaje, no es fallo de integridad.
 
@@ -2016,7 +2016,7 @@ La Tabla A.26 fija la ventana relativa final propuesta; los dos ensayos deben de
 | Cambio y observación, si go | 00:00–00:30 | Un escritor, ERP emisor único | Operación + datos |
 | Reserva rollback | 00:30–01:30 | Restaurar punto de control, conciliar delta, devolver autoridad previa del sitio | Datos + operación CLIENTE |
 
-*Fuente: Caso 02 (Distribuidora Puelche S.A., 2026d, secs. 13.2–13.3, pp. 22–23) y S3/S4; ventana relativa sujeta al inicio contractual.*
+*Fuente: Caso y S3/S4, ventana relativa sujeta al inicio contractual.*
 
 Se preserva despacho 05:30–07:00 y congelamientos septiembre/diciembre/cierre mensual. Si no-go ocurre antes, rollback comienza inmediatamente y usa la reserva, se registran tiempos, resultado y frontera recuperada. E1 M16 y E2 M21 requieren marcha blanca previa y últimas cuatro semanas con volumen real. RTO/RPO de S4 continúan siendo condiciones contractuales; esta reserva es hipótesis a demostrar, no resultado de recuperación.
 
@@ -2030,18 +2030,18 @@ Todos los modelos se presentan en la sección 5.1 del Subdocumento 5. La Figura 
 
 ## Referencias
 
-- Distribuidora Puelche S.A. (2026a). *Aclaraciones de la Licitación N.º TFEP-01/2026*.
-- Distribuidora Puelche S.A. (2026b). *Bases Administrativas de Licitación N.º TFEP-01/2026*.
-- Distribuidora Puelche S.A. (2026c). *Bases Técnicas Transversales de Licitación N.º TFEP-01/2026*.
-- Distribuidora Puelche S.A. (2026d). *Caso 02: Logística. Especificaciones del problema y operación de Distribuidora Puelche S.A.*
-- GS1. (2022a). *Core Business Vocabulary Standard* (Release 2.0). [Enlace](https://ref.gs1.org/standards/cbv/2.0.0/)
-- GS1. (2022b). *EPCIS Standard* (Release 2.0). [Enlace](https://ref.gs1.org/standards/epcis/2.0.0/)
-- International Organization for Standardization. (2008). *ISO/IEC 25012:2008: Software engineering — Software product Quality Requirements and Evaluation (SQuaRE) — Data quality model*. [Enlace](https://www.iso.org/standard/35736.html)
-- International Organization for Standardization. (2019). *ISO 8601-1:2019: Date and time — Representations for information interchange — Part 1: Basic rules*. [Enlace](https://www.iso.org/standard/70907.html)
-- LafroX SpA. (2026a). *Arquitectura* [Subdocumento 4, anexos y Formulario T-11].
-- LafroX SpA. (2026b). *Esquema de solución y alcance* [Subdocumento 3, anexos y Formulario T-12].
-- LafroX SpA. (2026d). *Innovaciones* [Subdocumento 13].
-- LafroX SpA. (2026e). *Modelo y gestión de datos* [Subdocumento 5].
-- LafroX SpA. (2026f). *Presentación de la empresa* [Subdocumento 1].
-- LafroX SpA. (2026g). *Problema y necesidad* [Subdocumento 2].
+- *Aclaraciones de la Licitación N.º TFEP-01/2026*.
+- *Bases Administrativas de Licitación N.º TFEP-01/2026*.
+- *Bases Técnicas Transversales de Licitación N.º TFEP-01/2026*.
+- *Caso: Logística. Especificaciones del problema y operación de Distribuidora Puelche S.A.*
+- *Core Business Vocabulary Standard* (Release 2.0). [Enlace](https://ref.gs1.org/standards/cbv/2.0.0/)
+- *EPCIS Standard* (Release 2.0). [Enlace](https://ref.gs1.org/standards/epcis/2.0.0/)
+- International Organization for Standardization. *ISO/IEC 25012:2008: Software engineering — Software product Quality Requirements and Evaluation (SQuaRE) — Data quality model*. [Enlace](https://www.iso.org/standard/35736.html)
+- International Organization for Standardization. *ISO 8601-1:2019: Date and time — Representations for information interchange — Part 1: Basic rules*. [Enlace](https://www.iso.org/standard/70907.html)
+- *Arquitectura* [Subdocumento 4, anexos y Formulario T-11].
+- *Esquema de solución y alcance* [Subdocumento 3, anexos y Formulario T-12].
+- *Innovaciones* [Subdocumento 13].
+- *Modelo y gestión de datos* [Subdocumento 5].
+- *Presentación de la empresa* [Subdocumento 1].
+- *Problema y necesidad* [Subdocumento 2].
 - PostgreSQL Global Development Group. (2023). *PostgreSQL 16 documentation*. [Constraints](https://www.postgresql.org/docs/16/ddl-constraints.html); [Table partitioning](https://www.postgresql.org/docs/16/ddl-partitioning.html); [Range types](https://www.postgresql.org/docs/16/rangetypes.html); [btree_gist](https://www.postgresql.org/docs/16/btree-gist.html).

@@ -110,9 +110,9 @@ Jefe de Proyecto y Apoderado · LafroX SpA
 
 El ítem 5 define cómo los datos sostienen trazabilidad sanitaria, cumplimiento de entrega y control de existencias para Distribuidora Puelche S.A. S2 aporta el problema, S3 y el Formulario T-12 fijan alcance y aceptación, S4 y T-11 fijan autoridades, motores, despliegue y capacidad. El capítulo desarrolla modelo, gestión, migración y desempeño sin cambiar esas decisiones. S1–S5 y SD1–SD5 designan subdocumentos, M seguido de número designa módulo en arquitectura y mes en el calendario. El glosario del Anexo 5-A define las siglas técnicas utilizadas en cuerpo y anexos, los códigos de requisitos, componentes y políticas conservan sus identificadores de origen.
 
-Las decisiones aplican las Bases Administrativas (Distribuidora Puelche S.A., 2026b, arts. 16–17, pp. 11–13), las Bases Técnicas del Caso (Distribuidora Puelche S.A., 2026d, caps. 14–15, pp. 24–27) y las Bases Técnicas Transversales (Distribuidora Puelche S.A., 2026c, cap. 5, pp. 11–13). La estructura sigue las Aclaraciones (Distribuidora Puelche S.A., 2026a, secs. 2–6 y 11).
+Las decisiones aplican las Bases Administrativas, las Bases Técnicas del Caso y las Bases Técnicas Transversales . La estructura sigue las Aclaraciones.
 
-Los antecedentes de empresa, problema, alcance y arquitectura proceden de los Subdocumentos 1, 2, 3 y 4, respectivamente, sus remisiones señalan el apartado específico utilizado (LafroX SpA., 2026a, 2026b, 2026f, 2026g).
+Los antecedentes de empresa, problema, alcance y arquitectura proceden de los Subdocumentos 1, 2, 3 y 4, respectivamente, sus remisiones señalan el apartado específico utilizado.
 
 El cuerpo explica los modelos críticos y las decisiones de operación. El anexo aporta diccionario, cardinalidades, catálogos, retención, índices, cachés, linaje, pruebas y mapeo de migración, las figuras de 5.1 reúnen también maestros, EDI/gobierno y telemetría, y 5-L remite a sus modelos. Los plazos y capacidades son compromisos o cálculos de diseño, no resultados de ensayos ejecutados.
 
@@ -262,7 +262,7 @@ Un timeout de POS mantiene pago incierto: consulta, conciliación y eventual can
 
 La cobranza distingue REPARTO, PREVENTA y PORTAL. El preventista registra efectivo de facturas vencidas del cliente sin entrega ni vehículo, emite recibo provisional digital con folio único e incorpora el cobro a su rendición diaria en caja, cob_aplicacion vincula pago y facturas sin duplicar documento_id en el cobro. Una factura ERP puede carecer de carga y conserva vencimiento, guía de despacho mantiene carga obligatoria. Cartera conserva deuda por documento, ejecutivo, gestiones, compromisos y recontactos. Mora mayor a treinta días o cupo excedido bloquea crédito, contado/cobro mantienen permisos. La cartola deriva tramos del vencimiento y corte, disponible al cliente autenticado en E2 (RF-07.04/.05/.07/.11).
 
-En E2, el pago PORTAL queda EN_REVISION con su comprobante y sin efecto financiero hasta que Tesorería lo aprueba; 5-C define su registro y envío al ERP (RF-07.08; LafroX SpA., 2026a, 4.1.4.6). Para envases, el umbral versionado por cliente/tipo dispara un aviso al preventista dentro de 24 h; 5-C precisa la correlación (RF-08.04; LafroX SpA., 2026a, 4.1.4.8).
+En E2, el pago PORTAL queda EN_REVISION con su comprobante y sin efecto financiero hasta que Tesorería lo aprueba; 5-C define su registro y envío al ERP (RF-07.08; LafroX SpA., 2026a, 4.1.4.6). Para envases, el umbral versionado por cliente/tipo dispara un aviso al preventista dentro de 24 h; 5-C precisa la correlación (RF-08.04, caso).
 
 <a id="sec-5-1-9"></a>
 
@@ -368,7 +368,7 @@ Raw, detalle, agregado, GPS y evidencia tienen plazos y permisos distintos. Las 
 
 ## 5.2 Gestión de datos
 
-Esta sección desarrolla RT-05.02–10: motor y paradigma, consistencia y disponibilidad, garantías de escritura, autoridad offline, gobierno de maestros, calidad, separación analítica, retención y exportación. Cada decisión se aplica a los dominios de 5.1 y define su comportamiento ante fallos (Distribuidora Puelche S.A., 2026c, cap. 5, pp. 11–12; LafroX SpA., 2026a).
+Esta sección desarrolla RT-05.02–10: motor y paradigma, consistencia y disponibilidad, garantías de escritura, autoridad offline, gobierno de maestros, calidad, separación analítica, retención y exportación. Cada decisión se aplica a los dominios de 5.1 y define su comportamiento ante fallos.
 
 <a id="sec-5-2-1"></a>
 
@@ -417,7 +417,7 @@ La Tabla 5.1 compara los límites heredados de S4 y su consecuencia observable.
 | Manifiesto | 26 h | Keycloak; renovación al menos horaria con enlace | Verificación local y PIN; sin permisos nuevos offline |
 | Gateway térmico | Buffer 24 h | Reenvío y control local de Calidad | Escalamiento de cobertura |
 
-*Fuente: S4, 4.1.3.6 y ADR-06 (LafroX SpA., 2026a); autonomía y sincronización del Caso 02 (Distribuidora Puelche S.A., 2026d, cap. 15, p. 26).*
+*Fuente: S4, 4.1.3.6 y ADR-06 ; autonomía y sincronización del Caso.*
 
 Estos plazos miden objetos distintos. La vigencia del manifiesto no extiende una credencial de turno vencida. Los relevos preinscritos de 8/16 h se verifican sin enlace, Keycloak firma y renueva con conexión. La carga central del POD no bloquea el acuse durable ni el cierre local autorizado.
 
@@ -445,7 +445,7 @@ OTIF = 100 × pedidos comprometidos entregados completos dentro de la ventana OR
 
 Exactitud por cantidad = 100 × max(0, 1 - Σ|cantidad sistema - cantidad conteo| / Σ|cantidad conteo|), con cantidades homologadas por unidad y grano sitio/ubicación/producto/lote/unidad. Si la base física es cero y sistema también cero se informa sin base; si sistema no es cero se informa diferencia y no aplicable porcentual, sin ocultarla. La desviación monetaria = 100 × Σ|valor sistema - valor físico| / valor contado del sitio en CLP y misma valorización, base contada cero requiere decisión registrada. Criterio de aceptación de LafroX ≤0,3 %, independiente de exactitud por cantidades.
 
-Integridad de recepción considera exclusivamente líneas de productos que requieren lote al cierre, SSCC se exige en la unidad logística al hito correspondiente, sin penalizar VACIA/ABIERTA ni productos exentos. Los tableros operativos se consultan por API/proyecciones separadas con frescura ≤5 min; cierre ≤2 h desde último retorno de camión y gerencial ≤4 h en Redshift/QuickSight. El catálogo 5-H declara audiencia, período/sitio/producto/canal, drill al hecho y documento, exportación y linaje documental. Costo de servicio inicia E2. No se ofertan por esta ampliación linaje automatizado, portal de desarrolladores ni predicción deseables excluidos en S3/S4 (Distribuidora Puelche S.A., 2026d, cap. 15, p. 26).
+Integridad de recepción considera exclusivamente líneas de productos que requieren lote al cierre, SSCC se exige en la unidad logística al hito correspondiente, sin penalizar VACIA/ABIERTA ni productos exentos. Los tableros operativos se consultan por API/proyecciones separadas con frescura ≤5 min; cierre ≤2 h desde último retorno de camión y gerencial ≤4 h en Redshift/QuickSight. El catálogo 5-H declara audiencia, período/sitio/producto/canal, drill al hecho y documento, exportación y linaje documental. Costo de servicio inicia E2. No se ofertan por esta ampliación linaje automatizado, portal de desarrolladores ni predicción deseables excluidos en S3/S4.
 
 La analítica pesada se ejecuta en Redshift y S3 mediante Glue, separada de OLTP. Las consultas operativas puntuales usan API/proyecciones y las marcas de frescura; la CDC de Talca permanece en el esquema lector separado y no duplica el efecto de los eventos canónicos de negocio. El CLIENTE dispone de filtros, profundización y exportación autónoma del catálogo de 5-H.
 
@@ -461,7 +461,7 @@ Cada porcentaje declara su base y el caso cero; no se presentan cantidades de un
 
 ### 5.2.7 Retención, archivado, eliminación y protección
 
-El capítulo 15 del caso identifica como RT-05.10 la retención histórica y de auditoría, en las Bases Técnicas Transversales, RT-05.10 corresponde al catálogo con linaje automatizado y RT-16.10 a retención de auditoría. Se solicita aclarar al CLIENTE la correspondencia de códigos, sin presumir una respuesta oficial. Mientras se aclara, se aplican íntegramente los plazos del caso por clase de dato y las obligaciones transversales de retención; el catálogo automatizado deseable mantiene su alcance no ofertado. La discrepancia de identificador no suspende ni reduce la conservación (Caso 02; Distribuidora Puelche S.A., 2026d, cap. 15, p. 26; Bases Técnicas Transversales, 2026c, caps. 5 y 16, pp. 12 y 29).
+El capítulo 15 del caso identifica como RT-05.10 la retención histórica y de auditoría, en las Bases Técnicas Transversales, RT-05.10 corresponde al catálogo con linaje automatizado y RT-16.10 a retención de auditoría. Se solicita aclarar al CLIENTE la correspondencia de códigos, sin presumir una respuesta oficial. Mientras se aclara, se aplican íntegramente los plazos del caso por clase de dato y las obligaciones transversales de retención; el catálogo automatizado deseable mantiene su alcance no ofertado. La discrepancia de identificador no suspende ni reduce la conservación (Caso, cap. 15, p. 26,Bases Técnicas Transversales, caps. 5 y 16, pp. 12 y 29).
 
 La política completa por dominio/atributo está en 5-D y la clasificación/cifrado en 5-E. Documentos/POD duran seis años, expediente sanitario, máximo vida útil+seis meses/cinco años; detalle térmico, cinco años; GPS personal, doce meses totales; auditoría, siete años. Logs conservan doce meses online más veinticuatro de archivo y respaldos treinta y cinco días según S4. El tipo de objeto, y no estar en S3, determina plazo.
 
@@ -485,7 +485,7 @@ La carga masiva operativa de RT-05.22 usa consolas y trabajos por lotes de S4, A
 
 ## 5.3 Estrategia de migración
 
-La migración transforma datos del ERP, WMS de 2013 y planillas al modelo de 5.1, preservando identidad e historia. Conforme RT-05.11–14, se define alcance, volumen, herramientas, saneamiento con registro de defectos, al menos dos ensayos completos en Preproducción, conciliación cuantitativa y corte con reversión (Distribuidora Puelche S.A., 2026c, cap. 5, p. 12; 2026d, cap. 15, p. 26).
+La migración transforma datos del ERP, WMS de 2013 y planillas al modelo de 5.1, preservando identidad e historia. Conforme RT-05.11–14, se define alcance, volumen, herramientas, saneamiento con registro de defectos, al menos dos ensayos completos en Preproducción, conciliación cuantitativa y corte con reversión.
 
 <a id="sec-5-3-1"></a>
 
@@ -508,7 +508,7 @@ La Tabla 5.2 separa bytes de origen de almacenamiento estimado, KB y GB son deci
 | Cartera histórica | 816.000 | 0,816 | 1,632 | Dos años; agregar toda deuda viva faltante |
 | Total base | 16.054.780 | 16,05478 | 32,10956 | Ampliar por perfilado, sin duplicar conjuntos |
 
-*Fuente: dimensionamiento de S4 (LafroX SpA., 2026a, Anexo 4-W); cálculo decimal de 5.3.*
+*Fuente: dimensionamiento de S4, cálculo decimal de 5.3.*
 
 La sensibilidad heredada de almacenamiento es 30,73–33,49 GB. La ampliación de cartera viva y trace faltante tiene que cuantificarse durante el perfilado; no se declara cubierta por ese intervalo. El ERP conserva la emisión única y puede aportar copias documentales con su identidad fiscal, sin reemitirlas.
 
@@ -536,13 +536,13 @@ Se entregarán esquema perfilado, correspondencias aprobadas, código ETL versio
 
 ### 5.3.4 Secuencia, ensayos y calendario por ola
 
-La secuencia comprende preparación, carga inicial, ensayos, marcha blanca y corte oficial. E1 mantiene desarrollo M1–12, marcha blanca M13–15 y producción M16, E2 desarrollo M13–18, marcha blanca M19–20 y producción M21. Las últimas cuatro semanas de cada marcha blanca usan volumen real y aceptación. Los pilotos tienen perímetro y escritor definidos; no se confunden con el corte definitivo (Bases Administrativas; Distribuidora Puelche S.A., 2026b, art. 17, pp. 12–13).
+La secuencia comprende preparación, carga inicial, ensayos, marcha blanca y corte oficial. E1 mantiene desarrollo M1–12, marcha blanca M13–15 y producción M16, E2 desarrollo M13–18, marcha blanca M19–20 y producción M21. Las últimas cuatro semanas de cada marcha blanca usan volumen real y aceptación. Los pilotos tienen perímetro y escritor definidos; no se confunden con el corte definitivo (Bases Administrativas, art. 17, pp. 12–13).
 
 Cada ensayo completo independiente recorre extracción, transferencia, transformación, carga, índices, delta, conciliación y rollback; el segundo comienza con extracción nueva y registra tiempos y resultados propios. Se trata de procedimientos futuros, sin actas de ejecución acreditadas.
 
 Las siete fases de la ola de ventas suman 285 min: 45+30+40+60+35+30+45. Con fuente/transferencia provisional de 10.476 MB, extracción requiere 3,88 MB/s y transferencia 5,82 MB/s; con margen 30 %, capacidad de 5,04 y 7,57 MB/s respectivamente. Si el perfilado comprobara 20.952 MB realmente transferidos, los valores serían 7,76/11,64 y con margen 10,09/15,13: no se aplica ese volumen por el solo factor de almacenamiento. Para inventario, los 15/10 min de extracción/transferencia de la Tabla A.25 requieren 3.348,6 MB /900 s =3,72 MB/s y /600 s =5,58 MB/s; con margen 30 %, 4,84/7,26 MB/s. Si el perfilado comprobara 6.697,2 MB físicos manteniendo esos tiempos, se requerirían 7,44/11,16 MB/s y con margen 9,67/14,51. El factor 2 de almacenamiento no acredita ese volumen de transferencia. Duración de cada fase = bytes de esa fase / tasa, sin dividir otra vez por la ventana.
 
-5-K calcula olas y reserva rollback. Las cargas iniciales ocupan noches previas con origen como escritor, el corte solo aplica delta/validación. Se excluye 1–25 septiembre, 1–31 diciembre y primeros tres días hábiles del cierre mensual. Ventana 22:00–06:00, protegiendo despacho 05:30–07:00; domingo para cargas largas. La fecha civil depende del inicio contractual; go/no-go exige tiempos medidos compatibles con ventana y reversión (Caso 02; Distribuidora Puelche S.A., 2026d, secs. 13.2–13.3, pp. 22–23).
+5-K calcula olas y reserva rollback. Las cargas iniciales ocupan noches previas con origen como escritor, el corte solo aplica delta/validación. Se excluye 1–25 septiembre, 1–31 diciembre y primeros tres días hábiles del cierre mensual. Ventana 22:00–06:00, protegiendo despacho 05:30–07:00; domingo para cargas largas. La fecha civil depende del inicio contractual; go/no-go exige tiempos medidos compatibles con ventana y reversión (Caso, secs. 13.2–13.3, pp. 22–23).
 
 <a id="sec-5-3-5"></a>
 
@@ -568,7 +568,7 @@ La continuidad manual/papel de S3 conserva captura y conciliación, sin dos escr
 
 ## 5.4 Estrategia de desempeño
 
-Esta sección aplica los escenarios de carga de S4 a índices, particiones, caché, concurrencia y pruebas del modelo. Las decisiones protegen la operación repetitiva y permiten detectar saturación sin alterar las autoridades ni identidades de 5.1 (LafroX SpA., 2026a, Anexo 4-T; Distribuidora Puelche S.A., 2026c, cap. 9, pp. 21–22).
+Esta sección aplica los escenarios de carga de S4 a índices, particiones, caché, concurrencia y pruebas del modelo. Las decisiones protegen la operación repetitiva y permiten detectar saturación sin alterar las autoridades ni identidades de 5.1.
 
 <a id="sec-5-4-1"></a>
 
@@ -590,7 +590,7 @@ La Tabla 5.3 relaciona los escenarios de S4 con su efecto sobre el modelo y la p
 | Año 3, WMS de Talca | Proyección de S4, Tabla A.40 | 3,15 TPS | Saldo/reserva con identidad estable; índices selectivos y mantenimiento sin pérdida de operaciones | Revisión trimestral de CPU y IOPS |
 | Escenario 3× de RT-09.03 | 93.000 pedidos y 780.000 líneas | 43,98 en nube y 8,05 en Talca | Escalamiento horizontal sin cambiar el esquema ni los índices | Prueba de estrés hasta el quiebre |
 
-*Fuente: Subdocumento 4, Anexo 4-W, 4-W.2 y 4-W.10, Tablas A.31 y A.40 y los umbrales de RT-09.01 a RT-09.03 y RT-09.06 de las Bases Técnicas Transversales (Distribuidora Puelche S.A., 2026c, cap. 9, p. 21).*
+*Fuente: Subdocumento 4, Anexo 4-W, 4-W.2 y 4-W.10, Tablas A.31 y A.40 y los umbrales de RT-09.01 a RT-09.03 y RT-09.06 de las Bases Técnicas Transversales.*
 
 El máximo global combina preventa, reparto y portal; despacho distingue total distribuido y WMS Talca. Se adoptan los resultados del Anexo 4-W.10, Tabla A.40 (3,15/8,05), cuya base visible 2,68 está redondeada, sin recalcular desde ese redondeo. Los índices priorizan lote/unidad y filtros operativos.
 
@@ -649,9 +649,9 @@ Actas identifican versión, ambiente y datos. Ensayos completos preceden cada co
 - *Aclaraciones de la Licitación N.º TFEP-01/2026*.
 - *Bases Administrativas de Licitación N.º TFEP-01/2026*.
 - *Bases Técnicas Transversales de Licitación N.º TFEP-01/2026*.
-- *Caso 02: Logística. Especificaciones del problema y operación de Distribuidora Puelche S.A.*
-- (2022a). *Core Business Vocabulary Standard* .
-- (2022b). *EPCIS Standard* (Release 2.0).
+- *Caso: Logística. Especificaciones del problema y operación de Distribuidora Puelche S.A.*
+- *Core Business Vocabulary Standard* .
+- *EPCIS Standard* (Release 2.0).
 - International Organization for Standardization. (2008). *ISO/IEC 25012:2008: Software engineering — Software product Quality Requirements and Evaluation (SQuaRE) — Data quality model*. [Enlace](https://www.iso.org/standard/35736.html)
 - *Arquitectura* [Subdocumento 4, anexos y Formulario T-11].
 - *Esquema de solución y alcance* [Subdocumento 3, anexos y Formulario T-12].
