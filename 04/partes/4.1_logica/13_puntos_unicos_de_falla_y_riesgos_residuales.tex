@@ -3,6 +3,7 @@
 
 RT-02.11 exige identificar las dependencias singulares que subsisten y justificar el riesgo residual. La Tabla~\ref{tab:spof} distingue su efecto, la continuidad prevista y la condición de aceptación. Una réplica o una cola reduce el impacto, pero no elimina por declaración la dependencia.
 
+\Needspace{0.48\textheight}
 \begin{tablalafrox}{Dependencias singulares y riesgo residual}{tab:spof}{F{0.21} F{0.26} F{0.27} Y}{\cab{Dependencia} & \cab{Efecto si falla} & \cab{Continuidad prevista} & \cab{Aceptación}}
 Identidad central & No hay altas ni revocación remota. & Asignaciones vigentes y servicio local. & Prueba de relevo 24 h. \\
 ERP y emisión DTE & Se retrasa una nueva guía; perder la sala de Talca la detiene hasta restituir el ERP. & Preemisión nocturna y ERP por tres caminos; la salida sin guía válida se bloquea. & AL-DTE-01 con 96 salidas. \\

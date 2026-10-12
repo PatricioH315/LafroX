@@ -16,6 +16,7 @@ Frente a un esquema activo-activo, la réplica caliente reducida evita pagar de 
 
 La Tabla~\ref{tab:4-3-3} compara los dos destinos de recuperación con sus distancias y amenazas comunes.
 
+\Needspace{0.48\textheight}
 \begin{tablalafrox}{Destinos de recuperación: distancia y amenazas comunes}{tab:4-3-3}%
   {F{0.24} F{0.18} F{0.19} Y}%
   {\cab{Destino} & \cab{Dominio} & \cab{Distancia} & \cab{Amenazas comunes}}
@@ -31,29 +32,31 @@ La réplica secundaria se limita a los datos necesarios para continuidad. La ana
 
 \subsection{Replicación}
 
-La replicación continua usa un mecanismo por dominio, resumido en la Tabla~\ref{tab:4-3-4}.
+La replicación continua usa un mecanismo por dominio, resumido en el listado \hyperref[tab:4-3-4]{de replicación y RPO por dominio}.
 
-\begin{tablalafrox}{Replicación y RPO por dominio de datos}{tab:4-3-4}%
-  {F{0.30} Y H{0.20}}%
-  {\cab{Dominio de datos} & \cab{Mecanismo de replicación} & \cab{RPO / retraso declarado}}
-  Transaccional en nube (crítico) & Aurora Global Database replica la base hacia la región secundaria. & El RPO objetivo es $\leq$ 15 min y se mide en cada ensayo. \\
-  WMS de Talca (crítico) & AWS DMS replica PostgreSQL VM-02 por la VPN sobre fibra, LTE o Starlink. & El RPO objetivo es $\leq$ 15 min y se mide en cada ensayo. \\
-  Mensajes críticos de cada sitio & El outbox local retiene 24 h de eventos, aun los ya enviados, y el shipper los reenvía a SQS FIFO de la región activa. & El RPO objetivo es $\leq$ 15 min y se mide en cada ensayo. \\
-  Evidencias y documentos tributarios (críticos) & S3 Replication Time Control replica los objetos entre regiones y un evento de umbral dispara la recopia de los rezagados. & El RPO objetivo es $\leq$ 15 min y se mide en cada ensayo. \\
-  Telemetría de temperatura (crítica) & DynamoDB Global Tables replica las lecturas entre regiones. & El RPO objetivo es $\leq$ 15 min y se mide en cada ensayo. \\
-  Analítica (no crítica) & Los respaldos se copian de forma diferida a us-east-1, sin las posiciones de flota. & El RPO es $\leq$ 24 h. \\
-  Posiciones de flota (no críticas) & Se conservan solo en sa-east-1, con copia inmutable en otra cuenta de esa región. & El RPO es $\leq$ 24 h dentro de sa-east-1. \\
-  Mensajes no críticos & El outbox local conserva los eventos para reenviarlos a la cola de la región activa. & El RPO es $\leq$ 24 h. \\
-\end{tablalafrox}
+\paragraph*{Replicación y RPO por dominio de datos}
+\phantomsection
+\label{tab:4-3-4}
+\begin{itemize}
+\item \textbf{Transaccional en nube (crítico).} \textbf{Mecanismo de replicación:} Aurora Global Database replica la base hacia la región secundaria; \textbf{RPO / retraso declarado:} El RPO objetivo es $\leq$ 15 min y se mide en cada ensayo.
+\item \textbf{WMS de Talca (crítico).} \textbf{Mecanismo de replicación:} AWS DMS replica PostgreSQL VM-02 por la VPN sobre fibra, LTE o Starlink; \textbf{RPO / retraso declarado:} El RPO objetivo es $\leq$ 15 min y se mide en cada ensayo.
+\item \textbf{Mensajes críticos de cada sitio.} \textbf{Mecanismo de replicación:} El outbox local retiene 24 h de eventos, aun los ya enviados, y el shipper los reenvía a SQS FIFO de la región activa; \textbf{RPO / retraso declarado:} El RPO objetivo es $\leq$ 15 min y se mide en cada ensayo.
+\item \textbf{Evidencias y documentos tributarios (críticos).} \textbf{Mecanismo de replicación:} S3 Replication Time Control replica los objetos entre regiones y un evento de umbral dispara la recopia de los rezagados; \textbf{RPO / retraso declarado:} El RPO objetivo es $\leq$ 15 min y se mide en cada ensayo.
+\item \textbf{Telemetría de temperatura (crítica).} \textbf{Mecanismo de replicación:} DynamoDB Global Tables replica las lecturas entre regiones; \textbf{RPO / retraso declarado:} El RPO objetivo es $\leq$ 15 min y se mide en cada ensayo.
+\item \textbf{Analítica (no crítica).} \textbf{Mecanismo de replicación:} Los respaldos se copian de forma diferida a us-east-1, sin las posiciones de flota; \textbf{RPO / retraso declarado:} El RPO es $\leq$ 24 h.
+\item \textbf{Posiciones de flota (no críticas).} \textbf{Mecanismo de replicación:} Se conservan solo en sa-east-1, con copia inmutable en otra cuenta de esa región; \textbf{RPO / retraso declarado:} El RPO es $\leq$ 24 h dentro de sa-east-1.
+\item \textbf{Mensajes no críticos.} \textbf{Mecanismo de replicación:} El outbox local conserva los eventos para reenviarlos a la cola de la región activa; \textbf{RPO / retraso declarado:} El RPO es $\leq$ 24 h.
+\end{itemize}
 
 {\footnotesize Fuente: elaboración propia.\par}
 
-La tabla separa la copia DMS del WMS de Talca, destinada a su recuperación, del estado central consolidado por eventos idempotentes de todos los sitios. AWS DMS lee VM-02 por el túnel IPsec; la única conexión iniciada desde la nube hacia un sitio termina en esa VM. Aurora Global Database, DynamoDB Global Tables y la replicación de S3 protegen el dominio de nube. S3 Replication Time Control ofrece que el 99,99 \% de los objetos se replique en 15 min; se vigila la métrica de objetos pendientes y un evento de umbral superado dispara la recopia. DynamoDB Global Tables replica de forma asíncrona con retraso típico de segundos y una alarma de \texttt{ReplicationLatency} a los 60 s. La edad de las réplicas y las colas se mide continuamente y todos los RPO se verifican en los ensayos semestrales.
+El listado separa la copia DMS del WMS de Talca, destinada a su recuperación, del estado central consolidado por eventos idempotentes de todos los sitios. AWS DMS lee VM-02 por el túnel IPsec; la única conexión iniciada desde la nube hacia un sitio termina en esa VM. Aurora Global Database, DynamoDB Global Tables y la replicación de S3 protegen el dominio de nube. S3 Replication Time Control ofrece que el 99,99 \% de los objetos se replique en 15 min; se vigila la métrica de objetos pendientes y un evento de umbral superado dispara la recopia. DynamoDB Global Tables replica de forma asíncrona con retraso típico de segundos y una alarma de \texttt{ReplicationLatency} a los 60 s. La edad de las réplicas y las colas se mide continuamente y todos los RPO se verifican en los ensayos semestrales.
 
 \subsection{RPO y RTO}
 
 La Tabla~\ref{tab:4-3-5} fija los objetivos medidos en las pruebas de recuperación.
 
+\Needspace{0.48\textheight}
 \begin{tablalafrox}{Objetivos de continuidad}{tab:4-3-5}%
   {Y F{0.30} F{0.18}}%
   {\cab{Activo} & \cab{Objetivo} & \cab{Valor declarado}}
@@ -72,20 +75,21 @@ El RPO $\leq$ 15 minutos se diseña para la pérdida regional, la pérdida de un
 \subsection{Procedimiento de conmutación}
 \label{sub:conmutacion-regional}
 
-La pérdida regional se atiende con la secuencia de la Tabla~\ref{tab:4-3-6}. La promoción de Aurora requiere autorización del CLIENTE; Route 53 cambia el tráfico solo después de restituir y validar los servicios.
+La pérdida regional se atiende con la secuencia del procedimiento \hyperref[tab:4-3-6]{de conmutación de región}. La promoción de Aurora requiere autorización del CLIENTE; Route 53 cambia el tráfico solo después de restituir y validar los servicios.
 
-\begin{tablalafrox}{Secuencia de conmutación de región}{tab:4-3-6}%
-  {H{0.08} Y F{0.26} H{0.15}}%
-  {\cab{Paso} & \cab{Acción} & \cab{Ejecución} & \cab{Tiempo}}
-  1 & Detección por verificación de salud y alarmas & Route 53 y CloudWatch & $<$ 5 min \\
-  2 & Declaración del incidente y autorización de la promoción & CLIENTE, con aviso por SNS & $\leq$ 30 min \\
-  3 & Promoción de Aurora en us-east-1 & Systems Manager Automation & 15--20 min \\
- 4  &  Escalado del núcleo y restitución de tareas de consola, rutas y AS2 desde imágenes y configuración preparadas  &  Systems Manager Automation  &  $\leq$ 30 min  \\
- 5  &  Restitución de Keycloak, APIs, Verified Access y configuración regional de ingesta IoT, claves y certificados  &  Systems Manager Automation  &  < 15 min  \\
-  6 & Reconexión de túneles y brokers y redirección de shippers y \texttt{erp-sync} a las colas regionales & Systems Manager Automation & $<$ 15 min \\
- 7  &  Validación de pedidos, retención local, sincronización, permisos de consola y canales restituidos; registro de servicios aún indisponibles  &  Operación  &  < 15 min  \\
-  8 & Cambio del tráfico a us-east-1 en Route 53, con TTL de 60 s preparado & Systems Manager Automation & $<$ 5 min \\
-\end{tablalafrox}
+\paragraph*{Secuencia de conmutación de región}
+\phantomsection
+\label{tab:4-3-6}
+\begin{itemize}
+\item \textbf{Paso 1.} \textbf{Acción:} Detección por verificación de salud y alarmas; \textbf{Ejecución:} Route 53 y CloudWatch; \textbf{Tiempo:} $<$ 5 min.
+\item \textbf{Paso 2.} \textbf{Acción:} Declaración del incidente y autorización de la promoción; \textbf{Ejecución:} CLIENTE, con aviso por SNS; \textbf{Tiempo:} $\leq$ 30 min.
+\item \textbf{Paso 3.} \textbf{Acción:} Promoción de Aurora en us-east-1; \textbf{Ejecución:} Systems Manager Automation; \textbf{Tiempo:} 15--20 min.
+\item \textbf{Paso 4.} \textbf{Acción:} Escalado del núcleo y restitución de tareas de consola, rutas y AS2 desde imágenes y configuración preparadas; \textbf{Ejecución:} Systems Manager Automation; \textbf{Tiempo:} $\leq$ 30 min.
+\item \textbf{Paso 5.} \textbf{Acción:} Restitución de Keycloak, APIs, Verified Access y configuración regional de ingesta IoT, claves y certificados; \textbf{Ejecución:} Systems Manager Automation; \textbf{Tiempo:} < 15 min.
+\item \textbf{Paso 6.} \textbf{Acción:} Reconexión de túneles y brokers y redirección de shippers y \texttt{erp-sync} a las colas regionales; \textbf{Ejecución:} Systems Manager Automation; \textbf{Tiempo:} $<$ 15 min.
+\item \textbf{Paso 7.} \textbf{Acción:} Validación de pedidos, retención local, sincronización, permisos de consola y canales restituidos; registro de servicios aún indisponibles; \textbf{Ejecución:} Operación; \textbf{Tiempo:} < 15 min.
+\item \textbf{Paso 8.} \textbf{Acción:} Cambio del tráfico a us-east-1 en Route 53, con TTL de 60 s preparado; \textbf{Ejecución:} Systems Manager Automation; \textbf{Tiempo:} $<$ 5 min.
+\end{itemize}
 
 {\footnotesize Fuente: elaboración propia.\par}
 

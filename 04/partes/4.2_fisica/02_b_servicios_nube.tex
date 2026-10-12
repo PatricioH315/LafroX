@@ -19,27 +19,28 @@ La plataforma de nube es Amazon Web Services. Todos los servicios se contratan e
 
 \subsection{Servicios por función}
 
-La Tabla~\ref{tab:servicios-nube} agrupa los servicios contratados por la función que cumplen en la arquitectura y los asocia a los componentes del catálogo que los usan. El listado servicio por servicio, con su justificación y su cantidad, se entrega en el Formulario T-11.
+El catálogo \hyperref[tab:servicios-nube]{de servicios de nube por función} agrupa los servicios contratados por la función que cumplen en la arquitectura y los asocia a los componentes del catálogo que los usan. El listado servicio por servicio, con su justificación y su cantidad, se entrega en el Formulario T-11.
 
-\begin{tablalafrox}{Servicios contratados en la plataforma de nube, por función}{tab:servicios-nube}%
-  {F{0.21} Y F{0.19} F{0.17}}%
-  {\cab{Función} & \cab{Servicios contratados} & \cab{Componentes} & \cab{Región}}
-  Entrada pública & Route 53, CloudFront, AWS WAF, Shield Advanced, API Gateway pública & N-01 a N-03, N-12 & Global y sa-east-1 \\
-  Acceso interno & Verified Access, API Gateway privada y endpoint execute-api & N-04, N-12 & sa-east-1 y us-east-1 \\
-  Cómputo de aplicación & ECS Fargate, Application Load Balancer privado, Lambda autorizadora & N-04, A-05 & sa-east-1 y us-east-1 \\
-  Datos operacionales & Aurora PostgreSQL, Database Migration Service, DynamoDB, ElastiCache & N-05, A-02, N-06, N-07 & sa-east-1 y us-east-1 para las réplicas declaradas; ElastiCache se reconstruye durante la recuperación \\
-  Mensajería & SQS FIFO para la reconciliación, para las solicitudes al ERP y sus respuestas, y para la coordinación de reservas por sitio, SQS para los trabajos de Laravel y SNS, con equivalentes vacíos creados por infraestructura como código en us-east-1 & N-09, A-03 & sa-east-1 y us-east-1 \\
-  Integración B2B & Network Load Balancer y OpenAS2 en Fargate & N-04 (M11) & sa-east-1 \\
-  Internet de las cosas & IoT Core, IoT Greengrass & N-08, B-02, B-03 & sa-east-1 y borde \\
-  Analítica & S3, Glue, Redshift Serverless, QuickSight embebido & N-10 & sa-east-1 \\
-  Respaldo y recuperación & AWS Backup, S3 Object Lock, replicación de S3 entre regiones & N-11, D-05 & sa-east-1 y us-east-1 \\
-  Red y conectividad & VPC, Transit Gateway, Site-to-Site VPN, NAT Gateway, VPC Endpoints & D-01 & sa-east-1 y us-east-1 \\
-  Identidad, claves y secretos & KMS, Secrets Manager, Parameter Store, IAM Identity Center & A-05, N-12 & sa-east-1 y us-east-1 \\
-  Detección y cumplimiento & GuardDuty Runtime Monitoring para tareas ECS Fargate, Security Lake, Security Hub, Inspector, Macie, CloudTrail y Config & N-12, F-03 & sa-east-1 y us-east-1 \\
-  Operación y gobierno & CloudWatch, Systems Manager, Control Tower, Organizations, Cost Explorer, Budgets & F-01, F-02, N-12 & sa-east-1 \\
-  Construcción y registro de imágenes & CodeBuild y Elastic Container Registry con replicación de imágenes entre regiones & N-04, A-01 & sa-east-1 y us-east-1 \\
-  Servicios de terceros en nube & Android Enterprise y Zebra DNA; consola del EDR & N-13, F-03 & Servicio gestionado \\
-\end{tablalafrox}
+\paragraph*{Servicios contratados en la plataforma de nube, por función}
+\phantomsection
+\label{tab:servicios-nube}
+\begin{itemize}
+\item \textbf{Entrada pública.} \textbf{Servicios contratados:} Route 53, CloudFront, AWS WAF, Shield Advanced, API Gateway pública; \textbf{Componentes:} N-01 a N-03, N-12; \textbf{Región:} Global y sa-east-1.
+\item \textbf{Acceso interno.} \textbf{Servicios contratados:} Verified Access, API Gateway privada y endpoint execute-api; \textbf{Componentes:} N-04, N-12; \textbf{Región:} sa-east-1 y us-east-1.
+\item \textbf{Cómputo de aplicación.} \textbf{Servicios contratados:} ECS Fargate, Application Load Balancer privado, Lambda autorizadora; \textbf{Componentes:} N-04, A-05; \textbf{Región:} sa-east-1 y us-east-1.
+\item \textbf{Datos operacionales.} \textbf{Servicios contratados:} Aurora PostgreSQL, Database Migration Service, DynamoDB, ElastiCache; \textbf{Componentes:} N-05, A-02, N-06, N-07; \textbf{Región:} sa-east-1 y us-east-1 para las réplicas declaradas; ElastiCache se reconstruye durante la recuperación.
+\item \textbf{Mensajería.} \textbf{Servicios contratados:} SQS FIFO para la reconciliación, para las solicitudes al ERP y sus respuestas, y para la coordinación de reservas por sitio, SQS para los trabajos de Laravel y SNS, con equivalentes vacíos creados por infraestructura como código en us-east-1; \textbf{Componentes:} N-09, A-03; \textbf{Región:} sa-east-1 y us-east-1.
+\item \textbf{Integración B2B.} \textbf{Servicios contratados:} Network Load Balancer y OpenAS2 en Fargate; \textbf{Componentes:} N-04 (M11); \textbf{Región:} sa-east-1.
+\item \textbf{Internet de las cosas.} \textbf{Servicios contratados:} IoT Core, IoT Greengrass; \textbf{Componentes:} N-08, B-02, B-03; \textbf{Región:} sa-east-1 y borde.
+\item \textbf{Analítica.} \textbf{Servicios contratados:} S3, Glue, Redshift Serverless, QuickSight embebido; \textbf{Componentes:} N-10; \textbf{Región:} sa-east-1.
+\item \textbf{Respaldo y recuperación.} \textbf{Servicios contratados:} AWS Backup, S3 Object Lock, replicación de S3 entre regiones; \textbf{Componentes:} N-11, D-05; \textbf{Región:} sa-east-1 y us-east-1.
+\item \textbf{Red y conectividad.} \textbf{Servicios contratados:} VPC, Transit Gateway, Site-to-Site VPN, NAT Gateway, VPC Endpoints; \textbf{Componentes:} D-01; \textbf{Región:} sa-east-1 y us-east-1.
+\item \textbf{Identidad, claves y secretos.} \textbf{Servicios contratados:} KMS, Secrets Manager, Parameter Store, IAM Identity Center; \textbf{Componentes:} A-05, N-12; \textbf{Región:} sa-east-1 y us-east-1.
+\item \textbf{Detección y cumplimiento.} \textbf{Servicios contratados:} GuardDuty Runtime Monitoring para tareas ECS Fargate, Security Lake, Security Hub, Inspector, Macie, CloudTrail y Config; \textbf{Componentes:} N-12, F-03; \textbf{Región:} sa-east-1 y us-east-1.
+\item \textbf{Operación y gobierno.} \textbf{Servicios contratados:} CloudWatch, Systems Manager, Control Tower, Organizations, Cost Explorer, Budgets; \textbf{Componentes:} F-01, F-02, N-12; \textbf{Región:} sa-east-1.
+\item \textbf{Construcción y registro de imágenes.} \textbf{Servicios contratados:} CodeBuild y Elastic Container Registry con replicación de imágenes entre regiones; \textbf{Componentes:} N-04, A-01; \textbf{Región:} sa-east-1 y us-east-1.
+\item \textbf{Servicios de terceros en nube.} \textbf{Servicios contratados:} Android Enterprise y Zebra DNA; consola del EDR; \textbf{Componentes:} N-13, F-03; \textbf{Región:} Servicio gestionado.
+\end{itemize}
 
 {\footnotesize Fuente: elaboración propia.\par}
 
@@ -87,7 +88,7 @@ El compromiso de capacidad base mediante Savings Plans y su costo se reflejan en
 
 \subsection{Topología de los servicios}
 
-La Figura~\ref{fig:nube} ubica en la topología de AWS los servicios de la Tabla~\ref{tab:servicios-nube} y los recursos de la región secundaria: el borde global, la región primaria sa-east-1 con sus dos zonas de disponibilidad y la región de recuperación us-east-1. Los servicios de gobierno de cuentas de la tabla (Control Tower, Organizations, Cost Explorer y Budgets) se aplican sobre las cuentas y no ocupan un lugar en la topología, por lo que no se dibujan.
+La Figura~\ref{fig:nube} ubica en la topología de AWS los servicios del catálogo \hyperref[tab:servicios-nube]{de servicios de nube por función} y los recursos de la región secundaria: el borde global, la región primaria sa-east-1 con sus dos zonas de disponibilidad y la región de recuperación us-east-1. Los servicios de gobierno de cuentas del catálogo (Control Tower, Organizations, Cost Explorer y Budgets) se aplican sobre las cuentas y no ocupan un lugar en la topología, por lo que no se dibujan.
 
 \begin{landscape}
 \begin{figure}[p]

@@ -2,7 +2,38 @@
 \phantomsection
 \label{anx:N}
 \addcontentsline{toc}{section}{Anexo 4-N --- Correspondencia de componentes lógicos}
-La matriz identifica los doce módulos y los servicios transversales para cotejarlos con el esquema y explicación de solución exigidos en 3.3--3.4 y con su realización física en 4.2. Las capacidades de 3.3 y 3.4 se corresponden con los módulos y contratos de 4.1; la tabla de correspondencia de 4.2.2 identifica su realización física.
+La matriz identifica los doce módulos y los servicios transversales para cotejarlos con el esquema y explicación de solución exigidos en 3.3--3.4 y con su realización física en 4.2. Las capacidades de 3.3 y 3.4 se corresponden con los módulos y contratos de 4.1; la matriz de correspondencia citada en 4.2.2 identifica su realización física.
+
+La matriz completa vincula cada capacidad de 3.3–3.4 con su módulo o capa de 4.1, su recurso de 4.2 y su emplazamiento.
+
+\begin{tablalafrox}{Correspondencia entre la arquitectura lógica y la física}{tab:mapeo-logica}%
+  {F{0.23} F{0.20} Y F{0.20}}%
+  {\cab{Capacidad de 3.3–3.4} & \cab{Módulo o capa (4.1)} & \cab{Componente físico (4.2)} & \cab{Dónde se ejecuta}}
+ 3.3.1–3.3.2; recepción en 3.4.1  &  M1 Recepción  &  A-01 y A-02, con C-03 y C-05  &  Sitio  \\
+ 3.3.1–3.3.3; FEFO, reserva y cross-docking en 3.4.1  &  M2 Inventario  &  A-01 y A-02 en el sitio; N-04 y N-05 para el consolidado  &  Sitio y nube  \\
+ 3.3.1 y 3.3.3; toma de pedido en 3.4.1  &  M3 Preventa  &  C-01 en el terminal; N-04, N-05 y N-07  &  Terreno y nube  \\
+ 3.3.1; planificación en 3.4.1  &  M4 Rutas  &  N-04 y N-05; motor de optimización en su propio contenedor  &  Nube  \\
+ 3.3.1–3.3.3; preparación y despacho en 3.4.1  &  M5 Preparación  &  A-01 y A-02, con C-03 y C-04  &  Sitio  \\
+ 3.3.1–3.3.3; entrega en 3.4.1  &  M6 Reparto  &  C-02 en el terminal; N-04 y N-05, con la evidencia en S3  &  Terreno y nube  \\
+ 3.3.1; rendición y cierre en 3.4.1  &  M7 Cobranza y rendición  &  C-02; N-04; A-04 hacia el ERP  &  Terreno, nube y VM-04  \\
+ 3.3.1; devoluciones y cierre en 3.4.1  &  M8 Devoluciones y envases  &  C-02; N-04; A-01 para la recepción física de retornos mediante la puerta de API local  &  Terreno, nube y sitio  \\
+ 3.3.2; excursión y retiro sanitario en 3.4.1  &  M9 Calidad y trazabilidad  &  A-01/A-02 y C-03 para disposición local autorizada; B-01/B-02 para captura y bloqueo, B-03 en camiones; N-04/N-06/N-08 para consulta e ingesta centrales  &  Sitio, camiones y nube  \\
+  3.3.1 y 3.3.3; indicadores y costo de servir en 3.4.1 & M10 Analítica & N-10 & Nube \\
+ 3.3.1 y 3.4.2; pedidos EDI  &  M11 Canal moderno  &  N-04 con el perfil EDI y el transporte AS2; A-04  &  Nube y VM-04  \\
+ 3.4.2; módulos y sistemas externos  &  M12 Telemetría  &  N-04 y N-06, con la API del proveedor de telemetría  &  Nube  \\
+ 3.4.2; quince actores e interfaces  &  Capa 1, portales y consolas  &  N-01 a N-03 y frontend de consolas en N-04  &  Nube  \\
+ 3.3.3 y 3.4.2; continuidad y accesos  &  Capas 2 y 3, entrada y puerta de enlace  &  CloudFront, WAF y API Gateway (N-01 a N-03 y N-12); puerta de API local en A-01  &  Nube y sitio  \\
+ 3.3.1–3.3.3; ERP, continuidad y datos conciliados  &  Capa 5, integración y eventos  &  A-03; N-09; A-04  &  Sitio y nube  \\
+ 3.3.1–3.3.3; lote, reserva, evidencia y consolidación  &  Capa 6, datos  &  A-02; N-05, N-06, N-07, N-10 y N-11  &  Sitio y nube  \\
+ 3.3.3 y 3.4.2; acceso por actor y turno  &  Capa 7, seguridad e identidad  &  A-05 con el verificador local; F-03; N-12  &  Nube y sitio  \\
+ 3.3.3; continuidad, incidentes y reconciliación  &  Capa 8, observabilidad  &  F-01 y CloudWatch (N-12)  &  Sitio y nube  \\
+ 3.4.3; implementación y promoción por ambientes & Cadena de entrega de 4.1.9 y 4.2.4.1 & DEV-PIPE y DEV-IAC; pipeline del CLIENTE, CodeBuild y ECR; perfiles firmados del artefacto & Cinco ambientes, con Desarrollo, QA y Preproducción aislados de los sitios \\
+ 3.4.4; implantación, convivencia y reversión & Olas de 4.1.8 y despliegue de 4.2.4.1 & A-01/A-02 por sitio; C-01/C-02/C-03 y versiones preservadas para reversión & Sitio, terreno y nube; escritor único por dominio \\
+ 3.4.5; operación, soporte y continuidad & Capa 8; identidad; gobierno de 4.2.4 a 4.2.6 & F-01/F-02/F-03 y N-12/N-13; gestión de incidentes y capacidad de 4-W.7 & Monitoreo central, colectores locales y soporte asistido \\
+ 3.4.6; participación y adopción por perfil & Capa 1, matriz de actores y permisos; olas de 4.1.8 & C-01/C-02/C-03, portales y consolas; QA de práctica & Terreno, sitios y nube; participación no implica permiso de acceso \\
+\end{tablalafrox}
+
+{\footnotesize Fuente: elaboración propia.\par}
 
 \begin{tablalafrox}{Correspondencia de módulos y realización física}{tab:correspondencia-modulos}{F{0.10} F{0.27} F{0.19} Y}{\cab{Módulo} & \cab{Capacidad en 3.3/3.4} & \cab{Contrato} & \cab{Realización en 4.2.2}}
 M1 & Recepción & INT-03/06 & Perfil WMS local, base por sitio y ACL ERP. \\
@@ -20,11 +51,22 @@ M12 & Telemetría & INT-15 & Adaptador de solo lectura y consulta de ruta real. 
 \end{tablalafrox}
 {\footnotesize Fuente: elaboración propia.\par}
 
-La tabla verifica la correspondencia de los doce módulos con sus capacidades, contratos y realizaciones; la Tabla 8 del apartado 4.2.2 completa el enlace físico. Las capacidades transversales también se corresponden: presentación y borde con aplicaciones, CloudFront y acceso privado; puerta de enlace con API central y puerta local; eventos con RabbitMQ, shipper y SQS; datos con bases, réplica de lectura y objetos; identidad con Keycloak y verificador local; secretos y auditoría con sus servicios de custodia; observabilidad con OpenTelemetry/ADOT, alarma local y CloudWatch. Notificaciones se traza a INT-11; el motor de optimización de M4 se integra mediante un contrato separado y se ejecuta en su propio contenedor.
+La tabla verifica la correspondencia de los doce módulos con sus capacidades, contratos y realizaciones; la Tabla~\ref{tab:mapeo-logica} citada en 4.2.2 completa el enlace físico. Las capacidades transversales también se corresponden: presentación y borde con aplicaciones, CloudFront y acceso privado; puerta de enlace con API central y puerta local; eventos con RabbitMQ, shipper y SQS; datos con bases, réplica de lectura y objetos; identidad con Keycloak y verificador local; secretos y auditoría con sus servicios de custodia; observabilidad con OpenTelemetry/ADOT, alarma local y CloudWatch. Notificaciones se traza a INT-11; el motor de optimización de M4 se integra mediante un contrato separado y se ejecuta en su propio contenedor.
 
 La correspondencia entre 3.3, 3.4, 4.1 y 4.2.2 se verifica en ambos sentidos mediante identificador, contrato, responsable y realización física.
+
+\subsection*{Incorporación de las innovaciones del SD13}
+\begin{itemize}
+\item Seguimiento de vencimiento posentrega en el local: C-01 y M3 reciben la precarga nocturna de M10/N-10 y registran la respuesta de la visita; M2 y M9 aportan los datos de inventario y trazabilidad. Las capas 1, 4, 5 y 6 soportan el recorrido. El saldo estimado en el local no modifica el inventario oficial ni autoriza disposición sanitaria.
+\item Reproducción de incidentes de terreno: C-01/C-02/C-03 capturan el recorrido causal de M3/M6/M5 con límites de tamaño y frecuencia. OpenTelemetry y CloudWatch aportan la observación; las capas 7 y 8 controlan acceso y trazas. Los recursos temporales se crean dentro de QA y Preproducción, no en un sexto ambiente, y se destruyen al finalizar, también ante error. Se excluyen nombres, credenciales, firmas, fotografías y contenido comercial; al cerrar se elimina la captura y solo se conserva el escenario sintético de regresión. Operación recoge el caso, Calidad lo admite y Desarrollo corrige.
+\item Vida útil remanente por historia térmica del lote: B-01/B-02/B-03 y C-02 alimentan N-06/N-08/N-10; M9 conserva la evaluación y M2/M5/M10 consumen el resultado. Las capas 1, 4, 5, 6 y 7 mantienen captura, eventos, datos y custodia. B-02 acumula la historia local durante 24 horas sin WAN; B-03 alerta mediante C-02 y descarga el registro al retorno. N-10 calcula con modelo determinista y parámetros aprobados por Calidad, conservando sus versiones. No se rellenan tramos sin dato, no se extiende la fecha impresa, no se sustituye FEFO y la estimación no libera automáticamente un lote.
+\item Tramo variable de la Operación ligado al costo de servir: M6/M7/M8 aportan hechos operacionales y M10/N-10 genera el informe mensual mediante las capas 4, 6 y 7. Finanzas del CLIENTE aprueba la liquidación; el ERP conserva la autoridad contable y recibe el resultado por la integración existente. El informe identifica período, índices, costo comparable, OTIF, recomendación y respuesta; los montos pertenecen a la Oferta Económica.
+\item Hoja de negocio del almacenero: M10/N-10 genera la hoja y M3/C-01 recibe la precarga cifrada; M6/C-02 registra su entrega e imprime en cabina. Las capas 1, 4, 6 y 7 limitan el acceso al receptor y distinguen copia pedida, entregada y en espera. El cliente no necesita aplicación, registro ni enlace para recibirla. El bloque agregado solo se habilita bajo las condiciones de privacidad del SD13, con umbral mínimo de locales y supresión de celdas.
+\end{itemize}
+
+Las cinco innovaciones emplean los seis contratos de datos versionados del SD13: aviso de vencimiento, respuesta de visita, paquete de reproducción, historia térmica, liquidación del tramo y hoja de negocio. Son intercambios sobre las superficies existentes, no seis contrapartes externas nuevas ni módulos adicionales. Sus productores y consumidores conservan autorización, idempotencia, retención por dominio y acuse durable cuando corresponda. La trazabilidad añade estos recorridos sin alterar el inventario de doce módulos, las 37 capacidades transversales ni las quince integraciones del dimensionamiento base.
 \subsection*{Inventario trazable de capacidades transversales}
-Los siguientes 37 identificadores complementan los doce módulos: el inventario lógico tiene 49 unidades verificables. La última columna identifica los recursos de 4.2 y T-11 que realizan cada capacidad, además de su límite de responsabilidad. La Tabla 8 resume el mapeo por módulo y capa; esta tabla permite verificar los componentes transversales por separado.
+Los siguientes 37 identificadores complementan los doce módulos: el inventario lógico tiene 49 unidades verificables. La última columna identifica los recursos de 4.2 y T-11 que realizan cada capacidad, además de su límite de responsabilidad. La Tabla~\ref{tab:mapeo-logica} resume el mapeo por módulo y capa; esta tabla permite verificar los componentes transversales por separado.
 \begin{tablalafrox}{Inventario transversal y realización física}{tab:inventario-transversal}{F{0.16} F{0.17} F{0.17} F{0.15} Y}{\cab{ID} & \cab{Componente} & \cab{Capacidad} & \cab{Contrato} & \cab{Realización física y límite}}
  UI-MOV  &  Apps Kotlin / Room  &  preventa y entrega  &  INT-01/02  &  C-01/C-02 en terreno; N-04 en nube. M3/M6/M7/M8  \\
  UI-HHT  &  Terminales de bodega  &  preparación y disposición sanitaria autorizada  &  INT-03 / API local  &  C-03 y A-01 en los cinco sitios; perfiles separados para M1/M2/M5 y Calidad en M9.  \\

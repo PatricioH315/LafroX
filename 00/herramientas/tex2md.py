@@ -120,7 +120,8 @@ def md_inline(s: str, labels, doc, anchor_to_doc, root: Path):
             suffix=key.split(":",1)[1]; n="4-W" if suffix=="42A" else "4-"+suffix
         if key.startswith("tab:"): return "Tabla "+n
         if key.startswith("fig:"): return "Figura "+n
-        if key.startswith("anx:"): return "Anexo "+n
+        if key.startswith("anx:"):
+            return n if n.startswith("Anexo ") else "Anexo "+n
         return "sección "+n
     # Resolve nested page references before the outer hyperref so Markdown
     # never contains a link inside a link.

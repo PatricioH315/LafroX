@@ -11,6 +11,30 @@
 
 La memoria avanza desde los datos del caso hasta la capacidad de cada sitio y de la nube, en doce secciones.
 
+\subsection*{Síntesis de las dieciséis dimensiones}
+La síntesis siguiente reúne las dieciséis dimensiones del caso, sus valores por régimen y sus derivaciones; las secciones posteriores desarrollan cada cálculo.
+
+\begin{tablalafrox}{Síntesis de las dieciséis dimensiones}{tab:t72}{F{0.07} F{0.31} G{0.20} G{0.20} Y}{\cab{N.°} & \cab{Dimensión} & \cab{Valor en régimen normal o ventana} & \cab{Valor en peak o declarado} & \cab{Derivación}}
+  1 & Transacciones por segundo en régimen normal & 12,34 TPS a las 12:00 & -- & Anexo 4-W, sección 4-W.2 \\
+  2 & Transacciones por segundo en el peak de la ventana de despacho de 05:30 a 07:00 & 3,76 TPS & 6,94 TPS & Anexo 4-W, sección 4-W.2 \\
+  3 & Transacciones por segundo en el peak de septiembre & -- & 14,66 TPS a las 12:00 & Anexo 4-W, sección 4-W.2 \\
+  4 & Personas usuarias registradas, internas y externas & 15.180 & -- & Anexo 4-W, sección 4-W.3 \\
+  5 & Personas usuarias concurrentes en peak & 438,30 en régimen; 342 sin portal & 775,33, cota extrema & Anexo 4-W, sección 4-W.3 \\
+  6 & Dispositivos de terreno en operación simultánea & 158 & 158 & Anexo 4-W, sección 4-W.3 \\
+  7 & Volumen anual de almacenamiento transaccional & 50,75 GB/año & 7,85 GB mes peak & Anexo 4-W, sección 4-W.4 \\
+  8 & Volumen anual de almacenamiento de evidencia de entrega, firmas y fotografías & 87,72 GB/año & 13,58 GB mes peak & Anexo 4-W, sección 4-W.4 \\
+  9 & Volumen anual de almacenamiento de series de temperatura y de posicionamiento & 0,58 + 3,20 GB/año crudos & 2,89 + 3,20 GB crudos retenidos & Anexo 4-W, sección 4-W.4 \\
+  10 & Volumen total de datos históricos a migrar & 32,11 GB & 30,73--33,49 GB de sensibilidad & Anexo 4-W, sección 4-W.4 \\
+  11 & Número de integraciones y volumen de mensajes por integración & 15; 224.652 mensajes/día & 342.933 mensajes/día & Anexo 4-W, sección 4-W.5 \\
+  12 & Ancho de banda requerido por sitio, en régimen y en peak & 3,29 / 0,71 / 0,06 Mbps cargados & 5,16 / 2,14 / 0,41 Mbps peor caso & Anexo 4-W, sección 4-W.5 \\
+  13 & Volumen de datos generado por un dispositivo de reparto en un turno completo sin señal & 5,36 MB promedio & 9,83 MB, ruta de 34 clientes & Anexo 4-W, sección 4-W.6 \\
+ 14  &  Tiempo de sincronización de la flota al regresar al centro de distribución  &  Objetivo $\leq$ 10 min por dispositivo desde reconexión hasta acuse durable, incluida espera  &  Sensibilidad: 64 simultáneos, 8,39 Mbps útiles agregados; verificar $\leq$ 10 min por dispositivo  &  Anexo 4-W, sección 4-W.6; 4.2.6.7  \\
+  15 & Contactos mensuales a la mesa de ayuda & 2.000 contactos/mes & 2.000 contactos/mes en el escenario conservador; 7 agentes en la hora cargada y 2 en las demás cubren hasta 2.283; desde el mes 25, con 3 en las demás, cubren hasta 2.391 & Anexo 4-W, sección 4-W.7 \\
+  16 & Dotación de la mesa de ayuda y del equipo de operación & 15 personas a 42 h; 17 desde el 26-04-2028 a 40 h hasta el mes 24; 19 desde el mes 25 (mesa 9 + NOC/SOC 10). & 17 personas en septiembre y diciembre a 42 h; 19 a 40 h hasta el mes 24; 21 desde el mes 25 (mesa 11 + NOC/SOC 10). & Anexo 4-W, sección 4-W.7 \\
+\end{tablalafrox}
+
+{\footnotesize Fuente: elaboración propia.\par}
+
 \begingroup
 \renewcommand{\thesection}{4-W.\arabic{section}}
 \renewcommand{\theHsection}{anexo42A.\arabic{section}}% anclas de hipervínculo distintas de las de 4.2
@@ -67,7 +91,7 @@ La Tabla~\ref{tab:anexo-4b-supuestos} declara el fundamento, impacto y validaci�
 
 Se calcula el máximo horario de cada lugar para no sumar ventanas que no coinciden. Los días equivalentes son 31.000 ÷ 1.400 = 22,14 días (los cálculos usan el cociente sin redondear, 22,142857) y el control cruzado es 2.100 ÷ 96 = 21,88 días. El factor de septiembre es 2.600 ÷ 1.400 = 1,857.
 
-El volumen de cross-docking de la Tabla A.31 corresponde al conjunto de las tres plataformas y se suma una sola vez al total. No se declara ese volumen completo como carga medida de cada sitio; el dimensionamiento de cada equipo puede usarlo como cota conservadora sin multiplicarlo en el total global. Las operaciones de cada entrega se reparten en recepción, escaneo y desconsolidación de 03:00 a 05:00, y despacho de 05:00 a 06:00; SV-04 concentra sólo la hora cargada de cada tramo. La preparación normal de Talca se calcula como 11.742 líneas por noche × 2 operaciones × 2/3 ÷ 28.800 segundos = 0,54 TPS de media; la hora cargada de SV-04 alcanza 1,09 TPS. El despacho se distribuye entre Talca y Concepción según SV-03; a las 05:00 el WMS alcanza 1,46 TPS normal y 2,68 TPS en septiembre en Talca, y 0,73 y 1,34 TPS en Concepción.
+El volumen de cross-docking de la Tabla~\ref{tab:anexo-4b-horario} corresponde al conjunto de las tres plataformas y se suma una sola vez al total. No se declara ese volumen completo como carga medida de cada sitio; el dimensionamiento de cada equipo puede usarlo como cota conservadora sin multiplicarlo en el total global. Las operaciones de cada entrega se reparten en recepción, escaneo y desconsolidación de 03:00 a 05:00, y despacho de 05:00 a 06:00; SV-04 concentra sólo la hora cargada de cada tramo. La preparación normal de Talca se calcula como 11.742 líneas por noche × 2 operaciones × 2/3 ÷ 28.800 segundos = 0,54 TPS de media; la hora cargada de SV-04 alcanza 1,09 TPS. El despacho se distribuye entre Talca y Concepción según SV-03; a las 05:00 el WMS alcanza 1,46 TPS normal y 2,68 TPS en septiembre en Talca, y 0,73 y 1,34 TPS en Concepción.
 
 La nube suma preventa, reparto, recepción, trazabilidad, guías, sincronización y el escenario EDI. Los aproximadamente 2.852 documentos/día peak son el total de DTE (34.000 ÷ 22,14 × 1,857), no sólo guías; tomarlos todos como guías a emitir antes de la salida es una cota conservadora. El portal queda separado: 2.600 ÷ 9 × 2 por SV-04 = 578 sesiones en la hora cargada; 578 × 60 ÷ 3.600 = 9,63 solicitudes/s y 578 × 10 ÷ 60 = 96,30 concurrentes. La cota extrema es 2.600 × 60 ÷ 3.600 = 43,33 solicitudes/s y 433,33 concurrentes. Las 2.600 sesiones diarias del portal son un parámetro de diseño: se toma una sesión por cada cliente de food service y de cadenas, 2.100 + 500 = 2.600 (Bases Técnicas del caso, cap. 2, p. 4). La cota cubre esos dos canales y no al canal tradicional, cuyo uso del portal es opcional y no tiene medición en el caso. Ese canal se admite con una cuota propia en la puerta de enlace: 20 solicitudes/s agregadas para los clientes tradicionales, que es la capacidad remanente bajo el techo de 8 tareas en la cota extrema (8 × 14,00 − 91,70 = 20,30 solicitudes/s). Si la adopción medida acerca el uso a esa cuota, se amplía la capacidad antes de subirla. La cuota no rechaza pedidos de preventa, que usan su propio perfil. No son las 2.600 visitas diarias de preventa (Bases Técnicas del caso, anexo B, p. 38); que las dos cifras coincidan es casualidad.
 
@@ -127,6 +151,34 @@ Cada cantidad aplica los supuestos S-28 y S-30 a S-41, registrados en el Subdocu
   \item Terminales de bodega: se comparten entre turnos (RT-12.11; Bases Técnicas del caso, cap. 15, p. 27), sin personal de carga adicional (S-33), de modo que los fija el turno nocturno: 120 preparadores en Talca y 60 en Concepción (S-39). En Talca, 20 son de la cuadrilla de congelado (S-34): los productos de frío son 1.100 ÷ 8.400 = 13,1\,\% del surtido y el congelado ocupa 400 ÷ 1.300 = 30,8\,\% del área fría, de modo que el congelado es cerca de 13,1\,\% × 30,8\,\% = 4,0\,\% de las líneas; 120 personas × 8 h = 960 horas-persona, cuyo 4,0\,\% son 38,4 horas, concentradas en las últimas 2 horas del turno: 38,4 ÷ 2 = 19,2, unas 20 personas. Talca suma 20 + 2 de congelado y 100 + 10 estándar, Concepción 60 + 6, y los cross-docking 6 + 3, una unidad de reserva por plataforma (S-35): 207 en total. A tres años (S-32), la dotación de los centros de distribución crece 350 ÷ 310 = 12,9\,\%: Talca llega a 23 + 3 de congelado y 113 + 12 estándar, y Concepción a 68 + 7; con los 9 de los cross-docking, el parque llega a 235 terminales de bodega, 28 más que al inicio. Las licencias de gestión de dispositivos y las identidades de terminal se dimensionan con 207 equipos al inicio y 235 en el año 3.
   \item Termógrafos: 28 + 3 = 31, para los 18 camiones con frío propios y los 10 de transportistas (S-28), sin compra por crecimiento (S-38).
 \end{itemize}
+
+\subsection*{Inventario por familia y sitio}
+El inventario siguiente conserva las unidades en operación por familia y sitio; el Formulario T-11 distingue sus especificaciones y reservas.
+
+\begin{tablalafrox}{Equipamiento en operación por familia y por sitio}{tab:t26}%
+  {Y H{0.13} H{0.14} H{0.17} H{0.16}}%
+  {\cab{Familia} & \cab{Talca} & \cab{Concepción} & \cab{Cada cross-docking} & \cab{Terreno}}
+  Servidores y nodos de cómputo & 3 & 2 & 2 & -- \\
+  Respaldo local (NAS WORM) & 1 & -- & -- & -- \\
+  Firewalls & 2 & 2 & 2 & -- \\
+  Switches de núcleo, de gestión y de sitio & 3 & 2 & 2 & -- \\
+  Switches de acceso en las bodegas & 4 & 2 & -- & -- \\
+  UPS de gabinetes de piso & 4 & 2 & -- & -- \\
+  UPS de gabinetes de borde & -- & 1 & 1 & -- \\
+  Enlaces satelitales D-06 & 1 & 1 & 1 & -- \\
+  Puntos de acceso Wi-Fi 6E & 39 & 20 & 2 & -- \\
+  Terminales de bodega & 120 & 60 & 2 & -- \\
+  Impresoras de andén & 4 & 2 & -- & -- \\
+  Balanzas de recepción & 2 & 1 & -- & -- \\
+  Puntos de temperatura en cámaras & 15 & 6 & -- & -- \\
+  Gateways IoT & 2 & 1 & -- & -- \\
+  Estaciones de trabajo & 5 & 3 & -- & -- \\
+  Terminales de preventa & -- & -- & -- & 62 \\
+  Equipos de reparto por camión & -- & -- & -- & 96 \\
+  Termógrafos de camión & -- & -- & -- & 28 \\
+\end{tablalafrox}
+
+{\footnotesize Fuente: elaboración propia.\par}
 
 \section{Dimensiones 7--10: almacenamiento, retención y migración}
 \label{sec:anexo-4b-dimensiones-7-10}
@@ -193,7 +245,7 @@ Concepción & D-06 satélite & 6 Mbps mínimo de aceptación & 4,19 Mbps útiles
   Cada cross-docking & D-04 LTE & 2 Mbps & 0,35 Mbps, drenaje & 17,70\,\% \\
 \end{tablalafrox}
 
-La coordinación de reserva no se suma al drenaje: durante un aislamiento la nube no confirma reservas remotas del sitio, por lo que sus solicitudes esperan en la cola de la nube y no en el sitio. Su tasa continua es de 87.228 × 1 KB ÷ 86.400 s, unos 0,008 Mbps sumando todos los sitios, y no cambia la utilización de la tabla. La tasa prioritaria suma WAL, broker y telemetría crítica a los mensajes de guía, respuesta del SII e identidad, con una cota de 1 KB por mensaje; se divide el volumen diario por 86.400 segundos. Los 12.602/23.404 cambios diarios de INT-12 son una cota conservadora basada en movimientos de todos los sitios, aplicada al dimensionamiento de Talca y no un conteo medido allí. La utilización de respaldo incluye retorno simultáneo y drenaje con 15\,\% de margen, según la Tabla A.33. En Talca y Concepción, D-06 permanece encendido en espera caliente, con túnel IPsec establecido y BGP de menor preferencia; solo toma tráfico si fallan fibra y LTE, cuando prioriza DMS/WAL de Talca, salida del broker y outbox, guías hacia ERP y SII, identidad y telemetría crítica. La tarifa plana no agrega costo por mantenerlo encendido. En los cross-docking Starlink es el camino principal y LTE de dos proveedores da respaldo. El tercer camino de los CD sostiene la salida continua de datos exigida por el RPO de 15 minutos; la oficina cede prioridad durante la recuperación.
+La coordinación de reserva no se suma al drenaje: durante un aislamiento la nube no confirma reservas remotas del sitio, por lo que sus solicitudes esperan en la cola de la nube y no en el sitio. Su tasa continua es de 87.228 × 1 KB ÷ 86.400 s, unos 0,008 Mbps sumando todos los sitios, y no cambia la utilización de la tabla. La tasa prioritaria suma WAL, broker y telemetría crítica a los mensajes de guía, respuesta del SII e identidad, con una cota de 1 KB por mensaje; se divide el volumen diario por 86.400 segundos. Los 12.602/23.404 cambios diarios de INT-12 son una cota conservadora basada en movimientos de todos los sitios, aplicada al dimensionamiento de Talca y no un conteo medido allí. La utilización de respaldo incluye retorno simultáneo y drenaje con 15\,\% de margen, según la Tabla A.34. En Talca y Concepción, D-06 permanece encendido en espera caliente, con túnel IPsec establecido y BGP de menor preferencia; solo toma tráfico si fallan fibra y LTE, cuando prioriza DMS/WAL de Talca, salida del broker y outbox, guías hacia ERP y SII, identidad y telemetría crítica. La tarifa plana no agrega costo por mantenerlo encendido. En los cross-docking Starlink es el camino principal y LTE de dos proveedores da respaldo. El tercer camino de los CD sostiene la salida continua de datos exigida por el RPO de 15 minutos; la oficina cede prioridad durante la recuperación.
 
 La ventana dominical usa ocho horas sin operación de bodega ni reparto. Cada sitio actualiza sus terminales de bodega y los equipos de reparto de los camiones que estacionan en él, repartidos por SV-03: 71 de los 106 en Talca y 35 en Concepción. En Talca, el respaldo completo de 15,12 GB se transfiere a 20 Mbps en 1,68 horas y la aplicación de sus 203 equipos, 20,30 GB, en 2,26 horas; juntas requieren 3,94 horas. Una tanda de 18 sistemas operativos de 2 GB agrega 4,00 horas y ocupa 7,94 horas; una ronda completa ocupa 12 domingos. En Concepción, el respaldo completo de 7,76 GB y la aplicación de sus 101 equipos, 10,10 GB, requieren 3,97 horas; una tanda de 9 sistemas operativos ocupa 7,97 horas y la ronda completa, 12 domingos. Los 69 terminales de preventa no usan esta ventana: trabajan en la calle y el MDM los actualiza por la red móvil. En cada cross-docking, el respaldo de 1,89 GB y la aplicación de sus 2 terminales, 0,20 GB, requieren 2,33 horas sobre la capacidad supuesta de 2 Mbps; con los 2 sistemas operativos, la ventana ocupa 6,77 horas y la ronda requiere un domingo. La aplicación se actualiza en un domingo por sitio; el sistema operativo se distribuye en tandas dominicales con cadencia semestral, dentro de los aproximadamente 43 domingos disponibles al año tras los congelamientos de septiembre y diciembre.
 
@@ -283,7 +335,7 @@ Por separado, RT-09.03 (Bases Técnicas Transversales, cap. 9, p. 21) exige 3×:
 Cota por cross-docking con carga agregada de las tres plataformas & 2,17 & 2,58 & 6,50 & Contrastar distribución real por sitio; revisar CPU e IOPS trimestralmente \\
   Nube, TPS peak / tareas & 14,66 / 2 & 17,03 / 2 & 43,98 / 4 & Escalamiento y prueba trimestral \\
   Evidencia anual & 87,72 GB & 101,87 GB & 263,16 GB & Escalar S3 y retención \\
- Enlace de Talca, escenario horario distribuido  &  5,16 Mbps  &  5,20 Mbps  &  5,64 Mbps  &  Contrastar además el retorno simultáneo de la Tabla A.33  \\
+ Enlace de Talca, escenario horario distribuido  &  5,16 Mbps  &  5,20 Mbps  &  5,64 Mbps  &  Contrastar además el retorno simultáneo de la Tabla~\ref{tab:anexo-4b-enlaces}  \\
   Terminales de bodega de Talca & 132 & 151 & no aplica & Ajustar parque a la dotación \\
   Mesa, contactos mensuales & 2.000 & 2.258 & 6.000 & Recalibrar Erlang C \\
 \end{tablalafrox}
@@ -303,5 +355,18 @@ La emisión tributaria es el primer candidato a cuello de botella: tratar los 2.
 La carga RT-09.06 (Bases Técnicas Transversales, cap. 9, p. 21) se ejecuta a \textbf{21,99 TPS totales}, distribuidos por lugar según el perfil horario, sin multiplicar cada lugar por separado. El estrés que exige el mismo RT-09.06 (Bases Técnicas Transversales, cap. 9, p. 21) supera la cota extrema del portal y la volumetría 3×. La prueba de corte dura 24 horas y debe drenar en dos; la sincronización de la peor ruta debe completar en diez minutos. Se ejecutan dos ensayos de migración conforme a RT-05.13 (Bases Técnicas Transversales, cap. 5, p. 12) y una verificación de la ventana dominical para cada sitio.
 
 Se conservan percentil 95, utilización, colas, errores, pérdida o duplicación, estado de conciliación y parámetros confirmados. El perfil horario, la migración y la operación dominical se cierran con evidencia de prueba, sin convertir el resultado medido en un hecho previo.
+
+\subsection*{Carga incremental y aceptación de las innovaciones del SD13}
+Para cada recurso, la demanda total es la carga base más el incremento medido en la misma ventana; no se suman máximos de horarios distintos. CPU se obtiene de operaciones por tiempo de CPU medido y se distribuye por la duración de la ventana y el límite de utilización declarado. La memoria corresponde a residentes más trabajos simultáneos. El almacenamiento agrega cardinalidad por tamaño y retención de resultados, versiones, índices y copias realmente previstas. El enlace agrega los bytes nuevos, el protocolo y los reintentos medidos. Cada resultado conserva entrada, unidad, ventana, lugar de proceso, configuración y evidencia para poder reproducir el cálculo.
+
+\begin{itemize}
+\item INN-01: medir pares lote–local examinados por campaña, avisos producidos, respuestas de visita y tamaño de cada registro. Obtener el costo de la consulta y generación nocturna en N-10, el almacenamiento de resultados y el tráfico de precarga y retorno por C-01, sin contar el saldo estimado como una escritura de inventario oficial.
+\item INN-02: medir incidentes admitidos, tamaño de captura y duración/concurrencia de reproducciones. Separar ingesta de trazas, almacenamiento hasta cierre y CPU/memoria temporales de QA y Preproducción. Verificar límites, eliminación y liberación de recursos incluso si falla la reproducción; no cargar esa ejecución al presupuesto productivo.
+\item INN-03: medir lotes, tramos térmicos y frecuencia de cálculo por familia, junto con CPU por cálculo y tamaño de resultados y versiones. Las 10.920 muestras térmicas diarias ya están en la carga base: no duplicar su captura. Agregar el procesamiento derivado, su retención y los mensajes nuevos efectivamente producidos; ensayar alerta local, descarga al retorno y cálculo sin inventar tramos ausentes.
+\item INN-04: medir hechos de M6/M7/M8 por período, cardinalidad de la agregación, duración del cierre mensual y volumen del informe y sus versiones. Verificar el acceso de Finanzas y el intercambio con el ERP sin transformar el informe analítico en otro registro contable maestro.
+\item INN-05: medir locales destinatarios, hojas por período, tamaño por hoja y solicitudes de reimpresión. Cuantificar generación en N-10, precarga cifrada a C-01/C-02, estados de entrega y almacenamiento; comprobar impresión sin enlace y aislamiento entre receptores.
+\end{itemize}
+
+El informe de prueba compara base e incremento por innovación y por recurso, identifica el primer umbral superado y conserva percentil 95, duración de trabajos, máxima cola, errores, reconciliación y recuperación. Incluye ventanas críticas, falla del componente previsto en N+1, corte WAN y retorno simultáneo. Solo declara suficiencia cuando los ensayos satisfacen los límites de 4.2.6.12; estos criterios describen la verificación exigida, no resultados ya obtenidos.
 
 \endgroup

@@ -35,6 +35,7 @@ Los 184 usuarios de administración, comercial y soporte de Talca y Concepción 
 
 La Tabla~\ref{tab:conexiones} resume cada conexión con su medio, su camino alternativo y el tiempo de conmutación entre ambos.
 
+\Needspace{0.70\textheight}
 \begin{tablalafrox}{Conexiones de la solución y su camino alternativo}{tab:conexiones}%
   {F{0.24} Y F{0.24} F{0.16}}%
   {\cab{Conexión} & \cab{Medio y protocolo} & \cab{Camino alternativo} & \cab{Conmutación}}
@@ -58,6 +59,7 @@ Los cinco sitios tienen caminos alternativos hacia la nube. Los sitios mantienen
 
 La Tabla~\ref{tab:superficie} delimita las únicas entradas desde redes externas. Cada entrada usa un subdominio propio del dominio del CLIENTE gestionado en Route 53; en la tabla, \texttt{\textless{}dominio\textgreater{}} representa ese dominio institucional, que el CLIENTE confirma al inicio del proyecto.
 
+\Needspace{0.48\textheight}
 \begin{tablalafrox}{Superficie de exposición}{tab:superficie}%
   {F{0.12} F{0.31} F{0.14} Y F{0.16}}%
   {\cab{Entrada} & \cab{Nombre de dominio (FQDN)} & \cab{Servicio y puerto} & \cab{Quién accede} & \cab{Control}}
@@ -74,29 +76,29 @@ La tabla excluye toda otra entrada desde fuera de la red del CLIENTE. En recuper
 
 \subsection{Puntos de falla en los sitios y en los enlaces}
 
-Cada conexión se apoya en equipos del sitio que también pueden fallar. La Tabla~\ref{tab:fallas-sitios} recorre esos puntos de falla, desde el enlace hasta la energía del recinto, e indica para cada uno el mecanismo que la resuelve y la contingencia si ese mecanismo no basta.
+Cada conexión se apoya en equipos del sitio que también pueden fallar. El listado \hyperref[tab:fallas-sitios]{de fallas en los sitios y enlaces} recorre esos puntos de falla, desde el enlace hasta la energía del recinto, e indica para cada uno el mecanismo que la resuelve y la contingencia si ese mecanismo no basta.
 
-\begin{tablalafrox}{Puntos de falla en los sitios y en los enlaces}{tab:fallas-sitios}%
-  {F{0.24} Y Y}%
-  {\cab{Punto de falla} & \cab{Resolución} & \cab{Contingencia}}
-  Fibra y LTE de un centro de distribución & BGP conmuta al túnel IPsec ya establecido por Starlink D-06, con prioridad para DMS/WAL, broker, guías, identidad y telemetría crítica. & La operación local conserva 24 h de autonomía. \\
-  Caída del enlace de Talca para la oficina & Verified Access admite otra conexión a Internet con los mismos controles. & Plan de rutas y manifiesto aprobados en el WMS antes de las 22:00; tableros y costo de servir esperan el retorno. \\
-  Starlink de un cross-docking & El LTE de dos proveedores toma el tráfico en menos de 30 s. & La ventana de 3 h opera 100\,\% local y sincroniza al reconectar. \\
-  Enlace de Los Ángeles en la madrugada & Starlink queda como camino único, porque la red móvil falla a esa hora. & La ventana de madrugada opera íntegramente local. \\
-  Firewall de Talca & La unidad pasiva asume las direcciones y los túneles en menos de 30 s. & Operación local 24 h sin enlace. \\
-  Firewall de Concepción & La unidad pasiva asume el túnel y la conmutación de enlace en menos de 30 s. & La unidad dañada se reemplaza con la de reserva de Talca. \\
-  Nodo del clúster de Talca & Las VM se reinician en los nodos restantes, con sus datos replicados por Ceph. & Ante la pérdida del clúster, se levanta el WMS de Talca en la nube sobre su copia en Aurora. \\
-  Instancia de escritura VM-02 & Se reinicia en otro nodo del clúster. & D-05 restaura la base en hasta 4 h sin enlace. \\
-  Disco de un nodo de Talca & Ceph marca el disco fuera y recompone sus réplicas en los otros nodos. & Durante la recomposición quedan dos réplicas. \\
-  Miembro del stack de switches de Talca o de Concepción & El otro miembro mantiene el tráfico. & Reposición sin corte con la unidad de reserva de Talca. \\
-  Servidor activo de Concepción & El servidor en espera, con la base replicada en forma sincrónica, toma su lugar tras comprobar la exclusión del escritor anterior, en menos de un minuto desde esa comprobación o con RTO $\leq$ 4 h si requiere intervención presencial (4.2.4.3); cada servidor tiene RAID 10 y fuentes redundantes. & Si fallan ambos, reposición y reconstrucción de la base desde el estado central. \\
-  Mini-PC activo de un cross-docking & El mini-PC en espera, con la base replicada en forma sincrónica, toma su lugar tras comprobar la exclusión del escritor anterior, en menos de un minuto desde esa comprobación o con RTO $\leq$ 4 h si requiere intervención presencial (4.2.4.3); cada equipo tiene dos fuentes, dos SSD en RAID 1 y una interfaz a cada switch. & Reposición del equipo dañado desde la reserva de Talca; si fallan ambos, reconstrucción desde el estado central y SQS FIFO. \\
-  Firewall de un cross-docking & La unidad pasiva del par asume el túnel en menos de 30 s. & La ventana de 3 h opera 100\,\% local y sincroniza al reconectar. \\
-  Periféricos de andén & Sin redundancia por equipo. & La etiqueta se emite en otra de las impresoras del centro de distribución. \\
-  Energía de la sala de Talca & UPS N+1 de 30 min y generador que toma carga en 8 a 15 s. & Estanque de 24 h y contrato de reabastecimiento. \\
-  Corte de energía en la bodega & Las UPS de los gabinetes de piso sostienen switches PoE, AP e impresoras durante 30 min. & Registro de frío con generador en Talca y UPS de 30 min en Concepción. \\
-  Climatización de la sala de Talca & Segunda unidad de precisión en N+1. & Alerta del monitoreo de los sensores ambientales. \\
-\end{tablalafrox}
+\phantomsection
+\label{tab:fallas-sitios}
+\begin{itemize}
+\item \textbf{Fibra y LTE de un centro de distribución.} \textbf{Resolución:} BGP conmuta al túnel IPsec ya establecido por Starlink D-06, con prioridad para DMS/WAL, broker, guías, identidad y telemetría crítica; \textbf{Contingencia:} La operación local conserva 24 h de autonomía.
+\item \textbf{Caída del enlace de Talca para la oficina.} \textbf{Resolución:} Verified Access admite otra conexión a Internet con los mismos controles; \textbf{Contingencia:} Plan de rutas y manifiesto aprobados en el WMS antes de las 22:00; tableros y costo de servir esperan el retorno.
+\item \textbf{Starlink de un cross-docking.} \textbf{Resolución:} El LTE de dos proveedores toma el tráfico en menos de 30 s; \textbf{Contingencia:} La ventana de 3 h opera 100\,\% local y sincroniza al reconectar.
+\item \textbf{Enlace de Los Ángeles en la madrugada.} \textbf{Resolución:} Starlink queda como camino único, porque la red móvil falla a esa hora; \textbf{Contingencia:} La ventana de madrugada opera íntegramente local.
+\item \textbf{Firewall de Talca.} \textbf{Resolución:} La unidad pasiva asume las direcciones y los túneles en menos de 30 s; \textbf{Contingencia:} Operación local 24 h sin enlace.
+\item \textbf{Firewall de Concepción.} \textbf{Resolución:} La unidad pasiva asume el túnel y la conmutación de enlace en menos de 30 s; \textbf{Contingencia:} La unidad dañada se reemplaza con la de reserva de Talca.
+\item \textbf{Nodo del clúster de Talca.} \textbf{Resolución:} Las VM se reinician en los nodos restantes, con sus datos replicados por Ceph; \textbf{Contingencia:} Ante la pérdida del clúster, se levanta el WMS de Talca en la nube sobre su copia en Aurora.
+\item \textbf{Instancia de escritura VM-02.} \textbf{Resolución:} Se reinicia en otro nodo del clúster; \textbf{Contingencia:} D-05 restaura la base en hasta 4 h sin enlace.
+\item \textbf{Disco de un nodo de Talca.} \textbf{Resolución:} Ceph marca el disco fuera y recompone sus réplicas en los otros nodos; \textbf{Contingencia:} Durante la recomposición quedan dos réplicas.
+\item \textbf{Miembro del stack de switches de Talca o de Concepción.} \textbf{Resolución:} El otro miembro mantiene el tráfico; \textbf{Contingencia:} Reposición sin corte con la unidad de reserva de Talca.
+\item \textbf{Servidor activo de Concepción.} \textbf{Resolución:} El servidor en espera, con la base replicada en forma sincrónica, toma su lugar tras comprobar la exclusión del escritor anterior, en menos de un minuto desde esa comprobación o con RTO $\leq$ 4 h si requiere intervención presencial (4.2.4.3); cada servidor tiene RAID 10 y fuentes redundantes; \textbf{Contingencia:} Si fallan ambos, reposición y reconstrucción de la base desde el estado central.
+\item \textbf{Mini-PC activo de un cross-docking.} \textbf{Resolución:} El mini-PC en espera, con la base replicada en forma sincrónica, toma su lugar tras comprobar la exclusión del escritor anterior, en menos de un minuto desde esa comprobación o con RTO $\leq$ 4 h si requiere intervención presencial (4.2.4.3); cada equipo tiene dos fuentes, dos SSD en RAID 1 y una interfaz a cada switch; \textbf{Contingencia:} Reposición del equipo dañado desde la reserva de Talca; si fallan ambos, reconstrucción desde el estado central y SQS FIFO.
+\item \textbf{Firewall de un cross-docking.} \textbf{Resolución:} La unidad pasiva del par asume el túnel en menos de 30 s; \textbf{Contingencia:} La ventana de 3 h opera 100\,\% local y sincroniza al reconectar.
+\item \textbf{Periféricos de andén.} \textbf{Resolución:} Sin redundancia por equipo; \textbf{Contingencia:} La etiqueta se emite en otra de las impresoras del centro de distribución.
+\item \textbf{Energía de la sala de Talca.} \textbf{Resolución:} UPS N+1 de 30 min y generador que toma carga en 8 a 15 s; \textbf{Contingencia:} Estanque de 24 h y contrato de reabastecimiento.
+\item \textbf{Corte de energía en la bodega.} \textbf{Resolución:} Las UPS de los gabinetes de piso sostienen switches PoE, AP e impresoras durante 30 min; \textbf{Contingencia:} Registro de frío con generador en Talca y UPS de 30 min en Concepción.
+\item \textbf{Climatización de la sala de Talca.} \textbf{Resolución:} Segunda unidad de precisión en N+1; \textbf{Contingencia:} Alerta del monitoreo de los sensores ambientales.
+\end{itemize}
 
 {\footnotesize Fuente: elaboración propia.\par}
 
@@ -104,23 +106,23 @@ En Concepción, el RAID 10 tolera la falla de un disco y las fuentes redundantes
 
 \subsection{Puntos de falla en la nube, el terreno y las integraciones}
 
-La Tabla~\ref{tab:fallas-nube} completa el recorrido con los puntos de falla que están fuera de los sitios: la nube, el terreno y los sistemas de terceros.
+El listado \hyperref[tab:fallas-nube]{de fallas en nube, terreno e integraciones} completa el recorrido con los puntos de falla que están fuera de los sitios: la nube, el terreno y los sistemas de terceros.
 
-\begin{tablalafrox}{Puntos de falla en la nube, el terreno y las integraciones}{tab:fallas-nube}%
-  {F{0.24} Y Y}%
-  {\cab{Punto de falla} & \cab{Resolución} & \cab{Contingencia}}
-  Zona de disponibilidad de sa-east-1 & Aurora conmuta en menos de 30 s, ElastiCache en menos de 60 s y Fargate reprograma las tareas. & La operación continúa en las zonas restantes. \\
-  Región sa-east-1 completa & Tras autorización del CLIENTE se promueve Aurora, se restituyen identidad y API y se valida; entonces Route 53 dirige el tráfico a us-east-1. & RTO de 4 h y RPO de 15 min; bodega y terreno operan localmente durante la conmutación. \\
-  Túnel VPN de Talca durante la replicación & BGP conmuta entre fibra D-03, LTE D-04 y Starlink D-06 para que DMS siga leyendo VM-02. & La autonomía local conserva la operación mientras se restituye cualquier camino. \\
-  IdP maestro o enlace de identidad & La caché de solo lectura, de 24 h, conserva los datos de identidad recibidos, y el verificador local habilita los relevos de turno con el manifiesto firmado y el PIN personal. & La credencial de turno dura hasta 8 h en bodega y 14 h en terreno, sin revocación remota durante el corte, y queda disponible la cuenta de último recurso (ADR-06, Anexo 4-O). \\
-  Señal móvil en ruta & La aplicación opera contra el almacén local del dispositivo. & Sincroniza al reconectar dentro de los 10 min de la Tabla~\ref{tab:t29}. \\
-  ERP legado & El trabajador \texttt{erp-sync} en VM-04 retiene las solicitudes en la cola local o en SQS y reintenta con la misma clave idempotente. & Ningún camión sale sin documento tributario válido emitido por el ERP. \\
-  Perfil de API saturado & El balanceador reparte entre tareas y el escalado agrega tareas cuando los procesos PHP-FPM ocupados superan el 70 \%. & Limitación de tasa en API Gateway con mensaje explícito al usuario. \\
-  Mensaje de reconciliación inválido o que falla & El consumidor rechaza el sobre de edición desconocida sin aplicarlo; tras cinco intentos pasa a la cola de mensajes fallidos. & Alarma inmediata y reproceso manual trazable; el grupo afectado no bloquea a los demás. \\
-  Excursión térmica crítica sin enlace & El gateway bloquea el despacho en menos de 5 s en el borde. & Buffer de 24 h y alerta al reconectar. \\
-  SII, cadenas o notificaciones & Reintento con espera creciente y cola de mensajes fallidos. & Reproceso desde la cola al recuperarse el tercero. \\
-  Carga del peak de septiembre & Fargate escala automáticamente por perfil y Aurora ya está dimensionada para 3$\times$ sin cambio de instancia. & Limitación de tasa en API Gateway. \\
-\end{tablalafrox}
+\phantomsection
+\label{tab:fallas-nube}
+\begin{itemize}
+\item \textbf{Zona de disponibilidad de sa-east-1.} \textbf{Resolución:} Aurora conmuta en menos de 30 s, ElastiCache en menos de 60 s y Fargate reprograma las tareas; \textbf{Contingencia:} La operación continúa en las zonas restantes.
+\item \textbf{Región sa-east-1 completa.} \textbf{Resolución:} Tras autorización del CLIENTE se promueve Aurora, se restituyen identidad y API y se valida; entonces Route 53 dirige el tráfico a us-east-1; \textbf{Contingencia:} RTO de 4 h y RPO de 15 min; bodega y terreno operan localmente durante la conmutación.
+\item \textbf{Túnel VPN de Talca durante la replicación.} \textbf{Resolución:} BGP conmuta entre fibra D-03, LTE D-04 y Starlink D-06 para que DMS siga leyendo VM-02; \textbf{Contingencia:} La autonomía local conserva la operación mientras se restituye cualquier camino.
+\item \textbf{IdP maestro o enlace de identidad.} \textbf{Resolución:} La caché de solo lectura, de 24 h, conserva los datos de identidad recibidos, y el verificador local habilita los relevos de turno con el manifiesto firmado y el PIN personal; \textbf{Contingencia:} La credencial de turno dura hasta 8 h en bodega y 14 h en terreno, sin revocación remota durante el corte, y queda disponible la cuenta de último recurso (ADR-06, Anexo 4-O).
+\item \textbf{Señal móvil en ruta.} \textbf{Resolución:} La aplicación opera contra el almacén local del dispositivo; \textbf{Contingencia:} Sincroniza al reconectar dentro de los 10 min del listado \hyperref[tab:t29]{de autonomía por ámbito}.
+\item \textbf{ERP legado.} \textbf{Resolución:} El trabajador \texttt{erp-sync} en VM-04 retiene las solicitudes en la cola local o en SQS y reintenta con la misma clave idempotente; \textbf{Contingencia:} Ningún camión sale sin documento tributario válido emitido por el ERP.
+\item \textbf{Perfil de API saturado.} \textbf{Resolución:} El balanceador reparte entre tareas y el escalado agrega tareas cuando los procesos PHP-FPM ocupados superan el 70 \%; \textbf{Contingencia:} Limitación de tasa en API Gateway con mensaje explícito al usuario.
+\item \textbf{Mensaje de reconciliación inválido o que falla.} \textbf{Resolución:} El consumidor rechaza el sobre de edición desconocida sin aplicarlo; tras cinco intentos pasa a la cola de mensajes fallidos; \textbf{Contingencia:} Alarma inmediata y reproceso manual trazable; el grupo afectado no bloquea a los demás.
+\item \textbf{Excursión térmica crítica sin enlace.} \textbf{Resolución:} El gateway bloquea el despacho en menos de 5 s en el borde; \textbf{Contingencia:} Buffer de 24 h y alerta al reconectar.
+\item \textbf{SII, cadenas o notificaciones.} \textbf{Resolución:} Reintento con espera creciente y cola de mensajes fallidos; \textbf{Contingencia:} Reproceso desde la cola al recuperarse el tercero.
+\item \textbf{Carga del peak de septiembre.} \textbf{Resolución:} Fargate escala automáticamente por perfil y Aurora ya está dimensionada para 3$\times$ sin cambio de instancia; \textbf{Contingencia:} Limitación de tasa en API Gateway.
+\end{itemize}
 
 {\footnotesize Fuente: elaboración propia.\par}
 

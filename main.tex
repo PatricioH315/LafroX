@@ -5,6 +5,8 @@
 \documentclass[carta,firma]{lafrox}
 \usepackage{etoolbox}
 \usepackage{placeins}
+\usepackage{needspace}
+\AtBeginEnvironment{tablalafrox}{\hyphenpenalty=10000\exhyphenpenalty=10000}
 \captionsetup{hypcap=false}
 \renewcommand{\LFXisotipoportada}{00/plantilla/formato-base/logo/lafrox_isotipo_naranja.pdf}
 \renewcommand{\LFXisotipopagina}{00/plantilla/formato-base/logo/lafrox_isotipo_negro.pdf}
@@ -13,6 +15,7 @@
   \par\vspace{2pt}%
   {\footnotesize\color{lafroxGris}\raggedright Fuente: #1.\par}}
 \datoslafrox{
+  caso = {Caso --- Logística},
   documento = {Propuesta Técnica},
   subtitulo = {Subdocumento 4 --- Arquitectura de la solución},
   alcance = {Apartados 4.1, 4.2 y 4.3},

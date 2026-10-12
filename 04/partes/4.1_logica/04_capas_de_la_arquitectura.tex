@@ -76,11 +76,11 @@ Angular/Tailwind y Kotlin comparten un sistema de diseño documentado: paleta de
 
 Los portales, consolas y aplicaciones permiten elegir modo claro u oscuro, tamaño de texto y densidad de los listados, conservando la preferencia de cada persona en su dispositivo y manteniendo la accesibilidad. Se entregan en español; el caso no exige otros idiomas para sus perfiles operacionales (RT-13.12; Bases Técnicas Transversales, cap. 13, p. 26).
 
-El Portal de Clientes ofrece una vista ligera para teléfonos de bajo costo o de generaciones anteriores, con imágenes bajo demanda, listados paginados y sin animaciones, conservando pedido, estado de entrega, documentos y saldo. Usa los navegadores y sistemas compatibles de la Tabla A.19 del Anexo 4-P y se prueba en equipos de esas categorías antes de su aceptación (RT-17.08; Bases Técnicas Transversales, cap. 17, p. 32).
+El Portal de Clientes ofrece una vista ligera para teléfonos de bajo costo o de generaciones anteriores, con imágenes bajo demanda, listados paginados y sin animaciones, conservando pedido, estado de entrega, documentos y saldo. Usa los navegadores y sistemas compatibles de la \href{LAFROX-Subdocumento4-Anexos.pdf}{Tabla A.21} del Anexo 4-P y se prueba en equipos de esas categorías antes de su aceptación (RT-17.08; Bases Técnicas Transversales, cap. 17, p. 32).
 
 Los portales y la consola web en Angular 22 con Tailwind CSS adaptan su contenido a escritorio, tableta y teléfono conforme a RT-13.02 (Bases Técnicas Transversales, cap. 13, p. 26). El diseño parte de la pantalla pequeña y utiliza los puntos de quiebre de Tailwind: \texttt{sm} 40 rem, \texttt{md} 48 rem, \texttt{lg} 64 rem, \texttt{xl} 80 rem y \texttt{2xl} 96 rem, equivalentes a 640, 768, 1.024, 1.280 y 1.536 píxeles con la referencia de 16 píxeles por rem (Tailwind Labs, s.~f.). En teléfono, la navegación se recoge en un menú, los formularios se ordenan en una columna y los listados presentan tarjetas con acceso al detalle; en tableta se distribuyen los controles y en escritorio se muestran paneles y columnas adicionales. Se conservan todas las operaciones y los datos necesarios, sin reducir simplemente la escala. La aceptación comprueba cada transición y ambas orientaciones. Los terminales Zebra con Kotlin nativo usan la pantalla fija de cada modelo y un diseño específico para su perfil, con tamaños legibles y controles accesibles.
 
-La matriz de navegadores, versiones y actualización de la Tabla A.19 del Anexo 4-P se aplica a los portales y a la consola web (RT-13.10; Bases Técnicas Transversales, cap. 13, p. 26). Las versiones exactas se registran antes de cada liberación y se contrastan con el conjunto Baseline de la versión de Angular utilizada (Angular, 2026b); el soporte del framework no sustituye las pruebas de la aplicación.
+La matriz de navegadores, versiones y actualización de la \href{LAFROX-Subdocumento4-Anexos.pdf}{Tabla A.21} del Anexo 4-P se aplica a los portales y a la consola web (RT-13.10; Bases Técnicas Transversales, cap. 13, p. 26). Las versiones exactas se registran antes de cada liberación y se contrastan con el conjunto Baseline de la versión de Angular utilizada (Angular, 2026b); el soporte del framework no sustituye las pruebas de la aplicación.
 
 Todas las interfaces permiten recorrer y ejecutar íntegramente sus funciones por teclado, con orden de foco acorde con la lectura y la secuencia de trabajo, foco visible, acceso directo al contenido y ausencia de bloqueos del foco. Los diálogos reciben el foco al abrirse y lo devuelven al control de origen al cerrarse; tablas, menús y formularios tienen controles semánticos operables mediante Tab, Shift+Tab, flechas, Enter y Escape según corresponda. Se ofrecen atajos documentados y desactivables para buscar, guardar un borrador y volver al inicio del perfil, sin interferir con los del navegador, del sistema ni con la escritura en campos. En Kotlin se verifica además la navegación con teclado físico o conectado al terminal. La aceptación recorre cada flujo por teclado, comprueba el orden y la recuperación del foco y conserva la conformidad WCAG 2.2 AA comprometida (World Wide Web Consortium [W3C], 2023; RT-13.11; Bases Técnicas Transversales, cap. 13, p. 26).
 
@@ -298,7 +298,7 @@ Los eventos son el vocabulario del sistema. Se nombran en pasado, son inmutables
 
 
 
-Los esquemas AsyncAPI 2.6 versionados por evento se gobiernan desde el catálogo de interfaces (véase el apartado~\ref{sec:catalogo-interfaces}). El identificador de correlación permite seguir una operación entre los módulos consumidores.
+Los esquemas AsyncAPI 2.6 versionados por evento se gobiernan desdel catálogo de interfaces (véase el apartado~\ref{sec:catalogo-interfaces}). El identificador de correlación permite seguir una operación entre los módulos consumidores.
 
 \paragraph{Orquestación y coreografía}
 M3 solicita a M2 la reserva de cada pedido y lo deja pendiente hasta que M2 central persiste el acuse de la retención en el sitio. La respuesta llega de forma asíncrona y queda visible para el preventista como confirmación o quiebre. Cuando el pedido queda confirmado, publica \texttt{PedidoConfirmado}; M4, M5 y M10 reaccionan a ese hecho; M11 también lo consume solo para pedidos de cadenas, a fin de responder a la cadena mediante su propio consumidor. Esa coreografía evita que M3 conozca el horario de preparación o el esquema analítico. La publicación se registra junto con el cambio de estado mediante una bandeja transaccional de salida; el consumidor confirma su progreso solo después de persistir su resultado. Si falla un consumidor, la cola reintenta y termina en una bandeja de excepción, sin deshacer a ciegas el pedido ya confirmado.
@@ -359,12 +359,15 @@ Los eventos se describen en AsyncAPI 2.6 con productor único, consumidores, cla
 
 \textbf{Estrangulamiento del WMS de 2013 (ADR-08, Decisión 16.1 N\textdegree{} 14).} El WMS se reemplaza en la Etapa 1 por los módulos M1, M2 y M5 del monolito. Cada ola quita al legado la escritura de esa capacidad, y al cerrar la marcha blanca de Talca el WMS de 2013 se apaga y se retira. La Tabla~\ref{tab:capacidad-wms} indica qué capacidad se absorbe en cada ola y cómo se revierte por sitio.
 
-\begin{tablalafrox}{Capacidad absorbida del WMS 2013 por ola}{tab:capacidad-wms}{F{0.28} F{0.14} F{0.15} Y}{\cab{Capacidad WMS 2013} & \cab{Módulo} & \cab{Ola} & \cab{Estrategia / Reversión}}
-Recepción GS1 & M1 & 1 & Azul-verde por sitio; reversión a la entrega previa \\
-Slotting / ubicaciones & M2 & 1--2 & Azul-verde por sitio; reversión a la entrega previa \\
-Misiones picking HHT & M5 & 2 & Azul-verde por sitio; reversión a la entrega previa \\
-Conteo cíclico & M2 & 2--3 & Azul-verde por sitio; reversión a la entrega previa \\
+\Needspace{0.48\textheight}
+\begin{tablalafrox}{Capacidad absorbida del WMS 2013 por ola}{tab:capacidad-wms}{Y G{0.18} G{0.18}}{\cab{Capacidad WMS 2013} & \cab{Módulo} & \cab{Ola}}
+Recepción GS1 & M1 & 1 \\
+Slotting / ubicaciones & M2 & 1--2 \\
+Misiones picking HHT & M5 & 2 \\
+Conteo cíclico & M2 & 2--3 \\
 \end{tablalafrox}
+
+\textbf{Estrategia y reversión comunes:} Azul-verde por sitio; reversión a la entrega previa.
 
 {\footnotesize Fuente: Anexo 4-O, ADR-08, y las Bases Técnicas del caso (cap.~16, p.~29), decisión 14.\par}
 
@@ -535,6 +538,7 @@ Los clientes tradicionales y de food service, las cuentas de personas de los sup
 \paragraph{Clasificación, cifrado y custodia}
 La Tabla~\ref{tab:seguridad-clasificacion} resume cómo cambia el control según el dato. La clasificación se aplica al evento, su copia local, las APIs y las exportaciones, no solo a la base de datos central.
 
+\Needspace{0.48\textheight}
 \begin{tablalafrox}{Clasificación lógica y protección de la información}{tab:seguridad-clasificacion}{F{0.17} F{0.29} F{0.28} Y}{\cab{Nivel} & \cab{Ejemplo del caso} & \cab{Regla de acceso} & \cab{Protección adicional}}
 Restringido & Credenciales, claves y factores. & Solo custodios nominados. & Claves separadas y auditoría. \\
 Confidencial & Crédito, conducta de pago, geolocalización y POD. & Rol, finalidad y registro de consulta. & Cifrado por campo sensible. \\

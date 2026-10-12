@@ -31,7 +31,7 @@ La región primaria de la nube es sa-east-1, ubicada en São Paulo, Brasil. Todo
 
 \subsection{Servicios contratados en la región primaria}
 
-Los servicios contratados en la región primaria son los que agrupa por función la Tabla~\ref{tab:servicios-nube} del apartado~\ref{sec:servicios-nube}. En esta región se concentran la operación productiva, la analítica y los servicios de detección, cumplimiento y gobierno; todos son servicios administrados, de modo que la solución no opera servidores en la nube.
+Los servicios contratados en la región primaria son los que agrupa por función el catálogo \hyperref[tab:servicios-nube]{de servicios de nube por función} del apartado~\ref{sec:servicios-nube}. En esta región se concentran la operación productiva, la analítica y los servicios de detección, cumplimiento y gobierno; todos son servicios administrados, de modo que la solución no opera servidores en la nube.
 
 \subsection{Sitio on-premise: CD Talca (sala técnica secundaria)}
 
@@ -71,6 +71,7 @@ Esta cadena consta de UPS de doble conversión on-line en configuración N+1 con
 
 Para el cálculo de carga eléctrica se usa una cota conservadora por equipo, según la Tabla~\ref{tab:4-3-1}: en los nodos, la suma de sus dos fuentes, y en los demás equipos, su potencia máxima de ficha. Para el servidor del ERP, cuya ficha no se conoce, se usa la misma cota de un nodo, que se confirma al medirlo en el levantamiento. El Formulario T-11 declara los mismos valores por equipo.
 
+\Needspace{0.70\textheight}
 \begin{tablalafrox}{Carga eléctrica de TI proyectada del recinto}{tab:4-3-1}%
   {Y H{0.12} F{0.26} H{0.14}}%
   {\cab{Equipo} & \cab{Cantidad} & \cab{Potencia de placa por unidad} & \cab{Subtotal}}
@@ -102,6 +103,7 @@ Con dos racks, la contención se resuelve con paneles ciegos en todas las unidad
 
 Para calcular la carga térmica, se considera que cada kW eléctrico consumido por el equipamiento se disipa físicamente como aproximadamente 1 kW de calor sensible ($\approx$ 3.412 BTU/h). Como el UPS está en su propia sala, la carga térmica de la sala de servidores corresponde a la carga TI de diseño, como resume la Tabla~\ref{tab:4-3-2}:
 
+\Needspace{0.48\textheight}
 \begin{tablalafrox}{Carga térmica sensible proyectada del recinto}{tab:4-3-2}%
   {Y F{0.26}}%
   {\cab{Origen del calor} & \cab{Potencia equivalente}}

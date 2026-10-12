@@ -1,0 +1,165 @@
+[
+  {
+    "document": "LAFROX-Subdocumento4",
+    "pages": 201,
+    "selected_pages": [
+      1,
+      2,
+      3,
+      127,
+      129,
+      131,
+      184,
+      185,
+      186,
+      187,
+      188,
+      189,
+      190,
+      191,
+      192,
+      193,
+      194,
+      195,
+      196,
+      197,
+      198,
+      199,
+      200,
+      201
+    ],
+    "human_pages": [
+      184,
+      185,
+      186,
+      187,
+      188,
+      189,
+      190,
+      191,
+      192,
+      193,
+      194,
+      195,
+      196,
+      197,
+      198,
+      199,
+      200,
+      201
+    ],
+    "figures": [
+      127,
+      129,
+      131
+    ],
+    "forbidden": {
+      "caso_enumerado": 0,
+      "marcador_humano": 0,
+      "alex_en_revision": 0
+    },
+    "sha256": "420479d2fe95749b90bca0d5fb266d567c4365cb80f02e377d506111c0050752",
+    "diagram_font_sizes": [
+      {
+        "page": 127,
+        "fonts": {
+          "FBBHTS+SourceSerif4-Regular": [
+            2.227,
+            8.966
+          ],
+          "AAAAAA+Arial-BoldMT": [
+            11.588,
+            14.108
+          ],
+          "AAAAAA+ArialMT": [
+            10.581,
+            10.581
+          ],
+          "MZORMC+SourceSans3-Medium": [
+            4.528,
+            4.528
+          ]
+        }
+      },
+      {
+        "page": 129,
+        "fonts": {
+          "FBBHTS+SourceSerif4-Regular": [
+            2.227,
+            8.966
+          ],
+          "AAAAAA+Arial-BoldMT": [
+            11.588,
+            14.108
+          ],
+          "AAAAAA+ArialMT": [
+            10.581,
+            10.581
+          ],
+          "MZORMC+SourceSans3-Medium": [
+            4.528,
+            4.528
+          ]
+        }
+      },
+      {
+        "page": 131,
+        "fonts": {
+          "FBBHTS+SourceSerif4-Regular": [
+            2.227,
+            8.966
+          ],
+          "AAAAAA+Arial-BoldMT": [
+            11.588,
+            14.108
+          ],
+          "AAAAAA+ArialMT": [
+            10.581,
+            10.581
+          ],
+          "MZORMC+SourceSans3-Medium": [
+            4.528,
+            4.528
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "document": "LAFROX-Subdocumento4-Anexos",
+    "pages": 100,
+    "selected_pages": [
+      1,
+      2,
+      3,
+      53,
+      98
+    ],
+    "human_pages": [],
+    "figures": [],
+    "forbidden": {
+      "caso_enumerado": 0,
+      "marcador_humano": 0,
+      "alex_en_revision": 0
+    },
+    "sha256": "2fc87ef908d41f3e09dcbdf079d73e2756d31c4792e18e49384fd378811e4284"
+  },
+  {
+    "document": "LAFROX-Formulario-T-11",
+    "pages": 48,
+    "selected_pages": [
+      1,
+      2,
+      3,
+      48
+    ],
+    "human_pages": [],
+    "figures": [],
+    "forbidden": {
+      "caso_enumerado": 0,
+      "marcador_humano": 0,
+      "alex_en_revision": 0
+    },
+    "sha256": "02012c3198149c36d92b3d2be52ebd697b83a713725175b231689460501c4eab"
+  }
+]

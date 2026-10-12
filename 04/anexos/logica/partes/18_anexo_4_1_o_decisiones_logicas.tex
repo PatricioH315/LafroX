@@ -6,6 +6,33 @@
 
 El registro reúne las decisiones de arquitectura lógica y física conforme a RT-02.04 (Bases Técnicas Transversales, cap. 2, p. 7). Cada ficha identifica la alternativa descartada, el criterio de selección y la evidencia necesaria para verificar su realización. Los RT de las fichas remiten a las Bases Técnicas Transversales (caps. 2--16, pp. 6--29), salvo RT-10.05 y RT-16.14, precisados por el caso (Bases Técnicas del caso, cap.~15, p.~27).
 
+\begin{tablalafrox}{Resumen del registro de decisiones de arquitectura}{tab:resumen-adr}{F{0.12} F{0.34} F{0.25} Y}{\cab{ID} & \cab{Decisión} & \cab{Alternativa principal descartada} & \cab{Criterio decisivo}}
+\mbox{ADR-01} & Monolito modular Laravel con perfiles separados. & Microservicios por módulo. & Operación sostenible y límites verificables. \\
+\mbox{ADR-02} & Fibra, LTE y satélite en espera caliente en los CD. & Solo fibra y LTE. & Extracción continua aun si fallan los medios terrestres. \\
+\mbox{ADR-03} & Sitios autónomos y consolidación en nube. & Autoridad única de Talca. & Autonomía local con vista global. \\
+\mbox{ADR-04} & Persistencia según dominio de datos. & Almacén único. & Separación de despacho y analítica. \\
+\mbox{ADR-05} & RabbitMQ local y SQS FIFO. & Broker solo en nube. & Persistencia e idempotencia tras un corte. \\
+\mbox{ADR-06} & Keycloak con verificación local de turnos. & IdP solo en nube. & Relevo personal durante 24 horas. \\
+\mbox{ADR-07} & Aplicaciones Kotlin nativas. & PWA como cliente único. & Periféricos y captura sin señal. \\
+\mbox{ADR-08} & Reemplazo del WMS 2013 por olas. & Mantención indefinida del legado. & Funciones de bodega y reversión controlada. \\
+\mbox{ADR-09} & Talca recupera su WMS en nube. & Concepción como DR de Talca. & RTO de cuatro horas con falla separada. \\
+\mbox{ADR-10} & Proxmox y Ceph sobre NVMe sin RAID. & Ceph sobre RAID 10. & Quórum y capacidad útil. \\
+\mbox{ADR-11} & Hub GS1 y OpenAS2 con ACL. & Conexiones EDI directas al ERP. & Contratos y aislamiento tributario. \\
+\mbox{ADR-12} & Aurora fija a 3$\times$ y Fargate por perfil. & Cambio de instancia en septiembre. & Peak probado sin intervención. \\
+\mbox{ADR-13} & API Gateway REST en nube y puerta de API local A-01. & Gateway solo en nube. & Validación local de esquema, tasa, UUID, permisos y auditoría sin WAN. \\
+\mbox{ADR-14} & CloudWatch con OpenTelemetry y ADOT. & Dos plataformas de observabilidad. & Correlación con almacenamiento temporal local. \\
+\mbox{ADR-15} & Secrets Manager y Parameter Store. & Vault autoadministrado. & Rotación y custodia auditables. \\
+\mbox{ADR-16} & Verified Access para consolas. & Client VPN. & Acceso por aplicación y postura. \\
+ ADR-17  &  Servicio de integración con el ERP en VM-04 con doble cola.  &  Trabajador solo en nube.  &  Guía preemitida durante el aislamiento; nueva guía con ERP y comunicación tributaria disponibles.  \\
+\mbox{ADR-18} & Extracción por tres caminos con RPO de 15 min. & Retención solo en el sitio. & Copia durable fuera del sitio. \\
+\mbox{ADR-19} & Regiones declaradas y aprobación del CLIENTE. & Una sola región. & Continuidad y licitud de transferencia. \\
+\mbox{ADR-20} & Angular con TypeScript y Portal de Clientes instalable. & Perfil del cliente en la aplicación Kotlin. & Separación entre clientes y trabajadores. \\
+\mbox{ADR-21} & Terraform, Ansible, GitLab CI y CodeBuild. & CloudFormation/CDK y otra cadena CI. & Propiedad única y promoción trazable. \\
+\mbox{ADR-22} & Greengrass en gateways industriales. & Nube directa o PLC. & Bloqueo térmico local en cinco segundos. \\
+\end{tablalafrox}
+
+{\footnotesize Fuente: elaboración propia.\par}
+
 La Tabla~\ref{tab:adr-estado} fecha cada decisión, como exige RT-02.04. La fecha es la de registro en la versión de la oferta. Todas las decisiones las propone Bastián Trejo, Arquitecto de Solución, y las aprueban el Comité de Arquitectura y la Contraparte Técnica en el hito H2 del Formulario E-25. Ninguna se presenta como aprobada por el CLIENTE. Cada cambio posterior abre una nueva versión de la ficha, con su fecha, su estado (propuesta, aprobada o reemplazada) y el acta del Comité de Arquitectura que la resolvió.
 
 \begin{tablalafrox}{Fecha y estado de las decisiones de arquitectura}{tab:adr-estado}{F{0.12} F{0.42} F{0.22} Y}{\cab{ADR} & \cab{Decisión} & \cab{Fecha de registro} & \cab{Estado}}
