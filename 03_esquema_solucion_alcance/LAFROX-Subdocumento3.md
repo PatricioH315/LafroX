@@ -22,7 +22,7 @@ El ERP se conserva como registro contable y único emisor de documentos tributar
 
 El despliegue es híbrido, con carga en nube y componentes on-premise. El turno móvil sin cobertura y la continuidad del centro de distribución ante un corte del enlace forman parte del alcance desde su definición; no se agregan como contingencias al final del desarrollo.
 
-La solución organiza estas capacidades en doce módulos de negocio: M1 Recepción, M2 Inventario, M3 Preventa, M4 Rutas, M5 Preparación, M6 Reparto, M7 Cobranza y rendición, M8 Devoluciones y envases, M9 Calidad y trazabilidad, M10 BI Gerencia, M11 EDI Canal Moderno y M12 Telemetría. Una base compartida provee identidad, integración, registro auditable, operación desconectada y observabilidad. La carga principal se ejecuta en nube pública y el borde operacional del CD sostiene recepción, preparación y despacho durante la pérdida de enlace. El detalle de servicios, red y dimensionamiento corresponde a la arquitectura de la oferta.
+La solución organiza estas capacidades en doce módulos de negocio: M1 Recepción, M2 Inventario, M3 Preventa, M4 Rutas, M5 Preparación, M6 Reparto, M7 Cobranza y rendición, M8 Devoluciones y envases, M9 Calidad y trazabilidad, M10 Analítica, M11 Canal moderno y M12 Telemetría. Una base compartida provee identidad, integración, registro auditable, operación desconectada y observabilidad. La carga principal se ejecuta en nube pública y el borde operacional del CD sostiene recepción, preparación y despacho durante la pérdida de enlace. El detalle de servicios, red y dimensionamiento corresponde a la arquitectura de la oferta.
 
 ### 3.1.2 Implementación, implantación y operación
 
@@ -122,7 +122,9 @@ La prioridad usa la escala Crítica, Alta y Media del Subdocumento 2, Anexo 2.1.
 
 De los 250 requerimientos del caso y de las Bases, 54 son críticos, 157 altos y 39 medios. Los 12 requisitos propios de LafroX se distribuyen en 2 críticos, 6 altos y 4 medios. En conjunto, los **262 requerimientos del catálogo** se distribuyen en **56 críticos, 163 altos y 43 medios**; todos se ofertan.
 
-El Formulario T-12 responde cada requerimiento en sus cinco columnas: identificador, descripción, cumplimiento, componente y sección de la oferta. La prueba prevista de cada requerimiento se registra en el Formulario T-13, sección 8.2, y en la matriz de trazabilidad del Subdocumento 9, sección 9.2.5, y el criterio de aceptación de cada hito, en el Formulario T-17. El paquete de trabajo de cada uno se asigna en el plan de trabajo de la oferta.
+La concentración en «Crítica» y «Alta» es una consecuencia del caso y no un criterio uniforme. El catálogo describe sobre todo el flujo que la compañía necesita para operar: recibir con lote y temperatura, vender, preparar, despachar y entregar. El comité ejecutivo pone esas capacidades en los dos primeros lugares de su preferencia (*Caso: Logística*, 2026, cap. 13.1, p. 22). Si falta cualquiera de ellas, la etapa no puede aceptarse. La diferencia aparece en las capacidades que aprovechan ese flujo sin sostenerlo: el costo de servir y la autoatención de clientes son familias de prioridad «Media» en el Subdocumento 2 (Anexo 2.1, F-12 y F-14), y sus requerimientos no la superan. Dentro de cada familia, la prioridad separa lo que bloquea la operación de lo que la mejora. «Media» no significa optativo: todos los requerimientos se ofertan, tienen prueba propia en el Formulario T-13 y se aceptan según el Formulario T-17. La prioridad define cuántas pruebas recibe cada requerimiento en el Subdocumento 9, no qué se entrega.
+
+El Formulario T-12 responde cada requerimiento en seis columnas: identificador, descripción, cumplimiento, componente, paquete EDT (T-14) y sección de la oferta. La prueba prevista de cada requerimiento se registra en el Formulario T-13, sección 8.2, y en la matriz de trazabilidad del Subdocumento 9, sección 9.2.5, y el criterio de aceptación de cada hito, en el Formulario T-17. La asignación al paquete EDT queda registrada en la columna «Paquete EDT (T-14)»; las filas sin paquete asociado se marcan «No aplica».
 
 ### 3.2.4 Reglas de negocio y consultas
 
@@ -292,8 +294,8 @@ La Tabla 3.4 resume cómo las capacidades del alcance se distribuyen entre los m
 | Preventa y planificación de rutas | M3 Preventa; M4 Rutas | Pedido confirmable y ruta corregible. | 1 |
 | Entrega, acuse, cobro y retorno | M6 Reparto; M7 Cobranza y rendición; M8 Devoluciones y envases | Evidencia de entrega, conciliación y control de envases. | 1 |
 | Calidad, trazabilidad y telemetría | M9 Calidad y trazabilidad; M12 Telemetría | Retiro sanitario y evidencia de cadena de frío. | 1 |
-| Indicadores y costo de servir | M10 BI Gerencia | OTIF diario; costo de servir en la segunda etapa. | 1/2 |
-| Canal moderno e intercambio electrónico | M11 EDI Canal Moderno | Pedido electrónico y aviso de despacho. | 2 |
+| Indicadores y costo de servir | M10 Analítica | OTIF diario; costo de servir en la segunda etapa. | 1/2 |
+| Canal moderno e intercambio electrónico | M11 Canal moderno | Pedido electrónico y aviso de despacho. | 2 |
 
 El *cross-docking* se controla mediante inventario, preparación, rutas y reparto, sin crear un decimotercer módulo. Los requerimientos transversales se asignan a la base compartida y se trazan en el Formulario T-12.
 

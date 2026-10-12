@@ -1169,11 +1169,11 @@ La Tabla T14.20 presenta sus paquetes.
 
 | Código | Paquete de trabajo | Entregable | Criterio de aceptación | Resp. | Período |
 | --- | --- | --- | --- | --- | --- |
-| 3.3.1 | Identidad y control de acceso, incluidos los conductores externos que rotan sin aviso | Identidad y control de acceso funcionando en QA. | Un conductor externo nuevo se habilita en el andén y pierde el acceso al terminar; la identidad funciona durante un corte de 24 horas. | SEG | Antes del H4. |
+| 3.3.1 | Identidad y control de acceso, incluidos los conductores externos que rotan sin aviso | Identidad y control de acceso funcionando en QA, con responsables por rol y sitio, flujos configurables con plazos, escalamiento y delegación por ausencia, bandeja de tareas por persona y búsqueda global limitada por los permisos de quien consulta. | Los permisos se aplican por rol y sitio; los flujos asignan responsables, vencimientos, escalan tareas y permiten delegación; cada persona consulta su bandeja; la búsqueda sólo devuelve contenido autorizado; un conductor externo nuevo se habilita en el andén y pierde el acceso al terminar; la identidad funciona durante un corte de 24 horas. | SEG | Antes del H4. |
 | 3.3.2 | Integración con el ERP como único emisor de la guía de despacho (INT-06 e INT-07) | Integración en QA. | Toda guía la emite el ERP; cada entrega se concilia con su guía el mismo día; una caída del ERP no detiene el despacho. | ARQ | Meses 5 y 6; termina antes de la prueba de integración del H4 (T-15, Tabla 6.1). |
 | 3.3.3 | Convivencia con el WMS de 2013 durante el reemplazo | Mecanismo de convivencia y procedimiento para apagar el WMS. | No hay doble escritura de stock durante la convivencia. | ARQ | Antes del H4. |
 | 3.3.4 | Integración con la telemetría de los 42 camiones propios (INT-15) | Integración en QA. | M12 recibe la posición de los 42 camiones. | ARQ | Antes del H4. |
-| 3.3.5 | Registro auditable de stock, lotes y cobros | Registro auditable en QA. | Toda operación de stock, lote y cobro queda registrada y se puede consultar. | ARQ | Antes del H4. |
+| 3.3.5 | Registro auditable de stock, lotes y cobros | Registro auditable en QA para las operaciones de stock, lotes y cobros, con parámetros versionados y aprobación de segundo perfil, motor de reglas, documentos versionados, listados y exportaciones registrados. | Se conserva quién, qué y cuándo en cada operación; los parámetros mantienen versiones y requieren aprobación de un segundo perfil; el motor de reglas aplica la versión vigente; los documentos conservan historial de versiones; las consultas y exportaciones quedan registradas y son auditables. | ARQ | Antes del H4. |
 | 3.3.6 | Operación sin conexión: 14 horas en terreno y 24 horas en el CD | Mecanismo de operación sin conexión en QA. | En Preproducción, una jornada de 14 horas sin señal y un corte de 24 horas del CD terminan sin pedidos perdidos ni duplicados. | ARQ | Antes del H4. |
 
 #### Cuenta 3.4 — Módulos de la Etapa 1
@@ -1232,7 +1232,7 @@ La Tabla T14.23 presenta sus paquetes.
 | 3.6.1 | Intercambio de lote y trazabilidad con los proveedores | Intercambio operativo con los proveedores priorizados. | El proveedor de lácteos acepta la evidencia de trazabilidad. | DAT | Antes del H5. |
 | 3.6.2 | Integración con la pasarela de pago para el cobro con tarjeta (INT-09) | Integración en QA. | Un cobro de prueba se autoriza, se concilia con su entrega, y una falla de la pasarela no lo deja como aprobado. | DES | Antes del H4. |
 | 3.6.3 | Integración con el servicio de mapas y geocodificación (INT-10) | Integración en QA. | Las rutas se generan con las direcciones georreferenciadas, y la ruta precargada funciona sin señal. | DES | Antes del H4. |
-| 3.6.4 | Integración con el servicio de avisos al cliente (INT-11) | Integración en QA. | Un aviso de prueba llega por el canal configurado, y los reintentos quedan registrados. | DES | Antes del H4. |
+| 3.6.4 | Integración con el servicio de avisos al cliente (INT-11) | Integración en QA con plantillas administrables de avisos y de documentos. | Un aviso de prueba llega por el canal configurado y los reintentos quedan registrados; el CLIENTE puede administrar las plantillas de avisos y documentos y generar documentos desde ellas. | DES | Antes del H4. |
 | 3.6.5 | Intercambio electrónico con la principal cadena, con sus pruebas aprobadas (INT-08) | Intercambio certificado por la cadena. | La cadena aprueba por escrito las pruebas antes del H10. | DES | Meses 13 a 18 (H10). |
 | 3.6.6 | Incorporación de las demás cadenas al intercambio electrónico (INT-08) | Cadenas incorporadas. | Cada cadena incorporada tiene sus pruebas aprobadas. | DES | Certificación antes de cada activación; todo el alcance habilitado antes de las cuatro semanas finales de marcha blanca E2. |
 
@@ -1249,7 +1249,7 @@ La Tabla T14.24 presenta sus paquetes.
 | Código | Paquete de trabajo | Entregable | Criterio de aceptación | Resp. | Período |
 | --- | --- | --- | --- | --- | --- |
 | 3.7.1 | Informe de perfilamiento y datos saneados | Informe de calidad de datos y datos corregidos. | Cada defecto tiene su corrección o una aceptación del dueño del dato. | DAT | Antes de 3.7.2. |
-| 3.7.2 | Datos maestros cargados: 8.400 SKU, clientes e instalaciones | Maestro cargado en Preproducción. | El maestro cuadra con el origen en los dos ensayos. | DAT | Antes de la primera ola. |
+| 3.7.2 | Datos maestros cargados: 8.400 SKU, clientes e instalaciones | Maestro cargado en Preproducción y función permanente de carga y descarga masiva con validación por registro. | El maestro cuadra con el origen en los dos ensayos; la función de carga y descarga permite ejecutar lotes posteriores a la migración, valida cada registro y reporta errores sin perder los registros aceptados. | DAT | Antes de la primera ola. |
 | 3.7.3 | Saldos migrados desde el WMS de Talca | Saldos de Talca migrados y conciliados. | Los documentos y los lotes coinciden, y cada diferencia de inventario queda clasificada y explicada. | DAT | Antes de la ola de Talca. |
 | 3.7.4 | Saldos cargados en Concepción desde el conteo físico | Saldos de Concepción cargados. | Lo cargado coincide con el conteo, y cada diferencia frente a las planillas queda clasificada. | DAT | Antes de la ola de Concepción. |
 | 3.7.5 | Acta de conciliación y corte fuera de las ventanas de congelamiento | Acta de corte por sitio. | No quedan diferencias sin explicar, y la fecha no es una fecha prohibida. | DAT | Antes del H6. |
@@ -1414,8 +1414,8 @@ La Tabla T14.32 presenta sus paquetes.
 | Código | Paquete de trabajo | Entregable | Criterio de aceptación | Resp. | Período |
 | --- | --- | --- | --- | --- | --- |
 | 5.1.1 | Especificación de compra del equipamiento de terreno para el CLIENTE | Especificación de compra con su calendario. | Cada partida de equipamiento de terreno del T-11 tiene modelo, cantidad y fecha de necesidad antes de su ola, y el CLIENTE la aprueba. | ARQ | Mes 2. |
-| 5.1.2 | Especificación y compra de la sala técnica, los racks, los servidores y los gabinetes de borde | Especificación y orden de compra emitida por LafroX. | Coincide con los planos de la fase 2 (2.3) y con el T-11. LafroX emite la orden de compra en el mes 2 para instalar la sala en el mes 3. | ARQ | Mes 2. |
-| 5.1.3 | Actas de recepción técnica del equipamiento de terreno comprado por el CLIENTE y de la infraestructura provista por LafroX | Actas de recepción. | El 100 % de lo especificado se recibe conforme antes de su instalación (fase 6). | SRE | Según el calendario de compra. |
+| 5.1.2 | Especificación y compra de la sala técnica, los racks, los servidores y los gabinetes de borde | Especificación y orden de compra de la infraestructura provista por LafroX, incluidas ocho estaciones de trabajo. | Coincide con los planos de la fase 2 (2.3) y con el T-11; identifica ocho estaciones de trabajo con sus monitores y especificaciones; LafroX emite la orden de compra en el mes 2 para instalar la sala en el mes 3. | ARQ | Mes 2. |
+| 5.1.3 | Actas de recepción técnica del equipamiento de terreno comprado por el CLIENTE y de la infraestructura provista por LafroX | Actas de recepción técnica de toda la infraestructura provista, incluidas ocho estaciones de trabajo. | El 100 % de lo especificado se recibe conforme antes de su instalación (fase 6); el acta registra la recepción conforme de las ocho estaciones de trabajo y sus monitores. | SRE | Según el calendario de compra. |
 
 #### Cuenta 5.2 — Servicios de nube y licencias
 
