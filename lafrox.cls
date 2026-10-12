@@ -499,10 +499,24 @@
 %      \renewcommand{\LFXfolio}{Folio}
 \newcommand{\LFXfolio}{}
 
+% Media firma del representante legal sobre el folio (Art. 40.2), igual que
+%  en el Subdocumento 13: filete de firma, rotulo y folio. La imagen se
+%  superpone al filete sin cambiar la altura del pie: \raisebox[0pt][0pt]
+%  anula su alto y \rlap su ancho. Con la opcion [sinfirma] queda solo el folio.
+\newcommand{\LFXfirmaimagen}{FIRMA_Alex_Aravena_transparente.png}
+\newcommand{\LFXpiefirma}{%
+  \begin{tabular}[b]{@{}r@{}}
+    {\rlap{\makebox[3.4cm][c]{\raisebox{-2pt}[0pt][0pt]{\includegraphics[height=18pt]{\LFXfirmaimagen}}}}%
+     \color{lafroxGris}\rule{3.4cm}{0.4pt}}\\[-1pt]
+    {\LFXchico Media firma: \LFXrepresentante}\\
+    {\intermedium\fontsize{9pt}{11pt}\selectfont\color{lafroxTinta}\LFXfoliotexto}
+  \end{tabular}}
+\newcommand{\LFXpiesolofolio}{%
+  {\intermedium\fontsize{9pt}{11pt}\selectfont\color{lafroxTinta}%
+    \LFXfoliotexto}}
 \newcommand{\LFXpiederecho}{%
   \begingroup\LFXpiebase
-  {\intermedium\fontsize{9pt}{11pt}\selectfont\color{lafroxTinta}%
-    \LFXfoliotexto}%
+  \ifLFX@firma\expandafter\LFXpiefirma\else\expandafter\LFXpiesolofolio\fi
   \endgroup
 }
 

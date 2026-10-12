@@ -137,6 +137,8 @@ La prioridad usa la escala Crítica, Alta y Media del Subdocumento 2, Anexo 2.1.
 
 De los 250 requerimientos del caso y de las Bases, 54 son críticos, 157 altos y 39 medios. Los 12 requisitos propios de LafroX se distribuyen en 2 críticos, 6 altos y 4 medios. En conjunto, los \textbf{262 requerimientos del catálogo} se distribuyen en \textbf{56 críticos, 163 altos y 43 medios}; todos se ofertan.
 
+La concentración en «Crítica» y «Alta» es una consecuencia del caso y no un criterio uniforme. El catálogo describe sobre todo el flujo que la compañía necesita para operar: recibir con lote y temperatura, vender, preparar, despachar y entregar. El comité ejecutivo pone esas capacidades en los dos primeros lugares de su preferencia (\textit{Caso: Logística}, 2026, cap. 13.1, p. 22). Si falta cualquiera de ellas, la etapa no puede aceptarse. La diferencia aparece en las capacidades que aprovechan ese flujo sin sostenerlo: el costo de servir y la autoatención de clientes son familias de prioridad «Media» en el Subdocumento 2 (Anexo 2.1, F-12 y F-14), y sus requerimientos no la superan. Dentro de cada familia, la prioridad separa lo que bloquea la operación de lo que la mejora. «Media» no significa optativo: todos los requerimientos se ofertan, tienen prueba propia en el Formulario T-13 y se aceptan según el Formulario T-17. La prioridad define cuántas pruebas recibe cada requerimiento en el Subdocumento 9, no qué se entrega.
+
 El Formulario T-12 responde cada requerimiento en seis columnas: identificador, descripción, cumplimiento, componente, paquete EDT (T-14) y sección de la oferta. La prueba prevista de cada requerimiento se registra en el Formulario T-13, sección 8.2, y en la matriz de trazabilidad del Subdocumento 9, sección 9.2.5, y el criterio de aceptación de cada hito, en el Formulario T-17. La asignación al paquete EDT queda registrada en la columna «Paquete EDT (T-14)»; las filas sin paquete asociado se marcan «No aplica».
 
 \subsection{Reglas de negocio y consultas}
@@ -299,18 +301,24 @@ Si en cualquier momento se detecta un lote sospechoso, Calidad obtiene los desti
 
 La Figura 3.4 reúne los actores, las interfaces, los módulos de negocio y los sistemas externos de la solución. Por su tamaño, se presenta primero la vista general y luego sus cuatro partes, cada una dibujada para su explicación (Figuras 3.5 a 3.8).
 
+La vista se lee de arriba hacia abajo y tiene cuatro capas. Arriba están los quince actores que usan la solución. Debajo, el Sistema Integral de Gestión Logística Puelche reúne sus accesos en siete interfaces: las aplicaciones de preventa, reparto y bodega, los portales de clientes, transportistas y proveedores, y las consolas de gestión. La tercera capa contiene los doce módulos de negocio, M1 a M12, y la última, los tres sistemas externos: el ERP, Transbank y el sistema de geolocalización. Las relaciones siguen ese orden: los actores llegan a las interfaces, las interfaces a los módulos y los módulos a los sistemas externos. Las cuatro partes siguientes recorren esas capas en el mismo orden.
+
+\begin{landscape}
+\thispagestyle{empty}
 \renewcommand{\thefigure}{3.4}
-\begin{figure}[p]
+\noindent\begin{minipage}{\linewidth}
+\setlength{\parskip}{0pt}
+{\fontsize{8pt}{10pt}\selectfont LafroX SpA\hfill Introducci\'on al Alcance de la Soluci\'on}\par
+\vspace{2pt}\hrule\vspace{4pt}
 \centering
-\rotatebox{90}{\begin{minipage}{0.97\textheight}
-\centering
-\includegraphics[width=\linewidth,trim=0 395 0 0,clip]{figures/Diagrama de la solución.pdf}
+\includegraphics[width=0.97\linewidth,trim=0 395 0 0,clip]{figures/Diagrama de la solución.pdf}
+\captionsetup{skip=4pt}
 \captionof{figure}{Vista general de la solución. Fuente: elaboración propia.}
 \label{fig:arquitectura-general}
-\end{minipage}}
-\end{figure}
-
-La vista se lee de arriba hacia abajo y tiene cuatro capas. Arriba están los quince actores que usan la solución. Debajo, el Sistema Integral de Gestión Logística Puelche reúne sus accesos en siete interfaces: las aplicaciones de preventa, reparto y bodega, los portales de clientes, transportistas y proveedores, y las consolas de gestión. La tercera capa contiene los doce módulos de negocio, M1 a M12, y la última, los tres sistemas externos: el ERP, Transbank y el sistema de geolocalización. Las relaciones siguen ese orden: los actores llegan a las interfaces, las interfaces a los módulos y los módulos a los sistemas externos. Las cuatro partes siguientes recorren esas capas en el mismo orden.
+\par\vspace{5pt}
+{\fontsize{8pt}{10pt}\selectfont LafroX SpA --- Propuesta T\'ecnica\hfill\raisebox{-3pt}[0pt][0pt]{\includegraphics[height=14pt]{\LFXfirmaimagen}}\ {\color{lafroxGris}Media firma: \LFXrepresentante}\quad\thepage}\par
+\end{minipage}
+\end{landscape}
 \clearpage
 
 La Figura 3.5 presenta la primera parte: los actores que interactúan con la solución.
@@ -398,6 +406,17 @@ La Tabla 3.4 resume cómo las capacidades del alcance se distribuyen entre los m
 
 El \textit{cross-docking} se controla mediante inventario, preparación, rutas y reparto, sin crear un decimotercer módulo. Los requerimientos transversales se asignan a la base compartida y se trazan en el Formulario T-12.
 
+Las figuras muestran qué hace la solución. Cómo se comporta bajo la operación de Puelche depende de cuatro atributos transversales, comprometidos en el catálogo no funcional del Anexo 3.B:
+
+\begin{itemize}
+  \item \textbf{Interoperabilidad.} El ERP sigue siendo el registro contable y el único emisor tributario. La solución se integra con él, con Transbank, con el sistema de geolocalización y, en la Etapa 2, con las cadenas del canal moderno (Figura 3.8). La cola durable e idempotente de la sección 3.3.3 asegura que ninguna integración pierda ni duplique transacciones tras un corte.
+  \item \textbf{Escalabilidad.} En septiembre las entregas diarias pasan de cerca de 1.400 a cerca de 2.600. Las capas de aplicación e integración escalan horizontalmente de forma automática, con umbrales y techo declarados (RNF-19.02). La capacidad se calcula con usuarios concurrentes y transacciones por segundo (RNF-19.01) y se prueba en PREPROD con 1,5 veces el peak y con estrés hasta el punto de quiebre (RNF-19.04). Un sitio nuevo se incorpora por parametrización, sin rediseño (Formulario T-12, RT-02.12).
+  \item \textbf{Desempeño.} Los tiempos se fijan en el puesto de trabajo: 1 segundo para confirmar una línea de picking (RNF-05.01), 1,5 segundos para registrar una línea de pedido (RNF-03.01) y 2 segundos para consultar stock y crédito (RNF-03.02). La analítica se procesa separada del motor transaccional, de modo que un informe no frena la operación (RNF-11.02). El primer cuello de botella previsto no es la plataforma, sino la emisión de guías del ERP en la madrugada; escalar la solución no acelera ese emisor, por lo que se mide y se controla con umbrales y degradación controlada.
+  \item \textbf{Seguridad.} Los datos viajan cifrados con TLS 1.3 y se guardan cifrados con claves gestionadas (RNF-14.01 y RNF-14.02). Las sesiones son breves y revocables (RNF-15.01 y RNF-15.02). Los eventos de seguridad se correlacionan en una plataforma SIEM (RNF-14.04). La cadena de integración bloquea el despliegue ante hallazgos críticos en el código, sus dependencias o sus contenedores (RNF-14.07), y un tercero independiente ejecuta pruebas de intrusión cada año y antes de cada paso a producción (RNF-14.06). Los representantes externos solo ven los datos de su organización.
+\end{itemize}
+
+El Subdocumento 4 detalla el dimensionamiento, el cuello de botella y la degradación controlada (sección 4.2.6), y los controles de seguridad (sección 4.1.3.7).
+
 \subsection{Implementación}
 
 La implementación construye primero la base compartida: identidad, integración con el ERP, registro auditable, operación desconectada y observabilidad. Sobre ella trabajan tres frentes en la Etapa 1: bodega y calidad (M1, M2, M5, M9, M12); preventa, rutas y reparto (M3, M4, M6, M8); y datos y rendición (M7, M10). La Etapa 2 agrega el frente de canal moderno y costo de servir (M11 y M10).
@@ -484,6 +503,17 @@ La Tabla 3.5 resume los objetivos de servicio de la operación.
 La tabla separa tres objetivos que no deben confundirse. El 99,95 \% aplica a la infraestructura; el 99,9 \% aplica a la transacción crítica completa; y la ventana de despacho no admite indisponibilidad, porque el caso la equipara a un día sin operación (Anexo 3.E, R-01). El RTO y el RPO rigen la recuperación ante desastres y se prueban al menos dos veces al año.
 
 Los servicios de pedido, bodega, entrega, trazabilidad y rendición se supervisan con alertas por colas de sincronización pendientes, antigüedad de datos en dispositivos, latencia y calidad de datos. Una cola que crece fuera de lo normal antes de la carga genera una alerta al especialista de guardia. El escalamiento distingue la mesa de servicio, los especialistas de aplicación e infraestructura, y la decisión operacional del CLIENTE. La capacidad de la mesa se recalibra con los tickets observados en la marcha blanca. La transferencia de conocimiento al equipo TI del CLIENTE se hace con procedimientos de operación documentados y ensayados antes del mes 21.
+
+La operación aplica un enfoque de ingeniería de confiabilidad (SRE): los objetivos de la Tabla 3.5 se miden de forma continua y deciden en qué se trabaja. Si la disponibilidad del mes se acerca a su límite, las correcciones de estabilidad pasan antes que los cambios nuevos. Lo repetitivo se automatiza en lugar de depender de la memoria de una persona:
+
+\begin{itemize}
+  \item \textbf{Infraestructura como código.} Los ambientes, los recursos de recuperación y los sitios nuevos se crean desde definiciones versionadas, no a mano, de modo que se pueden reconstruir igual cada vez (Subdocumento 4, sección 4.2.3).
+  \item \textbf{Alertas preventivas.} Un trabajo programado compara latencia, errores y colas con su comportamiento histórico en la misma franja y día, y avisa antes de que el incidente afecte la operación. Las alertas duplicadas se agrupan y las no atendidas escalan solas según su criticidad (Subdocumento 4, sección 4.1.3.8).
+  \item \textbf{Capacidad y despliegue.} La plataforma escala sola durante los peaks (RNF-19.02) y la cadena de integración bloquea sin intervención un cambio que no cumple sus umbrales (sección 3.4.3).
+  \item \textbf{Libro de operación.} Cada escenario de falla previsible tiene su guía de resolución. Las tareas que se repiten se automatizan de forma progresiva (RNF-16.02).
+\end{itemize}
+
+Cada incidente crítico o alto cierra con una revisión de causa que actualiza la guía, la alerta o la automatización correspondiente.
 
 La operación reconoce los peaks del caso. En las tres primeras semanas de septiembre el volumen diario pasa de cerca de 1.400 a cerca de 2.600 entregas, y diciembre y los cierres mensuales generan tensiones similares. Durante las ventanas definidas se mantiene el congelamiento de cambios. La atención general de la mesa opera de 04:00 a 22:00 de lunes a sábado y se amplía a 24$\times$7 en septiembre y diciembre. Los incidentes críticos y altos mantienen atención 24$\times$7$\times$365. Durante esos períodos, la supervisión se concentra en las colas de sincronización y en la ventana de despacho. La capacidad de la plataforma se prueba antes de cada septiembre con carga superior a la del peak, y los resultados se informan al comité. Terminado cada peak, se revisan los incidentes y las alertas del período para ajustar umbrales y procedimientos antes del siguiente.
 
