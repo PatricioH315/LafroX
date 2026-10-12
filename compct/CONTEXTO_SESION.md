@@ -1279,3 +1279,11 @@ A pedido del usuario se agregaron en el MD del SD3: la síntesis de los atributo
 ### Declaración de IA SD3: «No aplica» en diagramas — 12 de octubre de 2026
 
 **Autorización:** el usuario pidió, mientras revisaba el PDF LaTeX del SD3, poner «No aplica» en la columna de diagramas donde la sección no tiene diagramas. **Alcance y destino:** en el MD de `rama-md` (cuerpo Tabla 3.6, Anexos Tabla 3.A.15, T-12) y en el checkout `../LafroX-sd3-latex`, rama `LafroX-Subdoc3-LateX` (`contenido.tex`, `tablas_anexo/declaracion_ia.tex`, `LAFROX-Formulario-T-12.tex`). Filas 3.1, 3.2, Anexos 3.A–3.K y T-12 pasan a «No aplica»; 3.3 (Alto) y 3.4 (Ninguno, con figuras) se mantienen. **Resultado:** `latexmk -g` sin errores; cuerpo 36 p. (la Tabla 3.6 continúa en la p. 36), anexos 166 p., T-12 260 p. El usuario acepta las 36 páginas: lo que excede es solo la tabla de declaración de IA, no contenido. Sin commit.
+
+## SD13 — continuación checklist 12-10-2026
+Tres espejos Markdown regenerados desde LaTeX SD13; fuentes contextualizadas, bibliografía interna ampliada, índices PDF sin Fuente y 3 compilaciones finales sin errores/avisos. PDF: cuerpo52, anexos11, T-19 15 páginas. Matriz de23 observaciones fueraPDF, tres columnas exactas. Registro IA conserva aportes previos sin acreditar esta edición. Pendientes: cotejo dato a dato/localizadores externos, alias M10 Analítica vs BI Gerencia, espacios de paginación y prueba horizontal. Informe en Revision/cierre_checklist_SD13_2026-10-12.md. No imágenes editadas; no commit/push.
+
+
+## SD13 — fecha de portadas 12-10-2026
+Por petición explícita del usuario, la fecha de las tres portadas SD13 se establece en 12 de octubre de 2026, centralizada en sd13-comun.tex del checkout LaTeX autorizado. No cambia el contenido de los tres Markdown ni la matriz independiente. Sin commit/push.
+

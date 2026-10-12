@@ -70,7 +70,7 @@ El detalle está en el archivo de anexos y en un formulario. El Anexo 13.A defin
 
 La Tabla 13.1 resume la cartera. La Figura 13.1 ubica las cinco innovaciones sobre las capas de la arquitectura del Capítulo 4.
 
-**Tabla 13.1. Cartera de innovaciones de LafroX. Fuente: elaboración a partir de las Bases Administrativas, Art. 28°, p. 19, del Caso Logística y del Anexo 7.D.**
+**Tabla 13.1. Cartera de innovaciones de LafroX. Fuente: elaboración a partir de los tipos obligatorios (Distribuidora Puelche S.A., 2026a, Art. 28°, p. 19), los problemas del caso (Distribuidora Puelche S.A., 2026c, caps. 2, 4, 8, 10 y 18) y la cartera y su calendario (LafroX, 2026l, secs. 13.1 a 13.5; 2026g, Anexo 7.D).**
 
 <a id="tab:sd13-1"></a>
 
@@ -84,15 +84,15 @@ La Tabla 13.1 resume la cartera. La Figura 13.1 ubica las cinco innovaciones sob
 
 
 
-La innovación 2 permite medir la reducción del tiempo de diagnóstico antes del mes 16 mediante I-02A. Con ese beneficio LafroX oferta el RT-26.08 (Distribuidora Puelche S.A., 2026b, RT-26.08, cap. 26, p. 45). Las innovaciones 1 y 3 verifican durante la marcha blanca sus condiciones de habilitación; sus beneficios posteriores se evalúan en los momentos definidos para cada indicador. Una condición de habilitación no se contabiliza como ahorro ya demostrado. Las innovaciones 4 y 5 dependen del costo de servir y de los canales de la Etapa 2, por lo que se materializan desde el mes 21.
-
 ![Figura 13.1](<C:/Users/henri/OneDrive/Documentos/Universidad 2026S2/FEP/Bases PTE/SD13/LafroX/SD13_v_nueva/13_innovaciones/diagramas/Fig_13-1_Mapa_Innovaciones.pdf>)
 
-**Figura 13.1. Ubicación de las cinco innovaciones en la arquitectura. Fuente: elaboración a partir del Capítulo 4, secciones 4.1.3, 4.1.4 y 4.2.2, y del Formulario T-11.**
+**Figura 13.1. Ubicación de las cinco innovaciones en la arquitectura. Fuente: elaboración a partir de la arquitectura e inventario (LafroX, 2026d, secs. 4.1.3, 4.1.4 y 4.2.2; 2026e, T-11) y la inserción de INN-01 a INN-05 (LafroX, 2026l, secs. 13.1.4 a 13.5.4).**
 
 <a id="fig:sd13-1"></a>
 
 La Figura 13.1 ubica las cinco innovaciones sobre las capas de la arquitectura del Capítulo 4. Cada caja es un componente o módulo ya ofertado, y entre paréntesis se indican las innovaciones que lo usan. La figura muestra que las cinco innovaciones se apoyan en los mismos componentes ya ofertados. Cuatro de ellas pasan por M10 Analítica y tres por la cola de sincronización de los terminales, que es la pieza que permite trabajar sin señal. Ninguna crea un sistema paralelo: cada una agrega una regla, un contrato de datos o un circuito de trabajo sobre la plataforma del Capítulo 4. La matriz completa está en el Anexo 13.B.
+
+La innovación 2 permite medir la reducción del tiempo de diagnóstico antes del mes 16 mediante I-02A. Con ese beneficio LafroX oferta el RT-26.08 (Distribuidora Puelche S.A., 2026b, RT-26.08, cap. 26, p. 45). Las innovaciones 1 y 3 verifican durante la marcha blanca sus condiciones de habilitación; sus beneficios posteriores se evalúan en los momentos definidos para cada indicador. Una condición de habilitación no se contabiliza como ahorro ya demostrado. Las innovaciones 4 y 5 dependen del costo de servir y de los canales de la Etapa 2, por lo que se materializan desde el mes 21.
 
 ## 13.1 Innovación 1
 
@@ -108,7 +108,7 @@ La solución obligatoria mide y controla la merma dentro de la bodega, pero la p
 
 La Tabla 13.2 separa lo que ya es alcance obligatorio de lo que esta innovación agrega.
 
-**Tabla 13.2. Alcance obligatorio en el ámbito de la innovación 1. Fuente: elaboración a partir del Formulario T-12, del Anexo 3.G y del Capítulo 2, Tabla 2.1.**
+**Tabla 13.2. Alcance obligatorio en el ámbito de la innovación 1. Fuente: elaboración a partir de los requisitos de inventario, preventa, picking, devoluciones y ciclo de vida del lote (LafroX, 2026c, T-12; 2026b, Anexo 3.G) y la meta de merma (LafroX, 2026a, Tabla 2.1).**
 
 <a id="tab:sd13-2"></a>
 
@@ -154,7 +154,7 @@ La Figura 13.2 recorre el servicio desde los datos de origen hasta la verificaci
 
 ![Figura 13.2](<C:/Users/henri/OneDrive/Documentos/Universidad 2026S2/FEP/Bases PTE/SD13/LafroX/SD13_v_nueva/13_innovaciones/diagramas/Fig_13-2_Recorrido_INN01.pdf>)
 
-**Figura 13.2. Seguimiento posentrega: del dato del lote al cierre de la visita. Fuente: elaboración a partir de la sección 13.1.4 y del contrato de datos del Anexo 13.A.**
+**Figura 13.2. Seguimiento posentrega: del dato del lote al cierre de la visita. Fuente: elaboración a partir del diseño, calendario y controles de INN-01 (LafroX, 2026l, secs. 13.1.4 a 13.1.7) y sus contratos de datos (LafroX, 2026m, Anexo 13.A).**
 
 <a id="fig:sd13-2"></a>
 
@@ -162,7 +162,7 @@ El recorrido distingue el cálculo nocturno de la confirmación en terreno. La p
 
 El piloto se hace en 120 locales de 12 rutas, con al menos 100 avisos evaluables. El tamaño es una decisión de diseño que permite evaluar el indicador I-01A, no una muestra representativa del canal. La Tabla 13.3 presenta los paquetes de la EDT que ejecutan la innovación.
 
-**Tabla 13.3. Paquetes de la EDT de la innovación 1. Fuente: Formulario T-14 y Anexo 7.D.**
+**Tabla 13.3. Paquetes de la EDT de la innovación 1. Fuente: elaboración a partir de los paquetes 3.10.1.1 a 3.10.1.4 y su calendario (LafroX, 2026h, T-14; 2026g, Anexo 7.D).**
 
 <a id="tab:sd13-3"></a>
 
@@ -181,7 +181,7 @@ La innovación se materializa en el mes 16, con el paso a producción de la Etap
 
 La innovación no requiere hardware ni licencias: usa la aplicación de preventa C-01 y la plataforma analítica ya ofertados. La Tabla 13.4 ubica sus rubros en el flujo de caja.
 
-**Tabla 13.4. Ubicación de la innovación 1 en el flujo de caja. Fuente: propuesta de LafroX para la innovación 1. La valorización se presenta en la Oferta Económica, Entregable 2, ítem 2.7.**
+**Tabla 13.4. Ubicación de la innovación 1 en el flujo de caja. Fuente: elaboración a partir de la definición económica de INN-01 (LafroX, 2026l, sec. 13.1.5) y su calendario (LafroX, 2026g, Anexo 7.D; 2026h, T-14). La valorización se presenta en la Oferta Económica, Entregable 2, ítem 2.7.**
 
 <a id="tab:sd13-4"></a>
 
@@ -203,7 +203,7 @@ Las reducciones de I-01B e I-01C son metas propuestas de diseño, no mediciones 
 
 La Tabla 13.5 define los indicadores, con su línea base, su meta y su momento de medición.
 
-**Tabla 13.5. Indicadores de la innovación 1. Fuente: elaboración a partir del Caso Logística, cap. 4.8, y del paquete 3.10.1.4 del Formulario T-14.**
+**Tabla 13.5. Indicadores de la innovación 1. Fuente: elaboración a partir de las metas y reglas de verificación ofertadas para INN-01 (LafroX, 2026l, sec. 13.1.6) y del problema de vencimiento (Distribuidora Puelche S.A., 2026c, sec. 4.8).**
 
 <a id="tab:sd13-5"></a>
 
@@ -221,7 +221,7 @@ I-01A es la condición para liberar el servicio al resto de las rutas: mide si e
 
 El riesgo de adopción está registrado como R8-25 en el Anexo 8.A, con probabilidad 4 e impacto 3 en la escala del Capítulo 8, sección 8.1.3 (exposición 12, nivel alto). La Tabla 13.6 resume sus dos causas.
 
-**Tabla 13.6. Riesgo de adopción de la innovación 1. Fuente: Anexo 8.A, ficha R8-25, y Formulario T-16.**
+**Tabla 13.6. Riesgo de adopción de la innovación 1. Fuente: elaboración a partir de las fichas R8-25 y su respuesta (LafroX, 2026j, Anexo 8.A; 2026k, T-16) y la aplicación a INN-01 (LafroX, 2026l, sec. 13.1.7).**
 
 <a id="tab:sd13-6"></a>
 
@@ -248,7 +248,7 @@ Estos fallos ocurren donde no se programa: en las rutas de Empedrado, Chanco, Ca
 
 La Tabla 13.7 separa lo que ya es alcance obligatorio de lo que esta innovación agrega.
 
-**Tabla 13.7. Alcance obligatorio en el ámbito de la innovación 2. Fuente: elaboración a partir de las Bases Técnicas Transversales, del Formulario T-12 y del Capítulo 4, sección 4.1.9.**
+**Tabla 13.7. Alcance obligatorio en el ámbito de la innovación 2. Fuente: elaboración a partir de los requisitos de reconciliación, calidad y pruebas (Distribuidora Puelche S.A., 2026b, RT-03.12, p. 9; RT-04.03 a RT-04.05, p. 10; RT-10.07, p. 22; RT-14.06, p. 27), los requisitos ofertados (LafroX, 2026c, T-12), los ambientes (2026d, sec. 4.1.9) y el método de desarrollo (2026p, cap. 6 y T-10).**
 
 <a id="tab:sd13-7"></a>
 
@@ -309,7 +309,7 @@ La Figura 13.3 muestra cómo un incidente real se transforma en un escenario rep
 
 ![Figura 13.3](<C:/Users/henri/OneDrive/Documentos/Universidad 2026S2/FEP/Bases PTE/SD13/LafroX/SD13_v_nueva/13_innovaciones/diagramas/Fig_13-3_Recorrido_INN02.pdf>)
 
-**Figura 13.3. Incidente de terreno: evidencia, reproducción y cierre comprobado. Fuente: elaboración a partir de la sección 13.2.4 y del contrato de datos del Anexo 13.A.**
+**Figura 13.3. Incidente de terreno: evidencia, reproducción y cierre comprobado. Fuente: elaboración a partir del diseño, calendario y controles de INN-02 (LafroX, 2026l, secs. 13.2.4 a 13.2.7) y sus contratos de datos (LafroX, 2026m, Anexo 13.A).**
 
 <a id="fig:sd13-3"></a>
 
@@ -317,7 +317,7 @@ La secuencia separa la captura por el terminal, la protección de la evidencia, 
 
 El flujo de responsabilidades es el siguiente: Operación/SRE recoge la evidencia, Calidad admite el paquete y Desarrollo corrige. La Tabla 13.8 presenta los paquetes de la EDT.
 
-**Tabla 13.8. Paquetes de la EDT de la innovación 2. Fuente: Formulario T-14 y Anexo 7.D.**
+**Tabla 13.8. Paquetes de la EDT de la innovación 2. Fuente: elaboración a partir de los paquetes 3.10.2.1 a 3.10.2.4 y 8.3.1 y su calendario (LafroX, 2026h, T-14; 2026g, Anexo 7.D).**
 
 <a id="tab:sd13-8"></a>
 
@@ -336,7 +336,7 @@ El circuito inicial se materializa en el mes 5 y su beneficio se mide en el mes 
 
 La inversión instrumenta los terminales y construye el circuito; no duplica el presupuesto de las pruebas obligatorias, que siguen en la cuenta 3.8. La Tabla 13.9 ubica sus rubros en el flujo de caja.
 
-**Tabla 13.9. Ubicación de la innovación 2 en el flujo de caja. Fuente: propuesta de LafroX para la innovación 2. La valorización se presenta en la Oferta Económica, Entregable 2, ítem 2.7.**
+**Tabla 13.9. Ubicación de la innovación 2 en el flujo de caja. Fuente: elaboración a partir de la definición económica de INN-02 (LafroX, 2026l, sec. 13.2.5) y su calendario (LafroX, 2026g, Anexo 7.D; 2026h, T-14). La valorización se presenta en la Oferta Económica, Entregable 2, ítem 2.7.**
 
 <a id="tab:sd13-9"></a>
 
@@ -359,7 +359,7 @@ La reducción del 30 % de I-02A es una meta propuesta de diseño. Se espera redu
 
 La Tabla 13.10 define los indicadores de la innovación 2.
 
-**Tabla 13.10. Indicadores de la innovación 2. Fuente: elaboración a partir del Caso Logística, cap. 18, criterio 6, y de los paquetes 3.10.2.1 a 3.10.2.4 y 8.3.1 del Formulario T-14.**
+**Tabla 13.10. Indicadores de la innovación 2. Fuente: elaboración a partir de las metas y reglas de verificación ofertadas para INN-02 (LafroX, 2026l, sec. 13.2.6) y del criterio 6 del caso (Distribuidora Puelche S.A., 2026c, cap. 18).**
 
 <a id="tab:sd13-10"></a>
 
@@ -378,7 +378,7 @@ La línea base de I-02A se forma en QA con incidentes de prueba de los meses 5 a
 
 El riesgo de adopción está registrado como R8-26 (probabilidad 3, impacto 4, exposición 12), y el riesgo de seguridad asociado como R8-24 (probabilidad 3, impacto 5, exposición 15), ambos en el Anexo 8.A. La Tabla 13.11 los resume.
 
-**Tabla 13.11. Riesgos de adopción de la innovación 2. Fuente: Anexo 8.A, fichas R8-24 y R8-26, y Formulario T-16.**
+**Tabla 13.11. Riesgos de adopción de la innovación 2. Fuente: elaboración a partir de las fichas R8-24 y R8-26 y su respuesta (LafroX, 2026j, Anexo 8.A; 2026k, T-16) y la aplicación a INN-02 (LafroX, 2026l, sec. 13.2.7).**
 
 <a id="tab:sd13-11"></a>
 
@@ -410,7 +410,7 @@ La pertinencia es directa: el proveedor de lácteos excluyó a Puelche de su lis
 
 La Tabla 13.12 separa lo que ya es alcance obligatorio de lo que esta innovación agrega.
 
-**Tabla 13.12. Alcance obligatorio en el ámbito de la innovación 3. Fuente: elaboración a partir del Caso Logística, cap. 18, del Formulario T-12, del Anexo 3.G y del Capítulo 4.**
+**Tabla 13.12. Alcance obligatorio en el ámbito de la innovación 3. Fuente: elaboración a partir de los criterios del caso (Distribuidora Puelche S.A., 2026c, cap. 18), los requisitos de frío (LafroX, 2026c, T-12; 2026b, Anexo 3.G) y la arquitectura (LafroX, 2026d, secs. 4.1 y 4.2).**
 
 <a id="tab:sd13-12"></a>
 
@@ -462,21 +462,21 @@ EPCIS 2.0 es un estándar publicado (GS1 AISBL, 2022). Los modelos cinéticos de
 
 ### 13.3.4 Diseño de la incorporación
 
-La innovación usa componentes que la arquitectura ya contiene. Los sensores B-01 y los termógrafos B-03 son la fuente de las series; el gateway B-02 acumula la carga térmica sin enlace; la aplicación de reparto C-02 trae el registro de ruta. N-08 Ingesta de IoT y N-06 Telemetría cruda reciben las series y reutilizan los 10.920 mensajes diarios ya dimensionados (21 puntos × 288 lecturas más 28 termógrafos × 174 lecturas; Capítulo 4, sección 4.2), sin agregar ingesta. La capa 5 transporta los eventos EPCIS con datos de sensor. M9 Calidad y trazabilidad muestra la historia y la estimación, y en ella Calidad del CLIENTE dispone y, junto con Maximiliano Miño, aprueba los parámetros. M2 Inventario y M5 Preparación reciben el orden de salida sugerido, habilitado por familia. M10 Analítica, sobre N-10, ejecuta el modelo, recalcula y publica, y conserva las series cinco años. La capa 7 versiona y aprueba el modelo y sus parámetros.
-
 La Figura 13.4 distingue la captura en cámara y en ruta, la asociación al lote y el uso posterior de la estimación.
 
 ![Figura 13.4](<C:/Users/henri/OneDrive/Documentos/Universidad 2026S2/FEP/Bases PTE/SD13/LafroX/SD13_v_nueva/13_innovaciones/diagramas/Fig_13-4_Recorrido_INN03.pdf>)
 
-**Figura 13.4. Historia térmica: del sensor a la decisión de Calidad. Fuente: elaboración a partir de la sección 13.3.4 y del contrato de datos del Anexo 13.A.**
+**Figura 13.4. Historia térmica: del sensor a la decisión de Calidad. Fuente: elaboración a partir del diseño, calendario y controles de INN-03 (LafroX, 2026l, secs. 13.3.4 a 13.3.7) y sus contratos de datos (LafroX, 2026m, Anexo 13.A).**
 
 <a id="fig:sd13-4"></a>
+
+La innovación usa componentes que la arquitectura ya contiene. Los sensores B-01 y los termógrafos B-03 son la fuente de las series; el gateway B-02 acumula la carga térmica sin enlace; la aplicación de reparto C-02 trae el registro de ruta. N-08 Ingesta de IoT y N-06 Telemetría cruda reciben las series y reutilizan los 10.920 mensajes diarios ya dimensionados (21 puntos × 288 lecturas más 28 termógrafos × 174 lecturas; Capítulo 4, sección 4.2), sin agregar ingesta. La capa 5 transporta los eventos EPCIS con datos de sensor. M9 Calidad y trazabilidad muestra la historia y la estimación, y en ella Calidad del CLIENTE dispone y, junto con Maximiliano Miño, aprueba los parámetros. M2 Inventario y M5 Preparación reciben el orden de salida sugerido, habilitado por familia. M10 Analítica, sobre N-10, ejecuta el modelo, recalcula y publica, y conserva las series cinco años. La capa 7 versiona y aprueba el modelo y sus parámetros.
 
 El recorrido no supone cálculo continuo en el camión: C-02 alerta durante la ruta y el registro completo se descarga al retorno. En cámara, B-02 acumula carga térmica sin enlace. Después, la asociación temporal y el modelo versionado producen una estimación que Calidad contrasta antes de habilitar su uso por familia. La sugerencia no sustituye el FEFO ni autoriza alargar la fecha impresa.
 
 La Tabla 13.13 presenta los paquetes de la EDT.
 
-**Tabla 13.13. Paquetes de la EDT de la innovación 3. Fuente: Formulario T-14 y Anexo 7.D.**
+**Tabla 13.13. Paquetes de la EDT de la innovación 3. Fuente: elaboración a partir de los paquetes 3.10.3.1 a 3.10.3.4 y 8.3.2 y su calendario (LafroX, 2026h, T-14; 2026g, Anexo 7.D).**
 
 <a id="tab:sd13-14"></a>
 
@@ -496,7 +496,7 @@ Los lácteos son la primera familia priorizada, por la relación con su proveedo
 
 La innovación no agrega hardware ni ingesta. Si la validación con lotes reales requiere un laboratorio externo, se contrata como servicio de terceros dentro del paquete 3.10.3.4. La Tabla 13.14 ubica sus rubros en el flujo de caja.
 
-**Tabla 13.14. Ubicación de la innovación 3 en el flujo de caja. Fuente: propuesta de LafroX para la innovación 3. La valorización se presenta en la Oferta Económica, Entregable 2, ítem 2.7.**
+**Tabla 13.14. Ubicación de la innovación 3 en el flujo de caja. Fuente: elaboración a partir de la definición económica de INN-03 (LafroX, 2026l, sec. 13.3.5) y su calendario (LafroX, 2026g, Anexo 7.D; 2026h, T-14). La valorización se presenta en la Oferta Económica, Entregable 2, ítem 2.7.**
 
 <a id="tab:sd13-15"></a>
 
@@ -520,7 +520,7 @@ La reducción del 20 % de I-03D es una meta propuesta de diseño, no un resultad
 
 La Tabla 13.15 define los indicadores de la innovación 3.
 
-**Tabla 13.15. Indicadores de la innovación 3. Fuente: elaboración a partir del Caso Logística, cap. 4.9, y de los paquetes 3.10.3.1 a 3.10.3.4 y 8.3.2 del Formulario T-14.**
+**Tabla 13.15. Indicadores de la innovación 3. Fuente: elaboración a partir de las metas y reglas de verificación ofertadas para INN-03 (LafroX, 2026l, sec. 13.3.6) y de la operación de frío (Distribuidora Puelche S.A., 2026c, sec. 4.9).**
 
 <a id="tab:sd13-16"></a>
 
@@ -543,7 +543,7 @@ I-03A e I-03B se miden antes del mes 16 y son la condición para habilitar cada 
 
 El riesgo de adopción está registrado como R8-27 en el Anexo 8.A, con probabilidad 4 e impacto 5 (exposición 20, nivel crítico). La asociación entre sensor y lote está cubierta además por R8-23. La Tabla 13.16 resume las causas.
 
-**Tabla 13.16. Riesgos de adopción de la innovación 3. Fuente: Anexo 8.A, fichas R8-23 y R8-27, y Formulario T-16.**
+**Tabla 13.16. Riesgos de adopción de la innovación 3. Fuente: elaboración a partir de las fichas R8-23 y R8-27 y su respuesta (LafroX, 2026j, Anexo 8.A; 2026k, T-16) y la aplicación a INN-03 (LafroX, 2026l, sec. 13.3.7).**
 
 <a id="tab:sd13-17"></a>
 
@@ -571,7 +571,7 @@ Conocer el costo de servir y generar sugerencias de frecuencia de visita o compr
 
 La Tabla 13.17 separa lo que ya es alcance obligatorio de lo que esta innovación agrega.
 
-**Tabla 13.17. Alcance obligatorio en el ámbito de la innovación 4. Fuente: elaboración a partir de las Bases Administrativas, del Caso Logística, del Capítulo 3 y del Anexo 3.C.**
+**Tabla 13.17. Alcance obligatorio en el ámbito de la innovación 4. Fuente: elaboración a partir de los criterios 4 y 11 del caso (Distribuidora Puelche S.A., 2026c, cap. 18), la estructura de pago (Distribuidora Puelche S.A., 2026a, Formularios E-21, p. 70, y E-25, p. 74) y el alcance ofertado (LafroX, 2026b, sec. 3.2.5 y Anexo 3.C).**
 
 <a id="tab:sd13-18"></a>
 
@@ -607,7 +607,7 @@ La madurez se declara con la escala TRL de la Comisión Europea (European Commis
 
 FitzGerald et al. (2023) analizan la relación entre la especificación de resultados y el pago en contratos por resultados. En esta propuesta, la canasta, los índices y la protección del OTIF se fijan antes de la primera liquidación para que el resultado y su atribución sean comprobables. La Tabla 13.18 traduce cada nivel a un hito verificable del contrato.
 
-**Tabla 13.18. Niveles de madurez de la innovación 4. Fuente: elaboración a partir de European Commission (2016).**
+**Tabla 13.18. Niveles de madurez de la innovación 4. Fuente: elaboración a partir de la escala TRL (European Commission, 2016, Anexo G) y los hitos y meses propuestos para INN-04 (LafroX, 2026l, sec. 13.4.3; 2026h, paquetes 5.4.3, 8.3.3 y 8.3.4).**
 
 <a id="tab:sd13-19"></a>
 
@@ -632,13 +632,13 @@ La Figura 13.5 recorre la formación de la referencia comparable, el ensayo en s
 
 ![Figura 13.5](<C:/Users/henri/OneDrive/Documentos/Universidad 2026S2/FEP/Bases PTE/SD13/LafroX/SD13_v_nueva/13_innovaciones/diagramas/Fig_13-5_Recorrido_INN04.pdf>)
 
-**Figura 13.5. Costo de servir: de los hechos a la liquidación auditable. Fuente: elaboración a partir de la sección 13.4.4 y del contrato de datos del Anexo 13.A.**
+**Figura 13.5. Costo de servir: de los hechos a la liquidación auditable. Fuente: elaboración a partir del diseño, calendario y controles de INN-04 (LafroX, 2026l, secs. 13.4.4 a 13.4.7) y sus contratos de datos (LafroX, 2026m, Anexo 13.A).**
 
 <a id="fig:sd13-5"></a>
 
 La referencia de los meses 21 a 23 precede a cualquier pago variable por este mecanismo. Finanzas debe reproducir las tres liquidaciones en sombra, y desde el mes 24 el cálculo sigue condicionado por la meta OTIF vigente. La canasta evita que una reducción aparente de costo provenga de excluir entregas; la decisión sobre la malla de atención sigue en Comercial del CLIENTE.
 
-**Tabla 13.19. Paquetes de la EDT de la innovación 4. Fuente: Formulario T-14 y Anexo 7.D.**
+**Tabla 13.19. Paquetes de la EDT de la innovación 4. Fuente: elaboración a partir de los paquetes 5.4.3, 8.3.3 y 8.3.4 y su calendario (LafroX, 2026h, T-14; 2026g, Anexo 7.D).**
 
 <a id="tab:sd13-20"></a>
 
@@ -656,7 +656,7 @@ El primer paquete está en la fase 5 de la EDT porque es un acuerdo con el CLIEN
 
 Al ser una innovación de contratación, su impacto se separa en lo que es costo de LafroX, lo que es ingreso de LafroX y lo que es beneficio del CLIENTE. El tramo vale cero en los meses 21 a 23; desde el mes 24 se paga la puntuación por el tramo máximo, a mes vencido, como establece el Formulario E-25. Para Puelche, el modelo significa pagar menos si la solución no rinde y nunca más que el máximo; para LafroX, el tramo es un ingreso contingente. La Tabla 13.20 ubica los rubros.
 
-**Tabla 13.20. Ubicación de la innovación 4 en el flujo de caja. Fuente: propuesta de LafroX para la innovación 4. La valorización se presenta en la Oferta Económica, Entregable 2, ítem 2.7.**
+**Tabla 13.20. Ubicación de la innovación 4 en el flujo de caja. Fuente: elaboración a partir de la definición económica de INN-04 (LafroX, 2026l, sec. 13.4.5) y su calendario (LafroX, 2026g, Anexo 7.D; 2026h, T-14). La valorización se presenta en la Oferta Económica, Entregable 2, ítem 2.7.**
 
 <a id="tab:sd13-21"></a>
 
@@ -680,7 +680,7 @@ El 5 % de I-04A es una meta propuesta y una referencia de puntuación contractua
 
 La Tabla 13.21 define los indicadores de la innovación 4.
 
-**Tabla 13.21. Indicadores de la innovación 4. Fuente: elaboración a partir del Capítulo 3, sección 3.2.5 (criterio R18-04), y de los paquetes 5.4.3, 8.3.3 y 8.3.4 del Formulario T-14.**
+**Tabla 13.21. Indicadores de la innovación 4. Fuente: elaboración a partir de las metas y reglas de verificación ofertadas para INN-04 (LafroX, 2026l, sec. 13.4.6) y del criterio OTIF ofertado (LafroX, 2026b, sec. 3.2.5, R18-04).**
 
 <a id="tab:sd13-22"></a>
 
@@ -698,7 +698,7 @@ La meta de I-04A se exige con OTIF de 95 % porque en el mes 36 ya rige el tramo 
 
 El riesgo de adopción está registrado como R8-28 en el Anexo 8.A, con probabilidad 3 e impacto 4 (exposición 12, nivel alto). La Tabla 13.22 resume sus causas.
 
-**Tabla 13.22. Riesgo de adopción de la innovación 4. Fuente: Anexo 8.A, ficha R8-28, y Formulario T-16.**
+**Tabla 13.22. Riesgo de adopción de la innovación 4. Fuente: elaboración a partir de las fichas R8-28 y su respuesta (LafroX, 2026j, Anexo 8.A; 2026k, T-16) y la aplicación a INN-04 (LafroX, 2026l, sec. 13.4.7).**
 
 <a id="tab:sd13-23"></a>
 
@@ -725,7 +725,7 @@ Puelche sabe qué compra cada local, qué dejó de pedir y qué tiene por vencer
 
 La Tabla 13.23 separa lo que ya es alcance obligatorio de lo que esta innovación agrega.
 
-**Tabla 13.23. Alcance obligatorio en el ámbito de la innovación 5. Fuente: elaboración a partir de las Bases Administrativas, de las Bases Técnicas Transversales, del Caso Logística y del Formulario T-12.**
+**Tabla 13.23. Alcance obligatorio en el ámbito de la innovación 5. Fuente: elaboración a partir de los requisitos de accesibilidad y autoatención (Distribuidora Puelche S.A., 2026a, Art. 26°, p. 18; 2026b, RT-13.07, p. 26, y RT-16.32, p. 31), el criterio 8 del caso (Distribuidora Puelche S.A., 2026c, cap. 18) y el alcance ofertado (LafroX, 2026c, T-12).**
 
 <a id="tab:sd13-24"></a>
 
@@ -773,13 +773,13 @@ La Figura 13.6 muestra las dos vías de entrega de la hoja y el control de su co
 
 ![Figura 13.6](<C:/Users/henri/OneDrive/Documentos/Universidad 2026S2/FEP/Bases PTE/SD13/LafroX/SD13_v_nueva/13_innovaciones/diagramas/Fig_13-6_Recorrido_INN05.pdf>)
 
-**Figura 13.6. Hoja de negocio: preparación, visita sin señal y copia solicitada. Fuente: elaboración a partir de la sección 13.5.4 y del contrato de datos del Anexo 13.A.**
+**Figura 13.6. Hoja de negocio: preparación, visita sin señal y copia solicitada. Fuente: elaboración a partir del diseño, calendario y controles de INN-05 (LafroX, 2026l, secs. 13.5.4 a 13.5.7) y sus contratos de datos (LafroX, 2026m, Anexo 13.A).**
 
 <a id="fig:sd13-6"></a>
 
 La información se prepara antes de la ruta y se muestra en el terminal del preventista, sin exigir conexión ni dispositivo al almacenero. La impresión es una vía posterior y opcional: si no hay pedido, no hay entrega inmediata de la copia. Por eso I-05A separa las hojas mostradas de las copias pedidas y entregadas. El bloque comparativo permanece condicionado a la aprobación legal y no impide utilizar los bloques de datos propios.
 
-**Tabla 13.24. Paquetes de la EDT de la innovación 5. Fuente: Formulario T-14 y Anexo 7.D.**
+**Tabla 13.24. Paquetes de la EDT de la innovación 5. Fuente: elaboración a partir de los paquetes 3.10.4.1 a 3.10.4.4, 8.3.5 y 8.3.6 y su calendario (LafroX, 2026h, T-14; 2026g, Anexo 7.D).**
 
 <a id="tab:sd13-25"></a>
 
@@ -799,7 +799,7 @@ La cuenta 3.10.4 de la EDT corresponde a la innovación 5, porque la innovación
 
 La impresora de cabina ya está ofertada, por lo que la innovación no agrega hardware. La Tabla 13.25 ubica sus rubros en el flujo de caja.
 
-**Tabla 13.25. Ubicación de la innovación 5 en el flujo de caja. Fuente: propuesta de LafroX para la innovación 5. La valorización se presenta en la Oferta Económica, Entregable 2, ítem 2.7.**
+**Tabla 13.25. Ubicación de la innovación 5 en el flujo de caja. Fuente: elaboración a partir de la definición económica de INN-05 (LafroX, 2026l, sec. 13.5.5) y su calendario (LafroX, 2026g, Anexo 7.D; 2026h, T-14). La valorización se presenta en la Oferta Económica, Entregable 2, ítem 2.7.**
 
 <a id="tab:sd13-26"></a>
 
@@ -822,7 +822,7 @@ El beneficio comercial es la frecuencia y el tamaño del pedido en los locales q
 
 La Tabla 13.26 define los indicadores de la innovación 5.
 
-**Tabla 13.26. Indicadores de la innovación 5. Fuente: elaboración a partir del Caso Logística, cap. 2.2, y de los paquetes 3.10.4.1 a 3.10.4.4, 8.3.5 y 8.3.6 del Formulario T-14.**
+**Tabla 13.26. Indicadores de la innovación 5. Fuente: elaboración a partir de las metas y reglas de verificación ofertadas para INN-05 (LafroX, 2026l, sec. 13.5.6) y de la cobertura del canal (Distribuidora Puelche S.A., 2026c, sec. 2.2).**
 
 <a id="tab:sd13-27"></a>
 
@@ -843,7 +843,7 @@ I-05A también se informa sobre el total de 11.600 locales, para mostrar la cobe
 
 El riesgo de adopción está registrado como R8-29 en el Anexo 8.A, con probabilidad 4 e impacto 3 (exposición 12, nivel alto). La Tabla 13.27 resume sus causas.
 
-**Tabla 13.27. Riesgos de adopción de la innovación 5. Fuente: Anexo 8.A, ficha R8-29, y Formulario T-16.**
+**Tabla 13.27. Riesgos de adopción de la innovación 5. Fuente: elaboración a partir de las fichas R8-29 y su respuesta (LafroX, 2026j, Anexo 8.A; 2026k, T-16) y la aplicación a INN-05 (LafroX, 2026l, sec. 13.5.7).**
 
 <a id="tab:sd13-28"></a>
 
@@ -882,8 +882,6 @@ Las citas a las Bases Administrativas y a las Bases Técnicas Transversales iden
 
 - Koutsoumanis, K., Taoukis, P. S., & Nychas, G.-J. E. (2005). Development of a Safety Monitoring and Assurance System for chilled food products. *International Journal of Food Microbiology, 100*(1–3), 253–260. [https://doi.org/10.1016/j.ijfoodmicro.2004.10.024](https://doi.org/10.1016/j.ijfoodmicro.2004.10.024)
 
-- LafroX. (2026). *Subdocumento 3: Esquema de solución y alcance*, Anexo 3.C.
-
 - Ley N.º 21.719. (2024). Regula la protección y el tratamiento de los datos personales y crea la Agencia de Protección de Datos Personales. Diario Oficial, 13 de diciembre de 2024. [https://www.bcn.cl/leychile/navegar?idNorma=1209272](https://www.bcn.cl/leychile/navegar?idNorma=1209272)
 
 - Riesenegger, L., Santos, M. J., Ostermeier, M., Martins, S., Amorim, P., & Hübner, A. (2023). Minimizing food waste in grocery store operations: Literature review and research agenda. *Sustainability Analytics and Modeling, 3*, 100023. [https://doi.org/10.1016/j.samod.2023.100023](https://doi.org/10.1016/j.samod.2023.100023)
@@ -892,23 +890,55 @@ Las citas a las Bases Administrativas y a las Bases Técnicas Transversales iden
 
 - Sweeney, L. (2002). k-anonymity: A model for protecting privacy. *International Journal of Uncertainty, Fuzziness and Knowledge-Based Systems, 10*(5), 557–570. [https://doi.org/10.1142/S0218488502001648](https://doi.org/10.1142/S0218488502001648)
 
+- LafroX. (2026a). *Subdocumento 2: Problema y necesidad*.
+
+- LafroX. (2026b). *Subdocumento 3: Esquema de solución y alcance, incluidos sus anexos*.
+
+- LafroX. (2026c). *Formulario T-12: Cumplimiento de requisitos funcionales y no funcionales*.
+
+- LafroX. (2026d). *Subdocumento 4: Arquitectura lógica y física de la solución*.
+
+- LafroX. (2026e). *Formulario T-11: Inventario de hardware y software*.
+
+- LafroX. (2026f). *Subdocumento 5: Modelo de datos*.
+
+- LafroX. (2026g). *Anexos del Subdocumento 7: Plan de trabajo, EDT, cronograma e implantación*.
+
+- LafroX. (2026h). *Formulario T-14: Plan de trabajo, EDT y carta Gantt*.
+
+- LafroX. (2026i). *Formulario T-15: Nivelación de recursos*.
+
+- LafroX. (2026j). *Subdocumento 8: Plan de gestión de riesgos, incluidos sus anexos*.
+
+- LafroX. (2026k). *Formulario T-16: Registro de riesgos*.
+
+- LafroX. (2026l). *Subdocumento 13: Innovaciones*.
+
+- LafroX. (2026m). *Anexos del Subdocumento 13: Innovaciones, anexos 13.A a 13.C*.
+
+- LafroX. (2026n). *Formulario T-19: Cartera de innovaciones*.
+
+- LafroX. (2026o). *Registro del equipo de uso de IA y revisión humana del Subdocumento 13*.
+
+- LafroX. (2026p). *Subdocumento 6: Metodologías de desarrollo e implantación, incluido el Formulario T-10*.
+
 ## Declaración de uso de IA
 
 En cumplimiento de la sección 7.2 de las Aclaraciones de la licitación, la tabla siguiente declara el uso de herramientas de inteligencia artificial en este subdocumento, con la revisión humana de cada parte. La declaración se consolida en el Formulario A-6. La revisión humana se centró en la redacción, claridad y comprensión del contenido. Dentro de ese alcance, no se registraron observaciones que requirieran cambios. Esta revisión no constituye una certificación técnica ni una garantía de ausencia de errores. La Tabla 13.28 presenta el registro.
 
-**Tabla 13.28. Declaración de uso de IA. Fuente: registro del equipo.**
+**Tabla 13.28. Declaración de uso de IA. Fuente: elaboración a partir del registro de uso de IA y las revisiones humanas comunicadas por el equipo (LafroX, 2026o, registro por sección, anexo y formulario).**
 
 <a id="tab:sd13-29"></a>
 
 | Sección | Herramienta | Finalidad del uso | Nivel en texto | Nivel en diagramas | Revisión humana (quién y qué verificó) |
 | --- | --- | --- | --- | --- | --- |
-| Introducción | Claude Code; OpenAI Codex | Síntesis, citas y mapa general | Alto | Alto (Figura 13.1) | Guillermo Castillo. Se revisó la claridad de la presentación general y la comprensión del propósito de las cinco innovaciones. |
-| 13.1 | Claude Code; OpenAI Codex | Contenido y recorrido INN-01 | Medio | Alto (Figura 13.2) | Guillermo Castillo. Se examinó la redacción del seguimiento de vencimiento posentrega y la comprensión del problema y de la solución propuesta. |
-| 13.2 | Claude Code; OpenAI Codex | Contenido y recorrido INN-02 | Medio | Alto (Figura 13.3) | Guillermo Castillo. Se revisó la secuencia explicativa del recorrido de reproducción de incidentes de terreno y la claridad de sus descripciones. |
-| 13.3 | Claude Code; OpenAI Codex | Contenido y recorrido INN-03 | Medio | Alto (Figura 13.4) | Guillermo Castillo. Se examinó la exposición de la vida útil remanente por historia térmica, con atención a la comprensión de los supuestos y límites descritos. |
-| 13.4 | Claude Code; OpenAI Codex | Contenido y recorrido INN-04 | Medio | Alto (Figura 13.5) | Guillermo Castillo. Se revisó la explicación del tramo variable de la operación y la claridad de los términos relativos al costo de servir. |
-| 13.5 | Claude Code; OpenAI Codex | Contenido y recorrido INN-05 | Medio | Alto (Figura 13.6) | Guillermo Castillo. Se examinó la descripción de la hoja de negocio del almacenero, atendiendo a la comprensión de su propósito y funcionalidades. |
-| Anexo 13.A | Claude Code | Contratos de datos | Alto | Ninguno | Patricio Henriquez. Se revisó la redacción de las definiciones de los contratos de datos y la claridad de la terminología empleada. |
-| Anexo 13.B | Claude Code | Trazabilidad y alcance | Alto | Ninguno | Patricio Henriquez. Se examinó la presentación de la matriz de trazabilidad y la comprensión de las relaciones y del alcance descritos. |
-| Anexo 13.C | Claude Code; OpenAI Codex | Indicadores y riesgos | Alto | Ninguno | Patricio Henriquez. Se revisó la exposición de los indicadores y riesgos, con atención a la claridad de sus descripciones. |
-| T-19 | Claude Code; OpenAI Codex | Fichas de las cinco innovaciones | Alto | Ninguno | Patricio Henriquez. Se revisó la redacción, claridad y consistencia de las afirmaciones dentro de las fichas, atendiendo a la comprensión de su contenido. |
+| Introducción | Claude Code; OpenAI Codex | Síntesis, citas y mapa general | Alto | Alto (Figura 13.1) | Guillermo Castillo: Se revisó la claridad de la presentación general y la comprensión del propósito de las cinco innovaciones. |
+| 13.1 | Claude Code; OpenAI Codex | Contenido y recorrido INN-01 | Medio | Alto (Figura 13.2) | Guillermo Castillo: Se examinó la redacción del seguimiento de vencimiento posentrega y la comprensión del problema y de la solución propuesta. |
+| 13.2 | Claude Code; OpenAI Codex | Contenido y recorrido INN-02 | Medio | Alto (Figura 13.3) | Guillermo Castillo: Se revisó la secuencia explicativa del recorrido de reproducción de incidentes de terreno y la claridad de sus descripciones. |
+| 13.3 | Claude Code; OpenAI Codex | Contenido y recorrido INN-03 | Medio | Alto (Figura 13.4) | Guillermo Castillo: Se examinó la exposición de la vida útil remanente por historia térmica, con atención a la comprensión de los supuestos y límites descritos. |
+| 13.4 | Claude Code; OpenAI Codex | Contenido y recorrido INN-04 | Medio | Alto (Figura 13.5) | Guillermo Castillo: Se revisó la explicación del tramo variable de la operación y la claridad de los términos relativos al costo de servir. |
+| 13.5 | Claude Code; OpenAI Codex | Contenido y recorrido INN-05 | Medio | Alto (Figura 13.6) | Guillermo Castillo: Se examinó la descripción de la hoja de negocio del almacenero, atendiendo a la comprensión de su propósito y funcionalidades. |
+| Anexo 13.A | Claude Code | Contratos de datos | Alto | Ninguno | Patricio Henriquez: Se revisó la redacción de las definiciones de los contratos de datos y la claridad de la terminología empleada. |
+| Anexo 13.B | Claude Code | Trazabilidad y alcance | Alto | Ninguno | Patricio Henriquez: Se examinó la presentación de la matriz de trazabilidad y la comprensión de las relaciones y del alcance descritos. |
+| Anexo 13.C | Claude Code; OpenAI Codex | Indicadores y riesgos | Alto | Ninguno | Patricio Henriquez: Se revisó la exposición de los indicadores y riesgos, con atención a la claridad de sus descripciones. |
+| T-19 | Claude Code; OpenAI Codex | Fichas de las cinco innovaciones | Alto | Ninguno | Patricio Henriquez: Se revisó la redacción, claridad y consistencia de las afirmaciones dentro de las fichas, atendiendo a la comprensión de su contenido. |

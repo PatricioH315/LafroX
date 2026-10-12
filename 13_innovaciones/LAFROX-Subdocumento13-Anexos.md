@@ -18,7 +18,7 @@ Estos anexos detallan lo que el Capítulo 13 resume. El Anexo 13.A define los co
 
 El RT-26.01 pide declarar qué interfaces consume o expone cada innovación (Distribuidora Puelche S.A., 2026b, RT-26.01, cap. 26, p. 44). Ninguna innovación abre una interfaz externa nueva: todas viajan por las interfaces del Capítulo 4, sección 4.1.6, y por la cola de sincronización de los terminales. Lo que cada una agrega es un contrato de datos versionado, que se presenta en la Tabla 13.A.1. Cada contrato se identifica con la innovación que lo origina, el objeto que transporta y su versión mayor; por ejemplo, `inn03.historia-termica-lote.v1` es la versión 1 del contrato de historia térmica del lote de la innovación 3.
 
-**Tabla 13.A.1. Contratos de datos de las innovaciones. Fuente: elaboración a partir del Capítulo 4, secciones 4.1 y 4.2, y del Capítulo 5.**
+**Tabla 13.A.1. Contratos de datos de las innovaciones. Fuente: elaboración a partir de la arquitectura y el modelo de datos (LafroX, 2026d, secs. 4.1 y 4.2; 2026f, secs. 5.1 y 5.2) y los contratos propuestos para las innovaciones (LafroX, 2026l, secs. 13.1.4 a 13.5.4).**
 
 <a id="tab:sd13-A1"></a>
 
@@ -39,7 +39,7 @@ Cada contrato tiene una versión explícita en su nombre. Un cambio de campos pr
 
 La Tabla 13.B.1 traza cada innovación con la arquitectura (RT-26.01), con la EDT y el cronograma (Bases Técnicas Transversales, cap. 26, RT-26.02, p. 44), con su riesgo (Bases Técnicas Transversales, cap. 26, RT-26.04, p. 44) y con su ubicación en el flujo de caja (Bases Administrativas, Art. 28.2, p. 19).
 
-**Tabla 13.B.1. Trazabilidad de las innovaciones. Fuente: elaboración a partir de los Capítulos 3 y 4, del Formulario T-14, del Anexo 7.D y del Anexo 8.A.**
+**Tabla 13.B.1. Trazabilidad de las innovaciones. Fuente: elaboración a partir de la arquitectura y alcance (LafroX, 2026b, cap. 3; 2026d, cap. 4), los paquetes y meses (LafroX, 2026h, T-14; 2026g, Anexo 7.D), los riesgos (LafroX, 2026j, Anexo 8.A) y las definiciones económicas (LafroX, 2026l, secs. 13.1.5 a 13.5.5).**
 
 <a id="tab:sd13-B1"></a>
 
@@ -57,7 +57,7 @@ La matriz muestra que las cinco innovaciones tienen al menos un paquete de la ED
 
 La Tabla 13.B.2 delimita el alcance de cada innovación: lo que entrega, lo que deliberadamente no hace y la investigación adicional que requiere, con el paquete de la EDT donde esa investigación se resuelve.
 
-**Tabla 13.B.2. Alcance refinado e investigación adicional de cada innovación. Fuente: elaboración a partir de las secciones 13.1 a 13.5, del Formulario T-14 y del Anexo 7.D.**
+**Tabla 13.B.2. Alcance refinado e investigación adicional de cada innovación. Fuente: elaboración a partir del alcance y la investigación de cada innovación (LafroX, 2026l, secs. 13.1 a 13.5), sus paquetes (LafroX, 2026h, T-14) y sus meses (LafroX, 2026g, Anexo 7.D).**
 
 <a id="tab:sd13-B2"></a>
 
@@ -77,7 +77,7 @@ La tabla muestra que toda la investigación adicional queda dentro de la EDT: ca
 
 La Tabla 13.C.1 reúne los indicadores de las cinco innovaciones, ordenados por el mes en que se miden por primera vez.
 
-**Tabla 13.C.1. Indicadores de verificación de la cartera. Fuente: Capítulo 13, secciones 13.1.6 a 13.5.6.**
+**Tabla 13.C.1. Indicadores de verificación de la cartera. Fuente: elaboración a partir de las líneas base, metas y reglas de medición ofertadas (LafroX, 2026l, secs. 13.1.6 a 13.5.6).**
 
 <a id="tab:sd13-C1"></a>
 
@@ -110,7 +110,7 @@ Los indicadores tempranos de INN-01, INN-03 e INN-05 comprueban condiciones de h
 
 La Tabla 13.C.2 reúne los riesgos de adopción con su evaluación en la escala ordinal del Capítulo 8, sección 8.1.3, donde la probabilidad 3 equivale a un 40 % y la 4 a un 60 %, y el impacto se mide como fracción del esfuerzo afectado.
 
-**Tabla 13.C.2. Riesgos de adopción de la cartera. Fuente: Anexo 8.A y Formulario T-16.**
+**Tabla 13.C.2. Riesgos de adopción de la cartera. Fuente: elaboración a partir de las evaluaciones de las fichas R8-23 a R8-29 (LafroX, 2026j, Anexo 8.A; 2026k, T-16).**
 
 <a id="tab:sd13-C2"></a>
 
@@ -141,3 +141,25 @@ Las citas a las Bases Administrativas y a las Bases Técnicas Transversales iden
 - European Commission. (2016). Technology readiness levels (TRL). En *Horizon 2020 work programme 2016–2017: General annexes* (Anexo G). [https://ec.europa.eu/research/participants/data/ref/h2020/other/wp/2016_2017/annexes/h2020-wp1617-annex-g-trl_en.pdf](https://ec.europa.eu/research/participants/data/ref/h2020/other/wp/2016_2017/annexes/h2020-wp1617-annex-g-trl_en.pdf)
 
 - GS1 AISBL. (2022). *EPC Information Services (EPCIS) standard* (versión 2.0). [https://ref.gs1.org/standards/epcis/2.0.0/](https://ref.gs1.org/standards/epcis/2.0.0/)
+
+- LafroX. (2026b). *Subdocumento 3: Esquema de solución y alcance, incluidos sus anexos*.
+
+- LafroX. (2026d). *Subdocumento 4: Arquitectura lógica y física de la solución*.
+
+- LafroX. (2026e). *Formulario T-11: Inventario de hardware y software*.
+
+- LafroX. (2026f). *Subdocumento 5: Modelo de datos*.
+
+- LafroX. (2026g). *Anexos del Subdocumento 7: Plan de trabajo, EDT, cronograma e implantación*.
+
+- LafroX. (2026h). *Formulario T-14: Plan de trabajo, EDT y carta Gantt*.
+
+- LafroX. (2026i). *Formulario T-15: Nivelación de recursos*.
+
+- LafroX. (2026j). *Subdocumento 8: Plan de gestión de riesgos, incluidos sus anexos*.
+
+- LafroX. (2026k). *Formulario T-16: Registro de riesgos*.
+
+- LafroX. (2026l). *Subdocumento 13: Innovaciones*.
+
+- LafroX. (2026m). *Anexos del Subdocumento 13: Innovaciones, anexos 13.A a 13.C*.
