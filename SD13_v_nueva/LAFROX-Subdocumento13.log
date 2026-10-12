@@ -1,4 +1,5 @@
-This is LuaHBTeX, Version 1.25.7 (MiKTeX 26.5) (format=lualatex 2026.9.17)  12 OCT 2026 01:53
+This is LuaHBTeX, Version 1.25.7 (MiKTeX 26.5) (format=lualatex 2026.9.17)  12 OCT 2026 03:09
+ system commands enabled.
 **LAFROX-Subdocumento13.tex
 (./LAFROX-Subdocumento13.tex
 LaTeX2e <2026-06-01>
@@ -1827,10 +1828,6 @@ ii
 (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/epstopdf-pkg/epstopdf-b
 ase.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
-
-
-Package epstopdf Warning: Shell escape feature is not enabled.
-
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 85.
 
@@ -2711,26 +2708,26 @@ Package luatex.def Info: logo/firma_representante.png  used on input line 665.
  [51]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 685.
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 684.
 
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 685.
-LaTeX Info: Redefining \% on input line 685.
+LaTeX Info: Redefining \. on input line 684.
+LaTeX Info: Redefining \% on input line 684.
 File: logo/firma_representante.png Graphic file (type png)
 <use logo/firma_representante.png>
-Package luatex.def Info: logo/firma_representante.png  used on input line 685.
+Package luatex.def Info: logo/firma_representante.png  used on input line 684.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
  [52]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 685.
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 684.
 
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 685.
-LaTeX Info: Redefining \% on input line 685.
+LaTeX Info: Redefining \. on input line 684.
+LaTeX Info: Redefining \% on input line 684.
 File: logo/firma_representante.png Graphic file (type png)
 <use logo/firma_representante.png>
-Package luatex.def Info: logo/firma_representante.png  used on input line 685.
+Package luatex.def Info: logo/firma_representante.png  used on input line 684.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
  [53])
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
@@ -2763,11 +2760,11 @@ Here is how much of LuaTeX's memory you used:
    8 hlist, 2 vlist, 2 rule, 1 local_par, 6 glue, 5 kern, 1 penalty, 1 margin_ke
 rn, 4 glyph, 92 attribute, 79 glue_spec, 47 attribute_list, 2 write, 36 pdf_acti
 on nodes
-   avail lists: 1:6,2:3717,3:778,4:415,5:1972,6:234,7:12194,8:116,9:2224,10:25,1
-1:1486
+   avail lists: 1:6,2:3519,3:778,4:415,5:1972,6:216,7:11117,8:116,9:2044,10:25,1
+1:1354
  58659 multiletter control sequences out of 65536+600000
  119 fonts using 46785827 bytes
- 107i,24n,128p,1538b,3130s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 107i,24n,128p,1538b,2851s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/henri/AppData/Local/Programs/MiKTeX/fonts/opentype/adobe/sourceserif/S
 ourceSerif4-RegularIt.otf><C:/Users/henri/AppData/Local/Programs/MiKTeX/fonts/op
 entype/public/stix2-otf/STIXTwoMath-Regular.otf><C:/Users/henri/AppData/Local/Pr
@@ -2779,7 +2776,7 @@ ts/opentype/adobe/sourcesans/SourceSans3-Regular.otf><c:/users/henri/appdata/loc
 al/programs/miktex/fonts/opentype/adobe/sourcesans/sourcesans3-medium.otf><C:/Us
 ers/henri/AppData/Local/Programs/MiKTeX/fonts/opentype/adobe/sourcesans/SourceSa
 ns3-Semibold.otf>
-Output written on LAFROX-Subdocumento13.pdf (54 pages, 546746 bytes).
+Output written on LAFROX-Subdocumento13.pdf (54 pages, 546149 bytes).
 
 PDF statistics: 884 PDF objects out of 1000 (max. 8388607)
  146 named destinations out of 1000 (max. 1048576)
