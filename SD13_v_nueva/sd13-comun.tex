@@ -22,10 +22,14 @@
 %% La clase declara la opcion [firma] pero su pie derecho solo dibuja el
 %% folio. Esta redefinicion debe llevarse a lafrox.cls en la rama base
 %% (rama-formato-Latex-base) para que todos los subdocumentos la reciban.
+%% La imagen de la firma se superpone al filete sin cambiar la altura del
+%% pie: \raisebox[0pt][0pt] anula su alto y \rlap su ancho.
+\newcommand{\LFXfirmaimagen}{logo/firma_representante.png}
 \renewcommand{\LFXpiederecho}{%
   \begingroup\LFXpiebase
   \begin{tabular}[b]{@{}r@{}}
-    {\color{lafroxGris}\rule{3.4cm}{0.4pt}}\\[-1pt]
+    {\rlap{\makebox[3.4cm][c]{\raisebox{-2pt}[0pt][0pt]{\includegraphics[height=18pt]{\LFXfirmaimagen}}}}%
+     \color{lafroxGris}\rule{3.4cm}{0.4pt}}\\[-1pt]
     {\LFXchico Media firma: \LFXrepresentante}\\
     {\intermedium\fontsize{9pt}{11pt}\selectfont\color{lafroxTinta}\LFXfoliotexto}
   \end{tabular}%
@@ -42,6 +46,8 @@
 %% figura aparezca antes del punto del texto que la cita. Mismo estilo de la
 %% clase: titulo arriba, \toprule redefinido con filetes entre filas.
 \RequirePackage{flafter}
+%% Una tabla debe aparecer antes del parrafo que interpreta sus resultados.
+\RequirePackage{placeins}
 %% Recorridos: impedir que el análisis posterior se adelante al diagrama.
 \RequirePackage{float}
 \newcommand{\recorridolafrox}[4]{%
@@ -59,7 +65,7 @@
         ##5
         \bottomrule
       \end{tabularx}
-    \end{table}}{}}
+    \end{table}\FloatBarrier}{}}
 
 %% tablasimple: tabla sin titulo (anexos y formularios), mismo estilo que
 %% tablalafrox, con cabecera repetida y filetes entre filas.
@@ -88,3 +94,6 @@
 %% convierte tablalafrox en flotante de una pagina; esta variante se reserva a
 %% las tablas que no caben en una pagina (declaracion de uso de IA).
 \NewEnvironmentCopy{tablalafroxlarga}{tablalafrox}
+
+%% Cifras y meses: alineacion derecha, con unidades en encabezado.
+\newcolumntype{Z}{>{\raggedleft\arraybackslash}X}
