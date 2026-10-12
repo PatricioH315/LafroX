@@ -442,15 +442,15 @@ La Tabla 3.6 declara el uso de herramientas de inteligencia artificial por secci
 | 3.2 | Codex; Claude Code | Contraste con las Bases y los Subdocumentos 1 y 2; redacción; propuestas para las reglas RNG-04 y RNG-15. | Alto | No aplica | Patricio Henríquez: se verificó el alcance organizado según lo que requería el CLIENTE y los módulos que lo necesitan, junto con las exclusiones, restricciones y supuestos. El catálogo de requerimientos se encuentra en regla, junto con las reglas de negocio y sus derivados. |
 | 3.3 | Codex; Claude Code | Descripción estructurada de las figuras; revisión de la continuidad. | Alto | Alto | Patricio Henríquez: las figuras propuestas son legibles y fáciles de entender; diagraman el esquema de la solución y mejoran el entendimiento de la sección. |
 | 3.4 | Codex; Claude Code | Redacción de implementación, implantación y operación; revisión de reversión, actores, módulos y referencias. | Alto | Ninguno | Patricio Henríquez: verificó la explicación de la solución, contrastándola con los actores propuestos y las aplicaciones ejecutivas en Puelche. Los diagramas son legibles y coherentes. Cita constantemente el caso y su paginación para una revisión más detallada. |
-| Anexo 3.A | Codex; Claude Code | Conversión del catálogo funcional. | Alto | No aplica | [[REVISIÓN HUMANA]] |
-| Anexo 3.B | Codex; Claude Code | Conversión del catálogo no funcional. | Alto | No aplica | [[REVISIÓN HUMANA]] |
-| Anexo 3.C | Codex; Claude Code | Redacción de supuestos. | Alto | No aplica | [[REVISIÓN HUMANA]] |
-| Anexo 3.D | Codex; Claude Code | Redacción de registros. | Alto | No aplica | [[REVISIÓN HUMANA]] |
-| Anexo 3.E | Codex; Claude Code | Redacción de registros. | Alto | No aplica | [[REVISIÓN HUMANA]] |
-| Anexo 3.F | Codex; Claude Code | Redacción de registros. | Alto | No aplica | [[REVISIÓN HUMANA]] |
-| Anexo 3.G | Codex; Claude Code | Redacción de reglas; propuestas para RNG-04 y RNG-15. | Alto | No aplica | [[REVISIÓN HUMANA]] |
-| Anexo 3.H | Codex; Claude Code | Redacción de consultas. | Alto | No aplica | [[REVISIÓN HUMANA]] |
-| Anexo 3.I | Codex; Claude Code | Redacción de la participación de actores. | Alto | No aplica | [[REVISIÓN HUMANA]] |
-| Anexo 3.J | Codex; Claude Code | Redacción de criterios de aceptación. | Alto | No aplica | [[REVISIÓN HUMANA]] |
-| Anexo 3.K | Codex; Claude Code | Glosario. | Medio | No aplica | [[REVISIÓN HUMANA]] |
+| Anexo 3.A | Codex; Claude Code | Conversión del catálogo funcional. | Alto | No aplica | Guillermo Castillo: revisión del catálogo funcional frente a las Bases y el caso, y validación de RF-03.11 y RF-03.12 con S-09. |
+| Anexo 3.B | Codex; Claude Code | Conversión del catálogo no funcional. | Alto | No aplica | Guillermo Castillo: revisión del catálogo no funcional frente a las Bases Técnicas Transversales y validación de los métodos de verificación. |
+| Anexo 3.C | Codex; Claude Code | Redacción de supuestos. | Alto | No aplica | Guillermo Castillo: revisión de los supuestos frente al Anexo 2.2 del Subdocumento 2 y validación de S-42 y S-43. |
+| Anexo 3.D | Codex; Claude Code | Redacción de registros. | Alto | No aplica | Guillermo Castillo: revisión de las exclusiones frente al Anexo 2.2 del Subdocumento 2. |
+| Anexo 3.E | Codex; Claude Code | Redacción de registros. | Alto | No aplica | Guillermo Castillo: revisión de las restricciones frente al caso y su vínculo con el catálogo. |
+| Anexo 3.F | Codex; Claude Code | Redacción de registros. | Alto | No aplica | Guillermo Castillo: revisión de las decisiones de alcance y diseño frente a las Bases y los Subdocumentos 1 y 2. |
+| Anexo 3.G | Codex; Claude Code | Redacción de reglas; propuestas para RNG-04 y RNG-15. | Alto | No aplica | Guillermo Castillo: revisión de las reglas de negocio frente al caso y validación de RNG-04, RNG-08 y RNG-15. |
+| Anexo 3.H | Codex; Claude Code | Redacción de consultas. | Alto | No aplica | Guillermo Castillo: revisión de los vacíos y consultas, y validación del estado de cada consulta, incluida V-11. |
+| Anexo 3.I | Codex; Claude Code | Redacción de la participación de actores. | Alto | No aplica | Guillermo Castillo: revisión de los 19 actores frente al Anexo 2.3 del Subdocumento 2 y validación de los responsables del Subdocumento 1. |
+| Anexo 3.J | Codex; Claude Code | Redacción de criterios de aceptación. | Alto | No aplica | Guillermo Castillo: revisión de los criterios de aceptación y validación de sus metas, momentos y métodos. |
+| Anexo 3.K | Codex; Claude Code | Glosario. | Medio | No aplica | Guillermo Castillo: revisión de las siglas y códigos usados en los anexos. |
 | Formulario T-12 | Codex; Claude Code | Generación de la matriz de cumplimiento. | Alto | No aplica | Patricio Henríquez: se verificó la correcta disposición y legibilidad del formulario; cada requerimiento cuenta con un ID que permite la trazabilidad en el documento de manera sencilla y bien justificada. |
