@@ -188,7 +188,7 @@ La madurez se declara con la escala TRL de la Comisión Europea (European Commis
 
 Riesenegger et al. (2023) revisan las prácticas contra la merma de alimentos en la operación del comercio minorista: pedido, exhibición, precio y retiro de producto por vencer. Es el mismo punto de la cadena donde actúa esta innovación. Esas prácticas las ejecuta el propio comercio con sus sistemas. Lo propio de esta innovación es que el distribuidor las lleve a un almacén que no tiene sistema, a través de la visita del preventista. Por eso el servicio integrado parte en TRL 2, con dos objetivos: TRL 4 al mes 10 (H4, con datos sintéticos) y TRL 6 al mes 15 (piloto en la marcha blanca).
 
-**Investigación adicional declarada.** Falta establecer con qué precisión se estima el ritmo de reposición por local en el canal tradicional. Se investiga en el paquete 3.10.1.2 (meses 9 y 10) con datos sintéticos y se valida en el piloto del paquete 3.10.1.4 (meses 11 a 15) con el indicador I-01A.
+**Investigación adicional declarada.** Falta establecer con qué precisión se estima el ritmo de reposición por local en el canal tradicional. Se investiga en el paquete 3.10.1.2 (meses 9 y 10) con datos sintéticos y se valida en el paquete 3.10.1.4 (meses 11 a 15: certificación del H5 en los meses 11 y 12, y piloto en la marcha blanca de los meses 13 a 15) con el indicador I-01A. La ventana de los meses 11 a 15 que el Anexo 8.A asigna al piloto (ficha R8-25) es la del paquete completo; el piloto con locales reales ocurre solo en la marcha blanca.
 
 ### 13.1.4 Diseño de la incorporación
 
@@ -351,7 +351,7 @@ El flujo de responsabilidades es el siguiente: Operación/SRE recoge la evidenci
 | INN-02.P3 | 3.10.2.3 | 5 a 10 | Captura de evidencia en M3, M5 y M6 (antes del H4) |
 | INN-02.P4 | 3.10.2.4 y 8.3.1 | 11 a 15 y 21 a 56 | Validación comparada en la marcha blanca; mantenimiento de escenarios en operación |
 
-El circuito inicial se materializa en el mes 5 y su beneficio se mide en el mes 15. Los responsables son el Líder de Calidad y Pruebas, Maximiliano Miño, y el Líder de Operación / SRE, Guillermo Castillo, ambos con dedicación hasta el mes 56. Las correcciones las hace el equipo del Líder de Desarrollo, Tomás Pérez, hasta el mes 21, y desde entonces el mantenimiento correctivo de la fase de Operación (paquete 8.2.1). En los meses 16 a 20 los incidentes de terreno se atienden dentro de la estabilización de la Etapa 1 (paquete 4.2.2), con el mismo circuito.
+El circuito inicial se materializa en el mes 5 y su beneficio se mide en el mes 15. Los responsables son el Líder de Calidad y Pruebas, Maximiliano Miño, y el Líder de Operación / SRE, Guillermo Castillo, ambos con dedicación hasta el mes 56. Las correcciones las hace el equipo del Líder de Desarrollo, Tomás Pérez, hasta el mes 21, y desde el mes 22 el mantenimiento correctivo de la fase de Operación (paquete 8.2.1). En los meses 16 a 20 los incidentes de terreno se atienden dentro de la estabilización de la Etapa 1 (paquete 4.2.2), con el mismo circuito.
 
 ### 13.2.5 Impacto económico
 
@@ -365,6 +365,7 @@ La inversión instrumenta los terminales y construye el circuito; no duplica el 
 | --- | --- | --- |
 | Instrumentación de los terminales y sanitización | Inversión / recursos humanos | 2 a 5 |
 | Cobertura de M3, M5 y M6 | Inversión / recursos humanos | 5 a 10 |
+| Validación comparada en la marcha blanca (paquete 3.10.2.4) | Inversión / recursos humanos | 11 a 15 |
 | Cómputo efímero por corrida en QA y Preproducción | Costo operacional | 5 a 56 |
 | Mantención de los escenarios de regresión | Costo operacional / recursos humanos | 21 a 56 |
 | Horas de diagnóstico y regresiones repetidas evitadas | Beneficio | Desde el mes 13; primera medición en el mes 15 |
@@ -418,7 +419,7 @@ Puelche maneja mil cien productos refrigerados y congelados, y hoy no existe reg
 
 La jefa de Calidad lo plantea como pregunta: si dos grados por diez minutos es una excursión, y qué pasa con cuarenta minutos (Distribuidora Puelche S.A., 2026c, cap. 8, entrevista a Katherine Ñanco). La solución obligatoria ya define cuándo hay excursión: 2 °C de desviación sostenida por 15 minutos, parametrizable por tipo de producto (RF-09.05 y RF-09.10). La regla graduada del Capítulo 3 (RNG-04) deja la disposición final a Calidad. Lo que nadie define es qué consecuencia tuvo esa excursión sobre la vida útil del lote. Con ese dato Calidad decidiría entre liberar, acortar la vida útil o descartar; hoy esa decisión se toma sin él, y la fecha impresa supone una cadena de frío perfecta que nadie puede acreditar.
 
-La pertinencia es directa: el proveedor de lácteos excluyó a Puelche de su lista de distribuidores «hasta que acredite capacidad de trazabilidad» (Distribuidora Puelche S.A., 2026c, cap. 1), y esa suspensión venció en septiembre de 2026 (Distribuidora Puelche S.A., 2026c, cap. 13.2). La restitución de esa relación depende de demostrar el control de la cadena de frío por lote.
+La pertinencia es directa: el proveedor de lácteos excluyó a Puelche de su lista de distribuidores «hasta que acredite capacidad de trazabilidad» (Distribuidora Puelche S.A., 2026c, cap. 1), y esa suspensión venció en septiembre de 2026 (Distribuidora Puelche S.A., 2026c, cap. 13.2). La trazabilidad por lote que exige ese proveedor ya es alcance obligatorio; INN-03 agrega sobre ella la evidencia del efecto de la cadena de frío en la vida útil de cada lote.
 
 ### 13.3.2 Tecnología, práctica o modelo
 
@@ -453,13 +454,13 @@ El contrato de datos de la historia térmica del lote se especifica en el Anexo 
 
 <a id="tab:13-3-rt0530"></a>
 
-**Modelo.** La cinética de deterioro por familia, mediante Arrhenius o Q10, se integra sobre la historia térmica del lote. El cálculo es determinista y conserva la versión de los parámetros aprobados por Calidad.
+**Modelo.** La cinética de deterioro por familia, mediante Arrhenius o Q10, se integra sobre la historia térmica del lote. El cálculo es determinista y conserva la versión de los parámetros aprobados por Maximiliano Miño y Calidad del CLIENTE.
 
 **Variables.** Se utilizan la serie de temperatura y el tiempo de cada tramo, la familia del producto, la vida útil nominal informada por el proveedor y los parámetros cinéticos aprobados. Los tramos sin dato se identifican expresamente y no se completan por inferencia.
 
 **Métrica de desempeño.** I-03B mide la proporción de lotes cuya estimación difiere de la evaluación de Calidad en no más del 15 % de la vida nominal. La habilitación se decide por familia con la muestra y el umbral definidos en la sección 13.3.6; no se confunde esta precisión con el ahorro posterior de I-03D.
 
-**Recalibración.** Al no ser un modelo aprendido, se revisan los parámetros y no se reentrena un algoritmo de aprendizaje. El paquete 8.3.2 ejecuta la revisión semestral con los lotes evaluados del período, en los meses 26, 32, 38, 44, 50 y 56. A efectos del seguimiento operacional, se considera señal de deriva del desempeño que I-03B sea inferior al 80 % en dos cortes consecutivos para una misma familia. Este umbral activa la recalibración extraordinaria de sus parámetros; no constituye por sí solo un diagnóstico de la causa de la degradación.
+**Recalibración.** Al no ser un modelo aprendido, se revisan los parámetros y no se reentrena un algoritmo de aprendizaje. El paquete 8.3.2 ejecuta la revisión semestral con los lotes evaluados del período, en los meses 26, 32, 38, 44, 50 y 56. Estos meses siguen la numeración del proyecto que usa todo el cronograma, y no un conteo desde el inicio de la Operación: caen dentro de la fase de Operación, que va del mes 21 al mes 56 (Distribuidora Puelche S.A., 2026a, Art. 17°, pp. 12–13), y dentro de la ventana del paquete 8.3.2 en el Formulario T-15 (meses 21 a 56). A efectos del seguimiento operacional, se considera señal de deriva del desempeño que I-03B sea inferior al 80 % en dos cortes consecutivos para una misma familia. Este umbral activa la recalibración extraordinaria de sus parámetros; no constituye por sí solo un diagnóstico de la causa de la degradación.
 
 Al no ser un modelo aprendido, no se le aplica el Capítulo 18 de las Bases Técnicas (RT-26.06). Aun así declara línea base, métrica de desempeño y detección de deriva, como pediría el RT-18.08 a un modelo predictivo.
 
@@ -489,7 +490,7 @@ La Tabla 13.13 presenta los paquetes de la EDT.
 
 | Paquete | EDT | Meses | Entregable |
 | --- | --- | --- | --- |
-| INN-03.P1 | 3.10.3.1 | 3 a 5 | Familias priorizadas, parámetros aprobados por Calidad y protocolo de validación |
+| INN-03.P1 | 3.10.3.1 | 3 a 5 | Familias priorizadas, parámetros aprobados por Maximiliano Miño y Calidad del CLIENTE, y protocolo de validación |
 | INN-03.P2 | 3.10.3.2 | 5 a 9 | Asociación lote–sensor en el borde y en el camión, por eventos EPCIS |
 | INN-03.P3 | 3.10.3.3 | 9 y 10 | Vista en M9, publicación en N-10 y orden sugerido a M2 y M5 (H4) |
 | INN-03.P4 | 3.10.3.4 | 11 a 15 | Certificación del H5 y validación en marcha blanca contra la evaluación de Calidad |
@@ -509,6 +510,7 @@ La innovación no agrega hardware ni ingesta. Si la validación con lotes reales
 | --- | --- | --- |
 | Familias, parámetros y protocolo (datos y Calidad) | Inversión / recursos humanos | 3 a 5 |
 | Cálculo en el borde, eventos y vista en M9 | Inversión / recursos humanos | 5 a 10 |
+| Validación con lotes reales en la marcha blanca (horas de datos y Calidad, paquete 3.10.3.4) | Inversión / recursos humanos | 11 a 15 |
 | Validación con lotes reales (laboratorio externo, si se contrata) | Inversión / proveedores | 11 a 15 |
 | Cómputo en el borde y en N-10 | Costo operacional | 16 a 56 |
 | Recalibración semestral de parámetros | Costo operacional / recursos humanos | 26 a 56, cada seis meses |
@@ -529,11 +531,11 @@ La reducción del 20 % de I-03D es una meta propuesta de diseño, no un resultad
 | Id | Indicador | Línea base | Meta | Momento |
 | --- | --- | --- | --- | --- |
 | I-03A | Lotes de familias priorizadas con historia térmica completa / lotes de esas familias | 0 (no hay registro continuo) | ≥ 95 %; los tramos sin dato se informan con causa | Mes 15 y mensual |
-| I-03B | Lotes evaluados con estimación dentro de ±15 % de la vida nominal respecto de Calidad / lotes evaluados | Sin medición histórica; referencia inicial por familia en la validación de los meses 11 a 15 | ≥ 80 %, con ≥ 60 lotes por familia | Mes 15, por familia |
+| I-03B | Lotes evaluados con estimación dentro de ±15 % de la vida nominal respecto de Calidad / lotes evaluados | Sin medición histórica; referencia inicial por familia en la validación de los meses 11 a 15 | ≥ 80 %, con ≥ 60 lotes por familia | Mes 15, por familia; luego, cada trimestre |
 | I-03C | Excursiones dispuestas por Calidad con la vida útil consumida registrada / excursiones alertadas | 0 | 100 % | Mensual desde el mes 16 |
 | I-03D | Lotes de familias habilitadas retenidos o descartados en bodega por vencimiento / lotes recibidos | Medición de los meses 13 a 15 | −20 % relativo | Mes 28 |
 
-La validación inicial de los meses 11 a 15 documentará el valor observado de I-03B por familia, con al menos 60 lotes evaluados, el período de evaluación y la versión de parámetros utilizada. Ese resultado constituirá la referencia inicial para el seguimiento posterior; el 80 % es el umbral de aceptación, no la línea base. No se declara un valor histórico inexistente ni se sustituye por cero.
+La validación inicial de los meses 11 a 15 documentará el valor observado de I-03B por familia, con al menos 60 lotes evaluados, el período de evaluación y la versión de parámetros utilizada. Ese resultado constituirá la referencia inicial para el seguimiento posterior; el 80 % es el umbral de aceptación, no la línea base.
 
 Después de habilitar cada familia, I-03B se sigue en cortes trimestrales, con al menos 30 lotes evaluados por familia en cada corte; si una familia no reúne 30 lotes en el trimestre, el corte se acumula con el siguiente. Calidad del CLIENTE puede acortar la periodicidad de una familia, sin reducir la muestra mínima. Los 60 lotes de la validación inicial no se trasladan a cada corte operacional.
 
@@ -561,7 +563,7 @@ La regla de diseño que acota el riesgo es que la estimación puede acortar la v
 
 ### 13.4.1 Problema u oportunidad
 
-El costo logístico se prorratea por zona con un criterio de 2016, y el gerente de Administración y Finanzas no sabe cuánto cuesta atender a un almacén de Empedrado que compra cuarenta y cinco mil pesos cada dos semanas (Distribuidora Puelche S.A., 2026c, cap. 1). El Capítulo 2 identifica la opacidad del costo de servir como uno de los tres problemas centrales de Puelche.
+El costo logístico se prorratea por zona con un criterio de 2016, y el gerente de Administración y Finanzas no sabe cuánto cuesta atender a un almacén de Empedrado que hace compras pequeñas cada dos semanas (Distribuidora Puelche S.A., 2026c, cap. 1). El Capítulo 2 identifica la opacidad del costo de servir como uno de los tres problemas centrales de Puelche.
 
 Conocer el costo de servir y generar sugerencias de frecuencia de visita o compra mínima son alcance obligatorio del criterio 11 y del RF-11.08. La decisión comercial de aplicar esas sugerencias permanece en el CLIENTE. Además, el área de TI de Puelche son cuatro personas, y toda función que requiera un especialista que la compañía no tiene debe ofrecerse como servicio y estar costeada (Distribuidora Puelche S.A., 2026c, cap. 10, restricción 9). INN-04 no presenta la segmentación ni sus sugerencias como funcionalidades nuevas: agrega el mecanismo contractual que vincula una parte del pago a la reducción comparable del costo por entrega, con canasta estable, atribución documentada y protección del OTIF. El acompañamiento gestionado permite revisar los resultados y registrar las decisiones del CLIENTE, sin sustituir el alcance analítico obligatorio.
 
@@ -723,18 +725,18 @@ La hoja tiene cuatro bloques:
 1. Qué compró, por categoría, comparado con su período anterior.
 2. Qué dejó de pedir: productos habituales ausentes hace dos o tres ciclos.
 3. Qué tiene por vencer, tomado de la innovación 1. El bloque se omite si no hay datos confirmados.
-4. Opcional y condicionado: cómo le va frente al agregado de locales comparables de su zona. Nunca muestra un local identificable; aplica un umbral mínimo de locales por grupo y supresión de celdas, según el control de divulgación estadística (Hundepool et al., 2025) y la k-anonimidad (Sweeney, 2002). Se activa solo después de una revisión legal bajo la Ley 21.719 de protección de datos personales (Ley N.º 21.719, 2024).
+4. Opcional y condicionado: cómo le va frente al agregado de locales comparables de su zona. Nunca muestra un local identificable; aplica un umbral mínimo de locales por grupo y supresión de celdas, según el control de divulgación estadística (Hundepool et al., 2024) y la k-anonimidad (Sweeney, 2002). Se activa solo después de una revisión legal bajo la Ley 21.719 de protección de datos personales (Ley N.º 21.719, 2024).
 
 La hoja se entrega por dos vías:
 
 - **En pantalla:** M3 Preventa la muestra en la aplicación de preventa C-01, en el terminal del preventista. Se calcula antes de la ruta y viaja cifrada en el terminal, así que funciona sin señal.
-- **Impresa, si el cliente la pide:** M6 Reparto la imprime con la impresora de cabina del camión (Zebra ZQ620, una por camión; Formulario T-11) y se entrega con la guía en la entrega siguiente. El preventista no lleva impresora.
+- **Impresa, si el cliente la pide:** M6 Reparto la imprime con la impresora de cabina del camión (Zebra ZQ620 Plus, una por camión; Formulario T-11) y se entrega con la guía en la entrega siguiente. El preventista no lleva impresora.
 
 Si esa semana el local no hace pedido, no hay entrega y la copia impresa no llega; queda en espera para la próxima entrega a ese local, y la hoja en pantalla sí se mostró en la visita. El indicador I-05A mide por separado las copias pedidas y las entregadas, para que esa brecha quede visible.
 
 ### 13.5.3 Nivel de madurez
 
-El informe sobre datos propios y el control de divulgación estadística son prácticas maduras, en TRL 9 (Hundepool et al., 2025; Sweeney, 2002). Su utilidad para el micro-comercio sin conectividad no está probada, por lo que el conjunto parte en TRL 2 de la escala de la Comisión Europea (European Commission, 2016). Sus objetivos son TRL 4 con la prueba de comprensión de los meses 13 y 14, y TRL 6 en la marcha blanca de la Etapa 2, en los meses 19 y 20.
+El informe sobre datos propios y el control de divulgación estadística son prácticas maduras, en TRL 9 (Hundepool et al., 2024; Sweeney, 2002). Su utilidad para el micro-comercio sin conectividad no está probada, por lo que el conjunto parte en TRL 2 de la escala de la Comisión Europea (European Commission, 2016). Sus objetivos son TRL 4 con la prueba de comprensión de los meses 13 y 14, y TRL 6 en la marcha blanca de la Etapa 2, en los meses 19 y 20.
 
 **Investigación adicional declarada.** Falta comprobar que el almacenero entiende la hoja y obtener el dictamen legal del bloque 4 bajo la Ley 21.719. La comprensión se investiga con 24 almaceneros en el paquete 3.10.4.1 (meses 13 y 14), con el indicador I-05B, y la revisión legal se hace en el paquete 8.3.6 (meses 24 a 27).
 
@@ -776,6 +778,8 @@ La impresora de cabina ya está ofertada, por lo que la innovación no agrega ha
 | --- | --- | --- |
 | Investigación con usuarios y prueba de comprensión | Inversión / recursos humanos | 13 y 14 |
 | Privacidad, cálculo, precarga e impresión en cabina | Inversión / recursos humanos | 14 a 18 |
+| Certificación del H10 y marcha blanca (paquete 3.10.4.4) | Inversión / recursos humanos | 18 a 21 |
+| Despliegue gradual por rutas (paquete 8.3.5) | Inversión / recursos humanos | 22 a 26 |
 | Revisión legal del bloque 4 | Inversión / proveedores | 24 a 27 |
 | Cálculo mensual y papel térmico de las copias pedidas | Costo operacional | 21 a 56 |
 | Minutos de explicación en la visita | Costo operacional (tiempo de preventa) | 21 a 56 |
@@ -794,7 +798,7 @@ La Tabla 13.26 define los indicadores de la innovación 5.
 | Id | Indicador | Línea base | Meta | Momento |
 | --- | --- | --- | --- | --- |
 | I-05A | Locales con hoja mostrada / locales elegibles que la aceptan; copias impresas entregadas / copias pedidas | 0 (la hoja no existe) | ≥ 90 % de hojas mostradas; ≥ 85 % de copias entregadas dentro de dos visitas | Mes 27 |
-| I-05B | Participantes que interpretan bien las tres preguntas / participantes | Sin medición (la hoja no existe) | ≥ 80 %: al menos 20 de 24 participantes | Antes del mes 19 |
+| I-05B | Participantes que interpretan bien las tres preguntas / participantes | Sin medición (la hoja no existe) | ≥ 80 %: al menos 20 de 24 participantes | Mes 14 |
 | I-05C | Frecuencia y tamaño de compra en rutas con hoja frente a rutas aún sin hoja | Período previo por ruta | Estimar el efecto; no se promete un alza | Mes 33 |
 | I-05D | Emisiones del bloque 4 con todos los grupos sobre el umbral / emisiones del bloque 4 | No aplica antes de activar | 100 % | Cada emisión |
 
@@ -822,14 +826,14 @@ Si la innovación no rinde, la visita del preventista, el pago en efectivo y los
 Las citas a las Bases Administrativas y a las Bases Técnicas Transversales identifican el artículo o capítulo y la página impresa del PDF original, además del código RT cuando corresponde. Las referencias al caso se localizan por capítulo, sección o entrevista, sin exigir paginación. Las Aclaraciones se identifican por sección en la fuente disponible.
 
 - DORA. (2024). *Accelerate state of DevOps report 2024*. Google Cloud. https://dora.dev/research/2024/dora-report/
-- Distribuidora Puelche S.A. (2026a). *Bases Administrativas de Licitación N.º TFEP-01/2026: Contratación de Solución Integral de Software y Servicios de Operación*, artículos 26, 28, 29, 30 y 50.2, y Formularios E-21, E-25 y T-19.
+- Distribuidora Puelche S.A. (2026a). *Bases Administrativas de Licitación N.º TFEP-01/2026: Contratación de Solución Integral de Software y Servicios de Operación*, artículos 17, 26, 28, 29, 30 y 50.2, y Formularios E-21, E-25 y T-19.
 - Distribuidora Puelche S.A. (2026b). *Bases Técnicas Transversales de Licitación N.º TFEP-01/2026*, RT-03.12, RT-04.01, RT-04.03 a RT-04.05, RT-04.14, RT-05.30, RT-10.07, RT-13.07, RT-14.06, RT-16.32, RT-18.08 y capítulo 26.
 - Distribuidora Puelche S.A. (2026c). *Caso: Logística. Especificaciones del problema y operación de Distribuidora Puelche S.A.*, capítulos 1, 2, 4, 6, 8, 10, 13 y 18.
 - Distribuidora Puelche S.A. (2026d). *Aclaraciones de la Licitación N.º TFEP-01/2026*, secciones 7.2 y 8.
 - European Commission. (2016). Technology readiness levels (TRL). En *Horizon 2020 work programme 2016–2017: General annexes* (Anexo G). https://ec.europa.eu/research/participants/data/ref/h2020/other/wp/2016_2017/annexes/h2020-wp1617-annex-g-trl_en.pdf
 - FitzGerald, C., Tan, S., Carter, E., & Airoldi, M. (2023). Contractual acrobatics: A configurational analysis of outcome specifications and payment in outcome-based contracts. *Public Management Review, 25*(9), 1796–1814. https://doi.org/10.1080/14719037.2023.2244501
 - GS1 AISBL. (2022). *EPC Information Services (EPCIS) standard* (versión 2.0). https://ref.gs1.org/standards/epcis/2.0.0/
-- Hundepool, A., Domingo-Ferrer, J., Franconi, L., Giessing, S., Lenz, R., Naylor, J., Schulte Nordholt, E., Seri, G., De Wolf, P.-P., Tent, R., Młodak, A., Gussenbauer, J., & Wilak, K. (2025). *Handbook on statistical disclosure control* (2.ª ed.). Center of Excellence SDC. https://sdctools.github.io/HandbookSDC/
+- Hundepool, A., Domingo-Ferrer, J., Franconi, L., Giessing, S., Lenz, R., Naylor, J., Schulte Nordholt, E., Seri, G., De Wolf, P.-P., Tent, R., Młodak, A., Gussenbauer, J., & Wilak, K. (2024). *Handbook on statistical disclosure control* (2.ª ed.). STACE project. https://sdctools.github.io/HandbookSDC/
 - Jedermann, R., Nicometo, M., Uysal, I., & Lang, W. (2014). Reducing food losses by intelligent food logistics. *Philosophical Transactions of the Royal Society A, 372*(2017), 20130302. https://doi.org/10.1098/rsta.2013.0302
 - Koutsoumanis, K., Taoukis, P. S., & Nychas, G.-J. E. (2005). Development of a Safety Monitoring and Assurance System for chilled food products. *International Journal of Food Microbiology, 100*(1–3), 253–260. https://doi.org/10.1016/j.ijfoodmicro.2004.10.024
 - LafroX. (2026). *Subdocumento 3: Esquema de solución y alcance*, Anexo 3.C.
@@ -858,4 +862,4 @@ En cumplimiento de la sección 7.2 de las Aclaraciones de la licitación, la tab
 | Anexo 13.B | Claude Code | Trazabilidad y alcance | Alto | Ninguno | No acreditada |
 | Anexo 13.C | Claude Code; OpenAI Codex | Indicadores y riesgos | Alto | Ninguno | No acreditada |
 | Anexo 13.D | Claude Code; OpenAI Codex | Observaciones y respuestas; matriz de trazabilidad contra la revisión del Informe 1 | Alto | Ninguno | No acreditada |
-| T-19 | Claude Code; OpenAI Codex | Fichas y armonización | Alto | Ninguno | No acreditada |
+| T-19 | Claude Code; OpenAI Codex | Fichas de las cinco innovaciones | Alto | Ninguno | No acreditada |
