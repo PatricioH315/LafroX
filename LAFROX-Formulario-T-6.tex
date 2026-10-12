@@ -5,6 +5,25 @@
 \documentclass[carta,firma]{lafrox}
 \usepackage{float}
 
+% Ajuste local: pdflscape rota las páginas, pero no el pie de fancyhdr.
+% Se conserva la plantilla; sólo se reubica el pie derecho (media firma y folio)
+% en hojas horizontales.
+\newif\ifTSeisHorizontal
+\let\TSeisPieDerechoOriginal\LFXpiederecho
+\renewcommand{\LFXpiederecho}{%
+  \ifTSeisHorizontal\else\TSeisPieDerechoOriginal\fi}
+\AddToHook{shipout/foreground}[t6-folio-horizontal]{%
+  \ifTSeisHorizontal
+    \put(0,0){\begin{tikzpicture}[remember picture,overlay]
+      \node[rotate=90,anchor=base east,inner sep=0pt,
+        font=\intermedium\fontsize{9pt}{11pt}\selectfont,
+        text=lafroxTinta]
+        at ([xshift=-1.3cm,yshift=-2.7cm]current page.north east)
+        {\TSeisPieDerechoOriginal};
+    \end{tikzpicture}}%
+  \fi}
+
+
 \datoslafrox{
   caso        = {Caso --- Logística},
   subtitulo    = {Formulario T-6 --- Experiencia en proyectos similares},
@@ -20,6 +39,7 @@
 \listatablaslafrox
 
 \begin{landscape}
+\global\TSeisHorizontaltrue
 \setcounter{chapter}{0}
 \chapter*{Formulario T-6: Experiencia del Proponente}
 \addcontentsline{toc}{chapter}{Formulario T-6: Experiencia del Proponente}
@@ -76,6 +96,7 @@ Campo & Proyecto 1 & Proyecto 2 & Proyecto 3 \\
 
 \end{xltabular}
 \end{landscape}
+\global\TSeisHorizontalfalse
 
 \section*{Referencias}
 \addcontentsline{toc}{section}{Referencias}
