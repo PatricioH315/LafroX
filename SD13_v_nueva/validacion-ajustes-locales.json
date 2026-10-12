@@ -1,0 +1,65 @@
+{
+  "fecha": "2026-10-11",
+  "alcance": "Solo SD13 LaTeX, anexos y T19 existentes",
+  "documentos": [
+    {
+      "archivo": "LAFROX-Subdocumento13.pdf",
+      "paginas": 50,
+      "overfull_hbox": 0,
+      "referencias_indefinidas": 0,
+      "flotantes_grandes": 0,
+      "marcadores_humanos": 0
+    },
+    {
+      "archivo": "LAFROX-Subdocumento13-Anexos.pdf",
+      "paginas": 12,
+      "overfull_hbox": 0,
+      "referencias_indefinidas": 0,
+      "flotantes_grandes": 0,
+      "marcadores_humanos": 0
+    },
+    {
+      "archivo": "LAFROX-Formulario-T-19.pdf",
+      "paginas": 14,
+      "overfull_hbox": 0,
+      "referencias_indefinidas": 0,
+      "flotantes_grandes": 0,
+      "marcadores_humanos": 0
+    }
+  ],
+  "revision_visual": "Contactos de todas las páginas inspeccionados; sin desbordes ni superposición. Tabla IA final inspeccionada.",
+  "figuras": [
+    {
+      "numero": "1",
+      "pagina": 10,
+      "min_pt": 9.193
+    },
+    {
+      "numero": "2",
+      "pagina": 14,
+      "min_pt": 10.782
+    },
+    {
+      "numero": "3",
+      "pagina": 22,
+      "min_pt": 10.782
+    },
+    {
+      "numero": "4",
+      "pagina": 30,
+      "min_pt": 10.782
+    },
+    {
+      "numero": "5",
+      "pagina": 38,
+      "min_pt": 10.782
+    },
+    {
+      "numero": "6",
+      "pagina": 44,
+      "min_pt": 10.782
+    }
+  ],
+  "tablas_cuerpo": 28,
+  "revision_humana": "No acreditada; no equivale a aprobación humana."
+}

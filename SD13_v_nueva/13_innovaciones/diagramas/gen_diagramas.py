@@ -136,7 +136,7 @@ def fig1():
     # Capa 4: lógica de negocio. M10 a la izquierda para recibir de N-10.
     y += TOP + h5 + 10 + GAP
     m_txt = ["M10 Analítica<br>(INN-01, INN-03, INN-04, INN-05)",
-             "M2 Inventario · M3 Preventa<br>(INN-01, INN-03, INN-05)",
+             "M2 Inventario · M3 Preventa<br>(INN-01 a INN-03, INN-05)",
              "M5 Preparación · M6 Reparto<br>(INN-02 a INN-05)",
              "M7 Cobranza y rendición · M8 Devoluciones y envases<br>(INN-01, INN-04)",
              "M9 Calidad y trazabilidad<br>(INN-01, INN-03)"]
