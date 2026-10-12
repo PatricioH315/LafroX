@@ -4,7 +4,7 @@
 
 **Autorización y alcance:** el usuario pidió actualizar en GitHub la carpeta `07_PlanDeTrabajo_EDT_Cronograma_Implantación` con los cinco documentos Markdown recién generados: Subdocumento 7, Anexos, T-14, T-15 y T-18. Se verificó el estado remoto y se adelantó `rama-md` por fast-forward hasta `269a70c`. Se leyeron los PDF finales desde la rama LaTeX sin escribir archivos PDF ni fuentes no Markdown en esta rama.
 
-**Conversión:** los cinco PDF finales (59, 24, 104, 86 y 23 páginas, respectivamente) se convirtieron a texto Markdown con jerarquía de encabezados. Las figuras incrustadas y su firma gráfica no se reproducen en estos Markdown; no se agregaron activos binarios. Sólo se modifican los cinco `.md` solicitados y este registro operativo. Verificación de UTF-8 y `git diff --check` sin problemas. Publicación pendiente.
+**Conversión y publicación:** los cinco PDF finales (59, 24, 104, 86 y 23 páginas, respectivamente) se convirtieron a texto Markdown con jerarquía de encabezados. Las figuras incrustadas y su firma gráfica no se reproducen en estos Markdown; no se agregaron activos binarios. Se modificaron sólo los cinco `.md` solicitados y este registro operativo. Verificación de UTF-8 y `git diff --check` sin problemas. GitHub confirma `rama-md` en el commit `9cf231eb209bdee504489be4be41296be4cb9770`.
 
 ## Portadas SD1–SD3: retirada la etiqueta «Versión final para entrega» — 12 de octubre de 2026
 
