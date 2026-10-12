@@ -42,40 +42,7 @@ El calendario de olas respeta los meses 13–15, pero su cierre se calcula con f
 
 \begin{figure}[htbp]
   \centering
-  \begin{tikzpicture}[font=\LFXcuerpofigura]
-    \node[draw,rounded corners,align=center,text width=2.5cm,minimum height=10mm]
-      (w5) at (0,0) {\textbf{Semana 5}\\Talca};
-    \node[draw,rounded corners,align=center,text width=2.5cm,minimum height=10mm]
-      (w6) at (3,0) {\textbf{Semana 6}\\Concepción};
-    \node[draw,rounded corners,align=center,text width=2.5cm,minimum height=10mm]
-      (w7) at (6,0) {\textbf{Semana 7}\\Plataformas};
-    \node[draw,rounded corners,align=center,text width=2.5cm,minimum height=10mm]
-      (w8) at (9,0) {\textbf{Semana 8}\\Remanentes};
-    \draw[->] (w5) -- (w6);
-    \draw[->] (w6) -- (w7);
-    \draw[->] (w7) -- (w8);
-    \node[draw,rounded corners,align=center,text width=11.5cm,minimum height=11mm]
-      (gate) at (4.5,-1.35)
-      {\textbf{Hito de entrada a la evidencia}\\
-       100\,\% del alcance activo antes de F$-$28 días; siguen cuatro semanas de evaluación};
-    \draw[->] (w8.south) -- ++(0,-5mm) -| (gate.north east);
-    \node[draw,rounded corners,align=center,text width=2.5cm,minimum height=14mm]
-      (d1) at (0,-3.1) {\textbf{Semana 10}\\Volumen real};
-    \node[draw,rounded corners,align=center,text width=2.5cm,minimum height=14mm]
-      (d2) at (3,-3.1) {\textbf{Semana 11}\\Conciliación};
-    \node[draw,rounded corners,align=center,text width=2.5cm,minimum height=14mm]
-      (d3) at (6,-3.1) {\textbf{Semana 12}\\Indicadores};
-    \node[draw,rounded corners,align=center,text width=2.5cm,minimum height=14mm]
-      (d4) at (9,-3.1) {\textbf{Semana 13}\\Criterio sostenido};
-    \draw[->] (gate.south) -- ++(0,-5mm) -| (d1.north);
-    \draw[->] (d1) -- (d2);
-    \draw[->] (d2) -- (d3);
-    \draw[->] (d3) -- (d4);
-    \node[draw,rounded corners,align=center,text width=11.5cm,minimum height=9mm]
-      (h7) at (4.5,-4.45)
-      {\textbf{H7 / mes 16}\\Cierre con acta de la Contraparte Técnica};
-    \draw[->] (d4.south) -- (h7.north);
-  \end{tikzpicture}
+  \includegraphics[width=\linewidth,trim=0 350bp 0 0,clip]{imagenes/Diagramas que faltaban/T-18 Fig 7.1.pdf}
   \caption{Olas de la Etapa 1 durante la marcha blanca. Fuente: elaboración a partir de LafroX (2026k, SD3, sec. 3.4.4).}
   \label{fig:T18-olas}
 \end{figure}
@@ -108,39 +75,12 @@ Los indicadores se miden y publican cada día con el umbral que exige el artícu
 
 \parte{tablas/tab_T18_indicadores}
 
-La sexta condición es el acta de aceptación firmada por la Contraparte Técnica (paquete 4.2.3, H7). Los resultados del capítulo 18 del caso que se verifican en esta marcha blanca (R18-01 a R18-03, R18-05 a R18-10 y R18-14 a R18-16) se miden con el método y el período del Capítulo 3, Anexo 3.J. La Figura \ref{fig:T18-ciclo} resume el ciclo diario y las condiciones de cierre.
+La sexta condición es el acta de aceptación firmada por la Contraparte Técnica (paquete 4.2.3, H7). Los resultados del capítulo 18 del caso que se verifican en esta marcha blanca (R18-01 a R18-03, R18-05 a R18-10 y R18-14 a R18-16) se miden con el método y el período del Capítulo 3, Anexo 3.J. La Figura \ref{fig:T18-ciclo} resume el ciclo diario.
 
 \begin{figure}[htbp]
   \centering
-  \begin{tikzpicture}[font=\LFXcuerpofigura]
-    \node[draw,rounded corners,align=center,text width=3cm,minimum height=10mm]
-      (measure) at (0,0)
-      {\textbf{Medir}\\Indicadores del día};
-    \node[draw,rounded corners,align=center,text width=3cm,minimum height=10mm]
-      (compare) at (3.5,0)
-      {\textbf{Comparar}\\Resultados con umbrales};
-    \node[draw,rounded corners,align=center,text width=3.1cm,minimum height=10mm]
-      (act) at (7,0)
-      {\textbf{Decidir}\\Continuar, corregir o revertir};
-    \node[draw,rounded corners,align=center,text width=3.1cm,minimum height=10mm]
-      (publish) at (10.5,0)
-      {\textbf{Conciliar y publicar}\\Resultado diario};
-    \draw[->] (measure) -- (compare);
-    \draw[->] (compare) -- (act);
-    \draw[->] (act) -- (publish);
-    \draw[->] (publish.south) -- ++(0,-3mm) -| (measure.south);
-    \node[draw,rounded corners,align=left,text width=13.5cm,inner sep=5pt]
-      at (5.25,-2.75)
-      {\fontsize{8pt}{9.5pt}\selectfont
-       \textbf{Cierre: seis condiciones simultáneas (BA, art. 17.3, p. 13)}\\
-       1. Cero incidentes críticos o altos abiertos.\\
-       2. Volumen real completo durante las últimas cuatro semanas.\\
-       3. Sin indisponibilidad en despacho; disponibilidad y respuesta dentro de umbral.\\
-       4. Sin diferencias inexplicadas ni pedidos perdidos o duplicados.\\
-       5. 100\,\% de usuarios capacitados y certificados.\\
-       6. Acta de aceptación de la Contraparte Técnica (H7).};
-  \end{tikzpicture}
-  \caption{Ciclo diario de la marcha blanca y condiciones de cierre del artículo 17.3 de las Bases Administrativas (p. 13). Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026a, art. 17.3, p. 13) y Distribuidora Puelche S.A. (2026b, RT-20.04, p. 35).}
+  \includegraphics[width=\linewidth,trim=0 660bp 0 0,clip]{imagenes/Diagramas que faltaban/Fig_7-23.pdf}
+  \caption{Ciclo diario de la marcha blanca. Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026a, art. 17.3, p. 13) y Distribuidora Puelche S.A. (2026b, RT-20.04, p. 35).}
   \label{fig:T18-ciclo}
 \end{figure}
 
@@ -152,44 +92,7 @@ La reversión la autoriza el responsable de operaciones del CLIENTE cuando un in
 
 \begin{figure}[htbp]
   \centering
-  \begin{tikzpicture}[font=\LFXcuerpofigura]
-    \node[draw,rounded corners,align=center,text width=5.3cm,minimum height=11mm]
-      (detect) at (0,0)
-      {\textbf{Turno de noche}\\Se detecta pedido sin sincronizar, ruta no disponible o defecto crítico};
-    \node[draw,rounded corners,align=center,text width=5.3cm,minimum height=10mm]
-      (verify) at (0,-1.7)
-      {Acompañante confirma impacto; Operaciones del CLIENTE decide};
-    \node[draw,rounded corners,align=center,text width=4.2cm,minimum height=10mm]
-      (decision) at (0,-3.0)
-      {\textbf{¿Se amenaza el despacho?}};
-    \node[draw,rounded corners,align=center,text width=4cm,minimum height=10mm]
-      (continue) at (-4.3,-4.45)
-      {\textbf{No}\\Corregir; continuar la ola};
-    \node[draw,rounded corners,align=center,text width=4cm,minimum height=10mm]
-      (authorize) at (4.3,-4.45)
-      {\textbf{Sí}\\Autorizar reversión};
-    \draw[->] (detect) -- (verify);
-    \draw[->] (verify) -- (decision);
-    \draw[->] (decision.south west) -- (continue.north);
-    \draw[->] (decision.south east) -- (authorize.north);
-    \node[draw,rounded corners,align=center,text width=4cm,minimum height=12mm]
-      (operational) at (1.8,-6.1)
-      {\textbf{Operacional}\\Versión local y documentos ERP válidos antes de las 05:30};
-    \node[draw,rounded corners,align=center,text width=4cm,minimum height=12mm]
-      (technical) at (6.6,-6.1)
-      {\textbf{Técnica}\\Interruptor o versión anterior; no reinstalar};
-    \draw[->] (authorize.south) -- (operational.north east);
-    \draw[->] (authorize.south) -- (technical.north west);
-    \node[draw,rounded corners,align=center,text width=10cm,minimum height=10mm]
-      (reconcile) at (4.2,-7.9)
-      {Al retomar, conciliar registros en cola; no perder ni duplicar operaciones};
-    \draw[->] (operational.south) -- (reconcile.north west);
-    \draw[->] (technical.south) -- (reconcile.north east);
-    \node[draw,rounded corners,align=center,text width=10cm,minimum height=9mm]
-      (restart) at (4.2,-9.2)
-      {\textbf{La ola vuelve a iniciar sus cuatro semanas de criterio}};
-    \draw[->] (reconcile) -- (restart);
-  \end{tikzpicture}
+  \includegraphics[width=\linewidth,trim=0 305bp 0 0,clip]{imagenes/Diagramas que faltaban/Fig_7-22.pdf}
   \caption{Procedimiento de reversión de la Etapa 1. Fuente: elaboración a partir de LafroX (2026k, SD3, sec. 3.4.4), y el paquete 4.1.2.}
   \label{fig:T18-reversion}
 \end{figure}
@@ -272,28 +175,7 @@ La convivencia sigue las reglas del artículo 17.2 de las Bases Administrativas 
 
 \begin{figure}[htbp]
   \centering
-  \begin{tikzpicture}[font=\LFXcuerpofigura]
-    \node[draw,rounded corners,align=center,text width=2.8cm,minimum height=13mm]
-      (erp) at (0,0)
-      {\textbf{ERP}\\Registro contable y emisor único de guías};
-    \node[draw,rounded corners,align=center,text width=3.4cm,minimum height=13mm]
-      (stage1) at (4,0)
-      {\textbf{Etapa 1}\\Producción estable; funciones protegidas};
-    \node[draw,rounded corners,align=center,text width=4.2cm,minimum height=15mm]
-      (shared) at (9,0)
-      {\textbf{Registro compartido}\\Pedidos, clientes, guías y entregas; una fuente de verdad};
-    \node[draw,rounded corners,align=center,text width=4.2cm,minimum height=15mm]
-      (stage2) at (9,-2.25)
-      {\textbf{Etapa 2 en marcha blanca}\\M11 Canal moderno, portales y costo de servir};
-    \draw[->] (erp) -- node[above,align=center]{documentos\\válidos} (stage1);
-    \draw[->] (stage1) -- node[above,align=center]{opera} (shared);
-    \draw[->] (shared.south west) -- node[left,align=right]{lee} (stage2.north west);
-    \draw[->] (stage2.north east) -- node[right,align=left]{extiende\\los datos} (shared.south east);
-    \node[draw,rounded corners,align=center,text width=13cm,minimum height=12mm]
-      at (4.5,-3.9)
-      {Sin copias ni doble digitación. Cada dominio conserva un escritor autorizado.\\
-       Ningún despliegue de Etapa 2 modifica funciones estabilizadas de Etapa 1.};
-  \end{tikzpicture}
+  \includegraphics[width=\linewidth,trim=0 460bp 0 0,clip]{imagenes/Diagramas que faltaban/Fig_7-24.pdf}
   \caption{Convivencia de la Etapa 1 en producción con la Etapa 2 en marcha blanca. Fuente: elaboración a partir de LafroX (2026m, SD4, arquitectura lógica).}
   \label{fig:T18-convivencia}
 \end{figure}
