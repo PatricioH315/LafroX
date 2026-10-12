@@ -1,5 +1,4 @@
-This is LuaHBTeX, Version 1.25.7 (MiKTeX 26.5) (format=lualatex 2026.9.17)  12 OCT 2026 00:19
- system commands enabled.
+This is LuaHBTeX, Version 1.25.7 (MiKTeX 26.5) (format=lualatex 2026.9.17)  12 OCT 2026 01:56
 **LAFROX-Formulario-T-19.tex
 (./LAFROX-Formulario-T-19.tex
 LaTeX2e <2026-06-01>
@@ -1828,6 +1827,10 @@ ii
 (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/epstopdf-pkg/epstopdf-b
 ase.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+
+
+Package epstopdf Warning: Shell escape feature is not enabled.
+
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 85.
 
@@ -1956,7 +1959,7 @@ LaTeX Info: Redefining \% on input line 1.
 \tf@toc=\write4
 
 \openout4 = LAFROX-Formulario-T-19.toc
-<logo/lafrox_isotipo_negro.pdf, id=41, 433.62pt x 433.62pt>
+<logo/lafrox_isotipo_negro.pdf, id=39, 433.62pt x 433.62pt>
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
 Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 16.
@@ -2082,19 +2085,7 @@ File: logo/firma_representante.png Graphic file (type png)
 <use logo/firma_representante.png>
 Package luatex.def Info: logo/firma_representante.png  used on input line 152.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [12]
-File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
-<use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 169.
-
-(luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 169.
-LaTeX Info: Redefining \% on input line 169.
-File: logo/firma_representante.png Graphic file (type png)
-<use logo/firma_representante.png>
-Package luatex.def Info: logo/firma_representante.png  used on input line 169.
-(luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [13])
+ [12])
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
 Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 19.
@@ -2105,7 +2096,7 @@ File: logo/firma_representante.png Graphic file (type png)
 <use logo/firma_representante.png>
 Package luatex.def Info: logo/firma_representante.png  used on input line 19.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [14]
+ [13]
 
 enddocument/afterlastpage (AED): lastpage setting LastPage.
 (./LAFROX-Formulario-T-19.aux
@@ -2119,16 +2110,16 @@ L3 programming layer <2026-07-20>
 )
 
 Here is how much of LuaTeX's memory you used:
- 36918 strings out of 475695
+ 36870 strings out of 475695
  244179,2848258 words of node,token memory allocated
- 841 words of node memory still in use:
+ 835 words of node memory still in use:
    8 hlist, 2 vlist, 2 rule, 1 local_par, 6 glue, 5 kern, 1 penalty, 1 margin_ke
-rn, 4 glyph, 36 attribute, 79 glue_spec, 19 attribute_list, 2 write, 8 pdf_actio
+rn, 4 glyph, 34 attribute, 79 glue_spec, 18 attribute_list, 2 write, 8 pdf_actio
 n nodes
-   avail lists: 1:6,2:2771,3:779,4:343,5:3503,6:125,7:20021,8:116,9:1481,10:31,1
+   avail lists: 1:6,2:2774,3:779,4:343,5:3503,6:125,7:20021,8:116,9:1481,10:31,1
 1:2538
- 58416 multiletter control sequences out of 65536+600000
- 116 fonts using 45914207 bytes
+ 58412 multiletter control sequences out of 65536+600000
+ 116 fonts using 45914359 bytes
  107i,24n,128p,1503b,4978s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/henri/AppData/Local/Programs/MiKTeX/fonts/opentype/adobe/sourceserif/S
 ourceSerif4-RegularIt.otf><C:/Users/henri/AppData/Local/Programs/MiKTeX/fonts/op
@@ -2139,9 +2130,9 @@ r.otf><C:/Users/henri/AppData/Local/Programs/MiKTeX/fonts/opentype/adobe/sources
 ans/SourceSans3-Regular.otf><c:/users/henri/appdata/local/programs/miktex/fonts/
 opentype/adobe/sourcesans/sourcesans3-medium.otf><C:/Users/henri/AppData/Local/P
 rograms/MiKTeX/fonts/opentype/adobe/sourcesans/SourceSans3-Semibold.otf>
-Output written on LAFROX-Formulario-T-19.pdf (14 pages, 117024 bytes).
+Output written on LAFROX-Formulario-T-19.pdf (13 pages, 113835 bytes).
 
-PDF statistics: 208 PDF objects out of 1000 (max. 8388607)
- 23 named destinations out of 1000 (max. 1048576)
- 88 words of extra memory for PDF output out of 10000 (max. 100000000)
+PDF statistics: 198 PDF objects out of 1000 (max. 8388607)
+ 21 named destinations out of 1000 (max. 1048576)
+ 80 words of extra memory for PDF output out of 10000 (max. 100000000)
 
