@@ -51,7 +51,7 @@ IMP & Patricio Henríquez & Guillermo Castillo; equipo IMP & CAL: usuarios; SEG:
 \end{tablalafrox}
 \endgroup
 
-Las responsabilidades de DAT e IMP se transfieren al frente F8 de Operación, como establece el SD13. Para que no dependan de una sola persona, desde el mes 22 Bastián Trejo, que sigue en el Comité de Arquitectura, es suplente de Guillermo Castillo en DAT y DES, y Maximiliano Miño lo es en IMP; ambos continúan hasta el mes 56 (SD1, Tabla 1.3). R8-27 requiere aprobación sanitaria de Calidad; R8-29, privacidad de Seguridad. La Contraparte Técnica acepta con acta; Operaciones autoriza cortes y Calidad del CLIENTE decide sobre los aspectos sanitarios. Su agenda se fija en mes 1 y se sigue con R8-12. Los cambios físicos siguen el gobierno de arquitectura.
+Las responsabilidades de DAT e IMP se transfieren al frente F8 de Operación, como establece el SD13. Para que no dependan de una sola persona, desde el mes 22 Bastián Trejo, que sigue en el Comité de Arquitectura, es suplente de Guillermo Castillo en DAT y DES, y Maximiliano Miño lo es en IMP; ambos continúan hasta el mes 56 (SD1, Tabla 1.3). Las decisiones sanitarias requieren aprobación de Calidad y las de privacidad, de Seguridad. La Contraparte Técnica acepta con acta; Operaciones autoriza cortes y Calidad del CLIENTE decide sobre los aspectos sanitarios. La agenda de decisiones se fija en mes 1 y se sigue en el registro. Los cambios físicos siguen el gobierno de arquitectura.
 
 \subsection{Escalas previas al análisis}
 
@@ -89,7 +89,7 @@ El responsable actualiza fuente, estado, disparador, tratamiento, consumo de HH 
 
 \section{Identificación y Análisis de Riesgos}
 
-Esta sección identifica los riesgos con una RBS y los analiza cualitativamente mediante la exposición decimal ($q_P\times q_I$), junto con los niveles ordinales de P e I y la zona registrada para cada riesgo, y cuantitativamente mediante el valor esperado de cada riesgo en horas-hombre. La simulación Monte Carlo del cronograma por actividad del SD7 queda pendiente de definir y validar sus insumos; en esta versión no se presentan resultados simulados.
+Esta sección identifica los riesgos con una RBS y los analiza cualitativamente mediante la exposición decimal ($q_P\times q_I$), junto con los niveles ordinales de P e I y la zona registrada para cada riesgo, y cuantitativamente mediante el valor esperado de cada riesgo en horas-hombre. No se presentan resultados de simulación, percentiles ni probabilidades de cumplimiento.
 
 \subsection{RBS y análisis separados}
 
@@ -137,9 +137,9 @@ Entre los diez seleccionados, R-012 y R-015 tienen exposición decimal 0,40 y zo
 
 El valor esperado cuantifica el esfuerzo condicional de cada riesgo ponderado por su probabilidad inicial estimada $p_0$. Para el riesgo $i$, se calcula como $VE_i=p_{0,i}\times H_i^{\mathrm{cond}}$, donde $p_{0,i}$ se expresa entre 0 y 1 y $H_i^{\mathrm{cond}}$ es el impacto de esfuerzo si el evento ocurre, medido en horas-hombre (HH).
 
-La suma de los valores esperados de los 45 riesgos es \textbf{2.058,480 HH}. El detalle individual, las probabilidades iniciales y los impactos condicionales se presentan en el Anexo 8.B. Las estimaciones son de planificación y deben validarse con los responsables de riesgo.
+La suma de los valores esperados de los 45 riesgos es \textbf{2.058,480 HH}. Por decisión adoptada, este total se utiliza como estimación de contingencia en HH calculada por $p_0\times HH$; no es dinero, esfuerzo cierto ni resultado de Monte Carlo. El detalle se presenta en el Anexo 8.B; son estimaciones de planificación pendientes de validación por los responsables.
 
-Este total es un valor esperado analítico; no representa una reserva, un percentil, un esfuerzo cierto ni un resultado de simulación. La exposición cualitativa decimal ($q_P\times q_I$) continúa calculándose por separado; los niveles ordinales de probabilidad e impacto y la zona registrada se muestran junto a ella. En este punto no se informan resultados Monte Carlo.
+$p_0$ cuantitativa se mantiene distinta de la exposición cualitativa $q_P\times q_I$, que se calcula por separado junto con los niveles ordinales y la zona registrada. No se presentan simulaciones, percentiles ni probabilidades de cumplimiento.
 
 \section{Plan de Acción a Riesgos}
 
@@ -147,40 +147,35 @@ Esta sección fija las respuestas a los riesgos analizados, las reservas que las
 
 \subsection{Respuestas y costo-beneficio técnico}
 
-Cada ficha del Anexo 8.A define estrategia, responsable temporal, disparador, plazo, mitigación, contingencia, residual hipotético, riesgo secundario y evidencia. Se mitigan 29 amenazas, incluida R8-14; R8-12 y R8-17 se escalan, y R8-22 se acepta activamente con medición y recálculo de la dotación de la mesa. La subcontratación no traslada la obligación final de LafroX.
+Cada ficha del Anexo 8.A define estrategia, responsable temporal, disparador, plazo, mitigación, contingencia, residual hipotético, riesgo secundario y evidencia. Las respuestas se gestionan con responsables, disparadores y evidencia en el registro vigente; la subcontratación no traslada la obligación final de LafroX.
 
-La Tabla C.5 compara las 32 respuestas en HH (PMI, 2017, pp. 442\textendash{}443). Los 35 paquetes de control únicos suman 6.768,00 HH ya programadas. Su costo se cuenta una vez, aunque un control proteja varios riesgos; los retornos individuales no se suman. Se descarta toda alternativa que incumpla sanidad, despacho, integridad de datos o una función obligatoria.
+La evaluación de alternativas de respuesta debe considerar su esfuerzo y evitar doble conteo cuando un control atiende varios riesgos. La cuantificación actual no permite atribuir paquetes de respuesta o costos agregados a los códigos vigentes sin un crosswalk verificable. Se descarta toda alternativa que incumpla sanidad, despacho, integridad de datos o una función obligatoria.
 
-Si la probabilidad disminuyera un nivel, el registro conjunto residual sería 14.055,17 HH, frente a las 20.198,98 HH iniciales. Esta hipótesis no acredita eficacia ni permite liberar automáticamente la diferencia de 6.143,81 HH. CAL comprueba resultados y JP solicita cambios con evidencia, remanente y ventana de uso. La certificación paralela origina R8-31; el refuerzo de calidad, R8-32; la captura de trazas, R8-24; y la separación de equipos mantiene presión sobre R8-11.
+CAL comprueba resultados y JP solicita cambios con evidencia, remanente y ventana de uso. La eficacia de respuestas debe validarse antes de modificar probabilidades o liberar contingencia.
 
 \subsection{Reservas y cronograma}
 
-La reserva de contingencia cubre los riesgos identificados: \textbf{20.198,98 HH}, el 9,88 \% de las 204.527 HH base de los paquetes. R8-11 y R8-18 concentran el 54,8 \% de ella. La capacidad protegida E1 sólo se descuenta cuando coinciden los meses 13\textendash{}20, la Etapa 1 y los perfiles DES/CAL; los paquetes de R8-02 y R8-04 terminan antes del mes 13 y los de R8-14 son trabajo de la Etapa 2, de modo que no se descuenta nada y las 3.072 HH quedan protegidas para correcciones futuras de la Etapa 1, sin prestarse a la Etapa 2.
+La reserva de contingencia adoptada para los riesgos identificados es \textbf{2.058,480 HH}, la suma de $p_0\times HH$ condicional del registro vigente de 45 riesgos. Es una estimación de esfuerzo, no una asignación por mes, perfil o paquete. No existe crosswalk verificable entre los códigos R8 de los análisis anteriores y el registro vigente; por ello no se atribuyen concentraciones, actividades ni capacidad a riesgos individuales. Las asignaciones mensuales y por perfil, y su encaje con la dotación del T-15, quedan pendientes de evidencia y planificación actualizadas.
 
-La Tabla 8.5 resume la contingencia por período; la Tabla D.2 la detalla por mes y perfil. El T-15, sección 4.5, la refleja en el plan: compara, período a período, el peak de personas equivalentes adicionales con la dotación. Toda la contingencia cabe en la dotación declarada, salvo implantación en los meses 15 y 20, donde la extensión de la marcha blanca (R8-18) se cubre con la opción de hasta 8 personas adicionales del contrato de implantación (E8-14).
+El T-15 deberá reflejar la capacidad cuando se disponga de una asignación sustentada. Con los antecedentes disponibles no puede afirmarse que toda la contingencia cabe en la dotación declarada ni que se requiera una capacidad adicional específica.
 
 \begingroup
 \renewcommand{\thetable}{8.5}
-\begin{tablalafrox}{Contingencia por período, HH. Fuente: Anexo 8.D, Tabla D.2.}{tab:sd8-cuerpo-6}{>{\hsize=1.01370\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X >{\hsize=0.98630\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X}{\cab{Período} & \cab{HH de contingencia}}
-Meses 1\textendash{}6 & 5.000,78 \\
-Meses 7\textendash{}12 & 5.253,15 \\
-Meses 13\textendash{}15 & 3.230,04 \\
-Meses 16\textendash{}21 & 2.995,70 \\
-Meses 22\textendash{}33 & 1.278,99 \\
-Meses 34\textendash{}56 & 2.440,32 \\
-Total & 20.198,98 \\
+\begin{tablalafrox}{Reservas de esfuerzo, HH. Fuente: estimación adoptada y supuesto de gestión existente.}{tab:sd8-cuerpo-6}{>{\hsize=1.01370\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X >{\hsize=0.98630\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X}{\cab{Concepto} & \cab{HH}}
+Contingencia adoptada ($p_0\times HH$) & 2.058,480 \\
+Gestión (supuesto independiente existente) & 1.600 \\
 \end{tablalafrox}
 \endgroup
 
-La distribución mantiene reserva hasta el mes 56. Cada cargo identifica evento, paquete, etapa, perfil, mes, HH y evidencia para impedir el doble consumo. Sólo una misma corrección comparte cargo; el residual hipotético no se libera sin cierre y autorización.
+La reserva de gestión de 1.600 HH es un supuesto existente, independiente de la contingencia y no derivado del registro cuantitativo. Su fundamento y validación se mantienen separados; no forma parte de las 2.058,480 HH de contingencia. Para cada cargo futuro se deberá identificar evento, paquete, etapa, perfil, período, HH y evidencia, evitando doble consumo.
 
-La reserva de gestión es de \textbf{1.600 HH}, separada de la contingencia y fuera de la línea base. Cubre un evento que el registro no identifica, dimensionado como rehacer un módulo de clase D (960 HH de desarrollo), su integración (480 HH) y una certificación (160 HH), con las unidades del T-15, sección 4.1. Con 8 desarrolladores y 4 evaluadores adicionales toma 0,94 meses de desarrollo y 1,25 de integración y certificación, unos 2,2 meses en secuencia. La autoriza el Comité Ejecutivo y obliga a actualizar la línea base; un riesgo identificado nunca se carga a esta reserva.
+La reserva de gestión existente es de \textbf{1.600 HH}; se conserva como supuesto independiente, fuera de la línea base y separada de la contingencia. No se deriva del registro p$_0\times$HH ni forma parte de las 2.058,480 HH. Su fundamento y validación son independientes y deben mantenerse documentados. La autoriza el Comité Ejecutivo y obliga a actualizar la línea base; un riesgo identificado nunca se carga a esta reserva.
 
 La reserva de cronograma son los días hábiles entre la entrega programada de cada hito y su fecha límite, de 4 a 35 (T-15, Tabla 5.2). Las cuatro semanas finales de cada marcha blanca son evidencia obligatoria y no aportan reserva. La valorización y el flujo monetario de las reservas corresponden a la Oferta Económica (BA Art. 50.2).
 
 \subsection{Factibilidad y aceptación}
 
-El Anexo 8.E registra las condiciones de evidencia: productividad/dotación, secuencias diarias y plazos de revisión/subsanación del Art. 18.3, fecha contractual, continuidad de 96 despachos, RPO remoto, atención y evidencia láctea. La coordinación de reserva y retención de INT-03/04 (SD4, apartado 4.1.4.4 y Anexo 4-G) está dimensionada en el Anexo 4-I, Tabla A.10, y el Anexo 4-W, Tablas A.32 y A.33, con un máximo de cuatro mensajes por línea. La retención consumida no se libera y esa holgura cubre líneas repartidas entre lotes o sitios. AL-STOCK-01 mide la proporción de líneas con más de una retención antes del H4. Las pruebas 3.8.4 y 3.9.3 verifican la carga y el drenaje, sin sumar la coordinación al drenaje tras un corte. El compromiso RPO \ensuremath{\leq}15 min del SD4, sección 4.2.5.1, se verifica por escenario sobre fibra, LTE y Starlink. La falla simultánea de los tres caminos seguida de la destrucción del sitio antes de reponer alguno es el riesgo residual declarado en SD4 4.3.2.4 (RT-02.11). R8-05 lo trata con alarmas de retraso de replicación a los 5 y 15 min, reposición del enlace por el proveedor, preemisión de guías al cerrar la carga y conservación local en el NAS WORM de Talca. AL-DR-01 mide RPO/RTO antes de H5/H10. Si el NAS se destruye con el sitio, sólo queda la última copia remota consistente: las medidas locales no demuestran por sí solas una pérdida de datos de 15 minutos o menos. Por eso E8-05 exige demostrar en AL-DR-01 qué copia remota sobrevive y en qué frontera se cumple el RPO de 15 minutos (RT-07.04), junto con el tratamiento del riesgo residual (RT-02.11).
+El Anexo 8.E registra las condiciones de evidencia: productividad/dotación, secuencias diarias y plazos de revisión/subsanación del Art. 18.3, fecha contractual, continuidad de 96 despachos, RPO remoto, atención y evidencia láctea. La coordinación de reserva y retención de INT-03/04 (SD4, apartado 4.1.4.4 y Anexo 4-G) está dimensionada en el Anexo 4-I, Tabla A.10, y el Anexo 4-W, Tablas A.32 y A.33, con un máximo de cuatro mensajes por línea. La retención consumida no se libera y esa holgura cubre líneas repartidas entre lotes o sitios. AL-STOCK-01 mide la proporción de líneas con más de una retención antes del H4. Las pruebas 3.8.4 y 3.9.3 verifican la carga y el drenaje, sin sumar la coordinación al drenaje tras un corte. El compromiso RPO \ensuremath{\leq}15 min del SD4, sección 4.2.5.1, se verifica por escenario sobre fibra, LTE y Starlink. La falla simultánea de los tres caminos seguida de la destrucción del sitio antes de reponer alguno es el riesgo residual declarado en SD4 4.3.2.4 (RT-02.11). Los controles de replicación, reposición de enlaces, preemisión de guías y conservación local deben verificarse con evidencia y responsables en el registro vigente. AL-DR-01 mide RPO/RTO antes de H5/H10. Si el NAS se destruye con el sitio, sólo queda la última copia remota consistente: las medidas locales no demuestran por sí solas una pérdida de datos de 15 minutos o menos. Por eso E8-05 exige demostrar en AL-DR-01 qué copia remota sobrevive y en qué frontera se cumple el RPO de 15 minutos (RT-07.04), junto con el tratamiento del riesgo residual (RT-02.11).
 
 El retiro sanitario debe identificar a los clientes afectados con evidencia en menos de dos horas; los 85 minutos de diseño del SD5 no constituyen un ensayo aprobado. E8-13 y E8-14 establecen las condiciones de calendario y capacidad. No se autoriza corte sin continuidad medida ni aceptación sin las seis condiciones simultáneas del Art. 17.3 y acta según Art. 18. La suspensión del proveedor de lácteos, de marzo a septiembre de 2026, es antecedente ocurrido. La consulta V-13 del SD3 (Anexo 3.H) precisa en el mes 1, con el CLIENTE y el proveedor, qué evidencia de trazabilidad restablece la relación, y la Etapa 1 prioriza esa trazabilidad; la restitución depende del proveedor. La propuesta queda sujeta a las condiciones de cierre del Anexo 8.E, cada una con responsable, hito límite y evidencia; ninguna se da por cumplida sin las decisiones, pruebas y actas que allí se indican.
 
