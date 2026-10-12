@@ -875,20 +875,47 @@
 
 % Indice de tablas y de figuras. Se generan solos a partir de los \caption:
 % no hay ninguna lista que mantener a mano.
+\newif\ifLFXhaytablas
+\newif\ifLFXhayfiguras
+\newif\ifLFXcapturatablas
+\newif\ifLFXcapturafiguras
+\newwrite\LFX@listasout
+
+\newcommand{\LFXprepararlistas}{%
+  \global\LFXhaytablasfalse
+  \global\LFXhayfigurasfalse
+  \InputIfFileExists{\jobname.lfxlists}{}{}%
+  \global\LFXcapturatablasfalse
+  \global\LFXcapturafigurasfalse
+  \immediate\openout\LFX@listasout=\jobname.lfxlists\relax
+  \AtEndDocument{%
+    \ifLFXcapturatablas
+      \immediate\write\LFX@listasout{\string\LFXhaytablastrue}%
+    \fi
+    \ifLFXcapturafiguras
+      \immediate\write\LFX@listasout{\string\LFXhayfigurastrue}%
+    \fi
+    \immediate\closeout\LFX@listasout}}
+
 \newcommand{\listatablaslafrox}{%
-  \phantomsection\addcontentsline{toc}{chapter}{Lista de tablas}%
-  \LFXtitulopreliminar{Lista de tablas}%
-  \@starttoc{lot}%
-  \clearpage}
+  \ifLFXhaytablas
+    \phantomsection\addcontentsline{toc}{chapter}{Lista de tablas}%
+    \LFXtitulopreliminar{Lista de tablas}%
+    \@starttoc{lot}%
+    \clearpage
+  \fi}
 
 \newcommand{\listafiguraslafrox}{%
-  \phantomsection\addcontentsline{toc}{chapter}{Lista de figuras}%
-  \LFXtitulopreliminar{Lista de figuras}%
-  \@starttoc{lof}%
-  \clearpage}
+  \ifLFXhayfiguras
+    \phantomsection\addcontentsline{toc}{chapter}{Lista de figuras}%
+    \LFXtitulopreliminar{Lista de figuras}%
+    \@starttoc{lof}%
+    \clearpage
+  \fi}
 
 % Los tres indices, en el orden en que los espera un evaluador
 \newcommand{\preliminareslafrox}{%
+  \LFXprepararlistas
   \indicelafrox
   \listatablaslafrox
   \listafiguraslafrox}
@@ -971,6 +998,19 @@
   pdfkeywords={licitacion, oferta tecnica, logistica, Puelche},
   pdfcreator={LuaLaTeX + lafrox.cls}}
 \RequirePackage{bookmark}
+\AddToHook{begindocument/end}{%
+  \let\LFX@addcontentslineoriginal\addcontentsline
+  \def\addcontentsline#1#2#3{%
+    \edef\LFX@writefileextension{#1}%
+    \edef\LFX@lotextension{lot}%
+    \edef\LFX@lofextension{lof}%
+    \ifx\LFX@writefileextension\LFX@lotextension
+      \global\LFXcapturatablastrue
+    \fi
+    \ifx\LFX@writefileextension\LFX@lofextension
+      \global\LFXcapturafigurastrue
+    \fi
+    \LFX@addcontentslineoriginal{#1}{#2}{#3}}}
 
 % ---------------------------------------------------------------------------
 % 15. PORTADA
