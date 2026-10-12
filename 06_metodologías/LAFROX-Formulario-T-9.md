@@ -1,66 +1,59 @@
-# Formulario T-9: Metodología para la administración y gestión del proyecto
+# Formulario T-9 — Metodología de gestión de proyecto
 
-**Licitación:** TFEP-01/2026 — Caso 02: Logística  
+**Licitación:** TFEP-01/2026 — Caso 02: Logística
+
 **Proponente:** LafroX SpA
 
-Conforme al Formulario T-9 de las Bases Administrativas, este documento desarrolla la información solicitada en el Subdocumento 6, letra a: la sección 6.1, Metodología de Gestión de Proyectos ([LAFROX-Subdocumento6.md](LAFROX-Subdocumento6.md#61-metodología-de-gestión-de-proyectos)). El Subdocumento 6 conserva la síntesis metodológica; aquí se presenta el detalle de gestión.
+## Índice
 
-## 1. Metodología de gestión del proyecto
+- [1 Gestión de proyecto](#1-gestión-de-proyecto)
+  - [1.1 Metodología de gestión de proyecto](#11-metodología-de-gestión-de-proyecto)
+    - [1.1.1 Gestión de interesados](#111-gestión-de-interesados)
+    - [1.1.2 Gestión de comunicaciones](#112-gestión-de-comunicaciones)
+    - [1.1.3 Gestión de adquisiciones](#113-gestión-de-adquisiciones)
+    - [1.1.4 Gestión de integración](#114-gestión-de-integración)
+    - [1.1.5 Control del alcance, del cronograma y del valor ganado](#115-control-del-alcance-del-cronograma-y-del-valor-ganado)
+    - [1.1.6 Mecanismos de decisión y cadencias de gobierno](#116-mecanismos-de-decisión-y-cadencias-de-gobierno)
 
-La gestión aplica la Guía del PMBOK, sexta edición (PMI, 2017), adaptada a un proyecto de 56 meses, con dos etapas que se solapan y una operación que no puede detenerse. Se utilizan, con la profundidad que requiere cada proceso, las prácticas de integración, alcance, cronograma, calidad, recursos, comunicaciones, riesgos, adquisiciones e interesados. Alcance y cronograma tienen líneas base formales: los hitos del Formulario E-25 son fechas fijas y se aceptan por acta. El avance se mide mediante valor ganado y no mediante porcentajes declarados (RT-19.07). El flujo diario se gestiona con Kanban, que no reemplaza las líneas base ni la aceptación formal de entregables.
+## 1 Gestión de proyecto
 
-La planificación define entregables, responsables, recursos, plazos y dependencias, considerando las restricciones operacionales. La línea base de alcance (paquete 1.2.1, H1) y la de cronograma (1.3.3) permiten medir avance y evaluar desviaciones.
+Este formulario desarrolla la metodología de gestión de proyectos correspondiente a la sección 6.1 del Subdocumento 6. La propuesta adapta la Guía del PMBOK, sexta edición, a las etapas del proyecto, la continuidad operacional y las necesidades de planificación y control.
 
-### Etapas y entregas
+### 1.1 Metodología de gestión de proyecto
 
-La ejecución se organiza en entregas incrementales dentro de las dos etapas contractuales. Primero se prioriza la calidad y disponibilidad de la información operacional; luego, las capacidades que dependen de esos datos para optimizar y analizar la operación.
+La gestión del proyecto aplica la Guía del PMBOK, sexta edición (PMI, 2017), adaptada a un proyecto de 56 meses con dos etapas, solapamiento entre ellas y una operación que no puede detenerse; se usan los procesos de integración, alcance, cronograma, calidad, recursos, comunicaciones, riesgos, adquisiciones e interesados, con la profundidad que exige cada uno. El alcance y el cronograma tienen líneas base formales, porque los hitos del Formulario E-25 son fechas fijas y se aceptan por acta. El avance se mide con valor ganado y no con porcentajes declarados (RT-19.07). El flujo diario del equipo se gestiona con un tablero Kanban, que no reemplaza la línea base ni la aceptación formal de los entregables.
 
-| Etapa | Capacidades y calendario |
-| --- | --- |
-| Etapa 1 | Preventa, recepción, bodega, preparación y cross-docking; trazabilidad de lotes y cadena de frío; planificación de rutas basada en el conocimiento del planificador, con acuse de recibo de conductores; manejo de efectivo y retiros de pedidos. Desarrollo meses 1–12, marcha blanca meses 13–15 y paso a producción mes 16. |
-| Etapa 2 | Portales e intercambio electrónico con clientes y, finalmente, costo de servir. Desarrollo meses 13–18, marcha blanca meses 19–20 y paso a producción mes 21. |
+La planificación define los entregables, sus responsables, los recursos, los plazos y las dependencias entre actividades, considerando las restricciones de la operación. La línea base de alcance (paquete 1.2.1, H1) y la de cronograma (1.3.3) sirven para medir el avance y evaluar las desviaciones.
 
-La Etapa 2 se coordina con la marcha blanca y estabilización de la Etapa 1, resguardando continuidad operacional e integridad de datos compartidos.
+El proyecto se ejecuta mediante entregas incrementales dentro de las dos etapas contractuales. La distribución propuesta prioriza primero la calidad y disponibilidad de la información operacional, y luego las capacidades que dependen de esos datos para optimizar y analizar la operación. En la Etapa 1 se implementan las capacidades de preventa, recepción, bodega, preparación y cross-docking; la trazabilidad de los lotes y de la cadena de frío; la planificación de rutas basada en el conocimiento del planificador, con el acuse de recibo de los conductores; y el manejo de efectivo y los retiros de los pedidos. En la Etapa 2 se implementan los portales y el intercambio electrónico con los clientes y, por último, el costo de servir.
 
-### Flujo Kanban
+La planificación respeta el cronograma contractual: desarrollo de la Etapa 1 entre los meses 1 y 12, marcha blanca entre los meses 13 y 15 y paso a producción en el mes 16. El desarrollo de la Etapa 2 ocupa los meses 13 a 18, la marcha blanca los meses 19 y 20 y el paso a producción el mes 21. El trabajo de la Etapa 2 se coordina con la marcha blanca y la estabilización de la Etapa 1, resguardando la continuidad operacional y la integridad de los datos compartidos.
 
-El tablero presenta trabajo pendiente, en ejecución, en revisión y terminado, con responsables y bloqueos, y establece límites de trabajo en curso. Cada tarea tiene una definición de terminado y, cuando corresponde, evidencia asociada a los criterios de aceptación del entregable al que contribuye.
+El tablero Kanban muestra el trabajo pendiente, en ejecución, en revisión y terminado, con responsables y bloqueos, y fija límites de trabajo en curso. Cada tarea tiene una definición de terminado y, cuando corresponde, evidencia asociada a los criterios de aceptación del entregable al que contribuye. La gestión del proyecto se complementa con los procesos de los apartados siguientes.
 
-## 2. Gestión de interesados
+#### 1.1.1 Gestión de interesados
 
-La gestión identifica personas, grupos y organizaciones que pueden influir en el proyecto o verse afectados. Para cada interesado se consideran necesidades, expectativas, influencia, impacto potencial y disposición frente a los cambios. Se distingue quién decide, aporta conocimiento operacional, valida entregables, resulta afectado o ejerce supervisión externa.
+La gestión de interesados identifica a las personas, grupos y organizaciones que pueden influir en el proyecto o verse afectados por sus resultados. Para cada interesado se registran sus necesidades, expectativas, nivel de influencia, impacto potencial y disposición frente a los cambios. El análisis distingue quiénes participan en decisiones, quiénes aportan conocimiento operacional, quiénes validan entregables y quiénes son afectados o ejercen supervisión externa.
 
-El jefe de proyecto mantiene actualizado el registro de interesados (paquete 1.4.1) y planifica su involucramiento según cada entrega. La participación puede incluir levantamiento de necesidades, revisión de procesos, validación de criterios, pruebas y retroalimentación. Inquietudes, resistencias, acuerdos y compromisos relevantes se registran con responsable y seguimiento; los conflictos que no se resuelvan en la instancia de trabajo se elevan a la autoridad correspondiente.
+El jefe de proyecto mantiene actualizado el registro de interesados (paquete 1.4.1) y planifica su involucramiento de acuerdo con el alcance de cada entrega. La participación puede incluir levantamiento de necesidades, revisión de procesos, validación de criterios, pruebas y retroalimentación. Las inquietudes, resistencias, acuerdos y compromisos relevantes se registran con su responsable y seguimiento; los conflictos que no puedan resolverse en la instancia de trabajo se elevan a la autoridad correspondiente.
 
-La tabla resume los grupos, intereses y contribuciones esperadas. La participación concreta depende de las responsabilidades y actividades de cada entrega; la inclusión no implica participación en todas las decisiones ni atribuciones de aprobación.
+La tabla de interesados se encuentra en los anexos del subdocumento 6. Siendo la tabla [6.A.1](LAFROX-Subdocumento6-Anexos.md#tabla-6-a-1)
 
-| Interesado | Interés o preocupación | Contribución esperada |
-| --- | --- | --- |
-| Gerencia general | Continuidad del negocio y relación con clientes | Aportar prioridades del negocio y resolver decisiones que requieran su intervención |
-| Jefatura de calidad | Trazabilidad de lotes y control de temperatura | Definir y revisar reglas de control sanitario y evidencia de trazabilidad |
-| Autoridades sanitarias | Disponibilidad y confiabilidad de la evidencia de trazabilidad | Informar exigencias aplicables y revisar antecedentes cuando corresponda |
-| Planificador de rutas | Preservar el conocimiento operacional | Documentar restricciones y reglas de planificación, y participar en su validación |
-| Gerencia comercial | Cumplimiento de la promesa de entrega e información confiable | Aportar y validar políticas comerciales, procesos de preventa y necesidades de servicio |
-| Cadenas de supermercados | Recepción completa y oportuna de pedidos e intercambio electrónico | Participar en la definición y validación de los flujos de aviso de despacho y evidencia de entrega |
-| Clientes del canal tradicional | Recepción correcta de pedidos, pagos y atención | Aportar retroalimentación sobre recepción, comprobantes y atención |
-| Preventistas | Consulta de stock y crédito, y registro confiable de pedidos | Participar en el levantamiento y prueba de los flujos de preventa y cobranza |
-| Sindicato de conductores | Condiciones de trabajo y uso de tecnologías | Canalizar inquietudes y aportar observaciones sobre cambios que afecten a conductores |
-| Conductores propios | Registro de entregas, devoluciones y cobros | Participar en pruebas de ruta y validar usabilidad de dispositivos |
-| Jefatura de bodega | Preparación, despacho y control de inventario | Aportar y validar procedimientos, excepciones y condiciones de operación |
-| Preparadores de pedidos | Claridad de instrucciones y adecuación de dispositivos | Participar en pruebas de flujos de preparación de pedidos |
-| Gerencia de operaciones | Continuidad del despacho y cumplimiento de entregas | Aportar prioridades operacionales y validar procedimientos y cambios que afecten la operación |
-| Administración y finanzas | Control de cobros, conciliación y costos de servir | Definir y validar reglas de rendición, conciliación e indicadores financieros |
-| Equipo de TI | Integración con sistemas existentes y mantenibilidad | Coordinar accesos e integraciones, y revisar documentación y transferencia de conocimiento |
-| Conductores de transportistas externos | Acceso a la solución y registro de actividades de reparto | Participar en pruebas de flujos pertinentes y aportar observaciones de uso |
-| Proveedores | Intercambio de información de productos, lotes, despacho y órdenes de compra | Coordinar formatos de intercambio y participar en pruebas de recepción, trazabilidad y portal de proveedores |
+La tabla resume los principales grupos y roles identificados, sus intereses y la contribución esperada. La participación concreta se acuerda según las responsabilidades de cada interesado y las actividades de cada entrega; la inclusión en la tabla no implica que todos participen en todas las decisiones ni que tengan atribuciones de aprobación.
 
-## 3. Gestión de comunicaciones
+#### 1.1.2 Gestión de comunicaciones
 
-Las comunicaciones mantienen informados a los responsables de Puelche y demás interesados sobre los avances pertinentes, sostienen una comprensión común del estado, facilitan decisiones y alertan oportunamente sobre situaciones que puedan afectar compromisos.
+La gestión de las comunicaciones mantiene informados a los responsables de Puelche y a los demás interesados sobre los avances de las entregas que les competen, sostiene una comprensión común del estado del proyecto, facilita la toma de decisiones y comunica oportunamente las situaciones que puedan afectar los compromisos acordados.
 
-Las reuniones convocan a quienes se necesitan para analizar y resolver los asuntos. Las actas registran decisiones, pendientes, responsables y plazos; las actas de comités se levantan dentro de los dos días hábiles siguientes (RT-19.09). Documentación vigente, entregables, actas y registros de riesgos y cambios se mantienen en el espacio colaborativo accesible al CLIENTE (RT-19.05). Antes de cada entrega incremental se informan los cambios previstos, validaciones y apoyo requerido para la puesta en funcionamiento. Las observaciones se registran y reciben respuesta, distinguiendo las atendibles dentro de lo acordado de las que requieren solicitud de cambio.
+Las reuniones convocan a las personas necesarias para analizar y resolver sus asuntos. Los acuerdos se registran en actas que identifican las decisiones, las actividades pendientes, sus responsables y los plazos; las actas de los comités se levantan dentro de los dos días hábiles siguientes (RT-19.09). La documentación vigente, los entregables, las actas y los registros de riesgos y de cambios se mantienen en el espacio colaborativo accesible al CLIENTE (RT-19.05).
 
-| Comunicación | Responsable | Destinatarios | Frecuencia o momento |
+Antes de cada entrega incremental se informa a los interesados pertinentes sobre los cambios previstos, las actividades de validación y el apoyo necesario para la puesta en funcionamiento. Las observaciones se registran y reciben respuesta, distinguiendo las que pueden atenderse dentro de lo acordado de las que requieren una solicitud de cambio.
+
+<a id="tabla-t-9-1"></a>
+
+**Tabla T-9.1. Comunicación del proyecto – Fuente: elaboración propia**
+
+| Comunicación | Responsable de comunicar | Destinatarios | Frecuencia o momento |
 | --- | --- | --- | --- |
 | Seguimiento de actividades, compromisos y bloqueos | Jefe de proyecto | Equipo de proyecto y contrapartes involucradas | Semanal |
 | Avance de entregables, desviaciones y riesgos | Jefe de proyecto | Comité de Proyecto | Quincenal; registro de riesgos revisado en cada sesión |
@@ -68,69 +61,42 @@ Las reuniones convocan a quienes se necesitan para analizar y resolver los asunt
 | Niveles de servicio, incidentes y capacidad en producción | Líder de Operación / SRE | Comité de Operación | Mensual, desde el mes 13 |
 | Cambios previstos, validaciones y apoyo | Jefe de proyecto | Interesados pertinentes | Antes de cada entrega |
 
-## 4. Gestión de adquisiciones
+#### 1.1.3 Gestión de adquisiciones
 
-La gestión planifica, contrata y controla los bienes y servicios requeridos: contratos, órdenes de compra, acuerdos con terceros y acuerdos de nivel de servicio. Cada adquisición tiene responsable, fecha de necesidad derivada del cronograma, dependencias y evidencia de recepción.
+La gestión de adquisiciones planifica, contrata y controla los bienes y servicios que requiere la solución: contratos, órdenes de compra, acuerdos con terceros y acuerdos de nivel de servicio. Cada adquisición tiene un responsable, una fecha de necesidad derivada del cronograma, una dependencia con los paquetes que la usan y una evidencia de recepción.
 
-El CLIENTE compra el equipamiento de terreno conforme a las cantidades y características especificadas por LafroX (Caso 02, capítulo 11; SD3 E-09; paquete 5.1.1). LafroX compra el equipamiento de la sala técnica, incluidos racks, servidores y equipos de borde (paquete 5.1.2), según la asignación de T-14: orden de compra en mes 2 e instalación en mes 3. La recepción técnica de los equipos se acredita con su evidencia y no debe confundirse con la recepción de la sala, ubicada por T-15 en mes 4. La fecha de recepción técnica y la de commissioning/puesta en servicio no se especifican aquí. LafroX habilita el recinto proporcionado por el CLIENTE e instala y configura los equipos (fase 6 de la EDT). LafroX contrata los servicios que le corresponden. Las licencias de terceros se constituyen a nombre del CLIENTE (5.2.3).
+El CLIENTE compra el equipamiento de terreno conforme a la especificación de cantidades y características que prepara LafroX (Caso 02, capítulo 11; SD3 E-09; paquete 5.1.1). Para el equipamiento de la sala técnica, incluidos racks, servidores y equipos de borde (paquete 5.1.2), T-14 asigna a LafroX la orden de compra en el mes 2 y la instalación en el mes 3. La recepción técnica de los equipos se acredita con su evidencia de recepción; su fecha no se confunde con la recepción de la sala, que T-15 ubica en el mes 4. El commissioning o puesta en servicio no tiene aquí una fecha afirmada. La asignación de la compra no traslada al CLIENTE la habilitación e instalación: LafroX habilita el recinto técnico en el espacio que proporciona el CLIENTE e instala y configura los equipos (fase 6 de la EDT). LafroX contrata los servicios que le corresponden. Las licencias de terceros se constituyen a nombre del CLIENTE (5.2.3).
 
-La siguiente tabla reproduce las responsabilidades, necesidades, plazos y evidencias indicados en la tabla de adquisiciones del Subdocumento 6. Para cada fila, el registro de adquisiciones contiene estado, proveedor y fecha comprometida. Un atraso que amenace H3 o una ola se escala al Comité Ejecutivo con análisis de impacto.
+La tabla de adquisiciones se encuentra en los anexos del subdocumento 6. Siendo la tabla [6.A.2](LAFROX-Subdocumento6-Anexos.md#tabla-6-a-2)
 
-| Bien o servicio | Necesidad asociada | Responsable, plazo, paquetes y evidencia |
-| --- | --- | --- |
-| Equipamiento de terreno: terminales de preventa, reparto y bodega, impresoras, sensores de temperatura, termógrafos y gateways IoT | Operación de aplicaciones y registro de frío | CLIENTE, según especificación 5.1.1. Arquitecto: especificación; SRE: recepción. Antes de cada ola; sensores antes de 6.5. Paquetes 6.5, 4.2.1. Actas 5.1.3. |
-| Sala técnica de Talca: UPS, generador, climatización de precisión, detección y extinción, racks y gabinetes de borde | Recinto técnico del H3 | LafroX, según especificación 5.1.2. Arquitecto: especificación; SRE: instalación y recepción técnica. Orden de compra mes 2; energía, climatización e incendio mes 3; recepción de sala mes 4; racks R01/R02 meses 4–5; gabinete de Concepción mes 4; borde de los CD en servicio mes 5 y gabinetes cross-docking mes 9. Paquetes 6.1, 6.3, 6.6. Actas 5.1.3 y 6.1.5. |
-| Servidores, almacenamiento, firewalls, switches y mini-PC de borde | Cómputo y red de los sitios | LafroX, según especificación 5.1.2. SRE: instalación y recepción técnica. Orden de compra mes 2; montaje de racks de Talca meses 4–5, después de la recepción de su sala; gabinete de Concepción mes 4, en paralelo e independiente de esa recepción; borde de los CD en servicio mes 5 y gabinetes cross-docking mes 9, conforme a 6.3/6.6. Actas 5.1.3. |
-| Obra civil, piso técnico e instalación de energía, climatización e incendio | Habilitación del recinto | Obra civil de separación a cargo del CLIENTE (RT-06.06); LafroX especifica y coordina, provee el piso técnico y contrata los instaladores especializados de los sistemas. SRE. Mes 3, después de 5.1.2; recepción de sala mes 4. Paquetes 6.1.1 a 6.1.4. Acta 6.1.5. |
-| Servicios de AWS | Plataforma de nube y ambientes | LafroX (5.2.1); SRE. Antes del mes 4. Paquetes 3.1, 3.2. Cuentas y servicios activos. |
-| Gestión de dispositivos y detección en endpoints | Enrolamiento y seguridad de terminales | LafroX (5.2.2); SRE. Antes del enrolamiento. Paquetes 6.5, 7.1. Suscripciones activas. |
-| Licencias de software de terceros | Productos de la arquitectura | A nombre del CLIENTE (5.2.3); Arquitecto. Antes de usar cada producto. Paquetes 3.1 a 3.6. Registro de licencias. |
-| Fibra óptica de Talca y Concepción | Enlace principal | LafroX (5.3.1); SRE. Antes de H3. Paquete 6.6. Contrato y fecha de instalación. |
-| Planes LTE de dos proveedores | Respaldo de enlace | LafroX (5.3.2); SRE. Antes de H3. Paquete 6.6. Contratos. |
-| Starlink de Talca, Concepción y las tres plataformas | Enlace satelital de los cinco sitios | LafroX (5.3.3); SRE. Antes de H3. Paquete 6.6. Contratos y equipos para los cinco sitios. |
-| Acuerdos con los diez transportistas | Uso de terminales y suplentes enrolados | LafroX con el CLIENTE (5.4.1); Implantación. Antes de H6. Paquetes 4.2.1, ola de reparto. Diez acuerdos firmados. |
-| Acta con el sindicato | Terminales, GPS y cámaras | CLIENTE y sindicato (5.4.2); Implantación. Antes de H6. Paquete 4.2.1. Acta firmada. |
-| Custodia de fuentes | Continuidad ante insolvencia o incumplimiento | LafroX (5.4.4); jefe de proyecto. Antes de H4. Paquete 9.2. Contrato y primer depósito. |
-| Analistas del SOC 24×7 propio | Monitoreo de seguridad desde el mes 13 | LafroX (8.1.5; RT-11.17). Encargado de Seguridad. Antes del mes 13. SOC propio en el Centro de Operaciones de LafroX en Valparaíso; evidencia: contratos de los analistas y turnos 24×7 asignados antes de la primera marcha blanca. |
+Cada fila tiene en el registro de adquisiciones su estado, su proveedor y su fecha comprometida. Un atraso que amenace el H3 o una ola se escala al Comité Ejecutivo con su análisis de impacto.
 
-## 5. Gestión de integración y control de cambios
+#### 1.1.4 Gestión de integración
 
-La integración alinea alcance, cronograma, costos, recursos, calidad, riesgos y adquisiciones. El jefe de proyecto consolida estos elementos en el plan para la dirección del proyecto, lo comunica a los responsables y lo actualiza cuando se aprueban cambios. En ejecución coordina actividades y dependencias, revisa avance de entregables y gestiona impedimentos que afectan a varios equipos o áreas. Decisiones, acuerdos, riesgos transversales y asuntos escalados se registran con responsable, resolución y fecha de seguimiento.
+La gestión de integración mantiene alineados los componentes del proyecto para que las decisiones sobre alcance, cronograma, costos, recursos, calidad, riesgos y adquisiciones se analicen de manera coordinada. El jefe de proyecto consolida estos elementos en el plan para la dirección del proyecto, lo comunica a los responsables y lo actualiza cuando se aprueban cambios.
 
-Toda solicitud que pueda afectar alcance, plazos, costos o criterios de aceptación se documenta y evalúa antes de implementarse. El análisis considera el plan, entregables relacionados, riesgos y operación. El jefe de proyecto eleva la solicitud a la autoridad correspondiente de Puelche y comunica la decisión a quienes afecta. Solo los cambios aprobados se incorporan a la planificación vigente. Las acciones correctivas para cumplir compromisos aprobados se registran y supervisan; si alteran esos compromisos, también se tramitan como solicitudes de cambio.
+Durante la ejecución, el jefe de proyecto coordina las actividades y sus dependencias, revisa el avance de los entregables y gestiona los impedimentos que afectan a más de un equipo o área. Las decisiones, acuerdos, riesgos transversales y asuntos que requieran escalamiento quedan registrados con su responsable, resolución y fecha de seguimiento.
 
-Al término de cada entrega se comprueba el cumplimiento de criterios de aceptación y la existencia de evidencia requerida. Las observaciones pendientes se registran con responsable y tratamiento acordado, y se documentan lecciones aprendidas.
+Toda solicitud de cambio que pueda afectar el alcance, los plazos, los costos o los criterios de aceptación se documenta y evalúa antes de implementarla. El análisis considera sus efectos en el plan, los entregables relacionados, los riesgos y la operación. El jefe de proyecto eleva la solicitud a la autoridad correspondiente de Puelche y comunica la decisión a las personas afectadas. Solo los cambios aprobados se incorporan a la planificación vigente. Las acciones correctivas destinadas a cumplir los compromisos aprobados se registran y supervisan; si modifican esos compromisos, se tramitan además como solicitudes de cambio.
 
-## 6. Control del alcance, cronograma y valor ganado
+Al finalizar cada entrega se comprueba que sus resultados satisfagan los criterios de aceptación y cuenten con la evidencia requerida. Las observaciones pendientes se registran con responsable y tratamiento acordado, y se documentan las lecciones aprendidas.
 
-El alcance se controla contra la línea base y la matriz de trazabilidad del Formulario T-12: un requerimiento se considera cumplido solo cuando pasa la prueba asignada en el paquete que lo construye. El cronograma se controla contra la red del Formulario T-15, sección 5, que incluye los diez días hábiles de revisión del CLIENTE antes de cada hito (Art. 18.3).
+#### 1.1.5 Control del alcance, del cronograma y del valor ganado
 
-El avance se mide con valor ganado (RT-19.07). El valor planificado mensual es la suma de horas-hombre programadas para los paquetes en curso según T-15. El valor ganado acredita las horas de un paquete únicamente en hitos definidos de antemano (inicio, revisión interna y aceptación), no por porcentaje declarado. El costo real corresponde a las horas registradas. Se calculan los índices de desempeño del cronograma (SPI) y del costo (CPI). Un SPI o CPI inferior a 0,90, o una desviación superior al 10 %, obliga a presentar un plan de recuperación dentro de cinco días hábiles (paquete 1.8.6).
+El alcance se controla contra la línea base y la matriz de trazabilidad del Formulario T-12: un requerimiento sólo se da por cumplido cuando pasa la prueba asignada en el paquete que lo construye. El cronograma se controla contra la red del Formulario T-15, sección 5, que incluye los diez días hábiles de revisión del CLIENTE antes de cada hito (Art. 18.3).
 
-Las reservas se controlan por separado: la capacidad protegida de la Etapa 1 y las necesidades de contingencia del SD8 solo se usan con autorización registrada. Su consumo se informa en el informe mensual.
+El avance se mide con valor ganado (RT-19.07). El valor planificado de cada mes es la suma de las horas hombre programadas de los paquetes en curso según el Formulario T-15; el valor ganado acredita las horas de un paquete sólo en hitos de avance definidos de antemano (inicio, revisión interna y aceptación) y no por porcentaje declarado; el costo real son las horas registradas. Con ellos se calculan el índice de desempeño del cronograma (SPI) y el del costo (CPI). Un SPI o un CPI bajo 0,90, o una desviación mayor al 10 %, obligan a presentar un plan de recuperación dentro de cinco días hábiles (paquete 1.8.6).
 
-## 7. Mecanismos de decisión y cadencias de gobierno
+Las reservas se controlan por separado: la capacidad protegida de la Etapa 1 y las necesidades de contingencia del SD8 sólo se usan con autorización registrada, y su consumo se informa en el mismo informe mensual.
 
-Los comités del Art. 71° de las Bases Administrativas se organizan de la siguiente manera:
+#### 1.1.6 Mecanismos de decisión y cadencias de gobierno
 
-| Instancia | Participantes | Cadencia y responsabilidad |
-| --- | --- | --- |
-| Reunión de seguimiento (paquete 1.3.5) | Jefe de proyecto y líderes de frente | Semanal; revisa avance, bloqueos y datos para los comités. No reemplaza a ningún comité. |
-| Comité de Proyecto (paquete 1.8.3) | Jefe de proyecto, líderes y Contraparte Técnica | Quincenal; revisa avance de entregables y registro vivo de riesgos (RT-19.04). |
-| Comité Ejecutivo (paquete 1.8.2) | Gerencias del CLIENTE y dirección de LafroX | Mensual; resuelve escalamientos, cambios de alcance o plazo y uso de reservas. |
-| Comité de Arquitectura (paquete 1.8.4) | Arquitecto de Solución, Seguridad y TI del CLIENTE | Mensual; decide asuntos de arquitectura y mantiene su registro. |
-| Comité de Operación (paquete 1.8.5) | Líder de Operación / SRE, mesa de servicio, Operaciones y TI del CLIENTE | Mensual desde el mes 13 hasta el mes 56; revisa niveles de servicio, incidentes y problemas, capacidad de la mesa, pruebas de continuidad y plan de mejoras. |
+Los comités del Art. 71° de las Bases Administrativas se organizan así:
 
-El Comité de Operación comienza con la primera marcha blanca, cuando la solución empieza a atender operaciones reales. Revisa mensualmente disponibilidad de servicios críticos; incidentes críticos y altos y sus causas; atención de la mesa (respuesta antes de 20 segundos, abandono y resolución al primer contacto); pruebas de restauración y continuidad; y cambios programados. Las actas registran acuerdos, responsables y plazos (RT-19.09).
+- Reunión de seguimiento semanal (paquete 1.3.5), con el jefe de proyecto y líderes de frente: revisa avance, bloqueos y datos para los comités; no reemplaza a ningún comité.
+- Comité de Proyecto quincenal (paquete 1.8.3), con jefe de proyecto, líderes y Contraparte Técnica: revisa avance de entregables y el registro vivo de riesgos (RT-19.04).
+- Comité Ejecutivo mensual (paquete 1.8.2), con gerencias del CLIENTE y dirección de LafroX: resuelve escalamientos, cambios de alcance o plazo y uso de reservas.
+- Comité de Arquitectura mensual (paquete 1.8.4), con Arquitecto de Solución, Seguridad y TI del CLIENTE: decide asuntos de arquitectura y mantiene su registro.
+- Comité de Operación mensual desde el mes 13 hasta el mes 56 (paquete 1.8.5), con Líder de Operación / SRE, mesa de servicio, Operaciones y TI del CLIENTE: revisa niveles de servicio, incidentes y problemas, capacidad de la mesa, pruebas de continuidad y plan de mejoras.
 
-## Referencias
-
-- Distribuidora Puelche S.A. (2026a). *Bases Administrativas de Licitación N.º TFEP-01/2026*, Formulario T-9.
-- Project Management Institute (2017). *Guía de los fundamentos para la dirección de proyectos (Guía del PMBOK)*, sexta edición.
-- Referencias contractuales internas citadas en el texto: Formularios E-25, T-12, T-14 y T-15; Subdocumentos 3 y 8; RT-19.04, RT-19.05, RT-19.06, RT-19.07 y RT-19.09; RT-11.17.
-
-## Declaración de uso de IA
-
-| Sección | Herramienta | Finalidad del uso | Nivel en texto | Nivel en diagramas | Revisión humana (quién y qué verificó) |
-| --- | --- | --- | --- | --- | --- |
-| Formulario T-9 | Claude Code | Portada, correspondencia con la sección 6.1 y adaptación a Markdown de la metodología detallada y sus tablas | Alto | Ninguno | No documentada |
+El Comité de Operación empieza con la primera marcha blanca, porque desde entonces la solución atiende operaciones reales. Revisa cada mes la disponibilidad de los servicios críticos, los incidentes críticos y altos y sus causas, la atención de la mesa (respuesta antes de 20 segundos, abandono y resolución al primer contacto), las pruebas de restauración y de continuidad y los cambios programados. Sus actas registran acuerdos, responsables y plazos (RT-19.09).

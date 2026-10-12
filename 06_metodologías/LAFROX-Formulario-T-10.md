@@ -1,130 +1,59 @@
-# Formulario T-10: Metodología para el desarrollo de software
+# Formulario T-10 — Metodología para el desarrollo de software
 
-**Licitación:** TFEP-01/2026 — Caso 02: Logística  
+**Licitación:** TFEP-01/2026 — Caso 02: Logística
+
 **Proponente:** LafroX SpA
 
-Conforme al Formulario T-10 de las Bases Administrativas, LafroX adjunta la información solicitada en el Subdocumento 6, letra b: la sección 6.2, «Metodología de desarrollo de software» ([LAFROX-Subdocumento6.md](LAFROX-Subdocumento6.md#62-metodología-de-desarrollo-software)), desarrollada en detalle en este formulario.
+## Índice
 
-| Contenido | Sección del Subdocumento 6 |
-| --- | --- |
-| Enfoque RUP iterativo e incremental y sus fases | 6.2 |
-| Arquitectura evolutiva, refactorización y deuda técnica | 6.2.1 |
-| DevSecOps, integración y entrega continuas, infraestructura como código y pruebas automatizadas | 6.2.2 |
-| Ceremonias, artefactos, cadencias y decisiones del desarrollo | 6.2.3 |
+- [1 Metodología de desarrollo de software](#1-metodología-de-desarrollo-de-software)
+  - [1.0.1 Arquitectura evolutiva, refactorización y deuda técnica](#101-arquitectura-evolutiva-refactorización-y-deuda-técnica)
+  - [1.0.2 DevSecOps, integración y entrega continuas, infraestructura como código y pruebas automatizadas](#102-devsecops-integración-y-entrega-continuas-infraestructura-como-código-y-pruebas-automatizadas)
+  - [1.0.3 Ceremonias, cadencias y decisiones del desarrollo](#103-ceremonias-cadencias-y-decisiones-del-desarrollo)
 
-## 6.2 Metodología de desarrollo de software
+## 1 Metodología de desarrollo de software
 
-La metodología de desarrollo se coordina con la gestión del proyecto y sus entregas incrementales. Se utiliza **Rational Unified Process (RUP)**, un proceso iterativo e incremental que organiza el desarrollo en cuatro fases y permite gestionar progresivamente requisitos, arquitectura, implementación y pruebas.
+La metodología de desarrollo se coordina con la gestión del proyecto y con sus entregas incrementales. Se utiliza **Rational Unified Process (RUP)**, un proceso iterativo e incremental que organiza el desarrollo en cuatro fases y permite gestionar requisitos, arquitectura, implementación y pruebas de manera progresiva. Su elección se basa en que el proyecto tiene requisitos regulatorios y de continuidad que exigen una arquitectura validada temprano, documentación trazable y entregas formales por etapa, sin renunciar a iteraciones cortas que reduzcan el tiempo hasta disponer de software verificable.
 
-La elección de RUP responde a que el proyecto tiene requisitos regulatorios y de continuidad que exigen validar temprano la arquitectura, mantener documentación trazable y realizar entregas formales por etapa, sin renunciar a iteraciones cortas que reduzcan el tiempo hasta disponer de software verificable.
+RUP se organiza en las siguientes fases:
 
-### Fases de RUP
+1. **Inicio**: se delimitan el alcance y los objetivos de la solución, se identifican los principales interesados y requisitos y se elaboran las estimaciones iniciales. También se reconocen los riesgos principales y se establece una visión inicial del producto.
+2. **Elaboración**: se profundizan los requisitos, incluidos los casos de uso, y se define la arquitectura de la solución. Se analizan los riesgos prioritarios y se prepara el plan de desarrollo, de modo que las decisiones de diseño más relevantes se validen antes de construir. Los prototipos con usuarios terminan antes de construir cada módulo.
+3. **Construcción**: se desarrollan las capacidades priorizadas mediante iteraciones. En cada iteración se analizan los requisitos correspondientes, se diseña e implementa la solución y se realizan pruebas. Los resultados se revisan con los interesados pertinentes y se ajustan cuando corresponde.
+4. **Transición**: se prepara la solución para su uso: pruebas de aceptación, resolución de observaciones, preparación de usuarios, marcha blanca y despliegue conforme a los hitos aprobados.
 
-1. **Inicio:** se delimitan el alcance y los objetivos de la solución, se identifican los principales interesados y requisitos, y se elaboran las estimaciones iniciales. También se reconocen los riesgos principales y se establece una visión inicial del producto.
-2. **Elaboración:** se profundizan los requisitos, incluidos los casos de uso, y se define la arquitectura de la solución. Se analizan los riesgos prioritarios y se prepara el plan de desarrollo para validar las decisiones de diseño más relevantes antes de construir. Los prototipos con usuarios terminan antes de construir cada módulo.
-3. **Construcción:** se desarrollan las capacidades priorizadas mediante iteraciones. En cada iteración se analizan los requisitos correspondientes, se diseña e implementa la solución y se realizan pruebas. Los resultados se revisan con los interesados pertinentes y se ajustan cuando corresponde.
-4. **Transición:** se prepara la solución para su uso mediante pruebas de aceptación, resolución de observaciones, preparación de usuarios, marcha blanca y despliegue conforme a los hitos aprobados.
+Las iteraciones producen resultados verificables, pero no implican una puesta en producción o una marcha blanca. La marcha blanca y la aceptación formal se realizan en los momentos definidos para cada etapa contractual. Los casos de uso expresan y siguen los requisitos funcionales, y la matriz del Formulario T-12 los vincula con su prueba.
 
-Las iteraciones generan resultados verificables, pero una demostración o incremento no constituye por sí mismo aceptación formal, puesta en producción ni marcha blanca. La marcha blanca y la aceptación formal ocurren en los momentos definidos para cada etapa contractual. Los casos de uso expresan y siguen los requisitos funcionales; la matriz del Formulario T-12 vincula estos requisitos con sus pruebas.
+La secuencia de iteraciones se coordina con las dos etapas contractuales: en la Etapa 1, preventa, recepción, bodega, preparación y cross-docking; trazabilidad de lotes y de la cadena de frío; planificación de rutas; confirmación de recepción por los conductores; y manejo de efectivo y retiros. En la Etapa 2, los portales y el intercambio electrónico con los clientes y, luego, el costo de servir. La transición sigue el cronograma: marcha blanca de la Etapa 1 entre los meses 13 y 15 y paso a producción en el mes 16; marcha blanca de la Etapa 2 en los meses 19 y 20 y paso a producción en el mes 21.
 
-### Etapas, capacidades e iteraciones
+### 1.0.1 Arquitectura evolutiva, refactorización y deuda técnica
 
-La secuencia de iteraciones se coordina con las etapas contractuales:
+La arquitectura se establece durante Elaboración y se aprueba en el H2; se valida progresivamente en las iteraciones de Construcción. Cuando los nuevos requisitos o los resultados de las pruebas justifican cambios, la arquitectura se ajusta mediante una nueva versión de la decisión en el registro de decisiones de arquitectura del SD4, con su fecha, estado y acta del Comité de Arquitectura.
 
-| Etapa | Capacidades previstas |
-| --- | --- |
-| **Etapa 1** | Preventa, recepción, bodega, preparación y cross-docking; trazabilidad de lotes y de la cadena de frío; planificación de rutas; confirmación de recepción por los conductores; manejo de efectivo y retiros. |
-| **Etapa 2** | Portales e intercambio electrónico con los clientes y, posteriormente, costo de servir. |
+Durante la construcción, el equipo refactoriza el software para mejorar su estructura interna y facilitar su mantenimiento, preservando su comportamiento funcional; las pruebas automatizadas comprueban que el comportamiento no cambió. Las limitaciones o compromisos técnicos que puedan dificultar cambios futuros se registran como deuda técnica, con su impacto y prioridad. Una deuda clasificada como bloqueante por el análisis estático impide el despliegue; las demás se planifican en las iteraciones y se revisan en el Comité de Arquitectura.
 
-La transición se ajusta al cronograma previsto: marcha blanca de la Etapa 1 entre los meses 13 y 15 y paso a producción en el mes 16; marcha blanca de la Etapa 2 en los meses 19 y 20 y paso a producción en el mes 21.
+### 1.0.2 DevSecOps, integración y entrega continuas, infraestructura como código y pruebas automatizadas
 
-## 6.2.1 Arquitectura evolutiva, refactorización y deuda técnica
+Cada cambio pasa por el pipeline de integración continua que define el SD4, sección 4.2: GitLab CI orquesta y AWS CodeBuild construye cada imagen de forma hermética, con procedencia SLSA nivel 3. El pipeline ejecuta la auditoría de dependencias con `composer audit`, las pruebas PHPUnit, el análisis estático con PHPStan y Larastan, el formato con Laravel Pint, las pruebas de contrato contra OpenAPI 3.1 y AsyncAPI 2.6, el escaneo de secretos y de imágenes de contenedor y la medición de cobertura.
 
-La arquitectura se establece durante Elaboración y se aprueba en el hito H2; se valida progresivamente en las iteraciones de Construcción. Cuando nuevos requisitos o resultados de pruebas justifican cambios, la arquitectura se actualiza mediante una nueva versión de la decisión correspondiente en el registro de decisiones de arquitectura del SD4, con fecha, estado y acta del Comité de Arquitectura.
+Las compuertas son bloqueantes, no opcionales. El pipeline detiene la promoción ante:
 
-Durante Construcción, el equipo refactoriza el software para mejorar su estructura interna y facilitar su mantenimiento, preservando el comportamiento funcional. Las pruebas automatizadas comprueban que ese comportamiento no haya cambiado.
+- un hallazgo de seguridad crítico o alto en dependencias, código, secretos o imagen;
+- un contrato público roto sin una nueva edición de la interfaz;
+- una cobertura de la lógica de negocio inferior al 70 % (RT-04.11);
+- una cobertura de líneas por pruebas unitarias del código modificado inferior al 80 %, política corporativa de LafroX (paquete 1.5.2);
+- una deuda técnica bloqueante o una prueba en falla.
 
-Las limitaciones o compromisos técnicos que puedan dificultar cambios futuros se registran como deuda técnica, junto con su impacto y prioridad. La deuda que el análisis estático clasifica como bloqueante impide el despliegue. Las demás deudas se planifican en las iteraciones y se revisan en el Comité de Arquitectura.
+La imagen aprobada se firma, se publica en Elastic Container Registry y se promueve por su digest, de modo que ningún ambiente recompila. La infraestructura de los cinco ambientes se describe como código: Terraform administra los recursos con estados separados por ambiente y Ansible configura los hosts; cada recurso tiene un único propietario de código. Las migraciones de base de datos siguen la estrategia de expandir y contraer y declaran su reversión.
 
-## 6.2.2 DevSecOps, integración y entrega continuas, infraestructura como código y pruebas automatizadas
+La entrega continua mantiene versiones verificadas y listas para su despliegue en cada ambiente. El paso a Producción se ejecuta sólo dentro de las ventanas permitidas por el caso y, durante el desarrollo, sólo en los hitos aprobados: ningún cambio se despliega en septiembre, en diciembre ni en los tres primeros días hábiles de un mes.
 
-### Pipeline y herramientas
+### 1.0.3 Ceremonias, cadencias y decisiones del desarrollo
 
-Cada cambio pasa por el pipeline de integración continua definido en SD4, sección 4.2. GitLab CI lo orquesta y AWS CodeBuild construye cada imagen de forma hermética, con procedencia SLSA nivel 3. El pipeline ejecuta:
+El trabajo del equipo de desarrollo se organiza en iteraciones de Construcción de dos semanas. Al inicio de cada iteración se revisan los requisitos y prioridades, se seleccionan las tareas que caben en la capacidad registrada y se aclaran sus criterios de aceptación. Durante la iteración, el equipo sigue el avance en el tablero Kanban, con bloqueos, responsables y dependencias.
 
-- auditoría de dependencias con `composer audit`;
-- pruebas con PHPUnit/PCOV, JUnit 5/Kover, Espresso, Jest y Playwright para los flujos de extremo a extremo de consolas y portales;
-- análisis estático con PHPStan y Larastan;
-- formato con Laravel Pint, detekt, ktlint y ESLint;
-- complejidad, duplicación (bloqueo sobre el 3 % de las líneas), fronteras modulares y deuda con PHPMD, PHPCPD, PhpMetrics, deptrac y reglas equivalentes en Kotlin/TypeScript;
-- pruebas de contrato con Pact y validación con Spectral contra OpenAPI 3.1 y AsyncAPI 2.6;
-- SAST/SCA, escaneo de secretos y de imágenes de contenedor con Amazon Inspector/ECR;
-- DAST con OWASP ZAP y análisis de la aplicación Android con MobSF;
-- accesibilidad con axe-core y revisión manual;
-- carga y estrés con k6;
-- resiliencia con AWS Fault Injection Service;
-- medición de cobertura.
+Al cierre de cada iteración se demuestra el incremento verificable y se contrasta con sus criterios de aceptación; cuando es pertinente, se presenta a los interesados para recoger observaciones. El equipo revisa además las dificultades y aprendizajes de la iteración y registra las acciones de mejora con su responsable. Ninguna demostración constituye por sí misma una entrega formal o una puesta en producción.
 
-### Compuertas bloqueantes y coberturas
+Los artefactos del desarrollo son los casos de uso, la matriz de trazabilidad del Formulario T-12, el registro de decisiones de arquitectura, los contratos de interfaz, el registro de deuda técnica y los informes de pruebas de cada iteración.
 
-Las compuertas son obligatorias y bloquean la promoción ante cualquiera de estas condiciones:
-
-- hallazgo de seguridad crítico o alto en dependencias, código, secretos o imagen;
-- contrato público roto sin una nueva edición de la interfaz;
-- cobertura de la lógica de negocio inferior al **70 %**, conforme a RT-04.11;
-- cobertura unitaria global inferior al **80 %**, conforme a la política corporativa de LafroX (paquete 1.5.2);
-- complejidad ciclomática superior a **10** en un método;
-- dependencia prohibida entre módulos, es decir, un módulo que invoca clases internas de otro fuera de su contrato (Bases Administrativas, Art. 19);
-- acoplamiento eferente superior a **20 clases** en una clase, regla de LafroX;
-- duplicación de código superior al **3 %** de las líneas;
-- deuda técnica bloqueante o una prueba fallida.
-
-Los dos porcentajes son criterios independientes: el 70 % corresponde a cobertura de lógica de negocio según RT-04.11; el 80 % corresponde a cobertura unitaria global según la política de LafroX. No son métricas intercambiables. La complejidad, las dependencias entre módulos y el acoplamiento se miden con PHPMD, deptrac y PhpMetrics en PHP, con detekt en Kotlin y con ESLint en TypeScript. Las siete métricas de código bloquean en la integración continua, que es la puerta G2 del plan de calidad (SD9, Tabla 9.4, y Anexo 9.B).
-
-### Artefactos, infraestructura y migraciones
-
-La imagen aprobada se firma, se publica en Elastic Container Registry y se promueve entre ambientes por su digest. Así, ningún ambiente recompila la imagen. La infraestructura de los cinco ambientes se describe como código: Terraform administra los recursos con estados separados por ambiente y Ansible configura los hosts. Cada recurso tiene un único propietario de código.
-
-Las migraciones de base de datos siguen la estrategia **expandir y contraer** y declaran su reversión, para permitir gestionar los cambios de esquema de forma compatible y recuperable.
-
-La entrega continua mantiene versiones verificadas y listas para desplegar en cada ambiente. El paso a Producción se ejecuta únicamente dentro de las ventanas permitidas por el caso y, durante el desarrollo, solo en los hitos aprobados. No se despliegan cambios en septiembre, en diciembre ni durante los tres primeros días hábiles de un mes.
-
-## 6.2.3 Ceremonias, cadencias y decisiones del desarrollo
-
-El equipo organiza el trabajo de Construcción en iteraciones de dos semanas.
-
-- **Inicio de iteración:** se revisan requisitos y prioridades, se seleccionan tareas acordes con la capacidad registrada y se aclaran sus criterios de aceptación.
-- **Seguimiento:** el equipo utiliza el tablero Kanban para seguir el avance, bloqueos, responsables y dependencias.
-- **Cierre:** se demuestra el incremento verificable y se contrasta con sus criterios de aceptación. Cuando corresponde, se presenta a los interesados para recoger observaciones. El equipo revisa dificultades y aprendizajes, y registra acciones de mejora con sus responsables.
-
-La demostración no constituye por sí misma una entrega formal ni una puesta en producción.
-
-### Artefactos de desarrollo
-
-El trabajo mantiene los siguientes artefactos:
-
-- casos de uso;
-- matriz de trazabilidad del Formulario T-12;
-- registro de decisiones de arquitectura;
-- contratos de interfaz;
-- registro de deuda técnica;
-- informes de pruebas de cada iteración.
-
-### Decisiones y cambios
-
-Las decisiones técnicas necesarias para implementar requisitos se toman dentro del equipo responsable y se documentan cuando afectan la arquitectura, las integraciones, la seguridad o la operación. Las decisiones que cambian la arquitectura pasan por el Comité de Arquitectura.
-
-Si una decisión modifica el alcance, el plazo, los costos o los criterios de aceptación aprobados, se gestiona como solicitud de cambio conforme a la sección 6.1.4.
-
-## Referencias
-
-- Distribuidora Puelche S.A. (2026a). *Bases Administrativas de Licitación N.º TFEP-01/2026*, Formulario T-10.
-- LafroX SpA. *Subdocumento 4*, sección 4.2 (arquitectura y pipeline).
-- LafroX SpA. *Subdocumento 6*, secciones 6.1.4 (gestión de cambios) y 6.2 (metodología de desarrollo).
-- LafroX SpA. *Formulario T-12*, matriz de trazabilidad de requisitos.
-
-## Declaración de uso de IA
-
-| Sección | Herramienta | Finalidad del uso | Nivel en texto | Nivel en diagramas | Revisión humana (quién y qué verificó) |
-| --- | --- | --- | --- | --- | --- |
-| Formulario T-10 | Claude Code | Portada, correspondencia con la sección 6.2 y adaptación a Markdown del contenido detallado de la metodología | Alto | Ninguno | No documentada |
+Las decisiones técnicas necesarias para implementar los requisitos se toman dentro del equipo responsable y se documentan cuando afectan la arquitectura, las integraciones, la seguridad o la operación; las que cambian la arquitectura pasan por el Comité de Arquitectura. Si una decisión modifica el alcance, el plazo, los costos o los criterios de aceptación aprobados, se gestiona como una solicitud de cambio según la sección 6.1.4.
