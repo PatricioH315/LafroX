@@ -8,7 +8,7 @@ La tabla relaciona las observaciones del Informe 1 con sus respuestas y las secc
 |---|---|---|
 | 1. Sin identidad de empresa. | **Documentado.** Se usa la plantilla corporativa de LafroX, con logotipo, encabezado y pie con folio. | Cuerpo y anexos, todas las páginas. |
 | 2. Las portadas rompen la ficción y se rotulan «Formulario T-22». | **Documentado.** Las portadas no tienen datos del curso y se rotulan «Formulario T-7». La fecha de emisión es el 12 de octubre de 2026. | Cuerpo y anexos, p. 1. |
-| 3. A4 y cuerpo menor a 11 pt. | **Documentado.** Tamaño carta y cuerpo de 11 pt. | `lafrox.cls`. |
+| 3. A4 y cuerpo menor a 11 pt. | **Documentado.** Tamaño carta y cuerpo de 11 pt. | Formato del documento. |
 | 4. Sin índice, folio ni firma. | **Documentado.** Hay índice enlazable, listas, folio y media firma en cada página posterior a la portada, que lleva la firma del representante legal. Los anexos no traen una lista de figuras vacía. | Cuerpo, p. 1–4; anexos, p. 1–3. |
 | 5. El documento resume y el anexo lista. | **Documentado.** | SD2, §2.5, p. 24–26; Anexos, p. 4–19. |
 | 6. Palabras partidas en columnas angostas y filas cortadas sin encabezado. | **Documentado.** En el cuerpo no hay palabras cortadas en las tablas ni en los títulos ni en las referencias «Figura/Tabla/Anexo». Las tablas tienen 5 columnas o menos, salvo la 2.4, cuyo formato fija la sección 7.2. Las celdas tienen una sola frase y las cifras van a la derecha. Las Tablas 2.1, 2.2 y 2.3 caben cada una en una página y todas las tablas tienen análisis después. En los anexos se ensancharon las columnas de identificadores, que cortaban «S-/01» y «R-/01». | SD2, Tablas 2.1–2.4, p. 13–29; Anexos, Tablas 2.A.1–2.A.8. |
