@@ -4,7 +4,7 @@
 
 El Art. 46 de las Bases Administrativas pide resolver en forma explícita las observaciones de la instancia anterior, con una tabla de trazabilidad observación–respuesta–sección modificada (Distribuidora Puelche S.A., 2026a, Art. 46, p. 28). La Tabla 13.D.1 responde una por una las dieciséis observaciones que la revisión del Informe 1 formuló al Capítulo 13, incluida la valoración positiva, y la Tabla 13.D.2 responde las ocho observaciones generales y transversales que alcanzaban a este subdocumento.
 
-**Tabla 13.D.1. Observaciones al Capítulo 13 de la revisión del Informe 1. Fuente: elaboración a partir de las observaciones de la instancia anterior (Distribuidora Puelche S.A., 2026a, Art. 46, p. 28).**
+**Tabla 13.D.1. Observaciones al Capítulo 13 de la revisión del Informe 1. Fuente: elaboración a partir de la revisión docente del Informe 1 (*Revisión del Informe 1*, 2026, sección «Subdocumento 13»).**
 
 <a id="tab:sd13-D1"></a>
 
@@ -31,7 +31,7 @@ El Art. 46 de las Bases Administrativas pide resolver en forma explícita las ob
 
 Las cinco innovaciones del Informe 1 se reemplazaron; por eso las filas 1 a 5 responden con una innovación nueva y no con un ajuste de la anterior. En la innovación 3, el filtro del Art. 30° de las Bases Administrativas (p. 20) se acredita con el alcance descrito en 13.3.2, que distingue técnicamente la incorporación propuesta de las funcionalidades ya exigidas, además de separarla del registro continuo obligatorio.
 
-**Tabla 13.D.2. Observaciones generales y transversales aplicables al Subdocumento 13. Fuente: elaboración a partir de las observaciones de la instancia anterior (Distribuidora Puelche S.A., 2026a, Art. 46, p. 28).**
+**Tabla 13.D.2. Observaciones generales y transversales aplicables al Subdocumento 13. Fuente: elaboración a partir de la revisión docente del Informe 1 (*Revisión del Informe 1*, 2026, sección «General»).**
 
 <a id="tab:sd13-D2"></a>
 
@@ -64,6 +64,8 @@ Las citas a las Bases Administrativas y a las Bases Técnicas Transversales iden
 
 - GS1 AISBL. (2022). *EPC Information Services (EPCIS) standard* (versión 2.0). [https://ref.gs1.org/standards/epcis/2.0.0/](https://ref.gs1.org/standards/epcis/2.0.0/)
 
+- *Revisión del Informe 1: LafroX, Grupo 2, caso Logística*. (2026). Evaluación docente, secciones «General» y «Subdocumento 13».
+
 ## Declaración de uso de IA
 
-Herramientas: Claude Code; OpenAI Codex. Uso: organización de observaciones, respuestas y trazabilidad. Nivel en texto: alto. Nivel en diagramas: ninguno. Revisión humana: Patricio Henriquez. Se examinó la redacción de las respuestas a las observaciones y la comprensión de su organización en la matriz.
+Herramientas: Claude Code; OpenAI Codex. Uso: organización de observaciones, respuestas y trazabilidad. Nivel en texto: alto. Nivel en diagramas: ninguno. Revisión humana: Patricio Henriquez: Se examinó la redacción de las respuestas a las observaciones y la comprensión de su organización en la matriz.

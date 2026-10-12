@@ -86,13 +86,15 @@ La Tabla 13.1 resume la cartera. La Figura 13.1 ubica las cinco innovaciones sob
 
 La innovación 2 permite medir la reducción del tiempo de diagnóstico antes del mes 16 mediante I-02A. Con ese beneficio LafroX oferta el RT-26.08 (Distribuidora Puelche S.A., 2026b, RT-26.08, cap. 26, p. 45). Las innovaciones 1 y 3 verifican durante la marcha blanca sus condiciones de habilitación; sus beneficios posteriores se evalúan en los momentos definidos para cada indicador. Una condición de habilitación no se contabiliza como ahorro ya demostrado. Las innovaciones 4 y 5 dependen del costo de servir y de los canales de la Etapa 2, por lo que se materializan desde el mes 21.
 
-![Figura 13.1](<C:/Users/alexa/.codex/worktrees/sd13-sincronizacion/LafroX/SD13_v_nueva/13_innovaciones/diagramas/Fig_13-1_Mapa_Innovaciones.pdf>)
+![Figura 13.1](diagramas/Fig_13-1_Mapa_Innovaciones.pdf)
 
 **Figura 13.1. Ubicación de las cinco innovaciones en la arquitectura. Fuente: elaboración a partir de la arquitectura e inventario (LafroX, 2026d, secs. 4.1.3, 4.1.4 y 4.2.2; 2026e, T-11) y la inserción de INN-01 a INN-05 (LafroX, 2026l, secs. 13.1.4 a 13.5.4).**
 
 <a id="fig:sd13-1"></a>
 
 La Figura 13.1 ubica las cinco innovaciones sobre las capas de la arquitectura del Capítulo 4. Cada caja es un componente o módulo ya ofertado, y entre paréntesis se indican las innovaciones que lo usan. La figura muestra que las cinco innovaciones se apoyan en los mismos componentes ya ofertados. Cuatro de ellas pasan por M10 Analítica y tres por la cola de sincronización de los terminales, que es la pieza que permite trabajar sin señal. Ninguna crea un sistema paralelo: cada una agrega una regla, un contrato de datos o un circuito de trabajo sobre la plataforma del Capítulo 4. La matriz completa está en el Anexo 13.B.
+
+La innovación 2 permite medir la reducción del tiempo de diagnóstico antes del mes 16 mediante I-02A. Con ese beneficio LafroX oferta el RT-26.08 (Distribuidora Puelche S.A., 2026b, RT-26.08, cap. 26, p. 45). Las innovaciones 1 y 3 verifican durante la marcha blanca sus condiciones de habilitación; sus beneficios posteriores se evalúan en los momentos definidos para cada indicador. Una condición de habilitación no se contabiliza como ahorro ya demostrado. Las innovaciones 4 y 5 dependen del costo de servir y de los canales de la Etapa 2, por lo que se materializan desde el mes 21.
 
 ## 13.1 Innovación 1
 
@@ -462,8 +464,6 @@ EPCIS 2.0 es un estándar publicado (GS1 AISBL, 2022). Los modelos cinéticos de
 
 ### 13.3.4 Diseño de la incorporación
 
-La innovación usa componentes que la arquitectura ya contiene. Los sensores B-01 y los termógrafos B-03 son la fuente de las series; el gateway B-02 acumula la carga térmica sin enlace; la aplicación de reparto C-02 trae el registro de ruta. N-08 Ingesta de IoT y N-06 Telemetría cruda reciben las series y reutilizan los 10.920 mensajes diarios ya dimensionados (21 puntos × 288 lecturas más 28 termógrafos × 174 lecturas; Capítulo 4, sección 4.2), sin agregar ingesta. La capa 5 transporta los eventos EPCIS con datos de sensor. M9 Calidad y trazabilidad muestra la historia y la estimación, y en ella Calidad del CLIENTE dispone y, junto con Maximiliano Miño, aprueba los parámetros. M2 Inventario y M5 Preparación reciben el orden de salida sugerido, habilitado por familia. M10 Analítica, sobre N-10, ejecuta el modelo, recalcula y publica, y conserva las series cinco años. La capa 7 versiona y aprueba el modelo y sus parámetros.
-
 La Figura 13.4 distingue la captura en cámara y en ruta, la asociación al lote y el uso posterior de la estimación.
 
 ![Figura 13.4](<C:/Users/alexa/.codex/worktrees/sd13-sincronizacion/LafroX/SD13_v_nueva/13_innovaciones/diagramas/Fig_13-4_Recorrido_INN03.pdf>)
@@ -471,6 +471,8 @@ La Figura 13.4 distingue la captura en cámara y en ruta, la asociación al lote
 **Figura 13.4. Historia térmica: del sensor a la decisión de Calidad. Fuente: elaboración a partir del diseño, calendario y controles de INN-03 (LafroX, 2026l, secs. 13.3.4 a 13.3.7) y sus contratos de datos (LafroX, 2026m, Anexo 13.A).**
 
 <a id="fig:sd13-4"></a>
+
+La innovación usa componentes que la arquitectura ya contiene. Los sensores B-01 y los termógrafos B-03 son la fuente de las series; el gateway B-02 acumula la carga térmica sin enlace; la aplicación de reparto C-02 trae el registro de ruta. N-08 Ingesta de IoT y N-06 Telemetría cruda reciben las series y reutilizan los 10.920 mensajes diarios ya dimensionados (21 puntos × 288 lecturas más 28 termógrafos × 174 lecturas; Capítulo 4, sección 4.2), sin agregar ingesta. La capa 5 transporta los eventos EPCIS con datos de sensor. M9 Calidad y trazabilidad muestra la historia y la estimación, y en ella Calidad del CLIENTE dispone y, junto con Maximiliano Miño, aprueba los parámetros. M2 Inventario y M5 Preparación reciben el orden de salida sugerido, habilitado por familia. M10 Analítica, sobre N-10, ejecuta el modelo, recalcula y publica, y conserva las series cinco años. La capa 7 versiona y aprueba el modelo y sus parámetros.
 
 El recorrido no supone cálculo continuo en el camión: C-02 alerta durante la ruta y el registro completo se descarga al retorno. En cámara, B-02 acumula carga térmica sin enlace. Después, la asociación temporal y el modelo versionado producen una estimación que Calidad contrasta antes de habilitar su uso por familia. La sugerencia no sustituye el FEFO ni autoriza alargar la fecha impresa.
 
@@ -932,13 +934,13 @@ En cumplimiento de la sección 7.2 de las Aclaraciones de la licitación, la tab
 
 | Sección | Herramienta | Finalidad del uso | Nivel en texto | Nivel en diagramas | Revisión humana (quién y qué verificó) |
 | --- | --- | --- | --- | --- | --- |
-| Introducción | Claude Code; OpenAI Codex | Síntesis, citas y mapa general | Alto | Alto (Figura 13.1) | Guillermo Castillo. Se revisó la claridad de la presentación general y la comprensión del propósito de las cinco innovaciones. |
-| 13.1 | Claude Code; OpenAI Codex | Contenido y recorrido INN-01 | Medio | Alto (Figura 13.2) | Guillermo Castillo. Se examinó la redacción del seguimiento de vencimiento posentrega y la comprensión del problema y de la solución propuesta. |
-| 13.2 | Claude Code; OpenAI Codex | Contenido y recorrido INN-02 | Medio | Alto (Figura 13.3) | Guillermo Castillo. Se revisó la secuencia explicativa del recorrido de reproducción de incidentes de terreno y la claridad de sus descripciones. |
-| 13.3 | Claude Code; OpenAI Codex | Contenido y recorrido INN-03 | Medio | Alto (Figura 13.4) | Guillermo Castillo. Se examinó la exposición de la vida útil remanente por historia térmica, con atención a la comprensión de los supuestos y límites descritos. |
-| 13.4 | Claude Code; OpenAI Codex | Contenido y recorrido INN-04 | Medio | Alto (Figura 13.5) | Guillermo Castillo. Se revisó la explicación del tramo variable de la operación y la claridad de los términos relativos al costo de servir. |
-| 13.5 | Claude Code; OpenAI Codex | Contenido y recorrido INN-05 | Medio | Alto (Figura 13.6) | Guillermo Castillo. Se examinó la descripción de la hoja de negocio del almacenero, atendiendo a la comprensión de su propósito y funcionalidades. |
-| Anexo 13.A | Claude Code | Contratos de datos | Alto | Ninguno | Patricio Henriquez. Se revisó la redacción de las definiciones de los contratos de datos y la claridad de la terminología empleada. |
-| Anexo 13.B | Claude Code | Trazabilidad y alcance | Alto | Ninguno | Patricio Henriquez. Se examinó la presentación de la matriz de trazabilidad y la comprensión de las relaciones y del alcance descritos. |
-| Anexo 13.C | Claude Code; OpenAI Codex | Indicadores y riesgos | Alto | Ninguno | Patricio Henriquez. Se revisó la exposición de los indicadores y riesgos, con atención a la claridad de sus descripciones. |
-| T-19 | Claude Code; OpenAI Codex | Fichas de las cinco innovaciones | Alto | Ninguno | Patricio Henriquez. Se revisó la redacción, claridad y consistencia de las afirmaciones dentro de las fichas, atendiendo a la comprensión de su contenido. |
+| Introducción | Claude Code; OpenAI Codex | Síntesis, citas y mapa general | Alto | Alto (Figura 13.1) | Guillermo Castillo: Se revisó la claridad de la presentación general y la comprensión del propósito de las cinco innovaciones. |
+| 13.1 | Claude Code; OpenAI Codex | Contenido y recorrido INN-01 | Medio | Alto (Figura 13.2) | Guillermo Castillo: Se examinó la redacción del seguimiento de vencimiento posentrega y la comprensión del problema y de la solución propuesta. |
+| 13.2 | Claude Code; OpenAI Codex | Contenido y recorrido INN-02 | Medio | Alto (Figura 13.3) | Guillermo Castillo: Se revisó la secuencia explicativa del recorrido de reproducción de incidentes de terreno y la claridad de sus descripciones. |
+| 13.3 | Claude Code; OpenAI Codex | Contenido y recorrido INN-03 | Medio | Alto (Figura 13.4) | Guillermo Castillo: Se examinó la exposición de la vida útil remanente por historia térmica, con atención a la comprensión de los supuestos y límites descritos. |
+| 13.4 | Claude Code; OpenAI Codex | Contenido y recorrido INN-04 | Medio | Alto (Figura 13.5) | Guillermo Castillo: Se revisó la explicación del tramo variable de la operación y la claridad de los términos relativos al costo de servir. |
+| 13.5 | Claude Code; OpenAI Codex | Contenido y recorrido INN-05 | Medio | Alto (Figura 13.6) | Guillermo Castillo: Se examinó la descripción de la hoja de negocio del almacenero, atendiendo a la comprensión de su propósito y funcionalidades. |
+| Anexo 13.A | Claude Code | Contratos de datos | Alto | Ninguno | Patricio Henriquez: Se revisó la redacción de las definiciones de los contratos de datos y la claridad de la terminología empleada. |
+| Anexo 13.B | Claude Code | Trazabilidad y alcance | Alto | Ninguno | Patricio Henriquez: Se examinó la presentación de la matriz de trazabilidad y la comprensión de las relaciones y del alcance descritos. |
+| Anexo 13.C | Claude Code; OpenAI Codex | Indicadores y riesgos | Alto | Ninguno | Patricio Henriquez: Se revisó la exposición de los indicadores y riesgos, con atención a la claridad de sus descripciones. |
+| T-19 | Claude Code; OpenAI Codex | Fichas de las cinco innovaciones | Alto | Ninguno | Patricio Henriquez: Se revisó la redacción, claridad y consistencia de las afirmaciones dentro de las fichas, atendiendo a la comprensión de su contenido. |
