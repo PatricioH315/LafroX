@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.25.7 (MiKTeX 26.5) (format=lualatex 2026.9.17)  11 OCT 2026 21:19
+This is LuaHBTeX, Version 1.25.7 (MiKTeX 26.5) (format=lualatex 2026.9.17)  12 OCT 2026 02:04
 **LAFROX-Subdocumento9.tex
 (./LAFROX-Subdocumento9.tex
 LaTeX2e <2026-06-01>
@@ -1920,6 +1920,12 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `SourceSerif4-Regular.otf' (encoding: TU).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
+<logo/FIRMA_Alex_Aravena_transparente.png, id=7, 400.49625pt x 192.72pt>
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 16.
+(luatex.def)             Requested size: 76.86507pt x 36.98857pt.
 LaTeX Font Info:    Font shape `TU/IBMPlexMono(0)/m/n' will be
 (Font)              scaled to size 10.07397pt on input line 16.
 Package microtype Info: Loading generic protrusion settings for font family
@@ -1931,21 +1937,28 @@ LaTeX Font Info:    Font shape `TU/IBMPlexMono(0)/m/n' will be
  [1
 
 {C:/Users/henri/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}<./logo/lafrox_
-isotipo_naranja.pdf>] (./LAFROX-Subdocumento9.toc
+isotipo_naranja.pdf><./logo/FIRMA_Alex_Aravena_transparente.png>]
+(./LAFROX-Subdocumento9.toc
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
 )
 \tf@toc=\write4
 
 \openout4 = LAFROX-Subdocumento9.toc
-<logo/lafrox_isotipo_negro.pdf, id=69, 433.62pt x 433.62pt>
+<logo/lafrox_isotipo_negro.pdf, id=71, 433.62pt x 433.62pt>
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
 Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 17.
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 17.
+(luatex.def)             Requested size: 41.38417pt x 19.91692pt.
  [2
 
-<./logo/lafrox_isotipo_negro.pdf>] (./LAFROX-Subdocumento9.lot
+<./logo/lafrox_isotipo_negro.pdf>]
+(./LAFROX-Subdocumento9.lot
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
 )
@@ -1956,6 +1969,11 @@ File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
 Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 17.
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 17.
+(luatex.def)             Requested size: 41.38417pt x 19.91692pt.
  [3
 
 ] (./LAFROX-Subdocumento9.lof
@@ -1969,18 +1987,28 @@ File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
 Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 17.
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 17.
+(luatex.def)             Requested size: 41.38417pt x 19.91692pt.
+ [4
 
-[4
-
-] (./09_plan_calidad/contenido.tex
+]
+(./09_plan_calidad/contenido.tex
 Capítulo 9.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 20.
+(luatex.def)             Requested size: 41.38417pt x 19.91692pt.
 [5
 
 
 ]
 warning  (file 09_plan_calidad/diagramas/Fig_9-1_Marco_Calidad.pdf) (pdf inclusi
 on): PDF inclusion: found PDF version '1.7', but at most version '1.5' allowed
-<09_plan_calidad/diagramas/Fig_9-1_Marco_Calidad.pdf, id=221, 435.54718pt x 334
+<09_plan_calidad/diagramas/Fig_9-1_Marco_Calidad.pdf, id=223, 435.54718pt x 334
 .3692pt>
 File: 09_plan_calidad/diagramas/Fig_9-1_Marco_Calidad.pdf Graphic file (type pd
 f)
@@ -1996,6 +2024,11 @@ LaTeX Info: Redefining \. on input line 42.
 LaTeX Info: Redefining \% on input line 42.
 Package babel Info: 'spanish' activates 'spanish' shorthands.
 (babel)             Reported on input line 42.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 42.
+(luatex.def)             Requested size: 41.38417pt x 19.91692pt.
 [6]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
@@ -2003,6 +2036,11 @@ Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 42.
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
 LaTeX Info: Redefining \. on input line 42.
 LaTeX Info: Redefining \% on input line 42.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 42.
+(luatex.def)             Requested size: 41.38417pt x 19.91692pt.
  [7<./09_plan_calidad/diagramas/Fig_9-1_Marco_Calidad.pdf>]
 Underfull \hbox (badness 1009) in paragraph at lines 55--55
 []|\TU/SourceSerif4(0)/m/n/9.5 In-for-mes 
@@ -2019,11 +2057,16 @@ Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 58.
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
 LaTeX Info: Redefining \. on input line 58.
 LaTeX Info: Redefining \% on input line 58.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 58.
+(luatex.def)             Requested size: 41.38417pt x 19.91692pt.
 [8]
 warning  (file 09_plan_calidad/diagramas/Fig_9-2_Modelo_ISO25010.pdf) (pdf inclu
 sion): PDF inclusion: found PDF version '1.7', but at most version '1.5' allowed
 
-<09_plan_calidad/diagramas/Fig_9-2_Modelo_ISO25010.pdf, id=251, 435.54718pt x 3
+<09_plan_calidad/diagramas/Fig_9-2_Modelo_ISO25010.pdf, id=253, 435.54718pt x 3
 19.1925pt>
 File: 09_plan_calidad/diagramas/Fig_9-2_Modelo_ISO25010.pdf Graphic file (type 
 pdf)
@@ -2037,6 +2080,11 @@ Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 88.
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
 LaTeX Info: Redefining \. on input line 88.
 LaTeX Info: Redefining \% on input line 88.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 88.
+(luatex.def)             Requested size: 41.38417pt x 19.91692pt.
 [9]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
@@ -2044,6 +2092,11 @@ Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 88.
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
 LaTeX Info: Redefining \. on input line 88.
 LaTeX Info: Redefining \% on input line 88.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 88.
+(luatex.def)             Requested size: 41.38417pt x 19.91692pt.
  [10<./09_plan_calidad/diagramas/Fig_9-2_Modelo_ISO25010.pdf>]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
@@ -2051,6 +2104,11 @@ Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 88.
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
 LaTeX Info: Redefining \. on input line 88.
 LaTeX Info: Redefining \% on input line 88.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 88.
+(luatex.def)             Requested size: 41.38417pt x 19.91692pt.
  [11]
 Underfull \hbox (badness 10000) in alignment at lines 126--126
 [][][][]
@@ -2063,6 +2121,11 @@ Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 126.
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
 LaTeX Info: Redefining \. on input line 126.
 LaTeX Info: Redefining \% on input line 126.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 126.
+(luatex.def)             Requested size: 41.38417pt x 19.91692pt.
 [12]
 Underfull \hbox (badness 10000) in alignment at lines 137--137
 [][][][]
@@ -2075,6 +2138,11 @@ Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 140.
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
 LaTeX Info: Redefining \. on input line 140.
 LaTeX Info: Redefining \% on input line 140.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 140.
+(luatex.def)             Requested size: 41.38417pt x 19.91692pt.
 [13]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
@@ -2083,11 +2151,16 @@ Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 140.
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
 LaTeX Info: Redefining \. on input line 140.
 LaTeX Info: Redefining \% on input line 140.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 140.
+(luatex.def)             Requested size: 41.38417pt x 19.91692pt.
  [14]
 warning  (file 09_plan_calidad/diagramas/Fig_9-3_Puertas_Calidad.pdf) (pdf inclu
 sion): PDF inclusion: found PDF version '1.7', but at most version '1.5' allowed
 
-<09_plan_calidad/diagramas/Fig_9-3_Puertas_Calidad.pdf, id=299, 427.5975pt x 41
+<09_plan_calidad/diagramas/Fig_9-3_Puertas_Calidad.pdf, id=301, 427.5975pt x 41
 2.4208pt>
 File: 09_plan_calidad/diagramas/Fig_9-3_Puertas_Calidad.pdf Graphic file (type 
 pdf)
@@ -2107,6 +2180,11 @@ Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 166.
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
 LaTeX Info: Redefining \. on input line 166.
 LaTeX Info: Redefining \% on input line 166.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 166.
+(luatex.def)             Requested size: 41.38417pt x 19.91692pt.
 [15]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
@@ -2115,6 +2193,11 @@ Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 166.
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
 LaTeX Info: Redefining \. on input line 166.
 LaTeX Info: Redefining \% on input line 166.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 166.
+(luatex.def)             Requested size: 41.38417pt x 19.91692pt.
  [16<./09_plan_calidad/diagramas/Fig_9-3_Puertas_Calidad.pdf>]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
@@ -2123,11 +2206,16 @@ Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 166.
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
 LaTeX Info: Redefining \. on input line 166.
 LaTeX Info: Redefining \% on input line 166.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 166.
+(luatex.def)             Requested size: 41.38417pt x 19.91692pt.
  [17]
 warning  (file 09_plan_calidad/diagramas/Fig_9-4_Niveles_Ambientes.pdf) (pdf inc
 lusion): PDF inclusion: found PDF version '1.7', but at most version '1.5' allow
 ed
-<09_plan_calidad/diagramas/Fig_9-4_Niveles_Ambientes.pdf, id=337, 435.54718pt x
+<09_plan_calidad/diagramas/Fig_9-4_Niveles_Ambientes.pdf, id=339, 435.54718pt x
  355.3275pt>
 File: 09_plan_calidad/diagramas/Fig_9-4_Niveles_Ambientes.pdf Graphic file (typ
 e pdf)
@@ -2142,6 +2230,11 @@ Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 181.
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
 LaTeX Info: Redefining \. on input line 181.
 LaTeX Info: Redefining \% on input line 181.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 181.
+(luatex.def)             Requested size: 41.38417pt x 19.91692pt.
 [18]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
@@ -2150,6 +2243,11 @@ Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 188.
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
 LaTeX Info: Redefining \. on input line 188.
 LaTeX Info: Redefining \% on input line 188.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 188.
+(luatex.def)             Requested size: 41.38417pt x 19.91692pt.
  [19<./09_plan_calidad/diagramas/Fig_9-4_Niveles_Ambientes.pdf>]
 Underfull \hbox (badness 1342) in paragraph at lines 203--203
 []|\TU/SourceSerif4(0)/m/n/9.5 Ló-gi-ca de ne-go-cio y 
@@ -2167,6 +2265,11 @@ Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 227.
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
 LaTeX Info: Redefining \. on input line 227.
 LaTeX Info: Redefining \% on input line 227.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 227.
+(luatex.def)             Requested size: 41.38417pt x 19.91692pt.
 [20]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
@@ -2175,10 +2278,15 @@ Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 227.
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
 LaTeX Info: Redefining \. on input line 227.
 LaTeX Info: Redefining \% on input line 227.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 227.
+(luatex.def)             Requested size: 41.38417pt x 19.91692pt.
  [21]
 warning  (file 09_plan_calidad/diagramas/Fig_9-5_Datos_Prueba.pdf) (pdf inclusio
 n): PDF inclusion: found PDF version '1.7', but at most version '1.5' allowed
-<09_plan_calidad/diagramas/Fig_9-5_Datos_Prueba.pdf, id=379, 427.5975pt x 294.1
+<09_plan_calidad/diagramas/Fig_9-5_Datos_Prueba.pdf, id=381, 427.5975pt x 294.1
 3892pt>
 File: 09_plan_calidad/diagramas/Fig_9-5_Datos_Prueba.pdf Graphic file (type pdf
 )
@@ -2189,7 +2297,7 @@ ed on input line 230.
 
 warning  (file 09_plan_calidad/diagramas/Fig_9-6_Modelo_V.pdf) (pdf inclusion): 
 PDF inclusion: found PDF version '1.7', but at most version '1.5' allowed
-<09_plan_calidad/diagramas/Fig_9-6_Modelo_V.pdf, id=381, 435.54718pt x 262.0992
+<09_plan_calidad/diagramas/Fig_9-6_Modelo_V.pdf, id=383, 435.54718pt x 262.0992
 pt>
 File: 09_plan_calidad/diagramas/Fig_9-6_Modelo_V.pdf Graphic file (type pdf)
 <use 09_plan_calidad/diagramas/Fig_9-6_Modelo_V.pdf>
@@ -2203,6 +2311,11 @@ Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 241.
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
 LaTeX Info: Redefining \. on input line 241.
 LaTeX Info: Redefining \% on input line 241.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 241.
+(luatex.def)             Requested size: 41.38417pt x 19.91692pt.
 [22]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
@@ -2211,11 +2324,16 @@ Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 241.
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
 LaTeX Info: Redefining \. on input line 241.
 LaTeX Info: Redefining \% on input line 241.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 241.
+(luatex.def)             Requested size: 41.38417pt x 19.91692pt.
  [23<./09_plan_calidad/diagramas/Fig_9-5_Datos_Prueba.pdf>]
 warning  (file 09_plan_calidad/diagramas/Fig_9-7_Cadena_Trazabilidad.pdf) (pdf i
 nclusion): PDF inclusion: found PDF version '1.7', but at most version '1.5' all
 owed
-<09_plan_calidad/diagramas/Fig_9-7_Cadena_Trazabilidad.pdf, id=405, 434.58359pt
+<09_plan_calidad/diagramas/Fig_9-7_Cadena_Trazabilidad.pdf, id=407, 434.58359pt
  x 370.5042pt>
 File: 09_plan_calidad/diagramas/Fig_9-7_Cadena_Trazabilidad.pdf Graphic file (t
 ype pdf)
@@ -2230,6 +2348,11 @@ Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 252.
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
 LaTeX Info: Redefining \. on input line 252.
 LaTeX Info: Redefining \% on input line 252.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 252.
+(luatex.def)             Requested size: 41.38417pt x 19.91692pt.
 [24<./09_plan_calidad/diagramas/Fig_9-6_Modelo_V.pdf>]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
@@ -2238,10 +2361,15 @@ Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 252.
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
 LaTeX Info: Redefining \. on input line 252.
 LaTeX Info: Redefining \% on input line 252.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 252.
+(luatex.def)             Requested size: 41.38417pt x 19.91692pt.
  [25<./09_plan_calidad/diagramas/Fig_9-7_Cadena_Trazabilidad.pdf>]
 warning  (file 09_plan_calidad/diagramas/Fig_9-8_Ciclo_Mejora.pdf) (pdf inclusio
 n): PDF inclusion: found PDF version '1.7', but at most version '1.5' allowed
-<09_plan_calidad/diagramas/Fig_9-8_Ciclo_Mejora.pdf, id=442, 435.54718pt x 283.
+<09_plan_calidad/diagramas/Fig_9-8_Ciclo_Mejora.pdf, id=444, 435.54718pt x 283.
 0575pt>
 File: 09_plan_calidad/diagramas/Fig_9-8_Ciclo_Mejora.pdf Graphic file (type pdf
 )
@@ -2256,6 +2384,11 @@ Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 266.
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
 LaTeX Info: Redefining \. on input line 266.
 LaTeX Info: Redefining \% on input line 266.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 266.
+(luatex.def)             Requested size: 41.38417pt x 19.91692pt.
 [26]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
@@ -2264,6 +2397,11 @@ Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 266.
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
 LaTeX Info: Redefining \. on input line 266.
 LaTeX Info: Redefining \% on input line 266.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 266.
+(luatex.def)             Requested size: 41.38417pt x 19.91692pt.
  [27<./09_plan_calidad/diagramas/Fig_9-8_Ciclo_Mejora.pdf>]
 Underfull \hbox (badness 10000) in alignment at lines 285--285
 [][][][]
@@ -2276,11 +2414,16 @@ Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 292.
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
 LaTeX Info: Redefining \. on input line 292.
 LaTeX Info: Redefining \% on input line 292.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 292.
+(luatex.def)             Requested size: 41.38417pt x 19.91692pt.
 [28]
 warning  (file 09_plan_calidad/diagramas/Fig_9-9_Calidad_Cronograma.pdf) (pdf in
 clusion): PDF inclusion: found PDF version '1.7', but at most version '1.5' allo
 wed
-<09_plan_calidad/diagramas/Fig_9-9_Calidad_Cronograma.pdf, id=472, 443.7378pt x
+<09_plan_calidad/diagramas/Fig_9-9_Calidad_Cronograma.pdf, id=474, 443.7378pt x
  259.93109pt>
 File: 09_plan_calidad/diagramas/Fig_9-9_Calidad_Cronograma.pdf Graphic file (ty
 pe pdf)
@@ -2301,6 +2444,11 @@ Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 334.
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
 LaTeX Info: Redefining \. on input line 334.
 LaTeX Info: Redefining \% on input line 334.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 334.
+(luatex.def)             Requested size: 41.38417pt x 19.91692pt.
 [29<./09_plan_calidad/diagramas/Fig_9-9_Calidad_Cronograma.pdf>]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
@@ -2309,6 +2457,11 @@ Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 334.
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
 LaTeX Info: Redefining \. on input line 334.
 LaTeX Info: Redefining \% on input line 334.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 334.
+(luatex.def)             Requested size: 41.38417pt x 19.91692pt.
  [30]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
@@ -2317,6 +2470,11 @@ Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 334.
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
 LaTeX Info: Redefining \. on input line 334.
 LaTeX Info: Redefining \% on input line 334.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 334.
+(luatex.def)             Requested size: 41.38417pt x 19.91692pt.
  [31]
 Underfull \hbox (badness 10000) in alignment at lines 347--347
 [][][][]
@@ -2329,6 +2487,11 @@ Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 352.
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
 LaTeX Info: Redefining \. on input line 352.
 LaTeX Info: Redefining \% on input line 352.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 352.
+(luatex.def)             Requested size: 41.38417pt x 19.91692pt.
 [32]
 Underfull \hbox (badness 1515) in paragraph at lines 363--363
 []|\TU/SourceSerif4(0)/m/n/9.5 Re-cu-pe-ra-ción con 
@@ -2341,6 +2504,11 @@ Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 367.
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
 LaTeX Info: Redefining \. on input line 367.
 LaTeX Info: Redefining \% on input line 367.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 367.
+(luatex.def)             Requested size: 41.38417pt x 19.91692pt.
 [33]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
@@ -2349,6 +2517,11 @@ Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 390.
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
 LaTeX Info: Redefining \. on input line 390.
 LaTeX Info: Redefining \% on input line 390.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 390.
+(luatex.def)             Requested size: 41.38417pt x 19.91692pt.
  [34]
 Underfull \hbox (badness 1742) in paragraph at lines 407--407
 []|\TU/SourceSerif4(0)/m/n/9.5 9.2 
@@ -2366,6 +2539,11 @@ Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 407.
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
 LaTeX Info: Redefining \. on input line 407.
 LaTeX Info: Redefining \% on input line 407.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 407.
+(luatex.def)             Requested size: 41.38417pt x 19.91692pt.
 [35]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
@@ -2374,6 +2552,11 @@ Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 407.
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
 LaTeX Info: Redefining \. on input line 407.
 LaTeX Info: Redefining \% on input line 407.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 407.
+(luatex.def)             Requested size: 41.38417pt x 19.91692pt.
  [36]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
@@ -2382,6 +2565,11 @@ Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 407.
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
 LaTeX Info: Redefining \. on input line 407.
 LaTeX Info: Redefining \% on input line 407.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 407.
+(luatex.def)             Requested size: 41.38417pt x 19.91692pt.
  [37])
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
@@ -2389,6 +2577,11 @@ Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 20.
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
 LaTeX Info: Redefining \. on input line 20.
 LaTeX Info: Redefining \% on input line 20.
+File: logo/FIRMA_Alex_Aravena_transparente.png Graphic file (type png)
+<use logo/FIRMA_Alex_Aravena_transparente.png>
+Package luatex.def Info: logo/FIRMA_Alex_Aravena_transparente.png  used on inpu
+t line 20.
+(luatex.def)             Requested size: 41.38417pt x 19.91692pt.
  [38]
 
 enddocument/afterlastpage (AED): lastpage setting LastPage.
@@ -2403,17 +2596,17 @@ L3 programming layer <2026-07-20>
 )
 
 Here is how much of LuaTeX's memory you used:
- 37532 strings out of 475695
+ 38223 strings out of 475695
  156272,1977958 words of node,token memory allocated
  1021 words of node memory still in use:
    8 hlist, 2 vlist, 2 rule, 1 local_par, 6 glue, 5 kern, 1 penalty, 1 margin_ke
 rn, 4 glyph, 66 attribute, 79 glue_spec, 34 attribute_list, 2 write, 23 pdf_acti
 on nodes
-   avail lists: 1:4,2:2858,3:768,4:314,5:2447,6:163,7:13523,8:2,9:1692,10:28,11:
+   avail lists: 1:7,2:2858,3:803,4:315,5:2447,6:163,7:13523,8:2,9:1692,10:28,11:
 1622
- 58480 multiletter control sequences out of 65536+600000
- 119 fonts using 46785979 bytes
- 107i,18n,128p,1501b,3523s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 58562 multiletter control sequences out of 65536+600000
+ 119 fonts using 46785675 bytes
+ 107i,24n,128p,1501b,3523s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/henri/AppData/Local/Programs/MiKTeX/fonts/opentype/adobe/sourceserif/S
 ourceSerif4-Regular.otf><C:/Users/henri/AppData/Local/Programs/MiKTeX/fonts/open
 type/adobe/sourceserif/SourceSerif4-RegularIt.otf><C:/Users/henri/AppData/Local/
@@ -2426,9 +2619,9 @@ ocal/Programs/MiKTeX/fonts/opentype/adobe/sourcesans/SourceSans3-Regular.otf><c:
 /users/henri/appdata/local/programs/miktex/fonts/opentype/adobe/sourcesans/sourc
 esans3-medium.otf><C:/Users/henri/AppData/Local/Programs/MiKTeX/fonts/opentype/a
 dobe/sourcesans/SourceSans3-Semibold.otf>
-Output written on LAFROX-Subdocumento9.pdf (38 pages, 648910 bytes).
+Output written on LAFROX-Subdocumento9.pdf (38 pages, 657454 bytes).
 
-PDF statistics: 675 PDF objects out of 1000 (max. 8388607)
+PDF statistics: 677 PDF objects out of 1000 (max. 8388607)
  85 named destinations out of 1000 (max. 1048576)
  208 words of extra memory for PDF output out of 10000 (max. 100000000)
 

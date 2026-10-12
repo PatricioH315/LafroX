@@ -25,7 +25,12 @@
 \renewcommand{\LFXpiederecho}{%
   \begingroup\LFXpiebase
   \begin{tabular}[b]{@{}r@{}}
-    {\color{lafroxGris}\rule{3.4cm}{0.4pt}}\\[-1pt]
+    {\color{lafroxGris}\rule{3.4cm}{0.4pt}%
+     % Overlay: firma sobre el filete sin cambiar altura del pie ni paginacion.
+     \begin{tikzpicture}[remember picture,overlay]
+       \node[anchor=south east,inner sep=0pt] at (0,1mm)
+         {\includegraphics[height=7mm]{logo/FIRMA_Alex_Aravena_transparente.png}};
+     \end{tikzpicture}}\\[-1pt]
     {\LFXchico Media firma: \LFXrepresentante}\\
     {\intermedium\fontsize{9pt}{11pt}\selectfont\color{lafroxTinta}\LFXfoliotexto}
   \end{tabular}%
