@@ -1,15 +1,18 @@
-# LafroX — Formulario T-19: Fichas de innovación
+# LafroX — Formulario T-19
 
 ## Índice
 
+- [Formulario T-19: Fichas de innovación](#formulario-t-19-fichas-de-innovación)
 - [Ficha 1 — Innovación 1](#ficha-1--innovación-1)
 - [Ficha 2 — Innovación 2](#ficha-2--innovación-2)
 - [Ficha 3 — Innovación 3](#ficha-3--innovación-3)
 - [Ficha 4 — Innovación 4](#ficha-4--innovación-4)
 - [Ficha 5 — Innovación 5](#ficha-5--innovación-5)
 - [Referencias](#referencias)
-- [Declaración de uso de IA](#declaración-de-uso-de-ia)
 
+# Formulario T-19: Fichas de innovación
+
+<a id="cap:sd13-T19"></a>
 
 Este formulario contiene una ficha por cada una de las cinco innovaciones obligatorias del Artículo 28° de las Bases Administrativas, con los campos del Formulario T-19 en su orden (Distribuidora Puelche S.A., 2026a, Art. 29° y Formulario T-19, pp. 19–20 y 64). El análisis de cada innovación está en el Capítulo 13, secciones 13.1 a 13.5. Los campos de inversión, costo operacional y beneficio se expresan sin montos, por la restricción del Art. 50.2; su valorización está en la Oferta Económica, Entregable 2, ítem 2.7 (Bases Administrativas, Formulario E-21, p. 71). Los requisitos RT citados corresponden a las Bases Técnicas Transversales (Distribuidora Puelche S.A., 2026b, caps. 5, 10, 14, 16 y 26, pp. 13, 22, 27, 31 y 45). La probabilidad y el impacto usan la escala ordinal 1 a 5 del Capítulo 8, sección 8.1.3.
 
@@ -31,11 +34,13 @@ Ficha de la innovación 1, «Seguimiento de vencimiento posentrega en el local»
 | 10. Inversión requerida | Horas de datos, desarrollo móvil y diseño del catálogo (meses 7 a 15) y acompañamiento del piloto en terreno (meses 13 a 15). Sin hardware ni licencias. |
 | 11. Efecto en el costo operacional | Cálculo nocturno y almacenamiento en nube; mantención de la regla y del catálogo (meses 16 a 56). |
 | 12. Beneficio esperado y su cuantificación | Unidades vencidas evitadas en el local por costo unitario, menos canjes y descuentos; desde el mes 16. No se suma a la meta de merma del Capítulo 2 ni a la innovación 3. |
-| 13. Indicador de verificación, línea base y meta | I-01A: avisos confirmados / evaluables; base sin medición; meta ≥ 70 % con ≥ 100 avisos. I-01B: vencido en el local / entregado; base en rutas de control sin avisos, meses 13 a 15; meta −25 %. I-01C: devoluciones por vencimiento próximo / devoluciones; base en rutas de control sin avisos, meses 13 a 15; meta −20 %. |
+| 13. Indicador de verificación, línea base y meta | I-01A: avisos confirmados / evaluables; base sin medición; meta ≥ 70 % con ≥ 100 avisos. I-01B: vencido en el local / entregado; base en rutas de control sin avisos, meses 13 a 15; meta -25 %. I-01C: devoluciones por vencimiento próximo / devoluciones; base en rutas de control sin avisos, meses 13 a 15; meta -20 %. |
 | 14. Momento de medición | I-01A en el mes 15; I-01B e I-01C en el mes 28. |
 | 15. Riesgo de adopción, probabilidad e impacto | R8-25: avisos falsos por compras irregulares o aviso sin acción posible. P = 4, I = 3, exposición 12. |
 | 16. Estrategia de mitigación | No liberar sin cumplir I-01A; mostrar la confianza de cada aviso; confirmar el saldo en la visita; catálogo como condición de activación. |
 | 17. Plan de contingencia si no rinde lo esperado | Degradar a aviso solo por vida útil remanente del lote; mantener el aviso informativo y escalar a Comercial. La trazabilidad de lote obligatoria sigue operando. |
+
+
 
 ## Ficha 2 — Innovación 2
 
@@ -55,11 +60,13 @@ Ficha de la innovación 2, «Reproducción de incidentes de terreno», desarroll
 | 10. Inversión requerida | Horas de instrumentación de terminales y sanitización (meses 2 a 5) y de cobertura de M3, M5 y M6 (meses 5 a 10), y de validación comparada en la marcha blanca (meses 11 a 15). No duplica las pruebas obligatorias de la cuenta 3.8. |
 | 11. Efecto en el costo operacional | Cómputo efímero por corrida en QA y Preproducción (meses 5 a 56) y mantención de escenarios (meses 21 a 56). |
 | 12. Beneficio esperado y su cuantificación | Horas de diagnóstico y regresiones repetidas evitadas; desde el mes 13. El criterio 6 del caso no se cuenta como beneficio de la innovación. |
-| 13. Indicador de verificación, línea base y meta | I-02A: mediana de horas hasta la causa reproducida; base: incidentes de prueba en QA de los meses 5 a 10, diagnosticados sin el paquete; meta −30 % con ≥ 20 pares. I-02B: paquetes que reproducen / admitidos; meta ≥ 80 %. I-02C: reaperturas por la misma causa; meta 0. I-02D: paquetes con datos prohibidos; meta 0. |
+| 13. Indicador de verificación, línea base y meta | I-02A: mediana de horas hasta la causa reproducida; base: incidentes de prueba en QA de los meses 5 a 10, diagnosticados sin el paquete; meta -30 % con ≥ 20 pares. I-02B: paquetes que reproducen / admitidos; meta ≥ 80 %. I-02C: reaperturas por la misma causa; meta 0. I-02D: paquetes con datos prohibidos; meta 0. |
 | 14. Momento de medición | I-02A en el mes 15; I-02B en el mes 15 y trimestral después; I-02C mensual desde el mes 21; I-02D en cada liberación. |
 | 15. Riesgo de adopción, probabilidad e impacto | R8-26: reproducción que no explica el incidente o consumo de batería; P = 3, I = 4, exposición 12. R8-24: datos personales en los paquetes; P = 3, I = 5, exposición 15. |
 | 16. Estrategia de mitigación | Comparar con el estado observado y revisión de muestras por Calidad; cupo y frecuencia de captura; sanitización por reglas fijas y modelado de amenazas (Bases Técnicas Transversales, cap. 26, RT-26.07, p. 45). |
 | 17. Plan de contingencia si no rinde lo esperado | Conservar diagnóstico y regresión base con trazas protegidas (R8-26); reproducción semiautomática con paquete armado por soporte; captura solo a solicitud; suspender el conjunto afectado. Se mantienen el diagnóstico convencional y las pruebas obligatorias. |
+
+
 
 ## Ficha 3 — Innovación 3
 
@@ -79,11 +86,13 @@ Ficha de la innovación 3, «Vida útil remanente por historia térmica del lote
 | 10. Inversión requerida | Horas de datos y Calidad (meses 3 a 5); horas de borde, eventos y vista en M9 (meses 5 a 10); horas de validación con lotes reales en la marcha blanca, con laboratorio externo si se contrata (meses 11 a 15). Sin hardware ni ingesta adicional. |
 | 11. Efecto en el costo operacional | Cómputo en el borde y en N-10 (meses 16 a 56); recalibración semestral de parámetros (meses 26, 32, 38, 44, 50 y 56). |
 | 12. Beneficio esperado y su cuantificación | Retenciones y descartes sin justificación térmica evitados; rechazos por fecha próxima evitados; dato de vida útil consumida para decidir reubicar o descartar. Desde el mes 16. No se suma a la meta de merma ni a la innovación 1. |
-| 13. Indicador de verificación, línea base y meta | I-03A: historia térmica completa; base 0; meta ≥ 95 %. I-03B: estimación dentro de ±15 %; sin medición histórica; referencia inicial por familia a establecer en la validación de meses 11 a 15; meta ≥ 80 % con ≥ 60 lotes por familia. I-03C: excursiones con vida consumida registrada; base 0; meta 100 %. I-03D: retenidos o descartados por vencimiento; base meses 13 a 15; meta −20 %. |
+| 13. Indicador de verificación, línea base y meta | I-03A: historia térmica completa; base 0; meta ≥ 95 %. I-03B: estimación dentro de ±15 %; sin medición histórica; referencia inicial por familia a establecer en la validación de meses 11 a 15; meta ≥ 80 % con ≥ 60 lotes por familia. I-03C: excursiones con vida consumida registrada; base 0; meta 100 %. I-03D: retenidos o descartados por vencimiento; base meses 13 a 15; meta -20 %. |
 | 14. Momento de medición | I-03A e I-03B en el mes 15, y I-03B después en cortes trimestrales por familia; I-03C mensual desde el mes 16; I-03D en el mes 28. |
 | 15. Riesgo de adopción, probabilidad e impacto | R8-27: parámetros no representativos o lectura de la estimación como permiso para relajar RNG-04; P = 4, I = 5, exposición 20. R8-23: asociación sensor–lote errónea; P = 4, I = 5, exposición 20. |
 | 16. Estrategia de mitigación | Validación por familia antes de habilitar; la estimación nunca alarga la vida más allá de la fecha impresa; la regla graduada y el bloqueo no cambian; tramos sin dato explícitos. Se considera señal de deriva del desempeño que I-03B sea inferior al 80 % en dos cortes consecutivos para una misma familia; este umbral activa la recalibración extraordinaria de sus parámetros y no constituye por sí solo un diagnóstico de la causa de la degradación. |
 | 17. Plan de contingencia si no rinde lo esperado | La familia queda con historia visible y FEFO por fecha impresa; estimación visible solo en M9; lote marcado «historia incompleta», sin estimación. |
+
+
 
 ## Ficha 4 — Innovación 4
 
@@ -103,11 +112,13 @@ Ficha de la innovación 4, «Tramo variable de la Operación ligado al costo de 
 | 10. Inversión requerida | Horas de diseño de la atribución, canasta e índices (meses 17 a 20) y del ensayo en sombra (meses 21 a 23). |
 | 11. Efecto en el costo operacional | Acompañamiento comercial (meses 21 a 56) y conciliación mensual con Finanzas (meses 24 a 56). Para LafroX, el tramo es ingreso contingente que vale cero en los meses 21 a 23. |
 | 12. Beneficio esperado y su cuantificación | Reducción verificable del costo por entrega de Puelche, desde el mes 24; Puelche paga menos si la solución no rinde y nunca más que el máximo. No se suma a las innovaciones 1, 3 o 5. |
-| 13. Indicador de verificación, línea base y meta | I-04A: 1 − costo comparable / costo de referencia; base canasta de los meses 21 a 23; meta ≥ 5 % con OTIF ≥ 95 %. I-04B: liquidaciones en sombra reproducidas por Finanzas; meta 3 de 3. I-04C: recomendaciones con respuesta y efecto; meta 100 %. |
+| 13. Indicador de verificación, línea base y meta | I-04A: 1 - costo comparable / costo de referencia; base canasta de los meses 21 a 23; meta ≥ 5 % con OTIF ≥ 95 %. I-04B: liquidaciones en sombra reproducidas por Finanzas; meta 3 de 3. I-04C: recomendaciones con respuesta y efecto; meta 100 %. |
 | 14. Momento de medición | I-04A en el mes 36 y mensual desde el 24; I-04B en los meses 21 a 23; I-04C mensual desde el mes 21. |
 | 15. Riesgo de adopción, probabilidad e impacto | R8-28: variación del costo por causas externas o reducción por degradación del servicio, con disputa en la liquidación. P = 3, I = 4, exposición 12. |
 | 16. Estrategia de mitigación | Canasta, índices y regla estacional fijados antes de la primera liquidación; protección del OTIF; denominador sin exclusiones; reproducción por Finanzas. |
 | 17. Plan de contingencia si no rinde lo esperado | Mecanismo contractual de resolución y corrección, sin modificar SLA ni inventar tarifa (R8-28); acotar el tramo al cumplimiento del OTIF; suspender el devengo del período en disputa según el contrato; volver a la estructura de pago de las Bases. |
+
+
 
 ## Ficha 5 — Innovación 5
 
@@ -133,32 +144,40 @@ Ficha de la innovación 5, «Hoja de negocio del almacenero», desarrollada en e
 | 16. Estrategia de mitigación | Prueba de comprensión y co-diseño; umbral y supresión verificados en cada emisión; revisión legal previa al bloque 4. |
 | 17. Plan de contingencia si no rinde lo esperado | Versión de un bloque explicada de palabra en la visita; no activar el bloque 4. La visita, el efectivo y los canales obligatorios no cambian. |
 
+
+
 Las cinco fichas comparten tres reglas: ninguna innovación agrega hardware al Formulario T-11, ninguna incorpora un modelo aprendido y ninguna cuenta como beneficio propio una meta que ya es alcance obligatorio. Los paquetes y meses coinciden con el Formulario T-14 y con el Anexo 7.D, y los riesgos con el Formulario T-16.
 
 ## Referencias
 
 Las citas a las Bases Administrativas y a las Bases Técnicas Transversales identifican el artículo o capítulo y la página impresa del PDF original, además del código RT cuando corresponde. Las referencias al caso se localizan por capítulo, sección o entrevista, sin exigir paginación. Las Aclaraciones se identifican por sección en la fuente disponible.
 
-- DORA. (2024). *Accelerate state of DevOps report 2024*. Google Cloud. https://dora.dev/research/2024/dora-report/
+- DORA. (2024). *Accelerate state of DevOps report 2024*. Google Cloud. [https://dora.dev/research/2024/dora-report/](https://dora.dev/research/2024/dora-report/)
+
 - Distribuidora Puelche S.A. (2026a). *Bases Administrativas de Licitación N.º TFEP-01/2026: Contratación de Solución Integral de Software y Servicios de Operación*, artículos 28, 29 y 50.2, y Formularios T-19, E-21 y E-25.
+
 - Distribuidora Puelche S.A. (2026b). *Bases Técnicas Transversales de Licitación N.º TFEP-01/2026*, capítulo 5, RT-05.30 (p. 13); capítulo 10, RT-10.07 (p. 22); capítulo 14, RT-14.06 (p. 27); capítulo 16, RT-16.32 (p. 31); capítulo 26, RT-26.07 (p. 45).
+
 - Distribuidora Puelche S.A. (2026c). *Caso: Logística. Especificaciones del problema y operación de Distribuidora Puelche S.A.*, capítulos 1, 2, 4, 6, 8, 10, 13 y 18.
+
 - Distribuidora Puelche S.A. (2026d). *Aclaraciones de la Licitación N.º TFEP-01/2026*, sección 7.2.
-- European Commission. (2016). Technology readiness levels (TRL). En *Horizon 2020 work programme 2016–2017: General annexes* (Anexo G). https://ec.europa.eu/research/participants/data/ref/h2020/other/wp/2016_2017/annexes/h2020-wp1617-annex-g-trl_en.pdf
-- FitzGerald, C., Tan, S., Carter, E., & Airoldi, M. (2023). Contractual acrobatics: A configurational analysis of outcome specifications and payment in outcome-based contracts. *Public Management Review, 25*(9), 1796–1814. https://doi.org/10.1080/14719037.2023.2244501
-- GS1 AISBL. (2022). *EPC Information Services (EPCIS) standard* (versión 2.0). https://ref.gs1.org/standards/epcis/2.0.0/
-- Hundepool, A., Domingo-Ferrer, J., Franconi, L., Giessing, S., Lenz, R., Naylor, J., Schulte Nordholt, E., Seri, G., De Wolf, P.-P., Tent, R., Młodak, A., Gussenbauer, J., & Wilak, K. (2024). *Handbook on statistical disclosure control* (2.ª ed.). STACE project. https://sdctools.github.io/HandbookSDC/
-- Jedermann, R., Nicometo, M., Uysal, I., & Lang, W. (2014). Reducing food losses by intelligent food logistics. *Philosophical Transactions of the Royal Society A, 372*(2017), 20130302. https://doi.org/10.1098/rsta.2013.0302
-- Koutsoumanis, K., Taoukis, P. S., & Nychas, G.-J. E. (2005). Development of a Safety Monitoring and Assurance System for chilled food products. *International Journal of Food Microbiology, 100*(1–3), 253–260. https://doi.org/10.1016/j.ijfoodmicro.2004.10.024
-- Ley N.º 21.719. (2024). Regula la protección y el tratamiento de los datos personales y crea la Agencia de Protección de Datos Personales. Diario Oficial, 13 de diciembre de 2024. https://www.bcn.cl/leychile/navegar?idNorma=1209272
-- Riesenegger, L., Santos, M. J., Ostermeier, M., Martins, S., Amorim, P., & Hübner, A. (2023). Minimizing food waste in grocery store operations: Literature review and research agenda. *Sustainability Analytics and Modeling, 3*, 100023. https://doi.org/10.1016/j.samod.2023.100023
-- Shahin, M., Babar, M. A., & Zhu, L. (2017). Continuous integration, delivery and deployment: A systematic review on approaches, tools, challenges and practices. *IEEE Access, 5*, 3909–3943. https://doi.org/10.1109/ACCESS.2017.2685629
-- Sweeney, L. (2002). k-anonymity: A model for protecting privacy. *International Journal of Uncertainty, Fuzziness and Knowledge-Based Systems, 10*(5), 557–570. https://doi.org/10.1142/S0218488502001648
 
-## Declaración de uso de IA
+- European Commission. (2016). Technology readiness levels (TRL). En *Horizon 2020 work programme 2016–2017: General annexes* (Anexo G). [https://ec.europa.eu/research/participants/data/ref/h2020/other/wp/2016_2017/annexes/h2020-wp1617-annex-g-trl_en.pdf](https://ec.europa.eu/research/participants/data/ref/h2020/other/wp/2016_2017/annexes/h2020-wp1617-annex-g-trl_en.pdf)
 
-En cumplimiento de la sección 7.2 de las Aclaraciones de la licitación, la tabla siguiente declara el uso de herramientas de inteligencia artificial en este formulario, con la revisión humana de cada parte. La declaración se consolida en el Formulario A-6.
+- FitzGerald, C., Tan, S., Carter, E., & Airoldi, M. (2023). Contractual acrobatics: A configurational analysis of outcome specifications and payment in outcome-based contracts. *Public Management Review, 25*(9), 1796–1814. [https://doi.org/10.1080/14719037.2023.2244501](https://doi.org/10.1080/14719037.2023.2244501)
 
-| Sección | Herramienta | Finalidad del uso | Nivel en texto | Nivel en diagramas | Revisión humana (quién y qué verificó) |
-| --- | --- | --- | --- | --- | --- |
-| Fichas 1 a 5 | Claude Code; OpenAI Codex | Traslado de las secciones 13.1 a 13.5 a los 17 campos del formulario y cotejo con los Formularios T-14 y T-16 | Alto | Ninguno | No acreditada |
+- GS1 AISBL. (2022). *EPC Information Services (EPCIS) standard* (versión 2.0). [https://ref.gs1.org/standards/epcis/2.0.0/](https://ref.gs1.org/standards/epcis/2.0.0/)
+
+- Hundepool, A., Domingo-Ferrer, J., Franconi, L., Giessing, S., Lenz, R., Naylor, J., Schulte Nordholt, E., Seri, G., De Wolf, P.-P., Tent, R., Młodak, A., Gussenbauer, J., & Wilak, K. (2024). *Handbook on statistical disclosure control* (2.ª ed.). STACE project. [https://sdctools.github.io/HandbookSDC/](https://sdctools.github.io/HandbookSDC/)
+
+- Jedermann, R., Nicometo, M., Uysal, I., & Lang, W. (2014). Reducing food losses by intelligent food logistics. *Philosophical Transactions of the Royal Society A, 372*(2017), 20130302. [https://doi.org/10.1098/rsta.2013.0302](https://doi.org/10.1098/rsta.2013.0302)
+
+- Koutsoumanis, K., Taoukis, P. S., & Nychas, G.-J. E. (2005). Development of a Safety Monitoring and Assurance System for chilled food products. *International Journal of Food Microbiology, 100*(1–3), 253–260. [https://doi.org/10.1016/j.ijfoodmicro.2004.10.024](https://doi.org/10.1016/j.ijfoodmicro.2004.10.024)
+
+- Ley N.º 21.719. (2024). Regula la protección y el tratamiento de los datos personales y crea la Agencia de Protección de Datos Personales. Diario Oficial, 13 de diciembre de 2024. [https://www.bcn.cl/leychile/navegar?idNorma=1209272](https://www.bcn.cl/leychile/navegar?idNorma=1209272)
+
+- Riesenegger, L., Santos, M. J., Ostermeier, M., Martins, S., Amorim, P., & Hübner, A. (2023). Minimizing food waste in grocery store operations: Literature review and research agenda. *Sustainability Analytics and Modeling, 3*, 100023. [https://doi.org/10.1016/j.samod.2023.100023](https://doi.org/10.1016/j.samod.2023.100023)
+
+- Shahin, M., Babar, M. A., & Zhu, L. (2017). Continuous integration, delivery and deployment: A systematic review on approaches, tools, challenges and practices. *IEEE Access, 5*, 3909–3943. [https://doi.org/10.1109/ACCESS.2017.2685629](https://doi.org/10.1109/ACCESS.2017.2685629)
+
+- Sweeney, L. (2002). k-anonymity: A model for protecting privacy. *International Journal of Uncertainty, Fuzziness and Knowledge-Based Systems, 10*(5), 557–570. [https://doi.org/10.1142/S0218488502001648](https://doi.org/10.1142/S0218488502001648)
