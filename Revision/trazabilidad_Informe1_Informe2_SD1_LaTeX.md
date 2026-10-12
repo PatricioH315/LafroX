@@ -76,3 +76,9 @@ Inserción autorizada en LaTeX y espejo Markdown: inventario112 y capacidad rese
 El cotejo de las tres fuentes LaTeX con sus tres Markdown dio cero diferencias de contenido. La comprobación contra los PDF incluyó 120 bloques de prosa del cuerpo y las 44 celdas del T-6. No significa conformidad formal al 100 %: además de revisión humana y firmas, se detectaron citas a las Bases sin página (§6), folios girados en el margen izquierdo del T-6 pp. 4–6 (§9) y una mezcla de nomenclatura CMMI v2.0/SCAMPI A que debe homologarse. Este resultado amplía «Pendientes concretos» y matiza las respuestas de las filas 2 y 18, sin alterar las 28 observaciones originales.
 
 Detalle y límites en [Verificación integral](verificacion_integral_SD1_LaTeX_MD_Aclaraciones.md). No se modificaron entregables ni PDF ni se hizo commit/push durante esta auditoría.
+
+## Ajuste terminológico CMMI y cautela de demanda de mesa — 11 de octubre de 2026
+
+En la observación 18 se homologó el método de la evaluación CMMI versión 2.0 a «Benchmark» en el antecedente, la renovación y Referencias, tanto en contenido.tex como en el Markdown. El PDF del cuerpo se recompiló: 21 páginas, tres menciones Benchmark, cero SCAMPI A. Esto corrige la coherencia terminológica, no autentica el antecedente ficticio N° 58190 ni sustituye la revisión humana.
+
+La cifra 2.000 contactos/mes de la observación 24 fue cuestionada por el usuario. El [análisis del supuesto](revision_demanda_mesa_SD1_SD4.md) muestra que procede de 800 personas × 2,5 contactos/persona-mes (SV-06 del SD4), no de las Bases ni de incidentes medidos. **No se considera una demanda validada ni se cambió por otra cifra inventada.** El redimensionamiento y la coordinación SD1–SD4–SD7–T-15 permanecen pendientes de fijar el escenario.
