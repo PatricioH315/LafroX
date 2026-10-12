@@ -24,7 +24,7 @@
 - [4.1.4.4 Módulo M3 Preventa](#4144-módulo-m3-preventa)
 - [4.1.4.5 Módulo M4 Rutas](#4145-módulo-m4-rutas)
 - [4.1.4.6 Módulo M7 Cobranza y rendición](#4146-módulo-m7-cobranza-y-rendición)
-- [4.1.4.7 Módulo M10 Analítica](#4147-módulo-m10-analítica)
+- [4.1.4.7 Módulo M10 BI Gerencia](#4147-módulo-m10-bi-gerencia)
 - [4.1.4.8 Recepción, preparación, reparto y servicios asociados](#4148-recepción-preparación-reparto-y-servicios-asociados)
 - [4.1.5 Modelo de datos conceptual](#415-modelo-de-datos-conceptual)
 - [4.1.6 Catálogo de interfaces](#416-catálogo-de-interfaces)
@@ -120,7 +120,7 @@
 
 <a id="cap:arquitectura-logica"></a>
 
-El capítulo 4 explica cómo la solución sostiene la operación distribuida de Puelche. La arquitectura lógica define las responsabilidades, los datos y los contratos que permiten ejecutar las capacidades del capítulo 3; la arquitectura física acredita su emplazamiento y continuidad, y la estrategia de centros de datos completa su recuperación. Los catálogos, el registro de decisiones de arquitectura (Anexo 4-O) y la memoria de cálculo del dimensionamiento (Anexo 4-W) se entregan en el archivo LAFROX-Subdocumento4-Anexos, y el detalle del equipamiento, en el Formulario T-11, entregado como archivo propio.
+El capítulo 4 explica cómo la solución sostiene la operación distribuida de Puelche. La arquitectura lógica define las responsabilidades, los datos y los contratos que permiten ejecutar las capacidades del capítulo 3. La arquitectura física acredita su emplazamiento y continuidad, y la estrategia de centros de datos completa su recuperación. Los catálogos, el registro de decisiones de arquitectura (Anexo 4-O) y la memoria de cálculo del dimensionamiento (Anexo 4-W) se entregan en el archivo LAFROX-Subdocumento4-Anexos, y el detalle del equipamiento, en el Formulario T-11, entregado como archivo propio.
 
 ## 4.1 Arquitectura lógica
 
@@ -128,55 +128,55 @@ El capítulo 4 explica cómo la solución sostiene la operación distribuida de 
 
 Los anexos 4-A a 4-N detallan eventos, módulos, interfaces, reglas y correspondencias. El Anexo 4-O reúne el registro único ADR-01 a ADR-22; el 4-P presenta las tecnologías y su actualización; los 4-Q y 4-R, amenazas y controles; el 4-S, los puntos de vista y sus reglas de correspondencia; el 4-T, el desempeño; el 4-U, la evidencia documental; y el 4-V, los protocolos de aceptación. Los anexos comienzan con un catálogo navegable: cada entrada identifica la sección que la utiliza y el requisito que respalda.
 
-Este apartado desarrolla las responsabilidades y los contratos de la solución y su correspondencia con el esquema y la explicación de 3.3 y 3.4. La correspondencia se establece por capacidad: recepción e inventario (M1–M2), preventa y planificación (M3–M4), preparación y reparto (M5–M6), rendición y devoluciones (M7–M8), calidad y analítica (M9–M10), canal moderno y flota (M11–M12). El emplazamiento, las conexiones y su capacidad corresponden a 4.2; los centros de datos, a 4.3. Los catálogos extensos se entregan en los anexos 4-A a 4-V. El Anexo 4-N verifica las capacidades y contratos; la Tabla [A.14](LAFROX-Subdocumento4-Anexos.md#tab:mapeo-logica) del Anexo 4-N identifica su realización física.
+Este apartado desarrolla las responsabilidades y los contratos de la solución y su correspondencia con el esquema y la explicación de 3.3 y 3.4. La correspondencia se establece por capacidad: recepción e inventario (M1–M2), preventa y planificación (M3–M4), preparación y reparto (M5–M6), rendición y devoluciones (M7–M8), calidad y analítica (M9–M10), canal moderno y flota (M11–M12). El emplazamiento, las conexiones y su capacidad corresponden a 4.2. Los centros de datos corresponden a 4.3. Los catálogos extensos se entregan en los anexos 4-A a 4-V. El Anexo 4-N verifica las capacidades y contratos. La Tabla [A.14](LAFROX-Subdocumento4-Anexos.md#tab:mapeo-logica) del Anexo 4-N identifica su realización física.
 
-En Puelche, un pedido debe poder tomarse en una ruta sin cobertura, prepararse durante la noche y llegar al cliente con su lote y su evidencia de entrega identificados. La arquitectura parte de esa continuidad: cada operación se registra donde ocurre y se reconcilia cuando vuelve la conexión. Para ordenar las responsabilidades, la solución se organiza en las ocho capas exigidas por el numeral 2.1 de las Bases Técnicas Transversales (cap. 2, p. 6; RT-02.01).
+En Puelche, un pedido debe poder tomarse en una ruta sin cobertura, prepararse durante la noche y llegar al cliente con su lote y su evidencia de entrega identificados. La arquitectura parte de esa continuidad: cada operación se registra donde ocurre y se reconcilia cuando vuelve la conexión. Para ordenar las responsabilidades, la solución se organiza en las ocho capas exigidas por el numeral 2.1 de las Bases Técnicas Transversales (cap. 2, p. 6, RT-02.01).
 
 ### 4.1.1 Especificaciones Tecnologías de Software a utilizar
 
 <a id="subsec:tecnologias-software"></a>
 
-El núcleo de negocio se implementa como monolito modular en Laravel 13 y PHP 8.5. Frente a microservicios por dominio, esta elección conserva una sola base de código y un despliegue comprensible para el equipo TI de cuatro personas; sincronización, mensajería EDI y telemetría se ejecutan como procesos separables cuando su carga lo exija. Laravel proporciona rutas, validación, políticas, contenedor de dependencias y trabajos en cola; las reglas de negocio permanecen en módulos propios, sin depender de esas interfaces. Se seleccionan PostgreSQL/PostGIS para transacciones y geografía, RabbitMQ local para conservar trabajo durante un corte y SQS FIFO para ordenar su entrega por partición al reconectar. Ni el framework ni la cola reemplazan la deduplicación y la conciliación de los consumidores.
+El núcleo de negocio se implementa como monolito modular en Laravel 13 y PHP 8.5. Frente a microservicios por dominio, esta elección conserva una sola base de código y un despliegue comprensible para el equipo TI de cuatro personas. Sincronización, mensajería EDI y telemetría se ejecutan como procesos separables cuando su carga lo exija. Laravel proporciona rutas, validación, políticas, contenedor de dependencias y trabajos en cola. Las reglas de negocio permanecen en módulos propios, sin depender de esas interfaces. Se seleccionan PostgreSQL/PostGIS para transacciones y geografía, RabbitMQ local para conservar trabajo durante un corte y SQS FIFO para ordenar su entrega por partición al reconectar. Ni el framework ni la cola reemplazan la deduplicación y la conciliación de los consumidores.
 
-Angular y TypeScript sirven los portales; Kotlin nativo en Android permite escaneo, captura de evidencia y almacenamiento cifrado en el parque móvil Zebra. Keycloak emite la identidad central mediante OIDC; las decisiones de autorización siguen siendo de cada servicio. La comparación con microservicios, aplicaciones híbridas y otros productos se resume en la sección de alternativas y en los ADR. Los servicios gestionados de AWS apoyan la ejecución y la integración; su ubicación y redundancia corresponden a 4.2. Estas elecciones deben sostenerse durante el contrato mediante actualización de versiones soportadas, sin prometer que una versión inicial durará 56 meses.
+Angular y TypeScript sirven los portales. Kotlin nativo en Android permite escaneo, captura de evidencia y almacenamiento cifrado en el parque móvil Zebra. Keycloak emite la identidad central mediante OIDC. Las decisiones de autorización siguen siendo de cada servicio. La comparación con microservicios, aplicaciones híbridas y otros productos se resume en la sección de alternativas y en los ADR. Los servicios gestionados de AWS apoyan la ejecución y la integración. Su ubicación y redundancia corresponden a 4.2. Estas elecciones deben sostenerse durante el contrato mediante actualización de versiones soportadas, sin prometer que una versión inicial durará 56 meses.
 
 Los principios que gobiernan el diseño son los siguientes:
 
-- **Continuidad sin conexión.** Preventa y reparto deben registrar un turno completo de 14 horas sin cobertura. El componente local debe mantener al menos 24 horas continuas de operación autónoma y degradada (RT-03.10; Bases Técnicas Transversales, cap. 3, p. 9). La sincronización posterior es idempotente: reenviar un evento no vuelve a ejecutar la operación. Los conflictos se resuelven con reglas de negocio documentadas, no dando prioridad automática al último registro recibido.
+- **Continuidad sin conexión.** Preventa y reparto deben registrar un turno completo de 14 horas sin cobertura. El componente local debe mantener al menos 24 horas continuas de operación autónoma y degradada (RT-03.10, Bases Técnicas Transversales, cap. 3, p. 9). La sincronización posterior es idempotente: reenviar un evento no vuelve a ejecutar la operación. Los conflictos se resuelven con reglas de negocio documentadas, no dando prioridad automática al último registro recibido.
 
-- **Atención adaptada al canal tradicional.** La solución no exige que los 11.600 almacenes instalen una aplicación ni dispongan de conexión propia. El conductor registra la entrega y su confirmación mediante firma o QR; los avisos por WhatsApp/SMS se utilizan cuando el canal está disponible. El almacenero que tiene teléfono puede, además, instalar el Portal de Clientes y armar su pedido sin señal; es un canal opcional que convive con el preventista.
+- **Atención adaptada al canal tradicional.** La solución no exige que los 11.600 almacenes instalen una aplicación ni dispongan de conexión propia. El conductor registra la entrega y su confirmación mediante firma o QR. Los avisos por WhatsApp/SMS se utilizan cuando el canal está disponible. El almacenero que tiene teléfono puede, además, instalar el Portal de Clientes y armar su pedido sin señal. Es un canal opcional que convive con el preventista.
 
 - **Responsabilidades distribuidas.** Recepción, preparación y despacho conservan su núcleo transaccional disponible en cada sitio. Preventa, reparto y canal moderno disponen de servicios centrales, mientras las aplicaciones de terreno conservan la captura local cuando no pueden alcanzarlos. La ubicación, la capacidad y la redundancia de esos servicios se justifican en 4.2, conforme al Art. 16.
 
-- **Evolución durante 56 meses.** La Etapa 1 comprende los meses 1–15, con producción en el mes 16; la Etapa 2, los meses 13–20, con producción en el mes 21. Los 36 meses de operación se extienden del mes 21 al 56 (Art. 17).
+- **Evolución durante 56 meses.** La Etapa 1 comprende los meses 1–15, con producción en el mes 16. La Etapa 2, los meses 13–20, con producción en el mes 21. Los 36 meses de operación se extienden del mes 21 al 56 (Art. 17).
 
-- **Verificación explícita del acceso.** La identidad central utiliza OIDC y MFA. Cada servicio verifica autorización, alcance y contexto; una solicitud no se considera confiable solo por provenir de la red corporativa. El cifrado y la auditoría acompañan cada intercambio.
+- **Verificación explícita del acceso.** La identidad central utiliza OIDC y MFA. Cada servicio verifica autorización, alcance y contexto. Una solicitud no se considera confiable solo por provenir de la red corporativa. El cifrado y la auditoría acompañan cada intercambio.
 
-- **Recuperación y reconciliación.** RT-07.04 exige RTO ≤ 4 horas y RPO ≤ 15 minutos para los servicios críticos. La extracción continua por fibra, LTE y satélite en los CD sostiene el RPO exigido aun ante la caída de los dos medios terrestres. El Anexo 4-M define AL-DR-01; el límite residual se justifica en 4.3.2. Los ambientes, medios de respaldo y conectividad redundante corresponden a 4.2.
+- **Recuperación y reconciliación.** RT-07.04 exige RTO ≤ 4 horas y RPO ≤ 15 minutos para los servicios críticos. La extracción continua por fibra, LTE y satélite en los CD sostiene el RPO exigido aun ante la caída de los dos medios terrestres. El Anexo 4-M define AL-DR-01. El límite residual se justifica en 4.3.2. Los ambientes, medios de respaldo y conectividad redundante corresponden a 4.2.
 
 - **Operación sostenible para cuatro personas.** Las herramientas, los procedimientos y el soporte deben permitir que el equipo TI de Puelche administre la solución con el apoyo del adjudicatario durante todo el contrato.
 
 La descripción sigue la organización de vistas de ISO/IEC/IEEE 42010:2022 (International Organization for Standardization [ISO], 2022a). La vista lógica define las responsabilidades de los componentes y sus relaciones con los procesos, los datos, la seguridad y las integraciones. Cada decisión arquitectónica debe conservar su justificación, las alternativas consideradas y los requisitos que la sustentan (Bases Técnicas Transversales, cap. 2, p. 7; RT-02.04).
 
-Las decisiones tecnológicas se registran con alternativas y criterios en el Anexo 4-O; el soporte y la actualización durante el contrato se especifican en el Anexo 4-P.
+Las decisiones tecnológicas se registran con alternativas y criterios en el Anexo 4-O. El soporte y la actualización durante el contrato se especifican en el Anexo 4-P.
 
 ### 4.1.2 Principios de integración
 
 <a id="subsec:principios-integracion"></a>
 
-La integración no es un apéndice: es el tejido que sostiene la operación distribuida de Puelche. El riesgo principal del caso está en las costuras entre sistemas legados sin documentación de interfaces, no en los módulos nuevos. De las Bases Técnicas Transversales (RT-02.06 a RT-02.08 y RT-05.16; Bases Técnicas Transversales, cap. 2, p. 7, y cap. 5, p. 12) y del caso se desprenden ocho reglas de diseño:
+La integración no es un apéndice: es el tejido que sostiene la operación distribuida de Puelche. El riesgo principal del caso está en las costuras entre sistemas legados sin documentación de interfaces, no en los módulos nuevos. De las Bases Técnicas Transversales (RT-02.06 a RT-02.08 y RT-05.16, Bases Técnicas Transversales, cap. 2, p. 7, y cap. 5, p. 12) y del caso se desprenden ocho reglas de diseño:
 
 - **Contrato antes que conexión.** Cada interfaz tiene dueño, contrato OpenAPI o AsyncAPI, versión y comportamiento ante falla antes de entrar en operación.
 
-- **Asincronía con excepciones justificadas.** Los eventos desacoplan procesos; disponibilidad, crédito, autorización de pago y actos tributarios que exigen respuesta se consultan con tiempo máximo de espera y estado explícito.
+- **Asincronía con excepciones justificadas.** Los eventos desacoplan procesos. Disponibilidad, crédito, autorización de pago y actos tributarios que exigen respuesta se consultan con tiempo máximo de espera y estado explícito.
 
-- **Idempotencia.** Una escritura conserva su UUID en todos los reintentos; el consumidor deduplica y resuelve conflictos por regla de negocio, no por la última marca de tiempo.
+- **Idempotencia.** Una escritura conserva su UUID en todos los reintentos. El consumidor deduplica y resuelve conflictos por regla de negocio, no por la última marca de tiempo.
 
 - **Reconciliación auditable.** Cada conflicto conserva operación, regla, resultado, autor y momento, conforme a la bitácora del Artículo 16.4 (Bases Administrativas, art. 16.4, p. 12).
 
-- **Frontera única del legado.** La capa anticorrupción traduce hacia el ERP; ningún módulo o portal escribe directamente en él.
+- **Frontera única del legado.** La capa anticorrupción traduce hacia el ERP. Ningún módulo o portal escribe directamente en él.
 
-- **Confianza explícita.** Cada mensaje y llamada se autentica, autoriza y correlaciona; las excepciones de conectividad hacia el sitio son privadas, acotadas y auditadas.
+- **Confianza explícita.** Cada mensaje y llamada se autentica, autoriza y correlaciona. Las excepciones de conectividad hacia el sitio son privadas, acotadas y auditadas.
 
 - **Falla declarada.** Las quince entradas del catálogo indican si reintentan, se difieren, degradan o requieren procedimiento manual.
 
@@ -184,7 +184,7 @@ La integración no es un apéndice: es el tejido que sostiene la operación dist
 
 Estas reglas se verifican en los contratos, el catálogo de interfaces y las pruebas de falla de cada consumidor.
 
-El núcleo reúne M1–M12 en Laravel 13 sobre PHP 8.5, con dependencias fijadas por el archivo de versiones de dependencias. Cada módulo tiene espacio de nombres, servicios de aplicación, reglas de dominio y adaptadores propios. Esta organización evita que una pantalla o un cambio de proveedor invada otra capacidad. Para 14.200 clientes y unos 31.000 pedidos mensuales, se conserva la sencillez operativa del monolito modular, en línea con el numeral 2.3 de las Bases Técnicas Transversales. Sincronización, EDI y telemetría tienen trabajadores y capacidad de escalado independientes desde el inicio (RT-02.02; Bases Técnicas Transversales, cap. 2, p. 6); su emplazamiento se detalla en 4.2.
+El núcleo reúne M1–M12 en Laravel 13 sobre PHP 8.5, con dependencias fijadas por el archivo de versiones de dependencias. Cada módulo tiene espacio de nombres, servicios de aplicación, reglas de dominio y adaptadores propios. Esta organización evita que una pantalla o un cambio de proveedor invada otra capacidad. Para 14.200 clientes y unos 31.000 pedidos mensuales, se conserva la sencillez operativa del monolito modular, en línea con el numeral 2.3 de las Bases Técnicas Transversales. Sincronización, EDI y telemetría tienen trabajadores y capacidad de escalado independientes desde el inicio (RT-02.02, Bases Técnicas Transversales, cap. 2, p. 6). Su emplazamiento se detalla en 4.2.
 
 La volumetría operativa que condiciona el dimensionamiento es la siguiente:
 
@@ -194,31 +194,31 @@ La volumetría operativa que condiciona el dimensionamiento es la siguiente:
 
 - 62 preventistas, unos 160 conductores de transportistas y 310 personas de centro de distribución (Bases Técnicas del caso, cap. 14, pp. 24–25), además de 84 conductores propios y peonetas (Bases Técnicas del caso, cap. 2, p. 5). De esas 310 personas, 120 preparan pedidos en el turno nocturno de Talca (Bases Técnicas del caso, cap. 8, p. 14).
 
-- El máximo horario global de septiembre alcanza 14,66 TPS a las 12:00, incluida la preventa y el portal; dentro de la ventana de despacho de 05:30 a 07:00, el máximo es 6,94 TPS. El diseño considera ambos picos según el proceso que dimensiona, nunca el promedio, y declara explícitamente los puntos únicos de falla (SPOF) con su mitigación conforme a RT-02.11.
+- El máximo horario global de septiembre alcanza 14,66 TPS a las 12:00, incluida la preventa y el portal. Dentro de la ventana de despacho de 05:30 a 07:00, el máximo es 6,94 TPS. El diseño considera ambos picos según el proceso que dimensiona, nunca el promedio, y declara explícitamente los puntos únicos de falla (SPOF) con su mitigación conforme a RT-02.11.
 
-El modelo distingue seis instalaciones: los CD de Talca y Concepción, las plataformas de cross-docking de Curicó, Chillán y Los Ángeles, y la casa matriz de Talca, contigua al CD principal (Bases Técnicas del caso, cap. 2, p. 5). Las primeras cinco ejecutan el mismo perfil local de bodega, conservan autoridad sobre los movimientos de su bodega y publican eventos idempotentes para consolidar stock y reservas en N-04/N-05; la casa matriz no aloja cómputo propio y utiliza los portales y las consolas en nube. Los identificadores de sitio serán parametrizables para incorporar una séptima instalación proyectada a tres años y evaluar la futura operación en Los Lagos hacia 2030.
+El modelo distingue seis instalaciones: los CD de Talca y Concepción, las plataformas de cross-docking de Curicó, Chillán y Los Ángeles, y la casa matriz de Talca, contigua al CD principal (Bases Técnicas del caso, cap. 2, p. 5). Las primeras cinco ejecutan el mismo perfil local de bodega, conservan autoridad sobre los movimientos de su bodega y publican eventos idempotentes para consolidar stock y reservas en N-04/N-05. La casa matriz no aloja cómputo propio y utiliza los portales y las consolas en nube. Los identificadores de sitio serán parametrizables para incorporar una séptima instalación proyectada a tres años y evaluar la futura operación en Los Lagos hacia 2030.
 
 ### 4.1.3 Capas de la arquitectura
 
-Las ocho capas separan la interacción con las personas, las reglas de negocio y la persistencia. Seguridad y observabilidad atraviesan el conjunto. La vista general permite ubicar cada responsabilidad antes de revisar sus componentes; el inventario trazable se reúne en el Anexo 4-N.
+Las ocho capas separan la interacción con las personas, las reglas de negocio y la persistencia. Seguridad y observabilidad atraviesan el conjunto. La vista general permite ubicar cada responsabilidad antes de revisar sus componentes. El inventario trazable se reúne en el Anexo 4-N.
 
-Presentación reúne las superficies de trabajo; borde protege su entrada; puerta de enlace valida solicitudes; negocio decide por módulo; integración intercambia contratos; acceso a datos persiste por propietario. Seguridad y observabilidad atraviesan esas seis responsabilidades.
+Presentación reúne las superficies de trabajo. Borde protege su entrada. Puerta de enlace valida solicitudes, negocio decide por módulo, integración intercambia contratos, acceso a datos persiste por propietario. Seguridad y observabilidad atraviesan esas seis responsabilidades.
 
-Las capas 7 y 8 atraviesan las demás; no duplican reglas de negocio.
+Las capas 7 y 8 atraviesan las demás, no duplican reglas de negocio.
 
-La arquitectura se presenta primero mediante su vista general completa (Figura [1](LAFROX-Subdocumento4.md#fig:arql-general-completa)) y después mediante las vistas de sus ocho capas. La vista general relaciona los actores y las funciones de negocio con los componentes que las sostienen; cada vista por capa desarrolla sus responsabilidades e intercambios.
+La arquitectura se presenta primero mediante su vista general completa (Figura [1](LAFROX-Subdocumento4.md#fig:arql-general-completa)) y después mediante las vistas de sus ocho capas. La vista general relaciona los actores y las funciones de negocio con los componentes que las sostienen. Cada vista por capa desarrolla sus responsabilidades e intercambios.
 
 **Figura 1 — Vista general completa de la arquitectura lógica**
 
-[Abrir gráfico: Vista general completa de la arquitectura lógica](https://raw.githubusercontent.com/PatricioH315/LafroX/c4d1230c9246f1a50933a8dc8a9a07b5d13a10be/04/figuras/logica/capas/ARQL-01_General_definitivo.pdf)
+[Abrir gráfico: Vista general completa de la arquitectura lógica](https://raw.githubusercontent.com/PatricioH315/LafroX/ae4fa5a96719bad39267627a50eda8c822a72f10/04/figuras/logica/capas/ARQL-01_General_definitivo.pdf)
 
 <a id="fig:arql-general-completa"></a>
 
 Fuente: elaboración propia.
 
-La vista general muestra cómo cada actor accede a la solución desde su aplicación, portal o consola y se relaciona con los módulos M1–M12. Se lee desde las personas hacia las reglas de negocio, las integraciones y los datos, distinguiendo los componentes de nube y los del sitio. Las conexiones representan intercambios sujetos a autorización, no acceso directo a las bases de datos. Seguridad y observabilidad acompañan todo el recorrido; sus controles y las condiciones de operación sin conexión se desarrollan en los apartados siguientes.
+La vista general muestra cómo cada actor accede a la solución desde su aplicación, portal o consola y se relaciona con los módulos M1–M12. Se lee desde las personas hacia las reglas de negocio, las integraciones y los datos, distinguiendo los componentes de nube y los del sitio. Las conexiones representan intercambios sujetos a autorización, no acceso directo a las bases de datos. Seguridad y observabilidad acompañan todo el recorrido. Sus controles y las condiciones de operación sin conexión se desarrollan en los apartados siguientes.
 
-La lectura por capas destaca sus responsabilidades: presentación captura y muestra información; borde protege la entrada; las puertas de servicio validan las solicitudes; el negocio aplica las reglas en Laravel; integración conserva y distribuye eventos; y acceso a datos administra la persistencia. Seguridad y observabilidad son transversales, no pasos finales del procesamiento. La puerta local permite que la bodega siga operando sin WAN, mientras las colas conservan el trabajo sin confirmar para reconciliarlo al recuperar la conexión.
+La lectura por capas destaca sus responsabilidades: presentación captura y muestra información. Borde protege la entrada. Las puertas de servicio validan las solicitudes, el negocio aplica las reglas en Laravel. Integración conserva y distribuye eventos. Y acceso a datos administra la persistencia. Seguridad y observabilidad son transversales, no pasos finales del procesamiento. La puerta local permite que la bodega siga operando sin WAN, mientras las colas conservan el trabajo sin confirmar para reconciliarlo al recuperar la conexión.
 
 #### 4.1.3.1 Capa de presentación (Capa 1)
 
@@ -226,19 +226,19 @@ La Figura [2](LAFROX-Subdocumento4.md#fig:arql-capa-1) presenta las responsabili
 
 **Figura 2 — Presentación: aplicaciones y superficies de trabajo**
 
-[Abrir gráfico: Presentación: aplicaciones y superficies de trabajo](https://raw.githubusercontent.com/PatricioH315/LafroX/c4d1230c9246f1a50933a8dc8a9a07b5d13a10be/04/figuras/logica/capas/ARQL-21_Presentacion.pdf)
+[Abrir gráfico: Presentación: aplicaciones y superficies de trabajo](https://raw.githubusercontent.com/PatricioH315/LafroX/ae4fa5a96719bad39267627a50eda8c822a72f10/04/figuras/logica/capas/ARQL-21_Presentacion.pdf)
 
 <a id="fig:arql-capa-1"></a>
 
 Fuente: elaboración propia.
 
-Las conexiones relacionan a cada actor con su aplicación, portal o consola y distinguen el recorrido central del acceso local de bodega. Los dispositivos y las tecnologías se muestran junto a los canales donde se utilizan. Las aplicaciones móviles conservan las capturas sin confirmar; los portales y consolas consultan sus dominios mediante APIs autorizadas. El dispositivo y la pantalla no reemplazan la identidad ni los permisos de la persona.
+Las conexiones relacionan a cada actor con su aplicación, portal o consola y distinguen el recorrido central del acceso local de bodega. Los dispositivos y las tecnologías se muestran junto a los canales donde se utilizan. Las aplicaciones móviles conservan las capturas sin confirmar. Los portales y consolas consultan sus dominios mediante APIs autorizadas. El dispositivo y la pantalla no reemplazan la identidad ni los permisos de la persona.
 
-La capa de presentación reúne las herramientas que utiliza cada persona para trabajar: aplicaciones móviles que pueden operar sin conexión y portales web servidos desde la nube. Preventistas, conductores y preparadores capturan hechos operativos; los clientes piden en autoatención y consultan sus datos, y transportistas y proveedores consultan únicamente sus datos autorizados; Calidad, gerencias, planificación y TI toman decisiones desde consolas especializadas. Los permisos se asignan mediante una matriz de roles y atributos: un perfil de interacción no implica por sí solo acceso a todas las funciones del módulo.
+La capa de presentación reúne las herramientas que utiliza cada persona para trabajar: aplicaciones móviles que pueden operar sin conexión y portales web servidos desde la nube. Preventistas, conductores y preparadores capturan hechos operativos. Los clientes piden en autoatención y consultan sus datos, y transportistas y proveedores consultan únicamente sus datos autorizados. Calidad, gerencias, planificación y TI toman decisiones desde consolas especializadas. Los permisos se asignan mediante una matriz de roles y atributos: un perfil de interacción no implica por sí solo acceso a todas las funciones del módulo.
 
-Las aplicaciones de los trabajadores (preventa, reparto y bodega) se construyen como una sola aplicación Kotlin nativa para Android, con perfiles de permiso, decisión alineada con el parque Zebra (EC55 en preventa, TC58e en reparto y MC9400 en las bodegas y los cross-docking) y con las condiciones de operación del terreno. El perfil de bodega incluye el acceso personal de Calidad a la evaluación y disposición local de lotes de 4.1.3.5; un terminal compartido cambia de sesión y no hereda el permiso del usuario anterior.
+Las aplicaciones de los trabajadores (preventa, reparto y bodega) se construyen como una sola aplicación Kotlin nativa para Android, con perfiles de permiso, decisión alineada con el parque Zebra (EC55 en preventa, TC58e en reparto y MC9400 en las bodegas y los cross-docking) y con las condiciones de operación del terreno. El perfil de bodega incluye el acceso personal de Calidad a la evaluación y disposición local de lotes de 4.1.3.5. Un terminal compartido cambia de sesión y no hereda el permiso del usuario anterior.
 
-- La app de preventa mantiene una foto local de datos de lectura (stock, precios, crédito, promociones) y captura local de eventos (pedidos, identificadores únicos UUID);
+- La app de preventa mantiene una foto local de datos de lectura (stock, precios, crédito, promociones) y captura local de eventos (pedidos, identificadores únicos UUID).
 
 - la app de reparto gestiona la entrega, la prueba de entrega digital (POD con firma, código QR y fotografía), la cobranza en ruta y el control de envases retornables. Ambas aplicaciones operan con datos locales cifrados y sincronizan de forma idempotente por medio del API Gateway cuando se recupera la conectividad.
 
@@ -246,49 +246,49 @@ Los terminales de bodega (HHT con escáner GS1) descargan las misiones de prepar
 
 Los portales web, implementados en Angular con Tailwind CSS, permiten a transportistas revisar rutas y a proveedores consultar órdenes y recepciones.
 
-- El Portal de Clientes permite pedir en autoservicio y consultar el estado de entrega, los documentos y el saldo (RT-16.30 del caso; Bases Técnicas del caso, cap. 15, p. 27).
+- El Portal de Clientes permite pedir en autoservicio y consultar el estado de entrega, los documentos y el saldo (RT-16.30 del caso, Bases Técnicas del caso, cap. 15, p. 27).
 
 - Se publica además como aplicación web progresiva, instalable desde el navegador en el teléfono del almacenero, y constituye el perfil de autoatención con operación desconectada de RT-17.01 del caso (Bases Técnicas del caso, cap. 15, p. 27).
 
-- Sin señal, muestra el catálogo y los precios descargados con su fecha y permite armar el pedido, que queda en cola con su UUID y se envía por el servicio de sincronización al recuperar cobertura. El pedido existe para la compañía solo cuando M3 lo recibe; la confirmación de stock, crédito y fecha de entrega espera esa recepción.
+- Sin señal, muestra el catálogo y los precios descargados con su fecha y permite armar el pedido, que queda en cola con su UUID y se envía por el servicio de sincronización al recuperar cobertura. El pedido existe para la compañía solo cuando M3 lo recibe. La confirmación de stock, crédito y fecha de entrega espera esa recepción.
 
 - La cuenta se activa en la visita del preventista con un código enviado por SMS al teléfono registrado, y nadie queda obligado a usarla.
 
-- El catálogo público admite consulta sin autenticación; las funciones privadas requieren identidad OIDC mediante Keycloak y permisos por rol.
+- El catálogo público admite consulta sin autenticación. Las funciones privadas requieren identidad OIDC mediante Keycloak y permisos por rol.
 
 - El acceso administrativo exige MFA y una ruta autorizada, definida físicamente en 4.2.
 
-La autoatención del Portal de Clientes cubre las consultas de estado de entrega, saldo y documentos tributarios. Según S-42 del Anexo 3.C del Subdocumento 3 (LafroX, 2026c), se espera reducir en al menos 15 % las consultas asistidas al cierre del primer año de Operación. El indicador es el número de consultas asistidas de estado de entrega, saldo y documentos por cliente activo; su línea base se mide durante la marcha blanca y se informa mensualmente al CLIENTE (RT-16.33; Bases Técnicas Transversales, cap. 16, p. 31).
+La autoatención del Portal de Clientes cubre las consultas de estado de entrega, saldo y documentos tributarios. Según S-42 del Anexo 3.C del Subdocumento 3 (LafroX, 2026c), se espera reducir en al menos 15 % las consultas asistidas al cierre del primer año de Operación. El indicador es el número de consultas asistidas de estado de entrega, saldo y documentos por cliente activo. Su línea base se mide durante la marcha blanca y se informa mensualmente al CLIENTE (RT-16.33, Bases Técnicas Transversales, cap. 16, p. 31).
 
 Las consolas de rutas, calidad, BI y administración TI acceden a sus dominios mediante APIs autorizadas. Ningún navegador se conecta directamente a las bases de datos. Esta separación permite aplicar las mismas reglas de acceso y auditoría con independencia de la pantalla utilizada.
 
-Cada perfil de los portales, consolas Angular y aplicaciones Kotlin tiene accesos a todas sus funcionalidades principales desde su pantalla de inicio en un máximo de tres interacciones; este límite se comprueba por función y perfil en los prototipos y en la aceptación (RT-13.05; Bases Técnicas Transversales, cap. 13, p. 26).
+Cada perfil de los portales, consolas Angular y aplicaciones Kotlin tiene accesos a todas sus funcionalidades principales desde su pantalla de inicio en un máximo de tres interacciones. Este límite se comprueba por función y perfil en los prototipos y en la aceptación (RT-13.05, Bases Técnicas Transversales, cap. 13, p. 26).
 
-Angular/Tailwind y Kotlin comparten un sistema de diseño documentado: paleta de hasta cinco colores principales, jerarquía tipográfica de a lo más dos familias, iconografía coherente, retícula y componentes reutilizables con sus estados y reglas de uso (RT-13.09; Bases Técnicas Transversales, cap. 13, p. 26).
+Angular/Tailwind y Kotlin comparten un sistema de diseño documentado: paleta de hasta cinco colores principales, jerarquía tipográfica de a lo más dos familias, iconografía coherente, retícula y componentes reutilizables con sus estados y reglas de uso (RT-13.09, Bases Técnicas Transversales, cap. 13, p. 26).
 
-Los portales, consolas y aplicaciones permiten elegir modo claro u oscuro, tamaño de texto y densidad de los listados, conservando la preferencia de cada persona en su dispositivo y manteniendo la accesibilidad. Se entregan en español; el caso no exige otros idiomas para sus perfiles operacionales (RT-13.12; Bases Técnicas Transversales, cap. 13, p. 26).
+Los portales, consolas y aplicaciones permiten elegir modo claro u oscuro, tamaño de texto y densidad de los listados, conservando la preferencia de cada persona en su dispositivo y manteniendo la accesibilidad. Se entregan en español. El caso no exige otros idiomas para sus perfiles operacionales (RT-13.12, Bases Técnicas Transversales, cap. 13, p. 26).
 
-El Portal de Clientes ofrece una vista ligera para teléfonos de bajo costo o de generaciones anteriores, con imágenes bajo demanda, listados paginados y sin animaciones, conservando pedido, estado de entrega, documentos y saldo. Usa los navegadores y sistemas compatibles de la Tabla A.21 del Anexo 4-P y se prueba en equipos de esas categorías antes de su aceptación (RT-17.08; Bases Técnicas Transversales, cap. 17, p. 32).
+El Portal de Clientes ofrece una vista ligera para teléfonos de bajo costo o de generaciones anteriores, con imágenes bajo demanda, listados paginados y sin animaciones, conservando pedido, estado de entrega, documentos y saldo. Usa los navegadores y sistemas compatibles de la Tabla A.21 del Anexo 4-P y se prueba en equipos de esas categorías antes de su aceptación (RT-17.08, Bases Técnicas Transversales, cap. 17, p. 32).
 
-Los portales y la consola web en Angular 22 con Tailwind CSS adaptan su contenido a escritorio, tableta y teléfono conforme a RT-13.02 (Bases Técnicas Transversales, cap. 13, p. 26). El diseño parte de la pantalla pequeña y utiliza los puntos de quiebre de Tailwind: `sm` 40 rem, `md` 48 rem, `lg` 64 rem, `xl` 80 rem y `2xl` 96 rem, equivalentes a 640, 768, 1.024, 1.280 y 1.536 píxeles con la referencia de 16 píxeles por rem (Tailwind Labs, s. f.). En teléfono, la navegación se recoge en un menú, los formularios se ordenan en una columna y los listados presentan tarjetas con acceso al detalle; en tableta se distribuyen los controles y en escritorio se muestran paneles y columnas adicionales. Se conservan todas las operaciones y los datos necesarios, sin reducir simplemente la escala. La aceptación comprueba cada transición y ambas orientaciones. Los terminales Zebra con Kotlin nativo usan la pantalla fija de cada modelo y un diseño específico para su perfil, con tamaños legibles y controles accesibles.
+Los portales y la consola web en Angular 22 con Tailwind CSS adaptan su contenido a escritorio, tableta y teléfono conforme a RT-13.02 (Bases Técnicas Transversales, cap. 13, p. 26). El diseño parte de la pantalla pequeña y utiliza los puntos de quiebre de Tailwind: `sm` 40 rem, `md` 48 rem, `lg` 64 rem, `xl` 80 rem y `2xl` 96 rem, equivalentes a 640, 768, 1.024, 1.280 y 1.536 píxeles con la referencia de 16 píxeles por rem (Tailwind Labs, s. f.). En teléfono, la navegación se recoge en un menú, los formularios se ordenan en una columna y los listados presentan tarjetas con acceso al detalle. En tableta se distribuyen los controles y en escritorio se muestran paneles y columnas adicionales. Se conservan todas las operaciones y los datos necesarios, sin reducir simplemente la escala. La aceptación comprueba cada transición y ambas orientaciones. Los terminales Zebra con Kotlin nativo usan la pantalla fija de cada modelo y un diseño específico para su perfil, con tamaños legibles y controles accesibles.
 
-La matriz de navegadores, versiones y actualización de la Tabla A.21 del Anexo 4-P se aplica a los portales y a la consola web (RT-13.10; Bases Técnicas Transversales, cap. 13, p. 26). Las versiones exactas se registran antes de cada liberación y se contrastan con el conjunto Baseline de la versión de Angular utilizada (Angular, 2026b); el soporte del framework no sustituye las pruebas de la aplicación.
+La matriz de navegadores, versiones y actualización de la Tabla A.21 del Anexo 4-P se aplica a los portales y a la consola web (RT-13.10, Bases Técnicas Transversales, cap. 13, p. 26). Las versiones exactas se registran antes de cada liberación y se contrastan con el conjunto Baseline de la versión de Angular utilizada (Angular, 2026b). El soporte del framework no sustituye las pruebas de la aplicación.
 
-Todas las interfaces permiten recorrer y ejecutar íntegramente sus funciones por teclado, con orden de foco acorde con la lectura y la secuencia de trabajo, foco visible, acceso directo al contenido y ausencia de bloqueos del foco. Los diálogos reciben el foco al abrirse y lo devuelven al control de origen al cerrarse; tablas, menús y formularios tienen controles semánticos operables mediante Tab, Shift+Tab, flechas, Enter y Escape según corresponda. Se ofrecen atajos documentados y desactivables para buscar, guardar un borrador y volver al inicio del perfil, sin interferir con los del navegador, del sistema ni con la escritura en campos. En Kotlin se verifica además la navegación con teclado físico o conectado al terminal. La aceptación recorre cada flujo por teclado, comprueba el orden y la recuperación del foco y conserva la conformidad WCAG 2.2 AA comprometida (World Wide Web Consortium [W3C], 2023; RT-13.11; Bases Técnicas Transversales, cap. 13, p. 26).
+Todas las interfaces permiten recorrer y ejecutar íntegramente sus funciones por teclado, con orden de foco acorde con la lectura y la secuencia de trabajo, foco visible, acceso directo al contenido y ausencia de bloqueos del foco. Los diálogos reciben el foco al abrirse y lo devuelven al control de origen al cerrarse. Tablas, menús y formularios tienen controles semánticos operables mediante Tab, Shift+Tab, flechas, Enter y Escape según corresponda. Se ofrecen atajos documentados y desactivables para buscar, guardar un borrador y volver al inicio del perfil, sin interferir con los del navegador, del sistema ni con la escritura en campos. En Kotlin se verifica además la navegación con teclado físico o conectado al terminal. La aceptación recorre cada flujo por teclado, comprueba el orden y la recuperación del foco y conserva la conformidad WCAG 2.2 AA comprometida (World Wide Web Consortium [W3C], 2023; RT-13.11, Bases Técnicas Transversales, cap. 13, p. 26).
 
-En el canal moderno, el cliente puede registrarse por sí mismo en el Portal de Clientes con el RUT de la empresa, un correo corporativo y una contraseña administrada por Keycloak. Antes de activar la cuenta, la integración con el ERP verifica que el RUT corresponda a un cliente activo habilitado por Puelche. El portal envía un correo de confirmación; si el RUT no está habilitado, indica que se debe contactar al ejecutivo comercial. En el canal tradicional, la activación asistida por SMS sigue siendo opcional (RF-12.25; LafroX, 2026c, Anexo 3.A).
+En el canal moderno, el cliente puede registrarse por sí mismo en el Portal de Clientes con el RUT de la empresa, un correo corporativo y una contraseña administrada por Keycloak. Antes de activar la cuenta, la integración con el ERP verifica que el RUT corresponda a un cliente activo habilitado por Puelche. El portal envía un correo de confirmación. Si el RUT no está habilitado, indica que se debe contactar al ejecutivo comercial. En el canal tradicional, la activación asistida por SMS sigue siendo opcional (RF-12.25, LafroX, 2026c, Anexo 3.A).
 
-LafroX verifica la conformidad con WCAG 2.2 nivel AA en todas las interfaces de uso humano, con herramientas automáticas y con pruebas manuales de los flujos, incluidos el teclado y las tecnologías de asistencia. Todo incumplimiento confirmado de nivel A o AA impide la promoción a Preproducción y la aceptación hasta que se corrija. El informe de conformidad y la evidencia de las correcciones se entregan al CLIENTE junto con los expedientes de aceptación (RT-13.01; Bases Técnicas Transversales, cap. 13, p. 26).
+LafroX verifica la conformidad con WCAG 2.2 nivel AA en todas las interfaces de uso humano, con herramientas automáticas y con pruebas manuales de los flujos, incluidos el teclado y las tecnologías de asistencia. Todo incumplimiento confirmado de nivel A o AA impide la promoción a Preproducción y la aceptación hasta que se corrija. El informe de conformidad y la evidencia de las correcciones se entregan al CLIENTE junto con los expedientes de aceptación (RT-13.01, Bases Técnicas Transversales, cap. 13, p. 26).
 
-Cada acción muestra un resultado visual claro, que distingue entre operación confirmada, pendiente de sincronización y rechazada. Los mensajes de error explican en lenguaje simple qué ocurrió y qué debe hacer el usuario, sin mostrar códigos ni trazas técnicas (RT-13.06; Bases Técnicas Transversales, cap. 13, p. 26).
+Cada acción muestra un resultado visual claro, que distingue entre operación confirmada, pendiente de sincronización y rechazada. Los mensajes de error explican en lenguaje simple qué ocurrió y qué debe hacer el usuario, sin mostrar códigos ni trazas técnicas (RT-13.06, Bases Técnicas Transversales, cap. 13, p. 26).
 
-Las interfaces ofrecen alto contraste, controles táctiles de al menos 44 × 44 píxeles, iconos acompañados de texto y flujos guiados paso a paso para usuarios con baja alfabetización digital. En picking se aplican además el tamaño mínimo de 15 × 15 mm y la ausencia de gestos complejos descritos en 4.2.1.2 (RT-13.07; Bases Técnicas Transversales, cap. 13, p. 26).
+Las interfaces ofrecen alto contraste, controles táctiles de al menos 44 × 44 píxeles, iconos acompañados de texto y flujos guiados paso a paso para usuarios con baja alfabetización digital. En picking se aplican además el tamaño mínimo de 15 × 15 mm y la ausencia de gestos complejos descritos en 4.2.1.2 (RT-13.07, Bases Técnicas Transversales, cap. 13, p. 26).
 
-La pantalla de inicio de cada usuario reúne en una bandeja única las aprobaciones, revisiones y excepciones pendientes de todos los módulos, según sus permisos. En la aplicación Kotlin incluye también los pendientes locales registrados durante un corte. Las tareas se ordenan por criticidad y plazo, con alertas de vencimiento, y cada una se resuelve en el flujo del módulo responsable (RT-16.13; Bases Técnicas Transversales, cap. 16, p. 30).
+La pantalla de inicio de cada usuario reúne en una bandeja única las aprobaciones, revisiones y excepciones pendientes de todos los módulos, según sus permisos. En la aplicación Kotlin incluye también los pendientes locales registrados durante un corte. Las tareas se ordenan por criticidad y plazo, con alertas de vencimiento, y cada una se resuelve en el flujo del módulo responsable (RT-16.13, Bases Técnicas Transversales, cap. 16, p. 30).
 
-La búsqueda global de portales, consolas y perfiles Kotlin consulta las interfaces públicas de los módulos. Usa índices de texto completo en PostgreSQL, tolera errores de escritura y ofrece filtros por tipo de información. Cada módulo entrega solo los resultados que el usuario puede ver, también en los conteos de cada filtro. La aceptación verifica una respuesta de hasta dos segundos (RF-17.11). Durante un corte, la aplicación Kotlin busca solo en los datos locales autorizados (RT-16.27; Bases Técnicas Transversales, cap. 16, p. 31).
+La búsqueda global de portales, consolas y perfiles Kotlin consulta las interfaces públicas de los módulos. Usa índices de texto completo en PostgreSQL, tolera errores de escritura y ofrece filtros por tipo de información. Cada módulo entrega solo los resultados que el usuario puede ver, también en los conteos de cada filtro. La aceptación verifica una respuesta de hasta dos segundos (RF-17.11). Durante un corte, la aplicación Kotlin busca solo en los datos locales autorizados (RT-16.27, Bases Técnicas Transversales, cap. 16, p. 31).
 
-Los listados de portales, consolas y perfiles Kotlin se pueden ordenar, filtrar y paginar dentro de los permisos del usuario. La exportación en CSV UTF-8 o JSON respeta los filtros y el orden elegidos e incluye todos los registros filtrados, no solo la página visible. Si la exportación necesita datos centrales y no hay enlace, queda pendiente hasta que se recupere la conexión (RT-16.28; Bases Técnicas Transversales, cap. 16, p. 31).
+Los listados de portales, consolas y perfiles Kotlin se pueden ordenar, filtrar y paginar dentro de los permisos del usuario. La exportación en CSV UTF-8 o JSON respeta los filtros y el orden elegidos e incluye todos los registros filtrados, no solo la página visible. Si la exportación necesita datos centrales y no hay enlace, queda pendiente hasta que se recupere la conexión (RT-16.28, Bases Técnicas Transversales, cap. 16, p. 31).
 
 ##### Actores del sistema, interfaces y autorización
 
@@ -322,29 +322,29 @@ La Figura [3](LAFROX-Subdocumento4.md#fig:arql-capa-2) presenta las responsabili
 
 **Figura 3 — Borde: entradas públicas, privadas y locales**
 
-[Abrir gráfico: Borde: entradas públicas, privadas y locales](https://raw.githubusercontent.com/PatricioH315/LafroX/c4d1230c9246f1a50933a8dc8a9a07b5d13a10be/04/figuras/logica/capas/ARQL-22_Borde.pdf)
+[Abrir gráfico: Borde: entradas públicas, privadas y locales](https://raw.githubusercontent.com/PatricioH315/LafroX/ae4fa5a96719bad39267627a50eda8c822a72f10/04/figuras/logica/capas/ARQL-22_Borde.pdf)
 
 <a id="fig:arql-capa-2"></a>
 
 Fuente: elaboración propia.
 
-La entrada pública protege las APIs y rechaza el acceso directo a su origen. El acceso local sostiene la bodega sin WAN; Greengrass procesa los sensores de cámara, mientras AS2 conserva una superficie B2B distinta.
+La entrada pública protege las APIs y rechaza el acceso directo a su origen. El acceso local sostiene la bodega sin WAN. Greengrass procesa los sensores de cámara, mientras AS2 conserva una superficie B2B distinta.
 
-La capa de borde delimita la entrada pública y la entrada de dispositivos de terreno y bodega, donde la conectividad es intermitente. Define las siguientes responsabilidades; su despliegue se especifica en 4.2:
+La capa de borde delimita la entrada pública y la entrada de dispositivos de terreno y bodega, donde la conectividad es intermitente. Define las siguientes responsabilidades. Su despliegue se especifica en 4.2:
 
-- **CDN (Amazon CloudFront).** Entrada pública de portales externos y APIs de negocio: distribuye contenido estático y dirige las solicitudes de negocio y sincronización al API Gateway. El acceso directo al origen de esas APIs debe rechazarse y probarse. Las consolas internas usan acceso privado verificado; el transporte AS2 tiene una superficie separada, restringida a contrapartes registradas.
+- **CDN (Amazon CloudFront).** Entrada pública de portales externos y APIs de negocio: distribuye contenido estático y dirige las solicitudes de negocio y sincronización al API Gateway. El acceso directo al origen de esas APIs debe rechazarse y probarse. Las consolas internas usan acceso privado verificado. El transporte AS2 tiene una superficie separada, restringida a contrapartes registradas.
 
-- **WAF gestionado (AWS WAF y AWS Shield Advanced).** Filtrado de tráfico con reglas OWASP Top 10 y reglas personalizadas por API; protección contra denegación de servicio en capas 3, 4 y 7.
+- **WAF gestionado (AWS WAF y AWS Shield Advanced).** Filtrado de tráfico con reglas OWASP Top 10 y reglas personalizadas por API, protección contra denegación de servicio en capas 3, 4 y 7.
 
 - **Balanceador de carga (ALB).** Distribuye hacia los servicios privados el tráfico que API Gateway entrega mediante su integración privada. El flujo de acceso público es cliente → CloudFront/WAF → API Gateway → integración privada/ALB → servicio.
 
-- **Acceso local y continuidad.** Los servicios del sitio aplican control de acceso propio y preservan la operación crítica aun cuando todos los enlaces externos estén indisponibles. En Talca y Concepción, Starlink fijo es el tercer camino en espera caliente tras fibra y LTE; en los cross-docking es el principal, con LTE de dos proveedores como respaldo y conmutación automática en menos de 30 segundos (ADR-02).
+- **Acceso local y continuidad.** Los servicios del sitio aplican control de acceso propio y preservan la operación crítica aun cuando todos los enlaces externos estén indisponibles. En Talca y Concepción, Starlink fijo es el tercer camino en espera caliente tras fibra y LTE. En los cross-docking es el principal, con LTE de dos proveedores como respaldo y conmutación automática en menos de 30 segundos (ADR-02).
 
-- **AWS IoT Greengrass.** Corre en tres gateways IoT industriales (Moxa UC-8200 o equivalente): dos en el CD Talca, que leen ambas cámaras por Modbus TCP para evitar un punto único de falla, y uno en el CD Concepción. Leen los sensores de cámara por Modbus y aplican la regla térmica local. Ante una excursión crítica y sostenida, bloquean el despacho en menos de 5 segundos desde su detección. Además, conservan 24 horas de datos sin enlace. No se instala en camiones: la posición de la flota llega por la API del tercero (INT-15). Los termógrafos registran toda la ruta en su memoria interna y difunden por BLE la temperatura medida; el terminal del conductor evalúa esa lectura, alerta la excursión en la cabina aun sin señal y reenvía la alerta a la nube por la red celular, de inmediato con cobertura o al recuperarla; al volver el camión, el terminal descarga y envía el registro completo.
+- **AWS IoT Greengrass.** Corre en tres gateways IoT industriales (Moxa UC-8200 o equivalente): dos en el CD Talca, que leen ambas cámaras por Modbus TCP para evitar un punto único de falla, y uno en el CD Concepción. Leen los sensores de cámara por Modbus y aplican la regla térmica local. Ante una excursión crítica y sostenida, bloquean el despacho en menos de 5 segundos desde su detección. Además, conservan 24 horas de datos sin enlace. No se instala en camiones: la posición de la flota llega por la API del tercero (INT-15). Los termógrafos registran toda la ruta en su memoria interna y difunden por BLE la temperatura medida. El terminal del conductor evalúa esa lectura, alerta la excursión en la cabina aun sin señal y reenvía la alerta a la nube por la red celular, de inmediato con cobertura o al recuperarla. Al volver el camión, el terminal descarga y envía el registro completo.
 
-En los CD, Starlink permanece encendido con el túnel IPsec establecido y BGP de menor preferencia, por lo que toma tráfico solo cuando fallan fibra y LTE. En esa condición, la calidad de servicio prioriza DMS/WAL de Talca, la salida del broker y bandeja transaccional de salida, las guías hacia el ERP y el SII, la identidad y la telemetría crítica. Mantener el terminal encendido evita esperar la adquisición de satélites y la negociación del túnel durante la falla; la tarifa plana no añade costo por esa permanencia.
+En los CD, Starlink permanece encendido con el túnel IPsec establecido y BGP de menor preferencia, por lo que toma tráfico solo cuando fallan fibra y LTE. En esa condición, la calidad de servicio prioriza DMS/WAL de Talca, la salida del broker y bandeja transaccional de salida, las guías hacia el ERP y el SII, la identidad y la telemetría crítica. Mantener el terminal encendido evita esperar la adquisición de satélites y la negociación del túnel durante la falla. La tarifa plana no añade costo por esa permanencia.
 
-Greengrass agrupa las lecturas en lotes y las transmite con compresión sin pérdida, lo que reduce el volumen transferido. Las alertas críticas se envían de inmediato, y la serie original se conserva completa, incluidas las lecturas inválidas y los intervalos sin dato (RT-03.19; Bases Técnicas Transversales, cap. 3, p. 10).
+Greengrass agrupa las lecturas en lotes y las transmite con compresión sin pérdida, lo que reduce el volumen transferido. Las alertas críticas se envían de inmediato, y la serie original se conserva completa, incluidas las lecturas inválidas y los intervalos sin dato (RT-03.19, Bases Técnicas Transversales, cap. 3, p. 10).
 
 #### 4.1.3.3 Capa de puerta de enlace de servicios (Capa 3)
 
@@ -352,13 +352,13 @@ La Figura [4](LAFROX-Subdocumento4.md#fig:arql-capa-3) presenta las responsabili
 
 **Figura 4 — Puertas de servicio: recorrido central y local**
 
-[Abrir gráfico: Puertas de servicio: recorrido central y local](https://raw.githubusercontent.com/PatricioH315/LafroX/c4d1230c9246f1a50933a8dc8a9a07b5d13a10be/04/figuras/logica/capas/ARQL-23_Enlace_servicios.pdf)
+[Abrir gráfico: Puertas de servicio: recorrido central y local](https://raw.githubusercontent.com/PatricioH315/LafroX/ae4fa5a96719bad39267627a50eda8c822a72f10/04/figuras/logica/capas/ARQL-23_Enlace_servicios.pdf)
 
 <a id="fig:arql-capa-3"></a>
 
 Fuente: elaboración propia.
 
-El recorrido central valida la identidad y entrega solicitudes a servicios privados. La puerta local atiende al HHT dentro del sitio, sin invocar el Gateway remoto durante un corte; ambos recorridos conservan validación, idempotencia y auditoría.
+El recorrido central valida la identidad y entrega solicitudes a servicios privados. La puerta local atiende al HHT dentro del sitio, sin invocar el Gateway remoto durante un corte. Ambos recorridos conservan validación, idempotencia y auditoría.
 
 Amazon API Gateway concentra la publicación de servicios detrás de la entrada pública de CloudFront.
 
@@ -366,25 +366,25 @@ Amazon API Gateway concentra la publicación de servicios detrás de la entrada 
 
 - Se selecciona REST API con authorizer REQUEST que verifica firma, emisor, audiencia, expiración y alcance del JWT de Keycloak.
 
-- Las operaciones sensibles no reutilizan autorizaciones almacenadas; el módulo verifica además recurso y revocación conocida.
+- Las operaciones sensibles no reutilizan autorizaciones almacenadas. El módulo verifica además recurso y revocación conocida.
 
-- La integración privada usa VPC Link V2 hacia ALB; la validación básica de Gateway se complementa con el esquema completo en Laravel (Amazon Web Services [AWS], s. f.-a, s. f.-b, s. f.-c; Anexo 4-O, ADR-13). El recorrido físico y el bloqueo efectivo del acceso directo al origen se deben comprobar en 4.2.
+- La integración privada usa VPC Link V2 hacia ALB. La validación básica de Gateway se complementa con el esquema completo en Laravel (Amazon Web Services [AWS], s. f.-a, s. f.-b, s. f.-c; Anexo 4-O, ADR-13). El recorrido físico y el bloqueo efectivo del acceso directo al origen se deben comprobar en 4.2.
 
-La capa publica dos conjuntos de APIs: las de negocio y las de sincronización de operaciones capturadas sin conexión. El Gateway aplica los controles de entrada y enruta las solicitudes. El servicio de negocio valida el contenido y garantiza la idempotencia de cada escritura mediante su UUID, una ventana de deduplicación documentada y el registro persistente del resultado (RT-02.06; Bases Técnicas Transversales, cap. 2, p. 7).
+La capa publica dos conjuntos de APIs: las de negocio y las de sincronización de operaciones capturadas sin conexión. El Gateway aplica los controles de entrada y enruta las solicitudes. El servicio de negocio valida el contenido y garantiza la idempotencia de cada escritura mediante su UUID, una ventana de deduplicación documentada y el registro persistente del resultado (RT-02.06, Bases Técnicas Transversales, cap. 2, p. 7).
 
-El ingreso por API Gateway corresponde a los servicios en nube. Durante una interrupción del enlace, la bodega utiliza los servicios de su sitio sin depender del Gateway remoto. Los terminales sin cobertura conservan sus eventos y los entregan al servicio local cuando recuperan comunicación; la reconciliación con la nube ocurre al restablecerse el enlace externo. Los contratos y las reglas de validación se mantienen en ambos recorridos.
+El ingreso por API Gateway corresponde a los servicios en nube. Durante una interrupción del enlace, la bodega utiliza los servicios de su sitio sin depender del Gateway remoto. Los terminales sin cobertura conservan sus eventos y los entregan al servicio local cuando recuperan comunicación. La reconciliación con la nube ocurre al restablecerse el enlace externo. Los contratos y las reglas de validación se mantienen en ambos recorridos.
 
-La bodega dispone además de una puerta de API *local* como función del motor WMS A-01, en VM-01, VM-C01 y E-01, acotada a la red del sitio y a M1, M2, M5, la recepción física de retornos de M8 y las funciones locales de bloqueo y disposición sanitaria de M9. Los terminales de bodega no llaman a Amazon API Gateway durante un corte: el verificador local valida la autorización de turno y esta función aplica esquema, límites de tasa, tamaño de carga, UUID y registro de auditoría antes de entregar una orden al módulo correspondiente. La disposición sanitaria requiere el perfil personal de Calidad y las condiciones descritas en 4.1.3.5; no se concede a Preparación ni a los conductores. Este control no publica una segunda entrada en internet ni emite identidades nuevas. La Figura [5](LAFROX-Subdocumento4.md#fig:arql-17) distingue la preparación del acceso antes del corte, la autorización local durante los relevos y la reconciliación al recuperar el enlace.
+La bodega dispone además de una puerta de API *local* como función del motor WMS A-01, en VM-01, VM-C01 y E-01, acotada a la red del sitio y a M1, M2, M5, la recepción física de retornos de M8 y las funciones locales de bloqueo y disposición sanitaria de M9. Los terminales de bodega no llaman a Amazon API Gateway durante un corte: el verificador local valida la autorización de turno y esta función aplica esquema, límites de tasa, tamaño de carga, UUID y registro de auditoría antes de entregar una orden al módulo correspondiente. La disposición sanitaria requiere el perfil personal de Calidad y las condiciones descritas en 4.1.3.5. No se concede a Preparación ni a los conductores. Este control no publica una segunda entrada en internet ni emite identidades nuevas. La Figura [5](LAFROX-Subdocumento4.md#fig:arql-17) distingue la preparación del acceso antes del corte, la autorización local durante los relevos y la reconciliación al recuperar el enlace.
 
 **Figura 5 — Identidad y puerta de API local durante un corte de 24 horas**
 
-[Abrir gráfico: Identidad y puerta de API local durante un corte de 24 horas](https://raw.githubusercontent.com/PatricioH315/LafroX/c4d1230c9246f1a50933a8dc8a9a07b5d13a10be/04/figuras/logica/complementarias/ARQL-17_Acceso_local_validado.pdf)
+[Abrir gráfico: Identidad y puerta de API local durante un corte de 24 horas](https://raw.githubusercontent.com/PatricioH315/LafroX/ae4fa5a96719bad39267627a50eda8c822a72f10/04/figuras/logica/complementarias/ARQL-17_Acceso_local_validado.pdf)
 
 <a id="fig:arql-17"></a>
 
 Fuente: elaboración propia.
 
-El manifiesto de turno firmado por Keycloak llega antes del corte; en cada relevo el verificador local, alojado junto a la caché, valida el manifiesto y un segundo factor local: el PIN personal sobre el terminal enrolado por MDM. El manifiesto cubre una ventana de 26 horas y se renueva al menos cada hora mientras hay enlace; esa vigencia no se confunde con el TTL de 24 horas de la caché ni con la duración de la credencial personal. Si la firma, el turno o los permisos no son válidos, el acceso se deniega y se audita. El permiso queda limitado a funciones de bodega, incluida la recepción física de retornos de M8 y las acciones autorizadas de M9, mientras los eventos y la bitácora se envían después con su identificador original. La prueba debe iniciar el corte antes de dos relevos sucesivos y medir vencimiento, denegación, reintentos y recuperación; la caché de identidad de 24 horas no emite sesiones y el relevo lo habilita el verificador local.
+El manifiesto de turno firmado por Keycloak llega antes del corte. En cada relevo el verificador local, alojado junto a la caché, valida el manifiesto y un segundo factor local: el PIN personal sobre el terminal enrolado por MDM. El manifiesto cubre una ventana de 26 horas y se renueva al menos cada hora mientras hay enlace. Esa vigencia no se confunde con el TTL de 24 horas de la caché ni con la duración de la credencial personal. Si la firma, el turno o los permisos no son válidos, el acceso se deniega y se audita. El permiso queda limitado a funciones de bodega, incluida la recepción física de retornos de M8 y las acciones autorizadas de M9, mientras los eventos y la bitácora se envían después con su identificador original. La prueba debe iniciar el corte antes de dos relevos sucesivos y medir vencimiento, denegación, reintentos y recuperación. La caché de identidad de 24 horas no emite sesiones y el relevo lo habilita el verificador local.
 
 #### 4.1.3.4 Capa de lógica de negocio (Capa 4)
 
@@ -392,7 +392,7 @@ La Figura [6](LAFROX-Subdocumento4.md#fig:arql-capa-4) presenta las responsabili
 
 **Figura 6 — Negocio: monolito modular Laravel y sus doce módulos**
 
-[Abrir gráfico: Negocio: monolito modular Laravel y sus doce módulos](https://raw.githubusercontent.com/PatricioH315/LafroX/c4d1230c9246f1a50933a8dc8a9a07b5d13a10be/04/figuras/logica/capas/ARQL-24_Negocio.pdf)
+[Abrir gráfico: Negocio: monolito modular Laravel y sus doce módulos](https://raw.githubusercontent.com/PatricioH315/LafroX/ae4fa5a96719bad39267627a50eda8c822a72f10/04/figuras/logica/capas/ARQL-24_Negocio.pdf)
 
 <a id="fig:arql-capa-4"></a>
 
@@ -402,17 +402,17 @@ La figura reúne los doce módulos de negocio y sus funciones principales, junto
 
 La capa de servicios de negocio reúne M1–M12 en un monolito modular Laravel. Cada contexto separa dominio, aplicación, infraestructura y acceso HTTP bajo un espacio de nombres PSR-4.
 
-- Los controladores reciben y validan solicitudes;
+- Los controladores reciben y validan solicitudes.
 
-- los servicios de aplicación coordinan casos de uso;
+- los servicios de aplicación coordinan casos de uso,
 
-- el dominio decide reservas, bloqueos y rendiciones;
+- el dominio decide reservas, bloqueos y rendiciones,
 
-- los adaptadores traducen persistencia e integraciones. Los módulos se llaman mediante interfaces públicas o eventos versionados: no acceden a las tablas privadas de otro contexto ni importan sus modelos de persistencia. Los proveedores de servicios registran esas interfaces en el contenedor y una prueba de dependencias impide invertir las fronteras. Así, compartir proceso no confunde la propiedad de cada decisión (RT-02.02; Bases Técnicas Transversales, cap. 2, p. 6).
+- los adaptadores traducen persistencia e integraciones. Los módulos se llaman mediante interfaces públicas o eventos versionados: no acceden a las tablas privadas de otro contexto ni importan sus modelos de persistencia. Los proveedores de servicios registran esas interfaces en el contenedor y una prueba de dependencias impide invertir las fronteras. Así, compartir proceso no confunde la propiedad de cada decisión (RT-02.02, Bases Técnicas Transversales, cap. 2, p. 6).
 
 La misma versión del artefacto Laravel ejecuta perfiles separados: API central, WMS local limitado a M1/M2/M5, recepción física de retornos de M8 y bloqueo y disposición sanitaria autorizada de M9, consumidores de SQS, adaptador AMQP y reglas comerciales EDI de M11.
 
-- El transporte OpenAS2 es un componente independiente: verifica certificados, firma, cifrado y acuses MDN antes de entregar el mensaje a M11; no ejecuta reglas comerciales ni escribe en el ERP.
+- El transporte OpenAS2 es un componente independiente: verifica certificados, firma, cifrado y acuses MDN antes de entregar el mensaje a M11. No ejecuta reglas comerciales ni escribe en el ERP.
 
 - Cada perfil dispone de cola, concurrencia, permisos y métricas propios.
 
@@ -420,19 +420,19 @@ La misma versión del artefacto Laravel ejecuta perfiles separados: API central,
 
 - Esta separación permite escalar y reiniciar sincronización, EDI y telemetría sin multiplicar el monolito completo.
 
-- Los componentes críticos se despliegan y revierten de forma independiente (RT-02.02; Bases Técnicas Transversales, cap. 2, p. 6): el perfil local de bodega se actualiza sitio por sitio sin tocar la API central, el servicio de integración con el ERP y la ACL, el agente de transferencia de cada sitio, el consumidor de reconciliación, el motor de rutas, el transporte AS2 y las consolas tienen su propio servicio, su versión desplegada y su reversión. Un sitio puede operar con la entrega previa mientras la nube ya opera la nueva, porque los contratos aceptan la edición vigente y la anterior. Además, cada capacidad se habilita por sitio con indicadores de funcionalidad.
+- Los componentes críticos se despliegan y revierten de forma independiente (RT-02.02, Bases Técnicas Transversales, cap. 2, p. 6): el perfil local de bodega se actualiza sitio por sitio sin tocar la API central, el servicio de integración con el ERP y la ACL, el agente de transferencia de cada sitio, el consumidor de reconciliación, el motor de rutas, el transporte AS2 y las consolas tienen su propio servicio, su versión desplegada y su reversión. Un sitio puede operar con la entrega previa mientras la nube ya opera la nueva, porque los contratos aceptan la edición vigente y la anterior. Además, cada capacidad se habilita por sitio con indicadores de funcionalidad.
 
 Los módulos evitan estado durable en memoria y pueden crecer por réplicas o por trabajadores independientes, según la demanda. Los umbrales, límites de capacidad, emplazamiento y costos se especifican en 4.2 y en la oferta económica.
 
-Son parametrizables por el CLIENTE desde la consola Angular los valores de umbrales, plazos, montos y tolerancias de las reglas implementadas, los catálogos y listas de valores, los textos de notificación y los identificadores de sitio; Laravel valida cada cambio y conserva versión, vigencia, autor y fecha mediante el registro versionado de parámetros (LafroX, 2026b, Anexo 5-A). En M9 se administran los umbrales y duraciones por producto de 4.1.4.2, y en M11 las equivalencias GTIN y perfiles de cadenas para los formatos y transportes ya implementados. Requieren desarrollo los algoritmos, los nuevos puntos de decisión, estados y transiciones, cambios de estructura de datos o contratos y nuevos formatos o transportes de integración; almacenarlos como valores no los convierte en parámetros (RT-16.04; Bases Técnicas Transversales, cap. 16, p. 29).
+Son parametrizables por el CLIENTE desde la consola Angular los valores de umbrales, plazos, montos y tolerancias de las reglas implementadas, los catálogos y listas de valores, los textos de notificación y los identificadores de sitio. Laravel valida cada cambio y conserva versión, vigencia, autor y fecha mediante el registro versionado de parámetros (LafroX, 2026b, Anexo 5-A). En M9 se administran los umbrales y duraciones por producto de 4.1.4.2, y en M11 las equivalencias GTIN y perfiles de cadenas para los formatos y transportes ya implementados. Requieren desarrollo los algoritmos, los nuevos puntos de decisión, estados y transiciones, cambios de estructura de datos o contratos y nuevos formatos o transportes de integración. Almacenarlos como valores no los convierte en parámetros (RT-16.04, Bases Técnicas Transversales, cap. 16, p. 29).
 
-En los flujos de excepciones y aprobaciones existentes, el CLIENTE configura sin desarrollo los responsables por rol y sitio, los plazos y la secuencia de niveles de aprobación desde la consola Angular. Se reutilizan el registro de asignaciones para responsables y vigencias y el registro versionado de parámetros para plazos y listas de niveles, conservando los estados y transiciones implementados y la separación obligatoria entre registrar y aprobar, incluida la autoridad exclusiva de Calidad para liberar lotes (LafroX, 2026b, Anexo 5-A; RT-16.12; Bases Técnicas Transversales, cap. 16, p. 30).
+En los flujos de excepciones y aprobaciones existentes, el CLIENTE configura sin desarrollo los responsables por rol y sitio, los plazos y la secuencia de niveles de aprobación desde la consola Angular. Se reutilizan el registro de asignaciones para responsables y vigencias y el registro versionado de parámetros para plazos y listas de niveles, conservando los estados y transiciones implementados y la separación obligatoria entre registrar y aprobar, incluida la autoridad exclusiva de Calidad para liberar lotes (LafroX, 2026b, Anexo 5-A; RT-16.12, Bases Técnicas Transversales, cap. 16, p. 30).
 
-Un cambio de parámetro con impacto operacional no se aplica hasta que lo aprueba un segundo perfil autorizado, distinto de quien lo propuso. La versión y la auditoría registran proponente, aprobador, fecha, valor anterior, valor nuevo y la justificación, que es obligatoria. Las reglas de Calidad siguen siendo aprobadas solo por Calidad (RT-16.03; Bases Técnicas Transversales, cap. 16, p. 29).
+Un cambio de parámetro con impacto operacional no se aplica hasta que lo aprueba un segundo perfil autorizado, distinto de quien lo propuso. La versión y la auditoría registran proponente, aprobador, fecha, valor anterior, valor nuevo y la justificación, que es obligatoria. Las reglas de Calidad siguen siendo aprobadas solo por Calidad (RT-16.03, Bases Técnicas Transversales, cap. 16, p. 29).
 
-Las condiciones de los puntos de decisión implementados se definen en un motor de reglas construido sobre el componente ExpressionLanguage de Symfony, que evalúa expresiones en ejecución sin compilarlas a PHP (Symfony, s. f.). Son ejemplos el bloqueo de pedidos a crédito por mora o cupo excedido, la alerta de vida útil remanente y la ocupación mínima del camión despachado. Cada punto de decisión declara las variables y funciones que admite, y una expresión que use otras se rechaza al validarla. Una condición nueva o modificada se guarda como versión de su regla en el registro versionado de parámetros, se valida con casos de prueba y entra en vigencia tras la aprobación del segundo perfil, sin recompilar ni desplegar. Al decidir, el módulo registra en la auditoría de la transacción el identificador de la regla, su versión y el resultado, de modo que se sabe qué regla se aplicó a cada transacción (RT-16.14; Bases Técnicas Transversales, cap. 16, p. 30). Crear un punto de decisión nuevo o exponer variables que el punto no ofrece requiere desarrollo.
+Las condiciones de los puntos de decisión implementados se definen en un motor de reglas construido sobre el componente ExpressionLanguage de Symfony, que evalúa expresiones en ejecución sin compilarlas a PHP (Symfony, s. f.). Son ejemplos el bloqueo de pedidos a crédito por mora o cupo excedido, la alerta de vida útil remanente y la ocupación mínima del camión despachado. Cada punto de decisión declara las variables y funciones que admite, y una expresión que use otras se rechaza al validarla. Una condición nueva o modificada se guarda como versión de su regla en el registro versionado de parámetros, se valida con casos de prueba y entra en vigencia tras la aprobación del segundo perfil, sin recompilar ni desplegar. Al decidir, el módulo registra en la auditoría de la transacción el identificador de la regla, su versión y el resultado, de modo que se sabe qué regla se aplicó a cada transacción (RT-16.14, Bases Técnicas Transversales, cap. 16, p. 30). Crear un punto de decisión nuevo o exponer variables que el punto no ofrece requiere desarrollo.
 
-El planificador de Laravel revisa los plazos de los flujos y escala automáticamente las tareas vencidas al siguiente nivel autorizado, dejando registro del cambio. Ante una ausencia, el CLIENTE asigna temporalmente un suplente habilitado, con fecha de inicio y término, en el registro de asignaciones. La asignación queda auditada y no permite que una misma persona registre y apruebe (RT-16.11; Bases Técnicas Transversales, cap. 16, p. 30).
+El planificador de Laravel revisa los plazos de los flujos y escala automáticamente las tareas vencidas al siguiente nivel autorizado, dejando registro del cambio. Ante una ausencia, el CLIENTE asigna temporalmente un suplente habilitado, con fecha de inicio y término, en el registro de asignaciones. La asignación queda auditada y no permite que una misma persona registre y apruebe (RT-16.11, Bases Técnicas Transversales, cap. 16, p. 30).
 
 #### 4.1.3.5 Capa de integración y eventos (Capa 5)
 
@@ -440,35 +440,35 @@ La Figura [7](LAFROX-Subdocumento4.md#fig:arql-capa-5) presenta las responsabili
 
 **Figura 7 — Integración: continuidad local y contratos con terceros**
 
-[Abrir gráfico: Integración: continuidad local y contratos con terceros](https://raw.githubusercontent.com/PatricioH315/LafroX/c4d1230c9246f1a50933a8dc8a9a07b5d13a10be/04/figuras/logica/capas/ARQL-25_Integracion_eventos.pdf)
+[Abrir gráfico: Integración: continuidad local y contratos con terceros](https://raw.githubusercontent.com/PatricioH315/LafroX/ae4fa5a96719bad39267627a50eda8c822a72f10/04/figuras/logica/capas/ARQL-25_Integracion_eventos.pdf)
 
 <a id="fig:arql-capa-5"></a>
 
 Fuente: elaboración propia.
 
-El sitio conserva los eventos hasta confirmar su publicación y el consumidor confirma después de persistir. La ACL concentra el acceso al ERP, único emisor tributario; el hub EDI traduce contratos comerciales y las excepciones permanecen trazables.
+El sitio conserva los eventos hasta confirmar su publicación y el consumidor confirma después de persistir. La ACL concentra el acceso al ERP, único emisor tributario. El hub EDI traduce contratos comerciales y las excepciones permanecen trazables.
 
 La capa de integración conecta la nueva operación con sistemas que Puelche ya utiliza. Sus límites son especialmente importantes ante el ERP de 2017 sin interfaces documentadas y el WMS de 2013. También concentra el intercambio con cadenas del canal moderno, los servicios de pago, los mapas y la telemetría, de modo que un cambio externo no obligue a modificar cada módulo de negocio.
 
-RabbitMQ conserva las colas de integración local. En nube, SQS FIFO ordena los mensajes de reconciliación dentro de cada grupo y SNS difunde eventos y alertas. Los avisos al cliente se entregan por correo con Amazon SES, por SMS con Amazon SNS y por WhatsApp con AWS End User Messaging Social (INT-11). El orden no se presume global ni se atribuye a toda la cadena de eventos. Los consumidores aplican deduplicación, reintentos con espera creciente y una cola de mensajes fallidos (DLQ), con intervención trazable cuando el procesamiento no puede completarse (RT-02.07; Bases Técnicas Transversales, cap. 2, p. 7).
+RabbitMQ conserva las colas de integración local. En nube, SQS FIFO ordena los mensajes de reconciliación dentro de cada grupo y SNS difunde eventos y alertas. Los avisos al cliente se entregan por correo con Amazon SES, por SMS con Amazon SNS y por WhatsApp con AWS End User Messaging Social (INT-11). El orden no se presume global ni se atribuye a toda la cadena de eventos. Los consumidores aplican deduplicación, reintentos con espera creciente y una cola de mensajes fallidos (DLQ), con intervención trazable cuando el procesamiento no puede completarse (RT-02.07, Bases Técnicas Transversales, cap. 2, p. 7).
 
 El agente de transferencia publica en la cola SQS FIFO de reconciliación un sobre JSON independiente de PHP con versión, identidad, clave de orden y carga.
 
 - Un consumidor PHP dedicado lee ese sobre mediante el SDK de AWS, valida su esquema, invoca el caso de uso Laravel y reconoce el mensaje solo después de persistir el resultado.
 
-- Las solicitudes al ERP viajan por otra cola, la cola FIFO de solicitudes al ERP, que solo lee el servicio de integración con el ERP en VM-04 de Talca; cada respuesta vuelve a su sitio por una cola FIFO de respuesta propia, que el agente de transferencia del sitio lee por conexión saliente y entrega a RabbitMQ local.
+- Las solicitudes al ERP viajan por otra cola, la cola FIFO de solicitudes al ERP, que solo lee el servicio de integración con el ERP en VM-04 de Talca. Cada respuesta vuelve a su sitio por una cola FIFO de respuesta propia, que el agente de transferencia del sitio lee por conexión saliente y entrega a RabbitMQ local.
 
 - Los trabajos derivados propios de Laravel usan su conector SQS en colas distintas y declaran grupo y clave de deduplicación cuando requieren orden FIFO.
 
 - Esta separación evita entregar mensajes externos al deserializador de trabajos del framework.
 
-- RabbitMQ local se conecta mediante un adaptador AMQP probado con `php-amqplib`; el agente de transferencia confirma la publicación en SQS antes de reconocer el mensaje local.
+- RabbitMQ local se conecta mediante un adaptador AMQP probado con `php-amqplib`. El agente de transferencia confirma la publicación en SQS antes de reconocer el mensaje local.
 
 - No se introduce Redis ni Horizon en los sitios, donde la continuidad depende de PostgreSQL y RabbitMQ.
 
-Las APIs de la plataforma reciben solicitudes por la Capa 3. Los servicios de negocio invocan sus adaptadores de integración cuando necesitan consultar pagos o mapas, con tiempo máximo de espera explícito (RT-02.08; Bases Técnicas Transversales, cap. 2, p. 7). Los intercambios diferidos con ERP, EDI, telemetría y notificaciones utilizan colas y reintentos. La emisión tributaria se canaliza por el ERP mediante la ACL; no se crea un segundo emisor de documentos ante el SII.
+Las APIs de la plataforma reciben solicitudes por la Capa 3. Los servicios de negocio invocan sus adaptadores de integración cuando necesitan consultar pagos o mapas, con tiempo máximo de espera explícito (RT-02.08, Bases Técnicas Transversales, cap. 2, p. 7). Los intercambios diferidos con ERP, EDI, telemetría y notificaciones utilizan colas y reintentos. La emisión tributaria se canaliza por el ERP mediante la ACL. No se crea un segundo emisor de documentos ante el SII.
 
-El ERP de 2017 se conserva como única fuente de verdad tributaria y único emisor de DTE. La capa anticorrupción (ACL) traduce los contratos de la solución al formato del legado, sin reemplazarlo ni modificar su código. El flujo de rendición es: rendición aprobada → cola FIFO de solicitudes al ERP → servicio de integración con el ERP en VM-04 de Talca → ACL local → ERP. Dos procesos del servicio de integración con el ERP consumen además RabbitMQ local para las solicitudes del WMS de Talca; acceden a la cola de solicitudes mediante conexión saliente. Ningún módulo, portal o cadena escribe directamente en el ERP. El trabajador usa una clave idempotente por operación y conserva folio, estado y acuse para seguir cada documento hasta su origen; reintentar un trabajo no solicita un segundo documento. M5 solicita la guía al cerrar la carga nocturna; cualquier cambio de carga invalida la guía y exige una nueva. El ERP sigue como único emisor ante el SII por fibra, LTE o satélite.
+El ERP de 2017 se conserva como única fuente de verdad tributaria y único emisor de DTE. La capa anticorrupción (ACL) traduce los contratos de la solución al formato del legado, sin reemplazarlo ni modificar su código. El flujo de rendición es: rendición aprobada → cola FIFO de solicitudes al ERP → servicio de integración con el ERP en VM-04 de Talca → ACL local → ERP. Dos procesos del servicio de integración con el ERP consumen además RabbitMQ local para las solicitudes del WMS de Talca. Acceden a la cola de solicitudes mediante conexión saliente. Ningún módulo, portal o cadena escribe directamente en el ERP. El trabajador usa una clave idempotente por operación y conserva folio, estado y acuse para seguir cada documento hasta su origen. Reintentar un trabajo no solicita un segundo documento. M5 solicita la guía al cerrar la carga nocturna. Cualquier cambio de carga invalida la guía y exige una nueva. El ERP sigue como único emisor ante el SII por fibra, LTE o satélite.
 
 La integración con las cadenas del canal moderno se resuelve con un hub EDI centralizado en nube. Utiliza mensajes comerciales EANCOM y GS1 XML, y eventos EPCIS para trazabilidad. Cada cadena dispone de un conector configurable, una tabla de equivalencias GTIN (RF-12.03) y una bandeja de excepciones (RF-12.06). El hub transforma los mensajes al modelo canónico y entrega al ERP, exclusivamente mediante la ACL, la información necesaria para sus documentos, incluida la guía de despacho electrónica (GDE). AS2 es uno de los transportes del hub. El canal moderno debe quedar operativo a más tardar en enero de 2029.
 
@@ -482,14 +482,14 @@ Los esquemas AsyncAPI 2.6 versionados por evento se gobiernan desdel catálogo d
 
 ##### Orquestación y coreografía
 
-M3 solicita a M2 la reserva de cada pedido y lo deja pendiente hasta que M2 central persiste el acuse de la retención en el sitio. La respuesta llega de forma asíncrona y queda visible para el preventista como confirmación o quiebre. Cuando el pedido queda confirmado, publica `PedidoConfirmado`; M4, M5 y M10 reaccionan a ese hecho; M11 también lo consume solo para pedidos de cadenas, a fin de responder a la cadena mediante su propio consumidor. Esa coreografía evita que M3 conozca el horario de preparación o el esquema analítico. La publicación se registra junto con el cambio de estado mediante una bandeja transaccional de salida; el consumidor confirma su progreso solo después de persistir su resultado. Si falla un consumidor, la cola reintenta y termina en una bandeja de excepción, sin deshacer a ciegas el pedido ya confirmado.
+M3 solicita a M2 la reserva de cada pedido y lo deja pendiente hasta que M2 central persiste el acuse de la retención en el sitio. La respuesta llega de forma asíncrona y queda visible para el preventista como confirmación o quiebre. Cuando el pedido queda confirmado, publica `PedidoConfirmado`. M4, M5 y M10 reaccionan a ese hecho. M11 también lo consume solo para pedidos de cadenas, a fin de responder a la cadena mediante su propio consumidor. Esa coreografía evita que M3 conozca el horario de preparación o el esquema analítico. La publicación se registra junto con el cambio de estado mediante una bandeja transaccional de salida. El consumidor confirma su progreso solo después de persistir su resultado. Si falla un consumidor, la cola reintenta y termina en una bandeja de excepción, sin deshacer a ciegas el pedido ya confirmado.
 
-El despacho tiene una coordinación distinta: M5 no libera la carga hasta recibir el resultado de M9 sobre el lote y la guía emitida por el ERP a través de la ACL. Una excursión crítica y sostenida bloquea localmente la salida aun con el enlace caído; solo Calidad puede liberar el lote tras evaluación registrada. El conductor informa la incidencia y conserva la carga, pero no aprueba su liberación sanitaria. Las Figuras [8](LAFROX-Subdocumento4.md#fig:arql-15) y [9](LAFROX-Subdocumento4.md#fig:arql-16) recorren el pedido con y sin conexión y hacen visible dónde cambia una captura sin confirmar a una operación confirmada.
+El despacho tiene una coordinación distinta: M5 no libera la carga hasta recibir el resultado de M9 sobre el lote y la guía emitida por el ERP a través de la ACL. Una excursión crítica y sostenida bloquea localmente la salida aun con el enlace caído. Solo Calidad puede liberar el lote tras evaluación registrada. El conductor informa la incidencia y conserva la carga, pero no aprueba su liberación sanitaria. Las Figuras [8](LAFROX-Subdocumento4.md#fig:arql-15) y [9](LAFROX-Subdocumento4.md#fig:arql-16) recorren el pedido con y sin conexión y hacen visible dónde cambia una captura sin confirmar a una operación confirmada.
 
-La disposición sanitaria local usa el perfil de Calidad de la aplicación Kotlin en un terminal de bodega enrolado, con identidad personal preinscrita en el manifiesto de turno. La puerta local de A-01 entrega la solicitud a M9 para el lote y la instalación autorizados. La consola Angular central sigue requiriendo conexión; el perfil Kotlin cubre únicamente consultar el expediente local, registrar la evaluación y disponer el lote, sin cambiar umbrales, roles ni parámetros maestros durante el corte.
+La disposición sanitaria local usa el perfil de Calidad de la aplicación Kotlin en un terminal de bodega enrolado, con identidad personal preinscrita en el manifiesto de turno. La puerta local de A-01 entrega la solicitud a M9 para el lote y la instalación autorizados. La consola Angular central sigue requiriendo conexión. El perfil Kotlin cubre únicamente consultar el expediente local, registrar la evaluación y disponer el lote, sin cambiar umbrales, roles ni parámetros maestros durante el corte.
 
-- M9 comprueba la vigencia del permiso, la versión del estado del lote y la disponibilidad de las lecturas y evidencias necesarias. Si falta una de esas condiciones, conserva el bloqueo; una evaluación verbal o un formulario en papel no lo levanta.
-- La decisión persiste con UUID, identidad, sitio, lote, motivo, evidencia y versión del estado. M2 y M5 reciben el resultado local durable antes de continuar; una nueva excursión crítica vuelve a bloquear y no se oculta por una liberación anterior.
+- M9 comprueba la vigencia del permiso, la versión del estado del lote y la disponibilidad de las lecturas y evidencias necesarias. Si falta una de esas condiciones, conserva el bloqueo. Una evaluación verbal o un formulario en papel no lo levanta.
+- La decisión persiste con UUID, identidad, sitio, lote, motivo, evidencia y versión del estado. M2 y M5 reciben el resultado local durable antes de continuar. Una nueva excursión crítica vuelve a bloquear y no se oculta por una liberación anterior.
 - El outbox conserva la decisión y la transmite al reconectar. Una repetición devuelve el resultado registrado y un conflicto posterior pasa a Calidad, sin liberar automáticamente. AL-OFF-01 verifica permisos, evaluación, persistencia, reinicio y reconciliación de este recorrido.
 
 **Figura 8 — Secuencia lógica del pedido con conexión**
@@ -500,7 +500,7 @@ La disposición sanitaria local usa el perfil de Calidad de la aplicación Kotli
 
 Fuente: elaboración propia.
 
-Con conexión, la aplicación envía el pedido por la entrada pública autorizada y M3 valida sus reglas de precio y crédito antes de solicitar la reserva a M2 central. El agente de transferencia del sitio recoge la solicitud mediante conexión saliente; M2 local valida existencia y Calidad y persiste retención, auditoría y bandeja transaccional de salida. Solo después del acuse durable M2 central confirma la reserva y M3 confirma el pedido. La publicación de `PedidoConfirmado` habilita a M5; M4 y M10 también consumen ese evento conforme a sus contratos. La línea del sitio agrupa M2, su agente de transferencia y el broker local para explicar el protocolo; las flechas representan mensajes lógicos y no una conexión entrante de la nube al sitio. La secuencia se limita a la confirmación y habilitación de la preparación: la carga preparada sigue retenida si M9 informa un bloqueo o si el ERP no devuelve una guía válida para esa carga, según el apartado de POD, DTE y acuse. Un pedido confirmado no autoriza por sí mismo la salida física.
+Con conexión, la aplicación envía el pedido por la entrada pública autorizada y M3 valida sus reglas de precio y crédito antes de solicitar la reserva a M2 central. El agente de transferencia del sitio recoge la solicitud mediante conexión saliente. M2 local valida existencia y Calidad y persiste retención, auditoría y bandeja transaccional de salida. Solo después del acuse durable M2 central confirma la reserva y M3 confirma el pedido. La publicación de `PedidoConfirmado` habilita a M5. M4 y M10 también consumen ese evento conforme a sus contratos. La línea del sitio agrupa M2, su agente de transferencia y el broker local para explicar el protocolo. Las flechas representan mensajes lógicos y no una conexión entrante de la nube al sitio. La secuencia se limita a la confirmación y habilitación de la preparación: la carga preparada sigue retenida si M9 informa un bloqueo o si el ERP no devuelve una guía válida para esa carga, según el apartado de POD, DTE y acuse. Un pedido confirmado no autoriza por sí mismo la salida física.
 
 **Figura 9 — Secuencia lógica del pedido capturado sin conexión**
 
@@ -510,7 +510,7 @@ Con conexión, la aplicación envía el pedido por la entrada pública autorizad
 
 Fuente: elaboración propia.
 
-Sin conexión, la aplicación conserva la intención de compra, no una reserva firme. Al recuperar cobertura envía el mismo UUID por el servicio de sincronización; M3 deduplica y solicita la reserva mediante el mismo protocolo de retención local y acuse durable mostrado en la secuencia conectada. M3 y M2 producen un resultado durable con la regla y la causal de excepción. Si se pierde el acuse de respuesta, el dispositivo conserva el evento y pregunta por ese UUID antes de eliminarlo. Sin acuse local durable, el pedido permanece pendiente. Solo un pedido confirmado alimenta M5, lo que permite explicar al cliente un faltante sin duplicar la venta.
+Sin conexión, la aplicación conserva la intención de compra, no una reserva firme. Al recuperar cobertura envía el mismo UUID por el servicio de sincronización. M3 deduplica y solicita la reserva mediante el mismo protocolo de retención local y acuse durable mostrado en la secuencia conectada. M3 y M2 producen un resultado durable con la regla y la causal de excepción. Si se pierde el acuse de respuesta, el dispositivo conserva el evento y pregunta por ese UUID antes de eliminarlo. Sin acuse local durable, el pedido permanece pendiente. Solo un pedido confirmado alimenta M5, lo que permite explicar al cliente un faltante sin duplicar la venta.
 
 ##### Contratos de integración
 
@@ -518,7 +518,7 @@ Sin conexión, la aplicación conserva la intención de compra, no una reserva f
 
 Las APIs síncronas se describen en OpenAPI 3.1 por módulo y versión mayor. Cada operación declara dueño, esquema de solicitud y respuesta, identidad requerida, errores de negocio, límites de tasa y fecha de retirada. El Gateway valida la entrada, pero la decisión de negocio y la idempotencia pertenecen al servicio. Las interfaces de sincronización reciben lotes con UUID por operación y devuelven un resultado individual, de modo que un error de una entrega no obligue a repetir todas las demás.
 
-Los eventos se describen en AsyncAPI 2.6 con productor único, consumidores, clave de partición, versión, política de reintento y cola de fallidos. Los mensajes viajan al menos una vez: cada consumidor deduplica por identificador único del evento y preserva orden dentro del agregado que lo exige. OAuth con PKCE protege clientes interactivos; mTLS y credenciales rotadas protegen servicios. El identificador de correlación enlaza llamada, evento, resultado y evidencia de auditoría.
+Los eventos se describen en AsyncAPI 2.6 con productor único, consumidores, clave de partición, versión, política de reintento y cola de fallidos. Los mensajes viajan al menos una vez: cada consumidor deduplica por identificador único del evento y preserva orden dentro del agregado que lo exige. OAuth con PKCE protege clientes interactivos. mTLS y credenciales rotadas protegen servicios. El identificador de correlación enlaza llamada, evento, resultado y evidencia de auditoría.
 
 ##### Capa anticorrupción y sustitución del WMS
 
@@ -545,7 +545,7 @@ Los eventos se describen en AsyncAPI 2.6 con productor único, consumidores, cla
 | Misiones picking HHT | M5 | 2 |
 | Conteo cíclico | M2 | 2–3 |
 
-**Estrategia y reversión comunes:** Azul-verde por sitio; reversión a la entrega previa.
+**Estrategia y reversión comunes:** Azul-verde por sitio. Reversión a la entrega previa.
 
 Fuente: Anexo 4-O, ADR-08, y las Bases Técnicas del caso (cap. 16, p. 29), decisión 14.
 
@@ -553,7 +553,7 @@ La sustitución por olas permite comprobar cada capacidad antes de retirar la pr
 
 No se mantiene el WMS 2013 como sistema operativo en producción tras la Etapa 1. La ACL garantiza que ningún módulo, portal ni cadena escribe al ERP/WMS legado directamente.
 
-**Hub EDI GS1 (ADR-11).** Una cadena nueva se incorpora por configuración de perfil (equivalencias GTIN por cadena, RF-12.03) cuando utiliza formatos y transportes ya implementados; un formato o transporte nuevo requiere desarrollo. El hub mapea cada cadena contra un modelo canónico GS1, no contra el ERP; así evita construir una integración diferente en los doce módulos de negocio.
+**Hub EDI GS1 (ADR-11).** Una cadena nueva se incorpora por configuración de perfil (equivalencias GTIN por cadena, RF-12.03) cuando utiliza formatos y transportes ya implementados. Un formato o transporte nuevo requiere desarrollo. El hub mapea cada cadena contra un modelo canónico GS1, no contra el ERP. Así evita construir una integración diferente en los doce módulos de negocio.
 
 ##### Versionado y gobierno de integración
 
@@ -561,7 +561,7 @@ No se mantiene el WMS 2013 como sistema operativo en producción tras la Etapa 1
 
 La versión de cada contrato distingue cambios mayores, menores y de corrección.
 
-- Un cambio aditivo conserva compatibilidad;
+- Un cambio aditivo conserva compatibilidad.
 
 - retirar un campo exige marcarlo como obsoleto y anunciar la fecha de salida con al menos seis meses de anticipación.
 
@@ -569,7 +569,7 @@ La versión de cada contrato distingue cambios mayores, menores y de corrección
 
 - Un cambio incompatible requiere aprobación del Comité de Arquitectura, pruebas de contrato y plan de reversión.
 
-- Los perfiles de cadenas se versionan sin alterar el vocabulario común del hub; los cambios de interfaces tributarias se gestionan en la ACL, no como perfiles EDI. El Anexo 4-B asigna dueño y evidencia a cada mecanismo de gobierno.
+- Los perfiles de cadenas se versionan sin alterar el vocabulario común del hub. Los cambios de interfaces tributarias se gestionan en la ACL, no como perfiles EDI. El Anexo 4-B asigna dueño y evidencia a cada mecanismo de gobierno.
 
 El catálogo y las pruebas hacen visible quién responde cuando un contrato cambia o falla.
 
@@ -577,7 +577,7 @@ El catálogo y las pruebas hacen visible quién responde cuando un contrato camb
 
 <a id="subsubsec:carga-masiva"></a>
 
-Las importaciones históricas y las extracciones regulatorias utilizan contratos distintos de la operación diaria. El Anexo 4-C compara su mecanismo, la prueba de integridad y el tratamiento de rechazos; ninguna carga masiva desplaza la preparación durante la ventana crítica de despacho.
+Las importaciones históricas y las extracciones regulatorias utilizan contratos distintos de la operación diaria. El Anexo 4-C compara su mecanismo, la prueba de integridad y el tratamiento de rechazos. Ninguna carga masiva desplaza la preparación durante la ventana crítica de despacho.
 
 El procesamiento por lotes conserva totales y rechazos sin bloquear la operación diaria.
 
@@ -595,7 +595,7 @@ La Figura [10](LAFROX-Subdocumento4.md#fig:arql-capa-6) presenta las responsabil
 
 Fuente: elaboración propia.
 
-El sitio conserva la autoridad de bodega y el dispositivo mantiene sus capturas hasta recibir confirmación durable. Los servicios centrales separan transacciones, caché, documentos y analítica; ninguna consulta de BI debe competir con el despacho.
+El sitio conserva la autoridad de bodega y el dispositivo mantiene sus capturas hasta recibir confirmación durable. Los servicios centrales separan transacciones, caché, documentos y analítica. Ninguna consulta de BI debe competir con el despacho.
 
 La capa de datos distingue quién conserva la información operativa, quién la consolida y quién la consulta para análisis. Esta separación permite que la bodega siga trabajando sin enlace externo y que las consultas gerenciales no compitan con el despacho. Los dominios de información asumen las siguientes responsabilidades:
 
@@ -603,23 +603,23 @@ En la operación local:
 
 - **CD Talca:** PostgreSQL 16 con PostGIS y perfil local de bodega como autoridad de los movimientos físicos de Talca, con autonomía mínima de 24 horas.
 
-- **CD Concepción:** PostgreSQL y el mismo perfil local de bodega, capaz de sostener 24 horas de operación local sin depender de Talca, en un par de servidores activo y en espera (RT-03.14; Bases Técnicas Transversales, cap. 3, p. 9).
+- **CD Concepción:** PostgreSQL y el mismo perfil local de bodega, capaz de sostener 24 horas de operación local sin depender de Talca, en un par de servidores activo y en espera (RT-03.14, Bases Técnicas Transversales, cap. 3, p. 9).
 
 - **Cross-docking de Curicó, Chillán y Los Ángeles:** el mismo perfil local de bodega en un par de equipos E-01, uno activo y otro en espera, para recepción, desconsolidación y despacho. Cada sitio publica su detalle por SQS FIFO hacia la consolidación en nube. Las tres horas indicadas en el caso son una ventana operativa, no una excepción a RT-03.10: el diseño lógico exige al menos 24 horas de continuidad local degradada, cuya suficiencia deberá demostrarse mediante pruebas.
 
-En los servicios centrales, N-04/N-05 consolidan stock por sitio y la reserva de preventa mediante eventos idempotentes;
+En los servicios centrales, N-04/N-05 consolidan stock por sitio y la reserva de preventa mediante eventos idempotentes,
 
-- PostgreSQL conserva las transacciones de preventa, reparto y canal moderno;
+- PostgreSQL conserva las transacciones de preventa, reparto y canal moderno.
 
-- el flujo de telemetría ingresa en DynamoDB y se consolida para análisis en S3 y Redshift mediante Glue;
+- el flujo de telemetría ingresa en DynamoDB y se consolida para análisis en S3 y Redshift mediante Glue.
 
-- Redis acelera lecturas autorizadas de stock, precios y sesiones;
+- Redis acelera lecturas autorizadas de stock, precios y sesiones,
 
 - S3 conserva documentos y evidencias. La función de cada almacén, y no su ubicación física, determina qué módulo puede escribir en él. La topología de replicación y recuperación se especifica en 4.2.
 
 No se incorpora Redis local.
 
-- Al iniciar el turno con conexión, la aplicación solicita a las APIs una copia de stock, precios y demás datos autorizados; los servicios la obtienen de sus almacenes, incluido ElastiCache.
+- Al iniciar el turno con conexión, la aplicación solicita a las APIs una copia de stock, precios y demás datos autorizados. Los servicios la obtienen de sus almacenes, incluido ElastiCache.
 
 - El dispositivo conserva esa copia cifrada en SQLite/Room y consulta allí mientras está desconectado.
 
@@ -627,11 +627,11 @@ No se incorpora Redis local.
 
 - Reemplazar la copia de lectura nunca debe borrar pedidos, cobros ni evidencias aún no confirmados por el servidor.
 
-La vigencia de los datos de lectura es independiente de la identidad. Las credenciales de turno duran 8 horas en bodega y 14 horas en terreno; la caché local de identidad es de solo lectura y tiene TTL de 24 horas en VM-05 (Talca), VM-C03 (Concepción) y E-01 de cada cross-docking. Una copia reciente de precios no renueva la sesión y una sesión válida no convierte el stock descargado en una reserva confirmada. El relevo de turno sin IdP lo habilita el verificador local del mismo nodo, conforme a la capa de seguridad de este apartado.
+La vigencia de los datos de lectura es independiente de la identidad. Las credenciales de turno duran 8 horas en bodega y 14 horas en terreno. La caché local de identidad es de solo lectura y tiene TTL de 24 horas en VM-05 (Talca), VM-C03 (Concepción) y E-01 de cada cross-docking. Una copia reciente de precios no renueva la sesión y una sesión válida no convierte el stock descargado en una reserva confirmada. El relevo de turno sin IdP lo habilita el verificador local del mismo nodo, conforme a la capa de seguridad de este apartado.
 
 La separación transaccional/analítica es estricta: la analítica no lee del transaccional para evitar degradar la ventana crítica de despacho. Las latencias comprometidas son: operación del día ≤ 5 minutos, cierre comercial ≤ 2 horas, gestión ≤ 4 horas.
 
-Cada evento conserva identidad, estado y resultado hasta recibir confirmación durable. DMS replica el WMS de Talca hacia un esquema de lectura; no escribe en las tablas de negocio centrales. Los consumidores de eventos actualizan estas últimas con deduplicación transaccional por sitio y UUID. Concepción y los cross-docking sincronizan sus eventos sin presumir un flujo DMS propio. Durante un corte cada sitio retiene sus cambios dentro de una capacidad comprobada para 24 horas. La extracción continua de DMS/WAL de Talca y de la bandeja transaccional de salida por fibra, LTE y satélite sostiene RPO ≤ 15 minutos; AL-DR-01 del Anexo 4-M verifica la protección externa y 4.3.2 justifica el límite residual. El esquema 3-2-1-1-0, los medios de respaldo y la restauración se desarrollan en 4.2.
+Cada evento conserva identidad, estado y resultado hasta recibir confirmación durable. DMS replica el WMS de Talca hacia un esquema de lectura. No escribe en las tablas de negocio centrales. Los consumidores de eventos actualizan estas últimas con deduplicación transaccional por sitio y UUID. Concepción y los cross-docking sincronizan sus eventos sin presumir un flujo DMS propio. Durante un corte cada sitio retiene sus cambios dentro de una capacidad comprobada para 24 horas. La extracción continua de DMS/WAL de Talca y de la bandeja transaccional de salida por fibra, LTE y satélite sostiene RPO ≤ 15 minutos. AL-DR-01 del Anexo 4-M verifica la protección externa y 4.3.2 justifica el límite residual. El esquema 3-2-1-1-0, los medios de respaldo y la restauración se desarrollan en 4.2.
 
 #### 4.1.3.7 Capa de seguridad transversal (Capa 7)
 
@@ -645,35 +645,35 @@ La Figura [11](LAFROX-Subdocumento4.md#fig:arql-capa-7) presenta las responsabil
 
 Fuente: elaboración propia.
 
-Keycloak emite la identidad y cada módulo decide la autorización sobre su recurso. Sin enlace, el verificador usa permisos de turno previamente firmados; el cifrado y la auditoría protegen los datos y decisiones a lo largo de todas las capas.
+Keycloak emite la identidad y cada módulo decide la autorización sobre su recurso. Sin enlace, el verificador usa permisos de turno previamente firmados. El cifrado y la auditoría protegen los datos y decisiones a lo largo de todas las capas.
 
-La seguridad atraviesa las ocho capas. Su unidad de decisión no es la red desde la que llega una solicitud, sino el sujeto, el recurso, la acción y el contexto del turno. Keycloak conserva la autoridad de identidad; el servicio dueño del recurso conserva la decisión de autorización. Esta separación evita que un token válido permita, por sí solo, liberar una carga, consultar crédito o modificar una regla de calidad (Bases Técnicas Transversales, caps. 11–12, pp. 23–26; RT-11.01 y RT-12.05; National Institute of Standards and Technology [NIST], 2020).
+La seguridad atraviesa las ocho capas. Su unidad de decisión no es la red desde la que llega una solicitud, sino el sujeto, el recurso, la acción y el contexto del turno. Keycloak conserva la autoridad de identidad. El servicio dueño del recurso conserva la decisión de autorización. Esta separación evita que un token válido permita, por sí solo, liberar una carga, consultar crédito o modificar una regla de calidad (Bases Técnicas Transversales, caps. 11–12, pp. 23–26; RT-11.01 y RT-12.05, National Institute of Standards and Technology [NIST], 2020).
 
 ##### Límites de confianza y capa expuesta
 
 La Figura [1](LAFROX-Subdocumento4.md#fig:arql-general-completa) distingue personas, dispositivos, sitio, servicios centrales y terceros.
 
-- CloudFront protege los portales externos y sus APIs; el origen de esas APIs rechaza el acceso público directo.
+- CloudFront protege los portales externos y sus APIs. El origen de esas APIs rechaza el acceso público directo.
 
 - Las consolas internas usan acceso verificado por identidad y postura del dispositivo hacia servicios privados.
 
-- OpenAS2 expone un canal B2B distinto, limitado a contrapartes registradas y con validación criptográfica y MDN; no es una API pública de negocio.
+- OpenAS2 expone un canal B2B distinto, limitado a contrapartes registradas y con validación criptográfica y MDN. No es una API pública de negocio.
 
-- Los almacenes de datos no son superficies públicas. El inventario de dominios, puertos y rutas de 4.2 debe representar las tres superficies por separado (RT-11.07 y RT-11.13; Bases Técnicas Transversales, cap. 11, p. 23).
+- Los almacenes de datos no son superficies públicas. El inventario de dominios, puertos y rutas de 4.2 debe representar las tres superficies por separado (RT-11.07 y RT-11.13, Bases Técnicas Transversales, cap. 11, p. 23).
 
-API Gateway verifica la identidad, el alcance, las cuotas, los límites de tasa, el esquema y la carga útil antes de entregar una solicitud; M1–M12 repiten la autorización de negocio sobre el recurso concreto. Los puntos públicos incorporan detección de bots y reto progresivo sin bloquear a una persona legítima. La comunicación entre servicios se autentica mutuamente y se cifra; un evento asíncrono también conserva productor, destinatario, versión, identificador y permisos necesarios. Así se aplica el mismo límite de confianza a REST y a mensajería (RT-11.11–11.12; Bases Técnicas Transversales, cap. 11, p. 23).
+API Gateway verifica la identidad, el alcance, las cuotas, los límites de tasa, el esquema y la carga útil antes de entregar una solicitud. M1–M12 repiten la autorización de negocio sobre el recurso concreto. Los puntos públicos incorporan detección de bots y reto progresivo sin bloquear a una persona legítima. La comunicación entre servicios se autentica mutuamente y se cifra. Un evento asíncrono también conserva productor, destinatario, versión, identificador y permisos necesarios. Así se aplica el mismo límite de confianza a REST y a mensajería (RT-11.11–11.12, Bases Técnicas Transversales, cap. 11, p. 23).
 
-La política lógica prohíbe el ingreso público directo a los sitios. Las excepciones de integración a través de un túnel privado no son exposición a internet: se autorizan de forma nominativa, por origen, destino y propósito, y se registran. La única conexión iniciada desde nube hacia un sitio es DMS hacia VM-02 de Talca, nominada y auditada por IPsec; las demás conexiones de los sitios se inician hacia nube. Las reglas de red se especifican en 4.2; una excepción no amplía el permiso de los módulos para escribir directamente en el ERP.
+La política lógica prohíbe el ingreso público directo a los sitios. Las excepciones de integración a través de un túnel privado no son exposición a internet: se autorizan de forma nominativa, por origen, destino y propósito, y se registran. La única conexión iniciada desde nube hacia un sitio es DMS hacia VM-02 de Talca, nominada y auditada por IPsec. Las demás conexiones de los sitios se inician hacia nube. Las reglas de red se especifican en 4.2. Una excepción no amplía el permiso de los módulos para escribir directamente en el ERP.
 
-Cuando AWS WAF presenta un reto progresivo, el usuario dispone de una alternativa accesible dentro del flujo de autenticación, operable con teclado y tecnologías de asistencia. La aceptación verifica esos recorridos y el acceso de usuarios legítimos; las reglas que generen bloqueos falsos se ajustan sin retirar los controles de tasa y abuso (RT-11.12; Bases Técnicas Transversales, cap. 11, p. 23).
+Cuando AWS WAF presenta un reto progresivo, el usuario dispone de una alternativa accesible dentro del flujo de autenticación, operable con teclado y tecnologías de asistencia. La aceptación verifica esos recorridos y el acceso de usuarios legítimos. Las reglas que generen bloqueos falsos se ajustan sin retirar los controles de tasa y abuso (RT-11.12, Bases Técnicas Transversales, cap. 11, p. 23).
 
 ##### Identidad, autorización y sesiones
 
-La identidad central utiliza OIDC, SSO y MFA. El rol se complementa con atributos de instalación, turno, ruta, dispositivo y empresa transportista. El proveedor solo consulta sus órdenes; el representante del transportista declara sus conductores y consulta sus rutas asignadas; el conductor actúa sobre su entrega y rendición; Calidad decide sobre un lote bloqueado; y Tesorería aprueba la conciliación, sin que quien registró el cobro pueda aprobar su propia diferencia. Los administradores elevan privilegios por tiempo limitado, con aprobación y registro de sesión. El alta, cambio de rol y baja quedan vinculados al ciclo de vida laboral o contractual, con baja efectiva antes de 24 horas desde la desvinculación, y los administradores usan además claves de acceso FIDO2; las personas externas disponen de registro, verificación y recuperación de acceso sin requerir correo corporativo (RT-12.01–12.06 y RT-12.09–12.12; Bases Técnicas Transversales, cap. 12, pp. 25–26).
+La identidad central utiliza OIDC, SSO y MFA. El rol se complementa con atributos de instalación, turno, ruta, dispositivo y empresa transportista. El proveedor solo consulta sus órdenes. El representante del transportista declara sus conductores y consulta sus rutas asignadas. El conductor actúa sobre su entrega y rendición. Calidad decide sobre un lote bloqueado. Y Tesorería aprueba la conciliación, sin que quien registró el cobro pueda aprobar su propia diferencia. Los administradores elevan privilegios por tiempo limitado, con aprobación y registro de sesión. El alta, cambio de rol y baja quedan vinculados al ciclo de vida laboral o contractual, con baja efectiva antes de 24 horas desde la desvinculación, y los administradores usan además claves de acceso FIDO2. Las personas externas disponen de registro, verificación y recuperación de acceso sin requerir correo corporativo (RT-12.01–12.06 y RT-12.09–12.12, Bases Técnicas Transversales, cap. 12, pp. 25–26).
 
-En las APIs Laravel, un guard OIDC comprueba firma con las claves publicadas por Keycloak, emisor, audiencia, vencimiento y alcance. Las políticas del módulo dueño verifican además recurso, turno y atributos; se prueban tanto rutas HTTP como trabajos asíncronos para que una cola no eluda la autorización. El acceso local usa exclusivamente el verificador de manifiestos descrito abajo. Laravel no emite otra identidad de usuario mediante Sanctum o Passport: Keycloak sigue siendo el único IdP y la administración de personas se realiza en el portal Angular autorizado.
+En las APIs Laravel, un guard OIDC comprueba firma con las claves publicadas por Keycloak, emisor, audiencia, vencimiento y alcance. Las políticas del módulo dueño verifican además recurso, turno y atributos. Se prueban tanto rutas HTTP como trabajos asíncronos para que una cola no eluda la autorización. El acceso local usa exclusivamente el verificador de manifiestos descrito abajo. Laravel no emite otra identidad de usuario mediante Sanctum o Passport: Keycloak sigue siendo el único IdP y la administración de personas se realiza en el portal Angular autorizado.
 
-En conexión, el token de acceso dura como máximo 30 minutos;
+En conexión, el token de acceso dura como máximo 30 minutos,
 
 - la inactividad cierra la sesión administrativa a los 15 minutos y las demás a los 30.
 
@@ -683,15 +683,15 @@ En conexión, el token de acceso dura como máximo 30 minutos;
 
 - Ninguna credencial se transporta en la URL.
 
-- Estas duraciones no renuevan ni alargan una autorización offline; responden a los controles de RT-12.07–12.08.
+- Estas duraciones no renuevan ni alargan una autorización offline, responden a los controles de RT-12.07–12.08.
 
 La credencial de turno dura hasta 8 horas en bodega y hasta 14 horas en terreno. Su vigencia se cuenta desde la emisión, no desde la última pérdida de señal. La ventana física de ruta de hasta 14,5 horas de 4.2.1.2 no extiende esa autorización: al vencer, se conserva lo capturado y se requiere renovación con conexión antes de nuevas operaciones protegidas.
 
-- Mientras existe enlace, Keycloak renueva al menos cada hora un manifiesto firmado con los turnos y permisos preinscritos para una ventana de 26 horas; así, incluso si el corte comienza justo antes de la renovación siguiente, quedan al menos 25 horas de verificación local.
+- Mientras existe enlace, Keycloak renueva al menos cada hora un manifiesto firmado con los turnos y permisos preinscritos para una ventana de 26 horas. Así, incluso si el corte comienza justo antes de la renovación siguiente, quedan al menos 25 horas de verificación local.
 
 - La caché de identidad, de solo lectura y TTL de 24 horas, conserva datos recibidos en VM-05 (Talca), VM-C03 (Concepción) y E-01 de cada cross-docking, pero no emite sesiones.
 
-- Al relevarse un turno sin enlace, el verificador del mismo nodo comprueba la firma y vigencia del manifiesto y un segundo factor local: el PIN personal sobre el terminal enrolado por MDM; limita el acceso a M1, M2, M5, a la recepción física de retornos de M8 y a las acciones autorizadas de M9, bloquea intentos repetidos y registra cada decisión.
+- Al relevarse un turno sin enlace, el verificador del mismo nodo comprueba la firma y vigencia del manifiesto y un segundo factor local: el PIN personal sobre el terminal enrolado por MDM. Limita el acceso a M1, M2, M5, a la recepción física de retornos de M8 y a las acciones autorizadas de M9, bloquea intentos repetidos y registra cada decisión.
 
 - El dispositivo compartido identifica el contexto, pero no sustituye la identidad personal del operario. Los detalles de claves y alojamiento pertenecen a 4.2 (ADR-06).
 
@@ -699,21 +699,21 @@ La revocación es inmediata en los servicios conectados.
 
 - Durante una desconexión no se promete revocación remota instantánea: el permiso local expira al terminar su turno, no se amplía sin enlace y la incidencia se marca para revisar operaciones al reconectar.
 
-- Una baja conocida localmente bloquea de inmediato la credencial en ese sitio; el verificador sincroniza las revocaciones y auditorías al restablecerse el enlace.
+- Una baja conocida localmente bloquea de inmediato la credencial en ese sitio. El verificador sincroniza las revocaciones y auditorías al restablecerse el enlace.
 
 - Se ensayan dos relevos dentro de 24 horas, vencimiento, pérdida de dispositivo y recuperación del enlace.
 
-- La cuenta de emergencia exige doble autorización, alcance acotado, custodia fuera de banda, registro y rotación posterior; no reemplaza la autenticación ordinaria de todos los operarios (RT-03.10 y RT-12.13; Bases Técnicas Transversales, cap. 3, p. 9, y cap. 12, p. 26).
+- La cuenta de emergencia exige doble autorización, alcance acotado, custodia fuera de banda, registro y rotación posterior, no reemplaza la autenticación ordinaria de todos los operarios (RT-03.10 y RT-12.13, Bases Técnicas Transversales, cap. 3, p. 9, y cap. 12, p. 26).
 
-Keycloak centraliza la identidad con OpenID Connect y OAuth 2.1, o con SAML 2.0 cuando la integración con el CLIENTE lo requiera, y se conecta con su directorio corporativo mediante LDAP o su equivalente en la nube. La aceptación verifica los protocolos usados y la sincronización con ese directorio (RT-12.01; Bases Técnicas Transversales, cap. 12, p. 25).
+Keycloak centraliza la identidad con OpenID Connect y OAuth 2.1, o con SAML 2.0 cuando la integración con el CLIENTE lo requiera, y se conecta con su directorio corporativo mediante LDAP o su equivalente en la nube. La aceptación verifica los protocolos usados y la sincronización con ese directorio (RT-12.01, Bases Técnicas Transversales, cap. 12, p. 25).
 
-Las altas, los cambios de permisos y las bajas del ciclo laboral o contractual, registrados por perfiles autorizados, activan trabajos de Laravel que crean, actualizan o deshabilitan la cuenta en Keycloak y revocan sus sesiones y credenciales. La baja se completa antes de 24 horas desde la desvinculación, con aprobación y auditoría, y se aplica tanto a la revocación conectada como a la local descritas en este apartado (RT-12.10; Bases Técnicas Transversales, cap. 12, p. 26).
+Las altas, los cambios de permisos y las bajas del ciclo laboral o contractual, registrados por perfiles autorizados, activan trabajos de Laravel que crean, actualizan o deshabilitan la cuenta en Keycloak y revocan sus sesiones y credenciales. La baja se completa antes de 24 horas desde la desvinculación, con aprobación y auditoría, y se aplica tanto a la revocación conectada como a la local descritas en este apartado (RT-12.10, Bases Técnicas Transversales, cap. 12, p. 26).
 
-El CLIENTE administra por sí mismo, desde la consola Angular, usuarios, roles, permisos y unidades organizacionales con sus jerarquías, mediante los grupos y atributos de Keycloak. Cada cambio registra su autor y su alcance, y la autorización sobre cada recurso sigue en el módulo que lo administra (RT-16.01; Bases Técnicas Transversales, cap. 16, p. 29).
+El CLIENTE administra por sí mismo, desde la consola Angular, usuarios, roles, permisos y unidades organizacionales con sus jerarquías, mediante los grupos y atributos de Keycloak. Cada cambio registra su autor y su alcance, y la autorización sobre cada recurso sigue en el módulo que lo administra (RT-16.01, Bases Técnicas Transversales, cap. 16, p. 29).
 
-En los terminales enrolados, la autenticación usa pasos guiados con texto e iconos. El PIN personal puede ingresarse con guantes térmicos a −22 °C en bodega, y con una mano, de pie y a la intemperie en la puerta del cliente. En los equipos compartidos, cada relevo cierra la sesión anterior y valida su identidad con la credencial de turno firmada; ante una rotación sin aviso se usan los suplentes ya enrolados (4.1.18). La aceptación verifica estas interacciones y la incorporación asistida, con un tutor de turno y aprendizaje en el puesto, pensada para la baja alfabetización digital y el 38 % de rotación anual en preparación (RT-12.11; Bases Técnicas Transversales, cap. 12, p. 26; Bases Técnicas del caso, cap. 15, p. 27).
+En los terminales enrolados, la autenticación usa pasos guiados con texto e iconos. El PIN personal puede ingresarse con guantes térmicos a −22 °C en bodega, y con una mano, de pie y a la intemperie en la puerta del cliente. En los equipos compartidos, cada relevo cierra la sesión anterior y valida su identidad con la credencial de turno firmada. Ante una rotación sin aviso se usan los suplentes ya enrolados (4.1.18). La aceptación verifica estas interacciones y la incorporación asistida, con un tutor de turno y aprendizaje en el puesto, pensada para la baja alfabetización digital y el 38 % de rotación anual en preparación (RT-12.11, Bases Técnicas Transversales, cap. 12, p. 26; Bases Técnicas del caso, cap. 15, p. 27).
 
-Los clientes tradicionales y de food service, las cuentas de personas de los supermercados, las empresas transportistas con sus conductores y los proveedores se registran, verifican su identidad y recuperan su acceso por sí mismos en sus portales, con Keycloak como única autoridad de identidad. En el canal tradicional, el uso del portal sigue siendo opcional. El registro comprueba el contacto y su vínculo con la entidad y el perfil antes de otorgar permisos; quienes no tienen correo corporativo usan el teléfono y el código OTP descritos en 4.1.18. La recuperación exige un factor enrolado previamente, invalida las credenciales anteriores y queda auditada. Conocer el RUT o el nombre de la empresa no basta para recuperar el acceso (RT-12.12; Bases Técnicas Transversales, cap. 12, p. 26; Bases Técnicas del caso, cap. 15, p. 27).
+Los clientes tradicionales y de food service, las cuentas de personas de los supermercados, las empresas transportistas con sus conductores y los proveedores se registran, verifican su identidad y recuperan su acceso por sí mismos en sus portales, con Keycloak como única autoridad de identidad. En el canal tradicional, el uso del portal sigue siendo opcional. El registro comprueba el contacto y su vínculo con la entidad y el perfil antes de otorgar permisos. Quienes no tienen correo corporativo usan el teléfono y el código OTP descritos en 4.1.18. La recuperación exige un factor enrolado previamente, invalida las credenciales anteriores y queda auditada. Conocer el RUT o el nombre de la empresa no basta para recuperar el acceso (RT-12.12, Bases Técnicas Transversales, cap. 12, p. 26; Bases Técnicas del caso, cap. 15, p. 27).
 
 ##### Clasificación, cifrado y custodia
 
@@ -732,9 +732,9 @@ La Tabla [2](LAFROX-Subdocumento4.md#tab:seguridad-clasificacion) resume cómo c
 
 Fuente: elaboración propia a partir de RT-11.03, RT-11.09 y RT-11.10 (Bases Técnicas Transversales, cap. 11, p. 23; Bases Técnicas del caso, cap. 15, p. 27).
 
-La categoría confidencial exige separar quién puede usar el dato de quién administra su almacenamiento: el acceso a la base no revela por sí solo comportamiento de pago ni geolocalización. Todo dato en reposo se cifra; los campos sensibles del caso reciben además cifrado por campo con AES-256 y claves de AWS KMS. En tránsito se exige TLS 1.3 en las entradas externas y entre los componentes de la solución, se prohíben TLS 1.0 y 1.1, se automatiza la gestión de certificados con alerta previa a su vencimiento y se emplea mTLS entre servicios; la configuración y sus excepciones documentadas se detallan en el Anexo 4-R. La custodia y rotación de claves mantienen separación de funciones. El PAN de tarjetas no se almacena; se usa la tokenización de la pasarela. El RUT requiere una técnica de seudonimización con acceso a la clave separado y una finalidad documentada, sin confundir cifrado reversible con anonimización. La geolocalización de personas conserva la retención de 12 meses del caso y un registro de consultas; la región primaria sa-east-1 y la secundaria us-east-1 implican transferencias internacionales sujetas a aprobación del CLIENTE. AWS actúa como encargado bajo contrato con cláusulas tipo; el CLIENTE administra KMS y la geolocalización de personas se excluye de la réplica secundaria, conforme se desarrolla en 4.3.2 (Bases Técnicas del caso, cap. 15, pp. 26–30; Bases Técnicas Transversales, cap. 11, pp. 23–24; RT-11.08–11.10 y RT-16.09).
+La categoría confidencial exige separar quién puede usar el dato de quién administra su almacenamiento: el acceso a la base no revela por sí solo comportamiento de pago ni geolocalización. Todo dato en reposo se cifra. Los campos sensibles del caso reciben además cifrado por campo con AES-256 y claves de AWS KMS. En tránsito se exige TLS 1.3 en las entradas externas y entre los componentes de la solución, se prohíben TLS 1.0 y 1.1, se automatiza la gestión de certificados con alerta previa a su vencimiento y se emplea mTLS entre servicios. La configuración y sus excepciones documentadas se detallan en el Anexo 4-R. La custodia y rotación de claves mantienen separación de funciones. El PAN de tarjetas no se almacena. Se usa la tokenización de la pasarela. El RUT requiere una técnica de seudonimización con acceso a la clave separado y una finalidad documentada, sin confundir cifrado reversible con anonimización. La geolocalización de personas conserva la retención de 12 meses del caso y un registro de consultas. La región primaria sa-east-1 y la secundaria us-east-1 implican transferencias internacionales sujetas a aprobación del CLIENTE. AWS actúa como encargado bajo contrato con cláusulas tipo. El CLIENTE administra KMS y la geolocalización de personas se excluye de la réplica secundaria, conforme se desarrolla en 4.3.2 (Bases Técnicas del caso, cap. 15, pp. 26–30; Bases Técnicas Transversales, cap. 11, pp. 23–24; RT-11.08–11.10 y RT-16.09).
 
-El CLIENTE consulta y exporta la auditoría desde la consola Angular mediante la API Laravel, con filtros combinables por persona, período, entidad y tipo de operación, sin acceso a la base de datos. La consulta reutiliza los campos del registro de auditoría y exporta el resultado filtrado en CSV UTF-8 o JSON bajo los permisos del perfil; para volúmenes extensos emplea el trabajo asíncrono, seguimiento y descarga protegida de 5.2.8 (LafroX, 2026a, sección 5.2.8; LafroX, 2026b, Anexo 5-A; RT-16.08; Bases Técnicas Transversales, cap. 16, p. 29).
+El CLIENTE consulta y exporta la auditoría desde la consola Angular mediante la API Laravel, con filtros combinables por persona, período, entidad y tipo de operación, sin acceso a la base de datos. La consulta reutiliza los campos del registro de auditoría y exporta el resultado filtrado en CSV UTF-8 o JSON bajo los permisos del perfil. Para volúmenes extensos emplea el trabajo asíncrono, seguimiento y descarga protegida de 5.2.8 (LafroX, 2026a, sección 5.2.8; LafroX, 2026b, Anexo 5-A; RT-16.08, Bases Técnicas Transversales, cap. 16, p. 29).
 
 ##### Amenazas, controles y evidencia
 
@@ -744,9 +744,9 @@ El modelado STRIDE toma cada módulo y cada integración externa como unidad de 
 
 - Para M5, la elevación indebida de privilegios no debe liberar una carga bloqueada por M9: se prueba la separación de autorizaciones.
 
-- Para M11 y la ACL, un mensaje EDI repetido o manipulado se rechaza o aísla sin escribir dos veces en el ERP. El Anexo 4-Q registra las amenazas por módulo y frontera; el Anexo 4-R vincula controles ISO/IEC 27001/27002 con responsable y prueba. Son especificaciones de aceptación, no resultados de ensayos ni certificación (ISO, 2022b, 2022c) (RT-11.02 y RT-11.05; Bases Técnicas Transversales, cap. 11, p. 23).
+- Para M11 y la ACL, un mensaje EDI repetido o manipulado se rechaza o aísla sin escribir dos veces en el ERP. El Anexo 4-Q registra las amenazas por módulo y frontera. El Anexo 4-R vincula controles ISO/IEC 27001/27002 con responsable y prueba. Son especificaciones de aceptación, no resultados de ensayos ni certificación (ISO, 2022b, 2022c) (RT-11.02 y RT-11.05, Bases Técnicas Transversales, cap. 11, p. 23).
 
-Cada decisión de acceso y cada acción crítica conserva sujeto, empresa si aplica, recurso, operación, resultado, hora, identificador de transacción y regla aplicada. Los eventos de seguridad se envían a una bitácora inalterable y al SIEM; durante un corte se conservan localmente y se remiten con el mismo identificador al reconectar. Las reglas de detección incluyen acceso privilegiado fuera de turno, intentos reiterados de uso de una credencial de conductor revocada, consulta masiva de datos comerciales, alteración de evidencia de temperatura y desvío anómalo de mensajes EDI. Los registros técnicos en CloudWatch se conservan 12 meses en línea y 24 meses adicionales en archivo; los registros de seguridad y auditoría se conservan 7 años bajo Object Lock. La retención de documentos tributarios y POD se gobierna separadamente por su dominio de datos. La plataforma que opera estos controles se describe en 4.2, y la dotación del SOC, en el Anexo 4-W (RT-11.14–11.19; Bases Técnicas Transversales, cap. 11, p. 24).
+Cada decisión de acceso y cada acción crítica conserva sujeto, empresa si aplica, recurso, operación, resultado, hora, identificador de transacción y regla aplicada. Los eventos de seguridad se envían a una bitácora inalterable y al SIEM. Durante un corte se conservan localmente y se remiten con el mismo identificador al reconectar. Las reglas de detección incluyen acceso privilegiado fuera de turno, intentos reiterados de uso de una credencial de conductor revocada, consulta masiva de datos comerciales, alteración de evidencia de temperatura y desvío anómalo de mensajes EDI. Los registros técnicos en CloudWatch se conservan 12 meses en línea y 24 meses adicionales en archivo. Los registros de seguridad y auditoría se conservan 7 años bajo Object Lock. La retención de documentos tributarios y POD se gobierna separadamente por su dominio de datos. La plataforma que opera estos controles se describe en 4.2, y la dotación del SOC, en el Anexo 4-W (RT-11.14–11.19, Bases Técnicas Transversales, cap. 11, p. 24).
 
 La aceptación de esta vista requiere
 
@@ -774,15 +774,15 @@ La Figura [12](LAFROX-Subdocumento4.md#fig:arql-capa-8) presenta las responsabil
 
 Fuente: elaboración propia.
 
-La correlación permite seguir una operación entre APIs, módulos y consumidores. Durante el corte, el sitio conserva telemetría y mantiene sus alarmas; CloudWatch reúne registros, métricas y trazas para los tableros y la atención de incidentes.
+La correlación permite seguir una operación entre APIs, módulos y consumidores. Durante el corte, el sitio conserva telemetría y mantiene sus alarmas. CloudWatch reúne registros, métricas y trazas para los tableros y la atención de incidentes.
 
-La observabilidad debe ayudar al equipo a responder preguntas operativas: qué pedido quedó sin confirmar, dónde se interrumpió una integración y qué entregas pueden verse afectadas. Para ello reúne métricas, registros y trazas de nube y sitios locales en una misma plataforma (RT-03.16; Bases Técnicas Transversales, cap. 3, p. 9; Bases Administrativas, art. 16.4, p. 12).
+La observabilidad debe ayudar al equipo a responder preguntas operativas: qué pedido quedó sin confirmar, dónde se interrumpió una integración y qué entregas pueden verse afectadas. Para ello reúne métricas, registros y trazas de nube y sitios locales en una misma plataforma (RT-03.16, Bases Técnicas Transversales, cap. 3, p. 9; Bases Administrativas, art. 16.4, p. 12).
 
-La instrumentación utiliza OpenTelemetry para PHP/Laravel y las aplicaciones Kotlin, junto con los registros y métricas disponibles de API Gateway, RabbitMQ, SQS y Greengrass. El identificador de correlación acompaña las solicitudes y los mensajes; los trabajadores extraen el contexto de traza del sobre de evento para correlacionar la operación de negocio, incluidos los procesos asíncronos.
+La instrumentación utiliza OpenTelemetry para PHP/Laravel y las aplicaciones Kotlin, junto con los registros y métricas disponibles de API Gateway, RabbitMQ, SQS y Greengrass. El identificador de correlación acompaña las solicitudes y los mensajes. Los trabajadores extraen el contexto de traza del sobre de evento para correlacionar la operación de negocio, incluidos los procesos asíncronos.
 
-En on-premise, los colectores ADOT, con almacenamiento temporal en disco de 24 horas, recolectan la telemetría local y la exportan a la plataforma única en Amazon CloudWatch: Logs conserva los registros técnicos 12 meses en línea y 24 meses en archivo; Metrics conserva las métricas 13 meses; las trazas y los tableros operacionales también se alojan en CloudWatch (ADR-14).
+En on-premise, los colectores ADOT, con almacenamiento temporal en disco de 24 horas, recolectan la telemetría local y la exportan a la plataforma única en Amazon CloudWatch: Logs conserva los registros técnicos 12 meses en línea y 24 meses en archivo. Metrics conserva las métricas 13 meses. Las trazas y los tableros operacionales también se alojan en CloudWatch (ADR-14).
 
-LafroX compromete 30 días de retención en línea para las trazas en el grupo `aws/spans` de CloudWatch Logs mediante Transaction Search, con `retentionInDays = 30`, valor admitido por AWS, sin archivado adicional de trazas (RT-14.08; Bases Técnicas Transversales, cap. 14; Amazon Web Services, s. f.-f, s. f.-g). El costo de retención de métricas, registros y trazas, distinguiendo almacenamiento en línea y archivado, se declara en la Oferta Económica (Bases Administrativas, art. 50.2).
+LafroX compromete 30 días de retención en línea para las trazas en el grupo `aws/spans` de CloudWatch Logs mediante Transaction Search, con `retentionInDays = 30`, valor admitido por AWS, sin archivado adicional de trazas (RT-14.08, Bases Técnicas Transversales, cap. 14; Amazon Web Services, s. f.-f, s. f.-g). El costo de retención de métricas, registros y trazas, distinguiendo almacenamiento en línea y archivado, se declara en la Oferta Económica (Bases Administrativas, art. 50.2).
 
 Los tableros se estructuran en tres niveles:
 
@@ -790,17 +790,17 @@ Los tableros se estructuran en tres niveles:
 
 - gerencial (para la gerencia y jefes)
 
-- y del mandante (para Puelche, solo lectura con auditoría de consultas, conforme a RT-14.02; Bases Técnicas Transversales, cap. 14, p. 27). Este tablero muestra el estado del servicio con métricas de CloudWatch de resolución de un minuto, y los indicadores de negocio de QuickSight con las latencias que fija RT-05.29 para la capa analítica: operación del día ≤ 5 minutos, cierre comercial ≤ 2 horas y gestión ≤ 4 horas (4.1.4.7). Ambos se exportan en formatos abiertos, CSV y Excel. Las alertas se formulan por síntomas de negocio, no por causas técnicas, con ventanas de evaluación para evitar falsos positivos y escalamiento por criticidad.
+- y del mandante (para Puelche, solo lectura con auditoría de consultas, conforme a RT-14.02, Bases Técnicas Transversales, cap. 14, p. 27). Este tablero muestra el estado del servicio con métricas de CloudWatch de resolución de un minuto, y los indicadores de negocio de QuickSight con las latencias que fija RT-05.29 para la capa analítica: operación del día ≤ 5 minutos, cierre comercial ≤ 2 horas y gestión ≤ 4 horas (4.1.4.7). Ambos se exportan en formatos abiertos, CSV y Excel. Las alertas se formulan por síntomas de negocio, no por causas técnicas, con ventanas de evaluación para evitar falsos positivos y escalamiento por criticidad.
 
-El tablero de solo lectura del CLIENTE abrirá los indicadores clave de soporte de RT-21.06 —atención dentro del plazo, resolución al primer contacto y abandono—, y limitará los indicadores específicos según el nivel de autorización de cada usuario, con auditoría de consultas (RT-21.13; Bases Técnicas Transversales, cap. 21).
+El tablero de solo lectura del CLIENTE abrirá los indicadores clave de soporte de RT-21.06 —atención dentro del plazo, resolución al primer contacto y abandono—, y limitará los indicadores específicos según el nivel de autorización de cada usuario, con auditoría de consultas (RT-21.13, Bases Técnicas Transversales, cap. 21).
 
-Un trabajo programado compara la latencia, los errores y la longitud de las colas registradas en Amazon CloudWatch con su comportamiento histórico en la misma franja horaria y día de la semana. Usa reglas estadísticas deterministas, sin componentes de inteligencia artificial. Cuando la desviación o la tendencia anticipa que se alcanzarán los límites de 4.2.6.11, emite una alerta preventiva al NOC/SRE antes de que el incidente afecte la operación. La aceptación reproduce una degradación gradual y comprueba ese aviso anticipado (RT-14.09; Bases Técnicas Transversales, cap. 14, p. 27).
+Un trabajo programado compara la latencia, los errores y la longitud de las colas registradas en Amazon CloudWatch con su comportamiento histórico en la misma franja horaria y día de la semana. Usa reglas estadísticas deterministas, sin componentes de inteligencia artificial. Cuando la desviación o la tendencia anticipa que se alcanzarán los límites de 4.2.6.11, emite una alerta preventiva al NOC/SRE antes de que el incidente afecte la operación. La aceptación reproduce una degradación gradual y comprueba ese aviso anticipado (RT-14.09, Bases Técnicas Transversales, cap. 14, p. 27).
 
-Durante un corte de enlace, el sitio no depende de los tableros centralizados para despachar. Las alarmas locales continúan y los colectores retienen la telemetría para enviarla al restablecer la conexión. La capacidad del almacenamiento temporal de 24 horas debe comprobarse con la carga de diseño; no se presume conservación ilimitada. La retención de métricas, registros técnicos y trazas no sustituye la política de auditoría de negocio exigida por RT-16.10.
+Durante un corte de enlace, el sitio no depende de los tableros centralizados para despachar. Las alarmas locales continúan y los colectores retienen la telemetría para enviarla al restablecer la conexión. La capacidad del almacenamiento temporal de 24 horas debe comprobarse con la carga de diseño. No se presume conservación ilimitada. La retención de métricas, registros técnicos y trazas no sustituye la política de auditoría de negocio exigida por RT-16.10.
 
-Las alertas se agrupan por síntoma, recurso y correlación, y se suprimen los duplicados y los avisos que dependen de una causa principal todavía activa. Las reglas de CloudWatch y los trabajos programados escalan automáticamente al NOC/SRE según la criticidad y el tiempo sin atención. El NOC y el SOC operan 24×7 y los incidentes críticos y altos se atienden 24×7×365; la mesa de ayuda mantiene las franjas de 4-W.7 (RT-14.04; Bases Técnicas Transversales, cap. 14, p. 27).
+Las alertas se agrupan por síntoma, recurso y correlación, y se suprimen los duplicados y los avisos que dependen de una causa principal todavía activa. Las reglas de CloudWatch y los trabajos programados escalan automáticamente al NOC/SRE según la criticidad y el tiempo sin atención. El NOC y el SOC operan 24×7 y los incidentes críticos y altos se atienden 24×7×365. La mesa de ayuda mantiene las franjas de 4-W.7 (RT-14.04, Bases Técnicas Transversales, cap. 14, p. 27).
 
-Las aplicaciones y los colectores eliminan las credenciales y los datos personales sensibles antes de escribir o enviar registros técnicos, de seguridad o de negocio. Los registros conservan los identificadores de correlación y la evidencia mínima necesaria. Solo los perfiles autorizados acceden a ellos, y cada consulta o exportación queda auditada. Esta regla no cambia la custodia de los documentos probatorios (RT-14.07; Bases Técnicas Transversales, cap. 14, p. 27).
+Las aplicaciones y los colectores eliminan las credenciales y los datos personales sensibles antes de escribir o enviar registros técnicos, de seguridad o de negocio. Los registros conservan los identificadores de correlación y la evidencia mínima necesaria. Solo los perfiles autorizados acceden a ellos, y cada consulta o exportación queda auditada. Esta regla no cambia la custodia de los documentos probatorios (RT-14.07, Bases Técnicas Transversales, cap. 14, p. 27).
 
 ### 4.1.4 Módulos funcionales y límites de contexto
 
@@ -810,15 +810,15 @@ Los doce módulos M1–M12 separan decisiones de negocio y conservan su trazabil
 
 Cada módulo tiene un dueño de negocio y una vía explícita para colaborar con los demás.
 
-La correspondencia con los identificadores físicos se detalla en la tabla de correspondencia del apartado 4.2.2 y en el Formulario T-11: N-04 ejecuta los módulos M1–M12 en nube; A-01 ejecuta M1, M2 y M5 como WMS local, además de la recepción física de retornos de M8, sobre A-02 (base transaccional), con A-03 (RabbitMQ), A-04 (ACL del ERP) y A-05 (identidad local) como apoyos. M9 utiliza B-02 (gateways de frío) y N-08 (ingesta IoT); M10 utiliza N-10 (analítica). N-09 proporciona SQS FIFO y SNS a los flujos asíncronos; N-01 a N-03 publican los portales y N-13 gestiona los terminales de bodega y terreno. Estos códigos identifican componentes de despliegue, no módulos de negocio adicionales.
+La correspondencia con los identificadores físicos se detalla en la tabla de correspondencia del apartado 4.2.2 y en el Formulario T-11: N-04 ejecuta los módulos M1–M12 en nube. A-01 ejecuta M1, M2 y M5 como WMS local, además de la recepción física de retornos de M8, sobre A-02 (base transaccional), con A-03 (RabbitMQ), A-04 (ACL del ERP) y A-05 (identidad local) como apoyos. M9 utiliza B-02 (gateways de frío) y N-08 (ingesta IoT). M10 utiliza N-10 (analítica). N-09 proporciona SQS FIFO y SNS a los flujos asíncronos. N-01 a N-03 publican los portales y N-13 gestiona los terminales de bodega y terreno. Estos códigos identifican componentes de despliegue, no módulos de negocio adicionales.
 
 El reparto evita que M6 emita DTE o que M10 escriba pedidos. M1 y M5 entregan datos al ERP únicamente por la capa anticorrupción. M11 entra en la Etapa 2 sin cambiar el dueño de la reserva de stock, que sigue siendo M2. Los límites y dependencias se precisan en el mapa siguiente.
 
-Las cinco innovaciones del SD13 amplían reglas, contratos y recorridos sobre los módulos existentes: seguimiento posentrega en M2/M3/M9/M10; reproducción de incidentes de M3/M5/M6 en QA y Preproducción; historia térmica en M2/M5/M9/M10; liquidación ligada al costo de servir en M6/M7/M8/M10; y hoja de negocio en M3/M6/M10. Reutilizar estos componentes no elimina el desarrollo adicional ni acredita capacidad suficiente. El Anexo 4-N identifica su realización y sus límites; el SD13 conserva la definición, los indicadores y la aceptación de cada innovación.
+Las cinco innovaciones del SD13 amplían reglas, contratos y recorridos sobre los módulos existentes: seguimiento posentrega en M2/M3/M9/M10, reproducción de incidentes de M3/M5/M6 en QA y Preproducción, historia térmica en M2/M5/M9/M10, liquidación ligada al costo de servir en M6/M7/M8/M10. Y hoja de negocio en M3/M6/M10. Reutilizar estos componentes no elimina el desarrollo adicional ni acredita capacidad suficiente. El Anexo 4-N identifica su realización y sus límites. El SD13 conserva la definición, los indicadores y la aceptación de cada innovación.
 
-El Anexo 4-E hace visible el paso del requerimiento al componente y a la capa que lo realiza. Es una síntesis de los dominios, no una sustitución del catálogo requisito por requisito del Formulario T-12; allí se debe conservar también origen, etapa, prueba y criterio de aceptación de cada RF y RNF.
+El Anexo 4-E hace visible el paso del requerimiento al componente y a la capa que lo realiza. Es una síntesis de los dominios, no una sustitución del catálogo requisito por requisito del Formulario T-12. Allí se debe conservar también origen, etapa, prueba y criterio de aceptación de cada RF y RNF.
 
-La trazabilidad transversal se prueba sobre esos mismos recorridos: RT-03.10 para 24 horas en sitio y 14 horas en terreno, RT-03.12 para reconciliación determinista y RT-03.13 para funciones no disponibles sin conexión y plazos de sincronización del caso en M1, M3, M5 y M6; RT-02.06 mediante UUID y resultado persistente en M2/M3/M6; RT-02.13 mediante el modelo de dominio; y RT-11/12 mediante autorización y auditoría en cada cruce. El entorno de prueba y el caso de aceptación deben reproducir la falla, no limitarse a una marca de cumplimiento.
+La trazabilidad transversal se prueba sobre esos mismos recorridos: RT-03.10 para 24 horas en sitio y 14 horas en terreno, RT-03.12 para reconciliación determinista y RT-03.13 para funciones no disponibles sin conexión y plazos de sincronización del caso en M1, M3, M5 y M6. RT-02.06 mediante UUID y resultado persistente en M2/M3/M6, RT-02.13 mediante el modelo de dominio. Y RT-11/12 mediante autorización y auditoría en cada cruce. El entorno de prueba y el caso de aceptación deben reproducir la falla, no limitarse a una marca de cumplimiento.
 
 M3 conserva el precio acordado por el preventista al tomar el pedido y la versión de condiciones comerciales aplicada, conforme a RNG-08 del Subdocumento 3. Un cambio posterior de la lista de precios no altera ese importe. Una propuesta offline fuera de las condiciones autorizadas queda en excepción y el precio no se sustituye en silencio. La condición aplicada viaja en el pedido y en el intercambio con el ERP, para comprobar que la facturación respeta el importe acordado.
 
@@ -834,13 +834,13 @@ El modelo de dominios se organiza mediante límites de contexto explícitos. El 
 
 El mapa expone dependencias que deben permanecer bajo contratos versionados.
 
-El mapa asigna a cada relación un dueño de contrato y una superficie de intercambio. El catálogo de interfaces (véase el apartado [4.1.6](LAFROX-Subdocumento4.md#sec:catalogo-interfaces)) añade la versión y la conducta ante falla; una relación del Anexo 4-F no equivale por sí sola a un contrato ejecutable.
+El mapa asigna a cada relación un dueño de contrato y una superficie de intercambio. El catálogo de interfaces (véase el apartado [4.1.6](LAFROX-Subdocumento4.md#sec:catalogo-interfaces)) añade la versión y la conducta ante falla, una relación del Anexo 4-F no equivale por sí sola a un contrato ejecutable.
 
 #### 4.1.4.2 Módulo M9 Calidad y trazabilidad
 
 El módulo de trazabilidad resuelve el problema central que motivó la licitación: la incapacidad de responder en tiempo real ante un retiro sanitario. En marzo de 2026, un retiro preventivo de queso fresco tomó 9 días en resolverse de forma inexacta, con la apertura de un sumario sanitario y la suspensión como distribuidor autorizado por un proveedor clave por seis meses.
 
-La unidad de trazabilidad sanitaria es el lote del proveedor, identificado por el producto (GTIN) y el número de lote. El vencimiento y los registros de temperatura se conservan como atributos asociados; FEFO es la regla de rotación por vencimiento, no parte del identificador. Cada movimiento vincula el lote con la unidad logística identificada mediante SSCC. Esta organización permite seguir el producto aunque cambie de caja o pallet. Como el 41% de las recepciones carece de lote registrado, la captura en recepción es obligatoria para sostener la trazabilidad (RF-01).
+La unidad de trazabilidad sanitaria es el lote del proveedor, identificado por el producto (GTIN) y el número de lote. El vencimiento y los registros de temperatura se conservan como atributos asociados. FEFO es la regla de rotación por vencimiento, no parte del identificador. Cada movimiento vincula el lote con la unidad logística identificada mediante SSCC. Esta organización permite seguir el producto aunque cambie de caja o pallet. Como el 41% de las recepciones carece de lote registrado, la captura en recepción es obligatoria para sostener la trazabilidad (RF-01).
 
 La trazabilidad hacia el origen y el destino se implementa evento a evento conforme al estándar GS1 EPCIS, permitiendo al sistema responder en menos de 2 horas ante un retiro sanitario (Bases Técnicas del caso, cap. 18, p. 34), con identificación precisa de los lotes y puntos de entrega afectados.
 
@@ -850,7 +850,7 @@ La trazabilidad hacia el origen y el destino se implementa evento a evento confo
 
 - Una excursión crítica y sostenida, según el umbral y la duración parametrizados por producto, genera retención preventiva automática en M2 y M5, también sin enlace (RNG-04 y RF-09.05/06/07 del Subdocumento 3).
 
-- Mientras Calidad no apruebe los parámetros de un producto, rige una regla preventiva versionada, derivada del rango de almacenamiento de su ficha: severidad crítica y duración cero, de modo que la primera lectura válida fuera de rango retiene el lote. La ficha y la regla se distribuyen a los sitios junto con los maestros, y el gateway local confirma la versión instalada. Si falta la ficha o su rango, el lote queda retenido por parámetro ausente y no se inventa un umbral. La regla preventiva no equivale a una aprobación de Calidad ni libera lotes; cuando Calidad aprueba la regla definitiva, esta la reemplaza como nueva versión y la anterior queda en el expediente.
+- Mientras Calidad no apruebe los parámetros de un producto, rige una regla preventiva versionada, derivada del rango de almacenamiento de su ficha: severidad crítica y duración cero, de modo que la primera lectura válida fuera de rango retiene el lote. La ficha y la regla se distribuyen a los sitios junto con los maestros, y el gateway local confirma la versión instalada. Si falta la ficha o su rango, el lote queda retenido por parámetro ausente y no se inventa un umbral. La regla preventiva no equivale a una aprobación de Calidad ni libera lotes. Cuando Calidad aprueba la regla definitiva, esta la reemplaza como nueva versión y la anterior queda en el expediente.
 
 - El sistema registra la versión de la regla, el umbral, la duración, el sensor y el lote.
 
@@ -860,15 +860,15 @@ La trazabilidad hacia el origen y el destino se implementa evento a evento confo
 
 - M9 integra los sensores de cámara mediante los tres gateways con Greengrass (Capa 2), los termógrafos mediante el terminal del conductor, inventario (M2), preparación (M5) y observabilidad (Capa 8), con evidencia exportable de la decisión.
 
-La frecuencia de registro térmico es parametrizable por tipo de producto, con un intervalo inicial de cinco minutos: 1.440 ÷ 288 = 5 minutos por punto de cámara y (14,5 × 60) ÷ 174 = 5 minutos por termógrafo (4-W.5). El gateway y el terminal detectan una desviación de 2 °C sostenida durante 15 minutos y registran como evento todo intervalo sin lectura. La aceptación comprueba la detección y su tiempo efectivo en cámara y en vehículo (RNF-09.05; LafroX, 2026c, Anexo 3.B).
+La frecuencia de registro térmico es parametrizable por tipo de producto, con un intervalo inicial de cinco minutos: 1.440 ÷ 288 = 5 minutos por punto de cámara y (14,5 × 60) ÷ 174 = 5 minutos por termógrafo (4-W.5). El gateway y el terminal detectan una desviación de 2 °C sostenida durante 15 minutos y registran como evento todo intervalo sin lectura. La aceptación comprueba la detección y su tiempo efectivo en cámara y en vehículo (RNF-09.05, LafroX, 2026c, Anexo 3.B).
 
 #### 4.1.4.3 Módulo M2 Inventario
 
-El módulo de inventario permite saber qué stock existe, dónde está y qué parte puede comprometerse. Mantiene la operación distribuida entre Talca, Concepción y los tres cross-docks; la casa matriz consulta la información consolidada. Sus capacidades son las siguientes:
+El módulo de inventario permite saber qué stock existe, dónde está y qué parte puede comprometerse. Mantiene la operación distribuida entre Talca, Concepción y los tres cross-docks. La casa matriz consulta la información consolidada. Sus capacidades son las siguientes:
 
-- **Stock por sitio (RF-02.02; RT-02.12; Bases Técnicas Transversales, cap. 2, p. 7).** Cada instalación operativa informa sus movimientos al consolidado. Con conexión se consulta disponibilidad actual; sin ella se muestra la copia descargada, identificada como información con fecha de actualización. La parametrización admite nuevos sitios sin convertir a la casa matriz en una bodega ni asignarle stock operativo por defecto.
+- **Stock por sitio (RF-02.02, RT-02.12, Bases Técnicas Transversales, cap. 2, p. 7).** Cada instalación operativa informa sus movimientos al consolidado. Con conexión se consulta disponibilidad actual. Sin ella se muestra la copia descargada, identificada como información con fecha de actualización. La parametrización admite nuevos sitios sin convertir a la casa matriz en una bodega ni asignarle stock operativo por defecto.
 
-- **Slotting y conteo ciego.** Asignación de ubicaciones por criterio documentado de rotación, peso y compatibilidad, con conteo cíclico de inventario mediado por terminales HHT con escáner GS1, reduciendo la discrepancia actual del 2,3% del valor contado a menos del 1%. El plan mensual de conteo cubre las posiciones que fija Bodega y las elige por rotación, valor y discrepancia histórica; el terminal no muestra la cantidad teórica. M2 compara lo contado con el teórico y registra la diferencia con su causa: si su valor no supera el umbral del recinto, el ajuste se aplica; si lo supera, la tarea queda pendiente de autorización y se avisa a la jefatura de bodega (RF-02.04; LafroX, 2026c, Anexo 3.A).
+- **Slotting y conteo ciego.** Asignación de ubicaciones por criterio documentado de rotación, peso y compatibilidad, con conteo cíclico de inventario mediado por terminales HHT con escáner GS1, reduciendo la discrepancia actual del 2,3% del valor contado a menos del 1%. El plan mensual de conteo cubre las posiciones que fija Bodega y las elige por rotación, valor y discrepancia histórica. El terminal no muestra la cantidad teórica. M2 compara lo contado con el teórico y registra la diferencia con su causa: si su valor no supera el umbral del recinto, el ajuste se aplica. Si lo supera, la tarea queda pendiente de autorización y se avisa a la jefatura de bodega (RF-02.04, LafroX, 2026c, Anexo 3.A).
 
 - **FEFO (First Expired, First Out).** La preparación y el despacho respetan el principio de primer vencimiento, con secuenciación térmica para productos refrigerados y congelados. M2 alerta a la jefatura de bodega cuando un lote en stock queda bajo el umbral configurable de vida útil remanente, con la acción recomendada (RF-02.09).
 
@@ -878,7 +878,7 @@ El módulo de inventario permite saber qué stock existe, dónde está y qué pa
 
 - **Reposición de compras (RF-10.01 a RF-10.03).** M2 sugiere la reposición por SKU y proveedor a partir de la venta real, la estacionalidad, las promociones comprometidas y el plazo de cada proveedor. La función de abastecimiento revisa y aprueba la sugerencia con permisos específicos dentro de los perfiles autorizados del CLIENTE. Cada modificación registra responsable y motivo. La sugerencia aprobada se traspasa al módulo de compras del ERP mediante la ACL de INT-06. El ERP conserva la emisión de las órdenes de compra (Subdocumento 3, D-05).
 
-Para incorporar un nuevo sitio se parametrizan en los maestros su identificador, su bodega, sus rutas y la cartera de clientes asignada, con los permisos de administración que correspondan. El sitio reutiliza el perfil local de bodega y la infraestructura como código ya descritos, sin rediseñar la arquitectura (RT-02.12; Bases Técnicas Transversales, cap. 2, p. 7).
+Para incorporar un nuevo sitio se parametrizan en los maestros su identificador, su bodega, sus rutas y la cartera de clientes asignada, con los permisos de administración que correspondan. El sitio reutiliza el perfil local de bodega y la infraestructura como código ya descritos, sin rediseñar la arquitectura (RT-02.12, Bases Técnicas Transversales, cap. 2, p. 7).
 
 #### 4.1.4.4 Módulo M3 Preventa
 
@@ -888,15 +888,15 @@ Para los 62 preventistas, tomar un pedido debe seguir siendo posible aun cuando 
 
 - **Identificador único y deduplicación (RF-03.16).** Cada evento recibe un UUID que se conserva en todos sus reintentos. El servicio de negocio registra su procesamiento y evita ejecutar dos veces la misma operación.
 
-- **Validación de stock y crédito.** La validación definitiva ocurre en la sincronización con la regla de negocio del servidor (reserva de stock, RF-03.03; crédito del cliente, RF-03.08/09). Sin conexión, el pedido queda como a la espera de validación y se resuelve en la sincronización posterior.
+- **Validación de stock y crédito.** La validación definitiva ocurre en la sincronización con la regla de negocio del servidor (reserva de stock, RF-03.03, crédito del cliente, RF-03.08/09). Sin conexión, el pedido queda como a la espera de validación y se resuelve en la sincronización posterior.
 
-- **Consulta y control comercial (RF-03.01 a RF-03.10, RF-03.13, RF-03.14 y RF-07.05).** Con conectividad, la aplicación muestra el stock disponible por SKU y el crédito disponible y la deuda vencida del cliente; sin ella, muestra los de la última sincronización con su antigüedad visible. También muestra el historial de compra con productos y frecuencia, en no más de 2 segundos con conectividad (RNF-03.03); sugiere productos según historial, frecuencia, productos habituales y promociones vigentes, con los criterios que configura Comercial, y calcula el descuento de la promoción vigente aplicada a una línea. Al seleccionar un cliente con mora de más de 30 días o con su deuda sobre el cupo, la aplicación muestra el bloqueo y solo admite venta al contado o cobro. En los demás casos, si el pedido más la deuda vencida supera el límite de crédito, alerta al preventista antes del envío; si lo supera en más de 110 %, bloquea el envío hasta que un supervisor autorizado lo apruebe, con su identidad, fecha y hora en la auditoría. Antes de confirmar, el preventista ve la fecha y la ventana que puede comprometer según RNG-15, el stock reservable, la capacidad de despacho de la ruta y las franjas del cliente (LafroX, 2026c, Anexos 3.A y 3.B).
+- **Consulta y control comercial (RF-03.01 a RF-03.10, RF-03.13, RF-03.14 y RF-07.05).** Con conectividad, la aplicación muestra el stock disponible por SKU y el crédito disponible y la deuda vencida del cliente. Sin ella, muestra los de la última sincronización con su antigüedad visible. También muestra el historial de compra con productos y frecuencia, en no más de 2 segundos con conectividad (RNF-03.03). Sugiere productos según historial, frecuencia, productos habituales y promociones vigentes, con los criterios que configura Comercial, y calcula el descuento de la promoción vigente aplicada a una línea. Al seleccionar un cliente con mora de más de 30 días o con su deuda sobre el cupo, la aplicación muestra el bloqueo y solo admite venta al contado o cobro. En los demás casos, si el pedido más la deuda vencida supera el límite de crédito, alerta al preventista antes del envío. Si lo supera en más de 110 %, bloquea el envío hasta que un supervisor autorizado lo apruebe, con su identidad, fecha y hora en la auditoría. Antes de confirmar, el preventista ve la fecha y la ventana que puede comprometer según RNG-15, el stock reservable, la capacidad de despacho de la ruta y las franjas del cliente (LafroX, 2026c, Anexos 3.A y 3.B).
 
-- **Sincronización diferida.** Al recuperar cobertura, el dispositivo envía las escrituras acumuladas por API Gateway. El Gateway aplica los controles de entrada; el servicio de negocio valida, deduplica, procesa y confirma cada evento. El dispositivo conserva los eventos que aún no tienen confirmación.
+- **Sincronización diferida.** Al recuperar cobertura, el dispositivo envía las escrituras acumuladas por API Gateway. El Gateway aplica los controles de entrada. El servicio de negocio valida, deduplica, procesa y confirma cada evento. El dispositivo conserva los eventos que aún no tienen confirmación.
 
-- **Pedido de autoatención (RT-16.30 y RT-17.01 del caso; Bases Técnicas del caso, cap. 15, p. 27).** M3 recibe también el pedido que el cliente arma en el Portal de Clientes, incluido el armado sin señal en su modo instalable, con la misma deduplicación por UUID y la misma validación de stock y crédito. M3 es el único dueño del pedido en sus tres canales: preventista, autoatención y canal moderno (M11).
+- **Pedido de autoatención (RT-16.30 y RT-17.01 del caso, Bases Técnicas del caso, cap. 15, p. 27).** M3 recibe también el pedido que el cliente arma en el Portal de Clientes, incluido el armado sin señal en su modo instalable, con la misma deduplicación por UUID y la misma validación de stock y crédito. M3 es el único dueño del pedido en sus tres canales: preventista, autoatención y canal moderno (M11).
 
-La prueba de aceptación de terreno considera un turno de 14 horas sin cobertura. El caso exige que un dispositivo de reparto sincronice esa jornada en un máximo de 10 minutos; para el CD, fija hasta 2 horas tras un corte de 24 horas (RT-03.13 del caso; Bases Técnicas del caso, cap. 15, p. 26). Estos límites se verifican con la volumetría correspondiente y reconciliación determinista (RT-03.12; Bases Técnicas Transversales, cap. 3, p. 9), sin extender automáticamente el umbral del repartidor a cualquier carga de preventa.
+La prueba de aceptación de terreno considera un turno de 14 horas sin cobertura. El caso exige que un dispositivo de reparto sincronice esa jornada en un máximo de 10 minutos. Para el CD, fija hasta 2 horas tras un corte de 24 horas (RT-03.13 del caso, Bases Técnicas del caso, cap. 15, p. 26). Estos límites se verifican con la volumetría correspondiente y reconciliación determinista (RT-03.12, Bases Técnicas Transversales, cap. 3, p. 9), sin extender automáticamente el umbral del repartidor a cualquier carga de preventa.
 
 ##### Reserva comercial y retención física por sitio
 
@@ -940,11 +940,11 @@ El módulo de planificación de rutas automatiza un proceso que actualmente depe
 
 La propuesta automática no convierte las excepciones del planificador en reglas opacas: M4 conserva restricción, motivo de ajuste y autor de la ruta aprobada para transferir conocimiento y comprobar el criterio de aceptación.
 
-Al confirmar la ruta, M4 envía por INT-11 un aviso al contacto del cliente, al teléfono registrado en su ficha, con la hora estimada de llegada y una ventana de 30 minutos. El aviso sale antes de que parta el camión. La aceptación comprueba que fue recibido antes de la partida; el estado «enviado» no basta (RF-04.06; LafroX, 2026c, Anexo 3.A).
+Al confirmar la ruta, M4 envía por INT-11 un aviso al contacto del cliente, al teléfono registrado en su ficha, con la hora estimada de llegada y una ventana de 30 minutos. El aviso sale antes de que parta el camión. La aceptación comprueba que fue recibido antes de la partida, el estado «enviado» no basta (RF-04.06, LafroX, 2026c, Anexo 3.A).
 
-El planificador autorizado mantiene las franjas de recepción de cada cliente activo en su ficha maestra, como parámetros versionados de tipo intervalo asociados al cliente. M4 las aplica al crear o recalcular las paradas y no asigna una hora estimada fuera de una franja vigente (RF-04.07; LafroX, 2026c, Anexo 3.A).
+El planificador autorizado mantiene las franjas de recepción de cada cliente activo en su ficha maestra, como parámetros versionados de tipo intervalo asociados al cliente. M4 las aplica al crear o recalcular las paradas y no asigna una hora estimada fuera de una franja vigente (RF-04.07, LafroX, 2026c, Anexo 3.A).
 
-El planificador puede modificar la secuencia y reasignar pedidos entre vehículos; M4 recalcula de inmediato la carga y las horas estimadas (RF-04.02). M4 asigna los pedidos refrigerados o congelados solo a vehículos con equipo de frío y rechaza su asignación a un camión seco (RF-04.05). En el canal moderno, M4 planifica la llegada dentro de la ventana de 30 minutos comprometida y M6 registra si la entrega la cumplió, separado del control de la ventana de despacho de 05:30 a 07:00 (RF-12.10 y RF-12.11; LafroX, 2026c, Anexo 3.A).
+El planificador puede modificar la secuencia y reasignar pedidos entre vehículos. M4 recalcula de inmediato la carga y las horas estimadas (RF-04.02). M4 asigna los pedidos refrigerados o congelados solo a vehículos con equipo de frío y rechaza su asignación a un camión seco (RF-04.05). En el canal moderno, M4 planifica la llegada dentro de la ventana de 30 minutos comprometida y M6 registra si la entrega la cumplió, separado del control de la ventana de despacho de 05:30 a 07:00 (RF-12.10 y RF-12.11, LafroX, 2026c, Anexo 3.A).
 
 #### 4.1.4.6 Módulo M7 Cobranza y rendición
 
@@ -952,63 +952,63 @@ El módulo de rendición y cobro permite investigar las causas de las diferencia
 
 - **Rendición digital individual (RF-07.01 a RF-07.03).** M7 calcula para cada camión y turno el monto esperado de rendición con las entregas al contado confirmadas y los cobros registrados en ruta. Cada conductor rinde sus cobros del turno de forma digital contra ese monto, con causales de descuadre clasificadas y trazables. La rendición no se cierra mientras quede un saldo sin una causal tipificada (RF-07.03).
 
-- **Cobranza en ruta (RF-07.06 y RF-07.10).** El conductor registra el cobro y conserva su evidencia para la rendición. En pagos con POS móvil, la captura local de una operación no se presenta como autorización bancaria. El tratamiento sin cobertura depende de las capacidades y condiciones acordadas con la pasarela; se concilia al reconectar sin generar cargos duplicados. En pagos con tarjeta, la aplicación recibe por Bluetooth el código de autorización del terminal PAX y M7 lo concilia con la entrega en la rendición diaria, sin digitación (RF-07.06). En una entrega al contado, el conductor puede registrar un abono parcial: la aplicación emite un comprobante digital y el saldo insoluto pasa a la cuenta corriente del cliente en el ERP por la ACL (RF-07.10).
+- **Cobranza en ruta (RF-07.06 y RF-07.10).** El conductor registra el cobro y conserva su evidencia para la rendición. En pagos con POS móvil, la captura local de una operación no se presenta como autorización bancaria. El tratamiento sin cobertura depende de las capacidades y condiciones acordadas con la pasarela. Se concilia al reconectar sin generar cargos duplicados. En pagos con tarjeta, la aplicación recibe por Bluetooth el código de autorización del terminal PAX y M7 lo concilia con la entrega en la rendición diaria, sin digitación (RF-07.06). En una entrega al contado, el conductor puede registrar un abono parcial: la aplicación emite un comprobante digital y el saldo insoluto pasa a la cuenta corriente del cliente en el ERP por la ACL (RF-07.10).
 
 - **Pagos informados en el portal (RF-07.08).** Desde la Etapa 2, un pago que el cliente informa en el Portal de Clientes queda «En revisión» en una bandeja donde el cajero de Tesorería verifica el comprobante bancario y autoriza su traspaso estructurado al ERP.
 
-- **Interfaz con ERP (RF-07.09 e INT-06).** La rendición aprobada se publica en la cola FIFO de solicitudes al ERP; dos procesos del servicio de integración con el ERP en VM-04 de Talca consumen esa cola por conexión saliente y la cola RabbitMQ local, y entregan a la **capa anticorrupción (ACL)** de la misma VM; la ACL integra con el ERP. Nunca hay escritura directa al ERP. El ERP permanece como única fuente de verdad tributaria y único emisor de DTE.
+- **Interfaz con ERP (RF-07.09 e INT-06).** La rendición aprobada se publica en la cola FIFO de solicitudes al ERP. Dos procesos del servicio de integración con el ERP en VM-04 de Talca consumen esa cola por conexión saliente y la cola RabbitMQ local, y entregan a la **capa anticorrupción (ACL)** de la misma VM, la ACL integra con el ERP. Nunca hay escritura directa al ERP. El ERP permanece como única fuente de verdad tributaria y único emisor de DTE.
 
 - **Costo de servir (RF-11).** El módulo alimenta el tablero de BI con el costo real por entrega, incluyendo kilometraje real (telemetría M12), tiempo de servicio y deducciones por devoluciones.
 
-#### 4.1.4.7 Módulo M10 Analítica
+#### 4.1.4.7 Módulo M10 BI Gerencia
 
-El módulo de inteligencia de negocio consolida la información operativa en tableros gerenciales de autoservicio (RT-05.27; Bases Técnicas Transversales, cap. 5, p. 13) con modelo semántico en el mismo lenguaje del negocio: OTIF, fill rate, costo por entrega, ocupación de flota y segmentación por canal/cliente.
+El módulo de inteligencia de negocio consolida la información operativa en tableros gerenciales de autoservicio (RT-05.27, Bases Técnicas Transversales, cap. 5, p. 13) con modelo semántico en el mismo lenguaje del negocio: OTIF, fill rate, costo por entrega, ocupación de flota y segmentación por canal/cliente.
 
-Los tableros se alimentan del almacén analítico (Redshift Serverless) con latencias comprometidas: operación del día ≤ 5 minutos, cierre comercial ≤ 2 horas, gestión ≤ 4 horas (RT-05.29; Bases Técnicas Transversales, cap. 5, p. 13). El modelo dimensional se estructura en hechos (ventas, entregas, stock, costo de servir) y dimensiones (cliente, SKU, tiempo, ruta, canal), con consulta detallada hasta línea de pedido y lote para trazabilidad sanitaria completa.
+Los tableros se alimentan del almacén analítico (Redshift Serverless) con latencias comprometidas: operación del día ≤ 5 minutos, cierre comercial ≤ 2 horas, gestión ≤ 4 horas (RT-05.29, Bases Técnicas Transversales, cap. 5, p. 13). El modelo dimensional se estructura en hechos (ventas, entregas, stock, costo de servir) y dimensiones (cliente, SKU, tiempo, ruta, canal), con consulta detallada hasta línea de pedido y lote para trazabilidad sanitaria completa.
 
-Los informes históricos y gerenciales de M10 son de solo lectura sobre el almacén analítico, sin consultas BI directas al transaccional en vivo. Los indicadores operativos actuales que 4.2 y T-11 obtienen por la API de negocio conservan la autorización y los contratos de sus módulos; no constituyen acceso directo de M10 a la base ni sustituyen el modelo analítico. Los informes se programan (diarios, semanales, mensuales) y se exportan de forma asíncrona con firma y suma de comprobación (RT-05.28; Bases Técnicas Transversales, cap. 5, p. 13).
+Los informes históricos y gerenciales de M10 son de solo lectura sobre el almacén analítico, sin consultas BI directas al transaccional en vivo. Los indicadores operativos actuales que 4.2 y T-11 obtienen por la API de negocio conservan la autorización y los contratos de sus módulos. No constituyen acceso directo de M10 a la base ni sustituyen el modelo analítico. Los informes se programan (diarios, semanales, mensuales) y se exportan de forma asíncrona con firma y suma de comprobación (RT-05.28, Bases Técnicas Transversales, cap. 5, p. 13).
 
 El módulo prioriza la calidad de la captura y la disponibilidad de indicadores verificables, dado que el caso informa un 41 % de recepciones sin lote registrado.
 
-Comercial y Finanzas consultan indicadores sobre el mismo modelo semántico, pero solo Tesorería, del área de Finanzas, aprueba las diferencias de rendición; M10 no recibe permiso para modificar cobros.
+Comercial y Finanzas consultan indicadores sobre el mismo modelo semántico, pero solo Tesorería, del área de Finanzas, aprueba las diferencias de rendición. M10 no recibe permiso para modificar cobros.
 
-Las exportaciones de gran volumen se ejecutan como trabajos asíncronos, de modo que el usuario puede seguir trabajando. Al terminar, INT-11 envía un aviso con un enlace de descarga autenticado, sujeto a los permisos y al plazo de vencimiento del archivo (RNF-17.02; LafroX, 2026c, Anexo 3.B).
+Las exportaciones de gran volumen se ejecutan como trabajos asíncronos, de modo que el usuario puede seguir trabajando. Al terminar, INT-11 envía un aviso con un enlace de descarga autenticado, sujeto a los permisos y al plazo de vencimiento del archivo (RNF-17.02, LafroX, 2026c, Anexo 3.B).
 
-Desde la Etapa 2, M10 envía por correo los informes ejecutivos en PDF y XLSX, cada lunes a las 06:00 y el día 2 de cada mes, con OTIF, fill rate, merma por vencimiento y costo de servir por zona y canal (RF-11.01). El costo de servir de cada entrega y cliente suma los costos directos de transporte —combustible según el kilometraje GPS, peajes de la ruta y tiempos de conducción y de descarga— y prorratea los costos indirectos de bodega y administración (RF-11.02). Con ese costo y el margen comercial, M10 clasifica cada mes a los clientes en rentables, no rentables y estratégicos, y sugiere ajustes de frecuencia de visita o de compra mínima (RF-11.08). El fill rate y el índice de pedido perfecto se calculan contra el pedido original con las entregas confirmadas en el terminal de reparto, desglosados por causa (RF-11.04; LafroX, 2026c, Anexo 3.A).
+Desde la Etapa 2, M10 envía por correo los informes ejecutivos en PDF y XLSX, cada lunes a las 06:00 y el día 2 de cada mes, con OTIF, fill rate, merma por vencimiento y costo de servir por zona y canal (RF-11.01). El costo de servir de cada entrega y cliente suma los costos directos de transporte —combustible según el kilometraje GPS, peajes de la ruta y tiempos de conducción y de descarga— y prorratea los costos indirectos de bodega y administración (RF-11.02). Con ese costo y el margen comercial, M10 clasifica cada mes a los clientes en rentables, no rentables y estratégicos, y sugiere ajustes de frecuencia de visita o de compra mínima (RF-11.08). El fill rate y el índice de pedido perfecto se calculan contra el pedido original con las entregas confirmadas en el terminal de reparto, desglosados por causa (RF-11.04, LafroX, 2026c, Anexo 3.A).
 
 #### 4.1.4.8 Recepción, preparación, reparto y servicios asociados
 
-**M1 Recepción** compara lo recibido con la orden de compra, identifica GTIN, lote, vencimiento y SSCC, y registra cuarentena cuando falta evidencia o hay una diferencia. Publica `RecepcionConfirmada` para que M2 ubique el stock; no lo reserva para venta. La información del ERP entra y sale exclusivamente por la capa anticorrupción.
+**M1 Recepción** compara lo recibido con la orden de compra, identifica GTIN, lote, vencimiento y SSCC, y registra cuarentena cuando falta evidencia o hay una diferencia. Publica `RecepcionConfirmada` para que M2 ubique el stock. No lo reserva para venta. La información del ERP entra y sale exclusivamente por la capa anticorrupción.
 
-M1 emite una alerta por cada discrepancia de SKU o cantidad frente a la orden de compra, sin impedir el cierre de la recepción, y deja el comparativo disponible para Calidad (RF-01.01). El lote se lee del AI 10 o se digita y, si falta en un producto con trazabilidad obligatoria, la línea no avanza; la fecha de vencimiento se captura y se muestra en formato DD/MM/AAAA (RF-01.02 y RF-01.03). Si el código GS1 es inválido o el producto no está registrado, M1 lo informa y habilita el ingreso manual, que queda auditado (RF-01.06). El registro de cada ítem responde en no más de 2 segundos desde la confirmación del escaneo (RNF-01.01). Una no conformidad se registra con su tipo, elegido de una lista parametrizada por el CLIENTE, el SKU, el lote, la cantidad afectada y al menos una fotografía capturada con el terminal. Al confirmarla, M2 pasa a cuarentena esa cantidad, que queda bloqueada para la preparación, y M1 alerta en la aplicación al perfil de Calidad dentro de cinco minutos (RF-01.04 y RF-01.05; LafroX, 2026c, Anexos 3.A y 3.B).
+M1 emite una alerta por cada discrepancia de SKU o cantidad frente a la orden de compra, sin impedir el cierre de la recepción, y deja el comparativo disponible para Calidad (RF-01.01). El lote se lee del AI 10 o se digita y, si falta en un producto con trazabilidad obligatoria, la línea no avanza. La fecha de vencimiento se captura y se muestra en formato DD/MM/AAAA (RF-01.02 y RF-01.03). Si el código GS1 es inválido o el producto no está registrado, M1 lo informa y habilita el ingreso manual, que queda auditado (RF-01.06). El registro de cada ítem responde en no más de 2 segundos desde la confirmación del escaneo (RNF-01.01). Una no conformidad se registra con su tipo, elegido de una lista parametrizada por el CLIENTE, el SKU, el lote, la cantidad afectada y al menos una fotografía capturada con el terminal. Al confirmarla, M2 pasa a cuarentena esa cantidad, que queda bloqueada para la preparación, y M1 alerta en la aplicación al perfil de Calidad dentro de cinco minutos (RF-01.04 y RF-01.05, LafroX, 2026c, Anexos 3.A y 3.B).
 
-El proveedor consulta el estado de su orden y de la recepción; no accede a las reglas internas de inventario ni confirma unilateralmente un lote.
+El proveedor consulta el estado de su orden y de la recepción, no accede a las reglas internas de inventario ni confirma unilateralmente un lote.
 
 **M5 Preparación** toma pedidos confirmados y ubicaciones de M2, aplica FEFO y genera misiones verificables con lectura GS1. Conserva localmente cada lectura y la causal de faltante. Una carga no se libera por el mero hecho de estar preparada: la guía se solicita al ERP por el servicio de integración con el ERP y la ACL al cerrar la carga nocturna. Un cambio de carga invalida la guía, exige una nueva y mantiene bloqueada la salida hasta disponer del documento válido.
 
-Si la cantidad recogida es menor que la solicitada, M5 exige elegir una causa de una lista parametrizada por el CLIENTE y no permite confirmar la línea hasta hacerlo. La causa se guarda con la lectura local y en la auditoría de la confirmación (RF-05.03; LafroX, 2026c, Anexo 3.A).
+Si la cantidad recogida es menor que la solicitada, M5 exige elegir una causa de una lista parametrizada por el CLIENTE y no permite confirmar la línea hasta hacerlo. La causa se guarda con la lectura local y en la auditoría de la confirmación (RF-05.03, LafroX, 2026c, Anexo 3.A).
 
-La jefatura de bodega genera las misiones manualmente o deja programada su generación al cierre de pedidos del turno, agrupadas por pedido o por ruta (RF-05.01). Cada línea se confirma escaneando el código GS1, que valida el SKU y captura el lote tomado; el ingreso manual del código se admite solo como contingencia registrada en la auditoría (RF-05.02). Si se escanea un lote de vencimiento posterior estando disponible el lote FEFO, la confirmación se bloquea, y tomar otro lote exige registrar el motivo (RF-05.05). La carga sigue el orden inverso de la ruta: el cargador escanea el SSCC de cada bulto, la aplicación alerta si sale de secuencia y no confirma la carga completa mientras falte un bulto asignado, caso en que avisa a la jefatura de bodega (RF-05.07; LafroX, 2026c, Anexo 3.A).
+La jefatura de bodega genera las misiones manualmente o deja programada su generación al cierre de pedidos del turno, agrupadas por pedido o por ruta (RF-05.01). Cada línea se confirma escaneando el código GS1, que valida el SKU y captura el lote tomado. El ingreso manual del código se admite solo como contingencia registrada en la auditoría (RF-05.02). Si se escanea un lote de vencimiento posterior estando disponible el lote FEFO, la confirmación se bloquea, y tomar otro lote exige registrar el motivo (RF-05.05). La carga sigue el orden inverso de la ruta: el cargador escanea el SSCC de cada bulto, la aplicación alerta si sale de secuencia y no confirma la carga completa mientras falte un bulto asignado, caso en que avisa a la jefatura de bodega (RF-05.07, LafroX, 2026c, Anexo 3.A).
 
-El preparador confirma cada lectura en el servicio local; la pérdida del enlace externo no borra la misión ni convierte una carga preparada en una salida autorizada.
+El preparador confirma cada lectura en el servicio local, la pérdida del enlace externo no borra la misión ni convierte una carga preparada en una salida autorizada.
 
-**M6 Reparto** recibe de M4 la ruta y de M5 la carga liberada. El conductor registra receptor, cantidad recibida, rechazos y POD en el dispositivo aun sin señal. M6 no liquida cobros ni emite documentos tributarios; publica el resultado para M7 y M8 y mantiene visible el estado de sincronización por confirmar. El conductor confirma la recepción por línea o marca en bloque toda la guía (RF-06.01). Un rechazo por sospecha de ruptura de la cadena de frío queda asociado al termógrafo del camión y al tramo de la ruta en que ocurrió (RF-09.07; LafroX, 2026c, Anexo 3.A).
+**M6 Reparto** recibe de M4 la ruta y de M5 la carga liberada. El conductor registra receptor, cantidad recibida, rechazos y POD en el dispositivo aun sin señal. M6 no liquida cobros ni emite documentos tributarios. Publica el resultado para M7 y M8 y mantiene visible el estado de sincronización por confirmar. El conductor confirma la recepción por línea o marca en bloque toda la guía (RF-06.01). Un rechazo por sospecha de ruptura de la cadena de frío queda asociado al termógrafo del camión y al tramo de la ruta en que ocurrió (RF-09.07, LafroX, 2026c, Anexo 3.A).
 
 El conductor propio y el externo utilizan el mismo contrato de entrega con identidades personales distintas. La evidencia queda ligada al turno y al receptor, sin exigir que el almacén instale una aplicación.
 
-**M8 Devoluciones y envases** separa la mercadería que regresa de los activos retornables. Cada devolución conserva cantidad, lote, causal y vínculo con la entrega; el ajuste tributario se solicita al ERP por la ACL. Los canastillos y pallets se controlan por saldo de cliente y movimientos firmados, sujetos a conciliación en la rendición.
+**M8 Devoluciones y envases** separa la mercadería que regresa de los activos retornables. Cada devolución conserva cantidad, lote, causal y vínculo con la entrega. El ajuste tributario se solicita al ERP por la ACL. Los canastillos y pallets se controlan por saldo de cliente y movimientos firmados, sujetos a conciliación en la rendición.
 
-Al registrar la entrega, el conductor captura en M8 la cantidad, el tipo y el estado físico de los canastillos y pallets devueltos. El estado declarado queda en la evidencia del movimiento de envases, junto con la cantidad y el tipo (RF-06.09; LafroX, 2026c, Anexo 3.A).
+Al registrar la entrega, el conductor captura en M8 la cantidad, el tipo y el estado físico de los canastillos y pallets devueltos. El estado declarado queda en la evidencia del movimiento de envases, junto con la cantidad y el tipo (RF-06.09, LafroX, 2026c, Anexo 3.A).
 
-El conductor registra la devolución con SKU, cantidad y motivo —daño, vencimiento, producto no pedido o error— aun sin señal (RF-08.01). En el andén se elige su destino final —reingreso a stock, venta con descuento, devolución al proveedor o destrucción—, con usuario y fecha, y la transacción se envía al ERP por la ACL; el registro de cada ítem, con su escaneo y destino, toma no más de 30 segundos (RF-08.02 y RNF-08.01). M8 alerta al preventista dentro de las 24 horas siguientes a que el saldo de envases de un cliente supere el umbral que fija el administrador (RF-08.04), y M10 informa a diario la pérdida de envases por cliente, tipo y zona (RF-08.06; LafroX, 2026c, Anexos 3.A y 3.B).
+El conductor registra la devolución con SKU, cantidad y motivo —daño, vencimiento, producto no pedido o error— aun sin señal (RF-08.01). En el andén se elige su destino final —reingreso a stock, venta con descuento, devolución al proveedor o destrucción—, con usuario y fecha, y la transacción se envía al ERP por la ACL. El registro de cada ítem, con su escaneo y destino, toma no más de 30 segundos (RF-08.02 y RNF-08.01). M8 alerta al preventista dentro de las 24 horas siguientes a que el saldo de envases de un cliente supere el umbral que fija el administrador (RF-08.04), y M10 informa a diario la pérdida de envases por cliente, tipo y zona (RF-08.06, LafroX, 2026c, Anexos 3.A y 3.B).
 
-**M11 Canal moderno** recibe pedidos mediante contratos EDI configurados por cadena, traduce códigos a un vocabulario común y envía el pedido normalizado a M3. Las diferencias de formato y equivalencias van a una bandeja de excepciones; M11 no se convierte en un segundo dueño del pedido ni del inventario. M11 responde a la cadena con la confirmación o el rechazo del pedido, con la causa cuando no pueda aceptarse completo, y conserva el historial de estados de cada pedido electrónico: recepción, validación, confirmación, preparación, despacho, ASN y prueba de entrega (RF-12.07 y RF-12.08; LafroX, 2026c, Anexo 3.A).
+**M11 EDI Canal Moderno** recibe pedidos mediante contratos EDI configurados por cadena, traduce códigos a un vocabulario común y envía el pedido normalizado a M3. Las diferencias de formato y equivalencias van a una bandeja de excepciones. M11 no se convierte en un segundo dueño del pedido ni del inventario. M11 responde a la cadena con la confirmación o el rechazo del pedido, con la causa cuando no pueda aceptarse completo, y conserva el historial de estados de cada pedido electrónico: recepción, validación, confirmación, preparación, despacho, ASN y prueba de entrega (RF-12.07 y RF-12.08, LafroX, 2026c, Anexo 3.A).
 
-La cadena intercambia pedidos por el hub EDI; desde la Etapa 2, el representante del transportista consulta sus rutas y confirma conductor y vehículo en su portal. Ninguno de esos canales reemplaza el registro personal del conductor que ejecuta M6.
+La cadena intercambia pedidos por el hub EDI. Desde la Etapa 2, el representante del transportista consulta sus rutas y confirma conductor y vehículo en su portal. Ninguno de esos canales reemplaza el registro personal del conductor que ejecuta M6.
 
 **M12 Telemetría** consume la fuente de posicionamiento existente de los vehículos propios, compara ruta planificada con recorrido y entrega kilómetros a M10 para costo de servir. No incorpora cámaras de cabina ni usa la posición para controlar la jornada laboral. Su falla degrada la visibilidad de ruta, no la captura de entregas de M6.
 
-M12 muestra en un mapa la ruta planificada y el recorrido real de cada camión propio (RF-14.02). Cuando la posición se aleja más de 3 km de la ruta planificada, publica el evento de desvío y alerta al centro de control (RF-14.03). El planificador administra geocercas de los sitios y de las zonas de clientes, y M12 registra la entrada y la salida de cada camión para medir sus tiempos de llegada y salida (RF-14.06; LafroX, 2026c, Anexo 3.A).
+M12 muestra en un mapa la ruta planificada y el recorrido real de cada camión propio (RF-14.02). Cuando la posición se aleja más de 3 km de la ruta planificada, publica el evento de desvío y alerta al centro de control (RF-14.03). El planificador administra geocercas de los sitios y de las zonas de clientes, y M12 registra la entrada y la salida de cada camión para medir sus tiempos de llegada y salida (RF-14.06, LafroX, 2026c, Anexo 3.A).
 
 ### 4.1.5 Modelo de datos conceptual
 
@@ -1036,35 +1036,35 @@ Las entidades principales son:
 
 - **Sensor / registro térmico.** Dispositivo, lote o posición, temperatura y excursión térmica.
 
-Los eventos usan verbos en pasado y son la base de los esquemas AsyncAPI. Toda escritura offline es idempotente por UUID (RT-02.06; Bases Técnicas Transversales, cap. 2, p. 7).
+Los eventos usan verbos en pasado y son la base de los esquemas AsyncAPI. Toda escritura offline es idempotente por UUID (RT-02.06, Bases Técnicas Transversales, cap. 2, p. 7).
 
-El almacenamiento se distribuye en quince dominios lógicos: BD_INVENTARIO, BD_PREVENTA, BD_RUTAS (PostGIS), BD_PREPARACION, BD_REPARTO, BD_COBRANZA_FINANZAS, BD_MAESTROS_CONF, BD_GOBIERNO_ACCESO, BD_CALIDAD_TRAZABILIDAD, BD_TELEMETRIA, BD_EDI_CANALMODERNO, BD_BI_GERENCIA, BD_MAILS_NOTIF, REDIS_SESIONES_CACHE y S3_DOCS. El dominio de telemetría conserva la ingesta raw en DynamoDB y su serie consolidada en S3 Parquet y Redshift, procesada con Glue. Esta separación incluye bases transaccionales, almacenes analíticos, caché y objetos; no representa quince servidores físicos ni quince motores de base de datos independientes.
+El almacenamiento se distribuye en quince dominios lógicos: BD_INVENTARIO, BD_PREVENTA, BD_RUTAS (PostGIS), BD_PREPARACION, BD_REPARTO, BD_COBRANZA_FINANZAS, BD_MAESTROS_CONF, BD_GOBIERNO_ACCESO, BD_CALIDAD_TRAZABILIDAD, BD_TELEMETRIA, BD_EDI_CANALMODERNO, BD_BI_GERENCIA, BD_MAILS_NOTIF, REDIS_SESIONES_CACHE y S3_DOCS. El dominio de telemetría conserva la ingesta raw en DynamoDB y su serie consolidada en S3 Parquet y Redshift, procesada con Glue. Esta separación incluye bases transaccionales, almacenes analíticos, caché y objetos. No representa quince servidores físicos ni quince motores de base de datos independientes.
 
-La Figura [13](LAFROX-Subdocumento4.md#fig:arql-18) relaciona las entidades principales con los módulos responsables y sus intercambios. Esta vista de dominio permite seguir la confirmación del pedido, la custodia del lote y la entrega sin duplicar el detalle de atributos, claves y cardinalidades del Subdocumento 5. Ese detalle se desarrolla en 5.1 y sus anexos; la separación de autoridad entre reserva comercial y retención física se explica en 5.2. La lectura conjunta permite responder de qué lote provino una unidad entregada y a qué clientes llegó un lote que debe retirarse.
+La Figura [13](LAFROX-Subdocumento4.md#fig:arql-18) relaciona las entidades principales con los módulos responsables y sus intercambios. Esta vista de dominio permite seguir la confirmación del pedido, la custodia del lote y la entrega sin duplicar el detalle de atributos, claves y cardinalidades del Subdocumento 5. Ese detalle se desarrolla en 5.1 y sus anexos. La separación de autoridad entre reserva comercial y retención física se explica en 5.2. La lectura conjunta permite responder de qué lote provino una unidad entregada y a qué clientes llegó un lote que debe retirarse.
 
 **Figura 13 — Dominio lógico: entidades, módulos responsables y eventos**
 
-[Abrir gráfico: Dominio lógico: entidades, módulos responsables y eventos](https://raw.githubusercontent.com/PatricioH315/LafroX/c4d1230c9246f1a50933a8dc8a9a07b5d13a10be/04/figuras/logica/complementarias/ARQL-18_Dominio_responsabilidades.pdf)
+[Abrir gráfico: Dominio lógico: entidades, módulos responsables y eventos](https://raw.githubusercontent.com/PatricioH315/LafroX/ae4fa5a96719bad39267627a50eda8c822a72f10/04/figuras/logica/complementarias/ARQL-18_Dominio_responsabilidades.pdf)
 
 <a id="fig:arql-18"></a>
 
 Fuente: elaboración propia de LafroX.
 
-M3 administra el pedido y sus líneas utilizando la referencia autorizada del cliente del ERP; M2 administra reserva, retención y movimientos por sitio; M5 enlaza misión y asignación a lote con la carga; M9 gobierna el estado sanitario, y M6 registra la entrega y su evidencia. El ERP conserva la emisión tributaria y los maestros autorizados. Los contratos del Anexo 4-A asignan un productor único a cada evento: M3 publica `PedidoConfirmado` y M6, `EntregaRegistrada`; compartir el proceso Laravel no permite que otro módulo escriba sus datos privados.
+M3 administra el pedido y sus líneas utilizando la referencia autorizada del cliente del ERP, M2 administra reserva, retención y movimientos por sitio. M5 enlaza misión y asignación a lote con la carga. M9 gobierna el estado sanitario, y M6 registra la entrega y su evidencia. El ERP conserva la emisión tributaria y los maestros autorizados. Los contratos del Anexo 4-A asignan un productor único a cada evento: M3 publica `PedidoConfirmado` y M6, `EntregaRegistrada`. Compartir el proceso Laravel no permite que otro módulo escriba sus datos privados.
 
-La línea de pedido se asigna a un lote identificado por GTIN y lote del proveedor; los movimientos con SSCC conservan la cadena de custodia hasta la entrega. La entrega vincula la evidencia de recepción y el folio de la guía que el ERP emitió antes del traslado. Un pedido aún puede no tener entrega, y una entrega puede registrar más de una evidencia o un rechazo parcial; los estados conservan el identificador de origen y las cardinalidades se verifican en el modelo del Subdocumento 5. Las flechas de esta vista representan colaboración y contratos; no son claves foráneas ni conexiones directas con bases de datos. El POD no sustituye al DTE ni al acuse del receptor.
+La línea de pedido se asigna a un lote identificado por GTIN y lote del proveedor. Los movimientos con SSCC conservan la cadena de custodia hasta la entrega. La entrega vincula la evidencia de recepción y el folio de la guía que el ERP emitió antes del traslado. Un pedido aún puede no tener entrega, y una entrega puede registrar más de una evidencia o un rechazo parcial. Los estados conservan el identificador de origen y las cardinalidades se verifican en el modelo del Subdocumento 5. Las flechas de esta vista representan colaboración y contratos. No son claves foráneas ni conexiones directas con bases de datos. El POD no sustituye al DTE ni al acuse del receptor.
 
 ### 4.1.6 Catálogo de interfaces
 
 <a id="sec:catalogo-interfaces"></a>
 
-El catálogo identifica quince integraciones por número estable, dueño y superficie contractual. Los anexos 4-G y 4-H reúnen para cada una el modo, volumen esperado, ventana requerida de la contraparte y conducta ante lentitud o error (RT-05.21; Bases Técnicas Transversales, cap. 5, p. 13). Se distingue una ventana requerida por el diseño de un SLA efectivamente acordado con un tercero. El contrato ejecutable OpenAPI o AsyncAPI debe fijar operación o evento, esquema, versión, autenticación, errores y plazo de retirada. La publicación de una ruta genérica por sí sola no equivale a entregar ese contrato.
+El catálogo identifica quince integraciones por número estable, dueño y superficie contractual. Los anexos 4-G y 4-H reúnen para cada una el modo, volumen esperado, ventana requerida de la contraparte y conducta ante lentitud o error (RT-05.21, Bases Técnicas Transversales, cap. 5, p. 13). Se distingue una ventana requerida por el diseño de un SLA efectivamente acordado con un tercero. El contrato ejecutable OpenAPI o AsyncAPI debe fijar operación o evento, esquema, versión, autenticación, errores y plazo de retirada. La publicación de una ruta genérica por sí sola no equivale a entregar ese contrato.
 
 #### 4.1.6.1 Integraciones internas
 
 Las ocho interfaces internas intercambian pedidos, entregas, inventario, identidad y telemetría entre dispositivos, sitios y nube. El Anexo 4-G permite reconocer qué módulo acepta cada mensaje y cómo se conserva cuando falla el enlace.
 
-INT-01 y INT-02 conservan el UUID de cada operación hasta obtener acuse durable; INT-03 y INT-04 ordenan eventos por sitio o agregado. INT-12 replica únicamente el WMS de Talca a un esquema de lectura separado de las tablas escritas por los consumidores de eventos. La extracción continua por fibra, LTE y satélite sostiene un desfase menor de 15 minutos; AL-DR-01 del Anexo 4-M verifica la pérdida del sitio y 4.3.2 justifica el límite residual.
+INT-01 y INT-02 conservan el UUID de cada operación hasta obtener acuse durable. INT-03 y INT-04 ordenan eventos por sitio o agregado. INT-12 replica únicamente el WMS de Talca a un esquema de lectura separado de las tablas escritas por los consumidores de eventos. La extracción continua por fibra, LTE y satélite sostiene un desfase menor de 15 minutos. AL-DR-01 del Anexo 4-M verifica la pérdida del sitio y 4.3.2 justifica el límite residual.
 
 #### 4.1.6.2 Integraciones externas
 
@@ -1072,37 +1072,37 @@ Las siete interfaces con terceros se encapsulan para que un cambio de proveedor 
 
 INT-06 traspasa la sugerencia de reposición aprobada de M2 al módulo de compras del ERP mediante la ACL (RF-10.03). El ERP conserva la emisión de las órdenes de compra (Subdocumento 3, D-05).
 
-La integración tributaria INT-07 pasa por el ERP, único emisor de DTE; M5 no llama al SII. La falla de INT-09 impide afirmar que un cargo quedó aprobado. Para INT-08 se preservan el mensaje original, su equivalencia y la respuesta enviada a cada cadena.
+La integración tributaria INT-07 pasa por el ERP, único emisor de DTE. M5 no llama al SII. La falla de INT-09 impide afirmar que un cargo quedó aprobado. Para INT-08 se preservan el mensaje original, su equivalencia y la respuesta enviada a cada cadena.
 
-INT-11 distribuye avisos por correo electrónico, SMS/WhatsApp y portal, separando los operacionales o transaccionales de las comunicaciones comerciales o promocionales. Los avisos necesarios para prestar el servicio, como confirmaciones de pedido, ETA e incidencias de entrega, no admiten baja comercial y no incorporan publicidad. Cada mensaje comercial identifica al remitente y su finalidad e incluye una vía expedita de baja: dirección válida y enlace en correo, enlace de suspensión en SMS/WhatsApp y control equivalente en portal. La baja desactiva la preferencia de notificación del cliente para todas las versiones de las plantillas comerciales y queda registrada en la auditoría, con su fecha y canal de origen; el trabajador Laravel consulta esa preferencia inmediatamente antes del envío y descarta también los mensajes comerciales pendientes o reintentados cuando existe una suspensión, que rige desde la solicitud. La aceptación comprueba la baja en cada canal y la continuidad de los avisos necesarios sin contenido promocional (Ley N.º 19.496, 1997, art. 28 B; RT-16.25; Bases Técnicas Transversales, cap. 16, p. 30).
+INT-11 distribuye avisos por correo electrónico, SMS/WhatsApp y portal, separando los operacionales o transaccionales de las comunicaciones comerciales o promocionales. Los avisos necesarios para prestar el servicio, como confirmaciones de pedido, ETA e incidencias de entrega, no admiten baja comercial y no incorporan publicidad. Cada mensaje comercial identifica al remitente y su finalidad e incluye una vía expedita de baja: dirección válida y enlace en correo, enlace de suspensión en SMS/WhatsApp y control equivalente en portal. La baja desactiva la preferencia de notificación del cliente para todas las versiones de las plantillas comerciales y queda registrada en la auditoría, con su fecha y canal de origen. El trabajador Laravel consulta esa preferencia inmediatamente antes del envío y descarta también los mensajes comerciales pendientes o reintentados cuando existe una suspensión, que rige desde la solicitud. La aceptación comprueba la baja en cada canal y la continuidad de los avisos necesarios sin contenido promocional (Ley N.º 19.496, 1997, art. 28 B; RT-16.25, Bases Técnicas Transversales, cap. 16, p. 30).
 
-Desde la consola Angular, el CLIENTE administra el cuerpo y la versión de las plantillas de avisos y comprobantes de pedido y entrega; Laravel combina la plantilla con los datos autorizados de la transacción y permite descargar el comprobante en HTML, formato abierto. Se reutilizan la plantilla de notificación, su cuerpo versionado y los tipos PEDIDO y ENTREGA, sin alterar la emisión tributaria del ERP; el editor admite texto y campos permitidos, sin ejecutar código de la plantilla (LafroX, 2026b, Anexo 5-A; RT-16.19; Bases Técnicas Transversales, cap. 16, p. 30).
+Desde la consola Angular, el CLIENTE administra el cuerpo y la versión de las plantillas de avisos y comprobantes de pedido y entrega. Laravel combina la plantilla con los datos autorizados de la transacción y permite descargar el comprobante en HTML, formato abierto. Se reutilizan la plantilla de notificación, su cuerpo versionado y los tipos PEDIDO y ENTREGA, sin alterar la emisión tributaria del ERP. El editor admite texto y campos permitidos, sin ejecutar código de la plantilla (LafroX, 2026b, Anexo 5-A; RT-16.19, Bases Técnicas Transversales, cap. 16, p. 30).
 
-La consulta documental permite buscar por texto y metadatos en los documentos autorizados, con índices en PostgreSQL. Angular los muestra en una vista previa dentro de la aplicación, sin obligar a descargarlos, y respeta versión, permisos, auditoría, cifrado y verificación de integridad del repositorio en S3 (RT-16.15; Bases Técnicas Transversales, cap. 16, p. 30).
+La consulta documental permite buscar por texto y metadatos en los documentos autorizados, con índices en PostgreSQL. Angular los muestra en una vista previa dentro de la aplicación, sin obligar a descargarlos, y respeta versión, permisos, auditoría, cifrado y verificación de integridad del repositorio en S3 (RT-16.15, Bases Técnicas Transversales, cap. 16, p. 30).
 
-El comprobante generado desde la plantilla puede guardarse en PDF con la función de impresión del navegador, desde la misma vista del documento (RF-17.09; LafroX, 2026c, Anexo 3.A).
+El comprobante generado desde la plantilla puede guardarse en PDF con la función de impresión del navegador, desde la misma vista del documento (RF-17.09, LafroX, 2026c, Anexo 3.A).
 
-Cada usuario configura el canal y la frecuencia de sus notificaciones, que se guardan como atributos de su identidad en Keycloak. El trabajador de notificaciones aplica esas preferencias antes de cada envío. Los avisos que el CLIENTE defina como obligatorios usan siempre su canal establecido, y una preferencia personal nunca reactiva comunicaciones comerciales de las que el cliente se dio de baja (RT-16.22; Bases Técnicas Transversales, cap. 16, p. 30).
+Cada usuario configura el canal y la frecuencia de sus notificaciones, que se guardan como atributos de su identidad en Keycloak. El trabajador de notificaciones aplica esas preferencias antes de cada envío. Los avisos que el CLIENTE defina como obligatorios usan siempre su canal establecido, y una preferencia personal nunca reactiva comunicaciones comerciales de las que el cliente se dio de baja (RT-16.22, Bases Técnicas Transversales, cap. 16, p. 30).
 
-**Volumen de mensajes por integración.** Los anexos 4-G y 4-H declaran las quince interfaces; el Anexo 4-I resume órdenes de magnitud y cálculos. No se usa la suma de eventos, consultas, muestras y reenvíos como número de transacciones únicas: una misma operación cruza varias interfaces. La prueba mide además tamaño de mensajes, objetos y WAL. La telemetría se ingiere y consolida por su flujo específico sin competir con las escrituras críticas de despacho (ADR-04).
+**Volumen de mensajes por integración.** Los anexos 4-G y 4-H declaran las quince interfaces. El Anexo 4-I resume órdenes de magnitud y cálculos. No se usa la suma de eventos, consultas, muestras y reenvíos como número de transacciones únicas: una misma operación cruza varias interfaces. La prueba mide además tamaño de mensajes, objetos y WAL. La telemetría se ingiere y consolida por su flujo específico sin competir con las escrituras críticas de despacho (ADR-04).
 
 ### 4.1.7 Detalle de tecnologías seleccionadas
 
-Las tecnologías se agrupan por responsabilidad; el Anexo 4-P conserva el detalle por capa, versiones, soporte y equivalencias técnicas.
+Las tecnologías se agrupan por responsabilidad. El Anexo 4-P conserva el detalle por capa, versiones, soporte y equivalencias técnicas.
 
-- **Núcleo y datos.** Laravel/PHP organiza M1–M12; PostgreSQL/PostGIS conserva transacciones y consultas espaciales. Aurora realiza la consolidación y recuperación en nube. Las alternativas y sus criterios se desarrollan a continuación y en los ADR.
+- **Núcleo y datos.** Laravel/PHP organiza M1–M12. PostgreSQL/PostGIS conserva transacciones y consultas espaciales. Aurora realiza la consolidación y recuperación en nube. Las alternativas y sus criterios se desarrollan a continuación y en los ADR.
 
-- **Interacción.** Angular, TypeScript y Tailwind implementan portales y consolas; Kotlin/Room y DataWedge integran los periféricos Zebra y la captura móvil sin señal. MDM administra el parque.
+- **Interacción.** Angular, TypeScript y Tailwind implementan portales y consolas. Kotlin/Room y DataWedge integran los periféricos Zebra y la captura móvil sin señal. MDM administra el parque.
 
-- **Acceso e identidad.** CloudFront, WAF, Shield y API Gateway protegen la entrada central; el WMS y el verificador de turnos atienden la entrada local. Keycloak, Secrets Manager y SSM realizan identidad y secretos, con los límites descritos en 4.1.3.7.
+- **Acceso e identidad.** CloudFront, WAF, Shield y API Gateway protegen la entrada central. El WMS y el verificador de turnos atienden la entrada local. Keycloak, Secrets Manager y SSM realizan identidad y secretos, con los límites descritos en 4.1.3.7.
 
-- **Eventos y frío.** RabbitMQ local, SQS FIFO y SNS conservan y distribuyen hechos; la ACL y erp-sync mantienen al ERP como único emisor. IoT Core, DynamoDB y Greengrass sostienen lectura y alarma local; AS2 transporta los intercambios EDI.
+- **Eventos y frío.** RabbitMQ local, SQS FIFO y SNS conservan y distribuyen hechos. La ACL y erp-sync mantienen al ERP como único emisor. IoT Core, DynamoDB y Greengrass sostienen lectura y alarma local. AS2 transporta los intercambios EDI.
 
-- **Analítica y evidencia.** S3, Glue y Redshift separan las consultas históricas del transaccional; S3 protege originales y documentos mediante las retenciones y bloqueos declarados.
+- **Analítica y evidencia.** S3, Glue y Redshift separan las consultas históricas del transaccional. S3 protege originales y documentos mediante las retenciones y bloqueos declarados.
 
-- **Operación y entrega.** OpenTelemetry/ADOT y CloudWatch correlacionan nube y sitios. Fargate, Proxmox y Docker Compose ejecutan el mismo artefacto en sus perfiles; Terraform/Ansible y GitLab CI/CodeBuild controlan infraestructura y promoción. La red y los cinco ambientes se desarrollan en 4.2.4.
+- **Operación y entrega.** OpenTelemetry/ADOT y CloudWatch correlacionan nube y sitios. Fargate, Proxmox y Docker Compose ejecutan el mismo artefacto en sus perfiles. Terraform/Ansible y GitLab CI/CodeBuild controlan infraestructura y promoción. La red y los cinco ambientes se desarrollan en 4.2.4.
 
-El Anexo 4-P reúne el inventario completo de servicios AWS y las equivalencias entre nombres funcionales y técnicos. La descripción por capa explica la responsabilidad de cada tecnología; el inventario permite comprobar su correspondencia con el despliegue.
+El Anexo 4-P reúne el inventario completo de servicios AWS y las equivalencias entre nombres funcionales y técnicos. La descripción por capa explica la responsabilidad de cada tecnología. El inventario permite comprobar su correspondencia con el despliegue.
 
 Laravel conserva una superficie de APIs, políticas y colas coherente para los doce módulos. Las demás selecciones se fundamentan así:
 
@@ -1110,13 +1110,13 @@ Laravel conserva una superficie de APIs, políticas y colas coherente para los d
 
 - La implementación se verifica mediante contratos y pruebas.
 
-- PostgreSQL/PostGIS se prefiere a MariaDB por la combinación de transacciones y consultas geográficas del dominio de rutas y sitios; la prueba cubre consultas espaciales y migración.
+- PostgreSQL/PostGIS se prefiere a MariaDB por la combinación de transacciones y consultas geográficas del dominio de rutas y sitios. La prueba cubre consultas espaciales y migración.
 
-- Keycloak se prefiere a un proveedor de identidad exclusivamente en nube porque permite administrar personal propio y externo sin trasladar la autorización de negocio fuera de M1–M12; el relevo local requiere la prueba de 24 horas.
+- Keycloak se prefiere a un proveedor de identidad exclusivamente en nube porque permite administrar personal propio y externo sin trasladar la autorización de negocio fuera de M1–M12. El relevo local requiere la prueba de 24 horas.
 
 - API Gateway reduce administración frente a un gateway propio, sujeto a prueba de cuotas y costo bajo el pico.
 
-- RabbitMQ local más SQS FIFO conserva el trabajo del sitio sin enlace; la deduplicación y el orden por partición se prueban en los consumidores.
+- RabbitMQ local más SQS FIFO conserva el trabajo del sitio sin enlace. La deduplicación y el orden por partición se prueban en los consumidores.
 
 - Angular se selecciona por su organización en componentes y sus contratos TypeScript.
 
@@ -1124,15 +1124,15 @@ Los costos, el emplazamiento y la redundancia se comprueban en 4.2 y en el regis
 
 El núcleo utiliza tecnologías con alternativas de despliegue como Laravel, Angular, PostgreSQL, RabbitMQ y Keycloak. Eso facilita la portabilidad, pero no elimina la dependencia de los servicios administrados de AWS. La reversibilidad documenta contratos, exportación de datos y sustitución de adaptadores, junto con el esfuerzo de migración exigido por RT-03.07, que 4.2 acota por servicio.
 
-El Anexo 4-P reúne versiones de referencia, soporte y criterios de actualización. Las versiones menores se fijan en archivos de bloqueo y SBOM y se promueven mediante pruebas de contrato; no se congela una versión sin soporte por los 56 meses. Laravel, PHP, PostgreSQL, Angular y RabbitMQ se revisan conforme a sus políticas oficiales (Laravel, 2026; PHP, 2026; PostgreSQL, 2026; Angular, 2026a, 2026b; RabbitMQ, 2026).
+El Anexo 4-P reúne versiones de referencia, soporte y criterios de actualización. Las versiones menores se fijan en archivos de bloqueo y SBOM y se promueven mediante pruebas de contrato. No se congela una versión sin soporte por los 56 meses. Laravel, PHP, PostgreSQL, Angular y RabbitMQ se revisan conforme a sus políticas oficiales (Laravel, 2026; PHP, 2026; PostgreSQL, 2026; Angular, 2026a, 2026b; RabbitMQ, 2026).
 
-LafroX documenta la creación inicial de la cuenta raíz y guarda el procedimiento y su evidencia en el repositorio del CLIENTE. Fuera de esa creación inicial, todos los recursos se crean y modifican con Terraform o Ansible, con revisión y control de versiones; no hay altas manuales por consola (RT-03.03; Bases Técnicas Transversales, cap. 3, p. 8).
+LafroX documenta la creación inicial de la cuenta raíz y guarda el procedimiento y su evidencia en el repositorio del CLIENTE. Fuera de esa creación inicial, todos los recursos se crean y modifican con Terraform o Ansible, con revisión y control de versiones. No hay altas manuales por consola (RT-03.03, Bases Técnicas Transversales, cap. 3, p. 8).
 
 ### 4.1.8 Implantación progresiva por olas
 
 <a id="sec:transicion-laravel"></a>
 
-La implantación progresiva de Laravel/PHP conserva los identificadores M1–M12, sus dueños de datos, los contratos públicos y sus versiones, los eventos JSON, la identidad Keycloak y las reglas sin conexión. Se separan los consumidores de integración de los trabajos internos y se prueban identidad, trazas y reversión antes de habilitar cada ola. El Anexo 4-P detalla las tecnologías que realizan estas capacidades; PostgreSQL/PostGIS, RabbitMQ, SQS y los clientes mantienen sus contratos durante el despliegue.
+La implantación progresiva de Laravel/PHP conserva los identificadores M1–M12, sus dueños de datos, los contratos públicos y sus versiones, los eventos JSON, la identidad Keycloak y las reglas sin conexión. Se separan los consumidores de integración de los trabajos internos y se prueban identidad, trazas y reversión antes de habilitar cada ola. El Anexo 4-P detalla las tecnologías que realizan estas capacidades. PostgreSQL/PostGIS, RabbitMQ, SQS y los clientes mantienen sus contratos durante el despliegue.
 
 La implantación comienza por fijar contratos, dueños de datos y un extracto conciliado del WMS de 2013 en Talca.
 
@@ -1157,29 +1157,29 @@ La implantación comienza por fijar contratos, dueños de datos y un extracto co
 
 Los cinco ambientes del RT-04.01 cumplen propósitos distintos.
 
-- En **Desarrollo**, el equipo construye los módulos Laravel y las aplicaciones Kotlin, los contratos y las migraciones con datos sintéticos o anonimizados; las pruebas unitarias no necesitan conectarse al ERP real.
+- En **Desarrollo**, el equipo construye los módulos Laravel y las aplicaciones Kotlin, los contratos y las migraciones con datos sintéticos o anonimizados, las pruebas unitarias no necesitan conectarse al ERP real.
 
 - En **QA**, se despliegan M1–M12, el verificador local y los adaptadores simulados para ensayar integración, regresión, idempotencia y fallas de enlace con datos controlados.
 
-- En **Preproducción**, el mismo artefacto y las mismas versiones de contratos se ensayan con topología equivalente a producción y volumen representativo de septiembre; se prueban los 207 terminales de bodega, el relevo de turnos, la emisión de guía por el ERP y la reconciliación. Toda diferencia de escala o configuración se declara antes de aceptar el ensayo, conforme a RT-04.02.
+- En **Preproducción**, el mismo artefacto y las mismas versiones de contratos se ensayan con topología equivalente a producción y volumen representativo de septiembre. Se prueban los 207 terminales de bodega, el relevo de turnos, la emisión de guía por el ERP y la reconciliación. Toda diferencia de escala o configuración se declara antes de aceptar el ensayo, conforme a RT-04.02.
 
-- En **Producción**, los módulos sirven datos reales con acceso restringido y auditado; los desarrolladores no corrigen transacciones directamente.
+- En **Producción**, los módulos sirven datos reales con acceso restringido y auditado, los desarrolladores no corrigen transacciones directamente.
 
 - El ambiente de **Recuperación ante desastres** conserva la versión compatible de los componentes y permite ensayar conmutación y retorno al menos dos veces al año, sin presumir que una réplica remota contiene eventos aún no enviados desde un sitio aislado.
 
 Los cinco ambientes deben estar operativos en H3. Su emplazamiento, segregación, dimensionamiento y recorrido de promoción se desarrollan en 4.2.4.1.
 
-QA funciona también como ambiente de simulación de parámetros: el CLIENTE compara el resultado de las mismas transacciones de prueba con el valor vigente y el propuesto, usando datos controlados y los adaptadores simulados existentes. Solo después de comprobar el efecto y aprobar la versión se habilita su vigencia en Producción (RT-16.05; Bases Técnicas Transversales, cap. 16, p. 29).
+QA funciona también como ambiente de simulación de parámetros: el CLIENTE compara el resultado de las mismas transacciones de prueba con el valor vigente y el propuesto, usando datos controlados y los adaptadores simulados existentes. Solo después de comprobar el efecto y aprobar la versión se habilita su vigencia en Producción (RT-16.05, Bases Técnicas Transversales, cap. 16, p. 29).
 
 La promoción conserva la identidad del artefacto PHP, el archivo de versiones de dependencias y la versión de esquema desde QA hasta producción.
 
-- La revisión por pares, pruebas de contrato OpenAPI/AsyncAPI, PHPUnit, PHPStan/Larastan, la auditoría de dependencias, análisis de secretos e imágenes bloquean un despliegue defectuoso (RT-04.03–04.05; Bases Técnicas Transversales, cap. 4, p. 10).
+- La revisión por pares, pruebas de contrato OpenAPI/AsyncAPI, PHPUnit, PHPStan/Larastan, la auditoría de dependencias, análisis de secretos e imágenes bloquean un despliegue defectuoso (RT-04.03–04.05, Bases Técnicas Transversales, cap. 4, p. 10).
 
-- Cada cambio registra requisito, commit, prueba, aprobación y despliegue; una migración incompatible con eventos sin confirmar se detiene o conserva un lector de la versión precedente.
+- Cada cambio registra requisito, commit, prueba, aprobación y despliegue. Una migración incompatible con eventos sin confirmar se detiene o conserva un lector de la versión precedente.
 
 - La recuperación ante desastres verifica además la lectura de datos y mensajes generados durante la contingencia antes del retorno al primario.
 
-Durante el contrato, QA mantiene un espacio aislado de capacitación con datos ficticios, donde los usuarios practican sin acceso a datos productivos ni efectos sobre la operación real. Está disponible de lunes a viernes, de 08:00 a 20:00, y en las ventanas de prueba que programe el CLIENTE (S-43). Su configuración se conserva cuando el cómputo de QA se reduce o se apaga (RT-22.09; Bases Técnicas Transversales, cap. 22, p. 38).
+Durante el contrato, QA mantiene un espacio aislado de capacitación con datos ficticios, donde los usuarios practican sin acceso a datos productivos ni efectos sobre la operación real. Está disponible de lunes a viernes, de 08:00 a 20:00, y en las ventanas de prueba que programe el CLIENTE (S-43). Su configuración se conserva cuando el cómputo de QA se reduce o se apaga (RT-22.09, Bases Técnicas Transversales, cap. 22, p. 38).
 
 ### 4.1.10 Patrones de diseño y continuidad
 
@@ -1187,41 +1187,41 @@ Durante el contrato, QA mantiene un espacio aislado de capacitación con datos f
 
 La continuidad se articula con ISO 22301 para la gestión de continuidad del negocio y con ISO/IEC 27031 para la preparación de las TIC que la sostiene, conforme a RT-10.03 y RT-10.04 (ISO, 2019, 2025). En esta vista, su aplicación se concreta en las dependencias entre módulos, las funciones que pueden continuar desconectadas, los estados sin confirmar y las condiciones para volver a una operación consistente. Esta correspondencia de diseño no constituye una certificación ni acredita por sí sola el cumplimiento integral de las normas.
 
-Ante pérdida de conectividad, M1, M2 y M5 conservan la operación local y M9 mantiene el bloqueo sanitario; M3 y M6 conservan la captura de terreno durante las autonomías definidas. Las confirmaciones que dependen de crédito, stock central o documentos del ERP permanecen explícitamente sin confirmar o bloqueadas según su regla. La continuidad protege la evidencia y la seguridad de la operación: no habilita una salida sin autorización tributaria ni permite levantar un bloqueo sanitario para recuperar velocidad.
+Ante pérdida de conectividad, M1, M2 y M5 conservan la operación local y M9 mantiene el bloqueo sanitario. M3 y M6 conservan la captura de terreno durante las autonomías definidas. Las confirmaciones que dependen de crédito, stock central o documentos del ERP permanecen explícitamente sin confirmar o bloqueadas según su regla. La continuidad protege la evidencia y la seguridad de la operación: no habilita una salida sin autorización tributaria ni permite levantar un bloqueo sanitario para recuperar velocidad.
 
 La recuperación lógica exige restablecer identidad y autorización, disponer del estado transaccional y de los eventos sin confirmar, y habilitar después el procesamiento y la reconciliación.
 
 - Cada consumidor confirma solo operaciones persistidas, deduplica los reenvíos y deriva los conflictos a su responsable.
 
-- Antes de cerrar la contingencia se cotejan pedidos, reservas, lotes, entregas y rendiciones con sus identificadores de origen; las operaciones sin confirmar y las excepciones quedan visibles y auditadas. El orden concreto de restauración y la capacidad de respaldo se documentan en 4.2 y 4.3.
+- Antes de cerrar la contingencia se cotejan pedidos, reservas, lotes, entregas y rendiciones con sus identificadores de origen. Las operaciones sin confirmar y las excepciones quedan visibles y auditadas. El orden concreto de restauración y la capacidad de respaldo se documentan en 4.2 y 4.3.
 
-La evidencia de aceptación vincula cada servicio con su requisito, módulo, dependencia, objetivo de recuperación y prueba. Se ensayan pérdida de WAN durante 24 horas en el sitio, captura móvil durante 14 horas, indisponibilidad del ERP, relevo sin IdP y recuperación con mensajes repetidos. Se mide la conservación de operaciones confirmadas, el respeto de los bloqueos, la ausencia de duplicados y el tiempo hasta recuperar un estado conciliado. Una pérdida completa del sitio requiere una prueba de restauración distinta del corte WAN, contrastada con RTO ≤ 4 horas y RPO ≤ 15 minutos para los servicios críticos. La extracción continua por fibra, LTE y satélite sostiene el RPO, verificado con AL-DR-01; 4.3.2 justifica el límite residual.
+La evidencia de aceptación vincula cada servicio con su requisito, módulo, dependencia, objetivo de recuperación y prueba. Se ensayan pérdida de WAN durante 24 horas en el sitio, captura móvil durante 14 horas, indisponibilidad del ERP, relevo sin IdP y recuperación con mensajes repetidos. Se mide la conservación de operaciones confirmadas, el respeto de los bloqueos, la ausencia de duplicados y el tiempo hasta recuperar un estado conciliado. Una pérdida completa del sitio requiere una prueba de restauración distinta del corte WAN, contrastada con RTO ≤ 4 horas y RPO ≤ 15 minutos para los servicios críticos. La extracción continua por fibra, LTE y satélite sostiene el RPO, verificado con AL-DR-01. 4.3.2 justifica el límite residual.
 
 La arquitectura aplica un conjunto de patrones de diseño que responden a las restricciones específicas de la operación de Puelche:
 
-**Registro local y sincronización idempotente.** Cada escritura recibe un UUID declarado por el cliente que se conserva al reintentar. El evento permanece en la cola local hasta que el servicio de negocio confirma su procesamiento. Ese servicio deduplica dentro de una ventana documentada (RT-02.06; Bases Técnicas Transversales, cap. 2, p. 7) y resuelve conflictos con reglas deterministas y bitácora auditable (RT-03.12; Bases Técnicas Transversales, cap. 3, p. 9). La copia de lectura en SQLite/Room se actualiza por separado. Así, renovar precios o stock no elimina un pedido sin confirmar y el trabajo de terreno no depende de una consulta a Redis en tiempo real.
+**Registro local y sincronización idempotente.** Cada escritura recibe un UUID declarado por el cliente que se conserva al reintentar. El evento permanece en la cola local hasta que el servicio de negocio confirma su procesamiento. Ese servicio deduplica dentro de una ventana documentada (RT-02.06, Bases Técnicas Transversales, cap. 2, p. 7) y resuelve conflictos con reglas deterministas y bitácora auditable (RT-03.12, Bases Técnicas Transversales, cap. 3, p. 9). La copia de lectura en SQLite/Room se actualiza por separado. Así, renovar precios o stock no elimina un pedido sin confirmar y el trabajo de terreno no depende de una consulta a Redis en tiempo real.
 
-**Servicios sin estado durable en memoria.** Las bases de datos y las colas conservan el estado de negocio; las sesiones utilizan los mecanismos de identidad definidos. Sustituir una instancia no debe perder el progreso de una operación. El acceso desconectado respeta las vigencias de las credenciales y las restricciones explicadas en la capa de seguridad.
+**Servicios sin estado durable en memoria.** Las bases de datos y las colas conservan el estado de negocio. Las sesiones utilizan los mecanismos de identidad definidos. Sustituir una instancia no debe perder el progreso de una operación. El acceso desconectado respeta las vigencias de las credenciales y las restricciones explicadas en la capa de seguridad.
 
-**Degradación controlada sin pérdida silenciosa.** Cuando un componente no responde, la operación continúa en modo reducido informado a la persona usuaria ("modo offline"). Ninguna degradación produce pérdida de una transacción de venta o entrega: si una escritura no llega al servidor, queda en el almacenamiento temporal local del dispositivo, visible como no confirmada y reconciliada en la sincronización posterior (RT-02.09; Bases Técnicas Transversales, cap. 2, p. 7). La clasificación de servicios (RT-10.02; Bases Técnicas Transversales, cap. 10, p. 22) distingue cuatro niveles, conforme al listado [de niveles de servicio](LAFROX-Subdocumento4.md#tab:jd05):
+**Degradación controlada sin pérdida silenciosa.** Cuando un componente no responde, la operación continúa en modo reducido informado a la persona usuaria ("modo offline"). Ninguna degradación produce pérdida de una transacción de venta o entrega: si una escritura no llega al servidor, queda en el almacenamiento temporal local del dispositivo, visible como no confirmada y reconciliada en la sincronización posterior (RT-02.09, Bases Técnicas Transversales, cap. 2, p. 7). La clasificación de servicios (RT-10.02, Bases Técnicas Transversales, cap. 10, p. 22) distingue cuatro niveles, conforme al listado [de niveles de servicio](LAFROX-Subdocumento4.md#tab:jd05):
 
-- crítico, preparación, despacho y emisión de la guía durante la ventana 05:30–07:00, con el bloqueo por excursión térmica y la identidad de bodega que lo habilitan;
+- crítico, preparación, despacho y emisión de la guía durante la ventana 05:30–07:00, con el bloqueo por excursión térmica y la identidad de bodega que lo habilitan,
 
-- alto, toma de pedido y consulta de stock y crédito, entrega y evidencia, planificación de rutas, los demás DTE, integración con el ERP, cobranza y rendición, registro de temperatura;
+- alto, toma de pedido y consulta de stock y crédito, entrega y evidencia, planificación de rutas, los demás DTE, integración con el ERP, cobranza y rendición, registro de temperatura.
 
-- medio, canal moderno (EDI), notificaciones, analítica y tableros, portales, consultas de geolocalización, registros de auditoría y seguridad;
+- medio, canal moderno (EDI), notificaciones, analítica y tableros, portales, consultas de geolocalización, registros de auditoría y seguridad,
 
 - bajo, reportería e informes a pedido.
 
-**Resiliencia con cortacircuitos y colas.** Las llamadas remotas tienen un tiempo máximo de espera explícito (RT-02.08; Bases Técnicas Transversales, cap. 2, p. 7). Las operaciones reintentables utilizan espera creciente con variación aleatoria y un cortacircuitos que suspende temporalmente las llamadas a un servicio que falla. Si el ERP no está disponible, la preventa conserva la captura de pedidos, mientras las confirmaciones dependientes del legado permanecen sin confirmar. Las colas y sus DLQ permiten recuperar el procesamiento; los consumidores deben deduplicar porque un mensaje puede entregarse más de una vez.
+**Resiliencia con cortacircuitos y colas.** Las llamadas remotas tienen un tiempo máximo de espera explícito (RT-02.08, Bases Técnicas Transversales, cap. 2, p. 7). Las operaciones reintentables utilizan espera creciente con variación aleatoria y un cortacircuitos que suspende temporalmente las llamadas a un servicio que falla. Si el ERP no está disponible, la preventa conserva la captura de pedidos, mientras las confirmaciones dependientes del legado permanecen sin confirmar. Las colas y sus DLQ permiten recuperar el procesamiento. Los consumidores deben deduplicar porque un mensaje puede entregarse más de una vez.
 
-**Integración con legados mediante ACL.** Los módulos M1, M5, M7, M8 y M11 intercambian información con el ERP a través de adaptadores; no absorben su responsabilidad tributaria ni modifican su código. Las capacidades del WMS 2013 se reemplazan gradualmente en M1, M2 y M5. La ACL mantiene separados el modelo de negocio de la solución y los formatos del legado, en coherencia con RT-02.14. No se permiten escrituras directas al ERP.
+**Integración con legados mediante ACL.** Los módulos M1, M5, M7, M8 y M11 intercambian información con el ERP a través de adaptadores. No absorben su responsabilidad tributaria ni modifican su código. Las capacidades del WMS 2013 se reemplazan gradualmente en M1, M2 y M5. La ACL mantiene separados el modelo de negocio de la solución y los formatos del legado, en coherencia con RT-02.14. No se permiten escrituras directas al ERP.
 
-**Correlación de extremo a extremo.** Cada transacción lleva un identificador de correlación que acompaña las solicitudes y los eventos, incluidos los capturados sin conexión. Al sincronizar, ese identificador permite relacionar métricas, trazas y registros en la plataforma común de observabilidad de nube y sitios locales (RT-03.16; Bases Técnicas Transversales, cap. 3, p. 9; Bases Administrativas, art. 16.4, p. 12).
+**Correlación de extremo a extremo.** Cada transacción lleva un identificador de correlación que acompaña las solicitudes y los eventos, incluidos los capturados sin conexión. Al sincronizar, ese identificador permite relacionar métricas, trazas y registros en la plataforma común de observabilidad de nube y sitios locales (RT-03.16, Bases Técnicas Transversales, cap. 3, p. 9; Bases Administrativas, art. 16.4, p. 12).
 
-**Gobierno de contratos y versionado.** Las APIs de negocio y de integración se documentan desde el código, con actualización automática de OpenAPI 3.1 (síncrona) y AsyncAPI 2.6 (eventos), versionado semántico estricto, propietario declarado por módulo, compatibilidad hacia atrás y aviso mínimo de 6 meses antes de deprecar una versión (RT-05.16/17; Bases Técnicas Transversales, cap. 5, p. 12).
+**Gobierno de contratos y versionado.** Las APIs de negocio y de integración se documentan desde el código, con actualización automática de OpenAPI 3.1 (síncrona) y AsyncAPI 2.6 (eventos), versionado semántico estricto, propietario declarado por módulo, compatibilidad hacia atrás y aviso mínimo de 6 meses antes de deprecar una versión (RT-05.16/17, Bases Técnicas Transversales, cap. 5, p. 12).
 
-**Seguridad Zero Trust.** Cada solicitud se verifica explícitamente, sin presuponer la confiabilidad de ninguna red, dispositivo o identidad (NIST, 2020, SP 800-207). Los servicios utilizan mTLS (RT-05.18; Bases Técnicas Transversales, cap. 5, p. 12), los secretos tienen rotación automática (RT-04.09; Bases Técnicas Transversales, cap. 4, p. 11) y los registros de auditoría son inmutables (RT-16.07; Bases Técnicas Transversales, cap. 16, p. 29). La segmentación y las conexiones entrantes al sitio local se especifican en 4.2.
+**Seguridad Zero Trust.** Cada solicitud se verifica explícitamente, sin presuponer la confiabilidad de ninguna red, dispositivo o identidad (NIST, 2020, SP 800-207). Los servicios utilizan mTLS (RT-05.18, Bases Técnicas Transversales, cap. 5, p. 12), los secretos tienen rotación automática (RT-04.09, Bases Técnicas Transversales, cap. 4, p. 11) y los registros de auditoría son inmutables (RT-16.07, Bases Técnicas Transversales, cap. 16, p. 29). La segmentación y las conexiones entrantes al sitio local se especifican en 4.2.
 
 **Separación transaccional y analítica.** Los tableros consultan Redshift Serverless, no el transaccional en vivo. Los eventos incrementales permiten mantener las latencias de hasta 5 minutos para operación, 2 horas para cierre comercial y 4 horas para gestión. Las tareas pesadas se programan fuera de la ventana crítica, sin detener la actualización incremental necesaria para el tablero operacional.
 
@@ -1229,7 +1229,7 @@ La arquitectura aplica un conjunto de patrones de diseño que responden a las re
 
 La responsabilidad única se comprueba en el flujo de un pedido: M3 captura y confirma el pedido, M2 decide si reserva stock, M5 ejecuta la preparación y la ACL traduce hacia el ERP. Ninguno de esos componentes puede asumir la decisión del otro por compartir un proceso Laravel.
 
-Para extender el canal moderno, M11 incorpora un adaptador por cadena bajo un contrato publicado; M3 no se modifica para aprender un nuevo formato EDI. Esa es la aplicación concreta del principio abierto/cerrado.
+Para extender el canal moderno, M11 incorpora un adaptador por cadena bajo un contrato publicado. M3 no se modifica para aprender un nuevo formato EDI. Esa es la aplicación concreta del principio abierto/cerrado.
 
 Un adaptador nuevo sustituye a uno previo solo si conserva las respuestas, errores e idempotencia exigidos por el contrato versionado: las pruebas de contrato verifican esa sustitución.
 
@@ -1237,7 +1237,7 @@ Un adaptador nuevo sustituye a uno previo solo si conserva las respuestas, error
 
 - Finalmente, M3, M5 y M7 dependen de puertos de negocio para inventario, documentos y mensajería, no de llamadas directas al SDK de una nube o a tablas del ERP.
 
-- En QA se reemplazan esos puertos por dobles de prueba; en producción los adaptadores implementan el contrato. Las pruebas de contrato verifican sustitución, segregación de interfaces e inversión de dependencias.
+- En QA se reemplazan esos puertos por dobles de prueba. En producción los adaptadores implementan el contrato. Las pruebas de contrato verifican sustitución, segregación de interfaces e inversión de dependencias.
 
 ### 4.1.11 Registro de decisiones de arquitectura
 
@@ -1261,7 +1261,7 @@ RT-02.11 exige identificar las dependencias singulares que subsisten y justifica
 | **Dependencia** | **Efecto si falla** | **Continuidad prevista** | **Aceptación** |
 | --- | --- | --- | --- |
 | Identidad central | No hay altas ni revocación remota. | Asignaciones vigentes y servicio local. | Prueba de relevo 24 h. |
-| ERP y emisión DTE | Se retrasa una nueva guía; perder la sala de Talca la detiene hasta restituir el ERP. | Preemisión nocturna y ERP por tres caminos; la salida sin guía válida se bloquea. | AL-DTE-01 con 96 salidas. |
+| ERP y emisión DTE | Se retrasa una nueva guía, perder la sala de Talca la detiene hasta restituir el ERP. | Preemisión nocturna y ERP por tres caminos. La salida sin guía válida se bloquea. | AL-DTE-01 con 96 salidas. |
 | Consolidación central de stock | La reserva central queda fechada. | Cada sitio opera localmente y preventa captura pedidos sujetos a validación. | Conciliación de eventos por sitio. |
 | SII y pasarela de pago | No hay respuesta en línea. | Reintento y cobro alternativo aprobado. | Sin confirmar no equivale a aprobado. |
 | Planificador experto | Faltan decisiones ante excepciones. | Reglas de M4 y suplente capacitado. | Prueba antes de su retiro. |
@@ -1270,13 +1270,13 @@ Fuente: elaboración propia a partir de RT-02.11 (Bases Técnicas Transversales,
 
 Las dependencias externas conservan riesgo residual que exige prueba o contingencia aprobada.
 
-El ERP permanece como único emisor ante el SII mediante fibra, LTE y satélite de Talca; un cambio de carga invalida la guía preemitida y exige una nueva. El riesgo de identidad local tampoco se declara cerrado antes de probar cada relevo de turno durante un corte de 24 horas. El emplazamiento y la redundancia física se verifican en 4.2.
+El ERP permanece como único emisor ante el SII mediante fibra, LTE y satélite de Talca. Un cambio de carga invalida la guía preemitida y exige una nueva. El riesgo de identidad local tampoco se declara cerrado antes de probar cada relevo de turno durante un corte de 24 horas. El emplazamiento y la redundancia física se verifican en 4.2.
 
 ### 4.1.13 Comparación de alternativas arquitectónicas
 
 <a id="sec:alternativas-arquitectonicas"></a>
 
-La comparación considera la carga real, la continuidad desconectada, la reversión y la dotación que deberá operar la solución. La Tabla [4](LAFROX-Subdocumento4.md#tab:alternativas) resume las elecciones lógicas; los ADR explicitan su criterio y consecuencia operativa. La evaluación económica pertenece a los apartados de costos.
+La comparación considera la carga real, la continuidad desconectada, la reversión y la dotación que deberá operar la solución. La Tabla [4](LAFROX-Subdocumento4.md#tab:alternativas) resume las elecciones lógicas, los ADR explicitan su criterio y consecuencia operativa. La evaluación económica pertenece a los apartados de costos.
 
 <a id="tab:alternativas"></a>
 
@@ -1300,17 +1300,17 @@ El Artículo 16 de las Bases Administrativas exige el despliegue híbrido. Su di
 
 <a id="sec:iso42010"></a>
 
-RT-02.03 exige cinco vistas de la arquitectura: lógica, procesos, despliegue, datos y seguridad. El Anexo 4-S define sus interesados, preocupaciones, modelos y reglas de correspondencia, siguiendo la organización de descripciones de ISO/IEC/IEEE 42010:2022 (ISO, 2022a). La integración atraviesa esas vistas; no se presenta como una sexta vista exigida por la Base.
+RT-02.03 exige cinco vistas de la arquitectura: lógica, procesos, despliegue, datos y seguridad. El Anexo 4-S define sus interesados, preocupaciones, modelos y reglas de correspondencia, siguiendo la organización de descripciones de ISO/IEC/IEEE 42010:2022 (ISO, 2022a). La integración atraviesa esas vistas. No se presenta como una sexta vista exigida por la Base.
 
-Operaciones necesita comprobar que un pedido puede avanzar sin perder su lote ni saltarse una autorización; Calidad necesita seguir un lote hasta su receptor; Seguridad necesita distinguir quién puede liberar una carga; y TI necesita aislar una falla y recuperar el estado. Las vistas responden a esas preocupaciones con los mismos identificadores M1–M12, INT-01–15 y los componentes transversales del Anexo 4-N. Así se puede pasar de una secuencia a su dueño de datos, contrato y control sin cambiar de vocabulario.
+Operaciones necesita comprobar que un pedido puede avanzar sin perder su lote ni saltarse una autorización. Calidad necesita seguir un lote hasta su receptor. Seguridad necesita distinguir quién puede liberar una carga. Y TI necesita aislar una falla y recuperar el estado. Las vistas responden a esas preocupaciones con los mismos identificadores M1–M12, INT-01–15 y los componentes transversales del Anexo 4-N. Así se puede pasar de una secuencia a su dueño de datos, contrato y control sin cambiar de vocabulario.
 
 Las correspondencias se comprueban en ambos sentidos:
 
-- todo evento tiene productor y consumidores;
+- todo evento tiene productor y consumidores.
 
-- toda escritura tiene dueño;
+- toda escritura tiene dueño.
 
-- toda función desconectada tiene persistencia y autorización locales;
+- toda función desconectada tiene persistencia y autorización locales.
 
 - y todo componente desplegado debe realizar una responsabilidad inventariada. Una diferencia se registra con requisito afectado y ADR responsable. La cobertura lógica del inventario no se confunde con el cotejo de emplazamientos y centros de datos.
 
@@ -1320,9 +1320,9 @@ La vista lógica desarrolla aquí las responsabilidades y sus relaciones. El des
 
 <a id="sec:funciones-offline"></a>
 
-Conforme a RT-03.10, la captura del turno de 14 horas en terreno y la operación local de 24 horas en los centros de distribución conservan sus eventos hasta recibir confirmación. RT-03.13 de las Bases Transversales exige nombrar también lo que no funciona sin red y el procedimiento que lo suple; el caso fija bajo ese mismo identificador los plazos de sincronización tras la reconexión. El Anexo 4-J distingue ambos casos; una operación sin confirmar nunca equivale a aprobación de un tercero.
+Conforme a RT-03.10, la captura del turno de 14 horas en terreno y la operación local de 24 horas en los centros de distribución conservan sus eventos hasta recibir confirmación. RT-03.13 de las Bases Transversales exige nombrar también lo que no funciona sin red y el procedimiento que lo suple. El caso fija bajo ese mismo identificador los plazos de sincronización tras la reconexión. El Anexo 4-J distingue ambos casos. Una operación sin confirmar nunca equivale a aprobación de un tercero.
 
-La operación local conserva la captura; las autorizaciones externas esperan conexión o procedimiento aprobado.
+La operación local conserva la captura. Las autorizaciones externas esperan conexión o procedimiento aprobado.
 
 - AL-OFF-01, en el Anexo 4-M, exige un corte de 24 horas con relevos a las 8 y 16 horas, verificación de permisos, reinicio de componentes y reconciliación.
 
@@ -1332,13 +1332,13 @@ La operación local conserva la captura; las autorizaciones externas esperan con
 
 - Aprobar la captura o el relevo de identidad no basta para acreditar la continuidad completa del despacho.
 
-- La copia de stock, crédito y precios lleva fecha de actualización; al superar su vigencia se presenta como referencia, no como aprobación de la venta.
+- La copia de stock, crédito y precios lleva fecha de actualización. Al superar su vigencia se presenta como referencia, no como aprobación de la venta.
 
 - El conductor tampoco presenta una captura POS como pago autorizado.
 
-- El Portal de Clientes instalado conserva el catálogo, los precios con su fecha y el pedido armado sin señal; no reserva stock ni confirma precio o fecha de entrega hasta que M3 recibe el pedido, como verifica AL-CLI-01 del Anexo 4-M.
+- El Portal de Clientes instalado conserva el catálogo, los precios con su fecha y el pedido armado sin señal. No reserva stock ni confirma precio o fecha de entrega hasta que M3 recibe el pedido, como verifica AL-CLI-01 del Anexo 4-M.
 
-- El relevo usa permisos preinscritos y credenciales personales vigentes; AL-OFF-01 verifica dos relevos durante el corte de 24 horas, incluidos vencimiento, reinicio y reconciliación.
+- El relevo usa permisos preinscritos y credenciales personales vigentes. AL-OFF-01 verifica dos relevos durante el corte de 24 horas, incluidos vencimiento, reinicio y reconciliación.
 
 ### 4.1.16 Reglas de reconciliación
 
@@ -1346,51 +1346,51 @@ La operación local conserva la captura; las autorizaciones externas esperan con
 
 Toda reconciliación se resuelve por regla de negocio declarada, nunca por la sola marca de tiempo.
 
-- La clave UUID generada por el cliente se conserva en todos los reintentos y el resultado se retiene para deduplicación durante 30 días; un lote más antiguo se aísla para revisión antes de admitir una nueva escritura.
+- La clave UUID generada por el cliente se conserva en todos los reintentos y el resultado se retiene para deduplicación durante 30 días. Un lote más antiguo se aísla para revisión antes de admitir una nueva escritura.
 
 - El resultado incluye identificador, versión, regla aplicada, actor y fecha. El Anexo 4-K muestra los conflictos de negocio principales.
 
-La replicación protege la continuidad y no resuelve conflictos de negocio. INT-12 replica Talca para lectura; INT-03/04 sincroniza los eventos de los cinco sitios. Cada sitio conserva su autoridad y su outbox hasta el acuse durable. El RPO, los escenarios cubiertos y el límite de aislamiento seguido de destrucción se definen en 4.3.2; AL-DR-01 los verifica.
+La replicación protege la continuidad y no resuelve conflictos de negocio. INT-12 replica Talca para lectura. INT-03/04 sincroniza los eventos de los cinco sitios. Cada sitio conserva su autoridad y su outbox hasta el acuse durable. El RPO, los escenarios cubiertos y el límite de aislamiento seguido de destrucción se definen en 4.3.2. AL-DR-01 los verifica.
 
 ### 4.1.17 Articulación entre prueba de entrega, DTE y acuse
 
 <a id="sec:pod-dte-acuse"></a>
 
-La guía de despacho electrónica debe estar vinculada a la salida de mercadería antes de iniciar el traslado. La aplicación no la emite: M5 entrega los datos de despacho al servicio de integración con el ERP en VM-04 y por la capa anticorrupción al ERP, que conserva la responsabilidad tributaria y devuelve folio, estado y documento. M6 captura después la recepción efectiva, incluidos bultos rechazados, identidad del receptor y evidencia. El acuse técnico de recepción o procesamiento ante el SII y el acuse de recepción de mercaderías del destinatario son hechos distintos; cada uno conserva su origen, fecha y estado.
+La guía de despacho electrónica debe estar vinculada a la salida de mercadería antes de iniciar el traslado. La aplicación no la emite: M5 entrega los datos de despacho al servicio de integración con el ERP en VM-04 y por la capa anticorrupción al ERP, que conserva la responsabilidad tributaria y devuelve folio, estado y documento. M6 captura después la recepción efectiva, incluidos bultos rechazados, identidad del receptor y evidencia. El acuse técnico de recepción o procesamiento ante el SII y el acuse de recepción de mercaderías del destinatario son hechos distintos. Cada uno conserva su origen, fecha y estado.
 
-La firma se aplica según el acto, conforme a la Ley N.º 19.799 (2002) y al mecanismo que el caso pide proponer para un receptor habitual sin firma electrónica avanzada (RT-16.17; Bases Técnicas Transversales, cap. 16, p. 30; RT-16.14; Bases Técnicas del caso, cap. 15, p. 27):
+La firma se aplica según el acto, conforme a la Ley N.º 19.799 (2002) y al mecanismo que el caso pide proponer para un receptor habitual sin firma electrónica avanzada (RT-16.17, Bases Técnicas Transversales, cap. 16, p. 30; RT-16.14, Bases Técnicas del caso, cap. 15, p. 27):
 
-- Guía de despacho electrónica: es el acto del caso que exige firma electrónica avanzada. La aplica el ERP como emisor ante el SII con el certificado del CLIENTE; la solución no emite firma avanzada. Antes de vincular la guía al despacho, el servicio de integración con el ERP verifica la firma del XML y que el certificado estuviera vigente a la fecha de firma; si la verificación falla, M5 mantiene el despacho bloqueado y lo deriva conforme a 4.1.17.1.
+- Guía de despacho electrónica: es el acto del caso que exige firma electrónica avanzada. La aplica el ERP como emisor ante el SII con el certificado del CLIENTE. La solución no emite firma avanzada. Antes de vincular la guía al despacho, el servicio de integración con el ERP verifica la firma del XML y que el certificado estuviera vigente a la fecha de firma. Si la verificación falla, M5 mantiene el despacho bloqueado y lo deriva conforme a 4.1.17.1.
 
-- Acuse de un receptor electrónico habilitado: lo firma el propio receptor y llega por el mecanismo tributario del ERP o por el canal EDI acordado; la solución conserva el XML, verifica su firma y la vigencia del certificado del firmante a la fecha de firma e identifica al firmante (Anexo 4-U).
+- Acuse de un receptor electrónico habilitado: lo firma el propio receptor y llega por el mecanismo tributario del ERP o por el canal EDI acordado. La solución conserva el XML, verifica su firma y la vigencia del certificado del firmante a la fecha de firma e identifica al firmante (Anexo 4-U).
 
-- Recepción por una persona natural sin firma electrónica avanzada: su firma en pantalla es una firma electrónica simple (Ley N.º 19.799, 2002, art. 2, letra f) que se conserva como evidencia vinculada a la guía, junto con la constancia en representación impresa cuando corresponde; no se le exige firma avanzada, y su valor como acuse depende del mecanismo que acuerde el CLIENTE (consulta V-18 del Subdocumento 3).
+- Recepción por una persona natural sin firma electrónica avanzada: su firma en pantalla es una firma electrónica simple (Ley N.º 19.799, 2002, art. 2, letra f) que se conserva como evidencia vinculada a la guía, junto con la constancia en representación impresa cuando corresponde. No se le exige firma avanzada, y su valor como acuse depende del mecanismo que acuerde el CLIENTE (consulta V-18 del Subdocumento 3).
 
 - Otros actos: el caso no exige firma avanzada para otros actos de la solución.
 
-Se conservan el XML firmado de la guía, el acuse del SII, la evidencia de entrega con su hash, la marca de tiempo del registro, que actúa como sello de tiempo, y la cadena de verificación disponible. Todo se guarda en Amazon S3 con Object Lock durante seis años, según la retención del listado [de respaldo y restauración por dominio](LAFROX-Subdocumento4.md#tab:jd12), lo que permite verificar el documento aun después del vencimiento del certificado (RT-16.18; Bases Técnicas Transversales, cap. 16, p. 30).
+Se conservan el XML firmado de la guía, el acuse del SII, la evidencia de entrega con su hash, la marca de tiempo del registro, que actúa como sello de tiempo, y la cadena de verificación disponible. Todo se guarda en Amazon S3 con Object Lock durante seis años, según la retención del listado [de respaldo y restauración por dominio](LAFROX-Subdocumento4.md#tab:jd12), lo que permite verificar el documento aun después del vencimiento del certificado (RT-16.18, Bases Técnicas Transversales, cap. 16, p. 30).
 
 #### 4.1.17.1 Secuencia y excepciones
 
 La secuencia lógica es:
 
-- preparación confirmada en M5;
+- preparación confirmada en M5,
 
-- solicitud nocturna de guía al ERP mediante el servicio de integración con el ERP y ACL de VM-04;
+- solicitud nocturna de guía al ERP mediante el servicio de integración con el ERP y ACL de VM-04,
 
-- autorización de salida con el documento disponible;
+- autorización de salida con el documento disponible,
 
-- captura de POD y diferencias en M6;
+- captura de POD y diferencias en M6.
 
-- conciliación de la entrega en M7/M8;
+- conciliación de la entrega en M7/M8.
 
 - y, si corresponde, solicitud al ERP de factura, nota de crédito o tratamiento tributario de la devolución.
 
-Un mismo identificador de correlación relaciona pedido, guía, entrega, evidencia, acuses y documentos posteriores. El acuse del destinatario se obtiene por el mecanismo que acuerde el CLIENTE conforme a la normativa aplicable; una fotografía o un QR no se presume equivalente por sí solo. La evidencia de recepción de cada guía (firma, fotografía, nombre del receptor o confirmación QR) se envía al ERP por la ACL; el estado del acuse que registra el ERP vuelve y se concilia con la guía el mismo día, y una guía sin acuse genera una alerta para su gestión (RF-06.14; LafroX, 2026c, Anexo 3.A).
+Un mismo identificador de correlación relaciona pedido, guía, entrega, evidencia, acuses y documentos posteriores. El acuse del destinatario se obtiene por el mecanismo que acuerde el CLIENTE conforme a la normativa aplicable. Una fotografía o un QR no se presume equivalente por sí solo. La evidencia de recepción de cada guía (firma, fotografía, nombre del receptor o confirmación QR) se envía al ERP por la ACL. El estado del acuse que registra el ERP vuelve y se concilia con la guía el mismo día, y una guía sin acuse genera una alerta para su gestión (RF-06.14, LafroX, 2026c, Anexo 3.A).
 
-M11 envía por INT-08/OpenAS2 el aviso de despacho ASN cuando el pedido queda cargado en el camión, con referencia a la guía ya emitida, productos, cantidades y hora estimada de llegada (RF-12.09). Después envía el acuse comercial digital dentro de los 30 minutos desde la descarga, referido a la misma guía y a su ASN (RNF-12.03 y RF-12.13; LafroX, 2026c, Anexos 3.A y 3.B). Este plazo no se acredita con el MDN de transporte ni con el acuse tributario.
+M11 envía por INT-08/OpenAS2 el aviso de despacho ASN cuando el pedido queda cargado en el camión, con referencia a la guía ya emitida, productos, cantidades y hora estimada de llegada (RF-12.09). Después envía el acuse comercial digital dentro de los 30 minutos desde la descarga, referido a la misma guía y a su ASN (RNF-12.03 y RF-12.13, LafroX, 2026c, Anexos 3.A y 3.B). Este plazo no se acredita con el MDN de transporte ni con el acuse tributario.
 
-Si el ERP o su canal tributario no confirma la guía antes de la salida, M5 muestra el despacho como bloqueado y lo deriva al responsable de Operaciones y Tributación para aplicar únicamente la contingencia autorizada por el CLIENTE. La captura offline del POD permite registrar una entrega ya despachada; no autoriza emitir retroactivamente una guía desde el teléfono. Esta separación protege la continuidad de la evidencia sin atribuir a la aplicación facultades tributarias que permanecen en el ERP.
+Si el ERP o su canal tributario no confirma la guía antes de la salida, M5 muestra el despacho como bloqueado y lo deriva al responsable de Operaciones y Tributación para aplicar únicamente la contingencia autorizada por el CLIENTE. La captura offline del POD permite registrar una entrega ya despachada. No autoriza emitir retroactivamente una guía desde el teléfono. Esta separación protege la continuidad de la evidencia sin atribuir a la aplicación facultades tributarias que permanecen en el ERP.
 
 #### 4.1.17.2 Control de liberación en la ventana crítica
 
@@ -1398,11 +1398,11 @@ M5 conserva los estados carga confirmada, guía solicitada, resultado incierto, 
 
 - La solicitud lleva una clave estable por despacho y versión de carga.
 
-- Al agotarse el tiempo de espera se consulta el resultado de esa misma solicitud antes de repetirla; no se genera otra guía a ciegas.
+- Al agotarse el tiempo de espera se consulta el resultado de esa misma solicitud antes de repetirla. No se genera otra guía a ciegas.
 
 - Solo se libera cuando la guía corresponde a la carga vigente y su evidencia está disponible localmente.
 
-- Una modificación efectiva de carga invalida la guía y exige que el ERP anule el documento según su procedimiento y emita uno nuevo antes de la salida; si no hay conectividad para emitirlo, el cambio propuesto no se ejecuta y solo sale la carga original si su guía sigue vigente.
+- Una modificación efectiva de carga invalida la guía y exige que el ERP anule el documento según su procedimiento y emita uno nuevo antes de la salida. Si no hay conectividad para emitirlo, el cambio propuesto no se ejecuta y solo sale la carga original si su guía sigue vigente.
 
 - Una guía ya anulada o invalidada no se reutiliza, aunque se reponga la carga anterior.
 
@@ -1412,13 +1412,13 @@ Al cerrar la carga nocturna se solicita la guía por adelantado, sin confundir a
 
 - Antes de las 05:30, Operaciones revisa las salidas programadas y las guías disponibles.
 
-- Durante 05:30–07:00 se prioriza INT-07 sobre reportes y cargas masivas; una incidencia identifica los camiones afectados, hora prevista, responsable y estado documental.
+- Durante 05:30–07:00 se prioriza INT-07 sobre reportes y cargas masivas. Una incidencia identifica los camiones afectados, hora prevista, responsable y estado documental.
 
-- Los despachos con documentación válida siguen su curso; ante un cambio de carga, la nueva guía la emite el ERP de Talca por cualquiera de sus tres caminos y, para Concepción y los cross-docking, requiere además un camino disponible del sitio.
+- Los despachos con documentación válida siguen su curso. Ante un cambio de carga, la nueva guía la emite el ERP de Talca por cualquiera de sus tres caminos y, para Concepción y los cross-docking, requiere además un camino disponible del sitio.
 
 - Ningún perfil de supervisor puede omitir ese control con una autorización genérica.
 
-La preemisión nocturna permite liberar cada camión con la carga amparada por su guía vigente sin depender de Internet durante la ventana; si se propone cambiar la carga y no hay camino hasta el ERP, el cambio se pospone a la ruta siguiente y sale solo la carga original con su guía vigente. Si el cambio ya se ejecutó o la guía se anuló, la salida queda bloqueada hasta disponer de un documento válido. Ningún camión sale sin guía válida. AL-DTE-01 ensaya las 96 salidas con fallas inyectadas, preemisión nocturna, cambio de carga y emisión del ERP ante el SII por fibra, LTE y Starlink en espera caliente de Talca. La prueba registra folio, anulación, nueva guía y estado de cada salida.
+La preemisión nocturna permite liberar cada camión con la carga amparada por su guía vigente sin depender de Internet durante la ventana. Si se propone cambiar la carga y no hay camino hasta el ERP, el cambio se pospone a la ruta siguiente y sale solo la carga original con su guía vigente. Si el cambio ya se ejecutó o la guía se anuló, la salida queda bloqueada hasta disponer de un documento válido. Ningún camión sale sin guía válida. AL-DTE-01 ensaya las 96 salidas con fallas inyectadas, preemisión nocturna, cambio de carga y emisión del ERP ante el SII por fibra, LTE y Starlink en espera caliente de Talca. La prueba registra folio, anulación, nueva guía y estado de cada salida.
 
 El Anexo 4-U distingue emisión tributaria, constancia operativa y acuse del receptor. La firma, fotografía o QR del POD no se equiparan automáticamente al recibo exigible: el mecanismo se selecciona según el receptor y se canaliza por el ERP o el perfil EDI aprobado (SII, 2018, s. f.-a, s. f.-b).
 
@@ -1434,7 +1434,7 @@ Los conductores de transportistas externos (≈ 160, de 10 empresas) no pertenec
 
 - Desde la Etapa 2, el representante de la empresa puede confirmarla en el portal de transportistas.
 
-- El responsable de despacho aprueba la asignación conductor–vehículo–turno; el alta inicial requiere conexión para verificar un OTP de un solo uso.
+- El responsable de despacho aprueba la asignación conductor–vehículo–turno. El alta inicial requiere conexión para verificar un OTP de un solo uso.
 
 - El identificador del conductor y el del transportista acompañan cada `EntregaRegistrada`.
 
@@ -1442,11 +1442,11 @@ Los conductores de transportistas externos (≈ 160, de 10 empresas) no pertenec
 
 La aplicación conserva localmente una asignación firmada para el turno de hasta 14 horas y permite capturar eventos mientras no exista red.
 
-- La caché local de identidad, de solo lectura y TTL de 24 horas, no acorta por sí sola la vigencia de esa asignación de terreno; tampoco la renueva.
+- La caché local de identidad, de solo lectura y TTL de 24 horas, no acorta por sí sola la vigencia de esa asignación de terreno, tampoco la renueva.
 
 - Una persona reemplazante que no fue dada de alta no obtiene una nueva identidad sin conexión.
 
-- En ese caso Operaciones reasigna el turno a un conductor ya habilitado y registra la excepción; la rotación no autoriza compartir el OTP ni la cuenta del conductor previo.
+- En ese caso Operaciones reasigna el turno a un conductor ya habilitado y registra la excepción. La rotación no autoriza compartir el OTP ni la cuenta del conductor previo.
 
 - Para que esa reasignación sea posible durante un corte de 24 horas, el acuerdo operacional con cada transportista le exige mantener enrolados, antes de cada turno, conductores suplentes suficientes para cubrir sus rutas del día siguiente.
 
@@ -1474,7 +1474,7 @@ Al finalizar el turno expiran la asignación y sus permisos.
 
 <a id="sec:cuello-botella-septiembre"></a>
 
-Septiembre eleva las entregas diarias de aproximadamente 1.400 a 2.600 durante tres semanas. Las 2.600 entregas ocurren a lo largo de la jornada; la ventana 05:30–07:00 concentra la salida de 96 camiones, no todas las firmas de entrega. En esa ventana, el primer cuello de botella probable es la confirmación de guías del ERP mediante la ACL: es una dependencia singular y aumentar réplicas Laravel no acelera al emisor legado. La base transaccional de Talca, la WAN al reconectar y la transferencia de evidencias son candidatos adicionales, no recursos cuya saturación ya se haya medido. La Tabla [5](LAFROX-Subdocumento4.md#tab:cuello-botella) muestra cómo contrastar la hipótesis; RT-09.05 exige sustentar el primer límite con una prueba reproducible.
+Septiembre eleva las entregas diarias de aproximadamente 1.400 a 2.600 durante tres semanas. Las 2.600 entregas ocurren a lo largo de la jornada. La ventana 05:30–07:00 concentra la salida de 96 camiones, no todas las firmas de entrega. En esa ventana, el primer cuello de botella probable es la confirmación de guías del ERP mediante la ACL: es una dependencia singular y aumentar réplicas Laravel no acelera al emisor legado. La base transaccional de Talca, la WAN al reconectar y la transferencia de evidencias son candidatos adicionales, no recursos cuya saturación ya se haya medido. La Tabla [5](LAFROX-Subdocumento4.md#tab:cuello-botella) muestra cómo contrastar la hipótesis. RT-09.05 exige sustentar el primer límite con una prueba reproducible.
 
 <a id="tab:cuello-botella"></a>
 
@@ -1482,18 +1482,18 @@ Septiembre eleva las entregas diarias de aproximadamente 1.400 a 2.600 durante t
 
 | **Recurso** | **Señal de saturación** | **Respuesta lógica** | **Prueba** |
 | --- | --- | --- | --- |
-| ERP por ACL | Aumentan guías sin confirmar y latencia p95 de emisión. | Preemitir al cerrar la carga nocturna; invalidar y reemitir si cambia. | 96 camiones en ventana. |
+| ERP por ACL | Aumentan guías sin confirmar y latencia p95 de emisión. | Preemitir al cerrar la carga nocturna, invalidar y reemitir si cambia. | 96 camiones en ventana. |
 | VM-02, base transaccional de Talca | Crecen la latencia de confirmación y la espera de escritura. | Medir y aliviar contención de escrituras del WMS local. | Carga de preparación y despacho de Talca. |
-| Cola de integración | Crecen edad del mensaje y DLQ. | Priorizar guías; diferir reportes. | Corte y reconexión. |
+| Cola de integración | Crecen edad del mensaje y DLQ. | Priorizar guías, diferir reportes. | Corte y reconexión. |
 | M2 en bodega | Crecen espera de reserva y bloqueos de stock. | Serializar por SKU y aislar consultas. | Doble compromiso en peak. |
 
 Fuente: elaboración propia a partir de las Bases Técnicas del caso (cap. 14, p. 24, y anexo B, p. 38).
 
 La emisión de guías debe medirse antes de atribuir el límite al cómputo escalable.
 
-Al cerrar la carga nocturna, el servicio de integración con el ERP en VM-04 solicita la guía al ERP mediante la ACL local; el ERP dispone de fibra, LTE y satélite para comunicarse con el SII. Cualquier cambio de carga invalida la guía y exige otra antes de liberar. Se mide el número de guías sin confirmar antes de cada salida y se alerta al responsable de despacho; el camión afectado no se marca como liberado mientras falte el documento o una contingencia autorizada. La prueba de carga debe confirmar si el ERP es efectivamente el primer límite y ajustar esta hipótesis con medición, como exige RT-09.05.
+Al cerrar la carga nocturna, el servicio de integración con el ERP en VM-04 solicita la guía al ERP mediante la ACL local. El ERP dispone de fibra, LTE y satélite para comunicarse con el SII. Cualquier cambio de carga invalida la guía y exige otra antes de liberar. Se mide el número de guías sin confirmar antes de cada salida y se alerta al responsable de despacho. El camión afectado no se marca como liberado mientras falte el documento o una contingencia autorizada. La prueba de carga debe confirmar si el ERP es efectivamente el primer límite y ajustar esta hipótesis con medición, como exige RT-09.05.
 
-El Anexo 4-T especifica percentiles, ventanas de ensayo, carga de 1,5 veces el peak y escenario de crecimiento de tres veces, con colas y procesos aislados. Los resultados se deben medir; los cálculos de escenario no son evidencia de capacidad ejecutada.
+El Anexo 4-T especifica percentiles, ventanas de ensayo, carga de 1,5 veces el peak y escenario de crecimiento de tres veces, con colas y procesos aislados. Los resultados se deben medir. Los cálculos de escenario no son evidencia de capacidad ejecutada.
 
 ### 4.1.20 Decisiones del numeral 16.1 del caso
 
@@ -1503,7 +1503,7 @@ El Anexo 4-L conserva el número y la pregunta de cada una de las dieciséis dec
 
 Las validaciones se identifican por su número de origen para consulta al CLIENTE.
 
-La matriz permite comprobar qué decisión implementa cada módulo. En particular, la identidad externa corresponde al número 5 y el destino del WMS al 14; ninguna de ellas debe desplazarse para llenar una tabla de cumplimiento.
+La matriz permite comprobar qué decisión implementa cada módulo. En particular, la identidad externa corresponde al número 5 y el destino del WMS al 14. Ninguna de ellas debe desplazarse para llenar una tabla de cumplimiento.
 
 ### 4.1.21 Condiciones y supuestos de diseño
 
@@ -1517,11 +1517,11 @@ El relevo de turnos sin IdP, la autorización tributaria de salida y la pérdida
 
 - Los objetivos exigidos siguen siendo RTO ≤ 4 horas y RPO ≤ 15 minutos para servicios críticos.
 
-- La extracción continua por fibra, LTE y satélite de los CD sostiene el RPO ante la caída de dos caminos; AL-DR-01 verifica el punto recuperable y la recuperación del WMS de Talca en la nube.
+- La extracción continua por fibra, LTE y satélite de los CD sostiene el RPO ante la caída de dos caminos. AL-DR-01 verifica el punto recuperable y la recuperación del WMS de Talca en la nube.
 
 - El límite residual se justifica en 4.3.2.
 
-El Anexo 4-V reúne los protocolos de aceptación AL-DTE-01, AL-POD-01, AL-SLA-01, AL-OFF-01, AL-CLI-01, AL-DR-01, AL-PERF-01, AL-STOCK-01 y AL-ACT-01. Las actas registran configuración, fallas inyectadas, puntos de recuperación, salidas documentadas y resultados observados; 4.3.2 justifica el límite residual de continuidad.
+El Anexo 4-V reúne los protocolos de aceptación AL-DTE-01, AL-POD-01, AL-SLA-01, AL-OFF-01, AL-CLI-01, AL-DR-01, AL-PERF-01, AL-STOCK-01 y AL-ACT-01. Las actas registran configuración, fallas inyectadas, puntos de recuperación, salidas documentadas y resultados observados. 4.3.2 justifica el límite residual de continuidad.
 
 # 4.2 Arquitectura física
 
@@ -1529,11 +1529,11 @@ El Anexo 4-V reúne los protocolos de aceptación AL-DTE-01, AL-POD-01, AL-SLA-0
 
 La arquitectura física declara dónde vive cada componente de la solución, qué servicios se contratan en la nube, cómo se conecta cada sitio con la nube, qué ocurre cuando falla cada conexión y cuánta capacidad se provee.
 
-Esa arquitectura materializa el despliegue híbrido obligatorio del Artículo 16° de las Bases Administrativas (art. 16, p. 11). La carga principal corre en nube pública AWS, con la región primaria en sa-east-1 (São Paulo, Brasil) y la recuperación ante desastres en us-east-1 (Norte de Virginia, EE. UU.), y los componentes on-premise garantizan la continuidad de la operación de bodega, plataformas y terreno durante los cortes del enlace. La solución cubre las seis instalaciones de la compañía —los centros de distribución de Talca y de Concepción, las plataformas de cross-docking de Curicó, Chillán y Los Ángeles, y la casa matriz de Talca—, además de la calle y los 14.200 puntos de entrega. Cinco de esas instalaciones alojan cómputo; la casa matriz, contigua al centro de distribución de Talca, solo tiene oficinas y trabaja contra la nube. La séptima instalación, que el caso proyecta a tres años, se agrega por parametrización, sin cambios de desarrollo ni crecimiento de servidores en el CD Talca. Dos principios gobiernan el diseño:
+Esa arquitectura materializa el despliegue híbrido obligatorio del Artículo 16° de las Bases Administrativas (art. 16, p. 11). La carga principal corre en nube pública AWS, con la región primaria en sa-east-1 (São Paulo, Brasil) y la recuperación ante desastres en us-east-1 (Norte de Virginia, EE. UU.), y los componentes on-premise garantizan la continuidad de la operación de bodega, plataformas y terreno durante los cortes del enlace. La solución cubre las seis instalaciones de la compañía —los centros de distribución de Talca y de Concepción, las plataformas de cross-docking de Curicó, Chillán y Los Ángeles, y la casa matriz de Talca—, además de la calle y los 14.200 puntos de entrega. Cinco de esas instalaciones alojan cómputo. La casa matriz, contigua al centro de distribución de Talca, solo tiene oficinas y trabaja contra la nube. La séptima instalación, que el caso proyecta a tres años, se agrega por parametrización, sin cambios de desarrollo ni crecimiento de servidores en el CD Talca. Dos principios gobiernan el diseño:
 
 - **Carga principal en nube:** el núcleo transaccional de preventa, reparto y canal moderno, la analítica, la integración y el almacenamiento consolidado se ejecutan en AWS sa-east-1, con escalado elástico para el peak de septiembre.
 
-- **Autonomía total de la operación de bodega:** la preparación, el despacho, la recepción y el conteo corren contra los servidores del centro de distribución sin depender de Internet. La guía de despacho se preemite al cerrar la carga nocturna, en Talca desde su cola local y en los demás sitios por sus caminos de enlace. Si cambia la carga entre las 05:30 y las 07:00, se invalida la guía y el ERP de Talca emite otra por cualquiera de sus tres caminos, a los que Concepción y los cross-docking llegan por los suyos; si no hay camino hasta el ERP, el camión sale solo con la carga amparada por su guía vigente y el ajuste pasa a la ruta siguiente. Una guía ya anulada no se reutiliza: esa salida espera un documento válido.
+- **Autonomía total de la operación de bodega:** la preparación, el despacho, la recepción y el conteo corren contra los servidores del centro de distribución sin depender de Internet. La guía de despacho se preemite al cerrar la carga nocturna, en Talca desde su cola local y en los demás sitios por sus caminos de enlace. Si cambia la carga entre las 05:30 y las 07:00, se invalida la guía y el ERP de Talca emite otra por cualquiera de sus tres caminos, a los que Concepción y los cross-docking llegan por los suyos. Si no hay camino hasta el ERP, el camión sale solo con la carga amparada por su guía vigente y el ajuste pasa a la ruta siguiente. Una guía ya anulada no se reutiliza: esa salida espera un documento válido.
 
 La Figura [14](LAFROX-Subdocumento4.md#fig:vista-general) presenta la vista general de la arquitectura física híbrida. Su recorrido por bloques permite situar los componentes y sus conexiones antes de examinar cada parte de la solución.
 
@@ -1545,17 +1545,17 @@ Fuente: elaboración propia.
 
 <a id="fig:vista-general"></a>
 
-La Figura [14](LAFROX-Subdocumento4.md#fig:vista-general) se lee de arriba hacia abajo en tres franjas. En la franja superior están quienes llegan desde fuera de la red del CLIENTE: clientes, proveedores y transportistas por los portales; preventistas y conductores con sus terminales EC55 y TC58e, que leen el termógrafo del camión por Bluetooth (BLE); la casa matriz y el teletrabajo; y las cadenas de supermercados. Cada grupo entra por una puerta distinta. Los portales y los terminales pasan por el borde global (Route 53, Shield Advanced, AWS WAF y CloudFront) hacia API Gateway; la casa matriz y el teletrabajo usan Verified Access; y las cadenas intercambian mensajes por el canal AS2 detrás del Network Load Balancer. Los recorridos y controles de entrada se detallan en la sección [4.2.5](LAFROX-Subdocumento4.md#sec:conexiones).
+La Figura [14](LAFROX-Subdocumento4.md#fig:vista-general) se lee de arriba hacia abajo en tres franjas. En la franja superior están quienes llegan desde fuera de la red del CLIENTE: clientes, proveedores y transportistas por los portales. Preventistas y conductores con sus terminales EC55 y TC58e, que leen el termógrafo del camión por Bluetooth (BLE), la casa matriz y el teletrabajo, y las cadenas de supermercados. Cada grupo entra por una puerta distinta. Los portales y los terminales pasan por el borde global (Route 53, Shield Advanced, AWS WAF y CloudFront) hacia API Gateway. La casa matriz y el teletrabajo usan Verified Access. Y las cadenas intercambian mensajes por el canal AS2 detrás del Network Load Balancer. Los recorridos y controles de entrada se detallan en la sección [4.2.5](LAFROX-Subdocumento4.md#sec:conexiones).
 
 En la franja central, la región primaria sa-east-1 reúne en la VPC de producción el balanceador privado de aplicación, la aplicación en ECS Fargate, Keycloak, ElastiCache, Aurora PostgreSQL y AWS DMS, que copia los cambios del PostgreSQL de Talca (VM-02) a un esquema de réplica de solo lectura en Aurora. Fuera de esa VPC quedan los servicios regionales DynamoDB, S3, SQS FIFO e IoT Core, que recibe la telemetría de cadena de frío por MQTTS, y la VPC Hub, donde Transit Gateway y la VPN Site-to-Site enlazan la nube con los sitios. La región us-east-1 recibe las réplicas de Aurora PostgreSQL, DynamoDB y S3 para la recuperación ante desastres. Esta franja se detalla en la Figura [18](LAFROX-Subdocumento4.md#fig:nube) de la sección [4.2.3](LAFROX-Subdocumento4.md#sec:servicios-nube), con la distribución por zona de disponibilidad, los servicios de operación y seguridad y la réplica reducida de aplicación en us-east-1.
 
-En la franja inferior están las cinco instalaciones con cómputo, cada una con su par de firewalls y su switching, y conectada a la VPC Hub por su propio túnel VPN. El CD Talca aloja un clúster Proxmox VE con Ceph de tres nodos y seis máquinas virtuales, el servidor del ERP de 2017, trasladado desde la sala actual, y el respaldo NAS WORM; el CD Concepción es un sitio operacional autónomo con dos servidores Proxmox, uno activo con cuatro máquinas virtuales y otro en espera con sus copias; y cada una de las tres plataformas de cross-docking opera autónomamente con dos mini-PC industriales con Docker, uno activo y otro en espera. En los dos centros de distribución, los terminales MC9400 trabajan por Wi-Fi 6E y los gateways IoT, dos en Talca y uno en Concepción, recogen los sensores de las cámaras; en los cross-docking, los terminales inalámbricos trabajan contra el mini-PC activo. Cada tipo de sitio tiene su propia figura de detalle: el cross-docking en la Figura [15](LAFROX-Subdocumento4.md#fig:crossdocking) (sección [4.2.2](LAFROX-Subdocumento4.md#sec:emplazamiento)), el CD Talca en la Figura [27](LAFROX-Subdocumento4.md#fig:cd-talca) (sección [4.3.1](LAFROX-Subdocumento4.md#sec:d-especificaciones-del-sitio-principal-on-)) y el CD Concepción en la Figura [16](LAFROX-Subdocumento4.md#fig:cd-concepcion) (sección [4.2.2](LAFROX-Subdocumento4.md#sec:emplazamiento)).
+En la franja inferior están las cinco instalaciones con cómputo, cada una con su par de firewalls y su switching, y conectada a la VPC Hub por su propio túnel VPN. El CD Talca aloja un clúster Proxmox VE con Ceph de tres nodos y seis máquinas virtuales, el servidor del ERP de 2017, trasladado desde la sala actual, y el respaldo NAS WORM. El CD Concepción es un sitio operacional autónomo con dos servidores Proxmox, uno activo con cuatro máquinas virtuales y otro en espera con sus copias. Y cada una de las tres plataformas de cross-docking opera autónomamente con dos mini-PC industriales con Docker, uno activo y otro en espera. En los dos centros de distribución, los terminales MC9400 trabajan por Wi-Fi 6E y los gateways IoT, dos en Talca y uno en Concepción, recogen los sensores de las cámaras. En los cross-docking, los terminales inalámbricos trabajan contra el mini-PC activo. Cada tipo de sitio tiene su propia figura de detalle: el cross-docking en la Figura [15](LAFROX-Subdocumento4.md#fig:crossdocking) (sección [4.2.2](LAFROX-Subdocumento4.md#sec:emplazamiento)), el CD Talca en la Figura [27](LAFROX-Subdocumento4.md#fig:cd-talca) (sección [4.3.1](LAFROX-Subdocumento4.md#sec:d-especificaciones-del-sitio-principal-on-)) y el CD Concepción en la Figura [16](LAFROX-Subdocumento4.md#fig:cd-concepcion) (sección [4.2.2](LAFROX-Subdocumento4.md#sec:emplazamiento)).
 
-La figura muestra la regla que ordena el diseño: cada bodega confirma sus operaciones contra su propio WMS, y la nube concentra los servicios comunes, la consolidación de datos y la recuperación del WMS de Talca. Talca replica los cambios de VM-02 a Aurora por DMS; Concepción y los cross-docking envían sus eventos a SQS FIFO. Si cae el enlace, las bases y los brokers locales permiten seguir operando y entregan los eventos retenidos al reconectar.
+La figura muestra la regla que ordena el diseño: cada bodega confirma sus operaciones contra su propio WMS, y la nube concentra los servicios comunes, la consolidación de datos y la recuperación del WMS de Talca. Talca replica los cambios de VM-02 a Aurora por DMS. Concepción y los cross-docking envían sus eventos a SQS FIFO. Si cae el enlace, las bases y los brokers locales permiten seguir operando y entregan los eventos retenidos al reconectar.
 
 Este apartado se ordena en seis partes:
 
-- Sección [4.2.1](LAFROX-Subdocumento4.md#sec:implementos): equipamiento y software provistos, resumidos y analizados; el detalle elemento por elemento figura en el Formulario T-11, que acompaña a este subdocumento como archivo propio (LAFROX-Formulario-T-11).
+- Sección [4.2.1](LAFROX-Subdocumento4.md#sec:implementos): equipamiento y software provistos, resumidos y analizados. El detalle elemento por elemento figura en el Formulario T-11, que acompaña a este subdocumento como archivo propio (LAFROX-Formulario-T-11).
 
 - Sección [4.2.2](LAFROX-Subdocumento4.md#sec:emplazamiento): ubicación de cada componente en la nube o en las instalaciones según el Artículo 16.2 (Bases Administrativas, art. 16.2, p. 11).
 
@@ -1577,17 +1577,17 @@ Esta sección resume y analiza el equipamiento y el software que la solución re
 
 ### 4.2.1.1 Síntesis del equipamiento por familia
 
-La Tabla [A.35](LAFROX-Subdocumento4-Anexos.md#tab:t26) del Anexo 4-W cruza cada familia de equipamiento con el sitio donde se instala. Las cifras son las unidades en operación; la reserva se analiza a continuación.
+La Tabla [A.35](LAFROX-Subdocumento4-Anexos.md#tab:t26) del Anexo 4-W cruza cada familia de equipamiento con el sitio donde se instala. Las cifras son las unidades en operación. La reserva se analiza a continuación.
 
 
 
 La tabla incluye cinco enlaces satelitales: uno en Talca, uno en Concepción y uno por cada cross-docking.
 
-La tabla muestra que la operación se concentra en el terreno y en las bodegas, no en la sala técnica. Solo en la calle trabajan 62 terminales de preventa y 96 camiones equipados, cada uno con un terminal de conductor, una impresora de cabina y un terminal de pago; en las bodegas y en los cross-docking, 186 terminales y los puntos de acceso que los conectan. Frente a eso, el cómputo y el almacenamiento suman 12 equipos: 3 servidores en Talca, 2 en Concepción, 6 mini-PC y la NAS. A ellos se suma el servidor del ERP del CLIENTE, que se traslada a la sala de Talca y no forma parte de la oferta. Esa proporción refleja el caso, donde la operación ocurre en la calle, en la cámara y en el andén, y explica por qué la gestión de dispositivos (N-13) es un componente con emplazamiento propio y no un accesorio.
+La tabla muestra que la operación se concentra en el terreno y en las bodegas, no en la sala técnica. Solo en la calle trabajan 62 terminales de preventa y 96 camiones equipados, cada uno con un terminal de conductor, una impresora de cabina y un terminal de pago. En las bodegas y en los cross-docking, 186 terminales y los puntos de acceso que los conectan. Frente a eso, el cómputo y el almacenamiento suman 12 equipos: 3 servidores en Talca, 2 en Concepción, 6 mini-PC y la NAS. A ellos se suma el servidor del ERP del CLIENTE, que se traslada a la sala de Talca y no forma parte de la oferta. Esa proporción refleja el caso, donde la operación ocurre en la calle, en la cámara y en el andén, y explica por qué la gestión de dispositivos (N-13) es un componente con emplazamiento propio y no un accesorio.
 
-Los equipos de reparto se cuentan por camión y no por conductor, porque los conductores de los transportistas rotan sin aviso y el equipo queda en el vehículo (S-30). Los terminales de bodega se comparten entre turnos, como contempla el perfil operacional del caso (RT-12.11; Bases Técnicas del caso, cap. 15, p. 27), por lo que su cantidad la fija el turno con más personas trabajando a la vez: los 120 preparadores nocturnos de Talca y los 60 de Concepción (S-39); la carga de los camiones la hace esa misma cuadrilla (S-33). Los puntos de acceso son una estimación preliminar por superficie, con mayor densidad dentro de las cámaras, que el estudio de cobertura confirma (S-36).
+Los equipos de reparto se cuentan por camión y no por conductor, porque los conductores de los transportistas rotan sin aviso y el equipo queda en el vehículo (S-30). Los terminales de bodega se comparten entre turnos, como contempla el perfil operacional del caso (RT-12.11, Bases Técnicas del caso, cap. 15, p. 27), por lo que su cantidad la fija el turno con más personas trabajando a la vez: los 120 preparadores nocturnos de Talca y los 60 de Concepción (S-39). La carga de los camiones la hace esa misma cuadrilla (S-33). Los puntos de acceso son una estimación preliminar por superficie, con mayor densidad dentro de las cámaras, que el estudio de cobertura confirma (S-36).
 
-A las unidades en operación se suma la reserva del numeral 8.4 de las Bases Técnicas Transversales (cap. 8, p. 19): el 10 % del parque de cada tipo de dispositivo y componente crítico, redondeado hacia arriba. El T-11 distingue las unidades iniciales de la compra del año 3. Para el año 3, cada equipo de reparto pasa de 96 unidades instaladas más 10 de reserva a 110 instaladas más 11 de reserva (121 por fila, 15 más que la cantidad inicial); preventa pasa de 62 + 7 a 70 + 7 (77 en total, 8 más). En bodega, el cálculo del Anexo 4-W lleva el total de 207 a 235 terminales, incluidos los repuestos de esa proyección. Cada cross-docking mantiene desde el inicio una unidad de reserva precargada, además de las reservas asignadas a Talca y Concepción. Los demás equipos mantienen las reservas del 10 % o por componente declaradas en el T-11. El switch de gestión no lleva reserva, porque su falla no detiene la operación; los servidores se cubren con repuestos por componente, como discos y fuentes. Los termógrafos no crecen, porque el caso no proyecta más camiones con equipo de frío (S-38). El detalle elemento por elemento está en el Formulario T-11, el cálculo de cada cantidad en el Anexo 4-W y los supuestos en el registro del Subdocumento 3.
+A las unidades en operación se suma la reserva del numeral 8.4 de las Bases Técnicas Transversales (cap. 8, p. 19): el 10 % del parque de cada tipo de dispositivo y componente crítico, redondeado hacia arriba. El T-11 distingue las unidades iniciales de la compra del año 3. Para el año 3, cada equipo de reparto pasa de 96 unidades instaladas más 10 de reserva a 110 instaladas más 11 de reserva (121 por fila, 15 más que la cantidad inicial). Preventa pasa de 62 + 7 a 70 + 7 (77 en total, 8 más). En bodega, el cálculo del Anexo 4-W lleva el total de 207 a 235 terminales, incluidos los repuestos de esa proyección. Cada cross-docking mantiene desde el inicio una unidad de reserva precargada, además de las reservas asignadas a Talca y Concepción. Los demás equipos mantienen las reservas del 10 % o por componente declaradas en el T-11. El switch de gestión no lleva reserva, porque su falla no detiene la operación. Los servidores se cubren con repuestos por componente, como discos y fuentes. Los termógrafos no crecen, porque el caso no proyecta más camiones con equipo de frío (S-38). El detalle elemento por elemento está en el Formulario T-11, el cálculo de cada cantidad en el Anexo 4-W y los supuestos en el registro del Subdocumento 3.
 
 Se proveen ocho estaciones nuevas para despacho, administración, planificación, calidad y TI. Los equipos existentes de los usuarios de oficina se incorporan a la gestión central con CrowdStrike Falcon, cifrado de disco, parches y control de extraíbles como condición de acceso por Verified Access conforme a ADR-16 (Anexo 4-O).
 
@@ -1601,44 +1601,44 @@ Cada familia se especifica contra una condición del caso que el equipamiento de
 
 - Los mini-PC de los cross-docking son de rango industrial, porque las naves no tienen climatización y el supuesto de diseño es de hasta 50 °C bajo la techumbre en verano.
 
-- Los 28 termógrafos en operación cubren los 18 camiones propios y los 10 refrigerados de los transportistas que declara el caso, porque el instrumento viaja con la carga y su registro ampara la cadena de frío aun cuando el vehículo no sea del CLIENTE; en los camiones de terceros se instala con el acuerdo de cada transportista (S-28). Son registradores conformes con la norma EN 12830:2018 para el transporte de alimentos refrigerados y congelados, y la compra exige su certificado de calibración según EN 13486, porque su registro es la prueba de la cadena de frío ante un cliente o ante la autoridad sanitaria.
+- Los 28 termógrafos en operación cubren los 18 camiones propios y los 10 refrigerados de los transportistas que declara el caso, porque el instrumento viaja con la carga y su registro ampara la cadena de frío aun cuando el vehículo no sea del CLIENTE. En los camiones de terceros se instala con el acuerdo de cada transportista (S-28). Son registradores conformes con la norma EN 12830:2018 para el transporte de alimentos refrigerados y congelados, y la compra exige su certificado de calibración según EN 13486, porque su registro es la prueba de la cadena de frío ante un cliente o ante la autoridad sanitaria.
 
-La autonomía y las condiciones de uso de cada dispositivo de terreno con batería se declaran con la ficha del fabricante y se comprueban con la unidad de prueba antes de la compra masiva (RT-08.11 y RT-08.15; Bases Técnicas Transversales, cap. 8, p. 19):
+La autonomía y las condiciones de uso de cada dispositivo de terreno con batería se declaran con la ficha del fabricante y se comprueban con la unidad de prueba antes de la compra masiva (RT-08.11 y RT-08.15, Bases Técnicas Transversales, cap. 8, p. 19):
 
-- MC9400 estándar: turno de bodega de 8 h, y el equipo pasa de un turno al siguiente. La batería de 7.000 mAh cubre un turno completo según el fabricante, y al traspasar el equipo se cambia en caliente por una de las 81 baterías de repuesto del año 3: como todos los MC9400 estándar de Talca y Concepción trabajan de noche, cada una de las 73 personas de un turno de día (S-44) recibe un equipo que viene del turno anterior, y se agrega el 10 %; las baterías retiradas se recargan antes del traspaso siguiente. Las 40 cunas de carga dan una posición por equipo en operación. Humedad de 5 a 95 % sin condensación, IP65 e IP68, vibración de 4 g entre 5 Hz y 2 kHz y pantalla de 600 nits.
-- MC9400 Cold Storage Freezer: turno de 8 h a -22 °C, con batería de 5.000 mAh y una batería de repuesto por equipo. Humedad de 5 a 95 % con condensación, porque calefacciona la ventana del lector y la pantalla; IP65 e IP68; vibración de 4 g entre 5 Hz y 2 kHz, y pantalla de 600 nits operable con guantes gruesos.
-- TC58e: ruta de hasta 14,5 h, de 05:30 a 20:00. La batería extendida de 7.000 mAh se recarga con el cargador del vehículo durante la conducción. Humedad de 5 a 95 % sin condensación, IP65 e IP68 y pantalla de 600 nits operable con guantes y mojada; el fabricante no publica una especificación de vibración, por lo que la prueba de aceptación la comprueba en el vehículo.
-- EC55: jornada en terreno de lunes a sábado, con batería extendida de 4.180 mAh, porque el fabricante declara un turno completo con la estándar de 3.060 mAh solo para un uso típico. Humedad de 5 a 95 % sin condensación, IP67, vibración de 4 g entre 5 Hz y 2 kHz y pantalla de 450 nits. El fabricante no declara lectura bajo sol directo ni uso con guantes; ambas se comprueban en la prueba de aceptación.
-- ZQ620 Plus: ruta de hasta 14,5 h, con batería de 3.250 mAh y una batería de reemplazo por impresora. IP54, humedad de 10 a 90 % sin condensación y operación de -20 a +50 °C; el fabricante no declara vibración ni altura de caída en la ficha consultada, por lo que la compra exige una caída de al menos 1,5 m y la prueba de aceptación comprueba la impresora en el vehículo.
+- MC9400 estándar: turno de bodega de 8 h, y el equipo pasa de un turno al siguiente. La batería de 7.000 mAh cubre un turno completo según el fabricante, y al traspasar el equipo se cambia en caliente por una de las 81 baterías de repuesto del año 3: como todos los MC9400 estándar de Talca y Concepción trabajan de noche, cada una de las 73 personas de un turno de día (S-44) recibe un equipo que viene del turno anterior, y se agrega el 10 %. Las baterías retiradas se recargan antes del traspaso siguiente. Las 40 cunas de carga dan una posición por equipo en operación. Humedad de 5 a 95 % sin condensación, IP65 e IP68, vibración de 4 g entre 5 Hz y 2 kHz y pantalla de 600 nits.
+- MC9400 Cold Storage Freezer: turno de 8 h a -22 °C, con batería de 5.000 mAh y una batería de repuesto por equipo. Humedad de 5 a 95 % con condensación, porque calefacciona la ventana del lector y la pantalla, IP65 e IP68, vibración de 4 g entre 5 Hz y 2 kHz, y pantalla de 600 nits operable con guantes gruesos.
+- TC58e: ruta de hasta 14,5 h, de 05:30 a 20:00. La batería extendida de 7.000 mAh se recarga con el cargador del vehículo durante la conducción. Humedad de 5 a 95 % sin condensación, IP65 e IP68 y pantalla de 600 nits operable con guantes y mojada. El fabricante no publica una especificación de vibración, por lo que la prueba de aceptación la comprueba en el vehículo.
+- EC55: jornada en terreno de lunes a sábado, con batería extendida de 4.180 mAh, porque el fabricante declara un turno completo con la estándar de 3.060 mAh solo para un uso típico. Humedad de 5 a 95 % sin condensación, IP67, vibración de 4 g entre 5 Hz y 2 kHz y pantalla de 450 nits. El fabricante no declara lectura bajo sol directo ni uso con guantes. Ambas se comprueban en la prueba de aceptación.
+- ZQ620 Plus: ruta de hasta 14,5 h, con batería de 3.250 mAh y una batería de reemplazo por impresora. IP54, humedad de 10 a 90 % sin condensación y operación de -20 a +50 °C. El fabricante no declara vibración ni altura de caída en la ficha consultada, por lo que la compra exige una caída de al menos 1,5 m y la prueba de aceptación comprueba la impresora en el vehículo.
 - PAX A920 Pro: ruta de hasta 14,5 h, con batería de 5.150 mAh y cargador de vehículo USB-C que la recarga entre entregas. El fabricante no declara grado IP, caída ni vibración en sus fichas publicadas: se usa bajo el resguardo de la cabina o del local del cliente, y la prueba de aceptación lo comprueba en ruta.
 
-Zebra DNA informa la salud de la batería de cada terminal Zebra, y una batería se repone cuando su capacidad baja del 80 % de la nominal; como el resto del hardware de terreno, la compra el CLIENTE con la especificación de LafroX (RT-08.13; Bases Técnicas Transversales, cap. 8, p. 19).
+Zebra DNA informa la salud de la batería de cada terminal Zebra, y una batería se repone cuando su capacidad baja del 80 % de la nominal. Como el resto del hardware de terreno, la compra el CLIENTE con la especificación de LafroX (RT-08.13, Bases Técnicas Transversales, cap. 8, p. 19).
 
-En el MC9400 Cold Storage Freezer, la interfaz de picking tiene controles de al menos 15 × 15 mm, operables con guantes y sin deslizar, pellizcar ni tocar dos veces. La aceptación comprueba al menos 30 minutos de operación continua a −22 °C con el dispositivo y la aplicación ofertados (RNF-05.02; LafroX, 2026c, Anexo 3.B).
+En el MC9400 Cold Storage Freezer, la interfaz de picking tiene controles de al menos 15 × 15 mm, operables con guantes y sin deslizar, pellizcar ni tocar dos veces. La aceptación comprueba al menos 30 minutos de operación continua a −22 °C con el dispositivo y la aplicación ofertados (RNF-05.02, LafroX, 2026c, Anexo 3.B).
 
-Las interfaces y los dispositivos se aceptan con los flujos reales: con guantes térmicos a −22 °C en congelado y, en terreno, bajo lluvia, con más de 34 °C, a una mano, con sol directo y sin conexión durante un turno completo. Se usan el MC9400 Cold Storage Freezer en congelado y los EC55 y TC58e en sus perfiles de terreno, como parte de las pruebas previas a la compra masiva (RT-13.08; Bases Técnicas Transversales, cap. 13, p. 26; Bases Técnicas del caso, cap. 15, p. 27).
+Las interfaces y los dispositivos se aceptan con los flujos reales: con guantes térmicos a −22 °C en congelado y, en terreno, bajo lluvia, con más de 34 °C, a una mano, con sol directo y sin conexión durante un turno completo. Se usan el MC9400 Cold Storage Freezer en congelado y los EC55 y TC58e en sus perfiles de terreno, como parte de las pruebas previas a la compra masiva (RT-13.08, Bases Técnicas Transversales, cap. 13, p. 26; Bases Técnicas del caso, cap. 15, p. 27).
 
 En la sala técnica se aplica redundancia sin sobrecompra:
 
-- Talca: los tres nodos idénticos disponen cada uno de 32 hilos, 64 GB RAM y dos NVMe de 960 GB para Ceph sin RAID. Ceph mantiene tres réplicas y quórum con dos nodos; la configuración cubre la carga a 3× con un nodo caído, según el Anexo 4-W. Conforme a RT-03.14 y al Art. 16.4, el nivel declarado es Ceph sin RAID por hardware, con réplica de tres copias: tolera la falla de un disco y de un nodo. RAID 10 bajo Ceph se descarta porque duplica la protección y reduce la capacidad útil (ADR-10; Bases Técnicas Transversales, cap. 3, p. 9; Bases Administrativas, art. 16.4, p. 12).
+- Talca: los tres nodos idénticos disponen cada uno de 32 hilos, 64 GB RAM y dos NVMe de 960 GB para Ceph sin RAID. Ceph mantiene tres réplicas y quórum con dos nodos. La configuración cubre la carga a 3× con un nodo caído, según el Anexo 4-W. Conforme a RT-03.14 y al Art. 16.4, el nivel declarado es Ceph sin RAID por hardware, con réplica de tres copias: tolera la falla de un disco y de un nodo. RAID 10 bajo Ceph se descarta porque duplica la protección y reduce la capacidad útil (ADR-10, Bases Técnicas Transversales, cap. 3, p. 9; Bases Administrativas, art. 16.4, p. 12).
 
-- Concepción: dos servidores idénticos, uno activo y otro en espera, cada uno dimensionado para la bodega completa y con la base replicada en forma sincrónica (RT-03.14; Bases Técnicas Transversales, cap. 3, p. 9). Los switches de núcleo operan en par conforme a RT-08.03 (Bases Técnicas Transversales, cap. 8, p. 18).
+- Concepción: dos servidores idénticos, uno activo y otro en espera, cada uno dimensionado para la bodega completa y con la base replicada en forma sincrónica (RT-03.14, Bases Técnicas Transversales, cap. 3, p. 9). Los switches de núcleo operan en par conforme a RT-08.03 (Bases Técnicas Transversales, cap. 8, p. 18).
 
 - Los cinco sitios: los firewalls van en par activo/pasivo. Cada cross-docking dispone además de dos switches industriales y de dos mini-PC, uno activo y otro en espera. La reposición de un mini-PC dañado se apoya en la unidad de reserva conservada en Talca.
 
-RT-08.04 pertenece a la sección 8.1 de las Bases, sobre infraestructura de cómputo, almacenamiento y red (Bases Técnicas Transversales, cap. 8, p. 18). Esos equipos tienen doble fuente conectada a circuitos distintos: servidores, respaldo local, firewalls, switches, consola KVM, gateway IoT y mini-PC, este último con dos fuentes DIN y módulo de redundancia. Cada gabinete recibe dos circuitos: en la sala de Talca, las PDU A y B; en los gabinetes de borde y de piso, la UPS y un circuito directo del tablero. Los equipos de una sola fuente, que son el servidor del ERP del CLIENTE, los terminales Starlink y la ONT y el router LTE del operador, se conectan a un conmutador automático de transferencia alimentado por ambos circuitos. Fuera de esa sección, los terminales móviles tienen batería, los puntos de acceso reciben PoE de switches con doble fuente, y las impresoras, balanzas y estaciones de trabajo se cubren mediante unidades alternativas y circuitos protegidos.
+RT-08.04 pertenece a la sección 8.1 de las Bases, sobre infraestructura de cómputo, almacenamiento y red (Bases Técnicas Transversales, cap. 8, p. 18). Esos equipos tienen doble fuente conectada a circuitos distintos: servidores, respaldo local, firewalls, switches, consola KVM, gateway IoT y mini-PC, este último con dos fuentes DIN y módulo de redundancia. Cada gabinete recibe dos circuitos: en la sala de Talca, las PDU A y B. En los gabinetes de borde y de piso, la UPS y un circuito directo del tablero. Los equipos de una sola fuente, que son el servidor del ERP del CLIENTE, los terminales Starlink y la ONT y el router LTE del operador, se conectan a un conmutador automático de transferencia alimentado por ambos circuitos. Fuera de esa sección, los terminales móviles tienen batería, los puntos de acceso reciben PoE de switches con doble fuente, y las impresoras, balanzas y estaciones de trabajo se cubren mediante unidades alternativas y circuitos protegidos.
 
-Todo el equipamiento es nuevo, sin uso previo y con garantía de fábrica vigente desde la recepción conforme (RT-08.06; Bases Técnicas Transversales, cap. 8, p. 18). Su vida útil esperada es de cinco años, mayor que los 56 meses del contrato. Los repuestos provienen de la reserva del 10 % y de la garantía del fabricante. Cada unidad dada de baja se repone desde esa reserva (RT-08.13; Bases Técnicas Transversales, cap. 8, p. 19).
+Todo el equipamiento es nuevo, sin uso previo y con garantía de fábrica vigente desde la recepción conforme (RT-08.06, Bases Técnicas Transversales, cap. 8, p. 18). Su vida útil esperada es de cinco años, mayor que los 56 meses del contrato. Los repuestos provienen de la reserva del 10 % y de la garantía del fabricante. Cada unidad dada de baja se repone desde esa reserva (RT-08.13, Bases Técnicas Transversales, cap. 8, p. 19).
 
-Antes de la compra masiva, LafroX provee al CLIENTE una unidad de cada tipo y variante de dispositivo especificado en el T-11 para sus pruebas de aceptación, incluidos los modelos estándar y de congelado. Las unidades aceptadas se incorporan al parque o a las reservas ya dimensionadas, sin aumentar las cantidades ofertadas (RT-08.15; Bases Técnicas Transversales, cap. 8, p. 19).
+Antes de la compra masiva, LafroX provee al CLIENTE una unidad de cada tipo y variante de dispositivo especificado en el T-11 para sus pruebas de aceptación, incluidos los modelos estándar y de congelado. Las unidades aceptadas se incorporan al parque o a las reservas ya dimensionadas, sin aumentar las cantidades ofertadas (RT-08.15, Bases Técnicas Transversales, cap. 8, p. 19).
 
-La estrategia de extensión de vida útil mantiene en servicio los equipos reparables durante al menos 60 meses desde su recepción (cinco años × 12), mediante mantención, repuestos y reemplazo de baterías, sin una renovación general al cierre del contrato. Solo las unidades irreparables pasan al procedimiento de baja y disposición certificada, lo que reduce los residuos electrónicos generados durante el contrato (RT-08.19; Bases Técnicas Transversales, cap. 8, p. 20).
+La estrategia de extensión de vida útil mantiene en servicio los equipos reparables durante al menos 60 meses desde su recepción (cinco años × 12), mediante mantención, repuestos y reemplazo de baterías, sin una renovación general al cierre del contrato. Solo las unidades irreparables pasan al procedimiento de baja y disposición certificada, lo que reduce los residuos electrónicos generados durante el contrato (RT-08.19, Bases Técnicas Transversales, cap. 8, p. 20).
 
-Todo medio de almacenamiento que salga de servicio se identifica por activo y número de serie y permanece bajo custodia hasta completar su sanitización segura y verificable. El procedimiento cubre servidores, NAS y sus discos, HDD y SSD, los SSD de mini-PC, el almacenamiento de terminales móviles y el medio físico rotativo de respaldo. Tras comprobar la conservación de los datos exigibles y la ausencia de una obligación de retención sobre la única copia, se aplica un método de purga adecuado al medio y a la sensibilidad de sus datos, conforme a NIST SP 800-88 Rev. 2; un borrado de archivos o un restablecimiento de fábrica sin evidencia de eficacia no acredita la sanitización. El borrado criptográfico exige comprobar su aplicabilidad y la eliminación de todas las claves pertinentes; un medio averiado o no sanitizable se destruye bajo custodia. Se verifican los resultados y se entrega al CLIENTE un certificado de sanitización o destrucción con identificación del medio, método, fecha, ejecutor, verificador y evidencia del resultado antes de autorizar su salida (National Institute of Standards and Technology [NIST], 2025; RT-08.17; Bases Técnicas Transversales, cap. 8, p. 20).
+Todo medio de almacenamiento que salga de servicio se identifica por activo y número de serie y permanece bajo custodia hasta completar su sanitización segura y verificable. El procedimiento cubre servidores, NAS y sus discos, HDD y SSD, los SSD de mini-PC, el almacenamiento de terminales móviles y el medio físico rotativo de respaldo. Tras comprobar la conservación de los datos exigibles y la ausencia de una obligación de retención sobre la única copia, se aplica un método de purga adecuado al medio y a la sensibilidad de sus datos, conforme a NIST SP 800-88 Rev. 2. Un borrado de archivos o un restablecimiento de fábrica sin evidencia de eficacia no acredita la sanitización. El borrado criptográfico exige comprobar su aplicabilidad y la eliminación de todas las claves pertinentes. Un medio averiado o no sanitizable se destruye bajo custodia. Se verifican los resultados y se entrega al CLIENTE un certificado de sanitización o destrucción con identificación del medio, método, fecha, ejecutor, verificador y evidencia del resultado antes de autorizar su salida (National Institute of Standards and Technology [NIST], 2025; RT-08.17, Bases Técnicas Transversales, cap. 8, p. 20).
 
-La disposición final del equipamiento electrónico se efectúa mediante un gestor autorizado y registrado conforme a la normativa de residuos aplicable y a la Ley N.º 20.920 (2016). LafroX comprueba la autorización y el registro del gestor para las operaciones y residuos correspondientes, conserva la trazabilidad desde la entrega hasta el destino final y entrega al CLIENTE el certificado de disposición, con identificación de los equipos, cantidades, gestor, tratamiento, destino y fecha. Los equipos con almacenamiento solo se entregan tras acreditar su sanitización o destrucción certificada; el certificado de disposición no reemplaza al de sanitización o destrucción. Estas actividades forman parte del ciclo de vida del equipamiento, desarrollado en el paquete 8.2.7 del Formulario T-14 (RT-08.18; Bases Técnicas Transversales, cap. 8, p. 20).
+La disposición final del equipamiento electrónico se efectúa mediante un gestor autorizado y registrado conforme a la normativa de residuos aplicable y a la Ley N.º 20.920 (2016). LafroX comprueba la autorización y el registro del gestor para las operaciones y residuos correspondientes, conserva la trazabilidad desde la entrega hasta el destino final y entrega al CLIENTE el certificado de disposición, con identificación de los equipos, cantidades, gestor, tratamiento, destino y fecha. Los equipos con almacenamiento solo se entregan tras acreditar su sanitización o destrucción certificada. El certificado de disposición no reemplaza al de sanitización o destrucción. Estas actividades forman parte del ciclo de vida del equipamiento, desarrollado en el paquete 8.2.7 del Formulario T-14 (RT-08.18, Bases Técnicas Transversales, cap. 8, p. 20).
 
-El almacenamiento ejecuta verificaciones periódicas de integridad y repara los datos desde las réplicas disponibles, registrando los errores. La observabilidad recoge los indicadores de salud y desgaste de los medios y alerta al NOC cuando anticipan una falla o su agotamiento, para reemplazarlos de forma preventiva (RT-08.02; Bases Técnicas Transversales, cap. 8, p. 18).
+El almacenamiento ejecuta verificaciones periódicas de integridad y repara los datos desde las réplicas disponibles, registrando los errores. La observabilidad recoge los indicadores de salud y desgaste de los medios y alerta al NOC cuando anticipan una falla o su agotamiento, para reemplazarlos de forma preventiva (RT-08.02, Bases Técnicas Transversales, cap. 8, p. 18).
 
 ### 4.2.1.3 Software y licenciamiento
 
@@ -1648,7 +1648,7 @@ El software de base que opera el adjudicatario es de código abierto y se organi
 
 - La aplicación está escrita en PHP 8.5 con Laravel 13 y sus dependencias fijadas por Composer. Las dependencias de PHP se revisan en cada construcción con `composer audit` y su licencia se verifica contra una lista de licencias admitidas antes de incorporarlas.
 
-- Los portales usan Angular y TypeScript; las aplicaciones de terreno usan Kotlin.
+- Los portales usan Angular y TypeScript. Las aplicaciones de terreno usan Kotlin.
 
 Los únicos elementos con suscripción son los servicios de la plataforma de nube, descritos en la sección [4.2.3](LAFROX-Subdocumento4.md#sec:servicios-nube), la gestión de dispositivos, los agentes de detección en endpoints y el orquestador de integración continua GitLab CI. Esta composición mantiene la reversibilidad de la solución y evita que el CLIENTE quede atado a un licenciamiento propietario.
 
@@ -1672,7 +1672,7 @@ De las seis instalaciones que cubre la solución, cinco alojan cómputo on-premi
 
 - La sexta instalación, la casa matriz de Talca, está junto al centro de distribución, solo aloja oficinas y trabaja contra la nube, por lo que no requiere cómputo propio y el dimensionamiento se calcula sobre los otros cinco recintos.
 
-Los dos centros de distribución tienen su recinto especificado en el apartado [4.3](LAFROX-Subdocumento4.md#cap:4-3-data-center); las plataformas de cross-docking no lo tienen, porque operan en un gabinete de borde dentro de la nave. La Figura [15](LAFROX-Subdocumento4.md#fig:crossdocking) muestra ese gabinete, que se repite igual en Curicó, Chillán y Los Ángeles.
+Los dos centros de distribución tienen su recinto especificado en el apartado [4.3](LAFROX-Subdocumento4.md#cap:4-3-data-center). Las plataformas de cross-docking no lo tienen, porque operan en un gabinete de borde dentro de la nave. La Figura [15](LAFROX-Subdocumento4.md#fig:crossdocking) muestra ese gabinete, que se repite igual en Curicó, Chillán y Los Ángeles.
 
 **Figura 15 — Gabinete de borde de las plataformas de cross-docking**
 
@@ -1682,7 +1682,7 @@ Fuente: elaboración propia.
 
 <a id="fig:crossdocking"></a>
 
-Starlink es el enlace principal y el LTE de dos proveedores lo respalda; ambos llegan a un par de firewalls compactos en alta disponibilidad, que termina el túnel VPN hacia la nube y conmuta de enlace en menos de 30 s. Detrás de los firewalls, dos switches industriales conectan los dos puntos de acceso de la nave y las dos interfaces de cada uno de los dos mini-PC industriales, que ejecutan en contenedores Docker el WMS, PostgreSQL, RabbitMQ, la caché de Keycloak y el colector ADOT. Los dos terminales inalámbricos de cada plataforma leen los códigos GS1 y trabajan contra el WMS local del mini-PC activo. El gabinete reúne en un par de equipos las funciones que Talca y Concepción reparten en varias máquinas virtuales, y con ello opera al 100 % en local la ventana de tres horas de recepción, desconsolidación y re-despacho. El mini-PC activo replica cada transacción en forma sincrónica al que está en espera, que toma su lugar si falla (RT-03.14; Bases Técnicas Transversales, cap. 3, p. 9; sección [4.2.4.3](LAFROX-Subdocumento4.md#sub:3-alta-disponibilidad)). Cada equipo tiene además alimentación redundante y dos SSD en RAID 1, y la reserva en Talca repone el equipo dañado. La reconstrucción desde el estado central de la nube, si fallan ambos, se trata en la sección [4.2.5](LAFROX-Subdocumento4.md#sec:conexiones).
+Starlink es el enlace principal y el LTE de dos proveedores lo respalda. Ambos llegan a un par de firewalls compactos en alta disponibilidad, que termina el túnel VPN hacia la nube y conmuta de enlace en menos de 30 s. Detrás de los firewalls, dos switches industriales conectan los dos puntos de acceso de la nave y las dos interfaces de cada uno de los dos mini-PC industriales, que ejecutan en contenedores Docker el WMS, PostgreSQL, RabbitMQ, la caché de Keycloak y el colector ADOT. Los dos terminales inalámbricos de cada plataforma leen los códigos GS1 y trabajan contra el WMS local del mini-PC activo. El gabinete reúne en un par de equipos las funciones que Talca y Concepción reparten en varias máquinas virtuales, y con ello opera al 100 % en local la ventana de tres horas de recepción, desconsolidación y re-despacho. El mini-PC activo replica cada transacción en forma sincrónica al que está en espera, que toma su lugar si falla (RT-03.14, Bases Técnicas Transversales, cap. 3, p. 9; sección [4.2.4.3](LAFROX-Subdocumento4.md#sub:3-alta-disponibilidad)). Cada equipo tiene además alimentación redundante y dos SSD en RAID 1, y la reserva en Talca repone el equipo dañado. La reconstrucción desde el estado central de la nube, si fallan ambos, se trata en la sección [4.2.5](LAFROX-Subdocumento4.md#sec:conexiones).
 
 La Figura [16](LAFROX-Subdocumento4.md#fig:cd-concepcion) presenta el gabinete de borde del CD Concepción como parte de su operación autónoma.
 
@@ -1694,7 +1694,7 @@ Fuente: elaboración propia.
 
 <a id="fig:cd-concepcion"></a>
 
-La figura sitúa el WMS, PostgreSQL, RabbitMQ y la caché de identidad en cuatro VM de un servidor Proxmox local. Un segundo servidor idéntico mantiene sus copias en espera, con la base replicada en forma sincrónica, y toma su lugar si falla (RT-03.14; Bases Técnicas Transversales, cap. 3, p. 9; sección [4.2.4.3](LAFROX-Subdocumento4.md#sub:3-alta-disponibilidad)). El par de firewalls y los dos switches de núcleo sostienen la red del sitio. Fibra D-03, LTE D-04 y Starlink D-06 proporcionan tres caminos hacia la nube. La UPS de 5 kVA del gabinete protege los dos servidores, los equipos de red y el terminal satelital durante 30 min y permite el apagado ordenado; su carga de diseño, 3,42 kVA, usa el 68 % de esa capacidad (Anexo 4-W). Cada servidor tiene fuentes redundantes. Solo si fallan ambos se repone el equipo y se reconstruye la base a partir del estado central alimentado por los eventos del propio sitio. El detalle de cada equipo está en el Formulario T-11.
+La figura sitúa el WMS, PostgreSQL, RabbitMQ y la caché de identidad en cuatro VM de un servidor Proxmox local. Un segundo servidor idéntico mantiene sus copias en espera, con la base replicada en forma sincrónica, y toma su lugar si falla (RT-03.14, Bases Técnicas Transversales, cap. 3, p. 9; sección [4.2.4.3](LAFROX-Subdocumento4.md#sub:3-alta-disponibilidad)). El par de firewalls y los dos switches de núcleo sostienen la red del sitio. Fibra D-03, LTE D-04 y Starlink D-06 proporcionan tres caminos hacia la nube. La UPS de 5 kVA del gabinete protege los dos servidores, los equipos de red y el terminal satelital durante 30 min y permite el apagado ordenado. Su carga de diseño, 3,42 kVA, usa el 68 % de esa capacidad (Anexo 4-W). Cada servidor tiene fuentes redundantes. Solo si fallan ambos se repone el equipo y se reconstruye la base a partir del estado central alimentado por los eventos del propio sitio. El detalle de cada equipo está en el Formulario T-11.
 
 La séptima instalación que proyecta el caso a tres años se incorpora parametrizando la infraestructura como código, sobre uno de los bloques de direccionamiento ya reservados en la Tabla [9](LAFROX-Subdocumento4.md#tab:t64), sin obras en la sala de Talca.
 
@@ -1702,13 +1702,13 @@ En la nube, la región primaria es sa-east-1 y cada servicio se despliega en al 
 
 **Figura 17 — Ubicación de los componentes por dominio y por sitio**
 
-[Abrir diagrama en PDF](https://raw.githubusercontent.com/PatricioH315/LafroX/c4d1230c9246f1a50933a8dc8a9a07b5d13a10be/04/figuras/fisica/Emplazamiento_dominios.pdf)
+[Abrir diagrama en PDF](https://raw.githubusercontent.com/PatricioH315/LafroX/ae4fa5a96719bad39267627a50eda8c822a72f10/04/figuras/fisica/Emplazamiento_dominios.pdf)
 
 Fuente: elaboración propia.
 
 <a id="fig:emplazamiento-dominios"></a>
 
-La figura muestra que cada instalación mantiene su operación local contra sus propios datos, dentro de las funciones y condiciones de 4.1.15 y del Anexo 4-J, aunque Concepción siga recibiendo parte de su surtido desde Talca. Esa autonomía no incluye emitir nuevas guías sin el ERP de Talca ni confirmar autorizaciones externas sin respuesta válida. Talca y Concepción tienen cada uno su WMS, su base, su broker y su caché de identidad; los cross-docking reúnen esas mismas funciones en un par de mini-PC, uno activo y otro en espera; y el terreno lleva su propio almacén local en el dispositivo. La nube concentra lo que es común a todos los sitios: los portales, el transaccional compartido, la analítica y los servicios de seguridad. Los doce componentes híbridos aparecen en los dos dominios porque cada uno tiene una parte que debe seguir operando en el sitio y otra que consolida en la nube.
+La figura muestra que cada instalación mantiene su operación local contra sus propios datos, dentro de las funciones y condiciones de 4.1.15 y del Anexo 4-J, aunque Concepción siga recibiendo parte de su surtido desde Talca. Esa autonomía no incluye emitir nuevas guías sin el ERP de Talca ni confirmar autorizaciones externas sin respuesta válida. Talca y Concepción tienen cada uno su WMS, su base, su broker y su caché de identidad. Los cross-docking reúnen esas mismas funciones en un par de mini-PC, uno activo y otro en espera. Y el terreno lleva su propio almacén local en el dispositivo. La nube concentra lo que es común a todos los sitios: los portales, el transaccional compartido, la analítica y los servicios de seguridad. Los doce componentes híbridos aparecen en los dos dominios porque cada uno tiene una parte que debe seguir operando en el sitio y otra que consolida en la nube.
 
 ### 4.2.2.2 Correspondencia con la arquitectura lógica
 
@@ -1718,11 +1718,11 @@ La Tabla [A.14](LAFROX-Subdocumento4-Anexos.md#tab:mapeo-logica) del Anexo 4-N a
 
 El perfil local cubre M1, M2, M5, el bloqueo y la disposición sanitaria autorizada de M9 y la recepción física de retornos de M8 a través de la puerta de API local. Los módulos compartidos corren en N-04 y el terreno captura en su terminal. Los perfiles de ejecución se especifican en la sección [4.2.4](LAFROX-Subdocumento4.md#sec:despliegue).
 
-El recorrido de trazabilidad parte de la capacidad de 3.3–3.4, identifica su módulo y capa en 4.1 y llega al recurso de 4.2 y T-11. El [Anexo 4-N](LAFROX-Subdocumento4-Anexos.md#anx:N) completa los doce módulos y los 37 componentes transversales con sus contratos y recursos, y el [Anexo 4-E](LAFROX-Subdocumento4-Anexos.md#anx:E) enlaza las familias con las filas individuales de T-12. Un recurso que sirve a varios módulos conserva un identificador único; compartir Fargate o PostgreSQL no fusiona sus responsabilidades.
+El recorrido de trazabilidad parte de la capacidad de 3.3–3.4, identifica su módulo y capa en 4.1 y llega al recurso de 4.2 y T-11. El [Anexo 4-N](LAFROX-Subdocumento4-Anexos.md#anx:N) completa los doce módulos y los 37 componentes transversales con sus contratos y recursos, y el [Anexo 4-E](LAFROX-Subdocumento4-Anexos.md#anx:E) enlaza las familias con las filas individuales de T-12. Un recurso que sirve a varios módulos conserva un identificador único. Compartir Fargate o PostgreSQL no fusiona sus responsabilidades.
 
 ### 4.2.2.3 Síntesis del emplazamiento por dominio y criterio
 
-La Tabla [6](LAFROX-Subdocumento4.md#tab:t21) resume cómo se distribuyen los 36 componentes entre los tres dominios y los seis criterios del Artículo 16.2 (Bases Administrativas, art. 16.2, p. 11) que deciden cada emplazamiento. A continuación se justifica, dominio por dominio, por qué cada componente vive donde vive; el producto, la cantidad y la ubicación exacta de cada elemento no son materia del emplazamiento y se especifican en el Formulario T-11.
+La Tabla [6](LAFROX-Subdocumento4.md#tab:t21) resume cómo se distribuyen los 36 componentes entre los tres dominios y los seis criterios del Artículo 16.2 (Bases Administrativas, art. 16.2, p. 11) que deciden cada emplazamiento. A continuación se justifica, dominio por dominio, por qué cada componente vive donde vive. El producto, la cantidad y la ubicación exacta de cada elemento no son materia del emplazamiento y se especifican en el Formulario T-11.
 
 <a id="tab:t21"></a>
 
@@ -1750,19 +1750,19 @@ El emplazamiento responde a cuatro criterios decisivos del caso:
 
 - Latencia y criticidad: dejan en el sitio lo que debe responder sin enlace.
 
-La columna Total suma 37 en las filas de criterios porque la plataforma analítica (N-10) se contabiliza en los dos criterios que deciden su emplazamiento, volumen de datos y costo total de propiedad; la fila final suma los 36 componentes efectivos.
+La columna Total suma 37 en las filas de criterios porque la plataforma analítica (N-10) se contabiliza en los dos criterios que deciden su emplazamiento, volumen de datos y costo total de propiedad. La fila final suma los 36 componentes efectivos.
 
 ### 4.2.2.4 Componentes de nube pura
 
 Los trece componentes de nube pura viven solo en la nube. La justificación de cada uno y el criterio del Artículo 16.2 (Bases Administrativas, art. 16.2, p. 11) que la determina son los siguientes:
 
-- **N-01 Portal de Clientes** (regulación): atiendel catálogo, el pedido de autoatención, el estado de entrega, los documentos y el saldo de los clientes desde Internet, también como aplicación instalable que arma el pedido sin señal; por eso se publica solo en la DMZ de la nube y ningún tráfico externo llega a los sitios del CLIENTE.
+- **N-01 Portal de Clientes** (regulación): atiendel catálogo, el pedido de autoatención, el estado de entrega, los documentos y el saldo de los clientes desde Internet, también como aplicación instalable que arma el pedido sin señal. Por eso se publica solo en la DMZ de la nube y ningún tráfico externo llega a los sitios del CLIENTE.
 
 - **N-02 Portal de Transportistas** (regulación): desde la Etapa 2, los representantes de cada empresa transportista consultan rutas y documentos y confirman conductor y vehículo desde Internet, y ese acceso se resuelve en la DMZ de la nube. Los conductores externos no usan el portal: trabajan en la app de reparto con su identidad personal.
 
 - **N-03 Portal de Proveedores** (regulación): los 180 proveedores consultan órdenes de compra, recepciones y devoluciones desde Internet, aislados de la red de bodega.
 
-- **N-04 Plataforma de aplicación** (costo): Laravel corre en ECS Fargate con perfiles de API, reconciliación, trabajos y planificación que escalan por separado. La plataforma aloja el frontend Angular de consolas y el transporte AS2 de M11 en dos tareas distribuidas entre dos zonas cada uno; el motor de rutas M4 ejecuta una tarea por corrida, que ECS relanza en otra zona ante una falla para repetirla dentro de la planificación de 15:00 a 18:30, con el plazo de 20 min por corrida medido en la prueba de aceptación. M11 usa contratos versionados (ADR-11, Anexo 4-O).
+- **N-04 Plataforma de aplicación** (costo): Laravel corre en ECS Fargate con perfiles de API, reconciliación, trabajos y planificación que escalan por separado. La plataforma aloja el frontend Angular de consolas y el transporte AS2 de M11 en dos tareas distribuidas entre dos zonas cada uno. El motor de rutas M4 ejecuta una tarea por corrida, que ECS relanza en otra zona ante una falla para repetirla dentro de la planificación de 15:00 a 18:30, con el plazo de 20 min por corrida medido en la prueba de aceptación. M11 usa contratos versionados (ADR-11, Anexo 4-O).
 
 - **N-05 Base de datos en nube** (criticidad): Aurora PostgreSQL guarda el transaccional de los módulos en nube y la réplica del WMS, conmuta entre zonas en menos de 30 s y se replica a us-east-1.
 
@@ -1770,11 +1770,11 @@ Los trece componentes de nube pura viven solo en la nube. La justificación de c
 
 - **N-07 Caché** (latencia): ElastiCache mantiene en memoria el stock, el crédito y las sesiones para que la consulta de preventa responda en menos de 2 s.
 
-- **N-08 Ingesta de IoT** (volumen): IoT Core recibe los 10.920 mensajes diarios de cadena de frío por MQTTS y gestiona los gateways del borde; su motor de reglas escribe cada lectura en DynamoDB y publica en SNS las que superan el umbral.
+- **N-08 Ingesta de IoT** (volumen): IoT Core recibe los 10.920 mensajes diarios de cadena de frío por MQTTS y gestiona los gateways del borde. Su motor de reglas escribe cada lectura en DynamoDB y publica en SNS las que superan el umbral.
 
-- **N-09 Mensajería** (criticidad): una cola SQS FIFO recibe la reconciliación de los sitios como sobres JSON versionados, en orden por grupo y sin duplicados; otra cola FIFO lleva las solicitudes al ERP hasta `erp-sync` y una cola FIFO de respuesta para Concepción y para cada cross-docking devuelve sus respuestas, porque Talca las recibe por RabbitMQ local; una cola FIFO de coordinación por cada uno de los cinco sitios lleva las solicitudes de retención y liberación de stock que su shipper lee por conexión saliente; otras colas SQS, separadas de esas, transportan los trabajos internos de Laravel; y SNS difunde las alertas de excursión térmica.
+- **N-09 Mensajería** (criticidad): una cola SQS FIFO recibe la reconciliación de los sitios como sobres JSON versionados, en orden por grupo y sin duplicados. Otra cola FIFO lleva las solicitudes al ERP hasta `erp-sync` y una cola FIFO de respuesta para Concepción y para cada cross-docking devuelve sus respuestas, porque Talca las recibe por RabbitMQ local. Una cola FIFO de coordinación por cada uno de los cinco sitios lleva las solicitudes de retención y liberación de stock que su shipper lee por conexión saliente. Otras colas SQS, separadas de esas, transportan los trabajos internos de Laravel, y SNS difunde las alertas de excursión térmica.
 
-- **N-10 Plataforma analítica** (volumen y costo): S3, Glue, Redshift Serverless y QuickSight conservan 5 años de datos separados del transaccional. Los tableros y la autoría de QuickSight se integran en las consolas para usuarios registrados, con modelo semántico documentado, creación autónoma de informes, exportación y permisos separados de lectura y creación; los indicadores operacionales actuales se consultan en la API de negocio.
+- **N-10 Plataforma analítica** (volumen y costo): S3, Glue, Redshift Serverless y QuickSight conservan 5 años de datos separados del transaccional. Los tableros y la autoría de QuickSight se integran en las consolas para usuarios registrados, con modelo semántico documentado, creación autónoma de informes, exportación y permisos separados de lectura y creación. Los indicadores operacionales actuales se consultan en la API de negocio.
 
 - **N-11 Respaldo inmutable y réplica** (regulación): S3 Object Lock, AWS Backup y la réplica en us-east-1 guardan la copia que ni un administrador puede borrar y sostienen el RTO de 4 h y el RPO de 15 min.
 
@@ -1812,7 +1812,7 @@ Los once componentes on-premise viven solo en las instalaciones del CLIENTE. La 
 
 En el on-premise dominan la latencia y la conectividad. Los sensores, las impresoras, las balanzas y los terminales de cámara son periféricos que trabajan donde está la mercadería, y ninguno puede depender de un enlace que el caso describe como intermitente. Los tres enlaces y el switching tampoco podrían emplazarse en otro lugar: son la infraestructura que conecta el sitio con la nube y sostiene su red interna cuando esa conexión falla.
 
-LafroX acuerda con la Contraparte Técnica del CLIENTE la ventana de cada aplicación de parches y líneas base CIS en los sitios, dentro de la programación de mantenimiento y respetando los congelamientos y las ventanas protegidas de 4.2.4.1.4. Ansible aplica el cambio con respaldo, verificación y reversión preparados, y el resultado queda registrado en la gestión de configuración (RT-03.15; Bases Técnicas Transversales, cap. 3, p. 9).
+LafroX acuerda con la Contraparte Técnica del CLIENTE la ventana de cada aplicación de parches y líneas base CIS en los sitios, dentro de la programación de mantenimiento y respetando los congelamientos y las ventanas protegidas de 4.2.4.1.4. Ansible aplica el cambio con respaldo, verificación y reversión preparados, y el resultado queda registrado en la gestión de configuración (RT-03.15, Bases Técnicas Transversales, cap. 3, p. 9).
 
 ### 4.2.2.6 Componentes híbridos
 
@@ -1820,15 +1820,15 @@ Los doce componentes híbridos tienen una parte en cada dominio. Para cada uno, 
 
 - **A-01 Motor WMS** (latencia): el perfil `wms_only` del artefacto Laravel, con su servidor web y PHP-FPM, corre en VM-01, VM-C01 y E-01 porque la confirmación de preparación debe responder en 1 s sin depender del enlace, y su réplica en Aurora sostiene la continuidad. El mismo motor expone la puerta de API local de la bodega, que durante un corte valida el esquema, la tasa, el UUID y la auditoría de las solicitudes de los terminales sin pasar por API Gateway.
 
-- **A-02 Base transaccional del WMS** (criticidad): PostgreSQL 16 en VM-02 y VM-C02 es el registro de cada bodega durante un corte. AWS DMS replica continuamente los cambios de VM-02 (Talca) a Aurora para continuidad y lectura por fibra, LTE o Starlink; VM-C02 (Concepción) entrega sus eventos por las colas de integración. En Concepción y en cada cross-docking, la base activa se replica en forma sincrónica al equipo en espera.
+- **A-02 Base transaccional del WMS** (criticidad): PostgreSQL 16 en VM-02 y VM-C02 es el registro de cada bodega durante un corte. AWS DMS replica continuamente los cambios de VM-02 (Talca) a Aurora para continuidad y lectura por fibra, LTE o Starlink. VM-C02 (Concepción) entrega sus eventos por las colas de integración. En Concepción y en cada cross-docking, la base activa se replica en forma sincrónica al equipo en espera.
 
-- **A-03 Broker de colas** (conectividad): RabbitMQ en VM-03, VM-C04 y E-01 guarda hasta 24 h de eventos sin enlace, con mensajes persistentes y confirmación de publicación; el shipper, un proceso PHP con el adaptador AMQP `php-amqplib`, los publica como sobres JSON en SQS FIFO y solo los retira del broker cuando SQS confirma la recepción. El outbox conserva 24 h de eventos ya enviados para reenviarlos tras una conmutación.
+- **A-03 Broker de colas** (conectividad): RabbitMQ en VM-03, VM-C04 y E-01 guarda hasta 24 h de eventos sin enlace, con mensajes persistentes y confirmación de publicación. El shipper, un proceso PHP con el adaptador AMQP `php-amqplib`, los publica como sobres JSON en SQS FIFO y solo los retira del broker cuando SQS confirma la recepción. El outbox conserva 24 h de eventos ya enviados para reenviarlos tras una conmutación.
 
-- **A-04 Capa anticorrupción del ERP** (criticidad): corre en VM-04, en la misma sala que el ERP de 2017, que no se modifica. En la misma VM, `erp-sync` consume la cola local de Talca y, mediante conexión saliente, la cola FIFO de solicitudes al ERP de los demás orígenes, cuyas respuestas devuelve por la cola de cada sitio; usa una clave idempotente por operación para que un reintento no emita un segundo documento tributario.
+- **A-04 Capa anticorrupción del ERP** (criticidad): corre en VM-04, en la misma sala que el ERP de 2017, que no se modifica. En la misma VM, `erp-sync` consume la cola local de Talca y, mediante conexión saliente, la cola FIFO de solicitudes al ERP de los demás orígenes, cuyas respuestas devuelve por la cola de cada sitio. Usa una clave idempotente por operación para que un reintento no emita un segundo documento tributario.
 
-- **A-05 Identidad** (conectividad): el IdP maestro Keycloak corre en Fargate y sus cachés de solo lectura en VM-05, VM-C03 y E-01 validan las sesiones de bodega y de cross-docking sin enlace; en el mismo nodo, un verificador local habilita cada relevo de turno durante un corte con el manifiesto de turno firmado y un segundo factor local, el PIN personal.
+- **A-05 Identidad** (conectividad): el IdP maestro Keycloak corre en Fargate y sus cachés de solo lectura en VM-05, VM-C03 y E-01 validan las sesiones de bodega y de cross-docking sin enlace. En el mismo nodo, un verificador local habilita cada relevo de turno durante un corte con el manifiesto de turno firmado y un segundo factor local, el PIN personal.
 
-- **B-03 Termógrafos de camión** (conectividad): los 28 termógrafos —18 en los camiones propios y 10 en los de los transportistas, instalados con el acuerdo de cada uno (S-28)— registran la temperatura durante toda la ruta sin señal y la difunden por Bluetooth; el terminal del conductor la lee, evalúa la regla de excursión, alerta en la cabina en el momento y reenvía la alerta a la nube por la red celular, de inmediato con cobertura o al recuperarla; al volver el camión, el mismo terminal descarga el registro completo, comprueba su control de integridad y lo envía a la nube para que IoT Core lo valide.
+- **B-03 Termógrafos de camión** (conectividad): los 28 termógrafos —18 en los camiones propios y 10 en los de los transportistas, instalados con el acuerdo de cada uno (S-28)— registran la temperatura durante toda la ruta sin señal y la difunden por Bluetooth. El terminal del conductor la lee, evalúa la regla de excursión, alerta en la cabina en el momento y reenvía la alerta a la nube por la red celular, de inmediato con cobertura o al recuperarla. Al volver el camión, el mismo terminal descarga el registro completo, comprueba su control de integridad y lo envía a la nube para que IoT Core lo valide.
 
 - **C-01 App de preventa** (conectividad): toma pedidos contra el almacén local del terminal cuando no hay señal y sincroniza por CloudFront al reconectar, sin duplicar pedidos (sección [4.2.5](LAFROX-Subdocumento4.md#sec:conexiones)).
 
@@ -1840,9 +1840,9 @@ Los doce componentes híbridos tienen una parte en cada dominio. Para cada uno, 
 
 - **F-01 Telemetría de observabilidad** (conectividad): los colectores ADOT de VM-06, VM-C04 y E-01 guardan hasta 24 h de métricas y trazas en disco y las envían a CloudWatch al reconectar.
 
-- **F-03 Detección en endpoints** (regulación): los agentes EDR de cada nodo y estación reportan a una consola central, lo que da una sola respuesta ante incidentes en nube y on-premise. El servidor del ERP es un activo del CLIENTE que no forma parte de la solución: LafroX lo traslada sin cambiar su software, y el firewall de Talca restringe las entradas al tráfico de la ACL en VM-04 y a la administración autorizada del CLIENTE. Permite las salidas tributarias del ERP hacia el SII por los caminos habilitados, con destinos, puertos y reglas documentados en el levantamiento de INT-07; esto no habilita escrituras directas de los módulos al ERP.
+- **F-03 Detección en endpoints** (regulación): los agentes EDR de cada nodo y estación reportan a una consola central, lo que da una sola respuesta ante incidentes en nube y on-premise. El servidor del ERP es un activo del CLIENTE que no forma parte de la solución: LafroX lo traslada sin cambiar su software, y el firewall de Talca restringe las entradas al tráfico de la ACL en VM-04 y a la administración autorizada del CLIENTE. Permite las salidas tributarias del ERP hacia el SII por los caminos habilitados, con destinos, puertos y reglas documentados en el levantamiento de INT-07. Esto no habilita escrituras directas de los módulos al ERP.
 
-Los componentes híbridos siguen todos el mismo patrón: la parte que atiende la operación queda en el sitio y la parte que consolida queda en la nube, unidas por un mecanismo que tolera el corte. En el núcleo de bodega, Talca replica su base por DMS y los demás sitios sincronizan eventos por colas; en el terreno, el almacén local del dispositivo; y en la observabilidad, el buffer en disco de los colectores. Por eso la conectividad es el criterio dominante en siete de los doce: cada uno existe en dos lugares precisamente porque el enlace entre ellos no es confiable.
+Los componentes híbridos siguen todos el mismo patrón: la parte que atiende la operación queda en el sitio y la parte que consolida queda en la nube, unidas por un mecanismo que tolera el corte. En el núcleo de bodega, Talca replica su base por DMS y los demás sitios sincronizan eventos por colas. En el terreno, el almacén local del dispositivo. Y en la observabilidad, el buffer en disco de los colectores. Por eso la conectividad es el criterio dominante en siete de los doce: cada uno existe en dos lugares precisamente porque el enlace entre ellos no es confiable.
 
 ### 4.2.2.7 Autonomía de cada ámbito sin enlace
 
@@ -1856,15 +1856,15 @@ El emplazamiento descrito se verifica en lo que cada ámbito puede hacer cuando 
 
 - **Terreno.** **Autonomía sin enlace:** 14 h, un turno completo.
 
-- **Cross-docking.** **Autonomía sin enlace:** 24 h o más; la ventana de 3 h opera 100 % local.
+- **Cross-docking.** **Autonomía sin enlace:** 24 h o más. La ventana de 3 h opera 100 % local.
 
-- **Sincronización al reconectar.** **Autonomía sin enlace:** CD en 2 h; flota en 10 min.
+- **Sincronización al reconectar.** **Autonomía sin enlace:** CD en 2 h, flota en 10 min.
 
 Fuente: elaboración propia.
 
 Durante la autonomía, cada ámbito mantiene las funciones habilitadas contra sus datos locales, con permisos vigentes, bloqueos sanitarios y las condiciones del Anexo 4-J:
 
-- El centro de distribución sigue con recepción, preparación, conteo cíclico y trazabilidad contra la base local. El despacho exige una guía válida que ampare la carga y una autorización sanitaria vigente; Calidad dispone los lotes del sitio desde su perfil Kotlin autorizado y con evidencia local suficiente. Si falta permiso o evidencia, el bloqueo continúa. Una nueva guía requiere ERP y comunicación tributaria; la falta de conexión no equivale a autorización.
+- El centro de distribución sigue con recepción, preparación, conteo cíclico y trazabilidad contra la base local. El despacho exige una guía válida que ampare la carga y una autorización sanitaria vigente. Calidad dispone los lotes del sitio desde su perfil Kotlin autorizado y con evidencia local suficiente. Si falta permiso o evidencia, el bloqueo continúa. Una nueva guía requiere ERP y comunicación tributaria. La falta de conexión no equivale a autorización.
 
 - El terreno sigue con toma de pedido, entrega, evidencia, devoluciones y cobros contra el almacén local del dispositivo.
 
@@ -1872,7 +1872,7 @@ Durante la autonomía, cada ámbito mantiene las funciones habilitadas contra su
 
 Al reconectar, el vuelco ocurre en orden estricto, sin duplicados y con reconciliación determinista.
 
-Las seis horas del peor corte de fibra de Talca quedan dentro de las 24 horas del centro de distribución. En terreno se distinguen las 14 horas de captura autorizada sin señal de la ventana física de ruta de hasta 14,5 horas de 4.2.1.2. El inicio y término de la credencial se registran por turno: una ruta que exceda su vigencia requiere renovación con conexión; la batería y el registro continuo del termógrafo no amplían los permisos. Los tiempos de sincronización se sostienen con los enlaces dimensionados en la sección [4.2.6](LAFROX-Subdocumento4.md#sec:dimensionamiento), y lo que ocurre ante cada falla se desarrolla en la sección [4.2.5](LAFROX-Subdocumento4.md#sec:conexiones).
+Las seis horas del peor corte de fibra de Talca quedan dentro de las 24 horas del centro de distribución. En terreno se distinguen las 14 horas de captura autorizada sin señal de la ventana física de ruta de hasta 14,5 horas de 4.2.1.2. El inicio y término de la credencial se registran por turno: una ruta que exceda su vigencia requiere renovación con conexión. La batería y el registro continuo del termógrafo no amplían los permisos. Los tiempos de sincronización se sostienen con los enlaces dimensionados en la sección [4.2.6](LAFROX-Subdocumento4.md#sec:dimensionamiento), y lo que ocurre ante cada falla se desarrolla en la sección [4.2.5](LAFROX-Subdocumento4.md#sec:conexiones).
 
 ## 4.2.3 Servicios contratados en la plataforma de nube
 
@@ -1894,43 +1894,43 @@ El catálogo [de servicios de nube por función](LAFROX-Subdocumento4.md#tab:ser
 
 <a id="tab:servicios-nube"></a>
 
-- **Entrada pública.** **Servicios contratados:** Route 53, CloudFront, AWS WAF, Shield Advanced, API Gateway pública; **Componentes:** N-01 a N-03, N-12; **Región:** Global y sa-east-1.
+- **Entrada pública.** **Servicios contratados:** Route 53, CloudFront, AWS WAF, Shield Advanced, API Gateway pública. **Componentes:** N-01 a N-03, N-12, **Región:** Global y sa-east-1.
 
-- **Acceso interno.** **Servicios contratados:** Verified Access, API Gateway privada y endpoint execute-api; **Componentes:** N-04, N-12; **Región:** sa-east-1 y us-east-1.
+- **Acceso interno.** **Servicios contratados:** Verified Access, API Gateway privada y endpoint execute-api. **Componentes:** N-04, N-12, **Región:** sa-east-1 y us-east-1.
 
-- **Cómputo de aplicación.** **Servicios contratados:** ECS Fargate, Application Load Balancer privado, Lambda autorizadora; **Componentes:** N-04, A-05; **Región:** sa-east-1 y us-east-1.
+- **Cómputo de aplicación.** **Servicios contratados:** ECS Fargate, Application Load Balancer privado, Lambda autorizadora. **Componentes:** N-04, A-05, **Región:** sa-east-1 y us-east-1.
 
-- **Datos operacionales.** **Servicios contratados:** Aurora PostgreSQL, Database Migration Service, DynamoDB, ElastiCache; **Componentes:** N-05, A-02, N-06, N-07; **Región:** sa-east-1 y us-east-1 para las réplicas declaradas; ElastiCache se reconstruye durante la recuperación.
+- **Datos operacionales.** **Servicios contratados:** Aurora PostgreSQL, Database Migration Service, DynamoDB, ElastiCache. **Componentes:** N-05, A-02, N-06, N-07, **Región:** sa-east-1 y us-east-1 para las réplicas declaradas. ElastiCache se reconstruye durante la recuperación.
 
-- **Mensajería.** **Servicios contratados:** SQS FIFO para la reconciliación, para las solicitudes al ERP y sus respuestas, y para la coordinación de reservas por sitio, SQS para los trabajos de Laravel y SNS, con equivalentes vacíos creados por infraestructura como código en us-east-1; **Componentes:** N-09, A-03; **Región:** sa-east-1 y us-east-1.
+- **Mensajería.** **Servicios contratados:** SQS FIFO para la reconciliación, para las solicitudes al ERP y sus respuestas, y para la coordinación de reservas por sitio, SQS para los trabajos de Laravel y SNS, con equivalentes vacíos creados por infraestructura como código en us-east-1. **Componentes:** N-09, A-03, **Región:** sa-east-1 y us-east-1.
 
-- **Integración B2B.** **Servicios contratados:** Network Load Balancer y OpenAS2 en Fargate; **Componentes:** N-04 (M11); **Región:** sa-east-1.
+- **Integración B2B.** **Servicios contratados:** Network Load Balancer y OpenAS2 en Fargate, **Componentes:** N-04 (M11), **Región:** sa-east-1.
 
-- **Internet de las cosas.** **Servicios contratados:** IoT Core, IoT Greengrass; **Componentes:** N-08, B-02, B-03; **Región:** sa-east-1 y borde.
+- **Internet de las cosas.** **Servicios contratados:** IoT Core, IoT Greengrass. **Componentes:** N-08, B-02, B-03, **Región:** sa-east-1 y borde.
 
-- **Analítica.** **Servicios contratados:** S3, Glue, Redshift Serverless, QuickSight embebido; **Componentes:** N-10; **Región:** sa-east-1.
+- **Analítica.** **Servicios contratados:** S3, Glue, Redshift Serverless, QuickSight embebido, **Componentes:** N-10, **Región:** sa-east-1.
 
-- **Respaldo y recuperación.** **Servicios contratados:** AWS Backup, S3 Object Lock, replicación de S3 entre regiones; **Componentes:** N-11, D-05; **Región:** sa-east-1 y us-east-1.
+- **Respaldo y recuperación.** **Servicios contratados:** AWS Backup, S3 Object Lock, replicación de S3 entre regiones. **Componentes:** N-11, D-05, **Región:** sa-east-1 y us-east-1.
 
-- **Red y conectividad.** **Servicios contratados:** VPC, Transit Gateway, Site-to-Site VPN, NAT Gateway, VPC Endpoints; **Componentes:** D-01; **Región:** sa-east-1 y us-east-1.
+- **Red y conectividad.** **Servicios contratados:** VPC, Transit Gateway, Site-to-Site VPN, NAT Gateway, VPC Endpoints, **Componentes:** D-01, **Región:** sa-east-1 y us-east-1.
 
-- **Identidad, claves y secretos.** **Servicios contratados:** KMS, Secrets Manager, Parameter Store, IAM Identity Center; **Componentes:** A-05, N-12; **Región:** sa-east-1 y us-east-1.
+- **Identidad, claves y secretos.** **Servicios contratados:** KMS, Secrets Manager, Parameter Store, IAM Identity Center. **Componentes:** A-05, N-12, **Región:** sa-east-1 y us-east-1.
 
-- **Detección y cumplimiento.** **Servicios contratados:** GuardDuty Runtime Monitoring para tareas ECS Fargate, Security Lake, Security Hub, Inspector, Macie, CloudTrail y Config; **Componentes:** N-12, F-03; **Región:** sa-east-1 y us-east-1.
+- **Detección y cumplimiento.** **Servicios contratados:** GuardDuty Runtime Monitoring para tareas ECS Fargate, Security Lake, Security Hub, Inspector, Macie, CloudTrail y Config. **Componentes:** N-12, F-03, **Región:** sa-east-1 y us-east-1.
 
-- **Operación y gobierno.** **Servicios contratados:** CloudWatch, Systems Manager, Control Tower, Organizations, Cost Explorer, Budgets; **Componentes:** F-01, F-02, N-12; **Región:** sa-east-1.
+- **Operación y gobierno.** **Servicios contratados:** CloudWatch, Systems Manager, Control Tower, Organizations, Cost Explorer, Budgets. **Componentes:** F-01, F-02, N-12, **Región:** sa-east-1.
 
-- **Construcción y registro de imágenes.** **Servicios contratados:** CodeBuild y Elastic Container Registry con replicación de imágenes entre regiones; **Componentes:** N-04, A-01; **Región:** sa-east-1 y us-east-1.
+- **Construcción y registro de imágenes.** **Servicios contratados:** CodeBuild y Elastic Container Registry con replicación de imágenes entre regiones, **Componentes:** N-04, A-01, **Región:** sa-east-1 y us-east-1.
 
-- **Servicios de terceros en nube.** **Servicios contratados:** Android Enterprise y Zebra DNA; consola del EDR; **Componentes:** N-13, F-03; **Región:** Servicio gestionado.
+- **Servicios de terceros en nube.** **Servicios contratados:** Android Enterprise y Zebra DNA, consola del EDR, **Componentes:** N-13, F-03, **Región:** Servicio gestionado.
 
 Fuente: elaboración propia.
 
-La tabla distingue los servicios de entrada, aplicación y datos. La aplicación corre en contenedores administrados; la única función Lambda autoriza las API REST. Los portales Angular se sirven desde S3 privado por CloudFront, mientras el frontend de consolas y el transporte AS2 mantienen dos tareas Fargate en dos zonas cada uno; el motor de rutas ejecuta una tarea por corrida. Las colas SQS de trabajos de Laravel están separadas de la cola FIFO de reconciliación; ElastiCache solo actúa como caché. El recorrido de acceso se precisa en la sección [4.2.5](LAFROX-Subdocumento4.md#sec:conexiones).
+La tabla distingue los servicios de entrada, aplicación y datos. La aplicación corre en contenedores administrados. La única función Lambda autoriza las API REST. Los portales Angular se sirven desde S3 privado por CloudFront, mientras el frontend de consolas y el transporte AS2 mantienen dos tareas Fargate en dos zonas cada uno. El motor de rutas ejecuta una tarea por corrida. Las colas SQS de trabajos de Laravel están separadas de la cola FIFO de reconciliación. ElastiCache solo actúa como caché. El recorrido de acceso se precisa en la sección [4.2.5](LAFROX-Subdocumento4.md#sec:conexiones).
 
-Para cumplir RT-11.16, GuardDuty Runtime Monitoring observa las tareas Amazon ECS ejecutadas en Fargate en las cuentas de ambiente de sa-east-1 y en la región de recuperación us-east-1. Se fija Linux Fargate plataforma 1.4 o posterior y un rol de ejecución que permite obtener el agente administrado; la VPC permite descargar su imagen desde ECR y sus capas desde S3. GuardDuty agrega el agente como sidecar a las tareas nuevas y analiza actividad de procesos, archivos y red; las tareas que ya estén ejecutándose se reinician o redespliegan para que queden cubiertas. Los hallazgos se consolidan en Security Hub, que los entrega al flujo de respuesta de seguridad para su triage y contención (Amazon Web Services, s. f.-d, s. f.-e). La cobertura corresponde a ECS sobre Fargate; EKS sobre Fargate no forma parte de la arquitectura.
+Para cumplir RT-11.16, GuardDuty Runtime Monitoring observa las tareas Amazon ECS ejecutadas en Fargate en las cuentas de ambiente de sa-east-1 y en la región de recuperación us-east-1. Se fija Linux Fargate plataforma 1.4 o posterior y un rol de ejecución que permite obtener el agente administrado. La VPC permite descargar su imagen desde ECR y sus capas desde S3. GuardDuty agrega el agente como sidecar a las tareas nuevas y analiza actividad de procesos, archivos y red. Las tareas que ya estén ejecutándose se reinician o redespliegan para que queden cubiertas. Los hallazgos se consolidan en Security Hub, que los entrega al flujo de respuesta de seguridad para su triage y contención (Amazon Web Services, s. f.-d, s. f.-e). La cobertura corresponde a ECS sobre Fargate. EKS sobre Fargate no forma parte de la arquitectura.
 
-Todos los recursos llevan etiquetas obligatorias de ambiente, módulo y centro de costo, aplicadas desde la infraestructura como código y verificadas antes del despliegue. Con ellas se entrega al CLIENTE el desglose mensual de consumo en Cost Explorer y se configuran las alertas de AWS Budgets (RT-03.06; Bases Técnicas Transversales, cap. 3, p. 8).
+Todos los recursos llevan etiquetas obligatorias de ambiente, módulo y centro de costo, aplicadas desde la infraestructura como código y verificadas antes del despliegue. Con ellas se entrega al CLIENTE el desglose mensual de consumo en Cost Explorer y se configuran las alertas de AWS Budgets (RT-03.06, Bases Técnicas Transversales, cap. 3, p. 8).
 
 ### 4.2.3.2 Región secundaria y residencia de los datos
 
@@ -1946,7 +1946,7 @@ La región us-east-1 no es una segunda producción. Solo contiene recursos para 
 
 - Mensajería: colas SQS FIFO y SQS, y temas SNS equivalentes, creados vacíos por infraestructura como código para la conmutación.
 
-La región primaria sa-east-1 está en São Paulo, Brasil, y la secundaria us-east-1 en Virginia del Norte, Estados Unidos; ambas suponen transferencia internacional de datos desde Chile. Los datos de geolocalización de personas quedan fuera de la región secundaria; la analítica se copia a ella en forma diferida, sin las posiciones de flota, porque conserva los registros de temperatura y de trazabilidad de lote que el caso exige retener cinco años (Bases Técnicas del caso, cap. 15, p. 26). La base de licitud, los resguardos de tratamiento y la garantía de continuidad ante las decisiones de residencia del CLIENTE se desarrollan en la sección [4.3.2](LAFROX-Subdocumento4.md#sec:e-especificaciones-del-sitio-secundario-y-).
+La región primaria sa-east-1 está en São Paulo, Brasil, y la secundaria us-east-1 en Virginia del Norte, Estados Unidos. Ambas suponen transferencia internacional de datos desde Chile. Los datos de geolocalización de personas quedan fuera de la región secundaria. La analítica se copia a ella en forma diferida, sin las posiciones de flota, porque conserva los registros de temperatura y de trazabilidad de lote que el caso exige retener cinco años (Bases Técnicas del caso, cap. 15, p. 26). La base de licitud, los resguardos de tratamiento y la garantía de continuidad ante las decisiones de residencia del CLIENTE se desarrollan en la sección [4.3.2](LAFROX-Subdocumento4.md#sec:e-especificaciones-del-sitio-secundario-y-).
 
 ### 4.2.3.3 Servicios que no se contratan
 
@@ -1954,7 +1954,7 @@ Los registros de decisión descartan de forma expresa los siguientes servicios y
 
 - No se instala Redis ni Laravel Horizon en los sitios, porque la continuidad local descansa en PostgreSQL y RabbitMQ, y un tercer motor por sitio agregaría operación sin beneficio.
 
-- No se contrata un clúster de Kubernetes (EKS). El monolito modular se despliega en pocos perfiles independientes (API, consumidor, trabajos, consolas, AS2 y motor de rutas), que ECS Fargate ya despliega y revierte por separado (RT-02.02; Bases Técnicas Transversales, cap. 2, p. 6). Kubernetes se justifica con decenas de servicios, y el equipo de TI de cuatro personas no operaría su plano de control.
+- No se contrata un clúster de Kubernetes (EKS). El monolito modular se despliega en pocos perfiles independientes (API, consumidor, trabajos, consolas, AS2 y motor de rutas), que ECS Fargate ya despliega y revierte por separado (RT-02.02, Bases Técnicas Transversales, cap. 2, p. 6). Kubernetes se justifica con decenas de servicios, y el equipo de TI de cuatro personas no operaría su plano de control.
 
 - No se contrata Kafka administrado (MSK), porque RabbitMQ en cada sitio y SQS FIFO en la nube resuelven el orden y la durabilidad con menos operación.
 
@@ -1964,11 +1964,11 @@ Los registros de decisión descartan de forma expresa los siguientes servicios y
 
 ### 4.2.3.4 Modelo de contratación
 
-Los servicios se contratan por uso, con la capacidad base comprometida mediante Savings Plans y el peak de septiembre cubierto con capacidad efímera que se libera al terminar. Los ambientes de Desarrollo, QA y Preproducción se reducen o apagan fuera del horario de uso. La reversibilidad está asegurada por la elección de servicios: Aurora es compatible con PostgreSQL, los datos analíticos se guardan en formato Parquet, y Keycloak, Laravel, PostgreSQL y RabbitMQ son de código abierto, de modo que un traslado a otra plataforma conserva la aplicación y los datos y se concentra en sustituir los servicios administrados de AWS que la solución consume. Ese esfuerzo se acota en tres grupos: Aurora, ElastiCache, S3 y ECS Fargate se reemplazan por PostgreSQL, Redis, almacenamiento compatible con S3 y contenedores, solo con cambios de configuración; SQS, SNS, Secrets Manager y CloudWatch se reemplazan cambiando el adaptador que ya los aísla detrás de un puerto de la aplicación; e IoT Core con Greengrass, DynamoDB, Redshift con Glue y QuickSight, API Gateway con su autorizador y Verified Access no son portables y exigen rediseñar la ingesta de frío, la analítica y la entrada. Una salida cambia así la configuración de cuatro servicios y los adaptadores de otros cuatro, y rediseña cinco componentes (RT-03.07; Bases Técnicas Transversales, cap. 3, p. 8). Los montos de estos servicios se declaran en la Oferta Económica y no en este documento.
+Los servicios se contratan por uso, con la capacidad base comprometida mediante Savings Plans y el peak de septiembre cubierto con capacidad efímera que se libera al terminar. Los ambientes de Desarrollo, QA y Preproducción se reducen o apagan fuera del horario de uso. La reversibilidad está asegurada por la elección de servicios: Aurora es compatible con PostgreSQL, los datos analíticos se guardan en formato Parquet, y Keycloak, Laravel, PostgreSQL y RabbitMQ son de código abierto, de modo que un traslado a otra plataforma conserva la aplicación y los datos y se concentra en sustituir los servicios administrados de AWS que la solución consume. Ese esfuerzo se acota en tres grupos: Aurora, ElastiCache, S3 y ECS Fargate se reemplazan por PostgreSQL, Redis, almacenamiento compatible con S3 y contenedores, solo con cambios de configuración. SQS, SNS, Secrets Manager y CloudWatch se reemplazan cambiando el adaptador que ya los aísla detrás de un puerto de la aplicación. E IoT Core con Greengrass, DynamoDB, Redshift con Glue y QuickSight, API Gateway con su autorizador y Verified Access no son portables y exigen rediseñar la ingesta de frío, la analítica y la entrada. Una salida cambia así la configuración de cuatro servicios y los adaptadores de otros cuatro, y rediseña cinco componentes (RT-03.07, Bases Técnicas Transversales, cap. 3, p. 8). Los montos de estos servicios se declaran en la Oferta Económica y no en este documento.
 
-Durante la Operación se compromete reducir en al menos 60 % las horas de cómputo de Desarrollo, QA y Preproducción respecto de su funcionamiento continuo. S-43 del Anexo 3.C del Subdocumento 3 (LafroX, 2026c) fija su horario de uso de lunes a viernes, de 08:00 a 20:00: 60 de 168 horas semanales, con una reducción posible de 1 − 60 ÷ 168 = 64,3 %. Fuera de ese horario, esos ambientes se reducen o apagan, salvo en las ventanas de prueba que programe el CLIENTE y cuando se requiera una corrección crítica. La reducción efectiva, incluidas esas ventanas, se mide cada mes con los registros de uso de la nube y se informa cada año junto con la estimación de huella del paquete 8.4.3 del Formulario T-14. Las pruebas de carga de 4.2.4.1.1 se mantienen para cada versión candidata y al menos una vez por semana dentro del horario de uso (RT-15.06; Bases Técnicas Transversales, cap. 15, p. 28).
+Durante la Operación se compromete reducir en al menos 60 % las horas de cómputo de Desarrollo, QA y Preproducción respecto de su funcionamiento continuo. S-43 del Anexo 3.C del Subdocumento 3 (LafroX, 2026c) fija su horario de uso de lunes a viernes, de 08:00 a 20:00: 60 de 168 horas semanales, con una reducción posible de 1 − 60 ÷ 168 = 64,3 %. Fuera de ese horario, esos ambientes se reducen o apagan, salvo en las ventanas de prueba que programe el CLIENTE y cuando se requiera una corrección crítica. La reducción efectiva, incluidas esas ventanas, se mide cada mes con los registros de uso de la nube y se informa cada año junto con la estimación de huella del paquete 8.4.3 del Formulario T-14. Las pruebas de carga de 4.2.4.1.1 se mantienen para cada versión candidata y al menos una vez por semana dentro del horario de uso (RT-15.06, Bases Técnicas Transversales, cap. 15, p. 28).
 
-En las cargas variables, Fargate cobra solo mientras las tareas se ejecutan y permite liberar las adicionales cuando termina la demanda; una instancia permanente, en cambio, cobra la capacidad aunque no se use. Por eso las corridas de rutas y el aumento de septiembre usan capacidad bajo demanda, y la capacidad base permanente se cubre con Savings Plans (RT-03.09; Bases Técnicas Transversales, cap. 3, p. 8).
+En las cargas variables, Fargate cobra solo mientras las tareas se ejecutan y permite liberar las adicionales cuando termina la demanda. Una instancia permanente, en cambio, cobra la capacidad aunque no se use. Por eso las corridas de rutas y el aumento de septiembre usan capacidad bajo demanda, y la capacidad base permanente se cubre con Savings Plans (RT-03.09, Bases Técnicas Transversales, cap. 3, p. 8).
 
 El compromiso de capacidad base mediante Savings Plans y su costo se reflejan en la estructura de costos que se declara en la Oferta Económica (Bases Administrativas, art. 50.2). El valor monetario del ahorro medido en horas de cómputo no productivo, con meta de reducción de al menos 60 % conforme a S-43, se declara en la Oferta Económica (Bases Administrativas, art. 50.2).
 
@@ -1984,9 +1984,9 @@ Fuente: elaboración propia.
 
 <a id="fig:nube"></a>
 
-La figura se recorre desde la entrada. En el borde global, Route 53 resuelve los nombres, y AWS WAF y Shield Advanced protegen a CloudFront, que sirve los portales desde S3 y reenvía las llamadas a la API Gateway pública. La Lambda autorizadora valida el token de las rutas protegidas de la API pública y de la API privada; los endpoints OIDC de autenticación pasan sin autorizador hacia Keycloak. La casa matriz y el teletrabajo entran por Verified Access al balanceador privado de aplicación, y las cadenas de supermercados llegan por el Network Load Balancer al transporte AS2.
+La figura se recorre desde la entrada. En el borde global, Route 53 resuelve los nombres, y AWS WAF y Shield Advanced protegen a CloudFront, que sirve los portales desde S3 y reenvía las llamadas a la API Gateway pública. La Lambda autorizadora valida el token de las rutas protegidas de la API pública y de la API privada. Los endpoints OIDC de autenticación pasan sin autorizador hacia Keycloak. La casa matriz y el teletrabajo entran por Verified Access al balanceador privado de aplicación, y las cadenas de supermercados llegan por el Network Load Balancer al transporte AS2.
 
-Dentro de la VPC de producción, cada zona de disponibilidad tiene su propia copia de ECS Fargate, Keycloak y ElastiCache. Aurora PostgreSQL tiene el escritor en sa-east-1a y el lector promovible en sa-east-1b, y AWS DMS escribe en el escritor la réplica del PostgreSQL de Talca. Los VPC endpoints conectan Fargate con los servicios regionales sin salir a Internet. Esos servicios quedan fuera de las zonas porque AWS los opera en varias zonas de forma nativa: IoT Core escribe las lecturas de frío en DynamoDB, SQS FIFO recibe la reconciliación de los sitios, SNS difunde las alertas, ECR guarda las imágenes y AWS Backup custodia las copias; la analítica fluye de S3 a Glue, Redshift y QuickSight. El bloque de operación y seguridad (CloudWatch, CloudTrail, Config, GuardDuty, Security Hub, KMS, Secrets Manager, Systems Manager, IAM Identity Center e Inspector) es transversal a toda la región, y la VPC Hub recibe los túneles de los cinco sitios.
+Dentro de la VPC de producción, cada zona de disponibilidad tiene su propia copia de ECS Fargate, Keycloak y ElastiCache. Aurora PostgreSQL tiene el escritor en sa-east-1a y el lector promovible en sa-east-1b, y AWS DMS escribe en el escritor la réplica del PostgreSQL de Talca. Los VPC endpoints conectan Fargate con los servicios regionales sin salir a Internet. Esos servicios quedan fuera de las zonas porque AWS los opera en varias zonas de forma nativa: IoT Core escribe las lecturas de frío en DynamoDB, SQS FIFO recibe la reconciliación de los sitios, SNS difunde las alertas, ECR guarda las imágenes y AWS Backup custodia las copias. La analítica fluye de S3 a Glue, Redshift y QuickSight. El bloque de operación y seguridad (CloudWatch, CloudTrail, Config, GuardDuty, Security Hub, KMS, Secrets Manager, Systems Manager, IAM Identity Center e Inspector) es transversal a toda la región, y la VPC Hub recibe los túneles de los cinco sitios.
 
 La región us-east-1 repite la cadena de entrada con capacidad reducida: API Gateway, la Lambda autorizadora, Verified Access y una VPC de recuperación con balanceador, Fargate, Keycloak y la réplica secundaria de Aurora, además de su propio Transit Gateway y su VPN para reconectar los sitios. Abajo quedan DynamoDB, la réplica de S3 y AWS Backup, junto con ECR, que ya tiene las imágenes replicadas, y las colas SQS FIFO y los temas SNS, que existen vacíos. La figura muestra así dos propiedades del diseño: ningún componente con estado depende de una sola zona de disponibilidad, y la recuperación regional no exige reconstruir la entrada, porque la réplica solo escala. Los tiempos de esa conmutación se fijan en el apartado [4.3](LAFROX-Subdocumento4.md#cap:4-3-data-center).
 
@@ -2019,7 +2019,7 @@ Un cambio recorre tres ambientes antes de llegar a Producción: Desarrollo, QA y
 
 Fuente: elaboración propia.
 
-Cada ambiente reside en una cuenta AWS propia, bajo una organización de AWS Control Tower cuyas políticas de control de servicio impiden que un error o un acceso indebido en un ambiente alcance a otro. La organización incorpora además sus cuentas de gestión, de archivo de registros y de auditoría. Los bloques de direccionamiento no se solapan entre sí ni con los de los sitios on-premise, y solo el ambiente de recuperación reside fuera de la región primaria. Los cinco ambientes quedan habilitados y operativos en el hito H3 del Formulario E-25, en el mes 6 del contrato, antes de la primera marcha blanca (RT-04.01; Bases Técnicas Transversales, cap. 4, p. 10).
+Cada ambiente reside en una cuenta AWS propia, bajo una organización de AWS Control Tower cuyas políticas de control de servicio impiden que un error o un acceso indebido en un ambiente alcance a otro. La organización incorpora además sus cuentas de gestión, de archivo de registros y de auditoría. Los bloques de direccionamiento no se solapan entre sí ni con los de los sitios on-premise, y solo el ambiente de recuperación reside fuera de la región primaria. Los cinco ambientes quedan habilitados y operativos en el hito H3 del Formulario E-25, en el mes 6 del contrato, antes de la primera marcha blanca (RT-04.01, Bases Técnicas Transversales, cap. 4, p. 10).
 
 En la nube, en los cinco ambientes, la imagen de la aplicación corre en ECS Fargate, que es el cómputo de la plataforma de aplicación N-04 (catálogo [de servicios de nube por función](LAFROX-Subdocumento4.md#tab:servicios-nube)). Cada ambiente despliega la imagen en su propia cuenta, desde el mismo Elastic Container Registry de sa-east-1, que replica cada imagen en us-east-1 para que la región de recuperación no dependa de la primaria. Los ambientes se diferencian en su escala y en su conectividad, no en el servicio donde corre el código:
 
@@ -2031,11 +2031,11 @@ En la nube, en los cinco ambientes, la imagen de la aplicación corre en ECS Far
 
 - Recuperación ante Desastres mantiene la réplica reducida de us-east-1.
 
-Desarrollo y QA son aislados y se reconstruyen desde código. Desarrollo trabaja con datos sintéticos o anonimizados, y QA con un juego de datos de prueba controlado y versionado que se restituye a un estado conocido antes de cada ciclo de pruebas. Ningún ambiente no productivo recibe datos productivos sin anonimización o seudonimización verificable. Desarrollo, QA y Preproducción se reducen o apagan fuera del horario de uso, con el ahorro reflejado en la estructura de costos (RT-04.13; Bases Técnicas Transversales, cap. 4, p. 11).
+Desarrollo y QA son aislados y se reconstruyen desde código. Desarrollo trabaja con datos sintéticos o anonimizados, y QA con un juego de datos de prueba controlado y versionado que se restituye a un estado conocido antes de cada ciclo de pruebas. Ningún ambiente no productivo recibe datos productivos sin anonimización o seudonimización verificable. Desarrollo, QA y Preproducción se reducen o apagan fuera del horario de uso, con el ahorro reflejado en la estructura de costos (RT-04.13, Bases Técnicas Transversales, cap. 4, p. 11).
 
 Las bodegas no tienen ambientes propios de prueba, y no los necesitan. El on-premise es producción: la imagen wms_only que corre en los centros de distribución y en los cross-docking es la misma que recorrió Desarrollo, QA y Preproducción en la nube, y la infraestructura de cada sitio se declara como código versionado. Lo que se ensayó en la nube es, por lo tanto, lo que se instala en Talca, en Concepción y en cada cross-docking, sitio por sitio. QA y Preproducción ensayan esa imagen con el verificador local de identidad y la puerta de API local del WMS, con adaptadores simulados del ERP, y reproducen el corte de enlace y el relevo de turno antes de cada paso a producción.
 
-Preproducción es equivalente a Producción en versiones, configuración, dimensionamiento y topología de nube (RT-04.02; Bases Técnicas Transversales, cap. 4, p. 10). Subsisten tres diferencias justificadas:
+Preproducción es equivalente a Producción en versiones, configuración, dimensionamiento y topología de nube (RT-04.02, Bases Técnicas Transversales, cap. 4, p. 10). Subsisten tres diferencias justificadas:
 
 - Preproducción se reduce o apaga fuera del horario de uso, por costo.
 
@@ -2043,7 +2043,7 @@ Preproducción es equivalente a Producción en versiones, configuración, dimens
 
 - Preproducción emula el sitio on-premise dentro de su propia VPC, con la misma imagen wms_only, el mismo broker y el mismo verificador local, pero sin túnel hacia las bodegas, para que un ensayo no pueda alcanzar la operación real.
 
-Durante las campañas de certificación coinciden pruebas que alteran el estado del ambiente o que exigen una versión congelada: la migración, la carga con la resiliencia y el despliegue, la prueba de intrusión y la aceptación de usuario. Cada una usa su propia instancia de Preproducción, reconstruida desde el mismo código con la misma topología, configuración y dimensionamiento, y se apaga al terminar su campaña; siguen siendo un solo ambiente lógico, no un sexto ambiente. El Subdocumento 9, Tabla 9.11, asigna cada campaña a su instancia.
+Durante las campañas de certificación coinciden pruebas que alteran el estado del ambiente o que exigen una versión congelada: la migración, la carga con la resiliencia y el despliegue, la prueba de intrusión y la aceptación de usuario. Cada una usa su propia instancia de Preproducción, reconstruida desde el mismo código con la misma topología, configuración y dimensionamiento, y se apaga al terminar su campaña. Siguen siendo un solo ambiente lógico, no un sexto ambiente. El Subdocumento 9, Tabla 9.11, asigna cada campaña a su instancia.
 
 La emulación reproduce la topología del sitio y no su hardware. Por eso, la primera instalación de cada entrega en los centros de distribución y los cross-docking avanza sitio por sitio, como se describe en la liberación. Durante las pruebas de carga y estrés de la Tabla [22](LAFROX-Subdocumento4.md#tab:t86) opera con el dimensionamiento completo de Producción.
 
@@ -2101,7 +2101,7 @@ Los pasos de la figura son los siguientes:
 
 **Preproducción**
 
-En Preproducción la secuencia se ensaya sobre la topología de Producción y sobre un sitio on-premise emulado (Figura [21](LAFROX-Subdocumento4.md#fig:amb-preproduccion)). Aquí se demuestran las migraciones y el despliegue azul-verde con canario antes de cada paso a producción (RT-04.07; Bases Técnicas Transversales, cap. 4, p. 11).
+En Preproducción la secuencia se ensaya sobre la topología de Producción y sobre un sitio on-premise emulado (Figura [21](LAFROX-Subdocumento4.md#fig:amb-preproduccion)). Aquí se demuestran las migraciones y el despliegue azul-verde con canario antes de cada paso a producción (RT-04.07, Bases Técnicas Transversales, cap. 4, p. 11).
 
 **Figura 21 — Ambiente de Preproducción**
 
@@ -2193,7 +2193,7 @@ Concepción no depende de esta recuperación: sigue operando su propia bodega.
 
 Las cinco figuras comparten la misma cadena de entrega y la misma imagen firmada, y difieren en la cuenta, el bloque de direccionamiento y el alcance hacia los sitios. Solo Producción llega a las bodegas por la VPC Hub, y Recuperación ante Desastres conserva preparada la réplica reducida de us-east-1 y la recuperación del WMS de Talca en la nube.
 
-El paso de un ambiente a otro lo controla el pipeline de integración continua: GitLab CI lo orquesta y AWS CodeBuild construye cada imagen de forma hermética, con procedencia SLSA nivel 3. Cada cambio instala las dependencias exactamente como las fija `composer.lock` y pasa por estos controles (RT-04.05; Bases Técnicas Transversales, cap. 4, p. 10):
+El paso de un ambiente a otro lo controla el pipeline de integración continua: GitLab CI lo orquesta y AWS CodeBuild construye cada imagen de forma hermética, con procedencia SLSA nivel 3. Cada cambio instala las dependencias exactamente como las fija `composer.lock` y pasa por estos controles (RT-04.05, Bases Técnicas Transversales, cap. 4, p. 10):
 
 - Auditoría de dependencias con `composer audit`, pruebas PHPUnit con PCOV, JUnit 5 con Kover para Kotlin y Jest para TypeScript.
 
@@ -2205,7 +2205,7 @@ El paso de un ambiente a otro lo controla el pipeline de integración continua: 
 
 - Medición de la cobertura de la lógica de negocio y de la cobertura unitaria global.
 
-El pipeline bloquea el despliegue ante un hallazgo crítico o alto, ante un contrato público roto sin nueva edición o ante una cobertura de la lógica de negocio inferior al 70 % (RT-04.11; Bases Técnicas Transversales, cap. 4, p. 11). Además aplica la política corporativa de LafroX del Subdocumento 1 (sección 1.3.1): bloquea toda versión con cobertura de pruebas unitarias inferior al 80 %. Son dos métricas distintas, medidas en la misma ejecución del pipeline, y una versión debe superar ambas. Primero, la imagen aprobada se firma, se publica en Elastic Container Registry y se promueve por su digest, de modo que ningún ambiente recompila. El paso a Producción es automático una vez que la imagen supera los controles del pipeline y el ensayo en Preproducción, dentro de las ventanas de la Tabla [8](LAFROX-Subdocumento4.md#tab:jd02) (RT-04.06; Bases Técnicas Transversales, cap. 4, p. 11). Segundo, la configuración no sensible se externaliza por ambiente en SSM Parameter Store y los secretos se gestionan en AWS Secrets Manager con rotación automática (ADR-15, Anexo 4-O). La imagen no contiene secretos ni el archivo de entorno (RT-04.08 y RT-04.09; Bases Técnicas Transversales, cap. 4, p. 11). Tercero, las migraciones de base de datos son migraciones Laravel basales y aditivas, que siguen la estrategia de expandir y contraer: se ejecutan como un paso único del despliegue antes de cambiar el tráfico, cada entrega solo agrega estructuras, de modo que la entrega previa y la nueva de la aplicación funcionan sobre el mismo esquema durante el despliegue, y las estructuras obsoletas se eliminan en una entrega posterior. Cada migración declara además su reversión, de modo que el esquema puede volver a la entrega previa (RT-04.10; Bases Técnicas Transversales, cap. 4, p. 11). Luego, el código reside en un repositorio con ramas protegidas, revisión obligatoria por pares y sin escritura directa sobre la rama principal (RT-04.03; Bases Técnicas Transversales, cap. 4, p. 10).
+El pipeline bloquea el despliegue ante un hallazgo crítico o alto, ante un contrato público roto sin nueva edición o ante una cobertura de la lógica de negocio inferior al 70 % (RT-04.11, Bases Técnicas Transversales, cap. 4, p. 11). Además aplica la política corporativa de LafroX del Subdocumento 1 (sección 1.3.1): bloquea toda versión con cobertura de pruebas unitarias inferior al 80 %. Son dos métricas distintas, medidas en la misma ejecución del pipeline, y una versión debe superar ambas. Primero, la imagen aprobada se firma, se publica en Elastic Container Registry y se promueve por su digest, de modo que ningún ambiente recompila. El paso a Producción es automático una vez que la imagen supera los controles del pipeline y el ensayo en Preproducción, dentro de las ventanas de la Tabla [8](LAFROX-Subdocumento4.md#tab:jd02) (RT-04.06, Bases Técnicas Transversales, cap. 4, p. 11). Segundo, la configuración no sensible se externaliza por ambiente en SSM Parameter Store y los secretos se gestionan en AWS Secrets Manager con rotación automática (ADR-15, Anexo 4-O). La imagen no contiene secretos ni el archivo de entorno (RT-04.08 y RT-04.09, Bases Técnicas Transversales, cap. 4, p. 11). Tercero, las migraciones de base de datos son migraciones Laravel basales y aditivas, que siguen la estrategia de expandir y contraer: se ejecutan como un paso único del despliegue antes de cambiar el tráfico, cada entrega solo agrega estructuras, de modo que la entrega previa y la nueva de la aplicación funcionan sobre el mismo esquema durante el despliegue, y las estructuras obsoletas se eliminan en una entrega posterior. Cada migración declara además su reversión, de modo que el esquema puede volver a la entrega previa (RT-04.10, Bases Técnicas Transversales, cap. 4, p. 11). Luego, el código reside en un repositorio con ramas protegidas, revisión obligatoria por pares y sin escritura directa sobre la rama principal (RT-04.03, Bases Técnicas Transversales, cap. 4, p. 10).
 
 A Producción no se llega de otra forma: su acceso es restringido y auditado, y los desarrolladores no tienen acceso interactivo directo a ese ambiente (numeral 4.1 de las Bases Técnicas Transversales; Bases Técnicas Transversales, cap. 4, p. 10). El acceso privilegiado excepcional reúne estos controles:
 
@@ -2221,35 +2221,35 @@ Los portales de clientes, transportistas y proveedores siguen el mismo ciclo: su
 
 #### 4.2.4.1.1 Artefacto y perfiles de ejecución
 
-El flujo de integración continua ejecuta automáticamente en QA las pruebas de carga de regresión, con el perfil versionado de 4-W.12, en cada versión candidata y al menos una vez por semana dentro del horario de uso del ambiente, y repite el ensayo en Preproducción antes de liberar. Compara percentil 95, errores y colas con la última versión aceptada bajo la misma carga y configuración; una regresión de desempeño o un incumplimiento de 4.2.6.11 bloquea la promoción hasta corregirla (RT-09.10; Bases Técnicas Transversales, cap. 9, p. 22).
+El flujo de integración continua ejecuta automáticamente en QA las pruebas de carga de regresión, con el perfil versionado de 4-W.12, en cada versión candidata y al menos una vez por semana dentro del horario de uso del ambiente, y repite el ensayo en Preproducción antes de liberar. Compara percentil 95, errores y colas con la última versión aceptada bajo la misma carga y configuración. Una regresión de desempeño o un incumplimiento de 4.2.6.11 bloquea la promoción hasta corregirla (RT-09.10, Bases Técnicas Transversales, cap. 9, p. 22).
 
-La aplicación se construye una sola vez por entrega como una imagen PHP 8.5 con Laravel 13 que contiene el código, el `vendor` resuelto desde `composer.lock`, PHP-FPM, el intérprete de línea de comandos y las extensiones que la solución usa: `pdo_pgsql`, `mbstring`, `intl`, `openssl`, `opcache`, `curl` para el SDK de AWS, `sockets` para el adaptador AMQP `php-amqplib`, la extensión de OpenTelemetry y `pcntl`, que solo usan los procesos de línea de comandos para terminar de forma ordenada al recibir la señal de detención. Un servidor web liviano acompaña a PHP-FPM en los perfiles HTTP. La misma imagen corre en todos los ambientes y en todos los sitios, y lo que cambia es el perfil con que arranca, como muestral listado [de perfiles de ejecución de Laravel](LAFROX-Subdocumento4.md#tab:perfiles). Cada perfil se despliega y revierte por separado, por lo que un componente crítico cambia de entrega sin detener a los demás (RT-02.02; Bases Técnicas Transversales, cap. 2, p. 6).
+La aplicación se construye una sola vez por entrega como una imagen PHP 8.5 con Laravel 13 que contiene el código, el `vendor` resuelto desde `composer.lock`, PHP-FPM, el intérprete de línea de comandos y las extensiones que la solución usa: `pdo_pgsql`, `mbstring`, `intl`, `openssl`, `opcache`, `curl` para el SDK de AWS, `sockets` para el adaptador AMQP `php-amqplib`, la extensión de OpenTelemetry y `pcntl`, que solo usan los procesos de línea de comandos para terminar de forma ordenada al recibir la señal de detención. Un servidor web liviano acompaña a PHP-FPM en los perfiles HTTP. La misma imagen corre en todos los ambientes y en todos los sitios, y lo que cambia es el perfil con que arranca, como muestral listado [de perfiles de ejecución de Laravel](LAFROX-Subdocumento4.md#tab:perfiles). Cada perfil se despliega y revierte por separado, por lo que un componente crítico cambia de entrega sin detener a los demás (RT-02.02, Bases Técnicas Transversales, cap. 2, p. 6).
 
 **Perfiles de ejecución del artefacto Laravel**
 
 <a id="tab:perfiles"></a>
 
-- **API.** **Proceso y función:** Servidor web y PHP-FPM con las APIs de M1–M12 para portales, preventa y reparto; **Dónde corre:** N-04, ECS Fargate en 2 zonas; **Escala por:** Procesos PHP-FPM ocupados sobre 70 %, de 2 a 4 tareas y techo de 8.
+- **API.** **Proceso y función:** Servidor web y PHP-FPM con las APIs de M1–M12 para portales, preventa y reparto. **Dónde corre:** N-04, ECS Fargate en 2 zonas. **Escala por:** Procesos PHP-FPM ocupados sobre 70 %, de 2 a 4 tareas y techo de 8.
 
-- **`wms_only`.** **Proceso y función:** Servidor web y PHP-FPM con M1, M2, M5, bloqueo y disposición sanitaria autorizada de M9 y recepción física de retornos de M8, con la puerta de API local; **Dónde corre:** VM-01, VM-C01 y E-01; **Escala por:** Fijo, dimensionado al sitio.
+- **`wms_only`.** **Proceso y función:** Servidor web y PHP-FPM con M1, M2, M5, bloqueo y disposición sanitaria autorizada de M9 y recepción física de retornos de M8, con la puerta de API local. **Dónde corre:** VM-01, VM-C01 y E-01. **Escala por:** Fijo, dimensionado al sitio.
 
-- **Shipper.** **Proceso y función:** PHP CLI que lee RabbitMQ con `php-amqplib`, publica sobres JSON en las colas FIFO de reconciliación y de solicitudes al ERP, fuera de Talca, recibe las respuestas de su sitio y lee la cola de coordinación de reservas de su sitio; **Dónde corre:** VM-03, VM-C04 y E-01; **Escala por:** Uno activo por sitio.
+- **Shipper.** **Proceso y función:** PHP CLI que lee RabbitMQ con `php-amqplib`, publica sobres JSON en las colas FIFO de reconciliación y de solicitudes al ERP, fuera de Talca, recibe las respuestas de su sitio y lee la cola de coordinación de reservas de su sitio. **Dónde corre:** VM-03, VM-C04 y E-01, **Escala por:** Uno activo por sitio.
 
-- **Consumidor de reconciliación.** **Proceso y función:** PHP CLI con el SDK de AWS que aplica los sobres al estado central; **Dónde corre:** N-04, ECS Fargate; **Escala por:** Edad del mensaje más antiguo, de 2 a 4 tareas.
+- **Consumidor de reconciliación.** **Proceso y función:** PHP CLI con el SDK de AWS que aplica los sobres al estado central, **Dónde corre:** N-04, ECS Fargate. **Escala por:** Edad del mensaje más antiguo, de 2 a 4 tareas.
 
-- **Trabajos.** **Proceso y función:** PHP CLI con el trabajador de colas de Laravel, con notificaciones y EDI en colas separadas; **Dónde corre:** N-04, ECS Fargate; **Escala por:** Profundidad de cada cola, de 2 a 4 tareas.
+- **Trabajos.** **Proceso y función:** PHP CLI con el trabajador de colas de Laravel, con notificaciones y EDI en colas separadas. **Dónde corre:** N-04, ECS Fargate. **Escala por:** Profundidad de cada cola, de 2 a 4 tareas.
 
-- **`erp-sync`.** **Proceso y función:** PHP CLI que consume RabbitMQ local y, por conexión saliente, la cola FIFO de solicitudes al ERP, y emite mediante A-04; **Dónde corre:** VM-04, Talca; **Escala por:** Dos procesos fijos.
+- **`erp-sync`.** **Proceso y función:** PHP CLI que consume RabbitMQ local y, por conexión saliente, la cola FIFO de solicitudes al ERP, y emite mediante A-04. **Dónde corre:** VM-04, Talca, **Escala por:** Dos procesos fijos.
 
-- **Planificador.** **Proceso y función:** PHP CLI para las tareas periódicas del ambiente; **Dónde corre:** N-04, una sola tarea por ambiente; **Escala por:** No escala.
+- **Planificador.** **Proceso y función:** PHP CLI para las tareas periódicas del ambiente, **Dónde corre:** N-04, una sola tarea por ambiente, **Escala por:** No escala.
 
 Fuente: elaboración propia.
 
-LafroX compromete escalamiento horizontal automático mediante ECS Service Auto Scaling, entre dos y cuatro tareas por perfil y con métricas de un minuto: consumidor de reconciliación por `ApproximateAgeOfOldestMessage` de SQS >60 s; trabajos por `ApproximateNumberOfMessagesVisible` >100 mensajes en cualquier cola, conforme a N-04 del T-11 (RT-02.10; Bases Técnicas Transversales, cap. 2; Amazon Web Services, s. f.-h, s. f.-i). El costo del escalamiento de aplicación e integración se declara en la Oferta Económica (Bases Administrativas, art. 50.2).
+LafroX compromete escalamiento horizontal automático mediante ECS Service Auto Scaling, entre dos y cuatro tareas por perfil y con métricas de un minuto: consumidor de reconciliación por `ApproximateAgeOfOldestMessage` de SQS >60 s; trabajos por `ApproximateNumberOfMessagesVisible` >100 mensajes en cualquier cola, conforme a N-04 del T-11 (RT-02.10, Bases Técnicas Transversales, cap. 2; Amazon Web Services, s. f.-h, s. f.-i). El costo del escalamiento de aplicación e integración se declara en la Oferta Económica (Bases Administrativas, art. 50.2).
 
-Los perfiles comparten la revisión de código y el esquema de datos, pero cada uno tiene su propio rol de IAM o credencial local, con solo los permisos que su función necesita: el perfil de API no puede leer la cola de reconciliación, el consumidor no puede escribir en las colas de trabajos, el shipper solo puede enviar a las colas de reconciliación y de solicitudes al ERP y leer la respuesta y la coordinación de reservas de su sitio, y `erp-sync` es el único lector de las solicitudes al ERP. El planificador corre como una sola tarea por ambiente, con despliegue que detiene la tarea en ejecución antes de iniciar la nueva, y cada tarea periódica toma además un bloqueo en la base de datos para impedir ejecuciones superpuestas. Los sitios no ejecutan planificador: sus procesos permanentes son el servidor del WMS y el shipper, además de `erp-sync` en VM-04 de Talca. En los centros de distribución, el perfil `wms_only`, que es el Motor WMS A-01, corre como contenedor en VM-01 y VM-C01, y el shipper corre junto al broker de colas A-03, RabbitMQ, en VM-03 y VM-C04, todos sobre las máquinas virtuales de Proxmox. En cada cross-docking, el perfil `wms_only` y el shipper se orquestan con Docker Compose en E-01, junto a PostgreSQL, RabbitMQ y la caché de identidad. En Concepción y en cada cross-docking, el equipo en espera mantiene detenidos el WMS y el shipper; solo ejecuta la réplica de PostgreSQL, la caché de identidad y el colector de observabilidad hasta que toma el control. Los sitios descargan la imagen desde Elastic Container Registry por la VPN, a través de la VPC Hub, y los endpoints de interfaz de la VPC de Producción, en conexiones salientes y sin tráfico por Internet. Ansible (F-02), con el que se declara como código la configuración de los cinco sitios, actualiza sus contenedores sitio por sitio. Elastic Container Registry replica cada imagen liberada de sa-east-1 a us-east-1 mediante replicación entre regiones, de modo que la réplica reducida y la plataforma promovida en una conmutación usan el mismo digest sin depender del registro primario. En us-east-1, la infraestructura como código deja creadas y vacías las colas SQS FIFO y SQS, y los temas SNS equivalentes, a las que se redirigen los shippers y `erp-sync` durante la conmutación. Fuera de la imagen Laravel quedan el frontend Angular de las consolas, el motor de rutas M4 y el transporte AS2 M11, los tres en contenedores propios sobre ECS Fargate (N-04) y construidos por el mismo pipeline. M11 opera tras contratos versionados (ADR-11, Anexo 4-O).
+Los perfiles comparten la revisión de código y el esquema de datos, pero cada uno tiene su propio rol de IAM o credencial local, con solo los permisos que su función necesita: el perfil de API no puede leer la cola de reconciliación, el consumidor no puede escribir en las colas de trabajos, el shipper solo puede enviar a las colas de reconciliación y de solicitudes al ERP y leer la respuesta y la coordinación de reservas de su sitio, y `erp-sync` es el único lector de las solicitudes al ERP. El planificador corre como una sola tarea por ambiente, con despliegue que detiene la tarea en ejecución antes de iniciar la nueva, y cada tarea periódica toma además un bloqueo en la base de datos para impedir ejecuciones superpuestas. Los sitios no ejecutan planificador: sus procesos permanentes son el servidor del WMS y el shipper, además de `erp-sync` en VM-04 de Talca. En los centros de distribución, el perfil `wms_only`, que es el Motor WMS A-01, corre como contenedor en VM-01 y VM-C01, y el shipper corre junto al broker de colas A-03, RabbitMQ, en VM-03 y VM-C04, todos sobre las máquinas virtuales de Proxmox. En cada cross-docking, el perfil `wms_only` y el shipper se orquestan con Docker Compose en E-01, junto a PostgreSQL, RabbitMQ y la caché de identidad. En Concepción y en cada cross-docking, el equipo en espera mantiene detenidos el WMS y el shipper. Solo ejecuta la réplica de PostgreSQL, la caché de identidad y el colector de observabilidad hasta que toma el control. Los sitios descargan la imagen desde Elastic Container Registry por la VPN, a través de la VPC Hub, y los endpoints de interfaz de la VPC de Producción, en conexiones salientes y sin tráfico por Internet. Ansible (F-02), con el que se declara como código la configuración de los cinco sitios, actualiza sus contenedores sitio por sitio. Elastic Container Registry replica cada imagen liberada de sa-east-1 a us-east-1 mediante replicación entre regiones, de modo que la réplica reducida y la plataforma promovida en una conmutación usan el mismo digest sin depender del registro primario. En us-east-1, la infraestructura como código deja creadas y vacías las colas SQS FIFO y SQS, y los temas SNS equivalentes, a las que se redirigen los shippers y `erp-sync` durante la conmutación. Fuera de la imagen Laravel quedan el frontend Angular de las consolas, el motor de rutas M4 y el transporte AS2 M11, los tres en contenedores propios sobre ECS Fargate (N-04) y construidos por el mismo pipeline. M11 opera tras contratos versionados (ADR-11, Anexo 4-O).
 
-El transporte AS2 y el frontend de consolas mantienen dos tareas cada uno, distribuidas entre dos zonas de disponibilidad (RT-03.02; Bases Técnicas Transversales, cap. 3, p. 8). El motor de rutas ejecuta una tarea por corrida. Si falla, ECS la relanza en otra zona y repite la corrida dentro de la planificación de 15:00 a 18:30, y la prueba de aceptación mide el plazo de 20 min por corrida.
+El transporte AS2 y el frontend de consolas mantienen dos tareas cada uno, distribuidas entre dos zonas de disponibilidad (RT-03.02, Bases Técnicas Transversales, cap. 3, p. 8). El motor de rutas ejecuta una tarea por corrida. Si falla, ECS la relanza en otra zona y repite la corrida dentro de la planificación de 15:00 a 18:30, y la prueba de aceptación mide el plazo de 20 min por corrida.
 
 Cada perfil cumple este ciclo de vida:
 
@@ -2263,7 +2263,7 @@ Así, ningún reinicio, escalado o despliegue deja un trabajo a medias.
 
 #### 4.2.4.1.2 Liberación y reversión
 
-Cada entrega se libera con estrategia azul-verde: la entrega nueva se despliega junto a la vigente y recibe tráfico de forma gradual, en etapas de canario, después de haberse demostrado el mismo procedimiento en Preproducción (RT-04.07; Bases Técnicas Transversales, cap. 4, p. 11). La puesta en producción avanza por proceso, por sitio o por zona comercial, nunca como un evento único que afecte a la vez a la bodega, la preventa, el reparto y la facturación. En la sustitución del WMS de 2013 por olas, cada capacidad se activa además por sitio mediante indicadores de funcionalidad (*feature flags*), sin volver a desplegar. Revertir una ola devuelve el tráfico a la entrega previa del nuevo servicio. El WMS de 2013 ya no escribe stock y se retira al cerrar la marcha blanca de Talca.
+Cada entrega se libera con estrategia azul-verde: la entrega nueva se despliega junto a la vigente y recibe tráfico de forma gradual, en etapas de canario, después de haberse demostrado el mismo procedimiento en Preproducción (RT-04.07, Bases Técnicas Transversales, cap. 4, p. 11). La puesta en producción avanza por proceso, por sitio o por zona comercial, nunca como un evento único que afecte a la vez a la bodega, la preventa, el reparto y la facturación. En la sustitución del WMS de 2013 por olas, cada capacidad se activa además por sitio mediante indicadores de funcionalidad (*feature flags*), sin volver a desplegar. Revertir una ola devuelve el tráfico a la entrega previa del nuevo servicio. El WMS de 2013 ya no escribe stock y se retira al cerrar la marcha blanca de Talca.
 
 Mientras dura el canario, la entrega previa permanece desplegada, por lo que revertir es devolverle el tráfico, sin recompilar ni volver a desplegar. La reversión es automática y se dispara cuando el percentil 95 de una transacción supera su umbral comprometido (Tabla [21](LAFROX-Subdocumento4.md#tab:t84)) o cuando la entrega nueva registra más errores que la estable en la misma ventana de observación. No se pierde ninguna transacción confirmada: las operaciones en curso quedan en los buffers locales, 24 horas por sitio en el broker y la caché de turno en los dispositivos, y se reprocesan de forma idempotente contra la entrega restituida. El esquema no necesita revertirse durante el canario, porque la migración de la entrega solo agregó estructuras. Si hiciera falta, la reversión declarada de la migración lo devuelve a la entrega previa. La reversión cambia la imagen en servicio sin perder operaciones. El tiempo efectivo de reversión tiene un objetivo ≤ 10 minutos, medido en cada ensayo en Preproducción. El tiempo medio de restauración de incidentes críticos ≤ 4 horas es una métrica mensual de operación distinta de la reversión técnica (Bases Administrativas, art. 78.3, p. 40).
 
@@ -2289,7 +2289,7 @@ La arquitectura lógica fija la implantación progresiva por olas (apartado 4.1.
 
 #### 4.2.4.1.4 Calendario y cadencia
 
-El calendario de Puelche limita cuándo se puede intervenir la plataforma. El caso prohíbe intervenir los sistemas entre el 1 y el 25 de septiembre, en diciembre y durante el cierre contable de cada mes, prohíbe el paso a producción en todo septiembre y en diciembre, y exige indisponibilidad cero en la ventana de despacho (Bases Técnicas del caso, cap. 10, restricción 8, p. 19, y Cap. 13, p. 23; RT-10.05 y RT-10.06; Bases Técnicas Transversales, cap. 10, p. 22; Bases Técnicas del caso, cap. 15, p. 27). La Tabla [8](LAFROX-Subdocumento4.md#tab:jd02) cruza cada período con lo que admite.
+El calendario de Puelche limita cuándo se puede intervenir la plataforma. El caso prohíbe intervenir los sistemas entre el 1 y el 25 de septiembre, en diciembre y durante el cierre contable de cada mes, prohíbe el paso a producción en todo septiembre y en diciembre, y exige indisponibilidad cero en la ventana de despacho (Bases Técnicas del caso, cap. 10, restricción 8, p. 19, y Cap. 13, p. 23; RT-10.05 y RT-10.06, Bases Técnicas Transversales, cap. 10, p. 22; Bases Técnicas del caso, cap. 15, p. 27). La Tabla [8](LAFROX-Subdocumento4.md#tab:jd02) cruza cada período con lo que admite.
 
 <a id="tab:jd02"></a>
 
@@ -2307,11 +2307,11 @@ El calendario de Puelche limita cuándo se puede intervenir la plataforma. El ca
 
 Fuente: elaboración propia a partir de las Bases Técnicas del caso (cap. 10, p. 19).
 
-El despliegue sin interrupción es la regla. Las ventanas horarias de la Tabla [8](LAFROX-Subdocumento4.md#tab:jd02) solo se aplican en fechas no congeladas: el horario no levanta la prohibición mensual. Se mantiene una cadencia quincenal, con una meta de hasta cinco días hábiles habilitados desde que se confirma un cambio de código hasta que llega a producción. También se mide el tiempo calendario completo, separando la espera por congelamiento, que no se descuenta de los plazos contractuales. La tasa de cambios fallidos no supera el 5 % mensual y la restauración de un servicio crítico no supera 4 horas (Bases Administrativas, art. 78.3, p. 40; RT-04.12; Bases Técnicas Transversales, cap. 4, p. 11).
+El despliegue sin interrupción es la regla. Las ventanas horarias de la Tabla [8](LAFROX-Subdocumento4.md#tab:jd02) solo se aplican en fechas no congeladas: el horario no levanta la prohibición mensual. Se mantiene una cadencia quincenal, con una meta de hasta cinco días hábiles habilitados desde que se confirma un cambio de código hasta que llega a producción. También se mide el tiempo calendario completo, separando la espera por congelamiento, que no se descuenta de los plazos contractuales. La tasa de cambios fallidos no supera el 5 % mensual y la restauración de un servicio crítico no supera 4 horas (Bases Administrativas, art. 78.3, p. 40; RT-04.12, Bases Técnicas Transversales, cap. 4, p. 11).
 
-Un incidente crítico activa de inmediato el procedimiento de recuperación: conmutación, restauración o vuelta a una versión ya instalada y aceptada, siempre que sean compatibles con la prohibición de intervenir. Restaurar el servicio en 4 horas no significa terminar un desarrollo nuevo en ese plazo. Una corrección de código usa el mismo pipeline, con prioridad y fuera de la cadencia quincenal, pero eso no la autoriza a intervenir en fechas prohibidas. Las vulnerabilidades mantienen los plazos máximos de 7, 15 y 30 días corridos para severidad crítica, alta y media, contados desde su publicación o detección (Bases Administrativas, art. 21.1, p. 15; RT-11.04; Bases Técnicas Transversales, cap. 11, p. 23). La contención se registra por separado y no cuenta como remediación.
+Un incidente crítico activa de inmediato el procedimiento de recuperación: conmutación, restauración o vuelta a una versión ya instalada y aceptada, siempre que sean compatibles con la prohibición de intervenir. Restaurar el servicio en 4 horas no significa terminar un desarrollo nuevo en ese plazo. Una corrección de código usa el mismo pipeline, con prioridad y fuera de la cadencia quincenal, pero eso no la autoriza a intervenir en fechas prohibidas. Las vulnerabilidades mantienen los plazos máximos de 7, 15 y 30 días corridos para severidad crítica, alta y media, contados desde su publicación o detección (Bases Administrativas, art. 21.1, p. 15; RT-11.04, Bases Técnicas Transversales, cap. 11, p. 23). La contención se registra por separado y no cuenta como remediación.
 
-Si la recuperación o la remediación de una vulnerabilidad exige una intervención prohibida, el NOC/SOC lo comunica al CLIENTE el mismo día en que detecta el conflicto y le solicita un cambio de emergencia, con la evidencia del plazo y de la contención aplicada. Con autorización escrita del CLIENTE, el cambio se ejecuta por el mismo pipeline, con reversión preparada y fuera de la ventana de despacho. Si el CLIENTE no lo autoriza, LafroX mantiene la contención, registra la aceptación del riesgo por parte del CLIENTE y remedia en la primera fecha habilitada; el plazo que se exceda por esa decisión queda trazado como decisión del CLIENTE. El presupuesto de error de cada servicio crítico es el complemento de su disponibilidad de 99,9 % mensual, unos 43 minutos al mes; si se agota, se suspenden los despliegues no correctivos hasta el mes siguiente, sin alterar los congelamientos (RT-10.09; Bases Técnicas Transversales, cap. 10, p. 22).
+Si la recuperación o la remediación de una vulnerabilidad exige una intervención prohibida, el NOC/SOC lo comunica al CLIENTE el mismo día en que detecta el conflicto y le solicita un cambio de emergencia, con la evidencia del plazo y de la contención aplicada. Con autorización escrita del CLIENTE, el cambio se ejecuta por el mismo pipeline, con reversión preparada y fuera de la ventana de despacho. Si el CLIENTE no lo autoriza, LafroX mantiene la contención, registra la aceptación del riesgo por parte del CLIENTE y remedia en la primera fecha habilitada. El plazo que se exceda por esa decisión queda trazado como decisión del CLIENTE. El presupuesto de error de cada servicio crítico es el complemento de su disponibilidad de 99,9 % mensual, unos 43 minutos al mes. Si se agota, se suspenden los despliegues no correctivos hasta el mes siguiente, sin alterar los congelamientos (RT-10.09, Bases Técnicas Transversales, cap. 10, p. 22).
 
 ### 4.2.4.2 Red de despliegue
 
@@ -2321,7 +2321,7 @@ La sección de conexiones describe los caminos entre los sitios, el terreno y la
 
 Los túneles de AWS Site-to-Site VPN de los cinco sitios llegan a la VPC Hub de sa-east-1, donde el Transit Gateway los une solo a la VPC de Producción. La región us-east-1 dispone de su propio Transit Gateway y de su VPN para reconectar los sitios durante una conmutación. La de Producción es la única VPC con enlace hacia los sitios, coherente con que el on-premise es producción: Desarrollo, QA y Preproducción no tienen conectividad con las bodegas, de modo que un error en un ambiente de prueba no puede alcanzarlas. El direccionamiento se asigna sin solapamiento, según la Tabla [9](LAFROX-Subdocumento4.md#tab:t64), y el bloque de recuperación 10.201.0.0/16 corresponde al ambiente de Recuperación ante Desastres de la Tabla [7](LAFROX-Subdocumento4.md#tab:t62).
 
-La Figura [24](LAFROX-Subdocumento4.md#fig:red-sitios-regiones) sitúa las cinco instalaciones con cómputo en el centro, la región primaria a la izquierda y la secundaria a la derecha. Cada trazo WAN representa los dos túneles IPsec con BGP de un sitio hacia una región: las líneas azules muestran la conectividad de producción y las violetas discontinuas, las conexiones preparadas para la recuperación. Las líneas de replicación distinguen Aurora Global Database y S3; este último permanece fuera de las VPC como servicio regional. El direccionamiento local se detalla en la Tabla [9](LAFROX-Subdocumento4.md#tab:t64), y los caminos de enlace y su prioridad, en la sección [4.2.5](LAFROX-Subdocumento4.md#sec:conexiones).
+La Figura [24](LAFROX-Subdocumento4.md#fig:red-sitios-regiones) sitúa las cinco instalaciones con cómputo en el centro, la región primaria a la izquierda y la secundaria a la derecha. Cada trazo WAN representa los dos túneles IPsec con BGP de un sitio hacia una región: las líneas azules muestran la conectividad de producción y las violetas discontinuas, las conexiones preparadas para la recuperación. Las líneas de replicación distinguen Aurora Global Database y S3. Este último permanece fuera de las VPC como servicio regional. El direccionamiento local se detalla en la Tabla [9](LAFROX-Subdocumento4.md#tab:t64), y los caminos de enlace y su prioridad, en la sección [4.2.5](LAFROX-Subdocumento4.md#sec:conexiones).
 
 **Figura 24 — Red de los cinco sitios operacionales y las regiones de producción y recuperación**
 
@@ -2331,27 +2331,27 @@ Fuente: elaboración propia.
 
 <a id="fig:red-sitios-regiones"></a>
 
-La vista general distingue los cinco dominios locales y sus caminos regionales; una réplica de datos no sustituye la recuperación de un canal. La Figura [25](LAFROX-Subdocumento4.md#fig:red-detalle-sitios) desarrolla la red local de cada tipo de recinto y la Figura [26](LAFROX-Subdocumento4.md#fig:red-detalle-regiones) separa conectividad, cómputo privado y replicación entre regiones.
+La vista general distingue los cinco dominios locales y sus caminos regionales. Una réplica de datos no sustituye la recuperación de un canal. La Figura [25](LAFROX-Subdocumento4.md#fig:red-detalle-sitios) desarrolla la red local de cada tipo de recinto y la Figura [26](LAFROX-Subdocumento4.md#fig:red-detalle-regiones) separa conectividad, cómputo privado y replicación entre regiones.
 
 **Figura 25 — Red local y continuidad de Talca, Concepción y las plataformas de cross-docking**
 
-[Abrir diagrama en PDF](https://raw.githubusercontent.com/PatricioH315/LafroX/d42c58a0ca0490698344c995776d2aed08218b62/04/figuras/fisica/Red_02_sitios_legible.pdf)
+[Abrir diagrama en PDF](https://raw.githubusercontent.com/PatricioH315/LafroX/ae4fa5a96719bad39267627a50eda8c822a72f10/04/figuras/fisica/Red_02_sitios_legible.pdf)
 
 Fuente: elaboración propia.
 
 <a id="fig:red-detalle-sitios"></a>
 
-La red local conecta el cómputo redundante con dos switches y el par de firewalls de cada sitio. Talca conserva su clúster N+1; Concepción y cada cross-docking mantienen un equipo activo y otro en espera, con exclusión del escritor antes de conmutar. Los CD prefieren fibra, después LTE y finalmente satélite; las plataformas de cross-docking usan satélite como camino principal y LTE dual como respaldo. La pérdida de WAN no cambia la autoridad del WMS local ni elimina las condiciones de permisos, Calidad y guía válida para despachar.
+La red local conecta el cómputo redundante con dos switches y el par de firewalls de cada sitio. Talca conserva su clúster N+1. Concepción y cada cross-docking mantienen un equipo activo y otro en espera, con exclusión del escritor antes de conmutar. Los CD prefieren fibra, después LTE y finalmente satélite. Las plataformas de cross-docking usan satélite como camino principal y LTE dual como respaldo. La pérdida de WAN no cambia la autoridad del WMS local ni elimina las condiciones de permisos, Calidad y guía válida para despachar.
 
 **Figura 26 — Conectividad regional, servicios privados y replicación de Aurora y S3**
 
-[Abrir diagrama en PDF](https://raw.githubusercontent.com/PatricioH315/LafroX/d42c58a0ca0490698344c995776d2aed08218b62/04/figuras/fisica/Red_03_regiones_legible.pdf)
+[Abrir diagrama en PDF](https://raw.githubusercontent.com/PatricioH315/LafroX/ae4fa5a96719bad39267627a50eda8c822a72f10/04/figuras/fisica/Red_03_regiones_legible.pdf)
 
 Fuente: elaboración propia.
 
 <a id="fig:red-detalle-regiones"></a>
 
-La vista regional muestra la terminación de las VPN y el tránsito hacia Producción o Recuperación ante Desastres. Aurora y S3 tienen recorridos de replicación distintos; S3 y las colas son servicios regionales fuera de las VPC. Las colas de recuperación se preparan por infraestructura como código y reciben la republicación del outbox durante la conmutación, no una réplica automática de mensajes. Desarrollo, QA y Preproducción siguen sin ruta hacia las bodegas. La restitución por servicio y la validación de los canales conservan el procedimiento de 4.3.2.
+La vista regional muestra la terminación de las VPN y el tránsito hacia Producción o Recuperación ante Desastres. Aurora y S3 tienen recorridos de replicación distintos. S3 y las colas son servicios regionales fuera de las VPC. Las colas de recuperación se preparan por infraestructura como código y reciben la republicación del outbox durante la conmutación, no una réplica automática de mensajes. Desarrollo, QA y Preproducción siguen sin ruta hacia las bodegas. La restitución por servicio y la validación de los canales conservan el procedimiento de 4.3.2.
 
 <a id="tab:t64"></a>
 
@@ -2369,31 +2369,31 @@ La vista regional muestra la terminación de las VPN y el tránsito hacia Produc
 
 Fuente: elaboración propia.
 
-Cada sitio con cómputo dispone de un bloque propio. La séptima instalación que el caso proyecta a tres años y el centro de distribución que Puelche evalúa abrir hacia 2030 en la Región de Los Lagos tienen reservados 10.6.0.0/16 y 10.7.0.0/16, de modo que su incorporación es una parametrización de la infraestructura como código (RT-02.12; Bases Técnicas Transversales, cap. 2, p. 7; Bases Técnicas del caso, cap. 15, p. 26). En la nube, los ALB de aplicación y consolas son privados, y la subred pública solo aloja NAT y el Network Load Balancer del canal AS2. Los portales residen en S3 privado, servido únicamente por CloudFront. La VPC de Producción usa endpoints de interfaz execute-api, IoT Core, SQS, SSM y Elastic Container Registry, y endpoints de puerta de enlace para DynamoDB y S3. Como los de puerta de enlace no son alcanzables desde los sitios por la VPN, los sitios descargan la imagen por el endpoint de interfaz de Elastic Container Registry y por un endpoint de interfaz de S3, donde se almacenan las capas de las imágenes, sin salir a Internet.
+Cada sitio con cómputo dispone de un bloque propio. La séptima instalación que el caso proyecta a tres años y el centro de distribución que Puelche evalúa abrir hacia 2030 en la Región de Los Lagos tienen reservados 10.6.0.0/16 y 10.7.0.0/16, de modo que su incorporación es una parametrización de la infraestructura como código (RT-02.12, Bases Técnicas Transversales, cap. 2, p. 7; Bases Técnicas del caso, cap. 15, p. 26). En la nube, los ALB de aplicación y consolas son privados, y la subred pública solo aloja NAT y el Network Load Balancer del canal AS2. Los portales residen en S3 privado, servido únicamente por CloudFront. La VPC de Producción usa endpoints de interfaz execute-api, IoT Core, SQS, SSM y Elastic Container Registry, y endpoints de puerta de enlace para DynamoDB y S3. Como los de puerta de enlace no son alcanzables desde los sitios por la VPN, los sitios descargan la imagen por el endpoint de interfaz de Elastic Container Registry y por un endpoint de interfaz de S3, donde se almacenan las capas de las imágenes, sin salir a Internet.
 
-El tráfico externo sigue las entradas de la sección [4.2.5.2](LAFROX-Subdocumento4.md#sub:superficie). Tras la autorización del CLIENTE se promueve Aurora, se restituyen aplicación, identidad y accesos, y se reconectan la VPN, los brokers y los shippers. La validación funcional recorre las escrituras y sus acuses locales antes de que Route 53 cambie el tráfico; la reconexión no se posterga hasta después de publicar el servicio (procedimiento [de conmutación de región](LAFROX-Subdocumento4.md#tab:4-3-6)).
+El tráfico externo sigue las entradas de la sección [4.2.5.2](LAFROX-Subdocumento4.md#sub:superficie). Tras la autorización del CLIENTE se promueve Aurora, se restituyen aplicación, identidad y accesos, y se reconectan la VPN, los brokers y los shippers. La validación funcional recorre las escrituras y sus acuses locales antes de que Route 53 cambie el tráfico. La reconexión no se posterga hasta después de publicar el servicio (procedimiento [de conmutación de región](LAFROX-Subdocumento4.md#tab:4-3-6)).
 
-La red también debe devolver a la normalidad a un sitio que operó desconectado. El compromiso es resincronizar la flota en hasta 10 minutos y un centro de distribución en hasta 2 horas después de un corte de 24 horas (listado [de autonomía por ámbito](LAFROX-Subdocumento4.md#tab:t29)). Un corte de 24 horas acumula los cambios de la base con su registro de escritura anticipada, el vaciado del broker, la telemetría, la observabilidad y el incremental de respaldo: unos 1,68 GB en Talca, 1,29 GB en Concepción y 0,32 GB en cada cross-docking, que se drenan en 2 horas con 1,87, 1,44 y 0,35 Mbps, respectivamente (Tabla [17](LAFROX-Subdocumento4.md#tab:t81); Anexo 4-W). La evidencia de entrega no se suma al drenaje, porque durante el corte del centro de distribución el terminal la envía por la red celular. Las reservas de capacidad y la prioridad de cada camino se detallan en la Tabla de ancho de banda de 4.2.6. La operación de bodega conserva su autonomía mientras se drenan los mensajes. Al reconectar, la calidad de servicio prioriza el broker y el registro de escritura anticipada sobre la telemetría.
+La red también debe devolver a la normalidad a un sitio que operó desconectado. El compromiso es resincronizar la flota en hasta 10 minutos y un centro de distribución en hasta 2 horas después de un corte de 24 horas (listado [de autonomía por ámbito](LAFROX-Subdocumento4.md#tab:t29)). Un corte de 24 horas acumula los cambios de la base con su registro de escritura anticipada, el vaciado del broker, la telemetría, la observabilidad y el incremental de respaldo: unos 1,68 GB en Talca, 1,29 GB en Concepción y 0,32 GB en cada cross-docking, que se drenan en 2 horas con 1,87, 1,44 y 0,35 Mbps, respectivamente (Tabla [17](LAFROX-Subdocumento4.md#tab:t81), Anexo 4-W). La evidencia de entrega no se suma al drenaje, porque durante el corte del centro de distribución el terminal la envía por la red celular. Las reservas de capacidad y la prioridad de cada camino se detallan en la Tabla de ancho de banda de 4.2.6. La operación de bodega conserva su autonomía mientras se drenan los mensajes. Al reconectar, la calidad de servicio prioriza el broker y el registro de escritura anticipada sobre la telemetría.
 
-La calidad de servicio de los enlaces da prioridad a recepción, preparación, despacho y sincronización, junto con identidad, guías y alertas térmicas, por sobre la navegación administrativa, los informes y las transferencias no urgentes. La política se aplica al enlace principal y a los de respaldo, y mantiene la prioridad de recuperación descrita para DMS y WAL (RT-03.24; Bases Técnicas Transversales, cap. 3, p. 10).
+La calidad de servicio de los enlaces da prioridad a recepción, preparación, despacho y sincronización, junto con identidad, guías y alertas térmicas, por sobre la navegación administrativa, los informes y las transferencias no urgentes. La política se aplica al enlace principal y a los de respaldo, y mantiene la prioridad de recuperación descrita para DMS y WAL (RT-03.24, Bases Técnicas Transversales, cap. 3, p. 10).
 
 ### 4.2.4.3 Alta disponibilidad
 
 <a id="sub:3-alta-disponibilidad"></a>
 
-No todos los servicios necesitan el mismo nivel de continuidad. El Artículo 78 (Bases Administrativas, art. 78.2, p. 40) fija cuatro niveles de servicio, y la solución asigna cada servicio a uno según el efecto de su indisponibilidad sobre la operación (RT-10.02; Bases Técnicas Transversales, cap. 10, p. 22), como muestral listado [de niveles de servicio](LAFROX-Subdocumento4.md#tab:jd05).
+No todos los servicios necesitan el mismo nivel de continuidad. El Artículo 78 (Bases Administrativas, art. 78.2, p. 40) fija cuatro niveles de servicio, y la solución asigna cada servicio a uno según el efecto de su indisponibilidad sobre la operación (RT-10.02, Bases Técnicas Transversales, cap. 10, p. 22), como muestral listado [de niveles de servicio](LAFROX-Subdocumento4.md#tab:jd05).
 
 **Clasificación de servicios por nivel de servicio**
 
 <a id="tab:jd05"></a>
 
-- **Crítico.** **Disponibilidad:** 99,9 %; **Resolución:** 4 h; **Servicios:** Preparación y despacho con emisión de la guía requerida por un cambio de carga en la ventana de 05:30 a 07:00, con el bloqueo por excursión térmica y la identidad de bodega que lo habilitan.
+- **Crítico.** **Disponibilidad:** 99,9 %, **Resolución:** 4 h, **Servicios:** Preparación y despacho con emisión de la guía requerida por un cambio de carga en la ventana de 05:30 a 07:00, con el bloqueo por excursión térmica y la identidad de bodega que lo habilitan.
 
-- **Alto.** **Disponibilidad:** 99,5 %; **Resolución:** 8 h; **Servicios:** Toma de pedido de preventa y consulta de stock y crédito, entrega y evidencia de entrega, planificación de rutas, otros documentos tributarios, integración con el ERP, cobranza y rendición, y registro de temperatura.
+- **Alto.** **Disponibilidad:** 99,5 %, **Resolución:** 8 h. **Servicios:** Toma de pedido de preventa y consulta de stock y crédito, entrega y evidencia de entrega, planificación de rutas, otros documentos tributarios, integración con el ERP, cobranza y rendición, y registro de temperatura.
 
-- **Medio.** **Disponibilidad:** 99,0 %; **Resolución:** 24 h; **Servicios:** Canal moderno (EDI), notificaciones, analítica y tableros, portales, consultas de geolocalización y registros de auditoría y seguridad.
+- **Medio.** **Disponibilidad:** 99,0 %, **Resolución:** 24 h, **Servicios:** Canal moderno (EDI), notificaciones, analítica y tableros, portales, consultas de geolocalización y registros de auditoría y seguridad.
 
-- **Bajo.** **Disponibilidad:** 98,0 %; **Resolución:** 48 h; **Servicios:** Reportería e informes a pedido.
+- **Bajo.** **Disponibilidad:** 98,0 %, **Resolución:** 48 h, **Servicios:** Reportería e informes a pedido.
 
 Fuente: elaboración propia a partir de las Bases Administrativas (art. 78.2, p. 40).
 
@@ -2417,17 +2417,17 @@ En Concepción y en cada cross-docking, la misma confirmación se ejecuta en un 
 
 - PostgreSQL del equipo activo replica cada transacción en forma sincrónica al de espera, de modo que una transacción confirmada existe en los dos equipos.
 
-- Antes de promover el equipo en espera se comprueba que el anterior ya no puede escribir: apagado confirmado y arranque de PostgreSQL deshabilitado hasta su resincronización. En Concepción esto se hace con la gestión remota del servidor; en los cross-docking, si el apagado no puede confirmarse a distancia, el responsable del sitio desconecta ambas alimentaciones y registra la comprobación. Solo entonces se promueve la base y keepalived (VRRP) entrega la dirección virtual al nuevo activo. La meta de menos de un minuto se cuenta desde esa comprobación; no incluye una intervención presencial ni se garantiza ante una partición de red sin resolver.
+- Antes de promover el equipo en espera se comprueba que el anterior ya no puede escribir: apagado confirmado y arranque de PostgreSQL deshabilitado hasta su resincronización. En Concepción esto se hace con la gestión remota del servidor. En los cross-docking, si el apagado no puede confirmarse a distancia, el responsable del sitio desconecta ambas alimentaciones y registra la comprobación. Solo entonces se promueve la base y keepalived (VRRP) entrega la dirección virtual al nuevo activo. La meta de menos de un minuto se cuenta desde esa comprobación. No incluye una intervención presencial ni se garantiza ante una partición de red sin resolver.
 
-- Perder contacto con el activo por sus dos interfaces, conectadas a switches distintos, genera una alarma, pero no autoriza la promoción. Sin esa comprobación, el equipo en espera sigue en solo lectura y no toma la dirección virtual. Si no puede asegurarse que exista un único escritor, se detienen las nuevas confirmaciones y las capturas pendientes no se muestran como confirmadas. El NOC inicia la exclusión y la recuperación dentro del RTO crítico de 4 horas, y la interrupción se descuenta de la disponibilidad comprometida. PostgreSQL necesita un mecanismo externo para evitar dos primarios; VRRP por sí solo no lo asegura (PostgreSQL Global Development Group, s. f.).
+- Perder contacto con el activo por sus dos interfaces, conectadas a switches distintos, genera una alarma, pero no autoriza la promoción. Sin esa comprobación, el equipo en espera sigue en solo lectura y no toma la dirección virtual. Si no puede asegurarse que exista un único escritor, se detienen las nuevas confirmaciones y las capturas pendientes no se muestran como confirmadas. El NOC inicia la exclusión y la recuperación dentro del RTO crítico de 4 horas, y la interrupción se descuenta de la disponibilidad comprometida. PostgreSQL necesita un mecanismo externo para evitar dos primarios. VRRP por sí solo no lo asegura (PostgreSQL Global Development Group, s. f.).
 
 - Al tomar el control, el equipo vuelve a publicar desde el outbox replicado los eventos de las últimas 24 horas, y la nube descarta por UUID los que ya recibió.
 
-- Si falla el equipo en espera, el NOC comprueba que esté excluido antes de autorizar temporalmente la replicación asíncrona, y registra la pérdida de redundancia. Si no puede comprobarlo, las escrituras pendientes quedan sin confirmar. El equipo repuesto vuelve siempre como réplica, con PostgreSQL y la dirección virtual deshabilitados mientras se recupera; se reconstruye desde el activo y retoma el rol de espera solo después de verificar la línea temporal, el retraso y la réplica sincrónica. El antiguo primario nunca vuelve automáticamente como activo.
+- Si falla el equipo en espera, el NOC comprueba que esté excluido antes de autorizar temporalmente la replicación asíncrona, y registra la pérdida de redundancia. Si no puede comprobarlo, las escrituras pendientes quedan sin confirmar. El equipo repuesto vuelve siempre como réplica, con PostgreSQL y la dirección virtual deshabilitados mientras se recupera. Se reconstruye desde el activo y retoma el rol de espera solo después de verificar la línea temporal, el retraso y la réplica sincrónica. El antiguo primario nunca vuelve automáticamente como activo.
 
 Solo la pérdida simultánea de los dos equipos obliga a reconstruir la base del sitio desde el estado central (listado [de fallas en los sitios y enlaces](LAFROX-Subdocumento4.md#tab:fallas-sitios)).
 
-En la nube, todos los servicios con requisito de alta disponibilidad operan en al menos dos zonas (RT-03.02; Bases Técnicas Transversales, cap. 3, p. 8):
+En la nube, todos los servicios con requisito de alta disponibilidad operan en al menos dos zonas (RT-03.02, Bases Técnicas Transversales, cap. 3, p. 8):
 
 - Aurora PostgreSQL (N-05) escribe en sa-east-1a y mantiene un lector promovible en sa-east-1b, al que conmuta en menos de 30 segundos.
 
@@ -2443,7 +2443,7 @@ Estos tiempos corresponden a los que AWS declara como habituales para cada servi
 
 <a id="sub:4-recuperacion-ante-desastres-ba-art-20-rt"></a>
 
-La recuperación ante desastres es activo-pasiva en caliente: la región us-east-1 mantiene el núcleo de aplicación y los datos replicados con capacidad reducida; su escalado tiene un presupuesto de hasta 30 minutos y se promueve ante pérdida de la región primaria. Los canales, accesos e ingesta se restituyen según 4.3.2.5; el escalado no representa el RTO completo. Los objetivos son un RTO de hasta 4 horas y un RPO de hasta 15 minutos para los servicios críticos (RT-07.04; Bases Técnicas Transversales, cap. 7, p. 17). Cada dominio de datos alcanza ese RPO con su propio mecanismo de replicación (listado [de replicación y RPO por dominio](LAFROX-Subdocumento4.md#tab:4-3-4)): Aurora Global Database mantiene en us-east-1 la réplica promovible de la base en nube, DynamoDB Global Tables los datos de temperatura —las posiciones de flota permanecen solo en sa-east-1—, y la replicación de S3 entre regiones lleva la evidencia, los documentos y las copias de AWS Backup (N-11).
+La recuperación ante desastres es activo-pasiva en caliente: la región us-east-1 mantiene el núcleo de aplicación y los datos replicados con capacidad reducida. Su escalado tiene un presupuesto de hasta 30 minutos y se promueve ante pérdida de la región primaria. Los canales, accesos e ingesta se restituyen según 4.3.2.5. El escalado no representa el RTO completo. Los objetivos son un RTO de hasta 4 horas y un RPO de hasta 15 minutos para los servicios críticos (RT-07.04, Bases Técnicas Transversales, cap. 7, p. 17). Cada dominio de datos alcanza ese RPO con su propio mecanismo de replicación (listado [de replicación y RPO por dominio](LAFROX-Subdocumento4.md#tab:4-3-4)): Aurora Global Database mantiene en us-east-1 la réplica promovible de la base en nube, DynamoDB Global Tables los datos de temperatura —las posiciones de flota permanecen solo en sa-east-1—, y la replicación de S3 entre regiones lleva la evidencia, los documentos y las copias de AWS Backup (N-11).
 
 Si Talca pierde fibra y LTE, Starlink D-06, mantenido en espera caliente con el túnel IPsec establecido y BGP de menor preferencia, sostiene la lectura continua de AWS DMS sobre VM-02 y el envío de eventos críticos. La operación local conserva al menos 24 horas de autonomía. El límite residual del RPO y sus mitigaciones se exponen en 4.3.2, bajo «RPO y RTO». El registro retenido se acota con un tope de 5 GB por slot, frente a los unos 0,123 GB diarios de registro de escritura anticipada que estima el dimensionamiento para Talca: cubre con amplio margen un corte de 24 horas y ocupa como máximo la cuarta parte de los 20 GB actuales de VM-02, que crecen a 31 GB a 3×, sin arriesgarlo (Anexo 4-W). El retraso de replicación y el tamaño del registro retenido se miden de forma continua y generan alarma a los 5 y a los 15 minutos de retraso.
 
@@ -2461,7 +2461,7 @@ Mientras la región primaria no está disponible, la bodega y el terreno siguen 
 
 <a id="sub:5-respaldos-esquema-3-2-1-1-0-rnf-20-07"></a>
 
-El respaldo protege contra lo que las réplicas replican: un dato borrado por error, corrompido o cifrado de forma maliciosa. La solución aplica el esquema 3-2-1-1-0 exigido para la nube y el on-premise, con una copia inmutable (RT-07.09; Bases Técnicas Transversales, cap. 7, p. 18). Mantiene tres copias en dos medios, base de datos y almacenamiento de objetos:
+El respaldo protege contra lo que las réplicas replican: un dato borrado por error, corrompido o cifrado de forma maliciosa. La solución aplica el esquema 3-2-1-1-0 exigido para la nube y el on-premise, con una copia inmutable (RT-07.09, Bases Técnicas Transversales, cap. 7, p. 18). Mantiene tres copias en dos medios, base de datos y almacenamiento de objetos:
 
 - Los datos activos.
 
@@ -2469,49 +2469,49 @@ El respaldo protege contra lo que las réplicas replican: un dato borrado por er
 
 - El respaldo exportado a S3.
 
-Una copia está fuera del sitio, replicada a us-east-1 por AWS Backup (N-11) y la replicación de S3, y otra es inmutable, en S3 Object Lock en modo Compliance con AWS Backup Vault Lock. El cero corresponde a los errores de verificación de restauración: cada mes se restaura una muestra rotativa que recorre todos los dominios del listado [de respaldo y restauración por dominio](LAFROX-Subdocumento4.md#tab:jd12), se mide el tiempo efectivo de restauración y todo error se corrige antes de la verificación siguiente (RT-07.12; Bases Técnicas Transversales, cap. 7, p. 18).
+Una copia está fuera del sitio, replicada a us-east-1 por AWS Backup (N-11) y la replicación de S3, y otra es inmutable, en S3 Object Lock en modo Compliance con AWS Backup Vault Lock. El cero corresponde a los errores de verificación de restauración: cada mes se restaura una muestra rotativa que recorre todos los dominios del listado [de respaldo y restauración por dominio](LAFROX-Subdocumento4.md#tab:jd12), se mide el tiempo efectivo de restauración y todo error se corrige antes de la verificación siguiente (RT-07.12, Bases Técnicas Transversales, cap. 7, p. 18).
 
-La copia inmutable es el control frente a un ataque con credenciales administrativas comprometidas: en modo Compliance, ni un administrador ni la cuenta raíz pueden borrarla ni modificarla durante su retención, y el bloqueo de la bóveda, con 3 días de enfriamiento y una retención mínima de 35 días, igual a la menor retención del listado [de respaldo y restauración por dominio](LAFROX-Subdocumento4.md#tab:jd12), impide eliminar los respaldos una vez activado (RT-07.11; Bases Técnicas Transversales, cap. 7, p. 18). La copia local D-05 cumple otra función: es la copia de recuperación rápida, cifrada con una clave independiente de la de producción, que permite restaurar el WMS en hasta 4 horas sin depender del enlace, y por eso no se cuenta como la copia inmutable. Un medio físico cifrado se rota además cada semana a una bóveda externa, y se conserva en el recinto de custodia declarado en el Formulario T-11 hasta su traslado.
+La copia inmutable es el control frente a un ataque con credenciales administrativas comprometidas: en modo Compliance, ni un administrador ni la cuenta raíz pueden borrarla ni modificarla durante su retención, y el bloqueo de la bóveda, con 3 días de enfriamiento y una retención mínima de 35 días, igual a la menor retención del listado [de respaldo y restauración por dominio](LAFROX-Subdocumento4.md#tab:jd12), impide eliminar los respaldos una vez activado (RT-07.11, Bases Técnicas Transversales, cap. 7, p. 18). La copia local D-05 cumple otra función: es la copia de recuperación rápida, cifrada con una clave independiente de la de producción, que permite restaurar el WMS en hasta 4 horas sin depender del enlace, y por eso no se cuenta como la copia inmutable. Un medio físico cifrado se rota además cada semana a una bóveda externa, y se conserva en el recinto de custodia declarado en el Formulario T-11 hasta su traslado.
 
-El listado [de respaldo y restauración por dominio](LAFROX-Subdocumento4.md#tab:jd12) muestra, para cada dominio de datos, con qué frecuencia se respalda, cuánto tiempo se retiene y en cuánto tiempo se restaura por completo (RT-07.13; Bases Técnicas Transversales, cap. 7, p. 18).
+El listado [de respaldo y restauración por dominio](LAFROX-Subdocumento4.md#tab:jd12) muestra, para cada dominio de datos, con qué frecuencia se respalda, cuánto tiempo se retiene y en cuánto tiempo se restaura por completo (RT-07.13, Bases Técnicas Transversales, cap. 7, p. 18).
 
 **Respaldo y restauración por dominio de datos**
 
 <a id="tab:jd12"></a>
 
-- **Transaccional de bodega.** **Frecuencia:** Continua, con copia local D-05 en Talca y, en Concepción y los cross-docking, reconstrucción desde el estado central; **Retención:** 35 días; **Restauración:** ≤ 4 h.
+- **Transaccional de bodega.** **Frecuencia:** Continua, con copia local D-05 en Talca y, en Concepción y los cross-docking, reconstrucción desde el estado central, **Retención:** 35 días, **Restauración:** ≤ 4 h.
 
-- **Transaccional en nube.** **Frecuencia:** Diaria y recuperación continua; **Retención:** 35 días; **Restauración:** ≤ 4 h.
+- **Transaccional en nube.** **Frecuencia:** Diaria y recuperación continua, **Retención:** 35 días, **Restauración:** ≤ 4 h.
 
-- **Identidad.** **Frecuencia:** Diaria y recuperación continua; **Retención:** 35 días; **Restauración:** ≤ 4 h.
+- **Identidad.** **Frecuencia:** Diaria y recuperación continua, **Retención:** 35 días, **Restauración:** ≤ 4 h.
 
-- **Trazabilidad sanitaria.** **Frecuencia:** Continua; **Retención:** Vida útil + 6 meses, mínimo 5 años; **Restauración:** Recuperación crítica ≤ 4 h; consulta de emergencia de afectados con evidencia < 2 h desde la solicitud, también ante pérdida regional.
+- **Trazabilidad sanitaria.** **Frecuencia:** Continua, **Retención:** Vida útil + 6 meses, mínimo 5 años, **Restauración:** Recuperación crítica ≤ 4 h, consulta de emergencia de afectados con evidencia < 2 h desde la solicitud, también ante pérdida regional.
 
-- **Registros de temperatura.** **Frecuencia:** Diaria y continua; **Retención:** 5 años; **Restauración:** ≤ 4 h la recuperación funcional crítica; ≤ 8 h el histórico completo.
+- **Registros de temperatura.** **Frecuencia:** Diaria y continua, **Retención:** 5 años, **Restauración:** ≤ 4 h la recuperación funcional crítica, ≤ 8 h el histórico completo.
 
-- **Evidencia de entrega.** **Frecuencia:** Continua con versionado; **Retención:** 6 años; **Restauración:** ≤ 4 h la recuperación funcional crítica; ≤ 8 h el histórico completo.
+- **Evidencia de entrega.** **Frecuencia:** Continua con versionado. **Retención:** 6 años, **Restauración:** ≤ 4 h la recuperación funcional crítica, ≤ 8 h el histórico completo.
 
-- **Respaldo de documentos tributarios.** **Frecuencia:** Continua con versionado; **Retención:** 6 años; **Restauración:** ≤ 4 h la recuperación funcional crítica; ≤ 8 h el histórico completo.
+- **Respaldo de documentos tributarios.** **Frecuencia:** Continua con versionado, **Retención:** 6 años, **Restauración:** ≤ 4 h la recuperación funcional crítica, ≤ 8 h el histórico completo.
 
-- **Geolocalización de personas.** **Frecuencia:** Continua; **Retención:** 12 meses; **Restauración:** ≤ 24 h.
+- **Geolocalización de personas.** **Frecuencia:** Continua, **Retención:** 12 meses, **Restauración:** ≤ 24 h.
 
-- **Registros de seguridad y auditoría.** **Frecuencia:** Continua; **Retención:** 7 años; **Restauración:** ≤ 24 h.
+- **Registros de seguridad y auditoría.** **Frecuencia:** Continua, **Retención:** 7 años, **Restauración:** ≤ 24 h.
 
 Fuente: elaboración propia.
 
 La recuperación funcional restituye primero los datos, índices y objetos necesarios para preparar y despachar con identidad, bloqueo térmico y guía válida. Para temperatura, prueba de entrega y documentos tributarios, esa parte cumple RTO ≤ 4 h y RPO ≤ 15 min, e incluye las reglas vigentes, las lecturas que deciden un bloqueo y los originales de las cargas pendientes. El histórico completo puede seguir restaurándose hasta 8 horas sin impedir las operaciones ni las consultas críticas. Los ensayos miden ambos tiempos por separado y comprueban las dependencias, no solo el arranque del servicio.
 
-La recuperación funcional crítica tiene RTO ≤ 4 horas (RT-07.04; Bases Administrativas, art. 78.2, p. 40). La consulta sanitaria tiene un objetivo distinto: lista de clientes afectados con evidencia en menos de 2 horas desde la solicitud, incluso si coincide con una pérdida regional. M9 dispone de una consulta de emergencia de solo lectura en us-east-1, descrita en 4.3.2.5, sobre Aurora y los objetos replicados. La aceptación mide acceso, consulta, cobertura y evidencias; una copia incompleta no acredita el resultado sanitario. Las retenciones y la restauración parcial a un instante específico se mantienen por dominio (RT-07.14; Bases Técnicas Transversales, cap. 7, p. 18).
+La recuperación funcional crítica tiene RTO ≤ 4 horas (RT-07.04, Bases Administrativas, art. 78.2, p. 40). La consulta sanitaria tiene un objetivo distinto: lista de clientes afectados con evidencia en menos de 2 horas desde la solicitud, incluso si coincide con una pérdida regional. M9 dispone de una consulta de emergencia de solo lectura en us-east-1, descrita en 4.3.2.5, sobre Aurora y los objetos replicados. La aceptación mide acceso, consulta, cobertura y evidencias. Una copia incompleta no acredita el resultado sanitario. Las retenciones y la restauración parcial a un instante específico se mantienen por dominio (RT-07.14, Bases Técnicas Transversales, cap. 7, p. 18).
 
 AWS Backup aplica a Aurora y DynamoDB los respaldos y la recuperación a un instante específico, mientras S3 aporta versionado, Object Lock y réplica entre regiones para los documentos legales. Object Lock protege también los registros de seguridad y auditoría. Los plazos y las retenciones por dominio constan en el listado [de respaldo y restauración por dominio](LAFROX-Subdocumento4.md#tab:jd12).
 
-Los dos medios rotativos se inventarían por identificador, contenido y ubicación, con registro de cada entrada y salida, del responsable y de la entrega bajo cadena de custodia. En cada rotación semanal se comprueba su legibilidad con una lectura y una restauración de verificación; el resultado queda registrado y todo medio defectuoso se retira de uso (RT-06.28; Bases Técnicas Transversales, cap. 6, p. 16).
+Los dos medios rotativos se inventarían por identificador, contenido y ubicación, con registro de cada entrada y salida, del responsable y de la entrega bajo cadena de custodia. En cada rotación semanal se comprueba su legibilidad con una lectura y una restauración de verificación. El resultado queda registrado y todo medio defectuoso se retira de uso (RT-06.28, Bases Técnicas Transversales, cap. 6, p. 16).
 
 ### 4.2.4.6 Verificación de la continuidad
 
 <a id="sub:6-verificacion-de-la-continuidad"></a>
 
-Los mecanismos descritos se verifican con pruebas periódicas. La aceptación del par activo/espera incluye una partición de ambas redes con los dos equipos encendidos, la pérdida de la réplica, el apagado del activo y el retorno del antiguo primario. Se demuestra que hay un único escritor intentando escribir por ambos extremos, que no es posible promover sin exclusión y que se mantiene la continuidad de UUID y outbox; además, se miden los tiempos desde la detección hasta la recuperación. Una prueba de apagado aislada no basta para demostrar el manejo de particiones. Antes de cada paso a producción, y al menos una vez por semestre durante la Operación, se inyectan la caída de una instancia, de una zona, del equipo activo de Concepción o de un cross-docking, o de una dependencia externa, la latencia elevada y la saturación de disco (RT-10.07; Bases Técnicas Transversales, cap. 10, p. 22), y se comprueban las resoluciones de los listados [de fallas en los sitios y enlaces](LAFROX-Subdocumento4.md#tab:fallas-sitios) y [de fallas en nube, terreno e integraciones](LAFROX-Subdocumento4.md#tab:fallas-nube). La conmutación regional se ensaya dos veces al año con escrituras de pedidos y sincronización en us-east-1, y el RTO y el RPO medidos deben cumplirse en el 100 % de los ensayos (Bases Administrativas, art. 78.3, p. 40). Con la misma frecuencia se ensaya la pérdida completa de la sala de Talca, distinta del corte de enlace, levantando su WMS en la nube sobre la copia en Aurora, y los respaldos se restauran mensualmente. Las pruebas se programan fuera de la ventana de despacho y producen un informe de resultados con el plan de corrección de las brechas detectadas (RT-07.07; Bases Técnicas Transversales, cap. 7, p. 17). El plan de continuidad del negocio se elabora conforme a ISO 22301, y la continuidad TIC se estructura conforme a ISO/IEC 27031, articulada con el plan de recuperación ante desastres de esta sección (RT-10.03 y RT-10.04; Bases Técnicas Transversales, cap. 10, p. 22).
+Los mecanismos descritos se verifican con pruebas periódicas. La aceptación del par activo/espera incluye una partición de ambas redes con los dos equipos encendidos, la pérdida de la réplica, el apagado del activo y el retorno del antiguo primario. Se demuestra que hay un único escritor intentando escribir por ambos extremos, que no es posible promover sin exclusión y que se mantiene la continuidad de UUID y outbox. Además, se miden los tiempos desde la detección hasta la recuperación. Una prueba de apagado aislada no basta para demostrar el manejo de particiones. Antes de cada paso a producción, y al menos una vez por semestre durante la Operación, se inyectan la caída de una instancia, de una zona, del equipo activo de Concepción o de un cross-docking, o de una dependencia externa, la latencia elevada y la saturación de disco (RT-10.07, Bases Técnicas Transversales, cap. 10, p. 22), y se comprueban las resoluciones de los listados [de fallas en los sitios y enlaces](LAFROX-Subdocumento4.md#tab:fallas-sitios) y [de fallas en nube, terreno e integraciones](LAFROX-Subdocumento4.md#tab:fallas-nube). La conmutación regional se ensaya dos veces al año con escrituras de pedidos y sincronización en us-east-1, y el RTO y el RPO medidos deben cumplirse en el 100 % de los ensayos (Bases Administrativas, art. 78.3, p. 40). Con la misma frecuencia se ensaya la pérdida completa de la sala de Talca, distinta del corte de enlace, levantando su WMS en la nube sobre la copia en Aurora, y los respaldos se restauran mensualmente. Las pruebas se programan fuera de la ventana de despacho y producen un informe de resultados con el plan de corrección de las brechas detectadas (RT-07.07, Bases Técnicas Transversales, cap. 7, p. 17). El plan de continuidad del negocio se elabora conforme a ISO 22301, y la continuidad TIC se estructura conforme a ISO/IEC 27031, articulada con el plan de recuperación ante desastres de esta sección (RT-10.03 y RT-10.04, Bases Técnicas Transversales, cap. 10, p. 22).
 
 La aplicación se instrumenta con OpenTelemetry para PHP y Laravel. Además de las métricas de infraestructura, cada perfil publica señales agrupadas por ámbito:
 
@@ -2537,11 +2537,11 @@ Esta sección describe cómo se conectan los sitios, el terreno y la nube, ident
 
 Los dos dominios fijos, la nube y el on-premise, se conectan por túneles VPN IPsec que terminan en el par de firewalls de cada sitio (D-01) y en el Transit Gateway de AWS en sa-east-1, con enrutamiento dinámico BGP. Cada sitio publica sus eventos directamente a la nube y opera sin conexión con los sistemas de otra instalación. Los caminos de acceso se distribuyen así:
 
-- Cada centro de distribución tiene tres caminos independientes: fibra D-03, LTE D-04 y Starlink D-06. Starlink permanece en espera caliente, con el terminal encendido, el túnel IPsec establecido y BGP de menor preferencia; solo toma el tráfico cuando fallan fibra y LTE y entonces prioriza DMS/WAL de Talca, broker y outbox, guías hacia ERP y SII, identidad y telemetría crítica.
+- Cada centro de distribución tiene tres caminos independientes: fibra D-03, LTE D-04 y Starlink D-06. Starlink permanece en espera caliente, con el terminal encendido, el túnel IPsec establecido y BGP de menor preferencia. Solo toma el tráfico cuando fallan fibra y LTE y entonces prioriza DMS/WAL de Talca, broker y outbox, guías hacia ERP y SII, identidad y telemetría crítica.
 
 - Cada cross-docking usa Starlink como camino principal y LTE de dos proveedores como respaldo.
 
-El terminal satelital de los centros permanece encendido porque adquirir satélites y negociar el túnel durante una falla tardaría minutos; el plan de tarifa plana no agrega costo por mantenerlo encendido.
+El terminal satelital de los centros permanece encendido porque adquirir satélites y negociar el túnel durante una falla tardaría minutos, el plan de tarifa plana no agrega costo por mantenerlo encendido.
 
 Los terminales EC55 y TC58e acceden por red celular a CloudFront, cuyas rutas `/v1` y `/sync/v1` llegan a la API REST pública.
 
@@ -2553,7 +2553,7 @@ Los flujos principales son las entradas HTTPS de usuarios externos por CloudFron
 
 - Sitios–SQS: los eventos de cada sitio, incluidos los cross-docking, llegan a SQS FIFO sin depender de otro sitio.
 
-Los 184 usuarios de administración, comercial y soporte de Talca y Concepción acceden a las consolas y a la administración de Keycloak solo por Verified Access. La consola Angular corre en dos tareas Fargate distribuidas entre dos zonas tras un ALB privado y reenvía las llamadas a la API REST privada por el endpoint de interfaz execute-api. CloudFront publica únicamente los endpoints OIDC necesarios para autenticación y renovación de sesión por la API REST pública sin autorizador hacia Keycloak tras el ALB privado; el verificador local de relevos permanece en cada sitio. Las cadenas usan el canal AS2 descrito en ADR-11 (Anexo 4-O), cuyo transporte mantiene dos tareas Fargate distribuidas entre dos zonas.
+Los 184 usuarios de administración, comercial y soporte de Talca y Concepción acceden a las consolas y a la administración de Keycloak solo por Verified Access. La consola Angular corre en dos tareas Fargate distribuidas entre dos zonas tras un ALB privado y reenvía las llamadas a la API REST privada por el endpoint de interfaz execute-api. CloudFront publica únicamente los endpoints OIDC necesarios para autenticación y renovación de sesión por la API REST pública sin autorizador hacia Keycloak tras el ALB privado. El verificador local de relevos permanece en cada sitio. Las cadenas usan el canal AS2 descrito en ADR-11 (Anexo 4-O), cuyo transporte mantiene dos tareas Fargate distribuidas entre dos zonas.
 
 La Tabla [10](LAFROX-Subdocumento4.md#tab:conexiones) resume cada conexión con su medio, su camino alternativo y el tiempo de conmutación entre ambos.
 
@@ -2575,13 +2575,13 @@ La Tabla [10](LAFROX-Subdocumento4.md#tab:conexiones) resume cada conexión con 
 
 Fuente: elaboración propia.
 
-Los cinco sitios tienen caminos alternativos hacia la nube. Los sitios mantienen las funciones locales de 4.1.15; una nueva guía sigue dependiendo del ERP de Talca y de su comunicación tributaria. El terreno conserva la captura autorizada sin señal y los termógrafos mantienen su registro interno. Los portales requieren conexión, salvo el Portal de Clientes instalado, que conserva el catálogo descargado y el pedido armado hasta recuperar señal.
+Los cinco sitios tienen caminos alternativos hacia la nube. Los sitios mantienen las funciones locales de 4.1.15. Una nueva guía sigue dependiendo del ERP de Talca y de su comunicación tributaria. El terreno conserva la captura autorizada sin señal y los termógrafos mantienen su registro interno. Los portales requieren conexión, salvo el Portal de Clientes instalado, que conserva el catálogo descargado y el pedido armado hasta recuperar señal.
 
 ### 4.2.5.2 Superficie de exposición
 
 <a id="sub:superficie"></a>
 
-La Tabla [11](LAFROX-Subdocumento4.md#tab:superficie) delimita las únicas entradas desde redes externas. Cada entrada usa un subdominio propio del dominio del CLIENTE gestionado en Route 53; en la tabla, `<dominio>` representa ese dominio institucional, que el CLIENTE confirma al inicio del proyecto.
+La Tabla [11](LAFROX-Subdocumento4.md#tab:superficie) delimita las únicas entradas desde redes externas. Cada entrada usa un subdominio propio del dominio del CLIENTE gestionado en Route 53. En la tabla, `<dominio>` representa ese dominio institucional, que el CLIENTE confirma al inicio del proyecto.
 
 <a id="tab:superficie"></a>
 
@@ -2605,43 +2605,43 @@ Cada conexión se apoya en equipos del sitio que también pueden fallar. El list
 
 <a id="tab:fallas-sitios"></a>
 
-- **Fibra y LTE de un centro de distribución.** **Resolución:** BGP conmuta al túnel IPsec ya establecido por Starlink D-06, con prioridad para DMS/WAL, broker, guías, identidad y telemetría crítica; **Contingencia:** La operación local conserva 24 h de autonomía.
+- **Fibra y LTE de un centro de distribución.** **Resolución:** BGP conmuta al túnel IPsec ya establecido por Starlink D-06, con prioridad para DMS/WAL, broker, guías, identidad y telemetría crítica. **Contingencia:** La operación local conserva 24 h de autonomía.
 
-- **Caída del enlace de Talca para la oficina.** **Resolución:** Verified Access admite otra conexión a Internet con los mismos controles; **Contingencia:** Plan de rutas y manifiesto aprobados en el WMS antes de las 22:00; tableros y costo de servir esperan el retorno.
+- **Caída del enlace de Talca para la oficina.** **Resolución:** Verified Access admite otra conexión a Internet con los mismos controles, **Contingencia:** Plan de rutas y manifiesto aprobados en el WMS antes de las 22:00, tableros y costo de servir esperan el retorno.
 
-- **Starlink de un cross-docking.** **Resolución:** El LTE de dos proveedores toma el tráfico en menos de 30 s; **Contingencia:** La ventana de 3 h opera 100 % local y sincroniza al reconectar.
+- **Starlink de un cross-docking.** **Resolución:** El LTE de dos proveedores toma el tráfico en menos de 30 s. **Contingencia:** La ventana de 3 h opera 100 % local y sincroniza al reconectar.
 
-- **Enlace de Los Ángeles en la madrugada.** **Resolución:** Starlink queda como camino único, porque la red móvil falla a esa hora; **Contingencia:** La ventana de madrugada opera íntegramente local.
+- **Enlace de Los Ángeles en la madrugada.** **Resolución:** Starlink queda como camino único, porque la red móvil falla a esa hora. **Contingencia:** La ventana de madrugada opera íntegramente local.
 
-- **Firewall de Talca.** **Resolución:** La unidad pasiva asume las direcciones y los túneles en menos de 30 s; **Contingencia:** Operación local 24 h sin enlace.
+- **Firewall de Talca.** **Resolución:** La unidad pasiva asume las direcciones y los túneles en menos de 30 s, **Contingencia:** Operación local 24 h sin enlace.
 
-- **Firewall de Concepción.** **Resolución:** La unidad pasiva asume el túnel y la conmutación de enlace en menos de 30 s; **Contingencia:** La unidad dañada se reemplaza con la de reserva de Talca.
+- **Firewall de Concepción.** **Resolución:** La unidad pasiva asume el túnel y la conmutación de enlace en menos de 30 s. **Contingencia:** La unidad dañada se reemplaza con la de reserva de Talca.
 
-- **Nodo del clúster de Talca.** **Resolución:** Las VM se reinician en los nodos restantes, con sus datos replicados por Ceph; **Contingencia:** Ante la pérdida del clúster, se levanta el WMS de Talca en la nube sobre su copia en Aurora.
+- **Nodo del clúster de Talca.** **Resolución:** Las VM se reinician en los nodos restantes, con sus datos replicados por Ceph. **Contingencia:** Ante la pérdida del clúster, se levanta el WMS de Talca en la nube sobre su copia en Aurora.
 
-- **Instancia de escritura VM-02.** **Resolución:** Se reinicia en otro nodo del clúster; **Contingencia:** D-05 restaura la base en hasta 4 h sin enlace.
+- **Instancia de escritura VM-02.** **Resolución:** Se reinicia en otro nodo del clúster. **Contingencia:** D-05 restaura la base en hasta 4 h sin enlace.
 
-- **Disco de un nodo de Talca.** **Resolución:** Ceph marca el disco fuera y recompone sus réplicas en los otros nodos; **Contingencia:** Durante la recomposición quedan dos réplicas.
+- **Disco de un nodo de Talca.** **Resolución:** Ceph marca el disco fuera y recompone sus réplicas en los otros nodos. **Contingencia:** Durante la recomposición quedan dos réplicas.
 
-- **Miembro del stack de switches de Talca o de Concepción.** **Resolución:** El otro miembro mantiene el tráfico; **Contingencia:** Reposición sin corte con la unidad de reserva de Talca.
+- **Miembro del stack de switches de Talca o de Concepción.** **Resolución:** El otro miembro mantiene el tráfico. **Contingencia:** Reposición sin corte con la unidad de reserva de Talca.
 
-- **Servidor activo de Concepción.** **Resolución:** El servidor en espera, con la base replicada en forma sincrónica, toma su lugar tras comprobar la exclusión del escritor anterior, en menos de un minuto desde esa comprobación o con RTO ≤ 4 h si requiere intervención presencial (4.2.4.3); cada servidor tiene RAID 10 y fuentes redundantes; **Contingencia:** Si fallan ambos, reposición y reconstrucción de la base desde el estado central.
+- **Servidor activo de Concepción.** **Resolución:** El servidor en espera, con la base replicada en forma sincrónica, toma su lugar tras comprobar la exclusión del escritor anterior, en menos de un minuto desde esa comprobación o con RTO ≤ 4 h si requiere intervención presencial (4.2.4.3). Cada servidor tiene RAID 10 y fuentes redundantes. **Contingencia:** Si fallan ambos, reposición y reconstrucción de la base desde el estado central.
 
-- **Mini-PC activo de un cross-docking.** **Resolución:** El mini-PC en espera, con la base replicada en forma sincrónica, toma su lugar tras comprobar la exclusión del escritor anterior, en menos de un minuto desde esa comprobación o con RTO ≤ 4 h si requiere intervención presencial (4.2.4.3); cada equipo tiene dos fuentes, dos SSD en RAID 1 y una interfaz a cada switch; **Contingencia:** Reposición del equipo dañado desde la reserva de Talca; si fallan ambos, reconstrucción desde el estado central y SQS FIFO.
+- **Mini-PC activo de un cross-docking.** **Resolución:** El mini-PC en espera, con la base replicada en forma sincrónica, toma su lugar tras comprobar la exclusión del escritor anterior, en menos de un minuto desde esa comprobación o con RTO ≤ 4 h si requiere intervención presencial (4.2.4.3). Cada equipo tiene dos fuentes, dos SSD en RAID 1 y una interfaz a cada switch. **Contingencia:** Reposición del equipo dañado desde la reserva de Talca, si fallan ambos, reconstrucción desde el estado central y SQS FIFO.
 
-- **Firewall de un cross-docking.** **Resolución:** La unidad pasiva del par asume el túnel en menos de 30 s; **Contingencia:** La ventana de 3 h opera 100 % local y sincroniza al reconectar.
+- **Firewall de un cross-docking.** **Resolución:** La unidad pasiva del par asume el túnel en menos de 30 s. **Contingencia:** La ventana de 3 h opera 100 % local y sincroniza al reconectar.
 
-- **Periféricos de andén.** **Resolución:** Sin redundancia por equipo; **Contingencia:** La etiqueta se emite en otra de las impresoras del centro de distribución.
+- **Periféricos de andén.** **Resolución:** Sin redundancia por equipo. **Contingencia:** La etiqueta se emite en otra de las impresoras del centro de distribución.
 
-- **Energía de la sala de Talca.** **Resolución:** UPS N+1 de 30 min y generador que toma carga en 8 a 15 s; **Contingencia:** Estanque de 24 h y contrato de reabastecimiento.
+- **Energía de la sala de Talca.** **Resolución:** UPS N+1 de 30 min y generador que toma carga en 8 a 15 s, **Contingencia:** Estanque de 24 h y contrato de reabastecimiento.
 
-- **Corte de energía en la bodega.** **Resolución:** Las UPS de los gabinetes de piso sostienen switches PoE, AP e impresoras durante 30 min; **Contingencia:** Registro de frío con generador en Talca y UPS de 30 min en Concepción.
+- **Corte de energía en la bodega.** **Resolución:** Las UPS de los gabinetes de piso sostienen switches PoE, AP e impresoras durante 30 min, **Contingencia:** Registro de frío con generador en Talca y UPS de 30 min en Concepción.
 
-- **Climatización de la sala de Talca.** **Resolución:** Segunda unidad de precisión en N+1; **Contingencia:** Alerta del monitoreo de los sensores ambientales.
+- **Climatización de la sala de Talca.** **Resolución:** Segunda unidad de precisión en N+1, **Contingencia:** Alerta del monitoreo de los sensores ambientales.
 
 Fuente: elaboración propia.
 
-En Concepción, el RAID 10 tolera la falla de un disco y las fuentes redundantes sostienen cada servidor ante la pérdida de un circuito. Si falla el servidor activo, el de espera toma su lugar con la base al día, y solo la pérdida de ambos obliga a reconstruirla desde el estado central alimentado por sus eventos. En Talca, el tablero respaldado por generador mantiene el registro de frío, y en Concepción la UPS del gabinete permite el apagado ordenado. La tabla muestra además que los firewalls van en par en los cinco sitios conforme a RT-08.03 (Bases Técnicas Transversales, cap. 8, p. 18). Concepción y cada cross-docking tienen su cómputo en un par de equipos activo y en espera (RT-03.14; Bases Técnicas Transversales, cap. 3, p. 9). Cada cross-docking tiene además dos switches industriales, y cada equipo, alimentación redundante y discos en RAID 1. El bloqueo sanitario permanece local y el despacho con guía preemitida puede continuar cuando la carga conserva su autorización sanitaria. Una nueva liberación corresponde solo a Calidad, conforme a 4.1.3.5 y 4.1.3.7; la consola central requiere conexión y el perfil Kotlin autorizado usa la puerta local de A-01 con evaluación y auditoría persistentes. Si el expediente local está incompleto o el permiso no está vigente, el lote permanece bloqueado. En la ventana de Talca, VM-02 se reinicia en otro nodo y otra impresora emite la etiqueta si falla la del andén. Los mecanismos de alta disponibilidad se detallan en la sección [4.2.4.3](LAFROX-Subdocumento4.md#sub:3-alta-disponibilidad).
+En Concepción, el RAID 10 tolera la falla de un disco y las fuentes redundantes sostienen cada servidor ante la pérdida de un circuito. Si falla el servidor activo, el de espera toma su lugar con la base al día, y solo la pérdida de ambos obliga a reconstruirla desde el estado central alimentado por sus eventos. En Talca, el tablero respaldado por generador mantiene el registro de frío, y en Concepción la UPS del gabinete permite el apagado ordenado. La tabla muestra además que los firewalls van en par en los cinco sitios conforme a RT-08.03 (Bases Técnicas Transversales, cap. 8, p. 18). Concepción y cada cross-docking tienen su cómputo en un par de equipos activo y en espera (RT-03.14, Bases Técnicas Transversales, cap. 3, p. 9). Cada cross-docking tiene además dos switches industriales, y cada equipo, alimentación redundante y discos en RAID 1. El bloqueo sanitario permanece local y el despacho con guía preemitida puede continuar cuando la carga conserva su autorización sanitaria. Una nueva liberación corresponde solo a Calidad, conforme a 4.1.3.5 y 4.1.3.7. La consola central requiere conexión y el perfil Kotlin autorizado usa la puerta local de A-01 con evaluación y auditoría persistentes. Si el expediente local está incompleto o el permiso no está vigente, el lote permanece bloqueado. En la ventana de Talca, VM-02 se reinicia en otro nodo y otra impresora emite la etiqueta si falla la del andén. Los mecanismos de alta disponibilidad se detallan en la sección [4.2.4.3](LAFROX-Subdocumento4.md#sub:3-alta-disponibilidad).
 
 ### 4.2.5.4 Puntos de falla en la nube, el terreno y las integraciones
 
@@ -2649,37 +2649,37 @@ El listado [de fallas en nube, terreno e integraciones](LAFROX-Subdocumento4.md#
 
 <a id="tab:fallas-nube"></a>
 
-- **Zona de disponibilidad de sa-east-1.** **Resolución:** Aurora conmuta en menos de 30 s, ElastiCache en menos de 60 s y Fargate reprograma las tareas; **Contingencia:** La operación continúa en las zonas restantes.
+- **Zona de disponibilidad de sa-east-1.** **Resolución:** Aurora conmuta en menos de 30 s, ElastiCache en menos de 60 s y Fargate reprograma las tareas, **Contingencia:** La operación continúa en las zonas restantes.
 
-- **Región sa-east-1 completa.** **Resolución:** Tras autorización del CLIENTE se promueve Aurora, se restituyen identidad y API y se valida; entonces Route 53 dirige el tráfico a us-east-1; **Contingencia:** RTO de 4 h y RPO de 15 min; bodega y terreno operan localmente durante la conmutación.
+- **Región sa-east-1 completa.** **Resolución:** Tras autorización del CLIENTE se promueve Aurora, se restituyen identidad y API y se valida. Entonces Route 53 dirige el tráfico a us-east-1, **Contingencia:** RTO de 4 h y RPO de 15 min. Bodega y terreno operan localmente durante la conmutación.
 
-- **Túnel VPN de Talca durante la replicación.** **Resolución:** BGP conmuta entre fibra D-03, LTE D-04 y Starlink D-06 para que DMS siga leyendo VM-02; **Contingencia:** La autonomía local conserva la operación mientras se restituye cualquier camino.
+- **Túnel VPN de Talca durante la replicación.** **Resolución:** BGP conmuta entre fibra D-03, LTE D-04 y Starlink D-06 para que DMS siga leyendo VM-02. **Contingencia:** La autonomía local conserva la operación mientras se restituye cualquier camino.
 
-- **IdP maestro o enlace de identidad.** **Resolución:** La caché de solo lectura, de 24 h, conserva los datos de identidad recibidos, y el verificador local habilita los relevos de turno con el manifiesto firmado y el PIN personal; **Contingencia:** La credencial de turno dura hasta 8 h en bodega y 14 h en terreno, sin revocación remota durante el corte, y queda disponible la cuenta de último recurso (ADR-06, Anexo 4-O).
+- **IdP maestro o enlace de identidad.** **Resolución:** La caché de solo lectura, de 24 h, conserva los datos de identidad recibidos, y el verificador local habilita los relevos de turno con el manifiesto firmado y el PIN personal. **Contingencia:** La credencial de turno dura hasta 8 h en bodega y 14 h en terreno, sin revocación remota durante el corte, y queda disponible la cuenta de último recurso (ADR-06, Anexo 4-O).
 
-- **Señal móvil en ruta.** **Resolución:** La aplicación opera contra el almacén local del dispositivo; **Contingencia:** Sincroniza al reconectar dentro de los 10 min del listado [de autonomía por ámbito](LAFROX-Subdocumento4.md#tab:t29).
+- **Señal móvil en ruta.** **Resolución:** La aplicación opera contra el almacén local del dispositivo. **Contingencia:** Sincroniza al reconectar dentro de los 10 min del listado [de autonomía por ámbito](LAFROX-Subdocumento4.md#tab:t29).
 
-- **ERP legado.** **Resolución:** El trabajador `erp-sync` en VM-04 retiene las solicitudes en la cola local o en SQS y reintenta con la misma clave idempotente; **Contingencia:** Ningún camión sale sin documento tributario válido emitido por el ERP.
+- **ERP legado.** **Resolución:** El trabajador `erp-sync` en VM-04 retiene las solicitudes en la cola local o en SQS y reintenta con la misma clave idempotente, **Contingencia:** Ningún camión sale sin documento tributario válido emitido por el ERP.
 
-- **Perfil de API saturado.** **Resolución:** El balanceador reparte entre tareas y el escalado agrega tareas cuando los procesos PHP-FPM ocupados superan el 70 %; **Contingencia:** Limitación de tasa en API Gateway con mensaje explícito al usuario.
+- **Perfil de API saturado.** **Resolución:** El balanceador reparte entre tareas y el escalado agrega tareas cuando los procesos PHP-FPM ocupados superan el 70 %, **Contingencia:** Limitación de tasa en API Gateway con mensaje explícito al usuario.
 
-- **Mensaje de reconciliación inválido o que falla.** **Resolución:** El consumidor rechaza el sobre de edición desconocida sin aplicarlo; tras cinco intentos pasa a la cola de mensajes fallidos; **Contingencia:** Alarma inmediata y reproceso manual trazable; el grupo afectado no bloquea a los demás.
+- **Mensaje de reconciliación inválido o que falla.** **Resolución:** El consumidor rechaza el sobre de edición desconocida sin aplicarlo, tras cinco intentos pasa a la cola de mensajes fallidos, **Contingencia:** Alarma inmediata y reproceso manual trazable, el grupo afectado no bloquea a los demás.
 
-- **Excursión térmica crítica sin enlace.** **Resolución:** El gateway bloquea el despacho en menos de 5 s en el borde; **Contingencia:** Buffer de 24 h y alerta al reconectar.
+- **Excursión térmica crítica sin enlace.** **Resolución:** El gateway bloquea el despacho en menos de 5 s en el borde, **Contingencia:** Buffer de 24 h y alerta al reconectar.
 
-- **SII, cadenas o notificaciones.** **Resolución:** Reintento con espera creciente y cola de mensajes fallidos; **Contingencia:** Reproceso desde la cola al recuperarse el tercero.
+- **SII, cadenas o notificaciones.** **Resolución:** Reintento con espera creciente y cola de mensajes fallidos, **Contingencia:** Reproceso desde la cola al recuperarse el tercero.
 
-- **Carga del peak de septiembre.** **Resolución:** Fargate escala automáticamente por perfil y Aurora ya está dimensionada para 3× sin cambio de instancia; **Contingencia:** Limitación de tasa en API Gateway.
+- **Carga del peak de septiembre.** **Resolución:** Fargate escala automáticamente por perfil y Aurora ya está dimensionada para 3× sin cambio de instancia, **Contingencia:** Limitación de tasa en API Gateway.
 
 Fuente: elaboración propia.
 
-Las fallas de nube o enlace no detienen la preparación ni la entrega, que se confirman localmente. La pérdida de la región primaria deja sin servicio a los portales y a la analítica hasta promover la réplica. El despacho conserva la guía preemitida al cerrar la carga nocturna; si la carga cambia entre las 05:30 y las 07:00, la guía queda inválida y el ERP de Talca emite otra por cualquiera de sus tres caminos, a los que Concepción y los cross-docking llegan por los suyos. Si no hay camino hasta el ERP, el camión sale solo con la carga amparada por su guía vigente y el ajuste pasa a la ruta siguiente. Si la guía ya se anuló, la salida queda bloqueada hasta disponer de un documento válido; ningún camión sale sin guía válida.
+Las fallas de nube o enlace no detienen la preparación ni la entrega, que se confirman localmente. La pérdida de la región primaria deja sin servicio a los portales y a la analítica hasta promover la réplica. El despacho conserva la guía preemitida al cerrar la carga nocturna. Si la carga cambia entre las 05:30 y las 07:00, la guía queda inválida y el ERP de Talca emite otra por cualquiera de sus tres caminos, a los que Concepción y los cross-docking llegan por los suyos. Si no hay camino hasta el ERP, el camión sale solo con la carga amparada por su guía vigente y el ajuste pasa a la ruta siguiente. Si la guía ya se anuló, la salida queda bloqueada hasta disponer de un documento válido. Ningún camión sale sin guía válida.
 
 ## 4.2.6 Dimensionamiento y plan de capacidad
 
 <a id="sec:dimensionamiento"></a>
 
-El dimensionamiento traduce la volumetría del caso en capacidad para la operación normal, la ventana protegida de despacho y el peak de septiembre. Las citas nombran las Bases Técnicas del caso y las Bases Técnicas Transversales con su capítulo y página. La cadena es: hechos y requisitos, supuestos mínimos, dieciséis dimensiones del numeral 14.2 de las Bases Técnicas del caso (p. 25), capacidad por lugar de proceso y equipamiento. El Anexo 4-W conserva las sustituciones, el perfil horario, las sensibilidades y los umbrales; esta sección presenta la decisión de arquitectura y su consecuencia operativa.
+El dimensionamiento traduce la volumetría del caso en capacidad para la operación normal, la ventana protegida de despacho y el peak de septiembre. Las citas nombran las Bases Técnicas del caso y las Bases Técnicas Transversales con su capítulo y página. La cadena es: hechos y requisitos, supuestos mínimos, dieciséis dimensiones del numeral 14.2 de las Bases Técnicas del caso (p. 25), capacidad por lugar de proceso y equipamiento. El Anexo 4-W conserva las sustituciones, el perfil horario, las sensibilidades y los umbrales. Esta sección presenta la decisión de arquitectura y su consecuencia operativa.
 
 El alcance de capacidad incorpora también las cinco innovaciones del SD13: procesamiento analítico, almacenamiento de resultados, consultas operacionales, precarga y sincronización, y recursos temporales de reproducción de incidentes. El equipamiento y los servicios existentes son su punto de realización, no una demostración de suficiencia. La carga incremental se cuantifica por ventana y lugar de proceso según el Anexo 4-W y se contrasta en las pruebas de esta sección antes de aceptar la capacidad.
 
@@ -2687,7 +2687,7 @@ El alcance de capacidad incorpora también las cinco innovaciones del SD13: proc
 
 <a id="sec:dimensionamiento-metodo"></a>
 
-Un hecho del caso se cita y no se registra como supuesto. Un requisito proviene de las Bases o del Capítulo 15. Un parámetro de diseño es una decisión que imponemos a la solución. Un supuesto completa una cifra que el caso calla y declara fundamento, impacto y validación. Un cálculo se deriva de las entradas anteriores. Los parámetros de plataforma son 50 ms de CPU por solicitud, 64 MB de memoria por proceso y 150 ms de permanencia del proceso en Fargate; son parámetros de diseño que se perfilan y se verifican en las pruebas de RT-09.06 (Bases Técnicas Transversales, cap. 9, p. 21). Los tiempos de respuesta se evalúan en el percentil 95 conforme al numeral 9.1 de las Bases Técnicas Transversales (cap. 9, p. 21).
+Un hecho del caso se cita y no se registra como supuesto. Un requisito proviene de las Bases o del Capítulo 15. Un parámetro de diseño es una decisión que imponemos a la solución. Un supuesto completa una cifra que el caso calla y declara fundamento, impacto y validación. Un cálculo se deriva de las entradas anteriores. Los parámetros de plataforma son 50 ms de CPU por solicitud, 64 MB de memoria por proceso y 150 ms de permanencia del proceso en Fargate. Son parámetros de diseño que se perfilan y se verifican en las pruebas de RT-09.06 (Bases Técnicas Transversales, cap. 9, p. 21). Los tiempos de respuesta se evalúan en el percentil 95 conforme al numeral 9.1 de las Bases Técnicas Transversales (cap. 9, p. 21).
 
 La cadena evita mezclar decisiones de diseño con hechos del CLIENTE. En particular, el factor SV-04 se aplica sólo a la hora cargada de cada ventana y no se usa para sumar procesos que ocurren en horas diferentes.
 
@@ -2711,7 +2711,7 @@ Las Bases Técnicas del caso (anexo B, p. 38) distribuyen la operación en estas
 
 - Sincronización de 17:00 a 20:00.
 
-La hora más exigente es 12:00, con 12,34 TPS normales y 14,66 TPS en septiembre. Esa hora es una convención del cálculo: el factor SV-04 concentra la preventa y el portal en la hora central de su ventana, y el máximo sería el mismo en cualquier otra hora de esa ventana. En esa hora el portal aporta 9,63 TPS y la nube 2,71 TPS normales o 5,03 TPS en peak; Talca, Concepción y cada cross-docking están fuera de sus ventanas de mayor carga. El promedio diario engaña porque oculta la coincidencia de preventa, reparto y sesiones del portal.
+La hora más exigente es 12:00, con 12,34 TPS normales y 14,66 TPS en septiembre. Esa hora es una convención del cálculo: el factor SV-04 concentra la preventa y el portal en la hora central de su ventana, y el máximo sería el mismo en cualquier otra hora de esa ventana. En esa hora el portal aporta 9,63 TPS y la nube 2,71 TPS normales o 5,03 TPS en peak. Talca, Concepción y cada cross-docking están fuera de sus ventanas de mayor carga. El promedio diario engaña porque oculta la coincidencia de preventa, reparto y sesiones del portal.
 
 La Tabla [12](LAFROX-Subdocumento4.md#tab:dimensionamiento-calendario) resume los factores de calendario que se usan en la memoria.
 
@@ -2721,14 +2721,14 @@ La Tabla [12](LAFROX-Subdocumento4.md#tab:dimensionamiento-calendario) resume lo
 
 | **Dato** | **Valor** | **Uso** | **Fuente** |
 | --- | --- | --- | --- |
-| Días equivalentes de despacho | 22,14 días | 31.000 ÷ 1.400; control 2.100 ÷ 96 = 21,88 | Bases Técnicas del caso, cap. 14, p. 24 y Tabla 2.3; SV-01 |
-| Factor de septiembre | 1,857 | 2.600 ÷ 1.400 | Bases Técnicas del caso, cap. 14, p. 24; SV-02 |
+| Días equivalentes de despacho | 22,14 días | 31.000 ÷ 1.400, control 2.100 ÷ 96 = 21,88 | Bases Técnicas del caso, cap. 14, p. 24 y Tabla 2.3, SV-01 |
+| Factor de septiembre | 1,857 | 2.600 ÷ 1.400 | Bases Técnicas del caso, cap. 14, p. 24, SV-02 |
 | Período peak | 1 al 25 de septiembre | Define el régimen peak | Bases Técnicas del caso, anexo B, p. 38 |
 | Totales anuales | 12 × volumen mensual | Evita inventar días hábiles | Bases Técnicas del caso, cap. 14, p. 24 |
 
 Fuente: elaboración propia.
 
-Los 22,14 días son una equivalencia de cálculo, no una cantidad de días hábiles. El peak se obtiene por el cociente entre entregas de septiembre y entregas normales; diciembre no agrega un factor porque el caso identifica septiembre como la mayor exigencia.
+Los 22,14 días son una equivalencia de cálculo, no una cantidad de días hábiles. El peak se obtiene por el cociente entre entregas de septiembre y entregas normales. Diciembre no agrega un factor porque el caso identifica septiembre como la mayor exigencia.
 
 ### 4.2.6.3 Transacciones por segundo: dimensiones 1–3
 
@@ -2755,7 +2755,7 @@ La Tabla [13](LAFROX-Subdocumento4.md#tab:t76) presenta los lugares de proceso y
 
 - **WMS de Talca.** preparación y despacho según perfil horario y SV-03.
 
-- **WMS de Concepción.** 2/3 y 1/3 de preparación y despacho; SV-03.
+- **WMS de Concepción.** 2/3 y 1/3 de preparación y despacho, SV-03.
 
 - **Conjunto de los tres cross-docking.** Tres operaciones de llegada y una de despacho sobre el volumen agregado.
 
@@ -2767,7 +2767,7 @@ La Tabla [13](LAFROX-Subdocumento4.md#tab:t76) presenta los lugares de proceso y
 
 Fuente: elaboración propia.
 
-El despacho de 05:30 a 07:00 se reparte entre ambos centros conforme a SV-03, en la misma proporción que la preparación. La dimensión 2 toma el máximo real del perfil en las horas 05:00 y 06:00; el tramo 05:30–06:00 se considera uniforme, por lo que resulta 3,76 TPS normal y 6,94 TPS peak. Los aproximadamente 2.852 documentos/día peak son el total de DTE (34.000 ÷ 22,14 × 1,857), no sólo guías; considerarlos todos como guías que deben emitirse antes de la salida es una cota conservadora. Las 2.600 sesiones diarias del portal son un parámetro de diseño: una por cada cliente de food service y de cadenas, 2.100 + 500 (Bases Técnicas del caso, cap. 2, p. 4), y no son las 2.600 visitas diarias de preventa (Bases Técnicas del caso, anexo B, p. 38). La prueba RT-09.06 (Bases Técnicas Transversales, cap. 9, p. 21) es 1,5 × 14,66 = 21,99 TPS y no recibe un segundo multiplicador.
+El despacho de 05:30 a 07:00 se reparte entre ambos centros conforme a SV-03, en la misma proporción que la preparación. La dimensión 2 toma el máximo real del perfil en las horas 05:00 y 06:00. El tramo 05:30–06:00 se considera uniforme, por lo que resulta 3,76 TPS normal y 6,94 TPS peak. Los aproximadamente 2.852 documentos/día peak son el total de DTE (34.000 ÷ 22,14 × 1,857), no sólo guías. Considerarlos todos como guías que deben emitirse antes de la salida es una cota conservadora. Las 2.600 sesiones diarias del portal son un parámetro de diseño: una por cada cliente de food service y de cadenas, 2.100 + 500 (Bases Técnicas del caso, cap. 2, p. 4), y no son las 2.600 visitas diarias de preventa (Bases Técnicas del caso, anexo B, p. 38). La prueba RT-09.06 (Bases Técnicas Transversales, cap. 9, p. 21) es 1,5 × 14,66 = 21,99 TPS y no recibe un segundo multiplicador.
 
 ### 4.2.6.4 Personas usuarias, concurrencia y dispositivos: dimensiones 4–6
 
@@ -2789,7 +2789,7 @@ La dimensión 4, «Personas usuarias registradas, internas y externas», es 15.1
 
 Fuente: elaboración propia.
 
-La operación sin portal, que carga la Wi-Fi y los sitios, llega a 342 personas o equipos concurrentes durante el día. Los seis del cross-docking son personas con terminal inalámbrico, dos por plataforma (S-35). Los 96 equipos de reparto equivalen a 96 conductores en ruta; la dimensión 5 se expresa en personas o sesiones y no en camiones. La cota extrema del portal se conserva como prueba separada. La dimensión 6, «Dispositivos de terreno en operación simultánea», es 62 preventistas + 96 equipos de reparto = 158.
+La operación sin portal, que carga la Wi-Fi y los sitios, llega a 342 personas o equipos concurrentes durante el día. Los seis del cross-docking son personas con terminal inalámbrico, dos por plataforma (S-35). Los 96 equipos de reparto equivalen a 96 conductores en ruta. La dimensión 5 se expresa en personas o sesiones y no en camiones. La cota extrema del portal se conserva como prueba separada. La dimensión 6, «Dispositivos de terreno en operación simultánea», es 62 preventistas + 96 equipos de reparto = 158.
 
 La cantidad a proveer se informa aparte, por ámbito:
 
@@ -2817,7 +2817,7 @@ La dimensión 7, «Volumen anual de almacenamiento transaccional», la dimensió
 | Evidencia de entrega | 87,72 GB/año | 6 años | 526,32 GB | S3 por niveles |
 | Temperatura | 0,58 GB/año crudos | 5 años | 2,89 GB crudos | IoT y almacenamiento histórico |
 | Posición | 3,20 GB/año crudos | 12 meses | 3,20 GB crudos | Telemetría y almacenamiento histórico |
-| Migración histórica | 32,11 GB | Maestros; 36/24/60/24 meses | 30,73–33,49 GB de sensibilidad | Nube después del perfilado |
+| Migración histórica | 32,11 GB | Maestros, 36/24/60/24 meses | 30,73–33,49 GB de sensibilidad | Nube después del perfilado |
 
 Fuente: elaboración propia.
 
@@ -2827,7 +2827,7 @@ La migración no supone eventos históricos digitales de trazabilidad: el caso d
 
 <a id="sec:dimensionamiento-enlaces"></a>
 
-La dimensión 11, «Número de integraciones y volumen de mensajes por integración», cuenta únicamente INT-01 a INT-15 del catálogo del apartado 4.1. Portal y llamadas internas a la API quedan fuera. La Tabla [16](LAFROX-Subdocumento4.md#tab:dimensionamiento-integraciones) resume sus 224.652 mensajes diarios normales y 342.933 en peak, incluida la coordinación de reserva de INT-03/04; INT-14 considera 13 nodos activos, seis VMs en Talca, cuatro en Concepción y un mini-PC activo por cada cross-docking, con 1.000 eventos por nodo al día. Suma además 7 nodos en espera, cuatro VMs en Concepción y un mini-PC por cross-docking, con 200 eventos al día, porque no atienden transacciones.
+La dimensión 11, «Número de integraciones y volumen de mensajes por integración», cuenta únicamente INT-01 a INT-15 del catálogo del apartado 4.1. Portal y llamadas internas a la API quedan fuera. La Tabla [16](LAFROX-Subdocumento4.md#tab:dimensionamiento-integraciones) resume sus 224.652 mensajes diarios normales y 342.933 en peak, incluida la coordinación de reserva de INT-03/04. INT-14 considera 13 nodos activos, seis VMs en Talca, cuatro en Concepción y un mini-PC activo por cada cross-docking, con 1.000 eventos por nodo al día. Suma además 7 nodos en espera, cuatro VMs en Concepción y un mini-PC por cross-docking, con 200 eventos al día, porque no atienden transacciones.
 
 <a id="tab:dimensionamiento-integraciones"></a>
 
@@ -2835,7 +2835,7 @@ La dimensión 11, «Número de integraciones y volumen de mensajes por integraci
 
 | **Integraciones** | **Normal** | **Peak** | **Origen** |
 | --- | --- | --- | --- |
-| INT-01 a INT-04 | 114.078/día | 211.860/día | Pedidos, entregas, eventos y coordinación de reserva; INT-04 incluido en INT-03 |
+| INT-01 a INT-04 | 114.078/día | 211.860/día | Pedidos, entregas, eventos y coordinación de reserva, INT-04 incluido en INT-03 |
 | INT-05 | 10.920/día | 10.920/día | 6.048 cámaras + 4.872 termógrafos |
 | INT-06 a INT-10 | 8.608/día | 15.905/día | ERP, DTE, EDI, pagos y mapas |
 | INT-11 a INT-15 | 91.046/día | 104.248/día | Avisos, réplica, identidad, ADOT y telemetría |
@@ -2876,25 +2876,25 @@ El EDI actual es cero. Desde enero de 2029 opera todos los días, y se dimension
 
 Fuente: elaboración propia.
 
-D-03, D-04 y D-06 corresponden a fibra, LTE y satélite. La Tabla 17 distingue el retorno promedio del escenario simultáneo: este último suma 5,64 Mbps útiles de dispositivos y 1,87 Mbps de drenaje en Talca; en Concepción suma 2,75 y 1,44 Mbps. Con un margen de transporte del 15 %, exige 8,64 y 4,82 Mbps, respectivamente. Se fijan mínimos de aceptación de 10 Mbps de subida sostenida en cada respaldo de Talca y 6 Mbps en cada respaldo de Concepción; son requisitos de dimensionamiento, no velocidades observadas ni garantías inherentes a LTE o Starlink. La aceptación mide cada camino por separado, cola, latencia y plazo por dispositivo. Si un proveedor no sostiene el mínimo, el camino se refuerza o sustituye antes de aceptar el servicio; la priorización por sí sola no compensa falta de caudal.
+D-03, D-04 y D-06 corresponden a fibra, LTE y satélite. La Tabla 17 distingue el retorno promedio del escenario simultáneo: este último suma 5,64 Mbps útiles de dispositivos y 1,87 Mbps de drenaje en Talca. En Concepción suma 2,75 y 1,44 Mbps. Con un margen de transporte del 15 %, exige 8,64 y 4,82 Mbps, respectivamente. Se fijan mínimos de aceptación de 10 Mbps de subida sostenida en cada respaldo de Talca y 6 Mbps en cada respaldo de Concepción. Son requisitos de dimensionamiento, no velocidades observadas ni garantías inherentes a LTE o Starlink. La aceptación mide cada camino por separado, cola, latencia y plazo por dispositivo. Si un proveedor no sostiene el mínimo, el camino se refuerza o sustituye antes de aceptar el servicio. La priorización por sí sola no compensa falta de caudal.
 
-Durante el respaldo se suspende el tráfico administrativo y no urgente; tienen prioridad sincronización, WAL, broker, guías, identidad y alertas. Los cross-docking conservan la cota de drenaje de 0,35 Mbps por sitio y su comprobación con LTE dual. La ventana dominical y las tandas de actualización se detallan en el Anexo 4-W; las condiciones de retorno de los dispositivos, en 4.2.6.7.
+Durante el respaldo se suspende el tráfico administrativo y no urgente. Tienen prioridad sincronización, WAL, broker, guías, identidad y alertas. Los cross-docking conservan la cota de drenaje de 0,35 Mbps por sitio y su comprobación con LTE dual. La ventana dominical y las tandas de actualización se detallan en el Anexo 4-W. Las condiciones de retorno de los dispositivos, en 4.2.6.7.
 
 ### 4.2.6.7 Terreno: turno sin señal y sincronización de la flota: dimensiones 13–14
 
 <a id="sec:dimensionamiento-terreno"></a>
 
-La dimensión 13, «Volumen de datos generado por un dispositivo de reparto en un turno completo sin señal», es 9,83 MB para la ruta de 34 clientes; una ruta promedio genera 5,36 MB normales y 8,24 MB en septiembre. La cifra incluye evidencia, una fotografía adicional cuando corresponde y 2 MB de datos locales.
+La dimensión 13, «Volumen de datos generado por un dispositivo de reparto en un turno completo sin señal», es 9,83 MB para la ruta de 34 clientes. Una ruta promedio genera 5,36 MB normales y 8,24 MB en septiembre. La cifra incluye evidencia, una fotografía adicional cuando corresponde y 2 MB de datos locales.
 
-La dimensión 14, «Tiempo de sincronización de la flota al regresar al centro de distribución», se expresa en tiempo: el objetivo es hasta diez minutos por dispositivo, desde que recupera el enlace hasta el acuse durable de todos sus registros y evidencias, incluida la espera. Los 9,83 MB requieren al menos 0,13 Mbps útiles continuos por dispositivo; el caudal nominal por sí solo no cubre espera, túnel ni retransmisiones. Los 64 camiones de la hora punta se reparten por SV-03: aproximadamente 43 en Talca y 21 en Concepción, con 0,93 y 0,47 Mbps respectivamente en la Wi-Fi y el enlace de cada centro. La flota completa requiere 1,40 Mbps como promedio de esa hora, no como garantía de diez minutos ante llegadas simultáneas. Para la sensibilidad de 64 llegadas simultáneas se reservan al menos 8,39 Mbps útiles agregados, 5,64 en Talca y 2,75 en Concepción, antes de añadir los demás flujos concurrentes y el margen de transporte. AL-OFF-01 y la prueba de sincronización verifican los dispositivos concurrentes, el caudal efectivo y la cola de espera, conforme al Anexo 4-W.6. La cota de 34 clientes corresponde a la ruta rural más larga descrita en el caso (Bases Técnicas del caso, cap. 8, p. 16, entrevista al conductor de la ruta Cauquenes); en los centros de distribución la sincronización ocurre por Wi-Fi.
+La dimensión 14, «Tiempo de sincronización de la flota al regresar al centro de distribución», se expresa en tiempo: el objetivo es hasta diez minutos por dispositivo, desde que recupera el enlace hasta el acuse durable de todos sus registros y evidencias, incluida la espera. Los 9,83 MB requieren al menos 0,13 Mbps útiles continuos por dispositivo. El caudal nominal por sí solo no cubre espera, túnel ni retransmisiones. Los 64 camiones de la hora punta se reparten por SV-03: aproximadamente 43 en Talca y 21 en Concepción, con 0,93 y 0,47 Mbps respectivamente en la Wi-Fi y el enlace de cada centro. La flota completa requiere 1,40 Mbps como promedio de esa hora, no como garantía de diez minutos ante llegadas simultáneas. Para la sensibilidad de 64 llegadas simultáneas se reservan al menos 8,39 Mbps útiles agregados, 5,64 en Talca y 2,75 en Concepción, antes de añadir los demás flujos concurrentes y el margen de transporte. AL-OFF-01 y la prueba de sincronización verifican los dispositivos concurrentes, el caudal efectivo y la cola de espera, conforme al Anexo 4-W.6. La cota de 34 clientes corresponde a la ruta rural más larga descrita en el caso (Bases Técnicas del caso, cap. 8, p. 16, entrevista al conductor de la ruta Cauquenes). En los centros de distribución la sincronización ocurre por Wi-Fi.
 
-El consumo de batería por turno se declara como un máximo comprometido, porque solo puede medirse con la aplicación construida: con la aplicación en uso real, cada terminal de bodega y de preventa termina su turno o su jornada con al menos 20 % de carga, es decir, consume como máximo el 80 % de la batería especificada en 4.2.1.2; en reparto, el cargador del vehículo cubre la ruta. Para cumplirlo, la aplicación sincroniza por lotes en lugar de mantener una conexión permanente y el lector se activa solo con el gatillo. La prueba de aceptación lo mide con la unidad de prueba de cada modelo antes de la compra masiva (RT-17.07 y RT-08.15).
+El consumo de batería por turno se declara como un máximo comprometido, porque solo puede medirse con la aplicación construida: con la aplicación en uso real, cada terminal de bodega y de preventa termina su turno o su jornada con al menos 20 % de carga, es decir, consume como máximo el 80 % de la batería especificada en 4.2.1.2. En reparto, el cargador del vehículo cubre la ruta. Para cumplirlo, la aplicación sincroniza por lotes en lugar de mantener una conexión permanente y el lector se activa solo con el gatillo. La prueba de aceptación lo mide con la unidad de prueba de cada modelo antes de la compra masiva (RT-17.07 y RT-08.15).
 
 ### 4.2.6.8 Capacidad on-premise
 
 <a id="sec:dimensionamiento-onpremise"></a>
 
-La capacidad propuesta conserva maestros, stock, lotes presentes y movimientos de cuatro meses en cada sitio; el histórico vive en la nube. El horizonte cubre el ciclo de conteo de 11.400 ÷ 3.400 = 3,35 meses y la rotación media de 11,4 veces/año. Cada VM se calcula como base de sistema más carga, según la tabla de VMs del Anexo 4-W. El requisito total incorpora el hipervisor (+15 % de vCPU y 2 GB de RAM por nodo) y, en Talca, Ceph: dos OSD de 1 vCPU y 4 GB cada uno, más monitor/manager de 1 vCPU y 2 GB por nodo. La Tabla [18](LAFROX-Subdocumento4.md#tab:t79) resume la capacidad requerida por sitio.
+La capacidad propuesta conserva maestros, stock, lotes presentes y movimientos de cuatro meses en cada sitio. El histórico vive en la nube. El horizonte cubre el ciclo de conteo de 11.400 ÷ 3.400 = 3,35 meses y la rotación media de 11,4 veces/año. Cada VM se calcula como base de sistema más carga, según la tabla de VMs del Anexo 4-W. El requisito total incorpora el hipervisor (+15 % de vCPU y 2 GB de RAM por nodo) y, en Talca, Ceph: dos OSD de 1 vCPU y 4 GB cada uno, más monitor/manager de 1 vCPU y 2 GB por nodo. La Tabla [18](LAFROX-Subdocumento4.md#tab:t79) resume la capacidad requerida por sitio.
 
 <a id="tab:t79"></a>
 
@@ -2902,20 +2902,20 @@ La capacidad propuesta conserva maestros, stock, lotes presentes y movimientos d
 
 | **Sitio** | **Base local** | **Requerido actual** | **Requerido a 3×** |
 | --- | --- | --- | --- |
-| Talca, VM-01 a VM-06 | 5,04 GB y 7,78 GB RAM de trabajo | VMs: 14 vCPU, 23 GB RAM y 210 GB; total: 26 vCPU y 59 GB RAM | VMs: 14 vCPU, 25 GB RAM y 221 GB; total: 26 vCPU y 61 GB RAM |
+| Talca, VM-01 a VM-06 | 5,04 GB y 7,78 GB RAM de trabajo | VMs: 14 vCPU, 23 GB RAM y 210 GB, total: 26 vCPU y 59 GB RAM | VMs: 14 vCPU, 25 GB RAM y 221 GB, total: 26 vCPU y 61 GB RAM |
 | Concepción, VM-C01 a VM-C04, por servidor | 2,59 GB y 5,94 GB RAM de trabajo | 12 vCPU, 17 GB RAM y 140 GB | 12 vCPU, 18 GB RAM y 140 GB |
 | Cada cross-docking, por mini-PC | 0,63 GB y 4,47 GB RAM de trabajo | 3 vCPU, 5 GB RAM y 50 GB | 3 vCPU, 5 GB RAM y 50 GB |
 | Mínimo por nodo de Talca | – | – | 13 vCPU, 31 GB RAM y 221 GB OSD |
 
 Fuente: elaboración propia.
 
-Ceph entrega 1,92 TB útiles con seis NVMe de 960 GB, tres réplicas y sin RAID. Con un nodo caído, Talca conserva 64 vCPU y 128 GB RAM, y Ceph sigue sirviendo los datos con dos réplicas hasta que el nodo vuelve. El umbral de llenado al 80 % es 1,54 TB, superior a los 221 GB requeridos a 3×. Su utilización actual es 40,62 % de CPU, 46,09 % de RAM y 10,94 % de disco; a 3× es 40,62 %, 47,66 % y 11,51 %, respectivamente. Cada servidor de Concepción dispone de 16 hilos, 32 GB RAM y 3,84 TB útiles en RAID 10 y aloja el conjunto completo, activo o en espera; utiliza 75,00 % de CPU, 53,12 % de RAM y 3,65 % de disco actualmente, y 75,00 %, 56,25 % y 3,65 % a 3×. En Talca la redundancia es N+1 dentro del clúster, y sus nodos ofertados de 32 hilos y 64 GB ya cubren 3×. En Concepción y en cada cross-docking la redundancia es un segundo equipo idéntico en espera, de modo que la utilización por equipo no cambia.
+Ceph entrega 1,92 TB útiles con seis NVMe de 960 GB, tres réplicas y sin RAID. Con un nodo caído, Talca conserva 64 vCPU y 128 GB RAM, y Ceph sigue sirviendo los datos con dos réplicas hasta que el nodo vuelve. El umbral de llenado al 80 % es 1,54 TB, superior a los 221 GB requeridos a 3×. Su utilización actual es 40,62 % de CPU, 46,09 % de RAM y 10,94 % de disco. A 3× es 40,62 %, 47,66 % y 11,51 %, respectivamente. Cada servidor de Concepción dispone de 16 hilos, 32 GB RAM y 3,84 TB útiles en RAID 10 y aloja el conjunto completo, activo o en espera. Utiliza 75,00 % de CPU, 53,12 % de RAM y 3,65 % de disco actualmente, y 75,00 %, 56,25 % y 3,65 % a 3×. En Talca la redundancia es N+1 dentro del clúster, y sus nodos ofertados de 32 hilos y 64 GB ya cubren 3×. En Concepción y en cada cross-docking la redundancia es un segundo equipo idéntico en espera, de modo que la utilización por equipo no cambia.
 
 ### 4.2.6.9 Capacidad en nube
 
 <a id="sec:dimensionamiento-nube"></a>
 
-La plataforma utiliza Fargate, Aurora, ElastiCache, SQS, IoT Core, DynamoDB y S3 como servicios administrados. Una tarea entrega 14 solicitudes por segundo al 70 % de uso con 50 ms de CPU. El escalado reacciona con métricas de un minuto y pone una tarea nueva en servicio en menos de tres minutos, valor de diseño que mide la prueba de carga; el balanceador drena la tarea que sale sin perder transacciones en curso (RT-09.04; Bases Técnicas Transversales, cap. 9, p. 21). La Tabla [19](LAFROX-Subdocumento4.md#tab:dimensionamiento-nube) separa el portal y compara cada perfil con el techo de ocho tareas.
+La plataforma utiliza Fargate, Aurora, ElastiCache, SQS, IoT Core, DynamoDB y S3 como servicios administrados. Una tarea entrega 14 solicitudes por segundo al 70 % de uso con 50 ms de CPU. El escalado reacciona con métricas de un minuto y pone una tarea nueva en servicio en menos de tres minutos, valor de diseño que mide la prueba de carga. El balanceador drena la tarea que sale sin perder transacciones en curso (RT-09.04, Bases Técnicas Transversales, cap. 9, p. 21). La Tabla [19](LAFROX-Subdocumento4.md#tab:dimensionamiento-nube) separa el portal y compara cada perfil con el techo de ocho tareas.
 
 <a id="tab:dimensionamiento-nube"></a>
 
@@ -2927,14 +2927,14 @@ La plataforma utiliza Fargate, Aurora, ElastiCache, SQS, IoT Core, DynamoDB y S3
 | Peak de septiembre | 14,66 solicitudes/s (nube + portal) | 2 | Cumple |
 | Prueba RT-09.06 (Bases Técnicas Transversales, cap. 9, p. 21) | 21,99 solicitudes/s totales, distribuido por perfil horario | 2 | Una sola multiplicación |
 | Cota extrema | 48,37 solicitudes/s (5,03 + 43,33) | 4 | Bajo el techo |
-| Sensibilidad 120 solicitudes | 21,97 / 91,70 solicitudes/s; régimen / cota | 2 / 7 | Bajo el techo |
-| Cota extrema más canal tradicional | 111,70 solicitudes/s (91,70 + cuota de 20) | 8 | Cota completa de ADR-12; verificar mezcla y latencia |
+| Sensibilidad 120 solicitudes | 21,97 / 91,70 solicitudes/s, régimen / cota | 2 / 7 | Bajo el techo |
+| Cota extrema más canal tradicional | 111,70 solicitudes/s (91,70 + cuota de 20) | 8 | Cota completa de ADR-12, verificar mezcla y latencia |
 
 **Techo común de los escenarios:** 8 tareas.
 
 Fuente: elaboración propia.
 
-El portal en régimen usa 9,63 solicitudes/s y 96,30 sesiones concurrentes; su cota extrema usa 43,33 solicitudes/s y 433,33 sesiones concurrentes. Con 120 solicitudes por sesión, manteniendo las sesiones repartidas en la hora, el portal alcanza 19,26 solicitudes/s en régimen y 86,67 en la cota extrema; al sumar la nube resultan 21,97 y 91,70 solicitudes/s, que requieren 2 y 7 tareas. Con la cuota agregada de 20 solicitudes/s del canal tradicional, la cota completa alcanza 111,70 solicitudes/s y requiere las ocho tareas; no conserva capacidad para aumentar esa cuota. La prueba de carga verifica esta mezcla, la base dimensionada en el Anexo 4-W.9 y el tiempo de escalado, además del escenario de siete tareas.
+El portal en régimen usa 9,63 solicitudes/s y 96,30 sesiones concurrentes. Su cota extrema usa 43,33 solicitudes/s y 433,33 sesiones concurrentes. Con 120 solicitudes por sesión, manteniendo las sesiones repartidas en la hora, el portal alcanza 19,26 solicitudes/s en régimen y 86,67 en la cota extrema. Al sumar la nube resultan 21,97 y 91,70 solicitudes/s, que requieren 2 y 7 tareas. Con la cuota agregada de 20 solicitudes/s del canal tradicional, la cota completa alcanza 111,70 solicitudes/s y requiere las ocho tareas. No conserva capacidad para aumentar esa cuota. La prueba de carga verifica esta mezcla, la base dimensionada en el Anexo 4-W.9 y el tiempo de escalado, además del escenario de siete tareas.
 
 ### 4.2.6.10 Plan de capacidad
 
@@ -2960,7 +2960,7 @@ La Tabla [20](LAFROX-Subdocumento4.md#tab:dimensionamiento-plan) mantiene separa
 
 - **WMS de Talca, TPS peak.** Revisar CPU e IOPS trimestralmente.
 
-- **Cota por cross-docking, basada en la carga agregada de las tres plataformas.** Revisar CPU e IOPS trimestralmente; contrastar distribución real por sitio.
+- **Cota por cross-docking, basada en la carga agregada de las tres plataformas.** Revisar CPU e IOPS trimestralmente, contrastar distribución real por sitio.
 
 - **Nube, TPS peak / tareas.** Escalamiento automático y prueba trimestral.
 
@@ -2974,9 +2974,9 @@ La Tabla [20](LAFROX-Subdocumento4.md#tab:dimensionamiento-plan) mantiene separa
 
 Fuente: elaboración propia.
 
-La nube escala automáticamente dentro del techo declarado; nodos, almacenamiento local, Wi-Fi y enlaces requieren revisión planificada. La gestión trimestral compara la proyección observada con la cota de 3× y con la incorporación de nuevas unidades.
+La nube escala automáticamente dentro del techo declarado. Nodos, almacenamiento local, Wi-Fi y enlaces requieren revisión planificada. La gestión trimestral compara la proyección observada con la cota de 3× y con la incorporación de nuevas unidades.
 
-Respecto de la carga proyectada del año 3, las diferencias entre las cotas de dimensionamiento 3× y esa proyección en la Tabla [20](LAFROX-Subdocumento4.md#tab:dimensionamiento-plan) son: WMS Talca, (8,05 ÷ 3,15 − 1) × 100 = 155,6 %; cota de cross-docking, (6,50 ÷ 2,58 − 1) × 100 = 151,9 %; aplicación en nube, (43,98 ÷ 17,03 − 1) × 100 = 158,3 %. En cross-docking se asigna conservadoramente a cada equipo la carga agregada de las tres plataformas; no se afirma que cada sitio genere ese volumen. Estos porcentajes comparan escenarios de carga, no capacidad medida del hardware ni margen de la sensibilidad completa de portales de la Tabla [19](LAFROX-Subdocumento4.md#tab:dimensionamiento-nube). La revisión trimestral y las pruebas de carga verifican el límite efectivo antes de ampliar. No se aplican a enlaces, parque de terminales ni mesa de ayuda (RT-08.05; Bases Técnicas Transversales, cap. 8, p. 18).
+Respecto de la carga proyectada del año 3, las diferencias entre las cotas de dimensionamiento 3× y esa proyección en la Tabla [20](LAFROX-Subdocumento4.md#tab:dimensionamiento-plan) son: WMS Talca, (8,05 ÷ 3,15 − 1) × 100 = 155,6 %. Cota de cross-docking, (6,50 ÷ 2,58 − 1) × 100 = 151,9 %. Aplicación en nube, (43,98 ÷ 17,03 − 1) × 100 = 158,3 %. En cross-docking se asigna conservadoramente a cada equipo la carga agregada de las tres plataformas. No se afirma que cada sitio genere ese volumen. Estos porcentajes comparan escenarios de carga, no capacidad medida del hardware ni margen de la sensibilidad completa de portales de la Tabla [19](LAFROX-Subdocumento4.md#tab:dimensionamiento-nube). La revisión trimestral y las pruebas de carga verifican el límite efectivo antes de ampliar. No se aplican a enlaces, parque de terminales ni mesa de ayuda (RT-08.05, Bases Técnicas Transversales, cap. 8, p. 18).
 
 ### 4.2.6.11 Cuello de botella, umbrales y degradación controlada
 
@@ -2990,7 +2990,7 @@ El primer candidato es la emisión de guías del ERP. En el peak se emiten unos 
 
 - En la ventana actual de despacho: máximo de 1,89 segundos por guía.
 
-La solución emite la guía cuando confirma la carga, durante la noche. Se detectan guías aún no emitidas frente a la hora de salida de cada camión y se prioriza la cola, sin crear un segundo emisor: el ERP conserva la responsabilidad tributaria y la guía acompaña el traslado. Como el caso no documenta las interfaces del ERP y encarga levantarlas en los primeros meses (Bases Técnicas del caso, cap. 5, p. 10), el tiempo real por guía se mide en ese levantamiento; si superara los 4,42 segundos, las cargas se cierran por camión en el orden de salida, para que la emisión empiece antes.
+La solución emite la guía cuando confirma la carga, durante la noche. Se detectan guías aún no emitidas frente a la hora de salida de cada camión y se prioriza la cola, sin crear un segundo emisor: el ERP conserva la responsabilidad tributaria y la guía acompaña el traslado. Como el caso no documenta las interfaces del ERP y encarga levantarlas en los primeros meses (Bases Técnicas del caso, cap. 5, p. 10), el tiempo real por guía se mide en ese levantamiento. Si superara los 4,42 segundos, las cargas se cierran por camión en el orden de salida, para que la emisión empiece antes.
 
 La Tabla [21](LAFROX-Subdocumento4.md#tab:t84) fija los umbrales de respuesta que se observan en percentil 95.
 
@@ -3009,7 +3009,7 @@ La Tabla [21](LAFROX-Subdocumento4.md#tab:t84) fija los umbrales de respuesta qu
 | Navegación | 1 s |
 | API de consulta | 500 ms |
 | API de escritura | 800 ms |
-| Búsqueda compuesta | 3 s; búsqueda global (RF-17.11) ≤ 2 s |
+| Búsqueda compuesta | 3 s, búsqueda global (RF-17.11) ≤ 2 s |
 | Informe estándar | 30 s |
 
 **Origen de los umbrales**
@@ -3022,7 +3022,7 @@ La Tabla [21](LAFROX-Subdocumento4.md#tab:t84) fija los umbrales de respuesta qu
 
 Fuente: elaboración propia.
 
-Los otros candidatos son la base WMS, los IOPS, la Wi-Fi y el drenaje. Se detectan con percentil 95, longitud de colas, errores, retransmisiones y tiempo de sincronización. Si se supera una cota, se encola con clave idempotente, se limita la tasa y se muestra un mensaje explícito; no se pierden ni duplican pedidos.
+Los otros candidatos son la base WMS, los IOPS, la Wi-Fi y el drenaje. Se detectan con percentil 95, longitud de colas, errores, retransmisiones y tiempo de sincronización. Si se supera una cota, se encola con clave idempotente, se limita la tasa y se muestra un mensaje explícito. No se pierden ni duplican pedidos.
 
 ### 4.2.6.12 Validación mediante pruebas de carga y estrés
 
@@ -3046,15 +3046,15 @@ La prueba RT-09.06 (Bases Técnicas Transversales, cap. 9, p. 21) carga una sola
 
 Fuente: elaboración propia.
 
-La prueba de carga conserva tasas por lugar, percentil 95, utilización, colas, errores y comportamiento durante el drenaje; incluye la concurrencia de oficina y trabajo remoto por Verified Access, la API privada, el inicio de sesión y los tableros. Los parámetros confirmados se actualizan en la revisión trimestral de capacidad.
+La prueba de carga conserva tasas por lugar, percentil 95, utilización, colas, errores y comportamiento durante el drenaje. Incluye la concurrencia de oficina y trabajo remoto por Verified Access, la API privada, el inicio de sesión y los tableros. Los parámetros confirmados se actualizan en la revisión trimestral de capacidad.
 
-- Comparar la carga base con la misma mezcla y las innovaciones habilitadas según su etapa. Ejecutar por separado régimen normal, septiembre, año 3 y estrés 3×; RT-09.06 mantiene sus 21,99 TPS totales y no se multiplica de nuevo por cada sitio. Registrar las tareas nocturnas o mensuales que realmente coincidan con la ventana probada.
+- Comparar la carga base con la misma mezcla y las innovaciones habilitadas según su etapa. Ejecutar por separado régimen normal, septiembre, año 3 y estrés 3×. RT-09.06 mantiene sus 21,99 TPS totales y no se multiplica de nuevo por cada sitio. Registrar las tareas nocturnas o mensuales que realmente coincidan con la ventana probada.
 
-- Medir CPU, memoria, IOPS, crecimiento de datos, tráfico y duración de trabajos; contrastar el incremento con los límites de cada recurso y con la reserva N+1 o la conmutación declarada. Los parámetros base de 50 ms y 64 MB no incluyen automáticamente el trabajo adicional. La cota extrema de la API y los márgenes locales no se consideran capacidad libre para las innovaciones.
+- Medir CPU, memoria, IOPS, crecimiento de datos, tráfico y duración de trabajos. Contrastar el incremento con los límites de cada recurso y con la reserva N+1 o la conmutación declarada. Los parámetros base de 50 ms y 64 MB no incluyen automáticamente el trabajo adicional. La cota extrema de la API y los márgenes locales no se consideran capacidad libre para las innovaciones.
 
 - Repetir el corte de 24 horas y la recuperación con precargas, respuestas y resultados derivados acumulados. El drenaje de sitio debe terminar en dos horas y cada dispositivo en diez minutos desde reconexión hasta acuse durable, incluida su espera. La priorización de trabajos no puede ocultar pendientes ni sacrificar el bloqueo térmico local en menos de cinco segundos.
 
-- Aceptar únicamente si se mantienen los percentiles 95 y plazos aplicables, sin pérdida ni duplicación y con colas estables y conciliadas dentro de sus ventanas. Si el incremento supera una cota, ajustar cupos, separar trabajos de fondo o ampliar la capacidad de los componentes existentes; repetir el ensayo y documentar la configuración resultante antes de la aceptación.
+- Aceptar únicamente si se mantienen los percentiles 95 y plazos aplicables, sin pérdida ni duplicación y con colas estables y conciliadas dentro de sus ventanas. Si el incremento supera una cota, ajustar cupos, separar trabajos de fondo o ampliar la capacidad de los componentes existentes. Repetir el ensayo y documentar la configuración resultante antes de la aceptación.
 
 ### 4.2.6.13 Síntesis de las dieciséis dimensiones del numeral 14.2
 
@@ -3064,15 +3064,15 @@ La Tabla [A.30](LAFROX-Subdocumento4-Anexos.md#tab:t72) del Anexo 4-W reúne cad
 
 
 
-El diseño queda gobernado por tres condiciones operativas. La primera es la emisión de guías del ERP antes de la salida de cada camión, que es la única de las tres cuya capacidad no controla la solución y que por eso se mide primero. La segunda es el enlace de Talca durante el retorno de la flota, cuando la sincronización de los dispositivos se suma al tráfico de oficina. La tercera es el almacenamiento de la evidencia de entrega, que es el volumen que más crece y el que fija la política de niveles de S3. Las cotas de crecimiento 3× y las sensibilidades de portales y sincronización son escenarios distintos. La cota completa de 111,70 solicitudes/s ocupa las ocho tareas de API y no deja margen para aumentar la cuota; los límites efectivos de cómputo y enlaces se verifican con los perfiles de la Tabla [19](LAFROX-Subdocumento4.md#tab:dimensionamiento-nube), los ensayos de la Tabla [22](LAFROX-Subdocumento4.md#tab:t86) y la memoria del Anexo 4-W.
+El diseño queda gobernado por tres condiciones operativas. La primera es la emisión de guías del ERP antes de la salida de cada camión, que es la única de las tres cuya capacidad no controla la solución y que por eso se mide primero. La segunda es el enlace de Talca durante el retorno de la flota, cuando la sincronización de los dispositivos se suma al tráfico de oficina. La tercera es el almacenamiento de la evidencia de entrega, que es el volumen que más crece y el que fija la política de niveles de S3. Las cotas de crecimiento 3× y las sensibilidades de portales y sincronización son escenarios distintos. La cota completa de 111,70 solicitudes/s ocupa las ocho tareas de API y no deja margen para aumentar la cuota. Los límites efectivos de cómputo y enlaces se verifican con los perfiles de la Tabla [19](LAFROX-Subdocumento4.md#tab:dimensionamiento-nube), los ensayos de la Tabla [22](LAFROX-Subdocumento4.md#tab:t86) y la memoria del Anexo 4-W.
 
 # 4.3 Data center
 
 <a id="cap:4-3-data-center"></a>
 
-La estrategia de centros de datos distribuye la operación productiva entre la región primaria AWS sa-east-1 y la sala técnica secundaria del CD Talca. El dominio de nube se recupera en us-east-1; ante la pérdida de la sala de Talca, su WMS se levanta en la plataforma de nube de la región activa sobre la copia en Aurora. Concepción y las tres plataformas de cross-docking son sitios operacionales autónomos y publican sus eventos para la consolidación central.
+La estrategia de centros de datos distribuye la operación productiva entre la región primaria AWS sa-east-1 y la sala técnica secundaria del CD Talca. El dominio de nube se recupera en us-east-1. Ante la pérdida de la sala de Talca, su WMS se levanta en la plataforma de nube de la región activa sobre la copia en Aurora. Concepción y las tres plataformas de cross-docking son sitios operacionales autónomos y publican sus eventos para la consolidación central.
 
-La arquitectura fija RTO ≤ 4 h, RPO ≤ 15 min y disponibilidad mensual de 99,95 % por componente de infraestructura, con un compromiso de ≥ 99,9 % para la transacción crítica de extremo a extremo. Esta sección concreta los emplazamientos, servicios y conexiones descritos en 4.2; el equipamiento y los servicios contratados se detallan en el Formulario T-11, entregado como archivo propio.
+La arquitectura fija RTO ≤ 4 h, RPO ≤ 15 min y disponibilidad mensual de 99,95 % por componente de infraestructura, con un compromiso de ≥ 99,9 % para la transacción crítica de extremo a extremo. Esta sección concreta los emplazamientos, servicios y conexiones descritos en 4.2. El equipamiento y los servicios contratados se detallan en el Formulario T-11, entregado como archivo propio.
 
 ## 4.3.1 Especificaciones Data Center Primaria
 
@@ -3086,19 +3086,19 @@ Esta sección declara, para cada dominio, el proveedor, la región y las zonas d
 
 Para la nube en Amazon Web Services todos los servicios se contratan en cuentas del CLIENTE, que son organizadas bajo AWS Control Tower con una cuenta por ambiente de modo que la propiedad de los datos y de la infraestructura es del CLIENTE desde el primer día. Los criterios con que se eligieron esos servicios se explican en el apartado [4.2.3](LAFROX-Subdocumento4.md#sec:servicios-nube). AWS satisface el requisito de presencia de región o zona en Chile o en Sudamérica con la región primaria sa-east-1. El cumplimiento de los estándares y marcos de referencia del Artículo 4.3 de las Bases Administrativas (art. 4.3, p. 5) entre ellos ISO/IEC 27017 (nube) e ISO/IEC 27018 (datos personales en nube) se acredita en la fila 5.23 de la matriz de controles del Anexo 4-R, que responde a RT-11.06 (Bases Técnicas Transversales, cap. 11, p. 23), y no se repite en esta sección.
 
-En el dominio On-premise del CD de Talca, el caso exige cómputo, almacenamiento y procesamiento en las instalaciones del CLIENTE para sostener recepción, preparación y despacho durante un corte de enlace; ello obliga a la modalidad híbrida. Ese alcance requiere cómputo local para la continuidad de un sitio operacional sin albergar el núcleo. Por ello, el sitio adopta la tipología de **sala técnica secundaria o de sitio** del numeral 6.1 de las Bases Técnicas Transversales (cap. 6, p. 14), con disponibilidad de infraestructura de 99,95 % y dimensionamiento proporcional al equipamiento real.
+En el dominio On-premise del CD de Talca, el caso exige cómputo, almacenamiento y procesamiento en las instalaciones del CLIENTE para sostener recepción, preparación y despacho durante un corte de enlace. Ello obliga a la modalidad híbrida. Ese alcance requiere cómputo local para la continuidad de un sitio operacional sin albergar el núcleo. Por ello, el sitio adopta la tipología de **sala técnica secundaria o de sitio** del numeral 6.1 de las Bases Técnicas Transversales (cap. 6, p. 14), con disponibilidad de infraestructura de 99,95 % y dimensionamiento proporcional al equipamiento real.
 
 ### 4.3.1.2 Región y zonas de disponibilidad
 
-La región primaria de la nube es sa-east-1, ubicada en São Paulo, Brasil. Todo componente con requisito de alta disponibilidad se despliega en al menos dos zonas de disponibilidad; no se acepta un diseño en una sola zona. Aurora PostgreSQL tiene el escritor en sa-east-1a y un lector promovible en sa-east-1b. ECS Fargate, ElastiCache Redis, el balanceador de aplicación y el NAT Gateway operan entre esas mismas dos zonas con conmutación automática; DynamoDB opera Multi-AZ de forma nativa y transparente. El único componente con escritor único es la base de datos, que conmuta de forma automática entre las zonas. Este diseño sostiene el compromiso de extremo a extremo de ≥ 99,9 % mensual de la transacción crítica y la conmutación se verifica en las pruebas de resiliencia por inyección de fallas de la arquitectura de despliegue.
+La región primaria de la nube es sa-east-1, ubicada en São Paulo, Brasil. Todo componente con requisito de alta disponibilidad se despliega en al menos dos zonas de disponibilidad. No se acepta un diseño en una sola zona. Aurora PostgreSQL tiene el escritor en sa-east-1a y un lector promovible en sa-east-1b. ECS Fargate, ElastiCache Redis, el balanceador de aplicación y el NAT Gateway operan entre esas mismas dos zonas con conmutación automática. DynamoDB opera Multi-AZ de forma nativa y transparente. El único componente con escritor único es la base de datos, que conmuta de forma automática entre las zonas. Este diseño sostiene el compromiso de extremo a extremo de ≥ 99,9 % mensual de la transacción crítica y la conmutación se verifica en las pruebas de resiliencia por inyección de fallas de la arquitectura de despliegue.
 
 ### 4.3.1.3 Servicios contratados en la región primaria
 
-Los servicios contratados en la región primaria son los que agrupa por función el catálogo [de servicios de nube por función](LAFROX-Subdocumento4.md#tab:servicios-nube) del apartado [4.2.3](LAFROX-Subdocumento4.md#sec:servicios-nube). En esta región se concentran la operación productiva, la analítica y los servicios de detección, cumplimiento y gobierno; todos son servicios administrados, de modo que la solución no opera servidores en la nube.
+Los servicios contratados en la región primaria son los que agrupa por función el catálogo [de servicios de nube por función](LAFROX-Subdocumento4.md#tab:servicios-nube) del apartado [4.2.3](LAFROX-Subdocumento4.md#sec:servicios-nube). En esta región se concentran la operación productiva, la analítica y los servicios de detección, cumplimiento y gobierno. Todos son servicios administrados, de modo que la solución no opera servidores en la nube.
 
 ### 4.3.1.4 Sitio on-premise: CD Talca (sala técnica secundaria)
 
-El caso fija para el CD de Talca una sala técnica secundaria ``dimensionada para sostener recepción, preparación y despacho durante un corte'', y advierte que la sala actual de 25 m2 no cumple el Capítulo 6 de las Bases Técnicas Transversales (RT-06.01 del caso; Bases Técnicas del caso, cap. 15, p. 26). Conforme a la tipología del numeral 6.1 de las Bases Técnicas Transversales (cap. 6, p. 14), no se aplica íntegramente a este sitio el conjunto de exigencias de una sala técnica principal, sino el subconjunto dimensionado al sitio: energía, climatización, control de acceso, detección de incendio y monitoreo. El numeral 6.1 de las Bases Técnicas Transversales (cap. 6, p. 14) exige declarar la tipología y justificar el dimensionamiento, y advierte que ``sobredimensionar el recinto es tan penalizado como subdimensionarlo: ambos revelan que el cálculo de capacidad no se hizo''. El equipamiento real que la sala debe alojar y los cálculos eléctrico y térmico desarrollados a continuación determinan su superficie proyectada; la Figura [29](LAFROX-Subdocumento4.md#fig:recinto-talca) muestra su distribución interna por zonas y líneas de acceso.
+El caso fija para el CD de Talca una sala técnica secundaria ``dimensionada para sostener recepción, preparación y despacho durante un corte'', y advierte que la sala actual de 25 m2 no cumple el Capítulo 6 de las Bases Técnicas Transversales (RT-06.01 del caso, Bases Técnicas del caso, cap. 15, p. 26). Conforme a la tipología del numeral 6.1 de las Bases Técnicas Transversales (cap. 6, p. 14), no se aplica íntegramente a este sitio el conjunto de exigencias de una sala técnica principal, sino el subconjunto dimensionado al sitio: energía, climatización, control de acceso, detección de incendio y monitoreo. El numeral 6.1 de las Bases Técnicas Transversales (cap. 6, p. 14) exige declarar la tipología y justificar el dimensionamiento, y advierte que ``sobredimensionar el recinto es tan penalizado como subdimensionarlo: ambos revelan que el cálculo de capacidad no se hizo''. El equipamiento real que la sala debe alojar y los cálculos eléctrico y térmico desarrollados a continuación determinan su superficie proyectada. La Figura [29](LAFROX-Subdocumento4.md#fig:recinto-talca) muestra su distribución interna por zonas y líneas de acceso.
 
 La sala aloja el siguiente equipamiento:
 
@@ -3110,7 +3110,7 @@ La sala aloja el siguiente equipamiento:
 
 - El servidor del ERP de 2017 del CLIENTE, trasladado desde la sala actual.
 
-La sala actual de 25 m2 del edificio de oficinas aloja hoy el servidor del ERP de 2017. Ese servidor se traslada sin cambios de software al rack R01 de la sala nueva, durante la Etapa 1, después del hito H3 y antes de la marcha blanca de Talca. El traslado ocurre en una ventana dominical, después de un respaldo completo verificado. Así, el ERP que emite las guías queda con UPS en N+1, generador de 24 horas, climatización redundante y control de acceso. La sala actual queda sin servidores y se libera para otro uso del CLIENTE (Bases Técnicas del caso, cap. 17, p. 33). Si el servidor tiene una sola fuente, se conecta a los circuitos A y B mediante un conmutador de transferencia de rack (RT-08.04; Bases Técnicas Transversales, cap. 8, p. 18).
+La sala actual de 25 m2 del edificio de oficinas aloja hoy el servidor del ERP de 2017. Ese servidor se traslada sin cambios de software al rack R01 de la sala nueva, durante la Etapa 1, después del hito H3 y antes de la marcha blanca de Talca. El traslado ocurre en una ventana dominical, después de un respaldo completo verificado. Así, el ERP que emite las guías queda con UPS en N+1, generador de 24 horas, climatización redundante y control de acceso. La sala actual queda sin servidores y se libera para otro uso del CLIENTE (Bases Técnicas del caso, cap. 17, p. 33). Si el servidor tiene una sola fuente, se conecta a los circuitos A y B mediante un conmutador de transferencia de rack (RT-08.04, Bases Técnicas Transversales, cap. 8, p. 18).
 
 El listado completo de componentes de sala (UPS, generador, climatización, seguridad física, extinción, cableado y gabinetes) y del equipamiento de cómputo y red que alojan los gabinetes se entrega en el Formulario T-11. La ocupación por rack y el margen de crecimiento se declaran en la Figura [28](LAFROX-Subdocumento4.md#fig:racks-talca).
 
@@ -3126,11 +3126,11 @@ Fuente: elaboración propia.
 
 <a id="fig:cd-talca"></a>
 
-La fibra D-03 es el enlace principal, LTE D-04 el segundo camino y Starlink D-06 el tercero en espera caliente; los tres llegan al par de firewalls, uno activo y otro pasivo. Starlink permanece encendido, con el túnel IPsec establecido y BGP con menor preferencia, y toma el tráfico solo si fallan fibra y LTE. En ese caso, la calidad de servicio prioriza DMS y WAL de Talca, la salida del broker y el outbox, las guías hacia el ERP y el SII, la identidad y la telemetría crítica. El terminal permanece encendido porque adquirir satélites y negociar el túnel durante una falla tardaría minutos; la tarifa plana no agrega costo por ello. Detrás, los dos switches de núcleo y el switch de gestión reparten la red hacia el clúster Proxmox VE con Ceph de tres nodos. El clúster aloja seis máquinas virtuales: VM-01 con el núcleo del WMS, VM-02 con PostgreSQL, VM-03 con RabbitMQ, VM-04 con la capa anticorrupción y los dos procesos de `erp-sync` que conversan con el ERP de 2017, VM-05 con la caché de Keycloak y VM-06 con el colector ADOT y el agente de Systems Manager. La línea punteada representa a AWS DMS, que lee los cambios de VM-02 por la VPN para replicarlos en Aurora. En la bodega, los terminales MC9400 y las impresoras de andén trabajan por Wi-Fi 6E contra el WMS; en la cadena de frío, los sensores entregan sus lecturas a los dos gateways IoT, que las publican por MQTTS y bloquean el despacho ante una excursión crítica y sostenida. El respaldo de recuperación rápida queda en la NAS WORM. La figura sitúa en Talca el cómputo para recibir, preparar y despachar bajo las condiciones de 4.1.15 y del Anexo 4-J: permisos vigentes, disposición sanitaria registrada y guía válida para la carga. Una nueva emisión depende del ERP y de su comunicación tributaria. Ante pérdida de un nodo, sus máquinas virtuales se reinician en los otros dos; el tiempo hasta reanudar la transacción se mide según 4.2.4.3 y no equivale a ausencia de interrupción.
+La fibra D-03 es el enlace principal, LTE D-04 el segundo camino y Starlink D-06 el tercero en espera caliente. Los tres llegan al par de firewalls, uno activo y otro pasivo. Starlink permanece encendido, con el túnel IPsec establecido y BGP con menor preferencia, y toma el tráfico solo si fallan fibra y LTE. En ese caso, la calidad de servicio prioriza DMS y WAL de Talca, la salida del broker y el outbox, las guías hacia el ERP y el SII, la identidad y la telemetría crítica. El terminal permanece encendido porque adquirir satélites y negociar el túnel durante una falla tardaría minutos. La tarifa plana no agrega costo por ello. Detrás, los dos switches de núcleo y el switch de gestión reparten la red hacia el clúster Proxmox VE con Ceph de tres nodos. El clúster aloja seis máquinas virtuales: VM-01 con el núcleo del WMS, VM-02 con PostgreSQL, VM-03 con RabbitMQ, VM-04 con la capa anticorrupción y los dos procesos de `erp-sync` que conversan con el ERP de 2017, VM-05 con la caché de Keycloak y VM-06 con el colector ADOT y el agente de Systems Manager. La línea punteada representa a AWS DMS, que lee los cambios de VM-02 por la VPN para replicarlos en Aurora. En la bodega, los terminales MC9400 y las impresoras de andén trabajan por Wi-Fi 6E contra el WMS. En la cadena de frío, los sensores entregan sus lecturas a los dos gateways IoT, que las publican por MQTTS y bloquean el despacho ante una excursión crítica y sostenida. El respaldo de recuperación rápida queda en la NAS WORM. La figura sitúa en Talca el cómputo para recibir, preparar y despachar bajo las condiciones de 4.1.15 y del Anexo 4-J: permisos vigentes, disposición sanitaria registrada y guía válida para la carga. Una nueva emisión depende del ERP y de su comunicación tributaria. Ante pérdida de un nodo, sus máquinas virtuales se reinician en los otros dos. El tiempo hasta reanudar la transacción se mide según 4.2.4.3 y no equivale a ausencia de interrupción.
 
 La cadena eléctrica sigue esta secuencia: empalme → tablero general → transferencia automática → UPS → PDU del rack → fuente del equipo → servidor.
 
-Esta cadena consta de UPS de doble conversión on-line en configuración N+1 con autonomía mínima de 30 minutos a plena carga y generación autónoma para un rango mínimo de 24 horas continuas, con estanque de combustible dimensionado y contrato de reabastecimiento declarado. La instalación eléctrica es independiente de la del resto del edificio y conforme a la normativa eléctrica chilena vigente, incluida la NCh Elec. 2777; se revisa y mide semestralmente, con informe entregable al CLIENTE, conforme a RT-06.10 (Bases Técnicas Transversales, cap. 6, p. 15).
+Esta cadena consta de UPS de doble conversión on-line en configuración N+1 con autonomía mínima de 30 minutos a plena carga y generación autónoma para un rango mínimo de 24 horas continuas, con estanque de combustible dimensionado y contrato de reabastecimiento declarado. La instalación eléctrica es independiente de la del resto del edificio y conforme a la normativa eléctrica chilena vigente, incluida la NCh Elec. 2777. Se revisa y mide semestralmente, con informe entregable al CLIENTE, conforme a RT-06.10 (Bases Técnicas Transversales, cap. 6, p. 15).
 
 Para el cálculo de carga eléctrica se usa una cota conservadora por equipo, según la Tabla [23](LAFROX-Subdocumento4.md#tab:4-3-1): en los nodos, la suma de sus dos fuentes, y en los demás equipos, su potencia máxima de ficha. Para el servidor del ERP, cuya ficha no se conoce, se usa la misma cota de un nodo, que se confirma al medirlo en el levantamiento. El Formulario T-11 declara los mismos valores por equipo.
 
@@ -3155,15 +3155,15 @@ Fuente: elaboración propia.
 
 El cálculo eléctrico sigue estos pasos:
 
-- Potencia aparente y UPS: con factor de potencia 0,95, 8,9 kW ÷ 0,95 ≈ 9,4 kVA; al 80 % de utilización, 9,4 kVA ÷ 0,8 ≈ 11,8 kVA. El UPS seleccionado es modular de 15 kVA, de doble conversión on-line, en configuración N+1 y con bypass de mantenimiento.
+- Potencia aparente y UPS: con factor de potencia 0,95, 8,9 kW ÷ 0,95 ≈ 9,4 kVA. Al 80 % de utilización, 9,4 kVA ÷ 0,8 ≈ 11,8 kVA. El UPS seleccionado es modular de 15 kVA, de doble conversión on-line, en configuración N+1 y con bypass de mantenimiento.
 
-- PUE: la suma de 8,9 kW de carga TI, ≈ 2,7 kW de climatización de precisión, ≈ 0,4 kW de climatización de la sala de UPS, ≈ 0,6 kW de iluminación y apoyo y ≈ 0,78 kW de pérdidas del UPS es ≈ 13,4 kW; 13,4 ÷ 8,9 ≈ 1,5. Los gateways IoT y sus fuentes agregan ≈ 0,1 kW al consumo del sitio, hasta ≈ 13,5 kW, pero quedan fuera del PUE de la sala. El PUE estimado y la carga declarada satisfacen RT-06.11 (Bases Técnicas Transversales, cap. 6, p. 15). El numerador se mide en el tablero del recinto y el denominador a la salida de las PDU, semestralmente y con informe entregable.
+- PUE: la suma de 8,9 kW de carga TI, ≈ 2,7 kW de climatización de precisión, ≈ 0,4 kW de climatización de la sala de UPS, ≈ 0,6 kW de iluminación y apoyo y ≈ 0,78 kW de pérdidas del UPS es ≈ 13,4 kW. 13,4 ÷ 8,9 ≈ 1,5. Los gateways IoT y sus fuentes agregan ≈ 0,1 kW al consumo del sitio, hasta ≈ 13,5 kW, pero quedan fuera del PUE de la sala. El PUE estimado y la carga declarada satisfacen RT-06.11 (Bases Técnicas Transversales, cap. 6, p. 15). El numerador se mide en el tablero del recinto y el denominador a la salida de las PDU, semestralmente y con informe entregable.
 
 - Generador: la carga del sitio de ≈ 13,5 kW, con factor de potencia 0,8, requiere ≈ 13,5 ÷ 0,8 ≈ 16,9 kVA. Se especifica un grupo electrógeno de 25 kVA, que deja la carga de diseño en el 68 % de su capacidad, bajo el 80 %, con estanque para 24 horas continuas y contrato de reabastecimiento.
 
 La climatización de precisión para la operación continua es redundante en configuración N+1 y controla la temperatura y la humedad relativa dentro de los rangos que recomienda el fabricante del equipamiento.
 
-Con dos racks, la contención se resuelve con paneles ciegos en todas las unidades libres, sellado de los pasos de cable y una orientación con frente frío y parte trasera caliente, coherente con la climatización de precisión, para evitar que el aire caliente recircule. Un retorno más caliente y con menos mezcla mejora la eficiencia de la climatización y el PUE estimado del recinto (RT-06.15; Bases Técnicas Transversales, cap. 6, p. 15).
+Con dos racks, la contención se resuelve con paneles ciegos en todas las unidades libres, sellado de los pasos de cable y una orientación con frente frío y parte trasera caliente, coherente con la climatización de precisión, para evitar que el aire caliente recircule. Un retorno más caliente y con menos mezcla mejora la eficiencia de la climatización y el PUE estimado del recinto (RT-06.15, Bases Técnicas Transversales, cap. 6, p. 15).
 
 Para calcular la carga térmica, se considera que cada kW eléctrico consumido por el equipamiento se disipa físicamente como aproximadamente 1 kW de calor sensible (≈ 3.412 BTU/h). Como el UPS está en su propia sala, la carga térmica de la sala de servidores corresponde a la carga TI de diseño, como resume la Tabla [24](LAFROX-Subdocumento4.md#tab:4-3-2):
 
@@ -3178,7 +3178,7 @@ Para calcular la carga térmica, se considera que cada kW eléctrico consumido p
 
 Fuente: elaboración propia.
 
-Sobre esa carga se instalan dos unidades de climatización de precisión de 10 kW cada una, en configuración N+1; una sola cubre los 8,9 kW de diseño. La temperatura y la humedad relativa se controlan dentro de los rangos del fabricante del equipamiento. La sala de UPS y baterías dispone de climatización de confort propia de 3,5 kW (≈ 12.000 BTU/h), que mantiene 20–25 °C, y de ventilación; disipa las pérdidas del UPS (≈ 0,78 kW) y el calor de carga de las baterías.
+Sobre esa carga se instalan dos unidades de climatización de precisión de 10 kW cada una, en configuración N+1. Una sola cubre los 8,9 kW de diseño. La temperatura y la humedad relativa se controlan dentro de los rangos del fabricante del equipamiento. La sala de UPS y baterías dispone de climatización de confort propia de 3,5 kW (≈ 12.000 BTU/h), que mantiene 20–25 °C, y de ventilación. Disipa las pérdidas del UPS (≈ 0,78 kW) y el calor de carga de las baterías.
 
 La consola KVM, con 50 W de potencia de placa, el conmutador de transferencia del ERP y los equipos terminales de acceso del operador (ONT de fibra, router LTE y terminal Starlink) quedan cubiertos por el margen de diseño del 20 % de la Tabla [23](LAFROX-Subdocumento4.md#tab:4-3-1), sin alterar el UPS de 15 kVA ni el generador de 25 kVA.
 
@@ -3202,7 +3202,7 @@ Fuente: elaboración propia.
 
 <a id="fig:racks-talca"></a>
 
-El rack R01 aloja los tres nodos del clúster, de 2U cada uno, la consola KVM, la NAS WORM, el servidor del ERP de 2U y su conmutador de transferencia; el rack R02 aloja el ODF, los paneles, los dos switches de núcleo, el switch de gestión, el par de firewalls y la bandeja del operador con la ONT de fibra y el router LTE. R01 ocupa 15U de 42 (36 %) y R02, 12U (29 %). La carga de R01 es de 6,8 kW base y 8,2 kW de diseño, y la de R02, de 0,65 kW base y 0,8 kW de diseño; las cargas base suman los 7.450 W de la Tabla [23](LAFROX-Subdocumento4.md#tab:4-3-1), y las de diseño, los 8,9 kW que resultan al agregar el margen de 20 %. La figura dibuja comprimidos los bloques libres e indica la posición de cada equipo en U. Los racks de servidores son independientes de los racks de equipos de comunicación. La ocupación proyectada reserva margen de crecimiento a tres años, coherente con el 20 % de reserva de la carga eléctrica (Tabla [23](LAFROX-Subdocumento4.md#tab:4-3-1)), de modo que la ocupación declarada y su margen quedan fijados en la figura y en el Formulario T-11.
+El rack R01 aloja los tres nodos del clúster, de 2U cada uno, la consola KVM, la NAS WORM, el servidor del ERP de 2U y su conmutador de transferencia. El rack R02 aloja el ODF, los paneles, los dos switches de núcleo, el switch de gestión, el par de firewalls y la bandeja del operador con la ONT de fibra y el router LTE. R01 ocupa 15U de 42 (36 %) y R02, 12U (29 %). La carga de R01 es de 6,8 kW base y 8,2 kW de diseño, y la de R02, de 0,65 kW base y 0,8 kW de diseño. Las cargas base suman los 7.450 W de la Tabla [23](LAFROX-Subdocumento4.md#tab:4-3-1), y las de diseño, los 8,9 kW que resultan al agregar el margen de 20 %. La figura dibuja comprimidos los bloques libres e indica la posición de cada equipo en U. Los racks de servidores son independientes de los racks de equipos de comunicación. La ocupación proyectada reserva margen de crecimiento a tres años, coherente con el 20 % de reserva de la carga eléctrica (Tabla [23](LAFROX-Subdocumento4.md#tab:4-3-1)), de modo que la ocupación declarada y su margen quedan fijados en la figura y en el Formulario T-11.
 
 El control de acceso y la seguridad física del recinto comprenden:
 
@@ -3218,7 +3218,7 @@ El control de acceso y la seguridad física del recinto comprenden:
 
 Las instalaciones sanitarias, las zonas de seguridad ante emergencia y las áreas exteriores existentes en el edificio del CLIENTE se utilizan, sin implementarlas nuevamente dentro del recinto. La bitácora auditable se conserva por un período de retención no inferior a cinco años, coherente con el piso de retención de la auditoría que fija RT-16.10 (Bases Técnicas Transversales, cap. 16, p. 29).
 
-El ingreso de terceros a la sala técnica —fabricantes, mantenedores y auditores— requiere una solicitud con identidad, entidad, motivo, equipos afectados y ventana de trabajo, autorizada previamente por la contraparte responsable del CLIENTE. Antes de ingresar se verifica la identidad y se habilita el acceso temporal mediante el control biométrico; un integrante autorizado acompaña al tercero durante toda la permanencia, sin acceso autónomo ni uso compartido de credenciales. La bitácora registra tercero, autorización, acompañante, fecha y horas de ingreso y egreso, motivo, equipos intervenidos y resultado de la visita. Al salir se comprueba el cierre de la intervención y se revoca la habilitación temporal; una intervención urgente conserva la autorización, el acompañamiento y el registro. Este procedimiento utiliza el control de acceso del Formulario T-11 y se verifica mediante una visita de prueba y su registro completo (RT-06.25; Bases Técnicas Transversales, cap. 6, p. 16).
+El ingreso de terceros a la sala técnica —fabricantes, mantenedores y auditores— requiere una solicitud con identidad, entidad, motivo, equipos afectados y ventana de trabajo, autorizada previamente por la contraparte responsable del CLIENTE. Antes de ingresar se verifica la identidad y se habilita el acceso temporal mediante el control biométrico. Un integrante autorizado acompaña al tercero durante toda la permanencia, sin acceso autónomo ni uso compartido de credenciales. La bitácora registra tercero, autorización, acompañante, fecha y horas de ingreso y egreso, motivo, equipos intervenidos y resultado de la visita. Al salir se comprueba el cierre de la intervención y se revoca la habilitación temporal. Una intervención urgente conserva la autorización, el acompañamiento y el registro. Este procedimiento utiliza el control de acceso del Formulario T-11 y se verifica mediante una visita de prueba y su registro completo (RT-06.25, Bases Técnicas Transversales, cap. 6, p. 16).
 
 Los equipos de energía y climatización y los controles de acceso descritos se ordenan físicamente como muestra la Figura [29](LAFROX-Subdocumento4.md#fig:recinto-talca), que distribuye el recinto por zonas y líneas de acceso.
 
@@ -3230,23 +3230,23 @@ Fuente: elaboración propia.
 
 <a id="fig:recinto-talca"></a>
 
-La distribución ordena el recinto en profundidad progresiva. En el exterior quedan el grupo electrógeno con su estanque, el empalme con la transferencia automática entre red y generador, las condensadoras de la climatización y la llegada independiente de fibra, LTE y Starlink. La fibra y LTE ingresan al edificio por puntos separados y siguen ductos independientes hasta la sala, conforme a RT-06.32 (Bases Técnicas Transversales, cap. 6, p. 17); Starlink constituye el tercer camino. La línea técnica reúne la sala de UPS y baterías, el tablero eléctrico independiente del recinto y la acometida de comunicaciones, junto con la zona de trabajo y la zona de respaldo. La línea restringida contiene solo la sala de servidores y comunicaciones, con los racks R01 y R02, la climatización de precisión y la detección y extinción. Sus muros no estructurales llevan blindaje perimetral de plancha de acero de 3 mm sobre albañilería reforzada, con resistencia al fuego F-120 (RT-06.02). El ingreso sigue un único recorrido: acceso principal, pasillo de control con espacio de enrolamiento, esclusa que admite una persona a la vez con nueva verificación y, recién entonces, la sala; la estación de enrolamiento y los baños quedan fuera del recinto. Los puestos de trabajo y el área de respaldo quedan en la línea técnica, separados de la sala de equipos, de modo que las labores habituales de operación no exigen ingresar a la línea restringida. La separación física de generadores y baterías respecto del área de servidores evita que una falla de energía o de clima contamine el cómputo, y deja al proveedor de fibra y al de climatización sin cruzar la última línea del recinto.
+La distribución ordena el recinto en profundidad progresiva. En el exterior quedan el grupo electrógeno con su estanque, el empalme con la transferencia automática entre red y generador, las condensadoras de la climatización y la llegada independiente de fibra, LTE y Starlink. La fibra y LTE ingresan al edificio por puntos separados y siguen ductos independientes hasta la sala, conforme a RT-06.32 (Bases Técnicas Transversales, cap. 6, p. 17). Starlink constituye el tercer camino. La línea técnica reúne la sala de UPS y baterías, el tablero eléctrico independiente del recinto y la acometida de comunicaciones, junto con la zona de trabajo y la zona de respaldo. La línea restringida contiene solo la sala de servidores y comunicaciones, con los racks R01 y R02, la climatización de precisión y la detección y extinción. Sus muros no estructurales llevan blindaje perimetral de plancha de acero de 3 mm sobre albañilería reforzada, con resistencia al fuego F-120 (RT-06.02). El ingreso sigue un único recorrido: acceso principal, pasillo de control con espacio de enrolamiento, esclusa que admite una persona a la vez con nueva verificación y, recién entonces, la sala. La estación de enrolamiento y los baños quedan fuera del recinto. Los puestos de trabajo y el área de respaldo quedan en la línea técnica, separados de la sala de equipos, de modo que las labores habituales de operación no exigen ingresar a la línea restringida. La separación física de generadores y baterías respecto del área de servidores evita que una falla de energía o de clima contamine el cómputo, y deja al proveedor de fibra y al de climatización sin cruzar la última línea del recinto.
 
 El sitio monitorea en línea la temperatura, la humedad y la presencia de agua, con alertamiento integrado a la plataforma de observabilidad. El estado de los puntos controlados del recinto converge en la plataforma de monitoreo, con destinatario, canal, tiempo de respuesta y procedimiento escrito. La observabilidad reutiliza el mecanismo del sitio on-premise hacia la nube que define la arquitectura de despliegue del apartado [4.2.4](LAFROX-Subdocumento4.md#sec:despliegue). La convergencia en un solo tablero constituye la plataforma de observabilidad del sitio. No se declara una plataforma DCIM/BMS de terceros porque las Bases no la exigen y el monitoreo ambiental y de alertas se satisface con el monitoreo en línea y su alertamiento integrado.
 
-El cómputo local corre sobre un clúster virtualizado de tres nodos N+1 con quórum real. Ceph distribuye tres réplicas sobre NVMe sin RAID y tolera la pérdida de un nodo; el respaldo local reside en el NAS D-05 con RAID 6. La selección se justifica en ADR-10 (Anexo 4-O). La instancia de escritura VM-02 se reinicia en otro nodo ante una falla.
+El cómputo local corre sobre un clúster virtualizado de tres nodos N+1 con quórum real. Ceph distribuye tres réplicas sobre NVMe sin RAID y tolera la pérdida de un nodo. El respaldo local reside en el NAS D-05 con RAID 6. La selección se justifica en ADR-10 (Anexo 4-O). La instancia de escritura VM-02 se reinicia en otro nodo ante una falla.
 
 ## 4.3.2 Especificaciones Data Center Secundario
 
 <a id="sec:e-especificaciones-del-sitio-secundario-y-"></a>
 
-El Data Center Secundario cubre dos dominios de recuperación. La región AWS us-east-1 restituye el dominio de nube ante la pérdida de sa-east-1. La plataforma de nube de la región activa restituye el WMS de Talca ante la pérdida de su sala técnica; si también se pierde sa-east-1, la región activa pasa a ser us-east-1 tras la promoción. Concepción y los cross-docking son sitios operacionales autónomos y no reciben la carga de Talca. Los objetivos para servicios críticos son RTO ≤ 4 h y RPO ≤ 15 min, con respaldo 3-2-1-1-0 y ensayos semestrales. El Formulario T-11 detalla los recursos de recuperación.
+El Data Center Secundario cubre dos dominios de recuperación. La región AWS us-east-1 restituye el dominio de nube ante la pérdida de sa-east-1. La plataforma de nube de la región activa restituye el WMS de Talca ante la pérdida de su sala técnica. Si también se pierde sa-east-1, la región activa pasa a ser us-east-1 tras la promoción. Concepción y los cross-docking son sitios operacionales autónomos y no reciben la carga de Talca. Los objetivos para servicios críticos son RTO ≤ 4 h y RPO ≤ 15 min, con respaldo 3-2-1-1-0 y ensayos semestrales. El Formulario T-11 detalla los recursos de recuperación.
 
 ### 4.3.2.1 Modalidad del sitio secundario
 
-La modalidad del dominio de nube es activo-pasiva en caliente para el núcleo de aplicación y los datos replicados. La región us-east-1 mantiene ese núcleo con capacidad reducida; ante la declaración del incidente se promueve Aurora y se escala la aplicación. Los canales y dependencias que requieren restitución se distinguen en 4.3.2.5 y T-11; no se presume una réplica caliente de todos los servicios del catálogo. El dominio de Talca conserva en Aurora una copia continua de su WMS y la misma imagen `wms_only` lista para ejecutarse en ECS Fargate. ADR-09 (Anexo 4-O) registra la selección frente a activo-activo y a la restauración en frío. La primera alternativa exigiría coordinar escrituras simultáneas entre regiones; la segunda agrega la reconstrucción de la plataforma al tiempo de recuperación.
+La modalidad del dominio de nube es activo-pasiva en caliente para el núcleo de aplicación y los datos replicados. La región us-east-1 mantiene ese núcleo con capacidad reducida. Ante la declaración del incidente se promueve Aurora y se escala la aplicación. Los canales y dependencias que requieren restitución se distinguen en 4.3.2.5 y T-11. No se presume una réplica caliente de todos los servicios del catálogo. El dominio de Talca conserva en Aurora una copia continua de su WMS y la misma imagen `wms_only` lista para ejecutarse en ECS Fargate. ADR-09 (Anexo 4-O) registra la selección frente a activo-activo y a la restauración en frío. La primera alternativa exigiría coordinar escrituras simultáneas entre regiones. La segunda agrega la reconstrucción de la plataforma al tiempo de recuperación.
 
-Frente a un esquema activo-activo, la réplica caliente reducida evita pagar de forma permanente dos plataformas a plena carga; frente a una restauración en frío, mantiene suficiente capacidad en espera para cumplir el RTO sin reconstruir la plataforma. Ese equilibrio entre costo, RTO y complejidad justifica la elección (RT-07.01; Bases Técnicas Transversales, cap. 7, p. 17).
+Frente a un esquema activo-activo, la réplica caliente reducida evita pagar de forma permanente dos plataformas a plena carga. Frente a una restauración en frío, mantiene suficiente capacidad en espera para cumplir el RTO sin reconstruir la plataforma. Ese equilibrio entre costo, RTO y complejidad justifica la elección (RT-07.01, Bases Técnicas Transversales, cap. 7, p. 17).
 
 ### 4.3.2.2 Región o sitio de recuperación
 
@@ -3259,13 +3259,13 @@ La Tabla [25](LAFROX-Subdocumento4.md#tab:4-3-3) compara los dos destinos de rec
 | **Destino** | **Dominio** | **Distancia** | **Amenazas comunes** |
 | --- | --- | --- | --- |
 | AWS us-east-1 | Nube de sa-east-1 | ≈ 7.700 km desde sa-east-1 | No comparte sismicidad ni red eléctrica con Brasil. |
-| Nube sa-east-1; us-east-1 en contingencia regional | WMS de Talca | ≈ 2.700 km de Talca a sa-east-1 | No comparte sismicidad ni suministro eléctrico con Talca. |
+| Nube sa-east-1, us-east-1 en contingencia regional | WMS de Talca | ≈ 2.700 km de Talca a sa-east-1 | No comparte sismicidad ni suministro eléctrico con Talca. |
 
 Fuente: elaboración propia.
 
-Las distancias de la tabla separan los dominios de falla. La región secundaria se sitúa en Virginia del Norte, Estados Unidos, y la primaria en São Paulo, Brasil. Ambas implican transferencia internacional de datos personales desde Chile. AWS actúa como encargado del tratamiento por cuenta del CLIENTE, responsable de los datos, mediante un contrato de encargo que incorpora las cláusulas contractuales tipo aprobadas para la Ley N° 21.719 (Ley N° 21.719, 2024). Los datos se cifran en reposo con claves KMS administradas por el CLIENTE y en tránsito; se registran las actividades de tratamiento y se controlan y auditan los accesos.
+Las distancias de la tabla separan los dominios de falla. La región secundaria se sitúa en Virginia del Norte, Estados Unidos, y la primaria en São Paulo, Brasil. Ambas implican transferencia internacional de datos personales desde Chile. AWS actúa como encargado del tratamiento por cuenta del CLIENTE, responsable de los datos, mediante un contrato de encargo que incorpora las cláusulas contractuales tipo aprobadas para la Ley N° 21.719 (Ley N° 21.719, 2024). Los datos se cifran en reposo con claves KMS administradas por el CLIENTE y en tránsito. Se registran las actividades de tratamiento y se controlan y auditan los accesos.
 
-La réplica secundaria se limita a los datos necesarios para continuidad. La analítica opera en sa-east-1 y se copia de forma diferida a la región secundaria, porque conserva los cinco años de registros de temperatura y de trazabilidad de lote; la copia no incluye las posiciones de flota, solo los kilómetros agregados que alimentan el costo de servir. Las posiciones de flota, que son geolocalización de personas trabajadoras, no salen de sa-east-1 y se protegen con copias inmutables en otra cuenta de esa región; ante la pérdida total de sa-east-1 se pierde su historial, que solo alimenta el costo de servir. La región secundaria no recibe consultas ordinarias de negocio; mantiene preparada la consulta sanitaria de emergencia de solo lectura de M9 y sus ensayos. El artículo 23 de las Bases Administrativas sujeta la residencia declarada a aprobación del CLIENTE (Bases Administrativas, art. 23, p. 17), hito contractual de la Etapa 1. La propuesta declara sa-east-1 y us-east-1, y presenta para esa aprobación la base de licitud, el contrato de encargo y los resguardos descritos. Se elige us-east-1 porque ofrece todos los servicios de recuperación del diseño: Aurora Global Database, DynamoDB Global Tables, replicación de S3, ECS Fargate y AWS Backup. Una sola región no permite recuperarse de su propia pérdida con un RTO de 4 horas y un RPO de 15 minutos.
+La réplica secundaria se limita a los datos necesarios para continuidad. La analítica opera en sa-east-1 y se copia de forma diferida a la región secundaria, porque conserva los cinco años de registros de temperatura y de trazabilidad de lote. La copia no incluye las posiciones de flota, solo los kilómetros agregados que alimentan el costo de servir. Las posiciones de flota, que son geolocalización de personas trabajadoras, no salen de sa-east-1 y se protegen con copias inmutables en otra cuenta de esa región. Ante la pérdida total de sa-east-1 se pierde su historial, que solo alimenta el costo de servir. La región secundaria no recibe consultas ordinarias de negocio. Mantiene preparada la consulta sanitaria de emergencia de solo lectura de M9 y sus ensayos. El artículo 23 de las Bases Administrativas sujeta la residencia declarada a aprobación del CLIENTE (Bases Administrativas, art. 23, p. 17), hito contractual de la Etapa 1. La propuesta declara sa-east-1 y us-east-1, y presenta para esa aprobación la base de licitud, el contrato de encargo y los resguardos descritos. Se elige us-east-1 porque ofrece todos los servicios de recuperación del diseño: Aurora Global Database, DynamoDB Global Tables, replicación de S3, ECS Fargate y AWS Backup. Una sola región no permite recuperarse de su propia pérdida con un RTO de 4 horas y un RPO de 15 minutos.
 
 ### 4.3.2.3 Replicación
 
@@ -3275,25 +3275,25 @@ La replicación continua usa un mecanismo por dominio, resumido en el listado [d
 
 <a id="tab:4-3-4"></a>
 
-- **Transaccional en nube (crítico).** **Mecanismo de replicación:** Aurora Global Database replica la base hacia la región secundaria; **RPO / retraso declarado:** El RPO objetivo es ≤ 15 min y se mide en cada ensayo.
+- **Transaccional en nube (crítico).** **Mecanismo de replicación:** Aurora Global Database replica la base hacia la región secundaria. **RPO / retraso declarado:** El RPO objetivo es ≤ 15 min y se mide en cada ensayo.
 
-- **WMS de Talca (crítico).** **Mecanismo de replicación:** AWS DMS replica PostgreSQL VM-02 por la VPN sobre fibra, LTE o Starlink; **RPO / retraso declarado:** El RPO objetivo es ≤ 15 min y se mide en cada ensayo.
+- **WMS de Talca (crítico).** **Mecanismo de replicación:** AWS DMS replica PostgreSQL VM-02 por la VPN sobre fibra, LTE o Starlink. **RPO / retraso declarado:** El RPO objetivo es ≤ 15 min y se mide en cada ensayo.
 
-- **Mensajes críticos de cada sitio.** **Mecanismo de replicación:** El outbox local retiene 24 h de eventos, aun los ya enviados, y el shipper los reenvía a SQS FIFO de la región activa; **RPO / retraso declarado:** El RPO objetivo es ≤ 15 min y se mide en cada ensayo.
+- **Mensajes críticos de cada sitio.** **Mecanismo de replicación:** El outbox local retiene 24 h de eventos, aun los ya enviados, y el shipper los reenvía a SQS FIFO de la región activa. **RPO / retraso declarado:** El RPO objetivo es ≤ 15 min y se mide en cada ensayo.
 
-- **Evidencias y documentos tributarios (críticos).** **Mecanismo de replicación:** S3 Replication Time Control replica los objetos entre regiones y un evento de umbral dispara la recopia de los rezagados; **RPO / retraso declarado:** El RPO objetivo es ≤ 15 min y se mide en cada ensayo.
+- **Evidencias y documentos tributarios (críticos).** **Mecanismo de replicación:** S3 Replication Time Control replica los objetos entre regiones y un evento de umbral dispara la recopia de los rezagados. **RPO / retraso declarado:** El RPO objetivo es ≤ 15 min y se mide en cada ensayo.
 
-- **Telemetría de temperatura (crítica).** **Mecanismo de replicación:** DynamoDB Global Tables replica las lecturas entre regiones; **RPO / retraso declarado:** El RPO objetivo es ≤ 15 min y se mide en cada ensayo.
+- **Telemetría de temperatura (crítica).** **Mecanismo de replicación:** DynamoDB Global Tables replica las lecturas entre regiones. **RPO / retraso declarado:** El RPO objetivo es ≤ 15 min y se mide en cada ensayo.
 
-- **Analítica (no crítica).** **Mecanismo de replicación:** Los respaldos se copian de forma diferida a us-east-1, sin las posiciones de flota; **RPO / retraso declarado:** El RPO es ≤ 24 h.
+- **Analítica (no crítica).** **Mecanismo de replicación:** Los respaldos se copian de forma diferida a us-east-1, sin las posiciones de flota. **RPO / retraso declarado:** El RPO es ≤ 24 h.
 
-- **Posiciones de flota (no críticas).** **Mecanismo de replicación:** Se conservan solo en sa-east-1, con copia inmutable en otra cuenta de esa región; **RPO / retraso declarado:** El RPO es ≤ 24 h dentro de sa-east-1.
+- **Posiciones de flota (no críticas).** **Mecanismo de replicación:** Se conservan solo en sa-east-1, con copia inmutable en otra cuenta de esa región. **RPO / retraso declarado:** El RPO es ≤ 24 h dentro de sa-east-1.
 
-- **Mensajes no críticos.** **Mecanismo de replicación:** El outbox local conserva los eventos para reenviarlos a la cola de la región activa; **RPO / retraso declarado:** El RPO es ≤ 24 h.
+- **Mensajes no críticos.** **Mecanismo de replicación:** El outbox local conserva los eventos para reenviarlos a la cola de la región activa. **RPO / retraso declarado:** El RPO es ≤ 24 h.
 
 Fuente: elaboración propia.
 
-El listado separa la copia DMS del WMS de Talca, destinada a su recuperación, del estado central consolidado por eventos idempotentes de todos los sitios. AWS DMS lee VM-02 por el túnel IPsec; la única conexión iniciada desde la nube hacia un sitio termina en esa VM. Aurora Global Database, DynamoDB Global Tables y la replicación de S3 protegen el dominio de nube. S3 Replication Time Control ofrece que el 99,99 % de los objetos se replique en 15 min; se vigila la métrica de objetos pendientes y un evento de umbral superado dispara la recopia. DynamoDB Global Tables replica de forma asíncrona con retraso típico de segundos y una alarma de `ReplicationLatency` a los 60 s. La edad de las réplicas y las colas se mide continuamente y todos los RPO se verifican en los ensayos semestrales.
+El listado separa la copia DMS del WMS de Talca, destinada a su recuperación, del estado central consolidado por eventos idempotentes de todos los sitios. AWS DMS lee VM-02 por el túnel IPsec. La única conexión iniciada desde la nube hacia un sitio termina en esa VM. Aurora Global Database, DynamoDB Global Tables y la replicación de S3 protegen el dominio de nube. S3 Replication Time Control ofrece que el 99,99 % de los objetos se replique en 15 min. Se vigila la métrica de objetos pendientes y un evento de umbral superado dispara la recopia. DynamoDB Global Tables replica de forma asíncrona con retraso típico de segundos y una alarma de `ReplicationLatency` a los 60 s. La edad de las réplicas y las colas se mide continuamente y todos los RPO se verifican en los ensayos semestrales.
 
 ### 4.3.2.4 RPO y RTO
 
@@ -3312,57 +3312,57 @@ La Tabla [26](LAFROX-Subdocumento4.md#tab:4-3-5) fija los objetivos medidos en l
 
 Fuente: elaboración propia.
 
-El RPO de la tabla se sustenta en la extracción continua de datos críticos por tres dominios de falla distintos en los CD: fibra terrestre D-03, red celular D-04 y satélite D-06. En Talca y Concepción, Starlink permanece encendido como tercer camino en espera caliente, con el túnel IPsec establecido y BGP con menor preferencia; toma el tráfico solo si fallan fibra y LTE. En esa situación, la calidad de servicio prioriza DMS y WAL de Talca, la salida del broker y el outbox, las guías hacia el ERP y el SII, la identidad y la telemetría crítica. El terminal encendido evita los minutos necesarios para adquirir satélites y negociar el túnel durante la falla, sin costo adicional por la tarifa plana. La caída simultánea de fibra y LTE, incluso ante un terremoto que afecte la infraestructura terrestre, permite mantener la réplica de Talca y la publicación de eventos dentro del RPO mediante Starlink. En los cross-docking, Starlink es el camino principal y LTE de dos proveedores constituye el respaldo. La bodega conserva 24 h de operación local aunque cambie el camino WAN.
+El RPO de la tabla se sustenta en la extracción continua de datos críticos por tres dominios de falla distintos en los CD: fibra terrestre D-03, red celular D-04 y satélite D-06. En Talca y Concepción, Starlink permanece encendido como tercer camino en espera caliente, con el túnel IPsec establecido y BGP con menor preferencia. Toma el tráfico solo si fallan fibra y LTE. En esa situación, la calidad de servicio prioriza DMS y WAL de Talca, la salida del broker y el outbox, las guías hacia el ERP y el SII, la identidad y la telemetría crítica. El terminal encendido evita los minutos necesarios para adquirir satélites y negociar el túnel durante la falla, sin costo adicional por la tarifa plana. La caída simultánea de fibra y LTE, incluso ante un terremoto que afecte la infraestructura terrestre, permite mantener la réplica de Talca y la publicación de eventos dentro del RPO mediante Starlink. En los cross-docking, Starlink es el camino principal y LTE de dos proveedores constituye el respaldo. La bodega conserva 24 h de operación local aunque cambie el camino WAN.
 
-El RPO ≤ 15 minutos se diseña para la pérdida regional, la pérdida de uno o dos enlaces y la pérdida del sitio con un camino activo. Si todos los enlaces caen y el sitio se destruye antes de transmitir los cambios, la copia externa puede superar ese plazo: la retención local no sobrevive a la destrucción. Se conserva el riesgo R8-05 y se exige presentar al mandante el escenario, el desfase máximo observado y las alternativas de comunicación para resolver su tratamiento contractual; ninguna excepción se considera aprobada por registrarla como riesgo. Las alarmas a los 5 y 15 minutos activan reposición del enlace y conservación de evidencia. AL-DR-01 mide la brecha y el punto recuperable. La restitución de Talca incluye cómputo, LAN, firewall y acceso a la VPN dentro del RTO; disponer de Fargate por sí solo no recupera sus terminales.
+El RPO ≤ 15 minutos se diseña para la pérdida regional, la pérdida de uno o dos enlaces y la pérdida del sitio con un camino activo. Si todos los enlaces caen y el sitio se destruye antes de transmitir los cambios, la copia externa puede superar ese plazo: la retención local no sobrevive a la destrucción. Se conserva el riesgo R8-05 y se exige presentar al mandante el escenario, el desfase máximo observado y las alternativas de comunicación para resolver su tratamiento contractual. Ninguna excepción se considera aprobada por registrarla como riesgo. Las alarmas a los 5 y 15 minutos activan reposición del enlace y conservación de evidencia. AL-DR-01 mide la brecha y el punto recuperable. La restitución de Talca incluye cómputo, LAN, firewall y acceso a la VPN dentro del RTO. Disponer de Fargate por sí solo no recupera sus terminales.
 
 ### 4.3.2.5 Procedimiento de conmutación
 
 <a id="sub:conmutacion-regional"></a>
 
-La pérdida regional se atiende con la secuencia del procedimiento [de conmutación de región](LAFROX-Subdocumento4.md#tab:4-3-6). La promoción de Aurora requiere autorización del CLIENTE; Route 53 cambia el tráfico solo después de restituir y validar los servicios.
+La pérdida regional se atiende con la secuencia del procedimiento [de conmutación de región](LAFROX-Subdocumento4.md#tab:4-3-6). La promoción de Aurora requiere autorización del CLIENTE. Route 53 cambia el tráfico solo después de restituir y validar los servicios.
 
 **Secuencia de conmutación de región**
 
 <a id="tab:4-3-6"></a>
 
-- **Paso 1.** **Acción:** Detección por verificación de salud y alarmas; **Ejecución:** Route 53 y CloudWatch; **Tiempo:** < 5 min.
+- **Paso 1.** **Acción:** Detección por verificación de salud y alarmas, **Ejecución:** Route 53 y CloudWatch, **Tiempo:** < 5 min.
 
-- **Paso 2.** **Acción:** Declaración del incidente y autorización de la promoción; **Ejecución:** CLIENTE, con aviso por SNS; **Tiempo:** ≤ 30 min.
+- **Paso 2.** **Acción:** Declaración del incidente y autorización de la promoción, **Ejecución:** CLIENTE, con aviso por SNS, **Tiempo:** ≤ 30 min.
 
-- **Paso 3.** **Acción:** Promoción de Aurora en us-east-1; **Ejecución:** Systems Manager Automation; **Tiempo:** 15–20 min.
+- **Paso 3.** **Acción:** Promoción de Aurora en us-east-1, **Ejecución:** Systems Manager Automation, **Tiempo:** 15–20 min.
 
-- **Paso 4.** **Acción:** Escalado del núcleo y restitución de tareas de consola, rutas y AS2 desde imágenes y configuración preparadas; **Ejecución:** Systems Manager Automation; **Tiempo:** ≤ 30 min.
+- **Paso 4.** **Acción:** Escalado del núcleo y restitución de tareas de consola, rutas y AS2 desde imágenes y configuración preparadas, **Ejecución:** Systems Manager Automation, **Tiempo:** ≤ 30 min.
 
-- **Paso 5.** **Acción:** Restitución de Keycloak, APIs, Verified Access y configuración regional de ingesta IoT, claves y certificados; **Ejecución:** Systems Manager Automation; **Tiempo:** < 15 min.
+- **Paso 5.** **Acción:** Restitución de Keycloak, APIs, Verified Access y configuración regional de ingesta IoT, claves y certificados, **Ejecución:** Systems Manager Automation, **Tiempo:** < 15 min.
 
-- **Paso 6.** **Acción:** Reconexión de túneles y brokers y redirección de shippers y `erp-sync` a las colas regionales; **Ejecución:** Systems Manager Automation; **Tiempo:** < 15 min.
+- **Paso 6.** **Acción:** Reconexión de túneles y brokers y redirección de shippers y `erp-sync` a las colas regionales, **Ejecución:** Systems Manager Automation, **Tiempo:** < 15 min.
 
-- **Paso 7.** **Acción:** Validación de pedidos, retención local, sincronización, permisos de consola y canales restituidos; registro de servicios aún indisponibles; **Ejecución:** Operación; **Tiempo:** < 15 min.
+- **Paso 7.** **Acción:** Validación de pedidos, retención local, sincronización, permisos de consola y canales restituidos, registro de servicios aún indisponibles, **Ejecución:** Operación, **Tiempo:** < 15 min.
 
-- **Paso 8.** **Acción:** Cambio del tráfico a us-east-1 en Route 53, con TTL de 60 s preparado; **Ejecución:** Systems Manager Automation; **Tiempo:** < 5 min.
+- **Paso 8.** **Acción:** Cambio del tráfico a us-east-1 en Route 53, con TTL de 60 s preparado, **Ejecución:** Systems Manager Automation, **Tiempo:** < 5 min.
 
 Fuente: elaboración propia.
 
-El peor caso secuencial suma 5 + 30 + 20 + 30 + 15 + 15 + 15 + 5 = 135 min, equivalentes a 2 h 15 min y dentro del RTO de 4 h; el escalado del paso 4 puede ejecutarse en paralelo con la promoción del paso 3 sin reducir este presupuesto conservador. El plan de continuidad designa a un autorizador titular y a un suplente del CLIENTE con facultad delegada; si el titular no responde en 15 min, decide el suplente dentro del máximo de 30 min. La decisión se ensaya en los simulacros semestrales. Las imágenes de ECR se replican entre regiones y las colas SQS FIFO, SQS y SNS equivalentes existen vacías en la región secundaria por infraestructura como código, de modo que el paso 6 redirige allí los `shippers` y `erp-sync` sin depender de la región primaria. Antes de validar el paso 7, cada shipper vuelve a publicar su outbox de las últimas 24 h y M2 central vuelve a publicar las solicitudes de reserva pendientes que guarda Aurora. Los consumidores descartan por UUID lo que Aurora ya registró, y `erp-sync` responde una solicitud repetida con el resultado ya registrado. Así, lo aceptado y no consumido en sa-east-1 no se pierde. La preparación de los registros con TTL de 60 s antecede al incidente. No se conmuta automáticamente el tráfico por salud antes de promover la base; el retorno automático permanece deshabilitado. Cada paso queda registrado por Systems Manager y el personal del CLIENTE puede ejecutarlo tras la transferencia de conocimiento.
+El peor caso secuencial suma 5 + 30 + 20 + 30 + 15 + 15 + 15 + 5 = 135 min, equivalentes a 2 h 15 min y dentro del RTO de 4 h. El escalado del paso 4 puede ejecutarse en paralelo con la promoción del paso 3 sin reducir este presupuesto conservador. El plan de continuidad designa a un autorizador titular y a un suplente del CLIENTE con facultad delegada. Si el titular no responde en 15 min, decide el suplente dentro del máximo de 30 min. La decisión se ensaya en los simulacros semestrales. Las imágenes de ECR se replican entre regiones y las colas SQS FIFO, SQS y SNS equivalentes existen vacías en la región secundaria por infraestructura como código, de modo que el paso 6 redirige allí los `shippers` y `erp-sync` sin depender de la región primaria. Antes de validar el paso 7, cada shipper vuelve a publicar su outbox de las últimas 24 h y M2 central vuelve a publicar las solicitudes de reserva pendientes que guarda Aurora. Los consumidores descartan por UUID lo que Aurora ya registró, y `erp-sync` responde una solicitud repetida con el resultado ya registrado. Así, lo aceptado y no consumido en sa-east-1 no se pierde. La preparación de los registros con TTL de 60 s antecede al incidente. No se conmuta automáticamente el tráfico por salud antes de promover la base. El retorno automático permanece deshabilitado. Cada paso queda registrado por Systems Manager y el personal del CLIENTE puede ejecutarlo tras la transferencia de conocimiento.
 
-Cuando se pierde el cómputo de Talca, la promoción de su copia en Aurora exige comprobar que el escritor de VM-02 ya no puede operar, detener DMS y registrar la transferencia de autoridad de M2; detener DMS por sí solo no excluye el escritor. Solo entonces se habilita la copia para escritura y se levanta el perfil `wms_only` de la misma imagen en ECS Fargate de la región activa. Los terminales y periféricos acceden por VPN si la LAN, los firewalls y al menos un camino WAN permanecen disponibles. Si se pierde la sala completa y con ella esos equipos, se deben restituir y validar antes de declarar recuperada la operación de piso; disponer de Fargate no sustituye esa conectividad. AL-DR-01 distingue ambos escenarios y mide el tiempo completo. La pérdida de la sala incluye el servidor del ERP, que es del CLIENTE y no se modifica. Mientras el CLIENTE lo restituye, salen solo las cargas con guía preemitida, cuyo folio conserva la copia del WMS en Aurora. Una guía nueva espera el ERP restituido, y `erp-sync` y la ACL se reinstalan desde la misma imagen. Si la región primaria tampoco está disponible, se promueve primero us-east-1 con la secuencia regional descrita y allí se levanta el perfil de Talca. Concepción continúa atendiendo exclusivamente su propia bodega.
+Cuando se pierde el cómputo de Talca, la promoción de su copia en Aurora exige comprobar que el escritor de VM-02 ya no puede operar, detener DMS y registrar la transferencia de autoridad de M2. Detener DMS por sí solo no excluye el escritor. Solo entonces se habilita la copia para escritura y se levanta el perfil `wms_only` de la misma imagen en ECS Fargate de la región activa. Los terminales y periféricos acceden por VPN si la LAN, los firewalls y al menos un camino WAN permanecen disponibles. Si se pierde la sala completa y con ella esos equipos, se deben restituir y validar antes de declarar recuperada la operación de piso. Disponer de Fargate no sustituye esa conectividad. AL-DR-01 distingue ambos escenarios y mide el tiempo completo. La pérdida de la sala incluye el servidor del ERP, que es del CLIENTE y no se modifica. Mientras el CLIENTE lo restituye, salen solo las cargas con guía preemitida, cuyo folio conserva la copia del WMS en Aurora. Una guía nueva espera el ERP restituido, y `erp-sync` y la ACL se reinstalan desde la misma imagen. Si la región primaria tampoco está disponible, se promueve primero us-east-1 con la secuencia regional descrita y allí se levanta el perfil de Talca. Concepción continúa atendiendo exclusivamente su propia bodega.
 
-La cobertura regional se verifica por servicio antes de habilitar el tráfico. En el paso 4 se restituyen las tareas de consola Angular, optimización de rutas y OpenAS2 desde las imágenes replicadas y sus definiciones de infraestructura como código; durante ese proceso se usan las rutas precargadas. En el paso 5 se configuran las entradas pública y privada, Verified Access, Keycloak y la ingesta IoT regional, con claves, certificados y acuerdos de contraparte. Los gateways conservan lectura, alarma y retención locales mientras se actualiza y valida el destino de ingesta. La caché se reconstruye desde el transaccional: una lectura puede acudir a la base bajo los mismos permisos y cuotas, sin convertir Redis en fuente de verdad. El paso 7 verifica cada canal y registra los que siguen indisponibles; disponer de la base no habilita automáticamente todos los accesos. Los servicios críticos se recuperan dentro del RTO completo de 4 horas, incluida la restitución de sus dependencias; los 135 minutos son el presupuesto de la secuencia, sujeto a medición de la cobertura indicada. La analítica conserva su copia diferida y las posiciones de flota quedan excluidas de la réplica regional. AL-DR-01 mide tiempos y funciones por canal; los mapas precargados y las alarmas locales son mecanismos de continuidad durante la restitución.
+La cobertura regional se verifica por servicio antes de habilitar el tráfico. En el paso 4 se restituyen las tareas de consola Angular, optimización de rutas y OpenAS2 desde las imágenes replicadas y sus definiciones de infraestructura como código. Durante ese proceso se usan las rutas precargadas. En el paso 5 se configuran las entradas pública y privada, Verified Access, Keycloak y la ingesta IoT regional, con claves, certificados y acuerdos de contraparte. Los gateways conservan lectura, alarma y retención locales mientras se actualiza y valida el destino de ingesta. La caché se reconstruye desde el transaccional: una lectura puede acudir a la base bajo los mismos permisos y cuotas, sin convertir Redis en fuente de verdad. El paso 7 verifica cada canal y registra los que siguen indisponibles. Disponer de la base no habilita automáticamente todos los accesos. Los servicios críticos se recuperan dentro del RTO completo de 4 horas, incluida la restitución de sus dependencias. Los 135 minutos son el presupuesto de la secuencia, sujeto a medición de la cobertura indicada. La analítica conserva su copia diferida y las posiciones de flota quedan excluidas de la réplica regional. AL-DR-01 mide tiempos y funciones por canal. Los mapas precargados y las alarmas locales son mecanismos de continuidad durante la restitución.
 
-La consulta sanitaria de emergencia opera en los recursos N-04/N-05 de us-east-1, con una ruta privada de M9 restringida a Calidad. Mantiene preparados el acceso regional, Keycloak y los permisos personales; no espera la promoción del escritor ni el cambio general de Route 53. La cuenta de base solo consulta el lector secundario de Aurora, sin reenvío de escrituras; la evidencia se obtiene del bucket S3 de destino con permisos KMS regionales (Amazon Web Services, s. f.-o). El endpoint y la sesión regional se ensayan con sa-east-1 indisponible. Esta ruta no permite liberar lotes, confirmar stock ni emitir guías.
+La consulta sanitaria de emergencia opera en los recursos N-04/N-05 de us-east-1, con una ruta privada de M9 restringida a Calidad. Mantiene preparados el acceso regional, Keycloak y los permisos personales. No espera la promoción del escritor ni el cambio general de Route 53. La cuenta de base solo consulta el lector secundario de Aurora, sin reenvío de escrituras. La evidencia se obtiene del bucket S3 de destino con permisos KMS regionales (Amazon Web Services, s. f.-o). El endpoint y la sesión regional se ensayan con sa-east-1 indisponible. Esta ruta no permite liberar lotes, confirmar stock ni emitir guías.
 
-El presupuesto de aceptación desde la solicitud sanitaria es hasta 15 minutos para habilitar el acceso y hasta 60 para producir y verificar la lista, 75 minutos en total y 45 de margen frente a las dos horas. La respuesta identifica punto consistente, retraso por sitio y documentos verificables; contrasta los eventos locales recuperables con la copia central. Si faltan eventos, originales o claves, se registra la cobertura incompleta y se activa recuperación prioritaria: no se declara satisfecho el criterio sanitario. AL-DR-01 ensaya el retiro durante una pérdida regional con clientes y evidencias esperados, además del RTO general. Este presupuesto es un objetivo de diseño sujeto a prueba, no una medición ejecutada.
+El presupuesto de aceptación desde la solicitud sanitaria es hasta 15 minutos para habilitar el acceso y hasta 60 para producir y verificar la lista, 75 minutos en total y 45 de margen frente a las dos horas. La respuesta identifica punto consistente, retraso por sitio y documentos verificables. Contrasta los eventos locales recuperables con la copia central. Si faltan eventos, originales o claves, se registra la cobertura incompleta y se activa recuperación prioritaria: no se declara satisfecho el criterio sanitario. AL-DR-01 ensaya el retiro durante una pérdida regional con clientes y evidencias esperados, además del RTO general. Este presupuesto es un objetivo de diseño sujeto a prueba, no una medición ejecutada.
 
 ### 4.3.2.6 Procedimiento de retorno
 
-El retorno regional se realiza tras resincronizar las réplicas, conciliar las transacciones de la contingencia y transferir los eventos retenidos. En el retorno del WMS de Talca, VM-02 se reconstruye primero como réplica del escritor de contingencia; tras verificar la consistencia se detienen las nuevas confirmaciones, se registra la transferencia de autoridad de M2 y se excluye el escritor de contingencia antes de habilitar VM-02. El retorno no permite dos escritores ni reactiva automáticamente el anterior. La operación valida escrituras y consultas en la región primaria, cambia coordinadamente Route 53 y registra el tiempo real empleado. Cada ensayo semestral incluye el retorno.
+El retorno regional se realiza tras resincronizar las réplicas, conciliar las transacciones de la contingencia y transferir los eventos retenidos. En el retorno del WMS de Talca, VM-02 se reconstruye primero como réplica del escritor de contingencia. Tras verificar la consistencia se detienen las nuevas confirmaciones, se registra la transferencia de autoridad de M2 y se excluye el escritor de contingencia antes de habilitar VM-02. El retorno no permite dos escritores ni reactiva automáticamente el anterior. La operación valida escrituras y consultas en la región primaria, cambia coordinadamente Route 53 y registra el tiempo real empleado. Cada ensayo semestral incluye el retorno.
 
 Para devolver el WMS a Talca se reconstruye su clúster, se carga VM-02 desde Aurora y se invierte temporalmente el sentido de la replicación hasta igualar los datos. Se detienen las escrituras en nube, se verifica la igualdad, se habilita el escritor local y se reconectan los terminales al WMS del sitio. El corte de vuelta se realiza fuera de las ventanas protegidas.
 
 ### 4.3.2.7 Pruebas del plan de recuperación y respaldos
 
-Dos veces al año se ensaya la pérdida regional con escrituras de pedidos y sincronización en us-east-1; con la misma frecuencia se simula la pérdida de la sala de Talca y se levanta su WMS en Fargate sobre la copia en Aurora. Se miden RTO y RPO en cada ensayo y se exige el cumplimiento del 100 % de ambos objetivos. La restauración mensual de respaldos y la inyección de fallas se describen en la sección [4.2.4.6](LAFROX-Subdocumento4.md#sub:6-verificacion-de-la-continuidad).
+Dos veces al año se ensaya la pérdida regional con escrituras de pedidos y sincronización en us-east-1. Con la misma frecuencia se simula la pérdida de la sala de Talca y se levanta su WMS en Fargate sobre la copia en Aurora. Se miden RTO y RPO en cada ensayo y se exige el cumplimiento del 100 % de ambos objetivos. La restauración mensual de respaldos y la inyección de fallas se describen en la sección [4.2.4.6](LAFROX-Subdocumento4.md#sub:6-verificacion-de-la-continuidad).
 
 # Referencias
 
@@ -3460,45 +3460,45 @@ Las fuentes citadas en este documento se listan a continuación en formato APA 7
 
 # Declaración de uso de IA
 
-En cumplimiento de la sección 7.2 de las Aclaraciones de la licitación, la tabla siguiente declara herramienta, finalidad y nivel de uso de inteligencia artificial por sección, anexo y formulario del Subdocumento 4. La columna de revisión humana identifica a quien revisó efectivamente cada parte y lo que verificó; no atribuye revisiones no realizadas. La declaración se consolida en el Formulario A-6. La revisión del contenido no acredita por sí sola la ejecución de los ensayos de aceptación descritos en el capítulo.
+En cumplimiento de la sección 7.2 de las Aclaraciones de la licitación, la tabla siguiente declara herramienta, finalidad y nivel de uso de inteligencia artificial por sección, anexo y formulario del Subdocumento 4. La columna de revisión humana identifica a quien revisó efectivamente cada parte y lo que verificó. No atribuye revisiones no realizadas. La declaración se consolida en el Formulario A-6. La revisión del contenido no acredita por sí sola la ejecución de los ensayos de aceptación descritos en el capítulo.
 
 **Alcance de las finalidades declaradas**
 
 Las finalidades siguientes detallan el alcance de las filas correspondientes de la declaración, sin modificar sus niveles de uso ni atribuir revisiones humanas no realizadas.
 
-- **4.1.** Redacción y coherencia documental; navegación y sistema de diseño, preferencias, vista ligera e indicador de autoatención (4.1.3.1), parametrización y flujos (4.1.3.4), consulta de auditoría (4.1.3.7), alertas históricas (4.1.3.8), plantillas y baja comercial (4.1.6.2), simulación en QA (4.1.9) y conservación de evidencia de firma (4.1.17). También registro por canal, accesibilidad, bandeja de pendientes, búsqueda, listados, identidad y autenticación, compresión de telemetría, alertas y registros, rutas, preparación, retornos, exportaciones, consulta documental, preferencias y práctica en QA.
+- **4.1.** Redacción y coherencia documental, navegación y sistema de diseño, preferencias, vista ligera e indicador de autoatención (4.1.3.1), parametrización y flujos (4.1.3.4), consulta de auditoría (4.1.3.7), alertas históricas (4.1.3.8), plantillas y baja comercial (4.1.6.2), simulación en QA (4.1.9) y conservación de evidencia de firma (4.1.17). También registro por canal, accesibilidad, bandeja de pendientes, búsqueda, listados, identidad y autenticación, compresión de telemetría, alertas y registros, rutas, preparación, retornos, exportaciones, consulta documental, preferencias y práctica en QA.
 
-- **4.1.3.** Capas, navegación, accesibilidad, preferencias, identidad y flujos; ajuste y elaboración de diagramas.
+- **4.1.3.** Capas, navegación, accesibilidad, preferencias, identidad y flujos, ajuste y elaboración de diagramas.
 
 - **4.1.4.** Módulos, límites, responsabilidades y correspondencia con las cinco innovaciones del SD13.
 
-- **4.2.** Redacción y coherencia documental; muestras y ciclo de vida, reducción de cómputo no productivo, regresión de carga, exclusión y retorno del escritor, tratamiento de congelamientos y recuperación funcional e histórica. También aceptación de interfaces de terreno, integridad del almacenamiento, ventana de parches, etiquetado, comparación de cómputo, prioridad de tráfico, inventario de medios y márgenes de capacidad.
+- **4.2.** Redacción y coherencia documental, muestras y ciclo de vida, reducción de cómputo no productivo, regresión de carga, exclusión y retorno del escritor, tratamiento de congelamientos y recuperación funcional e histórica. También aceptación de interfaces de terreno, integridad del almacenamiento, ventana de parches, etiquetado, comparación de cómputo, prioridad de tráfico, inventario de medios y márgenes de capacidad.
 
-- **4.2.4.** Despliegue, exclusión y retorno del escritor; elaboración y ajuste del diagrama integral de red.
+- **4.2.4.** Despliegue, exclusión y retorno del escritor, elaboración y ajuste del diagrama integral de red.
 
-- **4.2.6.** Cálculos y márgenes de capacidad; carga incremental de SD13 y criterios de pruebas, sin atribuir mediciones no ejecutadas.
+- **4.2.6.** Cálculos y márgenes de capacidad, carga incremental de SD13 y criterios de pruebas, sin atribuir mediciones no ejecutadas.
 
-- **4.3.** Apoyo a la redacción y verificación de consistencia; acceso acompañado y registrado de terceros y contención térmica de los dos racks en 4.3.1.4. Comparación de costos de recuperación en 4.3.2.1.
+- **4.3.** Apoyo a la redacción y verificación de consistencia, acceso acompañado y registrado de terceros y contención térmica de los dos racks en 4.3.1.4. Comparación de costos de recuperación en 4.3.2.1.
 
 - **4.3.1.** Centro primario y Talca: acceso acompañado de terceros y contención térmica de dos racks.
 
 - **4.3.2.** Centro secundario, recuperación funcional e histórica y comparación de costos.
 
-- **4-B.** Gobierno de integración; guías por falla previsible y automatización progresiva.
+- **4-B.** Gobierno de integración, guías por falla previsible y automatización progresiva.
 
-- **4-H.** Interfaces externas y correspondencia de INT-11 con las reglas de comunicaciones comerciales y baja; datos de posición, velocidad y kilometraje de INT-15.
+- **4-H.** Interfaces externas y correspondencia de INT-11 con las reglas de comunicaciones comerciales y baja, datos de posición, velocidad y kilometraje de INT-15.
 
 - **4-N.** Correspondencia lógica. Integración de innovaciones del SD13 y límites de responsabilidad.
 
-- **4-O.** Especificación y trazabilidad; mantención de Kotlin frente a Flutter y PWA en ADR-07.
+- **4-O.** Especificación y trazabilidad, mantención de Kotlin frente a Flutter y PWA en ADR-07.
 
-- **4-P.** Especificación y trazabilidad; matriz de navegadores, versiones soportadas y actualización en la Tabla A.21; versiones de Android soportadas, firma e integridad del paquete.
+- **4-P.** Especificación y trazabilidad, matriz de navegadores, versiones soportadas y actualización en la Tabla A.21; versiones de Android soportadas, firma e integridad del paquete.
 
-- **4-R.** Especificación y trazabilidad; evaluación inicial y anual de madurez con OWASP SAMM; fecha de inicio y evidencia de cierre de vulnerabilidades.
+- **4-R.** Especificación y trazabilidad, evaluación inicial y anual de madurez con OWASP SAMM, fecha de inicio y evidencia de cierre de vulnerabilidades.
 
 - **4-W.** Apoyo a la redacción y verificación de consistencia de la memoria de cálculo. Método de cuantificación incremental y aceptación de las innovaciones del SD13.
 
-- **T-11.** Consolidación del inventario de componentes físicos y lógicos y cotejo con el Capítulo 4; controles de las ocho estaciones nuevas.
+- **T-11.** Consolidación del inventario de componentes físicos y lógicos y cotejo con el Capítulo 4, controles de las ocho estaciones nuevas.
 
 **Tabla 27 — Uso de IA en el Subdocumento 4**
 
@@ -3525,9 +3525,9 @@ Las finalidades siguientes detallan el alcance de las filas correspondientes de 
 | 4.1.4.4 | OpenAI Codex | Redacción y coherencia de módulo M3 Preventa. | Alto | Ninguno | Álvaro Catalán: revisión integral del contenido de la sección. |
 | 4.1.4.5 | OpenAI Codex | Redacción y coherencia de módulo M4 Rutas. | Alto | Ninguno | Álvaro Catalán: revisión integral del contenido de la sección. |
 | 4.1.4.6 | OpenAI Codex | Redacción y coherencia de módulo M7 Cobranza y rendición. | Alto | Ninguno | Álvaro Catalán: revisión integral del contenido de la sección. |
-| 4.1.4.7 | OpenAI Codex | Redacción y coherencia de módulo M10 Analítica. | Alto | Ninguno | Álvaro Catalán: revisión integral del contenido de la sección. |
+| 4.1.4.7 | OpenAI Codex | Redacción y coherencia de módulo M10 BI Gerencia. | Alto | Ninguno | Álvaro Catalán: revisión integral del contenido de la sección. |
 | 4.1.4.8 | OpenAI Codex | Redacción y coherencia de recepción, preparación, reparto y servicios asociados. | Alto | Ninguno | Álvaro Catalán: revisión integral del contenido de la sección. |
-| 4.1.5 | OpenAI Codex | Modelo conceptual, propietarios y eventos; elaboración de su figura. | Alto | Alto | Álvaro Catalán: revisión integral del contenido de la sección. |
+| 4.1.5 | OpenAI Codex | Modelo conceptual, propietarios y eventos, elaboración de su figura. | Alto | Alto | Álvaro Catalán: revisión integral del contenido de la sección. |
 | 4.1.6 | OpenAI Codex | Catálogo de interfaces, plantillas, comunicaciones comerciales y baja. | Alto | Ninguno | Álvaro Catalán: revisión integral del contenido de la sección. |
 | 4.1.6.1 | OpenAI Codex | Redacción y coherencia de integraciones internas. | Alto | Ninguno | Álvaro Catalán: revisión integral del contenido de la sección. |
 | 4.1.6.2 | OpenAI Codex | Redacción y coherencia de integraciones externas. | Alto | Ninguno | Álvaro Catalán: revisión integral del contenido de la sección. |
@@ -3542,7 +3542,7 @@ Las finalidades siguientes detallan el alcance de las filas correspondientes de 
 | 4.1.14 | OpenAI Codex | Correspondencia entre vistas lógicas y físicas. | Alto | Ninguno | Álvaro Catalán: revisión integral del contenido de la sección. |
 | 4.1.15 | OpenAI Codex | Disponibilidad funcional sin conexión. | Alto | Ninguno | Álvaro Catalán: revisión integral del contenido de la sección. |
 | 4.1.16 | OpenAI Codex | Reconciliación, prioridad, idempotencia y confirmación durable. | Alto | Ninguno | Álvaro Catalán: revisión integral del contenido de la sección. |
-| 4.1.17 | OpenAI Codex | Articulación POD, DTE y acuse; conservación de evidencia de firma. | Alto | Ninguno | Álvaro Catalán: revisión integral del contenido de la sección. |
+| 4.1.17 | OpenAI Codex | Articulación POD, DTE y acuse, conservación de evidencia de firma. | Alto | Ninguno | Álvaro Catalán: revisión integral del contenido de la sección. |
 | 4.1.17.1 | OpenAI Codex | Redacción y coherencia de secuencia y excepciones. | Alto | Ninguno | Álvaro Catalán: revisión integral del contenido de la sección. |
 | 4.1.17.2 | OpenAI Codex | Redacción y coherencia de control de liberación en la ventana crítica. | Alto | Ninguno | Álvaro Catalán: revisión integral del contenido de la sección. |
 | 4.1.18 | OpenAI Codex | Identidad y ciclo de vida de conductores externos. | Alto | Ninguno | Álvaro Catalán: revisión integral del contenido de la sección. |
