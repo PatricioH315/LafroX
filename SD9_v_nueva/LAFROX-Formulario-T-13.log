@@ -1,5 +1,4 @@
-This is LuaHBTeX, Version 1.25.7 (MiKTeX 26.5) (format=lualatex 2026.9.17)  11 OCT 2026 18:14
- system commands enabled.
+This is LuaHBTeX, Version 1.25.7 (MiKTeX 26.5) (format=lualatex 2026.9.17)  11 OCT 2026 21:15
 **LAFROX-Formulario-T-13.tex
 (./LAFROX-Formulario-T-13.tex
 LaTeX2e <2026-06-01>
@@ -1814,6 +1813,10 @@ ii
 (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/epstopdf-pkg/epstopdf-b
 ase.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+
+
+Package epstopdf Warning: Shell escape feature is not enabled.
+
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 85.
 
@@ -2141,7 +2144,7 @@ Here is how much of LuaTeX's memory you used:
    avail lists: 1:10,2:6704,3:1242,4:674,5:2912,6:495,7:15432,8:3,9:3853,10:20,1
 1:1475
  58346 multiletter control sequences out of 65536+600000
- 119 fonts using 46785035 bytes
+ 119 fonts using 46785187 bytes
  107i,18n,128p,1503b,3415s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/henri/AppData/Local/Programs/MiKTeX/fonts/opentype/adobe/sourceserif/S
 ourceSerif4-RegularIt.otf><C:/Users/henri/AppData/Local/Programs/MiKTeX/fonts/op

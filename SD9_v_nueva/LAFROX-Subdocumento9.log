@@ -1,5 +1,4 @@
-This is LuaHBTeX, Version 1.25.7 (MiKTeX 26.5) (format=lualatex 2026.9.17)  11 OCT 2026 18:13
- system commands enabled.
+This is LuaHBTeX, Version 1.25.7 (MiKTeX 26.5) (format=lualatex 2026.9.17)  11 OCT 2026 21:19
 **LAFROX-Subdocumento9.tex
 (./LAFROX-Subdocumento9.tex
 LaTeX2e <2026-06-01>
@@ -1814,6 +1813,10 @@ ii
 (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/epstopdf-pkg/epstopdf-b
 ase.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+
+
+Package epstopdf Warning: Shell escape feature is not enabled.
+
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 85.
 
@@ -2347,8 +2350,13 @@ Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 390.
 LaTeX Info: Redefining \. on input line 390.
 LaTeX Info: Redefining \% on input line 390.
  [34]
-Underfull \hbox (badness 1648) in paragraph at lines 407--407
+Underfull \hbox (badness 1742) in paragraph at lines 407--407
 []|\TU/SourceSerif4(0)/m/n/9.5 9.2 
+ []
+
+
+Underfull \hbox (badness 1454) in paragraph at lines 407--407
+\TU/SourceSerif4(0)/m/n/9.5 y Gui-ller-mo 
  []
 
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
@@ -2358,14 +2366,31 @@ Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 407.
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
 LaTeX Info: Redefining \. on input line 407.
 LaTeX Info: Redefining \% on input line 407.
-[35])
+[35]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 407.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 407.
+LaTeX Info: Redefining \% on input line 407.
+ [36]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 407.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 407.
+LaTeX Info: Redefining \% on input line 407.
+ [37])
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
 Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 20.
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
 LaTeX Info: Redefining \. on input line 20.
 LaTeX Info: Redefining \% on input line 20.
- [36] 
+ [38]
+
 enddocument/afterlastpage (AED): lastpage setting LastPage.
 (./LAFROX-Subdocumento9.aux
 LaTeX Info: Redefining \. on input line 9.
@@ -2378,31 +2403,32 @@ L3 programming layer <2026-07-20>
 )
 
 Here is how much of LuaTeX's memory you used:
- 37477 strings out of 475695
+ 37532 strings out of 475695
  156272,1977958 words of node,token memory allocated
  1021 words of node memory still in use:
    8 hlist, 2 vlist, 2 rule, 1 local_par, 6 glue, 5 kern, 1 penalty, 1 margin_ke
 rn, 4 glyph, 66 attribute, 79 glue_spec, 34 attribute_list, 2 write, 23 pdf_acti
 on nodes
-   avail lists: 1:4,2:2858,3:768,4:314,5:2331,6:163,7:11424,8:2,9:1473,10:28,11:
-1293
- 58475 multiletter control sequences out of 65536+600000
- 119 fonts using 46785675 bytes
- 107i,18n,128p,1501b,2770s stack positions out of 10000i,1000n,20000p,200000b,200000s
+   avail lists: 1:4,2:2858,3:768,4:314,5:2447,6:163,7:13523,8:2,9:1692,10:28,11:
+1622
+ 58480 multiletter control sequences out of 65536+600000
+ 119 fonts using 46785979 bytes
+ 107i,18n,128p,1501b,3523s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/henri/AppData/Local/Programs/MiKTeX/fonts/opentype/adobe/sourceserif/S
-ourceSerif4-RegularIt.otf><C:/Users/henri/AppData/Local/Programs/MiKTeX/fonts/op
-entype/public/stix2-otf/STIXTwoMath-Regular.otf><C:/Users/henri/AppData/Local/Pr
-ograms/MiKTeX/fonts/opentype/adobe/sourceserif/SourceSerif4-Semibold.otf><C:/Use
-rs/henri/AppData/Local/Programs/MiKTeX/fonts/opentype/adobe/sourceserif/SourceSe
-rif4-Regular.otf><C:/Users/henri/AppData/Local/Programs/MiKTeX/fonts/opentype/ib
-m/plex/IBMPlexMono-Regular.otf><C:/Users/henri/AppData/Local/Programs/MiKTeX/fon
-ts/opentype/adobe/sourcesans/SourceSans3-Regular.otf><c:/users/henri/appdata/loc
-al/programs/miktex/fonts/opentype/adobe/sourcesans/sourcesans3-medium.otf><C:/Us
-ers/henri/AppData/Local/Programs/MiKTeX/fonts/opentype/adobe/sourcesans/SourceSa
-ns3-Semibold.otf>
-Output written on LAFROX-Subdocumento9.pdf (36 pages, 641575 bytes).
+ourceSerif4-Regular.otf><C:/Users/henri/AppData/Local/Programs/MiKTeX/fonts/open
+type/adobe/sourceserif/SourceSerif4-RegularIt.otf><C:/Users/henri/AppData/Local/
+Programs/MiKTeX/fonts/opentype/public/stix2-otf/STIXTwoMath-Regular.otf><C:/User
+s/henri/AppData/Local/Programs/MiKTeX/fonts/opentype/adobe/sourceserif/SourceSer
+if4-Semibold.otf><C:/Users/henri/AppData/Local/Programs/MiKTeX/fonts/opentype/ad
+obe/sourceserif/SourceSerif4-Regular.otf><C:/Users/henri/AppData/Local/Programs/
+MiKTeX/fonts/opentype/ibm/plex/IBMPlexMono-Regular.otf><C:/Users/henri/AppData/L
+ocal/Programs/MiKTeX/fonts/opentype/adobe/sourcesans/SourceSans3-Regular.otf><c:
+/users/henri/appdata/local/programs/miktex/fonts/opentype/adobe/sourcesans/sourc
+esans3-medium.otf><C:/Users/henri/AppData/Local/Programs/MiKTeX/fonts/opentype/a
+dobe/sourcesans/SourceSans3-Semibold.otf>
+Output written on LAFROX-Subdocumento9.pdf (38 pages, 648910 bytes).
 
-PDF statistics: 660 PDF objects out of 1000 (max. 8388607)
- 83 named destinations out of 1000 (max. 1048576)
+PDF statistics: 675 PDF objects out of 1000 (max. 8388607)
+ 85 named destinations out of 1000 (max. 1048576)
  208 words of extra memory for PDF output out of 10000 (max. 100000000)
 

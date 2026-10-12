@@ -1,5 +1,4 @@
-This is LuaHBTeX, Version 1.25.7 (MiKTeX 26.5) (format=lualatex 2026.9.17)  11 OCT 2026 18:14
- system commands enabled.
+This is LuaHBTeX, Version 1.25.7 (MiKTeX 26.5) (format=lualatex 2026.9.17)  11 OCT 2026 21:16
 **LAFROX-Formulario-T-17.tex
 (./LAFROX-Formulario-T-17.tex
 LaTeX2e <2026-06-01>
@@ -1814,6 +1813,10 @@ ii
 (C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/latex/epstopdf-pkg/epstopdf-b
 ase.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+
+
+Package epstopdf Warning: Shell escape feature is not enabled.
+
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 85.
 
@@ -2055,7 +2058,7 @@ rn, 4 glyph, 18 attribute, 79 glue_spec, 10 attribute_list, 2 write nodes
    avail lists: 1:5,2:3543,3:769,4:343,5:2016,6:213,7:12129,8:56,9:1996,10:23,11
 :1350
  58305 multiletter control sequences out of 65536+600000
- 117 fonts using 46312455 bytes
+ 117 fonts using 46312531 bytes
  107i,18n,128p,1503b,2770s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/henri/AppData/Local/Programs/MiKTeX/fonts/opentype/adobe/sourceserif/S
 ourceSerif4-RegularIt.otf><C:/Users/henri/AppData/Local/Programs/MiKTeX/fonts/op
