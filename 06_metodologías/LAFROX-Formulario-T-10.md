@@ -1,6 +1,6 @@
 # Formulario T-10 — Metodología para el desarrollo de software
 
-**Licitación:** TFEP-01/2026 — Caso 02: Logística
+**Licitación:** TFEP-01/2026 — Caso — Logística
 
 **Proponente:** LafroX SpA
 
