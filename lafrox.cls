@@ -684,13 +684,14 @@
 %  \newenvironment partido entre codigo de apertura y de cierre.
 %
 %  #1 caption   #2 label   #3 columnas (al menos una Y)   #4 fila de cabecera
+%  #5 caption opcional de la lista (por defecto, #1)
 %
 %  \begin{tablalafrox}{Reparto de alcance}{tab:etapas}{L{2.2cm} Y G{0.22}}
 %    {\cab{Etapa} & \cab{Alcance} & \cab{Produccion}}
 %    Etapa 1 & ... & ... \\
 %  \end{tablalafrox}
 % ---------------------------------------------------------------------------
-\NewDocumentEnvironment{tablalafrox}{m m m m +b}{%
+\NewDocumentEnvironment{tablalafrox}{m m m m O{} +b}{%
   \par
   \LFXfiletear{#5}%
   \LFXcuerpotabla
@@ -699,7 +700,7 @@
   % macro: longtable necesita ver las filas en la entrada para cortar pagina.
   \LFXconcuerpo{%
   \begin{xltabular}{\textwidth}{#3}
-    \caption{#1}\label{#2}\\[2pt]
+    \caption[\IfBlankTF{#5}{#1}{#5}]{#1}\label{#2}\\[2pt]
     \LFXtopruleoriginal #4 \\ \midrule
     \endfirsthead
     % Los rotulos van en una caja de ancho cero: si midieran su texto real,
@@ -719,8 +720,8 @@
 }{}
 
 % Alias retrocompatible
-\NewDocumentEnvironment{tablalarga}{m m m m +b}
-  {\begin{tablalafrox}{#1}{#2}{#3}{#4}#5\end{tablalafrox}}{}
+\NewDocumentEnvironment{tablalarga}{m m m m O{} +b}
+  {\begin{tablalafrox}{#1}{#2}{#3}{#4}[#5]#6\end{tablalafrox}}{}
 
 % Referencia a planilla externa -- convencion NN_subdocumento/entrega_N/tablas/
 %   \tablaref{7}{Volumetria de despacho}{04_arquitectura/entrega_2/tablas/Dim.xlsx!Despacho}
