@@ -513,6 +513,7 @@ cumplimiento, seguros y
 certificados laborales
 vigentes durante el contrato
 Figura 7.3 Fase 1 — Inicio, segunda parte: cuentas 1.6 a 1.9, desde riesgos hasta cumplimiento contractual.
+Fuente: Elaboración a partir de LafroX (2026d, T-14).
 Estas cuentas completan Inicio: identifican los riesgos y la reversibilidad, establecen el
 gobierno y control del proyecto y cierran con el cumplimiento normativo y contractual.
 7.1.2.2 Fase 2. Elaboración
@@ -585,6 +586,7 @@ Concepción y de las
 plataformas de cross-
 docking
 Figura 7.4 Fase 2 — Elaboración, primera parte: arquitectura, seguridad y sala técnica, cuentas 2.1 a 2.3.
+Fuente: Elaboración a partir de LafroX (2026d, T-14).
 La continuación cubre la validación de diseños, continuidad del negocio y experiencia
 de usuario (cuentas 2.4 a 2.6), incluidos los procedimientos manuales y la recuperación ante
 desastres.
@@ -638,6 +640,7 @@ comprometidos por
 transacción crítica
 Figura 7.5 Fase 2 — Elaboración, segunda parte: validación, continuidad y experiencia de usuario, cuentas 2.4 a
 2.6.
+Fuente: Elaboración a partir de LafroX (2026d, T-14).
 Con estas cuentas, los diseños quedan sometidos a validación y se completan los planes de
 continuidad y experiencia de usuario que orientan la fase de Construcción.
 7.1.2.3 Fase 3. Construcción
@@ -723,6 +726,7 @@ conexión: 14 horas en
 terreno y 24 horas en el CD
 Figura 7.6 Fase 3 — Construcción, primera parte: ambientes, servicios de nube y base compartida, cuentas 3.1 a
 3.3.
+Fuente: Elaboración a partir de LafroX (2026d, T-14).
 La segunda lámina desglosa los módulos de la Etapa 1 (cuenta 3.4), con los componentes
 de recepción, inventario, preparación de pedidos, cadena de frío, aplicaciones y operación de
 tiendas.
@@ -750,6 +754,7 @@ Preparación)
 3.4.10 Cobro en ruta, rendición y conciliación (M7 Cobranza y rendición)
 3.4.11 Indicadores operacionales y OTIF diario (M10 Analítica)
 Figura 7.7 Fase 3 — Construcción, segunda parte: módulos de la Etapa 1, cuenta 3.4.
+Fuente: Elaboración a partir de LafroX (2026d, T-14).
 La tercera lámina presenta los módulos de la Etapa 2, las integraciones externas, la mi-
 gración y las pruebas de la Etapa 1 (cuentas 3.5 a 3.8). La integración con el ERP conserva su
 función de emisor único de la guía de despacho.
@@ -843,6 +848,7 @@ del despliegue sin interrupción de la
 Etapa 1
 Figura 7.8 Fase 3 — Construcción, tercera parte: módulos de la Etapa 2, integraciones, migración y pruebas de la
 Etapa 1, cuentas 3.5 a 3.8.
+Fuente: Elaboración a partir de LafroX (2026d, T-14).
 La cuarta lámina reúne las pruebas de la Etapa 2, las innovaciones y la documentación
 técnica (cuentas 3.9 a 3.11).
 LafroX SpA
@@ -902,6 +908,7 @@ repositorio del CLIENTE en cada
 liberación
 Figura 7.9 Fase 3 — Construcción, cuarta parte: pruebas de la Etapa 2, innovaciones y documentación técnica,
 cuentas 3.9 a 3.11.
+Fuente: Elaboración a partir de LafroX (2026d, T-14).
 La quinta lámina amplía la cuenta 3.10 para que se lean sus paquetes de innovación: segui-
 miento de vencimientos, reproducción de incidentes, vida útil remanente y hoja de negocio
 del almacenero.
@@ -995,6 +1002,7 @@ blanca y en producción
 parte)
 Figura 7.10 Fase 3 — Construcción, quinta parte: detalle de los paquetes de las innovaciones agrupadas en la
 cuenta 3.10.
+Fuente: Elaboración a partir de LafroX (2026d, T-14).
 El detalle identifica los paquetes de INN-01, INN-02, INN-03 e INN-05 dentro de 3.10. INN-04
 conserva su tratamiento distinto: su fórmula contractual se acuerda en la cuenta 5.4, como
 muestra la fase de Adquisiciones y contrataciones.
@@ -1065,6 +1073,7 @@ constituida, condición
 de la aceptación final
 (H12)
 Figura 7.11 Fase 4 — Transición: plan de implantación y marchas blancas de las etapas 1 y 2, cuentas 4.1 a 4.3.
+Fuente: Elaboración a partir de LafroX (2026d, T-14).
 La cuenta 4.1 prepara las olas y la reversión; las cuentas 4.2 y 4.3 separan la marcha blanca
 y producción de cada etapa, asociadas a los hitos H7 y H12.
 7.1.2.5 Fase 5. Adquisiciones y contrataciones
@@ -1146,6 +1155,7 @@ con un tercero
 independiente
 Figura 7.12 Fase 5 — Adquisiciones y contrataciones: hardware, servicios, enlaces y acuerdos con terceros,
 cuentas 5.1 a 5.4.
+Fuente: Elaboración a partir de LafroX (2026d, T-14).
 La cuenta 5.1 reúne las adquisiciones de hardware, manteniendo la distinción anterior:
 el CLIENTE compra el equipamiento de terreno y LafroX compra y provee la infraestructura
 de sala, incluida en su Oferta Económica. Las cuentas 5.2 a 5.4 organizan nube y licencias,
@@ -1225,6 +1235,7 @@ borde montados en
 Curicó, Chillán y Los
 Ángeles
 Figura 7.13 Fase 6 — Infraestructura física y sitios, primera parte: sala técnica, cableado y racks, cuentas 6.1 a 6.3.
+Fuente: Elaboración a partir de LafroX (2026d, T-14).
 La segunda lámina incluye seguridad física, equipamiento de campo y configuración de la
 infraestructura distribuida en los sitios (cuentas 6.4 a 6.6), incluidos los termógrafos de los
 camiones con frío y la prueba de autonomía de 24 horas.
@@ -1293,6 +1304,7 @@ prueba de autonomía
 de 24 horas aprobada
 Figura 7.14 Fase 6 — Infraestructura física y sitios, segunda parte: seguridad física, equipamiento de campo y
 configuración, cuentas 6.4 a 6.6.
+Fuente: Elaboración a partir de LafroX (2026d, T-14).
 Con seguridad física, equipamiento de campo y configuración de los sitios, estas cuentas
 completan la infraestructura distribuida que habilita la operación en terreno.
 7.1.2.7 Fase 7. Capacitación y gestión del cambio
@@ -1360,6 +1372,7 @@ Comercial y Finanzas en
 costo de servir (Etapa 2)
 Figura 7.15 Fase 7 — Capacitación y gestión del cambio: capacitación por roles, acompañamiento y
 certificaciones, cuentas 7.1 a 7.3.
+Fuente: Elaboración a partir de LafroX (2026d, T-14).
 La lámina muestra que la adopción combina formación por perfil, acompañamiento del
 personal y certificaciones antes de los cierres de marcha blanca.
 7.1.2.8 Fase 8. Operación y soporte
@@ -1423,6 +1436,7 @@ los 36 meses de operación: reposición y
 disposición final
 Figura 7.16 Fase 8 — Operación y soporte, primera parte: servicios de operación y mantenimiento, cuentas 8.1 y
 8.2.
+Fuente: Elaboración a partir de LafroX (2026d, T-14).
 La primera parte concentra la continuidad del servicio y el mantenimiento del software,
 la infraestructura y la ciberseguridad. Sus paquetes conservan las frecuencias, horarios y
 ventanas que condicionan la operación durante los 36 meses.
@@ -1494,6 +1508,7 @@ operación, con métricas de
 uso
 Figura 7.17 Fase 8 — Operación y soporte, segunda parte: innovaciones, obligaciones periódicas, capacitación y
 transferencia, cuentas 8.3 a 8.5.
+Fuente: Elaboración a partir de LafroX (2026d, T-14).
 Estas cuentas completan la operación con la continuidad de las innovaciones, los informes
 recurrentes y la transferencia de conocimiento. La mentoría al equipo técnico del CLIENTE
 se extiende durante los seis meses posteriores al mes 21, mientras que el tramo variable de
@@ -1535,6 +1550,7 @@ devolución o
 eliminación de datos
 personales
 Figura 7.18 Fase 9 — Cierre: cierre de implementación y salida al término del contrato, cuentas 9.1 y 9.2.
+Fuente: Elaboración a partir de LafroX (2026d, T-14).
 La EDT distingue así el cierre de implementación del mes 21 de la salida al término del
 contrato, que incluye la ejecución del Plan de Reversibilidad y el tratamiento final de los datos.
 7.1.3 Cobertura del alcance
