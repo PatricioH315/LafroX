@@ -499,12 +499,40 @@
 %      \renewcommand{\LFXfolio}{Folio}
 \newcommand{\LFXfolio}{}
 
+% Firma reutilizada de LafroX-Subdoc1-LateX, sin modificar su imagen.
+\newcommand{\LFXfirmaimagen}{FIRMA_Alex_Aravena_transparente.png}
+\newcommand{\LFXpiefirma}{%
+  \begin{tabular}[b]{@{}r@{}}
+    {\rlap{\makebox[3.4cm][c]{\raisebox{-2pt}[0pt][0pt]{\includegraphics[height=18pt]{\LFXfirmaimagen}}}}%
+     \color{lafroxGris}\rule{3.4cm}{0.4pt}}\\[-1pt]
+    {\LFXchico Media firma: \LFXrepresentante}\\
+    {\intermedium\fontsize{9pt}{11pt}\selectfont\color{lafroxTinta}\LFXfoliotexto}
+  \end{tabular}}
+\newcommand{\LFXpiesolofolio}{%
+  {\intermedium\fontsize{9pt}{11pt}\selectfont\color{lafroxTinta}\LFXfoliotexto}}
+\newif\ifLFXrotada \LFXrotadafalse
+% Activar después del clearpage de apertura y desactivar después del de cierre.
+\let\LFXlandscapeoriginal\landscape
+\renewcommand{\landscape}{\LFXlandscapeoriginal\global\LFXrotadatrue}
+\let\LFXendlandscapeoriginal\endlandscape
+\renewcommand{\endlandscape}{\LFXendlandscapeoriginal\global\LFXrotadafalse}
 \newcommand{\LFXpiederecho}{%
-  \begingroup\LFXpiebase
-  {\intermedium\fontsize{9pt}{11pt}\selectfont\color{lafroxTinta}%
-    \LFXfoliotexto}%
-  \endgroup
-}
+  \ifLFXrotada\else
+    \begingroup\LFXpiebase
+    \ifLFX@firma\LFXpiefirma\else\LFXpiesolofolio\fi
+    \endgroup
+  \fi}
+% Las páginas /Rotate 90 mantienen firma y folio en el extremo inferior
+% derecho de la hoja que ve el lector, fuera de la tabla horizontal.
+\AddToHook{shipout/foreground}{%
+  \ifLFXrotada
+    \put(0,0){\begin{tikzpicture}[overlay]
+      \node[anchor=south east,rotate=90,inner sep=0pt]
+        at (\dimexpr\pagewidth-14mm\relax,-20mm)
+        {\begingroup\LFXpiebase
+         \ifLFX@firma\LFXpiefirma\else\LFXpiesolofolio\fi\endgroup};
+    \end{tikzpicture}}%
+  \fi}
 
 %  El espacio va DENTRO del condicional: con el rotulo vacio, un
 %  "\LFXfolio\ \thepage" dejaria el numero corrido un espacio a la derecha y
@@ -535,18 +563,18 @@
 \newcommand{\LFXcunaIzq}{8mm}   % alto de la cuna en el borde izquierdo
 \newcommand{\LFXcunaDer}{4mm}   % alto de la cuna en el borde derecho
 \newcommand{\LFXcunaFilo}{1.2mm}% grosor del filo naranja
+% Coordenadas locales: la franja se adapta al papel vigente sin posiciones
+% recordadas de PGF (las figuras alternan carta y oficio horizontal).
 \AddToHook{shipout/background}{%
   \ifLFXfranja
-  \put(0,0){\begin{tikzpicture}[remember picture,overlay]
+  \put(0,-\pageheight){\begin{tikzpicture}[overlay]
     \fill[lafroxBanda]
-      (current page.south west) -- (current page.south east) --
-      ([yshift=\LFXcunaDer]current page.south east) --
-      ([yshift=\LFXcunaIzq]current page.south west) -- cycle;
+      (0,0) -- (\pagewidth,0) --
+      (\pagewidth,\LFXcunaDer) -- (0,\LFXcunaIzq) -- cycle;
     \fill[lafroxNaranja]
-      ([yshift=\LFXcunaIzq]current page.south west) --
-      ([yshift=\LFXcunaDer]current page.south east) --
-      ([yshift=\LFXcunaDer+\LFXcunaFilo]current page.south east) --
-      ([yshift=\LFXcunaIzq+\LFXcunaFilo]current page.south west) -- cycle;
+      (0,\LFXcunaIzq) -- (\pagewidth,\LFXcunaDer) --
+      (\pagewidth,\dimexpr\LFXcunaDer+\LFXcunaFilo\relax) --
+      (0,\dimexpr\LFXcunaIzq+\LFXcunaFilo\relax) -- cycle;
   \end{tikzpicture}}%
   \fi}
 
@@ -554,7 +582,10 @@
   \fancyhf{}
   \fancyhead[L]{\LFXisotipoencabezado{\LFXchico\LFXempresa}}
   \fancyhead[R]{{\LFXchico\nouppercase{\leftmark}}}
-  \fancyfoot[L]{\global\LFXfranjatrue\LFXpieizquierdo}
+  \fancyfoot[L]{\global\LFXfranjatrue
+    \ifdim\pagewidth>\pageheight
+      \raisebox{7pt}{\LFXpieizquierdo}%
+    \else\LFXpieizquierdo\fi}
   \fancyfoot[R]{\LFXpiederecho}
   \renewcommand{\headrulewidth}{0pt}
   \renewcommand{\headrule}{%
@@ -568,7 +599,10 @@
 %  apertura quedaria con una linea suelta sobre el titulo.
 \fancypagestyle{plain}{%
   \fancyhf{}
-  \fancyfoot[L]{\global\LFXfranjatrue\LFXpieizquierdo}
+  \fancyfoot[L]{\global\LFXfranjatrue
+    \ifdim\pagewidth>\pageheight
+      \raisebox{7pt}{\LFXpieizquierdo}%
+    \else\LFXpieizquierdo\fi}
   \fancyfoot[R]{\LFXpiederecho}
   \renewcommand{\headrulewidth}{0pt}
   \renewcommand{\headrule}{}
@@ -597,7 +631,7 @@
 %  no debe depender de la geometria del arte.
 \fancypagestyle{lfxportada}{%
   \fancyhf{}
-  \fancyfoot[R]{\global\LFXfranjafalse\LFXpiefolioen{lafroxTinta}}
+  \fancyfoot[R]{\global\LFXfranjafalse\LFXpiederecho}
   \renewcommand{\headrulewidth}{0pt}
   \renewcommand{\headrule}{}
 }
@@ -605,7 +639,7 @@
 % Contraportada: mismo pie desnudo, pero en tinta -- ahi el fondo es claro.
 \fancypagestyle{lfxcierre}{%
   \fancyhf{}
-  \fancyfoot[R]{\global\LFXfranjafalse\LFXpiefolioen{lafroxTinta}}
+  \fancyfoot[R]{\global\LFXfranjafalse\LFXpiederecho}
   \renewcommand{\headrulewidth}{0pt}
   \renewcommand{\headrule}{}
 }

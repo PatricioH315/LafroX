@@ -1,16 +1,10 @@
-\begin{tablalafrox}{Mapeo semántico y validación de migración}{tab:sd5-a25}
-{Y F{0.223} F{0.223} F{0.218} F{0.114}}
-{\cab{Origen semántico / alcance} & \cab{Destino y clave} & \cab{Transformación versionada} & \cab{Rechazo / conciliación} & \cab{Responsable}}
-ERP: clientes/proveedores/productos/unidades/sitios completos; RUT, código, GTIN & mae\_cliente, mae\_proveedor, mae\_producto, mae\_unidad, mae\_sitio; UUID interno y equivalencia de código & Normalizar códigos/RUT/GTIN sin cambiar identidad; equivalencias aprobadas & Duplicado ambiguo o código ausente a staging; recuento y claves completas & Leandro Chamorro + maestros CLIENTE \\
-ERP: ventas/pedidos tres años; pedido/línea, fecha, cantidad, precio, moneda, cliente & prv\_pedido/pedido\_linea, tarifa y promesa si existe compromiso comprobado; clave origen+pedido+línea & UTC según zona de origen, unidades homologadas, decimal exacto; no fabricar promesa histórica & Claves/importe por mes y moneda; promesa no disponible declarada y consultable & Datos + Comercial/Finanzas CLIENTE \\
-WMS/ERP: recepción y trace hasta cinco años disponibles; producto/lote/GTIN, cantidad, unidad, fecha, documento & inv\_recepcion/linea, inv\_lote, cal\_evento\_custodia/objeto solo con hecho comprobado & Preservar ordinal externo cuando existe y equivalencias aprobadas; conservar originales & Lote/fecha/actor ausentes no se inventan; cobertura, claves y cantidades conciliadas & Datos + Calidad/bodega CLIENTE \\
-WMS/conteos: inventario dos años; sitio/ubicación/producto/lote/unidad/saldo & inv\_saldo, inv\_movimiento y conteo según hecho de origen; clave de saldo completa & Conversión de unidad versionada y saldo original; ajuste solo con aprobación & Ubicación desconocida aislada; totales por grano, conteo físico y desviación CLP \ensuremath{\leq}0,3 \% & Datos + bodega/Finanzas CLIENTE \\
-ERP: toda cartera viva + dos años; cliente/documento/vencimiento/saldo y pagos & doc\_documento, cob\_saldo\_documento, cob\_saldo y cob\_cobro según evidencia; clave externa de documento/pago & Preservar deuda anterior, moneda y relación fiscal; no convertir timeout en pago & Saldos por cliente/documento, identidad y sumas; deuda ausente impide corte & Datos + Finanzas CLIENTE \\
-ERP/archivos: copias fiscales/POD y conjuntos no migrados & doc\_documento, doc\_pod, obj\_objeto o archivo de consulta; tipo/emisor/folio/versión, hash & Original inmutable, sin reemisión; referencias y permisos según clase & Hash/conteo/consulta de originales y retención comprobables & Datos + Finanzas/Calidad CLIENTE \\
-ERP/WMS: ficha, proveedor, dimensiones, peso, unidad, SKU/GTIN y clasificación & mae\_producto, mae\_proveedor, mae\_equivalencia\_producto; clave origen versionada & Homologar cm/kg/unidad; volumen derivado y peso bruto comprobado & Completitud RF-01.10 y unicidad; faltante bloquea ficha & Comercial/Calidad/Datos \\
-WMS/configuración de sitio: zonas, pasillo/rack/nivel/posición, capacidad y SSCC & mae\_zona, mae\_ubicacion, inv\_unidad\_logistica.ubicacion\_id & Validar sitio/zona y coordenada; configuración ausente se levanta/aprueba antes del piloto & Posiciones/ocupación y SSCC por ubicación; sin inventar historia & Bodega/Datos \\
-ERP: cupos, vencimientos, deuda/documento, ejecutivos y gestiones disponibles & mae\_cliente.limite\_credito, doc\_documento, cob\_saldo\_documento, cob\_cartera\_asignacion, cob\_gestion & Misma identidad cliente/factura; deuda viva anterior y fecha real & Sumas por cliente/documento/tramo contra ERP & Finanzas/Datos \\
-ERP y merma/devolución: costo contable, cantidad, unidad y cliente & inv\_merma y hech\_actividad\_costo & Conservar fecha/versión de costo y origen único; NULL si no valorizado & Cantidades/importes sin duplicación devolución/merma & Finanzas/Calidad \\
-Histórico disponible de avisos/acuse/error de canales autorizados & not\_aviso, not\_intento y not\_evento, identidad externa/cuenta/intento & Conservar evidencia real, sin apertura observable usar NO\_INFORMADA o NO\_SOPORTADA, fecha NULL y NO\_OBSERVADA & Deduplicar por emisor/evento, no inventar lectura, entrega ni fecha, aceptar solo evidencia correlacionable & TI/Datos/CLIENTE \\
+\begin{tablalafrox}{Duración calculada por fase y ola inicial}{tab:sd5-a25}
+{Y F{0.166} F{0.246} F{0.151} F{0.123}}
+{\cab{Ola / fuente GB} & \cab{Extracción / transferencia min} & \cab{Transformación / carga / índices min} & \cab{Delta / conciliación min} & \cab{Total min}}
+1 Maestros / 0.03418 & 10 / 10 & 10 / 10 / 10 & 10 / 20 & 80 \\
+2 Ventas / 10.47600 & 45 / 30 & 40 / 60 / 35 & 30 / 45 & 285 \\
+3 Recepciones / 1.38000 & 10 / 10 & 10 / 10 / 10 & 10 / 20 & 80 \\
+4 Inventario / 3.34860 & 15 / 10 & 13 / 20 / 12 & 10 / 20 & 100 \\
+5 Cartera base / 0.81600 & 10 / 10 & 10 / 10 / 10 & 10 / 20 & 80 \\
 \end{tablalafrox}
-\fuentetabla{RT-05.11–15, alcance S3/S4 y esquema lógico de S5.}
+\fuentetabla{volúmenes de S4 y fórmula de planificación de LafroX, sin medición ejecutada.}

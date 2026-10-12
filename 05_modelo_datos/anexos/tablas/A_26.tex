@@ -1,10 +1,11 @@
-\begin{tablalafrox}{Duración calculada por fase y ola inicial}{tab:sd5-a26}
-{Y F{0.166} F{0.246} F{0.151} F{0.123}}
-{\cab{Ola / fuente GB} & \cab{Extracción / transferencia min} & \cab{Transformación / carga / índices min} & \cab{Delta / conciliación min} & \cab{Total min}}
-1 Maestros / 0.03418 & 10 / 10 & 10 / 10 / 10 & 10 / 20 & 80 \\
-2 Ventas / 10.47600 & 45 / 30 & 40 / 60 / 35 & 30 / 45 & 285 \\
-3 Recepciones / 1.38000 & 10 / 10 & 10 / 10 / 10 & 10 / 20 & 80 \\
-4 Inventario / 3.34860 & 15 / 10 & 13 / 20 / 12 & 10 / 20 & 100 \\
-5 Cartera base / 0.81600 & 10 / 10 & 10 / 10 / 10 & 10 / 20 & 80 \\
+\begin{tablalafrox}{Ventana final, decisión y reserva de rollback}{tab:sd5-a26}
+{F{0.171} F{0.124} Y F{0.221}}
+{\cab{Hito} & \cab{Horario relativo propuesto} & \cab{Control} & \cab{Responsable}}
+Punto de control y frontera & 22:00–22:15 & Snapshot/marcas de agua, suspender nuevas escrituras en perímetro & Datos + responsable operativo CLIENTE \\
+Delta final & 22:15–22:45 & Drenar, aplicar y deduplicar bajo autoridad vigente & Leandro Chamorro \\
+Conciliación completa & 22:45–23:30 & Claves, cantidades/importes, cobertura, cero diferencias no explicadas & Bodega/Calidad/Finanzas CLIENTE \\
+Validación y go/no-go & 23:30–00:00 & Prueba operativa y aprobación segregada, no-go al exceder & Responsable CLIENTE + datos \\
+Cambio y observación, si go & 00:00–00:30 & Un escritor, ERP emisor único & Operación + datos \\
+Reserva rollback & 00:30–01:30 & Restaurar punto de control, conciliar delta, devolver autoridad previa del sitio & Datos + operación CLIENTE \\
 \end{tablalafrox}
-\fuentetabla{volúmenes de S4 y fórmula de planificación de LafroX; sin medición ejecutada.}
+\fuentetabla{Caso 02 (Distribuidora Puelche S.A., 2026d, secs. 13.2–13.3, pp. 22–23) y S3/S4; ventana relativa sujeta al inicio contractual.}

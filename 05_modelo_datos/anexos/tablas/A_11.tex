@@ -1,25 +1,25 @@
 \begin{tablalafrox}{Módulo, almacén lógico y motor por dominio}{tab:sd5-a11}
 {F{0.141} F{0.173} F{0.222} F{0.163} Y}
 {\cab{Dominio} & \cab{Módulo y almacén lógico} & \cab{Motor que lo sostiene} & \cab{Participantes y ubicación} & \cab{Naturaleza de la referencia}}
-Maestros y configuración & \texttt{BD\_\allowbreak{}MAESTROS\_\allowbreak{}CONF} & PostgreSQL 16 con Aurora central como distribución y copia local de lectura & Autoridad en Maestro; copias de solo lectura en cada sitio & Réplica por publicación de eventos, sin escritura local \\
-Actores, roles y permisos & \texttt{BD\_\allowbreak{}GOBIERNO\_\allowbreak{}ACCESO} e identidad federada de S4 & PostgreSQL 16 y Keycloak como proveedor de identidad & Central & El token se valida contra el emisor; no se almacenan contraseñas \\
-Recepción, lote, saldo y unidad logística & BD\_INVENTARIO & PostgreSQL 16/PostGIS por sitio; Aurora copia/consolidado & Cada sitio confirma en su perímetro & DMS solo Talca lector; consolidación por eventos \\
-Trazabilidad, custodia y calidad & \texttt{BD\_\allowbreak{}CALIDAD\_\allowbreak{}TRAZABILIDAD} & PostgreSQL 16 local y DynamoDB para ingesta de eventos & Central Aurora para el expediente consolidado & El evento local es el que prueba; el central consolida \\
-Preventa, tarifa y promesa & BD\_PREVENTA & Aurora PostgreSQL central & M3, dueño del pedido en los tres canales & Pedido/tarifa centrales; reserva validada por inventario del sitio \\
+Maestros y configuración & \texttt{BD\_\allowbreak{}MAESTROS\_\allowbreak{}CONF} & PostgreSQL 16 con Aurora central como distribución y copia local de lectura & Autoridad en Maestro, copias de solo lectura en cada sitio & Réplica por publicación de eventos, sin escritura local \\
+Actores, roles y permisos & \texttt{BD\_\allowbreak{}GOBIERNO\_\allowbreak{}ACCESO} e identidad federada de S4 & PostgreSQL 16 y Keycloak como proveedor de identidad & Central & El token se valida contra el emisor, no se almacenan contraseñas \\
+Recepción, lote, saldo y unidad logística & BD\_INVENTARIO & PostgreSQL 16/PostGIS por sitio, Aurora copia/consolidado & Cada sitio confirma en su perímetro & DMS solo Talca lector, consolidación por eventos \\
+Trazabilidad, custodia y calidad & \texttt{BD\_\allowbreak{}CALIDAD\_\allowbreak{}TRAZABILIDAD} & PostgreSQL 16 local y DynamoDB para ingesta de eventos & Central Aurora para el expediente consolidado & El evento local es el que prueba, el central consolida \\
+Preventa, tarifa y promesa & BD\_PREVENTA & Aurora PostgreSQL central & M3, dueño del pedido en los tres canales & Pedido/tarifa centrales, reserva validada por inventario del sitio \\
 Preparación y picking & \texttt{BD\_\allowbreak{}PREPARACION} & PostgreSQL 16 local & Por sitio & Escritura local con evento al bus y confirmación idempotente \\
-Rutas, viajes y paradas & BD\_RUTAS & PostgreSQL/PostGIS central & Autoridad central; copias en sitio/dispositivo & Itinerario descargado/versionado; sin otro escritor \\
-Reparto, entrega y devolución & BD\_REPARTO & PostgreSQL central; Room/SQLite en terreno & Central consolida capturas autorizadas & Acuse durable local; consolidación posterior sin exigir WAN \\
-Cobranza y finanzas & BD\_COBRANZA\_FINANZAS & PostgreSQL central; captura durable móvil & Autoridad financiera central & Captura offline permitida, rendición y conciliación; POS incierto no es aprobación \\
+Rutas, viajes y paradas & BD\_RUTAS & PostgreSQL/PostGIS central & Autoridad central, copias en sitio/dispositivo & Itinerario descargado/versionado, sin otro escritor \\
+Reparto, entrega y devolución & BD\_REPARTO & PostgreSQL central, Room/SQLite en terreno & Central consolida capturas autorizadas & Acuse durable local, consolidación posterior sin exigir WAN \\
+Cobranza y finanzas & BD\_COBRANZA\_FINANZAS & PostgreSQL central, captura durable móvil & Autoridad financiera central & Captura offline permitida, rendición y conciliación, POS incierto no es aprobación \\
 Documentos y objetos & \texttt{S3\_\allowbreak{}DOCS} & Almacenamiento de objetos con bloqueo de versión & Central y copia por región & La referencia es por clave lógica y huella, nunca por ruta física \\
 Intercambio con canal moderno & \texttt{BD\_\allowbreak{}EDI\_\allowbreak{}CANALMODERNO} & PostgreSQL 16 central & Central & Contrato versionado y mensajes idempotentes \\
 Notificaciones al cliente & BD\_MAILS\_NOTIF & PostgreSQL central & Central & Plantillas/preferencias, intentos y not\_evento para entrega/apertura/error, canales de 5-C \\
-Telemetría y caché de lectura & BD\_TELEMETRIA / REDIS\_SESIONES\_CACHE & DynamoDB raw; S3 Parquet/Glue/Redshift series; Redis caché & M12 ingiere; central consolida; metadatos/calibraciones en Calidad & Caché reconstruible, sin confirmar reservas/pagos \\
+Telemetría y caché de lectura & BD\_TELEMETRIA / REDIS\_SESIONES\_CACHE & DynamoDB raw, S3 Parquet/Glue/Redshift series, Redis caché & M12 ingiere, central consolida, metadatos/calibraciones en Calidad & Caché reconstruible, sin confirmar reservas/pagos \\
 Analítica de explotación & \texttt{BD\_\allowbreak{}BI\_\allowbreak{}GERENCIA} & Amazon S3, AWS Glue, Amazon Redshift Serverless y QuickSight embebido & Región \texttt{sa-east-1} & Consulta sin escritura en el almacén transaccional \\
 Bus de eventos & Cola administrada de brokerage de S4 & Broker de mensajería & Central y por sitio & Publicación con reintento y confirmación durable \\
-Copia local del dispositivo & Persistencia local de captura/consulta & Room/SQLite nativo; IndexedDB en PWA & Dispositivo/cuenta & UUID, payload pendiente y acuse durable; sin autoridad comercial autónoma \\
-Topología y capacidad ampliadas & BD\_MAESTROS\_CONF, M1 & PostgreSQL 16 & mae\_zona, ubicaciones y capacidades; publicación central versionada & Copia local solo lectura; inventario por sitio \\
-Slotting y merma & BD\_INVENTARIO, M1/M2 & PostgreSQL 16 local & inv\_reubicacion\_propuesta e inv\_merma; Calidad decide disposición & Aprobación auditada; costo ERP por contrato \\
-Cartera y gestiones & BD\_COBRANZA\_FINANZAS, M7 & PostgreSQL central & cob\_cartera\_asignacion, cob\_gestion, cob\_saldo\_documento & ERP autoridad de deuda/cupo; captura móvil durable \\
+Copia local del dispositivo & Persistencia local de captura/consulta & Room/SQLite nativo, IndexedDB en PWA & Dispositivo/cuenta & UUID, payload pendiente y acuse durable, sin autoridad comercial autónoma \\
+Topología y capacidad ampliadas & BD\_MAESTROS\_CONF, M1 & PostgreSQL 16 & mae\_zona, ubicaciones y capacidades, publicación central versionada & Copia local solo lectura, inventario por sitio \\
+Slotting y merma & BD\_INVENTARIO, M1/M2 & PostgreSQL 16 local & inv\_reubicacion\_propuesta e inv\_merma, Calidad decide disposición & Aprobación auditada, costo ERP por contrato \\
+Cartera y gestiones & BD\_COBRANZA\_FINANZAS, M7 & PostgreSQL central & cob\_cartera\_asignacion, cob\_gestion, cob\_saldo\_documento & ERP autoridad de deuda/cupo, captura móvil durable \\
 Ocupación, viajes y antigüedad & BD\_BI\_GERENCIA, M10 & Redshift/S3/Glue & hech\_ocupacion\_diaria, hech\_viaje, hech\_cartera\_antiguedad & Proyecciones derivadas sin escritura en OLTP \\
 \end{tablalafrox}
-\fuentetabla{elaboración propia de LafroX a partir de los quince nombres lógicos de persistencia de S4 4.1.5, del Subdocumento 4 y de T-11; el Formulario T-12 no añade motores.}
+\fuentetabla{elaboración a partir de los quince nombres lógicos de persistencia de S4 4.1.5, del Subdocumento 4 y de T-11, el Formulario T-12 no añade motores.}
