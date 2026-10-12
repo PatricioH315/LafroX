@@ -499,12 +499,49 @@
 %      \renewcommand{\LFXfolio}{Folio}
 \newcommand{\LFXfolio}{}
 
+% Media firma del representante legal sobre el folio (Art. 40.2), igual que
+%  en el Subdocumento 13: filete de firma, rotulo y folio. La imagen se
+%  superpone al filete sin cambiar la altura del pie: \raisebox[0pt][0pt]
+%  anula su alto y \rlap su ancho. Con la opcion [sinfirma] queda solo el folio.
+\newcommand{\LFXfirmaimagen}{FIRMA_Alex_Aravena_transparente.png}
+\newcommand{\LFXpiefirma}{%
+  \begin{tabular}[b]{@{}r@{}}
+    {\rlap{\makebox[3.4cm][c]{\raisebox{-2pt}[0pt][0pt]{\includegraphics[height=18pt]{\LFXfirmaimagen}}}}%
+     \color{lafroxGris}\rule{3.4cm}{0.4pt}}\\[-1pt]
+    {\LFXchico Media firma: \LFXrepresentante}\\
+    {\intermedium\fontsize{9pt}{11pt}\selectfont\color{lafroxTinta}\LFXfoliotexto}
+  \end{tabular}}
+\newcommand{\LFXpiesolofolio}{%
+  {\intermedium\fontsize{9pt}{11pt}\selectfont\color{lafroxTinta}%
+    \LFXfoliotexto}}
 \newcommand{\LFXpiederecho}{%
   \begingroup\LFXpiebase
-  {\intermedium\fontsize{9pt}{11pt}\selectfont\color{lafroxTinta}%
-    \LFXfoliotexto}%
+  \ifLFX@firma\expandafter\LFXpiefirma\else\expandafter\LFXpiesolofolio\fi
   \endgroup
 }
+
+
+% Pie de firma horizontal: mismo ajuste del T-6 del SD1, aplicado a landscape.
+\RequirePackage{etoolbox}
+\newif\ifLFXfirmaHorizontal
+\let\LFXpieDerechoVertical\LFXpiederecho
+\renewcommand{\LFXpiederecho}{%
+  \ifLFXfirmaHorizontal\else\LFXpieDerechoVertical\fi}
+% El interruptor cambia despues de los clearpage de entrada/salida.
+\apptocmd{\landscape}{\global\LFXfirmaHorizontaltrue}{}{
+  \ClassError{lafrox}{No se pudo ajustar el pie horizontal}{Revisar landscape.}}
+\apptocmd{\endlandscape}{\global\LFXfirmaHorizontalfalse}{}{
+  \ClassError{lafrox}{No se pudo restaurar el pie vertical}{Revisar endlandscape.}}
+\AddToHook{shipout/foreground}[lafrox-firma-horizontal]{%
+  \ifLFXfirmaHorizontal
+    \put(0,0){\begin{tikzpicture}[remember picture,overlay]
+      \node[rotate=90,anchor=base east,inner sep=0pt,
+        font=\intermedium\fontsize{9pt}{11pt}\selectfont,
+        text=lafroxTinta]
+        at ([xshift=-1.3cm,yshift=-2.7cm]current page.north east)
+        {\LFXpieDerechoVertical};
+    \end{tikzpicture}}%
+  \fi}
 
 %  El espacio va DENTRO del condicional: con el rotulo vacio, un
 %  "\LFXfolio\ \thepage" dejaria el numero corrido un espacio a la derecha y
