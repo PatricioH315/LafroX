@@ -44,7 +44,6 @@ Jefe de Proyecto y Apoderado · LafroX SpA
 
 - [Formulario T-6: Experiencia del Proponente](#formulario-t-6-experiencia-del-proponente)
   - [Referencias](#referencias)
-  - [Declaración de uso de IA](#declaración-de-uso-de-ia)
 
 # Formulario T-6: Experiencia del Proponente
 
@@ -59,7 +58,7 @@ Este formulario reúne los once campos de experiencia de tres proyectos de Lafro
 | **Nombre del proyecto** | Sistema Híbrido de Reparto y Gestión Logística | Plataforma de Telemetría y Cadena de Frío IoT | Sistema Móvil de Preventa y Ruteo Desconectado |
 | **Cliente / mandante** | LogiNacional S.A. | Red Distribución Farmacéutica (FarmaRed S.A.) | Comercializadora Lácteos del Sur S.A. |
 | **Industria** | Distribución mayorista y logística de consumo masivo | Distribución farmacéutica y cadena de frío regulada | Alimentos perecibles y consumo masivo |
-| **Año de inicio y de término** | 2021 – 2022 (Operación activa 2022 a la fecha) | 2022 – 2023 (Operación activa 2023 a la fecha) | 2023 – 2024 (Operación activa 2024 a la fecha) |
+| **Período de implementación / operación** | Implementación: 2021 – 2022; operación activa desde 2022 | Implementación: 2022 – 2023; operación activa desde 2023 | Implementación: 2023 – 2024; operación activa desde 2024 |
 | **Monto del contrato (rango)** | 25.000 a 35.000 UF | 18.000 a 25.000 UF | 12.000 a 18.000 UF |
 | **Alcance ejecutado** | Diseño, desarrollo, despliegue híbrido y soporte 24×7 del software central de logística, cross-docking y facturación en ruta. | Implementación de plataforma IoT para monitoreo térmico en tiempo real en cámaras (-22 °C) y flota, con alertas normativas. | Desarrollo de aplicación móvil off-line first, motor de sincronización asíncrona bidireccional y módulo de crédito comercial. |
 | **Arquitectura (nube / on-premise / híbrida)** | Híbrida: Cargas transaccionales en nube pública AWS y servidores locales de borde en 14 centros de distribución. | Híbrida: Procesamiento central en AWS e integración de sensores de telemetría y gateways industriales on-premise. | Nube pública central con operación desconectada: persistencia local SQLite cifrada en terminales móviles robustos Android, sin componentes on-premise. |
@@ -75,15 +74,3 @@ Las referencias corresponden a las reglas de experiencia y presentación citadas
 - Distribuidora Puelche S.A. (2026a). *Bases Administrativas de Licitación N° TFEP-01/2026: Contratación de Solución Integral de Software y Servicios de Operación*.
 
 - Distribuidora Puelche S.A. (2026d). *Aclaraciones de la Licitación N° TFEP-01/2026*.
-
-## Declaración de uso de IA
-
-La Tabla [2](LAFROX-Formulario-T-6.md#tab:ia_t6) declara la asistencia utilizada para presentar el formulario, conforme a la sección 7.2 de las Aclaraciones (Distribuidora Puelche S.A., 2026d). La declaración se consolida en el Formulario A-6.
-
-<a id="tab:ia_t6"></a>
-
-**Tabla 2 — Uso de IA en el Formulario T-6. Fuente: registro de uso de IA de LafroX.**
-
-| **Sección** | **Herramienta** | **Finalidad del uso** | **Nivel en texto** | **Nivel en diagramas** | **Revisión humana (quién y qué verificó)** |
-| --- | --- | --- | --- | --- | --- |
-| T-6 | Claude / Gemini; OpenAI Codex | Formato del formulario, introducción y referencias | Bajo | Ninguno | [[REVISIÓN HUMANA]] |

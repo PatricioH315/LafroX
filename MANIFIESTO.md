@@ -20,7 +20,7 @@ La conversión se realizó desde el repositorio LafroX vigente. No constituye re
 | --- | --- | --- |
 | `Bases/*.md` | Los cuatro Markdown de `Bases/` | Copia íntegra, sin reescritura. |
 | `01_presentacion_empresa/LAFROX-Subdocumento1.md` | `contenido.tex` y `tablas/equipo.tex` | Conversión de estructura, listas y tablas; organigrama transcrito a descripción textual. |
-| Anexo informativo del Subdocumento 1, retirado | `anexos.tex` | La copia histórica queda en Git; SD1 conserva cuerpo y T-6 independiente. |
+| Anexo informativo del Subdocumento 1, eliminado | — | No contiene material anexo; el SD1 conserva únicamente el cuerpo y el Formulario T-6 independiente. |
 | `01_presentacion_empresa/LAFROX-Formulario-T-6.md` | `LAFROX-Formulario-T-6.tex` | Formulario independiente convertido a tabla Markdown. |
 | `02_problema_necesidad/LAFROX-Subdocumento2.md` | `contenido.tex`, `tablas/actores.tex` y `tablas/supuestos.tex` | Conversión de estructura, listas y tablas; seis procesos AS-IS transcritos a descripciones textuales. |
 | `02_problema_necesidad/LAFROX-Subdocumento2-Anexos.md` | `anexos.tex` | Conversión de los listados detallados a tablas Markdown. |

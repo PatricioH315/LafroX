@@ -4,7 +4,7 @@ El presente documento recopila los listados detallados que sustentan el análisi
 
 ## Anexo 2.1: Listado de Requerimientos del Cliente
 
-A partir de la narrativa del caso, de las entrevistas a los actores clave (Distribuidora Puelche S.A., 2026c, cap. 8, pp. 13–17) y de las Bases Técnicas Transversales, se identifican catorce familias funcionales prioritarias y cinco condiciones no funcionales rectoras. Los códigos F-01 a F-14 identifican familias de síntesis de este anexo; el catálogo atómico y sus códigos RF/RNF se desarrollan en el Subdocumento 3 y en el Formulario T-12.
+A partir de la narrativa del caso, de las entrevistas a los actores clave (Distribuidora Puelche S.A., 2026c, cap. 8, pp. 13–17) y de las Bases Técnicas Transversales, se identifican catorce familias funcionales prioritarias y cinco condiciones no funcionales rectoras. Los códigos **F-01 a F-14** identifican familias de síntesis de este anexo; el catálogo atómico y sus códigos RF/RNF se desarrollan en el Subdocumento 3 y en el Formulario T-12.
 
 Tabla 2.A.1 Catálogo consolidado de requerimientos funcionales del caso. Fuente: elaboración propia a partir de Distribuidora Puelche S.A. (2026c, caps. 9 y 18, pp. 18–19 y 34–35).
 
@@ -13,7 +13,7 @@ Tabla 2.A.1 Catálogo consolidado de requerimientos funcionales del caso. Fuente
 | F-01 | Preventa Móvil Desconectada | Toma de pedidos en terreno durante un turno completo sin señal, con stock y crédito visibles y sin pérdida ni duplicación de pedidos al recuperar la conexión. | Crítica | Etapa 1 |
 | F-02 | Recepción y Control de Lotes | Captura obligatoria de identificadores GS1, lote y fecha de vencimiento en la recepción de cada instalación antes de autorizar el ingreso físico. | Crítica | Etapa 1 |
 
-| F-03 | Gestión de Bodega y FEFO | Control de existencias físicas y asignación de despachos bajo lógica estricta First Expired, First Out en cámaras de frío (-22 °C) y secos. | Alta | Etapa 1 |
+| F-03 | Gestión de Bodega y FEFO | Control de existencias físicas y asignación de despachos bajo lógica estricta *First Expired, First Out* en cámaras de frío (−22 °C) y secos. | Alta | Etapa 1 |
 | F-04 | Picking por Olas en Almacén | Generación y consolidación de hojas de preparación digitales por zonas de almacenamiento, reduciendo traslados y tiempos de armado nocturno. | Alta | Etapa 1 |
 | F-05 | Cross-Docking Controlado | Registro y control de la transferencia entre recepción y despacho mediante lectura de unidades logísticas, con medición del tiempo real del proceso y de sus excepciones. | Alta | Etapa 1 |
 | F-06 | Planificación Dinámica de Rutas | Propuesta y secuenciación de rutas según capacidad, zonas, ventanas horarias y restricciones de terreno, conservando la corrección manual y capturando las heurísticas del planificador. | Alta | Etapa 1 |
@@ -45,7 +45,7 @@ Tabla 2.A.3 Supuestos de formulación derivados de las decisiones abiertas del c
 
 | ID | Supuesto adoptado | Consecuencia asumida | Si resulta falso | Validación |
 | --- | --- | --- | --- | --- |
-| S-01 | OTIF considera cumplida solo la entrega del 100 % de ítems y unidades dentro de la fecha y ventana pactadas. | Toda entrega parcial o tardía se registra como incumplida, con causal; fill rate y perfect order se miden por separado. | Cambia la fórmula de OTIF y su línea base; se recalculan las metas. | Gerencia Comercial y de Operaciones, mes 1. |
+| S-01 | OTIF considera cumplida solo la entrega del 100 % de ítems y unidades dentro de la fecha y ventana pactadas. | Toda entrega parcial o tardía se registra como incumplida, con causal; *fill rate* y *perfect order* se miden por separado. | Cambia la fórmula de OTIF y su línea base; se recalculan las metas. | Gerencia Comercial y de Operaciones, mes 1. |
 | S-02 | La unidad de trazabilidad sanitaria es el lote del proveedor; el SSCC identifica la unidad logística asociada. | La recepción captura lote y vencimiento, y el retiro sanitario se consulta hacia atrás y hacia adelante por lote. | Se redefinen la captura en recepción y la consulta de retiro. | Jefa de Calidad, mes 1. |
 | S-03 | Ante local cerrado, el conductor registra el intento y el sistema reagenda a la próxima ventana disponible; no se entrega a terceros. | Si el cliente continúa ausente, la mercadería retorna al centro de distribución con trazabilidad del evento. | Cambia el flujo de reentrega. | Gerencia de Operaciones, levantamiento de reglas. |
 | S-04 | La excursión térmica se parametriza por tipo de producto. Una excursión menor y transitoria genera una alerta preventiva; una crítica y sostenida hace que el sistema bloquee preventivamente el lote. Calidad decide liberar, bloquear o rechazar. | El sistema no invalida automáticamente el producto y el conductor no decide su destino sanitario. | Si la autoridad exige invalidación automática, cambia el tratamiento en ruta. | Jefa de Calidad, mes 2. |
@@ -106,7 +106,7 @@ Tabla 2.A.6 Restricciones no negociables del caso. Fuente: Distribuidora Puelche
 
 | R-05 | No se exige internet, dispositivo propio ni pago electrónico al canal tradicional. | La operación se completa con recursos de Puelche y admite efectivo. |
 | R-06 | La solución opera con 54 camiones de diez transportistas y conductores que rotan sin aviso. | Identificación rápida y acuerdo operacional con cada transportista. |
-| R-07 | Los dispositivos de cámara operan a -22 °C y sin señal. | Equipos aptos para frío, guantes y trabajo desconectado. |
+| R-07 | Los dispositivos de cámara operan a −22 °C y sin señal. | Equipos aptos para frío, guantes y trabajo desconectado. |
 | R-08 | No se interviene del 1 al 25 de septiembre, durante diciembre ni los tres primeros días hábiles de cada mes. | Despliegues, pruebas y reversión se programan fuera de esos períodos. |
 | R-09 | TI dispone de cuatro personas. | Toda especialidad permanente que no exista en el CLIENTE se presta como servicio. |
 | R-10 | El sindicato objetó cámaras en cabina y control de jornada por GPS. | La propuesta excluye cámaras en cabina y condiciona el uso del GPS para control de jornada a un acuerdo previo con el sindicato. La telemetría operacional incorpora controles de privacidad. |
@@ -133,15 +133,15 @@ Tabla 2.A.7 Catálogo nominal extendido de los 19 actores del ecosistema Puelche
 | Preventistas (62 personas) | Captura de Pedidos | Aplicación de 2016 sin stock, crédito ni historial; 7,8 % de las líneas con quiebre de stock. | Alta | Alto | Prueban los cambios en su propia ruta antes de adoptarlos. |
 | Tripulación propia y peoneta (84 personas) | Despacho y Cobranza | Rendición en caja a la mañana siguiente; guías en papel (1,1 % extraviadas); termógrafo manual con tres lecturas por viaje. | Alta | Alto | Validan el registro de entrega y la rendición antes de su adopción. |
 | Conductores externos (aprox. 160 personas) | Flota Tercerizada | No son trabajadores de la compañía; rotan sin aviso; sus camiones no tienen telemetría. | Alta | Alto | Incorporación acordada con cada transportista. |
-| Empresas Transp. (10 empresas) | Proveedores de Flete | 54 camiones, 10 con frío, que la compañía no controla. | Media-alta | Alto | Acuerdo operacional con cada empresa. |
+| Empresas Transp. (10 empresas) | Proveedores de Flete | 54 camiones, 10 con frío, que la compañía no controla. | Media | Alto | Acuerdo operacional con cada empresa. |
 | Preparadores (120 personas) | Picking en Almacén | Turno de noche de 22:00 a 06:00; rotación de 38 %; cámara a −22 °C sin señal. | Alta | Alto | Aprendizaje en el puesto, compatible con la rotación. |
 | Sindicato de Choferes | Representación Laboral | Objeción formal a las cámaras en cabina y al control de jornada por posicionamiento satelital. | Alta | Alto | Participación en la definición de finalidades y controles de privacidad de la telemetría; acuerdo previo antes de utilizar GPS para control de jornada. |
 
 | Canal Tradicional (11.600 clientes) | Clientes Almaceneros | No se les puede exigir internet, dispositivo ni pago electrónico; el 38 % de la venta del canal se cobra en efectivo; el competidor les ofrece pedido autónomo. | Muy alta | Alto | Se preserva su forma de compra y pago. |
 | Food Service (2.100 clientes) | Hoteles y Restaurantes | Sensibles a la frescura y a la puntualidad; el año pasado un cliente rechazó un camión completo por sospecha de ruptura de la cadena de frío. | Muy alta | Alto | Levantamiento de sus ventanas de entrega y exigencias de evidencia. |
 | Canal Moderno (500 puntos) | Cadenas de Retail | La principal cadena (11 % de la venta) exige desde enero de 2029 pedido electrónico, aviso de despacho, ventana de 30 minutos con penalización y prueba de entrega digital. | Muy alta | Alto | Levantamiento de condiciones por cadena. |
-| Proveedores (180 empresas) | Suministro de Carga | Lote anotado en texto libre, cuando se anota; el proveedor de lácteos suspendió a Puelche por seis meses. | Media-alta | Alto | Aviso anticipado de requisitos de rotulado. |
-| Autoridad Sanitaria | Fiscalización SEREMI | Observó en su última fiscalización la ausencia de registro continuo de temperatura. | Media-alta | Alto | Canal formal para entregar evidencia de trazabilidad y temperatura. |
+| Proveedores (180 empresas) | Suministro de Carga | Lote anotado en texto libre, cuando se anota; el proveedor de lácteos suspendió a Puelche por seis meses. | Media | Alto | Aviso anticipado de requisitos de rotulado. |
+| Autoridad Sanitaria | Fiscalización SEREMI | Observó en su última fiscalización la ausencia de registro continuo de temperatura. | Media | Alto | Canal formal para entregar evidencia de trazabilidad y temperatura. |
 
 La Tabla 2.A.8 resume los ocho sistemas y registros que operan actualmente en Distribuidora Puelche S.A., con el destino que el caso les asigna (Distribuidora Puelche S.A., 2026c, cap. 5, p. 10).
 
