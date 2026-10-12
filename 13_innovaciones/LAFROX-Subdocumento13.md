@@ -84,7 +84,9 @@ La Tabla 13.1 resume la cartera. La Figura 13.1 ubica las cinco innovaciones sob
 
 
 
-![Figura 13.1](<C:/Users/henri/OneDrive/Documentos/Universidad 2026S2/FEP/Bases PTE/SD13/LafroX/SD13_v_nueva/13_innovaciones/diagramas/Fig_13-1_Mapa_Innovaciones.pdf>)
+La innovación 2 permite medir la reducción del tiempo de diagnóstico antes del mes 16 mediante I-02A. Con ese beneficio LafroX oferta el RT-26.08 (Distribuidora Puelche S.A., 2026b, RT-26.08, cap. 26, p. 45). Las innovaciones 1 y 3 verifican durante la marcha blanca sus condiciones de habilitación; sus beneficios posteriores se evalúan en los momentos definidos para cada indicador. Una condición de habilitación no se contabiliza como ahorro ya demostrado. Las innovaciones 4 y 5 dependen del costo de servir y de los canales de la Etapa 2, por lo que se materializan desde el mes 21.
+
+![Figura 13.1](diagramas/Fig_13-1_Mapa_Innovaciones.pdf)
 
 **Figura 13.1. Ubicación de las cinco innovaciones en la arquitectura. Fuente: elaboración a partir de la arquitectura e inventario (LafroX, 2026d, secs. 4.1.3, 4.1.4 y 4.2.2; 2026e, T-11) y la inserción de INN-01 a INN-05 (LafroX, 2026l, secs. 13.1.4 a 13.5.4).**
 
@@ -152,7 +154,7 @@ M10 Analítica calcula la lista de avisos cada noche con datos de M2 Inventario,
 
 La Figura 13.2 recorre el servicio desde los datos de origen hasta la verificación del beneficio en el local.
 
-![Figura 13.2](<C:/Users/henri/OneDrive/Documentos/Universidad 2026S2/FEP/Bases PTE/SD13/LafroX/SD13_v_nueva/13_innovaciones/diagramas/Fig_13-2_Recorrido_INN01.pdf>)
+![Figura 13.2](<C:/Users/alexa/.codex/worktrees/sd13-sincronizacion/LafroX/SD13_v_nueva/13_innovaciones/diagramas/Fig_13-2_Recorrido_INN01.pdf>)
 
 **Figura 13.2. Seguimiento posentrega: del dato del lote al cierre de la visita. Fuente: elaboración a partir del diseño, calendario y controles de INN-01 (LafroX, 2026l, secs. 13.1.4 a 13.1.7) y sus contratos de datos (LafroX, 2026m, Anexo 13.A).**
 
@@ -307,7 +309,7 @@ La aplicación de preventa C-01 (M3 Preventa), los terminales de bodega C-03 (M5
 
 La Figura 13.3 muestra cómo un incidente real se transforma en un escenario reproducible y una prueba de regresión.
 
-![Figura 13.3](<C:/Users/henri/OneDrive/Documentos/Universidad 2026S2/FEP/Bases PTE/SD13/LafroX/SD13_v_nueva/13_innovaciones/diagramas/Fig_13-3_Recorrido_INN02.pdf>)
+![Figura 13.3](<C:/Users/alexa/.codex/worktrees/sd13-sincronizacion/LafroX/SD13_v_nueva/13_innovaciones/diagramas/Fig_13-3_Recorrido_INN02.pdf>)
 
 **Figura 13.3. Incidente de terreno: evidencia, reproducción y cierre comprobado. Fuente: elaboración a partir del diseño, calendario y controles de INN-02 (LafroX, 2026l, secs. 13.2.4 a 13.2.7) y sus contratos de datos (LafroX, 2026m, Anexo 13.A).**
 
@@ -464,7 +466,7 @@ EPCIS 2.0 es un estándar publicado (GS1 AISBL, 2022). Los modelos cinéticos de
 
 La Figura 13.4 distingue la captura en cámara y en ruta, la asociación al lote y el uso posterior de la estimación.
 
-![Figura 13.4](<C:/Users/henri/OneDrive/Documentos/Universidad 2026S2/FEP/Bases PTE/SD13/LafroX/SD13_v_nueva/13_innovaciones/diagramas/Fig_13-4_Recorrido_INN03.pdf>)
+![Figura 13.4](<C:/Users/alexa/.codex/worktrees/sd13-sincronizacion/LafroX/SD13_v_nueva/13_innovaciones/diagramas/Fig_13-4_Recorrido_INN03.pdf>)
 
 **Figura 13.4. Historia térmica: del sensor a la decisión de Calidad. Fuente: elaboración a partir del diseño, calendario y controles de INN-03 (LafroX, 2026l, secs. 13.3.4 a 13.3.7) y sus contratos de datos (LafroX, 2026m, Anexo 13.A).**
 
@@ -630,7 +632,7 @@ M6 Reparto y M7 Cobranza y rendición aportan los hechos de cada entrega, y M8 D
 
 La Figura 13.5 recorre la formación de la referencia comparable, el ensayo en sombra y la liquidación con efecto de pago.
 
-![Figura 13.5](<C:/Users/henri/OneDrive/Documentos/Universidad 2026S2/FEP/Bases PTE/SD13/LafroX/SD13_v_nueva/13_innovaciones/diagramas/Fig_13-5_Recorrido_INN04.pdf>)
+![Figura 13.5](<C:/Users/alexa/.codex/worktrees/sd13-sincronizacion/LafroX/SD13_v_nueva/13_innovaciones/diagramas/Fig_13-5_Recorrido_INN04.pdf>)
 
 **Figura 13.5. Costo de servir: de los hechos a la liquidación auditable. Fuente: elaboración a partir del diseño, calendario y controles de INN-04 (LafroX, 2026l, secs. 13.4.4 a 13.4.7) y sus contratos de datos (LafroX, 2026m, Anexo 13.A).**
 
@@ -771,7 +773,7 @@ M10 Analítica calcula los bloques sobre N-10 (capa 6). La precarga llega al ter
 
 La Figura 13.6 muestra las dos vías de entrega de la hoja y el control de su cobertura efectiva.
 
-![Figura 13.6](<C:/Users/henri/OneDrive/Documentos/Universidad 2026S2/FEP/Bases PTE/SD13/LafroX/SD13_v_nueva/13_innovaciones/diagramas/Fig_13-6_Recorrido_INN05.pdf>)
+![Figura 13.6](<C:/Users/alexa/.codex/worktrees/sd13-sincronizacion/LafroX/SD13_v_nueva/13_innovaciones/diagramas/Fig_13-6_Recorrido_INN05.pdf>)
 
 **Figura 13.6. Hoja de negocio: preparación, visita sin señal y copia solicitada. Fuente: elaboración a partir del diseño, calendario y controles de INN-05 (LafroX, 2026l, secs. 13.5.4 a 13.5.7) y sus contratos de datos (LafroX, 2026m, Anexo 13.A).**
 

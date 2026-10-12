@@ -667,7 +667,3 @@ La matriz responde los requerimientos funcionales y no funcionales de los Anexos
 - Distribuidora Puelche S.A. (2026b). *Bases Técnicas Transversales de Licitación N.º TFEP-01/2026*.
 - Distribuidora Puelche S.A. (2026c). *Caso: Logística*.
 - LafroX. (2026). *Subdocumentos 1–9 y 13, anexos y formularios citados en la matriz*.
-
-## Declaración de uso de IA
-
-La matriz fue elaborada y revisada documentalmente con asistencia de Codex y Claude Code a partir de los catálogos del Subdocumento 3, las Bases y los subdocumentos citados. Nivel de uso en texto: alto. Nivel de uso en diagramas: no aplica. Revisión humana: Patricio Henríquez: se verificó la correcta disposición y legibilidad del formulario; cada requerimiento cuenta con un ID que permite la trazabilidad en el documento de manera sencilla y bien justificada.

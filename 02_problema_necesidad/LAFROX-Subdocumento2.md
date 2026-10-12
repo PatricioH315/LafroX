@@ -379,13 +379,13 @@ La Tabla 2.4 declara el uso asistido de herramientas de inteligencia artificial 
 
 | Sección | Herramienta | Finalidad del uso | Nivel en texto | Nivel en diagramas | Revisión humana (quién y qué verificó) |
 | --- | --- | --- | --- | --- | --- |
-| 2.1 Resumen Ejec. | Claude / Gemini | Síntesis ejecutiva y estilo formal | Bajo | Ninguno | Alex Aravena: revisión del resumen y validación de la propuesta de valor. |
-| 2.2 Comprensión | Claude / Gemini | Estructuración de los 3 problemas | Bajo | Ninguno | Alex Aravena: revisión de los tres problemas frente al caso. |
-| 2.3 Dimensionamiento | Claude / Gemini | Descripción estructurada de los 6 flujos AS-IS | Bajo | Medio | Alex Aravena: revisión de los flujos y validación de los cálculos. |
-| 2.4 Actores | Claude / Gemini | Disposición tabular de actores | Bajo | Ninguno | Alex Aravena: validación de los actores frente al catálogo. |
-| 2.5 Requerimientos | Claude / Gemini | Formato y redacción de supuestos | Bajo | Ninguno | Alex Aravena: revisión de supuestos y restricciones. |
-| Anexo 2.1 | Claude / Gemini | Maquetación del listado de requerimientos | Bajo | Ninguno | Alex Aravena: validación del listado frente al catálogo. |
-| Anexo 2.2 | Claude / Gemini / Codex | Consolidación de decisiones, exclusiones y restricciones; alineación de S-09 con el precio registrado y el control de diferencias con el ERP | Alto | Ninguno | Alex Aravena: revisión frente a los capítulos 10, 11 y 16.1 del caso y validación de S-09. |
-| Anexo 2.3 | Claude / Gemini | Maquetación de actores y sistemas legados | Bajo | Ninguno | Alex Aravena: revisión de actores, cifras y sistemas. |
+| 2.1 Resumen Ejec. | Claude / Gemini | Síntesis ejecutiva y estilo formal | Alto | Medio | Alex Aravena: revisión del resumen y validación de la propuesta de valor. |
+| 2.2 Comprensión | Claude / Gemini | Estructuración de los 3 problemas | Alto | Medio | Alex Aravena: revisión de los tres problemas frente al caso. |
+| 2.3 Dimensionamiento | Claude / Gemini | Descripción estructurada de los 6 flujos AS-IS | Alto | Medio | Alex Aravena: revisión de los flujos y validación de los cálculos. |
+| 2.4 Actores | Claude / Gemini | Disposición tabular de actores | Alto | Medio | Alex Aravena: validación de los actores frente al catálogo. |
+| 2.5 Requerimientos | Claude / Gemini | Formato y redacción de supuestos | Alto | Medio | Alex Aravena: revisión de supuestos y restricciones. |
+| Anexo 2.1 | Claude / Gemini | Maquetación del listado de requerimientos | Alto | Medio | Alex Aravena: validación del listado frente al catálogo. |
+| Anexo 2.2 | Claude / Gemini / Codex | Consolidación de decisiones, exclusiones y restricciones; alineación de S-09 con el precio registrado y el control de diferencias con el ERP | Alto | Medio | Alex Aravena: revisión frente a los capítulos 10, 11 y 16.1 del caso y validación de S-09. |
+| Anexo 2.3 | Claude / Gemini | Maquetación de actores y sistemas legados | Alto | Medio | Alex Aravena: revisión de actores, cifras y sistemas. |
 
-La Tabla 2.4 muestra que la IA se usó como apoyo de síntesis, estructura y formato, con un uso mayor sólo en la alineación de S-09 del Anexo 2.2, y que cada sección fue revisada por un integrante del equipo.
+La Tabla 2.4 muestra que la IA se usó con nivel alto en el texto y medio en los diagramas de todas las secciones, y que cada sección fue revisada por un integrante del equipo.

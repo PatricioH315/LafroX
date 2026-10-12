@@ -28,9 +28,8 @@
 | Anexo 5-H. Fórmulas de indicador, linaje documental y catálogo por fase | [Ver](#anexo-5h) |
 | Anexo 5-I. Matriz de trazabilidad de RT-05 con su evidencia | [Ver](#anexo-5i) |
 | Anexo 5-J. Protocolo de aceptación de datos y pruebas propuestas | [Ver](#anexo-5j) |
-| Anexo 5-K. Resolución de observaciones de la instancia anterior | [Ver](#anexo-5k) |
-| Anexo 5-L. Mapeo, cálculo de olas y ventana de corte | [Ver](#anexo-5l) |
-| Anexo 5-M. Correspondencia de modelos y diccionario | [Ver](#anexo-5m) |
+| Anexo 5-K. Mapeo, cálculo de olas y ventana de corte | [Ver](#anexo-5k) |
+| Anexo 5-L. Correspondencia de modelos y diccionario | [Ver](#anexo-5l) |
 | Referencias | [Ver](#sec-referencias) |
 
 <a id="lista-de-tablas"></a>
@@ -62,10 +61,9 @@
 | Tabla A.21 | [Pruebas de aceptación de la migración con umbral numérico](#tab-a21) |
 | Tabla A.22 | [Pruebas de aceptación de desempeño con umbral numérico](#tab-a22) |
 | Tabla A.23 | [Pruebas de aceptación de trazabilidad, calidad, operación y seguridad](#tab-a23) |
-| Tabla A.24 | [Trazabilidad de observaciones del Informe 1](#tab-a24) |
-| Tabla A.25 | [Mapeo semántico y validación de migración](#tab-a25) |
-| Tabla A.26 | [Duración calculada por fase y ola inicial](#tab-a26) |
-| Tabla A.27 | [Ventana final, decisión y reserva de rollback](#tab-a27) |
+| Tabla A.24 | [Mapeo semántico y validación de migración](#tab-a24) |
+| Tabla A.25 | [Duración calculada por fase y ola inicial](#tab-a25) |
+| Tabla A.26 | [Ventana final, decisión y reserva de rollback](#tab-a26) |
 
 El Subdocumento 5 remite a estos anexos por letra. Contienen diccionario, cardinalidades, dominios/validaciones, retención, sensibilidad, índices, cachés, indicadores, trazabilidad RT-05, protocolos, migración y correspondencia con los modelos del cuerpo, el cuerpo concentra su análisis.
 
@@ -74,6 +72,8 @@ Los volúmenes y umbrales proceden del dimensionamiento del Subdocumento 4, del 
 <a id="anexo-5a"></a>
 
 ## Anexo 5-A. Diccionario de datos atributo por atributo
+
+Este anexo define los atributos del modelo de 5.1, agrupados por dominio. El glosario y las políticas comunes permiten interpretar las claves, los tipos, la obligatoriedad y los controles de las Tablas A.2–A.10.
 
 ### Glosario de siglas y convenciones
 
@@ -1838,7 +1838,7 @@ A.20 vincula cada RT-05 con desarrollo verificable en cuerpo/anexo. RT-05.10/.24
 | RT-05.10 Catálogo con linaje automatizado, deseable | 5.2.6 y Anexo 5-H | No ofertado como capacidad automatizada, se entrega trazabilidad documental de origen, transformación, fórmula, versión y responsable | 5-H |
 | RT-05.11 Plan de migración | 5.3.1 a 5.3.6 | Alcance, volumen `32,11 GB` con rango `30,73` a `33,49 GB`, origen, reglas, criterios de calidad, oleadas, reversión y responsables | 5-J |
 | RT-05.12 Perfilado y saneamiento previos | 5.3.2 | Perfilado por conjunto, categoría excluyente, original preservado, causa tipificada y decisión del responsable | 5-C y 5-J |
-| RT-05.13 Dos ensayos completos en preproducción | 5.3.4 y 5-L | Dos ensayos completos e independientes antes del corte, con extracción, transformación, carga, conciliación, delta y reversión | 5-J |
+| RT-05.13 Dos ensayos completos en preproducción | 5.3.4 y 5-K | Dos ensayos completos e independientes antes del corte, con extracción, transformación, carga, conciliación, delta y reversión | 5-J |
 | RT-05.14 Conciliación cuantitativa | 5.3.5 | Conciliación del universo de origen/destino por claves, recuentos y sumas, muestreo dirigido complementario, cero diferencias no explicadas | 5-J |
 | RT-05.15 No migrados accesibles en consulta | 5.3.3 | Repositorio de consulta con inventario, formato, localización, búsqueda, dueño, plazo, permisos y prueba de consulta | 5-D y 5-J |
 | RT-05.16 Servicios síncronos y flujos por evento | 5.2.2 y 5.2.4 | Contratos en OpenAPI 3.1 y AsyncAPI 2.6 o superior generados desde el código, con versión semántica | Subdocumento 4 |
@@ -1865,9 +1865,9 @@ RT-05.16/.17/.20 se desarrollan en S4: contratos desde código, versiones y capa
 
 ## Anexo 5-J. Protocolo de aceptación de datos y pruebas propuestas
 
-La prueba de retiro ≤2 h sigue el recorrido de 5.1.7 y contrasta todas las autoridades con carga/ruta/despacho previos. Calidad y cada sede verifican existencias/destinatarios, conductores aportan pendientes y Finanzas valida documentos. Clientes planificados con el lote offline se contactan/bloquean como potenciales, sin declararlos entregas confirmadas. Tras 30 min sin respuesta se escala a Operaciones manteniendo cobertura preventiva.
+La prueba de retiro <2 h sigue el recorrido de 5.1.7 y contrasta todas las autoridades con carga/ruta/despacho previos. Calidad y cada sede verifican existencias/destinatarios, conductores aportan pendientes y Finanzas valida documentos. Clientes planificados con el lote offline se contactan/bloquean como potenciales, sin declararlos entregas confirmadas. Tras 30 min sin respuesta se escala a Operaciones manteniendo cobertura preventiva.
 
-El presupuesto de 85 min es estimación de diseño, no resultado medido. La prueba ≤2 h debe demostrar cobertura del universo expuesto/potencial, lista de contactos, bloqueos, evidencias pendientes y escalamiento, un resultado parcial sin identificar el universo potencial falla aceptación. Casos offline y restauración forman parte del ensayo.
+El presupuesto de 85 min es estimación de diseño, no resultado medido. La prueba <2 h debe demostrar cobertura del universo expuesto/potencial, lista de contactos, bloqueos, evidencias pendientes y escalamiento, un resultado parcial sin identificar el universo potencial falla aceptación. Casos offline y restauración forman parte del ensayo.
 
 Las Tablas A.21–A.23 especifican pruebas propuestas de migración, desempeño y trazabilidad/calidad/seguridad, con precondición, datos/carga, acción, umbral, período, evidencia y responsable. Su aceptación requiere registrar los resultados; no se presentan como pruebas ejecutadas.
 
@@ -1926,7 +1926,7 @@ En las pruebas de A.22, p95 se mide desde la acción de la persona usuaria, con 
 | Búsqueda exacta y asistida | GTIN y lote conocidos, y lote homónimo de otro producto | Búsqueda exacta y búsqueda asistida por lote | La búsqueda exacta entrega un único lote, la asistida entrega los homónimos y exige confirmación del producto antes de mostrar trazabilidad | Registro de ambas consultas, calidad |
 | Varias recepciones del mismo lote | Lote recibido en dos recepciones con unidades distintas | Recorrido de retiro del lote | El recorrido distingue lo determinable por unidad de lo que solo se determina por evidencia agregada, no se inventa una recepción única | Informe del recorrido con su clasificación, calidad |
 | Mezcla, reempaque y devolución | Unidad con contenido modificado y devolución posterior | Seguimiento de la composición y del saldo | Composición vigente y saldo consistentes antes y después del reempaque, la devolución figura en el saldo del cliente y en la rendición de envases | Evidencia de composición, inventario |
-| Retiro con terreno desconectado | Operación de terreno durante catorce horas sin WAN | Retiro, consulta local y escalamiento | El retiro identifica universo confirmado/potencial en ≤2 h, presupuesto de diseño 85 min a validar, con última sincronización, pendientes y escalamiento registrados, el estado de trazabilidad local se declara con su fecha | Registro de la operación con su bitácora, operación |
+| Retiro con terreno desconectado | Operación de terreno durante catorce horas sin WAN | Retiro, consulta local y escalamiento | El retiro identifica universo confirmado/potencial en <2 h, presupuesto de diseño 85 min a validar, con última sincronización, pendientes y escalamiento registrados, el estado de trazabilidad local se declara con su fecha | Registro de la operación con su bitácora, operación |
 | Restauración por clase | Respaldo y punto de control declarados | Restauración de trazabilidad, de documentos y de geo | Trazabilidad restaurada en menos de dos horas, documentos y temperatura en menos de ocho, geo y auditoría en menos de veinticuatro | Acta de restauración con tiempo medido, arquitectura |
 | Integridad referencial en destino | Destino cargado | Recorrido del grafo de claves foráneas buscando filas huérfanas | Cero filas huérfanas en claves foráneas dentro del mismo motor | Reporte de huérfanos, responsable técnico |
 | Conflicto de cantidad | Reserva sobre saldo insuficiente | Intento de reserva | Rechazo con causa `RESERVA_EXCESIVA` y saldo inalterado | Registro del rechazo, inventario |
@@ -1947,7 +1947,7 @@ En las pruebas de A.22, p95 se mide desde la acción de la persona usuaria, con 
 | Notificación asíncrona RF-18.03 / RT-16.23 | Falla recuperable, timeout, eventos duplicados/tardíos, SMS sin apertura nativa y acceso explícito al portal | Encolar, reintentar por política, ingerir evidencias y repetir callbacks | Solicitud desacoplada, cero duplicados internos, CONFIRMADO solo con entrega, apertura sin señal queda NO_INFORMADA/NO_SOPORTADA con fecha NULL, acceso válido registra PORTAL, error conserva causa, igual ID/otra huella se aísla | Outbox, política, intentos/eventos y proyecciones, TI/CLIENTE |
 | Ocupación, viaje y merma | Dos SSCC en posición, capacidad inválida, devolución destruida | Consolidar y despachar | Una posición ocupada, cero despacho sin capacidad, una merma por devolución, sin costo resultado incompleto | Snapshots/costo ERP, Datos/Finanzas |
 
-*Fuente: elaboración a partir de RT-05.08, RT-05.14 y RT-05.29 de las Bases Técnicas Transversales (Distribuidora Puelche S.A., 2026c, cap. 5, p. 13), de los recorridos de 5.1.7 y de la matriz de retención del Anexo 5-D.*
+*Fuente: elaboración a partir de RT-05.08/.14/.29 y RT-16.23 (Distribuidora Puelche S.A., 2026c, caps. 5 y 16, pp. 12–13 y 30), del Caso 02 (Distribuidora Puelche S.A., 2026d, cap. 18, criterio 1, p. 34), T-12 (LafroX SpA., 2026b, RF-18.03) y SD4 (LafroX SpA., 2026a, Anexo 4-M); recorridos de 5.1.7, retención de 5-D y criterios de 5-J.*
 
 S4, Anexo 4-M, define ensayos complementarios. AL-DTE-01 comprueba 96 salidas con guía vigente, reintentos y cambios de carga en ambas rutas ERP, sin comunicación, conserva carga amparada y difiere ajustes. AL-CLI-01 reinicia el portal Android/iOS sin red, recupera catálogo/pedido y reenvía UUID: cero pérdida/duplicación, reserva tras validación M3, sesión vencida/cuenta bloqueada se rechazan. Rechazo esperado conserva causa/auditoría/mensaje, no es fallo de integridad.
 
@@ -1955,52 +1955,15 @@ AL-DR-01 se ensaya semestralmente: corte individual/por pares de fibra, LTE y St
 
 <a id="anexo-5k"></a>
 
-## Anexo 5-K. Resolución de observaciones de la instancia anterior
-
-La Tabla A.24 responde individualmente las veinte observaciones del Informe 1 y señala su ubicación actual. La respuesta documental no acredita ensayos ejecutados ni una contestación oficial a la consulta de códigos (Bases Administrativas; Distribuidora Puelche S.A., 2026b, art. 46, p. 28).
-
-<a id="tab-a24"></a>
-
-**Tabla A.24 — Trazabilidad de observaciones del Informe 1**
-
-| Observación del Informe | Respuesta | Sección modificada |
-| --- | --- | --- |
-| No hay modelo de datos; 5.1 solo enumera quince bases lógicas. | Se incorporaron MR general, vistas por dominio y modelo dimensional: diez figuras en el cuerpo. | 5.1; Figuras 5.1–5.10; 5-M |
-| No hay diccionario real; se posterga hasta antes de producción. | Diccionario de 121 entidades y 987 atributos, con tipos, dominios, claves, condiciones y controles. | 5-A, A.2–A.10; 5-B–5-C |
-| No pueden evaluarse las consultas del proveedor y la autoridad sanitaria. | Cadena lote/unidad/evento/entrega/documento y consulta inversa; universo potencial offline y presupuesto de retiro de 85 min. | 5.1.7; Figura 5.5; 5-J |
-| Motor y CAP se presentan en tabla sin analizar compromisos. | Justificación en prosa de motores, autoridad única por agregado y consistencia local con consolidación pendiente. | 5.2.1–5.2.3; 5-B |
-| Se cita la decisión 16.1 n.º 18, inexistente. | Referencia retirada; las fuentes identifican decisiones existentes del numeral 16.1. | 5.1; fuentes de Figuras 5.1, 5.2, 5.4 y 5.6 |
-| Incorporar alcance histórico y saneamiento: lotes libres, clientes duplicados y saldos de envases. | Históricos delimitados; originales preservados, equivalencias aprobadas y defectos aislados sin inventar historia. | 5.3.1–5.3.5; 5-C; 5-L, A.25 |
-| Migración sin volumen, herramientas, tiempos, ventana ni responsables. | Fuente 16,05478 GB; destino estimado 32,10956 GB; herramientas, responsables, dos ensayos, olas, corte y reversa. | 5.3; Tabla 5.2; 5-J; 5-L |
-| OK: índices para retiro, partición mensual y orden en mensajería. | Se conservan; claves globales sin partición y detalle temporal con identidad completa, outbox y deduplicación. | 5.4.2–5.4.5; 5-F–5-G |
-| La expresión de TPS base y crecimiento es ininteligible. | Se separan régimen 12,34 TPS, pico 14,66 y prueba 21,99; año 3 y crecimiento 3× son escenarios distintos. | 5.4.1; Tabla 5.3; 5.4.6 |
-| Identidad de bodega con TTL de 8 h frente a autonomía exigida de 24 h. | Se distinguen autonomía 24 h, identidad 24 h, turnos 8/14 h y manifiesto 26 h con relevos preinscritos. | 5.2.3; Tabla 5.1; 5-G |
-| OK: separación OLTP/analítica, latencias, retenciones, inmutabilidad e ISO 25012. | Se mantienen y precisan calidad, archivo, purga, retención legal y conservación de reglas interpretativas. | 5.2.5–5.2.7; 5-D–5-E; 5-H–5-I |
-| OK: detecta desajuste RT-05.10/RT-16.10 y lo eleva a consulta. | Correspondencia y consulta documentadas; plazos íntegros conservados. No se presume envío acreditado ni respuesta oficial. | 5.2.7; 5-D, A.14 |
-| Faltan esquema estrella dibujado, tableros, destinatarios e indicadores definidos. | Modelo dimensional con granos y claves; fórmulas, audiencia, latencia y linaje, incluido costo de servir. | 5.1.11; Figura 5.7; 5.2.6; 5-H |
-| RT-16.08 se atribuye a tres canales; corresponde RT-16.20. | RT-16.20 identifica canales y RT-16.08 consulta/exportación de auditoría. | 5.1.9; 5-B–5-C; A.8 |
-| Timbre diferido y guía ausente contradicen ERP único emisor y acompañamiento del traslado. | ERP emite antes del traslado; cambios requieren nueva guía válida. POD no sustituye documento fiscal. | 5.1.8; 5.3.6; 5-J, AL-DTE-01 |
-| OK: evidencia por receptor; falta mecanismo de acuse legal. | POD, acuse SII y recibo se diferencian; XML ERP/EDI o constancia impresa según perfil, conforme al Anexo 4-U. | 5.1.8; A.7; 5-C; 5-J |
-| Resaltado negro ilegible en páginas 3, 10, 13 y 14. | Retirados los bloques de código con fondo negro; contenido integrado en la plantilla de texto, tablas y figuras. | Cuerpo y anexos |
-| Metadatos finales citan documentos inexistentes. | Línea de metadatos retirada; referencias identifican Bases, propuesta y fuentes técnicas concretas. | Referencias del cuerpo y anexo |
-| Doble numeración 5.1/S5.1 y códigos internos sin explicación. | Numeración 5.1–5.4 y anexos 5-A–5-M; glosario y leyendas definen los identificadores necesarios. | Introducción; 5-A, glosario y A.1 |
-| Siglas sin definir, incluida la frase sobre FID. | FID y la frase observada se retiraron; glosario común y desarrollo de CAP en el texto. | Introducción; 5.2.1; 5-A |
-
-*Fuente: Informe 1, observaciones del Subdocumento 5, y secciones indicadas en cada fila.*
-
-Los ensayos referidos en las respuestas se ejecutan durante el proyecto, en los hitos que indica el Formulario T-14 (LafroX SpA., 2026c).
-
-<a id="anexo-5l"></a>
-
-## Anexo 5-L. Mapeo, cálculo de olas y ventana de corte
+## Anexo 5-K. Mapeo, cálculo de olas y ventana de corte
 
 Este anexo define el contrato de migración de 5.3. Los nombres físicos del legado se comprobarán durante el perfilado y se versionarán en el contrato de extracción. No se presentan nombres hipotéticos como esquema constatado.
 
-La Tabla A.25 relaciona conjuntos y campos críticos con las entidades reales de destino y el responsable que valida la conversión.
+La Tabla A.24 relaciona conjuntos y campos críticos con las entidades reales de destino y el responsable que valida la conversión.
 
-<a id="tab-a25"></a>
+<a id="tab-a24"></a>
 
-**Tabla A.25 — Mapeo semántico y validación de migración**
+**Tabla A.24 — Mapeo semántico y validación de migración**
 
 | Origen semántico / alcance | Destino y clave | Transformación versionada | Rechazo / conciliación | Responsable |
 | --- | --- | --- | --- | --- |
@@ -2020,11 +1983,11 @@ La Tabla A.25 relaciona conjuntos y campos críticos con las entidades reales de
 
 Cada campo transformado conserva valor de origen, regla/versión, clave y decisión. Un campo sin correspondencia no se omite silenciosamente: responsable decide migrar, corregir o conservar consulta con explicación aprobada.
 
-La Tabla A.26 calcula fases de carga inicial. Para volumen V en GB de fuente decimal y base ventas 10,476, cada fase es max(mínimo, techo(tiempo ventas × V/10,476)), mínimos 10/10/10/10/10/10/20 min. Son reservas de planificación, no tiempos medidos. Extracción usa bytes de fuente; transferencia bytes serializados reales, aquí provisionalmente iguales. Transformación/carga/índices usan la base medida en ensayo, no el factor 2 como tasa de red.
+La Tabla A.25 calcula fases de carga inicial. Para volumen V en GB de fuente decimal y base ventas 10,476, cada fase es max(mínimo, techo(tiempo ventas × V/10,476)), mínimos 10/10/10/10/10/10/20 min. Son reservas de planificación, no tiempos medidos. Extracción usa bytes de fuente; transferencia bytes serializados reales, aquí provisionalmente iguales. Transformación/carga/índices usan la base medida en ensayo, no el factor 2 como tasa de red.
 
-<a id="tab-a26"></a>
+<a id="tab-a25"></a>
 
-**Tabla A.26 — Duración calculada por fase y ola inicial**
+**Tabla A.25 — Duración calculada por fase y ola inicial**
 
 | Ola / fuente GB | Extracción / transferencia min | Transformación / carga / índices min | Delta / conciliación min | Total min |
 | --- | --- | --- | --- | --- |
@@ -2038,11 +2001,11 @@ La Tabla A.26 calcula fases de carga inicial. Para volumen V en GB de fuente dec
 
 La suma secuencial se distribuye en noches previas. La mayor ola, 285 min, cabe en 22:00–02:45, reserva de preparación 30 min y rollback 60 min da 375 min, 22:00–04:15. No equivale a detener la operación esas noches: origen sigue siendo escritor y el destino está en staging. Cartera viva adicional y trace perfilada obligan a recalcular cada fase y ampliar noches de carga inicial antes de aceptación.
 
-La Tabla A.27 fija la ventana relativa final propuesta; los dos ensayos deben demostrar que el delta real cabe. No se transfiere el escritor si el tiempo medido más rollback supera la ventana disponible.
+La Tabla A.26 fija la ventana relativa final propuesta; los dos ensayos deben demostrar que el delta real cabe. No se transfiere el escritor si el tiempo medido más rollback supera la ventana disponible.
 
-<a id="tab-a27"></a>
+<a id="tab-a26"></a>
 
-**Tabla A.27 — Ventana final, decisión y reserva de rollback**
+**Tabla A.26 — Ventana final, decisión y reserva de rollback**
 
 | Hito | Horario relativo propuesto | Control | Responsable |
 | --- | --- | --- | --- |
@@ -2057,9 +2020,9 @@ La Tabla A.27 fija la ventana relativa final propuesta; los dos ensayos deben de
 
 Se preserva despacho 05:30–07:00 y congelamientos septiembre/diciembre/cierre mensual. Si no-go ocurre antes, rollback comienza inmediatamente y usa la reserva, se registran tiempos, resultado y frontera recuperada. E1 M16 y E2 M21 requieren marcha blanca previa y últimas cuatro semanas con volumen real. RTO/RPO de S4 continúan siendo condiciones contractuales; esta reserva es hipótesis a demostrar, no resultado de recuperación.
 
-<a id="anexo-5m"></a>
+<a id="anexo-5l"></a>
 
-## Anexo 5-M. Correspondencia de modelos y diccionario
+## Anexo 5-L. Correspondencia de modelos y diccionario
 
 Todos los modelos se presentan en la sección 5.1 del Subdocumento 5. La Figura 5.1 muestra el MR general; las Figuras 5.2–5.7 desarrollan inventario, pedido/preparación, reparto, custodia, cobranza/documentos y analítica; las Figuras 5.8–5.10 muestran maestros, EDI/gobierno y telemetría. Este anexo no duplica esas figuras. El diccionario 5-A conserva sus atributos, tipos, dominios y restricciones, y 5-B/5-C precisan integridad y validación.
 
@@ -2077,7 +2040,6 @@ Todos los modelos se presentan en la sección 5.1 del Subdocumento 5. La Figura 
 - International Organization for Standardization. (2019). *ISO 8601-1:2019: Date and time — Representations for information interchange — Part 1: Basic rules*. [Enlace](https://www.iso.org/standard/70907.html)
 - LafroX SpA. (2026a). *Arquitectura* [Subdocumento 4, anexos y Formulario T-11].
 - LafroX SpA. (2026b). *Esquema de solución y alcance* [Subdocumento 3, anexos y Formulario T-12].
-- LafroX SpA. (2026c). *Formulario T-14: Plan de trabajo, EDT y carta Gantt*.
 - LafroX SpA. (2026d). *Innovaciones* [Subdocumento 13].
 - LafroX SpA. (2026e). *Modelo y gestión de datos* [Subdocumento 5].
 - LafroX SpA. (2026f). *Presentación de la empresa* [Subdocumento 1].

@@ -113,7 +113,7 @@ La Tabla [1.2](LAFROX-Subdocumento1.md#tab:puestos_operaciones) distingue los pu
 | NOC | 8 | 6 | 2 |
 | Mesa de Servicios | 8 | Hasta 7 | 1 |
 
-El NOC mantiene seis puestos activos de supervisión continua y dos habilitados para relevos o contingencias. La mesa dispone de siete puestos de atención y uno de reserva. Los agentes son las personas que atienden a los usuarios y utilizan esos puestos. Su dotación y sus turnos se dimensionan para cada servicio contratado. Los agentes de mesa y los analistas contratados del SOC se contabilizan por separado de los 124 especialistas de la Tabla [1.3](LAFROX-Subdocumento1.md#tab:dotacion). El dimensionamiento de la mesa para Puelche se detalla en el Subdocumento 4, Anexo 4-W.7, y el Formulario T-15, secciones 4.2 y 5.6.
+El NOC mantiene seis puestos activos de supervisión continua y dos habilitados para relevos o contingencias. La mesa dispone de siete puestos de atención y uno de reserva. Los agentes son las personas que atienden a los usuarios y utilizan esos puestos. Su dotación y sus turnos se dimensionan para cada servicio contratado. Los agentes de mesa y los analistas contratados del SOC se contabilizan por separado de los 124 especialistas de la Tabla [1.3](LAFROX-Subdocumento1.md#tab:dotacion). El dimensionamiento de la mesa para Puelche se detalla en el Subdocumento 4, Anexo 4-W.7, y el Formulario T-15, secciones 7.4.1 y 7.5.6.
 
 El catálogo de la empresa se organiza en productos de software, servicios profesionales y servicios de infraestructura y conectividad.
 
@@ -318,7 +318,7 @@ Los tres primeros clientes corresponden a los proyectos detallados en el T-6. La
 
 ## 1.5 Estructura para Proyecto
 
-La organización del proyecto mantiene una jefatura responsable durante los 56 meses del contrato y separa la dirección de las especialidades técnicas (Distribuidora Puelche S.A., 2026a, Art. 17°).
+La organización del proyecto mantiene una jefatura responsable durante los 56 meses del contrato, que incluyen los 36 meses de operación desde el mes 21, y separa la dirección de las especialidades técnicas (Distribuidora Puelche S.A., 2026a, Art. 17°).
 
 El proyecto será liderado de forma exclusiva y continua por el Jefe de Proyecto nominado, **Alex Aravena**, quien actuará como interlocutor único frente a la contraparte técnica y directiva del cliente. Reportando directamente al Jefe de Proyecto, se constituye un comité técnico compuesto por siete líderes de dominio especializados, que cubren los roles mínimos del numeral 19.2 de las Bases Técnicas Transversales según la Tabla [1.6](LAFROX-Subdocumento1.md#tab:roles_minimos):
 
@@ -355,7 +355,7 @@ La Tabla [1.6](LAFROX-Subdocumento1.md#tab:roles_minimos) resume la asignación 
 | Líder de Operación / SRE | Guillermo Castillo | Meses 1–56; 100% en Operación (21–56) |
 | Líder de Implantación | Patricio Henríquez | Incluido en el 100% de meses 1–21 |
 
-Los diez roles se distribuyen entre ocho personas: Trejo asume Arquitectura e Integración y Henríquez, el frente Funcional y la Implantación. Esa acumulación no suma dos dedicaciones de 100% para una misma persona. Trejo dirige el equipo de interfaces con ERP y terceros; Henríquez coordina el levantamiento, las reglas de negocio, los prototipos y las pruebas de aceptación con analistas funcionales y el equipo de implantación. Los recursos de apoyo se programan en el T-15, sección 5.7 del Subdocumento 7.
+Los diez roles se distribuyen entre ocho personas: Trejo asume Arquitectura e Integración y Henríquez, el frente Funcional y la Implantación. Esa acumulación no suma dos dedicaciones de 100% para una misma persona. Trejo dirige el equipo de interfaces con ERP y terceros; Henríquez coordina el levantamiento, las reglas de negocio, los prototipos y las pruebas de aceptación con analistas funcionales y el equipo de implantación. Los recursos de apoyo se programan en el T-15, sección 7.5.7 del Subdocumento 7.
 
 La participación de Operación desde el mes 1 cubre el mínimo de incorporación desde el mes 6; Implantación participa desde el mes 1 y cubre el mínimo del mes 8. Si la carga de las marchas blancas lo requiere, se nomina un Líder de Implantación separado sin reducir la dedicación del Líder Funcional. La experiencia y las cartas de compromiso se acreditan conforme a las Bases. Durante los meses 1–4, Desarrollo trabaja en diseño y prototipos, antes de la construcción.
 
@@ -399,7 +399,7 @@ Las fuentes citadas en este documento se listan a continuación en formato APA 7
 
 - LafroX. (2026b). *Subdocumento 6: Metodologías*.
 
-- LafroX. (2026c). *Subdocumento 7: Plan de trabajo. Formulario T-15: Nivelación de recursos*.
+- LafroX. (2026c). *Subdocumento 7: Plan de trabajo, EDT, cronograma e implantación. Formulario T-15: Nivelación de recursos*.
 
 - SGS. (2024). *Certificado de Sistema de Gestión de Servicios de TI ISO/IEC 20000-1:2018 N° CL21/8190*. SGS United Kingdom Ltd.
 
@@ -419,4 +419,4 @@ La Tabla [1.7](LAFROX-Subdocumento1.md#tab:declaracion_ia) identifica las herram
 | 1.4 | Claude / Gemini; OpenAI Codex | Comparación de experiencia y SLA | Alto | No aplica | Alex Aravena: Se validaron la experiencia y los proyectos realizados. |
 | 1.5 | Claude / Gemini; Claude Code; OpenAI Codex | Síntesis de roles y dedicaciones | Alto | No aplica | Alex Aravena: Se validaron la estructura del proyecto y su jerarquía. |
 | 1.6 | Claude / Gemini; OpenAI Codex | Redacción de alcance de alianzas | Alto | No aplica | Alex Aravena: Se validaron las alianzas establecidas. |
-| T-6 | Claude / Gemini; OpenAI Codex | Formato, introducción y referencias | Alto | No aplica | Alex Aravena |
+| T-6 | Claude / Gemini; OpenAI Codex | Formato, introducción y referencias | Alto | No aplica | Alex Aravena: Se verificaron los once campos de los tres proyectos y su coherencia con la sección 1.4. |
