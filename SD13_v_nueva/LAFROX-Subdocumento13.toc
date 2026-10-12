@@ -25,12 +25,12 @@
 \contentsline {subsection}{\numberline {13.3.3}Nivel de madurez}{29}{subsection.13.3.3}%
 \contentsline {subsection}{\numberline {13.3.4}Diseño de la incorporación}{30}{subsection.13.3.4}%
 \contentsline {subsection}{\numberline {13.3.5}Impacto económico}{32}{subsection.13.3.5}%
-\contentsline {subsection}{\numberline {13.3.6}Indicador de verificación}{33}{subsection.13.3.6}%
+\contentsline {subsection}{\numberline {13.3.6}Indicador de verificación}{34}{subsection.13.3.6}%
 \contentsline {subsection}{\numberline {13.3.7}Riesgo de adopción}{35}{subsection.13.3.7}%
-\contentsline {section}{\numberline {13.4}Innovación 4}{36}{section.13.4}%
+\contentsline {section}{\numberline {13.4}Innovación 4}{35}{section.13.4}%
 \contentsline {subsection}{\numberline {13.4.1}Problema u oportunidad}{36}{subsection.13.4.1}%
 \contentsline {subsection}{\numberline {13.4.2}Tecnología, práctica o modelo}{36}{subsection.13.4.2}%
-\contentsline {subsection}{\numberline {13.4.3}Nivel de madurez}{38}{subsection.13.4.3}%
+\contentsline {subsection}{\numberline {13.4.3}Nivel de madurez}{37}{subsection.13.4.3}%
 \contentsline {subsection}{\numberline {13.4.4}Diseño de la incorporación}{38}{subsection.13.4.4}%
 \contentsline {subsection}{\numberline {13.4.5}Impacto económico}{40}{subsection.13.4.5}%
 \contentsline {subsection}{\numberline {13.4.6}Indicador de verificación}{41}{subsection.13.4.6}%
