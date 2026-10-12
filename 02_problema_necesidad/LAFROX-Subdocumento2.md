@@ -98,7 +98,7 @@ Esta sección cuantifica las brechas con las cifras del caso y analiza los seis 
 
 Para dimensionar la magnitud del desafío, la Tabla 2.1 reúne los indicadores de la situación actual (*AS-IS*) que el caso entrega para el ejercicio 2025, la referencia o meta asociada a cada uno y el efecto que producen en la operación.
 
-**Tabla 2.1 — Brechas operacionales de Distribuidora Puelche S.A. Fuente: Distribuidora Puelche S.A. (2026c, cap. 7, tablas 7.1 a 7.3, pp. 11–12, y cap. 18, p. 34); las metas de merma y envases son de elaboración propia.**
+**Tabla 2.1 — Brechas operacionales de Distribuidora Puelche S.A. Fuente: Distribuidora Puelche S.A. (2026c, cap. 7, tablas 7.1 a 7.3, pp. 11–12, y cap. 18, p. 34); las metas de merma y envases son propuestas por LafroX.**
 
 | Indicador | Valor 2025 | Referencia o meta | Efecto en la operación |
 | --- | ---: | --- | --- |
@@ -141,7 +141,7 @@ Como se aprecia en la Figura 2.1, el flujo comercial parte con el preventista vi
 
 [Ver Figura 2.1](<figuras/figura 2.1.pdf>)
 
-**Figura 2.1 Proceso de Preventa y Toma de Pedidos AS-IS. Fuente: elaboración propia.**
+**Figura 2.1 Proceso de Preventa y Toma de Pedidos AS-IS. Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026c, secciones 4.3 y 7.1, pp. 7–8 y 11).**
 
 1. El preventista visita presencialmente al cliente; participan 62 preventistas.
 
@@ -175,7 +175,7 @@ En la Figura 2.2 se ilustra el registro de recepciones en los muelles de los cen
 
 [Ver Figura 2.2](<figuras/figura 2.2.pdf>)
 
-**Figura 2.2 Proceso de Recepción de Mercadería y Control de Lotes AS-IS. Fuente: elaboración propia.**
+**Figura 2.2 Proceso de Recepción de Mercadería y Control de Lotes AS-IS. Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026c, secciones 2.2 y 4.1, pp. 4 y 7).**
 
 En la Figura 2.2 se ve que el lote se pierde en el paso 3, en el andén, y ningún paso posterior lo recupera: bodega, preparación y despacho mueven la mercadería sin saber de qué lote es. Por eso el retiro de marzo tomó 9 días: hubo que reconstruir con papeles y memoria lo que nunca se registró al recibir. El 41 % corresponde solo al producto del retiro; cuánto falta en las demás recepciones se desconoce (Anexo 2.2, SP-03) y es lo primero que conviene medir.
 
@@ -185,7 +185,7 @@ La operación de las tres plataformas de cross-docking (Curicó, Chillán y Los 
 
 [Ver Figura 2.3](<figuras/figura 2.3.pdf>)
 
-**Figura 2.3 Proceso de Preparación y Cross-Docking AS-IS. Fuente: elaboración propia.**
+**Figura 2.3 Proceso de Preparación y Cross-Docking AS-IS. Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026c, cap. 3, p. 6).**
 
 1. En Talca se consolida la carga de cada plataforma en el camión de línea.
 
@@ -215,7 +215,7 @@ El proceso de diagramación de despachos y asignación de vehículos se ilustra 
 
 [Ver Figura 2.4](<figuras/figura 2.4.pdf>)
 
-**Figura 2.4 Proceso de Planificación de Rutas AS-IS. Fuente: elaboración propia.**
+**Figura 2.4 Proceso de Planificación de Rutas AS-IS. Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026c, secciones 4.4 y 4.6, p. 8).**
 
 El cuello de botella de la Figura 2.4 es una persona. El planificador tarda 3,5 horas diarias en armar las rutas con una planilla de once hojas que solo él entiende, y cuando sale de vacaciones el cumplimiento de entrega cae entre seis y nueve puntos (Distribuidora Puelche S.A., 2026c, sección 4.4, p. 8). La ocupación de 68 %, que baja a 41 % en los días de menor carga, se explica porque el método manual no permite probar alternativas, no por falta de esfuerzo. Si se jubila sin dejar sus reglas por escrito, ese conocimiento se va con él.
 
@@ -235,7 +235,7 @@ La interacción en la última milla entre los camiones de reparto y los puntos d
 
 [Ver Figura 2.5](<figuras/figura 2.5.pdf>)
 
-**Figura 2.5 Proceso de Reparto y Entrega AS-IS. Fuente: elaboración propia.**
+**Figura 2.5 Proceso de Reparto y Entrega AS-IS. Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026c, sección 4.6, pp. 8–9).**
 
 En la Figura 2.5, la entrega es donde se cierran o se rompen los procesos anteriores. Como no hay regla escrita para el local cerrado, cada conductor resuelve a su manera y la reentrega no queda registrada con su causa. El retorno de mercadería tampoco equivale siempre a una reentrega. La única prueba de entrega es la guía firmada en papel: si se pierde (1,1 % al mes), aclarar un reclamo toma en promedio 12 días.
 
@@ -247,7 +247,7 @@ Por último, la liquidación de valores cobrados en efectivo se esquematiza en l
 
 [Ver Figura 2.6](<figuras/figura 2.6.pdf>)
 
-**Figura 2.6 Proceso de Rendición y Cobranza AS-IS. Fuente: elaboración propia.**
+**Figura 2.6 Proceso de Rendición y Cobranza AS-IS. Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026c, sección 4.7, p. 9).**
 
 1. Se cobra en efectivo contra entrega; el 38 % de las ventas del canal tradicional se cobra así y el resto se factura a 30 días.
 
@@ -271,7 +271,7 @@ El éxito del proyecto depende de alinear a los 19 actores que conforman el ecos
 
 La Tabla 2.2 ubica a los 19 actores en una matriz de influencia e interés, con los niveles que les asigna el Anexo 2.3.
 
-**Tabla 2.2 — Matriz de influencia e interés de los 19 actores. Fuente: elaboración propia a partir de Distribuidora Puelche S.A. (2026c, caps. 2 y 8, pp. 4–5 y 13–17) y del Anexo 2.3.**
+**Tabla 2.2 — Matriz de influencia e interés de los 19 actores. Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026c, caps. 2 y 8, pp. 4–5 y 13–17) y del Anexo 2.3.**
 
 | Influencia | Interés alto | Interés muy alto |
 | --- | --- | --- |
@@ -373,19 +373,19 @@ Las fuentes citadas en este documento se listan a continuación en formato APA 7
 
 ## Declaración de uso de IA
 
-La Tabla 2.4 declara el uso asistido de herramientas de inteligencia artificial en la elaboración del presente subdocumento.
+La Tabla 2.4 declara el uso asistido de herramientas de inteligencia artificial en la elaboración del presente subdocumento y de sus anexos.
 
 **Tabla 2.4 Declaración de uso de IA por sección del Subdocumento 2. Fuente: registro del equipo.**
 
 | Sección | Herramienta | Finalidad del uso | Nivel en texto | Nivel en diagramas | Revisión humana (quién y qué verificó) |
 | --- | --- | --- | --- | --- | --- |
-| 2.1 Resumen Ejec. | Claude / Gemini | Síntesis ejecutiva y estilo formal | Bajo | Ninguno | Alex Aravena (JP): Validación del resumen y propuesta de valor |
-| 2.2 Comprensión | Claude / Gemini | Estructuración de los 3 problemas | Bajo | Ninguno | Patricio Henríquez (Gest): Verificación de arbitraje de tensiones |
-| 2.3 Dimensionamiento | Claude / Gemini | Descripción estructurada de los 6 flujos AS-IS | Bajo | Medio | Tomás Pérez (Des): Verificación de flujos AS-IS y cálculos |
-| 2.4 Actores | Claude / Gemini | Disposición tabular de actores | Bajo | Ninguno | Patricio Henríquez (Gest): Consistencia con catálogo de actores |
-| 2.5 Requerimientos | Claude / Gemini | Formato y redacción de supuestos | Bajo | Ninguno | Bastián Trejo (Arq): Deslinde de supuestos vs restricciones |
-| Anexo 2.1 | Claude / Gemini | Maquetación del listado de requerimientos | Bajo | Ninguno | Bastián Trejo (Arq): Coherencia con el catálogo canónico |
-| Anexo 2.2 | Claude / Gemini | Consolidación de decisiones, exclusiones y restricciones | Bajo | Ninguno | Alex Aravena (JP): Cotejo con los capítulos 10, 11 y 16.1 del caso |
-| Anexo 2.3 | Claude / Gemini | Maquetación de actores y sistemas legados | Bajo | Ninguno | Patricio Henríquez (Gest): Cotejo de actores, cifras y sistemas con el caso |
+| 2.1 Resumen Ejec. | Claude / Gemini | Síntesis ejecutiva y estilo formal | Bajo | Ninguno | Alex Aravena: revisión del resumen y validación de la propuesta de valor. |
+| 2.2 Comprensión | Claude / Gemini | Estructuración de los 3 problemas | Bajo | Ninguno | Alex Aravena: revisión de los tres problemas frente al caso. |
+| 2.3 Dimensionamiento | Claude / Gemini | Descripción estructurada de los 6 flujos AS-IS | Bajo | Medio | Alex Aravena: revisión de los flujos y validación de los cálculos. |
+| 2.4 Actores | Claude / Gemini | Disposición tabular de actores | Bajo | Ninguno | Alex Aravena: validación de los actores frente al catálogo. |
+| 2.5 Requerimientos | Claude / Gemini | Formato y redacción de supuestos | Bajo | Ninguno | Alex Aravena: revisión de supuestos y restricciones. |
+| Anexo 2.1 | Claude / Gemini | Maquetación del listado de requerimientos | Bajo | Ninguno | Alex Aravena: validación del listado frente al catálogo. |
+| Anexo 2.2 | Claude / Gemini / Codex | Consolidación de decisiones, exclusiones y restricciones; alineación de S-09 con el precio registrado y el control de diferencias con el ERP | Alto | Ninguno | Alex Aravena: revisión frente a los capítulos 10, 11 y 16.1 del caso y validación de S-09. |
+| Anexo 2.3 | Claude / Gemini | Maquetación de actores y sistemas legados | Bajo | Ninguno | Alex Aravena: revisión de actores, cifras y sistemas. |
 
-La Tabla 2.4 muestra que la IA se usó como apoyo de síntesis, estructura y formato en cada sección, y que cada fila declara el integrante que revisó esa sección.
+La Tabla 2.4 muestra que la IA se usó como apoyo de síntesis, estructura y formato, con un uso mayor sólo en la alineación de S-09 del Anexo 2.2, y que cada sección fue revisada por un integrante del equipo.

@@ -12,7 +12,7 @@ Cuando un parámetro no está definido entre los requisitos del CLIENTE, LafroX 
 
 La Tabla 3.A.1 presenta los requerimientos funcionales de Distribuidora Puelche, ordenados por épica. Los identificadores RF-06.06 y RF-07.01 son requisitos propios de LafroX que completan las épicas 6 y 7: la hora real de llegada y término de la entrega y el monto esperado de rendición por camión. Se detallan en la Tabla 3.A.3b.
 
-**Tabla 3.A.1 — Requerimientos funcionales del caso. Fuente: elaboración propia a partir de los requerimientos de Distribuidora Puelche y del Anexo 2.1 del Subdocumento 2 (LafroX, 2026a).**
+**Tabla 3.A.1 — Requerimientos funcionales del caso. Fuente: elaboración a partir de los requerimientos de Distribuidora Puelche y del Anexo 2.1 del Subdocumento 2 (LafroX, 2026a).**
 
 | ID | Actor | Descripción | Precondición | Resultado esperado | Prioridad / etapa | Origen |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -179,7 +179,7 @@ Cada familia del Subdocumento 2 tiene al menos un requerimiento detallado que la
 
 La Tabla 3.A.3 presenta los requerimientos funcionales derivados de las Bases Técnicas Transversales.
 
-**Tabla 3.A.3 — Requerimientos funcionales derivados de las Bases Técnicas Transversales. Fuente: elaboración propia a partir de las Bases Técnicas Transversales.**
+**Tabla 3.A.3 — Requerimientos funcionales derivados de las Bases Técnicas Transversales. Fuente: elaboración a partir de las Bases Técnicas Transversales.**
 
 | ID | Título y actor | Descripción | Precondición | Resultado esperado | Prioridad / etapa | Origen |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -222,7 +222,7 @@ Los identificadores RF-14.01 a RF-14.05 corresponden a telemetría en el catálo
 
 La Tabla 3.A.3a registra materias funcionales complementarias: requisitos propios que LafroX agrega al catálogo y materias que se responden mediante un requisito transversal.
 
-**Tabla 3.A.3a — Materias funcionales complementarias. Fuente: elaboración propia a partir de los requerimientos de Distribuidora Puelche, las Bases Técnicas Transversales y el Anexo 2.2 del Subdocumento 2 (LafroX, 2026a).**
+**Tabla 3.A.3a — Materias funcionales complementarias. Fuente: elaboración a partir de los requerimientos de Distribuidora Puelche, las Bases Técnicas Transversales y el Anexo 2.2 del Subdocumento 2 (LafroX, 2026a).**
 
 | ID | Materia | Disposición y fuente |
 | --- | --- | --- |
@@ -240,7 +240,7 @@ La Tabla 3.A.3a registra materias funcionales complementarias: requisitos propio
 
 La tabla distingue dos grupos. Los ofertados (RF-06.06, RF-07.01, RF-09.10 y RF-10.01 a RF-10.03) son requisitos propios de LafroX que se suman al compromiso y se detallan en la Tabla 3.A.3b, junto con RF-02.11 y RF-06.14, que materializan las familias F-05 y F-09. Los demás son alias absorbidos por el RT indicado; no reducen una obligación de las Bases.
 
-**Tabla 3.A.3b — Requisitos propios ofertados. Fuente: elaboración propia a partir de la Tabla 3.A.3a, los requerimientos de Distribuidora Puelche y el Anexo 2.2 del Subdocumento 2 (LafroX, 2026a).**
+**Tabla 3.A.3b — Requisitos propios ofertados. Fuente: elaboración a partir de la Tabla 3.A.3a, los requerimientos de Distribuidora Puelche y el Anexo 2.2 del Subdocumento 2 (LafroX, 2026a).**
 
 | ID | Actor | Descripción | Precondición | Resultado esperado | Prioridad / Etapa | Origen |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -259,7 +259,7 @@ El catálogo no funcional reúne **86 requerimientos**, todos ofertados en el Fo
 
 La Tabla 3.A.4 presenta los requerimientos no funcionales de Distribuidora Puelche.
 
-**Tabla 3.A.4 — Requerimientos no funcionales del caso. Fuente: elaboración propia a partir de los requerimientos de Distribuidora Puelche y del Anexo 2.1 del Subdocumento 2 (LafroX, 2026a).**
+**Tabla 3.A.4 — Requerimientos no funcionales del caso. Fuente: elaboración a partir de los requerimientos de Distribuidora Puelche y del Anexo 2.1 del Subdocumento 2 (LafroX, 2026a).**
 
 | ID | Materia | Umbral o criterio | Verificación prevista | Prioridad / etapa | Origen |
 | --- | --- | --- | --- | --- | --- |
@@ -292,7 +292,7 @@ Los identificadores RNF-03-01, RNF-03-02 y RNF-03-03 del catálogo consolidado s
 
 RT-13.04 exige comprometer, para cada perfil, el tiempo máximo de la transacción operacional crítica, el número máximo de pasos, la tasa de error tolerada y el tiempo de aprendizaje (*Bases Técnicas Transversales*, 2026, cap. 13, RT-13.04). La Tabla 3.A.4a los fija para los cuatro perfiles que operan en bodega y en terreno. Los tiempos provienen de los requerimientos citados; los pasos y, fuera de la preparación, la tasa de error y el aprendizaje son compromisos de LafroX. Un paso es una interacción de la persona con el terminal, sin contar las validaciones automáticas, y la tasa de error es la proporción de transacciones que la persona debe corregir o rehacer. La prueba de usabilidad con personas reales de cada perfil los mide (Subdocumento 9, métrica 9A-18).
 
-**Tabla 3.A.4a — Indicadores de usabilidad comprometidos por perfil. Fuente: elaboración propia a partir de los requerimientos de Distribuidora Puelche, de las Bases Técnicas Transversales y del Formulario T-14.**
+**Tabla 3.A.4a — Indicadores de usabilidad comprometidos por perfil. Fuente: elaboración a partir de los requerimientos de Distribuidora Puelche, de las Bases Técnicas Transversales y del Formulario T-14.**
 
 | Perfil | Transacción operacional crítica | Tiempo máximo | Pasos máximos | Tasa de error tolerada | Tiempo de aprendizaje |
 | --- | --- | --- | --- | --- | --- |
@@ -303,7 +303,7 @@ RT-13.04 exige comprometer, para cada perfil, el tiempo máximo de la transacci�
 
 La Tabla 3.A.5 presenta los requerimientos no funcionales derivados de las Bases Técnicas Transversales.
 
-**Tabla 3.A.5 — Requerimientos no funcionales derivados de las Bases Técnicas Transversales. Fuente: elaboración propia a partir de las Bases Técnicas Transversales.**
+**Tabla 3.A.5 — Requerimientos no funcionales derivados de las Bases Técnicas Transversales. Fuente: elaboración a partir de las Bases Técnicas Transversales.**
 
 | ID | Materia | Umbral o criterio | Verificación prevista | Prioridad / etapa | Origen |
 | --- | --- | --- | --- | --- | --- |
@@ -390,7 +390,7 @@ Las cinco condiciones rectoras quedan cubiertas por requerimientos detallados co
 
 La Tabla 3.A.5b detalla los cuatro requisitos no funcionales propios de LafroX, con umbral y verificación.
 
-**Tabla 3.A.5b — Requisitos no funcionales propios ofertados. Fuente: elaboración propia de LafroX a partir de los requerimientos de Distribuidora Puelche, las Bases Técnicas Transversales y el Anexo 2.2 del Subdocumento 2 (LafroX, 2026a).**
+**Tabla 3.A.5b — Requisitos no funcionales propios ofertados. Fuente: elaboración a partir de los requerimientos de Distribuidora Puelche, las Bases Técnicas Transversales y el Anexo 2.2 del Subdocumento 2 (LafroX, 2026a).**
 
 | ID | Materia | Umbral o criterio | Verificación prevista | Prioridad / etapa | Origen |
 | --- | --- | --- | --- | --- | --- |
@@ -407,7 +407,7 @@ Los supuestos S-01 a S-16 recogen las decisiones formuladas en el Anexo 2.2 del 
 
 La Tabla 3.A.6 presenta los supuestos de la oferta.
 
-**Tabla 3.A.6 — Supuestos de la oferta. Fuente: elaboración propia a partir de los requerimientos de Distribuidora Puelche y del Anexo 2.2 del Subdocumento 2 (LafroX, 2026a) y sección «Arbitraje de tensiones operacionales y comerciales» del Subdocumento 2 (LafroX, 2026c).**
+**Tabla 3.A.6 — Supuestos de la oferta. Fuente: elaboración a partir de los requerimientos de Distribuidora Puelche y del Anexo 2.2 del Subdocumento 2 (LafroX, 2026a) y sección «Arbitraje de tensiones operacionales y comerciales» del Subdocumento 2 (LafroX, 2026c).**
 
 | ID | Supuesto adoptado | Fundamento | Impacto si resulta falso | Validación | Origen |
 | --- | --- | --- | --- | --- | --- |
@@ -486,7 +486,7 @@ Se presentan las doce restricciones operacionales de Distribuidora Puelche. Cada
 
 La Tabla 3.A.8 presenta estas restricciones.
 
-**Tabla 3.A.8 — Restricciones del caso. Fuente: elaboración propia a partir de las restricciones operacionales de Distribuidora Puelche y del Anexo 2.2 del Subdocumento 2 (LafroX, 2026a).**
+**Tabla 3.A.8 — Restricciones del caso. Fuente: elaboración a partir de las restricciones operacionales de Distribuidora Puelche y del Anexo 2.2 del Subdocumento 2 (LafroX, 2026a).**
 
 | ID | Restricción | Origen |
 | --- | --- | --- |
@@ -511,7 +511,7 @@ Las decisiones registran las elecciones de LafroX que no son exigencia directa d
 
 La Tabla 3.A.9 presenta el registro de decisiones.
 
-**Tabla 3.A.9 — Registro de decisiones de alcance y diseño. Fuente: elaboración propia; Bases y Subdocumentos 1 y 2 según se indica.**
+**Tabla 3.A.9 — Registro de decisiones de alcance y diseño. Fuente: elaboración a partir de las Bases y de los Subdocumentos 1 y 2, según se indica en cada fila.**
 
 | ID | Materia | Decisión | Fundamento |
 | --- | --- | --- | --- |
@@ -522,11 +522,11 @@ La Tabla 3.A.9 presenta el registro de decisiones.
 | D-05 | Reposición | La sugerencia de reposición considera venta real, estacionalidad, promociones comprometidas y plazo de cada proveedor. El Jefe de Abastecimiento la revisa y aprueba antes de su traspaso al ERP, que conserva la emisión de las órdenes de compra. Toda modificación de la sugerencia registra responsable y motivo. | (LafroX, 2026a, Tabla 2.A.8); RF-10.01 a RF-10.03. Sustituye la planilla de reposición y mantiene la aprobación humana antes de generar la compra. |
 | D-06 | Implantación | La implantación se realiza gradualmente por proceso, sitio o zona, con usuarios capacitados y conciliación diaria durante la convivencia con la operación vigente. El Gerente de Operaciones valida el avance de cada ola según sus criterios documentados. | *Bases Administrativas* (2026, art. 17.3, p. 13); *Bases Técnicas Transversales* (2026, cap. 20, RT-20.02–RT-20.04, p. 35). El avance exige evidencia de preparación operacional y aceptación del alcance correspondiente. |
 | D-07 | Reversión | El responsable operativo del CLIENTE autoriza la reversión y el Jefe de Proyecto de LafroX coordina su ejecución. Los registros capturados se conservan para su conciliación posterior. | *Bases Técnicas Transversales* (2026, cap. 20, RT-20.02, p. 35); (LafroX, 2026b, sección «Estructura para Proyecto»); (LafroX, 2026a, Anexo 2.2, S-14). Preserva la evidencia y evita pérdida o duplicación. |
-| D-08 | Modo desconectado | Terreno registra la jornada íntegra durante 14 h sin cobertura; el CD recibe, prepara y despacha durante 24 h sin enlace. Captura local, identificador único y sincronización idempotente: máximo 10 min para reparto y 2 h para CD tras reconectar. | *Bases Técnicas Transversales* (2026, cap. 3, RT-03.12, p. 9); (LafroX, 2026a, Anexo 2.2, S-08): stock local indicativo, reserva al confirmar en el servidor y conflictos resueltos al sincronizar con notificación del quiebre. |
-| D-09 | Analítica avanzada | Ruteo determinístico y explicable; la solución no incorpora componentes de inteligencia artificial. | El planificador debe revisar y corregir la ruta (R18-07; LafroX, 2026a, Anexo 2.1, F-06; Anexo 2.2, S-16). La incorporación de IA no es obligatoria (*Bases Técnicas Transversales*, 2026, cap. 18, párrafo introductorio, p. 32). |
+| D-08 | Modo desconectado | Los dispositivos de terreno registran la jornada íntegra durante 14 h sin cobertura, y el CD recibe, prepara y despacha durante 24 h sin enlace. Cada registro se captura localmente con un identificador único y se sincroniza de forma idempotente al reconectar: en un máximo de 10 minutos para reparto y de 2 horas para el CD. | *Bases Técnicas Transversales* (2026, cap. 3, RT-03.12, p. 9); (LafroX, 2026a, Anexo 2.2, S-08): stock local indicativo, reserva al confirmar en el servidor y conflictos resueltos al sincronizar con notificación del quiebre. |
+| D-09 | Analítica avanzada | El ruteo es determinístico y explicable, y la solución no incorpora componentes de inteligencia artificial. | El planificador debe revisar y corregir la ruta (R18-07; LafroX, 2026a, Anexo 2.1, F-06; Anexo 2.2, S-16). La incorporación de IA no es obligatoria (*Bases Técnicas Transversales*, 2026, cap. 18, párrafo introductorio, p. 32). |
 | D-10 | Mesa de servicio | Los incidentes críticos y altos se atienden 24×7×365, con tiempos máximos de respuesta de 15 minutos y 1 hora, y de resolución de 4 y 8 horas, respectivamente. La atención general a usuarios opera de 04:00 a 22:00 de lunes a sábado y 24×7 en septiembre y diciembre. Cada incidente se registra en un ticket único, se clasifica por severidad y se escala entre los niveles L1, L2 y L3 según corresponda, con seguimiento hasta su cierre. | *Bases Administrativas* (2026, art. 78.2, p. 40); *Bases Administrativas* (2026, art. 79, pp. 40–41); *Bases Técnicas Transversales* (2026, cap. 21, RT-21.15, p. 37); (LafroX, 2026b, sección «Centro de Operaciones y Mesa de Servicios»). |
-| D-11 | Ambientes | Cinco ambientes: DEV, QA, PREPROD, PROD y DR, habilitados y operativos para H3. Capacitación usa un espacio aislado con datos ficticios; no constituye un sexto ambiente. | (LafroX, 2026b, sección «Presentación de la empresa»); *Bases Técnicas Transversales* (2026, cap. 4, RT-04.01, p. 10). |
-| D-12 | Cobertura de pruebas | Dos umbrales bloqueantes e independientes: 70 % de cobertura de la lógica de negocio y 80 % de cobertura unitaria global. | El 70 % es el mínimo de *Bases Técnicas Transversales* (2026, cap. 4, RT-04.11, p. 11); el 80 % global es la política del Subdocumento 1 (LafroX, 2026b, sección 1.3.1 «Modelo de Gobierno de Calidad», dentro de 1.3 «Gobierno interno Calidad, Seguridad y Conocimiento»). Ninguno reemplaza al otro (Formulario T-10). |
+| D-11 | Ambientes | La solución dispone de cinco ambientes —DEV, QA, PREPROD, PROD y DR—, habilitados y operativos para H3. La capacitación usa un espacio aislado con datos ficticios, que no constituye un sexto ambiente. | (LafroX, 2026b, sección «Presentación de la empresa»); *Bases Técnicas Transversales* (2026, cap. 4, RT-04.01, p. 10). |
+| D-12 | Cobertura de pruebas | La cadena de integración aplica dos umbrales bloqueantes e independientes: 70 % de cobertura de la lógica de negocio y 80 % de cobertura unitaria global. | El 70 % es el mínimo de *Bases Técnicas Transversales* (2026, cap. 4, RT-04.11, p. 11); el 80 % global es la política del Subdocumento 1 (LafroX, 2026b, sección 1.3.1 «Modelo de Gobierno de Calidad», dentro de 1.3 «Gobierno interno Calidad, Seguridad y Conocimiento»). Ninguno reemplaza al otro (Formulario T-10). |
 
 Las decisiones D-03, D-11 y D-12 unifican valores que antes tenían más de una versión. Cualquier cambio posterior se registra en este anexo antes de modificar el catálogo.
 
@@ -536,7 +536,7 @@ Las reglas precisan qué se captura, quién decide y qué consecuencia tiene cad
 
 La Tabla 3.A.10 presenta el registro de reglas de negocio.
 
-**Tabla 3.A.10 — Registro de reglas de negocio. Fuente: elaboración propia a partir de los requerimientos de Distribuidora Puelche y del Anexo 2.2 del Subdocumento 2 (LafroX, 2026a).**
+**Tabla 3.A.10 — Registro de reglas de negocio. Fuente: elaboración a partir de los requerimientos de Distribuidora Puelche y del Anexo 2.2 del Subdocumento 2 (LafroX, 2026a).**
 
 | ID | Materia | Qué y dónde se captura | Quién decide | Consecuencia y RF |
 | --- | --- | --- | --- | --- |
@@ -656,7 +656,7 @@ Cada uno de los dieciséis resultados de aceptación tiene una meta, un momento 
 
 La Tabla 3.A.13 presenta los criterios de aceptación.
 
-**Tabla 3.A.13 — Criterios de aceptación. Fuente: elaboración propia a partir de los resultados de aceptación exigidos por Distribuidora Puelche, con metas propuestas por LafroX donde se indica.**
+**Tabla 3.A.13 — Criterios de aceptación. Fuente: elaboración a partir de los resultados de aceptación exigidos por Distribuidora Puelche, con metas propuestas por LafroX donde se indica.**
 
 | ID | Resultado exigido | Situación actual | Meta | Momento / método |
 | --- | --- | --- | --- | --- |
@@ -760,14 +760,14 @@ La Tabla 3.A.15 registra la asistencia utilizada.
 
 | Sección | Herramienta | Finalidad del uso | Nivel en texto | Nivel en diagramas | Revisión humana (quién y qué verificó) |
 | --- | --- | --- | --- | --- | --- |
-| 3.A | Codex; Claude Code | Conversión del catálogo funcional a tablas y contraste con las Bases; alineación de RF-03.11 y RF-03.12 con S-09. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
-| 3.B | Codex; Claude Code | Conversión del catálogo no funcional a tablas y contraste con las Bases. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
-| 3.C | Codex; Claude Code | Contraste con los Subdocumentos 1 y 2 y redacción de supuestos, incluida la meta de autoatención S-42 y el horario de ambientes no productivos S-43. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
-| 3.D | Codex; Claude Code | Redacción de registros. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
-| 3.E | Codex; Claude Code | Redacción de registros. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
-| 3.F | Codex; Claude Code | Redacción de registros. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
-| 3.G | Codex; Claude Code | Redacción de reglas; propuestas para RNG-04, RNG-08 y RNG-15 sobre excursión térmica, precio y promesa urbana desde las 14:00. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
-| 3.H | Codex; Claude Code | Redacción de consultas, incluida V-11. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
-| 3.I | Codex; Claude Code | Redacción de la participación de actores y del catálogo funcional. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
-| 3.J | Codex; Claude Code | Redacción de los criterios de aceptación. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
-| 3.K | Codex; Claude Code | Glosario. | Medio | Ninguno | [[REVISIÓN HUMANA]] |
+| 3.A | Codex; Claude Code | Conversión del catálogo funcional a tablas y contraste con las Bases; alineación de RF-03.11 y RF-03.12 con S-09. | Alto | No aplica | [[REVISIÓN HUMANA]] |
+| 3.B | Codex; Claude Code | Conversión del catálogo no funcional a tablas y contraste con las Bases. | Alto | No aplica | [[REVISIÓN HUMANA]] |
+| 3.C | Codex; Claude Code | Contraste con los Subdocumentos 1 y 2 y redacción de supuestos, incluida la meta de autoatención S-42 y el horario de ambientes no productivos S-43. | Alto | No aplica | [[REVISIÓN HUMANA]] |
+| 3.D | Codex; Claude Code | Redacción de registros. | Alto | No aplica | [[REVISIÓN HUMANA]] |
+| 3.E | Codex; Claude Code | Redacción de registros. | Alto | No aplica | [[REVISIÓN HUMANA]] |
+| 3.F | Codex; Claude Code | Redacción de registros. | Alto | No aplica | [[REVISIÓN HUMANA]] |
+| 3.G | Codex; Claude Code | Redacción de reglas; propuestas para RNG-04, RNG-08 y RNG-15 sobre excursión térmica, precio y promesa urbana desde las 14:00. | Alto | No aplica | [[REVISIÓN HUMANA]] |
+| 3.H | Codex; Claude Code | Redacción de consultas, incluida V-11. | Alto | No aplica | [[REVISIÓN HUMANA]] |
+| 3.I | Codex; Claude Code | Redacción de la participación de actores y del catálogo funcional. | Alto | No aplica | [[REVISIÓN HUMANA]] |
+| 3.J | Codex; Claude Code | Redacción de los criterios de aceptación. | Alto | No aplica | [[REVISIÓN HUMANA]] |
+| 3.K | Codex; Claude Code | Glosario. | Medio | No aplica | [[REVISIÓN HUMANA]] |

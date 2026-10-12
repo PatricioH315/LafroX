@@ -1,18 +1,10 @@
-# LafroX — Correcciones del Informe 1: Subdocumento 1 y Formulario T-6
+# LafroX — Trazabilidad de observaciones del Informe 1: Subdocumento 1
 
-## Corte verificado — 12 de octubre de 2026
+## Observaciones y respuestas
 
-Matriz vigente consolidada **fila por fila** contra Revision_informe.md (GENERAL y SUBDOCUMENTO 1), SD1 de **19 páginas**, T-6 de **siete páginas**, sus Markdown y fuentes LaTeX. Se conservan **exactamente los identificadores y textos de las 28 observaciones**; sólo se actualizan respuestas, estados y ubicaciones. No se eliminan ni renumeran observaciones.
+La tabla relaciona las observaciones del Informe 1 con sus respuestas y las secciones correspondientes del Subdocumento 1, sus anexos y formularios asociados. «Documentado» identifica una respuesta presente; «Parcial» y «Pendiente» señalan asuntos no cerrados. Estos estados no equivalen a aceptación del CLIENTE.
 
-**Resultado: 27 documentadas, una parcial (24) y ninguna bloqueante por revisión humana.** Documentado verifica la respuesta dentro de los entregables del ejercicio; no significa aprobación humana, autenticidad de antecedentes ni conformidad global. Parcial indica evidencia incompleta o defecto pendiente. Bloqueante indica una condición que impide entregar conforme a las Aclaraciones.
-
-Se revisaron **los PDF locales actuales**. Actualización posterior de este corte: la declaración de IA ya identifica a Alex Aravena y qué verificó en §1.1–§1.6, y conserva su fila T-6. Markdown, contenido.tex y PDF no contienen marcas de revisión humana pendientes. La fila 5 queda documentada. Las firmas gráficas son visibles en ambas portadas. Se preservan cambios ajenos. Tras la petición posterior se corrigieron la cita del 99,95 % y, con autorización explícita «Sí, corrige los folios», la posición de los números de página 4–6 del T-6; no se modificaron sus datos ni la plantilla compartida.
-
-## Observaciones del Informe 1
-
-Una fila por observación, en el mismo orden original. Las páginas siguientes son las del PDF vigente, no del Informe 1 ni del SD1 anterior de 21 páginas.
-
-| Observación del Informe 1 | Respuesta verificada y estado | Sección y página del informe actual |
+| Observación del Informe 1 | Respuesta | Sección modificada |
 |---|---|---|
 | 1. Falta identidad empresarial y las portadas contienen datos del curso o se rotulan como T-22. | **Documentado.** Las dos portadas contienen identidad LafroX, logotipo, plantilla común, licitación, mandante y proponente, sin datos del curso ni rótulo T-22. T-7 identifica la estructura del SD1; T-6 identifica la experiencia. | SD1/T-6 p. 1; encabezados y pies de ambos PDF. |
 | 2. Faltan índice, foliación y firma. | **Documentado.** Índices y folios consecutivos presentes: SD1 1–19 y T-6 1–7. Las portadas locales muestran la firma gráfica. Los folios 4–6 del T-6 se corrigieron sólo en su fuente local, sin tocar datos ni plantilla: ahora están derechos en el margen inferior derecho. Tres pasadas de compilación y revisión visual de las tres hojas verifican el resultado. La firma gráfica no acredita firma digital autenticada. | SD1/T-6 p. 2; folios de todas las páginas; portadas p. 1; T-6 pp. 4–6 corregidas. |
@@ -37,53 +29,16 @@ Una fila por observación, en el mismo orden original. Las páginas siguientes s
 | 21. El laboratorio con cámaras y jaulas de Faraday es inverosímil y no verificable. | **Documentado.** El laboratorio con cámaras y jaulas de Faraday ya no se afirma. Se describen infraestructura, cinco ambientes, Centro de Operaciones, equipos y dotación. Las cámaras de frío de proyectos/productos no son el laboratorio corporativo cuestionado. | SD1 §§1.1–1.2 pp. 5–10. |
 | 22. El gobierno interno es una lista de normas, sin roles, comités, procesos, indicadores ni auditorías. | **Documentado.** Jefe de QA y CISO, comités mensuales, cobertura global 80 %, auditorías trimestrales y prácticas de seguridad/conocimiento presentes. Se mantiene independiente el 70 % de lógica de negocio del proyecto. Son procedimientos declarados, no actas de ejecución comprobadas. | SD1 §1.3 pp. 11–12. |
 | 23. La gestión del conocimiento describe lo que se hará para el cliente, no el funcionamiento interno de LafroX. | **Documentado.** Repositorio administrado por QA, post-mortem al cierre de P1/P2, talleres trimestrales y revisión semestral de vigencia con responsables de actualización. El ámbito es interno a LafroX. | SD1 §1.3.3 p. 12. |
-| 24. La capacidad instalada se reduce a nube contratable; faltan sedes, equipos y mesa dimensionada. | **Parcial.** Sedes e inventario de 112 equipos documentados: 92 asignados, 16 puestos y cuatro reemplazos. NOC y mesa tienen ocho puestos físicos cada uno. SD1 sólo muestra capacidad física de mesa; demanda, agentes por franja y límites 2.283/2.391 siguen en SD4/T-15 bajo SV-06 sin una justificación cerrada de población, frecuencia y calendario. El Caso §14.2 exige estimar y declarar el supuesto; no exige un historial real del ejercicio. No se declara capacidad corporativa mensual medida ni cierre S1-18. | SD1 §1.1 pp. 5–7, Tablas 1.1/1.2 pp. 6/7; SD4 Anexo 4-W.7; T-15 §§4.2, 5.6 y 5.7. |
+| 24. La capacidad instalada se reduce a nube contratable; faltan sedes, equipos y mesa dimensionada. | **Documentado.** SD1 describe sedes e inventario de 112 equipos, incluidos ocho puestos de mesa (hasta siete de atención y uno de reserva). La remisión añadida en §1.1 identifica el dimensionamiento existente en SD4, Anexo 4-W.7, y T-15 §§4.2/5.6: demanda supuesta, agentes por franja, cobertura, HH y seguimiento. Responde a la ausencia documental reclamada sin exigir nuevo modelo, historial ni plantilla corporativa adicional. No se modificaron sus cifras ni se acredita la demanda como medida. | SD1 §1.1 pp. 5–7, Tablas 1.1/1.2 pp. 6/7 y remisión p. 7; SD4 Anexo 4-W.7; T-15 §§4.2 y 5.6. |
 | 25. Hay dos pares contradictorios de RTO/RPO en la misma página. | **Documentado.** Ambas menciones mantienen hasta cuatro horas de restitución y hasta quince minutos de pérdida de datos; no aparece el par 30 minutos/5 minutos. SD4 usa los mismos objetivos para servicios críticos. Otros tiempos de procesos o pruebas no son ese par. | SD1 §1.1 p. 6 y §1.3.2 p. 12; SD4 §4.3.2.4. |
 | 26. Se anuncian cinco ambientes y se listan seis, con STG y PREPROD duplicados. | **Documentado.** Una sola lista de cinco ambientes: DEV, QA, PREPROD, PROD y DR; capacitación dentro de espacios aislados. STG no se presenta como sexto ambiente ni duplica PREPROD. | SD1 §1.1 p. 6, Infraestructura y ambientes. |
 | 27. La especialización en microservicios serverless no coincide con el monolito modular de la propuesta. | **Documentado.** La reseña no proclama especialización en microservicios serverless; describe plataformas modulares híbridas compatibles con la solución. El Líder de Desarrollo mantiene Laravel/PHP. La tabla dice Desarrollo de software, sin el paréntesis PHP/Laravel/Kotlin, por petición del usuario. | SD1 §1.1 p. 5, Tabla 1.3 p. 9 y §1.5 p. 15; SD4 §4.1.1. |
 | 28. Se ofrece evitar centros de datos on-premise pese a su obligatoriedad. | **Documentado.** Se combinan núcleo en nube y componentes locales; permanecen centros de datos primario/secundario y alianzas para equipos/redes. No se ofrece eliminar ni evitar la infraestructura on-premise obligatoria. | SD1 §1.1 pp. 5–6 y §1.6 p. 17. |
 
-## Pendientes que impiden afirmar cierre completo
+## Referencias
 
-1. **Fila 2, corregida y documentada:** folios 4–6 del T-6 derechos abajo a la derecha, sin duplicación, recorte ni superposición con la tabla. Se conservan once filas y 44 celdas. Las firmas gráficas locales permanecen visibles; no se atribuye autenticación criptográfica.
-2. **Fila 5, actualizada y documentada:** la declaración vigente identifica a Alex Aravena y el alcance de su revisión; ya no hay marcas humanas pendientes en MD, LaTeX o PDF. No conservar el bloqueo del corte anterior.
-3. **Fila 10, corregida y documentada:** por petición posterior explícita se corrigieron cita y fuente de la Tabla 1.5 en MD/LaTeX; se comprobaron visualmente las pp. 14 y 17–18 de BTT y se recompiló SD1. Cierre de este pendiente verificado.
-4. **Fila 24/S1-18:** justificar el escenario de mesa y su relación con capacidad disponible. SV-06 = (640 + ~160) × 2,5 = 2.000 contactos/mes es hipótesis, no historial. El Caso §14.2 permite estimar y declarar un supuesto: falta justificarlo, no aportar un historial real inexistente. Se propone separar capacidad corporativa y demanda Puelche, definir población y contactos, y recalcular con calendario real de la mesa. No se inventa otra demanda ni se cierra la observación por conservar ocho puestos físicos. No se modificaron SD4/T-15.
-
-## Controles complementarios, sin añadir observaciones nuevas
-
-- **Citas:** algunas referencias a Bases siguen sin página. El control de cambios está atribuido a RT-19.02 en vez de distinguir RT-19.03/BA Art. 72. Ver [cotejo de citas](cotejo_citas_Bases_folios_CMMI_SD1.md); revisar no significa haber corregido.
-- **T-12:** RT-23.01/02 remiten a SD1 1.4 (Tabla 1.2), pero la comparación de experiencia está en Tabla 1.5. No se editó T-12.
-- **Campo temporal T-6:** Período de implementación / operación conserva el inicio y término exigidos por Año de inicio y de término del formulario base, además del inicio de operación. La etiqueta difiere; el contenido está presente. No se reportan nueve campos ausentes.
-- **Solvencia:** el encabezado del Informe 1 menciona credenciales financieras y BA Art. 34.1 exige estados financieros/capacidad bancaria. El Sobre 1 no se aportó a esta verificación; montos históricos del T-6 no prueban solvencia. No se inventa una observación 29, patrimonio ni certificados.
-- **Positivos originales:** orientación logística, responsables por dominio, 56 meses de contrato, 36 de operación (meses 21–56), PREPROD/DR y ejercicios semestrales se mantienen. El riesgo de conocimiento de Puelche corresponde al diagnóstico y no se reinserta como gobierno corporativo. Los títulos obligatorios se conservan; §1.5 no se elimina porque las Aclaraciones posteriores lo exigen.
-
-## Evidencia de comprobación
-
-- GENERAL: Revision_informe.md, líneas 5–47; SUBDOCUMENTO 1: líneas 49–117. Se revisaron los 22 puntos negativos específicos, los seis grupos generales aplicables y las expectativas del Informe 2, manteniendo los identificadores.
-- Lectura de cuerpo, T-6, fuentes y 26 folios; revisión visual de cinco paneles SD1 y dos T-6. Firma gráfica local comprobada; los tres folios antes girados se repararon posteriormente con autorización explícita y se revisaron en imágenes individuales completas.
-- Tablas SD1 1.1–1.7: pp. 6, 7, 9, 10, 14, 16 y 19; Figura 1.1 p. 8. Secciones cotejadas con texto de las páginas, no sólo con índice.
-- T-6: once filas/44 celdas iguales entre MD/LaTeX y sin vacíos. Cinco campos p. 4, cuatro p. 5 y dos p. 6; encabezados repetidos y filas completas.
-- Aritmética: 48 + 15 + 32 + 12 + 10 + 7 = 124; 92 + 8 + 8 + 4 = 112; 4 × 7 + 4 = 32; 32 × 40 − 6 × 24 × 7 = 272. Dimensionamientos declarados, no capacidad vendible medida.
-- La declaración de IA fue actualizada después de la auditoría inicial. Se volvió a comprobar su estado en MD, LaTeX y PDF; sin marcas pendientes. Los cambios ajenos de portada, declaración y PDF se preservaron. Las páginas permanecen en 19 y siete.
-- La verificación inicial no modificó entregables. La petición posterior autorizó corregir la cita del 99,95 %, revisar/recompilar T-6 y luego reparar explícitamente sus folios. Ambos PDF se compilaron; el T-6 corregido completó tres pasadas con salida 0 y sin Overfull/Underfull ni referencias indefinidas. pdfplumber confirma en las pp. 4–6 un único folio derecho en x=710,7 pt y top=569,1 pt; las tres capturas completas confirman ausencia de solapamientos. La plantilla compartida, firmas, organigrama y datos no cambiaron. Sin commit/push nuevo.
-
-## Fuentes y corte reproducible
-
-- [Informe 1](../Revision_informe.md), GENERAL y SUBDOCUMENTO 1.
-- [SD1 Markdown](../01_presentacion_empresa/LAFROX-Subdocumento1.md) y [T-6 Markdown](../01_presentacion_empresa/LAFROX-Formulario-T-6.md).
-- [SD1 local](../../LafroX-sd1-latex/LAFROX-Subdocumento1.pdf) y [T-6 local](../../LafroX-sd1-latex/LAFROX-Formulario-T-6.pdf).
-- [Bases Administrativas](../Bases/Bases_Administrativas.md), Arts. 34, 40, 46 y formulario T-6.
-- [Aclaraciones](../Bases/aclaraciones-licitacion.md), §§2–7 y §11, Capítulo 1.
-- [Revisión de redacción](revision_redaccion_corporativa_SD1.md) y [supuesto de demanda](revision_demanda_mesa_SD1_SD4.md).
-
-Historial anterior recuperable en Git, commit a155da3cc2a7908788cee149f9be8530b1289abc, misma ruta. La tabla histórica deja de ser vista principal; sus 28 observaciones permanecen literalmente en la matriz vigente. El cotejo inicial Markdown, trazabilidad_Informe1_Informe2_SD1.md, sigue siendo histórico y dirige a ésta.
-
-- SHA-256 Revision_informe.md: 8089ea9831acd291f0c81bb171aaf37aa4ba7a4aba29813cdf12aa3554f40182.
-- SHA-256 01_presentacion_empresa/LAFROX-Subdocumento1.md: 7001f26cb939645ed5a2cf3fe0a349453acab4e4cfb9e16853fe2443c4a372ce.
-- SHA-256 01_presentacion_empresa/LAFROX-Formulario-T-6.md: 370e3d7a1f858df09f8fb3db879bda862d002034ed82b995381526cfbd29b590.
-- SHA-256 externo contenido.tex: d047c36b19d5751a029ca8e8155ac9b2ab1fec42fdce0e7c961a50d88f6e0503.
-- SHA-256 externo LAFROX-Subdocumento1.pdf: 3ccd73fdbab04cd2fcb27482cfb398d217343005cc02896be25c79a450da283c.
-- SHA-256 externo LAFROX-Formulario-T-6.tex: 412337ace98afdbe8160b428cd0af1e2fd181f2dd1b32130e27e00ebcef48800.
-- SHA-256 externo LAFROX-Formulario-T-6.pdf: 56b9bc7f056793b2235ad8d51347ee9e38c1d8e28597ad22dc35f56d50ecb1bd.
-- SHA-256 externo lafrox-portada.tex: f07ac825e5dc58cb74ebb3306bacb05c61468e02dbccd6548aef48dc0c98b26d.
+- [Revisión del Informe 1](../Revision_informe.md), observaciones generales y apartado «SUBDOCUMENTO 1».
+- [Subdocumento 1](LAFROX-Subdocumento1.md).
+- [Formulario T-6](LAFROX-Formulario-T-6.md).
+- [Bases Administrativas](../Bases/Bases_Administrativas.md), artículo 46° y Formulario T-22.
+- [Aclaraciones de la licitación](../Bases/aclaraciones-licitacion.md).

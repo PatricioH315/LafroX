@@ -4,6 +4,89 @@ Autorización explícita: alinear cuerpo, anexos y T-19 con LaTeX vigente del ch
 
 # CONTEXTO DE SESIÓN
 
+## Trazabilidad SD1–SD3: entregables en sus carpetas y formato común — 12 de octubre de 2026
+
+**Objetivo/autorización:** usuario pidió llevar cada trazabilidad a carpeta de su informe porque se entrega, y que coincidan columnas/formato. rama-md comprobada; sólo Markdown, sin LaTeX, compilación, commit/push ni cambio de rama. Cambios concurrentes del resto preservados.
+
+**Realizado:** matrices principales en 01_presentacion_empresa/LAFROX-Subdocumento1-Trazabilidad.md, 02_problema_necesidad/LAFROX-Subdocumento2-Trazabilidad.md, 03_esquema_solucion_alcance/LAFROX-Subdocumento3-Trazabilidad.md. Misma estructura: título, introducción neutral, tabla tres columnas «Observación del Informe 1 | Respuesta | Sección modificada», Referencias. 28/32/43 filas originales idénticas por fila, orden y estado; no nuevas observaciones, revisiones humanas ni cierres.
+
+**Separación:** notas de auditoría/compilación/Git/hashes y pendientes administrativos fuera del entregable, conservadas en Revision/auditoria_trazabilidad_SD1.md, SD2.md y SD3.md. Los tres archivos principales antiguos de Revision se trasladan a esos registros; su matriz se reemplaza por enlace al entregable, evitando duplicación canónica. El SD1 histórico trazabilidad_Informe1_Informe2_SD1.md permanece histórico y enlaza nueva matriz. Rutas históricas mencionadas en contexto son historial, no ubicaciones vigentes.
+
+**Verificación:** esquema de tres columnas idéntico, igualdad exacta de filas fuente/destino, todos los enlaces del entregable resuelven. Captura de hashes de filas en salida de verificación. No se interpreta traslado como revisión integral del estado: SD2 conserva estados anteriores y SD3 revisión humana pendiente. No declarar los tres listos/aprobados.
+
+**Preferencia:** trazabilidad es parte de entrega y debe ir junto al subdocumento; consistencia visual y columnas, sin expandir contenido. Memoria Engram suspendida identidadruntime ausente; resumen local antes de responder.
+
+**Siguiente:** revisar actualización de estados si se solicita; publicación/LaTeX no autorizados por este traslado Markdown.
+
+
+## SD1 Obs.24: cierre mínimo aprobado y remisión aplicada — 12 de octubre de 2026
+
+**Objetivo/autorización:** usuario pidió no hacer más de lo observado y respondió «Okey, dale entonces» a añadir remisión precisa y actualizar matriz. Prevalece sobre propuestas de nueva plantilla o redimensionamiento. rama-md comprobada; fuentes/PDF sólo en ../LafroX-sd1-latex, rama LafroX-Subdoc1-LateX, instrucciones verificadas. Sin cambio de rama ni publicación.
+
+**Cambio:** una frase al final del párrafo de puestos de mesa en §1.1, idéntica MD–contenido.tex: dimensionamiento para Puelche en SD4 Anexo4-W.7 y T15§§4.2/5.6. No reincorpora desarrollo contractual ni altera demanda, dotación, HH, tablas, organigrama, IA, firma o plantillas. SD4/T15 intactos.
+
+**Verificación:** tres pasadas finales LuaLaTeX, salidas0; cuerpo19páginas, sin Overfull/Underfull ni undefined. Primer ensayo largo20páginas compactado a sola frase inline, sin eliminar texto previo. Remisión completa extraída p7 normalizando espacios (extractor fusiona palabras); pp7–8 revisadas visualmente, firmas recientes preservadas. Fuente externa partía sin cambios tracked, sólo capturas sinseguimiento. T6 no recompilado.
+
+**Realizado/trazabilidad:** fila24 Documentado por respuesta al reclamo original (sedes/equipamiento/mesa dimensionada disponible). 28Documentado,0Parcial en matriz,0bloqueo humano; textos/IDs28intactos. Reserva metodológica SV06 como control complementario, no validación empírica ni conformidadglobal. Ochohashes actualizados al corte, con trabajo previo ajeno en firmas/portada; no nueva auditoría global. Historial de estados enGit/contexto.
+
+**Preferencia:** mínimo alcance suficiente; no convertir observaciones en requisitos adicionales. No nueva dotación corporativa, demanda inventada ni recálculo innecesario para cerrar ausencia documental. Engram sin identidadruntime: mutaciones suspendidas; resumenlocal antes de responder.
+
+**Siguiente:** entregar remisión/matriz; controles complementarios sólo si se solicita abordarlos. Sin commit/push autorizado en esta petición.
+
+
+## SD2: declaración de IA sólo en el cuerpo — 12 de octubre de 2026
+
+**Petición:** el usuario pidió que la declaración de uso de IA quede únicamente en el Subdocumento 2 (no en anexos ni con remisión a formulario) y que la columna «Revisión humana» lleve sólo su nombre con texto breve y natural. **Cambios (sólo Markdown, rama-md):** eliminada de `LAFROX-Subdocumento2-Anexos.md` la sección «Declaración de uso de IA» (Tabla 2.A.9 y mención al Formulario A-6); en `LAFROX-Subdocumento2.md` la Tabla 2.4 cubre cuerpo y anexos, toda revisión a nombre de Alex Aravena, y la fila Anexo 2.2 absorbe el uso de Codex en S-09. **Pendiente:** el checkout LaTeX `../LafroX-sd2-latex` (`anexos.tex`, `contenido.tex`) conserva la versión anterior; no se tocó por no estar pedido. Sin commit ni push.
+**Ajustes posteriores:** revisión humana redactada como «revisión de…/validación de…»; verificación contra Aclaraciones §7.2 (fila por sección y por anexo, sin restos de Tabla 2.A.9/A-6); fila Anexo 2.2 sube a texto «Alto» para no rebajar el nivel que se había declarado para Codex en S-09. La veracidad de la revisión humana la afirma el usuario.
+
+## Media firma en cada página de los LaTeX SD1–SD3 — 12 de octubre de 2026
+
+**Autorización/alcance:** el usuario pidió explícitamente aplicar a los LaTeX del SD1, SD2 y SD3 la media firma junto al folio que usa el SD13 (`origin/LafroX-Subdoc13-LateX`, `SD13_v_nueva/sd13-comun.tex`: filete, imagen de firma, «Media firma: representante» y folio) y validarla. Destinos: checkouts `../LafroX-sd1-latex`, `../LafroX-sd2-latex`, `../LafroX-sd3-latex`. En rama-md sólo este registro. Sin commit ni push.
+
+**Cambios:** `lafrox.cls` de los tres checkouts: `\LFXpiederecho` dibuja el bloque de firma con `FIRMA_Alex_Aravena_transparente.png` (la misma imagen de la portada, idéntica a `firma_representante.png` del SD13); con `[sinfirma]` queda sólo el folio. T-6: el pie reubicado en hojas horizontales incluye ahora la firma. SD3 `contenido.tex` Figura 3.4 (página horizontal con pie manual): firma, rótulo y folio en una línea, para no desplazar la figura. Siete PDF recompilados sin errores ni avisos nuevos de cajas o flotantes.
+
+**Validación:** todas las páginas, salvo portada (firma completa propia), tienen imagen de firma y rótulo: SD1 19, T-6 7, SD2 29, SD2-Anexos 20, SD3 35, SD3-Anexos 168, T-12 261. Inspección visual: SD1 p5, SD2 p15, SD3 p21, T-6 p4, T-12 p6. Observación: en las hojas horizontales con pdflscape de SD2, SD3-Anexos y T-12, la firma acompaña al folio en el margen, girada como el folio ya lo estaba; sólo T-6 tiene corrección local de orientación.
+
+**Commit y push (pedidos explícitos del usuario; push verificado con ls-remote, remoto = local):** SD1 `05fe9c9`, SD2 `d6ff5e0`, SD3 `41ec063` en sus ramas LaTeX. Incluyen los cambios con seguimiento previos (portada sin estado del documento, folio horizontal del T-6, ediciones de contenido y tablas) ya reflejados en los PDF; quedan fuera las 118 capturas/logs sin seguimiento del checkout SD1.
+
+**Alineación SD3 MD–LaTeX:** comparación frase a frase y de títulos en ambos sentidos (cuerpo, anexos, T-12, incluidos los cambios MD sin commit). Única diferencia real: T-12 RT-26.08, el LaTeX omitía «incidentes de prueba en QA de» en la línea base de I-02A (el MD coincide con SD13 y T-19). Corregido por petición del usuario, T-12 recompilado (firma en todas las páginas) y publicado en `LafroX-Subdoc3-LateX` `e55ca51` (remoto = local).
+
+**Fuentes de figuras/tablas e índices SD1–SD3 (petición explícita, sin commit):** se eliminó «elaboración propia» de los 41 pies que la tenían (15 figuras y 26 tablas) en LaTeX (tres checkouts) y en los Markdown de rama-md. Ahora dicen «elaboración a partir de» la base verificada. SD2: Caso 4.3 + 7.1 pp. 7–8 y 11; 2.2 + 4.1 pp. 4 y 7; cap. 3 p. 6; 4.4 + 4.6 p. 8; 4.6 pp. 8–9; 4.7 p. 9 (páginas cotejadas en el PDF escaneado del Caso). SD3: cap. 4 pp. 7–9 + Anexo 3.A; 4.1/4.9 + 3.A; Anexo 3.F D-08; Anexo 3.A + T-12 (Kotlin/Android solo figura en T-12) + cap. 5 p. 10; SD2 «Actores y Grupos de Interés». SD1 organigrama: antecedentes corporativos declarados por LafroX. Citas de pie en SD3 pasan de título en cursiva a autor-fecha APA. Índices: `\LFXtitulocorto` en lafrox.cls de los tres checkouts y `[título]` explícito en `\caption`; listas sin «Fuente:». SD3-Anexos y T-12 ya no generan «Lista de figuras» (sin figuras); T-6 y SD2-Anexos no la tenían. SD2: se quitó `\needspace` tras Figura 2.3 (forzaba página casi vacía). Siete PDF recompilados: 0 «elaboración propia», 0 avisos, firma en todas las páginas; SD3-Anexos 166 p. y T-12 260 p. por índices más cortos, resto igual. Pendientes de usuario: «Gerente de operacions» dentro de las imágenes de las Figuras 3.4/3.5 (no editadas); la declaración de IA de SD2-Anexos fue eliminada del MD por un cambio ajeno (sigue en LaTeX); `tablas/sint_epicas.tex` (no compilada) conserva «elaboración propia».
+
+**Revisión humana aportada por el usuario (Patricio Henríquez):** textos dictados por el usuario, con solo corrección ortográfica, incorporados en la Tabla 3.6 del SD3 (filas 3.1–3.4 y Formulario T-12) y en la declaración de IA del T-12, en LaTeX y Markdown. Quedan 11 celdas `[[REVISIÓN HUMANA]]` en el SD3 (Anexos 3.A–3.K); el T-12 queda sin pendientes. La Tabla 3.6 redistribuye anchos de columna (revisión como columna flexible): SD3 queda en 36 p. Sin commit.
+
+## Obs.24 SD1: concretar existente y faltante sin confundir demanda contractual — 12 de octubre de 2026
+
+Usuario exige respuesta concreta frente a reclamo de trazabilidad. Comprobados literal Revision_informe.md línea99, fila24 vigente y SD1§1.1. Ya están sedes Santiago/Valparaíso,112equipos,8puestosmesa(7servicio+1reserva),funciones/escalamiento; SD4/T15 tienen demanda2000/proyección2258,agentes7/2→7/3,capacidades2283/2391,cobertura/HH/indicadores. No afirmar que esto falta.
+
+Faltante directo de Obs24: SD1 describe puestos físicos pero no declara dotación efectiva corporativa de mesa ni turnos/asignación disponible diferenciada deNOC/SOC yotroscontratos. Añadir síntesis de personas/turnos/disponibilidad y remisión precisa al dimensionamiento contractual existente; no inventar número de agentes corporativos, convertir demandaPuelche en historiaempresarial ni reinsertar todo el modelo en1.1. Justificación SV06/calendario es revisión metodológica conexa, no texto literal extra exigido porObs24. Matriz parcial había mezclado ambos asuntos; separar respuesta aobservación de reserva delmodelo antes de cerrar.
+
+Sólo consulta y este registro; sin entregables modificados, compilar/commit/push. Mutaciones Engram suspendidas identidadruntime ausente. Siguiente: completar datos de plantilla/turnos aprobados y síntesisSD1, conciliar remisión y revisar estadofila24.
+
+
+## Mesa: distinguir demanda, capacidad y obligación de dimensionar — 12 de octubre de 2026
+
+**Objetivo:** usuario recordó «2.000 y algo más» y preguntó si falta agregar algo para cumplir. Revisión focal de SD4 4-W.7, T-15 5.6 y BTT RT-21.05/06/14, rama-md confirmada. No edición de entregables ni compilación/publicación.
+
+**Hallazgo:** 2.000 es demanda inicial supuesta; 2.258 proyección año3; 2.283 capacidad modelada inicial; 2.391 capacidad tras refuerzo. Estas cifras siguen presentes; no confundir capacidades con contactos esperados. RT21.14 exige fundamento cuantitativo desde volumen proyectado, no un número específico. T15 5.6 sí compromete explícitamente80%/20s,70%FCR,≤5%abandono, medición y refuerzo: no afirmar ausencia de compromiso.
+
+**Decisión/propuesta:** no obliga volver620 ni inventar un nuevo volumen. Puede mantenerse2.000 como escenario de planificación declarado, sujeto a fundamento de población/frontera/frecuencia y conciliación del calendario. No cerrar parcial24 mediante párrafo cosmético ni declarar incumplimiento total por faltahistorial. Falta cerrar consistencia/justificación, no falta todo el dimensionamiento. No aplicada modificación a SD4/T15.
+
+**Siguiente:** autorización concreta de redacción/conciliación para conservar hipótesis o cambiar escenario; comprobar dotación, HH y trazabilidad antes de afirmar cierre. Mutaciones Engram suspendidas por identidad runtime ausente; explicación y resumen local persistidos.
+
+
+## Mesa SD1–SD4: modelo anterior recuperado y revisión rectificada — 12 de octubre de 2026
+
+**Objetivo:** usuario recordó una justificación anterior y pidió revisión exhaustiva. rama-md comprobada; sólo revisión de entregables/Git y registros Markdown. No compilación, fuentes/PDF, cambio de rama, fetch, commit ni push. Sin agentes delegados.
+
+**Descubrimiento:** bdfd520 (17sept) ya declara620régimen/~1500marcha blanca; c2ac90c (23sept) explicita620×1,0=620, oleadas×2,5=1550, septiembre+40 %, canaltradicionalautoatención,25días/20%punta/AHT8min. a5f6865 lo mantiene. a5e6500 (26sept) lo reemplaza por(640+160)×2,5=2000 conservador,22,14días/25%punta/AHT10min, supuestoS53→SV06 en5c5e270. La decisión antecede al retiro de cifras contractuales del SD1 en a155da3. No hay evidencia de motivo/aprobación humana del cambio de tasa. Se inspeccionaron50commits con patrones en todas las refs locales y la historia específica; originrefs no equivalen a nueva consulta remota.
+
+**Rectificación:** sí existía separación de régimen/oleadas/peak; nuestra revisión anterior era incompleta. No falta todo el modelo ni se exige historial real del ejercicio. Recuperar enfoque, no restaurar números a ciegas:620 redondea618 usuarios parciales que incluyen160externos denominadosinternos; Caso tiene640propios. Dosagentes cumplen~84.46% en régimen conλ4,96/h, pero oleadas no80% y con+40%λ17,36>15/h(capacidadbruta), inestable. Siete personas por funciones viejas no son siete posiciones simultáneas nuevas. 25díasviejos y22,14actuales no sustituyen calendarioL-SdelT15.
+
+**Accomplished:** nuevo Revision/revision_historica_demanda_mesa_SD1_SD4.md con cronología, fuentehistórica, cálculos,50commits yhashes. Rectificado registro revisión_demanda_mesa_SD1_SD4.md sin eliminar corte original; trazabilidad enlaza evidenciahistórica, conserva28obs/estado27doc1parcial24. No cambia entregables.
+
+**Next:** recuperar escenarios y definir población/frontera/tasas declaradas; conciliar calendario, cola, puestos, plantilla,HH antes de aplicar enSD4/T15/SD8. No decisión de demanda nueva ni refuerzo cancelado. Prohibidas mutaciones Engram por identidad runtime no registrada; resumen local antes de responder.
+
 ## Actualización Markdown del Subdocumento 7 en `rama-md` — 12 de octubre de 2026
 
 **Autorización y alcance:** el usuario pidió actualizar en GitHub la carpeta `07_PlanDeTrabajo_EDT_Cronograma_Implantación` con los cinco documentos Markdown recién generados: Subdocumento 7, Anexos, T-14, T-15 y T-18. Se verificó el estado remoto y se adelantó `rama-md` por fast-forward hasta `269a70c`. Se leyeron los PDF finales desde la rama LaTeX sin escribir archivos PDF ni fuentes no Markdown en esta rama.
@@ -1184,3 +1267,15 @@ Por instrucción posterior se sincronizó el checkout `../LafroX-sd1-latex` (ram
 ## Obs. 20 SD3: prioridades sin cambios — 12 de octubre de 2026
 
 El usuario decidió no rebajar prioridades para no propagar cambios a SD9, T-13 y Anexo 9.C.2 el día de la entrega. Se mantienen 56 críticos, 163 altos y 43 medios. Se añadió en SD3 §3.2.3 un párrafo que justifica la concentración (Caso cap. 13.1; familias F-12 y F-14 en Media; «Media» no es optativo). La fila 20 de `Revision/trazabilidad_Informe1_Informe2_SD3.md` quedó actualizada. Los diez cambios analizados en `Revision/revision_prioridades_SD3_Obs20.md` quedan como opción no aplicada. Sin commit.
+
+### Obs. 17, 28 y 42 del SD3 — 12 de octubre de 2026
+
+A pedido del usuario se agregaron en el MD del SD3: la síntesis de los atributos de calidad al final de §3.4.2 (interoperabilidad, escalabilidad, desempeño y seguridad, con sus RNF, y remisión al SD4 4.1.3.7 y 4.2.6); el enfoque SRE y la automatización en §3.4.5 (IaC SD4 4.2.3, alertas SD4 4.1.3.8, RNF-19.02, RNF-16.02); y la redacción en oraciones completas de D-08, D-09, D-11 y D-12 (Anexos, Tabla 3.A.9). La trazabilidad deja 42 de 43 observaciones documentadas, con la Obs. 3 como única bloqueante. Las filas 17, 20, 28 y 42 quedan pendientes de traslado al LaTeX: no se tocó el checkout LaTeX y no se hizo commit.
+
+### Traslado al LaTeX del SD3 — 12 de octubre de 2026
+
+**Autorización:** el usuario pidió en el chat «alinéalo con el latex». **Alcance:** trasladar los cambios del MD de las Obs. 17, 20, 28 y 42. **Destino:** checkout `../LafroX-sd3-latex`, rama `LafroX-Subdoc3-LateX`, en `contenido.tex` (§3.2.3, §3.4.2 y §3.4.5) y `tablas_anexo/decisiones.tex` (D-08, D-09, D-11 y D-12). Se conservaron los cambios locales previos del checkout. **Resultado:** `latexmk -g` compiló sin errores el cuerpo (35 páginas, Figura 3.4 sigue horizontal) y los anexos (168 páginas); el T-12 no cambió. La trazabilidad del SD3 quedó actualizada con las nuevas páginas: 42 de 43 observaciones documentadas, con la Obs. 3 como única bloqueante. Sin commit en ninguno de los dos checkouts.
+
+### Declaración de IA SD3: «No aplica» en diagramas — 12 de octubre de 2026
+
+**Autorización:** el usuario pidió, mientras revisaba el PDF LaTeX del SD3, poner «No aplica» en la columna de diagramas donde la sección no tiene diagramas. **Alcance y destino:** en el MD de `rama-md` (cuerpo Tabla 3.6, Anexos Tabla 3.A.15, T-12) y en el checkout `../LafroX-sd3-latex`, rama `LafroX-Subdoc3-LateX` (`contenido.tex`, `tablas_anexo/declaracion_ia.tex`, `LAFROX-Formulario-T-12.tex`). Filas 3.1, 3.2, Anexos 3.A–3.K y T-12 pasan a «No aplica»; 3.3 (Alto) y 3.4 (Ninguno, con figuras) se mantienen. **Resultado:** `latexmk -g` sin errores; cuerpo 36 p. (la Tabla 3.6 continúa en la p. 36), anexos 166 p., T-12 260 p. El usuario acepta las 36 páginas: lo que excede es solo la tabla de declaración de IA, no contenido. Sin commit.

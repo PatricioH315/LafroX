@@ -670,4 +670,4 @@ La matriz responde los requerimientos funcionales y no funcionales de los Anexos
 
 ## Declaración de uso de IA
 
-La matriz fue elaborada y revisada documentalmente con asistencia de Codex y Claude Code a partir de los catálogos del Subdocumento 3, las Bases y los subdocumentos citados. Nivel de uso en texto: alto. Nivel de uso en diagramas: ninguno. Revisión humana del integrante y comprobación final de cada fila: [[REVISIÓN HUMANA]].
+La matriz fue elaborada y revisada documentalmente con asistencia de Codex y Claude Code a partir de los catálogos del Subdocumento 3, las Bases y los subdocumentos citados. Nivel de uso en texto: alto. Nivel de uso en diagramas: no aplica. Revisión humana: Patricio Henríquez: se verificó la correcta disposición y legibilidad del formulario; cada requerimiento cuenta con un ID que permite la trazabilidad en el documento de manera sencilla y bien justificada.

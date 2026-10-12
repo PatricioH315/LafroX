@@ -113,7 +113,7 @@ La Tabla [1.2](LAFROX-Subdocumento1.md#tab:puestos_operaciones) distingue los pu
 | NOC | 8 | 6 | 2 |
 | Mesa de Servicios | 8 | Hasta 7 | 1 |
 
-El NOC mantiene seis puestos activos de supervisión continua y dos habilitados para relevos o contingencias. La mesa dispone de siete puestos de atención y uno de reserva. Los agentes son las personas que atienden a los usuarios y utilizan esos puestos. Su dotación y sus turnos se dimensionan para cada servicio contratado. Los agentes de mesa y los analistas contratados del SOC se contabilizan por separado de los 124 especialistas de la Tabla [1.3](LAFROX-Subdocumento1.md#tab:dotacion).
+El NOC mantiene seis puestos activos de supervisión continua y dos habilitados para relevos o contingencias. La mesa dispone de siete puestos de atención y uno de reserva. Los agentes son las personas que atienden a los usuarios y utilizan esos puestos. Su dotación y sus turnos se dimensionan para cada servicio contratado. Los agentes de mesa y los analistas contratados del SOC se contabilizan por separado de los 124 especialistas de la Tabla [1.3](LAFROX-Subdocumento1.md#tab:dotacion). El dimensionamiento de la mesa para Puelche se detalla en el Subdocumento 4, Anexo 4-W.7, y el Formulario T-15, secciones 4.2 y 5.6.
 
 El catálogo de la empresa se organiza en productos de software, servicios profesionales y servicios de infraestructura y conectividad.
 
@@ -155,7 +155,7 @@ LafroX organiza su trabajo en las áreas de Ingeniería, Infraestructura, Calida
 
 <a id="fig:organigrama"></a>
 
-**Figura 1.1 — Estructura organizacional corporativa de LafroX. Fuente: Elaboración propia.**
+**Figura 1.1 — Estructura organizacional corporativa de LafroX. Fuente: elaboración a partir de los antecedentes corporativos declarados por LafroX.**
 
 ![Organigrama corporativo de LafroX](C:/Users/alexa/Desktop/Universidad/FEP/LafroX/LafroX-sd1-latex/figuras/Figura%201.1.pdf)
 
@@ -277,7 +277,7 @@ La Tabla [1.5](LAFROX-Subdocumento1.md#tab:equivalencia) compara la flota, los s
 
 <a id="tab:equivalencia"></a>
 
-**Tabla 1.5 — Equivalencia entre el caso y los proyectos del Formulario T-6. Fuente: elaboración propia a partir del caso, las Bases Técnicas Transversales y el Formulario T-6.**
+**Tabla 1.5 — Equivalencia entre el caso y los proyectos del Formulario T-6. Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026b y 2026c) y del Formulario T-6.**
 
 | **Dimensión de Puelche** | **Valor del caso** | **Proyecto de referencia** | **Valor del proyecto** |
 | --- | --- | --- | --- |
@@ -340,7 +340,7 @@ La Tabla [1.6](LAFROX-Subdocumento1.md#tab:roles_minimos) resume la asignación 
 
 <a id="tab:roles_minimos"></a>
 
-**Tabla 1.6 — Asignación y dedicación de los roles del proyecto. Fuente: elaboración propia a partir de las Bases Técnicas Transversales, numeral 19.2.**
+**Tabla 1.6 — Asignación y dedicación de los roles del proyecto. Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026b, numeral 19.2).**
 
 | **Rol** | **Responsable** | **Dedicación asignada** |
 | --- | --- | --- |

@@ -2,7 +2,11 @@
 
 11 de octubre de 2026. Registro de revisión, no un dato nuevo aprobado para la oferta.
 
-## Veredicto
+## Rectificación histórica — 12 de octubre de 2026
+
+La revisión del 11 de octubre sólo evaluaba SV-06 vigente; omitió una versión anterior recuperada de Git. Ya existía separación entre régimen (620), oleadas (1.550) y peak supuesto (+40 %), reemplazada el 26 de septiembre en a5e6500. Ver [auditoría histórica](revision_historica_demanda_mesa_SD1_SD4.md). Las tasas son supuestos permitidos por Caso §14.2; la falta de historial real no las invalida automáticamente. El pendiente es justificar el escenario y conciliar calendario, población y cobertura, no inventar todo desde cero ni rebajar la cifra arbitrariamente. «La cifra es alta» en el corte anterior es valoración no acreditada por un benchmark: no se usa como prueba de sobredimensionamiento.
+
+## Veredicto del corte anterior
 
 **La cifra de 2.000 no proviene de las Bases ni de un registro de incidentes. Es un supuesto de diseño del Anexo 4-W.7. No está justificado presentarlo como la demanda mensual esperable de la mesa.**
 

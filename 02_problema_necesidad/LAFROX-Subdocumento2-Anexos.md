@@ -6,7 +6,7 @@ El presente documento recopila los listados detallados que sustentan el análisi
 
 A partir de la narrativa del caso, de las entrevistas a los actores clave (Distribuidora Puelche S.A., 2026c, cap. 8, pp. 13–17) y de las Bases Técnicas Transversales, se identifican catorce familias funcionales prioritarias y cinco condiciones no funcionales rectoras. Los códigos **F-01 a F-14** identifican familias de síntesis de este anexo; el catálogo atómico y sus códigos RF/RNF se desarrollan en el Subdocumento 3 y en el Formulario T-12.
 
-Tabla 2.A.1 Catálogo consolidado de requerimientos funcionales del caso. Fuente: elaboración propia a partir de Distribuidora Puelche S.A. (2026c, caps. 9 y 18, pp. 18–19 y 34–35).
+Tabla 2.A.1 Catálogo consolidado de requerimientos funcionales del caso. Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026c, caps. 9 y 18, pp. 18–19 y 34–35).
 
 | Familia | Nombre del Requerimiento | Descripción Operativa y Criterio de Verificación | Prioridad | Etapa |
 | --- | --- | --- | --- | --- |
@@ -41,7 +41,7 @@ Tabla 2.A.2 Requerimientos no funcionales rectores del proyecto. Fuente: Distrib
 
 La Tabla 2.A.3 registra como supuestos de formulación las dieciséis decisiones que el numeral 16.1 del caso deja abiertas y que LafroX resuelve; el supuesto S-N responde a la decisión N (Distribuidora Puelche S.A., 2026c, sección 16.1, pp. 28–29). Cada fila explicita la conducta adoptada, la consecuencia que asume el diseño, el efecto si el supuesto resulta falso y la instancia del CLIENTE que lo valida. La trazabilidad a requisitos detallados se desarrolla en el Subdocumento 3, Anexo 3.C.
 
-Tabla 2.A.3 Supuestos de formulación derivados de las decisiones abiertas del caso. Fuente: elaboración propia a partir de Distribuidora Puelche S.A. (2026c, sección 16.1, pp. 28–29).
+Tabla 2.A.3 Supuestos de formulación derivados de las decisiones abiertas del caso. Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026c, sección 16.1, pp. 28–29).
 
 | ID | Supuesto adoptado | Consecuencia asumida | Si resulta falso | Validación |
 | --- | --- | --- | --- | --- |
@@ -67,7 +67,7 @@ Tabla 2.A.3 Supuestos de formulación derivados de las decisiones abiertas del c
 
 Además de las decisiones del caso, LafroX formula tres supuestos propios sobre el diagnóstico. Sostienen cifras e hipótesis del cuerpo de este subdocumento que el caso no permite confirmar.
 
-Tabla 2.A.4 Supuestos propios del diagnóstico. Fuente: elaboración propia.
+Tabla 2.A.4 Supuestos propios del diagnóstico. Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026c), según se indica en la columna Fundamento.
 
 | ID | Supuesto | Fundamento | Si resulta falso | Validación |
 | --- | --- | --- | --- | --- |
@@ -117,7 +117,7 @@ Tabla 2.A.6 Restricciones no negociables del caso. Fuente: Distribuidora Puelche
 
 La Tabla 2.A.7 presenta el catálogo nominal y extendido de los 19 actores que componen el ecosistema humano y operacional de Distribuidora Puelche S.A.
 
-Tabla 2.A.7 Catálogo nominal extendido de los 19 actores del ecosistema Puelche. Fuente: elaboración propia a partir de Distribuidora Puelche S.A. (2026c, caps. 2, 4, 8 y 13, pp. 4–9, 13–17 y 22–23).
+Tabla 2.A.7 Catálogo nominal extendido de los 19 actores del ecosistema Puelche. Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026c, caps. 2, 4, 8 y 13, pp. 4–9, 13–17 y 22–23).
 
 | Actor / Cargo | Rol en el Ecosistema | Ineficiencia que enfrenta en la situación actual | Influencia | Interés | Estrategia de participación |
 | --- | --- | --- | --- | --- | --- |
@@ -168,13 +168,3 @@ Las fuentes citadas en estos anexos se listan a continuación en formato APA 7.�
 - Distribuidora Puelche S.A. (2026c). *Bases Técnicas – Logística: trazabilidad, promesa de entrega y costo de servir en una distribuidora de consumo masivo*.
 - International Organization for Standardization e International Electrotechnical Commission [ISO/IEC]. (2022). *ISO/IEC 27001:2022: Information security, cybersecurity and privacy protection — Information security management systems — Requirements*. https://www.iso.org/standard/27001
 - Ley N.º 21.719. (2024, 13 de diciembre). *Regula la protección y el tratamiento de los datos personales y crea la Agencia de Protección de Datos Personales*. Diario Oficial de la República de Chile. https://www.bcn.cl/leychile/navegar?idNorma=1209272
-
-## Declaración de uso de IA
-
-En cumplimiento de la sección 7.2 de las Aclaraciones de la licitación, la Tabla 2.A.9 declara el uso de herramientas de inteligencia artificial en estos anexos, con la revisión humana de cada parte. La declaración se consolida en el Formulario A-6.
-
-Tabla 2.A.9 Declaración de uso de IA en los Anexos del Subdocumento 2. Fuente: registro del equipo.
-
-| Sección | Herramienta | Finalidad del uso | Texto | Diag. | Revisión humana |
-| --- | --- | --- | --- | --- | --- |
-| Correcciones de coherencia | Codex | Alineación de S-09 con conservación del precio capturado y control de diferencias ERP | Alto | Ninguno | [[REVISIÓN HUMANA]] |
