@@ -7,14 +7,14 @@
 \section{Dimensionamiento y plan de capacidad}
 \label{sec:dimensionamiento}
 
-El dimensionamiento traduce la volumetría del caso en capacidad para la operación normal, la ventana protegida de despacho y el peak de septiembre. Las citas nombran las Bases Técnicas del caso y las Bases Técnicas Transversales con su capítulo y página. La cadena es: hechos y requisitos, supuestos mínimos, dieciséis dimensiones del numeral 14.2 de las Bases Técnicas del caso (p. 25), capacidad por lugar de proceso y equipamiento. El Anexo 4-W conserva las sustituciones, el perfil horario, las sensibilidades y los umbrales; esta sección presenta la decisión de arquitectura y su consecuencia operativa.
+El dimensionamiento traduce la volumetría del caso en capacidad para la operación normal, la ventana protegida de despacho y el peak de septiembre. Las citas nombran las Bases Técnicas del caso y las Bases Técnicas Transversales con su capítulo y página. La cadena es: hechos y requisitos, supuestos mínimos, dieciséis dimensiones del numeral 14.2 de las Bases Técnicas del caso (p. 25), capacidad por lugar de proceso y equipamiento. El Anexo 4-W conserva las sustituciones, el perfil horario, las sensibilidades y los umbrales. Esta sección presenta la decisión de arquitectura y su consecuencia operativa.
 
 El alcance de capacidad incorpora también las cinco innovaciones del SD13: procesamiento analítico, almacenamiento de resultados, consultas operacionales, precarga y sincronización, y recursos temporales de reproducción de incidentes. El equipamiento y los servicios existentes son su punto de realización, no una demostración de suficiencia. La carga incremental se cuantifica por ventana y lugar de proceso según el Anexo 4-W y se contrasta en las pruebas de esta sección antes de aceptar la capacidad.
 
 \subsection{Método, fuentes y supuestos}
 \label{sec:dimensionamiento-metodo}
 
-Un hecho del caso se cita y no se registra como supuesto. Un requisito proviene de las Bases o del Capítulo 15. Un parámetro de diseño es una decisión que imponemos a la solución. Un supuesto completa una cifra que el caso calla y declara fundamento, impacto y validación. Un cálculo se deriva de las entradas anteriores. Los parámetros de plataforma son 50 ms de CPU por solicitud, 64 MB de memoria por proceso y 150 ms de permanencia del proceso en Fargate; son parámetros de diseño que se perfilan y se verifican en las pruebas de RT-09.06 (Bases Técnicas Transversales, cap. 9, p. 21). Los tiempos de respuesta se evalúan en el percentil 95 conforme al numeral 9.1 de las Bases Técnicas Transversales (cap. 9, p. 21).
+Un hecho del caso se cita y no se registra como supuesto. Un requisito proviene de las Bases o del Capítulo 15. Un parámetro de diseño es una decisión que imponemos a la solución. Un supuesto completa una cifra que el caso calla y declara fundamento, impacto y validación. Un cálculo se deriva de las entradas anteriores. Los parámetros de plataforma son 50 ms de CPU por solicitud, 64 MB de memoria por proceso y 150 ms de permanencia del proceso en Fargate. Son parámetros de diseño que se perfilan y se verifican en las pruebas de RT-09.06 (Bases Técnicas Transversales, cap. 9, p. 21). Los tiempos de respuesta se evalúan en el percentil 95 conforme al numeral 9.1 de las Bases Técnicas Transversales (cap. 9, p. 21).
 
 La cadena evita mezclar decisiones de diseño con hechos del CLIENTE. En particular, el factor SV-04 se aplica sólo a la hora cargada de cada ventana y no se usa para sumar procesos que ocurren en horas diferentes.
 
@@ -33,21 +33,21 @@ Las Bases Técnicas del caso (anexo B, p. 38) distribuyen la operación en estas
   \item Sincronización de 17:00 a 20:00.
 \end{itemize}
 
-La hora más exigente es 12:00, con 12,34 TPS normales y 14,66 TPS en septiembre. Esa hora es una convención del cálculo: el factor SV-04 concentra la preventa y el portal en la hora central de su ventana, y el máximo sería el mismo en cualquier otra hora de esa ventana. En esa hora el portal aporta 9,63 TPS y la nube 2,71 TPS normales o 5,03 TPS en peak; Talca, Concepción y cada cross-docking están fuera de sus ventanas de mayor carga. El promedio diario engaña porque oculta la coincidencia de preventa, reparto y sesiones del portal.
+La hora más exigente es 12:00, con 12,34 TPS normales y 14,66 TPS en septiembre. Esa hora es una convención del cálculo: el factor SV-04 concentra la preventa y el portal en la hora central de su ventana, y el máximo sería el mismo en cualquier otra hora de esa ventana. En esa hora el portal aporta 9,63 TPS y la nube 2,71 TPS normales o 5,03 TPS en peak. Talca, Concepción y cada cross-docking están fuera de sus ventanas de mayor carga. El promedio diario engaña porque oculta la coincidencia de preventa, reparto y sesiones del portal.
 
 La Tabla~\ref{tab:dimensionamiento-calendario} resume los factores de calendario que se usan en la memoria.
 
 \Needspace{0.48\textheight}
 \begin{tablalafrox}{Calendario y factores de diseño}{tab:dimensionamiento-calendario}{F{0.30} G{0.18} Y F{0.22}}{\cab{Dato} & \cab{Valor} & \cab{Uso} & \cab{Fuente}}
-  Días equivalentes de despacho & 22,14 días & 31.000 ÷ 1.400; control 2.100 ÷ 96 = 21,88 & Bases Técnicas del caso, cap. 14, p. 24 y Tabla 2.3; SV-01 \\
-  Factor de septiembre & 1,857 & 2.600 ÷ 1.400 & Bases Técnicas del caso, cap. 14, p. 24; SV-02 \\
+  Días equivalentes de despacho & 22,14 días & 31.000 ÷ 1.400, control 2.100 ÷ 96 = 21,88 & Bases Técnicas del caso, cap. 14, p. 24 y Tabla 2.3, SV-01 \\
+  Factor de septiembre & 1,857 & 2.600 ÷ 1.400 & Bases Técnicas del caso, cap. 14, p. 24, SV-02 \\
   Período peak & 1 al 25 de septiembre & Define el régimen peak & Bases Técnicas del caso, anexo B, p. 38 \\
   Totales anuales & 12 × volumen mensual & Evita inventar días hábiles & Bases Técnicas del caso, cap. 14, p. 24 \\
 \end{tablalafrox}
 
 {\footnotesize Fuente: elaboración propia.\par}
 
-Los 22,14 días son una equivalencia de cálculo, no una cantidad de días hábiles. El peak se obtiene por el cociente entre entregas de septiembre y entregas normales; diciembre no agrega un factor porque el caso identifica septiembre como la mayor exigencia.
+Los 22,14 días son una equivalencia de cálculo, no una cantidad de días hábiles. El peak se obtiene por el cociente entre entregas de septiembre y entregas normales. Diciembre no agrega un factor porque el caso identifica septiembre como la mayor exigencia.
 
 \subsection{Transacciones por segundo: dimensiones 1--3}
 \label{sec:dimensionamiento-tps}
@@ -69,7 +69,7 @@ Total & 12,34 TPS & 3,76 / 6,94 TPS & 14,66 TPS \\
 \paragraph*{Derivación por lugar de proceso}
 \begin{itemize}
 \item \textbf{WMS de Talca.} preparación y despacho según perfil horario y SV-03.
-\item \textbf{WMS de Concepción.} 2/3 y 1/3 de preparación y despacho; SV-03.
+\item \textbf{WMS de Concepción.} 2/3 y 1/3 de preparación y despacho, SV-03.
 \item \textbf{Conjunto de los tres cross-docking.} Tres operaciones de llegada y una de despacho sobre el volumen agregado.
 \item \textbf{Nube, sin portal.} preventa, reparto, recepción, trazabilidad, guías y sincronización.
 \item \textbf{Portal.} 2.600 ÷ 9 × 2 por SV-04 × 60 ÷ 3.600.
@@ -78,7 +78,7 @@ Total & 12,34 TPS & 3,76 / 6,94 TPS & 14,66 TPS \\
 
 {\footnotesize Fuente: elaboración propia.\par}
 
-El despacho de 05:30 a 07:00 se reparte entre ambos centros conforme a SV-03, en la misma proporción que la preparación. La dimensión 2 toma el máximo real del perfil en las horas 05:00 y 06:00; el tramo 05:30–06:00 se considera uniforme, por lo que resulta 3,76 TPS normal y 6,94 TPS peak. Los aproximadamente 2.852 documentos/día peak son el total de DTE (34.000 ÷ 22,14 × 1,857), no sólo guías; considerarlos todos como guías que deben emitirse antes de la salida es una cota conservadora. Las 2.600 sesiones diarias del portal son un parámetro de diseño: una por cada cliente de food service y de cadenas, 2.100 + 500 (Bases Técnicas del caso, cap. 2, p. 4), y no son las 2.600 visitas diarias de preventa (Bases Técnicas del caso, anexo B, p. 38). La prueba RT-09.06 (Bases Técnicas Transversales, cap. 9, p. 21) es 1,5 × 14,66 = 21,99 TPS y no recibe un segundo multiplicador.
+El despacho de 05:30 a 07:00 se reparte entre ambos centros conforme a SV-03, en la misma proporción que la preparación. La dimensión 2 toma el máximo real del perfil en las horas 05:00 y 06:00. El tramo 05:30–06:00 se considera uniforme, por lo que resulta 3,76 TPS normal y 6,94 TPS peak. Los aproximadamente 2.852 documentos/día peak son el total de DTE (34.000 ÷ 22,14 × 1,857), no sólo guías. Considerarlos todos como guías que deben emitirse antes de la salida es una cota conservadora. Las 2.600 sesiones diarias del portal son un parámetro de diseño: una por cada cliente de food service y de cadenas, 2.100 + 500 (Bases Técnicas del caso, cap. 2, p. 4), y no son las 2.600 visitas diarias de preventa (Bases Técnicas del caso, anexo B, p. 38). La prueba RT-09.06 (Bases Técnicas Transversales, cap. 9, p. 21) es 1,5 × 14,66 = 21,99 TPS y no recibe un segundo multiplicador.
 
 \subsection{Personas usuarias, concurrencia y dispositivos: dimensiones 4--6}
 \label{sec:dimensionamiento-usuarios}
@@ -96,7 +96,7 @@ La dimensión 4, «Personas usuarias registradas, internas y externas», es 15.1
 
 {\footnotesize Fuente: elaboración propia.\par}
 
-La operación sin portal, que carga la Wi-Fi y los sitios, llega a 342 personas o equipos concurrentes durante el día. Los seis del cross-docking son personas con terminal inalámbrico, dos por plataforma (S-35). Los 96 equipos de reparto equivalen a 96 conductores en ruta; la dimensión 5 se expresa en personas o sesiones y no en camiones. La cota extrema del portal se conserva como prueba separada. La dimensión 6, «Dispositivos de terreno en operación simultánea», es 62 preventistas + 96 equipos de reparto = 158.
+La operación sin portal, que carga la Wi-Fi y los sitios, llega a 342 personas o equipos concurrentes durante el día. Los seis del cross-docking son personas con terminal inalámbrico, dos por plataforma (S-35). Los 96 equipos de reparto equivalen a 96 conductores en ruta. La dimensión 5 se expresa en personas o sesiones y no en camiones. La cota extrema del portal se conserva como prueba separada. La dimensión 6, «Dispositivos de terreno en operación simultánea», es 62 preventistas + 96 equipos de reparto = 158.
 
 La cantidad a proveer se informa aparte, por ámbito:
 
@@ -119,7 +119,7 @@ La dimensión 7, «Volumen anual de almacenamiento transaccional», la dimensió
   Evidencia de entrega & 87,72 GB/año & 6 años & 526,32 GB & S3 por niveles \\
   Temperatura & 0,58 GB/año crudos & 5 años & 2,89 GB crudos & IoT y almacenamiento histórico \\
   Posición & 3,20 GB/año crudos & 12 meses & 3,20 GB crudos & Telemetría y almacenamiento histórico \\
-  Migración histórica & 32,11 GB & Maestros; 36/24/60/24 meses & 30,73--33,49 GB de sensibilidad & Nube después del perfilado \\
+  Migración histórica & 32,11 GB & Maestros, 36/24/60/24 meses & 30,73--33,49 GB de sensibilidad & Nube después del perfilado \\
 \end{tablalafrox}
 
 {\footnotesize Fuente: elaboración propia.\par}
@@ -129,11 +129,11 @@ La migración no supone eventos históricos digitales de trazabilidad: el caso d
 \subsection{Integraciones y ancho de banda por sitio: dimensiones 11--12}
 \label{sec:dimensionamiento-enlaces}
 
-La dimensión 11, «Número de integraciones y volumen de mensajes por integración», cuenta únicamente INT-01 a INT-15 del catálogo del apartado 4.1. Portal y llamadas internas a la API quedan fuera. La Tabla~\ref{tab:dimensionamiento-integraciones} resume sus 224.652 mensajes diarios normales y 342.933 en peak, incluida la coordinación de reserva de INT-03/04; INT-14 considera 13 nodos activos, seis VMs en Talca, cuatro en Concepción y un mini-PC activo por cada cross-docking, con 1.000 eventos por nodo al día. Suma además 7 nodos en espera, cuatro VMs en Concepción y un mini-PC por cross-docking, con 200 eventos al día, porque no atienden transacciones.
+La dimensión 11, «Número de integraciones y volumen de mensajes por integración», cuenta únicamente INT-01 a INT-15 del catálogo del apartado 4.1. Portal y llamadas internas a la API quedan fuera. La Tabla~\ref{tab:dimensionamiento-integraciones} resume sus 224.652 mensajes diarios normales y 342.933 en peak, incluida la coordinación de reserva de INT-03/04. INT-14 considera 13 nodos activos, seis VMs en Talca, cuatro en Concepción y un mini-PC activo por cada cross-docking, con 1.000 eventos por nodo al día. Suma además 7 nodos en espera, cuatro VMs en Concepción y un mini-PC por cross-docking, con 200 eventos al día, porque no atienden transacciones.
 
 \Needspace{0.48\textheight}
 \begin{tablalafrox}{Mensajes de integración por grupo}{tab:dimensionamiento-integraciones}{F{0.26} G{0.18} G{0.18} Y}{\cab{Integraciones} & \cab{Normal} & \cab{Peak} & \cab{Origen}}
-  INT-01 a INT-04 & 114.078/día & 211.860/día & Pedidos, entregas, eventos y coordinación de reserva; INT-04 incluido en INT-03 \\
+  INT-01 a INT-04 & 114.078/día & 211.860/día & Pedidos, entregas, eventos y coordinación de reserva, INT-04 incluido en INT-03 \\
   INT-05 & 10.920/día & 10.920/día & 6.048 cámaras + 4.872 termógrafos \\
   INT-06 a INT-10 & 8.608/día & 15.905/día & ERP, DTE, EDI, pagos y mapas \\
   INT-11 a INT-15 & 91.046/día & 104.248/día & Avisos, réplica, identidad, ADOT y telemetría \\
@@ -168,27 +168,27 @@ Cada cross-docking & D-04 LTE & 2 Mbps & 17,70\,\% \\
 
 {\footnotesize Fuente: elaboración propia.\par}
 
-D-03, D-04 y D-06 corresponden a fibra, LTE y satélite. La Tabla~\ref{tab:t81} distingue el retorno promedio del escenario simultáneo: este último suma 5,64 Mbps útiles de dispositivos y 1,87 Mbps de drenaje en Talca; en Concepción suma 2,75 y 1,44 Mbps. Con un margen de transporte del 15 \%, exige 8,64 y 4,82 Mbps, respectivamente. Se fijan mínimos de aceptación de 10 Mbps de subida sostenida en cada respaldo de Talca y 6 Mbps en cada respaldo de Concepción; son requisitos de dimensionamiento, no velocidades observadas ni garantías inherentes a LTE o Starlink. La aceptación mide cada camino por separado, cola, latencia y plazo por dispositivo. Si un proveedor no sostiene el mínimo, el camino se refuerza o sustituye antes de aceptar el servicio; la priorización por sí sola no compensa falta de caudal.
+D-03, D-04 y D-06 corresponden a fibra, LTE y satélite. La Tabla~\ref{tab:t81} distingue el retorno promedio del escenario simultáneo: este último suma 5,64 Mbps útiles de dispositivos y 1,87 Mbps de drenaje en Talca. En Concepción suma 2,75 y 1,44 Mbps. Con un margen de transporte del 15 \%, exige 8,64 y 4,82 Mbps, respectivamente. Se fijan mínimos de aceptación de 10 Mbps de subida sostenida en cada respaldo de Talca y 6 Mbps en cada respaldo de Concepción. Son requisitos de dimensionamiento, no velocidades observadas ni garantías inherentes a LTE o Starlink. La aceptación mide cada camino por separado, cola, latencia y plazo por dispositivo. Si un proveedor no sostiene el mínimo, el camino se refuerza o sustituye antes de aceptar el servicio. La priorización por sí sola no compensa falta de caudal.
 
-Durante el respaldo se suspende el tráfico administrativo y no urgente; tienen prioridad sincronización, WAL, broker, guías, identidad y alertas. Los cross-docking conservan la cota de drenaje de 0,35 Mbps por sitio y su comprobación con LTE dual. La ventana dominical y las tandas de actualización se detallan en el Anexo 4-W; las condiciones de retorno de los dispositivos, en 4.2.6.7.
+Durante el respaldo se suspende el tráfico administrativo y no urgente. Tienen prioridad sincronización, WAL, broker, guías, identidad y alertas. Los cross-docking conservan la cota de drenaje de 0,35 Mbps por sitio y su comprobación con LTE dual. La ventana dominical y las tandas de actualización se detallan en el Anexo 4-W. Las condiciones de retorno de los dispositivos, en 4.2.6.7.
 
 \subsection{Terreno: turno sin señal y sincronización de la flota: dimensiones 13--14}
 \label{sec:dimensionamiento-terreno}
 
-La dimensión 13, «Volumen de datos generado por un dispositivo de reparto en un turno completo sin señal», es 9,83 MB para la ruta de 34 clientes; una ruta promedio genera 5,36 MB normales y 8,24 MB en septiembre. La cifra incluye evidencia, una fotografía adicional cuando corresponde y 2 MB de datos locales.
+La dimensión 13, «Volumen de datos generado por un dispositivo de reparto en un turno completo sin señal», es 9,83 MB para la ruta de 34 clientes. Una ruta promedio genera 5,36 MB normales y 8,24 MB en septiembre. La cifra incluye evidencia, una fotografía adicional cuando corresponde y 2 MB de datos locales.
 
-La dimensión 14, «Tiempo de sincronización de la flota al regresar al centro de distribución», se expresa en tiempo: el objetivo es hasta diez minutos por dispositivo, desde que recupera el enlace hasta el acuse durable de todos sus registros y evidencias, incluida la espera. Los 9,83 MB requieren al menos 0,13 Mbps útiles continuos por dispositivo; el caudal nominal por sí solo no cubre espera, túnel ni retransmisiones. Los 64 camiones de la hora punta se reparten por SV-03: aproximadamente 43 en Talca y 21 en Concepción, con 0,93 y 0,47 Mbps respectivamente en la Wi-Fi y el enlace de cada centro. La flota completa requiere 1,40 Mbps como promedio de esa hora, no como garantía de diez minutos ante llegadas simultáneas. Para la sensibilidad de 64 llegadas simultáneas se reservan al menos 8,39 Mbps útiles agregados, 5,64 en Talca y 2,75 en Concepción, antes de añadir los demás flujos concurrentes y el margen de transporte. AL-OFF-01 y la prueba de sincronización verifican los dispositivos concurrentes, el caudal efectivo y la cola de espera, conforme al Anexo 4-W.6. La cota de 34 clientes corresponde a la ruta rural más larga descrita en el caso (Bases Técnicas del caso, cap. 8, p. 16, entrevista al conductor de la ruta Cauquenes); en los centros de distribución la sincronización ocurre por Wi-Fi.
+La dimensión 14, «Tiempo de sincronización de la flota al regresar al centro de distribución», se expresa en tiempo: el objetivo es hasta diez minutos por dispositivo, desde que recupera el enlace hasta el acuse durable de todos sus registros y evidencias, incluida la espera. Los 9,83 MB requieren al menos 0,13 Mbps útiles continuos por dispositivo. El caudal nominal por sí solo no cubre espera, túnel ni retransmisiones. Los 64 camiones de la hora punta se reparten por SV-03: aproximadamente 43 en Talca y 21 en Concepción, con 0,93 y 0,47 Mbps respectivamente en la Wi-Fi y el enlace de cada centro. La flota completa requiere 1,40 Mbps como promedio de esa hora, no como garantía de diez minutos ante llegadas simultáneas. Para la sensibilidad de 64 llegadas simultáneas se reservan al menos 8,39 Mbps útiles agregados, 5,64 en Talca y 2,75 en Concepción, antes de añadir los demás flujos concurrentes y el margen de transporte. AL-OFF-01 y la prueba de sincronización verifican los dispositivos concurrentes, el caudal efectivo y la cola de espera, conforme al Anexo 4-W.6. La cota de 34 clientes corresponde a la ruta rural más larga descrita en el caso (Bases Técnicas del caso, cap. 8, p. 16, entrevista al conductor de la ruta Cauquenes). En los centros de distribución la sincronización ocurre por Wi-Fi.
 
-El consumo de batería por turno se declara como un máximo comprometido, porque solo puede medirse con la aplicación construida: con la aplicación en uso real, cada terminal de bodega y de preventa termina su turno o su jornada con al menos 20~\% de carga, es decir, consume como máximo el 80~\% de la batería especificada en 4.2.1.2; en reparto, el cargador del vehículo cubre la ruta. Para cumplirlo, la aplicación sincroniza por lotes en lugar de mantener una conexión permanente y el lector se activa solo con el gatillo. La prueba de aceptación lo mide con la unidad de prueba de cada modelo antes de la compra masiva (RT-17.07 y RT-08.15).
+El consumo de batería por turno se declara como un máximo comprometido, porque solo puede medirse con la aplicación construida: con la aplicación en uso real, cada terminal de bodega y de preventa termina su turno o su jornada con al menos 20~\% de carga, es decir, consume como máximo el 80~\% de la batería especificada en 4.2.1.2. En reparto, el cargador del vehículo cubre la ruta. Para cumplirlo, la aplicación sincroniza por lotes en lugar de mantener una conexión permanente y el lector se activa solo con el gatillo. La prueba de aceptación lo mide con la unidad de prueba de cada modelo antes de la compra masiva (RT-17.07 y RT-08.15).
 
 \subsection{Capacidad on-premise}
 \label{sec:dimensionamiento-onpremise}
 
-La capacidad propuesta conserva maestros, stock, lotes presentes y movimientos de cuatro meses en cada sitio; el histórico vive en la nube. El horizonte cubre el ciclo de conteo de 11.400 ÷ 3.400 = 3,35 meses y la rotación media de 11,4 veces/año. Cada VM se calcula como base de sistema más carga, según la tabla de VMs del Anexo 4-W. El requisito total incorpora el hipervisor (+15\,\% de vCPU y 2 GB de RAM por nodo) y, en Talca, Ceph: dos OSD de 1 vCPU y 4 GB cada uno, más monitor/manager de 1 vCPU y 2 GB por nodo. La Tabla~\ref{tab:t79} resume la capacidad requerida por sitio.
+La capacidad propuesta conserva maestros, stock, lotes presentes y movimientos de cuatro meses en cada sitio. El histórico vive en la nube. El horizonte cubre el ciclo de conteo de 11.400 ÷ 3.400 = 3,35 meses y la rotación media de 11,4 veces/año. Cada VM se calcula como base de sistema más carga, según la tabla de VMs del Anexo 4-W. El requisito total incorpora el hipervisor (+15\,\% de vCPU y 2 GB de RAM por nodo) y, en Talca, Ceph: dos OSD de 1 vCPU y 4 GB cada uno, más monitor/manager de 1 vCPU y 2 GB por nodo. La Tabla~\ref{tab:t79} resume la capacidad requerida por sitio.
 
 \Needspace{0.48\textheight}
 \begin{tablalafrox}{Capacidad requerida por sitio}{tab:t79}{F{0.25} G{0.18} G{0.18} Y}{\cab{Sitio} & \cab{Base local} & \cab{Requerido actual} & \cab{Requerido a 3×}}
-  Talca, VM-01 a VM-06 & 5,04 GB y 7,78 GB RAM de trabajo & VMs: 14 vCPU, 23 GB RAM y 210 GB; total: 26 vCPU y 59 GB RAM & VMs: 14 vCPU, 25 GB RAM y 221 GB; total: 26 vCPU y 61 GB RAM \\
+  Talca, VM-01 a VM-06 & 5,04 GB y 7,78 GB RAM de trabajo & VMs: 14 vCPU, 23 GB RAM y 210 GB, total: 26 vCPU y 59 GB RAM & VMs: 14 vCPU, 25 GB RAM y 221 GB, total: 26 vCPU y 61 GB RAM \\
   Concepción, VM-C01 a VM-C04, por servidor & 2,59 GB y 5,94 GB RAM de trabajo & 12 vCPU, 17 GB RAM y 140 GB & 12 vCPU, 18 GB RAM y 140 GB \\
   Cada cross-docking, por mini-PC & 0,63 GB y 4,47 GB RAM de trabajo & 3 vCPU, 5 GB RAM y 50 GB & 3 vCPU, 5 GB RAM y 50 GB \\
   Mínimo por nodo de Talca & -- & -- & 13 vCPU, 31 GB RAM y 221 GB OSD \\
@@ -196,12 +196,12 @@ La capacidad propuesta conserva maestros, stock, lotes presentes y movimientos d
 
 {\footnotesize Fuente: elaboración propia.\par}
 
-Ceph entrega 1,92 TB útiles con seis NVMe de 960 GB, tres réplicas y sin RAID. Con un nodo caído, Talca conserva 64 vCPU y 128 GB RAM, y Ceph sigue sirviendo los datos con dos réplicas hasta que el nodo vuelve. El umbral de llenado al 80\,\% es 1,54 TB, superior a los 221 GB requeridos a 3×. Su utilización actual es 40,62\,\% de CPU, 46,09\,\% de RAM y 10,94\,\% de disco; a 3× es 40,62\,\%, 47,66\,\% y 11,51\,\%, respectivamente. Cada servidor de Concepción dispone de 16 hilos, 32 GB RAM y 3,84 TB útiles en RAID 10 y aloja el conjunto completo, activo o en espera; utiliza 75,00\,\% de CPU, 53,12\,\% de RAM y 3,65\,\% de disco actualmente, y 75,00\,\%, 56,25\,\% y 3,65\,\% a 3×. En Talca la redundancia es N+1 dentro del clúster, y sus nodos ofertados de 32 hilos y 64 GB ya cubren 3×. En Concepción y en cada cross-docking la redundancia es un segundo equipo idéntico en espera, de modo que la utilización por equipo no cambia.
+Ceph entrega 1,92 TB útiles con seis NVMe de 960 GB, tres réplicas y sin RAID. Con un nodo caído, Talca conserva 64 vCPU y 128 GB RAM, y Ceph sigue sirviendo los datos con dos réplicas hasta que el nodo vuelve. El umbral de llenado al 80\,\% es 1,54 TB, superior a los 221 GB requeridos a 3×. Su utilización actual es 40,62\,\% de CPU, 46,09\,\% de RAM y 10,94\,\% de disco. A 3× es 40,62\,\%, 47,66\,\% y 11,51\,\%, respectivamente. Cada servidor de Concepción dispone de 16 hilos, 32 GB RAM y 3,84 TB útiles en RAID 10 y aloja el conjunto completo, activo o en espera. Utiliza 75,00\,\% de CPU, 53,12\,\% de RAM y 3,65\,\% de disco actualmente, y 75,00\,\%, 56,25\,\% y 3,65\,\% a 3×. En Talca la redundancia es N+1 dentro del clúster, y sus nodos ofertados de 32 hilos y 64 GB ya cubren 3×. En Concepción y en cada cross-docking la redundancia es un segundo equipo idéntico en espera, de modo que la utilización por equipo no cambia.
 
 \subsection{Capacidad en nube}
 \label{sec:dimensionamiento-nube}
 
-La plataforma utiliza Fargate, Aurora, ElastiCache, SQS, IoT Core, DynamoDB y S3 como servicios administrados. Una tarea entrega 14 solicitudes por segundo al 70\,\% de uso con 50 ms de CPU. El escalado reacciona con métricas de un minuto y pone una tarea nueva en servicio en menos de tres minutos, valor de diseño que mide la prueba de carga; el balanceador drena la tarea que sale sin perder transacciones en curso (RT-09.04; Bases Técnicas Transversales, cap. 9, p. 21). La Tabla~\ref{tab:dimensionamiento-nube} separa el portal y compara cada perfil con el techo de ocho tareas.
+La plataforma utiliza Fargate, Aurora, ElastiCache, SQS, IoT Core, DynamoDB y S3 como servicios administrados. Una tarea entrega 14 solicitudes por segundo al 70\,\% de uso con 50 ms de CPU. El escalado reacciona con métricas de un minuto y pone una tarea nueva en servicio en menos de tres minutos, valor de diseño que mide la prueba de carga. El balanceador drena la tarea que sale sin perder transacciones en curso (RT-09.04, Bases Técnicas Transversales, cap. 9, p. 21). La Tabla~\ref{tab:dimensionamiento-nube} separa el portal y compara cada perfil con el techo de ocho tareas.
 
 \Needspace{0.60\textheight}
 \begin{tablalafrox}{Procesos Fargate por perfil}{tab:dimensionamiento-nube}{F{0.30} G{0.22} G{0.14} Y}{\cab{Perfil} & \cab{Carga} & \cab{Tareas} & \cab{Conclusión}}
@@ -209,15 +209,15 @@ Régimen normal & 12,34 solicitudes/s (nube + portal) & 2 & Cumple \\
 Peak de septiembre & 14,66 solicitudes/s (nube + portal) & 2 & Cumple \\
 Prueba RT-09.06 (Bases Técnicas Transversales, cap. 9, p. 21) & 21,99 solicitudes/s totales, distribuido por perfil horario & 2 & Una sola multiplicación \\
 Cota extrema & 48,37 solicitudes/s (5,03 + 43,33) & 4 & Bajo el techo \\
-Sensibilidad 120 solicitudes & 21,97 / 91,70 solicitudes/s; régimen / cota & 2 / 7 & Bajo el techo \\
-Cota extrema más canal tradicional & 111,70 solicitudes/s (91,70 + cuota de 20) & 8 & Cota completa de ADR-12; verificar mezcla y latencia \\
+Sensibilidad 120 solicitudes & 21,97 / 91,70 solicitudes/s, régimen / cota & 2 / 7 & Bajo el techo \\
+Cota extrema más canal tradicional & 111,70 solicitudes/s (91,70 + cuota de 20) & 8 & Cota completa de ADR-12, verificar mezcla y latencia \\
 \end{tablalafrox}
 
 \textbf{Techo común de los escenarios:} 8 tareas.
 
 {\footnotesize Fuente: elaboración propia.\par}
 
-El portal en régimen usa 9,63 solicitudes/s y 96,30 sesiones concurrentes; su cota extrema usa 43,33 solicitudes/s y 433,33 sesiones concurrentes. Con 120 solicitudes por sesión, manteniendo las sesiones repartidas en la hora, el portal alcanza 19,26 solicitudes/s en régimen y 86,67 en la cota extrema; al sumar la nube resultan 21,97 y 91,70 solicitudes/s, que requieren 2 y 7 tareas. Con la cuota agregada de 20 solicitudes/s del canal tradicional, la cota completa alcanza 111,70 solicitudes/s y requiere las ocho tareas; no conserva capacidad para aumentar esa cuota. La prueba de carga verifica esta mezcla, la base dimensionada en el Anexo 4-W.9 y el tiempo de escalado, además del escenario de siete tareas.
+El portal en régimen usa 9,63 solicitudes/s y 96,30 sesiones concurrentes. Su cota extrema usa 43,33 solicitudes/s y 433,33 sesiones concurrentes. Con 120 solicitudes por sesión, manteniendo las sesiones repartidas en la hora, el portal alcanza 19,26 solicitudes/s en régimen y 86,67 en la cota extrema. Al sumar la nube resultan 21,97 y 91,70 solicitudes/s, que requieren 2 y 7 tareas. Con la cuota agregada de 20 solicitudes/s del canal tradicional, la cota completa alcanza 111,70 solicitudes/s y requiere las ocho tareas. No conserva capacidad para aumentar esa cuota. La prueba de carga verifica esta mezcla, la base dimensionada en el Anexo 4-W.9 y el tiempo de escalado, además del escenario de siete tareas.
 
 \subsection{Plan de capacidad}
 \label{sec:dimensionamiento-plan}
@@ -238,7 +238,7 @@ Mesa de ayuda, contactos & 2.000/mes & 2.000 × (350 ÷ 310) = 2.258/mes & 6.000
 \paragraph*{Acciones de capacidad por componente}
 \begin{itemize}
 \item \textbf{WMS de Talca, TPS peak.} Revisar CPU e IOPS trimestralmente.
-\item \textbf{Cota por cross-docking, basada en la carga agregada de las tres plataformas.} Revisar CPU e IOPS trimestralmente; contrastar distribución real por sitio.
+\item \textbf{Cota por cross-docking, basada en la carga agregada de las tres plataformas.} Revisar CPU e IOPS trimestralmente, contrastar distribución real por sitio.
 \item \textbf{Nube, TPS peak / tareas.} Escalamiento automático y prueba trimestral.
 \item \textbf{Evidencia anual.} Escalar S3 y revisar retención.
 \item \textbf{Enlace de Talca, escenario horario distribuido.} Contrastar además el retorno simultáneo de la Tabla~\ref{tab:t81} antes de ampliar.
@@ -248,9 +248,9 @@ Mesa de ayuda, contactos & 2.000/mes & 2.000 × (350 ÷ 310) = 2.258/mes & 6.000
 
 {\footnotesize Fuente: elaboración propia.\par}
 
-La nube escala automáticamente dentro del techo declarado; nodos, almacenamiento local, Wi-Fi y enlaces requieren revisión planificada. La gestión trimestral compara la proyección observada con la cota de 3× y con la incorporación de nuevas unidades.
+La nube escala automáticamente dentro del techo declarado. Nodos, almacenamiento local, Wi-Fi y enlaces requieren revisión planificada. La gestión trimestral compara la proyección observada con la cota de 3× y con la incorporación de nuevas unidades.
 
-Respecto de la carga proyectada del año 3, las diferencias entre las cotas de dimensionamiento 3× y esa proyección en la Tabla~\ref{tab:dimensionamiento-plan} son: WMS Talca, (8,05 ÷ 3,15 − 1) × 100 = 155,6 \%; cota de cross-docking, (6,50 ÷ 2,58 − 1) × 100 = 151,9 \%; aplicación en nube, (43,98 ÷ 17,03 − 1) × 100 = 158,3 \%. En cross-docking se asigna conservadoramente a cada equipo la carga agregada de las tres plataformas; no se afirma que cada sitio genere ese volumen. Estos porcentajes comparan escenarios de carga, no capacidad medida del hardware ni margen de la sensibilidad completa de portales de la Tabla~\ref{tab:dimensionamiento-nube}. La revisión trimestral y las pruebas de carga verifican el límite efectivo antes de ampliar. No se aplican a enlaces, parque de terminales ni mesa de ayuda (RT-08.05; Bases Técnicas Transversales, cap. 8, p. 18).
+Respecto de la carga proyectada del año 3, las diferencias entre las cotas de dimensionamiento 3× y esa proyección en la Tabla~\ref{tab:dimensionamiento-plan} son: WMS Talca, (8,05 ÷ 3,15 − 1) × 100 = 155,6 \%. Cota de cross-docking, (6,50 ÷ 2,58 − 1) × 100 = 151,9 \%. Aplicación en nube, (43,98 ÷ 17,03 − 1) × 100 = 158,3 \%. En cross-docking se asigna conservadoramente a cada equipo la carga agregada de las tres plataformas. No se afirma que cada sitio genere ese volumen. Estos porcentajes comparan escenarios de carga, no capacidad medida del hardware ni margen de la sensibilidad completa de portales de la Tabla~\ref{tab:dimensionamiento-nube}. La revisión trimestral y las pruebas de carga verifican el límite efectivo antes de ampliar. No se aplican a enlaces, parque de terminales ni mesa de ayuda (RT-08.05, Bases Técnicas Transversales, cap. 8, p. 18).
 
 \subsection{Cuello de botella, umbrales y degradación controlada}
 \label{sec:dimensionamiento-cuello}
@@ -263,7 +263,7 @@ El primer candidato es la emisión de guías del ERP. En el peak se emiten unos 
   \item En la ventana actual de despacho: máximo de 1,89 segundos por guía.
 \end{itemize}
 
-La solución emite la guía cuando confirma la carga, durante la noche. Se detectan guías aún no emitidas frente a la hora de salida de cada camión y se prioriza la cola, sin crear un segundo emisor: el ERP conserva la responsabilidad tributaria y la guía acompaña el traslado. Como el caso no documenta las interfaces del ERP y encarga levantarlas en los primeros meses (Bases Técnicas del caso, cap. 5, p. 10), el tiempo real por guía se mide en ese levantamiento; si superara los 4,42 segundos, las cargas se cierran por camión en el orden de salida, para que la emisión empiece antes.
+La solución emite la guía cuando confirma la carga, durante la noche. Se detectan guías aún no emitidas frente a la hora de salida de cada camión y se prioriza la cola, sin crear un segundo emisor: el ERP conserva la responsabilidad tributaria y la guía acompaña el traslado. Como el caso no documenta las interfaces del ERP y encarga levantarlas en los primeros meses (Bases Técnicas del caso, cap. 5, p. 10), el tiempo real por guía se mide en ese levantamiento. Si superara los 4,42 segundos, las cargas se cierran por camión en el orden de salida, para que la emisión empiece antes.
 
 La Tabla~\ref{tab:t84} fija los umbrales de respuesta que se observan en percentil 95.
 
@@ -278,7 +278,7 @@ Carga inicial del portal & 2 s \\
 Navegación & 1 s \\
 API de consulta & 500 ms \\
 API de escritura & 800 ms \\
-Búsqueda compuesta & 3 s; búsqueda global (RF-17.11) $\leq$ 2 s \\
+Búsqueda compuesta & 3 s, búsqueda global (RF-17.11) $\leq$ 2 s \\
 Informe estándar & 30 s \\
 \end{tablalafrox}
 
@@ -291,7 +291,7 @@ Informe estándar & 30 s \\
 
 {\footnotesize Fuente: elaboración propia.\par}
 
-Los otros candidatos son la base WMS, los IOPS, la Wi-Fi y el drenaje. Se detectan con percentil 95, longitud de colas, errores, retransmisiones y tiempo de sincronización. Si se supera una cota, se encola con clave idempotente, se limita la tasa y se muestra un mensaje explícito; no se pierden ni duplican pedidos.
+Los otros candidatos son la base WMS, los IOPS, la Wi-Fi y el drenaje. Se detectan con percentil 95, longitud de colas, errores, retransmisiones y tiempo de sincronización. Si se supera una cota, se encola con clave idempotente, se limita la tasa y se muestra un mensaje explícito. No se pierden ni duplican pedidos.
 
 \subsection{Validación mediante pruebas de carga y estrés}
 \label{sec:dimensionamiento-pruebas}
@@ -311,13 +311,13 @@ La prueba RT-09.06 (Bases Técnicas Transversales, cap. 9, p. 21) carga una sola
 
 {\footnotesize Fuente: elaboración propia.\par}
 
-La prueba de carga conserva tasas por lugar, percentil 95, utilización, colas, errores y comportamiento durante el drenaje; incluye la concurrencia de oficina y trabajo remoto por Verified Access, la API privada, el inicio de sesión y los tableros. Los parámetros confirmados se actualizan en la revisión trimestral de capacidad.
+La prueba de carga conserva tasas por lugar, percentil 95, utilización, colas, errores y comportamiento durante el drenaje. Incluye la concurrencia de oficina y trabajo remoto por Verified Access, la API privada, el inicio de sesión y los tableros. Los parámetros confirmados se actualizan en la revisión trimestral de capacidad.
 
 \begin{itemize}
-\item Comparar la carga base con la misma mezcla y las innovaciones habilitadas según su etapa. Ejecutar por separado régimen normal, septiembre, año 3 y estrés 3×; RT-09.06 mantiene sus 21,99 TPS totales y no se multiplica de nuevo por cada sitio. Registrar las tareas nocturnas o mensuales que realmente coincidan con la ventana probada.
-\item Medir CPU, memoria, IOPS, crecimiento de datos, tráfico y duración de trabajos; contrastar el incremento con los límites de cada recurso y con la reserva N+1 o la conmutación declarada. Los parámetros base de 50 ms y 64 MB no incluyen automáticamente el trabajo adicional. La cota extrema de la API y los márgenes locales no se consideran capacidad libre para las innovaciones.
+\item Comparar la carga base con la misma mezcla y las innovaciones habilitadas según su etapa. Ejecutar por separado régimen normal, septiembre, año 3 y estrés 3×. RT-09.06 mantiene sus 21,99 TPS totales y no se multiplica de nuevo por cada sitio. Registrar las tareas nocturnas o mensuales que realmente coincidan con la ventana probada.
+\item Medir CPU, memoria, IOPS, crecimiento de datos, tráfico y duración de trabajos. Contrastar el incremento con los límites de cada recurso y con la reserva N+1 o la conmutación declarada. Los parámetros base de 50 ms y 64 MB no incluyen automáticamente el trabajo adicional. La cota extrema de la API y los márgenes locales no se consideran capacidad libre para las innovaciones.
 \item Repetir el corte de 24 horas y la recuperación con precargas, respuestas y resultados derivados acumulados. El drenaje de sitio debe terminar en dos horas y cada dispositivo en diez minutos desde reconexión hasta acuse durable, incluida su espera. La priorización de trabajos no puede ocultar pendientes ni sacrificar el bloqueo térmico local en menos de cinco segundos.
-\item Aceptar únicamente si se mantienen los percentiles 95 y plazos aplicables, sin pérdida ni duplicación y con colas estables y conciliadas dentro de sus ventanas. Si el incremento supera una cota, ajustar cupos, separar trabajos de fondo o ampliar la capacidad de los componentes existentes; repetir el ensayo y documentar la configuración resultante antes de la aceptación.
+\item Aceptar únicamente si se mantienen los percentiles 95 y plazos aplicables, sin pérdida ni duplicación y con colas estables y conciliadas dentro de sus ventanas. Si el incremento supera una cota, ajustar cupos, separar trabajos de fondo o ampliar la capacidad de los componentes existentes. Repetir el ensayo y documentar la configuración resultante antes de la aceptación.
 \end{itemize}
 
 \subsection{Síntesis de las dieciséis dimensiones del numeral 14.2}
@@ -327,4 +327,4 @@ La \href{LAFROX-Subdocumento4-Anexos.pdf}{Tabla A.30 del Anexo 4-W} reúne cada 
 
 
 
-El diseño queda gobernado por tres condiciones operativas. La primera es la emisión de guías del ERP antes de la salida de cada camión, que es la única de las tres cuya capacidad no controla la solución y que por eso se mide primero. La segunda es el enlace de Talca durante el retorno de la flota, cuando la sincronización de los dispositivos se suma al tráfico de oficina. La tercera es el almacenamiento de la evidencia de entrega, que es el volumen que más crece y el que fija la política de niveles de S3. Las cotas de crecimiento 3× y las sensibilidades de portales y sincronización son escenarios distintos. La cota completa de 111,70 solicitudes/s ocupa las ocho tareas de API y no deja margen para aumentar la cuota; los límites efectivos de cómputo y enlaces se verifican con los perfiles de la Tabla~\ref{tab:dimensionamiento-nube}, los ensayos de la Tabla~\ref{tab:t86} y la memoria del Anexo 4-W.
+El diseño queda gobernado por tres condiciones operativas. La primera es la emisión de guías del ERP antes de la salida de cada camión, que es la única de las tres cuya capacidad no controla la solución y que por eso se mide primero. La segunda es el enlace de Talca durante el retorno de la flota, cuando la sincronización de los dispositivos se suma al tráfico de oficina. La tercera es el almacenamiento de la evidencia de entrega, que es el volumen que más crece y el que fija la política de niveles de S3. Las cotas de crecimiento 3× y las sensibilidades de portales y sincronización son escenarios distintos. La cota completa de 111,70 solicitudes/s ocupa las ocho tareas de API y no deja margen para aumentar la cuota. Los límites efectivos de cómputo y enlaces se verifican con los perfiles de la Tabla~\ref{tab:dimensionamiento-nube}, los ensayos de la Tabla~\ref{tab:t86} y la memoria del Anexo 4-W.

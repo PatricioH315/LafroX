@@ -1,22 +1,22 @@
 \subsection{Detalle de tecnologías seleccionadas}
 
-Las tecnologías se agrupan por responsabilidad; el Anexo 4-P conserva el detalle por capa, versiones, soporte y equivalencias técnicas.
+Las tecnologías se agrupan por responsabilidad. El Anexo 4-P conserva el detalle por capa, versiones, soporte y equivalencias técnicas.
 
 \begin{itemize}
-\item \textbf{Núcleo y datos.} Laravel/PHP organiza M1–M12; PostgreSQL/PostGIS conserva transacciones y consultas espaciales. Aurora realiza la consolidación y recuperación en nube. Las alternativas y sus criterios se desarrollan a continuación y en los ADR.
+\item \textbf{Núcleo y datos.} Laravel/PHP organiza M1–M12. PostgreSQL/PostGIS conserva transacciones y consultas espaciales. Aurora realiza la consolidación y recuperación en nube. Las alternativas y sus criterios se desarrollan a continuación y en los ADR.
 
-\item \textbf{Interacción.} Angular, TypeScript y Tailwind implementan portales y consolas; Kotlin/Room y DataWedge integran los periféricos Zebra y la captura móvil sin señal. MDM administra el parque.
+\item \textbf{Interacción.} Angular, TypeScript y Tailwind implementan portales y consolas. Kotlin/Room y DataWedge integran los periféricos Zebra y la captura móvil sin señal. MDM administra el parque.
 
-\item \textbf{Acceso e identidad.} CloudFront, WAF, Shield y API Gateway protegen la entrada central; el WMS y el verificador de turnos atienden la entrada local. Keycloak, Secrets Manager y SSM realizan identidad y secretos, con los límites descritos en 4.1.3.7.
+\item \textbf{Acceso e identidad.} CloudFront, WAF, Shield y API Gateway protegen la entrada central. El WMS y el verificador de turnos atienden la entrada local. Keycloak, Secrets Manager y SSM realizan identidad y secretos, con los límites descritos en 4.1.3.7.
 
-\item \textbf{Eventos y frío.} RabbitMQ local, SQS FIFO y SNS conservan y distribuyen hechos; la ACL y erp-sync mantienen al ERP como único emisor. IoT Core, DynamoDB y Greengrass sostienen lectura y alarma local; AS2 transporta los intercambios EDI.
+\item \textbf{Eventos y frío.} RabbitMQ local, SQS FIFO y SNS conservan y distribuyen hechos. La ACL y erp-sync mantienen al ERP como único emisor. IoT Core, DynamoDB y Greengrass sostienen lectura y alarma local. AS2 transporta los intercambios EDI.
 
-\item \textbf{Analítica y evidencia.} S3, Glue y Redshift separan las consultas históricas del transaccional; S3 protege originales y documentos mediante las retenciones y bloqueos declarados.
+\item \textbf{Analítica y evidencia.} S3, Glue y Redshift separan las consultas históricas del transaccional. S3 protege originales y documentos mediante las retenciones y bloqueos declarados.
 
-\item \textbf{Operación y entrega.} OpenTelemetry/ADOT y CloudWatch correlacionan nube y sitios. Fargate, Proxmox y Docker Compose ejecutan el mismo artefacto en sus perfiles; Terraform/Ansible y GitLab CI/CodeBuild controlan infraestructura y promoción. La red y los cinco ambientes se desarrollan en 4.2.4.
+\item \textbf{Operación y entrega.} OpenTelemetry/ADOT y CloudWatch correlacionan nube y sitios. Fargate, Proxmox y Docker Compose ejecutan el mismo artefacto en sus perfiles. Terraform/Ansible y GitLab CI/CodeBuild controlan infraestructura y promoción. La red y los cinco ambientes se desarrollan en 4.2.4.
 
 \end{itemize}
-El Anexo 4-P reúne el inventario completo de servicios AWS y las equivalencias entre nombres funcionales y técnicos. La descripción por capa explica la responsabilidad de cada tecnología; el inventario permite comprobar su correspondencia con el despliegue.
+El Anexo 4-P reúne el inventario completo de servicios AWS y las equivalencias entre nombres funcionales y técnicos. La descripción por capa explica la responsabilidad de cada tecnología. El inventario permite comprobar su correspondencia con el despliegue.
 
 Laravel conserva una superficie de APIs, políticas y colas coherente para los doce módulos. Las demás selecciones se fundamentan así:
 
@@ -25,13 +25,13 @@ Laravel conserva una superficie de APIs, políticas y colas coherente para los d
 
 \item La implementación se verifica mediante contratos y pruebas.
 
-\item PostgreSQL/PostGIS se prefiere a MariaDB por la combinación de transacciones y consultas geográficas del dominio de rutas y sitios; la prueba cubre consultas espaciales y migración.
+\item PostgreSQL/PostGIS se prefiere a MariaDB por la combinación de transacciones y consultas geográficas del dominio de rutas y sitios. La prueba cubre consultas espaciales y migración.
 
-\item Keycloak se prefiere a un proveedor de identidad exclusivamente en nube porque permite administrar personal propio y externo sin trasladar la autorización de negocio fuera de M1–M12; el relevo local requiere la prueba de 24 horas.
+\item Keycloak se prefiere a un proveedor de identidad exclusivamente en nube porque permite administrar personal propio y externo sin trasladar la autorización de negocio fuera de M1–M12. El relevo local requiere la prueba de 24 horas.
 
 \item API Gateway reduce administración frente a un gateway propio, sujeto a prueba de cuotas y costo bajo el pico.
 
-\item RabbitMQ local más SQS FIFO conserva el trabajo del sitio sin enlace; la deduplicación y el orden por partición se prueban en los consumidores.
+\item RabbitMQ local más SQS FIFO conserva el trabajo del sitio sin enlace. La deduplicación y el orden por partición se prueban en los consumidores.
 
 \item Angular se selecciona por su organización en componentes y sus contratos TypeScript.
 
@@ -40,6 +40,6 @@ Los costos, el emplazamiento y la redundancia se comprueban en 4.2 y en el regis
 
 El núcleo utiliza tecnologías con alternativas de despliegue como Laravel, Angular, PostgreSQL, RabbitMQ y Keycloak. Eso facilita la portabilidad, pero no elimina la dependencia de los servicios administrados de AWS. La reversibilidad documenta contratos, exportación de datos y sustitución de adaptadores, junto con el esfuerzo de migración exigido por RT-03.07, que 4.2 acota por servicio.
 
-El Anexo 4-P reúne versiones de referencia, soporte y criterios de actualización. Las versiones menores se fijan en archivos de bloqueo y SBOM y se promueven mediante pruebas de contrato; no se congela una versión sin soporte por los 56 meses. Laravel, PHP, PostgreSQL, Angular y RabbitMQ se revisan conforme a sus políticas oficiales (Laravel, 2026; PHP, 2026; PostgreSQL, 2026; Angular, 2026a, 2026b; RabbitMQ, 2026).
+El Anexo 4-P reúne versiones de referencia, soporte y criterios de actualización. Las versiones menores se fijan en archivos de bloqueo y SBOM y se promueven mediante pruebas de contrato. No se congela una versión sin soporte por los 56 meses. Laravel, PHP, PostgreSQL, Angular y RabbitMQ se revisan conforme a sus políticas oficiales (Laravel, 2026; PHP, 2026; PostgreSQL, 2026; Angular, 2026a, 2026b; RabbitMQ, 2026).
 
-LafroX documenta la creación inicial de la cuenta raíz y guarda el procedimiento y su evidencia en el repositorio del CLIENTE. Fuera de esa creación inicial, todos los recursos se crean y modifican con Terraform o Ansible, con revisión y control de versiones; no hay altas manuales por consola (RT-03.03; Bases Técnicas Transversales, cap. 3, p. 8).
+LafroX documenta la creación inicial de la cuenta raíz y guarda el procedimiento y su evidencia en el repositorio del CLIENTE. Fuera de esa creación inicial, todos los recursos se crean y modifican con Terraform o Ansible, con revisión y control de versiones. No hay altas manuales por consola (RT-03.03, Bases Técnicas Transversales, cap. 3, p. 8).

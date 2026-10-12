@@ -6,9 +6,9 @@ La tabla asigna a cada mecanismo de gobierno de la integración su forma de oper
 
 \begin{tablalafrox}{Mecanismos de gobierno de la capa de integración}{tab:gobierno-integracion}{F{0.23} F{0.44} Y}{\cab{Mecanismo} & \cab{Cómo opera} & \cab{Responsable / Artefacto}}
 Catálogo único versionado & Toda integración: dueño, contrato, versión, estado, comportamiento ante falla. Lo que no está en el catálogo no se despliega. & Arquitecto Solución / Catálogo (portal API Gateway) \\
-Comité Arquitectura & Aprueba altas y cambios \texttt{major}; cadencia declarada en plan gobierno. & Arq. Sol., Jefe Proy., Jefe TI Cliente / Actas \\
+Comité Arquitectura & Aprueba altas y cambios \texttt{major}, cadencia declarada en plan gobierno. & Arq. Sol., Jefe Proy., Jefe TI Cliente / Actas \\
 Pruebas contrato consumidor-proveedor & Pipeline: cambio que rompe consumidor registrado bloquea despliegue automáticamente. & Líder Desarrollo, Líder Calidad / Pipeline CI/CD \\
-Pruebas falla por integración & Inyección fallas (RT-10.07) en marcha blanca; verifica comportamiento catálogo. & Líder Calidad, Líder Operación / Evidencia marcha blanca \\
+Pruebas falla por integración & Inyección fallas (RT-10.07) en marcha blanca. Verifica comportamiento catálogo. & Líder Calidad, Líder Operación / Evidencia marcha blanca \\
 Observabilidad por integración & Latencia, error, volumen, DLQ por integración, correlación \texttt{transaction\_id} (Capa 8). & Líder Operación/SRE / tableros de CloudWatch \\
 Bandeja excepciones negocio & EDI/DTE $\rightarrow$ bandeja operada por actor canónico (RF-12.05/12.06). & Jefe TI, Responsable Canal Moderno / Bandeja operativa \\
 Traspaso equipo 4 personas & Catálogo, guías resolución, bandeja = artefactos operables sin proponente. & Líder Implantación/Gestión Cambio / Documentación traspaso \\
@@ -16,4 +16,4 @@ Traspaso equipo 4 personas & Catálogo, guías resolución, bandeja = artefactos
 
 {\footnotesize Fuente: elaboración propia a partir de las Bases Técnicas Transversales (caps.~2 y 5, pp.~6--13).\par}
 
-El libro de operación y las guías de resolución cubren cada falla previsible del catálogo de integraciones y los procedimientos de continuidad, con diagnóstico, responsable, pasos y comprobación de la recuperación. SRE automatiza progresivamente las tareas repetitivas con los trabajos y procedimientos ya definidos, manteniendo la aprobación y la evidencia de cada ejecución (RT-14.05; Bases Técnicas Transversales, cap. 14, p. 27).
+El libro de operación y las guías de resolución cubren cada falla previsible del catálogo de integraciones y los procedimientos de continuidad, con diagnóstico, responsable, pasos y comprobación de la recuperación. SRE automatiza progresivamente las tareas repetitivas con los trabajos y procedimientos ya definidos, manteniendo la aprobación y la evidencia de cada ejecución (RT-14.05, Bases Técnicas Transversales, cap. 14, p. 27).

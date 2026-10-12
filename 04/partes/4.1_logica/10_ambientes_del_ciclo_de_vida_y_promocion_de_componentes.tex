@@ -3,10 +3,10 @@
 Los cinco ambientes del RT-04.01 cumplen propósitos distintos.
 
 \begin{itemize}
-  \item En \textbf{Desarrollo}, el equipo construye los módulos Laravel y las aplicaciones Kotlin, los contratos y las migraciones con datos sintéticos o anonimizados; las pruebas unitarias no necesitan conectarse al ERP real.
+  \item En \textbf{Desarrollo}, el equipo construye los módulos Laravel y las aplicaciones Kotlin, los contratos y las migraciones con datos sintéticos o anonimizados, las pruebas unitarias no necesitan conectarse al ERP real.
   \item En \textbf{QA}, se despliegan M1--M12, el verificador local y los adaptadores simulados para ensayar integración, regresión, idempotencia y fallas de enlace con datos controlados.
-\item En \textbf{Preproducción}, el mismo artefacto y las mismas versiones de contratos se ensayan con topología equivalente a producción y volumen representativo de septiembre; se prueban los 207 terminales de bodega, el relevo de turnos, la emisión de guía por el ERP y la reconciliación. Toda diferencia de escala o configuración se declara antes de aceptar el ensayo, conforme a RT-04.02.
-  \item En \textbf{Producción}, los módulos sirven datos reales con acceso restringido y auditado; los desarrolladores no corrigen transacciones directamente.
+\item En \textbf{Preproducción}, el mismo artefacto y las mismas versiones de contratos se ensayan con topología equivalente a producción y volumen representativo de septiembre. Se prueban los 207 terminales de bodega, el relevo de turnos, la emisión de guía por el ERP y la reconciliación. Toda diferencia de escala o configuración se declara antes de aceptar el ensayo, conforme a RT-04.02.
+  \item En \textbf{Producción}, los módulos sirven datos reales con acceso restringido y auditado, los desarrolladores no corrigen transacciones directamente.
   \begin{samepage}
   \item El ambiente de \textbf{Recuperación ante desastres} conserva la versión compatible de los componentes y permite ensayar conmutación y retorno al menos dos veces al año, sin presumir que una réplica remota contiene eventos aún no enviados desde un sitio aislado.
   \par\end{samepage}
@@ -14,14 +14,14 @@ Los cinco ambientes del RT-04.01 cumplen propósitos distintos.
 
 Los cinco ambientes deben estar operativos en H3. Su emplazamiento, segregación, dimensionamiento y recorrido de promoción se desarrollan en 4.2.4.1.
 
-QA funciona también como ambiente de simulación de parámetros: el CLIENTE compara el resultado de las mismas transacciones de prueba con el valor vigente y el propuesto, usando datos controlados y los adaptadores simulados existentes. Solo después de comprobar el efecto y aprobar la versión se habilita su vigencia en Producción (RT-16.05; Bases Técnicas Transversales, cap. 16, p. 29).
+QA funciona también como ambiente de simulación de parámetros: el CLIENTE compara el resultado de las mismas transacciones de prueba con el valor vigente y el propuesto, usando datos controlados y los adaptadores simulados existentes. Solo después de comprobar el efecto y aprobar la versión se habilita su vigencia en Producción (RT-16.05, Bases Técnicas Transversales, cap. 16, p. 29).
 
 La promoción conserva la identidad del artefacto PHP, el archivo de versiones de dependencias y la versión de esquema desde QA hasta producción.
 
 \begin{itemize}
-  \item La revisión por pares, pruebas de contrato OpenAPI/AsyncAPI, PHPUnit, PHPStan/Larastan, la auditoría de dependencias, análisis de secretos e imágenes bloquean un despliegue defectuoso (RT-04.03--04.05; Bases Técnicas Transversales, cap. 4, p. 10).
-  \item Cada cambio registra requisito, commit, prueba, aprobación y despliegue; una migración incompatible con eventos sin confirmar se detiene o conserva un lector de la versión precedente.
+  \item La revisión por pares, pruebas de contrato OpenAPI/AsyncAPI, PHPUnit, PHPStan/Larastan, la auditoría de dependencias, análisis de secretos e imágenes bloquean un despliegue defectuoso (RT-04.03--04.05, Bases Técnicas Transversales, cap. 4, p. 10).
+  \item Cada cambio registra requisito, commit, prueba, aprobación y despliegue. Una migración incompatible con eventos sin confirmar se detiene o conserva un lector de la versión precedente.
   \item La recuperación ante desastres verifica además la lectura de datos y mensajes generados durante la contingencia antes del retorno al primario.
 \end{itemize}
 
-Durante el contrato, QA mantiene un espacio aislado de capacitación con datos ficticios, donde los usuarios practican sin acceso a datos productivos ni efectos sobre la operación real. Está disponible de lunes a viernes, de 08:00 a 20:00, y en las ventanas de prueba que programe el CLIENTE (S-43). Su configuración se conserva cuando el cómputo de QA se reduce o se apaga (RT-22.09; Bases Técnicas Transversales, cap. 22, p. 38).
+Durante el contrato, QA mantiene un espacio aislado de capacitación con datos ficticios, donde los usuarios practican sin acceso a datos productivos ni efectos sobre la operación real. Está disponible de lunes a viernes, de 08:00 a 20:00, y en las ventanas de prueba que programe el CLIENTE (S-43). Su configuración se conserva cuando el cómputo de QA se reduce o se apaga (RT-22.09, Bases Técnicas Transversales, cap. 22, p. 38).

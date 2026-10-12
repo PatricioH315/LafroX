@@ -24,7 +24,7 @@ def norm(line):
     if re.fullmatch(r'(?:fisica\.chapter|4\.chapter|4-W\.section|anexo42A\.section|\[block\]|25pt28ptlafroxFuerte|0\.45em|\[1\]8pt|#12pt)',line):return ''
     line=re.sub(r'<a\s[^>]+></a>','',line)
     if re.match(r'^!?\[.*\]\(https://raw.githubusercontent.com/',line):return ''
-    if re.match(r'^\[Abrir diagrama en PDF\]\([A-Za-z]:/[^)]+\.pdf\)$',line):return ''
+    if re.match(r'^!?\[.*\]\([A-Za-z]:/[^)]+\.(?:pdf|png)\)$',line):return ''
     if re.match(r'^\*\*Figura .*',line):return ''
     if line.startswith('Fuente:'):return ''
     if re.match(r'^\|(?:\s*:?-+:?\s*\|)+$',line):return ''

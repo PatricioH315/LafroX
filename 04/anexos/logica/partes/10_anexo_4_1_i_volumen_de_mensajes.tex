@@ -8,8 +8,8 @@ Esta síntesis permite contrastar órdenes de magnitud. Los anexos 4-G y 4-H son
 INT-01 Pedido preventa & 1.400 msg/día & 2.600 & Entregas diarias habituales y peak de septiembre \\
 INT-02 Entrega, POD y cobro & 7.000 msg/día & 13.000 & Cinco operaciones por entrega \\
 INT-03 Eventos bodega a nube & 58.710 msg/día & 109.032 & 260.000 líneas ÷ 22,14 $\times$ 5; peak $\times$ 1,857 \\
-INT-04 Detalle de cross-docking a la nube & 5.600 msg/día, incluidos en INT-03 & 10.400, incluidos en INT-03 & Cuatro operaciones por entrega; subconjunto, no sumando adicional \\
-INT-03/04 Coordinación de reserva & 46.968 msg/día & 87.228 & 260.000 líneas ÷ 22,14 $\times$ 4; peak: 21.807 líneas $\times$ 4 \\
+INT-04 Detalle de cross-docking a la nube & 5.600 msg/día, incluidos en INT-03 & 10.400, incluidos en INT-03 & Cuatro operaciones por entrega, subconjunto, no sumando adicional \\
+INT-03/04 Coordinación de reserva & 46.968 msg/día & 87.228 & 260.000 líneas ÷ 22,14 $\times$ 4, peak: 21.807 líneas $\times$ 4 \\
 INT-05 Temperatura & 10.920 msg/día & 10.920 & 21 $\times$ 288 lecturas de cámara + 28 $\times$ 174 de termógrafo \\
 INT-06 ERP 2017 & 2.025 msg/día & 3.762 & Flujos ERP sobre 22,14 días; peak $\times$ 1,857 \\
 INT-07 DTE/SII & 3.071 msg/día & 5.703 & 34.000 documentos ÷ 22,14 $\times$ 2; peak $\times$ 1,857 \\
@@ -28,4 +28,4 @@ INT-15 Telemetría de flota & 60.480 posiciones/día & 60.480 & 42 camiones $\ti
 
 La coordinación de reserva supone una retención por línea de pedido. Cada retención usa como máximo cuatro mensajes: solicitud y resultado de la retención, y solicitud y resultado de una liberación. La cifra supone que toda retención se libera, lo que sobrestima el flujo porque una retención consumida por la preparación no genera liberación. Esa holgura cubre las líneas repartidas entre lotes o sitios, cuya proporción mide AL-STOCK-01. Este flujo no duplica los movimientos físicos de INT-03 ni las operaciones de INT-04.
 
-Los eventos de excepción sanitaria del Anexo 4-A, incluida DisposicionSanitariaRegistrada, viajan por INT-03; no se suman como una integración nueva. La cota de cinco eventos por línea debe contrastarse con su frecuencia y con los reintentos en AL-OFF-01 antes de acreditar la volumetría.
+Los eventos de excepción sanitaria del Anexo 4-A, incluida DisposicionSanitariaRegistrada, viajan por INT-03. No se suman como una integración nueva. La cota de cinco eventos por línea debe contrastarse con su frecuencia y con los reintentos en AL-OFF-01 antes de acreditar la volumetría.

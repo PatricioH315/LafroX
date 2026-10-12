@@ -4,9 +4,9 @@
 Toda reconciliación se resuelve por regla de negocio declarada, nunca por la sola marca de tiempo.
 
 \begin{itemize}
-  \item La clave UUID generada por el cliente se conserva en todos los reintentos y el resultado se retiene para deduplicación durante 30 días; un lote más antiguo se aísla para revisión antes de admitir una nueva escritura.
+  \item La clave UUID generada por el cliente se conserva en todos los reintentos y el resultado se retiene para deduplicación durante 30 días. Un lote más antiguo se aísla para revisión antes de admitir una nueva escritura.
   \item El resultado incluye identificador, versión, regla aplicada, actor y fecha. El Anexo 4-K muestra los conflictos de negocio principales.
 \end{itemize}
 
 
-La replicación protege la continuidad y no resuelve conflictos de negocio. INT-12 replica Talca para lectura; INT-03/04 sincroniza los eventos de los cinco sitios. Cada sitio conserva su autoridad y su outbox hasta el acuse durable. El RPO, los escenarios cubiertos y el límite de aislamiento seguido de destrucción se definen en 4.3.2; AL-DR-01 los verifica.
+La replicación protege la continuidad y no resuelve conflictos de negocio. INT-12 replica Talca para lectura. INT-03/04 sincroniza los eventos de los cinco sitios. Cada sitio conserva su autoridad y su outbox hasta el acuse durable. El RPO, los escenarios cubiertos y el límite de aislamiento seguido de destrucción se definen en 4.3.2. AL-DR-01 los verifica.

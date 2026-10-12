@@ -74,7 +74,7 @@ for x,name,local in cols:
     wire(c,x+89,113,x+89,93,BLUE)
     wan='Fibra > LTE > satélite' if x<430 else 'Satélite > LTE dual'
     box(c,x,49,178,44,'Caminos WAN',wan,BLUE)
-text(c,12,30,'VPN por sitio: dos túneles IPsec / BGP a cada región; datos locales durables.',10.5)
+text(c,12,30,'VPN por sitio: dos túneles IPsec / BGP a cada región. Datos locales durables.',10.5)
 text(c,12,15,'Talca: N+1. Concepción y cross-docking: activo / espera con exclusión del escritor.',10.5)
 c.save()
 
@@ -85,7 +85,7 @@ wire(c,284,208,336,208,GREEN,arrow=True)
 text(c,310,194,'Aurora',10.5,center=True,color=GREEN)
 wire(c,284,118,336,118,GREEN,arrow=True)
 text(c,310,104,'S3',10.5,center=True,color=GREEN)
-text(c,12,64,'SQS / SNS en DR: recursos preparados; el outbox se republica tras conmutar.',10.5)
+text(c,12,64,'SQS / SNS en DR: recursos preparados. El outbox se republica tras conmutar.',10.5)
 text(c,12,46,'Las rutas regionales no habilitan acceso de Desarrollo, QA o Preproducción a sitios.',10.5)
 text(c,12,28,'La réplica de datos y la restitución de canales son pasos distintos del procedimiento.',10.5)
 c.save()
