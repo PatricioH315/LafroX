@@ -146,7 +146,7 @@ La Figura 5.1 presenta el MR general con las tablas principales y sus relaciones
 
 **Figura 5.1 — MR general de datos de la solución**
 
-Fuente: elaboración a partir del Caso 02 (Distribuidora Puelche S.A., 2026d, sec. 16.1, decisiones 1, 2, 4 y 14, pp. 28–29), RT-05.01/.23 (Distribuidora Puelche S.A., 2026c, cap. 5, pp. 11 y 13) y T-12 (LafroX SpA., 2026b, RF-01.07 y RF-09).
+Fuente: elaboración a partir del Caso, RT-05.01/.23 y T-12.
 
 Cada registro de promesa tiene UUID propio como PK; version ordena sus cambios con unicidad por pedido. La entrega referencia la ORIGINAL del mismo pedido. El pedido conserva ORIGINAL y revisiones como compromisos distintos. Una entrega por pedido admite varios intentos y líneas fragmentadas por asignación/lote/unidad; POD y cobro se vinculan a esos hechos. La cabecera de custodia contiene el evento y su detalle identifica objetos y cantidades. El cliente y sus puntos se desarrollan en 5.1.3 y la Figura 5.8, sin crear una instalación de inventario por cada local de entrega. El documento fiscal emitido por ERP antecede al traslado; el POD acredita el hecho posterior.
 
@@ -174,7 +174,7 @@ La Figura 5.2 distingue recepción, lote, unidad, contenido, saldo, movimiento y
 
 **Figura 5.2 — Recepción, inventario, lote y unidad logística**
 
-Fuente: elaboración a partir del Caso 02 (Distribuidora Puelche S.A., 2026d, sec. 16.1, decisiones 2 y 14, pp. 28–29) y SD4/T-12 (LafroX SpA., 2026a, sec. 4.1.3.6; 2026b, RF-01.07 y RF-02).
+Fuente: elaboración a partir del Caso y SD4/T-12.
 
 El saldo tiene grano sitio+ubicación+producto+lote+unidad de medida, la conversión se valida antes de comparar o reservar. La transacción bloquea el saldo, valida disponibilidad y registra movimiento/outbox sin duplicar reintentos. Varias asignaciones abastecen una línea de pedido. secuencia_documento solo existe si el documento de origen aporta ordinal; no se inventa para identificar un hecho histórico. Los ajustes y anulaciones de 5-C conservan causa, dirección y movimiento original, no sobrescriben saldo ni evidencia sin autorización.
 
@@ -196,7 +196,7 @@ La Figura 5.3 relaciona pedido, líneas, promesas, asignaciones y misiones; la r
 
 **Figura 5.3 — Pedido, línea, asignación, misión y confirmación de preparación**
 
-Fuente: elaboración a partir de SD3 (LafroX SpA., 2026b, Anexo 3.G, RNG-01/.05/.15) y SD4 (LafroX SpA., 2026a, sec. 4.1.4.4).
+Fuente: elaboración a partir de SD3 y SD4.
 
 La promesa conserva las condiciones de S3: 24 h para urbano ingresado antes de las 14:00 y 48 h para rural, periférico o abastecido por cross-docking, según RNG-15. OTIF evalúa ORIGINAL aun después de su cierre de vigencia. La preparación puede dividir una línea entre lotes/unidades y confirmar cantidades parciales; la reserva validada por PostgreSQL del sitio sigue confirmada localmente durante un corte, con consolidación central pendiente. El móvil no reserva contra una copia indicativa de stock.
 
@@ -214,7 +214,7 @@ La Figura 5.4 separa plan de ruta, viaje, parada, entrega e intento. BD_RUTAS co
 
 **Figura 5.4 — Ruta, viaje, paradas, entrega, intento y devolución**
 
-Fuente: elaboración a partir del Caso 02 (Distribuidora Puelche S.A., 2026d, sec. 16.1, decisiones 1, 3, 10 y 15, pp. 28–29) y SD4 (LafroX SpA., 2026a, secs. 4.1.4.5 y 4.1.4.8).
+Fuente: elaboración a partir del Caso y SD4.
 
 Las líneas del intento conservan asignación, lote/unidad, cantidad aceptada/rechazada y causal. La identidad del fragmento se reutiliza en reintentos, distintas asignaciones no se deduplican por compartir producto/cantidad. Una devolución vincula el hecho de origen y su recepción/disposición, la cuenta de envases mantiene saldo por cliente y tipo, sin serialización individual. Los geofences de configuración se distinguen de coordenadas personales GPS, cuya conservación total es doce meses.
 
@@ -234,7 +234,7 @@ La Figura 5.5 relaciona evento, objetos, documentos, sensor, excursión y bloque
 
 **Figura 5.5 — Cadena de custodia de lote y de unidad logística en formato EPCIS**
 
-Fuente: elaboración a partir de T-12 (LafroX SpA., 2026b, RF-01.07, RF-09 y RNF-09.02), SD4 (LafroX SpA., 2026a, sec. 4.1.4.2) y Caso 02 (Distribuidora Puelche S.A., 2026d, cap. 15, RT-05.23, p. 26).
+Fuente: elaboración a partir de T-12, SD4 y Caso.
 
 Una cabecera puede mencionar varios objetos/cantidades, la asociación temporal vincula sensor, lote, unidad y producto con las lecturas efectivamente aplicables. Regla y calibración se conservan en su versión histórica. Una advertencia menor transitoria no equivale a disposición final, el bloqueo crítico y sostenido se aplica conforme S3/S4 y únicamente Calidad libera o rechaza con fundamento. Lecturas inválidas se preservan marcadas, separando defecto de sensor, excursión y pérdida de cobertura.
 
@@ -254,7 +254,7 @@ La Figura 5.6 diferencia cobro, aplicación, cartera, rendición, documento, car
 
 **Figura 5.6 — Cobro, rendición, cuenta corriente de envases y documento tributario**
 
-Fuente: elaboración a partir de Bases Técnicas Transversales y Caso 02 (Distribuidora Puelche S.A., 2026c, RT-16.09, p. 29; 2026d, RT-16.14, p. 27 y decisiones 6/12, p. 28) y SD4 (LafroX SpA., 2026a, Anexo 4-U).
+Fuente: elaboración a partir de Bases Técnicas Transversales y Caso y SD4.
 
 La identidad fiscal usa tipo/emisor/folio/versión, hash verifica contenido y las referencias tipadas comprueban la entidad de negocio. POD admite varias evidencias por entrega/intento, el móvil puede cerrar localmente bajo autorización con evidencia durable, conservando estado de verificación central posterior.
 
@@ -300,7 +300,7 @@ La Figura 5.7 define hechos y dimensiones para analizar servicio, inventario, co
 
 **Figura 5.7 — Modelo dimensional de explotación**
 
-Fuente: elaboración a partir de T-12 y SD3 (LafroX SpA., 2026b, RF-11.06/.07 y Anexo 3.G, RNG-09) y Caso 02 (Distribuidora Puelche S.A., 2026d, cap. 18, criterios 4 y 11, pp. 34–35).
+Fuente: elaboración a partir de T-12 y SD3 y Caso.
 
 El modelo incluye dimensiones de fecha, cliente, producto, sitio, ruta y canal; cliente, producto, sitio y ruta conservan versiones y vigencias. El cálculo previo al grano del pedido evita multiplicar OTIF/importes al unir líneas; cada hecho conserva origen y controles monetarios/GPS. Redshift/QuickSight sirve analítica pesada y la API consultas operativas. 5-H fija fórmulas, audiencia, filtros, profundización y latencia; costo de servir inicia E2. RT-05.10/.24 deseables conservan su alcance no ofertado; RT-05.30 se oferta mediante la estimación determinista de vida útil remanente descrita en la sección 13.3.2 del SD13, sustentada en las series térmicas y la asociación sensor–lote de la sección 5.1.7. INN-03 desarrolla la incorporación distribuida de esta estimación al proceso operacional, diferenciada del modelo cinético que la sustenta.
 
@@ -336,7 +336,7 @@ La Figura 5.8 desarrolla maestros e identidades compartidas descritos en 5.1.3, 
 
 **Figura 5.8 — Maestros e identidades compartidas**
 
-Fuente: elaboración a partir de SD3/T-12 (LafroX SpA., 2026b, RF-01 y Anexo 3.G), SD4 (LafroX SpA., 2026a, sec. 4.1.5) y RT-05.01 (Distribuidora Puelche S.A., 2026c, cap. 5, p. 11).
+Fuente: elaboración a partir de SD3/T-12, SD4 y RT-05.01.
 
 Las equivalencias traducen claves externas a UUID canónicos y no crean identidades paralelas. La vigencia conserva historia y la copia local mantiene versión/fecha de consulta.
 
@@ -348,7 +348,7 @@ La Figura 5.9 desarrolla EDI, notificaciones y gobierno descritos en 5.1.9, con 
 
 **Figura 5.9 — EDI, notificaciones y gobierno**
 
-Fuente: elaboración a partir de SD3/T-12 (LafroX SpA., 2026b, RF-10 y RF-18.03), SD4 (LafroX SpA., 2026a, Anexo 4-H) y RT-16.20/.23 (Distribuidora Puelche S.A., 2026c, cap. 16, pp. 29–30).
+Fuente: elaboración a partir de SD3/T-12, SD4 y RT-16.20/.23.
 
 Mensaje y aviso conservan identidad/resultado, auditoría y excepción preservan actor, contexto y versión. El acuse de integración no sustituye aceptación fiscal ni recepción física.
 
@@ -360,7 +360,7 @@ La Figura 5.10 desarrolla telemetría, copias de consulta y objetos descritos en
 
 **Figura 5.10 — Telemetría, copias de consulta y objetos**
 
-Fuente: elaboración a partir de SD3/T-12 (LafroX SpA., 2026b, RF-09.03/.04), SD4 (LafroX SpA., 2026a, secs. 4.1.3.6 y 4.1.4.2) y RT-05.07/.08 (Distribuidora Puelche S.A., 2026c, cap. 5, p. 12).
+Fuente: elaboración a partir de SD3/T-12, SD4 y RT-05.07/.08.
 
 Raw, detalle, agregado, GPS y evidencia tienen plazos y permisos distintos. Las proyecciones se reconstruyen desde su autoridad; la evidencia durable pendiente no se trata como caché descartable.
 
@@ -417,7 +417,7 @@ La Tabla 5.1 compara los límites heredados de S4 y su consecuencia observable.
 | Manifiesto | 26 h | Keycloak; renovación al menos horaria con enlace | Verificación local y PIN; sin permisos nuevos offline |
 | Gateway térmico | Buffer 24 h | Reenvío y control local de Calidad | Escalamiento de cobertura |
 
-*Fuente: elaboración a partir de SD4 (LafroX SpA., 2026a, sec. 4.1.3.6 y ADR-06) y de autonomía y sincronización del Caso 02 (Distribuidora Puelche S.A., 2026d, cap. 15, p. 26).*
+*Fuente: S4, 4.1.3.6 y ADR-06 (LafroX SpA., 2026a); autonomía y sincronización del Caso 02 (Distribuidora Puelche S.A., 2026d, cap. 15, p. 26).*
 
 Estos plazos miden objetos distintos. La vigencia del manifiesto no extiende una credencial de turno vencida. Los relevos preinscritos de 8/16 h se verifican sin enlace, Keycloak firma y renueva con conexión. La carga central del POD no bloquea el acuse durable ni el cierre local autorizado.
 
@@ -508,7 +508,7 @@ La Tabla 5.2 separa bytes de origen de almacenamiento estimado, KB y GB son deci
 | Cartera histórica | 816.000 | 0,816 | 1,632 | Dos años; agregar toda deuda viva faltante |
 | Total base | 16.054.780 | 16,05478 | 32,10956 | Ampliar por perfilado, sin duplicar conjuntos |
 
-*Fuente: elaboración a partir del dimensionamiento de SD4 (LafroX SpA., 2026a, Anexo 4-W); estimaciones decimales calculadas en 5.3.1.*
+*Fuente: dimensionamiento de S4 (LafroX SpA., 2026a, Anexo 4-W); cálculo decimal de 5.3.*
 
 La sensibilidad heredada de almacenamiento es 30,73–33,49 GB. La ampliación de cartera viva y trace faltante tiene que cuantificarse durante el perfilado; no se declara cubierta por ese intervalo. El ERP conserva la emisión única y puede aportar copias documentales con su identidad fiscal, sin reemitirlas.
 
@@ -590,7 +590,7 @@ La Tabla 5.3 relaciona los escenarios de S4 con su efecto sobre el modelo y la p
 | Año 3, WMS de Talca | Proyección de S4, Tabla A.40 | 3,15 TPS | Saldo/reserva con identidad estable; índices selectivos y mantenimiento sin pérdida de operaciones | Revisión trimestral de CPU y IOPS |
 | Escenario 3× de RT-09.03 | 93.000 pedidos y 780.000 líneas | 43,98 en nube y 8,05 en Talca | Escalamiento horizontal sin cambiar el esquema ni los índices | Prueba de estrés hasta el quiebre |
 
-*Fuente: elaboración a partir de SD4 (LafroX SpA., 2026a, Anexo 4-W, secs. 4-W.2 y 4-W.10, Tablas A.31 y A.40) y RT-09.01–03/.06 (Distribuidora Puelche S.A., 2026c, cap. 9, p. 21).*
+*Fuente: Subdocumento 4, Anexo 4-W, 4-W.2 y 4-W.10, Tablas A.31 y A.40 y los umbrales de RT-09.01 a RT-09.03 y RT-09.06 de las Bases Técnicas Transversales (Distribuidora Puelche S.A., 2026c, cap. 9, p. 21).*
 
 El máximo global combina preventa, reparto y portal; despacho distingue total distribuido y WMS Talca. Se adoptan los resultados del Anexo 4-W.10, Tabla A.40 (3,15/8,05), cuya base visible 2,68 está redondeada, sin recalcular desde ese redondeo. Los índices priorizan lote/unidad y filtros operativos.
 
@@ -646,18 +646,18 @@ Actas identifican versión, ambiente y datos. Ensayos completos preceden cada co
 
 ## Referencias
 
-- Distribuidora Puelche S.A. (2026a). *Aclaraciones de la Licitación N.º TFEP-01/2026*.
-- Distribuidora Puelche S.A. (2026b). *Bases Administrativas de Licitación N.º TFEP-01/2026*.
-- Distribuidora Puelche S.A. (2026c). *Bases Técnicas Transversales de Licitación N.º TFEP-01/2026*.
-- Distribuidora Puelche S.A. (2026d). *Caso 02: Logística. Especificaciones del problema y operación de Distribuidora Puelche S.A.*
-- GS1. (2022a). *Core Business Vocabulary Standard* .
-- GS1. (2022b). *EPCIS Standard* (Release 2.0).
+- *Aclaraciones de la Licitación N.º TFEP-01/2026*.
+- *Bases Administrativas de Licitación N.º TFEP-01/2026*.
+- *Bases Técnicas Transversales de Licitación N.º TFEP-01/2026*.
+- *Caso 02: Logística. Especificaciones del problema y operación de Distribuidora Puelche S.A.*
+- (2022a). *Core Business Vocabulary Standard* .
+- (2022b). *EPCIS Standard* (Release 2.0).
 - International Organization for Standardization. (2008). *ISO/IEC 25012:2008: Software engineering — Software product Quality Requirements and Evaluation (SQuaRE) — Data quality model*. [Enlace](https://www.iso.org/standard/35736.html)
-- LafroX SpA. (2026a). *Arquitectura* [Subdocumento 4, anexos y Formulario T-11].
-- LafroX SpA. (2026b). *Esquema de solución y alcance* [Subdocumento 3, anexos y Formulario T-12].
-- LafroX SpA. (2026d). *Innovaciones* [Subdocumento 13].
-- LafroX SpA. (2026f). *Presentación de la empresa* [Subdocumento 1].
-- LafroX SpA. (2026g). *Problema y necesidad* [Subdocumento 2].
+- *Arquitectura* [Subdocumento 4, anexos y Formulario T-11].
+- *Esquema de solución y alcance* [Subdocumento 3, anexos y Formulario T-12].
+- (2026d). *Innovaciones* [Subdocumento 13].
+- (2026f). *Presentación de la empresa* [Subdocumento 1].
+- . (2026g). *Problema y necesidad* [Subdocumento 2].
 - PostgreSQL Global Development Group. (2023). *PostgreSQL 16 documentation*.
 
 <a id="sec-ia"></a>
