@@ -6,7 +6,7 @@ La tabla relaciona las observaciones del Informe 1 con sus respuestas y las secc
 
 | Observación del Informe 1 | Respuesta | Sección modificada |
 |---|---|---|
-| 1. Sin identidad de empresa. | **Documentado.** Se usa la plantilla `lafrox.cls`, con logotipo, encabezado y pie con folio. | Cuerpo y anexos, todas las páginas. |
+| 1. Sin identidad de empresa. | **Documentado.** Se usa la plantilla corporativa de LafroX, con logotipo, encabezado y pie con folio. | Cuerpo y anexos, todas las páginas. |
 | 2. Las portadas rompen la ficción y se rotulan «Formulario T-22». | **Documentado.** Las portadas no tienen datos del curso y se rotulan «Formulario T-7». La fecha de emisión es el 12 de octubre de 2026. | Cuerpo y anexos, p. 1. |
 | 3. A4 y cuerpo menor a 11 pt. | **Documentado.** Tamaño carta y cuerpo de 11 pt. | `lafrox.cls`. |
 | 4. Sin índice, folio ni firma. | **Documentado.** Hay índice enlazable, listas, folio y media firma en cada página posterior a la portada, que lleva la firma del representante legal. Los anexos no traen una lista de figuras vacía. | Cuerpo, p. 1–4; anexos, p. 1–3. |
