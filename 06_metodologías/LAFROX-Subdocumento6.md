@@ -2,7 +2,7 @@
 
 **Licitación:** TFEP-01/2026
 
-**Proyecto:** Plataforma Digital de Misión Crítica — Caso 02: Logística
+**Proyecto:** Plataforma Digital de Misión Crítica — Caso — Logística
 
 **Mandante:** Distribuidora Puelche S.A.
 
@@ -45,7 +45,7 @@ La ejecución se organiza en entregas incrementales y fases coordinadas, de modo
 
 ### 6.1.1 Gestión de interesados
 
-La gestión de interesados identifica y clasifica a las personas, grupos y organizaciones que pueden verse afectados por el proyecto o influir en sus resultados, considerando sus necesidades, expectativas e influencia. El jefe de proyecto mantiene el registro detallado en el Formulario T-9 y realiza seguimiento a la participación y los compromisos de acuerdo con las actividades de cada entrega. Los conflictos que no puedan resolverse en la instancia de trabajo se escalan a la autoridad correspondiente. La identificación o participación de un interesado no le confiere por sí misma atribuciones universales de decisión o aprobación.
+La gestión de interesados identifica y clasifica a las personas, grupos y organizaciones que pueden verse afectados por el proyecto o influir en sus resultados, considerando sus necesidades, expectativas e influencia. El jefe de proyecto mantiene el registro detallado en el Formulario T-9 y realiza seguimiento a la participación y los compromisos de acuerdo con las actividades de cada entrega. Los conflictos que no puedan resolverse en la instancia de trabajo se escalan a la autoridad correspondiente. La identificación o participación de un interesado no le confiere por sí misma atribuciones universales de decisión o aprobación. Para profundizar en los grupos identificados, sus intereses o preocupaciones y la contribución esperada de cada uno, véase el Anexo 6.A — Interesados del proyecto.
 
 ### 6.1.2 Gestión de comunicaciones
 
@@ -53,7 +53,7 @@ La gestión de las comunicaciones mantiene informados a los responsables de Puel
 
 ### 6.1.3 Gestión de adquisiciones
 
-La gestión de adquisiciones planifica y controla las compras y contrataciones según las necesidades, dependencias y cronograma. El CLIENTE compra el equipamiento de terreno conforme a las especificaciones de LafroX; para los equipos de la sala técnica, incluidos racks, servidores y equipos de borde, T-14 asigna a LafroX la orden de compra en el mes 2 y la instalación en el mes 3. La recepción técnica de los equipos y la recepción de la sala son hitos distintos: T-15 sitúa la recepción de la sala en el mes 4, sin que ello establezca aquí una fecha de recepción técnica ni de puesta en servicio. El servicio SOC 24x7 es condicional a su subcontratación; RT-11.17 presenta cumplimiento parcial porque la ubicación del SOC no está declarada. Esta referencia no significa que el servicio ya esté contratado ni que exista cumplimiento completo. LafroX habilita el espacio proporcionado por el CLIENTE y configura los equipos; las evidencias y el registro completo de adquisiciones se detallan en T-9.
+La gestión de adquisiciones planifica y controla las compras y contrataciones según las necesidades, dependencias y cronograma. El CLIENTE compra el equipamiento de terreno conforme a las especificaciones de LafroX; para los equipos de la sala técnica, incluidos racks, servidores y equipos de borde, T-14 asigna a LafroX la orden de compra en el mes 2 y la instalación en el mes 3. La recepción técnica de los equipos y la recepción de la sala son hitos distintos: T-15 sitúa la recepción de la sala en el mes 4, sin que ello establezca aquí una fecha de recepción técnica ni de puesta en servicio. El servicio SOC 24x7 es condicional a su subcontratación; RT-11.17 presenta cumplimiento parcial porque la ubicación del SOC no está declarada. Esta referencia no significa que el servicio ya esté contratado ni que exista cumplimiento completo. LafroX habilita el espacio proporcionado por el CLIENTE y configura los equipos; las evidencias y el registro completo de adquisiciones se detallan en T-9. Para consultar el detalle de las adquisiciones, sus necesidades asociadas, responsables, fechas, paquetes y evidencias, véase el Anexo 6.B — Adquisiciones asociadas al proyecto.
 
 ### 6.1.4 Gestión de integración
 
@@ -89,7 +89,7 @@ El trabajo se organiza en iteraciones regulares, con trabajo priorizado y acepta
 
 - Distribuidora Puelche S.A. (2026a). *Bases Administrativas de Licitación N.º TFEP-01/2026: Contratación de Solución Integral de Software y Servicios de Operación*.
 - Distribuidora Puelche S.A. (2026b). *Bases Técnicas Transversales de Licitación N.º TFEP-01/2026*.
-- Distribuidora Puelche S.A. (2026c). *Caso 02: Logística. Especificaciones del problema y operación de Distribuidora Puelche S.A.*.
+- Distribuidora Puelche S.A. (2026c). *Caso Logística. Especificaciones del problema y operación de Distribuidora Puelche S.A.*
 - Distribuidora Puelche S.A. (2026d). *Aclaraciones de la Licitación N.º TFEP-01/2026*.
 - Kruchten, P. (2004). *The Rational Unified Process: An introduction* (3.ª ed.). Addison-Wesley.
 - Project Management Institute. (2017). *La guía de los fundamentos para la dirección de proyectos (Guía del PMBOK®)* (6.ª ed.). Project Management Institute.
@@ -104,8 +104,9 @@ La tabla declara el uso de herramientas de inteligencia artificial en este subdo
 
 | Sección | Herramienta | Finalidad del uso | Nivel en texto | Nivel en diagramas | Revisión humana (quién y qué verificó) |
 | --- | --- | --- | --- | --- | --- |
-| Introducción | Claude Code | Redacción de la introducción y conexión con SD4 y SD7 (7 de octubre de 2026) | Alto | Ninguno | No documentada |
-| 6.1 Metodología de Gestión de Proyectos | Codex; Claude Code | Responsabilidades de adquisición y cadencias (6 de octubre de 2026); PMBOK adaptado, valor ganado, matriz de adquisiciones y Comité de Operación (7 de octubre de 2026) | Alto | Ninguno | No documentada |
-| 6.2 Metodología de Desarrollo Software | Claude Code | Compuertas DevSecOps, herramientas del SD4, cadencia de iteraciones y artefactos (7 de octubre de 2026) | Alto | Ninguno | No documentada |
-| Formulario T-9 | Claude Code | Portada y adaptación a Markdown del contenido metodológico detallado y sus tablas | Alto | Ninguno | No documentada |
-| Formulario T-10 | Claude Code | Portada y adaptación a Markdown del contenido metodológico detallado y sus tablas | Alto | Ninguno | No documentada |
+| Introducción | Chat GPT | Redacción de la introducción y conexión con SD4 y SD7 (7 de octubre de 2026) | Alto | Ninguno | Tomas Perez: coherencia del propósito, alcance y referencias a SD4 y SD7 con el contenido de esos subdocumentos |
+| 6.1 Metodología de Gestión de Proyectos | Chat GPT | Responsabilidades de adquisición y cadencias (6 de octubre de 2026); PMBOK adaptado, valor ganado, matriz de adquisiciones y Comité de Operación (7 de octubre de 2026) | Alto | Ninguno | Maximiliano Miño: aplicación de PMBOK, líneas base y valor ganado; Tomas Perez: coherencia de adquisiciones, comités y cadencias con los formularios relacionados |
+| 6.2 Metodología de Desarrollo Software | Chat GPT | Compuertas DevSecOps, herramientas del SD4, cadencia de iteraciones y artefactos (7 de octubre de 2026) | Alto | Ninguno | Maximiliano Miño: correspondencia de las compuertas y herramientas DevSecOps con SD4; Tomas Perez: consistencia de iteraciones y artefactos con el proceso propuesto |
+| Subdocumento 6 Anexos | Chat GPT | Redacción y organización de los anexos de interesados y adquisiciones del proyecto y sus tablas | Alto | Ninguno | Tomas Perez: pertinencia de los interesados, sus preocupaciones y contribuciones; Maximiliano Miño: necesidades, responsables, plazos y evidencias de las adquisiciones |
+| Formulario T-9 | Chat GPT | Portada y adaptación a Markdown del contenido metodológico detallado y sus tablas | Alto | Ninguno | Tomas Perez: alineación de la planificación con las etapas e hitos contractuales; Maximiliano Miño: consistencia de controles, cálculos y tablas con la metodología descrita |
+| Formulario T-10 | Chat GPT | Portada y adaptación a Markdown del contenido metodológico detallado y sus tablas | Alto | Ninguno | Maximiliano Miño: consistencia del proceso de desarrollo, compuertas y artefactos; Tomas Perez: correspondencia de las iteraciones y referencias con SD4 y el Subdocumento 6 |

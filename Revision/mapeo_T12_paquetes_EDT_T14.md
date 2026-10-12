@@ -2,9 +2,9 @@
 
 ## Propósito y respuesta corta
 
-Documento de trabajo. Comprueba si cada una de las 645 filas del Formulario T-12 tiene un paquete de trabajo en la EDT del Formulario T-14 (49 cuentas de control y 222 paquetes), antes de decidir si se agrega esa columna al T-12. Responde a la observación del Informe 1 sobre la matriz «sin columna de paquete de la EDT» y a la exigencia del caso de relacionar origen, requerimiento, componente, paquete de la EDT, prueba y criterio de aceptación (caso, cap. 17.1, p. 31). No modifica el T-12 ni el T-14.
+Documento de trabajo. Registra el mapeo de las 645 filas del Formulario T-12 a la EDT del T-14 (49 cuentas de control y 222 paquetes), así como la decisión aplicada para cerrar las brechas y añadir el código de paquete al T-12. La matriz relaciona requerimiento, componente, paquete y sección de la propuesta, en respuesta al caso (cap. 17.1, p. 31).
 
-**Respuesta corta:** la EDT cubre casi todo, pero no todo. De las 645 filas, 390 tienen un paquete que las cubre de forma directa y 193 quedan cubiertas de forma indirecta (por un paquete más amplio o por su cuenta de control). **25 filas no tienen paquete** y 37 no generan trabajo del proyecto. Si hoy se agregara la columna al T-12, esas 25 filas quedarían vacías o apuntando solo a una cuenta, y la Comisión lo vería como faltante. Se cierran con dos paquetes nuevos (ver «Brechas»).
+**Resultado:** de las 645 filas, 415 se asignan de forma directa a un paquete, 193 de forma indirecta y 37 se marcan «No aplica» (filas No cumple, declaraciones sin trabajo y obligaciones del proceso licitatorio). Las 25 brechas iniciales se cerraron ampliando el alcance descriptivo de seis paquetes existentes: 3.3.1, 3.3.5, 3.6.4, 3.7.2, 5.1.2 y 5.1.3. No se crean paquetes: se conservan los 222 códigos y nombres.
 
 ## Criterio
 
@@ -21,52 +21,23 @@ Validación: los 645 códigos asignados existen en el T-14. De las 83 filas del 
 
 | Parte del T-12 | Filas | Directo | Indirecto | Brecha | No aplica |
 |---|---:|---:|---:|---:|---:|
-| A — RF y RNF | 271 | 227 | 34 | 10 | 0 |
-| B — RT | 374 | 163 | 159 | 15 | 37 |
-| **Total** | **645** | **390** | **193** | **25** | **37** |
+| A — RF y RNF | 271 | 237 | 34 | 0 | 0 |
+| B — RT | 374 | 178 | 159 | 0 | 37 |
+| **Total** | **645** | **415** | **193** | **0** | **37** |
 
-## Brechas y paquetes propuestos
+## Decisión aplicada para cerrar las brechas
 
-| Brecha | Filas | Paquete que la cerraría |
-|---|---|---|
-| Servicios comunes de la plataforma: consola de parametrización con aprobación de un segundo perfil, flujos de trabajo y bandeja de tareas, motor de reglas, gestión documental y plantillas, búsqueda global, listados, exportaciones y carga masiva. La cuenta 3.3 dice reunir «los servicios de software que usan los doce módulos», pero sus seis paquetes no los nombran. | 22: RF-17.02, RF-17.03, RF-17.06, RF-17.07, RF-17.08, RF-17.09, RF-17.11, RF-17.12, RNF-17.02, RT-05.22, RT-16.02, RT-16.03, RT-16.04, RT-16.11, RT-16.12, RT-16.13, RT-16.14, RT-16.15, RT-16.19, RT-16.27, RT-16.28, RT-16.29 | Nuevo **3.3.7 Servicios comunes de la plataforma**, en QA antes del H4. |
-| Estaciones de trabajo de operación y administración (ocho estaciones con monitores duales, NCh 2527). El T-11 las especifica, pero ningún paquete las especifica, compra ni instala. | 3: RNF-23.04, RT-08.07, RT-08.08 | Ampliar **5.1.2** o crear **5.1.4 Estaciones de trabajo de operación**, con su instalación en 6.5. |
+Se mantienen los 222 paquetes, sus códigos y nombres. El diccionario del T-14 amplía únicamente el entregable y el criterio de aceptación de seis paquetes existentes:
 
-Con esos dos paquetes, las 25 brechas pasan a cobertura directa y la columna de paquete del T-12 queda sin vacíos.
+| Paquete | Filas de la revisión inicial | Alcance añadido |
+|---|---:|---|
+| 3.3.5 | 1–5, 11–13, 19–22 | Parámetros versionados con aprobación de segundo perfil, motor de reglas, documentos versionados, listados y exportaciones registrados en auditoría. |
+| 3.3.1 | 6–10, 14–15 | Responsables por rol y sitio, flujos con escalamiento y delegación, bandeja por persona y búsqueda limitada por permisos. |
+| 3.6.4 | 17–18 | Plantillas administrables de avisos y documentos. |
+| 3.7.2 | 16 | Carga masiva permanente, además de la carga inicial de migración. |
+| 5.1.2 y 5.1.3 | 23–25 | Ocho estaciones de trabajo incluidas en compra y acta de recepción. |
 
-### Revisión una por una de las 25 brechas
-
-Se buscó cada materia en todo el T-14 (paquetes, entregables, criterios y textos de cuenta), en el T-15 y en el SD7: ninguno la nombra. La oferta sí la resuelve técnicamente (SD4 o T-11); lo que falta es el paquete que la construye o la compra. «Firme» significa que ningún paquete existente puede reclamarla; «defendible» significa que un paquete existente la cubre en parte y podría citarse mientras no se cree el nuevo.
-
-| N.° | ID | Qué exige | Dónde la resuelve la oferta | Paquete existente más cercano | Veredicto |
-|---:|---|---|---|---|---|
-| 1 | RF-17.02 | Parametrizar reglas desde la administración, con versión y autor. | SD4 4.1.3.4: consola Angular y versiones de parámetros. | Ninguno; 3.3.1 solo da roles. | Firme |
-| 2 | RT-16.02 | Lo mismo que RF-17.02, como requisito de las Bases. | SD4 4.1.3.4. | Ninguno. | Firme |
-| 3 | RT-16.04 | Declarar qué es parametrizable y qué requiere desarrollo. | SD4 4.1.3.4. | Ninguno; la declaración existe, pero no su construcción. | Firme |
-| 4 | RF-17.03 | Aprobación de un segundo perfil para cambios de parámetro. | SD4 4.1.3.4. | 3.3.1 (roles), sin el flujo de aprobación. | Firme |
-| 5 | RT-16.03 | Lo mismo que RF-17.03. | SD4 4.1.3.4. | 3.3.1, parcial. | Firme |
-| 6 | RF-17.06 | Flujos con estados, plazos, escalamiento y delegación, configurables. | SD4 4.1.3.4 y 4.1.3.5. | Ninguno. | Firme |
-| 7 | RT-16.11 | Flujos con estados, escalamiento y delegación. | SD4 4.1.3.4 y 4.1.17. | Ninguno. | Firme |
-| 8 | RT-16.12 | Flujos configurables sin desarrollo (responsables, plazos, niveles). | SD4 4.1.3.4. | Ninguno. | Firme |
-| 9 | RF-17.07 | Bandeja de tareas unificada por persona. | SD4 4.1.3.1 y 4.1.3.5. | Ninguno. | Firme |
-| 10 | RT-16.13 | Lo mismo que RF-17.07. | SD4 4.1.3.1 y 4.1.3.5. | Ninguno. | Firme |
-| 11 | RT-16.14 | Motor de reglas sin recompilar, con trazabilidad por transacción. | SD4 4.1.3.4 (ExpressionLanguage). | Ninguno. La parte del caso sobre prueba de entrega y guía sí la cubren 3.3.2 y 3.4.8. | Firme |
-| 12 | RF-17.08 | Gestión documental: versiones, metadatos, búsqueda y vista previa. | SD4 4.1.6.2 (repositorio S3). | 3.4.8 guarda la evidencia de entrega, pero no la gestión documental general. | Firme |
-| 13 | RT-16.15 | Lo mismo que RF-17.08. | SD4 4.1.6.2. | 3.4.8, parcial. | Firme |
-| 14 | RF-17.11 | Búsqueda global con texto completo y facetas. | SD4 4.1.3.1. | Ninguno. | Firme |
-| 15 | RT-16.27 | Lo mismo que RF-17.11. | SD4 4.1.3.1. | Ninguno. | Firme |
-| 16 | RT-05.22 | Carga y descarga masiva con validación y error por registro. | SD4 4.1.3.5 y Anexo 4-C. | 3.7.2 carga maestros una vez en la migración; no es la función permanente. | Firme |
-| 17 | RF-17.09 | Documentos desde plantillas administrables. | SD4 4.1.6.2. | 3.6.4: el T-12 dice que reutiliza las plantillas de avisos. | Defendible |
-| 18 | RT-16.19 | Lo mismo que RF-17.09. | SD4 4.1.6.2. | 3.6.4. | Defendible |
-| 19 | RF-17.12 | Listados ordenables, filtrables y exportables. | SD4 4.1.3.1. | Cada paquete de módulo (3.4.x y 3.5.x) construye sus pantallas. | Defendible |
-| 20 | RT-16.28 | Lo mismo que RF-17.12. | SD4 4.1.3.1. | 3.4.x y 3.5.x. | Defendible |
-| 21 | RNF-17.02 | Exportaciones grandes asíncronas, con aviso al terminar. | SD4 4.1.4.7 y SD5 5.2.8. | 3.6.4 da el aviso; el trabajo asíncrono no tiene paquete. | Defendible |
-| 22 | RT-16.29 | Lo mismo que RNF-17.02. | SD5 5.2.8. | 3.6.4, parcial. | Defendible |
-| 23 | RNF-23.04 | Estaciones de operación con monitores duales, NCh 2527 y gestión central. | T-11, fila «Estación de trabajo» (8 nuevas: Talca 5, Concepción 3). | 5.1.1 es solo equipamiento de terreno; 5.1.2 es sala, racks y servidores. | Firme |
-| 24 | RT-08.07 | Especificar las estaciones de trabajo con monitores duales. | T-11 y SD4 4.2.1.1 (Tabla 7). | Ninguno. | Firme |
-| 25 | RT-08.08 | Ergonomía NCh 2527 y eficiencia energética. | T-11. | Ninguno. | Firme |
-
-Resultado: 19 brechas firmes y 6 defendibles. Las 22 primeras son funciones comunes que SD4 diseña y T-12 declara «Cumple», pero que ningún paquete construye ni estima en HH: es una omisión del T-14 y probablemente también del esfuerzo del T-15. Las tres últimas son un ítem del T-11 sin paquete de compra ni de instalación; el T-11 tampoco dice si las compra LafroX o el CLIENTE.
+El T-12 incorpora una sexta columna, «Paquete EDT (T-14)», con los códigos asociados a cada requerimiento. La columna «Sección de la propuesta» se conserva para las referencias documentales. La Gantt, la EDT, la red, los frentes y las fechas no cambian. El T-15 y sus horas se mantienen sin modificación, conforme a la decisión del usuario.
 
 ### Indirectos que conviene precisar en el diccionario
 
@@ -79,7 +50,6 @@ No impiden llenar la columna, pero un evaluador podría preguntar dónde está e
 | Evidencia y acuse al canal moderno; los ejecuta M6, que no tiene paquete de Etapa 2. | RF-12.12, RF-12.13 |
 | Registro ADR: no figura como entregable explícito. | RF-13.03, RT-02.04 |
 | Superficie de exposición: se declara en la arquitectura física. | RF-14.03-BTT, RF-19.03 |
-| 3.3.5 nombra stock, lotes y cobros; el requisito abarca toda operación. | RF-17.04, RF-17.05 |
 | Endurecimiento CIS: no figura como entregable explícito. | RNF-13.06, RT-03.15 |
 | Cálculo de capacidad: parte del documento de arquitectura física. | RNF-19.01, RNF-19.03 |
 | 1.9.4 solo nombra ISO/IEC 27001. | RT-15.07, RT-15.09 |
@@ -370,17 +340,17 @@ No impiden llenar la columna, pero un evaluador podría preguntar dónde está e
 | RF-16.03 | El sistema debe implementar alertamiento basado en síntomas de negocio y no sólo en… | 3.1.5 | Directo |  |
 | RF-16.04 | El sistema (o el equipo del ADJUDICATARIO) debe ejecutar un análisis de causa raíz… | 8.1.2 | Directo |  |
 | RF-17.01 | El sistema debe disponer de un módulo de administración que permita al CLIENTE, sin… | 3.3.1 | Directo |  |
-| RF-17.02 | El sistema debe permitir parametrizar reglas de negocio (umbrales, plazos, montos… | 3.3 (cuenta) | Brecha | Sin paquete propio: servicio común de la plataforma (propuesta 3.3.7). |
-| RF-17.03 | El sistema debe requerir aprobación de un segundo perfil para todo cambio de parámetro… | 3.3 (cuenta) | Brecha | Sin paquete propio: servicio común de la plataforma (propuesta 3.3.7). |
+| RF-17.02 | El sistema debe permitir parametrizar reglas de negocio (umbrales, plazos, montos… | 3.3.5 | Directo | |
+| RF-17.03 | El sistema debe requerir aprobación de un segundo perfil para todo cambio de parámetro… | 3.3.5 | Directo | |
 | RF-17.04 | El sistema debe registrar toda operación que cree, modifique o elimine información, con… | 3.3.5 | Indirecto | 3.3.5 nombra stock, lotes y cobros; el requisito abarca toda operación. |
 | RF-17.05 | El CLIENTE debe poder consultar y exportar la auditoría desde la interfaz, con filtros… | 3.3.5 | Indirecto | 3.3.5 nombra stock, lotes y cobros; el requisito abarca toda operación. |
-| RF-17.06 | El sistema debe soportar flujos de trabajo con estados, transiciones, responsables… | 3.3 (cuenta) | Brecha | Sin paquete propio: servicio común de la plataforma (propuesta 3.3.7). |
-| RF-17.07 | El sistema debe proveer una bandeja de tareas unificada para cada persona usuaria, donde… | 3.3 (cuenta) | Brecha | Sin paquete propio: servicio común de la plataforma (propuesta 3.3.7). |
-| RF-17.08 | El sistema debe gestionar documentos con versionado, metadatos, control de acceso… | 3.3 (cuenta) | Brecha | Sin paquete propio: servicio común de la plataforma (propuesta 3.3.7). |
-| RF-17.09 | El sistema debe generar documentos a partir de plantillas administrables por el CLIENTE… | 3.3 (cuenta) | Brecha | Sin paquete propio: servicio común de la plataforma (propuesta 3.3.7). |
+| RF-17.06 | El sistema debe soportar flujos de trabajo con estados, transiciones, responsables… | 3.3.1 | Directo | |
+| RF-17.07 | El sistema debe proveer una bandeja de tareas unificada para cada persona usuaria, donde… | 3.3.1 | Directo | |
+| RF-17.08 | El sistema debe gestionar documentos con versionado, metadatos, control de acceso… | 3.3.5 | Directo | |
+| RF-17.09 | El sistema debe generar documentos a partir de plantillas administrables por el CLIENTE… | 3.6.4 | Directo | |
 | RF-17.10 | El sistema debe enviar notificaciones por al menos tres canales: correo electrónico… | 3.6.4 | Directo |  |
-| RF-17.11 | El sistema debe disponer de búsqueda global con indexación de texto completo con… | 3.3 (cuenta) | Brecha | Sin paquete propio: servicio común de la plataforma (propuesta 3.3.7). |
-| RF-17.12 | El sistema debe presentar listados ordenables, filtrables, paginados y exportables en… | 3.3 (cuenta) | Brecha | Sin paquete propio: servicio común de la plataforma (propuesta 3.3.7). |
+| RF-17.11 | El sistema debe disponer de búsqueda global con indexación de texto completo con… | 3.3.1 | Directo | |
+| RF-17.12 | El sistema debe presentar listados ordenables, filtrables, paginados y exportables en… | 3.3.5 | Directo | |
 | RF-17.13 | El sistema debe disponer de un portal público con la información que el caso determine… | 3.5.2, 3.8.2 | Indirecto | Portal público con catálogo: 3.5.2 nombra el portal de clientes, no el público; el T-12 cita su prueba en 3.8. |
 | RF-18.01 | El sistema debe soportar firma electrónica conforme a la Ley N.º 19.799 (2002, art. 2… | 3.3.2, 3.4.8 | Indirecto | Firma electrónica: la aplica el ERP en la guía y la app en la evidencia. |
 | RF-18.02 | Cada persona usuaria debe poder configurar sus preferencias de canal (correo, SMS… | 3.6.4 | Indirecto |  |
@@ -448,7 +418,7 @@ No impiden llenar la columna, pero un evaluador podría preguntar dónde está e
 | RNF-16.02 | Libro de operación y guía de resolución documentados. El PROPONENTE debe documentar un… | 3.11.1, 8.1.1 | Directo |  |
 | RNF-16.03 | Registros sin datos personales sensibles ni credenciales. Los registros (logs) de la… | 3.1.5 | Indirecto |  |
 | RNF-17.01 | Retención de auditoría mínima de 5 años. El período de retención de la auditoría debe ser… | 3.3.5, 3.2.4 | Directo |  |
-| RNF-17.02 | Exportaciones de gran volumen procesadas de forma asíncrona. Las exportaciones de gran… | 3.3 (cuenta) | Brecha | Sin paquete propio: servicio común de la plataforma (propuesta 3.3.7). |
+| RNF-17.02 | Exportaciones de gran volumen procesadas de forma asíncrona. Las exportaciones de gran… | 3.3.5 | Directo | |
 | RNF-17.03 | Portal público resistente a picos de tráfico. El portal público debe resistir picos de… | 3.2.1 | Directo |  |
 | RNF-19.01 | Cálculo de capacidad con supuestos de usuarios concurrentes y TPS. El PROPONENTE debe… | 2.1.2, 8.4.1 | Indirecto | Cálculo de capacidad: parte del documento de arquitectura física. |
 | RNF-19.02 | Escalamiento horizontal automático de capas de aplicación e integración. Las capas de… | 3.2.1 | Directo |  |
@@ -479,7 +449,7 @@ No impiden llenar la columna, pero un evaluador podría preguntar dónde está e
 | RNF-23.01 | Especificación de hardware de terreno con marca, modelo, cantidad y características. El… | 5.1.1 | Directo |  |
 | RNF-23.02 | Dispositivos con grado de protección IP y resistencia a caídas coherentes con el entorno.… | 5.1.1 | Directo |  |
 | RNF-23.03 | Ciclo de vida esperado de cada dispositivo y plan de reposición durante 56 meses. El… | 5.1.1, 8.2.7 | Directo |  |
-| RNF-23.04 | Estaciones de trabajo para operación y administración con monitores duales. El PROPONENTE… | — | Brecha | Estaciones de trabajo de operación: ningún paquete las especifica ni instala. |
+| RNF-23.04 | Estaciones de trabajo para operación y administración con monitores duales. El PROPONENTE… | 5.1.2; 5.1.3 | Directo | |
 
 ## Mapeo completo — Parte B (RT)
 
@@ -558,9 +528,9 @@ No impiden llenar la columna, pero un evaluador podría preguntar dónde está e
 | RT-05.19 | Toda integración registrará la transacción de entrada y de salida, con identificador de… | 3.3.5 | Indirecto |  |
 | RT-05.20 | Las integraciones con sistemas heredados o de terceros se aislarán mediante una capa… | 3.3.2 | Directo |  |
 | RT-05.21 | El PROPONENTE declarará, por cada integración, el modo (síncrono o asíncrono), el volumen… | 2.1.1 | Indirecto |  |
-| RT-05.22 | La solución soportará la carga y descarga masiva de información en formatos abiertos, con… | 3.3 (cuenta) | Brecha | Sin paquete propio: servicio común de la plataforma (propuesta 3.3.7). |
+| RT-05.22 | La solución soportará la carga y descarga masiva de información en formatos abiertos, con… | 3.7.2 | Directo | |
 | RT-05.23 | Se emplearán los estándares sectoriales de intercambio que las Bases Técnicas del caso… | 3.6.1, 3.6.5 | Indirecto |  |
-| RT-05.24 | Se valorará la publicación de un portal de servicios para desarrolladores con… | — | No aplica | No cumple: sin trabajo comprometido. |
+| RT-05.24 | Se valorará la publicación de un portal de servicios para desarrolladores con… | No aplica | No aplica | No cumple: sin trabajo comprometido. |
 | RT-05.25 | La solución proveerá una capa analítica con tableros operacionales y de gestión… | 3.4.11, 3.2.3 | Directo |  |
 | RT-05.26 | Los tableros permitirán filtrar por período, unidad organizacional y dimensiones propias… | 3.4.11, 3.2.3 | Directo |  |
 | RT-05.27 | El CLIENTE podrá construir sus propios informes sin intervención del ADJUDICATARIO… | 3.2.3 | Indirecto |  |
@@ -621,8 +591,8 @@ No impiden llenar la columna, pero un evaluador podría preguntar dónde está e
 | RT-08.04 | Todo el equipamiento contará con fuentes de poder redundantes y conexión a circuitos… | 6.3.1 | Indirecto |  |
 | RT-08.05 | El PROPONENTE declarará el margen de crecimiento del dimensionamiento propuesto… | 8.4.1 | Directo |  |
 | RT-08.06 | El equipamiento será nuevo, sin uso previo, con garantía de fábrica vigente desde la… | 5.1.2 | Indirecto |  |
-| RT-08.07 | El PROPONENTE especificará las estaciones de trabajo requeridas para la operación y la… | — | Brecha | Estaciones de trabajo de operación: ningún paquete las especifica ni instala. |
-| RT-08.08 | Los puestos de trabajo cumplirán las condiciones ergonómicas de la NCh 2527 y los equipos… | — | Brecha | Estaciones de trabajo de operación: ningún paquete las especifica ni instala. |
+| RT-08.07 | El PROPONENTE especificará las estaciones de trabajo requeridas para la operación y la… | 5.1.2; 5.1.3 | Directo | |
+| RT-08.08 | Los puestos de trabajo cumplirán las condiciones ergonómicas de la NCh 2527 y los equipos… | 5.1.2; 5.1.3 | Directo | |
 | RT-08.09 | Las estaciones estarán gestionadas de forma centralizada, con cifrado de disco, control… | 3.2.5, 5.2.2 | Indirecto |  |
 | RT-08.10 | El PROPONENTE especificará cada dispositivo de terreno con marca, modelo de referencia… | 5.1.1 | Directo |  |
 | RT-08.11 | La especificación considerará las condiciones reales de uso del caso: intemperie… | 5.1.1 | Directo |  |
@@ -719,40 +689,40 @@ No impiden llenar la columna, pero un evaluador podría preguntar dónde está e
 | RT-15.02 | Los ambientes no productivos se apagarán o reducirán fuera del horario de uso. Caso, cap.… | 3.1.1, 8.4.2 | Indirecto |  |
 | RT-15.03 | El PROPONENTE estimará la huella de carbono anual de la operación de la solución y… | 8.4.3 | Directo |  |
 | RT-15.04 | Se declarará la eficiencia en el uso de la energía (PUE) del recinto on-premise y la… | 8.4.3 | Indirecto |  |
-| RT-15.05 | Se valorará la elección de regiones de nube con menor intensidad de carbono cuando la… | — | No aplica | No cumple: sin trabajo comprometido. |
+| RT-15.05 | Se valorará la elección de regiones de nube con menor intensidad de carbono cuando la… | No aplica | No aplica | No cumple: sin trabajo comprometido. |
 | RT-15.06 | Se valorará la definición de metas de reducción del consumo durante la Operación, con… | 8.4.3 | Directo |  |
 | RT-15.07 | Las certificaciones se acreditarán con copia del certificado vigente y con el código de… | 1.9.4 | Indirecto | 1.9.4 solo nombra ISO/IEC 27001. |
 | RT-15.08 | Las personas certificadas formarán parte del equipo efectivamente asignado al PROYECTO… | 1.8.1 | Indirecto |  |
 | RT-15.09 | El ADJUDICATARIO mantendrá vigentes estas certificaciones durante todo el período… | 1.9.4 | Indirecto | 1.9.4 solo nombra ISO/IEC 27001. |
 | RT-16.01 | La solución dispondrá de un módulo de administración que permita al CLIENTE, sin… | 3.3.1 | Indirecto |  |
-| RT-16.02 | Las reglas de negocio parametrizables —umbrales, plazos, montos, tolerancias, catálogos… | 3.3 (cuenta) | Brecha | Sin paquete propio: servicio común de la plataforma (propuesta 3.3.7). |
-| RT-16.03 | Todo cambio de parámetro con impacto operacional requerirá aprobación de un segundo… | 3.3 (cuenta) | Brecha | Sin paquete propio: servicio común de la plataforma (propuesta 3.3.7). |
-| RT-16.04 | El PROPONENTE declarará expresamente qué elementos son parametrizables y cuáles requieren… | 3.3 (cuenta) | Brecha | Sin paquete propio: servicio común de la plataforma (propuesta 3.3.7). |
+| RT-16.02 | Las reglas de negocio parametrizables —umbrales, plazos, montos, tolerancias, catálogos… | 3.3.5 | Directo | |
+| RT-16.03 | Todo cambio de parámetro con impacto operacional requerirá aprobación de un segundo… | 3.3.5 | Directo | |
+| RT-16.04 | El PROPONENTE declarará expresamente qué elementos son parametrizables y cuáles requieren… | 3.3.5 | Directo | |
 | RT-16.05 | Existirá un ambiente de simulación que permita probar el efecto de un cambio de parámetro… | 3.1.1 | Indirecto |  |
 | RT-16.06 | Toda operación que cree, modifique o elimine información quedará registrada con… | 3.3.5 | Indirecto |  |
 | RT-16.07 | El registro de auditoría será inalterable y no podrá ser modificado ni eliminado por… | 3.3.5, 3.2.4 | Indirecto |  |
 | RT-16.08 | El CLIENTE podrá consultar y exportar la auditoría desde la interfaz, con filtros por… | 3.3.5 | Indirecto |  |
 | RT-16.09 | Las consultas a información sensible quedarán registradas, no sólo las modificaciones.… | 3.3.5 | Indirecto |  |
 | RT-16.10 | El período de retención de la auditoría será el que fije el caso y, en su defecto, no… | 3.2.4 | Indirecto |  |
-| RT-16.11 | La solución soportará flujos de trabajo con estados, transiciones, responsables, plazos… | 3.3 (cuenta) | Brecha | Sin paquete propio: servicio común de la plataforma (propuesta 3.3.7). |
-| RT-16.12 | Los flujos serán configurables por el CLIENTE sin desarrollo, al menos en lo relativo a… | 3.3 (cuenta) | Brecha | Sin paquete propio: servicio común de la plataforma (propuesta 3.3.7). |
-| RT-16.13 | Toda solicitud pendiente será visible para su responsable en una bandeja de tareas… | 3.3 (cuenta) | Brecha | Sin paquete propio: servicio común de la plataforma (propuesta 3.3.7). |
-| RT-16.14 | El motor de reglas permitirá definir condiciones de negocio evaluables sin recompilación… | 3.3 (cuenta) | Brecha | Sin paquete propio: servicio común de la plataforma (propuesta 3.3.7). |
-| RT-16.15 | La solución gestionará documentos con versionado, metadatos, control de acceso, búsqueda… | 3.3 (cuenta) | Brecha | Sin paquete propio: servicio común de la plataforma (propuesta 3.3.7). |
+| RT-16.11 | La solución soportará flujos de trabajo con estados, transiciones, responsables, plazos… | 3.3.1 | Directo | |
+| RT-16.12 | Los flujos serán configurables por el CLIENTE sin desarrollo, al menos en lo relativo a… | 3.3.1 | Directo | |
+| RT-16.13 | Toda solicitud pendiente será visible para su responsable en una bandeja de tareas… | 3.3.1 | Directo | |
+| RT-16.14 | El motor de reglas permitirá definir condiciones de negocio evaluables sin recompilación… | 3.3.5 | Directo | |
+| RT-16.15 | La solución gestionará documentos con versionado, metadatos, control de acceso, búsqueda… | 3.3.5 | Directo | |
 | RT-16.16 | Los documentos se almacenarán cifrados, con verificación de integridad y retención… | 3.4.8, 3.2.4 | Indirecto |  |
 | RT-16.17 | La solución soportará firma electrónica conforme a la Ley N° 19.799, con firma avanzada… | 3.3.2 | Indirecto |  |
 | RT-16.18 | Se generará el sello de tiempo y se conservará la evidencia de firma que permita… | 3.3.2 | Indirecto |  |
-| RT-16.19 | La solución generará documentos a partir de plantillas administrables por el CLIENTE, con… | 3.3 (cuenta) | Brecha | Sin paquete propio: servicio común de la plataforma (propuesta 3.3.7). |
+| RT-16.19 | La solución generará documentos a partir de plantillas administrables por el CLIENTE, con… | 3.6.4 | Directo | |
 | RT-16.20 | La solución enviará notificaciones por al menos tres canales: correo electrónico… | 3.6.4 | Directo |  |
 | RT-16.21 | Las plantillas de notificación serán administrables por el CLIENTE, con variables de la… | 3.6.4 | Indirecto |  |
 | RT-16.22 | Cada persona usuaria podrá configurar sus preferencias de canal y de frecuencia… | 3.6.4 | Indirecto |  |
 | RT-16.23 | El envío será asíncrono, con reintento ante falla, control de duplicados y registro de… | 3.6.4 | Directo |  |
 | RT-16.24 | El PROPONENTE declarará el proveedor de cada canal, su costo unitario, su volumen… | 3.6.4 | Indirecto |  |
 | RT-16.25 | Las notificaciones respetarán la normativa de comunicaciones comerciales y permitirán la… | 3.6.4 | Indirecto |  |
-| RT-16.26 | Se valorará la integración con canales conversacionales que permitan a la persona usuaria… | — | No aplica | No cumple: sin trabajo comprometido. |
-| RT-16.27 | La solución dispondrá de búsqueda global con indexación de texto completo, tolerancia a… | 3.3 (cuenta) | Brecha | Sin paquete propio: servicio común de la plataforma (propuesta 3.3.7). |
-| RT-16.28 | Los listados serán ordenables, filtrables, paginados y exportables en formatos abiertos… | 3.3 (cuenta) | Brecha | Sin paquete propio: servicio común de la plataforma (propuesta 3.3.7). |
-| RT-16.29 | Las exportaciones de gran volumen se procesarán de forma asíncrona, con notificación al… | 3.3 (cuenta) | Brecha | Sin paquete propio: servicio común de la plataforma (propuesta 3.3.7). |
+| RT-16.26 | Se valorará la integración con canales conversacionales que permitan a la persona usuaria… | No aplica | No aplica | No cumple: sin trabajo comprometido. |
+| RT-16.27 | La solución dispondrá de búsqueda global con indexación de texto completo, tolerancia a… | 3.3.1 | Directo | |
+| RT-16.28 | Los listados serán ordenables, filtrables, paginados y exportables en formatos abiertos… | 3.3.5 | Directo | |
+| RT-16.29 | Las exportaciones de gran volumen se procesarán de forma asíncrona, con notificación al… | 3.3.5 | Directo | |
 | RT-16.30 | Toda exportación de información sensible quedará registrada en la auditoría, con… | 3.3.5 | Indirecto |  |
 | RT-16.31 | La solución dispondrá de un portal público con la información que el caso determine… | 3.5.2, 3.8.2, 3.8.4, 3.9.2, 3.9.3 | Indirecto | Portal público: sin paquete de construcción propio; el T-12 cita sus pruebas en 3.8 y 3.9. |
 | RT-16.32 | Las personas usuarias externas dispondrán de autoatención para las consultas de mayor… | 3.5.2 | Directo |  |
@@ -766,16 +736,16 @@ No impiden llenar la columna, pero un evaluador podría preguntar dónde está e
 | RT-17.06 | La aplicación integrará los periféricos que el caso requiera: cámara, lector de códigos… | 6.5.1, 6.5.2, 6.5.3, 6.5.4, 6.5.5, 6.5.6 | Directo |  |
 | RT-17.07 | El consumo de datos móviles y de batería se optimizará y se declarará el consumo estimado… | 2.1.2 | Indirecto |  |
 | RT-17.08 | Se valorará la disponibilidad de una versión de la interfaz para dispositivos de bajo… | 3.5.2 | Indirecto |  |
-| RT-18.01 | El PROPONENTE declarará cada componente de inteligencia artificial: propósito, modelo o… | — | No aplica | Se cumple declarando que la solución no incorpora IA (D-09); no genera trabajo. |
-| RT-18.02 | Se garantizará contractualmente que los datos del CLIENTE no serán utilizados para… | — | No aplica | Se cumple declarando que la solución no incorpora IA (D-09); no genera trabajo. |
-| RT-18.03 | Se documentarán los límites de uso, los casos en que el resultado requiere validación… | — | No aplica | Se cumple declarando que la solución no incorpora IA (D-09); no genera trabajo. |
-| RT-18.04 | Los riesgos de sesgo, alucinación, fuga de información y uso indebido se evaluarán y… | — | No aplica | Se cumple declarando que la solución no incorpora IA (D-09); no genera trabajo. |
-| RT-18.05 | Toda interacción relevante con un componente de inteligencia artificial quedará… | — | No aplica | Se cumple declarando que la solución no incorpora IA (D-09); no genera trabajo. |
-| RT-18.06 | El componente podrá desactivarse sin comprometer la operación del resto de la solución, y… | — | No aplica | Se cumple declarando que la solución no incorpora IA (D-09); no genera trabajo. |
-| RT-18.07 | Cuando el resultado se presente a una persona usuaria, se indicará expresamente que fue… | — | No aplica | Se cumple declarando que la solución no incorpora IA (D-09); no genera trabajo. |
+| RT-18.01 | El PROPONENTE declarará cada componente de inteligencia artificial: propósito, modelo o… | No aplica | No aplica | Se cumple declarando que la solución no incorpora IA (D-09); no genera trabajo. |
+| RT-18.02 | Se garantizará contractualmente que los datos del CLIENTE no serán utilizados para… | No aplica | No aplica | Se cumple declarando que la solución no incorpora IA (D-09); no genera trabajo. |
+| RT-18.03 | Se documentarán los límites de uso, los casos en que el resultado requiere validación… | No aplica | No aplica | Se cumple declarando que la solución no incorpora IA (D-09); no genera trabajo. |
+| RT-18.04 | Los riesgos de sesgo, alucinación, fuga de información y uso indebido se evaluarán y… | No aplica | No aplica | Se cumple declarando que la solución no incorpora IA (D-09); no genera trabajo. |
+| RT-18.05 | Toda interacción relevante con un componente de inteligencia artificial quedará… | No aplica | No aplica | Se cumple declarando que la solución no incorpora IA (D-09); no genera trabajo. |
+| RT-18.06 | El componente podrá desactivarse sin comprometer la operación del resto de la solución, y… | No aplica | No aplica | Se cumple declarando que la solución no incorpora IA (D-09); no genera trabajo. |
+| RT-18.07 | Cuando el resultado se presente a una persona usuaria, se indicará expresamente que fue… | No aplica | No aplica | Se cumple declarando que la solución no incorpora IA (D-09); no genera trabajo. |
 | RT-18.08 | Los modelos predictivos declararán sus variables de entrada, su métrica de desempeño, su… | 3.10.3.1, 8.3.2 | Directo |  |
-| RT-18.09 | La responsabilidad por los resultados de los componentes de inteligencia artificial recae… | — | No aplica | Se cumple declarando que la solución no incorpora IA (D-09); no genera trabajo. |
-| RT-18.10 | Se valorará el uso de automatización robótica de procesos o de agentes para tareas… | — | No aplica | No cumple: sin trabajo comprometido. |
+| RT-18.09 | La responsabilidad por los resultados de los componentes de inteligencia artificial recae… | No aplica | No aplica | Se cumple declarando que la solución no incorpora IA (D-09); no genera trabajo. |
+| RT-18.10 | Se valorará el uso de automatización robótica de procesos o de agentes para tareas… | No aplica | No aplica | No cumple: sin trabajo comprometido. |
 | RT-19.01 | El ADJUDICATARIO constituirá una oficina de gestión del proyecto con metodología… | 1.8.1 | Directo |  |
 | RT-19.02 | El Jefe de Proyecto tendrá dedicación exclusiva durante toda la fase de implementación y… | 1.8.1 | Indirecto |  |
 | RT-19.03 | Existirá un procedimiento formal de control de cambios conforme al Artículo 72° de las… | 1.4.3, 1.8.2 | Directo |  |
@@ -805,7 +775,7 @@ No impiden llenar la columna, pero un evaluador podría preguntar dónde está e
 | RT-21.09 | Se mantendrá un registro histórico de las actividades de soporte que permita monitorear y… | 8.1.2 | Indirecto |  |
 | RT-21.10 | Existirá un proceso de aprendizaje del centro de soporte que acumule conocimiento sobre… | 8.5.3 | Directo |  |
 | RT-21.11 | Se proveerán servicios de capacitación en línea en modalidad de autoformación, con… | 7.1.6 | Directo |  |
-| RT-21.12 | Se habilitarán espacios de interacción entre las entidades y personas usuarias del… | — | No aplica | No cumple: sin trabajo comprometido. |
+| RT-21.12 | Se habilitarán espacios de interacción entre las entidades y personas usuarias del… | No aplica | No aplica | No cumple: sin trabajo comprometido. |
 | RT-21.13 | Los indicadores clave del proceso de soporte estarán abiertos al CLIENTE, y los… | 3.1.5, 8.1.2 | Indirecto |  |
 | RT-21.14 | El PROPONENTE dimensionará la dotación del centro de atención con fundamento… | 8.1.1 | Indirecto |  |
 | RT-21.15 | Existirá un canal único de registro de incidentes y solicitudes, con número de ticket… | 8.1.2 | Indirecto |  |
@@ -825,38 +795,38 @@ No impiden llenar la columna, pero un evaluador podría preguntar dónde está e
 | RT-22.07 | El ADJUDICATARIO proveerá acompañamiento y mentoría al equipo técnico del CLIENTE durante… | 8.5.2 | Directo |  |
 | RT-22.08 | La base de conocimiento será mantenida y actualizada durante todo el Contrato, con… | 8.5.3 | Directo |  |
 | RT-22.09 | Se valorará la existencia de un ambiente permanente de entrenamiento, con datos… | 7.1.6 | Indirecto |  |
-| RT-23.01 | Información institucional: descripción detallada del giro principal, historia y… | — | No aplica | Sitio web corporativo de LafroX durante la licitación; no es trabajo del proyecto. |
-| RT-23.02 | Experiencia y casos de éxito: portafolio de proyectos similares de los últimos cinco… | — | No aplica | Sitio web corporativo de LafroX durante la licitación; no es trabajo del proyecto. |
-| RT-23.03 | Equipo profesional: organigrama del equipo directivo, perfiles de socios y directores… | — | No aplica | Sitio web corporativo de LafroX durante la licitación; no es trabajo del proyecto. |
-| RT-23.04 | Capacidades técnicas: servicios y soluciones ofrecidas, conjunto tecnológico dominado… | — | No aplica | Sitio web corporativo de LafroX durante la licitación; no es trabajo del proyecto. |
-| RT-23.05 | El sitio será accesible conforme a WCAG 2.2 nivel AA, responsivo y con certificado TLS… | — | No aplica | Sitio web corporativo de LafroX durante la licitación; no es trabajo del proyecto. |
-| RT-23.06 | El sitio se mantendrá activo y disponible durante todo el proceso de licitación, desde el… | — | No aplica | Sitio web corporativo de LafroX durante la licitación; no es trabajo del proyecto. |
-| RT-23.07 | Material educativo digital: seminarios en línea, artículos técnicos o centro de recursos… | — | No aplica | Sitio web corporativo de LafroX durante la licitación; no es trabajo del proyecto. |
-| RT-23.08 | Demostración en línea, recorrido virtual de la solución o portal de soporte para clientes. | — | No aplica | Sitio web corporativo de LafroX durante la licitación; no es trabajo del proyecto. |
-| RT-23.09 | Métricas de disponibilidad y desempeño de los servicios del proponente publicadas en… | — | No aplica | Sitio web corporativo de LafroX durante la licitación; no es trabajo del proyecto. |
-| RT-23.10 | Calculadora de retorno de la inversión o herramienta de estimación pertinente a la… | — | No aplica | Sitio web corporativo de LafroX durante la licitación; no es trabajo del proyecto. |
-| RT-24.01 | Todos los integrantes clave del equipo deberán aparecer individualmente presentándose, en… | — | No aplica | No cumple: sin trabajo comprometido. |
-| RT-24.02 | Cada vez que aparezca un integrante deberá mostrarse en pantalla su nombre completo, su… | — | No aplica | No cumple: sin trabajo comprometido. |
-| RT-24.03 | Las certificaciones principales de cada integrante podrán mostrarse en pantalla. | — | No aplica | No cumple: sin trabajo comprometido. |
-| RT-24.04 | El fondo será el mismo para todas las tomas de personas, con iluminación consistente y… | — | No aplica | No cumple: sin trabajo comprometido. |
-| RT-24.05 | La paleta de colores corporativa, la tipografía y el uso de la marca serán consistentes… | — | No aplica | No cumple: sin trabajo comprometido. |
-| RT-24.06 | Los niveles de volumen estarán normalizados, con la misma calidad de grabación y sin… | — | No aplica | No cumple: sin trabajo comprometido. |
+| RT-23.01 | Información institucional: descripción detallada del giro principal, historia y… | No aplica | No aplica | Sitio web corporativo de LafroX durante la licitación; no es trabajo del proyecto. |
+| RT-23.02 | Experiencia y casos de éxito: portafolio de proyectos similares de los últimos cinco… | No aplica | No aplica | Sitio web corporativo de LafroX durante la licitación; no es trabajo del proyecto. |
+| RT-23.03 | Equipo profesional: organigrama del equipo directivo, perfiles de socios y directores… | No aplica | No aplica | Sitio web corporativo de LafroX durante la licitación; no es trabajo del proyecto. |
+| RT-23.04 | Capacidades técnicas: servicios y soluciones ofrecidas, conjunto tecnológico dominado… | No aplica | No aplica | Sitio web corporativo de LafroX durante la licitación; no es trabajo del proyecto. |
+| RT-23.05 | El sitio será accesible conforme a WCAG 2.2 nivel AA, responsivo y con certificado TLS… | No aplica | No aplica | Sitio web corporativo de LafroX durante la licitación; no es trabajo del proyecto. |
+| RT-23.06 | El sitio se mantendrá activo y disponible durante todo el proceso de licitación, desde el… | No aplica | No aplica | Sitio web corporativo de LafroX durante la licitación; no es trabajo del proyecto. |
+| RT-23.07 | Material educativo digital: seminarios en línea, artículos técnicos o centro de recursos… | No aplica | No aplica | Sitio web corporativo de LafroX durante la licitación; no es trabajo del proyecto. |
+| RT-23.08 | Demostración en línea, recorrido virtual de la solución o portal de soporte para clientes. | No aplica | No aplica | Sitio web corporativo de LafroX durante la licitación; no es trabajo del proyecto. |
+| RT-23.09 | Métricas de disponibilidad y desempeño de los servicios del proponente publicadas en… | No aplica | No aplica | Sitio web corporativo de LafroX durante la licitación; no es trabajo del proyecto. |
+| RT-23.10 | Calculadora de retorno de la inversión o herramienta de estimación pertinente a la… | No aplica | No aplica | Sitio web corporativo de LafroX durante la licitación; no es trabajo del proyecto. |
+| RT-24.01 | Todos los integrantes clave del equipo deberán aparecer individualmente presentándose, en… | No aplica | No aplica | No cumple: sin trabajo comprometido. |
+| RT-24.02 | Cada vez que aparezca un integrante deberá mostrarse en pantalla su nombre completo, su… | No aplica | No aplica | No cumple: sin trabajo comprometido. |
+| RT-24.03 | Las certificaciones principales de cada integrante podrán mostrarse en pantalla. | No aplica | No aplica | No cumple: sin trabajo comprometido. |
+| RT-24.04 | El fondo será el mismo para todas las tomas de personas, con iluminación consistente y… | No aplica | No aplica | No cumple: sin trabajo comprometido. |
+| RT-24.05 | La paleta de colores corporativa, la tipografía y el uso de la marca serán consistentes… | No aplica | No aplica | No cumple: sin trabajo comprometido. |
+| RT-24.06 | Los niveles de volumen estarán normalizados, con la misma calidad de grabación y sin… | No aplica | No aplica | No cumple: sin trabajo comprometido. |
 | RT-25.01 | Navegación intuitiva sin necesidad de manual, con un máximo de tres interacciones para… | 2.6.2 | Indirecto |  |
-| RT-25.02 | Retroalimentación visual clara ante cada acción, estados de carga y transición fluidos, y… | — | No aplica | No cumple: sin trabajo comprometido. |
+| RT-25.02 | Retroalimentación visual clara ante cada acción, estados de carga y transición fluidos, y… | No aplica | No aplica | No cumple: sin trabajo comprometido. |
 | RT-25.03 | Cumplimiento de WCAG 2.2 nivel AA: contraste adecuado, tamaños de fuente legibles… | 2.6.2 | Indirecto |  |
-| RT-25.04 | Diseño responsivo demostrado en escritorio (1920 × 1080 y 1366 × 768), tableta (768 ×… | — | No aplica | No cumple: sin trabajo comprometido. |
-| RT-25.05 | Sistema de diseño documentado: paleta de a lo más cinco colores principales, a lo más dos… | — | No aplica | No cumple: sin trabajo comprometido. |
-| RT-25.06 | El prototipo se entregará como enlace navegable en línea, sin instalación ni… | — | No aplica | No cumple: sin trabajo comprometido. |
-| RT-25.07 | El acceso al prototipo estará garantizado por un mínimo de seis meses desde su entrega. | — | No aplica | No cumple: sin trabajo comprometido. |
+| RT-25.04 | Diseño responsivo demostrado en escritorio (1920 × 1080 y 1366 × 768), tableta (768 ×… | No aplica | No aplica | No cumple: sin trabajo comprometido. |
+| RT-25.05 | Sistema de diseño documentado: paleta de a lo más cinco colores principales, a lo más dos… | No aplica | No aplica | No cumple: sin trabajo comprometido. |
+| RT-25.06 | El prototipo se entregará como enlace navegable en línea, sin instalación ni… | No aplica | No aplica | No cumple: sin trabajo comprometido. |
+| RT-25.07 | El acceso al prototipo estará garantizado por un mínimo de seis meses desde su entrega. | No aplica | No aplica | No cumple: sin trabajo comprometido. |
 | RT-25.08 | El prototipo permitirá navegación completa entre pantallas, simulación de ingreso de… | 2.6.2 | Directo |  |
-| RT-25.09 | Se entregará la arquitectura de información del prototipo: mapa del sitio completo… | — | No aplica | No cumple: sin trabajo comprometido. |
-| RT-25.10 | Se valorará la posibilidad de exportar el prototipo a un documento interactivo para… | — | No aplica | No cumple: sin trabajo comprometido. |
+| RT-25.09 | Se entregará la arquitectura de información del prototipo: mapa del sitio completo… | No aplica | No aplica | No cumple: sin trabajo comprometido. |
+| RT-25.10 | Se valorará la posibilidad de exportar el prototipo a un documento interactivo para… | No aplica | No aplica | No cumple: sin trabajo comprometido. |
 | RT-26.01 | Cada innovación se ubicará explícitamente en la arquitectura: qué capa la contiene, qué… | 3.10 (cuenta) | Indirecto |  |
 | RT-26.02 | Cada innovación identificará los paquetes de la estructura de descomposición del trabajo… | 3.10 (cuenta), 5.4.3, 8.3 (cuenta) | Directo |  |
 | RT-26.03 | Las innovaciones de base tecnológica declararán el nivel de madurez de la tecnología con… | 3.10 (cuenta) | Indirecto |  |
 | RT-26.04 | Cada innovación declarará su riesgo de adopción, su probabilidad, su impacto, la… | 1.6.1 | Indirecto |  |
 | RT-26.05 | Cada innovación declarará su indicador de verificación con línea base, meta y momento de… | 3.10.1.4, 3.10.2.4, 3.10.3.4, 3.10.4.4 | Indirecto |  |
-| RT-26.06 | Las innovaciones que incorporen inteligencia artificial cumplirán íntegramente el… | — | No aplica | Ninguna innovación incorpora IA; no genera trabajo. |
+| RT-26.06 | Las innovaciones que incorporen inteligencia artificial cumplirán íntegramente el… | No aplica | No aplica | Ninguna innovación incorpora IA; no genera trabajo. |
 | RT-26.07 | Las innovaciones que modifiquen la arquitectura de seguridad requerirán su propio… | 2.2.2 | Directo |  |
 | RT-26.08 | Se valorará que al menos una innovación sea verificable durante la marcha blanca de la… | 3.10.2.4 | Directo |  |
 
