@@ -1,11 +1,14 @@
-# Anexos del Subdocumento 6
+# Anexos del subdocumento 6
 
-**Subtítulo:** Anexos del Subdocumento 6 — Metodología de gestión de proyectos y desarrollo de software  
-**Alcance:** Anexos del Subdocumento 6  
-**Formulario:** Formulario T-6  
+**Subtítulo:** Anexos del Subdocumento 6 — Metodología de gestión de proyectos y desarrollo de software
+
+**Alcance:** Anexos del Subdocumento 6
+
+**Formulario:** Formulario T-6
+
 **Nomenclatura:** `LAFROX-Subdocumento6-Anexos.pdf`
 
-*Estos anexos presentan los registros de interesados y adquisiciones asociados al proyecto, que complementan la información resumida en el [Subdocumento 6](LAFROX-Subdocumento6.md).*
+Estos anexos presentan los registros de interesados y adquisiciones asociados al proyecto, que complementan la información resumida en el Subdocumento 6.
 
 ## Anexo 6.A — Interesados del proyecto
 
@@ -13,10 +16,12 @@ Identificar a los interesados del proyecto es un paso fundamental para la gesti�
 
 Es por ello que en la siguiente tabla se presentan los interesados del proyecto, sus intereses o preocupaciones y la contribución que se espera de ellos.
 
-**Tabla 6.A.1. Interesados del proyecto — Fuente: elaboración propia**
+<a id="tabla-6-a-1"></a>
+
+**Tabla 6.A.1. Interesados del proyecto – Fuente: elaboración propia**
 
 | Interesado | Interés o preocupación | Contribución esperada |
-|---|---|---|
+| --- | --- | --- |
 | Gerencia general | Continuidad del negocio y relación con clientes | Aportar prioridades del negocio y resolver decisiones que requieran su intervención |
 | Jefatura de calidad | Trazabilidad de lotes y control de temperatura | Definir y revisar reglas de control sanitario y evidencia de trazabilidad |
 | Autoridades sanitarias | Disponibilidad y confiabilidad de la evidencia de trazabilidad | Informar exigencias aplicables y revisar antecedentes cuando corresponda |
@@ -41,23 +46,25 @@ La tabla muestra que la participación requerida abarca áreas directivas, opera
 
 Este anexo reúne los bienes y servicios necesarios para implementar y operar la solución, e identifica para cada adquisición la necesidad que atiende, quién es responsable de su compra o contratación, cuándo se requiere y qué evidencia permitirá verificar su cumplimiento. Esta información facilita la coordinación de las adquisiciones con el cronograma y con las actividades del proyecto.
 
-**Tabla 6.B.1. Adquisiciones — Fuente: elaboración propia a partir del Formulario T-14, fase 5, y del Formulario T-11**
+<a id="tabla-6-a-2"></a>
+
+**Tabla 6.A.2. Adquisiciones – Fuente: elaboración propia a partir del Formulario T-14, fase 5, y del Formulario T-11**
 
 | Bien o servicio | Necesidad asociada | Responsable de compra o contrato; responsable LafroX, fecha, paquetes y evidencia |
-|---|---|---|
-| Equipamiento de terreno: terminales de preventa, reparto y bodega, impresoras, sensores de temperatura, termógrafos y gateways IoT | Operación de las aplicaciones y registro de frío | **Compra:** CLIENTE, según la especificación 5.1.1. **Responsables LafroX:** Arquitecto (especificación); SRE (recepción). **Fecha:** Antes de cada ola; sensores antes de 6.5. **Paquetes:** 6.5, 4.2.1. **Evidencia:** Actas 5.1.3 |
-| Sala técnica de Talca: UPS, generador, climatización de precisión, detección y extinción, racks y gabinetes de borde | Recinto técnico del H3 | **Compra:** LafroX (5.1.2). **Responsables LafroX:** Arquitecto (especificación); SRE (instalación y recepción). **Fecha:** Orden de compra mes 2; energía, climatización e incendio mes 3; recepción de sala mes 4; racks R01/R02 meses 4–5; gabinete de Concepción mes 4; borde de los CD en servicio mes 5 y gabinetes cross-docking mes 9. **Paquetes:** 6.1, 6.3, 6.6. **Evidencia:** Actas 5.1.3 y 6.1.5 |
-| Servidores, almacenamiento, firewalls, switches y mini-PC de borde | Cómputo y red de los sitios | **Compra:** LafroX (5.1.2). **Responsable LafroX:** SRE. **Fecha:** Orden de compra mes 2; montaje de racks de Talca meses 4–5, después de la recepción de su sala; gabinete de Concepción mes 4, en paralelo e independiente de esa recepción; borde de los CD en servicio mes 5 y gabinetes cross-docking mes 9, conforme a 6.3/6.6. **Paquetes:** 6.3, 6.6. **Evidencia:** Actas 5.1.3 |
-| Obra civil, piso técnico e instalación de energía, climatización e incendio | Habilitación del recinto | **Obra civil de separación:** CLIENTE (RT-06.06); LafroX especifica y coordina. **Piso técnico y sistemas:** LafroX, con instaladores especializados. **Responsable LafroX:** SRE. **Fecha:** Mes 3, después de 5.1.2; recepción de sala mes 4. **Paquetes:** 6.1.1 a 6.1.4. **Evidencia:** Acta 6.1.5 |
-| Servicios de AWS | Plataforma de nube y ambientes | **Compra:** LafroX (5.2.1). **Responsable LafroX:** SRE. **Fecha:** Antes del mes 4. **Paquetes:** 3.1, 3.2. **Evidencia:** Cuentas y servicios activos |
-| Gestión de dispositivos y detección en endpoints | Enrolamiento y seguridad de los terminales | **Compra:** LafroX (5.2.2). **Responsable LafroX:** SRE. **Fecha:** Antes del enrolamiento. **Paquetes:** 6.5, 7.1. **Evidencia:** Suscripciones activas |
-| Licencias de software de terceros | Productos de la arquitectura | **Compra:** A nombre del CLIENTE (5.2.3). **Responsable LafroX:** Arquitecto. **Fecha:** Antes de usar cada producto. **Paquetes:** 3.1 a 3.6. **Evidencia:** Registro de licencias |
-| Fibra óptica de Talca y Concepción | Enlace principal | **Compra:** LafroX (5.3.1). **Responsable LafroX:** SRE. **Fecha:** Antes del H3. **Paquete:** 6.6. **Evidencia:** Contrato y fecha de instalación |
-| Planes LTE de dos proveedores | Respaldo de enlace | **Compra:** LafroX (5.3.2). **Responsable LafroX:** SRE. **Fecha:** Antes del H3. **Paquete:** 6.6. **Evidencia:** Contratos |
-| Starlink de Talca, Concepción y las tres plataformas | Enlace satelital de los cinco sitios | **Compra:** LafroX (5.3.3). **Responsable LafroX:** SRE. **Fecha:** Antes del H3. **Paquete:** 6.6. **Evidencia:** Contratos y equipos para los cinco sitios |
-| Acuerdos con los diez transportistas | Uso de terminales y suplentes enrolados | **Compra/contrato:** LafroX con el CLIENTE (5.4.1). **Responsable LafroX:** Implantación. **Fecha:** Antes del H6. **Paquetes:** 4.2.1, ola de reparto. **Evidencia:** Diez acuerdos firmados |
-| Acta con el sindicato | Terminales, GPS y cámaras | **Compra/contrato:** CLIENTE y sindicato (5.4.2). **Responsable LafroX:** Implantación. **Fecha:** Antes del H6. **Paquete:** 4.2.1. **Evidencia:** Acta firmada |
-| Custodia de fuentes | Continuidad ante insolvencia o incumplimiento | **Compra/contrato:** LafroX (5.4.4). **Responsable LafroX:** Jefe de proyecto. **Fecha:** Antes del H4. **Paquete:** 9.2. **Evidencia:** Contrato y primer depósito |
-| Analistas del SOC 24×7 propio | Monitoreo de seguridad desde el mes 13 | **Contratación:** LafroX (8.1.5; RT-11.17). **Responsable LafroX:** Encargado de Seguridad. **Fecha:** antes del mes 13. **Paquete:** 8.1.5. **Ubicación:** Centro de Operaciones de LafroX en Valparaíso. **Evidencia requerida:** contratos de los analistas y turnos 24×7 asignados antes de la primera marcha blanca. |
+| --- | --- | --- |
+| Equipamiento de terreno: terminales de preventa, reparto y bodega, impresoras, sensores de temperatura, termógrafos y gateways IoT | Operación de las aplicaciones y registro de frío | CLIENTE, según la especificación 5.1.1. Arquitecto (especificación); SRE (recepción). Antes de cada ola; sensores antes de 6.5. Paquetes 6.5, 4.2.1. Actas 5.1.3 |
+| Sala técnica de Talca: UPS, generador, climatización de precisión, detección y extinción, racks y gabinetes de borde | Recinto técnico del H3 | LafroX, según la especificación 5.1.2. Arquitecto (especificación); SRE (recepción). Mes 5. Paquetes 6.1, 6.3, 6.6. Actas 5.1.3 y 6.1.5 |
+| Servidores, almacenamiento, firewalls, switches y mini-PC de borde | Cómputo y red de los sitios | LafroX, según la especificación 5.1.2. SRE. Mes 5. Paquetes 6.3, 6.6. Actas 5.1.3 |
+| Obra civil, piso técnico e instalación de energía, climatización e incendio | Habilitación del recinto | LafroX, con instaladores especializados. SRE. Meses 5 y 6. Paquetes 6.1.1 a 6.1.4. Acta 6.1.5 |
+| Servicios de AWS | Plataforma de nube y ambientes | LafroX (5.2.1). SRE. Antes del mes 4. Paquetes 3.1, 3.2. Cuentas y servicios activos |
+| Gestión de dispositivos y detección en endpoints | Enrolamiento y seguridad de los terminales | LafroX (5.2.2). SRE. Antes del enrolamiento. Paquetes 6.5, 7.1. Suscripciones activas |
+| Licencias de software de terceros | Productos de la arquitectura | A nombre del CLIENTE (5.2.3). Arquitecto. Antes de usar cada producto. Paquetes 3.1 a 3.6. Registro de licencias |
+| Fibra óptica de Talca y Concepción | Enlace principal | LafroX (5.3.1). SRE. Antes del H3. Paquete 6.6. Contrato y fecha de instalación |
+| Planes LTE de dos proveedores | Respaldo de enlace | LafroX (5.3.2). SRE. Antes del H3. Paquete 6.6. Contratos |
+| Starlink de las tres plataformas | Enlace de los cross-docking | LafroX (5.3.3). SRE. Antes del H3. Paquete 6.6. Contratos y equipos |
+| Acuerdos con los diez transportistas | Uso de terminales y suplentes enrolados | LafroX con el CLIENTE (5.4.1). Implantación. Antes del H6. Paquetes 4.2.1, ola de reparto. Diez acuerdos firmados |
+| Acta con el sindicato | Terminales, GPS y cámaras | CLIENTE y sindicato (5.4.2). Implantación. Antes del H6. Paquete 4.2.1. Acta firmada |
+| Custodia de fuentes | Continuidad ante insolvencia o incumplimiento | LafroX (5.4.4). Jefe de proyecto. Antes del H4. Paquete 9.2. Contrato y primer depósito |
+| Servicio SOC 24×7, si se subcontrata | Monitoreo de seguridad desde el mes 13 | LafroX (8.1.5; RT-11.17). Encargado de Seguridad. Mes 13. Paquete 8.1.5. Contrato con cobertura y niveles de servicio |
 
 La tabla refleja que las adquisiciones tienen responsables y momentos de necesidad distintos: algunas corresponden al CLIENTE y otras a LafroX, y varias deben coordinarse con hitos o paquetes específicos. Por ello, el seguimiento de fechas y evidencias de recepción o contratación es clave para anticipar atrasos que puedan afectar la implementación y la continuidad de la operación.

@@ -1,6 +1,6 @@
 # LafroX — Correcciones del Informe 1: Subdocumento 1 y Formulario T-6
 
-Las tablas siguientes relacionan las observaciones del Informe 1 con los cambios de la versión LaTeX actual del SD1 y su Formulario T-6. Las páginas corresponden a los PDF compilados de 21 y 7 páginas, respectivamente.
+Las 28 observaciones del Informe 1 y sus respuestas anteriores se conservan como trazabilidad histórica, sin renumerarlas ni eliminarlas. Las páginas de la tabla original corresponden al corte de 21 páginas del SD1 y siete del T-6. El corte vigente del SD1 tiene 19 páginas: sus cambios de ubicación y el estado de la observación 24 se especifican en «Actualización de trazabilidad — 12 de octubre de 2026», al final de este registro. La tabla histórica no acredita por sí sola el cierre de la versión vigente.
 
 ## Observaciones del Informe 1
 
@@ -82,3 +82,21 @@ Detalle y límites en [Verificación integral](verificacion_integral_SD1_LaTeX_M
 En la observación 18 se homologó el método de la evaluación CMMI versión 2.0 a «Benchmark» en el antecedente, la renovación y Referencias, tanto en contenido.tex como en el Markdown. El PDF del cuerpo se recompiló: 21 páginas, tres menciones Benchmark, cero SCAMPI A. Esto corrige la coherencia terminológica, no autentica el antecedente ficticio N° 58190 ni sustituye la revisión humana.
 
 La cifra 2.000 contactos/mes de la observación 24 fue cuestionada por el usuario. El [análisis del supuesto](revision_demanda_mesa_SD1_SD4.md) muestra que procede de 800 personas × 2,5 contactos/persona-mes (SV-06 del SD4), no de las Bases ni de incidentes medidos. **No se considera una demanda validada ni se cambió por otra cifra inventada.** El redimensionamiento y la coordinación SD1–SD4–SD7–T-15 permanecen pendientes de fijar el escenario.
+
+## Actualización de trazabilidad — 12 de octubre de 2026
+
+La revisión de redacción no elimina observaciones, requisitos ni compromisos. Se conservan las 28 observaciones anteriores y se distingue una mejora de presentación de un cierre de cumplimiento. La descripción corporativa se separó del dimensionamiento contractual; los modelos y las dotaciones de SD4/T-15 no se modificaron.
+
+| Observaciones originales | Evidencia y ubicación vigentes | Estado o límite |
+|---|---|---|
+| 2–5, 15 y 17 | Índice p. 2; Figura 1.1 p. 8 y explicación pp. 8–9; Tabla 1.3 p. 9; Tabla 1.7 p. 19. | Organigrama redibujado; Gerencia arriba y Seguridad con reporte independiente. La nueva redacción de 1.1–1.3 requiere revisión humana y las firmas siguen pendientes. El T-6 permanece sin cambios. |
+| 11–14, 27 y 28 | Presentación pp. 5–8; líneas de negocio p. 5; catálogo pp. 7–8; estructura del proyecto pp. 15–17; alianzas p. 17. | Se conservan fundación, hitos, servicios y capacidades híbridas. El paréntesis tecnológico se retiró del rol corporativo; la tecnología de la solución y el Líder de Desarrollo no cambiaron. |
+| 16 | Tabla 1.3 p. 9; Tabla 1.4 y análisis p. 10. | Se conservan 124 especialistas, antigüedades, 32 NOC, turnos y 1.280/1.008/272 horas. |
+| 18–23 y 25–26 | Calidad pp. 11–12; seguridad pp. 11–12; conocimiento p. 12; certificaciones pp. 12–13; ambientes p. 6; experiencia pp. 13–15, Tabla 1.5 p. 14 y T-6 pp. 4–6. | CMMI se distingue de metodologías; la intrusión semestral no sustituye la previa a cada producción. Experiencia y certificados se conservan; no se autentican por este registro. |
+| **24 / S1-18** | **SD1: inventario, Tabla 1.1 p. 6; distribución de puestos, Tabla 1.2 p. 7. Dimensionamiento contractual: SD4, Anexo 4-W.7, y T-15 §§4.2, 5.6 y 5.7.** | **Parcial: sedes, 112 equipos y puestos corporativos documentados. Los 2.000 contactos y límites 2.283/2.391 ya no figuran en la Tabla 1.2 del SD1; permanecen en las fuentes contractuales, bajo SV-06 sin demanda validada. No se declara cerrada la observación ni se reemplaza la hipótesis por otra cifra.** |
+
+Las referencias históricas a anexos SD1 vacíos y declaraciones duplicadas del T-6 corresponden a cortes anteriores a la limpieza ya autorizada. El SD1 vigente conserva cuerpo y T-6 separados. Los folios del T-6 y las citas fuera del tramo revisado mantienen los pendientes previamente registrados.
+
+Se encontraron remisiones heredadas en RT-23.01 y RT-23.02 del T-12 a «SD1 1.4 (Tabla 1.2)»; la equivalencia de proyectos está actualmente en **Tabla 1.5**. Esas remisiones ya eran anteriores a esta reescritura y **no se consideran validadas por conservar la numeración**. Se registran para corrección coordinada, sin editar ni publicar los cambios ajenos del T-12 en esta unidad SD1.
+
+Detalle de correcciones y cotejos: [Revisión de redacción corporativa](revision_redaccion_corporativa_SD1.md). Se verificó igualdad MD–LaTeX en 117 bloques y 46 filas y presencia en el PDF de los 56 bloques del tramo revisado. Mantener identificadores, fuente de cada cifra, estado real de cumplimiento y remisiones a su evidencia es condición de todo ajuste posterior.
