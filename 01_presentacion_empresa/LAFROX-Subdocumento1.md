@@ -419,4 +419,4 @@ La Tabla [1.7](LAFROX-Subdocumento1.md#tab:declaracion_ia) identifica las herram
 | 1.4 | Claude / Gemini; OpenAI Codex | Comparación de experiencia y SLA | Alto | No aplica | Alex Aravena: Se validaron la experiencia y los proyectos realizados. |
 | 1.5 | Claude / Gemini; Claude Code; OpenAI Codex | Síntesis de roles y dedicaciones | Alto | No aplica | Alex Aravena: Se validaron la estructura del proyecto y su jerarquía. |
 | 1.6 | Claude / Gemini; OpenAI Codex | Redacción de alcance de alianzas | Alto | No aplica | Alex Aravena: Se validaron las alianzas establecidas. |
-| T-6 | Claude / Gemini; OpenAI Codex | Formato, introducción y referencias | Alto | No aplica | Alex Aravena |
+| T-6 | Claude / Gemini; OpenAI Codex | Formato, introducción y referencias | Alto | No aplica | Alex Aravena: Se verificaron los once campos de los tres proyectos y su coherencia con la sección 1.4. |
