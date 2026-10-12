@@ -3,6 +3,7 @@
 \makeatletter
 \def\input@path{{../00/plantilla/formato-base/}{./}}
 \makeatother
+\PassOptionsToPackage{destlabel}{hyperref}
 \documentclass[carta,firma]{lafrox}
 \renewcommand{\LFXisotipoportada}{../00/plantilla/formato-base/logo/lafrox_isotipo_naranja.pdf}
 \renewcommand{\LFXisotipopagina}{../00/plantilla/formato-base/logo/lafrox_isotipo_negro.pdf}
@@ -19,6 +20,7 @@
 \hypersetup{pdftitle={Anexos del Subdocumento 4 -- Arquitectura de la solución}}
 \renewcommand{\LFXestadodoc}{Entrega 2}
 \captionsetup{hypcap=false}
+\hypersetup{filecolor=lafroxFuerte,runcolor=lafroxFuerte}
 \begin{document}
 \import{anexos/logica/}{contenido.tex}
 \end{document}

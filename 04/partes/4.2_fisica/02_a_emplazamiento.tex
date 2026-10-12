@@ -142,13 +142,13 @@ La figura muestra que cada instalación mantiene su operación local contra sus 
 
 \subsection{Correspondencia con la arquitectura lógica}
 
-La \href{LAFROX-Subdocumento4-Anexos.pdf}{Tabla A.14 del Anexo 4-N} asocia cada módulo y cada capa transversal de la arquitectura lógica del apartado 4.1 con el componente físico que lo ejecuta y con el lugar donde corre. Es la traza que permite seguir una responsabilidad lógica hasta su emplazamiento. Los componentes físicos se identifican con un catálogo único, agrupado por letra: A para el núcleo de bodega, B para la cadena de frío, C para los dispositivos de operación, D para la red, E para los cross-docking, F para la observabilidad y la seguridad de los nodos, y N para la nube.
+La \href{LAFROX-Subdocumento4-Anexos.pdf#tab:mapeo-logica}{Tabla A.14 del Anexo 4-N} asocia cada módulo y cada capa transversal de la arquitectura lógica del apartado 4.1 con el componente físico que lo ejecuta y con el lugar donde corre. Es la traza que permite seguir una responsabilidad lógica hasta su emplazamiento. Los componentes físicos se identifican con un catálogo único, agrupado por letra: A para el núcleo de bodega, B para la cadena de frío, C para los dispositivos de operación, D para la red, E para los cross-docking, F para la observabilidad y la seguridad de los nodos, y N para la nube.
 
 
 
 El perfil local cubre M1, M2, M5, el bloqueo y la disposición sanitaria autorizada de M9 y la recepción física de retornos de M8 a través de la puerta de API local. Los módulos compartidos corren en N-04 y el terreno captura en su terminal. Los perfiles de ejecución se especifican en la sección \hyperref[sec:despliegue]{4.2.4}.
 
-El recorrido de trazabilidad parte de la capacidad de 3.3–3.4, identifica su módulo y capa en 4.1 y llega al recurso de 4.2 y T-11. El \href{LAFROX-Subdocumento4-Anexos.pdf}{Anexo 4-N} completa los doce módulos y los 37 componentes transversales con sus contratos y recursos, y el \href{LAFROX-Subdocumento4-Anexos.pdf}{Anexo 4-E} enlaza las familias con las filas individuales de T-12. Un recurso que sirve a varios módulos conserva un identificador único. Compartir Fargate o PostgreSQL no fusiona sus responsabilidades.
+El recorrido de trazabilidad parte de la capacidad de 3.3–3.4, identifica su módulo y capa en 4.1 y llega al recurso de 4.2 y T-11. El \href{LAFROX-Subdocumento4-Anexos.pdf#anx:N}{Anexo 4-N} completa los doce módulos y los 37 componentes transversales con sus contratos y recursos, y el \href{LAFROX-Subdocumento4-Anexos.pdf#anx:E}{Anexo 4-E} enlaza las familias con las filas individuales de T-12. Un recurso que sirve a varios módulos conserva un identificador único. Compartir Fargate o PostgreSQL no fusiona sus responsabilidades.
 
 \subsection{Síntesis del emplazamiento por dominio y criterio}
 

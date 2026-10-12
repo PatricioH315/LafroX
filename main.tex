@@ -2,6 +2,7 @@
 \makeatletter
 \def\input@path{{00/plantilla/formato-base/}{04/}}
 \makeatother
+\PassOptionsToPackage{destlabel}{hyperref}
 \documentclass[carta,firma]{lafrox}
 \usepackage{etoolbox}
 \usepackage{placeins}
@@ -31,6 +32,7 @@
 \counterwithout{table}{chapter}
 \counterwithout{figure}{chapter}
 
+\hypersetup{filecolor=lafroxFuerte,runcolor=lafroxFuerte}
 \begin{document}
 \portadalafrox
 \preliminareslafrox
