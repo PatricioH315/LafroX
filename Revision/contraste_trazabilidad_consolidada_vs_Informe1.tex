@@ -1,0 +1,794 @@
+% Informe de revisión interna. Conversión del Markdown conservando el contenido.
+% Compilar desde la raíz de esta rama: lualatex Revision/contraste_trazabilidad_consolidada_vs_Informe1.tex
+\documentclass[carta,sinfirma,final]{lafrox}
+\datoslafrox{
+  empresa = {LafroX},
+  rut = {No aplica},
+  representante = {No aplica},
+  cargo = {Informe interno},
+  cliente = {Distribuidora Puelche S.A.},
+  licitacion = {Licitación N.\textdegree{} TFEP-01/2026},
+  caso = {Caso 02 --- Logística},
+  documento = {Informe de revisión interna},
+  subtitulo = {Contraste de la trazabilidad consolidada con el Informe 1},
+  alcance = {Cobertura y fidelidad de observaciones},
+  formulario = {No aplica},
+  fecha = {12 de octubre de 2026},
+  version = {1.0},
+  logo = {},
+  objeto = {Revisión de trazabilidad del Informe 1},
+  sobre = {Documento de trabajo},
+  domicilio = {No aplica},
+  correo = {No aplica},
+  telefono = {No aplica},
+  nomenclatura = {LafroX_Revision_Trazabilidad_Informe1.tex},
+}
+
+\usepackage{needspace}
+\newcommand{\LFXcode}[1]{{\ttfamily #1}}
+\newcommand{\InformeSeccion}[2]{%
+  \Needspace{18\baselineskip}%
+  \section*{#1}%
+  \markboth{#2}{#2}%
+  \phantomsection\addcontentsline{toc}{section}{#2}%
+}
+\newcommand{\InformeSubseccion}[2]{%
+  \Needspace{5\baselineskip}%
+  \subsection*{#1}%
+  \phantomsection\addcontentsline{toc}{subsection}{#2}%
+}
+
+\begin{document}
+\pagenumbering{roman}
+\begin{titlepage}
+  \thispagestyle{empty}
+  \vspace*{14mm}
+  {\lafroxmarca[15mm]\par}
+  \vspace{35mm}
+  {\LFXrotulo{Informe interno de revisión}\par}
+  \vspace{10mm}
+  {\intersemibold\fontsize{24pt}{29pt}\selectfont\color{lafroxFuerte}
+   LafroX --- Contraste de la trazabilidad consolidada con la revisión del Informe 1\par}
+  \vspace{9mm}
+  {\intermedium\fontsize{15pt}{19pt}\selectfont\color{lafroxGris}
+   Revisión de cobertura y fidelidad de las observaciones\par}
+  \vfill
+  {\intermedium\fontsize{10pt}{13pt}\selectfont\color{lafroxGris}
+   Licitación TFEP-01/2026 · Caso 02 — Logística\par
+   12 de octubre de 2026\par
+   Documento de trabajo — no entregable\par}
+  \vspace{14mm}
+\end{titlepage}
+
+\pagestyle{lafrox}
+\pagenumbering{arabic}
+\indicelafrox
+\listatablaslafrox
+
+Nota de trabajo (no entregable). Fecha: 12-10-2026.\par\medskip
+
+\begin{itemize}
+\item \textbf{Fuente contrastada:} \LFXcode{C:\textbackslash{}\allowbreak{}Users\textbackslash{}\allowbreak{}alexa\textbackslash{}\allowbreak{}Downloads\textbackslash{}\allowbreak{}Revision\_\allowbreak{}informe.md}, byte a byte idéntica a Revision\_informe.md.
+\item \textbf{Tabla contrastada:} Trazabilidad/LAFROX-Trazabilidad-Informe1-Consolidada.md, 195 filas.
+\item \textbf{Método:} se leyó cada viñeta del informe (identificada por su línea, «L») y se buscó la fila que la responde. Luego se hizo el recorrido inverso: cada fila debe provenir de una viñeta real del informe y reproducirla con fidelidad.
+\item \textbf{Alcance:} se contrastan las observaciones (primera columna). No se auditó si cada respuesta es verdadera en el subdocumento actual.
+\end{itemize}
+
+Leyenda: \textbf{OK} coincide · \textbf{Parcial} coincide en parte (falta un elemento de la viñeta) · \textbf{Sin respuesta} ninguna fila la responde.\par\medskip
+
+\InformeSeccion{Resultado general}{Resultado general}
+
+\begin{itemize}
+\item \textbf{Recorrido inverso:} las 195 filas provienen de puntos reales del informe. No hay observaciones inventadas ni atribuidas al subdocumento equivocado.
+\item \textbf{Recorrido directo:} de las viñetas del informe, quedan \textbf{4 sin ninguna fila} y \textbf{10 respondidas solo en parte}; la mayoría pertenece al apartado GENERAL. Además, el SD1 y el SD13 omiten sus valoraciones «OK», que el SD2–SD5 sí conservan.
+\item \textbf{Fidelidad del texto:} \textbf{1 fila cambia el sentido} de la viñeta (SD5-06) y \textbf{2 filas ponen entre comillas frases que no son literales} (SD3-13 y SD3-36).
+\item \textbf{Páginas del SD4:} las filas SD4 citan páginas («pp. 9–14») de un PDF de revisión que no está en el repositorio. No se pueden cotejar contra el Markdown.
+\end{itemize}
+
+\InformeSeccion{1. GENERAL (L5–L45)}{1. GENERAL (L5–L45)}
+
+\Needspace{9\baselineskip}
+{\LFXcuerpotabla
+\setlength{\LTpre}{12pt}\setlength{\LTpost}{16pt}
+\begin{longtable}{F{0.10} F{0.34} F{0.16} F{0.40}}
+\caption{Contraste de observaciones generales}\label{tab:revision-trazabilidad-1}\\[2pt]
+\LFXtopruleoriginal \cab{L} & \cab{Punto del informe} & \cab{Fila(s)} & \cab{Resultado} \\ \midrule
+\endfirsthead
+\multicolumn{1}{@{}l@{}}{\makebox[0pt][l]{\fontsize{9pt}{10.5pt}\selectfont\color{lafroxGris}Tabla 1 --- continuación}}\\[3pt]
+\LFXtopruleoriginal \cab{L} & \cab{Punto del informe} & \cab{Fila(s)} & \cab{Resultado} \\ \midrule
+\endhead
+\midrule
+\multicolumn{1}{@{}l@{}}{\makebox[0pt][l]{\fontsize{9pt}{10.5pt}\selectfont\color{lafroxGris}continúa en la página siguiente}}\\
+\endfoot
+\bottomrule
+\endlastfoot
+15 & Sin logotipo, plantilla, paleta, encabezado ni pie & SD1-01, SD2-01, SD3-01, SD13-16, SD4-21 & Parcial El SD5 no tiene fila general \\
+\LFXfiletefila
+16 & 4.2: «LAFROX» no aparece y p. 114 dice «Empresa proponente: Pendiente de definir»; SD3 p. 27 «Razón social… pendiente» & SD3-01 (parte SD3); SD4-23 EF-02 (solo «Cambios v01→v02» de p. 114) & Parcial Ninguna fila del SD4 responde la ausencia de LAFROX ni «Empresa proponente: Pendiente de definir» \\
+\LFXfiletefila
+17 & Portadas rompen la ficción y se rotulan T-22 & SD1-01, SD2-02, SD3-01, SD13-17; SD4-22 (4.2 sin portada) & Parcial El SD5 no tiene fila \\
+\LFXfiletefila
+18 & Tres plantillas; Arial y A4 en 1, 2, 3, 5 y 13 & SD1-03, SD2-03, SD3-02, SD13-18, SD4-21 & Parcial El SD5 no tiene fila \\
+\LFXfiletefila
+19 & Hoja «Página en blanco a propósito» en 3, 4.1, 5 y 13 & SD3-01, SD13-19 & Parcial \textbf{4.1 y 5 sin fila} \\
+\LFXfiletefila
+23 & Sin índice, folio ni firma (Art. 53°) & SD1-02, SD2-04, SD3-02, SD4-22, SD13-20 & Parcial El SD5 no tiene fila \\
+\LFXfiletefila
+24 & T-6, T-12 y T-19 ausentes; T-11 solo invocado & SD1-07, SD3-18, SD13-12, SD4-37 & OK \\
+\LFXfiletefila
+25 & T-21: el documento resume y el formulario lista; en el 4.2, más de la mitad son tablas de listado & SD1-06, SD2-05, SD3-06 & Parcial \textbf{Ninguna fila del SD4 responde lo de «más de la mitad son tablas de listado»} \\
+\LFXfiletefila
+26 & A4 y cuerpo menor a 11 pt & SD1-03, SD2-03, SD3-02, SD13-18 & Parcial El SD5 no tiene fila \\
+\LFXfiletefila
+27 & SD2 sin lista de referencias & SD2-30 & OK \\
+\LFXfiletefila
+31 & 4.2 duplicado y título pegado & SD4-22 & OK \\
+\LFXfiletefila
+32 & Seis marcadores «[INSERTAR DIAGRAMA…]» & SD2-31 & OK \\
+\LFXfiletefila
+33 & Diagramas del 4.1 y figura del 4.2 ilegibles (1–2 pt) & SD4-01, SD4-21, SD4-25 & OK \\
+\LFXfiletefila
+34 & Cero figuras en 1, 2, 3, 5 y 13 & SD1-04, SD2-32, SD3-07, SD5-01, SD13-15 & OK \\
+\LFXfiletefila
+35 & Resaltado negro en el SD5 & SD5-17 & OK \\
+\LFXfiletefila
+36 & Columnas angostas que parten palabras, filas cortadas, títulos huérfanos, \textbf{páginas semivacías (21 en SD3 y 19 en 4.2)} & SD1-03, SD2-06, SD3-04 & Parcial \textbf{Títulos huérfanos y páginas semivacías no tienen fila} (ni en el SD3 ni en el SD4) \\
+\LFXfiletefila
+37 & Erratas: «próposito», «ventana de 320 minutos» (S3 p. 3), «160 camiones que no son trabajadores» (S3 p. 66), «cinco ambientes» (S1) & SD1-26 (ambientes); SD13-19 («con errata») & Sin respuesta \textbf{Las erratas del SD3 (320 minutos y 160 camiones) no tienen fila} \\
+\LFXfiletefila
+41–45 & Qué se espera (lee y firma, plantilla, diagramas, formularios, sin precios) & SD1-05, SD2-08, SD1-04, SD2-09, SD3-05, SD4-46, SD13-13… & OK Repite exigencias ya cubiertas arriba \\
+\end{longtable}}
+\vspace{7pt}
+
+\InformeSeccion{2. SUBDOCUMENTO 1 (L49–L115)}{2. SUBDOCUMENTO 1 (L49–L115)}
+
+\Needspace{9\baselineskip}
+{\LFXcuerpotabla
+\setlength{\LTpre}{12pt}\setlength{\LTpost}{16pt}
+\begin{longtable}{F{0.10} F{0.34} F{0.16} F{0.40}}
+\caption{Contraste de observaciones del Subdocumento 1}\label{tab:revision-trazabilidad-2}\\[2pt]
+\LFXtopruleoriginal \cab{L} & \cab{Punto del informe} & \cab{Fila} & \cab{Resultado} \\ \midrule
+\endfirsthead
+\multicolumn{1}{@{}l@{}}{\makebox[0pt][l]{\fontsize{9pt}{10.5pt}\selectfont\color{lafroxGris}Tabla 2 --- continuación}}\\[3pt]
+\LFXtopruleoriginal \cab{L} & \cab{Punto del informe} & \cab{Fila} & \cab{Resultado} \\ \midrule
+\endhead
+\midrule
+\multicolumn{1}{@{}l@{}}{\makebox[0pt][l]{\fontsize{9pt}{10.5pt}\selectfont\color{lafroxGris}continúa en la página siguiente}}\\
+\endfoot
+\bottomrule
+\endlastfoot
+59 & Revisión: sin T-6, sin figuras, rehacer & SD1-04, SD1-07 & OK \\
+\LFXfiletefila
+63 & Crítico: T-6 no entregado & SD1-07 & OK \\
+\LFXfiletefila
+64 & Dos casos; se exigen tres & SD1-08 & OK \\
+\LFXfiletefila
+65 & Faltan 9 de 11 campos & SD1-09 & OK \\
+\LFXfiletefila
+66 & Casos repiten criterios del caso; sin volúmenes & SD1-10 & OK \\
+\LFXfiletefila
+70 & «Más de una década» sin fundación, hitos ni cartera & SD1-11 & OK \\
+\LFXfiletefila
+71 & Sin líneas de negocio ni catálogo & SD1-12 & OK \\
+\LFXfiletefila
+72 & Misión, visión y ESG sobran & SD1-13 & OK \\
+\LFXfiletefila
+73 & Prosa de folleto & SD1-14 & OK \\
+\LFXfiletefila
+74 & \textbf{OK} orientación a la industria del caso & — & Sin respuesta Valoración positiva omitida \\
+\LFXfiletefila
+78 & Sin organigrama & SD1-15 & OK \\
+\LFXfiletefila
+79 & Dotación sin desglose; NOC 24×7 & SD1-16 & OK \\
+\LFXfiletefila
+80 & Tabla de equipo del SD12/T-8; certificaciones ajenas & SD1-17 & OK \\
+\LFXfiletefila
+81 & \textbf{OK} responsable único por dominio & — & Sin respuesta Valoración positiva omitida \\
+\LFXfiletefila
+82 & \textbf{OK} 56 meses y 36 de operación & — & Sin respuesta Valoración positiva omitida \\
+\LFXfiletefila
+86 & «Alineado» frente a «certificado» & SD1-18 & OK \\
+\LFXfiletefila
+87 & AWS sin nivel ni vigencia & SD1-19 & OK \\
+\LFXfiletefila
+88 & Sin alianzas de hardware ni conectividad & SD1-20 & OK \\
+\LFXfiletefila
+89 & Laboratorio con jaulas de Faraday & SD1-21 & OK \\
+\LFXfiletefila
+93 & Lista de normas, no gobierno & SD1-22 & OK \\
+\LFXfiletefila
+94 & Conocimiento orientado al cliente & SD1-23 & OK \\
+\LFXfiletefila
+95 & \textbf{OK} riesgo de conocimiento tácito & — & Sin respuesta Valoración positiva omitida \\
+\LFXfiletefila
+99 & Capacidad instalada = nube contratable & SD1-24 & OK \\
+\LFXfiletefila
+100 & \textbf{OK} PREPROD y DR con prueba semestral & — & Sin respuesta Valoración positiva omitida \\
+\LFXfiletefila
+104 & RTO/RPO contradictorios & SD1-25 & OK \\
+\LFXfiletefila
+105 & Cinco ambientes, seis listados & SD1-26 & OK \\
+\LFXfiletefila
+106 & Microservicios serverless frente a monolito & SD1-27 & OK \\
+\LFXfiletefila
+107 & Evitar centros de datos on-premise & SD1-28 & OK \\
+\end{longtable}}
+\vspace{7pt}
+
+SD1-01 a SD1-06 responden puntos de GENERAL aplicados al SD1. Las cinco valoraciones «OK» no tienen fila; el SD2, SD3, SD4 y SD5 sí registran las suyas.\par\medskip
+
+\InformeSeccion{3. SUBDOCUMENTO 2 (L119–L178)}{3. SUBDOCUMENTO 2 (L119–L178)}
+
+\Needspace{9\baselineskip}
+{\LFXcuerpotabla
+\setlength{\LTpre}{12pt}\setlength{\LTpost}{16pt}
+\begin{longtable}{F{0.10} F{0.34} F{0.16} F{0.40}}
+\caption{Contraste de observaciones del Subdocumento 2}\label{tab:revision-trazabilidad-3}\\[2pt]
+\LFXtopruleoriginal \cab{L} & \cab{Punto del informe} & \cab{Fila} & \cab{Resultado} \\ \midrule
+\endfirsthead
+\multicolumn{1}{@{}l@{}}{\makebox[0pt][l]{\fontsize{9pt}{10.5pt}\selectfont\color{lafroxGris}Tabla 3 --- continuación}}\\[3pt]
+\LFXtopruleoriginal \cab{L} & \cab{Punto del informe} & \cab{Fila} & \cab{Resultado} \\ \midrule
+\endhead
+\midrule
+\multicolumn{1}{@{}l@{}}{\makebox[0pt][l]{\fontsize{9pt}{10.5pt}\selectfont\color{lafroxGris}continúa en la página siguiente}}\\
+\endfoot
+\bottomrule
+\endlastfoot
+133 & Crítico: no hay resumen ejecutivo & SD2-10 & OK \\
+\LFXfiletefila
+137 & \textbf{OK} AS-IS de siete fases & SD2-11 & OK \\
+\LFXfiletefila
+138 & 2.3 y 2.4 duplicadas; paráfrasis del Cap. 4 & SD2-12 & OK \\
+\LFXfiletefila
+139 & 7,8 \% en preventa; 588/mes mal calculado & SD2-13 & OK \\
+\LFXfiletefila
+140 & Tres problemas del Cap. 19 sin separar & SD2-14 & OK \\
+\LFXfiletefila
+141 & Sin datos externos; vacío del cross-docking & SD2-15 & OK \\
+\LFXfiletefila
+145 & \textbf{OK} marco normativo & SD2-16 & OK \\
+\LFXfiletefila
+146 & Marco legal escrito como solución & SD2-17 & OK \\
+\LFXfiletefila
+147 & Frase de evaluador & SD2-18 & OK \\
+\LFXfiletefila
+148 & Estacionalidad solo como prohibición & SD2-19 & OK \\
+\LFXfiletefila
+149 & Doce materias del 16.2 & SD2-20 & OK \\
+\LFXfiletefila
+150 & 99,95 \% «Tier III» frente a Tier II & SD2-21 & OK \\
+\LFXfiletefila
+154 & \textbf{OK} mapa de once actores & SD2-22 & OK \\
+\LFXfiletefila
+155 & Faltan ocho actores & SD2-23 & OK (los ocho coinciden) \\
+\LFXfiletefila
+156 & 42 conductores en vez de 84 & SD2-24 & OK \\
+\LFXfiletefila
+157 & Tabla, no matriz & SD2-25 & OK \\
+\LFXfiletefila
+158 & Contradicciones entre entrevistados & SD2-26 & OK \\
+\LFXfiletefila
+159 & Promesa de 24 h sin arbitrar & SD2-27 & OK \\
+\LFXfiletefila
+163 & Supuestos = restricciones copiadas & SD2-28 & OK \\
+\LFXfiletefila
+164 & Sin supuestos propios ni impacto & SD2-29 & OK \\
+\LFXfiletefila
+168 & Citas sin lista de referencias & SD2-30 & OK \\
+\LFXfiletefila
+169 & IA sin supervisión: marcadores & SD2-07, SD2-31 & OK \\
+\LFXfiletefila
+170 & Cero figuras en 23 páginas & SD2-32 & OK \\
+\end{longtable}}
+\vspace{7pt}
+
+SD2-01 a SD2-09 responden puntos de GENERAL. \textbf{Las 23 viñetas del SD2 están cubiertas.}\par\medskip
+
+\InformeSeccion{4. SUBDOCUMENTO 3 (L182–L265)}{4. SUBDOCUMENTO 3 (L182–L265)}
+
+\Needspace{9\baselineskip}
+{\LFXcuerpotabla
+\setlength{\LTpre}{12pt}\setlength{\LTpost}{16pt}
+\begin{longtable}{F{0.10} F{0.34} F{0.16} F{0.40}}
+\caption{Contraste de observaciones del Subdocumento 3}\label{tab:revision-trazabilidad-4}\\[2pt]
+\LFXtopruleoriginal \cab{L} & \cab{Punto del informe} & \cab{Fila} & \cab{Resultado} \\ \midrule
+\endfirsthead
+\multicolumn{1}{@{}l@{}}{\makebox[0pt][l]{\fontsize{9pt}{10.5pt}\selectfont\color{lafroxGris}Tabla 4 --- continuación}}\\[3pt]
+\LFXtopruleoriginal \cab{L} & \cab{Punto del informe} & \cab{Fila} & \cab{Resultado} \\ \midrule
+\endhead
+\midrule
+\multicolumn{1}{@{}l@{}}{\makebox[0pt][l]{\fontsize{9pt}{10.5pt}\selectfont\color{lafroxGris}continúa en la página siguiente}}\\
+\endfoot
+\bottomrule
+\endlastfoot
+192 & Rehacer: 138 pp., 87 \% tablas; sin implementación, implantación ni operación & SD3-06 & OK \\
+\LFXfiletefila
+196 & Crítico: sin modelo conceptual ni figuras & SD3-07 & OK \\
+\LFXfiletefila
+197 & Solución en dos páginas; depende del SD4 & SD3-08 & OK \\
+\LFXfiletefila
+198 & Matriz de 19 filas, \textbf{sin paquete EDT ni identificador de prueba} & SD3-09 & Parcial \textbf{La fila omite «ni identificador de prueba» y la respuesta solo trata la EDT} \\
+\LFXfiletefila
+199 & \textbf{OK} tres problemas separados & SD3-10 & OK \\
+\LFXfiletefila
+203 & \textbf{OK} exclusiones fieles; «Lo que no haremos» & SD3-11 & OK \\
+\LFXfiletefila
+204 & Objeción de la gerenta; dependencias; hito de septiembre de 2026 & SD3-12 & OK \\
+\LFXfiletefila
+205 & Marcha blanca de la Etapa 2, meses 13–20 & SD3-13 & OK (cita no literal, ver §8) \\
+\LFXfiletefila
+206 & Etapas no cuadran (OTIF/fill rate; EDI meses 10–16) & SD3-14 & OK \\
+\LFXfiletefila
+207 & Exclusiones y restricciones infladas & SD3-15 & OK \\
+\LFXfiletefila
+208 & Supuestos sin ID ni validación; S-41 & SD3-16 & OK \\
+\LFXfiletefila
+209 & Sin visión de arquitectura empresarial & SD3-17 & OK \\
+\LFXfiletefila
+213 & Crítico: T-12 no entregado & SD3-18 & OK \\
+\LFXfiletefila
+214 & Catálogo funcional = lista de nombres & SD3-19 & OK \\
+\LFXfiletefila
+215 & Prioridad no discrimina (80/90) & SD3-20 & OK \\
+\LFXfiletefila
+216 & Saltos de numeración & SD3-21 & OK \\
+\LFXfiletefila
+217 & RNF sin método de verificación & SD3-22 & OK \\
+\LFXfiletefila
+218 & RF-02.05d/e y RF-15.05 inexistentes & SD3-23 & OK \\
+\LFXfiletefila
+222–223 & Implementación no existe (D54, D49, IaC, 70 \%) & SD3-24 & OK \\
+\LFXfiletefila
+227 & Implantación no existe; oleadas y migración en tabla & SD3-25 & OK \\
+\LFXfiletefila
+228 & Reversión sin tiempo para 05:30–07:00 & SD3-26 & OK \\
+\LFXfiletefila
+229 & Sin convivencia con el papel & SD3-27 & OK \\
+\LFXfiletefila
+233 & Operación no existe; SRE una vez & SD3-28 & OK \\
+\LFXfiletefila
+234 & Mesa de ayuda 08:00–20:00 frente a 04:00–22:00 & SD3-29 & OK \\
+\LFXfiletefila
+235 & \textbf{OK} RTO/RPO coherentes & SD3-30 & OK \\
+\LFXfiletefila
+239 & \textbf{OK} tabla de grupos de interés & SD3-31 & OK \\
+\LFXfiletefila
+240 & Faltan seis actores & SD3-32 & OK (los seis coinciden) \\
+\LFXfiletefila
+241 & Planificador en «C» & SD3-33 & OK \\
+\LFXfiletefila
+245 & \textbf{OK} 16 criterios; el N.° 16 sin verificación & SD3-34 & OK \\
+\LFXfiletefila
+246 & \textbf{OK} 16 decisiones; WMS por estrangulamiento; \textbf{registro de vacíos detecta errores de las Bases}; enterrado en tablas & SD3-35 & Parcial La fila no recoge las valoraciones positivas del estrangulamiento (D14) ni del registro de vacíos \\
+\LFXfiletefila
+247 & Excursión térmica contradictoria & SD3-36 & OK (cita no literal, ver §8) \\
+\LFXfiletefila
+248 & Precio entre pedido y despacho & SD3-37 & OK \\
+\LFXfiletefila
+249 & Promesa de 24 h «verificable» & SD3-38 & OK \\
+\LFXfiletefila
+250 & Crítico: precio en D45 & SD3-39 & OK \\
+\LFXfiletefila
+254 & Nombres de archivo como fuente & SD3-40 & OK \\
+\LFXfiletefila
+255 & Notas de corrección & SD3-41 & OK \\
+\LFXfiletefila
+256 & Dos voces & SD3-42 & OK \\
+\LFXfiletefila
+257 & Decisiones citadas antes; códigos; párrafo pegado & SD3-43 & OK \\
+\LFXfiletefila
+261–265 & Qué se espera (25–35 pp., T-12, matriz, regla térmica, sin precio) & SD3-06, 09, 18, 36, 39 & OK \\
+\end{longtable}}
+\vspace{7pt}
+
+SD3-01 a SD3-05 responden puntos de GENERAL. \textbf{No hay fila para las erratas del SD3 (L37) ni para sus 21 páginas semivacías (L36).}\par\medskip
+
+\InformeSeccion{5. SUBDOCUMENTO 4.1 (L269–L320)}{5. SUBDOCUMENTO 4.1 (L269–L320)}
+
+\Needspace{9\baselineskip}
+{\LFXcuerpotabla
+\setlength{\LTpre}{12pt}\setlength{\LTpost}{16pt}
+\begin{longtable}{F{0.10} F{0.34} F{0.16} F{0.40}}
+\caption{Contraste de observaciones del Subdocumento 4.1}\label{tab:revision-trazabilidad-5}\\[2pt]
+\LFXtopruleoriginal \cab{L} & \cab{Punto del informe} & \cab{Fila} & \cab{Resultado} \\ \midrule
+\endfirsthead
+\multicolumn{1}{@{}l@{}}{\makebox[0pt][l]{\fontsize{9pt}{10.5pt}\selectfont\color{lafroxGris}Tabla 5 --- continuación}}\\[3pt]
+\LFXtopruleoriginal \cab{L} & \cab{Punto del informe} & \cab{Fila} & \cab{Resultado} \\ \midrule
+\endhead
+\midrule
+\multicolumn{1}{@{}l@{}}{\makebox[0pt][l]{\fontsize{9pt}{10.5pt}\selectfont\color{lafroxGris}continúa en la página siguiente}}\\
+\endfoot
+\bottomrule
+\endlastfoot
+279 & Sin correlación entre texto y diagramas & SD4-01 & OK \\
+\LFXfiletefila
+283 & 14 diagramas sin leyenda, sin cita, ilegibles & SD4-01, SD4-21 & OK \\
+\LFXfiletefila
+284 & Trece recorridos por actor & SD4-02 & OK \\
+\LFXfiletefila
+285 & 11 actores frente a 13 & SD4-03 & OK \\
+\LFXfiletefila
+286 & Sin matriz requisito → módulo → capa & SD4-04 & OK \\
+\LFXfiletefila
+287 & Ambientes en una línea & SD4-05 & OK \\
+\LFXfiletefila
+288 & SOLID ausente; patrones declarativos & SD4-06 & OK \\
+\LFXfiletefila
+289 & Seis vistas; falta la de procesos & SD4-07 & OK \\
+\LFXfiletefila
+293 & \textbf{OK} monolito modular & SD4-08 & OK \\
+\LFXfiletefila
+294 & Comparación de una frase; ADR en 4.2 con precios & SD4-09 (+SD4-46 precios) & OK \\
+\LFXfiletefila
+295 & Doce módulos sin listar & SD4-10 & OK \\
+\LFXfiletefila
+296 & Sin límites, orquestación ni secuencias & SD4-11 & OK \\
+\LFXfiletefila
+297 & TOGAF solo mencionado & SD4-12 & OK \\
+\LFXfiletefila
+298 & Modelo de dominio en viñetas & SD4-13 & OK \\
+\LFXfiletefila
+302 & TTL 8 h frente a 24 h & SD4-14 & OK \\
+\LFXfiletefila
+303 & API Gateway sin respaldo local & SD4-15 & OK \\
+\LFXfiletefila
+304 & Excursión: bloqueo automático frente a conductor & SD4-16 & OK \\
+\LFXfiletefila
+305 & Etapas no coinciden con el SD3 & SD4-17 & OK \\
+\LFXfiletefila
+306 & Portales externos por VPN & SD4-18 & OK \\
+\LFXfiletefila
+310 & Portada «Lógica y Física», solo lógica & SD4-19 & OK \\
+\LFXfiletefila
+311 & Códigos internos sin documento & SD4-20 & OK \\
+\LFXfiletefila
+312 & Plantilla distinta & SD4-21 & OK \\
+\end{longtable}}
+\vspace{7pt}
+
+\textbf{Las 21 viñetas del 4.1 están cubiertas.} Lo único que falta del 4.1 es la hoja «Página en blanco a propósito» del apartado GENERAL (L19).\par\medskip
+
+\InformeSeccion{6. SUBDOCUMENTO 4.2 (L324–L399)}{6. SUBDOCUMENTO 4.2 (L324–L399)}
+
+\Needspace{9\baselineskip}
+{\LFXcuerpotabla
+\setlength{\LTpre}{12pt}\setlength{\LTpost}{16pt}
+\begin{longtable}{F{0.10} F{0.34} F{0.16} F{0.40}}
+\caption{Contraste de observaciones del Subdocumento 4.2}\label{tab:revision-trazabilidad-6}\\[2pt]
+\LFXtopruleoriginal \cab{L} & \cab{Punto del informe} & \cab{Fila} & \cab{Resultado} \\ \midrule
+\endfirsthead
+\multicolumn{1}{@{}l@{}}{\makebox[0pt][l]{\fontsize{9pt}{10.5pt}\selectfont\color{lafroxGris}Tabla 6 --- continuación}}\\[3pt]
+\LFXtopruleoriginal \cab{L} & \cab{Punto del informe} & \cab{Fila} & \cab{Resultado} \\ \midrule
+\endhead
+\midrule
+\multicolumn{1}{@{}l@{}}{\makebox[0pt][l]{\fontsize{9pt}{10.5pt}\selectfont\color{lafroxGris}continúa en la página siguiente}}\\
+\endfoot
+\bottomrule
+\endlastfoot
+334 & Duplicado, sin portada, comentarios de IA, una figura, precios & SD4-22, 23, 25, 46 & OK \\
+\LFXfiletefila
+338 & p. 56 ADR-15 «Si se prefiere (B)…» & SD4-23 & OK \\
+\LFXfiletefila
+339 & p. 114 «Cambios v01 → v02» y «Empresa proponente: Pendiente de definir» & SD4-23 & Parcial Ver L16 \\
+\LFXfiletefila
+340 & p. 32 hallazgo D1 pendiente & SD4-23 & OK \\
+\LFXfiletefila
+341 & Notas de revisión; «3 brokers en 3 AZ» & SD4-23 & Parcial La respuesta es genérica; «3 brokers» no se nombra \\
+\LFXfiletefila
+342 & Documentos inexistentes (v06, v6.2…) y códigos (L577, S14…) & SD4-20, SD4-23 & Parcial EL-20 corresponde al 4.1; para el 4.2 solo hay una mención en «Qué falta» \\
+\LFXfiletefila
+346 & Emplazamiento de seis filas; 36 componentes & SD4-24 & OK \\
+\LFXfiletefila
+347 & Figura única ilegible y sin cita & SD4-25 & OK \\
+\LFXfiletefila
+348 & «En texto, la vista…» & SD4-26 & OK \\
+\LFXfiletefila
+349 & BI en catorce páginas & SD4-27 & OK \\
+\LFXfiletefila
+353 & \textbf{OK} 27 implementos & SD4-28 & OK \\
+\LFXfiletefila
+354 & Cantidades sin número; caída y ciclo de vida & SD4-29 & OK \\
+\LFXfiletefila
+355 & Sobredimensionamiento de terminales, impresoras y POS & SD4-30 & OK \\
+\LFXfiletefila
+356 & Frío en 18 camiones; alerta al volver & SD4-31 & OK \\
+\LFXfiletefila
+357 & Cobertura inalámbrica en una frase & SD4-32 & OK \\
+\LFXfiletefila
+361 & Sala de 173 m² sobredimensionada & SD4-33 & OK \\
+\LFXfiletefila
+362 & Tier II frente a 99,95 \% & SD4-33 & OK \\
+\LFXfiletefila
+363 & Sin cálculo eléctrico/térmico, plano ni racks & SD4-34 & OK \\
+\LFXfiletefila
+364 & Remisión circular a «Seguridad §12» & SD4-47 & OK \\
+\LFXfiletefila
+365 & Gabinetes de borde sin especificación & SD4-35 & OK \\
+\LFXfiletefila
+366 & DR sujeta a aprobación; RTO de 24–72 h & SD4-36 & OK \\
+\LFXfiletefila
+367 & T-11 no adjunto & SD4-37 & OK \\
+\LFXfiletefila
+371 & \textbf{OK} seguridad Zero Trust & SD4-38 & OK \\
+\LFXfiletefila
+372 & \textbf{OK} SPOF y 3-2-1-1-0 & SD4-38 & OK \\
+\LFXfiletefila
+373 & Identidad sin conexión sin resolver & SD4-39 & OK \\
+\LFXfiletefila
+374 & Sin puerta de enlace local & SD4-39 & OK \\
+\LFXfiletefila
+375 & Funciones no disponibles sin conexión (RT-03.13) & SD4-39 & OK \\
+\LFXfiletefila
+376 & Ceph sobre RAID; 98 \% de llenado; \textbf{100.000 IOPS para 840} & SD4-40 & Parcial El título de la fila no menciona el sobredimensionamiento de IOPS \\
+\LFXfiletefila
+377 & DTE diferido & SD4-41 & OK \\
+\LFXfiletefila
+378 & Dotación frente a cuatro TI & SD4-42 & OK \\
+\LFXfiletefila
+379 & Sin red, despliegue ni zonas & SD4-43 & OK \\
+\LFXfiletefila
+383 & \textbf{OK} TPS derivados & SD4-48 & OK \\
+\LFXfiletefila
+384 & Salto de 28 a 35 y ×3; tres regímenes & SD4-44 & OK \\
+\LFXfiletefila
+385–386 & Dimensiones sin derivación o ausentes & SD4-45 & OK \\
+\LFXfiletefila
+390 & \textbf{OK} quince ADR en formato MADR & SD4-49 & OK \\
+\LFXfiletefila
+391 & Crítico: ADR con precios & SD4-46 & OK \\
+\LFXfiletefila
+395–399 & Qué se espera (un archivo, diagramas, emplazamiento, sala, 28 vehículos) & SD4-22, 26, 24, 33/34, 31 & OK \\
+\end{longtable}}
+\vspace{7pt}
+
+\InformeSeccion{7. SUBDOCUMENTO 5 (L403–L460)}{7. SUBDOCUMENTO 5 (L403–L460)}
+
+\Needspace{9\baselineskip}
+{\LFXcuerpotabla
+\setlength{\LTpre}{12pt}\setlength{\LTpost}{16pt}
+\begin{longtable}{F{0.10} F{0.34} F{0.16} F{0.40}}
+\caption{Contraste de observaciones del Subdocumento 5}\label{tab:revision-trazabilidad-7}\\[2pt]
+\LFXtopruleoriginal \cab{L} & \cab{Punto del informe} & \cab{Fila} & \cab{Resultado} \\ \midrule
+\endfirsthead
+\multicolumn{1}{@{}l@{}}{\makebox[0pt][l]{\fontsize{9pt}{10.5pt}\selectfont\color{lafroxGris}Tabla 7 --- continuación}}\\[3pt]
+\LFXtopruleoriginal \cab{L} & \cab{Punto del informe} & \cab{Fila} & \cab{Resultado} \\ \midrule
+\endhead
+\midrule
+\multicolumn{1}{@{}l@{}}{\makebox[0pt][l]{\fontsize{9pt}{10.5pt}\selectfont\color{lafroxGris}continúa en la página siguiente}}\\
+\endfoot
+\bottomrule
+\endlastfoot
+415 & Crítico: sin modelo de datos; quince bases & SD5-01 & OK \\
+\LFXfiletefila
+416 & Crítico: sin diccionario & SD5-02 & OK \\
+\LFXfiletefila
+417 & Consulta del proveedor y de la autoridad sanitaria (Cap. 19) & SD5-03 & OK \\
+\LFXfiletefila
+421 & Tabla con palabras partidas; sin análisis en prosa & SD5-04 & Parcial La fila omite las palabras partidas \\
+\LFXfiletefila
+422 & Decisión 16.1 \#18 inexistente & SD5-05 & OK \\
+\LFXfiletefila
+426 & Alcance por migrar con valores del Cap. 15 y casos de saneamiento propios & SD5-06 & Advertencia \textbf{Sentido cambiado} (ver §8) \\
+\LFXfiletefila
+427 & Metodología = RT reescritos; sin volumen, herramientas, tiempos, ventana ni responsables & SD5-07 & OK \\
+\LFXfiletefila
+431 & \textbf{OK} índices, partición y orden & SD5-08 & OK \\
+\LFXfiletefila
+432 & «\textasciitilde{}105 TPS base…» ininteligible & SD5-09 & OK \\
+\LFXfiletefila
+433 & Caché TTL 8 h bodega / 14 h reparto & SD5-10 & OK \\
+\LFXfiletefila
+437 & \textbf{OK} separación, latencias, retención, ISO 25012 & SD5-11 & OK \\
+\LFXfiletefila
+438 & \textbf{OK} desajuste RT-05.10/RT-16.10 & SD5-12 & OK \\
+\LFXfiletefila
+439 & Sin modelo de explotación; esquema estrella sin dibujar & SD5-13 & OK \\
+\LFXfiletefila
+440 & RT-16.08 frente a RT-16.20 & SD5-14 & OK \\
+\LFXfiletefila
+444 & Timbre diferido; sin guía de papel & SD5-15 & OK \\
+\LFXfiletefila
+445 & \textbf{OK} evidencia por receptor; falta acuse legal & SD5-16 & OK \\
+\LFXfiletefila
+449 & Resaltado negro & SD5-17 & OK \\
+\LFXfiletefila
+450 & Línea de metadatos & SD5-18 & OK \\
+\LFXfiletefila
+451 & Doble numeración y códigos internos & SD5-19 & OK \\
+\LFXfiletefila
+452 & Siglas sin definir (FID) & SD5-20 & OK \\
+\end{longtable}}
+\vspace{7pt}
+
+\textbf{Las 20 viñetas del SD5 están cubiertas, una con el sentido cambiado.} El SD5 no tiene filas para los puntos de GENERAL que también lo nombraban (L15, L17, L18, L19, L23, L26), a diferencia del SD1, SD2, SD3 y SD13.\par\medskip
+
+\InformeSeccion{8. SUBDOCUMENTO 13 (L464–L504)}{8. SUBDOCUMENTO 13 (L464–L504)}
+
+\Needspace{9\baselineskip}
+{\LFXcuerpotabla
+\setlength{\LTpre}{12pt}\setlength{\LTpost}{16pt}
+\begin{longtable}{F{0.10} F{0.34} F{0.16} F{0.40}}
+\caption{Contraste de observaciones del Subdocumento 13}\label{tab:revision-trazabilidad-8}\\[2pt]
+\LFXtopruleoriginal \cab{L} & \cab{Punto del informe} & \cab{Fila} & \cab{Resultado} \\ \midrule
+\endfirsthead
+\multicolumn{1}{@{}l@{}}{\makebox[0pt][l]{\fontsize{9pt}{10.5pt}\selectfont\color{lafroxGris}Tabla 8 --- continuación}}\\[3pt]
+\LFXtopruleoriginal \cab{L} & \cab{Punto del informe} & \cab{Fila} & \cab{Resultado} \\ \midrule
+\endhead
+\midrule
+\multicolumn{1}{@{}l@{}}{\makebox[0pt][l]{\fontsize{9pt}{10.5pt}\selectfont\color{lafroxGris}continúa en la página siguiente}}\\
+\endfoot
+\bottomrule
+\endlastfoot
+474 & Revisión: tres no superan el Art. 30°; sin siete elementos; sin T-19; precios & SD13-01/02/05, 06–09, 12, 13 & OK \\
+\LFXfiletefila
+478 & \textbf{OK} el anexo descarta bien los requisitos & — & Sin respuesta Valoración positiva omitida \\
+\LFXfiletefila
+479 & Innovación 1 = criterio N.° 1 / RT-05.23 & SD13-01 & OK (cita literal) \\
+\LFXfiletefila
+480 & Innovación 3 = RT-03.10–13 & SD13-02 & OK (cita literal) \\
+\LFXfiletefila
+481 & Innovación 2: olas y FEFO estándar & SD13-03 & OK (cita literal) \\
+\LFXfiletefila
+482 & Innovación 4: restricción N.° 9 y flujo de caja & SD13-04 & OK (cita literal) \\
+\LFXfiletefila
+483 & Innovación 5: WhatsApp sin internet; no está en SD3 ni 4.1 & SD13-05 & OK \\
+\LFXfiletefila
+487 & Cuatro viñetas por innovación & SD13-06 a 09 & OK (contexto de las filas siguientes) \\
+\LFXfiletefila
+488 & Faltan madurez, incorporación, impacto y riesgo & SD13-06, 07, 08, 09 & OK \\
+\LFXfiletefila
+489 & «Investigación adicional: Sí» & SD13-10 & OK (cita literal) \\
+\LFXfiletefila
+490 & Indicadores sin momento ni línea base & SD13-11 & OK \\
+\LFXfiletefila
+494 & Crítico: T-19 no entregado & SD13-12 & OK \\
+\LFXfiletefila
+495 & Crítico: precios en dólares & SD13-13 & OK \\
+\LFXfiletefila
+496 & Fuentes sin cita; EPCIS 1.2 & SD13-14 & OK \\
+\LFXfiletefila
+497 & Siete páginas sin figura & SD13-15 & OK (cita literal) \\
+\end{longtable}}
+\vspace{7pt}
+
+SD13-16 a SD13-20 citan correctamente L15, L17, L18, L19 y L23. SD13-21 a SD13-23 citan L513, L510 y L511.\par\medskip
+
+\InformeSeccion{9. CONSIDERACIONES TRANSVERSALES (L508–L514)}{9. CONSIDERACIONES TRANSVERSALES (L508–L514)}
+
+\Needspace{9\baselineskip}
+{\LFXcuerpotabla
+\setlength{\LTpre}{12pt}\setlength{\LTpost}{16pt}
+\begin{longtable}{F{0.10} F{0.34} F{0.16} F{0.40}}
+\caption{Contraste de consideraciones transversales}\label{tab:revision-trazabilidad-9}\\[2pt]
+\LFXtopruleoriginal \cab{L} & \cab{Punto del informe} & \cab{Fila(s)} & \cab{Resultado} \\ \midrule
+\endfirsthead
+\multicolumn{1}{@{}l@{}}{\makebox[0pt][l]{\fontsize{9pt}{10.5pt}\selectfont\color{lafroxGris}Tabla 9 --- continuación}}\\[3pt]
+\LFXtopruleoriginal \cab{L} & \cab{Punto del informe} & \cab{Fila(s)} & \cab{Resultado} \\ \midrule
+\endhead
+\midrule
+\multicolumn{1}{@{}l@{}}{\makebox[0pt][l]{\fontsize{9pt}{10.5pt}\selectfont\color{lafroxGris}continúa en la página siguiente}}\\
+\endfoot
+\bottomrule
+\endlastfoot
+510 & Contradicciones entre subdocumentos (RTO/RPO, serverless, Tier, excursión, caché 8 h) & SD1-25, SD1-27, SD2-21, SD3-36, SD4-14, SD4-16, SD5-10, SD13-22 & OK Repartida en cada subdocumento \\
+\LFXfiletefila
+511 & No se puede seguir un requerimiento hasta un componente & SD3-09, SD4-04, SD4-24, SD5-01, SD13-23 & OK \\
+\LFXfiletefila
+512 & Fundamentación ingenieril: decisiones correctas, pero enterradas en tablas; sin diagramas explicados, cálculos a la vista ni análisis en prosa & — & Sin respuesta \textbf{Ninguna fila la recoge como tal}; se responde solo de forma indirecta (SD3-06, SD3-35, SD4-44/45…) \\
+\LFXfiletefila
+513 & Cuatro indicios de IA; desde el Informe 2, puntaje 0 & SD2-07, SD3-03, SD4-23, SD13-21 & Parcial El SD1 y el SD5 no tienen fila de indicios de IA \\
+\LFXfiletefila
+514 & Compliance: precios en la Oferta Técnica & SD1-06, SD2-09, SD3-05, SD3-39, SD4-46, SD13-13 & OK \\
+\end{longtable}}
+\vspace{7pt}
+
+\InformeSeccion{10. Fidelidad del texto de las observaciones}{10. Fidelidad del texto de las observaciones}
+
+\Needspace{9\baselineskip}
+{\LFXcuerpotabla
+\setlength{\LTpre}{12pt}\setlength{\LTpost}{16pt}
+\begin{longtable}{F{0.12} F{0.22} F{0.33} F{0.33}}
+\caption{Fidelidad textual de las observaciones}\label{tab:revision-trazabilidad-10}\\[2pt]
+\LFXtopruleoriginal \cab{Fila} & \cab{Problema} & \cab{Informe (literal)} & \cab{Tabla} \\ \midrule
+\endfirsthead
+\multicolumn{1}{@{}l@{}}{\makebox[0pt][l]{\fontsize{9pt}{10.5pt}\selectfont\color{lafroxGris}Tabla 10 --- continuación}}\\[3pt]
+\LFXtopruleoriginal \cab{Fila} & \cab{Problema} & \cab{Informe (literal)} & \cab{Tabla} \\ \midrule
+\endhead
+\midrule
+\multicolumn{1}{@{}l@{}}{\makebox[0pt][l]{\fontsize{9pt}{10.5pt}\selectfont\color{lafroxGris}continúa en la página siguiente}}\\
+\endfoot
+\bottomrule
+\endlastfoot
+\textbf{SD5-06} & \textbf{Sentido cambiado.} El informe constata (sin «OK», pero sin reparo) que el alcance de migración y los casos de saneamiento están presentes. La fila lo convierte en una exigencia («Incorporar…»). & L426: «Alcance por migrar con los valores del Cap. 15 y casos de saneamiento propios del caso (lotes en texto libre, duplicados de cliente, saldos de envases).» & «Incorporar alcance histórico y saneamiento: lotes libres, clientes duplicados y saldos de envases.» \\
+\LFXfiletefila
+SD3-13 & Las comillas no contienen una cita literal. & L205: «Marcha blanca de la Etapa 2… Meses 13–20» & «marcha blanca Etapa 2, meses 13–20» \\
+\LFXfiletefila
+SD3-36 & Las comillas no contienen una cita literal. & L247: «lo decide el conductor» / «la adopta la autoridad de calidad» & «la decide el conductor» / «la adopta Calidad» \\
+\LFXfiletefila
+SD4-01 a SD4-49 & Las páginas («pp. 9–14») remiten a un PDF de revisión que no está en el repositorio; no son cotejables aquí. El texto de cada observación sí coincide con su viñeta. & — & — \\
+\end{longtable}}
+\vspace{7pt}
+
+Todas las demás filas parafrasean fielmente su viñeta. Las comillas de SD2-10, SD2-18, SD2-21, SD2-24, SD2-31, SD3-01, SD3-33, SD3-37, SD3-39, SD3-40, SD3-41, SD13-01 a 04, SD13-10 y SD13-15 coinciden con el informe.\par\medskip
+
+\InformeSeccion{11. Lista de brechas (decisión pendiente del equipo)}{11. Lista de brechas (decisión pendiente del equipo)}
+
+Ninguna se corrigió en la tabla, porque añadir filas exige redactar respuestas nuevas y corregir SD5-06 modifica una fuente.\par\medskip
+
+\begin{enumerate}
+\item \textbf{SD3 — erratas} «ventana de 320 minutos» (p. 3) y «160 camiones que no son trabajadores» (p. 66) (L37): sin fila.
+\item \textbf{SD3 y SD4 — títulos huérfanos y páginas semivacías} (21 en SD3 y 19 en 4.2) (L36): sin fila.
+\item \textbf{SD4 (4.1) y SD5 — hoja «Página en blanco a propósito»} (L19): sin fila.
+\item \textbf{SD4 (4.2) — «LAFROX no aparece» y «Empresa proponente: Pendiente de definir»} (L16, L339): sin respuesta explícita.
+\item \textbf{SD4 (4.2) — más de la mitad son tablas de listado (T-21)} (L25): sin fila.
+\item \textbf{SD5 — puntos GENERAL} (identidad, portada T-22, A4/11 pt, índice/folio/firma, indicios de IA): sin filas.
+\item \textbf{SD1 — indicios de IA} (L513): sin fila (SD1-05 trata solo de leer y firmar).
+\item \textbf{SD1 (5) y SD13 (1) — valoraciones «OK»} omitidas (L74, L81, L82, L95, L100, L478).
+\item \textbf{Transversal — fundamentación ingenieril} (L512): sin fila propia.
+\item \textbf{Parciales:} SD3-09 (identificador de prueba), SD3-35 (valoraciones positivas), SD4-40 (IOPS), SD4-23 (3 brokers, referencias del 4.2), SD5-04 (palabras partidas).
+\item \textbf{Fidelidad:} reformular SD5-06 y ajustar las comillas de SD3-13 y SD3-36.
+\end{enumerate}
+
+\InformeSeccion{12. Resolución aplicada (12-10-2026, autorizada por el usuario)}{12. Resolución aplicada (12-10-2026, autorizada por el usuario)}
+
+Se actualizaron las tablas de origen y se regeneró la consolidada: 213 filas (212 de los subdocumentos y TR-01). Verificación: 212/212 filas idénticas a su fuente, 0 líneas de notas perdidas, identificadores únicos y enlaces correctos.\par\medskip
+
+\Needspace{9\baselineskip}
+{\LFXcuerpotabla
+\setlength{\LTpre}{12pt}\setlength{\LTpost}{16pt}
+\begin{longtable}{F{0.17} F{0.55} F{0.28}}
+\caption{Resolución aplicada de brechas}\label{tab:revision-trazabilidad-11}\\[2pt]
+\LFXtopruleoriginal \cab{Brecha (§11)} & \cab{Resolución} & \cab{Fila(s)} \\ \midrule
+\endfirsthead
+\multicolumn{1}{@{}l@{}}{\makebox[0pt][l]{\fontsize{9pt}{10.5pt}\selectfont\color{lafroxGris}Tabla 11 --- continuación}}\\[3pt]
+\LFXtopruleoriginal \cab{Brecha (§11)} & \cab{Resolución} & \cab{Fila(s)} \\ \midrule
+\endhead
+\midrule
+\multicolumn{1}{@{}l@{}}{\makebox[0pt][l]{\fontsize{9pt}{10.5pt}\selectfont\color{lafroxGris}continúa en la página siguiente}}\\
+\endfoot
+\bottomrule
+\endlastfoot
+1. Erratas del SD3 & Documentado: ninguna aparece en los PDF vigentes (cuerpo, anexos y T-12) & SD3-44 \\
+\LFXfiletefila
+2. Títulos huérfanos y páginas semivacías & Revisión página por página de los PDF vigentes. SD3: \textbf{Parcial}, 5 páginas con espacio sin uso (cuerpo p. 20; anexos pp. 83 y 131; T-12 pp. 4 y 128) y una frase introductoria separada de su lista (p. 22). SD4: \textbf{Pendiente}, 15 páginas semivacías en el cuerpo antes de figuras o tablas en hoja horizontal. Ningún título queda al pie de página. & SD3-45, SD4-53 \\
+\LFXfiletefila
+3. Hoja en blanco en 4.1 y SD5 & Corregido (SD4: PDF vigente; SD5: Markdown) & SD4-50, SD5-22 \\
+\LFXfiletefila
+4. LAFROX y «Pendiente de definir» en el 4.2 & Corregido en los PDF vigentes & SD4-51 \\
+\LFXfiletefila
+5. T-21: tablas de listado en el 4.2 & Documentado & SD4-52 \\
+\LFXfiletefila
+6. SD5: puntos de GENERAL & Identidad, portada, hoja en blanco e IA documentados; formato de página, tipografía, folio y firma \textbf{por cotejar en el PDF del SD5} & SD5-21 a SD5-24 \\
+\LFXfiletefila
+7. SD1: indicios de IA & Documentado (PDF del cuerpo y del T-6) & SD1-34 \\
+\LFXfiletefila
+8. Valoraciones «OK» & SD1: 3 «Se mantiene», 1 «Parcial» (faltan los 36 meses de operación) y 1 «Trasladado» al SD3; SD13: se mantiene el criterio & SD1-29 a SD1-33, SD13-16 \\
+\LFXfiletefila
+9. Fundamentación ingenieril & Documentado como fila transversal & TR-01 \\
+\LFXfiletefila
+10. Parciales & SD3-09 se omite por decisión del usuario; SD3-35, SD4-40 (IOPS, con frase nueva en el ADR-10), SD4-23 y SD5-04 completados & — \\
+\LFXfiletefila
+11. Fidelidad & SD5-06 vuelve al sentido del informe; SD3-13 y SD3-36 usan las citas literales & — \\
+\end{longtable}}
+\vspace{7pt}
+
+Hallazgos nuevos de la revisión de los PDF:\par\medskip
+
+\begin{itemize}
+\item El PDF vigente del SD4 (\LFXcode{origin/\allowbreak{}subdoc-4}, 7ba8608) \textbf{no lleva media firma en ninguna página} y la línea de firma de su portada está vacía; SD1, SD2 y SD3 sí la tienen. Se registró en SD4-22 (EF-01).
+\item Las portadas del SD4 (PDF) y del SD5 (Markdown) tienen fecha de emisión 05-10-2026; las del SD2 y el SD3, 12-10-2026.
+\item El checkout local \LFXcode{../\allowbreak{}LafroX-subdoc4} (rama \LFXcode{subdoc-4}, 292c6e8) está desactualizado respecto de \LFXcode{origin/\allowbreak{}subdoc-4}. Para la revisión se extrajeron los PDF del remoto al directorio temporal, sin tocar el checkout.
+\item El PDF del SD4 no incluye todavía la frase nueva del ADR-10, que solo está en el Markdown.
+\end{itemize}
+
+\InformeSubseccion{Ajuste posterior (12-10-2026, decisión del usuario)}{Ajuste posterior (12-10-2026, decisión del usuario)}
+
+\begin{itemize}
+\item Se retiró la fila EF-31 (páginas semivacías del SD4) y la nota sobre la media firma del SD4 en EF-01; el usuario resuelve la firma.
+\item SD3-45 pasa a «Documentado», con la reducción verificada de 21 a menos de diez páginas semivacías y sin títulos al pie de página.
+\item Los PDF se volvieron a verificar contra las ramas remotas (\LFXcode{origin/\allowbreak{}LafroX-Subdoc1-LateX} 05fe9c9, \LFXcode{origin/\allowbreak{}LafroX-Subdoc3-LateX} e55ca51, \LFXcode{origin/\allowbreak{}subdoc-4} 5899782). El SD3 commiteado tiene 35, 168 y 261 páginas; el Anexo 3.H está en la p. 145.
+\item Tras el commit 50dd1f7, la tabla del SD13 vive en \LFXcode{13\_\allowbreak{}innovaciones/\allowbreak{}LAFROX-SD13-Matriz-cambios-Informe1-Informe2.md}; ahí se reincorporó la fila «OK». La consolidada tiene 212 filas de datos (211 filas de las matrices fuente y la transversal TR-01), más el encabezado: 213 filas físicas en la tabla.
+\end{itemize}
+
+
+\end{document}
