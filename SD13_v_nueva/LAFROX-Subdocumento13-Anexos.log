@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.25.7 (MiKTeX 26.5) (format=lualatex 2026.9.17)  11 OCT 2026 22:54
+This is LuaHBTeX, Version 1.25.7 (MiKTeX 26.5) (format=lualatex 2026.9.17)  11 OCT 2026 23:36
  system commands enabled.
 **LAFROX-Subdocumento13-Anexos.tex
 (./LAFROX-Subdocumento13-Anexos.tex
@@ -1988,15 +1988,15 @@ Package luatex.def Info: logo/firma_representante.png  used on input line 24.
 ]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 27.
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 24.
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 27.
-LaTeX Info: Redefining \% on input line 27.
+LaTeX Info: Redefining \. on input line 24.
+LaTeX Info: Redefining \% on input line 24.
 Package babel Info: 'spanish' activates 'spanish' shorthands.
-(babel)             Reported on input line 27.
+(babel)             Reported on input line 24.
 File: logo/firma_representante.png Graphic file (type png)
 <use logo/firma_representante.png>
-Package luatex.def Info: logo/firma_representante.png  used on input line 27.
+Package luatex.def Info: logo/firma_representante.png  used on input line 24.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
  [4]
 warning  (pdf backend): ignoring duplicate destination with the name 'table.12.1
@@ -2025,6 +2025,19 @@ Package luatex.def Info: logo/firma_representante.png  used on input line 54.
  [6]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 58.
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 58.
+LaTeX Info: Redefining \% on input line 58.
+File: logo/firma_representante.png Graphic file (type png)
+<use logo/firma_representante.png>
+Package luatex.def Info: logo/firma_representante.png  used on input line 58.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [7]
+warning  (pdf backend): ignoring duplicate destination with the name 'table.12.1
+'
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
 Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 84.
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
 LaTeX Info: Redefining \. on input line 84.
@@ -2033,32 +2046,19 @@ File: logo/firma_representante.png Graphic file (type png)
 <use logo/firma_representante.png>
 Package luatex.def Info: logo/firma_representante.png  used on input line 84.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [7]
-warning  (pdf backend): ignoring duplicate destination with the name 'table.12.1
-'
-File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
-<use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 87.
-(luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 87.
-LaTeX Info: Redefining \% on input line 87.
-File: logo/firma_representante.png Graphic file (type png)
-<use logo/firma_representante.png>
-Package luatex.def Info: logo/firma_representante.png  used on input line 87.
-(luatex.def)             Requested size: 37.40587pt x 18.0pt.
 [8]
 warning  (pdf backend): ignoring duplicate destination with the name 'table.12.2
 '
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 110.
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 101.
 
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 110.
-LaTeX Info: Redefining \% on input line 110.
+LaTeX Info: Redefining \. on input line 101.
+LaTeX Info: Redefining \% on input line 101.
 File: logo/firma_representante.png Graphic file (type png)
 <use logo/firma_representante.png>
-Package luatex.def Info: logo/firma_representante.png  used on input line 110.
+Package luatex.def Info: logo/firma_representante.png  used on input line 101.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
 [9]
 warning  (pdf backend): ignoring duplicate destination with the name 'table.12.1
@@ -2087,6 +2087,18 @@ File: logo/firma_representante.png Graphic file (type png)
 Package luatex.def Info: logo/firma_representante.png  used on input line 128.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
  [11]
+File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
+<use logo/lafrox_isotipo_negro.pdf>
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 128.
+
+(luatex.def)             Requested size: 12.9948pt x 13.0pt.
+LaTeX Info: Redefining \. on input line 128.
+LaTeX Info: Redefining \% on input line 128.
+File: logo/firma_representante.png Graphic file (type png)
+<use logo/firma_representante.png>
+Package luatex.def Info: logo/firma_representante.png  used on input line 128.
+(luatex.def)             Requested size: 37.40587pt x 18.0pt.
+ [12]
 warning  (pdf backend): ignoring duplicate destination with the name 'table.12.2
 '
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
@@ -2100,29 +2112,17 @@ File: logo/firma_representante.png Graphic file (type png)
 <use logo/firma_representante.png>
 Package luatex.def Info: logo/firma_representante.png  used on input line 142.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
-[12]
+[13]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 145.
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 153.
 
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 145.
-LaTeX Info: Redefining \% on input line 145.
+LaTeX Info: Redefining \. on input line 153.
+LaTeX Info: Redefining \% on input line 153.
 File: logo/firma_representante.png Graphic file (type png)
 <use logo/firma_representante.png>
-Package luatex.def Info: logo/firma_representante.png  used on input line 145.
-(luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [13]
-File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
-<use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 169.
-
-(luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 169.
-LaTeX Info: Redefining \% on input line 169.
-File: logo/firma_representante.png Graphic file (type png)
-<use logo/firma_representante.png>
-Package luatex.def Info: logo/firma_representante.png  used on input line 169.
+Package luatex.def Info: logo/firma_representante.png  used on input line 153.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
  [14])
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
@@ -2135,8 +2135,7 @@ File: logo/firma_representante.png Graphic file (type png)
 <use logo/firma_representante.png>
 Package luatex.def Info: logo/firma_representante.png  used on input line 19.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
- [15]
-
+ [15] 
 enddocument/afterlastpage (AED): lastpage setting LastPage.
 (./LAFROX-Subdocumento13-Anexos.aux
 LaTeX Info: Redefining \. on input line 9.
@@ -2149,16 +2148,16 @@ L3 programming layer <2026-07-20>
 )
 
 Here is how much of LuaTeX's memory you used:
- 36978 strings out of 475695
- 244185,2373549 words of node,token memory allocated
+ 36980 strings out of 475695
+ 244177,2373549 words of node,token memory allocated
  741 words of node memory still in use:
    8 hlist, 2 vlist, 2 rule, 1 local_par, 6 glue, 4 kern, 1 penalty, 3 glyph, 22
  attribute, 79 glue_spec, 12 attribute_list, 2 write, 1 pdf_action nodes
-   avail lists: 1:7,2:5135,3:775,4:477,5:3530,6:296,7:19745,8:42,9:2438,10:22,11
-:2249
- 58436 multiletter control sequences out of 65536+600000
- 117 fonts using 46094215 bytes
- 107i,23n,128p,1509b,5331s stack positions out of 10000i,1000n,20000p,200000b,200000s
+   avail lists: 1:5,2:4642,3:804,4:507,5:3777,6:315,7:21022,8:42,9:2686,10:22,11
+:2401
+ 58438 multiletter control sequences out of 65536+600000
+ 118 fonts using 46330619 bytes
+ 107i,24n,128p,1509b,5333s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/henri/AppData/Local/Programs/MiKTeX/fonts/opentype/adobe/sourceserif/S
 ourceSerif4-RegularIt.otf><C:/Users/henri/AppData/Local/Programs/MiKTeX/fonts/op
 entype/public/stix2-otf/STIXTwoMath-Regular.otf><C:/Users/henri/AppData/Local/Pr
@@ -2168,7 +2167,7 @@ r.otf><C:/Users/henri/AppData/Local/Programs/MiKTeX/fonts/opentype/adobe/sources
 ans/SourceSans3-Regular.otf><c:/users/henri/appdata/local/programs/miktex/fonts/
 opentype/adobe/sourcesans/sourcesans3-medium.otf><C:/Users/henri/AppData/Local/P
 rograms/MiKTeX/fonts/opentype/adobe/sourcesans/SourceSans3-Semibold.otf>
-Output written on LAFROX-Subdocumento13-Anexos.pdf (15 pages, 111645 bytes).
+Output written on LAFROX-Subdocumento13-Anexos.pdf (15 pages, 112743 bytes).
 
 PDF statistics: 198 PDF objects out of 1000 (max. 8388607)
  21 named destinations out of 1000 (max. 1048576)
