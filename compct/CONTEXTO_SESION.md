@@ -1,3 +1,7 @@
+## SD13 — alineación LaTeX–Markdown y matriz independiente — 12 de octubre de 2026
+
+Autorización explícita: alinear cuerpo, anexos y T-19 con LaTeX vigente del checkout SD13/LafroX, rama LafroX-Subdoc13-LateX. Trasladar matriz Informe1 a archivo independiente en13_innovaciones, fuera de PDF; columnas exactas Observación del Informe1, Respuesta, Sección modificada. LaTeX: retirado antiguo Anexo13.D, remisiones de introducciones, filaIA correspondiente y portada anexos ajustada A–C. Markdown: tres documentos reconvertidos desde fuentes actuales, figuras enlazadas a activos PDF existentes sin editar imágenes; declaraciónIA consolidada en principal. Matriz separada conserva23observaciones/respuestas (15específicas+8transversales), referencias y revisión editorial acreditada previamente. Sin commit/push ni cambios en otros subdocumentos. Copias previas en SD13/tmp/alineacion-sd13. Verificación final: principal54p y anexos10p recompilados salida0; T-19 conserva13p sin cambiosLaTeX. Matriz ausente de ambosPDF y de índice/anexos/IAprincipal.23observaciones conservadas en MD de3columnas. Espejo reconvertido exacto de los3MD,6figuras enlazadas a PDFvigentes. Ajuste local14pt evita página final con solaURL en anexos, inspeccionada sin choque con firma. Persisten avisos previos de compilación y los demás pendientes del checklist.
+
 # CONTEXTO DE SESIÓN
 
 ## Trazabilidad consolidada Informe 1 (SD1, SD2, SD3, SD4, SD13) — 12 de octubre de 2026
