@@ -114,6 +114,11 @@ Fija ensayos de continuidad lógica: AL-DTE-01 prueba documentos para 96 salidas
 
 ## Anexo 4-N — Correspondencia de componentes lógicos
 
+Incluye los cinco recorridos del SD13 sobre módulos existentes, sus responsables, capas y realizaciones. Sus seis contratos de datos no se cuentan como seis integraciones externas nuevas. Se mantienen doce módulos y 37 capacidades transversales.
+
+La Tabla A.14 conserva la matriz completa de correspondencia entre 3.3–3.4, 4.1 y 4.2, antes situada en el cuerpo.
+
+
 Relaciona componentes, módulos y servicios transversales con alcance y realización física. Desarrolla la autorización por actor, acción y ámbito de datos: conductor, representante externo, cliente y operador no comparten permisos por aparecer en un mismo flujo. Mantiene la correspondencia con los quince actores del SD3.
 
 **Cuándo consultarlo:** para validar permisos o seguir una función desde usuario hasta componente.
@@ -123,6 +128,8 @@ Relaciona componentes, módulos y servicios transversales con alcance y realizac
 ## Anexo 4-O — Registro de decisiones de arquitectura
 
 Reúne 22 decisiones ADR, con alternativas descartadas, criterio, consecuencias y evidencia. Explica elecciones de backend, datos, caché, recuperación y continuidad. Su valor es conservar el motivo de la decisión y permitir revisarla mediante gobierno formal.
+
+La Tabla A.18 contiene el resumen de las 22 decisiones, trasladado desde 4.1.11. El cuerpo mantiene la explicación y la referencia al anexo; el registro de fechas y estados y las fichas completas permanecen junto al resumen.
 
 **Cuándo consultarlo:** cuando se pregunte por qué se eligió una tecnología o un modo de recuperación.
 
@@ -187,6 +194,11 @@ Reúne protocolos de aceptación antes de la ola: concurrencia, fallas, reintent
 [Ver este anexo en el original](../04_arquitectura/LAFROX-Subdocumento4-Anexos.md#anexo-4-v--protocolos-de-aceptaci%C3%B3n)
 
 ## Anexo 4-W — Memoria de cálculo del dimensionamiento
+
+Incluye la síntesis de las dieciséis dimensiones (Tabla A.30) y el inventario por familia y sitio (Tabla A.35), con los valores y períodos conservados desde el cuerpo.
+
+La carga incremental de las cinco innovaciones se cuantifica por ventana y recurso: operaciones y CPU medida, trabajos simultáneos, resultados y retención, bytes y reintentos. No se duplican las muestras térmicas base. La aceptación exige comparar escenarios base/mixtos y comprobar límites, N+1, corte de enlace y sincronización; no se inventan consumos ni resultados de ensayo.
+
 
 La memoria justifica capacidad y cantidades de T-11 en doce apartados. 4-W.1 define entradas/supuestos; .2 calcula TPS; .3 personas, concurrencia y dispositivos; .4 almacenamiento/retención/migración; .5 mensajes y enlaces; .6 terreno y sincronización; .7 atención; .8 capacidad local por máquina virtual; .9 nube; .10 crecimiento y respaldos; .11 cuellos de botella y .12 pruebas.
 

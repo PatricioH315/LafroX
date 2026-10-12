@@ -80,7 +80,7 @@ Este catálogo reúne los 23 anexos del Subdocumento 4: los anexos 4-A a 4-V de 
 | [4-T / Anexo 4-T](LAFROX-Subdocumento4-Anexos.md#anx:T) | Desempeño y aceptación lógica | RT-09.01–08 |
 | [4-U / Anexo 4-U](LAFROX-Subdocumento4-Anexos.md#anx:U) | Prueba de entrega, guía y acuses | RT-16.14 |
 | [4-V / Anexo 4-V](LAFROX-Subdocumento4-Anexos.md#anx:V) | Protocolos de aceptación | RT-07.04; RT-10.08 |
-| [4-W / Anexo Anexo 4-W — Memoria de cálculo del dimensionamiento](LAFROX-Subdocumento4-Anexos.md#anx:42A) | Memoria de cálculo del dimensionamiento | RT-03.20; RT-09.01–09.06 |
+| [4-W / Anexo 4-W — Memoria de cálculo del dimensionamiento](LAFROX-Subdocumento4-Anexos.md#anx:42A) | Memoria de cálculo del dimensionamiento | RT-03.20; RT-09.01–09.06 |
 
 Los RT del catálogo proceden de las Bases Técnicas Transversales (caps. 2–16, pp. 6–29), salvo RT-16.14, cuya aplicación a la guía y el acuse está precisada en el caso (Bases Técnicas del caso, cap. 15, p. 27). Para seguir una decisión de stock, consultar M2 en D, INT-01 en G, reconciliación en K y desempeño en T. Para seguir un despacho, consultar M5 en D, INT-07 en H, estados documentales en U y aceptación en V. N y S permiten cotejar esas responsabilidades con las capacidades del capítulo 3 y con su realización física en 4.2; el Anexo 4-W sustenta la capacidad de cada sitio y de la nube.
 
@@ -366,9 +366,9 @@ Modo síncrono para consultas y asíncrono para cálculos extensos. Volumen norm
 
 Modo asíncrono mediante trabajos Laravel y el servicio de cada canal. Dos avisos por entrega: 2.800/5.200 mensajes/día (1.400/2.600 entregas). Contraparte requerida 24×7; las franjas permitidas de contacto se parametrizan por canal y cliente. Timeout de 10 segundos; reintento con clave de aviso y vigencia. Un aviso de ETA vencido se descarta con registro, no se envía al día siguiente. El estado enviado se distingue de recibido y no condiciona el registro de entrega. Falla persistente produce aviso operacional y canal alternativo acordado.
 
-LafroX proveerá correo mediante Amazon SES, SMS mediante Amazon SNS, WhatsApp mediante AWS End User Messaging Social y avisos persistentes en el portal mediante Angular/Laravel sobre ECS Fargate N-04; el volumen conjunto se mantiene en 2.800/5.200 avisos diarios de la Tabla A.10, distribuido por la preferencia de canal (RT-16.24; Bases Técnicas Transversales, cap. 16; Amazon Web Services, s. f.-j, s. f.-k, s. f.-l, referencias del Subdocumento 4). El detalle del costo unitario por canal y del tratamiento del costo variable se declara en la Oferta Económica (Bases Administrativas, art. 50.2).
+LafroX proveerá correo mediante Amazon SES, SMS mediante Amazon SNS, WhatsApp mediante AWS End User Messaging Social y avisos persistentes en el portal mediante Angular/Laravel sobre ECS Fargate N-04; el volumen conjunto se mantiene en 2.800/5.200 avisos diarios de la Tabla A.10, distribuido por la preferencia de canal (RT-16.24; Bases Técnicas Transversales, cap. 16, sección 16.5; Amazon Web Services, s. f.-j, s. f.-k, s. f.-l). El detalle del costo unitario por canal y del tratamiento del costo variable se declara en la Oferta Económica (Bases Administrativas, art. 50.2).
 
-Se registrará por mensaje la apertura cuando el canal la informe: evento `Open` de SES con seguimiento habilitado, estado `read` de WhatsApp con publicación de eventos habilitada o apertura autenticada del aviso persistente en el portal (RT-16.23; Bases Técnicas Transversales, cap. 16; Amazon Web Services, s. f.-j, s. f.-m, s. f.-n, referencias del Subdocumento 4). SMS/SNS no informa apertura; WhatsApp requiere confirmaciones de lectura habilitadas y SES depende de la descarga del píxel, por lo que una entrega técnica o la ausencia de evento no acreditan lectura.
+Se registrará por mensaje la apertura cuando el canal la informe: evento `Open` de SES con seguimiento habilitado, estado `read` de WhatsApp con publicación de eventos habilitada o apertura autenticada del aviso persistente en el portal (RT-16.23; Bases Técnicas Transversales, cap. 16, sección 16.5; Amazon Web Services, s. f.-j, s. f.-m, s. f.-n). SMS/SNS no informa apertura; WhatsApp requiere confirmaciones de lectura habilitadas y SES depende de la descarga del píxel, por lo que una entrega técnica o la ausencia de evento no acreditan lectura.
 
 Correo, SMS/WhatsApp y aviso en portal aplican la separación de comunicaciones y la baja de 4.1.6.2 del Subdocumento 4 (RT-16.25; Bases Técnicas Transversales, cap. 16, p. 30). Los avisos transaccionales necesarios para el servicio no admiten baja comercial ni contenido promocional. Los mensajes comerciales incluyen identificación del remitente y una vía expedita de suspensión en cada canal; el correo incorpora asunto y dirección válida para solicitarla. La baja desactiva la preferencia del cliente para todas las versiones de las plantillas comerciales y queda registrada en la auditoría; el trabajador la verifica antes de cada envío y reintento y suprime desde la solicitud toda comunicación comercial alcanzada, incluidas las que están en cola. La aceptación prueba cada vía de suspensión, su registro y el bloqueo de reintentos, sin impedir los avisos necesarios del servicio (Ley N.º 19.496, 1997, art. 28 B).
 
@@ -538,11 +538,44 @@ Al recuperar cobertura se verifica que cada pedido se envía una sola vez, aunqu
 
 <a id="anx:N"></a>
 
-La matriz identifica los doce módulos y los servicios transversales para cotejarlos con el esquema y explicación de solución exigidos en 3.3–3.4 y con su realización física en 4.2. Las capacidades de 3.3 y 3.4 se corresponden con los módulos y contratos de 4.1; la tabla de correspondencia de 4.2.2 identifica su realización física.
+La matriz identifica los doce módulos y los servicios transversales para cotejarlos con el esquema y explicación de solución exigidos en 3.3–3.4 y con su realización física en 4.2. Las capacidades de 3.3 y 3.4 se corresponden con los módulos y contratos de 4.1; la matriz de correspondencia citada en 4.2.2 identifica su realización física.
 
 <a id="tab:correspondencia-modulos"></a>
 
-**Tabla A.14 — Correspondencia de módulos y realización física**
+La matriz completa vincula cada capacidad de 3.3–3.4 con su módulo o capa de 4.1, su recurso de 4.2 y su emplazamiento.
+
+<a id="tab:mapeo-logica"></a>
+
+**Tabla A.14 — Correspondencia entre la arquitectura lógica y la física**
+
+| **Capacidad de 3.3–3.4** | **Módulo o capa (4.1)** | **Componente físico (4.2)** | **Dónde se ejecuta** |
+| --- | --- | --- | --- |
+| 3.3.1–3.3.2; recepción en 3.4.1 | M1 Recepción | A-01 y A-02, con C-03 y C-05 | Sitio |
+| 3.3.1–3.3.3; FEFO, reserva y cross-docking en 3.4.1 | M2 Inventario | A-01 y A-02 en el sitio; N-04 y N-05 para el consolidado | Sitio y nube |
+| 3.3.1 y 3.3.3; toma de pedido en 3.4.1 | M3 Preventa | C-01 en el terminal; N-04, N-05 y N-07 | Terreno y nube |
+| 3.3.1; planificación en 3.4.1 | M4 Rutas | N-04 y N-05; motor de optimización en su propio contenedor | Nube |
+| 3.3.1–3.3.3; preparación y despacho en 3.4.1 | M5 Preparación | A-01 y A-02, con C-03 y C-04 | Sitio |
+| 3.3.1–3.3.3; entrega en 3.4.1 | M6 Reparto | C-02 en el terminal; N-04 y N-05, con la evidencia en S3 | Terreno y nube |
+| 3.3.1; rendición y cierre en 3.4.1 | M7 Cobranza y rendición | C-02; N-04; A-04 hacia el ERP | Terreno, nube y VM-04 |
+| 3.3.1; devoluciones y cierre en 3.4.1 | M8 Devoluciones y envases | C-02; N-04; A-01 para la recepción física de retornos mediante la puerta de API local | Terreno, nube y sitio |
+| 3.3.2; excursión y retiro sanitario en 3.4.1 | M9 Calidad y trazabilidad | A-01/A-02 y C-03 para disposición local autorizada; B-01/B-02 para captura y bloqueo, B-03 en camiones; N-04/N-06/N-08 para consulta e ingesta centrales | Sitio, camiones y nube |
+| 3.3.1 y 3.3.3; indicadores y costo de servir en 3.4.1 | M10 Analítica | N-10 | Nube |
+| 3.3.1 y 3.4.2; pedidos EDI | M11 Canal moderno | N-04 con el perfil EDI y el transporte AS2; A-04 | Nube y VM-04 |
+| 3.4.2; módulos y sistemas externos | M12 Telemetría | N-04 y N-06, con la API del proveedor de telemetría | Nube |
+| 3.4.2; quince actores e interfaces | Capa 1, portales y consolas | N-01 a N-03 y frontend de consolas en N-04 | Nube |
+| 3.3.3 y 3.4.2; continuidad y accesos | Capas 2 y 3, entrada y puerta de enlace | CloudFront, WAF y API Gateway (N-01 a N-03 y N-12); puerta de API local en A-01 | Nube y sitio |
+| 3.3.1–3.3.3; ERP, continuidad y datos conciliados | Capa 5, integración y eventos | A-03; N-09; A-04 | Sitio y nube |
+| 3.3.1–3.3.3; lote, reserva, evidencia y consolidación | Capa 6, datos | A-02; N-05, N-06, N-07, N-10 y N-11 | Sitio y nube |
+| 3.3.3 y 3.4.2; acceso por actor y turno | Capa 7, seguridad e identidad | A-05 con el verificador local; F-03; N-12 | Nube y sitio |
+| 3.3.3; continuidad, incidentes y reconciliación | Capa 8, observabilidad | F-01 y CloudWatch (N-12) | Sitio y nube |
+| 3.4.3; implementación y promoción por ambientes | Cadena de entrega de 4.1.9 y 4.2.4.1 | DEV-PIPE y DEV-IAC; pipeline del CLIENTE, CodeBuild y ECR; perfiles firmados del artefacto | Cinco ambientes, con Desarrollo, QA y Preproducción aislados de los sitios |
+| 3.4.4; implantación, convivencia y reversión | Olas de 4.1.8 y despliegue de 4.2.4.1 | A-01/A-02 por sitio; C-01/C-02/C-03 y versiones preservadas para reversión | Sitio, terreno y nube; escritor único por dominio |
+| 3.4.5; operación, soporte y continuidad | Capa 8; identidad; gobierno de 4.2.4 a 4.2.6 | F-01/F-02/F-03 y N-12/N-13; gestión de incidentes y capacidad de 4-W.7 | Monitoreo central, colectores locales y soporte asistido |
+| 3.4.6; participación y adopción por perfil | Capa 1, matriz de actores y permisos; olas de 4.1.8 | C-01/C-02/C-03, portales y consolas; QA de práctica | Terreno, sitios y nube; participación no implica permiso de acceso |
+
+Fuente: elaboración propia.
+
+**Tabla A.15 — Correspondencia de módulos y realización física**
 
 | **Módulo** | **Capacidad en 3.3/3.4** | **Contrato** | **Realización en 4.2.2** |
 | --- | --- | --- | --- |
@@ -561,17 +594,31 @@ La matriz identifica los doce módulos y los servicios transversales para coteja
 
 Fuente: elaboración propia.
 
-La tabla verifica la correspondencia de los doce módulos con sus capacidades, contratos y realizaciones; la Tabla 8 del apartado 4.2.2 completa el enlace físico. Las capacidades transversales también se corresponden: presentación y borde con aplicaciones, CloudFront y acceso privado; puerta de enlace con API central y puerta local; eventos con RabbitMQ, shipper y SQS; datos con bases, réplica de lectura y objetos; identidad con Keycloak y verificador local; secretos y auditoría con sus servicios de custodia; observabilidad con OpenTelemetry/ADOT, alarma local y CloudWatch. Notificaciones se traza a INT-11; el motor de optimización de M4 se integra mediante un contrato separado y se ejecuta en su propio contenedor.
+La tabla verifica la correspondencia de los doce módulos con sus capacidades, contratos y realizaciones; la Tabla [A.14](LAFROX-Subdocumento4-Anexos.md#tab:mapeo-logica) citada en 4.2.2 completa el enlace físico. Las capacidades transversales también se corresponden: presentación y borde con aplicaciones, CloudFront y acceso privado; puerta de enlace con API central y puerta local; eventos con RabbitMQ, shipper y SQS; datos con bases, réplica de lectura y objetos; identidad con Keycloak y verificador local; secretos y auditoría con sus servicios de custodia; observabilidad con OpenTelemetry/ADOT, alarma local y CloudWatch. Notificaciones se traza a INT-11; el motor de optimización de M4 se integra mediante un contrato separado y se ejecuta en su propio contenedor.
 
 La correspondencia entre 3.3, 3.4, 4.1 y 4.2.2 se verifica en ambos sentidos mediante identificador, contrato, responsable y realización física.
 
+**Incorporación de las innovaciones del SD13**
+
+- Seguimiento de vencimiento posentrega en el local: C-01 y M3 reciben la precarga nocturna de M10/N-10 y registran la respuesta de la visita; M2 y M9 aportan los datos de inventario y trazabilidad. Las capas 1, 4, 5 y 6 soportan el recorrido. El saldo estimado en el local no modifica el inventario oficial ni autoriza disposición sanitaria.
+
+- Reproducción de incidentes de terreno: C-01/C-02/C-03 capturan el recorrido causal de M3/M6/M5 con límites de tamaño y frecuencia. OpenTelemetry y CloudWatch aportan la observación; las capas 7 y 8 controlan acceso y trazas. Los recursos temporales se crean dentro de QA y Preproducción, no en un sexto ambiente, y se destruyen al finalizar, también ante error. Se excluyen nombres, credenciales, firmas, fotografías y contenido comercial; al cerrar se elimina la captura y solo se conserva el escenario sintético de regresión. Operación recoge el caso, Calidad lo admite y Desarrollo corrige.
+
+- Vida útil remanente por historia térmica del lote: B-01/B-02/B-03 y C-02 alimentan N-06/N-08/N-10; M9 conserva la evaluación y M2/M5/M10 consumen el resultado. Las capas 1, 4, 5, 6 y 7 mantienen captura, eventos, datos y custodia. B-02 acumula la historia local durante 24 horas sin WAN; B-03 alerta mediante C-02 y descarga el registro al retorno. N-10 calcula con modelo determinista y parámetros aprobados por Calidad, conservando sus versiones. No se rellenan tramos sin dato, no se extiende la fecha impresa, no se sustituye FEFO y la estimación no libera automáticamente un lote.
+
+- Tramo variable de la Operación ligado al costo de servir: M6/M7/M8 aportan hechos operacionales y M10/N-10 genera el informe mensual mediante las capas 4, 6 y 7. Finanzas del CLIENTE aprueba la liquidación; el ERP conserva la autoridad contable y recibe el resultado por la integración existente. El informe identifica período, índices, costo comparable, OTIF, recomendación y respuesta; los montos pertenecen a la Oferta Económica.
+
+- Hoja de negocio del almacenero: M10/N-10 genera la hoja y M3/C-01 recibe la precarga cifrada; M6/C-02 registra su entrega e imprime en cabina. Las capas 1, 4, 6 y 7 limitan el acceso al receptor y distinguen copia pedida, entregada y en espera. El cliente no necesita aplicación, registro ni enlace para recibirla. El bloque agregado solo se habilita bajo las condiciones de privacidad del SD13, con umbral mínimo de locales y supresión de celdas.
+
+Las cinco innovaciones emplean los seis contratos de datos versionados del SD13: aviso de vencimiento, respuesta de visita, paquete de reproducción, historia térmica, liquidación del tramo y hoja de negocio. Son intercambios sobre las superficies existentes, no seis contrapartes externas nuevas ni módulos adicionales. Sus productores y consumidores conservan autorización, idempotencia, retención por dominio y acuse durable cuando corresponda. La trazabilidad añade estos recorridos sin alterar el inventario de doce módulos, las 37 capacidades transversales ni las quince integraciones del dimensionamiento base.
+
 **Inventario trazable de capacidades transversales**
 
-Los siguientes 37 identificadores complementan los doce módulos: el inventario lógico tiene 49 unidades verificables. La última columna identifica los recursos de 4.2 y T-11 que realizan cada capacidad, además de su límite de responsabilidad. La Tabla 8 resume el mapeo por módulo y capa; esta tabla permite verificar los componentes transversales por separado.
+Los siguientes 37 identificadores complementan los doce módulos: el inventario lógico tiene 49 unidades verificables. La última columna identifica los recursos de 4.2 y T-11 que realizan cada capacidad, además de su límite de responsabilidad. La Tabla A.14 resume el mapeo por módulo y capa; esta tabla permite verificar los componentes transversales por separado.
 
 <a id="tab:inventario-transversal"></a>
 
-**Tabla A.15 — Inventario transversal y realización física**
+**Tabla A.16 — Inventario transversal y realización física**
 
 | **ID** | **Componente** | **Capacidad** | **Contrato** | **Realización física y límite** |
 | --- | --- | --- | --- | --- |
@@ -615,11 +662,11 @@ Los siguientes 37 identificadores complementan los doce módulos: el inventario 
 
 **Correspondencia de actores y permisos del sistema**
 
-La Tabla [A.16](LAFROX-Subdocumento4-Anexos.md#tab:actores-permisos) realiza el catálogo de quince actores del apartado 3.4.2 del Subdocumento 3. Cada acción se autoriza por separado sobre el ámbito indicado. Ni el cargo ni el acceso a una consola conceden todos los permisos de un módulo.
+La Tabla [A.17](LAFROX-Subdocumento4-Anexos.md#tab:actores-permisos) realiza el catálogo de quince actores del apartado 3.4.2 del Subdocumento 3. Cada acción se autoriza por separado sobre el ámbito indicado. Ni el cargo ni el acceso a una consola conceden todos los permisos de un módulo.
 
 <a id="tab:actores-permisos"></a>
 
-**Tabla A.16 — Actores del sistema, interfaces y permisos**
+**Tabla A.17 — Actores del sistema, interfaces y permisos**
 
 | **Actor** | **Interfaz y módulos** | **Acciones** | **Ámbito y límite** | **Etapa** |
 | --- | --- | --- | --- | --- |
@@ -649,11 +696,42 @@ Recepción, despacho, catálogo, abastecimiento y Tesorería son funciones asign
 
 El registro reúne las decisiones de arquitectura lógica y física conforme a RT-02.04 (Bases Técnicas Transversales, cap. 2, p. 7). Cada ficha identifica la alternativa descartada, el criterio de selección y la evidencia necesaria para verificar su realización. Los RT de las fichas remiten a las Bases Técnicas Transversales (caps. 2–16, pp. 6–29), salvo RT-10.05 y RT-16.14, precisados por el caso (Bases Técnicas del caso, cap. 15, p. 27).
 
-La Tabla [A.17](LAFROX-Subdocumento4-Anexos.md#tab:adr-estado) fecha cada decisión, como exige RT-02.04. La fecha es la de registro en la versión de la oferta. Todas las decisiones las propone Bastián Trejo, Arquitecto de Solución, y las aprueban el Comité de Arquitectura y la Contraparte Técnica en el hito H2 del Formulario E-25. Ninguna se presenta como aprobada por el CLIENTE. Cada cambio posterior abre una nueva versión de la ficha, con su fecha, su estado (propuesta, aprobada o reemplazada) y el acta del Comité de Arquitectura que la resolvió.
+<a id="tab:resumen-adr"></a>
+
+**Tabla A.18 — Resumen del registro de decisiones de arquitectura**
+
+| **ID** | **Decisión** | **Alternativa principal descartada** | **Criterio decisivo** |
+| --- | --- | --- | --- |
+| ADR-01 | Monolito modular Laravel con perfiles separados. | Microservicios por módulo. | Operación sostenible y límites verificables. |
+| ADR-02 | Fibra, LTE y satélite en espera caliente en los CD. | Solo fibra y LTE. | Extracción continua aun si fallan los medios terrestres. |
+| ADR-03 | Sitios autónomos y consolidación en nube. | Autoridad única de Talca. | Autonomía local con vista global. |
+| ADR-04 | Persistencia según dominio de datos. | Almacén único. | Separación de despacho y analítica. |
+| ADR-05 | RabbitMQ local y SQS FIFO. | Broker solo en nube. | Persistencia e idempotencia tras un corte. |
+| ADR-06 | Keycloak con verificación local de turnos. | IdP solo en nube. | Relevo personal durante 24 horas. |
+| ADR-07 | Aplicaciones Kotlin nativas. | PWA como cliente único. | Periféricos y captura sin señal. |
+| ADR-08 | Reemplazo del WMS 2013 por olas. | Mantención indefinida del legado. | Funciones de bodega y reversión controlada. |
+| ADR-09 | Talca recupera su WMS en nube. | Concepción como DR de Talca. | RTO de cuatro horas con falla separada. |
+| ADR-10 | Proxmox y Ceph sobre NVMe sin RAID. | Ceph sobre RAID 10. | Quórum y capacidad útil. |
+| ADR-11 | Hub GS1 y OpenAS2 con ACL. | Conexiones EDI directas al ERP. | Contratos y aislamiento tributario. |
+| ADR-12 | Aurora fija a 3× y Fargate por perfil. | Cambio de instancia en septiembre. | Peak probado sin intervención. |
+| ADR-13 | API Gateway REST en nube y puerta de API local A-01. | Gateway solo en nube. | Validación local de esquema, tasa, UUID, permisos y auditoría sin WAN. |
+| ADR-14 | CloudWatch con OpenTelemetry y ADOT. | Dos plataformas de observabilidad. | Correlación con almacenamiento temporal local. |
+| ADR-15 | Secrets Manager y Parameter Store. | Vault autoadministrado. | Rotación y custodia auditables. |
+| ADR-16 | Verified Access para consolas. | Client VPN. | Acceso por aplicación y postura. |
+| ADR-17 | Servicio de integración con el ERP en VM-04 con doble cola. | Trabajador solo en nube. | Guía preemitida durante el aislamiento; nueva guía con ERP y comunicación tributaria disponibles. |
+| ADR-18 | Extracción por tres caminos con RPO de 15 min. | Retención solo en el sitio. | Copia durable fuera del sitio. |
+| ADR-19 | Regiones declaradas y aprobación del CLIENTE. | Una sola región. | Continuidad y licitud de transferencia. |
+| ADR-20 | Angular con TypeScript y Portal de Clientes instalable. | Perfil del cliente en la aplicación Kotlin. | Separación entre clientes y trabajadores. |
+| ADR-21 | Terraform, Ansible, GitLab CI y CodeBuild. | CloudFormation/CDK y otra cadena CI. | Propiedad única y promoción trazable. |
+| ADR-22 | Greengrass en gateways industriales. | Nube directa o PLC. | Bloqueo térmico local en cinco segundos. |
+
+Fuente: elaboración propia.
+
+La Tabla [A.19](LAFROX-Subdocumento4-Anexos.md#tab:adr-estado) fecha cada decisión, como exige RT-02.04. La fecha es la de registro en la versión de la oferta. Todas las decisiones las propone Bastián Trejo, Arquitecto de Solución, y las aprueban el Comité de Arquitectura y la Contraparte Técnica en el hito H2 del Formulario E-25. Ninguna se presenta como aprobada por el CLIENTE. Cada cambio posterior abre una nueva versión de la ficha, con su fecha, su estado (propuesta, aprobada o reemplazada) y el acta del Comité de Arquitectura que la resolvió.
 
 <a id="tab:adr-estado"></a>
 
-**Tabla A.17 — Fecha y estado de las decisiones de arquitectura**
+**Tabla A.19 — Fecha y estado de las decisiones de arquitectura**
 
 | **ADR** | **Decisión** | **Fecha de registro** | **Estado** |
 | --- | --- | --- | --- |
@@ -1024,6 +1102,8 @@ Este anexo relaciona los nombres funcionales con los servicios técnicos y decla
 
 ##### Detalle de selección por capa
 
+La selección siguiente organiza las tecnologías por responsabilidad arquitectónica y explica su función, compatibilidad y continuidad durante el contrato.
+
 - **Backend (12 módulos).** Laravel 13 sobre PHP 8.5, con Composer y el archivo de versiones de dependencias, organizado en contextos M1–M12. PostgreSQL/PostGIS conserva los datos geográficos; M4 usa repositorios espaciales con SQL parametrizado vía PDO/Query Builder y pruebas de consultas. Laravel 13 requiere PHP 8.3 o superior y admite PHP 8.5 (Laravel, 2026); ambos componentes se actualizarán a versiones con soporte durante los 56 meses.
 
 - **Frontend web.** Angular 22 con Tailwind CSS y TypeScript 6.0 compatible con su matriz oficial. La integración con Keycloak se implementa mediante OIDC y se mantiene junto con las dependencias del cliente. Las versiones deben actualizarse durante el contrato conforme a sus ciclos de soporte.
@@ -1078,7 +1158,7 @@ El inventario distingue versión de referencia de una imagen exacta de producci�
 
 <a id="tab:soporte-logico"></a>
 
-**Tabla A.18 — Ciclo de soporte del núcleo lógico**
+**Tabla A.20 — Ciclo de soporte del núcleo lógico**
 
 | **Producto** | **Referencia** | **Fin de soporte publicado** | **Plan de actualización** |
 | --- | --- | --- | --- |
@@ -1093,11 +1173,11 @@ Fuente: Laravel (2026), PHP (2026), PostgreSQL (2026), Angular (2026a, 2026b) y 
 
 Laravel, PHP, PostgreSQL y Angular tienen horizontes inferiores al contrato: el responsable de Desarrollo registra cada trimestre su soporte y planifica la sustitución antes de vencimiento. RabbitMQ requiere una actualización temprana antes del fin comunitario de la rama de referencia, aun durante desarrollo. No se atribuye al CLIENTE un contrato de soporte comercial no contratado.
 
-La Tabla A.19 reúne el inventario complementario y la matriz de navegadores, versiones y actualización que se aplica a los portales y a la consola web.
+La Tabla A.21 reúne el inventario complementario y la matriz de navegadores, versiones y actualización que se aplica a los portales y a la consola web.
 
 <a id="tab:inventario-software"></a>
 
-**Tabla A.19 — Inventario complementario y control de vigencia**
+**Tabla A.21 — Inventario complementario y control de vigencia**
 
 | **Componente** | **Línea base lógica** | **Control durante 56 meses** |
 | --- | --- | --- |
@@ -1125,7 +1205,7 @@ Fuente: decisiones de arquitectura lógica y política de configuración de la p
 
 La aplicación Android de terreno soporta la versión mayor vigente de Android y las dos anteriores; antes de cada liberación se verifican los flujos y periféricos en la matriz por modelo. Cada paquete Kotlin se firma y se distribuye con la gestión de flota de Android Enterprise y Zebra DNA. Antes de instalar o actualizar, se verifican la firma y la huella contra el artefacto aprobado y se rechazan los paquetes alterados o de origen no autorizado. Las actualizaciones siguen las tandas por sitio y enlace de la ventana dominical descrita en 4.2.6.6 del Subdocumento 4, sin alterar los plazos de corrección de vulnerabilidades ni sus restricciones de calendario (RT-17.03 y RT-17.04; Bases Técnicas Transversales, cap. 17, p. 31).
 
-La Tabla A.19 incorpora la matriz de navegadores y versiones soportadas de RT-13.10 (Bases Técnicas Transversales, cap. 13, p. 26), aplicable a los portales y a la consola web de 4.1.3.1. La matriz utiliza versiones relativas para mantener el soporte durante el contrato; antes de cada liberación se registra el número exacto, sistema operativo, resultado y fecha de las pruebas. Angular 22 usa el conjunto Baseline del 7 de mayo de 2026; las versiones ofertadas deben pertenecer a ese conjunto y, al migrar Angular, al de la versión adoptada (Angular, 2026b). Cada nueva versión estable de navegador activa pruebas de autenticación, navegación, formularios, teclado y adaptación de pantallas en QA antes de sustituir la versión más antigua de la matriz; un fallo genera corrección y repetición de pruebas antes de declarar su compatibilidad. Los parches de seguridad se comprueban y se incorporan a la matriz con prioridad. La revisión trimestral de soporte del framework se complementa con esta comprobación por cada versión estable del navegador.
+La Tabla A.21 incorpora la matriz de navegadores y versiones soportadas de RT-13.10 (Bases Técnicas Transversales, cap. 13, p. 26), aplicable a los portales y a la consola web de 4.1.3.1. La matriz utiliza versiones relativas para mantener el soporte durante el contrato; antes de cada liberación se registra el número exacto, sistema operativo, resultado y fecha de las pruebas. Angular 22 usa el conjunto Baseline del 7 de mayo de 2026; las versiones ofertadas deben pertenecer a ese conjunto y, al migrar Angular, al de la versión adoptada (Angular, 2026b). Cada nueva versión estable de navegador activa pruebas de autenticación, navegación, formularios, teclado y adaptación de pantallas en QA antes de sustituir la versión más antigua de la matriz; un fallo genera corrección y repetición de pruebas antes de declarar su compatibilidad. Los parches de seguridad se comprueban y se incorporan a la matriz con prioridad. La revisión trimestral de soporte del framework se complementa con esta comprobación por cada versión estable del navegador.
 
 El fin de soporte no publicado se registra como *no publicado*, con responsable y frecuencia de revisión; no significa soporte indefinido. Antes de aprobar una dependencia se verifica licencia, mantenimiento, vulnerabilidades y alternativa de sustitución (RT-11.26). La ficha de liberación identifica versión exacta, EOL conocido o política aplicable, prueba, rollback y responsable. La aceptación rechaza una imagen fuera de soporte.
 
@@ -1137,7 +1217,7 @@ La tabla relaciona cada capacidad del backend con su implementación en Laravel/
 
 <a id="tab:mapeo-laravel"></a>
 
-**Tabla A.20 — Implementación lógica del backend Laravel**
+**Tabla A.22 — Implementación lógica del backend Laravel**
 
 | **Capacidad** | **Implementación Laravel/PHP** | **Comprobación** |
 | --- | --- | --- |
@@ -1156,7 +1236,7 @@ STRIDE se aplica por módulo, componente transversal e integración externa (RT-
 
 <a id="tab:amenazas-modulos"></a>
 
-**Tabla A.21 — Amenazas de los doce módulos**
+**Tabla A.23 — Amenazas de los doce módulos**
 
 | **Elemento** | **Amenaza** | **Control y prueba** | **Dueño** |
 | --- | --- | --- | --- |
@@ -1177,7 +1257,7 @@ Fuente: elaboración propia sobre límites de M1–M12 y RT-11.02.
 
 <a id="tab:amenazas-fronteras"></a>
 
-**Tabla A.22 — Amenazas en fronteras y terceros**
+**Tabla A.24 — Amenazas en fronteras y terceros**
 
 | **Elemento** | **Amenaza** | **Control y evidencia de aceptación** |
 | --- | --- | --- |
@@ -1209,7 +1289,7 @@ Esta matriz vincula controles de ISO/IEC 27001:2022, Anexo A, y su guía ISO/IEC
 
 <a id="tab:controles-seguridad"></a>
 
-**Tabla A.23 — Controles aplicados a la vista lógica**
+**Tabla A.25 — Controles aplicados a la vista lógica**
 
 | **Control** | **Requisito** | **Implementación concreta** | **Evidencia** |
 | --- | --- | --- | --- |
@@ -1238,7 +1318,7 @@ Fuente: elaboración propia a partir de ISO (2022b, 2022c), RT de los capítulos
 
 El registro de vulnerabilidades guarda la fecha que inicia el plazo, que es la primera entre la publicación y la detección para el componente afectado, y la evidencia de cierre. Los plazos máximos de 7 días corridos para críticas, 15 para altas y 30 para medias respetan los congelamientos y el escalamiento al CLIENTE descritos en 4.2.4.1.4 del Subdocumento 4. Contener una vulnerabilidad no equivale a remediarla (RT-11.04; Bases Técnicas Transversales, cap. 11, p. 23).
 
-La arquitectura impone TLS 1.3 en las entradas HTTPS de la Tabla 19 del Subdocumento 4 y en las conexiones TLS entre componentes de la solución, y rechaza TLS 1.0 y 1.1. Los túneles de sitio utilizan el cifrado y la autenticación IPsec/IKE declarados en esa tabla. CloudFront aplica a portales, API e identidad la política TLSv1.3_2025, que solo admite TLS 1.3 con los conjuntos de cifrado AES-GCM (TLS_AES_128_GCM_SHA256 y TLS_AES_256_GCM_SHA384), y el canal AS2 termina TLS 1.3 en el contenedor OpenAS2. Los portales HTTPS envían HSTS con vigencia de un año, `includeSubDomains` y `preload`, y el dominio se inscribe en la lista de precarga de los navegadores. AWS Certificate Manager emite y renueva automáticamente los certificados públicos, y sus avisos de vencimiento próximo, emitidos desde 45 días antes, generan una alerta al NOC. Las interfaces del ERP de 2017 no están documentadas y su levantamiento es parte del proyecto (Bases Técnicas del caso, cap. 5, p. 10): si muestra que el ERP no admite TLS 1.3, su conexión con la ACL en VM-04, que no sale de la sala de Talca, usa TLS 1.2 como excepción documentada. La misma regla rige para un tercero con limitación de protocolo; ninguna excepción admite TLS 1.0 ni 1.1 ni reduce el control en silencio. Entre servicios de la solución se utiliza mTLS para autenticar el canal, conforme a 4.1.3.7; OAuth con credenciales de cliente controla la autorización cuando corresponde y no sustituye mTLS. En interfaces de terceros se documenta el mecanismo admitido por cada contrato, manteniendo el cifrado exigido; nunca una clave estática en la URL. El catálogo público no muestra precios, conforme al caso. OWASP ASVS nivel 2 y API Security Top 10 orientan las pruebas de aplicación. La superficie exacta y la implantación de EDR/SIEM se realizan en la vista física; los permisos, eventos y pruebas permanecen definidos aquí.
+La arquitectura impone TLS 1.3 en las entradas HTTPS de la Tabla 11 del Subdocumento 4 y en las conexiones TLS entre componentes de la solución, y rechaza TLS 1.0 y 1.1. Los túneles de sitio utilizan el cifrado y la autenticación IPsec/IKE declarados en esa tabla. CloudFront aplica a portales, API e identidad la política TLSv1.3_2025, que solo admite TLS 1.3 con los conjuntos de cifrado AES-GCM (TLS_AES_128_GCM_SHA256 y TLS_AES_256_GCM_SHA384), y el canal AS2 termina TLS 1.3 en el contenedor OpenAS2. Los portales HTTPS envían HSTS con vigencia de un año, `includeSubDomains` y `preload`, y el dominio se inscribe en la lista de precarga de los navegadores. AWS Certificate Manager emite y renueva automáticamente los certificados públicos, y sus avisos de vencimiento próximo, emitidos desde 45 días antes, generan una alerta al NOC. Las interfaces del ERP de 2017 no están documentadas y su levantamiento es parte del proyecto (Bases Técnicas del caso, cap. 5, p. 10): si muestra que el ERP no admite TLS 1.3, su conexión con la ACL en VM-04, que no sale de la sala de Talca, usa TLS 1.2 como excepción documentada. La misma regla rige para un tercero con limitación de protocolo; ninguna excepción admite TLS 1.0 ni 1.1 ni reduce el control en silencio. Entre servicios de la solución se utiliza mTLS para autenticar el canal, conforme a 4.1.3.7; OAuth con credenciales de cliente controla la autorización cuando corresponde y no sustituye mTLS. En interfaces de terceros se documenta el mecanismo admitido por cada contrato, manteniendo el cifrado exigido; nunca una clave estática en la URL. El catálogo público no muestra precios, conforme al caso. OWASP ASVS nivel 2 y API Security Top 10 orientan las pruebas de aplicación. La superficie exacta y la implantación de EDR/SIEM se realizan en la vista física; los permisos, eventos y pruebas permanecen definidos aquí.
 
 Seguridad aplica OWASP SAMM al inicio del desarrollo y lo reevalúa anualmente con evidencias de gobierno, diseño, implementación, verificación y operación ya previstas en los controles y el ciclo de entrega. Cada evaluación registra la madurez por práctica y las brechas, con acciones de mejora, responsable y seguimiento hasta su cierre (OWASP Foundation, s. f.; RT-11.28; Bases Técnicas Transversales, cap. 11, p. 24).
 
@@ -1250,7 +1330,7 @@ La entidad de interés es la plataforma logística Puelche y sus fronteras con E
 
 <a id="tab:puntos-vista"></a>
 
-**Tabla A.24 — Interesados y modelos de las cinco vistas**
+**Tabla A.26 — Interesados y modelos de las cinco vistas**
 
 | **Vista** | **Interesados** | **Preocupación** | **Modelos y evidencia** |
 | --- | --- | --- | --- |
@@ -1264,7 +1344,7 @@ Fuente: elaboración propia a partir de RT-02.03 (Bases Técnicas Transversales,
 
 CR-01 exige que cada capacidad del esquema y explicación de solución tenga uno o más componentes N con nombre idéntico y que todo componente tenga capacidad de origen. CR-02 exige productor único, consumidores registrados y contrato por evento; una arista sin contrato se rechaza. CR-03 exige que cada escritura tenga dueño de datos, clave idempotente y auditoría. CR-04 exige para cada función desconectada persistencia, permisos, límite de autonomía y reconciliación. CR-05 vincula componente lógico a realización física exacta; no se cuenta una referencia genérica. CR-06 exige que cada amenaza tenga control y prueba, y que cada decisión ADR tenga consecuencia verificable.
 
-Arquitectura mantiene un registro de diferencias con componente, regla infringida, requisito, dueño, decisión y evidencia de cierre. La comprobación se ejecuta al cambiar un módulo, contrato, tecnología o etapa. La Tabla 8 del apartado 4.2.2 verifica CR-01/05; pruebas de contrato, CR-02/03; AL-OFF-01, CR-04; y la revisión de Q/R/O, CR-06.
+Arquitectura mantiene un registro de diferencias con componente, regla infringida, requisito, dueño, decisión y evidencia de cierre. La comprobación se ejecuta al cambiar un módulo, contrato, tecnología o etapa. La Tabla A.14 del apartado 4.2.2 verifica CR-01/05; pruebas de contrato, CR-02/03; AL-OFF-01, CR-04; y la revisión de Q/R/O, CR-06.
 
 ## Anexo 4-T — Desempeño y aceptación lógica
 
@@ -1274,7 +1354,7 @@ Los umbrales se miden sobre la operación percibida y confirmada, no sobre una l
 
 <a id="tab:aceptacion-desempeno"></a>
 
-**Tabla A.25 — Objetivos y escenarios de desempeño**
+**Tabla A.27 — Objetivos y escenarios de desempeño**
 
 | **Operación** | **Objetivo** | **Carga y comprobación** |
 | --- | --- | --- |
@@ -1310,7 +1390,7 @@ Para un receptor electrónico habilitado se propone recibir su acuse por el meca
 
 <a id="tab:estados-documentales"></a>
 
-**Tabla A.26 — Estados de evidencia y consecuencias**
+**Tabla A.28 — Estados de evidencia y consecuencias**
 
 | **Hecho** | **Evidencia conservada** | **Consecuencia lógica** |
 | --- | --- | --- |
@@ -1330,11 +1410,11 @@ AL-POD-01 ensaya recepción completa, parcial, persona sustituta, negativa a fir
 
 <a id="anx:V"></a>
 
-Las pruebas siguientes se ejecutan en Preproducción y antes de la ola aplicable. Cada acta identifica carga, inyección de falla, resultados observados y responsables; el Anexo 4-M desarrolla AL-DTE-01, AL-DR-01, AL-OFF-01 y AL-CLI-01. La Tabla [A.27](LAFROX-Subdocumento4-Anexos.md#tab:condiciones-aceptacion) resume sus protocolos.
+Las pruebas siguientes se ejecutan en Preproducción y antes de la ola aplicable. Cada acta identifica carga, inyección de falla, resultados observados y responsables; el Anexo 4-M desarrolla AL-DTE-01, AL-DR-01, AL-OFF-01 y AL-CLI-01. La Tabla [A.29](LAFROX-Subdocumento4-Anexos.md#tab:condiciones-aceptacion) resume sus protocolos.
 
 <a id="tab:condiciones-aceptacion"></a>
 
-**Tabla A.27 — Protocolos de aceptación de la arquitectura lógica**
+**Tabla A.29 — Protocolos de aceptación de la arquitectura lógica**
 
 | **ID** | **Ejecución** | **Criterio de aceptación** | **Evidencia** |
 | --- | --- | --- | --- |
@@ -1367,17 +1447,46 @@ Cada fila del Anexo 4-N se prueba con una operación permitida y una denegada. S
 La memoria avanza desde los datos del caso hasta la capacidad de cada sitio y de la nube, en doce secciones.
 
 
+**Síntesis de las dieciséis dimensiones**
+
+La síntesis siguiente reúne las dieciséis dimensiones del caso, sus valores por régimen y sus derivaciones; las secciones posteriores desarrollan cada cálculo.
+
+<a id="tab:t72"></a>
+
+**Tabla A.30 — Síntesis de las dieciséis dimensiones**
+
+| **N.°** | **Dimensión** | **Valor en régimen normal o ventana** | **Valor en peak o declarado** | **Derivación** |
+| --- | --- | --- | --- | --- |
+| 1 | Transacciones por segundo en régimen normal | 12,34 TPS a las 12:00 | – | Anexo 4-W, sección 4-W.2 |
+| 2 | Transacciones por segundo en el peak de la ventana de despacho de 05:30 a 07:00 | 3,76 TPS | 6,94 TPS | Anexo 4-W, sección 4-W.2 |
+| 3 | Transacciones por segundo en el peak de septiembre | – | 14,66 TPS a las 12:00 | Anexo 4-W, sección 4-W.2 |
+| 4 | Personas usuarias registradas, internas y externas | 15.180 | – | Anexo 4-W, sección 4-W.3 |
+| 5 | Personas usuarias concurrentes en peak | 438,30 en régimen; 342 sin portal | 775,33, cota extrema | Anexo 4-W, sección 4-W.3 |
+| 6 | Dispositivos de terreno en operación simultánea | 158 | 158 | Anexo 4-W, sección 4-W.3 |
+| 7 | Volumen anual de almacenamiento transaccional | 50,75 GB/año | 7,85 GB mes peak | Anexo 4-W, sección 4-W.4 |
+| 8 | Volumen anual de almacenamiento de evidencia de entrega, firmas y fotografías | 87,72 GB/año | 13,58 GB mes peak | Anexo 4-W, sección 4-W.4 |
+| 9 | Volumen anual de almacenamiento de series de temperatura y de posicionamiento | 0,58 + 3,20 GB/año crudos | 2,89 + 3,20 GB crudos retenidos | Anexo 4-W, sección 4-W.4 |
+| 10 | Volumen total de datos históricos a migrar | 32,11 GB | 30,73–33,49 GB de sensibilidad | Anexo 4-W, sección 4-W.4 |
+| 11 | Número de integraciones y volumen de mensajes por integración | 15; 224.652 mensajes/día | 342.933 mensajes/día | Anexo 4-W, sección 4-W.5 |
+| 12 | Ancho de banda requerido por sitio, en régimen y en peak | 3,29 / 0,71 / 0,06 Mbps cargados | 5,16 / 2,14 / 0,41 Mbps peor caso | Anexo 4-W, sección 4-W.5 |
+| 13 | Volumen de datos generado por un dispositivo de reparto en un turno completo sin señal | 5,36 MB promedio | 9,83 MB, ruta de 34 clientes | Anexo 4-W, sección 4-W.6 |
+| 14 | Tiempo de sincronización de la flota al regresar al centro de distribución | Objetivo ≤ 10 min por dispositivo desde reconexión hasta acuse durable, incluida espera | Sensibilidad: 64 simultáneos, 8,39 Mbps útiles agregados; verificar ≤ 10 min por dispositivo | Anexo 4-W, sección 4-W.6; 4.2.6.7 |
+| 15 | Contactos mensuales a la mesa de ayuda | 2.000 contactos/mes | 2.000 contactos/mes en el escenario conservador; 7 agentes en la hora cargada y 2 en las demás cubren hasta 2.283; desde el mes 25, con 3 en las demás, cubren hasta 2.391 | Anexo 4-W, sección 4-W.7 |
+| 16 | Dotación de la mesa de ayuda y del equipo de operación | 15 personas a 42 h; 17 desde el 26-04-2028 a 40 h hasta el mes 24; 19 desde el mes 25 (mesa 9 + NOC/SOC 10). | 17 personas en septiembre y diciembre a 42 h; 19 a 40 h hasta el mes 24; 21 desde el mes 25 (mesa 11 + NOC/SOC 10). | Anexo 4-W, sección 4-W.7 |
+
+Fuente: elaboración propia.
+
 ## 4-W.1 Entradas, requisitos, parámetros y supuestos
 
 <a id="sec:anexo-4b-entradas"></a>
 
 Este anexo sustenta el dimensionamiento del apartado 4.2.6 y entrega la memoria de cálculo que respalda el Formulario T-11. Su alcance comprende las dieciséis dimensiones, la capacidad por sitio, la nube, los enlaces, la migración, el crecimiento y las pruebas de aceptación. Los supuestos de volumen, concurrencia y crecimiento que exige el Formulario T-7 (SV-01 a SV-07) se declaran en este anexo; los que fijan las cantidades de implementos (S-28 y S-30 a S-41) se registran en el Subdocumento 3.
 
-La Tabla [A.28](LAFROX-Subdocumento4-Anexos.md#tab:anexo-4b-hechos) concentra los hechos que alimentan las fórmulas y conserva su cita en la forma de la propuesta.
+La Tabla [A.31](LAFROX-Subdocumento4-Anexos.md#tab:anexo-4b-hechos) concentra los hechos que alimentan las fórmulas y conserva su cita en la forma de la propuesta.
 
 <a id="tab:anexo-4b-hechos"></a>
 
-**Tabla A.28 — Hechos del caso utilizados**
+**Tabla A.31 — Hechos del caso utilizados**
 
 | **Dato** | **Valor** | **Fuente** |
 | --- | --- | --- |
@@ -1389,11 +1498,11 @@ La Tabla [A.28](LAFROX-Subdocumento4-Anexos.md#tab:anexo-4b-hechos) concentra lo
 | Ventanas | Preparación 22:00–06:00; despacho 05:30–07:00; sincronización 17:00–20:00 | Bases Técnicas del caso, anexo B, p. 38 |
 | Ruta y frío | 34 clientes en una ruta máximo actualmente; 18 camiones propios y 10 de terceros con equipo de frío; Talca a -22 °C | Bases Técnicas del caso, cap. 8, p. 16, entrevista al conductor; Bases Técnicas del caso, cap. 2, p. 5 |
 
-La Tabla [A.29](LAFROX-Subdocumento4-Anexos.md#tab:anexo-4b-parametros) fija los valores que impone la propuesta. Un valor de diseño se confirma mediante perfilado, QA o prueba de carga, pero no se presenta como un hecho del CLIENTE.
+La Tabla [A.32](LAFROX-Subdocumento4-Anexos.md#tab:anexo-4b-parametros) fija los valores que impone la propuesta. Un valor de diseño se confirma mediante perfilado, QA o prueba de carga, pero no se presenta como un hecho del CLIENTE.
 
 <a id="tab:anexo-4b-parametros"></a>
 
-**Tabla A.29 — Parámetros de diseño**
+**Tabla A.32 — Parámetros de diseño**
 
 | **Parámetro** | **Valor** | **Justificación y uso** | **Confirmación** |
 | --- | --- | --- | --- |
@@ -1410,11 +1519,11 @@ La Tabla [A.29](LAFROX-Subdocumento4-Anexos.md#tab:anexo-4b-parametros) fija los
 | Subida satelital D-06 | 2 Mbps de subida mínima supuesta | Parámetro conservador para Talca, Concepción y los cross-docking | Confirmar en la instalación |
 | Actualizaciones | App ≤100 MB; sistema operativo 2 GB | Tandas dominicales sin bodega ni reparto | Bases Técnicas del caso, anexo B.2, p. 38 |
 
-La Tabla [A.30](LAFROX-Subdocumento4-Anexos.md#tab:anexo-4b-supuestos) declara el fundamento, impacto y validación de cada supuesto. Ninguno reemplaza un dato literal del caso.
+La Tabla [A.33](LAFROX-Subdocumento4-Anexos.md#tab:anexo-4b-supuestos) declara el fundamento, impacto y validación de cada supuesto. Ninguno reemplaza un dato literal del caso.
 
 <a id="tab:anexo-4b-supuestos"></a>
 
-**Tabla A.30 — Supuestos de volumen**
+**Tabla A.33 — Supuestos de volumen**
 
 | **Código** | **Qué suponemos y por qué** | **Si resulta equivocado** | **Cómo y cuándo se valida** |
 | --- | --- | --- | --- |
@@ -1432,17 +1541,17 @@ La Tabla [A.30](LAFROX-Subdocumento4-Anexos.md#tab:anexo-4b-supuestos) declara e
 
 Se calcula el máximo horario de cada lugar para no sumar ventanas que no coinciden. Los días equivalentes son 31.000 ÷ 1.400 = 22,14 días (los cálculos usan el cociente sin redondear, 22,142857) y el control cruzado es 2.100 ÷ 96 = 21,88 días. El factor de septiembre es 2.600 ÷ 1.400 = 1,857.
 
-El volumen de cross-docking de la Tabla A.31 corresponde al conjunto de las tres plataformas y se suma una sola vez al total. No se declara ese volumen completo como carga medida de cada sitio; el dimensionamiento de cada equipo puede usarlo como cota conservadora sin multiplicarlo en el total global. Las operaciones de cada entrega se reparten en recepción, escaneo y desconsolidación de 03:00 a 05:00, y despacho de 05:00 a 06:00; SV-04 concentra sólo la hora cargada de cada tramo. La preparación normal de Talca se calcula como 11.742 líneas por noche × 2 operaciones × 2/3 ÷ 28.800 segundos = 0,54 TPS de media; la hora cargada de SV-04 alcanza 1,09 TPS. El despacho se distribuye entre Talca y Concepción según SV-03; a las 05:00 el WMS alcanza 1,46 TPS normal y 2,68 TPS en septiembre en Talca, y 0,73 y 1,34 TPS en Concepción.
+El volumen de cross-docking de la Tabla A.34 corresponde al conjunto de las tres plataformas y se suma una sola vez al total. No se declara ese volumen completo como carga medida de cada sitio; el dimensionamiento de cada equipo puede usarlo como cota conservadora sin multiplicarlo en el total global. Las operaciones de cada entrega se reparten en recepción, escaneo y desconsolidación de 03:00 a 05:00, y despacho de 05:00 a 06:00; SV-04 concentra sólo la hora cargada de cada tramo. La preparación normal de Talca se calcula como 11.742 líneas por noche × 2 operaciones × 2/3 ÷ 28.800 segundos = 0,54 TPS de media; la hora cargada de SV-04 alcanza 1,09 TPS. El despacho se distribuye entre Talca y Concepción según SV-03; a las 05:00 el WMS alcanza 1,46 TPS normal y 2,68 TPS en septiembre en Talca, y 0,73 y 1,34 TPS en Concepción.
 
 La nube suma preventa, reparto, recepción, trazabilidad, guías, sincronización y el escenario EDI. Los aproximadamente 2.852 documentos/día peak son el total de DTE (34.000 ÷ 22,14 × 1,857), no sólo guías; tomarlos todos como guías a emitir antes de la salida es una cota conservadora. El portal queda separado: 2.600 ÷ 9 × 2 por SV-04 = 578 sesiones en la hora cargada; 578 × 60 ÷ 3.600 = 9,63 solicitudes/s y 578 × 10 ÷ 60 = 96,30 concurrentes. La cota extrema es 2.600 × 60 ÷ 3.600 = 43,33 solicitudes/s y 433,33 concurrentes. Las 2.600 sesiones diarias del portal son un parámetro de diseño: se toma una sesión por cada cliente de food service y de cadenas, 2.100 + 500 = 2.600 (Bases Técnicas del caso, cap. 2, p. 4). La cota cubre esos dos canales y no al canal tradicional, cuyo uso del portal es opcional y no tiene medición en el caso. Ese canal se admite con una cuota propia en la puerta de enlace: 20 solicitudes/s agregadas para los clientes tradicionales, que es la capacidad remanente bajo el techo de 8 tareas en la cota extrema (8 × 14,00 − 91,70 = 20,30 solicitudes/s). Si la adopción medida acerca el uso a esa cuota, se amplía la capacidad antes de subirla. La cuota no rechaza pedidos de preventa, que usan su propio perfil. No son las 2.600 visitas diarias de preventa (Bases Técnicas del caso, anexo B, p. 38); que las dos cifras coincidan es casualidad.
 
 La dimensión 1 es **12,34 TPS a las 12:00** en régimen normal. La dimensión 2 es **3,76 TPS normal y 6,94 TPS peak**, máximos reales del perfil horario entre 05:00 y 06:00 para la ventana 05:30–07:00. La dimensión 3 es **14,66 TPS a las 12:00** en septiembre. RT-09.06 (Bases Técnicas Transversales, cap. 9, p. 21) es 1,5 × 14,66 = **21,99 TPS**.
 
-La Tabla [A.31](LAFROX-Subdocumento4-Anexos.md#tab:anexo-4b-horario) conserva el perfil hora por hora que produce esos máximos.
+La Tabla [A.34](LAFROX-Subdocumento4-Anexos.md#tab:anexo-4b-horario) conserva el perfil hora por hora que produce esos máximos.
 
 <a id="tab:anexo-4b-horario"></a>
 
-**Tabla A.31 — Perfil horario por lugar de proceso**
+**Tabla A.34 — Perfil horario por lugar de proceso**
 
 | **Hora** | **Talca N/P** | **Concepción N/P** | Cross-docking agregado N/P | **Nube N/P** | **Portal N/P** | **Total N/P** |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -1497,6 +1606,37 @@ Cada cantidad aplica los supuestos S-28 y S-30 a S-41, registrados en el Subdocu
 
 - Termógrafos: 28 + 3 = 31, para los 18 camiones con frío propios y los 10 de transportistas (S-28), sin compra por crecimiento (S-38).
 
+**Inventario por familia y sitio**
+
+El inventario siguiente conserva las unidades en operación por familia y sitio; el Formulario T-11 distingue sus especificaciones y reservas.
+
+<a id="tab:t26"></a>
+
+**Tabla A.35 — Equipamiento en operación por familia y por sitio**
+
+| **Familia** | **Talca** | **Concepción** | **Cada cross-docking** | **Terreno** |
+| --- | --- | --- | --- | --- |
+| Servidores y nodos de cómputo | 3 | 2 | 2 | – |
+| Respaldo local (NAS WORM) | 1 | – | – | – |
+| Firewalls | 2 | 2 | 2 | – |
+| Switches de núcleo, de gestión y de sitio | 3 | 2 | 2 | – |
+| Switches de acceso en las bodegas | 4 | 2 | – | – |
+| UPS de gabinetes de piso | 4 | 2 | – | – |
+| UPS de gabinetes de borde | – | 1 | 1 | – |
+| Enlaces satelitales D-06 | 1 | 1 | 1 | – |
+| Puntos de acceso Wi-Fi 6E | 39 | 20 | 2 | – |
+| Terminales de bodega | 120 | 60 | 2 | – |
+| Impresoras de andén | 4 | 2 | – | – |
+| Balanzas de recepción | 2 | 1 | – | – |
+| Puntos de temperatura en cámaras | 15 | 6 | – | – |
+| Gateways IoT | 2 | 1 | – | – |
+| Estaciones de trabajo | 5 | 3 | – | – |
+| Terminales de preventa | – | – | – | 62 |
+| Equipos de reparto por camión | – | – | – | 96 |
+| Termógrafos de camión | – | – | – | 28 |
+
+Fuente: elaboración propia.
+
 ## 4-W.4 Dimensiones 7–10: almacenamiento, retención y migración
 
 <a id="sec:anexo-4b-dimensiones-7-10"></a>
@@ -1523,11 +1663,11 @@ La suma de 16.054.780 KB × 2 ÷ 1.000.000 = **32,11 GB**. Con 10 o 30 líneas p
 
 <a id="sec:anexo-4b-dimensiones-11-12"></a>
 
-La dimensión 11 cuenta los quince contratos INT-01 a INT-15 del apartado 4.1. INT-04 detalla un subconjunto de INT-03 y no se suma otra vez: el total normal es 230.252 − 5.600 = 224.652 y el peak es 353.333 − 10.400 = 342.933 mensajes/día. Los quince contratos no equivalen a quince sumandos independientes. La Tabla [A.32](LAFROX-Subdocumento4-Anexos.md#tab:anexo-4b-integraciones) deja el volumen por integración; las solicitudes del portal y las llamadas internas no aparecen.
+La dimensión 11 cuenta los quince contratos INT-01 a INT-15 del apartado 4.1. INT-04 detalla un subconjunto de INT-03 y no se suma otra vez: el total normal es 230.252 − 5.600 = 224.652 y el peak es 353.333 − 10.400 = 342.933 mensajes/día. Los quince contratos no equivalen a quince sumandos independientes. La Tabla [A.36](LAFROX-Subdocumento4-Anexos.md#tab:anexo-4b-integraciones) deja el volumen por integración; las solicitudes del portal y las llamadas internas no aparecen.
 
 <a id="tab:anexo-4b-integraciones"></a>
 
-**Tabla A.32 — Mensajes por integración**
+**Tabla A.36 — Mensajes por integración**
 
 | **Integración** | **Normal/día** | **Peak/día** | **Origen del volumen** |
 | --- | --- | --- | --- |
@@ -1559,7 +1699,7 @@ Para la dimensión 12, el drenaje se obtiene sumando los aportes acumulados en 2
 
 <a id="tab:anexo-4b-enlaces"></a>
 
-**Tabla A.33 — Capacidad y utilización de enlaces por camino**
+**Tabla A.37 — Capacidad y utilización de enlaces por camino**
 
 | **Sitio** | **Camino** | **Subida** | **Carga** | **Uso** |
 | --- | --- | --- | --- | --- |
@@ -1572,7 +1712,7 @@ Para la dimensión 12, el drenaje se obtiene sumando los aportes acumulados en 2
 | Cada cross-docking | D-06 satélite | 2 Mbps | 0,41 Mbps, peor caso | 20,65 % |
 | Cada cross-docking | D-04 LTE | 2 Mbps | 0,35 Mbps, drenaje | 17,70 % |
 
-La coordinación de reserva no se suma al drenaje: durante un aislamiento la nube no confirma reservas remotas del sitio, por lo que sus solicitudes esperan en la cola de la nube y no en el sitio. Su tasa continua es de 87.228 × 1 KB ÷ 86.400 s, unos 0,008 Mbps sumando todos los sitios, y no cambia la utilización de la tabla. La tasa prioritaria suma WAL, broker y telemetría crítica a los mensajes de guía, respuesta del SII e identidad, con una cota de 1 KB por mensaje; se divide el volumen diario por 86.400 segundos. Los 12.602/23.404 cambios diarios de INT-12 son una cota conservadora basada en movimientos de todos los sitios, aplicada al dimensionamiento de Talca y no un conteo medido allí. La utilización de respaldo incluye retorno simultáneo y drenaje con 15 % de margen, según la Tabla A.33. En Talca y Concepción, D-06 permanece encendido en espera caliente, con túnel IPsec establecido y BGP de menor preferencia; solo toma tráfico si fallan fibra y LTE, cuando prioriza DMS/WAL de Talca, salida del broker y outbox, guías hacia ERP y SII, identidad y telemetría crítica. La tarifa plana no agrega costo por mantenerlo encendido. En los cross-docking Starlink es el camino principal y LTE de dos proveedores da respaldo. El tercer camino de los CD sostiene la salida continua de datos exigida por el RPO de 15 minutos; la oficina cede prioridad durante la recuperación.
+La coordinación de reserva no se suma al drenaje: durante un aislamiento la nube no confirma reservas remotas del sitio, por lo que sus solicitudes esperan en la cola de la nube y no en el sitio. Su tasa continua es de 87.228 × 1 KB ÷ 86.400 s, unos 0,008 Mbps sumando todos los sitios, y no cambia la utilización de la tabla. La tasa prioritaria suma WAL, broker y telemetría crítica a los mensajes de guía, respuesta del SII e identidad, con una cota de 1 KB por mensaje; se divide el volumen diario por 86.400 segundos. Los 12.602/23.404 cambios diarios de INT-12 son una cota conservadora basada en movimientos de todos los sitios, aplicada al dimensionamiento de Talca y no un conteo medido allí. La utilización de respaldo incluye retorno simultáneo y drenaje con 15 % de margen, según la Tabla A.34. En Talca y Concepción, D-06 permanece encendido en espera caliente, con túnel IPsec establecido y BGP de menor preferencia; solo toma tráfico si fallan fibra y LTE, cuando prioriza DMS/WAL de Talca, salida del broker y outbox, guías hacia ERP y SII, identidad y telemetría crítica. La tarifa plana no agrega costo por mantenerlo encendido. En los cross-docking Starlink es el camino principal y LTE de dos proveedores da respaldo. El tercer camino de los CD sostiene la salida continua de datos exigida por el RPO de 15 minutos; la oficina cede prioridad durante la recuperación.
 
 La ventana dominical usa ocho horas sin operación de bodega ni reparto. Cada sitio actualiza sus terminales de bodega y los equipos de reparto de los camiones que estacionan en él, repartidos por SV-03: 71 de los 106 en Talca y 35 en Concepción. En Talca, el respaldo completo de 15,12 GB se transfiere a 20 Mbps en 1,68 horas y la aplicación de sus 203 equipos, 20,30 GB, en 2,26 horas; juntas requieren 3,94 horas. Una tanda de 18 sistemas operativos de 2 GB agrega 4,00 horas y ocupa 7,94 horas; una ronda completa ocupa 12 domingos. En Concepción, el respaldo completo de 7,76 GB y la aplicación de sus 101 equipos, 10,10 GB, requieren 3,97 horas; una tanda de 9 sistemas operativos ocupa 7,97 horas y la ronda completa, 12 domingos. Los 69 terminales de preventa no usan esta ventana: trabajan en la calle y el MDM los actualiza por la red móvil. En cada cross-docking, el respaldo de 1,89 GB y la aplicación de sus 2 terminales, 0,20 GB, requieren 2,33 horas sobre la capacidad supuesta de 2 Mbps; con los 2 sistemas operativos, la ventana ocupa 6,77 horas y la ronda requiere un domingo. La aplicación se actualiza en un domingo por sitio; el sistema operativo se distribuye en tandas dominicales con cadencia semestral, dentro de los aproximadamente 43 domingos disponibles al año tras los congelamientos de septiembre y diciembre.
 
@@ -1608,7 +1748,7 @@ La base local contiene maestros, stock, lotes presentes y movimientos del horizo
 
 <a id="tab:anexo-4b-vm"></a>
 
-**Tabla A.34 — Requerimiento por VM real del diseño**
+**Tabla A.38 — Requerimiento por VM real del diseño**
 
 | **VM o equipo** | **Requerido actual** | **Requerido a 3×** | **Sitio** |
 | --- | --- | --- | --- |
@@ -1632,7 +1772,7 @@ La energía de los gabinetes de borde y de piso se calcula con el método de la 
 
 <a id="tab:anexo-4b-ups-borde"></a>
 
-**Tabla A.35 — Carga y UPS de los gabinetes de borde y de piso**
+**Tabla A.39 — Carga y UPS de los gabinetes de borde y de piso**
 
 | **Gabinete** | **Equipos y potencia** | **Carga de diseño** | **UPS y uso** |
 | --- | --- | --- | --- |
@@ -1674,7 +1814,7 @@ Por separado, RT-09.03 (Bases Técnicas Transversales, cap. 9, p. 21) exige 3×:
 
 <a id="tab:anexo-4b-plan"></a>
 
-**Tabla A.36 — Plan de capacidad**
+**Tabla A.40 — Plan de capacidad**
 
 | **Componente** | **Año 1** | **Año 3** | **3×** | **Acción** |
 | --- | --- | --- | --- | --- |
@@ -1682,7 +1822,7 @@ Por separado, RT-09.03 (Bases Técnicas Transversales, cap. 9, p. 21) exige 3×:
 | Cota por cross-docking con carga agregada de las tres plataformas | 2,17 | 2,58 | 6,50 | Contrastar distribución real por sitio; revisar CPU e IOPS trimestralmente |
 | Nube, TPS peak / tareas | 14,66 / 2 | 17,03 / 2 | 43,98 / 4 | Escalamiento y prueba trimestral |
 | Evidencia anual | 87,72 GB | 101,87 GB | 263,16 GB | Escalar S3 y retención |
-| Enlace de Talca, escenario horario distribuido | 5,16 Mbps | 5,20 Mbps | 5,64 Mbps | Contrastar además el retorno simultáneo de la Tabla A.33 |
+| Enlace de Talca, escenario horario distribuido | 5,16 Mbps | 5,20 Mbps | 5,64 Mbps | Contrastar además el retorno simultáneo de la Tabla A.37 |
 | Terminales de bodega de Talca | 132 | 151 | no aplica | Ajustar parque a la dotación |
 | Mesa, contactos mensuales | 2.000 | 2.258 | 6.000 | Recalibrar Erlang C |
 
@@ -1704,9 +1844,35 @@ La carga RT-09.06 (Bases Técnicas Transversales, cap. 9, p. 21) se ejecuta a **
 
 Se conservan percentil 95, utilización, colas, errores, pérdida o duplicación, estado de conciliación y parámetros confirmados. El perfil horario, la migración y la operación dominical se cierran con evidencia de prueba, sin convertir el resultado medido en un hecho previo.
 
+**Carga incremental y aceptación de las innovaciones del SD13**
+
+Para cada recurso, la demanda total es la carga base más el incremento medido en la misma ventana; no se suman máximos de horarios distintos. CPU se obtiene de operaciones por tiempo de CPU medido y se distribuye por la duración de la ventana y el límite de utilización declarado. La memoria corresponde a residentes más trabajos simultáneos. El almacenamiento agrega cardinalidad por tamaño y retención de resultados, versiones, índices y copias realmente previstas. El enlace agrega los bytes nuevos, el protocolo y los reintentos medidos. Cada resultado conserva entrada, unidad, ventana, lugar de proceso, configuración y evidencia para poder reproducir el cálculo.
+
+- INN-01: medir pares lote–local examinados por campaña, avisos producidos, respuestas de visita y tamaño de cada registro. Obtener el costo de la consulta y generación nocturna en N-10, el almacenamiento de resultados y el tráfico de precarga y retorno por C-01, sin contar el saldo estimado como una escritura de inventario oficial.
+
+- INN-02: medir incidentes admitidos, tamaño de captura y duración/concurrencia de reproducciones. Separar ingesta de trazas, almacenamiento hasta cierre y CPU/memoria temporales de QA y Preproducción. Verificar límites, eliminación y liberación de recursos incluso si falla la reproducción; no cargar esa ejecución al presupuesto productivo.
+
+- INN-03: medir lotes, tramos térmicos y frecuencia de cálculo por familia, junto con CPU por cálculo y tamaño de resultados y versiones. Las 10.920 muestras térmicas diarias ya están en la carga base: no duplicar su captura. Agregar el procesamiento derivado, su retención y los mensajes nuevos efectivamente producidos; ensayar alerta local, descarga al retorno y cálculo sin inventar tramos ausentes.
+
+- INN-04: medir hechos de M6/M7/M8 por período, cardinalidad de la agregación, duración del cierre mensual y volumen del informe y sus versiones. Verificar el acceso de Finanzas y el intercambio con el ERP sin transformar el informe analítico en otro registro contable maestro.
+
+- INN-05: medir locales destinatarios, hojas por período, tamaño por hoja y solicitudes de reimpresión. Cuantificar generación en N-10, precarga cifrada a C-01/C-02, estados de entrega y almacenamiento; comprobar impresión sin enlace y aislamiento entre receptores.
+
+El informe de prueba compara base e incremento por innovación y por recurso, identifica el primer umbral superado y conserva percentil 95, duración de trabajos, máxima cola, errores, reconciliación y recuperación. Incluye ventanas críticas, falla del componente previsto en N+1, corte WAN y retorno simultáneo. Solo declara suficiencia cuando los ensayos satisfacen los límites de 4.2.6.12; estos criterios describen la verificación exigida, no resultados ya obtenidos.
+
 ## Referencias
 
 Las fuentes citadas en este documento se listan a continuación en formato APA 7.ª edición.
+
+- Amazon Web Services. (s. f.-j). *Monitor email sending using Amazon SES event publishing*. <https://docs.aws.amazon.com/ses/latest/dg/monitor-using-event-publishing.html>
+
+- Amazon Web Services. (s. f.-k). *Amazon SNS SMS delivery monitoring with Amazon CloudWatch metrics and logs*. <https://docs.aws.amazon.com/sns/latest/dg/sms_stats_cloudwatch.html>
+
+- Amazon Web Services. (s. f.-l). *What is AWS End User Messaging Social?*. <https://docs.aws.amazon.com/social-messaging/latest/userguide/what-is-service.html>
+
+- Amazon Web Services. (s. f.-m). *WhatsApp message status*. <https://docs.aws.amazon.com/social-messaging/latest/userguide/managing-event-destinations-status.html>
+
+- Amazon Web Services. (s. f.-n). *Configuring custom domains to handle open and click tracking*. <https://docs.aws.amazon.com/ses/latest/dg/configure-custom-open-click-domains.html>
 
 - Angular. (2026a). *Release policy*. <https://angular.dev/reference/releases>
 
@@ -1716,7 +1882,7 @@ Las fuentes citadas en este documento se listan a continuación en formato APA 7
 
 - Distribuidora Puelche S.A. (2026b). *Bases Técnicas Transversales de Licitación N.º TFEP-01/2026*.
 
-- Distribuidora Puelche S.A. (2026c). *Caso 02: Logística. Especificaciones del problema y operación de Distribuidora Puelche S.A.* (Licitación N.º TFEP-01/2026).
+- Distribuidora Puelche S.A. (2026c). *Caso: Logística. Especificaciones del problema y operación de Distribuidora Puelche S.A.* (Licitación N.º TFEP-01/2026).
 
 - International Organization for Standardization. (2022a). *ISO/IEC/IEEE 42010:2022: Software, systems and enterprise—Architecture description*. <https://www.iso.org/standard/74393.html>
 
@@ -1724,7 +1890,7 @@ Las fuentes citadas en este documento se listan a continuación en formato APA 7
 
 - International Organization for Standardization. (2022c). *ISO/IEC 27002:2022*. <https://www.iso.org/standard/75652.html>
 
-- LafroX. (2026). *Subdocumento 3: Esquema de solución y alcance. Anexos*. Licitación TFEP-01/2026, Caso 02 — Logística.
+- LafroX. (2026). *Subdocumento 3: Esquema de solución y alcance. Anexos*. Licitación TFEP-01/2026, caso de logística.
 
 - Laravel. (2026). *Release notes*. <https://laravel.com/framework/docs/releases>
 

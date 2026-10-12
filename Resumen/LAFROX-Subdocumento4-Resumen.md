@@ -6,6 +6,8 @@
 
 Explica cómo se implementa técnicamente el alcance, dónde se ejecuta cada componente y cómo se sostiene la operación ante fallas. Se lee en tres partes: lógica, infraestructura física y recuperación de centros de datos.
 
+El cuerpo conserva comparaciones numéricas breves. Los servicios de nube, perfiles, respaldo, fallas y conmutación se leen en punteos; la correspondencia completa está en la Tabla A.14 del Anexo 4-N, y el inventario por sitio y las dieciséis dimensiones en las Tablas A.35 y A.30 del Anexo 4-W. Las derivaciones, escenarios, acciones y citas se explican fuera de las celdas.
+
 ## Arquitectura lógica: responsabilidades e intercambios
 
 La [arquitectura lógica](../04_arquitectura/LAFROX-Subdocumento4.md#41-arquitectura-l%C3%B3gica) organiza **ocho capas**: presentación, borde y exposición, puerta de enlace de servicios, lógica de negocio, integración y eventos, acceso a datos, seguridad transversal y observabilidad transversal. El negocio se divide en **doce módulos M1–M12**, con responsabilidad y propiedad de datos definidas.
@@ -14,7 +16,7 @@ El núcleo usa **Laravel 13 y PHP 8.5** como monolito modular: una base de códi
 
 Las **15 integraciones** separan ocho contratos internos y siete externos. La integración con ERP se encapsula; el ERP conserva emisión fiscal. La prueba de entrega, la guía tributaria y los acuses son registros distintos. Los reintentos usan identificadores únicos para evitar efectos duplicados. Véanse [el catálogo](../04_arquitectura/LAFROX-Subdocumento4.md#416-cat%C3%A1logo-de-interfaces) y [la articulación documental](../04_arquitectura/LAFROX-Subdocumento4.md#4117-articulaci%C3%B3n-entre-prueba-de-entrega-dte-y-acuse).
 
-La [presentación](../04_arquitectura/LAFROX-Subdocumento4.md#4131-capa-de-presentaci%C3%B3n-capa-1) adapta portales y consola Angular 22/Tailwind a escritorio, tableta y teléfono y compromete navegación íntegra por teclado, foco lógico y atajos; Kotlin usa la pantalla fija de cada modelo Zebra. La Tabla A.19 del [Anexo 4-P](../04_arquitectura/LAFROX-Subdocumento4-Anexos.md#anx:P) declara Chrome, Edge, Firefox y Safari, sus versiones estables vigente y anterior y la actualización verificada contra el Baseline de Angular. [INT-11](../04_arquitectura/LAFROX-Subdocumento4.md#4162-integraciones-externas) separa avisos necesarios del servicio de comunicaciones comerciales, que incluyen baja, registro de la preferencia y bloqueo de envíos y reintentos desde la solicitud.
+La [presentación](../04_arquitectura/LAFROX-Subdocumento4.md#4131-capa-de-presentaci%C3%B3n-capa-1) adapta portales y consola Angular 22/Tailwind a escritorio, tableta y teléfono y compromete navegación íntegra por teclado, foco lógico y atajos; Kotlin usa la pantalla fija de cada modelo Zebra. La Tabla A.21 del [Anexo 4-P](../04_arquitectura/LAFROX-Subdocumento4-Anexos.md#anx:P) declara Chrome, Edge, Firefox y Safari, sus versiones estables vigente y anterior y la actualización verificada contra el Baseline de Angular. [INT-11](../04_arquitectura/LAFROX-Subdocumento4.md#4162-integraciones-externas) separa avisos necesarios del servicio de comunicaciones comerciales, que incluyen baja, registro de la preferencia y bloqueo de envíos y reintentos desde la solicitud.
 
 La presentación limita a **tres interacciones** el acceso a cada función principal y define un sistema de diseño común a Angular/Tailwind y Kotlin. Incluye modo oscuro, preferencias visuales por persona y una vista ligera del Portal de Clientes. La [lógica de negocio](../04_arquitectura/LAFROX-Subdocumento4.md#4134-capa-de-l%C3%B3gica-de-negocio-capa-4) distingue parámetros de reglas implementadas de los cambios que requieren desarrollo; el CLIENTE configura responsables, plazos y niveles de aprobación de los flujos existentes, manteniendo la segregación de funciones.
 
@@ -23,6 +25,9 @@ La consola consulta y exporta auditoría con los cuatro filtros exigidos y admin
 El Portal de Clientes compromete al menos **15 % menos consultas asistidas** de estado de entrega, saldo y documentos por cliente activo al cierre del primer año de Operación (S-42), con línea base en marcha blanca y reporte mensual. En 4.1.17, la guía firmada por el ERP, el acuse SII y el POD con hash, marca de tiempo y cadena de verificación disponible se conservan **seis años en S3 Object Lock** para verificar después del vencimiento del certificado; el POD del receptor es evidencia vinculada, sin firma avanzada.
 
 ## Arquitectura física: nube y autonomía local
+
+Las cinco innovaciones del SD13 reutilizan módulos y componentes, pero añaden reglas, contratos y recorridos. El [Anexo 4-N](../04_arquitectura/LAFROX-Subdocumento4-Anexos.md#anx:N) identifica esa correspondencia y protege las autoridades de inventario, calidad y contabilidad; no crea módulos adicionales.
+
 
 La [arquitectura física](../04_arquitectura/LAFROX-Subdocumento4.md#42-arquitectura-f%C3%ADsica) combina servicios de AWS con operación local en Talca, Concepción y tres plataformas de cross-docking. Talca tiene un clúster local; Concepción y las plataformas cuentan con equipos activos y en espera. La conectividad combina fibra, red móvil y satélite según el sitio.
 
@@ -33,6 +38,9 @@ La [Figura 24](../04_arquitectura/LAFROX-Subdocumento4.md#fig:red-sitios-regione
 Desarrollo, QA y Preproducción usan el horario S-43 de **lunes a viernes, 08:00–20:00** (60/168 h; reducción potencial 64,3 %). La meta es al menos **60 % menos horas de cómputo** frente a funcionamiento continuo, medida mensualmente y reportada cada año con la huella de T-14 8.4.3. Se permiten ventanas de prueba programadas por el CLIENTE y activación inmediata para correcciones críticas fuera del horario; la carga por versión candidata y semanal permanece dentro del horario de uso.
 
 ## Capacidad y equipos
+
+La capacidad incorpora medición incremental de analítica, resultados, consultas, precargas y recursos temporales de QA/Preproducción. El [Anexo 4-W](../04_arquitectura/LAFROX-Subdocumento4-Anexos.md#anx:42A) define entradas y método; las pruebas comparan la carga base con las innovaciones habilitadas, también bajo falla y recuperación. Reutilizar recursos no demuestra suficiencia y los ensayos descritos no se presentan como ejecutados.
+
 
 El [dimensionamiento](../04_arquitectura/LAFROX-Subdocumento4.md#426-dimensionamiento-y-plan-de-capacidad) parte de escenarios y supuestos, con detalle en Anexo 4-W. Las quince integraciones representan **224.652 mensajes diarios normales** y **342.933 en peak**, con INT-04 incluido en INT-03; no son transacciones únicas sumables. La telemetría térmica aporta **10.920 muestras diarias**. La prueba de carga de referencia es **21,99 TPS**, transacciones por segundo, distribuida por lugar.
 
