@@ -1,7 +1,7 @@
 %% ============================================================================
 %%  lafrox.cls -- Clase corporativa LafroX
 %%  Propuestas tecnicas para la Licitacion N. TFEP-01/2026
-%%  Caso 02 - Logistica (Distribuidora Puelche S.A.)
+%%  Caso logística - Distribuidora Puelche S.A.
 %%
 %%  Motor: LuaLaTeX (obligatorio -- usa fontspec)
 %%  Compilar: latexmk demo.tex     (el latexmkrc ya fija lualatex)
@@ -198,6 +198,65 @@
 \RequirePackage{caption}
 \RequirePackage{pdflscape}
 \RequirePackage{eso-pic}
+
+% Acepta los PDF vectoriales 1.7 que se incluyen como figuras del proyecto.
+% Esto evita avisos de compatibilidad sin alterar los archivos de imagen.
+\ifLuaTeX
+  \pdfvariable minorversion=7
+\fi
+
+% Las leyendas visibles conservan su atribución, pero las listas muestran solo
+% el título. Todas las figuras y tablas institucionales pasan por \caption.
+\ExplSyntaxOn
+\cs_new_protected:Npn \__lfx_caption_with_short:n #1
+  {
+    \tl_set:Nn \l_tmpa_tl {#1}
+    \regex_replace_once:nnN
+      { (?: ~ —)? ~
+        (?: Fuente: | Basado~en | Elaboración~a~partir~de )
+        .* \Z }
+      { }
+      \l_tmpa_tl
+    \use:x
+      {
+        \exp_not:N \LFXcaptionoriginal
+        [\exp_not:V \l_tmpa_tl]
+        {\exp_not:n {#1}}
+      }
+  }
+\cs_new_eq:NN \LFXcaptionwithshort \__lfx_caption_with_short:n
+\ExplSyntaxOff
+\let\LFXcaptionoriginal\caption
+\RenewDocumentCommand{\caption}{s o m}{%
+  \IfBooleanTF{#1}{%
+    \LFXcaptionoriginal*{#3}%
+  }{%
+    \IfNoValueTF{#2}{%
+      \LFXcaptionwithshort{#3}%
+    }{%
+      \LFXcaptionoriginal[#2]{#3}%
+    }%
+  }%
+}
+
+% Las tablas longtable requieren que \caption sea el primer comando de fila.
+% Preparar el texto breve antes de abrir xltabular permite quitar la fuente del
+% índice sin insertar asignaciones dentro de la alineación.
+\ExplSyntaxOn
+\tl_new:N \g_lfx_caption_short_tl
+\cs_new:Npn \LFXcaptionshorttext { \tl_use:N \g_lfx_caption_short_tl }
+\cs_new_protected:Npn \LFXpreparacaption #1
+  {
+    \tl_set:Nn \l_tmpa_tl {#1}
+    \regex_replace_once:nnN
+      { (?: ~ —)? ~
+        (?: Fuente: | Basado~en | Elaboración~a~partir~de )
+        .* \Z }
+      { }
+      \l_tmpa_tl
+    \tl_gset:NV \g_lfx_caption_short_tl \l_tmpa_tl
+  }
+\ExplSyntaxOff
 
 % ---------------------------------------------------------------------------
 %  Filetes entre filas
@@ -586,10 +645,7 @@
   \endgroup
 }
 
-% Portada: sin encabezado, pero CON folio (no se admiten paginas sin numerar).
-%  Aqui va el folio solo, sin la zona de media firma: el Art. 40.2 pide media
-%  firma en cada pagina y firma COMPLETA en la caratula, y esa la aporta el
-%  bloque de firma de la propia portada.
+% Portada: firma completa en el bloque de identificación y solo folio en el pie.
 %  Folio en TINTA: desde la v2.2 la banda ocupa solo la cabecera y el pie
 %  queda sobre papel blanco. Antes iba en blanco sobre la cuna, y su
 %  legibilidad dependia de que la diagonal exterior alcanzara el margen
@@ -605,7 +661,7 @@
 % Contraportada: mismo pie desnudo, pero en tinta -- ahi el fondo es claro.
 \fancypagestyle{lfxcierre}{%
   \fancyhf{}
-  \fancyfoot[R]{\global\LFXfranjafalse\LFXpiefolioen{lafroxTinta}}
+  \fancyfoot[R]{\global\LFXfranjafalse\LFXpiederecho}
   \renewcommand{\headrulewidth}{0pt}
   \renewcommand{\headrule}{}
 }
@@ -691,6 +747,7 @@
 %  \end{tablalafrox}
 % ---------------------------------------------------------------------------
 \NewDocumentEnvironment{tablalafrox}{m m m m +b}{%
+  \LFXpreparacaption{#1}%
   \par
   \LFXfiletear{#5}%
   \LFXcuerpotabla
@@ -699,7 +756,7 @@
   % macro: longtable necesita ver las filas en la entrada para cortar pagina.
   \LFXconcuerpo{%
   \begin{xltabular}{\textwidth}{#3}
-    \caption{#1}\label{#2}\\[2pt]
+    \caption[\LFXcaptionshorttext]{#1}\label{#2}\\[2pt]
     \LFXtopruleoriginal #4 \\ \midrule
     \endfirsthead
     % Los rotulos van en una caja de ancho cero: si midieran su texto real,
@@ -746,7 +803,7 @@
 %  que falta se escribe dentro de una \nota, que se apaga entera con [final].
 % ---------------------------------------------------------------------------
 
-% \begin{cita}{Caso 02 --- Logistica, Cap. 15}  ...  \end{cita}
+% \begin{cita}{Caso logística, Cap. 15}  ...  \end{cita}
 \newenvironment{cita}[1]
   {\def\LFXcitafuente{#1}%
    \par\addvspace{11pt}%
@@ -904,11 +961,33 @@
   \@starttoc{lof}%
   \clearpage}
 
+% Detecta entradas reales y no solo el boilerplate de babel dentro del .lof/.lot.
+% Así no aparece una página de lista vacía en anexos sin figuras.
+\newif\ifLFX@hayentrada
+\newcommand{\LFX@revisaentrada}[4]{%
+  \def\LFX@tipoactual{#1}%
+  \ifx\LFX@tipoactual\LFX@tipobuscar
+    \global\LFX@hayentradatrue
+  \fi}
+\newcommand{\LFXlistanoVacia}[3]{%
+  \def\LFX@tipobuscar{#1}%
+  \LFX@hayentradafalse
+  \IfFileExists{\jobname.#2}{%
+    \begingroup
+      \let\contentsline\LFX@revisaentrada
+      \let\addvspace\@gobble
+      \let\babel@toc\@gobble
+      \let\contentsfinish\relax
+      \makeatletter\@input{\jobname.#2}\makeatother
+    \endgroup
+  }{}%
+  \ifLFX@hayentrada #3\fi}
+
 % Los tres indices, en el orden en que los espera un evaluador
 \newcommand{\preliminareslafrox}{%
   \indicelafrox
-  \listatablaslafrox
-  \listafiguraslafrox}
+  \LFXlistanoVacia{table}{lot}{\listatablaslafrox}%
+  \LFXlistanoVacia{figure}{lof}{\listafiguraslafrox}}
 
 % Subtitulo de pagina de control: sin filete, solo peso y aire
 \newcommand{\LFXsubtitulocontrol}[1]{%
@@ -998,5 +1077,23 @@
 \InputIfFileExists{lafrox-portada.tex}{}{%
   \ClassWarning{lafrox}{No se encontro lafrox-portada.tex:
     la macro \string\portadalafrox\space no estara disponible}}
+
+% hyperref instala sus propios ganchos de \caption al final del preámbulo.
+% Reinstalar el título breve al comenzar el documento mantiene las listas de
+% figuras con solo número y título, sin el texto de fuente.
+\AtBeginDocument{%
+  \let\LFXcaptionoriginal\caption
+  \RenewDocumentCommand{\caption}{s o m}{%
+    \IfBooleanTF{#1}{%
+      \LFXcaptionoriginal*{#3}%
+    }{%
+      \IfNoValueTF{#2}{%
+        \LFXcaptionwithshort{#3}%
+      }{%
+        \LFXcaptionoriginal[#2]{#3}%
+      }%
+    }%
+  }%
+}
 
 \endinput

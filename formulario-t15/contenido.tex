@@ -20,7 +20,9 @@
   \vspace*{\fill}
   \clearpage}
 
-Este formulario presenta la información de planificación que pide el Formulario T-15 de las Bases Administrativas para el Subdocumento 7: el método con que se estiman las horas hombre de cada paquete, la programación sobre la red de dependencias, la ruta crítica y sus holguras, y los frentes de trabajo, con el detalle de los solapamientos de los meses 13 a 15 y 19 a 20. Los paquetes de trabajo son los de la EDT del Formulario T-14. Este formulario no contiene precios ni costos (artículo 50.2 de las Bases Administrativas (p. 29)).
+Este formulario presenta la información de planificación que pide el Formulario T-15 de las Bases Administrativas para el Subdocumento 7 (LafroX, 2026p): el método con que se estiman las horas hombre de cada paquete, la programación sobre la red de dependencias, la ruta crítica y sus holguras, y los frentes de trabajo, con el detalle de los solapamientos de los meses 13 a 15 y 19 a 20. Los paquetes de trabajo son los de la EDT del Formulario T-14. Este formulario no contiene precios ni costos (artículo 50.2 de las Bases Administrativas (p. 29)).
+
+En este formulario, BA, BTT y Caso designan las Bases Administrativas (Distribuidora Puelche S.A., 2026a), las Bases Técnicas Transversales (2026b) y las Bases Técnicas del Caso Logística (2026c).
 
 \section{Método de estimación y de programación}
 
@@ -33,7 +35,7 @@ T\_E = (O + 4M + P) / 6; \ensuremath{\sigma} = (P − O) / 6.
 
 La p. 201 del PMBOK presenta también la distribución triangular, \((O + M + P)/3\). Se usa la beta porque pondera más el valor más probable, que se funda en los requerimientos y cantidades de cada paquete.
 
-Las bases de cada estimación se declaran por tipo de paquete. Los módulos y las integraciones se estiman con los requerimientos del Formulario T-12 asignados al paquete; la infraestructura, con las cantidades del Formulario T-11; la implantación y la capacitación, con las personas y rutas del caso y la dotación del Formulario T-18, sección 2.6; y la operación, con los horarios de cobertura de los paquetes 8.1.1 y 8.1.2 y la periodicidad de los informes. Los paquetes de la fase 8 son de esfuerzo continuo: su estimación es mensual y se multiplica por los 36 meses de operación.
+Las bases de cada estimación se declaran por tipo de paquete. Los módulos y las integraciones se estiman con los requerimientos del Formulario T-12 asignados al paquete; la infraestructura, con las cantidades del Formulario T-11; la implantación y la capacitación, con las personas y rutas del caso y la dotación del Formulario T-18 (LafroX, 2026s), sección 2.6; y la operación, con los horarios de cobertura de los paquetes 8.1.1 y 8.1.2 y la periodicidad de los informes. Los paquetes de la fase 8 son de esfuerzo continuo: su estimación es mensual y se multiplica por los 36 meses de operación.
 
 \subsection{Programación}
 
@@ -46,7 +48,7 @@ La sección 5 conserva el cálculo nominal anterior: incorpora las revisiones de
 En el escenario nominal anterior a la reestimación, la red de la sección 5 señala como camino de menor holgura la cadena de la Etapa 2: diseño (1.2.5, 2.1.4 y 2.4.2), módulos (3.5), integración (3.9.1) y certificación (3.9.2–3.9.7). La cadena de la Etapa 1 y la sala técnica también requieren vigilancia. Las reservas y probabilidades de la Tabla \ref{tab_T15_7} corresponden exclusivamente a ese escenario histórico y no acreditan la ruta crítica ni la factibilidad de la línea base de 217.543 HH. Las marchas blancas y los pasos a producción mantienen las fechas contractuales del Formulario E-25.
 
 \figuraRutaCritica{imagenes/Diagramas que faltaban/Fig_7-7_T15-1_Ruta_Critica.pdf}
-  {Dependencias y caminos de menor holgura del escenario nominal histórico; sujetos a recálculo. Fuente: Anexo 7.B del Subdocumento 7 y períodos del Formulario T-14.}
+  {Dependencias y caminos de menor holgura del escenario nominal histórico; sujetos a recálculo. Fuente: elaboración a partir de LafroX (2026t, Anexo 7.B) y LafroX (2026d, T-14, períodos contractuales).}
   {fig:T15-ruta}
 
 La figura presenta la secuencia mensual de la implementación y la convergencia de sus dependencias en los hitos. En el escenario histórico, D-29 a D-31c forman la cadena de menor holgura de la Etapa 2, D-02, D-04 y D-14 a D-25 la de la Etapa 1, y D-07 a D-13 convergen en el H3. La clasificación definitiva de los caminos requiere recalcular la red con el esfuerzo y los recursos vigentes.
@@ -62,7 +64,7 @@ Un frente de trabajo es un equipo con un responsable y un conjunto de cuentas de
 Los frentes se sincronizan en los hitos del Formulario E-25 y en los comités del artículo 71 de las Bases Administrativas (p. 37), cuyas actas registran los acuerdos entre frentes (paquetes 1.8.2 a 1.8.5). La Figura \ref{fig:T15-frentes} presenta su ventana de actividad entre los meses 1 y 21.
 
 \figuraDiagramaHorizontal[597pt]{imagenes/Diagramas que faltaban/Fig_7-6_T15-2_Frentes_Trabajo.pdf}
-  {Frentes de trabajo de los meses 1 a 21 y solapamientos del artículo 17.2 de las Bases Administrativas (p. 13). Fuente: elaboración propia a partir de la Tabla T-15.1 y del Formulario T-14.}
+  {Frentes de trabajo de los meses 1 a 21 y solapamientos del artículo 17.2 de las Bases Administrativas (p. 13). Fuente: elaboración a partir de la Tabla T-15.1 y LafroX (2026d, T-14).}
   {fig:T15-frentes}
 
 En los meses 13 a 15 trabajan a la vez F7, en la marcha blanca de la Etapa 1; F3, en las correcciones de esa marcha blanca; F4, en el desarrollo de la Etapa 2; F6, en las pruebas de ambas etapas; y F1 y F2. F3 y F4 dependen del mismo rol, el Líder de Desarrollo, y por eso son equipos distintos: el equipo que atiende la marcha blanca no puede ser el que desarrolla la Etapa 2 (artículo 17.2 de las Bases Administrativas (p. 13), punto 1). En los meses 19 y 20 trabajan F7, en la marcha blanca de la Etapa 2; F4, en sus correcciones; F6; y el soporte de la Etapa 1 en producción.
@@ -80,7 +82,7 @@ Los supuestos y el cálculo del modelo de recursos son los siguientes.
 \item Esfuerzo inicial por clase y paquete: G gestión/acta 80 HH; E diseño/configuración/innovación 240 HH; D módulo 960 HH; I integración/migración 480 HH; V prueba 320 HH (integración y cierres de certificación: 160 HH); T instalación/capacitación 160 HH. Las clases de tamaño se fundan en los requerimientos del T-12 y en las cantidades del T-11, y se recalculan con el equipo al establecer la línea base. La tabla al final de esta sección explica qué contiene cada clase.
 \item R identifica esfuerzo recurrente mensual, incluidos equivalentes mensuales de actividades anuales/semestrales: la distribución contable no cambia la frecuencia de ejecución del T-14.
 \item A identifica acompañamiento: 13 puestos simultáneos de terreno/coordinación; 12 \ensuremath{\times} 24 días \ensuremath{\times} 8 horas + 160 HH de coordinación = 2.464 HH por cuatro semanas; soporte E1 meses 16–20 con previsión 2.464/\allowbreak{}1.312/\allowbreak{}544/\allowbreak{}544/\allowbreak{}544 HH para puestos 13/\allowbreak{}7/\allowbreak{}3/\allowbreak{}3/\allowbreak{}3, condicionada a los indicadores del T-18. Las cuatro semanas de 4.3.2 se reparten por días: con el H12 firmado el 5 de octubre de 2028, primer día después de los tres primeros días hábiles, 23 de los 24 días de lunes a sábado caen en el mes 21 y uno en el mes 22; por eso 4.3.2 imputa 2.361,33 HH en el mes 21 y 102,67 en el mes 22. Si la fecha efectiva cambia, se recalcula el reparto sin acortar las cuatro semanas.
-\item C identifica cobertura por horas-posición del calendario real, con el mes 1 en febrero de 2027 (Anexo 7.A). NOC (8.1.1) y SOC (8.1.5) mantienen un puesto 24\ensuremath{\times}7 cada uno: días del mes \ensuremath{\times} 24, es decir 744 HH en un mes de 31 días, 720 en uno de 30 y 672 en febrero. La mesa (8.1.2, primera línea de incidentes del artículo 78 de las Bases Administrativas (p. 40)) aplica las posiciones del SD4, Anexo 4-W.7: 7 en la hora cargada y 2 en las otras 17 horas de 04:00 a 22:00, o 41 horas-posición por día de lunes a sábado, y desde el mes 25 un tercer agente en esas 17 horas, 58 horas-posición por día, con el que la dotación cubre los tres niveles de servicio hasta 2.391 contactos al mes (SD4, Anexo 4-W.7); en septiembre y diciembre se suman 6 horas-posición de 22:00 a 04:00 de lunes a sábado y 24 los domingos. Así, un mes de 26 días de lunes a sábado exige 26 \ensuremath{\times} 41 = 1.066 HH de mesa, y septiembre de 2028 exige 26 \ensuremath{\times} 47 + 4 \ensuremath{\times} 24 = 1.318 HH. El SOC es propio de LafroX y opera desde su Centro de Operaciones en Valparaíso (RT-11.17; SD4, Anexo 4-W.7); sus HH se imputan aquí. Las posiciones de la mesa provienen de un Erlang C con supuestos de demanda: no acreditan abandono ni resolución al primer contacto, que se miden según la sección 5.6. La curva dimensiona relevos con 128 HH efectivas.
+\item C identifica cobertura por horas-posición del calendario real, con el mes 1 en febrero de 2027 (Anexo 7.A). NOC (8.1.1) y SOC (8.1.5) mantienen un puesto 24\ensuremath{\times}7 cada uno: días del mes \ensuremath{\times} 24, es decir 744 HH en un mes de 31 días, 720 en uno de 30 y 672 en febrero. La mesa (8.1.2, primera línea de incidentes del artículo 78 de las Bases Administrativas (p. 40)) aplica las posiciones del SD4 (LafroX, 2026m), Anexo 4-W.7: 7 en la hora cargada y 2 en las otras 17 horas de 04:00 a 22:00, o 41 horas-posición por día de lunes a sábado, y desde el mes 25 un tercer agente en esas 17 horas, 58 horas-posición por día, con el que la dotación cubre los tres niveles de servicio hasta 2.391 contactos al mes (SD4, Anexo 4-W.7); en septiembre y diciembre se suman 6 horas-posición de 22:00 a 04:00 de lunes a sábado y 24 los domingos. Así, un mes de 26 días de lunes a sábado exige 26 \ensuremath{\times} 41 = 1.066 HH de mesa, y septiembre de 2028 exige 26 \ensuremath{\times} 47 + 4 \ensuremath{\times} 24 = 1.318 HH. El SOC es propio de LafroX y opera desde su Centro de Operaciones en Valparaíso (RT-11.17; SD4, Anexo 4-W.7); sus HH se imputan aquí. Las posiciones de la mesa provienen de un Erlang C con supuestos de demanda: no acreditan abandono ni resolución al primer contacto, que se miden según la sección 5.6. La curva dimensiona relevos con 128 HH efectivas.
 \item O = 0,75M; P = 1,25M; E = (O + 4M + P)/6 = M. Para A/C, O = M = P: no se reduce cobertura por un escenario optimista. Los riesgos de demanda y ausencias se tratan separadamente.
 \item E se reparte uniformemente entre los meses inclusivos declarados. Las ventanas relativas son supuestos de asignación; las restricciones originales de aceptación del T-14 prevalecen. Coincidir en un mes no demuestra que una precedencia dentro del mes se haya satisfecho.
 \item Personas por rol/mes = techo(HH del rol / 128). Se suman techos por familia de trabajo dirigida por el rol; el responsable nominado dirige el equipo, no ejecuta solo todas las HH. JP/ARQ y los otros códigos identifican equipos con liderazgo y apoyo competente: un valor 5 en JP significa cinco personas equivalentes de dirección/documentación, no cinco jefes de proyecto. La sección 5.7 compara la curva con la dotación declarada y con los roles mínimos; antes de aprobar recursos se deben asignar personas distintas con competencias y turnos verificables.
@@ -137,7 +139,7 @@ La red se calcula sobre los paquetes con entregable de la sección 6 y sus activ
 \item \textbf{Equipo del paquete.} Cada paquete tiene un equipo que cumple la regla de la quincena y termina dentro de su ventana. Los módulos de la Etapa 1 se escalonan entre junio y septiembre de 2027: cada uno empieza su análisis y diseño de contratos en junio, junto con la base compartida, y construye en iteraciones según la disponibilidad del equipo, con 12 personas en las actividades de equipo completo y 2 por incremento.
 \item \textbf{Lógica.} Dentro del paquete, las actividades siguen su plantilla (análisis, diseño, construcción, pruebas, integración y entrega). Entre paquetes rigen las dependencias del Anexo 7.B: las de tipo FC exigen que el predecesor termine; las de tipo CC, que haya empezado; y las de tipo «por interfaz» (D-16, D-18 y D-19) hacen que el sucesor construya después de que el predecesor fija sus contratos (actividad A02) e integre después de que el predecesor entrega (A12).
 \item \textbf{Revisión del CLIENTE.} Cada hito se cumple con el acta de aceptación (artículo 18.1 de las Bases Administrativas (p. 13)), y el CLIENTE dispone de diez días hábiles para revisar (artículo 18.3 de las Bases Administrativas (p. 13)). Por eso los paquetes que gatillan un hito terminan, a más tardar, diez días hábiles antes del último día hábil del mes del hito, y antes de esa fecha límite se deja la reserva que pide el PERT (sección 5.3). La subsanación no se programa como trabajo normal: si se necesita, consume la reserva.
-\item \textbf{Nivelación de recursos.} Los paquetes se programan en el orden de su holgura y cada uno en la primera fecha en que no supera la dotación declarada en el SD1: 40 personas de desarrollo (de las 48 de la división; las 8 restantes quedan disponibles), 44 de SRE y NOC, 15 de arquitectura y datos en conjunto, 7 de seguridad sin contar los analistas del SOC propio, contratados aparte y 10 de calidad, que se refuerza con evaluadores subcontratados hasta 16 durante las certificaciones (PMI, 2017, pp. 211–212). La carga diaria suma las actividades y el esfuerzo continuo del mes.
+\item \textbf{Nivelación de recursos.} Los paquetes se programan en el orden de su holgura y cada uno en la primera fecha en que no supera la dotación declarada en el SD1 (LafroX, 2026i): 40 personas de desarrollo (de las 48 de la división; las 8 restantes quedan disponibles), 44 de SRE y NOC, 15 de arquitectura y datos en conjunto, 7 de seguridad sin contar los analistas del SOC propio, contratados aparte y 10 de calidad, que se refuerza con evaluadores subcontratados hasta 16 durante las certificaciones (PMI, 2017, pp. 211–212). La carga diaria suma las actividades y el esfuerzo continuo del mes.
 
 \end{itemize}
 En el escenario nominal histórico no se registraron dependencias incumplidas ni paquetes fuera de sus ventanas. Sus máximos diarios deben revisarse con las horas actualizadas y la disponibilidad nominal por especialidad; el tamaño corporativo declarado no acredita por sí solo la asignación al proyecto. La Tabla \ref{tab_T15_5} resume las fechas de los grupos de paquetes; la sección 6.1 da las fechas de cada paquete.
@@ -155,7 +157,7 @@ El cálculo por actividad y la simulación del SD8 fijan siete reglas de secuenc
 \item \textbf{Integraciones de la Etapa 1 antes del H4.} Las integraciones con proveedores, pago, mapas y avisos (3.6.1 a 3.6.4) terminan entre agosto y septiembre de 2027 y son predecesoras de la prueba de integración 3.8.1, de modo que el software del H4 incluye todas las interfaces externas de la Etapa 1 (Formulario E-25).
 \item \textbf{Aprobaciones que gatillan el H2 y el H8.} Los documentos de aprobación 2.4.1 y 2.4.2 terminan antes de la fecha límite de su hito: 2.4.1 se elabora en abril de 2027, apenas se entregan la arquitectura, el plan de seguridad (2.2.3, con cuatro especialistas) y el modelo de datos, y queda en revisión del CLIENTE en mayo; 2.4.2 se elabora entre el 1 y el 13 de marzo de 2028, después del diseño 2.1.4, que se ejecuta con cuatro arquitectos en la primera quincena de febrero.
 \item \textbf{Corte de la migración.} Sólo la conciliación final y el corte (3.7.5.A06) son una intervención productiva y se programan en días permitidos, después de los dos ensayos 3.7.3 y 3.7.4 (D-24); el análisis, el diseño y las pruebas del corte avanzan en paralelo con esos ensayos en ambientes no productivos. La carga de saldos migrados desde el WMS de Talca (3.7.3) y su segundo ensayo (3.7.4) se ejecutan en diciembre de 2027 sobre Preproducción y no intervienen Producción, por lo que no infringen el congelamiento de diciembre; la carga productiva de esos saldos ocurre sólo con el corte 3.7.5.
-\item \textbf{Refuerzo de calidad.} Durante las certificaciones (meses 9 a 12 y 16 a 18) el equipo de calidad se refuerza con evaluadores subcontratados hasta 16 personas por día (SD6, sección 6.1.3), para dejar ante el H5 y el H10 la reserva que exige la simulación del SD8.
+\item \textbf{Refuerzo de calidad.} Durante las certificaciones (meses 9 a 12 y 16 a 18) el equipo de calidad se refuerza con evaluadores subcontratados hasta 16 personas por día (LafroX, 2026o, SD6, sección 6.1.3), para dejar ante el H5 y el H10 la reserva que exige la simulación del SD8.
 
 \end{itemize}
 El escenario histórico escalona la construcción de la Etapa 1 entre junio y septiembre de 2027 con hasta 40 desarrolladores simultáneos; ese máximo debe contrastarse con la asignación nominal. Su curva registra 28 personas equivalentes de desarrollo en los meses 6 y 7. Las dependencias D-08 y D-12 del Anexo 7.B se precisaron por paquete, porque a nivel de cuenta bloqueaban sin necesidad: los ambientes no esperan a la plataforma de IoT (3.2.3), que precede a M12, ni la configuración de los CD espera a los gabinetes de cross-docking (6.3.4), que preceden al equipamiento de campo.
@@ -184,7 +186,7 @@ El H1 y el H8 tienen reservas de 6 y 4 días hábiles, menores que los diez día
 
 \subsection{Medición de los niveles de atención}
 
-Durante la atención de 04:00 a 22:00 de lunes a sábado y su cobertura 24\ensuremath{\times}7 en los peaks de septiembre y diciembre y ante incidentes críticos en la ventana de despacho, LafroX atenderá al menos el 80 \% de los contactos antes de 20 segundos, resolverá al menos el 70 \% en el primer contacto y mantendrá el abandono en un máximo del 5 \%. Estos resultados se medirán y reportarán mensualmente y activarán las medidas de recalibración y refuerzo previstas en esta sección (Bases Técnicas Transversales, cap. 21, RT-21.06, p. 36; Caso 02, cap. 15, pp. 26--27).
+Durante la atención de 04:00 a 22:00 de lunes a sábado y su cobertura 24\ensuremath{\times}7 en los peaks de septiembre y diciembre y ante incidentes críticos en la ventana de despacho, LafroX atenderá al menos el 80 \% de los contactos antes de 20 segundos, resolverá al menos el 70 \% en el primer contacto y mantendrá el abandono en un máximo del 5 \%. Estos resultados se medirán y reportarán mensualmente y activarán las medidas de recalibración y refuerzo previstas en esta sección (BTT, cap. 21, RT-21.06, p. 36; Caso, cap. 15, pp. 26--27).
 
 El Erlang C de la mesa (SD4, Anexo 4-W.7) dimensiona la espera con llegadas de Poisson, atención exponencial y paciencia infinita. Sirve para el 80 \% de respuestas antes de 20 segundos, pero no modela el abandono ni la resolución al primer contacto del RT-21.06 de las Bases Técnicas Transversales (p. 36). Para ambos se aplica medición: desde la marcha blanca de la Etapa 1, la mesa registra por contacto la hora de llegada, de respuesta o de abandono y si se resolvió sin escalar. Con al menos cuatro semanas de registros se calibra un modelo con abandono (Erlang A) usando la paciencia observada, y se recalcula la dotación de 8.1.2 antes del mes 21. La resolución al primer contacto se sostiene con la base de conocimiento de 3.11 y la capacitación de 7.1, y se informa mensualmente. Si un indicador no se cumple durante dos meses seguidos, se aumenta la dotación de la franja afectada sin esperar la revisión anual.
 
@@ -216,7 +218,7 @@ Cada paquete se descompone en actividades de 8 a 80 HH que caben en una quincena
 La Figura \ref{fig:T15-gradual} muestra qué parte del cronograma se detalla en la oferta y en qué momento se detalla el resto.
 
 \figuraDiagramaHorizontal[549pt]{imagenes/Diagramas que faltaban/Fig_T15-3_Planificacion_Gradual.pdf}
-  {Planificación gradual del cronograma. Fuente: elaboración propia a partir de las Tablas \ref{tab_T15_paquetes} y \ref{tab_T15_9}.}
+  {Planificación gradual del cronograma. Fuente: elaboración a partir de las Tablas \ref{tab_T15_paquetes} y \ref{tab_T15_9}.}
   {fig:T15-gradual}
 
 La figura muestra que sólo los cuatro primeros meses, hasta el H2, se presentan descompuestos en actividades. Cada fase posterior tiene sus paquetes, fechas y dependencias fijos, y se detalla en un punto de replanificación ubicado antes del hito que la precede, cuando el equipo ya conoce el trabajo: así el cronograma no promete el día exacto de una actividad que ocurrirá un año después.
@@ -241,29 +243,25 @@ Estos 59 paquetes no se descomponen en una lista de actividades distintas, porqu
 
 Así, los 222 paquetes quedan programados de dos formas: los 163 paquetes con entregable, con fechas en la Tabla \ref{tab_T15_paquetes} y actividades de 80 HH o menos detalladas hasta el H2 y luego por planificación gradual, y 59 paquetes de esfuerzo continuo que se programan por quincena u ocurrencia, en relevos de hasta 64 HH cada uno. En ambos casos nada supera una quincena. Ningún paquete se informa al 50 \% durante semanas: el avance de cada quincena se mide por las actividades terminadas y por los relevos u ocurrencias cumplidos, que alimentan el valor ganado del SD6, sección 6.1.5.
 
-\clearpage
 \section*{Referencias}
 \phantomsection
 \addcontentsline{toc}{section}{Referencias}
 
-Las fuentes citadas en este formulario son las siguientes.
+Las fuentes citadas en este formulario se listan en formato APA 7.ª edición. Las Bases se citan en el texto con su documento y el artículo, capítulo, sección o código del requisito.
 
 \begin{itemize}
-\item \emph{Bases Administrativas para la preparación de la propuesta}. (2026).
-
-\item \emph{Bases Técnicas Transversales para la preparación de la propuesta}. (2026).
-
-\item \emph{Bases Técnicas del Caso 02: Logística}. (2026).
-
+\item Distribuidora Puelche S.A. (2026a). \emph{Bases Administrativas, Licitación TFEP-01/2026}.
+\item Distribuidora Puelche S.A. (2026b). \emph{Bases Técnicas Transversales, Licitación TFEP-01/2026}.
+\item Distribuidora Puelche S.A. (2026c). \emph{Bases Técnicas del Caso Logística}.
+\item LafroX. (2026d). \emph{Formulario T-14: Estructura de desglose del trabajo}. Propuesta técnica, Licitación TFEP-01/2026.
+\item LafroX. (2026i). \emph{Subdocumento 1: Presentación de la empresa}. Propuesta técnica, Licitación TFEP-01/2026.
+\item LafroX. (2026m). \emph{Subdocumento 4: Arquitectura de la solución}. Propuesta técnica, Licitación TFEP-01/2026.
+\item LafroX. (2026o). \emph{Subdocumento 6: Metodología de desarrollo}. Propuesta técnica, Licitación TFEP-01/2026.
+\item LafroX. (2026p). \emph{Subdocumento 7: Plan de trabajo}. Propuesta técnica, Licitación TFEP-01/2026.
+\item LafroX. (2026r). \emph{Subdocumento 8: Plan de riesgos}. Propuesta técnica, Licitación TFEP-01/2026.
+\item LafroX. (2026s). \emph{Formulario T-18: Implantación de la solución}. Propuesta técnica, Licitación TFEP-01/2026.
+\item LafroX. (2026t). \emph{Subdocumento 7: Anexos}. Propuesta técnica, Licitación TFEP-01/2026.
 \item Malcolm, D. G., Roseboom, J. H., Clark, C. E., \& Fazar, W. (1959). Application of a technique for research and development program evaluation. \emph{Operations Research, 7}(5), 646–669.
-
-\item Project Management Institute. (2017). \emph{La guía de los fundamentos para la dirección de proyectos (Guía del PMBOK®)} (6.ª ed.). Project Management Institute.
+\item Project Management Institute. (2017). \emph{Guía de los fundamentos para la dirección de proyectos (Guía del PMBOK)} (6.ª ed.). Project Management Institute.
 
 \end{itemize}
-\section*{Declaración de uso de IA}
-\phantomsection
-\addcontentsline{toc}{section}{Declaración de uso de IA}
-
-En cumplimiento de la sección 7.2 de las Aclaraciones de la licitación, la tabla siguiente declara el uso de herramientas de inteligencia artificial en este formulario, con la revisión humana de cada parte. La declaración se consolida en el Formulario A-6.
-
-\parte{tablas/tab_T15_11}

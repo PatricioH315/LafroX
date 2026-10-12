@@ -1,0 +1,3075 @@
+                                                                        VERSIÓN FINAL PARA ENTREGA
+               LafroX SpA
+
+
+
+
+LICITACIÓN PÚBLICA
+
+
+Licitación N.° TFEP-01/2026
+Proyecto de Plataforma Digital de Misión Crítica
+Caso — Logística
+
+
+
+  Sobre N.° 2 --- Oferta Técnica
+
+
+
+
+Subdocumento 7
+Plan de Trabajo, EDT, Cronograma e Implantación
+Subdocumento 7 · Formulario T-14
+
+
+
+MANDANTE                                      REPRESENTANTE LEGAL
+
+Distribuidora Puelche S.A.                    Alex Aravena
+                                              Jefe de Proyecto y Apoderado
+PROPONENTE                                    contacto@lafrox.cl
+LafroX SpA                                    +56 32 250 4100
+RUT 77.418.902-K
+Av. Brasil 2241, Valparaíso
+
+
+
+FECHA DE EMISIÓN
+
+
+12 de octubre de 2026
+
+
+FIRMA DEL REPRESENTANTE LEGAL
+
+
+
+
+Alex Aravena
+Jefe de Proyecto y Apoderado · LafroX SpA
+                                                                             Media firma: Alex Aravena
+SOBRE2_LAFROX_OFERTA_TECNICA_20261011.ZIP                                                           1
+    LafroX SpA
+
+
+
+
+Índice general
+
+Índice general                                                                              2
+
+Lista de tablas                                                                             3
+
+Lista de figuras                                                                            4
+
+7 Introducción al Plan de trabajo                                                           6
+    7.1 EDT                                                                                 6
+         7.1.1 Criterio de descomposición                                                   6
+         7.1.2 Estructura general                                                           9
+                 7.1.2.1 Fase 1. Inicio                                                     9
+                 7.1.2.2 Fase 2. Elaboración                                               10
+                 7.1.2.3 Fase 3. Construcción                                              12
+                 7.1.2.4 Fase 4. Transición                                                17
+                 7.1.2.5 Fase 5. Adquisiciones y contrataciones                            18
+                 7.1.2.6 Fase 6. Infraestructura física y sitios                           19
+                 7.1.2.7 Fase 7. Capacitación y gestión del cambio                         21
+                 7.1.2.8 Fase 8. Operación y soporte                                       22
+                 7.1.2.9 Fase 9. Cierre                                                    24
+         7.1.3 Cobertura del alcance                                                       25
+         7.1.4 Diccionario y asignación de responsables                                    28
+    7.2 Plan de trabajo                                                                   29
+         7.2.1 Secuenciamiento y dependencias                                              29
+         7.2.2 Estimación                                                                  32
+         7.2.3 Frentes de trabajo y sincronización                                         34
+         7.2.4 Solapamientos de los meses 13 a 15 y 19 a 20                                36
+    7.3 Cronograma e implantación                                                         36
+         7.3.1 Ruta crítica y holguras                                                     36
+         7.3.2 Carta Gantt y calendario                                                    39
+         7.3.3 Plan de implantación y puesta en marcha                                     43
+         7.3.4 Marcha blanca de la Etapa 1                                                 47
+         7.3.5 Marcha blanca de la Etapa 2 y convivencia                                   50
+         7.3.6 Estabilización y transferencia                                              51
+         7.3.7 Momento de los resultados comprometidos                                     52
+         7.3.8 Base de planificación y recursos                                            54
+    Referencias                                                                           56
+    Declaración de uso de IA                                                              56
+
+
+
+
+LafroX SpA                                                           Media firma: Alex Aravena
+Subdocumento 7                                                                              2
+    LafroX SpA
+
+
+
+
+Lista de tablas
+Tabla 7.1 Cuentas de control y paquetes por fase.                                     7
+Tabla 7.2 Cobertura del alcance en la EDT.                                          26
+Tabla 7.3 Paquetes por responsable.                                                 28
+Tabla 7.4 Horas hombre programadas por etapa —                                      33
+Tabla 7.5 Hitos del Formulario E-25 en el cronograma.                               39
+Tabla 7.6 Meses contractuales según la fecha de inicio.                             41
+Tabla 7.7 Olas de implantación de la Etapa 1.                                       43
+Tabla 7.8 Niveles de reversión.                                                     45
+Tabla 7.9 Indicadores diarios de la marcha blanca.                                  48
+Tabla 7.10 Estabilización por ola.                                                  51
+Tabla 7.11 Momento de los resultados de aceptación del caso.                        52
+Tabla 7.12 Innovaciones en el cronograma.                                           53
+Tabla 7.13 Declaración de uso de IA.                                                56
+
+
+
+
+LafroX SpA                                                     Media firma: Alex Aravena
+Subdocumento 7                                                                        3
+    LafroX SpA
+
+
+
+
+Lista de figuras
+
+Figura 7.1 Vista del primer nivel de la EDT: raíz del proyecto y sus nueve fases.                   8
+Figura 7.2 Fase 1 — Inicio, primera parte: cuentas 1.1 a 1.5.                                       9
+Figura 7.3 Fase 1 — Inicio, segunda parte: cuentas 1.6 a 1.9, desde riesgos hasta cumpli-
+miento contractual.                                                                               10
+Figura 7.4 Fase 2 — Elaboración, primera parte: arquitectura, seguridad y sala técnica,
+cuentas 2.1 a 2.3.                                                                                11
+Figura 7.5 Fase 2 — Elaboración, segunda parte: validación, continuidad y experiencia
+de usuario, cuentas 2.4 a 2.6.                                                                    12
+Figura 7.6 Fase 3 — Construcción, primera parte: ambientes, servicios de nube y base
+compartida, cuentas 3.1 a 3.3.                                                                    13
+Figura 7.7 Fase 3 — Construcción, segunda parte: módulos de la Etapa 1, cuenta 3.4.               14
+Figura 7.8 Fase 3 — Construcción, tercera parte: módulos de la Etapa 2, integraciones,
+migración y pruebas de la Etapa 1, cuentas 3.5 a 3.8.                                             15
+Figura 7.9 Fase 3 — Construcción, cuarta parte: pruebas de la Etapa 2, innovaciones y
+documentación técnica, cuentas 3.9 a 3.11.                                                        16
+Figura 7.10 Fase 3 — Construcción, quinta parte: detalle de los paquetes de las innova-
+ciones agrupadas en la cuenta 3.10.                                                               17
+Figura 7.11 Fase 4 — Transición: plan de implantación y marchas blancas de las etapas 1
+y 2, cuentas 4.1 a 4.3.                                                                           18
+Figura 7.12 Fase 5 — Adquisiciones y contrataciones: hardware, servicios, enlaces y
+acuerdos con terceros, cuentas 5.1 a 5.4.                                                         19
+Figura 7.13 Fase 6 — Infraestructura física y sitios, primera parte: sala técnica, cableado
+y racks, cuentas 6.1 a 6.3.                                                                       20
+Figura 7.14 Fase 6 — Infraestructura física y sitios, segunda parte: seguridad física,
+equipamiento de campo y configuración, cuentas 6.4 a 6.6.                                         21
+Figura 7.15 Fase 7 — Capacitación y gestión del cambio: capacitación por roles, acompa-
+ñamiento y certificaciones, cuentas 7.1 a 7.3.                                                    22
+Figura 7.16 Fase 8 — Operación y soporte, primera parte: servicios de operación y
+mantenimiento, cuentas 8.1 y 8.2.                                                                 23
+Figura 7.17 Fase 8 — Operación y soporte, segunda parte: innovaciones, obligaciones
+periódicas, capacitación y transferencia, cuentas 8.3 a 8.5.                                      24
+Figura 7.18 Fase 9 — Cierre: cierre de implementación y salida al término del contrato,
+cuentas 9.1 y 9.2.                                                                                25
+
+
+
+
+LafroX SpA                                                                   Media firma: Alex Aravena
+Subdocumento 7                                                                                      4
+    LafroX SpA
+
+
+
+
+Figura 7.19 Ubicación en la EDT de las innovaciones y la seguridad, la calidad, la migra-
+ción y la implantación.                                                                         27
+Figura 7.20 Red de precedencias entre cuentas de control e hitos.                               31
+Figura 7.21 Frentes de trabajo de los meses 1 a 21.                                             35
+Figura 7.22 Dependencias y caminos de menor holgura del escenario nominal histórico;
+sujetos a recálculo.                                                                            38
+Figura 7.23 Carta Gantt resumida de los 56 meses, con inicio en febrero de 2027.                42
+Figura 7.24 Secuencia de olas de la Etapa 1 durante la marcha blanca.                           45
+Figura 7.25 Procedimiento de reversión de la Etapa 1 en la ventana de despacho.                 47
+Figura 7.26 Ciclo diario de la marcha blanca.                                                   49
+Figura 7.27 Convivencia de la Etapa 1 en producción con la Etapa 2 en marcha blanca.            51
+
+
+
+
+LafroX SpA                                                                 Media firma: Alex Aravena
+Subdocumento 7                                                                                    5
+CAPÍTULO 7
+
+
+
+
+Introducción al Plan de trabajo
+    Este capítulo presenta cómo LafroX ejecutará el proyecto de Distribuidora Puelche dentro
+del cronograma contractual obligatorio de 56 meses (Bases Administrativas, art. 17, pp. 12–13):
+qué trabajo se hace, en qué orden, con qué esfuerzo y cómo la solución entra en operación sin
+detener la venta, la bodega ni el reparto.
+    La sección 7.1 descompone el 100 % del alcance en una estructura de descomposición del
+trabajo (EDT) con paquetes estimables y asignables. La sección 7.2 secuencia ese trabajo y
+lo organiza en frentes paralelos, con especial atención a los meses 13 a 15 y 19 a 20, en que
+dos esfuerzos coexisten. La sección 7.3 presenta la ruta crítica, la carta Gantt con los hitos del
+Formulario E-25 y el plan de implantación y de marcha blanca de cada etapa.
+    El capítulo se apoya en otros tres capítulos de la oferta: el Capítulo 3 fija el alcance de cada
+etapa y los criterios de olas y estabilización; la sección 6 del Formulario T-18 concreta una
+propuesta de calendario, dotación y decisiones; el Capítulo 4 define los módulos M1 a M12 y las
+interfaces que la EDT construye; y el Capítulo 6 establece el proceso de desarrollo cuyas fases
+organizan la EDT y la gestión del proyecto que la controla. El detalle va en tres formularios y
+un archivo de anexos: el Formulario T-14 contiene la EDT completa, su diccionario y la carta
+Gantt; el Formulario T-15, el método de estimación y programación, la ruta crítica y los frentes
+de trabajo; el Formulario T-18, la implantación y la puesta en marcha controlada; y los Anexos
+7.A a 7.F, los listados de apoyo y la preparación de riesgos.
+
+
+
+7.1 EDT
+   La EDT es la base común del plan: el cronograma, la estimación y la asignación de respon-
+sables se construyen sobre sus paquetes, y su diccionario fija qué se entrega y cómo se acepta
+cada uno. Esta sección explica cómo se descompuso el trabajo, cómo queda la estructura, cómo
+cubre el alcance y cómo se asignan los responsables.
+
+
+7.1.1 Criterio de descomposición
+    La EDT de Puelche se organiza en nueve fases. Las cuatro primeras son las fases del proceso
+de desarrollo del Capítulo 6 (Inicio, Elaboración, Construcción y Transición) y se recorren una
+vez por cada etapa del artículo 17 de las Bases Administrativas (pp. 12–13). El primer recorrido
+produce la Etapa 1, con la trazabilidad de recepción, la bodega, la cadena de frío, la preventa,
+las rutas, el reparto y la rendición, y termina con el paso a producción del mes 16. El segundo
+produce la Etapa 2, con el canal moderno, los portales y el costo de servir, y termina con el
+paso a producción del mes 21.
+
+
+
+LafroX SpA                                                                     Media firma: Alex Aravena
+Subdocumento 7                                                                                        6
+    LafroX SpA                                                                        Introducción al Plan de trabajo
+
+
+
+
+    Las otras cinco fases agrupan el trabajo que no es desarrollo de software, pero sin el cual la
+solución no entra en operación: adquisiciones y contrataciones; infraestructura física y sitios;
+capacitación y gestión del cambio; operación y soporte durante 36 meses; y cierre.
+    La descomposición sigue la regla del 100 %: la suma del trabajo de los niveles inferiores
+reproduce el trabajo del nivel superior, sin omitir ni agregar alcance (Project Management
+Institute [PMI], 2017, p. 161). El segundo nivel son 49 cuentas de control, puntos de gestión
+donde se integran el alcance, el cronograma y el esfuerzo para medir el desempeño. El nivel
+inferior son 222 paquetes de trabajo, cada uno con un entregable verificable, un criterio de
+aceptación y un único responsable (PMI, 2017, pp. 161–162). En la cuenta de las innovaciones,
+cada innovación agrupa sus paquetes en un cuarto nivel.
+    El último nivel de la EDT es el paquete de trabajo, con su entregable, su responsable y
+su criterio de aceptación. Fuera de la EDT, cada paquete se descompone en actividades que
+cumplen la regla del 8/80, entre 8 y 80 horas hombre de esfuerzo, y la regla del período de
+reporte: ninguna actividad dura más de una quincena, el período con que informa el Comité
+de Proyecto (PMI, 2017, pp. 183–185). Los paquetes de producto se dividen con una plantilla
+por clase; por ejemplo, un módulo de 960 HH se divide en 12 actividades de 80 HH, desde
+el análisis de sus requerimientos hasta su entrega en QA. Los 163 paquetes con entregable
+se programan con fecha, personas y predecesoras; sus actividades se detallan hasta el H2 y,
+después, por planificación gradual antes de cada fase, cuando el equipo conoce el trabajo (PMI,
+2017, p. 185). Así el cronograma no fija hoy el día de una actividad que ocurrirá en 2028, y
+cada fase se planifica como las iteraciones del proceso RUP del Capítulo 6. El Formulario T-15,
+Figura T15.3, muestra los puntos de replanificación (antes del H2, el H4, el H8 y el H9). Los
+59 paquetes de esfuerzo continuo, como la cobertura del NOC, las reuniones periódicas o la
+mentoría posterior al H12, no se descomponen en actividades distintas: se programan por
+quincena u ocurrencia, en relevos de hasta 64 HH cada uno. La lista de actividades y las reglas
+de programación están en el Formulario T-15, sección 6.
+    Los paquetes de la fase de Operación son paquetes de esfuerzo continuo. Cada uno cubre
+un servicio durante los 36 meses y se controla con entregables periódicos, como los informes
+mensuales de servicio, los informes de pruebas y las actualizaciones anuales, que funcionan
+como sus puntos de verificación.
+    La Tabla 7.1 muestra el tamaño de cada fase y los hitos que produce.
+
+Tabla 7.1 Cuentas de control y paquetes por fase. Fuente: Elaboración a partir de el Formulario T-14 y el
+Formulario E-25.
+
+
+
+ Fase                   CC                    PT                    Etapa                  Hitos
+
+
+ 1 Inicio               9                     35                    E1 y E2                H1, H8
+
+ 2 Elaboración          6                     18                    E1 y E2                H2, H8
+
+
+continúa en la página siguiente
+
+
+
+LafroX SpA                                                                                Media firma: Alex Aravena
+Subdocumento 7                                                                                                     7
+    LafroX SpA                                                                                              Introducción al Plan de trabajo
+
+
+
+
+Tabla 7.1 — continuación
+
+
+
+ Fase                          CC                          PT                          Etapa                       Hitos
+
+
+ 3 Construcción                11                          79                          E1 y E2                     H3, H4, H5, H9,
+                                                                                                                   H10
+
+ 4 Transición                  3                           10                          E1 y E2                     H6, H7, H11, H12
+
+ 5 Adquisiciones y             4                           13                          E1 y E2                     Habilita H3
+ contrataciones
+
+ 6 Infraestructura             6                           24                          E1                          Habilita H3 y H6
+ física y sitios
+
+ 7 Capacitación y              3                           13                          E1, E2 y Opera-             Condición de H7 y
+ gestión del cam-                                                                      ción                        H12
+ bio
+
+ 8 Operación y                 5                           26                          Operación                   Hito mensual
+ soporte (36 meses)
+
+ 9 Cierre                      2                           4                           Meses 21 y 56               Después de H12
+
+ Total                         49                          222
+
+
+
+   La construcción concentra el 36 % de los paquetes (79 de 222), porque contiene los quince
+desarrollos de módulos, las integraciones, la migración, las pruebas de ambas etapas y las
+innovaciones. Las fases 5 a 7, que no producen software, suman 50 paquetes (23 %). Ese peso
+muestra que, en Puelche, la compra y la instalación del equipamiento de cinco sitios, los
+acuerdos con diez transportistas y con el sindicato y la capacitación de una operación que no
+puede detenerse son trabajo planificado y controlado, no supuestos.
+   La Figura 7.1.1 resume el primer nivel de la EDT: la raíz del proyecto y sus nueve fases.
+
+                                              Plataforma logística de Distribuidora Puelche
+
+
+
+
+                                                                      5.                             7.             8.
+                                                                                       6.
+      1.              2.                3.            4.        Adquisiciones                   Capacitación    Operación y      9.
+                                                                               Infraestructura
+    Inicio       Elaboración       Construcción   Transición           y                        y gestión del   soporte (36    Cierre
+                                                                                física y sitios
+                                                                contrataciones                     cambio         meses)
+
+
+
+
+Figura 7.1 Vista del primer nivel de la EDT: raíz del proyecto y sus nueve fases. Fuente: Elaboración a partir de el
+Formulario T-14.
+
+   Las fases de desarrollo (1 a 4) se recorren una vez por etapa; las fases 5 a 7 las habilitan en
+paralelo, y las fases 8 y 9 cubren la operación y el cierre. La figura muestra la estructura, no la
+
+
+LafroX SpA                                                                                                       Media firma: Alex Aravena
+Subdocumento 7                                                                                                                           8
+         LafroX SpA                                                                                    Introducción al Plan de trabajo
+
+
+
+
+   secuencia temporal: el número de una fase no indica cuándo ocurre; sus fechas están en la
+   carta Gantt de la sección 7.3.2.
+
+
+   7.1.2 Estructura general
+       Las láminas siguientes desglosan las cuentas de control y los paquetes por fase. Cada
+   imagen se presenta inmediatamente después de su descripción. La fase 3 se divide en cinco
+   láminas para facilitar la lectura: las dos primeras separan la base técnica de los módulos de
+   la Etapa 1; las tres restantes muestran las cuentas 3.5 a 3.11, con una lámina adicional para
+   ampliar los paquetes de innovación de la cuenta 3.10.
+
+   7.1.2.1 Fase 1. Inicio
+       La fase de Inicio define el proyecto, fija su alcance y planificación y establece cómo se
+   gobierna y controla. Sus cuentas 1.1 a 1.5 abarcan el acta, la línea base, la planificación, los
+   interesados y la calidad.
+
+                                                            1. Inicio
+
+
+
+1.1 Definición inicial del   1.2 Alcance del proyecto   1.3 Planificación del                                       1.5 Gestión de calidad
+                                                                                  1.4 Gestión de interesados
+        proyecto                                              proyecto
+                                                                                      y comunicaciones
+                               1.2.1 Documento de                                                                    1.5.1 Plan de calidad y
+  1.1.1 Acta de                especificación de        1.3.1 Plan para la
+                                                                                                                     plan de pruebas
+  constitución del             requerimientos y línea   dirección del proyecto,      1.4.1 Registro de
+  proyecto, firmada con        base de alcance de la    con el calendario de         interesados con su              1.5.2 Puertas de
+  la Contraparte Técnica       Etapa 1 (H1)             congelamientos de            influencia, interés y           calidad automáticas en
+                                                        septiembre, diciembre        estrategia
+  1.1.2 Documento de           1.2.2 Documento de                                                                    la cadena de
+                                                        y el cierre mensual
+  validación con el            reglas de ruteo                                       1.4.2 Plan de                   integración (cobertura
+  CLIENTE de los               capturadas al            1.3.2 EDT y diccionario      comunicaciones con              mínima del 80 %)
+  problemas y metas del        planificador de rutas    de la EDT (línea base        calendario y canales
+  proyecto                                              del alcance)                 por grupo de interés
+                               1.2.3 Documento de
+  1.1.3 Acta de                                         1.3.3 Carta Gantt de 56      1.4.3 Registro de
+                               especificación de las
+  confirmación con el          interfaces sin           meses con los hitos          solicitudes de cambio
+  CLIENTE de la fecha          documentación del        H1 a H12 y la ruta           con análisis de
+  de inicio, la evidencia      ERP, del WMS de 2013     crítica                      impacto
+  para el proveedor de         y de la telemetría del
+  lácteos, las ventanas                                 1.3.4 Documento de
+                               tercero
+  de paso a producción                                  nivelación de recursos
+  y el acuse tributario                                 y frentes del
+                               1.2.4 Matriz de          solapamiento de los
+                               trazabilidad:            meses 13 a 15 y 19 a
+                               requerimiento,           20
+                               módulo, paquete y
+                               prueba (H1)
+                                                        1.3.5 Minuta reunión
+                               1.2.5 Documento de       semanal
+                               línea base de alcance
+                               de la Etapa 2: canal
+                               moderno y costo de
+                               servir (H8)
+
+
+   Figura 7.2       Fase 1 — Inicio, primera parte: cuentas 1.1 a 1.5. Fuente: Elaboración a partir de el Formulario T-14.
+
+      La segunda lámina completa Inicio con gestión de riesgos, reversibilidad, gobierno, control
+   y cumplimiento normativo. Incluye los paquetes 1.2.2 y 1.2.3, que capturan las reglas de ruteo
+   cuya fuente experta se jubila y las interfaces del sistema de gestión que el CLIENTE reconoce no
+
+
+   LafroX SpA                                                                                                Media firma: Alex Aravena
+   Subdocumento 7                                                                                                                     9
+    LafroX SpA                                                                                    Introducción al Plan de trabajo
+
+
+
+
+tener documentadas; también incluye los comités del artículo 71 de las Bases Administrativas
+(p. 37), el informe de valor ganado y el tablero (RT-19.06 a RT-19.09).
+
+
+                                                           1. Inicio
+
+
+
+
+   1.6 Gestión de riesgos                                     1.8 Gobierno y control del           1.9 Cumplimiento
+                              1.7 Plan de Reversibilidad
+                                                                      proyecto                  normativo y contractual
+    1.6.1 Plan de riesgos y
+    registro inicial de         1.7.1 Plan de                    1.8.1 Oficina de gestión del    1.9.1 Matriz de cumplimiento
+    riesgos según ISO           Reversibilidad inicial           proyecto con metodología        normativo por obligación
+    31000                       (primeros 90 días)               basada en el PMBOK              legal, con su control y su
+                                                                                                 evidencia
+    1.6.2 Registro de           1.7.2 Actualizaciones            1.8.2 Actas del Comité
+    riesgos revisado en         anuales del Plan de              Ejecutivo mensual, con la
+                                                                                                 1.9.2 Acuerdo de
+    cada Comité de              Reversibilidad durante           aprobación de los cambios
+                                                                                                 tratamiento de datos
+    Proyecto                    la implementación                de alcance
+                                                                                                 personales con el CLIENTE
+                                                                 1.8.3 Actas del Comité de
+                                                                 Proyecto quincenal              1.9.3 Registro de
+                                                                                                 actividades de tratamiento y
+                                                                 1.8.4 Actas del Comité de       evaluación de impacto en
+                                                                 Arquitectura mensual            protección de datos
+
+                                                                 1.8.5 Actas del Comité de       1.9.4 Certificación ISO/IEC
+                                                                 Operación mensual, desde        27001 vigente y entrega
+                                                                 el mes 13                       anual de los informes de
+                                                                                                 certificación
+                                                                 1.8.6 Informe mensual de
+                                                                 avance con valor ganado         1.9.5 Garantía de fiel
+                                                                                                 cumplimiento, seguros y
+                                                                 1.8.7 Tablero de estado del     certificados laborales
+                                                                 proyecto disponible para el     vigentes durante el contrato
+                                                                 CLIENTE
+
+                                                                 1.8.8 Espacio colaborativo
+                                                                 con la documentación, los
+                                                                 entregables, las actas, los
+                                                                 riesgos y los cambios
+
+
+Figura 7.3   Fase 1 — Inicio, segunda parte: cuentas 1.6 a 1.9, desde riesgos hasta cumplimiento contractual.
+
+   Estas cuentas completan Inicio: identifican los riesgos y la reversibilidad, establecen el
+gobierno y control del proyecto y cierran con el cumplimiento normativo y contractual.
+
+7.1.2.2 Fase 2. Elaboración
+    Elaboración diseña la solución antes de programar: arquitectura lógica y física, datos
+trazables por lote, seguridad, sala técnica de Talca, continuidad y experiencia de usuario. La
+aprobación de arquitectura, seguridad y modelo de datos corresponde al H2 del mes 4. La
+primera lámina muestra las cuentas 2.1 a 2.3.
+
+
+
+
+LafroX SpA                                                                                            Media firma: Alex Aravena
+Subdocumento 7                                                                                                                 10
+    LafroX SpA                                                                          Introducción al Plan de trabajo
+
+
+
+
+                                                  2. Elaboración
+
+
+
+
+                 2.1 Arquitectura de la                                       2.3 Diseño de la sala
+                                            2.2 Diseño de la seguridad
+                       solución                                              técnica y de los racks
+
+                 2.1.1 Documento de            2.2.1 Plan de                  2.3.1 Plano de la sala
+                 arquitectura lógica:          seguridad de la                técnica de Talca, con
+                 capas, módulos M1 a           información                    su cálculo eléctrico y
+                 M12 e interfaces                                             térmico
+                                               2.2.2 Modelado de
+                 2.1.2 Documento de            amenazas por                   2.3.2 Plano de
+                 arquitectura física           componente y por               distribución de los
+                 híbrida: nube, centros        integración externa,           racks R01 de
+                 de distribución y             actualizado ante cada          servidores y R02 de
+                 plataformas de cross-         cambio                         comunicaciones
+                 docking
+                                               2.2.3 Plan de respuesta        2.3.3 Plano de los
+                 2.1.3 Modelo de datos
+                                               a incidentes de                gabinetes de borde de
+                 y diccionario de datos,
+                                               seguridad, con aviso al        Concepción y de las
+                 con la trazabilidad por       CLIENTE en dos horas           plataformas de cross-
+                 lote
+                                                                              docking
+                                               2.2.4 Matriz de
+                 2.1.4 Documento de
+                                               clasificación de la
+                 diseño detallado de
+                                               información y matriz
+                 M11 y del intercambio         de controles
+                 con las cadenas
+
+
+Figura 7.4   Fase 2 — Elaboración, primera parte: arquitectura, seguridad y sala técnica, cuentas 2.1 a 2.3.
+
+   La continuación cubre la validación de diseños, continuidad del negocio y experiencia
+de usuario (cuentas 2.4 a 2.6), incluidos los procedimientos manuales y la recuperación ante
+desastres.
+
+
+
+
+LafroX SpA                                                                                  Media firma: Alex Aravena
+Subdocumento 7                                                                                                      11
+    LafroX SpA                                                                         Introducción al Plan de trabajo
+
+
+
+
+                                                 2. Elaboración
+
+
+
+
+                                               2.5 Continuidad del
+             2.4 Validación de diseños                                    2.6 Experiencia de usuario
+                                                    negocio
+
+                 2.4.1 Acta de                2.5.1 Plan de                  2.6.1 Investigación con
+                 aprobación de la             continuidad del                preparadores,
+                 arquitectura, el plan de     negocio según ISO              preventistas,
+                 seguridad y el modelo        22301, con análisis de         conductores y
+                 de datos (H2)                impacto y                      almaceneros
+                 2.4.2 Acta de                procedimientos                 2.6.2 Prototipos y
+                 aprobación del diseño        manuales                       pruebas de usabilidad
+                 detallado de la Etapa 2                                     con participantes del
+                                              2.5.2 Plan de
+                 (H8)                                                        CLIENTE
+                                              continuidad TIC según
+                                              ISO/IEC 27031 y plan           2.6.3 Indicadores de
+                                              de recuperación ante           usabilidad
+                                              desastres                      comprometidos por
+                                                                             transacción crítica
+
+
+Figura 7.5   Fase 2 — Elaboración, segunda parte: validación, continuidad y experiencia de usuario, cuentas 2.4 a
+2.6.
+
+   Con estas cuentas, los diseños quedan sometidos a validación y se completan los planes de
+continuidad y experiencia de usuario que orientan la fase de Construcción.
+
+7.1.2.3 Fase 3. Construcción
+   Construcción produce los ambientes y servicios de nube, la base compartida, los módulos de
+ambas etapas, las integraciones, la migración, las pruebas, las innovaciones y la documentación.
+La primera lámina reúne los ambientes de desarrollo, los servicios de nube y la base compartida
+(cuentas 3.1 a 3.3).
+
+
+
+
+LafroX SpA                                                                                 Media firma: Alex Aravena
+Subdocumento 7                                                                                                     12
+    LafroX SpA                                                                      Introducción al Plan de trabajo
+
+
+
+
+                                           3. Construcción
+
+
+
+
+    3.1 Ambientes y cadena de          3.2 Servicios de nube de            3.3 Base compartida
+           desarrollo                        la plataforma
+                                                                           3.3.1 Identidad y control de
+        3.1.1 Ambientes de               3.2.1 Servicio de nube            acceso, incluidos los
+        Desarrollo y QA en la            para la aplicación y los          conductores externos que
+        nube (H3)                        portales                          rotan sin aviso
+        3.1.2 Ambientes de               3.2.2 Servicio de nube
+        Preproducción y                                                    3.3.2 Integración con el
+                                         de base de datos,
+        Producción en la nube            caché y mensajería                ERP como único emisor de
+        (H3)                                                               la guía de despacho (INT-
+                                         3.2.3 Servicio de nube            06 e INT-07)
+        3.1.3 Ambiente de                de ingesta de IoT,
+        recuperación ante                telemetría cruda y                3.3.3 Convivencia con el
+        desastres en la región           plataforma analítica              WMS de 2013 durante el
+        secundaria (H3)                                                    reemplazo
+                                         3.2.4 Servicio de nube
+        3.1.4 Cadena de                  de respaldo inmutable             3.3.4 Integración con la
+        integración y entrega            y réplica entre                   telemetría de los 42
+        continua, e                      regiones                          camiones propios (INT-15)
+        infraestructura como
+        código                           3.2.5 Servicio de nube
+                                         de seguridad y
+        3.1.5 Observabilidad                                               3.3.5 Registro auditable de
+                                         gobierno, y detección
+        de los doce módulos y                                              stock, lotes y cobros
+                                         en endpoints
+        de los sitios, con
+        tableros para el                 3.2.6 Servicio de
+                                                                           3.3.6 Operación sin
+        CLIENTE (H3)                     gestión de
+                                                                           conexión: 14 horas en
+                                         dispositivos móviles
+                                                                           terreno y 24 horas en el CD
+
+
+
+Figura 7.6 Fase 3 — Construcción, primera parte: ambientes, servicios de nube y base compartida, cuentas 3.1 a
+3.3.
+
+    La segunda lámina desglosa los módulos de la Etapa 1 (cuenta 3.4), con los componentes
+de recepción, inventario, preparación de pedidos, cadena de frío, aplicaciones y operación de
+tiendas.
+
+
+
+
+LafroX SpA                                                                              Media firma: Alex Aravena
+Subdocumento 7                                                                                                  13
+    LafroX SpA                                                                            Introducción al Plan de trabajo
+
+
+
+
+                3. Construcción
+
+
+             3.4 Módulos de la Etapa 1
+
+
+             3.4.1 Recepción de mercadería con captura de lote y vencimiento (M1 Recepción)
+
+
+             3.4.2 Inventario por ubicación y lote, con FEFO y conteo cíclico (M2 Inventario)
+
+
+             3.4.3 Preparación de pedidos en el turno de noche y en la cámara de congelado (M5
+             Preparación)
+
+
+             3.4.4 Cadena de frío, retención de lotes y retiro sanitario (M9 Calidad y trazabilidad)
+
+
+             3.4.5 Ingesta de temperatura y posición de la flota (M12 Telemetría)
+
+
+             3.4.6 Aplicación móvil de preventa sin conexión, con stock y crédito (M3 Preventa)
+
+
+             3.4.7 Planificación de rutas corregible por el planificador (M4 Rutas)
+
+
+             3.4.8 Aplicación móvil de reparto con prueba de entrega digital (M6 Reparto)
+
+
+             3.4.9 Devoluciones en terreno y control de envases (M8 Devoluciones y envases)
+
+
+             3.4.10 Cobro en ruta, rendición y conciliación (M7 Cobranza y rendición)
+
+
+             3.4.11 Indicadores operacionales y OTIF diario (M10 Analítica)
+
+
+
+Figura 7.7     Fase 3 — Construcción, segunda parte: módulos de la Etapa 1, cuenta 3.4.
+
+   La tercera lámina presenta los módulos de la Etapa 2, las integraciones externas, la mi-
+gración y las pruebas de la Etapa 1 (cuentas 3.5 a 3.8). La integración con el ERP conserva su
+función de emisor único de la guía de despacho.
+
+
+
+
+LafroX SpA                                                                                    Media firma: Alex Aravena
+Subdocumento 7                                                                                                        14
+    LafroX SpA                                                                                    Introducción al Plan de trabajo
+
+
+
+
+                                                    3. Construcción
+
+
+
+
+                                                               3.7 Migración de datos
+ 3.5 Módulos de la Etapa 2     3.6 Integraciones externas                                     3.8 Pruebas de la Etapa 1
+
+                                                                3.7.1 Informe de
+    3.5.1 Pedido                  3.6.1 Intercambio de          perfilamiento y datos   3.8.1 Pruebas de integración, regresión
+    electrónico y aviso de        lote y trazabilidad con       saneados                e idempotencia en QA (H4)
+    despacho para las             los proveedores
+    cadenas (M11 Canal                                          3.7.2 Datos maestros
+                                                                                        3.8.2 Pruebas de aceptación y de
+    moderno)                      3.6.2 Integración con la      cargados: 8.400 SKU,
+                                                                                        accesibilidad con preventistas,
+                                  pasarela de pago para         clientes e
+    3.5.2 Portal web de                                                                 conductores y bodega
+                                  el cobro con tarjeta          instalaciones
+    clientes: cuenta, saldo,      (INT-09)
+    entregas y                                                                          3.8.3 Pruebas del perfil operacional: sin
+                                                                3.7.3 Saldos migrados
+    documentos                    3.6.3 Integración con el                              señal, sin enlace y a −22 °C con
+                                                                desde el WMS de Talca
+                                  servicio de mapas y                                   guantes
+    3.5.3 Portal web de           geocodificación (INT-         3.7.4 Saldos cargados
+    transportistas: rutas         10)                           en Concepción desde     3.8.4 Pruebas de carga con el peak de
+    asignadas del día                                           el conteo físico        septiembre y de resiliencia
+    siguiente                     3.6.4 Integración con el
+                                  servicio de avisos al         3.7.5 Acta de           3.8.5 Prueba de recuperación ante
+    3.5.4 Costo de servir         cliente (INT-11)              conciliación y corte
+    por cliente y por                                                                   desastres con conmutación real
+                                                                fuera de las ventanas
+    entrega (M10 Analítica)       3.6.5 Intercambio             de congelamiento
+                                  electrónico con la                                    3.8.6 Prueba de seguridad ofensiva de
+                                  principal cadena, con                                 la Etapa 1, por un tercero independiente
+                                  sus pruebas
+                                  aprobadas (INT-08)
+                                                                                        3.8.7 Acta de certificación de la Etapa 1
+                                  3.6.6 Incorporación de                                (H5)
+                                  las demás cadenas al
+                                  intercambio                                           3.8.8 Demostración en Preproducción
+                                  electrónico (INT-08)                                  del despliegue sin interrupción de la
+                                                                                        Etapa 1
+
+
+
+
+Figura 7.8 Fase 3 — Construcción, tercera parte: módulos de la Etapa 2, integraciones, migración y pruebas de la
+Etapa 1, cuentas 3.5 a 3.8.
+
+   La cuarta lámina reúne las pruebas de la Etapa 2, las innovaciones y la documentación
+técnica (cuentas 3.9 a 3.11).
+
+
+
+
+LafroX SpA                                                                                             Media firma: Alex Aravena
+Subdocumento 7                                                                                                                      15
+    LafroX SpA                                                                             Introducción al Plan de trabajo
+
+
+
+
+                                                    3. Construcción
+
+
+
+
+                                                   3.10 Innovaciones
+             3.9 Pruebas de la Etapa 2                                             3.11 Documentación técnica
+                                                  3.10.1 Innovación 1:
+    3.9.1 Pruebas de integración y regresión      seguimiento de              3.11.1 Documentación técnica, funcional,
+    sin afectar la Etapa 1 en producción (H9)     vencimiento                 de arquitectura, de operación y de
+                                                  posentrega en el local      seguridad
+    3.9.2 Pruebas de aceptación y de              3.10.2 Innovación 2:        3.11.2 Base de conocimiento de
+    accesibilidad con cadenas,                    reproducción de             incidentes y decisiones de diseño
+    transportistas, Comercial y Finanzas          incidentes de terreno
+                                                                              3.11.3 Estándares de codificación y
+    3.9.3 Pruebas de carga con ambas etapas       3.10.3 Innovación 3:        documentación de interfaces en OpenAPI
+    activas y de resiliencia                      vida útil remanente por     y AsyncAPI
+                                                  historia térmica del lote
+    3.9.4 Prueba de recuperación ante                                         3.11.4 Inventario de componentes
+    desastres con ambas etapas                    3.10.4 Innovación 5:        (SBOM) con sus licencias de código
+                                                  hoja de negocio del         abierto
+    3.9.5 Prueba de seguridad ofensiva de la      almacenero
+    Etapa 2, por un tercero independiente                                     3.11.5 Depósito del código fuente en el
+                                                                              repositorio del CLIENTE en cada
+                                                                              liberación
+    3.9.6 Acta de certificación de la Etapa 2 y
+    cierre del desarrollo (H10)
+
+    3.9.7 Demostración en Preproducción del
+    despliegue sin interrupción de la Etapa 2
+
+
+
+
+Figura 7.9 Fase 3 — Construcción, cuarta parte: pruebas de la Etapa 2, innovaciones y documentación técnica,
+cuentas 3.9 a 3.11.
+
+    La quinta lámina amplía la cuenta 3.10 para que se lean sus paquetes de innovación: segui-
+miento de vencimientos, reproducción de incidentes, vida útil remanente y hoja de negocio
+del almacenero.
+
+
+
+
+LafroX SpA                                                                                     Media firma: Alex Aravena
+Subdocumento 7                                                                                                           16
+    LafroX SpA                                                                                 Introducción al Plan de trabajo
+
+
+
+
+                                                       3. Construcción
+
+
+
+                                                   3.10 Innovaciones
+
+
+
+
+  3.10.1 Innovación 1:         3.10.2 Innovación 2:              3.10.3 Innovación 3: vida      3.10.4 Innovación 5: hoja
+  seguimiento de               reproducción de                   útil remanente por historia    de negocio del
+  vencimiento posentrega       incidentes de terreno                                            almacenero
+                                                                 térmica del lote
+  en el local
+                                 3.10.2.1 Informe de                                              3.10.4.1 Prototipo e
+    3.10.1.1 Documento de        medición inicial y                3.10.3.1 Documento de          informe de la prueba de
+    catálogo de acciones y       contrato de evidencia             familias priorizadas y         comprensión (INN-
+    protocolo del piloto         (INN-02.P1)                       parámetros aprobados           05.P1)
+    (INN-01.P1)                                                    (INN-03.P1)
+                                                                                                  3.10.4.2 Evaluación de
+                                 3.10.2.2 Circuito
+                                                                   3.10.3.2 Asociación            privacidad y diseño de
+                                 mínimo de
+    3.10.1.2 Estimador de                                          lote–sensor en el borde        la impresión en cabina
+                                 reproducción en la
+    saldo y ritmo de                                               y en el camión (INN-           (INN-05.P2)
+                                 preventa (INN-02.P2)
+    reposición (INN-01.P2)                                         03.P2)
+                                 3.10.2.3 Captura de                                              3.10.4.3 Cálculo y
+    3.10.1.3 Función de                                            3.10.3.3 Vista en M9 y
+                                 evidencia en las                                                 bloques 1 a 3 de la hoja
+    lista sin conexión en la                                       orden de salida
+                                 aplicaciones de                                                  de negocio (INN-05.P3)
+    aplicación de preventa                                         sugerido (INN-03.P3)
+                                 preventa, preparación y
+    (INN-01.P3)                  reparto (INN-02.P3)               3.10.3.4 Informe de            3.10.4.4 Hoja
+                                                                   validación en marcha           certificada, en marcha
+    3.10.1.4 Informe del         3.10.2.4 Informe de               blanca con Calidad             blanca y en producción
+    piloto en marcha             validación comparada              (INN-03.P4)                    (INN-05.P4, primera
+    blanca y habilitación        durante la
+    (INN-01.P4)                                                                                   parte)
+                                 implementación (INN-
+                                 02.P4, primera parte)
+
+
+
+
+Figura 7.10 Fase 3 — Construcción, quinta parte: detalle de los paquetes de las innovaciones agrupadas en la
+cuenta 3.10.
+
+   El detalle identifica los paquetes de INN-01, INN-02, INN-03 e INN-05 dentro de 3.10. INN-04
+conserva su tratamiento distinto: su fórmula contractual se acuerda en la cuenta 5.4, como
+muestra la fase de Adquisiciones y contrataciones.
+
+7.1.2.4 Fase 4. Transición
+    Transición convierte la solución probada en el registro oficial. Su plan contempla las olas y
+la reversión; luego coordina las marchas blancas, la estabilización y las actas de aceptación de
+ambas etapas (H7 y H12).
+
+
+
+
+LafroX SpA                                                                                         Media firma: Alex Aravena
+Subdocumento 7                                                                                                              17
+    LafroX SpA                                                                           Introducción al Plan de trabajo
+
+
+
+
+                                                   4. Transición
+
+
+
+
+        4.1 Plan de implantación              4.2 Marcha blanca y                4.3 Marcha blanca y
+                                            producción de la Etapa 1           producción de la Etapa 2
+             4.1.1 Plan de olas de la
+             Etapa 1 por sitio y                                                 4.3.1 Marcha blanca de
+                                               4.2.1 Marcha blanca de
+             zona: Talca,                                                        la Etapa 2 en
+                                               la Etapa 1 con
+             Concepción y                                                        convivencia con la
+                                               conciliación diaria (H6)
+             plataformas de cross-                                               Etapa 1 y fuente única
+             docking                                                             de datos (H11)
+                                               4.2.2 Estabilización de
+                                                                                 4.3.2 Estabilización de
+             4.1.2 Procedimiento de            la Etapa 1 en el turno
+                                                                                 la Etapa 2 con
+             reversión de la Etapa 1           de noche y
+                                                                                 Comercial, Finanzas,
+             antes de las 05:30, con           acompañamiento en
+                                                                                 cadenas y
+             hoja de picking y guía            ruta
+                                                                                 transportistas
+             en papel
+                                               4.2.3 Acta de paso a              4.3.3 Acta de paso a
+             4.1.3 Plan de                                                       producción y
+                                               producción y cierre de
+             implantación y
+                                               la Etapa 1 (H7)                   aceptación final de la
+             reversión de la Etapa 2                                             implementación (H12)
+             fuera de la ventana de
+             05:30 a 07:00
+                                                                                 4.3.4 Garantía de
+                                                                                 correcto
+                                                                                 funcionamiento
+                                                                                 constituida, condición
+                                                                                 de la aceptación final
+                                                                                 (H12)
+
+
+
+Figura 7.11    Fase 4 — Transición: plan de implantación y marchas blancas de las etapas 1 y 2, cuentas 4.1 a 4.3.
+
+   La cuenta 4.1 prepara las olas y la reversión; las cuentas 4.2 y 4.3 separan la marcha blanca
+y producción de cada etapa, asociadas a los hitos H7 y H12.
+
+7.1.2.5 Fase 5. Adquisiciones y contrataciones
+    Esta fase distingue el equipamiento de terreno, que el CLIENTE compra según la espe-
+cificación de LafroX, de la infraestructura de la sala técnica, los racks, los servidores y los
+gabinetes de borde, que LafroX especifica, compra y provee. LafroX incorpora el costo de esta
+infraestructura en su Oferta Económica; el CLIENTE no la adquiere mediante una compra
+separada. LafroX también contrata nube, enlaces y licencias. La fase formaliza, además, los
+acuerdos con transportistas y sindicato y la fórmula contractual de la innovación 4.
+
+
+
+
+LafroX SpA                                                                                   Media firma: Alex Aravena
+Subdocumento 7                                                                                                       18
+    LafroX SpA                                                                         Introducción al Plan de trabajo
+
+
+
+
+                                        5. Adquisiciones y contrataciones
+
+
+
+
+       5.1 Hardware e          5.2 Servicios de nube y          5.3 Enlaces de
+                                                                                       5.4 Acuerdos con terceros
+       infraestructura                licencias                comunicaciones
+
+    5.1.1 Especificación de     5.2.1 Contrato de los        5.3.1 Contrato de fibra      5.4.1 Acuerdos
+    compra del                  servicios de AWS             óptica de los CD de          operacionales
+    equipamiento de                                          Talca y Concepción           firmados con los diez
+    terreno para el             5.2.2 Suscripción del                                     transportistas
+    CLIENTE                     servicio de gestión de       5.3.2 Contrato de
+                                                             planes LTE con dos           5.4.2 Acta de acuerdo
+                                dispositivos y de
+                                                             proveedores                  con el sindicato sobre
+    5.1.2 Especificación de     detección en
+                                                                                          terminales, GPS y
+    compra de la sala           endpoints                    5.3.3 Contrato de            cámaras
+    técnica, los racks y los                                 Starlink para las tres
+    gabinetes de borde          5.2.3 Licencias de                                        5.4.3 Fórmula
+                                                             plataformas de cross-
+    para el CLIENTE             software de terceros                                      aprobada del tramo
+                                                             docking
+                                constituidas a nombre                                     variable: reglas de
+    5.1.3 Actas de              del CLIENTE                                               atribución, canasta e
+    recepción técnica de                                                                  índices (INN-04.P1)
+    los equipos                                                                           5.4.4 Contrato de
+    comprados por el
+                                                                                          custodia de fuentes
+    CLIENTE
+                                                                                          con un tercero
+                                                                                          independiente
+
+
+
+
+Figura 7.12 Fase 5 — Adquisiciones y contrataciones: hardware, servicios, enlaces y acuerdos con terceros,
+cuentas 5.1 a 5.4.
+
+    La cuenta 5.1 reúne las adquisiciones de hardware, manteniendo la distinción anterior:
+el CLIENTE compra el equipamiento de terreno y LafroX compra y provee la infraestructura
+de sala, incluida en su Oferta Económica. Las cuentas 5.2 a 5.4 organizan nube y licencias,
+enlaces y acuerdos con terceros.
+
+7.1.2.6 Fase 6. Infraestructura física y sitios
+    La fase instala la sala técnica de Talca, con energía, climatización y extinción; el cableado,
+los racks y gabinetes de borde; y la infraestructura de los sitios. La primera lámina cubre la
+sala, el cableado y el montaje de racks (cuentas 6.1 a 6.3).
+
+
+
+
+LafroX SpA                                                                                 Media firma: Alex Aravena
+Subdocumento 7                                                                                                     19
+    LafroX SpA                                                                                Introducción al Plan de trabajo
+
+
+
+
+                                          6. Infraestructura física y sitios
+
+
+
+
+        6.1 Adecuación de la sala                                                   6.3 Montaje de racks y
+                                             6.2 Cableado estructurado
+             técnica de Talca                                                             gabinetes
+
+             6.1.1 Obra civil y piso             6.2.1 Cableado de                    6.3.1 Rack R01 de
+             técnico de la sala                  cobre Cat6A y fibra                  servidores montado:
+                                                 OM4 tendido, con dos                 clúster de tres nodos,
+             6.1.2 Hardware de                   ductos de ingreso                    respaldo local y
+             energía instalado: UPS              independientes                       consola KVM
+             modular N+1,
+                                                 6.2.2 Certificación de               6.3.2 Rack R02 de
+             generador con 24
+                                                 enlaces, etiquetado y                comunicaciones
+             horas de autonomía,
+                                                 planos as-built                      montado: firewalls,
+             transferencia
+             automática y PDU A/B                                                     switches de núcleo y
+                                                 6.2.3 Gabinetes de                   de gestión, y
+             6.1.3 Hardware de                   piso y switches de                   distribución de fibra
+             climatización de                    acceso instalados en
+                                                 las bodegas de Talca y               6.3.3 Gabinete de
+             precisión N+1
+                                                 Concepción                           borde de Concepción
+             instalado
+                                                                                      montado: servidor,
+             6.1.4 Hardware de                                                        firewalls, switches,
+             detección temprana de                                                    UPS, climatización y
+             incendio y extinción                                                     monitoreo
+             por agente limpio                                                        6.3.4 Gabinetes de
+             instalado                                                                borde montados en
+             6.1.5 Acta de                                                            Curicó, Chillán y Los
+             recepción técnica de la                                                  Ángeles
+             sala
+
+
+
+Figura 7.13    Fase 6 — Infraestructura física y sitios, primera parte: sala técnica, cableado y racks, cuentas 6.1 a 6.3.
+
+    La segunda lámina incluye seguridad física, equipamiento de campo y configuración de la
+infraestructura distribuida en los sitios (cuentas 6.4 a 6.6), incluidos los termógrafos de los
+camiones con frío y la prueba de autonomía de 24 horas.
+
+
+
+
+LafroX SpA                                                                                        Media firma: Alex Aravena
+Subdocumento 7                                                                                                            20
+    LafroX SpA                                                                        Introducción al Plan de trabajo
+
+
+
+
+                                      6. Infraestructura física y sitios
+
+
+
+
+       6.4 Sistemas de seguridad            6.5 Equipamiento de             6.6 Configuración de la
+                 física                           campo                      infraestructura de los
+                                                                                     sitios
+             6.4.1 Hardware de              6.5.1 Terminales de
+             control de acceso              preventa, reparto y               6.6.1 Software de base
+             biométrico y esclusa           bodega configurados y             instalado en los sitios:
+             instalado                      enrolados                         virtualización,
+                                                                              contenedores,
+             6.4.2 Hardware de              6.5.2 Terminales de               PostgreSQL, RabbitMQ
+             videovigilancia                pago configurados,                y Keycloak
+             instalado                      uno por camión
+                                                                              6.6.2 Enlaces de fibra,
+             6.4.3 Recinto de               6.5.3 Sensores de                 LTE y Starlink
+             custodia de respaldos          cámara y gateways IoT             habilitados, con
+             habilitado                     instalados en Talca y             conmutación al
+                                            Concepción                        respaldo
+                                            6.5.4 Termógrafos                 6.6.3 Borde de los CD
+                                            instalados en los 28              en servicio, con la
+                                            camiones con frío                 prueba de autonomía
+                                            (propios y de                     de 24 horas aprobada
+                                            transportistas)
+
+                                            6.5.5 Impresoras de
+                                            cabina instaladas
+
+                                            6.5.6 Impresoras de
+                                            andén y balanzas de
+                                            recepción instaladas
+
+
+
+Figura 7.14 Fase 6 — Infraestructura física y sitios, segunda parte: seguridad física, equipamiento de campo y
+configuración, cuentas 6.4 a 6.6.
+
+   Con seguridad física, equipamiento de campo y configuración de los sitios, estas cuentas
+completan la infraestructura distribuida que habilita la operación en terreno.
+
+7.1.2.7 Fase 7. Capacitación y gestión del cambio
+    La fase atiende la rotación del 38 % en preparación con capacitación continua del turno
+de noche; acompaña individualmente al personal con veinte o treinta años en la compañía;
+incorpora a los conductores externos en el andén; y transfiere conocimiento al equipo de TI
+del CLIENTE. La certificación de usuarios (cuenta 7.3) es una de las condiciones de cierre de
+cada marcha blanca.
+
+
+
+
+LafroX SpA                                                                                Media firma: Alex Aravena
+Subdocumento 7                                                                                                    21
+    LafroX SpA                                                                    Introducción al Plan de trabajo
+
+
+
+
+                                    7. Capacitación y gestión del cambio
+
+
+
+
+                                           7.2 Gestión del cambio                7.3 Evaluaciones y
+     7.1 Capacitación por roles
+                                                                                   certificaciones
+                                         7.2.1 Acompañamiento del
+                                         personal con 20 o 30 años en        7.3.1 Certificación de
+    7.1.1 Plan de capacitación           la compañía
+    por perfil: usuarios finales,                                            preventistas, conductores y
+    avanzados, administradores,          7.2.2 Gestión del cambio con        preparadores (Etapa 1)
+    equipo técnico y soporte             las cadenas y los
+                                         transportistas                      7.3.2 Certificación de
+    7.1.2 Programa de                                                        Comercial y Finanzas en
+    capacitación continua del            7.2.3 Diagnóstico del impacto       costo de servir (Etapa 2)
+    turno de noche por la                organizacional por área y
+    rotación del 38 %                    perfil, con agentes de cambio
+
+    7.1.3 Procedimiento de               7.2.4 Procedimientos
+    incorporación de los                 operativos afectados,
+    conductores de los                   rediseñados y documentados
+    transportistas en el andén
+
+    7.1.4 Traspaso al equipo de          7.2.5 Medición de la adopción
+    TI de cuatro personas del            y plan de acción correctiva
+    CLIENTE
+
+    7.1.5 Materiales de
+    capacitación: manuales por
+    perfil, guías rápidas,
+    preguntas frecuentes y
+    videos tutoriales
+    7.1.6 Plataforma de
+    autoformación en línea con
+    registro de avance
+
+
+
+
+Figura 7.15 Fase 7 — Capacitación y gestión del cambio: capacitación por roles, acompañamiento y
+certificaciones, cuentas 7.1 a 7.3.
+
+   La lámina muestra que la adopción combina formación por perfil, acompañamiento del
+personal y certificaciones antes de los cierres de marcha blanca.
+
+7.1.2.8 Fase 8. Operación y soporte
+   La fase presta servicios durante los meses 21 a 56: centro de operaciones, gestión de
+incidentes, continuidad, mantenimiento, innovaciones, informes y transferencia al equipo
+del CLIENTE. La primera lámina presenta las cuentas 8.1 y 8.2, que reúnen los servicios de
+operación y el mantenimiento de la solución.
+
+
+
+
+LafroX SpA                                                                            Media firma: Alex Aravena
+Subdocumento 7                                                                                                22
+    LafroX SpA                                                                        Introducción al Plan de trabajo
+
+
+
+
+                                      8. Operación y soporte (36 meses)
+
+
+
+
+              8.1 Servicios de operación                                   8.2 Mantenimiento
+
+    8.1.1 Servicio de centro de operaciones 24×7              8.2.1 Mantenimiento correctivo y evolutivo
+    y mesa de servicio durante los 36 meses de                del software durante los 36 meses de
+    operación (04:00 a 22:00; 24×7 en                         operación, con bolsa anual de horas y fuera
+    septiembre y diciembre)                                   de las ventanas de congelamiento
+
+    8.1.2 Servicio de gestión de incidentes,                  8.2.2 Mantenimiento de ciberseguridad
+    problemas y niveles de servicio del Art. 78°              durante los 36 meses de operación:
+    durante los 36 meses de operación                         vulnerabilidades, intrusión anual e inyección
+                                                              de fallas
+    8.1.3 Servicio de continuidad y pruebas
+    semestrales de recuperación ante desastres                8.2.3 Mantenimiento del hardware durante
+    durante los 36 meses de operación                         los 36 meses de operación: sala técnica,
+                                                              racks, gabinetes de borde y equipamiento de
+    8.1.4 Actualizaciones anuales del Plan de                 terreno
+    Reversibilidad durante los 36 meses de                    8.2.4 Registro y reducción de la deuda
+    operación                                                 técnica durante los 36 meses de operación
+    8.1.5 Servicio de centro de operaciones de
+                                                              8.2.5 Actualizaciones anuales de los
+    seguridad 24×7 con SIEM durante los 36
+                                                              componentes de base durante los 36 meses
+    meses de operación
+                                                              de operación
+    8.1.6 Pruebas mensuales de restauración de
+    respaldos durante los 36 meses de                         8.2.6 Revisiones semestrales de las
+    operación                                                 instalaciones eléctricas de la sala durante
+                                                              los 36 meses de operación
+
+                                                              8.2.7 Ciclo de vida del equipamiento durante
+                                                              los 36 meses de operación: reposición y
+                                                              disposición final
+
+
+
+
+Figura 7.16   Fase 8 — Operación y soporte, primera parte: servicios de operación y mantenimiento, cuentas 8.1 y
+8.2.
+
+    La primera parte concentra la continuidad del servicio y el mantenimiento del software,
+la infraestructura y la ciberseguridad. Sus paquetes conservan las frecuencias, horarios y
+ventanas que condicionan la operación durante los 36 meses.
+    La segunda lámina completa la fase con las cuentas 8.3 a 8.5: innovaciones en operación,
+informes y obligaciones periódicas, y capacitación y transferencia. También distingue los
+períodos particulares de las innovaciones y la mentoría al equipo del CLIENTE.
+
+
+
+
+LafroX SpA                                                                                Media firma: Alex Aravena
+Subdocumento 7                                                                                                    23
+    LafroX SpA                                                                      Introducción al Plan de trabajo
+
+
+
+
+                                     8. Operación y soporte (36 meses)
+
+
+
+
+                                        8.4 Informes y obligaciones          8.5 Capacitación y transferencia
+  8.3 Innovaciones en operación
+                                                 periódicas                           en operación
+    8.3.1 Innovación 2:                  8.4.1 Gestión de la capacidad
+    mantenimiento de escenarios          con proyección trimestral             8.5.1 Dos jornadas anuales de
+    de regresión (INN-02.P4,             durante los 36 meses de               actualización y capacitación
+    segunda parte)                       operación                             del personal nuevo durante
+                                                                               los 36 meses de operación
+    8.3.2 Innovación 3: revisión         8.4.2 Informes mensuales de
+    semestral de parámetros              consumo de nube (FinOps)              8.5.2 Mentoría al equipo
+    durante los 36 meses de              durante los 36 meses de               técnico del CLIENTE durante
+    operación (INN-03.P5)                operación                             los seis meses posteriores al
+                                         8.4.3 Estimaciones anuales            mes 21
+    8.3.3 Innovación 4: línea base
+    y liquidaciones en sombra            de la huella de carbono de la
+                                                                               8.5.3 Mantenimiento de la
+    (INN-04.P2)                          operación
+                                                                               base de conocimiento
+                                         8.4.4 Actualizaciones                 durante los 36 meses de
+    8.3.4 Innovación 4:                  semestrales del depósito de           operación, con métricas de
+    liquidación mensual del              custodia de fuentes durante           uso
+    tramo variable, meses 24 a 56        los 36 meses de operación
+    (INN-04.P3)
+
+    8.3.5 Innovación 5:
+    despliegue gradual por rutas
+    (INN-05.P4, segunda parte)
+
+    8.3.6 Innovación 5: bloque 4
+    condicionado (INN-05.P5)
+
+
+
+
+Figura 7.17 Fase 8 — Operación y soporte, segunda parte: innovaciones, obligaciones periódicas, capacitación y
+transferencia, cuentas 8.3 a 8.5.
+
+    Estas cuentas completan la operación con la continuidad de las innovaciones, los informes
+recurrentes y la transferencia de conocimiento. La mentoría al equipo técnico del CLIENTE
+se extiende durante los seis meses posteriores al mes 21, mientras que el tramo variable de
+INN-04 se liquida entre los meses 24 y 56.
+
+7.1.2.9 Fase 9. Cierre
+    Cierre comprende dos momentos: completar la implementación en el mes 21, con entrega
+de código, infraestructura como código y lecciones aprendidas; y ejecutar la salida al término
+del contrato, con el Plan de Reversibilidad y el tratamiento final de los datos.
+
+
+
+
+LafroX SpA                                                                              Media firma: Alex Aravena
+Subdocumento 7                                                                                                  24
+    LafroX SpA                                                                          Introducción al Plan de trabajo
+
+
+
+
+                                                    9. Cierre
+
+
+
+
+                             9.1 Cierre de la                9.2 Salida al término del
+                            implementación                           contrato
+
+                          9.1.1 Entrega del                     9.2.1 Ejecución del
+                          código fuente, la                     Plan de Reversibilidad
+                          infraestructura como                  y acompañamiento de
+                          código y los                          90 días
+                          procedimientos de
+                          despliegue                            9.2.2 Certificado de
+                                                                devolución o
+                          9.1.2 Informe de                      eliminación de datos
+                          lecciones aprendidas y                personales
+                          archivo de la
+                          implementación
+
+
+Figura 7.18   Fase 9 — Cierre: cierre de implementación y salida al término del contrato, cuentas 9.1 y 9.2.
+
+   La EDT distingue así el cierre de implementación del mes 21 de la salida al término del
+contrato, que incluye la ejecución del Plan de Reversibilidad y el tratamiento final de los datos.
+
+
+7.1.3 Cobertura del alcance
+    Las Aclaraciones de la licitación exigen que la EDT contenga explícitamente las innovacio-
+nes y las actividades de seguridad, calidad, migración e implantación (sección 11, Capítulo 7),
+y el Caso 02 exige que contenga la arquitectura (capítulo 19). La Tabla 7.2 comprueba que cada
+uno de esos componentes tiene paquetes propios.
+
+
+
+
+LafroX SpA                                                                                  Media firma: Alex Aravena
+Subdocumento 7                                                                                                      25
+    LafroX SpA                                                                             Introducción al Plan de trabajo
+
+
+
+
+Tabla 7.2 Cobertura del alcance en la EDT. Fuente: Elaboración a partir de el Formulario T-14, el Capítulo 4 y las
+Aclaraciones.
+
+
+
+ Componente             Elementos              PT                    Cuentas de control         Exigencia
+
+
+ Módulos                M1–M12 y los por-      15                    3.4, 3.5                   Caso 02, cap. 19
+                        tales de clientes
+                        y de transportis-
+                        tas; el portal de
+                        proveedores se
+                        construye con
+                        M11 Canal mo-
+                        derno (3.5.1)
+
+ Interfaces             INT-01 a INT-15        21                    3.1, 3.3, 3.4, 3.6,        Caso 02, cap. 19
+                                                                     6.3, 6.5
+
+ Innovaciones           INN-01 a INN-05        23                    3.10, 5.4, 8.3             Aclaraciones; BA,
+                                                                                                Art. 29°
+
+ Seguridad              Diseño, construc-      17                    1.9, 2.2, 3.2, 3.3,        Aclaraciones
+                        ción, pruebas y                              3.8, 3.9, 3.11, 6.4,
+                        operación                                    8.1, 8.2
+
+ Calidad                Planes, puertas,       19                    1.5, 3.8, 3.9, 3.11,       Aclaraciones
+                        pruebas y deuda                              8.2
+                        técnica
+
+ Migración              Perfilamiento,         6                     3.3, 3.7                   Aclaraciones; BTT,
+                        carga, ensayos y                                                        numeral 20.1
+                        conciliación
+
+ Implantación           Olas, marchas          23                    4.1 a 4.3, 7.1 a 7.3       Aclaraciones; RT-
+                        blancas, capacita-                                                      20.01 a 20.08
+                        ción y cambio
+
+
+
+    La tabla muestra que ninguna exigencia descansa en un paquete genérico. La seguridad,
+por ejemplo, aparece en las cinco fases donde ocurre: el diseño de la Elaboración, la identidad
+y las pruebas de seguridad ofensiva de la Construcción, la seguridad física de la sala y el centro
+de operaciones de seguridad durante la Operación. Las pruebas de seguridad ofensiva 3.8.6
+y 3.9.5 se cuentan en la fila de seguridad y en la de calidad, porque son a la vez control de
+seguridad y prueba de certificación. Las pruebas de la Etapa 2 repiten las de la Etapa 1 con una
+exigencia adicional: demostrar que la Etapa 1 en producción no se degrada.
+    La Figura 7.1.3 ubica esos paquetes por fase y muestra en qué parte de la EDT y, por lo
+tanto, del cronograma quedan las actividades de cada categoría.
+
+
+
+LafroX SpA                                                                                     Media firma: Alex Aravena
+Subdocumento 7                                                                                                         26
+Subdocumento 7
+                 LafroX SpA
+
+
+
+
+                                                                                      Innovaciones           Seguridad            Calidad            Migración           Implantación
+                                                              Fase de la EDT
+
+
+
+
+                                                                                                                                                                                                             LafroX SpA
+                                                                                    23 PaqueteTrabajo    17 PaqueteTrabajo   19 PaqueteTrabajo    6 PaqueteTrabajo    23 PaqueteTrabajo
+
+
+                                                                                                           1.9.2, 1.9.3,
+                                                              1 Inicio                      —                                   1.5.1, 1.5.2             —                   —
+                                                                                                              1.9.4
+
+                                                              2 Elaboración                 —              2.2.1–2.2.4              —                    —                   —
+
+                                                                                     3.10.1 INN-01
+                                                                                                           3.2.5, 3.3.1         3.8.1–3.8.8
+                                                                                     3.10.2 INN-02                                                     3.3.3
+                                                              3 Construcción                               3.8.6, 3.9.5         3.9.1–3.9.7                                  —
+                                                                                     3.10.3 INN-03                                                  3.7.1–3.7.5
+                                                                                                             3.11.4               3.11.3
+                                                                                     3.10.4 INN-05
+
+                                                                                                                                                                        4.1.1–4.1.3
+                                                              4 Transición                  —                   —                   —                    —              4.2.1–4.2.3
+                                                                                                                                                                        4.3.1–4.3.4
+
+                                                              5 Adquisiciones         5.4.3 INN-04              —                   —                    —                   —
+
+                                                              6 Infraestructura             —              6.4.1–6.4.3              —                    —                   —
+
+                                                                                                                                                                        7.1.1–7.1.6
+                                                              7 Capacitación                —                   —                   —                    —              7.2.1–7.2.5
+                                                                                                                                                                        7.3.1, 7.3.2
+
+                                                                                      8.3.1–8.3.6
+                                                              8 Operación                                  8.1.5, 8.2.2            8.2.4                 —                   —
+                                                                                   (INN-02 a INN-05)
+
+                                                              9 Cierre                      —                   —                   —                    —                   —
+
+
+
+
+                                                                                                                                                                                                             Introducción al Plan de trabajo
+                                             Figura 7.19 Ubicación en la EDT de las innovaciones y la seguridad, la calidad, la migración y la implantación. Fuente: Elaboración a partir de el Formulario
+                 Media firma: Alex Aravena
+
+
+
+
+                                             T-14 y las Aclaraciones, sección 11.
+27
+    LafroX SpA                                                                         Introducción al Plan de trabajo
+
+
+
+
+    La matriz confirma que las cinco categorías se distribuyen desde el diseño hasta la operación.
+Las innovaciones tienen paquetes en las fases donde se construyen, se contratan y se operan:
+INN-01, INN-02, INN-03 e INN-05 se construyen en la cuenta 3.10; la fórmula contractual de
+INN-04 se aprueba en la cuenta 5.4, porque es una innovación de modelo de contratación y no
+tiene paquete de construcción; e INN-02 a INN-05 tienen su parte de operación en la cuenta
+8.3. Cada innovación tiene sus meses en el Anexo 7.D (Bases Administrativas, art. 29, p. 19,
+punto 4).
+    Los anexos completan la cobertura. El Anexo 7.E relaciona los doce módulos y las quince
+interfaces del Capítulo 4 con el paquete que los construye y prueba, y el Anexo 7.C ubica los
+dieciséis resultados de aceptación del caso en su paquete y su momento. Los requerimientos
+del Formulario T-12 se trazan a los paquetes mediante la matriz de trazabilidad del paquete
+1.2.4, que se aprueba con el H1.
+
+
+7.1.4 Diccionario y asignación de responsables
+    El diccionario de la EDT, en el Formulario T-14, describe cada paquete con su entregable, su
+criterio de aceptación, su responsable y el período del cronograma en que se ejecuta, junto con
+el hito del Formulario E-25 que habilita. Todo entregable se recibe con el acta de la Contraparte
+Técnica, acompañada de su evidencia de verificación, su trazabilidad hacia los requerimientos
+y las observaciones resueltas (Bases Administrativas, arts. 18.1 y 18.2, p. 13). Los criterios
+del diccionario se suman a esa regla común. Por ejemplo, el paquete 3.4.1 (M1 Recepción)
+se acepta solo si ningún producto con trazabilidad obligatoria se recibe sin lote, y el 4.1.2
+(reversión de la Etapa 1) se acepta solo si su ensayo termina antes de las 05:30, sostiene 96
+despachos sin interrupción con DTE válidos del ERP y no pierde ni duplica registros.
+    Los responsables son los ocho roles de la estructura para el proyecto del Capítulo 1, sección
+1.5. La Tabla 7.3 muestra cómo se reparten los paquetes.
+
+Tabla 7.3    Paquetes por responsable. Fuente: Elaboración a partir de el Formulario T-14.
+
+
+
+ Rol                           PT                          %                           Fases con más paquetes
+
+
+ Líder de Operación /          58                          26 %                        6 (21), 3 (13), 8 (12)
+ SRE
+
+ Líder de Implantación y       34                          15 %                        7 (13), 4 (7)
+ Gestión del Cambio
+
+ Jefe de Proyecto              33                          15 %                        1 (22)
+
+ Líder de Desarrollo           24                          11 %                        3 (21)
+
+ Líder de Calidad              19                          9%                          3 (15)
+
+
+continúa en la página siguiente
+
+
+
+
+LafroX SpA                                                                                   Media firma: Alex Aravena
+Subdocumento 7                                                                                                     28
+    LafroX SpA                                                              Introducción al Plan de trabajo
+
+
+
+
+Tabla 7.3 — continuación
+
+
+
+ Rol                       PT                      %                       Fases con más paquetes
+
+
+ Arquitecto de Solución    18                     8%                       2 (5), 3 (6)
+
+ Encargado de Seguridad    18                     8%                       1 (4), 2 (4), 3 (4)
+ de la Información
+
+ Líder de Datos            18                     8%                       3 (16)
+
+ Total                     222                    100 %
+
+
+
+    Todos los paquetes tienen un responsable único, de modo que son asignables. La distribu-
+ción sigue la naturaleza del trabajo: el Jefe de Proyecto concentra la gestión y el gobierno; el
+Líder de Desarrollo, la construcción; y el Líder de Implantación, la capacitación y la transición.
+El Líder de Operación / SRE responde por un cuarto de los paquetes, porque reúne la nube,
+la infraestructura de los cinco sitios y la operación, y sus paquetes de las fases 3 y 6 ocurren
+a la vez. Responder por un paquete no significa ejecutarlo en persona: la sección 7.2.3 y el
+Formulario T-15 muestran qué frente ejecuta el trabajo bajo cada rol.
+
+
+
+7.2 Plan de trabajo
+    El plan de trabajo aplica las metodologías del Capítulo 6. La gestión del proyecto se basa en
+el PMBOK: los alcances aprobados (H1 y H8) y el cronograma son las líneas base contra las
+que se mide el avance; el avance se mide con valor ganado en el informe mensual (RT-19.06
+y RT-19.07); y todo cambio de alcance, plazo o criterio de aceptación se aprueba antes de
+incorporarse al plan, conforme al artículo 72 de las Bases Administrativas (p. 38) (paquete
+1.4.3).
+    El desarrollo sigue las cuatro fases del proceso iterativo del Capítulo 6, que la EDT recorre
+una vez por etapa. Dentro de la Construcción, cada módulo avanza por iteraciones que producen
+resultados verificables, mientras que la marcha blanca y la aceptación formal ocurren solo en
+los meses que fija el artículo 17 de las Bases Administrativas (pp. 12–13). El tablero de flujo del
+equipo coordina las tareas diarias, pero no reemplaza el cronograma ni la aceptación formal
+de los entregables, como establece la metodología de gestión de proyectos del Capítulo 6.
+
+
+7.2.1 Secuenciamiento y dependencias
+   El orden del trabajo sigue las dependencias de datos y de infraestructura de Puelche (Ca-
+pítulo 3, sección 3.4.3). Primero se aprueban el alcance (H1, mes 2) y el diseño (H2, mes 4).
+En paralelo, se especifica y compra el equipamiento de la sala y de los sitios, y se contratan la
+
+
+
+LafroX SpA                                                                      Media firma: Alex Aravena
+Subdocumento 7                                                                                          29
+    LafroX SpA                                                              Introducción al Plan de trabajo
+
+
+
+
+nube y los enlaces, de modo que la infraestructura híbrida y los ambientes queden habilitados
+en el H3 del mes 6.
+    La construcción de la Etapa 1 parte por la base compartida, porque si falla, fallan todos los
+módulos. Sigue con recepción e inventario, que alimentan la preparación y el retiro sanitario,
+mientras la preventa avanza en paralelo porque necesita stock y crédito. Las rutas y el reparto
+se integran cuando existen el pedido confirmado y la preparación, y la rendición, cuando
+existe la entrega registrada. La Etapa 2 se diseña en los meses 13 y 14 (H8), reutiliza los pedidos,
+las guías y las evidencias ya probadas, y calcula el costo de servir con los hechos acumulados
+desde la marcha blanca de la Etapa 1.
+    La Figura 7.2.1 presenta esa red de precedencias entre cuentas de control. El Anexo 7.B
+lista las 34 dependencias entre paquetes con su fundamento.
+
+
+
+
+LafroX SpA                                                                      Media firma: Alex Aravena
+Subdocumento 7                                                                                          30
+Subdocumento 7
+                 LafroX SpA
+
+
+
+
+                                             ETAPA 1 · meses 1 a 16
+
+
+
+
+                                                                                                                                                                                                                          LafroX SpA
+                                                                                         2.6
+                                                                                     Experiencia
+                                                                                     de usuario
+                                             Alcance y                   ◆ H1                                   ◆ H2
+                                                                                          2.1                                                                                          Condiciones de
+                                             diseño               1.2 Alcance                           2.4 Validación                                                                la marcha blanca    ◆ H6     ◆ H7
+                                                                                     Arquitectura
+                                             Fases 1 y 2 ·        del proyecto                            de diseños                                                                         E1
+                                                                                    de la solución
+                                             H1, H2
+                                                                                    2.2 Diseño de                                                                                      3.7 Migración
+                                                                                     la seguridad                                                                                         de datos
+
+                                                                                                                                                                                            6.5
+                                                                       1.2.3 → 3.3.2 (interfaces ERP)                                                                ◆ H4     ◆ H5     Equipamiento
+                                             Construcción E1                                              3.6.1–3.6.4                                                                   de campo
+                                                                                                                              3.3 Base              3.4 Módulos       3.8 Pruebas                          4.2 Marcha
+                                                                                                        Integraciones
+                                             Fase 3 · H4, H5                                                                 compartida             de la Etapa 1     de la Etapa 1                         blanca y
+                                                                                                         externas E1
+                                                                                                                                                                                        5.4 Acuerdos     producción de
+                                                                                                                                            D-20                                        con terceros       la Etapa 1
+                                             Sala técnica e                                                                                                           Ambientes
+                                             infraestructura 2.3 Diseño de           5.1 Hardware          6.1 Sala                                       6.6          QA y DR
+                                                                                                                            6.3 Racks y                                                      7.3
+                                                                                           e              técnica de                               Infraestructura
+                                             Fases 2, 5 y 6 ·     sala y racks                                               gabinetes                                                  Certificación
+                                                                                    infraestructura          Talca                                   de los sitios
+                                             H3                                                                                                                           H3            de usuarios
+                                             Nube y                                                                                                                      mes 6
+                                             ambientes                                                                                                                                   4.1 Plan de
+                                                                  5.2 Nube y         3.2 Servicios
+                                                                                                                                                   3.1 Ambientes                        implantación
+                                             Fases 5 y 3 · H3      licencias            de nube
+
+                                                                                                                                                                                          4.1.3
+
+                                                                                                                 ◆ H8                              ◆ H9    ◆ H10                      ◆ H11    ◆ H12
+                                                                                                         1.2.5 · 2.4.2                                                                   4.3 Marcha        8 Operación
+                                                                                                                            3.5 Módulos             3.9 Pruebas
+                                                                                                        Línea base y                                                                      blanca y
+                                                                                                                            de la Etapa 2           de la Etapa 2
+
+
+
+
+                                                                                                                                                                                                                          Introducción al Plan de trabajo
+                                                                                                          diseño E2                                                                    producción E2
+                                             ETAPA 2 · meses 13 a 21                                                                                                                                      9.1 Cierre de la
+                 Media firma: Alex Aravena
+
+
+
+
+                                                                                                                                                                                                         implementación
+                                             Ruta crítica del proyecto:                                                                             3.6.5 · 3.6.6
+                                             diseño E2 → módulos → pruebas (D-29 a D-31c)                                                            Cadenas
+
+                                                                                                                                                 7.1.4 · 7.3.2
+                                                                                                                                                 Traspaso y
+                                                                                                                                               certificación E2
+31
+
+
+
+
+                                                    Figura 7.20   Red de precedencias entre cuentas de control e hitos. Fuente: Elaboración a partir de el Anexo 7.B y el Formulario E-25.
+    LafroX SpA                                                               Introducción al Plan de trabajo
+
+
+
+
+    La red muestra tres convergencias. En el H3 se juntan la cadena de la nube (5.2, 3.2 y 3.1) y
+la de la sala técnica (2.3, 5.1, 6.1, 6.3 y 6.6). En los hitos H4 y H5 se juntan los módulos, la base
+compartida, el diseño aprobado y la experiencia de usuario. Al cierre de la marcha blanca se
+juntan la solución certificada, la migración, el equipamiento de cada ola, la certificación de los
+usuarios y, en la ola de reparto, los acuerdos con los transportistas y el sindicato. Un atraso en
+cualquiera de esas ramas se propaga al hito aunque no sea de software. En el escenario nominal
+anterior a la reestimación, el camino de menor holgura pasa por el diseño, los módulos y la
+certificación de la Etapa 2; la sección 7.3.1 explica el alcance de ese resultado histórico.
+    El secuenciamiento incorpora además las condiciones de la operación de Puelche que
+el caso exige ver en el plan (sección 17.5). Los congelamientos de septiembre y diciembre,
+y el cierre de los tres primeros días hábiles de cada mes, son restricciones de calendario
+para todo corte, despliegue e inicio de ola (paquete 1.3.1). La implantación en bodega y su
+acompañamiento se programan en el turno de noche, entre las 22:00 y las 06:00 (paquete 4.2.2),
+y la rotación del 38 % se atiende con capacitación continua y no con un evento único (paquete
+7.1.2). Los 62 preventistas y los cerca de 200 conductores se capacitan en su ruta, sin detener la
+venta ni el reparto (paquetes 7.1.1 y 4.2.2).
+    Los acuerdos con los diez transportistas y con el sindicato preceden a la ola de reparto
+(paquetes 5.4.1 y 5.4.2), y la certificación del intercambio electrónico es un paquete por cadena
+y no una tarea única (paquetes 3.6.5 y 3.6.6). Las interfaces del sistema de gestión se levantan
+en el Inicio y se prueban temprano (paquetes 1.2.3 y 3.3.2). Las reglas de ruteo del planificador
+se capturan en los talleres de los meses 1 a 3 y se validan sin él durante la marcha blanca
+(paquete 1.2.2; resultado R18-16).
+
+
+7.2.2 Estimación
+    El esfuerzo se estima por paquete con tres valores en horas hombre: optimista, más probable
+y pesimista (PMI, 2017, p. 201). La incertidumbre de cada estimación se representa con una
+distribución beta, una de las que el PMBOK admite para modelar la incertidumbre de duración y
+recursos (PMI, 2017, p. 432). Con ella, la técnica PERT da el esfuerzo esperado 𝑇𝐸 = (𝑂+4𝑀 +𝑃)/6
+y su desviación 𝜎 = (𝑃 − 𝑂)/6 (Malcolm et al., 1959). El PMBOK presenta también la distribución
+triangular, (𝑂 + 𝑀 + 𝑃)/3 (PMI, 2017, p. 201); se prefiere la beta porque da cuatro veces más
+peso al valor más probable, que el equipo funda en los requerimientos del Formulario T-12 y
+en las cantidades del Formulario T-11.
+    La base de cada estimación depende del tipo de paquete. Los módulos y las integraciones
+se estiman a partir de los requerimientos del Formulario T-12 asignados a cada paquete; la
+infraestructura, a partir de las cantidades del Formulario T-11; la implantación, a partir de
+las personas y rutas del caso; y la operación, a partir de los horarios de cobertura y de la
+periodicidad de los informes. Los paquetes de la fase 8 se estiman por mes y se multiplican por
+los 36 meses de operación. El Formulario T-15 detalla el método y las reglas de programación.
+La duración de cada paquete se obtiene de su esfuerzo esperado y de la dotación asignada, y la
+suma de las varianzas de los paquetes de la ruta crítica entrega la probabilidad de cumplir cada
+hito con la aproximación normal de PERT. Para programar y controlar, el esfuerzo de cada
+
+
+LafroX SpA                                                                       Media firma: Alex Aravena
+Subdocumento 7                                                                                           32
+    LafroX SpA                                                                       Introducción al Plan de trabajo
+
+
+
+
+paquete se reparte entre sus actividades del Formulario T-15, sección 6, sin cambiar su total.
+   La Tabla 7.4 resume el resultado de la estimación por etapa contractual, con la reserva
+protegida separada del trabajo base.
+
+Tabla 7.4    Horas hombre programadas por etapa — Fuente: Elaboración a partir de Formulario T-15, sección 4.3
+
+
+
+ Etapa                   Meses                HH base y cobertu-    HH de reserva         HH programadas
+                                              ra                    protegida
+
+
+ Etapa 1 · Desarro-      1 a 12               38.141                0                     38.141
+ llo
+
+ Etapa 1 · Marcha        13 a 15              11.195                1.152                 12.347
+ blanca
+
+ Etapa 2 · Desarro-      13 a 18              11.407                0                     11.407
+ llo
+
+ Etapa 2 · Marcha        19 y 20              7.308                 0                     7.308
+ blanca
+
+ Soporte puente de       16 a 20              14.792                1.920                 16.712
+ la Etapa 1
+
+ Cierre y estabi-        21 y 22              2.775                 0                     2.775
+ lización de la
+ implementación
+
+ Operación               21 a 56              128.854               0                     128.854
+
+ Total                                        214.471               3.072                 217.543
+
+
+
+    La operación concentra el 59 % de las horas programadas (128.854 de 217.543 HH), porque
+cubre 36 meses de servicio continuo del centro de operaciones y la mesa, y el SOC desde
+la primera marcha blanca del mes 13; la mesa incluye desde el mes 25, cuando la demanda
+proyectada se acerca a su límite, un tercer agente en las franjas de menor demanda, con el
+que cubre sus niveles de servicio hasta 2.391 contactos al mes. Son puestos de turno 24×7 y de
+mesa, no personas dedicadas a otras tareas. La implementación propiamente tal, de los meses
+1 a 22, suma 88.689 HH, y su tramo más denso son los meses 13 a 15, cuando la marcha blanca
+de la Etapa 1 y el desarrollo de la Etapa 2 suman 17.513 HH (4.501,27 + 4.905,22 + 8.106,39,
+según la curva del Formulario T-15, sección 4.4), con el máximo de 69 personas equivalentes
+en el mes 15. Las 3.072 HH de reserva se asignan sólo a la Etapa 1, de modo que una corrección
+en su marcha blanca no se financia con horas de la Etapa 2.
+
+
+
+
+LafroX SpA                                                                               Media firma: Alex Aravena
+Subdocumento 7                                                                                                   33
+    LafroX SpA                                                          Introducción al Plan de trabajo
+
+
+
+
+7.2.3 Frentes de trabajo y sincronización
+   El trabajo se organiza en ocho frentes. Cada frente es un equipo con un responsable que
+avanza en paralelo con los demás sobre un conjunto de cuentas de control. La Figura 7.2.3
+presenta los frentes, su rol líder, sus cuentas de control y su ventana de actividad entre los
+meses 1 y 21; la correspondencia completa está en el Formulario T-15.
+
+
+
+
+LafroX SpA                                                                  Media firma: Alex Aravena
+Subdocumento 7                                                                                      34
+Subdocumento 7
+                 LafroX SpA
+
+
+
+
+                                                                                             2027                                                                                     2028 Solapamiento · meses 13 a 15               Solapamiento · meses 19 y 20
+                                                                     Mes contractual →          1     2          3     4         5     6          7     8      9       10       11      12      13    14      15      16               17    18       19     20       21
+                                                                                               feb   mar        abr   may       jun   jul        ago   sep    oct     nov       dic    ene     feb   mar     abr      may             jun    jul     ago    sep       oct
+
+
+
+
+                                                                                                                                                                                                                                                                                            LafroX SpA
+                                                                                                           H1              H2               H3                             H4                H5                                  H7         H9                             H12
+                                                               Hitos del Formulario E-25                                                                                                                     H8                                   H10
+                                                                                                                                                                                              H6                                                      H11
+                                                                                                                                                                                                                                                                                 → hasta
+                                                   F1 Dirección, gobierno y cumplimiento
+                                                                                                                                                                                                                                                                                 el mes
+                                                         Jefe de Proyecto · meses 1 a 56                                                                                                                                                                                         56
+                                                     F2 Arquitectura, seguridad y datos
+                                                    Arquitecto de Solución · meses 1 a 21
+
+                                                     F3 Construcción y correcciones E1
+                                                      Líder de Desarrollo · meses 1 a 20                                                                                                                            4.2.2 capacidad protegida
+
+                                                          F4 Construcción de la Etapa 2
+                                                     Líder de Desarrollo · meses 13 a 20
+
+                                                  F5 Plataforma, infraestructura y soporte
+                                                                                    puente                                                                                                                                            4.2.2 soporte puente
+                                                   Líder de Operación / SRE · meses 1 a 20
+
+                                                                   F6 Calidad y pruebas
+                                                         Líder de Calidad · meses 1 a 21
+
+
+                                                   F7 Implantación y gestión del cambio
+                                                 Líder de Implantación y GC · meses 9 a 21                                                                                                                                                                                       8.1–8.3,
+                                                                                                                                                                                                                                                                                 8.5:
+                                                                F8 Operación y soporte                                                                                                                                                                                           desde el
+                                                Líder de Operación / SRE · meses 21 a 56                                                                                                                                                                                         mes 21
+                                                                                                                                                                                                                                                                                 hasta el
+                                                                                               1       2        3      4        5     6           7     8      9      10        11      12         13   14          15      16         17        18         19   20   21         56
+                                                                               Leyenda          Ventana del frente (Tabla T15.1)                       Cuentas de control activas (GanttPRO)                      Capacidad protegida / soporte puente 4.2.2
+                                                                                                Solapamiento de etapas (Art. 17.2)                     Septiembre y diciembre (sin pasos a producción)            Hito del Formulario E-25 (en su mes contractual)
+
+
+
+
+                                             Figura 7.21      Frentes de trabajo de los meses 1 a 21. Fuente: Elaboración a partir de los Formularios T-14 y T-15.
+
+
+
+
+                                                                                                                                                                                                                                                                                            Introducción al Plan de trabajo
+                 Media firma: Alex Aravena
+35
+    LafroX SpA                                                             Introducción al Plan de trabajo
+
+
+
+
+    La figura muestra que en ningún mes trabaja un solo frente: entre los meses 1 y 15 avanzan
+a la vez la dirección, la arquitectura, la construcción de la Etapa 1, la plataforma y la calidad,
+y desde el mes 9 se suma la implantación. Los frentes se sincronizan en tres instancias. La
+primera son los hitos del Formulario E-25, porque cada hito exige que varios frentes entreguen
+a la vez. La segunda son los comités del artículo 71 de las Bases Administrativas (p. 37): el de
+Proyecto es quincenal y los de Arquitectura y Operación son mensuales, y sus actas registran los
+acuerdos entre frentes en dos días hábiles (RT-19.09). La tercera son las ventanas de calendario,
+que son comunes a todos los frentes.
+
+
+7.2.4 Solapamientos de los meses 13 a 15 y 19 a 20
+    El artículo 17.2 de las Bases Administrativas (p. 13) obliga a dimensionar dotación y frentes
+para dos esfuerzos simultáneos. En los meses 13 a 15 trabajan a la vez el frente de implantación
+(F7), en la marcha blanca de la Etapa 1 con su acompañamiento; el de construcción de la Etapa
+1 (F3), en las correcciones de esa marcha blanca; el de construcción de la Etapa 2 (F4), en su
+desarrollo, con el H8 en el mes 14; el de calidad (F6), en las pruebas de ambas etapas; y los
+frentes de dirección y de arquitectura (F1 y F2).
+    F3 y F4 dependen del mismo rol, el Líder de Desarrollo, pero son equipos distintos. Si el
+mismo equipo atendiera la marcha blanca y desarrollara la Etapa 2, cada incidente de la marcha
+blanca atrasaría la Etapa 2, que es precisamente la situación que el artículo 17.2 de las Bases
+Administrativas (p. 13) busca evitar. La Figura 7.2.3 lo hace visible: en la franja sombreada de
+los meses 13 a 15, las barras de F3 y F4 coexisten en carriles separados.
+    En los meses 19 y 20 la Etapa 1 está en producción y la Etapa 2 en marcha blanca. Trabajan
+F7, en la marcha blanca de la Etapa 2; F4, en sus correcciones; F6, en las pruebas; y el soporte
+de la Etapa 1 en producción. La dotación de cada frente en cada solapamiento se presenta en
+el Formulario T-15, de modo que los dos esfuerzos se sumen sin contar dos veces a las mismas
+personas.
+
+
+
+7.3 Cronograma e implantación
+    El cronograma aplica el artículo 17 de las Bases Administrativas (pp. 12–13) mes a mes y
+la implantación aplica las condiciones del Caso 02 (secciones 13.3 y 17.6, pp. 23 y 33). Esta
+sección presenta la ruta crítica, la carta Gantt, el plan de implantación, las marchas blancas, la
+estabilización y el momento en que se alcanza cada resultado comprometido. El detalle está
+en los Formularios T-14, T-15 y T-18.
+
+
+7.3.1 Ruta crítica y holguras
+   La ruta crítica se calcula con el método de la ruta crítica sobre la red del Anexo 7.B (PMI,
+2017, pp. 210–211). Una pasada hacia adelante da las fechas tempranas de cada paquete; una
+pasada hacia atrás, desde los meses fijos del artículo 17 de las Bases Administrativas (pp. 12–13),
+
+
+
+LafroX SpA                                                                     Media firma: Alex Aravena
+Subdocumento 7                                                                                         36
+    LafroX SpA                                                              Introducción al Plan de trabajo
+
+
+
+
+da las tardías; LS − ES es la holgura total; la libre se mide contra el ES de los sucesores. Como
+los hitos del Formulario E-25 son fechas fijas, un camino que no llega a su hito tiene holgura
+negativa y obliga a replanificar.
+    En el escenario nominal anterior a la reestimación, la cadena de menor holgura correspon-
+de a la Etapa 2: diseño (1.2.5, 2.1.4 y 2.4.2) → módulos (3.5) → integración (3.9.1) → certificación
+(3.9.2–3.9.7). La Tabla 5.2 del Formulario T-15 conserva sus antiguas reservas y probabilidades
+como referencia histórica; no están recalculadas con las 217.543 HH ni con asignaciones nomi-
+nales. También requieren comprobación las cadenas de la Etapa 1, la sala técnica, los acuerdos
+de implantación y la certificación de cadenas. Las marchas blancas y los pasos a producción
+mantienen sus fechas contractuales fijas. La Figura 7.3.1 representa las dependencias del
+escenario nominal, sin acreditar la ruta crítica de la línea base actual.
+
+
+
+
+LafroX SpA                                                                      Media firma: Alex Aravena
+Subdocumento 7                                                                                          37
+                    LafroX SpA                                                                                                                    Introducción al Plan de trabajo
+
+
+
+
+                                           2027                                                                              2028
+                    Mes contractual          1      2         3     4         5     6        7     8      9     10     11      12    13   14   15   16   17  18    19    20    21
+                                 →          feb    mar       abr   may       jun   jul      ago   sep    oct   nov     dic    ene   feb mar abr may jun      jul  ago sep oct
+                                                                                                                                   Marcha blanca E1            Marcha blanca E2
+               Hitos del Formulario                     H1              H2             H3                         H4            H5          H8        H7   H9 H10               H12
+                              E-25
+                                                                                                                                    H6                                    H11
+               Ruta crítica · Etapa 2
+             1.2.5 · 2.1.4 Línea base y
+                              diseño E2
+2.4.2 Acta de diseño E2 \(revisión del                                                                                                          H8: reserva 4 días hábiles · 91,1 % \
+                             CLIENTE\)                                                                                                          (simulación con riesgos\)
+          3.5 Módulos de la Etapa 2
+                                                                                                                                                                 H9: reserva 21 días hábiles · 100
+    3.9.1 Prueba de integración E2
+                                                                                                                                                                 % (simulación con riesgos\)
+             3.9.2–3.9.7 Certificación
+                                    E2                                                                                                                                  H10: reserva 25 días
+                                                                                                                                                                        hábiles
+Casi crítico · Etapa 1 \(interfaces del
+                                 ERP\)
+                   1.2.3 Interfaces sin
+                       documentación
+   3.3 Base compartida \(3.3.2 ERP\)
+
+          3.4 Módulos de la Etapa 1
+
+    3.8.1 Prueba de integración E1                                                                                H4: reserva 19 días hábiles
+
+        3.8.2–3.8.8 Certificación E1                                                                                            H5: reserva 35 días hábiles
+
+         Casi crítico · sala técnica y
+                    ambientes \(H3\)
+         2.3 Planos de sala y racks
+
+     5.1.2 Especificación y compra
+          6.1 Sala técnica de Talca
+  6.3.1–6.3.3 y 6.6.3 Racks y borde
+                          de los CD
+      3.2 y 3.1 Servicios de nube y
+                                                                                       H3: reserva 19 días hábiles
+                         ambientes
+
+       Otros caminos casi críticos
+             1.2.2 Reglas de ruteo del
+                           planificador
+        3.4.7 M4 Rutas \(usa las reglas
+                            capturadas\)
+         5.4.1 · 5.4.2 Transportistas y
+                              sindicato
+     3.6.5 · 3.6.6 Intercambio con las
+                               cadenas
+                1.2.1 · 1.2.4 Alcance y
+                                                        H1: reserva 6 días hábiles (la menor; σ 0,58, > 99,9 %\)
+                            trazabilidad
+                                            1       2        3      4        5     6         7     8      9     10     11     12    13    14      15    16     17    18     19     20    21
+                                                                                                  Casi crítico E1 \(D-02, D-04, D-14 a
+                             Leyenda            Ruta crítica \(D-29 a D-31c\)                                                               Casi crítico del H3 \(D-07 a D-13\)
+                                                Otros casi críticos \(D-03, D-27, D-              D-25\) hasta la fecha límite del
+                                                                                                  Reserva
+                                                                                                                                            Marcha blanca \(Art. 17°\)
+                                                32\)                                              hito
+                                                Septiembre y diciembre \(sin                      Hito del Formulario E-25 \(en su
+                                                pasos a producción\)                              mes contractual\)
+
+
+
+
+              Figura 7.22 Dependencias y caminos de menor holgura del escenario nominal histórico; sujetos a recálculo.
+              Fuente: Elaboración a partir de Anexo 7.B y períodos del Formulario T-14.
+
+
+
+
+              LafroX SpA                                                                                                                               Media firma: Alex Aravena
+              Subdocumento 7                                                                                                                                                      38
+    LafroX SpA                                                                       Introducción al Plan de trabajo
+
+
+
+
+La Figura 7.3.1 relaciona las cadenas de diseño, construcción y certificación con sus hitos y
+con las marchas blancas de ambas etapas. El escenario nominal del Formulario T-15 incluye las
+dependencias, los diez días hábiles de revisión del artículo 18.3 de las Bases Administrativas (p.
+13) y una hipótesis de hasta 40 desarrolladores simultáneos, todavía pendiente de asignación
+nominal. Las reservas, probabilidades y fechas P80 de su Tabla 5.2 y del modelo de riesgos
+previo corresponden a ese escenario histórico; no deben interpretarse como resultados de
+la línea base de 217.543 HH. Las marchas blancas y sus cuatro semanas finales no aportan
+reserva utilizable.
+La holgura se gestiona en las instancias de gobierno de la EDT. El avance de cada paquete de la
+ruta crítica y de los caminos casi críticos se revisa en la reunión semanal de seguimiento y en
+el Comité de Proyecto quincenal (paquetes 1.3.5 y 1.8.3). Toda amenaza a un hito se escala al
+Comité Ejecutivo cuando la desviación proyectada supera la mitad de su reserva, sin esperar a
+consumirla, con su análisis de impacto (paquetes 1.4.3 y 1.8.2). El informe mensual con valor
+ganado avisa toda desviación mayor al 10 % con su plan dentro de cinco días hábiles (paquete
+1.8.6). H7 y H12 dependen además de la aceptación copulativa de la marcha blanca, que no
+tiene una probabilidad calculada.
+
+
+7.3.2 Carta Gantt y calendario
+La carta Gantt del Formulario T-14 cubre los 56 meses y muestra las marchas blancas, los pasos
+a producción y el inicio de la Operación. La Tabla 7.5 ubica los doce hitos del Formulario E-25
+con el paquete que entrega cada uno.
+
+Tabla 7.5 Hitos del Formulario E-25 en el cronograma. Fuente: Elaboración a partir de el Formulario E-25 y el
+Formulario T-14.
+
+
+
+ Hito                        Mes                        Entregable que lo gatilla   Paquetes
+
+
+ H1                          2                          Línea base de alcance y     1.2.1, 1.2.4
+                                                        matriz de trazabilidad
+
+ H2                          4                          Arquitectura, plan de       2.4.1
+                                                        seguridad y modelo de
+                                                        datos aprobados
+
+ H3                          6                          Infraestructura híbri-      3.1.1, 3.1.2, 3.1.3, 3.1.5
+                                                        da y ambientes con
+                                                        observabilidad
+
+ H4                          10                         Software de la Etapa 1      3.8.1
+                                                        con QA superado
+
+
+continúa en la página siguiente
+
+
+
+
+LafroX SpA                                                                               Media firma: Alex Aravena
+Subdocumento 7                                                                                                   39
+    LafroX SpA                                                                Introducción al Plan de trabajo
+
+
+
+
+Tabla 7.5 — continuación
+
+
+
+ Hito                      Mes                    Entregable que lo gatilla   Paquetes
+
+
+ H5                        12                     Certificación de la Eta-    3.8.7
+                                                  pa 1
+
+ H6                        13                     Inicio de la marcha         4.2.1
+                                                  blanca de la Etapa 1
+
+ H8                        14                     Línea base y diseño de      1.2.5, 2.4.2
+                                                  la Etapa 2
+
+ H7                        16                     Paso a producción de la     4.2.3
+                                                  Etapa 1
+
+ H9                        17                     Software de la Etapa 2      3.9.1
+                                                  con QA superado
+
+ H10                       18                     Certificación de la Eta-    3.9.6
+                                                  pa 2
+
+ H11                       19                     Inicio de la marcha         4.3.1
+                                                  blanca de la Etapa 2
+
+ H12                       21                     Paso a producción de        4.3.3, 4.3.4
+                                                  la Etapa 2 y aceptación
+                                                  final
+
+
+
+La tabla está ordenada por mes y no por número de hito, porque el H8 (mes 14) ocurre antes
+que el H7 (mes 16). Ese cruce es la expresión concreta del solapamiento: la línea base de la
+Etapa 2 se aprueba mientras la Etapa 1 está en su marcha blanca.
+Los meses contractuales caen en meses calendario distintos según la fecha de inicio del
+contrato, que aún no está definida (consulta V-12). La Tabla 7.6 aplica la regla a los tres inicios
+que el Capítulo 3, sección 3.1.2, considera compatibles con poner la Etapa 2 en producción
+antes de enero de 2029, fecha desde la que rigen las condiciones de la principal cadena de
+supermercados.
+
+
+
+
+LafroX SpA                                                                        Media firma: Alex Aravena
+Subdocumento 7                                                                                            40
+    LafroX SpA                                                                          Introducción al Plan de trabajo
+
+
+
+
+Tabla 7.6 Meses contractuales según la fecha de inicio. Fuente: Elaboración a partir de las Bases Administrativas,
+Art. 17°, y el Caso 02, secciones 13.2 y 13.3.
+
+
+
+ Inicio                 Mes 13 (H6)            Mes 16 (H7)           Meses 19 y 20           Mes 21 (H12)
+
+
+ Diciembre de 2026      Diciembre de           Marzo de 2028         Junio y julio de        Agosto de 2028
+                        2027                                         2028
+
+ Febrero de 2027        Febrero de 2028        Mayo de 2028          Agosto y septiem-       Octubre de 2028
+                                                                     bre de 2028
+
+ Marzo de 2027          Marzo de 2028          Junio de 2028         Septiembre y            Noviembre de
+                                                                     octubre de 2028         2028
+
+
+
+Ningún inicio admisible deja las dos marchas blancas completas fuera de septiembre y diciem-
+bre; el Anexo 7.A extiende el análisis a los ocho meses de inicio admisibles. Con un inicio en
+diciembre de 2026, el inicio de la marcha blanca de la Etapa 1 cae en diciembre; con uno en
+marzo de 2027, el inicio de la marcha blanca de la Etapa 2 cae en septiembre. Con febrero de
+2027, en cambio, el congelamiento afecta solo el segundo mes de la marcha blanca de la Etapa
+2 y no un inicio, por lo que LafroX lo adopta como supuesto de calendario del cronograma. Su
+costo es que las semanas de cierre de esa marcha blanca coinciden con el peak de septiembre,
+que la sección 7.3.5 trata. Dentro de un mes de congelamiento no se inicia ninguna ola ni se
+despliega ningún cambio, y la marcha blanca continúa en convivencia, con medición diaria.
+La Figura 7.3.2 presenta la carta Gantt resumida de los 56 meses con ese supuesto de inicio,
+por período contractual. La carta vigente por cuenta de control, generada desde las ventanas
+reconciliadas de los 222 paquetes, está en el Formulario T-14, sección 3.1.
+
+
+
+
+LafroX SpA                                                                                  Media firma: Alex Aravena
+Subdocumento 7                                                                                                      41
+Subdocumento 7
+                 LafroX SpA
+
+
+
+
+                                                                                                   2027                            2028                              2029                              2030                          2031
+                                                                                       1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56
+
+
+
+
+                                                                                                                                                                                                                                                        LafroX SpA
+                                                        Hitos del Formulario E-25        H1   H2    H3         H4    H5 H8      H7H9H10   H12
+                                                                                                                       H6             H11
+                                                 Períodos obligatorios del Art. 17°
+                                                              Etapa 1 · Desarrollo
+                                                          Etapa 1 · Marcha blanca
+                                                             Etapa 1 · Producción
+                                                              Etapa 2 · Desarrollo
+                                                          Etapa 2 · Marcha blanca
+                                                Etapa 2 · Producción y aceptación
+                                                Operación contractual · 36 meses
+
+                                                                  Fases de la EDT
+                                                    F1 · Inicio, gobierno y control
+                                                                  F2 · Elaboración
+                                                                F3 · Construcción
+                                                                    F4 · Transición
+                                                                F5 · Adquisiciones
+                                                         F6 · Infraestructura física
+                                                       F7 · Capacitación y cambio
+                                                       F7 · Capacitación continua
+                                                      F8 · SOC previo a operación
+                                                         F8 · Operación y soporte
+                                                                        F9 · Cierre
+                                               Gris: septiembre y diciembre; no se inician olas ni se despliegan cambios.
+                                               Mes 20: continúa la marcha blanca de E2 durante el congelamiento. SOC comienza en el 13; operación contractual en el 21.
+
+
+
+                                             Figura 7.23 Carta Gantt resumida de los 56 meses, con inicio en febrero de 2027. Fuente: Elaboración a partir de las Bases Administrativas, art. 17, pp. 12–13, el
+                                             Formulario E-25 y el Formulario T-14.
+
+
+
+
+                                                                                                                                                                                                                                                        Introducción al Plan de trabajo
+                 Media firma: Alex Aravena
+42
+     LafroX SpA                                                                        Introducción al Plan de trabajo
+
+
+
+
+La carta muestra que los periodos fijos del artículo 17 de las Bases Administrativas (pp. 12–13)
+se respetan mes a mes y que ningún paso a producción cae en una columna de congelamiento:
+el mes 16 es mayo de 2028 y el mes 21, octubre de 2028. Las fases de desarrollo aparecen dos
+veces, una por etapa, y la capacitación continúa durante la operación por la rotación de la
+bodega. Las columnas rayadas del mes 20 y del mes 23 confirman lo que anticipa la Tabla 7.6:
+el cierre de la marcha blanca de la Etapa 2 ocurre en septiembre y el primer diciembre de
+operación llega dos meses después de la aceptación final.
+Antes de cada paso a producción, el cronograma reserva las pruebas que exige el numeral
+20.1 de las Bases Técnicas Transversales (p. 35): carga y estrés a 1,5 veces el peak, resiliencia,
+recuperación ante desastres con conmutación real, seguridad ofensiva y accesibilidad. Además,
+programa dos ensayos de migración antes de la migración definitiva. En la Etapa 1 estas pruebas
+forman la cuenta 3.8, se ejecutan en los meses 9 y 10 y se entregan antes del H5 del mes 12; en
+la Etapa 2 forman la cuenta 3.9, se ejecutan en los meses 16 y 17 y se entregan antes del H10
+del mes 18 (Formulario T-15, Tabla 5.2).
+
+
+7.3.3 Plan de implantación y puesta en marcha
+La implantación sigue el principio que impone el caso: nada entra en producción sin haber
+convivido con la forma actual de trabajar, y nada se despliega como un único evento (sección
+13.3, condiciones 1 y 3). Técnicamente, cada capacidad se publica con un despliegue azul-verde
+y se habilita por sitio y por ola mediante indicadores de funcionalidad (feature flags), conforme
+al Capítulo 4, apartado 4.2.4.1.2. Así, cada ola puede revertirse sin reinstalar y cada operación
+tiene un único escritor autorizado (Capítulo 4, sección 4.1.8). Ningún despliegue ocurre en
+la ventana de despacho de 05:30 a 07:00, que no admite indisponibilidad, ni en fechas de
+congelamiento (Caso 02, cap. 15, RT-10.05, p. 27).
+La Etapa 1 entra en tres olas, en el orden de las dependencias de datos (Capítulo 3, sección
+3.4.4). La Tabla 7.7 las presenta.
+
+Tabla 7.7 Olas de implantación de la Etapa 1. Fuente: Elaboración a partir de Capítulo 3, sección 3.4.4, y
+Formulario T-18.
+
+
+
+ Ola                    Procesos               Módulos               Avance                 Registro oficial
+
+
+ 1                      Datos maestros y       M1                    Por sitio              Recepciones y
+                        recepción con lote                                                  lotes
+
+ 2                      Inventario con FE-     M2, M5                Por sitio              Stock y prepara-
+                        FO y preparación                                                    ción
+                        nocturna
+
+
+continúa en la página siguiente
+
+
+
+
+LafroX SpA                                                                                 Media firma: Alex Aravena
+Subdocumento 7                                                                                                     43
+     LafroX SpA                                                             Introducción al Plan de trabajo
+
+
+
+
+Tabla 7.7 — continuación
+
+
+
+ Ola                  Procesos              Módulos           Avance             Registro oficial
+
+
+ 3                    Preventa, rutas,      M3, M4, M6, M8,   Por zona comer-    Pedidos, entregas
+                      reparto, devolucio-   M7                cial               y cobros
+                      nes y rendición
+
+
+
+Una ola avanza a la siguiente cuando cumple su criterio durante cuatro semanas consecutivas a
+volumen real: sin defectos críticos ni altos, con conciliación diaria sin diferencias no explicadas,
+con los indicadores de disponibilidad y tiempo de respuesta cumplidos, con los usuarios
+certificados y con el acta de la Contraparte Técnica (Capítulo 3, sección 3.4.4).
+La programación de olas usa fechas reales y no una equivalencia de meses a 13 semanas: todos
+los grupos deben estar operativos antes del inicio de los 28 días finales de marcha blanca.
+La sección 6.1 del Formulario T-18 propone Talca/Concepción/plataformas/remanentes en
+semanas 5/6/7/8 para la ola de reparto, subordinadas a fechas permitidas y al límite F − 28 días.
+Se permite superposición por dominios sin intervenir simultáneamente el mismo proceso ni
+doble escritura.
+
+
+
+
+LafroX SpA                                                                      Media firma: Alex Aravena
+Subdocumento 7                                                                                          44
+    LafroX SpA                                                                         Introducción al Plan de trabajo
+
+
+
+
+                 Semana 5               Semana 6              Semana 7              Semana 8
+                   Talca               Concepción            Plataformas           Remanentes
+
+
+
+
+                 Antes de comenzar los últimos 28 días: todo el alcance activo, con
+                     fechas sujetas a ventanas permitidas y sin doble escritura
+
+
+                   Últimos 28 días de marcha blanca (referencia: semanas 10--13)
+                  Volumen real completo en todas las zonas + criterios sostenidos
+                               durante cuatro semanas consecutivas
+
+
+
+Figura 7.24 Secuencia de olas de la Etapa 1 durante la marcha blanca. Fuente: Elaboración a partir de el Capítulo
+3, sección 3.4.4, y el Formulario T-18.
+
+
+El avance de cada grupo exige su criterio y acompañamiento. Las cuatro semanas finales
+requieren todos los grupos y todo el volumen real, no una muestra. E2 habilita todas las
+cadenas del alcance, portales y costo de servir antes de F − 28 días y, en el ejemplo febrero
+2027, antes de septiembre. La carga manual de pedidos mantiene contingencia auxiliar y no
+acredita intercambio electrónico ni permite excluir una cadena faltante.
+La reversión tiene dos niveles, que la Tabla 7.8 distingue.
+
+Tabla 7.8 Niveles de reversión. Fuente: Elaboración a partir de Capítulo 3, sección 3.4.4; Capítulo 4, apartados
+4.2.4.1.2 (liberación y reversión) y 4.1.8 (único escritor); y Formulario T-18.
+
+
+
+ Nivel                       Qué hace                     Quién decide                Plazo
+
+
+ Técnico                     Devuelve el tráfico a        Líder de Operación /        Objetivo ≤10 minutos,
+                             la entrega previa por        SRE                         medido en cada ensayo
+                             azul-verde/canario o                                     en Preproducción,
+                             desactiva el indicador                                   fuera de la ventana de
+                             de funcionalidad (featu-                                 despacho
+                             re flag)
+
+ Operacional, Etapa 1        Conserva/restaura            Responsable de opera-       Completo antes de las
+                             versión operativa local      ciones del CLIENTE          05:30
+                             probada, único escritor
+                             y DTE válidos; papel
+                             sólo de apoyo
+
+
+continúa en la página siguiente
+
+
+
+
+LafroX SpA                                                                                 Media firma: Alex Aravena
+Subdocumento 7                                                                                                     45
+    LafroX SpA                                                                Introducción al Plan de trabajo
+
+
+
+
+Tabla 7.8 — continuación
+
+
+
+ Nivel                     Qué hace                   Quién decide            Plazo
+
+
+ Operacional, Etapa 2      Desactiva la capacidad     Responsable de opera-   Fuera de la ventana de
+                           de la Etapa 2 que falla,   ciones del CLIENTE      05:30 a 07:00
+                           sin tocar la Etapa 1
+
+
+
+La reversión operacional se dispara con señales observables: pedidos sin sincronizar al inicio
+de la carga, rutas del día no disponibles o un defecto crítico en la ventana de despacho. El
+plazo de las 05:30 protege la salida de los 96 camiones y no es el tiempo de recuperación ante
+desastres. La Figura ?? presenta el procedimiento por rol.
+
+
+
+
+LafroX SpA                                                                        Media firma: Alex Aravena
+Subdocumento 7                                                                                            46
+    LafroX SpA                                                                                    Introducción al Plan de trabajo
+
+
+
+
+                                Turno de noche
+                         Se detecta una incidencia que
+                          podría afectar el despacho.
+
+
+
+                           Acompañante verifica el
+                            impacto y lo informa a
+                          Operaciones del CLIENTE
+
+
+
+                                 ¿Amenaza el
+                                  despacho?
+
+
+                                                                         Sí
+           No                                        Responsable de Operaciones del CLIENTE
+      Corregir; la ola                                   autoriza la reversión operacional
+        continúa
+
+
+
+
+                                 Operacional                                                     Técnica
+             Versión local y documentos ERP válidos antes de las                Volver a versión anterior o desactivar el
+                                   05:30                                                       interruptor
+
+
+
+
+                                                Al retomar, conciliar los registros que quedaron en
+                                                         cola, sin pérdida ni duplicación
+
+
+
+
+                                           La ola afectada reinicia sus cuatro semanas de cumplimiento
+
+
+
+
+Figura 7.25 Procedimiento de reversión de la Etapa 1 en la ventana de despacho. Fuente: Elaboración a partir de
+el Formulario T-18.
+
+
+La figura muestra que la decisión es del CLIENTE y se toma en el turno de noche, antes de
+que empiece el despacho. El ensayo debe comprobar que lo capturado permanece en cola y se
+concilia sin pérdida ni duplicación; no se presume por la descripción. Lo que se pierde es el
+avance de la ola, que reinicia su período de cuatro semanas (Caso 02, sección 17.6, punto 4,
+p. 33). La reversión se ensaya en Preproducción antes de cada corte (paquete 4.1.2), y en ese
+ensayo se mide el tiempo de cada nivel.
+
+
+7.3.4 Marcha blanca de la Etapa 1
+La marcha blanca de la Etapa 1 son tres meses de operación supervisada con datos y usuarios
+reales, del mes 13 al 15. Convive con la operación vigente: en bodega, con la hoja de picking;
+en ruta, con la guía en papel; y en Talca, con el WMS de 2013 en solo lectura como respaldo de
+consulta. Cada día se concilian ambos registros, y toda diferencia se clasifica y explica antes
+del cierre del día (RT-20.03). La Tabla 7.9 presenta los indicadores que se miden y publican
+diariamente, con sus umbrales de cierre (RT-20.04).
+
+
+
+LafroX SpA                                                                                            Media firma: Alex Aravena
+Subdocumento 7                                                                                                                47
+    LafroX SpA                                                                       Introducción al Plan de trabajo
+
+
+
+
+Tabla 7.9 Indicadores diarios de la marcha blanca. Fuente: Elaboración a partir de Bases Administrativas, Art.
+17.3; Caso 02, RT-09.01 y RT-10.05; y Capítulo 3, Tabla 3.5.
+
+
+
+ Indicador                            Umbral                               Condición Art. 17.3
+
+
+ Incidentes críticos y altos abier-   0                                    1
+ tos
+
+ Transacciones de la ola registra-    100 % del volumen real durante       2
+ das en la solución                   las 4 últimas semanas
+
+ Indisponibilidad en la ventana       0 minutos                            3
+ de 05:30 a 07:00
+
+ Disponibilidad de la transacción     99,9 % o más                         3
+ crítica
+
+ Tiempo de respuesta, percentil       Línea de preparación hasta 1         3
+ 95                                   s; entrega hasta 2 s; línea de
+                                      preventa hasta 1,5 s; stock y
+                                      crédito hasta 2 s
+
+ Diferencias de conciliación sin      0                                    4
+ explicar
+
+ Usuarios de la ola certificados      100 %                                5
+
+
+
+Los indicadores reproducen las condiciones del artículo 17.3 de las Bases Administrativas (p.
+13) con umbrales que se pueden medir cada día, de modo que el cierre no depende de un
+juicio al final del período. El volumen comprometido es la operación real completa de cada
+proceso y no una muestra; con las cifras del caso (sección 14.1), son cerca de 1.150 recepciones
+de proveedor y 260.000 líneas de preparación al mes, unos 31.000 pedidos al mes y alrededor
+de 1.400 entregas por día hábil, o 2.600 si las semanas de cierre coinciden con el peak de
+septiembre. El detalle por proceso está en el Formulario T-18, Tabla T-18.1.
+La sexta condición del artículo 17.3 de las Bases Administrativas (p. 13) es el acta de la Contra-
+parte Técnica, que en la Etapa 1 es el H7 del mes 16. Si una condición no se cumple al término
+del mes 15, la marcha blanca se extiende a costo de LafroX, sin mover las fechas siguientes
+(Bases Administrativas, art. 17.3, p. 13). La Figura ?? resume el ciclo diario de control; las
+condiciones de cierre se enumeran debajo.
+
+
+
+
+LafroX SpA                                                                               Media firma: Alex Aravena
+Subdocumento 7                                                                                                   48
+    LafroX SpA                                                                          Introducción al Plan de trabajo
+
+
+
+
+                 Medir                                            Decidir:
+                                        Comparar                                          Publicar el
+             indicadores y                                       continuar,
+                                     resultados con                                       resultado
+               conciliar                                         corregir o
+                                      los umbrales                                          diario
+               registros                                          revertir
+
+
+
+
+Figura 7.26 Ciclo diario de la marcha blanca. Fuente: Elaboración a partir de las Bases Administrativas, art. 17.3,
+p. 13, y las Bases Técnicas Transversales, RT-20.04, p. 35.
+
+
+El ciclo de la Figura ?? se repite cada día: se miden los indicadores y se concilian los registros,
+se comparan los resultados con sus umbrales, se decide entre continuar, corregir o revertir y
+se publica el resultado diario. Si una incidencia amenaza de inmediato el despacho, se activa
+el procedimiento de reversión de la Figura ?? sin esperar la publicación diaria.
+El cierre exige cumplir simultáneamente las seis condiciones del artículo 17.3 de las Bases
+Administrativas (p. 13):
+
+  1. Cero incidentes críticos o altos abiertos.
+  2. Volumen real completo durante las últimas cuatro semanas.
+  3. Sin indisponibilidad en despacho; disponibilidad y respuesta dentro de umbral.
+  4. Sin diferencias inexplicadas ni pedidos perdidos o duplicados.
+  5. 100 % de usuarios capacitados y certificados.
+  6. Acta de aceptación de la Contraparte Técnica (H7).
+
+Ninguna de estas condiciones compensa a otra.
+La capacitación se hace en el puesto y en la ruta con las cuatro modalidades del artículo 90.2
+de las Bases Administrativas (p. 45). Cada perfil se certifica antes del cierre, porque el artículo
+17.3 de las Bases Administrativas (p. 13) exige que el personal del CLIENTE esté «capacitado
+y certificado conforme al plan de capacitación aprobado», y los usuarios administradores y
+el equipo técnico del CLIENTE se certifican además conforme al artículo 90.4 de las Bases
+Administrativas (p. 45). Los perfiles operativos, tomados del Capítulo 3, Anexo 3.I, son 120
+preparadores, con un tutor por turno y un aprendizaje en el puesto de dos horas como máximo;
+62 preventistas, en su propia ruta; 84 integrantes de la tripulación propia; y cerca de 160
+conductores de transportistas, que se incorporan en el andén al asignarse a una ruta.
+La adopción se mide por perfil y por ola, y si una ola no alcanza la meta, no avanza y se
+extiende el acompañamiento. La respuesta es distinta según el grupo: el personal con veinte o
+treinta años en la compañía recibe acompañamiento individual y reconocimiento formal de su
+conocimiento, y el personal rotativo de preparación cuenta con un tutor por turno (Formulario
+T-18, secciones 2.7 y 2.8).
+
+
+
+
+LafroX SpA                                                                                  Media firma: Alex Aravena
+Subdocumento 7                                                                                                      49
+    LafroX SpA                                                            Introducción al Plan de trabajo
+
+
+
+
+7.3.5 Marcha blanca de la Etapa 2 y convivencia
+La marcha blanca de la Etapa 2 dura los meses 19 y 20 y convive con la Etapa 1 en producción.
+La regla central del artículo 17.2 de las Bases Administrativas (p. 13) es que exista una única
+fuente de verdad para los datos compartidos: la Etapa 2 lee y extiende los pedidos, clientes,
+guías y entregas de la Etapa 1, sin copiarlos ni digitarlos de nuevo, y ningún despliegue de la
+Etapa 2 modifica las funciones estabilizadas de la Etapa 1 ni ocurre en la ventana de despacho.
+Esta marcha blanca dura unas 8,7 semanas (2 × 52 / 12). Como el artículo 17.3 de las Bases
+Administrativas (p. 13) exige volumen real en las cuatro últimas, todas las cadenas certificadas,
+los portales y el costo de servir deben quedar habilitados en las primeras 4,7 semanas. Con
+el inicio supuesto de febrero de 2027, el mes 19 es agosto y el mes 20 es septiembre de 2028,
+de modo que toda habilitación ocurre en agosto, antes del congelamiento del 1 al 25 de sep-
+tiembre. Las semanas de cierre se miden con el volumen del peak de Fiestas Patrias, cerca
+de 2.600 entregas diarias, en el primer septiembre de la Etapa 1 en producción. Durante el
+congelamiento se aplica continuidad previamente autorizada por el CLIENTE; la sección 6.4 del
+Formulario T-18 no presume que un cambio de configuración esté exento de las prohibiciones.
+La capacidad para ese peak se demuestra antes del H11 con la prueba de carga a 1,5 veces el
+peak, con ambas etapas activas (paquete 3.9.3; Formulario T-18, sección 3.1).
+A los indicadores de la Tabla 7.9 se suman los propios del alcance de la Etapa 2: los pedidos
+de las cadenas certificadas recibidos por vía electrónica, los avisos de despacho dentro de
+dos minutos, las entregas con costo de servir calculado y la ausencia de degradación de los
+indicadores de la Etapa 1 (Formulario T-18, sección 3.3). La Figura ?? muestra cómo fluyen los
+datos entre ambas etapas.
+
+
+
+
+LafroX SpA                                                                    Media firma: Alex Aravena
+Subdocumento 7                                                                                        50
+    LafroX SpA                                                                           Introducción al Plan de trabajo
+
+
+
+
+                                                                                      Registro
+                  ERP         Documentos                             Opera y        compartido
+                                válidos             Etapa 1          escribe
+             Registro con-                                                        Pedidos, clientes,
+                                                  Producción
+             table y emisor                                                            guías,
+                                                    estable
+             único de guías                                                       entregas, lotes y
+                                                                                       cobros
+
+
+                                                                                                   Lee
+                                                                          Extiende
+                                                                          los datos
+
+
+                                                                                 Etapa 2 en marcha
+                                                                                       blanca
+                                                                                Canal moderno (M11),
+                                                                                 portales y costo de
+                                                                                    servir (M10)
+
+
+
+Figura 7.27 Convivencia de la Etapa 1 en producción con la Etapa 2 en marcha blanca. Fuente: Elaboración a
+partir de la arquitectura lógica del Capítulo 4.
+
+
+Se mantiene una sola fuente de verdad y un escritor autorizado por dato. La Etapa 2 no duplica
+datos ni modifica las funciones estabilizadas de la Etapa 1. Lee el registro único y lo extiende
+con sus propios datos, de modo que no existe una doble digitación que conciliar. El ERP se
+mantiene como registro contable y único emisor de la guía de despacho para ambas etapas. El
+paso a producción del mes 21 es la aceptación final de la implementación (H12) y el inicio de
+la Operación con ambos alcances (Bases Administrativas, art. 17.2, punto 4, p. 13).
+
+
+7.3.6 Estabilización y transferencia
+Después de cada paso a producción hay una estabilización de cuatro semanas por ola, con
+atención reforzada y sin costo adicional (RT-20.06). La dotación se deriva de la operación del
+caso, como muestra la Tabla 7.10.
+
+Tabla 7.10 Estabilización por ola. Fuente: Elaboración a partir de Capítulo 3, sección 3.4.4.
+
+
+
+ Frente                                Personas                                Cálculo
+
+
+ Bodega, turno de noche                2                                       1 por centro de distribución
+
+ Plataformas de cross-docking          3                                       1 por plataforma
+
+ Calle                                 7                                       158 rutas diarias / 24 días de
+                                                                               lunes a sábado ≈ 6,6
+
+
+continúa en la página siguiente
+
+
+
+
+LafroX SpA                                                                                   Media firma: Alex Aravena
+Subdocumento 7                                                                                                       51
+    LafroX SpA                                                                       Introducción al Plan de trabajo
+
+
+
+
+Tabla 7.10 — continuación
+
+
+
+ Frente                                Personas                            Cálculo
+
+
+ Coordinación                          1                                   Líder de Implantación y Gestión
+                                                                           del Cambio
+
+
+
+Las siete personas de calle permiten acompañar cada una de las 158 rutas diarias (96 camiones
+y 62 preventistas) al menos una vez en las cuatro semanas. Si la ola cubre una sola zona, la
+dotación se reduce en proporción a sus rutas, y la dotación decrece según la curva de adopción,
+como exige el RT-20.05.
+La operación se transfiere al equipo de TI de cuatro personas del CLIENTE antes del mes 21,
+con procedimientos documentados y ensayados y con la base de conocimiento. Sigue una
+mentoría de seis meses (paquetes 7.1.4 y 8.5.2; RT-22.07). Quedan como servicio permanente
+de LafroX durante los 36 meses los que el Capítulo 3, sección 3.4.5, le asigna: el centro de
+operaciones, la mesa de servicio, la gestión de incidentes, la continuidad, la seguridad y el
+mantenimiento.
+
+
+7.3.7 Momento de los resultados comprometidos
+El Caso 02 exige indicar en qué momento del cronograma se alcanza cada resultado de acepta-
+ción (cap. 18, p. 34). La Tabla 7.11 agrupa los dieciséis resultados por momento; el detalle por
+resultado está en el Anexo 7.C.
+
+Tabla 7.11 Momento de los resultados de aceptación del caso. Fuente: Elaboración a partir de Caso 02, capítulo
+18; Capítulo 3, Anexo 3.J; y Anexo 7.C.
+
+
+
+ Momento                     Resultados                    Cant.                     Aceptación
+
+
+ Marcha blanca de la         R18-01, 02, 03, 05, 06,       12                        H7 (mes 16)
+ Etapa 1 (meses 13 a 15)     07, 08, 09, 10, 14, 15 y 16
+
+ Marcha blanca de la         R18-11 y 13                   2                         H12 (mes 21)
+ Etapa 2 (meses 19 y 20)
+
+ Tramos durante el           R18-04: OTIF de 90 %          1                         Revisión mensual en
+ contrato                    en el mes 15, 93 % en el                                comité
+                             mes 19 y 95 % en el mes
+                             32
+
+
+continúa en la página siguiente
+
+
+
+
+LafroX SpA                                                                               Media firma: Alex Aravena
+Subdocumento 7                                                                                                   52
+    LafroX SpA                                                                        Introducción al Plan de trabajo
+
+
+
+
+Tabla 7.11 — continuación
+
+
+
+ Momento                    Resultados                    Cant.                       Aceptación
+
+
+ Provisional y final        R18-12: provisional en        1                           H7 y operación
+                            la marcha blanca de la
+                            Etapa 1 y final tras 12
+                            meses de operación
+
+
+
+Doce de los dieciséis resultados se aceptan en la marcha blanca de la Etapa 1. Otros dos también
+se verifican allí: R18-04, con su tramo del mes 15, y R18-12, de forma provisional. Son catorce
+resultados con verificaciones en ese período, conforme al Anexo 7.C y al Formulario T-18. Por
+eso el volumen real y la certificación de usuarios de ese período son la principal concentración
+de riesgo de aceptación del proyecto, y por eso el plan dedica a esa marcha blanca su mayor
+dotación de acompañamiento.
+Las innovaciones también tienen su momento en el cronograma (Bases Administrativas, art.
+29, punto 4, p. 19), como resume la Tabla 7.12.
+
+Tabla 7.12 Innovaciones en el cronograma. Fuente: Elaboración a partir de Anexo 7.D.
+
+
+
+ Innovación                 Paquetes de la EDT            Meses                       Hito
+
+
+ 1 · Seguimiento de         3.10.1.1 a 3.10.1.4           7 a 15                      H4, H5 y marcha blanca
+ vencimiento posentrega                                                               E1
+ en el local
+
+ 2 · Reproducción de        3.10.2.1 a 3.10.2.4; 8.3.1    2 a 15; 21 a 56             H4 y marcha blanca E1
+ incidentes de terreno
+
+ 3 · Vida útil remanente    3.10.3.1 a 3.10.3.4; 8.3.2    3 a 15; operación           H4, H5 y marcha blanca
+ por historia térmica del                                                             E1
+ lote
+
+ 4 · Tramo variable de      5.4.3; 8.3.3; 8.3.4           17 a 20; 21 a 23; 24 a 56   Hito mensual
+ la Operación ligado al
+ costo de servir
+
+ 5 · Hoja de negocio del    3.10.4.1 a 3.10.4.4; 8.3.5;   13 a 27                     H9, H10 y H12
+ almacenero                 8.3.6
+
+
+
+Tres innovaciones se validan en la marcha blanca de la Etapa 1. La innovación 5 sigue el
+calendario de la Etapa 2, y la innovación 4 empieza a liquidar recién desde el mes 24, después
+
+
+
+LafroX SpA                                                                                Media firma: Alex Aravena
+Subdocumento 7                                                                                                    53
+    LafroX SpA                                                             Introducción al Plan de trabajo
+
+
+
+
+de una línea base y tres liquidaciones en sombra. Así, ninguna innovación agrega trabajo a la
+cadena casi crítica de la Etapa 1 después del H4.
+
+
+7.3.8 Base de planificación y recursos
+El Formulario T-15, sección 4, estima las horas de los 222 paquetes con tres valores (optimista,
+más probable y pesimista) por clase de tamaño, y separa las curvas mensuales de implemen-
+tación, soporte puente de la Etapa 1 y Operación. La cobertura del centro de operaciones, la
+mesa de servicio y el SOC sigue las posiciones dimensionadas en el Capítulo 4, Anexo 4-W.7.
+Con esa base, el total programado es de 217.543 HH (205.135 HH de paquetes y restauraciones
+previas a Operación, 9.336 HH de soporte puente de la Etapa 1 y 3.072 HH de reserva del
+frente de construcción y de calidad) y el máximo mensual es de 69 personas equivalentes en
+el mes 15, cuando coinciden la marcha blanca de la Etapa 1 y el desarrollo de la Etapa 2. La
+sección 5 del mismo formulario conserva la red y el PERT del escenario nominal anterior a
+esta reestimación. Esos resultados requieren recálculo con asignaciones nominales, feriados y
+esfuerzo vigente antes de confirmar la ruta crítica o las probabilidades; la curva de 69 personas
+expresa demanda, no disponibilidad acreditada. Las capacidades protegidas de la Etapa 1 no
+se prestan al desarrollo de la Etapa 2.
+La gestión del plan sigue el Capítulo 6: la sección 6.1 fija el PMBOK adaptado, el tablero Kanban,
+el valor ganado y el control de cambios, y la sección 6.2 fija el proceso RUP iterativo con
+DevSecOps. La Construcción avanza en las iteraciones definidas en la sección 6.2, con revisión
+semanal de avance y bloqueos y una demostración de incremento verificable al cierre de cada
+iteración; una demostración no implica un paso a producción. El Jefe de Proyecto registra la
+capacidad y los criterios de terminado antes de seleccionar el trabajo de cada iteración, y los
+cambios se aprueban según la sección 6.1.4.
+El cronograma rector usa meses contractuales 1 a 56. El Anexo 7.A traduce esos meses a fechas
+con un inicio supuesto en febrero de 2027; cuando el CLIENTE confirme la fecha de inicio
+(consulta V-12), se recalculan los meses calendario y los congelamientos antes de aprobar cada
+corte. La revisión de parámetros de la Innovación 3 (paquete 8.3.2) se ejecuta en los meses 26,
+32, 38, 44, 50 y 56.
+El Formulario T-18, sección 6, define la cobertura por ola de M9, M12 y M10, propone Talca
+como sitio piloto, ordena las olas por sitio, por rutas y por certificación de cadenas, declara la
+estabilización de la Etapa 2 y el soporte de la Etapa 1 en los meses 16 a 20, y fija un objetivo
+de 40 minutos para el ensayo de reversión. El corte exige un ensayo con volumen real y la
+contingencia tributaria; el respaldo manual por sí solo no sustituye ese ensayo para los 96
+despachos. El WMS queda en modo de solo lectura conforme al supuesto S-14.
+El Anexo 7.F traslada al Capítulo 8 los supuestos, disparadores, responsables y paquetes de la
+planificación. La regla de precio es única en la oferta: el precio acordado al capturar el pedido
+(Capítulo 2, Anexo 2.2, S-09; RF-03.11 y RF-03.12). La coordinación de reserva y retención
+(SD4, apartado 4.1.4.4) está dimensionada en el Anexo 4-I, Tabla A.10, y el Anexo 4-W, Tablas
+A.32 y A.33. El máximo de cuatro mensajes por línea incluye una holgura porque la retención
+consumida no se libera. La proporción de líneas con más de una retención se mide con AL-
+
+
+LafroX SpA                                                                     Media firma: Alex Aravena
+Subdocumento 7                                                                                         54
+    LafroX SpA                                                             Introducción al Plan de trabajo
+
+
+
+
+STOCK-01 antes del H4 (R8-02), y la carga y el drenaje se verifican en 3.8.4 y 3.9.3, sin sumar la
+coordinación al drenaje tras un corte. El RPO ≤ 15 min se cumple con fibra, LTE y Starlink. La
+falla simultánea de los tres caminos seguida de la destrucción del sitio antes de reponer alguno
+es el riesgo residual declarado en SD4 4.3.2.4, gestionado en SD8 con R8-05 y verificado con
+AL-DR-01. Sus medidas son alarmas de retraso a 5 y 15 min, reposición del enlace, preemisión
+de guías y NAS WORM. La continuidad crítica y la capacidad nominal se verifican conforme al
+Anexo 8.E, con responsable y hito límite.
+
+
+
+
+LafroX SpA                                                                     Media firma: Alex Aravena
+Subdocumento 7                                                                                         55
+    LafroX SpA                                                                        Introducción al Plan de trabajo
+
+
+
+
+Referencias
+Las Bases se citan con su documento y el artículo, capítulo, sección o código del requisito; las
+referencias internas a otros capítulos de esta oferta se indican por su número de capítulo y
+sección.
+
+  • Bases Administrativas para la preparación de la propuesta. (2026).
+  • Bases Técnicas Transversales para la preparación de la propuesta. (2026).
+  • Bases Técnicas del Caso 02: Logística. (2026).
+  • Aclaraciones de la Licitación. (2026).
+  • Malcolm, D. G., Roseboom, J. H., Clark, C. E., & Fazar, W. (1959). Application of a technique
+    for research and development program evaluation. Operations Research, 7(5), 646–669.
+  • Project Management Institute. (2017). La guía de los fundamentos para la dirección de proyectos
+    (Guía del PMBOK®) (6.ª ed.). Project Management Institute.
+
+
+
+Declaración de uso de IA
+La tabla siguiente prepara la declaración de uso de inteligencia artificial exigida por la sección
+7.2 de las Aclaraciones de la licitación. Los niveles consignados deben confirmarse con el
+historial real de elaboración. La última columna indica comprobaciones pendientes: el res-
+ponsable incorporará su nombre, cargo y resultado una vez que las realice. La versión validada
+se consolidará en el Formulario A-6.
+
+Tabla 7.13 Declaración de uso de IA. Fuente: Elaboración a partir de registro del equipo.
+
+
+
+ Sección            Herramienta       Finalidad del      Nivel en texto     Nivel en diagra-     Revisión huma-
+                                      uso                                   mas                  na (quién y qué
+                                                                                                 verificó)
+
+
+ Introducción       Claude Code       Borrador de        Alto               Ninguno              [[REVISIÓN
+                                      síntesis de las                                            HUMANA]]
+                                      Bases y los
+                                      capítulos de la
+                                      oferta
+
+ 7.1 EDT            Claude Code;      Redacción,         Alto               Alto                 [[REVISIÓN
+                    Codex             conteos y ajus-                                            HUMANA]]
+                                      te de las figu-
+                                      ras de la EDT
+
+
+continúa en la página siguiente
+
+
+
+
+LafroX SpA                                                                                  Media firma: Alex Aravena
+Subdocumento 7                                                                                                    56
+    LafroX SpA                                                                  Introducción al Plan de trabajo
+
+
+
+
+Tabla 7.13 — continuación
+
+
+
+ Sección            Herramienta    Finalidad del     Nivel en texto   Nivel en diagra-    Revisión huma-
+                                   uso                                mas                 na (quién y qué
+                                                                                          verificó)
+
+
+ 7.2 Plan de        Claude Code;   Secuencia-        Alto             Alto                [[REVISIÓN
+ trabajo            Codex          miento, de-                                            HUMANA]]
+                                   pendencias
+                                   y frentes de
+                                   trabajo
+
+ 7.3 Cronogra-      Claude Code;   Calenda-          Alto             Alto                [[REVISIÓN
+ ma e implanta-     Codex          rio, Gantt,                                            HUMANA]]
+ ción                              CPM/PERT y
+                                   esquemas de
+                                   implantación
+
+ Anexo 7.A          Claude Code;   Conversión de     Alto             Ninguno             [[REVISIÓN
+                    Codex          meses contrac-                                         HUMANA]]
+                                   tuales a fechas
+                                   y congelamien-
+                                   tos
+
+ Anexo 7.B          Claude Code;   Red de de-        Alto             Ninguno             [[REVISIÓN
+                    Codex          pendencias                                             HUMANA]]
+                                   y revisiones
+                                   contractuales
+
+ Anexo 7.C          Claude Code    Relación de       Alto             Ninguno             [[REVISIÓN
+                                   resultados de                                          HUMANA]]
+                                   aceptación
+                                   con paquetes e
+                                   hitos
+
+ Anexo 7.D          Claude Code;   Ubicación de      Alto             Ninguno             [[REVISIÓN
+                    Codex          las innovacio-                                         HUMANA]]
+                                   nes en la EDT
+                                   y el calendario
+
+ Anexo 7.E          Claude Code    Trazabilidad      Alto             Ninguno             [[REVISIÓN
+                                   de módulos e                                           HUMANA]]
+                                   interfaces a la
+                                   EDT
+
+
+continúa en la página siguiente
+
+
+
+
+LafroX SpA                                                                          Media firma: Alex Aravena
+Subdocumento 7                                                                                              57
+    LafroX SpA                                                                 Introducción al Plan de trabajo
+
+
+
+
+Tabla 7.13 — continuación
+
+
+
+ Sección           Herramienta    Finalidad del     Nivel en texto   Nivel en diagra-    Revisión huma-
+                                  uso                                mas                 na (quién y qué
+                                                                                         verificó)
+
+
+ Anexo 7.F         Claude Code;   Supuestos de      Alto             Ninguno             [[REVISIÓN
+                   Codex          planificación y                                        HUMANA]]
+                                  dependencias
+                                  para riesgos
+
+ Formulario        Claude Code;   Diccionario       Alto             Alto                [[REVISIÓN
+ T-14              Codex          de la EDT,                                             HUMANA]]
+                                  ventanas y
+                                  cartas Gantt
+
+ Formulario        Claude Code;   HH, nivela-       Alto             Alto                [[REVISIÓN
+ T-15              Codex          ción, activida-                                        HUMANA]]
+                                  des de 8 a 80
+                                  horas, PERT y
+                                  frentes
+
+ Formulario        Claude Code;   Plan de olas,     Alto             Alto                [[REVISIÓN
+ T-18              Codex          marcha blanca,                                         HUMANA]]
+                                  estabilización
+                                  y reversión
+
+
+
+
+LafroX SpA                                                                         Media firma: Alex Aravena
+Subdocumento 7                                                                                             58
+

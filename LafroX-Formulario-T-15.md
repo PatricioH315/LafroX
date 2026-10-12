@@ -1,4744 +1,3835 @@
-# Formulario T-15 — Nivelación de Recursos
+# Formulario T-15 — Cronograma y asignación de recursos
 
-> Conversión a Markdown desde [LafroX-Formulario-T-15.pdf](LafroX-Formulario-T-15.pdf). El texto se conserva; la composición visual y los diagramas incrustados no se reproducen como imágenes. Consulta el PDF original para verlos.
-> Conversión a Markdown desde `LafroX-Formulario-T-15.pdf` (86 páginas). El texto se conserva; la composición visual, las firmas manuscritas y los diagramas incrustados del PDF no se reproducen como imágenes.
+> Texto extraído del [PDF final](LafroX-Formulario-T-15.pdf). Las figuras y la composición visual se consultan en el PDF.
 
-
-LICITACIÓN PÚBLICA Licitación N.° TFEP-01/2026
-
-
+LafroX SpA
+VERSIÓN FINAL PARA ENTREGA
+LICITACIÓN PÚBLICA
+Licitación N.° TFEP-01/2026
 Proyecto de Plataforma Digital de Misión Crítica
-
-
 Caso — Logística
-
-
 Sobre N.° 2 --- Oferta Técnica
-
-
+Formulario T-15
 Nivelación de Recursos
-
-
 Nivelación de Recursos · Formulario T-15
-
-
 MANDANTE
-
-
-REPRESENTANTE LEGAL
-
-
 Distribuidora Puelche S.A.
-
-
-Alex Aravena
-
-
-Jefe de Proyecto y Apoderado
-
-
 PROPONENTE
-
-
-contacto@lafrox.cl
-
-
-+56 32 250 4100
-
-
+LafroX SpA
 RUT 77.418.902-K
-
-
 Av. Brasil 2241, Valparaíso
-
-
+REPRESENTANTE LEGAL
+Alex Aravena
+Jefe de Proyecto y Apoderado
+contacto@lafrox.cl
++56 32 250 4100
 FECHA DE EMISIÓN
-
-
 12 de octubre de 2026
-
-
 FIRMA DEL REPRESENTANTE LEGAL
+Alex Aravena
+Jefe de Proyecto y Apoderado · LafroX SpA
+SOBRE2_LAFROX_OFERTA_TECNICA_20261012.ZIP 1
 
 
-## Índice general
+---
 
-
+LafroX SpA
+Índice general
 Índice general 2
-
-
 Lista de tablas 3
-
-
 Lista de figuras 4
-
-
 7 Formulario T-15: Nivelación de recursos 5
+7.1 Método de estimación y de programación 5
+7.1.1 Estimación 5
+7.1.2 Programación 6
+7.2 Ruta crítica y holguras 6
+7.3 Frentes de trabajo y solapamientos 8
+7.4 Modelo cuantitativo de recursos 11
+7.4.1 Supuestos y cálculo 11
+7.4.2 Horas por los 222 paquetes 14
+7.4.3 Resumen T-15 28
+7.4.4 Curvas mensuales: horas por etapa y personas por rol 29
+7.4.5 Reservas de contingencia y de gestión 38
+7.5 Red agregada, restricciones y escenarios de calendario 38
+7.5.1 Cálculo reproducible 38
+7.5.2 Secuencias que hacen compatible el modelo 40
+7.5.3 Reservas y análisis PERT de duración 42
+7.5.4 Gobierno 44
+7.5.5 Presentación de entregables y revisión del CLIENTE 44
+7.5.6 Medición de los niveles de atención 45
+7.5.7 Dotación requerida, roles mínimos y dotación declarada 45
+7.6 Lista de actividades: regla del 8/80 y del período de reporte 49
+7.6.1 Paquetes con entregable y planificación gradual 49
+7.6.2 Paquetes de esfuerzo continuo 77
+Referencias 84
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+2
 
 
-### 7.1 Método de estimación y de programación 5
+---
+
+LafroX SpA
+Lista de tablas
+Tabla 7.1 Frentes de trabajo. 8
+Tabla 7.2 Supuestos y cálculo. 13
+Tabla 7.3 Horas por los 222 paquetes. 15
+Tabla 7.4 Resumen T-15. 28
+Tabla 7.5 Curva mensual de horas por etapa. 30
+Tabla 7.6 Curva mensual de personas por rol. 34
+Tabla 7.7 Fechas programadas por grupo de paquetes. 39
+Tabla 7.8 Escenario nominal histórico: entrega, reserva y probabilidad por hito; pen-
+diente de recálculo. 43
+Tabla 7.9 Dotación requerida, roles mínimos y dotación declarada. 46
+Tabla 7.10 Programación de los paquetes con entregable. 53
+Tabla 7.11 Actividades de los paquetes que terminan hasta el H2. 63
+Tabla 7.12 Actividades de los paquetes que terminan hasta el H2. 69
+Tabla 7.13 Actividades de los paquetes de esfuerzo continuo. 78
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+3
 
 
-7.1.1 Estimación 5 7.1.2 Programación 5
+---
+
+LafroX SpA
+Lista de figuras
+Figura 7.1 Dependencias y caminos de menor holgura del escenario nominal histórico;
+sujetos a recálculo. 7
+Figura 7.2 Frentes de trabajo de los meses 1 a 21 y solapamientos del artículo 17.2 de las
+Bases Administrativas (p. 13). 10
+Figura 7.3 Planificación gradual del cronograma. 51
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+4
 
 
-### 7.2 Ruta crítica y holguras 6
-
-
-### 7.3 Frentes de trabajo y solapamientos 8
-
-
-### 7.4 Modelo cuantitativo de recursos 11
-
-
-7.4.1 Supuestos y cálculo 11 7.4.2 Horas por los 222 paquetes 14 7.4.3 Resumen T-15 28 7.4.4 Curvas mensuales: horas por etapa y personas por rol 29 7.4.5 Reservas de contingencia y de gestión 38
-
-
-### 7.5 Red agregada, restricciones y escenarios de calendario 38
-
-
-7.5.1 Cálculo reproducible 38 7.5.2 Secuencias que hacen compatible el modelo 40 7.5.3 Reservas y análisis PERT de duración 42 7.5.4 Gobierno 44 7.5.5 Presentación de entregables y revisión del CLIENTE 44 7.5.6 Medición de los niveles de atención 45 7.5.7 Dotación requerida, roles mínimos y dotación declarada 45
-
-
-### 7.6 Lista de actividades: regla del 8/80 y del período de reporte 49
-
-
-7.6.1 Paquetes con entregable y planificación gradual 49 7.6.2 Paquetes de esfuerzo continuo 77
-
-
-Referencias 85
-
-
-Declaración de uso de IA 85
-
-
-## Lista de tablas
-
-
-Tabla 7.1 Frentes de trabajo. Fuente: elaboración propia a partir del Formulario T-14. 8
-
-
-Tabla 7.2 Supuestos y cálculo. Fuente: elaboración propia. 13
-
-
-Tabla 7.3 Horas por los 222 paquetes. Fuente: elaboración propia. 15
-
-
-Tabla 7.4 Resumen T-15. Fuente: elaboración propia. 28
-
-
-Tabla 7.5 Curva mensual de horas por etapa. Fuente: Formulario T-15, sección 4.4. 30
-
-
-Tabla 7.6 Curva mensual de personas por rol. Fuente: Formulario T-15, sección 4.4. 34
-
-
-Tabla 7.7 Fechas programadas por grupo de paquetes. Fuente: elaboración propia a partir de la sección 6.1. 39
-
-
-Tabla 7.8 Escenario nominal histórico: entrega, reserva y probabilidad por hito; pendiente de recálculo. Fuente: sección 6.1 y SD8, Anexo 8.C. 43
-
-
-Tabla 7.9 Dotación requerida, roles mínimos y dotación declarada. Fuente: elaboración propia. 46
-
-
-Tabla 7.10 Programación de los paquetes con entregable. Fuente: elaboración propia a partir de las secciones 4.1, 4.2 y 5.1 y del Anexo 7.B. 53
-
-
-Tabla 7.11 Actividades de los paquetes que terminan hasta el H2. Fuente: elaboración propia a partir de la Tabla 7.10. Bloque 1 de 2. 63
-
-
-Tabla 7.12 Actividades de los paquetes que terminan hasta el H2. Fuente: elaboración propia a partir de la Tabla 7.10. Bloque 2 de 2. 69
-
-
-Tabla 7.13 Actividades de los paquetes de esfuerzo continuo. Fuente: elaboración propia a partir de las secciones 4.1, 4.2 y 4.4 y del diccionario del Formulario T-14. 78
-
-
-Tabla 7.14 Declaración de uso de IA. Fuente: elaboración propia. 85
-
-
-## Lista de figuras
-
-
-Figura 7.1 Dependencias y caminos de menor holgura del escenario nominal histórico; sujetos a recálculo. Fuente: Anexo 7.B del Subdocumento 7 y períodos del Formulario T-14. 7
-
-
-Figura 7.2 Frentes de trabajo de los meses 1 a 21 y solapamientos del artículo 17.2 de las Bases Administrativas (p. 13). Fuente: elaboración propia a partir de la Tabla T-15.1 y del Formulario T-14. 10
-
-
-Figura 7.3 Planificación gradual del cronograma. Fuente: elaboración propia a partir de las Tablas 7.10 y 7.11. 51
-
+---
 
 CAPÍTULO 7
-
-
-## Formulario T-15: Nivelación de recursos
-
-
-Este formulario presenta la información de planificación que pide el Formulario T-15 de las Bases Administrativas para el Subdocumento 7: el método con que se estiman las horas hombre de cada paquete, la programación sobre la red de dependencias, la ruta crítica y sus holguras, y los frentes de trabajo, con el detalle de los solapamientos de los meses 13 a 15 y 19 a 20. Los paquetes de trabajo son los de la EDT del Formulario T-14. Este formulario no contiene precios ni costos (artículo 50.2 de las Bases Administrativas (p. 29)).
-
-
-### 7.1 Método de estimación y de programación
-
-
-La estimación y la programación siguen el PMBOK y la técnica PERT, de modo que cada duración y cada holgura se puedan reconstruir a partir de valores declarados.
-
-
-#### 7.1.1 Estimación
-
-
-El esfuerzo de cada paquete se estima con tres valores en horas hombre (Project Management Institute [PMI], 2017, p. 201): el optimista (O), que corresponde al mejor escenario; el más probable (M), con recursos y productividad realistas; y el pesimista (P), que corresponde al peor escenario. La incertidumbre de cada estimación se representa con una distribución beta, que el PMBOK admite entre las distribuciones para modelar la incertidumbre (PMI, 2017, p. 432). Con ella, la técnica PERT calcula el valor esperado y la desviación (Malcolm et al., 1959): T_E = (O + 4M + P) / 6; 𝜎= (P −O) / 6.
-
-
-La p. 201 del PMBOK presenta también la distribución triangular, (𝑂+𝑀+𝑃)/3. Se usa la beta porque pondera más el valor más probable, que se funda en los requerimientos y cantidades de cada paquete.
-
-
-Las bases de cada estimación se declaran por tipo de paquete. Los módulos y las integraciones se estiman con los requerimientos del Formulario T-12 asignados al paquete; la infraestructura, con las cantidades del Formulario T-11; la implantación y la capacitación, con las personas y rutas del caso y la dotación del Formulario T-18, sección 2.6; y la operación, con los horarios de cobertura de los paquetes 8.1.1 y 8.1.2 y la periodicidad de los informes. Los paquetes de la fase 8 son de esfuerzo continuo: su estimación es mensual y se multiplica por los 36 meses de operación.
-
-
-#### 7.1.2 Programación
-
-
-La duración se contrasta con esfuerzo, capacidad efectiva y dependencias. La sección 6 programa los paquetes y descompone en actividades de 8 a 80 HH, que caben en una quincena,
-
-
-sólo los que terminan hasta el H2; los demás se detallan por planificación gradual antes de cada fase. Las ventanas de la sección 4 son supuestos de asignación y la red agregada de la sección 5 explicita el cálculo del calendario. Las dependencias entre paquetes están en el Anexo 7.B del Subdocumento 7, y sobre esa red se aplica el método de la ruta crítica (PMI, 2017, pp. 210–211): una pasada hacia adelante da el inicio y el fin tempranos; una pasada hacia atrás, desde los meses fijos del artículo 17 de las Bases Administrativas (pp. 12–13), da el inicio y el fin tardíos; la diferencia LS −ES es la holgura total; la holgura libre se calcula respecto del ES de sus sucesores. Los hitos del Formulario E-25 son restricciones de fecha fija: un camino que no llega a su hito tiene holgura negativa y obliga a replanificar.
-
-
-La sección 5 conserva el cálculo nominal anterior: incorpora las revisiones del CLIENTE (artículo 18.3 de las Bases Administrativas (p. 13)) como retardos y muestra el PERT de duración por camino y escenarios de demora. Sus probabilidades y la nivelación aún deben recalcularse con la línea base vigente y la disponibilidad comprobada por especialidad. La probabilidad por camino tampoco equivale a la probabilidad de cumplir todo el proyecto.
-
-
-### 7.2 Ruta crítica y holguras
-
-
-En el escenario nominal anterior a la reestimación, la red de la sección 5 señala como camino de menor holgura la cadena de la Etapa 2: diseño (1.2.5, 2.1.4 y 2.4.2), módulos (3.5), integración (3.9.1) y certificación (3.9.2–3.9.7). La cadena de la Etapa 1 y la sala técnica también requieren vigilancia. Las reservas y probabilidades de la Tabla 7.8 corresponden exclusivamente a ese escenario histórico y no acreditan la ruta crítica ni la factibilidad de la línea base de 217.543 HH. Las marchas blancas y los pasos a producción mantienen las fechas contractuales del Formulario E-25.
-
-
-21 oct Mes contractual
-
-
-2027 1 feb
-
-
-2 mar
-
-
-3 abr
-
-
-4 may
-
-
-5 jun
-
-
-6 jul
-
-
-7 ago
-
-
-8 sep
-
-
-9 oct
-
-
-10 nov
-
-
-11 dic
-
-
-2028 12 ene
-
-
-13 feb
-
-
-14 mar
-
-
-15 abr
-
-
-16 may
-
-
-17 jun
-
-
-18 jul
-
-
-19 ago
-
-
-20 sep
-
-
+Formulario T-15: Nivelación de recursos
+Este formulario presenta la información de planificación que pide el Formulario T-15 de las
+Bases Administrativas para el Subdocumento 7 (LafroX, 2026p): el método con que se estiman
+las horas hombre de cada paquete, la programación sobre la red de dependencias, la ruta
+crítica y sus holguras, y los frentes de trabajo, con el detalle de los solapamientos de los meses
+13 a 15 y 19 a 20. Los paquetes de trabajo son los de la EDT del Formulario T-14. Este formulario
+no contiene precios ni costos (artículo 50.2 de las Bases Administrativas (p. 29)).
+En este formulario, BA, BTT y Caso designan las Bases Administrativas (Distribuidora
+Puelche S.A., 2026a), las Bases Técnicas Transversales (2026b) y las Bases Técnicas del Caso
+Logística (2026c).
+7.1 Método de estimación y de programación
+La estimación y la programación siguen el PMBOK y la técnica PERT, de modo que cada
+duración y cada holgura se puedan reconstruir a partir de valores declarados.
+7.1.1 Estimación
+El esfuerzo de cada paquete se estima con tres valores en horas hombre (Project Manage-
+ment Institute [PMI], 2017, p. 201): el optimista (O), que corresponde al mejor escenario; el más
+probable (M), con recursos y productividad realistas; y el pesimista (P), que corresponde al
+peor escenario. La incertidumbre de cada estimación se representa con una distribución beta,
+que el PMBOK admite entre las distribuciones para modelar la incertidumbre (PMI, 2017, p.
+432). Con ella, la técnica PERT calcula el valor esperado y la desviación (Malcolm et al., 1959):
+T_E = (O + 4M + P) / 6; 𝜎 = (P − O) / 6.
+La p. 201 del PMBOK presenta también la distribución triangular, (𝑂+𝑀+𝑃)/3. Se usa la beta
+porque pondera más el valor más probable, que se funda en los requerimientos y cantidades
+de cada paquete.
+Las bases de cada estimación se declaran por tipo de paquete. Los módulos y las inte-
+graciones se estiman con los requerimientos del Formulario T-12 asignados al paquete; la
+infraestructura, con las cantidades del Formulario T-11; la implantación y la capacitación, con
+las personas y rutas del caso y la dotación del Formulario T-18 (LafroX, 2026s), sección 2.6; y la
+operación, con los horarios de cobertura de los paquetes 8.1.1 y 8.1.2 y la periodicidad de los
+informes. Los paquetes de la fase 8 son de esfuerzo continuo: su estimación es mensual y se
+multiplica por los 36 meses de operación.
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+5
+
+
+---
+
+LafroX SpA Formulario T-15: Nivelación de recursos
+7.1.2 Programación
+La duración se contrasta con esfuerzo, capacidad efectiva y dependencias. La sección 6
+programa los paquetes y descompone en actividades de 8 a 80 HH, que caben en una quincena,
+sólo los que terminan hasta el H2; los demás se detallan por planificación gradual antes de
+cada fase. Las ventanas de la sección 4 son supuestos de asignación y la red agregada de la
+sección 5 explicita el cálculo del calendario. Las dependencias entre paquetes están en el
+Anexo 7.B del Subdocumento 7, y sobre esa red se aplica el método de la ruta crítica (PMI, 2017,
+pp. 210–211): una pasada hacia adelante da el inicio y el fin tempranos; una pasada hacia atrás,
+desde los meses fijos del artículo 17 de las Bases Administrativas (pp. 12–13), da el inicio y el
+fin tardíos; la diferencia LS − ES es la holgura total; la holgura libre se calcula respecto del ES
+de sus sucesores. Los hitos del Formulario E-25 son restricciones de fecha fija: un camino que
+no llega a su hito tiene holgura negativa y obliga a replanificar.
+La sección 5 conserva el cálculo nominal anterior: incorpora las revisiones del CLIENTE
+(artículo 18.3 de las Bases Administrativas (p. 13)) como retardos y muestra el PERT de duración
+por camino y escenarios de demora. Sus probabilidades y la nivelación aún deben recalcularse
+con la línea base vigente y la disponibilidad comprobada por especialidad. La probabilidad
+por camino tampoco equivale a la probabilidad de cumplir todo el proyecto.
+7.2 Ruta crítica y holguras
+En el escenario nominal anterior a la reestimación, la red de la sección 5 señala como
+camino de menor holgura la cadena de la Etapa 2: diseño (1.2.5, 2.1.4 y 2.4.2), módulos (3.5),
+integración (3.9.1) y certificación (3.9.2–3.9.7). La cadena de la Etapa 1 y la sala técnica también
+requieren vigilancia. Las reservas y probabilidades de la Tabla 7.8 corresponden exclusivamen-
+te a ese escenario histórico y no acreditan la ruta crítica ni la factibilidad de la línea base de
+217.543 HH. Las marchas blancas y los pasos a producción mantienen las fechas contractuales
+del Formulario E-25.
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+6
+
+
+---
+
+LafroX SpA Formulario T-15: Nivelación de recursos
+2027
+1
+feb
+2
+mar
+3
+abr
+4
+may
+5
+jun
+6
+jul
+7
+ago
+8
+sep
+9
+oct
+10
+nov
+11
+dic
+2028
+12
+ene
+13
+feb
+14
+mar
+15
+abr
+16
+may
+17
+jun
+18
+jul
+19
+ago
+20
+sep
+21
+oct
+Mes contractual
 →
-
-
-Marcha blanca E1 Marcha blanca E2
-
-
-H1 H2 H3 H4 H5
-
-
-H7 H8 H9 H10
-
-
-H12
-
-
 Hitos del Formulario
-
-
 E-25
-
-
+H1 H2 H3 H4 H5
 H6
-
-
-H11
-
-
-Ruta crítica · Etapa 2
-
-
-1.2.5 · 2.1.4 Línea base y diseño E2
-
-
-H8: reserva 4 días hábiles · 91,1 % \ (simulación con riesgos\) 2.4.2 Acta de diseño E2 \(revisión del CLIENTE\) 3.5 Módulos de la Etapa 2
-
-
-3.9.1 Prueba de integración E2
-
-
-H9: reserva 21 días hábiles · 100 % (simulación con riesgos\)
-
-
-3.9.2–3.9.7 Certificación E2 H10: reserva 25 días hábiles Casi crítico · Etapa 1 \(interfaces del
-
-
-ERP\) 1.2.3 Interfaces sin documentación
-
-
-3.3 Base compartida \(3.3.2 ERP\)
-
-
-3.4 Módulos de la Etapa 1
-
-
-3.8.1 Prueba de integración E1 H4: reserva 19 días hábiles
-
-
-3.8.2–3.8.8 Certificación E1 H5: reserva 35 días hábiles
-
-
-Casi crítico · sala técnica y
-
-
-ambientes \(H3\) 2.3 Planos de sala y racks
-
-
-5.1.2 Especificación y compra
-
-
-6.1 Sala técnica de Talca 6.3.1–6.3.3 y 6.6.3 Racks y borde de los CD 3.2 y 3.1 Servicios de nube y ambientes H3: reserva 19 días hábiles
-
-
-Otros caminos casi críticos
-
-
-1.2.2 Reglas de ruteo del planificador 3.4.7 M4 Rutas \(usa las reglas capturadas\) 5.4.1 · 5.4.2 Transportistas y sindicato 3.6.5 · 3.6.6 Intercambio con las cadenas
-
-
-1.2.1 · 1.2.4 Alcance y trazabilidad H1: reserva 6 días hábiles (la menor; σ 0,58, > 99,9 %\)
-
-
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21
-
-
-Leyenda Ruta crítica \(D-29 a D-31c\) Casi crítico E1 \(D-02, D-04, D-14 a D-25\) Casi crítico del H3 \(D-07 a D-13\) Otros casi críticos \(D-03, D-27, D- 32\) Reserva hasta la fecha límite del hito Marcha blanca \(Art. 17°\) Septiembre y diciembre \(sin pasos a producción\)
-
-
-Hito del Formulario E-25 \(en su mes contractual\)
-
-
-Figura 7.1 Dependencias y caminos de menor holgura del escenario nominal histórico; sujetos a recálculo. Fuente: Anexo 7.B del Subdocumento 7 y períodos del Formulario T-14.
-
-
-La figura presenta la secuencia mensual de la implementación y la convergencia de sus dependencias en los hitos. En el escenario histórico, D-29 a D-31c forman la cadena de menor holgura de la Etapa 2, D-02, D-04 y D-14 a D-25 la de la Etapa 1, y D-07 a D-13 convergen en el H3. La clasificación definitiva de los caminos requiere recalcular la red con el esfuerzo y los recursos vigentes. La holgura se gestiona en las instancias de gobierno de la EDT: el avance de la ruta crítica y de los caminos casi críticos se revisa en la reunión semanal y en el Comité de Proyecto quincenal (paquetes 1.3.5 y 1.8.3); toda desviación que comprometa un hito se escala al Comité Ejecutivo con su análisis de impacto (paquetes 1.4.3 y 1.8.2); y el informe mensual con valor ganado avisa toda desviación mayor al 10 % con su plan dentro de cinco días hábiles (paquete 1.8.6).
-
-
-### 7.3 Frentes de trabajo y solapamientos
-
-
-Un frente de trabajo es un equipo con un responsable y un conjunto de cuentas de control que avanza en paralelo con los demás. La Tabla 7.1 define los frentes a partir de la EDT del Formulario T-14 y de los responsables de su diccionario.
-
-
-Tabla 7.1 Frentes de trabajo. Fuente: elaboración propia a partir del Formulario T-14.
-
-
-Frente Responsable Cuentas de control Meses activos
-
-
-1 a 56
-
-
-F1 Dirección, gobierno y cumplimiento
-
-
-Jefe de Proyecto 1.1 a 1.4, 1.6 a 1.9, 5.4.1 a 5.4.3, 8.4, 9
-
-
-2.1 a 2.6, 3.3, 3.7, 3.11 1 a 21
-
-
-F2 Arquitectura, seguridad y datos
-
-
-Arquitecto de Solución, con Seguridad y Datos
-
-
-1 a 20
-
-
-F3 Construcción y correcciones E1
-
-
-Líder de Desarrollo 3.4, 3.6.1 a 3.6.4, 3.10.1 a 3.10.3; capacidad protegida 4.2.2
-
-
-Líder de Desarrollo 3.5, 3.6.5, 3.6.6, 3.10.4 13 a 20
-
-
-F4 Construcción de la Etapa 2
-
-
-Líder de Operación / SRE
-
-
-3.1, 3.2, 5.1 a 5.3, 6.1 a 6.6; soporte 4.2.2 1 a 20
-
-
-F5 Plataforma, infraestructura y soporte puente
-
-
-F6 Calidad y pruebas Líder de Calidad 1.5, 3.8, 3.9 1 a 21
-
-
-4.1 a 4.3, 7.1 a 7.3 9 a 21
-
-
-F7 Implantación y gestión del cambio
-
-
-Líder de Implantación y Gestión del Cambio
-
-
-continúa en la página siguiente
-
-
-Tabla 7.1 — continuación
-
-
-Frente Responsable Cuentas de control Meses activos
-
-
-8.1 a 8.3, 8.5 21 a 56
-
-
-F8 Operación y soporte Líder de Operación / SRE
-
-
-Los frentes se sincronizan en los hitos del Formulario E-25 y en los comités del artículo 71 de las Bases Administrativas (p. 37), cuyas actas registran los acuerdos entre frentes (paquetes 1.8.2 a 1.8.5). La Figura 7.2 presenta su ventana de actividad entre los meses 1 y 21.
-
-
-→ hasta
-
-
-el mes
-
-
-8.1–8.3, 8.5: desde el
-
-
-mes 21
-
-
-hasta el
-
-
-H12
-
-
-H11
-
-
 H7
-
-
 H8 H9 H10
-
-
-H6
-
-
-Solapamiento · meses 13 a 15 Solapamiento · meses 19 y 20
-
-
-H5
-
-
-Solapamiento de etapas (Art. 17.2) Septiembre y diciembre (sin pasos a producción) Hito del Formulario E-25 (en su mes contractual)
-
-
+H11
+H12
+Ruta crítica · Etapa 2
+1.2.5 · 2.1.4 Línea base y
+diseño E2
+H8: reserva 4 días hábiles · 91,1 % \
+(simulación con riesgos\)
+2.4.2 Acta de diseño E2 \(revisión del
+CLIENTE\)
+3.5 Módulos de la Etapa 2
+3.9.1 Prueba de integración E2
+3.9.2–3.9.7 Certificación
+E2 H10: reserva 25 días
+hábiles
+Casi crítico · Etapa 1 \(interfaces del
+ERP\)
+1.2.3 Interfaces sin
+documentación
+3.3 Base compartida \(3.3.2 ERP\)
+3.4 Módulos de la Etapa 1
+3.8.1 Prueba de integración E1 H4: reserva 19 días hábiles
+3.8.2–3.8.8 Certificación E1 H5: reserva 35 días hábiles
+Casi crítico · sala técnica y
+ambientes \(H3\)
+2.3 Planos de sala y racks
+5.1.2 Especificación y compra
+6.1 Sala técnica de Talca
+6.3.1–6.3.3 y 6.6.3 Racks y borde
+de los CD
+3.2 y 3.1 Servicios de nube y
+ambientes
+H3: reserva 19 días hábiles
+Otros caminos casi críticos
+1.2.2 Reglas de ruteo del
+planificador
+3.4.7 M4 Rutas \(usa las reglas
+capturadas\)
+5.4.1 · 5.4.2 Transportistas y
+sindicato
+3.6.5 · 3.6.6 Intercambio con las
+cadenas
+1.2.1 · 1.2.4 Alcance y
+trazabilidad
+H1: reserva 6 días hábiles (la menor; σ 0,58, > 99,9 %\)
+Marcha blanca E1 Marcha blanca E2
 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21
+Leyenda Ruta crítica \(D-29 a D-31c\)
+Casi crítico E1 \(D-02, D-04, D-14 a
+D-25\)
+Casi crítico del H3 \(D-07 a D-13\)
+Otros casi críticos \(D-03, D-27, D-
+32\)
+Reserva hasta la fecha límite del
+hito
+Marcha blanca \(Art. 17°\)
+Septiembre y diciembre \(sin
+pasos a producción\)
+Hito del Formulario E-25 \(en su
+mes contractual\)
+H9: reserva 21 días hábiles · 100
+% (simulación con riesgos\)
+Figura 7.1 Dependencias y caminos de menor holgura del escenario nominal histórico; sujetos a recálculo.
+Fuente: elaboración a partir de LafroX (2026t, Anexo 7.B) y LafroX (2026d, T-14, períodos contractuales).
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+7
 
 
-2027 1 feb 2 mar 3 abr 4 may 5 jun 6 jul 7 ago 8 sep 9 oct 10 nov 11 dic
+---
+
+LafroX SpA Formulario T-15: Nivelación de recursos
+La figura presenta la secuencia mensual de la implementación y la convergencia de sus de-
+pendencias en los hitos. En el escenario histórico, D-29 a D-31c forman la cadena de menor
+holgura de la Etapa 2, D-02, D-04 y D-14 a D-25 la de la Etapa 1, y D-07 a D-13 convergen en el
+H3. La clasificación definitiva de los caminos requiere recalcular la red con el esfuerzo y los
+recursos vigentes.
+La holgura se gestiona en las instancias de gobierno de la EDT: el avance de la ruta crítica y de
+los caminos casi críticos se revisa en la reunión semanal y en el Comité de Proyecto quincenal
+(paquetes 1.3.5 y 1.8.3); toda desviación que comprometa un hito se escala al Comité Ejecutivo
+con su análisis de impacto (paquetes 1.4.3 y 1.8.2); y el informe mensual con valor ganado
+avisa toda desviación mayor al 10 % con su plan dentro de cinco días hábiles (paquete 1.8.6).
+7.3 Frentes de trabajo y solapamientos
+Un frente de trabajo es un equipo con un responsable y un conjunto de cuentas de control
+que avanza en paralelo con los demás. La Tabla 7.1 define los frentes a partir de la EDT del
+Formulario T-14 y de los responsables de su diccionario.
+Tabla 7.1 Frentes de trabajo. Fuente: elaboración a partir de LafroX (2026d, T-14).
+Frente Responsable Cuentas de control Meses activos
+F1 Dirección, gobierno
+y cumplimiento
+Jefe de Proyecto 1.1 a 1.4, 1.6 a 1.9, 5.4.1
+a 5.4.3, 8.4, 9
+1 a 56
+F2 Arquitectura, seguri-
+dad y datos
+Arquitecto de Solución,
+con Seguridad y Datos
+2.1 a 2.6, 3.3, 3.7, 3.11 1 a 21
+F3 Construcción y co-
+rrecciones E1
+Líder de Desarrollo 3.4, 3.6.1 a 3.6.4, 3.10.1
+a 3.10.3; capacidad
+protegida 4.2.2
+1 a 20
+F4 Construcción de la
+Etapa 2
+Líder de Desarrollo 3.5, 3.6.5, 3.6.6, 3.10.4 13 a 20
+F5 Plataforma, infra-
+estructura y soporte
+puente
+Líder de Operación /
+SRE
+3.1, 3.2, 5.1 a 5.3, 6.1 a
+6.6; soporte 4.2.2
+1 a 20
+F6 Calidad y pruebas Líder de Calidad 1.5, 3.8, 3.9 1 a 21
+F7 Implantación y ges-
+tión del cambio
+Líder de Implantación y
+Gestión del Cambio
+4.1 a 4.3, 7.1 a 7.3 9 a 21
+continúa en la página siguiente
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+8
 
 
-puente 4.2.2 soporte puente
+---
+
+LafroX SpA Formulario T-15: Nivelación de recursos
+Tabla 7.1 — continuación
+Frente Responsable Cuentas de control Meses activos
+F8 Operación y soporte Líder de Operación /
+SRE
+8.1 a 8.3, 8.5 21 a 56
+Los frentes se sincronizan en los hitos del Formulario E-25 y en los comités del artículo 71 de
+las Bases Administrativas (p. 37), cuyas actas registran los acuerdos entre frentes (paquetes
+1.8.2 a 1.8.5). La Figura 7.2 presenta su ventana de actividad entre los meses 1 y 21.
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+9
 
 
-Leyenda Ventana del frente (Tabla T15.1) Cuentas de control activas (GanttPRO) Capacidad protegida / soporte puente 4.2.2
+---
 
-
-2028 12 ene 13 feb 14 mar 15 abr 16 may 17 jun 18 jul 19 ago 20 sep 21 oct Mes contractual →
-
-
-F6 Calidad y pruebas
-
-
-F8 Operación y soporte
-
-
-Hitos del Formulario E-25 H1 H2 H3 H4
-
-
-F4 Construcción de la Etapa 2
-
-
-Líder de Calidad · meses 1 a 21
-
-
-Jefe de Proyecto · meses 1 a 56
-
-
-Líder de Desarrollo · meses 1 a 20 4.2.2 capacidad protegida
-
-
-F2 Arquitectura, seguridad y datos
-
-
-Líder de Desarrollo · meses 13 a 20
-
-
-F3 Construcción y correcciones E1
-
-
-Arquitecto de Solución · meses 1 a 21
-
-
-F7 Implantación y gestión del cambio
-
-
+LafroX
+SpA
+Formulario
+T-15:
+Nivelación
+de
+recursos
+2027
+1
+feb
+2
+mar
+3
+abr
+4
+may
+5
+jun
+6
+jul
+7
+ago
+8
+sep
+9
+oct
+10
+nov
+11
+dic
+2028
+12
+ene
+13
+feb
+14
+mar
+15
+abr
+16
+may
+17
+jun
+18
+jul
+19
+ago
+20
+sep
+21
+oct
+Mes contractual →
+Hitos del Formulario E-25
+H1 H2 H3 H4
+H6
+H7
+H8
+H9
+H10
+H11
+H12
 F1 Dirección, gobierno y cumplimiento
-
-
-Líder de Operación / SRE · meses 1 a 20
-
-
+Jefe de Proyecto · meses 1 a 56
+→ hasta
+el mes
+56
+F2 Arquitectura, seguridad y datos
+Arquitecto de Solución · meses 1 a 21
+F3 Construcción y correcciones E1
+Líder de Desarrollo · meses 1 a 20 4.2.2 capacidad protegida
+F4 Construcción de la Etapa 2
+Líder de Desarrollo · meses 13 a 20
 F5 Plataforma, infraestructura y soporte
-
-
+puente 4.2.2 soporte puente
+F6 Calidad y pruebas
+Líder de Calidad · meses 1 a 21
+F7 Implantación y gestión del cambio
 Líder de Implantación y GC · meses 9 a 21
-
-
+F8 Operación y soporte
 Líder de Operación / SRE · meses 21 a 56
+8.1–8.3,
+8.5:
+desde el
+mes 21
+hasta el
+56
+Solapamiento · meses 13 a 15 Solapamiento · meses 19 y 20
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21
+Leyenda Ventana del frente (Tabla T15.1) Cuentas de control activas (GanttPRO) Capacidad protegida / soporte puente 4.2.2
+Solapamiento de etapas (Art. 17.2) Septiembre y diciembre (sin pasos a producción) Hito del Formulario E-25 (en su mes contractual)
+H5
+Líder de Operación / SRE · meses 1 a 20
+Figura 7.2 Frentes de trabajo de los meses 1 a 21 y solapamientos del artículo 17.2 de las Bases Administrativas (p. 13). Fuente: elaboración a partir de la Tabla
+T-15.1 y LafroX (2026d, T-14).
+LafroX
+SpA
+Formulario
+T-15
+Media
+firma:
+Alex
+Aravena
+10
 
 
-Figura 7.2 Frentes de trabajo de los meses 1 a 21 y solapamientos del artículo 17.2 de las Bases Administrativas (p. 13). Fuente: elaboración propia a partir de la
+---
 
-
-Tabla T-15.1 y del Formulario T-14.
-
-
-En los meses 13 a 15 trabajan a la vez F7, en la marcha blanca de la Etapa 1; F3, en las correcciones de esa marcha blanca; F4, en el desarrollo de la Etapa 2; F6, en las pruebas de ambas etapas; y F1 y F2. F3 y F4 dependen del mismo rol, el Líder de Desarrollo, y por eso son equipos distintos: el equipo que atiende la marcha blanca no puede ser el que desarrolla la Etapa 2 (artículo 17.2 de las Bases Administrativas (p. 13), punto 1). En los meses 19 y 20 trabajan F7, en la marcha blanca de la Etapa 2; F4, en sus correcciones; F6; y el soporte de la Etapa 1 en producción.
-
-
-### 7.4 Modelo cuantitativo de recursos
-
-
-Base de cálculo: estimación por clases de tamaño trazable al T-12 y al T-11, que se recalcula con el equipo al establecer la línea base y que el Capítulo 8 usa para cuantificar los riesgos. La productividad y la dotación se contrastan con el avance real en cada Comité de Proyecto.
-
-
-#### 7.4.1 Supuestos y cálculo
-
-
+LafroX SpA Formulario T-15: Nivelación de recursos
+En los meses 13 a 15 trabajan a la vez F7, en la marcha blanca de la Etapa 1; F3, en las correc-
+ciones de esa marcha blanca; F4, en el desarrollo de la Etapa 2; F6, en las pruebas de ambas
+etapas; y F1 y F2. F3 y F4 dependen del mismo rol, el Líder de Desarrollo, y por eso son equipos
+distintos: el equipo que atiende la marcha blanca no puede ser el que desarrolla la Etapa 2
+(artículo 17.2 de las Bases Administrativas (p. 13), punto 1). En los meses 19 y 20 trabajan F7,
+en la marcha blanca de la Etapa 2; F4, en sus correcciones; F6; y el soporte de la Etapa 1 en
+producción.
+7.4 Modelo cuantitativo de recursos
+Base de cálculo: estimación por clases de tamaño trazable al T-12 y al T-11, que se recalcula
+con el equipo al establecer la línea base y que el Capítulo 8 usa para cuantificar los riesgos. La
+productividad y la dotación se contrastan con el avance real en cada Comité de Proyecto.
+7.4.1 Supuestos y cálculo
 Los supuestos y el cálculo del modelo de recursos son los siguientes.
-
-
-- Capacidad nominal asumida: 160 HH/persona-mes; disponibilidad programable 80 %; capacidad efectiva 128 HH. El 20 % cubre ausencias y coordinación no imputada. No es una jornada contractual ni un cálculo de cumplimiento laboral.
-
-
-- Esfuerzo inicial por clase y paquete: G gestión/acta 80 HH; E diseño/configuración/innovación 240 HH; D módulo 960 HH; I integración/migración 480 HH; V prueba 320 HH (integración y cierres de certificación: 160 HH); T instalación/capacitación 160 HH. Las clases de tamaño se fundan en los requerimientos del T-12 y en las cantidades del T-11, y se recalculan con el equipo al establecer la línea base. La tabla al final de esta sección explica qué contiene cada clase.
-
-
-- R identifica esfuerzo recurrente mensual, incluidos equivalentes mensuales de actividades anuales/semestrales: la distribución contable no cambia la frecuencia de ejecución del T-14.
-
-
-- A identifica acompañamiento: 13 puestos simultáneos de terreno/coordinación; 12 × 24 días × 8 horas + 160 HH de coordinación = 2.464 HH por cuatro semanas; soporte E1 meses 16–20 con previsión 2.464/1.312/544/544/544 HH para puestos 13/7/3/3/3, condicionada a los indicadores del T-18. Las cuatro semanas de 4.3.2 se reparten por días: con el H12 firmado el 5 de octubre de 2028, primer día después de los tres primeros días hábiles, 23 de los 24 días de lunes a sábado caen en el mes 21 y uno en el mes 22; por eso 4.3.2 imputa 2.361,33 HH en el mes 21 y 102,67 en el mes 22. Si la fecha efectiva cambia, se recalcula el reparto sin acortar las cuatro semanas.
-
-
-- C identifica cobertura por horas-posición del calendario real, con el mes 1 en febrero de 2027 (Anexo 7.A). NOC (8.1.1) y SOC (8.1.5) mantienen un puesto 24×7 cada uno: días del mes × 24, es decir 744 HH en un mes de 31 días, 720 en uno de 30 y 672 en febrero. La mesa
-
-
-(8.1.2, primera línea de incidentes del artículo 78 de las Bases Administrativas (p. 40)) aplica las posiciones del SD4, Anexo 4-W.7: 7 en la hora cargada y 2 en las otras 17 horas de 04:00 a 22:00, o 41 horas-posición por día de lunes a sábado, y desde el mes 25 un tercer agente en esas 17 horas, 58 horas-posición por día, con el que la dotación cubre los tres niveles de servicio hasta 2.391 contactos al mes (SD4, Anexo 4-W.7); en septiembre y diciembre se suman 6 horas-posición de 22:00 a 04:00 de lunes a sábado y 24 los domingos. Así, un mes de 26 días de lunes a sábado exige 26 × 41 = 1.066 HH de mesa, y septiembre de 2028 exige 26 × 47 + 4 × 24 = 1.318 HH. El SOC es propio de LafroX y opera desde su Centro de Operaciones en Valparaíso (RT-11.17; SD4, Anexo 4-W.7); sus HH se imputan aquí. Las posiciones de la mesa provienen de un Erlang C con supuestos de demanda: no acreditan abandono ni resolución al primer contacto, que se miden según la sección 5.6. La curva dimensiona relevos con 128 HH efectivas.
-
-
-- O = 0,75M; P = 1,25M; E = (O + 4M + P)/6 = M. Para A/C, O = M = P: no se reduce cobertura por un escenario optimista. Los riesgos de demanda y ausencias se tratan separadamente.
-
-
-- E se reparte uniformemente entre los meses inclusivos declarados. Las ventanas relativas son supuestos de asignación; las restricciones originales de aceptación del T-14 prevalecen. Coincidir en un mes no demuestra que una precedencia dentro del mes se haya satisfecho.
-
-
-- Personas por rol/mes = techo(HH del rol / 128). Se suman techos por familia de trabajo dirigida por el rol; el responsable nominado dirige el equipo, no ejecuta solo todas las HH. JP/ARQ y los otros códigos identifican equipos con liderazgo y apoyo competente: un valor 5 en JP significa cinco personas equivalentes de dirección/documentación, no cinco jefes de proyecto. La sección 5.7 compara la curva con la dotación declarada y con los roles mínimos; antes de aprobar recursos se deben asignar personas distintas con competencias y turnos verificables.
-
-
-- Reserva protegida E1 en meses 13–20: dos desarrolladores y un QA, 256 HH DES + 128 HH CAL/mes; no se presta a E2 ni se duplica como trabajo base.
-
-
-- Soporte puente E1 meses 16–20: NOC + mesa con la misma regla de calendario que la operación (1.851, 1.786, 1.810, 1.851 y 2.038 HH; total 9.336 HH), imputado a 4.2.2 y financiado dentro de implementación. El SOC opera desde el mes 13 por 8.1.5, porque la marcha blanca ya trata datos reales. Operación contractual empieza en el mes 21.
-
-
-- Ventanas ajustadas con el cronograma por actividad de la sección 6.1: cada paquete con entregable ocupa los meses de sus actividades, y sus HH se reparten según los días de cada actividad, no en forma pareja. Los planos 2.3.1/2.3.2 se hacen en el mes 1, la especificación y compra 5.1.2 en el mes 2, la instalación 6.1.1–6.1.4 en el mes 3 y la recepción 6.1.5 en el mes 4 (D-09 a D-11). Los prototipos 2.6.2 terminan antes de la construcción 3.4 (D-05); la identidad 3.3.1 empieza después del plan de seguridad (D-06); los módulos se programan con dependencias por interfaz (D-16, D-18 y D-19); y las certificaciones empiezan al terminar su prueba de integración (D-21 y D-31). La actualización anual del Plan de Reversibilidad 1.7.2 ocurre en el mes 15, primer aniversario de su entrega del mes 3; las siguientes son 8.1.4. El acompañamiento de salida 9.2.1 ocupa los meses 54 a 56 para cubrir sus 90 días
-
-
-dentro del contrato.
-
-
-La clase es una estimación por analogía y no una tarifa: fija el esfuerzo esperado de un paquete típico de su tipo, y el equipo lo ajusta en la línea base.
-
-
-Tabla 7.2 Supuestos y cálculo. Fuente: elaboración propia.
-
-
-Clase Qué contiene Esfuerzo Ejemplo y razón
-
-
-G Documento o acta de gestión con un responsable y una revisión
-
-
-80 HH 1.1.1 Acta de constitución: dos personas una semana, porque formaliza decisiones ya tomadas en la oferta
-
-
-E Diseño, configuración o especificación que requiere análisis, elaboración y revisión
-
-
-240 HH 2.2.3 Plan de respuesta a incidentes de seguridad: análisis, elaboración y revisión con cuatro especialistas
-
-
-D Módulo funcional con sus requerimientos del T-12, contratos de interfaz, construcción en incrementos, pruebas e integración en QA
-
-
-960 HH M4 Rutas (3.4.7) y M5 Preparación (3.4.3) tienen el mismo tamaño porque concentran reglas y pantallas comparables; un módulo de catálogo más simple queda en la misma clase, porque la clase cubre el promedio de los once módulos y la diferencia se ajusta con el equipo en la línea base
-
-
-I Interfaz o migración con análisis de muestras reales, contrato, adaptador, pruebas de falla y entrega
-
-
-480 HH 3.3.2 ERP: interfaces sin documentación (Caso cap. 17.5), por eso exige análisis con muestras y pruebas de lentitud
-
-
-continúa en la página siguiente
-
-
-Tabla 7.2 — continuación
-
-
-Clase Qué contiene Esfuerzo Ejemplo y razón
-
-
-320 HH (160 en integración y cierre)
-
-
-3.8.4 Carga a 1,5 veces el peak de septiembre
-
-
-V Prueba ampliada con preparación de datos, dos ciclos y regresión
-
-
-T Instalación o capacitación con ejecución y acta
-
-
-160 HH 6.1.1 Coordinación de la obra civil y piso técnico de la sala
-
-
-#### 7.4.2 Horas por los 222 paquetes
-
-
-La tabla siguiente presenta las horas de cada paquete con sus tres estimaciones y su valor esperado.
-
-
-EDT Clase Rol Meses O HH M HH P HH E HH
-
-
-1.1.1 G JP 1–1 60.00 80.00 100.00 80.00
-
-
-1.1.2 G JP 1–1 60.00 80.00 100.00 80.00
-
-
-1.1.3 G JP 1–1 60.00 80.00 100.00 80.00
-
-
-1.2.1 G ARQ 1–1 60.00 80.00 100.00 80.00
-
-
-1.2.2 G IMP 1–3 60.00 80.00 100.00 80.00
-
-
-1.2.3 G ARQ 1–4 60.00 80.00 100.00 80.00
-
-
-1.2.4 G CAL 2–2 60.00 80.00 100.00 80.00
-
-
-1.2.5 G ARQ 13–13 60.00 80.00 100.00 80.00
-
-
-1.3.1 G JP 1–1 60.00 80.00 100.00 80.00
-
-
-1.3.2 G JP 2–2 60.00 80.00 100.00 80.00
-
-
-1.3.3 G JP 2–2 60.00 80.00 100.00 80.00
-
-
-1.3.4 G JP 2–2 60.00 80.00 100.00 80.00
-
-
-1.3.5 R JP 1–20 360.00 480.00 600.00 480.00
-
-
-1.4.1 G JP 1–1 60.00 80.00 100.00 80.00
-
-
-1.4.2 G JP 1–1 60.00 80.00 100.00 80.00
-
-
-1.4.3 R JP 1–56 672.00 896.00 1120.00 896.00
-
-
-1.5.1 G CAL 2–2 60.00 80.00 100.00 80.00
-
-
-continúa en la página siguiente
-
-
-Tabla 7.3 Horas por los 222 paquetes. Fuente: elaboración propia.
-
-
-EDT Clase Rol Meses O HH M HH P HH E HH
-
-
-1.5.2 G CAL 6–20 60.00 80.00 100.00 80.00
-
-
-1.6.1 G JP 2–2 60.00 80.00 100.00 80.00
-
-
-1.6.2 R JP 1–20 120.00 160.00 200.00 160.00
-
-
-1.7.1 G JP 3–3 60.00 80.00 100.00 80.00
-
-
-1.7.2 G JP 15–15 60.00 80.00 100.00 80.00
-
-
-1.8.1 R JP 1–20 240.00 320.00 400.00 320.00
-
-
-1.8.2 R JP 1–56 336.00 448.00 560.00 448.00
-
-
-1.8.3 R JP 1–20 180.00 240.00 300.00 240.00
-
-
-1.8.4 R ARQ 1–56 336.00 448.00 560.00 448.00
-
-
-1.8.5 R SRE 13–56 264.00 352.00 440.00 352.00
-
-
-1.8.6 R JP 1–20 360.00 480.00 600.00 480.00
-
-
-1.8.7 R JP 2–56 330.00 440.00 550.00 440.00
-
-
-1.8.8 R JP 1–56 336.00 448.00 560.00 448.00
-
-
-1.9.1 G SEG 1–1 60.00 80.00 100.00 80.00
-
-
-1.9.2 G SEG 1–1 60.00 80.00 100.00 80.00
-
-
-1.9.3 G SEG 2–2 60.00 80.00 100.00 80.00
-
-
-1.9.4 R SEG 1–56 168.00 224.00 280.00 224.00
-
-
-Tabla 7.3 — continuación
-
-
-continúa en la página siguiente
-
-
-EDT Clase Rol Meses O HH M HH P HH E HH
-
-
-1.9.5 R JP 1–56 168.00 224.00 280.00 224.00
-
-
-2.1.1 E ARQ 2–2 180.00 240.00 300.00 240.00
-
-
-2.1.2 E ARQ 2–2 180.00 240.00 300.00 240.00
-
-
-2.1.3 E DAT 2–2 180.00 240.00 300.00 240.00
-
-
-2.1.4 E ARQ 13–13 180.00 240.00 300.00 240.00
-
-
-2.2.1 E SEG 2–2 180.00 240.00 300.00 240.00
-
-
-2.2.2 E SEG 3–10 180.00 240.00 300.00 240.00
-
-
-2.2.3 E SEG 3–3 180.00 240.00 300.00 240.00
-
-
-2.2.4 E SEG 2–2 180.00 240.00 300.00 240.00
-
-
-2.3.1 E SRE 1–2 180.00 240.00 300.00 240.00
-
-
-2.3.2 E SRE 1–2 180.00 240.00 300.00 240.00
-
-
-2.3.3 E SRE 2–2 180.00 240.00 300.00 240.00
-
-
-2.4.1 E ARQ 3–3 180.00 240.00 300.00 240.00
-
-
-2.4.2 E ARQ 14–14 180.00 240.00 300.00 240.00
-
-
-2.5.1 E SRE 3–3 180.00 240.00 300.00 240.00
-
-
-2.5.2 E SRE 3–3 180.00 240.00 300.00 240.00
-
-
-2.6.1 E IMP 2–2 180.00 240.00 300.00 240.00
-
-
-Tabla 7.3 — continuación
-
-
-continúa en la página siguiente
-
-
-EDT Clase Rol Meses O HH M HH P HH E HH
-
-
-2.6.2 E IMP 3–3 180.00 240.00 300.00 240.00
-
-
-2.6.3 E IMP 4–4 180.00 240.00 300.00 240.00
-
-
-3.1.1 E SRE 5–5 180.00 240.00 300.00 240.00
-
-
-3.1.2 E SRE 5–5 180.00 240.00 300.00 240.00
-
-
-3.1.3 E SRE 5–5 180.00 240.00 300.00 240.00
-
-
-3.1.4 E SRE 4–4 180.00 240.00 300.00 240.00
-
-
-3.1.5 E SRE 5–5 180.00 240.00 300.00 240.00
-
-
-3.2.1 E SRE 4–4 180.00 240.00 300.00 240.00
-
-
-3.2.2 E SRE 4–4 180.00 240.00 300.00 240.00
-
-
-3.2.3 E SRE 4–4 180.00 240.00 300.00 240.00
-
-
-3.2.4 E SRE 4–4 180.00 240.00 300.00 240.00
-
-
-3.2.5 E SEG 4–4 180.00 240.00 300.00 240.00
-
-
-3.2.6 E SRE 5–5 180.00 240.00 300.00 240.00
-
-
-3.3.1 I SEG 5–7 360.00 480.00 600.00 480.00
-
-
-3.3.2 I ARQ 5–6 360.00 480.00 600.00 480.00
-
-
-3.3.3 I ARQ 5–6 360.00 480.00 600.00 480.00
-
-
-3.3.4 I ARQ 5–6 360.00 480.00 600.00 480.00
-
-
-Tabla 7.3 — continuación
-
-
-continúa en la página siguiente
-
-
-EDT Clase Rol Meses O HH M HH P HH E HH
-
-
-3.3.5 I ARQ 5–7 360.00 480.00 600.00 480.00
-
-
-3.3.6 I ARQ 5–7 360.00 480.00 600.00 480.00
-
-
-3.4.1 D DES 5–7 720.00 960.00 1200.00 960.00
-
-
-3.4.2 D DES 5–7 720.00 960.00 1200.00 960.00
-
-
-3.4.3 D DES 5–7 720.00 960.00 1200.00 960.00
-
-
-3.4.4 D DES 5–8 720.00 960.00 1200.00 960.00
-
-
-3.4.5 D DES 5–7 720.00 960.00 1200.00 960.00
-
-
-3.4.6 D DES 5–7 720.00 960.00 1200.00 960.00
-
-
-3.4.7 D DES 5–8 720.00 960.00 1200.00 960.00
-
-
-3.4.8 D DES 5–8 720.00 960.00 1200.00 960.00
-
-
-3.4.9 D DES 5–8 720.00 960.00 1200.00 960.00
-
-
-3.4.10 D DES 5–8 720.00 960.00 1200.00 960.00
-
-
-3.4.11 D DAT 8–8 720.00 960.00 1200.00 960.00
-
-
-3.5.1 D DES 15–15 720.00 960.00 1200.00 960.00
-
-
-3.5.2 D DES 15–15 720.00 960.00 1200.00 960.00
-
-
-3.5.3 D DES 15–15 720.00 960.00 1200.00 960.00
-
-
-3.5.4 D DAT 15–15 720.00 960.00 1200.00 960.00
-
-
-Tabla 7.3 — continuación
-
-
-continúa en la página siguiente
-
-
-EDT Clase Rol Meses O HH M HH P HH E HH
-
-
-3.6.1 I DAT 7–8 360.00 480.00 600.00 480.00
-
-
-3.6.2 I DES 6–7 360.00 480.00 600.00 480.00
-
-
-3.6.3 I DES 6–7 360.00 480.00 600.00 480.00
-
-
-3.6.4 I DES 6–7 360.00 480.00 600.00 480.00
-
-
-3.6.5 I DES 13–18 360.00 480.00 600.00 480.00
-
-
-3.6.6 I DES 17–19 360.00 480.00 600.00 480.00
-
-
-3.7.1 I DAT 7–9 360.00 480.00 600.00 480.00
-
-
-3.7.2 I DAT 9–10 360.00 480.00 600.00 480.00
-
-
-3.7.3 I DAT 11–11 360.00 480.00 600.00 480.00
-
-
-3.7.4 I DAT 11–11 360.00 480.00 600.00 480.00
-
-
-3.7.5 I DAT 12–12 360.00 480.00 600.00 480.00
-
-
-3.8.1 V CAL 9–9 120.00 160.00 200.00 160.00
-
-
-3.8.2 V CAL 9–10 240.00 320.00 400.00 320.00
-
-
-3.8.3 V CAL 9–10 240.00 320.00 400.00 320.00
-
-
-3.8.4 V CAL 9–10 240.00 320.00 400.00 320.00
-
-
-3.8.5 V CAL 9–10 240.00 320.00 400.00 320.00
-
-
-3.8.6 V SEG 9–10 240.00 320.00 400.00 320.00
-
-
-Tabla 7.3 — continuación
-
-
-continúa en la página siguiente
-
-
-EDT Clase Rol Meses O HH M HH P HH E HH
-
-
-3.8.7 V CAL 10–10 120.00 160.00 200.00 160.00
-
-
-3.8.8 V SRE 9–10 240.00 320.00 400.00 320.00
-
-
-3.9.1 V CAL 16–16 120.00 160.00 200.00 160.00
-
-
-3.9.2 V CAL 16–16 240.00 320.00 400.00 320.00
-
-
-3.9.3 V CAL 16–16 240.00 320.00 400.00 320.00
-
-
-3.9.4 V CAL 16–16 240.00 320.00 400.00 320.00
-
-
-3.9.5 V SEG 16–16 120.00 160.00 200.00 160.00
-
-
-3.9.6 V CAL 16–17 120.00 160.00 200.00 160.00
-
-
-3.9.7 V SRE 16–16 120.00 160.00 200.00 160.00
-
-
-3.10.1.1 E DAT 7–9 180.00 240.00 300.00 240.00
-
-
-3.10.1.2 E DAT 9–10 180.00 240.00 300.00 240.00
-
-
-3.10.1.3 E DAT 9–10 180.00 240.00 300.00 240.00
-
-
-3.10.1.4 E DAT 11–15 180.00 240.00 300.00 240.00
-
-
-3.10.2.1 E CAL 2–3 180.00 240.00 300.00 240.00
-
-
-3.10.2.2 E CAL 3–5 180.00 240.00 300.00 240.00
-
-
-3.10.2.3 E CAL 5–10 180.00 240.00 300.00 240.00
-
-
-3.10.2.4 E CAL 11–15 180.00 240.00 300.00 240.00
-
-
-Tabla 7.3 — continuación
-
-
-continúa en la página siguiente
-
-
-EDT Clase Rol Meses O HH M HH P HH E HH
-
-
-3.10.3.1 E DAT 3–5 180.00 240.00 300.00 240.00
-
-
-3.10.3.2 E DAT 5–9 180.00 240.00 300.00 240.00
-
-
-3.10.3.3 E DAT 9–10 180.00 240.00 300.00 240.00
-
-
-3.10.3.4 E DAT 11–15 180.00 240.00 300.00 240.00
-
-
-3.10.4.1 E IMP 13–14 180.00 240.00 300.00 240.00
-
-
-3.10.4.2 E IMP 14–15 180.00 240.00 300.00 240.00
-
-
-3.10.4.3 E IMP 15–17 180.00 240.00 300.00 240.00
-
-
-3.10.4.4 E IMP 18–21 180.00 240.00 300.00 240.00
-
-
-3.11.1 G ARQ 15–21 60.00 80.00 100.00 80.00
-
-
-3.11.2 G SRE 10–20 60.00 80.00 100.00 80.00
-
-
-3.11.3 G DES 4–20 60.00 80.00 100.00 80.00
-
-
-3.11.4 G DES 4–20 60.00 80.00 100.00 80.00
-
-
-3.11.5 G DES 6–20 60.00 80.00 100.00 80.00
-
-
-4.1.1 G IMP 10–10 60.00 80.00 100.00 80.00
-
-
-4.1.2 G IMP 11–11 60.00 80.00 100.00 80.00
-
-
-4.1.3 G IMP 17–17 60.00 80.00 100.00 80.00
-
-
-4.2.1 A IMP 13–15 7392.00 7392.00 7392.00 7392.00
-
-
-Tabla 7.3 — continuación
-
-
-continúa en la página siguiente
-
-
-EDT Clase Rol Meses O HH M HH P HH E HH
-
-
-4.2.2 A IMP 16–20 5408.00 5408.00 5408.00 5408.00
-
-
-4.2.3 G JP 16–16 60.00 80.00 100.00 80.00
-
-
-4.3.1 A IMP 19–20 4928.00 4928.00 4928.00 4928.00
-
-
-4.3.2 A IMP 21–22 2464.00 2464.00 2464.00 2464.00
-
-
-4.3.3 G JP 21–21 60.00 80.00 100.00 80.00
-
-
-4.3.4 G JP 21–21 60.00 80.00 100.00 80.00
-
-
-5.1.1 G ARQ 2–2 60.00 80.00 100.00 80.00
-
-
-5.1.2 G ARQ 2–2 60.00 80.00 100.00 80.00
-
-
-5.1.3 G SRE 5–5 60.00 80.00 100.00 80.00
-
-
-5.2.1 G SRE 2–2 60.00 80.00 100.00 80.00
-
-
-5.2.2 G SRE 4–4 60.00 80.00 100.00 80.00
-
-
-5.2.3 G ARQ 4–4 60.00 80.00 100.00 80.00
-
-
-5.3.1 G SRE 4–4 60.00 80.00 100.00 80.00
-
-
-5.3.2 G SRE 4–4 60.00 80.00 100.00 80.00
-
-
-5.3.3 G SRE 4–4 60.00 80.00 100.00 80.00
-
-
-5.4.1 G IMP 9–12 60.00 80.00 100.00 80.00
-
-
-5.4.2 G IMP 9–12 60.00 80.00 100.00 80.00
-
-
-Tabla 7.3 — continuación
-
-
-continúa en la página siguiente
-
-
-EDT Clase Rol Meses O HH M HH P HH E HH
-
-
-5.4.3 G JP 17–20 60.00 80.00 100.00 80.00
-
-
-5.4.4 G JP 7–7 60.00 80.00 100.00 80.00
-
-
-6.1.1 T SRE 3–3 120.00 160.00 200.00 160.00
-
-
-6.1.2 T SRE 3–3 120.00 160.00 200.00 160.00
-
-
-6.1.3 T SRE 3–3 120.00 160.00 200.00 160.00
-
-
-6.1.4 T SRE 3–3 120.00 160.00 200.00 160.00
-
-
-6.1.5 T SRE 4–4 120.00 160.00 200.00 160.00
-
-
-6.2.1 T SRE 4–4 120.00 160.00 200.00 160.00
-
-
-6.2.2 T SRE 6–6 120.00 160.00 200.00 160.00
-
-
-6.2.3 T SRE 7–7 120.00 160.00 200.00 160.00
-
-
-6.3.1 T SRE 4–5 120.00 160.00 200.00 160.00
-
-
-6.3.2 T SRE 4–5 120.00 160.00 200.00 160.00
-
-
-6.3.3 T SRE 4–4 120.00 160.00 200.00 160.00
-
-
-6.3.4 T SRE 9–9 120.00 160.00 200.00 160.00
-
-
-6.4.1 T SEG 5–5 120.00 160.00 200.00 160.00
-
-
-6.4.2 T SEG 5–5 120.00 160.00 200.00 160.00
-
-
-6.4.3 T SEG 5–6 120.00 160.00 200.00 160.00
-
-
-Tabla 7.3 — continuación
-
-
-continúa en la página siguiente
-
-
-EDT Clase Rol Meses O HH M HH P HH E HH
-
-
-6.5.1 T SRE 9–12 120.00 160.00 200.00 160.00
-
-
-6.5.2 T SRE 10–12 120.00 160.00 200.00 160.00
-
-
-6.5.3 T SRE 9–11 120.00 160.00 200.00 160.00
-
-
-6.5.4 T SRE 10–12 120.00 160.00 200.00 160.00
-
-
-6.5.5 T SRE 10–12 120.00 160.00 200.00 160.00
-
-
-6.5.6 T SRE 9–12 120.00 160.00 200.00 160.00
-
-
-6.6.1 T SRE 5–5 120.00 160.00 200.00 160.00
-
-
-6.6.2 T SRE 5–5 120.00 160.00 200.00 160.00
-
-
-6.6.3 T SRE 5–5 120.00 160.00 200.00 160.00
-
-
-7.1.1 T IMP 10–12 120.00 160.00 200.00 160.00
-
-
-7.1.2 R IMP 13–56 2112.00 2816.00 3520.00 2816.00
-
-
-7.1.3 T IMP 13–20 120.00 160.00 200.00 160.00
-
-
-7.1.4 T IMP 15–20 120.00 160.00 200.00 160.00
-
-
-7.1.5 T IMP 10–18 120.00 160.00 200.00 160.00
-
-
-7.1.6 T IMP 10–12 120.00 160.00 200.00 160.00
-
-
-7.2.1 T IMP 10–16 120.00 160.00 200.00 160.00
-
-
-7.2.2 T IMP 16–18 120.00 160.00 200.00 160.00
-
-
-Tabla 7.3 — continuación
-
-
-continúa en la página siguiente
-
-
-EDT Clase Rol Meses O HH M HH P HH E HH
-
-
-7.2.3 T IMP 2–6 120.00 160.00 200.00 160.00
-
-
-7.2.4 T IMP 11–20 120.00 160.00 200.00 160.00
-
-
-7.2.5 T IMP 13–21 120.00 160.00 200.00 160.00
-
-
-7.3.1 T IMP 13–15 120.00 160.00 200.00 160.00
-
-
-7.3.2 T IMP 18–18 120.00 160.00 200.00 160.00
-
-
-8.1.1 C SRE 21–56 26280.00 26280.00 26280.00 26280.00
-
-
-8.1.2 C SRE 21–56 54239.00 54239.00 54239.00 54239.00
-
-
-8.1.3 V SRE 21–56 420.00 560.00 700.00 560.00
-
-
-8.1.4 R JP 21–56 216.00 288.00 360.00 288.00
-
-
-8.1.5 C SEG 13–56 32112.00 32112.00 32112.00 32112.00
-
-
-8.1.6 R SRE 21–56 432.00 576.00 720.00 576.00
-
-
-8.2.1 R DES 21–56 3456.00 4608.00 5760.00 4608.00
-
-
-8.2.2 R SEG 21–56 864.00 1152.00 1440.00 1152.00
-
-
-8.2.3 R SRE 21–56 864.00 1152.00 1440.00 1152.00
-
-
-8.2.4 R DES 21–56 1728.00 2304.00 2880.00 2304.00
-
-
-8.2.5 R SRE 21–56 216.00 288.00 360.00 288.00
-
-
-8.2.6 R SRE 21–56 216.00 288.00 360.00 288.00
-
-
-Tabla 7.3 — continuación
-
-
-continúa en la página siguiente
-
-
-EDT Clase Rol Meses O HH M HH P HH E HH
-
-
-8.2.7 R SRE 21–56 648.00 864.00 1080.00 864.00
-
-
-8.3.1 R CAL 21–56 432.00 576.00 720.00 576.00
-
-
-8.3.2 R DAT 21–56 216.00 288.00 360.00 288.00
-
-
-8.3.3 G JP 21–23 60.00 80.00 100.00 80.00
-
-
-8.3.4 R JP 24–56 396.00 528.00 660.00 528.00
-
-
-8.3.5 G IMP 22–26 60.00 80.00 100.00 80.00
-
-
-8.3.6 G IMP 24–27 60.00 80.00 100.00 80.00
-
-
-8.4.1 R SRE 21–56 432.00 576.00 720.00 576.00
-
-
-8.4.2 R SRE 21–56 432.00 576.00 720.00 576.00
-
-
-8.4.3 R SRE 21–56 216.00 288.00 360.00 288.00
-
-
-8.4.4 R JP 21–56 216.00 288.00 360.00 288.00
-
-
-8.5.1 R IMP 21–56 864.00 1152.00 1440.00 1152.00
-
-
-8.5.2 G IMP 21–27 60.00 80.00 100.00 80.00
-
-
-8.5.3 R SRE 21–56 432.00 576.00 720.00 576.00
-
-
-9.1.1 G DES 21–21 60.00 80.00 100.00 80.00
-
-
-9.1.2 G JP 21–21 60.00 80.00 100.00 80.00
-
-
-9.2.1 G JP 54–56 60.00 80.00 100.00 80.00
-
-
-9.2.2 G SEG 56–56 60.00 80.00 100.00 80.00
-
-
-Tabla 7.3 — continuación
-
-
-Se agregan explícitamente soporte puente SRE de 4.2.2 = 9336.00 HH y reserva F3/QA = 8 × (256 + 128) = 3.072 HH. Las ocho restauraciones previas a Operación aportan 128 HH SRE: 48 en
-
-
-4.2.1, 48 en 4.2.2 y 32 en 4.3.1. Cada una supone 16 HH para preparación, ejecución, validación e informe. Son distintas de las 36 restauraciones de 8.1.6 durante Operación. Al activar los respaldos antes del mes 13 se verificará si RT-07.12 exige pruebas mensuales adicionales; en ese caso se programarán y reestimarán expresamente, sin imputarlas a las ocho ya contadas. Las siete conmutaciones reales de 8.1.3 se estiman en 80 HH por campaña, 560 HH en total. Las pruebas de intrusión E1 y E2 se estiman en 320 y 160 HH respectivamente; la reducción en E2 exige que el inventario y los procedimientos de E1 sean reutilizables. Se confirmarán horas, alcance y disponibilidad con el tercero independiente antes de ejecutar. Las 128 HH de restauraciones se suman a las 205.007 HH de los 222 paquetes para formar las 205.135 HH de base; el soporte puente y la reserva protegida se agregan por separado en las curvas siguientes.
-
-
-#### 7.4.3 Resumen T-15
-
-
-La tabla siguiente resume las horas programadas por etapa contractual.
-
-
-Tabla 7.4 Resumen T-15. Fuente: elaboración propia.
-
-
-Frentes Meses
-
-
-Etapa HH base y cobertura
-
-
-HH reserva protegida
-
-
-HH programadas
-
-
-1–12
-
-
-E1 Desarrollo 38141.17 0 38141.17 F1,F2,F3,F5,F6, F7
-
-
-13–15
-
-
-E1 Marcha blanca
-
-
-11195.17 1152 12347.17 F1,F2,F3,F5,F6, F7
-
-
-13–18
-
-
-E2 Desarrollo 11406.54 0 11406.54 F1,F2,F4,F5,F6, F7
-
-
-7307.91 0 7307.91 F1,F2,F4,F6,F7 19–20
-
-
-E2 Marcha blanca
-
-
-14792.00 1920 16712.00 F3,F5,F6,F7 16–20
-
-
-E1 Soporte puente
-
-
-Operación 128853.67 0 128853.67 F1,F8 21–56
-
-
-2774.54 0 2774.54 F1,F2,F4,F6,F7 21–22
-
-
-Cierre y estabilización implementación
-
-
-Total exacto de paquetes y componentes = 217543.00 HH (205.007 HH de los 222 paquetes +
-
-
-128 HH de restauraciones previas a Operación + 9.336 HH de soporte puente + 3.072 HH de reserva protegida); peak mensual conjunto = 69 personas equivalentes en el mes 15, cuando coinciden la construcción de los módulos de la Etapa 2, la marcha blanca de la Etapa 1 y su acompañamiento. La mesa y el SOC dimensionados en el SD4, aplicados sobre el calendario real, determinan las horas de operación y de soporte puente. La implementación imputada a los meses 21 y 22 se separa de Operación; las actividades generales que continúan como servicio permanecen en Operación. Los peaks de etapas no se suman. Las centésimas de presentación se distribuyen por mayor resto entre meses y se concilian por etapa; la suma publicada conserva 217.543 HH exactas. La mesa de ayuda de 8.1.2 incluye desde el mes 25, cuando empieza el tercer año del contrato y la demanda proyectada llega a 2.258 contactos al mes, un tercer agente en las franjas de menor demanda (17 horas por día de lunes a sábado, 14.161 HH), con el que la dotación base cubre los tres niveles de servicio hasta 2.391 contactos al mes (SD4, Anexo 4-W.7). En los meses 21 a 24, con 2.000 contactos estimados, bastan dos agentes en esas franjas (límite 2.283).
-
-
-#### 7.4.4 Curvas mensuales: horas por etapa y personas por rol
-
-
-La tabla siguiente presenta, mes a mes, las horas por etapa y las personas equivalentes por rol.
-
-
-Total HH
-
-
-tabilización
-
-
-implementa-
-
-
-ción
-
-
-te Operación Cierre y es-
-
-
-Mes E1 desarrollo E1 MB E2 desarrollo E2 MB Soporte puen-
-
-
-1 1415.81 0.00 0.00 0.00 0.00 0.00 0.00 1415.81
-
-
-2 2909.52 0.00 0.00 0.00 0.00 0.00 0.00 2909.52
-
-
-3 2361.67 0.00 0.00 0.00 0.00 0.00 0.00 2361.67
-
-
-4 3142.78 0.00 0.00 0.00 0.00 0.00 0.00 3142.78
-
-
-5 5039.21 0.00 0.00 0.00 0.00 0.00 0.00 5039.21
-
-
-6 5335.52 0.00 0.00 0.00 0.00 0.00 0.00 5335.52
-
-
-7 5107.82 0.00 0.00 0.00 0.00 0.00 0.00 5107.82
-
-
-8 4640.86 0.00 0.00 0.00 0.00 0.00 0.00 4640.86
-
-
-9 3151.92 0.00 0.00 0.00 0.00 0.00 0.00 3151.92
-
-
-10 2060.57 0.00 0.00 0.00 0.00 0.00 0.00 2060.57
-
-
-11 1676.35 0.00 0.00 0.00 0.00 0.00 0.00 1676.35
-
-
-12 1299.14 0.00 0.00 0.00 0.00 0.00 0.00 1299.14
-
-
-13 0.00 3952.70 548.57 0.00 0.00 0.00 0.00 4501.27
-
-
-14 0.00 4333.79 571.43 0.00 0.00 0.00 0.00 4905.22
-
-
-15 0.00 4060.68 4045.71 0.00 0.00 0.00 0.00 8106.39
-
-
-continúa en la página siguiente
-
-
-Tabla 7.5 Curva mensual de horas por etapa. Fuente: Formulario T-15, sección 4.4.
-
-
-Total HH
-
-
-tabilización
-
-
-implementa-
-
-
-ción
-
-
-te Operación Cierre y es-
-
-
-Mes E1 desarrollo E1 MB E2 desarrollo E2 MB Soporte puen-
-
-
-16 0.00 0.00 2948.35 0.00 4715.00 0.00 0.00 7663.35
-
-
-17 0.00 0.00 1729.57 0.00 3498.00 0.00 0.00 5227.57
-
-
-18 0.00 0.00 1562.91 0.00 2754.00 0.00 0.00 4316.91
-
-
-19 0.00 0.00 0.00 3769.86 2779.00 0.00 0.00 6548.86
-
-
-20 0.00 0.00 0.00 3538.05 2966.00 0.00 0.00 6504.05
-
-
-21 0.00 0.00 0.00 0.00 0.00 3198.26 2774.54 5972.80
-
-
-22 0.00 0.00 0.00 0.00 0.00 3232.55 0.00 3232.55
-
-
-23 0.00 0.00 0.00 0.00 0.00 3440.54 0.00 3440.54
-
-
-24 0.00 0.00 0.00 0.00 0.00 3247.92 0.00 3247.92
-
-
-25 0.00 0.00 0.00 0.00 0.00 3341.50 0.00 3341.50
-
-
-26 0.00 0.00 0.00 0.00 0.00 3688.21 0.00 3688.21
-
-
-27 0.00 0.00 0.00 0.00 0.00 3585.83 0.00 3585.83
-
-
-28 0.00 0.00 0.00 0.00 0.00 3635.78 0.00 3635.78
-
-
-29 0.00 0.00 0.00 0.00 0.00 3529.78 0.00 3529.78
-
-
-30 0.00 0.00 0.00 0.00 0.00 3577.78 0.00 3577.78
-
-
-Tabla 7.5 — continuación
-
-
-continúa en la página siguiente
-
-
-Total HH
-
-
-tabilización
-
-
-implementa-
-
-
-ción
-
-
-te Operación Cierre y es-
-
-
-Mes E1 desarrollo E1 MB E2 desarrollo E2 MB Soporte puen-
-
-
-31 0.00 0.00 0.00 0.00 0.00 3635.78 0.00 3635.78
-
-
-32 0.00 0.00 0.00 0.00 0.00 3741.78 0.00 3741.78
-
-
-33 0.00 0.00 0.00 0.00 0.00 3729.11 0.00 3729.11
-
-
-34 0.00 0.00 0.00 0.00 0.00 3529.78 0.00 3529.78
-
-
-35 0.00 0.00 0.00 0.00 0.00 3853.78 0.00 3853.78
-
-
-36 0.00 0.00 0.00 0.00 0.00 3635.78 0.00 3635.78
-
-
-37 0.00 0.00 0.00 0.00 0.00 3317.78 0.00 3317.78
-
-
-38 0.00 0.00 0.00 0.00 0.00 3577.78 0.00 3577.78
-
-
-39 0.00 0.00 0.00 0.00 0.00 3623.11 0.00 3623.11
-
-
-40 0.00 0.00 0.00 0.00 0.00 3635.78 0.00 3635.78
-
-
-41 0.00 0.00 0.00 0.00 0.00 3471.78 0.00 3471.78
-
-
-42 0.00 0.00 0.00 0.00 0.00 3635.78 0.00 3635.78
-
-
-43 0.00 0.00 0.00 0.00 0.00 3635.78 0.00 3635.78
-
-
-44 0.00 0.00 0.00 0.00 0.00 3741.78 0.00 3741.78
-
-
-45 0.00 0.00 0.00 0.00 0.00 3729.11 0.00 3729.11
-
-
-Tabla 7.5 — continuación
-
-
-continúa en la página siguiente
-
-
-Total HH
-
-
-tabilización
-
-
-implementa-
-
-
-ción
-
-
-te Operación Cierre y es-
-
-
-Mes E1 desarrollo E1 MB E2 desarrollo E2 MB Soporte puen-
-
-
-46 0.00 0.00 0.00 0.00 0.00 3529.78 0.00 3529.78
-
-
-47 0.00 0.00 0.00 0.00 0.00 3853.78 0.00 3853.78
-
-
-48 0.00 0.00 0.00 0.00 0.00 3635.78 0.00 3635.78
-
-
-49 0.00 0.00 0.00 0.00 0.00 3317.77 0.00 3317.77
-
-
-50 0.00 0.00 0.00 0.00 0.00 3577.77 0.00 3577.77
-
-
-51 0.00 0.00 0.00 0.00 0.00 3623.10 0.00 3623.10
-
-
-52 0.00 0.00 0.00 0.00 0.00 3635.77 0.00 3635.77
-
-
-53 0.00 0.00 0.00 0.00 0.00 3471.77 0.00 3471.77
-
-
-54 0.00 0.00 0.00 0.00 0.00 3746.88 0.00 3746.88
-
-
-55 0.00 0.00 0.00 0.00 0.00 3599.99 0.00 3599.99
-
-
-56 0.00 0.00 0.00 0.00 0.00 3888.44 0.00 3888.44
-
-
-Tabla 7.5 — continuación
-
-
-totales
-
-
-Mes JP ARQ SEG DAT DES CAL SRE IMP Personas
-
-
-1 5 2 2 0 0 0 4 1 14
-
-
-2 4 6 5 2 0 3 3 3 26
-
-
-3 2 2 3 1 0 2 9 3 22
-
-
-4 1 1 3 1 1 1 17 3 28
-
-
-5 1 11 5 2 7 2 15 0 43
-
-
-6 1 8 4 1 28 1 2 0 45
-
-
-7 2 1 1 8 28 1 2 0 43
-
-
-8 1 1 1 10 26 1 0 0 40
-
-
-9 1 1 3 8 1 8 6 2 30
-
-
-10 1 1 2 3 1 6 5 3 22
-
-
-11 1 1 1 9 1 1 1 3 18
-
-
-12 1 1 1 5 0 1 4 1 14
-
-
-13 1 3 6 0 3 2 2 23 40
-
-
-14 1 2 6 2 3 2 2 24 42
-
-
-15 2 1 6 8 25 2 2 23 69
-
-
-16 2 1 9 0 4 10 18 22 66
-
-
-17 2 1 6 0 4 3 16 14 46
-
-
-continúa en la página siguiente
-
-
-Tabla 7.6 Curva mensual de personas por rol. Fuente: Formulario T-15, sección 4.4.
-
-
-totales
-
-
-Mes JP ARQ SEG DAT DES CAL SRE IMP Personas
-
-
-18 1 1 6 0 4 2 16 8 38
-
-
-19 1 1 6 0 4 2 16 26 56
-
-
-20 1 1 6 0 2 1 17 25 53
-
-
-21 3 1 7 1 3 2 17 20 54
-
-
-22 1 1 6 1 2 1 16 2 30
-
-
-23 1 1 7 1 2 1 18 1 32
-
-
-24 1 1 7 1 2 1 16 2 31
-
-
-25 1 1 6 1 2 1 18 1 31
-
-
-26 1 1 7 1 2 1 20 2 35
-
-
-27 1 1 6 1 2 2 20 1 34
-
-
-28 1 1 7 1 2 1 20 1 34
-
-
-29 1 1 6 1 2 1 19 1 32
-
-
-30 1 1 7 1 2 1 19 1 33
-
-
-31 1 1 7 1 2 1 20 1 34
-
-
-32 1 1 6 1 2 1 21 1 34
-
-
-33 1 1 7 1 2 2 21 1 36
-
-
-34 1 1 6 1 2 1 19 1 32
-
-
-Tabla 7.6 — continuación
-
-
-continúa en la página siguiente
-
-
-totales
-
-
-Mes JP ARQ SEG DAT DES CAL SRE IMP Personas
-
-
-35 1 1 7 1 2 1 21 1 35
-
-
-36 1 1 7 1 2 1 20 1 34
-
-
-37 1 1 6 1 2 1 18 1 31
-
-
-38 1 1 7 1 2 1 19 1 33
-
-
-39 1 1 6 1 2 2 20 1 34
-
-
-40 1 1 7 1 2 1 20 1 34
-
-
-41 1 1 6 1 2 1 19 1 32
-
-
-42 1 1 7 1 2 1 20 1 34
-
-
-43 1 1 7 1 2 1 20 1 34
-
-
-44 1 1 6 1 2 1 21 1 34
-
-
-45 1 1 7 1 2 2 21 1 36
-
-
-46 1 1 6 1 2 1 19 1 32
-
-
-47 1 1 7 1 2 1 21 1 35
-
-
-48 1 1 7 1 2 1 20 1 34
-
-
-49 1 1 6 1 2 1 18 1 31
-
-
-50 1 1 7 1 2 1 19 1 33
-
-
-51 1 1 6 1 2 2 20 1 34
-
-
-Tabla 7.6 — continuación
-
-
-continúa en la página siguiente
-
-
-totales
-
-
-Mes JP ARQ SEG DAT DES CAL SRE IMP Personas
-
-
-52 1 1 7 1 2 1 20 1 34
-
-
-53 1 1 6 1 2 1 19 1 32
-
-
-54 1 1 7 1 2 2 21 1 36
-
-
-55 1 1 7 1 2 1 19 1 33
-
-
-56 1 1 7 1 2 1 21 1 35
-
-
-Tabla 7.6 — continuación
-
-
-La curva de personas es una envolvente conservadora de demanda, no disponibilidad acreditada. La factibilidad requiere asignar cada rol de la curva y comprobar las concurrencias diarias de certificación y continuidad. El registro nominal de personas y los turnos se aprueban junto con la línea base del H1. La reserva E1 es exclusiva; el trabajo de E2 usa capacidad adicional. La revisión de HH modifica conjuntamente dotación, cronograma y exposición de SD8.
-
-
-#### 7.4.5 Reservas de contingencia y de gestión
-
-
-Las 217.543 HH de la sección 4.3 son la línea base programada e incluyen 3.072 HH protegidas para correcciones de la Etapa 1. Esa capacidad no se suma nuevamente ni acredita cobertura de cualquier contingencia. Las reservas adicionales de riesgos del SD8 se administran por separado y deben conciliarse con la nueva línea base antes de afirmar capacidad movilizable. La reserva de cronograma de cada hito, en días hábiles, se muestra como escenario histórico en la Tabla 7.8; requiere recálculo con horas, calendario y asignaciones vigentes. La distribución de contingencia y gestión del SD8, Anexo 8.D, debe conciliarse con esta línea base antes de dimensionar personal adicional o comprometer plazos de respuesta. Ninguna reserva de riesgos se interpreta como capacidad nominal ya disponible; su consumo requiere autorización y asignación registrada.
-
-
-### 7.5 Red agregada, restricciones y escenarios de calendario
-
-
-Las secciones 5.1 a 5.4 conservan el método y los resultados del escenario nominal anterior a la reestimación de la sección 4. Sus fechas, reservas, probabilidades y afirmaciones de nivelación no están reconciliadas con la línea base vigente de 217.543 HH ni con la asignación nominal por especialidad. No acreditan por sí solas la ruta crítica o el cumplimiento actual de los hitos. Antes de usarlos para decidir se recalculará la red con las nuevas horas, el calendario efectivo y la disponibilidad confirmada.
-
-
-#### 7.5.1 Cálculo reproducible
-
-
-La red se calcula sobre los paquetes con entregable de la sección 6 y sus actividades de plantilla, no sobre bloques mensuales; el cálculo por actividad es el respaldo de la nivelación y se publica sólo hasta el H2. El calendario usa días hábiles de lunes a viernes, con el mes 1 en febrero de 2027 (supuesto del Anexo 7.A); una persona aporta 6,4 HH efectivas por día (8 horas al 80 %), coherente con las 128 HH por mes de la sección 4.1. Las reglas del cálculo son las siguientes:
-
-
-- Duración de una actividad. Es sus HH divididas por las HH diarias de las personas asignadas, redondeada hacia arriba en días. Ninguna actividad supera diez días hábiles, una quincena.
-
-
-personas en las actividades de equipo completo y 2 por incremento.
-
-
-- Lógica. Dentro del paquete, las actividades siguen su plantilla (análisis, diseño, construcción, pruebas, integración y entrega). Entre paquetes rigen las dependencias del Anexo 7.B: las de tipo FC exigen que el predecesor termine; las de tipo CC, que haya empezado; y las de tipo «por interfaz» (D-16, D-18 y D-19) hacen que el sucesor construya después de que el predecesor fija sus contratos (actividad A02) e integre después de que el predecesor entrega (A12).
-
-
-- Revisión del CLIENTE. Cada hito se cumple con el acta de aceptación (artículo 18.1 de las Bases Administrativas (p. 13)), y el CLIENTE dispone de diez días hábiles para revisar (artículo 18.3 de las Bases Administrativas (p. 13)). Por eso los paquetes que gatillan un hito terminan, a más tardar, diez días hábiles antes del último día hábil del mes del hito, y antes de esa fecha límite se deja la reserva que pide el PERT (sección 5.3). La subsanación no se programa como trabajo normal: si se necesita, consume la reserva.
-
-
-- Nivelación de recursos. Los paquetes se programan en el orden de su holgura y cada uno en la primera fecha en que no supera la dotación declarada en el SD1: 40 personas de desarrollo (de las 48 de la división; las 8 restantes quedan disponibles), 44 de SRE y NOC, 15 de arquitectura y datos en conjunto, 7 de seguridad sin contar los analistas del SOC propio, contratados aparte y 10 de calidad, que se refuerza con evaluadores subcontratados hasta 16 durante las certificaciones (PMI, 2017, pp. 211–212). La carga diaria suma las actividades y el esfuerzo continuo del mes.
-
-
-En el escenario nominal histórico no se registraron dependencias incumplidas ni paquetes fuera de sus ventanas. Sus máximos diarios deben revisarse con las horas actualizadas y la disponibilidad nominal por especialidad; el tamaño corporativo declarado no acredita por sí solo la asignación al proyecto. La Tabla 7.7 resume las fechas de los grupos de paquetes; la sección 6.1 da las fechas de cada paquete.
-
-
-Tabla 7.7 Fechas programadas por grupo de paquetes. Fuente: elaboración propia a partir de la sección 6.1.
-
-
-Grupo Paquetes Inicio Fin
-
-
-Alcance (H1) 1.2.1, 1.2.4 01-02-2027 09-03-2027
-
-
-1.2.3 01-02-2027 09-02-2027
-
-
-Interfaces sin documentación
-
-
-Diseño E1, seguridad y aprobación (H2)
-
-
-2.1.1–2.1.3, 2.2.1, 2.2.3, 2.2.4, 2.4.1 01-03-2027 29-04-2027
-
-
-2.3.1, 2.3.2, 5.1.2, 6.1 01-02-2027 20-05-2027
-
-
-Planos, especificación y sala técnica
-
-
-continúa en la página siguiente
-
-
-Tabla 7.7 — continuación
-
-
-Grupo Paquetes Inicio Fin
-
-
-6.3.1–6.3.3, 6.6 03-05-2027 29-06-2027
-
-
-Racks y borde de los CD (H3)
-
-
-Servicios de nube y ambientes (H3)
-
-
-3.2.1, 3.2.2, 3.2.4, 3.2.5, 3.1 03-05-2027 21-06-2027
-
-
-Base compartida 3.3 01-06-2027 05-08-2027
-
-
-Módulos E1 3.4 10-06-2027 30-09-2027
-
-
-3.6.1–3.6.4 01-07-2027 01-09-2027
-
-
-Integraciones externas E1
-
-
-3.8.1 01-10-2027 20-10-2027
-
-
-Prueba de integración E1 (H4)
-
-
-Certificación E1 (H5) 3.8.2–3.8.8 21-10-2027 29-11-2027
-
-
-Diseño E2 (H8) 1.2.5, 2.1.4, 2.4.2 01-02-2028 13-03-2028
-
-
-Módulos E2 3.5 03-04-2028 26-04-2028
-
-
-3.6.5, 3.6.6 01-02-2028 23-08-2028
-
-
-Intercambio con las cadenas
-
-
-3.9.1 01-05-2028 18-05-2028
-
-
-Prueba de integración E2 (H9)
-
-
-Certificación E2 (H10) 3.9.2–3.9.7 19-05-2028 12-06-2028
-
-
-#### 7.5.2 Secuencias que hacen compatible el modelo
-
-
-El cálculo por actividad y la simulación del SD8 fijan siete reglas de secuencia que hacen compatible el cronograma con los hitos.
-
-
-- Ventanas de módulos. Los módulos de la Etapa 1 ocupan los meses 5 a 8 (junio a septiembre de 2027): el análisis y el diseño de contratos empiezan con la base compartida, y la construcción se escalona para no superar 40 desarrolladores simultáneos. Las dependencias entre módulos son por interfaz.
-
-
-- Sala técnica y ambientes. La cadena deja reserva ante el H3: planos 2.3.1/2.3.2 en el mes 1, especificación y orden de compra emitida por LafroX en el mes 2 (5.1.2), instalación 6.1.1–6.1.4 en el mes 3 y recepción 6.1.5 en el mes 4. Los racks R01/R02 se montan en los meses 4 y 5, el gabinete de Concepción en el mes 4 y el borde de los CD entra en servicio en el mes 5 (6.6.3), junto con los ambientes en la nube. Los gabinetes de cross-docking se
-
-
-montan en el mes 9. El CLIENTE solo compra el equipamiento de terreno antes de cada ola. Las actas 5.1.3 acreditan la recepción técnica de ambos suministros.
-
-
-- Certificación. Las pruebas de aceptación y de operación sin conexión (3.8.2 y 3.8.3) empiezan al terminar la prueba de integración (D-21). Las pruebas de carga, recuperación, seguridad ofensiva y despliegue sin interrupción (3.8.4 a 3.8.6 y 3.8.8) también quedan condicionadas al cierre de 3.8.1, porque certifican la versión integrada que habilita el H5. En la Etapa 2 rige la misma regla: la aceptación 3.9.2 ejecuta sus ciclos al terminar 3.9.1, y las pruebas de carga, recuperación, seguridad ofensiva y despliegue (3.9.3 a 3.9.5 y 3.9.7) comienzan después de la integración y regresión de la Etapa 2; todas terminan en el mes 16 y el acta 3.9.6 se prepara en junio. Estas pruebas corren en paralelo con la revisión del CLIENTE del H4 y del H9, no con la integración que les da base; si esa revisión formula observaciones sobre el software, la certificación repite los casos afectados dentro de su reserva.
-
-
-- Integraciones de la Etapa 1 antes del H4. Las integraciones con proveedores, pago, mapas y avisos (3.6.1 a 3.6.4) terminan entre agosto y septiembre de 2027 y son predecesoras de la prueba de integración 3.8.1, de modo que el software del H4 incluye todas las interfaces externas de la Etapa 1 (Formulario E-25).
-
-
-- Aprobaciones que gatillan el H2 y el H8. Los documentos de aprobación 2.4.1 y 2.4.2 terminan antes de la fecha límite de su hito: 2.4.1 se elabora en abril de 2027, apenas se entregan la arquitectura, el plan de seguridad (2.2.3, con cuatro especialistas) y el modelo de datos, y queda en revisión del CLIENTE en mayo; 2.4.2 se elabora entre el 1 y el 13 de marzo de 2028, después del diseño 2.1.4, que se ejecuta con cuatro arquitectos en la primera quincena de febrero.
-
-
-- Corte de la migración. Sólo la conciliación final y el corte (3.7.5.A06) son una intervención productiva y se programan en días permitidos, después de los dos ensayos 3.7.3 y 3.7.4 (D-24); el análisis, el diseño y las pruebas del corte avanzan en paralelo con esos ensayos en ambientes no productivos. La carga de saldos migrados desde el WMS de Talca (3.7.3) y su segundo ensayo (3.7.4) se ejecutan en diciembre de 2027 sobre Preproducción y no intervienen Producción, por lo que no infringen el congelamiento de diciembre; la carga productiva de esos saldos ocurre sólo con el corte 3.7.5.
-
-
-- Refuerzo de calidad. Durante las certificaciones (meses 9 a 12 y 16 a 18) el equipo de calidad se refuerza con evaluadores subcontratados hasta 16 personas por día (SD6, sección 6.1.3), para dejar ante el H5 y el H10 la reserva que exige la simulación del SD8.
-
-
-El escenario histórico escalona la construcción de la Etapa 1 entre junio y septiembre de 2027 con hasta 40 desarrolladores simultáneos; ese máximo debe contrastarse con la asignación nominal. Su curva registra 28 personas equivalentes de desarrollo en los meses 6 y 7. Las dependencias D-08 y D-12 del Anexo 7.B se precisaron por paquete, porque a nivel de cuenta bloqueaban sin necesidad: los ambientes no esperan a la plataforma de IoT (3.2.3), que precede a M12, ni la configuración de los CD espera a los gabinetes de cross-docking (6.3.4), que preceden al equipamiento de campo.
-
-
-#### 7.5.3 Reservas y análisis PERT de duración
-
-
-La duración PERT de cada paquete usa la tríada de la sección 4.1: O = 0,75 d, M = d y P = 1,25 d, con el equipo programado. Por eso T_E = d y 𝜎= d/12. Para cada hito se recorren todos los caminos que llegan a sus paquetes, desde la fecha de liberación de su primer paquete; la varianza de un camino es la suma de las varianzas de sus paquetes, y la probabilidad de entregar a tiempo es Φ(reserva/𝜎). Esa probabilidad sólo mide la variación de las horas. El SD8, Anexo 8.C, agrega una simulación de Monte Carlo sobre la misma red que suma la ocurrencia de los riesgos del registro; la Tabla 7.8 muestra ambos resultados.
-
-
-simulada
-
-
-simulación con riesgos Fecha P80
-
-
-P(entrega a tiempo),
-
-
-PERT P(entrega a tiempo),
-
-
-𝜎del
-
-
-(días
-
-
-camino
-
-
-hábiles)
-
-
-Camino de
-
-
-menor probabi-
-
-
-lidad (PERT)
-
-
-(días
-
-
-Reserva
-
-
-hábiles)
-
-
-de entrega
-
-
-días hábiles)
-
-
-(acta −10
-
-
-programada Fecha límite
-
-
-H1 09-03-2027 17-03-2027 6 1.2.1 0,58 > 99,9 % > 99,9 % 11-03-2027
-
-
-H2 29-04-2027 17-05-2027 12 2.1.1 →2.4.1 1,90 > 99,9 % 97,4 % 10-05-2027
-
-
-H3 21-06-2027 16-07-2027 19 3.1.1 1,25 > 99,9 % 88,3 % 13-07-2027
-
-
-H4 20-10-2027 16-11-2027 19 3.8.1 1,17 > 99,9 % 86,5 % 15-11-2027
-
-
-H5 29-11-2027 17-01-2028 35 3.8.2 1,67 > 99,9 % 88,8 % 13-01-2028
-
-
-H8 13-03-2028 17-03-2028 4 2.4.2 0,75 > 99,9 % 91,1 % 16-03-2028
-
-
-H9 18-05-2028 16-06-2028 21 3.9.1 1,17 > 99,9 % > 99,9 % 29-05-2028
-
-
-H10 12-06-2028 17-07-2028 25 3.9.1 →3.9.2 → 3.9.6 1,54 > 99,9 % > 99,9 % 29-06-2028
-
-
-Hito Entrega
-
-
-Tabla 7.8 Escenario nominal histórico: entrega, reserva y probabilidad por hito; pendiente de recálculo. Fuente: sección 6.1 y SD8, Anexo 8.C.
-
-
-La tabla cuenta días hábiles de lunes a viernes sin descontar feriados, como declara la sección 5.1; la conversión a fechas efectivas es la acción del riesgo R8-17 en el mes 1. Dos fechas límite coinciden con un feriado: los diez días hábiles que van del 17 al 31 de mayo de 2027 incluyen el feriado del 21 de mayo, de modo que el límite del H2 pasa del 17 al 14 de mayo de 2027 y su reserva, a 11 días hábiles; el límite del H3, 16 de julio de 2027, es feriado y pasa al 15 de julio, con una reserva de 18. Las probabilidades de esta tabla se recalculan con esas reservas al confirmar el calendario. Ni el PERT ni la simulación incluyen un error sistemático en los tamaños supuestos que afecte a todos los paquetes a la vez, la falta de personas con las competencias requeridas ni un suministro de la infraestructura fuera de plazo más allá de lo modelado en R8-19. Esos casos se tratan con los disparadores del SD8, y su control es el seguimiento semanal de la reserva de cada hito.
-
-
-#### 7.5.4 Gobierno
-
-
-Las ventanas mensuales de acompañamiento son una imputación inicial: cuatro semanas desde un acta en día permitido pueden cruzar al mes siguiente, como ocurre con 4.3.2. Confirmada la fecha, se redistribuyen las mismas HH entre meses y se recalculan relevos; no se acorta el acompañamiento para mantener una celda mensual. El JP revisa semanalmente fechas pronosticadas, consumo de capacidad y restricciones. Toda amenaza a un hito se escala cuando la desviación proyectada supera la mitad de su reserva de la Tabla 7.8, sin esperar a consumirla. La actualización de tareas, equipos o duración obliga a repetir el cálculo y conservar D-01–D-34; se mantienen los 56 meses y las condiciones del artículo 17.3 de las Bases Administrativas (p. 13). Ver SD8, Anexos 8.C/8.D, para escenarios, reservas y condiciones de evidencia.
-
-
-#### 7.5.5 Presentación de entregables y revisión del CLIENTE
-
-
-Cada entregable que gatilla un hito se presenta en la fecha de entrega de la Tabla 7.8, con al menos diez días hábiles antes del último día hábil del mes del hito, para que la revisión del artículo 18.3 de las Bases Administrativas (p. 13) termine dentro de ese mes. Los entregables que admiten revisión por partes se presentan por incrementos: el informe de QA de cada módulo de la Etapa 1 se entrega al terminar el módulo, entre agosto y septiembre de 2027, y el informe de integración al terminar 3.8.1, el 20 de octubre de 2027. Así, la revisión final del H4 cubre sólo el último incremento. Si el CLIENTE formula observaciones, la subsanación de diez días hábiles usa la reserva del hito, y el hito no se da por cumplido hasta el acta. Este procedimiento no supone que el CLIENTE renuncie a su plazo ni que firme el acta el mismo día de la entrega. El H1 y el H8 tienen reservas de 6 y 4 días hábiles, menores que los diez días de subsanación del artículo 18.3 de las Bases Administrativas (p. 13). Por eso su borrador se revisa con la Contraparte Técnica una semana antes de la entrega formal: el del H1 en la semana del 1 de marzo de 2027 y el del H8 en la semana del 6 de marzo de 2028. Ese control es el principal del
-
-
-H8, porque una observación formal llevaría su acta al 3 de abril de 2028, fuera del mes 14. Si aun así se formulan observaciones, el equipo del entregable las subsana en cinco días hábiles (SD8, R8-12).
-
-
-#### 7.5.6 Medición de los niveles de atención
-
-
-Durante la atención de 04:00 a 22:00 de lunes a sábado y su cobertura 24×7 en los peaks de septiembre y diciembre y ante incidentes críticos en la ventana de despacho, LafroX atenderá al menos el 80 % de los contactos antes de 20 segundos, resolverá al menos el 70 % en el primer contacto y mantendrá el abandono en un máximo del 5 %. Estos resultados se medirán y reportarán mensualmente y activarán las medidas de recalibración y refuerzo previstas en esta sección (Bases Técnicas Transversales, cap. 21, RT-21.06, p. 36; Caso 02, cap. 15, pp. 26–27). El Erlang C de la mesa (SD4, Anexo 4-W.7) dimensiona la espera con llegadas de Poisson, atención exponencial y paciencia infinita. Sirve para el 80 % de respuestas antes de 20 segundos, pero no modela el abandono ni la resolución al primer contacto del RT-21.06 de las Bases Técnicas Transversales (p. 36). Para ambos se aplica medición: desde la marcha blanca de la Etapa 1, la mesa registra por contacto la hora de llegada, de respuesta o de abandono y si se resolvió sin escalar. Con al menos cuatro semanas de registros se calibra un modelo con abandono (Erlang A) usando la paciencia observada, y se recalcula la dotación de 8.1.2 antes del mes 21. La resolución al primer contacto se sostiene con la base de conocimiento de 3.11 y la capacitación de 7.1, y se informa mensualmente. Si un indicador no se cumple durante dos meses seguidos, se aumenta la dotación de la franja afectada sin esperar la revisión anual.
-
-
-#### 7.5.7 Dotación requerida, roles mínimos y dotación declarada
-
-
-La curva de la sección 4.4 y la carga diaria de la sección 6.1 se comparan con la dotación técnica declarada en el SD1, Tabla 1.1. Las personas equivalentes de la curva son HH del mes divididas por 128; las simultáneas son las que trabajan el mismo día según el cronograma por actividad, y son las que la dotación debe cubrir. La comparación muestra dónde la curva cabe en las divisiones de LafroX y dónde se requiere asignación, contratación o subcontratación antes de aprobar la línea base. Como las personas de esas divisiones atienden otros contratos, la asignación nominal se confirma antes del H1.
-
-
-Tabla 7.9 Dotación requerida, roles mínimos y dotación declarada. Fuente: elaboración propia.
-
-
-Dotación declarada Condición
-
-
-Familia T-15 Peak de la curva División del SD1 que la provee
-
-
-Desarrollo de software
-
-
-DES 28 equivalentes en los meses 6 y 7; 40 simultáneas como máximo entre junio y septiembre de 2027
-
-
-48 La división trabaja en PHP/Laravel y Kotlin, el mismo stack de la oferta; el Líder de Desarrollo verifica la experiencia de cada persona asignada antes del mes 5.
-
-
-SRE y Cloud (12) y NOC 24×7 (32)
-
-
-SRE 17 equivalentes en el mes 4; 24 simultáneas en el mes 4; 16 a 21 en Operación; el tercer agente de la mesa se suma desde el mes 25
-
-
-44 Los meses 3 a 6 concentran la instalación de sala, racks y sitios: energía, climatización e incendio (6.1.2–6.1.4) los ejecutan instaladores especializados supervisados por SRE. NOC y mesa se cubren con personal del NOC con turnos asignados.
-
-
-continúa en la página siguiente
-
-
-Tabla 7.9 — continuación
-
-
-Dotación declarada Condición
-
-
-Familia T-15 Peak de la curva División del SD1 que la provee
-
-
-CISO y especialistas en ciberseguridad
-
-
-SEG 9 en el mes 16 con el SOC; 6 simultáneas sin el SOC
-
-
-7 El puesto SOC 24×7 suma 744 HH en un mes de 31 días, es decir, 6 personas equivalentes con las 128 HH efectivas de la sección 4.1; el SD4, Anexo 4-W.7, lo cubre con 4 personas a 42 horas semanales (5 desde el 26-04-2028) y la diferencia corresponde a ausencias y relevos. Se cubre con un SOC propio en el Centro de Operaciones de LafroX en Valparaíso, con analistas contratados antes del mes 13 bajo el Encargado de Seguridad (RT-11.17), con las mismas horas de la sección 4.2.
-
-
-CAL 10 equivalentes y 13 simultáneas en el mes 16
-
-
-Aseguramiento y automatización de pruebas
-
-
-10 La división declara 10; durante las certificaciones se agregan evaluadores subcontratados hasta 16 por día (SD6, sección 6.1.3).
-
-
-continúa en la página siguiente
-
-
-Tabla 7.9 — continuación
-
-
-Dotación declarada Condición
-
-
-Familia T-15 Peak de la curva División del SD1 que la provee
-
-
-Arquitectura de solución e integración
-
-
-ARQ y DAT 10 y 11 equivalentes; 15 simultáneas en conjunto en el mes 7
-
-
-15 Datos y arquitectura comparten la división; la nivelación la limita a 15 personas por día.
-
-
-La Tabla 1.1 no tiene una división de implantación
-
-
-IMP 26 equivalentes en el mes 19; 30 simultáneas en el mes 14
-
-
-— Los 13 puestos de acompañamiento se cubren con personal de implantación contratado para las marchas blancas y capacitado en 7.1. El contrato incluye una opción de hasta 8 personas adicionales por cuatro semanas para la contingencia de R8-18 (sección 4.5).
-
-
-JP 5 en el mes 1 Dirección de Operaciones, fuera de la Tabla 1.1
-
-
-— Personas de dirección y documentación, no cinco jefes de proyecto.
-
-
-Los roles mínimos del numeral 19.2 de las Bases Técnicas Transversales (p. 34) se imputan a las familias así. El Jefe de Proyecto (100 % en implementación) se imputa a JP en los meses 1–21. El Líder de Desarrollo (100 % en implementación) se imputa a ARQ en los meses 1–4, donde participa en el diseño 2.1 y en los prototipos 2.6.2, y a DES desde el mes 4 (3.11.3/3.11.4 y los módulos); por eso la curva muestra DES cero en los meses 1–3 sin que el rol quede sin horas. El Líder Funcional (100 % en implementación) se imputa a IMP en los meses 1–4 (1.2.2 y 2.6) y a CAL e IMP desde el mes 5 (pruebas de aceptación y olas). El Líder de Integración (permanente en implementación) se imputa a ARQ (1.2.3, 3.3 y 3.6). Ninguna de estas imputaciones agrega horas: forman parte de las horas de los paquetes donde trabajan. El SD1, sección 1.5, nomina a las personas que ocupan cada rol.
-
-
-### 7.6 Lista de actividades: regla del 8/80 y del período de reporte
-
-
-La EDT del Formulario T-14 llega hasta el paquete de trabajo; fuera de ella, cada paquete se descompone en las actividades que permiten programarlo, asignarlo y controlarlo (PMI, 2017, pp. 183–185). Las actividades cumplen dos reglas de tamaño:
-
-
-- Regla del 8/80. Cada actividad requiere entre 8 y 80 horas hombre de esfuerzo.
-
-
-- Regla del período de reporte. Cada actividad cabe en una quincena, el período de reporte del Comité de Proyecto (paquete 1.8.3): dura como máximo diez días hábiles. Con 6,4 HH efectivas por persona y día, una actividad de 80 HH con dos personas dura ⌈80 ÷ 12,8⌉= 7 días hábiles; si su ventana es más corta, se le asignan más personas. Toda actividad de nivel de esfuerzo se divide en relevos de 64 HH como máximo.
-
-
-La descomposición no cambia las HH de la sección 4: la suma de las actividades de cada paquete es igual a su esfuerzo esperado E. Las actividades heredan el responsable y la ventana del paquete. La Tabla 7.10 da las fechas de cada paquete y la Tabla 7.11 las actividades hasta el H2. Por planificación gradual (PMI, 2017, p. 185), antes de cada fase se detallan las actividades de la fase siguiente con las estimaciones del equipo, sin mover los hitos ni consumir más reserva que la registrada. El avance se informa por el código de la actividad, que cuelga del código de su paquete.
-
-
-#### 7.6.1 Paquetes con entregable y planificación gradual
-
-
-La Tabla 7.10 programa los 163 paquetes con entregable: responsable (el rol del paquete), personas (el promedio en los días de trabajo del paquete y el máximo en un día, porque las actividades de equipo completo reúnen más personas que los incrementos), HH, fechas de inicio y fin, y predecesoras, agrupadas por cuenta del Anexo 7.B cuando dependen de toda la cuenta. En los módulos de la Etapa 1, el análisis y el diseño de contratos empiezan en junio, junto con la base compartida, para cerrar los contratos de interfaz antes de construir; la construcción se escalona después según la capacidad, por eso un módulo abarca de 8 a 15 semanas con un promedio de 7 a 8 personas. Las fechas resultan de nivelar la carga diaria con la dotación de la sección 5.1 y suponen el inicio del contrato en febrero de 2027 (V-12). Cada paquete se descompone en actividades de 8 a 80 HH que caben en una quincena, con una plantilla por clase: un módulo (D, 960 HH) se construye en iteraciones de dos semanas con análisis, diseño de contratos, incrementos, pruebas de contrato, integración en QA y entrega; una integración (I, 480 HH), en seis actividades; un diseño (E, 240 HH), en tres; una instalación o capacitación (T, 160 HH), en dos, y una prueba ampliada (V, 320 HH), en cuatro. La Tabla 7.11 detalla las 108 actividades de los 56 paquetes que terminan hasta el H2 (mes 4). El resto se descompone por planificación gradual (PMI, 2017, p. 185): antes de cada fase (H2, H4, H8 y H9) el líder del frente detalla las actividades de la fase siguiente con la estimación del equipo, el Comité de Proyecto las aprueba como iteraciones del proceso del SD6, sección 6.2, y se actualiza la línea base sin mover los hitos ni las fechas límite de la Tabla 7.8. La Figura 7.3 muestra qué parte del cronograma se detalla en la oferta y en qué momento se
-
-
-detalla el resto.
-
-
-H9 (mes 17)
-
-
-Se detalla antes del
-
-
-con línea base E2
-
-
-(mes 10)
-
-
-Se detalla antes del H4
-
-
-H2 (mes 4)
-
-
-2027 2028
-
-
-Se detalla antes del
-
-
-H2 H4 H8 H9
-
-
-de 8 a 80 HH
-
-
-1 feb 2 mar 3 abr 4 may 5 jun 6 jul 7 ago 8 sep 9 oct 10 nov 11 dic 12 ene 13 feb 14 mar 15 abr 16 may 17 jun 18 jul 19 ago 20 sep 21 oct
-
-
-Inicio, alcance y diseño
-
-
-E1 Actividades
-
-
-Construcción E1:
-
-
-base compartida,
-
-
-módulos e integraciones
-
-
-Certificación y marcha
-
-
-blanca
-
-
-E1
-
-
-Diseño y construcción
-
-
-E2 Antes del H8
-
-
-Certificación y marcha
-
-
-blanca
-
-
-E2
-
-
-Figura 7.3 Planificación gradual del cronograma. Fuente: elaboración propia a partir de las Tablas 7.10 y 7.11.
-
-
-La figura muestra que sólo los cuatro primeros meses, hasta el H2, se presentan descompuestos en actividades. Cada fase posterior tiene sus paquetes, fechas y dependencias fijos, y se detalla en un punto de replanificación ubicado antes del hito que la precede, cuando el equipo ya conoce el trabajo: así el cronograma no promete el día exacto de una actividad que ocurrirá un año después.
-
-
-/ máx.) HH Inicio Fin Predecesoras (cuenta o paquete)
-
-
-Paquete Rol Personas (prom.
-
-
-1.1.1 JP 1,8 / 2 80 01-02-2027 09-02-2027 —
-
-
-1.1.2 JP 1,8 / 2 80 01-02-2027 09-02-2027 —
-
-
-1.1.3 JP 1,8 / 2 80 01-02-2027 09-02-2027 —
-
-
-1.2.1 ARQ 1,8 / 2 80 01-02-2027 09-02-2027 —
-
-
-1.2.3 ARQ 1,8 / 2 80 01-02-2027 09-02-2027 —
-
-
-1.2.4 CAL 1,8 / 2 80 01-03-2027 09-03-2027 —
-
-
-1.2.5 ARQ 1,8 / 2 80 01-02-2028 09-02-2028 —
-
-
-1.3.1 JP 1,8 / 2 80 10-02-2027 18-02-2027 —
-
-
-1.3.2 JP 1,8 / 2 80 01-03-2027 09-03-2027 —
-
-
-1.3.3 JP 1,8 / 2 80 01-03-2027 09-03-2027 —
-
-
-1.3.4 JP 1,8 / 2 80 01-03-2027 09-03-2027 —
-
-
-1.4.1 JP 1,8 / 2 80 01-02-2027 09-02-2027 —
-
-
-1.4.2 JP 1,8 / 2 80 01-02-2027 09-02-2027 —
-
-
-1.5.1 CAL 1,8 / 2 80 01-03-2027 09-03-2027 —
-
-
-1.6.1 JP 1,8 / 2 80 01-03-2027 09-03-2027 —
-
-
-1.7.1 JP 1,8 / 2 80 01-04-2027 09-04-2027 —
-
-
-1.7.2 JP 1,8 / 2 80 03-04-2028 11-04-2028 —
-
-
-continúa en la página siguiente
-
-
-Tabla 7.10 Programación de los paquetes con entregable. Fuente: elaboración propia a partir de las secciones 4.1, 4.2 y 5.1 y del Anexo 7.B.
-
-
-/ máx.) HH Inicio Fin Predecesoras (cuenta o paquete)
-
-
-Paquete Rol Personas (prom.
-
-
-1.9.1 SEG 1,8 / 2 80 01-02-2027 09-02-2027 —
-
-
-1.9.2 SEG 1,8 / 2 80 01-02-2027 09-02-2027 —
-
-
-1.9.3 SEG 1,8 / 2 80 01-03-2027 09-03-2027 —
-
-
-2.1.1 ARQ 1,8 / 2 240 01-03-2027 29-03-2027 1.2
-
-
-2.1.2 ARQ 1,8 / 2 240 01-03-2027 29-03-2027 —
-
-
-2.1.3 DAT 1,8 / 2 240 01-03-2027 29-03-2027 —
-
-
-2.1.4 ARQ 3,1 / 4 240 01-02-2028 16-02-2028 —
-
-
-2.2.1 SEG 1,8 / 2 240 01-03-2027 29-03-2027 —
-
-
-2.2.3 SEG 3,1 / 4 240 01-04-2027 16-04-2027 —
-
-
-2.2.4 SEG 1,8 / 2 240 01-03-2027 29-03-2027 —
-
-
-2.3.1 SRE 1,8 / 2 240 01-02-2027 01-03-2027 —
-
-
-2.3.2 SRE 1,8 / 2 240 01-02-2027 01-03-2027 —
-
-
-2.3.3 SRE 1,8 / 2 240 01-03-2027 29-03-2027 —
-
-
-2.4.1 ARQ 4,2 / 5 240 19-04-2027 29-04-2027 2.1, 2.2
-
-
-2.4.2 ARQ 4,2 / 5 240 01-03-2028 13-03-2028 1.2, 2.1
-
-
-2.5.1 SRE 1,8 / 2 240 01-04-2027 29-04-2027 —
-
-
-2.5.2 SRE 1,8 / 2 240 01-04-2027 29-04-2027 —
-
-
-Tabla 7.10 — continuación
-
-
-continúa en la página siguiente
-
-
-/ máx.) HH Inicio Fin Predecesoras (cuenta o paquete)
-
-
-Paquete Rol Personas (prom.
-
-
-2.6.1 IMP 1,8 / 2 240 01-03-2027 29-03-2027 —
-
-
-2.6.2 IMP 1,8 / 2 240 01-04-2027 29-04-2027 —
-
-
-2.6.3 IMP 1,8 / 2 240 03-05-2027 31-05-2027 —
-
-
-3.1.1 SRE 2,5 / 3 240 01-06-2027 21-06-2027 3.2
-
-
-3.1.2 SRE 2,5 / 3 240 01-06-2027 21-06-2027 3.2
-
-
-3.1.3 SRE 2,5 / 3 240 01-06-2027 21-06-2027 3.2
-
-
-3.1.4 SRE 1,8 / 2 240 03-05-2027 31-05-2027 —
-
-
-3.1.5 SRE 2,5 / 3 240 01-06-2027 21-06-2027 —
-
-
-3.2.1 SRE 1,8 / 2 240 03-05-2027 31-05-2027 5.2
-
-
-3.2.2 SRE 1,8 / 2 240 03-05-2027 31-05-2027 5.2
-
-
-3.2.3 SRE 1,8 / 2 240 03-05-2027 31-05-2027 5.2
-
-
-3.2.4 SRE 1,8 / 2 240 03-05-2027 31-05-2027 5.2
-
-
-3.2.5 SEG 1,8 / 2 240 03-05-2027 31-05-2027 5.2
-
-
-3.2.6 SRE 1,8 / 2 240 01-06-2027 29-06-2027 5.2
-
-
-3.3.1 SEG 3,3 / 4 480 01-06-2027 05-08-2027 2.2
-
-
-3.3.2 ARQ 3,3 / 4 480 01-06-2027 01-07-2027 1.2
-
-
-3.3.3 ARQ 3,3 / 4 480 01-06-2027 07-07-2027 —
-
-
-Tabla 7.10 — continuación
-
-
-continúa en la página siguiente
-
-
-/ máx.) HH Inicio Fin Predecesoras (cuenta o paquete)
-
-
-Paquete Rol Personas (prom.
-
-
-3.3.4 ARQ 3,3 / 4 480 10-06-2027 12-07-2027 —
-
-
-3.3.5 ARQ 3,3 / 4 480 01-06-2027 03-08-2027 —
-
-
-3.3.6 ARQ 3,3 / 4 480 07-06-2027 03-08-2027 —
-
-
-3.4.1 DES 7,1 / 12 960 10-06-2027 10-08-2027 2.4, 2.6, 3.1, 3.3
-
-
-3.4.2 DES 7,5 / 12 960 10-06-2027 11-08-2027 2.4, 2.6, 3.1, 3.3
-
-
-3.4.3 DES 6,0 / 12 960 14-06-2027 18-08-2027 2.4, 2.6, 3.1, 3.3, 3.4.1, 3.4.2
-
-
-3.4.4 DES 7,9 / 12 960 14-06-2027 29-09-2027 2.4, 2.6, 3.1, 3.3, 3.4.1, 3.4.2
-
-
-3.4.5 DES 7,5 / 12 960 14-06-2027 30-08-2027 2.4, 2.6, 3.1, 3.2, 3.3
-
-
-3.4.6 DES 7,5 / 12 960 16-06-2027 17-08-2027 2.4, 2.6, 3.1, 3.3, 3.4.2
-
-
-3.4.7 DES 8,3 / 12 960 16-06-2027 08-09-2027 1.2, 2.4, 2.6, 3.1, 3.3, 3.4.3, 3.4.6
-
-
-3.4.8 DES 8,3 / 12 960 16-06-2027 09-09-2027 2.4, 2.6, 3.1, 3.3, 3.4.3, 3.4.6
-
-
-3.4.9 DES 8,3 / 12 960 18-06-2027 30-09-2027 2.4, 2.6, 3.1, 3.3
-
-
-3.4.10 DES 7,5 / 12 960 10-06-2027 28-09-2027 2.4, 2.6, 3.1, 3.3, 3.4.8
-
-
-3.4.11 DAT 8,3 / 12 960 02-09-2027 27-09-2027 2.4, 2.6, 3.1, 3.3
-
-
-3.5.1 DES 8,3 / 12 960 03-04-2028 26-04-2028 1.2, 2.4
-
-
-3.5.2 DES 8,3 / 12 960 03-04-2028 26-04-2028 1.2, 2.4
-
-
-3.5.3 DES 8,3 / 12 960 03-04-2028 26-04-2028 1.2, 2.4
-
-
-Tabla 7.10 — continuación
-
-
-continúa en la página siguiente
-
-
-/ máx.) HH Inicio Fin Predecesoras (cuenta o paquete)
-
-
-Paquete Rol Personas (prom.
-
-
-3.5.4 DAT 8,3 / 12 960 03-04-2028 26-04-2028 1.2, 2.4
-
-
-3.6.1 DAT 3,3 / 4 480 02-08-2027 01-09-2027 —
-
-
-3.6.2 DES 3,3 / 4 480 01-07-2027 02-08-2027 —
-
-
-3.6.3 DES 3,3 / 4 480 01-07-2027 02-08-2027 —
-
-
-3.6.4 DES 3,3 / 4 480 01-07-2027 02-08-2027 —
-
-
-3.6.5 DES 2,1 / 4 480 01-02-2028 04-07-2028 —
-
-
-3.6.6 DES 2,1 / 4 480 01-06-2028 23-08-2028 —
-
-
-3.7.1 DAT 3,3 / 4 480 04-08-2027 01-10-2027 —
-
-
-3.7.2 DAT 3,3 / 4 480 04-10-2027 03-11-2027 —
-
-
-3.7.3 DAT 3,3 / 4 480 01-12-2027 31-12-2027 —
-
-
-3.7.4 DAT 3,3 / 4 480 01-12-2027 31-12-2027 —
-
-
-3.7.5 DAT 3,9 / 5 480 03-01-2028 27-01-2028 3.7.1, 3.7.2, 3.7.3, 3.7.4
-
-
-3.8.1 CAL 1,8 / 2 160 01-10-2027 20-10-2027 3.4, 3.6
-
-
-3.8.2 CAL 2,5 / 3 320 21-10-2027 17-11-2027 3.8.1
-
-
-3.8.3 CAL 2,5 / 3 320 21-10-2027 17-11-2027 3.8.1
-
-
-3.8.4 CAL 1,8 / 2 320 21-10-2027 09-11-2027 3.8.1
-
-
-3.8.5 CAL 1,8 / 2 320 21-10-2027 09-11-2027 3.8.1
-
-
-Tabla 7.10 — continuación
-
-
-continúa en la página siguiente
-
-
-/ máx.) HH Inicio Fin Predecesoras (cuenta o paquete)
-
-
-CAL 3,9 / 6 320 21-10-2027 09-11-2027 3.8.1
-
-
-CAL 4,2 / 6 160 19-05-2028 26-05-2028 3.9.1
-
-
-Paquete Rol Personas (prom.
-
-
-3.8.6 SEG/
-
-
-3.8.7 CAL 3,1 / 4 160 18-11-2027 29-11-2027 3.8.2, 3.8.3, 3.8.4, 3.8.5, 3.8.6, 3.8.8
-
-
-3.8.8 SRE 1,8 / 2 320 21-10-2027 09-11-2027 3.8.1
-
-
-3.9.1 CAL 1,8 / 2 160 01-05-2028 18-05-2028 3.5
-
-
-3.9.2 CAL 3,6 / 5 320 27-05-2028 31-05-2028 3.9.1
-
-
-3.9.3 CAL 2,5 / 3 320 19-05-2028 26-05-2028 3.9.1
-
-
-3.9.4 CAL 2,5 / 3 320 19-05-2028 26-05-2028 3.9.1
-
-
-3.9.5 SEG/
-
-
-3.9.6 CAL 3,1 / 4 160 01-06-2028 12-06-2028 3.9.1, 3.9.2, 3.9.3, 3.9.4, 3.9.5, 3.9.7
-
-
-3.9.7 SRE 1,8 / 2 160 19-05-2028 26-05-2028 3.9.1
-
-
-3.10.1.1 DAT 1,8 / 2 240 02-08-2027 08-10-2027 —
-
-
-3.10.1.2 DAT 1,8 / 2 240 01-10-2027 19-11-2027 —
-
-
-3.10.1.3 DAT 1,8 / 2 240 01-10-2027 19-11-2027 —
-
-
-3.10.1.4 DAT 1,8 / 2 240 01-12-2027 20-03-2028 —
-
-
-3.10.2.1 CAL 1,8 / 2 240 01-03-2027 20-04-2027 —
-
-
-Tabla 7.10 — continuación
-
-
-continúa en la página siguiente
-
-
-/ máx.) HH Inicio Fin Predecesoras (cuenta o paquete)
-
-
-Paquete Rol Personas (prom.
-
-
-3.10.2.2 CAL 1,8 / 2 240 01-04-2027 09-06-2027 —
-
-
-3.10.2.3 CAL 1,8 / 2 240 01-06-2027 08-10-2027 —
-
-
-3.10.2.4 CAL 1,8 / 2 240 01-12-2027 20-03-2028 —
-
-
-3.10.3.1 DAT 1,8 / 2 240 01-04-2027 09-06-2027 —
-
-
-3.10.3.2 DAT 1,8 / 2 240 07-06-2027 20-09-2027 —
-
-
-3.10.3.3 DAT 1,8 / 2 240 01-10-2027 19-11-2027 —
-
-
-3.10.3.4 DAT 1,8 / 2 240 01-12-2027 20-03-2028 —
-
-
-3.10.4.1 IMP 1,8 / 2 240 01-02-2028 21-03-2028 —
-
-
-3.10.4.2 IMP 1,8 / 2 240 01-03-2028 19-04-2028 —
-
-
-3.10.4.3 IMP 1,8 / 2 240 03-04-2028 09-06-2028 —
-
-
-3.10.4.4 IMP 1,8 / 2 240 03-07-2028 29-09-2028 —
-
-
-4.1.1 IMP 1,8 / 2 80 01-11-2027 09-11-2027 —
-
-
-4.1.2 IMP 1,8 / 2 80 01-12-2027 09-12-2027 —
-
-
-4.1.3 IMP 1,8 / 2 80 01-06-2028 09-06-2028 —
-
-
-4.2.3 JP 1,8 / 2 80 05-05-2028 15-05-2028 7.3
-
-
-4.3.3 JP 1,8 / 2 80 11-10-2028 19-10-2028 4.3.4, 7.1, 7.3
-
-
-4.3.4 JP 1,8 / 2 80 02-10-2028 10-10-2028 —
-
-
-Tabla 7.10 — continuación
-
-
-continúa en la página siguiente
-
-
-/ máx.) HH Inicio Fin Predecesoras (cuenta o paquete)
-
-
-Paquete Rol Personas (prom.
-
-
-5.1.1 ARQ 1,8 / 2 80 01-03-2027 09-03-2027 —
-
-
-5.1.2 ARQ 1,8 / 2 80 02-03-2027 10-03-2027 2.3
-
-
-5.1.3 SRE 1,8 / 2 80 01-06-2027 09-06-2027 —
-
-
-5.2.1 SRE 1,8 / 2 80 01-03-2027 09-03-2027 —
-
-
-5.2.2 SRE 1,8 / 2 80 03-05-2027 11-05-2027 —
-
-
-5.2.3 ARQ 1,8 / 2 80 03-05-2027 11-05-2027 —
-
-
-5.3.1 SRE 1,8 / 2 80 03-05-2027 11-05-2027 —
-
-
-5.3.2 SRE 1,8 / 2 80 03-05-2027 11-05-2027 —
-
-
-5.3.3 SRE 1,8 / 2 80 03-05-2027 11-05-2027 —
-
-
-5.4.1 IMP 1,8 / 2 80 01-10-2027 11-10-2027 —
-
-
-5.4.2 IMP 1,8 / 2 80 01-10-2027 11-10-2027 —
-
-
-5.4.3 JP 1,8 / 2 80 01-06-2028 09-06-2028 —
-
-
-5.4.4 JP 1,8 / 2 80 02-08-2027 10-08-2027 —
-
-
-6.1.1 SRE 1,8 / 2 160 01-04-2027 20-04-2027 5.1
-
-
-6.1.2 SRE 1,8 / 2 160 01-04-2027 20-04-2027 5.1
-
-
-6.1.3 SRE 1,8 / 2 160 01-04-2027 20-04-2027 5.1
-
-
-6.1.4 SRE 1,8 / 2 160 01-04-2027 20-04-2027 5.1
-
-
-Tabla 7.10 — continuación
-
-
-continúa en la página siguiente
-
-
-/ máx.) HH Inicio Fin Predecesoras (cuenta o paquete)
-
-
-Paquete Rol Personas (prom.
-
-
-6.1.5 SRE 1,8 / 2 160 03-05-2027 20-05-2027 5.1
-
-
-6.2.1 SRE 1,8 / 2 160 03-05-2027 20-05-2027 —
-
-
-6.2.2 SRE 1,8 / 2 160 01-07-2027 20-07-2027 —
-
-
-6.2.3 SRE 1,8 / 2 160 02-08-2027 19-08-2027 —
-
-
-6.3.1 SRE 1,8 / 2 160 21-05-2027 09-06-2027 6.1
-
-
-6.3.2 SRE 1,8 / 2 160 21-05-2027 09-06-2027 6.1
-
-
-6.3.3 SRE 1,8 / 2 160 03-05-2027 20-05-2027 —
-
-
-6.3.4 SRE 1,8 / 2 160 01-10-2027 20-10-2027 —
-
-
-6.4.1 SEG 1,8 / 2 160 01-06-2027 18-06-2027 —
-
-
-6.4.2 SEG 1,8 / 2 160 07-06-2027 24-06-2027 —
-
-
-6.4.3 SEG 1,8 / 2 160 21-06-2027 08-07-2027 —
-
-
-6.5.1 SRE 1,8 / 2 160 06-10-2027 14-01-2028 3.2
-
-
-6.5.2 SRE 1,8 / 2 160 04-11-2027 14-01-2028 —
-
-
-6.5.3 SRE 1,8 / 2 160 06-10-2027 25-11-2027 —
-
-
-6.5.4 SRE 1,8 / 2 160 04-11-2027 14-01-2028 —
-
-
-6.5.5 SRE 1,8 / 2 160 04-11-2027 14-01-2028 —
-
-
-6.5.6 SRE 1,8 / 2 160 06-10-2027 14-01-2028 —
-
-
-Tabla 7.10 — continuación
-
-
-continúa en la página siguiente
-
-
-/ máx.) HH Inicio Fin Predecesoras (cuenta o paquete)
-
-
-Paquete Rol Personas (prom.
-
-
-6.6.1 SRE 1,8 / 2 160 10-06-2027 29-06-2027 6.3
-
-
-6.6.2 SRE 1,8 / 2 160 10-06-2027 29-06-2027 6.3
-
-
-6.6.3 SRE 3,1 / 4 160 10-06-2027 21-06-2027 6.3
-
-
-7.1.1 IMP 1,8 / 2 160 01-11-2027 24-12-2027 —
-
-
-7.1.6 IMP 1,8 / 2 160 01-11-2027 24-12-2027 —
-
-
-7.2.2 IMP 1,8 / 2 160 01-05-2028 23-06-2028 —
-
-
-7.2.3 IMP 1,8 / 2 160 01-03-2027 25-05-2027 —
-
-
-7.3.1 IMP 1,8 / 2 160 01-02-2028 24-03-2028 —
-
-
-7.3.2 IMP 1,8 / 2 160 03-07-2028 25-07-2028 —
-
-
-9.1.1 DES 1,8 / 2 80 02-10-2028 10-10-2028 —
-
-
-9.1.2 JP 1,8 / 2 80 02-10-2028 10-10-2028 —
-
-
-9.2.2 SEG 1,8 / 2 80 01-09-2031 09-09-2031 —
-
-
-Tabla 7.10 — continuación
-
-
-hábiles Predecesoras
-
-
-sonas HH Inicio Fin Días
-
-
-aprobación del entregable JP 2 80 01-02-2027 09-02-2027 7 —
-
-
-aprobación del entregable JP 2 80 01-02-2027 09-02-2027 7 —
-
-
-aprobación del entregable JP 2 80 01-02-2027 09-02-2027 7 —
-
-
-aprobación del entregable ARQ 2 80 01-02-2027 09-02-2027 7 —
-
-
-aprobación del entregable ARQ 2 80 01-02-2027 09-02-2027 7 —
-
-
-aprobación del entregable CAL 2 80 01-03-2027 09-03-2027 7 —
-
-
-aprobación del entregable JP 2 80 10-02-2027 18-02-2027 7 —
-
-
-aprobación del entregable JP 2 80 01-03-2027 09-03-2027 7 —
-
-
-aprobación del entregable JP 2 80 01-03-2027 09-03-2027 7 —
-
-
-aprobación del entregable JP 2 80 01-03-2027 09-03-2027 7 —
-
-
-Actividad Nombre Rol Per-
-
-
-1.1.1.A01 Elaboración, revisión y
-
-
-1.1.2.A01 Elaboración, revisión y
-
-
-1.1.3.A01 Elaboración, revisión y
-
-
-1.2.1.A01 Elaboración, revisión y
-
-
-1.2.3.A01 Elaboración, revisión y
-
-
-1.2.4.A01 Elaboración, revisión y
-
-
-1.3.1.A01 Elaboración, revisión y
-
-
-1.3.2.A01 Elaboración, revisión y
-
-
-1.3.3.A01 Elaboración, revisión y
-
-
-1.3.4.A01 Elaboración, revisión y
-
-
-continúa en la página siguiente
-
-
-Tabla 7.11 Actividades de los paquetes que terminan hasta el H2. Fuente: elaboración propia a partir de la Tabla 7.10. Bloque 1 de 2.
-
-
-hábiles Predecesoras
-
-
-sonas HH Inicio Fin Días
-
-
-aprobación del entregable JP 2 80 01-02-2027 09-02-2027 7 —
-
-
-aprobación del entregable JP 2 80 01-02-2027 09-02-2027 7 —
-
-
-aprobación del entregable CAL 2 80 01-03-2027 09-03-2027 7 —
-
-
-aprobación del entregable JP 2 80 01-03-2027 09-03-2027 7 —
-
-
-aprobación del entregable JP 2 80 01-04-2027 09-04-2027 7 —
-
-
-aprobación del entregable SEG 2 80 01-02-2027 09-02-2027 7 —
-
-
-aprobación del entregable SEG 2 80 01-02-2027 09-02-2027 7 —
-
-
-aprobación del entregable SEG 2 80 01-03-2027 09-03-2027 7 —
-
-
-mos y análisis ARQ 2 80 01-03-2027 09-03-2027 7 1.2.1.A01
-
-
-ble ARQ 2 80 10-03-2027 18-03-2027 7 2.1.1.A01
-
-
-Actividad Nombre Rol Per-
-
-
-1.4.1.A01 Elaboración, revisión y
-
-
-1.4.2.A01 Elaboración, revisión y
-
-
-1.5.1.A01 Elaboración, revisión y
-
-
-1.6.1.A01 Elaboración, revisión y
-
-
-1.7.1.A01 Elaboración, revisión y
-
-
-1.9.1.A01 Elaboración, revisión y
-
-
-1.9.2.A01 Elaboración, revisión y
-
-
-1.9.3.A01 Elaboración, revisión y
-
-
-2.1.1.A01 Levantamiento de insu-
-
-
-2.1.1.A02 Elaboración del entrega-
-
-
-Tabla 7.11 — continuación
-
-
-continúa en la página siguiente
-
-
-hábiles Predecesoras
-
-
-sonas HH Inicio Fin Días
-
-
-DAT 2 80 19-03-2027 29-03-2027 7 2.1.3.A02
-
-
-ARQ 2 80 19-03-2027 29-03-2027 7 2.1.1.A02
-
-
-ARQ 2 80 19-03-2027 29-03-2027 7 2.1.2.A02
-
-
-presentación para aproba-
-
-
-ción
-
-
-mos y análisis ARQ 2 80 01-03-2027 09-03-2027 7 —
-
-
-ble ARQ 2 80 10-03-2027 18-03-2027 7 2.1.2.A01
-
-
-presentación para aproba-
-
-
-ción
-
-
-mos y análisis DAT 2 80 01-03-2027 09-03-2027 7 —
-
-
-ble DAT 2 80 10-03-2027 18-03-2027 7 2.1.3.A01
-
-
-presentación para aproba-
-
-
-ción
-
-
-mos y análisis SEG 2 80 01-03-2027 09-03-2027 7 —
-
-
-Actividad Nombre Rol Per-
-
-
-2.1.1.A03 Revisión, corrección y
-
-
-2.1.2.A01 Levantamiento de insu-
-
-
-2.1.2.A02 Elaboración del entrega-
-
-
-2.1.2.A03 Revisión, corrección y
-
-
-2.1.3.A01 Levantamiento de insu-
-
-
-2.1.3.A02 Elaboración del entrega-
-
-
-2.1.3.A03 Revisión, corrección y
-
-
-2.2.1.A01 Levantamiento de insu-
-
-
-Tabla 7.11 — continuación
-
-
-continúa en la página siguiente
-
-
-hábiles Predecesoras
-
-
-sonas HH Inicio Fin Días
-
-
-SEG 2 80 19-03-2027 29-03-2027 7 2.2.1.A02
-
-
-SEG 4 80 13-04-2027 16-04-2027 4 2.2.3.A02
-
-
-SEG 2 80 19-03-2027 29-03-2027 7 2.2.4.A02
-
-
-ble SEG 2 80 10-03-2027 18-03-2027 7 2.2.1.A01
-
-
-presentación para aproba-
-
-
-ción
-
-
-mos y análisis SEG 4 80 01-04-2027 06-04-2027 4 —
-
-
-ble SEG 4 80 07-04-2027 12-04-2027 4 2.2.3.A01
-
-
-presentación para aproba-
-
-
-ción
-
-
-mos y análisis SEG 2 80 01-03-2027 09-03-2027 7 —
-
-
-ble SEG 2 80 10-03-2027 18-03-2027 7 2.2.4.A01
-
-
-presentación para aproba-
-
-
-ción
-
-
-Actividad Nombre Rol Per-
-
-
-2.2.1.A02 Elaboración del entrega-
-
-
-2.2.1.A03 Revisión, corrección y
-
-
-2.2.3.A01 Levantamiento de insu-
-
-
-2.2.3.A02 Elaboración del entrega-
-
-
-2.2.3.A03 Revisión, corrección y
-
-
-2.2.4.A01 Levantamiento de insu-
-
-
-2.2.4.A02 Elaboración del entrega-
-
-
-2.2.4.A03 Revisión, corrección y
-
-
-Tabla 7.11 — continuación
-
-
-continúa en la página siguiente
-
-
-hábiles Predecesoras
-
-
-sonas HH Inicio Fin Días
-
-
-SRE 2 80 19-02-2027 01-03-2027 7 2.3.1.A02
-
-
-SRE 2 80 19-02-2027 01-03-2027 7 2.3.2.A02
-
-
-mos y análisis SRE 2 80 01-02-2027 09-02-2027 7 —
-
-
-ble SRE 2 80 10-02-2027 18-02-2027 7 2.3.1.A01
-
-
-presentación para aproba-
-
-
-ción
-
-
-mos y análisis SRE 2 80 01-02-2027 09-02-2027 7 —
-
-
-ble SRE 2 80 10-02-2027 18-02-2027 7 2.3.2.A01
-
-
-presentación para aproba-
-
-
-ción
-
-
-mos y análisis SRE 2 80 01-03-2027 09-03-2027 7 —
-
-
-ble SRE 2 80 10-03-2027 18-03-2027 7 2.3.3.A01
-
-
-Actividad Nombre Rol Per-
-
-
-2.3.1.A01 Levantamiento de insu-
-
-
-2.3.1.A02 Elaboración del entrega-
-
-
-2.3.1.A03 Revisión, corrección y
-
-
-2.3.2.A01 Levantamiento de insu-
-
-
-2.3.2.A02 Elaboración del entrega-
-
-
-2.3.2.A03 Revisión, corrección y
-
-
-2.3.3.A01 Levantamiento de insu-
-
-
-2.3.3.A02 Elaboración del entrega-
-
-
-Tabla 7.11 — continuación
-
-
-continúa en la página siguiente
-
-
-hábiles Predecesoras
-
-
-sonas HH Inicio Fin Días
-
-
-SRE 2 80 19-03-2027 29-03-2027 7 2.3.3.A02
-
-
-SRE 2 80 21-04-2027 29-04-2027 7 2.5.1.A02
-
-
-ARQ 5 80 27-04-2027 29-04-2027 3 2.4.1.A02
-
-
-presentación para aproba-
-
-
-ción
-
-
-mos y análisis ARQ 5 80 19-04-2027 21-04-2027 3 2.1.1.A03, 2.1.3.A03, 2.2.1.A03, 2.2.3.A03, 2.2.4.A03
-
-
-ble ARQ 5 80 22-04-2027 26-04-2027 3 2.4.1.A01
-
-
-presentación para aproba-
-
-
-ción
-
-
-mos y análisis SRE 2 80 01-04-2027 09-04-2027 7 —
-
-
-ble SRE 2 80 12-04-2027 20-04-2027 7 2.5.1.A01
-
-
-presentación para aproba-
-
-
-ción
-
-
-mos y análisis SRE 2 80 01-04-2027 09-04-2027 7 —
-
-
-Actividad Nombre Rol Per-
-
-
-2.3.3.A03 Revisión, corrección y
-
-
-2.4.1.A01 Levantamiento de insu-
-
-
-2.4.1.A02 Elaboración del entrega-
-
-
-2.4.1.A03 Revisión, corrección y
-
-
-2.5.1.A01 Levantamiento de insu-
-
-
-2.5.1.A02 Elaboración del entrega-
-
-
-2.5.1.A03 Revisión, corrección y
-
-
-2.5.2.A01 Levantamiento de insu-
-
-
-Tabla 7.11 — continuación
-
-
-continúa en la página siguiente
-
-
-hábiles Predecesoras
-
-
-hábiles Predecesoras
-
-
-sonas HH Inicio Fin Días
-
-
-sonas HH Inicio Fin Días
-
-
-SRE 2 80 21-04-2027 29-04-2027 7 2.5.2.A02
-
-
-IMP 2 80 19-03-2027 29-03-2027 7 2.6.1.A02
-
-
-ble SRE 2 80 12-04-2027 20-04-2027 7 2.5.2.A01
-
-
-presentación para aproba-
-
-
-ción
-
-
-mos y análisis IMP 2 80 01-03-2027 09-03-2027 7 —
-
-
-ble IMP 2 80 10-03-2027 18-03-2027 7 2.6.1.A01
-
-
-presentación para aproba-
-
-
-ción
-
-
-Actividad Nombre Rol Per-
-
-
-2.5.2.A02 Elaboración del entrega-
-
-
-2.5.2.A03 Revisión, corrección y
-
-
-Actividad Nombre Rol Per-
-
-
-2.6.1.A01 Levantamiento de insu-
-
-
-2.6.1.A02 Elaboración del entrega-
-
-
-2.6.1.A03 Revisión, corrección y
-
-
-Tabla 7.11 — continuación
-
-
-continúa en la página siguiente
-
-
-Tabla 7.12 Actividades de los paquetes que terminan hasta el H2. Fuente: elaboración propia a partir de la Tabla 7.10. Bloque 2 de 2.
-
-
-hábiles Predecesoras
-
-
-sonas HH Inicio Fin Días
-
-
-IMP 2 80 21-04-2027 29-04-2027 7 2.6.2.A02
-
-
-IMP 2 80 21-05-2027 31-05-2027 7 2.6.3.A02
-
-
-mos y análisis IMP 2 80 01-04-2027 09-04-2027 7 —
-
-
-ble IMP 2 80 12-04-2027 20-04-2027 7 2.6.2.A01
-
-
-presentación para aproba-
-
-
-ción
-
-
-mos y análisis IMP 2 80 03-05-2027 11-05-2027 7 —
-
-
-ble IMP 2 80 12-05-2027 20-05-2027 7 2.6.3.A01
-
-
-presentación para aproba-
-
-
-ción
-
-
-mos y análisis SRE 2 80 03-05-2027 11-05-2027 7 —
-
-
-ble SRE 2 80 12-05-2027 20-05-2027 7 3.1.4.A01
-
-
-Actividad Nombre Rol Per-
-
-
-2.6.2.A01 Levantamiento de insu-
-
-
-2.6.2.A02 Elaboración del entrega-
-
-
-2.6.2.A03 Revisión, corrección y
-
-
-2.6.3.A01 Levantamiento de insu-
-
-
-2.6.3.A02 Elaboración del entrega-
-
-
-2.6.3.A03 Revisión, corrección y
-
-
-3.1.4.A01 Levantamiento de insu-
-
-
-3.1.4.A02 Elaboración del entrega-
-
-
-Tabla 7.12 — continuación
-
-
-continúa en la página siguiente
-
-
-hábiles Predecesoras
-
-
-sonas HH Inicio Fin Días
-
-
-SRE 2 80 21-05-2027 31-05-2027 7 3.1.4.A02
-
-
-SRE 2 80 21-05-2027 31-05-2027 7 3.2.1.A02
-
-
-SRE 2 80 21-05-2027 31-05-2027 7 3.2.2.A02
-
-
-presentación para aproba-
-
-
-ción
-
-
-mos y análisis SRE 2 80 03-05-2027 11-05-2027 7 5.2.1.A01
-
-
-ble SRE 2 80 12-05-2027 20-05-2027 7 3.2.1.A01
-
-
-presentación para aproba-
-
-
-ción
-
-
-mos y análisis SRE 2 80 03-05-2027 11-05-2027 7 5.2.1.A01
-
-
-ble SRE 2 80 12-05-2027 20-05-2027 7 3.2.2.A01
-
-
-presentación para aproba-
-
-
-ción
-
-
-mos y análisis SRE 2 80 03-05-2027 11-05-2027 7 5.2.1.A01
-
-
-Actividad Nombre Rol Per-
-
-
-3.1.4.A03 Revisión, corrección y
-
-
-3.2.1.A01 Levantamiento de insu-
-
-
-3.2.1.A02 Elaboración del entrega-
-
-
-3.2.1.A03 Revisión, corrección y
-
-
-3.2.2.A01 Levantamiento de insu-
-
-
-3.2.2.A02 Elaboración del entrega-
-
-
-3.2.2.A03 Revisión, corrección y
-
-
-3.2.3.A01 Levantamiento de insu-
-
-
-Tabla 7.12 — continuación
-
-
-continúa en la página siguiente
-
-
-hábiles Predecesoras
-
-
-sonas HH Inicio Fin Días
-
-
-SRE 2 80 21-05-2027 31-05-2027 7 3.2.3.A02
-
-
-SRE 2 80 21-05-2027 31-05-2027 7 3.2.4.A02
-
-
-SEG 2 80 21-05-2027 31-05-2027 7 3.2.5.A02
-
-
-ble SRE 2 80 12-05-2027 20-05-2027 7 3.2.3.A01
-
-
-presentación para aproba-
-
-
-ción
-
-
-mos y análisis SRE 2 80 03-05-2027 11-05-2027 7 5.2.1.A01
-
-
-ble SRE 2 80 12-05-2027 20-05-2027 7 3.2.4.A01
-
-
-presentación para aproba-
-
-
-ción
-
-
-mos y análisis SEG 2 80 03-05-2027 11-05-2027 7 5.2.1.A01
-
-
-ble SEG 2 80 12-05-2027 20-05-2027 7 3.2.5.A01
-
-
-presentación para aproba-
-
-
-ción
-
-
-Actividad Nombre Rol Per-
-
-
-3.2.3.A02 Elaboración del entrega-
-
-
-3.2.3.A03 Revisión, corrección y
-
-
-3.2.4.A01 Levantamiento de insu-
-
-
-3.2.4.A02 Elaboración del entrega-
-
-
-3.2.4.A03 Revisión, corrección y
-
-
-3.2.5.A01 Levantamiento de insu-
-
-
-3.2.5.A02 Elaboración del entrega-
-
-
-3.2.5.A03 Revisión, corrección y
-
-
-Tabla 7.12 — continuación
-
-
-continúa en la página siguiente
-
-
-hábiles Predecesoras
-
-
-sonas HH Inicio Fin Días
-
-
-CAL 2 80 12-04-2027 20-04-2027 7 3.10.2.1.A02
-
-
-mos y análisis CAL 2 80 01-03-2027 09-03-2027 7 —
-
-
-ble CAL 2 80 22-03-2027 30-03-2027 7 3.10.2.1.A01
-
-
-presentación para aproba-
-
-
-ción
-
-
-aprobación del entregable ARQ 2 80 01-03-2027 09-03-2027 7 —
-
-
-aprobación del entregable ARQ 2 80 02-03-2027 10-03-2027 7 2.3.1.A03, 2.3.2.A03
-
-
-aprobación del entregable SRE 2 80 01-03-2027 09-03-2027 7 —
-
-
-aprobación del entregable SRE 2 80 03-05-2027 11-05-2027 7 —
-
-
-aprobación del entregable ARQ 2 80 03-05-2027 11-05-2027 7 —
-
-
-aprobación del entregable SRE 2 80 03-05-2027 11-05-2027 7 —
-
-
-Actividad Nombre Rol Per-
-
-
-3.10.2.1.A01 Levantamiento de insu-
-
-
-3.10.2.1.A02 Elaboración del entrega-
-
-
-3.10.2.1.A03 Revisión, corrección y
-
-
-5.1.1.A01 Elaboración, revisión y
-
-
-5.1.2.A01 Elaboración, revisión y
-
-
-5.2.1.A01 Elaboración, revisión y
-
-
-5.2.2.A01 Elaboración, revisión y
-
-
-5.2.3.A01 Elaboración, revisión y
-
-
-5.3.1.A01 Elaboración, revisión y
-
-
-Tabla 7.12 — continuación
-
-
-continúa en la página siguiente
-
-
-hábiles Predecesoras
-
-
-sonas HH Inicio Fin Días
-
-
-SRE 2 80 01-04-2027 09-04-2027 7 5.1.2.A01
-
-
-SRE 2 80 01-04-2027 09-04-2027 7 5.1.2.A01
-
-
-SRE 2 80 01-04-2027 09-04-2027 7 5.1.2.A01
-
-
-aprobación del entregable SRE 2 80 03-05-2027 11-05-2027 7 —
-
-
-aprobación del entregable SRE 2 80 03-05-2027 11-05-2027 7 —
-
-
-de la instalación o de la
-
-
-capacitación
-
-
-corrección y acta SRE 2 80 12-04-2027 20-04-2027 7 6.1.1.A01
-
-
-de la instalación o de la
-
-
-capacitación
-
-
-corrección y acta SRE 2 80 12-04-2027 20-04-2027 7 6.1.2.A01
-
-
-de la instalación o de la
-
-
-capacitación
-
-
-corrección y acta SRE 2 80 12-04-2027 20-04-2027 7 6.1.3.A01
-
-
-Actividad Nombre Rol Per-
-
-
-5.3.2.A01 Elaboración, revisión y
-
-
-5.3.3.A01 Elaboración, revisión y
-
-
-6.1.1.A01 Preparación y ejecución
-
-
-6.1.1.A02 Prueba o evaluación,
-
-
-6.1.2.A01 Preparación y ejecución
-
-
-6.1.2.A02 Prueba o evaluación,
-
-
-6.1.3.A01 Preparación y ejecución
-
-
-6.1.3.A02 Prueba o evaluación,
-
-
-Tabla 7.12 — continuación
-
-
-continúa en la página siguiente
-
-
-hábiles Predecesoras
-
-
-sonas HH Inicio Fin Días
-
-
-SRE 2 80 01-04-2027 09-04-2027 7 5.1.2.A01
-
-
-SRE 2 80 03-05-2027 11-05-2027 7 5.1.2.A01
-
-
-SRE 2 80 03-05-2027 11-05-2027 7 —
-
-
-SRE 2 80 03-05-2027 11-05-2027 7 —
-
-
-de la instalación o de la
-
-
-capacitación
-
-
-corrección y acta SRE 2 80 12-04-2027 20-04-2027 7 6.1.4.A01
-
-
-de la instalación o de la
-
-
-capacitación
-
-
-corrección y acta SRE 2 80 12-05-2027 20-05-2027 7 6.1.5.A01
-
-
-de la instalación o de la
-
-
-capacitación
-
-
-corrección y acta SRE 2 80 12-05-2027 20-05-2027 7 6.2.1.A01
-
-
-de la instalación o de la
-
-
-capacitación
-
-
-corrección y acta SRE 2 80 12-05-2027 20-05-2027 7 6.3.3.A01
-
-
-Actividad Nombre Rol Per-
-
-
-6.1.4.A01 Preparación y ejecución
-
-
-6.1.4.A02 Prueba o evaluación,
-
-
-6.1.5.A01 Preparación y ejecución
-
-
-6.1.5.A02 Prueba o evaluación,
-
-
-6.2.1.A01 Preparación y ejecución
-
-
-6.2.1.A02 Prueba o evaluación,
-
-
-6.3.3.A01 Preparación y ejecución
-
-
-6.3.3.A02 Prueba o evaluación,
-
-
-Tabla 7.12 — continuación
-
-
-continúa en la página siguiente
-
-
-hábiles Predecesoras
-
-
-sonas HH Inicio Fin Días
-
-
-IMP 2 80 01-03-2027 09-03-2027 7 —
-
-
-de la instalación o de la
-
-
-capacitación
-
-
-corrección y acta IMP 2 80 17-05-2027 25-05-2027 7 7.2.3.A01
-
-
-Actividad Nombre Rol Per-
-
-
-7.2.3.A01 Preparación y ejecución
-
-
-7.2.3.A02 Prueba o evaluación,
-
-
-Tabla 7.12 — continuación
-
-
-#### 7.6.2 Paquetes de esfuerzo continuo
-
-
-Los paquetes recurrentes (R), de acompañamiento (A) y de cobertura (C) son de nivel de esfuerzo: no producen un entregable único, sino un servicio o una reunión que se repite. No se dividen en entregables más pequeños, sino por ocurrencia o por quincena:
-
-
-- Un paquete con frecuencia propia en el diccionario del T-14 (quincenal, mensual, trimestral, semestral o anual) tiene una actividad por ocurrencia, ejecutada dentro de una quincena. Si una ocurrencia supera 64 HH, se reparte entre dos o más personas.
-
-
-- Un paquete continuo tiene una actividad por quincena. Si la quincena exige más de 64 HH, la actividad se divide en relevos o puestos: por ejemplo, el NOC 24×7 de un mes de 31 días requiere 744 ÷ 2 = 372 HH por quincena, es decir, seis relevos de 62 HH.
-
-
-- Las preparaciones de comités con frecuencia contractual quincenal (1.6.2 y 1.8.3) tienen menos de 8 HH por ocurrencia. Son la única excepción al mínimo de la regla: se mantienen por ocurrencia porque la cadencia la fija el artículo 71 de las Bases Administrativas (p. 37) y no conviene fusionarlas con otra actividad.
-
-
-Estos 59 paquetes no se descomponen en una lista de actividades distintas, porque su trabajo se repite: se programan por quincena u ocurrencia, en relevos de hasta 64 HH cada uno. La Tabla 7.13 presenta la regla de cada paquete, el número de relevos u ocurrencias que programa durante el contrato y el esfuerzo máximo de cada uno.
-
-
-ocurrencia
-
-
-por relevo u
-
-
-HH máximas
-
-
-40 4.0
-
-
-ocurrencias
-
-
-programados
-
-
-periódica 6 13.3
-
-
-o periódica 10 8.0
-
-
-Comité de Proyecto), ejecutada dentro de una quincena;
-
-
-dentro de una quincena; 1 actividad(es) por ocurrencia 56 8.0
-
-
-dentro de una quincena; 1 actividad(es) por ocurrencia 40 6.0
-
-
-dentro de una quincena; 1 actividad(es) por ocurrencia 56 8.0
-
-
-dentro de una quincena; 1 actividad(es) por ocurrencia 44 8.0
-
-
-1 actividad(es) por ocurrencia
-
-
-Paquete Clase Rol Meses E HH Regla de programación Relevos u
-
-
-1.2.2 G IMP 1–3 80 Una actividad por quincena, por presencia continua o
-
-
-1.3.5 R JP 1–20 480 Una actividad de nivel de esfuerzo por quincena 40 12.0
-
-
-1.4.3 R JP 1–56 896 Una actividad de nivel de esfuerzo por quincena 112 8.0
-
-
-1.5.2 G CAL 6–20 80 Una actividad cada 3 quincenas, por presencia continua
-
-
-1.6.2 R JP 1–20 160 Una actividad por ocurrencia (quincenal, en cada
-
-
-1.8.1 R JP 1–20 320 Una actividad de nivel de esfuerzo por quincena 40 8.0
-
-
-1.8.2 R JP 1–56 448 Una actividad por ocurrencia (mensual), ejecutada
-
-
-1.8.3 R JP 1–20 240 Una actividad por ocurrencia (quincenal), ejecutada
-
-
-1.8.4 R ARQ 1–56 448 Una actividad por ocurrencia (mensual), ejecutada
-
-
-1.8.5 R SRE 13–56 352 Una actividad por ocurrencia (mensual), ejecutada
-
-
-continúa en la página siguiente
-
-
-Tabla 7.13 Actividades de los paquetes de esfuerzo continuo. Fuente: elaboración propia a partir de las secciones 4.1, 4.2 y 4.4 y del diccionario del Formulario
-
-
+• Capacidad nominal asumida: 160 HH/persona-mes; disponibilidad programable 80 %;
+capacidad efectiva 128 HH. El 20 % cubre ausencias y coordinación no imputada. No es
+una jornada contractual ni un cálculo de cumplimiento laboral.
+• Esfuerzo inicial por clase y paquete: G gestión/acta 80 HH; E diseño/configuración/inno-
+vación 240 HH; D módulo 960 HH; I integración/migración 480 HH; V prueba 320 HH
+(integración y cierres de certificación: 160 HH); T instalación/capacitación 160 HH. Las
+clases de tamaño se fundan en los requerimientos del T-12 y en las cantidades del T-11, y se
+recalculan con el equipo al establecer la línea base. La tabla al final de esta sección explica
+qué contiene cada clase.
+• R identifica esfuerzo recurrente mensual, incluidos equivalentes mensuales de actividades
+anuales/semestrales: la distribución contable no cambia la frecuencia de ejecución del
 T-14.
+• A identifica acompañamiento: 13 puestos simultáneos de terreno/coordinación; 12 × 24
+días × 8 horas + 160 HH de coordinación = 2.464 HH por cuatro semanas; soporte E1 meses
+16–20 con previsión 2.464/1.312/544/544/544 HH para puestos 13/7/3/3/3, condicionada a los
+indicadores del T-18. Las cuatro semanas de 4.3.2 se reparten por días: con el H12 firmado
+el 5 de octubre de 2028, primer día después de los tres primeros días hábiles, 23 de los 24
+días de lunes a sábado caen en el mes 21 y uno en el mes 22; por eso 4.3.2 imputa 2.361,33
+HH en el mes 21 y 102,67 en el mes 22. Si la fecha efectiva cambia, se recalcula el reparto
+sin acortar las cuatro semanas.
+• C identifica cobertura por horas-posición del calendario real, con el mes 1 en febrero de
+2027 (Anexo 7.A). NOC (8.1.1) y SOC (8.1.5) mantienen un puesto 24×7 cada uno: días del
+mes × 24, es decir 744 HH en un mes de 31 días, 720 en uno de 30 y 672 en febrero. La mesa
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+11
 
 
-ocurrencia
+---
+
+LafroX SpA Formulario T-15: Nivelación de recursos
+(8.1.2, primera línea de incidentes del artículo 78 de las Bases Administrativas (p. 40)) aplica
+las posiciones del SD4 (LafroX, 2026m), Anexo 4-W.7: 7 en la hora cargada y 2 en las otras 17
+horas de 04:00 a 22:00, o 41 horas-posición por día de lunes a sábado, y desde el mes 25 un
+tercer agente en esas 17 horas, 58 horas-posición por día, con el que la dotación cubre los
+tres niveles de servicio hasta 2.391 contactos al mes (SD4, Anexo 4-W.7); en septiembre y
+diciembre se suman 6 horas-posición de 22:00 a 04:00 de lunes a sábado y 24 los domingos.
+Así, un mes de 26 días de lunes a sábado exige 26 × 41 = 1.066 HH de mesa, y septiembre de
+2028 exige 26 × 47 + 4 × 24 = 1.318 HH. El SOC es propio de LafroX y opera desde su Centro
+de Operaciones en Valparaíso (RT-11.17; SD4, Anexo 4-W.7); sus HH se imputan aquí. Las
+posiciones de la mesa provienen de un Erlang C con supuestos de demanda: no acreditan
+abandono ni resolución al primer contacto, que se miden según la sección 5.6. La curva
+dimensiona relevos con 128 HH efectivas.
+• O = 0,75M; P = 1,25M; E = (O + 4M + P)/6 = M. Para A/C, O = M = P: no se reduce cobertura
+por un escenario optimista. Los riesgos de demanda y ausencias se tratan separadamente.
+• E se reparte uniformemente entre los meses inclusivos declarados. Las ventanas relativas
+son supuestos de asignación; las restricciones originales de aceptación del T-14 prevalecen.
+Coincidir en un mes no demuestra que una precedencia dentro del mes se haya satisfecho.
+• Personas por rol/mes = techo(HH del rol / 128). Se suman techos por familia de trabajo
+dirigida por el rol; el responsable nominado dirige el equipo, no ejecuta solo todas las HH.
+JP/ARQ y los otros códigos identifican equipos con liderazgo y apoyo competente: un valor
+5 en JP significa cinco personas equivalentes de dirección/documentación, no cinco jefes
+de proyecto. La sección 5.7 compara la curva con la dotación declarada y con los roles
+mínimos; antes de aprobar recursos se deben asignar personas distintas con competencias
+y turnos verificables.
+• Reserva protegida E1 en meses 13–20: dos desarrolladores y un QA, 256 HH DES + 128 HH
+CAL/mes; no se presta a E2 ni se duplica como trabajo base.
+• Soporte puente E1 meses 16–20: NOC + mesa con la misma regla de calendario que la ope-
+ración (1.851, 1.786, 1.810, 1.851 y 2.038 HH; total 9.336 HH), imputado a 4.2.2 y financiado
+dentro de implementación. El SOC opera desde el mes 13 por 8.1.5, porque la marcha
+blanca ya trata datos reales. Operación contractual empieza en el mes 21.
+• Ventanas ajustadas con el cronograma por actividad de la sección 6.1: cada paquete con
+entregable ocupa los meses de sus actividades, y sus HH se reparten según los días de cada
+actividad, no en forma pareja. Los planos 2.3.1/2.3.2 se hacen en el mes 1, la especificación
+y compra 5.1.2 en el mes 2, la instalación 6.1.1–6.1.4 en el mes 3 y la recepción 6.1.5 en el
+mes 4 (D-09 a D-11). Los prototipos 2.6.2 terminan antes de la construcción 3.4 (D-05); la
+identidad 3.3.1 empieza después del plan de seguridad (D-06); los módulos se programan
+con dependencias por interfaz (D-16, D-18 y D-19); y las certificaciones empiezan al terminar
+su prueba de integración (D-21 y D-31). La actualización anual del Plan de Reversibilidad
+1.7.2 ocurre en el mes 15, primer aniversario de su entrega del mes 3; las siguientes son
+8.1.4. El acompañamiento de salida 9.2.1 ocupa los meses 54 a 56 para cubrir sus 90 días
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+12
 
 
-por relevo u
+---
+
+LafroX SpA Formulario T-15: Nivelación de recursos
+dentro del contrato.
+La clase es una estimación por analogía y no una tarifa: fija el esfuerzo esperado de un paquete
+típico de su tipo, y el equipo lo ajusta en la línea base.
+Tabla 7.2 Supuestos y cálculo. Fuente: elaboración a partir de las secs. 4.1–4.4 de este formulario y de LafroX
+(2026d, T-14, paquetes de trabajo).
+Clase Qué contiene Esfuerzo Ejemplo y razón
+G Documento o acta de
+gestión con un respon-
+sable y una revisión
+80 HH 1.1.1 Acta de consti-
+tución: dos personas
+una semana, porque
+formaliza decisiones ya
+tomadas en la oferta
+E Diseño, configuración
+o especificación que
+requiere análisis, elabo-
+ración y revisión
+240 HH 2.2.3 Plan de respuesta
+a incidentes de segu-
+ridad: análisis, elabo-
+ración y revisión con
+cuatro especialistas
+D Módulo funcional con
+sus requerimientos del
+T-12, contratos de in-
+terfaz, construcción en
+incrementos, pruebas e
+integración en QA
+960 HH M4 Rutas (3.4.7) y M5
+Preparación (3.4.3) tie-
+nen el mismo tamaño
+porque concentran
+reglas y pantallas com-
+parables; un módulo
+de catálogo más sim-
+ple queda en la misma
+clase, porque la clase
+cubre el promedio de
+los once módulos y la
+diferencia se ajusta con
+el equipo en la línea
+base
+I Interfaz o migración
+con análisis de mues-
+tras reales, contrato,
+adaptador, pruebas de
+falla y entrega
+480 HH 3.3.2 ERP: interfaces sin
+documentación (Caso
+cap. 17.5), por eso exige
+análisis con muestras y
+pruebas de lentitud
+continúa en la página siguiente
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+13
 
 
-HH máximas
+---
+
+LafroX SpA Formulario T-15: Nivelación de recursos
+Tabla 7.2 — continuación
+Clase Qué contiene Esfuerzo Ejemplo y razón
+V Prueba ampliada con
+preparación de datos,
+dos ciclos y regresión
+320 HH (160 en integra-
+ción y cierre)
+3.8.4 Carga a 1,5 veces
+el peak de septiembre
+T Instalación o capacita-
+ción con ejecución y
+acta
+160 HH 6.1.1 Coordinación de la
+obra civil y piso técnico
+de la sala
+7.4.2 Horas por los 222 paquetes
+La tabla siguiente presenta las horas de cada paquete con sus tres estimaciones y su valor
+esperado.
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+14
 
 
-ocurrencias
+---
+
+LafroX
+SpA
+Formulario
+T-15:
+Nivelación
+de
+recursos
+Tabla 7.3 Horas por los 222 paquetes. Fuente: elaboración a partir de las secs. 4.1–4.4 de este formulario y de LafroX (2026d, T-14, EDT).
+EDT Clase Rol Meses O HH M HH P HH E HH
+1.1.1 G JP 1–1 60.00 80.00 100.00 80.00
+1.1.2 G JP 1–1 60.00 80.00 100.00 80.00
+1.1.3 G JP 1–1 60.00 80.00 100.00 80.00
+1.2.1 G ARQ 1–1 60.00 80.00 100.00 80.00
+1.2.2 G IMP 1–3 60.00 80.00 100.00 80.00
+1.2.3 G ARQ 1–4 60.00 80.00 100.00 80.00
+1.2.4 G CAL 2–2 60.00 80.00 100.00 80.00
+1.2.5 G ARQ 13–13 60.00 80.00 100.00 80.00
+1.3.1 G JP 1–1 60.00 80.00 100.00 80.00
+1.3.2 G JP 2–2 60.00 80.00 100.00 80.00
+1.3.3 G JP 2–2 60.00 80.00 100.00 80.00
+1.3.4 G JP 2–2 60.00 80.00 100.00 80.00
+1.3.5 R JP 1–20 360.00 480.00 600.00 480.00
+1.4.1 G JP 1–1 60.00 80.00 100.00 80.00
+1.4.2 G JP 1–1 60.00 80.00 100.00 80.00
+1.4.3 R JP 1–56 672.00 896.00 1120.00 896.00
+1.5.1 G CAL 2–2 60.00 80.00 100.00 80.00
+continúa en la página siguiente
+LafroX
+SpA
+Formulario
+T-15
+Media
+firma:
+Alex
+Aravena
+15
 
 
-programados
+---
+
+LafroX
+SpA
+Formulario
+T-15:
+Nivelación
+de
+recursos
+Tabla 7.3 — continuación
+EDT Clase Rol Meses O HH M HH P HH E HH
+1.5.2 G CAL 6–20 60.00 80.00 100.00 80.00
+1.6.1 G JP 2–2 60.00 80.00 100.00 80.00
+1.6.2 R JP 1–20 120.00 160.00 200.00 160.00
+1.7.1 G JP 3–3 60.00 80.00 100.00 80.00
+1.7.2 G JP 15–15 60.00 80.00 100.00 80.00
+1.8.1 R JP 1–20 240.00 320.00 400.00 320.00
+1.8.2 R JP 1–56 336.00 448.00 560.00 448.00
+1.8.3 R JP 1–20 180.00 240.00 300.00 240.00
+1.8.4 R ARQ 1–56 336.00 448.00 560.00 448.00
+1.8.5 R SRE 13–56 264.00 352.00 440.00 352.00
+1.8.6 R JP 1–20 360.00 480.00 600.00 480.00
+1.8.7 R JP 2–56 330.00 440.00 550.00 440.00
+1.8.8 R JP 1–56 336.00 448.00 560.00 448.00
+1.9.1 G SEG 1–1 60.00 80.00 100.00 80.00
+1.9.2 G SEG 1–1 60.00 80.00 100.00 80.00
+1.9.3 G SEG 2–2 60.00 80.00 100.00 80.00
+1.9.4 R SEG 1–56 168.00 224.00 280.00 224.00
+continúa en la página siguiente
+LafroX
+SpA
+Formulario
+T-15
+Media
+firma:
+Alex
+Aravena
+16
 
 
-dentro de una quincena; 1 actividad(es) por ocurrencia 20 24.0
+---
+
+LafroX
+SpA
+Formulario
+T-15:
+Nivelación
+de
+recursos
+Tabla 7.3 — continuación
+EDT Clase Rol Meses O HH M HH P HH E HH
+1.9.5 R JP 1–56 168.00 224.00 280.00 224.00
+2.1.1 E ARQ 2–2 180.00 240.00 300.00 240.00
+2.1.2 E ARQ 2–2 180.00 240.00 300.00 240.00
+2.1.3 E DAT 2–2 180.00 240.00 300.00 240.00
+2.1.4 E ARQ 13–13 180.00 240.00 300.00 240.00
+2.2.1 E SEG 2–2 180.00 240.00 300.00 240.00
+2.2.2 E SEG 3–10 180.00 240.00 300.00 240.00
+2.2.3 E SEG 3–3 180.00 240.00 300.00 240.00
+2.2.4 E SEG 2–2 180.00 240.00 300.00 240.00
+2.3.1 E SRE 1–2 180.00 240.00 300.00 240.00
+2.3.2 E SRE 1–2 180.00 240.00 300.00 240.00
+2.3.3 E SRE 2–2 180.00 240.00 300.00 240.00
+2.4.1 E ARQ 3–3 180.00 240.00 300.00 240.00
+2.4.2 E ARQ 14–14 180.00 240.00 300.00 240.00
+2.5.1 E SRE 3–3 180.00 240.00 300.00 240.00
+2.5.2 E SRE 3–3 180.00 240.00 300.00 240.00
+2.6.1 E IMP 2–2 180.00 240.00 300.00 240.00
+continúa en la página siguiente
+LafroX
+SpA
+Formulario
+T-15
+Media
+firma:
+Alex
+Aravena
+17
 
 
-quincena del grupo 55 8.0
+---
+
+LafroX
+SpA
+Formulario
+T-15:
+Nivelación
+de
+recursos
+Tabla 7.3 — continuación
+EDT Clase Rol Meses O HH M HH P HH E HH
+2.6.2 E IMP 3–3 180.00 240.00 300.00 240.00
+2.6.3 E IMP 4–4 180.00 240.00 300.00 240.00
+3.1.1 E SRE 5–5 180.00 240.00 300.00 240.00
+3.1.2 E SRE 5–5 180.00 240.00 300.00 240.00
+3.1.3 E SRE 5–5 180.00 240.00 300.00 240.00
+3.1.4 E SRE 4–4 180.00 240.00 300.00 240.00
+3.1.5 E SRE 5–5 180.00 240.00 300.00 240.00
+3.2.1 E SRE 4–4 180.00 240.00 300.00 240.00
+3.2.2 E SRE 4–4 180.00 240.00 300.00 240.00
+3.2.3 E SRE 4–4 180.00 240.00 300.00 240.00
+3.2.4 E SRE 4–4 180.00 240.00 300.00 240.00
+3.2.5 E SEG 4–4 180.00 240.00 300.00 240.00
+3.2.6 E SRE 5–5 180.00 240.00 300.00 240.00
+3.3.1 I SEG 5–7 360.00 480.00 600.00 480.00
+3.3.2 I ARQ 5–6 360.00 480.00 600.00 480.00
+3.3.3 I ARQ 5–6 360.00 480.00 600.00 480.00
+3.3.4 I ARQ 5–6 360.00 480.00 600.00 480.00
+continúa en la página siguiente
+LafroX
+SpA
+Formulario
+T-15
+Media
+firma:
+Alex
+Aravena
+18
 
 
-quincena del grupo 56 8.0
+---
+
+LafroX
+SpA
+Formulario
+T-15:
+Nivelación
+de
+recursos
+Tabla 7.3 — continuación
+EDT Clase Rol Meses O HH M HH P HH E HH
+3.3.5 I ARQ 5–7 360.00 480.00 600.00 480.00
+3.3.6 I ARQ 5–7 360.00 480.00 600.00 480.00
+3.4.1 D DES 5–7 720.00 960.00 1200.00 960.00
+3.4.2 D DES 5–7 720.00 960.00 1200.00 960.00
+3.4.3 D DES 5–7 720.00 960.00 1200.00 960.00
+3.4.4 D DES 5–8 720.00 960.00 1200.00 960.00
+3.4.5 D DES 5–7 720.00 960.00 1200.00 960.00
+3.4.6 D DES 5–7 720.00 960.00 1200.00 960.00
+3.4.7 D DES 5–8 720.00 960.00 1200.00 960.00
+3.4.8 D DES 5–8 720.00 960.00 1200.00 960.00
+3.4.9 D DES 5–8 720.00 960.00 1200.00 960.00
+3.4.10 D DES 5–8 720.00 960.00 1200.00 960.00
+3.4.11 D DAT 8–8 720.00 960.00 1200.00 960.00
+3.5.1 D DES 15–15 720.00 960.00 1200.00 960.00
+3.5.2 D DES 15–15 720.00 960.00 1200.00 960.00
+3.5.3 D DES 15–15 720.00 960.00 1200.00 960.00
+3.5.4 D DAT 15–15 720.00 960.00 1200.00 960.00
+continúa en la página siguiente
+LafroX
+SpA
+Formulario
+T-15
+Media
+firma:
+Alex
+Aravena
+19
 
 
-de una quincena; 1 actividad(es) por ocurrencia 5 44.8
+---
+
+LafroX
+SpA
+Formulario
+T-15:
+Nivelación
+de
+recursos
+Tabla 7.3 — continuación
+EDT Clase Rol Meses O HH M HH P HH E HH
+3.6.1 I DAT 7–8 360.00 480.00 600.00 480.00
+3.6.2 I DES 6–7 360.00 480.00 600.00 480.00
+3.6.3 I DES 6–7 360.00 480.00 600.00 480.00
+3.6.4 I DES 6–7 360.00 480.00 600.00 480.00
+3.6.5 I DES 13–18 360.00 480.00 600.00 480.00
+3.6.6 I DES 17–19 360.00 480.00 600.00 480.00
+3.7.1 I DAT 7–9 360.00 480.00 600.00 480.00
+3.7.2 I DAT 9–10 360.00 480.00 600.00 480.00
+3.7.3 I DAT 11–11 360.00 480.00 600.00 480.00
+3.7.4 I DAT 11–11 360.00 480.00 600.00 480.00
+3.7.5 I DAT 12–12 360.00 480.00 600.00 480.00
+3.8.1 V CAL 9–9 120.00 160.00 200.00 160.00
+3.8.2 V CAL 9–10 240.00 320.00 400.00 320.00
+3.8.3 V CAL 9–10 240.00 320.00 400.00 320.00
+3.8.4 V CAL 9–10 240.00 320.00 400.00 320.00
+3.8.5 V CAL 9–10 240.00 320.00 400.00 320.00
+3.8.6 V SEG 9–10 240.00 320.00 400.00 320.00
+continúa en la página siguiente
+LafroX
+SpA
+Formulario
+T-15
+Media
+firma:
+Alex
+Aravena
+20
 
 
-quincena del grupo 28 8.0
+---
+
+LafroX
+SpA
+Formulario
+T-15:
+Nivelación
+de
+recursos
+Tabla 7.3 — continuación
+EDT Clase Rol Meses O HH M HH P HH E HH
+3.8.7 V CAL 10–10 120.00 160.00 200.00 160.00
+3.8.8 V SRE 9–10 240.00 320.00 400.00 320.00
+3.9.1 V CAL 16–16 120.00 160.00 200.00 160.00
+3.9.2 V CAL 16–16 240.00 320.00 400.00 320.00
+3.9.3 V CAL 16–16 240.00 320.00 400.00 320.00
+3.9.4 V CAL 16–16 240.00 320.00 400.00 320.00
+3.9.5 V SEG 16–16 120.00 160.00 200.00 160.00
+3.9.6 V CAL 16–17 120.00 160.00 200.00 160.00
+3.9.7 V SRE 16–16 120.00 160.00 200.00 160.00
+3.10.1.1 E DAT 7–9 180.00 240.00 300.00 240.00
+3.10.1.2 E DAT 9–10 180.00 240.00 300.00 240.00
+3.10.1.3 E DAT 9–10 180.00 240.00 300.00 240.00
+3.10.1.4 E DAT 11–15 180.00 240.00 300.00 240.00
+3.10.2.1 E CAL 2–3 180.00 240.00 300.00 240.00
+3.10.2.2 E CAL 3–5 180.00 240.00 300.00 240.00
+3.10.2.3 E CAL 5–10 180.00 240.00 300.00 240.00
+3.10.2.4 E CAL 11–15 180.00 240.00 300.00 240.00
+continúa en la página siguiente
+LafroX
+SpA
+Formulario
+T-15
+Media
+firma:
+Alex
+Aravena
+21
 
 
-periódica 16 15.0
+---
+
+LafroX
+SpA
+Formulario
+T-15:
+Nivelación
+de
+recursos
+Tabla 7.3 — continuación
+EDT Clase Rol Meses O HH M HH P HH E HH
+3.10.3.1 E DAT 3–5 180.00 240.00 300.00 240.00
+3.10.3.2 E DAT 5–9 180.00 240.00 300.00 240.00
+3.10.3.3 E DAT 9–10 180.00 240.00 300.00 240.00
+3.10.3.4 E DAT 11–15 180.00 240.00 300.00 240.00
+3.10.4.1 E IMP 13–14 180.00 240.00 300.00 240.00
+3.10.4.2 E IMP 14–15 180.00 240.00 300.00 240.00
+3.10.4.3 E IMP 15–17 180.00 240.00 300.00 240.00
+3.10.4.4 E IMP 18–21 180.00 240.00 300.00 240.00
+3.11.1 G ARQ 15–21 60.00 80.00 100.00 80.00
+3.11.2 G SRE 10–20 60.00 80.00 100.00 80.00
+3.11.3 G DES 4–20 60.00 80.00 100.00 80.00
+3.11.4 G DES 4–20 60.00 80.00 100.00 80.00
+3.11.5 G DES 6–20 60.00 80.00 100.00 80.00
+4.1.1 G IMP 10–10 60.00 80.00 100.00 80.00
+4.1.2 G IMP 11–11 60.00 80.00 100.00 80.00
+4.1.3 G IMP 17–17 60.00 80.00 100.00 80.00
+4.2.1 A IMP 13–15 7392.00 7392.00 7392.00 7392.00
+continúa en la página siguiente
+LafroX
+SpA
+Formulario
+T-15
+Media
+firma:
+Alex
+Aravena
+22
 
 
-o periódica 7 11.4
+---
+
+LafroX
+SpA
+Formulario
+T-15:
+Nivelación
+de
+recursos
+Tabla 7.3 — continuación
+EDT Clase Rol Meses O HH M HH P HH E HH
+4.2.2 A IMP 16–20 5408.00 5408.00 5408.00 5408.00
+4.2.3 G JP 16–16 60.00 80.00 100.00 80.00
+4.3.1 A IMP 19–20 4928.00 4928.00 4928.00 4928.00
+4.3.2 A IMP 21–22 2464.00 2464.00 2464.00 2464.00
+4.3.3 G JP 21–21 60.00 80.00 100.00 80.00
+4.3.4 G JP 21–21 60.00 80.00 100.00 80.00
+5.1.1 G ARQ 2–2 60.00 80.00 100.00 80.00
+5.1.2 G ARQ 2–2 60.00 80.00 100.00 80.00
+5.1.3 G SRE 5–5 60.00 80.00 100.00 80.00
+5.2.1 G SRE 2–2 60.00 80.00 100.00 80.00
+5.2.2 G SRE 4–4 60.00 80.00 100.00 80.00
+5.2.3 G ARQ 4–4 60.00 80.00 100.00 80.00
+5.3.1 G SRE 4–4 60.00 80.00 100.00 80.00
+5.3.2 G SRE 4–4 60.00 80.00 100.00 80.00
+5.3.3 G SRE 4–4 60.00 80.00 100.00 80.00
+5.4.1 G IMP 9–12 60.00 80.00 100.00 80.00
+5.4.2 G IMP 9–12 60.00 80.00 100.00 80.00
+continúa en la página siguiente
+LafroX
+SpA
+Formulario
+T-15
+Media
+firma:
+Alex
+Aravena
+23
 
 
-o periódica 8 10.0
+---
+
+LafroX
+SpA
+Formulario
+T-15:
+Nivelación
+de
+recursos
+Tabla 7.3 — continuación
+EDT Clase Rol Meses O HH M HH P HH E HH
+5.4.3 G JP 17–20 60.00 80.00 100.00 80.00
+5.4.4 G JP 7–7 60.00 80.00 100.00 80.00
+6.1.1 T SRE 3–3 120.00 160.00 200.00 160.00
+6.1.2 T SRE 3–3 120.00 160.00 200.00 160.00
+6.1.3 T SRE 3–3 120.00 160.00 200.00 160.00
+6.1.4 T SRE 3–3 120.00 160.00 200.00 160.00
+6.1.5 T SRE 4–4 120.00 160.00 200.00 160.00
+6.2.1 T SRE 4–4 120.00 160.00 200.00 160.00
+6.2.2 T SRE 6–6 120.00 160.00 200.00 160.00
+6.2.3 T SRE 7–7 120.00 160.00 200.00 160.00
+6.3.1 T SRE 4–5 120.00 160.00 200.00 160.00
+6.3.2 T SRE 4–5 120.00 160.00 200.00 160.00
+6.3.3 T SRE 4–4 120.00 160.00 200.00 160.00
+6.3.4 T SRE 9–9 120.00 160.00 200.00 160.00
+6.4.1 T SEG 5–5 120.00 160.00 200.00 160.00
+6.4.2 T SEG 5–5 120.00 160.00 200.00 160.00
+6.4.3 T SEG 5–6 120.00 160.00 200.00 160.00
+continúa en la página siguiente
+LafroX
+SpA
+Formulario
+T-15
+Media
+firma:
+Alex
+Aravena
+24
 
 
-o periódica 9 8.9
+---
+
+LafroX
+SpA
+Formulario
+T-15:
+Nivelación
+de
+recursos
+Tabla 7.3 — continuación
+EDT Clase Rol Meses O HH M HH P HH E HH
+6.5.1 T SRE 9–12 120.00 160.00 200.00 160.00
+6.5.2 T SRE 10–12 120.00 160.00 200.00 160.00
+6.5.3 T SRE 9–11 120.00 160.00 200.00 160.00
+6.5.4 T SRE 10–12 120.00 160.00 200.00 160.00
+6.5.5 T SRE 10–12 120.00 160.00 200.00 160.00
+6.5.6 T SRE 9–12 120.00 160.00 200.00 160.00
+6.6.1 T SRE 5–5 120.00 160.00 200.00 160.00
+6.6.2 T SRE 5–5 120.00 160.00 200.00 160.00
+6.6.3 T SRE 5–5 120.00 160.00 200.00 160.00
+7.1.1 T IMP 10–12 120.00 160.00 200.00 160.00
+7.1.2 R IMP 13–56 2112.00 2816.00 3520.00 2816.00
+7.1.3 T IMP 13–20 120.00 160.00 200.00 160.00
+7.1.4 T IMP 15–20 120.00 160.00 200.00 160.00
+7.1.5 T IMP 10–18 120.00 160.00 200.00 160.00
+7.1.6 T IMP 10–12 120.00 160.00 200.00 160.00
+7.2.1 T IMP 10–16 120.00 160.00 200.00 160.00
+7.2.2 T IMP 16–18 120.00 160.00 200.00 160.00
+continúa en la página siguiente
+LafroX
+SpA
+Formulario
+T-15
+Media
+firma:
+Alex
+Aravena
+25
 
 
+---
+
+LafroX
+SpA
+Formulario
+T-15:
+Nivelación
+de
+recursos
+Tabla 7.3 — continuación
+EDT Clase Rol Meses O HH M HH P HH E HH
+7.2.3 T IMP 2–6 120.00 160.00 200.00 160.00
+7.2.4 T IMP 11–20 120.00 160.00 200.00 160.00
+7.2.5 T IMP 13–21 120.00 160.00 200.00 160.00
+7.3.1 T IMP 13–15 120.00 160.00 200.00 160.00
+7.3.2 T IMP 18–18 120.00 160.00 200.00 160.00
+8.1.1 C SRE 21–56 26280.00 26280.00 26280.00 26280.00
+8.1.2 C SRE 21–56 54239.00 54239.00 54239.00 54239.00
+8.1.3 V SRE 21–56 420.00 560.00 700.00 560.00
+8.1.4 R JP 21–56 216.00 288.00 360.00 288.00
+8.1.5 C SEG 13–56 32112.00 32112.00 32112.00 32112.00
+8.1.6 R SRE 21–56 432.00 576.00 720.00 576.00
+8.2.1 R DES 21–56 3456.00 4608.00 5760.00 4608.00
+8.2.2 R SEG 21–56 864.00 1152.00 1440.00 1152.00
+8.2.3 R SRE 21–56 864.00 1152.00 1440.00 1152.00
+8.2.4 R DES 21–56 1728.00 2304.00 2880.00 2304.00
+8.2.5 R SRE 21–56 216.00 288.00 360.00 288.00
+8.2.6 R SRE 21–56 216.00 288.00 360.00 288.00
+continúa en la página siguiente
+LafroX
+SpA
+Formulario
+T-15
+Media
+firma:
+Alex
+Aravena
+26
+
+
+---
+
+LafroX
+SpA
+Formulario
+T-15:
+Nivelación
+de
+recursos
+Tabla 7.3 — continuación
+EDT Clase Rol Meses O HH M HH P HH E HH
+8.2.7 R SRE 21–56 648.00 864.00 1080.00 864.00
+8.3.1 R CAL 21–56 432.00 576.00 720.00 576.00
+8.3.2 R DAT 21–56 216.00 288.00 360.00 288.00
+8.3.3 G JP 21–23 60.00 80.00 100.00 80.00
+8.3.4 R JP 24–56 396.00 528.00 660.00 528.00
+8.3.5 G IMP 22–26 60.00 80.00 100.00 80.00
+8.3.6 G IMP 24–27 60.00 80.00 100.00 80.00
+8.4.1 R SRE 21–56 432.00 576.00 720.00 576.00
+8.4.2 R SRE 21–56 432.00 576.00 720.00 576.00
+8.4.3 R SRE 21–56 216.00 288.00 360.00 288.00
+8.4.4 R JP 21–56 216.00 288.00 360.00 288.00
+8.5.1 R IMP 21–56 864.00 1152.00 1440.00 1152.00
+8.5.2 G IMP 21–27 60.00 80.00 100.00 80.00
+8.5.3 R SRE 21–56 432.00 576.00 720.00 576.00
+9.1.1 G DES 21–21 60.00 80.00 100.00 80.00
+9.1.2 G JP 21–21 60.00 80.00 100.00 80.00
+9.2.1 G JP 54–56 60.00 80.00 100.00 80.00
+9.2.2 G SEG 56–56 60.00 80.00 100.00 80.00
+LafroX
+SpA
+Formulario
+T-15
+Media
+firma:
+Alex
+Aravena
+27
+
+
+---
+
+LafroX SpA Formulario T-15: Nivelación de recursos
+Se agregan explícitamente soporte puente SRE de 4.2.2 = 9336.00 HH y reserva F3/QA = 8 × (256
++ 128) = 3.072 HH. Las ocho restauraciones previas a Operación aportan 128 HH SRE: 48 en
+4.2.1, 48 en 4.2.2 y 32 en 4.3.1. Cada una supone 16 HH para preparación, ejecución, validación
+e informe. Son distintas de las 36 restauraciones de 8.1.6 durante Operación. Al activar los
+respaldos antes del mes 13 se verificará si RT-07.12 exige pruebas mensuales adicionales; en
+ese caso se programarán y reestimarán expresamente, sin imputarlas a las ocho ya contadas.
+Las siete conmutaciones reales de 8.1.3 se estiman en 80 HH por campaña, 560 HH en total.
+Las pruebas de intrusión E1 y E2 se estiman en 320 y 160 HH respectivamente; la reducción
+en E2 exige que el inventario y los procedimientos de E1 sean reutilizables. Se confirmarán
+horas, alcance y disponibilidad con el tercero independiente antes de ejecutar. Las 128 HH de
+restauraciones se suman a las 205.007 HH de los 222 paquetes para formar las 205.135 HH de
+base; el soporte puente y la reserva protegida se agregan por separado en las curvas siguientes.
+7.4.3 Resumen T-15
+La tabla siguiente resume las horas programadas por etapa contractual.
+Tabla 7.4 Resumen T-15. Fuente: elaboración a partir de las secs. 4.1–4.4 de este formulario y de LafroX (2026d,
+T-14, EDT).
+Etapa HH base y co-
+bertura
+HH reserva
+protegida
+HH programa-
+das
+Frentes Meses
+E1 Desarrollo 38141.17 0 38141.17 F1,F2,F3,F5,F6,
+F7
+1–12
+E1 Marcha
+blanca
+11195.17 1152 12347.17 F1,F2,F3,F5,F6,
+F7
+13–15
+E2 Desarrollo 11406.54 0 11406.54 F1,F2,F4,F5,F6,
+F7
+13–18
+E2 Marcha
+blanca
+7307.91 0 7307.91 F1,F2,F4,F6,F7 19–20
+E1 Soporte
+puente
+14792.00 1920 16712.00 F3,F5,F6,F7 16–20
+Operación 128853.67 0 128853.67 F1,F8 21–56
+Cierre y es-
+tabilización
+implementa-
+ción
+2774.54 0 2774.54 F1,F2,F4,F6,F7 21–22
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+28
+
+
+---
+
+LafroX SpA Formulario T-15: Nivelación de recursos
+Total exacto de paquetes y componentes = 217543.00 HH (205.007 HH de los 222 paquetes +
+128 HH de restauraciones previas a Operación + 9.336 HH de soporte puente + 3.072 HH de
+reserva protegida); peak mensual conjunto = 69 personas equivalentes en el mes 15, cuando
+coinciden la construcción de los módulos de la Etapa 2, la marcha blanca de la Etapa 1 y su
+acompañamiento. La mesa y el SOC dimensionados en el SD4, aplicados sobre el calendario
+real, determinan las horas de operación y de soporte puente. La implementación imputada
+a los meses 21 y 22 se separa de Operación; las actividades generales que continúan como
+servicio permanecen en Operación. Los peaks de etapas no se suman. Las centésimas de
+presentación se distribuyen por mayor resto entre meses y se concilian por etapa; la suma
+publicada conserva 217.543 HH exactas. La mesa de ayuda de 8.1.2 incluye desde el mes 25,
+cuando empieza el tercer año del contrato y la demanda proyectada llega a 2.258 contactos al
+mes, un tercer agente en las franjas de menor demanda (17 horas por día de lunes a sábado,
+14.161 HH), con el que la dotación base cubre los tres niveles de servicio hasta 2.391 contactos
+al mes (SD4, Anexo 4-W.7). En los meses 21 a 24, con 2.000 contactos estimados, bastan dos
+agentes en esas franjas (límite 2.283).
+7.4.4 Curvas mensuales: horas por etapa y personas por rol
+La tabla siguiente presenta, mes a mes, las horas por etapa y las personas equivalentes por rol.
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+29
+
+
+---
+
+LafroX
+SpA
+Formulario
+T-15:
+Nivelación
+de
+recursos
+Tabla 7.5 Curva mensual de horas por etapa. Fuente: elaboración a partir de la sección 4.4 de este formulario.
+Mes E1 desarrollo E1 MB E2 desarrollo E2 MB Soporte puen-
+te
+Operación Cierre y es-
+tabilización
+implementa-
+ción
+Total HH
+1 1415.81 0.00 0.00 0.00 0.00 0.00 0.00 1415.81
+2 2909.52 0.00 0.00 0.00 0.00 0.00 0.00 2909.52
+3 2361.67 0.00 0.00 0.00 0.00 0.00 0.00 2361.67
+4 3142.78 0.00 0.00 0.00 0.00 0.00 0.00 3142.78
+5 5039.21 0.00 0.00 0.00 0.00 0.00 0.00 5039.21
+6 5335.52 0.00 0.00 0.00 0.00 0.00 0.00 5335.52
+7 5107.82 0.00 0.00 0.00 0.00 0.00 0.00 5107.82
+8 4640.86 0.00 0.00 0.00 0.00 0.00 0.00 4640.86
+9 3151.92 0.00 0.00 0.00 0.00 0.00 0.00 3151.92
+10 2060.57 0.00 0.00 0.00 0.00 0.00 0.00 2060.57
+11 1676.35 0.00 0.00 0.00 0.00 0.00 0.00 1676.35
+12 1299.14 0.00 0.00 0.00 0.00 0.00 0.00 1299.14
+13 0.00 3952.70 548.57 0.00 0.00 0.00 0.00 4501.27
+14 0.00 4333.79 571.43 0.00 0.00 0.00 0.00 4905.22
+15 0.00 4060.68 4045.71 0.00 0.00 0.00 0.00 8106.39
+continúa en la página siguiente
+LafroX
+SpA
+Formulario
+T-15
+Media
+firma:
+Alex
+Aravena
+30
+
+
+---
+
+LafroX
+SpA
+Formulario
+T-15:
+Nivelación
+de
+recursos
+Tabla 7.5 — continuación
+Mes E1 desarrollo E1 MB E2 desarrollo E2 MB Soporte puen-
+te
+Operación Cierre y es-
+tabilización
+implementa-
+ción
+Total HH
+16 0.00 0.00 2948.35 0.00 4715.00 0.00 0.00 7663.35
+17 0.00 0.00 1729.57 0.00 3498.00 0.00 0.00 5227.57
+18 0.00 0.00 1562.91 0.00 2754.00 0.00 0.00 4316.91
+19 0.00 0.00 0.00 3769.86 2779.00 0.00 0.00 6548.86
+20 0.00 0.00 0.00 3538.05 2966.00 0.00 0.00 6504.05
+21 0.00 0.00 0.00 0.00 0.00 3198.26 2774.54 5972.80
+22 0.00 0.00 0.00 0.00 0.00 3232.55 0.00 3232.55
+23 0.00 0.00 0.00 0.00 0.00 3440.54 0.00 3440.54
+24 0.00 0.00 0.00 0.00 0.00 3247.92 0.00 3247.92
+25 0.00 0.00 0.00 0.00 0.00 3341.50 0.00 3341.50
+26 0.00 0.00 0.00 0.00 0.00 3688.21 0.00 3688.21
+27 0.00 0.00 0.00 0.00 0.00 3585.83 0.00 3585.83
+28 0.00 0.00 0.00 0.00 0.00 3635.78 0.00 3635.78
+29 0.00 0.00 0.00 0.00 0.00 3529.78 0.00 3529.78
+30 0.00 0.00 0.00 0.00 0.00 3577.78 0.00 3577.78
+continúa en la página siguiente
+LafroX
+SpA
+Formulario
+T-15
+Media
+firma:
+Alex
+Aravena
+31
+
+
+---
+
+LafroX
+SpA
+Formulario
+T-15:
+Nivelación
+de
+recursos
+Tabla 7.5 — continuación
+Mes E1 desarrollo E1 MB E2 desarrollo E2 MB Soporte puen-
+te
+Operación Cierre y es-
+tabilización
+implementa-
+ción
+Total HH
+31 0.00 0.00 0.00 0.00 0.00 3635.78 0.00 3635.78
+32 0.00 0.00 0.00 0.00 0.00 3741.78 0.00 3741.78
+33 0.00 0.00 0.00 0.00 0.00 3729.11 0.00 3729.11
+34 0.00 0.00 0.00 0.00 0.00 3529.78 0.00 3529.78
+35 0.00 0.00 0.00 0.00 0.00 3853.78 0.00 3853.78
+36 0.00 0.00 0.00 0.00 0.00 3635.78 0.00 3635.78
+37 0.00 0.00 0.00 0.00 0.00 3317.78 0.00 3317.78
+38 0.00 0.00 0.00 0.00 0.00 3577.78 0.00 3577.78
+39 0.00 0.00 0.00 0.00 0.00 3623.11 0.00 3623.11
+40 0.00 0.00 0.00 0.00 0.00 3635.78 0.00 3635.78
+41 0.00 0.00 0.00 0.00 0.00 3471.78 0.00 3471.78
+42 0.00 0.00 0.00 0.00 0.00 3635.78 0.00 3635.78
+43 0.00 0.00 0.00 0.00 0.00 3635.78 0.00 3635.78
+44 0.00 0.00 0.00 0.00 0.00 3741.78 0.00 3741.78
+45 0.00 0.00 0.00 0.00 0.00 3729.11 0.00 3729.11
+continúa en la página siguiente
+LafroX
+SpA
+Formulario
+T-15
+Media
+firma:
+Alex
+Aravena
+32
+
+
+---
+
+LafroX
+SpA
+Formulario
+T-15:
+Nivelación
+de
+recursos
+Tabla 7.5 — continuación
+Mes E1 desarrollo E1 MB E2 desarrollo E2 MB Soporte puen-
+te
+Operación Cierre y es-
+tabilización
+implementa-
+ción
+Total HH
+46 0.00 0.00 0.00 0.00 0.00 3529.78 0.00 3529.78
+47 0.00 0.00 0.00 0.00 0.00 3853.78 0.00 3853.78
+48 0.00 0.00 0.00 0.00 0.00 3635.78 0.00 3635.78
+49 0.00 0.00 0.00 0.00 0.00 3317.77 0.00 3317.77
+50 0.00 0.00 0.00 0.00 0.00 3577.77 0.00 3577.77
+51 0.00 0.00 0.00 0.00 0.00 3623.10 0.00 3623.10
+52 0.00 0.00 0.00 0.00 0.00 3635.77 0.00 3635.77
+53 0.00 0.00 0.00 0.00 0.00 3471.77 0.00 3471.77
+54 0.00 0.00 0.00 0.00 0.00 3746.88 0.00 3746.88
+55 0.00 0.00 0.00 0.00 0.00 3599.99 0.00 3599.99
+56 0.00 0.00 0.00 0.00 0.00 3888.44 0.00 3888.44
+LafroX
+SpA
+Formulario
+T-15
+Media
+firma:
+Alex
+Aravena
+33
+
+
+---
+
+LafroX
+SpA
+Formulario
+T-15:
+Nivelación
+de
+recursos
+Tabla 7.6 Curva mensual de personas por rol. Fuente: elaboración a partir de la sección 4.4 de este formulario.
+Mes JP ARQ SEG DAT DES CAL SRE IMP Personas
+totales
+1 5 2 2 0 0 0 4 1 14
+2 4 6 5 2 0 3 3 3 26
+3 2 2 3 1 0 2 9 3 22
+4 1 1 3 1 1 1 17 3 28
+5 1 11 5 2 7 2 15 0 43
+6 1 8 4 1 28 1 2 0 45
+7 2 1 1 8 28 1 2 0 43
+8 1 1 1 10 26 1 0 0 40
+9 1 1 3 8 1 8 6 2 30
+10 1 1 2 3 1 6 5 3 22
+11 1 1 1 9 1 1 1 3 18
+12 1 1 1 5 0 1 4 1 14
+13 1 3 6 0 3 2 2 23 40
+14 1 2 6 2 3 2 2 24 42
+15 2 1 6 8 25 2 2 23 69
+16 2 1 9 0 4 10 18 22 66
+17 2 1 6 0 4 3 16 14 46
+continúa en la página siguiente
+LafroX
+SpA
+Formulario
+T-15
+Media
+firma:
+Alex
+Aravena
+34
+
+
+---
+
+LafroX
+SpA
+Formulario
+T-15:
+Nivelación
+de
+recursos
+Tabla 7.6 — continuación
+Mes JP ARQ SEG DAT DES CAL SRE IMP Personas
+totales
+18 1 1 6 0 4 2 16 8 38
+19 1 1 6 0 4 2 16 26 56
+20 1 1 6 0 2 1 17 25 53
+21 3 1 7 1 3 2 17 20 54
+22 1 1 6 1 2 1 16 2 30
+23 1 1 7 1 2 1 18 1 32
+24 1 1 7 1 2 1 16 2 31
+25 1 1 6 1 2 1 18 1 31
+26 1 1 7 1 2 1 20 2 35
+27 1 1 6 1 2 2 20 1 34
+28 1 1 7 1 2 1 20 1 34
+29 1 1 6 1 2 1 19 1 32
+30 1 1 7 1 2 1 19 1 33
+31 1 1 7 1 2 1 20 1 34
+32 1 1 6 1 2 1 21 1 34
+33 1 1 7 1 2 2 21 1 36
+34 1 1 6 1 2 1 19 1 32
+continúa en la página siguiente
+LafroX
+SpA
+Formulario
+T-15
+Media
+firma:
+Alex
+Aravena
+35
+
+
+---
+
+LafroX
+SpA
+Formulario
+T-15:
+Nivelación
+de
+recursos
+Tabla 7.6 — continuación
+Mes JP ARQ SEG DAT DES CAL SRE IMP Personas
+totales
+35 1 1 7 1 2 1 21 1 35
+36 1 1 7 1 2 1 20 1 34
+37 1 1 6 1 2 1 18 1 31
+38 1 1 7 1 2 1 19 1 33
+39 1 1 6 1 2 2 20 1 34
+40 1 1 7 1 2 1 20 1 34
+41 1 1 6 1 2 1 19 1 32
+42 1 1 7 1 2 1 20 1 34
+43 1 1 7 1 2 1 20 1 34
+44 1 1 6 1 2 1 21 1 34
+45 1 1 7 1 2 2 21 1 36
+46 1 1 6 1 2 1 19 1 32
+47 1 1 7 1 2 1 21 1 35
+48 1 1 7 1 2 1 20 1 34
+49 1 1 6 1 2 1 18 1 31
+50 1 1 7 1 2 1 19 1 33
+51 1 1 6 1 2 2 20 1 34
+continúa en la página siguiente
+LafroX
+SpA
+Formulario
+T-15
+Media
+firma:
+Alex
+Aravena
+36
+
+
+---
+
+LafroX
+SpA
+Formulario
+T-15:
+Nivelación
+de
+recursos
+Tabla 7.6 — continuación
+Mes JP ARQ SEG DAT DES CAL SRE IMP Personas
+totales
+52 1 1 7 1 2 1 20 1 34
+53 1 1 6 1 2 1 19 1 32
+54 1 1 7 1 2 2 21 1 36
+55 1 1 7 1 2 1 19 1 33
+56 1 1 7 1 2 1 21 1 35
+LafroX
+SpA
+Formulario
+T-15
+Media
+firma:
+Alex
+Aravena
+37
+
+
+---
+
+LafroX SpA Formulario T-15: Nivelación de recursos
+La curva de personas es una envolvente conservadora de demanda, no disponibilidad acredita-
+da. La factibilidad requiere asignar cada rol de la curva y comprobar las concurrencias diarias
+de certificación y continuidad. El registro nominal de personas y los turnos se aprueban junto
+con la línea base del H1. La reserva E1 es exclusiva; el trabajo de E2 usa capacidad adicional.
+La revisión de HH modifica conjuntamente dotación, cronograma y exposición de SD8.
+7.4.5 Reservas de contingencia y de gestión
+Las 217.543 HH de la sección 4.3 son la línea base programada e incluyen 3.072 HH protegidas
+para correcciones de la Etapa 1. Esa capacidad no se suma nuevamente ni acredita cobertura
+de cualquier contingencia. Las reservas adicionales de riesgos del SD8 se administran por
+separado y deben conciliarse con la nueva línea base antes de afirmar capacidad movilizable.
+La reserva de cronograma de cada hito, en días hábiles, se muestra como escenario histórico
+en la Tabla 7.8; requiere recálculo con horas, calendario y asignaciones vigentes.
+La distribución de contingencia y gestión del SD8, Anexo 8.D, debe conciliarse con esta línea
+base antes de dimensionar personal adicional o comprometer plazos de respuesta. Ninguna
+reserva de riesgos se interpreta como capacidad nominal ya disponible; su consumo requiere
+autorización y asignación registrada.
+7.5 Red agregada, restricciones y escenarios de calendario
+Las secciones 5.1 a 5.4 conservan el método y los resultados del escenario nominal anterior a la
+reestimación de la sección 4. Sus fechas, reservas, probabilidades y afirmaciones de nivelación
+no están reconciliadas con la línea base vigente de 217.543 HH ni con la asignación nominal
+por especialidad. No acreditan por sí solas la ruta crítica o el cumplimiento actual de los hitos.
+Antes de usarlos para decidir se recalculará la red con las nuevas horas, el calendario efectivo
+y la disponibilidad confirmada.
+7.5.1 Cálculo reproducible
+La red se calcula sobre los paquetes con entregable de la sección 6 y sus actividades de plantilla,
+no sobre bloques mensuales; el cálculo por actividad es el respaldo de la nivelación y se publica
+sólo hasta el H2. El calendario usa días hábiles de lunes a viernes, con el mes 1 en febrero de
+2027 (supuesto del Anexo 7.A); una persona aporta 6,4 HH efectivas por día (8 horas al 80 %),
+coherente con las 128 HH por mes de la sección 4.1. Las reglas del cálculo son las siguientes:
+• Duración de una actividad. Es sus HH divididas por las HH diarias de las personas asignadas,
+redondeada hacia arriba en días. Ninguna actividad supera diez días hábiles, una quincena.
+• Equipo del paquete. Cada paquete tiene un equipo que cumple la regla de la quincena
+y termina dentro de su ventana. Los módulos de la Etapa 1 se escalonan entre junio y
+septiembre de 2027: cada uno empieza su análisis y diseño de contratos en junio, junto con
+la base compartida, y construye en iteraciones según la disponibilidad del equipo, con 12
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+38
+
+
+---
+
+LafroX SpA Formulario T-15: Nivelación de recursos
+personas en las actividades de equipo completo y 2 por incremento.
+• Lógica. Dentro del paquete, las actividades siguen su plantilla (análisis, diseño, construc-
+ción, pruebas, integración y entrega). Entre paquetes rigen las dependencias del Anexo
+7.B: las de tipo FC exigen que el predecesor termine; las de tipo CC, que haya empezado; y
+las de tipo «por interfaz» (D-16, D-18 y D-19) hacen que el sucesor construya después de
+que el predecesor fija sus contratos (actividad A02) e integre después de que el predecesor
+entrega (A12).
+• Revisión del CLIENTE. Cada hito se cumple con el acta de aceptación (artículo 18.1 de
+las Bases Administrativas (p. 13)), y el CLIENTE dispone de diez días hábiles para revisar
+(artículo 18.3 de las Bases Administrativas (p. 13)). Por eso los paquetes que gatillan un hito
+terminan, a más tardar, diez días hábiles antes del último día hábil del mes del hito, y antes
+de esa fecha límite se deja la reserva que pide el PERT (sección 5.3). La subsanación no se
+programa como trabajo normal: si se necesita, consume la reserva.
+• Nivelación de recursos. Los paquetes se programan en el orden de su holgura y cada uno
+en la primera fecha en que no supera la dotación declarada en el SD1 (LafroX, 2026i):
+40 personas de desarrollo (de las 48 de la división; las 8 restantes quedan disponibles),
+44 de SRE y NOC, 15 de arquitectura y datos en conjunto, 7 de seguridad sin contar los
+analistas del SOC propio, contratados aparte y 10 de calidad, que se refuerza con evaluadores
+subcontratados hasta 16 durante las certificaciones (PMI, 2017, pp. 211–212). La carga diaria
+suma las actividades y el esfuerzo continuo del mes.
+En el escenario nominal histórico no se registraron dependencias incumplidas ni paquetes
+fuera de sus ventanas. Sus máximos diarios deben revisarse con las horas actualizadas y la
+disponibilidad nominal por especialidad; el tamaño corporativo declarado no acredita por sí
+solo la asignación al proyecto. La Tabla 7.7 resume las fechas de los grupos de paquetes; la
+sección 6.1 da las fechas de cada paquete.
+Tabla 7.7 Fechas programadas por grupo de paquetes. Fuente: elaboración a partir de la sección 6.1.
+Grupo Paquetes Inicio Fin
+Alcance (H1) 1.2.1, 1.2.4 01-02-2027 09-03-2027
+Interfaces sin documen-
+tación
+1.2.3 01-02-2027 09-02-2027
+Diseño E1, seguridad y
+aprobación (H2)
+2.1.1–2.1.3, 2.2.1, 2.2.3,
+2.2.4, 2.4.1
+01-03-2027 29-04-2027
+Planos, especificación y
+sala técnica
+2.3.1, 2.3.2, 5.1.2, 6.1 01-02-2027 20-05-2027
+continúa en la página siguiente
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+39
+
+
+---
+
+LafroX SpA Formulario T-15: Nivelación de recursos
+Tabla 7.7 — continuación
+Grupo Paquetes Inicio Fin
+Racks y borde de los CD
+(H3)
+6.3.1–6.3.3, 6.6 03-05-2027 29-06-2027
+Servicios de nube y
+ambientes (H3)
+3.2.1, 3.2.2, 3.2.4, 3.2.5,
+3.1
+03-05-2027 21-06-2027
+Base compartida 3.3 01-06-2027 05-08-2027
+Módulos E1 3.4 10-06-2027 30-09-2027
+Integraciones externas
+E1
+3.6.1–3.6.4 01-07-2027 01-09-2027
+Prueba de integración
+E1 (H4)
+3.8.1 01-10-2027 20-10-2027
+Certificación E1 (H5) 3.8.2–3.8.8 21-10-2027 29-11-2027
+Diseño E2 (H8) 1.2.5, 2.1.4, 2.4.2 01-02-2028 13-03-2028
+Módulos E2 3.5 03-04-2028 26-04-2028
+Intercambio con las
+cadenas
+3.6.5, 3.6.6 01-02-2028 23-08-2028
+Prueba de integración
+E2 (H9)
+3.9.1 01-05-2028 18-05-2028
+Certificación E2 (H10) 3.9.2–3.9.7 19-05-2028 12-06-2028
+7.5.2 Secuencias que hacen compatible el modelo
+El cálculo por actividad y la simulación del SD8 fijan siete reglas de secuencia que hacen
+compatible el cronograma con los hitos.
+• Ventanas de módulos. Los módulos de la Etapa 1 ocupan los meses 5 a 8 (junio a septiembre
+de 2027): el análisis y el diseño de contratos empiezan con la base compartida, y la cons-
+trucción se escalona para no superar 40 desarrolladores simultáneos. Las dependencias
+entre módulos son por interfaz.
+• Sala técnica y ambientes. La cadena deja reserva ante el H3: planos 2.3.1/2.3.2 en el mes
+1, especificación y orden de compra emitida por LafroX en el mes 2 (5.1.2), instalación
+6.1.1–6.1.4 en el mes 3 y recepción 6.1.5 en el mes 4. Los racks R01/R02 se montan en los
+meses 4 y 5, el gabinete de Concepción en el mes 4 y el borde de los CD entra en servicio
+en el mes 5 (6.6.3), junto con los ambientes en la nube. Los gabinetes de cross-docking se
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+40
+
+
+---
+
+LafroX SpA Formulario T-15: Nivelación de recursos
+montan en el mes 9. El CLIENTE solo compra el equipamiento de terreno antes de cada ola.
+Las actas 5.1.3 acreditan la recepción técnica de ambos suministros.
+• Certificación. Las pruebas de aceptación y de operación sin conexión (3.8.2 y 3.8.3) em-
+piezan al terminar la prueba de integración (D-21). Las pruebas de carga, recuperación,
+seguridad ofensiva y despliegue sin interrupción (3.8.4 a 3.8.6 y 3.8.8) también quedan
+condicionadas al cierre de 3.8.1, porque certifican la versión integrada que habilita el H5.
+En la Etapa 2 rige la misma regla: la aceptación 3.9.2 ejecuta sus ciclos al terminar 3.9.1, y
+las pruebas de carga, recuperación, seguridad ofensiva y despliegue (3.9.3 a 3.9.5 y 3.9.7)
+comienzan después de la integración y regresión de la Etapa 2; todas terminan en el mes
+16 y el acta 3.9.6 se prepara en junio. Estas pruebas corren en paralelo con la revisión del
+CLIENTE del H4 y del H9, no con la integración que les da base; si esa revisión formula
+observaciones sobre el software, la certificación repite los casos afectados dentro de su
+reserva.
+• Integraciones de la Etapa 1 antes del H4. Las integraciones con proveedores, pago, mapas
+y avisos (3.6.1 a 3.6.4) terminan entre agosto y septiembre de 2027 y son predecesoras de la
+prueba de integración 3.8.1, de modo que el software del H4 incluye todas las interfaces
+externas de la Etapa 1 (Formulario E-25).
+• Aprobaciones que gatillan el H2 y el H8. Los documentos de aprobación 2.4.1 y 2.4.2
+terminan antes de la fecha límite de su hito: 2.4.1 se elabora en abril de 2027, apenas se
+entregan la arquitectura, el plan de seguridad (2.2.3, con cuatro especialistas) y el modelo
+de datos, y queda en revisión del CLIENTE en mayo; 2.4.2 se elabora entre el 1 y el 13 de
+marzo de 2028, después del diseño 2.1.4, que se ejecuta con cuatro arquitectos en la primera
+quincena de febrero.
+• Corte de la migración. Sólo la conciliación final y el corte (3.7.5.A06) son una intervención
+productiva y se programan en días permitidos, después de los dos ensayos 3.7.3 y 3.7.4
+(D-24); el análisis, el diseño y las pruebas del corte avanzan en paralelo con esos ensayos
+en ambientes no productivos. La carga de saldos migrados desde el WMS de Talca (3.7.3)
+y su segundo ensayo (3.7.4) se ejecutan en diciembre de 2027 sobre Preproducción y no
+intervienen Producción, por lo que no infringen el congelamiento de diciembre; la carga
+productiva de esos saldos ocurre sólo con el corte 3.7.5.
+• Refuerzo de calidad. Durante las certificaciones (meses 9 a 12 y 16 a 18) el equipo de calidad
+se refuerza con evaluadores subcontratados hasta 16 personas por día (LafroX, 2026o, SD6,
+sección 6.1.3), para dejar ante el H5 y el H10 la reserva que exige la simulación del SD8.
+El escenario histórico escalona la construcción de la Etapa 1 entre junio y septiembre de 2027
+con hasta 40 desarrolladores simultáneos; ese máximo debe contrastarse con la asignación
+nominal. Su curva registra 28 personas equivalentes de desarrollo en los meses 6 y 7. Las
+dependencias D-08 y D-12 del Anexo 7.B se precisaron por paquete, porque a nivel de cuenta
+bloqueaban sin necesidad: los ambientes no esperan a la plataforma de IoT (3.2.3), que precede
+a M12, ni la configuración de los CD espera a los gabinetes de cross-docking (6.3.4), que
+preceden al equipamiento de campo.
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+41
+
+
+---
+
+LafroX SpA Formulario T-15: Nivelación de recursos
+7.5.3 Reservas y análisis PERT de duración
+La duración PERT de cada paquete usa la tríada de la sección 4.1: O = 0,75 d, M = d y P = 1,25
+d, con el equipo programado. Por eso T_E = d y 𝜎 = d/12. Para cada hito se recorren todos
+los caminos que llegan a sus paquetes, desde la fecha de liberación de su primer paquete;
+la varianza de un camino es la suma de las varianzas de sus paquetes, y la probabilidad de
+entregar a tiempo es Φ(reserva/𝜎). Esa probabilidad sólo mide la variación de las horas. El SD8,
+Anexo 8.C, agrega una simulación de Monte Carlo sobre la misma red que suma la ocurrencia
+de los riesgos del registro; la Tabla 7.8 muestra ambos resultados.
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+42
+
+
+---
+
+LafroX
+SpA
+Formulario
+T-15:
+Nivelación
+de
+recursos
+Tabla 7.8 Escenario nominal histórico: entrega, reserva y probabilidad por hito; pendiente de recálculo. Fuente: elaboración a partir de la sección 6.1 de este
+formulario y LafroX (2026r, SD8, Anexo 8.C).
+Hito Entrega
+programada
+Fecha límite
+de entrega
+(acta − 10
+días hábiles)
+Reserva
+(días
+hábiles)
+Camino de
+menor probabi-
+lidad (PERT)
+𝜎 del
+camino
+(días
+hábiles)
+P(entrega a tiempo),
+PERT
+P(entrega a tiempo),
+simulación con riesgos
+Fecha P80
+simulada
+H1 09-03-2027 17-03-2027 6 1.2.1 0,58 > 99,9 % > 99,9 % 11-03-2027
+H2 29-04-2027 17-05-2027 12 2.1.1 → 2.4.1 1,90 > 99,9 % 97,4 % 10-05-2027
+H3 21-06-2027 16-07-2027 19 3.1.1 1,25 > 99,9 % 88,3 % 13-07-2027
+H4 20-10-2027 16-11-2027 19 3.8.1 1,17 > 99,9 % 86,5 % 15-11-2027
+H5 29-11-2027 17-01-2028 35 3.8.2 1,67 > 99,9 % 88,8 % 13-01-2028
+H8 13-03-2028 17-03-2028 4 2.4.2 0,75 > 99,9 % 91,1 % 16-03-2028
+H9 18-05-2028 16-06-2028 21 3.9.1 1,17 > 99,9 % > 99,9 % 29-05-2028
+H10 12-06-2028 17-07-2028 25 3.9.1 → 3.9.2 →
+3.9.6
+1,54 > 99,9 % > 99,9 % 29-06-2028
+LafroX
+SpA
+Formulario
+T-15
+Media
+firma:
+Alex
+Aravena
+43
+
+
+---
+
+LafroX SpA Formulario T-15: Nivelación de recursos
+La tabla cuenta días hábiles de lunes a viernes sin descontar feriados, como declara la sección
+5.1; la conversión a fechas efectivas es la acción del riesgo R8-17 en el mes 1. Dos fechas límite
+coinciden con un feriado: los diez días hábiles que van del 17 al 31 de mayo de 2027 incluyen
+el feriado del 21 de mayo, de modo que el límite del H2 pasa del 17 al 14 de mayo de 2027 y
+su reserva, a 11 días hábiles; el límite del H3, 16 de julio de 2027, es feriado y pasa al 15 de
+julio, con una reserva de 18. Las probabilidades de esta tabla se recalculan con esas reservas al
+confirmar el calendario.
+Ni el PERT ni la simulación incluyen un error sistemático en los tamaños supuestos que afecte
+a todos los paquetes a la vez, la falta de personas con las competencias requeridas ni un
+suministro de la infraestructura fuera de plazo más allá de lo modelado en R8-19. Esos casos
+se tratan con los disparadores del SD8, y su control es el seguimiento semanal de la reserva de
+cada hito.
+7.5.4 Gobierno
+Las ventanas mensuales de acompañamiento son una imputación inicial: cuatro semanas desde
+un acta en día permitido pueden cruzar al mes siguiente, como ocurre con 4.3.2. Confirmada
+la fecha, se redistribuyen las mismas HH entre meses y se recalculan relevos; no se acorta el
+acompañamiento para mantener una celda mensual.
+El JP revisa semanalmente fechas pronosticadas, consumo de capacidad y restricciones. Toda
+amenaza a un hito se escala cuando la desviación proyectada supera la mitad de su reserva de
+la Tabla 7.8, sin esperar a consumirla. La actualización de tareas, equipos o duración obliga
+a repetir el cálculo y conservar D-01–D-34; se mantienen los 56 meses y las condiciones del
+artículo 17.3 de las Bases Administrativas (p. 13). Ver SD8, Anexos 8.C/8.D, para escenarios,
+reservas y condiciones de evidencia.
+7.5.5 Presentación de entregables y revisión del CLIENTE
+Cada entregable que gatilla un hito se presenta en la fecha de entrega de la Tabla 7.8, con al
+menos diez días hábiles antes del último día hábil del mes del hito, para que la revisión del
+artículo 18.3 de las Bases Administrativas (p. 13) termine dentro de ese mes. Los entregables
+que admiten revisión por partes se presentan por incrementos: el informe de QA de cada
+módulo de la Etapa 1 se entrega al terminar el módulo, entre agosto y septiembre de 2027, y
+el informe de integración al terminar 3.8.1, el 20 de octubre de 2027. Así, la revisión final del
+H4 cubre sólo el último incremento. Si el CLIENTE formula observaciones, la subsanación
+de diez días hábiles usa la reserva del hito, y el hito no se da por cumplido hasta el acta. Este
+procedimiento no supone que el CLIENTE renuncie a su plazo ni que firme el acta el mismo
+día de la entrega.
+El H1 y el H8 tienen reservas de 6 y 4 días hábiles, menores que los diez días de subsanación
+del artículo 18.3 de las Bases Administrativas (p. 13). Por eso su borrador se revisa con la
+Contraparte Técnica una semana antes de la entrega formal: el del H1 en la semana del 1 de
+marzo de 2027 y el del H8 en la semana del 6 de marzo de 2028. Ese control es el principal del
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+44
+
+
+---
+
+LafroX SpA Formulario T-15: Nivelación de recursos
+H8, porque una observación formal llevaría su acta al 3 de abril de 2028, fuera del mes 14. Si
+aun así se formulan observaciones, el equipo del entregable las subsana en cinco días hábiles
+(SD8, R8-12).
+7.5.6 Medición de los niveles de atención
+Durante la atención de 04:00 a 22:00 de lunes a sábado y su cobertura 24×7 en los peaks de
+septiembre y diciembre y ante incidentes críticos en la ventana de despacho, LafroX atenderá
+al menos el 80 % de los contactos antes de 20 segundos, resolverá al menos el 70 % en el primer
+contacto y mantendrá el abandono en un máximo del 5 %. Estos resultados se medirán y
+reportarán mensualmente y activarán las medidas de recalibración y refuerzo previstas en
+esta sección (BTT, cap. 21, RT-21.06, p. 36; Caso, cap. 15, pp. 26–27).
+El Erlang C de la mesa (SD4, Anexo 4-W.7) dimensiona la espera con llegadas de Poisson,
+atención exponencial y paciencia infinita. Sirve para el 80 % de respuestas antes de 20 segundos,
+pero no modela el abandono ni la resolución al primer contacto del RT-21.06 de las Bases
+Técnicas Transversales (p. 36). Para ambos se aplica medición: desde la marcha blanca de
+la Etapa 1, la mesa registra por contacto la hora de llegada, de respuesta o de abandono y si
+se resolvió sin escalar. Con al menos cuatro semanas de registros se calibra un modelo con
+abandono (Erlang A) usando la paciencia observada, y se recalcula la dotación de 8.1.2 antes
+del mes 21. La resolución al primer contacto se sostiene con la base de conocimiento de 3.11 y
+la capacitación de 7.1, y se informa mensualmente. Si un indicador no se cumple durante dos
+meses seguidos, se aumenta la dotación de la franja afectada sin esperar la revisión anual.
+7.5.7 Dotación requerida, roles mínimos y dotación declarada
+La curva de la sección 4.4 y la carga diaria de la sección 6.1 se comparan con la dotación técnica
+declarada en el SD1, Tabla 1.1. Las personas equivalentes de la curva son HH del mes divididas
+por 128; las simultáneas son las que trabajan el mismo día según el cronograma por actividad,
+y son las que la dotación debe cubrir. La comparación muestra dónde la curva cabe en las
+divisiones de LafroX y dónde se requiere asignación, contratación o subcontratación antes
+de aprobar la línea base. Como las personas de esas divisiones atienden otros contratos, la
+asignación nominal se confirma antes del H1.
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+45
+
+
+---
+
+LafroX SpA Formulario T-15: Nivelación de recursos
+Tabla 7.9 Dotación requerida, roles mínimos y dotación declarada. Fuente: elaboración a partir de Distribuidora
+Puelche S.A. (2026b, sec. 19.2, pp. 33–34); Distribuidora Puelche S.A. (2026a, Formulario T-15, p. 63); y la curva de
+este formulario.
+Familia T-15 Peak de la curva División del SD1
+que la provee
+Dotación declarada Condición
+DES 28 equivalentes en
+los meses 6 y 7; 40
+simultáneas como
+máximo entre
+junio y septiembre
+de 2027
+Desarrollo de
+software
+48 La división trabaja
+en PHP/Laravel y
+Kotlin, el mismo
+stack de la oferta;
+el Líder de De-
+sarrollo verifica
+la experiencia
+de cada persona
+asignada antes del
+mes 5.
+SRE 17 equivalentes
+en el mes 4; 24
+simultáneas en
+el mes 4; 16 a 21
+en Operación; el
+tercer agente de
+la mesa se suma
+desde el mes 25
+SRE y Cloud (12) y
+NOC 24×7 (32)
+44 Los meses 3 a 6
+concentran la
+instalación de sa-
+la, racks y sitios:
+energía, climati-
+zación e incendio
+(6.1.2–6.1.4) los
+ejecutan instalado-
+res especializados
+supervisados por
+SRE. NOC y mesa
+se cubren con per-
+sonal del NOC con
+turnos asignados.
+continúa en la página siguiente
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+46
+
+
+---
+
+LafroX SpA Formulario T-15: Nivelación de recursos
+Tabla 7.9 — continuación
+Familia T-15 Peak de la curva División del SD1
+que la provee
+Dotación declarada Condición
+SEG 9 en el mes 16
+con el SOC; 6
+simultáneas sin el
+SOC
+CISO y especialis-
+tas en ciberseguri-
+dad
+7 El puesto SOC
+24×7 suma 744 HH
+en un mes de 31
+días, es decir, 6
+personas equiva-
+lentes con las 128
+HH efectivas de
+la sección 4.1; el
+SD4, Anexo 4-W.7,
+lo cubre con 4 per-
+sonas a 42 horas
+semanales (5 des-
+de el 26-04-2028)
+y la diferencia
+corresponde a au-
+sencias y relevos.
+Se cubre con un
+SOC propio en el
+Centro de Opera-
+ciones de LafroX
+en Valparaíso, con
+analistas contrata-
+dos antes del mes
+13 bajo el Encarga-
+do de Seguridad
+(RT-11.17), con las
+mismas horas de
+la sección 4.2.
+CAL 10 equivalentes y
+13 simultáneas en
+el mes 16
+Aseguramiento y
+automatización de
+pruebas
+10 La división de-
+clara 10; durante
+las certificacio-
+nes se agregan
+evaluadores sub-
+contratados hasta
+16 por día (SD6,
+sección 6.1.3).
+continúa en la página siguiente
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+47
+
+
+---
+
+LafroX SpA Formulario T-15: Nivelación de recursos
+Tabla 7.9 — continuación
+Familia T-15 Peak de la curva División del SD1
+que la provee
+Dotación declarada Condición
+ARQ y DAT 10 y 11 equivalen-
+tes; 15 simultá-
+neas en conjunto
+en el mes 7
+Arquitectura de
+solución e integra-
+ción
+15 Datos y arquitec-
+tura comparten la
+división; la nivela-
+ción la limita a 15
+personas por día.
+IMP 26 equivalentes
+en el mes 19; 30
+simultáneas en el
+mes 14
+La Tabla 1.1 no
+tiene una división
+de implantación
+— Los 13 puestos
+de acompaña-
+miento se cubren
+con personal de
+implantación con-
+tratado para las
+marchas blancas y
+capacitado en 7.1.
+El contrato inclu-
+ye una opción de
+hasta 8 personas
+adicionales por
+cuatro semanas
+para la contin-
+gencia de R8-18
+(sección 4.5).
+JP 5 en el mes 1 Dirección de Ope-
+raciones, fuera de
+la Tabla 1.1
+— Personas de direc-
+ción y documen-
+tación, no cinco
+jefes de proyecto.
+Los roles mínimos del numeral 19.2 de las Bases Técnicas Transversales (p. 34) se imputan a las
+familias así. El Jefe de Proyecto (100 % en implementación) se imputa a JP en los meses 1–21.
+El Líder de Desarrollo (100 % en implementación) se imputa a ARQ en los meses 1–4, donde
+participa en el diseño 2.1 y en los prototipos 2.6.2, y a DES desde el mes 4 (3.11.3/3.11.4 y los
+módulos); por eso la curva muestra DES cero en los meses 1–3 sin que el rol quede sin horas. El
+Líder Funcional (100 % en implementación) se imputa a IMP en los meses 1–4 (1.2.2 y 2.6) y a
+CAL e IMP desde el mes 5 (pruebas de aceptación y olas). El Líder de Integración (permanente
+en implementación) se imputa a ARQ (1.2.3, 3.3 y 3.6). Ninguna de estas imputaciones agrega
+horas: forman parte de las horas de los paquetes donde trabajan. El SD1, sección 1.5, nomina
+a las personas que ocupan cada rol.
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+48
+
+
+---
+
+LafroX SpA Formulario T-15: Nivelación de recursos
+7.6 Lista de actividades: regla del 8/80 y del período de reporte
+La EDT del Formulario T-14 llega hasta el paquete de trabajo; fuera de ella, cada paquete se
+descompone en las actividades que permiten programarlo, asignarlo y controlarlo (PMI, 2017,
+pp. 183–185). Las actividades cumplen dos reglas de tamaño:
+• Regla del 8/80. Cada actividad requiere entre 8 y 80 horas hombre de esfuerzo.
+• Regla del período de reporte. Cada actividad cabe en una quincena, el período de reporte
+del Comité de Proyecto (paquete 1.8.3): dura como máximo diez días hábiles. Con 6,4 HH
+efectivas por persona y día, una actividad de 80 HH con dos personas dura ⌈80 ÷ 12,8⌉ =
+7 días hábiles; si su ventana es más corta, se le asignan más personas. Toda actividad de
+nivel de esfuerzo se divide en relevos de 64 HH como máximo.
+La descomposición no cambia las HH de la sección 4: la suma de las actividades de cada
+paquete es igual a su esfuerzo esperado E. Las actividades heredan el responsable y la ventana
+del paquete. La Tabla 7.10 da las fechas de cada paquete y la Tabla 7.11 las actividades hasta el
+H2. Por planificación gradual (PMI, 2017, p. 185), antes de cada fase se detallan las actividades
+de la fase siguiente con las estimaciones del equipo, sin mover los hitos ni consumir más
+reserva que la registrada. El avance se informa por el código de la actividad, que cuelga del
+código de su paquete.
+7.6.1 Paquetes con entregable y planificación gradual
+La Tabla 7.10 programa los 163 paquetes con entregable: responsable (el rol del paquete),
+personas (el promedio en los días de trabajo del paquete y el máximo en un día, porque las
+actividades de equipo completo reúnen más personas que los incrementos), HH, fechas de
+inicio y fin, y predecesoras, agrupadas por cuenta del Anexo 7.B cuando dependen de toda
+la cuenta. En los módulos de la Etapa 1, el análisis y el diseño de contratos empiezan en
+junio, junto con la base compartida, para cerrar los contratos de interfaz antes de construir;
+la construcción se escalona después según la capacidad, por eso un módulo abarca de 8 a 15
+semanas con un promedio de 7 a 8 personas. Las fechas resultan de nivelar la carga diaria con
+la dotación de la sección 5.1 y suponen el inicio del contrato en febrero de 2027 (V-12).
+Cada paquete se descompone en actividades de 8 a 80 HH que caben en una quincena, con una
+plantilla por clase: un módulo (D, 960 HH) se construye en iteraciones de dos semanas con
+análisis, diseño de contratos, incrementos, pruebas de contrato, integración en QA y entrega;
+una integración (I, 480 HH), en seis actividades; un diseño (E, 240 HH), en tres; una instalación
+o capacitación (T, 160 HH), en dos, y una prueba ampliada (V, 320 HH), en cuatro. La Tabla
+7.11 detalla las 108 actividades de los 56 paquetes que terminan hasta el H2 (mes 4). El resto se
+descompone por planificación gradual (PMI, 2017, p. 185): antes de cada fase (H2, H4, H8 y
+H9) el líder del frente detalla las actividades de la fase siguiente con la estimación del equipo,
+el Comité de Proyecto las aprueba como iteraciones del proceso del SD6, sección 6.2, y se
+actualiza la línea base sin mover los hitos ni las fechas límite de la Tabla 7.8.
+La Figura 7.3 muestra qué parte del cronograma se detalla en la oferta y en qué momento se
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+49
+
+
+---
+
+LafroX SpA Formulario T-15: Nivelación de recursos
+detalla el resto.
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+50
+
+
+---
+
+LafroX
+SpA
+Formulario
+T-15:
+Nivelación
+de
+recursos
+Inicio, alcance y diseño
+E1
+Actividades
+de 8 a 80 HH
+Construcción E1:
+base compartida,
+módulos e integraciones
+Se detalla antes del
+H2 (mes 4)
+Certificación y marcha
+blanca
+E1
+Se detalla antes del H4
+(mes 10)
+Diseño y construcción
+E2
+Antes del H8
+con línea base E2
+Certificación y marcha
+blanca
+E2
+Se detalla antes del
+H9 (mes 17)
+H2 H4 H8 H9
+1
+feb
+2
+mar
+3
+abr
+4
+may
+5
+jun
+6
+jul
+7
+ago
+8
+sep
+9
+oct
+10
+nov
+11
+dic
+12
+ene
+13
+feb
+14
+mar
+15
+abr
+16
+may
+17
+jun
+18
+jul
+19
+ago
+20
+sep
+21
+oct
+2027 2028
+Figura 7.3 Planificación gradual del cronograma. Fuente: elaboración a partir de las Tablas 7.10 y 7.11.
+LafroX
+SpA
+Formulario
+T-15
+Media
+firma:
+Alex
+Aravena
+51
+
+
+---
+
+LafroX SpA Formulario T-15: Nivelación de recursos
+La figura muestra que sólo los cuatro primeros meses, hasta el H2, se presentan descompuestos
+en actividades. Cada fase posterior tiene sus paquetes, fechas y dependencias fijos, y se detalla
+en un punto de replanificación ubicado antes del hito que la precede, cuando el equipo ya
+conoce el trabajo: así el cronograma no promete el día exacto de una actividad que ocurrirá un
+año después.
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+52
+
+
+---
+
+LafroX
+SpA
+Formulario
+T-15:
+Nivelación
+de
+recursos
+Tabla 7.10 Programación de los paquetes con entregable. Fuente: elaboración a partir de las secciones 4.1, 4.2 y 5.1 de este formulario y LafroX (2026t, Anexo
+7.B).
+Paquete Rol Personas (prom.
+/ máx.)
+HH Inicio Fin Predecesoras (cuenta o paquete)
+1.1.1 JP 1,8 / 2 80 01-02-2027 09-02-2027 —
+1.1.2 JP 1,8 / 2 80 01-02-2027 09-02-2027 —
+1.1.3 JP 1,8 / 2 80 01-02-2027 09-02-2027 —
+1.2.1 ARQ 1,8 / 2 80 01-02-2027 09-02-2027 —
+1.2.3 ARQ 1,8 / 2 80 01-02-2027 09-02-2027 —
+1.2.4 CAL 1,8 / 2 80 01-03-2027 09-03-2027 —
+1.2.5 ARQ 1,8 / 2 80 01-02-2028 09-02-2028 —
+1.3.1 JP 1,8 / 2 80 10-02-2027 18-02-2027 —
+1.3.2 JP 1,8 / 2 80 01-03-2027 09-03-2027 —
+1.3.3 JP 1,8 / 2 80 01-03-2027 09-03-2027 —
+1.3.4 JP 1,8 / 2 80 01-03-2027 09-03-2027 —
+1.4.1 JP 1,8 / 2 80 01-02-2027 09-02-2027 —
+1.4.2 JP 1,8 / 2 80 01-02-2027 09-02-2027 —
+1.5.1 CAL 1,8 / 2 80 01-03-2027 09-03-2027 —
+1.6.1 JP 1,8 / 2 80 01-03-2027 09-03-2027 —
+1.7.1 JP 1,8 / 2 80 01-04-2027 09-04-2027 —
+continúa en la página siguiente
+LafroX
+SpA
+Formulario
+T-15
+Media
+firma:
+Alex
+Aravena
+53
+
+
+---
+
+LafroX
+SpA
+Formulario
+T-15:
+Nivelación
+de
+recursos
+Tabla 7.10 — continuación
+Paquete Rol Personas (prom.
+/ máx.)
+HH Inicio Fin Predecesoras (cuenta o paquete)
+1.7.2 JP 1,8 / 2 80 03-04-2028 11-04-2028 —
+1.9.1 SEG 1,8 / 2 80 01-02-2027 09-02-2027 —
+1.9.2 SEG 1,8 / 2 80 01-02-2027 09-02-2027 —
+1.9.3 SEG 1,8 / 2 80 01-03-2027 09-03-2027 —
+2.1.1 ARQ 1,8 / 2 240 01-03-2027 29-03-2027 1.2
+2.1.2 ARQ 1,8 / 2 240 01-03-2027 29-03-2027 —
+2.1.3 DAT 1,8 / 2 240 01-03-2027 29-03-2027 —
+2.1.4 ARQ 3,1 / 4 240 01-02-2028 16-02-2028 —
+2.2.1 SEG 1,8 / 2 240 01-03-2027 29-03-2027 —
+2.2.3 SEG 3,1 / 4 240 01-04-2027 16-04-2027 —
+2.2.4 SEG 1,8 / 2 240 01-03-2027 29-03-2027 —
+2.3.1 SRE 1,8 / 2 240 01-02-2027 01-03-2027 —
+2.3.2 SRE 1,8 / 2 240 01-02-2027 01-03-2027 —
+2.3.3 SRE 1,8 / 2 240 01-03-2027 29-03-2027 —
+2.4.1 ARQ 4,2 / 5 240 19-04-2027 29-04-2027 2.1, 2.2
+2.4.2 ARQ 4,2 / 5 240 01-03-2028 13-03-2028 1.2, 2.1
+2.5.1 SRE 1,8 / 2 240 01-04-2027 29-04-2027 —
+continúa en la página siguiente
+LafroX
+SpA
+Formulario
+T-15
+Media
+firma:
+Alex
+Aravena
+54
+
+
+---
+
+LafroX
+SpA
+Formulario
+T-15:
+Nivelación
+de
+recursos
+Tabla 7.10 — continuación
+Paquete Rol Personas (prom.
+/ máx.)
+HH Inicio Fin Predecesoras (cuenta o paquete)
+2.5.2 SRE 1,8 / 2 240 01-04-2027 29-04-2027 —
+2.6.1 IMP 1,8 / 2 240 01-03-2027 29-03-2027 —
+2.6.2 IMP 1,8 / 2 240 01-04-2027 29-04-2027 —
+2.6.3 IMP 1,8 / 2 240 03-05-2027 31-05-2027 —
+3.1.1 SRE 2,5 / 3 240 01-06-2027 21-06-2027 3.2
+3.1.2 SRE 2,5 / 3 240 01-06-2027 21-06-2027 3.2
+3.1.3 SRE 2,5 / 3 240 01-06-2027 21-06-2027 3.2
+3.1.4 SRE 1,8 / 2 240 03-05-2027 31-05-2027 —
+3.1.5 SRE 2,5 / 3 240 01-06-2027 21-06-2027 —
+3.2.1 SRE 1,8 / 2 240 03-05-2027 31-05-2027 5.2
+3.2.2 SRE 1,8 / 2 240 03-05-2027 31-05-2027 5.2
+3.2.3 SRE 1,8 / 2 240 03-05-2027 31-05-2027 5.2
+3.2.4 SRE 1,8 / 2 240 03-05-2027 31-05-2027 5.2
+3.2.5 SEG 1,8 / 2 240 03-05-2027 31-05-2027 5.2
+3.2.6 SRE 1,8 / 2 240 01-06-2027 29-06-2027 5.2
+3.3.1 SEG 3,3 / 4 480 01-06-2027 05-08-2027 2.2
+3.3.2 ARQ 3,3 / 4 480 01-06-2027 01-07-2027 1.2
+continúa en la página siguiente
+LafroX
+SpA
+Formulario
+T-15
+Media
+firma:
+Alex
+Aravena
+55
+
+
+---
+
+LafroX
+SpA
+Formulario
+T-15:
+Nivelación
+de
+recursos
+Tabla 7.10 — continuación
+Paquete Rol Personas (prom.
+/ máx.)
+HH Inicio Fin Predecesoras (cuenta o paquete)
+3.3.3 ARQ 3,3 / 4 480 01-06-2027 07-07-2027 —
+3.3.4 ARQ 3,3 / 4 480 10-06-2027 12-07-2027 —
+3.3.5 ARQ 3,3 / 4 480 01-06-2027 03-08-2027 —
+3.3.6 ARQ 3,3 / 4 480 07-06-2027 03-08-2027 —
+3.4.1 DES 7,1 / 12 960 10-06-2027 10-08-2027 2.4, 2.6, 3.1, 3.3
+3.4.2 DES 7,5 / 12 960 10-06-2027 11-08-2027 2.4, 2.6, 3.1, 3.3
+3.4.3 DES 6,0 / 12 960 14-06-2027 18-08-2027 2.4, 2.6, 3.1, 3.3, 3.4.1, 3.4.2
+3.4.4 DES 7,9 / 12 960 14-06-2027 29-09-2027 2.4, 2.6, 3.1, 3.3, 3.4.1, 3.4.2
+3.4.5 DES 7,5 / 12 960 14-06-2027 30-08-2027 2.4, 2.6, 3.1, 3.2, 3.3
+3.4.6 DES 7,5 / 12 960 16-06-2027 17-08-2027 2.4, 2.6, 3.1, 3.3, 3.4.2
+3.4.7 DES 8,3 / 12 960 16-06-2027 08-09-2027 1.2, 2.4, 2.6, 3.1, 3.3, 3.4.3, 3.4.6
+3.4.8 DES 8,3 / 12 960 16-06-2027 09-09-2027 2.4, 2.6, 3.1, 3.3, 3.4.3, 3.4.6
+3.4.9 DES 8,3 / 12 960 18-06-2027 30-09-2027 2.4, 2.6, 3.1, 3.3
+3.4.10 DES 7,5 / 12 960 10-06-2027 28-09-2027 2.4, 2.6, 3.1, 3.3, 3.4.8
+3.4.11 DAT 8,3 / 12 960 02-09-2027 27-09-2027 2.4, 2.6, 3.1, 3.3
+3.5.1 DES 8,3 / 12 960 03-04-2028 26-04-2028 1.2, 2.4
+3.5.2 DES 8,3 / 12 960 03-04-2028 26-04-2028 1.2, 2.4
+continúa en la página siguiente
+LafroX
+SpA
+Formulario
+T-15
+Media
+firma:
+Alex
+Aravena
+56
+
+
+---
+
+LafroX
+SpA
+Formulario
+T-15:
+Nivelación
+de
+recursos
+Tabla 7.10 — continuación
+Paquete Rol Personas (prom.
+/ máx.)
+HH Inicio Fin Predecesoras (cuenta o paquete)
+3.5.3 DES 8,3 / 12 960 03-04-2028 26-04-2028 1.2, 2.4
+3.5.4 DAT 8,3 / 12 960 03-04-2028 26-04-2028 1.2, 2.4
+3.6.1 DAT 3,3 / 4 480 02-08-2027 01-09-2027 —
+3.6.2 DES 3,3 / 4 480 01-07-2027 02-08-2027 —
+3.6.3 DES 3,3 / 4 480 01-07-2027 02-08-2027 —
+3.6.4 DES 3,3 / 4 480 01-07-2027 02-08-2027 —
+3.6.5 DES 2,1 / 4 480 01-02-2028 04-07-2028 —
+3.6.6 DES 2,1 / 4 480 01-06-2028 23-08-2028 —
+3.7.1 DAT 3,3 / 4 480 04-08-2027 01-10-2027 —
+3.7.2 DAT 3,3 / 4 480 04-10-2027 03-11-2027 —
+3.7.3 DAT 3,3 / 4 480 01-12-2027 31-12-2027 —
+3.7.4 DAT 3,3 / 4 480 01-12-2027 31-12-2027 —
+3.7.5 DAT 3,9 / 5 480 03-01-2028 27-01-2028 3.7.1, 3.7.2, 3.7.3, 3.7.4
+3.8.1 CAL 1,8 / 2 160 01-10-2027 20-10-2027 3.4, 3.6
+3.8.2 CAL 2,5 / 3 320 21-10-2027 17-11-2027 3.8.1
+3.8.3 CAL 2,5 / 3 320 21-10-2027 17-11-2027 3.8.1
+3.8.4 CAL 1,8 / 2 320 21-10-2027 09-11-2027 3.8.1
+continúa en la página siguiente
+LafroX
+SpA
+Formulario
+T-15
+Media
+firma:
+Alex
+Aravena
+57
+
+
+---
+
+LafroX
+SpA
+Formulario
+T-15:
+Nivelación
+de
+recursos
+Tabla 7.10 — continuación
+Paquete Rol Personas (prom.
+/ máx.)
+HH Inicio Fin Predecesoras (cuenta o paquete)
+3.8.5 CAL 1,8 / 2 320 21-10-2027 09-11-2027 3.8.1
+3.8.6 SEG/
+CAL
+3,9 / 6 320 21-10-2027 09-11-2027 3.8.1
+3.8.7 CAL 3,1 / 4 160 18-11-2027 29-11-2027 3.8.2, 3.8.3, 3.8.4, 3.8.5, 3.8.6, 3.8.8
+3.8.8 SRE 1,8 / 2 320 21-10-2027 09-11-2027 3.8.1
+3.9.1 CAL 1,8 / 2 160 01-05-2028 18-05-2028 3.5
+3.9.2 CAL 3,6 / 5 320 27-05-2028 31-05-2028 3.9.1
+3.9.3 CAL 2,5 / 3 320 19-05-2028 26-05-2028 3.9.1
+3.9.4 CAL 2,5 / 3 320 19-05-2028 26-05-2028 3.9.1
+3.9.5 SEG/
+CAL
+4,2 / 6 160 19-05-2028 26-05-2028 3.9.1
+3.9.6 CAL 3,1 / 4 160 01-06-2028 12-06-2028 3.9.1, 3.9.2, 3.9.3, 3.9.4, 3.9.5, 3.9.7
+3.9.7 SRE 1,8 / 2 160 19-05-2028 26-05-2028 3.9.1
+3.10.1.1 DAT 1,8 / 2 240 02-08-2027 08-10-2027 —
+3.10.1.2 DAT 1,8 / 2 240 01-10-2027 19-11-2027 —
+3.10.1.3 DAT 1,8 / 2 240 01-10-2027 19-11-2027 —
+3.10.1.4 DAT 1,8 / 2 240 01-12-2027 20-03-2028 —
+continúa en la página siguiente
+LafroX
+SpA
+Formulario
+T-15
+Media
+firma:
+Alex
+Aravena
+58
+
+
+---
+
+LafroX
+SpA
+Formulario
+T-15:
+Nivelación
+de
+recursos
+Tabla 7.10 — continuación
+Paquete Rol Personas (prom.
+/ máx.)
+HH Inicio Fin Predecesoras (cuenta o paquete)
+3.10.2.1 CAL 1,8 / 2 240 01-03-2027 20-04-2027 —
+3.10.2.2 CAL 1,8 / 2 240 01-04-2027 09-06-2027 —
+3.10.2.3 CAL 1,8 / 2 240 01-06-2027 08-10-2027 —
+3.10.2.4 CAL 1,8 / 2 240 01-12-2027 20-03-2028 —
+3.10.3.1 DAT 1,8 / 2 240 01-04-2027 09-06-2027 —
+3.10.3.2 DAT 1,8 / 2 240 07-06-2027 20-09-2027 —
+3.10.3.3 DAT 1,8 / 2 240 01-10-2027 19-11-2027 —
+3.10.3.4 DAT 1,8 / 2 240 01-12-2027 20-03-2028 —
+3.10.4.1 IMP 1,8 / 2 240 01-02-2028 21-03-2028 —
+3.10.4.2 IMP 1,8 / 2 240 01-03-2028 19-04-2028 —
+3.10.4.3 IMP 1,8 / 2 240 03-04-2028 09-06-2028 —
+3.10.4.4 IMP 1,8 / 2 240 03-07-2028 29-09-2028 —
+4.1.1 IMP 1,8 / 2 80 01-11-2027 09-11-2027 —
+4.1.2 IMP 1,8 / 2 80 01-12-2027 09-12-2027 —
+4.1.3 IMP 1,8 / 2 80 01-06-2028 09-06-2028 —
+4.2.3 JP 1,8 / 2 80 05-05-2028 15-05-2028 7.3
+4.3.3 JP 1,8 / 2 80 11-10-2028 19-10-2028 4.3.4, 7.1, 7.3
+continúa en la página siguiente
+LafroX
+SpA
+Formulario
+T-15
+Media
+firma:
+Alex
+Aravena
+59
+
+
+---
+
+LafroX
+SpA
+Formulario
+T-15:
+Nivelación
+de
+recursos
+Tabla 7.10 — continuación
+Paquete Rol Personas (prom.
+/ máx.)
+HH Inicio Fin Predecesoras (cuenta o paquete)
+4.3.4 JP 1,8 / 2 80 02-10-2028 10-10-2028 —
+5.1.1 ARQ 1,8 / 2 80 01-03-2027 09-03-2027 —
+5.1.2 ARQ 1,8 / 2 80 02-03-2027 10-03-2027 2.3
+5.1.3 SRE 1,8 / 2 80 01-06-2027 09-06-2027 —
+5.2.1 SRE 1,8 / 2 80 01-03-2027 09-03-2027 —
+5.2.2 SRE 1,8 / 2 80 03-05-2027 11-05-2027 —
+5.2.3 ARQ 1,8 / 2 80 03-05-2027 11-05-2027 —
+5.3.1 SRE 1,8 / 2 80 03-05-2027 11-05-2027 —
+5.3.2 SRE 1,8 / 2 80 03-05-2027 11-05-2027 —
+5.3.3 SRE 1,8 / 2 80 03-05-2027 11-05-2027 —
+5.4.1 IMP 1,8 / 2 80 01-10-2027 11-10-2027 —
+5.4.2 IMP 1,8 / 2 80 01-10-2027 11-10-2027 —
+5.4.3 JP 1,8 / 2 80 01-06-2028 09-06-2028 —
+5.4.4 JP 1,8 / 2 80 02-08-2027 10-08-2027 —
+6.1.1 SRE 1,8 / 2 160 01-04-2027 20-04-2027 5.1
+6.1.2 SRE 1,8 / 2 160 01-04-2027 20-04-2027 5.1
+6.1.3 SRE 1,8 / 2 160 01-04-2027 20-04-2027 5.1
+continúa en la página siguiente
+LafroX
+SpA
+Formulario
+T-15
+Media
+firma:
+Alex
+Aravena
+60
+
+
+---
+
+LafroX
+SpA
+Formulario
+T-15:
+Nivelación
+de
+recursos
+Tabla 7.10 — continuación
+Paquete Rol Personas (prom.
+/ máx.)
+HH Inicio Fin Predecesoras (cuenta o paquete)
+6.1.4 SRE 1,8 / 2 160 01-04-2027 20-04-2027 5.1
+6.1.5 SRE 1,8 / 2 160 03-05-2027 20-05-2027 5.1
+6.2.1 SRE 1,8 / 2 160 03-05-2027 20-05-2027 —
+6.2.2 SRE 1,8 / 2 160 01-07-2027 20-07-2027 —
+6.2.3 SRE 1,8 / 2 160 02-08-2027 19-08-2027 —
+6.3.1 SRE 1,8 / 2 160 21-05-2027 09-06-2027 6.1
+6.3.2 SRE 1,8 / 2 160 21-05-2027 09-06-2027 6.1
+6.3.3 SRE 1,8 / 2 160 03-05-2027 20-05-2027 —
+6.3.4 SRE 1,8 / 2 160 01-10-2027 20-10-2027 —
+6.4.1 SEG 1,8 / 2 160 01-06-2027 18-06-2027 —
+6.4.2 SEG 1,8 / 2 160 07-06-2027 24-06-2027 —
+6.4.3 SEG 1,8 / 2 160 21-06-2027 08-07-2027 —
+6.5.1 SRE 1,8 / 2 160 06-10-2027 14-01-2028 3.2
+6.5.2 SRE 1,8 / 2 160 04-11-2027 14-01-2028 —
+6.5.3 SRE 1,8 / 2 160 06-10-2027 25-11-2027 —
+6.5.4 SRE 1,8 / 2 160 04-11-2027 14-01-2028 —
+6.5.5 SRE 1,8 / 2 160 04-11-2027 14-01-2028 —
+continúa en la página siguiente
+LafroX
+SpA
+Formulario
+T-15
+Media
+firma:
+Alex
+Aravena
+61
+
+
+---
+
+LafroX
+SpA
+Formulario
+T-15:
+Nivelación
+de
+recursos
+Tabla 7.10 — continuación
+Paquete Rol Personas (prom.
+/ máx.)
+HH Inicio Fin Predecesoras (cuenta o paquete)
+6.5.6 SRE 1,8 / 2 160 06-10-2027 14-01-2028 —
+6.6.1 SRE 1,8 / 2 160 10-06-2027 29-06-2027 6.3
+6.6.2 SRE 1,8 / 2 160 10-06-2027 29-06-2027 6.3
+6.6.3 SRE 3,1 / 4 160 10-06-2027 21-06-2027 6.3
+7.1.1 IMP 1,8 / 2 160 01-11-2027 24-12-2027 —
+7.1.6 IMP 1,8 / 2 160 01-11-2027 24-12-2027 —
+7.2.2 IMP 1,8 / 2 160 01-05-2028 23-06-2028 —
+7.2.3 IMP 1,8 / 2 160 01-03-2027 25-05-2027 —
+7.3.1 IMP 1,8 / 2 160 01-02-2028 24-03-2028 —
+7.3.2 IMP 1,8 / 2 160 03-07-2028 25-07-2028 —
+9.1.1 DES 1,8 / 2 80 02-10-2028 10-10-2028 —
+9.1.2 JP 1,8 / 2 80 02-10-2028 10-10-2028 —
+9.2.2 SEG 1,8 / 2 80 01-09-2031 09-09-2031 —
+LafroX
+SpA
+Formulario
+T-15
+Media
+firma:
+Alex
+Aravena
+62
+
+
+---
+
+LafroX
+SpA
+Formulario
+T-15:
+Nivelación
+de
+recursos
+Tabla 7.11 Actividades de los paquetes que terminan hasta el H2. Fuente: elaboración a partir de la Tabla 7.10. Bloque 1 de 2.
+Actividad Nombre Rol Per-
+sonas
+HH Inicio Fin Días
+hábiles
+Predecesoras
+1.1.1.A01 Elaboración, revisión y
+aprobación del entregable
+JP 2 80 01-02-2027 09-02-2027 7 —
+1.1.2.A01 Elaboración, revisión y
+aprobación del entregable
+JP 2 80 01-02-2027 09-02-2027 7 —
+1.1.3.A01 Elaboración, revisión y
+aprobación del entregable
+JP 2 80 01-02-2027 09-02-2027 7 —
+1.2.1.A01 Elaboración, revisión y
+aprobación del entregable
+ARQ 2 80 01-02-2027 09-02-2027 7 —
+1.2.3.A01 Elaboración, revisión y
+aprobación del entregable
+ARQ 2 80 01-02-2027 09-02-2027 7 —
+1.2.4.A01 Elaboración, revisión y
+aprobación del entregable
+CAL 2 80 01-03-2027 09-03-2027 7 —
+1.3.1.A01 Elaboración, revisión y
+aprobación del entregable
+JP 2 80 10-02-2027 18-02-2027 7 —
+1.3.2.A01 Elaboración, revisión y
+aprobación del entregable
+JP 2 80 01-03-2027 09-03-2027 7 —
+1.3.3.A01 Elaboración, revisión y
+aprobación del entregable
+JP 2 80 01-03-2027 09-03-2027 7 —
+1.3.4.A01 Elaboración, revisión y
+aprobación del entregable
+JP 2 80 01-03-2027 09-03-2027 7 —
+continúa en la página siguiente
+LafroX
+SpA
+Formulario
+T-15
+Media
+firma:
+Alex
+Aravena
+63
+
+
+---
+
+LafroX
+SpA
+Formulario
+T-15:
+Nivelación
+de
+recursos
+Tabla 7.11 — continuación
+Actividad Nombre Rol Per-
+sonas
+HH Inicio Fin Días
+hábiles
+Predecesoras
+1.4.1.A01 Elaboración, revisión y
+aprobación del entregable
+JP 2 80 01-02-2027 09-02-2027 7 —
+1.4.2.A01 Elaboración, revisión y
+aprobación del entregable
+JP 2 80 01-02-2027 09-02-2027 7 —
+1.5.1.A01 Elaboración, revisión y
+aprobación del entregable
+CAL 2 80 01-03-2027 09-03-2027 7 —
+1.6.1.A01 Elaboración, revisión y
+aprobación del entregable
+JP 2 80 01-03-2027 09-03-2027 7 —
+1.7.1.A01 Elaboración, revisión y
+aprobación del entregable
+JP 2 80 01-04-2027 09-04-2027 7 —
+1.9.1.A01 Elaboración, revisión y
+aprobación del entregable
+SEG 2 80 01-02-2027 09-02-2027 7 —
+1.9.2.A01 Elaboración, revisión y
+aprobación del entregable
+SEG 2 80 01-02-2027 09-02-2027 7 —
+1.9.3.A01 Elaboración, revisión y
+aprobación del entregable
+SEG 2 80 01-03-2027 09-03-2027 7 —
+2.1.1.A01 Levantamiento de insu-
+mos y análisis
+ARQ 2 80 01-03-2027 09-03-2027 7 1.2.1.A01
+2.1.1.A02 Elaboración del entrega-
+ble
+ARQ 2 80 10-03-2027 18-03-2027 7 2.1.1.A01
+continúa en la página siguiente
+LafroX
+SpA
+Formulario
+T-15
+Media
+firma:
+Alex
+Aravena
+64
+
+
+---
+
+LafroX
+SpA
+Formulario
+T-15:
+Nivelación
+de
+recursos
+Tabla 7.11 — continuación
+Actividad Nombre Rol Per-
+sonas
+HH Inicio Fin Días
+hábiles
+Predecesoras
+2.1.1.A03 Revisión, corrección y
+presentación para aproba-
+ción
+ARQ 2 80 19-03-2027 29-03-2027 7 2.1.1.A02
+2.1.2.A01 Levantamiento de insu-
+mos y análisis
+ARQ 2 80 01-03-2027 09-03-2027 7 —
+2.1.2.A02 Elaboración del entrega-
+ble
+ARQ 2 80 10-03-2027 18-03-2027 7 2.1.2.A01
+2.1.2.A03 Revisión, corrección y
+presentación para aproba-
+ción
+ARQ 2 80 19-03-2027 29-03-2027 7 2.1.2.A02
+2.1.3.A01 Levantamiento de insu-
+mos y análisis
+DAT 2 80 01-03-2027 09-03-2027 7 —
+2.1.3.A02 Elaboración del entrega-
+ble
+DAT 2 80 10-03-2027 18-03-2027 7 2.1.3.A01
+2.1.3.A03 Revisión, corrección y
+presentación para aproba-
+ción
+DAT 2 80 19-03-2027 29-03-2027 7 2.1.3.A02
+2.2.1.A01 Levantamiento de insu-
+mos y análisis
+SEG 2 80 01-03-2027 09-03-2027 7 —
+continúa en la página siguiente
+LafroX
+SpA
+Formulario
+T-15
+Media
+firma:
+Alex
+Aravena
+65
+
+
+---
+
+LafroX
+SpA
+Formulario
+T-15:
+Nivelación
+de
+recursos
+Tabla 7.11 — continuación
+Actividad Nombre Rol Per-
+sonas
+HH Inicio Fin Días
+hábiles
+Predecesoras
+2.2.1.A02 Elaboración del entrega-
+ble
+SEG 2 80 10-03-2027 18-03-2027 7 2.2.1.A01
+2.2.1.A03 Revisión, corrección y
+presentación para aproba-
+ción
+SEG 2 80 19-03-2027 29-03-2027 7 2.2.1.A02
+2.2.3.A01 Levantamiento de insu-
+mos y análisis
+SEG 4 80 01-04-2027 06-04-2027 4 —
+2.2.3.A02 Elaboración del entrega-
+ble
+SEG 4 80 07-04-2027 12-04-2027 4 2.2.3.A01
+2.2.3.A03 Revisión, corrección y
+presentación para aproba-
+ción
+SEG 4 80 13-04-2027 16-04-2027 4 2.2.3.A02
+2.2.4.A01 Levantamiento de insu-
+mos y análisis
+SEG 2 80 01-03-2027 09-03-2027 7 —
+2.2.4.A02 Elaboración del entrega-
+ble
+SEG 2 80 10-03-2027 18-03-2027 7 2.2.4.A01
+2.2.4.A03 Revisión, corrección y
+presentación para aproba-
+ción
+SEG 2 80 19-03-2027 29-03-2027 7 2.2.4.A02
+continúa en la página siguiente
+LafroX
+SpA
+Formulario
+T-15
+Media
+firma:
+Alex
+Aravena
+66
+
+
+---
+
+LafroX
+SpA
+Formulario
+T-15:
+Nivelación
+de
+recursos
+Tabla 7.11 — continuación
+Actividad Nombre Rol Per-
+sonas
+HH Inicio Fin Días
+hábiles
+Predecesoras
+2.3.1.A01 Levantamiento de insu-
+mos y análisis
+SRE 2 80 01-02-2027 09-02-2027 7 —
+2.3.1.A02 Elaboración del entrega-
+ble
+SRE 2 80 10-02-2027 18-02-2027 7 2.3.1.A01
+2.3.1.A03 Revisión, corrección y
+presentación para aproba-
+ción
+SRE 2 80 19-02-2027 01-03-2027 7 2.3.1.A02
+2.3.2.A01 Levantamiento de insu-
+mos y análisis
+SRE 2 80 01-02-2027 09-02-2027 7 —
+2.3.2.A02 Elaboración del entrega-
+ble
+SRE 2 80 10-02-2027 18-02-2027 7 2.3.2.A01
+2.3.2.A03 Revisión, corrección y
+presentación para aproba-
+ción
+SRE 2 80 19-02-2027 01-03-2027 7 2.3.2.A02
+2.3.3.A01 Levantamiento de insu-
+mos y análisis
+SRE 2 80 01-03-2027 09-03-2027 7 —
+2.3.3.A02 Elaboración del entrega-
+ble
+SRE 2 80 10-03-2027 18-03-2027 7 2.3.3.A01
+continúa en la página siguiente
+LafroX
+SpA
+Formulario
+T-15
+Media
+firma:
+Alex
+Aravena
+67
+
+
+---
+
+LafroX
+SpA
+Formulario
+T-15:
+Nivelación
+de
+recursos
+Tabla 7.11 — continuación
+Actividad Nombre Rol Per-
+sonas
+HH Inicio Fin Días
+hábiles
+Predecesoras
+2.3.3.A03 Revisión, corrección y
+presentación para aproba-
+ción
+SRE 2 80 19-03-2027 29-03-2027 7 2.3.3.A02
+2.4.1.A01 Levantamiento de insu-
+mos y análisis
+ARQ 5 80 19-04-2027 21-04-2027 3 2.1.1.A03, 2.1.3.A03,
+2.2.1.A03, 2.2.3.A03,
+2.2.4.A03
+2.4.1.A02 Elaboración del entrega-
+ble
+ARQ 5 80 22-04-2027 26-04-2027 3 2.4.1.A01
+2.4.1.A03 Revisión, corrección y
+presentación para aproba-
+ción
+ARQ 5 80 27-04-2027 29-04-2027 3 2.4.1.A02
+2.5.1.A01 Levantamiento de insu-
+mos y análisis
+SRE 2 80 01-04-2027 09-04-2027 7 —
+2.5.1.A02 Elaboración del entrega-
+ble
+SRE 2 80 12-04-2027 20-04-2027 7 2.5.1.A01
+2.5.1.A03 Revisión, corrección y
+presentación para aproba-
+ción
+SRE 2 80 21-04-2027 29-04-2027 7 2.5.1.A02
+2.5.2.A01 Levantamiento de insu-
+mos y análisis
+SRE 2 80 01-04-2027 09-04-2027 7 —
+continúa en la página siguiente
+LafroX
+SpA
+Formulario
+T-15
+Media
+firma:
+Alex
+Aravena
+68
+
+
+---
+
+LafroX
+SpA
+Formulario
+T-15:
+Nivelación
+de
+recursos
+Tabla 7.11 — continuación
+Actividad Nombre Rol Per-
+sonas
+HH Inicio Fin Días
+hábiles
+Predecesoras
+2.5.2.A02 Elaboración del entrega-
+ble
+SRE 2 80 12-04-2027 20-04-2027 7 2.5.2.A01
+2.5.2.A03 Revisión, corrección y
+presentación para aproba-
+ción
+SRE 2 80 21-04-2027 29-04-2027 7 2.5.2.A02
+Tabla 7.12 Actividades de los paquetes que terminan hasta el H2. Fuente: elaboración a partir de la Tabla 7.10. Bloque 2 de 2.
+Actividad Nombre Rol Per-
+sonas
+HH Inicio Fin Días
+hábiles
+Predecesoras
+2.6.1.A01 Levantamiento de insu-
+mos y análisis
+IMP 2 80 01-03-2027 09-03-2027 7 —
+2.6.1.A02 Elaboración del entrega-
+ble
+IMP 2 80 10-03-2027 18-03-2027 7 2.6.1.A01
+2.6.1.A03 Revisión, corrección y
+presentación para aproba-
+ción
+IMP 2 80 19-03-2027 29-03-2027 7 2.6.1.A02
+continúa en la página siguiente
+LafroX
+SpA
+Formulario
+T-15
+Media
+firma:
+Alex
+Aravena
+69
+
+
+---
+
+LafroX
+SpA
+Formulario
+T-15:
+Nivelación
+de
+recursos
+Tabla 7.12 — continuación
+Actividad Nombre Rol Per-
+sonas
+HH Inicio Fin Días
+hábiles
+Predecesoras
+2.6.2.A01 Levantamiento de insu-
+mos y análisis
+IMP 2 80 01-04-2027 09-04-2027 7 —
+2.6.2.A02 Elaboración del entrega-
+ble
+IMP 2 80 12-04-2027 20-04-2027 7 2.6.2.A01
+2.6.2.A03 Revisión, corrección y
+presentación para aproba-
+ción
+IMP 2 80 21-04-2027 29-04-2027 7 2.6.2.A02
+2.6.3.A01 Levantamiento de insu-
+mos y análisis
+IMP 2 80 03-05-2027 11-05-2027 7 —
+2.6.3.A02 Elaboración del entrega-
+ble
+IMP 2 80 12-05-2027 20-05-2027 7 2.6.3.A01
+2.6.3.A03 Revisión, corrección y
+presentación para aproba-
+ción
+IMP 2 80 21-05-2027 31-05-2027 7 2.6.3.A02
+3.1.4.A01 Levantamiento de insu-
+mos y análisis
+SRE 2 80 03-05-2027 11-05-2027 7 —
+3.1.4.A02 Elaboración del entrega-
+ble
+SRE 2 80 12-05-2027 20-05-2027 7 3.1.4.A01
+continúa en la página siguiente
+LafroX
+SpA
+Formulario
+T-15
+Media
+firma:
+Alex
+Aravena
+70
+
+
+---
+
+LafroX
+SpA
+Formulario
+T-15:
+Nivelación
+de
+recursos
+Tabla 7.12 — continuación
+Actividad Nombre Rol Per-
+sonas
+HH Inicio Fin Días
+hábiles
+Predecesoras
+3.1.4.A03 Revisión, corrección y
+presentación para aproba-
+ción
+SRE 2 80 21-05-2027 31-05-2027 7 3.1.4.A02
+3.2.1.A01 Levantamiento de insu-
+mos y análisis
+SRE 2 80 03-05-2027 11-05-2027 7 5.2.1.A01
+3.2.1.A02 Elaboración del entrega-
+ble
+SRE 2 80 12-05-2027 20-05-2027 7 3.2.1.A01
+3.2.1.A03 Revisión, corrección y
+presentación para aproba-
+ción
+SRE 2 80 21-05-2027 31-05-2027 7 3.2.1.A02
+3.2.2.A01 Levantamiento de insu-
+mos y análisis
+SRE 2 80 03-05-2027 11-05-2027 7 5.2.1.A01
+3.2.2.A02 Elaboración del entrega-
+ble
+SRE 2 80 12-05-2027 20-05-2027 7 3.2.2.A01
+3.2.2.A03 Revisión, corrección y
+presentación para aproba-
+ción
+SRE 2 80 21-05-2027 31-05-2027 7 3.2.2.A02
+3.2.3.A01 Levantamiento de insu-
+mos y análisis
+SRE 2 80 03-05-2027 11-05-2027 7 5.2.1.A01
+continúa en la página siguiente
+LafroX
+SpA
+Formulario
+T-15
+Media
+firma:
+Alex
+Aravena
+71
+
+
+---
+
+LafroX
+SpA
+Formulario
+T-15:
+Nivelación
+de
+recursos
+Tabla 7.12 — continuación
+Actividad Nombre Rol Per-
+sonas
+HH Inicio Fin Días
+hábiles
+Predecesoras
+3.2.3.A02 Elaboración del entrega-
+ble
+SRE 2 80 12-05-2027 20-05-2027 7 3.2.3.A01
+3.2.3.A03 Revisión, corrección y
+presentación para aproba-
+ción
+SRE 2 80 21-05-2027 31-05-2027 7 3.2.3.A02
+3.2.4.A01 Levantamiento de insu-
+mos y análisis
+SRE 2 80 03-05-2027 11-05-2027 7 5.2.1.A01
+3.2.4.A02 Elaboración del entrega-
+ble
+SRE 2 80 12-05-2027 20-05-2027 7 3.2.4.A01
+3.2.4.A03 Revisión, corrección y
+presentación para aproba-
+ción
+SRE 2 80 21-05-2027 31-05-2027 7 3.2.4.A02
+3.2.5.A01 Levantamiento de insu-
+mos y análisis
+SEG 2 80 03-05-2027 11-05-2027 7 5.2.1.A01
+3.2.5.A02 Elaboración del entrega-
+ble
+SEG 2 80 12-05-2027 20-05-2027 7 3.2.5.A01
+3.2.5.A03 Revisión, corrección y
+presentación para aproba-
+ción
+SEG 2 80 21-05-2027 31-05-2027 7 3.2.5.A02
+continúa en la página siguiente
+LafroX
+SpA
+Formulario
+T-15
+Media
+firma:
+Alex
+Aravena
+72
+
+
+---
+
+LafroX
+SpA
+Formulario
+T-15:
+Nivelación
+de
+recursos
+Tabla 7.12 — continuación
+Actividad Nombre Rol Per-
+sonas
+HH Inicio Fin Días
+hábiles
+Predecesoras
+3.10.2.1.A01 Levantamiento de insu-
+mos y análisis
+CAL 2 80 01-03-2027 09-03-2027 7 —
+3.10.2.1.A02 Elaboración del entrega-
+ble
+CAL 2 80 22-03-2027 30-03-2027 7 3.10.2.1.A01
+3.10.2.1.A03 Revisión, corrección y
+presentación para aproba-
+ción
+CAL 2 80 12-04-2027 20-04-2027 7 3.10.2.1.A02
+5.1.1.A01 Elaboración, revisión y
+aprobación del entregable
+ARQ 2 80 01-03-2027 09-03-2027 7 —
+5.1.2.A01 Elaboración, revisión y
+aprobación del entregable
+ARQ 2 80 02-03-2027 10-03-2027 7 2.3.1.A03, 2.3.2.A03
+5.2.1.A01 Elaboración, revisión y
+aprobación del entregable
+SRE 2 80 01-03-2027 09-03-2027 7 —
+5.2.2.A01 Elaboración, revisión y
+aprobación del entregable
+SRE 2 80 03-05-2027 11-05-2027 7 —
+5.2.3.A01 Elaboración, revisión y
+aprobación del entregable
+ARQ 2 80 03-05-2027 11-05-2027 7 —
+5.3.1.A01 Elaboración, revisión y
+aprobación del entregable
+SRE 2 80 03-05-2027 11-05-2027 7 —
+continúa en la página siguiente
+LafroX
+SpA
+Formulario
+T-15
+Media
+firma:
+Alex
+Aravena
+73
+
+
+---
+
+LafroX
+SpA
+Formulario
+T-15:
+Nivelación
+de
+recursos
+Tabla 7.12 — continuación
+Actividad Nombre Rol Per-
+sonas
+HH Inicio Fin Días
+hábiles
+Predecesoras
+5.3.2.A01 Elaboración, revisión y
+aprobación del entregable
+SRE 2 80 03-05-2027 11-05-2027 7 —
+5.3.3.A01 Elaboración, revisión y
+aprobación del entregable
+SRE 2 80 03-05-2027 11-05-2027 7 —
+6.1.1.A01 Preparación y ejecución
+de la instalación o de la
+capacitación
+SRE 2 80 01-04-2027 09-04-2027 7 5.1.2.A01
+6.1.1.A02 Prueba o evaluación,
+corrección y acta
+SRE 2 80 12-04-2027 20-04-2027 7 6.1.1.A01
+6.1.2.A01 Preparación y ejecución
+de la instalación o de la
+capacitación
+SRE 2 80 01-04-2027 09-04-2027 7 5.1.2.A01
+6.1.2.A02 Prueba o evaluación,
+corrección y acta
+SRE 2 80 12-04-2027 20-04-2027 7 6.1.2.A01
+6.1.3.A01 Preparación y ejecución
+de la instalación o de la
+capacitación
+SRE 2 80 01-04-2027 09-04-2027 7 5.1.2.A01
+6.1.3.A02 Prueba o evaluación,
+corrección y acta
+SRE 2 80 12-04-2027 20-04-2027 7 6.1.3.A01
+continúa en la página siguiente
+LafroX
+SpA
+Formulario
+T-15
+Media
+firma:
+Alex
+Aravena
+74
+
+
+---
+
+LafroX
+SpA
+Formulario
+T-15:
+Nivelación
+de
+recursos
+Tabla 7.12 — continuación
+Actividad Nombre Rol Per-
+sonas
+HH Inicio Fin Días
+hábiles
+Predecesoras
+6.1.4.A01 Preparación y ejecución
+de la instalación o de la
+capacitación
+SRE 2 80 01-04-2027 09-04-2027 7 5.1.2.A01
+6.1.4.A02 Prueba o evaluación,
+corrección y acta
+SRE 2 80 12-04-2027 20-04-2027 7 6.1.4.A01
+6.1.5.A01 Preparación y ejecución
+de la instalación o de la
+capacitación
+SRE 2 80 03-05-2027 11-05-2027 7 5.1.2.A01
+6.1.5.A02 Prueba o evaluación,
+corrección y acta
+SRE 2 80 12-05-2027 20-05-2027 7 6.1.5.A01
+6.2.1.A01 Preparación y ejecución
+de la instalación o de la
+capacitación
+SRE 2 80 03-05-2027 11-05-2027 7 —
+6.2.1.A02 Prueba o evaluación,
+corrección y acta
+SRE 2 80 12-05-2027 20-05-2027 7 6.2.1.A01
+6.3.3.A01 Preparación y ejecución
+de la instalación o de la
+capacitación
+SRE 2 80 03-05-2027 11-05-2027 7 —
+6.3.3.A02 Prueba o evaluación,
+corrección y acta
+SRE 2 80 12-05-2027 20-05-2027 7 6.3.3.A01
+continúa en la página siguiente
+LafroX
+SpA
+Formulario
+T-15
+Media
+firma:
+Alex
+Aravena
+75
+
+
+---
+
+LafroX
+SpA
+Formulario
+T-15:
+Nivelación
+de
+recursos
+Tabla 7.12 — continuación
+Actividad Nombre Rol Per-
+sonas
+HH Inicio Fin Días
+hábiles
+Predecesoras
+7.2.3.A01 Preparación y ejecución
+de la instalación o de la
+capacitación
+IMP 2 80 01-03-2027 09-03-2027 7 —
+7.2.3.A02 Prueba o evaluación,
+corrección y acta
+IMP 2 80 17-05-2027 25-05-2027 7 7.2.3.A01
+LafroX
+SpA
+Formulario
+T-15
+Media
+firma:
+Alex
+Aravena
+76
+
+
+---
+
+LafroX SpA Formulario T-15: Nivelación de recursos
+7.6.2 Paquetes de esfuerzo continuo
+Los paquetes recurrentes (R), de acompañamiento (A) y de cobertura (C) son de nivel de
+esfuerzo: no producen un entregable único, sino un servicio o una reunión que se repite. No
+se dividen en entregables más pequeños, sino por ocurrencia o por quincena:
+• Un paquete con frecuencia propia en el diccionario del T-14 (quincenal, mensual, trimestral,
+semestral o anual) tiene una actividad por ocurrencia, ejecutada dentro de una quincena.
+Si una ocurrencia supera 64 HH, se reparte entre dos o más personas.
+• Un paquete continuo tiene una actividad por quincena. Si la quincena exige más de 64 HH,
+la actividad se divide en relevos o puestos: por ejemplo, el NOC 24×7 de un mes de 31 días
+requiere 744 ÷ 2 = 372 HH por quincena, es decir, seis relevos de 62 HH.
+• Las preparaciones de comités con frecuencia contractual quincenal (1.6.2 y 1.8.3) tienen
+menos de 8 HH por ocurrencia. Son la única excepción al mínimo de la regla: se mantienen
+por ocurrencia porque la cadencia la fija el artículo 71 de las Bases Administrativas (p. 37) y
+no conviene fusionarlas con otra actividad.
+Estos 59 paquetes no se descomponen en una lista de actividades distintas, porque su trabajo
+se repite: se programan por quincena u ocurrencia, en relevos de hasta 64 HH cada uno. La
+Tabla 7.13 presenta la regla de cada paquete, el número de relevos u ocurrencias que programa
+durante el contrato y el esfuerzo máximo de cada uno.
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+77
+
+
+---
+
+LafroX
+SpA
+Formulario
+T-15:
+Nivelación
+de
+recursos
+Tabla 7.13 Actividades de los paquetes de esfuerzo continuo. Fuente: elaboración a partir de las secciones 4.1, 4.2 y 4.4 y el diccionario de LafroX (2026d, T-14).
 Paquete Clase Rol Meses E HH Regla de programación Relevos u
+ocurrencias
+programados
+HH máximas
+por relevo u
+ocurrencia
+1.2.2 G IMP 1–3 80 Una actividad por quincena, por presencia continua o
+periódica
+6 13.3
+1.3.5 R JP 1–20 480 Una actividad de nivel de esfuerzo por quincena 40 12.0
+1.4.3 R JP 1–56 896 Una actividad de nivel de esfuerzo por quincena 112 8.0
+1.5.2 G CAL 6–20 80 Una actividad cada 3 quincenas, por presencia continua
+o periódica
+10 8.0
+1.6.2 R JP 1–20 160 Una actividad por ocurrencia (quincenal, en cada
+Comité de Proyecto), ejecutada dentro de una quincena;
+1 actividad(es) por ocurrencia
+40 4.0
+1.8.1 R JP 1–20 320 Una actividad de nivel de esfuerzo por quincena 40 8.0
+1.8.2 R JP 1–56 448 Una actividad por ocurrencia (mensual), ejecutada
+dentro de una quincena; 1 actividad(es) por ocurrencia
+56 8.0
+1.8.3 R JP 1–20 240 Una actividad por ocurrencia (quincenal), ejecutada
+dentro de una quincena; 1 actividad(es) por ocurrencia
+40 6.0
+1.8.4 R ARQ 1–56 448 Una actividad por ocurrencia (mensual), ejecutada
+dentro de una quincena; 1 actividad(es) por ocurrencia
+56 8.0
+1.8.5 R SRE 13–56 352 Una actividad por ocurrencia (mensual), ejecutada
+dentro de una quincena; 1 actividad(es) por ocurrencia
+44 8.0
+continúa en la página siguiente
+LafroX
+SpA
+Formulario
+T-15
+Media
+firma:
+Alex
+Aravena
+78
 
 
+---
+
+LafroX
+SpA
+Formulario
+T-15:
+Nivelación
+de
+recursos
+Tabla 7.13 — continuación
+Paquete Clase Rol Meses E HH Regla de programación Relevos u
+ocurrencias
+programados
+HH máximas
+por relevo u
+ocurrencia
 1.8.6 R JP 1–20 480 Una actividad por ocurrencia (mensual), ejecutada
-
-
+dentro de una quincena; 1 actividad(es) por ocurrencia
+20 24.0
 1.8.7 R JP 2–56 440 Una actividad cada 2 quincenas, ejecutada en la última
-
-
+quincena del grupo
+55 8.0
 1.8.8 R JP 1–56 448 Una actividad cada 2 quincenas, ejecutada en la última
-
-
+quincena del grupo
+56 8.0
 1.9.4 R SEG 1–56 224 Una actividad por ocurrencia (anual), ejecutada dentro
-
-
+de una quincena; 1 actividad(es) por ocurrencia
+5 44.8
 1.9.5 R JP 1–56 224 Una actividad cada 4 quincenas, ejecutada en la última
-
-
+quincena del grupo
+28 8.0
 2.2.2 E SEG 3–10 240 Una actividad por quincena, por presencia continua o
-
-
+periódica
+16 15.0
 3.11.1 G ARQ 15–21 80 Una actividad cada 2 quincenas, por presencia continua
-
-
+o periódica
+7 11.4
 3.11.2 G SRE 10–20 80 Una actividad cada 3 quincenas, por presencia continua
-
-
+o periódica
+8 10.0
 3.11.3 G DES 4–20 80 Una actividad cada 4 quincenas, por presencia continua
-
-
-Tabla 7.13 — continuación
-
-
+o periódica
+9 8.9
 continúa en la página siguiente
+LafroX
+SpA
+Formulario
+T-15
+Media
+firma:
+Alex
+Aravena
+79
 
 
-ocurrencia
+---
 
-
-por relevo u
-
-
-HH máximas
-
-
-ocurrencias
-
-
-programados
-
-
-o periódica 9 8.9
-
-
-o periódica 10 8.0
-
-
-da en 20 relevos o puestos 120 61.6
-
-
-da en relevos o puestos según la HH de cada mes 92 61.6
-
-
-da en 20 relevos o puestos 80 61.6
-
-
-da en relevos o puestos según la HH de cada mes 40 62.1
-
-
-periódica 16 10.0
-
-
+LafroX
+SpA
+Formulario
+T-15:
+Nivelación
+de
+recursos
+Tabla 7.13 — continuación
 Paquete Clase Rol Meses E HH Regla de programación Relevos u
-
-
+ocurrencias
+programados
+HH máximas
+por relevo u
+ocurrencia
 3.11.4 G DES 4–20 80 Una actividad cada 4 quincenas, por presencia continua
-
-
+o periódica
+9 8.9
 3.11.5 G DES 6–20 80 Una actividad cada 3 quincenas, por presencia continua
-
-
+o periódica
+10 8.0
 4.2.1 A IMP 13–15 7392 Una actividad de nivel de esfuerzo por quincena, dividi-
-
-
+da en 20 relevos o puestos
+120 61.6
 4.2.2 A IMP 16–20 5408 Una actividad de nivel de esfuerzo por quincena, dividi-
-
-
+da en relevos o puestos según la HH de cada mes
+92 61.6
 4.3.1 A IMP 19–20 4928 Una actividad de nivel de esfuerzo por quincena, dividi-
-
-
+da en 20 relevos o puestos
+80 61.6
 4.3.2 A IMP 21–22 2464 Una actividad de nivel de esfuerzo por quincena, dividi-
-
-
+da en relevos o puestos según la HH de cada mes
+40 62.1
 7.1.2 R IMP 13–56 2816 Una actividad de nivel de esfuerzo por quincena 88 32.0
-
-
 7.1.3 T IMP 13–20 160 Una actividad por quincena, por presencia continua o
-
-
-7.1.4 T IMP 15–20 160 2 ocurrencias en la ventana, por presencia continua o periódica 2 80.0
-
-
-7.1.5 T IMP 10–18 160 2 ocurrencias en la ventana, por presencia continua o periódica 2 80.0
-
-
-Tabla 7.13 — continuación
-
-
+periódica
+16 10.0
+7.1.4 T IMP 15–20 160 2 ocurrencias en la ventana, por presencia continua o
+periódica
+2 80.0
+7.1.5 T IMP 10–18 160 2 ocurrencias en la ventana, por presencia continua o
+periódica
+2 80.0
 continúa en la página siguiente
+LafroX
+SpA
+Formulario
+T-15
+Media
+firma:
+Alex
+Aravena
+80
 
 
-ocurrencia
+---
 
-
-por relevo u
-
-
-HH máximas
-
-
-ocurrencias
-
-
-programados
-
-
-periódica 14 11.4
-
-
-periódica 20 8.0
-
-
-periódica 18 8.9
-
-
-da en relevos o puestos según la HH de cada mes 432 62.0
-
-
-da en relevos o puestos según la HH de cada mes 679 79.9
-
-
-cinco actividades por campaña 35 16.0
-
-
-de una quincena; 2 actividad(es) por ocurrencia 6 48.0
-
-
-da en relevos o puestos según la HH de cada mes 528 62.0
-
-
-dentro de una quincena; 1 actividad(es) por ocurrencia 36 16.0
-
-
+LafroX
+SpA
+Formulario
+T-15:
+Nivelación
+de
+recursos
+Tabla 7.13 — continuación
 Paquete Clase Rol Meses E HH Regla de programación Relevos u
-
-
+ocurrencias
+programados
+HH máximas
+por relevo u
+ocurrencia
 7.2.1 T IMP 10–16 160 Una actividad por quincena, por presencia continua o
-
-
+periódica
+14 11.4
 7.2.4 T IMP 11–20 160 Una actividad por quincena, por presencia continua o
-
-
+periódica
+20 8.0
 7.2.5 T IMP 13–21 160 Una actividad por quincena, por presencia continua o
-
-
+periódica
+18 8.9
 8.1.1 C SRE 21–56 26280 Una actividad de nivel de esfuerzo por quincena, dividi-
-
-
+da en relevos o puestos según la HH de cada mes
+432 62.0
 8.1.2 C SRE 21–56 54239 Una actividad de nivel de esfuerzo por quincena, dividi-
-
-
+da en relevos o puestos según la HH de cada mes
+679 79.9
 8.1.3 V SRE 21–56 560 Siete campañas de conmutación real de 80 HH, con
-
-
+cinco actividades por campaña
+35 16.0
 8.1.4 R JP 21–56 288 Una actividad por ocurrencia (anual), ejecutada dentro
-
-
+de una quincena; 2 actividad(es) por ocurrencia
+6 48.0
 8.1.5 C SEG 13–56 32112 Una actividad de nivel de esfuerzo por quincena, dividi-
-
-
+da en relevos o puestos según la HH de cada mes
+528 62.0
 8.1.6 R SRE 21–56 576 Una actividad por ocurrencia (mensual), ejecutada
-
-
+dentro de una quincena; 1 actividad(es) por ocurrencia
+36 16.0
 8.2.1 R DES 21–56 4608 Una actividad de nivel de esfuerzo por quincena 72 64.0
-
-
-Tabla 7.13 — continuación
-
-
 continúa en la página siguiente
+LafroX
+SpA
+Formulario
+T-15
+Media
+firma:
+Alex
+Aravena
+81
 
 
-ocurrencia
+---
 
-
-por relevo u
-
-
-HH máximas
-
-
-ocurrencias
-
-
-programados
-
-
-de una quincena; 2 actividad(es) por ocurrencia 6 48.0
-
-
-dentro de una quincena; 1 actividad(es) por ocurrencia 6 48.0
-
-
-dentro de una quincena; 1 actividad(es) por ocurrencia 6 48.0
-
-
-dentro de una quincena; 1 actividad(es) por ocurrencia 33 16.0
-
-
-periódica 10 8.0
-
-
+LafroX
+SpA
+Formulario
+T-15:
+Nivelación
+de
+recursos
+Tabla 7.13 — continuación
 Paquete Clase Rol Meses E HH Regla de programación Relevos u
-
-
+ocurrencias
+programados
+HH máximas
+por relevo u
+ocurrencia
 8.2.2 R SEG 21–56 1152 Una actividad de nivel de esfuerzo por quincena 72 16.0
-
-
 8.2.3 R SRE 21–56 1152 Una actividad de nivel de esfuerzo por quincena 72 16.0
-
-
 8.2.4 R DES 21–56 2304 Una actividad de nivel de esfuerzo por quincena 72 32.0
-
-
 8.2.5 R SRE 21–56 288 Una actividad por ocurrencia (anual), ejecutada dentro
-
-
+de una quincena; 2 actividad(es) por ocurrencia
+6 48.0
 8.2.6 R SRE 21–56 288 Una actividad por ocurrencia (semestral), ejecutada
-
-
+dentro de una quincena; 1 actividad(es) por ocurrencia
+6 48.0
 8.2.7 R SRE 21–56 864 Una actividad de nivel de esfuerzo por quincena 72 12.0
-
-
 8.3.1 R CAL 21–56 576 Una actividad de nivel de esfuerzo por quincena 72 8.0
-
-
 8.3.2 R DAT 21–56 288 Una actividad por ocurrencia (semestral), ejecutada
-
-
-8.3.3 G JP 21–23 80 3 ocurrencias en la ventana, por presencia continua o periódica 3 26.7
-
-
+dentro de una quincena; 1 actividad(es) por ocurrencia
+6 48.0
+8.3.3 G JP 21–23 80 3 ocurrencias en la ventana, por presencia continua o
+periódica
+3 26.7
 8.3.4 R JP 24–56 528 Una actividad por ocurrencia (mensual), ejecutada
-
-
+dentro de una quincena; 1 actividad(es) por ocurrencia
+33 16.0
 8.3.5 G IMP 22–26 80 Una actividad por quincena, por presencia continua o
-
-
-Tabla 7.13 — continuación
-
-
+periódica
+10 8.0
 continúa en la página siguiente
+LafroX
+SpA
+Formulario
+T-15
+Media
+firma:
+Alex
+Aravena
+82
 
 
-ocurrencia
+---
 
-
-por relevo u
-
-
-HH máximas
-
-
-18 64.0
-
-
-ocurrencias
-
-
-programados
-
-
-periódica 8 10.0
-
-
-dentro de una quincena; 1 actividad(es) por ocurrencia 12 48.0
-
-
-dentro de una quincena; 1 actividad(es) por ocurrencia 36 16.0
-
-
-de una quincena; 2 actividad(es) por ocurrencia 6 48.0
-
-
-dentro de una quincena; 1 actividad(es) por ocurrencia 6 48.0
-
-
-ejecutada dentro de una quincena; 3 actividad(es) por
-
-
-ocurrencia
-
-
-o periódica 7 11.4
-
-
-periódica 6 13.3
-
-
+LafroX
+SpA
+Formulario
+T-15:
+Nivelación
+de
+recursos
+Tabla 7.13 — continuación
 Paquete Clase Rol Meses E HH Regla de programación Relevos u
-
-
+ocurrencias
+programados
+HH máximas
+por relevo u
+ocurrencia
 8.3.6 G IMP 24–27 80 Una actividad por quincena, por presencia continua o
-
-
+periódica
+8 10.0
 8.4.1 R SRE 21–56 576 Una actividad por ocurrencia (trimestral), ejecutada
-
-
+dentro de una quincena; 1 actividad(es) por ocurrencia
+12 48.0
 8.4.2 R SRE 21–56 576 Una actividad por ocurrencia (mensual), ejecutada
-
-
+dentro de una quincena; 1 actividad(es) por ocurrencia
+36 16.0
 8.4.3 R SRE 21–56 288 Una actividad por ocurrencia (anual), ejecutada dentro
-
-
+de una quincena; 2 actividad(es) por ocurrencia
+6 48.0
 8.4.4 R JP 21–56 288 Una actividad por ocurrencia (semestral), ejecutada
-
-
+dentro de una quincena; 1 actividad(es) por ocurrencia
+6 48.0
 8.5.1 R IMP 21–56 1152 Una actividad por ocurrencia (dos jornadas por año),
-
-
+ejecutada dentro de una quincena; 3 actividad(es) por
+ocurrencia
+18 64.0
 8.5.2 G IMP 21–27 80 Una actividad cada 2 quincenas, por presencia continua
-
-
+o periódica
+7 11.4
 8.5.3 R SRE 21–56 576 Una actividad de nivel de esfuerzo por quincena 72 8.0
-
-
 9.2.1 G JP 54–56 80 Una actividad por quincena, por presencia continua o
-
-
-Tabla 7.13 — continuación
-
-
-Así, los 222 paquetes quedan programados de dos formas: los 163 paquetes con entregable, con fechas en la Tabla 7.10 y actividades de 80 HH o menos detalladas hasta el H2 y luego por planificación gradual, y 59 paquetes de esfuerzo continuo que se programan por quincena u ocurrencia, en relevos de hasta 64 HH cada uno. En ambos casos nada supera una quincena. Ningún paquete se informa al 50 % durante semanas: el avance de cada quincena se mide por las actividades terminadas y por los relevos u ocurrencias cumplidos, que alimentan el valor ganado del SD6, sección 6.1.5.
-
-
-Referencias
-
-
-Las fuentes citadas en este formulario son las siguientes.
-
-
-- Bases Administrativas para la preparación de la propuesta. (2026).
-
-
-- Bases Técnicas Transversales para la preparación de la propuesta. (2026).
-
-
-- Bases Técnicas del Caso 02: Logística. (2026).
-
-
-- Malcolm, D. G., Roseboom, J. H., Clark, C. E., & Fazar, W. (1959). Application of a technique for research and development program evaluation. Operations Research, 7(5), 646–669.
-
-
-- Project Management Institute. (2017). La guía de los fundamentos para la dirección de proyectos (Guía del PMBOK®) (6.ª ed.). Project Management Institute.
-
-
-Declaración de uso de IA
-
-
-En cumplimiento de la sección 7.2 de las Aclaraciones de la licitación, la tabla siguiente declara el uso de herramientas de inteligencia artificial en este formulario, con la revisión humana de cada parte. La declaración se consolida en el Formulario A-6.
-
-
-Tabla 7.14 Declaración de uso de IA. Fuente: elaboración propia.
-
-
-Sección Herramienta Finalidad del uso
-
-
-Nivel en texto Nivel en diagramas
-
-
-Revisión humana (quién y qué verificó)
-
-
-1 a 3 Claude Code; Codex
-
-
-[[REVISIÓN HUMANA]]
-
-
-Alto Alto (descripciones de figuras)
-
-
-Redacción del método, ruta crítica y frentes
-
-
-4 Modelo de recursos
-
-
-Codex; Claude Code
-
-
-Alto Ninguno [[REVISIÓN HUMANA]]
-
-
-Cálculo de HH, curvas, calendario real y cobertura de mesa/SOC
-
-
-continúa en la página siguiente
-
-
-Tabla 7.14 — continuación
-
-
-Sección Herramienta Finalidad del uso
-
-
-Nivel en texto Nivel en diagramas
-
-
-Revisión humana (quién y qué verificó)
-
-
-6 Lista de actividades
-
-
-Alto Ninguno [[REVISIÓN HUMANA]]
-
-
-Claude Code Descomposición de los 222 paquetes en actividades con la regla del 8/80 y del período de reporte
-
-
-5 Red, PERT y dotación
-
-
-Alto Ninguno [[REVISIÓN HUMANA]]
-
-
-Claude Code Red con revisiones Art. 18.3, PERT de duración, medición de atención y comparación con la dotación declarada
+periódica
+6 13.3
+LafroX
+SpA
+Formulario
+T-15
+Media
+firma:
+Alex
+Aravena
+83
+
+
+---
+
+LafroX SpA Formulario T-15: Nivelación de recursos
+Así, los 222 paquetes quedan programados de dos formas: los 163 paquetes con entregable,
+con fechas en la Tabla 7.10 y actividades de 80 HH o menos detalladas hasta el H2 y luego por
+planificación gradual, y 59 paquetes de esfuerzo continuo que se programan por quincena u
+ocurrencia, en relevos de hasta 64 HH cada uno. En ambos casos nada supera una quincena.
+Ningún paquete se informa al 50 % durante semanas: el avance de cada quincena se mide por
+las actividades terminadas y por los relevos u ocurrencias cumplidos, que alimentan el valor
+ganado del SD6, sección 6.1.5.
+## Referencias
+Las fuentes citadas en este formulario se listan en formato APA 7.ª edición. Las Bases se citan
+en el texto con su documento y el artículo, capítulo, sección o código del requisito.
+• Distribuidora Puelche S.A. (2026a). Bases Administrativas, Licitación TFEP-01/2026.
+• Distribuidora Puelche S.A. (2026b). Bases Técnicas Transversales, Licitación TFEP-01/2026.
+• Distribuidora Puelche S.A. (2026c). Bases Técnicas del Caso Logística.
+• LafroX. (2026d). Formulario T-14: Estructura de desglose del trabajo. Propuesta técnica, Licita-
+ción TFEP-01/2026.
+• LafroX. (2026i). Subdocumento 1: Presentación de la empresa. Propuesta técnica, Licitación
+TFEP-01/2026.
+• LafroX. (2026m). Subdocumento 4: Arquitectura de la solución. Propuesta técnica, Licitación
+TFEP-01/2026.
+• LafroX. (2026o). Subdocumento 6: Metodología de desarrollo. Propuesta técnica, Licitación
+TFEP-01/2026.
+• LafroX. (2026p). Subdocumento 7: Plan de trabajo. Propuesta técnica, Licitación TFEP-01/2026.
+• LafroX. (2026r). Subdocumento 8: Plan de riesgos. Propuesta técnica, Licitación TFEP-01/2026.
+• LafroX. (2026s). Formulario T-18: Implantación de la solución. Propuesta técnica, Licitación
+TFEP-01/2026.
+• LafroX. (2026t). Subdocumento 7: Anexos. Propuesta técnica, Licitación TFEP-01/2026.
+• Malcolm, D. G., Roseboom, J. H., Clark, C. E., & Fazar, W. (1959). Application of a technique
+for research and development program evaluation. Operations Research, 7(5), 646–669.
+• Project Management Institute. (2017). Guía de los fundamentos para la dirección de proyectos
+(Guía del PMBOK) (6.ª ed.). Project Management Institute.
+LafroX SpA
+Formulario T-15
+Media firma: Alex Aravena
+84
+
+
+---

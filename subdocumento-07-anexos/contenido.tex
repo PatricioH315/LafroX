@@ -1,16 +1,18 @@
 \chapter{Anexos del Subdocumento 7}
 
-Estos anexos detallan los listados que el Subdocumento 7 resume. La EDT, el diccionario y la carta Gantt están en el Formulario T-14; el método de estimación y programación, la ruta crítica y los frentes de trabajo, en el Formulario T-15; y la implantación, en el Formulario T-18.
+Estos anexos detallan los listados que el Subdocumento 7 (LafroX, 2026p) resume. La EDT, el diccionario y la carta Gantt están en el Formulario T-14; el método de estimación y programación, la ruta crítica y los frentes de trabajo, en el Formulario T-15; y la implantación, en el Formulario T-18.
+
+En estos anexos, BA, BTT y Caso designan las Bases Administrativas (Distribuidora Puelche S.A., 2026a), las Bases Técnicas Transversales (2026b) y las Bases Técnicas del Caso Logística (2026c).
 
 \section{Anexo 7.A — Meses contractuales y ventanas de congelamiento según la fecha de inicio}
 
-El artículo 17 de las Bases Administrativas (pp. 12--13) fija los meses del contrato, no sus fechas. El mes 1 es el primer mes completo de ejecución (Bases Administrativas, art. 10, p. 8, numeral 2). Si el contrato se inicia en el mes calendario m, el mes contractual n cae en el mes calendario \(m + (n - 1)\), contado en aritmética de doce meses.
+El artículo 17 de las Bases Administrativas (pp. 12--13) fija los meses del contrato, no sus fechas. El mes 1 es el primer mes completo de ejecución (BA, art. 10, p. 8, numeral 2). Si el contrato se inicia en el mes calendario m, el mes contractual n cae en el mes calendario \(m + (n - 1)\), contado en aritmética de doce meses.
 
-El caso fija las ventanas del año: congelamiento total del 1 al 25 de septiembre y durante todo diciembre; congelamiento en los tres primeros días hábiles de cada mes (Caso 02, cap. 15, RT-10.05, p. 27); y ningún paso a producción en septiembre ni en diciembre (sección 13.3, condición 2). El Capítulo 3, sección 3.1.2, deriva de esa regla los ocho meses de inicio que no ponen los meses 16 ni 21 en septiembre o diciembre (supuesto S-17). La Tabla \ref{tab:7A1} aplica la misma fórmula a los meses de marcha blanca; los meses en negrita caen en una ventana de congelamiento.
+El caso fija las ventanas del año: congelamiento total del 1 al 25 de septiembre y durante todo diciembre; congelamiento en los tres primeros días hábiles de cada mes (Caso, cap. 15, RT-10.05, p. 27); y ningún paso a producción en septiembre ni en diciembre (sección 13.3, condición 2). El Capítulo 3, sección 3.1.2, deriva de esa regla los ocho meses de inicio que no ponen los meses 16 ni 21 en septiembre o diciembre (supuesto S-17). La Tabla \ref{tab:7A1} aplica la misma fórmula a los meses de marcha blanca; los meses en negrita caen en una ventana de congelamiento.
 
 \parte{tablas/tab_7A1}
 
-La tabla lleva a tres conclusiones. Primero, ningún inicio admisible deja las dos marchas blancas completas fuera de septiembre y diciembre: siempre hay al menos un mes de marcha blanca dentro de una ventana de congelamiento. Segundo, solo los inicios de diciembre de 2026, febrero de 2027 y marzo de 2027 ponen en producción la Etapa 2 antes de enero de 2029, fecha desde la que rigen las condiciones de la principal cadena de supermercados (Caso 02, sección 13.2, p. 22; Capítulo 3, sección 3.1.2).
+La tabla lleva a tres conclusiones. Primero, ningún inicio admisible deja las dos marchas blancas completas fuera de septiembre y diciembre: siempre hay al menos un mes de marcha blanca dentro de una ventana de congelamiento. Segundo, solo los inicios de diciembre de 2026, febrero de 2027 y marzo de 2027 ponen en producción la Etapa 2 antes de enero de 2029, fecha desde la que rigen las condiciones de la principal cadena de supermercados (Caso, sección 13.2, p. 22; Capítulo 3, sección 3.1.2).
 
 Tercero, entre esos tres inicios, febrero de 2027 es el único en que el congelamiento afecta solo el último mes de una marcha blanca (el mes 20, de la Etapa 2) y no un inicio de marcha blanca. Con diciembre de 2026, el H6 caería en diciembre; con marzo de 2027, el H11 caería en septiembre. Con febrero de 2027, las cuatro semanas de cierre de la marcha blanca de la Etapa 2 coinciden con el peak de Fiestas Patrias; por eso toda habilitación de la Etapa 2 ocurre en agosto de 2028 y el cierre se mide con el volumen del peak (Formulario T-18, sección 3.1). LafroX adopta febrero de 2027 como supuesto de calendario de la carta Gantt.
 
@@ -26,7 +28,7 @@ En el escenario nominal histórico, las dependencias D-29 a D-31c forman la cade
 
 \section{Anexo 7.C — Momento de los resultados de aceptación del caso}
 
-El Caso 02, cap. 18, p. 34, exige indicar en qué momento del cronograma se alcanza cada resultado y cómo se mide. La Tabla \ref{tab:7C1} ubica en el cronograma las metas y métodos del Capítulo 3, Anexo 3.J.
+El Caso logística, cap. 18, p. 34, exige indicar en qué momento del cronograma se alcanza cada resultado y cómo se mide. La Tabla \ref{tab:7C1} ubica en el cronograma las metas y métodos del Capítulo 3, Anexo 3.J.
 
 \parte{tablas/tab_7C1}
 
@@ -42,7 +44,7 @@ Las innovaciones 1 a 3 concentran su construcción entre los meses 2 y 10 y se v
 
 \section{Anexo 7.E — Trazabilidad de módulos e interfaces a la EDT}
 
-La EDT contiene la arquitectura cuando cada módulo y cada interfaz del Capítulo 4 tienen al menos un paquete que los construye y prueba. La Tabla \ref{tab:7E1} presenta esa correspondencia para los doce módulos, y la Tabla \ref{tab:7E2}, para las quince interfaces.
+La EDT contiene la arquitectura cuando cada módulo y cada interfaz del Capítulo 4 (LafroX, 2026m) tienen al menos un paquete que los construye y prueba. La Tabla \ref{tab:7E1} presenta esa correspondencia para los doce módulos, y la Tabla \ref{tab:7E2}, para las quince interfaces.
 
 \parte{tablas/tab_7E1}
 
@@ -73,22 +75,24 @@ Antes de aprobar la línea base del cronograma en el H1, el Jefe de Proyecto pre
 \phantomsection
 \addcontentsline{toc}{section}{Referencias}
 
-Las fuentes externas utilizadas en estos anexos son:
+Las fuentes citadas en estos anexos se listan en formato APA 7.ª edición. Las Bases se citan en el texto con su documento y el artículo, capítulo, sección o código del requisito.
 
 \begin{itemize}
-\item \emph{Bases Administrativas para la preparación de la propuesta}. (2026).
-\item \emph{Bases Técnicas Transversales para la preparación de la propuesta}. (2026).
-\item \emph{Bases Técnicas del Caso 02: Logística}. (2026).
-\item \emph{Aclaraciones de la Licitación}. (2026).
+\item Distribuidora Puelche S.A. (2026a). \emph{Bases Administrativas, Licitación TFEP-01/2026}.
+\item Distribuidora Puelche S.A. (2026b). \emph{Bases Técnicas Transversales, Licitación TFEP-01/2026}.
+\item Distribuidora Puelche S.A. (2026c). \emph{Bases Técnicas del Caso Logística}.
+\item Distribuidora Puelche S.A. (2026d). \emph{Aclaraciones de la Licitación TFEP-01/2026}.
+\item LafroX. (2026d). \emph{Formulario T-14: Estructura de desglose del trabajo}. Propuesta técnica, Licitación TFEP-01/2026.
+\item LafroX. (2026e). \emph{Formulario T-15: Cronograma y asignación de recursos}. Propuesta técnica, Licitación TFEP-01/2026.
+\item LafroX. (2026j). \emph{Subdocumento 3: Anexos}. Propuesta técnica, Licitación TFEP-01/2026.
+\item LafroX. (2026k). \emph{Subdocumento 3: Especificación de requerimientos}. Propuesta técnica, Licitación TFEP-01/2026.
+\item LafroX. (2026l). \emph{Subdocumento 4: Anexos}. Propuesta técnica, Licitación TFEP-01/2026.
+\item LafroX. (2026m). \emph{Subdocumento 4: Arquitectura de la solución}. Propuesta técnica, Licitación TFEP-01/2026.
+\item LafroX. (2026o). \emph{Subdocumento 6: Metodología de desarrollo}. Propuesta técnica, Licitación TFEP-01/2026.
+\item LafroX. (2026p). \emph{Subdocumento 7: Plan de trabajo}. Propuesta técnica, Licitación TFEP-01/2026.
+\item LafroX. (2026r). \emph{Subdocumento 8: Plan de riesgos}. Propuesta técnica, Licitación TFEP-01/2026.
+\item LafroX. (2026s). \emph{Formulario T-18: Implantación de la solución}. Propuesta técnica, Licitación TFEP-01/2026.
+
 \end{itemize}
-
-Las referencias internas corresponden al Subdocumento 3, sección 3.4.4; al Subdocumento 4 y sus anexos lógicos; al Subdocumento 6, secciones 6.1 y 6.2; y a los Formularios T-14, T-15 y T-18 del Subdocumento 7.
-
-\section*{Declaración de uso de IA}
-\phantomsection
-\addcontentsline{toc}{section}{Declaración de uso de IA}
-
-En cumplimiento de la sección 7.2 de las Aclaraciones de la licitación, la tabla siguiente declara el uso de herramientas de inteligencia artificial en estos anexos, con la revisión humana de cada parte. La declaración se consolida en el Formulario A-6.
-
-\parte{tablas/tab_IA}
+\normalsize
 
