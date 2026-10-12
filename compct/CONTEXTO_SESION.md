@@ -4,6 +4,19 @@ Autorización explícita: alinear cuerpo, anexos y T-19 con LaTeX vigente del ch
 
 # CONTEXTO DE SESIÓN
 
+## Conversión de revisión de trazabilidad del Informe 1 a LaTeX — 12 de octubre de 2026
+
+**Autorización explícita:** el usuario pidió convertir `Revision/contraste_trazabilidad_consolidada_vs_Informe1.md` en otro archivo LaTeX con el formato de informes y crear una rama separada. Para respetar la regla de no añadir LaTeX a `rama-md`, se creó el checkout `C:\Users\alexa\Desktop\Universidad\FEP\LafroX\LafroX-revision-trazabilidad-informe1-latex`, rama `LafroX-Revision-Trazabilidad-Informe1-LateX`, basada en `rama-formato-Latex-base`.
+
+**Realizado:** nuevo `Revision/contraste_trazabilidad_consolidada_vs_Informe1.tex` con clase/formato LafroX, contenido y tablas del Markdown preservados, tablas multipágina y portada interna de revisión. El original Markdown no se modificó. Compilación LuaLaTeX correcta (salida 0, PDF de 24 páginas generado en scratch fuera del repositorio); inspección visual de páginas representativas sin errores de maquetación visibles. Persisten avisos no fatales `Infinite glue shrinkage found in box being split` durante tablas multipágina. El source report dice 195 filas en la introducción, pero §12 menciona 213 filas físicas; discrepancia preservada, no corregida.
+
+**Estado Git:** archivo LaTeX sin seguimiento en la rama nueva. No se hizo commit ni push. En `rama-md` solo se añadió este registro a contexto; se preservan los cambios previos ajenos.
+
+
+## Ajuste de trazabilidad consolidada — 12 de octubre de 2026, 04:30
+
+Decisión del usuario: se omite EF-31 (páginas semivacías del SD4) y la nota de media firma en EF-01, porque la firma la resuelve el usuario. SD3-45 pasa a «Documentado», con la reducción verificada de 21 a menos de diez páginas y ningún título al pie. No tocar el LaTeX de las páginas; las fechas de portada las corrige otra persona. Verificación hecha contra las ramas remotas (SD1 05fe9c9, SD3 e55ca51, SD4 5899782), no contra checkouts locales; el Anexo 3.H está en la p. 145. El commit 50dd1f7 movió la tabla SD13 a `13_innovaciones/LAFROX-SD13-Matriz-cambios-Informe1-Informe2.md`; ahí se reincorporó la fila «OK». Consolidada: 212 filas de datos (211 de las matrices fuente y TR-01 transversal), más encabezado; las 211 filas fuente están cotejadas. Corregida una doble coma en la introducción SD13 de su matriz y de la consolidada. Pendiente ajeno: `Resumen/LAFROX-Subdocumento13-Anexos-Resumen.md` enlaza al ancla eliminada del Anexo 13.D. Sin commit/push.
+
 ## Trazabilidad consolidada Informe 1 (SD1, SD2, SD3, SD4, SD13) — 12 de octubre de 2026
 
 **Petición:** usuario pidió una tabla de trazabilidad general que mezcle SD1, 2, 3, 4, 5 y 13 con mismas columnas y estándar, sin eliminar nada; SD5 aún no existe y queda para después. rama-md comprobada; sólo Markdown; sin commit/push.
@@ -618,6 +631,15 @@ Por instrucción del usuario, el MD es la fuente y el LaTeX se alineó con él e
 - Commit y push en las 4 ramas: rama-md (incluye RT-16.14 y RT-08.04 de la sesión paralela) y LafroX-Subdoc{1,2,3}-LateX. El T-12 LaTeX se regeneró con esos dos cambios. Si el T-12 MD vuelve a cambiar, hay que regenerar su LaTeX.
 
 # CONTEXTO DE SESIÓN
+
+## Conversión de revisión de trazabilidad del Informe 1 a LaTeX — 12 de octubre de 2026
+
+**Autorización explícita:** el usuario pidió convertir `Revision/contraste_trazabilidad_consolidada_vs_Informe1.md` en otro archivo LaTeX con el formato de informes y crear una rama separada. Para respetar la regla de no añadir LaTeX a `rama-md`, se creó el checkout `C:\Users\alexa\Desktop\Universidad\FEP\LafroX\LafroX-revision-trazabilidad-informe1-latex`, rama `LafroX-Revision-Trazabilidad-Informe1-LateX`, basada en `rama-formato-Latex-base`.
+
+**Realizado:** nuevo `Revision/contraste_trazabilidad_consolidada_vs_Informe1.tex` con clase/formato LafroX, contenido y tablas del Markdown preservados, tablas multipágina y portada interna de revisión. El original Markdown no se modificó. Compilación LuaLaTeX correcta (salida 0, PDF de 24 páginas generado en scratch fuera del repositorio); inspección visual de páginas representativas sin errores de maquetación visibles. Persisten avisos no fatales `Infinite glue shrinkage found in box being split` durante tablas multipágina. El source report dice 195 filas en la introducción, pero §12 menciona 213 filas físicas; discrepancia preservada, no corregida.
+
+**Estado Git:** archivo LaTeX sin seguimiento en la rama nueva. No se hizo commit ni push. En `rama-md` solo se añadió este registro a contexto; se preservan los cambios previos ajenos.
+
 
 ## Estado vigente — 10 de octubre de 2026: correcciones Markdown del SD9 tras revisión
 

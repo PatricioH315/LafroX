@@ -2,7 +2,7 @@
 
 ## Matriz de cambios del Informe 1 al Informe 2 — Subdocumento 13
 
-El Art. 46 de las Bases Administrativas pide resolver en forma explícita las observaciones de la instancia anterior, con una tabla de trazabilidad observación–respuesta–sección modificada (Distribuidora Puelche S.A., 2026a, Art. 46, p. 28). La Tabla 13.D.1 responde una por una las quince observaciones que la revisión del Informe 1 formuló al Capítulo 13, y la Tabla 13.D.2 responde las ocho observaciones generales y transversales que alcanzaban a este subdocumento.
+El Art. 46 de las Bases Administrativas pide resolver en forma explícita las observaciones de la instancia anterior, con una tabla de trazabilidad observación–respuesta–sección modificada (Distribuidora Puelche S.A., 2026a, Art. 46, p. 28). La Tabla 13.D.1 responde una por una las dieciséis observaciones que la revisión del Informe 1 formuló al Capítulo 13, incluida la valoración positiva, y la Tabla 13.D.2 responde las ocho observaciones generales y transversales que alcanzaban a este subdocumento.
 
 **Tabla 13.D.1. Observaciones al Capítulo 13 de la revisión del Informe 1. Fuente: elaboración a partir de las observaciones de la instancia anterior (Distribuidora Puelche S.A., 2026a, Art. 46, p. 28).**
 
@@ -25,6 +25,7 @@ El Art. 46 de las Bases Administrativas pide resolver en forma explícita las ob
 | Crítico: la innovación 5 trae precios en dólares (Art. 50.2). | Ningún monto en el capítulo ni en el formulario. El impacto se expresa por rubro, clase y mes, y la valorización va en la Oferta Económica, Entregable 2, ítem 2.7. | 13.1.5 a 13.5.5; Formulario T-19, campos 10 a 12 |
 | Las fuentes no se citan dentro del texto; la versión 1.2 de EPCIS está superada por la 2.0 (2022). | Las fuentes se citan en APA 7.ª en el punto de uso, con correspondencia uno a uno con la lista. EPCIS 2.0 (GS1 AISBL, 2022) sustenta la tecnología y la madurez de la innovación 3. | 13.1.3 a 13.5.3; 13.3.2; 13.3.3; Referencias |
 | «Siete páginas sin una figura: ninguna innovación se ubica en un diagrama de la arquitectura». | La Figura 13.1 ubica las cinco innovaciones sobre las capas de la arquitectura, y las Figuras 13.2 a 13.6 recorren cada una. Cada figura se cita antes y se explica después. | Introducción (Figura 13.1); 13.1.4 a 13.5.4 |
+| OK: el anexo descarta bien lo que es requisito y no innovación: ruteo automático, costo de servir y registro continuo de temperatura. | Se mantiene el criterio. Cada innovación separa en una tabla lo que ya es alcance obligatorio de lo que agrega; el registro continuo de temperatura (criterio 3) y el costo de servir (criterio 11 y RF-11.08) se declaran alcance obligatorio y no innovación. | Tablas 13.2, 13.7, 13.12, 13.17 y 13.23; 13.3; 13.4.1 |
 
 
 
@@ -47,7 +48,7 @@ Las cinco innovaciones del Informe 1 se reemplazaron; por eso las filas 1 a 5 re
 
 
 
-Las filas 16 a 23 recogen las observaciones de forma y de coherencia que la revisión dirigió a toda la entrega; aquí se responde sólo lo que corresponde a este subdocumento, sus anexos y su formulario.
+Las filas 17 a 24 recogen las observaciones de forma y de coherencia que la revisión dirigió a toda la entrega; aquí se responde sólo lo que corresponde a este subdocumento, sus anexos y su formulario.
 
 ## Referencias
 

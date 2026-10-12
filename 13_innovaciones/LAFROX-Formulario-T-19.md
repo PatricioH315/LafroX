@@ -20,6 +20,8 @@ Este formulario contiene una ficha por cada una de las cinco innovaciones obliga
 
 Ficha de la innovación 1, «Seguimiento de vencimiento posentrega en el local», desarrollada en el Capítulo 13, sección 13.1.
 
+Fuente: elaboración a partir de la propuesta INN-01 y sus fuentes tecnológicas (LafroX, 2026l, sec. 13.1), sus contratos y trazabilidad (LafroX, 2026m, anexos 13.A a 13.C), sus paquetes y calendario (LafroX, 2026h, T-14; 2026g, Anexo 7.D) y sus riesgos (LafroX, 2026j, Anexo 8.A; 2026k, T-16).
+
 | Campo | Contenido |
 | --- | --- |
 | 1. Tipo de innovación | 1 — Producto o servicio |
@@ -45,6 +47,8 @@ Ficha de la innovación 1, «Seguimiento de vencimiento posentrega en el local»
 ## Ficha 2 — Innovación 2
 
 Ficha de la innovación 2, «Reproducción de incidentes de terreno», desarrollada en el Capítulo 13, sección 13.2.
+
+Fuente: elaboración a partir de la propuesta INN-02 y sus fuentes tecnológicas (LafroX, 2026l, sec. 13.2), sus contratos y trazabilidad (LafroX, 2026m, anexos 13.A a 13.C), sus paquetes y calendario (LafroX, 2026h, T-14; 2026g, Anexo 7.D) y sus riesgos (LafroX, 2026j, Anexo 8.A; 2026k, T-16).
 
 | Campo | Contenido |
 | --- | --- |
@@ -72,6 +76,8 @@ Ficha de la innovación 2, «Reproducción de incidentes de terreno», desarroll
 
 Ficha de la innovación 3, «Vida útil remanente por historia térmica del lote», desarrollada en el Capítulo 13, sección 13.3.
 
+Fuente: elaboración a partir de la propuesta INN-03 y sus fuentes tecnológicas (LafroX, 2026l, sec. 13.3), sus contratos y trazabilidad (LafroX, 2026m, anexos 13.A a 13.C), sus paquetes y calendario (LafroX, 2026h, T-14; 2026g, Anexo 7.D) y sus riesgos (LafroX, 2026j, Anexo 8.A; 2026k, T-16).
+
 | Campo | Contenido |
 | --- | --- |
 | 1. Tipo de innovación | 3 — Tecnológica o de arquitectura |
@@ -98,6 +104,8 @@ Ficha de la innovación 3, «Vida útil remanente por historia térmica del lote
 
 Ficha de la innovación 4, «Tramo variable de la Operación ligado al costo de servir», desarrollada en el Capítulo 13, sección 13.4.
 
+Fuente: elaboración a partir de la propuesta INN-04 y sus fuentes tecnológicas (LafroX, 2026l, sec. 13.4), sus contratos y trazabilidad (LafroX, 2026m, anexos 13.A a 13.C), sus paquetes y calendario (LafroX, 2026h, T-14; 2026g, Anexo 7.D) y sus riesgos (LafroX, 2026j, Anexo 8.A; 2026k, T-16).
+
 | Campo | Contenido |
 | --- | --- |
 | 1. Tipo de innovación | 4 — Modelo de negocio o de contratación |
@@ -123,6 +131,8 @@ Ficha de la innovación 4, «Tramo variable de la Operación ligado al costo de 
 ## Ficha 5 — Innovación 5
 
 Ficha de la innovación 5, «Hoja de negocio del almacenero», desarrollada en el Capítulo 13, sección 13.5.
+
+Fuente: elaboración a partir de la propuesta INN-05 y sus fuentes tecnológicas (LafroX, 2026l, sec. 13.5), sus contratos y trazabilidad (LafroX, 2026m, anexos 13.A a 13.C), sus paquetes y calendario (LafroX, 2026h, T-14; 2026g, Anexo 7.D) y sus riesgos (LafroX, 2026j, Anexo 8.A; 2026k, T-16).
 
 | Campo | Contenido |
 | --- | --- |
@@ -181,3 +191,27 @@ Las citas a las Bases Administrativas y a las Bases Técnicas Transversales iden
 - Shahin, M., Babar, M. A., & Zhu, L. (2017). Continuous integration, delivery and deployment: A systematic review on approaches, tools, challenges and practices. *IEEE Access, 5*, 3909–3943. [https://doi.org/10.1109/ACCESS.2017.2685629](https://doi.org/10.1109/ACCESS.2017.2685629)
 
 - Sweeney, L. (2002). k-anonymity: A model for protecting privacy. *International Journal of Uncertainty, Fuzziness and Knowledge-Based Systems, 10*(5), 557–570. [https://doi.org/10.1142/S0218488502001648](https://doi.org/10.1142/S0218488502001648)
+
+- LafroX. (2026b). *Subdocumento 3: Esquema de solución y alcance, incluidos sus anexos*.
+
+- LafroX. (2026c). *Formulario T-12: Cumplimiento de requisitos funcionales y no funcionales*.
+
+- LafroX. (2026d). *Subdocumento 4: Arquitectura lógica y física de la solución*.
+
+- LafroX. (2026e). *Formulario T-11: Inventario de hardware y software*.
+
+- LafroX. (2026g). *Anexos del Subdocumento 7: Plan de trabajo, EDT, cronograma e implantación*.
+
+- LafroX. (2026h). *Formulario T-14: Plan de trabajo, EDT y carta Gantt*.
+
+- LafroX. (2026j). *Subdocumento 8: Plan de gestión de riesgos, incluidos sus anexos*.
+
+- LafroX. (2026k). *Formulario T-16: Registro de riesgos*.
+
+- LafroX. (2026l). *Subdocumento 13: Innovaciones*.
+
+- LafroX. (2026m). *Anexos del Subdocumento 13: Innovaciones, anexos 13.A a 13.C*.
+
+- LafroX. (2026n). *Formulario T-19: Cartera de innovaciones*.
+
+- LafroX. (2026p). *Subdocumento 6: Metodologías de desarrollo e implantación, incluido el Formulario T-10*.

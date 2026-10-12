@@ -331,3 +331,10 @@ Hallazgos nuevos de la revisión de los PDF:
 - Las portadas del SD4 (PDF) y del SD5 (Markdown) tienen fecha de emisión 05-10-2026; las del SD2 y el SD3, 12-10-2026.
 - El checkout local `../LafroX-subdoc4` (rama `subdoc-4`, 292c6e8) está desactualizado respecto de `origin/subdoc-4`. Para la revisión se extrajeron los PDF del remoto al directorio temporal, sin tocar el checkout.
 - El PDF del SD4 no incluye todavía la frase nueva del ADR-10, que solo está en el Markdown.
+
+### Ajuste posterior (12-10-2026, decisión del usuario)
+
+- Se retiró la fila EF-31 (páginas semivacías del SD4) y la nota sobre la media firma del SD4 en EF-01; el usuario resuelve la firma.
+- SD3-45 pasa a «Documentado», con la reducción verificada de 21 a menos de diez páginas semivacías y sin títulos al pie de página.
+- Los PDF se volvieron a verificar contra las ramas remotas (`origin/LafroX-Subdoc1-LateX` 05fe9c9, `origin/LafroX-Subdoc3-LateX` e55ca51, `origin/subdoc-4` 5899782). El SD3 commiteado tiene 35, 168 y 261 páginas; el Anexo 3.H está en la p. 145.
+- Tras el commit 50dd1f7, la tabla del SD13 vive en `13_innovaciones/LAFROX-SD13-Matriz-cambios-Informe1-Informe2.md`; ahí se reincorporó la fila «OK». La consolidada tiene 212 filas de datos (211 filas de las matrices fuente y la transversal TR-01), más el encabezado: 213 filas físicas en la tabla.
