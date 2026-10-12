@@ -60,14 +60,14 @@
 \newcommand{\recorridolafrox}[4]{%
   \begin{figure}[H]\centering
     \includegraphics[width=#1\textwidth]{#2}
-    \caption{#3}\label{#4}
+    \LFXcaption{#3}\label{#4}
   \end{figure}}
 \newcommand{\LFXtablasflotantes}{%
   \RenewDocumentEnvironment{tablalafrox}{m m m m +b}{%
     \begin{table}[htbp]
       \LFXcuerpotabla
-      \caption{##1}\label{##2}
-      \begin{tabularx}{\textwidth}{##3}
+      \LFXcaption{##1}\label{##2}
+      \begin{tabularx}{\textwidth}{@{\extracolsep{\fill}}##3@{}}
         \toprule ##4 \\ \midrule
         ##5
         \bottomrule
@@ -100,6 +100,36 @@
 %% cabecera repetida y "continuacion"). En el cuerpo, \LFXtablasflotantes
 %% convierte tablalafrox en flotante de una pagina; esta variante se reserva a
 %% las tablas que no caben en una pagina (declaracion de uso de IA).
+%% Variante local de tabla larga con titulo corto en su lista.
+\RenewDocumentEnvironment{tablalafrox}{m m m m +b}{%
+  \par
+  \LFXfiletear{#5}%
+  \LFXcuerpotabla
+  \setlength{\LTpre}{12pt}\setlength{\LTpost}{16pt}%
+  % El cuerpo con filetes se entrega como tokens reales, no dentro de una
+  % macro: longtable necesita ver las filas en la entrada para cortar pagina.
+  \LFXconcuerpo{%
+  \begin{xltabular}{\textwidth}{#3}
+    \caption[\LFXtitulo{#1}]{#1}\label{#2}\\[2pt]
+    \LFXtopruleoriginal #4 \\ \midrule
+    \endfirsthead
+    % Los rotulos van en una caja de ancho cero: si midieran su texto real,
+    % longtable ensancharia la primera columna de TODA la tabla para caberlos.
+    \multicolumn{1}{@{}l@{}}{\makebox[0pt][l]{%
+      \fontsize{9pt}{10.5pt}\selectfont\color{lafroxGris}%
+      Tabla \thetable\ --- continuación}}\\[3pt]
+    \LFXtopruleoriginal #4 \\ \midrule
+    \endhead
+    \midrule
+    \multicolumn{1}{@{}l@{}}{\makebox[0pt][l]{%
+      \fontsize{9pt}{10.5pt}\selectfont\color{lafroxGris}%
+      continúa en la página siguiente}}\\
+    \endfoot
+    \bottomrule
+    \endlastfoot}%
+}{}
+
+
 \NewEnvironmentCopy{tablalafroxlarga}{tablalafrox}
 
 %% Identificadores de contrato en monoespaciada: \texttt escala la fuente
@@ -112,3 +142,17 @@
 
 %% Cifras y meses: alineacion derecha, con unidades en encabezado.
 \newcolumntype{Z}{>{\raggedleft\arraybackslash}X}
+
+%% Ajustes locales: salida compatible con las figuras vectoriales existentes.
+\pdfvariable minorversion=7
+%% Las tablas A.1/B.1/C.1 tienen destinos distintos aunque reinicien contador.
+\renewcommand{\theHtable}{sd13.\thetable}
+%% Alineacion irregular real: evita estirar palabras en columnas estrechas.
+\setlength{\RaggedRightRightskip}{0pt plus 1fil}
+%% Las listas solo reciben el titulo, nunca la fuente del pie completo.
+\NewDocumentCommand{\LFXcaption}{m}{\caption[\LFXtitulo{#1}]{#1}}
+
+\makeatletter
+\def\LFXtitulo#1{\LFX@titulo#1Fuente:\LFX@stop}
+\def\LFX@titulo#1Fuente:#2\LFX@stop{#1}
+\makeatother
