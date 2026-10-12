@@ -1,6 +1,6 @@
 # LafroX — Trazabilidad de observaciones del Informe 1: Subdocumento 1
 
-Este registro corresponde al cotejo inicial de los archivos Markdown, no de los PDF. Para la revisión solicitada de la rama LaTeX, usar [la tabla revisada del SD1 y T-6](trazabilidad_Informe1_Informe2_SD1_LaTeX.md).
+Este registro corresponde al cotejo inicial de los archivos Markdown, no de los PDF. Para la revisión solicitada de la rama LaTeX, usar [la tabla revisada del SD1 y T-6](../01_presentacion_empresa/LAFROX-Subdocumento1-Trazabilidad.md).
 
 ## Alcance y criterio de lectura
 

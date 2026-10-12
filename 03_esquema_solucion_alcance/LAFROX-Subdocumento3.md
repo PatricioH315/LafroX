@@ -28,7 +28,7 @@ La solución organiza estas capacidades en doce módulos de negocio: M1 Recepci�
 
 La Tabla 3.1 sitúa el alcance en los meses del contrato.
 
-**Tabla 3.1 — Marco contractual de las etapas. Fuente: elaboración propia a partir de *Bases Administrativas* (2026, art. 17.1, p. 12).**
+**Tabla 3.1 — Marco contractual de las etapas. Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026a, art. 17.1, p. 12).**
 
 | Etapa | Desarrollo | Marcha blanca | Producción / operación |
 | --- | --- | --- | --- |
@@ -148,7 +148,7 @@ El Anexo 3.J establece la meta, el momento y el método de verificación de los 
 
 La Tabla 3.3 relaciona los tres problemas con resultados verificables. Distingue los límites fijados por el CLIENTE de las metas que corresponden al proponente.
 
-**Tabla 3.3 — Síntesis de resultados de aceptación. Fuente: elaboración propia a partir de *Caso: Logística* (2026, cap. 18, pp. 34–35) y del Anexo 3.J.**
+**Tabla 3.3 — Síntesis de resultados de aceptación. Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026c, cap. 18, pp. 34–35) y del Anexo 3.J.**
 
 | Problema | Resultado exigido | Meta | Registro |
 | --- | --- | --- | --- |
@@ -190,7 +190,7 @@ Las tres figuras presentan aspectos complementarios de la solución: el ciclo lo
 
 La Figura 3.1 muestra cómo los pedidos de preventa, del canal moderno y del portal se conectan con la planificación, preparación, entrega y cierre de la operación. Las líneas continuas relacionan las actividades y los datos que generan, las discontinuas representan el envío de información al ERP.
 
-![Figura 3.1 — Ciclo logístico de la solución. Fuente: elaboración propia.](../../LafroX-sd3-latex/figures/figura%203.1.pdf)
+![Figura 3.1 — Ciclo logístico de la solución. Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026c, cap. 4, pp. 7–9) y del Anexo 3.A.](../../LafroX-sd3-latex/figures/figura%203.1.pdf)
 
 Los pedidos confirmados alimentan la planificación de rutas, cuya asignación y secuencia orientan la preparación y carga. El inventario aporta los productos disponibles para preparar cada pedido. El reparto llega al cliente directamente o a través de una plataforma de cross-docking. La entrega registra su resultado, los cobros y las devoluciones o envases asociados; esos datos permiten conciliar el efectivo y alimentar el análisis del costo de servir.
 
@@ -200,7 +200,7 @@ El ERP recibe el detalle preparado, con SKU, cantidad efectivamente recolectada 
 
 La Figura 3.2 distingue el recorrido del lote de la información que se conserva para consultarlo. Las líneas continuas muestran el paso por recepción, bodega y preparación, y transporte y entrega; las discontinuas indican los datos que alimentan la información y consulta de trazabilidad.
 
-![Figura 3.2 — Información para trazabilidad y cadena de frío. Fuente: elaboración propia.](../../LafroX-sd3-latex/figures/figura%203.2.pdf)
+![Figura 3.2 — Información para trazabilidad y cadena de frío. Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026c, secciones 4.1 y 4.9, pp. 7 y 9) y del Anexo 3.A.](../../LafroX-sd3-latex/figures/figura%203.2.pdf)
 
 En recepción se registran el lote y su vencimiento; en bodega, sus movimientos y existencias; y en la entrega, el cliente de destino, la guía, la fecha y la cantidad recibida. El cuadro «Información y consulta de trazabilidad» reúne esos registros para reconstruir el origen y los destinos del lote. Ante un retiro sanitario, permite obtener la lista de clientes afectados con evidencia en menos de dos horas.
 
@@ -210,7 +210,7 @@ Este cuadro reúne también los registros de temperatura. Los sensores de cámar
 
 La Figura 3.3 muestra dos recorridos de izquierda a derecha: la operación de preventa y reparto, y la del centro de distribución. Ambos parten del trabajo sin conexión y terminan en la información conciliada en la plataforma central.
 
-![Figura 3.3 — Continuidad durante cortes y recuperación de la información. Fuente: elaboración propia.](../../LafroX-sd3-latex/figures/figura%203.3.pdf)
+![Figura 3.3 — Continuidad durante cortes y recuperación de la información. Fuente: elaboración a partir del Anexo 3.F, decisión D-08.](../../LafroX-sd3-latex/figures/figura%203.3.pdf)
 
 Durante la desconexión, los dispositivos de preventa y reparto guardan los registros de su jornada durante un turno de 14 horas. El centro de distribución mantiene la recepción, preparación y despacho con registros locales durante al menos 24 horas. Al recuperar la conexión, la sincronización es automática: el dispositivo de reparto debe completarla en un máximo de diez minutos tras ese turno, y el centro, en un máximo de dos horas tras un corte de 24 horas.
 
@@ -243,13 +243,13 @@ Si en cualquier momento se detecta un lote sospechoso, Calidad obtiene los desti
 
 La Figura 3.4 reúne los actores, las interfaces, los módulos de negocio y los sistemas externos de la solución. Por su tamaño, se presenta primero la vista general y luego sus cuatro partes, cada una dibujada para su explicación (Figuras 3.5 a 3.8).
 
-![Figura 3.4 — Vista general de la solución. Fuente: elaboración propia.](../../LafroX-sd3-latex/figures/Diagrama%20de%20la%20solución.pdf)
+![Figura 3.4 — Vista general de la solución. Fuente: elaboración a partir del Anexo 3.A, del Formulario T-12 y de Distribuidora Puelche S.A. (2026c, cap. 5, p. 10).](../../LafroX-sd3-latex/figures/Diagrama%20de%20la%20solución.pdf)
 
 La vista se lee de arriba hacia abajo y tiene cuatro capas. Arriba están los quince actores que usan la solución. Debajo, el Sistema Integral de Gestión Logística Puelche reúne sus accesos en siete interfaces: las aplicaciones de preventa, reparto y bodega, los portales de clientes, transportistas y proveedores, y las consolas de gestión. La tercera capa contiene los doce módulos de negocio, M1 a M12, y la última, los tres sistemas externos: el ERP, Transbank y el sistema de geolocalización. Las relaciones siguen ese orden: los actores llegan a las interfaces, las interfaces a los módulos y los módulos a los sistemas externos. Las cuatro partes siguientes recorren esas capas en el mismo orden.
 
 La Figura 3.5 presenta la primera parte: los actores que interactúan con la solución.
 
-![Figura 3.5 — Actores que interactúan con la solución. Fuente: elaboración propia.](../../LafroX-sd3-latex/figures/DIAGRAMA-ACTORES.pdf)
+![Figura 3.5 — Actores que interactúan con la solución. Fuente: elaboración a partir del Anexo 3.A y de la sección «Actores y Grupos de Interés» del Subdocumento 2 (LafroX, 2026c).](../../LafroX-sd3-latex/figures/DIAGRAMA-ACTORES.pdf)
 
 La figura muestra a los usuarios de terreno, clientes, proveedores, transportistas y responsables de gestión que participan en la solución. Cada color identifica un actor y permite seguir sus relaciones en las vistas siguientes.
 
@@ -267,25 +267,25 @@ Las conexiones de las Figuras 3.4 a 3.8 indican relaciones funcionales, no permi
 
 La Figura 3.6 presenta la segunda parte: las interfaces de acceso.
 
-![Figura 3.6 — Interfaces de acceso a la solución. Fuente: elaboración propia.](../../LafroX-sd3-latex/figures/DIAGRAMA-INTERFACES.pdf)
+![Figura 3.6 — Interfaces de acceso a la solución. Fuente: elaboración a partir del Anexo 3.A y del Formulario T-12.](../../LafroX-sd3-latex/figures/DIAGRAMA-INTERFACES.pdf)
 
 La figura reúne las aplicaciones de preventa, reparto y bodega, junto con los portales y las consolas de gestión. Son los medios de acceso de cada actor; el portal de clientes se habilita en la Etapa 2 y su uso es opcional para el canal tradicional.
 
 La Figura 3.7 presenta la tercera parte: la relación entre las interfaces y los módulos de negocio.
 
-![Figura 3.7 — Relación entre interfaces y módulos de negocio. Fuente: elaboración propia.](../../LafroX-sd3-latex/figures/DIAGRAMA-%20MODULOS.pdf)
+![Figura 3.7 — Relación entre interfaces y módulos de negocio. Fuente: elaboración a partir del Anexo 3.A y del Formulario T-12.](../../LafroX-sd3-latex/figures/DIAGRAMA-%20MODULOS.pdf)
 
 La figura vincula las interfaces con los módulos M1 a M12, que cubren la operación logística, la gestión y los nuevos canales. M10 entrega OTIF en la Etapa 1 y costo de servir en la Etapa 2; M11 incorpora el canal moderno en la segunda etapa.
 
 La Figura 3.8 presenta la cuarta parte: las relaciones con los sistemas externos.
 
-![Figura 3.8 — Relaciones con sistemas externos. Fuente: elaboración propia.](../../LafroX-sd3-latex/figures/DIAGRAMA-EXTERNO.pdf)
+![Figura 3.8 — Relaciones con sistemas externos. Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026c, cap. 5, p. 10) y del Anexo 3.A.](../../LafroX-sd3-latex/figures/DIAGRAMA-EXTERNO.pdf)
 
 La figura muestra las relaciones con el ERP, Transbank y el sistema de geolocalización. El ERP conserva el registro contable y la emisión tributaria; Transbank representa los pagos, y la geolocalización aporta mapas y posición para rutas y telemetría.
 
 La Tabla 3.4 resume cómo las capacidades del alcance se distribuyen entre los módulos que presenta la Figura 3.7. No sustituye las relaciones de acceso, interfaces e integraciones de las Figuras 3.4 a 3.8.
 
-**Tabla 3.4 — Correspondencia entre capacidades del alcance y módulos de negocio. Fuente: elaboración propia a partir de las Figuras 3.4 a 3.8 y del Anexo 3.A.**
+**Tabla 3.4 — Correspondencia entre capacidades del alcance y módulos de negocio. Fuente: elaboración a partir de las Figuras 3.4 a 3.8 y del Anexo 3.A.**
 
 | Capacidad | Módulo responsable | Resultado que habilita | Etapa |
 | --- | --- | --- | --- |
@@ -298,6 +298,15 @@ La Tabla 3.4 resume cómo las capacidades del alcance se distribuyen entre los m
 | Canal moderno e intercambio electrónico | M11 Canal moderno | Pedido electrónico y aviso de despacho. | 2 |
 
 El *cross-docking* se controla mediante inventario, preparación, rutas y reparto, sin crear un decimotercer módulo. Los requerimientos transversales se asignan a la base compartida y se trazan en el Formulario T-12.
+
+Las figuras muestran qué hace la solución. Cómo se comporta bajo la operación de Puelche depende de cuatro atributos transversales, comprometidos en el catálogo no funcional del Anexo 3.B:
+
+- **Interoperabilidad.** El ERP sigue siendo el registro contable y el único emisor tributario. La solución se integra con él, con Transbank, con el sistema de geolocalización y, en la Etapa 2, con las cadenas del canal moderno (Figura 3.8). La cola durable e idempotente de la sección 3.3.3 asegura que ninguna integración pierda ni duplique transacciones tras un corte.
+- **Escalabilidad.** En septiembre las entregas diarias pasan de cerca de 1.400 a cerca de 2.600. Las capas de aplicación e integración escalan horizontalmente de forma automática, con umbrales y techo declarados (RNF-19.02). La capacidad se calcula con usuarios concurrentes y transacciones por segundo (RNF-19.01) y se prueba en PREPROD con 1,5 veces el peak y con estrés hasta el punto de quiebre (RNF-19.04). Un sitio nuevo se incorpora por parametrización, sin rediseño (Formulario T-12, RT-02.12).
+- **Desempeño.** Los tiempos se fijan en el puesto de trabajo: 1 segundo para confirmar una línea de picking (RNF-05.01), 1,5 segundos para registrar una línea de pedido (RNF-03.01) y 2 segundos para consultar stock y crédito (RNF-03.02). La analítica se procesa separada del motor transaccional, de modo que un informe no frena la operación (RNF-11.02). El primer cuello de botella previsto no es la plataforma, sino la emisión de guías del ERP en la madrugada; escalar la solución no acelera ese emisor, por lo que se mide y se controla con umbrales y degradación controlada.
+- **Seguridad.** Los datos viajan cifrados con TLS 1.3 y se guardan cifrados con claves gestionadas (RNF-14.01 y RNF-14.02). Las sesiones son breves y revocables (RNF-15.01 y RNF-15.02). Los eventos de seguridad se correlacionan en una plataforma SIEM (RNF-14.04). La cadena de integración bloquea el despliegue ante hallazgos críticos en el código, sus dependencias o sus contenedores (RNF-14.07), y un tercero independiente ejecuta pruebas de intrusión cada año y antes de cada paso a producción (RNF-14.06). Los representantes externos solo ven los datos de su organización.
+
+El Subdocumento 4 detalla el dimensionamiento, el cuello de botella y la degradación controlada (sección 4.2.6), y los controles de seguridad (sección 4.1.3.7).
 
 ### 3.4.3 Implementación
 
@@ -360,7 +369,7 @@ Los incidentes críticos y altos se atienden 24×7×365, con respuesta en 15 min
 
 La Tabla 3.5 resume los objetivos de servicio de la operación.
 
-**Tabla 3.5 — Objetivos de servicio. Fuente: elaboración propia a partir de *Bases Administrativas* (2026, arts. 78.2–78.3, p. 40), *Bases Técnicas Transversales* (2026, cap. 7, sección 7.2, pp. 17–18; RT-07.04 y RT-07.07, p. 17; cap. 10, RT-10.01, p. 22), y Anexo 3.E, R-01.**
+**Tabla 3.5 — Objetivos de servicio. Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026a, arts. 78.2–78.3, p. 40), Distribuidora Puelche S.A. (2026b, cap. 7, sección 7.2, pp. 17–18; RT-07.04 y RT-07.07, p. 17; cap. 10, RT-10.01, p. 22) y del Anexo 3.E, R-01.**
 
 | Servicio | Indicador | Objetivo | Medición |
 | --- | --- | --- | --- |
@@ -373,6 +382,15 @@ La Tabla 3.5 resume los objetivos de servicio de la operación.
 La tabla separa tres objetivos que no deben confundirse. El 99,95 % aplica a la infraestructura; el 99,9 % aplica a la transacción crítica completa; y la ventana de despacho no admite indisponibilidad, porque el caso la equipara a un día sin operación (Anexo 3.E, R-01). El RTO y el RPO rigen la recuperación ante desastres y se prueban al menos dos veces al año.
 
 Los servicios de pedido, bodega, entrega, trazabilidad y rendición se supervisan con alertas por colas de sincronización pendientes, antigüedad de datos en dispositivos, latencia y calidad de datos. Una cola que crece fuera de lo normal antes de la carga genera una alerta al especialista de guardia. El escalamiento distingue la mesa de servicio, los especialistas de aplicación e infraestructura, y la decisión operacional del CLIENTE. La capacidad de la mesa se recalibra con los tickets observados en la marcha blanca. La transferencia de conocimiento al equipo TI del CLIENTE se hace con procedimientos de operación documentados y ensayados antes del mes 21.
+
+La operación aplica un enfoque de ingeniería de confiabilidad (SRE): los objetivos de la Tabla 3.5 se miden de forma continua y deciden en qué se trabaja. Si la disponibilidad del mes se acerca a su límite, las correcciones de estabilidad pasan antes que los cambios nuevos. Lo repetitivo se automatiza en lugar de depender de la memoria de una persona:
+
+- **Infraestructura como código.** Los ambientes, los recursos de recuperación y los sitios nuevos se crean desde definiciones versionadas, no a mano, de modo que se pueden reconstruir igual cada vez (Subdocumento 4, sección 4.2.3).
+- **Alertas preventivas.** Un trabajo programado compara latencia, errores y colas con su comportamiento histórico en la misma franja y día, y avisa antes de que el incidente afecte la operación. Las alertas duplicadas se agrupan y las no atendidas escalan solas según su criticidad (Subdocumento 4, sección 4.1.3.8).
+- **Capacidad y despliegue.** La plataforma escala sola durante los peaks (RNF-19.02) y la cadena de integración bloquea sin intervención un cambio que no cumple sus umbrales (sección 3.4.3).
+- **Libro de operación.** Cada escenario de falla previsible tiene su guía de resolución. Las tareas que se repiten se automatizan de forma progresiva (RNF-16.02).
+
+Cada incidente crítico o alto cierra con una revisión de causa que actualiza la guía, la alerta o la automatización correspondiente.
 
 La operación reconoce los peaks del caso. En las tres primeras semanas de septiembre el volumen diario pasa de cerca de 1.400 a cerca de 2.600 entregas, y diciembre y los cierres mensuales generan tensiones similares. Durante las ventanas definidas se mantiene el congelamiento de cambios. La atención general de la mesa opera de 04:00 a 22:00 de lunes a sábado y se amplía a 24×7 en septiembre y diciembre. Los incidentes críticos y altos mantienen atención 24×7×365. Durante esos períodos, la supervisión se concentra en las colas de sincronización y en la ventana de despacho. La capacidad de la plataforma se prueba antes de cada septiembre con carga superior a la del peak, y los resultados se informan al comité. Terminado cada peak, se revisan los incidentes y las alertas del período para ajustar umbrales y procedimientos antes del siguiente.
 
@@ -420,19 +438,19 @@ La Tabla 3.6 declara el uso de herramientas de inteligencia artificial por secci
 
 | Sección | Herramienta | Finalidad del uso | Nivel en texto | Nivel en diagramas | Revisión humana (quién y qué verificó) |
 | --- | --- | --- | --- | --- | --- |
-| 3.1 | Codex; Claude Code | Contraste con las Bases y redacción. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
-| 3.2 | Codex; Claude Code | Contraste con las Bases y los Subdocumentos 1 y 2; redacción; propuestas para las reglas RNG-04 y RNG-15. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
-| 3.3 | Codex; Claude Code | Descripción estructurada de las figuras; revisión de la continuidad. | Alto | Alto | [[REVISIÓN HUMANA]] |
-| 3.4 | Codex; Claude Code | Redacción de implementación, implantación y operación; revisión de reversión, actores, módulos y referencias. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
-| Anexo 3.A | Codex; Claude Code | Conversión del catálogo funcional. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
-| Anexo 3.B | Codex; Claude Code | Conversión del catálogo no funcional. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
-| Anexo 3.C | Codex; Claude Code | Redacción de supuestos. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
-| Anexo 3.D | Codex; Claude Code | Redacción de registros. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
-| Anexo 3.E | Codex; Claude Code | Redacción de registros. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
-| Anexo 3.F | Codex; Claude Code | Redacción de registros. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
-| Anexo 3.G | Codex; Claude Code | Redacción de reglas; propuestas para RNG-04 y RNG-15. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
-| Anexo 3.H | Codex; Claude Code | Redacción de consultas. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
-| Anexo 3.I | Codex; Claude Code | Redacción de la participación de actores. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
-| Anexo 3.J | Codex; Claude Code | Redacción de criterios de aceptación. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
-| Anexo 3.K | Codex; Claude Code | Glosario. | Medio | Ninguno | [[REVISIÓN HUMANA]] |
-| Formulario T-12 | Codex; Claude Code | Generación de la matriz de cumplimiento. | Alto | Ninguno | [[REVISIÓN HUMANA]] |
+| 3.1 | Codex; Claude Code | Contraste con las Bases y redacción. | Alto | No aplica | Patricio Henríquez: se confirmó la verificación del resumen de la solución dentro de los marcos establecidos, tanto en el caso como en las Bases propuestas. |
+| 3.2 | Codex; Claude Code | Contraste con las Bases y los Subdocumentos 1 y 2; redacción; propuestas para las reglas RNG-04 y RNG-15. | Alto | No aplica | Patricio Henríquez: se verificó el alcance organizado según lo que requería el CLIENTE y los módulos que lo necesitan, junto con las exclusiones, restricciones y supuestos. El catálogo de requerimientos se encuentra en regla, junto con las reglas de negocio y sus derivados. |
+| 3.3 | Codex; Claude Code | Descripción estructurada de las figuras; revisión de la continuidad. | Alto | Alto | Patricio Henríquez: las figuras propuestas son legibles y fáciles de entender; diagraman el esquema de la solución y mejoran el entendimiento de la sección. |
+| 3.4 | Codex; Claude Code | Redacción de implementación, implantación y operación; revisión de reversión, actores, módulos y referencias. | Alto | Ninguno | Patricio Henríquez: verificó la explicación de la solución, contrastándola con los actores propuestos y las aplicaciones ejecutivas en Puelche. Los diagramas son legibles y coherentes. Cita constantemente el caso y su paginación para una revisión más detallada. |
+| Anexo 3.A | Codex; Claude Code | Conversión del catálogo funcional. | Alto | No aplica | [[REVISIÓN HUMANA]] |
+| Anexo 3.B | Codex; Claude Code | Conversión del catálogo no funcional. | Alto | No aplica | [[REVISIÓN HUMANA]] |
+| Anexo 3.C | Codex; Claude Code | Redacción de supuestos. | Alto | No aplica | [[REVISIÓN HUMANA]] |
+| Anexo 3.D | Codex; Claude Code | Redacción de registros. | Alto | No aplica | [[REVISIÓN HUMANA]] |
+| Anexo 3.E | Codex; Claude Code | Redacción de registros. | Alto | No aplica | [[REVISIÓN HUMANA]] |
+| Anexo 3.F | Codex; Claude Code | Redacción de registros. | Alto | No aplica | [[REVISIÓN HUMANA]] |
+| Anexo 3.G | Codex; Claude Code | Redacción de reglas; propuestas para RNG-04 y RNG-15. | Alto | No aplica | [[REVISIÓN HUMANA]] |
+| Anexo 3.H | Codex; Claude Code | Redacción de consultas. | Alto | No aplica | [[REVISIÓN HUMANA]] |
+| Anexo 3.I | Codex; Claude Code | Redacción de la participación de actores. | Alto | No aplica | [[REVISIÓN HUMANA]] |
+| Anexo 3.J | Codex; Claude Code | Redacción de criterios de aceptación. | Alto | No aplica | [[REVISIÓN HUMANA]] |
+| Anexo 3.K | Codex; Claude Code | Glosario. | Medio | No aplica | [[REVISIÓN HUMANA]] |
+| Formulario T-12 | Codex; Claude Code | Generación de la matriz de cumplimiento. | Alto | No aplica | Patricio Henríquez: se verificó la correcta disposición y legibilidad del formulario; cada requerimiento cuenta con un ID que permite la trazabilidad en el documento de manera sencilla y bien justificada. |
