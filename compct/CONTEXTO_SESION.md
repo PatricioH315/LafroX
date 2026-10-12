@@ -1,8 +1,81 @@
+## Publicación final de fuentes y PDF vigentes SD2–SD3 — 12 de octubre de 2026
+
+**Autorización:** tras aclarar que los PDF remotos SD2/SD3 no incluían las últimas revisiones locales, el usuario autorizó explícitamente publicar también todas esas fuentes y PDF pendientes. No se publica rama-md ni temporales/capturas.
+
+**Compilación:** recompilación forzada con LuaLaTeX sin shell escape de los cinco documentos, salida 0. SD2 cuerpo/anexos: 29/19 páginas. SD3 cuerpo/anexos/T-12: 37/165/260 páginas. Hashes de todas las fuentes tex/cls antes/después iguales; no se editaron fuentes durante esta operación. Sin errores fatales ni referencias indefinidas. Persisten siete Overfull previos en tabla IA del cuerpo SD3 y otros avisos de compilación no fatales. El primer intento con override -e fue rechazado por el parseo de argumentos Windows antes de compilar; se corrigió cargando un archivo latexmkrc temporal externo con -r.
+
+**Publicación:** SD2 `52b3f76642e5fbfe764d29be08eecba594f0027f` (cinco rutas); SD3 `01e8b608847dd205b074cf87b8626a8a192d5e0b` (21 rutas). Commits por rutas explícitas, fuentes y PDF juntos. Push sin force-push confirmado por ls-remote en las dos ramas. Checkouts sin cambios rastreados pendientes; tmp/ SD3 y capturas SD1 preservados sin versionar.
+
+**Verificación final para descarga:** los siete PDF publicados de SD1–SD3 son idénticos byte por byte a los compilados locales y muestran 12 de octubre de 2026 en portada. HEAD remoto SD1 permanece `cab7a0308acff8a781abcf4ad4ea5ab7bbf6866f`; no cambió en esta operación. Los ZIP de las tres ramas contienen fuentes y PDF vigentes. No se certifica conformidad global ni se corrigieron los avisos de maquetación existentes. Este registro Markdown es local, sin commit/push de rama-md. Engram no expuesto en la sesión.
+
+## Revisión de la tabla de trazabilidad consolidada — 12 de octubre de 2026
+
+**Autorización:** el usuario pidió revisar la tabla de trazabilidad de la rama `LafroX-Revision-Trazabilidad-Informe1-LateX`, mostrar el PDF modificado y que todo coincida. Destino: checkout `../LafroX-revision-trazabilidad-informe1-latex` y fuentes Markdown en `rama-md`. Sin commit/push.
+
+**Realizado:** retiradas notas de proceso (usuario, decisión del equipo, respuesta anterior, redibujo) en SD1-04/13/27, SD2-15, SD3-02/07; SD4-22 y SD5-23 actualizadas tras verificar PDFs remotos de SD4 y compilar SD5 (carta, folio, media firma, Source Sans 3). Mismo texto en la consolidada MD, sus matrices de origen SD1/SD2/SD3/SD4/SD5 y el LaTeX; hash de fuente actualizado. SD2-15 pasa a Documentado por decisión del usuario: 2.2.4 cita las fuentes externas (normativas y técnicas). Pendientes confirmados sin cambio: SD1-31, SD2-07, SD3-03 (marcadores [[REVISIÓN HUMANA]] reales).
+
+**Verificación:** 212/212 respuestas iguales a sus fuentes; LuaLaTeX salida 0, 42 p., 212 ID, 0 Overfull. PDF en Documents/Codex/2026-10-12/ya/outputs/LAFROX-Trazabilidad-Informe1-Consolidada.pdf.
+
+## Publicación de fechas de portada SD1–SD3 — 12 de octubre de 2026
+
+**Autorización:** el usuario pidió comitear y pushear las correcciones de fecha y confirmó explícitamente incluir el commit previo SD1 `49041e3` (redacción, fuentes y títulos de tablas). No autorizó publicar rama-md ni los otros cambios preparados de SD2/SD3.
+
+**Commits y push verificados:** SD1 `cab7a0308acff8a781abcf4ad4ea5ab7bbf6866f` (dos fuentes, dos PDF y main.tex), SD2 `09138d85aaf194115176868be5fe2ff271de1d76` (main.tex) y SD3 `b52993ffd8cc2ba520025bd9c60757f3a6cfb1c8` (main.tex). Push normal a sus ramas homónimas, sin force-push; ls-remote confirmó exactamente los tres SHA. SD1 publicó también el ancestro autorizado `49041e3`.
+
+**Preservación:** commits creados mediante rutas explícitas con git commit --only. Las huellas raw/full-index del staging antes/después coincidieron exactamente en cada checkout. Quedan intactos y SIN publicar los cinco archivos preparados de SD2, los 21 preparados de SD3, las capturas no versionadas SD1 y tmp/ SD3. Este registro es sólo un cambio local Markdown y no se comiteó ni pusheó rama-md. Engram no expuesto en las herramientas de esta sesión.
+
+## Fechas de portada SD1–SD3 LaTeX — 12 de octubre de 2026
+
+**Autorización explícita:** el usuario pidió revisar las portadas de documentos, anexos y formularios en las ramas LaTeX de SD1, SD2 y SD3 y fijar la emisión al 12 de octubre de 2026, corrigiendo únicamente si era necesario.
+
+**Destinos:** checkouts `LafroX-sd1-latex` (`LafroX-Subdoc1-LateX`), `LafroX-sd2-latex` (`LafroX-Subdoc2-LateX`) y `LafroX-sd3-latex` (`LafroX-Subdoc3-LateX`).
+
+**Hallazgo/cambios:** las portadas PDF existentes de SD1 y Formulario T-6 mostraban 5 de octubre de 2026 porque sus fuentes omitían `fecha` y heredaban el valor por defecto de la clase. Se añadió la fecha explícita en `LAFROX-Subdocumento1.tex` y `LAFROX-Formulario-T-6.tex`, y se reemplazó el placeholder de fecha en `main.tex` de las tres ramas. Se preservaron las copias locales de `lafrox.cls`, cuyas instrucciones dicen no editarlas. SD2 cuerpo y anexos, y SD3 cuerpo, anexos y Formulario T-12 ya declaraban el 12 de octubre; no se modificaron esos documentos. En la rama SD1 no existe fuente/PDF independiente de anexos.
+
+**Verificación:** se recompilaron SD1 y T-6 con LuaLaTeX (19 y 7 páginas). La extracción de la primera página de los siete PDF existentes (SD1 cuerpo/T-6; SD2 cuerpo/anexos; SD3 cuerpo/anexos/T-12) confirma `12 de octubre de 2026` en cada portada. Sin commit ni push.
+
 ## SD13 — alineación LaTeX–Markdown y matriz independiente — 12 de octubre de 2026
 
 Autorización explícita: alinear cuerpo, anexos y T-19 con LaTeX vigente del checkout SD13/LafroX, rama LafroX-Subdoc13-LateX. Trasladar matriz Informe1 a archivo independiente en13_innovaciones, fuera de PDF; columnas exactas Observación del Informe1, Respuesta, Sección modificada. LaTeX: retirado antiguo Anexo13.D, remisiones de introducciones, filaIA correspondiente y portada anexos ajustada A–C. Markdown: tres documentos reconvertidos desde fuentes actuales, figuras enlazadas a activos PDF existentes sin editar imágenes; declaraciónIA consolidada en principal. Matriz separada conserva23observaciones/respuestas (15específicas+8transversales), referencias y revisión editorial acreditada previamente. Sin commit/push ni cambios en otros subdocumentos. Copias previas en SD13/tmp/alineacion-sd13. Verificación final: principal54p y anexos10p recompilados salida0; T-19 conserva13p sin cambiosLaTeX. Matriz ausente de ambosPDF y de índice/anexos/IAprincipal.23observaciones conservadas en MD de3columnas. Espejo reconvertido exacto de los3MD,6figuras enlazadas a PDFvigentes. Ajuste local14pt evita página final con solaURL en anexos, inspeccionada sin choque con firma. Persisten avisos previos de compilación y los demás pendientes del checklist.
 
 # CONTEXTO DE SESIÓN
+
+## Localizadores simples de trazabilidad LaTeX — 12 de octubre de 2026
+
+**Autorización y preferencia:** el usuario aprobó eliminar los signos tipográficos de sección, usar la numeración directa sin repetir SD cuando es inequívoca y retirar números de página de Sección modificada; pidió commit y push. Conservar identificación de anexos/formularios/tablas/figuras y páginas necesarias de citas a las Bases. Sigue vigente no incluir declaración de IA aquí.
+
+**Aplicación y pruebas:** solo LaTeX de ../LafroX-revision-trazabilidad-informe1-latex, rama LafroX-Revision-Trazabilidad-Informe1-LateX, y su registro Revision/revision_formal_trazabilidad.md. 164 localizadores simplificados, 218 signos retirados; 212 IDs en orden y 848 celdas del PDF verificadas con 0 discrepancias. Cero signos de sección en todo el PDF y cero localizadores numéricos de página en cuarta columna. Observaciones/respuestas/estados conservados salvo signos; códigos de subsección preservados. Citas de páginas en bibliografía iguales al corte anterior. Original Markdown y plantilla intactos.
+
+**Resultado:** LuaLaTeX salida 0, 43 páginas renderizadas y revisadas; 0 incidencias de geometría/folios/media firma, sin Overfull, faltantes de caracteres ni referencias indefinidas. Persisten 29 avisos glue y 2 Underfull no fatales. PDF actualizado en Documents/Codex/2026-10-12/ya/outputs/LAFROX-Trazabilidad-Informe1-Consolidada.pdf.
+
+**Publicación:** commit fc15ec841f4d33d9cf226ecad4e62a817d3f9d2e, push confirmado por ls-remote con el mismo SHA; checkout LaTeX limpio. Rama-md solo recibe este registro local sin commit, preservando cambios ajenos. Engram sin herramientas/identidad runtime confirmada; resumen conservado aquí.
+
+## Publicación solicitada en ramas SD1–SD3 y rama-md — 12 de octubre de 2026
+
+El usuario autorizó publicar únicamente SD1, SD2, SD3 y `rama-md`; descartó publicar `Arquitectura_Alex`. `rama-md` recibió fast-forward limpio desde `origin/rama-md` (commit remoto `b853d98`, sincronización SD5); quedan locales los cambios Markdown de este registro y `Revision/sincronizacion_SD3_SD13_2026-10-12.md`, aún sin commit/push. SD1: commit local `49041e3` con cinco fuentes/PDF finales; capturas PNG de revisión excluidas y preservadas. El push no llegó a ejecutarse: el control de aprobación automática falló por HTTP 429 al intentar escribir fuera del checkout. SD2: cinco archivos de fuentes/PDF finales preparados en staging, sin commit. SD3: 21 archivos de fuentes/PDF finales preparados; `tmp/` excluido y preservado, sin commit. Las tres ramas LaTeX estaban en HEAD remoto al iniciar y no se usó force-push. Worktree SD13 detached: sólo artefactos de compilación/tmp locales, sin publicar. `subdoc-4` sólo está 7 commits detrás del remoto. `alvaro-md` ya es ancestro de `rama-md`; no requiere push separado.
+
+## Corrección formal de trazabilidad consolidada LaTeX — 12 de octubre de 2026
+
+**Autorización y causa:** el usuario corrigió la fuente requerida: Trazabilidad/LAFROX-Trazabilidad-Informe1-Consolidada.md, no el informe de contraste de Revision. Exigió cuatro columnas exactas (N.º, Observación del Informe 1, Respuesta, Sección modificada), IDs, entrega formal y la base LaTeX de los otros subdocumentos. Confirmó que no se incluya declaración de IA aquí. Se mantiene la autorización previa de commit/push de este informe.
+
+**Destino y realizado:** checkout ../LafroX-revision-trazabilidad-informe1-latex, rama LafroX-Revision-Trazabilidad-Informe1-LateX. Nuevo Trazabilidad/LAFROX-Trazabilidad-Informe1-Consolidada.tex; main.tex y el punto de entrada anterior redirigen al correcto. Clase, portada y firma idénticas al SD1 vigente. Original Markdown intacto. 212 filas/IDs en orden (34/32/45/52/24/24 y TR-01); observaciones y estados preservados; 205 filas idénticas y 7 con limpieza editorial de notas de proceso, registrada en Revision/revision_formal_trazabilidad.md. Remisiones históricas 13.D.1/13.D.2 corregidas en notas, sin nuevas filas.
+
+**Verificación:** LuaLaTeX salida 0, 43 páginas carta; 848 celdas verificadas en PDF, 0 discrepancias; IDs únicos y orden exacto; folios y media firma posteriores a portada, márgenes y todas las páginas inspeccionados. Ajustados títulos huérfanos, tabla SD4 con una sola fila final, transición SD5–SD13, URLs y referencias partidas. Sin Overfull, faltantes de caracteres ni referencias indefinidas; persisten 29 avisos glue y 5 Underfull no fatales. No se certifica veracidad global de las respuestas ni cierre de los pendientes del Markdown. PDF y scratch fuera del repositorio, vista final en Documents/Codex/2026-10-12/ya/outputs/LAFROX-Trazabilidad-Informe1-Consolidada.pdf.
+
+**Publicación:** commit 8060bdc694db24bfcd2bf14cdf147812d929ac1a, push confirmado por ls-remote con el mismo SHA; checkout LaTeX limpio. Sin cambios ni publicación de otros subdocumentos. En rama-md solo este registro local; cambios previos preservados. Engram no disponible/identidad runtime no confirmada; estado conservado aquí.
+
+
+## Sincronización exhaustiva SD3–SD13 — 12 de octubre de 2026
+
+**Autorización:** usuario pidió sincronizar el LaTeX de SD3 y SD13 con los cambios comentados. rama-md preservada; ningún archivo no Markdown creado en su checkout. Sin commit/push ni cambios en otros SD, fechas, firmas o páginas semivacías.
+
+**Destinos:** SD3 existente ../LafroX-sd3-latex, rama LafroX-Subdoc3-LateX e55ca51 y cambios locales previos preservados. No había checkout SD13 vigente en este equipo: worktree gestionado C:/Users/alexa/.codex/worktrees/sd13-sincronizacion/LafroX, HEAD separado sobre origin/LafroX-Subdoc13-LateX 83ecc44. Referencias comprobadas por ls-remote/fetch. No archivar SD13: sus figuras y PDF se utilizan en el espejo Markdown.
+
+**Actuación:** SD3 ya contenía todas las ediciones Markdown; no se duplicaron. SD13 remoto tenía citas más completas: se conservaron y alinearon tres Markdown, 39 pies (34 cuerpo, 5 anexos), bibliografías 31/16/27, cinco atribuciones T-19 y seis rutas de figuras reales. Celdas, cifras, compromisos y revisiones humanas intactos. Ningún .tex cambió en esta operación, hashes iniciales/finales iguales. Matrices de observaciones independientes, no reinsertar Anexo 13.D ni trasladar la fila OK al cuerpo.
+
+**Verificación:** 7513 unidades textuales/celdas y 66 tablas, 1518 filas incluidos encabezados, en ambos sentidos y por orden: cero discrepancias normalizadas. 14 figuras reales. Seis PDF recompilados con LuaLaTeX sin shell escape y SyncTeX, salidas 0: SD3 37/165/260 p.; SD13 52/11/15 p., iguales a PDFs previos. Texto de 540 páginas examinado: sin revisión humana pendiente; media firma en todas las 534 páginas no portada. Inspección visual de 78 p. SD13 y muestras SD3; renders finales sin cambios. Persisten siete Overfull pequeños en IA SD3 y avisos glue/caption/epstopdf: no declarar logs limpios ni conformidad global.
+
+**Registro:** Revision/sincronizacion_SD3_SD13_2026-10-12.md; respaldos/diffs/hashes/JSON en ../LafroX-sd3-latex/tmp/sync-20261012 y renders/logs SD13 en su worktree. Engram no disponible, estado persistido aquí. Esta sesión no publicó. Otra sesión incluyó los espejos MD en 7f2f585 y publicó 0907485 mientras se revisaba; ls-remote lo confirmó. Cotejo bidireccional repetido después del merge: cero diferencias. LaTeX sigue local sin publicar; informe y registro final pendientes de commit. No usar conteos históricos 54/10/13 para SD13 remoto actual.
 
 ## Conversión de revisión de trazabilidad del Informe 1 a LaTeX — 12 de octubre de 2026
 
@@ -631,6 +704,17 @@ Por instrucción del usuario, el MD es la fuente y el LaTeX se alineó con él e
 - Commit y push en las 4 ramas: rama-md (incluye RT-16.14 y RT-08.04 de la sesión paralela) y LafroX-Subdoc{1,2,3}-LateX. El T-12 LaTeX se regeneró con esos dos cambios. Si el T-12 MD vuelve a cambiar, hay que regenerar su LaTeX.
 
 # CONTEXTO DE SESIÓN
+
+## Localizadores simples de trazabilidad LaTeX — 12 de octubre de 2026
+
+**Autorización y preferencia:** el usuario aprobó eliminar los signos tipográficos de sección, usar la numeración directa sin repetir SD cuando es inequívoca y retirar números de página de Sección modificada; pidió commit y push. Conservar identificación de anexos/formularios/tablas/figuras y páginas necesarias de citas a las Bases. Sigue vigente no incluir declaración de IA aquí.
+
+**Aplicación y pruebas:** solo LaTeX de ../LafroX-revision-trazabilidad-informe1-latex, rama LafroX-Revision-Trazabilidad-Informe1-LateX, y su registro Revision/revision_formal_trazabilidad.md. 164 localizadores simplificados, 218 signos retirados; 212 IDs en orden y 848 celdas del PDF verificadas con 0 discrepancias. Cero signos de sección en todo el PDF y cero localizadores numéricos de página en cuarta columna. Observaciones/respuestas/estados conservados salvo signos; códigos de subsección preservados. Citas de páginas en bibliografía iguales al corte anterior. Original Markdown y plantilla intactos.
+
+**Resultado:** LuaLaTeX salida 0, 43 páginas renderizadas y revisadas; 0 incidencias de geometría/folios/media firma, sin Overfull, faltantes de caracteres ni referencias indefinidas. Persisten 29 avisos glue y 2 Underfull no fatales. PDF actualizado en Documents/Codex/2026-10-12/ya/outputs/LAFROX-Trazabilidad-Informe1-Consolidada.pdf.
+
+**Publicación:** commit fc15ec841f4d33d9cf226ecad4e62a817d3f9d2e, push confirmado por ls-remote con el mismo SHA; checkout LaTeX limpio. Rama-md solo recibe este registro local sin commit, preservando cambios ajenos. Engram sin herramientas/identidad runtime confirmada; resumen conservado aquí.
+
 
 ## Conversión de revisión de trazabilidad del Informe 1 a LaTeX — 12 de octubre de 2026
 
