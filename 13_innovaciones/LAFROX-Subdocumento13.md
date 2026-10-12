@@ -59,7 +59,7 @@ Las cinco se eligieron por su pertinencia al caso y no por su novedad, como pide
 
 El capítulo se conecta con el resto de la oferta de la siguiente forma:
 
-- **Arquitectura.** Cada innovación declara en este capítulo qué capas, componentes y módulos utiliza, como exige el RT-26.01 (Bases Técnicas Transversales, cap. 26, p. 44). Esos elementos son los que definen el Capítulo 4 (capas en la sección 4.1.3, módulos en la sección 4.1.4 y emplazamiento en la sección 4.2.2) y que el Capítulo 3 resume en la sección 3.4.2. Las innovaciones reutilizan los componentes ofertados y agregan las responsabilidades funcionales y los contratos descritos en este capítulo, sin incorporar hardware adicional al Formulario T-11. El Anexo 13.B identifica los componentes utilizados; la suficiencia de cómputo y almacenamiento debe comprobarse considerando también el procesamiento que agrega cada innovación, no solo la ingesta ya dimensionada.
+- **Arquitectura.** Cada innovación declara en este capítulo qué capas, componentes y módulos utiliza, como exige el RT-26.01 (Bases Técnicas Transversales, cap. 26, p. 44). Esos elementos son los que definen el Capítulo 4 (capas en la sección 4.1.3, módulos en la sección 4.1.4 y emplazamiento en la sección 4.2.2) y que el Capítulo 3 resume en la sección 3.4.2. Las innovaciones reutilizan los componentes ofertados y agregan las responsabilidades funcionales y los contratos descritos en este capítulo, sin incorporar hardware adicional al Formulario T-11. El Anexo 13.B identifica los componentes utilizados. El procesamiento que agregan las innovaciones corre sobre los servicios elásticos de la plataforma analítica N-10 (S3, Glue y Redshift Serverless; Formulario T-11) y sobre recursos efímeros de QA y Preproducción, por lo que se refleja como costo operacional en el flujo de caja de cada innovación y no como capacidad fija adicional. En el borde, la innovación 3 solo acumula la carga térmica sobre las lecturas que el gateway B-02 ya recibe, sin agregar ingesta.
 - **EDT y cronograma.** Sus paquetes están en la cuenta de control 3.10 «Innovaciones», en el paquete 5.4.3 y en la cuenta 8.3 «Innovaciones en operación» del Formulario T-14, con los meses del Anexo 7.D (Bases Técnicas Transversales, cap. 26, RT-26.02, p. 44).
 - **Riesgos.** Su riesgo de adopción está registrado en las fichas R8-25 a R8-29 del Anexo 8.A y en el Formulario T-16, con la escala ordinal del Capítulo 8, sección 8.1.3 (Bases Técnicas Transversales, cap. 26, RT-26.04, p. 44).
 - **Flujo de caja.** El impacto económico se expresa por rubro, clase y mes, sin montos, porque la Oferta Técnica no puede contener cifras que permitan inferir el precio (Distribuidora Puelche S.A., 2026a, Art. 50.2, p. 29). La valorización se desarrolla para el Informe 3 y se incorpora al Entregable 2 de la Oferta Económica, ítem 2.7 (Bases Administrativas, Formulario E-21, p. 71); no se presentan costos ni precios de la oferta en este capítulo.
@@ -100,7 +100,7 @@ flowchart TB
         B03["B-03 Termógrafos de camión<br/>(INN-03)"]
     end
     subgraph L4["Capa 4 · Lógica de negocio"]
-        M23["M2 Inventario · M3 Preventa<br/>(INN-01, INN-03, INN-05)"]
+        M23["M2 Inventario · M3 Preventa<br/>(INN-01 a INN-03, INN-05)"]
         M56["M5 Preparación · M6 Reparto<br/>(INN-02 a INN-05)"]
         M78["M7 Cobranza y rendición · M8 Devoluciones y envases<br/>(INN-01, INN-04)"]
         M9["M9 Calidad y trazabilidad<br/>(INN-01, INN-03)"]
@@ -192,7 +192,7 @@ Riesenegger et al. (2023) revisan las prácticas contra la merma de alimentos en
 
 ### 13.1.4 Diseño de la incorporación
 
-M10 Analítica calcula la lista de avisos cada noche con datos de M2 Inventario, de M9 Calidad y trazabilidad y del historial de compra de M3 Preventa; sus datos residen en N-10 (capa 6). M3 Preventa entrega la lista en la aplicación de preventa C-01 (capa 1). La lista viaja en el terminal y funciona sin señal (Capítulo 4, sección 4.1.15), y la respuesta de la visita vuelve por la cola de sincronización de M3 (capa 5). La innovación no abre una interfaz pública; su contrato de datos está en el Anexo 13.A.
+M10 Analítica calcula la lista de avisos cada noche con datos de M2 Inventario, de M9 Calidad y trazabilidad y del historial de compra de M3 Preventa; sus datos residen en N-10 (capa 6). M8 Devoluciones y envases aporta las devoluciones por lote y su causal, que alimentan el saldo estimado y el indicador I-01C. M3 Preventa entrega la lista en la aplicación de preventa C-01 (capa 1). La lista viaja en el terminal y funciona sin señal (Capítulo 4, sección 4.1.15), y la respuesta de la visita vuelve por la cola de sincronización de M3 (capa 5). La innovación no abre una interfaz pública; su contrato de datos está en el Anexo 13.A.
 
 La Figura 13.2 recorre el servicio desde los datos de origen hasta la verificación del beneficio en el local.
 
@@ -215,7 +215,7 @@ El piloto se hace en 120 locales de 12 rutas, con al menos 100 avisos evaluables
 | INN-01.P3 | 3.10.1.3 | 9 y 10 | Lista sin conexión y respuesta de visita en M3 (H4) |
 | INN-01.P4 | 3.10.1.4 | 11 a 15 | Certificación del H5, piloto en marcha blanca e informe de habilitación |
 
-La innovación se materializa en el mes 16, con el paso a producción de la Etapa 1. La dirige el Líder de Datos, Leandro Chamorro, y Comercial y Calidad del CLIENTE validan el catálogo. En los meses 16 a 20 la innovación queda cubierta por la estabilización de la Etapa 1 (paquete 4.2.2). Desde el mes 21, su regla y su catálogo se mantienen dentro del mantenimiento correctivo y evolutivo (paquete 8.2.1), en el frente de Operación que dirige el Líder de Operación / SRE, Guillermo Castillo, porque la dedicación del Líder de Datos termina en el mes 21 (Capítulo 1, Tabla 1.3).
+La innovación se materializa en el mes 16, con el paso a producción de la Etapa 1. La dirige el Líder de Datos, Leandro Chamorro, y Comercial y Calidad del CLIENTE validan el catálogo. En los meses 16 a 20 la innovación queda cubierta por la estabilización de la Etapa 1 (paquete 4.2.2). Desde el mes 21, su regla y su catálogo se mantienen dentro del mantenimiento correctivo y evolutivo (paquete 8.2.1); desde el mes 22, ese mantenimiento queda en el frente de Operación que dirige el Líder de Operación / SRE, Guillermo Castillo, porque la dedicación del Líder de Datos termina en el mes 21 (Capítulo 1, Tabla 1.6). La respuesta al riesgo de adopción R8-25 la conduce el Líder de Implantación y Gestión del Cambio, Patricio Henríquez, porque depende de la adopción en terreno (Anexo 8.A, ficha R8-25).
 
 ### 13.1.5 Impacto económico
 
@@ -241,7 +241,7 @@ La Tabla 13.5 define los indicadores, con su línea base, su meta y su momento d
 
 Las reducciones de I-01B e I-01C son metas propuestas de diseño, no mediciones obtenidas ni ahorros garantizados. El mecanismo esperado es detectar el riesgo antes del vencimiento y cerrar una acción autorizada en el local. La línea base se levanta durante la marcha blanca y el contraste del mes 28 determina el efecto observado; sin ese contraste no se atribuye ahorro a la innovación.
 
-**Tabla 13.5. Indicadores de la innovación 1. Fuente: elaboración propia.**
+**Tabla 13.5. Indicadores de la innovación 1. Fuente: elaboración propia a partir del Caso Logística, cap. 4.8, y del paquete 3.10.1.4 del Formulario T-14.**
 
 <a id="tab:13-1-ind"></a>
 
@@ -328,7 +328,7 @@ Las piezas por separado, la integración y la entrega continuas, los entornos ef
 
 ### 13.2.4 Diseño de la incorporación
 
-La aplicación de preventa C-01 (M3 Preventa), los terminales de bodega C-03 (M5 Preparación) y la aplicación de reparto C-02 (M6 Reparto), en la capa 1, emiten la evidencia con un cupo de tamaño y frecuencia para no competir con la sincronización de pedidos. La capa 8 correlaciona las trazas, y la capa 7 sanitiza y controla el acceso a los paquetes. Como la innovación modifica el tratamiento de datos de la capa de seguridad, el Encargado de Seguridad de la Información, Álvaro Catalán, aprueba la sanitización con su propio modelado de amenazas (Bases Técnicas Transversales, cap. 26, RT-26.07, p. 45).
+La aplicación de preventa C-01 (M3 Preventa), los terminales de bodega C-03 (M5 Preparación) y la aplicación de reparto C-02 (M6 Reparto), en la capa 1, emiten la evidencia con un cupo de tamaño y frecuencia para no competir con la sincronización de pedidos. La evidencia incluye el estado de los módulos M3, M5 y M6 (capa 4) y el orden causal de la cola de sincronización de los terminales (capa 5). La capa 8 correlaciona las trazas, y la capa 7 sanitiza y controla el acceso a los paquetes. Como la innovación modifica el tratamiento de datos de la capa de seguridad, el Encargado de Seguridad de la Información, Álvaro Catalán, aprueba la sanitización con su propio modelado de amenazas (Bases Técnicas Transversales, cap. 26, RT-26.07, p. 45).
 
 La Figura 13.3 muestra cómo un incidente real se transforma en un escenario reproducible y una prueba de regresión.
 
@@ -377,18 +377,18 @@ La Tabla 13.10 define los indicadores de la innovación 2.
 
 La reducción del 30 % de I-02A es una meta propuesta de diseño. Se espera reducir el tiempo dedicado a reconstruir manualmente la secuencia del incidente mediante su paquete causal. La comparación de al menos veinte pares equivalentes permite evaluar la meta; no demuestra anticipadamente que esa magnitud se alcanzará ni autoriza a descontar esfuerzo del plan.
 
-**Tabla 13.10. Indicadores de la innovación 2. Fuente: elaboración propia.**
+**Tabla 13.10. Indicadores de la innovación 2. Fuente: elaboración propia a partir del Caso Logística, cap. 18, criterio 6, y de los paquetes 3.10.2.1 a 3.10.2.4 y 8.3.1 del Formulario T-14.**
 
 <a id="tab:13-2-ind"></a>
 
 | Id | Indicador | Línea base | Meta | Momento |
 | --- | --- | --- | --- | --- |
-| I-02A | Mediana de horas desde la admisión del incidente hasta la causa reproducida | Incidentes de los meses 5 a 10, con diagnóstico convencional | −30 % relativo, con ≥ 20 pares comparables | Mes 15 |
+| I-02A | Mediana de horas desde la admisión del incidente hasta la causa reproducida | Incidentes de prueba de los meses 5 a 10 en QA, diagnosticados sin el paquete | −30 % relativo, con ≥ 20 pares comparables | Mes 15 |
 | I-02B | Incidentes de terreno admitidos cuyo paquete reproduce la causa / admitidos | Sin medición (el circuito no existe) | ≥ 80 % | Mes 15; trimestral después |
 | I-02C | Incidentes reabiertos por la misma causa después del cierre | Sin medición | 0 | Mensual desde el mes 21 |
 | I-02D | Paquetes con datos prohibidos | Cero por diseño | 0 | En cada liberación |
 
-La línea base de I-02A se toma en la construcción con los mismos incidentes de prueba y de terreno temprano, diagnosticados del modo convencional, para que la comparación del mes 15 sea entre pares equivalentes. I-02D es una condición de seguridad y no de beneficio: un solo paquete con datos prohibidos detiene la captura.
+La línea base de I-02A se forma en QA con incidentes de prueba de los meses 5 a 10: fallas de enlace y de reconexión inyectadas con los escenarios del RT-10.07, que se diagnostican del modo convencional y sin abrir el paquete de evidencia, aunque el circuito ya exista desde el mes 5. No se usan incidentes de terreno, porque antes de la marcha blanca no hay operación en terreno. En el mes 15, cada incidente de la marcha blanca diagnosticado con su paquete se compara con un incidente de la línea base del mismo tipo de falla y del mismo módulo, hasta reunir al menos veinte pares. Un par se forma cuando ambos incidentes comparten tipo de falla (pérdida de enlace, reconexión con reordenamiento de la cola o reintento duplicado) y módulo (M3, M5 o M6). Calidad asigna cada par antes de conocer el tiempo de diagnóstico, y un incidente sin par no se cuenta en la comparación. La comparación es conservadora: un incidente real de terreno es más difícil de diagnosticar a ciegas que una falla inyectada en QA, por lo que la base tiende a subestimar el tiempo del diagnóstico convencional. I-02D es una condición de seguridad y no de beneficio: un solo paquete con datos prohibidos detiene la captura.
 
 ### 13.2.7 Riesgo de adopción
 
@@ -400,7 +400,7 @@ El riesgo de adopción está registrado como R8-26 (probabilidad 3, impacto 4, e
 
 | Causa | P × I (SD8) | Mitigación | Contingencia |
 | --- | --- | --- | --- |
-| Reproducción artificial que no explica el incidente | 3 × 4 (R8-26) | Comparar con el estado observado; revisión de muestras por Calidad | Reproducción semiautomática con un paquete armado por soporte |
+| Reproducción artificial que no explica el incidente | 3 × 4 (R8-26) | Comparar con el estado observado; revisión de muestras por Calidad | Conservar diagnóstico y regresión base con trazas protegidas (R8-26); reproducción semiautomática con un paquete armado por soporte |
 | Consumo de batería o de datos del terminal | Incluida en R8-26 | Cupo y frecuencia de captura | Captura solo a solicitud de soporte |
 | Datos personales en los paquetes | 3 × 5 (R8-24) | Sanitización por reglas fijas; modelado de amenazas (Bases Técnicas Transversales, cap. 26, RT-26.07, p. 45) | Suspender el conjunto afectado y producir una muestra protegida |
 
@@ -444,7 +444,7 @@ La tecnología tiene cuatro componentes:
 
 1. **EPCIS 2.0 con datos de sensor.** La versión 2.0 del estándar agregó la lista de elementos de sensor (`sensorElementList`) para adjuntar lecturas o resúmenes de sensor a un evento de negocio (GS1 AISBL, 2022). Cada movimiento del lote (recepción, ubicación en cámara, carga del SSCC al camión y entrega) lleva el resumen térmico del tramo: mínimo, máximo, minutos fuera de rango y carga térmica acumulada.
 2. **Asociación lote–sensor por lugar y tiempo.** En cámara, el lote toma la serie del punto B-01 de su zona (21 puntos en total); en ruta, la del termógrafo B-03 de su camión (28 en total). Un tramo sin dato queda marcado como tal y nunca se rellena. El modelo de datos ya contiene esta asociación temporal entre sensor y lote (Capítulo 5, sección 5.1.7).
-3. **Modelo cinético por familia** (lácteos, cecinas, congelados y otras). Usa la dependencia de la velocidad de deterioro con la temperatura (Arrhenius o Q10), integrada sobre la historia real del lote. Es el principio del sistema SMAS de gestión de la seguridad de alimentos refrigerados (Koutsoumanis et al., 2005) y del FEFO dinámico en la logística de alimentos (Jedermann et al., 2014). El modelo es determinista: los parámetros vienen de la literatura y de la ficha del proveedor, y Calidad los aprueba. No es aprendizaje automático.
+3. **Modelo cinético por familia** (lácteos, cecinas, congelados y otras). Usa la dependencia de la velocidad de deterioro con la temperatura (Arrhenius o Q10), integrada sobre la historia real del lote. Es el principio del sistema SMAS de gestión de la seguridad de alimentos refrigerados (Koutsoumanis et al., 2005) y del FEFO dinámico en la logística de alimentos (Jedermann et al., 2014). El modelo es determinista: los parámetros vienen de la literatura y de la ficha del proveedor, y los aprueban el Líder de Calidad y Pruebas, Maximiliano Miño, y Calidad del CLIENTE. No es aprendizaje automático.
 4. **Cálculo distribuido.** En el borde, el gateway B-02 (AWS IoT Greengrass, en los centros de distribución de Talca y Concepción) acumula la carga térmica de los lotes en cámara aunque el centro esté 24 horas sin enlace. En ruta, el termógrafo B-03 registra todo el trayecto y difunde la temperatura por Bluetooth, y la aplicación de reparto C-02 alerta cuando detecta una excursión; al volver el camión, el terminal descarga el registro completo (Capítulo 4, sección 4.2) y N-10 calcula la carga térmica del tramo de ruta. Durante la ruta, el lote conserva su última estimación y la alerta llega a Calidad por la red celular, de inmediato con cobertura o cuando el terminal la recupera. La estimación es una proyección derivada de los eventos: se puede reconstruir con otra versión del modelo para auditoría.
 
 El contrato de datos es `inn03.historia-termica-lote.v1` y se detalla en el Anexo 13.A.
@@ -459,7 +459,7 @@ El contrato de datos es `inn03.historia-termica-lote.v1` y se detalla en el Anex
 
 **Métrica de desempeño.** I-03B mide la proporción de lotes cuya estimación difiere de la evaluación de Calidad en no más del 15 % de la vida nominal. La habilitación se decide por familia con la muestra y el umbral definidos en la sección 13.3.6; no se confunde esta precisión con el ahorro posterior de I-03D.
 
-**Recalibración.** Al no ser un modelo aprendido, se revisan los parámetros y no se reentrena un algoritmo de aprendizaje. El paquete 8.3.2 ejecuta la revisión semestral con los lotes evaluados del período, en los meses 26, 32, 38, 44, 50 y 56. Se realiza además una recalibración extraordinaria si I-03B baja del 80 % en dos cortes seguidos. A efectos del seguimiento operacional, se considera señal de deriva del desempeño que I-03B sea inferior al 80 % en dos cortes consecutivos para una misma familia. Este umbral activa la recalibración extraordinaria de sus parámetros; no constituye por sí solo un diagnóstico de la causa de la degradación.
+**Recalibración.** Al no ser un modelo aprendido, se revisan los parámetros y no se reentrena un algoritmo de aprendizaje. El paquete 8.3.2 ejecuta la revisión semestral con los lotes evaluados del período, en los meses 26, 32, 38, 44, 50 y 56. A efectos del seguimiento operacional, se considera señal de deriva del desempeño que I-03B sea inferior al 80 % en dos cortes consecutivos para una misma familia. Este umbral activa la recalibración extraordinaria de sus parámetros; no constituye por sí solo un diagnóstico de la causa de la degradación.
 
 Al no ser un modelo aprendido, no se le aplica el Capítulo 18 de las Bases Técnicas (RT-26.06). Aun así declara línea base, métrica de desempeño y detección de deriva, como pediría el RT-18.08 a un modelo predictivo.
 
@@ -471,7 +471,7 @@ EPCIS 2.0 es un estándar publicado (GS1 AISBL, 2022). Los modelos cinéticos de
 
 ### 13.3.4 Diseño de la incorporación
 
-La innovación usa componentes que la arquitectura ya contiene. Los sensores B-01 y los termógrafos B-03 son la fuente de las series; el gateway B-02 acumula la carga térmica sin enlace; la aplicación de reparto C-02 trae el registro de ruta. N-08 Ingesta de IoT y N-06 Telemetría cruda reciben las series y reutilizan los 10.920 mensajes diarios ya dimensionados (21 puntos × 288 lecturas más 28 termógrafos × 174 lecturas; Capítulo 4, sección 4.2), sin agregar ingesta. La capa 5 transporta los eventos EPCIS con datos de sensor. M9 Calidad y trazabilidad muestra la historia y la estimación, y en ella Calidad dispone y aprueba los parámetros. M2 Inventario y M5 Preparación reciben el orden de salida sugerido, habilitado por familia. M10 Analítica, sobre N-10, ejecuta el modelo, recalcula y publica, y conserva las series cinco años. La capa 7 versiona y aprueba el modelo y sus parámetros.
+La innovación usa componentes que la arquitectura ya contiene. Los sensores B-01 y los termógrafos B-03 son la fuente de las series; el gateway B-02 acumula la carga térmica sin enlace; la aplicación de reparto C-02 trae el registro de ruta. N-08 Ingesta de IoT y N-06 Telemetría cruda reciben las series y reutilizan los 10.920 mensajes diarios ya dimensionados (21 puntos × 288 lecturas más 28 termógrafos × 174 lecturas; Capítulo 4, sección 4.2), sin agregar ingesta. La capa 5 transporta los eventos EPCIS con datos de sensor. M9 Calidad y trazabilidad muestra la historia y la estimación, y en ella Calidad del CLIENTE dispone y, junto con Maximiliano Miño, aprueba los parámetros. M2 Inventario y M5 Preparación reciben el orden de salida sugerido, habilitado por familia. M10 Analítica, sobre N-10, ejecuta el modelo, recalcula y publica, y conserva las series cinco años. La capa 7 versiona y aprueba el modelo y sus parámetros.
 
 La Figura 13.4 distingue la captura en cámara y en ruta, la asociación al lote y el uso posterior de la estimación.
 
@@ -495,7 +495,7 @@ La Tabla 13.13 presenta los paquetes de la EDT.
 | INN-03.P4 | 3.10.3.4 | 11 a 15 | Certificación del H5 y validación en marcha blanca contra la evaluación de Calidad |
 | INN-03.P5 | 8.3.2 | 26, 32, 38, 44, 50 y 56 | Revisión semestral de parámetros y extensión a nuevas familias |
 
-Los lácteos son la primera familia priorizada, por la relación con su proveedor descrita en la sección 13.3.1. La innovación se materializa en el mes 16, como apoyo a la decisión de Calidad; el orden de salida sugerido se activa por familia cuando esa familia cumple el indicador I-03B. Los responsables son el Líder de Datos, Leandro Chamorro, y el Arquitecto de Solución, Bastián Trejo, con la validación del Líder de Calidad y Pruebas, Maximiliano Miño, y de la jefa de Calidad del CLIENTE. Desde el mes 21, las revisiones semestrales del paquete 8.3.2 se ejecutan en el frente de Operación que dirige Guillermo Castillo, y Maximiliano Miño aprueba sus parámetros, porque la dedicación del Líder de Datos termina en el mes 21 (Capítulo 1, Tabla 1.3). Con el inicio supuesto en febrero de 2027 (Anexo 7.A), las revisiones de los meses 32, 44 y 56 caen en septiembre. En esos meses la recalibración se analiza sin intervenir producción, y los parámetros aprobados se activan después del día 25, fuera del congelamiento operacional (Distribuidora Puelche S.A., 2026c, cap. 10, restricción 8).
+Los lácteos son la primera familia priorizada, por la relación con su proveedor descrita en la sección 13.3.1. La innovación se materializa en el mes 16, como apoyo a la decisión de Calidad; el orden de salida sugerido se activa por familia cuando esa familia cumple el indicador I-03B. Los responsables son el Líder de Datos, Leandro Chamorro, y el Arquitecto de Solución, Bastián Trejo, con la validación del Líder de Calidad y Pruebas, Maximiliano Miño, y de la jefa de Calidad del CLIENTE. Desde el mes 22, las revisiones semestrales del paquete 8.3.2 se ejecutan en el frente de Operación que dirige Guillermo Castillo, y Maximiliano Miño y Calidad del CLIENTE aprueban sus parámetros, porque la dedicación del Líder de Datos termina en el mes 21 (Capítulo 1, Tabla 1.6). Las horas del paquete se mantienen en la familia de esfuerzo DAT del Formulario T-15, ejecutadas por el equipo de Operación, como declara el Anexo 8.A (ficha R8-27). Con el inicio supuesto en febrero de 2027 (Anexo 7.A), las revisiones de los meses 32, 44 y 56 caen en septiembre. En esos meses la recalibración se analiza sin intervenir producción, y los parámetros aprobados se activan después del día 25, fuera del congelamiento operacional (Distribuidora Puelche S.A., 2026c, cap. 10, restricción 8).
 
 ### 13.3.5 Impacto económico
 
@@ -522,7 +522,7 @@ La Tabla 13.15 define los indicadores de la innovación 3.
 
 La reducción del 20 % de I-03D es una meta propuesta de diseño, no un resultado de los modelos citados ni una garantía de ahorro. Su mecanismo esperado es aportar a Calidad evidencia del deterioro para disponer cada lote y habilitar sugerencias por familia. El contraste del mes 28 se efectúa con la línea base de los meses 13 a 15, sin sumar otra vez beneficios atribuidos a merma de inventario o a INN-01.
 
-**Tabla 13.15. Indicadores de la innovación 3. Fuente: elaboración propia.**
+**Tabla 13.15. Indicadores de la innovación 3. Fuente: elaboración propia a partir del Caso Logística, cap. 4.9, y de los paquetes 3.10.3.1 a 3.10.3.4 y 8.3.2 del Formulario T-14.**
 
 <a id="tab:13-3-ind"></a>
 
@@ -535,7 +535,7 @@ La reducción del 20 % de I-03D es una meta propuesta de diseño, no un resultad
 
 La validación inicial de los meses 11 a 15 documentará el valor observado de I-03B por familia, con al menos 60 lotes evaluados, el período de evaluación y la versión de parámetros utilizada. Ese resultado constituirá la referencia inicial para el seguimiento posterior; el 80 % es el umbral de aceptación, no la línea base. No se declara un valor histórico inexistente ni se sustituye por cero.
 
-Antes de habilitar cada familia, Calidad deberá documentar la periodicidad de los cortes de seguimiento y el tamaño mínimo de su muestra. Estos parámetros del protocolo quedan pendientes de definición; los 60 lotes de la validación inicial no se trasladan automáticamente a cada corte operacional.
+Después de habilitar cada familia, I-03B se sigue en cortes trimestrales, con al menos 30 lotes evaluados por familia en cada corte; si una familia no reúne 30 lotes en el trimestre, el corte se acumula con el siguiente. Calidad del CLIENTE puede acortar la periodicidad de una familia, sin reducir la muestra mínima. Los 60 lotes de la validación inicial no se trasladan a cada corte operacional.
 
 I-03A e I-03B se miden antes del mes 16 y son la condición para habilitar cada familia. I-03D toma su línea base en la marcha blanca, cuando ya existe registro continuo, porque antes no hay con qué medirlo.
 
@@ -663,7 +663,7 @@ La Tabla 13.21 define los indicadores de la innovación 4.
 
 El 5 % de I-04A es una meta propuesta y una referencia de puntuación contractual; la fórmula no demuestra por sí sola que el ahorro sea alcanzable. El mecanismo esperado combina recomendaciones de atención con comparación sobre una canasta estable y protección del OTIF. La referencia de los meses 21 a 23 y el seguimiento posterior permiten comprobar el efecto, separándolo de cambios de combustible, mezcla y estacionalidad.
 
-**Tabla 13.21. Indicadores de la innovación 4. Fuente: elaboración propia.**
+**Tabla 13.21. Indicadores de la innovación 4. Fuente: elaboración propia a partir del Capítulo 3, sección 3.2.5 (criterio R18-04), y de los paquetes 5.4.3, 8.3.3 y 8.3.4 del Formulario T-14.**
 
 <a id="tab:13-4-ind"></a>
 
@@ -685,7 +685,7 @@ El riesgo de adopción está registrado como R8-28 en el Anexo 8.A, con probabil
 
 | Causa | P × I (SD8) | Mitigación | Contingencia |
 | --- | --- | --- | --- |
-| Variación del costo por causas externas (combustible, cambio de malla, septiembre) | 3 × 4 (R8-28) | Canasta, índices y regla estacional fijados en el paquete 5.4.3, antes de la primera liquidación | Acotar el tramo al cumplimiento del OTIF, que es atribuible, y mantener el acompañamiento en la tarifa fija |
+| Variación del costo por causas externas (combustible, cambio de malla, septiembre) | 3 × 4 (R8-28) | Canasta, índices y regla estacional fijados en el paquete 5.4.3, antes de la primera liquidación | Mecanismo contractual de resolución y corrección, sin modificar SLA ni inventar tarifa (R8-28); acotar el tramo al cumplimiento del OTIF, que es atribuible, y mantener el acompañamiento en la tarifa fija |
 | Bajar el costo degradando el servicio o excluyendo clientes | Incluida en R8-28 | Protección del OTIF; denominador sin exclusiones; reproducción por Finanzas | Suspender el devengo del período en disputa según el mecanismo del contrato |
 
 Si el modelo no rinde, el contrato vuelve a la estructura de las Bases, con pago fijo y componentes variables de servicio, y el costo de servir sigue disponible como alcance obligatorio de la Etapa 2.
@@ -723,7 +723,7 @@ La hoja tiene cuatro bloques:
 1. Qué compró, por categoría, comparado con su período anterior.
 2. Qué dejó de pedir: productos habituales ausentes hace dos o tres ciclos.
 3. Qué tiene por vencer, tomado de la innovación 1. El bloque se omite si no hay datos confirmados.
-4. Opcional y condicionado: cómo le va frente al agregado de locales comparables de su zona. Nunca muestra un local identificable; aplica un umbral mínimo de locales por grupo y supresión de celdas, según el control de divulgación estadística (Hundepool et al., 2026) y la k-anonimidad (Sweeney, 2002). Se activa solo después de una revisión legal bajo la Ley 21.719 de protección de datos personales (Ley N.º 21.719, 2024).
+4. Opcional y condicionado: cómo le va frente al agregado de locales comparables de su zona. Nunca muestra un local identificable; aplica un umbral mínimo de locales por grupo y supresión de celdas, según el control de divulgación estadística (Hundepool et al., 2025) y la k-anonimidad (Sweeney, 2002). Se activa solo después de una revisión legal bajo la Ley 21.719 de protección de datos personales (Ley N.º 21.719, 2024).
 
 La hoja se entrega por dos vías:
 
@@ -734,13 +734,13 @@ Si esa semana el local no hace pedido, no hay entrega y la copia impresa no lleg
 
 ### 13.5.3 Nivel de madurez
 
-El informe sobre datos propios y el control de divulgación estadística son prácticas maduras, en TRL 9 (Hundepool et al., 2026; Sweeney, 2002). Su utilidad para el micro-comercio sin conectividad no está probada, por lo que el conjunto parte en TRL 2 de la escala de la Comisión Europea (European Commission, 2016). Sus objetivos son TRL 4 con la prueba de comprensión de los meses 13 y 14, y TRL 6 en la marcha blanca de la Etapa 2, en los meses 19 y 20.
+El informe sobre datos propios y el control de divulgación estadística son prácticas maduras, en TRL 9 (Hundepool et al., 2025; Sweeney, 2002). Su utilidad para el micro-comercio sin conectividad no está probada, por lo que el conjunto parte en TRL 2 de la escala de la Comisión Europea (European Commission, 2016). Sus objetivos son TRL 4 con la prueba de comprensión de los meses 13 y 14, y TRL 6 en la marcha blanca de la Etapa 2, en los meses 19 y 20.
 
 **Investigación adicional declarada.** Falta comprobar que el almacenero entiende la hoja y obtener el dictamen legal del bloque 4 bajo la Ley 21.719. La comprensión se investiga con 24 locales en el paquete 3.10.4.1 (meses 13 y 14), con el indicador I-05B, y la revisión legal se hace en el paquete 8.3.6 (meses 24 a 27).
 
 ### 13.5.4 Diseño de la incorporación
 
-M10 Analítica calcula los bloques sobre N-10 (capa 6). M3 Preventa los muestra en la aplicación de preventa C-01 (capa 1), y M6 Reparto imprime la copia con la impresora de cabina del camión. La capa 7 limita la hoja a su receptor y audita el tratamiento en el registro de actividades de tratamiento. La Tabla 13.24 presenta los paquetes de la EDT.
+M10 Analítica calcula los bloques sobre N-10 (capa 6). La precarga llega al terminal por la cola de sincronización de los terminales (capa 5). M3 Preventa los muestra en la aplicación de preventa C-01 (capa 1), y M6 Reparto imprime la copia con la impresora de cabina del camión. La capa 7 limita la hoja a su receptor y audita el tratamiento en el registro de actividades de tratamiento. La Tabla 13.24 presenta los paquetes de la EDT.
 
 La Figura 13.6 muestra las dos vías de entrega de la hoja y el control de su cobertura efectiva.
 
@@ -762,7 +762,7 @@ La información se prepara antes de la ruta y se muestra en el terminal del prev
 | INN-05.P4 | 3.10.4.4 y 8.3.5 | 18 a 21 y 22 a 26 | Certificación del H10, marcha blanca, producción en el mes 21 y despliegue gradual por rutas |
 | INN-05.P5 | 8.3.6 | 24 a 27 | Bloque 4: revisión legal, parámetros de agrupación y activación condicionada |
 
-La cuenta 3.10.4 de la EDT corresponde a la innovación 5, porque la innovación 4 no tiene paquetes de construcción. Los bloques 1 a 3 se materializan en el mes 21; el bloque 4, desde el mes 27 y solo si la revisión legal lo aprueba. Hasta el mes 21 la innovación la dirige el Líder de Implantación y Gestión del Cambio, Patricio Henríquez, con el Encargado de Seguridad de la Información, Álvaro Catalán, a cargo de la privacidad. Desde el mes 22, el despliegue por rutas y el bloque 4 se ejecutan en el frente de Operación que dirige Guillermo Castillo, y Álvaro Catalán aprueba la activación del bloque 4, porque la dedicación del Líder de Implantación termina en el mes 21 (Capítulo 1, Tabla 1.3).
+La cuenta 3.10.4 de la EDT corresponde a la innovación 5, porque la innovación 4 no tiene paquetes de construcción. Los bloques 1 a 3 se materializan en el mes 21; el bloque 4, desde el mes 27 y solo si la revisión legal lo aprueba. Hasta el mes 21 la innovación la dirige el Líder de Implantación y Gestión del Cambio, Patricio Henríquez, con el Encargado de Seguridad de la Información, Álvaro Catalán, a cargo de la privacidad. Desde el mes 22, el despliegue por rutas y el bloque 4 se ejecutan en el frente de Operación que dirige Guillermo Castillo, y Álvaro Catalán aprueba la activación del bloque 4, porque la dedicación del Líder de Implantación termina en el mes 21 (Capítulo 1, Tabla 1.6). Las horas de los paquetes 8.3.5 y 8.3.6 se mantienen en la familia de esfuerzo IMP del Formulario T-15, ejecutadas por el equipo de Operación, como declara el Anexo 8.A (ficha R8-29).
 
 ### 13.5.5 Impacto económico
 
@@ -787,18 +787,18 @@ El beneficio comercial es la frecuencia y el tamaño del pedido en los locales q
 
 La Tabla 13.26 define los indicadores de la innovación 5.
 
-**Tabla 13.26. Indicadores de la innovación 5. Fuente: elaboración propia.**
+**Tabla 13.26. Indicadores de la innovación 5. Fuente: elaboración propia a partir del Caso Logística, cap. 2.2, y de los paquetes 3.10.4.1 a 3.10.4.4, 8.3.5 y 8.3.6 del Formulario T-14.**
 
 <a id="tab:13-5-ind"></a>
 
 | Id | Indicador | Línea base | Meta | Momento |
 | --- | --- | --- | --- | --- |
 | I-05A | Locales con hoja mostrada / locales elegibles que la aceptan; copias impresas entregadas / copias pedidas | 0 (la hoja no existe) | ≥ 90 % de hojas mostradas; ≥ 85 % de copias entregadas dentro de dos ciclos de visita | Mes 27 |
-| I-05B | Participantes que interpretan bien las tres preguntas / participantes | Prototipo de los meses 13 y 14 | ≥ 80 %: al menos 20 de 24 participantes | Antes del mes 19 |
+| I-05B | Participantes que interpretan bien las tres preguntas / participantes | Sin medición (la hoja no existe) | ≥ 80 %: al menos 20 de 24 participantes | Antes del mes 19 |
 | I-05C | Frecuencia y tamaño de compra en rutas con hoja frente a rutas aún sin hoja | Período previo por ruta | Estimar el efecto; no se promete un alza | Mes 33 |
 | I-05D | Emisiones del bloque 4 con todos los grupos sobre el umbral / emisiones del bloque 4 | No aplica antes de activar | 100 % | Cada emisión |
 
-En I-05B, 19 de 24 participantes equivalen al 79,17 % y no cumplen; 20 de 24 equivalen al 83,33 % y sí cumplen. Cada participante contabilizado debe interpretar correctamente las tres preguntas.
+En I-05B, 19 de 24 participantes equivalen al 79,17 % y no cumplen; 20 de 24 equivalen al 83,33 % y sí cumplen. Cada participante contabilizado debe interpretar correctamente las tres preguntas. La prueba se aplica en los meses 13 y 14 sobre el prototipo (paquete 3.10.4.1), y su resultado debe constar antes del mes 19, previo a la marcha blanca de la Etapa 2.
 
 I-05A también se informa sobre el total de 11.600 locales, para mostrar la cobertura real del canal. I-05C usa el despliegue gradual por rutas como comparación: las rutas que aún no reciben la hoja sirven de referencia, y por eso la meta es estimar el efecto y no prometer un alza que hoy no tiene evidencia.
 
@@ -822,14 +822,14 @@ Si la innovación no rinde, la visita del preventista, el pago en efectivo y los
 Las citas a las Bases Administrativas y a las Bases Técnicas Transversales identifican el artículo o capítulo y la página impresa del PDF original, además del código RT cuando corresponde. Las referencias al caso se localizan por capítulo, sección o entrevista, sin exigir paginación. Las Aclaraciones se identifican por sección en la fuente disponible.
 
 - DORA. (2024). *Accelerate state of DevOps report 2024*. Google Cloud. https://dora.dev/research/2024/dora-report/
-- Distribuidora Puelche S.A. (2026a). *Bases Administrativas de Licitación N.º TFEP-01/2026: Contratación de Solución Integral de Software y Servicios de Operación*, artículos 17, 26, 28, 29, 30 y 50.2, y Formularios E-21, E-25 y T-19.
-- Distribuidora Puelche S.A. (2026b). *Bases Técnicas Transversales de Licitación N.º TFEP-01/2026*, RT-04.01, RT-04.14, RT-05.30, RT-10.07, RT-13.07, RT-14.06, RT-16.32, RT-18.08 y capítulo 26.
+- Distribuidora Puelche S.A. (2026a). *Bases Administrativas de Licitación N.º TFEP-01/2026: Contratación de Solución Integral de Software y Servicios de Operación*, artículos 26, 28, 29, 30 y 50.2, y Formularios E-21, E-25 y T-19.
+- Distribuidora Puelche S.A. (2026b). *Bases Técnicas Transversales de Licitación N.º TFEP-01/2026*, RT-03.12, RT-04.01, RT-04.03 a RT-04.05, RT-04.14, RT-05.30, RT-10.07, RT-13.07, RT-14.06, RT-16.32, RT-18.08 y capítulo 26.
 - Distribuidora Puelche S.A. (2026c). *Caso: Logística. Especificaciones del problema y operación de Distribuidora Puelche S.A.*, capítulos 1, 2, 4, 6, 8, 10, 13 y 18.
-- Distribuidora Puelche S.A. (2026d). *Aclaraciones de la Licitación N.º TFEP-01/2026*, secciones 8 y 11 (Capítulo 13).
+- Distribuidora Puelche S.A. (2026d). *Aclaraciones de la Licitación N.º TFEP-01/2026*, secciones 7.2 y 8.
 - European Commission. (2016). Technology readiness levels (TRL). En *Horizon 2020 work programme 2016–2017: General annexes* (Anexo G). https://ec.europa.eu/research/participants/data/ref/h2020/other/wp/2016_2017/annexes/h2020-wp1617-annex-g-trl_en.pdf
 - FitzGerald, C., Tan, S., Carter, E., & Airoldi, M. (2023). Contractual acrobatics: A configurational analysis of outcome specifications and payment in outcome-based contracts. *Public Management Review, 25*(9), 1796–1814. https://doi.org/10.1080/14719037.2023.2244501
 - GS1 AISBL. (2022). *EPC Information Services (EPCIS) standard* (versión 2.0). https://ref.gs1.org/standards/epcis/2.0.0/
-- Hundepool, A., Domingo-Ferrer, J., Franconi, L., Giessing, S., Lenz, R., Naylor, J., Schulte Nordholt, E., Seri, G., De Wolf, P.-P., Tent, R., Młodak, A., Gussenbauer, J., & Wilak, K. (2026). *Handbook on statistical disclosure control* (2.ª ed.). Center of Excellence SDC. https://sdctools.github.io/HandbookSDC/
+- Hundepool, A., Domingo-Ferrer, J., Franconi, L., Giessing, S., Lenz, R., Naylor, J., Schulte Nordholt, E., Seri, G., De Wolf, P.-P., Tent, R., Młodak, A., Gussenbauer, J., & Wilak, K. (2025). *Handbook on statistical disclosure control* (2.ª ed.). Center of Excellence SDC. https://sdctools.github.io/HandbookSDC/
 - Jedermann, R., Nicometo, M., Uysal, I., & Lang, W. (2014). Reducing food losses by intelligent food logistics. *Philosophical Transactions of the Royal Society A, 372*(2017), 20130302. https://doi.org/10.1098/rsta.2013.0302
 - Koutsoumanis, K., Taoukis, P. S., & Nychas, G.-J. E. (2005). Development of a Safety Monitoring and Assurance System for chilled food products. *International Journal of Food Microbiology, 100*(1–3), 253–260. https://doi.org/10.1016/j.ijfoodmicro.2004.10.024
 - LafroX. (2026). *Subdocumento 3: Esquema de solución y alcance*, Anexo 3.C.
@@ -857,5 +857,5 @@ En cumplimiento de la sección 7.2 de las Aclaraciones de la licitación, la tab
 | Anexo 13.A | Claude Code | Contratos de datos | Alto | Ninguno | No acreditada |
 | Anexo 13.B | Claude Code | Trazabilidad y alcance | Alto | Ninguno | No acreditada |
 | Anexo 13.C | Claude Code; OpenAI Codex | Indicadores y riesgos | Alto | Ninguno | No acreditada |
-| Anexo 13.D | Claude Code; OpenAI Codex | Observaciones y respuestas | Medio | Ninguno | No acreditada |
+| Anexo 13.D | Claude Code; OpenAI Codex | Observaciones y respuestas; matriz de trazabilidad contra la revisión del Informe 1 | Alto | Ninguno | No acreditada |
 | T-19 | Claude Code; OpenAI Codex | Fichas y armonización | Alto | Ninguno | No acreditada |

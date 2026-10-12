@@ -41,11 +41,11 @@ La Tabla 13.B.1 traza cada innovación con la arquitectura (RT-26.01), con la ED
 
 | Innovación | Capas, componentes y módulos | Paquetes de la EDT y mes de materialización | Riesgo | Flujo de caja (sin montos) |
 | --- | --- | --- | --- | --- |
-| 1 · Seguimiento de vencimiento posentrega en el local | Capas 1, 4, 5 y 6; C-01 App de preventa; M2, M3, M9 y M10; N-10 | 3.10.1.1 a 3.10.1.4 (meses 7 a 15); materializa en el mes 16; mantenimiento en 8.2.1 | R8-25 | Inversión 7 a 15; costo operacional 16 a 56; beneficio desde el 16 |
-| 2 · Reproducción de incidentes de terreno | Capas 1, 7 y 8; C-01, C-02 y C-03; M3, M5 y M6; QA y Preproducción | 3.10.2.1 a 3.10.2.4 (meses 2 a 15) y 8.3.1 (21 a 56); circuito en el mes 5 | R8-26 y R8-24 | Inversión 2 a 10; costo operacional 5 a 56; beneficio desde el 13 |
-| 3 · Vida útil remanente por historia térmica del lote | Capas 1, 4, 5, 6 y 7; B-01, B-02, B-03 y C-02; N-06, N-08 y N-10; M2, M5, M9 y M10 | 3.10.3.1 a 3.10.3.4 (meses 3 a 15) y 8.3.2 (26 a 56, semestral); materializa en el mes 16 | R8-27 y R8-23 | Inversión 3 a 15; costo operacional 16 a 56; beneficio desde el 16 |
+| 1 · Seguimiento de vencimiento posentrega en el local | Capas 1, 4, 5 y 6; C-01 App de preventa; M2, M3, M8, M9 y M10; N-10 | 3.10.1.1 a 3.10.1.4 (meses 7 a 15); materializa en el mes 16; mantenimiento en 8.2.1 | R8-25 | Inversión 7 a 15; costo operacional 16 a 56; beneficio desde el 16 |
+| 2 · Reproducción de incidentes de terreno | Capas 1, 4, 5, 7 y 8; C-01, C-02 y C-03; M3, M5 y M6; cola de sincronización de los terminales; QA y Preproducción | 3.10.2.1 a 3.10.2.4 (meses 2 a 15) y 8.3.1 (21 a 56); circuito en el mes 5 | R8-26 y R8-24 | Inversión 2 a 10; costo operacional 5 a 56; beneficio desde el 13 |
+| 3 · Vida útil remanente por historia térmica del lote | Capas 1, 4, 5, 6 y 7; B-01, B-02, B-03 y C-02; N-06, N-08 y N-10; M2, M5, M9 y M10 | 3.10.3.1 a 3.10.3.4 (meses 3 a 15) y 8.3.2 (21 a 56, con revisiones semestrales en los meses 26 a 56); materializa en el mes 16 | R8-27 y R8-23 | Inversión 3 a 15; costo operacional 16 a 56; beneficio desde el 16 |
 | 4 · Tramo variable de la Operación ligado al costo de servir | Capas 4, 6 y 7; M6, M7, M8 y M10; N-10; ERP | 5.4.3 (meses 17 a 20), 8.3.3 (21 a 23) y 8.3.4 (24 a 56); primera liquidación en el mes 24 | R8-28 | Inversión 17 a 23; costo operacional 21 a 56; ingreso fijo 21 a 56; ingreso contingente 24 a 56; beneficio desde el 24 |
-| 5 · Hoja de negocio del almacenero | Capas 1, 4, 6 y 7; C-01 e impresora de cabina; M3, M6 y M10; N-10 | 3.10.4.1 a 3.10.4.4 (meses 13 a 21), 8.3.5 (22 a 26) y 8.3.6 (24 a 27); materializa en el mes 21 | R8-29 | Inversión 13 a 18 y 24 a 27; costo operacional 21 a 56; beneficio desde el 33 |
+| 5 · Hoja de negocio del almacenero | Capas 1, 4, 5, 6 y 7; C-01 e impresora de cabina; M3, M6 y M10; N-10 | 3.10.4.1 a 3.10.4.4 (meses 13 a 21), 8.3.5 (22 a 26) y 8.3.6 (24 a 27); materializa en el mes 21 | R8-29 | Inversión 13 a 18 y 24 a 27; costo operacional 21 a 56; beneficio desde el 33 |
 
 La matriz muestra que las cinco innovaciones tienen al menos un paquete de la EDT, un mes de materialización, una ficha de riesgo y un rubro en cada clase del flujo de caja. Los meses coinciden con el Formulario T-14 y con el Anexo 7.D. Las horas de cada paquete están en el Formulario T-15, sección 4.
 
@@ -76,13 +76,13 @@ La Tabla 13.C.1 reúne los indicadores de las cinco innovaciones, ordenados por 
 | Id | Línea base | Meta | Primera medición | Antes del mes 16 |
 | --- | --- | --- | --- | --- |
 | I-01A | Sin medición | ≥ 70 % con ≥ 100 avisos | Mes 15 | Sí |
-| I-02A | Incidentes de los meses 5 a 10 | −30 % con ≥ 20 pares | Mes 15 | Sí |
+| I-02A | Incidentes de prueba en QA, meses 5 a 10, sin paquete | −30 % con ≥ 20 pares | Mes 15 | Sí |
 | I-02B | Sin medición | ≥ 80 % | Mes 15 | Sí |
 | I-02D | Cero por diseño | 0 | Cada liberación | Sí |
 | I-03A | 0 | ≥ 95 % | Mes 15 | Sí |
 | I-03B | Sin medición histórica; referencia inicial por familia en meses 11 a 15 | ≥ 80 % con ≥ 60 lotes por familia | Mes 15 | Sí |
 | I-03C | 0 | 100 % | Mes 16 | No |
-| I-05B | Prototipo de los meses 13 y 14 | ≥ 80 %: al menos 20 de 24 participantes | Antes del mes 19 | No |
+| I-05B | Sin medición (la hoja no existe) | ≥ 80 %: al menos 20 de 24 participantes | Antes del mes 19 | No |
 | I-02C | Sin medición | 0 | Mes 21 | No |
 | I-04B | Sin modelo | 3 de 3 | Meses 21 a 23 | No |
 | I-04C | Sin registro | 100 % | Mes 21 | No |
@@ -118,25 +118,48 @@ La innovación 3 concentra la mayor exposición, porque su error afectaría una 
 
 ## Anexo 13.D — Resolución de observaciones de la instancia anterior
 
-El Art. 46 de las Bases Administrativas pide resolver en forma explícita las observaciones de la instancia anterior, con una tabla de trazabilidad observación–respuesta–sección modificada (Distribuidora Puelche S.A., 2026a, Art. 46, p. 28). La Tabla 13.D.1 responde las observaciones formuladas al Capítulo 13.
+El Art. 46 de las Bases Administrativas pide resolver en forma explícita las observaciones de la instancia anterior, con una tabla de trazabilidad observación–respuesta–sección modificada (Distribuidora Puelche S.A., 2026a, Art. 46, p. 28). La Tabla 13.D.1 responde una por una las quince observaciones que la revisión del Informe 1 formuló al Capítulo 13, y la Tabla 13.D.2 responde las ocho observaciones generales y transversales que alcanzaban a este subdocumento.
 
-**Tabla 13.D.1. Trazabilidad de observaciones del Capítulo 13. Fuente: elaboración propia a partir de las observaciones del CLIENTE.**
+**Tabla 13.D.1. Observaciones al Capítulo 13 de la revisión del Informe 1. Fuente: elaboración propia a partir de la revisión del Informe 1 de la Comisión Evaluadora.**
 
 <a id="tab:13D1"></a>
 
 | N.º | Observación | Respuesta | Sección modificada |
 | --- | --- | --- | --- |
-| 1 | El impacto económico no puede contener precios | Todo impacto se expresa por rubro, clase y mes, sin montos; la valorización va en la Oferta Económica, Entregable 2, ítem 2.7 | 13.1.5 a 13.5.5; Formulario T-19, campos 10 a 12 |
-| 2 | La innovación 1 coincidía con un requisito | Se rehízo como seguimiento en el local, después de la entrega; se separa de la alerta en bodega del RF-02.09 y de la meta de merma del Capítulo 2 | 13.1.2 |
-| 3 | La innovación 3 coincidía con un requisito | Se separa el registro continuo obligatorio de la incorporación propuesta por lote; 13.3.2 distingue el modelo cinético que sustenta RT-05.30 de su integración distribuida y del uso operativo por Calidad, sin atribuir novedad al modelo | 13.3, 13.3.2 |
-| 4 | La innovación 5 debe funcionar con el cliente sin internet | La hoja se entrega en la visita, en pantalla del terminal sin señal o impresa en la entrega siguiente, sin dispositivo ni registro del almacenero | 13.5.2 |
-| 5 | Faltaban las fichas T-19 con los siete elementos | Se presenta el Formulario T-19 con una ficha por innovación y los 17 campos del formulario | Formulario T-19 |
-| 6 | Cada innovación debe ubicarse en arquitectura, EDT y flujo de caja, con indicador, línea base, meta y mes | Cada innovación declara capas, componentes, módulos, paquetes del T-14, mes de materialización, rubros del flujo de caja e indicadores | Subsecciones 4 a 6 de 13.1 a 13.5; Anexo 13.B |
-| 7 | Fuentes APA citadas en el texto y vigentes, incluido EPCIS 2.0 | Se cita EPCIS 2.0 (GS1 AISBL, 2022) y las demás fuentes en el punto de uso, con correspondencia uno a uno con la lista de referencias | 13.1.3 a 13.5.3; Referencias |
-| 8 | El Capítulo 13 y el Formulario T-19 deben presentarse completos, con 13.1 a 13.5 y el filtro del Art. 30° | Se presentan los cinco títulos; cada innovación incluye una tabla de lo que ya es alcance obligatorio y de lo que agrega | 13.1.2 a 13.5.2 |
-| 9 | La innovación 2 debe justificar por qué no es práctica estándar | Se explica que el defecto típico es un reordenamiento de la cola en la reconexión, que no deja rastro en un reporte de fallos, y se separa del RT-14.06 | 13.2.2 |
+| 1 | Innovación 1: «es el criterio de aceptación N° 1 del caso y el estándar exigido por el RT-05.23». | Se reemplaza por el seguimiento de vencimiento posentrega en el local (INN-01). La trazabilidad de lote hasta el cliente queda como alcance obligatorio (RF-02.10 y RF-01.03) y la innovación actúa en el local, después de la entrega. | 13.1; 13.1.2 (Tabla 13.2); Formulario T-19, ficha 1 |
+| 2 | Innovación 3: «es el RT-03.10 a RT-03.13 y las restricciones N° 2 y N° 3». | Se reemplaza por la vida útil remanente por historia térmica del lote (INN-03). La operación sin conexión y el registro continuo de temperatura quedan como alcance obligatorio; la innovación agrega la estimación por lote. | 13.3; 13.3.2 (Tabla 13.12); Formulario T-19, ficha 3 |
+| 3 | Innovación 2: el picking por olas y el FEFO son estándar; «lo propio sería la secuenciación térmica, que no se diseña». | Se reemplaza por la reproducción de incidentes de terreno (INN-02), con su circuito de cuatro pasos, su contrato de evidencia y la explicación de por qué no es práctica estándar. El FEFO queda como alcance obligatorio (RF-05.05). | 13.2; 13.2.2 (Tabla 13.7); Anexo 13.A |
+| 4 | Innovación 4: «no coincide con la restricción N° 9 y no se refleja en la estructura de costos ni en el flujo de caja». | Se reemplaza por el tramo variable de la Operación ligado al costo de servir (INN-04). El acompañamiento se ofrece como servicio costeado, según la restricción 9, y el flujo de caja separa costo, ingreso fijo, ingreso contingente y beneficio del CLIENTE por mes. | 13.4.1; 13.4.5 (Tabla 13.20); Formulario T-19, ficha 4 |
+| 5 | Innovación 5: supone WhatsApp en un cliente sin internet (restricción N° 5) y no existe en el catálogo del Subdocumento 3 ni en los módulos del 4.1 (RT-26.01). | Se reemplaza por la hoja de negocio del almacenero (INN-05), entregada en la visita en la pantalla del preventista o impresa en la entrega siguiente, sin dispositivo ni conexión del cliente. Usa M3, M6 y M10, la aplicación C-01 y la impresora de cabina ya ofertadas. | 13.5.2; 13.5.4; Anexo 13.B |
+| 6 | Falta el nivel de madurez con la escala utilizada (RT-26.03). | Cada innovación declara su nivel en la escala TRL de la Comisión Europea (2016), con el nivel de partida, los niveles objetivo con su mes y las fuentes que los sustentan. | 13.1.3 a 13.5.3; Formulario T-19, campo 5 |
+| 7 | Falta el diseño de incorporación: capa y componentes de la arquitectura, paquetes de la EDT y mes del cronograma (RT-26.01 y RT-26.02). | Cada innovación declara capas, componentes, módulos, contrato de datos, paquetes del Formulario T-14 y mes de materialización. | 13.1.4 a 13.5.4; Anexos 13.A y 13.B; Formulario T-19, campos 7 a 9 |
+| 8 | Falta el impacto económico: inversión, costo operacional y beneficio (RT-26.05). | Cada innovación ubica sus rubros por clase y mes en el flujo de caja, sin montos (Art. 50.2). | 13.1.5 a 13.5.5; Anexo 13.B; Formulario T-19, campos 10 a 12 |
+| 9 | Falta el riesgo de adopción con probabilidad, impacto, mitigación y contingencia (RT-26.04). | Cada innovación remite a su ficha R8-25 a R8-29 del Anexo 8.A, con probabilidad, impacto y exposición en la escala del Capítulo 8, mitigación y contingencia. | 13.1.7 a 13.5.7; Anexo 13.C (Tabla 13.C.2); Formulario T-19, campos 15 a 17 |
+| 10 | «“Investigación adicional: Sí” en las cinco equivale a declarar que la innovación no está diseñada». | Cada innovación declara qué falta investigar, en qué paquete y meses se resuelve y con qué indicador se valida. | 13.1.3 a 13.5.3; Anexo 13.B (Tabla 13.B.2) |
+| 11 | Los indicadores no tienen momento de medición ni línea base; la innovación 5 compromete un valor al mes 24 de Operación, sin medición intermedia. | Cada indicador tiene línea base, meta y momento de medición. Donde no existe historia se declara «Sin medición» y no se inventa un valor. La innovación 5 mide en los meses 13 y 14, 27 y 33. | Tablas 13.5, 13.10, 13.15, 13.21 y 13.26; Anexo 13.C (Tabla 13.C.1) |
+| 12 | Crítico: el Formulario T-19 no fue entregado. | Se presenta el Formulario T-19 en archivo propio, con una ficha por innovación y sus 17 campos. | Formulario T-19 |
+| 13 | Crítico: la innovación 5 trae precios en dólares (Art. 50.2). | Ningún monto en el capítulo ni en el formulario. El impacto se expresa por rubro, clase y mes, y la valorización va en la Oferta Económica, Entregable 2, ítem 2.7. | 13.1.5 a 13.5.5; Formulario T-19, campos 10 a 12 |
+| 14 | Las fuentes no se citan dentro del texto; la versión 1.2 de EPCIS está superada por la 2.0 (2022). | Las fuentes se citan en APA 7.ª en el punto de uso, con correspondencia uno a uno con la lista. EPCIS 2.0 (GS1 AISBL, 2022) sustenta la tecnología y la madurez de la innovación 3. | 13.1.3 a 13.5.3; 13.3.2; 13.3.3; Referencias |
+| 15 | «Siete páginas sin una figura: ninguna innovación se ubica en un diagrama de la arquitectura». | La Figura 13.1 ubica las cinco innovaciones sobre las capas de la arquitectura, y las Figuras 13.2 a 13.6 recorren cada una. Cada figura se cita antes y se explica después. | Introducción (Figura 13.1); 13.1.4 a 13.5.4 |
 
-La tabla documenta la respuesta dada a las nueve observaciones. La separación respecto del registro continuo no basta por sí sola para acreditar el filtro del Art. 30° de las Bases Administrativas (p. 20): la incorporación propuesta debe distinguirse técnicamente de las funcionalidades ya exigidas. La verificación del filtro considera el alcance descrito en 13.3.2 y no solo el nombre de la innovación. Ninguna requirió cambiar los paquetes, los meses ni las horas de la EDT del Capítulo 7.
+Las cinco innovaciones del Informe 1 se reemplazaron; por eso las filas 1 a 5 responden con una innovación nueva y no con un ajuste de la anterior. En la innovación 3, el filtro del Art. 30° de las Bases Administrativas (p. 20) se acredita con el alcance descrito en 13.3.2, que distingue técnicamente la incorporación propuesta de las funcionalidades ya exigidas, además de separarla del registro continuo obligatorio.
+
+**Tabla 13.D.2. Observaciones generales y transversales aplicables al Subdocumento 13. Fuente: elaboración propia a partir de la revisión del Informe 1 de la Comisión Evaluadora.**
+
+<a id="tab:13D2"></a>
+
+| N.º | Observación | Respuesta | Sección modificada |
+| --- | --- | --- | --- |
+| 16 | General: ningún archivo tiene logotipo, plantilla, paleta, encabezado ni pie de página. | Plantilla única de LafroX, con isotipo, encabezado y pie en todas las páginas. | Subdocumento, anexos y Formulario T-19 |
+| 17 | General: las portadas incluyen datos ajenos a la licitación y están rotuladas «Formulario T-22», que es un formulario del CLIENTE. | Portada con la identidad de LafroX, sin datos ajenos a la licitación ni rótulo de formularios del CLIENTE. | Portada |
+| 18 | General: los Subdocumentos 1, 2, 3, 5 y 13 en Arial y tamaño A4; cuerpo que aparenta ser inferior a 11 puntos. | Tamaño carta y cuerpo de 11 puntos (Art. 40.4). | Subdocumento, anexos y Formulario T-19 |
+| 19 | General: el archivo abre con una hoja que sólo dice «Página en blanco a propósito», con errata. | Se elimina la hoja. | Inicio del documento |
+| 20 | General: ningún archivo tiene índice, numeración de páginas ni firma (Art. 40° y 53°). | Índice detallado hasta el tercer nivel, folio correlativo y zona de media firma en el extremo inferior derecho de cada página. | Índice; pie de página |
+| 21 | Transversal: marcadores, instrucciones y notas de proceso dentro del entregable; nombres de archivo como fuente. | El capítulo no contiene marcadores, notas de proceso ni nombres de archivo como fuente, y cierra con la Declaración de uso de IA por sección, anexo y formulario (Aclaración §7.2). | Subdocumento completo; Declaración de uso de IA |
+| 22 | Transversal: la propuesta se contradice entre subdocumentos en decisiones de diseño. | Las innovaciones usan los componentes, módulos, meses y responsables del Subdocumento 1, del Capítulo 4, del Formulario T-14, del Anexo 7.D y del Anexo 8.A. | 13.1.4 a 13.5.4; Anexo 13.B |
+| 23 | Transversal: no es posible seguir un requerimiento desde el problema hasta un componente de la arquitectura. | Cada innovación separa lo que ya es alcance obligatorio con sus RF y RT, y el Anexo 13.B la traza a capas, componentes, módulos, paquetes, riesgos y flujo de caja. | Tablas 13.2, 13.7, 13.12, 13.17 y 13.23; Anexo 13.B |
+
+Las filas 16 a 23 recogen las observaciones de forma y de coherencia que la revisión dirigió a toda la entrega; aquí se responde sólo lo que corresponde a este subdocumento, sus anexos y su formulario.
 
 ## Referencias
 
@@ -156,4 +179,4 @@ En cumplimiento de la sección 7.2 de las Aclaraciones de la licitación, la tab
 | Anexo 13.A | Claude Code | Definición de los contratos a partir de los Capítulos 4 y 5 | Alto | Ninguno | No acreditada |
 | Anexo 13.B | Claude Code | Matriz de trazabilidad y tabla de alcance refinado cotejadas con el Formulario T-14, el Anexo 7.D y el Anexo 8.A | Alto | Ninguno | No acreditada |
 | Anexo 13.C | Claude Code; OpenAI Codex | Consolidación de indicadores y riesgos; precisión de indicadores y de respuesta a observaciones | Alto | Ninguno | No acreditada |
-| Anexo 13.D | Claude Code; OpenAI Codex | Tabla de observaciones y respuestas; precisión de indicadores y de respuesta a observaciones | Medio | Ninguno | No acreditada |
+| Anexo 13.D | Claude Code; OpenAI Codex | Matriz de trazabilidad observación–respuesta–sección, construida contra la revisión del Informe 1 | Alto | Ninguno | No acreditada |
