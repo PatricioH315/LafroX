@@ -77,16 +77,6 @@
   \pgfmathsetmacro{\LFXmd}{(1in+\oddsidemargin+\hoffset+\textwidth)/\paperwidth}%
 }
 
-% ---- Estado del documento, derivado de la opcion de clase ------------------
-%  Va en el bloque de control documental y repetido en la banda. Un documento
-%  de licitacion declara de si mismo en que estado esta; eso es justamente lo
-%  que lo hace parecer --y ser-- un documento de licitacion.
-\ifLFX@borrador
-  \newcommand{\LFXestadodoc}{Borrador de trabajo}
-\else
-  \newcommand{\LFXestadodoc}{Versión final para entrega}
-\fi
-
 % ---- Marca en negativo: va dentro de la banda oscura -----------------------
 %  ATENCION: si se define la clave \LFXlogo, el archivo debe ser una version
 %  en NEGATIVO (trazo claro). Un logo normal, de trazo oscuro, desaparece
@@ -154,11 +144,9 @@
       \LFXen{1}{\LFXbandaDerY+0.028}  --
       \LFXen{0}{\LFXbandaIzqY+0.028}  -- cycle;
 
-    % --- Marca y estado, dentro de la banda --------------------------------
+    % --- Marca, dentro de la banda -----------------------------------------
     \node[anchor=north west,inner sep=0pt] at \LFXen{\LFXmi}{0.050}
       {\LFXmarcaportada};
-    \node[anchor=north east,inner sep=0pt] at \LFXen{\LFXmd}{0.056}
-      {\color{lafroxSobre}\LFXrotulo{\LFXestadodoc}};
 
     % ======================================================================
     %  1-3. Licitacion, objeto y caso  (Art. 49.1, lineas 1 y 2)
@@ -250,16 +238,19 @@
     \LFXfileteportada{0.802}
 
     % ======================================================================
-    %  Firma completa del representante  (Art. 40.2)
-    %  Sobre papel blanco y con los datos BAJO la linea, para que la firma
-    %  sea atribuible. No mover este bloque sobre la banda ni agregarle
-    %  fondo: se firma con lapiz.
+    %  Firma del representante  (Art. 40.2)
+    %  Imagen manuscrita aportada sobre papel blanco; los datos quedan bajo
+    %  la linea para identificar al representante.
     % ======================================================================
     \node[anchor=north west,inner sep=0pt] at \LFXen{\LFXmi}{0.820}
       {\begin{minipage}[t]{0.52\textwidth}
          \sffamily\raggedright
-         {\color{lafroxGris}\LFXrotulo{Firma del representante legal}}\\[34pt]
-         {\color{lafroxTinta}\rule{6.4cm}{0.5pt}}\\[4pt]
+         {\color{lafroxGris}\LFXrotulo{Firma del representante legal}}\par
+         \vspace{-1pt}
+         \includegraphics[width=3.4cm]{FIRMA_Alex_Aravena_transparente.png}\par
+         \vspace{-5pt}
+         {\color{lafroxTinta}\rule{6.4cm}{0.5pt}}\par
+         \vspace{4pt}
          {\fontsize{9.5pt}{13pt}\selectfont\color{lafroxTinta}
           \intersemibold\LFXrepresentante\\
           \normalfont\sffamily\LFXcargo\ \textperiodcentered\ \LFXempresa}

@@ -1,3 +1,20 @@
+# LafroX — Trazabilidad consolidada de observaciones del Informe 1
+
+Entregable activo: `Trazabilidad/LAFROX-Trazabilidad-Informe1-Consolidada.tex`. La fuente canónica Markdown está en la misma ruta de `rama-md`.
+
+Compilar desde esta raíz con LuaLaTeX:
+
+```powershell
+latexmk -lualatex -outdir=tmp/build main.tex
+```
+
+`main.tex` y el antiguo punto de entrada de `Revision/` apuntan al mismo entregable. No usar el contraste de auditoría como matriz de entrega. Clase, portada y firma basadas en el SD1 vigente; cuatro columnas exactas e IDs conservados.
+
+Evidencia de revisión en `Revision/revision_formal_trazabilidad.md`, fuera del PDF. Los estados y asuntos pendientes de la fuente no equivalen a aceptación del CLIENTE.
+
+---
+
+
 # LafroX — plantilla común de subdocumentos LaTeX
 
 La rama `rama-formato-Latex-base` contiene el formato compartido. Cada rama hija debe llamarse exactamente `LafroX-Subdoc<N>-LateX`, por ejemplo `LafroX-Subdoc4-LateX`. Conservar las mayúsculas y minúsculas indicadas.

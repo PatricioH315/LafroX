@@ -499,10 +499,24 @@
 %      \renewcommand{\LFXfolio}{Folio}
 \newcommand{\LFXfolio}{}
 
+% Media firma del representante legal sobre el folio (Art. 40.2), igual que
+%  en el Subdocumento 13: filete de firma, rotulo y folio. La imagen se
+%  superpone al filete sin cambiar la altura del pie: \raisebox[0pt][0pt]
+%  anula su alto y \rlap su ancho. Con la opcion [sinfirma] queda solo el folio.
+\newcommand{\LFXfirmaimagen}{FIRMA_Alex_Aravena_transparente.png}
+\newcommand{\LFXpiefirma}{%
+  \begin{tabular}[b]{@{}r@{}}
+    {\rlap{\makebox[3.4cm][c]{\raisebox{-2pt}[0pt][0pt]{\includegraphics[height=18pt]{\LFXfirmaimagen}}}}%
+     \color{lafroxGris}\rule{3.4cm}{0.4pt}}\\[-1pt]
+    {\LFXchico Media firma: \LFXrepresentante}\\
+    {\intermedium\fontsize{9pt}{11pt}\selectfont\color{lafroxTinta}\LFXfoliotexto}
+  \end{tabular}}
+\newcommand{\LFXpiesolofolio}{%
+  {\intermedium\fontsize{9pt}{11pt}\selectfont\color{lafroxTinta}%
+    \LFXfoliotexto}}
 \newcommand{\LFXpiederecho}{%
   \begingroup\LFXpiebase
-  {\intermedium\fontsize{9pt}{11pt}\selectfont\color{lafroxTinta}%
-    \LFXfoliotexto}%
+  \ifLFX@firma\expandafter\LFXpiefirma\else\expandafter\LFXpiesolofolio\fi
   \endgroup
 }
 
@@ -690,6 +704,11 @@
 %    Etapa 1 & ... & ... \\
 %  \end{tablalafrox}
 % ---------------------------------------------------------------------------
+% Titulo para el indice de tablas: el texto del pie anterior a " Fuente:".
+%  Si el pie no declara fuente, se usa completo.
+\def\LFX@antesfuente#1 Fuente:#2\@nil{#1}
+\newcommand{\LFXtitulocorto}[1]{\LFX@antesfuente#1 Fuente:\@nil}
+
 \NewDocumentEnvironment{tablalafrox}{m m m m +b}{%
   \par
   \LFXfiletear{#5}%
@@ -699,7 +718,7 @@
   % macro: longtable necesita ver las filas en la entrada para cortar pagina.
   \LFXconcuerpo{%
   \begin{xltabular}{\textwidth}{#3}
-    \caption{#1}\label{#2}\\[2pt]
+    \caption[\LFXtitulocorto{#1}]{#1}\label{#2}\\[2pt]
     \LFXtopruleoriginal #4 \\ \midrule
     \endfirsthead
     % Los rotulos van en una caja de ancho cero: si midieran su texto real,
