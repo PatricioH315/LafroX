@@ -88,5 +88,10 @@
 \texttt{env\_\allowbreak{}movimiento} & \texttt{conductor\_\allowbreak{}id} & Identificador de conductor & uuid, 128 bits & UUID del registro referenciado & Obligatorio, referencia válida & Clave foránea a \texttt{mae\_\allowbreak{}actor.\allowbreak{}actor\_\allowbreak{}id} & \texttt{REP} & \texttt{CR}, \texttt{P28} \\
 \texttt{env\_\allowbreak{}movimiento} & \texttt{evidencia\_\allowbreak{}obj\_\allowbreak{}id} & Identificador de evidencia obj & uuid, 128 bits & UUID del registro referenciado & Obligatorio, referencia válida & Clave foránea a \texttt{obj\_\allowbreak{}objeto.\allowbreak{}objeto\_\allowbreak{}id} & \texttt{REP} & \texttt{ME}, \texttt{P27} \\
 \end{tablalafrox}
+\vspace{-16pt}
 \fuentetabla{elaboración a partir del modelo lógico de las Figuras 5.4 y 5.6 del Subdocumento 5, de RT-05.01 de las Bases Técnicas Transversales (Distribuidora Puelche S.A., 2026c, cap. 5, p. 11) y de la matriz de retención del Anexo 5-D.}
+\vspace{-8pt}
+
+La validación aplica la condición de cada fila al hito indicado, NULL legítimo se distingue de dato obligatorio ausente.
+
 \end{landscape}

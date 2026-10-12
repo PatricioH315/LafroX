@@ -127,4 +127,9 @@
 \texttt{gob\_\allowbreak{}excepcion\_\allowbreak{}sync} & \texttt{fecha\_\allowbreak{}cierre} & Instante de resolución de la excepción & timestamp with time zone, UTC & Instante ISO 8601 en UTC, con zona horaria explícita & Condicional: obligatoria cuando la excepción pasa a RESUELTA o RECHAZADA, porque en esos dos estados la decisión está tomada, nula mientras la excepción siga ABIERTA & Sin clave & \texttt{GOB} & \texttt{ME}, \texttt{P43} \\
 \end{tablalafrox}
 \fuentetabla{elaboración a partir del modelo lógico de la Figura 5.9 del Subdocumento 5, de RT-05.01 de las Bases Técnicas Transversales (Distribuidora Puelche S.A., 2026c, cap. 5, p. 11) y de la matriz de retención del Anexo 5-D.}
+
+La validación aplica la condición de cada fila al hito indicado, NULL legítimo se distingue de dato obligatorio ausente.
+
+La Tabla A.9 desarrolla los atributos de telemetría y copias de consulta, con sus condiciones y políticas de conservación.
+
 \end{landscape}
