@@ -42,3 +42,17 @@ Sin alterar las observaciones ni los estados:
 ## Unidad de cambio y publicación
 
 Corrección del mismo entregable en `LafroX-Revision-Trazabilidad-Informe1-LateX`, manteniendo la autorización previa de commit/push del usuario. Rollback: revertir esta unidad de matriz LaTeX, puntos de entrada, activos de plantilla y documentación, sin afectar `rama-md` ni otros subdocumentos.
+
+## Actualización: localizadores simplificados — 12 de octubre de 2026
+
+El usuario aprobó aplicar la simplificación y hacer commit/push en la misma rama. Se eliminaron todos los signos tipográficos de sección del PDF; la columna «Sección modificada» usa numeración directa, sin repetir SD cuando el número ya identifica al subdocumento. Se quitaron los números de página de esa columna; se preservaron los identificadores de anexos, formularios, tablas, figuras y referencias cruzadas. Las páginas de citas a las Bases y bibliografía, la foliación física y las páginas citadas en observaciones/respuestas no se eliminaron indiscriminadamente.
+
+- 164 localizadores modificados y 218 signos de sección retirados de la fuente LaTeX.
+- 212 filas e IDs intactos y en orden; observaciones, respuestas y estados idénticos al corte anterior salvo la eliminación de dichos signos.
+- Regresión de códigos: preservados números de subsección, tablas y figuras; la asignación figura–página de SD2-32 se reduce al rango ya declarado de Figuras 2.1–2.6, sin páginas residuales. La localización por cinco/cuatro campos del T-6 se reduce a su Tabla 1. El nombre de la clase en SD2-03 se presenta como «Formato del documento».
+- Cotejo del PDF por fila y columna: 848 celdas, 0 discrepancias; 212 IDs únicos en orden; 0 signos de sección en todo el PDF y 0 localizadores numéricos de página en la cuarta columna.
+- Citas de páginas de Referencias comprobadas iguales al corte anterior (19–20, 28, 44 y 45). Original Markdown y plantilla sin cambios.
+- LuaLaTeX salida 0: 43 páginas carta. Todas las páginas renderizadas e inspeccionadas; 0 incidencias de geometría, folios o rótulos de media firma; 0 Overfull, caracteres ausentes o referencias indefinidas. Persisten 29 avisos glue y 2 Underfull no fatales.
+- Los conteos de 205 filas idénticas y 5 Underfull descritos arriba corresponden a la corrección formal anterior, no al nuevo corte de localizadores.
+
+La preferencia de no incluir declaración de IA aquí sigue vigente. No se alteraron otros subdocumentos ni se cerraron pendientes por inferencia. PDF de visualización y pruebas permanecen fuera del repositorio.
