@@ -338,7 +338,7 @@
   cargo         = {Jefe de Proyecto y Apoderado},
   cliente       = {Distribuidora Puelche S.A.},
   licitacion    = {Licitación N.\textdegree{} TFEP-01/2026},
-  caso          = {Caso 02 --- Logística},
+  caso          = {Caso --- Logística},
   documento     = {Propuesta Técnica},
   subtitulo     = {Informe 2},
   alcance       = {Subdocumentos 1--9 y 13},
@@ -631,7 +631,7 @@
 %  no debe depender de la geometria del arte.
 \fancypagestyle{lfxportada}{%
   \fancyhf{}
-  \fancyfoot[R]{\global\LFXfranjafalse\LFXpiederecho}
+  \fancyfoot[R]{\global\LFXfranjafalse\LFXpiefolioen{lafroxTinta}}
   \renewcommand{\headrulewidth}{0pt}
   \renewcommand{\headrule}{}
 }

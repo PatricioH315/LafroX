@@ -114,7 +114,7 @@
 \texttt{mae\_\allowbreak{}actor} & \texttt{identificacion} & Identificacion & string(255) & Identificador del actor: RUT, código de empleado o identificador entregado por el canal & Obligatorio & Sin clave & \texttt{GOB} & \texttt{CR}, \texttt{P07} \\
 \texttt{mae\_\allowbreak{}actor} & \texttt{transportista\_\allowbreak{}id} & Transportista al que pertenece el actor & uuid, 128 bits & UUID del registro referenciado & Condicional: obligatorio cuando el actor ejecuta como transportista, ya sea en ruta o en reparto, nula para actores de la propia empresa, del sistema y de los roles de negocio que no pertenecen a un transportista & Clave foránea a \texttt{mae\_\allowbreak{}transportista.\allowbreak{}transportista\_\allowbreak{}id} & \texttt{GOB} & \texttt{ME}, \texttt{P06} \\
 \end{tablalafrox}
-\fuentetabla{elaboración a partir del modelo lógico de la Figura 5.8 del Subdocumento 5, de RT-05.01 de las Bases Técnicas Transversales (Distribuidora Puelche S.A., 2026c, cap. 5, p. 11) y de la matriz de retención del Anexo 5-D.}
+\fuentetabla{elaboración a partir del modelo lógico de la Figura 5.8 del Subdocumento 5, de RT-05.01 de las Bases Técnicas Transversales y de la matriz de retención del Anexo 5-D.}
 
 La validación aplica la condición de cada fila al hito indicado, NULL legítimo se distingue de dato obligatorio ausente.
 
