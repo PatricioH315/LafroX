@@ -2,22 +2,23 @@
 \input{soporte.tex}
 \datoslafrox{
   documento = {Formulario T-16: Plan de riesgos},
-  subtitulo = {Registro de las 32 amenazas},
+  subtitulo = {Registro de las amenazas},
   alcance = {Gestión de riesgos de la propuesta LafroX},
   formulario = {T-16: Plan de riesgos},
-  fecha = {},
+  fecha = {12 de Octubre de 2026},
   version = {0.1},
   nomenclatura = {LAFROX-Formulario-T-16},
 }
+\input{sd8-comun.tex}
 \begin{document}
-\portadalafrox
+\LFXportadasd
 \preliminareslafrox
 \setcounter{chapter}{7}
 
 % Fuente Markdown: LAFROX-Formulario-T-16.md
 % Contenido actualizado; estructura y formato lafrox.cls conservados.
 
-El registro sigue el formato del Formulario T-16 (Distribuidora Puelche S.A., 2026a) y la norma ISO 31000 (International Organization for Standardization [ISO], 2018), conforme al RT-19.04 (Distribuidora Puelche S.A., 2026b). Sus riesgos se anclan en el Caso 02 (Distribuidora Puelche S.A., 2026c, caps. 10 y 19), cubren los temas del índice obligatorio (Distribuidora Puelche S.A., 2026d, sección 11) y se desarrollan en el Subdocumento 8 (LafroX, 2026). El registro contiene 45 riesgos de referencia. Las columnas Prob. e Impacto presentan cada una el nivel ordinal cualitativo y, tras una barra, el valor decimal exacto de su ponderación cualitativa. Estos valores decimales son ponderaciones cualitativas: no representan frecuencias observadas de eventos, estimaciones cuantitativas p₀ ni proporciones de pérdida financiera o de esfuerzo. La columna Exposición muestra el producto decimal de las ponderaciones cualitativas ($q_P\times q_I$) y la zona registrada y adoptada para cada riesgo; los niveles ordinales de P e I permanecen visibles junto a sus valores decimales. El análisis esperado en HH es separado y no forma parte de esta exposición. Las mitigaciones propuestas corresponden a las respuestas indicadas y su eficacia aún está pendiente de verificar. Es la evaluación inicial; ningún riesgo tiene cierre acreditado. El detalle de valores esperados está en el Anexo 8.B; el costo-beneficio de las respuestas, en el Anexo 8.C. Cada responsable dirige su equipo. DAT e IMP conservan su familia de esfuerzo, pero desde el mes 22 la responsabilidad pasa al Líder de Operación / SRE (SD8, Tabla 8.1). No se establece aquí una reserva cuantitativa.
+El registro sigue el formato del Formulario T-16, incluido en las Bases Administrativas (Distribuidora Puelche S.A., 2026a, Formulario T-16), y la norma ISO 31000 (International Organization for Standardization [ISO], 2018), conforme al RT-19.04 (Distribuidora Puelche S.A., 2026b). Sus riesgos se anclan en el Caso 02 (Distribuidora Puelche S.A., 2026c, caps. 10 y 19), cubren los temas del índice obligatorio indicado en el Formulario T-16 (Distribuidora Puelche S.A., 2026a) y se desarrollan en el Subdocumento 8 (LafroX, s. f.). El registro contiene 45 riesgos de referencia. Las columnas Prob. e Impacto presentan cada una el nivel ordinal cualitativo y, tras una barra, el valor decimal exacto de su ponderación cualitativa. Estos valores decimales son ponderaciones cualitativas: no representan frecuencias observadas de eventos, estimaciones cuantitativas p₀ ni proporciones de pérdida financiera o de esfuerzo. La columna Exposición muestra el producto decimal de las ponderaciones cualitativas ($q_P\times q_I$) y la zona registrada y adoptada para cada riesgo; los niveles ordinales de P e I permanecen visibles junto a sus valores decimales. El análisis esperado en HH es separado y no forma parte de esta exposición. Las mitigaciones propuestas corresponden a las respuestas indicadas y su eficacia aún está pendiente de verificar. Es la evaluación inicial; ningún riesgo tiene cierre acreditado. El detalle de valores esperados está en el Anexo 8.B; la evaluación de respuestas se desarrolla en el cuerpo del Subdocumento 8. Cada responsable dirige su equipo. DAT e IMP conservan su familia de esfuerzo, pero desde el mes 22 la responsabilidad pasa al Líder de Operación / SRE (SD8, Tabla 8.1). No se establece aquí una reserva cuantitativa.
 
 \begin{landscape}
 \setlength{\textwidth}{\linewidth}
@@ -80,26 +81,18 @@ R-045 & Dado que direcciones, pesos y puentes no están plenamente formalizados,
 
 Las fuentes citadas en este documento se listan en formato APA 7.ª edición. Las Bases se citan en el texto con su documento y el artículo, capítulo, sección o código del requisito.
 
-\begin{itemize}[leftmargin=*,itemsep=3pt]
-\item Distribuidora Puelche S.A. (2026a). \emph{Bases Administrativas de Licitación N.º TFEP-01/2026: Contratación de Solución Integral de Software y Servicios de Operación}.
-\item Distribuidora Puelche S.A. (2026b). \emph{Bases Técnicas Transversales de Licitación N.º TFEP-01/2026}.
-\item Distribuidora Puelche S.A. (2026c). \emph{Caso 02: Logística. Especificaciones del problema y operación de Distribuidora Puelche S.A.}
-\item Distribuidora Puelche S.A. (2026d). \emph{Aclaraciones de la Licitación N.º TFEP-01/2026}.
-\item LafroX. (2026). Subdocumentos 1 a 7 y 13, con los anexos y formularios citados.
-\item International Organization for Standardization. (2018). \emph{ISO 31000:2018 Risk management \textemdash{} Guidelines}. ISO.
-\item Project Management Institute. (2017). \emph{La guía de los fundamentos para la dirección de proyectos (Guía del PMBOK®)} (6.ª ed.), capítulo 11. Project Management Institute.
-\end{itemize}
-
-\section*{Declaración de uso de IA}
-\addcontentsline{toc}{section}{Declaración de uso de IA}
-
-La tabla declara apoyo de IA conforme a las Aclaraciones §7.2. La revisión humana identifica quién efectivamente verificó cada parte y se consolida en el Formulario A-6.
-
 \begingroup
-\renewcommand{\thetable}{T-16.2}
-\begin{tablalafrox}{Declaración de uso de IA}{tab:sd8-t16-2}{>{\hsize=0.78831\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X >{\hsize=0.90507\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X >{\hsize=1.48434\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X >{\hsize=0.71305\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X >{\hsize=0.84034\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X >{\hsize=1.26889\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X}{\cab{Sección} & \cab{Herramienta} & \cab{Finalidad del uso} & \cab{Nivel en texto} & \cab{Nivel en diagramas} & \cab{Revisión humana (quién y qué verificó)}}
-Formulario T-16 & Codex; Claude Code & Registro de 45 riesgos de referencia, responsables temporales y mitigación & Alto & Ninguno & [[REVISIÓN HUMANA]] \\
-\end{tablalafrox}
+\small\setlength{\parindent}{-0.5in}\setlength{\leftskip}{0.5in}\setlength{\parskip}{3pt}
+Distribuidora Puelche S.A. (2026a). \emph{Bases Administrativas de Licitación N.º TFEP-01/2026: Contratación de Solución Integral de Software y Servicios de Operación}.
+
+Distribuidora Puelche S.A. (2026b). \emph{Bases Técnicas Transversales de Licitación N.º TFEP-01/2026}.
+
+Distribuidora Puelche S.A. (2026c). \emph{Caso 02: Logística. Especificaciones del problema y operación de Distribuidora Puelche S.A.}
+
+International Organization for Standardization. (2018). \emph{ISO 31000:2018 Risk management \textemdash{} Guidelines}. https://www.iso.org/standard/65694.html
+
+LafroX. (s. f.). \emph{Subdocumento 8: Plan de riesgos}.
+
 \endgroup
 
 
