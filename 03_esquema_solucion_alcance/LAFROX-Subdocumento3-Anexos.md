@@ -760,14 +760,14 @@ La Tabla 3.A.15 registra la asistencia utilizada.
 
 | Sección | Herramienta | Finalidad del uso | Nivel en texto | Nivel en diagramas | Revisión humana (quién y qué verificó) |
 | --- | --- | --- | --- | --- | --- |
-| 3.A | Codex; Claude Code | Conversión del catálogo funcional a tablas y contraste con las Bases; alineación de RF-03.11 y RF-03.12 con S-09. | Alto | No aplica | [[REVISIÓN HUMANA]] |
-| 3.B | Codex; Claude Code | Conversión del catálogo no funcional a tablas y contraste con las Bases. | Alto | No aplica | [[REVISIÓN HUMANA]] |
-| 3.C | Codex; Claude Code | Contraste con los Subdocumentos 1 y 2 y redacción de supuestos, incluida la meta de autoatención S-42 y el horario de ambientes no productivos S-43. | Alto | No aplica | [[REVISIÓN HUMANA]] |
-| 3.D | Codex; Claude Code | Redacción de registros. | Alto | No aplica | [[REVISIÓN HUMANA]] |
-| 3.E | Codex; Claude Code | Redacción de registros. | Alto | No aplica | [[REVISIÓN HUMANA]] |
-| 3.F | Codex; Claude Code | Redacción de registros. | Alto | No aplica | [[REVISIÓN HUMANA]] |
-| 3.G | Codex; Claude Code | Redacción de reglas; propuestas para RNG-04, RNG-08 y RNG-15 sobre excursión térmica, precio y promesa urbana desde las 14:00. | Alto | No aplica | [[REVISIÓN HUMANA]] |
-| 3.H | Codex; Claude Code | Redacción de consultas, incluida V-11. | Alto | No aplica | [[REVISIÓN HUMANA]] |
-| 3.I | Codex; Claude Code | Redacción de la participación de actores y del catálogo funcional. | Alto | No aplica | [[REVISIÓN HUMANA]] |
-| 3.J | Codex; Claude Code | Redacción de los criterios de aceptación. | Alto | No aplica | [[REVISIÓN HUMANA]] |
-| 3.K | Codex; Claude Code | Glosario. | Medio | No aplica | [[REVISIÓN HUMANA]] |
+| 3.A | Codex; Claude Code | Conversión del catálogo funcional a tablas y contraste con las Bases; alineación de RF-03.11 y RF-03.12 con S-09. | Alto | No aplica | Guillermo Castillo: revisión del catálogo funcional frente a las Bases y el caso, y validación de RF-03.11 y RF-03.12 con S-09. |
+| 3.B | Codex; Claude Code | Conversión del catálogo no funcional a tablas y contraste con las Bases. | Alto | No aplica | Guillermo Castillo: revisión del catálogo no funcional frente a las Bases Técnicas Transversales y validación de los métodos de verificación. |
+| 3.C | Codex; Claude Code | Contraste con los Subdocumentos 1 y 2 y redacción de supuestos, incluida la meta de autoatención S-42 y el horario de ambientes no productivos S-43. | Alto | No aplica | Guillermo Castillo: revisión de los supuestos frente al Anexo 2.2 del Subdocumento 2 y validación de S-42 y S-43. |
+| 3.D | Codex; Claude Code | Redacción de registros. | Alto | No aplica | Guillermo Castillo: revisión de las exclusiones frente al Anexo 2.2 del Subdocumento 2. |
+| 3.E | Codex; Claude Code | Redacción de registros. | Alto | No aplica | Guillermo Castillo: revisión de las restricciones frente al caso y su vínculo con el catálogo. |
+| 3.F | Codex; Claude Code | Redacción de registros. | Alto | No aplica | Guillermo Castillo: revisión de las decisiones de alcance y diseño frente a las Bases y los Subdocumentos 1 y 2. |
+| 3.G | Codex; Claude Code | Redacción de reglas; propuestas para RNG-04, RNG-08 y RNG-15 sobre excursión térmica, precio y promesa urbana desde las 14:00. | Alto | No aplica | Guillermo Castillo: revisión de las reglas de negocio frente al caso y validación de RNG-04, RNG-08 y RNG-15. |
+| 3.H | Codex; Claude Code | Redacción de consultas, incluida V-11. | Alto | No aplica | Guillermo Castillo: revisión de los vacíos y consultas, y validación del estado de cada consulta, incluida V-11. |
+| 3.I | Codex; Claude Code | Redacción de la participación de actores y del catálogo funcional. | Alto | No aplica | Guillermo Castillo: revisión de los 19 actores frente al Anexo 2.3 del Subdocumento 2 y validación de los responsables del Subdocumento 1. |
+| 3.J | Codex; Claude Code | Redacción de los criterios de aceptación. | Alto | No aplica | Guillermo Castillo: revisión de los criterios de aceptación y validación de sus metas, momentos y métodos. |
+| 3.K | Codex; Claude Code | Glosario. | Medio | No aplica | Guillermo Castillo: revisión de las siglas y códigos usados en los anexos. |
