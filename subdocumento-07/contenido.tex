@@ -2,24 +2,13 @@
 
 \label{cap:subdoc07}
 
-\newcommand{\figuraDiagramaHorizontal}[3]{%
+\newcommand{\figuraDiagramaHorizontal}[4][0pt]{%
   \par\clearpage
   \begin{anexohorizontal}
     \begin{center}
-      \includegraphics[width=0.97\linewidth,height=0.78\textheight,keepaspectratio]{#1}
+      \includegraphics[trim=0 #1 0 0,clip,width=0.97\linewidth,height=0.78\textheight,keepaspectratio]{#2}
       \captionsetup{hypcap=false}
-      \captionof{figure}{#2}\label{#3}
-    \end{center}
-  \end{anexohorizontal}
-  \clearpage}
-
-\newcommand{\figuraEDTHorizontalAmplia}[3]{%
-  \par\clearpage
-  \begin{anexohorizontal}
-    \begin{center}
-      \makebox[\linewidth][c]{\includegraphics[width=1.17\linewidth,height=0.82\textheight,keepaspectratio]{#1}}%
-      \captionsetup{hypcap=false}
-      \captionof{figure}{#2}\label{#3}
+      \captionof{figure}{#3}\label{#4}
     \end{center}
   \end{anexohorizontal}
   \clearpage}
@@ -33,14 +22,34 @@
   \vspace*{\fill}
   \clearpage}
 
-\newcommand{\figuraEDT}[3]{%
-  \par\addvspace{5pt}%
-  \begin{center}
-    \includegraphics[width=0.96\linewidth,height=0.72\textheight,keepaspectratio]{#1}
-    \captionsetup{hypcap=false}
-    \captionof{figure}{#2}\label{#3}
-  \end{center}%
-  \par\addvspace{7pt}}
+\newcommand{\figuraEDTbase}[6]{%
+  \par\begin{center}
+    \begin{minipage}{\linewidth}
+      \centering
+      \includegraphics[trim=0 #1 0 0,clip,width=#2,height=#3,keepaspectratio]{#4}
+      \captionsetup{hypcap=false}
+      \captionof{figure}{#5}\label{#6}
+    \end{minipage}
+  \end{center}}
+
+\newcommand{\figuraEDT}[4][400pt]{%
+  \figuraEDTbase{#1}{0.98\linewidth}{0.78\textheight}{#2}{#3}{#4}}
+
+\newcommand{\figuraEDTAmpliada}[4][400pt]{%
+  \par\begin{center}
+    \begin{minipage}{\linewidth}
+      \centering
+      \makebox[\linewidth][c]{\includegraphics[trim=0 #1 0 0,clip,width=1.078\linewidth,height=0.858\textheight,keepaspectratio]{#2}}
+      \captionsetup{hypcap=false}
+      \captionof{figure}{#3}\label{#4}
+    \end{minipage}
+  \end{center}}
+
+\newcommand{\figuraEDTReducida}[4][400pt]{%
+  \figuraEDTbase{#1}{0.784\linewidth}{0.624\textheight}{#2}{#3}{#4}}
+
+\newcommand{\figuraEDTEscalada}[6][400pt]{%
+  \figuraEDTbase{#1}{#2\linewidth}{#3\textheight}{#4}{#5}{#6}}
 
 \newcommand{\figuraEDTRotada}[3]{%
   \par\clearpage
@@ -81,7 +90,7 @@ La construcción concentra el 36 \% de los paquetes (79 de 222), porque contiene
 
 La Figura \ref{fig:7-edt} resume el primer nivel de la EDT: la raíz del proyecto y sus nueve fases.
 
-\figuraEDT{imagenes/Imagenes de la edt/EDT-EDT nivel 2.drawio.pdf}
+\figuraEDT[700pt]{imagenes/Imagenes de la edt/EDT-EDT nivel 2.drawio.pdf}
   {Vista del primer nivel de la EDT: raíz del proyecto y sus nueve fases. Fuente: elaboración propia a partir del Formulario T-14.}
   {fig:7-edt}
 
@@ -95,13 +104,13 @@ Las láminas siguientes desglosan las cuentas de control y los paquetes por fase
 
 La fase de Inicio define el proyecto, fija su alcance y planificación y establece cómo se gobierna y controla. Sus cuentas 1.1 a 1.5 abarcan el acta, la línea base, la planificación, los interesados y la calidad.
 
-\figuraEDTHorizontalAmplia{imagenes/Imagenes de la edt/EDT-Fase 1 (1 de 2).drawio.pdf}
+\figuraEDTAmpliada[450pt]{imagenes/Imagenes de la edt/EDT-Fase 1 (1 de 2).drawio.pdf}
   {Fase 1 — Inicio, primera parte: cuentas 1.1 a 1.5. Fuente: elaboración propia a partir del Formulario T-14.}
   {fig:7-edt-fase-1a}
 
 La segunda lámina completa Inicio con gestión de riesgos, reversibilidad, gobierno, control y cumplimiento normativo. Incluye los paquetes 1.2.2 y 1.2.3, que capturan las reglas de ruteo cuya fuente experta se jubila y las interfaces del sistema de gestión que el CLIENTE reconoce no tener documentadas; también incluye los comités del artículo 71 de las Bases Administrativas (p. 37), el informe de valor ganado y el tablero (RT-19.06 a RT-19.09).
 
-\figuraEDT{imagenes/Imagenes de la edt/EDT-Fase 1 (2 de 2).drawio.pdf}
+\figuraEDT[290pt]{imagenes/Imagenes de la edt/EDT-Fase 1 (2 de 2).drawio.pdf}
   {Fase 1 — Inicio, segunda parte: cuentas 1.6 a 1.9, desde riesgos hasta cumplimiento contractual.}
   {fig:7-edt-fase-1b}
 
@@ -111,13 +120,13 @@ Estas cuentas completan Inicio: identifican los riesgos y la reversibilidad, est
 
 Elaboración diseña la solución antes de programar: arquitectura lógica y física, datos trazables por lote, seguridad, sala técnica de Talca, continuidad y experiencia de usuario. La aprobación de arquitectura, seguridad y modelo de datos corresponde al H2 del mes 4. La primera lámina muestra las cuentas 2.1 a 2.3.
 
-\figuraEDT{imagenes/Imagenes de la edt/EDT-Fase 2 (1 de 2).drawio.pdf}
+\figuraEDTReducida[260pt]{imagenes/Imagenes de la edt/EDT-Fase 2 (1 de 2).drawio.pdf}
   {Fase 2 — Elaboración, primera parte: arquitectura, seguridad y sala técnica, cuentas 2.1 a 2.3.}
   {fig:7-edt-fase-2a}
 
 La continuación cubre la validación de diseños, continuidad del negocio y experiencia de usuario (cuentas 2.4 a 2.6), incluidos los procedimientos manuales y la recuperación ante desastres.
 
-\figuraEDT{imagenes/Imagenes de la edt/EDT-Fase 2 (2 de 2).drawio.pdf}
+\figuraEDTReducida[350pt]{imagenes/Imagenes de la edt/EDT-Fase 2 (2 de 2).drawio.pdf}
   {Fase 2 — Elaboración, segunda parte: validación, continuidad y experiencia de usuario, cuentas 2.4 a 2.6.}
   {fig:7-edt-fase-2b}
 
@@ -127,31 +136,31 @@ Con estas cuentas, los diseños quedan sometidos a validación y se completan lo
 
 Construcción produce los ambientes y servicios de nube, la base compartida, los módulos de ambas etapas, las integraciones, la migración, las pruebas, las innovaciones y la documentación. La primera lámina reúne los ambientes de desarrollo, los servicios de nube y la base compartida (cuentas 3.1 a 3.3).
 
-\figuraEDT{imagenes/Imagenes de la edt/EDT-Fase 3 (1 de 5).drawio.pdf}
+\figuraEDTEscalada[175pt]{0.931}{0.741}{imagenes/Imagenes de la edt/EDT-Fase 3 (1 de 5).drawio.pdf}
   {Fase 3 — Construcción, primera parte: ambientes, servicios de nube y base compartida, cuentas 3.1 a 3.3.}
   {fig:7-edt-fase-3a}
 
 La segunda lámina desglosa los módulos de la Etapa 1 (cuenta 3.4), con los componentes de recepción, inventario, preparación de pedidos, cadena de frío, aplicaciones y operación de tiendas.
 
-\figuraEDT{imagenes/Imagenes de la edt/EDT-Fase 3 (2 de 5).drawio.pdf}
+\figuraEDTEscalada[80pt]{0.931}{0.741}{imagenes/Imagenes de la edt/EDT-Fase 3 (2 de 5).drawio.pdf}
   {Fase 3 — Construcción, segunda parte: módulos de la Etapa 1, cuenta 3.4.}
   {fig:7-edt-fase-3b}
 
 La tercera lámina presenta los módulos de la Etapa 2, las integraciones externas, la migración y las pruebas de la Etapa 1 (cuentas 3.5 a 3.8). La integración con el ERP conserva su función de emisor único de la guía de despacho.
 
-\figuraEDT{imagenes/Imagenes de la edt/EDT-Fase 3 (3 de 5).drawio.pdf}
+\figuraEDT[330pt]{imagenes/Imagenes de la edt/EDT-Fase 3 (3 de 5).drawio.pdf}
   {Fase 3 — Construcción, tercera parte: módulos de la Etapa 2, integraciones, migración y pruebas de la Etapa 1, cuentas 3.5 a 3.8.}
   {fig:7-edt-fase-3c}
 
-La cuarta lámina reúne las pruebas de la Etapa 2, las innovaciones y la documentación técnica (cuentas 3.9 a 3.11). Por su formato vertical, se presenta rotada en una página propia.
+La cuarta lámina reúne las pruebas de la Etapa 2, las innovaciones y la documentación técnica (cuentas 3.9 a 3.11).
 
-\figuraEDT{imagenes/Imagenes de la edt/EDT-Fase 3 (4 de 5).drawio.pdf}
+\figuraEDT[345pt]{imagenes/Imagenes de la edt/EDT-Fase 3 (4 de 5).drawio.pdf}
   {Fase 3 — Construcción, cuarta parte: pruebas de la Etapa 2, innovaciones y documentación técnica, cuentas 3.9 a 3.11.}
   {fig:7-edt-fase-3d}
 
 La quinta lámina amplía la cuenta 3.10 para que se lean sus paquetes de innovación: seguimiento de vencimientos, reproducción de incidentes, vida útil remanente y hoja de negocio del almacenero.
 
-\figuraEDT{imagenes/Imagenes de la edt/EDT-Fase 3 (5 de 5).drawio.pdf}
+\figuraEDT[345pt]{imagenes/Imagenes de la edt/EDT-Fase 3 (5 de 5).drawio.pdf}
   {Fase 3 — Construcción, quinta parte: detalle de los paquetes de las innovaciones agrupadas en la cuenta 3.10.}
   {fig:7-edt-fase-3e}
 
@@ -161,7 +170,7 @@ El detalle identifica los paquetes de INN-01, INN-02, INN-03 e INN-05 dentro de 
 
 Transición convierte la solución probada en el registro oficial. Su plan contempla las olas y la reversión; luego coordina las marchas blancas, la estabilización y las actas de aceptación de ambas etapas (H7 y H12).
 
-\figuraEDT{imagenes/Imagenes de la edt/EDT-Fase 4.drawio.pdf}
+\figuraEDTEscalada[200pt]{0.882}{0.702}{imagenes/Imagenes de la edt/EDT-Fase 4.drawio.pdf}
   {Fase 4 — Transición: plan de implantación y marchas blancas de las etapas 1 y 2, cuentas 4.1 a 4.3.}
   {fig:7-edt-fase-4}
 
@@ -171,7 +180,7 @@ La cuenta 4.1 prepara las olas y la reversión; las cuentas 4.2 y 4.3 separan la
 
 Esta fase distingue el equipamiento de terreno, que el CLIENTE compra según la especificación de LafroX, de la infraestructura de la sala técnica, los racks, los servidores y los gabinetes de borde, que LafroX especifica, compra y provee. LafroX incorpora el costo de esta infraestructura en su Oferta Económica; el CLIENTE no la adquiere mediante una compra separada. LafroX también contrata nube, enlaces y licencias. La fase formaliza, además, los acuerdos con transportistas y sindicato y la fórmula contractual de la innovación 4.
 
-\figuraEDT{imagenes/Imagenes de la edt/EDT-Fase 5.drawio.pdf}
+\figuraEDT[380pt]{imagenes/Imagenes de la edt/EDT-Fase 5.drawio.pdf}
   {Fase 5 — Adquisiciones y contrataciones: hardware, servicios, enlaces y acuerdos con terceros, cuentas 5.1 a 5.4.}
   {fig:7-edt-fase-5}
 
@@ -181,13 +190,13 @@ La cuenta 5.1 reúne las adquisiciones de hardware, manteniendo la distinción a
 
 La fase instala la sala técnica de Talca, con energía, climatización y extinción; el cableado, los racks y gabinetes de borde; y la infraestructura de los sitios. La primera lámina cubre la sala, el cableado y el montaje de racks (cuentas 6.1 a 6.3).
 
-\figuraEDT{imagenes/Imagenes de la edt/EDT-Fase 6 (1 de 2).drawio.pdf}
+\figuraEDTEscalada[165pt]{0.882}{0.702}{imagenes/Imagenes de la edt/EDT-Fase 6 (1 de 2).drawio.pdf}
   {Fase 6 — Infraestructura física y sitios, primera parte: sala técnica, cableado y racks, cuentas 6.1 a 6.3.}
   {fig:7-edt-fase-6a}
 
 La segunda lámina incluye seguridad física, equipamiento de campo y configuración de la infraestructura distribuida en los sitios (cuentas 6.4 a 6.6), incluidos los termógrafos de los camiones con frío y la prueba de autonomía de 24 horas.
 
-\figuraEDT{imagenes/Imagenes de la edt/EDT-Fase 6 (2 de 2).drawio.pdf}
+\figuraEDTEscalada[150pt]{0.882}{0.702}{imagenes/Imagenes de la edt/EDT-Fase 6 (2 de 2).drawio.pdf}
   {Fase 6 — Infraestructura física y sitios, segunda parte: seguridad física, equipamiento de campo y configuración, cuentas 6.4 a 6.6.}
   {fig:7-edt-fase-6b}
 
@@ -197,7 +206,7 @@ Con seguridad física, equipamiento de campo y configuración de los sitios, est
 
 La fase atiende la rotación del 38 \% en preparación con capacitación continua del turno de noche; acompaña individualmente al personal con veinte o treinta años en la compañía; incorpora a los conductores externos en el andén; y transfiere conocimiento al equipo de TI del CLIENTE. La certificación de usuarios (cuenta 7.3) es una de las condiciones de cierre de cada marcha blanca.
 
-\figuraEDT{imagenes/Imagenes de la edt/EDT-Fase 7.drawio.pdf}
+\figuraEDT[225pt]{imagenes/Imagenes de la edt/EDT-Fase 7.drawio.pdf}
   {Fase 7 — Capacitación y gestión del cambio: capacitación por roles, acompañamiento y certificaciones, cuentas 7.1 a 7.3.}
   {fig:7-edt-fase-7}
 
@@ -207,7 +216,7 @@ La lámina muestra que la adopción combina formación por perfil, acompañamien
 
 La fase presta servicios durante los meses 21 a 56: centro de operaciones, gestión de incidentes, continuidad, mantenimiento, innovaciones, informes y transferencia al equipo del CLIENTE. La primera lámina presenta las cuentas 8.1 y 8.2, que reúnen los servicios de operación y el mantenimiento de la solución.
 
-\figuraEDT{imagenes/Imagenes de la edt/EDT-Fase 8 (1 de 2).drawio.pdf}
+\figuraEDT[205pt]{imagenes/Imagenes de la edt/EDT-Fase 8 (1 de 2).drawio.pdf}
   {Fase 8 — Operación y soporte, primera parte: servicios de operación y mantenimiento, cuentas 8.1 y 8.2.}
   {fig:7-edt-fase-8a}
 
@@ -215,7 +224,7 @@ La primera parte concentra la continuidad del servicio y el mantenimiento del so
 
 La segunda lámina completa la fase con las cuentas 8.3 a 8.5: innovaciones en operación, informes y obligaciones periódicas, y capacitación y transferencia. También distingue los períodos particulares de las innovaciones y la mentoría al equipo del CLIENTE.
 
-\figuraEDT{imagenes/Imagenes de la edt/EDT-Fase 8 (2 de 2).drawio.pdf}
+\figuraEDT[295pt]{imagenes/Imagenes de la edt/EDT-Fase 8 (2 de 2).drawio.pdf}
   {Fase 8 — Operación y soporte, segunda parte: innovaciones, obligaciones periódicas, capacitación y transferencia, cuentas 8.3 a 8.5.}
   {fig:7-edt-fase-8b}
 
@@ -225,7 +234,7 @@ Estas cuentas completan la operación con la continuidad de las innovaciones, lo
 
 Cierre comprende dos momentos: completar la implementación en el mes 21, con entrega de código, infraestructura como código y lecciones aprendidas; y ejecutar la salida al término del contrato, con el Plan de Reversibilidad y el tratamiento final de los datos.
 
-\figuraEDT{imagenes/Imagenes de la edt/EDT-Fase 9.drawio.pdf}
+\figuraEDTEscalada[210pt]{0.6272}{0.4992}{imagenes/Imagenes de la edt/EDT-Fase 9.drawio.pdf}
   {Fase 9 — Cierre: cierre de implementación y salida al término del contrato, cuentas 9.1 y 9.2.}
   {fig:7-edt-fase-9}
 
@@ -244,7 +253,7 @@ La Figura \ref{fig:7-cobertura} ubica esos paquetes por fase y muestra en qué p
 \clearpage
 \begin{anexohorizontal}
   \begin{center}
-    \includegraphics[trim=0 420pt 0 0,clip,width=0.97\linewidth,height=0.78\textheight,keepaspectratio]{imagenes/Diagramas que faltaban/Diagramas subdoc7-(ARREGLADO) de Fig_7-4_Cobertura_EDT.drawio.pdf}
+    \includegraphics[trim=0 423pt 0 0,clip,width=0.97\linewidth,height=0.78\textheight,keepaspectratio]{imagenes/Diagramas que faltaban/Fig_7-4_Cobertura_EDT.pdf}
     \captionsetup{hypcap=false}
     \captionof{figure}{Ubicación en la EDT de las innovaciones y de la seguridad, la calidad, la migración y la implantación. Fuente: elaboración propia a partir del Formulario T-14 y de las Aclaraciones, sección 11.}\label{fig:7-cobertura}
   \end{center}
@@ -281,11 +290,13 @@ La Figura \ref{fig:7-red} presenta esa red de precedencias entre cuentas de cont
 
 \clearpage
 \begin{anexohorizontal}
-  \begin{center}
-    \includegraphics[trim=0 420pt 0 0,clip,width=0.97\linewidth,height=0.78\textheight,keepaspectratio]{imagenes/Diagramas que faltaban/Diagramas subdoc7-(ARREGLADO) Fig_7-5_Red_Precedencias.drawio.pdf}
+  \enlargethispage{25pt}
+  \noindent\begin{minipage}{\linewidth}
+    \centering
+    \makebox[\linewidth][c]{\includegraphics[trim=0 455pt 0 0,clip,width=1.261\linewidth,height=1.014\textheight,keepaspectratio]{imagenes/Diagramas que faltaban/Fig_7-5_Red_Precedencias.pdf}}
     \captionsetup{hypcap=false}
     \captionof{figure}{Red de precedencias entre cuentas de control e hitos. Fuente: elaboración propia a partir del Anexo 7.B y del Formulario E-25.}\label{fig:7-red}
-  \end{center}
+  \end{minipage}
 \end{anexohorizontal}
 \clearpage
 
@@ -311,7 +322,7 @@ La operación concentra el 59 \% de las horas programadas (128.854 de 217.543 HH
 
 El trabajo se organiza en ocho frentes. Cada frente es un equipo con un responsable que avanza en paralelo con los demás sobre un conjunto de cuentas de control. La Figura \ref{fig:7-frentes} presenta los frentes, su rol líder, sus cuentas de control y su ventana de actividad entre los meses 1 y 21; la correspondencia completa está en el Formulario T-15.
 
-\figuraDiagramaHorizontal{imagenes/Diagramas que faltaban/Fig_7-6_T15-2_Frentes_Trabajo.drawio.png}
+\figuraDiagramaHorizontal[597pt]{imagenes/Diagramas que faltaban/Fig_7-6_T15-2_Frentes_Trabajo.pdf}
   {Frentes de trabajo de los meses 1 a 21. Fuente: elaboración propia a partir de los Formularios T-14 y T-15.}
   {fig:7-frentes}
 
@@ -359,7 +370,7 @@ Ningún inicio admisible deja las dos marchas blancas completas fuera de septiem
 
 La Figura \ref{fig:7-gantt} presenta la carta Gantt resumida de los 56 meses con ese supuesto de inicio, por período contractual. La carta vigente por cuenta de control, generada desde las ventanas reconciliadas de los 222 paquetes, está en el Formulario T-14, sección 3.1.
 
-\figuraDiagramaHorizontal{imagenes/Diagramas que faltaban/Fig_7-8_T14-1_Gantt_56_meses.drawio.png}
+\figuraDiagramaHorizontal[527pt]{imagenes/Diagramas que faltaban/Fig_7-8_T14-1_Gantt_56_meses.pdf}
   {Carta Gantt resumida de los 56 meses, con inicio en febrero de 2027. Fuente: elaboración propia a partir de las Bases Administrativas, art. 17, pp. 12--13, del Formulario E-25 y del Formulario T-14.}
   {fig:7-gantt}
 
@@ -382,7 +393,7 @@ La programación de olas usa fechas reales y no una equivalencia de meses a 13 s
 \clearpage
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=0.96\linewidth,trim=0 500bp 0 0,clip]{imagenes/Diagramas que faltaban/Fig_7-21.pdf}
+  \includegraphics[width=0.768\linewidth,trim=0 500bp 0 0,clip]{imagenes/Diagramas que faltaban/Fig_7-21.pdf}
   \caption{Secuencia de olas de la Etapa 1 durante la marcha blanca. Fuente: elaboración propia a partir del Capítulo 3, sección 3.4.4, y del Formulario T-18.}
   \label{fig:7-olas}
 \end{figure}
@@ -418,7 +429,7 @@ La sexta condición del artículo 17.3 de las Bases Administrativas (p. 13) es e
 \clearpage
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=0.96\linewidth,trim=0 650bp 0 0,clip]{imagenes/Diagramas que faltaban/Fig_7-23.pdf}
+  \includegraphics[width=0.864\linewidth,trim=0 650bp 0 0,clip]{imagenes/Diagramas que faltaban/Fig_7-23.pdf}
   \caption{Ciclo diario de la marcha blanca. Fuente: elaboración propia a partir de las Bases Administrativas, art. 17.3, p. 13, y de las Bases Técnicas Transversales, RT-20.04, p. 35.}
   \label{fig:7-ciclo}
 \end{figure}
@@ -453,7 +464,7 @@ A los indicadores de la Tabla \ref{tab:7-indicadores} se suman los propios del a
 \clearpage
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=0.96\linewidth,trim=0 450bp 0 0,clip]{imagenes/Diagramas que faltaban/Fig_7-24.pdf}
+  \includegraphics[width=0.864\linewidth,trim=0 450bp 0 0,clip]{imagenes/Diagramas que faltaban/Fig_7-24.pdf}
   \caption{Convivencia de la Etapa 1 en producción con la Etapa 2 en marcha blanca. Fuente: elaboración propia a partir de la arquitectura lógica del Capítulo 4.}
   \label{fig:7-convivencia}
 \end{figure}
@@ -521,6 +532,6 @@ Las Bases se citan con su documento y el artículo, capítulo, sección o códig
 \phantomsection
 \addcontentsline{toc}{section}{Declaración de uso de IA}
 
-En cumplimiento de la sección 7.2 de las Aclaraciones de la licitación, la tabla siguiente declara el uso de herramientas de inteligencia artificial en este subdocumento, con la revisión humana de cada parte. La declaración se consolida en el Formulario A-6.
+La tabla siguiente prepara la declaración de uso de inteligencia artificial exigida por la sección 7.2 de las Aclaraciones de la licitación. Los niveles consignados deben confirmarse con el historial real de elaboración. La última columna indica comprobaciones pendientes: el responsable incorporará su nombre, cargo y resultado una vez que las realice. La versión validada se consolidará en el Formulario A-6.
 
 \parte{tablas/tab_SD7_12}

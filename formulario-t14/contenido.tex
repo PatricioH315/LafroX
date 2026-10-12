@@ -1,12 +1,12 @@
 \chapter{Formulario T-14: Plan de trabajo, EDT y carta Gantt}
 
-\newcommand{\figuraDiagramaHorizontal}[3]{%
+\newcommand{\figuraDiagramaHorizontal}[4][0pt]{%
   \par\clearpage
   \begin{anexohorizontal}
     \begin{center}
-      \includegraphics[width=0.97\linewidth,height=0.78\textheight,keepaspectratio]{#1}
+      \includegraphics[trim=0 #1 0 0,clip,width=0.97\linewidth,height=0.78\textheight,keepaspectratio]{#2}
       \captionsetup{hypcap=false}
-      \captionof{figure}{#2}\label{#3}
+      \captionof{figure}{#3}\label{#4}
     \end{center}
   \end{anexohorizontal}
   \clearpage}
@@ -594,9 +594,8 @@ La construcción concentra 79 de los 222 paquetes, y las fases que no son softwa
 La figura siguiente presenta la EDT completa en una sola vista panorámica. Por su densidad, se recomienda ampliarla en el PDF; el Subdocumento 7 contiene las láminas separadas por fase para consultar las cuentas de control y los paquetes con mayor legibilidad.
 
 \begin{anexohorizontal}
-\setlength{\textwidth}{\linewidth}
 \begin{center}
-  \includegraphics[trim=0 700pt 0 0,clip,width=0.98\linewidth,height=0.82\textheight,keepaspectratio]{imagenes/Imagenes de la edt/EDT-EDT completa.drawio.pdf}
+  \includegraphics[trim=0 520pt 0 0,clip,width=1.18\linewidth,height=0.78\textheight,keepaspectratio]{imagenes/Imagenes de la edt/EDT-EDT completa.drawio.pdf}
   \captionsetup{hypcap=false}
   \captionof{figure}{Vista panorámica de la EDT completa del proyecto. Para consultar el detalle por fase, véanse las láminas de la sección «Estructura general» del Subdocumento 7. Fuente: elaboración propia a partir del Formulario T-14.}
   \label{fig:T14-edt-completa}
@@ -1079,7 +1078,7 @@ La carta Gantt cubre los 56 meses del contrato y muestra las ventanas de marcha 
 
 Ningún paso a producción, inicio de ola, corte de datos ni intervención con impacto en la facturación o en el inventario valorizado se programa en septiembre, en diciembre ni en los tres primeros días hábiles de un mes (Caso 02, secciones 13.2 y 13.3, pp. 22--23). La correspondencia entre meses contractuales y meses calendario depende de la fecha de inicio del contrato; se analiza en la sección 7.3.2 del Subdocumento 7 y en su Anexo 7.A, que adoptan como supuesto un inicio en febrero de 2027. La Figura \ref{fig:T14-56} presenta la carta de los 56 meses por período contractual y por fase.
 
-\figuraDiagramaHorizontal{imagenes/Diagramas que faltaban/Fig_7-8_T14-1_Gantt_56_meses.drawio.png}
+\figuraDiagramaHorizontal[527pt]{imagenes/Diagramas que faltaban/Fig_7-8_T14-1_Gantt_56_meses.pdf}
   {Carta Gantt de los 56 meses por período contractual y por fase, con inicio en febrero de 2027. Fuente: elaboración propia a partir de las Bases Administrativas, art. 17, pp. 12--13, del Formulario E-25 y de la sección 2 de este formulario.}
   {fig:T14-56}
 
@@ -1091,11 +1090,11 @@ Según la carta de la sección 3.1, la sala técnica y el borde de los sitios se
 
 Las siguientes vistas actualizadas detallan las cuentas de control de los meses 1 a 21: la primera, las fases 1 a 3; la segunda, las fases 4 a 7. Reemplazan como fuente vigente a las figuras anteriores, que conservan la programación previa a la reconciliación de ventanas. La carta de 56 meses de la Figura \ref{fig:T14-56} presenta el panorama contractual completo. Cada barra va desde el primer mes del primer paquete de la cuenta hasta el último mes del último paquete, según la programación por paquete del Formulario T-15 (secciones 4.2 y 6.1); los hitos se ubican al cierre de su mes, salvo H6 y H11, que marcan el inicio de una marcha blanca. El detalle por paquete, con sus 222 ventanas, está en esa misma sección, y la red con revisiones del CLIENTE y ruta crítica, en su sección 5. Las cuentas recurrentes (1.4, 1.8, 1.9, 7.1 y 8) se muestran como barras continuas, aunque su trabajo se ejecute con la frecuencia que fija este diccionario.
 
-\figuraDiagramaHorizontal{imagenes/Diagramas que faltaban/Fig_T14-2_Cuentas_m1-21_Fases1-3.drawio.png}
+\figuraDiagramaHorizontal[361pt]{imagenes/Diagramas que faltaban/Fig_T14-2_Cuentas_m1-21_Fases1-3.pdf}
   {Carta Gantt actualizada por cuenta de control, meses 1 a 21, fases 1 a 3. Fuente: elaboración propia a partir del Formulario T-14 y del cronograma del Formulario T-15.}
   {fig:T14-cca}
 
-\figuraDiagramaHorizontal{imagenes/Diagramas que faltaban/Fig_T14-3_Cuentas_m1-21_Fases4-7.drawio.png}
+\figuraDiagramaHorizontal[463pt]{imagenes/Diagramas que faltaban/Fig_T14-3_Cuentas_m1-21_Fases4-7.pdf}
   {Carta Gantt actualizada por cuenta de control, meses 1 a 21, fases 4 a 7. Fuente: elaboración propia a partir del Formulario T-14 y del cronograma del Formulario T-15.}
   {fig:T14-ccb}
 \section{Criterios vigentes de programación y recursos}
