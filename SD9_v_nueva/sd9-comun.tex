@@ -1,5 +1,31 @@
 %% Preambulo comun de los cuatro documentos del Subdocumento 9.
 
+%% Los diagramas originales son PDF 1.7. Se admite su version sin alterarlos.
+\pdfvariable minorversion=7
+
+%% Permitir texto junto a figuras/tablas grandes, sin reducir su tipografia.
+\renewcommand{\topfraction}{0.95}
+\renewcommand{\bottomfraction}{0.9}
+\renewcommand{\textfraction}{0.05}
+\renewcommand{\floatpagefraction}{0.85}
+\setcounter{topnumber}{3}
+\setcounter{totalnumber}{4}
+\setlength{\textfloatsep}{10pt plus 2pt minus 2pt}
+\setlength{\intextsep}{10pt plus 2pt minus 2pt}
+
+%% El indice recibe solo el titulo; la fuente sigue visible en el pie completo.
+\newcommand{\LFXcaptionfuente}[1]{\LFXcaptiondivide#1\LFXfin}
+\def\LFXcaptiondivide#1. Fuente:#2\LFXfin{\caption[#1]{#1. Fuente:#2}}
+
+\newcommand{\fuentesd}[1]{\par\nobreak\vspace{-5pt}%
+  {\fontsize{9.5pt}{11.5pt}\selectfont\RaggedRight #1\par}\addvspace{8pt}}
+
+\renewcommand{\figuralafrox}[4]{%
+  \begin{figure}[!htbp]\centering
+    \includegraphics[width=#1\textwidth]{#2}
+    \LFXcaptionfuente{#3}\label{#4}
+  \end{figure}}
+
 %% Legibilidad (BA Art. 40.4; Aclaraciones secciones 4 y 5)
 %% 1. Sin expansion de fuente de microtype: con ella el cuerpo de 11 pt se
 %%    compone a 10,8-10,9 pt y las tablas por debajo de su cuerpo nominal.
@@ -25,12 +51,9 @@
 \renewcommand{\LFXpiederecho}{%
   \begingroup\LFXpiebase
   \begin{tabular}[b]{@{}r@{}}
-    {\color{lafroxGris}\rule{3.4cm}{0.4pt}%
-     % Overlay: firma sobre el filete sin cambiar altura del pie ni paginacion.
-     \begin{tikzpicture}[remember picture,overlay]
-       \node[anchor=south east,inner sep=0pt] at (0,1mm)
-         {\includegraphics[height=7mm]{logo/FIRMA_Alex_Aravena_transparente.png}};
-     \end{tikzpicture}}\\[-1pt]
+    {\rlap{\makebox[3.4cm][c]{\raisebox{-2pt}[0pt][0pt]{%
+       \includegraphics[height=18pt]{logo/FIRMA_Alex_Aravena_transparente.png}}}}%
+     \color{lafroxGris}\rule{3.4cm}{0.4pt}}\\[-1pt]
     {\LFXchico Media firma: \LFXrepresentante}\\
     {\intermedium\fontsize{9pt}{11pt}\selectfont\color{lafroxTinta}\LFXfoliotexto}
   \end{tabular}%
@@ -49,10 +72,11 @@
 \RequirePackage{flafter}
 \newcommand{\LFXtablasflotantes}{%
   \RenewDocumentEnvironment{tablalafrox}{m m m m +b}{%
-    \begin{table}[htbp]
+    \begin{table}[!htbp]
       \LFXcuerpotabla
-      \caption{##1}\label{##2}
-      \begin{tabularx}{\textwidth}{##3}
+      \let\RaggedRight\raggedright
+      \LFXcaptionfuente{##1}\label{##2}
+      \begin{tabularx}{\textwidth}{@{\extracolsep{\fill}}##3}
         \toprule ##4 \\ \midrule
         ##5
         \bottomrule
@@ -65,6 +89,7 @@
   \par
   \LFXfiletear{#3}%
   \LFXcuerpotabla
+  \let\RaggedRight\raggedright
   \setlength{\LTpre}{8pt}\setlength{\LTpost}{14pt}%
   \LFXconcuerpo{%
   \begin{xltabular}{\textwidth}{#1}

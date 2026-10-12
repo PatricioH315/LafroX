@@ -26,6 +26,7 @@ BTT, RT-07.07, RT-07.12, RT-10.07, RT-11.20 (BTT, pp. 17--18, 22, 24) & Pruebas 
 Caso Logística, cap. 15 & Umbrales de respuesta (RT-09.01), operación desconectada (RT-03.10, RT-03.13), ventana protegida y congelamientos (RT-10.05), interfaces de terreno (RT-13.08) \\
 Caso Logística, cap. 18 & Dieciséis resultados de aceptación del caso (R18-01 a R18-16) \\
 \end{tablasimple}
+\fuentesd{Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026a, arts. 4.3 y 24, pp. 5--6, 17); Distribuidora Puelche S.A. (2026b, caps. 4, 7, 9, 10, 11 y 20, pp. 10--11, 17--18, 21--24, 34--35); Distribuidora Puelche S.A. (2026c, caps. 15 y 18).}
 
 \section*{2. Proceso de pruebas según ISO/IEC/IEEE 29119}
 \addcontentsline{toc}{section}{2. Proceso de pruebas según ISO/IEC/IEEE 29119}
@@ -38,6 +39,7 @@ Organizacional & Política de pruebas de LafroX, dentro del sistema de gestión 
 Gestión de pruebas & Este plan (T-13) y su seguimiento por campaña & Líder de Calidad y Pruebas, Maximiliano Miño & En cada hito y ante cada cambio aprobado de alcance \\
 Pruebas dinámicas & Diseño, preparación del ambiente, ejecución e informe de cada caso & Equipo de pruebas (rol CAL) y especialistas (SEG, SRE, DAT, IMP) & En cada ejecución \\
 \end{tablasimple}
+\fuentesd{Fuente: elaboración a partir de ISO, IEC \& IEEE (2021a, procesos de prueba); LafroX (2026i, SD1, secciones 1.3.1 y 1.5); LafroX (2026o, SD6, organización del desarrollo).}
 
 La intensidad de la prueba sigue el riesgo del producto, como dispone ISO/IEC/IEEE 29119-1 (ISO, IEC \& IEEE, 2022). La prioridad de cada requisito en el catálogo del SD3 (crítica, alta o media) fija cuántos casos se diseñan para él (sección 8). La documentación de pruebas sigue la estructura de ISO/IEC/IEEE 29119-3 (ISO, IEC \& IEEE, 2021c): especificación de casos, procedimientos, registro de ejecución, registro de incidencias e informe de finalización.
 
@@ -55,6 +57,7 @@ Flujos de usuario & Casos de uso y escenarios & Flujos del SD3 por perfil: preve
 Integraciones & Pruebas de contrato & Siete casos por integración: éxito, sin respuesta, con error, con lentitud, duplicado, orden y versión (RT-10.08) (BTT, p. 22) \\
 Concurrencia y reconexión & Escenarios con conflicto & Dos dispositivos que reservan el mismo lote sin señal y sincronizan después \\
 \end{tablasimple}
+\fuentesd{Fuente: elaboración a partir de ISO, IEC \& IEEE (2021b, técnicas de diseño); Distribuidora Puelche S.A. (2026c, caps. 13 y 15); Distribuidora Puelche S.A. (2026b, RT-10.08, p. 22).}
 
 \section*{3. Niveles y tipos de prueba}
 \addcontentsline{toc}{section}{3. Niveles y tipos de prueba}
@@ -82,6 +85,7 @@ Seguridad ofensiva & Preproducción con versión congelada & Tercero independien
 Despliegue sin interrupción y reversión & Preproducción & Cadena de entrega del SD4 (canario con reversión automática) & Total & 3.8.8; 3.9.7 & Art. 24; RT-04.07 (BA, p. 17; BTT, p. 11) \\
 Migración de datos & Preproducción & Procedimiento de extracción, carga y conciliación del SD5 & Parcial & 3.7.1 a 3.7.5 & BTT 20.1; RT-05.11 (BTT, pp. 12, 34--35) \\
 \end{tablasimple}
+\fuentesd{Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026a, arts. 4.3 y 24, pp. 5--6, 17); Distribuidora Puelche S.A. (2026b, secciones 4.1 y 20.1, pp. 10--11, 34--35); Distribuidora Puelche S.A. (2026c, cap. 15); LafroX (2026m, SD4, sección 4.2.4.1); LafroX (2026a, T-10, apartado DevSecOps); LafroX (2026d, T-14, paquetes indicados en cada fila).}
 
 Las herramientas son las declaradas en el Formulario T-10 (SD6) y en la cadena de entrega del SD4. Este plan no agrega herramientas nuevas.
 
@@ -98,6 +102,7 @@ Preproducción & Aceptación, carga y estrés, resiliencia, ensayo del paso a pr
 Producción & Verificación posterior al despliegue, indicadores diarios de la marcha blanca, restauración de respaldos & Reales & No se prueba con datos ficticios \\
 Recuperación ante Desastres & Conmutación real & Réplica productiva protegida & No se usa como ambiente funcional de prueba \\
 \end{tablasimple}
+\fuentesd{Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026b, sección 4.1, p. 10); LafroX (2026m, SD4, sección 4.2.4.1); LafroX (2026n, SD5, sección 5.3).}
 
 \subsection*{4.1 Instancias de Preproducción por campaña}
 \addcontentsline{toc}{subsection}{4.1 Instancias de Preproducción por campaña}
@@ -111,6 +116,7 @@ PRE-C & Carga y estrés, luego resiliencia bajo carga, luego despliegue sin inte
 PRE-S & Seguridad ofensiva & Versión congelada; no admite inyección de fallas en paralelo \\
 PRE-A & Aceptación de usuario y accesibilidad & Las personas usuarias necesitan datos estables \\
 \end{tablasimple}
+\fuentesd{Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026b, RT-04.02, p. 10); LafroX (2026m, SD4, sección 4.2.4.1); LafroX (2026n, SD5, sección 5.3); las condiciones de aislamiento de campañas descritas en esta sección 4.1.}
 
 \textbf{Secuencia de sesiones en PRE-C.} Carga y resiliencia forman una campaña compatible; despliegue y reversión usan después el mismo entorno, no se ejecutan sobre él mientras se inyectan fallas. La preparación de scripts, revisión y elaboración de informes pueden correr en paralelo fuera de PRE-C. Las subventanas siguientes se incluyen en las fechas y HH de los paquetes existentes y no añaden esfuerzo a la línea base.
 
@@ -119,6 +125,7 @@ PRE-A & Aceptación de usuario y accesibilidad & Las personas usuarias necesitan
 E1: 3.8.4 y 3.8.8 & 21–28 octubre 2027 & 29 octubre; snapshot de datos y versión, reinicio de colas y comprobación de observabilidad & 2–5 noviembre; análisis e informes de ambos paquetes hasta 9 noviembre \\
 E2: 3.9.3 y 3.9.7 & 19–22 mayo 2028; el 21 de mayo no se programa trabajo humano ordinario & 23 mayo; mismo procedimiento de restitución & 24–25 mayo; informes hasta 26 mayo \\
 \end{tablasimple}
+\fuentesd{Fuente: elaboración a partir de LafroX (2026e, T-15, sección 6.1, paquetes 3.8.4, 3.8.8, 3.9.3 y 3.9.7); la separación de sesiones y restitución definida en esta sección 4.1.}
 
 La prueba continua de aislamiento de 24 horas requiere una ventana y un turno explícitos; si cruza un día no laborable, se autoriza el turno de observación antes de empezar. La fecha de sesión no implica dotación disponible. CAL y SRE confirman personas nominales y capacidad neta, descontando recuperación, soporte y otros frentes, antes de aprobar la campaña. Las 320/320 HH de E1 y 320/160 HH de E2 son esfuerzo total por paquete, no duración de las sesiones invasivas ni cuatro campañas que puedan ocupar simultáneamente PRE-C. Si la dotación vigente no alcanza, el Jefe de Proyecto debe asignar recursos y aprobar la nivelación antes de G5; no se presume suficiencia del escenario histórico del T-15.
 
@@ -135,9 +142,10 @@ Maestros sintéticos & Generador con las reglas del SD3 y del SD5 & 14.200 clien
 Transacciones de régimen & Generador sintético & 31.000 pedidos y 260.000 líneas de preparación al mes (Caso, 14.1) & QA y Preproducción & Versionado \\
 Transacciones de peak & Generador sintético & Perfil de septiembre: \ensuremath{\approx} 2.600 entregas por día (Caso, B.2) & Preproducción (PRE-C) & Versionado \\
 Lotes y temperatura & Generador sintético & Lotes con vencimiento; series de temperatura con excursiones controladas & QA y Preproducción & Incluye los casos límite del rango térmico \\
-Históricos para migración & Datos del ERP, del WMS de 2013 y de planillas del CLIENTE & 32,11 GB (SD4, Tabla 33, dimensión 10) & Solo PRE-M & Anonimización verificada con Amazon Macie (0 hallazgos) más una prueba de reidentificación sobre una muestra; se eliminan al cerrar el ensayo \\
+Históricos para migración & Datos del ERP, del WMS de 2013 y de planillas del CLIENTE & 32,11 GB (SD4, sección 4.2.6, dimensión 10) & Solo PRE-M & Anonimización verificada con Amazon Macie (0 hallazgos) más una prueba de reidentificación sobre una muestra; se eliminan al cerrar el ensayo \\
 Incidentes reproducidos & Evidencia de terreno capturada por INN-02, sin datos personales & Según incidentes & Ambientes efímeros por incidencia en QA o Preproducción & Convertidos en casos de regresión permanentes (SD13, sección 13.2) \\
 \end{tablasimple}
+\fuentesd{Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026c, sección 14.1 y cap. B); LafroX (2026n, SD5, sección 5.3); LafroX (2026m, SD4, secciones 4.2.6.3 a 4.2.6.5).}
 
 \section*{6. Criterios de entrada y de salida}
 \addcontentsline{toc}{section}{6. Criterios de entrada y de salida}
@@ -167,6 +175,7 @@ Perfil operacional & Dispositivos de producción, uno de cada tipo; personas del
 Migración & Perfilado y saneamiento cerrados (3.7.1); mapeo del SD5, Anexo 5-L & Conciliación sin diferencias no explicadas en cada ensayo; tiempos medidos compatibles con la ventana y con la reversión (SD5, 5.3.5) \\
 Despliegue sin interrupción & Estrategia canario configurada & Despliegue y reversión sin interrupción del servicio y sin intervención manual (RT-04.06, RT-04.07) (BTT, p. 11) \\
 \end{tablasimple}
+\fuentesd{Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026a, arts. 17.3 y 24, pp. 13, 17); Distribuidora Puelche S.A. (2026b, sección 20.1, pp. 34--35); Distribuidora Puelche S.A. (2026c, cap. 15); LafroX (2026q, Anexos 9, anexos 9.A y 9.B); LafroX (2026f, T-17, sección 4).}
 
 \subsection*{6.2 Suspensión y reanudación}
 \addcontentsline{toc}{subsection}{6.2 Suspensión y reanudación}
@@ -181,7 +190,7 @@ Las pruebas siguientes comprueban carga, fallas, operación de terreno y continu
 \subsection*{7.1 Carga y estrés}
 \addcontentsline{toc}{subsection}{7.1 Carga y estrés}
 
-La carga se deriva del dimensionamiento del SD4, Tabla 33, y no se elige:
+La carga se deriva del dimensionamiento del SD4, sección 4.2.6, y no se elige:
 
 \begin{tablasimple}{>{\hsize=1.899\hsize\linewidth=\hsize}Y >{\hsize=0.7\hsize\linewidth=\hsize}Y >{\hsize=0.7\hsize\linewidth=\hsize}Y >{\hsize=0.701\hsize\linewidth=\hsize}Y}
   {\cab{Magnitud} & \cab{Peak declarado (SD4)} & \cab{Factor} & \cab{Carga de prueba}}
@@ -192,6 +201,7 @@ Dispositivos de terreno simultáneos & 158 & 1,5 & 237 \\
 Escalón de crecimiento (RT-09.03) (BTT, p. 21) & 14,66 TPS & 3 & 43,98 TPS \\
 Escalón de quiebre & 14,66 TPS & 4 & 58,64 TPS \\
 \end{tablasimple}
+\fuentesd{Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026a, art. 24, p. 17); Distribuidora Puelche S.A. (2026b, RT-09.03 y RT-09.06, p. 21); LafroX (2026m, SD4, secciones 4.2.6.3, 4.2.6.4 y 4.2.6.7); LafroX (2026l, Anexos 4, secciones 4-W.2, 4-W.3 y 4-W.6).}
 
 \textbf{Umbrales de salida (p95, SD4, Tabla 31):} confirmación de línea de preparación ≤ 1 s; registro de entrega ≤ 2 s; línea de preventa ≤ 1,5 s; consulta de stock y crédito ≤ 2 s; transacción crítica de terreno ≤ 3 s; carga inicial del portal ≤ 2 s; navegación ≤ 1 s; API de consulta ≤ 500 ms; API de escritura ≤ 800 ms; búsqueda compuesta ≤ 3 s y búsqueda global ≤ 2 s; informe estándar ≤ 30 s.
 
@@ -215,6 +225,7 @@ Corte de enlace del centro de distribución por 24 h & Desconexión del sitio em
 Pérdida de fibra y LTE de un centro de distribución & Corte de ambos enlaces en el sitio emulado & Conmutación a Starlink en espera caliente; la emisión de guías por el ERP continúa (SD4, sección 4.1.3.2; AL-DTE-01) \\
 Caída de un gateway de frío de Talca & Detención de uno de los dos gateways con Greengrass & El otro gateway lee ambas cámaras; el bloqueo térmico local actúa en ≤ 5 s y la alerta llega a M9 (SD4, ADR-22) \\
 \end{tablasimple}
+\fuentesd{Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026b, RT-10.07, p. 22); LafroX (2026m, SD4, sección 4.2.4.3); LafroX (2026l, Anexos 4, anexo 4-V).}
 
 Los dos últimos escenarios prueban la parte on-premise de la arquitectura híbrida, que el RT-10.07 no enumera pero que el SD4 declara crítica para el despacho y para la cadena de frío (BTT, p. 22).
 
@@ -225,13 +236,14 @@ Las pruebas usan dispositivos reales y personas del perfil correspondiente. Una 
 
 \begin{tablasimple}{>{\hsize=0.637\hsize\linewidth=\hsize}Y >{\hsize=1.071\hsize\linewidth=\hsize}Y >{\hsize=1.292\hsize\linewidth=\hsize}Y}
   {\cab{Condición (Caso, cap. 15)} & \cab{Prueba} & \cab{Criterio de salida}}
-Turno completo de 14 h sin cobertura & Jornada completa de un repartidor rural, incluida la ruta de 34 clientes (SD4, Tabla 33, dimensión 13) & 0 registros perdidos o duplicados; sincronización ≤ 10 min tras reconectar \\
+Turno completo de 14 h sin cobertura & Jornada completa de un repartidor rural, incluida la ruta de 34 clientes (SD4, sección 4.2.6.7) & 0 registros perdidos o duplicados; sincronización ≤ 10 min tras reconectar \\
 \ensuremath{-}22 °C con guantes térmicos & Preparación y recepción en cámara de congelado & Transacción completada con guantes; indicadores RT-13.04 del perfil dentro de umbral (BTT, p. 26) \\
 Lluvia & Entrega a la intemperie bajo lluvia & Transacción completada; dispositivo operativo \\
 Sobre 34 °C & Entrega a la intemperie con calor & Transacción completada; dispositivo operativo \\
 Sol directo & Lectura de la pantalla en la puerta del local & Lectura sin error de la persona usuaria \\
 Una sola mano durante la descarga & Registro de entrega & Transacción completada con una mano \\
 \end{tablasimple}
+\fuentesd{Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026c, cap. 15); Distribuidora Puelche S.A. (2026b, RT-13.04, p. 26); LafroX (2026m, SD4, sección 4.2.6.7); LafroX (2026l, Anexos 4, sección 4-W.6).}
 
 Cada perfil mide los cuatro indicadores del RT-13.04 con los valores del SD3, Tabla 3.A.4a (métrica 9A-18): tasa de error ≤ 5 \% en todos los perfiles y aprendizaje ≤ 2 h en bodega, ≤ 4 h para el preventista y ≤ 30 min para el conductor (BTT, p. 26).
 
@@ -247,6 +259,7 @@ R18-03: registro continuo de temperatura & Series con excursiones controladas; v
 R18-06: ningún pedido perdido ni duplicado por falta de señal & Jornada de 14 h sin señal (sección 7.3) & Perfil operacional (3.8.3) \\
 R18-07: ruta del día siguiente en menos de 20 minutos & Generación de la ruta con el volumen de un día de peak & Carga (3.8.4) \\
 \end{tablasimple}
+\fuentesd{Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026c, cap. 18); LafroX (2026h, SD13, sección 13.2); LafroX (2026f, T-17, sección 5).}
 
 Los dieciséis resultados se aceptan con el protocolo del Formulario T-17, en el momento que fija el SD7, Tabla 7.11.
 
@@ -267,6 +280,7 @@ AL-PERF-01 & Carga de 3× con mamparos por perfil & Carga y estrés (3.8.4; 3.9.
 AL-STOCK-01 & Última unidad pedida desde preventa, portal y EDI, con cortes y acuses perdidos & Integración (3.8.1; 3.9.1) \\
 AL-ACT-01 & Cada actor con una operación permitida y una denegada & Integración (3.8.1; 3.9.1) \\
 \end{tablasimple}
+\fuentesd{Fuente: elaboración a partir de LafroX (2026l, Anexos 4, anexo 4-V, protocolos AL-DTE-01 a AL-SYNC-01); LafroX (2026d, T-14, paquetes indicados en cada fila).}
 
 Cada protocolo deja su acta con la carga, la falla inyectada, el resultado observado y los responsables, y esa acta forma parte del expediente del H5 o del H10 (T-17, sección 3.1).
 
@@ -294,6 +308,7 @@ RT en estado «Cumple» o «Cumple parcialmente» en el T-12 & 356 & 1 & 356 \\
 Contratos de integración & 15 & 7 & 105 \\
 \textbf{Total} &  &  & \textbf{1.316} \\
 \end{tablasimple}
+\fuentesd{Fuente: elaboración a partir de LafroX (2026k, SD3, catálogo de RF y RNF); LafroX (2026b, T-12, catálogo de RT ofertados); LafroX (2026m, SD4, sección 4.1); las reglas de dimensionamiento 5/3/2, un caso por RT y siete por integración de esta sección 8.2.}
 
 Los 262 RF y RNF con prioridad propia son los del catálogo del SD3. Las nueve filas RF y RNF restantes del T-12 (271 en total) se verifican con la fila que las contiene y no suman casos. Los 18 RT en estado «No cumple» no tienen casos; quedan en la matriz de trazabilidad como brecha visible.
 
@@ -341,6 +356,7 @@ Despliegue sin interrupción E2 & 3.9.7 & PRE-C & 19-05-2028 & 26-05-2028 & 160 
 Aceptación y accesibilidad E2 & 3.9.2 & PRE-A & 27-05-2028 & 31-05-2028 & 320 \\
 Acta de certificación E2 (H10) & 3.9.6 & — & 01-06-2028 & 12-06-2028 & 160 \\
 \end{tablasimple}
+\fuentesd{Fuente: elaboración a partir de LafroX (2026d, T-14, paquetes indicados en cada fila); LafroX (2026e, T-15, sección 6.1); LafroX (2026f, T-17, sección 4.1).}
 
 En E2, 3.9.1/3.9.2 incluyen regresión de las cinco condiciones físicas y de desconexión sobre funciones/dispositivos modificados, con evidencia de cobertura para condiciones no modificadas; no se omite el perfil por ausencia de un paquete nuevo.
 
@@ -361,6 +377,7 @@ Meses 13 a 15 (E1) y 19 a 20 (E2) & Indicadores diarios del Art. 17.3 (SD7, Tabl
 Meses 13 a 20 & Restauración de respaldos sobre una muestra representativa, con tiempo medido (RT-07.12), por SRE: 4.2.1 (13–15), 4.2.2 (16–18) y 4.3.1 (19–20); ocho informes distintos de los 36 de 8.1.6 (BTT, p. 18) & Mensual \\
 Cada corrección & Puertas G0 a G4 y G6, regresión completa, DAST y carga de regresión; repetición de la prueba de certificación afectada & Por corrección \\
 \end{tablasimple}
+\fuentesd{Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026a, art. 17.3, p. 13); LafroX (2026p, SD7, Tabla 7.9); LafroX (2026d, T-14, cuenta 4).}
 
 Cada restauración previa tiene 16 HH SRE (4 preparación, 4 ejecución, 4 validación y 4 informe); se agregan 48 HH a 4.2.1, 48 a 4.2.2 y 32 a 4.3.1 como componentes separados de la cobertura NOC/mesa. Las siete conmutaciones operacionales requieren 560 HH y la recuperación inicial 320 HH según el desglose por actividades/roles del T-15; el mismo formulario justifica 320/160 HH de intrusión E1/E2.
 
@@ -377,6 +394,7 @@ Intrusión por tercero independiente & Anual (RT-11.20) (BTT, p. 24) & 28, 40, 5
 Restauración de respaldos & Al menos mensual (RT-07.12) (BTT, p. 18) & 21 a 56 & Mensual & 36 & 8.1.6 \\
 Regresión de INN-02 & Escenarios reproducidos de incidentes & 21 a 56 & Trimestral (informe) & 12 & 8.3.1 \\
 \end{tablasimple}
+\fuentesd{Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026b, RT-07.07, RT-07.12, RT-10.07 y RT-11.20, pp. 17--18, 22, 24); Distribuidora Puelche S.A. (2026c, RT-10.05); LafroX (2026d, T-14, cuenta 8); LafroX (2026e, T-15, sección 6.1).}
 
 Las resiliencias de septiembre (meses 32 y 44) se ejecutan en Preproducción, porque septiembre está congelado. Cada prueba periódica produce un informe con el resultado medido, la comparación con su umbral y el plan de corrección de las brechas (RT-07.07) (BTT, p. 17).
 
@@ -392,6 +410,7 @@ Alta & Afecta un servicio de nivel alto: preventa y consulta de stock y crédito
 Media & Afecta un servicio de nivel medio con alternativa operativa & Se registra y se planifica \\
 Baja & Afecta la reportería sin impedir operar & Se registra y se planifica \\
 \end{tablasimple}
+\fuentesd{Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026a, art. 78.2, p. 40); LafroX (2026m, SD4, niveles de servicio); los efectos sobre las campañas definidos en esta sección 10.}
 
 Cada defecto se registra en GitLab con el caso de prueba, el requisito, el ambiente, la versión y la evidencia. Se cierra solo cuando la prueba que lo detectó pasa y queda incorporada a la regresión. Los hallazgos de seguridad conservan su severidad propia y sus plazos de corrección de 7, 15 y 30 días corridos para severidad crítica, alta y media (BA, Art. 21.1, p. 15; SD4, sección 4.2.4.1.4).
 
@@ -410,6 +429,7 @@ Datos (DAT) & Líder de Datos, Leandro Chamorro & Ensayos de migración y concil
 Líder Funcional & Patricio Henríquez & Coordina la aceptación con las personas del CLIENTE \\
 Contraparte Técnica del CLIENTE & Designada por Distribuidora Puelche & Firma los casos de aceptación y las actas (T-17) \\
 \end{tablasimple}
+\fuentesd{Fuente: elaboración a partir de LafroX (2026i, SD1, sección 1.5); LafroX (2026o, SD6, organización de especialistas); LafroX (2026e, T-15, asignación de recursos).}
 
 \section*{12. Informes de prueba}
 \addcontentsline{toc}{section}{12. Informes de prueba}
@@ -425,13 +445,14 @@ Informe de recuperación ante desastres & RTO y RPO medidos; brechas y su plan d
 Informe íntegro de intrusión & Hallazgos, severidad, plan de remediación con plazos (RT-11.20) (BTT, p. 24) & CLIENTE & Por prueba \\
 Informe mensual de calidad & Métricas de proceso, defectos escapados, estado de la matriz de trazabilidad & Comité de Calidad y Contraparte Técnica & Mensual \\
 \end{tablasimple}
+\fuentesd{Fuente: elaboración a partir de Distribuidora Puelche S.A. (2026b, RT-09.07, RT-07.07 y RT-11.20, pp. 17, 21, 24); ISO, IEC \& IEEE (2021c, documentación de pruebas); LafroX (2026f, T-17, sección 3).}
 
 \section*{Referencias}
 \addcontentsline{toc}{section}{Referencias}
 
 Las fuentes siguientes sustentan los criterios citados en este documento; sus referencias se leen junto con el artículo, requisito o sección indicado en el lugar de uso.
 
-\begin{itemize}
+\begin{itemize}[before=\raggedright,itemsep=0pt,parsep=0pt,topsep=2pt]
   \item Distribuidora Puelche S.A. (2026a). \emph{Bases Administrativas, Licitación TFEP-01/2026}.
   \item Distribuidora Puelche S.A. (2026b). \emph{Bases Técnicas Transversales, Licitación TFEP-01/2026}.
   \item Distribuidora Puelche S.A. (2026c). \emph{Bases Técnicas del Caso Logística}.
@@ -440,4 +461,20 @@ Las fuentes siguientes sustentan los criterios citados en este documento; sus re
   \item International Organization for Standardization, International Electrotechnical Commission, \& Institute of Electrical and Electronics Engineers. (2021b). \emph{ISO/IEC/IEEE 29119-4:2021. Software and systems engineering — Software testing — Part 4: Test techniques}.
   \item International Organization for Standardization, International Electrotechnical Commission, \& Institute of Electrical and Electronics Engineers. (2022). \emph{ISO/IEC/IEEE 29119-1:2022. Software and systems engineering — Software testing — Part 1: General concepts}.
   \item Ley N.º 21.719. (2024). \emph{Regula la protección y el tratamiento de los datos personales y crea la Agencia de Protección de Datos Personales}. Diario Oficial de la República de Chile.
+  \item LafroX. (2026a). \emph{Formulario T-10: Metodología de desarrollo de software}. Propuesta técnica, Licitación TFEP-01/2026.
+  \item LafroX. (2026b). \emph{Formulario T-12: Matriz de trazabilidad}. Propuesta técnica, Licitación TFEP-01/2026.
+  \item LafroX. (2026c). \emph{Formulario T-13: Plan de pruebas y validación}. Propuesta técnica, Licitación TFEP-01/2026.
+  \item LafroX. (2026d). \emph{Formulario T-14: Estructura de desglose del trabajo}. Propuesta técnica, Licitación TFEP-01/2026.
+  \item LafroX. (2026e). \emph{Formulario T-15: Cronograma y asignación de recursos}. Propuesta técnica, Licitación TFEP-01/2026.
+  \item LafroX. (2026f). \emph{Formulario T-17: Protocolo de aceptación}. Propuesta técnica, Licitación TFEP-01/2026.
+  \item LafroX. (2026h). \emph{Subdocumento 13: Innovaciones}. Propuesta técnica, Licitación TFEP-01/2026.
+  \item LafroX. (2026i). \emph{Subdocumento 1: Presentación de la empresa}. Propuesta técnica, Licitación TFEP-01/2026.
+  \item LafroX. (2026k). \emph{Subdocumento 3: Especificación de requerimientos}. Propuesta técnica, Licitación TFEP-01/2026.
+  \item LafroX. (2026l). \emph{Subdocumento 4: Anexos}. Propuesta técnica, Licitación TFEP-01/2026.
+  \item LafroX. (2026m). \emph{Subdocumento 4: Arquitectura de la solución}. Propuesta técnica, Licitación TFEP-01/2026.
+  \item LafroX. (2026n). \emph{Subdocumento 5: Modelo y gestión de datos}. Propuesta técnica, Licitación TFEP-01/2026.
+  \item LafroX. (2026o). \emph{Subdocumento 6: Metodología de desarrollo}. Propuesta técnica, Licitación TFEP-01/2026.
+  \item LafroX. (2026p). \emph{Subdocumento 7: Plan de trabajo}. Propuesta técnica, Licitación TFEP-01/2026.
+  \item LafroX. (2026q). \emph{Subdocumento 9: Anexos 9.A a 9.D}. Propuesta técnica, Licitación TFEP-01/2026.
+  \item LafroX. (2026r). \emph{Subdocumento 9: Plan de calidad}. Propuesta técnica, Licitación TFEP-01/2026.
 \end{itemize}
