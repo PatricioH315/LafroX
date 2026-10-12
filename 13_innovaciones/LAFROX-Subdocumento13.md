@@ -736,7 +736,7 @@ Si esa semana el local no hace pedido, no hay entrega y la copia impresa no lleg
 
 El informe sobre datos propios y el control de divulgación estadística son prácticas maduras, en TRL 9 (Hundepool et al., 2025; Sweeney, 2002). Su utilidad para el micro-comercio sin conectividad no está probada, por lo que el conjunto parte en TRL 2 de la escala de la Comisión Europea (European Commission, 2016). Sus objetivos son TRL 4 con la prueba de comprensión de los meses 13 y 14, y TRL 6 en la marcha blanca de la Etapa 2, en los meses 19 y 20.
 
-**Investigación adicional declarada.** Falta comprobar que el almacenero entiende la hoja y obtener el dictamen legal del bloque 4 bajo la Ley 21.719. La comprensión se investiga con 24 locales en el paquete 3.10.4.1 (meses 13 y 14), con el indicador I-05B, y la revisión legal se hace en el paquete 8.3.6 (meses 24 a 27).
+**Investigación adicional declarada.** Falta comprobar que el almacenero entiende la hoja y obtener el dictamen legal del bloque 4 bajo la Ley 21.719. La comprensión se investiga con 24 almaceneros en el paquete 3.10.4.1 (meses 13 y 14), con el indicador I-05B, y la revisión legal se hace en el paquete 8.3.6 (meses 24 a 27).
 
 ### 13.5.4 Diseño de la incorporación
 
@@ -756,7 +756,7 @@ La información se prepara antes de la ruta y se muestra en el terminal del prev
 
 | Paquete | EDT | Meses | Entregable |
 | --- | --- | --- | --- |
-| INN-05.P1 | 3.10.4.1 | 13 y 14 | Prototipo en papel y pantalla; prueba de comprensión con 24 locales |
+| INN-05.P1 | 3.10.4.1 | 13 y 14 | Prototipo en papel y pantalla; prueba de comprensión con 24 almaceneros |
 | INN-05.P2 | 3.10.4.2 | 14 y 15 | Privacidad (Ley 21.719), verificación del receptor, retención e impresión en cabina |
 | INN-05.P3 | 3.10.4.3 | 15 a 17 | Cálculo, precarga y bloques 1 a 3 (H9) |
 | INN-05.P4 | 3.10.4.4 y 8.3.5 | 18 a 21 y 22 a 26 | Certificación del H10, marcha blanca, producción en el mes 21 y despliegue gradual por rutas |
@@ -793,7 +793,7 @@ La Tabla 13.26 define los indicadores de la innovación 5.
 
 | Id | Indicador | Línea base | Meta | Momento |
 | --- | --- | --- | --- | --- |
-| I-05A | Locales con hoja mostrada / locales elegibles que la aceptan; copias impresas entregadas / copias pedidas | 0 (la hoja no existe) | ≥ 90 % de hojas mostradas; ≥ 85 % de copias entregadas dentro de dos ciclos de visita | Mes 27 |
+| I-05A | Locales con hoja mostrada / locales elegibles que la aceptan; copias impresas entregadas / copias pedidas | 0 (la hoja no existe) | ≥ 90 % de hojas mostradas; ≥ 85 % de copias entregadas dentro de dos visitas | Mes 27 |
 | I-05B | Participantes que interpretan bien las tres preguntas / participantes | Sin medición (la hoja no existe) | ≥ 80 %: al menos 20 de 24 participantes | Antes del mes 19 |
 | I-05C | Frecuencia y tamaño de compra en rutas con hoja frente a rutas aún sin hoja | Período previo por ruta | Estimar el efecto; no se promete un alza | Mes 33 |
 | I-05D | Emisiones del bloque 4 con todos los grupos sobre el umbral / emisiones del bloque 4 | No aplica antes de activar | 100 % | Cada emisión |
