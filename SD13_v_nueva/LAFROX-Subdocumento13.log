@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.25.7 (MiKTeX 26.5) (format=lualatex 2026.9.17)  11 OCT 2026 23:06
+This is LuaHBTeX, Version 1.25.7 (MiKTeX 26.5) (format=lualatex 2026.9.17)  11 OCT 2026 23:16
  system commands enabled.
 **LAFROX-Subdocumento13.tex
 (./LAFROX-Subdocumento13.tex
@@ -2176,14 +2176,14 @@ Package luatex.def Info: logo/firma_representante.png  used on input line 133.
 [16]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
 <use logo/lafrox_isotipo_negro.pdf>
-Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 152.
+Package luatex.def Info: logo/lafrox_isotipo_negro.pdf  used on input line 149.
 
 (luatex.def)             Requested size: 12.9948pt x 13.0pt.
-LaTeX Info: Redefining \. on input line 152.
-LaTeX Info: Redefining \% on input line 152.
+LaTeX Info: Redefining \. on input line 149.
+LaTeX Info: Redefining \% on input line 149.
 File: logo/firma_representante.png Graphic file (type png)
 <use logo/firma_representante.png>
-Package luatex.def Info: logo/firma_representante.png  used on input line 152.
+Package luatex.def Info: logo/firma_representante.png  used on input line 149.
 (luatex.def)             Requested size: 37.40587pt x 18.0pt.
  [17]
 File: logo/lafrox_isotipo_negro.pdf Graphic file (type pdf)
@@ -2733,7 +2733,7 @@ L3 programming layer <2026-07-20>
 )
 
 Here is how much of LuaTeX's memory you used:
- 38877 strings out of 475695
+ 38879 strings out of 475695
  125007,1977958 words of node,token memory allocated
  1177 words of node memory still in use:
    8 hlist, 2 vlist, 2 rule, 1 local_par, 6 glue, 5 kern, 1 penalty, 1 margin_ke
@@ -2741,8 +2741,8 @@ rn, 4 glyph, 92 attribute, 79 glue_spec, 47 attribute_list, 2 write, 36 pdf_acti
 on nodes
    avail lists: 1:7,2:2594,3:778,4:414,5:1910,6:162,7:8622,8:116,9:1398,10:23,11
 :1128
- 58644 multiletter control sequences out of 65536+600000
- 118 fonts using 46549271 bytes
+ 58646 multiletter control sequences out of 65536+600000
+ 119 fonts using 46785751 bytes
  107i,24n,128p,1502b,2770s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/henri/AppData/Local/Programs/MiKTeX/fonts/opentype/adobe/sourceserif/S
 ourceSerif4-RegularIt.otf><C:/Users/henri/AppData/Local/Programs/MiKTeX/fonts/op
@@ -2755,7 +2755,7 @@ ts/opentype/adobe/sourcesans/SourceSans3-Regular.otf><c:/users/henri/appdata/loc
 al/programs/miktex/fonts/opentype/adobe/sourcesans/sourcesans3-medium.otf><C:/Us
 ers/henri/AppData/Local/Programs/MiKTeX/fonts/opentype/adobe/sourcesans/SourceSa
 ns3-Semibold.otf>
-Output written on LAFROX-Subdocumento13.pdf (52 pages, 537730 bytes).
+Output written on LAFROX-Subdocumento13.pdf (52 pages, 537892 bytes).
 
 PDF statistics: 875 PDF objects out of 1000 (max. 8388607)
  144 named destinations out of 1000 (max. 1048576)
