@@ -28,8 +28,54 @@ LafroX trabaja en tres líneas de negocio:
 Estas líneas se apoyan en dos capacidades operativas:
 \begin{itemize}
     \item \textbf{Infraestructura y ambientes:} Plataforma de cómputo en nube pública y dos centros de datos (primario y secundario en configuración activo-pasivo) que soportan cinco ambientes segregados: Desarrollo (DEV), Aseguramiento de Calidad (QA), Preproducción (PREPROD), Producción (PROD) y Recuperación ante Desastres (DR). La capacitación utiliza datos ficticios en un espacio aislado del ambiente que corresponda; no constituye un sexto ambiente. El entorno DR es sometido a auditorías y simulacros semestrales, con objetivos de RTO $\le 4$ horas y RPO $\le 15$ minutos.
-    \item \textbf{Centro de Operaciones y Mesa de Servicios:} Centro de Operaciones de Red (NOC), Centro de Operaciones de Seguridad (SOC) y Mesa de Servicios con niveles de escalamiento L1, L2 y L3, en el Centro de Operaciones de LafroX en Valparaíso (Av. Brasil 2241). Para Puelche, los incidentes de severidad crítica y alta se atienden 24$\times$7$\times$365, como exige el Artículo 78.2 de las Bases Administrativas; la mesa de servicio atiende al usuario de 04:00 a 22:00 de lunes a sábado, con cobertura 24$\times$7 en septiembre y diciembre (Subdocumento 3, sección 3.4.5). Su capacidad se recalibra con los tickets observados en la marcha blanca; la capacidad corporativa no constituye un compromiso de volumen para el CLIENTE.
+    \item \textbf{Centro de Operaciones y Mesa de Servicios:} Centro de Operaciones de Red (NOC), Centro de Operaciones de Seguridad (SOC) y Mesa de Servicios con niveles de escalamiento L1, L2 y L3, en el Centro de Operaciones de LafroX en Valparaíso (Av. Brasil 2241). Para Puelche, los incidentes de severidad crítica y alta se atienden 24$\times$7$\times$365, como exige el Artículo 78.2 de las Bases Administrativas; la mesa de servicio atiende al usuario de 04:00 a 22:00 de lunes a sábado, con cobertura 24$\times$7 en septiembre y diciembre (Subdocumento 3, sección 3.4.5). La reserva inicial de capacidad para Puelche se cuantifica a continuación y se contrasta con los contactos observados desde la marcha blanca.
 \end{itemize}
+
+La capacidad instalada combina equipos asignados a las especialidades y puestos compartidos del Centro de Operaciones. La Tabla~\ref{tab:equipamiento_corporativo} presenta los equipos corporativos disponibles; no incluye los servidores, terminales y equipos de red que se suministran a Puelche mediante el Formulario T-11 del Subdocumento 4.
+
+\begin{table}[H]
+\centering
+\caption{Equipamiento corporativo de trabajo y atención. Fuente: antecedentes corporativos declarados por LafroX.}
+\label{tab:equipamiento_corporativo}
+\small
+\begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}X >{\raggedleft\arraybackslash}p{1.8cm} >{\raggedright\arraybackslash}p{3cm} >{\raggedright\arraybackslash}X}
+\toprule
+\textbf{Equipamiento} & \textbf{Cantidad} & \textbf{Sede} & \textbf{Uso} \\
+\midrule
+Equipos de Ingeniería, Calidad, Seguridad y SRE & 92 & Santiago: 80; Valparaíso: 12 & Desarrollo, pruebas, seguridad y administración de plataforma \\
+Puestos compartidos del NOC & 8 & Valparaíso & Seis puestos activos y dos para relevos o contingencias \\
+Puestos de mesa de ayuda & 8 & Valparaíso & Hasta siete agentes simultáneos y un puesto de reserva \\
+Equipos de reemplazo & 4 & Dos en cada sede & Sustitución temporal de equipos de trabajo \\
+\midrule
+\textbf{Total de equipos de cómputo} & \textbf{112} & & \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Los 92 equipos asignados corresponden a $48+15+10+7+12=92$ especialistas: 80 trabajan en Santiago y 12 en Valparaíso. Los 32 profesionales del NOC comparten ocho puestos conforme a sus turnos; no se requieren 32 equipos ocupados a la vez. Cada puesto de atención incluye computador, monitor, auriculares y acceso a las herramientas del servicio. Los cuatro reemplazos están separados de los puestos activos; el total es $92+8+8+4=112$ equipos, no 112 personas ni una cantidad de periféricos.
+
+Para Puelche se reservan los puestos de mesa y los agentes de su cobertura. La Tabla~\ref{tab:capacidad_mesa} resume el dimensionamiento del Anexo 4-W.7 del Subdocumento 4 y del Formulario T-15, secciones 4.2 y 5.6 (LafroX, 2026a, Anexo 4-W.7; 2026c, secciones 4.2 y 5.6). El escenario inicial estima 2.000 contactos mensuales; un contacto es una interacción con la mesa y no equivale necesariamente a un usuario o a un ticket distinto.
+
+\begin{table}[H]
+\centering
+\caption{Capacidad de mesa reservada para Puelche. Fuente: Subdocumento 4, Anexo 4-W.7, y Formulario T-15.}
+\label{tab:capacidad_mesa}
+\small
+\begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}X >{\raggedleft\arraybackslash}p{3.5cm}}
+\toprule
+\textbf{Período} & \textbf{Agentes simultáneos: hora cargada / otras franjas} & \textbf{Capacidad dimensionada} \\
+\midrule
+Inicio de Operación (meses 21--24 del contrato) & 7 / 2 & 2.283 contactos/mes \\
+Desde el mes 25 del contrato & 7 / 3 & 2.391 contactos/mes \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+El límite inicial de 2.283 contactos supera la demanda base de 2.000; lo fija la franja de dos agentes, no la hora cargada. Desde el mes 25 se incorpora un tercer agente en las otras franjas y el límite pasa a 2.391. Los ocho puestos físicos permiten atender hasta siete agentes a la vez y conservar uno de reserva; no significan ocho agentes en cada turno. La plantilla de mesa es de siete personas en la base y nueve desde el mes 25; en septiembre y diciembre se agregan dos para la cobertura extendida, según el Anexo 4-W.7. La atención ordinaria es de 04:00 a 22:00 de lunes a sábado, con atención continua en esos dos meses y respuesta a incidentes críticos y altos conforme al Art. 78.2 de las Bases Administrativas.
+
+Estas cifras corresponden a la capacidad reservada para Puelche bajo los supuestos de demanda y atención del SD4, no a la capacidad total de la mesa corporativa ni a resultados ya medidos. El modelo Erlang C dimensiona el 80\% de respuestas antes de 20 segundos; no demuestra abandono máximo del 5\% ni resolución al primer contacto del 70\%. Los tres indicadores se miden desde la marcha blanca; superar el límite de contactos o incumplir los indicadores activa el refuerzo por franja previsto en el T-15, sección 5.6. La recalibración ajusta esta base inicial, no la reemplaza.
+
+Los agentes de mesa forman una dotación de atención adicional a los 124 especialistas de la Tabla~\ref{tab:dotacion}. No se descuentan de los 32 profesionales del NOC ni se asignan simultáneamente a mesa, NOC o SOC. El NOC del proyecto se cubre con la división corporativa correspondiente y el SOC con sus analistas contratados, como establece el Anexo 4-W.7. El T-15 imputa cada cobertura a su paquete de servicio, sin duplicar personas ni horas.
 
 El catálogo de la empresa se organiza en productos de software, servicios profesionales y servicios de infraestructura y conectividad.
 
@@ -84,7 +130,7 @@ La Dirección de Operaciones coordina tres divisiones, cada una con una responsa
 
 El CISO reporta directamente a la Gerencia General, por una línea independiente de la Dirección de Operaciones. Así, los asuntos de seguridad pueden escalarse sin pasar por los responsables de entrega. Calidad depende de Operaciones, pero ejerce su veto sobre los pasos a producción ante el Comité de Calidad y Procesos. Si hay desacuerdo, lo eleva a la Gerencia General; un plazo de entrega no permite levantar ese veto.
 
-La Tabla~\ref{tab:dotacion} distribuye los 124 especialistas por área y sede e indica su antigüedad en LafroX. No incluye a la Gerencia General, la Dirección de Operaciones ni las funciones de gestión, comercial y administración, que no se asignan a proyectos.
+La Tabla~\ref{tab:dotacion} distribuye los 124 especialistas por área y sede e indica su antigüedad en LafroX. No incluye a la Gerencia General, la Dirección de Operaciones ni las funciones de gestión, comercial y administración. Tampoco incluye los agentes de mesa ni los analistas contratados del SOC, cuya cobertura se dimensiona por separado.
 
 \begin{table}[H]
 \centering
@@ -148,7 +194,7 @@ El gobierno interno define quién revisa la calidad, quién decide sobre segurid
 \subsection{Modelo de Gobierno de Calidad}
 La calidad de los procesos de LafroX se rige por un Sistema de Gestión de Calidad certificado conforme a ISO 9001:2015 y por prácticas evaluadas bajo CMMI-DEV Nivel 3.
 
-Los métodos de diseño, desarrollo, implementación, integración y soporte se ejecutan bajo los procesos de ese Sistema de Gestión de Calidad, cuyo alcance y vigencia se identifican en 1.4. En esta oferta se aplican mediante RUP y DevSecOps (LafroX, 2026, Subdocumento 6, sección 6.2); CMMI-DEV Nivel 3 acredita la madurez de procesos declarada, sin constituir una certificación independiente de esas metodologías (Distribuidora Puelche S.A., 2026b, RT-23.04).
+Los métodos de diseño, desarrollo, implementación, integración y soporte se ejecutan bajo los procesos de ese Sistema de Gestión de Calidad, cuyo alcance y vigencia se identifican en 1.4. En esta oferta se aplican mediante RUP y DevSecOps (LafroX, 2026b, Subdocumento 6, sección 6.2); CMMI-DEV Nivel 3 acredita la madurez de procesos declarada, sin constituir una certificación independiente de esas metodologías (Distribuidora Puelche S.A., 2026b, RT-23.04).
 
 \begin{itemize}
     \item \textbf{Instancia colegiada:} El Comité de Calidad y Procesos, presidido mensualmente por el Jefe de QA y con participación de los líderes de proyecto, analiza la adherencia metodológica y métricas de defecto.
@@ -310,7 +356,9 @@ Las fuentes citadas en este documento se listan a continuación en formato APA 7
 \hangindent=1.27cm\hangafter=1 Distribuidora Puelche S.A. (2026b). \textit{Bases Técnicas Transversales de Licitación N° TFEP-01/2026}.\par\medskip
 \hangindent=1.27cm\hangafter=1 Distribuidora Puelche S.A. (2026c). \textit{Caso: Logística -- Especificaciones del Problema y Operación de Distribuidora Puelche S.A.}\par\medskip
 \hangindent=1.27cm\hangafter=1 Distribuidora Puelche S.A. (2026d). \textit{Aclaraciones de la Licitación N° TFEP-01/2026}.\par\medskip
-\hangindent=1.27cm\hangafter=1 LafroX. (2026). \textit{Subdocumento 6: Metodologías}.\par\medskip
+\hangindent=1.27cm\hangafter=1 LafroX. (2026a). \textit{Subdocumento 4: Arquitectura de la solución. Anexo 4-W: Dimensionamiento de capacidad}.\par\medskip
+\hangindent=1.27cm\hangafter=1 LafroX. (2026b). \textit{Subdocumento 6: Metodologías}.\par\medskip
+\hangindent=1.27cm\hangafter=1 LafroX. (2026c). \textit{Subdocumento 7: Plan de trabajo. Formulario T-15: Nivelación de recursos}.\par\medskip
 \hangindent=1.27cm\hangafter=1 SGS. (2024). \textit{Certificado de Sistema de Gestión de Servicios de TI ISO/IEC 20000-1:2018 N° CL21/8190}. SGS United Kingdom Ltd.\par\medskip
 }
 
@@ -328,7 +376,7 @@ La Tabla~\ref{tab:declaracion_ia} identifica las herramientas y el alcance de la
 \toprule
 \textbf{Sección} & \textbf{Herramienta} & \textbf{Finalidad del uso} & \textbf{Nivel en texto} & \textbf{\makecell[l]{Nivel en\\diagramas}} & \textbf{Revisión humana (quién y qué verificó)} \\
 \midrule
-1.1 & Claude / Gemini; OpenAI Codex & Redacción de trayectoria y servicios & Alto & Ninguno & [[REVISIÓN HUMANA]] \\
+1.1 & Claude / Gemini; OpenAI Codex & Trayectoria, inventario y capacidad reservada de mesa & Alto & Ninguno & [[REVISIÓN HUMANA]] \\
 1.2 & Claude / Gemini; OpenAI Codex & Organigrama, antigüedad, turnos y respaldos del NOC & Alto & Medio & [[REVISIÓN HUMANA]] \\
 1.3 & Claude / Gemini; OpenAI Codex & Redacción de gobierno y responsabilidades & Alto & Ninguno & [[REVISIÓN HUMANA]] \\
 1.4 & Claude / Gemini; OpenAI Codex & Comparación de experiencia y SLA & Alto & Ninguno & [[REVISIÓN HUMANA]] \\
