@@ -14,14 +14,13 @@
 %% ============================================================================
 
 \setcounter{chapter}{7}
-\chapter{Introducción a riesgos}
+\chapter{Introducción a la gestión de riesgos}
 
+Este plan organiza los 45 riesgos vigentes del proyecto (R-001–R-045) en siete categorías de la EDR, según su fuente predominante. Para cada riesgo conserva un ID y articula identificación, valoración, respuesta y seguimiento; la categoría no determina por sí sola la prioridad ni limita las áreas que pueden verse afectadas.
 
-El plan establece tratamiento de riesgos de solución, desarrollo e implantación, con responsables, cuantificación y reservas durante el contrato.
+La valoración cualitativa utiliza los niveles ordinales y las ponderaciones decimales de probabilidad e impacto, con la zona registrada para cada riesgo. La cuantificación del esfuerzo se mantiene separada: el valor esperado se calcula como $p_0\times HH^{\mathrm{cond}}$. La suma de los 45 riesgos, \textbf{2.058,480 HH}, se adopta como contingencia en esfuerzo; no es un monto monetario ni un resultado de simulación. Los objetivos residuales siguen condicionados a validar la eficacia de las respuestas.
 
-La solución de LafroX integra recepción y trazabilidad, inventario, frío, preventa, reparto y cobranza en E1, y canal moderno, portales y costo de servir en E2. Sus riesgos dependen de una operación que despacha 96 camiones entre 05:30 y 07:00, mantiene los CD 24 horas sin WAN y el terreno 14 horas sin señal, conserva ERP como único emisor tributario y despliega sin detener rutas (Distribuidora Puelche S.A., 2026c, Cap. 10). Este plan conecta las decisiones comerciales del SD2, alcance del SD3, contratos y dimensionamiento del SD4, gobierno del SD6 y programación del SD7 (LafroX, 2026).
-
-El cuerpo establece método y decisiones; los Anexos 8.A\textendash{}8.G complementan el análisis con fichas de riesgo, insumos de cuantificación y evidencia de planificación; el T-16 conserva el formato obligatorio separado (Distribuidora Puelche S.A., 2026d, sección 11). Las condiciones que deben cerrarse antes de cada hito, incluida la verificación del RPO y del riesgo residual que el SD4 declara en la sección 4.3.2.4, se registran en el Anexo 8.E con responsable y plazo.
+El Anexo 8.A reúne las fichas de respuesta de los 45 riesgos. Registra los datos disponibles y señala como pendientes de definición por responsable los plazos, las contingencias y los riesgos secundarios que no están sustentados; tampoco presume eficacia de las mitigaciones. El Anexo 8.B presenta el detalle de $p_0$, impactos condicionales y valores esperados. El Formulario T-16 conserva por separado su formato obligatorio (Distribuidora Puelche S.A., 2026d, sección 11).
 
 \section{Plan de riesgos}
 
@@ -93,7 +92,7 @@ Esta sección identifica los riesgos con una RBS y los analiza cualitativamente 
 
 \subsection{RBS y análisis separados}
 
-La estructura de desglose de riesgos (EDR, o RBS por sus siglas en inglés) tiene como raíz «Riesgos del proyecto LafroX» y organiza los 45 riesgos del registro actualizado, identificados desde R-001 hasta R-045. La Figura~\ref{fig:sd8-rbs} los distribuye en siete ramas según la fuente o dependencia predominante: Solución y tecnología (14), Integración y legado (7), Operación del cliente (8), Personas y adopción (7), Contrato y licitación (4), Regulatorio y externo (2) y Empresa proveedora (3). Cada riesgo conserva un ID único y una ubicación en la EDR, aunque sus consecuencias alcancen varias áreas.
+La estructura de desglose de riesgos (EDR o RBS, por sus siglas en inglés) organiza los 45 riesgos del registro vigente (R-001–R-045) en siete categorías, según su fuente predominante: Solución y tecnología (14), Integración y legado (7), Operación del cliente (8), Personas y adopción (7), Contrato y licitación (4), Regulatorio y externo (2) y Empresa proveedora (3). La Figura~\ref{fig:sd8-rbs} presenta esta clasificación. Cada riesgo conserva un ID y una categoría principal; la agrupación identifica su fuente predominante, pero no limita las áreas que pueden verse afectadas ni determina por sí sola su prioridad.
 
 \parte{figuras/rbs}
 
@@ -117,7 +116,7 @@ El análisis cualitativo del T-16 presenta los niveles ordinales de probabilidad
 
 \begingroup
 \renewcommand{\thetable}{8.4}
-\begin{tablalafrox}{Valoración cualitativa vigente de riesgos. Fuente: T-16; zonas registradas.}{tab:sd8-cuerpo-4}{>{\hsize=0.8\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X >{\hsize=1.1\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X >{\hsize=1.05\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X >{\hsize=1.1\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X >{\hsize=1.4\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X}{\cab{ID} & \cab{P decimal} & \cab{I decimal} & \cab{Exposición decimal ($q_P\times q_I$)} & \cab{Zona registrada}}
+\begin{tablalafrox}{Valoración cualitativa vigente de 10 riesgos mas altos. Fuente: T-16; zonas registradas.}{tab:sd8-cuerpo-4}{>{\hsize=0.8\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X >{\hsize=1.1\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X >{\hsize=1.05\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X >{\hsize=1.1\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X >{\hsize=1.4\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X}{\cab{ID} & \cab{P decimal} & \cab{I decimal} & \cab{Exposición decimal ($q_P\times q_I$)} & \cab{Zona registrada}}
 R-012 & 0,50 & 0,80 & 0,40 & Crítica \\
 R-015 & 0,50 & 0,80 & 0,40 & Crítica \\
 R-005 & 0,30 & 0,80 & 0,24 & Alta \\
@@ -141,13 +140,36 @@ La suma de los valores esperados de los 45 riesgos es \textbf{2.058,480 HH}. Por
 
 $p_0$ cuantitativa se mantiene distinta de la exposición cualitativa $q_P\times q_I$, que se calcula por separado junto con los niveles ordinales y la zona registrada. No se presentan simulaciones, percentiles ni probabilidades de cumplimiento.
 
+La Tabla 8.5 ordena los diez mayores valores esperados $VE=p_0\times HH^{\mathrm{cond}}$, no los riesgos por su exposición cualitativa $q_P\times q_I$. Los eventos y consecuencias se resumen estrictamente desde el T-16.
+
+%\begin{landscape}
+\setlength{\textwidth}{\linewidth}
+\begingroup
+\renewcommand{\thetable}{8.5}
+\begin{tablalafrox}{Diez mayores valores esperados de esfuerzo. Fuente: T-16; cálculo sobre las estimaciones de planificación del Anexo 8.B.}{tab:sd8-cuantitativo}{>{\hsize=0.35\hsize\linewidth=\hsize\centering\arraybackslash}X >{\hsize=2.45\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X >{\hsize=0.65\hsize\linewidth=\hsize\centering\arraybackslash}X >{\hsize=0.75\hsize\linewidth=\hsize\centering\arraybackslash}X >{\hsize=0.80\hsize\linewidth=\hsize\centering\arraybackslash}X}{\cab{ID} & \cab{Evento / consecuencia (resumen T-16)} & \cab{$p_0$} & \cab{HH condicional} & \cab{VE (HH)}}
+R-030 & Certificación de cadena no disponible a tiempo; integración no habilitada y pérdida de capacidad comercial & 50\% & 232 & 116,000 \\
+R-004 & Saneamiento de lotes excede lo previsto o carga datos inconsistentes; rechazo de migración y pérdida de trazabilidad & 45\% & 224 & 100,800 \\
+R-003 & Corte deja saldos divergentes o tareas sin dueño; reversión y convivencia extendida & 40\% & 201,6 & 80,640 \\
+R-026 & Observaciones, capacitación o indicadores abiertos al cierre; extensión a cargo de LafroX sin mover fases & 40\% & 201,6 & 80,640 \\
+R-012 & Cadena de custodia incompleta en sitio o retorno; identificación tardía de clientes y lote afectado & 35\% & 201,6 & 70,560 \\
+R-015 & Restauración o promoción pierde datos o supera límites; interrupción prolongada y conciliación extraordinaria & 35\% & 201,6 & 70,560 \\
+R-001 & Interfaz disponible no soporta contratos necesarios; retrabajo de ACL y atraso de integración & 45\% & 152 & 68,400 \\
+R-021 & Retiro antes de transferir y validar excepciones; rutas inseguras o promesas incumplidas & 45\% & 152 & 68,400 \\
+R-038 & Estimación inválida o excede uso permitido; decisión de disposición errónea & 45\% & 152 & 68,400 \\
+R-018 & Acuerdo o enrolamiento no cubre reemplazos de conductores; entregas sin evidencia y trabajo paralelo en papel & 45\% & 150,4 & 67,680 \\
+\end{tablalafrox}
+\endgroup
+%\end{landscape}
+
+Estos diez valores suman 792,080 HH, aproximadamente el 38,5\% del total de 2.058,480 HH. Agrupan dependencias de integración y migración, transición y aceptación, trazabilidad y recuperación, además de continuidad del conocimiento y enrolamiento de conductores; esta agrupación describe temas, no eficacia de controles. Los $p_0$ son estimaciones de planificación y el VE representa esfuerzo esperado, no un resultado real ni de Monte Carlo. La tabla no determina zonas críticas cualitativas ni modifica las reservas ya establecidas.
+
 \section{Plan de Acción a Riesgos}
 
 Esta sección fija las respuestas a los riesgos analizados, las reservas que las financian en horas y las condiciones que deben cumplirse antes de declarar factible la propuesta.
 
 \subsection{Respuestas y costo-beneficio técnico}
 
-Cada ficha del Anexo 8.A define estrategia, responsable temporal, disparador, plazo, mitigación, contingencia, residual hipotético, riesgo secundario y evidencia. Las respuestas se gestionan con responsables, disparadores y evidencia en el registro vigente; la subcontratación no traslada la obligación final de LafroX.
+Las fichas del Anexo 8.A documentan los datos de respuesta respaldados por el registro vigente e identifican los campos aún pendientes de definición por responsable. Los objetivos residuales son condicionados y no se consideran eficaces ni disponibles para reducir la contingencia adoptada de 2.058,480 HH; la subcontratación no traslada la obligación final de LafroX.
 
 La evaluación de alternativas de respuesta debe considerar su esfuerzo y evitar doble conteo cuando un control atiende varios riesgos. La cuantificación actual no permite atribuir paquetes de respuesta o costos agregados a los códigos vigentes sin un crosswalk verificable. Se descarta toda alternativa que incumpla sanidad, despacho, integridad de datos o una función obligatoria.
 
@@ -187,7 +209,7 @@ Las fuentes citadas en este documento se listan en formato APA 7.ª edición. La
 \begin{itemize}[leftmargin=*,itemsep=3pt]
 \item Distribuidora Puelche S.A. (2026a). \emph{Bases Administrativas de Licitación N.º TFEP-01/2026: Contratación de Solución Integral de Software y Servicios de Operación}.
 \item Distribuidora Puelche S.A. (2026b). \emph{Bases Técnicas Transversales de Licitación N.º TFEP-01/2026}.
-\item Distribuidora Puelche S.A. (2026c). \emph{Caso 02: Logística. Especificaciones del problema y operación de Distribuidora Puelche S.A.}
+\item Distribuidora Puelche S.A. (2026c). \emph{Caso Logística. Especificaciones del problema y operación de Distribuidora Puelche S.A.}
 \item Distribuidora Puelche S.A. (2026d). \emph{Aclaraciones de la Licitación N.º TFEP-01/2026}.
 \item LafroX. (2026). Subdocumentos 1 a 9 y 13, con los anexos y formularios citados, incluidos los Formularios T-13 y T-17.
 \item International Electrotechnical Commission. (2018). \emph{IEC 60812:2018 Failure modes and effects analysis (FMEA and FMECA)}. IEC.
@@ -203,17 +225,12 @@ La tabla declara apoyo de IA conforme a las Aclaraciones §7.2. La revisión hum
 \begingroup
 \renewcommand{\thetable}{8.IA.1}
 \begin{tablalafrox}{Declaración de uso de IA}{tab:sd8-cuerpo-7}{>{\hsize=0.98597\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X >{\hsize=1.04345\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X >{\hsize=1.51284\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X >{\hsize=0.56762\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X >{\hsize=0.71876\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X >{\hsize=1.17136\hsize\linewidth=\hsize\RaggedRight\arraybackslash}X}{\cab{Sección} & \cab{Herramienta} & \cab{Finalidad del uso} & \cab{Nivel en texto} & \cab{Nivel en diagramas} & \cab{Revisión humana (quién y qué verificó)}}
-Introducción & Codex & Conexión con operación, alcance y formularios & Alto & Ninguno & [[REVISIÓN HUMANA]] \\
-8.1 Plan de riesgos & Codex; Claude Code & Roles, escalas, ciclo y cierre & Alto & Ninguno & [[REVISIÓN HUMANA]] \\
-8.2 Identificación y Análisis de Riesgos & Codex; Claude Code & RBS, exposición cualitativa y valor esperado en HH & Alto & Medio & [[REVISIÓN HUMANA]] \\
-8.3 Plan de Acción a Riesgos & Codex; Claude Code & Respuestas, contingencia y gestión & Alto & Ninguno & [[REVISIÓN HUMANA]] \\
-Anexo 8.A & Codex; Claude Code & Ver declaración propia de ese anexo & Alto & Ninguno & [[REVISIÓN HUMANA]] \\
-Anexo 8.B & Codex; Claude Code & Ver declaración propia de ese anexo & Alto & Ninguno & [[REVISIÓN HUMANA]] \\
-Anexo 8.C & Codex; Claude Code & Ver declaración propia de ese anexo & Alto & Ninguno & [[REVISIÓN HUMANA]] \\
-Anexo 8.D & Codex; Claude Code & Ver declaración propia de ese anexo & Alto & Ninguno & [[REVISIÓN HUMANA]] \\
-Anexo 8.E & Codex; Claude Code & Ver declaración propia de ese anexo & Alto & Ninguno & [[REVISIÓN HUMANA]] \\
-Anexo 8.F & Codex; Claude Code & Ver declaración propia de ese anexo & Alto & Ninguno & [[REVISIÓN HUMANA]] \\
-Anexo 8.G & Codex & Ver declaración propia de ese anexo & Alto & Ninguno & [[REVISIÓN HUMANA]] \\
-Formulario T-16 & Codex; Claude Code & Ver declaración propia del formulario & Alto & Ninguno & [[REVISIÓN HUMANA]] \\
+Introducción & Gentle-Shell mas ChatGpt & Conexión con operación, alcance y formularios & Alto & Ninguno & Maximiliano Miño: Lectura preliminar de introducción entregada. En caso de encontrar inconsistencias, arreglarlo \\
+8.1 Plan de riesgos & Gentle-Shell mas ChatGpt & Roles, escalas, ciclo y cierre & Alto & Ninguno & Maximiliano Miño: Lectura de contenido plasmado en documento, validación de contenido mediande consistencia entre otros documentos y visita a contenido academico \\
+8.2 Identificación y Análisis de Riesgos & Gentle-Shell mas ChatGpt & RBS, exposición cualitativa y valor esperado en HH & Alto & Medio & Maximiliano Miño: Se hace revisión de los riesgos antes de hacer RBS, luego de validación se revisa RBS, basado en riesgos se realiza análisis asistido por IA \\
+8.3 Plan de Acción a Riesgos & Gentle-Shell mas ChatGpt & Respuestas, contingencia y gestión & Alto & Ninguno & Maximiliano Miño: Se hace lectura de lo entregado, se valida con las tablas de anexos y formularios necesarios \\
+Anexo 8.A & Gentle-Shell mas ChatGpt & Ver declaración propia de ese anexo & Alto & Ninguno & Maximiliano Miño:Análisis exahutivo de los riesgos, enfocandonos principalmente en en los puntos de Disparador hasta Costo \\
+Anexo 8.B & Gentle-Shell mas ChatGpt & Ver declaración propia de ese anexo & Alto & Ninguno & Maximiliano Miño: Se realiza validación con tabla de formulario T-16 \\
+Formulario T-16 & Gentle-Shell mas ChatGpt & Ver declaración propia del formulario & Alto & Ninguno & Maximiliano Miño: Revisión de los riesgos, cercionandose de que este relacionado con el caso\\
 \end{tablalafrox}
 \endgroup
