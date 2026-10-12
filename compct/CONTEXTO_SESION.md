@@ -1,5 +1,36 @@
 # CONTEXTO DE SESIÓN
 
+## Revisión integral SD1 LaTeX–MD–Aclaraciones — 11 de octubre de 2026
+
+Petición: comprobar exhaustivamente alineación de cuerpo, anexos y T-6 y cumplimiento de Aclaraciones. Auditoría de sólo lectura sobre entregables; no se autorizan correcciones por esta petición de revisión. Resultado: reconversión en memoria de tres fuentes coincide exactamente con tres MD; 120 bloques de prosa del cuerpo, 6 de anexos, 5 del formulario y 44 celdas T-6 cotejados con PDF. Revisadas 31 páginas (21+3+7), índices, figura real, siete tablas cuerpo y declaraciones. No equivale a conformidad 100%.
+
+Hallazgos adicionales: citas a Bases carecen de páginas exigidas por §6; folios T-6 pp.4–6 girados en margen izquierdo, no abajo-derecha (§9); nomenclatura CMMI v2.0/SCAMPI A y renovación requieren homologación (fuente primaria https://cmmiinstitute.com/learning/appraisals/types). Persisten diez celdas de revisión humana (8+1+1, scopes parcialmente repetidos) y tres firmas. Este resultado reemplaza la afirmación anterior de que sólo faltaban revisión humana/firmas. PDF originales BA/BTT/Caso localizados en FEP, sin asignar páginas aún. No autenticar certificados ficticios ni confundir puntos TeX/PDF con infracciones de tamaño.
+
+Registro detallado: Revision/verificacion_integral_SD1_LaTeX_MD_Aclaraciones.md; añadido resultado posterior a trazabilidad sin alterar sus 28 filas. Fuentes, espejos entregables y PDF no modificados durante esta auditoría; sin commit/push nuevo. T-15 PDF sigue excluido por instrucción expresa. Cambios concurrentes preservados. Memoria agent-attributed suspendida por identidad runtime no disponible; estado guardado localmente. Siguiente: si se autorizan correcciones, completar citas con PDF fuente, corregir folios horizontales y homologar CMMI antes de revisión humana/firma/publicación.
+
+
+## S1-18 ejecutado y coordinación SD1–SD4–T-15 — 11 de octubre de 2026
+
+**Objetivo/autorización:** usuario aprobó incorporar propuesta de capacidad instalada en SD1 LaTeX y MD, sincronizar y revisar coherencia. Durante revisión indicó expresamente no cambiar PDF T-15, sólo su MD y ningún título de paquete. Esa excepción elimina necesidad de localizar/editar/compilar T15LaTeX para esta tarea. Sin autorización nueva de commit/push.
+
+**Realizado SD1:** contenido.tex del checkout LafroX-sd1-latex (rama LafroX-Subdoc1-LateX verificada) incorpora §1.1 inventario ficticio aprobado112=92equipos paraespecialidades (80Santiago+12Valparaíso)+8puestosNOC+8mesa+4repuestos (2porsede). No incluye comprasT11paraCLIENTE. Ocho puestos físicosmesa no equivalen a8agentes por turno. Mesa reservadaPuelche 2.283contactos/mes base inicial (meses21–24contrato) y2.391desde25, 7/2 y7/3puestos simultáneos. Demanda inicial2000; plantilla7y9personas, más2peaksept/dic conformeSD4. DotaciónMesa adicional a124especialistas, no descontada de32NOC niSOC; contactos no son usuarios/tickets distintos. Capacidad dimensionada con supuestos, no capacidadcorporativatotal ni mediciónreal. ErlangC dimensiona espera80%20s; abandono≤5% yFCR≥70% siguenmedición. Recalibración ajusta base, no la sustituye. Referencias internas2026aSD4/2026bSD6/2026cSD7, títulooficialT15Nivelaciónderecursos; fuentes yIAactualizadas, firmas/revisiones reales preservadas pendientes.
+
+**Coherencia:** cotejoSD3§3.4.5, SD4cuerpo yAnexo4-W.7, T15§4.2/5.6/5.7. Se corrigió única frase T15MD que asignaba mesa alNOC; mesaadditional,44especialistas noincluyen mesa, familiaSREagrupaHH no personalidéntico. Dos frases T15 que atribuían tresSLA aErlangC se precisaron aobjetivoespera ymedicióndelosotros. ReferenciaSD1Tabla1.1→1.3porrenumeración. Títulos y todas lasfilas de paquetes/HH delT15 exactosfrenteHEAD; sólofilaSREdedisponibilidad cambia. Fuente/PDFT15 no tocados por petición explícita. ModeloSD4original ysupuestosnuméricos noalterados:SL2283/2agentes80,003%;2391/3agentes95,256%;2391/7peak80,019%. Cota6000contactos dela tabla de crecimientoSD4 no se usócomocapacidadinstalada.
+
+**Verificación y sincronización:** trespasadasLuaLaTeX con--no-shell-escape salida0; cuerpo21páginas,7tablas (inventario/capacidadp7,dotaciónp11,NOCp12,experienciap16,rolesp18,IAp21). Todaslas21páginas inspeccionadas; sinOverfull/Floattoolarge/refindefinidas, índicescorrectos, encabezadoslegibles, análisisposterior. Anexos3p yT6 7punchanged;11campos ypendientes humanos intactos. TresMDreconvertidos desde fuentes actuales, tablasuniformes7/1/2 ylinks/figurascomprobados, sin comandosTeXniCaso02. S1-18/fila24 incorporada en trazabilidad preservando nueva numeración1–28delusuario; pendientesconcretos revisiónhumana/firmas. DifffchecksMDyLaTeXconformes.
+
+**Archivos:** externo contenido.tex yPDF/auxiliares/vistas; fuenteSHA31741d4fa65ee275fe8afb5d44e554509217ccac8fe509174590f06aa8c34ec3;PDFSHAdce24e00a540abf383a394e4c0357adc67f591f3d94f35d964364c9047c4abae. MD01_presentacion_empresa/LAFROX-Subdocumento1.md (anexos/T6sin diffs),07_PlanDeTrabajo_EDT_Cronograma_Implantación/LAFROX-Formulario-T-15.md,Revision/trazabilidad_Informe1_Informe2_SD1_LaTeX.md,contexto. NoediciónSD4/SD3/Base/T14; cambiosconcurrentesSD2yotrosregistros intactos. No commit/pushnuevo. Siguiente:revisiónhumana, firmas ypublicaciónsiusuarioordena. No seafirma coherenciaglobalde todosloscapítulos nimétricasmedidas; verificación centradaencapacidad/roles/horariosrelacionados. Memoriaagent-attributed suspendidapor identidadruntimeausente; resumenlocalpersistido.
+
+
+## T-12: RT-05.30 y RT-18.08 alineados con SD13 — 11 de octubre de 2026
+
+Por petición del usuario se aplicaron cuatro cambios al T-12: descripciones de RT-05.30 y RT-18.08 separan el cumplimiento (modelo cinético determinista, SD13 13.3.2) del agregado INN-03 y aclaran recalibración frente a reentrenamiento; referencias cambiadas a «SD13, sección 13.3.2, descripción del modelo cinético», «SD13, sección 13.3.6, indicadores de verificación», «T-19, Ficha 3» y «T-14, cuenta 8.3». Se retiraron las citas a Tabla 13.13 (hoy paquetes EDT de INN-03) y 13.16 (hoy riesgos; indicadores son 13.15). Verificado contra SD13 13.3.2/13.3.6, T-19 Ficha 3, T-14 cuenta 8.3 y SD5 5.1.7/5.1.11/5.2.6. Resumen T-12 ajustado. Pendiente: SD13 no usa la palabra «deriva»; el umbral es la recalibración extraordinaria si I-03B < 80 % en dos cortes seguidos, y la línea base de I-03B es «sin medición». Sin commit. Decisión posterior del usuario: la descripción de RT-18.08 vuelve a su texto original («Modelo cinético determinista de INN-03…»), con las referencias corregidas; el resto del capítulo 18 se mantiene coherente con D-09 (sin IA): RT-18.01–18.07 y 18.09 Cumple, 18.10 No cumple. No se modificaron la D-09, el SD13 ni el T-14; el corte de I-03B sigue sin definir.
+
+## Commit y push de ambas ramas SD1 — 11 de octubre de 2026
+
+Petición explícita «comitea y pushea ambas ramas» cumplida. LaTeX: **145fedec927a09fc649e070e33f5f3c29ce66aa8**, rama LafroX-Subdoc1-LateX, dos archivos (contenido.tex y PDF). Markdown: **05f1d66708cbb1f524e1bbb294eeec2786fcec88**, rama rama-md, tres entregables SD1 más registro de trazabilidad y contexto. Ambos pushes a https://github.com/PatricioH315/LafroX.git con salida0; HEAD y ls-remote coinciden en las dos ramas. Staging MD comprobado sólo cinco archivos autorizados .md; diff-check conforme. No se incluyeron los dos cambios SD2 pendientes ni imágenes de revisión. S1-18 sigue sólo propuesta; revisión humana y firmas siguen pendientes. Este recibo posterior al push permanece local y no requiere otro commit; contenido solicitado ya publicado. Memoria agent-attributed suspendida por identidad runtime ausente.
+
+
 ## S1-10 implementado y tres entregables SD1 alineados — 11 de octubre de 2026
 
 **Autorización:** usuario aprobó rangos ficticios de antigüedad y esquema NOC, pidió ejecución en el mismo LaTeX, revisión exhaustiva y alineación con rama-md. S1-18 sólo propuesta, sin implementarlo. Principal rama-md y externo LafroX-Subdoc1-LateX comprobados. No autoriza nuevo commit/push.
@@ -101,7 +132,43 @@ No se editaron fuentes LaTeX, firma o revisores ni se aplicaron arreglos a losPD
 
 El usuario considera artificial y confusa la respuesta «Documentado; entrega pendiente de comprobar» sobre el T-6. Prefiere respuestas directas que describan la corrección visible, sin cautelas genéricas sobre el envío. Se simplificó S1-01 del registro basado en LaTeX: T-6 incorporado como PDF separado, tres proyectos y once campos, con páginas verificadas 5–8. El PDF de nueve páginas fue compilado en la sesión; no confundir acreditaciones pendientes con ausencia del formulario. Engram no disponible; preferencia registrada aquí.
 
-## Estado vigente — 11 de octubre de 2026: MD del SD2 sincronizado con el LaTeX (0a6f788)
+## Estado vigente — 11 de octubre de 2026: §2.2.4 del SD2 con investigación externa y corte de las 14:00 según B.1
+
+A pedido del usuario (las materias del 16.2 deben apoyarse en investigación, no solo en el caso), se reescribió §2.2.4 en MD y LaTeX: cada materia resume una fuente externa verificada en la web y la contrasta con el caso. Fuentes nuevas en Referencias (APA): GS1 (2016) EANCOM 2002 S4; Scheier (2003) Computerworld; Ministerio de Salud (1996) arts. 71 y 192 (−18 °C, tolerancia breve hasta −12 °C); Jedermann et al. (2014); Chopra y Meindl (2016); Guerreiro et al. (2008); Toth y Vigo (2014); de Koster et al. (2007); Fildes et al. (2022); Rogers y Tibben-Lembke (2001); Boulaksil y Belkora (2017). Se omitieron DOI no verificados (Rogers 2001, Toth y Vigo 2014).
+- Corte de las 14:00: justificado ahora con el perfil del día hábil del caso (sección B.1, p. 38), igual que SD4 (planificación 15:00–18:30, preparación 22:00–06:00, despacho 05:30–07:00). Sin cambios en SD3/SD4.
+- Se quitó el monto «$45.000» del almacén de Empedrado para no arriesgar la regla de precios.
+- Matriz Tabla 2.2 revisada contra Aclaraciones §3 y §5: título con texto, cita previa, fuente, 3 columnas, celdas de una frase, análisis posterior.
+- Compilado: cuerpo 29 páginas, sin errores ni cajas desbordadas; Referencias pp. 27–28; Tabla 2.4 pp. 28–29. Trazabilidad SD2 actualizada (filas 7, 9, 15, 20, 27 y 30).
+- Observación: la referencia previa «GS1 Chile (2020) … (Versión 20.0)» no se pudo verificar; revisar si existe.
+
+Sin commit ni push.
+
+## Estado anterior — 11 de octubre de 2026: S2-11, S2-16, S2-18 y portada del SD2 aplicados
+
+Por petición explícita del usuario («actúa en lo que tengas que actuar», sin pasar a llevar otros subdocumentos) se editaron el MD del SD2 (cuerpo y anexos) y el checkout LaTeX `../LafroX-sd2-latex` (contenido.tex, anexos.tex y los dos .tex raíz). Sólo .md en rama-md.
+- **S2-11 (fila 20):** nueva §2.2.4 «Prácticas de la industria que el caso pide investigar», con las ocho materias del 16.2 que faltaban (EDI, frío, indicadores de servicio, costo de servir/por entrega, VRPTW, picking y ubicación, pronóstico, logística inversa, modelos de atención). Solo datos del caso con página verificada en el PDF original (imagen n = página n−1): secc. 4.1–4.9 pp. 7–9, cap. 1 p. 3, tabla 7.3 p. 12, cap. 8 pp. 13–15, 16.2 pp. 29–30, glosario cap. C pp. 39–40.
+- **S2-16 (fila 25):** Tabla 2.2 convertida en matriz influencia (muy alta/alta/media) × interés (alto/muy alto); «Media-alta» → «Media» en la Tabla 2.2 y en el Anexo 2.3 (3 filas), sin mover actores. SD3-Anexos l. 625 (planificador Alta/Muy alto) sigue coherente.
+- **S2-18 (fila 27):** el SD3 (S-21, RNG-15, D-03) solo remitía al SD2; se agregó en la tensión 1 la justificación del corte de las 14:00 con el ciclo del caso (rutas 15:00–18:30, preparación 22:00–06:00, despacho de madrugada; secc. 4.4 a 4.6, p. 8).
+- **Portada:** clave `caso = {Caso --- Logística}` en los dos .tex raíz del SD2, sin tocar `lafrox.cls`; los demás subdocumentos siguen con «Caso 02».
+- **S2-06:** pospuesto por el usuario.
+- Compilado: cuerpo 28 páginas, anexos 20, sin errores ni cajas desbordadas. Página 12 casi vacía (Tabla 2.1 pasa entera a la 13). Trazabilidad SD2 actualizada con páginas nuevas.
+- **Pendientes fuera del SD2 (no tocados):** RF-10.01 del SD3 sugiere reposición solo con historia de ventas, sin estacionalidad ni promociones, que el SD2 ahora describe como parte del problema; T-14 1.4.1 habla de 17 grupos de interesados frente a 19 actores. Tabla 2.4 de IA: filas 2.2–2.5 anteriores a estos cambios y nivel «Bajo» por revisar.
+
+Sin commit ni push.
+
+## Estado vigente — 11 de octubre de 2026: revisión de pendientes S2-05, S2-06, S2-11, S2-16 y S2-20
+
+- **S2-05 (aprobado):** párrafo de cadena causal al final de §2.2.1, en el MD y en el LaTeX. Recompilado sin errores, desbordes ni avisos (25 páginas); orden de figuras y tablas intacto; paridad MD = LaTeX. Trazabilidad S2-05 → Documentado.
+- **Hallazgos, sin cambios** (por instrucción del usuario):
+  - **S2-20:** los supuestos existen fuera del SD2: SD3 Anexo 3.C, S-18 (interfaces del ERP), S-19 (telemetría) y S-17 a S-44; SD4 Anexo 4-W, SV-01 a SV-07 (volumen, concurrencia y crecimiento). El SD2 no los menciona.
+  - **S2-11:** las materias del 16.2 aparecen como solución en SD3, SD4, SD5 y SD13 (VRP en SD4 4.1, OpenAS2/ASN, regla térmica, olas/FEFO, M8, portal). Pronóstico de demanda prácticamente ausente en toda la propuesta; costo por entrega solo como métrica del SD13.
+  - **S2-06:** hay fuentes externas reales en SD13 (GS1 EPCIS 2.0, Koutsoumanis 2005, Jedermann 2014, Riesenegger 2023) y SD4 (SII Oficio 781), pero sin datos cuantitativos de la industria; el SD2 no las usa.
+- **S2-20 (aplicado a pedido del usuario):** §2.5.2 en MD y LaTeX: párrafo inicial reescrito (S-01 a S-16 y SP-01 a SP-03 en el Anexo 2.2) y párrafo nuevo que remite a S-17 a S-44 del Anexo 3.C del SD3 (S-18 ERP, S-19 telemetría) y a SV-01 a SV-07 del Anexo 4-W del SD4. Recompilado: 25 páginas, sin errores ni cajas desbordadas; §2.5.2 en pp. 22–23. Trazabilidad fila 29 → Documentado. La fila 2.5 de la Tabla 2.4 de IA es anterior al cambio.
+- **S2-16:** se propuso al usuario una matriz influencia × interés en tabla con los 19 actores; pendiente de su aprobación.
+
+Sin commit.
+
+## Estado anterior — 11 de octubre de 2026: MD del SD2 sincronizado con el LaTeX (0a6f788)
 
 Por petición del usuario, se tomó el LaTeX como fuente y se cotejó el MD por bloques (párrafos, ítems, filas de tabla, leyendas y títulos, en orden) en modo estricto y luego por formato (negritas y cursivas). El contenido ya coincidía; se corrigieron en el MD:
 - signo menos en «−22 °C» (anexos);
@@ -808,3 +875,9 @@ El usuario precisó que el Excel de páginas debe contener sólo citas a las Bas
 - Hoja Subdoc/outputs/citas-sd9/LafroX_SD9_citas_paginas_por_completar.xlsx actualizada: 205 registros, 199 referencias con páginas y 6 menciones generales No requiere. Folio impreso y página visor separados. Manifest con hashes de PDF y fuentes Markdown.
 - Se corrigió extracción de cuatro artículos BA en contextos mixtos y se excluyó una falsa referencia BTT de comparación. El estado previo de 317 registros queda reemplazado.
 - Paginación todavía NO aplicada a Markdown/LaTeX/PDF. No se modificaron los cambios ajenos de SD13.
+
+## Cotejo PDF de citas, folios y CMMI SD1 — 11 de octubre de 2026
+
+Usuario pidió revisar muy bien los tres ajustes usando PDF originales, sugiriendo otras ramas/SD4. Localizados BA77p/BTT51p/Caso41p en FEP; originales escaneados sin texto, OCR Windows fuera de rama-md para localizar y verificación visual de páginas pertinentes. Folio impreso=visor−1 en páginas consultadas. Matriz completa en Revision/cotejo_citas_Bases_folios_CMMI_SD1.md con hashes, ubicaciones fuente y páginas impresas/visor. BA Art16p11,17p12,19p14,34p22,39p25,72p38,76p39,78.2p40,T6p56. BTT RT02.02p6,11.20p24,15.2/15.09p28,19.2pp33–34,19.02/03p33,21.02p35,23.01–10p39; disponibilidad6.1p14 y7.2pp17–18. Caso2.2–4pp4–5,10p19,14.2p25,21.06p27.
+
+Hallazgos nuevos: cita del99,95% enTabla1.5 atribuye incorrectamente aCaso cap10; fuente BTT6.1/7.2. Controlcambios cita19.02 pero corresponde19.03+BA72; dividir citas facultades/control. FoliosT6 pp4–6 confirmadosgiradosizquierda; causa landscape+fancyhdrvertical, proponer ajuste localT6no clasecompartida. FuenteCMMIprimaria2020 distingueSCAMPIV1.3bA yV2Benchmark; propuestaDevelopmentV2Nivel3Benchmark, noactualizarversión automáticamente ni autenticar58190. RenovaciónBenchmarkyreferenciacorrecta; documentaciónmétodonopruebaacreditaciónLafroX. Revisiónonly:noeditentregables/fuentes/PDF,nocommitpush; registrosMDactualizados. Memoriaagentesuspendidaruntimeausente. Siguiente:aplicarsiusuariopidecorregir,sinfirmas/revisionesinventadas.

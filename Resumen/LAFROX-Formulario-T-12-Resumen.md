@@ -26,7 +26,7 @@ La columna «Cumple» expresa cobertura documental, no pruebas ya ejecutadas. La
 
 **RF-03.11 cumple** al conservar en cada pedido el precio acordado al tomarlo, sin que lo altere un cambio posterior de la lista de precios. **RF-03.12 cumple**: una diferencia entre el importe calculado por el ERP y el precio del pedido deja la línea bloqueada para facturar y genera una incidencia a Comercial, que la corrige antes de facturar sin modificar lo acordado. Las descripciones de la Parte A reproducen las de los Anexos 3.A y 3.B del SD3.
 
-**RT-05.10 cumple parcialmente**: cubre la retención que fija el Caso 02, pero falta el catálogo de datos con linaje automatizado exigido como deseable por las Bases Transversales. **RT-05.24 no cumple** por falta del portal de desarrolladores. **RT-05.30 cumple** mediante el modelo cinético determinista de INN-03; el bloque RT-26 remite a SD13/T-19 para innovaciones.
+**RT-05.10 cumple parcialmente**: cubre la retención que fija el Caso 02, pero falta el catálogo de datos con linaje automatizado exigido como deseable por las Bases Transversales. **RT-05.24 no cumple** por falta del portal de desarrolladores. **RT-05.30 cumple** mediante el modelo cinético determinista documentado en SD13 13.3.2; INN-03 aporta su incorporación al proceso, sin atribuir novedad al modelo; el bloque RT-26 remite a SD13/T-19 para innovaciones.
 
 Los códigos RF-14.01–05-BTT evitan confundir seguridad de Bases con telemetría del caso. Para seguir paquetes y pruebas hay que consultar las secciones citadas y T-14/T-15, no buscar columnas que la matriz vigente no contiene.
 
