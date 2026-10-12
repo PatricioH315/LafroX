@@ -14,7 +14,7 @@ Estos anexos detallan lo que el Capítulo 13 resume. El Anexo 13.A define los co
 
 ## Anexo 13.A — Contratos de datos de las innovaciones
 
-El RT-26.01 pide declarar qué interfaces consume o expone cada innovación (Distribuidora Puelche S.A., 2026b, RT-26.01, cap. 26, p. 44). Ninguna innovación abre una interfaz externa nueva: todas viajan por las interfaces del Capítulo 4, sección 4.1.6, y por la cola de sincronización de los terminales. Lo que cada una agrega es un contrato de datos versionado, que se presenta en la Tabla 13.A.1. Cada contrato se identifica con la innovación que lo origina, el objeto que transporta y su versión mayor; por ejemplo, `inn03.historia-termica-lote.v1` es la versión 1 del contrato de historia térmica del lote de la innovación 3. El cuerpo del capítulo y el Formulario T-19 nombran cada contrato por su objeto.
+El RT-26.01 pide declarar qué interfaces consume o expone cada innovación (Distribuidora Puelche S.A., 2026b, RT-26.01, cap. 26, p. 44). Ninguna innovación abre una interfaz externa nueva: todas viajan por las interfaces del Capítulo 4, sección 4.1.6, y por la cola de sincronización de los terminales. Lo que cada una agrega es un contrato de datos versionado, que se presenta en la Tabla 13.A.1. Cada contrato se identifica con la innovación que lo origina, el objeto que transporta y su versión mayor; por ejemplo, `inn03.historia-termica-lote.v1` es la versión 1 del contrato de historia térmica del lote de la innovación 3.
 
 **Tabla 13.A.1. Contratos de datos de las innovaciones. Fuente: elaboración propia a partir del Capítulo 4, secciones 4.1 y 4.2, y del Capítulo 5.**
 
@@ -75,6 +75,7 @@ La Tabla 13.C.1 reúne los indicadores de las cinco innovaciones, ordenados por 
 
 | Id | Línea base | Meta | Primera medición | Antes del mes 16 |
 | --- | --- | --- | --- | --- |
+| I-05B | Sin medición (la hoja no existe) | ≥ 80 %: al menos 20 de 24 participantes | Mes 14 | Sí |
 | I-01A | Sin medición | ≥ 70 % con ≥ 100 avisos | Mes 15 | Sí |
 | I-02A | Incidentes de prueba en QA, meses 5 a 10, sin paquete | −30 % con ≥ 20 pares | Mes 15 | Sí |
 | I-02B | Sin medición | ≥ 80 % | Mes 15 | Sí |
@@ -82,16 +83,15 @@ La Tabla 13.C.1 reúne los indicadores de las cinco innovaciones, ordenados por 
 | I-03A | 0 | ≥ 95 % | Mes 15 | Sí |
 | I-03B | Sin medición histórica; referencia inicial por familia en meses 11 a 15 | ≥ 80 % con ≥ 60 lotes por familia | Mes 15; después, cortes trimestrales | Sí |
 | I-03C | 0 | 100 % | Mes 16 | No |
-| I-05B | Sin medición (la hoja no existe) | ≥ 80 %: al menos 20 de 24 participantes | Mes 14 | Sí |
 | I-02C | Sin medición | 0 | Mes 21 | No |
 | I-04B | Sin modelo | 3 de 3 | Meses 21 a 23 | No |
 | I-04C | Sin registro | 100 % | Mes 21 | No |
+| I-05C | Período previo por ruta | Estimar el efecto | Meses 22 a 26 y mes 33 | No |
 | I-05A | 0 | ≥ 90 % y ≥ 85 % | Mes 27 | No |
 | I-05D | No aplica antes de activar | 100 % | Cada emisión | No |
-| I-01B | Meses 13 a 15 | −25 % relativo | Mes 28 | No |
-| I-01C | Meses 13 a 15 | −20 % relativo | Mes 28 | No |
+| I-01B | Rutas de control sin avisos, meses 13 a 15 | −25 % relativo | Mes 28 | No |
+| I-01C | Rutas de control sin avisos, meses 13 a 15 | −20 % relativo | Mes 28 | No |
 | I-03D | Meses 13 a 15 | −20 % relativo | Mes 28 | No |
-| I-05C | Período previo por ruta | Estimar el efecto | Mes 33 | No |
 | I-04A | Canasta de los meses 21 a 23 | ≥ 5 % con OTIF ≥ 95 % | Mensual desde el mes 24; evaluación de la meta en el mes 36 | No |
 
 La validación inicial de los meses 11 a 15 documentará el valor observado de I-03B por familia, con al menos 60 lotes evaluados, el período de evaluación y la versión de parámetros utilizada. Ese resultado constituirá la referencia inicial para el seguimiento posterior; el 80 % es el umbral de aceptación, no la línea base.
