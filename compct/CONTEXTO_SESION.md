@@ -1,5 +1,11 @@
 # CONTEXTO DE SESIÓN
 
+## Actualización Markdown del Subdocumento 7 en `rama-md` — 12 de octubre de 2026
+
+**Autorización y alcance:** el usuario pidió actualizar en GitHub la carpeta `07_PlanDeTrabajo_EDT_Cronograma_Implantación` con los cinco documentos Markdown recién generados: Subdocumento 7, Anexos, T-14, T-15 y T-18. Se verificó el estado remoto y se adelantó `rama-md` por fast-forward hasta `269a70c`. Se leyeron los PDF finales desde la rama LaTeX sin escribir archivos PDF ni fuentes no Markdown en esta rama.
+
+**Conversión:** los cinco PDF finales (59, 24, 104, 86 y 23 páginas, respectivamente) se convirtieron a texto Markdown con jerarquía de encabezados. Las figuras incrustadas y su firma gráfica no se reproducen en estos Markdown; no se agregaron activos binarios. Sólo se modifican los cinco `.md` solicitados y este registro operativo. Verificación de UTF-8 y `git diff --check` sin problemas. Publicación pendiente.
+
 ## Portadas SD1–SD3: retirada la etiqueta «Versión final para entrega» — 12 de octubre de 2026
 
 **Petición/autorización:** el usuario pidió quitar de la portada, arriba, la leyenda «Versión final para entrega» en los Subdocumentos 1, 2 y 3, y validar el resultado. Edición y compilación autorizadas sólo en los checkouts LaTeX `../LafroX-sd1-latex`, `../LafroX-sd2-latex` y `../LafroX-sd3-latex` (ramas `LafroX-Subdoc1-LateX`, `LafroX-Subdoc2-LateX`, `LafroX-Subdoc3-LateX`). `rama-md` confirmada; ningún Markdown contiene la leyenda, así que no hubo cambios Markdown. Sin commit ni push.
