@@ -1,4 +1,5 @@
 \subsection{Primer cuello de botella bajo la carga de septiembre}
+\phantomsection\label{fuente-20-primer-cuello-de-botella-bajo-la-carga-de-septiembre}
 \label{sec:cuello-botella-septiembre}
 
 Septiembre eleva las entregas diarias de aproximadamente 1.400 a 2.600 durante tres semanas. Las 2.600 entregas ocurren a lo largo de la jornada. La ventana 05:30--07:00 concentra la salida de 96 camiones, no todas las firmas de entrega. En esa ventana, el primer cuello de botella probable es la confirmación de guías del ERP mediante la ACL: es una dependencia singular y aumentar réplicas Laravel no acelera al emisor legado. La base transaccional de Talca, la WAN al reconectar y la transferencia de evidencias son candidatos adicionales, no recursos cuya saturación ya se haya medido. La Tabla~\ref{tab:cuello-botella} muestra cómo contrastar la hipótesis. RT-09.05 exige sustentar el primer límite con una prueba reproducible.
@@ -11,7 +12,7 @@ Cola de integración & Crecen edad del mensaje y DLQ. & Priorizar guías, diferi
 M2 en bodega & Crecen espera de reserva y bloqueos de stock. & Serializar por SKU y aislar consultas. & Doble compromiso en peak. \\
 \end{tablalafrox}
 
-{\footnotesize Fuente: elaboración propia a partir de las Bases Técnicas del caso (cap.~14, p.~24, y anexo B, p.~38).\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de las Bases Técnicas del caso de Pontificia Universidad Católica de Valparaíso (2026b) (cap.~14, p.~24, y anexo B, p.~38). Diseño propuesto: LafroX (2026d, diseño de este apartado, pp.~\pageref*{fuente-20-primer-cuello-de-botella-bajo-la-carga-de-septiembre}--\pageref*{fuente-20-primer-cuello-de-botella-bajo-la-carga-de-septiembre-fin}).\par}
 
 La emisión de guías debe medirse antes de atribuir el límite al cómputo escalable.
 
@@ -20,3 +21,5 @@ Al cerrar la carga nocturna, el servicio de integración con el ERP en VM-04 sol
 El Anexo 4-T especifica percentiles, ventanas de ensayo, carga de 1,5 veces el peak y escenario de crecimiento de tres veces, con colas y procesos aislados. Los resultados se deben medir. Los cálculos de escenario no son evidencia de capacidad ejecutada.
 
 
+
+\label{fuente-20-primer-cuello-de-botella-bajo-la-carga-de-septiembre-fin}

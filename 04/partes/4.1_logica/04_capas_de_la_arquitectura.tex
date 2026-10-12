@@ -1,4 +1,5 @@
 \subsection{Capas de la arquitectura}
+\phantomsection\label{fuente-04-capas-de-la-arquitectura}
 
 Las ocho capas separan la interacción con las personas, las reglas de negocio y la persistencia. Seguridad y observabilidad atraviesan el conjunto. La vista general permite ubicar cada responsabilidad antes de revisar sus componentes. El inventario trazable se reúne en el Anexo 4-N.
 
@@ -16,7 +17,7 @@ La arquitectura se presenta primero mediante su vista general completa (Figura~\
   \captionof{figure}{Vista general completa de la arquitectura lógica}
   \label{fig:arql-general-completa}
 \end{center}
-{\footnotesize Fuente: elaboración propia.\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de PUCV (2026a, sección~2.1, pp.~6--7), para los requisitos de capas, y LafroX (2026d, diseño de este apartado, pp.~\pageref*{fuente-04-capas-de-la-arquitectura}--\pageref*{fuente-04-capas-de-la-arquitectura-fin}).\par}
 \end{landscape}
 
 La vista general muestra cómo cada actor accede a la solución desde su aplicación, portal o consola y se relaciona con los módulos M1--M12. Se lee desde las personas hacia las reglas de negocio, las integraciones y los datos, distinguiendo los componentes de nube y los del sitio. Las conexiones representan intercambios sujetos a autorización, no acceso directo a las bases de datos. Seguridad y observabilidad acompañan todo el recorrido. Sus controles y las condiciones de operación sin conexión se desarrollan en los apartados siguientes.
@@ -35,7 +36,7 @@ La Figura~\ref{fig:arql-capa-1} presenta las responsabilidades de esta capa.
   \captionof{figure}{Presentación: aplicaciones y superficies de trabajo}
   \label{fig:arql-capa-1}
   \par\smallskip
-  {\raggedright\footnotesize Fuente: elaboración propia.\par}
+  {\raggedright\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de PUCV (2026a, sección~2.1, pp.~6--7), para los requisitos de capas, y LafroX (2026d, diseño de este apartado, pp.~\pageref*{fuente-04-capas-de-la-arquitectura}--\pageref*{fuente-04-capas-de-la-arquitectura-fin}).\par}
   \end{minipage}
 \end{center}
 
@@ -122,21 +123,25 @@ El servicio verifica acción, recurso, empresa, sitio, ruta y turno antes de cad
   \item Altas, cambios y bajas conservan el historial de permisos y la autoría de cada decisión.
 \end{itemize}
 
-\begin{landscape}
+
 \subsubsection{Capa de borde y exposición (Capa 2)}
 
 La Figura~\ref{fig:arql-capa-2} presenta las responsabilidades de esta capa.
 
+
+\newgeometry{top=1.2cm,bottom=1.2cm,left=1cm,right=1cm}
+\begin{landscape}
 \begin{center}
   \begin{minipage}{\linewidth}\centering
-  \includegraphics[width=\linewidth,height=0.78\textheight,keepaspectratio]{figuras/logica/capas/ARQL-22_Borde.pdf}
+  \includegraphics[width=\linewidth,height=0.85\textheight,keepaspectratio]{figuras/logica/capas/ARQL-22_Borde.pdf}
   \captionof{figure}{Borde: entradas públicas, privadas y locales}
   \label{fig:arql-capa-2}
   \par\smallskip
-  {\raggedright\footnotesize Fuente: elaboración propia.\par}
+  {\raggedright\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de PUCV (2026a, sección~2.1, pp.~6--7), para los requisitos de capas, y LafroX (2026d, diseño de este apartado, pp.~\pageref*{fuente-04-capas-de-la-arquitectura}--\pageref*{fuente-04-capas-de-la-arquitectura-fin}).\par}
   \end{minipage}
 \end{center}
 \end{landscape}
+\restoregeometry
 
 La entrada pública protege las APIs y rechaza el acceso directo a su origen. El acceso local sostiene la bodega sin WAN. Greengrass procesa los sensores de cámara, mientras AS2 conserva una superficie B2B distinta.
 
@@ -153,6 +158,7 @@ La capa de borde delimita la entrada pública y la entrada de dispositivos de te
 
 En los CD, Starlink permanece encendido con el túnel IPsec establecido y BGP de menor preferencia, por lo que toma tráfico solo cuando fallan fibra y LTE. En esa condición, la calidad de servicio prioriza DMS/WAL de Talca, la salida del broker y bandeja transaccional de salida, las guías hacia el ERP y el SII, la identidad y la telemetría crítica. Mantener el terminal encendido evita esperar la adquisición de satélites y la negociación del túnel durante la falla. La tarifa plana no añade costo por esa permanencia.
 
+\enlargethispage{2\baselineskip}
 Greengrass agrupa las lecturas en lotes y las transmite con compresión sin pérdida, lo que reduce el volumen transferido. Las alertas críticas se envían de inmediato, y la serie original se conserva completa, incluidas las lecturas inválidas y los intervalos sin dato (RT-03.19, Bases Técnicas Transversales, cap. 3, p. 10).
 
 \begin{landscape}
@@ -166,7 +172,7 @@ La Figura~\ref{fig:arql-capa-3} presenta las responsabilidades de esta capa.
   \captionof{figure}{Puertas de servicio: recorrido central y local}
   \label{fig:arql-capa-3}
   \par\smallskip
-  {\raggedright\footnotesize Fuente: elaboración propia.\par}
+  {\raggedright\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de PUCV (2026a, sección~2.1, pp.~6--7), para los requisitos de capas, y LafroX (2026d, diseño de este apartado, pp.~\pageref*{fuente-04-capas-de-la-arquitectura}--\pageref*{fuente-04-capas-de-la-arquitectura-fin}).\par}
   \end{minipage}
 \end{center}
 \end{landscape}
@@ -196,7 +202,7 @@ La bodega dispone además de una puerta de API \emph{local} como función del mo
   \label{fig:arql-17}
 \end{center}
 
-{\footnotesize Fuente: elaboración propia.\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de PUCV (2026a, sección~2.1, pp.~6--7), para los requisitos de capas, y LafroX (2026d, diseño de este apartado, pp.~\pageref*{fuente-04-capas-de-la-arquitectura}--\pageref*{fuente-04-capas-de-la-arquitectura-fin}).\par}
 \end{landscape}
 
 El manifiesto de turno firmado por Keycloak llega antes del corte. En cada relevo el verificador local, alojado junto a la caché, valida el manifiesto y un segundo factor local: el PIN personal sobre el terminal enrolado por MDM. El manifiesto cubre una ventana de 26 horas y se renueva al menos cada hora mientras hay enlace. Esa vigencia no se confunde con el TTL de 24 horas de la caché ni con la duración de la credencial personal. Si la firma, el turno o los permisos no son válidos, el acceso se deniega y se audita. El permiso queda limitado a funciones de bodega, incluida la recepción física de retornos de M8 y las acciones autorizadas de M9, mientras los eventos y la bitácora se envían después con su identificador original. La prueba debe iniciar el corte antes de dos relevos sucesivos y medir vencimiento, denegación, reintentos y recuperación. La caché de identidad de 24 horas no emite sesiones y el relevo lo habilita el verificador local.
@@ -212,7 +218,7 @@ La Figura~\ref{fig:arql-capa-4} presenta las responsabilidades de esta capa.
   \captionof{figure}{Negocio: monolito modular Laravel y sus doce módulos}
   \label{fig:arql-capa-4}
   \par\smallskip
-  {\raggedright\footnotesize Fuente: elaboración propia.\par}
+  {\raggedright\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de PUCV (2026a, sección~2.1, pp.~6--7), para los requisitos de capas, y LafroX (2026d, diseño de este apartado, pp.~\pageref*{fuente-04-capas-de-la-arquitectura}--\pageref*{fuente-04-capas-de-la-arquitectura-fin}).\par}
   \end{minipage}
 \end{center}
 \end{landscape}
@@ -262,7 +268,7 @@ La Figura~\ref{fig:arql-capa-5} presenta las responsabilidades de esta capa.
   \captionof{figure}{Integración: continuidad local y contratos con terceros}
   \label{fig:arql-capa-5}
   \par\smallskip
-  {\raggedright\footnotesize Fuente: elaboración propia.\par}
+  {\raggedright\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de PUCV (2026a, sección~2.1, pp.~6--7), para los requisitos de capas, y LafroX (2026d, diseño de este apartado, pp.~\pageref*{fuente-04-capas-de-la-arquitectura}--\pageref*{fuente-04-capas-de-la-arquitectura-fin}).\par}
   \end{minipage}
 \end{center}
 \end{landscape}
@@ -322,7 +328,7 @@ La disposición sanitaria local usa el perfil de Calidad de la aplicación Kotli
   \label{fig:arql-15}
 \end{center}
 
-{\footnotesize Fuente: elaboración propia.\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de PUCV (2026a, sección~2.1, pp.~6--7), para los requisitos de capas, y LafroX (2026d, diseño de este apartado, pp.~\pageref*{fuente-04-capas-de-la-arquitectura}--\pageref*{fuente-04-capas-de-la-arquitectura-fin}).\par}
 \end{landscape}
 
 Con conexión, la aplicación envía el pedido por la entrada pública autorizada y M3 valida sus reglas de precio y crédito antes de solicitar la reserva a M2 central. El agente de transferencia del sitio recoge la solicitud mediante conexión saliente. M2 local valida existencia y Calidad y persiste retención, auditoría y bandeja transaccional de salida. Solo después del acuse durable M2 central confirma la reserva y M3 confirma el pedido. La publicación de \texttt{PedidoConfirmado} habilita a M5. M4 y M10 también consumen ese evento conforme a sus contratos. La línea del sitio agrupa M2, su agente de transferencia y el broker local para explicar el protocolo. Las flechas representan mensajes lógicos y no una conexión entrante de la nube al sitio. La secuencia se limita a la confirmación y habilitación de la preparación: la carga preparada sigue retenida si M9 informa un bloqueo o si el ERP no devuelve una guía válida para esa carga, según el apartado de POD, DTE y acuse. Un pedido confirmado no autoriza por sí mismo la salida física.
@@ -334,7 +340,7 @@ Con conexión, la aplicación envía el pedido por la entrada pública autorizad
   \label{fig:arql-16}
 \end{center}
 
-{\footnotesize Fuente: elaboración propia.\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de PUCV (2026a, sección~2.1, pp.~6--7), para los requisitos de capas, y LafroX (2026d, diseño de este apartado, pp.~\pageref*{fuente-04-capas-de-la-arquitectura}--\pageref*{fuente-04-capas-de-la-arquitectura-fin}).\par}
 \end{landscape}
 
 Sin conexión, la aplicación conserva la intención de compra, no una reserva firme. Al recuperar cobertura envía el mismo UUID por el servicio de sincronización. M3 deduplica y solicita la reserva mediante el mismo protocolo de retención local y acuse durable mostrado en la secuencia conectada. M3 y M2 producen un resultado durable con la regla y la causal de excepción. Si se pierde el acuse de respuesta, el dispositivo conserva el evento y pregunta por ese UUID antes de eliminarlo. Sin acuse local durable, el pedido permanece pendiente. Solo un pedido confirmado alimenta M5, lo que permite explicar al cliente un faltante sin duplicar la venta.
@@ -369,7 +375,7 @@ Conteo cíclico & M2 & 2--3 \\
 
 \textbf{Estrategia y reversión comunes:} Azul-verde por sitio. Reversión a la entrega previa.
 
-{\footnotesize Fuente: Anexo 4-O, ADR-08, y las Bases Técnicas del caso (cap.~16, p.~29), decisión 14.\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de Anexo 4-O, ADR-08, y las Bases Técnicas del caso (cap.~16, p.~29), decisión 14. Diseño propuesto: LafroX (2026d, diseño de este apartado, pp.~\pageref*{fuente-04-capas-de-la-arquitectura}--\pageref*{fuente-04-capas-de-la-arquitectura-fin}).\par}
 
 La sustitución por olas permite comprobar cada capacidad antes de retirar la precedente.
 
@@ -403,21 +409,25 @@ El procesamiento por lotes conserva totales y rechazos sin bloquear la operació
 
 \textbf{Regla transversal:} ninguna carga masiva se ejecuta dentro de la ventana crítica 05:30--07:00, y toda carga queda registrada y es auditable.
 
-\begin{landscape}
+
 \subsubsection{Capa de acceso a datos (Capa 6)}
 
 La Figura~\ref{fig:arql-capa-6} presenta las responsabilidades de esta capa.
 
+
+\newgeometry{top=1.2cm,bottom=1.2cm,left=1cm,right=1cm}
+\begin{landscape}
 \begin{center}
   \begin{minipage}{\linewidth}\centering
-  \includegraphics[width=\linewidth,height=0.78\textheight,keepaspectratio]{figuras/logica/capas/ARQL-26_Datos.pdf}
+  \includegraphics[width=\linewidth,height=0.85\textheight,keepaspectratio]{figuras/logica/capas/ARQL-26_Datos.pdf}
   \captionof{figure}{Datos: propiedad y persistencia híbrida}
   \label{fig:arql-capa-6}
   \par\smallskip
-  {\raggedright\footnotesize Fuente: elaboración propia.\par}
+  {\raggedright\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de PUCV (2026a, sección~2.1, pp.~6--7), para los requisitos de capas, y LafroX (2026d, diseño de este apartado, pp.~\pageref*{fuente-04-capas-de-la-arquitectura}--\pageref*{fuente-04-capas-de-la-arquitectura-fin}).\par}
   \end{minipage}
 \end{center}
 \end{landscape}
+\restoregeometry
 
 El sitio conserva la autoridad de bodega y el dispositivo mantiene sus capturas hasta recibir confirmación durable. Los servicios centrales separan transacciones, caché, documentos y analítica. Ninguna consulta de BI debe competir con el despacho.
 
@@ -455,21 +465,25 @@ La separación transaccional/analítica es estricta: la analítica no lee del tr
 
 Cada evento conserva identidad, estado y resultado hasta recibir confirmación durable. DMS replica el WMS de Talca hacia un esquema de lectura. No escribe en las tablas de negocio centrales. Los consumidores de eventos actualizan estas últimas con deduplicación transaccional por sitio y UUID. Concepción y los cross-docking sincronizan sus eventos sin presumir un flujo DMS propio. Durante un corte cada sitio retiene sus cambios dentro de una capacidad comprobada para 24 horas. La extracción continua de DMS/WAL de Talca y de la bandeja transaccional de salida por fibra, LTE y satélite sostiene RPO $\leq$ 15 minutos. AL-DR-01 del Anexo 4-M verifica la protección externa y 4.3.2 justifica el límite residual. El esquema 3-2-1-1-0, los medios de respaldo y la restauración se desarrollan en 4.2.
 
-\begin{landscape}
+
 \subsubsection{Capa de seguridad transversal (Capa 7)}
 
 La Figura~\ref{fig:arql-capa-7} presenta las responsabilidades de esta capa.
 
+
+\newgeometry{top=1.2cm,bottom=1.2cm,left=1cm,right=1cm}
+\begin{landscape}
 \begin{center}
   \begin{minipage}{\linewidth}\centering
-  \includegraphics[width=\linewidth,height=0.78\textheight,keepaspectratio]{figuras/logica/capas/ARQL-27_Seguridad.pdf}
+  \includegraphics[width=\linewidth,height=0.85\textheight,keepaspectratio]{figuras/logica/capas/ARQL-27_Seguridad.pdf}
   \captionof{figure}{Seguridad: identidad y autorización transversal}
   \label{fig:arql-capa-7}
   \par\smallskip
-  {\raggedright\footnotesize Fuente: elaboración propia.\par}
+  {\raggedright\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de PUCV (2026a, sección~2.1, pp.~6--7), para los requisitos de capas, y LafroX (2026d, diseño de este apartado, pp.~\pageref*{fuente-04-capas-de-la-arquitectura}--\pageref*{fuente-04-capas-de-la-arquitectura-fin}).\par}
   \end{minipage}
 \end{center}
 \end{landscape}
+\restoregeometry
 
 Keycloak emite la identidad y cada módulo decide la autorización sobre su recurso. Sin enlace, el verificador usa permisos de turno previamente firmados. El cifrado y la auditoría protegen los datos y decisiones a lo largo de todas las capas.
 
@@ -546,7 +560,7 @@ Interno & Pedidos, movimientos y telemetría operativa. & Módulo dueño y perfi
 Público & Catálogo sin precios. & Lectura anónima controlada. & Integridad y protección antiabuso. \\
 \end{tablalafrox}
 
-{\footnotesize Fuente: elaboración propia a partir de RT-11.03, RT-11.09 y RT-11.10 (Bases Técnicas Transversales, cap.~11, p.~23; Bases Técnicas del caso, cap.~15, p.~27).\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de RT-11.03, RT-11.09 y RT-11.10 (Bases Técnicas Transversales, cap.~11, p.~23; Bases Técnicas del caso, cap.~15, p.~27). Diseño propuesto: LafroX (2026d, diseño de este apartado, pp.~\pageref*{fuente-04-capas-de-la-arquitectura}--\pageref*{fuente-04-capas-de-la-arquitectura-fin}).\par}
 
 La categoría confidencial exige separar quién puede usar el dato de quién administra su almacenamiento: el acceso a la base no revela por sí solo comportamiento de pago ni geolocalización. Todo dato en reposo se cifra. Los campos sensibles del caso reciben además cifrado por campo con AES-256 y claves de AWS KMS. En tránsito se exige TLS 1.3 en las entradas externas y entre los componentes de la solución, se prohíben TLS 1.0 y 1.1, se automatiza la gestión de certificados con alerta previa a su vencimiento y se emplea mTLS entre servicios. La configuración y sus excepciones documentadas se detallan en el Anexo 4-R. La custodia y rotación de claves mantienen separación de funciones. El PAN de tarjetas no se almacena. Se usa la tokenización de la pasarela. El RUT requiere una técnica de seudonimización con acceso a la clave separado y una finalidad documentada, sin confundir cifrado reversible con anonimización. La geolocalización de personas conserva la retención de 12 meses del caso y un registro de consultas. La región primaria sa-east-1 y la secundaria us-east-1 implican transferencias internacionales sujetas a aprobación del CLIENTE. AWS actúa como encargado bajo contrato con cláusulas tipo. El CLIENTE administra KMS y la geolocalización de personas se excluye de la réplica secundaria, conforme se desarrolla en 4.3.2 (Bases Técnicas del caso, cap. 15, pp. 26–30; Bases Técnicas Transversales, cap. 11, pp. 23–24; RT-11.08–11.10 y RT-16.09).
 
@@ -575,21 +589,25 @@ La aceptación de esta vista requiere
 
 Se distinguen dos objetivos de disponibilidad: 99,95 \% mensual para la infraestructura del recinto y al menos 99,9 \% mensual para el servicio de negocio de extremo a extremo. Ninguno elimina la exigencia de continuidad durante el despacho de 05:30 a 07:00.
 
-\begin{landscape}
+
 \subsubsection{Capa de observabilidad transversal (Capa 8)}
 
 La Figura~\ref{fig:arql-capa-8} presenta las responsabilidades de esta capa.
 
+
+\newgeometry{top=1.2cm,bottom=1.2cm,left=1cm,right=1cm}
+\begin{landscape}
 \begin{center}
   \begin{minipage}{\linewidth}\centering
-  \includegraphics[width=\linewidth,height=0.78\textheight,keepaspectratio]{figuras/logica/capas/ARQL-28_Observabilidad.pdf}
+  \includegraphics[width=\linewidth,height=0.85\textheight,keepaspectratio]{figuras/logica/capas/ARQL-28_Observabilidad.pdf}
   \captionof{figure}{Observabilidad: correlación de nube y sitios}
   \label{fig:arql-capa-8}
   \par\smallskip
-  {\raggedright\footnotesize Fuente: elaboración propia.\par}
+  {\raggedright\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de PUCV (2026a, sección~2.1, pp.~6--7), para los requisitos de capas, y LafroX (2026d, diseño de este apartado, pp.~\pageref*{fuente-04-capas-de-la-arquitectura}--\pageref*{fuente-04-capas-de-la-arquitectura-fin}).\par}
   \end{minipage}
 \end{center}
 \end{landscape}
+\restoregeometry
 
 La correlación permite seguir una operación entre APIs, módulos y consumidores. Durante el corte, el sitio conserva telemetría y mantiene sus alarmas. CloudWatch reúne registros, métricas y trazas para los tableros y la atención de incidentes.
 
@@ -619,3 +637,5 @@ Durante un corte de enlace, el sitio no depende de los tableros centralizados pa
 Las alertas se agrupan por síntoma, recurso y correlación, y se suprimen los duplicados y los avisos que dependen de una causa principal todavía activa. Las reglas de CloudWatch y los trabajos programados escalan automáticamente al NOC/SRE según la criticidad y el tiempo sin atención. El NOC y el SOC operan 24×7 y los incidentes críticos y altos se atienden 24×7×365. La mesa de ayuda mantiene las franjas de 4-W.7 (RT-14.04, Bases Técnicas Transversales, cap. 14, p. 27).
 
 Las aplicaciones y los colectores eliminan las credenciales y los datos personales sensibles antes de escribir o enviar registros técnicos, de seguridad o de negocio. Los registros conservan los identificadores de correlación y la evidencia mínima necesaria. Solo los perfiles autorizados acceden a ellos, y cada consulta o exportación queda auditada. Esta regla no cambia la custodia de los documentos probatorios (RT-14.07, Bases Técnicas Transversales, cap. 14, p. 27).
+
+\label{fuente-04-capas-de-la-arquitectura-fin}

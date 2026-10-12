@@ -1,4 +1,5 @@
 \section*{Anexo 4-N --- Correspondencia de componentes lógicos}
+\phantomsection\label{fuente-15-anexo-4-1-n-correspondencia-de-componentes-logicos}
 \phantomsection
 \label{anx:N}
 \addcontentsline{toc}{section}{Anexo 4-N --- Correspondencia de componentes lógicos}
@@ -33,7 +34,7 @@ La matriz completa vincula cada capacidad de 3.3–3.4 con su módulo o capa de 
  3.4.6, participación y adopción por perfil & Capa 1, matriz de actores y permisos, olas de 4.1.8 & C-01/C-02/C-03, portales y consolas, QA de práctica & Terreno, sitios y nube, participación no implica permiso de acceso \\
 \end{tablalafrox}
 
-{\footnotesize Fuente: elaboración propia.\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de PUCV (2026b, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y LafroX (2026e, diseño de este apartado, pp.~\pageref*{fuente-15-anexo-4-1-n-correspondencia-de-componentes-logicos}--\pageref*{fuente-15-anexo-4-1-n-correspondencia-de-componentes-logicos-fin}).\par}
 
 \begin{tablalafrox}{Correspondencia de módulos y realización física}{tab:correspondencia-modulos}{F{0.10} F{0.27} F{0.19} Y}{\cab{Módulo} & \cab{Capacidad en 3.3/3.4} & \cab{Contrato} & \cab{Realización en 4.2.2}}
 M1 & Recepción & INT-03/06 & Perfil WMS local, base por sitio y ACL ERP. \\
@@ -49,7 +50,7 @@ M10 & BI Gerencia & Eventos canónicos & Ingesta a lago y servicios de consulta 
 M11 & EDI Canal Moderno & INT-08 & Reglas Laravel, OpenAS2 y conector por cadena. \\
 M12 & Telemetría & INT-15 & Adaptador de solo lectura y consulta de ruta real. \\
 \end{tablalafrox}
-{\footnotesize Fuente: elaboración propia.\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de PUCV (2026b, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y LafroX (2026e, diseño de este apartado, pp.~\pageref*{fuente-15-anexo-4-1-n-correspondencia-de-componentes-logicos}--\pageref*{fuente-15-anexo-4-1-n-correspondencia-de-componentes-logicos-fin}).\par}
 
 La tabla verifica la correspondencia de los doce módulos con sus capacidades, contratos y realizaciones. La Tabla~\ref{tab:mapeo-logica} citada en 4.2.2 completa el enlace físico. Las capacidades transversales también se corresponden: presentación y borde con aplicaciones, CloudFront y acceso privado. Puerta de enlace con API central y puerta local, eventos con RabbitMQ, shipper y SQS. Datos con bases, réplica de lectura y objetos, identidad con Keycloak y verificador local, secretos y auditoría con sus servicios de custodia. Observabilidad con OpenTelemetry/ADOT, alarma local y CloudWatch. Notificaciones se traza a INT-11. El motor de optimización de M4 se integra mediante un contrato separado y se ejecuta en su propio contenedor.
 
@@ -106,6 +107,8 @@ Los siguientes 37 identificadores complementan los doce módulos: el inventario 
  DEV-IAC  &  Terraform / Ansible  &  infraestructura  &  Estado y configuración  &  F-02, repositorio del CLIENTE y cuentas de los cinco ambientes. Propietario único  \\
  DEV-MDM  &  Gestión de terminales  &  seguridad  &  Enrolamiento  &  N-13 en nube y agentes en C-01/C-02/C-03. Política y borrado  \\
 \end{tablalafrox}
+
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de PUCV (2026b, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y LafroX (2026e, diseño de este apartado, pp.~\pageref*{fuente-15-anexo-4-1-n-correspondencia-de-componentes-logicos}--\pageref*{fuente-15-anexo-4-1-n-correspondencia-de-componentes-logicos-fin}).\par}
 \subsection*{Correspondencia de actores y permisos del sistema}
 La Tabla~\ref{tab:actores-permisos} realiza el catálogo de quince actores del apartado 3.4.2 del Subdocumento 3. Cada acción se autoriza por separado sobre el ámbito indicado. Ni el cargo ni el acceso a una consola conceden todos los permisos de un módulo.
 
@@ -126,6 +129,8 @@ Jefe de TI & Consola de administración & Identidad, configuración, integracion
 Gerente de Operaciones & Consola operacional, M2/M4/M5/M6 & Supervisar despacho y excepciones & Sitio, no omite guía ni Calidad & 1 \\
 Jefa de Bodega & Consola de bodega, M1/M2/M5/M8 & Recepción, inventario, FEFO, preparación y retornos & Sitio, ajustes justificados & 1 \\
 \end{tablalafrox}
-{\footnotesize Fuente: elaboración propia a partir del apartado 3.4.2 y del Anexo 3.I del Subdocumento 3.\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir del apartado 3.4.2 y del Anexo 3.I del Subdocumento 3. Diseño propuesto: LafroX (2026e, diseño de este apartado, pp.~\pageref*{fuente-15-anexo-4-1-n-correspondencia-de-componentes-logicos}--\pageref*{fuente-15-anexo-4-1-n-correspondencia-de-componentes-logicos-fin}).\par}
 
-Recepción, despacho, catálogo, abastecimiento y Tesorería son funciones asignadas a personas nominadas con permisos específicos dentro de estos perfiles autorizados del CLIENTE. La función de abastecimiento aprueba la sugerencia de reposición de M2 sin crear un actor adicional. AL-ACT-01 del Anexo 4-V verifica cada fila con una operación permitida y una denegada.
+Recepción, despacho, catálogo, abastecimiento y Tesorería son funciones de personas nominadas con permisos específicos en los perfiles del CLIENTE. Abastecimiento aprueba la sugerencia de reposición de M2 sin crear otro actor. AL-ACT-01 del Anexo 4-V prueba cada fila con una operación permitida y otra denegada.
+
+\label{fuente-15-anexo-4-1-n-correspondencia-de-componentes-logicos-fin}

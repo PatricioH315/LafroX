@@ -5,6 +5,7 @@
 % ------------------------------------------------------------------
 
 \chapter{Data center}
+\phantomsection\label{fuente-05-d-sitio-principal}
 \label{cap:4-3-data-center}
 
 La estrategia de centros de datos distribuye la operación productiva entre la región primaria AWS sa-east-1 y la sala técnica secundaria del CD Talca. El dominio de nube se recupera en us-east-1. Ante la pérdida de la sala de Talca, su WMS se levanta en la plataforma de nube de la región activa sobre la copia en Aurora. Concepción y las tres plataformas de cross-docking son sitios operacionales autónomos y publican sus eventos para la consolidación central.
@@ -59,7 +60,7 @@ La Figura~\ref{fig:cd-talca} muestra cómo se conecta el equipamiento de la sala
   \includegraphics[width=\linewidth]{figuras/centros_de_datos/Arquitectura_Fisica_CD_Talca.png}
   \caption{Arquitectura física del sitio on-premise del CD Talca}
   \label{fig:cd-talca}
-  \fuentefigura
+  {\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de PUCV (2026b, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y LafroX (2026d, diseño de este apartado, pp.~\pageref*{fuente-05-d-sitio-principal}--\pageref*{fuente-05-d-sitio-principal-fin}).\par}
 \end{figure}
 \FloatBarrier
 
@@ -87,7 +88,7 @@ Para el cálculo de carga eléctrica se usa una cota conservadora por equipo, se
   \textbf{Carga TI de diseño} & & & \textbf{8.940 W $\approx$ 8,9 kW} \\
 \end{tablalafrox}
 
-{\footnotesize Fuente: elaboración propia.\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de PUCV (2026b, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y LafroX (2026d, diseño de este apartado, pp.~\pageref*{fuente-05-d-sitio-principal}--\pageref*{fuente-05-d-sitio-principal-fin}).\par}
 
 El cálculo eléctrico sigue estos pasos:
 
@@ -111,7 +112,7 @@ Para calcular la carga térmica, se considera que cada kW eléctrico consumido p
   \textbf{Carga térmica sensible de diseño} & \textbf{$\approx$ 8,9 kW} \\
 \end{tablalafrox}
 
-{\footnotesize Fuente: elaboración propia.\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de PUCV (2026b, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y LafroX (2026d, diseño de este apartado, pp.~\pageref*{fuente-05-d-sitio-principal}--\pageref*{fuente-05-d-sitio-principal-fin}).\par}
 
 Sobre esa carga se instalan dos unidades de climatización de precisión de 10 kW cada una, en configuración N+1. Una sola cubre los 8,9 kW de diseño. La temperatura y la humedad relativa se controlan dentro de los rangos del fabricante del equipamiento. La sala de UPS y baterías dispone de climatización de confort propia de 3,5 kW ($\approx$ 12.000 BTU/h), que mantiene 20--25\,\textdegree{}C, y de ventilación. Disipa las pérdidas del UPS ($\approx$ 0,78 kW) y el calor de carga de las baterías.
 
@@ -134,7 +135,7 @@ La Figura~\ref{fig:racks-talca} muestra cómo se reparte el equipamiento de cóm
   \includegraphics[width=\linewidth]{figuras/centros_de_datos/Racks_CD_Talca.png}
   \caption{Distribución de U y ocupación proyectada de los racks del CD Talca}
   \label{fig:racks-talca}
-  \fuentefigura
+  {\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de PUCV (2026b, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y LafroX (2026d, diseño de este apartado, pp.~\pageref*{fuente-05-d-sitio-principal}--\pageref*{fuente-05-d-sitio-principal-fin}).\par}
 \end{figure}
 \FloatBarrier
 
@@ -161,7 +162,7 @@ Los equipos de energía y climatización y los controles de acceso descritos se 
   \includegraphics[width=\linewidth]{figuras/centros_de_datos/Recinto_CD_Talca.png}
   \caption{Distribución interna del recinto técnico del CD Talca por zonas y líneas de acceso}
   \label{fig:recinto-talca}
-  \fuentefigura
+  {\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de PUCV (2026b, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y LafroX (2026d, diseño de este apartado, pp.~\pageref*{fuente-05-d-sitio-principal}--\pageref*{fuente-05-d-sitio-principal-fin}).\par}
 \end{figure}
 \FloatBarrier
 
@@ -170,3 +171,5 @@ La distribución ordena el recinto en profundidad progresiva. En el exterior que
 El sitio monitorea en línea la temperatura, la humedad y la presencia de agua, con alertamiento integrado a la plataforma de observabilidad. El estado de los puntos controlados del recinto converge en la plataforma de monitoreo, con destinatario, canal, tiempo de respuesta y procedimiento escrito. La observabilidad reutiliza el mecanismo del sitio on-premise hacia la nube que define la arquitectura de despliegue del apartado~\ref{sec:despliegue}. La convergencia en un solo tablero constituye la plataforma de observabilidad del sitio. No se declara una plataforma DCIM/BMS de terceros porque las Bases no la exigen y el monitoreo ambiental y de alertas se satisface con el monitoreo en línea y su alertamiento integrado.
 
 El cómputo local corre sobre un clúster virtualizado de tres nodos N+1 con quórum real. Ceph distribuye tres réplicas sobre NVMe sin RAID y tolera la pérdida de un nodo. El respaldo local reside en el NAS D-05 con RAID 6. La selección se justifica en ADR-10 (Anexo 4-O). La instancia de escritura VM-02 se reinicia en otro nodo ante una falla.
+
+\label{fuente-05-d-sitio-principal-fin}

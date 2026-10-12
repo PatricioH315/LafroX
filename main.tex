@@ -13,7 +13,7 @@
 \renewcommand{\LFXisotipoportada}{00/plantilla/formato-base/logo/lafrox_isotipo_naranja.pdf}
 \renewcommand{\LFXisotipopagina}{00/plantilla/formato-base/logo/lafrox_isotipo_negro.pdf}
 % Comando de procedencia de figuras usado por 4.2 y 4.3; la plantilla base no lo incluye.
-\newcommand{\fuentefigura}[1][elaboración propia]{%
+\newcommand{\fuentefigura}[1][fuentes identificadas en el pie de la figura]{%
   \par\vspace{2pt}%
   {\footnotesize\color{lafroxGris}\raggedright Fuente: #1.\par}}
 \datoslafrox{
@@ -33,7 +33,23 @@
 \counterwithout{table}{chapter}
 \counterwithout{figure}{chapter}
 
+% Mantener el índice de figuras en una sola página cuando solo queda una
+% entrada tras el cambio de capítulo; el ajuste se limita a este documento.
+\makeatletter
+\renewcommand{\listafiguraslafrox}{%
+  \phantomsection\addcontentsline{toc}{chapter}{Lista de figuras}%
+  \LFXtitulopreliminar{Lista de figuras}%
+  \begingroup
+  \renewcommand{\addvspace}[1]{\vskip 2pt}%
+  \@starttoc{lof}%
+  \endgroup
+  \clearpage}
+\makeatother
+
 \hypersetup{filecolor=lafroxFuerte,runcolor=lafroxFuerte}
+\let\RaggedRight\raggedright
+\let\Centering\centering
+\let\RaggedLeft\raggedleft
 \begin{document}
 \portadalafrox
 \preliminareslafrox

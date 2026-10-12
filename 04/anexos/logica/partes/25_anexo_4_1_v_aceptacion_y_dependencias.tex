@@ -1,5 +1,6 @@
 \clearpage
 \section*{Anexo 4-V --- Protocolos de aceptación}
+\phantomsection\label{fuente-25-anexo-4-1-v-aceptacion-y-dependencias}
 \phantomsection
 \label{anx:V}
 \addcontentsline{toc}{section}{Anexo 4-V --- Protocolos de aceptación}
@@ -16,7 +17,7 @@ Las pruebas siguientes se ejecutan en Preproducción y antes de la ola aplicable
 \mbox{AL-STOCK-01} & Pedir la última unidad desde preventa, portal y EDI, con cortes y acuses perdidos. & Una sola reserva confirmada con retención durable, nunca stock negativo. & Estado central y local, p95 y acta. \\
 \mbox{AL-ACT-01} & Probar cada actor del Anexo 4-N con una operación permitida y una denegada. & Autorización por acción y recurso, con auditoría personal. & Política, etapa, registros y acta. \\
 \end{tablalafrox}
-{\footnotesize Fuente: elaboración propia.\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de PUCV (2026b, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y LafroX (2026e, diseño de este apartado, pp.~\pageref*{fuente-25-anexo-4-1-v-aceptacion-y-dependencias}--\pageref*{fuente-25-anexo-4-1-v-aceptacion-y-dependencias-fin}).\par}
 
 AL-DTE-01 comprueba ambas rutas de las 96 guías, la preemisión nocturna, la invalidación por cambio de carga y la nueva emisión del ERP ante el SII por fibra, LTE o Starlink en espera caliente. AL-OFF-01 comprueba por separado el despacho con guía válida preemitida. AL-DR-01 mide la extracción continua y la recuperación del WMS de Talca en ECS Fargate. El límite residual se desarrolla en 4.3.2. Los resultados de todas las pruebas se vinculan a los requisitos y al registro ADR del Anexo 4-O.
 
@@ -24,4 +25,7 @@ AL-DTE-01 comprueba ambas rutas de las 96 guías, la preemisión nocturna, la in
 En Preproducción se pide la misma última unidad al mismo tiempo desde preventa, portal y EDI. Se corta el enlace antes y después del registro local, se pierde el acuse, se repite el UUID, se cancela durante un aislamiento y se presenta una época obsoleta. Solo se acepta una reserva confirmada con retención durable de igual identidad, época y cantidad. El disponible nunca queda negativo y un timeout nunca confirma. La preparación consume la retención y una cancelación tardía no libera lo consumido. La prueba mide el p95 de confirmación con la latencia entre la nube y el sitio, la edad de la cola y la recuperación. También mide la proporción de líneas que requieren más de una retención, para contrastar el volumen del Anexo 4-I. Los resultados se trazan a RNG-01, RF-03.03, RT-02.06 y RT-03.12.
 
 \subsection*{AL-ACT-01. Autorización de los quince actores}
-Cada fila del Anexo 4-N se prueba con una operación permitida y una denegada. Se incluyen el cruce entre empresas o rutas, la credencial de un representante usada como conductor, un rol de TI que intenta una aprobación de negocio, la aprobación del descuadre propio, la baja y el relevo sin conexión. Se comprueba que cada portal se habilita solo en su etapa, que el cliente tradicional compra asistido sin cuenta y que el catálogo público no muestra precios. El resultado esperado es una autorización por acción y recurso, con auditoría personal y sin credenciales compartidas. La evidencia se registra por actor, requisito, versión de la política y etapa, y se traza a RT-12.05, RT-12.06 y RT-12.12.
+\enlargethispage{2\baselineskip}
+Cada fila del Anexo 4-N prueba una operación permitida y otra denegada. Se incluyen el cruce entre empresas o rutas, la credencial de un representante usada como conductor, un rol de TI que intenta una aprobación de negocio, la aprobación del descuadre propio, la baja y el relevo sin conexión. Se comprueba que cada portal se habilita solo en su etapa, que el cliente tradicional compra asistido sin cuenta y que el catálogo público no muestra precios. El resultado esperado es una autorización por acción y recurso, con auditoría personal y sin credenciales compartidas. La evidencia se registra por actor, requisito, versión de la política y etapa, y se traza a RT-12.05, RT-12.06 y RT-12.12.
+
+\label{fuente-25-anexo-4-1-v-aceptacion-y-dependencias-fin}

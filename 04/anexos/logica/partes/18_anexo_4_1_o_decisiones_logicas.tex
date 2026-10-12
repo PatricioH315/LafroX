@@ -1,5 +1,6 @@
 \clearpage
 \section*{Anexo 4-O --- Registro de decisiones de arquitectura}
+\phantomsection\label{fuente-18-anexo-4-1-o-decisiones-logicas}
 \phantomsection
 \label{anx:O}
 \addcontentsline{toc}{section}{Anexo 4-O --- Registro de decisiones de arquitectura}
@@ -31,7 +32,7 @@ El registro reúne las decisiones de arquitectura lógica y física conforme a R
 \mbox{ADR-22} & Greengrass en gateways industriales. & Nube directa o PLC. & Bloqueo térmico local en cinco segundos. \\
 \end{tablalafrox}
 
-{\footnotesize Fuente: elaboración propia.\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de PUCV (2026b, secciones~14.1--14.2 y~16.1, pp.~24--25 y~28--29), para volumetría y decisiones abiertas, y LafroX (2026e, diseño de este apartado, pp.~\pageref*{fuente-18-anexo-4-1-o-decisiones-logicas}--\pageref*{fuente-18-anexo-4-1-o-decisiones-logicas-fin}).\par}
 
 La Tabla~\ref{tab:adr-estado} fecha cada decisión, como exige RT-02.04. La fecha es la de registro en la versión de la oferta. Todas las decisiones las propone Bastián Trejo, Arquitecto de Solución, y las aprueban el Comité de Arquitectura y la Contraparte Técnica en el hito H2 del Formulario E-25. Ninguna se presenta como aprobada por el CLIENTE. Cada cambio posterior abre una nueva versión de la ficha, con su fecha, su estado (propuesta, aprobada o reemplazada) y el acta del Comité de Arquitectura que la resolvió.
 
@@ -60,7 +61,7 @@ ADR-21 & Infraestructura como código y cadena de entrega & 5 de octubre de 2026
 ADR-22 & Cadena de frío en el borde & 5 de octubre de 2026 & Propuesta en la oferta \\
 \end{tablalafrox}
 
-{\footnotesize Fuente: elaboración propia a partir de RT-02.04 (Bases Técnicas Transversales, cap.~2, p.~7) y del Formulario E-25 de las Bases Administrativas.\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de RT-02.04 (Bases Técnicas Transversales, cap.~2, p.~7) y del Formulario E-25 de las Bases Administrativas. Diseño propuesto: LafroX (2026e, diseño de este apartado, pp.~\pageref*{fuente-18-anexo-4-1-o-decisiones-logicas}--\pageref*{fuente-18-anexo-4-1-o-decisiones-logicas-fin}).\par}
 
 \subsection*{ADR-01. Estilo arquitectónico}
 \label{sub:adr-01}
@@ -200,7 +201,7 @@ En la mantención, Kotlin nativo permite conservar un único artefacto con perfi
 
 \textbf{Criterio de selección.} Capacidad y quórum N+1 con demanda del Anexo 4-W.
 
-\textbf{Consecuencias.} Se reservan recursos de OSD y monitor. Seis OSD ofrecen cerca de 1,92 TB útiles y unos 1,5 TB al 80\% de llenado. Frente a RT-03.14, el nivel declarado es Ceph sin RAID por hardware con réplica de tres copias, que tolera la falla de un disco y de un nodo. Cada servidor de Concepción usa RAID 10 y doble fuente. Cada E-01 usa dos SSD en RAID 1 por software, que tolera la falla de un disco con holgura para los 50 GB requeridos. RAID 5 o RAID 10 exigirían tres o cuatro discos que el mini-PC industrial no aloja. E-01 y sus switches tienen alimentación redundante. La falla del equipo activo de Concepción o de un cross-docking la cubre su par en espera, que toma el control en menos de un minuto desde la exclusión comprobada del escritor anterior. Si esa exclusión requiere intervención presencial, se registra el tiempo completo dentro del RTO de 4 horas. Una partición de red no autoriza por sí sola la promoción (4.2.4.3).
+\textbf{Consecuencias.} Se reservan recursos de OSD y monitor. Seis OSD ofrecen cerca de 1,92 TB útiles y unos 1,5 TB al 80\% de llenado. Las VM de Talca demandan 136 IOPS actuales y 359 a 3$\times$ (Anexo 4-W.8, Tabla A.38). El rendimiento del NVMe no es criterio de selección ni justifica equipos adicionales: el disco se elige por la capacidad útil con tres réplicas y por acortar la recomposición tras la falla de un disco o de un nodo. Las decenas de miles de IOPS que admite son un margen propio de esa tecnología, no capacidad dimensionada para el desempeño. Frente a RT-03.14, el nivel declarado es Ceph sin RAID por hardware con réplica de tres copias, que tolera la falla de un disco y de un nodo. Cada servidor de Concepción usa RAID 10 y doble fuente. Cada E-01 usa dos SSD en RAID 1 por software, que tolera la falla de un disco con holgura para los 50 GB requeridos. RAID 5 o RAID 10 exigirían tres o cuatro discos que el mini-PC industrial no aloja. E-01 y sus switches tienen alimentación redundante. La falla del equipo activo de Concepción o de un cross-docking la cubre su par en espera, que toma el control en menos de un minuto desde la exclusión comprobada del escritor anterior. Si esa exclusión requiere intervención presencial, se registra el tiempo completo dentro del RTO de 4 horas. Una partición de red no autoriza por sí sola la promoción (4.2.4.3).
 
 \textbf{Evidencia exigida.} Prueba de pérdida de nodo, reconstrucción, latencia y carga de cientos de IOPS a 3$\times$ frente a decenas de miles de IOPS de NVMe. Apagado del equipo activo de Concepción y de un cross-docking durante su ventana, sin pérdida de transacciones confirmadas.
 
@@ -373,3 +374,5 @@ En la mantención, Kotlin nativo permite conservar un único artefacto con perfi
 \textbf{Evidencia exigida.} Inyección de excursión térmica, corte WAN, reinicio y reconciliación de lecturas.
 
 \textbf{Requisitos que la sustentan.} RT-03.10, Caso, cadena de frío.
+
+\label{fuente-18-anexo-4-1-o-decisiones-logicas-fin}

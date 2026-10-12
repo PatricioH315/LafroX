@@ -1,4 +1,5 @@
 \section*{Anexo 4-I --- Volumen de mensajes}
+\phantomsection\label{fuente-10-anexo-4-1-i-volumen-de-mensajes}
 \phantomsection
 \label{anx:I}
 \addcontentsline{toc}{section}{Anexo 4-I --- Volumen de mensajes}
@@ -24,8 +25,10 @@ INT-15 Telemetría de flota & 60.480 posiciones/día & 60.480 & 42 camiones $\ti
 \textbf{Total} & \textbf{224.652/día} & \textbf{342.933/día} & \textbf{15 integraciones} \\
 \end{tablalafrox}
 
-{\footnotesize Fuente: elaboración propia a partir de las Bases Técnicas del caso (cap.~14, p.~24). Los cálculos se indican en la columna de derivación.\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de las Bases Técnicas del caso de Pontificia Universidad Católica de Valparaíso (2026b) (cap.~14, p.~24). Los cálculos se indican en la columna de derivación. Diseño propuesto: LafroX (2026e, diseño de este apartado, pp.~\pageref*{fuente-10-anexo-4-1-i-volumen-de-mensajes}--\pageref*{fuente-10-anexo-4-1-i-volumen-de-mensajes-fin}).\par}
 
 La coordinación de reserva supone una retención por línea de pedido. Cada retención usa como máximo cuatro mensajes: solicitud y resultado de la retención, y solicitud y resultado de una liberación. La cifra supone que toda retención se libera, lo que sobrestima el flujo porque una retención consumida por la preparación no genera liberación. Esa holgura cubre las líneas repartidas entre lotes o sitios, cuya proporción mide AL-STOCK-01. Este flujo no duplica los movimientos físicos de INT-03 ni las operaciones de INT-04.
 
 Los eventos de excepción sanitaria del Anexo 4-A, incluida DisposicionSanitariaRegistrada, viajan por INT-03. No se suman como una integración nueva. La cota de cinco eventos por línea debe contrastarse con su frecuencia y con los reintentos en AL-OFF-01 antes de acreditar la volumetría.
+
+\label{fuente-10-anexo-4-1-i-volumen-de-mensajes-fin}

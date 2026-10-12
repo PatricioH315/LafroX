@@ -1,4 +1,5 @@
 \subsection{Modelo de datos conceptual}
+\phantomsection\label{fuente-06-modelo-de-datos-conceptual}
 
 El modelo de datos de la solución se fundamenta en un conjunto de entidades de negocio canónicas, sus relaciones y eventos, conforme a RT-02.13. Este modelo alimenta la matriz de trazabilidad que exige el numeral 17.1 de las Bases Técnicas del caso (cap. 17, p. 31), entregada en el Formulario T-12, y los contratos de integración (OpenAPI 3.1 y AsyncAPI 2.6 por módulo).
 
@@ -30,9 +31,11 @@ La Figura~\ref{fig:arql-18} relaciona las entidades principales con los módulos
   \label{fig:arql-18}
 \end{center}
 
-{\footnotesize Fuente: elaboración propia de LafroX.\par}
+{\fontsize{9pt}{11pt}\selectfont\raggedright Fuente: elaboración a partir de PUCV (2026a, sección~2.1, pp.~6--7), para los requisitos de capas, y LafroX (2026d, diseño de este apartado, pp.~\pageref*{fuente-06-modelo-de-datos-conceptual}--\pageref*{fuente-06-modelo-de-datos-conceptual-fin}).\par}
 \end{anexohorizontal}
 
 M3 administra el pedido y sus líneas utilizando la referencia autorizada del cliente del ERP, M2 administra reserva, retención y movimientos por sitio. M5 enlaza misión y asignación a lote con la carga. M9 gobierna el estado sanitario, y M6 registra la entrega y su evidencia. El ERP conserva la emisión tributaria y los maestros autorizados. Los contratos del Anexo 4-A asignan un productor único a cada evento: M3 publica \texttt{PedidoConfirmado} y M6, \texttt{EntregaRegistrada}. Compartir el proceso Laravel no permite que otro módulo escriba sus datos privados.
 
 La línea de pedido se asigna a un lote identificado por GTIN y lote del proveedor. Los movimientos con SSCC conservan la cadena de custodia hasta la entrega. La entrega vincula la evidencia de recepción y el folio de la guía que el ERP emitió antes del traslado. Un pedido aún puede no tener entrega, y una entrega puede registrar más de una evidencia o un rechazo parcial. Los estados conservan el identificador de origen y las cardinalidades se verifican en el modelo del Subdocumento 5. Las flechas de esta vista representan colaboración y contratos. No son claves foráneas ni conexiones directas con bases de datos. El POD no sustituye al DTE ni al acuse del receptor.
+
+\label{fuente-06-modelo-de-datos-conceptual-fin}
