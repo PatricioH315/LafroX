@@ -63,31 +63,31 @@ Jefe de Proyecto y Apoderado · LafroX SpA
 
 <a id="cap:empresa"></a>
 
-Este capítulo presenta la trayectoria, los servicios y la organización de LafroX para el caso de Distribuidora Puelche S.A. Explica cómo se distribuyen las responsabilidades de calidad, seguridad y operación, y compara la experiencia de la empresa con las exigencias del caso. El Formulario T-6 acompaña el capítulo con el detalle de tres proyectos. La arquitectura y el plan de trabajo se desarrollan en los Subdocumentos 4 y 7; el equipo nominado y las alianzas específicas corresponden al Capítulo 12.
+Este capítulo presenta la trayectoria, las capacidades instaladas, los servicios y la organización de LafroX. Describe su gobierno de calidad, seguridad y conocimiento, y analiza su experiencia en logística. La sección 1.5 explica la organización para el proyecto de Distribuidora Puelche S.A. El Formulario T-6 detalla tres proyectos de referencia. La arquitectura y el plan de trabajo se desarrollan en los Subdocumentos 4 y 7, y el equipo nominado en el Capítulo 12.
 
 ## 1.1 Presentación de la empresa
 
-LafroX fue fundada en 2012 en Santiago de Chile. Se dedica al desarrollo, la integración y la operación de sistemas para logística, distribución de consumo masivo y transporte de carga. Su experiencia se concentra en operaciones con instalaciones dispersas, conectividad intermitente y exigencias de trazabilidad.
+LafroX fue fundada en 2012 en Santiago de Chile, donde mantiene su Sede Central. Su Centro de Operaciones y domicilio declarado se encuentran en Av. Brasil 2241, Valparaíso. Se dedica al desarrollo, la integración y la operación de sistemas para logística, distribución de consumo masivo y transporte de carga. Su experiencia se concentra en operaciones con instalaciones dispersas, conectividad intermitente y exigencias de trazabilidad.
 
-Entre los principales hitos de su trayectoria destacan la puesta en marcha de su primera plataforma de ruteo y telemetría en 2015, la acreditación como integrador certificado de hardware industrial para cadenas de frío en 2018, la primera certificación corporativa en normas de calidad y seguridad en 2021, mantenida desde entonces mediante auditorías de seguimiento y renovación, y la consolidación de su arquitectura modular híbrida en 2024, sosteniendo a la fecha dos operaciones diarias de gran volumen en terreno: 22.000 entregas diarias en el Proyecto 1 y 18.000 transacciones comerciales diarias en el Proyecto 3 del Formulario T-6. Son unidades distintas y no se suman.
+Entre los principales hitos de su trayectoria destacan la puesta en marcha de su primera plataforma de ruteo y telemetría en 2015, la acreditación como integrador certificado de hardware industrial para cadenas de frío en 2018, la primera certificación corporativa en normas de calidad y seguridad en 2021, mantenida mediante auditorías de seguimiento y renovación, y la consolidación de su arquitectura modular híbrida en 2024. Entre sus operaciones de referencia figuran las 22.000 entregas diarias del Proyecto 1 y las 18.000 transacciones comerciales diarias del Proyecto 3 del Formulario T-6.
 
-LafroX mantiene un sitio web corporativo en <https://lafrox.github.io/>, publicado con certificado TLS válido, diseño responsivo y criterios WCAG 2.2 nivel AA. El sitio presenta el giro, la trayectoria, la misión, la visión y los valores de la empresa, su organigrama directivo, su Sede Central y su domicilio, el equipo, los casos de éxito del Formulario T-6, las certificaciones vigentes y las alianzas tecnológicas. Incluye además un centro de recursos con artículos técnicos, un recorrido guiado por la solución, el estado del servicio medido en vivo y una calculadora de ahorro para operaciones logísticas. LafroX mantiene el sitio activo y disponible durante todo el proceso de licitación, desde el registro del participante hasta la adjudicación (RT-23.01 a RT-23.10).
+El sitio web corporativo de LafroX, <https://lafrox.github.io/>, reúne la trayectoria, los servicios, la organización, las sedes, los proyectos de referencia, las certificaciones declaradas y las alianzas tecnológicas de la empresa.
 
 LafroX trabaja en tres líneas de negocio:
 
-- **Ingeniería de software en el borde (Edge Computing):** Desarrollo de aplicaciones móviles y sistemas locales con arquitectura *offline-first*. Implementan almacenamiento local cifrado mediante bases de datos SQLite en terminales móviles, sincronización asíncrona bidireccional y resolución determinista de conflictos al restablecer el enlace de comunicaciones, para conservar las operaciones capturadas sin señal y sincronizarlas al recuperar la conexión.
+- **Ingeniería de software en el borde (Edge Computing):** Desarrollo de aplicaciones móviles y sistemas locales que permiten trabajar sin conexión (*offline-first*), conservar los datos capturados y sincronizarlos cuando se restablece la comunicación.
 
-- **Trazabilidad y telemetría de frío industrial:** Integración de hardware especializado de terreno, tales como termógrafos vehiculares, sensores inalámbricos y capturadores robustos aptos para operar bajo frío extremo. Esta línea registra temperaturas y eventos de custodia para apoyar los controles del Reglamento Sanitario de los Alimentos (RSA) y los procedimientos de retiro de productos.
+- **Trazabilidad y telemetría de frío industrial:** Integración de termógrafos vehiculares, sensores y terminales de captura para registrar temperaturas y eventos de custodia en el transporte y almacenamiento de productos.
 
-- **Arquitecturas modulares híbridas de misión crítica:** Diseño, despliegue y soporte continuo de plataformas que combinan un núcleo transaccional en nube pública con componentes de borde desplegados en centros de distribución físicos (*on-premise*), con mecanismos de continuidad local ante cortes de conectividad externa. La línea trabaja habitualmente con monolitos modulares en PHP y Laravel sobre PostgreSQL, con aplicaciones móviles nativas en Kotlin, con límites de contexto explícitos, contratos de interfaz versionados y despliegue independiente de los componentes críticos. La arquitectura concreta para Puelche, con su justificación frente al Artículo 19° de las Bases Administrativas y al RT-02.02 de las Bases Técnicas Transversales, se presenta en la arquitectura de la oferta.
+- **Arquitecturas modulares híbridas de misión crítica:** Diseño, despliegue y soporte de plataformas que combinan servicios en nube pública con componentes locales en centros de distribución. Esta combinación permite sostener funciones de terreno ante cortes de conectividad.
 
 Estas líneas se apoyan en dos capacidades operativas:
 
-- **Infraestructura y ambientes:** Plataforma de cómputo en nube pública y dos centros de datos (primario y secundario en configuración activo-pasivo) que soportan cinco ambientes segregados: Desarrollo (DEV), Aseguramiento de Calidad (QA), Preproducción (PREPROD), Producción (PROD) y Recuperación ante Desastres (DR). La capacitación utiliza datos ficticios en un espacio aislado del ambiente que corresponda; no constituye un sexto ambiente. El entorno DR es sometido a auditorías y simulacros semestrales, con objetivos de RTO ≤ 4 horas y RPO ≤ 15 minutos.
+- **Infraestructura y ambientes:** Plataforma de cómputo en nube pública y dos centros de datos, primario y secundario en configuración activo-pasivo. Soportan cinco ambientes segregados: Desarrollo (DEV), Aseguramiento de Calidad (QA), Preproducción (PREPROD), Producción (PROD) y Recuperación ante Desastres (DR). La capacitación utiliza datos ficticios en espacios aislados dentro de estos ambientes. Los ejercicios semestrales de recuperación verifican objetivos de tiempo de restitución (RTO) de hasta cuatro horas y pérdida de datos (RPO) de hasta quince minutos.
 
-- **Centro de Operaciones y Mesa de Servicios:** Centro de Operaciones de Red (NOC), Centro de Operaciones de Seguridad (SOC) y Mesa de Servicios con niveles de escalamiento L1, L2 y L3, en el Centro de Operaciones de LafroX en Valparaíso (Av. Brasil 2241). Para Puelche, los incidentes de severidad crítica y alta se atienden 24×7×365, como exige el Artículo 78.2 de las Bases Administrativas; la mesa de servicio atiende al usuario de 04:00 a 22:00 de lunes a sábado, con cobertura 24×7 en septiembre y diciembre (Subdocumento 3, sección 3.4.5). La reserva inicial de capacidad para Puelche se cuantifica a continuación y se contrasta con los contactos observados desde la marcha blanca.
+- **Centro de Operaciones y Mesa de Servicios:** Desde Valparaíso, LafroX mantiene el Centro de Operaciones de Red (NOC), que supervisa la infraestructura, el Centro de Operaciones de Seguridad (SOC), que vigila y analiza amenazas, y la Mesa de Servicios, que recibe consultas, solicitudes e incidentes de los usuarios. La mesa presta atención inicial y deriva los casos que requieren intervención especializada mediante niveles de escalamiento L1, L2 y L3. La cobertura de cada servicio se define en el acuerdo con su cliente.
 
-La capacidad instalada combina equipos asignados a las especialidades y puestos compartidos del Centro de Operaciones. La Tabla [1.1](LAFROX-Subdocumento1.md#tab:equipamiento_corporativo) presenta los equipos corporativos disponibles; no incluye los servidores, terminales y equipos de red que se suministran a Puelche mediante el Formulario T-11 del Subdocumento 4.
+La capacidad instalada combina equipos asignados a las especialidades y puestos compartidos del Centro de Operaciones. La Tabla [1.1](LAFROX-Subdocumento1.md#tab:equipamiento_corporativo) presenta el inventario corporativo de trabajo. El equipamiento que se suministra al cliente se detalla por separado en el Formulario T-11 del Subdocumento 4 (LafroX, 2026a).
 
 <a id="tab:equipamiento_corporativo"></a>
 
@@ -96,29 +96,24 @@ La capacidad instalada combina equipos asignados a las especialidades y puestos 
 | **Equipamiento** | **Cantidad** | **Sede** | **Uso** |
 | --- | --- | --- | --- |
 | Equipos de Ingeniería, Calidad, Seguridad y SRE | 92 | Santiago: 80; Valparaíso: 12 | Desarrollo, pruebas, seguridad y administración de plataforma |
-| Puestos compartidos del NOC | 8 | Valparaíso | Seis puestos activos y dos para relevos o contingencias |
-| Puestos de mesa de ayuda | 8 | Valparaíso | Hasta siete agentes simultáneos y un puesto de reserva |
+| Puestos compartidos del Centro de Operaciones | 16 | Valparaíso | Supervisión de infraestructura y atención de usuarios |
 | Equipos de reemplazo | 4 | Dos en cada sede | Sustitución temporal de equipos de trabajo |
 | **Total de equipos de cómputo** | **112** | | |
 
-Los 92 equipos asignados corresponden a 48+15+10+7+12=92 especialistas: 80 trabajan en Santiago y 12 en Valparaíso. Los 32 profesionales del NOC comparten ocho puestos conforme a sus turnos; no se requieren 32 equipos ocupados a la vez. Cada puesto de atención incluye computador, monitor, auriculares y acceso a las herramientas del servicio. Los cuatro reemplazos están separados de los puestos activos; el total es 92+8+8+4=112 equipos, no 112 personas ni una cantidad de periféricos.
+Los 92 equipos asignados corresponden a los especialistas de Ingeniería, Calidad, Seguridad y SRE: 48 + 15 + 10 + 7 + 12 = 92. De ellos, 80 trabajan en Santiago y 12 en Valparaíso. Los 32 profesionales del NOC comparten ocho puestos conforme a sus turnos. Cada puesto de atención incluye computador, monitor, auriculares y acceso a las herramientas del servicio. El inventario suma 92 equipos asignados, 16 puestos compartidos y cuatro equipos de reemplazo: 112 equipos de cómputo.
 
-Para Puelche se reservan los puestos de mesa y los agentes de su cobertura. La Tabla [1.2](LAFROX-Subdocumento1.md#tab:capacidad_mesa) resume el dimensionamiento del Anexo 4-W.7 del Subdocumento 4 y del Formulario T-15, secciones 4.2 y 5.6 (LafroX, 2026a, Anexo 4-W.7; 2026c, secciones 4.2 y 5.6). El escenario inicial estima 2.000 contactos mensuales; un contacto es una interacción con la mesa y no equivale necesariamente a un usuario o a un ticket distinto.
+La Tabla [1.2](LAFROX-Subdocumento1.md#tab:puestos_operaciones) distingue los puestos de servicio de los puestos destinados a relevos y contingencias.
 
-<a id="tab:capacidad_mesa"></a>
+<a id="tab:puestos_operaciones"></a>
 
-**Tabla 1.2 — Capacidad de mesa reservada para Puelche. Fuente: Subdocumento 4, Anexo 4-W.7, y Formulario T-15.**
+**Tabla 1.2 — Distribución de puestos del Centro de Operaciones. Fuente: antecedentes corporativos declarados por LafroX.**
 
-| **Período** | **Agentes simultáneos: hora cargada / otras franjas** | **Capacidad dimensionada** |
-| --- | --- | --- |
-| Inicio de Operación (meses 21–24 del contrato) | 7 / 2 | 2.283 contactos/mes |
-| Desde el mes 25 del contrato | 7 / 3 | 2.391 contactos/mes |
+| **Servicio** | **Puestos habilitados** | **Puestos de servicio simultáneos** | **Puestos de relevo o reserva** |
+| --- | --- | --- | --- |
+| NOC | 8 | 6 | 2 |
+| Mesa de Servicios | 8 | Hasta 7 | 1 |
 
-El límite inicial de 2.283 contactos supera la demanda base de 2.000; lo fija la franja de dos agentes, no la hora cargada. Desde el mes 25 se incorpora un tercer agente en las otras franjas y el límite pasa a 2.391. Los ocho puestos físicos permiten atender hasta siete agentes a la vez y conservar uno de reserva; no significan ocho agentes en cada turno. La plantilla de mesa es de siete personas en la base y nueve desde el mes 25; en septiembre y diciembre se agregan dos para la cobertura extendida, según el Anexo 4-W.7. La atención ordinaria es de 04:00 a 22:00 de lunes a sábado, con atención continua en esos dos meses y respuesta a incidentes críticos y altos conforme al Art. 78.2 de las Bases Administrativas.
-
-Estas cifras corresponden a la capacidad reservada para Puelche bajo los supuestos de demanda y atención del SD4, no a la capacidad total de la mesa corporativa ni a resultados ya medidos. El modelo Erlang C dimensiona el 80% de respuestas antes de 20 segundos; no demuestra abandono máximo del 5% ni resolución al primer contacto del 70%. Los tres indicadores se miden desde la marcha blanca; superar el límite de contactos o incumplir los indicadores activa el refuerzo por franja previsto en el T-15, sección 5.6. La recalibración ajusta esta base inicial, no la reemplaza.
-
-Los agentes de mesa forman una dotación de atención adicional a los 124 especialistas de la Tabla [1.3](LAFROX-Subdocumento1.md#tab:dotacion). No se descuentan de los 32 profesionales del NOC ni se asignan simultáneamente a mesa, NOC o SOC. El NOC del proyecto se cubre con la división corporativa correspondiente y el SOC con sus analistas contratados, como establece el Anexo 4-W.7. El T-15 imputa cada cobertura a su paquete de servicio, sin duplicar personas ni horas.
+El NOC mantiene seis puestos activos de supervisión continua y dos habilitados para relevos o contingencias. La mesa dispone de siete puestos de atención y uno de reserva. Los agentes son las personas que atienden a los usuarios y utilizan esos puestos. Su dotación y sus turnos se dimensionan para cada servicio contratado. Los agentes de mesa y los analistas contratados del SOC se contabilizan por separado de los 124 especialistas de la Tabla [1.3](LAFROX-Subdocumento1.md#tab:dotacion).
 
 El catálogo de la empresa se organiza en productos de software, servicios profesionales y servicios de infraestructura y conectividad.
 
@@ -126,7 +121,7 @@ El catálogo de la empresa se organiza en productos de software, servicios profe
 
 Los productos cubren tres necesidades de la operación:
 
-- **Aplicaciones móviles de terreno:** Soluciones *offline-first* para fuerzas de venta, reparto y captura de información en campo, con sincronización asíncrona y resolución determinista de conflictos ante intermitencia de red.
+- **Aplicaciones móviles de terreno:** Aplicaciones para fuerzas de venta, reparto y captura de información en campo. Permiten registrar operaciones sin conexión y sincronizarlas al recuperar la comunicación.
 
 - **Plataformas de monitoreo y telemetría:** Sistemas de seguimiento para flotas de transporte y cadena de frío, con generación de alertas ante desviaciones operacionales o térmicas.
 
@@ -156,7 +151,7 @@ La empresa también presta servicios para sostener la operación en terreno:
 
 ## 1.2 Estructura Organizacional
 
-LafroX organiza su trabajo en las áreas de Ingeniería, Infraestructura, Calidad y Seguridad. La dotación técnica de planta asignable a proyectos es de 124 especialistas. La Figura [1.1](LAFROX-Subdocumento1.md#fig:organigrama) muestra cómo estas áreas se relacionan con la Gerencia General y la Dirección de Operaciones.
+LafroX organiza su trabajo en las áreas de Ingeniería, Infraestructura, Calidad y Seguridad. La dotación técnica de planta asignable a proyectos es de 124 especialistas. La Gerencia General dirige la empresa. La Figura [1.1](LAFROX-Subdocumento1.md#fig:organigrama) muestra las dependencias de sus áreas y la línea de reporte de Seguridad.
 
 <a id="fig:organigrama"></a>
 
@@ -168,13 +163,13 @@ La Dirección de Operaciones coordina tres divisiones, cada una con una responsa
 
 - **Ingeniería:** desarrolla el software y reúne las especialidades de datos, arquitectura e integración.
 
-- **Infraestructura:** sostiene la operación de los servicios mediante el NOC, los equipos de confiabilidad (SRE) y redes.
+- **Infraestructura:** sostiene la operación de los servicios mediante el NOC, los equipos de confiabilidad de servicios (SRE) y redes.
 
 - **Calidad:** realiza las pruebas y revisa la aplicación de los procesos de ingeniería.
 
-El CISO reporta directamente a la Gerencia General, por una línea independiente de la Dirección de Operaciones. Así, los asuntos de seguridad pueden escalarse sin pasar por los responsables de entrega. Calidad depende de Operaciones, pero ejerce su veto sobre los pasos a producción ante el Comité de Calidad y Procesos. Si hay desacuerdo, lo eleva a la Gerencia General; un plazo de entrega no permite levantar ese veto.
+El Oficial de Seguridad de la Información, denominado CISO por la sigla inglesa de *Chief Information Security Officer*, dirige la función de seguridad. Reporta directamente a la Gerencia General y se sitúa fuera de la Dirección de Operaciones para evaluar riesgos con independencia de los responsables de entrega. La Dirección de Operaciones coordina Ingeniería, Infraestructura y Calidad. El Jefe de Calidad puede bloquear un paso a producción si no se cumplen los controles exigidos. El Comité de Calidad y Procesos revisa las observaciones y los desacuerdos se escalan a la Gerencia General.
 
-La Tabla [1.3](LAFROX-Subdocumento1.md#tab:dotacion) distribuye los 124 especialistas por área y sede e indica su antigüedad en LafroX. No incluye a la Gerencia General, la Dirección de Operaciones ni las funciones de gestión, comercial y administración. Tampoco incluye los agentes de mesa ni los analistas contratados del SOC, cuya cobertura se dimensiona por separado.
+La Tabla [1.3](LAFROX-Subdocumento1.md#tab:dotacion) distribuye los 124 especialistas por área y sede e indica su antigüedad en LafroX. Este total corresponde a la dotación técnica de planta. La Gerencia General, la Dirección de Operaciones, las funciones comerciales y administrativas, los agentes de mesa y los analistas contratados del SOC se contabilizan por separado.
 
 <a id="tab:dotacion"></a>
 
@@ -182,19 +177,19 @@ La Tabla [1.3](LAFROX-Subdocumento1.md#tab:dotacion) distribuye los 124 especial
 
 | **División** | **Área / rol principal** | **Sede** | **Personas** | **Antigüedad en LafroX** |
 | --- | --- | --- | --- | --- |
-| Ingeniería | Desarrollo de software (PHP/Laravel, móvil Kotlin) | Central (Santiago) | 48 | 1–8 años |
+| Ingeniería | Desarrollo de software | Central (Santiago) | 48 | 1–8 años |
 | Ingeniería | Arquitectura e integración | Central (Santiago) | 15 | 3–10 años |
 | Infraestructura | NOC 24×7 | Operaciones (Valparaíso) | 32 | 1–7 años |
-| Infraestructura | SRE y Cloud | Operaciones (Valparaíso) | 12 | 2–8 años |
+| Infraestructura | SRE y nube | Operaciones (Valparaíso) | 12 | 2–8 años |
 | Calidad | Aseguramiento y automatización de pruebas | Central (Santiago) | 10 | 2–9 años |
 | Seguridad | CISO y especialistas en ciberseguridad | Central (Santiago) | 7 | 2–8 años |
 | **Total** | | | **124** | |
 
 La dotación se concentra en dos frentes: Ingeniería reúne 48 + 15 = 63 especialistas e Infraestructura, 32 + 12 = 44. Calidad aporta 10 y Seguridad, 7; la suma es 63 + 44 + 10 + 7 = 124. Esta distribución distingue la construcción del software de su operación y de sus controles.
 
-La antigüedad corresponde al tiempo de permanencia en LafroX, no a los años totales de experiencia profesional. Los rangos combinan personal estable con incorporaciones recientes; en Arquitectura e Integración, la permanencia de 3–10 años favorece la continuidad de las decisiones y el conocimiento de las interfaces.
+La antigüedad indica el tiempo de permanencia en LafroX. Los rangos combinan personal estable con incorporaciones recientes y permiten reconocer la continuidad del equipo en cada especialidad.
 
-Los 32 profesionales del NOC se organizan en cuatro equipos de siete y cuatro reemplazos comunes: 4×7+4=32. Cada equipo reúne un responsable de turno, cinco operadores y una persona habilitada para relevar puestos durante pausas y traspasos. La Tabla [1.4](LAFROX-Subdocumento1.md#tab:turnos_noc) resume esta distribución corporativa; los equipos rotan entre franjas y días de descanso, no trabajan todos los días ni quedan asignados permanentemente al turno nocturno.
+Los 32 profesionales del NOC se organizan en cuatro equipos de siete y cuatro reemplazos comunes: 4×7+4=32. Cada equipo reúne un responsable de turno, cinco operadores y una persona habilitada para relevar puestos durante pausas y traspasos. La Tabla [1.4](LAFROX-Subdocumento1.md#tab:turnos_noc) resume esta distribución. Los equipos rotan entre las franjas de atención y sus días de descanso.
 
 <a id="tab:turnos_noc"></a>
 
@@ -206,7 +201,7 @@ Los 32 profesionales del NOC se organizan en cuatro equipos de siete y cuatro re
 | Reemplazos comunes habilitados para cubrir puestos | 4 |
 | **Total NOC** | **32** |
 
-Los turnos cubren las franjas 00:00–08:00, 08:00–16:00 y 16:00–24:00, hora local de Chile: 3×8=24 horas diarias. Se mantienen seis puestos activos, mientras el séptimo integrante del equipo y los cuatro reemplazos comunes permiten organizar relevos y ausencias. El dimensionamiento usa 40 horas semanales por persona: 32×40=1.280 horas de dotación frente a 6×24×7=1.008 horas de cobertura continua. Las 272 horas de diferencia se destinan a descansos dentro del turno, traspasos, formación y ausencias; son un margen bruto de planificación, no horas disponibles para otro contrato. El cuadrante mensual distribuye los turnos y los descansos de cada persona e incorpora los cambios de horario de Chile, sin depender de horas extraordinarias permanentes.
+Los turnos cubren las franjas 00:00–08:00, 08:00–16:00 y 16:00–24:00, hora local de Chile. Se mantienen seis puestos activos, con relevos organizados entre el séptimo integrante del equipo y los cuatro reemplazos comunes. Para planificar la cobertura se consideran 40 horas semanales por persona: 32×40=1.280 horas de dotación frente a 6×24×7=1.008 horas de supervisión. La diferencia de 272 horas es el margen bruto para pausas, traspasos, formación y ausencias. El cuadrante mensual distribuye los turnos y los descansos e incorpora los cambios de horario de Chile.
 
 La continuidad se sostiene con tres reglas:
 
@@ -216,7 +211,7 @@ La continuidad se sostiene con tres reglas:
 
 - **Escalamiento:** el responsable de turno coordina la atención y deriva a SRE o al especialista que corresponda. El relevo conserva la responsabilidad del incidente hasta que otro equipo acepta expresamente su atención.
 
-Esta dotación atiende el NOC corporativo y no equivale a 32 personas dedicadas exclusivamente a Puelche. Para el CLIENTE, el monitoreo es 24×7; la mesa de ayuda conserva el horario de la sección 3.4.5 del Subdocumento 3. El SOC del proyecto se organiza por separado, con analistas bajo la dirección del Encargado de Seguridad. Los recursos del NOC no se cuentan como puestos de mesa ni de SOC.
+Esta dotación sostiene el NOC corporativo. La asignación a cada contrato se organiza dentro de esa división. La supervisión de infraestructura, la atención de usuarios y el análisis de seguridad son funciones distintas, con personal y turnos diferenciados.
 
 ## 1.3 Gobierno interno Calidad, Seguridad y Conocimiento
 
@@ -224,27 +219,27 @@ El gobierno interno define quién revisa la calidad, quién decide sobre segurid
 
 ### 1.3.1 Modelo de Gobierno de Calidad
 
-La calidad de los procesos de LafroX se rige por un Sistema de Gestión de Calidad certificado conforme a ISO 9001:2015 y por prácticas evaluadas bajo CMMI-DEV Nivel 3.
+LafroX dispone de un Sistema de Gestión de Calidad certificado conforme a ISO 9001:2015 y de una evaluación de madurez de sus procesos de desarrollo bajo CMMI-DEV Nivel 3. Los antecedentes, el alcance y la vigencia declarados se identifican en 1.4.
 
-Los métodos de diseño, desarrollo, implementación, integración y soporte se ejecutan bajo los procesos de ese Sistema de Gestión de Calidad, cuyo alcance y vigencia se identifican en 1.4. En esta oferta se aplican mediante RUP y DevSecOps (LafroX, 2026b, Subdocumento 6, sección 6.2); CMMI-DEV Nivel 3 acredita la madurez de procesos declarada, sin constituir una certificación independiente de esas metodologías (Distribuidora Puelche S.A., 2026b, RT-23.04).
+El Sistema de Gestión de Calidad organiza el diseño, desarrollo, implementación, integración y soporte del software mediante procedimientos, responsables y registros de control. La evaluación CMMI se refiere a la madurez de esos procesos. La aplicación de RUP, proceso de desarrollo iterativo, y DevSecOps, integración de desarrollo, seguridad y operación, a este proyecto se detalla en el Subdocumento 6 (LafroX, 2026b, sección 6.2).
 
-- **Instancia colegiada:** El Comité de Calidad y Procesos, presidido mensualmente por el Jefe de QA y con participación de los líderes de proyecto, analiza la adherencia metodológica y métricas de defecto.
+- **Instancia colegiada:** El Jefe de Aseguramiento de Calidad (QA) preside el Comité de Calidad y Procesos. El comité se reúne mensualmente con los líderes de proyecto para revisar el cumplimiento de los procedimientos, los defectos detectados y las acciones correctivas.
 
-- **Políticas y controles de ingeniería:** Se implementan compuertas de calidad automáticas (*quality gates*) en los canales de integración continua (CI/CD). Es política corporativa rechazar cualquier compilación con cobertura unitaria global inferior al 80% o con hallazgos bloqueantes del análisis estático de código (PHPStan/Larastan y Pint). Esta política no reemplaza la cobertura mínima del 70% de la lógica de negocio exigida para este proyecto: ambos umbrales se verifican de forma independiente en el Formulario T-10.
+- **Políticas y controles de ingeniería:** El flujo de integración y entrega continua (CI/CD) incluye controles automáticos de calidad. La política corporativa exige cobertura unitaria global de al menos 80%, análisis estático sin hallazgos bloqueantes y conformidad con el estilo de código. El análisis estático detecta problemas sin ejecutar el programa y el control de estilo revisa su formato. Para este proyecto se verifica además, de forma independiente, una cobertura mínima del 70% de la lógica de negocio en el Formulario T-10.
 
 - **Auditorías internas:** Se ejecutan auditorías internas trimestrales a cargo de auditores líderes certificados, orientadas a evaluar la trazabilidad entre requerimientos, código y matrices de prueba.
 
 ### 1.3.2 Modelo de Gobierno de Seguridad de la Información
 
-El marco de seguridad corporativo está alineado y certificado bajo la norma ISO/IEC 27001:2022, implementando un enfoque de confianza cero (*Zero Trust*) y gestión continua del riesgo.
+LafroX gestiona la seguridad mediante su Sistema de Gestión de Seguridad de la Información, cuyo certificado ISO/IEC 27001:2022 se declara en 1.4. Sus controles verifican la identidad y los permisos de acceso, evalúan vulnerabilidades y mantienen planes de continuidad.
 
-- **Responsable e instancias:** El Oficial de Seguridad de la Información (CISO) lidera el Comité de Seguridad y Privacidad, sesionando con periodicidad mensual para revisar incidentes, vectores de ataque y evaluar la gestión de vulnerabilidades.
+- **Responsable e instancias:** El CISO preside el Comité de Seguridad y Privacidad, que se reúne mensualmente para revisar incidentes, amenazas, vulnerabilidades y acciones de tratamiento. El comité coordina la función de seguridad y eleva los riesgos relevantes a la Gerencia General.
 
-- **Procesos DevSecOps:** Se integran análisis estáticos de seguridad de código (SAST) y análisis de composición de software (SCA) en cada confirmación de código. Se realizan pruebas de penetración (*ethical hacking*) externas de forma semestral. Esta cadencia es una política corporativa más exigente que el mínimo contractual, prueba de intrusión anual y antes de cada paso a producción (Distribuidora Puelche S.A., 2026b, RT-11.20), al que incluye y supera.
+- **Procesos DevSecOps:** En cada incorporación de código se ejecutan análisis de seguridad del código fuente (SAST) y de sus dependencias de terceros (SCA). La política corporativa contempla también pruebas de intrusión externas semestrales.
 
-- **Continuidad operacional:** Se gestionan planes de continuidad de negocio (BCP) y de recuperación ante desastres (DRP), sometidos a simulacros semestrales con corte controlado para verificar los umbrales de RTO ≤ 4 horas y RPO ≤ 15 minutos.
+- **Continuidad operacional:** Los planes de continuidad de negocio (BCP) y recuperación ante desastres (DRP) se prueban semestralmente mediante interrupciones controladas. Los ejercicios verifican los objetivos de restitución de hasta cuatro horas y pérdida de datos de hasta quince minutos.
 
-Para Puelche, las pruebas de intrusión serán realizadas por un tercero independiente de LafroX, con periodicidad al menos anual durante la Operación y antes de cada paso a producción. LafroX entregará al CLIENTE cada informe íntegro y su plan de remediación con responsables y plazos (Distribuidora Puelche S.A., 2026b, RT-11.20).
+En el proyecto de Puelche, las pruebas de intrusión previas a cada paso a producción complementan las revisiones periódicas. Un tercero independiente de LafroX las realizará, con frecuencia al menos anual durante la Operación y antes de cada paso a producción. Cada informe se entregará íntegro al CLIENTE junto con el plan de remediación, sus responsables y sus plazos (Distribuidora Puelche S.A., 2026b, RT-11.20, p. 24).
 
 ### 1.3.3 Modelo de Gobierno de Gestión del Conocimiento
 
@@ -400,7 +395,7 @@ Las fuentes citadas en este documento se listan a continuación en formato APA 7
 
 - Distribuidora Puelche S.A. (2026d). *Aclaraciones de la Licitación N° TFEP-01/2026*.
 
-- LafroX. (2026a). *Subdocumento 4: Arquitectura de la solución. Anexo 4-W: Dimensionamiento de capacidad*.
+- LafroX. (2026a). *Subdocumento 4: Arquitectura de la solución*.
 
 - LafroX. (2026b). *Subdocumento 6: Metodologías*.
 
@@ -418,9 +413,9 @@ La Tabla [1.7](LAFROX-Subdocumento1.md#tab:declaracion_ia) identifica las herram
 
 | **Sección** | **Herramienta** | **Finalidad del uso** | **Nivel en texto** | **Nivel en diagramas** | **Revisión humana (quién y qué verificó)** |
 | --- | --- | --- | --- | --- | --- |
-| 1.1 | Claude / Gemini; OpenAI Codex | Trayectoria, inventario y capacidad reservada de mesa | Alto | No aplica | Alex Aravena |
-| 1.2 | Claude / Gemini; OpenAI Codex | Organigrama, antigüedad, turnos y respaldos del NOC | Alto | Bajo | Alex Aravena |
-| 1.3 | Claude / Gemini; OpenAI Codex | Redacción de gobierno y responsabilidades | Alto | No aplica | Alex Aravena |
+| 1.1 | Claude / Gemini; OpenAI Codex | Trayectoria, inventario y puestos corporativos de atención | Alto | No aplica | [[REVISIÓN HUMANA]] |
+| 1.2 | Claude / Gemini; OpenAI Codex | Organigrama, antigüedad, turnos y respaldos del NOC | Alto | Alto | [[REVISIÓN HUMANA]] |
+| 1.3 | Claude / Gemini; OpenAI Codex | Redacción de gobierno y responsabilidades | Alto | No aplica | [[REVISIÓN HUMANA]] |
 | 1.4 | Claude / Gemini; OpenAI Codex | Comparación de experiencia y SLA | Alto | No aplica | Alex Aravena |
 | 1.5 | Claude / Gemini; Claude Code; OpenAI Codex | Síntesis de roles y dedicaciones | Alto | No aplica | Alex Aravena |
 | 1.6 | Claude / Gemini; OpenAI Codex | Redacción de alcance de alianzas | Alto | No aplica | Alex Aravena |
