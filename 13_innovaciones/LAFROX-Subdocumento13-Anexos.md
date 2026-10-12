@@ -14,7 +14,7 @@ Estos anexos detallan lo que el Capítulo 13 resume. El Anexo 13.A define los co
 
 ## Anexo 13.A — Contratos de datos de las innovaciones
 
-El RT-26.01 pide declarar qué interfaces consume o expone cada innovación (Distribuidora Puelche S.A., 2026b, RT-26.01, cap. 26, p. 44). Ninguna innovación abre una interfaz externa nueva: todas viajan por las interfaces del Capítulo 4, sección 4.1.6, y por la cola de sincronización de los terminales. Lo que cada una agrega es un contrato de datos versionado, que se presenta en la Tabla 13.A.1.
+El RT-26.01 pide declarar qué interfaces consume o expone cada innovación (Distribuidora Puelche S.A., 2026b, RT-26.01, cap. 26, p. 44). Ninguna innovación abre una interfaz externa nueva: todas viajan por las interfaces del Capítulo 4, sección 4.1.6, y por la cola de sincronización de los terminales. Lo que cada una agrega es un contrato de datos versionado, que se presenta en la Tabla 13.A.1. Cada contrato se identifica con la innovación que lo origina, el objeto que transporta y su versión mayor; por ejemplo, `inn03.historia-termica-lote.v1` es la versión 1 del contrato de historia térmica del lote de la innovación 3. El cuerpo del capítulo y el Formulario T-19 nombran cada contrato por su objeto.
 
 **Tabla 13.A.1. Contratos de datos de las innovaciones. Fuente: elaboración propia a partir del Capítulo 4, secciones 4.1 y 4.2, y del Capítulo 5.**
 

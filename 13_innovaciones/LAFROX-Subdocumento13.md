@@ -251,7 +251,7 @@ Las reducciones de I-01B e I-01C son metas propuestas de diseño, no mediciones 
 | I-01B | Unidades vencidas en el local / unidades entregadas, en la cohorte del piloto | Medición de los meses 13 a 15 | −25 % relativo | Mes 28 |
 | I-01C | Devoluciones con causal «vencimiento próximo» / devoluciones, en las rutas del piloto | Medición de los meses 13 a 15 | −20 % relativo | Mes 28 |
 
-I-01A es la condición para liberar el servicio al resto de las rutas: mide si el aviso acierta antes de medir si ahorra. I-01B e I-01C toman su línea base en la marcha blanca, porque el caso no desagrega el vencimiento posentrega ni la causal de devolución; por eso la meta se expresa como reducción relativa y no como un valor absoluto.
+I-01A es la condición para liberar el servicio al resto de las rutas: mide si el aviso acierta antes de medir si ahorra. I-01B e I-01C toman su línea base en la marcha blanca, porque el caso no desagrega el vencimiento posentrega ni la causal de devolución; por eso la meta se expresa como reducción relativa y no como un valor absoluto. Las reducciones del 25 % y del 20 % son metas propuestas de diseño: no provienen de una medición previa y no se cuentan como ahorro antes de su medición en el mes 28.
 
 ### 13.1.7 Riesgo de adopción
 
@@ -310,7 +310,7 @@ El incidente no se cierra sin reproducción satisfactoria y sin la confirmación
 
 La tecnología se compone de las siguientes piezas:
 
-- **Contrato de evidencia** `inn02.paquete-reproduccion.v1`: correlación seudonimizada, versión de la aplicación Kotlin, transiciones de estado, cola local, reintentos, orden causal y estado de conectividad. Excluye nombres, credenciales, firmas, fotos y contenido comercial. El detalle está en el Anexo 13.A.
+- **Contrato de evidencia:** correlación seudonimizada, versión de la aplicación Kotlin, transiciones de estado, cola local, reintentos, orden causal y estado de conectividad. Excluye nombres, credenciales, firmas, fotos y contenido comercial. El detalle está en el Anexo 13.A.
 - **Reproducción:** con recursos efímeros creados con Terraform dentro de QA o de Preproducción. No es un sexto ambiente: se respetan los cinco ambientes del RT-04.01 (Bases Técnicas Transversales, cap. 4, p. 10; Capítulo 4 de la oferta, sección 4.1.9).
 - **Integración:** la reproducción se engancha a la cadena de GitLab CI como un trabajo más (Capítulo 6 y Formulario T-10).
 - **Correlación:** la traza viaja con OpenTelemetry hacia la capa 8 de observabilidad, en Amazon CloudWatch.
@@ -436,9 +436,9 @@ La Tabla 13.12 separa lo que ya es alcance obligatorio de lo que esta innovació
 | Respuesta graduada con disposición de Calidad | RF-09.06 y RNG-04 (Capítulo 3, sección 3.2.4) |
 | Rechazo por sospecha de ruptura y evidencia de la cadena de frío ante la autoridad y el cliente | RF-09.07 y RF-09.09 |
 | Bloqueo en el borde en menos de 5 segundos y 24 horas sin enlace | Capítulo 4, sección 4.2, componente B-02 |
-| Trazabilidad por eventos GS1 EPCIS y FEFO por fecha de vencimiento | Capítulo 4, sección 4.1; RF-05.05 y RNG-10 |
+| Trazabilidad por eventos GS1 EPCIS; FEFO y alerta de vida útil remanente calculadas desde la fecha impresa | Capítulo 4, sección 4.1; RF-05.05, RF-02.09 y RNG-10 |
 
-La innovación agrega una medida continua por lote, la vida útil remanente estimada, derivada de su historia térmica real. Para Calidad, la regla graduada y el bloqueo no cambian: la medida le da evidencia cuantitativa para disponer en la zona gris. Para la bodega, M2 Inventario y M5 Preparación reciben un orden de salida sugerido por vida útil remanente real, que Calidad habilita familia por familia; es una sugerencia y no reemplaza el FEFO del RF-05.05. Para la innovación 1, entrega una vida útil más realista.
+La innovación agrega una medida continua por lote, la vida útil remanente estimada, derivada de su historia térmica real. A diferencia de la vida útil remanente del RF-02.09, que se calcula desde la fecha impresa y supone una cadena de frío perfecta, esta medida descuenta la exposición térmica que el lote tuvo realmente. Para Calidad, la regla graduada y el bloqueo no cambian: la medida le da evidencia cuantitativa para disponer en la zona gris. Para la bodega, M2 Inventario y M5 Preparación reciben un orden de salida sugerido por vida útil remanente real, que Calidad habilita familia por familia; es una sugerencia y no reemplaza el FEFO del RF-05.05. Para la innovación 1, entrega una vida útil más realista.
 
 La tecnología tiene cuatro componentes:
 
@@ -447,7 +447,7 @@ La tecnología tiene cuatro componentes:
 3. **Modelo cinético por familia** (lácteos, cecinas, congelados y otras). Usa la dependencia de la velocidad de deterioro con la temperatura (Arrhenius o Q10), integrada sobre la historia real del lote. Es el principio del sistema SMAS de gestión de la seguridad de alimentos refrigerados (Koutsoumanis et al., 2005) y del FEFO dinámico en la logística de alimentos (Jedermann et al., 2014). El modelo es determinista: los parámetros vienen de la literatura y de la ficha del proveedor, y los aprueban el Líder de Calidad y Pruebas, Maximiliano Miño, y Calidad del CLIENTE. No es aprendizaje automático.
 4. **Cálculo distribuido.** En el borde, el gateway B-02 (AWS IoT Greengrass, en los centros de distribución de Talca y Concepción) acumula la carga térmica de los lotes en cámara aunque el centro esté 24 horas sin enlace. En ruta, el termógrafo B-03 registra todo el trayecto y difunde la temperatura por Bluetooth, y la aplicación de reparto C-02 alerta cuando detecta una excursión; al volver el camión, el terminal descarga el registro completo (Capítulo 4, sección 4.2) y N-10 calcula la carga térmica del tramo de ruta. Durante la ruta, el lote conserva su última estimación y la alerta llega a Calidad por la red celular, de inmediato con cobertura o cuando el terminal la recupera. La estimación es una proyección derivada de los eventos: se puede reconstruir con otra versión del modelo para auditoría.
 
-El contrato de datos es `inn03.historia-termica-lote.v1` y se detalla en el Anexo 13.A.
+El contrato de datos de la historia térmica del lote se especifica en el Anexo 13.A.
 
 **Modelo analítico y alcance propio de la incorporación.** El RT-05.30 valora una capacidad analítica con modelo, variables, métrica de desempeño y plan de reentrenamiento documentados (Distribuidora Puelche S.A., 2026b, RT-05.30, cap. 5, p. 13). El modelo cinético sustenta esa capacidad y no se presenta como una invención de LafroX. La incorporación propuesta integra la historia térmica de cada lote con el cálculo en cámara sin enlace, la reconstrucción central y su uso por Calidad y por los módulos consumidores. Su aporte se argumenta por ese recorrido operativo, no por renombrar el registro de temperatura ni por atribuir novedad a Arrhenius o Q10. Los cuatro elementos del modelo se especifican a continuación.
 
