@@ -22,7 +22,7 @@ Av. Brasil 2241, Valparaíso
 
 FECHA DE EMISIÓN
 
-05 de octubre de 2026
+12 de octubre de 2026
 
 FIRMA DEL REPRESENTANTE LEGAL
 
@@ -114,7 +114,7 @@ Las decisiones aplican las Bases Administrativas (Distribuidora Puelche S.A., 20
 
 Los antecedentes de empresa, problema, alcance y arquitectura proceden de los Subdocumentos 1, 2, 3 y 4, respectivamente, sus remisiones señalan el apartado específico utilizado (LafroX SpA., 2026a, 2026b, 2026f, 2026g).
 
-El cuerpo explica los modelos críticos y las decisiones de operación. El anexo aporta diccionario, cardinalidades, catálogos, retención, índices, cachés, linaje, pruebas y mapeo de migración, las figuras de 5.1 reúnen también maestros, EDI/gobierno y telemetría, y 5-M remite a sus modelos. Los plazos y capacidades son compromisos o cálculos de diseño, no resultados de ensayos ejecutados.
+El cuerpo explica los modelos críticos y las decisiones de operación. El anexo aporta diccionario, cardinalidades, catálogos, retención, índices, cachés, linaje, pruebas y mapeo de migración, las figuras de 5.1 reúnen también maestros, EDI/gobierno y telemetría, y 5-L remite a sus modelos. Los plazos y capacidades son compromisos o cálculos de diseño, no resultados de ensayos ejecutados.
 
 <a id="sec-5-1"></a>
 
@@ -146,7 +146,7 @@ La Figura 5.1 presenta el MR general con las tablas principales y sus relaciones
 
 **Figura 5.1 — MR general de datos de la solución**
 
-Fuente: elaboración a partir de las decisiones 16.1 N° 1, N° 2, N° 4 y N° 14 del capítulo 16 del caso, de los requisitos RT-05.01 y RT-05.23 de las Bases Técnicas Transversales y de RF-01.07 y RF-09 del Formulario T-12.
+Fuente: elaboración a partir del Caso 02 (Distribuidora Puelche S.A., 2026d, sec. 16.1, decisiones 1, 2, 4 y 14, pp. 28–29), RT-05.01/.23 (Distribuidora Puelche S.A., 2026c, cap. 5, pp. 11 y 13) y T-12 (LafroX SpA., 2026b, RF-01.07 y RF-09).
 
 Cada registro de promesa tiene UUID propio como PK; version ordena sus cambios con unicidad por pedido. La entrega referencia la ORIGINAL del mismo pedido. El pedido conserva ORIGINAL y revisiones como compromisos distintos. Una entrega por pedido admite varios intentos y líneas fragmentadas por asignación/lote/unidad; POD y cobro se vinculan a esos hechos. La cabecera de custodia contiene el evento y su detalle identifica objetos y cantidades. El cliente y sus puntos se desarrollan en 5.1.3 y la Figura 5.8, sin crear una instalación de inventario por cada local de entrega. El documento fiscal emitido por ERP antecede al traslado; el POD acredita el hecho posterior.
 
@@ -174,7 +174,7 @@ La Figura 5.2 distingue recepción, lote, unidad, contenido, saldo, movimiento y
 
 **Figura 5.2 — Recepción, inventario, lote y unidad logística**
 
-Fuente: elaboración a partir de la decisión 16.1 N° 2 y N° 14 del caso, del Subdocumento 4, 4.1.3.6, y de RF-01.07 y RF-02 del Formulario T-12.
+Fuente: elaboración a partir del Caso 02 (Distribuidora Puelche S.A., 2026d, sec. 16.1, decisiones 2 y 14, pp. 28–29) y SD4/T-12 (LafroX SpA., 2026a, sec. 4.1.3.6; 2026b, RF-01.07 y RF-02).
 
 El saldo tiene grano sitio+ubicación+producto+lote+unidad de medida, la conversión se valida antes de comparar o reservar. La transacción bloquea el saldo, valida disponibilidad y registra movimiento/outbox sin duplicar reintentos. Varias asignaciones abastecen una línea de pedido. secuencia_documento solo existe si el documento de origen aporta ordinal; no se inventa para identificar un hecho histórico. Los ajustes y anulaciones de 5-C conservan causa, dirección y movimiento original, no sobrescriben saldo ni evidencia sin autorización.
 
@@ -196,7 +196,7 @@ La Figura 5.3 relaciona pedido, líneas, promesas, asignaciones y misiones; la r
 
 **Figura 5.3 — Pedido, línea, asignación, misión y confirmación de preparación**
 
-Fuente: elaboración a partir de RNG-01, RNG-15 y RNG-05 del Subdocumento 3, y del Subdocumento 4, 4.1.4.4.
+Fuente: elaboración a partir de SD3 (LafroX SpA., 2026b, Anexo 3.G, RNG-01/.05/.15) y SD4 (LafroX SpA., 2026a, sec. 4.1.4.4).
 
 La promesa conserva las condiciones de S3: 24 h para urbano ingresado antes de las 14:00 y 48 h para rural, periférico o abastecido por cross-docking, según RNG-15. OTIF evalúa ORIGINAL aun después de su cierre de vigencia. La preparación puede dividir una línea entre lotes/unidades y confirmar cantidades parciales; la reserva validada por PostgreSQL del sitio sigue confirmada localmente durante un corte, con consolidación central pendiente. El móvil no reserva contra una copia indicativa de stock.
 
@@ -214,7 +214,7 @@ La Figura 5.4 separa plan de ruta, viaje, parada, entrega e intento. BD_RUTAS co
 
 **Figura 5.4 — Ruta, viaje, paradas, entrega, intento y devolución**
 
-Fuente: elaboración a partir de las decisiones 16.1 N° 1, N° 3, N° 10 y N° 15 del caso, y del Subdocumento 4, 4.1.4.5 y 4.1.4.8.
+Fuente: elaboración a partir del Caso 02 (Distribuidora Puelche S.A., 2026d, sec. 16.1, decisiones 1, 3, 10 y 15, pp. 28–29) y SD4 (LafroX SpA., 2026a, secs. 4.1.4.5 y 4.1.4.8).
 
 Las líneas del intento conservan asignación, lote/unidad, cantidad aceptada/rechazada y causal. La identidad del fragmento se reutiliza en reintentos, distintas asignaciones no se deduplican por compartir producto/cantidad. Una devolución vincula el hecho de origen y su recepción/disposición, la cuenta de envases mantiene saldo por cliente y tipo, sin serialización individual. Los geofences de configuración se distinguen de coordenadas personales GPS, cuya conservación total es doce meses.
 
@@ -234,13 +234,13 @@ La Figura 5.5 relaciona evento, objetos, documentos, sensor, excursión y bloque
 
 **Figura 5.5 — Cadena de custodia de lote y de unidad logística en formato EPCIS**
 
-Fuente: elaboración a partir de RF-01.07, RF-09 y RNF-09.02 del Formulario T-12, del Subdocumento 4, 4.1.4.2, y de RT-05.23 según el capítulo 15 del caso.
+Fuente: elaboración a partir de T-12 (LafroX SpA., 2026b, RF-01.07, RF-09 y RNF-09.02), SD4 (LafroX SpA., 2026a, sec. 4.1.4.2) y Caso 02 (Distribuidora Puelche S.A., 2026d, cap. 15, RT-05.23, p. 26).
 
 Una cabecera puede mencionar varios objetos/cantidades, la asociación temporal vincula sensor, lote, unidad y producto con las lecturas efectivamente aplicables. Regla y calibración se conservan en su versión histórica. Una advertencia menor transitoria no equivale a disposición final, el bloqueo crítico y sostenido se aplica conforme S3/S4 y únicamente Calidad libera o rechaza con fundamento. Lecturas inválidas se preservan marcadas, separando defecto de sensor, excursión y pérdida de cobertura.
 
 La consulta forward sigue lote→contenido/unidades→objetos/eventos→asignaciones→intentos/entregas→documentos/POD. La backward invierte ese recorrido hasta recepción y proveedor; múltiples recepciones del mismo lote se distinguen por su evidencia, sin atribuir origen único cuando no puede determinarse.
 
-El retiro identifica clientes y documentos en ≤2 h desde la solicitud de Calidad. Su presupuesto de diseño es 5 min identificación +10 custodia +15 entregas/documentos +10 pendientes +15 expediente +15 revisión +15 margen =85 min, a demostrar en prueba. Calidad consulta autoridades locales y central; despacho de cada sitio contrasta carga/ruta y conductores aportan pendientes. Los clientes planificados con lote aún offline integran el universo potencial a contactar/bloquear, distinto de entregas confirmadas. A los 30 min sin respuesta se escala a Operaciones; una lista parcial que no identifica ese universo no cumple aceptación. El Anexo 5-J fija evidencia y prueba offline, un sello de última sincronización por sí solo no demuestra completitud.
+El retiro identifica clientes y documentos en <2 h desde la solicitud de Calidad (Distribuidora Puelche S.A., 2026d, cap. 18, criterio 1, p. 34). Su presupuesto de diseño es 5 min identificación +10 custodia +15 entregas/documentos +10 pendientes +15 expediente +15 revisión +15 margen =85 min, a demostrar en prueba. Calidad consulta autoridades locales y central; despacho de cada sitio contrasta carga/ruta y conductores aportan pendientes. Los clientes planificados con lote aún offline integran el universo potencial a contactar/bloquear, distinto de entregas confirmadas. A los 30 min sin respuesta se escala a Operaciones; una lista parcial que no identifica ese universo no cumple aceptación. El Anexo 5-J fija evidencia y prueba offline, un sello de última sincronización por sí solo no demuestra completitud.
 
 <a id="sec-5-1-8"></a>
 
@@ -254,7 +254,7 @@ La Figura 5.6 diferencia cobro, aplicación, cartera, rendición, documento, car
 
 **Figura 5.6 — Cobro, rendición, cuenta corriente de envases y documento tributario**
 
-Fuente: elaboración a partir de RT-16.14 y RT-16.09 de las Bases Técnicas Transversales, del Anexo 4-U del Subdocumento 4, y de la decisión 16.1 N° 6 y N° 12 del caso.
+Fuente: elaboración a partir de Bases Técnicas Transversales y Caso 02 (Distribuidora Puelche S.A., 2026c, RT-16.09, p. 29; 2026d, RT-16.14, p. 27 y decisiones 6/12, p. 28) y SD4 (LafroX SpA., 2026a, Anexo 4-U).
 
 La identidad fiscal usa tipo/emisor/folio/versión, hash verifica contenido y las referencias tipadas comprueban la entidad de negocio. POD admite varias evidencias por entrega/intento, el móvil puede cerrar localmente bajo autorización con evidencia durable, conservando estado de verificación central posterior.
 
@@ -300,7 +300,7 @@ La Figura 5.7 define hechos y dimensiones para analizar servicio, inventario, co
 
 **Figura 5.7 — Modelo dimensional de explotación**
 
-Fuente: elaboración a partir de RF-11.06 y RF-11.07 del Formulario T-12, de los criterios R18-04 y R18-11 del capítulo 18 del caso, y de RNG-09 del Subdocumento 3.
+Fuente: elaboración a partir de T-12 y SD3 (LafroX SpA., 2026b, RF-11.06/.07 y Anexo 3.G, RNG-09) y Caso 02 (Distribuidora Puelche S.A., 2026d, cap. 18, criterios 4 y 11, pp. 34–35).
 
 El modelo incluye dimensiones de fecha, cliente, producto, sitio, ruta y canal; cliente, producto, sitio y ruta conservan versiones y vigencias. El cálculo previo al grano del pedido evita multiplicar OTIF/importes al unir líneas; cada hecho conserva origen y controles monetarios/GPS. Redshift/QuickSight sirve analítica pesada y la API consultas operativas. 5-H fija fórmulas, audiencia, filtros, profundización y latencia; costo de servir inicia E2. RT-05.10/.24 deseables conservan su alcance no ofertado; RT-05.30 se oferta mediante la estimación determinista de vida útil remanente descrita en la sección 13.3.2 del SD13, sustentada en las series térmicas y la asociación sensor–lote de la sección 5.1.7. INN-03 desarrolla la incorporación distribuida de esta estimación al proceso operacional, diferenciada del modelo cinético que la sustenta.
 
@@ -324,7 +324,7 @@ Documento fiscal, POD, acuse técnico y recepción de mercadería conservan iden
 
 El Anexo 5-C define parámetros tipados, perfiles EPCIS/CBV separados, movimientos/reversiones y vigencias sin solapamiento; 5-F declara índices y unicidad global. Los casos de borde se comprobarán en PREPROD según 5-J, sin afirmar que el diseño documental ya equivale a restricciones ejecutadas.
 
-5-B/5-C precisan posición con zona, putaway compatible, slotting aprobado, picking con causa, capacidad no excedida, precio pactado protegido y cobro de preventa aplicado/rendido. inv_merma identifica pérdidas por conteo, preparación, góndola o devolución; MERMA/DESTRUCCION no duplica costo ni movimiento. Referencias, sensibilidad, retención, índices, migración y pruebas se desarrollan en 5-A a 5-L.
+5-B/5-C precisan posición con zona, putaway compatible, slotting aprobado, picking con causa, capacidad no excedida, precio pactado protegido y cobro de preventa aplicado/rendido. inv_merma identifica pérdidas por conteo, preparación, góndola o devolución; MERMA/DESTRUCCION no duplica costo ni movimiento. Referencias, sensibilidad, retención, índices, migración y pruebas se desarrollan en 5-A a 5-K.
 
 ### Vistas complementarias por dominio
 
@@ -336,7 +336,7 @@ La Figura 5.8 desarrolla maestros e identidades compartidas descritos en 5.1.3, 
 
 **Figura 5.8 — Maestros e identidades compartidas**
 
-Fuente: modelo de LafroX a partir de S3/S4 y RT-05.01.
+Fuente: elaboración a partir de SD3/T-12 (LafroX SpA., 2026b, RF-01 y Anexo 3.G), SD4 (LafroX SpA., 2026a, sec. 4.1.5) y RT-05.01 (Distribuidora Puelche S.A., 2026c, cap. 5, p. 11).
 
 Las equivalencias traducen claves externas a UUID canónicos y no crean identidades paralelas. La vigencia conserva historia y la copia local mantiene versión/fecha de consulta.
 
@@ -348,7 +348,7 @@ La Figura 5.9 desarrolla EDI, notificaciones y gobierno descritos en 5.1.9, con 
 
 **Figura 5.9 — EDI, notificaciones y gobierno**
 
-Fuente: modelo de LafroX a partir de S3/S4 y RT-05.01.
+Fuente: elaboración a partir de SD3/T-12 (LafroX SpA., 2026b, RF-10 y RF-18.03), SD4 (LafroX SpA., 2026a, Anexo 4-H) y RT-16.20/.23 (Distribuidora Puelche S.A., 2026c, cap. 16, pp. 29–30).
 
 Mensaje y aviso conservan identidad/resultado, auditoría y excepción preservan actor, contexto y versión. El acuse de integración no sustituye aceptación fiscal ni recepción física.
 
@@ -360,7 +360,7 @@ La Figura 5.10 desarrolla telemetría, copias de consulta y objetos descritos en
 
 **Figura 5.10 — Telemetría, copias de consulta y objetos**
 
-Fuente: modelo de LafroX a partir de S3/S4 y RT-05.01.
+Fuente: elaboración a partir de SD3/T-12 (LafroX SpA., 2026b, RF-09.03/.04), SD4 (LafroX SpA., 2026a, secs. 4.1.3.6 y 4.1.4.2) y RT-05.07/.08 (Distribuidora Puelche S.A., 2026c, cap. 5, p. 12).
 
 Raw, detalle, agregado, GPS y evidencia tienen plazos y permisos distintos. Las proyecciones se reconstruyen desde su autoridad; la evidencia durable pendiente no se trata como caché descartable.
 
@@ -417,7 +417,7 @@ La Tabla 5.1 compara los límites heredados de S4 y su consecuencia observable.
 | Manifiesto | 26 h | Keycloak; renovación al menos horaria con enlace | Verificación local y PIN; sin permisos nuevos offline |
 | Gateway térmico | Buffer 24 h | Reenvío y control local de Calidad | Escalamiento de cobertura |
 
-*Fuente: S4, 4.1.3.6 y ADR-06 (LafroX SpA., 2026a); autonomía y sincronización del Caso 02 (Distribuidora Puelche S.A., 2026d, cap. 15, p. 26).*
+*Fuente: elaboración a partir de SD4 (LafroX SpA., 2026a, sec. 4.1.3.6 y ADR-06) y de autonomía y sincronización del Caso 02 (Distribuidora Puelche S.A., 2026d, cap. 15, p. 26).*
 
 Estos plazos miden objetos distintos. La vigencia del manifiesto no extiende una credencial de turno vencida. Los relevos preinscritos de 8/16 h se verifican sin enlace, Keycloak firma y renueva con conexión. La carga central del POD no bloquea el acuse durable ni el cierre local autorizado.
 
@@ -508,7 +508,7 @@ La Tabla 5.2 separa bytes de origen de almacenamiento estimado, KB y GB son deci
 | Cartera histórica | 816.000 | 0,816 | 1,632 | Dos años; agregar toda deuda viva faltante |
 | Total base | 16.054.780 | 16,05478 | 32,10956 | Ampliar por perfilado, sin duplicar conjuntos |
 
-*Fuente: dimensionamiento de S4 (LafroX SpA., 2026a, Anexo 4-W); cálculo decimal de 5.3.*
+*Fuente: elaboración a partir del dimensionamiento de SD4 (LafroX SpA., 2026a, Anexo 4-W); estimaciones decimales calculadas en 5.3.1.*
 
 La sensibilidad heredada de almacenamiento es 30,73–33,49 GB. La ampliación de cartera viva y trace faltante tiene que cuantificarse durante el perfilado; no se declara cubierta por ese intervalo. El ERP conserva la emisión única y puede aportar copias documentales con su identidad fiscal, sin reemitirlas.
 
@@ -520,7 +520,7 @@ Leandro Chamorro, líder de datos de S1, coordinará el perfilado con responsabl
 
 Cada registro se acepta sin cambio, se corrige con regla aprobada/versionada o se aísla para decisión. Se conservan original y transformación, sin inventar cliente activo, ubicación, lote, medición ni fecha. Clientes históricos no resolubles permanecen consultables en staging hasta aprobación; saldos no localizados quedan pendientes de ubicación, sin atribuir una posición de tránsito como hecho comprobado.
 
-Los defectos de 5-C se concilian por conjunto. Calidad valida trazabilidad; Finanzas importes/cartera; bodega saldos y conteo. LafroX fija como criterio de aceptación de la migración una desviación monetaria de inventario de ≤0,3 % del valor contado, con toda diferencia explicada y aprobada. Es una meta de diseño que reduce en un orden de magnitud la diferencia actual de 2,3 % del conteo cíclico, y esa línea base no se acepta como tolerancia de carga. Los registros aislados permanecen consultables conforme RT-05.15.
+Los defectos de 5-C se concilian por conjunto. Calidad valida trazabilidad; Finanzas importes/cartera; bodega saldos y conteo. LafroX fija como criterio de aceptación de la migración una desviación monetaria de inventario de ≤0,3 % del valor contado, con toda diferencia explicada y aprobada. Es una meta de diseño que reduce aproximadamente 7,67 veces la diferencia actual de 2,3 % del conteo cíclico, y esa línea base no se acepta como tolerancia de carga. Los registros aislados permanecen consultables conforme RT-05.15.
 
 <a id="sec-5-3-3"></a>
 
@@ -528,7 +528,7 @@ Los defectos de 5-C se concilian por conjunto. Calidad valida trazabilidad; Fina
 
 La extracción usa conexiones de solo lectura al ERP/WMS y archivos originales para planillas. S3 conserva paquetes con hash, conteos, ventana y versión, Glue ejecuta transformaciones versionadas y PostgreSQL carga masivamente en staging antes de publicar maestros y hechos. DMS se limita a Talca y su esquema lector: no es herramienta universal ni aplica de nuevo negocio ya recibido por eventos.
 
-El Anexo 5-L declara mapeo semántico origen→destino, campos críticos, claves, conversión, rechazo, conciliación y responsable. El contrato de extracción incorporará nombres físicos comprobados durante el perfilado, sin inventar tablas legadas. Toda conversión mantiene procedencia, versión y valores originales; los ensayos comprobarán ese mapeo con datos completos.
+El Anexo 5-K declara mapeo semántico origen→destino, campos críticos, claves, conversión, rechazo, conciliación y responsable. El contrato de extracción incorporará nombres físicos comprobados durante el perfilado, sin inventar tablas legadas. Toda conversión mantiene procedencia, versión y valores originales; los ensayos comprobarán ese mapeo con datos completos.
 
 Se entregarán esquema perfilado, correspondencias aprobadas, código ETL versionado, manifiestos, defectos, tiempos, conciliación y actas go/no-go/rollback. El archivo vincula el documento ERP original; no reemite ni modifica su contenido.
 
@@ -540,9 +540,9 @@ La secuencia comprende preparación, carga inicial, ensayos, marcha blanca y cor
 
 Cada ensayo completo independiente recorre extracción, transferencia, transformación, carga, índices, delta, conciliación y rollback; el segundo comienza con extracción nueva y registra tiempos y resultados propios. Se trata de procedimientos futuros, sin actas de ejecución acreditadas.
 
-Las siete fases de la ola de ventas suman 285 min: 45+30+40+60+35+30+45. Con fuente/transferencia provisional de 10.476 MB, extracción requiere 3,88 MB/s y transferencia 5,82 MB/s; con margen 30 %, capacidad de 5,04 y 7,57 MB/s respectivamente. Si el perfilado comprobara 20.952 MB realmente transferidos, los valores serían 7,76/11,64 y con margen 10,09/15,13: no se aplica ese volumen por el solo factor de almacenamiento. Para inventario, los 15/10 min de extracción/transferencia de la Tabla A.26 requieren 3.348,6 MB /900 s =3,72 MB/s y /600 s =5,58 MB/s; con margen 30 %, 4,84/7,26 MB/s. Si el perfilado comprobara 6.697,2 MB físicos manteniendo esos tiempos, se requerirían 7,44/11,16 MB/s y con margen 9,67/14,51. El factor 2 de almacenamiento no acredita ese volumen de transferencia. Duración de cada fase = bytes de esa fase / tasa, sin dividir otra vez por la ventana.
+Las siete fases de la ola de ventas suman 285 min: 45+30+40+60+35+30+45. Con fuente/transferencia provisional de 10.476 MB, extracción requiere 3,88 MB/s y transferencia 5,82 MB/s; con margen 30 %, capacidad de 5,04 y 7,57 MB/s respectivamente. Si el perfilado comprobara 20.952 MB realmente transferidos, los valores serían 7,76/11,64 y con margen 10,09/15,13: no se aplica ese volumen por el solo factor de almacenamiento. Para inventario, los 15/10 min de extracción/transferencia de la Tabla A.25 requieren 3.348,6 MB /900 s =3,72 MB/s y /600 s =5,58 MB/s; con margen 30 %, 4,84/7,26 MB/s. Si el perfilado comprobara 6.697,2 MB físicos manteniendo esos tiempos, se requerirían 7,44/11,16 MB/s y con margen 9,67/14,51. El factor 2 de almacenamiento no acredita ese volumen de transferencia. Duración de cada fase = bytes de esa fase / tasa, sin dividir otra vez por la ventana.
 
-5-L calcula olas y reserva rollback. Las cargas iniciales ocupan noches previas con origen como escritor, el corte solo aplica delta/validación. Se excluye 1–25 septiembre, 1–31 diciembre y primeros tres días hábiles del cierre mensual. Ventana 22:00–06:00, protegiendo despacho 05:30–07:00; domingo para cargas largas. La fecha civil depende del inicio contractual; go/no-go exige tiempos medidos compatibles con ventana y reversión (Caso 02; Distribuidora Puelche S.A., 2026d, secs. 13.2–13.3, pp. 22–23).
+5-K calcula olas y reserva rollback. Las cargas iniciales ocupan noches previas con origen como escritor, el corte solo aplica delta/validación. Se excluye 1–25 septiembre, 1–31 diciembre y primeros tres días hábiles del cierre mensual. Ventana 22:00–06:00, protegiendo despacho 05:30–07:00; domingo para cargas largas. La fecha civil depende del inicio contractual; go/no-go exige tiempos medidos compatibles con ventana y reversión (Caso 02; Distribuidora Puelche S.A., 2026d, secs. 13.2–13.3, pp. 22–23).
 
 <a id="sec-5-3-5"></a>
 
@@ -587,12 +587,12 @@ La Tabla 5.3 relaciona los escenarios de S4 con su efecto sobre el modelo y la p
 | Peak de septiembre | Factor 2.600 sobre 1.400 | 14,66 TPS a las 12:00 | Índices sobre lote, unidad logística y pedido, no sobre fecha sola | Ensayo de pico de septiembre |
 | Prueba exigida por RT-09.06 | 14,66 × 1,5 | 21,99 TPS | Colas con trabajo acotado y encolamiento declarado, no espera indefinida | Informe de curva de respuesta |
 | Año 3, nube y portal | 36.000 pedidos y 305.000 líneas | 17,03 solicitudes por segundo | Índices y mantenimiento acotado; partición mensual solo en detalle sanitario y series/hechos analíticos | Revisión trimestral de crecimiento |
-| Año 3, WMS de Talca | Proyección de S4, Tabla A.36 | 3,15 TPS | Saldo/reserva con identidad estable; índices selectivos y mantenimiento sin pérdida de operaciones | Revisión trimestral de CPU y IOPS |
+| Año 3, WMS de Talca | Proyección de S4, Tabla A.40 | 3,15 TPS | Saldo/reserva con identidad estable; índices selectivos y mantenimiento sin pérdida de operaciones | Revisión trimestral de CPU y IOPS |
 | Escenario 3× de RT-09.03 | 93.000 pedidos y 780.000 líneas | 43,98 en nube y 8,05 en Talca | Escalamiento horizontal sin cambiar el esquema ni los índices | Prueba de estrés hasta el quiebre |
 
-*Fuente: Subdocumento 4, Anexo 4-W, 4-W.2 y 4-W.10, Tablas A.31 y A.36 y los umbrales de RT-09.01 a RT-09.03 y RT-09.06 de las Bases Técnicas Transversales (Distribuidora Puelche S.A., 2026c, cap. 9, p. 21).*
+*Fuente: elaboración a partir de SD4 (LafroX SpA., 2026a, Anexo 4-W, secs. 4-W.2 y 4-W.10, Tablas A.31 y A.40) y RT-09.01–03/.06 (Distribuidora Puelche S.A., 2026c, cap. 9, p. 21).*
 
-El máximo global combina preventa, reparto y portal; despacho distingue total distribuido y WMS Talca. Se adoptan los resultados de A.36 (3,15/8,05), cuya base visible 2,68 está redondeada, sin recalcular desde ese redondeo. Los índices priorizan lote/unidad y filtros operativos.
+El máximo global combina preventa, reparto y portal; despacho distingue total distribuido y WMS Talca. Se adoptan los resultados del Anexo 4-W.10, Tabla A.40 (3,15/8,05), cuya base visible 2,68 está redondeada, sin recalcular desde ese redondeo. Los índices priorizan lote/unidad y filtros operativos.
 
 Los escenarios conservan identidades/restricciones, UUID internos y equivalencias de origen. Son cálculos de diseño, 5.4.6 define su ensayo en PREPROD.
 
@@ -664,7 +664,7 @@ Actas identifican versión, ambiente y datos. Ensayos completos preceden cada co
 
 ## Declaración de uso de IA
 
-En cumplimiento de la sección 7.2 de las Aclaraciones de la licitación, la tabla siguiente declara el uso de GPT en este subdocumento y sus anexos, con una fila por sección principal (5.1–5.4) y por anexo (5-A–5-M). Bastian Trejo realizó la revisión humana del contenido y los diagramas; cada fila identifica los aspectos verificados. La declaración se consolida en el Formulario A-6.
+En cumplimiento de la sección 7.2 de las Aclaraciones de la licitación, la tabla siguiente declara el uso de GPT en este subdocumento y sus anexos, con una fila por sección principal (5.1–5.4) y por anexo (5-A–5-L). Bastian Trejo realizó la revisión humana del contenido y los diagramas; cada fila identifica los aspectos verificados. El nivel en diagramas es Alto en 5.1, donde se presentan las diez figuras; en las demás secciones y anexos se indica «No aplica» porque no contienen diagramas propios. La declaración se consolida en el Formulario A-6.
 
 <a id="tab-uso-ia"></a>
 
@@ -673,19 +673,18 @@ En cumplimiento de la sección 7.2 de las Aclaraciones de la licitación, la tab
 | Sección | Herramienta | Finalidad del uso | Nivel en texto | Nivel en diagramas | Revisión humana (quién y qué verificó) |
 | --- | --- | --- | --- | --- | --- |
 | 5.1 | GPT | Modelo conceptual y lógico; trazabilidad y modelos por dominio; figuras 5.1–5.10. | Alto | Alto | Bastian Trejo. Revisó las entidades, claves y relaciones, y su correspondencia con los diagramas y los procesos logísticos. |
-| 5.2 | GPT | Persistencia, CAP, integridad, calidad, explotación, retención e intercambio. | Alto | Alto | Bastian Trejo. Revisó los motores, la autoridad de escritura y las reglas de integridad, calidad, retención e intercambio. |
-| 5.3 | GPT | Volúmenes, saneamiento, herramientas, ensayos, conciliación y corte de migración. | Alto | Alto | Bastian Trejo. Revisó los volúmenes, las transformaciones y la secuencia de migración, incluidos los criterios de conciliación, corte y reversión. |
-| 5.4 | GPT | Escenarios de carga, índices, particiones, cachés, concurrencia y pruebas. | Alto | Alto | Bastian Trejo. Revisó los cálculos de carga, las consultas críticas y las estrategias de índices, particionado, caché y concurrencia. |
-| 5-A | GPT | Diccionario de atributos, políticas, identidades y campos de integración. | Alto | Alto | Bastian Trejo. Revisó las definiciones, tipos, claves y nulabilidad de los atributos y su coherencia con el modelo. |
-| 5-B | GPT | Cardinalidades, módulos e integridad referencial. | Alto | Alto | Bastian Trejo. Revisó las cardinalidades, la asignación por módulo y las restricciones de integridad entre entidades. |
-| 5-C | GPT | Dominios de valores, validaciones y causas de rechazo. | Alto | Alto | Bastian Trejo. Revisó los valores permitidos, las reglas de validación y las causas de rechazo de los datos. |
-| 5-D | GPT | Retención, archivado y eliminación por dominio y atributo. | Alto | Alto | Bastian Trejo. Revisó los plazos de conservación y las condiciones de archivado y eliminación por dominio. |
-| 5-E | GPT | Clasificación por sensibilidad y controles de protección. | Alto | Alto | Bastian Trejo. Revisó la clasificación de los datos y su correspondencia con los controles de acceso y protección. |
-| 5-F | GPT | Índices, columnas, restricciones y particionado. | Alto | Alto | Bastian Trejo. Revisó las columnas indexadas, las restricciones y el particionado respecto de las consultas previstas. |
-| 5-G | GPT | Claves de caché, vigencias e invalidación. | Alto | Alto | Bastian Trejo. Revisó las claves, los tiempos de vigencia y las condiciones de invalidación y reconstrucción de las cachés. |
-| 5-H | GPT | Fórmulas de indicadores, linaje y catálogo por fase. | Alto | Alto | Bastian Trejo. Revisó las fórmulas, las unidades y el origen de los datos utilizados en cada indicador. |
-| 5-I | GPT | Trazabilidad de RT-05 y evidencia documental. | Alto | Alto | Bastian Trejo. Revisó la correspondencia de los requisitos RT-05 con las secciones y evidencias citadas. |
-| 5-J | GPT | Protocolos de aceptación de datos y pruebas. | Alto | Alto | Bastian Trejo. Revisó los escenarios propuestos, sus criterios de aceptación y las evidencias previstas para las pruebas. |
-| 5-K | GPT | Respuestas a las observaciones del informe anterior. | Alto | Alto | Bastian Trejo. Revisó las respuestas a las observaciones y su correspondencia con las correcciones documentadas. |
-| 5-L | GPT | Mapeo de origen y destino, olas y ventana de corte. | Alto | Alto | Bastian Trejo. Revisó el mapeo de datos, los cálculos por ola y la secuencia de la ventana de corte. |
-| 5-M | GPT | Correspondencia del diccionario con los modelos del cuerpo. | Alto | Alto | Bastian Trejo. Revisó la correspondencia de los modelos complementarios con las figuras del cuerpo y el diccionario. |
+| 5.2 | GPT | Persistencia, CAP, integridad, calidad, explotación, retención e intercambio. | Alto | No aplica | Bastian Trejo. Revisó los motores, la autoridad de escritura y las reglas de integridad, calidad, retención e intercambio. |
+| 5.3 | GPT | Volúmenes, saneamiento, herramientas, ensayos, conciliación y corte de migración. | Alto | No aplica | Bastian Trejo. Revisó los volúmenes, las transformaciones y la secuencia de migración, incluidos los criterios de conciliación, corte y reversión. |
+| 5.4 | GPT | Escenarios de carga, índices, particiones, cachés, concurrencia y pruebas. | Alto | No aplica | Bastian Trejo. Revisó los cálculos de carga, las consultas críticas y las estrategias de índices, particionado, caché y concurrencia. |
+| 5-A | GPT | Diccionario de atributos, políticas, identidades y campos de integración. | Alto | No aplica | Bastian Trejo. Revisó las definiciones, tipos, claves y nulabilidad de los atributos y su coherencia con el modelo. |
+| 5-B | GPT | Cardinalidades, módulos e integridad referencial. | Alto | No aplica | Bastian Trejo. Revisó las cardinalidades, la asignación por módulo y las restricciones de integridad entre entidades. |
+| 5-C | GPT | Dominios de valores, validaciones y causas de rechazo. | Alto | No aplica | Bastian Trejo. Revisó los valores permitidos, las reglas de validación y las causas de rechazo de los datos. |
+| 5-D | GPT | Retención, archivado y eliminación por dominio y atributo. | Alto | No aplica | Bastian Trejo. Revisó los plazos de conservación y las condiciones de archivado y eliminación por dominio. |
+| 5-E | GPT | Clasificación por sensibilidad y controles de protección. | Alto | No aplica | Bastian Trejo. Revisó la clasificación de los datos y su correspondencia con los controles de acceso y protección. |
+| 5-F | GPT | Índices, columnas, restricciones y particionado. | Alto | No aplica | Bastian Trejo. Revisó las columnas indexadas, las restricciones y el particionado respecto de las consultas previstas. |
+| 5-G | GPT | Claves de caché, vigencias e invalidación. | Alto | No aplica | Bastian Trejo. Revisó las claves, los tiempos de vigencia y las condiciones de invalidación y reconstrucción de las cachés. |
+| 5-H | GPT | Fórmulas de indicadores, linaje y catálogo por fase. | Alto | No aplica | Bastian Trejo. Revisó las fórmulas, las unidades y el origen de los datos utilizados en cada indicador. |
+| 5-I | GPT | Trazabilidad de RT-05 y evidencia documental. | Alto | No aplica | Bastian Trejo. Revisó la correspondencia de los requisitos RT-05 con las secciones y evidencias citadas. |
+| 5-J | GPT | Protocolos de aceptación de datos y pruebas. | Alto | No aplica | Bastian Trejo. Revisó los escenarios propuestos, sus criterios de aceptación y las evidencias previstas para las pruebas. |
+| 5-K | GPT | Mapeo de origen y destino, olas y ventana de corte. | Alto | No aplica | Bastian Trejo. Revisó el mapeo de datos, los cálculos por ola y la secuencia de la ventana de corte. |
+| 5-L | GPT | Correspondencia del diccionario con los modelos del cuerpo. | Alto | No aplica | Bastian Trejo. Revisó la correspondencia de los modelos complementarios con las figuras del cuerpo y el diccionario. |
