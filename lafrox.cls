@@ -693,7 +693,7 @@
 % ---------------------------------------------------------------------------
 \NewDocumentEnvironment{tablalafrox}{m m m m O{} +b}{%
   \par
-  \LFXfiletear{#5}%
+  \LFXfiletear{#6}%
   \LFXcuerpotabla
   \setlength{\LTpre}{12pt}\setlength{\LTpost}{16pt}%
   % El cuerpo con filetes se entrega como tokens reales, no dentro de una
