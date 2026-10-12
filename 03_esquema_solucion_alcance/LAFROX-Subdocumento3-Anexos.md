@@ -749,25 +749,3 @@ LafroX. (2026b). *Subdocumento 1: Presentación de la empresa*.
 LafroX. (2026c). *Subdocumento 2: Comprensión del problema y de la necesidad*.
 Ley N.º 19.799. (2002, 12 de abril). *Sobre documentos electrónicos, firma electrónica y servicios de certificación de dicha firma*. Diario Oficial de la República de Chile. https://www.bcn.cl/leychile/navegar?idNorma=196640
 Ley N.º 21.719. (2024, 13 de diciembre). *Regula la protección y el tratamiento de los datos personales y crea la Agencia de Protección de Datos Personales*. Diario Oficial de la República de Chile. https://www.bcn.cl/leychile/navegar?idNorma=1209272
-
-## Declaración de uso de IA
-
-La sección 7.2 de las Aclaraciones de la licitación exige declarar el uso de inteligencia artificial y consolidarlo en el Formulario A-6. La última columna de la tabla indica quién revisó cada anexo y qué verificó.
-
-La Tabla 3.A.15 registra la asistencia utilizada.
-
-**Tabla 3.A.15 — Declaración de uso de IA. Fuente: registro del equipo.**
-
-| Sección | Herramienta | Finalidad del uso | Nivel en texto | Nivel en diagramas | Revisión humana (quién y qué verificó) |
-| --- | --- | --- | --- | --- | --- |
-| 3.A | Codex; Claude Code | Conversión del catálogo funcional a tablas y contraste con las Bases; alineación de RF-03.11 y RF-03.12 con S-09. | Alto | No aplica | Guillermo Castillo: revisión del catálogo funcional frente a las Bases y el caso, y validación de RF-03.11 y RF-03.12 con S-09. |
-| 3.B | Codex; Claude Code | Conversión del catálogo no funcional a tablas y contraste con las Bases. | Alto | No aplica | Guillermo Castillo: revisión del catálogo no funcional frente a las Bases Técnicas Transversales y validación de los métodos de verificación. |
-| 3.C | Codex; Claude Code | Contraste con los Subdocumentos 1 y 2 y redacción de supuestos, incluida la meta de autoatención S-42 y el horario de ambientes no productivos S-43. | Alto | No aplica | Guillermo Castillo: revisión de los supuestos frente al Anexo 2.2 del Subdocumento 2 y validación de S-42 y S-43. |
-| 3.D | Codex; Claude Code | Redacción de registros. | Alto | No aplica | Guillermo Castillo: revisión de las exclusiones frente al Anexo 2.2 del Subdocumento 2. |
-| 3.E | Codex; Claude Code | Redacción de registros. | Alto | No aplica | Guillermo Castillo: revisión de las restricciones frente al caso y su vínculo con el catálogo. |
-| 3.F | Codex; Claude Code | Redacción de registros. | Alto | No aplica | Guillermo Castillo: revisión de las decisiones de alcance y diseño frente a las Bases y los Subdocumentos 1 y 2. |
-| 3.G | Codex; Claude Code | Redacción de reglas; propuestas para RNG-04, RNG-08 y RNG-15 sobre excursión térmica, precio y promesa urbana desde las 14:00. | Alto | No aplica | Guillermo Castillo: revisión de las reglas de negocio frente al caso y validación de RNG-04, RNG-08 y RNG-15. |
-| 3.H | Codex; Claude Code | Redacción de consultas, incluida V-11. | Alto | No aplica | Guillermo Castillo: revisión de los vacíos y consultas, y validación del estado de cada consulta, incluida V-11. |
-| 3.I | Codex; Claude Code | Redacción de la participación de actores y del catálogo funcional. | Alto | No aplica | Guillermo Castillo: revisión de los 19 actores frente al Anexo 2.3 del Subdocumento 2 y validación de los responsables del Subdocumento 1. |
-| 3.J | Codex; Claude Code | Redacción de los criterios de aceptación. | Alto | No aplica | Guillermo Castillo: revisión de los criterios de aceptación y validación de sus metas, momentos y métodos. |
-| 3.K | Codex; Claude Code | Glosario. | Medio | No aplica | Guillermo Castillo: revisión de las siglas y códigos usados en los anexos. |

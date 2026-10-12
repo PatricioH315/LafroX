@@ -118,7 +118,7 @@ La innovación 3 concentra la mayor exposición, porque su error afectaría una 
 
 ## Anexo 13.D — Resolución de observaciones de la instancia anterior
 
-El Art. 46 de las Bases Administrativas pide resolver en forma explícita las observaciones de la instancia anterior, con una tabla de trazabilidad observación–respuesta–sección modificada (Distribuidora Puelche S.A., 2026a, Art. 46, p. 28). La Tabla 13.D.1 responde una por una las quince observaciones que la revisión del Informe 1 formuló al Capítulo 13, y la Tabla 13.D.2 responde las ocho observaciones generales y transversales que alcanzaban a este subdocumento.
+El Art. 46 de las Bases Administrativas pide resolver en forma explícita las observaciones de la instancia anterior, con una tabla de trazabilidad observación–respuesta–sección modificada (Distribuidora Puelche S.A., 2026a, Art. 46, p. 28). La Tabla 13.D.1 responde una por una las dieciséis observaciones que la revisión del Informe 1 formuló al Capítulo 13, incluida su valoración positiva,, y la Tabla 13.D.2 responde las ocho observaciones generales y transversales que alcanzaban a este subdocumento.
 
 **Tabla 13.D.1. Observaciones al Capítulo 13 de la revisión del Informe 1. Fuente: elaboración propia a partir de las observaciones de la instancia anterior (Distribuidora Puelche S.A., 2026a, Art. 46, p. 28).**
 
@@ -141,6 +141,7 @@ El Art. 46 de las Bases Administrativas pide resolver en forma explícita las ob
 | 13 | Crítico: la innovación 5 trae precios en dólares (Art. 50.2). | Ningún monto en el capítulo ni en el formulario. El impacto se expresa por rubro, clase y mes, y la valorización va en la Oferta Económica, Entregable 2, ítem 2.7. | 13.1.5 a 13.5.5; Formulario T-19, campos 10 a 12 |
 | 14 | Las fuentes no se citan dentro del texto; la versión 1.2 de EPCIS está superada por la 2.0 (2022). | Las fuentes se citan en APA 7.ª en el punto de uso, con correspondencia uno a uno con la lista. EPCIS 2.0 (GS1 AISBL, 2022) sustenta la tecnología y la madurez de la innovación 3. | 13.1.3 a 13.5.3; 13.3.2; 13.3.3; Referencias |
 | 15 | «Siete páginas sin una figura: ninguna innovación se ubica en un diagrama de la arquitectura». | La Figura 13.1 ubica las cinco innovaciones sobre las capas de la arquitectura, y las Figuras 13.2 a 13.6 recorren cada una. Cada figura se cita antes y se explica después. | Introducción (Figura 13.1); 13.1.4 a 13.5.4 |
+| 16 | OK: el anexo descarta bien lo que es requisito y no innovación: ruteo automático, costo de servir y registro continuo de temperatura. | Se mantiene el criterio. Cada innovación separa en una tabla lo que ya es alcance obligatorio de lo que agrega; el registro continuo de temperatura (criterio 3) y el costo de servir (criterio 11 y RF-11.08) se declaran alcance obligatorio y no innovación. | Tablas 13.2, 13.7, 13.12, 13.17 y 13.23; 13.3; 13.4.1 |
 
 Las cinco innovaciones del Informe 1 se reemplazaron; por eso las filas 1 a 5 responden con una innovación nueva y no con un ajuste de la anterior. En la innovación 3, el filtro del Art. 30° de las Bases Administrativas (p. 20) se acredita con el alcance descrito en 13.3.2, que distingue técnicamente la incorporación propuesta de las funcionalidades ya exigidas, además de separarla del registro continuo obligatorio.
 
@@ -150,16 +151,16 @@ Las cinco innovaciones del Informe 1 se reemplazaron; por eso las filas 1 a 5 re
 
 | N.º | Observación | Respuesta | Sección modificada |
 | --- | --- | --- | --- |
-| 16 | General: ningún archivo tiene logotipo, plantilla, paleta, encabezado ni pie de página. | Plantilla única de LafroX, con isotipo, encabezado y pie en todas las páginas. | Subdocumento, anexos y Formulario T-19 |
-| 17 | General: las portadas incluyen datos ajenos a la licitación y están rotuladas «Formulario T-22», que es un formulario del CLIENTE. | Portada con la identidad de LafroX, sin datos ajenos a la licitación ni rótulo de formularios del CLIENTE. | Portada |
-| 18 | General: los Subdocumentos 1, 2, 3, 5 y 13 en Arial y tamaño A4; cuerpo que aparenta ser inferior a 11 puntos. | Tamaño carta y cuerpo de 11 puntos (Art. 40.4). | Subdocumento, anexos y Formulario T-19 |
-| 19 | General: el archivo abre con una hoja que sólo dice «Página en blanco a propósito», con errata. | Se elimina la hoja. | Inicio del documento |
-| 20 | General: ningún archivo tiene índice, numeración de páginas ni firma (Art. 40° y 53°). | Índice detallado hasta el tercer nivel, folio correlativo y zona de media firma en el extremo inferior derecho de cada página. | Índice; pie de página |
-| 21 | Transversal: marcadores, instrucciones y notas de proceso dentro del entregable; nombres de archivo como fuente. | El capítulo no contiene marcadores, notas de proceso ni nombres de archivo como fuente, y cierra con la Declaración de uso de IA por sección, anexo y formulario (Aclaración §7.2). | Subdocumento completo; Declaración de uso de IA |
-| 22 | Transversal: la propuesta se contradice entre subdocumentos en decisiones de diseño. | Las innovaciones usan los componentes, módulos, meses y responsables del Subdocumento 1, del Capítulo 4, del Formulario T-14, del Anexo 7.D y del Anexo 8.A. | 13.1.4 a 13.5.4; Anexo 13.B |
-| 23 | Transversal: no es posible seguir un requerimiento desde el problema hasta un componente de la arquitectura. | Cada innovación separa lo que ya es alcance obligatorio con sus RF y RT, y el Anexo 13.B la traza a capas, componentes, módulos, paquetes, riesgos y flujo de caja. | Tablas 13.2, 13.7, 13.12, 13.17 y 13.23; Anexo 13.B |
+| 17 | General: ningún archivo tiene logotipo, plantilla, paleta, encabezado ni pie de página. | Plantilla única de LafroX, con isotipo, encabezado y pie en todas las páginas. | Subdocumento, anexos y Formulario T-19 |
+| 18 | General: las portadas incluyen datos ajenos a la licitación y están rotuladas «Formulario T-22», que es un formulario del CLIENTE. | Portada con la identidad de LafroX, sin datos ajenos a la licitación ni rótulo de formularios del CLIENTE. | Portada |
+| 19 | General: los Subdocumentos 1, 2, 3, 5 y 13 en Arial y tamaño A4; cuerpo que aparenta ser inferior a 11 puntos. | Tamaño carta y cuerpo de 11 puntos (Art. 40.4). | Subdocumento, anexos y Formulario T-19 |
+| 20 | General: el archivo abre con una hoja que sólo dice «Página en blanco a propósito», con errata. | Se elimina la hoja. | Inicio del documento |
+| 21 | General: ningún archivo tiene índice, numeración de páginas ni firma (Art. 40° y 53°). | Índice detallado hasta el tercer nivel, folio correlativo y zona de media firma en el extremo inferior derecho de cada página. | Índice; pie de página |
+| 22 | Transversal: marcadores, instrucciones y notas de proceso dentro del entregable; nombres de archivo como fuente. | El capítulo no contiene marcadores, notas de proceso ni nombres de archivo como fuente, y cierra con la Declaración de uso de IA por sección, anexo y formulario (Aclaración §7.2). | Subdocumento completo; Declaración de uso de IA |
+| 23 | Transversal: la propuesta se contradice entre subdocumentos en decisiones de diseño. | Las innovaciones usan los componentes, módulos, meses y responsables del Subdocumento 1, del Capítulo 4, del Formulario T-14, del Anexo 7.D y del Anexo 8.A. | 13.1.4 a 13.5.4; Anexo 13.B |
+| 24 | Transversal: no es posible seguir un requerimiento desde el problema hasta un componente de la arquitectura. | Cada innovación separa lo que ya es alcance obligatorio con sus RF y RT, y el Anexo 13.B la traza a capas, componentes, módulos, paquetes, riesgos y flujo de caja. | Tablas 13.2, 13.7, 13.12, 13.17 y 13.23; Anexo 13.B |
 
-Las filas 16 a 23 recogen las observaciones de forma y de coherencia que la revisión dirigió a toda la entrega; aquí se responde sólo lo que corresponde a este subdocumento, sus anexos y su formulario.
+Las filas 17 a 24 recogen las observaciones de forma y de coherencia que la revisión dirigió a toda la entrega; aquí se responde sólo lo que corresponde a este subdocumento, sus anexos y su formulario.
 
 ## Referencias
 
