@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.25.7 (MiKTeX 26.5) (format=lualatex 2026.9.17)  11 OCT 2026 23:51
+This is LuaHBTeX, Version 1.25.7 (MiKTeX 26.5) (format=lualatex 2026.9.17)  12 OCT 2026 00:02
  system commands enabled.
 **LAFROX-Subdocumento13-Anexos.tex
 (./LAFROX-Subdocumento13-Anexos.tex
@@ -1969,13 +1969,21 @@ Package luatex.def Info: logo/firma_representante.png  used on input line 16.
 
 <./logo/lafrox_isotipo_negro.pdf>]
 (./13_anexos/contenido.tex
-Underfull \hbox (badness 1270) in paragraph at lines 24--24
-[]|\TU/IBMPlexMono(0)/m/n/9.5 inn01. 
+LaTeX Font Info:    Font shape `TU/IBMPlexMono(0)/m/n' will be
+(Font)              scaled to size 9.19998pt on input line 14.
+
+Underfull \hbox (badness 1163) in paragraph at lines 24--24
+[]|\TU/IBMPlexMono(0)/m/n/10 inn01. 
  []
 
 
-Underfull \hbox (badness 1270) in paragraph at lines 24--24
-[]|\TU/IBMPlexMono(0)/m/n/9.5 inn04. 
+Underfull \hbox (badness 1163) in paragraph at lines 24--24
+[]|\TU/IBMPlexMono(0)/m/n/10 inn03. 
+ []
+
+
+Underfull \hbox (badness 1163) in paragraph at lines 24--24
+[]|\TU/IBMPlexMono(0)/m/n/10 inn04. 
  []
 
 File: logo/firma_representante.png Graphic file (type png)
@@ -2148,16 +2156,16 @@ L3 programming layer <2026-07-20>
 )
 
 Here is how much of LuaTeX's memory you used:
- 36978 strings out of 475695
- 244184,2373549 words of node,token memory allocated
- 741 words of node memory still in use:
-   8 hlist, 2 vlist, 2 rule, 1 local_par, 6 glue, 4 kern, 1 penalty, 3 glyph, 22
- attribute, 79 glue_spec, 12 attribute_list, 2 write, 1 pdf_action nodes
-   avail lists: 1:8,2:4647,3:816,4:510,5:3803,6:311,7:21204,8:42,9:2653,10:22,11
-:2419
- 58436 multiletter control sequences out of 65536+600000
- 117 fonts using 46094215 bytes
- 107i,23n,128p,1509b,5333s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 36981 strings out of 475695
+ 244179,2373549 words of node,token memory allocated
+ 753 words of node memory still in use:
+   8 hlist, 2 vlist, 2 rule, 1 local_par, 6 glue, 4 kern, 1 penalty, 3 glyph, 24
+ attribute, 79 glue_spec, 13 attribute_list, 2 write, 2 pdf_action nodes
+   avail lists: 1:5,2:4645,3:816,4:510,5:3803,6:309,7:21204,8:116,9:2653,10:22,1
+1:2419
+ 58439 multiletter control sequences out of 65536+600000
+ 118 fonts using 46330543 bytes
+ 107i,23n,128p,1509b,5331s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/henri/AppData/Local/Programs/MiKTeX/fonts/opentype/adobe/sourceserif/S
 ourceSerif4-RegularIt.otf><C:/Users/henri/AppData/Local/Programs/MiKTeX/fonts/op
 entype/public/stix2-otf/STIXTwoMath-Regular.otf><C:/Users/henri/AppData/Local/Pr
@@ -2167,9 +2175,9 @@ r.otf><C:/Users/henri/AppData/Local/Programs/MiKTeX/fonts/opentype/adobe/sources
 ans/SourceSans3-Regular.otf><c:/users/henri/appdata/local/programs/miktex/fonts/
 opentype/adobe/sourcesans/sourcesans3-medium.otf><C:/Users/henri/AppData/Local/P
 rograms/MiKTeX/fonts/opentype/adobe/sourcesans/SourceSans3-Semibold.otf>
-Output written on LAFROX-Subdocumento13-Anexos.pdf (15 pages, 113057 bytes).
+Output written on LAFROX-Subdocumento13-Anexos.pdf (15 pages, 115354 bytes).
 
-PDF statistics: 198 PDF objects out of 1000 (max. 8388607)
+PDF statistics: 201 PDF objects out of 1000 (max. 8388607)
  21 named destinations out of 1000 (max. 1048576)
  80 words of extra memory for PDF output out of 10000 (max. 100000000)
 

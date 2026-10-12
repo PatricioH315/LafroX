@@ -44,5 +44,5 @@
 \contentsline {subsection}{\numberline {13.5.6}Indicador de verificación}{48}{subsection.13.5.6}%
 \contentsline {subsection}{\numberline {13.5.7}Riesgo de adopción}{49}{subsection.13.5.7}%
 \contentsline {section}{Referencias}{50}{table.caption.37}%
-\contentsline {section}{Declaración de uso de IA}{52}{table.caption.37}%
+\contentsline {section}{Declaración de uso de IA}{51}{table.caption.37}%
 \contentsfinish 

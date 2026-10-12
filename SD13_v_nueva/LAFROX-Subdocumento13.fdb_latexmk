@@ -1,6 +1,6 @@
 # Fdb version 4
-["lualatex"] 1791773526.35895 "LAFROX-Subdocumento13.tex" "LAFROX-Subdocumento13.pdf" "LAFROX-Subdocumento13" 1791773551.74455 0
-  "13_innovaciones/contenido.tex" 1791773524.80895 91045 192eafdbca8e1c41e2659ecbc859b50b ""
+["lualatex"] 1791774393.6683 "LAFROX-Subdocumento13.tex" "LAFROX-Subdocumento13.pdf" "LAFROX-Subdocumento13" 1791774416.97086 0
+  "13_innovaciones/contenido.tex" 1791774386.79038 91026 c00c1cc5721986e19f1647b619d12391 ""
   "13_innovaciones/diagramas/Fig_13-1_Mapa_Innovaciones.pdf" 1791766065.21127 60911 d99f59481a9da9242ddc07c700645189 ""
   "13_innovaciones/diagramas/Fig_13-2_Recorrido_INN01.pdf" 1791754611.73836 33545 4306f72ddc5f086709fe056d709111f5 ""
   "13_innovaciones/diagramas/Fig_13-3_Recorrido_INN02.pdf" 1791754614.16553 36090 70e3046137086af18f28e6a54ecd02b2 ""
@@ -268,18 +268,18 @@
   "C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/luatex/luaotfload/luaotfload-unicode.lua" 1740607740 7918 4272855a25780b80472f3b58edd95e33 ""
   "C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/luatex/luaotfload/luaotfload.lua" 1740607740 13566 16df94dd2de231b2bca0aaa0190941fe ""
   "C:/Users/henri/AppData/Roaming/MiKTeX/tex/generic/config/language.dat" 1786480571.72539 2269 983cd649586da7942508216422e6c810 ""
-  "LAFROX-Subdocumento13.aux" 1791773548.04715 44792 683c24f92eb394e0f97bfa5ec14f40ad "lualatex"
-  "LAFROX-Subdocumento13.lof" 1791773548.12277 1538 baa7e358ce0fd4c142ee1f3390eb9e88 "lualatex"
-  "LAFROX-Subdocumento13.lot" 1791773548.12277 6023 0a3275bffbbd212c0df01b31348a1f45 "lualatex"
+  "LAFROX-Subdocumento13.aux" 1791774413.75969 44754 b28b9f183cdbc551ae2f09a2ac77eeb0 "lualatex"
+  "LAFROX-Subdocumento13.lof" 1791774413.82721 1538 baa7e358ce0fd4c142ee1f3390eb9e88 "lualatex"
+  "LAFROX-Subdocumento13.lot" 1791774413.82642 6023 41009a9e074231b2e91a3d195643ae00 "lualatex"
   "LAFROX-Subdocumento13.tex" 1791750946.81037 606 dd7309cbb6f866fa400319a5ca05cac7 ""
-  "LAFROX-Subdocumento13.toc" 1791773548.12277 4178 22b7e2311a2b1c5415045174ff6534be "lualatex"
+  "LAFROX-Subdocumento13.toc" 1791774413.82642 4178 06863f9429d5c24d51767457d9be94b7 "lualatex"
   "c:/users/henri/appdata/local/programs/miktex/fonts/opentype/adobe/sourcesans/sourcesans3-medium.otf" 1777831523 336848 e7d038378399e1c26443887c39d891d8 ""
   "lafrox-portada.tex" 1791768372.92516 15955 9ce928dc47553213548dc9ea71363a50 ""
   "lafrox.cls" 1791750946.58283 43048 c8d67e37a00316898dded7422041d1a3 ""
   "logo/firma_representante.png" 1791767713.04406 3752 c4e7165d55a0fa953adea93e245ea9c6 ""
   "logo/lafrox_isotipo_naranja.pdf" 1791750946.6467 3551 53a815340c8c86d6be9cfdb584630a55 ""
   "logo/lafrox_isotipo_negro.pdf" 1791750946.64469 3533 402261340b0015f729460532cd94959a ""
-  "sd13-comun.tex" 1791767969.97854 4511 8efd6208f1550dcc2a85d9310d7b5ec9 ""
+  "sd13-comun.tex" 1791774054.68168 4892 a6f2ff6cf9c87dda728d91d1cc028aa5 ""
   (generated)
   "LAFROX-Subdocumento13.aux"
   "LAFROX-Subdocumento13.lof"

@@ -95,5 +95,13 @@
 %% las tablas que no caben en una pagina (declaracion de uso de IA).
 \NewEnvironmentCopy{tablalafroxlarga}{tablalafrox}
 
+%% Identificadores de contrato en monoespaciada: \texttt escala la fuente
+%% monoespaciada bajo el cuerpo de tabla (8,7 pt); se compone a 10 pt
+%% nominales para quedar sobre el minimo de 9 pt (BA Art. 40.4).
+\newcommand{\LFXcontrato}[1]{{\fontsize{10pt}{12.5pt}\selectfont\texttt{#1}}}
+
+%% Palabras que no se cortan con guion en celdas angostas.
+\hyphenation{acreditada}
+
 %% Cifras y meses: alineacion derecha, con unidades en encabezado.
 \newcolumntype{Z}{>{\raggedleft\arraybackslash}X}

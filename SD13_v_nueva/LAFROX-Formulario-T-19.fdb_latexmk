@@ -1,5 +1,5 @@
 # Fdb version 4
-["lualatex"] 1791773486.75368 "LAFROX-Formulario-T-19.tex" "LAFROX-Formulario-T-19.pdf" "LAFROX-Formulario-T-19" 1791773506.92822 0
+["lualatex"] 1791774418.75228 "LAFROX-Formulario-T-19.tex" "LAFROX-Formulario-T-19.pdf" "LAFROX-Formulario-T-19" 1791774437.98206 0
   "C:/Users/henri/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1791761150.69996 943208 89da4836ee0e92c381435be35a3241b0 ""
   "C:/Users/henri/AppData/Local/MiKTeX/luatex-cache/generic/fonts/otl/ibmplexmono-bold.luc" 1789666459.45516 133158 3cabc9a0ec29d2e894f16f3e21ded02d ""
   "C:/Users/henri/AppData/Local/MiKTeX/luatex-cache/generic/fonts/otl/ibmplexmono-bolditalic.luc" 1789666460.03828 131896 3bea80aaf6b71ba227486b9064fa9b24 ""
@@ -260,17 +260,17 @@
   "C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/luatex/luaotfload/luaotfload-unicode.lua" 1740607740 7918 4272855a25780b80472f3b58edd95e33 ""
   "C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/luatex/luaotfload/luaotfload.lua" 1740607740 13566 16df94dd2de231b2bca0aaa0190941fe ""
   "C:/Users/henri/AppData/Roaming/MiKTeX/tex/generic/config/language.dat" 1786480571.72539 2269 983cd649586da7942508216422e6c810 ""
-  "LAFROX-Formulario-T-19.aux" 1791773503.95266 6010 8bc4a81b09df11971d3c87a3c1e8793c "lualatex"
+  "LAFROX-Formulario-T-19.aux" 1791774435.163 6010 8bc4a81b09df11971d3c87a3c1e8793c "lualatex"
   "LAFROX-Formulario-T-19.tex" 1791750946.91272 546 9118e2fd9e727c4bc0e299aa206f5388 ""
-  "LAFROX-Formulario-T-19.toc" 1791773503.98021 642 bf6bc11d5249ff62e9edc24ea4d3b6e0 "lualatex"
-  "T19/contenido.tex" 1791773373.94594 29451 711fb2db151505046f7dc009da58f9a9 ""
+  "LAFROX-Formulario-T-19.toc" 1791774435.17676 642 bf6bc11d5249ff62e9edc24ea4d3b6e0 "lualatex"
+  "T19/contenido.tex" 1791774386.79293 29440 604cc7d6dd9a9d37045c6f0286f27a6f ""
   "c:/users/henri/appdata/local/programs/miktex/fonts/opentype/adobe/sourcesans/sourcesans3-medium.otf" 1777831523 336848 e7d038378399e1c26443887c39d891d8 ""
   "lafrox-portada.tex" 1791768372.92516 15955 9ce928dc47553213548dc9ea71363a50 ""
   "lafrox.cls" 1791750946.58283 43048 c8d67e37a00316898dded7422041d1a3 ""
   "logo/firma_representante.png" 1791767713.04406 3752 c4e7165d55a0fa953adea93e245ea9c6 ""
   "logo/lafrox_isotipo_naranja.pdf" 1791750946.6467 3551 53a815340c8c86d6be9cfdb584630a55 ""
   "logo/lafrox_isotipo_negro.pdf" 1791750946.64469 3533 402261340b0015f729460532cd94959a ""
-  "sd13-comun.tex" 1791767969.97854 4511 8efd6208f1550dcc2a85d9310d7b5ec9 ""
+  "sd13-comun.tex" 1791774054.68168 4892 a6f2ff6cf9c87dda728d91d1cc028aa5 ""
   (generated)
   "LAFROX-Formulario-T-19.aux"
   "LAFROX-Formulario-T-19.log"
