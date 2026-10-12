@@ -318,7 +318,7 @@ Los tres primeros clientes corresponden a los proyectos detallados en el T-6. La
 
 ## 1.5 Estructura para Proyecto
 
-La organización del proyecto mantiene una jefatura responsable durante los 56 meses del contrato y separa la dirección de las especialidades técnicas (Distribuidora Puelche S.A., 2026a, Art. 17°).
+La organización del proyecto mantiene una jefatura responsable durante los 56 meses del contrato, que incluyen los 36 meses de operación desde el mes 21, y separa la dirección de las especialidades técnicas (Distribuidora Puelche S.A., 2026a, Art. 17°).
 
 El proyecto será liderado de forma exclusiva y continua por el Jefe de Proyecto nominado, **Alex Aravena**, quien actuará como interlocutor único frente a la contraparte técnica y directiva del cliente. Reportando directamente al Jefe de Proyecto, se constituye un comité técnico compuesto por siete líderes de dominio especializados, que cubren los roles mínimos del numeral 19.2 de las Bases Técnicas Transversales según la Tabla [1.6](LAFROX-Subdocumento1.md#tab:roles_minimos):
 
