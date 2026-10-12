@@ -1,5 +1,5 @@
 # Fdb version 4
-["lualatex"] 1791787447.49958 "LAFROX-Formulario-T-19.tex" "LAFROX-Formulario-T-19.pdf" "LAFROX-Formulario-T-19" 1791787474.90894 0
+["lualatex"] 1791789649.64103 "LAFROX-Formulario-T-19.tex" "LAFROX-Formulario-T-19.pdf" "LAFROX-Formulario-T-19" 1791789672.17189 0
   "C:/Users/henri/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1791761150 943208 89da4836ee0e92c381435be35a3241b0 ""
   "C:/Users/henri/AppData/Local/MiKTeX/luatex-cache/generic/fonts/otl/ibmplexmono-bold.luc" 1789666459 133158 36dbf7e1a08000fd32d51ed3b4d29d2b ""
   "C:/Users/henri/AppData/Local/MiKTeX/luatex-cache/generic/fonts/otl/ibmplexmono-bolditalic.luc" 1789666460 131896 cb43e2365ea4940c7ade3e2649cbe7ba ""
@@ -260,9 +260,9 @@
   "C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/luatex/luaotfload/luaotfload-unicode.lua" 1740607740 7918 4272855a25780b80472f3b58edd95e33 ""
   "C:/Users/henri/AppData/Local/Programs/MiKTeX/tex/luatex/luaotfload/luaotfload.lua" 1740607740 13566 16df94dd2de231b2bca0aaa0190941fe ""
   "C:/Users/henri/AppData/Roaming/MiKTeX/tex/generic/config/language.dat" 1786480571 2269 c2be9efecb8e53facf8213ae101f16af ""
-  "LAFROX-Formulario-T-19.aux" 1791787471 5422 a0595bd3d4496159a824a9445733fe69 "lualatex"
+  "LAFROX-Formulario-T-19.aux" 1791789669 5422 a0595bd3d4496159a824a9445733fe69 "lualatex"
   "LAFROX-Formulario-T-19.tex" 1791750946 546 9118e2fd9e727c4bc0e299aa206f5388 ""
-  "LAFROX-Formulario-T-19.toc" 1791787471 599 27643e2e82b1422c18c5a75dd472279a "lualatex"
+  "LAFROX-Formulario-T-19.toc" 1791789669 599 27643e2e82b1422c18c5a75dd472279a "lualatex"
   "T19/contenido.tex" 1791786793 31336 1b2efd99eb505ea85869d830a1f096a4 ""
   "c:/users/henri/appdata/local/programs/miktex/fonts/opentype/adobe/sourcesans/sourcesans3-medium.otf" 1777831523 336848 e7d038378399e1c26443887c39d891d8 ""
   "lafrox-portada.tex" 1791779926 16029 46922d12a6138d38830ef5c17c1a2363 ""
@@ -270,7 +270,7 @@
   "logo/firma_representante.png" 1791767713 3752 6d65773d686305d9e9e6a37b74366abf ""
   "logo/lafrox_isotipo_naranja.pdf" 1791750946 3551 53a815340c8c86d6be9cfdb584630a55 ""
   "logo/lafrox_isotipo_negro.pdf" 1791750946 3533 402261340b0015f729460532cd94959a ""
-  "sd13-comun.tex" 1791787427 6923 f8698bf85bb4b9ea0e68b3ceb323e44b ""
+  "sd13-comun.tex" 1791789594 6959 8f4cd32415b3077eeafe9bb46d1e75a5 ""
   (generated)
   "LAFROX-Formulario-T-19.aux"
   "LAFROX-Formulario-T-19.log"

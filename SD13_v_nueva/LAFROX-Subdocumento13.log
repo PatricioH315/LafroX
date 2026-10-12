@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.25.7 (MiKTeX 26.5) (format=lualatex 2026.9.17)  12 OCT 2026 03:45
+This is LuaHBTeX, Version 1.25.7 (MiKTeX 26.5) (format=lualatex 2026.9.17)  12 OCT 2026 04:20
  system commands enabled.
 **LAFROX-Subdocumento13.tex
 (./LAFROX-Subdocumento13.tex
@@ -2642,7 +2642,7 @@ Here is how much of LuaTeX's memory you used:
    avail lists: 1:7,2:4091,3:832,4:507,5:2251,6:233,7:13399,8:116,9:2112,10:25,1
 1:1571
  58660 multiletter control sequences out of 65536+600000
- 119 fonts using 46785903 bytes
+ 119 fonts using 46785675 bytes
  107i,24n,128p,1538b,2851s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/henri/AppData/Local/Programs/MiKTeX/fonts/opentype/adobe/sourceserif/S
 ourceSerif4-RegularIt.otf><C:/Users/henri/AppData/Local/Programs/MiKTeX/fonts/op
@@ -2655,7 +2655,7 @@ ts/opentype/adobe/sourcesans/SourceSans3-Regular.otf><c:/users/henri/appdata/loc
 al/programs/miktex/fonts/opentype/adobe/sourcesans/sourcesans3-medium.otf><C:/Us
 ers/henri/AppData/Local/Programs/MiKTeX/fonts/opentype/adobe/sourcesans/SourceSa
 ns3-Semibold.otf>
-Output written on LAFROX-Subdocumento13.pdf (52 pages, 538273 bytes).
+Output written on LAFROX-Subdocumento13.pdf (52 pages, 538272 bytes).
 
 PDF statistics: 840 PDF objects out of 1000 (max. 8388607)
  144 named destinations out of 1000 (max. 1048576)
