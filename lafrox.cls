@@ -131,7 +131,7 @@
 \newfontfamily\LFXsansfuerte{SourceSans3}[Extension=.otf,
   UprightFont=*-Semibold, ItalicFont=*-SemiboldIt]
 %  IBM Plex Mono para \texttt: rutas de planilla, opciones de clase y codigos.
-\RequirePackage[scale=0.92]{plex-mono}
+\RequirePackage[scale=0.96]{plex-mono}
 
 %  Matematica: STIX Two para lo que la fuente de texto no tiene, pero cifras,
 %  letras y los simbolos que aparecen en tablas (< > = + - <= >= +- x %) se
@@ -694,6 +694,7 @@
   \par
   \LFXfiletear{#5}%
   \LFXcuerpotabla
+
   \setlength{\LTpre}{12pt}\setlength{\LTpost}{16pt}%
   % El cuerpo con filetes se entrega como tokens reales, no dentro de una
   % macro: longtable necesita ver las filas en la entrada para cortar pagina.
