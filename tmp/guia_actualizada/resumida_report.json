@@ -1,0 +1,26 @@
+{
+  "source": "C:\\Users\\henri\\Downloads\\Guia para el cliente SD9 y SD13 con guion tecnico.docx",
+  "source_sha256": "d51b2d272985da5e4265bb9650d8ed9b01c60cfaf81fef8be74a5e77b91f7360",
+  "ppt": "C:\\Users\\henri\\OneDrive\\Documentos\\Universidad 2026S2\\FEP\\Bases PTE\\Principal\\LafroX\\Presentaciones\\Actualizada\\LafroX - Informe 2 - plan de calidad resumido.pptx",
+  "ppt_sha256": "17951701e239beebd773b791d65865b7c05759113e21afe1a3781b4bb8bddb16",
+  "output": "C:\\Users\\henri\\OneDrive\\Documentos\\Universidad 2026S2\\FEP\\Bases PTE\\Principal\\LafroX\\Presentaciones\\Actualizada\\Guia cliente SD9 y SD13 adaptada al plan resumido.docx",
+  "script_words": {
+    "33": 48,
+    "34": 50,
+    "35": 54,
+    "36": 58,
+    "37": 57
+  },
+  "total_script_words": 267,
+  "slides": [
+    33,
+    34,
+    35,
+    36,
+    37
+  ],
+  "tables": 5,
+  "changed_parts": [
+    "word/document.xml"
+  ]
+}

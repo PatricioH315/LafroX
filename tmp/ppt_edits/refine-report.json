@@ -1,0 +1,26 @@
+{
+  "source": "C:\\Users\\henri\\OneDrive\\Documentos\\Universidad 2026S2\\FEP\\Bases PTE\\Principal\\LafroX\\Presentaciones\\Actualizada\\LafroX - Informe 2 - numeracion Gantt y EDT ajustadas.pptx",
+  "output": "C:\\Users\\henri\\OneDrive\\Documentos\\Universidad 2026S2\\FEP\\Bases PTE\\Principal\\LafroX\\Presentaciones\\Actualizada\\LafroX - Informe 2 - transicion Gantt y EDT refinadas.pptx",
+  "source_sha256": "7410d6ecaa06e024b0fc18f72986f9091033b3b0083d46ba90ee17732fc9cd0e",
+  "output_sha256": "871bb57199ce6a5aef38416759f903aae4f2eaee9e9cba18df12872fafb1d7cf",
+  "slide_count": 51,
+  "modified_slides": [
+    19,
+    20,
+    21,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31
+  ],
+  "edt_overview_unchanged": true,
+  "detail_offset_emu": 914400,
+  "inactive_dots_identical_to_overview": true,
+  "transition20": "native Morph, 1400ms, automatic advance preserved",
+  "text_and_other_package_parts_unchanged": true
+}

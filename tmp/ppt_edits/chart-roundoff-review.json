@@ -1,0 +1,7 @@
+{
+  "chart_unchanged": true,
+  "workbook_unchanged": true,
+  "max_cache_roundoff": 3e-13,
+  "different_numeric_values_at_1e_9": 0,
+  "finalizer_note": "Strict decimal equality fails on inherited floating point serialization, e.g. 4640.8599999999997 versus 4640.86. Kept original unchanged."
+}
