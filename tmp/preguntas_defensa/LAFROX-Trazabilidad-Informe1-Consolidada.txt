@@ -1,0 +1,2921 @@
+
+=== PAGINA 1 ===
+LafroX SpA
+LICITACIÓN PÚBLICA
+Licitación N.° TFEP-01/2026
+Proyecto de Plataforma Digital de Misión Crítica
+Caso — Logística
+Sobre N.° 2 --- Oferta Técnica
+Propuesta Técnica
+Trazabilidad de observaciones — Informe 1
+Subdocumentos 1, 2, 3, 4, 5 y 13 · Tabla de trazabilidad — Art. 46
+MANDANTE
+Distribuidora Puelche S.A.
+PROPONENTE
+LafroX SpA
+RUT 77.418.902-K
+Av. Brasil 2241, Valparaíso
+REPRESENTANTE LEGAL
+Alex Aravena
+Jefe de Proyecto y Apoderado
+contacto@lafrox.cl
++56 32 250 4100
+FECHA DE EMISIÓN
+12 de octubre de 2026
+FIRMA DEL REPRESENTANTE LEGAL
+Alex Aravena
+Jefe de Proyecto y Apoderado · LafroX SpA
+LAFROX-Trazabilidad-Informe1-Consolidada.pdf 1
+
+=== PAGINA 2 ===
+LafroX SpA
+Índice general
+Índice general 2
+Lista de tablas 3
+1 Alcance 4
+2 Observaciones y respuestas 5
+2.1 Subdocumento 1 5
+2.2 Subdocumento 2 10
+2.3 Subdocumento 3 16
+2.4 Subdocumento 4 24
+2.5 Subdocumento 5 30
+2.6 Subdocumento 13 34
+2.7 Observación transversal 37
+3 Referencias 37
+LafroX SpA
+Propuesta Técnica
+Media firma: Alex Aravena
+2
+
+=== PAGINA 3 ===
+LafroX SpA
+Lista de tablas
+Tabla 1 Observaciones y respuestas — subdocumento 1 5
+Tabla 2 Observaciones y respuestas — subdocumento 2 10
+Tabla 3 Observaciones y respuestas — subdocumento 3 16
+Tabla 4 Observaciones y respuestas — subdocumento 4 24
+Tabla 5 Observaciones y respuestas — subdocumento 5 30
+Tabla 6 Observaciones y respuestas — subdocumento 13 34
+Tabla 7 Observaciones y respuestas — observación transversal 37
+LafroX SpA
+Propuesta Técnica
+Media firma: Alex Aravena
+3
+
+=== PAGINA 4 ===
+LafroX SpA Alcance
+1 Alcance
+La tabla consolida, en un solo formato, las observaciones que la revisión del Informe 1
+formuló a los Subdocumentos 1, 2, 3, 4, 5 y 13, con su respuesta y la sección modificada. Reúne
+212 observaciones: 211 de los subdocumentos y una transversal (34 del Subdocumento 1, 32
+del Subdocumento 2, 45 del Subdocumento 3, 52 del Subdocumento 4, 24 del Subdocumento
+5 y 24 del Subdocumento 13). El identificador combina el subdocumento y el número de la
+observación (por ejemplo, SD3-20 es la observación 20 del Subdocumento 3). Las observaciones
+del Subdocumento 4 conservan además los códigos EL-01 a EL-22, de la arquitectura lógica, y EF-
+01 a EF-30, de la arquitectura física y los centros de datos. SD13-17 a SD13-24 son observaciones
+generales y transversales aplicables al Subdocumento 13, y TR-01 responde la consideración
+transversal sobre fundamentación ingenieril, común a todos los subdocumentos.
+Las Tablas 1 a 6 presentan las observaciones de cada subdocumento y la Tabla 7 la observa-
+ción transversal; todas usan las mismas cuatro columnas. Cada respuesta comienza con su
+estado: «Documentado» indica que la corrección está en el entregable; «Se mantiene», que
+se conserva un aspecto valorado positivamente; «Trasladado», que el contenido pasó a otro
+subdocumento, y «Parcial», que la corrección está incompleta. Estos estados no equivalen a
+aceptación del CLIENTE.
+La tabla responde al Art. 46 de las Bases Administrativas, que pide resolver en forma explí-
+cita las observaciones de la instancia anterior con una tabla observación–respuesta–sección
+modificada (Distribuidora Puelche S.A., 2026a, Art. 46, p. 28). Las páginas citadas en las ob-
+servaciones del Subdocumento 4 corresponden a la revisión del Informe 1, y los ensayos que
+citan sus respuestas (AL-OFF-01, AL-DTE-01, AL-DR-01 y la prueba de rendimiento) forman
+parte de la aceptación del proyecto. Las cinco innovaciones observadas en el Subdocumento
+13 se reemplazaron, por lo que SD13-01 a SD13-05 responden con una innovación nueva.
+LafroX SpA
+Propuesta Técnica
+Media firma: Alex Aravena
+4
+
+=== PAGINA 5 ===
+LafroX SpA Observaciones y respuestas
+2 Observaciones y respuestas
+2.1 Subdocumento 1
+Tabla 1 Observaciones y respuestas — subdocumento 1. Fuente: revisión del Informe 1 y Subdocumento 1 de
+LafroX.
+N.º Observación del Informe 1 Respuesta Sección modificada
+SD1-01 Falta identidad empre-
+sarial y las portadas con-
+tienen datos ajenos a la
+licitación o se rotulan co-
+mo T-22.
+Documentado. Las dos portadas contienen
+identidad LafroX, logotipo, plantilla común,
+licitación, mandante y proponente, sin
+datos ajenos a la licitación ni rótulo T-22.
+T-7 identifica la estructura del SD1; T-6
+identifica la experiencia.
+SD1/T-6; encabe-
+zados y pies de
+ambos PDF
+SD1-02 Faltan índice, foliación y
+firma.
+Documentado. El SD1 y el T-6 tienen índi-
+ce y folios consecutivos (1–19 y 1–7). Las
+portadas muestran la firma gráfica y cada
+página posterior lleva media firma junto
+al folio. Los folios 4–6 del T-6 están orien-
+tados correctamente en el margen inferior
+derecho.
+SD1/T-6; folios de
+todas las páginas;
+portadas; T-6
+SD1-03 El tamaño de página, ti-
+pografía y formateo in-
+cumplen las instrucciones;
+tablas y títulos presentan
+problemas de legibilidad.
+Documentado. Las 26 páginas son tamaño
+carta, con cuerpo de 11 pt. Las siete tablas
+del SD1 van en vertical, cada una en una
+página, con cita y análisis; la tabla de roles
+usa tres columnas. La declaración de uso de
+IA usa 9,5 pt y no invade el pie. El T-6 repite
+los encabezados, no corta filas entre páginas
+y sus folios están corregidos (SD1-02).
+Tablas 1.1–1.7;
+Figura 1.1; T-6 tabla
+SD1-04 Faltan figuras propias, le-
+gibles, numeradas, citadas
+y explicadas; el SD1 no
+contiene imágenes.
+Documentado. La Figura 1.1 es un organi-
+grama propio, numerado, titulado y con
+fuente, citado antes y explicado después.
+Muestra que la Gerencia General dirige la
+empresa y que Seguridad reporta fuera de
+Operaciones. El texto del diagrama mide 9
+pt o más.
+1.2, Figura 1.1
+SD1-05 Un integrante debe leer
+completo y firmar cada
+PDF antes del envío.
+Documentado. La declaración de uso de
+IA identifica a Alex Aravena como revisor
+y lo verificado en cada sección; el T-6 tiene
+su propia fila. Ninguna celda de revisión
+humana queda sin completar.
+Tabla 1.7; Declara-
+ción de uso de IA;
+portadas SD1/T-6
+Continúa en el folio siguiente.
+LafroX SpA
+Propuesta Técnica
+Media firma: Alex Aravena
+5
+
+=== PAGINA 6 ===
+LafroX SpA Observaciones y respuestas
+Tabla 1 — Subdocumento 1 (continuación)
+N.º Observación del Informe 1 Respuesta Sección modificada
+SD1-06 El cuerpo debe resumir y
+analizar; el detalle va en
+formularios, y la Oferta
+Técnica no debe contener
+precios.
+Documentado. El cuerpo resume y analiza;
+T-6 detalla los once campos. Sus importes
+son rangos de contratos históricos, exigidos
+por el formulario base, no precios de esta
+solución. El cuerpo y el T-6 no contienen
+precios de la oferta.
+1.4, Tabla 1.5; T-6,
+Monto del contrato
+(rango)
+SD1-07 No se entregó el Formula-
+rio T-6.
+Documentado. El T-6 se entrega como
+archivo separado, con tres proyectos y sus
+once campos; el cuerpo lo cita y compara
+sus proyectos con el caso.
+T-6, Tabla 1; 1.4
+SD1-08 Se narran dos proyectos,
+pero se exigen al menos
+tres finalizados y en opera-
+ción en los últimos cinco
+años.
+Documentado. Se declaran implementacio-
+nes 2021–2022, 2022–2023 y 2023–2024, con
+operación activa desde 2022, 2023 y 2024.
+Los tres están dentro de los últimos cinco
+años a la fecha de la oferta.
+T-6, período de im-
+plementación/ope-
+ración; 1.4
+SD1-09 Faltan nueve de los once
+campos del formulario.
+Documentado. Los once campos están com-
+pletos para los tres proyectos. El campo de
+período explicita el inicio y el término de la
+implementación y el inicio de la operación
+activa.
+T-6, Tabla 1
+SD1-10 Los casos repiten criterios
+de Puelche sin demostrar
+complejidad equivalen-
+te mediante volúmenes,
+sitios, usuarios o transac-
+ciones.
+Documentado. Los tres proyectos se compa-
+ran con Puelche por flota, centros, entregas,
+registros y preventistas. En la Tabla 1.5, el
+99,95 % se cita a las Bases Técnicas Transver-
+sales (secciones 6.1 y 7.2, pp. 14 y 17–18) y
+los valores operacionales, al caso (secciones
+2.2 a 2.4, pp. 4–5). Los SLA históricos no se
+equiparan con el cumplimiento del contrato.
+1.4, Tabla 1.5; T-6
+SD1-11 Se afirma más de una
+década de trayectoria sin
+fundación, hitos ni cartera
+de clientes.
+Documentado. La reseña declara la fun-
+dación en 2012, hitos en 2015, 2018, 2021 y
+2024 y una cartera de ocho clientes. Los tres
+proyectos del T-6 se distinguen de las demás
+referencias.
+1.1; 1.4.1; T-6
+SD1-12 No se declaran líneas de
+negocio ni catálogo de
+productos y servicios.
+Documentado. Se declaran tres líneas de ne-
+gocio y un catálogo separado en productos,
+servicios profesionales e infraestructura y
+conectividad. Cada subsección tiene texto
+introductorio y describe capacidades de la
+empresa, no solo obligaciones del contrato
+con Puelche.
+1.1; 1.1.1–1.1.3
+SD1-13 Misión, visión y ESG ocu-
+pan espacio sin desarrollar
+lo pedido.
+Documentado. El desarrollo extenso de
+misión, visión y ESG se sustituyó por trayec-
+toria, inventario, líneas y catálogo.
+1.1; referencia al
+sitio
+Continúa en el folio siguiente.
+LafroX SpA
+Propuesta Técnica
+Media firma: Alex Aravena
+6
+
+=== PAGINA 7 ===
+LafroX SpA Observaciones y respuestas
+Tabla 1 — Subdocumento 1 (continuación)
+N.º Observación del Informe 1 Respuesta Sección modificada
+SD1-14 Hay prosa de folleto sin
+evidencia.
+Documentado. No aparecen las expresiones
+de folleto observadas. El texto explica la
+operación sin señal y la sincronización; la
+alianza con A WS se describe según el pro-
+grama y el servicio contratados, y Starlink
+como enlace alternativo. Las alianzas no se
+presentan como sustituto de pruebas.
+1.1; catálogo; 1.6
+SD1-15 No hay organigrama; sólo
+se describe una estructura
+plana.
+Documentado. El organigrama de la Figura
+1.1 representa la Gerencia General, el CISO,
+Operaciones y tres divisiones, y el texto
+recorre sus dependencias. El CISO preside el
+comité de seguridad, no la empresa.
+1.2; Figura 1.1
+SD1-16 La dotación no se desglosa
+por área, sede ni antigüe-
+dad, ni se concilia con un
+NOC 24×7.
+Documentado. La dotación de 124 personas
+se desglosa por área, sede y seis rangos de
+antigüedad. El NOC suma 32 personas (4
+× 7 + 4) para seis puestos activos en tres
+turnos, con reglas de relevo, ausencias y
+escalamiento: las 1.280 h semanales (32 × 40)
+cubren las 1.008 h de puestos activos (6 × 24
+× 7), con un margen bruto de 272 h.
+1.2; Tablas 1.3 y 1.4
+SD1-17 La tabla del equipo se
+confunde con la estructura
+empresarial y contiene
+certificaciones personales
+ajenas al rol.
+Documentado. La dotación corporativa y la
+organización del proyecto se presentan por
+separado. No se atribuye CKAD al Líder de
+Datos ni se declara una certificación DBA
+sin fabricante. La sección 1.5 se mantiene
+porque las Aclaraciones la exigen, y el equi-
+po nominado se desarrolla en el Capítulo
+12.
+Tabla 1.3; 1.5, Tabla
+1.6; Aclaraciones 11
+SD1-18 Se confunde alineación
+con certificación y faltan
+organismo, número, alcan-
+ce y vigencia.
+Documentado. Las certificaciones ISO 9001,
+ISO/IEC 27001 e ISO/IEC 20000-1 declaran
+organismo, número, alcance y vigencia,
+junto con su renovación y sus límites. CMMI
+se declara como evaluación Benchmark
+de nivel 3, no como certificación de RUP o
+DevSecOps.
+1.3.1–1.3.2; 1.4;
+Referencias
+SD1-19 La alianza A WS no declara
+nivel, competencias ni
+vigencia.
+Documentado. La alianza con A WS declara
+el nivel Advanced Tier Services, las compe-
+tencias DevOps y Migración, su término en
+marzo de 2027 y su renovación, sujeta a las
+condiciones del programa.
+1.6
+Continúa en el folio siguiente.
+LafroX SpA
+Propuesta Técnica
+Media firma: Alex Aravena
+7
+
+=== PAGINA 8 ===
+LafroX SpA Observaciones y respuestas
+Tabla 1 — Subdocumento 1 (continuación)
+N.º Observación del Informe 1 Respuesta Sección modificada
+SD1-20 Faltan alianzas de hardwa-
+re, conectividad e integra-
+ción on-premise.
+Documentado. Se declaran alianzas con
+Zebra para equipos, con Fortinet y Cisco
+para redes de borde y con Starlink como
+enlace alternativo, cada una con su función
+y vigencia, compatibles con el modelo
+híbrido.
+1.6; remisiones a
+T-11 y 12.3
+SD1-21 El laboratorio con cámaras
+y jaulas de Faraday es inve-
+rosímil y no verificable.
+Documentado. El SD1 ya no menciona ese
+laboratorio; describe la infraestructura, los
+cinco ambientes, el Centro de Operaciones,
+los equipos y la dotación. Las cámaras de
+frío que aparecen corresponden a proyectos
+y productos, no a un laboratorio corporati-
+vo.
+1.1–1.2
+SD1-22 El gobierno interno es
+una lista de normas, sin
+roles, comités, procesos,
+indicadores ni auditorías.
+Documentado. El gobierno interno asigna
+responsabilidades al Jefe de QA y al CISO,
+con comités mensuales, una cobertura
+global de pruebas de 80 %, auditorías trimes-
+trales y prácticas de seguridad y de gestión
+del conocimiento. El umbral de 70 % de
+cobertura de la lógica de negocio pertenece
+al proyecto y se trata aparte.
+1.3
+SD1-23 La gestión del conocimien-
+to describe lo que se hará
+para el cliente, no el fun-
+cionamiento interno de
+LafroX.
+Documentado. La gestión del conocimiento
+interna de LafroX se apoya en un repositorio
+administrado por QA, revisiones posteriores
+al cierre de cada incidente P1 o P2, talleres
+trimestrales y una revisión semestral de
+vigencia con responsables de actualización.
+1.3.3
+SD1-24 La capacidad instalada se
+reduce a nube contratable;
+faltan sedes, equipos y
+mesa dimensionada.
+Documentado. El SD1 describe las sedes y
+un inventario de 112 equipos, incluidos ocho
+puestos de mesa de ayuda (hasta siete de
+atención y uno de reserva). La sección 1.1 re-
+mite al dimensionamiento de la mesa en el
+Anexo 4-W .7 del SD4 y en las secciones 7.4.1
+y 7.5.6 del T-15: demanda supuesta, agen-
+tes por franja, cobertura, horas-hombre y
+seguimiento.
+1.1, Tablas 1.1/1.2;
+Anexo 4-W .7; T-15,
+7.4.1 y 7.5.6
+SD1-25 Hay dos pares contradic-
+torios de RTO/RPO en la
+misma página.
+Documentado. Ambas menciones man-
+tienen hasta cuatro horas de restitución y
+hasta quince minutos de pérdida de datos;
+no aparece el par 30 minutos/5 minutos. SD4
+usa los mismos objetivos para servicios críti-
+cos. Otros tiempos de procesos o pruebas no
+son ese par.
+1.1 y 1.3.2; 4.3.2.4
+Continúa en el folio siguiente.
+LafroX SpA
+Propuesta Técnica
+Media firma: Alex Aravena
+8
+
+=== PAGINA 9 ===
+LafroX SpA Observaciones y respuestas
+Tabla 1 — Subdocumento 1 (continuación)
+N.º Observación del Informe 1 Respuesta Sección modificada
+SD1-26 Se anuncian cinco ambien-
+tes y se listan seis, con STG
+y PREPROD duplicados.
+Documentado. Hay una sola lista de cinco
+ambientes: DEV , QA, PREPROD, PROD y DR;
+la capacitación usa espacios aislados. STG
+no aparece como sexto ambiente ni duplica
+PREPROD.
+1.1, Infraestructura
+y ambientes
+SD1-27 La especialización en mi-
+croservicios serverless no
+coincide con el monolito
+modular de la propuesta.
+Documentado. La reseña no presenta a
+LafroX como especialista en microservicios
+serverless; describe plataformas modulares
+híbridas, compatibles con la solución. El
+Líder de Desarrollo es responsable del
+monolito modular Laravel/PHP definido en
+el SD4 (ADR-01).
+1.1, Tabla 1.3 y 1.5;
+4.1.1
+SD1-28 Se ofrece evitar centros de
+datos on-premise pese a su
+obligatoriedad.
+Documentado. La propuesta combina un
+núcleo en la nube con componentes locales,
+y mantiene los centros de datos primario
+y secundario y las alianzas para equipos
+y redes. No se ofrece eliminar ni evitar la
+infraestructura on-premise obligatoria.
+1.1 y 1.6
+SD1-29 OK: orientación a la in-
+dustria del caso (consumo
+masivo, última milla, ca-
+dena de frío y operación
+desconectada).
+Se mantiene. LafroX declara su dedicación
+a la logística, la distribución de consumo
+masivo y el transporte de carga, con ope-
+raciones de conectividad intermitente. Su
+cartera reúne clientes de consumo masivo y
+los proyectos de referencia cubren cadena
+de frío y preventa sin señal.
+1.1; 1.4; 1.4.1; T-6
+SD1-30 OK: un responsable único
+por dominio, con línea
+de reporte a la jefatura de
+proyecto.
+Se mantiene. El Jefe de Proyecto actúa como
+interlocutor único y siete líderes de domi-
+nio le reportan directamente, cubriendo
+los roles mínimos del numeral 19.2 de las
+Bases Técnicas Transversales (Distribuidora
+Puelche S.A., 2026b, numeral 19.2).
+1.5; Tabla 1.6
+SD1-31 OK: reconoce los 56 meses
+del contrato y los 36 de
+operación (Art. 17°).
+Se mantiene. La jefatura del proyecto se
+mantiene durante los 56 meses del contrato,
+que incluyen los 36 meses de operación
+desde el mes 21 (Art. 17°), y la vigencia de
+los certificados se acredita por el mismo
+plazo.
+1.4; 1.5
+Continúa en el folio siguiente.
+LafroX SpA
+Propuesta Técnica
+Media firma: Alex Aravena
+9
+
+=== PAGINA 10 ===
+LafroX SpA Observaciones y respuestas
+Tabla 1 — Subdocumento 1 (continuación)
+N.º Observación del Informe 1 Respuesta Sección modificada
+SD1-32 OK: identifica el riesgo de
+conocimiento tácito de
+planificadores y jefes de
+centro, pertinente al caso.
+Trasladado. El riesgo pertenece al proyec-
+to del CLIENTE y salió del SD1, que ahora
+describe la gestión interna del conocimiento
+de LafroX (SD1-23). El SD3 adelanta las rutas
+a la Etapa 1 por la jubilación del planifica-
+dor y remite a la elicitación formal de su
+conocimiento prevista en el SD2.
+1.3.3; 3.2.1
+SD1-33 OK: considera ambientes
+de preproducción y de re-
+cuperación ante desastres
+con prueba semestral.
+Se mantiene. Los cinco ambientes incluyen
+PREPROD y DR. Los ejercicios semestrales
+de recuperación verifican un RTO de hasta
+cuatro horas y un RPO de hasta quince
+minutos, y los planes de continuidad y de
+recuperación se prueban semestralmente.
+1.1; 1.3.2
+SD1-34 Indicios de IA (IFEP01.26-
+A1): desde el Informe 2,
+cualquiera deja el sub-
+documento con puntaje
+0.
+Documentado. Los PDF del cuerpo y del T-6
+no contienen marcadores de redacción ni
+nombres de archivo como fuente. La decla-
+ración de uso de IA identifica la revisión
+humana de cada sección (SD1-05).
+SD1 declaración y
+Tabla 1.7; T-6
+2.2 Subdocumento 2
+Tabla 2 Observaciones y respuestas — subdocumento 2. Fuente: revisión del Informe 1 y Subdocumento 2 de
+LafroX.
+N.º Observación del Informe 1 Respuesta Sección modificada
+SD2-01 Sin identidad de empresa. Documentado. Se usa la plantilla corporati-
+va de LafroX, con logotipo, encabezado y pie
+con folio.
+Cuerpo y anexos,
+todas las páginas
+SD2-02 Las portadas rompen
+la ficción y se rotulan
+«Formulario T-22».
+Documentado. Las portadas no tienen
+datos ajenos a la licitación y se rotulan
+«Formulario T-7». La fecha de emisión es el
+12 de octubre de 2026.
+Cuerpo y anexos
+SD2-03 A4 y cuerpo menor a 11 pt. Documentado. El cuerpo y los anexos usan
+tamaño carta y cuerpo de 11 pt.
+Formato del docu-
+mento
+SD2-04 Sin índice, folio ni firma. Documentado. Hay índice enlazable, listas,
+folio y media firma en cada página posterior
+a la portada, que lleva la firma del represen-
+tante legal. Los anexos no traen una lista de
+figuras vacía.
+Cuerpo; anexos
+Continúa en el folio siguiente.
+LafroX SpA
+Propuesta Técnica
+Media firma: Alex Aravena
+10
+
+=== PAGINA 11 ===
+LafroX SpA Observaciones y respuestas
+Tabla 2 — Subdocumento 2 (continuación)
+N.º Observación del Informe 1 Respuesta Sección modificada
+SD2-05 El documento resume y el
+anexo lista.
+Documentado. La sección 2.5 resume y
+analiza los requerimientos del CLIENTE, los
+supuestos de LafroX y las exclusiones y res-
+tricciones del caso; los listados completos
+van en los Anexos 2.1 a 2.3.
+2.5; Anexos
+SD2-06 Palabras partidas en co-
+lumnas angostas y filas
+cortadas sin encabezado.
+Documentado. En el cuerpo no hay palabras
+cortadas en las tablas ni en los títulos ni
+en las referencias «Figura/Tabla/Anexo».
+Las tablas tienen 5 columnas o menos,
+salvo la 2.4, cuyo formato fija la sección
+7.2. Las celdas tienen una sola frase y las
+cifras van a la derecha. Las Tablas 2.1, 2.2
+y 2.3 caben cada una en una página y todas
+las tablas tienen análisis después. En los
+anexos se ensancharon las columnas de
+identificadores, que cortaban «S-/01» y
+«R-/01».
+Tablas 2.1–2.4;
+Anexos, Tablas
+2.A.1–2.A.8
+SD2-07 Indicios de IA: desde el
+Informe 2, cualquiera
+deja el subdocumento con
+puntaje 0.
+Documentado. La Tabla 2.4 declara, por
+sección y por anexo, la herramienta, la
+finalidad, el nivel de uso en texto (Alto) y en
+diagramas (Medio) y la revisión humana de
+Alex Aravena con lo verificado en cada caso.
+Ningún documento contiene marcadores de
+redacción.
+Tabla 2.4
+SD2-08 Un integrante lee y firma
+cada PDF.
+Documentado. Alex Aravena figura como
+revisor de cada sección y anexo en la Tabla
+2.4, y su media firma acompaña el folio de
+cada página posterior a la portada.
+Tabla 2.4; pie de
+página
+SD2-09 Ningún precio en la Oferta
+Técnica.
+Documentado. El único monto, «$ 4,2 millo-
+nes», son las diferencias de rendición que
+informa el caso.
+Tabla 2.1
+SD2-10 Crítico: no existe resumen
+ejecutivo; el documento
+parte en «2.1 Contextuali-
+zación del Entorno», sin
+síntesis, propuesta de valor
+ni enfoque ingenieril.
+Documentado. Se creó 2.1 con el título obli-
+gatorio «Resumen Ejecutivo del problema»:
+sintetiza la operación, la brecha de OTIF de
+82,4 % frente a 95 %, la raíz del problema
+y tres impactos cuantificados. Las Aclara-
+ciones posteriores limitan el 2.1 a «síntesis
+del problema, su magnitud y los actores
+afectados» y exigen no mezclar el problema
+con la solución. Por eso, la propuesta de
+valor y el enfoque se trasladaron al SD3, 3.1.
+2.1; 3.1
+Continúa en el folio siguiente.
+LafroX SpA
+Propuesta Técnica
+Media firma: Alex Aravena
+11
+
+=== PAGINA 12 ===
+LafroX SpA Observaciones y respuestas
+Tabla 2 — Subdocumento 2 (continuación)
+N.º Observación del Informe 1 Respuesta Sección modificada
+SD2-11 OK: buen AS-IS de las
+siete fases y de los dos
+puntos donde se pierde la
+trazabilidad.
+Se mantiene. El AS-IS se organiza en seis
+procesos, cada uno con su lista de pasos, su
+diagrama y un párrafo de análisis.
+2.3.2.1–2.3.2.6;
+Figuras 2.1–2.6
+SD2-12 Las secciones 2.3 (AS-IS) y
+2.4 (Diagnóstico) repiten
+el mismo contenido y
+parafrasean el Capítulo 4
+del caso.
+Documentado. Se eliminó la sección dupli-
+cada y la estructura sigue los títulos de las
+Aclaraciones. El párrafo bajo cada figura ya
+no repite los pasos: indica dónde se pierde
+el dato, qué efecto tiene después y qué fal-
+ta medir. Un párrafo final conecta los seis
+procesos con los tres problemas de 2.2.1.
+Las listas de pasos siguen el orden del caso
+porque describen el AS-IS.
+2.3.1; 2.3.2, párrafo
+final; Anexos, Tabla
+2.A.4
+SD2-13 Errores de lectura: el 7,8 %
+de quiebre se detecta en la
+preventa, no en la entrega,
+y «4,2 % de reentregas ≈
+588/mes» está mal calcula-
+do (≈ 59 al día).
+Documentado. El 7,8 % se refiere a líneas de
+pedido de la preventa, como en el caso. Las
+reentregas se muestran con el cálculo 1.400
+× 0,042 = 58,8 ≈ 59 al día, condicionadas al
+supuesto SP-01.
+2.1; 2.2.1; Tabla
+2.1; 2.3.2.5; Anexos,
+SP-01
+SD2-14 No distingue los tres pro-
+blemas del Cap. 19 del caso
+y los presenta sin jerarquía
+ni relación causal.
+Documentado. 2.2.1 separa los tres proble-
+mas y cita el capítulo 19 del caso. Un párrafo
+nuevo al final de 2.2.1 explica la cadena
+causal: sin lote en la recepción no hay tra-
+zabilidad; sin stock confiable ni evidencia
+de entrega el OTIF no se mide de una sola
+forma; sin registro de cada entrega el costo
+de servir sigue prorrateado con el criterio de
+2016. El párrafo final de 2.3.2 lo conecta con
+los seis procesos.
+2.1; 2.2.1; 2.3.2
+Continúa en el folio siguiente.
+LafroX SpA
+Propuesta Técnica
+Media firma: Alex Aravena
+12
+
+=== PAGINA 13 ===
+LafroX SpA Observaciones y respuestas
+Tabla 2 — Subdocumento 2 (continuación)
+N.º Observación del Informe 1 Respuesta Sección modificada
+SD2-15 No hay datos investigados
+fuera del caso ni se detecta
+el vacío del cross-docking.
+Documentado. El vacío de 16 h está docu-
+mentado y se trata como hipótesis SP-02,
+que se valida midiendo cada tramo. La
+sección 2.2.4 incorpora fuentes externas
+al caso: normativas (Ley N. º 21.719, 2024;
+Ministerio del Trabajo y Previsión Social,
+2002; Ministerio de Salud, 1996; Servicio
+de Impuestos Internos, 2024) y técnicas
+(GS1 Chile, s. f.-a, s. f.-b, s. f.-c; GS1, 2016;
+Moberg y Drummond, 2005; Mercier et al.,
+2017; Chopra y Meindl, 2016; Guerreiro et
+al., 2008; Toth y Vigo, 2014; Vidal et al., 2020;
+de Koster et al., 2007; Fildes et al., 2022;
+Agrawal et al., 2015; Boulaksil y Belkora,
+2017).
+2.2.4; 2.3.2; Figura
+2.3; 2.2.2; Anexos,
+SP-02
+SD2-16 OK: marco normativo
+pertinente y vinculado al
+caso.
+Se mantiene. Se agregó la normativa laboral
+del transporte. La viñeta de GS1 y EDI cita
+ahora las páginas vigentes de GS1 Chile, en
+lugar de una guía de 2020.
+2.2.2
+SD2-17 El marco legal ocupa cinco
+páginas y está escrito
+como solución.
+Documentado. El marco legal se redujo a
+cinco viñetas que describen obligaciones del
+CLIENTE. Las tensiones de 2.2.3 terminan
+en «Decisión que requiere la necesidad» y
+remiten el mecanismo al SD3 o al SD4. Se
+quitó de la Tabla 2.2 la columna de estrate-
+gia, que adelantaba la gestión del cambio.
+2.2.2; 2.2.3; Tabla
+2.2
+SD2-18 Cierra con una frase de
+evaluador («… no será
+competitiva»).
+Documentado. La frase no aparece en el
+subdocumento.
+2.2.2
+SD2-19 La estacionalidad solo
+aparece como prohibición
+de intervenir sistemas.
+Documentado. Se analiza el efecto del peak
+de septiembre (de ≈ 1.400 a ≈ 2.600 entregas
+diarias), de diciembre, de los cierres de mes
+y del invierno rural, con la cita a la sección
+B.2 del caso, pp. 38–39. La prohibición
+queda separada como restricción R-08.
+2.2.2; Tabla 2.3
+Continúa en el folio siguiente.
+LafroX SpA
+Propuesta Técnica
+Media firma: Alex Aravena
+13
+
+=== PAGINA 14 ===
+LafroX SpA Observaciones y respuestas
+Tabla 2 — Subdocumento 2 (continuación)
+N.º Observación del Informe 1 Respuesta Sección modificada
+SD2-20 No se desarrolla ninguna
+de las doce materias del
+numeral 16.2.
+Documentado. La nueva 2.2.4 cubre las
+ocho materias que faltaban: intercambio
+electrónico con el retail (mensajes, formato
+e intermediarios), cadena de frío (rangos,
+excursión y registro continuo), indicadores
+de servicio (OTIF, fill rate y pedido perfecto),
+costo de servir y costo por entrega, ruteo VR-
+PTW , preparación de pedidos y ubicación,
+pronóstico de demanda, logística inversa
+y modelos de atención al canal tradicional.
+Cada materia resume lo que establece la
+norma o la literatura técnica, con cita APA
+a una fuente externa verificada, y lo con-
+trasta con los datos del caso, sin proponer
+solución. Las otras cuatro (GS1, DTE, RSA y
+jornada) siguen en 2.2.2.
+2.2.2; 2.2.4; Refe-
+rencias
+SD2-21 Declara que el 99,95 %
+«se alinea con Tier III»,
+mientras el SD4.2 diseña
+Tier II.
+Documentado. El SD2 no menciona ningún
+Tier. El 99,95 % y el 99,9 % se citan desde
+las Bases Técnicas Transversales, cap. 7, pp.
+17–18, igual que en el SD4.
+2.5.1; Anexos, Ta-
+bla 2.A.2
+SD2-22 OK: mapa de once actores. Se mantiene. El mapa de actores se amplía
+de once a 19.
+2.4; Anexos, Tabla
+2.A.7
+SD2-23 Faltan la gerenta general,
+el gerente de operaciones,
+la jefa de bodega, el sindi-
+cato, las transportistas, los
+proveedores, la autoridad
+sanitaria y food service.
+Documentado. Los ocho figuran en la Tabla
+2.A.7 y en la matriz de la Tabla 2.2.
+Tabla 2.2; Anexos,
+Tabla 2.A.7
+SD2-24 «Conductor repartidor
+propio (42 personas)»: 42
+son los camiones; son 84
+conductores y peonetas.
+Documentado. El SD2 distingue los 42 ca-
+miones propios de los 84 conductores y
+peonetas propios, y registra aparte a los
+cerca de 160 conductores de las empresas
+transportistas.
+2.1; Tabla 2.2; Ane-
+xos, Tabla 2.A.7
+Continúa en el folio siguiente.
+LafroX SpA
+Propuesta Técnica
+Media firma: Alex Aravena
+14
+
+=== PAGINA 15 ===
+LafroX SpA Observaciones y respuestas
+Tabla 2 — Subdocumento 2 (continuación)
+N.º Observación del Informe 1 Respuesta Sección modificada
+SD2-25 Es una tabla, no una ma-
+triz influencia–interés, y
+no deriva en estrategia.
+Documentado. La Tabla 2.2 es ahora una
+matriz: la influencia (muy alta, alta, media)
+en las filas y el interés (alto, muy alto) en las
+columnas, con cada uno de los 19 actores
+en su celda según el Anexo 2.3. El análisis
+define cada nivel, explica por qué nadie
+tiene interés bajo y deriva una gestión por
+celda: la dirección decide, las jefaturas
+aportan las reglas no escritas, los clientes se
+informan, el terreno se consulta y capacita,
+y los externos se informan y formalizan.
+El nivel «Media-alta» pasó a «Media» en la
+Tabla 2.2 y en el Anexo 2.3, sin cambiar la
+ubicación de ningún actor.
+2.4, Tabla 2.2 y
+análisis; Anexos,
+Tabla 2.A.7
+SD2-26 No se analizan las con-
+tradicciones entre los
+entrevistados.
+Documentado. Se analizan las cinco tensio-
+nes, cada una con la decisión que requiere.
+2.2.3
+SD2-27 La promesa de 24 h se
+adopta como meta sin
+arbitrar la tensión.
+Documentado. La promesa queda segmenta-
+da en 24/48 h, igual que en el SD3 (RNG-15).
+El corte de las 14:00 se justifica con el perfil
+del día hábil del caso (sección B.1, p. 38): la
+preventa trabaja de 09:00 a 18:00, pero las ru-
+tas del día siguiente se planifican de 15:00 a
+18:30 con los pedidos cerrados; luego vienen
+la preparación de 22:00 a 06:00 y la salida de
+05:30 a 07:00. Son los mismos horarios que
+usa el SD4.
+2.2.3, tensión 1;
+3.2.2 y 3.2.4; 4.2.6
+SD2-28 Los supuestos son las
+restricciones del Cap. 10
+copiadas.
+Documentado. Las restricciones tienen su
+propia tabla («No son supuestos ni exclusio-
+nes») y se citan con la página del caso.
+Anexos, Tabla
+2.A.6; Tabla 2.A.3;
+Tabla 2.3
+SD2-29 No hay supuestos propios
+ni impacto si resultan
+falsos.
+Documentado. Cada supuesto tiene «Si
+resulta falso» y validación, y hay tres su-
+puestos propios del diagnóstico (SP-01 a
+SP-03). 2.5.2 ahora remite a los supuestos
+que dependen de la solución: S-17 a S-44 en
+el Anexo 3.C del SD3 (S-18, interfaces del
+ERP; S-19, telemetría) y SV-01 a SV-07, de
+volumen, concurrencia y crecimiento, en el
+Anexo 4-W del SD4.
+2.5.2; Anexos, Ta-
+blas 2.A.3 y 2.A.4
+Continúa en el folio siguiente.
+LafroX SpA
+Propuesta Técnica
+Media firma: Alex Aravena
+15
+
+=== PAGINA 16 ===
+LafroX SpA Observaciones y respuestas
+Tabla 2 — Subdocumento 2 (continuación)
+N.º Observación del Informe 1 Respuesta Sección modificada
+SD2-30 Cita en APA, pero no hay
+lista de referencias.
+Documentado. El cuerpo y los anexos tienen
+listas APA 7. ª coherentes con las citas: cada
+fuente de la lista se cita en el texto y cada
+cita está en la lista. Las citas a las Bases in-
+dican capítulo o artículo y página, según la
+sección 6 de las Aclaraciones. La referencia
+del caso usa su título real, sin «Caso 02».
+SD2, Referencias;
+Anexos, Referen-
+cias
+SD2-31 Seis marcadores de inser-
+ción de diagramas de flujo:
+los diagramas nunca se
+hicieron.
+Documentado. No quedan marcadores. Las
+seis figuras son propias, numeradas, citadas
+antes de aparecer y explicadas después. El
+orden cita → figura → análisis se cumple en
+las seis.
+Figuras 2.1–2.6
+SD2-32 Cero figuras en 23 páginas. Parcial. Seis figuras propias, con todo su
+texto en 9 pt o más, cada una junto a su
+cita; las Figuras 2.1 y 2.5 van en página
+horizontal. Quedan por corregir dentro de
+las imágenes las erratas «enERP», «41 % sin
+lote Riesgo», «enpapel» y «No Diferencias
+no conciliadas», el texto que toca el borde
+en dos cajas de la Figura 2.4 y la numeración
+de cajas que no coincide con los pasos del
+texto.
+Figuras 2.1–2.6
+2.3 Subdocumento 3
+Tabla 3 Observaciones y respuestas — subdocumento 3. Fuente: revisión del Informe 1 y Subdocumento 3 de
+LafroX.
+N.º Observación del Informe 1 Respuesta Sección modificada
+SD3-01 Sin identidad de empre-
+sa; la portada rompía la
+ficción y había una hoja
+«Página en blanco a pro-
+pósito». En el SD3 la razón
+social del proponente
+figuraba sin definir.
+Documentado. Se usa la plantilla corpora-
+tiva de LafroX, con logotipo, encabezado y
+pie con folio. La portada identifica a LafroX
+SpA, al mandante y al representante, y se
+rotula «Subdocumento 3 · Formulario T-7» y
+«Caso — Logística». La fecha de emisión es
+«12 de octubre de 2026» en los tres archivos.
+No hay página en blanco y la razón social
+está completa.
+SD3; Anexos; T-12
+Continúa en el folio siguiente.
+LafroX SpA
+Propuesta Técnica
+Media firma: Alex Aravena
+16
+
+=== PAGINA 17 ===
+LafroX SpA Observaciones y respuestas
+Tabla 3 — Subdocumento 3 (continuación)
+N.º Observación del Informe 1 Respuesta Sección modificada
+SD3-02 Sin índice, folio ni firma;
+tamaño A4.
+Documentado. Hay índice general, de tablas
+y de figuras, enlaces, folios y tamaño car-
+ta. Las portadas del cuerpo, anexos y T-12
+muestran la firma gráfica del representante,
+no sólo el nombre impreso. La p. 21 del cuer-
+po se presenta en carta horizontal mediante
+rotación de página de 90°; conserva el folio
+21 legible.
+SD3; Anexos; T-12
+SD3-03 Indicios de IA (IFEP01.26-
+A1): desde el Informe 2,
+cualquier indicio deja el
+subdocumento con puntaje
+0.
+Documentado. Los indicios señalados se
+responden en las observaciones SD3-40
+a SD3-43: no quedan nombres de archivo
+como fuente, notas de corrección, cambios
+de voz ni códigos sin glosario. La Tabla 3.6
+declara, por sección, anexo y formulario, la
+herramienta, la finalidad, el nivel de uso y
+quién revisó y qué verificó; ninguna celda de
+revisión humana queda sin completar.
+SD3, Declaración
+de uso de IA, Tabla
+3.6
+SD3-04 Tablas con palabras parti-
+das y encabezados que no
+se repiten.
+Documentado. En los anexos y el T-12, los
+encabezados de las tablas largas se repiten y
+no hay palabras truncadas por bordes, filas
+cortadas entre páginas ni celdas ilegibles.
+Se ajustó el ancho de la columna ID en
+las Tablas 3.A.6, 3.A.9 y 3.A.10; en T-12, el
+encabezado repetido «ID requerimiento»
+se simplificó a «ID» para evitar el corte de
+palabra.
+Anexos, Tablas
+3.A.6, 3.A.9 y
+3.A.10 y páginas
+de continuación;
+Formulario T-12,
+Partes A y B
+SD3-05 Ningún precio en la Oferta
+Técnica.
+Documentado. El cuerpo, los anexos y el T-
+12 no contienen precios en ninguna moneda
+(SD3-39).
+SD3, anexos y T-12
+SD3-06 Hay que rehacer el docu-
+mento: 138 páginas, de las
+cuales el 87 % son tablas de
+listado. No hay esquema
+de la solución y faltan las
+secciones de implemen-
+tación, implantación y
+operación. Se esperan de
+25 a 35 páginas de análisis.
+Documentado. El desarrollo del cuerpo ocu-
+pa 29 páginas (5 a 33) de sus 37 folios, con
+los títulos obligatorios de las Aclaraciones
+(3.1 a 3.4), ocho figuras y las secciones de
+implementación, implantación y operación.
+Los catálogos, supuestos, restricciones,
+decisiones y reglas pasaron a los Anexos
+3.A–3.K (165 páginas) y al Formulario T-12
+(260 páginas).
+SD3; Anexos; T-12
+Continúa en el folio siguiente.
+LafroX SpA
+Propuesta Técnica
+Media firma: Alex Aravena
+17
+
+=== PAGINA 18 ===
+LafroX SpA Observaciones y respuestas
+Tabla 3 — Subdocumento 3 (continuación)
+N.º Observación del Informe 1 Respuesta Sección modificada
+SD3-07 Crítico: no hay modelo
+conceptual ni figuras en
+138 páginas.
+Documentado. Hay ocho figuras propias, ci-
+tadas antes y explicadas después. La Figura
+3.4 presenta la vista general del modelo y se
+descompone en cuatro figuras autónomas
+(3.5–3.8) que explican actores, interfaces,
+módulos y sistemas externos, con texto de
+9 pt o más. Se conserva la vista general y se
+justifica su menor tamaño de texto por el
+desarrollo posterior en partes legibles.
+3.3; 3.4.2 (figuras)
+SD3-08 La solución se describe en
+dos páginas y en tablas de
+capas; no se entiende sin
+leer el SD4.
+Documentado. 3.1 explica la solución
+por problema y declara los doce módu-
+los M1–M12. 3.3 explica cada figura y 3.4.1
+recorre la jornada operacional de 22:00 a
+cierre. La Tabla 3.4 asigna cada capacidad a
+un módulo y una etapa.
+3.1.1; 3.3; 3.4.1;
+Tabla 3.4
+SD3-09 La matriz de trazabili-
+dad tiene unas 19 filas
+agregadas y no señala los
+paquetes de la EDT.
+Documentado. El T-12 incluye la columna
+«Paquete EDT (T-14)» en sus 645 filas: 415
+asignaciones directas, 193 indirectas y 37
+«No aplica». Se preservaron los 222 códigos y
+nombres de paquetes. La columna y la des-
+cripción correspondiente están presentes en
+el formulario.
+3.2.3; Anexo 3.A;
+Formulario T-12
+(Partes A y B)
+SD3-10 OK: trata por separado los
+tres problemas del caso.
+Se mantiene. Los tres problemas encabezan
+3.1.1 y la Tabla 3.3.
+3.1.1; Tabla 3.3
+SD3-11 OK: las exclusiones son
+fieles al Cap. 11 y «Lo que
+no haremos» es claro.
+Se mantiene. Quedan nueve exclusiones con
+los códigos del SD2 y un análisis del riesgo
+que protege cada una.
+3.2.2; Anexos, Ane-
+xo 3.D
+SD3-12 No cita la objeción de la
+gerenta general, no analiza
+dependencias entre épicas
+y el hito de septiembre de
+2026 no figura.
+Documentado. Se acoge la objeción de la
+gerenta: las rutas se adelantan a la Etapa 1
+por la jubilación del planificador. Las depen-
+dencias se analizan por grupo de familias.
+Se trata el vencimiento de la suspensión del
+proveedor de lácteos en septiembre de 2026,
+junto con la consulta V-13, ahora con cita al
+caso (cap. 13.1 y 13.2, p. 22).
+3.1.2; 3.2.1
+SD3-13 Contradicción con el Art.
+17°: se decía «Marcha
+blanca de la Etapa 2…
+Meses 13–20».
+Documentado. La Tabla 3.1 fija la Etapa 2
+con desarrollo en los meses 13–18, marcha
+blanca en los meses 19–20 y producción en
+el mes 21. También se analiza la compatibili-
+dad del calendario con las prohibiciones de
+septiembre y diciembre (S-17 y V-17).
+Tabla 3.1 y 3.1.2
+Continúa en el folio siguiente.
+LafroX SpA
+Propuesta Técnica
+Media firma: Alex Aravena
+18
+
+=== PAGINA 19 ===
+LafroX SpA Observaciones y respuestas
+Tabla 3 — Subdocumento 3 (continuación)
+N.º Observación del Informe 1 Respuesta Sección modificada
+SD3-14 Las etapas no cuadran:
+OTIF y fill rate se asigna-
+ban a la Etapa 2 con RF en
+la Etapa 1, y el EDI de la
+Etapa 2 se habilitaba en los
+meses 10–16.
+Documentado. OTIF y fill rate quedan en
+la Etapa 1 (RF-11.03 y RF-11.04, E1; D-01 y
+D-02; M10). La Etapa 2 conserva solo el costo
+de servir. No quedan menciones a «meses
+10–16». El canal moderno (familia RF-12)
+entra en producción en el mes 21.
+3.2.1; Tabla 3.4;
+Anexos, Tabla 3.A.1
+(RF-11.03 y RF-
+11.04) y Tabla 3.A.9
+(D-01 y D-02)
+SD3-15 Exclusiones y restricciones
+infladas con relleno licita-
+torio (EX-12 a EX-14, R-14 a
+R-27).
+Documentado. Quedan nueve exclusiones
+(E-01 a E-09) y doce restricciones (R-01 a
+R-12), todas del caso.
+Anexos, Tablas
+3.A.7 y 3.A.8
+SD3-16 Los supuestos no tienen
+identificador, fundamento
+ni validación; se cita un
+«S-41» inexistente.
+Documentado. Hay 44 supuestos (S-01 a S-
+44) con columnas de supuesto, fundamento,
+impacto si resulta falso, validación y origen.
+S-41 existe ahora: computadores de 184
+personas de administración.
+3.2.2; Anexos, Ta-
+bla 3.A.6
+SD3-17 No hay visión de arquitec-
+tura empresarial; interope-
+rabilidad, escalabilidad,
+seguridad y performance
+aparecen dispersas.
+Documentado. 3.4.2 da la vista por capas y
+ahora cierra con una síntesis de cuatro atri-
+butos: interoperabilidad (ERP como emisor
+único, cola durable de 3.3.3), escalabilidad
+(RNF-19.01, 19.02, 19.04; RT-02.12), desem-
+peño (RNF-05.01, 03.01, 03.02, 11.02; primer
+cuello de botella en la emisión de guías del
+ERP) y seguridad (RNF-14.01, 14.02, 14.04,
+14.06, 14.07, 15.01, 15.02). Remite el detalle
+al SD4, secciones 4.1.3.7 y 4.2.6.
+3.3.3; 3.4.2
+SD3-18 Crítico: el Formulario T-12
+no fue entregado.
+Documentado. Es un formulario indepen-
+diente, con 645 filas: Parte A (RF y RNF) y
+Parte B (RT), incluida la columna EDT.
+Formulario T-12
+SD3-19 El catálogo funcional es
+una lista de nombres, sin
+descripción verificable,
+actor, precondición ni
+resultado esperado.
+Documentado. Cada RF tiene actor, des-
+cripción, precondición, resultado esperado,
+prioridad y etapa, y origen, según el 17.1 del
+caso (p. 31).
+3.2.3; Anexos, Ane-
+xo 3.A
+SD3-20 La prioridad no discrimina:
+80 de 90 RF son «Alta» o
+«Muy Alta».
+Documentado. Hay una regla explícita: la
+prioridad no supera la de la familia del SD2
+y «Crítica» queda solo para resultados de
+aceptación, restricciones e hitos. Se mantie-
+nen 56 críticos, 163 altos y 43 medios (84 %
+Crítica/Alta), y 3.2.3 justifica esa concentra-
+ción: el catálogo describe el flujo operativo
+que el Caso 13.1 pone primero; costo de
+servir y autoatención (F-12, F-14) son Media;
+«Media» no es optativo (T-13, T-17).
+3.2.3
+Continúa en el folio siguiente.
+LafroX SpA
+Propuesta Técnica
+Media firma: Alex Aravena
+19
+
+=== PAGINA 20 ===
+LafroX SpA Observaciones y respuestas
+Tabla 3 — Subdocumento 3 (continuación)
+N.º Observación del Informe 1 Respuesta Sección modificada
+SD3-21 La numeración tiene sal-
+tos: parece el extracto de
+un catálogo mayor.
+Documentado. En el T-12 ninguna épica
+RF tiene saltos de numeración. Las nueve
+materias absorbidas o alias se declaran
+como tales.
+Formulario T-12,
+Parte A; Anexos,
+Tablas 3.A.3a y
+3.A.5a
+SD3-22 El catálogo no funcional
+no tiene método de verifi-
+cación.
+Documentado. Hay una columna «Verifi-
+cación prevista» en los RNF y la prueba
+asociada se registra en el T-13 8.2.
+Anexos, Anexo 3.B
+SD3-23 Se citan requerimientos
+inexistentes: RF-02.05d/e y
+RF-15.05.
+Documentado. No queda ninguna mención
+a RF-02.05d/e. RF-15.05 existe ahora en el
+catálogo (aprovisionamiento de cuentas) y
+en el T-12.
+Anexos, Tabla
+3.A.3 (RF-15.05);
+Formulario T-12
+SD3-24 No existe la sección de
+implementación: ni me-
+todología, ni pipeline, ni
+gestión de configuración,
+ni ramas.
+Documentado. 3.4.3 cubre la base compar-
+tida, tres frentes por etapa, el ciclo de cada
+incremento (rama versionada con configu-
+ración, revisión de pares, CI con cobertura
+bloqueante, promoción DEV → QA → PRE-
+PROD y pruebas de perfil operacional), los
+criterios que impiden promover y el orden
+de construcción. El umbral de cobertura
+quedó alineado con D-12: 70 % de lógica
+de negocio y 80 % unitario global, ambos
+bloqueantes.
+3.4.3
+SD3-25 No existe la sección de
+implantación: las oleadas y
+la migración eran filas de
+tabla.
+Documentado. 3.4.4 desarrolla las siete
+condiciones del caso (cap. 13.3, p. 23), la
+secuencia de olas, el criterio de avance, la
+estabilización con dotación calculada (2 +
+3 + 7 personas), la adopción por perfil y la
+migración por sitio con conciliación.
+3.4.4
+SD3-26 Se habla de «plan de rever-
+sión» sin describirlo ni dar
+tiempo de rollback para la
+ventana de 05:30 a 07:00.
+Documentado. La reversión tiene responsa-
+ble que la autoriza, causales y un objetivo de
+40 minutos: decisión a las 04:45 y término a
+las 05:25 (T-18, 7.6.4), ensayado en PREPROD
+antes de cada corte.
+3.4.4
+SD3-27 No hay convivencia con el
+papel durante la marcha
+blanca (13.3 y 17.6 del
+caso).
+Documentado. La hoja de picking y los
+documentos en papel quedan como consulta
+y apoyo durante la ola, y se retiran tras
+cuatro semanas cumpliendo el criterio de
+avance.
+3.4.4
+Continúa en el folio siguiente.
+LafroX SpA
+Propuesta Técnica
+Media firma: Alex Aravena
+20
+
+=== PAGINA 21 ===
+LafroX SpA Observaciones y respuestas
+Tabla 3 — Subdocumento 3 (continuación)
+N.º Observación del Informe 1 Respuesta Sección modificada
+SD3-28 No existe la sección de ope-
+ración: «SRE» aparece una
+sola vez y no hay objetivos
+de servicio, runbooks ni
+automatización.
+Documentado. 3.4.5 tiene la Tabla 3.5 de
+objetivos, monitoreo, escalamiento y peaks,
+y ahora declara el enfoque SRE: los objetivos
+deciden prioridades (estabilidad antes que
+cambios nuevos al acercarse al límite), infra-
+estructura como código, alertas preventivas
+con escalamiento automático, escalamiento
+automático en peaks (RNF-19.02), bloqueo
+automático en la cadena de integración,
+libro de operación con automatización pro-
+gresiva (RNF-16.02) y revisión de causa tras
+cada incidente crítico o alto.
+3.4.5
+SD3-29 La mesa de ayuda funciona
+de 08:00 a 20:00, pero el
+caso exige de 04:00 a 22:00
+de lunes a sábado (RT-
+21.06).
+Documentado. El horario queda de 04:00 a
+22:00 de lunes a sábado, 24×7 en septiembre
+y diciembre, con críticos y altos 24×7×365,
+ahora con cita al caso (cap. 15, RT-21.06, p.
+27).
+3.4.5
+SD3-30 OK: RTO ≤ 4 h y RPO ≤ 15
+min coherentes.
+Se mantiene. La Tabla 3.5 conserva un
+RTO de hasta 4 horas y un RPO de hasta
+15 minutos para los servicios críticos, los
+mismos objetivos del SD1 y del SD4.
+Tabla 3.5
+SD3-31 OK: la tabla de grupos de
+interés tiene cuadrante,
+momento, responsable e
+indicador.
+Se mantiene. La tabla conserva esos campos
+y agrega una respuesta ante la resistencia de
+cada actor.
+Anexos, Tabla
+3.A.12
+SD3-32 Faltan la gerenta general,
+el comité ejecutivo, el
+gerente comercial, los
+almaceneros, la autoridad
+sanitaria y los peonetas.
+Documentado. Están los 19 actores del
+SD2, con el comité presidido por la gerenta
+general. La Tabla 3.A.12a separa a los 15
+actores del sistema de los interesados sin
+acceso.
+3.4.6; Anexos,
+Tablas 3.A.12 y
+3.A.12a
+SD3-33 El planificador quedaba en
+«C — Mantener informa-
+do», aunque el criterio N.°
+16 depende de él.
+Documentado. El planificador figura con
+influencia Alta e interés Muy Alto y participa
+desde el mes 1 en talleres de reglas, no solo
+como informado.
+3.4.6; Anexos, Ta-
+bla 3.A.12
+SD3-34 OK: los 16 criterios tienen
+línea base, meta, momento
+y medición, pero el N.° 16
+no define cómo se verifica.
+Documentado. Para R18-16 se compara
+el OTIF de dos semanas de planificación
+sin el planificador contra dos semanas
+comparables previas, durante la marcha
+blanca de la Etapa 1.
+Anexos, Tabla
+3.A.13
+Continúa en el folio siguiente.
+LafroX SpA
+Propuesta Técnica
+Media firma: Alex Aravena
+21
+
+=== PAGINA 22 ===
+LafroX SpA Observaciones y respuestas
+Tabla 3 — Subdocumento 3 (continuación)
+N.º Observación del Informe 1 Respuesta Sección modificada
+SD3-35 OK: las 16 decisiones del
+16.1 están tomadas, pero
+enterradas en 65 páginas
+de tabla.
+Documentado. Las 16 decisiones se regis-
+tran como supuestos S-01 a S-16, alineados
+con el SD2, y el cuerpo las resume en un
+punteo (3.2.2). Las decisiones de diseño se
+redujeron a 12 (D-01 a D-12). Las reglas sen-
+sibles se explican en 3.2.4. El informe valoró
+además el reemplazo del WMS de 2013 por
+estrangulamiento (D14), que se mantiene
+en el SD4 (ADR-08), y el registro de vacíos y
+consultas que detectó errores de las Bases,
+que se conserva como Anexo 3.H.
+3.2.2 y 3.2.4; Ane-
+xos, Tablas 3.A.6
+y 3.A.9; Anexos,
+Anexo 3.H; 4.1.3.5
+(ADR-08)
+SD3-36 La excursión térmica es
+contradictoria: «lo decide
+el conductor» frente a «la
+adopta la autoridad de
+calidad»; el SD4.1 dice que
+bloquea el sistema.
+Documentado. Hay una regla única (RNG-
+04 y S-04): advertencia ante una excursión
+menor y bloqueo preventivo del sistema
+ante una crítica y sostenida, con la dispo-
+sición final siempre a cargo de Calidad. El
+conductor no decide el destino sanitario.
+Mientras Calidad no apruebe los parámetros
+de un tipo de producto, toda lectura fuera
+del rango de su ficha se trata como crítica.
+3.2.2; 3.2.4; 3.4.1;
+Anexos, RNG-04 y
+S-04
+SD3-37 Precio entre pedido y des-
+pacho contradictorio: el
+supuesto decía «precio
+ofrecido» y D9/RNG-08 de-
+cían «vigente al despacho».
+Documentado. Rige el precio acordado al
+tomar el pedido, en S-09 y RNG-08, igual
+que en el SD2. Una diferencia con el ERP
+bloquea la facturación hasta conciliarse.
+3.2.2; Anexos, RNG-
+08 y S-09
+SD3-38 La promesa de 24 h se da
+por verificable sin deci-
+sión, requerimiento ni
+criterio.
+Documentado. Queda en RNG-15, D-03 y
+S-21: 24 h para pedidos urbanos antes de
+las 14:00 y 48 h para el resto. La preventa
+muestra la fecha prometida y el OTIF se
+mide contra ella (RNG-09).
+3.2.2 y 3.2.4
+SD3-39 Crítico: D45 incluía un pre-
+cio («113 mil dólares…»),
+en contradicción con EX-
+09.
+Documentado. No queda ningún precio en
+ninguna moneda en el cuerpo, los anexos
+ni el T-12. La compra del hardware por el
+CLIENTE se mantiene (E-09).
+3.2.2; Anexos, Ta-
+bla 3.A.7
+SD3-40 Se citan nombres de ar-
+chivo locales como fuente,
+en lugar del título de las
+Bases.
+Documentado. No queda ningún nombre
+de archivo ni la denominación «Caso 02».
+Las Bases se citan por título abreviado con
+capítulo o artículo y página ( Bases Adminis-
+trativas, Bases Técnicas Transversales y Caso:
+Logística).
+SD3, Referencias;
+Anexos, Referen-
+cias
+Continúa en el folio siguiente.
+LafroX SpA
+Propuesta Técnica
+Media firma: Alex Aravena
+22
+
+=== PAGINA 23 ===
+LafroX SpA Observaciones y respuestas
+Tabla 3 — Subdocumento 3 (continuación)
+N.º Observación del Informe 1 Respuesta Sección modificada
+SD3-41 Quedaron notas de co-
+rrección de una versión
+anterior («La decisión pre-
+via… se reformula», «no
+estaba respondida»…).
+Documentado. El cuerpo, los anexos y el
+T-12 no contienen notas de corrección de
+versiones anteriores: cada decisión y cada
+regla se redactan en su forma final.
+SD3; Anexos; T-12
+SD3-42 Dos voces distintas
+(D1–D40 frente a
+D41–D60).
+Documentado. El registro de 60 decisiones
+se reescribió como D-01 a D-12 en una sola
+voz; las decisiones D-08, D-09, D-11 y D-
+12, que seguían en estilo telegráfico, se
+redactaron como oraciones completas igual
+que las demás. El cuerpo no usa primera
+persona y nombra a LafroX y al CLIENTE de
+forma uniforme.
+Anexos, Tabla 3.A.9
+SD3-43 Se citaban decisiones antes
+de que existieran, había
+códigos sin glosario (BTC,
+BTT, R18, RNG, HHT) y
+un párrafo de excursión
+pegado en la decisión de la
+cámara a −22 °C.
+Documentado. No quedan citas a «Decisión
+20» ni «Decisión 29». El Anexo 3.K es un
+glosario de siglas y códigos. Las decisiones
+vigentes no mezclan materias.
+Anexos, Anexo 3.K;
+Tabla 3.A.9
+SD3-44 Erratas de ensamblaje:
+«ventana de 320 minutos»
+(p. 3) y «160 camiones que
+no son trabajadores» (p.
+66).
+Documentado. Ninguna de las dos frases
+aparece en el cuerpo, los anexos ni el T-12;
+tampoco la errata «próposito».
+SD3, anexos y T-12
+SD3-45 Títulos huérfanos al pie de
+página y páginas semiva-
+cías (21 en el SD3).
+Documentado. Ningún título de sección que-
+da al pie de página y las páginas semivacías
+se redujeron de 21 a menos de diez, debidas
+a figuras y tablas en hoja horizontal, a filas
+de tabla que no se dividen y a páginas de
+índice.
+SD3, anexos y T-12
+LafroX SpA
+Propuesta Técnica
+Media firma: Alex Aravena
+23
+
+=== PAGINA 24 ===
+LafroX SpA Observaciones y respuestas
+2.4 Subdocumento 4
+Tabla 4 Observaciones y respuestas — subdocumento 4. Fuente: revisión del Informe 1 y Subdocumento 4 de
+LafroX.
+N.º Observación del Informe 1 Respuesta Sección modificada
+SD4-01 EL-01. El texto y los diagra-
+mas están desconectados
+(pp. 9–10).
+Documentado. Las figuras de las capas
+se citan antes de aparecer y se explican
+inmediatamente después, de modo que el
+texto recorre cada diagrama.
+4.1.3; figuras 1–12
+SD4-02 EL-02. Los trece recorridos
+por actor son redundantes
+y no se explican (p. 9).
+Documentado. Los trece recorridos por
+actor se sustituyeron por una vista general,
+ocho vistas por capa, diagramas de secuen-
+cia y una matriz de actores.
+4.1.3; Anexo 4-N,
+matriz de actores
+SD4-03 EL-03. Los actores declara-
+dos no coinciden con los
+dibujados (p. 9).
+Documentado. Se identifican quince actores
+y se describen sus perfiles y ámbitos de
+autorización.
+4.1.3.1 y 4.1.18;
+Anexo 4-N
+SD4-04 EL-04. Falta la matriz re-
+quisito → módulo → capa (p.
+9).
+Documentado. La cadena requisito → mó-
+dulo → capa → componente queda trazada:
+el T-12 identifica los requisitos individual-
+mente, el Anexo 4-E agrupa las familias y
+el Anexo 4-N relaciona los módulos, los 37
+componentes transversales y su realización
+física. La Tabla 6 y el T-11 completan el
+emplazamiento y los recursos.
+Formulario T-12;
+anexos 4-E y 4-N,
+Tabla A.14; 4.2.2,
+Tabla 6; Formulario
+T-11
+SD4-05 EL-05. Los cinco ambien-
+tes solo se nombran (p.
+9).
+Documentado. Cada uno de los cinco am-
+bientes se desarrolla por separado y tiene
+figura propia. La topología A WS identifica
+las regiones de producción y de recupera-
+ción.
+4.1.9 y 4.2.4.1;
+figuras 19–23 y
+Figura 18
+SD4-06 EL-06. SOLID y los pa-
+trones se mencionan sin
+mostrar su aplicación (pp.
+9–10).
+Documentado. SOLID se aplica mediante
+contratos de negocio y límites entre mó-
+dulos, junto con los patrones de diseño y
+de continuidad. La integración continua
+bloquea el despliegue cuando se rompe un
+contrato.
+4.1.10 y 4.1.10.1
+SD4-07 EL-07. Se declaran seis
+vistas, pero falta la vista de
+procesos (p. 10).
+Documentado. Se establece la correspon-
+dencia con las cinco vistas exigidas y se
+incorporan secuencias de procesos.
+4.1.14; figuras 8–9;
+Anexo 4-S
+SD4-08 EL-08. OK: el estilo modu-
+lar es pertinente al caso (p.
+10).
+Se mantiene. El monolito modular conserva
+límites entre sus módulos; Laravel/PHP es
+el marco elegido y su elección se justifica en
+ADR-01.
+4.1.13; Anexo 4-O,
+ADR-01
+Continúa en el folio siguiente.
+LafroX SpA
+Propuesta Técnica
+Media firma: Alex Aravena
+24
+
+=== PAGINA 25 ===
+LafroX SpA Observaciones y respuestas
+Tabla 4 — Subdocumento 4 (continuación)
+N.º Observación del Informe 1 Respuesta Sección modificada
+SD4-09 EL-09. La comparación de
+alternativas es insuficiente
+y los ADR quedan fuera de
+la arquitectura lógica (p.
+10).
+Documentado. El cuerpo compara las alter-
+nativas arquitectónicas (Tabla 4) y el anexo
+lógico reúne un registro único de 22 ADR,
+sin repetir sus fichas en el cuerpo.
+4.1.13, Tabla 4;
+Anexo 4-O
+SD4-10 EL-10. Se anuncian doce
+módulos sin inventario (p.
+10).
+Documentado. Los doce módulos tienen un
+inventario con nombre, responsabilidad,
+contratos, actor y etapa.
+Anexo 4-D
+SD4-11 EL-11. Faltan los límites
+de contexto, las interfa-
+ces, la orquestación y la
+coreografía (p. 10).
+Documentado. Se desarrollan los límites de
+contexto, las interfaces internas y externas,
+y la relación entre orquestación y coreogra-
+fía mediante contratos y secuencias.
+4.1.3.5; figuras 8–9;
+anexos 4-F, 4-G y
+4-H
+SD4-12 EL-12. El marco TOGAF
+solo se cita (p. 10).
+Documentado. El marco aplicado es ISO
+42010, mediante interesados, preocupa-
+ciones y correspondencias entre vistas. La
+mención de TOGAF no se presenta como
+evidencia de aplicación.
+Anexo 4-S
+SD4-13 EL-13. El modelo de do-
+minio es solo una lista (p.
+10).
+Documentado. Se incorpora un modelo
+conceptual del dominio que relaciona a sus
+productores con los eventos canónicos. El
+esquema relacional se desarrolla en el SD5.
+4.1.5, Figura 13;
+Anexo 4-A
+SD4-14 EL-14. La caché de 8 h
+es incompatible con la
+autonomía de 24 h y con
+los relevos de turno (p. 10).
+Documentado. El diseño usa una caché
+de 24 horas, un manifiesto de 26 horas,
+credenciales personales y un verificador
+local. El ensayo de aceptación AL-OFF-01
+incluye relevos a las 8 y 16 horas durante el
+corte y verifica vigencias, permisos, reinicio
+y reconciliación.
+4.1.3.7 y 4.1.15;
+anexos 4-J y 4-M,
+AL-OFF-01
+SD4-15 EL-15. El HHT depende de
+un gateway solo remoto (p.
+10).
+Documentado. La puerta de API local A-
+01 se ejecuta en VM-01, VM-C01 y E-01,
+de modo que el HHT no depende de API
+Gateway durante un corte de W AN.
+4.1.3.3 y 4.2.2;
+Figura 5; Anexo
+4-N
+SD4-16 EL-16. El bloqueo térmico
+aparece decidido por el
+conductor y, a la vez, como
+automático (p. 10).
+Documentado. M9 bloquea preventivamente
+una excursión crítica y sostenida, y la dis-
+posición sanitaria corresponde a Calidad,
+con evidencia y permisos. El conductor no
+decide la disposición sanitaria.
+4.1.4.2; anexos 4-J,
+4-M y 4-N
+Continúa en el folio siguiente.
+LafroX SpA
+Propuesta Técnica
+Media firma: Alex Aravena
+25
+
+=== PAGINA 26 ===
+LafroX SpA Observaciones y respuestas
+Tabla 4 — Subdocumento 4 (continuación)
+N.º Observación del Informe 1 Respuesta Sección modificada
+SD4-17 EL-17. Las etapas no con-
+cuerdan con las del SD3 (p.
+10).
+Documentado. Se declaran las etapas por
+módulo y la implantación progresiva, con
+remisión al calendario. La Etapa 1 abarca
+los meses 1–15 con producción en el mes 16,
+y la Etapa 2 los meses 13–20 con producción
+en el mes 21, igual que en el SD3.
+4.1.8; Anexo 4-D;
+SD3, Tabla 3.1
+SD4-18 EL-18. Los portales ex-
+ternos se tratan como
+intranet con VPN (p. 10).
+Documentado. Se distinguen las entradas
+públicas, privadas y locales. Verified Access
+se reserva a la oficina y las consolas, y los
+portales externos públicos no exigen VPN.
+4.1.3 y 4.2.5.2
+SD4-19 EL-19. La portada anuncia
+la arquitectura física, pero
+el documento solo incluye
+la lógica (p. 10).
+Documentado. El cuerpo integrado incluye
+la arquitectura lógica, la física y los centros
+de datos, con la estructura 4.1–4.3.
+SD4, portada y
+4.1–4.3
+SD4-20 EL-20. Se citan códigos y
+versiones de documentos
+que no se entregaron (p.
+10).
+Documentado. El catálogo físico
+A/B/C/D/E/F/N, el inventario lógico y los
+contratos internos y externos se identifican
+en el cuerpo, los anexos y el T-11.
+4.2.2; anexos 4-N,
+4-G y 4-H; Formula-
+rio T-11
+SD4-21 EL-21. La plantilla es dis-
+tinta y hay contenido ilegi-
+ble (p. 10).
+Documentado. Los tres entregables usan
+la plantilla común. El cuerpo conserva 26
+tablas técnicas breves y la declaración de
+uso de IA, y la red se presenta en tres vistas.
+SD4, cuerpo y fi-
+guras; anexos y
+T-11
+SD4-22 EF-01. El documento está
+duplicado y sin portada; se
+pide entregarlo con índice,
+folio y firma (pp. 11 y 13).
+Documentado. El cuerpo es un único docu-
+mento integrado, y los anexos y el T-11 son
+archivos separados. Los tres usan tamaño
+carta, con portada, índice paginado, folio
+correlativo y media firma en cada página
+posterior a la portada.
+SD4, portada, índi-
+ce, folios y firma;
+documentos de
+anexos y Formula-
+rio T-11
+SD4-23 EF-02. La oferta contiene
+comentarios de IA, versio-
+nes y auditorías (p. 11).
+Documentado. El subdocumento no contie-
+ne comentarios de cambios entre versiones,
+alternativas sin resolver, notas de hallazgos
+ni referencias a versiones anteriores. La
+declaración de uso de IA identifica a Álvaro
+Catalán como revisor en cada una de sus 132
+filas.
+SD4, declaración de
+uso de IA
+SD4-24 EF-03. La tabla de empla-
+zamiento no existe o está
+incompleta (p. 11).
+Documentado. El emplazamiento de la
+Tabla 6 abarca los doce módulos y las 37
+capacidades transversales; la matriz de
+correspondencia, el inventario y el T-11
+identifican la realización física de cada uno.
+4.2.2, Tabla 6; Ane-
+xo 4-N, Tabla A.14;
+Anexo 4-W , Tabla
+A.35; T-11
+Continúa en el folio siguiente.
+LafroX SpA
+Propuesta Técnica
+Media firma: Alex Aravena
+26
+
+=== PAGINA 27 ===
+LafroX SpA Observaciones y respuestas
+Tabla 4 — Subdocumento 4 (continuación)
+N.º Observación del Informe 1 Respuesta Sección modificada
+SD4-25 EF-04. La figura física es
+ilegible y no se explica (p.
+11).
+Documentado. La vista física general se
+explica en el texto y se complementa con
+vistas de sitios, emplazamiento, nube y
+recuperación. Las tres vistas de red detallan
+la conexión local y regional.
+4.2 y 4.3; Figura
+14, figuras 15–18 y
+23–26
+SD4-26 EF-05. Las descripciones
+verbales sustituyen a los
+dibujos (pp. 12–13).
+Documentado. Se incorporan dibujos de
+ambientes, nube, sitios, racks y recinto.
+Las tres vistas de red forman parte del
+desarrollo y tienen explicación propia.
+4.2.4.2, figuras
+24–26; 4.3.1.4, figu-
+ras 28–29; vistas de
+ambientes y sitios
+SD4-27 EF-06. La inteligencia de
+negocios ocupa catorce
+páginas ajenas al ítem (p.
+12).
+Documentado. El SD4 conserva solo la
+función lógica, el emplazamiento y las
+dependencias arquitectónicas de M10; el
+modelo analítico detallado se desarrolla en
+el SD5.
+4.1.4.7 y 4.2.2;
+remisión a SD5
+SD4-28 EF-07. OK: los implemen-
+tos son pertinentes (p. 12).
+Se mantiene. El T-11 identifica los mode-
+los de implementos, sus cantidades y su
+finalidad.
+Formulario T-11
+SD4-29 EF-08. Faltan cantidades
+numéricas y se omiten el
+ciclo de vida y la resisten-
+cia a caídas (p. 12).
+Documentado. Se explicitan las cantidades
+y los criterios de aceptación por tipología,
+junto con los cálculos del parque y el control
+de actualizaciones. La aceptación física de
+cada tipología se verifica por ensayo.
+4.2.1.2; Anexo 4-
+W .3; Anexo 4-P;
+Formulario T-11
+SD4-30 EF-09. Hay exceso de equi-
+pos para congelado, POS e
+impresoras (p. 12).
+Documentado. El parque se deriva de la
+dotación por turno y sus reservas: 207 termi-
+nales al inicio y 235 en el año 3, incluidos los
+repuestos. La concurrencia nocturna inicial
+es de 186 terminales.
+4.2.1 y 4.1.9; Anexo
+4-W .3; Formulario
+T-11
+SD4-31 EF-10. El registro de frío
+cubre solo 18 camiones y
+las alertas llegan al regreso
+(p. 12).
+Documentado. Se declaran 28 termógrafos:
+18 en camiones propios y 10 en camiones
+externos. La lectura BLE y la alerta local se
+producen durante la ruta y se ensayan en la
+aceptación.
+4.1.4.2; Anexo 4-
+W .4; Formulario
+T-11, B-03
+SD4-32 EF-11. El estudio de co-
+bertura inalámbrica es
+insuficiente (p. 12).
+Documentado. Se incluyen el estudio de
+cobertura y la aceptación de las interfaces
+en cámaras de frío. La estimación no se
+presenta como cobertura medida: la cober-
+tura se mide en el estudio de sitio previo a la
+instalación.
+4.2.1.2; criterios de
+aceptación de inter-
+faces y cámaras
+Continúa en el folio siguiente.
+LafroX SpA
+Propuesta Técnica
+Media firma: Alex Aravena
+27
+
+=== PAGINA 28 ===
+LafroX SpA Observaciones y respuestas
+Tabla 4 — Subdocumento 4 (continuación)
+N.º Observación del Informe 1 Respuesta Sección modificada
+SD4-33 EF-12. La sala secundaria
+está sobredimensiona-
+da y la categoría Tier es
+incoherente (p. 12).
+Documentado. El dimensionamiento usa el
+equipamiento real del recinto y distingue
+la disponibilidad por componente de la
+disponibilidad de extremo a extremo, sin
+apoyarse en una categoría Tier.
+4.3.1.4 y desarrollo
+de disponibilidad
+SD4-34 EF-13. Faltan el cálculo
+eléctrico y térmico, el
+plano y los racks (p. 12).
+Documentado. Se desarrollan las cargas
+eléctricas y térmicas, la memoria de cálcu-
+lo, la distribución de racks y el plano del
+recinto.
+4.3.1.4, Tablas
+23–24 y figuras
+28–29; Anexo 4-W .8
+SD4-35 EF-14. Los gabinetes de
+borde no definen energía,
+climatización ni acceso (p.
+12).
+Documentado. Los gabinetes de borde tie-
+nen representación gráfica y, por tipología,
+definición de energía, climatización, acceso,
+carga y UPS.
+4.2.1.2, figuras
+15–16; Anexo 4-
+W , Tabla A.39;
+Formulario T-11
+SD4-36 EF-15. La aprobación de la
+recuperación ante desas-
+tres podría llevar el RTO a
+24–72 h (p. 12).
+Documentado. Se declaran las regiones, un
+RTO de hasta 4 horas y la aprobación de re-
+sidencia como hito contractual. Durante la
+contingencia, la consulta sanitaria regional
+de solo lectura tiene un presupuesto de 75
+minutos. La restitución por servicio se mide
+en el ensayo AL-DR-01.
+4.3.2; Anexo 4-M,
+AL-DR-01; Formula-
+rio T-11
+SD4-37 EF-16. Se invoca el T-11,
+pero no se adjunta (p. 12).
+Documentado. El T-11 se entrega como
+formulario independiente.
+Formulario T-11,
+archivo indepen-
+diente
+SD4-38 EF-17. OK: Zero Trust y el
+análisis de puntos únicos
+de falla son pertinentes (p.
+12).
+Se mantiene. Se conservan Zero Trust, el
+análisis de puntos únicos de falla y el respal-
+do 3-2-1-1-0, con remisión a su desarrollo
+principal.
+4.1.3.7 y 4.2.5; ane-
+xos 4-Q y 4-R; res-
+paldo y continui-
+dad
+SD4-39 EF-18. La identidad, el ga-
+teway local y las funciones
+sin conexión quedan sin
+resolver (p. 13).
+Documentado. La identidad local se explica
+en 4.1.3.7 y la puerta local en 4.1.3.3. Se
+distinguen las funciones disponibles y
+bloqueadas durante un corte: captura local,
+relevos, guía preemitida y autorizaciones
+externas condicionadas. La continuidad
+completa se ensaya en la aceptación (AL-
+OFF-01).
+4.1.3.3, 4.1.3.7
+y 4.1.15–4.1.16;
+anexos 4-J, 4-K y
+4-M
+SD4-40 EF-19. Ceph se monta
+sobre RAID y la capacidad
+es contradictoria (p. 13).
+Documentado. Ceph usa seis OSD sin RAID,
+con size=3/min_size=2, redundancia N+1 y
+cálculo de capacidad. ADR-10 contrasta la
+demanda de 136 IOPS actuales y 359 a 3× con
+la capacidad del NVMe, que no es criterio
+de selección ni justifica equipos adicionales.
+El fallo y la reconstrucción de un OSD se
+ensayan en la aceptación.
+SD4, arquitectura
+física de Talca; Ane-
+xo 4-W .8; Anexo
+4-O, ADR-10
+Continúa en el folio siguiente.
+LafroX SpA
+Propuesta Técnica
+Media firma: Alex Aravena
+28
+
+=== PAGINA 29 ===
+LafroX SpA Observaciones y respuestas
+Tabla 4 — Subdocumento 4 (continuación)
+N.º Observación del Informe 1 Respuesta Sección modificada
+SD4-41 EF-20. El DTE diferido
+contradice al ERP como
+único emisor y la guía
+previa al traslado (p. 13).
+Documentado. El ERP conserva la emisión
+previa de la guía. Un cambio de carga invali-
+da la preemisión y requiere otra guía válida.
+El ensayo AL-DTE-01 verifica las 96 salidas
+con documentos válidos.
+4.1.17; anexos 4-M
+y 4-U, AL-DTE-01
+SD4-42 EF-21. La dotación es in-
+compatible con los cuatro
+profesionales de TI del
+CLIENTE (p. 13).
+Documentado. El dimensionamiento incor-
+pora dotación propia para el NOC/SOC y
+la mesa de servicios, distinta de los cuatro
+profesionales de TI del CLIENTE, que no
+operan solos la plataforma.
+4.2.6; Anexo 4-W .7
+SD4-43 EF-22. Faltan la red, el
+despliegue y las zonas de
+seguridad (p. 13).
+Documentado. Se desarrollan los cinco
+ambientes, la topología A WS, tres vistas
+de red y el direccionamiento con zonas de
+segmentación.
+4.2.4.1–4.2.4.2;
+figuras 24–26; Tabla
+9
+SD4-44 EF-23. Los TPS no tienen
+sustento y mezclan regíme-
+nes de carga (p. 13).
+Documentado. Los cálculos separan la
+operación normal, las ventanas horarias y la
+carga de septiembre, con su derivación en la
+memoria de cálculo. La carga se valida en la
+prueba de rendimiento de la aceptación.
+4.2.6.2–4.2.6.3;
+Anexo 4-W
+SD4-45 EF-24. Las dieciséis dimen-
+siones del dimensiona-
+miento faltan o no tienen
+derivación (pp. 13–14).
+Documentado. Las dieciséis dimensiones
+se sintetizan en el anexo y se justifican
+con derivaciones y cuadros numéricos del
+cuerpo. Sus cotas se validan por medición
+en la aceptación.
+4.2.6.1–4.2.6.13;
+Anexo 4-W , Tabla
+A.30 y memoria de
+cálculo
+SD4-46 EF-25. Los ADR contienen
+precios (p. 13).
+Documentado. El registro único de ADR
+presenta decisiones cualitativas y técnicas.
+El cuerpo, los anexos y el T-11 no contienen
+precios.
+Anexo 4-O; SD4,
+anexos y T-11
+SD4-47 EF-26. La remisión sobre
+los 14 recintos es circu-
+lar: la página 19 remite
+a Seguridad 12 y esa sec-
+ción se cita a sí misma sin
+enumerarlos (p. 12).
+Documentado. El recinto de Talca se des-
+cribe en 4.3.1.4, que remite directamente
+a su distribución dibujada (Figura 29), sin
+remisiones circulares.
+4.3.1.4, Figura 29
+SD4-48 EF-27. OK: los TPS se de-
+rivan con método y se
+identifica el primer cuello
+de botella (p. 13).
+Se mantiene. Las tasas se derivan con entra-
+das, ventanas y cálculos reproducibles, y se
+analiza el primer cuello de botella. Los valo-
+res se recalcularon con el diseño propuesto
+(4.1.19); los resultados medidos se obtienen
+en la aceptación.
+4.1.19,
+4.2.6.2–4.2.6.3 y
+4.2.6.11; Anexo 4-W
+Continúa en el folio siguiente.
+LafroX SpA
+Propuesta Técnica
+Media firma: Alex Aravena
+29
+
+=== PAGINA 30 ===
+LafroX SpA Observaciones y respuestas
+Tabla 4 — Subdocumento 4 (continuación)
+N.º Observación del Informe 1 Respuesta Sección modificada
+SD4-49 EF-28. OK: quince ADR
+en formato MADR, con
+fecha, estado y alternativas
+evaluadas (p. 13).
+Se mantiene. El registro de decisiones con-
+serva fecha, estado y alternativas evaluadas,
+y se amplía a 22 ADR, resumidos en el anexo
+lógico. La retirada de precios se responde en
+EF-25.
+Anexo 4-O, Tablas
+A.18–A.19 y fichas
+ADR-01 a ADR-22
+SD4-50 EL-22. El archivo abre
+con una hoja «Página
+en blanco a propósito»
+(apartado General).
+Documentado. El cuerpo comienza en la
+portada y no contiene esa hoja; los anexos y
+el T-11 tampoco.
+SD4, anexos y T-11
+SD4-51 EF-29. La palabra LAFROX
+no aparece y la empresa
+proponente figura sin
+definir (apartado General).
+Documentado. LafroX figura en la portada
+y en todas las páginas del cuerpo, de los
+anexos y del T-11, y cada portada identifica a
+la empresa proponente.
+SD4, anexos y T-11,
+portada, encabeza-
+do y pie
+SD4-52 EF-30. Más de la mitad
+del documento son tablas
+de listado, contra lo que
+pide el Formulario T-21
+(apartado General).
+Documentado. El detalle se trasladó: el T-11
+lista equipos y servicios, y los 23 anexos
+4-A a 4-W reúnen catálogos, matrices y la
+memoria de cálculo. El cuerpo conserva 26
+tablas técnicas breves y la declaración de
+uso de IA.
+SD4, cuerpo; ane-
+xos 4-A a 4-W; For-
+mulario T-11
+2.5 Subdocumento 5
+Tabla 5 Observaciones y respuestas — subdocumento 5. Fuente: revisión del Informe 1 y Subdocumento 5 de
+LafroX.
+N.º Observación del Informe 1 Respuesta Sección modificada
+SD5-01 No hay modelo de datos;
+5.1 solo enumera quince
+bases lógicas.
+Documentado. Se incorporan el modelo
+relacional general, las vistas por dominio y
+el modelo dimensional, en diez figuras del
+cuerpo.
+5.1; Figuras
+5.1–5.10; 5-M
+SD5-02 No hay diccionario real;
+se posterga hasta antes de
+producción.
+Documentado. El diccionario de datos cubre
+121 entidades y 987 atributos, con tipos,
+dominios, claves, condiciones y controles.
+5-A, A.2–A.10; 5-
+B–5-C
+Continúa en el folio siguiente.
+LafroX SpA
+Propuesta Técnica
+Media firma: Alex Aravena
+30
+
+=== PAGINA 31 ===
+LafroX SpA Observaciones y respuestas
+Tabla 5 — Subdocumento 5 (continuación)
+N.º Observación del Informe 1 Respuesta Sección modificada
+SD5-03 No pueden evaluarse las
+consultas del proveedor y
+la autoridad sanitaria.
+Documentado. El modelo encadena lote,
+unidad, evento, entrega y documento, y
+permite la consulta inversa. Ante un reti-
+ro, distingue el universo confirmado del
+potencial, que incluye los registros aún
+no sincronizados, con un presupuesto de
+diseño de 85 minutos.
+5.1.7; Figura 5.5; 5-J
+SD5-04 Motor y CAP se presen-
+tan en tabla sin analizar
+compromisos.
+Documentado. La elección de motores se
+justifica en prosa en 5.2.1, con autoridad
+única por agregado y consistencia local has-
+ta la consolidación central. Ese desarrollo
+reemplaza la tabla de cinco columnas con
+palabras partidas, y la correspondencia por
+dominio pasa al Anexo 5-B.
+5.2.1–5.2.3; 5-B
+SD5-05 Se cita la decisión 16.1 n. º
+18, inexistente.
+Documentado. Se retiró la referencia a la
+decisión n. º 18; las fuentes de las figuras
+citan solo decisiones existentes del numeral
+16.1.
+5.1; fuentes de
+Figuras 5.1, 5.2, 5.4
+y 5.6
+SD5-06 Alcance por migrar con los
+valores del Cap. 15 y casos
+de saneamiento propios
+del caso: lotes en texto
+libre, duplicados de cliente
+y saldos de envases.
+Documentado. El alcance histórico por mi-
+grar queda delimitado. Los datos originales
+se preservan, se aplican equivalencias apro-
+badas y los registros defectuosos se aíslan
+sin inventar historia.
+5.3.1–5.3.5; 5-C;
+5-L, A.25
+SD5-07 Migración sin volumen,
+herramientas, tiempos,
+ventana ni responsables.
+Documentado. La migración parte de
+16,05478 GB en origen y estima 32,10956 GB
+en destino, y define herramientas, responsa-
+bles, dos ensayos, olas, corte y reversa.
+5.3; Tabla 5.2; 5-J;
+5-L
+SD5-08 OK: índices para retiro,
+partición mensual y orden
+en mensajería.
+Se mantiene. Se conservan los índices para
+el retiro, la partición mensual y el orden
+en la mensajería. Las claves globales no se
+particionan, el detalle temporal conserva
+su identidad completa y la mensajería usa
+outbox y deduplicación.
+5.4.2–5.4.5; 5-F–5-G
+SD5-09 La expresión de TPS base
+y crecimiento es ininteligi-
+ble.
+Documentado. Se separan el régimen de
+12,34 TPS, el pico de 14,66 TPS y la prueba
+de 21,99 TPS; el año 3 y el crecimiento 3× se
+tratan como escenarios distintos.
+5.4.1; Tabla 5.3;
+5.4.6
+SD5-10 Identidad de bodega con
+TTL de 8 h frente a autono-
+mía exigida de 24 h.
+Documentado. Se distinguen la autonomía
+de 24 h, la vigencia de identidad de 24 h, los
+turnos de 8 y 14 h y el manifiesto de 26 h,
+con relevos preinscritos.
+5.2.3; Tabla 5.1; 5-G
+Continúa en el folio siguiente.
+LafroX SpA
+Propuesta Técnica
+Media firma: Alex Aravena
+31
+
+=== PAGINA 32 ===
+LafroX SpA Observaciones y respuestas
+Tabla 5 — Subdocumento 5 (continuación)
+N.º Observación del Informe 1 Respuesta Sección modificada
+SD5-11 OK: separación OLTP/analí-
+tica, latencias, retenciones,
+inmutabilidad e ISO 25012.
+Se mantiene. Se conservan esos elementos
+y se precisan la calidad, el archivo, la purga,
+la retención legal y la conservación de las
+reglas interpretativas.
+5.2.5–5.2.7; 5-D–5-
+E; 5-H–5-I
+SD5-12 OK: detecta desajuste RT-
+05.10/RT-16.10 y lo eleva a
+consulta.
+Se mantiene. La correspondencia entre
+RT-05.10 y RT-16.10 y la consulta quedan
+documentadas, y se conservan íntegros los
+plazos de ambos.
+5.2.7; 5-D, A.14
+SD5-13 Faltan esquema estrella
+dibujado, tableros, des-
+tinatarios e indicadores
+definidos.
+Documentado. El modelo dimensional se
+dibuja con sus granos y claves, y cada in-
+dicador tiene fórmula, audiencia, latencia
+y linaje. El costo de servir identifica com-
+bustible, peajes, conducción, descarga e
+indirectos, con prorrateos versionados y
+conciliación con el ERP .
+5.1.11; Figura 5.7;
+5.2.6; 5-H, Tablas
+A.18–A.19
+SD5-14 RT-16.08 se atribuye a
+tres canales; corresponde
+RT-16.20.
+Documentado. Los tres canales se atribuyen
+a RT-16.20, y RT-16.08 queda como consulta
+y exportación de auditoría.
+5.1.9; 5-B–5-C; A.8
+SD5-15 Timbre diferido y guía
+ausente contradicen ERP
+único emisor y acompaña-
+miento del traslado.
+Documentado. El ERP emite la guía antes
+del traslado y todo cambio requiere una
+nueva guía válida. La prueba de entrega no
+sustituye al documento tributario.
+5.1.8; 5.3.6; 5-J,
+AL-DTE-01
+SD5-16 OK: evidencia por recep-
+tor; falta mecanismo de
+acuse legal.
+Documentado. Se diferencian la prueba de
+entrega, el acuse ante el SII y el recibo. El
+acuse se respalda con XML del ERP o EDI, o
+con constancia impresa, según el perfil del
+receptor, conforme al Anexo 4-U del SD4.
+5.1.8; A.7; 5-C; 5-J
+SD5-17 Resaltado negro ilegible en
+páginas 3, 10, 13 y 14.
+Documentado. Se retiraron los bloques de
+código con fondo negro y su contenido se
+integró en el texto, las tablas y las figuras de
+la plantilla.
+Cuerpo y anexos
+SD5-18 Metadatos finales citan
+documentos inexistentes.
+Documentado. Se retiró la línea de meta-
+datos. Las referencias identifican las Bases,
+los documentos de la propuesta y fuentes
+técnicas concretas: el T-12 se adscribe al
+SD3, el T-11 al SD4, el T-14 se incluye en el
+anexo y la versión de EPCIS queda alineada.
+Referencias del
+cuerpo y anexo
+SD5-19 Doble numeración 5.1/S5.1
+y códigos internos sin
+explicación.
+Documentado. La numeración es única
+(5.1–5.4 y anexos 5-A a 5-M), y el glosario
+y las leyendas definen los identificadores
+necesarios.
+Introducción; 5-A,
+glosario y A.1
+Continúa en el folio siguiente.
+LafroX SpA
+Propuesta Técnica
+Media firma: Alex Aravena
+32
+
+=== PAGINA 33 ===
+LafroX SpA Observaciones y respuestas
+Tabla 5 — Subdocumento 5 (continuación)
+N.º Observación del Informe 1 Respuesta Sección modificada
+SD5-20 Siglas sin definir, incluida
+la frase sobre FID.
+Documentado. Se retiraron FID y la frase
+observada. Un glosario común define las
+siglas y CAP se desarrolla en el texto.
+Introducción; 5.2.1;
+5-A
+SD5-21 General: ningún archivo
+tiene identidad de empre-
+sa; las portadas incluyen
+datos ajenos a la licitación
+y se rotulan «Formulario
+T-22».
+Documentado. La portada identifica a
+LafroX, al mandante, al proponente y a su
+representante, y se rotula «Subdocumento
+5 · Formulario T-7», sin datos ajenos a la
+licitación.
+Portada
+SD5-22 General: el archivo abre
+con una hoja que sólo
+dice «Página en blanco a
+propósito».
+Documentado. La hoja no aparece en el
+cuerpo ni en los anexos.
+Inicio del docu-
+mento
+SD5-23 General: Arial y tamaño
+A4, cuerpo que aparenta
+ser inferior a 11 puntos,
+y ningún índice, folio ni
+firma.
+Documentado. El cuerpo tiene índice gene-
+ral, de tablas y de figuras, y los anexos su
+índice. Ambos documentos usan tamaño
+carta vertical, tipografía Source Sans 3 con
+cuerpo de 11 pt, folio correlativo y media
+firma en el extremo inferior derecho de
+cada página posterior a la portada.
+Índices; formato de
+página, pie y firma
+SD5-24 Transversal: indicios de
+IA (IFEP01.26-A1); desde
+el Informe 2, cualquiera
+deja el subdocumento con
+puntaje 0.
+Documentado. No quedan marcadores,
+notas de proceso ni metadatos de herra-
+mientas (SD5-17 a SD5-20). La declaración
+de uso de IA identifica a Bastian Trejo como
+revisor de cada sección y anexo.
+Declaración de uso
+de IA, Tabla 5.4
+LafroX SpA
+Propuesta Técnica
+Media firma: Alex Aravena
+33
+
+=== PAGINA 34 ===
+LafroX SpA Observaciones y respuestas
+2.6 Subdocumento 13
+Tabla 6 Observaciones y respuestas — subdocumento 13. Fuente: revisión del Informe 1 y Subdocumento 13 de
+LafroX.
+N.º Observación del Informe 1 Respuesta Sección modificada
+SD13-01 Innovación 1: «es el crite-
+rio de aceptación N° 1 del
+caso y el estándar exigido
+por el RT-05.23».
+Documentado. Se reemplaza por el segui-
+miento de vencimiento posentrega en el
+local (INN-01). La trazabilidad de lote hasta
+el cliente queda como alcance obligatorio
+(RF-02.10 y RF-01.03) y la innovación actúa
+en el local, después de la entrega.
+13.1; 13.1.2 (Tabla
+13.2); Formulario
+T-19, ficha 1
+SD13-02 Innovación 3: «es el RT-
+03.10 a RT-03.13 y las res-
+tricciones N° 2 y N° 3».
+Documentado. Se reemplaza por la vida
+útil remanente por historia térmica del lote
+(INN-03). La operación sin conexión y el
+registro continuo de temperatura quedan
+como alcance obligatorio; la innovación
+agrega la estimación por lote.
+13.3; 13.3.2 (Tabla
+13.12); Formulario
+T-19, ficha 3
+SD13-03 Innovación 2: el picking
+por olas y el FEFO son
+estándar; «lo propio sería
+la secuenciación térmica,
+que no se diseña».
+Documentado. Se reemplaza por la repro-
+ducción de incidentes de terreno (INN-02),
+con su circuito de cuatro pasos, su contrato
+de evidencia y la explicación de por qué no
+es práctica estándar. El FEFO queda como
+alcance obligatorio (RF-05.05).
+13.2; 13.2.2 (Tabla
+13.7); Anexo 13.A
+SD13-04 Innovación 4: «no coincide
+con la restricción N° 9 y no
+se refleja en la estructura
+de costos ni en el flujo de
+caja».
+Documentado. Se reemplaza por el tramo
+variable de la Operación ligado al costo
+de servir (INN-04). El acompañamiento se
+ofrece como servicio costeado, según la
+restricción 9, y el flujo de caja separa costo,
+ingreso fijo, ingreso contingente y beneficio
+del CLIENTE por mes.
+13.4.1; 13.4.5 (Tabla
+13.20); Formulario
+T-19, ficha 4
+SD13-05 Innovación 5: supone
+WhatsApp en un cliente
+sin internet (restricción
+N° 5) y no existe en el catá-
+logo del Subdocumento 3
+ni en los módulos del 4.1
+(RT-26.01).
+Documentado. Se reemplaza por la hoja de
+negocio del almacenero (INN-05), entregada
+en la visita en la pantalla del preventista o
+impresa en la entrega siguiente, sin dispo-
+sitivo ni conexión del cliente. Usa M3, M6
+y M10, la aplicación C-01 y la impresora de
+cabina ya ofertadas.
+13.5.2; 13.5.4; Ane-
+xo 13.B
+SD13-06 Falta el nivel de madurez
+con la escala utilizada
+(RT-26.03).
+Documentado. Cada innovación declara
+su nivel en la escala TRL de la Comisión
+Europea (European Commission, 2016), con
+el nivel de partida, los niveles objetivo con
+su mes y las fuentes que los sustentan.
+13.1.3 a 13.5.3;
+Formulario T-19,
+campo 5
+Continúa en el folio siguiente.
+LafroX SpA
+Propuesta Técnica
+Media firma: Alex Aravena
+34
+
+=== PAGINA 35 ===
+LafroX SpA Observaciones y respuestas
+Tabla 6 — Subdocumento 13 (continuación)
+N.º Observación del Informe 1 Respuesta Sección modificada
+SD13-07 Falta el diseño de incor-
+poración: capa y compo-
+nentes de la arquitectura,
+paquetes de la EDT y mes
+del cronograma (RT-26.01 y
+RT-26.02).
+Documentado. Cada innovación declara
+capas, componentes, módulos, contrato de
+datos, paquetes del Formulario T-14 y mes
+de materialización.
+13.1.4 a 13.5.4;
+Anexos 13.A y 13.B;
+Formulario T-19,
+campos 7 a 9
+SD13-08 Falta el impacto econó-
+mico: inversión, costo
+operacional y beneficio
+(RT-26.05).
+Documentado. Cada innovación ubica sus
+rubros por clase y mes en el flujo de caja,
+sin montos (Art. 50.2).
+13.1.5 a 13.5.5;
+Anexo 13.B; Formu-
+lario T-19, campos
+10 a 12
+SD13-09 Falta el riesgo de adopción
+con probabilidad, impacto,
+mitigación y contingencia
+(RT-26.04).
+Documentado. Cada innovación remite a su
+ficha R8-25 a R8-29 del Anexo 8.A, con pro-
+babilidad, impacto y exposición en la escala
+del Capítulo 8, mitigación y contingencia.
+13.1.7 a 13.5.7;
+Anexo 13.C (Tabla
+13.C.2); Formulario
+T-19, campos 15 a
+17
+SD13-10 «“Investigación adicional:
+Sí” en las cinco equivale a
+declarar que la innovación
+no está diseñada».
+Documentado. Cada innovación declara qué
+falta investigar, en qué paquete y meses se
+resuelve y con qué indicador se valida.
+13.1.3 a 13.5.3;
+Anexo 13.B (Tabla
+13.B.2)
+SD13-11 Los indicadores no tienen
+momento de medición ni
+línea base; la innovación
+5 compromete un valor al
+mes 24 de Operación, sin
+medición intermedia.
+Documentado. Cada indicador tiene línea
+base, meta y momento de medición. Donde
+no existe historia se declara «Sin medición»
+y no se inventa un valor. La innovación 5
+mide en los meses 13 y 14, 27 y 33.
+Tablas 13.5, 13.10,
+13.15, 13.21 y 13.26;
+Anexo 13.C (Tabla
+13.C.1)
+SD13-12 Crítico: el Formulario T-19
+no fue entregado.
+Documentado. Se presenta el Formulario
+T-19 en archivo propio, con una ficha por
+innovación y sus 17 campos.
+Formulario T-19
+SD13-13 Crítico: la innovación 5
+trae precios en dólares
+(Art. 50.2).
+Documentado. Ningún monto en el capítulo
+ni en el formulario. El impacto se expresa
+por rubro, clase y mes, y la valorización va
+en la Oferta Económica, Entregable 2, ítem
+2.7.
+13.1.5 a 13.5.5;
+Formulario T-19,
+campos 10 a 12
+SD13-14 Las fuentes no se citan
+dentro del texto; la versión
+1.2 de EPCIS está superada
+por la 2.0 (2022).
+Documentado. Las fuentes se citan en APA
+7. ª en el punto de uso, con correspondencia
+uno a uno con la lista. EPCIS 2.0 (GS1 AISBL,
+2022) sustenta la tecnología y la madurez de
+la innovación 3.
+13.1.3 a 13.5.3;
+13.3.2; 13.3.3; Refe-
+rencias
+Continúa en el folio siguiente.
+LafroX SpA
+Propuesta Técnica
+Media firma: Alex Aravena
+35
+
+=== PAGINA 36 ===
+LafroX SpA Observaciones y respuestas
+Tabla 6 — Subdocumento 13 (continuación)
+N.º Observación del Informe 1 Respuesta Sección modificada
+SD13-15 «Siete páginas sin una
+figura: ninguna innovación
+se ubica en un diagrama
+de la arquitectura».
+Documentado. La Figura 13.1 ubica las
+cinco innovaciones sobre las capas de la
+arquitectura, y las Figuras 13.2 a 13.6 reco-
+rren cada una. Cada figura se cita antes y se
+explica después.
+Introducción (Fi-
+gura 13.1); 13.1.4 a
+13.5.4
+SD13-16 OK: el anexo descarta
+bien lo que es requisito
+y no innovación: ruteo
+automático, costo de servir
+y registro continuo de
+temperatura.
+Se mantiene. El criterio se conserva: cada
+innovación separa en una tabla lo que ya
+es alcance obligatorio de lo que agrega; el
+registro continuo de temperatura (criterio
+3) y el costo de servir (criterio 11 y RF-11.08)
+se declaran alcance obligatorio y no innova-
+ción.
+Tablas 13.2, 13.7,
+13.12, 13.17 y 13.23;
+13.3; 13.4.1
+SD13-17 General: ningún archivo
+tiene logotipo, plantilla,
+paleta, encabezado ni pie
+de página.
+Documentado. El subdocumento, los anexos
+y el T-19 usan la plantilla única de LafroX,
+con isotipo, encabezado y pie en todas las
+páginas.
+Subdocumento,
+anexos y Formula-
+rio T-19
+SD13-18 General: las portadas in-
+cluyen datos ajenos a la
+licitación y están rotula-
+das «Formulario T-22»,
+que es un formulario del
+CLIENTE.
+Documentado. La portada lleva la identidad
+de LafroX, sin datos ajenos a la licitación ni
+rótulos de formularios del CLIENTE.
+Portada
+SD13-19 General: los Subdocumen-
+tos 1, 2, 3, 5 y 13 en Arial
+y tamaño A4; cuerpo que
+aparenta ser inferior a 11
+puntos.
+Documentado. Los tres documentos usan
+tamaño carta y cuerpo de 11 puntos (Art.
+40.4).
+Subdocumento,
+anexos y Formula-
+rio T-19
+SD13-20 General: el archivo abre
+con una hoja que sólo
+dice «Página en blanco a
+propósito», con errata.
+Documentado. La hoja se eliminó. Inicio del docu-
+mento
+SD13-21 General: ningún archivo
+tiene índice, numeración
+de páginas ni firma (Art.
+40° y 53°).
+Documentado. El índice llega hasta el tercer
+nivel, y cada página posterior a la portada
+lleva folio correlativo y media firma en el
+extremo inferior derecho.
+Índice; pie de pági-
+na
+SD13-22 Transversal: marcadores,
+instrucciones y notas de
+proceso dentro del entre-
+gable; nombres de archivo
+como fuente.
+Documentado. El capítulo no contiene
+marcadores, notas de proceso ni nombres
+de archivo como fuente, y cierra con la
+Declaración de uso de IA por sección, anexo
+y formulario (Distribuidora Puelche S.A.,
+2026d, sección 7.2).
+Subdocumento
+completo; Decla-
+ración de uso de
+IA
+Continúa en el folio siguiente.
+LafroX SpA
+Propuesta Técnica
+Media firma: Alex Aravena
+36
+
+=== PAGINA 37 ===
+LafroX SpA Referencias
+Tabla 6 — Subdocumento 13 (continuación)
+N.º Observación del Informe 1 Respuesta Sección modificada
+SD13-23 Transversal: la propuesta
+se contradice entre subdo-
+cumentos en decisiones de
+diseño.
+Documentado. Las innovaciones usan los
+componentes, módulos, meses y responsa-
+bles del Subdocumento 1, del Capítulo 4, del
+Formulario T-14, del Anexo 7.D y del Anexo
+8.A.
+13.1.4 a 13.5.4;
+Anexo 13.B
+SD13-24 Transversal: no es posible
+seguir un requerimiento
+desde el problema has-
+ta un componente de la
+arquitectura.
+Documentado. Cada innovación separa
+lo que ya es alcance obligatorio con sus
+RF y RT, y el Anexo 13.B la traza a capas,
+componentes, módulos, paquetes, riesgos y
+flujo de caja.
+Tablas 13.2, 13.7,
+13.12, 13.17 y 13.23;
+Anexo 13.B
+2.7 Observación transversal
+Tabla 7 Observaciones y respuestas — observación transversal. Fuente: revisión del Informe 1 y los
+Subdocumentos 1 a 5 y 13 de LafroX.
+N.º Observación del Informe 1 Respuesta Sección modificada
+TR-01 Transversal: fundamenta-
+ción ingenieril. Hay deci-
+siones correctas y propias
+del caso, pero enterradas
+en tablas: sin diagramas
+explicados, sin cálculos
+a la vista y sin análisis en
+prosa.
+Documentado. Las decisiones se presentan
+con figuras explicadas en el texto: Figura 1.1
+en el SD1, Figuras 2.1–2.6 en el SD2, Figuras
+3.1–3.8 en el SD3, figuras 1–29 en el SD4, Fi-
+guras 5.1–5.10 en el SD5 y Figuras 13.1–13.6
+en el SD13. Los cálculos quedan a la vista:
+dotación del NOC en el SD1 (4×7+4=32), re-
+entregas en el SD2 (1.400 × 0,042 = 58,8 ≈ 59
+al día), memoria de cálculo del SD4 (4.2.6
+y Anexo 4-W) y volumen de migración y
+escenarios de carga del SD5 (Tablas 5.2 y
+5.3). Las decisiones se analizan en prosa: re-
+glas sensibles del SD3 (3.2.4), comparación
+de alternativas y 22 ADR del SD4 (4.1.13 y
+Anexo 4-O) y compromisos de persistencia
+del SD5 (5.2).
+SD1–SD5 y SD13;
+SD1-04, SD1-16,
+SD2-13, SD2-31,
+SD3-07, SD3-35,
+SD4-09, SD4-45,
+SD5-01, SD5-07,
+SD5-09 y SD13-15
+3 Referencias
+• Agrawal, S., Singh, R. K., y Murtaza, Q. (2015). A literature review and perspectives in reverse
+logistics. Resources, Conservation and Recycling, 97, 76–92. https://doi.org/10.1016/j.
+resconrec.2015.02.009
+LafroX SpA
+Propuesta Técnica
+Media firma: Alex Aravena
+37
+
+=== PAGINA 38 ===
+LafroX SpA Referencias
+• Boulaksil, Y ., y Belkora, M. J. (2017). Distribution strategies toward nanostores in emerging
+markets: The Valencia case. Interfaces, 47(6), 505–517. https://doi.org/10.1287/inte
+.2017.0914
+• Chopra, S., y Meindl, P . (2016).Supply chain management: Strategy, planning, and operation
+(6. ª ed.). Pearson.
+• Distribuidora Puelche S.A. (2026a). Bases Administrativas de Licitación N. º TFEP-01/2026:
+Contratación de Solución Integral de Software y Servicios de Operación.
+• Distribuidora Puelche S.A. (2026b).Bases Técnicas Transversales de Licitación N. º TFEP-01/2026.
+• Distribuidora Puelche S.A. (2026d). Aclaraciones de la Licitación N. º TFEP-01/2026.
+• European Commission. (2016). Technology readiness levels (TRL). En Horizon 2020 work
+programme 2016–2017: General annexes (Anexo G). https://ec.europa.eu/research/pa
+rticipants/data/ref/h2020/other/wp/2016_2017/annexes/h2020-wp1617-annex
+-g-trl_en.pdf
+• Fildes, R., Ma, S., y Kolassa, S. (2022). Retail forecasting: Research and practice.International
+Journal of Forecasting, 38(4), 1283–1318. https://doi.org/10.1016/j.ijforecast.201
+9.06.004
+• GS1. (2016). EANCOM® 2002 S4: Part I (Edition 2016). https://gs1.org/sites/gs1/file
+s/docs/eancom/ean02s4/part1/part1toc.htm
+• GS1 AISBL. (2022). EPC Information Services (EPCIS) standard (versión 2.0). https://ref.
+gs1.org/standards/epcis/2.0.0/
+• GS1 Chile. (s. f.-a).Comparte: transferencia de información crítica para el intercambio comercial.
+Recuperado el 11 de octubre de 2026, de https://gs1chile.org/Estandares/comparte
+• GS1 Chile. (s. f.-b). Identifica: claves de identificación. Recuperado el 11 de octubre de 2026,
+de https://gs1chile.org/Estandares/identifica
+• GS1 Chile. (s. f.-c). Servicios: comunicación para transacciones electrónicas (EDI – Comercionet).
+Recuperado el 11 de octubre de 2026, de https://gs1chile.org/Servicio/Detalle-d
+e-Servicios
+• Guerreiro, R., Bio, S. R., y Merschmann, E. V . V . (2008). Cost-to-serve measurement and
+customer profitability analysis. The International Journal of Logistics Management, 19 (3),
+389–407. https://doi.org/10.1108/09574090810919215
+• de Koster, R., Le-Duc, T., y Roodbergen, K. J. (2007). Design and control of warehouse
+order picking: A literature review .European Journal of Operational Research, 182(2), 481–501.
+https://doi.org/10.1016/j.ejor.2006.07.009
+• Ley N. º 21.719. (2024, 13 de diciembre). Regula la protección y el tratamiento de los datos
+personales y crea la Agencia de Protección de Datos Personales . Diario Oficial de la República de
+Chile. https://www.bcn.cl/leychile/navegar?idNorma=1209272
+• Mercier, S., Villeneuve, S., Mondor, M., y Uysal, I. (2017). Time–temperature management
+along the food cold chain: A review of recent developments. Comprehensive Reviews in Food
+Science and Food Safety, 16(4), 647–667. https://doi.org/10.1111/1541-4337.12269
+• Ministerio de Salud. (1996). Decreto Supremo N. º 977: Aprueba Reglamento Sanitario de los
+Alimentos. Diario Oficial de la República de Chile.
+LafroX SpA
+Propuesta Técnica
+Media firma: Alex Aravena
+38
+
+=== PAGINA 39 ===
+LafroX SpA Referencias
+• Ministerio del Trabajo y Previsión Social. (2002). Código del Trabajo de la República de Chile:
+Artículo 25 bis sobre jornada especial de transporte de carga . Edición oficial.
+• Moberg, D., y Drummond, R. (2005). MIME-based secure peer-to-peer business data interchange
+using HTTP , Applicability Statement 2 (AS2)(RFC 4130). Internet Engineering Task Force.
+https://www.rfc-editor.org/rfc/rfc4130
+• Servicio de Impuestos Internos. (2024). Manual de Procedimientos y Requisitos de Documentos
+Tributarios Electrónicos (DTE). SII Chile.
+• Toth, P ., y Vigo, D. (Eds.). (2014).Vehicle routing: Problems, methods, and applications (2. ª ed.).
+Society for Industrial and Applied Mathematics.
+• Vidal, T., Laporte, G., y Matl, P . (2020). A concise guide to existing and emerging vehicle
+routing problem variants. European Journal of Operational Research, 286(2), 401–416. https:
+//doi.org/10.1016/j.ejor.2019.10.010
+LafroX SpA
+Propuesta Técnica
+Media firma: Alex Aravena
+39
